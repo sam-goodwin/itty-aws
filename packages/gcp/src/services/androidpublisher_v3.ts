@@ -66,7 +66,7 @@ export interface ProductPurchasesAcknowledgeRequest {
   /** Payload to attach to the purchase. */
   developerPayload?: string;
 }
-export const ProductPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     developerPayload: S.optional(S.String),
   }),
@@ -84,7 +84,7 @@ export interface AcknowledgePurchasesProductsRequest {
   /** Request body */
   body?: ProductPurchasesAcknowledgeRequest;
 }
-export const AcknowledgePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -102,9 +102,7 @@ export const AcknowledgePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcknowledgePurchasesProductsRequest>;
 
 export interface AcknowledgePurchasesProductsResponse {}
-export const AcknowledgePurchasesProductsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AcknowledgePurchasesProductsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcknowledgePurchasesProductsResponse",
 }) as any as S.Schema<AcknowledgePurchasesProductsResponse>;
 
@@ -115,7 +113,7 @@ export interface ExternalAccountIds {
   /** Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user profile in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this field for purchases made using the standard in-app billing flow. */
   obfuscatedProfileId?: string;
 }
-export const ExternalAccountIds = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountIds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     obfuscatedAccountId: S.optional(S.String),
     obfuscatedProfileId: S.optional(S.String),
@@ -129,7 +127,7 @@ export interface SubscriptionPurchasesAcknowledgeRequest {
   /** Optional. User account identifier in your app. */
   externalAccountIds?: ExternalAccountIds;
 }
-export const SubscriptionPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPurchasesAcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     developerPayload: S.optional(S.String),
     externalAccountIds: S.optional(ExternalAccountIds),
@@ -148,7 +146,7 @@ export interface AcknowledgePurchasesSubscriptionsRequest {
   /** Request body */
   body?: SubscriptionPurchasesAcknowledgeRequest;
 }
-export const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -166,14 +164,14 @@ export const AcknowledgePurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AcknowledgePurchasesSubscriptionsRequest>;
 
 export interface AcknowledgePurchasesSubscriptionsResponse {}
-export const AcknowledgePurchasesSubscriptionsResponse =
+const AcknowledgePurchasesSubscriptionsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<AcknowledgePurchasesSubscriptionsResponse>;
 
 export type ActivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const ActivateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
+const ActivateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for ActivateOneTimeProductOffer. */
 export interface ActivateOneTimeProductOfferRequest {
@@ -188,7 +186,7 @@ export interface ActivateOneTimeProductOfferRequest {
   /** Required. The offer ID of the offer to activate. */
   offerId?: string;
 }
-export const ActivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     packageName: S.optional(S.String),
@@ -212,8 +210,8 @@ export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest
   /** Request body */
   body?: ActivateOneTimeProductOfferRequest;
 }
-export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       purchaseOptionId: S.String.pipe(T.Label()),
       productId: S.String.pipe(T.Label()),
@@ -227,29 +225,29 @@ export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+).annotate({
+  identifier: "ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** Represents a custom tag specified for a product offer. */
 export interface OfferTag {
   /** Must conform with RFC-1034. That is, this string can only contain lower-case letters (a-z), numbers (0-9), and hyphens (-), and be at most 20 characters. */
   tag?: string;
 }
-export const OfferTag = /*@__PURE__*/ S.suspend(() =>
+const OfferTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
   }),
 ).annotate({ identifier: "OfferTag" }) as any as S.Schema<OfferTag>;
 
 export type OfferTagList = Array<OfferTag>;
-export const OfferTagList = /*@__PURE__*/ S.Array(OfferTag) as any as S.Schema<OfferTagList>;
+const OfferTagList = /*@__PURE__*/ S.Array(OfferTag) as any as S.Schema<OfferTagList>;
 
 export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
   | "NO_LONGER_AVAILABLE";
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum = S.String;
+const OneTimeProductOfferRegionalPricingAndAvailabilityConfigAvailabilityEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -260,7 +258,7 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -270,7 +268,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 
 /** Options for one-time product offers without a regional price override. */
 export interface OneTimeProductOfferNoPriceOverrideOptions {}
-export const OneTimeProductOfferNoPriceOverrideOptions =
+const OneTimeProductOfferNoPriceOverrideOptions =
   AcknowledgePurchasesProductsResponse as any as S.Schema<OneTimeProductOfferNoPriceOverrideOptions>;
 
 /** Regional pricing and availability configuration for a one-time product offer. */
@@ -288,7 +286,7 @@ export interface OneTimeProductOfferRegionalPricingAndAvailabilityConfig {
   /** The price defined in the purchase option for this region will be used. */
   noOverride?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductOfferRegionalPricingAndAvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeDiscount: S.optional(S.Number),
     availability: S.optional(
@@ -304,7 +302,7 @@ export const OneTimeProductOfferRegionalPricingAndAvailabilityConfig = /*@__PURE
 
 export type OneTimeProductOfferRegionalPricingAndAvailabilityConfigList =
   Array<OneTimeProductOfferRegionalPricingAndAvailabilityConfig>;
-export const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList = /*@__PURE__*/ S.Array(
+const OneTimeProductOfferRegionalPricingAndAvailabilityConfigList = /*@__PURE__*/ S.Array(
   OneTimeProductOfferRegionalPricingAndAvailabilityConfig,
 ) as any as S.Schema<OneTimeProductOfferRegionalPricingAndAvailabilityConfigList>;
 
@@ -313,7 +311,7 @@ export interface OneTimeProductGameRewardOffer {
   /** Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer redemptions. Otherwise must be a number between 1 and 50 inclusive. */
   redemptionLimit?: string;
 }
-export const OneTimeProductGameRewardOffer = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductGameRewardOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redemptionLimit: S.optional(S.String),
   }),
@@ -330,7 +328,7 @@ export interface OneTimeProductDiscountedOffer {
   /** Optional. The number of times this offer can be redeemed. If unset or set to 0, allows for unlimited offer redemptions. Otherwise must be a number between 1 and 50 inclusive. */
   redemptionLimit?: string;
 }
-export const OneTimeProductDiscountedOffer = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductDiscountedOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -344,7 +342,7 @@ export type OneTimeProductPreOrderOfferPriceChangeBehaviorEnum =
   | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_TWO_POINT_LOWEST"
   | "PRE_ORDER_PRICE_CHANGE_BEHAVIOR_NEW_ORDERS_ONLY";
-export const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum = S.String;
+const OneTimeProductPreOrderOfferPriceChangeBehaviorEnum = S.String;
 
 /** Configuration specific to pre-order offers. */
 export interface OneTimeProductPreOrderOffer {
@@ -357,7 +355,7 @@ export interface OneTimeProductPreOrderOffer {
   /** Required. Time when the pre-order will stop being available. */
   endTime?: string;
 }
-export const OneTimeProductPreOrderOffer = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductPreOrderOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priceChangeBehavior: S.optional(OneTimeProductPreOrderOfferPriceChangeBehaviorEnum),
     startTime: S.optional(S.String),
@@ -374,14 +372,14 @@ export type OneTimeProductOfferStateEnum =
   | "ACTIVE"
   | "CANCELLED"
   | "INACTIVE";
-export const OneTimeProductOfferStateEnum = S.String;
+const OneTimeProductOfferStateEnum = S.String;
 
 /** The version of the available regions being used for the specified resource. */
 export interface RegionsVersion {
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
   version?: string;
 }
-export const RegionsVersion = /*@__PURE__*/ S.suspend(() =>
+const RegionsVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
@@ -412,7 +410,7 @@ export interface OneTimeProductOffer {
   /** Required. Immutable. The ID of the purchase option to which this offer is an extension. */
   purchaseOptionId?: string;
 }
-export const OneTimeProductOffer = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerTags: S.optional(OfferTagList),
     productId: S.optional(S.String),
@@ -434,7 +432,7 @@ export type ActivateBasePlanRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const ActivateBasePlanRequestLatencyToleranceEnum = S.String;
+const ActivateBasePlanRequestLatencyToleranceEnum = S.String;
 
 /** Request message for ActivateBasePlan. */
 export interface ActivateBasePlanRequest {
@@ -447,7 +445,7 @@ export interface ActivateBasePlanRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?: ActivateBasePlanRequestLatencyToleranceEnum | (string & {});
 }
-export const ActivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     basePlanId: S.optional(S.String),
@@ -466,7 +464,7 @@ export interface ActivateMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: ActivateBasePlanRequest;
 }
-export const ActivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -492,7 +490,7 @@ export interface RegionalBasePlanConfig {
   /** The price of the base plan in the specified region. Must be set if the base plan is available to new subscribers. Must be set in the currency that is linked to the specified region. */
   price?: Money;
 }
-export const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
+const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     newSubscriberAvailability: S.optional(S.Boolean),
@@ -501,7 +499,7 @@ export const RegionalBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalBasePlanConfig" }) as any as S.Schema<RegionalBasePlanConfig>;
 
 export type RegionalBasePlanConfigList = Array<RegionalBasePlanConfig>;
-export const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
+const RegionalBasePlanConfigList = /*@__PURE__*/ S.Array(
   RegionalBasePlanConfig,
 ) as any as S.Schema<RegionalBasePlanConfigList>;
 
@@ -509,13 +507,13 @@ export type AutoRenewingBasePlanTypeProrationModeEnum =
   | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
-export const AutoRenewingBasePlanTypeProrationModeEnum = S.String;
+const AutoRenewingBasePlanTypeProrationModeEnum = S.String;
 
 export type AutoRenewingBasePlanTypeResubscribeStateEnum =
   | "RESUBSCRIBE_STATE_UNSPECIFIED"
   | "RESUBSCRIBE_STATE_ACTIVE"
   | "RESUBSCRIBE_STATE_INACTIVE";
-export const AutoRenewingBasePlanTypeResubscribeStateEnum = S.String;
+const AutoRenewingBasePlanTypeResubscribeStateEnum = S.String;
 
 /** Represents a base plan that automatically renews at the end of its subscription period. */
 export interface AutoRenewingBasePlanType {
@@ -534,7 +532,7 @@ export interface AutoRenewingBasePlanType {
   /** Subscription offer id which is legacy compatible. The backward compatible subscription offer is returned by the Google Play Billing Library deprecated method querySkuDetailsAsync(). Only one subscription offer can be marked as legacy compatible for a given renewing base plan. To have no Subscription offer as legacy compatible set this field as empty string. */
   legacyCompatibleSubscriptionOfferId?: string;
 }
-export const AutoRenewingBasePlanType = /*@__PURE__*/ S.suspend(() =>
+const AutoRenewingBasePlanType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPeriodDuration: S.optional(S.String),
     legacyCompatible: S.optional(S.Boolean),
@@ -555,7 +553,7 @@ export interface OtherRegionsBasePlanConfig {
   /** Whether the base plan is available for new subscribers in any new locations Play may launch in. If not specified, this will default to false. */
   newSubscriberAvailability?: boolean;
 }
-export const OtherRegionsBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
+const OtherRegionsBasePlanConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usdPrice: S.optional(Money),
     eurPrice: S.optional(Money),
@@ -569,19 +567,19 @@ export type InstallmentsBasePlanTypeRenewalTypeEnum =
   | "RENEWAL_TYPE_UNSPECIFIED"
   | "RENEWAL_TYPE_RENEWS_WITHOUT_COMMITMENT"
   | "RENEWAL_TYPE_RENEWS_WITH_COMMITMENT";
-export const InstallmentsBasePlanTypeRenewalTypeEnum = S.String;
+const InstallmentsBasePlanTypeRenewalTypeEnum = S.String;
 
 export type InstallmentsBasePlanTypeProrationModeEnum =
   | "SUBSCRIPTION_PRORATION_MODE_UNSPECIFIED"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_ON_NEXT_BILLING_DATE"
   | "SUBSCRIPTION_PRORATION_MODE_CHARGE_FULL_PRICE_IMMEDIATELY";
-export const InstallmentsBasePlanTypeProrationModeEnum = S.String;
+const InstallmentsBasePlanTypeProrationModeEnum = S.String;
 
 export type InstallmentsBasePlanTypeResubscribeStateEnum =
   | "RESUBSCRIBE_STATE_UNSPECIFIED"
   | "RESUBSCRIBE_STATE_ACTIVE"
   | "RESUBSCRIBE_STATE_INACTIVE";
-export const InstallmentsBasePlanTypeResubscribeStateEnum = S.String;
+const InstallmentsBasePlanTypeResubscribeStateEnum = S.String;
 
 /** Represents an installments base plan where a user commits to a specified number of payments. */
 export interface InstallmentsBasePlanType {
@@ -600,7 +598,7 @@ export interface InstallmentsBasePlanType {
   /** Grace period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and the lesser of 30D and base plan billing period. If not specified, a default value will be used based on the billing period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive. */
   gracePeriodDuration?: string;
 }
-export const InstallmentsBasePlanType = /*@__PURE__*/ S.suspend(() =>
+const InstallmentsBasePlanType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     committedPaymentsCount: S.optional(S.Number),
     renewalType: S.optional(InstallmentsBasePlanTypeRenewalTypeEnum),
@@ -616,7 +614,7 @@ export type PrepaidBasePlanTypeTimeExtensionEnum =
   | "TIME_EXTENSION_UNSPECIFIED"
   | "TIME_EXTENSION_ACTIVE"
   | "TIME_EXTENSION_INACTIVE";
-export const PrepaidBasePlanTypeTimeExtensionEnum = S.String;
+const PrepaidBasePlanTypeTimeExtensionEnum = S.String;
 
 /** Represents a base plan that does not automatically renew at the end of the base plan, and must be manually renewed by the user. */
 export interface PrepaidBasePlanType {
@@ -625,7 +623,7 @@ export interface PrepaidBasePlanType {
   /** Whether users should be able to extend this prepaid base plan in Google Play surfaces. Defaults to TIME_EXTENSION_ACTIVE if not specified. */
   timeExtension?: PrepaidBasePlanTypeTimeExtensionEnum | (string & {});
 }
-export const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
+const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPeriodDuration: S.optional(S.String),
     timeExtension: S.optional(PrepaidBasePlanTypeTimeExtensionEnum),
@@ -633,7 +631,7 @@ export const PrepaidBasePlanType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrepaidBasePlanType" }) as any as S.Schema<PrepaidBasePlanType>;
 
 export type BasePlanStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE";
-export const BasePlanStateEnum = S.String;
+const BasePlanStateEnum = S.String;
 
 /** A single base plan for a subscription. */
 export interface BasePlan {
@@ -654,7 +652,7 @@ export interface BasePlan {
   /** Output only. The state of the base plan, i.e. whether it's active. Draft and inactive base plans can be activated or deleted. Active base plans can be made inactive. Inactive base plans can be canceled. This field cannot be changed by updating the resource. Use the dedicated endpoints instead. */
   state?: BasePlanStateEnum | (string & {});
 }
-export const BasePlan = /*@__PURE__*/ S.suspend(() =>
+const BasePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalConfigs: S.optional(RegionalBasePlanConfigList),
     autoRenewingBasePlanType: S.optional(AutoRenewingBasePlanType),
@@ -668,17 +666,17 @@ export const BasePlan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BasePlan" }) as any as S.Schema<BasePlan>;
 
 export type BasePlanList = Array<BasePlan>;
-export const BasePlanList = /*@__PURE__*/ S.Array(BasePlan) as any as S.Schema<BasePlanList>;
+const BasePlanList = /*@__PURE__*/ S.Array(BasePlan) as any as S.Schema<BasePlanList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Countries where the purchase of this product is restricted to payment methods registered in the same country. If empty, no payment location restrictions are imposed. */
 export interface RestrictedPaymentCountries {
   /** Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US". */
   regionCodes?: StringList;
 }
-export const RestrictedPaymentCountries = /*@__PURE__*/ S.suspend(() =>
+const RestrictedPaymentCountries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCodes: S.optional(StringList),
   }),
@@ -697,7 +695,7 @@ export interface SubscriptionListing {
   /** Required. The language of this listing, as defined by BCP-47, e.g. "en-US". */
   languageCode?: string;
 }
-export const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     title: S.optional(S.String),
@@ -707,7 +705,7 @@ export const SubscriptionListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionListing" }) as any as S.Schema<SubscriptionListing>;
 
 export type SubscriptionListingList = Array<SubscriptionListing>;
-export const SubscriptionListingList = /*@__PURE__*/ S.Array(
+const SubscriptionListingList = /*@__PURE__*/ S.Array(
   SubscriptionListing,
 ) as any as S.Schema<SubscriptionListingList>;
 
@@ -717,7 +715,7 @@ export type RegionalProductAgeRatingInfoProductAgeRatingTierEnum =
   | "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE"
   | "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE"
   | "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE";
-export const RegionalProductAgeRatingInfoProductAgeRatingTierEnum = S.String;
+const RegionalProductAgeRatingInfoProductAgeRatingTierEnum = S.String;
 
 /** Details about the age rating for a specific geographic region. */
 export interface RegionalProductAgeRatingInfo {
@@ -726,7 +724,7 @@ export interface RegionalProductAgeRatingInfo {
   /** The age rating tier of a product for the given region. */
   productAgeRatingTier?: RegionalProductAgeRatingInfoProductAgeRatingTierEnum | (string & {});
 }
-export const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
+const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     productAgeRatingTier: S.optional(RegionalProductAgeRatingInfoProductAgeRatingTierEnum),
@@ -736,7 +734,7 @@ export const RegionalProductAgeRatingInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalProductAgeRatingInfo>;
 
 export type RegionalProductAgeRatingInfoList = Array<RegionalProductAgeRatingInfo>;
-export const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
+const RegionalProductAgeRatingInfoList = /*@__PURE__*/ S.Array(
   RegionalProductAgeRatingInfo,
 ) as any as S.Schema<RegionalProductAgeRatingInfoList>;
 
@@ -748,7 +746,7 @@ export type RegionalTaxRateInfoStreamingTaxTypeEnum =
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
-export const RegionalTaxRateInfoStreamingTaxTypeEnum = S.String;
+const RegionalTaxRateInfoStreamingTaxTypeEnum = S.String;
 
 export type RegionalTaxRateInfoTaxTierEnum =
   | "TAX_TIER_UNSPECIFIED"
@@ -757,7 +755,7 @@ export type RegionalTaxRateInfoTaxTierEnum =
   | "TAX_TIER_NEWS_2"
   | "TAX_TIER_MUSIC_OR_AUDIO_1"
   | "TAX_TIER_LIVE_OR_BROADCAST_1";
-export const RegionalTaxRateInfoTaxTierEnum = S.String;
+const RegionalTaxRateInfoTaxTierEnum = S.String;
 
 /** Specified details about taxation in a given geographical region. */
 export interface RegionalTaxRateInfo {
@@ -768,7 +766,7 @@ export interface RegionalTaxRateInfo {
   /** You must tell us if your app contains streaming products to correctly charge US state and local sales tax. Field only supported in the United States. */
   eligibleForStreamingServiceTaxRate?: boolean;
 }
-export const RegionalTaxRateInfo = /*@__PURE__*/ S.suspend(() =>
+const RegionalTaxRateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamingTaxType: S.optional(RegionalTaxRateInfoStreamingTaxTypeEnum),
     taxTier: S.optional(RegionalTaxRateInfoTaxTierEnum),
@@ -777,7 +775,7 @@ export const RegionalTaxRateInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalTaxRateInfo" }) as any as S.Schema<RegionalTaxRateInfo>;
 
 export type RegionalTaxRateInfoMap = { [key: string]: RegionalTaxRateInfo | undefined };
-export const RegionalTaxRateInfoMap = /*@__PURE__*/ S.Record(
+const RegionalTaxRateInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   RegionalTaxRateInfo,
 ) as any as S.Schema<RegionalTaxRateInfoMap>;
@@ -786,7 +784,7 @@ export type SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
   | "WITHDRAWAL_RIGHT_SERVICE";
-export const SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = S.String;
+const SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = S.String;
 
 /** Details about taxation, Google Play policy, and legal compliance for subscription products. */
 export interface SubscriptionTaxAndComplianceSettings {
@@ -803,7 +801,7 @@ export interface SubscriptionTaxAndComplianceSettings {
     | SubscriptionTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum
     | (string & {});
 }
-export const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalProductAgeRatingInfos: S.optional(RegionalProductAgeRatingInfoList),
     isTokenizedDigitalAsset: S.optional(S.Boolean),
@@ -834,7 +832,7 @@ export interface Subscription {
   /** Details about taxes and legal compliance. */
   taxAndComplianceSettings?: SubscriptionTaxAndComplianceSettings;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlans: S.optional(BasePlanList),
     restrictedPaymentCountries: S.optional(RestrictedPaymentCountries),
@@ -850,7 +848,7 @@ export type ActivateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const ActivateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
+const ActivateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for ActivateSubscriptionOffer. */
 export interface ActivateSubscriptionOfferRequest {
@@ -865,7 +863,7 @@ export interface ActivateSubscriptionOfferRequest {
   /** Required. The parent app (package name) of the offer to activate. */
   packageName?: string;
 }
-export const ActivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.optional(S.String),
     productId: S.optional(S.String),
@@ -889,7 +887,7 @@ export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: ActivateSubscriptionOfferRequest;
 }
-export const ActivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -909,12 +907,8 @@ export const ActivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE
 
 /** Represents the targeting rule scope corresponding to the subscriptions in which this offer is defined. */
 export type TargetingRuleScopeThisSubscription = OneTimeProductOfferNoPriceOverrideOptions;
-export const TargetingRuleScopeThisSubscription = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Represents the targeting rule scope corresponding to any subscription in the parent app. */
 export type TargetingRuleScopeAnySubscriptionInApp = OneTimeProductOfferNoPriceOverrideOptions;
-export const TargetingRuleScopeAnySubscriptionInApp = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Defines the scope of subscriptions which a targeting rule can match to target offers to users based on past or current entitlement. */
 export interface TargetingRuleScope {
   /** The scope of the current targeting rule is the subscription with the specified subscription ID. Must be a subscription within the same parent app. */
@@ -924,7 +918,7 @@ export interface TargetingRuleScope {
   /** The scope of the current targeting rule is any subscription in the parent app. */
   anySubscriptionInApp?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const TargetingRuleScope = /*@__PURE__*/ S.suspend(() =>
+const TargetingRuleScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     specificSubscriptionInApp: S.optional(S.String),
     thisSubscription: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -937,7 +931,7 @@ export interface AcquisitionTargetingRule {
   /** Required. The scope of subscriptions this rule considers. Only allows "this subscription" and "any subscription in app". */
   scope?: TargetingRuleScope;
 }
-export const AcquisitionTargetingRule = /*@__PURE__*/ S.suspend(() =>
+const AcquisitionTargetingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(TargetingRuleScope),
   }),
@@ -952,7 +946,7 @@ export interface UpgradeTargetingRule {
   /** The specific billing period duration, specified in ISO 8601 format, that a user must be currently subscribed to to be eligible for this rule. If not specified, users subscribed to any billing period are matched. */
   billingPeriodDuration?: string;
 }
-export const UpgradeTargetingRule = /*@__PURE__*/ S.suspend(() =>
+const UpgradeTargetingRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(TargetingRuleScope),
     oncePerUser: S.optional(S.Boolean),
@@ -967,7 +961,7 @@ export interface SubscriptionOfferTargeting {
   /** Offer targeting rule for upgrading users' existing plans. */
   upgradeRule?: UpgradeTargetingRule;
 }
-export const SubscriptionOfferTargeting = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionOfferTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acquisitionRule: S.optional(AcquisitionTargetingRule),
     upgradeRule: S.optional(UpgradeTargetingRule),
@@ -979,9 +973,6 @@ export const SubscriptionOfferTargeting = /*@__PURE__*/ S.suspend(() =>
 /** Represents the free price override configuration for a single phase of a subscription offer */
 export type RegionalSubscriptionOfferPhaseFreePriceOverride =
   OneTimeProductOfferNoPriceOverrideOptions;
-export const RegionalSubscriptionOfferPhaseFreePriceOverride =
-  OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Configuration for a single phase of a subscription offer in a single region. */
 export interface RegionalSubscriptionOfferPhaseConfig {
   /** Set to specify this offer is free to obtain. */
@@ -995,7 +986,7 @@ export interface RegionalSubscriptionOfferPhaseConfig {
   /** The absolute amount of money subtracted from the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a $1 absolute discount for a phase of a duration of 3 months would correspond to a price of $2. The resulting price may not be smaller than the minimum price allowed for this region. */
   absoluteDiscount?: Money;
 }
-export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
+const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     free: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     relativeDiscount: S.optional(S.Number),
@@ -1008,16 +999,13 @@ export const RegionalSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RegionalSubscriptionOfferPhaseConfig>;
 
 export type RegionalSubscriptionOfferPhaseConfigList = Array<RegionalSubscriptionOfferPhaseConfig>;
-export const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(
+const RegionalSubscriptionOfferPhaseConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferPhaseConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferPhaseConfigList>;
 
 /** Represents the free price override configuration for any new locations Play may launch for a single offer phase. */
 export type OtherRegionsSubscriptionOfferPhaseFreePriceOverride =
   OneTimeProductOfferNoPriceOverrideOptions;
-export const OtherRegionsSubscriptionOfferPhaseFreePriceOverride =
-  OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Pricing information for any new locations Play may launch in. */
 export interface OtherRegionsSubscriptionOfferPhasePrices {
   /** Required. Price in USD to use for any new locations Play may launch in. */
@@ -1025,7 +1013,7 @@ export interface OtherRegionsSubscriptionOfferPhasePrices {
   /** Required. Price in EUR to use for any new locations Play may launch in. */
   eurPrice?: Money;
 }
-export const OtherRegionsSubscriptionOfferPhasePrices = /*@__PURE__*/ S.suspend(() =>
+const OtherRegionsSubscriptionOfferPhasePrices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usdPrice: S.optional(Money),
     eurPrice: S.optional(Money),
@@ -1045,7 +1033,7 @@ export interface OtherRegionsSubscriptionOfferPhaseConfig {
   /** The fraction of the base plan price prorated over the phase duration that the user pays for this offer phase. For example, if the base plan price for this region is $12 for a period of 1 year, then a 50% discount for a phase of a duration of 3 months would correspond to a price of $1.50. The discount must be specified as a fraction strictly larger than 0 and strictly smaller than 1. The resulting price will be rounded to the nearest billable unit (e.g. cents for USD). The relative discount is considered invalid if the discounted price ends up being smaller than the minimum price allowed in any new locations Play may launch in. */
   relativeDiscount?: number;
 }
-export const OtherRegionsSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
+const OtherRegionsSubscriptionOfferPhaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     free: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     otherRegionsPrices: S.optional(OtherRegionsSubscriptionOfferPhasePrices),
@@ -1067,7 +1055,7 @@ export interface SubscriptionOfferPhase {
   /** Required. The duration of a single recurrence of this phase. Specified in ISO 8601 format. */
   duration?: string;
 }
-export const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recurrenceCount: S.optional(S.Number),
     regionalConfigs: S.optional(RegionalSubscriptionOfferPhaseConfigList),
@@ -1077,19 +1065,19 @@ export const SubscriptionOfferPhase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionOfferPhase" }) as any as S.Schema<SubscriptionOfferPhase>;
 
 export type SubscriptionOfferPhaseList = Array<SubscriptionOfferPhase>;
-export const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(
+const SubscriptionOfferPhaseList = /*@__PURE__*/ S.Array(
   SubscriptionOfferPhase,
 ) as any as S.Schema<SubscriptionOfferPhaseList>;
 
 export type SubscriptionOfferStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "ACTIVE" | "INACTIVE";
-export const SubscriptionOfferStateEnum = S.String;
+const SubscriptionOfferStateEnum = S.String;
 
 /** Configuration for any new locations Play may launch in specified on a subscription offer. */
 export interface OtherRegionsSubscriptionOfferConfig {
   /** Whether the subscription offer in any new locations Play may launch in the future. If not specified, this will default to false. */
   otherRegionsNewSubscriberAvailability?: boolean;
 }
-export const OtherRegionsSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
+const OtherRegionsSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     otherRegionsNewSubscriberAvailability: S.optional(S.Boolean),
   }),
@@ -1104,7 +1092,7 @@ export interface RegionalSubscriptionOfferConfig {
   /** Whether the subscription offer in the specified region is available for new subscribers. Existing subscribers will not have their subscription cancelled if this value is set to false. If not specified, this will default to false. */
   newSubscriberAvailability?: boolean;
 }
-export const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
+const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     newSubscriberAvailability: S.optional(S.Boolean),
@@ -1114,7 +1102,7 @@ export const RegionalSubscriptionOfferConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalSubscriptionOfferConfig>;
 
 export type RegionalSubscriptionOfferConfigList = Array<RegionalSubscriptionOfferConfig>;
-export const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(
+const RegionalSubscriptionOfferConfigList = /*@__PURE__*/ S.Array(
   RegionalSubscriptionOfferConfig,
 ) as any as S.Schema<RegionalSubscriptionOfferConfigList>;
 
@@ -1141,7 +1129,7 @@ export interface SubscriptionOffer {
   /** Required. The region-specific configuration of this offer. Must contain at least one entry. */
   regionalConfigs?: RegionalSubscriptionOfferConfigList;
 }
-export const SubscriptionOffer = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionOffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targeting: S.optional(SubscriptionOfferTargeting),
     phases: S.optional(SubscriptionOfferPhaseList),
@@ -1163,7 +1151,7 @@ export interface UsesPermission {
   /** Optionally, the maximum SDK version for which the permission is required. */
   maxSdkVersion?: number;
 }
-export const UsesPermission = /*@__PURE__*/ S.suspend(() =>
+const UsesPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     maxSdkVersion: S.optional(S.Number),
@@ -1171,7 +1159,7 @@ export const UsesPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsesPermission" }) as any as S.Schema<UsesPermission>;
 
 export type UsesPermissionList = Array<UsesPermission>;
-export const UsesPermissionList = /*@__PURE__*/ S.Array(
+const UsesPermissionList = /*@__PURE__*/ S.Array(
   UsesPermission,
 ) as any as S.Schema<UsesPermissionList>;
 
@@ -1208,7 +1196,7 @@ export interface ExternallyHostedApk {
   /** The features required by this APK (optional). */
   usesFeatures?: StringList;
 }
-export const ExternallyHostedApk = /*@__PURE__*/ S.suspend(() =>
+const ExternallyHostedApk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nativeCodes: S.optional(StringList),
     fileSha256Base64: S.optional(S.String),
@@ -1233,7 +1221,7 @@ export interface ApksAddExternallyHostedRequest {
   /** The definition of the externally-hosted APK and where it is located. */
   externallyHostedApk?: ExternallyHostedApk;
 }
-export const ApksAddExternallyHostedRequest = /*@__PURE__*/ S.suspend(() =>
+const ApksAddExternallyHostedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externallyHostedApk: S.optional(ExternallyHostedApk),
   }),
@@ -1249,7 +1237,7 @@ export interface AddexternallyhostedEditsApksRequest {
   /** Request body */
   body?: ApksAddExternallyHostedRequest;
 }
-export const AddexternallyhostedEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
+const AddexternallyhostedEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -1270,7 +1258,7 @@ export interface ApksAddExternallyHostedResponse {
   /** The definition of the externally-hosted APK and where it is located. */
   externallyHostedApk?: ExternallyHostedApk;
 }
-export const ApksAddExternallyHostedResponse =
+const ApksAddExternallyHostedResponse =
   ApksAddExternallyHostedRequest as any as S.Schema<ApksAddExternallyHostedResponse>;
 
 /** Android api level targeting data for app recovery action targeting. */
@@ -1278,7 +1266,7 @@ export interface AndroidSdks {
   /** Android api levels of devices targeted by recovery action. See https://developer.android.com/guide/topics/manifest/uses-sdk-element#ApiLevels for different api levels in android. */
   sdkLevels?: StringList;
 }
-export const AndroidSdks = /*@__PURE__*/ S.suspend(() =>
+const AndroidSdks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdkLevels: S.optional(StringList),
   }),
@@ -1289,7 +1277,7 @@ export interface AllUsers {
   /** Required. Set to true if all set of users are needed. */
   isAllUsersRequested?: boolean;
 }
-export const AllUsers = /*@__PURE__*/ S.suspend(() =>
+const AllUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAllUsersRequested: S.optional(S.Boolean),
   }),
@@ -1300,7 +1288,7 @@ export interface Regions {
   /** Regions targeted by the recovery action. Region codes are ISO 3166 Alpha-2 country codes. For example, US stands for United States of America. See https://www.iso.org/iso-3166-country-codes.html for the complete list of country codes. */
   regionCode?: StringList;
 }
-export const Regions = /*@__PURE__*/ S.suspend(() =>
+const Regions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(StringList),
   }),
@@ -1315,7 +1303,7 @@ export interface TargetingUpdate {
   /** Additional regions are targeted by the recovery action. */
   regions?: Regions;
 }
-export const TargetingUpdate = /*@__PURE__*/ S.suspend(() =>
+const TargetingUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidSdks: S.optional(AndroidSdks),
     allUsers: S.optional(AllUsers),
@@ -1328,7 +1316,7 @@ export interface AddTargetingRequest {
   /** Specifies targeting updates such as regions, android sdk versions etc. */
   targetingUpdate?: TargetingUpdate;
 }
-export const AddTargetingRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingUpdate: S.optional(TargetingUpdate),
   }),
@@ -1342,7 +1330,7 @@ export interface AddTargetingApprecoveryRequest {
   /** Request body */
   body?: AddTargetingRequest;
 }
-export const AddTargetingApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTargetingApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appRecoveryId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -1360,14 +1348,12 @@ export const AddTargetingApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for AddTargeting. */
 export interface AddTargetingResponse {}
-export const AddTargetingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AddTargetingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddTargetingResponse",
 }) as any as S.Schema<AddTargetingResponse>;
 
 /** Deprecated: subscription archiving is not supported. */
 export type ArchiveSubscriptionRequest = OneTimeProductOfferNoPriceOverrideOptions;
-export const ArchiveSubscriptionRequest = OneTimeProductOfferNoPriceOverrideOptions;
-
 export interface ArchiveMonetizationSubscriptionsRequest {
   /** Required. The unique product ID of the subscription to delete. */
   productId: string;
@@ -1376,7 +1362,7 @@ export interface ArchiveMonetizationSubscriptionsRequest {
   /** Request body */
   body?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const ArchiveMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ArchiveMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -1396,7 +1382,7 @@ export type InappproductsDeleteRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const InappproductsDeleteRequestLatencyToleranceEnum = S.String;
+const InappproductsDeleteRequestLatencyToleranceEnum = S.String;
 
 /** Request to delete an in-app product. */
 export interface InappproductsDeleteRequest {
@@ -1407,7 +1393,7 @@ export interface InappproductsDeleteRequest {
   /** Package name of the app. */
   packageName?: string;
 }
-export const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyTolerance: S.optional(InappproductsDeleteRequestLatencyToleranceEnum),
     sku: S.optional(S.String),
@@ -1418,7 +1404,7 @@ export const InappproductsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InappproductsDeleteRequest>;
 
 export type InappproductsDeleteRequestList = Array<InappproductsDeleteRequest>;
-export const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(
+const InappproductsDeleteRequestList = /*@__PURE__*/ S.Array(
   InappproductsDeleteRequest,
 ) as any as S.Schema<InappproductsDeleteRequestList>;
 
@@ -1427,7 +1413,7 @@ export interface InappproductsBatchDeleteRequest {
   /** Individual delete requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
   requests?: InappproductsDeleteRequestList;
 }
-export const InappproductsBatchDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const InappproductsBatchDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(InappproductsDeleteRequestList),
   }),
@@ -1441,7 +1427,7 @@ export interface BatchDeleteInappproductsRequest {
   /** Request body */
   body?: InappproductsBatchDeleteRequest;
 }
-export const BatchDeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(InappproductsBatchDeleteRequest.pipe(T.HttpBody())),
@@ -1457,14 +1443,14 @@ export const BatchDeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteInappproductsRequest>;
 
 export interface BatchDeleteInappproductsResponse {}
-export const BatchDeleteInappproductsResponse =
+const BatchDeleteInappproductsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<BatchDeleteInappproductsResponse>;
 
 export type DeleteOneTimeProductRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeleteOneTimeProductRequestLatencyToleranceEnum = S.String;
+const DeleteOneTimeProductRequestLatencyToleranceEnum = S.String;
 
 /** Request message for deleting a one-time product. */
 export interface DeleteOneTimeProductRequest {
@@ -1475,7 +1461,7 @@ export interface DeleteOneTimeProductRequest {
   /** Required. The one-time product ID of the one-time product to delete. */
   productId?: string;
 }
-export const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyTolerance: S.optional(DeleteOneTimeProductRequestLatencyToleranceEnum),
     packageName: S.optional(S.String),
@@ -1486,7 +1472,7 @@ export const DeleteOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOneTimeProductRequest>;
 
 export type DeleteOneTimeProductRequestList = Array<DeleteOneTimeProductRequest>;
-export const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(
+const DeleteOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductRequest,
 ) as any as S.Schema<DeleteOneTimeProductRequestList>;
 
@@ -1495,7 +1481,7 @@ export interface BatchDeleteOneTimeProductsRequest {
   /** Required. A list of delete requests of up to 100 elements. All requests must delete different one-time products. */
   requests?: DeleteOneTimeProductRequestList;
 }
-export const BatchDeleteOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(DeleteOneTimeProductRequestList),
   }),
@@ -1509,7 +1495,7 @@ export interface BatchDeleteMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: BatchDeleteOneTimeProductsRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(BatchDeleteOneTimeProductsRequest.pipe(T.HttpBody())),
@@ -1525,14 +1511,14 @@ export const BatchDeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsResponse =
+const BatchDeleteMonetizationOnetimeproductsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
 
 export type DeletePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeletePurchaseOptionRequestLatencyToleranceEnum = S.String;
+const DeletePurchaseOptionRequestLatencyToleranceEnum = S.String;
 
 /** Request message for deleting a purchase option. */
 export interface DeletePurchaseOptionRequest {
@@ -1547,7 +1533,7 @@ export interface DeletePurchaseOptionRequest {
   /** Required. The parent one-time product (ID) of the purchase option to delete. */
   productId?: string;
 }
-export const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
     purchaseOptionId: S.optional(S.String),
@@ -1560,7 +1546,7 @@ export const DeletePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePurchaseOptionRequest>;
 
 export type DeletePurchaseOptionRequestList = Array<DeletePurchaseOptionRequest>;
-export const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(
+const DeletePurchaseOptionRequestList = /*@__PURE__*/ S.Array(
   DeletePurchaseOptionRequest,
 ) as any as S.Schema<DeletePurchaseOptionRequestList>;
 
@@ -1569,7 +1555,7 @@ export interface BatchDeletePurchaseOptionsRequest {
   /** Required. A list of delete requests of up to 100 elements. All requests must delete purchase options from different one-time products. */
   requests?: DeletePurchaseOptionRequestList;
 }
-export const BatchDeletePurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(DeletePurchaseOptionRequestList),
   }),
@@ -1585,34 +1571,34 @@ export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest {
   /** Request body */
   body?: BatchDeletePurchaseOptionsRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeletePurchaseOptionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.String.pipe(T.Label()),
+    productId: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeletePurchaseOptionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions:batchDelete",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest",
 }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
+const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse",
+}) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
 
 export type DeleteOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeleteOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
+const DeleteOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for deleting an one-time product offer. */
 export interface DeleteOneTimeProductOfferRequest {
@@ -1627,7 +1613,7 @@ export interface DeleteOneTimeProductOfferRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?: DeleteOneTimeProductOfferRequestLatencyToleranceEnum | (string & {});
 }
-export const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     packageName: S.optional(S.String),
@@ -1640,7 +1626,7 @@ export const DeleteOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOneTimeProductOfferRequest>;
 
 export type DeleteOneTimeProductOfferRequestList = Array<DeleteOneTimeProductOfferRequest>;
-export const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
+const DeleteOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   DeleteOneTimeProductOfferRequest,
 ) as any as S.Schema<DeleteOneTimeProductOfferRequestList>;
 
@@ -1649,7 +1635,7 @@ export interface BatchDeleteOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must correspond to different offers. */
   requests?: DeleteOneTimeProductOfferRequestList;
 }
-export const BatchDeleteOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(DeleteOneTimeProductOfferRequestList),
   }),
@@ -1667,8 +1653,8 @@ export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequ
   /** Request body */
   body?: BatchDeleteOneTimeProductOffersRequest;
 }
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       packageName: S.String.pipe(T.Label()),
       purchaseOptionId: S.String.pipe(T.Label()),
@@ -1681,12 +1667,12 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest 
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+).annotate({
+  identifier: "BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse {}
-export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
+const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse as any as S.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
 
 export interface BatchGetInappproductsRequest {
@@ -1695,7 +1681,7 @@ export interface BatchGetInappproductsRequest {
   /** Unique identifier for the in-app products. */
   sku?: StringList;
 }
-export const BatchGetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     sku: S.optional(StringList.pipe(T.Query())),
@@ -1714,7 +1700,7 @@ export type ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
   | "WITHDRAWAL_RIGHT_SERVICE";
-export const ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = S.String;
+const ManagedProductTaxAndComplianceSettingsEeaWithdrawalRightTypeEnum = S.String;
 
 /** Details about taxation and legal compliance for managed products. */
 export interface ManagedProductTaxAndComplianceSettings {
@@ -1731,7 +1717,7 @@ export interface ManagedProductTaxAndComplianceSettings {
   /** Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
 }
-export const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxRateInfoByRegionCode: S.optional(RegionalTaxRateInfoMap),
     regionalProductAgeRatingInfos: S.optional(RegionalProductAgeRatingInfoList),
@@ -1746,13 +1732,13 @@ export const ManagedProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ManagedProductTaxAndComplianceSettings>;
 
 export type InAppProductStatusEnum = "statusUnspecified" | "active" | "inactive";
-export const InAppProductStatusEnum = S.String;
+const InAppProductStatusEnum = S.String;
 
 export type InAppProductPurchaseTypeEnum =
   | "purchaseTypeUnspecified"
   | "managedUser"
   | "subscription";
-export const InAppProductPurchaseTypeEnum = S.String;
+const InAppProductPurchaseTypeEnum = S.String;
 
 /** Store listing of a single in-app product. */
 export interface InAppProductListing {
@@ -1763,7 +1749,7 @@ export interface InAppProductListing {
   /** Localized entitlement benefits for a subscription. */
   benefits?: StringList;
 }
-export const InAppProductListing = /*@__PURE__*/ S.suspend(() =>
+const InAppProductListing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -1772,7 +1758,7 @@ export const InAppProductListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InAppProductListing" }) as any as S.Schema<InAppProductListing>;
 
 export type InAppProductListingMap = { [key: string]: InAppProductListing | undefined };
-export const InAppProductListingMap = /*@__PURE__*/ S.Record(
+const InAppProductListingMap = /*@__PURE__*/ S.Record(
   S.String,
   InAppProductListing,
 ) as any as S.Schema<InAppProductListingMap>;
@@ -1784,7 +1770,7 @@ export interface Price {
   /** 3 letter Currency code, as defined by ISO 4217. See java/com/google/common/money/CurrencyCode.java */
   currency?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priceMicros: S.optional(S.String),
     currency: S.optional(S.String),
@@ -1792,7 +1778,7 @@ export const Price = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Price" }) as any as S.Schema<Price>;
 
 export type PriceMap = { [key: string]: Price | undefined };
-export const PriceMap = /*@__PURE__*/ S.Record(S.String, Price) as any as S.Schema<PriceMap>;
+const PriceMap = /*@__PURE__*/ S.Record(S.String, Price) as any as S.Schema<PriceMap>;
 
 /** An in-app product. The resource for InappproductsService. */
 export interface InAppProduct {
@@ -1823,7 +1809,7 @@ export interface InAppProduct {
   /** Grace period of the subscription, specified in ISO 8601 format. Allows developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values are P0D (zero days), P3D (three days), P7D (seven days), P14D (14 days), and P30D (30 days). */
   gracePeriod?: string;
 }
-export const InAppProduct = /*@__PURE__*/ S.suspend(() =>
+const InAppProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trialPeriod: S.optional(S.String),
     managedProductTaxesAndComplianceSettings: S.optional(ManagedProductTaxAndComplianceSettings),
@@ -1842,16 +1828,14 @@ export const InAppProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InAppProduct" }) as any as S.Schema<InAppProduct>;
 
 export type InAppProductList = Array<InAppProduct>;
-export const InAppProductList = /*@__PURE__*/ S.Array(
-  InAppProduct,
-) as any as S.Schema<InAppProductList>;
+const InAppProductList = /*@__PURE__*/ S.Array(InAppProduct) as any as S.Schema<InAppProductList>;
 
 /** Response message for BatchGetSubscriptions endpoint. */
 export interface InappproductsBatchGetResponse {
   /** The list of requested in-app products, in the same order as the request. */
   inappproduct?: InAppProductList;
 }
-export const InappproductsBatchGetResponse = /*@__PURE__*/ S.suspend(() =>
+const InappproductsBatchGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inappproduct: S.optional(InAppProductList),
   }),
@@ -1865,7 +1849,7 @@ export interface BatchGetMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the products should be retrieved. Must be equal to the package_name field on all requests. */
   packageName: string;
 }
-export const BatchGetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productIds: S.optional(StringList.pipe(T.Query())),
     packageName: S.String.pipe(T.Label()),
@@ -1888,7 +1872,7 @@ export type RegionalTaxConfigStreamingTaxTypeEnum =
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_RENTAL"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_SALES"
   | "STREAMING_TAX_TYPE_TELCO_AUDIO_MULTI_CHANNEL";
-export const RegionalTaxConfigStreamingTaxTypeEnum = S.String;
+const RegionalTaxConfigStreamingTaxTypeEnum = S.String;
 
 export type RegionalTaxConfigTaxTierEnum =
   | "TAX_TIER_UNSPECIFIED"
@@ -1897,7 +1881,7 @@ export type RegionalTaxConfigTaxTierEnum =
   | "TAX_TIER_NEWS_2"
   | "TAX_TIER_MUSIC_OR_AUDIO_1"
   | "TAX_TIER_LIVE_OR_BROADCAST_1";
-export const RegionalTaxConfigTaxTierEnum = S.String;
+const RegionalTaxConfigTaxTierEnum = S.String;
 
 /** Details about taxation in a given geographical region. */
 export interface RegionalTaxConfig {
@@ -1910,7 +1894,7 @@ export interface RegionalTaxConfig {
   /** Tax tier to specify reduced tax rate. Developers who sell digital news, magazines, newspapers, books, or audiobooks in various regions may be eligible for reduced tax rates. [Learn more](https://support.google.com/googleplay/android-developer/answer/10463498). */
   taxTier?: RegionalTaxConfigTaxTierEnum | (string & {});
 }
-export const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
+const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     eligibleForStreamingServiceTaxRate: S.optional(S.Boolean),
@@ -1920,7 +1904,7 @@ export const RegionalTaxConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionalTaxConfig" }) as any as S.Schema<RegionalTaxConfig>;
 
 export type RegionalTaxConfigList = Array<RegionalTaxConfig>;
-export const RegionalTaxConfigList = /*@__PURE__*/ S.Array(
+const RegionalTaxConfigList = /*@__PURE__*/ S.Array(
   RegionalTaxConfig,
 ) as any as S.Schema<RegionalTaxConfigList>;
 
@@ -1935,7 +1919,7 @@ export interface OneTimeProductTaxAndComplianceSettings {
   /** Whether this one-time product is declared as a product representing a tokenized digital asset. */
   isTokenizedDigitalAsset?: boolean;
 }
-export const OneTimeProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalTaxConfigs: S.optional(RegionalTaxConfigList),
     regionalProductAgeRatingInfos: S.optional(RegionalProductAgeRatingInfoList),
@@ -1950,7 +1934,7 @@ export type OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum =
   | "AVAILABILITY_UNSPECIFIED"
   | "AVAILABLE"
   | "NO_LONGER_AVAILABLE";
-export const OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum = S.String;
+const OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum = S.String;
 
 /** Pricing information for any new regions Play may launch in the future. */
 export interface OneTimeProductPurchaseOptionNewRegionsConfig {
@@ -1961,7 +1945,7 @@ export interface OneTimeProductPurchaseOptionNewRegionsConfig {
   /** Required. Price in EUR to use for any new regions Play may launch in. */
   eurPrice?: Money;
 }
-export const OneTimeProductPurchaseOptionNewRegionsConfig = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductPurchaseOptionNewRegionsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(OneTimeProductPurchaseOptionNewRegionsConfigAvailabilityEnum),
     usdPrice: S.optional(Money),
@@ -1975,7 +1959,7 @@ export type PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum =
   | "WITHDRAWAL_RIGHT_TYPE_UNSPECIFIED"
   | "WITHDRAWAL_RIGHT_DIGITAL_CONTENT"
   | "WITHDRAWAL_RIGHT_SERVICE";
-export const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum = S.String;
+const PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum = S.String;
 
 /** Details about taxation, Google Play policy and legal compliance for one-time product purchase options. */
 export interface PurchaseOptionTaxAndComplianceSettings {
@@ -1984,7 +1968,7 @@ export interface PurchaseOptionTaxAndComplianceSettings {
     | PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum
     | (string & {});
 }
-export const PurchaseOptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
+const PurchaseOptionTaxAndComplianceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withdrawalRightType: S.optional(PurchaseOptionTaxAndComplianceSettingsWithdrawalRightTypeEnum),
   }),
@@ -1998,7 +1982,7 @@ export type OneTimeProductPurchaseOptionStateEnum =
   | "ACTIVE"
   | "INACTIVE"
   | "INACTIVE_PUBLISHED";
-export const OneTimeProductPurchaseOptionStateEnum = S.String;
+const OneTimeProductPurchaseOptionStateEnum = S.String;
 
 /** A purchase option that can be rented. */
 export interface OneTimeProductRentPurchaseOption {
@@ -2007,7 +1991,7 @@ export interface OneTimeProductRentPurchaseOption {
   /** Optional. The amount of time the user has after starting consuming the entitlement before it is revoked. Specified in ISO 8601 format. */
   expirationPeriod?: string;
 }
-export const OneTimeProductRentPurchaseOption = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductRentPurchaseOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rentalPeriod: S.optional(S.String),
     expirationPeriod: S.optional(S.String),
@@ -2022,8 +2006,7 @@ export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvai
   | "NO_LONGER_AVAILABLE"
   | "AVAILABLE_IF_RELEASED"
   | "AVAILABLE_FOR_OFFERS_ONLY";
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum =
-  S.String;
+const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum = S.String;
 
 /** Regional pricing and availability configuration for a purchase option. */
 export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
@@ -2036,8 +2019,8 @@ export interface OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfi
     | OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum
     | (string & {});
 }
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
-  /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       price: S.optional(Money),
       regionCode: S.optional(S.String),
@@ -2045,16 +2028,15 @@ export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig =
         OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigAvailabilityEnum,
       ),
     }),
-  ).annotate({
-    identifier: "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
-  }) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
+).annotate({
+  identifier: "OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig",
+}) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
 
 export type OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
   Array<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig>;
-export const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList =
-  /*@__PURE__*/ S.Array(
-    OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
-  ) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList>;
+const OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList = /*@__PURE__*/ S.Array(
+  OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig,
+) as any as S.Schema<OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfigList>;
 
 /** A purchase option that can be bought. */
 export interface OneTimeProductBuyPurchaseOption {
@@ -2063,7 +2045,7 @@ export interface OneTimeProductBuyPurchaseOption {
   /** Optional. Whether this purchase option will be available in legacy PBL flows that do not support one-time products model. Up to one "buy" purchase option can be marked as backwards compatible. */
   legacyCompatible?: boolean;
 }
-export const OneTimeProductBuyPurchaseOption = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductBuyPurchaseOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiQuantityEnabled: S.optional(S.Boolean),
     legacyCompatible: S.optional(S.Boolean),
@@ -2091,7 +2073,7 @@ export interface OneTimeProductPurchaseOption {
   /** A purchase option that can be bought. */
   buyOption?: OneTimeProductBuyPurchaseOption;
 }
-export const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newRegionsConfig: S.optional(OneTimeProductPurchaseOptionNewRegionsConfig),
     taxAndComplianceSettings: S.optional(PurchaseOptionTaxAndComplianceSettings),
@@ -2109,7 +2091,7 @@ export const OneTimeProductPurchaseOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OneTimeProductPurchaseOption>;
 
 export type OneTimeProductPurchaseOptionList = Array<OneTimeProductPurchaseOption>;
-export const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(
+const OneTimeProductPurchaseOptionList = /*@__PURE__*/ S.Array(
   OneTimeProductPurchaseOption,
 ) as any as S.Schema<OneTimeProductPurchaseOptionList>;
 
@@ -2122,7 +2104,7 @@ export interface OneTimeProductListing {
   /** Required. The language of this listing, as defined by BCP-47, e.g., "en-US". */
   languageCode?: string;
 }
-export const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -2131,7 +2113,7 @@ export const OneTimeProductListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OneTimeProductListing" }) as any as S.Schema<OneTimeProductListing>;
 
 export type OneTimeProductListingList = Array<OneTimeProductListing>;
-export const OneTimeProductListingList = /*@__PURE__*/ S.Array(
+const OneTimeProductListingList = /*@__PURE__*/ S.Array(
   OneTimeProductListing,
 ) as any as S.Schema<OneTimeProductListingList>;
 
@@ -2154,7 +2136,7 @@ export interface OneTimeProduct {
   /** Output only. The version of the regions configuration that was used to generate the one-time product. */
   regionsVersion?: RegionsVersion;
 }
-export const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
+const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxAndComplianceSettings: S.optional(OneTimeProductTaxAndComplianceSettings),
     packageName: S.optional(S.String),
@@ -2168,7 +2150,7 @@ export const OneTimeProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OneTimeProduct" }) as any as S.Schema<OneTimeProduct>;
 
 export type OneTimeProductList = Array<OneTimeProduct>;
-export const OneTimeProductList = /*@__PURE__*/ S.Array(
+const OneTimeProductList = /*@__PURE__*/ S.Array(
   OneTimeProduct,
 ) as any as S.Schema<OneTimeProductList>;
 
@@ -2177,7 +2159,7 @@ export interface BatchGetOneTimeProductsResponse {
   /** The list of requested one-time products, in the same order as the request. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchGetOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneTimeProducts: S.optional(OneTimeProductList),
   }),
@@ -2196,7 +2178,7 @@ export interface GetOneTimeProductOfferRequest {
   /** Required. The parent purchase option (ID) of the offer to get. */
   purchaseOptionId?: string;
 }
-export const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     packageName: S.optional(S.String),
@@ -2208,7 +2190,7 @@ export const GetOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOneTimeProductOfferRequest>;
 
 export type GetOneTimeProductOfferRequestList = Array<GetOneTimeProductOfferRequest>;
-export const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
+const GetOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   GetOneTimeProductOfferRequest,
 ) as any as S.Schema<GetOneTimeProductOfferRequestList>;
 
@@ -2217,7 +2199,7 @@ export interface BatchGetOneTimeProductOffersRequest {
   /** Required. A list of get requests of up to 100 elements. All requests must retrieve different offers. */
   requests?: GetOneTimeProductOfferRequestList;
 }
-export const BatchGetOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(GetOneTimeProductOfferRequestList),
   }),
@@ -2235,8 +2217,8 @@ export interface BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest
   /** Request body */
   body?: BatchGetOneTimeProductOffersRequest;
 }
-export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       productId: S.String.pipe(T.Label()),
       packageName: S.String.pipe(T.Label()),
@@ -2249,12 +2231,12 @@ export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+).annotate({
+  identifier: "BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export type OneTimeProductOfferList = Array<OneTimeProductOffer>;
-export const OneTimeProductOfferList = /*@__PURE__*/ S.Array(
+const OneTimeProductOfferList = /*@__PURE__*/ S.Array(
   OneTimeProductOffer,
 ) as any as S.Schema<OneTimeProductOfferList>;
 
@@ -2263,7 +2245,7 @@ export interface BatchGetOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchGetOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneTimeProductOffers: S.optional(OneTimeProductOfferList),
   }),
@@ -2277,7 +2259,7 @@ export interface BatchGetMonetizationSubscriptionsRequest {
   /** Required. A list of up to 100 subscription product IDs to retrieve. All the IDs must be different. */
   productIds?: StringList;
 }
-export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productIds: S.optional(StringList.pipe(T.Query())),
@@ -2293,16 +2275,14 @@ export const BatchGetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchGetMonetizationSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Response message for BatchGetSubscriptions endpoint. */
 export interface BatchGetSubscriptionsResponse {
   /** The list of requested subscriptions, in the same order as the request. */
   subscriptions?: SubscriptionList;
 }
-export const BatchGetSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(SubscriptionList),
   }),
@@ -2321,7 +2301,7 @@ export interface GetSubscriptionOfferRequest {
   /** Required. The parent subscription (ID) of the offer to get. */
   productId?: string;
 }
-export const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.optional(S.String),
     packageName: S.optional(S.String),
@@ -2333,7 +2313,7 @@ export const GetSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionOfferRequest>;
 
 export type GetSubscriptionOfferRequestList = Array<GetSubscriptionOfferRequest>;
-export const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
+const GetSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   GetSubscriptionOfferRequest,
 ) as any as S.Schema<GetSubscriptionOfferRequestList>;
 
@@ -2342,7 +2322,7 @@ export interface BatchGetSubscriptionOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
   requests?: GetSubscriptionOfferRequestList;
 }
-export const BatchGetSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(GetSubscriptionOfferRequestList),
   }),
@@ -2360,7 +2340,7 @@ export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: BatchGetSubscriptionOffersRequest;
 }
-export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -2378,7 +2358,7 @@ export const BatchGetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE
 }) as any as S.Schema<BatchGetMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export type SubscriptionOfferList = Array<SubscriptionOffer>;
-export const SubscriptionOfferList = /*@__PURE__*/ S.Array(
+const SubscriptionOfferList = /*@__PURE__*/ S.Array(
   SubscriptionOffer,
 ) as any as S.Schema<SubscriptionOfferList>;
 
@@ -2386,7 +2366,7 @@ export const SubscriptionOfferList = /*@__PURE__*/ S.Array(
 export interface BatchGetSubscriptionOffersResponse {
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchGetSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionOffers: S.optional(SubscriptionOfferList),
   }),
@@ -2400,7 +2380,7 @@ export interface BatchgetOrdersRequest {
   /** Required. The list of order IDs to retrieve order details for. There must be between 1 and 1000 (inclusive) order IDs per request. If any order ID is not found or does not match the provided package, the entire request will fail with an error. The order IDs must be distinct. */
   orderIds?: StringList;
 }
-export const BatchgetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchgetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     orderIds: S.optional(StringList.pipe(T.Query())),
@@ -2417,7 +2397,7 @@ export type PartialRefundEventStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
   | "PROCESSED_SUCCESSFULLY";
-export const PartialRefundEventStateEnum = S.String;
+const PartialRefundEventStateEnum = S.String;
 
 /** Details for a partial or full refund. */
 export interface RefundDetails {
@@ -2426,7 +2406,7 @@ export interface RefundDetails {
   /** The amount of tax refunded. */
   tax?: Money;
 }
-export const RefundDetails = /*@__PURE__*/ S.suspend(() =>
+const RefundDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(Money),
     tax: S.optional(Money),
@@ -2444,7 +2424,7 @@ export interface PartialRefundEvent {
   /** The time when the partial refund was processed. */
   processTime?: string;
 }
-export const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
+const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PartialRefundEventStateEnum),
     createTime: S.optional(S.String),
@@ -2454,12 +2434,12 @@ export const PartialRefundEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartialRefundEvent" }) as any as S.Schema<PartialRefundEvent>;
 
 export type PartialRefundEventList = Array<PartialRefundEvent>;
-export const PartialRefundEventList = /*@__PURE__*/ S.Array(
+const PartialRefundEventList = /*@__PURE__*/ S.Array(
   PartialRefundEvent,
 ) as any as S.Schema<PartialRefundEventList>;
 
 export type RefundEventRefundReasonEnum = "REFUND_REASON_UNSPECIFIED" | "OTHER" | "CHARGEBACK";
-export const RefundEventRefundReasonEnum = S.String;
+const RefundEventRefundReasonEnum = S.String;
 
 /** Details of when the order was fully refunded. */
 export interface RefundEvent {
@@ -2470,7 +2450,7 @@ export interface RefundEvent {
   /** The reason the order was refunded. */
   refundReason?: RefundEventRefundReasonEnum;
 }
-export const RefundEvent = /*@__PURE__*/ S.suspend(() =>
+const RefundEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
     refundDetails: S.optional(RefundDetails),
@@ -2483,7 +2463,7 @@ export interface CancellationEvent {
   /** The time when the order was canceled. */
   eventTime?: string;
 }
-export const CancellationEvent = /*@__PURE__*/ S.suspend(() =>
+const CancellationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
   }),
@@ -2494,7 +2474,7 @@ export interface ProcessedEvent {
   /** The time when the order was processed. */
   eventTime?: string;
 }
-export const ProcessedEvent = CancellationEvent as any as S.Schema<ProcessedEvent>;
+const ProcessedEvent = CancellationEvent as any as S.Schema<ProcessedEvent>;
 
 /** Details about events which modified the order. */
 export interface OrderHistory {
@@ -2507,7 +2487,7 @@ export interface OrderHistory {
   /** Details of when the order was processed. */
   processedEvent?: ProcessedEvent;
 }
-export const OrderHistory = /*@__PURE__*/ S.suspend(() =>
+const OrderHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partialRefundEvents: S.optional(PartialRefundEventList),
     refundEvent: S.optional(RefundEvent),
@@ -2523,29 +2503,25 @@ export type OrderSalesChannelEnum =
   | "NATIVE_PC"
   | "PLAY_STORE"
   | "OUTSIDE_PLAY_STORE";
-export const OrderSalesChannelEnum = S.String;
+const OrderSalesChannelEnum = S.String;
 
 /** Details of a paid app purchase. */
 export type PaidAppDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const PaidAppDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details of a base price pricing phase. */
 export type BaseDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const BaseDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 export type ProrationPeriodDetailsOriginalOfferPhaseEnum =
   | "OFFER_PHASE_UNSPECIFIED"
   | "BASE"
   | "INTRODUCTORY"
   | "FREE_TRIAL";
-export const ProrationPeriodDetailsOriginalOfferPhaseEnum = S.String;
+const ProrationPeriodDetailsOriginalOfferPhaseEnum = S.String;
 
 /** Details of a proration period. A proration period can be a period calculated during a plan change to cover existing entitlements (For more information, see [Allow users to upgrade, downgrade, or change their subscription](https://developer.android.com/google/play/billing/subscriptions#allow-users-change), or a prorated period to align add-on renewal dates with the base (For more information, see [Rules applicable for items in the purchase](https://developer.android.com/google/play/billing/subscription-with-addons#rules-base-addons)). */
 export interface ProrationPeriodDetails {
   /** Represent the original offer phase from the purchased the line item if the proration period contains any of them. For example, a proration period from CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the subscription offer of the new product user purchased. In this case, the original offer phase will be set here. */
   originalOfferPhase?: ProrationPeriodDetailsOriginalOfferPhaseEnum;
 }
-export const ProrationPeriodDetails = /*@__PURE__*/ S.suspend(() =>
+const ProrationPeriodDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalOfferPhase: S.optional(ProrationPeriodDetailsOriginalOfferPhaseEnum),
   }),
@@ -2553,12 +2529,8 @@ export const ProrationPeriodDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of a free trial pricing phase. */
 export type FreeTrialDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const FreeTrialDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details of an introductory price pricing phase. */
 export type IntroductoryPriceDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const IntroductoryPriceDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details of a pricing phase for the entitlement period funded by this order. */
 export interface OfferPhaseDetails {
   /** The order funds a base price period. */
@@ -2570,7 +2542,7 @@ export interface OfferPhaseDetails {
   /** The order funds an introductory pricing period. */
   introductoryPriceDetails?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const OfferPhaseDetails = /*@__PURE__*/ S.suspend(() =>
+const OfferPhaseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseDetails: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     prorationPeriodDetails: S.optional(ProrationPeriodDetails),
@@ -2584,7 +2556,7 @@ export type SubscriptionDetailsOfferPhaseEnum =
   | "BASE"
   | "INTRODUCTORY"
   | "FREE_TRIAL";
-export const SubscriptionDetailsOfferPhaseEnum = S.String;
+const SubscriptionDetailsOfferPhaseEnum = S.String;
 
 /** Details of a subscription purchase. */
 export interface SubscriptionDetails {
@@ -2601,7 +2573,7 @@ export interface SubscriptionDetails {
   /** The offer ID for the current subscription offer. */
   offerId?: string;
 }
-export const SubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerPhaseDetails: S.optional(OfferPhaseDetails),
     servicePeriodEndTime: S.optional(S.String),
@@ -2614,12 +2586,8 @@ export const SubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of a rental purchase. */
 export type RentalDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const RentalDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details of a pre-order purchase. */
 export type PreorderDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const PreorderDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details of a one-time purchase. */
 export interface OneTimePurchaseDetails {
   /** The number of items purchased (for multi-quantity item purchases). */
@@ -2633,7 +2601,7 @@ export interface OneTimePurchaseDetails {
   /** The details of a pre-order purchase. Only set if it is a pre-order purchase. Note that this field will be set even after pre-order is fulfilled. */
   preorderDetails?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const OneTimePurchaseDetails = /*@__PURE__*/ S.suspend(() =>
+const OneTimePurchaseDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     rentalDetails: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -2662,7 +2630,7 @@ export interface LineItem {
   /** Details of a one-time purchase. */
   oneTimePurchaseDetails?: OneTimePurchaseDetails;
 }
-export const LineItem = /*@__PURE__*/ S.suspend(() =>
+const LineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tax: S.optional(Money),
     paidAppDetails: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -2676,7 +2644,7 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 
 export type LineItemList = Array<LineItem>;
-export const LineItemList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<LineItemList>;
+const LineItemList = /*@__PURE__*/ S.Array(LineItem) as any as S.Schema<LineItemList>;
 
 /** Details relating to any Play Points applied to an order. */
 export interface PointsDetails {
@@ -2689,7 +2657,7 @@ export interface PointsDetails {
   /** ID unique to the play points offer in use for this order. */
   pointsOfferId?: string;
 }
-export const PointsDetails = /*@__PURE__*/ S.suspend(() =>
+const PointsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pointsDiscountRateMicros: S.optional(S.String),
     pointsCouponValue: S.optional(Money),
@@ -2706,14 +2674,14 @@ export type OrderStateEnum =
   | "PENDING_REFUND"
   | "PARTIALLY_REFUNDED"
   | "REFUNDED";
-export const OrderStateEnum = S.String;
+const OrderStateEnum = S.String;
 
 /** Detailed information about the order at creation time. */
 export interface OrderDetails {
   /** Indicates whether the listed price was tax inclusive or not. */
   taxInclusive?: boolean;
 }
-export const OrderDetails = /*@__PURE__*/ S.suspend(() =>
+const OrderDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxInclusive: S.optional(S.Boolean),
   }),
@@ -2728,7 +2696,7 @@ export interface BuyerAddress {
   /** Two letter country code based on ISO-3166-1 Alpha-2 (UN country codes). */
   buyerCountry?: string;
 }
-export const BuyerAddress = /*@__PURE__*/ S.suspend(() =>
+const BuyerAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buyerState: S.optional(S.String),
     buyerPostcode: S.optional(S.String),
@@ -2767,7 +2735,7 @@ export interface Order {
   /** The total tax paid as a part of this order. */
   tax?: Money;
 }
-export const Order = /*@__PURE__*/ S.suspend(() =>
+const Order = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderHistory: S.optional(OrderHistory),
     lastEventTime: S.optional(S.String),
@@ -2787,14 +2755,14 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrderList = Array<Order>;
-export const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
+const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
 
 /** Response for the orders.batchGet API. */
 export interface BatchGetOrdersResponse {
   /** Details for the requested order IDs. */
   orders?: OrderList;
 }
-export const BatchGetOrdersResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetOrdersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orders: S.optional(OrderList),
   }),
@@ -2804,13 +2772,13 @@ export type MigrateBasePlanPricesRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const MigrateBasePlanPricesRequestLatencyToleranceEnum = S.String;
+const MigrateBasePlanPricesRequestLatencyToleranceEnum = S.String;
 
 export type RegionalPriceMigrationConfigPriceIncreaseTypeEnum =
   | "PRICE_INCREASE_TYPE_UNSPECIFIED"
   | "PRICE_INCREASE_TYPE_OPT_IN"
   | "PRICE_INCREASE_TYPE_OPT_OUT";
-export const RegionalPriceMigrationConfigPriceIncreaseTypeEnum = S.String;
+const RegionalPriceMigrationConfigPriceIncreaseTypeEnum = S.String;
 
 /** Configuration for migration of a legacy price cohort. */
 export interface RegionalPriceMigrationConfig {
@@ -2821,7 +2789,7 @@ export interface RegionalPriceMigrationConfig {
   /** Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US". */
   regionCode?: string;
 }
-export const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
+const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priceIncreaseType: S.optional(RegionalPriceMigrationConfigPriceIncreaseTypeEnum),
     oldestAllowedPriceVersionTime: S.optional(S.String),
@@ -2832,7 +2800,7 @@ export const RegionalPriceMigrationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalPriceMigrationConfig>;
 
 export type RegionalPriceMigrationConfigList = Array<RegionalPriceMigrationConfig>;
-export const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(
+const RegionalPriceMigrationConfigList = /*@__PURE__*/ S.Array(
   RegionalPriceMigrationConfig,
 ) as any as S.Schema<RegionalPriceMigrationConfigList>;
 
@@ -2851,7 +2819,7 @@ export interface MigrateBasePlanPricesRequest {
   /** Required. The regional prices to update. */
   regionalPriceMigrations?: RegionalPriceMigrationConfigList;
 }
-export const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionsVersion: S.optional(RegionsVersion),
     productId: S.optional(S.String),
@@ -2865,7 +2833,7 @@ export const MigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateBasePlanPricesRequest>;
 
 export type MigrateBasePlanPricesRequestList = Array<MigrateBasePlanPricesRequest>;
-export const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(
+const MigrateBasePlanPricesRequestList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesRequest,
 ) as any as S.Schema<MigrateBasePlanPricesRequestList>;
 
@@ -2874,7 +2842,7 @@ export interface BatchMigrateBasePlanPricesRequest {
   /** Required. Up to 100 price migration requests. All requests must update different base plans. */
   requests?: MigrateBasePlanPricesRequestList;
 }
-export const BatchMigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchMigrateBasePlanPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(MigrateBasePlanPricesRequestList),
   }),
@@ -2890,30 +2858,29 @@ export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: BatchMigrateBasePlanPricesRequest;
 }
-export const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchMigrateBasePlanPricesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const BatchMigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.String.pipe(T.Label()),
+    productId: S.String.pipe(T.Label()),
+    body: S.optional(BatchMigrateBasePlanPricesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchMigratePrices",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchMigratePricesMonetizationSubscriptionsBasePlansRequest",
 }) as any as S.Schema<BatchMigratePricesMonetizationSubscriptionsBasePlansRequest>;
 
 /** Response message for MigrateBasePlanPrices. */
 export interface MigrateBasePlanPricesResponse {}
-export const MigrateBasePlanPricesResponse =
+const MigrateBasePlanPricesResponse =
   AddTargetingResponse as any as S.Schema<MigrateBasePlanPricesResponse>;
 
 export type MigrateBasePlanPricesResponseList = Array<MigrateBasePlanPricesResponse>;
-export const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
+const MigrateBasePlanPricesResponseList = /*@__PURE__*/ S.Array(
   MigrateBasePlanPricesResponse,
 ) as any as S.Schema<MigrateBasePlanPricesResponseList>;
 
@@ -2922,7 +2889,7 @@ export interface BatchMigrateBasePlanPricesResponse {
   /** Contains one response per requested price migration, in the same order as the request. */
   responses?: MigrateBasePlanPricesResponseList;
 }
-export const BatchMigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchMigrateBasePlanPricesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responses: S.optional(MigrateBasePlanPricesResponseList),
   }),
@@ -2934,7 +2901,7 @@ export type InappproductsUpdateRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const InappproductsUpdateRequestLatencyToleranceEnum = S.String;
+const InappproductsUpdateRequestLatencyToleranceEnum = S.String;
 
 /** Request to update an in-app product. */
 export interface InappproductsUpdateRequest {
@@ -2951,7 +2918,7 @@ export interface InappproductsUpdateRequest {
   /** Package name of the app. */
   packageName?: string;
 }
-export const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inappproduct: S.optional(InAppProduct),
     sku: S.optional(S.String),
@@ -2965,7 +2932,7 @@ export const InappproductsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InappproductsUpdateRequest>;
 
 export type InappproductsUpdateRequestList = Array<InappproductsUpdateRequest>;
-export const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(
+const InappproductsUpdateRequestList = /*@__PURE__*/ S.Array(
   InappproductsUpdateRequest,
 ) as any as S.Schema<InappproductsUpdateRequestList>;
 
@@ -2974,7 +2941,7 @@ export interface InappproductsBatchUpdateRequest {
   /** Required. Individual update requests. At least one request is required. Can contain up to 100 requests. All requests must correspond to different in-app products. */
   requests?: InappproductsUpdateRequestList;
 }
-export const InappproductsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const InappproductsBatchUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(InappproductsUpdateRequestList),
   }),
@@ -2988,7 +2955,7 @@ export interface BatchUpdateInappproductsRequest {
   /** Request body */
   body?: InappproductsBatchUpdateRequest;
 }
-export const BatchUpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(InappproductsBatchUpdateRequest.pipe(T.HttpBody())),
@@ -3008,7 +2975,7 @@ export interface InappproductsBatchUpdateResponse {
   /** The updated or inserted in-app products. */
   inappproducts?: InAppProductList;
 }
-export const InappproductsBatchUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const InappproductsBatchUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inappproducts: S.optional(InAppProductList),
   }),
@@ -3020,7 +2987,7 @@ export type UpdateOneTimeProductRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const UpdateOneTimeProductRequestLatencyToleranceEnum = S.String;
+const UpdateOneTimeProductRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdateOneTimeProduct. */
 export interface UpdateOneTimeProductRequest {
@@ -3035,7 +3002,7 @@ export interface UpdateOneTimeProductRequest {
   /** Required. The one-time product to upsert. */
   oneTimeProduct?: OneTimeProduct;
 }
-export const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyTolerance: S.optional(UpdateOneTimeProductRequestLatencyToleranceEnum),
     regionsVersion: S.optional(RegionsVersion),
@@ -3048,7 +3015,7 @@ export const UpdateOneTimeProductRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOneTimeProductRequest>;
 
 export type UpdateOneTimeProductRequestList = Array<UpdateOneTimeProductRequest>;
-export const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(
+const UpdateOneTimeProductRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductRequest,
 ) as any as S.Schema<UpdateOneTimeProductRequestList>;
 
@@ -3057,7 +3024,7 @@ export interface BatchUpdateOneTimeProductsRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different one-time products. */
   requests?: UpdateOneTimeProductRequestList;
 }
-export const BatchUpdateOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateOneTimeProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateOneTimeProductRequestList),
   }),
@@ -3071,7 +3038,7 @@ export interface BatchUpdateMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: BatchUpdateOneTimeProductsRequest;
 }
-export const BatchUpdateMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateOneTimeProductsRequest.pipe(T.HttpBody())),
@@ -3091,14 +3058,14 @@ export interface BatchUpdateOneTimeProductsResponse {
   /** The list of updated one-time products list, in the same order as the request. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchUpdateOneTimeProductsResponse =
+const BatchUpdateOneTimeProductsResponse =
   BatchGetOneTimeProductsResponse as any as S.Schema<BatchUpdateOneTimeProductsResponse>;
 
 export type UpdateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const UpdateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
+const UpdateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdateOneTimeProductOffer. */
 export interface UpdateOneTimeProductOfferRequest {
@@ -3113,7 +3080,7 @@ export interface UpdateOneTimeProductOfferRequest {
   /** Required. The one-time product offer to update. */
   oneTimeProductOffer?: OneTimeProductOffer;
 }
-export const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     allowMissing: S.optional(S.Boolean),
@@ -3126,7 +3093,7 @@ export const UpdateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOneTimeProductOfferRequest>;
 
 export type UpdateOneTimeProductOfferRequestList = Array<UpdateOneTimeProductOfferRequest>;
-export const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
+const UpdateOneTimeProductOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferRequestList>;
 
@@ -3135,7 +3102,7 @@ export interface BatchUpdateOneTimeProductOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different offers. */
   requests?: UpdateOneTimeProductOfferRequestList;
 }
-export const BatchUpdateOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateOneTimeProductOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateOneTimeProductOfferRequestList),
   }),
@@ -3153,8 +3120,8 @@ export interface BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequ
   /** Request body */
   body?: BatchUpdateOneTimeProductOffersRequest;
 }
-export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       productId: S.String.pipe(T.Label()),
       purchaseOptionId: S.String.pipe(T.Label()),
@@ -3167,23 +3134,23 @@ export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest 
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+).annotate({
+  identifier: "BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 /** Response message for BatchUpdateOneTimeProductOffers. */
 export interface BatchUpdateOneTimeProductOffersResponse {
   /** The list of updated one-time product offers, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOffersResponse =
+const BatchUpdateOneTimeProductOffersResponse =
   BatchGetOneTimeProductOffersResponse as any as S.Schema<BatchUpdateOneTimeProductOffersResponse>;
 
 export type UpdateSubscriptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const UpdateSubscriptionRequestLatencyToleranceEnum = S.String;
+const UpdateSubscriptionRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdateSubscription. */
 export interface UpdateSubscriptionRequest {
@@ -3198,7 +3165,7 @@ export interface UpdateSubscriptionRequest {
   /** Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. */
   allowMissing?: boolean;
 }
-export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionsVersion: S.optional(RegionsVersion),
     latencyTolerance: S.optional(UpdateSubscriptionRequestLatencyToleranceEnum),
@@ -3211,7 +3178,7 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
 export type UpdateSubscriptionRequestList = Array<UpdateSubscriptionRequest>;
-export const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionRequest,
 ) as any as S.Schema<UpdateSubscriptionRequestList>;
 
@@ -3220,7 +3187,7 @@ export interface BatchUpdateSubscriptionsRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscriptions. */
   requests?: UpdateSubscriptionRequestList;
 }
-export const BatchUpdateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateSubscriptionRequestList),
   }),
@@ -3234,7 +3201,7 @@ export interface BatchUpdateMonetizationSubscriptionsRequest {
   /** Request body */
   body?: BatchUpdateSubscriptionsRequest;
 }
-export const BatchUpdateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateSubscriptionsRequest.pipe(T.HttpBody())),
@@ -3254,14 +3221,14 @@ export interface BatchUpdateSubscriptionsResponse {
   /** The updated subscriptions list. */
   subscriptions?: SubscriptionList;
 }
-export const BatchUpdateSubscriptionsResponse =
+const BatchUpdateSubscriptionsResponse =
   BatchGetSubscriptionsResponse as any as S.Schema<BatchUpdateSubscriptionsResponse>;
 
 export type UpdateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const UpdateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
+const UpdateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdateSubscriptionOffer. */
 export interface UpdateSubscriptionOfferRequest {
@@ -3276,7 +3243,7 @@ export interface UpdateSubscriptionOfferRequest {
   /** Required. The version of the available regions being used for the subscription_offer. */
   regionsVersion?: RegionsVersion;
 }
-export const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     allowMissing: S.optional(S.Boolean),
@@ -3289,7 +3256,7 @@ export const UpdateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferRequest>;
 
 export type UpdateSubscriptionOfferRequestList = Array<UpdateSubscriptionOfferRequest>;
-export const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionOfferRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferRequestList>;
 
@@ -3298,7 +3265,7 @@ export interface BatchUpdateSubscriptionOffersRequest {
   /** Required. A list of update requests of up to 100 elements. All requests must update different subscription offers. */
   requests?: UpdateSubscriptionOfferRequestList;
 }
-export const BatchUpdateSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateSubscriptionOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateSubscriptionOfferRequestList),
   }),
@@ -3316,20 +3283,19 @@ export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: BatchUpdateSubscriptionOffersRequest;
 }
-export const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateSubscriptionOffersRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    basePlanId: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateSubscriptionOffersRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers:batchUpdate",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest",
 }) as any as S.Schema<BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest>;
@@ -3339,14 +3305,14 @@ export interface BatchUpdateSubscriptionOffersResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOffersResponse =
+const BatchUpdateSubscriptionOffersResponse =
   BatchGetSubscriptionOffersResponse as any as S.Schema<BatchUpdateSubscriptionOffersResponse>;
 
 export type ActivatePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const ActivatePurchaseOptionRequestLatencyToleranceEnum = S.String;
+const ActivatePurchaseOptionRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdatePurchaseOptionState. */
 export interface ActivatePurchaseOptionRequest {
@@ -3359,7 +3325,7 @@ export interface ActivatePurchaseOptionRequest {
   /** Required. The parent app (package name) of the purchase option to activate. */
   packageName?: string;
 }
-export const ActivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseOptionId: S.optional(S.String),
     productId: S.optional(S.String),
@@ -3374,7 +3340,7 @@ export type DeactivatePurchaseOptionRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeactivatePurchaseOptionRequestLatencyToleranceEnum = S.String;
+const DeactivatePurchaseOptionRequestLatencyToleranceEnum = S.String;
 
 /** Request message for UpdatePurchaseOptionState. */
 export interface DeactivatePurchaseOptionRequest {
@@ -3387,7 +3353,7 @@ export interface DeactivatePurchaseOptionRequest {
   /** Required. The parent app (package name) of the purchase option to deactivate. */
   packageName?: string;
 }
-export const DeactivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivatePurchaseOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     latencyTolerance: S.optional(DeactivatePurchaseOptionRequestLatencyToleranceEnum),
@@ -3405,7 +3371,7 @@ export interface UpdatePurchaseOptionStateRequest {
   /** Deactivates a purchase option. Once deactivated, the purchase option will become unavailable. */
   deactivatePurchaseOptionRequest?: DeactivatePurchaseOptionRequest;
 }
-export const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activatePurchaseOptionRequest: S.optional(ActivatePurchaseOptionRequest),
     deactivatePurchaseOptionRequest: S.optional(DeactivatePurchaseOptionRequest),
@@ -3415,7 +3381,7 @@ export const UpdatePurchaseOptionStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePurchaseOptionStateRequest>;
 
 export type UpdatePurchaseOptionStateRequestList = Array<UpdatePurchaseOptionStateRequest>;
-export const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(
+const UpdatePurchaseOptionStateRequestList = /*@__PURE__*/ S.Array(
   UpdatePurchaseOptionStateRequest,
 ) as any as S.Schema<UpdatePurchaseOptionStateRequestList>;
 
@@ -3424,7 +3390,7 @@ export interface BatchUpdatePurchaseOptionStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different purchase options. */
   requests?: UpdatePurchaseOptionStateRequestList;
 }
-export const BatchUpdatePurchaseOptionStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePurchaseOptionStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdatePurchaseOptionStateRequestList),
   }),
@@ -3440,8 +3406,8 @@ export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequ
   /** Request body */
   body?: BatchUpdatePurchaseOptionStatesRequest;
 }
-export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       packageName: S.String.pipe(T.Label()),
       productId: S.String.pipe(T.Label()),
@@ -3453,23 +3419,23 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest 
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
+).annotate({
+  identifier: "BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest",
+}) as any as S.Schema<BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest>;
 
 /** Response message for BatchUpdatePurchaseOptionStates. */
 export interface BatchUpdatePurchaseOptionStatesResponse {
   /** The list of updated one-time products. This list will match the requests one to one, in the same order. */
   oneTimeProducts?: OneTimeProductList;
 }
-export const BatchUpdatePurchaseOptionStatesResponse =
+const BatchUpdatePurchaseOptionStatesResponse =
   BatchGetOneTimeProductsResponse as any as S.Schema<BatchUpdatePurchaseOptionStatesResponse>;
 
 export type DeactivateOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeactivateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
+const DeactivateOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for DeactivateOneTimeProductOffer. */
 export interface DeactivateOneTimeProductOfferRequest {
@@ -3484,7 +3450,7 @@ export interface DeactivateOneTimeProductOfferRequest {
   /** Required. The parent one-time product (ID) of the offer to deactivate. */
   productId?: string;
 }
-export const DeactivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     latencyTolerance: S.optional(DeactivateOneTimeProductOfferRequestLatencyToleranceEnum),
@@ -3500,7 +3466,7 @@ export type CancelOneTimeProductOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const CancelOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
+const CancelOneTimeProductOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for CancelOneTimeProductOffer. */
 export interface CancelOneTimeProductOfferRequest {
@@ -3515,7 +3481,7 @@ export interface CancelOneTimeProductOfferRequest {
   /** Required. The parent one-time product (ID) of the offer to cancel. */
   productId?: string;
 }
-export const CancelOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOneTimeProductOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseOptionId: S.optional(S.String),
     offerId: S.optional(S.String),
@@ -3536,7 +3502,7 @@ export interface UpdateOneTimeProductOfferStateRequest {
   /** Activates an offer. Once activated, the offer is available to users, as long as its conditions are met. */
   activateOneTimeProductOfferRequest?: ActivateOneTimeProductOfferRequest;
 }
-export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deactivateOneTimeProductOfferRequest: S.optional(DeactivateOneTimeProductOfferRequest),
     cancelOneTimeProductOfferRequest: S.optional(CancelOneTimeProductOfferRequest),
@@ -3548,7 +3514,7 @@ export const UpdateOneTimeProductOfferStateRequest = /*@__PURE__*/ S.suspend(() 
 
 export type UpdateOneTimeProductOfferStateRequestList =
   Array<UpdateOneTimeProductOfferStateRequest>;
-export const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(
+const UpdateOneTimeProductOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateOneTimeProductOfferStateRequest,
 ) as any as S.Schema<UpdateOneTimeProductOfferStateRequestList>;
 
@@ -3557,7 +3523,7 @@ export interface BatchUpdateOneTimeProductOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
   requests?: UpdateOneTimeProductOfferStateRequestList;
 }
-export const BatchUpdateOneTimeProductOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateOneTimeProductOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateOneTimeProductOfferStateRequestList),
   }),
@@ -3575,7 +3541,7 @@ export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffe
   /** Request body */
   body?: BatchUpdateOneTimeProductOfferStatesRequest;
 }
-export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
+const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       packageName: S.String.pipe(T.Label()),
@@ -3598,14 +3564,14 @@ export interface BatchUpdateOneTimeProductOfferStatesResponse {
   /** The updated one-time product offers list, in the same order as the request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const BatchUpdateOneTimeProductOfferStatesResponse =
+const BatchUpdateOneTimeProductOfferStatesResponse =
   BatchGetOneTimeProductOffersResponse as any as S.Schema<BatchUpdateOneTimeProductOfferStatesResponse>;
 
 export type DeactivateBasePlanRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeactivateBasePlanRequestLatencyToleranceEnum = S.String;
+const DeactivateBasePlanRequestLatencyToleranceEnum = S.String;
 
 /** Request message for DeactivateBasePlan. */
 export interface DeactivateBasePlanRequest {
@@ -3618,7 +3584,7 @@ export interface DeactivateBasePlanRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?: DeactivateBasePlanRequestLatencyToleranceEnum | (string & {});
 }
-export const DeactivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateBasePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     basePlanId: S.optional(S.String),
@@ -3636,7 +3602,7 @@ export interface UpdateBasePlanStateRequest {
   /** Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
   deactivateBasePlanRequest?: DeactivateBasePlanRequest;
 }
-export const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateBasePlanRequest: S.optional(ActivateBasePlanRequest),
     deactivateBasePlanRequest: S.optional(DeactivateBasePlanRequest),
@@ -3646,7 +3612,7 @@ export const UpdateBasePlanStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBasePlanStateRequest>;
 
 export type UpdateBasePlanStateRequestList = Array<UpdateBasePlanStateRequest>;
-export const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(
+const UpdateBasePlanStateRequestList = /*@__PURE__*/ S.Array(
   UpdateBasePlanStateRequest,
 ) as any as S.Schema<UpdateBasePlanStateRequestList>;
 
@@ -3655,7 +3621,7 @@ export interface BatchUpdateBasePlanStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different base plans. */
   requests?: UpdateBasePlanStateRequestList;
 }
-export const BatchUpdateBasePlanStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateBasePlanStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateBasePlanStateRequestList),
   }),
@@ -3671,19 +3637,18 @@ export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: BatchUpdateBasePlanStatesRequest;
 }
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateBasePlanStatesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.String.pipe(T.Label()),
+    productId: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateBasePlanStatesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans:batchUpdateStates",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest",
 }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest>;
@@ -3693,14 +3658,14 @@ export interface BatchUpdateBasePlanStatesResponse {
   /** The list of updated subscriptions. This list will match the requests one to one, in the same order. */
   subscriptions?: SubscriptionList;
 }
-export const BatchUpdateBasePlanStatesResponse =
+const BatchUpdateBasePlanStatesResponse =
   BatchGetSubscriptionsResponse as any as S.Schema<BatchUpdateBasePlanStatesResponse>;
 
 export type DeactivateSubscriptionOfferRequestLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeactivateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
+const DeactivateSubscriptionOfferRequestLatencyToleranceEnum = S.String;
 
 /** Request message for DeactivateSubscriptionOffer. */
 export interface DeactivateSubscriptionOfferRequest {
@@ -3715,7 +3680,7 @@ export interface DeactivateSubscriptionOfferRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?: DeactivateSubscriptionOfferRequestLatencyToleranceEnum | (string & {});
 }
-export const DeactivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateSubscriptionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     offerId: S.optional(S.String),
@@ -3734,7 +3699,7 @@ export interface UpdateSubscriptionOfferStateRequest {
   /** Deactivates an offer. Once deactivated, the offer will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
   deactivateSubscriptionOfferRequest?: DeactivateSubscriptionOfferRequest;
 }
-export const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activateSubscriptionOfferRequest: S.optional(ActivateSubscriptionOfferRequest),
     deactivateSubscriptionOfferRequest: S.optional(DeactivateSubscriptionOfferRequest),
@@ -3744,7 +3709,7 @@ export const UpdateSubscriptionOfferStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionOfferStateRequest>;
 
 export type UpdateSubscriptionOfferStateRequestList = Array<UpdateSubscriptionOfferStateRequest>;
-export const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionOfferStateRequestList = /*@__PURE__*/ S.Array(
   UpdateSubscriptionOfferStateRequest,
 ) as any as S.Schema<UpdateSubscriptionOfferStateRequestList>;
 
@@ -3753,7 +3718,7 @@ export interface BatchUpdateSubscriptionOfferStatesRequest {
   /** Required. The update request list of up to 100 elements. All requests must update different offers. */
   requests?: UpdateSubscriptionOfferStateRequestList;
 }
-export const BatchUpdateSubscriptionOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateSubscriptionOfferStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requests: S.optional(UpdateSubscriptionOfferStateRequestList),
   }),
@@ -3771,8 +3736,8 @@ export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersReques
   /** Request body */
   body?: BatchUpdateSubscriptionOfferStatesRequest;
 }
-export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       packageName: S.String.pipe(T.Label()),
       productId: S.String.pipe(T.Label()),
@@ -3785,22 +3750,20 @@ export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest =
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest",
-  }) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
+).annotate({
+  identifier: "BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest",
+}) as any as S.Schema<BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest>;
 
 /** Response message for BatchUpdateSubscriptionOfferStates. */
 export interface BatchUpdateSubscriptionOfferStatesResponse {
   /** The updated subscription offers list. */
   subscriptionOffers?: SubscriptionOfferList;
 }
-export const BatchUpdateSubscriptionOfferStatesResponse =
+const BatchUpdateSubscriptionOfferStatesResponse =
   BatchGetSubscriptionOffersResponse as any as S.Schema<BatchUpdateSubscriptionOfferStatesResponse>;
 
 /** Request message for CancelAppRecovery. */
 export type CancelAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
-export const CancelAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
-
 export interface CancelApprecoveryRequest {
   /** Required. ID corresponding to the app recovery action. */
   appRecoveryId: string;
@@ -3809,7 +3772,7 @@ export interface CancelApprecoveryRequest {
   /** Request body */
   body?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const CancelApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appRecoveryId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -3825,7 +3788,7 @@ export const CancelApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for CancelAppRecovery. */
 export interface CancelAppRecoveryResponse {}
-export const CancelAppRecoveryResponse =
+const CancelAppRecoveryResponse =
   AddTargetingResponse as any as S.Schema<CancelAppRecoveryResponse>;
 
 export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -3840,24 +3803,23 @@ export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Request body */
   body?: CancelOneTimeProductOfferRequest;
 }
-export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      body: S.optional(CancelOneTimeProductOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+const CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String.pipe(T.Label()),
+    purchaseOptionId: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    offerId: S.String.pipe(T.Label()),
+    body: S.optional(CancelOneTimeProductOfferRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers/{offerId}:cancel",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface CancelPurchasesSubscriptionsRequest {
   /** The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). */
@@ -3867,7 +3829,7 @@ export interface CancelPurchasesSubscriptionsRequest {
   /** The token provided to the user's device when the subscription was purchased. */
   token: string;
 }
-export const CancelPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -3884,21 +3846,21 @@ export const CancelPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelPurchasesSubscriptionsRequest>;
 
 export interface CancelPurchasesSubscriptionsResponse {}
-export const CancelPurchasesSubscriptionsResponse =
+const CancelPurchasesSubscriptionsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<CancelPurchasesSubscriptionsResponse>;
 
 export type CancellationContextCancellationTypeEnum =
   | "CANCELLATION_TYPE_UNSPECIFIED"
   | "USER_REQUESTED_STOP_RENEWALS"
   | "DEVELOPER_REQUESTED_STOP_PAYMENTS";
-export const CancellationContextCancellationTypeEnum = S.String;
+const CancellationContextCancellationTypeEnum = S.String;
 
 /** Cancellation context of the purchases.subscriptionsv2.cancel API. */
 export interface CancellationContext {
   /** Required. The type of cancellation for the purchased subscription. */
   cancellationType?: CancellationContextCancellationTypeEnum | (string & {});
 }
-export const CancellationContext = /*@__PURE__*/ S.suspend(() =>
+const CancellationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellationType: S.optional(CancellationContextCancellationTypeEnum),
   }),
@@ -3909,7 +3871,7 @@ export interface CancelSubscriptionPurchaseRequest {
   /** Required. Additional details around the subscription revocation. */
   cancellationContext?: CancellationContext;
 }
-export const CancelSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellationContext: S.optional(CancellationContext),
   }),
@@ -3925,7 +3887,7 @@ export interface CancelPurchasesSubscriptionsv2Request {
   /** Request body */
   body?: CancelSubscriptionPurchaseRequest;
 }
-export const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -3943,14 +3905,14 @@ export const CancelPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() 
 
 /** Response for the purchases.subscriptionsv2.cancel API. */
 export interface CancelSubscriptionPurchaseResponse {}
-export const CancelSubscriptionPurchaseResponse =
+const CancelSubscriptionPurchaseResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<CancelSubscriptionPurchaseResponse>;
 
 export type CommitEditsChangesInReviewBehaviorEnum =
   | "CHANGES_IN_REVIEW_BEHAVIOR_TYPE_UNSPECIFIED"
   | "CANCEL_IN_REVIEW_AND_SUBMIT"
   | "ERROR_IF_IN_REVIEW";
-export const CommitEditsChangesInReviewBehaviorEnum = S.String;
+const CommitEditsChangesInReviewBehaviorEnum = S.String;
 
 export interface CommitEditsRequest {
   /** Identifier of the edit. */
@@ -3962,7 +3924,7 @@ export interface CommitEditsRequest {
   /** Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing. */
   changesInReviewBehavior?: CommitEditsChangesInReviewBehaviorEnum | (string & {});
 }
-export const CommitEditsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitEditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -3984,7 +3946,7 @@ export interface AppEdit {
   /** Output only. Identifier of the edit. Can be used in subsequent API calls. */
   id?: string;
 }
-export const AppEdit = /*@__PURE__*/ S.suspend(() =>
+const AppEdit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiryTimeSeconds: S.optional(S.String),
     id: S.optional(S.String),
@@ -3999,7 +3961,7 @@ export interface ConsumePurchasesProductsRequest {
   /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
   productId: string;
 }
-export const ConsumePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConsumePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -4016,7 +3978,7 @@ export const ConsumePurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConsumePurchasesProductsRequest>;
 
 export interface ConsumePurchasesProductsResponse {}
-export const ConsumePurchasesProductsResponse =
+const ConsumePurchasesProductsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<ConsumePurchasesProductsResponse>;
 
 /** Request message for ConvertRegionPrices. */
@@ -4026,7 +3988,7 @@ export interface ConvertRegionPricesRequest {
   /** Optional. Product tax category code in context. Product tax category determines the transaction tax rates applied to the product that will be factored into the price calculation. If not set, tax rates for the default product tax category will be used. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information. */
   productTaxCategoryCode?: string;
 }
-export const ConvertRegionPricesRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertRegionPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(Money),
     productTaxCategoryCode: S.optional(S.String),
@@ -4041,7 +4003,7 @@ export interface ConvertRegionPricesMonetizationRequest {
   /** Request body */
   body?: ConvertRegionPricesRequest;
 }
-export const ConvertRegionPricesMonetizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConvertRegionPricesMonetizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(ConvertRegionPricesRequest.pipe(T.HttpBody())),
@@ -4063,7 +4025,7 @@ export interface ConvertedOtherRegionsPrice {
   /** Price in EUR to use for the "Other regions" location exclusive of taxes. */
   eurPrice?: Money;
 }
-export const ConvertedOtherRegionsPrice =
+const ConvertedOtherRegionsPrice =
   OtherRegionsSubscriptionOfferPhasePrices as any as S.Schema<ConvertedOtherRegionsPrice>;
 
 /** A converted region price. */
@@ -4075,7 +4037,7 @@ export interface ConvertedRegionPrice {
   /** The tax amount of the converted price. */
   taxAmount?: Money;
 }
-export const ConvertedRegionPrice = /*@__PURE__*/ S.suspend(() =>
+const ConvertedRegionPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     price: S.optional(Money),
@@ -4084,7 +4046,7 @@ export const ConvertedRegionPrice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConvertedRegionPrice" }) as any as S.Schema<ConvertedRegionPrice>;
 
 export type ConvertedRegionPriceMap = { [key: string]: ConvertedRegionPrice | undefined };
-export const ConvertedRegionPriceMap = /*@__PURE__*/ S.Record(
+const ConvertedRegionPriceMap = /*@__PURE__*/ S.Record(
   S.String,
   ConvertedRegionPrice,
 ) as any as S.Schema<ConvertedRegionPriceMap>;
@@ -4098,7 +4060,7 @@ export interface ConvertRegionPricesResponse {
   /** Map from region code to converted region price. */
   convertedRegionPrices?: ConvertedRegionPriceMap;
 }
-export const ConvertRegionPricesResponse = /*@__PURE__*/ S.suspend(() =>
+const ConvertRegionPricesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionVersion: S.optional(RegionsVersion),
     convertedOtherRegionsPrice: S.optional(ConvertedOtherRegionsPrice),
@@ -4115,7 +4077,7 @@ export interface UserCountrySet {
   /** Country set name. */
   name?: string;
 }
-export const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
+const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCodes: S.optional(StringList),
     name: S.optional(S.String),
@@ -4123,7 +4085,7 @@ export const UserCountrySet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserCountrySet" }) as any as S.Schema<UserCountrySet>;
 
 export type UserCountrySetList = Array<UserCountrySet>;
-export const UserCountrySetList = /*@__PURE__*/ S.Array(
+const UserCountrySetList = /*@__PURE__*/ S.Array(
   UserCountrySet,
 ) as any as S.Schema<UserCountrySetList>;
 
@@ -4134,7 +4096,7 @@ export interface DeviceTier {
   /** Groups of devices included in this tier. These groups must be defined explicitly under device_groups in this configuration. */
   deviceGroupNames?: StringList;
 }
-export const DeviceTier = /*@__PURE__*/ S.suspend(() =>
+const DeviceTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.optional(S.Number),
     deviceGroupNames: S.optional(StringList),
@@ -4142,14 +4104,14 @@ export const DeviceTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceTier" }) as any as S.Schema<DeviceTier>;
 
 export type DeviceTierList = Array<DeviceTier>;
-export const DeviceTierList = /*@__PURE__*/ S.Array(DeviceTier) as any as S.Schema<DeviceTierList>;
+const DeviceTierList = /*@__PURE__*/ S.Array(DeviceTier) as any as S.Schema<DeviceTierList>;
 
 /** A set of device tiers. A tier set determines what variation of app content gets served to a specific device, for device-targeted content. You should assign a priority level to each tier, which determines the ordering by which they are evaluated by Play. See the documentation of DeviceTier.level for more details. */
 export interface DeviceTierSet {
   /** Device tiers belonging to the set. */
   deviceTiers?: DeviceTierList;
 }
-export const DeviceTierSet = /*@__PURE__*/ S.suspend(() =>
+const DeviceTierSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceTiers: S.optional(DeviceTierList),
   }),
@@ -4162,7 +4124,7 @@ export interface DeviceId {
   /** Value of Build.DEVICE. */
   buildDevice?: string;
 }
-export const DeviceId = /*@__PURE__*/ S.suspend(() =>
+const DeviceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildBrand: S.optional(S.String),
     buildDevice: S.optional(S.String),
@@ -4170,21 +4132,21 @@ export const DeviceId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceId" }) as any as S.Schema<DeviceId>;
 
 export type DeviceIdList = Array<DeviceId>;
-export const DeviceIdList = /*@__PURE__*/ S.Array(DeviceId) as any as S.Schema<DeviceIdList>;
+const DeviceIdList = /*@__PURE__*/ S.Array(DeviceId) as any as S.Schema<DeviceIdList>;
 
 /** Representation of a system feature. */
 export interface SystemFeature {
   /** The name of the feature. */
   name?: string;
 }
-export const SystemFeature = /*@__PURE__*/ S.suspend(() =>
+const SystemFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemFeature" }) as any as S.Schema<SystemFeature>;
 
 export type SystemFeatureList = Array<SystemFeature>;
-export const SystemFeatureList = /*@__PURE__*/ S.Array(
+const SystemFeatureList = /*@__PURE__*/ S.Array(
   SystemFeature,
 ) as any as S.Schema<SystemFeatureList>;
 
@@ -4195,7 +4157,7 @@ export interface SystemOnChip {
   /** Required. The model of the SoC, eg. "Tensor" Value of build property "ro.soc.model" https://developer.android.com/reference/android/os/Build#SOC_MODEL Required. */
   model?: string;
 }
-export const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
+const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manufacturer: S.optional(S.String),
     model: S.optional(S.String),
@@ -4203,9 +4165,7 @@ export const SystemOnChip = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemOnChip" }) as any as S.Schema<SystemOnChip>;
 
 export type SystemOnChipList = Array<SystemOnChip>;
-export const SystemOnChipList = /*@__PURE__*/ S.Array(
-  SystemOnChip,
-) as any as S.Schema<SystemOnChipList>;
+const SystemOnChipList = /*@__PURE__*/ S.Array(SystemOnChip) as any as S.Schema<SystemOnChipList>;
 
 /** Conditions about a device's RAM capabilities. */
 export interface DeviceRam {
@@ -4214,7 +4174,7 @@ export interface DeviceRam {
   /** Maximum RAM in bytes (bound excluded). */
   maxBytes?: string;
 }
-export const DeviceRam = /*@__PURE__*/ S.suspend(() =>
+const DeviceRam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minBytes: S.optional(S.String),
     maxBytes: S.optional(S.String),
@@ -4236,7 +4196,7 @@ export interface DeviceSelector {
   /** Conditions on the device's RAM. */
   deviceRam?: DeviceRam;
 }
-export const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
+const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedDeviceIds: S.optional(DeviceIdList),
     excludedDeviceIds: S.optional(DeviceIdList),
@@ -4248,7 +4208,7 @@ export const DeviceSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceSelector" }) as any as S.Schema<DeviceSelector>;
 
 export type DeviceSelectorList = Array<DeviceSelector>;
-export const DeviceSelectorList = /*@__PURE__*/ S.Array(
+const DeviceSelectorList = /*@__PURE__*/ S.Array(
   DeviceSelector,
 ) as any as S.Schema<DeviceSelectorList>;
 
@@ -4259,7 +4219,7 @@ export interface DeviceGroup {
   /** The name of the group. */
   name?: string;
 }
-export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
+const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceSelectors: S.optional(DeviceSelectorList),
     name: S.optional(S.String),
@@ -4267,9 +4227,7 @@ export const DeviceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceGroup" }) as any as S.Schema<DeviceGroup>;
 
 export type DeviceGroupList = Array<DeviceGroup>;
-export const DeviceGroupList = /*@__PURE__*/ S.Array(
-  DeviceGroup,
-) as any as S.Schema<DeviceGroupList>;
+const DeviceGroupList = /*@__PURE__*/ S.Array(DeviceGroup) as any as S.Schema<DeviceGroupList>;
 
 /** Configuration describing device targeting criteria for the content of an app. */
 export interface DeviceTierConfig {
@@ -4282,7 +4240,7 @@ export interface DeviceTierConfig {
   /** Definition of device groups for the app. */
   deviceGroups?: DeviceGroupList;
 }
-export const DeviceTierConfig = /*@__PURE__*/ S.suspend(() =>
+const DeviceTierConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userCountrySets: S.optional(UserCountrySetList),
     deviceTierConfigId: S.optional(S.String),
@@ -4299,7 +4257,7 @@ export interface CreateApplicationsDeviceTierConfigsRequest {
   /** Request body */
   body?: DeviceTierConfig;
 }
-export const CreateApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowUnknownDevices: S.optional(S.Boolean.pipe(T.Query())),
     packageName: S.String.pipe(T.Label()),
@@ -4322,7 +4280,7 @@ export interface AppVersionRange {
   /** Highest app version in the range, inclusive. */
   versionCodeEnd?: string;
 }
-export const AppVersionRange = /*@__PURE__*/ S.suspend(() =>
+const AppVersionRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCodeStart: S.optional(S.String),
     versionCodeEnd: S.optional(S.String),
@@ -4334,7 +4292,7 @@ export interface AppVersionList {
   /** List of app version codes. */
   versionCodes?: StringList;
 }
-export const AppVersionList = /*@__PURE__*/ S.suspend(() =>
+const AppVersionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCodes: S.optional(StringList),
   }),
@@ -4353,7 +4311,7 @@ export interface Targeting {
   /** Targeting is based on android api levels of devices. */
   androidSdks?: AndroidSdks;
 }
-export const Targeting = /*@__PURE__*/ S.suspend(() =>
+const Targeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(Regions),
     allUsers: S.optional(AllUsers),
@@ -4368,7 +4326,7 @@ export interface RemoteInAppUpdate {
   /** Required. Set to true if Remote In-App Update action type is needed. */
   isRemoteInAppUpdateRequested?: boolean;
 }
-export const RemoteInAppUpdate = /*@__PURE__*/ S.suspend(() =>
+const RemoteInAppUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRemoteInAppUpdateRequested: S.optional(S.Boolean),
   }),
@@ -4381,7 +4339,7 @@ export interface CreateDraftAppRecoveryRequest {
   /** Action type is remote in-app update. As a consequence of this action, a downloadable recovery module is also created for testing purposes. */
   remoteInAppUpdate?: RemoteInAppUpdate;
 }
-export const CreateDraftAppRecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDraftAppRecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targeting: S.optional(Targeting),
     remoteInAppUpdate: S.optional(RemoteInAppUpdate),
@@ -4396,7 +4354,7 @@ export interface CreateApprecoveryRequest {
   /** Request body */
   body?: CreateDraftAppRecoveryRequest;
 }
-export const CreateApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(CreateDraftAppRecoveryRequest.pipe(T.HttpBody())),
@@ -4418,7 +4376,7 @@ export interface RemoteInAppUpdateDataPerBundle {
   /** Total number of devices which have been rescued. */
   recoveredDeviceCount?: string;
 }
-export const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
+const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.optional(S.String),
     totalDeviceCount: S.optional(S.String),
@@ -4429,7 +4387,7 @@ export const RemoteInAppUpdateDataPerBundle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoteInAppUpdateDataPerBundle>;
 
 export type RemoteInAppUpdateDataPerBundleList = Array<RemoteInAppUpdateDataPerBundle>;
-export const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(
+const RemoteInAppUpdateDataPerBundleList = /*@__PURE__*/ S.Array(
   RemoteInAppUpdateDataPerBundle,
 ) as any as S.Schema<RemoteInAppUpdateDataPerBundleList>;
 
@@ -4438,7 +4396,7 @@ export interface RemoteInAppUpdateData {
   /** Data related to the recovery action at bundle level. */
   remoteAppUpdateDataPerBundle?: RemoteInAppUpdateDataPerBundleList;
 }
-export const RemoteInAppUpdateData = /*@__PURE__*/ S.suspend(() =>
+const RemoteInAppUpdateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteAppUpdateDataPerBundle: S.optional(RemoteInAppUpdateDataPerBundleList),
   }),
@@ -4451,7 +4409,7 @@ export type AppRecoveryActionStatusEnum =
   | "RECOVERY_STATUS_DRAFT"
   | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
   | "RECOVERY_STATUS_GENERATION_FAILED";
-export const AppRecoveryActionStatusEnum = S.String;
+const AppRecoveryActionStatusEnum = S.String;
 
 /** Information about an app recovery action. */
 export interface AppRecoveryAction {
@@ -4472,7 +4430,7 @@ export interface AppRecoveryAction {
   /** ID corresponding to the app recovery action. */
   appRecoveryId?: string;
 }
-export const AppRecoveryAction = /*@__PURE__*/ S.suspend(() =>
+const AppRecoveryAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     deployTime: S.optional(S.String),
@@ -4490,7 +4448,7 @@ export interface CreateAppStoreHostedAppRequest {
   /** Required. Package name of the app. */
   packageName?: string;
 }
-export const CreateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
   }),
@@ -4504,7 +4462,7 @@ export interface CreateappstorehostedappAppstoreappsreviewRequest {
   /** Request body */
   body?: CreateAppStoreHostedAppRequest;
 }
-export const CreateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStorePackageName: S.String.pipe(T.Label()),
     body: S.optional(CreateAppStoreHostedAppRequest.pipe(T.HttpBody())),
@@ -4521,19 +4479,19 @@ export const CreateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.
 
 /** Response for creating a new app record for an app store hosted app. */
 export interface CreateAppStoreHostedAppResponse {}
-export const CreateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateAppStoreHostedAppResponse" },
-) as any as S.Schema<CreateAppStoreHostedAppResponse>;
+const CreateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CreateAppStoreHostedAppResponse",
+}) as any as S.Schema<CreateAppStoreHostedAppResponse>;
 
 export type TrackConfigTypeEnum = "TRACK_TYPE_UNSPECIFIED" | "CLOSED_TESTING";
-export const TrackConfigTypeEnum = S.String;
+const TrackConfigTypeEnum = S.String;
 
 export type TrackConfigFormFactorEnum =
   | "FORM_FACTOR_UNSPECIFIED"
   | "DEFAULT"
   | "WEAR"
   | "AUTOMOTIVE";
-export const TrackConfigFormFactorEnum = S.String;
+const TrackConfigFormFactorEnum = S.String;
 
 /** Configurations of the new track. */
 export interface TrackConfig {
@@ -4544,7 +4502,7 @@ export interface TrackConfig {
   /** Required. Form factor of the new track. Defaults to the default track. */
   formFactor?: TrackConfigFormFactorEnum | (string & {});
 }
-export const TrackConfig = /*@__PURE__*/ S.suspend(() =>
+const TrackConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.optional(S.String),
     type: S.optional(TrackConfigTypeEnum),
@@ -4560,7 +4518,7 @@ export interface CreateEditsTracksRequest {
   /** Request body */
   body?: TrackConfig;
 }
-export const CreateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -4581,7 +4539,7 @@ export interface CountryTargeting {
   /** Include "rest of world" as well as explicitly targeted countries. */
   includeRestOfWorld?: boolean;
 }
-export const CountryTargeting = /*@__PURE__*/ S.suspend(() =>
+const CountryTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countries: S.optional(StringList),
     includeRestOfWorld: S.optional(S.Boolean),
@@ -4594,7 +4552,7 @@ export type TrackReleaseStatusEnum =
   | "inProgress"
   | "halted"
   | "completed";
-export const TrackReleaseStatusEnum = S.String;
+const TrackReleaseStatusEnum = S.String;
 
 /** Localized text in given language. */
 export interface LocalizedText {
@@ -4603,7 +4561,7 @@ export interface LocalizedText {
   /** The text in the given language. */
   text?: string;
 }
-export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
+const LocalizedText = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.optional(S.String),
     text: S.optional(S.String),
@@ -4611,7 +4569,7 @@ export const LocalizedText = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalizedText" }) as any as S.Schema<LocalizedText>;
 
 export type LocalizedTextList = Array<LocalizedText>;
-export const LocalizedTextList = /*@__PURE__*/ S.Array(
+const LocalizedTextList = /*@__PURE__*/ S.Array(
   LocalizedText,
 ) as any as S.Schema<LocalizedTextList>;
 
@@ -4632,7 +4590,7 @@ export interface TrackRelease {
   /** Fraction of users who are eligible for a staged release. 0 < fraction < 1. Can only be set when status is "inProgress" or "halted". */
   userFraction?: number;
 }
-export const TrackRelease = /*@__PURE__*/ S.suspend(() =>
+const TrackRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCodes: S.optional(StringList),
     inAppUpdatePriority: S.optional(S.Number),
@@ -4645,9 +4603,7 @@ export const TrackRelease = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrackRelease" }) as any as S.Schema<TrackRelease>;
 
 export type TrackReleaseList = Array<TrackRelease>;
-export const TrackReleaseList = /*@__PURE__*/ S.Array(
-  TrackRelease,
-) as any as S.Schema<TrackReleaseList>;
+const TrackReleaseList = /*@__PURE__*/ S.Array(TrackRelease) as any as S.Schema<TrackReleaseList>;
 
 /** A track configuration. The resource for TracksService. */
 export interface Track {
@@ -4656,7 +4612,7 @@ export interface Track {
   /** In a read request, represents all active releases in the track. In an update request, represents desired changes. */
   releases?: TrackReleaseList;
 }
-export const Track = /*@__PURE__*/ S.suspend(() =>
+const Track = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.optional(S.String),
     releases: S.optional(TrackReleaseList),
@@ -4670,7 +4626,7 @@ export interface ExternalTransactionAddress {
   /** Required. Two letter region code based on ISO-3166-1 Alpha-2 (UN region codes). */
   regionCode?: string;
 }
-export const ExternalTransactionAddress = /*@__PURE__*/ S.suspend(() =>
+const ExternalTransactionAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrativeArea: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -4684,7 +4640,7 @@ export interface OneTimeExternalTransaction {
   /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. */
   externalTransactionToken?: string;
 }
-export const OneTimeExternalTransaction = /*@__PURE__*/ S.suspend(() =>
+const OneTimeExternalTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalTransactionToken: S.optional(S.String),
   }),
@@ -4696,13 +4652,13 @@ export type ExternalOfferDetailsLinkTypeEnum =
   | "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED"
   | "LINK_TO_DIGITAL_CONTENT_OFFER"
   | "LINK_TO_APP_DOWNLOAD";
-export const ExternalOfferDetailsLinkTypeEnum = S.String;
+const ExternalOfferDetailsLinkTypeEnum = S.String;
 
 export type ExternalOfferDetailsInstalledAppCategoryEnum =
   | "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED"
   | "APP"
   | "GAME";
-export const ExternalOfferDetailsInstalledAppCategoryEnum = S.String;
+const ExternalOfferDetailsInstalledAppCategoryEnum = S.String;
 
 /** Reporting details unique to the external offers program. */
 export interface ExternalOfferDetails {
@@ -4715,7 +4671,7 @@ export interface ExternalOfferDetails {
   /** Optional. The package name of the app downloaded through this transaction. Required when link_type is LINK_TO_APP_DOWNLOAD. */
   installedAppPackage?: string;
 }
-export const ExternalOfferDetails = /*@__PURE__*/ S.suspend(() =>
+const ExternalOfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkType: S.optional(ExternalOfferDetailsLinkTypeEnum),
     appDownloadEventExternalTransactionId: S.optional(S.String),
@@ -4728,20 +4684,20 @@ export type RecurringExternalTransactionMigratedTransactionProgramEnum =
   | "EXTERNAL_TRANSACTION_PROGRAM_UNSPECIFIED"
   | "USER_CHOICE_BILLING"
   | "ALTERNATIVE_BILLING_ONLY";
-export const RecurringExternalTransactionMigratedTransactionProgramEnum = S.String;
+const RecurringExternalTransactionMigratedTransactionProgramEnum = S.String;
 
 export type ExternalSubscriptionSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "RECURRING"
   | "PREPAID";
-export const ExternalSubscriptionSubscriptionTypeEnum = S.String;
+const ExternalSubscriptionSubscriptionTypeEnum = S.String;
 
 /** Details of an external subscription. */
 export interface ExternalSubscription {
   /** Required. The type of the external subscription. */
   subscriptionType?: ExternalSubscriptionSubscriptionTypeEnum | (string & {});
 }
-export const ExternalSubscription = /*@__PURE__*/ S.suspend(() =>
+const ExternalSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionType: S.optional(ExternalSubscriptionSubscriptionTypeEnum),
   }),
@@ -4749,8 +4705,6 @@ export const ExternalSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of a recurring external transaction product which doesn't belong to any other more specific category. */
 export type OtherRecurringProduct = OneTimeProductOfferNoPriceOverrideOptions;
-export const OtherRecurringProduct = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Represents a transaction that is part of a recurring series of payments. This can be a subscription or a one-time product with multiple payments (such as preorder). */
 export interface RecurringExternalTransaction {
   /** Input only. Provided during the call to Create. Retrieved from the client when the alternative billing flow is launched. Required only for the initial purchase. */
@@ -4766,7 +4720,7 @@ export interface RecurringExternalTransaction {
   /** The external transaction id of the first transaction of this recurring series of transactions. For example, for a subscription this would be the transaction id of the first payment. Required when creating recurring external transactions. */
   initialExternalTransactionId?: string;
 }
-export const RecurringExternalTransaction = /*@__PURE__*/ S.suspend(() =>
+const RecurringExternalTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalTransactionToken: S.optional(S.String),
     migratedTransactionProgram: S.optional(
@@ -4784,13 +4738,13 @@ export type ExternalContentLinkDetailsExternalAppCategoryEnum =
   | "EXTERNAL_CONTENT_APP_CATEGORY_UNSPECIFIED"
   | "APP"
   | "GAME";
-export const ExternalContentLinkDetailsExternalAppCategoryEnum = S.String;
+const ExternalContentLinkDetailsExternalAppCategoryEnum = S.String;
 
 export type ExternalContentLinkDetailsLinkTypeEnum =
   | "EXTERNAL_CONTENT_LINK_TYPE_UNSPECIFIED"
   | "LINK_TO_DIGITAL_CONTENT_OFFER"
   | "LINK_TO_APP_DOWNLOAD";
-export const ExternalContentLinkDetailsLinkTypeEnum = S.String;
+const ExternalContentLinkDetailsLinkTypeEnum = S.String;
 
 /** Reporting details unique to the external content link program. */
 export interface ExternalContentLinkDetails {
@@ -4801,7 +4755,7 @@ export interface ExternalContentLinkDetails {
   /** Optional. The package name of the app downloaded through this transaction. Only required for app installs. */
   installedAppPackage?: string;
 }
-export const ExternalContentLinkDetails = /*@__PURE__*/ S.suspend(() =>
+const ExternalContentLinkDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAppCategory: S.optional(ExternalContentLinkDetailsExternalAppCategoryEnum),
     linkType: S.optional(ExternalContentLinkDetailsLinkTypeEnum),
@@ -4815,12 +4769,10 @@ export type ExternalTransactionTransactionStateEnum =
   | "TRANSACTION_STATE_UNSPECIFIED"
   | "TRANSACTION_REPORTED"
   | "TRANSACTION_CANCELED";
-export const ExternalTransactionTransactionStateEnum = S.String;
+const ExternalTransactionTransactionStateEnum = S.String;
 
 /** Represents a transaction performed using a test account. These transactions will not be charged by Google. */
 export type ExternalTransactionTestPurchase = OneTimeProductOfferNoPriceOverrideOptions;
-export const ExternalTransactionTestPurchase = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** The details of an external transaction. */
 export interface ExternalTransaction {
   /** Output only. The time when this transaction was created. This is the time when Google was notified of the transaction. */
@@ -4856,7 +4808,7 @@ export interface ExternalTransaction {
   /** Output only. The resource name of the external transaction. The package name of the application the inapp products were sold (for example, 'com.some.app'). */
   packageName?: string;
 }
-export const ExternalTransaction = /*@__PURE__*/ S.suspend(() =>
+const ExternalTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     externalTransactionId: S.optional(S.String),
@@ -4885,7 +4837,7 @@ export interface CreateexternaltransactionExternaltransactionsRequest {
   /** Request body */
   body?: ExternalTransaction;
 }
-export const CreateexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalTransactionId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4917,12 +4869,12 @@ export type GrantAppLevelPermissionsItemEnum =
   | "CAN_VIEW_NON_FINANCIAL_DATA"
   | "CAN_VIEW_APP_QUALITY"
   | "CAN_MANAGE_DEEPLINKS";
-export const GrantAppLevelPermissionsItemEnum = S.String;
+const GrantAppLevelPermissionsItemEnum = S.String;
 
 export type GrantAppLevelPermissionsItemEnumList = Array<
   GrantAppLevelPermissionsItemEnum | (string & {})
 >;
-export const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(
+const GrantAppLevelPermissionsItemEnumList = /*@__PURE__*/ S.Array(
   GrantAppLevelPermissionsItemEnum,
 ) as any as S.Schema<GrantAppLevelPermissionsItemEnumList>;
 
@@ -4935,7 +4887,7 @@ export interface Grant {
   /** The permissions granted to the user for this app. */
   appLevelPermissions?: GrantAppLevelPermissionsItemEnumList;
 }
-export const Grant = /*@__PURE__*/ S.suspend(() =>
+const Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     packageName: S.optional(S.String),
@@ -4949,7 +4901,7 @@ export interface CreateGrantsRequest {
   /** Request body */
   body?: Grant;
 }
-export const CreateGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Grant.pipe(T.HttpBody())),
@@ -4972,7 +4924,7 @@ export interface CreateMonetizationSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
     productId: S.optional(S.String.pipe(T.Query())),
@@ -5003,7 +4955,7 @@ export interface CreateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: SubscriptionOffer;
 }
-export const CreateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.String.pipe(T.Label()),
     offerId: S.optional(S.String.pipe(T.Query())),
@@ -5031,7 +4983,7 @@ export interface DeviceSpec {
   /** All installed locales represented as BCP-47 strings, e.g. "en-US". */
   supportedLocales?: StringList;
 }
-export const DeviceSpec = /*@__PURE__*/ S.suspend(() =>
+const DeviceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenDensity: S.optional(S.Number),
     supportedAbis: S.optional(StringList),
@@ -5048,7 +5000,7 @@ export interface SystemApkOptions {
   /** Whether to use the rotated key for signing the system APK. */
   rotated?: boolean;
 }
-export const SystemApkOptions = /*@__PURE__*/ S.suspend(() =>
+const SystemApkOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uncompressedDexFiles: S.optional(S.Boolean),
     uncompressedNativeLibraries: S.optional(S.Boolean),
@@ -5065,7 +5017,7 @@ export interface Variant {
   /** Optional. Options applied to the generated APK. */
   options?: SystemApkOptions;
 }
-export const Variant = /*@__PURE__*/ S.suspend(() =>
+const Variant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceSpec: S.optional(DeviceSpec),
     variantId: S.optional(S.Number),
@@ -5081,7 +5033,7 @@ export interface CreateSystemapksVariantsRequest {
   /** Request body */
   body?: Variant;
 }
-export const CreateSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     versionCode: S.String.pipe(T.Label()),
@@ -5103,10 +5055,10 @@ export type UserAccessStateEnum =
   | "INVITATION_EXPIRED"
   | "ACCESS_GRANTED"
   | "ACCESS_EXPIRED";
-export const UserAccessStateEnum = S.String;
+const UserAccessStateEnum = S.String;
 
 export type GrantList = Array<Grant>;
-export const GrantList = /*@__PURE__*/ S.Array(Grant) as any as S.Schema<GrantList>;
+const GrantList = /*@__PURE__*/ S.Array(Grant) as any as S.Schema<GrantList>;
 
 export type UserDeveloperAccountPermissionsItemEnum =
   | "DEVELOPER_LEVEL_PERMISSION_UNSPECIFIED"
@@ -5130,12 +5082,10 @@ export type UserDeveloperAccountPermissionsItemEnum =
   | "CAN_MANAGE_DEEPLINKS_GLOBAL"
   | "CAN_VIEW_CONNECTED_APPS_GLOBAL"
   | "CAN_EDIT_CONNECTED_APPS_GLOBAL";
-export const UserDeveloperAccountPermissionsItemEnum = S.String;
-
 export type UserDeveloperAccountPermissionsItemEnumList = Array<
   UserDeveloperAccountPermissionsItemEnum | (string & {})
 >;
-export const UserDeveloperAccountPermissionsItemEnumList =
+const UserDeveloperAccountPermissionsItemEnumList =
   GrantAppLevelPermissionsItemEnumList as any as S.Schema<UserDeveloperAccountPermissionsItemEnumList>;
 
 /** A user resource. */
@@ -5155,7 +5105,7 @@ export interface User {
   /** Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}". */
   name?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessState: S.optional(UserAccessStateEnum),
     expirationTime: S.optional(S.String),
@@ -5173,7 +5123,7 @@ export interface CreateUsersRequest {
   /** Request body */
   body?: User;
 }
-export const CreateUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(User.pipe(T.HttpBody())),
@@ -5191,7 +5141,7 @@ export interface SafetyLabelsUpdateRequest {
   /** Required. Contents of the CSV file containing Data Safety responses. For the format of this file, see the Help Center documentation at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-the-csv-format To download an up to date template, follow the steps at https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cexport-to-a-csv-file */
   safetyLabels?: string;
 }
-export const SafetyLabelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SafetyLabelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     safetyLabels: S.optional(S.String),
   }),
@@ -5205,7 +5155,7 @@ export interface DataSafetyApplicationsRequest {
   /** Request body */
   body?: SafetyLabelsUpdateRequest;
 }
-export const DataSafetyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DataSafetyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(SafetyLabelsUpdateRequest.pipe(T.HttpBody())),
@@ -5222,7 +5172,7 @@ export const DataSafetyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for SafetyLabelsUpdate rpc. */
 export interface SafetyLabelsUpdateResponse {}
-export const SafetyLabelsUpdateResponse =
+const SafetyLabelsUpdateResponse =
   AddTargetingResponse as any as S.Schema<SafetyLabelsUpdateResponse>;
 
 export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -5237,8 +5187,8 @@ export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersReque
   /** Request body */
   body?: DeactivateOneTimeProductOfferRequest;
 }
-export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       offerId: S.String.pipe(T.Label()),
       packageName: S.String.pipe(T.Label()),
@@ -5252,9 +5202,9 @@ export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest =
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
-  }) as any as S.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
+).annotate({
+  identifier: "DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
+}) as any as S.Schema<DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
 
 export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent app (package name) of the base plan to deactivate. */
@@ -5266,7 +5216,7 @@ export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: DeactivateBasePlanRequest;
 }
-export const DeactivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivateMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     basePlanId: S.String.pipe(T.Label()),
@@ -5295,21 +5245,20 @@ export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: DeactivateSubscriptionOfferRequest;
 }
-export const DeactivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      offerId: S.String.pipe(T.Label()),
-      basePlanId: S.String.pipe(T.Label()),
-      packageName: S.String.pipe(T.Label()),
-      productId: S.String.pipe(T.Label()),
-      body: S.optional(DeactivateSubscriptionOfferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const DeactivateMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offerId: S.String.pipe(T.Label()),
+    basePlanId: S.String.pipe(T.Label()),
+    packageName: S.String.pipe(T.Label()),
+    productId: S.String.pipe(T.Label()),
+    body: S.optional(DeactivateSubscriptionOfferRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/applications/{packageName}/subscriptions/{productId}/basePlans/{basePlanId}/offers/{offerId}:deactivate",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeactivateMonetizationSubscriptionsBasePlansOffersRequest",
 }) as any as S.Schema<DeactivateMonetizationSubscriptionsBasePlansOffersRequest>;
@@ -5321,7 +5270,7 @@ export interface SubscriptionDeferralInfo {
   /** The desired next expiry time to assign to the subscription, in milliseconds since the Epoch. The given time must be later/greater than the current expiry time for the subscription. */
   desiredExpiryTimeMillis?: string;
 }
-export const SubscriptionDeferralInfo = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionDeferralInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedExpiryTimeMillis: S.optional(S.String),
     desiredExpiryTimeMillis: S.optional(S.String),
@@ -5333,7 +5282,7 @@ export interface SubscriptionPurchasesDeferRequest {
   /** The information about the new desired expiry time for the subscription. */
   deferralInfo?: SubscriptionDeferralInfo;
 }
-export const SubscriptionPurchasesDeferRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPurchasesDeferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deferralInfo: S.optional(SubscriptionDeferralInfo),
   }),
@@ -5351,7 +5300,7 @@ export interface DeferPurchasesSubscriptionsRequest {
   /** Request body */
   body?: SubscriptionPurchasesDeferRequest;
 }
-export const DeferPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeferPurchasesSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -5373,7 +5322,7 @@ export interface SubscriptionPurchasesDeferResponse {
   /** The new expiry time for the subscription in milliseconds since the Epoch. */
   newExpiryTimeMillis?: string;
 }
-export const SubscriptionPurchasesDeferResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPurchasesDeferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newExpiryTimeMillis: S.optional(S.String),
   }),
@@ -5390,7 +5339,7 @@ export interface DeferralContext {
   /** If set to "true", the request is a dry run to validate the effect of Defer, the subscription would not be impacted. */
   validateOnly?: boolean;
 }
-export const DeferralContext = /*@__PURE__*/ S.suspend(() =>
+const DeferralContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deferDuration: S.optional(S.String),
     etag: S.optional(S.String),
@@ -5403,7 +5352,7 @@ export interface DeferSubscriptionPurchaseRequest {
   /** Required. Details about the subscription deferral. */
   deferralContext?: DeferralContext;
 }
-export const DeferSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeferSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deferralContext: S.optional(DeferralContext),
   }),
@@ -5419,7 +5368,7 @@ export interface DeferPurchasesSubscriptionsv2Request {
   /** Request body */
   body?: DeferSubscriptionPurchaseRequest;
 }
-export const DeferPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+const DeferPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -5442,7 +5391,7 @@ export interface ItemExpiryTimeDetails {
   /** The new expiry time for this subscription item. */
   expiryTime?: string;
 }
-export const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
+const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     expiryTime: S.optional(S.String),
@@ -5450,7 +5399,7 @@ export const ItemExpiryTimeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemExpiryTimeDetails" }) as any as S.Schema<ItemExpiryTimeDetails>;
 
 export type ItemExpiryTimeDetailsList = Array<ItemExpiryTimeDetails>;
-export const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(
+const ItemExpiryTimeDetailsList = /*@__PURE__*/ S.Array(
   ItemExpiryTimeDetails,
 ) as any as S.Schema<ItemExpiryTimeDetailsList>;
 
@@ -5459,7 +5408,7 @@ export interface DeferSubscriptionPurchaseResponse {
   /** The new expiry time for each subscription items. */
   itemExpiryTimeDetails?: ItemExpiryTimeDetailsList;
 }
-export const DeferSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
+const DeferSubscriptionPurchaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemExpiryTimeDetails: S.optional(ItemExpiryTimeDetailsList),
   }),
@@ -5477,7 +5426,7 @@ export type DeleteallEditsImagesImageTypeEnum =
   | "icon"
   | "featureGraphic"
   | "tvBanner";
-export const DeleteallEditsImagesImageTypeEnum = S.String;
+const DeleteallEditsImagesImageTypeEnum = S.String;
 
 export interface DeleteallEditsImagesRequest {
   /** Identifier of the edit. */
@@ -5489,7 +5438,7 @@ export interface DeleteallEditsImagesRequest {
   /** Type of the Image. Providing an image type that refers to no images is a no-op. */
   imageType: DeleteallEditsImagesImageTypeEnum | (string & {});
 }
-export const DeleteallEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteallEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     language: S.String.pipe(T.Label()),
@@ -5510,7 +5459,7 @@ export type ImageAiGeneratedStateEnum =
   | "aiGeneratedStateUnspecified"
   | "aiGeneratedStateNotAiGenerated"
   | "aiGeneratedStateAiGeneratedDeveloperAttested";
-export const ImageAiGeneratedStateEnum = S.String;
+const ImageAiGeneratedStateEnum = S.String;
 
 /** An uploaded image. The resource for ImagesService. */
 export interface Image {
@@ -5525,7 +5474,7 @@ export interface Image {
   /** A unique id representing this image. */
   id?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     sha256: S.optional(S.String),
@@ -5536,14 +5485,14 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Image" }) as any as S.Schema<Image>;
 
 export type ImageList = Array<Image>;
-export const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
+const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
 
 /** Response for deleting all images. */
 export interface ImagesDeleteAllResponse {
   /** The deleted images. */
   deleted?: ImageList;
 }
-export const ImagesDeleteAllResponse = /*@__PURE__*/ S.suspend(() =>
+const ImagesDeleteAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.optional(ImageList),
   }),
@@ -5555,7 +5504,7 @@ export interface DeleteallEditsListingsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const DeleteallEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteallEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5571,7 +5520,7 @@ export const DeleteallEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteallEditsListingsRequest>;
 
 export interface DeleteallEditsListingsResponse {}
-export const DeleteallEditsListingsResponse =
+const DeleteallEditsListingsResponse =
   AddTargetingResponse as any as S.Schema<DeleteallEditsListingsResponse>;
 
 export interface DeleteEditsRequest {
@@ -5580,7 +5529,7 @@ export interface DeleteEditsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const DeleteEditsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5594,7 +5543,7 @@ export const DeleteEditsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEditsRequest" }) as any as S.Schema<DeleteEditsRequest>;
 
 export interface DeleteEditsResponse {}
-export const DeleteEditsResponse = AddTargetingResponse as any as S.Schema<DeleteEditsResponse>;
+const DeleteEditsResponse = AddTargetingResponse as any as S.Schema<DeleteEditsResponse>;
 
 export type DeleteEditsImagesImageTypeEnum =
   | "appImageTypeUnspecified"
@@ -5606,7 +5555,7 @@ export type DeleteEditsImagesImageTypeEnum =
   | "icon"
   | "featureGraphic"
   | "tvBanner";
-export const DeleteEditsImagesImageTypeEnum = S.String;
+const DeleteEditsImagesImageTypeEnum = S.String;
 
 export interface DeleteEditsImagesRequest {
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
@@ -5620,7 +5569,7 @@ export interface DeleteEditsImagesRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const DeleteEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5637,7 +5586,7 @@ export const DeleteEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEditsImagesRequest" }) as any as S.Schema<DeleteEditsImagesRequest>;
 
 export interface DeleteEditsImagesResponse {}
-export const DeleteEditsImagesResponse =
+const DeleteEditsImagesResponse =
   AddTargetingResponse as any as S.Schema<DeleteEditsImagesResponse>;
 
 export interface DeleteEditsListingsRequest {
@@ -5648,7 +5597,7 @@ export interface DeleteEditsListingsRequest {
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). */
   language: string;
 }
-export const DeleteEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5665,14 +5614,14 @@ export const DeleteEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEditsListingsRequest>;
 
 export interface DeleteEditsListingsResponse {}
-export const DeleteEditsListingsResponse =
+const DeleteEditsListingsResponse =
   AddTargetingResponse as any as S.Schema<DeleteEditsListingsResponse>;
 
 export interface DeleteGrantsRequest {
   /** Required. The name of the grant to delete. Format: developers/{developer}/users/{email}/grants/{package_name} */
   name: string;
 }
-export const DeleteGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5685,13 +5634,13 @@ export const DeleteGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGrantsRequest" }) as any as S.Schema<DeleteGrantsRequest>;
 
 export interface DeleteGrantsResponse {}
-export const DeleteGrantsResponse = AddTargetingResponse as any as S.Schema<DeleteGrantsResponse>;
+const DeleteGrantsResponse = AddTargetingResponse as any as S.Schema<DeleteGrantsResponse>;
 
 export type DeleteInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeleteInappproductsLatencyToleranceEnum = S.String;
+const DeleteInappproductsLatencyToleranceEnum = S.String;
 
 export interface DeleteInappproductsRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
@@ -5701,7 +5650,7 @@ export interface DeleteInappproductsRequest {
   /** Unique identifier for the in-app product. */
   sku: string;
 }
-export const DeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyTolerance: S.optional(DeleteInappproductsLatencyToleranceEnum.pipe(T.Query())),
     packageName: S.String.pipe(T.Label()),
@@ -5718,14 +5667,14 @@ export const DeleteInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInappproductsRequest>;
 
 export interface DeleteInappproductsResponse {}
-export const DeleteInappproductsResponse =
+const DeleteInappproductsResponse =
   AddTargetingResponse as any as S.Schema<DeleteInappproductsResponse>;
 
 export type DeleteMonetizationOnetimeproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const DeleteMonetizationOnetimeproductsLatencyToleranceEnum = S.String;
+const DeleteMonetizationOnetimeproductsLatencyToleranceEnum = S.String;
 
 export interface DeleteMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) of the one-time product to delete. */
@@ -5735,7 +5684,7 @@ export interface DeleteMonetizationOnetimeproductsRequest {
   /** Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. */
   latencyTolerance?: DeleteMonetizationOnetimeproductsLatencyToleranceEnum | (string & {});
 }
-export const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -5754,7 +5703,7 @@ export const DeleteMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteMonetizationOnetimeproductsRequest>;
 
 export interface DeleteMonetizationOnetimeproductsResponse {}
-export const DeleteMonetizationOnetimeproductsResponse =
+const DeleteMonetizationOnetimeproductsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationOnetimeproductsResponse>;
 
 export interface DeleteMonetizationSubscriptionsRequest {
@@ -5763,7 +5712,7 @@ export interface DeleteMonetizationSubscriptionsRequest {
   /** Required. The unique product ID of the subscription to delete. */
   productId: string;
 }
-export const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -5779,7 +5728,7 @@ export const DeleteMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteMonetizationSubscriptionsRequest>;
 
 export interface DeleteMonetizationSubscriptionsResponse {}
-export const DeleteMonetizationSubscriptionsResponse =
+const DeleteMonetizationSubscriptionsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansRequest {
@@ -5790,7 +5739,7 @@ export interface DeleteMonetizationSubscriptionsBasePlansRequest {
   /** Required. The parent subscription (ID) of the base plan to delete. */
   productId: string;
 }
-export const DeleteMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5807,7 +5756,7 @@ export const DeleteMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansResponse =
+const DeleteMonetizationSubscriptionsBasePlansResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
@@ -5820,7 +5769,7 @@ export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent base plan (ID) of the offer to delete. */
   basePlanId: string;
 }
-export const DeleteMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -5838,14 +5787,14 @@ export const DeleteMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__
 }) as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersRequest>;
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersResponse {}
-export const DeleteMonetizationSubscriptionsBasePlansOffersResponse =
+const DeleteMonetizationSubscriptionsBasePlansOffersResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
 
 export interface DeleteUsersRequest {
   /** Required. The name of the user to delete. Format: developers/{developer}/users/{email} */
   name: string;
 }
-export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5858,12 +5807,10 @@ export const DeleteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersRequest" }) as any as S.Schema<DeleteUsersRequest>;
 
 export interface DeleteUsersResponse {}
-export const DeleteUsersResponse = AddTargetingResponse as any as S.Schema<DeleteUsersResponse>;
+const DeleteUsersResponse = AddTargetingResponse as any as S.Schema<DeleteUsersResponse>;
 
 /** Request message for DeployAppRecovery. */
 export type DeployAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
-export const DeployAppRecoveryRequest = OneTimeProductOfferNoPriceOverrideOptions;
-
 export interface DeployApprecoveryRequest {
   /** Required. Package name of the app for which recovery action is deployed. */
   packageName: string;
@@ -5872,7 +5819,7 @@ export interface DeployApprecoveryRequest {
   /** Request body */
   body?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const DeployApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     appRecoveryId: S.String.pipe(T.Label()),
@@ -5888,7 +5835,7 @@ export const DeployApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for DeployAppRecovery. */
 export interface DeployAppRecoveryResponse {}
-export const DeployAppRecoveryResponse =
+const DeployAppRecoveryResponse =
   AddTargetingResponse as any as S.Schema<DeployAppRecoveryResponse>;
 
 export interface DownloadGeneratedapksRequest {
@@ -5899,7 +5846,7 @@ export interface DownloadGeneratedapksRequest {
   /** Version code of the app bundle. */
   versionCode: number;
 }
-export const DownloadGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -5916,7 +5863,7 @@ export const DownloadGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadGeneratedapksRequest>;
 
 export interface DownloadGeneratedapksResponse {}
-export const DownloadGeneratedapksResponse =
+const DownloadGeneratedapksResponse =
   AddTargetingResponse as any as S.Schema<DownloadGeneratedapksResponse>;
 
 export interface DownloadSystemapksVariantsRequest {
@@ -5927,7 +5874,7 @@ export interface DownloadSystemapksVariantsRequest {
   /** The version code of the App Bundle. */
   versionCode: string;
 }
-export const DownloadSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     variantId: S.Number.pipe(T.Label()),
@@ -5944,7 +5891,7 @@ export const DownloadSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadSystemapksVariantsRequest>;
 
 export interface DownloadSystemapksVariantsResponse {}
-export const DownloadSystemapksVariantsResponse =
+const DownloadSystemapksVariantsResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<DownloadSystemapksVariantsResponse>;
 
 /** Reference to a private key hosted in developer-managed Google Cloud KMS. */
@@ -5952,7 +5899,7 @@ export interface CloudKmsKey {
   /** Required. Resource identifier of the private key hosted in Google Cloud KMS. The Google Play service account must be granted Decrypt and Sign permissions on this resource. Format: projects//locations//keyRings//cryptoKeys//cryptoKeyVersions/ */
   cryptoKeyVersionResource?: string;
 }
-export const CloudKmsKey = /*@__PURE__*/ S.suspend(() =>
+const CloudKmsKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyVersionResource: S.optional(S.String),
   }),
@@ -5965,7 +5912,7 @@ export interface CloudKmsKeyAndCert {
   /** Required. Cloud KMS key. */
   cloudKmsKey?: CloudKmsKey;
 }
-export const CloudKmsKeyAndCert = /*@__PURE__*/ S.suspend(() =>
+const CloudKmsKeyAndCert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pemCertificate: S.optional(S.String),
     cloudKmsKey: S.optional(CloudKmsKey),
@@ -5977,7 +5924,7 @@ export interface EnrollNewApp {
   /** Required. Self-hosted key. Once enrolled, this key will be used to sign your app. */
   cloudKmsKeyAndCert?: CloudKmsKeyAndCert;
 }
-export const EnrollNewApp = /*@__PURE__*/ S.suspend(() =>
+const EnrollNewApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudKmsKeyAndCert: S.optional(CloudKmsKeyAndCert),
   }),
@@ -5988,7 +5935,7 @@ export interface EnrollExistingApp {
   /** Required. Self-hosted key. Once enrolled, this key will be used to sign your app. */
   cloudKmsKey?: CloudKmsKey;
 }
-export const EnrollExistingApp = /*@__PURE__*/ S.suspend(() =>
+const EnrollExistingApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudKmsKey: S.optional(CloudKmsKey),
   }),
@@ -6003,7 +5950,7 @@ export interface EnrollAppRequest {
   /** Enrolls an existing app into Play signing using an external Cloud KMS key. */
   enrollExistingApp?: EnrollExistingApp;
 }
-export const EnrollAppRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enrollNewApp: S.optional(EnrollNewApp),
     pemUploadCertificate: S.optional(S.String),
@@ -6017,7 +5964,7 @@ export interface EnrollAppAppsigningRequest {
   /** Request body */
   body?: EnrollAppRequest;
 }
-export const EnrollAppAppsigningRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollAppAppsigningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EnrollAppRequest.pipe(T.HttpBody())),
@@ -6041,7 +5988,7 @@ export interface CertificateHashes {
   /** Hex-encoded SHA1 hash of the certificate. example: `86:61:97:1A:D5:EF:E5:74:1E:A7:5B:84:7C:68:37:65:CD:94:16:DE` */
   certificateHashSha1?: string;
 }
-export const CertificateHashes = /*@__PURE__*/ S.suspend(() =>
+const CertificateHashes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateHashSha256: S.optional(S.String),
     certificateHashMd5: S.optional(S.String),
@@ -6056,7 +6003,7 @@ export interface EnrollAppResponse {
   /** The upload certificate hashes for the app. Set iff pem_upload_certificate was set in the request. */
   uploadCertificate?: CertificateHashes;
 }
-export const EnrollAppResponse = /*@__PURE__*/ S.suspend(() =>
+const EnrollAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signingCertificate: S.optional(CertificateHashes),
     uploadCertificate: S.optional(CertificateHashes),
@@ -6069,7 +6016,7 @@ export interface GetApplicationsDeviceTierConfigsRequest {
   /** Required. Id of an existing device tier config. */
   deviceTierConfigId: string;
 }
-export const GetApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     deviceTierConfigId: S.String.pipe(T.Label()),
@@ -6090,7 +6037,7 @@ export interface GetAppstorecatalogRecentappviewsRequest {
   /** Required. The package name of the requested Play app. */
   playAppPackageName: string;
 }
-export const GetAppstorecatalogRecentappviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppstorecatalogRecentappviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStorePackageName: S.String.pipe(T.Label()),
     playAppPackageName: S.String.pipe(T.Label()),
@@ -6110,7 +6057,7 @@ export interface RamSelector {
   /** This will match any device that has less than or equal ram_mb_less_than_or_equal mb of RAM. */
   ramMbLessThanOrEqual?: string;
 }
-export const RamSelector = /*@__PURE__*/ S.suspend(() =>
+const RamSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ramMbLessThanOrEqual: S.optional(S.String),
   }),
@@ -6123,7 +6070,7 @@ export interface SocSelector {
   /** The model of the SoC. */
   socModel?: string;
 }
-export const SocSelector = /*@__PURE__*/ S.suspend(() =>
+const SocSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     socMake: S.optional(S.String),
     socModel: S.optional(S.String),
@@ -6131,14 +6078,12 @@ export const SocSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SocSelector" }) as any as S.Schema<SocSelector>;
 
 export type SocSelectorList = Array<SocSelector>;
-export const SocSelectorList = /*@__PURE__*/ S.Array(
-  SocSelector,
-) as any as S.Schema<SocSelectorList>;
+const SocSelectorList = /*@__PURE__*/ S.Array(SocSelector) as any as S.Schema<SocSelectorList>;
 
 export type CatalogDeviceSelectorDeviceTypeSelectorEnum =
   | "DEVICE_TYPE_SELECTOR_UNSPECIFIED"
   | "ANDROID_GO";
-export const CatalogDeviceSelectorDeviceTypeSelectorEnum = S.String;
+const CatalogDeviceSelectorDeviceTypeSelectorEnum = S.String;
 
 /** Defines a device selector for a device. A device is considered matched if it matches any of given the selectors. */
 export interface CatalogDeviceSelector {
@@ -6149,7 +6094,7 @@ export interface CatalogDeviceSelector {
   /** The device type selector. */
   deviceTypeSelector?: CatalogDeviceSelectorDeviceTypeSelectorEnum;
 }
-export const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
+const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ramSelector: S.optional(RamSelector),
     socSelectors: S.optional(SocSelectorList),
@@ -6158,7 +6103,7 @@ export const CatalogDeviceSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CatalogDeviceSelector" }) as any as S.Schema<CatalogDeviceSelector>;
 
 export type CatalogDeviceSelectorList = Array<CatalogDeviceSelector>;
-export const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(
+const CatalogDeviceSelectorList = /*@__PURE__*/ S.Array(
   CatalogDeviceSelector,
 ) as any as S.Schema<CatalogDeviceSelectorList>;
 
@@ -6171,7 +6116,7 @@ export interface AppContactInformation {
   /** The contact website url for this app. Optionally provided by the developer. */
   websiteUrl?: string;
 }
-export const AppContactInformation = /*@__PURE__*/ S.suspend(() =>
+const AppContactInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.optional(S.String),
     phoneNumber: S.optional(S.String),
@@ -6180,7 +6125,7 @@ export const AppContactInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppContactInformation" }) as any as S.Schema<AppContactInformation>;
 
 export type CatalogAppViewAppCategoryEnum = "APP_CATEGORY_UNSPECIFIED" | "GAME" | "APP";
-export const CatalogAppViewAppCategoryEnum = S.String;
+const CatalogAppViewAppCategoryEnum = S.String;
 
 /** Defines a device identifier for a device. */
 export interface DeviceIdentifier {
@@ -6189,7 +6134,7 @@ export interface DeviceIdentifier {
   /** The brand of the device. */
   deviceBrand?: string;
 }
-export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
+const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceModel: S.optional(S.String),
     deviceBrand: S.optional(S.String),
@@ -6197,7 +6142,7 @@ export const DeviceIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceIdentifier" }) as any as S.Schema<DeviceIdentifier>;
 
 export type DeviceIdentifierList = Array<DeviceIdentifier>;
-export const DeviceIdentifierList = /*@__PURE__*/ S.Array(
+const DeviceIdentifierList = /*@__PURE__*/ S.Array(
   DeviceIdentifier,
 ) as any as S.Schema<DeviceIdentifierList>;
 
@@ -6208,17 +6153,15 @@ export interface CatalogPermission {
   /** The `maxSdkVersion` attribute indicating up to which Android SDK version the permission is requested. */
   maxSdkVersion?: number;
 }
-export const CatalogPermission = UsesPermission as any as S.Schema<CatalogPermission>;
-
 export type CatalogPermissionList = Array<CatalogPermission>;
-export const CatalogPermissionList = UsesPermissionList as any as S.Schema<CatalogPermissionList>;
+const CatalogPermissionList = UsesPermissionList as any as S.Schema<CatalogPermissionList>;
 
 /** A video asset. */
 export interface VideoAsset {
   /** The URL of the video asset. */
   videoUrl?: string;
 }
-export const VideoAsset = /*@__PURE__*/ S.suspend(() =>
+const VideoAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     videoUrl: S.optional(S.String),
   }),
@@ -6229,21 +6172,21 @@ export interface ImageAsset {
   /** The URL of the image asset. */
   imageUrl?: string;
 }
-export const ImageAsset = /*@__PURE__*/ S.suspend(() =>
+const ImageAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageUrl: S.optional(S.String),
   }),
 ).annotate({ identifier: "ImageAsset" }) as any as S.Schema<ImageAsset>;
 
 export type ImageAssetList = Array<ImageAsset>;
-export const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
+const ImageAssetList = /*@__PURE__*/ S.Array(ImageAsset) as any as S.Schema<ImageAssetList>;
 
 /** A set of screenshots. */
 export interface ScreenshotSet {
   /** The image assets of the screenshots. */
   screenshots?: ImageAssetList;
 }
-export const ScreenshotSet = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshots: S.optional(ImageAssetList),
   }),
@@ -6272,7 +6215,7 @@ export interface LocalizedStoreListing {
   /** The icon of the app. */
   icon?: ImageAsset;
 }
-export const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
+const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     video: S.optional(VideoAsset),
     tabletSmallScreenshots: S.optional(ScreenshotSet),
@@ -6288,7 +6231,7 @@ export const LocalizedStoreListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocalizedStoreListing" }) as any as S.Schema<LocalizedStoreListing>;
 
 export type LocalizedStoreListingList = Array<LocalizedStoreListing>;
-export const LocalizedStoreListingList = /*@__PURE__*/ S.Array(
+const LocalizedStoreListingList = /*@__PURE__*/ S.Array(
   LocalizedStoreListing,
 ) as any as S.Schema<LocalizedStoreListingList>;
 
@@ -6298,7 +6241,7 @@ export interface LocalizedStoreListings {
   /** The default language code of the app. If a localized store listing is not available for a given language, assets from the default language are used instead. */
   defaultLanguageCode?: string;
 }
-export const LocalizedStoreListings = /*@__PURE__*/ S.suspend(() =>
+const LocalizedStoreListings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedStoreListings: S.optional(LocalizedStoreListingList),
     defaultLanguageCode: S.optional(S.String),
@@ -6318,7 +6261,7 @@ export interface DeveloperDetails {
   /** The physical address of the developer. */
   address?: string;
 }
-export const DeveloperDetails = /*@__PURE__*/ S.suspend(() =>
+const DeveloperDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.optional(S.String),
     developerName: S.optional(S.String),
@@ -6335,7 +6278,7 @@ export type UsesConfigurationRequiredNavigationTypeEnum =
   | "NAVIGATION_TYPE_DPAD"
   | "NAVIGATION_TYPE_TRACKBALL"
   | "NAVIGATION_TYPE_WHEEL";
-export const UsesConfigurationRequiredNavigationTypeEnum = S.String;
+const UsesConfigurationRequiredNavigationTypeEnum = S.String;
 
 export type UsesConfigurationRequiredTouchscreenTypeEnum =
   | "TOUCHSCREEN_TYPE_UNSPECIFIED"
@@ -6343,7 +6286,7 @@ export type UsesConfigurationRequiredTouchscreenTypeEnum =
   | "TOUCHSCREEN_TYPE_NO_TOUCHSCREEN"
   | "TOUCHSCREEN_TYPE_STYLUS"
   | "TOUCHSCREEN_TYPE_FINGER";
-export const UsesConfigurationRequiredTouchscreenTypeEnum = S.String;
+const UsesConfigurationRequiredTouchscreenTypeEnum = S.String;
 
 export type UsesConfigurationRequiredKeyboardTypeEnum =
   | "KEYBOARD_TYPE_UNSPECIFIED"
@@ -6351,7 +6294,7 @@ export type UsesConfigurationRequiredKeyboardTypeEnum =
   | "KEYBOARD_TYPE_NO_KEYS"
   | "KEYBOARD_TYPE_QWERTY"
   | "KEYBOARD_TYPE_TWELVE_KEY";
-export const UsesConfigurationRequiredKeyboardTypeEnum = S.String;
+const UsesConfigurationRequiredKeyboardTypeEnum = S.String;
 
 /** Represents all configurations marked as required by use of the uses-configuration manifest tag. */
 export interface UsesConfiguration {
@@ -6366,7 +6309,7 @@ export interface UsesConfiguration {
   /** The type of keyboard required. */
   requiredKeyboardType?: UsesConfigurationRequiredKeyboardTypeEnum;
 }
-export const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiresHardwareKeyboard: S.optional(S.Boolean),
     requiredNavigationType: S.optional(UsesConfigurationRequiredNavigationTypeEnum),
@@ -6377,7 +6320,7 @@ export const UsesConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsesConfiguration" }) as any as S.Schema<UsesConfiguration>;
 
 export type UsesConfigurationList = Array<UsesConfiguration>;
-export const UsesConfigurationList = /*@__PURE__*/ S.Array(
+const UsesConfigurationList = /*@__PURE__*/ S.Array(
   UsesConfiguration,
 ) as any as S.Schema<UsesConfigurationList>;
 
@@ -6385,7 +6328,7 @@ export type DeviceCompatibilityRequirementsUse32BitAbiEnum =
   | "USE_32_BIT_ABI_UNSPECIFIED"
   | "USE_32_BIT_ABI_TRUE"
   | "USE_32_BIT_ABI_OTHER";
-export const DeviceCompatibilityRequirementsUse32BitAbiEnum = S.String;
+const DeviceCompatibilityRequirementsUse32BitAbiEnum = S.String;
 
 export type CompatibleScreenScreenSizeEnum =
   | "SCREEN_SIZE_UNSPECIFIED"
@@ -6393,7 +6336,7 @@ export type CompatibleScreenScreenSizeEnum =
   | "SCREEN_SIZE_NORMAL"
   | "SCREEN_SIZE_LARGE"
   | "SCREEN_SIZE_EXTRA_LARGE";
-export const CompatibleScreenScreenSizeEnum = S.String;
+const CompatibleScreenScreenSizeEnum = S.String;
 
 export type CompatibleScreenDensityEnum =
   | "DENSITY_UNSPECIFIED"
@@ -6410,7 +6353,7 @@ export type CompatibleScreenDensityEnum =
   | "DENSITY_XXHDPI"
   | "DENSITY_560"
   | "DENSITY_XXXHDPI";
-export const CompatibleScreenDensityEnum = S.String;
+const CompatibleScreenDensityEnum = S.String;
 
 /** Compatible screens as listed in the `compatible-screens` Manifest tag. */
 export interface CompatibleScreen {
@@ -6419,7 +6362,7 @@ export interface CompatibleScreen {
   /** Screen density. */
   density?: CompatibleScreenDensityEnum;
 }
-export const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
+const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenSize: S.optional(CompatibleScreenScreenSizeEnum),
     density: S.optional(CompatibleScreenDensityEnum),
@@ -6427,7 +6370,7 @@ export const CompatibleScreen = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompatibleScreen" }) as any as S.Schema<CompatibleScreen>;
 
 export type CompatibleScreenList = Array<CompatibleScreen>;
-export const CompatibleScreenList = /*@__PURE__*/ S.Array(
+const CompatibleScreenList = /*@__PURE__*/ S.Array(
   CompatibleScreen,
 ) as any as S.Schema<CompatibleScreenList>;
 
@@ -6437,11 +6380,9 @@ export type DeviceCompatibilityRequirementsSupportedScreensItemEnum =
   | "SCREEN_SIZE_NORMAL"
   | "SCREEN_SIZE_LARGE"
   | "SCREEN_SIZE_EXTRA_LARGE";
-export const DeviceCompatibilityRequirementsSupportedScreensItemEnum = S.String;
-
 export type DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
   Array<DeviceCompatibilityRequirementsSupportedScreensItemEnum>;
-export const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
+const DeviceCompatibilityRequirementsSupportedScreensItemEnumList =
   GrantAppLevelPermissionsItemEnumList as any as S.Schema<DeviceCompatibilityRequirementsSupportedScreensItemEnumList>;
 
 /** Defines a range of SDK versions. A device is considered compatible uf its\ SDK version falls within the min_sdk_version and max_sdk_version range. */
@@ -6453,7 +6394,7 @@ export interface CatalogSdkVersion {
   /** The minimum SDK version required for the app (inclusive). */
   minSdkVersion?: string;
 }
-export const CatalogSdkVersion = /*@__PURE__*/ S.suspend(() =>
+const CatalogSdkVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSdkVersion: S.optional(S.String),
     maxSdkVersion: S.optional(S.String),
@@ -6488,7 +6429,7 @@ export interface DeviceCompatibilityRequirements {
   /** List of required libraries as declared in the `uses-library` manifest tag. */
   requiredSoftwareLibraries?: StringList;
 }
-export const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
+const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedGlTextures: S.optional(StringList),
     usesConfigurations: S.optional(UsesConfigurationList),
@@ -6508,7 +6449,7 @@ export const DeviceCompatibilityRequirements = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceCompatibilityRequirements>;
 
 export type DeviceCompatibilityRequirementsList = Array<DeviceCompatibilityRequirements>;
-export const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
+const DeviceCompatibilityRequirementsList = /*@__PURE__*/ S.Array(
   DeviceCompatibilityRequirements,
 ) as any as S.Schema<DeviceCompatibilityRequirementsList>;
 
@@ -6521,7 +6462,7 @@ export interface Androidpublisher_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Androidpublisher_Date = /*@__PURE__*/ S.suspend(() =>
+const Androidpublisher_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -6576,7 +6517,7 @@ export interface CatalogAppView {
   /** The token used for delivery of the app with the Google Play Inline Install API. */
   deliveryToken?: string;
 }
-export const CatalogAppView = /*@__PURE__*/ S.suspend(() =>
+const CatalogAppView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privacyPolicyUrl: S.optional(S.String),
     lastPublishTime: S.optional(S.String),
@@ -6608,7 +6549,7 @@ export interface RecentAppView {
   /** Recently updated app view. */
   appView?: CatalogAppView;
 }
-export const RecentAppView = /*@__PURE__*/ S.suspend(() =>
+const RecentAppView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appView: S.optional(CatalogAppView),
   }),
@@ -6620,7 +6561,7 @@ export interface GetEditsRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const GetEditsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -6641,7 +6582,7 @@ export interface GetEditsCountryavailabilityRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const GetEditsCountryavailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsCountryavailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -6662,14 +6603,14 @@ export interface TrackTargetedCountry {
   /** The country that can be targeted, as a two-letter CLDR code. */
   countryCode?: string;
 }
-export const TrackTargetedCountry = /*@__PURE__*/ S.suspend(() =>
+const TrackTargetedCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(S.String),
   }),
 ).annotate({ identifier: "TrackTargetedCountry" }) as any as S.Schema<TrackTargetedCountry>;
 
 export type TrackTargetedCountryList = Array<TrackTargetedCountry>;
-export const TrackTargetedCountryList = /*@__PURE__*/ S.Array(
+const TrackTargetedCountryList = /*@__PURE__*/ S.Array(
   TrackTargetedCountry,
 ) as any as S.Schema<TrackTargetedCountryList>;
 
@@ -6682,7 +6623,7 @@ export interface TrackCountryAvailability {
   /** Whether artifacts in this track are available to "rest of the world" countries. */
   restOfWorld?: boolean;
 }
-export const TrackCountryAvailability = /*@__PURE__*/ S.suspend(() =>
+const TrackCountryAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countries: S.optional(TrackTargetedCountryList),
     syncWithProduction: S.optional(S.Boolean),
@@ -6696,7 +6637,7 @@ export interface GetEditsDetailsRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const GetEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -6720,7 +6661,7 @@ export interface AppDetails {
   /** Default language code, in BCP 47 format (eg "en-US"). */
   defaultLanguage?: string;
 }
-export const AppDetails = /*@__PURE__*/ S.suspend(() =>
+const AppDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.optional(S.String),
     contactWebsite: S.optional(S.String),
@@ -6733,7 +6674,7 @@ export type GetEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
   | "patch";
-export const GetEditsExpansionfilesExpansionFileTypeEnum = S.String;
+const GetEditsExpansionfilesExpansionFileTypeEnum = S.String;
 
 export interface GetEditsExpansionfilesRequest {
   /** Identifier of the edit. */
@@ -6745,7 +6686,7 @@ export interface GetEditsExpansionfilesRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const GetEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     apkVersionCode: S.Number.pipe(T.Label()),
@@ -6769,7 +6710,7 @@ export interface ExpansionFile {
   /** If set, this APK's expansion file references another APK's expansion file. The file_size field will not be set. */
   referencesVersion?: number;
 }
-export const ExpansionFile = /*@__PURE__*/ S.suspend(() =>
+const ExpansionFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileSize: S.optional(S.String),
     referencesVersion: S.optional(S.Number),
@@ -6784,7 +6725,7 @@ export interface GetEditsListingsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const GetEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -6811,7 +6752,7 @@ export interface Listing {
   /** Localized title of the app. */
   title?: string;
 }
-export const Listing = /*@__PURE__*/ S.suspend(() =>
+const Listing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullDescription: S.optional(S.String),
     video: S.optional(S.String),
@@ -6829,7 +6770,7 @@ export interface GetEditsTestersRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const GetEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -6848,7 +6789,7 @@ export interface Testers {
   /** All testing Google Groups, as email addresses. */
   googleGroups?: StringList;
 }
-export const Testers = /*@__PURE__*/ S.suspend(() =>
+const Testers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleGroups: S.optional(StringList),
   }),
@@ -6862,7 +6803,7 @@ export interface GetEditsTracksRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const GetEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -6880,7 +6821,7 @@ export interface GetexternaltransactionExternaltransactionsRequest {
   /** Required. The name of the external transaction to retrieve. Format: applications/{package_name}/externalTransactions/{external_transaction} */
   name: string;
 }
-export const GetexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6900,7 +6841,7 @@ export interface GetInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const GetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -6919,7 +6860,7 @@ export interface GetMonetizationOnetimeproductsRequest {
   /** Required. The product ID of the product to retrieve. */
   productId: string;
 }
-export const GetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -6940,7 +6881,7 @@ export interface GetMonetizationSubscriptionsRequest {
   /** Required. The unique product ID of the subscription to get. */
   productId: string;
 }
-export const GetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -6965,7 +6906,7 @@ export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. The parent subscription (ID) of the offer to get. */
   productId: string;
 }
-export const GetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
@@ -6988,7 +6929,7 @@ export interface GetOrdersRequest {
   /** Required. The order ID provided to the user when the subscription or in-app order was purchased. */
   orderId: string;
 }
-export const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     orderId: S.String.pipe(T.Label()),
@@ -7007,7 +6948,7 @@ export interface Getproductpurchasev2PurchasesProductsv2Request {
   /** The token provided to the user's device when the inapp product was purchased. */
   token: string;
 }
-export const Getproductpurchasev2PurchasesProductsv2Request = /*@__PURE__*/ S.suspend(() =>
+const Getproductpurchasev2PurchasesProductsv2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     token: S.String.pipe(T.Label()),
@@ -7027,14 +6968,14 @@ export type PurchaseStateContextPurchaseStateEnum =
   | "PURCHASED"
   | "CANCELLED"
   | "PENDING";
-export const PurchaseStateContextPurchaseStateEnum = S.String;
+const PurchaseStateContextPurchaseStateEnum = S.String;
 
 /** Context about the purchase state. */
 export interface PurchaseStateContext {
   /** Output only. The purchase state of the purchase. */
   purchaseState?: PurchaseStateContextPurchaseStateEnum;
 }
-export const PurchaseStateContext = /*@__PURE__*/ S.suspend(() =>
+const PurchaseStateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseState: S.optional(PurchaseStateContextPurchaseStateEnum),
   }),
@@ -7044,14 +6985,14 @@ export type ProductPurchaseV2AcknowledgementStateEnum =
   | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
   | "ACKNOWLEDGEMENT_STATE_PENDING"
   | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
-export const ProductPurchaseV2AcknowledgementStateEnum = S.String;
+const ProductPurchaseV2AcknowledgementStateEnum = S.String;
 
 /** Offer details information related to a preorder line item. */
 export interface PreorderOfferDetails {
   /** The time when a preordered item is released for a preorder purchase. */
   preorderReleaseTime?: string;
 }
-export const PreorderOfferDetails = /*@__PURE__*/ S.suspend(() =>
+const PreorderOfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preorderReleaseTime: S.optional(S.String),
   }),
@@ -7059,13 +7000,11 @@ export const PreorderOfferDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Offer details information related to a rental line item. */
 export type RentOfferDetails = OneTimeProductOfferNoPriceOverrideOptions;
-export const RentOfferDetails = OneTimeProductOfferNoPriceOverrideOptions;
-
 export type ProductOfferDetailsConsumptionStateEnum =
   | "CONSUMPTION_STATE_UNSPECIFIED"
   | "CONSUMPTION_STATE_YET_TO_BE_CONSUMED"
   | "CONSUMPTION_STATE_CONSUMED";
-export const ProductOfferDetailsConsumptionStateEnum = S.String;
+const ProductOfferDetailsConsumptionStateEnum = S.String;
 
 /** Offer details information related to a purchase line item. */
 export interface ProductOfferDetails {
@@ -7088,7 +7027,7 @@ export interface ProductOfferDetails {
   /** The per-transaction offer token used to make this purchase line item. */
   offerToken?: string;
 }
-export const ProductOfferDetails = /*@__PURE__*/ S.suspend(() =>
+const ProductOfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.Number),
     preorderOfferDetails: S.optional(PreorderOfferDetails),
@@ -7109,7 +7048,7 @@ export interface ProductLineItem {
   /** The purchased product ID (for example, 'monthly001'). */
   productId?: string;
 }
-export const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
+const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productOfferDetails: S.optional(ProductOfferDetails),
     productId: S.optional(S.String),
@@ -7117,19 +7056,19 @@ export const ProductLineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductLineItem" }) as any as S.Schema<ProductLineItem>;
 
 export type ProductLineItemList = Array<ProductLineItem>;
-export const ProductLineItemList = /*@__PURE__*/ S.Array(
+const ProductLineItemList = /*@__PURE__*/ S.Array(
   ProductLineItem,
 ) as any as S.Schema<ProductLineItemList>;
 
 export type TestPurchaseContextFopTypeEnum = "FOP_TYPE_UNSPECIFIED" | "TEST";
-export const TestPurchaseContextFopTypeEnum = S.String;
+const TestPurchaseContextFopTypeEnum = S.String;
 
 /** Context about a test purchase. */
 export interface TestPurchaseContext {
   /** The fop type of the test purchase. */
   fopType?: TestPurchaseContextFopTypeEnum;
 }
-export const TestPurchaseContext = /*@__PURE__*/ S.suspend(() =>
+const TestPurchaseContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fopType: S.optional(TestPurchaseContextFopTypeEnum),
   }),
@@ -7158,7 +7097,7 @@ export interface ProductPurchaseV2 {
   /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
   obfuscatedExternalProfileId?: string;
 }
-export const ProductPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
+const ProductPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseStateContext: S.optional(PurchaseStateContext),
     kind: S.optional(S.String),
@@ -7181,7 +7120,7 @@ export interface GetPurchasesProductsRequest {
   /** The inapp product SKU (for example, 'com.some.thing.inapp1'). */
   productId: string;
 }
-export const GetPurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPurchasesProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -7230,7 +7169,7 @@ export interface ProductPurchase {
   /** The acknowledgement state of the inapp product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged */
   acknowledgementState?: number;
 }
-export const ProductPurchase = /*@__PURE__*/ S.suspend(() =>
+const ProductPurchase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     obfuscatedExternalProfileId: S.optional(S.String),
@@ -7256,7 +7195,7 @@ export interface GetPurchasesSubscriptionsv2Request {
   /** The package of the application for which this subscription was purchased (for example, 'com.some.thing'). */
   packageName: string;
 }
-export const GetPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+const GetPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -7273,8 +7212,6 @@ export const GetPurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether this subscription purchase is a test purchase. */
 export type TestPurchase = OneTimeProductOfferNoPriceOverrideOptions;
-export const TestPurchase = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** User account identifier in the third-party service. */
 export interface ExternalAccountIdentifiers {
   /** An obfuscated version of the id that is uniquely associated with the user's account in your app. Present for the following purchases: * If account linking happened as part of the subscription purchase flow. * It was specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid when the purchase was made. */
@@ -7284,7 +7221,7 @@ export interface ExternalAccountIdentifiers {
   /** An obfuscated version of the id that is uniquely associated with the user's profile in your app. Only present if specified using https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid when the purchase was made. */
   obfuscatedExternalProfileId?: string;
 }
-export const ExternalAccountIdentifiers = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountIdentifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     obfuscatedExternalAccountId: S.optional(S.String),
     externalAccountId: S.optional(S.String),
@@ -7304,12 +7241,10 @@ export type SubscriptionPurchaseV2SubscriptionStateEnum =
   | "SUBSCRIPTION_STATE_CANCELED"
   | "SUBSCRIPTION_STATE_EXPIRED"
   | "SUBSCRIPTION_STATE_PENDING_PURCHASE_CANCELED";
-export const SubscriptionPurchaseV2SubscriptionStateEnum = S.String;
+const SubscriptionPurchaseV2SubscriptionStateEnum = S.String;
 
 /** Information specific to cancellations initiated by Google system. */
 export type SystemInitiatedCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-export const SystemInitiatedCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-
 export type CancelSurveyResultReasonEnum =
   | "CANCEL_SURVEY_REASON_UNSPECIFIED"
   | "CANCEL_SURVEY_REASON_NOT_ENOUGH_USAGE"
@@ -7317,7 +7252,7 @@ export type CancelSurveyResultReasonEnum =
   | "CANCEL_SURVEY_REASON_COST_RELATED"
   | "CANCEL_SURVEY_REASON_FOUND_BETTER_APP"
   | "CANCEL_SURVEY_REASON_OTHERS";
-export const CancelSurveyResultReasonEnum = S.String;
+const CancelSurveyResultReasonEnum = S.String;
 
 /** Result of the cancel survey when the subscription was canceled by the user. */
 export interface CancelSurveyResult {
@@ -7326,7 +7261,7 @@ export interface CancelSurveyResult {
   /** The reason the user selected in the cancel survey. */
   reason?: CancelSurveyResultReasonEnum;
 }
-export const CancelSurveyResult = /*@__PURE__*/ S.suspend(() =>
+const CancelSurveyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasonUserInput: S.optional(S.String),
     reason: S.optional(CancelSurveyResultReasonEnum),
@@ -7340,7 +7275,7 @@ export interface UserInitiatedCancellation {
   /** The time at which the subscription was canceled by the user. The user might still have access to the subscription after this time. Use line_items.expiry_time to determine if a user still has access. */
   cancelTime?: string;
 }
-export const UserInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
+const UserInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelSurveyResult: S.optional(CancelSurveyResult),
     cancelTime: S.optional(S.String),
@@ -7351,12 +7286,8 @@ export const UserInitiatedCancellation = /*@__PURE__*/ S.suspend(() =>
 
 /** Information specific to cancellations caused by subscription replacement. */
 export type ReplacementCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-export const ReplacementCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Information specific to cancellations initiated by developers. */
 export type DeveloperInitiatedCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-export const DeveloperInitiatedCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED state. */
 export interface CanceledStateContext {
   /** Subscription was canceled by the system, for example because of a billing problem. */
@@ -7368,7 +7299,7 @@ export interface CanceledStateContext {
   /** Subscription was canceled by the developer. */
   developerInitiatedCancellation?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const CanceledStateContext = /*@__PURE__*/ S.suspend(() =>
+const CanceledStateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemInitiatedCancellation: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     userInitiatedCancellation: S.optional(UserInitiatedCancellation),
@@ -7382,7 +7313,7 @@ export interface RenewalDeclinedContext {
   /** Required. The ID of the pending or failed order causing the state. */
   pendingOrderId?: string;
 }
-export const RenewalDeclinedContext = /*@__PURE__*/ S.suspend(() =>
+const RenewalDeclinedContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingOrderId: S.optional(S.String),
   }),
@@ -7393,7 +7324,7 @@ export interface InGracePeriodStateContext {
   /** Optional. The payment for the renewal was declined. */
   renewalDeclined?: RenewalDeclinedContext;
 }
-export const InGracePeriodStateContext = /*@__PURE__*/ S.suspend(() =>
+const InGracePeriodStateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renewalDeclined: S.optional(RenewalDeclinedContext),
   }),
@@ -7406,7 +7337,7 @@ export interface PrepaidPlan {
   /** If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be present for expired prepaid plans. */
   allowExtendAfterTime?: string;
 }
-export const PrepaidPlan = /*@__PURE__*/ S.suspend(() =>
+const PrepaidPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowExtendAfterTime: S.optional(S.String),
   }),
@@ -7420,7 +7351,7 @@ export type ItemReplacementReplacementModeEnum =
   | "CHARGE_FULL_PRICE"
   | "DEFERRED"
   | "KEEP_EXISTING";
-export const ItemReplacementReplacementModeEnum = S.String;
+const ItemReplacementReplacementModeEnum = S.String;
 
 /** Details about a subscription line item that is being replaced. */
 export interface ItemReplacement {
@@ -7433,7 +7364,7 @@ export interface ItemReplacement {
   /** The replacement mode applied during the purchase. */
   replacementMode?: ItemReplacementReplacementModeEnum;
 }
-export const ItemReplacement = /*@__PURE__*/ S.suspend(() =>
+const ItemReplacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePlanId: S.optional(S.String),
     productId: S.optional(S.String),
@@ -7444,21 +7375,19 @@ export const ItemReplacement = /*@__PURE__*/ S.suspend(() =>
 
 /** Information related to deferred item replacement. */
 export type DeferredItemRemoval = OneTimeProductOfferNoPriceOverrideOptions;
-export const DeferredItemRemoval = OneTimeProductOfferNoPriceOverrideOptions;
-
 export type ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum =
   | "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED"
   | "BASE"
   | "INTRODUCTORY"
   | "FREE_TRIAL";
-export const ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum = S.String;
+const ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum = S.String;
 
 /** Details about proration period offer phase. */
 export interface ProrationPeriodOfferPhase {
   /** The original offer phase type before the proration period. Only set when the proration period is updated from an existing offer phase. */
   originalOfferPhaseType?: ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum;
 }
-export const ProrationPeriodOfferPhase = /*@__PURE__*/ S.suspend(() =>
+const ProrationPeriodOfferPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalOfferPhaseType: S.optional(ProrationPeriodOfferPhaseOriginalOfferPhaseTypeEnum),
   }),
@@ -7468,16 +7397,10 @@ export const ProrationPeriodOfferPhase = /*@__PURE__*/ S.suspend(() =>
 
 /** Details about base price offer phase. */
 export type BasePriceOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-export const BasePriceOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details about free trial offer phase. */
 export type FreeTrialOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-export const FreeTrialOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Details about introductory price offer phase. */
 export type IntroductoryPriceOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-export const IntroductoryPriceOfferPhase = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Offer phase details. */
 export interface OfferPhase {
   /** Set when the offer phase is a proration period. */
@@ -7489,7 +7412,7 @@ export interface OfferPhase {
   /** Set when the offer phase is an introductory price offer phase. */
   introductoryPrice?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const OfferPhase = /*@__PURE__*/ S.suspend(() =>
+const OfferPhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prorationPeriod: S.optional(ProrationPeriodOfferPhase),
     basePrice: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -7507,7 +7430,7 @@ export interface OfferDetails {
   /** The latest offer tags associated with the offer. It includes tags inherited from the base plan. */
   offerTags?: StringList;
 }
-export const OfferDetails = /*@__PURE__*/ S.suspend(() =>
+const OfferDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     basePlanId: S.optional(S.String),
@@ -7520,7 +7443,7 @@ export type PriceStepUpConsentDetailsStateEnum =
   | "PENDING"
   | "CONFIRMED"
   | "COMPLETED";
-export const PriceStepUpConsentDetailsStateEnum = S.String;
+const PriceStepUpConsentDetailsStateEnum = S.String;
 
 /** Information related to a price step-up that requires user consent. */
 export interface PriceStepUpConsentDetails {
@@ -7531,7 +7454,7 @@ export interface PriceStepUpConsentDetails {
   /** The new price which requires user consent. */
   newPrice?: Money;
 }
-export const PriceStepUpConsentDetails = /*@__PURE__*/ S.suspend(() =>
+const PriceStepUpConsentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentDeadlineTime: S.optional(S.String),
     state: S.optional(PriceStepUpConsentDetailsStateEnum),
@@ -7543,8 +7466,6 @@ export const PriceStepUpConsentDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** This is an indicator of whether there is a pending cancellation on the virtual installment plan. The cancellation will happen only after the user finished all committed payments. */
 export type PendingCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-export const PendingCancellation = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Information to a installment plan. */
 export interface InstallmentPlan {
   /** Total number of payments the user will be committed for after each commitment period. Empty means the installment plan will fall back to a normal auto-renew subscription after initial commitment. */
@@ -7556,7 +7477,7 @@ export interface InstallmentPlan {
   /** Total number of committed payments remaining to be paid for in this renewal cycle. */
   remainingCommittedPaymentsCount?: number;
 }
-export const InstallmentPlan = /*@__PURE__*/ S.suspend(() =>
+const InstallmentPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subsequentCommittedPaymentsCount: S.optional(S.Number),
     initialCommittedPaymentsCount: S.optional(S.Number),
@@ -7571,14 +7492,14 @@ export type SubscriptionItemPriceChangeDetailsPriceChangeStateEnum =
   | "CONFIRMED"
   | "APPLIED"
   | "CANCELED";
-export const SubscriptionItemPriceChangeDetailsPriceChangeStateEnum = S.String;
+const SubscriptionItemPriceChangeDetailsPriceChangeStateEnum = S.String;
 
 export type SubscriptionItemPriceChangeDetailsPriceChangeModeEnum =
   | "PRICE_CHANGE_MODE_UNSPECIFIED"
   | "PRICE_DECREASE"
   | "PRICE_INCREASE"
   | "OPT_OUT_PRICE_INCREASE";
-export const SubscriptionItemPriceChangeDetailsPriceChangeModeEnum = S.String;
+const SubscriptionItemPriceChangeDetailsPriceChangeModeEnum = S.String;
 
 /** Price change related information of a subscription item. */
 export interface SubscriptionItemPriceChangeDetails {
@@ -7591,7 +7512,7 @@ export interface SubscriptionItemPriceChangeDetails {
   /** The renewal time at which the price change will become effective for the user. This is subject to change(to a future time) due to cases where the renewal time shifts like pause. This field is only populated if the price change has not taken effect. */
   expectedNewPriceChargeTime?: string;
 }
-export const SubscriptionItemPriceChangeDetails = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionItemPriceChangeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPrice: S.optional(Money),
     priceChangeState: S.optional(SubscriptionItemPriceChangeDetailsPriceChangeStateEnum),
@@ -7615,7 +7536,7 @@ export interface AutoRenewingPlan {
   /** The information of the last price change for the item since subscription signup. */
   priceChangeDetails?: SubscriptionItemPriceChangeDetails;
 }
-export const AutoRenewingPlan = /*@__PURE__*/ S.suspend(() =>
+const AutoRenewingPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recurringPrice: S.optional(Money),
     priceStepUpConsentDetails: S.optional(PriceStepUpConsentDetails),
@@ -7630,7 +7551,7 @@ export interface VanityCode {
   /** The promotion code. */
   promotionCode?: string;
 }
-export const VanityCode = /*@__PURE__*/ S.suspend(() =>
+const VanityCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotionCode: S.optional(S.String),
   }),
@@ -7638,8 +7559,6 @@ export const VanityCode = /*@__PURE__*/ S.suspend(() =>
 
 /** A single use promotion code. */
 export type OneTimeCode = OneTimeProductOfferNoPriceOverrideOptions;
-export const OneTimeCode = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** The promotion applied on this item when purchased. */
 export interface SignupPromotion {
   /** A vanity code was applied. */
@@ -7647,7 +7566,7 @@ export interface SignupPromotion {
   /** A one-time code was applied. */
   oneTimeCode?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const SignupPromotion = /*@__PURE__*/ S.suspend(() =>
+const SignupPromotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vanityCode: S.optional(VanityCode),
     oneTimeCode: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -7659,7 +7578,7 @@ export interface DeferredItemReplacement {
   /** The product_id going to replace the existing product_id. */
   productId?: string;
 }
-export const DeferredItemReplacement = /*@__PURE__*/ S.suspend(() =>
+const DeferredItemReplacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
   }),
@@ -7690,7 +7609,7 @@ export interface SubscriptionPurchaseLineItem {
   /** The purchased product ID (for example, 'monthly001'). */
   productId?: string;
 }
-export const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prepaidPlan: S.optional(PrepaidPlan),
     itemReplacement: S.optional(ItemReplacement),
@@ -7709,7 +7628,7 @@ export const SubscriptionPurchaseLineItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionPurchaseLineItem>;
 
 export type SubscriptionPurchaseLineItemList = Array<SubscriptionPurchaseLineItem>;
-export const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(
+const SubscriptionPurchaseLineItemList = /*@__PURE__*/ S.Array(
   SubscriptionPurchaseLineItem,
 ) as any as S.Schema<SubscriptionPurchaseLineItemList>;
 
@@ -7726,7 +7645,7 @@ export interface SubscribeWithGoogleInfo {
   /** The given name of the user when the subscription was purchased. */
   givenName?: string;
 }
-export const SubscribeWithGoogleInfo = /*@__PURE__*/ S.suspend(() =>
+const SubscribeWithGoogleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileName: S.optional(S.String),
     familyName: S.optional(S.String),
@@ -7738,13 +7657,11 @@ export const SubscribeWithGoogleInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional context around subscriptions in ON_HOLD state. */
 export type OnHoldStateContext = InGracePeriodStateContext;
-export const OnHoldStateContext = InGracePeriodStateContext;
-
 export type SubscriptionPurchaseV2AcknowledgementStateEnum =
   | "ACKNOWLEDGEMENT_STATE_UNSPECIFIED"
   | "ACKNOWLEDGEMENT_STATE_PENDING"
   | "ACKNOWLEDGEMENT_STATE_ACKNOWLEDGED";
-export const SubscriptionPurchaseV2AcknowledgementStateEnum = S.String;
+const SubscriptionPurchaseV2AcknowledgementStateEnum = S.String;
 
 /** Information specific to an out of app purchase. */
 export interface OutOfAppPurchaseContext {
@@ -7753,7 +7670,7 @@ export interface OutOfAppPurchaseContext {
   /** User account identifier from the last expired subscription for this SKU. */
   expiredExternalAccountIdentifiers?: ExternalAccountIdentifiers;
 }
-export const OutOfAppPurchaseContext = /*@__PURE__*/ S.suspend(() =>
+const OutOfAppPurchaseContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiredPurchaseToken: S.optional(S.String),
     expiredExternalAccountIdentifiers: S.optional(ExternalAccountIdentifiers),
@@ -7765,7 +7682,7 @@ export interface PausedStateContext {
   /** Time at which the subscription will be automatically resumed. */
   autoResumeTime?: string;
 }
-export const PausedStateContext = /*@__PURE__*/ S.suspend(() =>
+const PausedStateContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoResumeTime: S.optional(S.String),
   }),
@@ -7806,7 +7723,7 @@ export interface SubscriptionPurchaseV2 {
   /** Additional context around paused subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_PAUSED. */
   pausedStateContext?: PausedStateContext;
 }
-export const SubscriptionPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPurchaseV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testPurchase: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     externalAccountIdentifiers: S.optional(ExternalAccountIdentifiers),
@@ -7835,7 +7752,7 @@ export interface GetReviewsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const GetReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     translationLanguage: S.optional(S.String.pipe(T.Query())),
     reviewId: S.String.pipe(T.Label()),
@@ -7856,7 +7773,7 @@ export interface Timestamp {
   /** Non-negative fractions of a second at nanosecond resolution. Must be from 0 to 999,999,999 inclusive. */
   nanos?: number;
 }
-export const Timestamp = /*@__PURE__*/ S.suspend(() =>
+const Timestamp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seconds: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -7870,7 +7787,7 @@ export interface DeveloperComment {
   /** The content of the comment, i.e. reply body. */
   text?: string;
 }
-export const DeveloperComment = /*@__PURE__*/ S.suspend(() =>
+const DeveloperComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModified: S.optional(Timestamp),
     text: S.optional(S.String),
@@ -7902,7 +7819,7 @@ export interface DeviceMetadata {
   /** Screen width in pixels */
   screenWidthPx?: number;
 }
-export const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
+const DeviceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuMake: S.optional(S.String),
     deviceClass: S.optional(S.String),
@@ -7945,7 +7862,7 @@ export interface UserComment {
   /** Information about the characteristics of the user's device. */
   deviceMetadata?: DeviceMetadata;
 }
-export const UserComment = /*@__PURE__*/ S.suspend(() =>
+const UserComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(S.String),
     androidOsVersion: S.optional(S.Number),
@@ -7969,7 +7886,7 @@ export interface Comment {
   /** A comment from a user. */
   userComment?: UserComment;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     developerComment: S.optional(DeveloperComment),
     userComment: S.optional(UserComment),
@@ -7977,7 +7894,7 @@ export const Comment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Comment" }) as any as S.Schema<Comment>;
 
 export type CommentList = Array<Comment>;
-export const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
+const CommentList = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList>;
 
 /** An Android app review. */
 export interface Review {
@@ -7988,7 +7905,7 @@ export interface Review {
   /** A repeated field containing comments for the review. */
   comments?: CommentList;
 }
-export const Review = /*@__PURE__*/ S.suspend(() =>
+const Review = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorName: S.optional(S.String),
     reviewId: S.optional(S.String),
@@ -8004,7 +7921,7 @@ export interface GetSystemapksVariantsRequest {
   /** The ID of a previously created system APK variant. */
   variantId: number;
 }
-export const GetSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -8026,7 +7943,7 @@ export interface InsertEditsRequest {
   /** Request body */
   body?: AppEdit;
 }
-export const InsertEditsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertEditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     body: S.optional(AppEdit.pipe(T.HttpBody())),
@@ -8047,7 +7964,7 @@ export interface InsertInappproductsRequest {
   /** Request body */
   body?: InAppProduct;
 }
-export const InsertInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     autoConvertMissingPrices: S.optional(S.Boolean.pipe(T.Query())),
@@ -8071,7 +7988,7 @@ export interface ListApplicationsDeviceTierConfigsRequest {
   /** The maximum number of device tier configs to return. The service may return fewer than this value. If unspecified, at most 10 device tier configs will be returned. The maximum value for this field is 100; values above 100 will be coerced to 100. Device tier configs will be ordered by descending creation time. */
   pageSize?: number;
 }
-export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8088,7 +8005,7 @@ export const ListApplicationsDeviceTierConfigsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListApplicationsDeviceTierConfigsRequest>;
 
 export type DeviceTierConfigList = Array<DeviceTierConfig>;
-export const DeviceTierConfigList = /*@__PURE__*/ S.Array(
+const DeviceTierConfigList = /*@__PURE__*/ S.Array(
   DeviceTierConfig,
 ) as any as S.Schema<DeviceTierConfigList>;
 
@@ -8099,7 +8016,7 @@ export interface ListDeviceTierConfigsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDeviceTierConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeviceTierConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceTierConfigs: S.optional(DeviceTierConfigList),
     nextPageToken: S.optional(S.String),
@@ -8112,7 +8029,7 @@ export interface ListApplicationsTracksReleasesRequest {
   /** Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track} */
   parent: string;
 }
-export const ListApplicationsTracksReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsTracksReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -8134,21 +8051,21 @@ export type ReleaseSummaryReleaseLifecycleStateEnum =
   | "RELEASE_LIFECYCLE_STATE_APPROVED_NOT_PUBLISHED"
   | "RELEASE_LIFECYCLE_STATE_NOT_APPROVED"
   | "RELEASE_LIFECYCLE_STATE_PUBLISHED";
-export const ReleaseSummaryReleaseLifecycleStateEnum = S.String;
+const ReleaseSummaryReleaseLifecycleStateEnum = S.String;
 
 /** Summary of an artifact. */
 export interface ArtifactSummary {
   /** Artifact's version code */
   versionCode?: number;
 }
-export const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
+const ArtifactSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ArtifactSummary" }) as any as S.Schema<ArtifactSummary>;
 
 export type ArtifactSummaryList = Array<ArtifactSummary>;
-export const ArtifactSummaryList = /*@__PURE__*/ S.Array(
+const ArtifactSummaryList = /*@__PURE__*/ S.Array(
   ArtifactSummary,
 ) as any as S.Schema<ArtifactSummaryList>;
 
@@ -8163,7 +8080,7 @@ export interface ReleaseSummary {
   /** Identifier for the track. [Learn more about track names.](https://developers.google.com/android-publisher/tracks). */
   track?: string;
 }
-export const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
+const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseLifecycleState: S.optional(ReleaseSummaryReleaseLifecycleStateEnum),
     releaseName: S.optional(S.String),
@@ -8173,7 +8090,7 @@ export const ReleaseSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReleaseSummary" }) as any as S.Schema<ReleaseSummary>;
 
 export type ReleaseSummaryList = Array<ReleaseSummary>;
-export const ReleaseSummaryList = /*@__PURE__*/ S.Array(
+const ReleaseSummaryList = /*@__PURE__*/ S.Array(
   ReleaseSummary,
 ) as any as S.Schema<ReleaseSummaryList>;
 
@@ -8182,7 +8099,7 @@ export interface ListReleaseSummariesResponse {
   /** List of releases for this track. A maximum of 20 releases can be returned. */
   releases?: ReleaseSummaryList;
 }
-export const ListReleaseSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleaseSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releases: S.optional(ReleaseSummaryList),
   }),
@@ -8196,7 +8113,7 @@ export interface ListApprecoveryRequest {
   /** Required. Package name of the app for which list of recovery actions is requested. */
   packageName: string;
 }
-export const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.optional(S.String.pipe(T.Query())),
     packageName: S.String.pipe(T.Label()),
@@ -8210,7 +8127,7 @@ export const ListApprecoveryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApprecoveryRequest" }) as any as S.Schema<ListApprecoveryRequest>;
 
 export type AppRecoveryActionList = Array<AppRecoveryAction>;
-export const AppRecoveryActionList = /*@__PURE__*/ S.Array(
+const AppRecoveryActionList = /*@__PURE__*/ S.Array(
   AppRecoveryAction,
 ) as any as S.Schema<AppRecoveryActionList>;
 
@@ -8219,7 +8136,7 @@ export interface ListAppRecoveriesResponse {
   /** List of recovery actions associated with the requested package name. */
   recoveryActions?: AppRecoveryActionList;
 }
-export const ListAppRecoveriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppRecoveriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recoveryActions: S.optional(AppRecoveryActionList),
   }),
@@ -8239,7 +8156,7 @@ export interface ListAppstorecatalogRecentupdateeventsRequest {
   /** Required. The end time of the range (exclusive). */
   endTime?: string;
 }
-export const ListAppstorecatalogRecentupdateeventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppstorecatalogRecentupdateeventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     appStorePackageName: S.String.pipe(T.Label()),
@@ -8261,7 +8178,7 @@ export type RecentUpdateEventUpdateTypeEnum =
   | "UPDATE_TYPE_UNSPECIFIED"
   | "MODIFICATION"
   | "DELETION";
-export const RecentUpdateEventUpdateTypeEnum = S.String;
+const RecentUpdateEventUpdateTypeEnum = S.String;
 
 /** A recent update event. */
 export interface RecentUpdateEvent {
@@ -8272,7 +8189,7 @@ export interface RecentUpdateEvent {
   /** The type of the update event. */
   updateType?: RecentUpdateEventUpdateTypeEnum;
 }
-export const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
     playAppPackageName: S.optional(S.String),
@@ -8281,7 +8198,7 @@ export const RecentUpdateEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecentUpdateEvent" }) as any as S.Schema<RecentUpdateEvent>;
 
 export type RecentUpdateEventList = Array<RecentUpdateEvent>;
-export const RecentUpdateEventList = /*@__PURE__*/ S.Array(
+const RecentUpdateEventList = /*@__PURE__*/ S.Array(
   RecentUpdateEvent,
 ) as any as S.Schema<RecentUpdateEventList>;
 
@@ -8292,7 +8209,7 @@ export interface ListRecentUpdateEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListRecentUpdateEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecentUpdateEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recentUpdateEvents: S.optional(RecentUpdateEventList),
     nextPageToken: S.optional(S.String),
@@ -8307,7 +8224,7 @@ export interface ListEditsApksRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const ListEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -8327,7 +8244,7 @@ export interface ApkBinary {
   /** A sha1 hash of the APK payload, encoded as a hex string and matching the output of the sha1sum command. */
   sha1?: string;
 }
-export const ApkBinary = /*@__PURE__*/ S.suspend(() =>
+const ApkBinary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256: S.optional(S.String),
     sha1: S.optional(S.String),
@@ -8341,7 +8258,7 @@ export interface Apk {
   /** Information about the binary payload of this APK. */
   binary?: ApkBinary;
 }
-export const Apk = /*@__PURE__*/ S.suspend(() =>
+const Apk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.optional(S.Number),
     binary: S.optional(ApkBinary),
@@ -8349,7 +8266,7 @@ export const Apk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Apk" }) as any as S.Schema<Apk>;
 
 export type ApkList = Array<Apk>;
-export const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
+const ApkList = /*@__PURE__*/ S.Array(Apk) as any as S.Schema<ApkList>;
 
 /** Response listing all APKs. */
 export interface ApksListResponse {
@@ -8358,7 +8275,7 @@ export interface ApksListResponse {
   /** All APKs. */
   apks?: ApkList;
 }
-export const ApksListResponse = /*@__PURE__*/ S.suspend(() =>
+const ApksListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     apks: S.optional(ApkList),
@@ -8371,7 +8288,7 @@ export interface ListEditsBundlesRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const ListEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -8393,7 +8310,7 @@ export interface Bundle {
   /** A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command. */
   sha256?: string;
 }
-export const Bundle = /*@__PURE__*/ S.suspend(() =>
+const Bundle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha1: S.optional(S.String),
     versionCode: S.optional(S.Number),
@@ -8402,7 +8319,7 @@ export const Bundle = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bundle" }) as any as S.Schema<Bundle>;
 
 export type BundleList = Array<Bundle>;
-export const BundleList = /*@__PURE__*/ S.Array(Bundle) as any as S.Schema<BundleList>;
+const BundleList = /*@__PURE__*/ S.Array(Bundle) as any as S.Schema<BundleList>;
 
 /** Response listing all app bundles. */
 export interface BundlesListResponse {
@@ -8411,7 +8328,7 @@ export interface BundlesListResponse {
   /** All app bundles. */
   bundles?: BundleList;
 }
-export const BundlesListResponse = /*@__PURE__*/ S.suspend(() =>
+const BundlesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     bundles: S.optional(BundleList),
@@ -8428,7 +8345,7 @@ export type ListEditsImagesImageTypeEnum =
   | "icon"
   | "featureGraphic"
   | "tvBanner";
-export const ListEditsImagesImageTypeEnum = S.String;
+const ListEditsImagesImageTypeEnum = S.String;
 
 export interface ListEditsImagesRequest {
   /** Package name of the app. */
@@ -8440,7 +8357,7 @@ export interface ListEditsImagesRequest {
   /** Type of the Image. Providing an image type that refers to no images will return an empty response. */
   imageType: ListEditsImagesImageTypeEnum | (string & {});
 }
-export const ListEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     language: S.String.pipe(T.Label()),
@@ -8460,7 +8377,7 @@ export interface ImagesListResponse {
   /** All listed Images. */
   images?: ImageList;
 }
-export const ImagesListResponse = /*@__PURE__*/ S.suspend(() =>
+const ImagesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     images: S.optional(ImageList),
   }),
@@ -8472,7 +8389,7 @@ export interface ListEditsListingsRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -8486,7 +8403,7 @@ export const ListEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEditsListingsRequest" }) as any as S.Schema<ListEditsListingsRequest>;
 
 export type ListingList = Array<Listing>;
-export const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
+const ListingList = /*@__PURE__*/ S.Array(Listing) as any as S.Schema<ListingList>;
 
 /** Response listing all localized listings. */
 export interface ListingsListResponse {
@@ -8495,7 +8412,7 @@ export interface ListingsListResponse {
   /** The kind of this response ("androidpublisher#listingsListResponse"). */
   kind?: string;
 }
-export const ListingsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListingsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listings: S.optional(ListingList),
     kind: S.optional(S.String),
@@ -8508,7 +8425,7 @@ export interface ListEditsTracksRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -8522,7 +8439,7 @@ export const ListEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEditsTracksRequest" }) as any as S.Schema<ListEditsTracksRequest>;
 
 export type TrackList = Array<Track>;
-export const TrackList = /*@__PURE__*/ S.Array(Track) as any as S.Schema<TrackList>;
+const TrackList = /*@__PURE__*/ S.Array(Track) as any as S.Schema<TrackList>;
 
 /** Response listing all tracks. */
 export interface TracksListResponse {
@@ -8531,7 +8448,7 @@ export interface TracksListResponse {
   /** All tracks (including tracks with no releases). */
   tracks?: TrackList;
 }
-export const TracksListResponse = /*@__PURE__*/ S.suspend(() =>
+const TracksListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     tracks: S.optional(TrackList),
@@ -8544,7 +8461,7 @@ export interface ListGeneratedapksRequest {
   /** Version code of the app bundle. */
   versionCode: number;
 }
-export const ListGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGeneratedapksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     versionCode: S.Number.pipe(T.Label()),
@@ -8568,7 +8485,7 @@ export interface GeneratedSplitApk {
   /** Name of the module that this APK belongs to. */
   moduleName?: string;
 }
-export const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
+const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     splitId: S.optional(S.String),
     downloadId: S.optional(S.String),
@@ -8578,7 +8495,7 @@ export const GeneratedSplitApk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneratedSplitApk" }) as any as S.Schema<GeneratedSplitApk>;
 
 export type GeneratedSplitApkList = Array<GeneratedSplitApk>;
-export const GeneratedSplitApkList = /*@__PURE__*/ S.Array(
+const GeneratedSplitApkList = /*@__PURE__*/ S.Array(
   GeneratedSplitApk,
 ) as any as S.Schema<GeneratedSplitApkList>;
 
@@ -8589,7 +8506,7 @@ export interface GeneratedStandaloneApk {
   /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
   downloadId?: string;
 }
-export const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
+const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variantId: S.optional(S.Number),
     downloadId: S.optional(S.String),
@@ -8597,7 +8514,7 @@ export const GeneratedStandaloneApk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneratedStandaloneApk" }) as any as S.Schema<GeneratedStandaloneApk>;
 
 export type GeneratedStandaloneApkList = Array<GeneratedStandaloneApk>;
-export const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(
+const GeneratedStandaloneApkList = /*@__PURE__*/ S.Array(
   GeneratedStandaloneApk,
 ) as any as S.Schema<GeneratedStandaloneApkList>;
 
@@ -8612,7 +8529,7 @@ export interface GeneratedAssetPackSlice {
   /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
   downloadId?: string;
 }
-export const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
+const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sliceId: S.optional(S.String),
     moduleName: S.optional(S.String),
@@ -8622,7 +8539,7 @@ export const GeneratedAssetPackSlice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneratedAssetPackSlice" }) as any as S.Schema<GeneratedAssetPackSlice>;
 
 export type GeneratedAssetPackSliceList = Array<GeneratedAssetPackSlice>;
-export const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(
+const GeneratedAssetPackSliceList = /*@__PURE__*/ S.Array(
   GeneratedAssetPackSlice,
 ) as any as S.Schema<GeneratedAssetPackSliceList>;
 
@@ -8633,7 +8550,7 @@ export type GeneratedRecoveryApkRecoveryStatusEnum =
   | "RECOVERY_STATUS_DRAFT"
   | "RECOVERY_STATUS_GENERATION_IN_PROGRESS"
   | "RECOVERY_STATUS_GENERATION_FAILED";
-export const GeneratedRecoveryApkRecoveryStatusEnum = S.String;
+const GeneratedRecoveryApkRecoveryStatusEnum = S.String;
 
 /** Download metadata for an app recovery module. */
 export interface GeneratedRecoveryApk {
@@ -8646,7 +8563,7 @@ export interface GeneratedRecoveryApk {
   /** The status of the recovery action corresponding to the recovery apk. */
   recoveryStatus?: GeneratedRecoveryApkRecoveryStatusEnum;
 }
-export const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
+const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleName: S.optional(S.String),
     downloadId: S.optional(S.String),
@@ -8656,7 +8573,7 @@ export const GeneratedRecoveryApk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneratedRecoveryApk" }) as any as S.Schema<GeneratedRecoveryApk>;
 
 export type GeneratedRecoveryApkList = Array<GeneratedRecoveryApk>;
-export const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(
+const GeneratedRecoveryApkList = /*@__PURE__*/ S.Array(
   GeneratedRecoveryApk,
 ) as any as S.Schema<GeneratedRecoveryApkList>;
 
@@ -8665,7 +8582,7 @@ export type AssetModuleMetadataDeliveryTypeEnum =
   | "INSTALL_TIME"
   | "ON_DEMAND"
   | "FAST_FOLLOW";
-export const AssetModuleMetadataDeliveryTypeEnum = S.String;
+const AssetModuleMetadataDeliveryTypeEnum = S.String;
 
 /** Metadata of an asset module. */
 export interface AssetModuleMetadata {
@@ -8674,7 +8591,7 @@ export interface AssetModuleMetadata {
   /** Indicates the delivery type for persistent install. */
   deliveryType?: AssetModuleMetadataDeliveryTypeEnum;
 }
-export const AssetModuleMetadata = /*@__PURE__*/ S.suspend(() =>
+const AssetModuleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     deliveryType: S.optional(AssetModuleMetadataDeliveryTypeEnum),
@@ -8688,7 +8605,7 @@ export interface SplitApkMetadata {
   /** Indicates whether this APK is the main split of the module. */
   isMasterSplit?: boolean;
 }
-export const SplitApkMetadata = /*@__PURE__*/ S.suspend(() =>
+const SplitApkMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     splitId: S.optional(S.String),
     isMasterSplit: S.optional(S.Boolean),
@@ -8707,21 +8624,21 @@ export type TextureCompressionFormatAliasEnum =
   | "PVRTC"
   | "ASTC"
   | "ETC2";
-export const TextureCompressionFormatAliasEnum = S.String;
+const TextureCompressionFormatAliasEnum = S.String;
 
 /** Represents texture compression format. */
 export interface TextureCompressionFormat {
   /** Alias for texture compression format. */
   alias?: TextureCompressionFormatAliasEnum;
 }
-export const TextureCompressionFormat = /*@__PURE__*/ S.suspend(() =>
+const TextureCompressionFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(TextureCompressionFormatAliasEnum),
   }),
 ).annotate({ identifier: "TextureCompressionFormat" }) as any as S.Schema<TextureCompressionFormat>;
 
 export type TextureCompressionFormatList = Array<TextureCompressionFormat>;
-export const TextureCompressionFormatList = /*@__PURE__*/ S.Array(
+const TextureCompressionFormatList = /*@__PURE__*/ S.Array(
   TextureCompressionFormat,
 ) as any as S.Schema<TextureCompressionFormatList>;
 
@@ -8732,7 +8649,7 @@ export interface TextureCompressionFormatTargeting {
   /** The list of targeted TCFs. Should not be empty. */
   value?: TextureCompressionFormatList;
 }
-export const TextureCompressionFormatTargeting = /*@__PURE__*/ S.suspend(() =>
+const TextureCompressionFormatTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternatives: S.optional(TextureCompressionFormatList),
     value: S.optional(TextureCompressionFormatList),
@@ -8748,7 +8665,7 @@ export interface LanguageTargeting {
   /** Alternative languages. */
   alternatives?: StringList;
 }
-export const LanguageTargeting = /*@__PURE__*/ S.suspend(() =>
+const LanguageTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(StringList),
     alternatives: S.optional(StringList),
@@ -8763,17 +8680,15 @@ export type AbiAliasEnum =
   | "X86"
   | "X86_64"
   | "RISCV64";
-export const AbiAliasEnum = S.String;
-
 /** Represents an Abi. */
 export interface Abi {
   /** Alias for an abi. */
   alias?: AbiAliasEnum;
 }
-export const Abi = TextureCompressionFormat as any as S.Schema<Abi>;
+const Abi = TextureCompressionFormat as any as S.Schema<Abi>;
 
 export type AbiList = Array<Abi>;
-export const AbiList = /*@__PURE__*/ S.Array(Abi) as any as S.Schema<AbiList>;
+const AbiList = /*@__PURE__*/ S.Array(Abi) as any as S.Schema<AbiList>;
 
 /** Targeting based on Abi. */
 export interface AbiTargeting {
@@ -8782,7 +8697,7 @@ export interface AbiTargeting {
   /** Value of an abi. */
   value?: AbiList;
 }
-export const AbiTargeting = /*@__PURE__*/ S.suspend(() =>
+const AbiTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternatives: S.optional(AbiList),
     value: S.optional(AbiList),
@@ -8799,7 +8714,7 @@ export type ScreenDensityDensityAliasEnum =
   | "XHDPI"
   | "XXHDPI"
   | "XXXHDPI";
-export const ScreenDensityDensityAliasEnum = S.String;
+const ScreenDensityDensityAliasEnum = S.String;
 
 /** Represents a screen density. */
 export interface ScreenDensity {
@@ -8808,7 +8723,7 @@ export interface ScreenDensity {
   /** Value for density dpi. */
   densityDpi?: number;
 }
-export const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
+const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     densityAlias: S.optional(ScreenDensityDensityAliasEnum),
     densityDpi: S.optional(S.Number),
@@ -8816,7 +8731,7 @@ export const ScreenDensity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScreenDensity" }) as any as S.Schema<ScreenDensity>;
 
 export type ScreenDensityList = Array<ScreenDensity>;
-export const ScreenDensityList = /*@__PURE__*/ S.Array(
+const ScreenDensityList = /*@__PURE__*/ S.Array(
   ScreenDensity,
 ) as any as S.Schema<ScreenDensityList>;
 
@@ -8827,7 +8742,7 @@ export interface ScreenDensityTargeting {
   /** Value of a screen density. */
   value?: ScreenDensityList;
 }
-export const ScreenDensityTargeting = /*@__PURE__*/ S.suspend(() =>
+const ScreenDensityTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternatives: S.optional(ScreenDensityList),
     value: S.optional(ScreenDensityList),
@@ -8839,14 +8754,14 @@ export interface SdkVersion {
   /** Inclusive minimum value of an sdk version. */
   min?: number;
 }
-export const SdkVersion = /*@__PURE__*/ S.suspend(() =>
+const SdkVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.Number),
   }),
 ).annotate({ identifier: "SdkVersion" }) as any as S.Schema<SdkVersion>;
 
 export type SdkVersionList = Array<SdkVersion>;
-export const SdkVersionList = /*@__PURE__*/ S.Array(SdkVersion) as any as S.Schema<SdkVersionList>;
+const SdkVersionList = /*@__PURE__*/ S.Array(SdkVersion) as any as S.Schema<SdkVersionList>;
 
 /** Targeting based on sdk version. */
 export interface SdkVersionTargeting {
@@ -8855,7 +8770,7 @@ export interface SdkVersionTargeting {
   /** Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other main splits. */
   alternatives?: SdkVersionList;
 }
-export const SdkVersionTargeting = /*@__PURE__*/ S.suspend(() =>
+const SdkVersionTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SdkVersionList),
     alternatives: S.optional(SdkVersionList),
@@ -8867,14 +8782,14 @@ export interface MultiAbi {
   /** A list of targeted ABIs, as represented by the Android Platform */
   abi?: AbiList;
 }
-export const MultiAbi = /*@__PURE__*/ S.suspend(() =>
+const MultiAbi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     abi: S.optional(AbiList),
   }),
 ).annotate({ identifier: "MultiAbi" }) as any as S.Schema<MultiAbi>;
 
 export type MultiAbiList = Array<MultiAbi>;
-export const MultiAbiList = /*@__PURE__*/ S.Array(MultiAbi) as any as S.Schema<MultiAbiList>;
+const MultiAbiList = /*@__PURE__*/ S.Array(MultiAbi) as any as S.Schema<MultiAbiList>;
 
 /** Targeting based on multiple abis. */
 export interface MultiAbiTargeting {
@@ -8883,7 +8798,7 @@ export interface MultiAbiTargeting {
   /** Value of a multi abi. */
   value?: MultiAbiList;
 }
-export const MultiAbiTargeting = /*@__PURE__*/ S.suspend(() =>
+const MultiAbiTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternatives: S.optional(MultiAbiList),
     value: S.optional(MultiAbiList),
@@ -8905,7 +8820,7 @@ export interface ApkTargeting {
   /** Multi-api-level targeting. */
   multiAbiTargeting?: MultiAbiTargeting;
 }
-export const ApkTargeting = /*@__PURE__*/ S.suspend(() =>
+const ApkTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textureCompressionFormatTargeting: S.optional(TextureCompressionFormatTargeting),
     languageTargeting: S.optional(LanguageTargeting),
@@ -8921,7 +8836,7 @@ export interface StandaloneApkMetadata {
   /** Names of the modules fused in this standalone APK. */
   fusedModuleName?: StringList;
 }
-export const StandaloneApkMetadata = /*@__PURE__*/ S.suspend(() =>
+const StandaloneApkMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fusedModuleName: S.optional(StringList),
   }),
@@ -8942,7 +8857,7 @@ export interface ApkDescription {
   /** Set only for Split APKs. */
   splitApkMetadata?: SplitApkMetadata;
 }
-export const ApkDescription = /*@__PURE__*/ S.suspend(() =>
+const ApkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instantApkMetadata: S.optional(SplitApkMetadata),
     targeting: S.optional(ApkTargeting),
@@ -8954,7 +8869,7 @@ export const ApkDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApkDescription" }) as any as S.Schema<ApkDescription>;
 
 export type ApkDescriptionList = Array<ApkDescription>;
-export const ApkDescriptionList = /*@__PURE__*/ S.Array(
+const ApkDescriptionList = /*@__PURE__*/ S.Array(
   ApkDescription,
 ) as any as S.Schema<ApkDescriptionList>;
 
@@ -8965,7 +8880,7 @@ export interface AssetSliceSet {
   /** Asset slices. */
   apkDescription?: ApkDescriptionList;
 }
-export const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
+const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetModuleMetadata: S.optional(AssetModuleMetadata),
     apkDescription: S.optional(ApkDescriptionList),
@@ -8973,12 +8888,12 @@ export const AssetSliceSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssetSliceSet" }) as any as S.Schema<AssetSliceSet>;
 
 export type AssetSliceSetList = Array<AssetSliceSet>;
-export const AssetSliceSetList = /*@__PURE__*/ S.Array(
+const AssetSliceSetList = /*@__PURE__*/ S.Array(
   AssetSliceSet,
 ) as any as S.Schema<AssetSliceSetList>;
 
 export type ModuleMetadataModuleTypeEnum = "UNKNOWN_MODULE_TYPE" | "FEATURE_MODULE";
-export const ModuleMetadataModuleTypeEnum = S.String;
+const ModuleMetadataModuleTypeEnum = S.String;
 
 /** Describes an inclusive/exclusive list of country codes that module targets. */
 export interface UserCountriesTargeting {
@@ -8987,7 +8902,7 @@ export interface UserCountriesTargeting {
   /** List of country codes in the two-letter CLDR territory format. */
   countryCodes?: StringList;
 }
-export const UserCountriesTargeting = /*@__PURE__*/ S.suspend(() =>
+const UserCountriesTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.Boolean),
     countryCodes: S.optional(StringList),
@@ -9001,7 +8916,7 @@ export interface DeviceFeature {
   /** The feature version specified by android:glEsVersion or android:version in in the AndroidManifest. */
   featureVersion?: number;
 }
-export const DeviceFeature = /*@__PURE__*/ S.suspend(() =>
+const DeviceFeature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     featureName: S.optional(S.String),
     featureVersion: S.optional(S.Number),
@@ -9013,14 +8928,14 @@ export interface DeviceFeatureTargeting {
   /** Feature of the device. */
   requiredFeature?: DeviceFeature;
 }
-export const DeviceFeatureTargeting = /*@__PURE__*/ S.suspend(() =>
+const DeviceFeatureTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredFeature: S.optional(DeviceFeature),
   }),
 ).annotate({ identifier: "DeviceFeatureTargeting" }) as any as S.Schema<DeviceFeatureTargeting>;
 
 export type DeviceFeatureTargetingList = Array<DeviceFeatureTargeting>;
-export const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(
+const DeviceFeatureTargetingList = /*@__PURE__*/ S.Array(
   DeviceFeatureTargeting,
 ) as any as S.Schema<DeviceFeatureTargetingList>;
 
@@ -9033,7 +8948,7 @@ export interface ModuleTargeting {
   /** Targeting for device features. */
   deviceFeatureTargeting?: DeviceFeatureTargetingList;
 }
-export const ModuleTargeting = /*@__PURE__*/ S.suspend(() =>
+const ModuleTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdkVersionTargeting: S.optional(SdkVersionTargeting),
     userCountriesTargeting: S.optional(UserCountriesTargeting),
@@ -9046,7 +8961,7 @@ export type ModuleMetadataDeliveryTypeEnum =
   | "INSTALL_TIME"
   | "ON_DEMAND"
   | "FAST_FOLLOW";
-export const ModuleMetadataDeliveryTypeEnum = S.String;
+const ModuleMetadataDeliveryTypeEnum = S.String;
 
 /** Metadata of a module. */
 export interface ModuleMetadata {
@@ -9061,7 +8976,7 @@ export interface ModuleMetadata {
   /** Indicates the delivery type (e.g. on-demand) of the module. */
   deliveryType?: ModuleMetadataDeliveryTypeEnum;
 }
-export const ModuleMetadata = /*@__PURE__*/ S.suspend(() =>
+const ModuleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleType: S.optional(ModuleMetadataModuleTypeEnum),
     name: S.optional(S.String),
@@ -9078,7 +8993,7 @@ export interface ApkSet {
   /** Description of the generated apks. */
   apkDescription?: ApkDescriptionList;
 }
-export const ApkSet = /*@__PURE__*/ S.suspend(() =>
+const ApkSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleMetadata: S.optional(ModuleMetadata),
     apkDescription: S.optional(ApkDescriptionList),
@@ -9086,7 +9001,7 @@ export const ApkSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApkSet" }) as any as S.Schema<ApkSet>;
 
 export type ApkSetList = Array<ApkSet>;
-export const ApkSetList = /*@__PURE__*/ S.Array(ApkSet) as any as S.Schema<ApkSetList>;
+const ApkSetList = /*@__PURE__*/ S.Array(ApkSet) as any as S.Schema<ApkSetList>;
 
 /** Targeting on the level of variants. */
 export interface VariantTargeting {
@@ -9101,7 +9016,7 @@ export interface VariantTargeting {
   /** Multi-api-level targeting */
   multiAbiTargeting?: MultiAbiTargeting;
 }
-export const VariantTargeting = /*@__PURE__*/ S.suspend(() =>
+const VariantTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdkVersionTargeting: S.optional(SdkVersionTargeting),
     textureCompressionFormatTargeting: S.optional(TextureCompressionFormatTargeting),
@@ -9120,7 +9035,7 @@ export interface SplitApkVariant {
   /** Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant that matches the device configuration, with higher variant numbers having priority over lower variant numbers. */
   variantNumber?: number;
 }
-export const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
+const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apkSet: S.optional(ApkSetList),
     targeting: S.optional(VariantTargeting),
@@ -9129,7 +9044,7 @@ export const SplitApkVariant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SplitApkVariant" }) as any as S.Schema<SplitApkVariant>;
 
 export type SplitApkVariantList = Array<SplitApkVariant>;
-export const SplitApkVariantList = /*@__PURE__*/ S.Array(
+const SplitApkVariantList = /*@__PURE__*/ S.Array(
   SplitApkVariant,
 ) as any as S.Schema<SplitApkVariantList>;
 
@@ -9142,7 +9057,7 @@ export interface TargetingInfo {
   /** List of the created variants. */
   variant?: SplitApkVariantList;
 }
-export const TargetingInfo = /*@__PURE__*/ S.suspend(() =>
+const TargetingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     assetSliceSet: S.optional(AssetSliceSetList),
@@ -9155,7 +9070,7 @@ export interface GeneratedUniversalApk {
   /** Download ID, which uniquely identifies the APK to download. Should be supplied to `generatedapks.download` method. */
   downloadId?: string;
 }
-export const GeneratedUniversalApk = /*@__PURE__*/ S.suspend(() =>
+const GeneratedUniversalApk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadId: S.optional(S.String),
   }),
@@ -9182,7 +9097,7 @@ export interface GeneratedApksPerSigningKey {
   /** List of generated split APKs without automatic protection, signed with a key corresponding to certificate_sha256_hash. This field is only present if the app uses automatic protection. In this case, `generated_split_apks` contains APKs with automatic protection enabled, whereas this field contains APKs without automatic protection. */
   unprotectedGeneratedSplitApks?: GeneratedSplitApkList;
 }
-export const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
+const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generatedSplitApks: S.optional(GeneratedSplitApkList),
     unprotectedGeneratedStandaloneApks: S.optional(GeneratedStandaloneApkList),
@@ -9199,7 +9114,7 @@ export const GeneratedApksPerSigningKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GeneratedApksPerSigningKey>;
 
 export type GeneratedApksPerSigningKeyList = Array<GeneratedApksPerSigningKey>;
-export const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(
+const GeneratedApksPerSigningKeyList = /*@__PURE__*/ S.Array(
   GeneratedApksPerSigningKey,
 ) as any as S.Schema<GeneratedApksPerSigningKeyList>;
 
@@ -9208,7 +9123,7 @@ export interface GeneratedApksListResponse {
   /** All generated APKs, grouped by the APK signing key. */
   generatedApks?: GeneratedApksPerSigningKeyList;
 }
-export const GeneratedApksListResponse = /*@__PURE__*/ S.suspend(() =>
+const GeneratedApksListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generatedApks: S.optional(GeneratedApksPerSigningKeyList),
   }),
@@ -9226,7 +9141,7 @@ export interface ListInappproductsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const ListInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -9247,7 +9162,7 @@ export interface TokenPagination {
   /** Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index. */
   nextPageToken?: string;
 }
-export const TokenPagination = /*@__PURE__*/ S.suspend(() =>
+const TokenPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previousPageToken: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -9263,7 +9178,7 @@ export interface PageInfo {
   /** Index of the first result returned in the current page. */
   startIndex?: number;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resultPerPage: S.optional(S.Number),
     totalResults: S.optional(S.Number),
@@ -9282,7 +9197,7 @@ export interface InappproductsListResponse {
   /** Deprecated and unset. */
   pageInfo?: PageInfo;
 }
-export const InappproductsListResponse = /*@__PURE__*/ S.suspend(() =>
+const InappproductsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inappproduct: S.optional(InAppProductList),
     kind: S.optional(S.String),
@@ -9301,7 +9216,7 @@ export interface ListMonetizationOnetimeproductsRequest {
   /** Required. The parent app (package name) for which the one-time product should be read. */
   packageName: string;
 }
-export const ListMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9324,7 +9239,7 @@ export interface ListOneTimeProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOneTimeProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneTimeProducts: S.optional(OneTimeProductList),
     nextPageToken: S.optional(S.String),
@@ -9345,21 +9260,20 @@ export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
   /** Optional. The maximum number of offers to return. The service may return fewer than this value. If unspecified, at most 50 offers will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productId: S.String.pipe(T.Label()),
-      purchaseOptionId: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      packageName: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
+const ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productId: S.String.pipe(T.Label()),
+    purchaseOptionId: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    packageName: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "androidpublisher/v3/applications/{packageName}/oneTimeProducts/{productId}/purchaseOptions/{purchaseOptionId}/offers",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest",
 }) as any as S.Schema<ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest>;
@@ -9371,7 +9285,7 @@ export interface ListOneTimeProductOffersResponse {
   /** The one_time_product offers from the specified request. */
   oneTimeProductOffers?: OneTimeProductOfferList;
 }
-export const ListOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOneTimeProductOffersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     oneTimeProductOffers: S.optional(OneTimeProductOfferList),
@@ -9390,7 +9304,7 @@ export interface ListMonetizationSubscriptionsRequest {
   /** A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     showArchived: S.optional(S.Boolean.pipe(T.Query())),
@@ -9414,7 +9328,7 @@ export interface ListSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -9435,7 +9349,7 @@ export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
   /** The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 50 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -9460,7 +9374,7 @@ export interface ListSubscriptionOffersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionOffersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionOffers: S.optional(SubscriptionOfferList),
     nextPageToken: S.optional(S.String),
@@ -9487,7 +9401,7 @@ export interface ListPurchasesVoidedpurchasesRequest {
   /** The time, in milliseconds since the Epoch, of the newest voided purchase that you want to see in the response. The value of this parameter cannot be greater than the current time and is ignored if a pagination token is set. Default value is current time. Note: This filter is applied on the time at which the record is seen as voided by our systems and not the actual voided time returned in the response. */
   endTime?: string;
 }
-export const ListPurchasesVoidedpurchasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPurchasesVoidedpurchasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     includeQuantityBasedPartialRefund: S.optional(S.Boolean.pipe(T.Query())),
@@ -9527,7 +9441,7 @@ export interface VoidedPurchase {
   /** The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970). */
   voidedTimeMillis?: string;
 }
-export const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
+const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     purchaseTimeMillis: S.optional(S.String),
@@ -9541,7 +9455,7 @@ export const VoidedPurchase = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VoidedPurchase" }) as any as S.Schema<VoidedPurchase>;
 
 export type VoidedPurchaseList = Array<VoidedPurchase>;
-export const VoidedPurchaseList = /*@__PURE__*/ S.Array(
+const VoidedPurchaseList = /*@__PURE__*/ S.Array(
   VoidedPurchase,
 ) as any as S.Schema<VoidedPurchaseList>;
 
@@ -9553,7 +9467,7 @@ export interface VoidedPurchasesListResponse {
   /** Pagination information for token pagination. */
   tokenPagination?: TokenPagination;
 }
-export const VoidedPurchasesListResponse = /*@__PURE__*/ S.suspend(() =>
+const VoidedPurchasesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageInfo: S.optional(PageInfo),
     voidedPurchases: S.optional(VoidedPurchaseList),
@@ -9575,7 +9489,7 @@ export interface ListReviewsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     token: S.optional(S.String.pipe(T.Query())),
@@ -9592,7 +9506,7 @@ export const ListReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListReviewsRequest" }) as any as S.Schema<ListReviewsRequest>;
 
 export type ReviewList = Array<Review>;
-export const ReviewList = /*@__PURE__*/ S.Array(Review) as any as S.Schema<ReviewList>;
+const ReviewList = /*@__PURE__*/ S.Array(Review) as any as S.Schema<ReviewList>;
 
 /** Response listing reviews. */
 export interface ReviewsListResponse {
@@ -9603,7 +9517,7 @@ export interface ReviewsListResponse {
   /** Pagination token, to handle a number of products that is over one page. */
   tokenPagination?: TokenPagination;
 }
-export const ReviewsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviews: S.optional(ReviewList),
     pageInfo: S.optional(PageInfo),
@@ -9617,7 +9531,7 @@ export interface ListSystemapksVariantsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionCode: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -9633,14 +9547,14 @@ export const ListSystemapksVariantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSystemapksVariantsRequest>;
 
 export type VariantList = Array<Variant>;
-export const VariantList = /*@__PURE__*/ S.Array(Variant) as any as S.Schema<VariantList>;
+const VariantList = /*@__PURE__*/ S.Array(Variant) as any as S.Schema<VariantList>;
 
 /** Response to list previously created system APK variants. */
 export interface SystemApksListResponse {
   /** All system APK variants created. */
   variants?: VariantList;
 }
-export const SystemApksListResponse = /*@__PURE__*/ S.suspend(() =>
+const SystemApksListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variants: S.optional(VariantList),
   }),
@@ -9654,7 +9568,7 @@ export interface ListUsersRequest {
   /** A token received from a previous call to this method, in order to retrieve further results. */
   pageToken?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -9669,7 +9583,7 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** A response containing one or more users with access to an account. */
 export interface ListUsersResponse {
@@ -9678,7 +9592,7 @@ export interface ListUsersResponse {
   /** A token to pass to subsequent calls in order to retrieve subsequent results. This will not be set if there are no more results to return. */
   nextPageToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(UserList),
     nextPageToken: S.optional(S.String),
@@ -9695,7 +9609,7 @@ export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
   /** Request body */
   body?: MigrateBasePlanPricesRequest;
 }
-export const MigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
+const MigratePricesMonetizationSubscriptionsBasePlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -9720,7 +9634,7 @@ export interface PatchEditsDetailsRequest {
   /** Request body */
   body?: AppDetails;
 }
-export const PatchEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -9738,7 +9652,7 @@ export type PatchEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
   | "patch";
-export const PatchEditsExpansionfilesExpansionFileTypeEnum = S.String;
+const PatchEditsExpansionfilesExpansionFileTypeEnum = S.String;
 
 export interface PatchEditsExpansionfilesRequest {
   /** The file type of the expansion file configuration which is being updated. */
@@ -9752,7 +9666,7 @@ export interface PatchEditsExpansionfilesRequest {
   /** Request body */
   body?: ExpansionFile;
 }
-export const PatchEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expansionFileType: PatchEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -9780,7 +9694,7 @@ export interface PatchEditsListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const PatchEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -9807,7 +9721,7 @@ export interface PatchEditsTestersRequest {
   /** Request body */
   body?: Testers;
 }
-export const PatchEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     track: S.String.pipe(T.Label()),
@@ -9832,7 +9746,7 @@ export interface PatchEditsTracksRequest {
   /** Request body */
   body?: Track;
 }
-export const PatchEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -9855,7 +9769,7 @@ export interface PatchGrantsRequest {
   /** Request body */
   body?: Grant;
 }
-export const PatchGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9873,7 +9787,7 @@ export type PatchInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const PatchInappproductsLatencyToleranceEnum = S.String;
+const PatchInappproductsLatencyToleranceEnum = S.String;
 
 export interface PatchInappproductsRequest {
   /** Package name of the app. */
@@ -9887,7 +9801,7 @@ export interface PatchInappproductsRequest {
   /** Request body */
   body?: InAppProduct;
 }
-export const PatchInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     sku: S.String.pipe(T.Label()),
@@ -9909,7 +9823,7 @@ export type PatchMonetizationOnetimeproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const PatchMonetizationOnetimeproductsLatencyToleranceEnum = S.String;
+const PatchMonetizationOnetimeproductsLatencyToleranceEnum = S.String;
 
 export interface PatchMonetizationOnetimeproductsRequest {
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
@@ -9927,7 +9841,7 @@ export interface PatchMonetizationOnetimeproductsRequest {
   /** Request body */
   body?: OneTimeProduct;
 }
-export const PatchMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMonetizationOnetimeproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9953,7 +9867,7 @@ export type PatchMonetizationSubscriptionsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const PatchMonetizationSubscriptionsLatencyToleranceEnum = S.String;
+const PatchMonetizationSubscriptionsLatencyToleranceEnum = S.String;
 
 export interface PatchMonetizationSubscriptionsRequest {
   /** Required. The list of fields to be updated. */
@@ -9971,7 +9885,7 @@ export interface PatchMonetizationSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const PatchMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMonetizationSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     latencyTolerance: S.optional(
@@ -9997,7 +9911,7 @@ export type PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum = S.String;
+const PatchMonetizationSubscriptionsBasePlansOffersLatencyToleranceEnum = S.String;
 
 export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. */
@@ -10021,7 +9935,7 @@ export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
   /** Request body */
   body?: SubscriptionOffer;
 }
-export const PatchMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMonetizationSubscriptionsBasePlansOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "regionsVersion.version": S.optional(S.String.pipe(T.Query())),
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -10053,7 +9967,7 @@ export interface PatchUsersRequest {
   /** Request body */
   body?: User;
 }
-export const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -10074,7 +9988,7 @@ export interface PartialRefund {
   /** Required. The pre-tax amount of the partial refund. Should be less than the remaining pre-tax amount of the transaction. */
   refundPreTaxAmount?: Price;
 }
-export const PartialRefund = /*@__PURE__*/ S.suspend(() =>
+const PartialRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundId: S.optional(S.String),
     refundPreTaxAmount: S.optional(Price),
@@ -10083,8 +9997,6 @@ export const PartialRefund = /*@__PURE__*/ S.suspend(() =>
 
 /** A full refund of the remaining amount of a transaction. */
 export type FullRefund = OneTimeProductOfferNoPriceOverrideOptions;
-export const FullRefund = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** A request to refund an existing external transaction. */
 export interface RefundExternalTransactionRequest {
   /** Required. The time that the transaction was refunded. */
@@ -10094,7 +10006,7 @@ export interface RefundExternalTransactionRequest {
   /** A full-amount refund. */
   fullRefund?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const RefundExternalTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const RefundExternalTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refundTime: S.optional(S.String),
     partialRefund: S.optional(PartialRefund),
@@ -10110,7 +10022,7 @@ export interface RefundexternaltransactionExternaltransactionsRequest {
   /** Request body */
   body?: RefundExternalTransactionRequest;
 }
-export const RefundexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RefundexternaltransactionExternaltransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RefundExternalTransactionRequest.pipe(T.HttpBody())),
@@ -10133,7 +10045,7 @@ export interface RefundOrdersRequest {
   /** Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional). */
   revoke?: boolean;
 }
-export const RefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const RefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     orderId: S.String.pipe(T.Label()),
@@ -10148,14 +10060,14 @@ export const RefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefundOrdersRequest" }) as any as S.Schema<RefundOrdersRequest>;
 
 export interface RefundOrdersResponse {}
-export const RefundOrdersResponse = AddTargetingResponse as any as S.Schema<RefundOrdersResponse>;
+const RefundOrdersResponse = AddTargetingResponse as any as S.Schema<RefundOrdersResponse>;
 
 /** Request to reply to review or update existing reply. */
 export interface ReviewsReplyRequest {
   /** The text to set as the reply. Replies of more than approximately 350 characters will be rejected. HTML tags will be stripped. */
   replyText?: string;
 }
-export const ReviewsReplyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewsReplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replyText: S.optional(S.String),
   }),
@@ -10169,7 +10081,7 @@ export interface ReplyReviewsRequest {
   /** Request body */
   body?: ReviewsReplyRequest;
 }
-export const ReplyReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     reviewId: S.String.pipe(T.Label()),
@@ -10190,7 +10102,7 @@ export interface ReviewReplyResult {
   /** The time at which the reply took effect. */
   lastEdited?: Timestamp;
 }
-export const ReviewReplyResult = /*@__PURE__*/ S.suspend(() =>
+const ReviewReplyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replyText: S.optional(S.String),
     lastEdited: S.optional(Timestamp),
@@ -10202,7 +10114,7 @@ export interface ReviewsReplyResponse {
   /** The result of replying/updating a reply to review. */
   result?: ReviewReplyResult;
 }
-export const ReviewsReplyResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewsReplyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ReviewReplyResult),
   }),
@@ -10213,7 +10125,7 @@ export type OrdersReviewRefundRequestRefundPreferenceEnum =
   | "DECLINE"
   | "APPROVE"
   | "NEUTRAL";
-export const OrdersReviewRefundRequestRefundPreferenceEnum = S.String;
+const OrdersReviewRefundRequestRefundPreferenceEnum = S.String;
 
 /** Coarse Geographic location details for where the consumption happened. */
 export interface CoarseLocation {
@@ -10226,7 +10138,7 @@ export interface CoarseLocation {
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. For most addresses, you can omit this. */
   sublocality?: string;
 }
-export const CoarseLocation = /*@__PURE__*/ S.suspend(() =>
+const CoarseLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrativeArea: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -10250,7 +10162,7 @@ export interface ConsumptionUsageEvent {
   /** Optional. Free form text that allows developers to provide more info on the item consumed. Maximum length is 5000 characters. */
   consumptionItemDescription?: string;
 }
-export const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
+const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(CoarseLocation),
     consumptionTime: S.optional(S.String),
@@ -10262,7 +10174,7 @@ export const ConsumptionUsageEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsumptionUsageEvent" }) as any as S.Schema<ConsumptionUsageEvent>;
 
 export type ConsumptionUsageEventList = Array<ConsumptionUsageEvent>;
-export const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(
+const ConsumptionUsageEventList = /*@__PURE__*/ S.Array(
   ConsumptionUsageEvent,
 ) as any as S.Schema<ConsumptionUsageEventList>;
 
@@ -10279,7 +10191,7 @@ export interface OrdersReviewRefundRequest {
   /** Optional. Percentage of the In-App purchase the customer consumed, in milliunits. Minimum: 0 Maximum: 100,000. For paid apps, this can be omitted. Example : 45200 represents 45.2%. */
   consumptionPercentageMilliunits?: number;
 }
-export const OrdersReviewRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const OrdersReviewRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingRefundToken: S.optional(S.String),
     refundPreference: S.optional(OrdersReviewRefundRequestRefundPreferenceEnum),
@@ -10299,7 +10211,7 @@ export interface ReviewrefundOrdersRequest {
   /** Request body */
   body?: OrdersReviewRefundRequest;
 }
-export const ReviewrefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewrefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     orderId: S.String.pipe(T.Label()),
@@ -10316,23 +10228,19 @@ export const ReviewrefundOrdersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReviewrefundOrdersRequest>;
 
 export interface ReviewrefundOrdersResponse {}
-export const ReviewrefundOrdersResponse =
+const ReviewrefundOrdersResponse =
   AddTargetingResponse as any as S.Schema<ReviewrefundOrdersResponse>;
 
 /** Used to determine if the refund type in the RevocationContext is a full refund. */
 export type RevocationContextFullRefund = OneTimeProductOfferNoPriceOverrideOptions;
-export const RevocationContextFullRefund = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Used to determine if the refund type in the RevocationContext is a prorated refund. */
 export type RevocationContextProratedRefund = OneTimeProductOfferNoPriceOverrideOptions;
-export const RevocationContextProratedRefund = OneTimeProductOfferNoPriceOverrideOptions;
-
 /** Used to determine what specific item to revoke in a subscription with multiple items. */
 export interface RevocationContextItemBasedRefund {
   /** Required. If the subscription is a subscription with add-ons, the product id of the subscription item to revoke. */
   productId?: string;
 }
-export const RevocationContextItemBasedRefund = /*@__PURE__*/ S.suspend(() =>
+const RevocationContextItemBasedRefund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
   }),
@@ -10349,7 +10257,7 @@ export interface RevocationContext {
   /** Optional. Used when a specific item should be refunded in a subscription with add-on items. */
   itemBasedRefund?: RevocationContextItemBasedRefund;
 }
-export const RevocationContext = /*@__PURE__*/ S.suspend(() =>
+const RevocationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullRefund: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
     proratedRefund: S.optional(OneTimeProductOfferNoPriceOverrideOptions),
@@ -10362,7 +10270,7 @@ export interface RevokeSubscriptionPurchaseRequest {
   /** Required. Additional details around the subscription revocation. */
   revocationContext?: RevocationContext;
 }
-export const RevokeSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeSubscriptionPurchaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revocationContext: S.optional(RevocationContext),
   }),
@@ -10378,7 +10286,7 @@ export interface RevokePurchasesSubscriptionsv2Request {
   /** Request body */
   body?: RevokeSubscriptionPurchaseRequest;
 }
-export const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
+const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -10396,7 +10304,7 @@ export const RevokePurchasesSubscriptionsv2Request = /*@__PURE__*/ S.suspend(() 
 
 /** Response for the purchases.subscriptionsv2.revoke API. */
 export interface RevokeSubscriptionPurchaseResponse {}
-export const RevokeSubscriptionPurchaseResponse =
+const RevokeSubscriptionPurchaseResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<RevokeSubscriptionPurchaseResponse>;
 
 /** Message representing rotated Cloud KMS key. Consists of the Cloud KMS key and its associated proof of rotation. */
@@ -10406,7 +10314,7 @@ export interface RotatedCloudKmsKey {
   /** Required. Cloud KMS key and the certificate associated with the key. */
   cloudKmsKeyAndCert?: CloudKmsKeyAndCert;
 }
-export const RotatedCloudKmsKey = /*@__PURE__*/ S.suspend(() =>
+const RotatedCloudKmsKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signingCertificateLineage: S.optional(S.String),
     cloudKmsKeyAndCert: S.optional(CloudKmsKeyAndCert),
@@ -10420,7 +10328,7 @@ export type RotateAppSigningKeyRequestKeyRotationReasonEnum =
   | "USE_SAME_KEY_FOR_MULTIPLE_APPS"
   | "ROUTINE_KEY_UPGRADE"
   | "OTHER";
-export const RotateAppSigningKeyRequestKeyRotationReasonEnum = S.String;
+const RotateAppSigningKeyRequestKeyRotationReasonEnum = S.String;
 
 /** Request to rotate an app's signing key. */
 export interface RotateAppSigningKeyRequest {
@@ -10429,7 +10337,7 @@ export interface RotateAppSigningKeyRequest {
   /** Required. Reason for rotating the app key. */
   keyRotationReason?: RotateAppSigningKeyRequestKeyRotationReasonEnum | (string & {});
 }
-export const RotateAppSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateAppSigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotatedCloudKmsKey: S.optional(RotatedCloudKmsKey),
     keyRotationReason: S.optional(RotateAppSigningKeyRequestKeyRotationReasonEnum),
@@ -10444,7 +10352,7 @@ export interface RotateAppSigningKeyAppsigningRequest {
   /** Request body */
   body?: RotateAppSigningKeyRequest;
 }
-export const RotateAppSigningKeyAppsigningRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateAppSigningKeyAppsigningRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RotateAppSigningKeyRequest.pipe(T.HttpBody())),
@@ -10464,7 +10372,7 @@ export interface RotateAppSigningKeyResponse {
   /** The rotated key certificate hashes for the app. Always set. */
   rotatedKeyCertificate?: CertificateHashes;
 }
-export const RotateAppSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateAppSigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rotatedKeyCertificate: S.optional(CertificateHashes),
   }),
@@ -10489,7 +10397,7 @@ export interface AppStoreAppStoreListing {
   /** Required. Comprehensive description text about the app. */
   fullDescription?: string;
 }
-export const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
+const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenshotId: S.optional(StringList),
     appIconId: S.optional(S.String),
@@ -10502,7 +10410,7 @@ export const AppStoreAppStoreListing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppStoreAppStoreListing" }) as any as S.Schema<AppStoreAppStoreListing>;
 
 export type AppStoreAppStoreListingList = Array<AppStoreAppStoreListing>;
-export const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(
+const AppStoreAppStoreListingList = /*@__PURE__*/ S.Array(
   AppStoreAppStoreListing,
 ) as any as S.Schema<AppStoreAppStoreListingList>;
 
@@ -10515,7 +10423,7 @@ export interface PolicyDocumentResponse {
   /** Optional. Expiry date for the document. */
   expiryDate?: Androidpublisher_Date;
 }
-export const PolicyDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentId: S.optional(S.String),
     nonExpiring: S.optional(S.Boolean),
@@ -10528,7 +10436,7 @@ export interface PolicyStringResponse {
   /** Required. Provided string value. */
   value?: string;
 }
-export const PolicyStringResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyStringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -10539,7 +10447,7 @@ export interface PolicyBooleanResponse {
   /** Required. Provided boolean value. */
   value?: boolean;
 }
-export const PolicyBooleanResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyBooleanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Boolean),
   }),
@@ -10550,7 +10458,7 @@ export interface PolicySingleChoiceResponse {
   /** Required. Provided value. */
   value?: string;
 }
-export const PolicySingleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicySingleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -10563,7 +10471,7 @@ export interface PolicyMultipleChoiceResponse {
   /** Optional. Provided values. */
   values?: StringList;
 }
-export const PolicyMultipleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyMultipleChoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
   }),
@@ -10586,7 +10494,7 @@ export interface NestedPolicyResponse {
   /** Optional. A multiple choice response. */
   multipleChoiceResponse?: PolicyMultipleChoiceResponse;
 }
-export const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringResponse: S.optional(PolicyStringResponse),
     documentResponse: S.optional(PolicyDocumentResponse),
@@ -10598,7 +10506,7 @@ export const NestedPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NestedPolicyResponse" }) as any as S.Schema<NestedPolicyResponse>;
 
 export type NestedPolicyResponseList = Array<NestedPolicyResponse>;
-export const NestedPolicyResponseList = /*@__PURE__*/ S.Array(
+const NestedPolicyResponseList = /*@__PURE__*/ S.Array(
   NestedPolicyResponse,
 ) as any as S.Schema<NestedPolicyResponseList>;
 
@@ -10607,21 +10515,21 @@ export interface Group {
   /** Required. Responses within a group. */
   responses?: NestedPolicyResponseList;
 }
-export const Group = /*@__PURE__*/ S.suspend(() =>
+const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responses: S.optional(NestedPolicyResponseList),
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 
 export type GroupList = Array<Group>;
-export const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
+const GroupList = /*@__PURE__*/ S.Array(Group) as any as S.Schema<GroupList>;
 
 /** A repeated group of responses. */
 export interface PolicyGroupResponse {
   /** Optional. Groups of responses to questions. */
   groups?: GroupList;
 }
-export const PolicyGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GroupList),
   }),
@@ -10634,7 +10542,7 @@ export interface KeyedGroup {
   /** Required. Key for this group. */
   key?: string;
 }
-export const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
+const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responses: S.optional(NestedPolicyResponseList),
     key: S.optional(S.String),
@@ -10642,14 +10550,14 @@ export const KeyedGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyedGroup" }) as any as S.Schema<KeyedGroup>;
 
 export type KeyedGroupList = Array<KeyedGroup>;
-export const KeyedGroupList = /*@__PURE__*/ S.Array(KeyedGroup) as any as S.Schema<KeyedGroupList>;
+const KeyedGroupList = /*@__PURE__*/ S.Array(KeyedGroup) as any as S.Schema<KeyedGroupList>;
 
 /** A group of responses each identified by a distinct key within an allowed set. */
 export interface PolicyKeyedGroupResponse {
   /** Optional. Groups of responses to questions. Each KeyedGroup.key must be unique within this list. */
   groups?: KeyedGroupList;
 }
-export const PolicyKeyedGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyKeyedGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(KeyedGroupList),
   }),
@@ -10674,7 +10582,7 @@ export interface PolicyResponse {
   /** Optional. A string response. */
   stringResponse?: PolicyStringResponse;
 }
-export const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questionId: S.optional(S.String),
     documentResponse: S.optional(PolicyDocumentResponse),
@@ -10688,7 +10596,7 @@ export const PolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyResponse" }) as any as S.Schema<PolicyResponse>;
 
 export type PolicyResponseList = Array<PolicyResponse>;
-export const PolicyResponseList = /*@__PURE__*/ S.Array(
+const PolicyResponseList = /*@__PURE__*/ S.Array(
   PolicyResponse,
 ) as any as S.Schema<PolicyResponseList>;
 
@@ -10699,7 +10607,7 @@ export interface AppStoreAppPolicyDeclaration {
   /** Required. Responses provided for this declaration. */
   responses?: PolicyResponseList;
 }
-export const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
+const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     declarationId: S.optional(S.String),
     responses: S.optional(PolicyResponseList),
@@ -10709,7 +10617,7 @@ export const AppStoreAppPolicyDeclaration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AppStoreAppPolicyDeclaration>;
 
 export type AppStoreAppPolicyDeclarationList = Array<AppStoreAppPolicyDeclaration>;
-export const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(
+const AppStoreAppPolicyDeclarationList = /*@__PURE__*/ S.Array(
   AppStoreAppPolicyDeclaration,
 ) as any as S.Schema<AppStoreAppPolicyDeclarationList>;
 
@@ -10722,7 +10630,7 @@ export interface AppStoreAppDetails {
   /** Required. The app developer's name. */
   developerName?: string;
 }
-export const AppStoreAppDetails = /*@__PURE__*/ S.suspend(() =>
+const AppStoreAppDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     developerWebsite: S.optional(S.String),
     contactEmail: S.optional(S.String),
@@ -10741,7 +10649,7 @@ export interface AppStoreAppActiveApkSet {
   /** Optional. Version code for the version this APK set represents. */
   versionCode?: string;
 }
-export const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
+const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     splitApkId: S.optional(StringList),
     baseApkId: S.optional(S.String),
@@ -10751,7 +10659,7 @@ export const AppStoreAppActiveApkSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppStoreAppActiveApkSet" }) as any as S.Schema<AppStoreAppActiveApkSet>;
 
 export type AppStoreAppActiveApkSetList = Array<AppStoreAppActiveApkSet>;
-export const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(
+const AppStoreAppActiveApkSetList = /*@__PURE__*/ S.Array(
   AppStoreAppActiveApkSet,
 ) as any as S.Schema<AppStoreAppActiveApkSetList>;
 
@@ -10760,7 +10668,7 @@ export interface AppStoreAppActiveApks {
   /** Required. List specifying which APK sets are distributed together. This list should contain all APKs that you're distributing for this app. Add an entry for each individual installable set of APKs. */
   activeApkSets?: AppStoreAppActiveApkSetList;
 }
-export const AppStoreAppActiveApks = /*@__PURE__*/ S.suspend(() =>
+const AppStoreAppActiveApks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeApkSets: S.optional(AppStoreAppActiveApkSetList),
   }),
@@ -10779,7 +10687,7 @@ export interface UpdateAppStoreHostedAppRequest {
   /** Required. Actively distributed APKs of the app. */
   activeApks?: AppStoreAppActiveApks;
 }
-export const UpdateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppStoreHostedAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeLocalizedStoreListings: S.optional(AppStoreAppStoreListingList),
     packageName: S.optional(S.String),
@@ -10797,7 +10705,7 @@ export interface UpdateappstorehostedappAppstoreappsreviewRequest {
   /** Request body */
   body?: UpdateAppStoreHostedAppRequest;
 }
-export const UpdateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateappstorehostedappAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStorePackageName: S.String.pipe(T.Label()),
     body: S.optional(UpdateAppStoreHostedAppRequest.pipe(T.HttpBody())),
@@ -10817,7 +10725,7 @@ export interface UpdateAppStoreHostedAppResponse {
   /** Unique identifier for the specific version of the hosted app submitted in this update. This identifier can be used to correlate publishing signals (such as those returned by ListHostedAppsPublishingSignals) with this specific app update. */
   updateId?: string;
 }
-export const UpdateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppStoreHostedAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateId: S.optional(S.String),
   }),
@@ -10829,14 +10737,14 @@ export type UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum =
   | "APP_STORE_APP_PUBLISH_STATE_UNSPECIFIED"
   | "APP_STORE_APP_PUBLISH_STATE_PUBLISHED"
   | "APP_STORE_APP_PUBLISH_STATE_UNPUBLISHED";
-export const UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum = S.String;
+const UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum = S.String;
 
 /** Request to update the publish status of an app store hosted app. The default state for any app with an update is PUBLISHED. It is not necessary to call this RPC explicitly to set an app to PUBLISHED. */
 export interface UpdateAppStoreHostedAppPublishStatusRequest {
   /** Required. The new publish state for the hosted app. */
   publishState?: UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum | (string & {});
 }
-export const UpdateAppStoreHostedAppPublishStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppStoreHostedAppPublishStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishState: S.optional(UpdateAppStoreHostedAppPublishStatusRequestPublishStateEnum),
   }),
@@ -10852,26 +10760,25 @@ export interface UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest {
   /** Request body */
   body?: UpdateAppStoreHostedAppPublishStatusRequest;
 }
-export const UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      packageName: S.String.pipe(T.Label()),
-      appStorePackageName: S.String.pipe(T.Label()),
-      body: S.optional(UpdateAppStoreHostedAppPublishStatusRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus",
-        baseUrl: "https://androidpublisher.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest",
-  }) as any as S.Schema<UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest>;
+const UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    packageName: S.String.pipe(T.Label()),
+    appStorePackageName: S.String.pipe(T.Label()),
+    body: S.optional(UpdateAppStoreHostedAppPublishStatusRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "androidpublisher/v3/appstore/{appStorePackageName}/apps/{packageName}:updateAppStoreHostedAppPublishStatus",
+      baseUrl: "https://androidpublisher.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest",
+}) as any as S.Schema<UpdateappstorehostedapppublishstatusAppstoreappsreviewRequest>;
 
 /** Response for updating the publish status of an app store hosted app. */
 export interface UpdateAppStoreHostedAppPublishStatusResponse {}
-export const UpdateAppStoreHostedAppPublishStatusResponse =
+const UpdateAppStoreHostedAppPublishStatusResponse =
   AcknowledgePurchasesProductsResponse as any as S.Schema<UpdateAppStoreHostedAppPublishStatusResponse>;
 
 export interface UpdateEditsDetailsRequest {
@@ -10882,7 +10789,7 @@ export interface UpdateEditsDetailsRequest {
   /** Request body */
   body?: AppDetails;
 }
-export const UpdateEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEditsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -10902,7 +10809,7 @@ export type UpdateEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
   | "patch";
-export const UpdateEditsExpansionfilesExpansionFileTypeEnum = S.String;
+const UpdateEditsExpansionfilesExpansionFileTypeEnum = S.String;
 
 export interface UpdateEditsExpansionfilesRequest {
   /** Package name of the app. */
@@ -10916,7 +10823,7 @@ export interface UpdateEditsExpansionfilesRequest {
   /** Request body */
   body?: ExpansionFile;
 }
-export const UpdateEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -10944,7 +10851,7 @@ export interface UpdateEditsListingsRequest {
   /** Request body */
   body?: Listing;
 }
-export const UpdateEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEditsListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -10971,7 +10878,7 @@ export interface UpdateEditsTestersRequest {
   /** Request body */
   body?: Testers;
 }
-export const UpdateEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEditsTestersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     track: S.String.pipe(T.Label()),
@@ -10998,7 +10905,7 @@ export interface UpdateEditsTracksRequest {
   /** Request body */
   body?: Track;
 }
-export const UpdateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEditsTracksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),
@@ -11017,7 +10924,7 @@ export type UpdateInappproductsLatencyToleranceEnum =
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_UNSPECIFIED"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_SENSITIVE"
   | "PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT";
-export const UpdateInappproductsLatencyToleranceEnum = S.String;
+const UpdateInappproductsLatencyToleranceEnum = S.String;
 
 export interface UpdateInappproductsRequest {
   /** Package name of the app. */
@@ -11033,7 +10940,7 @@ export interface UpdateInappproductsRequest {
   /** Request body */
   body?: InAppProduct;
 }
-export const UpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     latencyTolerance: S.optional(UpdateInappproductsLatencyToleranceEnum.pipe(T.Query())),
@@ -11054,8 +10961,6 @@ export const UpdateInappproductsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to upload an APK. */
 export type UploadApkRequest = OneTimeProductOfferNoPriceOverrideOptions;
-export const UploadApkRequest = OneTimeProductOfferNoPriceOverrideOptions;
-
 export interface UploadapkAppstoreappsreviewRequest {
   /** Required. Package name of the app. */
   packageName: string;
@@ -11064,7 +10969,7 @@ export interface UploadapkAppstoreappsreviewRequest {
   /** Request body */
   body?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const UploadapkAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadapkAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     appStorePackageName: S.String.pipe(T.Label()),
@@ -11085,7 +10990,7 @@ export interface UploadApkResponse {
   /** The unique ID of the uploaded APK. */
   apkId?: string;
 }
-export const UploadApkResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadApkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apkId: S.optional(S.String),
   }),
@@ -11095,7 +11000,7 @@ export interface UploadapkInternalappsharingartifactsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const UploadapkInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadapkInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
   }).pipe(
@@ -11118,7 +11023,7 @@ export interface InternalAppSharingArtifact {
   /** The download URL generated for the uploaded artifact. Users that are authorized to download can follow the link to the Play Store app to install it. */
   downloadUrl?: string;
 }
-export const InternalAppSharingArtifact = /*@__PURE__*/ S.suspend(() =>
+const InternalAppSharingArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256: S.optional(S.String),
     certificateFingerprint: S.optional(S.String),
@@ -11131,14 +11036,14 @@ export const InternalAppSharingArtifact = /*@__PURE__*/ S.suspend(() =>
 export type UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum =
   | "DECLARATION_FILE_TYPE_UNSPECIFIED"
   | "DECLARATION_FILE_TYPE_DOCUMENT";
-export const UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum = S.String;
+const UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum = S.String;
 
 /** Request to upload a policy declaration file. */
 export interface UploadAppStoreAppPolicyDeclarationFileRequest {
   /** Required. Type of the policy declaration file. */
   fileType?: UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum | (string & {});
 }
-export const UploadAppStoreAppPolicyDeclarationFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadAppStoreAppPolicyDeclarationFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileType: S.optional(UploadAppStoreAppPolicyDeclarationFileRequestFileTypeEnum),
   }),
@@ -11154,8 +11059,8 @@ export interface UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest
   /** Request body */
   body?: UploadAppStoreAppPolicyDeclarationFileRequest;
 }
-export const UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       appStorePackageName: S.String.pipe(T.Label()),
       packageName: S.String.pipe(T.Label()),
@@ -11167,16 +11072,16 @@ export const UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest =
         baseUrl: "https://androidpublisher.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest",
-  }) as any as S.Schema<UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest>;
+).annotate({
+  identifier: "UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest",
+}) as any as S.Schema<UploadappstoreapppolicydeclarationfileAppstoreappsreviewRequest>;
 
 /** Response for uploading a policy declaration file. */
 export interface UploadAppStoreAppPolicyDeclarationFileResponse {
   /** The unique ID of the uploaded file. */
   fileId?: string;
 }
-export const UploadAppStoreAppPolicyDeclarationFileResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadAppStoreAppPolicyDeclarationFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.optional(S.String),
   }),
@@ -11188,7 +11093,7 @@ export interface UploadbundleInternalappsharingartifactsRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const UploadbundleInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadbundleInternalappsharingartifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
   }).pipe(
@@ -11208,7 +11113,7 @@ export interface UploadEditsApksRequest {
   /** Package name of the app. */
   packageName: string;
 }
-export const UploadEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEditsApksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editId: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -11231,7 +11136,7 @@ export interface UploadEditsBundlesRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const UploadEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEditsBundlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackBundleInstallationWarning: S.optional(S.Boolean.pipe(T.Query())),
     deviceTierConfigId: S.optional(S.String.pipe(T.Query())),
@@ -11252,7 +11157,7 @@ export type UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum =
   | "deobfuscationFileTypeUnspecified"
   | "proguard"
   | "nativeCode";
-export const UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum = S.String;
+const UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum = S.String;
 
 export interface UploadEditsDeobfuscationfilesRequest {
   /** The type of the deobfuscation file. */
@@ -11264,7 +11169,7 @@ export interface UploadEditsDeobfuscationfilesRequest {
   /** Unique identifier for this edit. */
   editId: string;
 }
-export const UploadEditsDeobfuscationfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEditsDeobfuscationfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deobfuscationFileType: UploadEditsDeobfuscationfilesDeobfuscationFileTypeEnum.pipe(T.Label()),
     apkVersionCode: S.Number.pipe(T.Label()),
@@ -11285,14 +11190,14 @@ export type DeobfuscationFileSymbolTypeEnum =
   | "deobfuscationFileTypeUnspecified"
   | "proguard"
   | "nativeCode";
-export const DeobfuscationFileSymbolTypeEnum = S.String;
+const DeobfuscationFileSymbolTypeEnum = S.String;
 
 /** Represents a deobfuscation file. */
 export interface DeobfuscationFile {
   /** The type of the deobfuscation file. */
   symbolType?: DeobfuscationFileSymbolTypeEnum;
 }
-export const DeobfuscationFile = /*@__PURE__*/ S.suspend(() =>
+const DeobfuscationFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     symbolType: S.optional(DeobfuscationFileSymbolTypeEnum),
   }),
@@ -11303,7 +11208,7 @@ export interface DeobfuscationFilesUploadResponse {
   /** The uploaded Deobfuscation File configuration. */
   deobfuscationFile?: DeobfuscationFile;
 }
-export const DeobfuscationFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const DeobfuscationFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deobfuscationFile: S.optional(DeobfuscationFile),
   }),
@@ -11315,7 +11220,7 @@ export type UploadEditsExpansionfilesExpansionFileTypeEnum =
   | "expansionFileTypeUnspecified"
   | "main"
   | "patch";
-export const UploadEditsExpansionfilesExpansionFileTypeEnum = S.String;
+const UploadEditsExpansionfilesExpansionFileTypeEnum = S.String;
 
 export interface UploadEditsExpansionfilesRequest {
   /** The version code of the APK whose expansion file configuration is being read or modified. */
@@ -11327,7 +11232,7 @@ export interface UploadEditsExpansionfilesRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const UploadEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEditsExpansionfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apkVersionCode: S.Number.pipe(T.Label()),
     expansionFileType: UploadEditsExpansionfilesExpansionFileTypeEnum.pipe(T.Label()),
@@ -11349,7 +11254,7 @@ export interface ExpansionFilesUploadResponse {
   /** The uploaded expansion file configuration. */
   expansionFile?: ExpansionFile;
 }
-export const ExpansionFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpansionFilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expansionFile: S.optional(ExpansionFile),
   }),
@@ -11367,13 +11272,13 @@ export type UploadEditsImagesImageTypeEnum =
   | "icon"
   | "featureGraphic"
   | "tvBanner";
-export const UploadEditsImagesImageTypeEnum = S.String;
+const UploadEditsImagesImageTypeEnum = S.String;
 
 export type UploadEditsImagesAiGeneratedStateEnum =
   | "aiGeneratedStateUnspecified"
   | "aiGeneratedStateNotAiGenerated"
   | "aiGeneratedStateAiGeneratedDeveloperAttested";
-export const UploadEditsImagesAiGeneratedStateEnum = S.String;
+const UploadEditsImagesAiGeneratedStateEnum = S.String;
 
 export interface UploadEditsImagesRequest {
   /** Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). Providing a language that is not supported by the App is a no-op. */
@@ -11387,7 +11292,7 @@ export interface UploadEditsImagesRequest {
   /** Optional. Whether the image was generated by AI. Attested by the developer. */
   aiGeneratedState?: UploadEditsImagesAiGeneratedStateEnum | (string & {});
 }
-export const UploadEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEditsImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.String.pipe(T.Label()),
     imageType: UploadEditsImagesImageTypeEnum.pipe(T.Label()),
@@ -11408,7 +11313,7 @@ export interface ImagesUploadResponse {
   /** The uploaded image. */
   image?: Image;
 }
-export const ImagesUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const ImagesUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
   }),
@@ -11416,8 +11321,6 @@ export const ImagesUploadResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to upload an image. */
 export type UploadImageRequest = OneTimeProductOfferNoPriceOverrideOptions;
-export const UploadImageRequest = OneTimeProductOfferNoPriceOverrideOptions;
-
 export interface UploadimageAppstoreappsreviewRequest {
   /** Required. Package name of the third-party app store. */
   appStorePackageName: string;
@@ -11426,7 +11329,7 @@ export interface UploadimageAppstoreappsreviewRequest {
   /** Request body */
   body?: OneTimeProductOfferNoPriceOverrideOptions;
 }
-export const UploadimageAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadimageAppstoreappsreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStorePackageName: S.String.pipe(T.Label()),
     packageName: S.String.pipe(T.Label()),
@@ -11447,7 +11350,7 @@ export interface UploadImageResponse {
   /** The unique ID of the uploaded image. */
   imageId?: string;
 }
-export const UploadImageResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }),
@@ -11459,7 +11362,7 @@ export interface ValidateEditsRequest {
   /** Identifier of the edit. */
   editId: string;
 }
-export const ValidateEditsRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateEditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.String.pipe(T.Label()),
     editId: S.String.pipe(T.Label()),

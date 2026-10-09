@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -88,14 +88,14 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** A request to commit dry-run specs in all Service Perimeters belonging to an Access Policy. */
 export interface CommitServicePerimetersRequest {
   /** Optional. The etag for the version of the Access Policy that this commit operation is to be performed on. If, at the time of commit, the etag for the Access Policy stored in Access Context Manager is different from the specified etag, then the commit operation will not be performed and the call will fail. This field is not required. If etag is not provided, the operation will be performed as if a valid etag is provided. */
   etag?: string;
 }
-export const CommitServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
   }),
@@ -109,7 +109,7 @@ export interface CommitAccessPoliciesServicePerimetersRequest {
   /** Request body */
   body?: CommitServicePerimetersRequest;
 }
-export const CommitAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CommitServicePerimetersRequest.pipe(T.HttpBody())),
@@ -125,15 +125,10 @@ export const CommitAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CommitAccessPoliciesServicePerimetersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -144,7 +139,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -165,7 +160,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -176,7 +171,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** `AccessPolicy` is a container for `AccessLevels` (which define the necessary attributes to use Google Cloud services) and `ServicePerimeters` (which define regions of services able to freely pass data within a perimeter). An access policy is globally visible within an organization, and the restrictions it specifies apply to all projects within an organization. */
 export interface AccessPolicy {
@@ -191,7 +186,7 @@ export interface AccessPolicy {
   /** Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}` */
   name?: string;
 }
-export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     title: S.optional(S.String),
@@ -205,7 +200,7 @@ export interface CreateAccessPoliciesRequest {
   /** Request body */
   body?: AccessPolicy;
 }
-export const CreateAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AccessPolicy.pipe(T.HttpBody())),
   }).pipe(
@@ -227,7 +222,7 @@ export type OsConstraintOsTypeEnum =
   | "DESKTOP_CHROME_OS"
   | "ANDROID"
   | "IOS";
-export const OsConstraintOsTypeEnum = S.String;
+const OsConstraintOsTypeEnum = S.String;
 
 /** A restriction on the OS type and version of devices making requests. */
 export interface OsConstraint {
@@ -238,7 +233,7 @@ export interface OsConstraint {
   /** Required. The allowed OS type. */
   osType?: OsConstraintOsTypeEnum | (string & {});
 }
-export const OsConstraint = /*@__PURE__*/ S.suspend(() =>
+const OsConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requireVerifiedChromeOs: S.optional(S.Boolean),
     minimumVersion: S.optional(S.String),
@@ -247,21 +242,19 @@ export const OsConstraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OsConstraint" }) as any as S.Schema<OsConstraint>;
 
 export type OsConstraintList = Array<OsConstraint>;
-export const OsConstraintList = /*@__PURE__*/ S.Array(
-  OsConstraint,
-) as any as S.Schema<OsConstraintList>;
+const OsConstraintList = /*@__PURE__*/ S.Array(OsConstraint) as any as S.Schema<OsConstraintList>;
 
 export type DevicePolicyAllowedDeviceManagementLevelsItemEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "NONE"
   | "BASIC"
   | "COMPLETE";
-export const DevicePolicyAllowedDeviceManagementLevelsItemEnum = S.String;
+const DevicePolicyAllowedDeviceManagementLevelsItemEnum = S.String;
 
 export type DevicePolicyAllowedDeviceManagementLevelsItemEnumList = Array<
   DevicePolicyAllowedDeviceManagementLevelsItemEnum | (string & {})
 >;
-export const DevicePolicyAllowedDeviceManagementLevelsItemEnumList = /*@__PURE__*/ S.Array(
+const DevicePolicyAllowedDeviceManagementLevelsItemEnumList = /*@__PURE__*/ S.Array(
   DevicePolicyAllowedDeviceManagementLevelsItemEnum,
 ) as any as S.Schema<DevicePolicyAllowedDeviceManagementLevelsItemEnumList>;
 
@@ -270,12 +263,10 @@ export type DevicePolicyAllowedEncryptionStatusesItemEnum =
   | "ENCRYPTION_UNSUPPORTED"
   | "UNENCRYPTED"
   | "ENCRYPTED";
-export const DevicePolicyAllowedEncryptionStatusesItemEnum = S.String;
-
 export type DevicePolicyAllowedEncryptionStatusesItemEnumList = Array<
   DevicePolicyAllowedEncryptionStatusesItemEnum | (string & {})
 >;
-export const DevicePolicyAllowedEncryptionStatusesItemEnumList =
+const DevicePolicyAllowedEncryptionStatusesItemEnumList =
   DevicePolicyAllowedDeviceManagementLevelsItemEnumList as any as S.Schema<DevicePolicyAllowedEncryptionStatusesItemEnumList>;
 
 /** `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops. */
@@ -293,7 +284,7 @@ export interface DevicePolicy {
   /** Allowed encryptions statuses, an empty list allows all statuses. */
   allowedEncryptionStatuses?: DevicePolicyAllowedEncryptionStatusesItemEnumList;
 }
-export const DevicePolicy = /*@__PURE__*/ S.suspend(() =>
+const DevicePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osConstraints: S.optional(OsConstraintList),
     requireAdminApproval: S.optional(S.Boolean),
@@ -313,7 +304,7 @@ export interface VpcSubNetwork {
   /** CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed. */
   vpcIpSubnetworks?: StringList;
 }
-export const VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
+const VpcSubNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     vpcIpSubnetworks: S.optional(StringList),
@@ -325,14 +316,14 @@ export interface VpcNetworkSource {
   /** Sub-segment ranges of a VPC network. */
   vpcSubnetwork?: VpcSubNetwork;
 }
-export const VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
+const VpcNetworkSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcSubnetwork: S.optional(VpcSubNetwork),
   }),
 ).annotate({ identifier: "VpcNetworkSource" }) as any as S.Schema<VpcNetworkSource>;
 
 export type VpcNetworkSourceList = Array<VpcNetworkSource>;
-export const VpcNetworkSourceList = /*@__PURE__*/ S.Array(
+const VpcNetworkSourceList = /*@__PURE__*/ S.Array(
   VpcNetworkSource,
 ) as any as S.Schema<VpcNetworkSourceList>;
 
@@ -353,7 +344,7 @@ export interface Condition {
   /** CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed. */
   ipSubnetworks?: StringList;
 }
-export const Condition = /*@__PURE__*/ S.suspend(() =>
+const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devicePolicy: S.optional(DevicePolicy),
     regions: S.optional(StringList),
@@ -366,10 +357,10 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 
 export type ConditionList = Array<Condition>;
-export const ConditionList = /*@__PURE__*/ S.Array(Condition) as any as S.Schema<ConditionList>;
+const ConditionList = /*@__PURE__*/ S.Array(Condition) as any as S.Schema<ConditionList>;
 
 export type BasicLevelCombiningFunctionEnum = "AND" | "OR";
-export const BasicLevelCombiningFunctionEnum = S.String;
+const BasicLevelCombiningFunctionEnum = S.String;
 
 /** `BasicLevel` is an `AccessLevel` using a set of recommended features. */
 export interface BasicLevel {
@@ -378,7 +369,7 @@ export interface BasicLevel {
   /** How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND. */
   combiningFunction?: BasicLevelCombiningFunctionEnum | (string & {});
 }
-export const BasicLevel = /*@__PURE__*/ S.suspend(() =>
+const BasicLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(ConditionList),
     combiningFunction: S.optional(BasicLevelCombiningFunctionEnum),
@@ -396,7 +387,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -410,7 +401,7 @@ export interface CustomLevel {
   /** Required. A Cloud CEL expression evaluating to a boolean. */
   expr?: Expr;
 }
-export const CustomLevel = /*@__PURE__*/ S.suspend(() =>
+const CustomLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expr: S.optional(Expr),
   }),
@@ -429,7 +420,7 @@ export interface AccessLevel {
   /** Description of the `AccessLevel` and its use. Does not affect behavior. */
   description?: string;
 }
-export const AccessLevel = /*@__PURE__*/ S.suspend(() =>
+const AccessLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic: S.optional(BasicLevel),
     custom: S.optional(CustomLevel),
@@ -445,7 +436,7 @@ export interface CreateAccessPoliciesAccessLevelsRequest {
   /** Request body */
   body?: AccessLevel;
 }
-export const CreateAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AccessLevel.pipe(T.HttpBody())),
@@ -464,18 +455,18 @@ export type AuthorizedOrgsDescAssetTypeEnum =
   | "ASSET_TYPE_UNSPECIFIED"
   | "ASSET_TYPE_DEVICE"
   | "ASSET_TYPE_CREDENTIAL_STRENGTH";
-export const AuthorizedOrgsDescAssetTypeEnum = S.String;
+const AuthorizedOrgsDescAssetTypeEnum = S.String;
 
 export type AuthorizedOrgsDescAuthorizationTypeEnum =
   | "AUTHORIZATION_TYPE_UNSPECIFIED"
   | "AUTHORIZATION_TYPE_TRUST";
-export const AuthorizedOrgsDescAuthorizationTypeEnum = S.String;
+const AuthorizedOrgsDescAuthorizationTypeEnum = S.String;
 
 export type AuthorizedOrgsDescAuthorizationDirectionEnum =
   | "AUTHORIZATION_DIRECTION_UNSPECIFIED"
   | "AUTHORIZATION_DIRECTION_TO"
   | "AUTHORIZATION_DIRECTION_FROM";
-export const AuthorizedOrgsDescAuthorizationDirectionEnum = S.String;
+const AuthorizedOrgsDescAuthorizationDirectionEnum = S.String;
 
 /** `AuthorizedOrgsDesc` contains data for an organization's authorization policy. */
 export interface AuthorizedOrgsDesc {
@@ -490,7 +481,7 @@ export interface AuthorizedOrgsDesc {
   /** The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456` */
   orgs?: StringList;
 }
-export const AuthorizedOrgsDesc = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedOrgsDesc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetType: S.optional(AuthorizedOrgsDescAssetTypeEnum),
     authorizationType: S.optional(AuthorizedOrgsDescAuthorizationTypeEnum),
@@ -506,7 +497,7 @@ export interface CreateAccessPoliciesAuthorizedOrgsDescsRequest {
   /** Request body */
   body?: AuthorizedOrgsDesc;
 }
-export const CreateAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AuthorizedOrgsDesc.pipe(T.HttpBody())),
@@ -524,15 +515,14 @@ export const CreateAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.su
 export type VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum =
   | "SERVICE_PATTERNS_ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "GOOGLE_APIS_VIA_PRIVATE_PATH";
-export const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum = S.String;
+const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum = S.String;
 
 export type VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList = Array<
   VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum | (string & {})
 >;
-export const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum,
-  ) as any as S.Schema<VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList>;
+const VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList = /*@__PURE__*/ S.Array(
+  VpcAccessibleServicesServicePatternsEnforcementScopesItemEnum,
+) as any as S.Schema<VpcAccessibleServicesServicePatternsEnforcementScopesItemEnumList>;
 
 /** Adds a request header to the API. */
 export interface AddRequestHeader {
@@ -541,7 +531,7 @@ export interface AddRequestHeader {
   /** HTTP header key. */
   key?: string;
 }
-export const AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
+const AddRequestHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -553,14 +543,14 @@ export interface Modifier {
   /** Adds an additional HTTP request header. */
   addRequestHeader?: AddRequestHeader;
 }
-export const Modifier = /*@__PURE__*/ S.suspend(() =>
+const Modifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addRequestHeader: S.optional(AddRequestHeader),
   }),
 ).annotate({ identifier: "Modifier" }) as any as S.Schema<Modifier>;
 
 export type ModifierList = Array<Modifier>;
-export const ModifierList = /*@__PURE__*/ S.Array(Modifier) as any as S.Schema<ModifierList>;
+const ModifierList = /*@__PURE__*/ S.Array(Modifier) as any as S.Schema<ModifierList>;
 
 /** Service patterns used to allow access. */
 export interface ServicePattern {
@@ -571,7 +561,7 @@ export interface ServicePattern {
   /** Supported service to allow. */
   service?: string;
 }
-export const ServicePattern = /*@__PURE__*/ S.suspend(() =>
+const ServicePattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern: S.optional(S.String),
     modifiers: S.optional(ModifierList),
@@ -580,7 +570,7 @@ export const ServicePattern = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServicePattern" }) as any as S.Schema<ServicePattern>;
 
 export type ServicePatternList = Array<ServicePattern>;
-export const ServicePatternList = /*@__PURE__*/ S.Array(
+const ServicePatternList = /*@__PURE__*/ S.Array(
   ServicePattern,
 ) as any as S.Schema<ServicePatternList>;
 
@@ -595,7 +585,7 @@ export interface VpcAccessibleServices {
   /** Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'. */
   enableRestriction?: boolean;
 }
-export const VpcAccessibleServices = /*@__PURE__*/ S.suspend(() =>
+const VpcAccessibleServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedServices: S.optional(StringList),
     servicePatternsEnforcementScopes: S.optional(
@@ -613,7 +603,7 @@ export interface MethodSelector {
   /** A valid Cloud IAM permission for the corresponding `service_name` in ApiOperation. */
   permission?: string;
 }
-export const MethodSelector = /*@__PURE__*/ S.suspend(() =>
+const MethodSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     permission: S.optional(S.String),
@@ -621,7 +611,7 @@ export const MethodSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodSelector" }) as any as S.Schema<MethodSelector>;
 
 export type MethodSelectorList = Array<MethodSelector>;
-export const MethodSelectorList = /*@__PURE__*/ S.Array(
+const MethodSelectorList = /*@__PURE__*/ S.Array(
   MethodSelector,
 ) as any as S.Schema<MethodSelectorList>;
 
@@ -632,7 +622,7 @@ export interface ApiOperation {
   /** The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services. */
   serviceName?: string;
 }
-export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
+const ApiOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methodSelectors: S.optional(MethodSelectorList),
     serviceName: S.optional(S.String),
@@ -640,9 +630,7 @@ export const ApiOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiOperation" }) as any as S.Schema<ApiOperation>;
 
 export type ApiOperationList = Array<ApiOperation>;
-export const ApiOperationList = /*@__PURE__*/ S.Array(
-  ApiOperation,
-) as any as S.Schema<ApiOperationList>;
+const ApiOperationList = /*@__PURE__*/ S.Array(ApiOperation) as any as S.Schema<ApiOperationList>;
 
 /** Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter. */
 export interface EgressTo {
@@ -655,7 +643,7 @@ export interface EgressTo {
   /** A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list. */
   operations?: ApiOperationList;
 }
-export const EgressTo = /*@__PURE__*/ S.suspend(() =>
+const EgressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
     externalResources: S.optional(StringList),
@@ -669,7 +657,7 @@ export interface PrivateServiceConnectEndpoint {
   /** The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint. Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`. */
   forwardingRule?: string;
 }
-export const PrivateServiceConnectEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateServiceConnectEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingRule: S.optional(S.String),
   }),
@@ -686,7 +674,7 @@ export interface EgressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access data outside the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: PrivateServiceConnectEndpoint;
 }
-export const EgressSource = /*@__PURE__*/ S.suspend(() =>
+const EgressSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     accessLevel: S.optional(S.String),
@@ -695,22 +683,20 @@ export const EgressSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EgressSource" }) as any as S.Schema<EgressSource>;
 
 export type EgressSourceList = Array<EgressSource>;
-export const EgressSourceList = /*@__PURE__*/ S.Array(
-  EgressSource,
-) as any as S.Schema<EgressSourceList>;
+const EgressSourceList = /*@__PURE__*/ S.Array(EgressSource) as any as S.Schema<EgressSourceList>;
 
 export type EgressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const EgressFromIdentityTypeEnum = S.String;
+const EgressFromIdentityTypeEnum = S.String;
 
 export type EgressFromSourceRestrictionEnum =
   | "SOURCE_RESTRICTION_UNSPECIFIED"
   | "SOURCE_RESTRICTION_ENABLED"
   | "SOURCE_RESTRICTION_DISABLED";
-export const EgressFromSourceRestrictionEnum = S.String;
+const EgressFromSourceRestrictionEnum = S.String;
 
 /** Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. */
 export interface EgressFrom {
@@ -723,7 +709,7 @@ export interface EgressFrom {
   /** Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`. */
   sourceRestriction?: EgressFromSourceRestrictionEnum | (string & {});
 }
-export const EgressFrom = /*@__PURE__*/ S.suspend(() =>
+const EgressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identities: S.optional(StringList),
     sources: S.optional(EgressSourceList),
@@ -741,7 +727,7 @@ export interface EgressPolicy {
   /** Defines conditions on the source of a request causing this EgressPolicy to apply. */
   egressFrom?: EgressFrom;
 }
-export const EgressPolicy = /*@__PURE__*/ S.suspend(() =>
+const EgressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     egressTo: S.optional(EgressTo),
@@ -750,9 +736,7 @@ export const EgressPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EgressPolicy" }) as any as S.Schema<EgressPolicy>;
 
 export type EgressPolicyList = Array<EgressPolicy>;
-export const EgressPolicyList = /*@__PURE__*/ S.Array(
-  EgressPolicy,
-) as any as S.Schema<EgressPolicyList>;
+const EgressPolicyList = /*@__PURE__*/ S.Array(EgressPolicy) as any as S.Schema<EgressPolicyList>;
 
 /** Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match. */
 export interface IngressTo {
@@ -763,7 +747,7 @@ export interface IngressTo {
   /** A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed. */
   resources?: StringList;
 }
-export const IngressTo = /*@__PURE__*/ S.suspend(() =>
+const IngressTo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(ApiOperationList),
     roles: S.optional(StringList),
@@ -780,17 +764,15 @@ export interface IngressSource {
   /** A PrivateServiceConnectEndpoint that is allowed to access the perimeter. The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in. */
   pscEndpoint?: PrivateServiceConnectEndpoint;
 }
-export const IngressSource = EgressSource as any as S.Schema<IngressSource>;
-
 export type IngressSourceList = Array<IngressSource>;
-export const IngressSourceList = EgressSourceList as any as S.Schema<IngressSourceList>;
+const IngressSourceList = EgressSourceList as any as S.Schema<IngressSourceList>;
 
 export type IngressFromIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "ANY_IDENTITY"
   | "ANY_USER_ACCOUNT"
   | "ANY_SERVICE_ACCOUNT";
-export const IngressFromIdentityTypeEnum = S.String;
+const IngressFromIdentityTypeEnum = S.String;
 
 /** Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match. */
 export interface IngressFrom {
@@ -801,7 +783,7 @@ export interface IngressFrom {
   /** Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access. */
   identityType?: IngressFromIdentityTypeEnum | (string & {});
 }
-export const IngressFrom = /*@__PURE__*/ S.suspend(() =>
+const IngressFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sources: S.optional(IngressSourceList),
     identities: S.optional(StringList),
@@ -818,7 +800,7 @@ export interface IngressPolicy {
   /** Defines the conditions on the source of a request causing this IngressPolicy to apply. */
   ingressFrom?: IngressFrom;
 }
-export const IngressPolicy = /*@__PURE__*/ S.suspend(() =>
+const IngressPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressTo: S.optional(IngressTo),
     title: S.optional(S.String),
@@ -827,7 +809,7 @@ export const IngressPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngressPolicy" }) as any as S.Schema<IngressPolicy>;
 
 export type IngressPolicyList = Array<IngressPolicy>;
-export const IngressPolicyList = /*@__PURE__*/ S.Array(
+const IngressPolicyList = /*@__PURE__*/ S.Array(
   IngressPolicy,
 ) as any as S.Schema<IngressPolicyList>;
 
@@ -846,7 +828,7 @@ export interface ServicePerimeterConfig {
   /** A list of `AccessLevel` resource names that allow resources within the `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`. For Service Perimeter Bridge, must be empty. */
   accessLevels?: StringList;
 }
-export const ServicePerimeterConfig = /*@__PURE__*/ S.suspend(() =>
+const ServicePerimeterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcAccessibleServices: S.optional(VpcAccessibleServices),
     resources: S.optional(StringList),
@@ -858,7 +840,7 @@ export const ServicePerimeterConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServicePerimeterConfig" }) as any as S.Schema<ServicePerimeterConfig>;
 
 export type ServicePerimeterPerimeterTypeEnum = "PERIMETER_TYPE_REGULAR" | "PERIMETER_TYPE_BRIDGE";
-export const ServicePerimeterPerimeterTypeEnum = S.String;
+const ServicePerimeterPerimeterTypeEnum = S.String;
 
 /** `ServicePerimeter` describes a set of Google Cloud resources which can freely import and export data amongst themselves, but not export outside of the `ServicePerimeter`. If a request with a source within this `ServicePerimeter` has a target outside of the `ServicePerimeter`, the request will be blocked. Otherwise the request is allowed. There are two types of Service Perimeter - Regular and Bridge. Regular Service Perimeters cannot overlap, a single Google Cloud project or VPC network can only belong to a single regular Service Perimeter. Service Perimeter Bridges can contain only Google Cloud projects as members, a single Google Cloud project may belong to multiple Service Perimeter Bridges. */
 export interface ServicePerimeter {
@@ -879,7 +861,7 @@ export interface ServicePerimeter {
   /** Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries. */
   status?: ServicePerimeterConfig;
 }
-export const ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
+const ServicePerimeter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -898,7 +880,7 @@ export interface CreateAccessPoliciesServicePerimetersRequest {
   /** Request body */
   body?: ServicePerimeter;
 }
-export const CreateAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ServicePerimeter.pipe(T.HttpBody())),
@@ -922,7 +904,7 @@ export interface Principal {
   /** Immutable. The IAM principal identifier of the federated workforce or workload to assign the policy to. Examples include the following: * Single principal: `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}` * All workloads in a workload identity pool: `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*` * All Workforce Pools in a Google Cloud organization: `principalSet://cloudresourcemanager.googleapis.com/organizations/{organization_id}/type/WorkforcePool` Bindings created for all Workforce Pools in a Google Cloud organization support only `scoped_access_settings` with the `restricted_project` client scope and active `session_settings`. No other configurations are allowed. */
   federatedPrincipal?: string;
 }
-export const Principal = /*@__PURE__*/ S.suspend(() =>
+const Principal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     serviceAccountProjectNumber: S.optional(S.String),
@@ -935,7 +917,7 @@ export type SessionSettingsSessionReauthMethodEnum =
   | "LOGIN"
   | "SECURITY_KEY"
   | "PASSWORD";
-export const SessionSettingsSessionReauthMethodEnum = S.String;
+const SessionSettingsSessionReauthMethodEnum = S.String;
 
 /** Stores settings related to Google Cloud Session Length including session duration, the type of challenge (i.e. method) they should face when their session expires, and other related settings. */
 export interface SessionSettings {
@@ -950,7 +932,7 @@ export interface SessionSettings {
   /** Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite. If `session_length` is set to zero, this field must be set to false. */
   sessionLengthEnabled?: boolean;
 }
-export const SessionSettings = /*@__PURE__*/ S.suspend(() =>
+const SessionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useOidcMaxAge: S.optional(S.Boolean),
     sessionLength: S.optional(S.String),
@@ -967,7 +949,7 @@ export interface AccessSettings {
   /** Optional. Session settings applied to user access on a given AccessScope. */
   sessionSettings?: SessionSettings;
 }
-export const AccessSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessLevels: S.optional(StringList),
     sessionSettings: S.optional(SessionSettings),
@@ -981,7 +963,7 @@ export interface Application {
   /** The OAuth client ID of the application. */
   clientId?: string;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -993,7 +975,7 @@ export interface Project {
   /** The Google Cloud project resource name. Format: `projects/{project_number}`. Only the project number is supported. Example: `projects/1234567890` */
   name?: string;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1006,7 +988,7 @@ export interface ClientScope {
   /** Optional. The Google Cloud project that is subject to this binding's scope. */
   restrictedProject?: Project;
 }
-export const ClientScope = /*@__PURE__*/ S.suspend(() =>
+const ClientScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictedClientApplication: S.optional(Application),
     restrictedProject: S.optional(Project),
@@ -1018,7 +1000,7 @@ export interface AccessScope {
   /** Optional. Client scope for this access scope. */
   clientScope?: ClientScope;
 }
-export const AccessScope = /*@__PURE__*/ S.suspend(() =>
+const AccessScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientScope: S.optional(ClientScope),
   }),
@@ -1033,7 +1015,7 @@ export interface ScopedAccessSettings {
   /** Optional. Access settings for this scoped access settings. This field may be empty if dry_run_settings is set. */
   activeSettings?: AccessSettings;
 }
-export const ScopedAccessSettings = /*@__PURE__*/ S.suspend(() =>
+const ScopedAccessSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRunSettings: S.optional(AccessSettings),
     scope: S.optional(AccessScope),
@@ -1042,14 +1024,12 @@ export const ScopedAccessSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScopedAccessSettings" }) as any as S.Schema<ScopedAccessSettings>;
 
 export type ScopedAccessSettingsList = Array<ScopedAccessSettings>;
-export const ScopedAccessSettingsList = /*@__PURE__*/ S.Array(
+const ScopedAccessSettingsList = /*@__PURE__*/ S.Array(
   ScopedAccessSettings,
 ) as any as S.Schema<ScopedAccessSettingsList>;
 
 export type ApplicationList = Array<Application>;
-export const ApplicationList = /*@__PURE__*/ S.Array(
-  Application,
-) as any as S.Schema<ApplicationList>;
+const ApplicationList = /*@__PURE__*/ S.Array(Application) as any as S.Schema<ApplicationList>;
 
 /** Restricts access to Cloud Console and Google Cloud APIs for a set of users using Context-Aware Access. */
 export interface GcpUserAccessBinding {
@@ -1070,7 +1050,7 @@ export interface GcpUserAccessBinding {
   /** Optional. Deprecated: Use `scoped_access_settings` instead. A list of applications that are subject to this binding's restrictions. If the list is empty, the binding restrictions will universally apply to all applications. */
   restrictedClientApplications?: ApplicationList;
 }
-export const GcpUserAccessBinding = /*@__PURE__*/ S.suspend(() =>
+const GcpUserAccessBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupKey: S.optional(S.String),
     principal: S.optional(Principal),
@@ -1089,7 +1069,7 @@ export interface CreateOrganizationsGcpUserAccessBindingsRequest {
   /** Request body */
   body?: GcpUserAccessBinding;
 }
-export const CreateOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GcpUserAccessBinding.pipe(T.HttpBody())),
@@ -1108,7 +1088,7 @@ export interface DeleteAccessPoliciesRequest {
   /** Required. Resource name for the access policy to delete. Format `accessPolicies/{policy_id}` */
   name: string;
 }
-export const DeleteAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1126,7 +1106,7 @@ export interface DeleteAccessPoliciesAccessLevelsRequest {
   /** Required. Resource name for the Access Level. Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}` */
   name: string;
 }
-export const DeleteAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1144,7 +1124,7 @@ export interface DeleteAccessPoliciesAuthorizedOrgsDescsRequest {
   /** Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/{policy_id}/authorizedOrgsDesc/{authorized_orgs_desc_id}` */
   name: string;
 }
-export const DeleteAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1162,7 +1142,7 @@ export interface DeleteAccessPoliciesServicePerimetersRequest {
   /** Required. Resource name for the Service Perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeter_id}` */
   name: string;
 }
-export const DeleteAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1180,7 +1160,7 @@ export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1196,7 +1176,7 @@ export interface DeleteOrganizationsGcpUserAccessBindingsRequest {
   /** Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N" */
   name: string;
 }
-export const DeleteOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1214,7 +1194,7 @@ export interface GetAccessPoliciesRequest {
   /** Required. Resource name for the access policy to get. Format `accessPolicies/{policy_id}` */
   name: string;
 }
-export const GetAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1230,7 +1210,7 @@ export type GetAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
   | "CEL";
-export const GetAccessPoliciesAccessLevelsAccessLevelFormatEnum = S.String;
+const GetAccessPoliciesAccessLevelsAccessLevelFormatEnum = S.String;
 
 export interface GetAccessPoliciesAccessLevelsRequest {
   /** Required. Resource name for the Access Level. Format: `accessPolicies/{policy_id}/accessLevels/{access_level_id}` */
@@ -1238,7 +1218,7 @@ export interface GetAccessPoliciesAccessLevelsRequest {
   /** Whether to return `BasicLevels` in the Cloud Common Expression Language rather than as `BasicLevels`. Defaults to AS_DEFINED, where Access Levels are returned as `BasicLevels` or `CustomLevels` based on how they were created. If set to CEL, all Access Levels are returned as `CustomLevels`. In the CEL case, `BasicLevels` are translated to equivalent `CustomLevels`. */
   accessLevelFormat?: GetAccessPoliciesAccessLevelsAccessLevelFormatEnum | (string & {});
 }
-export const GetAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     accessLevelFormat: S.optional(
@@ -1259,7 +1239,7 @@ export interface GetAccessPoliciesAuthorizedOrgsDescsRequest {
   /** Required. Resource name for the Authorized Orgs Desc. Format: `accessPolicies/{policy_id}/authorizedOrgsDescs/{authorized_orgs_descs_id}` */
   name: string;
 }
-export const GetAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1277,7 +1257,7 @@ export type GetAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum =
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED";
-export const GetAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
+const GetAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
 
 export interface GetAccessPoliciesServicePerimetersRequest {
   /** Optional. If true, the response will contain the deleted principal syntax for identities that support it. */
@@ -1287,7 +1267,7 @@ export interface GetAccessPoliciesServicePerimetersRequest {
   /** Required. Resource name for the Service Perimeter. Format: `accessPolicies/{policy_id}/servicePerimeters/{service_perimeters_id}` */
   name: string;
 }
-export const GetAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedPrincipalSyntax: S.optional(
       GetAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum.pipe(T.Query()),
@@ -1309,7 +1289,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -1320,7 +1300,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -1332,7 +1312,7 @@ export interface GetIamPolicyAccessPoliciesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1356,7 +1336,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -1365,14 +1345,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -1381,7 +1361,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -1389,7 +1369,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -1400,7 +1380,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -1408,9 +1388,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1423,7 +1401,7 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -1436,7 +1414,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1452,7 +1430,7 @@ export interface GetOrganizationsGcpUserAccessBindingsRequest {
   /** Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N" */
   name: string;
 }
-export const GetOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1470,7 +1448,7 @@ export interface GetServicesRequest {
   /** The name of the service to get information about. The names must be in the same format as used in defining a service perimeter, for example, `storage.googleapis.com`. */
   name: string;
 }
-export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1491,14 +1469,14 @@ export type SupportedServiceSupportStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const SupportedServiceSupportStageEnum = S.String;
+const SupportedServiceSupportStageEnum = S.String;
 
 export type SupportedServiceServiceSupportStageEnum =
   | "SERVICE_SUPPORT_STAGE_UNSPECIFIED"
   | "GA"
   | "PREVIEW"
   | "DEPRECATED";
-export const SupportedServiceServiceSupportStageEnum = S.String;
+const SupportedServiceServiceSupportStageEnum = S.String;
 
 /** `SupportedService` specifies the VPC Service Controls and its properties. */
 export interface SupportedService {
@@ -1517,7 +1495,7 @@ export interface SupportedService {
   /** The service name or address of the supported service, such as `service.googleapis.com`. */
   name?: string;
 }
-export const SupportedService = /*@__PURE__*/ S.suspend(() =>
+const SupportedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableOnRestrictedVip: S.optional(S.Boolean),
     supportStage: S.optional(SupportedServiceSupportStageEnum),
@@ -1537,7 +1515,7 @@ export interface ListAccessPoliciesRequest {
   /** Number of AccessPolicy instances to include in the list. Default 100. */
   pageSize?: number;
 }
-export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.optional(S.String.pipe(T.Query())),
@@ -1554,9 +1532,7 @@ export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessPoliciesRequest>;
 
 export type AccessPolicyList = Array<AccessPolicy>;
-export const AccessPolicyList = /*@__PURE__*/ S.Array(
-  AccessPolicy,
-) as any as S.Schema<AccessPolicyList>;
+const AccessPolicyList = /*@__PURE__*/ S.Array(AccessPolicy) as any as S.Schema<AccessPolicyList>;
 
 /** A response to `ListAccessPoliciesRequest`. */
 export interface ListAccessPoliciesResponse {
@@ -1565,7 +1541,7 @@ export interface ListAccessPoliciesResponse {
   /** List of the AccessPolicy instances. */
   accessPolicies?: AccessPolicyList;
 }
-export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accessPolicies: S.optional(AccessPolicyList),
@@ -1578,7 +1554,7 @@ export type ListAccessPoliciesAccessLevelsAccessLevelFormatEnum =
   | "LEVEL_FORMAT_UNSPECIFIED"
   | "AS_DEFINED"
   | "CEL";
-export const ListAccessPoliciesAccessLevelsAccessLevelFormatEnum = S.String;
+const ListAccessPoliciesAccessLevelsAccessLevelFormatEnum = S.String;
 
 export interface ListAccessPoliciesAccessLevelsRequest {
   /** Required. Resource name for the access policy to list Access Levels from. Format: `accessPolicies/{policy_id}` */
@@ -1590,7 +1566,7 @@ export interface ListAccessPoliciesAccessLevelsRequest {
   /** Next page token for the next batch of Access Level instances. Defaults to the first page of results. */
   pageToken?: string;
 }
-export const ListAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1610,9 +1586,7 @@ export const ListAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListAccessPoliciesAccessLevelsRequest>;
 
 export type AccessLevelList = Array<AccessLevel>;
-export const AccessLevelList = /*@__PURE__*/ S.Array(
-  AccessLevel,
-) as any as S.Schema<AccessLevelList>;
+const AccessLevelList = /*@__PURE__*/ S.Array(AccessLevel) as any as S.Schema<AccessLevelList>;
 
 /** A response to `ListAccessLevelsRequest`. */
 export interface ListAccessLevelsResponse {
@@ -1621,7 +1595,7 @@ export interface ListAccessLevelsResponse {
   /** List of the Access Level instances. */
   accessLevels?: AccessLevelList;
 }
-export const ListAccessLevelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessLevelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accessLevels: S.optional(AccessLevelList),
@@ -1636,7 +1610,7 @@ export interface ListAccessPoliciesAuthorizedOrgsDescsRequest {
   /** Required. Resource name for the access policy to list Authorized Orgs Desc from. Format: `accessPolicies/{policy_id}` */
   parent: string;
 }
-export const ListAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1653,7 +1627,7 @@ export const ListAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListAccessPoliciesAuthorizedOrgsDescsRequest>;
 
 export type AuthorizedOrgsDescList = Array<AuthorizedOrgsDesc>;
-export const AuthorizedOrgsDescList = /*@__PURE__*/ S.Array(
+const AuthorizedOrgsDescList = /*@__PURE__*/ S.Array(
   AuthorizedOrgsDesc,
 ) as any as S.Schema<AuthorizedOrgsDescList>;
 
@@ -1664,7 +1638,7 @@ export interface ListAuthorizedOrgsDescsResponse {
   /** The pagination token to retrieve the next page of results. If the value is empty, no further results remain. */
   nextPageToken?: string;
 }
-export const ListAuthorizedOrgsDescsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizedOrgsDescsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizedOrgsDescs: S.optional(AuthorizedOrgsDescList),
     nextPageToken: S.optional(S.String),
@@ -1677,7 +1651,7 @@ export type ListAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum =
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED";
-export const ListAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
+const ListAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
 
 export interface ListAccessPoliciesServicePerimetersRequest {
   /** Required. Resource name for the access policy to list Service Perimeters from. Format: `accessPolicies/{policy_id}` */
@@ -1691,7 +1665,7 @@ export interface ListAccessPoliciesServicePerimetersRequest {
     | ListAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum
     | (string & {});
 }
-export const ListAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1711,7 +1685,7 @@ export const ListAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListAccessPoliciesServicePerimetersRequest>;
 
 export type ServicePerimeterList = Array<ServicePerimeter>;
-export const ServicePerimeterList = /*@__PURE__*/ S.Array(
+const ServicePerimeterList = /*@__PURE__*/ S.Array(
   ServicePerimeter,
 ) as any as S.Schema<ServicePerimeterList>;
 
@@ -1722,7 +1696,7 @@ export interface ListServicePerimetersResponse {
   /** List of the Service Perimeter instances. */
   servicePerimeters?: ServicePerimeterList;
 }
-export const ListServicePerimetersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicePerimetersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     servicePerimeters: S.optional(ServicePerimeterList),
@@ -1743,7 +1717,7 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1760,7 +1734,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1771,7 +1745,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -1789,7 +1763,7 @@ export interface ListOrganizationsGcpUserAccessBindingsRequest {
   /** Optional. If left blank, returns the first page. To enumerate all items, use the next_page_token from your previous list operation. */
   pageToken?: string;
 }
-export const ListOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1807,7 +1781,7 @@ export const ListOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListOrganizationsGcpUserAccessBindingsRequest>;
 
 export type GcpUserAccessBindingList = Array<GcpUserAccessBinding>;
-export const GcpUserAccessBindingList = /*@__PURE__*/ S.Array(
+const GcpUserAccessBindingList = /*@__PURE__*/ S.Array(
   GcpUserAccessBinding,
 ) as any as S.Schema<GcpUserAccessBindingList>;
 
@@ -1818,7 +1792,7 @@ export interface ListGcpUserAccessBindingsResponse {
   /** Token to get the next page of items. If blank, there are no more items. */
   nextPageToken?: string;
 }
-export const ListGcpUserAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGcpUserAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcpUserAccessBindings: S.optional(GcpUserAccessBindingList),
     nextPageToken: S.optional(S.String),
@@ -1833,7 +1807,7 @@ export interface ListPermissionsRequest {
   /** Optional. This flag specifies the maximum number of services to return per page. Default value is 100. */
   pageSize?: number;
 }
-export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1853,7 +1827,7 @@ export interface ListSupportedPermissionsResponse {
   /** List of VPC Service Controls supported permissions. */
   supportedPermissions?: StringList;
 }
-export const ListSupportedPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportedPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     supportedPermissions: S.optional(StringList),
@@ -1868,7 +1842,7 @@ export interface ListServicesRequest {
   /** This flag specifies the maximum number of services to return per page. Default value is 100. */
   pageSize?: number;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1882,7 +1856,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
 
 export type SupportedServiceList = Array<SupportedService>;
-export const SupportedServiceList = /*@__PURE__*/ S.Array(
+const SupportedServiceList = /*@__PURE__*/ S.Array(
   SupportedService,
 ) as any as S.Schema<SupportedServiceList>;
 
@@ -1893,7 +1867,7 @@ export interface ListSupportedServicesResponse {
   /** Use this pagination token to retrieve the next page of results. An empty value indicates that no further results are available. */
   nextPageToken?: string;
 }
-export const ListSupportedServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportedServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedServices: S.optional(SupportedServiceList),
     nextPageToken: S.optional(S.String),
@@ -1906,7 +1880,7 @@ export interface LookupConfiguredServicePerimeterFoldersRequest {
   /** Required. The Resource to resolve (e.g. "projects/123", "folders/456"). */
   resource: string;
 }
-export const LookupConfiguredServicePerimeterFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupConfiguredServicePerimeterFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
   }).pipe(
@@ -1931,7 +1905,7 @@ export interface LookupConfiguredServicePerimeterResponse {
   /** The resource (e.g. "projects/123", "folders/456") that directly owns/is restricted by the enforced perimeter. */
   restrictedResource?: string;
 }
-export const LookupConfiguredServicePerimeterResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupConfiguredServicePerimeterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servicePerimeter: S.optional(S.String),
     restrictedResourceDryRun: S.optional(S.String),
@@ -1946,7 +1920,7 @@ export interface LookupConfiguredServicePerimeterProjectsRequest {
   /** Required. The Resource to resolve (e.g. "projects/123", "folders/456"). */
   resource: string;
 }
-export const LookupConfiguredServicePerimeterProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupConfiguredServicePerimeterProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
   }).pipe(
@@ -1968,7 +1942,7 @@ export interface PatchAccessPoliciesRequest {
   /** Request body */
   body?: AccessPolicy;
 }
-export const PatchAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1992,7 +1966,7 @@ export interface PatchAccessPoliciesAccessLevelsRequest {
   /** Request body */
   body?: AccessLevel;
 }
-export const PatchAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2016,7 +1990,7 @@ export interface PatchAccessPoliciesAuthorizedOrgsDescsRequest {
   /** Request body */
   body?: AuthorizedOrgsDesc;
 }
-export const PatchAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccessPoliciesAuthorizedOrgsDescsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2036,7 +2010,7 @@ export type PatchAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum =
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_UNSPECIFIED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_DISABLED"
   | "DELETED_PRINCIPAL_SYNTAX_SUPPORT_ENABLED";
-export const PatchAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
+const PatchAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum = S.String;
 
 export interface PatchAccessPoliciesServicePerimetersRequest {
   /** Optional. If true, the response will contain the deleted principal syntax for identities that support it and the request can contain identities with deleted principal syntax. */
@@ -2050,7 +2024,7 @@ export interface PatchAccessPoliciesServicePerimetersRequest {
   /** Request body */
   body?: ServicePerimeter;
 }
-export const PatchAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletedPrincipalSyntax: S.optional(
       PatchAccessPoliciesServicePerimetersDeletedPrincipalSyntaxEnum.pipe(T.Query()),
@@ -2079,7 +2053,7 @@ export interface PatchOrganizationsGcpUserAccessBindingsRequest {
   /** Request body */
   body?: GcpUserAccessBinding;
 }
-export const PatchOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsGcpUserAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     append: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2103,7 +2077,7 @@ export interface ReplaceAccessLevelsRequest {
   /** Optional. The etag for the version of the Access Policy that this replace operation is to be performed on. If, at the time of replace, the etag for the Access Policy stored in Access Context Manager is different from the specified etag, then the replace operation will not be performed and the call will fail. This field is not required. If etag is not provided, the operation will be performed as if a valid etag is provided. */
   etag?: string;
 }
-export const ReplaceAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessLevels: S.optional(AccessLevelList),
     etag: S.optional(S.String),
@@ -2118,7 +2092,7 @@ export interface ReplaceAllAccessPoliciesAccessLevelsRequest {
   /** Request body */
   body?: ReplaceAccessLevelsRequest;
 }
-export const ReplaceAllAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ReplaceAccessLevelsRequest.pipe(T.HttpBody())),
@@ -2140,7 +2114,7 @@ export interface ReplaceServicePerimetersRequest {
   /** Required. The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy. */
   servicePerimeters?: ServicePerimeterList;
 }
-export const ReplaceServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     servicePerimeters: S.optional(ServicePerimeterList),
@@ -2155,7 +2129,7 @@ export interface ReplaceAllAccessPoliciesServicePerimetersRequest {
   /** Request body */
   body?: ReplaceServicePerimetersRequest;
 }
-export const ReplaceAllAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAllAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ReplaceServicePerimetersRequest.pipe(T.HttpBody())),
@@ -2177,7 +2151,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -2190,7 +2164,7 @@ export interface SetIamPolicyAccessPoliciesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2210,7 +2184,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2224,7 +2198,7 @@ export interface TestIamPermissionsAccessPoliciesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2244,7 +2218,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsAccessPoliciesAccessLevelsRequest {
@@ -2253,7 +2227,7 @@ export interface TestIamPermissionsAccessPoliciesAccessLevelsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsAccessPoliciesAccessLevelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2274,18 +2248,17 @@ export interface TestIamPermissionsAccessPoliciesServicePerimetersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://accesscontextmanager.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsAccessPoliciesServicePerimetersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://accesscontextmanager.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsAccessPoliciesServicePerimetersRequest",
 }) as any as S.Schema<TestIamPermissionsAccessPoliciesServicePerimetersRequest>;

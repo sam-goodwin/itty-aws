@@ -48,7 +48,7 @@ export interface GetLedgerAccountRequest {
   /** The identifier to look up the ledger account. Accepts a user ID ('user_xxx'), company ID ('biz_xxx'), or ledger account ID ('ldgr_xxx'). */
   id: string;
 }
-export const GetLedgerAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLedgerAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ledger_accounts/{id}", code: 200 })),
@@ -146,7 +146,7 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-export const LegacyCurrencies = S.String;
+const LegacyCurrencies = S.String;
 
 /** A cached balance for a LedgerAccount in respect to a currency. */
 export interface LedgerAccountBalancesItem {
@@ -159,7 +159,7 @@ export interface LedgerAccountBalancesItem {
   /** The amount of the balance that is reserved. */
   reserve_balance: number;
 }
-export const LedgerAccountBalancesItem = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountBalancesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.Number,
     currency: LegacyCurrencies,
@@ -172,13 +172,13 @@ export const LedgerAccountBalancesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The balances associated with the account. */
 export type LedgerAccountBalancesList = Array<LedgerAccountBalancesItem>;
-export const LedgerAccountBalancesList = /*@__PURE__*/ S.Array(
+const LedgerAccountBalancesList = /*@__PURE__*/ S.Array(
   LedgerAccountBalancesItem,
 ) as any as S.Schema<LedgerAccountBalancesList>;
 
 /** The types of ledgers that can be created. */
 export type LedgerTypes = "primary" | "pool";
-export const LedgerTypes = S.String;
+const LedgerTypes = S.String;
 
 /** A user account on Whop. Contains profile information, identity details, and social connections. */
 export interface LedgerAccountOwnerCase0 {
@@ -191,15 +191,6 @@ export interface LedgerAccountOwnerCase0 {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const LedgerAccountOwnerCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    typename: S.String,
-    username: S.String,
-  }),
-).annotate({ identifier: "LedgerAccountOwnerCase0" }) as any as S.Schema<LedgerAccountOwnerCase0>;
-
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
 export interface LedgerAccountOwnerCase1 {
   /** The unique identifier for the company. */
@@ -211,22 +202,13 @@ export interface LedgerAccountOwnerCase1 {
   /** The typename of this object */
   typename: string;
 }
-export const LedgerAccountOwnerCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    route: S.String,
-    title: S.String,
-    typename: S.String,
-  }),
-).annotate({ identifier: "LedgerAccountOwnerCase1" }) as any as S.Schema<LedgerAccountOwnerCase1>;
-
 /** The owner of the ledger account. */
 export type LedgerAccountOwner = LedgerAccountOwnerCase0 | LedgerAccountOwnerCase1;
-export const LedgerAccountOwner = S.Unknown as any as S.Schema<LedgerAccountOwner>;
+const LedgerAccountOwner = S.Unknown as any as S.Schema<LedgerAccountOwner>;
 
 /** The different approval statuses an account can have. */
 export type PaymentsApprovalStatuses = "pending" | "approved" | "monitoring" | "rejected";
-export const PaymentsApprovalStatuses = S.String;
+const PaymentsApprovalStatuses = S.String;
 
 /** The physical address associated with this payout account */
 export interface LedgerAccountPayoutAccountDetailsAddress {
@@ -243,7 +225,7 @@ export interface LedgerAccountPayoutAccountDetailsAddress {
   /** The state of the address. */
   state: string | null;
 }
-export const LedgerAccountPayoutAccountDetailsAddress = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountPayoutAccountDetailsAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.NullOr(S.String),
     country: S.NullOr(S.String),
@@ -267,7 +249,7 @@ export interface LedgerAccountPayoutAccountDetailsBusinessRepresentative {
   /** The middle name of the business representative. */
   middle_name: string | null;
 }
-export const LedgerAccountPayoutAccountDetailsBusinessRepresentative = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountPayoutAccountDetailsBusinessRepresentative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date_of_birth: S.NullOr(S.String),
     first_name: S.NullOr(S.String),
@@ -299,7 +281,7 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
-export const VerificationErrorCodes = S.String;
+const VerificationErrorCodes = S.String;
 
 /** A status for a verification. */
 export type VerificationStatuses =
@@ -318,7 +300,7 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
-export const VerificationStatuses = S.String;
+const VerificationStatuses = S.String;
 
 /** The latest verification for the connected account. */
 export interface LedgerAccountPayoutAccountDetailsLatestVerification {
@@ -331,7 +313,7 @@ export interface LedgerAccountPayoutAccountDetailsLatestVerification {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
-export const LedgerAccountPayoutAccountDetailsLatestVerification = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountPayoutAccountDetailsLatestVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     last_error_code: S.NullOr(VerificationErrorCodes),
@@ -353,7 +335,7 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
-export const PayoutAccountCalculatedStatuses = S.String;
+const PayoutAccountCalculatedStatuses = S.String;
 
 /** The payout account associated with the LedgerAccount, if any. */
 export interface LedgerAccountPayoutAccountDetails {
@@ -374,7 +356,7 @@ export interface LedgerAccountPayoutAccountDetails {
   /** The granular calculated status of the payout account reflecting its current KYC and payout readiness state. */
   status: PayoutAccountCalculatedStatuses | null;
 }
-export const LedgerAccountPayoutAccountDetails = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountPayoutAccountDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.NullOr(LedgerAccountPayoutAccountDetailsAddress),
     business_name: S.NullOr(S.String),
@@ -404,7 +386,7 @@ export interface LedgerAccountTreasuryBalance {
   /** The amount of the balance that is withdrawable. */
   total_withdrawable_balance: number;
 }
-export const LedgerAccountTreasuryBalance = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccountTreasuryBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.Number,
     balance_usd: S.Number,
@@ -440,7 +422,7 @@ export interface LedgerAccount {
   /** The balance cache associated with the account by currency. */
   treasury_balance: LedgerAccountTreasuryBalance | null;
 }
-export const LedgerAccount = /*@__PURE__*/ S.suspend(() =>
+const LedgerAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balances: LedgerAccountBalancesList,
     id: S.String,

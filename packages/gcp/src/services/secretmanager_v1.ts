@@ -82,7 +82,7 @@ export interface AccessProjectsLocationsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion. */
   name: string;
 }
-export const AccessProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -103,7 +103,7 @@ export interface SecretPayload {
   /** The secret data. Must be no larger than 64KiB. */
   data?: string;
 }
-export const SecretPayload = /*@__PURE__*/ S.suspend(() =>
+const SecretPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataCrc32c: S.optional(S.String),
     data: S.optional(S.String),
@@ -117,7 +117,7 @@ export interface AccessSecretVersionResponse {
   /** The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. */
   name?: string;
 }
-export const AccessSecretVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessSecretVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(SecretPayload),
     name: S.optional(S.String),
@@ -130,7 +130,7 @@ export interface AccessProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion. */
   name: string;
 }
-export const AccessProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -149,7 +149,7 @@ export interface AddSecretVersionRequest {
   /** Required. The secret payload of the SecretVersion. */
   payload?: SecretPayload;
 }
-export const AddSecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(SecretPayload),
   }),
@@ -161,7 +161,7 @@ export interface AddVersionProjectsLocationsSecretsRequest {
   /** Request body */
   body?: AddSecretVersionRequest;
 }
-export const AddVersionProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddVersionProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AddSecretVersionRequest.pipe(T.HttpBody())),
@@ -181,7 +181,7 @@ export interface CustomerManagedEncryptionStatus {
   /** Required. The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the secret payload, in the following format: `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*\/versions/*`. */
   kmsKeyVersionName?: string;
 }
-export const CustomerManagedEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedEncryptionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyVersionName: S.optional(S.String),
   }),
@@ -194,7 +194,7 @@ export interface AutomaticStatus {
   /** Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed encryption is used. */
   customerManagedEncryption?: CustomerManagedEncryptionStatus;
 }
-export const AutomaticStatus = /*@__PURE__*/ S.suspend(() =>
+const AutomaticStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedEncryption: S.optional(CustomerManagedEncryptionStatus),
   }),
@@ -207,7 +207,7 @@ export interface ReplicaStatus {
   /** Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed encryption is used. */
   customerManagedEncryption?: CustomerManagedEncryptionStatus;
 }
-export const ReplicaStatus = /*@__PURE__*/ S.suspend(() =>
+const ReplicaStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     customerManagedEncryption: S.optional(CustomerManagedEncryptionStatus),
@@ -215,7 +215,7 @@ export const ReplicaStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicaStatus" }) as any as S.Schema<ReplicaStatus>;
 
 export type ReplicaStatusList = Array<ReplicaStatus>;
-export const ReplicaStatusList = /*@__PURE__*/ S.Array(
+const ReplicaStatusList = /*@__PURE__*/ S.Array(
   ReplicaStatus,
 ) as any as S.Schema<ReplicaStatusList>;
 
@@ -224,7 +224,7 @@ export interface UserManagedStatus {
   /** Output only. The list of replica statuses for the SecretVersion. */
   replicas?: ReplicaStatusList;
 }
-export const UserManagedStatus = /*@__PURE__*/ S.suspend(() =>
+const UserManagedStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicas: S.optional(ReplicaStatusList),
   }),
@@ -237,7 +237,7 @@ export interface ReplicationStatus {
   /** Describes the replication status of a SecretVersion with user-managed replication. Only populated if the parent Secret has a user-managed replication policy. */
   userManaged?: UserManagedStatus;
 }
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(AutomaticStatus),
     userManaged: S.optional(UserManagedStatus),
@@ -245,7 +245,7 @@ export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplicationStatus" }) as any as S.Schema<ReplicationStatus>;
 
 export type SecretVersionStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DESTROYED";
-export const SecretVersionStateEnum = S.String;
+const SecretVersionStateEnum = S.String;
 
 /** A secret version resource in the Secret Manager API. */
 export interface SecretVersion {
@@ -268,7 +268,7 @@ export interface SecretVersion {
   /** Output only. The current state of the SecretVersion. */
   state?: SecretVersionStateEnum;
 }
-export const SecretVersion = /*@__PURE__*/ S.suspend(() =>
+const SecretVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     scheduledDestroyTime: S.optional(S.String),
@@ -288,7 +288,7 @@ export interface AddVersionProjectsSecretsRequest {
   /** Request body */
   body?: AddSecretVersionRequest;
 }
-export const AddVersionProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddVersionProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AddSecretVersionRequest.pipe(T.HttpBody())),
@@ -304,7 +304,7 @@ export const AddVersionProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddVersionProjectsSecretsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Output-only policy member strings of a Google Cloud resource's built-in identity. */
 export interface ResourcePolicyMember {
@@ -313,7 +313,7 @@ export interface ResourcePolicyMember {
   /** Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource. Example: `principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter` */
   iamPolicyNamePrincipal?: string;
 }
-export const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
+const ResourcePolicyMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamPolicyUidPrincipal: S.optional(S.String),
     iamPolicyNamePrincipal: S.optional(S.String),
@@ -325,7 +325,7 @@ export interface CustomerManagedEncryption {
   /** Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. */
   kmsKeyName?: string;
 }
-export const CustomerManagedEncryption = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedEncryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -338,7 +338,7 @@ export interface Automatic {
   /** Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions. */
   customerManagedEncryption?: CustomerManagedEncryption;
 }
-export const Automatic = /*@__PURE__*/ S.suspend(() =>
+const Automatic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedEncryption: S.optional(CustomerManagedEncryption),
   }),
@@ -351,7 +351,7 @@ export interface Replica {
   /** The canonical IDs of the location to replicate data. For example: `"us-east1"`. */
   location?: string;
 }
-export const Replica = /*@__PURE__*/ S.suspend(() =>
+const Replica = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedEncryption: S.optional(CustomerManagedEncryption),
     location: S.optional(S.String),
@@ -359,14 +359,14 @@ export const Replica = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replica" }) as any as S.Schema<Replica>;
 
 export type ReplicaList = Array<Replica>;
-export const ReplicaList = /*@__PURE__*/ S.Array(Replica) as any as S.Schema<ReplicaList>;
+const ReplicaList = /*@__PURE__*/ S.Array(Replica) as any as S.Schema<ReplicaList>;
 
 /** A replication policy that replicates the Secret payload into the locations specified in Replication.UserManaged.replicas */
 export interface UserManaged {
   /** Required. The list of Replicas for this Secret. Cannot be empty. */
   replicas?: ReplicaList;
 }
-export const UserManaged = /*@__PURE__*/ S.suspend(() =>
+const UserManaged = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicas: S.optional(ReplicaList),
   }),
@@ -379,7 +379,7 @@ export interface Replication {
   /** The Secret will only be replicated into the locations specified. */
   userManaged?: UserManaged;
 }
-export const Replication = /*@__PURE__*/ S.suspend(() =>
+const Replication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(Automatic),
     userManaged: S.optional(UserManaged),
@@ -387,18 +387,13 @@ export const Replication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Replication" }) as any as S.Schema<Replication>;
 
 export type ManagedRotationStatusStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-export const ManagedRotationStatusStateEnum = S.String;
+const ManagedRotationStatusStateEnum = S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -409,7 +404,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -424,7 +419,7 @@ export interface ManagedRotationStatus {
   /** Output only. Displays customer-facing issues that occurred during an asynchronous managed rotation. For example, if there are some permission errors. */
   error?: Status;
 }
-export const ManagedRotationStatus = /*@__PURE__*/ S.suspend(() =>
+const ManagedRotationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ManagedRotationStatusStateEnum),
     error: S.optional(Status),
@@ -440,7 +435,7 @@ export interface Rotation {
   /** Output only. The current status of the managed rotation. This field is only applicable to Typed Secrets. This field is set by the service and cannot be set by the user. */
   managedRotationStatus?: ManagedRotationStatus;
 }
-export const Rotation = /*@__PURE__*/ S.suspend(() =>
+const Rotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextRotationTime: S.optional(S.String),
     rotationPeriod: S.optional(S.String),
@@ -453,14 +448,14 @@ export interface Topic {
   /** Identifier. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*\/topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission. */
   name?: string;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Topic" }) as any as S.Schema<Topic>;
 
 export type TopicList = Array<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 export type SecretSecretTypeEnum =
   | "SECRET_TYPE_UNSPECIFIED"
@@ -469,7 +464,7 @@ export type SecretSecretTypeEnum =
   | "CERTIFICATE"
   | "OTHER_DB_CREDENTIALS"
   | "OTHER";
-export const SecretSecretTypeEnum = S.String;
+const SecretSecretTypeEnum = S.String;
 
 /** A Secret is a logical secret whose value and versions can be accessed. A Secret is made up of zero or more SecretVersions that represent the secret data. */
 export interface Secret {
@@ -506,7 +501,7 @@ export interface Secret {
   /** Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB. */
   annotations?: StringMap;
 }
-export const Secret = /*@__PURE__*/ S.suspend(() =>
+const Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     policyMember: S.optional(ResourcePolicyMember),
@@ -535,7 +530,7 @@ export interface CreateProjectsLocationsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
-export const CreateProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     secretId: S.optional(S.String.pipe(T.Query())),
@@ -559,7 +554,7 @@ export interface CreateProjectsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
-export const CreateProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -581,7 +576,7 @@ export interface DeleteProjectsLocationsSecretsRequest {
   /** Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -598,7 +593,7 @@ export const DeleteProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -608,7 +603,7 @@ export interface DeleteProjectsSecretsRequest {
   /** Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`. */
   name: string;
 }
-export const DeleteProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -628,7 +623,7 @@ export interface DestroySecretVersionRequest {
   /** Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored secret version object. If the etag is omitted, the request succeeds. */
   etag?: string;
 }
-export const DestroySecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DestroySecretVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
   }),
@@ -642,7 +637,7 @@ export interface DestroyProjectsLocationsSecretsVersionsRequest {
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const DestroyProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DestroyProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -663,7 +658,7 @@ export interface DestroyProjectsSecretsVersionsRequest {
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -680,15 +675,13 @@ export const DestroyProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Request message for SecretManagerService.DisableSecretVersion. */
 export type DisableSecretVersionRequest = DestroySecretVersionRequest;
-export const DisableSecretVersionRequest = DestroySecretVersionRequest;
-
 export interface DisableProjectsLocationsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion to disable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. */
   name: string;
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const DisableProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -709,7 +702,7 @@ export interface DisableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const DisableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -733,7 +726,7 @@ export interface CloudSQLSingleUserCredentials {
   /** Optional. Password of the Cloud SQL instance. If this is not provided, a random password will be generated. */
   password?: string;
 }
-export const CloudSQLSingleUserCredentials = /*@__PURE__*/ S.suspend(() =>
+const CloudSQLSingleUserCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String),
     username: S.optional(S.String),
@@ -748,7 +741,7 @@ export interface EnableManagedRotationRequest {
   /** Credentials required for Cloud SQL DB for Single user Managed Rotation. */
   cloudSqlSingleUserCredentials?: CloudSQLSingleUserCredentials;
 }
-export const EnableManagedRotationRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableManagedRotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudSqlSingleUserCredentials: S.optional(CloudSQLSingleUserCredentials),
   }),
@@ -762,7 +755,7 @@ export interface EnableManagedRotationProjectsLocationsSecretsRequest {
   /** Request body */
   body?: EnableManagedRotationRequest;
 }
-export const EnableManagedRotationProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableManagedRotationProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(EnableManagedRotationRequest.pipe(T.HttpBody())),
@@ -783,7 +776,7 @@ export interface EnableManagedRotationProjectsSecretsRequest {
   /** Request body */
   body?: EnableManagedRotationRequest;
 }
-export const EnableManagedRotationProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableManagedRotationProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(EnableManagedRotationRequest.pipe(T.HttpBody())),
@@ -800,15 +793,13 @@ export const EnableManagedRotationProjectsSecretsRequest = /*@__PURE__*/ S.suspe
 
 /** Request message for SecretManagerService.EnableSecretVersion. */
 export type EnableSecretVersionRequest = DestroySecretVersionRequest;
-export const EnableSecretVersionRequest = DestroySecretVersionRequest;
-
 export interface EnableProjectsLocationsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. */
   name: string;
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const EnableProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -829,7 +820,7 @@ export interface EnableProjectsSecretsVersionsRequest {
   /** Request body */
   body?: DestroySecretVersionRequest;
 }
-export const EnableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DestroySecretVersionRequest.pipe(T.HttpBody())),
@@ -850,7 +841,7 @@ export interface GetIamPolicyProjectsLocationsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -876,7 +867,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -886,7 +877,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
@@ -897,7 +888,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -906,14 +897,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -922,7 +913,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -930,7 +921,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -941,7 +932,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -949,9 +940,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -964,7 +953,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -979,7 +968,7 @@ export interface GetIamPolicyProjectsSecretsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -998,7 +987,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1021,7 +1010,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1035,7 +1024,7 @@ export interface GetProjectsLocationsSecretsRequest {
   /** Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`. */
   name: string;
 }
-export const GetProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1049,7 +1038,7 @@ export interface GetProjectsLocationsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion. */
   name: string;
 }
-export const GetProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1063,7 +1052,7 @@ export interface GetProjectsSecretsRequest {
   /** Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`. */
   name: string;
 }
-export const GetProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1077,7 +1066,7 @@ export interface GetProjectsSecretsVersionsRequest {
   /** Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion. */
   name: string;
 }
-export const GetProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1099,7 +1088,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1118,7 +1107,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1127,7 +1116,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1144,7 +1133,7 @@ export interface ListProjectsLocationsSecretsRequest {
   /** Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. */
   filter?: string;
 }
-export const ListProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1162,7 +1151,7 @@ export const ListProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSecretsRequest>;
 
 export type SecretList = Array<Secret>;
-export const SecretList = /*@__PURE__*/ S.Array(Secret) as any as S.Schema<SecretList>;
+const SecretList = /*@__PURE__*/ S.Array(Secret) as any as S.Schema<SecretList>;
 
 /** Response message for SecretManagerService.ListSecrets. */
 export interface ListSecretsResponse {
@@ -1173,7 +1162,7 @@ export interface ListSecretsResponse {
   /** The total number of Secrets but 0 when the ListSecretsRequest.filter field is set. */
   totalSize?: number;
 }
-export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: S.optional(SecretList),
     nextPageToken: S.optional(S.String),
@@ -1191,7 +1180,7 @@ export interface ListProjectsLocationsSecretsVersionsRequest {
   /** Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret versions matching the filter. If filter is empty, all secret versions are listed. */
   filter?: string;
 }
-export const ListProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1209,7 +1198,7 @@ export const ListProjectsLocationsSecretsVersionsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsSecretsVersionsRequest>;
 
 export type SecretVersionList = Array<SecretVersion>;
-export const SecretVersionList = /*@__PURE__*/ S.Array(
+const SecretVersionList = /*@__PURE__*/ S.Array(
   SecretVersion,
 ) as any as S.Schema<SecretVersionList>;
 
@@ -1222,7 +1211,7 @@ export interface ListSecretVersionsResponse {
   /** The total number of SecretVersions but 0 when the ListSecretsRequest.filter field is set. */
   totalSize?: number;
 }
-export const ListSecretVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: S.optional(SecretVersionList),
     nextPageToken: S.optional(S.String),
@@ -1242,7 +1231,7 @@ export interface ListProjectsSecretsRequest {
   /** Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. */
   filter?: string;
 }
-export const ListProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1269,7 +1258,7 @@ export interface ListProjectsSecretsVersionsRequest {
   /** Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`. */
   parent: string;
 }
-export const ListProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSecretsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1294,7 +1283,7 @@ export interface PatchProjectsLocationsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
-export const PatchProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1318,7 +1307,7 @@ export interface PatchProjectsSecretsRequest {
   /** Request body */
   body?: Secret;
 }
-export const PatchProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1336,7 +1325,7 @@ export const PatchProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for SecretManagerService.RotateSecret. */
 export interface RotateSecretRequest {}
-export const RotateSecretRequest = Empty as any as S.Schema<RotateSecretRequest>;
+const RotateSecretRequest = Empty as any as S.Schema<RotateSecretRequest>;
 
 export interface RotateSecretProjectsLocationsSecretsRequest {
   /** Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`. */
@@ -1344,7 +1333,7 @@ export interface RotateSecretProjectsLocationsSecretsRequest {
   /** Request body */
   body?: RotateSecretRequest;
 }
-export const RotateSecretProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RotateSecretRequest.pipe(T.HttpBody())),
@@ -1365,7 +1354,7 @@ export interface RotateSecretProjectsSecretsRequest {
   /** Request body */
   body?: RotateSecretRequest;
 }
-export const RotateSecretProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSecretProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RotateSecretRequest.pipe(T.HttpBody())),
@@ -1387,7 +1376,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1400,7 +1389,7 @@ export interface SetIamPolicyProjectsLocationsSecretsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1421,7 +1410,7 @@ export interface SetIamPolicyProjectsSecretsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1441,7 +1430,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1455,7 +1444,7 @@ export interface TestIamPermissionsProjectsLocationsSecretsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1475,7 +1464,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsSecretsRequest {
@@ -1484,7 +1473,7 @@ export interface TestIamPermissionsProjectsSecretsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),

@@ -38,7 +38,7 @@ export class NotFound
 
 /** Object that represents the labels of an object. Regex for keys: `^(?=.{1,63}$)([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(?=.{0,63}$)(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. Providing a `null` value for a key will remove that key. Send empty object {} to remove all labels. The `stackit` prefix is reserved and cannot be used for Keys. */
 export type Labels = { [key: string]: string | undefined };
-export const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
+const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
 
 export interface CreateTokenRequest {
   /** portal project id */
@@ -51,7 +51,7 @@ export interface CreateTokenRequest {
   /** time to live duration. Must be valid duration string. If not set the token will never expire. */
   ttlDuration?: string;
 }
-export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -70,7 +70,7 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTokenRequest" }) as any as S.Schema<CreateTokenRequest>;
 
 export type TokenCreatedState = "creating" | "active" | "deleting";
-export const TokenCreatedState = S.String;
+const TokenCreatedState = S.String;
 
 export interface TokenCreated {
   content: string;
@@ -82,7 +82,7 @@ export interface TokenCreated {
   state: TokenCreatedState;
   validUntil: string;
 }
-export const TokenCreated = /*@__PURE__*/ S.suspend(() =>
+const TokenCreated = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     description: S.optional(S.String),
@@ -99,7 +99,7 @@ export interface CreateTokenResponse {
   message?: string;
   token: TokenCreated;
 }
-export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     token: TokenCreated,
@@ -114,7 +114,7 @@ export interface DeleteTokenRequest {
   /** token id */
   tId: string;
 }
-export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -132,7 +132,7 @@ export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MessageResponse {
   message?: string;
 }
-export const MessageResponse = /*@__PURE__*/ S.suspend(() =>
+const MessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -144,7 +144,7 @@ export interface GetChatModelRequest {
   /** model id */
   modelId: string;
 }
-export const GetChatModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
     modelId: S.String.pipe(T.Label()),
@@ -159,20 +159,20 @@ export const GetChatModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetChatModelRequest" }) as any as S.Schema<GetChatModelRequest>;
 
 export type ChatModelDetailsBits = 1 | 2 | 4 | 8 | 16;
-export const ChatModelDetailsBits = S.Number;
+const ChatModelDetailsBits = S.Number;
 
 export type ChatModelDetailsCategory = "standard" | "plus" | "premium";
-export const ChatModelDetailsCategory = S.String;
+const ChatModelDetailsCategory = S.String;
 
 export type ChatModelDetailsQuantizationMethod = "PTQ" | "QAT";
-export const ChatModelDetailsQuantizationMethod = S.String;
+const ChatModelDetailsQuantizationMethod = S.String;
 
 export interface SKU {
   description?: string;
   id: string;
   type?: string;
 }
-export const SKU = /*@__PURE__*/ S.suspend(() =>
+const SKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     id: S.String,
@@ -181,12 +181,12 @@ export const SKU = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SKU" }) as any as S.Schema<SKU>;
 
 export type ChatModelDetailsSkusList = Array<SKU>;
-export const ChatModelDetailsSkusList = /*@__PURE__*/ S.Array(
+const ChatModelDetailsSkusList = /*@__PURE__*/ S.Array(
   SKU,
 ) as any as S.Schema<ChatModelDetailsSkusList>;
 
 export type ChatModelDetailsTagsList = Array<string>;
-export const ChatModelDetailsTagsList = /*@__PURE__*/ S.Array(
+const ChatModelDetailsTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ChatModelDetailsTagsList>;
 
@@ -209,7 +209,7 @@ export interface ChatModelDetails {
   /** url of the model */
   url: string;
 }
-export const ChatModelDetails = /*@__PURE__*/ S.suspend(() =>
+const ChatModelDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bits: S.optional(ChatModelDetailsBits),
     category: ChatModelDetailsCategory,
@@ -231,7 +231,7 @@ export interface GetChatModelResponse {
   message?: string;
   model: ChatModelDetails;
 }
-export const GetChatModelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChatModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     model: ChatModelDetails,
@@ -244,7 +244,7 @@ export interface GetEmbeddingModelRequest {
   /** model id */
   modelId: string;
 }
-export const GetEmbeddingModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmbeddingModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
     modelId: S.String.pipe(T.Label()),
@@ -259,14 +259,14 @@ export const GetEmbeddingModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEmbeddingModelRequest" }) as any as S.Schema<GetEmbeddingModelRequest>;
 
 export type EmbeddingModelDetailsCategory = "standard" | "plus" | "premium";
-export const EmbeddingModelDetailsCategory = S.String;
+const EmbeddingModelDetailsCategory = S.String;
 
 export type EmbeddingModelDetailsSkusList = Array<SKU>;
-export const EmbeddingModelDetailsSkusList =
+const EmbeddingModelDetailsSkusList =
   ChatModelDetailsSkusList as any as S.Schema<EmbeddingModelDetailsSkusList>;
 
 export type EmbeddingModelDetailsTagsList = Array<string>;
-export const EmbeddingModelDetailsTagsList =
+const EmbeddingModelDetailsTagsList =
   ChatModelDetailsTagsList as any as S.Schema<EmbeddingModelDetailsTagsList>;
 
 export interface EmbeddingModelDetails {
@@ -284,7 +284,7 @@ export interface EmbeddingModelDetails {
   /** url of the model */
   url: string;
 }
-export const EmbeddingModelDetails = /*@__PURE__*/ S.suspend(() =>
+const EmbeddingModelDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: EmbeddingModelDetailsCategory,
     description: S.String,
@@ -303,7 +303,7 @@ export interface GetEmbeddingsModelResp {
   message?: string;
   model: EmbeddingModelDetails;
 }
-export const GetEmbeddingsModelResp = /*@__PURE__*/ S.suspend(() =>
+const GetEmbeddingsModelResp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     model: EmbeddingModelDetails,
@@ -318,7 +318,7 @@ export interface GetTokenRequest {
   /** token id */
   tId: string;
 }
-export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -334,7 +334,7 @@ export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTokenRequest" }) as any as S.Schema<GetTokenRequest>;
 
 export type TokenState = "creating" | "active" | "deleting" | "inactive";
-export const TokenState = S.String;
+const TokenState = S.String;
 
 export interface Token {
   description?: string;
@@ -345,7 +345,7 @@ export interface Token {
   state: TokenState;
   validUntil: string;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
+const Token = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     id: S.String,
@@ -361,7 +361,7 @@ export interface GetTokenResponse {
   message?: string;
   token: Token;
 }
-export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     token: Token,
@@ -372,7 +372,7 @@ export interface ListModelsRequest {
   /** region name */
   regionId: string;
 }
-export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -386,16 +386,16 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListModelsRequest" }) as any as S.Schema<ListModelsRequest>;
 
 export type ModelCategory = "standard" | "plus" | "premium";
-export const ModelCategory = S.String;
+const ModelCategory = S.String;
 
 export type ModelSkusList = Array<SKU>;
-export const ModelSkusList = /*@__PURE__*/ S.Array(SKU) as any as S.Schema<ModelSkusList>;
+const ModelSkusList = /*@__PURE__*/ S.Array(SKU) as any as S.Schema<ModelSkusList>;
 
 export type ModelTagsList = Array<string>;
-export const ModelTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ModelTagsList>;
+const ModelTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ModelTagsList>;
 
 export type ModelType = "chat" | "embedding" | "audio" | "image";
-export const ModelType = S.String;
+const ModelType = S.String;
 
 export interface Model {
   category: ModelCategory;
@@ -412,7 +412,7 @@ export interface Model {
   /** url of the model */
   url: string;
 }
-export const Model = /*@__PURE__*/ S.suspend(() =>
+const Model = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: ModelCategory,
     description: S.String,
@@ -428,7 +428,7 @@ export const Model = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Model" }) as any as S.Schema<Model>;
 
 export type ListModelsResponseModelsList = Array<Model>;
-export const ListModelsResponseModelsList = /*@__PURE__*/ S.Array(
+const ListModelsResponseModelsList = /*@__PURE__*/ S.Array(
   Model,
 ) as any as S.Schema<ListModelsResponseModelsList>;
 
@@ -436,7 +436,7 @@ export interface ListModelsResponse {
   message?: string;
   models: ListModelsResponseModelsList;
 }
-export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     models: ListModelsResponseModelsList,
@@ -451,7 +451,7 @@ export interface ListTokensRequest {
   /** Filter token resource by labels */
   label_selector?: string;
 }
-export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -467,7 +467,7 @@ export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTokensRequest" }) as any as S.Schema<ListTokensRequest>;
 
 export type ListTokenRespTokensList = Array<Token>;
-export const ListTokenRespTokensList = /*@__PURE__*/ S.Array(
+const ListTokenRespTokensList = /*@__PURE__*/ S.Array(
   Token,
 ) as any as S.Schema<ListTokenRespTokensList>;
 
@@ -475,7 +475,7 @@ export interface ListTokenResp {
   message?: string;
   tokens: ListTokenRespTokensList;
 }
-export const ListTokenResp = /*@__PURE__*/ S.suspend(() =>
+const ListTokenResp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     tokens: ListTokenRespTokensList,
@@ -484,7 +484,7 @@ export const ListTokenResp = /*@__PURE__*/ S.suspend(() =>
 
 /** Object that represents the labels of an object. Regex for keys: `^(?=.{1,63}$)([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(?=.{0,63}$)(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. Providing a `null` value for a key will remove that key. Send empty object {} to remove all labels. The `stackit` prefix is reserved and cannot be used for Keys. */
 export type LabelPatch = { [key: string]: string | null | undefined };
-export const LabelPatch = /*@__PURE__*/ S.Record(
+const LabelPatch = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<LabelPatch>;
@@ -500,7 +500,7 @@ export interface PartialUpdateTokenRequest {
   labels?: LabelPatch;
   name?: string;
 }
-export const PartialUpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -524,7 +524,7 @@ export interface UpdateTokenResponse {
   message?: string;
   token: Token;
 }
-export const UpdateTokenResponse = GetTokenResponse as any as S.Schema<UpdateTokenResponse>;
+const UpdateTokenResponse = GetTokenResponse as any as S.Schema<UpdateTokenResponse>;
 
 export type CreateTokenError = BadRequest | Conflict | StackitOpError;
 /** create auth token for shared model use create auth token for shared model use */

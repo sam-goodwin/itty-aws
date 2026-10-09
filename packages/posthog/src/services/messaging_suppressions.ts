@@ -15,7 +15,7 @@ export interface GetMessagingSuppressionsSuppressionRequest {
   /** Case-insensitive substring match on the recipient email address. */
   search?: string;
 }
-export const GetMessagingSuppressionsSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMessagingSuppressionsSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -34,7 +34,7 @@ export const GetMessagingSuppressionsSuppressionRequest = /*@__PURE__*/ S.suspen
 
 /** * `BOUNCE` - Bounce * `MANUAL` - Manual * `COMPLAINT` - Complaint */
 export type SuppressionSourceEnum = "BOUNCE" | "MANUAL" | "COMPLAINT";
-export const SuppressionSourceEnum = S.String;
+const SuppressionSourceEnum = S.String;
 
 export interface MessageSuppression {
   /** Server-assigned UUID for this suppression entry. */
@@ -60,7 +60,7 @@ export interface MessageSuppression {
   /** When the row was last touched by any write. */
   updated_at: string;
 }
-export const MessageSuppression = /*@__PURE__*/ S.suspend(() =>
+const MessageSuppression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     identifier: S.String,
@@ -77,7 +77,7 @@ export const MessageSuppression = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageSuppression" }) as any as S.Schema<MessageSuppression>;
 
 export type PaginatedMessageSuppressionResultsList = Array<MessageSuppression>;
-export const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMessageSuppressionResultsList = /*@__PURE__*/ S.Array(
   MessageSuppression,
 ) as any as S.Schema<PaginatedMessageSuppressionResultsList>;
 
@@ -91,7 +91,7 @@ export interface PaginatedMessageSuppression {
   previous: string | null;
   results: PaginatedMessageSuppressionResultsList;
 }
-export const PaginatedMessageSuppression = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMessageSuppression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.NullOr(S.String),
@@ -108,7 +108,7 @@ export interface MessagingSuppressionsAddSuppressionCreateRequest {
   /** The email address to suppress. Will not receive any messages until removed. */
   identifier: string;
 }
-export const MessagingSuppressionsAddSuppressionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingSuppressionsAddSuppressionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     identifier: S.String,
@@ -129,7 +129,7 @@ export interface MessagingSuppressionsRemoveSuppressionCreateRequest {
   /** The email address to suppress. Will not receive any messages until removed. */
   identifier: string;
 }
-export const MessagingSuppressionsRemoveSuppressionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const MessagingSuppressionsRemoveSuppressionCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     identifier: S.String,
@@ -145,7 +145,7 @@ export const MessagingSuppressionsRemoveSuppressionCreateRequest = /*@__PURE__*/
 }) as any as S.Schema<MessagingSuppressionsRemoveSuppressionCreateRequest>;
 
 export interface MessagingSuppressionsRemoveSuppressionCreateResponse {}
-export const MessagingSuppressionsRemoveSuppressionCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const MessagingSuppressionsRemoveSuppressionCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "MessagingSuppressionsRemoveSuppressionCreateResponse",

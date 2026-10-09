@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -197,7 +197,7 @@ export interface IoK8sApiSchedulingV1alpha3CompositeDisruptionMode {
   /** single specifies that children groups can be disrupted independently from each other. */
   single?: unknown;
 }
-export const IoK8sApiSchedulingV1alpha3CompositeDisruptionMode = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositeDisruptionMode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Unknown),
     single: S.optional(S.Unknown),
@@ -211,7 +211,7 @@ export interface IoK8sApiSchedulingV1alpha3TopologyConstraint {
   /** key specifies the key of the node label representing the topology domain. All pods within the PodGroup must be colocated within the same domain instance. Different PodGroups can land on different domain instances even if they derive from the same PodGroupTemplate. Examples: "topology.kubernetes.io/rack" */
   key: string;
 }
-export const IoK8sApiSchedulingV1alpha3TopologyConstraint = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3TopologyConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
   }),
@@ -222,7 +222,7 @@ export const IoK8sApiSchedulingV1alpha3TopologyConstraint = /*@__PURE__*/ S.susp
 /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList =
+const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3TopologyConstraint,
   ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList>;
@@ -232,23 +232,23 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraint
   /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
   topology?: IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints =
-  /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       topology: S.optional(
         IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList,
       ),
     }),
-  ).annotate({
-    identifier: "IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints",
-  }) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints>;
+).annotate({
+  identifier: "IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints",
+}) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints>;
 
 /** CompositeGangSchedulingPolicy indicates that the groups belonging to the composite group should be scheduled using all-or-nothing semantics. */
 export interface IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy {
   /** minGroupCount is the minimum number of child groups that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer. This field is mutable to support workload scaling. Note that the scheduler operates on an eventually consistent model. Updates to minGroupCount may not be immediately reflected in scheduling decisions due to propagation delays. If minGroupCount is updated while a scheduling cycle is in progress for that group, the new value may not take effect until the next cycle. Moreover, minGroupCount is only enforced during scheduling, meaning that modifications to this field do not affect already-scheduled pods, applying only to those evaluated in future cycles. */
   minGroupCount: number;
 }
-export const IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minGroupCount: S.Number,
   }),
@@ -263,12 +263,11 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy {
   /** gang specifies that the groups of this composite group should be scheduled using all-or-nothing semantics. Setting this field at group creation time opts this group to gang scheduling; this field cannot be set or unset afterward. The minGroupCount field within Gang scheduling policy remains mutable after group creation. */
   gang?: IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      basic: S.optional(S.Unknown),
-      gang: S.optional(IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy),
-    }),
+const IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    basic: S.optional(S.Unknown),
+    gang: S.optional(IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy),
+  }),
 ).annotate({
   identifier: "IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy",
 }) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy>;
@@ -280,7 +279,7 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadReference {
   /** workloadName is the name of the Workload object that contains a template that was used when creating a pod group. It must be a DNS name. This field is required. */
   workloadName: string;
 }
-export const IoK8sApiSchedulingV1alpha3WorkloadReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3WorkloadReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateName: S.String,
     workloadName: S.String,
@@ -308,7 +307,7 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroupSpec {
   /** workloadRef references an optional CompositePodGroup template within the Workload object that was used to create the CompositePodGroup. This field is required. This field is immutable. */
   workloadRef: IoK8sApiSchedulingV1alpha3WorkloadReference;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroupSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3CompositeDisruptionMode),
     parentCompositePodGroupName: S.optional(S.String),
@@ -340,7 +339,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Condition {
   /** type of condition in CamelCase or in foo.example.com/CamelCase. */
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastTransitionTime: S.String,
     message: S.optional(S.String),
@@ -356,17 +355,16 @@ export const IoK8sApimachineryPkgApisMetaV1Condition = /*@__PURE__*/ S.suspend((
 /** conditions represent the latest observations of the CompositePodGroup's state. Known condition types: - "CompositePodGroupInitiallyScheduled": Indicates whether the overall scheduling requirement for the subtree under this CompositePodGroup has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently deleted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the CompositePodGroup is about to be terminated due to disruption such as preemption. Known reasons for the CompositePodGroupInitiallyScheduled condition: - "Scheduled": All required child groups and pods under this CompositePodGroup have been successfully scheduled. - "Unschedulable": The CompositePodGroup's subtree could not be placed, for example due to unmet minGroupCount, placement constraints, or insufficient capacity for its child groups. - "SchedulerError": The CompositePodGroup cannot be scheduled due to some internal error that occurred during scheduling. - "CompositePodGroupError": The CompositePodGroup cannot be scheduled due to an invalid group layout detected during runtime validation. The `message` field details the specific layout violation (such as a detected cycle, exceeding the maximum depth of 4, or referencing multiple distinct Workloads). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The CompositePodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1Condition,
-  ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList>;
+const IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1Condition,
+) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList>;
 
 /** CompositePodGroupStatus represents information about the status of a composite pod group. */
 export interface IoK8sApiSchedulingV1alpha3CompositePodGroupStatus {
   /** conditions represent the latest observations of the CompositePodGroup's state. Known condition types: - "CompositePodGroupInitiallyScheduled": Indicates whether the overall scheduling requirement for the subtree under this CompositePodGroup has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently deleted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the CompositePodGroup is about to be terminated due to disruption such as preemption. Known reasons for the CompositePodGroupInitiallyScheduled condition: - "Scheduled": All required child groups and pods under this CompositePodGroup have been successfully scheduled. - "Unschedulable": The CompositePodGroup's subtree could not be placed, for example due to unmet minGroupCount, placement constraints, or insufficient capacity for its child groups. - "SchedulerError": The CompositePodGroup cannot be scheduled due to some internal error that occurred during scheduling. - "CompositePodGroupError": The CompositePodGroup cannot be scheduled due to an invalid group layout detected during runtime validation. The `message` field details the specific layout violation (such as a detected cycle, exceeding the maximum depth of 4, or referencing multiple distinct Workloads). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The CompositePodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
   conditions?: IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroupStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiSchedulingV1alpha3CompositePodGroupStatusConditionsList),
   }),
@@ -396,26 +394,25 @@ export interface CreateSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** status represents the current observed state of the CompositePodGroup. */
   status?: IoK8sApiSchedulingV1alpha3CompositePodGroupStatus;
 }
-export const CreateSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiSchedulingV1alpha3CompositePodGroupSpec,
-      status: S.optional(IoK8sApiSchedulingV1alpha3CompositePodGroupStatus),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups",
-        code: 200,
-      }),
-    ),
+const CreateSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiSchedulingV1alpha3CompositePodGroupSpec,
+    status: S.optional(IoK8sApiSchedulingV1alpha3CompositePodGroupStatus),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<CreateSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -433,7 +430,7 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroup {
   /** status represents the current observed state of the CompositePodGroup. */
   status?: IoK8sApiSchedulingV1alpha3CompositePodGroupStatus;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -452,7 +449,7 @@ export interface IoK8sApiSchedulingV1alpha3DisruptionMode {
   /** single specifies that children can be disrupted independently from each other. */
   single?: unknown;
 }
-export const IoK8sApiSchedulingV1alpha3DisruptionMode =
+const IoK8sApiSchedulingV1alpha3DisruptionMode =
   IoK8sApiSchedulingV1alpha3CompositeDisruptionMode as any as S.Schema<IoK8sApiSchedulingV1alpha3DisruptionMode>;
 
 /** PodGroupResourceClaim references exactly one ResourceClaim, either directly or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim for the PodGroup. It adds a name to it that uniquely identifies the ResourceClaim inside the PodGroup. Pods that need access to the ResourceClaim define a matching reference in its own Spec.ResourceClaims. The Pod's claim must match all fields of the PodGroup's claim exactly. */
@@ -464,7 +461,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupResourceClaim {
   /** resourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this PodGroup. The template will be used to create a new ResourceClaim, which will be bound to this PodGroup. When this PodGroup is deleted, the ResourceClaim will also be deleted. The PodGroup name and resource name, along with a generated component, will be used to form a unique name for the ResourceClaim, which will be recorded in podgroup.status.resourceClaimStatuses. This field is immutable and no changes will be made to the corresponding ResourceClaim by the control plane after creating the ResourceClaim. Exactly one of ResourceClaimName and ResourceClaimTemplateName must be set. */
   resourceClaimTemplateName?: string;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaim = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupResourceClaim = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     resourceClaimName: S.optional(S.String),
@@ -477,14 +474,14 @@ export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaim = /*@__PURE__*/ S.s
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1alpha3PodGroupResourceClaim,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList>;
 
 /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-export const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
+const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList =
   IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList>;
 
 /** PodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a PodGroup. */
@@ -492,7 +489,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints {
   /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
   topology?: IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topology: S.optional(IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraintsTopologyList),
   }),
@@ -505,7 +502,7 @@ export interface IoK8sApiSchedulingV1alpha3GangSchedulingPolicy {
   /** minCount is the minimum number of pods that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer. This field is mutable to support workload scaling. Note that the scheduler operates on an eventually consistent model. Updates to minCount may not be immediately reflected in scheduling decisions due to propagation delays. If minCount is updated while a scheduling cycle is in progress for that group, the new value may not take effect until the next cycle. Moreover, minCount is only enforced during scheduling, meaning that modifications to this field do not affect already-scheduled pods, applying only to those evaluated in future cycles. */
   minCount: number;
 }
-export const IoK8sApiSchedulingV1alpha3GangSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3GangSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minCount: S.Number,
   }),
@@ -520,7 +517,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy {
   /** gang specifies that the pods in this group should be scheduled using all-or-nothing semantics. Setting this field at group creation time opts this group to gang scheduling; this field cannot be set or unset afterward. The minCount field within Gang scheduling policy remains mutable after group creation. */
   gang?: IoK8sApiSchedulingV1alpha3GangSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basic: S.optional(S.Unknown),
     gang: S.optional(IoK8sApiSchedulingV1alpha3GangSchedulingPolicy),
@@ -550,7 +547,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupSpec {
   /** workloadRef references an optional PodGroup template within the Workload object that was used to create the PodGroup. This field is immutable. */
   workloadRef?: IoK8sApiSchedulingV1alpha3WorkloadReference;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3DisruptionMode),
     parentCompositePodGroupName: S.optional(S.String),
@@ -569,7 +566,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupSpec = /*@__PURE__*/ S.suspend(()
 /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Scheduled": All required pods in the PodGroup have been successfully scheduled. - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. - "PodGroupError": The PodGroup cannot be scheduled due to an invalid group configuration detected during runtime validation (such as conflicting scheduler names, or priority/preemption policy conflicts). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
 export type IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1Condition,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList>;
 
@@ -580,7 +577,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus {
   /** resourceClaimName is the name of the ResourceClaim that was generated for the PodGroup in the namespace of the PodGroup. If this is unset, then generating a ResourceClaim was not necessary. The podgroup.spec.resourceClaims entry can be ignored in this case. */
   resourceClaimName?: string;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     resourceClaimName: S.optional(S.String),
@@ -592,10 +589,9 @@ export const IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus = /*@__PURE__
 /** resourceClaimStatuses is status of resource claims. */
 export type IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus>;
-export const IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus,
-  ) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList>;
+const IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList = /*@__PURE__*/ S.Array(
+  IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus,
+) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList>;
 
 /** PodGroupStatus represents information about the status of a pod group. */
 export interface IoK8sApiSchedulingV1alpha3PodGroupStatus {
@@ -604,7 +600,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupStatus {
   /** resourceClaimStatuses is status of resource claims. */
   resourceClaimStatuses?: IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupStatus = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList),
     resourceClaimStatuses: S.optional(
@@ -637,7 +633,7 @@ export interface CreateSchedulingV1alpha3NamespacedPodGroupRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1alpha3PodGroupStatus;
 }
-export const CreateSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -673,7 +669,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroup {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1alpha3PodGroupStatus;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -688,7 +684,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroup = /*@__PURE__*/ S.suspend(() =>
 /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate>;
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
+const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     /*@__PURE__*/ S.suspend(() => IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate),
   ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList>;
@@ -696,7 +692,7 @@ export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGrou
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
+const IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList =
   IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupTemplateResourceClaimsList>;
 
 /** PodGroupTemplate represents a template for a set of pods with a scheduling policy. */
@@ -718,7 +714,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupTemplate {
   /** schedulingPolicy defines the scheduling policy for this PodGroupTemplate. */
   schedulingPolicy: IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disruptionMode: S.optional(IoK8sApiSchedulingV1alpha3DisruptionMode),
     name: S.String,
@@ -736,7 +732,7 @@ export const IoK8sApiSchedulingV1alpha3PodGroupTemplate = /*@__PURE__*/ S.suspen
 /** podGroupTemplates is the list of templates for children PodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupTemplate>;
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList =
+const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     IoK8sApiSchedulingV1alpha3PodGroupTemplate,
   ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList>;
@@ -762,7 +758,7 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate {
   /** schedulingPolicy defines the scheduling policy for this template. */
   schedulingPolicy: IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositePodGroupTemplates: S.optional(
       IoK8sApiSchedulingV1alpha3CompositePodGroupTemplateCompositePodGroupTemplatesList,
@@ -787,10 +783,9 @@ export const IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate = /*@__PURE__*/
 /** compositePodGroupTemplates is the list of CompositePodGroup templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. This field is used only when the CompositePodGroup feature gate is enabled. */
 export type IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate>;
-export const IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate,
-  ) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList>;
+const IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList = /*@__PURE__*/ S.Array(
+  IoK8sApiSchedulingV1alpha3CompositePodGroupTemplate,
+) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList>;
 
 /** TypedLocalObjectReference allows to reference typed object inside the same namespace. */
 export interface IoK8sApiSchedulingV1alpha3TypedLocalObjectReference {
@@ -801,7 +796,7 @@ export interface IoK8sApiSchedulingV1alpha3TypedLocalObjectReference {
   /** name is the name of resource being referenced. It must be a path segment name. */
   name: string;
 }
-export const IoK8sApiSchedulingV1alpha3TypedLocalObjectReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3TypedLocalObjectReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     kind: S.String,
@@ -814,7 +809,7 @@ export const IoK8sApiSchedulingV1alpha3TypedLocalObjectReference = /*@__PURE__*/
 /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupTemplate>;
-export const IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1alpha3PodGroupTemplate,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList>;
 
@@ -827,7 +822,7 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadSpec {
   /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
   podGroupTemplates?: IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList;
 }
-export const IoK8sApiSchedulingV1alpha3WorkloadSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3WorkloadSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositePodGroupTemplates: S.optional(
       IoK8sApiSchedulingV1alpha3WorkloadSpecCompositePodGroupTemplatesList,
@@ -859,7 +854,7 @@ export interface CreateSchedulingV1alpha3NamespacedWorkloadRequest {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1alpha3WorkloadSpec;
 }
-export const CreateSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -892,7 +887,7 @@ export interface IoK8sApiSchedulingV1alpha3Workload {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1alpha3WorkloadSpec;
 }
-export const IoK8sApiSchedulingV1alpha3Workload = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3Workload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -905,58 +900,32 @@ export const IoK8sApiSchedulingV1alpha3Workload = /*@__PURE__*/ S.suspend(() =>
 
 /** DisruptionMode defines how individual entities within a group can be disrupted. Exactly one mode can be set. */
 export type IoK8sApiSchedulingV1beta1DisruptionMode = IoK8sApiSchedulingV1alpha3DisruptionMode;
-export const IoK8sApiSchedulingV1beta1DisruptionMode = IoK8sApiSchedulingV1alpha3DisruptionMode;
-
 /** PodGroupResourceClaim references exactly one ResourceClaim, either directly or by naming a ResourceClaimTemplate which is then turned into a ResourceClaim for the PodGroup. It adds a name to it that uniquely identifies the ResourceClaim inside the PodGroup. Pods that need access to the ResourceClaim define a matching reference in its own Spec.ResourceClaims. The Pod's claim must match all fields of the PodGroup's claim exactly. */
 export type IoK8sApiSchedulingV1beta1PodGroupResourceClaim =
   IoK8sApiSchedulingV1alpha3PodGroupResourceClaim;
-export const IoK8sApiSchedulingV1beta1PodGroupResourceClaim =
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaim;
-
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList =
-  IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpecResourceClaimsList>;
-
 /** TopologyConstraint defines a topology constraint for a PodGroup. */
 export type IoK8sApiSchedulingV1beta1TopologyConstraint =
   IoK8sApiSchedulingV1alpha3TopologyConstraint;
-export const IoK8sApiSchedulingV1beta1TopologyConstraint =
-  IoK8sApiSchedulingV1alpha3TopologyConstraint;
-
 /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList>;
-
 /** PodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a PodGroup. */
 export interface IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints {
   /** topology defines the topology constraints for the pod group. Currently only a single topology constraint can be specified. This may change in the future. */
   topology?: IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraintsTopologyList;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints =
-  IoK8sApiSchedulingV1alpha3PodGroupSchedulingConstraints as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSchedulingConstraints>;
-
 /** GangSchedulingPolicy defines the parameters for gang scheduling. */
 export type IoK8sApiSchedulingV1beta1GangSchedulingPolicy =
   IoK8sApiSchedulingV1alpha3GangSchedulingPolicy;
-export const IoK8sApiSchedulingV1beta1GangSchedulingPolicy =
-  IoK8sApiSchedulingV1alpha3GangSchedulingPolicy;
-
 /** PodGroupSchedulingPolicy defines the scheduling configuration for a PodGroup. Exactly one policy must be set. The policy is chosen at creation time by setting either the Basic or Gang field. The PodGroup may not change policy after creation. Fields within chosen policy may be updated after creation when their individual fields allow it. */
 export type IoK8sApiSchedulingV1beta1PodGroupSchedulingPolicy =
   IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy;
-export const IoK8sApiSchedulingV1beta1PodGroupSchedulingPolicy =
-  IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy;
-
 /** WorkloadReference references the Workload object together with the template that was used to create a particular PodGroup. */
 export type IoK8sApiSchedulingV1beta1WorkloadReference =
   IoK8sApiSchedulingV1alpha3WorkloadReference;
-export const IoK8sApiSchedulingV1beta1WorkloadReference =
-  IoK8sApiSchedulingV1alpha3WorkloadReference;
-
 /** PodGroupSpec defines the desired state of a PodGroup. */
 export interface IoK8sApiSchedulingV1beta1PodGroupSpec {
   /** disruptionMode defines the mode in which a given PodGroup can be disrupted. Controllers are expected to fill this field by copying it from a PodGroupTemplate. One of Single, All. Defaults to Single if unset. This field is immutable. */
@@ -978,27 +947,18 @@ export interface IoK8sApiSchedulingV1beta1PodGroupSpec {
   /** workloadRef references an optional PodGroup template within the Workload object that was used to create the PodGroup. This field is immutable. */
   workloadRef?: IoK8sApiSchedulingV1alpha3WorkloadReference;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupSpec =
+const IoK8sApiSchedulingV1beta1PodGroupSpec =
   IoK8sApiSchedulingV1alpha3PodGroupSpec as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupSpec>;
 
 /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Scheduled": All required pods in the PodGroup have been successfully scheduled. - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. - "PodGroupError": The PodGroup cannot be scheduled due to an invalid group configuration detected during runtime validation (such as conflicting scheduler names, or priority/preemption policy conflicts). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
 export type IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
   Array<IoK8sApimachineryPkgApisMetaV1Condition>;
-export const IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList =
-  IoK8sApiSchedulingV1alpha3PodGroupStatusConditionsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusConditionsList>;
-
 /** PodGroupResourceClaimStatus is stored in the PodGroupStatus for each PodGroupResourceClaim which references a ResourceClaimTemplate. It stores the generated name for the corresponding ResourceClaim. */
 export type IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus =
   IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus;
-export const IoK8sApiSchedulingV1beta1PodGroupResourceClaimStatus =
-  IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus;
-
 /** resourceClaimStatuses is status of resource claims. */
 export type IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaimStatus>;
-export const IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList =
-  IoK8sApiSchedulingV1alpha3PodGroupStatusResourceClaimStatusesList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList>;
-
 /** PodGroupStatus represents information about the status of a pod group. */
 export interface IoK8sApiSchedulingV1beta1PodGroupStatus {
   /** conditions represent the latest observations of the PodGroup's state. Known condition types: - "PodGroupInitiallyScheduled": Indicates whether the scheduling requirement has been satisfied. Once this condition transitions to True, it serves as a terminal state and will never revert to False, even if pods are subsequently evicted and group constraints are no longer met. - "DisruptionTarget": Indicates whether the PodGroup is about to be terminated due to disruption such as preemption. Known reasons for the PodGroupInitiallyScheduled condition: - "Scheduled": All required pods in the PodGroup have been successfully scheduled. - "Unschedulable": The PodGroup cannot be scheduled due to resource constraints, affinity/anti-affinity rules, or insufficient capacity for the gang. - "SchedulerError": The PodGroup cannot be scheduled due to some internal error that happened during scheduling, for example due to nodeAffinity parsing errors. - "PodGroupError": The PodGroup cannot be scheduled due to an invalid group configuration detected during runtime validation (such as conflicting scheduler names, or priority/preemption policy conflicts). Known reasons for the DisruptionTarget condition: - "PreemptionByScheduler": The PodGroup was preempted by the scheduler to make room for higher-priority CompositePodGroups, PodGroups or Pods. */
@@ -1006,7 +966,7 @@ export interface IoK8sApiSchedulingV1beta1PodGroupStatus {
   /** resourceClaimStatuses is status of resource claims. */
   resourceClaimStatuses?: IoK8sApiSchedulingV1beta1PodGroupStatusResourceClaimStatusesList;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupStatus =
+const IoK8sApiSchedulingV1beta1PodGroupStatus =
   IoK8sApiSchedulingV1alpha3PodGroupStatus as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupStatus>;
 
 export interface CreateSchedulingV1beta1NamespacedPodGroupRequest {
@@ -1031,7 +991,7 @@ export interface CreateSchedulingV1beta1NamespacedPodGroupRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1beta1PodGroupStatus;
 }
-export const CreateSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1067,13 +1027,13 @@ export interface IoK8sApiSchedulingV1beta1PodGroup {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1beta1PodGroupStatus;
 }
-export const IoK8sApiSchedulingV1beta1PodGroup =
+const IoK8sApiSchedulingV1beta1PodGroup =
   IoK8sApiSchedulingV1alpha3PodGroup as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroup>;
 
 /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1CompositePodGroupTemplate>;
-export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
+const IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList =
   /*@__PURE__*/ S.Array(
     /*@__PURE__*/ S.suspend(() => IoK8sApiSchedulingV1beta1CompositePodGroupTemplate),
   ) as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList>;
@@ -1081,15 +1041,9 @@ export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroup
 /** CompositeDisruptionMode defines how individual entities within a composite pod group can be disrupted. Exactly one mode must be set. */
 export type IoK8sApiSchedulingV1beta1CompositeDisruptionMode =
   IoK8sApiSchedulingV1alpha3CompositeDisruptionMode;
-export const IoK8sApiSchedulingV1beta1CompositeDisruptionMode =
-  IoK8sApiSchedulingV1alpha3CompositeDisruptionMode;
-
 /** resourceClaims defines which ResourceClaims may be shared among Pods in the group. Pods consume the devices allocated to a PodGroup's claim by defining a claim in its own Spec.ResourceClaims that matches the PodGroup's claim exactly. The claim must have the same name and refer to the same ResourceClaim or ResourceClaimTemplate. This is a beta-level field and requires that the DRAWorkloadResourceClaims feature gate is enabled. This field is immutable. */
 export type IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroupResourceClaim>;
-export const IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList =
-  IoK8sApiSchedulingV1alpha3PodGroupSpecResourceClaimsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplateResourceClaimsList>;
-
 /** PodGroupTemplate represents a template for a set of pods with a scheduling policy. */
 export interface IoK8sApiSchedulingV1beta1PodGroupTemplate {
   /** disruptionMode defines the mode in which a given PodGroup can be disrupted. One of Single, All. This field is immutable. */
@@ -1109,41 +1063,29 @@ export interface IoK8sApiSchedulingV1beta1PodGroupTemplate {
   /** schedulingPolicy defines the scheduling policy for this PodGroupTemplate. */
   schedulingPolicy: IoK8sApiSchedulingV1alpha3PodGroupSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupTemplate =
-  IoK8sApiSchedulingV1alpha3PodGroupTemplate as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
-
 /** podGroupTemplates is the list of templates for children PodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
-export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
+const IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList =
   IoK8sApiSchedulingV1alpha3CompositePodGroupTemplatePodGroupTemplatesList as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupTemplatePodGroupTemplatesList>;
 
 /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
   Array<IoK8sApiSchedulingV1alpha3TopologyConstraint>;
-export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList =
-  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraintsTopologyList as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList>;
-
 /** CompositePodGroupSchedulingConstraints defines scheduling constraints (e.g. topology) for a CompositePodGroup. */
 export interface IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints {
   /** topology defines the topology constraints for the composite pod group. Currently only a single topology constraint can be specified. This may change in the future. */
   topology?: IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraintsTopologyList;
 }
-export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints =
+const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints =
   IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingConstraints as any as S.Schema<IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingConstraints>;
 
 /** CompositeGangSchedulingPolicy indicates that the groups belonging to the composite group should be scheduled using all-or-nothing semantics. */
 export type IoK8sApiSchedulingV1beta1CompositeGangSchedulingPolicy =
   IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy;
-export const IoK8sApiSchedulingV1beta1CompositeGangSchedulingPolicy =
-  IoK8sApiSchedulingV1alpha3CompositeGangSchedulingPolicy;
-
 /** CompositePodGroupSchedulingPolicy defines the scheduling configuration for a CompositePodGroup. Exactly one policy must be set. The policy is chosen at creation time by setting either the Basic or Gang field. The CompositePodGroup may not change policy after creation. Fields within chosen policy may be updated after creation when their individual fields allow it. */
 export type IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingPolicy =
   IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy;
-export const IoK8sApiSchedulingV1beta1CompositePodGroupSchedulingPolicy =
-  IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy;
-
 /** CompositePodGroupTemplate represents a template for a CompositePodGroup with a scheduling policy. */
 export interface IoK8sApiSchedulingV1beta1CompositePodGroupTemplate {
   /** compositePodGroupTemplates is the list of templates for children CompositePodGroups. The maximum number of templates is 8. At least one entry in CompositePodGroupTemplates or PodGroupTemplates must be set. */
@@ -1165,7 +1107,7 @@ export interface IoK8sApiSchedulingV1beta1CompositePodGroupTemplate {
   /** schedulingPolicy defines the scheduling policy for this template. */
   schedulingPolicy: IoK8sApiSchedulingV1alpha3CompositePodGroupSchedulingPolicy;
 }
-export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1beta1CompositePodGroupTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositePodGroupTemplates: S.optional(
       IoK8sApiSchedulingV1beta1CompositePodGroupTemplateCompositePodGroupTemplatesList,
@@ -1190,10 +1132,9 @@ export const IoK8sApiSchedulingV1beta1CompositePodGroupTemplate = /*@__PURE__*/ 
 /** compositePodGroupTemplates is the list of CompositePodGroup templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. This field is used only when the CompositePodGroup feature gate is enabled. */
 export type IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1CompositePodGroupTemplate>;
-export const IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiSchedulingV1beta1CompositePodGroupTemplate,
-  ) as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList>;
+const IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList = /*@__PURE__*/ S.Array(
+  IoK8sApiSchedulingV1beta1CompositePodGroupTemplate,
+) as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList>;
 
 /** TypedLocalObjectReference allows to reference typed object inside the same namespace. */
 export interface IoK8sApiSchedulingV1beta1TypedLocalObjectReference {
@@ -1204,13 +1145,13 @@ export interface IoK8sApiSchedulingV1beta1TypedLocalObjectReference {
   /** name is the name of resource being referenced. It must be a path segment name. */
   name: string;
 }
-export const IoK8sApiSchedulingV1beta1TypedLocalObjectReference =
+const IoK8sApiSchedulingV1beta1TypedLocalObjectReference =
   IoK8sApiSchedulingV1alpha3TypedLocalObjectReference as any as S.Schema<IoK8sApiSchedulingV1beta1TypedLocalObjectReference>;
 
 /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
 export type IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
   Array<IoK8sApiSchedulingV1beta1PodGroupTemplate>;
-export const IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
+const IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList =
   IoK8sApiSchedulingV1alpha3WorkloadSpecPodGroupTemplatesList as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList>;
 
 /** WorkloadSpec defines the desired state of a Workload. */
@@ -1222,7 +1163,7 @@ export interface IoK8sApiSchedulingV1beta1WorkloadSpec {
   /** podGroupTemplates is the list of templates that make up the Workload. The maximum number of templates is 8. Templates cannot be added or removed after the workload is created. Existing templates may still be updated where their individual fields allow it. Exactly one of CompositePodGroupTemplates and PodGroupTemplates must be set. */
   podGroupTemplates?: IoK8sApiSchedulingV1beta1WorkloadSpecPodGroupTemplatesList;
 }
-export const IoK8sApiSchedulingV1beta1WorkloadSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1beta1WorkloadSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compositePodGroupTemplates: S.optional(
       IoK8sApiSchedulingV1beta1WorkloadSpecCompositePodGroupTemplatesList,
@@ -1254,7 +1195,7 @@ export interface CreateSchedulingV1beta1NamespacedWorkloadRequest {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1beta1WorkloadSpec;
 }
-export const CreateSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1287,7 +1228,7 @@ export interface IoK8sApiSchedulingV1beta1Workload {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1beta1WorkloadSpec;
 }
-export const IoK8sApiSchedulingV1beta1Workload = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1beta1Workload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1322,7 +1263,7 @@ export interface CreateSchedulingV1PriorityClassRequest {
   /** value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec. */
   value?: number;
 }
-export const CreateSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -1357,7 +1298,7 @@ export interface IoK8sApiSchedulingV1PriorityClass {
   /** value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec. */
   value?: number;
 }
-export const IoK8sApiSchedulingV1PriorityClass = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1PriorityClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     description: S.optional(S.String),
@@ -1378,7 +1319,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1427,7 +1368,7 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedCompositePodGroupRe
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3CollectionNamespacedCompositePodGroupRequest =
+const DeleteSchedulingV1alpha3CollectionNamespacedCompositePodGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
@@ -1469,7 +1410,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -1482,7 +1423,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -1501,7 +1442,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -1519,7 +1460,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -1540,7 +1481,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -1571,7 +1512,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1626,35 +1567,34 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedPodGroupRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
-        code: 200,
-      }),
-    ),
+const DeleteSchedulingV1alpha3CollectionNamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSchedulingV1alpha3CollectionNamespacedPodGroupRequest",
 }) as any as S.Schema<DeleteSchedulingV1alpha3CollectionNamespacedPodGroupRequest>;
@@ -1699,35 +1639,34 @@ export interface DeleteSchedulingV1alpha3CollectionNamespacedWorkloadRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
-        code: 200,
-      }),
-    ),
+const DeleteSchedulingV1alpha3CollectionNamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/workloads",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSchedulingV1alpha3CollectionNamespacedWorkloadRequest",
 }) as any as S.Schema<DeleteSchedulingV1alpha3CollectionNamespacedWorkloadRequest>;
@@ -1756,27 +1695,26 @@ export interface DeleteSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<DeleteSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -1805,7 +1743,7 @@ export interface DeleteSchedulingV1alpha3NamespacedPodGroupRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1853,7 +1791,7 @@ export interface DeleteSchedulingV1alpha3NamespacedWorkloadRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1917,35 +1855,34 @@ export interface DeleteSchedulingV1beta1CollectionNamespacedPodGroupRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1beta1CollectionNamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/scheduling.k8s.io/v1beta1/namespaces/{namespace}/podgroups",
-        code: 200,
-      }),
-    ),
+const DeleteSchedulingV1beta1CollectionNamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/scheduling.k8s.io/v1beta1/namespaces/{namespace}/podgroups",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSchedulingV1beta1CollectionNamespacedPodGroupRequest",
 }) as any as S.Schema<DeleteSchedulingV1beta1CollectionNamespacedPodGroupRequest>;
@@ -1990,35 +1927,34 @@ export interface DeleteSchedulingV1beta1CollectionNamespacedWorkloadRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1beta1CollectionNamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/scheduling.k8s.io/v1beta1/namespaces/{namespace}/workloads",
-        code: 200,
-      }),
-    ),
+const DeleteSchedulingV1beta1CollectionNamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/scheduling.k8s.io/v1beta1/namespaces/{namespace}/workloads",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteSchedulingV1beta1CollectionNamespacedWorkloadRequest",
 }) as any as S.Schema<DeleteSchedulingV1beta1CollectionNamespacedWorkloadRequest>;
@@ -2047,7 +1983,7 @@ export interface DeleteSchedulingV1beta1NamespacedPodGroupRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2095,7 +2031,7 @@ export interface DeleteSchedulingV1beta1NamespacedWorkloadRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2157,7 +2093,7 @@ export interface DeleteSchedulingV1CollectionPriorityClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1CollectionPriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1CollectionPriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2206,7 +2142,7 @@ export interface DeleteSchedulingV1PriorityClassRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2230,7 +2166,7 @@ export const DeleteSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteSchedulingV1PriorityClassRequest>;
 
 export interface GetSchedulingAPIGroupRequest {}
-export const GetSchedulingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulingAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetSchedulingAPIGroupRequest",
@@ -2243,7 +2179,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -2259,7 +2195,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -2271,15 +2207,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -2298,7 +2233,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2314,7 +2249,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetSchedulingV1alpha3APIResourcesRequest {}
-export const GetSchedulingV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulingV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1alpha3/", code: 200 })),
 ).annotate({
   identifier: "GetSchedulingV1alpha3APIResourcesRequest",
@@ -2322,17 +2257,17 @@ export const GetSchedulingV1alpha3APIResourcesRequest = /*@__PURE__*/ S.suspend(
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -2358,7 +2293,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -2378,7 +2313,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -2393,7 +2328,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -2405,14 +2340,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
 
 export interface GetSchedulingV1APIResourcesRequest {}
-export const GetSchedulingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulingV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetSchedulingV1APIResourcesRequest",
 }) as any as S.Schema<GetSchedulingV1APIResourcesRequest>;
 
 export interface GetSchedulingV1beta1APIResourcesRequest {}
-export const GetSchedulingV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchedulingV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1beta1/", code: 200 })),
 ).annotate({
   identifier: "GetSchedulingV1beta1APIResourcesRequest",
@@ -2444,36 +2379,35 @@ export interface ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/compositepodgroups",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest",
-  }) as any as S.Schema<ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest>;
+const ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/compositepodgroups",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest",
+}) as any as S.Schema<ListSchedulingV1alpha3CompositePodGroupForAllNamespacesRequest>;
 
 /** Items is the list of CompositePodGroups. */
 export type IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList =
   Array<IoK8sApiSchedulingV1alpha3CompositePodGroup>;
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1alpha3CompositePodGroup,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList>;
 
@@ -2488,7 +2422,7 @@ export interface IoK8sApiSchedulingV1alpha3CompositePodGroupList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1alpha3CompositePodGroupList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3CompositePodGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiSchedulingV1alpha3CompositePodGroupListItemsList,
@@ -2527,29 +2461,28 @@ export interface ListSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups",
-        code: 200,
-      }),
-    ),
+const ListSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<ListSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -2582,7 +2515,7 @@ export interface ListSchedulingV1alpha3NamespacedPodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2611,7 +2544,7 @@ export const ListSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.s
 /** Items is the list of PodGroups. */
 export type IoK8sApiSchedulingV1alpha3PodGroupListItemsList =
   Array<IoK8sApiSchedulingV1alpha3PodGroup>;
-export const IoK8sApiSchedulingV1alpha3PodGroupListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3PodGroupListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1alpha3PodGroup,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3PodGroupListItemsList>;
 
@@ -2626,7 +2559,7 @@ export interface IoK8sApiSchedulingV1alpha3PodGroupList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1alpha3PodGroupList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3PodGroupList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiSchedulingV1alpha3PodGroupListItemsList,
@@ -2665,7 +2598,7 @@ export interface ListSchedulingV1alpha3NamespacedWorkloadRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2694,7 +2627,7 @@ export const ListSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.s
 /** Items is the list of Workloads. */
 export type IoK8sApiSchedulingV1alpha3WorkloadListItemsList =
   Array<IoK8sApiSchedulingV1alpha3Workload>;
-export const IoK8sApiSchedulingV1alpha3WorkloadListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1alpha3WorkloadListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1alpha3Workload,
 ) as any as S.Schema<IoK8sApiSchedulingV1alpha3WorkloadListItemsList>;
 
@@ -2709,7 +2642,7 @@ export interface IoK8sApiSchedulingV1alpha3WorkloadList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1alpha3WorkloadList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1alpha3WorkloadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiSchedulingV1alpha3WorkloadListItemsList,
@@ -2746,7 +2679,7 @@ export interface ListSchedulingV1alpha3PodGroupForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3PodGroupForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1alpha3PodGroupForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2791,7 +2724,7 @@ export interface ListSchedulingV1alpha3WorkloadForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1alpha3WorkloadForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1alpha3WorkloadForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2838,7 +2771,7 @@ export interface ListSchedulingV1beta1NamespacedPodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2867,9 +2800,6 @@ export const ListSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.su
 /** Items is the list of PodGroups. */
 export type IoK8sApiSchedulingV1beta1PodGroupListItemsList =
   Array<IoK8sApiSchedulingV1beta1PodGroup>;
-export const IoK8sApiSchedulingV1beta1PodGroupListItemsList =
-  IoK8sApiSchedulingV1alpha3PodGroupListItemsList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupListItemsList>;
-
 /** PodGroupList contains a list of PodGroup resources. */
 export interface IoK8sApiSchedulingV1beta1PodGroupList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -2881,7 +2811,7 @@ export interface IoK8sApiSchedulingV1beta1PodGroupList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1beta1PodGroupList =
+const IoK8sApiSchedulingV1beta1PodGroupList =
   IoK8sApiSchedulingV1alpha3PodGroupList as any as S.Schema<IoK8sApiSchedulingV1beta1PodGroupList>;
 
 export interface ListSchedulingV1beta1NamespacedWorkloadRequest {
@@ -2912,7 +2842,7 @@ export interface ListSchedulingV1beta1NamespacedWorkloadRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2941,7 +2871,7 @@ export const ListSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.su
 /** items is the list of Workloads. */
 export type IoK8sApiSchedulingV1beta1WorkloadListItemsList =
   Array<IoK8sApiSchedulingV1beta1Workload>;
-export const IoK8sApiSchedulingV1beta1WorkloadListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1beta1WorkloadListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1beta1Workload,
 ) as any as S.Schema<IoK8sApiSchedulingV1beta1WorkloadListItemsList>;
 
@@ -2956,7 +2886,7 @@ export interface IoK8sApiSchedulingV1beta1WorkloadList {
   /** metadata is the standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1beta1WorkloadList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1beta1WorkloadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiSchedulingV1beta1WorkloadListItemsList,
@@ -2993,7 +2923,7 @@ export interface ListSchedulingV1beta1PodGroupForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1beta1PodGroupForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1beta1PodGroupForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -3038,7 +2968,7 @@ export interface ListSchedulingV1beta1WorkloadForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1beta1WorkloadForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1beta1WorkloadForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -3083,7 +3013,7 @@ export interface ListSchedulingV1PriorityClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -3105,7 +3035,7 @@ export const ListSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =
 /** items is the list of PriorityClasses */
 export type IoK8sApiSchedulingV1PriorityClassListItemsList =
   Array<IoK8sApiSchedulingV1PriorityClass>;
-export const IoK8sApiSchedulingV1PriorityClassListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiSchedulingV1PriorityClassListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiSchedulingV1PriorityClass,
 ) as any as S.Schema<IoK8sApiSchedulingV1PriorityClassListItemsList>;
 
@@ -3120,7 +3050,7 @@ export interface IoK8sApiSchedulingV1PriorityClassList {
   /** Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiSchedulingV1PriorityClassList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiSchedulingV1PriorityClassList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiSchedulingV1PriorityClassListItemsList,
@@ -3147,23 +3077,22 @@ export interface PatchSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
-        code: 200,
-      }),
-    ),
+const PatchSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<PatchSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -3184,8 +3113,8 @@ export interface PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -3201,9 +3130,9 @@ export const PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
-  }) as any as S.Schema<PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
+).annotate({
+  identifier: "PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
+}) as any as S.Schema<PatchSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
 
 export interface PatchSchedulingV1alpha3NamespacedPodGroupRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -3221,7 +3150,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3257,7 +3186,7 @@ export interface PatchSchedulingV1alpha3NamespacedPodGroupStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3293,7 +3222,7 @@ export interface PatchSchedulingV1alpha3NamespacedWorkloadRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3329,7 +3258,7 @@ export interface PatchSchedulingV1beta1NamespacedPodGroupRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3365,7 +3294,7 @@ export interface PatchSchedulingV1beta1NamespacedPodGroupStatusRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3401,7 +3330,7 @@ export interface PatchSchedulingV1beta1NamespacedWorkloadRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3435,7 +3364,7 @@ export interface PatchSchedulingV1PriorityClassRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3462,19 +3391,18 @@ export interface ReadSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
-        code: 200,
-      }),
-    ),
+const ReadSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReadSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<ReadSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -3487,22 +3415,21 @@ export interface ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest 
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}/status",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
-  }) as any as S.Schema<ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
+const ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}/status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
+}) as any as S.Schema<ReadSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
 
 export interface ReadSchedulingV1alpha3NamespacedPodGroupRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -3512,7 +3439,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3536,7 +3463,7 @@ export interface ReadSchedulingV1alpha3NamespacedPodGroupStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3560,7 +3487,7 @@ export interface ReadSchedulingV1alpha3NamespacedWorkloadRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3584,7 +3511,7 @@ export interface ReadSchedulingV1beta1NamespacedPodGroupRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3608,7 +3535,7 @@ export interface ReadSchedulingV1beta1NamespacedPodGroupStatusRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3632,7 +3559,7 @@ export interface ReadSchedulingV1beta1NamespacedWorkloadRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3654,7 +3581,7 @@ export interface ReadSchedulingV1PriorityClassRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -3689,27 +3616,26 @@ export interface ReplaceSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** status represents the current observed state of the CompositePodGroup. */
   status?: IoK8sApiSchedulingV1alpha3CompositePodGroupStatus;
 }
-export const ReplaceSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiSchedulingV1alpha3CompositePodGroupSpec,
-      status: S.optional(IoK8sApiSchedulingV1alpha3CompositePodGroupStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiSchedulingV1alpha3CompositePodGroupSpec,
+    status: S.optional(IoK8sApiSchedulingV1alpha3CompositePodGroupStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/compositepodgroups/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<ReplaceSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -3738,8 +3664,8 @@ export interface ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusReque
   /** status represents the current observed state of the CompositePodGroup. */
   status?: IoK8sApiSchedulingV1alpha3CompositePodGroupStatus;
 }
-export const ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       name: S.String.pipe(T.Label()),
@@ -3759,9 +3685,9 @@ export const ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
-  }) as any as S.Schema<ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
+).annotate({
+  identifier: "ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest",
+}) as any as S.Schema<ReplaceSchedulingV1alpha3NamespacedCompositePodGroupStatusRequest>;
 
 export interface ReplaceSchedulingV1alpha3NamespacedPodGroupRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -3787,7 +3713,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1alpha3PodGroupStatus;
 }
-export const ReplaceSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3835,27 +3761,26 @@ export interface ReplaceSchedulingV1alpha3NamespacedPodGroupStatusRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1alpha3PodGroupStatus;
 }
-export const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiSchedulingV1alpha3PodGroupSpec,
-      status: S.optional(IoK8sApiSchedulingV1alpha3PodGroupStatus),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
-        code: 200,
-      }),
-    ),
+const ReplaceSchedulingV1alpha3NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiSchedulingV1alpha3PodGroupSpec,
+    status: S.optional(IoK8sApiSchedulingV1alpha3PodGroupStatus),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/namespaces/{namespace}/podgroups/{name}/status",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceSchedulingV1alpha3NamespacedPodGroupStatusRequest",
 }) as any as S.Schema<ReplaceSchedulingV1alpha3NamespacedPodGroupStatusRequest>;
@@ -3882,7 +3807,7 @@ export interface ReplaceSchedulingV1alpha3NamespacedWorkloadRequest {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1alpha3WorkloadSpec;
 }
-export const ReplaceSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3929,7 +3854,7 @@ export interface ReplaceSchedulingV1beta1NamespacedPodGroupRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1beta1PodGroupStatus;
 }
-export const ReplaceSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3977,7 +3902,7 @@ export interface ReplaceSchedulingV1beta1NamespacedPodGroupStatusRequest {
   /** status represents the current observed state of the PodGroup. */
   status?: IoK8sApiSchedulingV1beta1PodGroupStatus;
 }
-export const ReplaceSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1beta1NamespacedPodGroupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4023,7 +3948,7 @@ export interface ReplaceSchedulingV1beta1NamespacedWorkloadRequest {
   /** spec defines the desired behavior of a Workload. */
   spec: IoK8sApiSchedulingV1beta1WorkloadSpec;
 }
-export const ReplaceSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4072,7 +3997,7 @@ export interface ReplaceSchedulingV1PriorityClassRequest {
   /** value represents the integer value of this priority class. This is the actual priority that pods receive when they have the name of this class in their pod spec. */
   value?: number;
 }
-export const ReplaceSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -4119,8 +4044,8 @@ export interface WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesReq
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -4141,9 +4066,9 @@ export const WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest",
-  }) as any as S.Schema<WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest>;
+).annotate({
+  identifier: "WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest",
+}) as any as S.Schema<WatchSchedulingV1alpha3CompositePodGroupListForAllNamespacesRequest>;
 
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
@@ -4151,7 +4076,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -4190,30 +4115,29 @@ export interface WatchSchedulingV1alpha3NamespacedCompositePodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/compositepodgroups/{name}",
-        code: 200,
-      }),
-    ),
+const WatchSchedulingV1alpha3NamespacedCompositePodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/compositepodgroups/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchSchedulingV1alpha3NamespacedCompositePodGroupRequest",
 }) as any as S.Schema<WatchSchedulingV1alpha3NamespacedCompositePodGroupRequest>;
@@ -4246,32 +4170,31 @@ export interface WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/compositepodgroups",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest",
-  }) as any as S.Schema<WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest>;
+const WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/scheduling.k8s.io/v1alpha3/watch/namespaces/{namespace}/compositepodgroups",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest",
+}) as any as S.Schema<WatchSchedulingV1alpha3NamespacedCompositePodGroupListRequest>;
 
 export interface WatchSchedulingV1alpha3NamespacedPodGroupRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -4303,7 +4226,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1alpha3NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4358,7 +4281,7 @@ export interface WatchSchedulingV1alpha3NamespacedPodGroupListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedPodGroupListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1alpha3NamespacedPodGroupListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4414,7 +4337,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1alpha3NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4469,7 +4392,7 @@ export interface WatchSchedulingV1alpha3NamespacedWorkloadListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3NamespacedWorkloadListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1alpha3NamespacedWorkloadListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4521,24 +4444,23 @@ export interface WatchSchedulingV1alpha3PodGroupListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3PodGroupListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1alpha3/watch/podgroups", code: 200 }),
-    ),
+const WatchSchedulingV1alpha3PodGroupListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1alpha3/watch/podgroups", code: 200 }),
+  ),
 ).annotate({
   identifier: "WatchSchedulingV1alpha3PodGroupListForAllNamespacesRequest",
 }) as any as S.Schema<WatchSchedulingV1alpha3PodGroupListForAllNamespacesRequest>;
@@ -4569,24 +4491,23 @@ export interface WatchSchedulingV1alpha3WorkloadListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1alpha3WorkloadListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1alpha3/watch/workloads", code: 200 }),
-    ),
+const WatchSchedulingV1alpha3WorkloadListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1alpha3/watch/workloads", code: 200 }),
+  ),
 ).annotate({
   identifier: "WatchSchedulingV1alpha3WorkloadListForAllNamespacesRequest",
 }) as any as S.Schema<WatchSchedulingV1alpha3WorkloadListForAllNamespacesRequest>;
@@ -4621,7 +4542,7 @@ export interface WatchSchedulingV1beta1NamespacedPodGroupRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1beta1NamespacedPodGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4676,7 +4597,7 @@ export interface WatchSchedulingV1beta1NamespacedPodGroupListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1NamespacedPodGroupListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1beta1NamespacedPodGroupListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4732,7 +4653,7 @@ export interface WatchSchedulingV1beta1NamespacedWorkloadRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1beta1NamespacedWorkloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4787,7 +4708,7 @@ export interface WatchSchedulingV1beta1NamespacedWorkloadListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1NamespacedWorkloadListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1beta1NamespacedWorkloadListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4839,24 +4760,23 @@ export interface WatchSchedulingV1beta1PodGroupListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1PodGroupListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1beta1/watch/podgroups", code: 200 }),
-    ),
+const WatchSchedulingV1beta1PodGroupListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1beta1/watch/podgroups", code: 200 }),
+  ),
 ).annotate({
   identifier: "WatchSchedulingV1beta1PodGroupListForAllNamespacesRequest",
 }) as any as S.Schema<WatchSchedulingV1beta1PodGroupListForAllNamespacesRequest>;
@@ -4887,24 +4807,23 @@ export interface WatchSchedulingV1beta1WorkloadListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1beta1WorkloadListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1beta1/watch/workloads", code: 200 }),
-    ),
+const WatchSchedulingV1beta1WorkloadListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/scheduling.k8s.io/v1beta1/watch/workloads", code: 200 }),
+  ),
 ).annotate({
   identifier: "WatchSchedulingV1beta1WorkloadListForAllNamespacesRequest",
 }) as any as S.Schema<WatchSchedulingV1beta1WorkloadListForAllNamespacesRequest>;
@@ -4937,7 +4856,7 @@ export interface WatchSchedulingV1PriorityClassRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1PriorityClassRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -4989,7 +4908,7 @@ export interface WatchSchedulingV1PriorityClassListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchSchedulingV1PriorityClassListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchSchedulingV1PriorityClassListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

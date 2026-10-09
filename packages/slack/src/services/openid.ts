@@ -11,7 +11,7 @@ export type { SlackOpError, SlackOpContext };
 
 /** The `grant_type` param as described in the OAuth spec. */
 export type ConnectTokenRequestGrantType = "authorization_code" | "refresh_token";
-export const ConnectTokenRequestGrantType = S.String;
+const ConnectTokenRequestGrantType = S.String;
 
 export interface ConnectTokenRequest {
   /** Issued when you created your application. */
@@ -29,7 +29,7 @@ export interface ConnectTokenRequest {
   /** PKCE code verifier (RFC 7636). Required when the authorization request included a `code_challenge`. */
   code_verifier?: string;
 }
-export const ConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String),
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -49,7 +49,7 @@ export const ConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectTokenRequest" }) as any as S.Schema<ConnectTokenRequest>;
 
 export type ConnectTokenResponseTokenType = "Bearer";
-export const ConnectTokenResponseTokenType = S.String;
+const ConnectTokenResponseTokenType = S.String;
 
 export interface ConnectTokenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
@@ -63,7 +63,7 @@ export interface ConnectTokenResponse {
   /** Refresh token for this credential */
   refresh_token?: string | Redacted.Redacted<string>;
 }
-export const ConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     access_token: S.String.pipe(T.SensitiveValue({})),
@@ -76,7 +76,7 @@ export const ConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectTokenResponse" }) as any as S.Schema<ConnectTokenResponse>;
 
 export interface UserInfoRequest {}
-export const UserInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UserInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/openid.connect.userInfo", code: 200 })),
 ).annotate({ identifier: "UserInfoRequest" }) as any as S.Schema<UserInfoRequest>;
 
@@ -115,7 +115,7 @@ export interface UserInfoResponse {
   https___slack_com_team_image_230?: string;
   https___slack_com_team_image_default?: boolean;
 }
-export const UserInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const UserInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     sub: S.String,

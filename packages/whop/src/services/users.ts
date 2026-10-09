@@ -51,7 +51,7 @@ export interface CheckUserAccessRequest {
   /** An account (biz_), product (prod_), or experience (exp_) ID. */
   resource_id: string;
 }
-export const CheckUserAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUserAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     resource_id: S.String.pipe(T.Label()),
@@ -59,13 +59,13 @@ export const CheckUserAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckUserAccessRequest" }) as any as S.Schema<CheckUserAccessRequest>;
 
 export type CheckUserAccessResponseAccessLevel = "no_access" | "admin" | "customer";
-export const CheckUserAccessResponseAccessLevel = S.String;
+const CheckUserAccessResponseAccessLevel = S.String;
 
 export interface CheckUserAccessResponse {
   access_level: CheckUserAccessResponseAccessLevel;
   has_access: boolean;
 }
-export const CheckUserAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckUserAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_level: CheckUserAccessResponseAccessLevel,
     has_access: S.Boolean,
@@ -74,17 +74,17 @@ export const CheckUserAccessResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** How `code_challenge` was derived. Only `S256` is accepted. */
 export type CreateOauthGrantRequestCodeChallengeMethod = "S256";
-export const CreateOauthGrantRequestCodeChallengeMethod = S.String;
+const CreateOauthGrantRequestCodeChallengeMethod = S.String;
 
 /** The permissions the app is asking for, for example `member:basic:read`. `GET /api_keys/permissions` names and describes each one. Granting adds to whatever the user already granted this app rather than replacing it. */
 export type CreateOauthGrantRequestRequestedScopesList = Array<string>;
-export const CreateOauthGrantRequestRequestedScopesList = /*@__PURE__*/ S.Array(
+const CreateOauthGrantRequestRequestedScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateOauthGrantRequestRequestedScopesList>;
 
 /** The OAuth response type. Only `code` is accepted; defaults to `code`. */
 export type CreateOauthGrantRequestResponseType = "code";
-export const CreateOauthGrantRequestResponseType = S.String;
+const CreateOauthGrantRequestResponseType = S.String;
 
 export interface CreateOauthGrantRequest {
   /** Authorize the app for one of the user's accounts rather than for the user alone, prefixed `biz_`. The user must have access to it. */
@@ -110,7 +110,7 @@ export interface CreateOauthGrantRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateOauthGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOauthGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     client_id: S.String,
@@ -127,7 +127,7 @@ export const CreateOauthGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateOauthGrantRequest" }) as any as S.Schema<CreateOauthGrantRequest>;
 
 export type OauthGrantScopesList = Array<string>;
-export const OauthGrantScopesList =
+const OauthGrantScopesList =
   CreateOauthGrantRequestRequestedScopesList as any as S.Schema<OauthGrantScopesList>;
 
 export interface OauthGrant {
@@ -147,7 +147,7 @@ export interface OauthGrant {
   revoked_at: string | null;
   scopes: OauthGrantScopesList;
 }
-export const OauthGrant = /*@__PURE__*/ S.suspend(() =>
+const OauthGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     app_id: S.String,
@@ -172,7 +172,7 @@ export interface CreatePasskeyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePasskeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePasskeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attestation_object: S.String,
     client_data_json: S.String,
@@ -194,7 +194,7 @@ export interface Passkey {
   /** The name the user gave this passkey, usually the device it lives on. */
   nickname: string;
 }
-export const Passkey = /*@__PURE__*/ S.suspend(() =>
+const Passkey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     credential_id: S.String,
@@ -206,7 +206,7 @@ export const Passkey = /*@__PURE__*/ S.suspend(() =>
 
 /** The ceremony this challenge is for. */
 export type CreatePasskeyChallengeRequestChallengeType = "registration" | "deletion";
-export const CreatePasskeyChallengeRequestChallengeType = S.String;
+const CreatePasskeyChallengeRequestChallengeType = S.String;
 
 export interface CreatePasskeyChallengeRequest {
   /** The ceremony this challenge is for. */
@@ -216,7 +216,7 @@ export interface CreatePasskeyChallengeRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePasskeyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePasskeyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge_type: CreatePasskeyChallengeRequestChallengeType,
     passkey_id: S.optional(S.String),
@@ -230,7 +230,7 @@ export interface CreatePasskeyChallengeResponse {
   /** The challenge to pass to the WebAuthn ceremony, base64url-encoded without padding. */
   challenge: string;
 }
-export const CreatePasskeyChallengeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePasskeyChallengeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge: S.String,
   }),
@@ -248,7 +248,7 @@ export interface DeletePasskeyRequest {
   /** The `signature` from the WebAuthn assertion, base64url-encoded. */
   signature: string;
 }
-export const DeletePasskeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePasskeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     authenticator_data: S.String,
@@ -263,7 +263,7 @@ export interface DeletePasskeyResponse {
   /** The ID of the deleted passkey. */
   id: string;
 }
-export const DeletePasskeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePasskeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -271,7 +271,7 @@ export const DeletePasskeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePasskeyResponse" }) as any as S.Schema<DeletePasskeyResponse>;
 
 export type GetUserRequestInterval = "hour" | "day" | "week" | "month";
-export const GetUserRequestInterval = S.String;
+const GetUserRequestInterval = S.String;
 
 export interface GetUserRequest {
   /** User ID (prefixed `user_`), username, or `me` for the authenticated user. */
@@ -293,7 +293,7 @@ export interface GetUserRequest {
   /** IANA time zone the balance-history points are bucketed in. Defaults to `UTC`. Only used with `include_balance_history`. */
   time_zone?: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     include_trading: S.optional(S.Boolean.pipe(T.Query())),
@@ -317,7 +317,7 @@ export interface UserBalanceBusiness {
   /** The account's display name. */
   name: string | null;
 }
-export const UserBalanceBusiness = /*@__PURE__*/ S.suspend(() =>
+const UserBalanceBusiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance_usd: S.String,
     id: S.String,
@@ -327,7 +327,7 @@ export const UserBalanceBusiness = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBalanceBusiness" }) as any as S.Schema<UserBalanceBusiness>;
 
 export type UserBalanceBusinessesList = Array<UserBalanceBusiness>;
-export const UserBalanceBusinessesList = /*@__PURE__*/ S.Array(
+const UserBalanceBusinessesList = /*@__PURE__*/ S.Array(
   UserBalanceBusiness,
 ) as any as S.Schema<UserBalanceBusinessesList>;
 
@@ -349,7 +349,7 @@ export interface UserBalanceCash {
   /** Withdrawable amount in the native currency. */
   total_withdrawable_balance: number;
 }
-export const UserBalanceCash = /*@__PURE__*/ S.suspend(() =>
+const UserBalanceCash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.Number,
     balance_usd: S.Number,
@@ -363,7 +363,7 @@ export const UserBalanceCash = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBalanceCash" }) as any as S.Schema<UserBalanceCash>;
 
 export type UserBalanceCashList = Array<UserBalanceCash>;
-export const UserBalanceCashList = /*@__PURE__*/ S.Array(
+const UserBalanceCashList = /*@__PURE__*/ S.Array(
   UserBalanceCash,
 ) as any as S.Schema<UserBalanceCashList>;
 
@@ -373,7 +373,7 @@ export interface AccountBalanceSettlement {
   /** The day this money is expected to finish settling, as an ISO 8601 date. */
   date: string;
 }
-export const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
+const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     date: S.String,
@@ -381,7 +381,7 @@ export const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountBalanceSettlement" }) as any as S.Schema<AccountBalanceSettlement>;
 
 export type AccountBalanceBreakdownPendingSettlementsList = Array<AccountBalanceSettlement>;
-export const AccountBalanceBreakdownPendingSettlementsList = /*@__PURE__*/ S.Array(
+const AccountBalanceBreakdownPendingSettlementsList = /*@__PURE__*/ S.Array(
   AccountBalanceSettlement,
 ) as any as S.Schema<AccountBalanceBreakdownPendingSettlementsList>;
 
@@ -396,7 +396,7 @@ export interface AccountBalanceBreakdown {
   /** Amount held back, in native units, as a decimal string. Retrieve the account's reserves for why it is held and when it unlocks. */
   reserve: string;
 }
-export const AccountBalanceBreakdown = /*@__PURE__*/ S.suspend(() =>
+const AccountBalanceBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.String,
     in_transit: S.String,
@@ -422,7 +422,7 @@ export interface UserBalanceToken {
   /** Holding USD value. */
   value_usd: number;
 }
-export const UserBalanceToken = /*@__PURE__*/ S.suspend(() =>
+const UserBalanceToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.String,
     breakdown: AccountBalanceBreakdown,
@@ -435,7 +435,7 @@ export const UserBalanceToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBalanceToken" }) as any as S.Schema<UserBalanceToken>;
 
 export type UserBalanceCryptoList = Array<UserBalanceToken>;
-export const UserBalanceCryptoList = /*@__PURE__*/ S.Array(
+const UserBalanceCryptoList = /*@__PURE__*/ S.Array(
   UserBalanceToken,
 ) as any as S.Schema<UserBalanceCryptoList>;
 
@@ -456,7 +456,7 @@ export interface UserBalance {
   /** Balance-to-wallet USDT0 payouts still in flight, in USD. */
   treasury_pending_usd: string;
 }
-export const UserBalance = /*@__PURE__*/ S.suspend(() =>
+const UserBalance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businesses: UserBalanceBusinessesList,
     businesses_total_usd: S.String,
@@ -476,7 +476,7 @@ export interface UserBalanceHistoryPoint {
   /** Cumulative wallet balance at this point, in USD. */
   v: number;
 }
-export const UserBalanceHistoryPoint = /*@__PURE__*/ S.suspend(() =>
+const UserBalanceHistoryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     t: S.Number,
     v: S.Number,
@@ -484,7 +484,7 @@ export const UserBalanceHistoryPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBalanceHistoryPoint" }) as any as S.Schema<UserBalanceHistoryPoint>;
 
 export type UserBalanceHistoryDataList = Array<UserBalanceHistoryPoint>;
-export const UserBalanceHistoryDataList = /*@__PURE__*/ S.Array(
+const UserBalanceHistoryDataList = /*@__PURE__*/ S.Array(
   UserBalanceHistoryPoint,
 ) as any as S.Schema<UserBalanceHistoryDataList>;
 
@@ -497,7 +497,7 @@ export interface UserBalanceHistory {
   /** Minimum value across the window, in USD. */
   min: number;
 }
-export const UserBalanceHistory = /*@__PURE__*/ S.suspend(() =>
+const UserBalanceHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: UserBalanceHistoryDataList,
     last: S.Number,
@@ -510,7 +510,7 @@ export interface UserBanner {
   /** Profile banner image URL. */
   url: string;
 }
-export const UserBanner = /*@__PURE__*/ S.suspend(() =>
+const UserBanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -526,7 +526,7 @@ export interface UserEarningsAmount {
   /** All-time gross income in USD. */
   lifetime: string;
 }
-export const UserEarningsAmount = /*@__PURE__*/ S.suspend(() =>
+const UserEarningsAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_24_hours: S.String,
     last_30_days: S.String,
@@ -547,7 +547,7 @@ export interface UserEarnings {
   /** Gross income from the user's personal wallet plus accounts they own or are owner-authorized on. */
   total: UserEarningsAmount;
 }
-export const UserEarnings = /*@__PURE__*/ S.suspend(() =>
+const UserEarnings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_earned_at: S.NullOr(S.String),
     owned_accounts: UserEarningsAmount,
@@ -561,7 +561,7 @@ export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = UserBanner as any as S.Schema<UserProfilePicture>;
+const UserProfilePicture = UserBanner as any as S.Schema<UserProfilePicture>;
 
 /** The platform the parent social account exists on. */
 export type SocialAccountParentPlatform =
@@ -574,7 +574,7 @@ export type SocialAccountParentPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
-export const SocialAccountParentPlatform = S.String;
+const SocialAccountParentPlatform = S.String;
 
 export interface SocialAccountParent {
   /** The platform-specific ID for the parent social account. */
@@ -592,7 +592,7 @@ export interface SocialAccountParent {
   /** Whether the parent social account is verified on the platform. */
   verified: boolean;
 }
-export const SocialAccountParent = /*@__PURE__*/ S.suspend(() =>
+const SocialAccountParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.NullOr(S.String),
     id: S.String,
@@ -615,10 +615,10 @@ export type SocialAccountPlatform =
   | "telegram"
   | "linkedin"
   | "snapchat";
-export const SocialAccountPlatform = S.String;
+const SocialAccountPlatform = S.String;
 
 export type SocialAccountScopesList = Array<string>;
-export const SocialAccountScopesList =
+const SocialAccountScopesList =
   CreateOauthGrantRequestRequestedScopesList as any as S.Schema<SocialAccountScopesList>;
 
 export interface SocialAccount {
@@ -644,7 +644,7 @@ export interface SocialAccount {
   /** Whether the social account is verified on the platform. */
   verified: boolean;
 }
-export const SocialAccount = /*@__PURE__*/ S.suspend(() =>
+const SocialAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.NullOr(S.String),
     external_id: S.NullOr(S.String),
@@ -661,7 +661,7 @@ export const SocialAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SocialAccount" }) as any as S.Schema<SocialAccount>;
 
 export type UserSocialAccountsList = Array<SocialAccount>;
-export const UserSocialAccountsList = /*@__PURE__*/ S.Array(
+const UserSocialAccountsList = /*@__PURE__*/ S.Array(
   SocialAccount,
 ) as any as S.Schema<UserSocialAccountsList>;
 
@@ -675,7 +675,7 @@ export interface UserStaffAccess {
   /** Whether the user holds the support staff role with a valid second factor. */
   support: boolean;
 }
-export const UserStaffAccess = /*@__PURE__*/ S.suspend(() =>
+const UserStaffAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     investigation_access: S.Boolean,
@@ -694,7 +694,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -715,7 +715,7 @@ export interface TradingMarginSummary {
   /** USD that can be withdrawn now without closing positions. */
   withdrawable: Money;
 }
-export const TradingMarginSummary = /*@__PURE__*/ S.suspend(() =>
+const TradingMarginSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_value: Money,
     total_margin_used: Money,
@@ -732,7 +732,7 @@ export type TradingWebsocketSubscriptionChannel =
   | "order_updates"
   | "user_fills"
   | "user_events";
-export const TradingWebsocketSubscriptionChannel = S.String;
+const TradingWebsocketSubscriptionChannel = S.String;
 
 export interface TradingWebsocketSubscription {
   /** The live update stream this subscription opens. */
@@ -740,7 +740,7 @@ export interface TradingWebsocketSubscription {
   /** JSON subscription message to send unchanged over the Hyperliquid WebSocket. */
   message: string;
 }
-export const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
+const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: TradingWebsocketSubscriptionChannel,
     message: S.String,
@@ -751,7 +751,7 @@ export const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
 
 export type TradingHyperliquidAccountWebsocketSubscriptionsList =
   Array<TradingWebsocketSubscription>;
-export const TradingHyperliquidAccountWebsocketSubscriptionsList = /*@__PURE__*/ S.Array(
+const TradingHyperliquidAccountWebsocketSubscriptionsList = /*@__PURE__*/ S.Array(
   TradingWebsocketSubscription,
 ) as any as S.Schema<TradingHyperliquidAccountWebsocketSubscriptionsList>;
 
@@ -766,7 +766,7 @@ export interface TradingHyperliquidAccount {
   /** Hyperliquid WebSocket URL to connect to directly for live updates. */
   websocket_url: string;
 }
-export const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     builder_fee_bps: S.NullOr(S.String),
@@ -779,7 +779,7 @@ export const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TradingHyperliquidAccount>;
 
 export type TradingAccountObject = "trading_account";
-export const TradingAccountObject = S.String;
+const TradingAccountObject = S.String;
 
 export interface TradingHyperliquidOrder {
   /** Whether the order can only reduce an existing position, or `null` when Hyperliquid omits it. */
@@ -787,7 +787,7 @@ export interface TradingHyperliquidOrder {
   /** Trigger price in USD for take-profit and stop-loss orders, or `null` for orders without a trigger. */
   trigger_price: Money | null;
 }
-export const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reduce_only: S.NullOr(S.Boolean),
     trigger_price: S.NullOr(Money),
@@ -795,23 +795,23 @@ export const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingHyperliquidOrder" }) as any as S.Schema<TradingHyperliquidOrder>;
 
 export type TradingOrderObject = "trading_order";
-export const TradingOrderObject = S.String;
+const TradingOrderObject = S.String;
 
 export type TradingOrderOrderType = "limit" | "market" | "take_profit" | "stop_loss";
-export const TradingOrderOrderType = S.String;
+const TradingOrderOrderType = S.String;
 
 export type TradingOrderSide = "buy" | "sell";
-export const TradingOrderSide = S.String;
+const TradingOrderSide = S.String;
 
 export type TradingOrderStatus = "open" | "filled" | "canceled" | "triggered" | "rejected";
-export const TradingOrderStatus = S.String;
+const TradingOrderStatus = S.String;
 
 /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
 export type TradingOrderTimeInForce =
   | "add_liquidity_only"
   | "good_til_canceled"
   | "immediate_or_cancel";
-export const TradingOrderTimeInForce = S.String;
+const TradingOrderTimeInForce = S.String;
 
 export interface TradingOrder {
   /** Client order ID, prefixed `trdcloid_`, or `null` when the order was placed without one. */
@@ -841,7 +841,7 @@ export interface TradingOrder {
   /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
   time_in_force: TradingOrderTimeInForce | null;
 }
-export const TradingOrder = /*@__PURE__*/ S.suspend(() =>
+const TradingOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_order_id: S.NullOr(S.String),
     created_at: S.NullOr(S.String),
@@ -862,7 +862,7 @@ export const TradingOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingOrder" }) as any as S.Schema<TradingOrder>;
 
 export type TradingAccountOpenOrdersList = Array<TradingOrder>;
-export const TradingAccountOpenOrdersList = /*@__PURE__*/ S.Array(
+const TradingAccountOpenOrdersList = /*@__PURE__*/ S.Array(
   TradingOrder,
 ) as any as S.Schema<TradingAccountOpenOrdersList>;
 
@@ -874,7 +874,7 @@ export interface TradingCumulativeFunding {
   /** Funding paid since the position opened, in USD, or `null` when unavailable. */
   since_open: Money | null;
 }
-export const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
+const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all_time: S.NullOr(Money),
     since_change: S.NullOr(Money),
@@ -884,7 +884,7 @@ export const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
 
 /** `cross` shares margin across positions; `isolated` limits margin to this position. */
 export type TradingPositionLeverageType = "cross" | "isolated";
-export const TradingPositionLeverageType = S.String;
+const TradingPositionLeverageType = S.String;
 
 export interface TradingPositionLeverage {
   /** `cross` shares margin across positions; `isolated` limits margin to this position. */
@@ -892,7 +892,7 @@ export interface TradingPositionLeverage {
   /** Multiplier applied to the position's margin, such as `10` for 10x. */
   value: number;
 }
-export const TradingPositionLeverage = /*@__PURE__*/ S.suspend(() =>
+const TradingPositionLeverage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: TradingPositionLeverageType,
     value: S.Number,
@@ -911,7 +911,7 @@ export interface TradingHyperliquidPosition {
   /** Return on equity as a decimal ratio string, such as `0.1` for 10%. */
   return_on_equity: string;
 }
-export const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cumulative_funding: TradingCumulativeFunding,
     leverage: TradingPositionLeverage,
@@ -924,10 +924,10 @@ export const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TradingHyperliquidPosition>;
 
 export type TradingPositionObject = "trading_position";
-export const TradingPositionObject = S.String;
+const TradingPositionObject = S.String;
 
 export type TradingPositionSide = "long" | "short";
-export const TradingPositionSide = S.String;
+const TradingPositionSide = S.String;
 
 export interface TradingPosition {
   /** Average entry price in USD, or `null` when the provider omits it. */
@@ -947,7 +947,7 @@ export interface TradingPosition {
   /** Unrealized profit or loss in USD. Negative for a loss. */
   unrealized_pnl: Money;
 }
-export const TradingPosition = /*@__PURE__*/ S.suspend(() =>
+const TradingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entry_price: S.NullOr(Money),
     hyperliquid: S.NullOr(TradingHyperliquidPosition),
@@ -962,13 +962,13 @@ export const TradingPosition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingPosition" }) as any as S.Schema<TradingPosition>;
 
 export type TradingAccountPositionsList = Array<TradingPosition>;
-export const TradingAccountPositionsList = /*@__PURE__*/ S.Array(
+const TradingAccountPositionsList = /*@__PURE__*/ S.Array(
   TradingPosition,
 ) as any as S.Schema<TradingAccountPositionsList>;
 
 /** Trading venue that holds the positions and orders. */
 export type TradingAccountProvider = "hyperliquid";
-export const TradingAccountProvider = S.String;
+const TradingAccountProvider = S.String;
 
 export interface TradingAccount {
   /** The account that owns this trading account, prefixed `biz_`. `null` when a user owns it. */
@@ -985,7 +985,7 @@ export interface TradingAccount {
   /** The user who owns this trading account, prefixed `user_`. `null` when an account owns it. */
   user_id: string | null;
 }
-export const TradingAccount = /*@__PURE__*/ S.suspend(() =>
+const TradingAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     hyperliquid: S.NullOr(TradingHyperliquidAccount),
@@ -1031,7 +1031,7 @@ export interface User {
   /** When the user became an enrolled Whop Partner, as an ISO 8601 timestamp. `null` if never enrolled. */
   whop_partner_enabled_at: string | null;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.NullOr(UserBalance),
     balance_history: S.NullOr(UserBalanceHistory),
@@ -1053,7 +1053,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export interface GetUserPreferencesRequest {}
-export const GetUserPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/me/preferences", code: 200 })),
 ).annotate({
   identifier: "GetUserPreferencesRequest",
@@ -1069,7 +1069,7 @@ export interface UserPreferences {
   /** When the user most recently accepted Whop's terms and policies, as an ISO 8601 timestamp. `null` until accepted. */
   terms_accepted_at: string | null;
 }
-export const UserPreferences = /*@__PURE__*/ S.suspend(() =>
+const UserPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounty_worker_onboarding_dismissed: S.Boolean,
     investigation_enabled: S.Boolean,
@@ -1079,10 +1079,10 @@ export const UserPreferences = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserPreferences" }) as any as S.Schema<UserPreferences>;
 
 export type ListOauthGrantsRequestOrder = "created_at";
-export const ListOauthGrantsRequestOrder = S.String;
+const ListOauthGrantsRequestOrder = S.String;
 
 export type ListOauthGrantsRequestDirection = "asc" | "desc";
-export const ListOauthGrantsRequestDirection = S.String;
+const ListOauthGrantsRequestDirection = S.String;
 
 export interface ListOauthGrantsRequest {
   /** Only return grants for this app, prefixed `app_`. An app the user has never authorized returns an empty list. */
@@ -1100,7 +1100,7 @@ export interface ListOauthGrantsRequest {
   /** Sort direction. */
   direction?: ListOauthGrantsRequestDirection | (string & {});
 }
-export const ListOauthGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOauthGrantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_id: S.optional(S.String.pipe(T.Query())),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -1113,7 +1113,7 @@ export const ListOauthGrantsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOauthGrantsRequest" }) as any as S.Schema<ListOauthGrantsRequest>;
 
 export type ListOauthGrantsResponseDataList = Array<OauthGrant>;
-export const ListOauthGrantsResponseDataList = /*@__PURE__*/ S.Array(
+const ListOauthGrantsResponseDataList = /*@__PURE__*/ S.Array(
   OauthGrant,
 ) as any as S.Schema<ListOauthGrantsResponseDataList>;
 
@@ -1123,7 +1123,7 @@ export interface ListOauthGrantsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListOauthGrantsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListOauthGrantsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -1138,7 +1138,7 @@ export interface ListOauthGrantsResponse {
   data: ListOauthGrantsResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-export const ListOauthGrantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOauthGrantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListOauthGrantsResponseDataList,
     page_info: ListOauthGrantsResponsePageInfo,
@@ -1146,10 +1146,10 @@ export const ListOauthGrantsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOauthGrantsResponse" }) as any as S.Schema<ListOauthGrantsResponse>;
 
 export type ListPasskeysRequestOrder = "created_at";
-export const ListPasskeysRequestOrder = S.String;
+const ListPasskeysRequestOrder = S.String;
 
 export type ListPasskeysRequestDirection = "asc" | "desc";
-export const ListPasskeysRequestDirection = S.String;
+const ListPasskeysRequestDirection = S.String;
 
 export interface ListPasskeysRequest {
   /** Number of results to return from the start of the range. */
@@ -1165,7 +1165,7 @@ export interface ListPasskeysRequest {
   /** Sort direction. */
   direction?: ListPasskeysRequestDirection | (string & {});
 }
-export const ListPasskeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPasskeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -1177,18 +1177,16 @@ export const ListPasskeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPasskeysRequest" }) as any as S.Schema<ListPasskeysRequest>;
 
 export type ListPasskeysResponseDataList = Array<Passkey>;
-export const ListPasskeysResponseDataList = /*@__PURE__*/ S.Array(
+const ListPasskeysResponseDataList = /*@__PURE__*/ S.Array(
   Passkey,
 ) as any as S.Schema<ListPasskeysResponseDataList>;
 
 export type ListPasskeysResponsePageInfo = ListOauthGrantsResponsePageInfo;
-export const ListPasskeysResponsePageInfo = ListOauthGrantsResponsePageInfo;
-
 export interface ListPasskeysResponse {
   data: ListPasskeysResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-export const ListPasskeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPasskeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPasskeysResponseDataList,
     page_info: ListOauthGrantsResponsePageInfo,
@@ -1201,7 +1199,7 @@ export interface ListUserNotificationExperiencePreferencesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListUserNotificationExperiencePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserNotificationExperiencePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -1214,15 +1212,15 @@ export const ListUserNotificationExperiencePreferencesRequest = /*@__PURE__*/ S.
 
 /** What the user is notified about in the experience: `all` notifications, only `mentions`, or `nothing`. */
 export type ExperienceNotificationPreferenceLevel = "all" | "mentions" | "nothing";
-export const ExperienceNotificationPreferenceLevel = S.String;
+const ExperienceNotificationPreferenceLevel = S.String;
 
 /** The type of object. Always `experience_notification_preference`. */
 export type ExperienceNotificationPreferenceObject = "experience_notification_preference";
-export const ExperienceNotificationPreferenceObject = S.String;
+const ExperienceNotificationPreferenceObject = S.String;
 
 /** Delivery channel the preference applies to. `null` applies to every channel. */
 export type NotificationPreferenceScopeChannel = "in_app" | "mobile";
-export const NotificationPreferenceScopeChannel = S.String;
+const NotificationPreferenceScopeChannel = S.String;
 
 export interface NotificationPreferenceScope {
   /** Account the preference is scoped to (member notifications), prefixed `biz_`. */
@@ -1236,7 +1234,7 @@ export interface NotificationPreferenceScope {
   /** Notification topic the preference is scoped to, prefixed `topic_`. */
   topic_id: string | null;
 }
-export const NotificationPreferenceScope = /*@__PURE__*/ S.suspend(() =>
+const NotificationPreferenceScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     channel: S.NullOr(NotificationPreferenceScopeChannel),
@@ -1256,7 +1254,7 @@ export interface ExperienceNotificationPreference {
   /** What the preference applies to. Echo it back to `PATCH /users/me/preferences/notifications` to change this preference. */
   scope: NotificationPreferenceScope;
 }
-export const ExperienceNotificationPreference = /*@__PURE__*/ S.suspend(() =>
+const ExperienceNotificationPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: ExperienceNotificationPreferenceLevel,
     object: ExperienceNotificationPreferenceObject,
@@ -1268,20 +1266,17 @@ export const ExperienceNotificationPreference = /*@__PURE__*/ S.suspend(() =>
 
 export type ListUserNotificationExperiencePreferencesResponseDataList =
   Array<ExperienceNotificationPreference>;
-export const ListUserNotificationExperiencePreferencesResponseDataList = /*@__PURE__*/ S.Array(
+const ListUserNotificationExperiencePreferencesResponseDataList = /*@__PURE__*/ S.Array(
   ExperienceNotificationPreference,
 ) as any as S.Schema<ListUserNotificationExperiencePreferencesResponseDataList>;
 
 export type ListUserNotificationExperiencePreferencesResponsePageInfo =
   ListOauthGrantsResponsePageInfo;
-export const ListUserNotificationExperiencePreferencesResponsePageInfo =
-  ListOauthGrantsResponsePageInfo;
-
 export interface ListUserNotificationExperiencePreferencesResponse {
   data: ListUserNotificationExperiencePreferencesResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-export const ListUserNotificationExperiencePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserNotificationExperiencePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListUserNotificationExperiencePreferencesResponseDataList,
     page_info: ListOauthGrantsResponsePageInfo,
@@ -1291,7 +1286,7 @@ export const ListUserNotificationExperiencePreferencesResponse = /*@__PURE__*/ S
 }) as any as S.Schema<ListUserNotificationExperiencePreferencesResponse>;
 
 export type ListUserNotificationTopicPreferencesRequestChannel = "in_app" | "mobile";
-export const ListUserNotificationTopicPreferencesRequestChannel = S.String;
+const ListUserNotificationTopicPreferencesRequestChannel = S.String;
 
 export interface ListUserNotificationTopicPreferencesRequest {
   /** Only return preferences for this delivery channel (or not narrowed to a channel). */
@@ -1309,7 +1304,7 @@ export interface ListUserNotificationTopicPreferencesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListUserNotificationTopicPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserNotificationTopicPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(ListUserNotificationTopicPreferencesRequestChannel.pipe(T.Query())),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -1325,11 +1320,11 @@ export const ListUserNotificationTopicPreferencesRequest = /*@__PURE__*/ S.suspe
 
 /** What the user is notified about in this scope: `all` or `nothing`. */
 export type UserNotificationPreferenceLevel = "all" | "nothing";
-export const UserNotificationPreferenceLevel = S.String;
+const UserNotificationPreferenceLevel = S.String;
 
 /** The type of object. Always `notification_preference`. */
 export type UserNotificationPreferenceObject = "notification_preference";
-export const UserNotificationPreferenceObject = S.String;
+const UserNotificationPreferenceObject = S.String;
 
 export interface UserNotificationPreference {
   /** When the preference was created, as an ISO 8601 timestamp. */
@@ -1345,7 +1340,7 @@ export interface UserNotificationPreference {
   /** When the preference was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const UserNotificationPreference = /*@__PURE__*/ S.suspend(() =>
+const UserNotificationPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -1360,18 +1355,16 @@ export const UserNotificationPreference = /*@__PURE__*/ S.suspend(() =>
 
 export type ListUserNotificationTopicPreferencesResponseDataList =
   Array<UserNotificationPreference>;
-export const ListUserNotificationTopicPreferencesResponseDataList = /*@__PURE__*/ S.Array(
+const ListUserNotificationTopicPreferencesResponseDataList = /*@__PURE__*/ S.Array(
   UserNotificationPreference,
 ) as any as S.Schema<ListUserNotificationTopicPreferencesResponseDataList>;
 
 export type ListUserNotificationTopicPreferencesResponsePageInfo = ListOauthGrantsResponsePageInfo;
-export const ListUserNotificationTopicPreferencesResponsePageInfo = ListOauthGrantsResponsePageInfo;
-
 export interface ListUserNotificationTopicPreferencesResponse {
   data: ListUserNotificationTopicPreferencesResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-export const ListUserNotificationTopicPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserNotificationTopicPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListUserNotificationTopicPreferencesResponseDataList,
     page_info: ListOauthGrantsResponsePageInfo,
@@ -1384,7 +1377,7 @@ export interface ListUserRecommendedActionsRequest {
   /** `me`, or the authenticated user's own `user_` tag or username. */
   id: string;
 }
-export const ListUserRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserRecommendedActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{id}/recommend_actions", code: 200 })),
@@ -1417,15 +1410,15 @@ export type UserRecommendedActionAction =
   | "enable_tax_collection"
   | "create_card"
   | "apply_for_financing";
-export const UserRecommendedActionAction = S.String;
+const UserRecommendedActionAction = S.String;
 
 export type UserRecommendedActionBlockedCapabilitiesList = Array<string>;
-export const UserRecommendedActionBlockedCapabilitiesList =
+const UserRecommendedActionBlockedCapabilitiesList =
   CreateOauthGrantRequestRequestedScopesList as any as S.Schema<UserRecommendedActionBlockedCapabilitiesList>;
 
 /** Always optional -- never blocking */
 export type UserRecommendedActionStatus = "optional";
-export const UserRecommendedActionStatus = S.String;
+const UserRecommendedActionStatus = S.String;
 
 export interface UserRecommendedAction {
   /** The account (`biz_`) a business recommendation is for, or `null` for personal recommendations */
@@ -1452,7 +1445,7 @@ export interface UserRecommendedAction {
   /** Headline for the recommendation */
   title: string;
 }
-export const UserRecommendedAction = /*@__PURE__*/ S.suspend(() =>
+const UserRecommendedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     account_name: S.NullOr(S.String),
@@ -1470,14 +1463,14 @@ export const UserRecommendedAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserRecommendedAction" }) as any as S.Schema<UserRecommendedAction>;
 
 export type ListUserRecommendedActionsResponseDataList = Array<UserRecommendedAction>;
-export const ListUserRecommendedActionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListUserRecommendedActionsResponseDataList = /*@__PURE__*/ S.Array(
   UserRecommendedAction,
 ) as any as S.Schema<ListUserRecommendedActionsResponseDataList>;
 
 export interface ListUserRecommendedActionsResponse {
   data: ListUserRecommendedActionsResponseDataList;
 }
-export const ListUserRecommendedActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserRecommendedActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListUserRecommendedActionsResponseDataList,
   }),
@@ -1497,7 +1490,7 @@ export interface ListUsersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -1508,18 +1501,16 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseDataList = Array<User>;
-export const ListUsersResponseDataList = /*@__PURE__*/ S.Array(
+const ListUsersResponseDataList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<ListUsersResponseDataList>;
 
 export type ListUsersResponsePageInfo = ListOauthGrantsResponsePageInfo;
-export const ListUsersResponsePageInfo = ListOauthGrantsResponsePageInfo;
-
 export interface ListUsersResponse {
   data: ListUsersResponseDataList;
   page_info: ListOauthGrantsResponsePageInfo;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListUsersResponseDataList,
     page_info: ListOauthGrantsResponsePageInfo,
@@ -1531,11 +1522,11 @@ export type SetUserNotificationPreferencesRequestPreferencesItemLevel =
   | "all"
   | "mentions"
   | "nothing";
-export const SetUserNotificationPreferencesRequestPreferencesItemLevel = S.String;
+const SetUserNotificationPreferencesRequestPreferencesItemLevel = S.String;
 
 /** Delivery channel the preference applies to. Omit it (or pass `null`) to apply the preference to every channel. */
 export type SetUserNotificationPreferencesRequestPreferencesItemScopeChannel = "in_app" | "mobile";
-export const SetUserNotificationPreferencesRequestPreferencesItemScopeChannel = S.String;
+const SetUserNotificationPreferencesRequestPreferencesItemScopeChannel = S.String;
 
 /** What the preference applies to. `null` on a dimension means the preference is not narrowed there. */
 export interface SetUserNotificationPreferencesRequestPreferencesItemScope {
@@ -1550,17 +1541,14 @@ export interface SetUserNotificationPreferencesRequestPreferencesItemScope {
   /** Notification topic to scope the preference to, `topic_` tag. */
   topic_id?: string | null;
 }
-export const SetUserNotificationPreferencesRequestPreferencesItemScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      account_id: S.optional(S.NullOr(S.String)),
-      channel: S.optional(
-        S.NullOr(SetUserNotificationPreferencesRequestPreferencesItemScopeChannel),
-      ),
-      experience_id: S.optional(S.NullOr(S.String)),
-      team_account_id: S.optional(S.NullOr(S.String)),
-      topic_id: S.optional(S.NullOr(S.String)),
-    }),
+const SetUserNotificationPreferencesRequestPreferencesItemScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.optional(S.NullOr(S.String)),
+    channel: S.optional(S.NullOr(SetUserNotificationPreferencesRequestPreferencesItemScopeChannel)),
+    experience_id: S.optional(S.NullOr(S.String)),
+    team_account_id: S.optional(S.NullOr(S.String)),
+    topic_id: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "SetUserNotificationPreferencesRequestPreferencesItemScope",
 }) as any as S.Schema<SetUserNotificationPreferencesRequestPreferencesItemScope>;
@@ -1571,7 +1559,7 @@ export interface SetUserNotificationPreferencesRequestPreferencesItem {
   /** What the preference applies to. `null` on a dimension means the preference is not narrowed there. */
   scope: SetUserNotificationPreferencesRequestPreferencesItemScope;
 }
-export const SetUserNotificationPreferencesRequestPreferencesItem = /*@__PURE__*/ S.suspend(() =>
+const SetUserNotificationPreferencesRequestPreferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.NullOr(SetUserNotificationPreferencesRequestPreferencesItemLevel),
     scope: SetUserNotificationPreferencesRequestPreferencesItemScope,
@@ -1583,7 +1571,7 @@ export const SetUserNotificationPreferencesRequestPreferencesItem = /*@__PURE__*
 /** The preferences to set, at most 100 per request. */
 export type SetUserNotificationPreferencesRequestPreferencesList =
   Array<SetUserNotificationPreferencesRequestPreferencesItem>;
-export const SetUserNotificationPreferencesRequestPreferencesList = /*@__PURE__*/ S.Array(
+const SetUserNotificationPreferencesRequestPreferencesList = /*@__PURE__*/ S.Array(
   SetUserNotificationPreferencesRequestPreferencesItem,
 ) as any as S.Schema<SetUserNotificationPreferencesRequestPreferencesList>;
 
@@ -1591,7 +1579,7 @@ export interface SetUserNotificationPreferencesRequest {
   /** The preferences to set, at most 100 per request. */
   preferences: SetUserNotificationPreferencesRequestPreferencesList;
 }
-export const SetUserNotificationPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserNotificationPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferences: SetUserNotificationPreferencesRequestPreferencesList,
   }).pipe(T.Http({ method: "PATCH", uri: "/users/me/preferences/notifications", code: 200 })),
@@ -1601,13 +1589,13 @@ export const SetUserNotificationPreferencesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** What the user is now notified about in this scope, or `null` if the preference was cleared and the scope inherits its default again. */
 export type NotificationPreferenceStateLevel = "all" | "mentions" | "nothing";
-export const NotificationPreferenceStateLevel = S.String;
+const NotificationPreferenceStateLevel = S.String;
 
 /** Which kind of preference was written: `experience_notification_preference` for an experience level, `notification_preference` for a topic override. */
 export type NotificationPreferenceStateObject =
   | "notification_preference"
   | "experience_notification_preference";
-export const NotificationPreferenceStateObject = S.String;
+const NotificationPreferenceStateObject = S.String;
 
 export interface NotificationPreferenceState {
   /** What the user is now notified about in this scope, or `null` if the preference was cleared and the scope inherits its default again. */
@@ -1617,7 +1605,7 @@ export interface NotificationPreferenceState {
   /** The scope that was written, resolved. `null` on a dimension means the preference is not narrowed there. */
   scope: NotificationPreferenceScope;
 }
-export const NotificationPreferenceState = /*@__PURE__*/ S.suspend(() =>
+const NotificationPreferenceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.NullOr(NotificationPreferenceStateLevel),
     object: NotificationPreferenceStateObject,
@@ -1628,14 +1616,14 @@ export const NotificationPreferenceState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationPreferenceState>;
 
 export type SetUserNotificationPreferencesResponseDataList = Array<NotificationPreferenceState>;
-export const SetUserNotificationPreferencesResponseDataList = /*@__PURE__*/ S.Array(
+const SetUserNotificationPreferencesResponseDataList = /*@__PURE__*/ S.Array(
   NotificationPreferenceState,
 ) as any as S.Schema<SetUserNotificationPreferencesResponseDataList>;
 
 export interface SetUserNotificationPreferencesResponse {
   data: SetUserNotificationPreferencesResponseDataList;
 }
-export const SetUserNotificationPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const SetUserNotificationPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: SetUserNotificationPreferencesResponseDataList,
   }),
@@ -1647,7 +1635,7 @@ export interface UpdateUserRequestBanner {
   direct_upload_id?: string;
   id?: string;
 }
-export const UpdateUserRequestBanner = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequestBanner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     id: S.optional(S.String),
@@ -1655,8 +1643,6 @@ export const UpdateUserRequestBanner = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequestBanner" }) as any as S.Schema<UpdateUserRequestBanner>;
 
 export type UpdateUserRequestProfilePicture = UpdateUserRequestBanner;
-export const UpdateUserRequestProfilePicture = UpdateUserRequestBanner;
-
 export interface UpdateUserRequest {
   /** User ID (prefixed `user_`), username, or `me` for the authenticated user. */
   id: string;
@@ -1668,7 +1654,7 @@ export interface UpdateUserRequest {
   profile_picture?: UpdateUserRequestBanner;
   username?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -1688,7 +1674,7 @@ export interface UpdateUserPreferencesRequest {
   /** Records the user's acceptance of Whop's terms and policies. Only `true` is accepted -- the server stamps `terms_accepted_at` and acceptance cannot be withdrawn here. */
   terms_accepted?: boolean;
 }
-export const UpdateUserPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounty_worker_onboarding_dismissed: S.optional(S.Boolean),
     investigation_enabled: S.optional(S.Boolean),

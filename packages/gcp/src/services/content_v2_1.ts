@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export interface AuthinfoAccountsRequest {}
-export const AuthinfoAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthinfoAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -80,7 +80,7 @@ export interface AccountIdentifier {
   /** The merchant account ID, set for individual accounts and subaccounts. */
   merchantId?: string;
 }
-export const AccountIdentifier = /*@__PURE__*/ S.suspend(() =>
+const AccountIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregatorId: S.optional(S.String),
     merchantId: S.optional(S.String),
@@ -90,7 +90,7 @@ export const AccountIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountIdentifier>;
 
 export type AccountIdentifierList = Array<AccountIdentifier>;
-export const AccountIdentifierList = /*@__PURE__*/ S.Array(
+const AccountIdentifierList = /*@__PURE__*/ S.Array(
   AccountIdentifier,
 ) as any as S.Schema<AccountIdentifierList>;
 
@@ -100,7 +100,7 @@ export interface AccountsAuthInfoResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsAuthInfoResponse`". */
   kind?: string;
 }
-export const AccountsAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountIdentifiers: S.optional(AccountIdentifierList),
     kind: S.optional(S.String),
@@ -117,7 +117,7 @@ export interface ClaimwebsiteAccountsRequest {
   /** The ID of the account whose website is claimed. */
   accountId: string;
 }
-export const ClaimwebsiteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClaimwebsiteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overwrite: S.optional(S.Boolean.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -137,7 +137,7 @@ export interface AccountsClaimWebsiteResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsClaimWebsiteResponse`". */
   kind?: string;
 }
-export const AccountsClaimWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsClaimWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
   }),
@@ -149,7 +149,7 @@ export type AccountCredentialsPurposeEnum =
   | "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED"
   | "SHOPIFY_ORDER_MANAGEMENT"
   | "SHOPIFY_INTEGRATION";
-export const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
+const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
 
 /** Credentials allowing Google to call a partner's API on behalf of a merchant. */
 export interface AccountCredentials {
@@ -160,7 +160,7 @@ export interface AccountCredentials {
   /** The amount of time, in seconds, after which the access token is no longer valid. */
   expiresIn?: string;
 }
-export const AccountCredentials = /*@__PURE__*/ S.suspend(() =>
+const AccountCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purpose: S.optional(AccountCredentialsPurposeEnum),
     accessToken: S.optional(S.String),
@@ -176,7 +176,7 @@ export interface CreateAccountsCredentialsRequest {
   /** Request body */
   body?: AccountCredentials;
 }
-export const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     body: S.optional(AccountCredentials.pipe(T.HttpBody())),
@@ -192,7 +192,7 @@ export const CreateAccountsCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccountsCredentialsRequest>;
 
 export type AccountLabelLabelTypeEnum = "LABEL_TYPE_UNSPECIFIED" | "MANUAL" | "AUTOMATIC";
-export const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
+const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
 
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
 export interface AccountLabel {
@@ -207,7 +207,7 @@ export interface AccountLabel {
   /** Immutable. The ID of account this label belongs to. */
   accountId?: string;
 }
-export const AccountLabel = /*@__PURE__*/ S.suspend(() =>
+const AccountLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     labelType: S.optional(AccountLabelLabelTypeEnum),
@@ -223,7 +223,7 @@ export interface CreateAccountsLabelsRequest {
   /** Request body */
   body?: AccountLabel;
 }
-export const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     body: S.optional(AccountLabel.pipe(T.HttpBody())),
@@ -239,7 +239,7 @@ export const CreateAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccountsLabelsRequest>;
 
 export type AccountReturnCarrierCarrierCodeEnum = "CARRIER_CODE_UNSPECIFIED" | "FEDEX" | "UPS";
-export const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
+const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
 
 /** The return carrier information. This service is designed for merchants enrolled in the Buy on Google program. */
 export interface AccountReturnCarrier {
@@ -252,7 +252,7 @@ export interface AccountReturnCarrier {
   /** Name of the carrier account. */
   carrierAccountName?: string;
 }
-export const AccountReturnCarrier = /*@__PURE__*/ S.suspend(() =>
+const AccountReturnCarrier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierAccountId: S.optional(S.String),
     carrierCode: S.optional(AccountReturnCarrierCarrierCodeEnum),
@@ -269,7 +269,7 @@ export interface CreateAccountsReturncarrierRequest {
   /** Request body */
   body?: AccountReturnCarrier;
 }
-export const CreateAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     body: S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
@@ -285,7 +285,7 @@ export const CreateAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccountsReturncarrierRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The message for FeaturedProduct. [FeaturedProduct](https://support.google.com/merchants/answer/9703736) */
 export interface CollectionFeaturedProduct {
@@ -296,7 +296,7 @@ export interface CollectionFeaturedProduct {
   /** Required. X-coordinate of the product callout on the Shoppable Image. */
   x?: number;
 }
-export const CollectionFeaturedProduct = /*@__PURE__*/ S.suspend(() =>
+const CollectionFeaturedProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     y: S.optional(S.Number),
     offerId: S.optional(S.String),
@@ -307,7 +307,7 @@ export const CollectionFeaturedProduct = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionFeaturedProduct>;
 
 export type CollectionFeaturedProductList = Array<CollectionFeaturedProduct>;
-export const CollectionFeaturedProductList = /*@__PURE__*/ S.Array(
+const CollectionFeaturedProductList = /*@__PURE__*/ S.Array(
   CollectionFeaturedProduct,
 ) as any as S.Schema<CollectionFeaturedProductList>;
 
@@ -340,7 +340,7 @@ export interface Collection {
   /** [product_country attribute](https://support.google.com/merchants/answer/9674155) */
   productCountry?: string;
 }
-export const Collection = /*@__PURE__*/ S.suspend(() =>
+const Collection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customLabel2: S.optional(S.String),
     id: S.optional(S.String),
@@ -364,7 +364,7 @@ export interface CreateCollectionsRequest {
   /** Request body */
   body?: Collection;
 }
-export const CreateCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(Collection.pipe(T.HttpBody())),
@@ -380,7 +380,7 @@ export const CreateCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCollectionsRequest>;
 
 export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
-export const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
+const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
 
 /** Message representing a types of conversion events */
 export interface AttributionSettingsConversionType {
@@ -389,7 +389,7 @@ export interface AttributionSettingsConversionType {
   /** Output only. Option indicating if the type should be included in Merchant Center reporting. */
   includeInReporting?: boolean;
 }
-export const AttributionSettingsConversionType = /*@__PURE__*/ S.suspend(() =>
+const AttributionSettingsConversionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     includeInReporting: S.optional(S.Boolean),
@@ -399,7 +399,7 @@ export const AttributionSettingsConversionType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttributionSettingsConversionType>;
 
 export type AttributionSettingsConversionTypeList = Array<AttributionSettingsConversionType>;
-export const AttributionSettingsConversionTypeList = /*@__PURE__*/ S.Array(
+const AttributionSettingsConversionTypeList = /*@__PURE__*/ S.Array(
   AttributionSettingsConversionType,
 ) as any as S.Schema<AttributionSettingsConversionTypeList>;
 
@@ -412,7 +412,7 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
   | "CROSS_CHANNEL_TIME_DECAY";
-export const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
+const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
 
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
@@ -422,7 +422,7 @@ export interface AttributionSettings {
   attributionLookbackWindowInDays?: number;
   attributionModel?: AttributionSettingsAttributionModelEnum | (string & {});
 }
-export const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
+const AttributionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionType: S.optional(AttributionSettingsConversionTypeList),
     attributionLookbackWindowInDays: S.optional(S.Number),
@@ -443,7 +443,7 @@ export interface MerchantCenterDestination {
   /** Output only. Merchant Center Destination ID. */
   destinationId?: string;
 }
-export const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
+const MerchantCenterDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributionSettings: S.optional(AttributionSettings),
     currencyCode: S.optional(S.String),
@@ -463,7 +463,7 @@ export interface GoogleAnalyticsLink {
   /** Required. Immutable. ID of the Google Analytics property the merchant is linked to. */
   propertyId?: string;
 }
-export const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAnalyticsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyName: S.optional(S.String),
     attributionSettings: S.optional(AttributionSettings),
@@ -486,7 +486,7 @@ export interface ConversionSource {
   /** Immutable. Conversion Source of type "Link to Google Analytics Property". */
   googleAnalyticsLink?: GoogleAnalyticsLink;
 }
-export const ConversionSource = /*@__PURE__*/ S.suspend(() =>
+const ConversionSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ConversionSourceStateEnum),
     expireTime: S.optional(S.String),
@@ -504,7 +504,7 @@ export interface CreateConversionsourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const CreateConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(ConversionSource.pipe(T.HttpBody())),
@@ -526,7 +526,7 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -554,7 +554,7 @@ export interface DateTime {
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
   utcOffset?: string;
 }
-export const DateTime = /*@__PURE__*/ S.suspend(() =>
+const DateTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seconds: S.optional(S.Number),
     hours: S.optional(S.Number),
@@ -577,7 +577,7 @@ export interface OrderTrackingSignalShipmentLineItemMapping {
   /** Required. The line item ID. */
   lineItemId?: string;
 }
-export const OrderTrackingSignalShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
+const OrderTrackingSignalShipmentLineItemMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.String),
     shipmentId: S.optional(S.String),
@@ -589,7 +589,7 @@ export const OrderTrackingSignalShipmentLineItemMapping = /*@__PURE__*/ S.suspen
 
 export type OrderTrackingSignalShipmentLineItemMappingList =
   Array<OrderTrackingSignalShipmentLineItemMapping>;
-export const OrderTrackingSignalShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
+const OrderTrackingSignalShipmentLineItemMappingList = /*@__PURE__*/ S.Array(
   OrderTrackingSignalShipmentLineItemMapping,
 ) as any as S.Schema<OrderTrackingSignalShipmentLineItemMappingList>;
 
@@ -600,7 +600,7 @@ export interface PriceAmount {
   /** The price represented as a number. */
   value?: string;
 }
-export const PriceAmount = /*@__PURE__*/ S.suspend(() =>
+const PriceAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     value: S.optional(S.String),
@@ -630,7 +630,7 @@ export interface OrderTrackingSignalLineItemDetails {
   /** Required. The Content API REST ID of the product, in the form channel:contentLanguage:targetCountry:offerId. */
   productId?: string;
 }
-export const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ S.suspend(() =>
+const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineItemId: S.optional(S.String),
     quantity: S.optional(S.String),
@@ -648,7 +648,7 @@ export const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderTrackingSignalLineItemDetails>;
 
 export type OrderTrackingSignalLineItemDetailsList = Array<OrderTrackingSignalLineItemDetails>;
-export const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ S.Array(
+const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ S.Array(
   OrderTrackingSignalLineItemDetails,
 ) as any as S.Schema<OrderTrackingSignalLineItemDetailsList>;
 
@@ -656,7 +656,7 @@ export type OrderTrackingSignalShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
   | "DELIVERED";
-export const OrderTrackingSignalShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
+const OrderTrackingSignalShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
 
 /** The shipping information for the order. */
 export interface OrderTrackingSignalShippingInfo {
@@ -683,7 +683,7 @@ export interface OrderTrackingSignalShippingInfo {
   /** The time when the shipment was actually delivered. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
   actualDeliveryTime?: DateTime;
 }
-export const OrderTrackingSignalShippingInfo = /*@__PURE__*/ S.suspend(() =>
+const OrderTrackingSignalShippingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shippingStatus: S.optional(OrderTrackingSignalShippingInfoShippingStatusEnum),
     earliestDeliveryPromiseTime: S.optional(DateTime),
@@ -702,7 +702,7 @@ export const OrderTrackingSignalShippingInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderTrackingSignalShippingInfo>;
 
 export type OrderTrackingSignalShippingInfoList = Array<OrderTrackingSignalShippingInfo>;
-export const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ S.Array(
+const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ S.Array(
   OrderTrackingSignalShippingInfo,
 ) as any as S.Schema<OrderTrackingSignalShippingInfoList>;
 
@@ -729,7 +729,7 @@ export interface OrderTrackingSignal {
   /** The shipping information for the order. */
   shippingInfo?: OrderTrackingSignalShippingInfoList;
 }
-export const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
+const OrderTrackingSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderCreatedTime: S.optional(DateTime),
     shipmentLineItemMapping: S.optional(OrderTrackingSignalShipmentLineItemMappingList),
@@ -752,7 +752,7 @@ export interface CreateOrdertrackingsignalsRequest {
   /** Request body */
   body?: OrderTrackingSignal;
 }
-export const CreateOrdertrackingsignalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrdertrackingsignalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
@@ -772,7 +772,7 @@ export interface ProductId {
   /** The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId?: string;
 }
-export const ProductId = /*@__PURE__*/ S.suspend(() =>
+const ProductId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
   }),
@@ -785,7 +785,7 @@ export interface DeliveryAreaPostalCodeRange {
   /** A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the area (for example [070* - 078*] results in the range [07000 - 07899]). It must have the same length as `firstPostalCode`: if `firstPostalCode` is a postal code then `lastPostalCode` must be a postal code too; if firstPostalCode is a pattern then `lastPostalCode` must be a pattern with the same prefix length. Ignored if not set, then the area is defined as being all the postal codes matching `firstPostalCode`. */
   lastPostalCode?: string;
 }
-export const DeliveryAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
+const DeliveryAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstPostalCode: S.optional(S.String),
     lastPostalCode: S.optional(S.String),
@@ -803,7 +803,7 @@ export interface DeliveryArea {
   /** A postal code, postal code range or postal code prefix that defines this area. Limited to US and AUS. */
   postalCodeRange?: DeliveryAreaPostalCodeRange;
 }
-export const DeliveryArea = /*@__PURE__*/ S.suspend(() =>
+const DeliveryArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -822,7 +822,7 @@ export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   /** Required. The maximum number of business days (inclusive) between when an order is placed and when the product ships. If a product ships in the same day, set this value to 0. */
   maxHandlingTimeDays?: number;
 }
-export const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxTransitTimeDays: S.optional(S.Number),
     minHandlingTimeDays: S.optional(S.Number),
@@ -840,7 +840,7 @@ export interface ProductDeliveryTimeAreaDeliveryTime {
   /** Required. The delivery time associated with `deliveryArea` for this product. */
   deliveryTime?: ProductDeliveryTimeAreaDeliveryTimeDeliveryTime;
 }
-export const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deliveryArea: S.optional(DeliveryArea),
     deliveryTime: S.optional(ProductDeliveryTimeAreaDeliveryTimeDeliveryTime),
@@ -850,7 +850,7 @@ export const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTime>;
 
 export type ProductDeliveryTimeAreaDeliveryTimeList = Array<ProductDeliveryTimeAreaDeliveryTime>;
-export const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ S.Array(
+const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ S.Array(
   ProductDeliveryTimeAreaDeliveryTime,
 ) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeList>;
 
@@ -861,7 +861,7 @@ export interface ProductDeliveryTime {
   /** Required. A set of associations between `DeliveryArea` and `DeliveryTime` entries. The total number of `areaDeliveryTimes` can be at most 100. */
   areaDeliveryTimes?: ProductDeliveryTimeAreaDeliveryTimeList;
 }
-export const ProductDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const ProductDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(ProductId),
     areaDeliveryTimes: S.optional(ProductDeliveryTimeAreaDeliveryTimeList),
@@ -876,7 +876,7 @@ export interface CreateProductdeliverytimeRequest {
   /** Request body */
   body?: ProductDeliveryTime;
 }
-export const CreateProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(ProductDeliveryTime.pipe(T.HttpBody())),
@@ -898,7 +898,7 @@ export interface TimePeriod {
   /** The ending timestamp. */
   endTime?: string;
 }
-export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
+const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -913,7 +913,7 @@ export type PromotionPromotionStatusDestinationStatusStatusEnum =
   | "STOPPED"
   | "EXPIRED"
   | "PENDING";
-export const PromotionPromotionStatusDestinationStatusStatusEnum = /*@__PURE__*/ S.String;
+const PromotionPromotionStatusDestinationStatusStatusEnum = /*@__PURE__*/ S.String;
 
 /** The destination status of the promotion. */
 export interface PromotionPromotionStatusDestinationStatus {
@@ -922,7 +922,7 @@ export interface PromotionPromotionStatusDestinationStatus {
   /** The status for the specified destination. */
   status?: PromotionPromotionStatusDestinationStatusStatusEnum | (string & {});
 }
-export const PromotionPromotionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const PromotionPromotionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.String),
     status: S.optional(PromotionPromotionStatusDestinationStatusStatusEnum),
@@ -933,7 +933,7 @@ export const PromotionPromotionStatusDestinationStatus = /*@__PURE__*/ S.suspend
 
 export type PromotionPromotionStatusDestinationStatusList =
   Array<PromotionPromotionStatusDestinationStatus>;
-export const PromotionPromotionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
+const PromotionPromotionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
   PromotionPromotionStatusDestinationStatus,
 ) as any as S.Schema<PromotionPromotionStatusDestinationStatusList>;
 
@@ -944,7 +944,7 @@ export interface PromotionPromotionStatusPromotionIssue {
   /** Code of the issue. */
   code?: string;
 }
-export const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(() =>
+const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
     code: S.optional(S.String),
@@ -955,7 +955,7 @@ export const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ S.suspend(()
 
 export type PromotionPromotionStatusPromotionIssueList =
   Array<PromotionPromotionStatusPromotionIssue>;
-export const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ S.Array(
+const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ S.Array(
   PromotionPromotionStatusPromotionIssue,
 ) as any as S.Schema<PromotionPromotionStatusPromotionIssueList>;
 
@@ -970,7 +970,7 @@ export interface PromotionPromotionStatus {
   /** A list of issues associated with the promotion. */
   promotionIssue?: PromotionPromotionStatusPromotionIssueList;
 }
-export const PromotionPromotionStatus = /*@__PURE__*/ S.suspend(() =>
+const PromotionPromotionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationStatuses: S.optional(PromotionPromotionStatusDestinationStatusList),
     lastUpdateDate: S.optional(S.String),
@@ -985,21 +985,21 @@ export type PromotionProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
   | "SPECIFIC_PRODUCTS";
-export const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
+const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
 
 export type PromotionOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
-export const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
+const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
   | "ONLINE";
-export const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
+const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
 
 export type PromotionRedemptionChannelItemEnumList = Array<
   PromotionRedemptionChannelItemEnum | (string & {})
 >;
-export const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
+const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ S.Array(
   PromotionRedemptionChannelItemEnum,
 ) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
 
@@ -1011,7 +1011,7 @@ export type PromotionRedemptionRestrictionEnum =
   | "SIGN_UP_FOR_TEXT"
   | "FORMS_OF_PAYMENT"
   | "CUSTOM";
-export const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
+const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
 
 export type PromotionCouponValueTypeEnum =
   | "COUPON_VALUE_TYPE_UNSPECIFIED"
@@ -1027,13 +1027,13 @@ export type PromotionCouponValueTypeEnum =
   | "FREE_SHIPPING_STANDARD"
   | "FREE_SHIPPING_OVERNIGHT"
   | "FREE_SHIPPING_TWO_DAY";
-export const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
+const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
 
 export type PromotionStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
   | "SPECIFIC_STORES";
-export const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
+const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
 
 /** Represents a promotion. See the following articles for more details. * [Promotions feed specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data specification](https://support.google.com/merchants/answer/9173673) */
 export interface Promotion {
@@ -1126,7 +1126,7 @@ export interface Promotion {
   /** Store codes to exclude for the promotion. */
   storeCodeExclusion?: StringList;
 }
-export const Promotion = /*@__PURE__*/ S.suspend(() =>
+const Promotion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotionUrl: S.optional(S.String),
     longTitle: S.optional(S.String),
@@ -1181,7 +1181,7 @@ export interface CreatePromotionsRequest {
   /** Request body */
   body?: Promotion;
 }
-export const CreatePromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(Promotion.pipe(T.HttpBody())),
@@ -1201,7 +1201,7 @@ export interface RegionGeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (e.g., state). */
   geotargetCriteriaIds?: StringList;
 }
-export const RegionGeoTargetArea = /*@__PURE__*/ S.suspend(() =>
+const RegionGeoTargetArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geotargetCriteriaIds: S.optional(StringList),
   }),
@@ -1216,7 +1216,7 @@ export interface RegionPostalCodeAreaPostalCodeRange {
   /** Optional. A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is defined as being all the postal codes matching postalCodeRangeBegin. */
   end?: string;
 }
-export const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
+const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     begin: S.optional(S.String),
     end: S.optional(S.String),
@@ -1226,7 +1226,7 @@ export const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionPostalCodeAreaPostalCodeRange>;
 
 export type RegionPostalCodeAreaPostalCodeRangeList = Array<RegionPostalCodeAreaPostalCodeRange>;
-export const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ S.Array(
+const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ S.Array(
   RegionPostalCodeAreaPostalCodeRange,
 ) as any as S.Schema<RegionPostalCodeAreaPostalCodeRangeList>;
 
@@ -1237,7 +1237,7 @@ export interface RegionPostalCodeArea {
   /** Required. A range of postal codes. */
   postalCodes?: RegionPostalCodeAreaPostalCodeRangeList;
 }
-export const RegionPostalCodeArea = /*@__PURE__*/ S.suspend(() =>
+const RegionPostalCodeArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     postalCodes: S.optional(RegionPostalCodeAreaPostalCodeRangeList),
@@ -1263,7 +1263,7 @@ export interface Region {
   /** A list of postal codes that defines the region area. */
   postalCodeArea?: RegionPostalCodeArea;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalInventoryEligible: S.optional(S.Boolean),
     regionId: S.optional(S.String),
@@ -1283,7 +1283,7 @@ export interface CreateRegionsRequest {
   /** Request body */
   body?: Region;
 }
-export const CreateRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.optional(S.String.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -1304,7 +1304,7 @@ export type ReturnPolicyOnlinePolicyTypeEnum =
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
   | "LIFETIME_RETURNS";
-export const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
+const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
 
 /** The available policies. */
 export interface ReturnPolicyOnlinePolicy {
@@ -1313,7 +1313,7 @@ export interface ReturnPolicyOnlinePolicy {
   /** The number of days items can be returned after delivery, where one day is defined to be 24 hours after the delivery timestamp. Required for `numberOfDaysAfterDelivery` returns. */
   days?: string;
 }
-export const ReturnPolicyOnlinePolicy = /*@__PURE__*/ S.suspend(() =>
+const ReturnPolicyOnlinePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ReturnPolicyOnlinePolicyTypeEnum),
     days: S.optional(S.String),
@@ -1326,22 +1326,20 @@ export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
   | "RETURN_REASON_CATEGORY_UNSPECIFIED"
   | "BUYER_REMORSE"
   | "ITEM_DEFECT";
-export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
-  /*@__PURE__*/ S.String;
+const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   | "RETURN_LABEL_SOURCE_UNSPECIFIED"
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_BOX"
   | "CUSTOMER_RESPONSIBILITY";
-export const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
-  /*@__PURE__*/ S.String;
+const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum = /*@__PURE__*/ S.String;
 
 export type ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED"
   | "CUSTOMER_PAYING_ACTUAL_FEE";
-export const ReturnPolicyOnlineReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
+const ReturnPolicyOnlineReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
 
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
 export interface ReturnPolicyOnlineReturnShippingFee {
@@ -1350,7 +1348,7 @@ export interface ReturnPolicyOnlineReturnShippingFee {
   /** Fixed return shipping fee amount. This value is only applicable when type is FIXED. We will treat the return shipping fee as free if type is FIXED and this value is not set. */
   fixedFee?: PriceAmount;
 }
-export const ReturnPolicyOnlineReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
+const ReturnPolicyOnlineReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ReturnPolicyOnlineReturnShippingFeeTypeEnum),
     fixedFee: S.optional(PriceAmount),
@@ -1372,7 +1370,7 @@ export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   /** The corresponding return shipping fee. This is only applicable when returnLabelSource is not the customer's responsibility. */
   returnShippingFee?: ReturnPolicyOnlineReturnShippingFee;
 }
-export const ReturnPolicyOnlineReturnReasonCategoryInfo = /*@__PURE__*/ S.suspend(() =>
+const ReturnPolicyOnlineReturnReasonCategoryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnReasonCategory: S.optional(
       ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum,
@@ -1386,7 +1384,7 @@ export const ReturnPolicyOnlineReturnReasonCategoryInfo = /*@__PURE__*/ S.suspen
 
 export type ReturnPolicyOnlineReturnReasonCategoryInfoList =
   Array<ReturnPolicyOnlineReturnReasonCategoryInfo>;
-export const ReturnPolicyOnlineReturnReasonCategoryInfoList = /*@__PURE__*/ S.Array(
+const ReturnPolicyOnlineReturnReasonCategoryInfoList = /*@__PURE__*/ S.Array(
   ReturnPolicyOnlineReturnReasonCategoryInfo,
 ) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfoList>;
 
@@ -1394,12 +1392,10 @@ export type ReturnPolicyOnlineItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
   | "USED";
-export const ReturnPolicyOnlineItemConditionsItemEnum = /*@__PURE__*/ S.String;
-
 export type ReturnPolicyOnlineItemConditionsItemEnumList = Array<
   ReturnPolicyOnlineItemConditionsItemEnum | (string & {})
 >;
-export const ReturnPolicyOnlineItemConditionsItemEnumList =
+const ReturnPolicyOnlineItemConditionsItemEnumList =
   PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
 
 /** The restocking fee. This can either be a fixed fee or a micro percent. */
@@ -1409,7 +1405,7 @@ export interface ReturnPolicyOnlineRestockingFee {
   /** Percent of total price in micros. 15,000,000 means 15% of the total price would be charged. */
   microPercent?: number;
 }
-export const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ S.suspend(() =>
+const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixedFee: S.optional(PriceAmount),
     microPercent: S.optional(S.Number),
@@ -1423,12 +1419,10 @@ export type ReturnPolicyOnlineReturnMethodsItemEnum =
   | "BY_MAIL"
   | "IN_STORE"
   | "AT_A_KIOSK";
-export const ReturnPolicyOnlineReturnMethodsItemEnum = /*@__PURE__*/ S.String;
-
 export type ReturnPolicyOnlineReturnMethodsItemEnumList = Array<
   ReturnPolicyOnlineReturnMethodsItemEnum | (string & {})
 >;
-export const ReturnPolicyOnlineReturnMethodsItemEnumList =
+const ReturnPolicyOnlineReturnMethodsItemEnumList =
   PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
 
 /** Return policy online object. This is currently used to represent return policies for ads and free listings programs. */
@@ -1454,7 +1448,7 @@ export interface ReturnPolicyOnline {
   /** The name of the policy as shown in Merchant Center. */
   name?: string;
 }
-export const ReturnPolicyOnline = /*@__PURE__*/ S.suspend(() =>
+const ReturnPolicyOnline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(ReturnPolicyOnlinePolicy),
     returnReasonCategoryInfo: S.optional(ReturnPolicyOnlineReturnReasonCategoryInfoList),
@@ -1477,7 +1471,7 @@ export interface CreateReturnpolicyonlineRequest {
   /** Request body */
   body?: ReturnPolicyOnline;
 }
-export const CreateReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
@@ -1500,7 +1494,7 @@ export interface AccountGoogleMyBusinessLink {
   /** The Business Profile email address of a specific account within a Business Profile. A sample account within a Business Profile could be a business account with set of locations, managed under the Business Profile. */
   gmbEmail?: string;
 }
-export const AccountGoogleMyBusinessLink = /*@__PURE__*/ S.suspend(() =>
+const AccountGoogleMyBusinessLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     gmbAccountId: S.optional(S.String),
@@ -1526,7 +1520,7 @@ export interface AccountUser {
   /** Optional. Whether user has standard read-only access. */
   readOnly?: boolean;
 }
-export const AccountUser = /*@__PURE__*/ S.suspend(() =>
+const AccountUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderManager: S.optional(S.Boolean),
     paymentsAnalyst: S.optional(S.Boolean),
@@ -1539,9 +1533,7 @@ export const AccountUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountUser" }) as any as S.Schema<AccountUser>;
 
 export type AccountUserList = Array<AccountUser>;
-export const AccountUserList = /*@__PURE__*/ S.Array(
-  AccountUser,
-) as any as S.Schema<AccountUserList>;
+const AccountUserList = /*@__PURE__*/ S.Array(AccountUser) as any as S.Schema<AccountUserList>;
 
 export interface AccountAdsLink {
   /** Customer ID of the Ads account. */
@@ -1549,7 +1541,7 @@ export interface AccountAdsLink {
   /** Status of the link between this Merchant Center account and the Ads account. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in Google Ads or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. Acceptable values are: - "`active`" - "`pending`" */
   status?: string;
 }
-export const AccountAdsLink = /*@__PURE__*/ S.suspend(() =>
+const AccountAdsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adsId: S.optional(S.String),
     status: S.optional(S.String),
@@ -1557,7 +1549,7 @@ export const AccountAdsLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountAdsLink" }) as any as S.Schema<AccountAdsLink>;
 
 export type AccountAdsLinkList = Array<AccountAdsLink>;
-export const AccountAdsLinkList = /*@__PURE__*/ S.Array(
+const AccountAdsLinkList = /*@__PURE__*/ S.Array(
   AccountAdsLink,
 ) as any as S.Schema<AccountAdsLinkList>;
 
@@ -1567,7 +1559,7 @@ export interface AccountYouTubeChannelLink {
   /** Channel ID. */
   channelId?: string;
 }
-export const AccountYouTubeChannelLink = /*@__PURE__*/ S.suspend(() =>
+const AccountYouTubeChannelLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     channelId: S.optional(S.String),
@@ -1577,7 +1569,7 @@ export const AccountYouTubeChannelLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountYouTubeChannelLink>;
 
 export type AccountYouTubeChannelLinkList = Array<AccountYouTubeChannelLink>;
-export const AccountYouTubeChannelLinkList = /*@__PURE__*/ S.Array(
+const AccountYouTubeChannelLinkList = /*@__PURE__*/ S.Array(
   AccountYouTubeChannelLink,
 ) as any as S.Schema<AccountYouTubeChannelLinkList>;
 
@@ -1586,7 +1578,7 @@ export interface AccountConversionSettings {
   /** When enabled, free listing URLs have a parameter to enable conversion tracking for products owned by the current merchant account. See [auto-tagging](https://support.google.com/merchants/answer/11127659). */
   freeListingsAutoTaggingEnabled?: boolean;
 }
-export const AccountConversionSettings = /*@__PURE__*/ S.suspend(() =>
+const AccountConversionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     freeListingsAutoTaggingEnabled: S.optional(S.Boolean),
   }),
@@ -1602,7 +1594,7 @@ export interface AccountCustomerService {
   /** Customer service phone number. */
   phoneNumber?: string;
 }
-export const AccountCustomerService = /*@__PURE__*/ S.suspend(() =>
+const AccountCustomerService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     url: S.optional(S.String),
@@ -1624,7 +1616,7 @@ export interface AccountAddress {
   /** CLDR country code (for example, "US"). All MCA sub-accounts inherit the country of their parent MCA by default, however the country can be updated for individual sub-accounts. */
   country?: string;
 }
-export const AccountAddress = /*@__PURE__*/ S.suspend(() =>
+const AccountAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     postalCode: S.optional(S.String),
@@ -1646,7 +1638,7 @@ export interface AccountBusinessInformation {
   /** The address of the business. Use `\n` to add a second address line. */
   address?: AccountAddress;
 }
-export const AccountBusinessInformation = /*@__PURE__*/ S.suspend(() =>
+const AccountBusinessInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     koreanBusinessRegistrationNumber: S.optional(S.String),
     phoneVerificationStatus: S.optional(S.String),
@@ -1663,7 +1655,7 @@ export interface AccountImageImprovementsSettings {
   /** Enables automatic image improvements. */
   allowAutomaticImageImprovements?: boolean;
 }
-export const AccountImageImprovementsSettings = /*@__PURE__*/ S.suspend(() =>
+const AccountImageImprovementsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAutomaticImageImprovements: S.optional(S.Boolean),
   }),
@@ -1678,7 +1670,7 @@ export interface AccountImageImprovements {
   /** Output only. The effective value of allow_automatic_image_improvements. If account_image_improvements_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only. */
   effectiveAllowAutomaticImageImprovements?: boolean;
 }
-export const AccountImageImprovements = /*@__PURE__*/ S.suspend(() =>
+const AccountImageImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountImageImprovementsSettings: S.optional(AccountImageImprovementsSettings),
     effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
@@ -1692,7 +1684,7 @@ export interface AccountShippingImprovements {
   /** Enables automatic shipping improvements. */
   allowShippingImprovements?: boolean;
 }
-export const AccountShippingImprovements = /*@__PURE__*/ S.suspend(() =>
+const AccountShippingImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowShippingImprovements: S.optional(S.Boolean),
   }),
@@ -1711,7 +1703,7 @@ export interface AccountItemUpdatesSettings {
   /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer's page. */
   allowAvailabilityUpdates?: boolean;
 }
-export const AccountItemUpdatesSettings = /*@__PURE__*/ S.suspend(() =>
+const AccountItemUpdatesSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowConditionUpdates: S.optional(S.Boolean),
     allowPriceUpdates: S.optional(S.Boolean),
@@ -1735,7 +1727,7 @@ export interface AccountItemUpdates {
   /** Output only. The effective value of allow_strict_availability_updates. If account_item_updates_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only. */
   effectiveAllowStrictAvailabilityUpdates?: boolean;
 }
-export const AccountItemUpdates = /*@__PURE__*/ S.suspend(() =>
+const AccountItemUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountItemUpdatesSettings: S.optional(AccountItemUpdatesSettings),
     effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
@@ -1756,7 +1748,7 @@ export interface AccountAutomaticImprovements {
   /** Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically update items for you. When item updates are on, Google uses the structured data markup on the website and advanced data extractors to update the price and availability of the items. When the item updates are off, items with mismatched data aren't shown. This field is only updated (cleared) if provided. */
   itemUpdates?: AccountItemUpdates;
 }
-export const AccountAutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
+const AccountAutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageImprovements: S.optional(AccountImageImprovements),
     shippingImprovements: S.optional(AccountShippingImprovements),
@@ -1771,7 +1763,7 @@ export interface AccountIdentityType {
   /** Optional. Indicates that the business identifies itself with a given identity type. Setting this field does not automatically mean eligibility for promotions. */
   selfIdentified?: boolean;
 }
-export const AccountIdentityType = /*@__PURE__*/ S.suspend(() =>
+const AccountIdentityType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selfIdentified: S.optional(S.Boolean),
   }),
@@ -1794,7 +1786,7 @@ export interface AccountBusinessIdentity {
   /** Required. By setting this field, your business may be included in promotions for all the selected attributes. If you clear this option, it won't affect your identification with any of the attributes. For this field to be set, the merchant must self identify with at least one of the `AccountIdentityType`. If none are included, the request will be considered invalid. */
   includeForPromotions?: boolean;
 }
-export const AccountBusinessIdentity = /*@__PURE__*/ S.suspend(() =>
+const AccountBusinessIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smallBusiness: S.optional(AccountIdentityType),
     latinoOwned: S.optional(AccountIdentityType),
@@ -1846,7 +1838,7 @@ export interface Account {
   /** The business identity attributes can be used to self-declare attributes that let customers know more about your business. */
   businessIdentity?: AccountBusinessIdentity;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websiteUrl: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1879,7 +1871,7 @@ export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`" - "`localProductManagement`" */
   services?: StringList;
 }
-export const AccountsCustomBatchRequestEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsCustomBatchRequestEntryLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkType: S.optional(S.String),
     action: S.optional(S.String),
@@ -1913,7 +1905,7 @@ export interface AccountsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
 }
-export const AccountsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
     merchantId: S.optional(S.String),
@@ -1931,7 +1923,7 @@ export const AccountsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCustomBatchRequestEntry>;
 
 export type AccountsCustomBatchRequestEntryList = Array<AccountsCustomBatchRequestEntry>;
-export const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccountsCustomBatchRequestEntry,
 ) as any as S.Schema<AccountsCustomBatchRequestEntryList>;
 
@@ -1939,7 +1931,7 @@ export interface AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountsCustomBatchRequestEntryList;
 }
-export const AccountsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountsCustomBatchRequestEntryList),
   }),
@@ -1951,7 +1943,7 @@ export interface CustombatchAccountsRequest {
   /** Request body */
   body?: AccountsCustomBatchRequest;
 }
-export const CustombatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AccountsCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1974,7 +1966,7 @@ export interface Content_Error {
   /** A description of the error. */
   message?: string;
 }
-export const Content_Error = /*@__PURE__*/ S.suspend(() =>
+const Content_Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1983,7 +1975,7 @@ export const Content_Error = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Content_Error" }) as any as S.Schema<Content_Error>;
 
 export type Content_ErrorList = Array<Content_Error>;
-export const Content_ErrorList = /*@__PURE__*/ S.Array(
+const Content_ErrorList = /*@__PURE__*/ S.Array(
   Content_Error,
 ) as any as S.Schema<Content_ErrorList>;
 
@@ -1996,7 +1988,7 @@ export interface Errors {
   /** The HTTP status of the first error in `errors`. */
   code?: number;
 }
-export const Errors = /*@__PURE__*/ S.suspend(() =>
+const Errors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Content_ErrorList),
     message: S.optional(S.String),
@@ -2015,7 +2007,7 @@ export interface AccountsCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const AccountsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
     batchId: S.optional(S.Number),
@@ -2027,7 +2019,7 @@ export const AccountsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsCustomBatchResponseEntry>;
 
 export type AccountsCustomBatchResponseEntryList = Array<AccountsCustomBatchResponseEntry>;
-export const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   AccountsCustomBatchResponseEntry,
 ) as any as S.Schema<AccountsCustomBatchResponseEntryList>;
 
@@ -2037,7 +2029,7 @@ export interface AccountsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponse`". */
   kind?: string;
 }
-export const AccountsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountsCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -2059,7 +2051,7 @@ export interface AccountstatusesCustomBatchRequestEntry {
   /** The ID of the (sub-)account whose status to get. */
   accountId?: string;
 }
-export const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.optional(S.String),
     destinations: S.optional(StringList),
@@ -2073,7 +2065,7 @@ export const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(()
 
 export type AccountstatusesCustomBatchRequestEntryList =
   Array<AccountstatusesCustomBatchRequestEntry>;
-export const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccountstatusesCustomBatchRequestEntry,
 ) as any as S.Schema<AccountstatusesCustomBatchRequestEntryList>;
 
@@ -2081,7 +2073,7 @@ export interface AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountstatusesCustomBatchRequestEntryList;
 }
-export const AccountstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountstatusesCustomBatchRequestEntryList),
   }),
@@ -2093,7 +2085,7 @@ export interface CustombatchAccountstatusesRequest {
   /** Request body */
   body?: AccountstatusesCustomBatchRequest;
 }
-export const CustombatchAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AccountstatusesCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2125,7 +2117,7 @@ export interface AccountStatusItemLevelIssue {
   /** A short issue description in English. */
   description?: string;
 }
-export const AccountStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const AccountStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeName: S.optional(S.String),
     servability: S.optional(S.String),
@@ -2141,7 +2133,7 @@ export const AccountStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountStatusItemLevelIssue>;
 
 export type AccountStatusItemLevelIssueList = Array<AccountStatusItemLevelIssue>;
-export const AccountStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
+const AccountStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   AccountStatusItemLevelIssue,
 ) as any as S.Schema<AccountStatusItemLevelIssueList>;
 
@@ -2155,7 +2147,7 @@ export interface AccountStatusStatistics {
   /** Number of pending offers. */
   pending?: string;
 }
-export const AccountStatusStatistics = /*@__PURE__*/ S.suspend(() =>
+const AccountStatusStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disapproved: S.optional(S.String),
     active: S.optional(S.String),
@@ -2178,7 +2170,7 @@ export interface AccountStatusProducts {
   /** The destination the data applies to. */
   destination?: string;
 }
-export const AccountStatusProducts = /*@__PURE__*/ S.suspend(() =>
+const AccountStatusProducts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemLevelIssues: S.optional(AccountStatusItemLevelIssueList),
     country: S.optional(S.String),
@@ -2191,7 +2183,7 @@ export const AccountStatusProducts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountStatusProducts>;
 
 export type AccountStatusProductsList = Array<AccountStatusProducts>;
-export const AccountStatusProductsList = /*@__PURE__*/ S.Array(
+const AccountStatusProductsList = /*@__PURE__*/ S.Array(
   AccountStatusProducts,
 ) as any as S.Schema<AccountStatusProductsList>;
 
@@ -2211,7 +2203,7 @@ export interface AccountStatusAccountLevelIssue {
   /** Country for which this issue is reported. */
   country?: string;
 }
-export const AccountStatusAccountLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const AccountStatusAccountLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.String),
     severity: S.optional(S.String),
@@ -2226,7 +2218,7 @@ export const AccountStatusAccountLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountStatusAccountLevelIssue>;
 
 export type AccountStatusAccountLevelIssueList = Array<AccountStatusAccountLevelIssue>;
-export const AccountStatusAccountLevelIssueList = /*@__PURE__*/ S.Array(
+const AccountStatusAccountLevelIssueList = /*@__PURE__*/ S.Array(
   AccountStatusAccountLevelIssue,
 ) as any as S.Schema<AccountStatusAccountLevelIssueList>;
 
@@ -2245,7 +2237,7 @@ export interface AccountStatus {
   /** The ID of the account for which the status is reported. */
   accountId?: string;
 }
-export const AccountStatus = /*@__PURE__*/ S.suspend(() =>
+const AccountStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     products: S.optional(AccountStatusProductsList),
@@ -2265,7 +2257,7 @@ export interface AccountstatusesCustomBatchResponseEntry {
   /** The requested account status. Defined if and only if the request was successful. */
   accountStatus?: AccountStatus;
 }
-export const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.Number),
     errors: S.optional(Errors),
@@ -2277,7 +2269,7 @@ export const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend((
 
 export type AccountstatusesCustomBatchResponseEntryList =
   Array<AccountstatusesCustomBatchResponseEntry>;
-export const AccountstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const AccountstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   AccountstatusesCustomBatchResponseEntry,
 ) as any as S.Schema<AccountstatusesCustomBatchResponseEntryList>;
 
@@ -2287,7 +2279,7 @@ export interface AccountstatusesCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesCustomBatchResponse`". */
   kind?: string;
 }
-export const AccountstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountstatusesCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -2309,7 +2301,7 @@ export interface AccountTaxTaxRule {
   /** If true, shipping charges are also taxed. */
   shippingTaxed?: boolean;
 }
-export const AccountTaxTaxRule = /*@__PURE__*/ S.suspend(() =>
+const AccountTaxTaxRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     country: S.optional(S.String),
@@ -2322,7 +2314,7 @@ export const AccountTaxTaxRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountTaxTaxRule>;
 
 export type AccountTaxTaxRuleList = Array<AccountTaxTaxRule>;
-export const AccountTaxTaxRuleList = /*@__PURE__*/ S.Array(
+const AccountTaxTaxRuleList = /*@__PURE__*/ S.Array(
   AccountTaxTaxRule,
 ) as any as S.Schema<AccountTaxTaxRuleList>;
 
@@ -2335,7 +2327,7 @@ export interface AccountTax {
   /** Required. The ID of the account to which these account tax settings belong. */
   accountId?: string;
 }
-export const AccountTax = /*@__PURE__*/ S.suspend(() =>
+const AccountTax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(AccountTaxTaxRuleList),
     kind: S.optional(S.String),
@@ -2356,7 +2348,7 @@ export interface AccounttaxCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
   method?: string;
 }
-export const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.optional(S.String),
     accountTax: S.optional(AccountTax),
@@ -2369,7 +2361,7 @@ export const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccounttaxCustomBatchRequestEntry>;
 
 export type AccounttaxCustomBatchRequestEntryList = Array<AccounttaxCustomBatchRequestEntry>;
-export const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   AccounttaxCustomBatchRequestEntry,
 ) as any as S.Schema<AccounttaxCustomBatchRequestEntryList>;
 
@@ -2377,7 +2369,7 @@ export interface AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccounttaxCustomBatchRequestEntryList;
 }
-export const AccounttaxCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const AccounttaxCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccounttaxCustomBatchRequestEntryList),
   }),
@@ -2389,7 +2381,7 @@ export interface CustombatchAccounttaxRequest {
   /** Request body */
   body?: AccounttaxCustomBatchRequest;
 }
-export const CustombatchAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AccounttaxCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2414,7 +2406,7 @@ export interface AccounttaxCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountTax: S.optional(AccountTax),
     batchId: S.optional(S.Number),
@@ -2426,7 +2418,7 @@ export const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccounttaxCustomBatchResponseEntry>;
 
 export type AccounttaxCustomBatchResponseEntryList = Array<AccounttaxCustomBatchResponseEntry>;
-export const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   AccounttaxCustomBatchResponseEntry,
 ) as any as S.Schema<AccounttaxCustomBatchResponseEntryList>;
 
@@ -2436,7 +2428,7 @@ export interface AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: AccounttaxCustomBatchResponseEntryList;
 }
-export const AccounttaxCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const AccounttaxCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     entries: S.optional(AccounttaxCustomBatchResponseEntryList),
@@ -2466,7 +2458,7 @@ export interface DatafeedFetchSchedule {
   /** The hour of the day the feed file should be fetched (0-23). */
   hour?: number;
 }
-export const DatafeedFetchSchedule = /*@__PURE__*/ S.suspend(() =>
+const DatafeedFetchSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minuteOfHour: S.optional(S.Number),
     fetchUrl: S.optional(S.String),
@@ -2490,7 +2482,7 @@ export interface DatafeedFormat {
   /** Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - "`normal character`" - "`value quoting`" */
   quotingMode?: string;
 }
-export const DatafeedFormat = /*@__PURE__*/ S.suspend(() =>
+const DatafeedFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnDelimiter: S.optional(S.String),
     fileEncoding: S.optional(S.String),
@@ -2512,7 +2504,7 @@ export interface DatafeedTarget {
   /** The countries where the items may be displayed. Represented as a CLDR territory code. Will be ignored for "product inventory" feeds. */
   targetCountries?: StringList;
 }
-export const DatafeedTarget = /*@__PURE__*/ S.suspend(() =>
+const DatafeedTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedLabel: S.optional(S.String),
     includedDestinations: S.optional(StringList),
@@ -2524,7 +2516,7 @@ export const DatafeedTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatafeedTarget" }) as any as S.Schema<DatafeedTarget>;
 
 export type DatafeedTargetList = Array<DatafeedTarget>;
-export const DatafeedTargetList = /*@__PURE__*/ S.Array(
+const DatafeedTargetList = /*@__PURE__*/ S.Array(
   DatafeedTarget,
 ) as any as S.Schema<DatafeedTargetList>;
 
@@ -2549,7 +2541,7 @@ export interface Datafeed {
   /** Required. The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported. Acceptable values are: - "`local products`" - "`product inventory`" - "`products`" */
   contentType?: string;
 }
-export const Datafeed = /*@__PURE__*/ S.suspend(() =>
+const Datafeed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fetchSchedule: S.optional(DatafeedFetchSchedule),
@@ -2576,7 +2568,7 @@ export interface DatafeedsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-export const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datafeedId: S.optional(S.String),
     batchId: S.optional(S.Number),
@@ -2589,7 +2581,7 @@ export const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedsCustomBatchRequestEntry>;
 
 export type DatafeedsCustomBatchRequestEntryList = Array<DatafeedsCustomBatchRequestEntry>;
-export const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   DatafeedsCustomBatchRequestEntry,
 ) as any as S.Schema<DatafeedsCustomBatchRequestEntryList>;
 
@@ -2597,7 +2589,7 @@ export interface DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedsCustomBatchRequestEntryList;
 }
-export const DatafeedsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DatafeedsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(DatafeedsCustomBatchRequestEntryList),
   }),
@@ -2609,7 +2601,7 @@ export interface CustombatchDatafeedsRequest {
   /** Request body */
   body?: DatafeedsCustomBatchRequest;
 }
-export const CustombatchDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(DatafeedsCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2632,7 +2624,7 @@ export interface DatafeedsCustomBatchResponseEntry {
   /** The requested data feed. Defined if and only if the request was successful. */
   datafeed?: Datafeed;
 }
-export const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
     batchId: S.optional(S.Number),
@@ -2643,7 +2635,7 @@ export const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedsCustomBatchResponseEntry>;
 
 export type DatafeedsCustomBatchResponseEntryList = Array<DatafeedsCustomBatchResponseEntry>;
-export const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   DatafeedsCustomBatchResponseEntry,
 ) as any as S.Schema<DatafeedsCustomBatchResponseEntryList>;
 
@@ -2653,7 +2645,7 @@ export interface DatafeedsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: DatafeedsCustomBatchResponseEntryList;
 }
-export const DatafeedsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const DatafeedsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     entries: S.optional(DatafeedsCustomBatchResponseEntryList),
@@ -2679,7 +2671,7 @@ export interface DatafeedstatusesCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" */
   method?: string;
 }
-export const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.Number),
     feedLabel: S.optional(S.String),
@@ -2695,7 +2687,7 @@ export const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend((
 
 export type DatafeedstatusesCustomBatchRequestEntryList =
   Array<DatafeedstatusesCustomBatchRequestEntry>;
-export const DatafeedstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const DatafeedstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   DatafeedstatusesCustomBatchRequestEntry,
 ) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntryList>;
 
@@ -2703,7 +2695,7 @@ export interface DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedstatusesCustomBatchRequestEntryList;
 }
-export const DatafeedstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DatafeedstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(DatafeedstatusesCustomBatchRequestEntryList),
   }),
@@ -2715,7 +2707,7 @@ export interface CustombatchDatafeedstatusesRequest {
   /** Request body */
   body?: DatafeedstatusesCustomBatchRequest;
 }
-export const CustombatchDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(DatafeedstatusesCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2738,7 +2730,7 @@ export interface DatafeedStatusExample {
   /** The ID of the example item. */
   itemId?: string;
 }
-export const DatafeedStatusExample = /*@__PURE__*/ S.suspend(() =>
+const DatafeedStatusExample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineNumber: S.optional(S.String),
     value: S.optional(S.String),
@@ -2749,7 +2741,7 @@ export const DatafeedStatusExample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedStatusExample>;
 
 export type DatafeedStatusExampleList = Array<DatafeedStatusExample>;
-export const DatafeedStatusExampleList = /*@__PURE__*/ S.Array(
+const DatafeedStatusExampleList = /*@__PURE__*/ S.Array(
   DatafeedStatusExample,
 ) as any as S.Schema<DatafeedStatusExampleList>;
 
@@ -2764,7 +2756,7 @@ export interface DatafeedStatusError {
   /** The number of occurrences of the error in the feed. */
   count?: string;
 }
-export const DatafeedStatusError = /*@__PURE__*/ S.suspend(() =>
+const DatafeedStatusError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     examples: S.optional(DatafeedStatusExampleList),
     message: S.optional(S.String),
@@ -2776,7 +2768,7 @@ export const DatafeedStatusError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatafeedStatusError>;
 
 export type DatafeedStatusErrorList = Array<DatafeedStatusError>;
-export const DatafeedStatusErrorList = /*@__PURE__*/ S.Array(
+const DatafeedStatusErrorList = /*@__PURE__*/ S.Array(
   DatafeedStatusError,
 ) as any as S.Schema<DatafeedStatusErrorList>;
 
@@ -2805,7 +2797,7 @@ export interface DatafeedStatus {
   /** The ID of the feed for which the status is reported. */
   datafeedId?: string;
 }
-export const DatafeedStatus = /*@__PURE__*/ S.suspend(() =>
+const DatafeedStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     errors: S.optional(DatafeedStatusErrorList),
@@ -2830,7 +2822,7 @@ export interface DatafeedstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   batchId?: number;
 }
-export const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
     datafeedStatus: S.optional(DatafeedStatus),
@@ -2842,7 +2834,7 @@ export const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 
 export type DatafeedstatusesCustomBatchResponseEntryList =
   Array<DatafeedstatusesCustomBatchResponseEntry>;
-export const DatafeedstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const DatafeedstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   DatafeedstatusesCustomBatchResponseEntry,
 ) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntryList>;
 
@@ -2852,7 +2844,7 @@ export interface DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: DatafeedstatusesCustomBatchResponseEntryList;
 }
-export const DatafeedstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const DatafeedstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     entries: S.optional(DatafeedstatusesCustomBatchResponseEntryList),
@@ -2870,7 +2862,7 @@ export interface LiaOmnichannelExperience {
   /** The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`" */
   pickupTypes?: StringList;
 }
-export const LiaOmnichannelExperience = /*@__PURE__*/ S.suspend(() =>
+const LiaOmnichannelExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lsfType: S.optional(S.String),
     country: S.optional(S.String),
@@ -2886,7 +2878,7 @@ export interface LiaAboutPageSettings {
   /** The URL for the About page. */
   url?: string;
 }
-export const LiaAboutPageSettings = /*@__PURE__*/ S.suspend(() =>
+const LiaAboutPageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     url: S.optional(S.String),
@@ -2901,7 +2893,7 @@ export interface LiaOnDisplayToOrderSettings {
   /** Shipping cost and policy URL. */
   shippingCostPolicyUrl?: string;
 }
-export const LiaOnDisplayToOrderSettings = /*@__PURE__*/ S.suspend(() =>
+const LiaOnDisplayToOrderSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     shippingCostPolicyUrl: S.optional(S.String),
@@ -2916,7 +2908,7 @@ export interface LiaPosDataProvider {
   /** The ID of the POS data provider. */
   posDataProviderId?: string;
 }
-export const LiaPosDataProvider = /*@__PURE__*/ S.suspend(() =>
+const LiaPosDataProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posExternalAccountId: S.optional(S.String),
     posDataProviderId: S.optional(S.String),
@@ -2935,7 +2927,7 @@ export interface LiaInventorySettings {
   /** The status of the verification contact. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
   inventoryVerificationContactStatus?: string;
 }
-export const LiaInventorySettings = /*@__PURE__*/ S.suspend(() =>
+const LiaInventorySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inventoryVerificationContactEmail: S.optional(S.String),
     status: S.optional(S.String),
@@ -2964,7 +2956,7 @@ export interface LiaCountrySettings {
   /** LIA inventory verification settings. */
   inventory?: LiaInventorySettings;
 }
-export const LiaCountrySettings = /*@__PURE__*/ S.suspend(() =>
+const LiaCountrySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     omnichannelExperience: S.optional(LiaOmnichannelExperience),
     country: S.optional(S.String),
@@ -2980,7 +2972,7 @@ export const LiaCountrySettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiaCountrySettings>;
 
 export type LiaCountrySettingsList = Array<LiaCountrySettings>;
-export const LiaCountrySettingsList = /*@__PURE__*/ S.Array(
+const LiaCountrySettingsList = /*@__PURE__*/ S.Array(
   LiaCountrySettings,
 ) as any as S.Schema<LiaCountrySettingsList>;
 
@@ -2993,7 +2985,7 @@ export interface LiaSettings {
   /** The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses. */
   accountId?: string;
 }
-export const LiaSettings = /*@__PURE__*/ S.suspend(() =>
+const LiaSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countrySettings: S.optional(LiaCountrySettingsList),
     kind: S.optional(S.String),
@@ -3027,7 +3019,7 @@ export interface LiasettingsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-export const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posExternalAccountId: S.optional(S.String),
     gmbEmail: S.optional(S.String),
@@ -3047,7 +3039,7 @@ export const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiasettingsCustomBatchRequestEntry>;
 
 export type LiasettingsCustomBatchRequestEntryList = Array<LiasettingsCustomBatchRequestEntry>;
-export const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   LiasettingsCustomBatchRequestEntry,
 ) as any as S.Schema<LiasettingsCustomBatchRequestEntryList>;
 
@@ -3055,7 +3047,7 @@ export interface LiasettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LiasettingsCustomBatchRequestEntryList;
 }
-export const LiasettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(LiasettingsCustomBatchRequestEntryList),
   }),
@@ -3067,7 +3059,7 @@ export interface CustombatchLiasettingsRequest {
   /** Request body */
   body?: LiasettingsCustomBatchRequest;
 }
-export const CustombatchLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(LiasettingsCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3089,7 +3081,7 @@ export interface PosDataProvidersPosDataProvider {
   /** The full name of this POS data Provider. */
   fullName?: string;
 }
-export const PosDataProvidersPosDataProvider = /*@__PURE__*/ S.suspend(() =>
+const PosDataProvidersPosDataProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -3100,7 +3092,7 @@ export const PosDataProvidersPosDataProvider = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosDataProvidersPosDataProvider>;
 
 export type PosDataProvidersPosDataProviderList = Array<PosDataProvidersPosDataProvider>;
-export const PosDataProvidersPosDataProviderList = /*@__PURE__*/ S.Array(
+const PosDataProvidersPosDataProviderList = /*@__PURE__*/ S.Array(
   PosDataProvidersPosDataProvider,
 ) as any as S.Schema<PosDataProvidersPosDataProviderList>;
 
@@ -3110,7 +3102,7 @@ export interface PosDataProviders {
   /** A list of POS data providers. */
   posDataProviders?: PosDataProvidersPosDataProviderList;
 }
-export const PosDataProviders = /*@__PURE__*/ S.suspend(() =>
+const PosDataProviders = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     posDataProviders: S.optional(PosDataProvidersPosDataProviderList),
@@ -3120,7 +3112,7 @@ export const PosDataProviders = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosDataProviders>;
 
 export type PosDataProvidersList = Array<PosDataProviders>;
-export const PosDataProvidersList = /*@__PURE__*/ S.Array(
+const PosDataProvidersList = /*@__PURE__*/ S.Array(
   PosDataProviders,
 ) as any as S.Schema<PosDataProvidersList>;
 
@@ -3134,7 +3126,7 @@ export interface GmbAccountsGmbAccount {
   /** Number of listings under this account. */
   listingCount?: string;
 }
-export const GmbAccountsGmbAccount = /*@__PURE__*/ S.suspend(() =>
+const GmbAccountsGmbAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     name: S.optional(S.String),
@@ -3146,7 +3138,7 @@ export const GmbAccountsGmbAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GmbAccountsGmbAccount>;
 
 export type GmbAccountsGmbAccountList = Array<GmbAccountsGmbAccount>;
-export const GmbAccountsGmbAccountList = /*@__PURE__*/ S.Array(
+const GmbAccountsGmbAccountList = /*@__PURE__*/ S.Array(
   GmbAccountsGmbAccount,
 ) as any as S.Schema<GmbAccountsGmbAccountList>;
 
@@ -3156,7 +3148,7 @@ export interface GmbAccounts {
   /** The ID of the Merchant Center account. */
   accountId?: string;
 }
-export const GmbAccounts = /*@__PURE__*/ S.suspend(() =>
+const GmbAccounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gmbAccounts: S.optional(GmbAccountsGmbAccountList),
     accountId: S.optional(S.String),
@@ -3179,7 +3171,7 @@ export interface LiasettingsCustomBatchResponseEntry {
   /** The updated omnichannel experience for a country. */
   omnichannelExperience?: LiaOmnichannelExperience;
 }
-export const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posDataProviders: S.optional(PosDataProvidersList),
     gmbAccounts: S.optional(GmbAccounts),
@@ -3194,7 +3186,7 @@ export const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LiasettingsCustomBatchResponseEntry>;
 
 export type LiasettingsCustomBatchResponseEntryList = Array<LiasettingsCustomBatchResponseEntry>;
-export const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   LiasettingsCustomBatchResponseEntry,
 ) as any as S.Schema<LiasettingsCustomBatchResponseEntryList>;
 
@@ -3204,7 +3196,7 @@ export interface LiasettingsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsCustomBatchResponse`". */
   kind?: string;
 }
-export const LiasettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(LiasettingsCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -3222,7 +3214,7 @@ export interface CustomAttribute {
   /** The name of the attribute. Underscores will be replaced by spaces upon insertion. */
   name?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
     value: S.optional(S.String),
@@ -3233,7 +3225,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -3243,7 +3235,7 @@ export interface Price {
   /** The currency of the price. */
   currency?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     currency: S.optional(S.String),
@@ -3275,7 +3267,7 @@ export interface LocalInventory {
   /** The expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the local product inventory feed specification. */
   pickupSla?: string;
 }
-export const LocalInventory = /*@__PURE__*/ S.suspend(() =>
+const LocalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pickupMethod: S.optional(S.String),
     storeCode: S.optional(S.String),
@@ -3304,7 +3296,7 @@ export interface LocalinventoryCustomBatchRequestEntry {
   /** Method of the batch request entry. Acceptable values are: - "`insert`" */
   method?: string;
 }
-export const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localInventory: S.optional(LocalInventory),
     merchantId: S.optional(S.String),
@@ -3318,7 +3310,7 @@ export const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() 
 
 export type LocalinventoryCustomBatchRequestEntryList =
   Array<LocalinventoryCustomBatchRequestEntry>;
-export const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   LocalinventoryCustomBatchRequestEntry,
 ) as any as S.Schema<LocalinventoryCustomBatchRequestEntryList>;
 
@@ -3326,7 +3318,7 @@ export interface LocalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LocalinventoryCustomBatchRequestEntryList;
 }
-export const LocalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const LocalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(LocalinventoryCustomBatchRequestEntryList),
   }),
@@ -3338,7 +3330,7 @@ export interface CustombatchLocalinventoryRequest {
   /** Request body */
   body?: LocalinventoryCustomBatchRequest;
 }
-export const CustombatchLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(LocalinventoryCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3361,7 +3353,7 @@ export interface LocalinventoryCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#localinventoryCustomBatchResponseEntry`" */
   kind?: string;
 }
-export const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.Number),
     errors: S.optional(Errors),
@@ -3373,7 +3365,7 @@ export const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(()
 
 export type LocalinventoryCustomBatchResponseEntryList =
   Array<LocalinventoryCustomBatchResponseEntry>;
-export const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   LocalinventoryCustomBatchResponseEntry,
 ) as any as S.Schema<LocalinventoryCustomBatchResponseEntryList>;
 
@@ -3383,7 +3375,7 @@ export interface LocalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: LocalinventoryCustomBatchResponseEntryList;
 }
-export const LocalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const LocalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     entries: S.optional(LocalinventoryCustomBatchResponseEntryList),
@@ -3415,7 +3407,7 @@ export interface PosSale {
   /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in a Business Profile. */
   storeCode?: string;
 }
-export const PosSale = /*@__PURE__*/ S.suspend(() =>
+const PosSale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -3455,7 +3447,7 @@ export interface PosInventory {
   /** Required. The current price of the item. */
   price?: Price;
 }
-export const PosInventory = /*@__PURE__*/ S.suspend(() =>
+const PosInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pickupMethod: S.optional(S.String),
     quantity: S.optional(S.String),
@@ -3494,7 +3486,7 @@ export interface PosStore {
   /** The Google Place Id of the store location. */
   placeId?: string;
 }
-export const PosStore = /*@__PURE__*/ S.suspend(() =>
+const PosStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneNumber: S.optional(S.String),
     storeAddress: S.optional(S.String),
@@ -3527,7 +3519,7 @@ export interface PosCustomBatchRequestEntry {
   /** The store information to submit. This should be set only if the method is `insert`. */
   store?: PosStore;
 }
-export const PosCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const PosCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.optional(S.String),
     batchId: S.optional(S.Number),
@@ -3543,7 +3535,7 @@ export const PosCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosCustomBatchRequestEntry>;
 
 export type PosCustomBatchRequestEntryList = Array<PosCustomBatchRequestEntry>;
-export const PosCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const PosCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   PosCustomBatchRequestEntry,
 ) as any as S.Schema<PosCustomBatchRequestEntryList>;
 
@@ -3551,7 +3543,7 @@ export interface PosCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: PosCustomBatchRequestEntryList;
 }
-export const PosCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const PosCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(PosCustomBatchRequestEntryList),
   }),
@@ -3563,7 +3555,7 @@ export interface CustombatchPosRequest {
   /** Request body */
   body?: PosCustomBatchRequest;
 }
-export const CustombatchPosRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchPosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(PosCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3591,7 +3583,7 @@ export interface PosCustomBatchResponseEntry {
   /** The retrieved or updated store information. */
   store?: PosStore;
 }
-export const PosCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const PosCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     errors: S.optional(Errors),
@@ -3605,7 +3597,7 @@ export const PosCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosCustomBatchResponseEntry>;
 
 export type PosCustomBatchResponseEntryList = Array<PosCustomBatchResponseEntry>;
-export const PosCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const PosCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   PosCustomBatchResponseEntry,
 ) as any as S.Schema<PosCustomBatchResponseEntryList>;
 
@@ -3615,7 +3607,7 @@ export interface PosCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponse`". */
   kind?: string;
 }
-export const PosCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const PosCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(PosCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -3630,7 +3622,7 @@ export interface ProductDimension {
   /** Required. The length units. Acceptable values are: - "`in`" - "`cm`" */
   unit?: string;
 }
-export const ProductDimension = /*@__PURE__*/ S.suspend(() =>
+const ProductDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -3645,7 +3637,7 @@ export interface ProductUnitPricingBaseMeasure {
   /** The unit of the denominator. */
   unit?: string;
 }
-export const ProductUnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
+const ProductUnitPricingBaseMeasure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     unit: S.optional(S.String),
@@ -3665,7 +3657,7 @@ export interface ProductCertification {
   /** The certification code, for eaxample "123456". Maximum length is 2000 characters. */
   certificationCode?: string;
 }
-export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
+const ProductCertification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificationValue: S.optional(S.String),
     certificationAuthority: S.optional(S.String),
@@ -3677,7 +3669,7 @@ export const ProductCertification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductCertification>;
 
 export type ProductCertificationList = Array<ProductCertification>;
-export const ProductCertificationList = /*@__PURE__*/ S.Array(
+const ProductCertificationList = /*@__PURE__*/ S.Array(
   ProductCertification,
 ) as any as S.Schema<ProductCertificationList>;
 
@@ -3698,7 +3690,7 @@ export interface LoyaltyProgram {
   /** Optional. The shipping label for the loyalty program. You can use this label to indicate whether this offer has the loyalty shipping benefit. If not specified, the item is not eligible for loyalty shipping for the given loyalty tier. */
   shippingLabel?: string;
 }
-export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     programLabel: S.optional(S.String),
     tierLabel: S.optional(S.String),
@@ -3714,7 +3706,7 @@ export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
   | "EV_PRICE_DISCOUNT";
-export const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
+const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
 
 /** Information regarding sustainability related incentive programs such as rebates or tax relief. */
 export interface ProductSustainabilityIncentive {
@@ -3725,7 +3717,7 @@ export interface ProductSustainabilityIncentive {
   /** Optional. The fixed amount of the incentive. */
   amount?: Price;
 }
-export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
+const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ProductSustainabilityIncentiveTypeEnum),
     percentage: S.optional(S.Number),
@@ -3736,7 +3728,7 @@ export const ProductSustainabilityIncentive = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSustainabilityIncentive>;
 
 export type ProductSustainabilityIncentiveList = Array<ProductSustainabilityIncentive>;
-export const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
+const ProductSustainabilityIncentiveList = /*@__PURE__*/ S.Array(
   ProductSustainabilityIncentive,
 ) as any as S.Schema<ProductSustainabilityIncentiveList>;
 
@@ -3746,8 +3738,7 @@ export interface ProductUnitPricingMeasure {
   /** The unit of the measure. */
   unit?: string;
 }
-export const ProductUnitPricingMeasure =
-  ProductDimension as any as S.Schema<ProductUnitPricingMeasure>;
+const ProductUnitPricingMeasure = ProductDimension as any as S.Schema<ProductUnitPricingMeasure>;
 
 /** Structured title, for algorithmically (AI)-generated titles. See [title](https://support.google.com/merchants/answer/6324415#Whentouse) for more information. */
 export interface ProductStructuredTitle {
@@ -3756,7 +3747,7 @@ export interface ProductStructuredTitle {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
   digitalSourceType?: string;
 }
-export const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
+const ProductStructuredTitle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     digitalSourceType: S.optional(S.String),
@@ -3772,7 +3763,7 @@ export interface FreeShippingThreshold {
   /** Required. The minimum product price for the shipping cost to become free. Represented as a number. */
   priceThreshold?: Price;
 }
-export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
+const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     priceThreshold: S.optional(Price),
@@ -3782,7 +3773,7 @@ export const FreeShippingThreshold = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FreeShippingThreshold>;
 
 export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
-export const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
+const FreeShippingThresholdList = /*@__PURE__*/ S.Array(
   FreeShippingThreshold,
 ) as any as S.Schema<FreeShippingThresholdList>;
 
@@ -3792,7 +3783,7 @@ export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" */
   unit?: string;
 }
-export const ProductWeight = /*@__PURE__*/ S.suspend(() =>
+const ProductWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -3807,7 +3798,7 @@ export interface ProductSubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
 }
-export const ProductSubscriptionCost = /*@__PURE__*/ S.suspend(() =>
+const ProductSubscriptionCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: S.optional(S.String),
     periodLength: S.optional(S.String),
@@ -3818,7 +3809,7 @@ export const ProductSubscriptionCost = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductSubscriptionCost>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
@@ -3839,7 +3830,7 @@ export interface CloudExportAdditionalProperties {
   /** Float values of the given property. For example for a TV product 1.2345. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. */
   floatValue?: DoubleList;
 }
-export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minValue: S.optional(S.Number),
     maxValue: S.optional(S.Number),
@@ -3855,7 +3846,7 @@ export const CloudExportAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudExportAdditionalProperties>;
 
 export type CloudExportAdditionalPropertiesList = Array<CloudExportAdditionalProperties>;
-export const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
+const CloudExportAdditionalPropertiesList = /*@__PURE__*/ S.Array(
   CloudExportAdditionalProperties,
 ) as any as S.Schema<CloudExportAdditionalPropertiesList>;
 
@@ -3865,8 +3856,7 @@ export interface ProductShippingDimension {
   /** The unit of value. */
   unit?: string;
 }
-export const ProductShippingDimension =
-  ProductDimension as any as S.Schema<ProductShippingDimension>;
+const ProductShippingDimension = ProductDimension as any as S.Schema<ProductShippingDimension>;
 
 export interface ProductShippingWeight {
   /** The unit of value. */
@@ -3874,7 +3864,7 @@ export interface ProductShippingWeight {
   /** The weight of the product used to calculate the shipping cost of the item. */
   value?: number;
 }
-export const ProductShippingWeight = /*@__PURE__*/ S.suspend(() =>
+const ProductShippingWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -3890,7 +3880,7 @@ export interface ProductStructuredDescription {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
   digitalSourceType?: string;
 }
-export const ProductStructuredDescription =
+const ProductStructuredDescription =
   ProductStructuredTitle as any as S.Schema<ProductStructuredDescription>;
 
 export interface ProductTax {
@@ -3907,7 +3897,7 @@ export interface ProductTax {
   /** The country within which the item is taxed, specified as a CLDR territory code. */
   country?: string;
 }
-export const ProductTax = /*@__PURE__*/ S.suspend(() =>
+const ProductTax = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taxShip: S.optional(S.Boolean),
     rate: S.optional(S.Number),
@@ -3919,7 +3909,7 @@ export const ProductTax = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductTax" }) as any as S.Schema<ProductTax>;
 
 export type ProductTaxList = Array<ProductTax>;
-export const ProductTaxList = /*@__PURE__*/ S.Array(ProductTax) as any as S.Schema<ProductTaxList>;
+const ProductTaxList = /*@__PURE__*/ S.Array(ProductTax) as any as S.Schema<ProductTaxList>;
 
 /** Details of a monthly installment payment offering. [Learn more](https://support.google.com/merchants/answer/6324474) about installments. */
 export interface Installment {
@@ -3932,7 +3922,7 @@ export interface Installment {
   /** The amount the buyer has to pay per month. */
   amount?: Price;
 }
-export const Installment = /*@__PURE__*/ S.suspend(() =>
+const Installment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downpayment: S.optional(Price),
     months: S.optional(S.String),
@@ -3949,7 +3939,7 @@ export interface ProductProductDetail {
   /** The value of the product detail. */
   attributeValue?: string;
 }
-export const ProductProductDetail = /*@__PURE__*/ S.suspend(() =>
+const ProductProductDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sectionName: S.optional(S.String),
     attributeName: S.optional(S.String),
@@ -3960,7 +3950,7 @@ export const ProductProductDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductProductDetail>;
 
 export type ProductProductDetailList = Array<ProductProductDetail>;
-export const ProductProductDetailList = /*@__PURE__*/ S.Array(
+const ProductProductDetailList = /*@__PURE__*/ S.Array(
   ProductProductDetail,
 ) as any as S.Schema<ProductProductDetailList>;
 
@@ -3988,7 +3978,7 @@ export interface ProductShipping {
   /** Maximum transit time (inclusive) between when the order has shipped and when it's delivered in business days. 0 means that the order is delivered on the same day as it ships. Both maxHandlingTime and maxTransitTime are required if providing shipping speeds. */
   maxTransitTime?: string;
 }
-export const ProductShipping = /*@__PURE__*/ S.suspend(() =>
+const ProductShipping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationGroupName: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -4007,12 +3997,12 @@ export const ProductShipping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductShipping>;
 
 export type ProductShippingList = Array<ProductShipping>;
-export const ProductShippingList = /*@__PURE__*/ S.Array(
+const ProductShippingList = /*@__PURE__*/ S.Array(
   ProductShipping,
 ) as any as S.Schema<ProductShippingList>;
 
 export type LoyaltyProgramList = Array<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
+const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
 
@@ -4227,7 +4217,7 @@ export interface Product {
   /** Custom label 2 for custom grouping of items in a Shopping campaign. */
   customLabel2?: string;
 }
-export const Product = /*@__PURE__*/ S.suspend(() =>
+const Product = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isBundle: S.optional(S.Boolean),
     additionalImageLinks: S.optional(StringList),
@@ -4353,7 +4343,7 @@ export interface ProductsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
 }
-export const ProductsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const ProductsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(Product),
     productId: S.optional(S.String),
@@ -4368,7 +4358,7 @@ export const ProductsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsCustomBatchRequestEntry>;
 
 export type ProductsCustomBatchRequestEntryList = Array<ProductsCustomBatchRequestEntry>;
-export const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   ProductsCustomBatchRequestEntry,
 ) as any as S.Schema<ProductsCustomBatchRequestEntryList>;
 
@@ -4376,7 +4366,7 @@ export interface ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductsCustomBatchRequestEntryList;
 }
-export const ProductsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ProductsCustomBatchRequestEntryList),
   }),
@@ -4388,7 +4378,7 @@ export interface CustombatchProductsRequest {
   /** Request body */
   body?: ProductsCustomBatchRequest;
 }
-export const CustombatchProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ProductsCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -4413,7 +4403,7 @@ export interface ProductsCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
   errors?: Errors;
 }
-export const ProductsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const ProductsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(Product),
     kind: S.optional(S.String),
@@ -4425,7 +4415,7 @@ export const ProductsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductsCustomBatchResponseEntry>;
 
 export type ProductsCustomBatchResponseEntryList = Array<ProductsCustomBatchResponseEntry>;
-export const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   ProductsCustomBatchResponseEntry,
 ) as any as S.Schema<ProductsCustomBatchResponseEntryList>;
 
@@ -4435,7 +4425,7 @@ export interface ProductsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsCustomBatchResponse`". */
   kind?: string;
 }
-export const ProductsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ProductsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ProductsCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -4459,7 +4449,7 @@ export interface ProductstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-export const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.optional(S.String),
     batchId: S.optional(S.Number),
@@ -4474,7 +4464,7 @@ export const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(()
 
 export type ProductstatusesCustomBatchRequestEntryList =
   Array<ProductstatusesCustomBatchRequestEntry>;
-export const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   ProductstatusesCustomBatchRequestEntry,
 ) as any as S.Schema<ProductstatusesCustomBatchRequestEntryList>;
 
@@ -4482,7 +4472,7 @@ export interface ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductstatusesCustomBatchRequestEntryList;
 }
-export const ProductstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const ProductstatusesCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ProductstatusesCustomBatchRequestEntryList),
   }),
@@ -4494,7 +4484,7 @@ export interface CustombatchProductstatusesRequest {
   /** Request body */
   body?: ProductstatusesCustomBatchRequest;
 }
-export const CustombatchProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ProductstatusesCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -4522,7 +4512,7 @@ export interface ProductStatusDestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
   pendingCountries?: StringList;
 }
-export const ProductStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     channel: S.optional(S.String),
@@ -4536,7 +4526,7 @@ export const ProductStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductStatusDestinationStatus>;
 
 export type ProductStatusDestinationStatusList = Array<ProductStatusDestinationStatus>;
-export const ProductStatusDestinationStatusList = /*@__PURE__*/ S.Array(
+const ProductStatusDestinationStatusList = /*@__PURE__*/ S.Array(
   ProductStatusDestinationStatus,
 ) as any as S.Schema<ProductStatusDestinationStatusList>;
 
@@ -4560,7 +4550,7 @@ export interface ProductStatusItemLevelIssue {
   /** How this issue affects serving of the offer. */
   servability?: string;
 }
-export const ProductStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const ProductStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     detail: S.optional(S.String),
@@ -4577,7 +4567,7 @@ export const ProductStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductStatusItemLevelIssue>;
 
 export type ProductStatusItemLevelIssueList = Array<ProductStatusItemLevelIssue>;
-export const ProductStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
+const ProductStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   ProductStatusItemLevelIssue,
 ) as any as S.Schema<ProductStatusItemLevelIssueList>;
 
@@ -4602,7 +4592,7 @@ export interface ProductStatus {
   /** The title of the product. */
   title?: string;
 }
-export const ProductStatus = /*@__PURE__*/ S.suspend(() =>
+const ProductStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     link: S.optional(S.String),
@@ -4627,7 +4617,7 @@ export interface ProductstatusesCustomBatchResponseEntry {
   /** The requested product status. Only defined if the request was successful. */
   productStatus?: ProductStatus;
 }
-export const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
     batchId: S.optional(S.Number),
@@ -4640,7 +4630,7 @@ export const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ S.suspend((
 
 export type ProductstatusesCustomBatchResponseEntryList =
   Array<ProductstatusesCustomBatchResponseEntry>;
-export const ProductstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const ProductstatusesCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   ProductstatusesCustomBatchResponseEntry,
 ) as any as S.Schema<ProductstatusesCustomBatchResponseEntryList>;
 
@@ -4650,7 +4640,7 @@ export interface ProductstatusesCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesCustomBatchResponse`". */
   kind?: string;
 }
-export const ProductstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ProductstatusesCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ProductstatusesCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -4676,7 +4666,7 @@ export interface RegionalInventory {
   /** A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided. */
   salePriceEffectiveDate?: string;
 }
-export const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
+const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.optional(S.String),
     availability: S.optional(S.String),
@@ -4703,7 +4693,7 @@ export interface RegionalinventoryCustomBatchRequestEntry {
   /** The ID of the product for which to update price and availability. */
   productId?: string;
 }
-export const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.optional(S.String),
     method: S.optional(S.String),
@@ -4717,7 +4707,7 @@ export const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(
 
 export type RegionalinventoryCustomBatchRequestEntryList =
   Array<RegionalinventoryCustomBatchRequestEntry>;
-export const RegionalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const RegionalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   RegionalinventoryCustomBatchRequestEntry,
 ) as any as S.Schema<RegionalinventoryCustomBatchRequestEntryList>;
 
@@ -4725,7 +4715,7 @@ export interface RegionalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: RegionalinventoryCustomBatchRequestEntryList;
 }
-export const RegionalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const RegionalinventoryCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(RegionalinventoryCustomBatchRequestEntryList),
   }),
@@ -4737,7 +4727,7 @@ export interface CustombatchRegionalinventoryRequest {
   /** Request body */
   body?: RegionalinventoryCustomBatchRequest;
 }
-export const CustombatchRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(RegionalinventoryCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -4762,7 +4752,7 @@ export interface RegionalinventoryCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   batchId?: number;
 }
-export const RegionalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const RegionalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionalInventory: S.optional(RegionalInventory),
     kind: S.optional(S.String),
@@ -4775,7 +4765,7 @@ export const RegionalinventoryCustomBatchResponseEntry = /*@__PURE__*/ S.suspend
 
 export type RegionalinventoryCustomBatchResponseEntryList =
   Array<RegionalinventoryCustomBatchResponseEntry>;
-export const RegionalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const RegionalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   RegionalinventoryCustomBatchResponseEntry,
 ) as any as S.Schema<RegionalinventoryCustomBatchResponseEntryList>;
 
@@ -4785,7 +4775,7 @@ export interface RegionalinventoryCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#regionalinventoryCustomBatchResponse`". */
   kind?: string;
 }
-export const RegionalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const RegionalinventoryCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(RegionalinventoryCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -4800,7 +4790,7 @@ export interface PostalCodeRange {
   /** A postal code or a pattern of the form `prefix*` denoting the inclusive upper bound of the range defining the area. It must have the same length as `postalCodeRangeBegin`: if `postalCodeRangeBegin` is a postal code then `postalCodeRangeEnd` must be a postal code too; if `postalCodeRangeBegin` is a pattern then `postalCodeRangeEnd` must be a pattern with the same prefix length. Optional: if not set, then the area is defined as being all the postal codes matching `postalCodeRangeBegin`. */
   postalCodeRangeEnd?: string;
 }
-export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
+const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postalCodeRangeBegin: S.optional(S.String),
     postalCodeRangeEnd: S.optional(S.String),
@@ -4810,7 +4800,7 @@ export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostalCodeRange>;
 
 export type PostalCodeRangeList = Array<PostalCodeRange>;
-export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
+const PostalCodeRangeList = /*@__PURE__*/ S.Array(
   PostalCodeRange,
 ) as any as S.Schema<PostalCodeRangeList>;
 
@@ -4822,7 +4812,7 @@ export interface PostalCodeGroup {
   /** The name of the postal code group, referred to in headers. Required. */
   name?: string;
 }
-export const PostalCodeGroup = /*@__PURE__*/ S.suspend(() =>
+const PostalCodeGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     postalCodeRanges: S.optional(PostalCodeRangeList),
@@ -4833,7 +4823,7 @@ export const PostalCodeGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostalCodeGroup>;
 
 export type PostalCodeGroupList = Array<PostalCodeGroup>;
-export const PostalCodeGroupList = /*@__PURE__*/ S.Array(
+const PostalCodeGroupList = /*@__PURE__*/ S.Array(
   PostalCodeGroup,
 ) as any as S.Schema<PostalCodeGroupList>;
 
@@ -4843,7 +4833,7 @@ export interface WarehouseCutoffTime {
   /** Required. Hour (24-hour clock) of the cutoff time until which an order has to be placed to be processed in the same day by the warehouse. Hour is based on the timezone of warehouse. */
   hour?: number;
 }
-export const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
+const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minute: S.optional(S.Number),
     hour: S.optional(S.Number),
@@ -4856,7 +4846,7 @@ export interface BusinessDayConfig {
   /** Regular business days, such as '"monday"'. May not be empty. */
   businessDays?: StringList;
 }
-export const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
+const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessDays: S.optional(StringList),
   }),
@@ -4876,7 +4866,7 @@ export interface Address {
   /** Required. [CLDR country code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) (for example, "US"). */
   country?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrativeArea: S.optional(S.String),
     postalCode: S.optional(S.String),
@@ -4899,7 +4889,7 @@ export interface Warehouse {
   /** Required. The number of days it takes for this warehouse to pack up and ship an item. This is on the warehouse level, but can be overridden on the offer level based on the attributes of an item. */
   handlingDays?: string;
 }
-export const Warehouse = /*@__PURE__*/ S.suspend(() =>
+const Warehouse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cutoffTime: S.optional(WarehouseCutoffTime),
     name: S.optional(S.String),
@@ -4910,10 +4900,10 @@ export const Warehouse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
 export type WarehouseList = Array<Warehouse>;
-export const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
+const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
 
 export type PriceList = Array<Price>;
-export const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
+const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
 
 export interface Weight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
@@ -4921,7 +4911,7 @@ export interface Weight {
   /** Required. The weight unit. Acceptable values are: - "`kg`" - "`lb`" */
   unit?: string;
 }
-export const Weight = /*@__PURE__*/ S.suspend(() =>
+const Weight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     unit: S.optional(S.String),
@@ -4929,20 +4919,20 @@ export const Weight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
 export type WeightList = Array<Weight>;
-export const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
+const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
 
 export interface LocationIdSet {
   /** A non-empty list of location IDs. They must all be of the same location type (for example, state). */
   locationIds?: StringList;
 }
-export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
+const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationIds: S.optional(StringList),
   }),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
 export type LocationIdSetList = Array<LocationIdSet>;
-export const LocationIdSetList = /*@__PURE__*/ S.Array(
+const LocationIdSetList = /*@__PURE__*/ S.Array(
   LocationIdSet,
 ) as any as S.Schema<LocationIdSetList>;
 
@@ -4959,7 +4949,7 @@ export interface Headers {
   /** A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
   locations?: LocationIdSetList;
 }
-export const Headers = /*@__PURE__*/ S.suspend(() =>
+const Headers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prices: S.optional(PriceList),
     numberOfItems: S.optional(StringList),
@@ -4982,7 +4972,7 @@ export interface Value {
   /** A flat rate. Can only be set if all other fields are not set. */
   flatRate?: Price;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricePercentage: S.optional(S.String),
     subtableName: S.optional(S.String),
@@ -4993,20 +4983,20 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 export interface Row {
   /** The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. Required. */
   cells?: ValueList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: S.optional(ValueList),
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 export interface Table {
   /** Headers of the table's rows. Required. */
@@ -5018,7 +5008,7 @@ export interface Table {
   /** Headers of the table's columns. Optional: if not set then the table has only one dimension. */
   columnHeaders?: Headers;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowHeaders: S.optional(Headers),
     rows: S.optional(RowList),
@@ -5028,7 +5018,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type TableList = Array<Table>;
-export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
+const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 export interface CarrierRate {
   /** Name of the carrier rate. Must be unique per rate group. Required. */
@@ -5044,7 +5034,7 @@ export interface CarrierRate {
   /** Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved through the `getSupportedCarriers` method. Required. */
   carrierName?: string;
 }
-export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
+const CarrierRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     flatAdjustment: S.optional(Price),
@@ -5056,9 +5046,7 @@ export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
 export type CarrierRateList = Array<CarrierRate>;
-export const CarrierRateList = /*@__PURE__*/ S.Array(
-  CarrierRate,
-) as any as S.Schema<CarrierRateList>;
+const CarrierRateList = /*@__PURE__*/ S.Array(CarrierRate) as any as S.Schema<CarrierRateList>;
 
 export interface RateGroup {
   /** A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. Required. */
@@ -5074,7 +5062,7 @@ export interface RateGroup {
   /** Name of the rate group. Optional. If set has to be unique within shipping service. */
   name?: string;
 }
-export const RateGroup = /*@__PURE__*/ S.suspend(() =>
+const RateGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicableShippingLabels: S.optional(StringList),
     subtables: S.optional(TableList),
@@ -5086,7 +5074,7 @@ export const RateGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
 export type RateGroupList = Array<RateGroup>;
-export const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
+const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
 
 /** Time in hours and minutes in the local timezone when local delivery ends. */
 export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
@@ -5095,7 +5083,7 @@ export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /** Minute local delivery orders must be placed by to process the same day. */
   minute?: string;
 }
-export const ServiceStoreConfigCutoffConfigLocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
+const ServiceStoreConfigCutoffConfigLocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.optional(S.String),
     minute: S.optional(S.String),
@@ -5113,7 +5101,7 @@ export interface ServiceStoreConfigCutoffConfig {
   /** Time in hours and minutes in the local timezone when local delivery ends. */
   localCutoffTime?: ServiceStoreConfigCutoffConfigLocalCutoffTime;
 }
-export const ServiceStoreConfigCutoffConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceStoreConfigCutoffConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     noDeliveryPostCutoff: S.optional(S.Boolean),
     storeCloseOffsetHours: S.optional(S.String),
@@ -5130,7 +5118,7 @@ export interface Distance {
   /** The distance unit. Acceptable values are `None`, `Miles`, and `Kilometers`. */
   unit?: string;
 }
-export const Distance = Weight as any as S.Schema<Distance>;
+const Distance = Weight as any as S.Schema<Distance>;
 
 /** Stores that provide local delivery. Only valid with local delivery fulfillment. */
 export interface ServiceStoreConfig {
@@ -5143,7 +5131,7 @@ export interface ServiceStoreConfig {
   /** A list of store codes that provide local delivery. If empty, then `store_service_type` must be `all_stores`, or an error is thrown. If not empty, then `store_service_type` must be `selected_stores`, or an error is thrown. */
   storeCodes?: StringList;
 }
-export const ServiceStoreConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceStoreConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cutoffConfig: S.optional(ServiceStoreConfigCutoffConfig),
     storeServiceType: S.optional(S.String),
@@ -5161,7 +5149,7 @@ export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** The minimum order value for the given stores. */
   value?: Price;
 }
-export const MinimumOrderValueTableStoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
+const MinimumOrderValueTableStoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeCodes: S.optional(StringList),
     value: S.optional(Price),
@@ -5172,14 +5160,14 @@ export const MinimumOrderValueTableStoreCodeSetWithMov = /*@__PURE__*/ S.suspend
 
 export type MinimumOrderValueTableStoreCodeSetWithMovList =
   Array<MinimumOrderValueTableStoreCodeSetWithMov>;
-export const MinimumOrderValueTableStoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
+const MinimumOrderValueTableStoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
   MinimumOrderValueTableStoreCodeSetWithMov,
 ) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMovList>;
 
 export interface MinimumOrderValueTable {
   storeCodeSetWithMovs?: MinimumOrderValueTableStoreCodeSetWithMovList;
 }
-export const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
+const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeCodeSetWithMovs: S.optional(MinimumOrderValueTableStoreCodeSetWithMovList),
   }),
@@ -5199,7 +5187,7 @@ export interface HolidayCutoff {
   /** Hour of the day on the deadline date until which the order has to be placed to qualify for the delivery guarantee. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Required. */
   deadlineHour?: number;
 }
-export const HolidayCutoff = /*@__PURE__*/ S.suspend(() =>
+const HolidayCutoff = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deadlineTimezone: S.optional(S.String),
     visibleFromDate: S.optional(S.String),
@@ -5210,7 +5198,7 @@ export const HolidayCutoff = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HolidayCutoff" }) as any as S.Schema<HolidayCutoff>;
 
 export type HolidayCutoffList = Array<HolidayCutoff>;
-export const HolidayCutoffList = /*@__PURE__*/ S.Array(
+const HolidayCutoffList = /*@__PURE__*/ S.Array(
   HolidayCutoff,
 ) as any as S.Schema<HolidayCutoffList>;
 
@@ -5232,7 +5220,7 @@ export interface WarehouseBasedDeliveryTime {
   /** The name of the warehouse. Warehouse name need to be matched with name. If warehouseName is set, the below fields will be ignored. The warehouse info will be read from warehouse. */
   warehouseName?: string;
 }
-export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originCity: S.optional(S.String),
     originStreetAddress: S.optional(S.String),
@@ -5248,7 +5236,7 @@ export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
 export type WarehouseBasedDeliveryTimeList = Array<WarehouseBasedDeliveryTime>;
-export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
+const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
   WarehouseBasedDeliveryTime,
 ) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
 
@@ -5258,7 +5246,7 @@ export interface TransitTableTransitTimeRowTransitTimeValue {
   /** Must be greater than or equal to `minTransitTimeInDays`. */
   maxTransitTimeInDays?: number;
 }
-export const TransitTableTransitTimeRowTransitTimeValue = /*@__PURE__*/ S.suspend(() =>
+const TransitTableTransitTimeRowTransitTimeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minTransitTimeInDays: S.optional(S.Number),
     maxTransitTimeInDays: S.optional(S.Number),
@@ -5269,14 +5257,14 @@ export const TransitTableTransitTimeRowTransitTimeValue = /*@__PURE__*/ S.suspen
 
 export type TransitTableTransitTimeRowTransitTimeValueList =
   Array<TransitTableTransitTimeRowTransitTimeValue>;
-export const TransitTableTransitTimeRowTransitTimeValueList = /*@__PURE__*/ S.Array(
+const TransitTableTransitTimeRowTransitTimeValueList = /*@__PURE__*/ S.Array(
   TransitTableTransitTimeRowTransitTimeValue,
 ) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValueList>;
 
 export interface TransitTableTransitTimeRow {
   values?: TransitTableTransitTimeRowTransitTimeValueList;
 }
-export const TransitTableTransitTimeRow = /*@__PURE__*/ S.suspend(() =>
+const TransitTableTransitTimeRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(TransitTableTransitTimeRowTransitTimeValueList),
   }),
@@ -5285,7 +5273,7 @@ export const TransitTableTransitTimeRow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitTableTransitTimeRow>;
 
 export type TransitTableTransitTimeRowList = Array<TransitTableTransitTimeRow>;
-export const TransitTableTransitTimeRowList = /*@__PURE__*/ S.Array(
+const TransitTableTransitTimeRowList = /*@__PURE__*/ S.Array(
   TransitTableTransitTimeRow,
 ) as any as S.Schema<TransitTableTransitTimeRowList>;
 
@@ -5296,7 +5284,7 @@ export interface TransitTable {
   /** A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. */
   postalCodeGroupNames?: StringList;
 }
-export const TransitTable = /*@__PURE__*/ S.suspend(() =>
+const TransitTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(TransitTableTransitTimeRowList),
     transitTimeLabels: S.optional(StringList),
@@ -5312,7 +5300,7 @@ export interface CutoffTime {
   /** Minute of the cutoff time until which an order has to be placed to be processed in the same day. Required. */
   minute?: number;
 }
-export const CutoffTime = /*@__PURE__*/ S.suspend(() =>
+const CutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timezone: S.optional(S.String),
     hour: S.optional(S.Number),
@@ -5342,7 +5330,7 @@ export interface DeliveryTime {
   /** Business days cutoff time definition. If not configured, the cutoff time will be defaulted to 8AM PST. If local delivery, use Service.StoreConfig.CutoffConfig. */
   cutoffTime?: CutoffTime;
 }
-export const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minHandlingTimeInDays: S.optional(S.Number),
     holidayCutoffs: S.optional(HolidayCutoffList),
@@ -5363,7 +5351,7 @@ export interface PickupCarrierService {
   /** The name of the pickup service (for example, `"Access point"`). Required. */
   serviceName?: string;
 }
-export const PickupCarrierService = /*@__PURE__*/ S.suspend(() =>
+const PickupCarrierService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierName: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -5398,7 +5386,7 @@ export interface Service {
   /** Free-form name of the service. Must be unique within target account. Required. */
   name?: string;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rateGroups: S.optional(RateGroupList),
     storeConfig: S.optional(ServiceStoreConfig),
@@ -5416,7 +5404,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** The merchant account's shipping settings. All methods except getsupportedcarriers and getsupportedholidays require the admin role. */
 export interface ShippingSettings {
@@ -5429,7 +5417,7 @@ export interface ShippingSettings {
   /** The target account's list of services. Optional. */
   services?: ServiceList;
 }
-export const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
+const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postalCodeGroups: S.optional(PostalCodeGroupList),
     warehouses: S.optional(WarehouseList),
@@ -5453,7 +5441,7 @@ export interface ShippingsettingsCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
   method?: string;
 }
-export const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.Number),
     accountId: S.optional(S.String),
@@ -5467,7 +5455,7 @@ export const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ S.suspend((
 
 export type ShippingsettingsCustomBatchRequestEntryList =
   Array<ShippingsettingsCustomBatchRequestEntry>;
-export const ShippingsettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
+const ShippingsettingsCustomBatchRequestEntryList = /*@__PURE__*/ S.Array(
   ShippingsettingsCustomBatchRequestEntry,
 ) as any as S.Schema<ShippingsettingsCustomBatchRequestEntryList>;
 
@@ -5475,7 +5463,7 @@ export interface ShippingsettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ShippingsettingsCustomBatchRequestEntryList;
 }
-export const ShippingsettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsCustomBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ShippingsettingsCustomBatchRequestEntryList),
   }),
@@ -5487,7 +5475,7 @@ export interface CustombatchShippingsettingsRequest {
   /** Request body */
   body?: ShippingsettingsCustomBatchRequest;
 }
-export const CustombatchShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CustombatchShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ShippingsettingsCustomBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -5512,7 +5500,7 @@ export interface ShippingsettingsCustomBatchResponseEntry {
   /** The retrieved or updated account shipping settings. */
   shippingSettings?: ShippingSettings;
 }
-export const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(Errors),
     kind: S.optional(S.String),
@@ -5525,7 +5513,7 @@ export const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ S.suspend(
 
 export type ShippingsettingsCustomBatchResponseEntryList =
   Array<ShippingsettingsCustomBatchResponseEntry>;
-export const ShippingsettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
+const ShippingsettingsCustomBatchResponseEntryList = /*@__PURE__*/ S.Array(
   ShippingsettingsCustomBatchResponseEntry,
 ) as any as S.Schema<ShippingsettingsCustomBatchResponseEntryList>;
 
@@ -5535,7 +5523,7 @@ export interface ShippingsettingsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsCustomBatchResponse`". */
   kind?: string;
 }
-export const ShippingsettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsCustomBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(ShippingsettingsCustomBatchResponseEntryList),
     kind: S.optional(S.String),
@@ -5552,7 +5540,7 @@ export interface DeleteAccountsRequest {
   /** The ID of the account. */
   accountId: string;
 }
-export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -5569,7 +5557,7 @@ export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsRequest>;
 
 export interface DeleteAccountsResponse {}
-export const DeleteAccountsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccountsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccountsResponse",
 }) as any as S.Schema<DeleteAccountsResponse>;
 
@@ -5579,7 +5567,7 @@ export interface DeleteAccountsLabelsRequest {
   /** Required. The id of the label to delete. */
   labelId: string;
 }
-export const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     labelId: S.String.pipe(T.Label()),
@@ -5595,7 +5583,7 @@ export const DeleteAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsLabelsRequest>;
 
 export interface DeleteAccountsLabelsResponse {}
-export const DeleteAccountsLabelsResponse =
+const DeleteAccountsLabelsResponse =
   DeleteAccountsResponse as any as S.Schema<DeleteAccountsLabelsResponse>;
 
 export interface DeleteAccountsReturncarrierRequest {
@@ -5604,7 +5592,7 @@ export interface DeleteAccountsReturncarrierRequest {
   /** Required. The Google-provided unique carrier ID, used to update the resource. */
   carrierAccountId: string;
 }
-export const DeleteAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     carrierAccountId: S.String.pipe(T.Label()),
@@ -5620,9 +5608,7 @@ export const DeleteAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccountsReturncarrierRequest>;
 
 export interface DeleteAccountsReturncarrierResponse {}
-export const DeleteAccountsReturncarrierResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAccountsReturncarrierResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccountsReturncarrierResponse",
 }) as any as S.Schema<DeleteAccountsReturncarrierResponse>;
 
@@ -5632,7 +5618,7 @@ export interface DeleteCollectionsRequest {
   /** Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection. */
   collectionId: string;
 }
-export const DeleteCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -5648,7 +5634,7 @@ export const DeleteCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCollectionsRequest>;
 
 export interface DeleteCollectionsResponse {}
-export const DeleteCollectionsResponse =
+const DeleteCollectionsResponse =
   DeleteAccountsResponse as any as S.Schema<DeleteCollectionsResponse>;
 
 export interface DeleteConversionsourcesRequest {
@@ -5657,7 +5643,7 @@ export interface DeleteConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
   merchantId: string;
 }
-export const DeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionSourceId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -5673,11 +5659,9 @@ export const DeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConversionsourcesRequest>;
 
 export interface DeleteConversionsourcesResponse {}
-export const DeleteConversionsourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  {
-    identifier: "DeleteConversionsourcesResponse",
-  },
-) as any as S.Schema<DeleteConversionsourcesResponse>;
+const DeleteConversionsourcesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteConversionsourcesResponse",
+}) as any as S.Schema<DeleteConversionsourcesResponse>;
 
 export interface DeleteDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
@@ -5685,7 +5669,7 @@ export interface DeleteDatafeedsRequest {
   /** The ID of the datafeed. */
   datafeedId: string;
 }
-export const DeleteDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     datafeedId: S.String.pipe(T.Label()),
@@ -5701,14 +5685,13 @@ export const DeleteDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDatafeedsRequest>;
 
 export interface DeleteDatafeedsResponse {}
-export const DeleteDatafeedsResponse =
-  DeleteAccountsResponse as any as S.Schema<DeleteDatafeedsResponse>;
+const DeleteDatafeedsResponse = DeleteAccountsResponse as any as S.Schema<DeleteDatafeedsResponse>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5723,7 +5706,7 @@ export const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>;
 
 export interface DeleteFreelistingsprogramCheckoutsettingsResponse {}
-export const DeleteFreelistingsprogramCheckoutsettingsResponse =
+const DeleteFreelistingsprogramCheckoutsettingsResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
 
 export interface DeletePosRequest {
@@ -5734,7 +5717,7 @@ export interface DeletePosRequest {
   /** A store code that is unique per merchant. */
   storeCode: string;
 }
-export const DeletePosRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     targetMerchantId: S.String.pipe(T.Label()),
@@ -5751,7 +5734,7 @@ export const DeletePosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePosRequest>;
 
 export interface DeletePosResponse {}
-export const DeletePosResponse = DeleteAccountsResponse as any as S.Schema<DeletePosResponse>;
+const DeletePosResponse = DeleteAccountsResponse as any as S.Schema<DeletePosResponse>;
 
 export interface DeleteProductdeliverytimeRequest {
   /** Required. The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
@@ -5759,7 +5742,7 @@ export interface DeleteProductdeliverytimeRequest {
   /** Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId: string;
 }
-export const DeleteProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -5775,7 +5758,7 @@ export const DeleteProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductdeliverytimeRequest>;
 
 export interface DeleteProductdeliverytimeResponse {}
-export const DeleteProductdeliverytimeResponse =
+const DeleteProductdeliverytimeResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteProductdeliverytimeResponse>;
 
 export interface DeleteProductsRequest {
@@ -5786,7 +5769,7 @@ export interface DeleteProductsRequest {
   /** The Content API Supplemental Feed ID. If present then product deletion applies to the data in a supplemental feed. If absent, entire product will be deleted. */
   feedId?: string;
 }
-export const DeleteProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -5803,8 +5786,7 @@ export const DeleteProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProductsRequest>;
 
 export interface DeleteProductsResponse {}
-export const DeleteProductsResponse =
-  DeleteAccountsResponse as any as S.Schema<DeleteProductsResponse>;
+const DeleteProductsResponse = DeleteAccountsResponse as any as S.Schema<DeleteProductsResponse>;
 
 export interface DeleteRegionsRequest {
   /** Required. The id of the region to delete. */
@@ -5812,7 +5794,7 @@ export interface DeleteRegionsRequest {
   /** Required. The id of the merchant for which to delete region definition. */
   merchantId: string;
 }
-export const DeleteRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -5828,8 +5810,7 @@ export const DeleteRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegionsRequest>;
 
 export interface DeleteRegionsResponse {}
-export const DeleteRegionsResponse =
-  DeleteAccountsResponse as any as S.Schema<DeleteRegionsResponse>;
+const DeleteRegionsResponse = DeleteAccountsResponse as any as S.Schema<DeleteRegionsResponse>;
 
 export interface DeleteReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
@@ -5837,7 +5818,7 @@ export interface DeleteReturnpolicyonlineRequest {
   /** Required. The id of the return policy to delete. */
   returnPolicyId: string;
 }
-export const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     returnPolicyId: S.String.pipe(T.Label()),
@@ -5853,7 +5834,7 @@ export const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReturnpolicyonlineRequest>;
 
 export interface DeleteReturnpolicyonlineResponse {}
-export const DeleteReturnpolicyonlineResponse =
+const DeleteReturnpolicyonlineResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteReturnpolicyonlineResponse>;
 
 export interface FetchnowDatafeedsRequest {
@@ -5862,7 +5843,7 @@ export interface FetchnowDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const FetchnowDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchnowDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datafeedId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -5881,7 +5862,7 @@ export interface DatafeedsFetchNowResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`". */
   kind?: string;
 }
-export const DatafeedsFetchNowResponse =
+const DatafeedsFetchNowResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<DatafeedsFetchNowResponse>;
 
 export interface GenerateRecommendationsRequest {
@@ -5892,7 +5873,7 @@ export interface GenerateRecommendationsRequest {
   /** Required. The ID of the account to fetch recommendations for. */
   merchantId: string;
 }
-export const GenerateRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String.pipe(T.Query())),
     allowedTag: S.optional(StringList.pipe(T.Query())),
@@ -5909,7 +5890,7 @@ export const GenerateRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateRecommendationsRequest>;
 
 export type RecommendationCreativeTypeEnum = "CREATIVE_TYPE_UNSPECIFIED" | "VIDEO" | "PHOTO";
-export const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
+const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
 
 /** Creative is a multimedia attachment to recommendation that can be used on the frontend. */
 export interface RecommendationCreative {
@@ -5918,7 +5899,7 @@ export interface RecommendationCreative {
   /** Type of the creative. */
   type?: RecommendationCreativeTypeEnum;
 }
-export const RecommendationCreative = /*@__PURE__*/ S.suspend(() =>
+const RecommendationCreative = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     type: S.optional(RecommendationCreativeTypeEnum),
@@ -5928,7 +5909,7 @@ export const RecommendationCreative = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationCreative>;
 
 export type RecommendationCreativeList = Array<RecommendationCreative>;
-export const RecommendationCreativeList = /*@__PURE__*/ S.Array(
+const RecommendationCreativeList = /*@__PURE__*/ S.Array(
   RecommendationCreative,
 ) as any as S.Schema<RecommendationCreativeList>;
 
@@ -5941,7 +5922,7 @@ export interface RecommendationCallToAction {
   /** Output only. Localized text of the CTA. Optional. */
   localizedText?: string;
 }
-export const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
+const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     intent: S.optional(S.String),
@@ -5952,12 +5933,12 @@ export const RecommendationCallToAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationCallToAction>;
 
 export type RecommendationCallToActionList = Array<RecommendationCallToAction>;
-export const RecommendationCallToActionList = /*@__PURE__*/ S.Array(
+const RecommendationCallToActionList = /*@__PURE__*/ S.Array(
   RecommendationCallToAction,
 ) as any as S.Schema<RecommendationCallToActionList>;
 
 export type RecommendationDescriptionTypeEnum = "DESCRIPTION_TYPE_UNSPECIFIED" | "SHORT" | "LONG";
-export const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
+const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Google-provided description for the recommendation. */
 export interface RecommendationDescription {
@@ -5966,7 +5947,7 @@ export interface RecommendationDescription {
   /** Output only. Type of the description. */
   type?: RecommendationDescriptionTypeEnum;
 }
-export const RecommendationDescription = /*@__PURE__*/ S.suspend(() =>
+const RecommendationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     type: S.optional(RecommendationDescriptionTypeEnum),
@@ -5976,7 +5957,7 @@ export const RecommendationDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommendationDescription>;
 
 export type RecommendationDescriptionList = Array<RecommendationDescription>;
-export const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
+const RecommendationDescriptionList = /*@__PURE__*/ S.Array(
   RecommendationDescription,
 ) as any as S.Schema<RecommendationDescriptionList>;
 
@@ -6005,7 +5986,7 @@ export interface Recommendation {
   /** Optional. Localized Recommendation Title. Localization uses the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
   title?: string;
 }
-export const Recommendation = /*@__PURE__*/ S.suspend(() =>
+const Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultDescription: S.optional(S.String),
     creative: S.optional(RecommendationCreativeList),
@@ -6022,7 +6003,7 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 
 export type RecommendationList = Array<Recommendation>;
-export const RecommendationList = /*@__PURE__*/ S.Array(
+const RecommendationList = /*@__PURE__*/ S.Array(
   Recommendation,
 ) as any as S.Schema<RecommendationList>;
 
@@ -6033,7 +6014,7 @@ export interface GenerateRecommendationsResponse {
   /** Output only. Response token is a string created for each `GenerateRecommendationsResponse`. This token doesn't expire, and is globally unique. This token must be used when reporting interactions for recommendations. */
   responseToken?: string;
 }
-export const GenerateRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendations: S.optional(RecommendationList),
     responseToken: S.optional(S.String),
@@ -6048,7 +6029,7 @@ export interface GetaccessiblegmbaccountsLiasettingsRequest {
   /** The ID of the account for which to retrieve accessible Business Profiles. */
   accountId: string;
 }
-export const GetaccessiblegmbaccountsLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetaccessiblegmbaccountsLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -6071,7 +6052,7 @@ export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** A list of Business Profiles which are available to the merchant. */
   gmbAccounts?: GmbAccountsGmbAccountList;
 }
-export const LiasettingsGetAccessibleGmbAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsGetAccessibleGmbAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6082,7 +6063,7 @@ export const LiasettingsGetAccessibleGmbAccountsResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
 
 export type GetAccountsViewEnum = "MERCHANT" | "CSS";
-export const GetAccountsViewEnum = /*@__PURE__*/ S.String;
+const GetAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface GetAccountsRequest {
   /** The ID of the account. */
@@ -6092,7 +6073,7 @@ export interface GetAccountsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     view: S.optional(GetAccountsViewEnum.pipe(T.Query())),
@@ -6116,7 +6097,7 @@ export interface GetAccountstatusesRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-export const GetAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     destinations: S.optional(StringList.pipe(T.Query())),
@@ -6138,7 +6119,7 @@ export interface GetAccounttaxRequest {
   /** The ID of the account for which to get/update account tax settings. */
   accountId: string;
 }
-export const GetAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -6159,7 +6140,7 @@ export interface GetCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6180,7 +6161,7 @@ export interface GetCollectionstatusesRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const GetCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6208,7 +6189,7 @@ export interface CollectionStatusDestinationStatus {
   /** The name of the destination */
   destination?: string;
 }
-export const CollectionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
+const CollectionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvedCountries: S.optional(StringList),
     status: S.optional(S.String),
@@ -6221,7 +6202,7 @@ export const CollectionStatusDestinationStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionStatusDestinationStatus>;
 
 export type CollectionStatusDestinationStatusList = Array<CollectionStatusDestinationStatus>;
-export const CollectionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
+const CollectionStatusDestinationStatusList = /*@__PURE__*/ S.Array(
   CollectionStatusDestinationStatus,
 ) as any as S.Schema<CollectionStatusDestinationStatusList>;
 
@@ -6246,7 +6227,7 @@ export interface CollectionStatusItemLevelIssue {
   /** How this issue affects the serving of the collection. */
   servability?: string;
 }
-export const CollectionStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const CollectionStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     resolution: S.optional(S.String),
@@ -6263,7 +6244,7 @@ export const CollectionStatusItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionStatusItemLevelIssue>;
 
 export type CollectionStatusItemLevelIssueList = Array<CollectionStatusItemLevelIssue>;
-export const CollectionStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
+const CollectionStatusItemLevelIssueList = /*@__PURE__*/ S.Array(
   CollectionStatusItemLevelIssue,
 ) as any as S.Schema<CollectionStatusItemLevelIssueList>;
 
@@ -6280,7 +6261,7 @@ export interface CollectionStatus {
   /** Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   lastUpdateDate?: string;
 }
-export const CollectionStatus = /*@__PURE__*/ S.suspend(() =>
+const CollectionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     destinationStatuses: S.optional(CollectionStatusDestinationStatusList),
@@ -6298,7 +6279,7 @@ export interface GetConversionsourcesRequest {
   /** Required. The REST ID of the collection. */
   conversionSourceId: string;
 }
-export const GetConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     conversionSourceId: S.String.pipe(T.Label()),
@@ -6319,7 +6300,7 @@ export interface GetCssesRequest {
   /** Required. The ID of the CSS domain to return. */
   cssDomainId: string;
 }
-export const GetCssesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCssesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cssGroupId: S.String.pipe(T.Label()),
     cssDomainId: S.String.pipe(T.Label()),
@@ -6349,7 +6330,7 @@ export interface Css {
   /** A list of label IDs that are assigned to this CSS domain by its CSS group. Only populated for CSS group users. */
   labelIds?: StringList;
 }
-export const Css = /*@__PURE__*/ S.suspend(() =>
+const Css = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     homepageUri: S.optional(S.String),
@@ -6366,7 +6347,7 @@ export interface GetDatafeedsRequest {
   /** The ID of the datafeed. */
   datafeedId: string;
 }
-export const GetDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     datafeedId: S.String.pipe(T.Label()),
@@ -6393,7 +6374,7 @@ export interface GetDatafeedstatusesRequest {
   /** The feed label to get the datafeed status for. If this parameter is provided then `language` must also be provided. Note that this parameter is required for feeds targeting multiple countries and languages, since a feed may have a different status for each target. */
   feedLabel?: string;
 }
-export const GetDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     country: S.optional(S.String.pipe(T.Query())),
@@ -6415,7 +6396,7 @@ export interface GetFreelistingsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const GetFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6433,8 +6414,7 @@ export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-export const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
@@ -6446,19 +6426,17 @@ export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
   | "ALREADY_REVIEWED";
-export const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-  /*@__PURE__*/ S.String;
+const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for review ineligibility reasons. */
 export interface FreeListingsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
-export const FreeListingsProgramStatusReviewIneligibilityReasonDetails = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cooldownTime: S.optional(S.String),
-    }),
+const FreeListingsProgramStatusReviewIneligibilityReasonDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cooldownTime: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails",
 }) as any as S.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails>;
@@ -6471,7 +6449,7 @@ export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
   | "ONBOARDING";
-export const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
+const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 /** Status of program and region. */
 export interface FreeListingsProgramStatusRegionStatus {
@@ -6494,7 +6472,7 @@ export interface FreeListingsProgramStatusRegionStatus {
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
   disapprovalDate?: string;
 }
-export const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
+const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewIneligibilityReasonDescription: S.optional(S.String),
     reviewEligibilityStatus: S.optional(
@@ -6518,7 +6496,7 @@ export const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() 
 
 export type FreeListingsProgramStatusRegionStatusList =
   Array<FreeListingsProgramStatusRegionStatus>;
-export const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
+const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
   FreeListingsProgramStatusRegionStatus,
 ) as any as S.Schema<FreeListingsProgramStatusRegionStatusList>;
 
@@ -6527,7 +6505,7 @@ export type FreeListingsProgramStatusGlobalStateEnum =
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
   | "ENABLED";
-export const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
+const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 /** Response message for GetFreeListingsProgramStatus. */
 export interface FreeListingsProgramStatus {
@@ -6536,7 +6514,7 @@ export interface FreeListingsProgramStatus {
   /** State of the program. `ENABLED` if there are offers for at least one region. */
   globalState?: FreeListingsProgramStatusGlobalStateEnum;
 }
-export const FreeListingsProgramStatus = /*@__PURE__*/ S.suspend(() =>
+const FreeListingsProgramStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionStatuses: S.optional(FreeListingsProgramStatusRegionStatusList),
     globalState: S.optional(FreeListingsProgramStatusGlobalStateEnum),
@@ -6549,7 +6527,7 @@ export interface GetFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const GetFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6568,21 +6546,21 @@ export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "INACTIVE"
   | "ENROLLED"
   | "OPT_OUT";
-export const CheckoutSettingsEffectiveEnrollmentStateEnum = /*@__PURE__*/ S.String;
+const CheckoutSettingsEffectiveEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-export const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
+const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
 
 export type CheckoutSettingsReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-export const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
+const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
 
 /** Specifications related to the `Checkout` URL. The `UriTemplate` is of the form `https://www.mystore.com/checkout?item_id={id}` where `{id}` will be automatically replaced with data from the merchant account with this attribute [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.offer_id) */
 export interface UrlSettings {
@@ -6591,7 +6569,7 @@ export interface UrlSettings {
   /** URL template when the placeholders are expanded will redirect the buyer to the merchant checkout page with the item in the cart. */
   checkoutUriTemplate?: string;
 }
-export const UrlSettings = /*@__PURE__*/ S.suspend(() =>
+const UrlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cartUriTemplate: S.optional(S.String),
     checkoutUriTemplate: S.optional(S.String),
@@ -6603,7 +6581,7 @@ export type CheckoutSettingsEnrollmentStateEnum =
   | "INACTIVE"
   | "ENROLLED"
   | "OPT_OUT";
-export const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
+const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
 
 /** `CheckoutSettings` for a specific merchant ID. */
 export interface CheckoutSettings {
@@ -6622,7 +6600,7 @@ export interface CheckoutSettings {
   /** Output only. Reflects the merchant enrollment state in `Checkout` feature. */
   enrollmentState?: CheckoutSettingsEnrollmentStateEnum;
 }
-export const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
+const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveEnrollmentState: S.optional(CheckoutSettingsEffectiveEnrollmentStateEnum),
     effectiveReviewState: S.optional(CheckoutSettingsEffectiveReviewStateEnum),
@@ -6642,7 +6620,7 @@ export interface GetLiasettingsRequest {
   /** The ID of the account for which to get or update LIA settings. */
   accountId: string;
 }
-export const GetLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -6665,7 +6643,7 @@ export interface GetPosRequest {
   /** The ID of the target merchant. */
   targetMerchantId: string;
 }
-export const GetPosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeCode: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6685,7 +6663,7 @@ export interface GetProductdeliverytimeRequest {
   /** Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId: string;
 }
-export const GetProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductdeliverytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -6706,7 +6684,7 @@ export interface GetProductsRequest {
   /** The REST ID of the product. */
   productId: string;
 }
-export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -6729,7 +6707,7 @@ export interface GetProductstatusesRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const GetProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     destinations: S.optional(StringList.pipe(T.Query())),
@@ -6751,7 +6729,7 @@ export interface GetPromotionsRequest {
   /** Required. The ID of the account that contains the collection. */
   merchantId: string;
 }
-export const GetPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6770,7 +6748,7 @@ export interface GetPubsubnotificationsettingsRequest {
   /** The ID of the account for which to get pubsub notification settings. */
   merchantId: string;
 }
-export const GetPubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6793,7 +6771,7 @@ export interface PubsubNotificationSettings {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#pubsubNotificationSettings`" */
   kind?: string;
 }
-export const PubsubNotificationSettings = /*@__PURE__*/ S.suspend(() =>
+const PubsubNotificationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registeredEvents: S.optional(StringList),
     cloudTopicName: S.optional(S.String),
@@ -6809,7 +6787,7 @@ export interface GetRegionsRequest {
   /** Required. The id of the merchant for which to retrieve region definition. */
   merchantId: string;
 }
-export const GetRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6830,7 +6808,7 @@ export interface GetReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
 }
-export const GetReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPolicyId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -6851,7 +6829,7 @@ export interface GetShippingsettingsRequest {
   /** The ID of the account for which to get/update shipping settings. */
   accountId: string;
 }
-export const GetShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -6870,7 +6848,7 @@ export interface GetShoppingadsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-export const GetShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6889,14 +6867,11 @@ export type ShoppingAdsProgramStatusGlobalStateEnum =
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
   | "ENABLED";
-export const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
+const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
 
 /** Additional details for review ineligibility reasons. */
 export type ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
   FreeListingsProgramStatusReviewIneligibilityReasonDetails;
-export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
-  FreeListingsProgramStatusReviewIneligibilityReasonDetails;
-
 export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   | "STATE_UNSPECIFIED"
   | "APPROVED"
@@ -6905,14 +6880,13 @@ export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
   | "ONBOARDING";
-export const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
+const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-export const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
-  /*@__PURE__*/ S.String;
+const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
 
 export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
@@ -6924,8 +6898,7 @@ export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
   | "ALREADY_REVIEWED";
-export const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
-  /*@__PURE__*/ S.String;
+const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
 
 /** Status of program and region. */
 export interface ShoppingAdsProgramStatusRegionStatus {
@@ -6948,7 +6921,7 @@ export interface ShoppingAdsProgramStatusRegionStatus {
   /** Review ineligibility reason if account is not eligible for review. */
   reviewIneligibilityReason?: ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum;
 }
-export const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
+const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disapprovalDate: S.optional(S.String),
     reviewIneligibilityReasonDescription: S.optional(S.String),
@@ -6971,7 +6944,7 @@ export const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ShoppingAdsProgramStatusRegionStatus>;
 
 export type ShoppingAdsProgramStatusRegionStatusList = Array<ShoppingAdsProgramStatusRegionStatus>;
-export const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
+const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ S.Array(
   ShoppingAdsProgramStatusRegionStatus,
 ) as any as S.Schema<ShoppingAdsProgramStatusRegionStatusList>;
 
@@ -6982,7 +6955,7 @@ export interface ShoppingAdsProgramStatus {
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
   regionStatuses?: ShoppingAdsProgramStatusRegionStatusList;
 }
-export const ShoppingAdsProgramStatus = /*@__PURE__*/ S.suspend(() =>
+const ShoppingAdsProgramStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     globalState: S.optional(ShoppingAdsProgramStatusGlobalStateEnum),
     regionStatuses: S.optional(ShoppingAdsProgramStatusRegionStatusList),
@@ -6995,7 +6968,7 @@ export interface GetsupportedcarriersShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported carriers. */
   merchantId: string;
 }
-export const GetsupportedcarriersShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsupportedcarriersShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7019,7 +6992,7 @@ export interface CarriersCarrier {
   /** The name of the carrier (for example, `"UPS"`). Always present. */
   name?: string;
 }
-export const CarriersCarrier = /*@__PURE__*/ S.suspend(() =>
+const CarriersCarrier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(StringList),
     country: S.optional(S.String),
@@ -7031,7 +7004,7 @@ export const CarriersCarrier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CarriersCarrier>;
 
 export type CarriersCarrierList = Array<CarriersCarrier>;
-export const CarriersCarrierList = /*@__PURE__*/ S.Array(
+const CarriersCarrierList = /*@__PURE__*/ S.Array(
   CarriersCarrier,
 ) as any as S.Schema<CarriersCarrierList>;
 
@@ -7041,7 +7014,7 @@ export interface ShippingsettingsGetSupportedCarriersResponse {
   /** A list of supported carriers. May be empty. */
   carriers?: CarriersCarrierList;
 }
-export const ShippingsettingsGetSupportedCarriersResponse = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsGetSupportedCarriersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     carriers: S.optional(CarriersCarrierList),
@@ -7054,7 +7027,7 @@ export interface GetsupportedholidaysShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported holidays. */
   merchantId: string;
 }
-export const GetsupportedholidaysShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsupportedholidaysShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7082,7 +7055,7 @@ export interface HolidaysHoliday {
   /** Date of the holiday, in ISO 8601 format. For example, "2016-12-25" for Christmas 2016. Always present. */
   date?: string;
 }
-export const HolidaysHoliday = /*@__PURE__*/ S.suspend(() =>
+const HolidaysHoliday = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     deliveryGuaranteeHour: S.optional(S.String),
@@ -7096,7 +7069,7 @@ export const HolidaysHoliday = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HolidaysHoliday>;
 
 export type HolidaysHolidayList = Array<HolidaysHoliday>;
-export const HolidaysHolidayList = /*@__PURE__*/ S.Array(
+const HolidaysHolidayList = /*@__PURE__*/ S.Array(
   HolidaysHoliday,
 ) as any as S.Schema<HolidaysHolidayList>;
 
@@ -7106,7 +7079,7 @@ export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedHolidaysResponse`". */
   kind?: string;
 }
-export const ShippingsettingsGetSupportedHolidaysResponse = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsGetSupportedHolidaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     holidays: S.optional(HolidaysHolidayList),
     kind: S.optional(S.String),
@@ -7119,7 +7092,7 @@ export interface GetsupportedpickupservicesShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported pickup services. */
   merchantId: string;
 }
-export const GetsupportedpickupservicesShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsupportedpickupservicesShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7141,7 +7114,7 @@ export interface PickupServicesPickupService {
   /** The name of the pickup service (for example, `"Access point"`). Always present. */
   serviceName?: string;
 }
-export const PickupServicesPickupService = /*@__PURE__*/ S.suspend(() =>
+const PickupServicesPickupService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String),
     carrierName: S.optional(S.String),
@@ -7152,7 +7125,7 @@ export const PickupServicesPickupService = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PickupServicesPickupService>;
 
 export type PickupServicesPickupServiceList = Array<PickupServicesPickupService>;
-export const PickupServicesPickupServiceList = /*@__PURE__*/ S.Array(
+const PickupServicesPickupServiceList = /*@__PURE__*/ S.Array(
   PickupServicesPickupService,
 ) as any as S.Schema<PickupServicesPickupServiceList>;
 
@@ -7162,7 +7135,7 @@ export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** A list of supported pickup services. May be empty. */
   pickupServices?: PickupServicesPickupServiceList;
 }
-export const ShippingsettingsGetSupportedPickupServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsGetSupportedPickupServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     pickupServices: S.optional(PickupServicesPickupServiceList),
@@ -7177,7 +7150,7 @@ export interface InsertAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const InsertAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(Account.pipe(T.HttpBody())),
@@ -7198,7 +7171,7 @@ export interface InsertDatafeedsRequest {
   /** Request body */
   body?: Datafeed;
 }
-export const InsertDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(Datafeed.pipe(T.HttpBody())),
@@ -7218,7 +7191,7 @@ export interface InsertCheckoutSettingsRequest {
   /** Required. The `UrlSettings` for the request. The presence of URL settings indicates `Checkout` enrollment. */
   uriSettings?: UrlSettings;
 }
-export const InsertCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriSettings: S.optional(UrlSettings),
   }),
@@ -7232,7 +7205,7 @@ export interface InsertFreelistingsprogramCheckoutsettingsRequest {
   /** Request body */
   body?: InsertCheckoutSettingsRequest;
 }
-export const InsertFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(InsertCheckoutSettingsRequest.pipe(T.HttpBody())),
@@ -7255,7 +7228,7 @@ export interface InsertLocalinventoryRequest {
   /** Request body */
   body?: LocalInventory;
 }
-export const InsertLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLocalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -7279,7 +7252,7 @@ export interface InsertPosRequest {
   /** Request body */
   body?: PosStore;
 }
-export const InsertPosRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertPosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     targetMerchantId: S.String.pipe(T.Label()),
@@ -7303,7 +7276,7 @@ export interface InsertProductsRequest {
   /** Request body */
   body?: Product;
 }
-export const InsertProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     feedId: S.optional(S.String.pipe(T.Query())),
@@ -7327,7 +7300,7 @@ export interface InsertRegionalinventoryRequest {
   /** Request body */
   body?: RegionalInventory;
 }
-export const InsertRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertRegionalinventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -7365,7 +7338,7 @@ export interface PosInventoryRequest {
   /** Global Trade Item Number. */
   gtin?: string;
 }
-export const PosInventoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PosInventoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(Price),
     storeCode: S.optional(S.String),
@@ -7390,7 +7363,7 @@ export interface InventoryPosRequest {
   /** Request body */
   body?: PosInventoryRequest;
 }
-export const InventoryPosRequest = /*@__PURE__*/ S.suspend(() =>
+const InventoryPosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetMerchantId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -7430,7 +7403,7 @@ export interface PosInventoryResponse {
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
 }
-export const PosInventoryResponse = /*@__PURE__*/ S.suspend(() =>
+const PosInventoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.String),
     pickupSla: S.optional(S.String),
@@ -7455,7 +7428,7 @@ export interface PaymentServiceProviderLinkInfo {
   /** The business country of the merchant account as identified by the third party service provider. */
   externalAccountBusinessCountry?: string;
 }
-export const PaymentServiceProviderLinkInfo = /*@__PURE__*/ S.suspend(() =>
+const PaymentServiceProviderLinkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAccountId: S.optional(S.String),
     externalAccountBusinessCountry: S.optional(S.String),
@@ -7469,7 +7442,7 @@ export interface ECommercePlatformLinkInfo {
   /** The id used by the third party service provider to identify the merchant. */
   externalAccountId?: string;
 }
-export const ECommercePlatformLinkInfo = /*@__PURE__*/ S.suspend(() =>
+const ECommercePlatformLinkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAccountId: S.optional(S.String),
   }),
@@ -7491,7 +7464,7 @@ export interface AccountsLinkRequest {
   /** Action to perform for this link. The `"request"` action is only available to select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`request`" */
   action?: string;
 }
-export const AccountsLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkType: S.optional(S.String),
     linkedAccountId: S.optional(S.String),
@@ -7512,7 +7485,7 @@ export interface LinkAccountsRequest {
   /** Request body */
   body?: AccountsLinkRequest;
 }
-export const LinkAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -7532,11 +7505,10 @@ export interface AccountsLinkResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`". */
   kind?: string;
 }
-export const AccountsLinkResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<AccountsLinkResponse>;
+const AccountsLinkResponse = AccountsClaimWebsiteResponse as any as S.Schema<AccountsLinkResponse>;
 
 export type ListAccountsViewEnum = "MERCHANT" | "CSS";
-export const ListAccountsViewEnum = /*@__PURE__*/ S.String;
+const ListAccountsViewEnum = /*@__PURE__*/ S.String;
 
 export interface ListAccountsRequest {
   /** If set, only the accounts with the given name (case sensitive) will be returned. */
@@ -7552,7 +7524,7 @@ export interface ListAccountsRequest {
   /** If view is set to "css", only return accounts that are assigned label with given ID. */
   label?: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     view: S.optional(ListAccountsViewEnum.pipe(T.Query())),
@@ -7572,7 +7544,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 export interface AccountsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsListResponse`". */
@@ -7581,7 +7553,7 @@ export interface AccountsListResponse {
   nextPageToken?: string;
   resources?: AccountList;
 }
-export const AccountsListResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -7599,7 +7571,7 @@ export interface ListAccountsLabelsRequest {
   /** A page token, received from a previous `ListAccountLabels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLabels` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     accountId: S.String.pipe(T.Label()),
@@ -7616,9 +7588,7 @@ export const ListAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsLabelsRequest>;
 
 export type AccountLabelList = Array<AccountLabel>;
-export const AccountLabelList = /*@__PURE__*/ S.Array(
-  AccountLabel,
-) as any as S.Schema<AccountLabelList>;
+const AccountLabelList = /*@__PURE__*/ S.Array(AccountLabel) as any as S.Schema<AccountLabelList>;
 
 /** Response message for the `ListAccountLabels` method. */
 export interface ListAccountLabelsResponse {
@@ -7627,7 +7597,7 @@ export interface ListAccountLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAccountLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountLabels: S.optional(AccountLabelList),
     nextPageToken: S.optional(S.String),
@@ -7640,7 +7610,7 @@ export interface ListAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
 }
-export const ListAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7655,7 +7625,7 @@ export const ListAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsReturncarrierRequest>;
 
 export type AccountReturnCarrierList = Array<AccountReturnCarrier>;
-export const AccountReturnCarrierList = /*@__PURE__*/ S.Array(
+const AccountReturnCarrierList = /*@__PURE__*/ S.Array(
   AccountReturnCarrier,
 ) as any as S.Schema<AccountReturnCarrierList>;
 
@@ -7664,7 +7634,7 @@ export interface ListAccountReturnCarrierResponse {
   /** List of all available account return carriers for the merchant. */
   accountReturnCarriers?: AccountReturnCarrierList;
 }
-export const ListAccountReturnCarrierResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountReturnCarrierResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountReturnCarriers: S.optional(AccountReturnCarrierList),
   }),
@@ -7684,7 +7654,7 @@ export interface ListAccountstatusesRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-export const ListAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(StringList.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7703,7 +7673,7 @@ export const ListAccountstatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountstatusesRequest>;
 
 export type AccountStatusList = Array<AccountStatus>;
-export const AccountStatusList = /*@__PURE__*/ S.Array(
+const AccountStatusList = /*@__PURE__*/ S.Array(
   AccountStatus,
 ) as any as S.Schema<AccountStatusList>;
 
@@ -7714,7 +7684,7 @@ export interface AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
   nextPageToken?: string;
 }
-export const AccountstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     resources: S.optional(AccountStatusList),
@@ -7732,7 +7702,7 @@ export interface ListAccounttaxRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-export const ListAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7749,7 +7719,7 @@ export const ListAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccounttaxRequest>;
 
 export type AccountTaxList = Array<AccountTax>;
-export const AccountTaxList = /*@__PURE__*/ S.Array(AccountTax) as any as S.Schema<AccountTaxList>;
+const AccountTaxList = /*@__PURE__*/ S.Array(AccountTax) as any as S.Schema<AccountTaxList>;
 
 export interface AccounttaxListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxListResponse`". */
@@ -7758,7 +7728,7 @@ export interface AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
   nextPageToken?: string;
 }
-export const AccounttaxListResponse = /*@__PURE__*/ S.suspend(() =>
+const AccounttaxListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     resources: S.optional(AccountTaxList),
@@ -7776,7 +7746,7 @@ export interface ListCollectionsRequest {
   /** The maximum number of collections to return in the response, used for paging. Defaults to 50; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -7793,7 +7763,7 @@ export const ListCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCollectionsRequest>;
 
 export type CollectionList = Array<Collection>;
-export const CollectionList = /*@__PURE__*/ S.Array(Collection) as any as S.Schema<CollectionList>;
+const CollectionList = /*@__PURE__*/ S.Array(Collection) as any as S.Schema<CollectionList>;
 
 /** Response message for the ListCollections method. */
 export interface ListCollectionsResponse {
@@ -7802,7 +7772,7 @@ export interface ListCollectionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(CollectionList),
     nextPageToken: S.optional(S.String),
@@ -7819,7 +7789,7 @@ export interface ListCollectionstatusesRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const ListCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7836,7 +7806,7 @@ export const ListCollectionstatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCollectionstatusesRequest>;
 
 export type CollectionStatusList = Array<CollectionStatus>;
-export const CollectionStatusList = /*@__PURE__*/ S.Array(
+const CollectionStatusList = /*@__PURE__*/ S.Array(
   CollectionStatus,
 ) as any as S.Schema<CollectionStatusList>;
 
@@ -7847,7 +7817,7 @@ export interface ListCollectionStatusesResponse {
   /** The collectionstatuses listed. */
   resources?: CollectionStatusList;
 }
-export const ListCollectionStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     resources: S.optional(CollectionStatusList),
@@ -7866,7 +7836,7 @@ export interface ListConversionsourcesRequest {
   /** If true, also returns archived conversion sources. */
   showDeleted?: boolean;
 }
-export const ListConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -7884,7 +7854,7 @@ export const ListConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConversionsourcesRequest>;
 
 export type ConversionSourceList = Array<ConversionSource>;
-export const ConversionSourceList = /*@__PURE__*/ S.Array(
+const ConversionSourceList = /*@__PURE__*/ S.Array(
   ConversionSource,
 ) as any as S.Schema<ConversionSourceList>;
 
@@ -7895,7 +7865,7 @@ export interface ListConversionSourcesResponse {
   /** Token to be used to fetch the next results page. */
   nextPageToken?: string;
 }
-export const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConversionSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionSources: S.optional(ConversionSourceList),
     nextPageToken: S.optional(S.String),
@@ -7912,7 +7882,7 @@ export interface ListCssesRequest {
   /** Required. The CSS group ID of CSS domains to be listed. */
   cssGroupId: string;
 }
-export const ListCssesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCssesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7929,7 +7899,7 @@ export const ListCssesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCssesRequest>;
 
 export type CssList = Array<Css>;
-export const CssList = /*@__PURE__*/ S.Array(Css) as any as S.Schema<CssList>;
+const CssList = /*@__PURE__*/ S.Array(Css) as any as S.Schema<CssList>;
 
 /** The response message for the `ListCsses` method */
 export interface ListCssesResponse {
@@ -7938,7 +7908,7 @@ export interface ListCssesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListCssesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCssesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csses: S.optional(CssList),
     nextPageToken: S.optional(S.String),
@@ -7955,7 +7925,7 @@ export interface ListDatafeedsRequest {
   /** The ID of the account that manages the datafeeds. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const ListDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7972,7 +7942,7 @@ export const ListDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatafeedsRequest>;
 
 export type DatafeedList = Array<Datafeed>;
-export const DatafeedList = /*@__PURE__*/ S.Array(Datafeed) as any as S.Schema<DatafeedList>;
+const DatafeedList = /*@__PURE__*/ S.Array(Datafeed) as any as S.Schema<DatafeedList>;
 
 export interface DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
@@ -7981,7 +7951,7 @@ export interface DatafeedsListResponse {
   kind?: string;
   resources?: DatafeedList;
 }
-export const DatafeedsListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatafeedsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -7999,7 +7969,7 @@ export interface ListDatafeedstatusesRequest {
   /** The maximum number of products to return in the response, used for paging. */
   maxResults?: number;
 }
-export const ListDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8016,7 +7986,7 @@ export const ListDatafeedstatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatafeedstatusesRequest>;
 
 export type DatafeedStatusList = Array<DatafeedStatus>;
-export const DatafeedStatusList = /*@__PURE__*/ S.Array(
+const DatafeedStatusList = /*@__PURE__*/ S.Array(
   DatafeedStatus,
 ) as any as S.Schema<DatafeedStatusList>;
 
@@ -8027,7 +7997,7 @@ export interface DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
   nextPageToken?: string;
 }
-export const DatafeedstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatafeedstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(DatafeedStatusList),
     kind: S.optional(S.String),
@@ -8045,7 +8015,7 @@ export interface ListLiasettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
 }
-export const ListLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -8062,9 +8032,7 @@ export const ListLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLiasettingsRequest>;
 
 export type LiaSettingsList = Array<LiaSettings>;
-export const LiaSettingsList = /*@__PURE__*/ S.Array(
-  LiaSettings,
-) as any as S.Schema<LiaSettingsList>;
+const LiaSettingsList = /*@__PURE__*/ S.Array(LiaSettings) as any as S.Schema<LiaSettingsList>;
 
 export interface LiasettingsListResponse {
   resources?: LiaSettingsList;
@@ -8073,7 +8041,7 @@ export interface LiasettingsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListResponse`". */
   kind?: string;
 }
-export const LiasettingsListResponse = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(LiaSettingsList),
     nextPageToken: S.optional(S.String),
@@ -8093,7 +8061,7 @@ export interface ListlinksAccountsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-export const ListlinksAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListlinksAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -8116,7 +8084,7 @@ export interface LinkService {
   /** Status of the link Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
   status?: string;
 }
-export const LinkService = /*@__PURE__*/ S.suspend(() =>
+const LinkService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     status: S.optional(S.String),
@@ -8124,9 +8092,7 @@ export const LinkService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkService" }) as any as S.Schema<LinkService>;
 
 export type LinkServiceList = Array<LinkService>;
-export const LinkServiceList = /*@__PURE__*/ S.Array(
-  LinkService,
-) as any as S.Schema<LinkServiceList>;
+const LinkServiceList = /*@__PURE__*/ S.Array(LinkService) as any as S.Schema<LinkServiceList>;
 
 export interface LinkedAccount {
   /** The ID of the linked account. */
@@ -8134,7 +8100,7 @@ export interface LinkedAccount {
   /** List of provided services. */
   services?: LinkServiceList;
 }
-export const LinkedAccount = /*@__PURE__*/ S.suspend(() =>
+const LinkedAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedAccountId: S.optional(S.String),
     services: S.optional(LinkServiceList),
@@ -8142,7 +8108,7 @@ export const LinkedAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkedAccount" }) as any as S.Schema<LinkedAccount>;
 
 export type LinkedAccountList = Array<LinkedAccount>;
-export const LinkedAccountList = /*@__PURE__*/ S.Array(
+const LinkedAccountList = /*@__PURE__*/ S.Array(
   LinkedAccount,
 ) as any as S.Schema<LinkedAccountList>;
 
@@ -8154,7 +8120,7 @@ export interface AccountsListLinksResponse {
   /** The token for the retrieval of the next page of links. */
   nextPageToken?: string;
 }
-export const AccountsListLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsListLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     links: S.optional(LinkedAccountList),
@@ -8170,7 +8136,7 @@ export interface ListPosRequest {
   /** The ID of the POS or inventory data provider. */
   merchantId: string;
 }
-export const ListPosRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetMerchantId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -8184,14 +8150,14 @@ export const ListPosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPosRequest" }) as any as S.Schema<ListPosRequest>;
 
 export type PosStoreList = Array<PosStore>;
-export const PosStoreList = /*@__PURE__*/ S.Array(PosStore) as any as S.Schema<PosStoreList>;
+const PosStoreList = /*@__PURE__*/ S.Array(PosStore) as any as S.Schema<PosStoreList>;
 
 export interface PosListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posListResponse`". */
   kind?: string;
   resources?: PosStoreList;
 }
-export const PosListResponse = /*@__PURE__*/ S.suspend(() =>
+const PosListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     resources: S.optional(PosStoreList),
@@ -8201,7 +8167,7 @@ export const PosListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PosListResponse>;
 
 export interface ListposdataprovidersLiasettingsRequest {}
-export const ListposdataprovidersLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListposdataprovidersLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -8219,7 +8185,7 @@ export interface LiasettingsListPosDataProvidersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListPosDataProvidersResponse`". */
   kind?: string;
 }
-export const LiasettingsListPosDataProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const LiasettingsListPosDataProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     posDataProviders: S.optional(PosDataProvidersList),
     kind: S.optional(S.String),
@@ -8236,7 +8202,7 @@ export interface ListProductsRequest {
   /** The maximum number of products to return in the response, used for paging. The default value is 25. The maximum value is 250. */
   maxResults?: number;
 }
-export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8253,7 +8219,7 @@ export const ListProductsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProductsRequest>;
 
 export type ProductList = Array<Product>;
-export const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
+const ProductList = /*@__PURE__*/ S.Array(Product) as any as S.Schema<ProductList>;
 
 export interface ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
@@ -8262,7 +8228,7 @@ export interface ProductsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsListResponse`". */
   kind?: string;
 }
-export const ProductsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProductsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     resources: S.optional(ProductList),
@@ -8282,7 +8248,7 @@ export interface ListProductstatusesRequest {
   /** The ID of the account that contains the products. This account cannot be a multi-client account. */
   merchantId: string;
 }
-export const ListProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -8300,7 +8266,7 @@ export const ListProductstatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProductstatusesRequest>;
 
 export type ProductStatusList = Array<ProductStatus>;
-export const ProductStatusList = /*@__PURE__*/ S.Array(
+const ProductStatusList = /*@__PURE__*/ S.Array(
   ProductStatus,
 ) as any as S.Schema<ProductStatusList>;
 
@@ -8311,7 +8277,7 @@ export interface ProductstatusesListResponse {
   nextPageToken?: string;
   resources?: ProductStatusList;
 }
-export const ProductstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProductstatusesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -8333,7 +8299,7 @@ export interface ListPromotionsRequest {
   /** The two-letter ISO 639-1 language code associated with the promotions, used as a filter. */
   languageCode?: string;
 }
-export const ListPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     countryCode: S.optional(S.String.pipe(T.Query())),
@@ -8352,7 +8318,7 @@ export const ListPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPromotionsRequest>;
 
 export type PromotionList = Array<Promotion>;
-export const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
+const PromotionList = /*@__PURE__*/ S.Array(Promotion) as any as S.Schema<PromotionList>;
 
 /** Response message for Promotions.List method. */
 export interface ListPromotionResponse {
@@ -8361,7 +8327,7 @@ export interface ListPromotionResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListPromotionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPromotionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotions: S.optional(PromotionList),
     nextPageToken: S.optional(S.String),
@@ -8378,7 +8344,7 @@ export interface ListQuotasRequest {
   /** Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
 }
-export const ListQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -8405,7 +8371,7 @@ export interface MethodQuota {
   /** Output only. The maximum number of calls allowed per day for the method. */
   quotaLimit?: string;
 }
-export const MethodQuota = /*@__PURE__*/ S.suspend(() =>
+const MethodQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(S.String),
     quotaMinuteLimit: S.optional(S.String),
@@ -8415,9 +8381,7 @@ export const MethodQuota = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodQuota" }) as any as S.Schema<MethodQuota>;
 
 export type MethodQuotaList = Array<MethodQuota>;
-export const MethodQuotaList = /*@__PURE__*/ S.Array(
-  MethodQuota,
-) as any as S.Schema<MethodQuotaList>;
+const MethodQuotaList = /*@__PURE__*/ S.Array(MethodQuota) as any as S.Schema<MethodQuotaList>;
 
 /** Response message for the ListMethodQuotas method. */
 export interface ListMethodQuotasResponse {
@@ -8426,7 +8390,7 @@ export interface ListMethodQuotasResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListMethodQuotasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMethodQuotasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methodQuotas: S.optional(MethodQuotaList),
     nextPageToken: S.optional(S.String),
@@ -8443,7 +8407,7 @@ export interface ListRegionsRequest {
   /** Required. The id of the merchant for which to list region definitions. */
   merchantId: string;
 }
-export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8460,7 +8424,7 @@ export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRegionsRequest>;
 
 export type RegionList = Array<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
+const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 /** Response message for the `ListRegions` method. */
 export interface ListRegionsResponse {
@@ -8469,7 +8433,7 @@ export interface ListRegionsResponse {
   /** The regions from the specified merchant. */
   regions?: RegionList;
 }
-export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     regions: S.optional(RegionList),
@@ -8482,7 +8446,7 @@ export interface ListReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
 }
-export const ListReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
   }).pipe(
@@ -8497,7 +8461,7 @@ export const ListReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReturnpolicyonlineRequest>;
 
 export type ReturnPolicyOnlineList = Array<ReturnPolicyOnline>;
-export const ReturnPolicyOnlineList = /*@__PURE__*/ S.Array(
+const ReturnPolicyOnlineList = /*@__PURE__*/ S.Array(
   ReturnPolicyOnline,
 ) as any as S.Schema<ReturnPolicyOnlineList>;
 
@@ -8506,7 +8470,7 @@ export interface ListReturnPolicyOnlineResponse {
   /** The retrieved return policies. */
   returnPolicies?: ReturnPolicyOnlineList;
 }
-export const ListReturnPolicyOnlineResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReturnPolicyOnlineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPolicies: S.optional(ReturnPolicyOnlineList),
   }),
@@ -8522,7 +8486,7 @@ export interface ListShippingsettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
 }
-export const ListShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8539,7 +8503,7 @@ export const ListShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListShippingsettingsRequest>;
 
 export type ShippingSettingsList = Array<ShippingSettings>;
-export const ShippingSettingsList = /*@__PURE__*/ S.Array(
+const ShippingSettingsList = /*@__PURE__*/ S.Array(
   ShippingSettings,
 ) as any as S.Schema<ShippingSettingsList>;
 
@@ -8550,7 +8514,7 @@ export interface ShippingsettingsListResponse {
   kind?: string;
   resources?: ShippingSettingsList;
 }
-export const ShippingsettingsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ShippingsettingsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -8568,7 +8532,7 @@ export interface PatchAccountsLabelsRequest {
   /** Request body */
   body?: AccountLabel;
 }
-export const PatchAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     labelId: S.String.pipe(T.Label()),
@@ -8592,7 +8556,7 @@ export interface PatchAccountsReturncarrierRequest {
   /** Request body */
   body?: AccountReturnCarrier;
 }
-export const PatchAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsReturncarrierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     carrierAccountId: S.String.pipe(T.Label()),
@@ -8618,7 +8582,7 @@ export interface PatchConversionsourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-export const PatchConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -8645,7 +8609,7 @@ export interface PatchRegionsRequest {
   /** Request body */
   body?: Region;
 }
-export const PatchRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -8670,7 +8634,7 @@ export interface PatchReturnpolicyonlineRequest {
   /** Request body */
   body?: ReturnPolicyOnline;
 }
-export const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPolicyId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -8689,13 +8653,13 @@ export const PatchReturnpolicyonlineRequest = /*@__PURE__*/ S.suspend(() =>
 export type RenderAccountIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
   | "PRE_RENDERED_HTML";
-export const RenderAccountIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
+const RenderAccountIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
 
 export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
   | "BUILT_IN_USER_INPUT_ACTIONS";
-export const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
+const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
 
 /** The payload for configuring how the content should be rendered. */
 export interface RenderAccountIssuesRequestPayload {
@@ -8706,7 +8670,7 @@ export interface RenderAccountIssuesRequestPayload {
     | RenderAccountIssuesRequestPayloadUserInputActionOptionEnum
     | (string & {});
 }
-export const RenderAccountIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
+const RenderAccountIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentOption: S.optional(RenderAccountIssuesRequestPayloadContentOptionEnum),
     userInputActionOption: S.optional(RenderAccountIssuesRequestPayloadUserInputActionOptionEnum),
@@ -8725,7 +8689,7 @@ export interface RenderaccountissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderAccountIssuesRequestPayload;
 }
-export const RenderaccountissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderaccountissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String.pipe(T.Query())),
     merchantId: S.String.pipe(T.Label()),
@@ -8749,7 +8713,7 @@ export interface AlternateDisputeResolution {
   /** The label for the alternate dispute resolution link. */
   label?: string;
 }
-export const AlternateDisputeResolution = /*@__PURE__*/ S.suspend(() =>
+const AlternateDisputeResolution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     label: S.optional(S.String),
@@ -8765,7 +8729,7 @@ export interface BreakdownRegion {
   /** The localized name of the region. For region with code='001' the value is 'All countries' or the equivalent in other languages. */
   name?: string;
 }
-export const BreakdownRegion = /*@__PURE__*/ S.suspend(() =>
+const BreakdownRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     name: S.optional(S.String),
@@ -8775,7 +8739,7 @@ export const BreakdownRegion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BreakdownRegion>;
 
 export type BreakdownRegionList = Array<BreakdownRegion>;
-export const BreakdownRegionList = /*@__PURE__*/ S.Array(
+const BreakdownRegionList = /*@__PURE__*/ S.Array(
   BreakdownRegion,
 ) as any as S.Schema<BreakdownRegionList>;
 
@@ -8786,7 +8750,7 @@ export interface Breakdown {
   /** Lists of regions. Should be rendered as a title for this group of details. The full list should be shown to merchant. If the list is too long, it is recommended to make it expandable. */
   regions?: BreakdownRegionList;
 }
-export const Breakdown = /*@__PURE__*/ S.suspend(() =>
+const Breakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(StringList),
     regions: S.optional(BreakdownRegionList),
@@ -8794,10 +8758,10 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
 export type BreakdownList = Array<Breakdown>;
-export const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
+const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
 
 export type AccountIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
+const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of the issue. */
 export interface AccountIssueImpact {
@@ -8808,7 +8772,7 @@ export interface AccountIssueImpact {
   /** Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the merchant. For example: "Disapproves 90k offers in 25 countries" */
   message?: string;
 }
-export const AccountIssueImpact = /*@__PURE__*/ S.suspend(() =>
+const AccountIssueImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     breakdowns: S.optional(BreakdownList),
     severity: S.optional(AccountIssueImpactSeverityEnum),
@@ -8819,13 +8783,13 @@ export const AccountIssueImpact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountIssueImpact>;
 
 export type CalloutStyleHintEnum = "CALLOUT_STYLE_HINT_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
+const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
 
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
   | "QUESTION";
-export const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
+const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
 
 /** Block of text that may contain a tooltip with more information. */
 export interface TextWithTooltip {
@@ -8836,7 +8800,7 @@ export interface TextWithTooltip {
   /** The suggested type of an icon for tooltip, if a tooltip is present. */
   tooltipIconStyle?: TextWithTooltipTooltipIconStyleEnum;
 }
-export const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
+const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simpleTooltipValue: S.optional(S.String),
     simpleValue: S.optional(S.String),
@@ -8853,7 +8817,7 @@ export interface Callout {
   /** A full message that needs to be shown to the merchant. */
   fullMessage?: TextWithTooltip;
 }
-export const Callout = /*@__PURE__*/ S.suspend(() =>
+const Callout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     styleHint: S.optional(CalloutStyleHintEnum),
     fullMessage: S.optional(TextWithTooltip),
@@ -8864,7 +8828,7 @@ export type InputFieldTextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
   | "GENERIC_LONG_TEXT";
-export const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
+const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
 
 /** Text input allows merchants to provide a text value. */
 export interface InputFieldTextInput {
@@ -8877,7 +8841,7 @@ export interface InputFieldTextInput {
   /** Type of the text input */
   type?: InputFieldTextInputTypeEnum;
 }
-export const InputFieldTextInput = /*@__PURE__*/ S.suspend(() =>
+const InputFieldTextInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ariaLabel: S.optional(S.String),
     additionalInfo: S.optional(TextWithTooltip),
@@ -8897,7 +8861,7 @@ export interface InputFieldChoiceInputChoiceInputOption {
   /** Not for display but need to be sent back for the selected choice option. */
   id?: string;
 }
-export const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
+const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(TextWithTooltip),
     additionalInput: S.optional(S.suspend(() => InputField)),
@@ -8909,7 +8873,7 @@ export const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ S.suspend(()
 
 export type InputFieldChoiceInputChoiceInputOptionList =
   Array<InputFieldChoiceInputChoiceInputOption>;
-export const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ S.Array(
+const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ S.Array(
   InputFieldChoiceInputChoiceInputOption,
 ) as any as S.Schema<InputFieldChoiceInputChoiceInputOptionList>;
 
@@ -8918,7 +8882,7 @@ export interface InputFieldChoiceInput {
   /** A list of choices. Only one option can be selected. */
   options?: InputFieldChoiceInputChoiceInputOptionList;
 }
-export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
+const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(InputFieldChoiceInputChoiceInputOptionList),
   }),
@@ -8928,8 +8892,7 @@ export const InputFieldChoiceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Checkbox input allows merchants to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If merchant checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the merchant completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the merchant checks the box. */
 export interface InputFieldCheckboxInput {}
-export const InputFieldCheckboxInput =
-  DeleteAccountsResponse as any as S.Schema<InputFieldCheckboxInput>;
+const InputFieldCheckboxInput = DeleteAccountsResponse as any as S.Schema<InputFieldCheckboxInput>;
 
 /** Input field that needs to be available to the merchant. If the field is marked as required, then a value needs to be provided for a successful processing of the request. */
 export interface InputField {
@@ -8946,7 +8909,7 @@ export interface InputField {
   /** Input field to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). */
   checkboxInput?: InputFieldCheckboxInput;
 }
-export const InputField = /*@__PURE__*/ S.suspend(() =>
+const InputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textInput: S.optional(InputFieldTextInput),
     id: S.optional(S.String),
@@ -8958,7 +8921,7 @@ export const InputField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
 export type InputFieldList = Array<InputField>;
-export const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
+const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
 
 /** Flow that can be selected for an action. When merchant selects a flow, application should open a dialog with more information and input form. */
 export interface ActionFlow {
@@ -8977,7 +8940,7 @@ export interface ActionFlow {
   /** Label for the button to trigger the action from the action dialog. For example: "Request review" */
   dialogButtonLabel?: string;
 }
-export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
+const ActionFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     dialogCallout: S.optional(Callout),
@@ -8990,7 +8953,7 @@ export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
 export type ActionFlowList = Array<ActionFlow>;
-export const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
+const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
 
 /** Action that is implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the merchant. They can start the action only when they provided all required inputs. The application will request processing of the action by calling the [triggeraction method](https://developers.google.com/shopping-content/reference/rest/v2.1/merchantsupport/triggeraction). */
 export interface BuiltInUserInputAction {
@@ -8999,7 +8962,7 @@ export interface BuiltInUserInputAction {
   /** Internal details. Not for display but need to be sent back when triggering the action. */
   actionContext?: string;
 }
-export const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
+const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flows: S.optional(ActionFlowList),
     actionContext: S.optional(S.String),
@@ -9017,7 +8980,7 @@ export interface ActionReason {
   /** Detailed explanation of the reason. Should be displayed as a hint if present. */
   detail?: string;
 }
-export const ActionReason = /*@__PURE__*/ S.suspend(() =>
+const ActionReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     action: S.optional(S.suspend(() => Action)),
@@ -9026,9 +8989,7 @@ export const ActionReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionReason" }) as any as S.Schema<ActionReason>;
 
 export type ActionReasonList = Array<ActionReason>;
-export const ActionReasonList = /*@__PURE__*/ S.Array(
-  ActionReason,
-) as any as S.Schema<ActionReasonList>;
+const ActionReasonList = /*@__PURE__*/ S.Array(ActionReason) as any as S.Schema<ActionReasonList>;
 
 export type ExternalActionTypeEnum =
   | "EXTERNAL_ACTION_TYPE_UNSPECIFIED"
@@ -9036,7 +8997,7 @@ export type ExternalActionTypeEnum =
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
   | "VERIFY_IDENTITY_IN_MERCHANT_CENTER";
-export const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
+const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the merchant to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
 export interface ExternalAction {
@@ -9045,7 +9006,7 @@ export interface ExternalAction {
   /** URL to external system, for example Merchant Center, where the merchant can perform the action. */
   uri?: string;
 }
-export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
+const ExternalAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ExternalActionTypeEnum),
     uri: S.optional(S.String),
@@ -9063,7 +9024,7 @@ export type BuiltInSimpleActionTypeEnum =
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
   | "SHOW_ADDITIONAL_CONTENT";
-export const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
+const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Long text from external source. */
 export interface BuiltInSimpleActionAdditionalContent {
@@ -9072,7 +9033,7 @@ export interface BuiltInSimpleActionAdditionalContent {
   /** Title of the additional content; */
   title?: string;
 }
-export const BuiltInSimpleActionAdditionalContent = /*@__PURE__*/ S.suspend(() =>
+const BuiltInSimpleActionAdditionalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paragraphs: S.optional(StringList),
     title: S.optional(S.String),
@@ -9090,7 +9051,7 @@ export interface BuiltInSimpleAction {
   /** The attribute that needs to be updated. Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains a code for attribute, represented in snake_case. You can find a list of product's attributes, with their codes [here](https://support.google.com/merchants/answer/7052112). */
   attributeCode?: string;
 }
-export const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
+const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BuiltInSimpleActionTypeEnum),
     additionalContent: S.optional(BuiltInSimpleActionAdditionalContent),
@@ -9115,7 +9076,7 @@ export interface Action {
   /** Action implemented and performed in (your) third-party application. The application should point the merchant to the place, where they can access the corresponding functionality or provide instructions, if the specific functionality is not available. */
   builtinSimpleAction?: BuiltInSimpleAction;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
+const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buttonLabel: S.optional(S.String),
     isAvailable: S.optional(S.Boolean),
@@ -9127,7 +9088,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 export type ActionList = Array<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
+const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** An issue affecting specific merchant. */
 export interface AccountIssue {
@@ -9142,7 +9103,7 @@ export interface AccountIssue {
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to merchant when they expand the issue. */
   actions?: ActionList;
 }
-export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
+const AccountIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
     impact: S.optional(AccountIssueImpact),
@@ -9153,9 +9114,7 @@ export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
 export type AccountIssueList = Array<AccountIssue>;
-export const AccountIssueList = /*@__PURE__*/ S.Array(
-  AccountIssue,
-) as any as S.Schema<AccountIssueList>;
+const AccountIssueList = /*@__PURE__*/ S.Array(AccountIssue) as any as S.Schema<AccountIssueList>;
 
 /** Response containing support content and actions for listed account issues. */
 export interface RenderAccountIssuesResponse {
@@ -9164,7 +9123,7 @@ export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
   issues?: AccountIssueList;
 }
-export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alternateDisputeResolution: S.optional(AlternateDisputeResolution),
     issues: S.optional(AccountIssueList),
@@ -9176,14 +9135,10 @@ export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
 export type RenderProductIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
   | "PRE_RENDERED_HTML";
-export const RenderProductIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
-
 export type RenderProductIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
   | "BUILT_IN_USER_INPUT_ACTIONS";
-export const RenderProductIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
-
 /** The payload for configuring how the content should be rendered. */
 export interface RenderProductIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
@@ -9193,7 +9148,7 @@ export interface RenderProductIssuesRequestPayload {
     | RenderProductIssuesRequestPayloadUserInputActionOptionEnum
     | (string & {});
 }
-export const RenderProductIssuesRequestPayload =
+const RenderProductIssuesRequestPayload =
   RenderAccountIssuesRequestPayload as any as S.Schema<RenderProductIssuesRequestPayload>;
 
 export interface RenderproductissuesMerchantsupportRequest {
@@ -9208,7 +9163,7 @@ export interface RenderproductissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderProductIssuesRequestPayload;
 }
-export const RenderproductissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderproductissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String.pipe(T.Query())),
     productId: S.String.pipe(T.Label()),
@@ -9227,7 +9182,7 @@ export const RenderproductissuesMerchantsupportRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RenderproductissuesMerchantsupportRequest>;
 
 export type ProductIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
+const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Overall impact of product issue. */
 export interface ProductIssueImpact {
@@ -9238,7 +9193,7 @@ export interface ProductIssueImpact {
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
   breakdowns?: BreakdownList;
 }
-export const ProductIssueImpact = /*@__PURE__*/ S.suspend(() =>
+const ProductIssueImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(ProductIssueImpactSeverityEnum),
     message: S.optional(S.String),
@@ -9261,7 +9216,7 @@ export interface ProductIssue {
   /** Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes that can be used to customize the style of the content. Always sanitize the HTML before embedding it directly to your application. The sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `issue-detail` - top level container for the detail of the issue * `callout-banners` - section of the `issue-detail` with callout banners * `callout-banner` - single callout banner, inside `callout-banners` * `callout-banner-info` - callout with important information (default) * `callout-banner-warning` - callout with a warning * `callout-banner-error` - callout informing about an error (most severe) * `issue-content` - section of the `issue-detail`, contains multiple `content-element` * `content-element` - content element such as a list, link or paragraph, inside `issue-content` * `root-causes` - unordered list with items describing root causes of the issue, inside `issue-content` * `root-causes-intro` - intro text before the `root-causes` list, inside `issue-content` * `segment` - section of the text, `span` inside paragraph * `segment-attribute` - section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` - section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text. * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph that explains how the issue was identified. * `list-intro` - marks the paragraph that contains an intro for a list. This paragraph will be always followed by a list. * `new-element` - Present for new elements added to the pre-rendered content in the future. To make sure that a new content element does not break your style, you can hide everything with this class. */
   prerenderedContent?: string;
 }
-export const ProductIssue = /*@__PURE__*/ S.suspend(() =>
+const ProductIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     actions: S.optional(ActionList),
@@ -9272,9 +9227,7 @@ export const ProductIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductIssue" }) as any as S.Schema<ProductIssue>;
 
 export type ProductIssueList = Array<ProductIssue>;
-export const ProductIssueList = /*@__PURE__*/ S.Array(
-  ProductIssue,
-) as any as S.Schema<ProductIssueList>;
+const ProductIssueList = /*@__PURE__*/ S.Array(ProductIssue) as any as S.Schema<ProductIssueList>;
 
 /** Response containing support content and actions for listed product issues. */
 export interface RenderProductIssuesResponse {
@@ -9283,7 +9236,7 @@ export interface RenderProductIssuesResponse {
   /** Alternate Dispute Resolution (ADR) is deprecated. Use `prerendered_out_of_court_dispute_settlement` instead. */
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
-export const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderProductIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(ProductIssueList),
     alternateDisputeResolution: S.optional(AlternateDisputeResolution),
@@ -9296,7 +9249,7 @@ export type ReportInteractionRequestInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "INTERACTION_DISMISS"
   | "INTERACTION_CLICK";
-export const ReportInteractionRequestInteractionTypeEnum = /*@__PURE__*/ S.String;
+const ReportInteractionRequestInteractionTypeEnum = /*@__PURE__*/ S.String;
 
 /** Request to report interactions on a recommendation. */
 export interface ReportInteractionRequest {
@@ -9309,7 +9262,7 @@ export interface ReportInteractionRequest {
   /** Required. Token of the response when recommendation was returned. */
   responseToken?: string;
 }
-export const ReportInteractionRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportInteractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interactionType: S.optional(ReportInteractionRequestInteractionTypeEnum),
     type: S.optional(S.String),
@@ -9326,7 +9279,7 @@ export interface ReportInteractionRecommendationsRequest {
   /** Request body */
   body?: ReportInteractionRequest;
 }
-export const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(ReportInteractionRequest.pipe(T.HttpBody())),
@@ -9342,7 +9295,7 @@ export const ReportInteractionRecommendationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ReportInteractionRecommendationsRequest>;
 
 export interface ReportInteractionRecommendationsResponse {}
-export const ReportInteractionRecommendationsResponse =
+const ReportInteractionRecommendationsResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<ReportInteractionRecommendationsResponse>;
 
 export interface RequestgmbaccessLiasettingsRequest {
@@ -9353,7 +9306,7 @@ export interface RequestgmbaccessLiasettingsRequest {
   /** The ID of the account for which Business Profile access is requested. */
   accountId: string;
 }
-export const RequestgmbaccessLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestgmbaccessLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gmbEmail: S.String.pipe(T.Query()),
     merchantId: S.String.pipe(T.Label()),
@@ -9373,7 +9326,7 @@ export interface LiasettingsRequestGmbAccessResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`". */
   kind?: string;
 }
-export const LiasettingsRequestGmbAccessResponse =
+const LiasettingsRequestGmbAccessResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
 
 export interface RequestinventoryverificationLiasettingsRequest {
@@ -9384,7 +9337,7 @@ export interface RequestinventoryverificationLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-export const RequestinventoryverificationLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestinventoryverificationLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -9404,14 +9357,14 @@ export interface LiasettingsRequestInventoryVerificationResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestInventoryVerificationResponse`". */
   kind?: string;
 }
-export const LiasettingsRequestInventoryVerificationResponse =
+const LiasettingsRequestInventoryVerificationResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
 
 export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
   | "PHONE_CALL";
-export const RequestPhoneVerificationRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
+const RequestPhoneVerificationRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** Request message for the RequestPhoneVerification method. */
 export interface RequestPhoneVerificationRequest {
@@ -9426,7 +9379,7 @@ export interface RequestPhoneVerificationRequest {
   /** Phone number to be verified. */
   phoneNumber?: string;
 }
-export const RequestPhoneVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestPhoneVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneVerificationMethod: S.optional(RequestPhoneVerificationRequestPhoneVerificationMethodEnum),
     phoneRegionCode: S.optional(S.String),
@@ -9445,7 +9398,7 @@ export interface RequestphoneverificationAccountsRequest {
   /** Request body */
   body?: RequestPhoneVerificationRequest;
 }
-export const RequestphoneverificationAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestphoneverificationAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -9466,7 +9419,7 @@ export interface RequestPhoneVerificationResponse {
   /** The verification ID to use in subsequent calls to `verifyphonenumber`. */
   verificationId?: string;
 }
-export const RequestPhoneVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestPhoneVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationId: S.optional(S.String),
   }),
@@ -9479,7 +9432,7 @@ export interface RequestReviewFreeListingsRequest {
   /** The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which review is to be requested. */
   regionCode?: string;
 }
-export const RequestReviewFreeListingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestReviewFreeListingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
   }),
@@ -9493,7 +9446,7 @@ export interface RequestreviewFreelistingsprogramRequest {
   /** Request body */
   body?: RequestReviewFreeListingsRequest;
 }
-export const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
@@ -9509,20 +9462,18 @@ export const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RequestreviewFreelistingsprogramRequest>;
 
 export interface RequestreviewFreelistingsprogramResponse {}
-export const RequestreviewFreelistingsprogramResponse =
+const RequestreviewFreelistingsprogramResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
 
 /** Request message for the RequestReviewShoppingAds program method. */
 export type RequestReviewShoppingAdsRequest = RequestReviewFreeListingsRequest;
-export const RequestReviewShoppingAdsRequest = RequestReviewFreeListingsRequest;
-
 export interface RequestreviewShoppingadsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
   /** Request body */
   body?: RequestReviewFreeListingsRequest;
 }
-export const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
@@ -9538,7 +9489,7 @@ export const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RequestreviewShoppingadsprogramRequest>;
 
 export interface RequestreviewShoppingadsprogramResponse {}
-export const RequestreviewShoppingadsprogramResponse =
+const RequestreviewShoppingadsprogramResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
 
 export interface PosSaleRequest {
@@ -9561,7 +9512,7 @@ export interface PosSaleRequest {
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
 }
-export const PosSaleRequest = /*@__PURE__*/ S.suspend(() =>
+const PosSaleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gtin: S.optional(S.String),
     itemId: S.optional(S.String),
@@ -9583,7 +9534,7 @@ export interface SalePosRequest {
   /** Request body */
   body?: PosSaleRequest;
 }
-export const SalePosRequest = /*@__PURE__*/ S.suspend(() =>
+const SalePosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetMerchantId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -9619,7 +9570,7 @@ export interface PosSaleResponse {
   /** A unique ID to group items from the same sale event. */
   saleId?: string;
 }
-export const PosSaleResponse = /*@__PURE__*/ S.suspend(() =>
+const PosSaleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemId: S.optional(S.String),
     timestamp: S.optional(S.String),
@@ -9645,7 +9596,7 @@ export interface SearchRequest {
   /** Number of ReportRows to retrieve in a single page. Defaults to 1000. Values above 5000 are coerced to 5000. */
   pageSize?: number;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     pageToken: S.optional(S.String),
@@ -9659,7 +9610,7 @@ export interface SearchReportsRequest {
   /** Request body */
   body?: SearchRequest;
 }
-export const SearchReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(SearchRequest.pipe(T.HttpBody())),
@@ -9683,7 +9634,7 @@ export interface Content_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Content_Date = /*@__PURE__*/ S.suspend(() =>
+const Content_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -9712,7 +9663,7 @@ export interface TopicTrends {
   /** Search interest in the last 120 days, with the same normalization as search_interest. This field is only present for a past date. */
   last120DaysSearchInterest?: number;
 }
-export const TopicTrends = /*@__PURE__*/ S.suspend(() =>
+const TopicTrends = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(Content_Date),
     last90DaysSearchInterest: S.optional(S.Number),
@@ -9731,14 +9682,14 @@ export type ProductClusterBrandInventoryStatusEnum =
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
-export const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
+const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 export type ProductClusterInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
-export const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
+const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
 
 /** Product cluster fields. A product cluster is a grouping for different offers that represent the same product. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductCluster {
@@ -9763,7 +9714,7 @@ export interface ProductCluster {
   /** GTINs of example variants of the product cluster. */
   variantGtins?: StringList;
 }
-export const ProductCluster = /*@__PURE__*/ S.suspend(() =>
+const ProductCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     brandInventoryStatus: S.optional(ProductClusterBrandInventoryStatusEnum),
@@ -9785,7 +9736,7 @@ export type BestSellersRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
-export const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
+const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersPreviousRelativeDemandEnum =
   | "RELATIVE_DEMAND_UNSPECIFIED"
@@ -9794,20 +9745,20 @@ export type BestSellersPreviousRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
-export const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
+const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersReportGranularityEnum =
   | "REPORT_GRANULARITY_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY";
-export const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
+const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
 
 export type BestSellersRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
   | "RISER";
-export const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
+const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679). */
 export interface BestSellers {
@@ -9830,7 +9781,7 @@ export interface BestSellers {
   /** Change in the estimated demand. Whether it rose, sank or remained flat. */
   relativeDemandChange?: BestSellersRelativeDemandChangeEnum;
 }
-export const BestSellers = /*@__PURE__*/ S.suspend(() =>
+const BestSellers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relativeDemand: S.optional(BestSellersRelativeDemandEnum),
     categoryId: S.optional(S.String),
@@ -9845,7 +9796,7 @@ export const BestSellers = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BestSellers" }) as any as S.Schema<BestSellers>;
 
 export type CompetitiveVisibilityTrafficSourceEnum = "UNKNOWN" | "ORGANIC" | "ADS" | "ALL";
-export const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
+const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
 
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
 export interface CompetitiveVisibility {
@@ -9876,7 +9827,7 @@ export interface CompetitiveVisibility {
   /** The country where impression appeared. Required in the `SELECT` clause. A `WHERE` condition on `competitive_visibility.country_code` is required in the query. */
   countryCode?: string;
 }
-export const CompetitiveVisibility = /*@__PURE__*/ S.suspend(() =>
+const CompetitiveVisibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     higherPositionRate: S.optional(S.Number),
     pageOverlapRate: S.optional(S.Number),
@@ -9905,7 +9856,7 @@ export interface PriceCompetitiveness {
   /** The country of the price benchmark (ISO 3166 code). */
   countryCode?: string;
 }
-export const PriceCompetitiveness = /*@__PURE__*/ S.suspend(() =>
+const PriceCompetitiveness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benchmarkPriceMicros: S.optional(S.String),
     benchmarkPriceCurrencyCode: S.optional(S.String),
@@ -9964,7 +9915,7 @@ export interface Metrics {
   /** *Deprecated*: This field is no longer supported and retrieving it returns 0 starting from May 2024. Average order size - the average number of items in an order. **This metric cannot be segmented by product dimensions and customer_country_code.** */
   aos?: number;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionRate: S.optional(S.Number),
     itemDaysToShip: S.optional(S.Number),
@@ -9997,7 +9948,7 @@ export type PriceInsightsEffectivenessEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
+const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
 
 /** Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926 */
 export interface PriceInsights {
@@ -10020,7 +9971,7 @@ export interface PriceInsights {
   /** The predicted change in conversions as a fraction after introducing the suggested price compared to current active price. For example, 0.05 is a 5% predicted increase in conversions). */
   predictedConversionsChangeFraction?: number;
 }
-export const PriceInsights = /*@__PURE__*/ S.suspend(() =>
+const PriceInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveness: S.optional(PriceInsightsEffectivenessEnum),
     predictedMonthlyGrossProfitChangeCurrencyCode: S.optional(S.String),
@@ -10039,14 +9990,14 @@ export interface Brand {
   /** Name of the brand. */
   name?: string;
 }
-export const Brand = /*@__PURE__*/ S.suspend(() =>
+const Brand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Brand" }) as any as S.Schema<Brand>;
 
 export type ProductViewChannelEnum = "CHANNEL_UNSPECIFIED" | "LOCAL" | "ONLINE";
-export const ProductViewChannelEnum = /*@__PURE__*/ S.String;
+const ProductViewChannelEnum = /*@__PURE__*/ S.String;
 
 /** Type of the item issue. */
 export interface ProductViewItemIssueItemIssueType {
@@ -10055,7 +10006,7 @@ export interface ProductViewItemIssueItemIssueType {
   /** Error code of the issue. */
   code?: string;
 }
-export const ProductViewItemIssueItemIssueType = /*@__PURE__*/ S.suspend(() =>
+const ProductViewItemIssueItemIssueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canonicalAttribute: S.optional(S.String),
     code: S.optional(S.String),
@@ -10073,7 +10024,7 @@ export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of demoted countries in the destination. */
   demotedCountries?: StringList;
 }
-export const ProductViewItemIssueIssueSeverityPerDestination = /*@__PURE__*/ S.suspend(() =>
+const ProductViewItemIssueIssueSeverityPerDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disapprovedCountries: S.optional(StringList),
     destination: S.optional(S.String),
@@ -10085,7 +10036,7 @@ export const ProductViewItemIssueIssueSeverityPerDestination = /*@__PURE__*/ S.s
 
 export type ProductViewItemIssueIssueSeverityPerDestinationList =
   Array<ProductViewItemIssueIssueSeverityPerDestination>;
-export const ProductViewItemIssueIssueSeverityPerDestinationList = /*@__PURE__*/ S.Array(
+const ProductViewItemIssueIssueSeverityPerDestinationList = /*@__PURE__*/ S.Array(
   ProductViewItemIssueIssueSeverityPerDestination,
 ) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestinationList>;
 
@@ -10094,7 +10045,7 @@ export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   | "DISAPPROVED"
   | "DEMOTED"
   | "PENDING";
-export const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
+const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
 
 /** Severity of an issue per destination in a region, and aggregated severity. */
 export interface ProductViewItemIssueItemIssueSeverity {
@@ -10103,7 +10054,7 @@ export interface ProductViewItemIssueItemIssueSeverity {
   /** Severity of an issue aggregated for destination. */
   aggregatedSeverity?: ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum;
 }
-export const ProductViewItemIssueItemIssueSeverity = /*@__PURE__*/ S.suspend(() =>
+const ProductViewItemIssueItemIssueSeverity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severityPerDestination: S.optional(ProductViewItemIssueIssueSeverityPerDestinationList),
     aggregatedSeverity: S.optional(ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum),
@@ -10116,7 +10067,7 @@ export type ProductViewItemIssueResolutionEnum =
   | "UNKNOWN"
   | "MERCHANT_ACTION"
   | "PENDING_PROCESSING";
-export const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
+const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
 
 /** Item issue associated with the product. */
 export interface ProductViewItemIssue {
@@ -10127,7 +10078,7 @@ export interface ProductViewItemIssue {
   /** Item issue resolution. */
   resolution?: ProductViewItemIssueResolutionEnum;
 }
-export const ProductViewItemIssue = /*@__PURE__*/ S.suspend(() =>
+const ProductViewItemIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueType: S.optional(ProductViewItemIssueItemIssueType),
     severity: S.optional(ProductViewItemIssueItemIssueSeverity),
@@ -10138,7 +10089,7 @@ export const ProductViewItemIssue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductViewItemIssue>;
 
 export type ProductViewItemIssueList = Array<ProductViewItemIssue>;
-export const ProductViewItemIssueList = /*@__PURE__*/ S.Array(
+const ProductViewItemIssueList = /*@__PURE__*/ S.Array(
   ProductViewItemIssue,
 ) as any as S.Schema<ProductViewItemIssueList>;
 
@@ -10147,7 +10098,7 @@ export type ProductViewClickPotentialEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
+const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
 
 export type ProductViewAggregatedDestinationStatusEnum =
   | "AGGREGATED_STATUS_UNSPECIFIED"
@@ -10155,7 +10106,7 @@ export type ProductViewAggregatedDestinationStatusEnum =
   | "PENDING"
   | "ELIGIBLE_LIMITED"
   | "ELIGIBLE";
-export const ProductViewAggregatedDestinationStatusEnum = /*@__PURE__*/ S.String;
+const ProductViewAggregatedDestinationStatusEnum = /*@__PURE__*/ S.String;
 
 /** Product fields. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductView {
@@ -10218,7 +10169,7 @@ export interface ProductView {
   /** Aggregated destination status. */
   aggregatedDestinationStatus?: ProductViewAggregatedDestinationStatusEnum;
 }
-export const ProductView = /*@__PURE__*/ S.suspend(() =>
+const ProductView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productTypeL5: S.optional(S.String),
     categoryL1: S.optional(S.String),
@@ -10258,7 +10209,7 @@ export type SegmentsProgramEnum =
   | "FREE_PRODUCT_LISTING"
   | "FREE_LOCAL_PRODUCT_LISTING"
   | "BUY_ON_GOOGLE_LISTING";
-export const SegmentsProgramEnum = /*@__PURE__*/ S.String;
+const SegmentsProgramEnum = /*@__PURE__*/ S.String;
 
 /** Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query. */
 export interface Segments {
@@ -10309,7 +10260,7 @@ export interface Segments {
   /** [Product category (5th level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type) in Google's product taxonomy. */
   categoryL5?: string;
 }
-export const Segments = /*@__PURE__*/ S.suspend(() =>
+const Segments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryL2: S.optional(S.String),
     customLabel1: S.optional(S.String),
@@ -10360,7 +10311,7 @@ export interface ReportRow {
   /** Segmentation dimensions requested by the merchant in the query. Dimension values are only set for dimensions requested explicitly in the query. */
   segments?: Segments;
 }
-export const ReportRow = /*@__PURE__*/ S.suspend(() =>
+const ReportRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicTrends: S.optional(TopicTrends),
     productCluster: S.optional(ProductCluster),
@@ -10376,7 +10327,7 @@ export const ReportRow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportRow" }) as any as S.Schema<ReportRow>;
 
 export type ReportRowList = Array<ReportRow>;
-export const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
+const ReportRowList = /*@__PURE__*/ S.Array(ReportRow) as any as S.Schema<ReportRowList>;
 
 /** Response message for the ReportService.Search method. */
 export interface SearchResponse {
@@ -10385,7 +10336,7 @@ export interface SearchResponse {
   /** Rows that matched the search query. */
   results?: ReportRowList;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     results: S.optional(ReportRowList),
@@ -10406,7 +10357,7 @@ export interface SetinventoryverificationcontactLiasettingsRequest {
   /** The country for which inventory verification is requested. */
   country: string;
 }
-export const SetinventoryverificationcontactLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetinventoryverificationcontactLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactName: S.String.pipe(T.Query()),
     merchantId: S.String.pipe(T.Label()),
@@ -10429,7 +10380,7 @@ export interface LiasettingsSetInventoryVerificationContactResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetInventoryVerificationContactResponse`". */
   kind?: string;
 }
-export const LiasettingsSetInventoryVerificationContactResponse =
+const LiasettingsSetInventoryVerificationContactResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
 
 export interface SetomnichannelexperienceLiasettingsRequest {
@@ -10444,7 +10395,7 @@ export interface SetomnichannelexperienceLiasettingsRequest {
   /** The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`" */
   pickupTypes?: StringList;
 }
-export const SetomnichannelexperienceLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetomnichannelexperienceLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     lsfType: S.optional(S.String.pipe(T.Query())),
@@ -10474,7 +10425,7 @@ export interface SetposdataproviderLiasettingsRequest {
   /** The country for which the POS data provider is selected. */
   country: string;
 }
-export const SetposdataproviderLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetposdataproviderLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     posExternalAccountId: S.optional(S.String.pipe(T.Query())),
@@ -10496,7 +10447,7 @@ export interface LiasettingsSetPosDataProviderResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`". */
   kind?: string;
 }
-export const LiasettingsSetPosDataProviderResponse =
+const LiasettingsSetPosDataProviderResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
 
 /** Value for choice input field. */
@@ -10504,7 +10455,7 @@ export interface InputValueChoiceInputValue {
   /** Required. Id of the option that was selected by the merchant. */
   choiceInputOptionId?: string;
 }
-export const InputValueChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
+const InputValueChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choiceInputOptionId: S.optional(S.String),
   }),
@@ -10517,7 +10468,7 @@ export interface InputValueTextInputValue {
   /** Required. Text provided by the merchant. */
   value?: string;
 }
-export const InputValueTextInputValue = /*@__PURE__*/ S.suspend(() =>
+const InputValueTextInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -10530,7 +10481,7 @@ export interface InputValueCheckboxInputValue {
   /** Required. True if the merchant checked the box field. False otherwise. */
   value?: boolean;
 }
-export const InputValueCheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
+const InputValueCheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Boolean),
   }),
@@ -10549,7 +10500,7 @@ export interface InputValue {
   /** Value for checkbox input field. */
   checkboxInputValue?: InputValueCheckboxInputValue;
 }
-export const InputValue = /*@__PURE__*/ S.suspend(() =>
+const InputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choiceInputValue: S.optional(InputValueChoiceInputValue),
     inputFieldId: S.optional(S.String),
@@ -10559,7 +10510,7 @@ export const InputValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
 export type InputValueList = Array<InputValue>;
-export const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
+const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
 
 /** Input provided by the merchant. */
 export interface ActionInput {
@@ -10568,7 +10519,7 @@ export interface ActionInput {
   /** Required. Values for input fields. */
   inputValues?: InputValueList;
 }
-export const ActionInput = /*@__PURE__*/ S.suspend(() =>
+const ActionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionFlowId: S.optional(S.String),
     inputValues: S.optional(InputValueList),
@@ -10582,7 +10533,7 @@ export interface TriggerActionPayload {
   /** Required. The context from the selected action. The value is obtained from rendered issues and needs to be sent back to identify the action that is being triggered. */
   actionContext?: string;
 }
-export const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionInput: S.optional(ActionInput),
     actionContext: S.optional(S.String),
@@ -10599,7 +10550,7 @@ export interface TriggeractionMerchantsupportRequest {
   /** Request body */
   body?: TriggerActionPayload;
 }
-export const TriggeractionMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggeractionMerchantsupportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     languageCode: S.optional(S.String.pipe(T.Query())),
@@ -10620,7 +10571,7 @@ export interface TriggerActionResponse {
   /** The message for merchant. */
   message?: string;
 }
-export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -10630,8 +10581,6 @@ export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for the UndeleteConversionSource method. */
 export type UndeleteConversionSourceRequest = InputFieldCheckboxInput;
-export const UndeleteConversionSourceRequest = InputFieldCheckboxInput;
-
 export interface UndeleteConversionsourcesRequest {
   /** Required. The ID of the conversion source to be undeleted. */
   conversionSourceId: string;
@@ -10640,7 +10589,7 @@ export interface UndeleteConversionsourcesRequest {
   /** Request body */
   body?: InputFieldCheckboxInput;
 }
-export const UndeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversionSourceId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10657,7 +10606,7 @@ export const UndeleteConversionsourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UndeleteConversionsourcesRequest>;
 
 export interface UndeleteConversionsourcesResponse {}
-export const UndeleteConversionsourcesResponse =
+const UndeleteConversionsourcesResponse =
   DeleteAccountsReturncarrierResponse as any as S.Schema<UndeleteConversionsourcesResponse>;
 
 export interface UpdateAccountsRequest {
@@ -10668,7 +10617,7 @@ export interface UpdateAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const UpdateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10692,7 +10641,7 @@ export interface UpdateAccounttaxRequest {
   /** Request body */
   body?: AccountTax;
 }
-export const UpdateAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccounttaxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10716,7 +10665,7 @@ export interface UpdateDatafeedsRequest {
   /** Request body */
   body?: Datafeed;
 }
-export const UpdateDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatafeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     datafeedId: S.String.pipe(T.Label()),
@@ -10736,7 +10685,7 @@ export interface AccountsUpdateLabelsRequest {
   /** The IDs of labels that should be assigned to the account. */
   labelIds?: StringList;
 }
-export const AccountsUpdateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsUpdateLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelIds: S.optional(StringList),
   }),
@@ -10752,7 +10701,7 @@ export interface UpdatelabelsAccountsRequest {
   /** Request body */
   body?: AccountsUpdateLabelsRequest;
 }
-export const UpdatelabelsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatelabelsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -10772,7 +10721,7 @@ export interface AccountsUpdateLabelsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`". */
   kind?: string;
 }
-export const AccountsUpdateLabelsResponse =
+const AccountsUpdateLabelsResponse =
   AccountsClaimWebsiteResponse as any as S.Schema<AccountsUpdateLabelsResponse>;
 
 /** The IDs of labels that should be assigned to the CSS domain. */
@@ -10780,7 +10729,7 @@ export interface LabelIds {
   /** The list of label IDs. */
   labelIds?: StringList;
 }
-export const LabelIds = /*@__PURE__*/ S.suspend(() =>
+const LabelIds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelIds: S.optional(StringList),
   }),
@@ -10794,7 +10743,7 @@ export interface UpdatelabelsCssesRequest {
   /** Request body */
   body?: LabelIds;
 }
-export const UpdatelabelsCssesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatelabelsCssesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cssGroupId: S.String.pipe(T.Label()),
     cssDomainId: S.String.pipe(T.Label()),
@@ -10818,7 +10767,7 @@ export interface UpdateLiasettingsRequest {
   /** Request body */
   body?: LiaSettings;
 }
-export const UpdateLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLiasettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10844,7 +10793,7 @@ export interface UpdateProductsRequest {
   /** Request body */
   body?: Product;
 }
-export const UpdateProductsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10867,7 +10816,7 @@ export interface UpdatePubsubnotificationsettingsRequest {
   /** Request body */
   body?: PubsubNotificationSettings;
 }
-export const UpdatePubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePubsubnotificationsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     body: S.optional(PubsubNotificationSettings.pipe(T.HttpBody())),
@@ -10890,7 +10839,7 @@ export interface UpdateShippingsettingsRequest {
   /** Request body */
   body?: ShippingSettings;
 }
-export const UpdateShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateShippingsettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     merchantId: S.String.pipe(T.Label()),
     accountId: S.String.pipe(T.Label()),
@@ -10910,7 +10859,7 @@ export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
   | "PHONE_CALL";
-export const VerifyPhoneNumberRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
+const VerifyPhoneNumberRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
 
 /** Request message for the VerifyPhoneNumber method. */
 export interface VerifyPhoneNumberRequest {
@@ -10921,7 +10870,7 @@ export interface VerifyPhoneNumberRequest {
   /** The verification ID returned by `requestphoneverification`. */
   verificationId?: string;
 }
-export const VerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationCode: S.optional(S.String),
     phoneVerificationMethod: S.optional(VerifyPhoneNumberRequestPhoneVerificationMethodEnum),
@@ -10939,7 +10888,7 @@ export interface VerifyphonenumberAccountsRequest {
   /** Request body */
   body?: VerifyPhoneNumberRequest;
 }
-export const VerifyphonenumberAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyphonenumberAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label()),
     merchantId: S.String.pipe(T.Label()),
@@ -10960,7 +10909,7 @@ export interface VerifyPhoneNumberResponse {
   /** Verified phone number if verification is successful. This phone number can only be replaced by another verified phone number. */
   verifiedPhoneNumber?: string;
 }
-export const VerifyPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifiedPhoneNumber: S.optional(S.String),
   }),

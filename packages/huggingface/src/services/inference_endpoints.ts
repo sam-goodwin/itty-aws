@@ -12,7 +12,7 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type CheckEndpointAccessRequestPerms = "read" | "write" | "infer";
-export const CheckEndpointAccessRequestPerms = S.String;
+const CheckEndpointAccessRequestPerms = S.String;
 
 export interface CheckEndpointAccessRequest {
   namespace: string;
@@ -25,7 +25,7 @@ export interface CheckEndpointAccessRequest {
   resource_group_id?: string;
   repo_id?: string;
 }
-export const CheckEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     endpoint: S.String.pipe(T.Label()),
@@ -51,7 +51,7 @@ export interface CheckEndpointAccessResponseNamespace {
   id: string;
   name: string;
 }
-export const CheckEndpointAccessResponseNamespace = /*@__PURE__*/ S.suspend(() =>
+const CheckEndpointAccessResponseNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -65,7 +65,7 @@ export interface CheckEndpointAccessResponseUser {
   name: string;
   hasHfLevelAccess?: boolean;
 }
-export const CheckEndpointAccessResponseUser = /*@__PURE__*/ S.suspend(() =>
+const CheckEndpointAccessResponseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -80,7 +80,7 @@ export interface CheckEndpointAccessResponse {
   user: CheckEndpointAccessResponseUser;
   resourceGroupId?: string;
 }
-export const CheckEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: CheckEndpointAccessResponseNamespace,
     user: CheckEndpointAccessResponseUser,
@@ -91,7 +91,7 @@ export const CheckEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckEndpointAccessResponse>;
 
 export type CheckNamespaceAccessRequestPerms = "read" | "write" | "infer";
-export const CheckNamespaceAccessRequestPerms = S.String;
+const CheckNamespaceAccessRequestPerms = S.String;
 
 export interface CheckNamespaceAccessRequest {
   namespace: string;
@@ -103,7 +103,7 @@ export interface CheckNamespaceAccessRequest {
   resource_group_id?: string;
   repo_id?: string;
 }
-export const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     perms: CheckNamespaceAccessRequestPerms.pipe(T.Label()),
@@ -125,17 +125,13 @@ export const CheckNamespaceAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckNamespaceAccessRequest>;
 
 export type CheckNamespaceAccessResponseNamespace = CheckEndpointAccessResponseNamespace;
-export const CheckNamespaceAccessResponseNamespace = CheckEndpointAccessResponseNamespace;
-
 export type CheckNamespaceAccessResponseUser = CheckEndpointAccessResponseUser;
-export const CheckNamespaceAccessResponseUser = CheckEndpointAccessResponseUser;
-
 export interface CheckNamespaceAccessResponse {
   namespace: CheckEndpointAccessResponseNamespace;
   user: CheckEndpointAccessResponseUser;
   resourceGroupId?: string;
 }
-export const CheckNamespaceAccessResponse =
+const CheckNamespaceAccessResponse =
   CheckEndpointAccessResponse as any as S.Schema<CheckNamespaceAccessResponse>;
 
 export type CheckEndpointAccessError = HuggingFaceOpError;

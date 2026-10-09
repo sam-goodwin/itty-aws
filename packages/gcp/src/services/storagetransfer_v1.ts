@@ -77,7 +77,7 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -87,7 +87,7 @@ export interface CancelTransferOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -104,21 +104,21 @@ export const CancelTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Specifies a bandwidth limit for an agent pool. */
 export interface BandwidthLimit {
   /** Bandwidth rate in megabytes per second, distributed across all the agents in the pool. */
   limitMbps?: string;
 }
-export const BandwidthLimit = /*@__PURE__*/ S.suspend(() =>
+const BandwidthLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limitMbps: S.optional(S.String),
   }),
 ).annotate({ identifier: "BandwidthLimit" }) as any as S.Schema<BandwidthLimit>;
 
 export type AgentPoolStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "CREATED" | "DELETING";
-export const AgentPoolStateEnum = S.String;
+const AgentPoolStateEnum = S.String;
 
 /** Represents an agent pool. */
 export interface AgentPool {
@@ -131,7 +131,7 @@ export interface AgentPool {
   /** Output only. Specifies the state of the AgentPool. */
   state?: AgentPoolStateEnum | (string & {});
 }
-export const AgentPool = /*@__PURE__*/ S.suspend(() =>
+const AgentPool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     bandwidthLimit: S.optional(BandwidthLimit),
@@ -148,7 +148,7 @@ export interface CreateProjectsAgentPoolsRequest {
   /** Request body */
   body?: AgentPool;
 }
-export const CreateProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentPoolId: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -165,7 +165,7 @@ export const CreateProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsAgentPoolsRequest>;
 
 export type TransferJobStatusEnum = "STATUS_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DELETED";
-export const TransferJobStatusEnum = S.String;
+const TransferJobStatusEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Storagetransfer_Date {
@@ -176,7 +176,7 @@ export interface Storagetransfer_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const Storagetransfer_Date = /*@__PURE__*/ S.suspend(() =>
+const Storagetransfer_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -195,7 +195,7 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     seconds: S.optional(S.Number),
@@ -217,7 +217,7 @@ export interface Schedule {
   /** Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. */
   repeatInterval?: string;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleStartDate: S.optional(Storagetransfer_Date),
     scheduleEndDate: S.optional(Storagetransfer_Date),
@@ -236,7 +236,7 @@ export interface GcsData {
   /** Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames). */
   path?: string;
 }
-export const GcsData = /*@__PURE__*/ S.suspend(() =>
+const GcsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedFolderTransferEnabled: S.optional(S.Boolean),
     bucketName: S.optional(S.String),
@@ -249,7 +249,7 @@ export interface HttpData {
   /** Required. The URL that points to the file that stores the object list entries. This file must allow public access. The URL is either an HTTP/HTTPS address (e.g. `https://example.com/urllist.tsv`) or a Cloud Storage path (e.g. `gs://my-bucket/urllist.tsv`). */
   listUrl?: string;
 }
-export const HttpData = /*@__PURE__*/ S.suspend(() =>
+const HttpData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listUrl: S.optional(S.String),
   }),
@@ -260,7 +260,7 @@ export interface AzureCredentials {
   /** Required. Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview). */
   sasToken?: string;
 }
-export const AzureCredentials = /*@__PURE__*/ S.suspend(() =>
+const AzureCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasToken: S.optional(S.String),
   }),
@@ -273,7 +273,7 @@ export interface FederatedIdentityConfig {
   /** Required. The tenant (directory) ID of the application with federated credentials. */
   tenantId?: string;
 }
-export const FederatedIdentityConfig = /*@__PURE__*/ S.suspend(() =>
+const FederatedIdentityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -297,7 +297,7 @@ export interface AzureBlobStorageData {
   /** Optional. Federated identity config of a user registered Azure application. If `federated_identity_config` is specified, do not specify azure_credentials or credentials_secret. */
   federatedIdentityConfig?: FederatedIdentityConfig;
 }
-export const AzureBlobStorageData = /*@__PURE__*/ S.suspend(() =>
+const AzureBlobStorageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsSecret: S.optional(S.String),
     azureCredentials: S.optional(AzureCredentials),
@@ -310,7 +310,7 @@ export const AzureBlobStorageData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AzureBlobStorageData" }) as any as S.Schema<AzureBlobStorageData>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata -- specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs. For S3 objects, the `LastModified` value is the time the object begins uploading. If the object meets your "last modification time" criteria, but has not finished uploading, the object is not transferred. See [Transfer from Amazon S3 to Cloud Storage](https://cloud.google.com/storage-transfer/docs/create-transfers/agentless/s3#transfer_options) for more information. Transfers with a PosixFilesystem source or destination don't support `ObjectConditions`. */
 export interface ObjectConditions {
@@ -331,7 +331,7 @@ export interface ObjectConditions {
   /** Ensures that objects are not transferred until a specific minimum time has elapsed after the "last modification time". When a TransferOperation begins, objects with a "last modification time" are transferred only if the elapsed time between the start_time of the `TransferOperation` and the "last modification time" of the object is equal to or greater than the value of min_time_elapsed_since_last_modification`. Objects that do not have a "last modification time" are also transferred. */
   minTimeElapsedSinceLastModification?: string;
 }
-export const ObjectConditions = /*@__PURE__*/ S.suspend(() =>
+const ObjectConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeStorageClasses: S.optional(StringList),
     lastModifiedBefore: S.optional(S.String),
@@ -349,7 +349,7 @@ export interface PosixFilesystem {
   /** Root directory path to the filesystem. */
   rootDirectory?: string;
 }
-export const PosixFilesystem = /*@__PURE__*/ S.suspend(() =>
+const PosixFilesystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootDirectory: S.optional(S.String),
   }),
@@ -360,7 +360,7 @@ export type TransferOptionsOverwriteWhenEnum =
   | "DIFFERENT"
   | "NEVER"
   | "ALWAYS";
-export const TransferOptionsOverwriteWhenEnum = S.String;
+const TransferOptionsOverwriteWhenEnum = S.String;
 
 export type MetadataOptionsStorageClassEnum =
   | "STORAGE_CLASS_UNSPECIFIED"
@@ -370,46 +370,46 @@ export type MetadataOptionsStorageClassEnum =
   | "STORAGE_CLASS_NEARLINE"
   | "STORAGE_CLASS_COLDLINE"
   | "STORAGE_CLASS_ARCHIVE";
-export const MetadataOptionsStorageClassEnum = S.String;
+const MetadataOptionsStorageClassEnum = S.String;
 
 export type MetadataOptionsTemporaryHoldEnum =
   | "TEMPORARY_HOLD_UNSPECIFIED"
   | "TEMPORARY_HOLD_SKIP"
   | "TEMPORARY_HOLD_PRESERVE";
-export const MetadataOptionsTemporaryHoldEnum = S.String;
+const MetadataOptionsTemporaryHoldEnum = S.String;
 
 export type MetadataOptionsAclEnum =
   | "ACL_UNSPECIFIED"
   | "ACL_DESTINATION_BUCKET_DEFAULT"
   | "ACL_PRESERVE";
-export const MetadataOptionsAclEnum = S.String;
+const MetadataOptionsAclEnum = S.String;
 
 export type MetadataOptionsUidEnum = "UID_UNSPECIFIED" | "UID_SKIP" | "UID_NUMBER";
-export const MetadataOptionsUidEnum = S.String;
+const MetadataOptionsUidEnum = S.String;
 
 export type MetadataOptionsGidEnum = "GID_UNSPECIFIED" | "GID_SKIP" | "GID_NUMBER";
-export const MetadataOptionsGidEnum = S.String;
+const MetadataOptionsGidEnum = S.String;
 
 export type MetadataOptionsTimeCreatedEnum =
   | "TIME_CREATED_UNSPECIFIED"
   | "TIME_CREATED_SKIP"
   | "TIME_CREATED_PRESERVE_AS_CUSTOM_TIME";
-export const MetadataOptionsTimeCreatedEnum = S.String;
+const MetadataOptionsTimeCreatedEnum = S.String;
 
 export type MetadataOptionsModeEnum = "MODE_UNSPECIFIED" | "MODE_SKIP" | "MODE_PRESERVE";
-export const MetadataOptionsModeEnum = S.String;
+const MetadataOptionsModeEnum = S.String;
 
 export type MetadataOptionsSymlinkEnum =
   | "SYMLINK_UNSPECIFIED"
   | "SYMLINK_SKIP"
   | "SYMLINK_PRESERVE";
-export const MetadataOptionsSymlinkEnum = S.String;
+const MetadataOptionsSymlinkEnum = S.String;
 
 export type MetadataOptionsKmsKeyEnum =
   | "KMS_KEY_UNSPECIFIED"
   | "KMS_KEY_DESTINATION_BUCKET_DEFAULT"
   | "KMS_KEY_PRESERVE";
-export const MetadataOptionsKmsKeyEnum = S.String;
+const MetadataOptionsKmsKeyEnum = S.String;
 
 /** Specifies the metadata options for running a transfer. */
 export interface MetadataOptions {
@@ -432,7 +432,7 @@ export interface MetadataOptions {
   /** Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT. */
   kmsKey?: MetadataOptionsKmsKeyEnum | (string & {});
 }
-export const MetadataOptions = /*@__PURE__*/ S.suspend(() =>
+const MetadataOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClass: S.optional(MetadataOptionsStorageClassEnum),
     temporaryHold: S.optional(MetadataOptionsTemporaryHoldEnum),
@@ -459,7 +459,7 @@ export interface TransferOptions {
   /** Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive. */
   deleteObjectsFromSourceAfterTransfer?: boolean;
 }
-export const TransferOptions = /*@__PURE__*/ S.suspend(() =>
+const TransferOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteObjectsUniqueInSink: S.optional(S.Boolean),
     overwriteWhen: S.optional(TransferOptionsOverwriteWhenEnum),
@@ -476,7 +476,7 @@ export interface AwsAccessKey {
   /** Required. AWS secret access key. This field is not returned in RPC responses. */
   secretAccessKey?: string;
 }
-export const AwsAccessKey = /*@__PURE__*/ S.suspend(() =>
+const AwsAccessKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
     secretAccessKey: S.optional(S.String),
@@ -502,7 +502,7 @@ export interface AwsS3Data {
   /** Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)). */
   bucketName?: string;
 }
-export const AwsS3Data = /*@__PURE__*/ S.suspend(() =>
+const AwsS3Data = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudfrontDomain: S.optional(S.String),
     roleArn: S.optional(S.String),
@@ -520,7 +520,7 @@ export interface HdfsData {
   /** Root path to transfer files. */
   path?: string;
 }
-export const HdfsData = /*@__PURE__*/ S.suspend(() =>
+const HdfsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -531,7 +531,7 @@ export interface TransferManifest {
   /** Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`. */
   location?: string;
 }
-export const TransferManifest = /*@__PURE__*/ S.suspend(() =>
+const TransferManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
   }),
@@ -541,25 +541,25 @@ export type S3CompatibleMetadataAuthMethodEnum =
   | "AUTH_METHOD_UNSPECIFIED"
   | "AUTH_METHOD_AWS_SIGNATURE_V4"
   | "AUTH_METHOD_AWS_SIGNATURE_V2";
-export const S3CompatibleMetadataAuthMethodEnum = S.String;
+const S3CompatibleMetadataAuthMethodEnum = S.String;
 
 export type S3CompatibleMetadataRequestModelEnum =
   | "REQUEST_MODEL_UNSPECIFIED"
   | "REQUEST_MODEL_VIRTUAL_HOSTED_STYLE"
   | "REQUEST_MODEL_PATH_STYLE";
-export const S3CompatibleMetadataRequestModelEnum = S.String;
+const S3CompatibleMetadataRequestModelEnum = S.String;
 
 export type S3CompatibleMetadataListApiEnum =
   | "LIST_API_UNSPECIFIED"
   | "LIST_OBJECTS_V2"
   | "LIST_OBJECTS";
-export const S3CompatibleMetadataListApiEnum = S.String;
+const S3CompatibleMetadataListApiEnum = S.String;
 
 export type S3CompatibleMetadataProtocolEnum =
   | "NETWORK_PROTOCOL_UNSPECIFIED"
   | "NETWORK_PROTOCOL_HTTPS"
   | "NETWORK_PROTOCOL_HTTP";
-export const S3CompatibleMetadataProtocolEnum = S.String;
+const S3CompatibleMetadataProtocolEnum = S.String;
 
 /** S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers. */
 export interface S3CompatibleMetadata {
@@ -572,7 +572,7 @@ export interface S3CompatibleMetadata {
   /** Specifies the network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used. */
   protocol?: S3CompatibleMetadataProtocolEnum | (string & {});
 }
-export const S3CompatibleMetadata = /*@__PURE__*/ S.suspend(() =>
+const S3CompatibleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authMethod: S.optional(S3CompatibleMetadataAuthMethodEnum),
     requestModel: S.optional(S3CompatibleMetadataRequestModelEnum),
@@ -594,7 +594,7 @@ export interface AwsS3CompatibleData {
   /** Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. */
   path?: string;
 }
-export const AwsS3CompatibleData = /*@__PURE__*/ S.suspend(() =>
+const AwsS3CompatibleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s3Metadata: S.optional(S3CompatibleMetadata),
     region: S.optional(S.String),
@@ -637,7 +637,7 @@ export interface TransferSpec {
   /** Optional. An AWS S3 compatible data source. */
   awsS3CompatibleDataSource?: AwsS3CompatibleData;
 }
-export const TransferSpec = /*@__PURE__*/ S.suspend(() =>
+const TransferSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsDataSink: S.optional(GcsData),
     httpDataSource: S.optional(HttpData),
@@ -662,17 +662,17 @@ export type NotificationConfigEventTypesItemEnum =
   | "TRANSFER_OPERATION_SUCCESS"
   | "TRANSFER_OPERATION_FAILED"
   | "TRANSFER_OPERATION_ABORTED";
-export const NotificationConfigEventTypesItemEnum = S.String;
+const NotificationConfigEventTypesItemEnum = S.String;
 
 export type NotificationConfigEventTypesItemEnumList = Array<
   NotificationConfigEventTypesItemEnum | (string & {})
 >;
-export const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
+const NotificationConfigEventTypesItemEnumList = /*@__PURE__*/ S.Array(
   NotificationConfigEventTypesItemEnum,
 ) as any as S.Schema<NotificationConfigEventTypesItemEnumList>;
 
 export type NotificationConfigPayloadFormatEnum = "PAYLOAD_FORMAT_UNSPECIFIED" | "NONE" | "JSON";
-export const NotificationConfigPayloadFormatEnum = S.String;
+const NotificationConfigPayloadFormatEnum = S.String;
 
 /** Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`. */
 export interface NotificationConfig {
@@ -683,7 +683,7 @@ export interface NotificationConfig {
   /** Required. The desired format of the notification message payloads. */
   payloadFormat?: NotificationConfigPayloadFormatEnum | (string & {});
 }
-export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
     eventTypes: S.optional(NotificationConfigEventTypesItemEnumList),
@@ -696,12 +696,10 @@ export type LoggingConfigLogActionsItemEnum =
   | "FIND"
   | "DELETE"
   | "COPY";
-export const LoggingConfigLogActionsItemEnum = S.String;
-
 export type LoggingConfigLogActionsItemEnumList = Array<
   LoggingConfigLogActionsItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionsItemEnumList =
+const LoggingConfigLogActionsItemEnumList =
   NotificationConfigEventTypesItemEnumList as any as S.Schema<LoggingConfigLogActionsItemEnumList>;
 
 export type LoggingConfigLogActionStatesItemEnum =
@@ -709,12 +707,10 @@ export type LoggingConfigLogActionStatesItemEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "SKIPPED";
-export const LoggingConfigLogActionStatesItemEnum = S.String;
-
 export type LoggingConfigLogActionStatesItemEnumList = Array<
   LoggingConfigLogActionStatesItemEnum | (string & {})
 >;
-export const LoggingConfigLogActionStatesItemEnumList =
+const LoggingConfigLogActionStatesItemEnumList =
   NotificationConfigEventTypesItemEnumList as any as S.Schema<LoggingConfigLogActionStatesItemEnumList>;
 
 /** Specifies the logging behavior for transfer operations. Logs can be sent to Cloud Logging for all transfer types. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. */
@@ -726,7 +722,7 @@ export interface LoggingConfig {
   /** For PosixFilesystem transfers, enables [file system transfer logs](https://cloud.google.com/storage-transfer/docs/on-prem-transfer-log-format) instead of, or in addition to, Cloud Logging. This option ignores [LoggableAction] and [LoggableActionState]. If these are set, Cloud Logging will also be enabled for this transfer. */
   enableOnpremGcsTransferLogs?: boolean;
 }
-export const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
+const LoggingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logActions: S.optional(LoggingConfigLogActionsItemEnumList),
     logActionStates: S.optional(LoggingConfigLogActionStatesItemEnumList),
@@ -745,7 +741,7 @@ export interface ReplicationSpec {
   /** The Cloud Storage bucket to which to replicate objects. */
   gcsDataSink?: GcsData;
 }
-export const ReplicationSpec = /*@__PURE__*/ S.suspend(() =>
+const ReplicationSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferOptions: S.optional(TransferOptions),
     gcsDataSource: S.optional(GcsData),
@@ -763,7 +759,7 @@ export interface EventStream {
   /** Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated. */
   eventStreamExpirationTime?: string;
 }
-export const EventStream = /*@__PURE__*/ S.suspend(() =>
+const EventStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventStreamStartTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -804,7 +800,7 @@ export interface TransferJob {
   /** Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored. */
   eventStream?: EventStream;
 }
-export const TransferJob = /*@__PURE__*/ S.suspend(() =>
+const TransferJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TransferJobStatusEnum),
     schedule: S.optional(Schedule),
@@ -828,7 +824,7 @@ export interface CreateTransferJobsRequest {
   /** Request body */
   body?: TransferJob;
 }
-export const CreateTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(TransferJob.pipe(T.HttpBody())),
   }).pipe(
@@ -846,7 +842,7 @@ export interface DeleteProjectsAgentPoolsRequest {
   /** Required. The name of the agent pool to delete. */
   name: string;
 }
-export const DeleteProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -866,7 +862,7 @@ export interface DeleteTransferJobsRequest {
   /** Required. The ID of the Google Cloud project that owns the job. */
   projectId: string;
 }
-export const DeleteTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobName: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Query()),
@@ -885,7 +881,7 @@ export interface GetGoogleServiceAccountsRequest {
   /** Required. The ID of the Google Cloud project that the Google service account is associated with. */
   projectId: string;
 }
-export const GetGoogleServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -906,7 +902,7 @@ export interface GoogleServiceAccount {
   /** Email address of the service account. */
   accountEmail?: string;
 }
-export const GoogleServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const GoogleServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectId: S.optional(S.String),
     accountEmail: S.optional(S.String),
@@ -917,7 +913,7 @@ export interface GetProjectsAgentPoolsRequest {
   /** Required. The name of the agent pool to get. */
   name: string;
 }
-export const GetProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -937,7 +933,7 @@ export interface GetTransferJobsRequest {
   /** Required. The job to get. */
   jobName: string;
 }
-export const GetTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     jobName: S.String.pipe(T.Label()),
@@ -954,7 +950,7 @@ export interface GetTransferOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -969,15 +965,10 @@ export const GetTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransferOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -988,7 +979,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -1009,7 +1000,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -1029,7 +1020,7 @@ export interface ListProjectsAgentPoolsRequest {
   /** An optional list of query parameters specified as JSON text in the form of: `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since `agentPoolNames` support multiple values, its values must be specified with array notation. When the filter is either empty or not provided, the list returns all agent pools for the project. */
   filter?: string;
 }
-export const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -1047,7 +1038,7 @@ export const ListProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAgentPoolsRequest>;
 
 export type AgentPoolList = Array<AgentPool>;
-export const AgentPoolList = /*@__PURE__*/ S.Array(AgentPool) as any as S.Schema<AgentPoolList>;
+const AgentPoolList = /*@__PURE__*/ S.Array(AgentPool) as any as S.Schema<AgentPoolList>;
 
 /** Response from ListAgentPools. */
 export interface ListAgentPoolsResponse {
@@ -1056,7 +1047,7 @@ export interface ListAgentPoolsResponse {
   /** A list of agent pools. */
   agentPools?: AgentPoolList;
 }
-export const ListAgentPoolsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     agentPools: S.optional(AgentPoolList),
@@ -1071,7 +1062,7 @@ export interface ListTransferJobsRequest {
   /** The list page size. The max allowed value is 256. */
   pageSize?: number;
 }
-export const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.String.pipe(T.Query()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1086,9 +1077,7 @@ export const ListTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTransferJobsRequest" }) as any as S.Schema<ListTransferJobsRequest>;
 
 export type TransferJobList = Array<TransferJob>;
-export const TransferJobList = /*@__PURE__*/ S.Array(
-  TransferJob,
-) as any as S.Schema<TransferJobList>;
+const TransferJobList = /*@__PURE__*/ S.Array(TransferJob) as any as S.Schema<TransferJobList>;
 
 /** Response from ListTransferJobs. */
 export interface ListTransferJobsResponse {
@@ -1097,7 +1086,7 @@ export interface ListTransferJobsResponse {
   /** The list next page token. */
   nextPageToken?: string;
 }
-export const ListTransferJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransferJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferJobs: S.optional(TransferJobList),
     nextPageToken: S.optional(S.String),
@@ -1116,7 +1105,7 @@ export interface ListTransferOperationsRequest {
   /** The list page size. The max allowed value is 256. */
   pageSize?: number;
 }
-export const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -1135,7 +1124,7 @@ export const ListTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTransferOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1146,7 +1135,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1162,7 +1151,7 @@ export interface PatchProjectsAgentPoolsRequest {
   /** Request body */
   body?: AgentPool;
 }
-export const PatchProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsAgentPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1187,7 +1176,7 @@ export interface UpdateTransferJobRequest {
   /** Required. The ID of the Google Cloud project that owns the job. */
   projectId?: string;
 }
-export const UpdateTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferJob: S.optional(TransferJob),
     updateTransferJobFieldMask: S.optional(S.String),
@@ -1201,7 +1190,7 @@ export interface PatchTransferJobsRequest {
   /** Request body */
   body?: UpdateTransferJobRequest;
 }
-export const PatchTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobName: S.String.pipe(T.Label()),
     body: S.optional(UpdateTransferJobRequest.pipe(T.HttpBody())),
@@ -1216,15 +1205,13 @@ export const PatchTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request passed to PauseTransferOperation. */
 export type PauseTransferOperationRequest = CancelOperationRequest;
-export const PauseTransferOperationRequest = CancelOperationRequest;
-
 export interface PauseTransferOperationsRequest {
   /** Required. The name of the transfer operation. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const PauseTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1241,15 +1228,13 @@ export const PauseTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request passed to ResumeTransferOperation. */
 export type ResumeTransferOperationRequest = CancelOperationRequest;
-export const ResumeTransferOperationRequest = CancelOperationRequest;
-
 export interface ResumeTransferOperationsRequest {
   /** Required. The name of the transfer operation. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const ResumeTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeTransferOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1269,7 +1254,7 @@ export interface RunTransferJobRequest {
   /** Required. The ID of the Google Cloud project that owns the transfer job. */
   projectId?: string;
 }
-export const RunTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
+const RunTransferJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
   }),
@@ -1281,7 +1266,7 @@ export interface RunTransferJobsRequest {
   /** Request body */
   body?: RunTransferJobRequest;
 }
-export const RunTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunTransferJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobName: S.String.pipe(T.Label()),
     body: S.optional(RunTransferJobRequest.pipe(T.HttpBody())),

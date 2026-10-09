@@ -72,7 +72,7 @@ export interface CreateProjectRequest {
   /** The Drive ID of a parent file that the created script project is bound to. This is usually the ID of a Google Doc, Google Sheet, Google Form, or Google Slides file. If not set, a standalone script project is created. */
   parentId?: string;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     parentId: S.optional(S.String),
@@ -83,7 +83,7 @@ export interface CreateProjectsRequest {
   /** Request body */
   body?: CreateProjectRequest;
 }
-export const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateProjectRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -102,7 +102,7 @@ export interface GoogleAppsScriptTypeUser {
   /** The user's photo. */
   photoUrl?: string;
 }
-export const GoogleAppsScriptTypeUser = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     email: S.optional(S.String),
@@ -128,7 +128,7 @@ export interface Project {
   /** The script project's Drive ID. */
   scriptId?: string;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parentId: S.optional(S.String),
     lastModifyUser: S.optional(GoogleAppsScriptTypeUser),
@@ -151,7 +151,7 @@ export interface DeploymentConfig {
   /** The version number on which this deployment is based. */
   versionNumber?: number;
 }
-export const DeploymentConfig = /*@__PURE__*/ S.suspend(() =>
+const DeploymentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.optional(S.String),
     description: S.optional(S.String),
@@ -166,7 +166,7 @@ export interface CreateProjectsDeploymentsRequest {
   /** Request body */
   body?: DeploymentConfig;
 }
-export const CreateProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     body: S.optional(DeploymentConfig.pipe(T.HttpBody())),
@@ -187,14 +187,14 @@ export type GoogleAppsScriptTypeExecutionApiConfigAccessEnum =
   | "DOMAIN"
   | "ANYONE"
   | "ANYONE_ANONYMOUS";
-export const GoogleAppsScriptTypeExecutionApiConfigAccessEnum = S.String;
+const GoogleAppsScriptTypeExecutionApiConfigAccessEnum = S.String;
 
 /** API executable entry point configuration. */
 export interface GoogleAppsScriptTypeExecutionApiConfig {
   /** Who has permission to run the API executable. */
   access?: GoogleAppsScriptTypeExecutionApiConfigAccessEnum;
 }
-export const GoogleAppsScriptTypeExecutionApiConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeExecutionApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(GoogleAppsScriptTypeExecutionApiConfigAccessEnum),
   }),
@@ -207,7 +207,7 @@ export interface GoogleAppsScriptTypeExecutionApiEntryPoint {
   /** The entry point's configuration. */
   entryPointConfig?: GoogleAppsScriptTypeExecutionApiConfig;
 }
-export const GoogleAppsScriptTypeExecutionApiEntryPoint = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeExecutionApiEntryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryPointConfig: S.optional(GoogleAppsScriptTypeExecutionApiConfig),
   }),
@@ -219,7 +219,7 @@ export type GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum =
   | "UNKNOWN_ADDON_TYPE"
   | "GMAIL"
   | "DATA_STUDIO";
-export const GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum = S.String;
+const GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum = S.String;
 
 /** An add-on entry point. */
 export interface GoogleAppsScriptTypeAddOnEntryPoint {
@@ -236,7 +236,7 @@ export interface GoogleAppsScriptTypeAddOnEntryPoint {
   /** The add-on's optional description. */
   description?: string;
 }
-export const GoogleAppsScriptTypeAddOnEntryPoint = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeAddOnEntryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addOnType: S.optional(GoogleAppsScriptTypeAddOnEntryPointAddOnTypeEnum),
     title: S.optional(S.String),
@@ -254,13 +254,13 @@ export type EntryPointEntryPointTypeEnum =
   | "WEB_APP"
   | "EXECUTION_API"
   | "ADD_ON";
-export const EntryPointEntryPointTypeEnum = S.String;
+const EntryPointEntryPointTypeEnum = S.String;
 
 export type GoogleAppsScriptTypeWebAppConfigExecuteAsEnum =
   | "UNKNOWN_EXECUTE_AS"
   | "USER_ACCESSING"
   | "USER_DEPLOYING";
-export const GoogleAppsScriptTypeWebAppConfigExecuteAsEnum = S.String;
+const GoogleAppsScriptTypeWebAppConfigExecuteAsEnum = S.String;
 
 export type GoogleAppsScriptTypeWebAppConfigAccessEnum =
   | "UNKNOWN_ACCESS"
@@ -268,7 +268,7 @@ export type GoogleAppsScriptTypeWebAppConfigAccessEnum =
   | "DOMAIN"
   | "ANYONE"
   | "ANYONE_ANONYMOUS";
-export const GoogleAppsScriptTypeWebAppConfigAccessEnum = S.String;
+const GoogleAppsScriptTypeWebAppConfigAccessEnum = S.String;
 
 /** Web app entry point configuration. */
 export interface GoogleAppsScriptTypeWebAppConfig {
@@ -277,7 +277,7 @@ export interface GoogleAppsScriptTypeWebAppConfig {
   /** Who has permission to run the web app. */
   access?: GoogleAppsScriptTypeWebAppConfigAccessEnum;
 }
-export const GoogleAppsScriptTypeWebAppConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeWebAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executeAs: S.optional(GoogleAppsScriptTypeWebAppConfigExecuteAsEnum),
     access: S.optional(GoogleAppsScriptTypeWebAppConfigAccessEnum),
@@ -293,7 +293,7 @@ export interface GoogleAppsScriptTypeWebAppEntryPoint {
   /** The entry point's configuration. */
   entryPointConfig?: GoogleAppsScriptTypeWebAppConfig;
 }
-export const GoogleAppsScriptTypeWebAppEntryPoint = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeWebAppEntryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     entryPointConfig: S.optional(GoogleAppsScriptTypeWebAppConfig),
@@ -313,7 +313,7 @@ export interface EntryPoint {
   /** An entry point specification for web apps. */
   webApp?: GoogleAppsScriptTypeWebAppEntryPoint;
 }
-export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
+const EntryPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionApi: S.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
     addOn: S.optional(GoogleAppsScriptTypeAddOnEntryPoint),
@@ -323,7 +323,7 @@ export const EntryPoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntryPoint" }) as any as S.Schema<EntryPoint>;
 
 export type EntryPointList = Array<EntryPoint>;
-export const EntryPointList = /*@__PURE__*/ S.Array(EntryPoint) as any as S.Schema<EntryPointList>;
+const EntryPointList = /*@__PURE__*/ S.Array(EntryPoint) as any as S.Schema<EntryPointList>;
 
 /** Representation of a single script deployment. */
 export interface Deployment {
@@ -336,7 +336,7 @@ export interface Deployment {
   /** The deployment ID for this deployment. */
   deploymentId?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryPoints: S.optional(EntryPointList),
     deploymentConfig: S.optional(DeploymentConfig),
@@ -356,7 +356,7 @@ export interface Version {
   /** The incremental ID that is created by Apps Script when a version is created. This is system assigned number and is immutable once created. */
   versionNumber?: number;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -371,7 +371,7 @@ export interface CreateProjectsVersionsRequest {
   /** Request body */
   body?: Version;
 }
-export const CreateProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     body: S.optional(Version.pipe(T.HttpBody())),
@@ -392,7 +392,7 @@ export interface DeleteProjectsDeploymentsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
-export const DeleteProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     scriptId: S.String.pipe(T.Label()),
@@ -409,7 +409,7 @@ export const DeleteProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -419,7 +419,7 @@ export interface GetContentProjectsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
-export const GetContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionNumber: S.optional(S.Number.pipe(T.Query())),
     scriptId: S.String.pipe(T.Label()),
@@ -435,10 +435,10 @@ export const GetContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetContentProjectsRequest>;
 
 export type FileTypeEnum = "ENUM_TYPE_UNSPECIFIED" | "SERVER_JS" | "HTML" | "JSON";
-export const FileTypeEnum = S.String;
+const FileTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a function in a script project. */
 export interface GoogleAppsScriptTypeFunction {
@@ -447,7 +447,7 @@ export interface GoogleAppsScriptTypeFunction {
   /** The ordered list of parameter names of the function in the script project. */
   parameters?: StringList;
 }
-export const GoogleAppsScriptTypeFunction = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     parameters: S.optional(StringList),
@@ -457,7 +457,7 @@ export const GoogleAppsScriptTypeFunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsScriptTypeFunction>;
 
 export type GoogleAppsScriptTypeFunctionList = Array<GoogleAppsScriptTypeFunction>;
-export const GoogleAppsScriptTypeFunctionList = /*@__PURE__*/ S.Array(
+const GoogleAppsScriptTypeFunctionList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeFunction,
 ) as any as S.Schema<GoogleAppsScriptTypeFunctionList>;
 
@@ -466,7 +466,7 @@ export interface GoogleAppsScriptTypeFunctionSet {
   /** A list of functions composing the set. */
   values?: GoogleAppsScriptTypeFunctionList;
 }
-export const GoogleAppsScriptTypeFunctionSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeFunctionSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(GoogleAppsScriptTypeFunctionList),
   }),
@@ -491,7 +491,7 @@ export interface File {
   /** The file content. */
   source?: string;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifyUser: S.optional(GoogleAppsScriptTypeUser),
     name: S.optional(S.String),
@@ -504,7 +504,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "File" }) as any as S.Schema<File>;
 
 export type FileList = Array<File>;
-export const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
+const FileList = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList>;
 
 /** The Content resource. */
 export interface Content {
@@ -513,7 +513,7 @@ export interface Content {
   /** The script project's Drive ID. */
   scriptId?: string;
 }
-export const Content = /*@__PURE__*/ S.suspend(() =>
+const Content = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: S.optional(FileList),
     scriptId: S.optional(S.String),
@@ -524,7 +524,7 @@ export type GetMetricsProjectsMetricsGranularityEnum =
   | "UNSPECIFIED_GRANULARITY"
   | "WEEKLY"
   | "DAILY";
-export const GetMetricsProjectsMetricsGranularityEnum = S.String;
+const GetMetricsProjectsMetricsGranularityEnum = S.String;
 
 export interface GetMetricsProjectsRequest {
   /** Required field indicating what granularity of metrics are returned. */
@@ -534,7 +534,7 @@ export interface GetMetricsProjectsRequest {
   /** Optional field indicating a specific deployment to retrieve metrics from. */
   "metricsFilter.deploymentId"?: string;
 }
-export const GetMetricsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsGranularity: S.optional(GetMetricsProjectsMetricsGranularityEnum.pipe(T.Query())),
     scriptId: S.String.pipe(T.Label()),
@@ -559,7 +559,7 @@ export interface MetricsValue {
   /** Indicates the number of executions counted. */
   value?: string;
 }
-export const MetricsValue = /*@__PURE__*/ S.suspend(() =>
+const MetricsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -568,9 +568,7 @@ export const MetricsValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricsValue" }) as any as S.Schema<MetricsValue>;
 
 export type MetricsValueList = Array<MetricsValue>;
-export const MetricsValueList = /*@__PURE__*/ S.Array(
-  MetricsValue,
-) as any as S.Schema<MetricsValueList>;
+const MetricsValueList = /*@__PURE__*/ S.Array(MetricsValue) as any as S.Schema<MetricsValueList>;
 
 /** Resource containing usage stats for a given script, based on the supplied filter and mask present in the request. */
 export interface Metrics {
@@ -581,7 +579,7 @@ export interface Metrics {
   /** Number of failed executions. */
   failedExecutions?: MetricsValueList;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeUsers: S.optional(MetricsValueList),
     totalExecutions: S.optional(MetricsValueList),
@@ -593,7 +591,7 @@ export interface GetProjectsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
   }).pipe(
@@ -611,7 +609,7 @@ export interface GetProjectsDeploymentsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
-export const GetProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.Label()),
     scriptId: S.String.pipe(T.Label()),
@@ -632,7 +630,7 @@ export interface GetProjectsVersionsRequest {
   /** The script project's Drive ID. */
   scriptId: string;
 }
-export const GetProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionNumber: S.Number.pipe(T.Label()),
     scriptId: S.String.pipe(T.Label()),
@@ -658,12 +656,12 @@ export type ListProcessesUserProcessFilter_typesEnum =
   | "SIMPLE_TRIGGER"
   | "MENU"
   | "BATCH_TASK";
-export const ListProcessesUserProcessFilter_typesEnum = S.String;
+const ListProcessesUserProcessFilter_typesEnum = S.String;
 
 export type ListProcessesUserProcessFilter_typesEnumList = Array<
   ListProcessesUserProcessFilter_typesEnum | (string & {})
 >;
-export const ListProcessesUserProcessFilter_typesEnumList = /*@__PURE__*/ S.Array(
+const ListProcessesUserProcessFilter_typesEnumList = /*@__PURE__*/ S.Array(
   ListProcessesUserProcessFilter_typesEnum,
 ) as any as S.Schema<ListProcessesUserProcessFilter_typesEnumList>;
 
@@ -673,12 +671,10 @@ export type ListProcessesUserProcessFilter_userAccessLevelsEnum =
   | "READ"
   | "WRITE"
   | "OWNER";
-export const ListProcessesUserProcessFilter_userAccessLevelsEnum = S.String;
-
 export type ListProcessesUserProcessFilter_userAccessLevelsEnumList = Array<
   ListProcessesUserProcessFilter_userAccessLevelsEnum | (string & {})
 >;
-export const ListProcessesUserProcessFilter_userAccessLevelsEnumList =
+const ListProcessesUserProcessFilter_userAccessLevelsEnumList =
   ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListProcessesUserProcessFilter_userAccessLevelsEnumList>;
 
 export type ListProcessesUserProcessFilter_statusesEnum =
@@ -692,12 +688,10 @@ export type ListProcessesUserProcessFilter_statusesEnum =
   | "UNKNOWN"
   | "DELAYED"
   | "EXECUTION_DISABLED";
-export const ListProcessesUserProcessFilter_statusesEnum = S.String;
-
 export type ListProcessesUserProcessFilter_statusesEnumList = Array<
   ListProcessesUserProcessFilter_statusesEnum | (string & {})
 >;
-export const ListProcessesUserProcessFilter_statusesEnumList =
+const ListProcessesUserProcessFilter_statusesEnumList =
   ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListProcessesUserProcessFilter_statusesEnumList>;
 
 export interface ListProcessesRequest {
@@ -724,7 +718,7 @@ export interface ListProcessesRequest {
   /** Optional field used to limit returned processes to those originating from projects with project names containing a specific string. */
   "userProcessFilter.projectName"?: string;
 }
-export const ListProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProcessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "userProcessFilter.types": S.optional(
       ListProcessesUserProcessFilter_typesEnumList.pipe(T.Query()),
@@ -752,7 +746,7 @@ export type GoogleAppsScriptTypeProcessRuntimeVersionEnum =
   | "RUNTIME_VERSION_UNSPECIFIED"
   | "DEPRECATED_ES5"
   | "V8";
-export const GoogleAppsScriptTypeProcessRuntimeVersionEnum = S.String;
+const GoogleAppsScriptTypeProcessRuntimeVersionEnum = S.String;
 
 export type GoogleAppsScriptTypeProcessProcessStatusEnum =
   | "PROCESS_STATUS_UNSPECIFIED"
@@ -765,7 +759,7 @@ export type GoogleAppsScriptTypeProcessProcessStatusEnum =
   | "UNKNOWN"
   | "DELAYED"
   | "EXECUTION_DISABLED";
-export const GoogleAppsScriptTypeProcessProcessStatusEnum = S.String;
+const GoogleAppsScriptTypeProcessProcessStatusEnum = S.String;
 
 export type GoogleAppsScriptTypeProcessUserAccessLevelEnum =
   | "USER_ACCESS_LEVEL_UNSPECIFIED"
@@ -773,7 +767,7 @@ export type GoogleAppsScriptTypeProcessUserAccessLevelEnum =
   | "READ"
   | "WRITE"
   | "OWNER";
-export const GoogleAppsScriptTypeProcessUserAccessLevelEnum = S.String;
+const GoogleAppsScriptTypeProcessUserAccessLevelEnum = S.String;
 
 export type GoogleAppsScriptTypeProcessProcessTypeEnum =
   | "PROCESS_TYPE_UNSPECIFIED"
@@ -786,7 +780,7 @@ export type GoogleAppsScriptTypeProcessProcessTypeEnum =
   | "SIMPLE_TRIGGER"
   | "MENU"
   | "BATCH_TASK";
-export const GoogleAppsScriptTypeProcessProcessTypeEnum = S.String;
+const GoogleAppsScriptTypeProcessProcessTypeEnum = S.String;
 
 /** Representation of a single script process execution that was started from the script editor, a trigger, an application, or using the Apps Script API. This is distinct from the `Operation` resource, which only represents executions started via the Apps Script API. */
 export interface GoogleAppsScriptTypeProcess {
@@ -807,7 +801,7 @@ export interface GoogleAppsScriptTypeProcess {
   /** The executions type. */
   processType?: GoogleAppsScriptTypeProcessProcessTypeEnum;
 }
-export const GoogleAppsScriptTypeProcess = /*@__PURE__*/ S.suspend(() =>
+const GoogleAppsScriptTypeProcess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectName: S.optional(S.String),
     runtimeVersion: S.optional(GoogleAppsScriptTypeProcessRuntimeVersionEnum),
@@ -823,7 +817,7 @@ export const GoogleAppsScriptTypeProcess = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleAppsScriptTypeProcess>;
 
 export type GoogleAppsScriptTypeProcessList = Array<GoogleAppsScriptTypeProcess>;
-export const GoogleAppsScriptTypeProcessList = /*@__PURE__*/ S.Array(
+const GoogleAppsScriptTypeProcessList = /*@__PURE__*/ S.Array(
   GoogleAppsScriptTypeProcess,
 ) as any as S.Schema<GoogleAppsScriptTypeProcessList>;
 
@@ -834,7 +828,7 @@ export interface ListUserProcessesResponse {
   /** List of processes matching request parameters. */
   processes?: GoogleAppsScriptTypeProcessList;
 }
-export const ListUserProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     processes: S.optional(GoogleAppsScriptTypeProcessList),
@@ -851,7 +845,7 @@ export interface ListProjectsDeploymentsRequest {
   /** The maximum number of deployments on each returned page. Defaults to 50. */
   pageSize?: number;
 }
-export const ListProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -868,7 +862,7 @@ export const ListProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDeploymentsRequest>;
 
 export type DeploymentList = Array<Deployment>;
-export const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
+const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
 
 /** Response with the list of deployments for the specified Apps Script project. */
 export interface ListDeploymentsResponse {
@@ -877,7 +871,7 @@ export interface ListDeploymentsResponse {
   /** The list of deployments. */
   deployments?: DeploymentList;
 }
-export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     deployments: S.optional(DeploymentList),
@@ -892,7 +886,7 @@ export interface ListProjectsVersionsRequest {
   /** The maximum number of versions on each returned page. Defaults to 50. */
   pageSize?: number;
 }
-export const ListProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -909,7 +903,7 @@ export const ListProjectsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsVersionsRequest>;
 
 export type VersionList = Array<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 /** Response with the list of the versions for the specified script project. */
 export interface ListVersionsResponse {
@@ -918,7 +912,7 @@ export interface ListVersionsResponse {
   /** The list of versions. */
   versions?: VersionList;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     versions: S.optional(VersionList),
@@ -931,12 +925,12 @@ export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum
   | "READ"
   | "WRITE"
   | "OWNER";
-export const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum = S.String;
+const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum = S.String;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum | (string & {})
 >;
-export const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
+const ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList =
   /*@__PURE__*/ S.Array(
     ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnum,
   ) as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList>;
@@ -952,12 +946,10 @@ export type ListScriptProcessesProcessesScriptProcessFilter_typesEnum =
   | "SIMPLE_TRIGGER"
   | "MENU"
   | "BATCH_TASK";
-export const ListScriptProcessesProcessesScriptProcessFilter_typesEnum = S.String;
-
 export type ListScriptProcessesProcessesScriptProcessFilter_typesEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_typesEnum | (string & {})
 >;
-export const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
+const ListScriptProcessesProcessesScriptProcessFilter_typesEnumList =
   ListProcessesUserProcessFilter_typesEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_typesEnumList>;
 
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
@@ -971,12 +963,10 @@ export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnum =
   | "UNKNOWN"
   | "DELAYED"
   | "EXECUTION_DISABLED";
-export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnum = S.String;
-
 export type ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList = Array<
   ListScriptProcessesProcessesScriptProcessFilter_statusesEnum | (string & {})
 >;
-export const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
+const ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList =
   ListScriptProcessesProcessesScriptProcessFilter_userAccessLevelsEnumList as any as S.Schema<ListScriptProcessesProcessesScriptProcessFilter_statusesEnumList>;
 
 export interface ListScriptProcessesProcessesRequest {
@@ -1001,7 +991,7 @@ export interface ListScriptProcessesProcessesRequest {
   /** Optional field used to limit returned processes to those originating from a script function with the given function name. */
   "scriptProcessFilter.functionName"?: string;
 }
-export const ListScriptProcessesProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptProcessesProcessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.optional(S.String.pipe(T.Query())),
     "scriptProcessFilter.deploymentId": S.optional(S.String.pipe(T.Query())),
@@ -1037,11 +1027,11 @@ export interface ListScriptProcessesResponse {
   /** List of processes matching request parameters. */
   processes?: GoogleAppsScriptTypeProcessList;
 }
-export const ListScriptProcessesResponse =
+const ListScriptProcessesResponse =
   ListUserProcessesResponse as any as S.Schema<ListScriptProcessesResponse>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** A request to run the function in a script. The script is identified by the specified `script_id`. Executing a function on a script returns results based on the implementation of the script. */
 export interface ExecutionRequest {
@@ -1054,7 +1044,7 @@ export interface ExecutionRequest {
   /** The name of the function to execute in the given script. The name does not include parentheses or parameters. It can reference a function in an included library such as `Library.libFunction1`. */
   function?: string;
 }
-export const ExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devMode: S.optional(S.Boolean),
     sessionState: S.optional(S.String),
@@ -1069,7 +1059,7 @@ export interface RunScriptsRequest {
   /** Request body */
   body?: ExecutionRequest;
 }
-export const RunScriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     body: S.optional(ExecutionRequest.pipe(T.HttpBody())),
@@ -1083,15 +1073,10 @@ export const RunScriptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunScriptsRequest" }) as any as S.Schema<RunScriptsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object. */
 export interface Status {
@@ -1102,7 +1087,7 @@ export interface Status {
   /** The status code. For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1, indicating a `CANCELLED` execution. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -1119,7 +1104,7 @@ export interface Operation {
   /** If the script function returns successfully, this field contains an ExecutionResponse object with the function's return value. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     done: S.optional(S.Boolean),
@@ -1133,7 +1118,7 @@ export interface UpdateContentProjectsRequest {
   /** Request body */
   body?: Content;
 }
-export const UpdateContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContentProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     body: S.optional(Content.pipe(T.HttpBody())),
@@ -1153,7 +1138,7 @@ export interface UpdateDeploymentRequest {
   /** The deployment configuration. */
   deploymentConfig?: DeploymentConfig;
 }
-export const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentConfig: S.optional(DeploymentConfig),
   }),
@@ -1167,7 +1152,7 @@ export interface UpdateProjectsDeploymentsRequest {
   /** Request body */
   body?: UpdateDeploymentRequest;
 }
-export const UpdateProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptId: S.String.pipe(T.Label()),
     deploymentId: S.String.pipe(T.Label()),

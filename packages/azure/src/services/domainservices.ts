@@ -25,7 +25,7 @@ export interface CreateOuContainerRequest {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
-export const CreateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -46,7 +46,7 @@ export const CreateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type CreateOuContainerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOuContainerResponseTagsMap = /*@__PURE__*/ S.Record(
+const CreateOuContainerResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateOuContainerResponseTagsMap>;
@@ -57,7 +57,7 @@ export type CreateOuContainerResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateOuContainerResponseSystemDataCreatedByType = S.String;
+const CreateOuContainerResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type CreateOuContainerResponseSystemDataLastModifiedByType =
@@ -65,7 +65,7 @@ export type CreateOuContainerResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateOuContainerResponseSystemDataLastModifiedByType = S.String;
+const CreateOuContainerResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateOuContainerResponseSystemData {
@@ -82,7 +82,7 @@ export interface CreateOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateOuContainerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const CreateOuContainerResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(CreateOuContainerResponseSystemDataCreatedByType),
@@ -104,7 +104,7 @@ export interface ContainerAccount {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
-export const ContainerAccount = /*@__PURE__*/ S.suspend(() =>
+const ContainerAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountName: S.optional(S.String),
     spn: S.optional(S.String),
@@ -114,7 +114,7 @@ export const ContainerAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of container accounts */
 export type OuContainerPropertiesAccountsList = Array<ContainerAccount>;
-export const OuContainerPropertiesAccountsList = /*@__PURE__*/ S.Array(
+const OuContainerPropertiesAccountsList = /*@__PURE__*/ S.Array(
   ContainerAccount,
 ) as any as S.Schema<OuContainerPropertiesAccountsList>;
 
@@ -137,7 +137,7 @@ export interface OuContainerProperties {
   /** The current deployment or provisioning state, which only appears in the response. */
   provisioningState?: string;
 }
-export const OuContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const OuContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     domainName: S.optional(S.String),
@@ -168,7 +168,7 @@ export interface CreateOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
-export const CreateOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -191,7 +191,7 @@ export interface DeleteDomainServiceRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
-export const DeleteDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -209,7 +209,7 @@ export const DeleteDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDomainServiceRequest>;
 
 export interface DeleteDomainServiceResponse {}
-export const DeleteDomainServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDomainServiceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDomainServiceResponse",
 }) as any as S.Schema<DeleteDomainServiceResponse>;
 
@@ -223,7 +223,7 @@ export interface DeleteOuContainerRequest {
   /** The name of the OuContainer. */
   ouContainerName: string;
 }
-export const DeleteOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -240,12 +240,12 @@ export const DeleteOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOuContainerRequest" }) as any as S.Schema<DeleteOuContainerRequest>;
 
 export interface DeleteOuContainerResponse {}
-export const DeleteOuContainerResponse =
+const DeleteOuContainerResponse =
   DeleteDomainServiceResponse as any as S.Schema<DeleteOuContainerResponse>;
 
 /** Resource tags */
 export type DomainServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DomainServicesCreateOrUpdateRequestTagsMap =
+const DomainServicesCreateOrUpdateRequestTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateRequestTagsMap>;
 
 /** Replica Set Definition */
@@ -255,7 +255,7 @@ export interface ReplicaSetInput {
   /** The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName. */
   subnetId?: string;
 }
-export const ReplicaSetInput = /*@__PURE__*/ S.suspend(() =>
+const ReplicaSetInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     subnetId: S.optional(S.String),
@@ -264,17 +264,17 @@ export const ReplicaSetInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ReplicaSets */
 export type DomainServicePropertiesInputReplicaSetsList = Array<ReplicaSetInput>;
-export const DomainServicePropertiesInputReplicaSetsList = /*@__PURE__*/ S.Array(
+const DomainServicePropertiesInputReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSetInput,
 ) as any as S.Schema<DomainServicePropertiesInputReplicaSetsList>;
 
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
 export type LdapsSettingsInputLdaps = "Enabled" | "Disabled";
-export const LdapsSettingsInputLdaps = S.String;
+const LdapsSettingsInputLdaps = S.String;
 
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
 export type LdapsSettingsInputExternalAccess = "Enabled" | "Disabled";
-export const LdapsSettingsInputExternalAccess = S.String;
+const LdapsSettingsInputExternalAccess = S.String;
 
 /** Secure LDAP Settings */
 export interface LdapsSettingsInput {
@@ -287,7 +287,7 @@ export interface LdapsSettingsInput {
   /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
   externalAccess?: LdapsSettingsInputExternalAccess | (string & {});
 }
-export const LdapsSettingsInput = /*@__PURE__*/ S.suspend(() =>
+const LdapsSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ldaps: S.optional(LdapsSettingsInputLdaps),
     pfxCertificate: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface ForestTrust {
   /** Trust Password */
   trustPassword?: string | Redacted.Redacted<string>;
 }
-export const ForestTrust = /*@__PURE__*/ S.suspend(() =>
+const ForestTrust = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustedDomainFqdn: S.optional(S.String),
     trustDirection: S.optional(S.String),
@@ -321,7 +321,7 @@ export const ForestTrust = /*@__PURE__*/ S.suspend(() =>
 
 /** List of settings for Resource Forest */
 export type ResourceForestSettingsSettingsList = Array<ForestTrust>;
-export const ResourceForestSettingsSettingsList = /*@__PURE__*/ S.Array(
+const ResourceForestSettingsSettingsList = /*@__PURE__*/ S.Array(
   ForestTrust,
 ) as any as S.Schema<ResourceForestSettingsSettingsList>;
 
@@ -332,7 +332,7 @@ export interface ResourceForestSettings {
   /** Resource Forest */
   resourceForest?: string;
 }
-export const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
+const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(ResourceForestSettingsSettingsList),
     resourceForest: S.optional(S.String),
@@ -341,39 +341,39 @@ export const ResourceForestSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** A flag to determine whether or not NtlmV1 is enabled or disabled. */
 export type DomainSecuritySettingsNtlmV1 = "Enabled" | "Disabled";
-export const DomainSecuritySettingsNtlmV1 = S.String;
+const DomainSecuritySettingsNtlmV1 = S.String;
 
 /** A flag to determine whether or not TlsV1 is enabled or disabled. */
 export type DomainSecuritySettingsTlsV1 = "Enabled" | "Disabled";
-export const DomainSecuritySettingsTlsV1 = S.String;
+const DomainSecuritySettingsTlsV1 = S.String;
 
 /** A flag to determine whether or not SyncNtlmPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncNtlmPasswords = "Enabled" | "Disabled";
-export const DomainSecuritySettingsSyncNtlmPasswords = S.String;
+const DomainSecuritySettingsSyncNtlmPasswords = S.String;
 
 /** A flag to determine whether or not SyncKerberosPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncKerberosPasswords = "Enabled" | "Disabled";
-export const DomainSecuritySettingsSyncKerberosPasswords = S.String;
+const DomainSecuritySettingsSyncKerberosPasswords = S.String;
 
 /** A flag to determine whether or not SyncOnPremPasswords is enabled or disabled. */
 export type DomainSecuritySettingsSyncOnPremPasswords = "Enabled" | "Disabled";
-export const DomainSecuritySettingsSyncOnPremPasswords = S.String;
+const DomainSecuritySettingsSyncOnPremPasswords = S.String;
 
 /** A flag to determine whether or not KerberosRc4Encryption is enabled or disabled. */
 export type DomainSecuritySettingsKerberosRc4Encryption = "Enabled" | "Disabled";
-export const DomainSecuritySettingsKerberosRc4Encryption = S.String;
+const DomainSecuritySettingsKerberosRc4Encryption = S.String;
 
 /** A flag to determine whether or not KerberosArmoring is enabled or disabled. */
 export type DomainSecuritySettingsKerberosArmoring = "Enabled" | "Disabled";
-export const DomainSecuritySettingsKerberosArmoring = S.String;
+const DomainSecuritySettingsKerberosArmoring = S.String;
 
 /** A flag to determine whether or not LdapSigning is enabled or disabled. */
 export type DomainSecuritySettingsLdapSigning = "Enabled" | "Disabled";
-export const DomainSecuritySettingsLdapSigning = S.String;
+const DomainSecuritySettingsLdapSigning = S.String;
 
 /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
 export type DomainSecuritySettingsChannelBinding = "Enabled" | "Disabled";
-export const DomainSecuritySettingsChannelBinding = S.String;
+const DomainSecuritySettingsChannelBinding = S.String;
 
 /** Domain Security Settings */
 export interface DomainSecuritySettings {
@@ -396,7 +396,7 @@ export interface DomainSecuritySettings {
   /** A flag to determine whether or not ChannelBinding is enabled or disabled. */
   channelBinding?: DomainSecuritySettingsChannelBinding | (string & {});
 }
-export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ntlmV1: S.optional(DomainSecuritySettingsNtlmV1),
     tlsV1: S.optional(DomainSecuritySettingsTlsV1),
@@ -412,23 +412,23 @@ export const DomainSecuritySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
 export type DomainServicePropertiesInputFilteredSync = "Enabled" | "Disabled";
-export const DomainServicePropertiesInputFilteredSync = S.String;
+const DomainServicePropertiesInputFilteredSync = S.String;
 
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
 export type DomainServicePropertiesInputSyncScope = "All" | "CloudOnly";
-export const DomainServicePropertiesInputSyncScope = S.String;
+const DomainServicePropertiesInputSyncScope = S.String;
 
 /** Should global admins be notified */
 export type NotificationSettingsNotifyGlobalAdmins = "Enabled" | "Disabled";
-export const NotificationSettingsNotifyGlobalAdmins = S.String;
+const NotificationSettingsNotifyGlobalAdmins = S.String;
 
 /** Should domain controller admins be notified */
 export type NotificationSettingsNotifyDcAdmins = "Enabled" | "Disabled";
-export const NotificationSettingsNotifyDcAdmins = S.String;
+const NotificationSettingsNotifyDcAdmins = S.String;
 
 /** The list of additional recipients */
 export type NotificationSettingsAdditionalRecipientsList = Array<string>;
-export const NotificationSettingsAdditionalRecipientsList = /*@__PURE__*/ S.Array(
+const NotificationSettingsAdditionalRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NotificationSettingsAdditionalRecipientsList>;
 
@@ -441,7 +441,7 @@ export interface NotificationSettings {
   /** The list of additional recipients */
   additionalRecipients?: NotificationSettingsAdditionalRecipientsList;
 }
-export const NotificationSettings = /*@__PURE__*/ S.suspend(() =>
+const NotificationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifyGlobalAdmins: S.optional(NotificationSettingsNotifyGlobalAdmins),
     notifyDcAdmins: S.optional(NotificationSettingsNotifyDcAdmins),
@@ -457,11 +457,11 @@ export type ConfigDiagnosticsValidatorResultStatus =
   | "Failure"
   | "Warning"
   | "Skipped";
-export const ConfigDiagnosticsValidatorResultStatus = S.String;
+const ConfigDiagnosticsValidatorResultStatus = S.String;
 
 /** List of domain resource property name or values used to compose a rich description. */
 export type ConfigDiagnosticsValidatorResultIssueDescriptionParamsList = Array<string>;
-export const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
+const ConfigDiagnosticsValidatorResultIssueDescriptionParamsList =
   NotificationSettingsAdditionalRecipientsList as any as S.Schema<ConfigDiagnosticsValidatorResultIssueDescriptionParamsList>;
 
 /** Specific issue for a particular config diagnostics validator */
@@ -471,7 +471,7 @@ export interface ConfigDiagnosticsValidatorResultIssue {
   /** List of domain resource property name or values used to compose a rich description. */
   descriptionParams?: ConfigDiagnosticsValidatorResultIssueDescriptionParamsList;
 }
-export const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(() =>
+const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     descriptionParams: S.optional(ConfigDiagnosticsValidatorResultIssueDescriptionParamsList),
@@ -483,7 +483,7 @@ export const ConfigDiagnosticsValidatorResultIssue = /*@__PURE__*/ S.suspend(() 
 /** List of resource config validation issues. */
 export type ConfigDiagnosticsValidatorResultIssuesList =
   Array<ConfigDiagnosticsValidatorResultIssue>;
-export const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ S.Array(
+const ConfigDiagnosticsValidatorResultIssuesList = /*@__PURE__*/ S.Array(
   ConfigDiagnosticsValidatorResultIssue,
 ) as any as S.Schema<ConfigDiagnosticsValidatorResultIssuesList>;
 
@@ -498,7 +498,7 @@ export interface ConfigDiagnosticsValidatorResult {
   /** List of resource config validation issues. */
   issues?: ConfigDiagnosticsValidatorResultIssuesList;
 }
-export const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
+const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validatorId: S.optional(S.String),
     replicaSetSubnetDisplayName: S.optional(S.String),
@@ -511,7 +511,7 @@ export const ConfigDiagnosticsValidatorResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Configuration Diagnostics validator results. */
 export type ConfigDiagnosticsValidatorResultsList = Array<ConfigDiagnosticsValidatorResult>;
-export const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ S.Array(
+const ConfigDiagnosticsValidatorResultsList = /*@__PURE__*/ S.Array(
   ConfigDiagnosticsValidatorResult,
 ) as any as S.Schema<ConfigDiagnosticsValidatorResultsList>;
 
@@ -522,7 +522,7 @@ export interface ConfigDiagnostics {
   /** List of Configuration Diagnostics validator results. */
   validatorResults?: ConfigDiagnosticsValidatorResultsList;
 }
-export const ConfigDiagnostics = /*@__PURE__*/ S.suspend(() =>
+const ConfigDiagnostics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastExecuted: S.optional(S.String),
     validatorResults: S.optional(ConfigDiagnosticsValidatorResultsList),
@@ -554,7 +554,7 @@ export interface DomainServicePropertiesInput {
   /** Configuration diagnostics data containing latest execution from client. */
   configDiagnostics?: ConfigDiagnostics;
 }
-export const DomainServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DomainServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     replicaSets: S.optional(DomainServicePropertiesInputReplicaSetsList),
@@ -588,7 +588,7 @@ export interface DomainServicesCreateOrUpdateRequest {
   /** Domain service properties */
   properties?: DomainServicePropertiesInput;
 }
-export const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -611,7 +611,7 @@ export const DomainServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type DomainServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DomainServicesCreateOrUpdateResponseTagsMap =
+const DomainServicesCreateOrUpdateResponseTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<DomainServicesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -620,7 +620,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainServicesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const DomainServicesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -628,7 +628,7 @@ export type DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const DomainServicesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainServicesCreateOrUpdateResponseSystemData {
@@ -645,7 +645,7 @@ export interface DomainServicesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainServicesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const DomainServicesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(DomainServicesCreateOrUpdateResponseSystemDataCreatedByType),
@@ -662,7 +662,7 @@ export const DomainServicesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.su
 
 /** List of Domain Controller IP Address */
 export type ReplicaSetDomainControllerIpAddressList = Array<string>;
-export const ReplicaSetDomainControllerIpAddressList =
+const ReplicaSetDomainControllerIpAddressList =
   NotificationSettingsAdditionalRecipientsList as any as S.Schema<ReplicaSetDomainControllerIpAddressList>;
 
 /** Health Monitor Description */
@@ -674,7 +674,7 @@ export interface HealthMonitor {
   /** Health Monitor Details */
   details?: string;
 }
-export const HealthMonitor = /*@__PURE__*/ S.suspend(() =>
+const HealthMonitor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -684,7 +684,7 @@ export const HealthMonitor = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Domain Health Monitors */
 export type ReplicaSetHealthMonitorsList = Array<HealthMonitor>;
-export const ReplicaSetHealthMonitorsList = /*@__PURE__*/ S.Array(
+const ReplicaSetHealthMonitorsList = /*@__PURE__*/ S.Array(
   HealthMonitor,
 ) as any as S.Schema<ReplicaSetHealthMonitorsList>;
 
@@ -705,7 +705,7 @@ export interface HealthAlert {
   /** Health Alert TSG Link */
   resolutionUri?: string;
 }
-export const HealthAlert = /*@__PURE__*/ S.suspend(() =>
+const HealthAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -719,7 +719,7 @@ export const HealthAlert = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Domain Health Alerts */
 export type ReplicaSetHealthAlertsList = Array<HealthAlert>;
-export const ReplicaSetHealthAlertsList = /*@__PURE__*/ S.Array(
+const ReplicaSetHealthAlertsList = /*@__PURE__*/ S.Array(
   HealthAlert,
 ) as any as S.Schema<ReplicaSetHealthAlertsList>;
 
@@ -746,7 +746,7 @@ export interface ReplicaSet {
   /** List of Domain Health Alerts */
   healthAlerts?: ReplicaSetHealthAlertsList;
 }
-export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
+const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicaSetId: S.optional(S.String),
     location: S.optional(S.String),
@@ -763,17 +763,17 @@ export const ReplicaSet = /*@__PURE__*/ S.suspend(() =>
 
 /** List of ReplicaSets */
 export type DomainServicePropertiesReplicaSetsList = Array<ReplicaSet>;
-export const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ S.Array(
+const DomainServicePropertiesReplicaSetsList = /*@__PURE__*/ S.Array(
   ReplicaSet,
 ) as any as S.Schema<DomainServicePropertiesReplicaSetsList>;
 
 /** A flag to determine whether or not Secure LDAP is enabled or disabled. */
 export type LdapsSettingsLdaps = "Enabled" | "Disabled";
-export const LdapsSettingsLdaps = S.String;
+const LdapsSettingsLdaps = S.String;
 
 /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
 export type LdapsSettingsExternalAccess = "Enabled" | "Disabled";
-export const LdapsSettingsExternalAccess = S.String;
+const LdapsSettingsExternalAccess = S.String;
 
 /** Secure LDAP Settings */
 export interface LdapsSettings {
@@ -792,7 +792,7 @@ export interface LdapsSettings {
   /** A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled. */
   externalAccess?: LdapsSettingsExternalAccess;
 }
-export const LdapsSettings = /*@__PURE__*/ S.suspend(() =>
+const LdapsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ldaps: S.optional(LdapsSettingsLdaps),
     pfxCertificate: S.optional(S.String),
@@ -806,11 +806,11 @@ export const LdapsSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Enabled or Disabled flag to turn on Group-based filtered sync */
 export type DomainServicePropertiesFilteredSync = "Enabled" | "Disabled";
-export const DomainServicePropertiesFilteredSync = S.String;
+const DomainServicePropertiesFilteredSync = S.String;
 
 /** All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud */
 export type DomainServicePropertiesSyncScope = "All" | "CloudOnly";
-export const DomainServicePropertiesSyncScope = S.String;
+const DomainServicePropertiesSyncScope = S.String;
 
 /** Migration Progress */
 export interface MigrationProgress {
@@ -819,7 +819,7 @@ export interface MigrationProgress {
   /** Progress Message */
   progressMessage?: string;
 }
-export const MigrationProgress = /*@__PURE__*/ S.suspend(() =>
+const MigrationProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completionPercentage: S.optional(S.Number),
     progressMessage: S.optional(S.String),
@@ -835,7 +835,7 @@ export interface MigrationProperties {
   /** Migration Progress */
   migrationProgress?: MigrationProgress;
 }
-export const MigrationProperties = /*@__PURE__*/ S.suspend(() =>
+const MigrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oldSubnetId: S.optional(S.String),
     oldVnetSiteId: S.optional(S.String),
@@ -882,7 +882,7 @@ export interface DomainServiceProperties {
   /** Configuration diagnostics data containing latest execution from client. */
   configDiagnostics?: ConfigDiagnostics;
 }
-export const DomainServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const DomainServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     tenantId: S.optional(S.String),
@@ -923,7 +923,7 @@ export interface DomainServicesCreateOrUpdateResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
-export const DomainServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -946,7 +946,7 @@ export interface GetDomainServiceRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
-export const GetDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -963,7 +963,7 @@ export const GetDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetDomainServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDomainServiceResponseTagsMap =
+const GetDomainServiceResponseTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<GetDomainServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -972,16 +972,12 @@ export type GetDomainServiceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainServiceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDomainServiceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDomainServiceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDomainServiceResponseSystemData {
   /** The identity that created the resource. */
@@ -997,7 +993,7 @@ export interface GetDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDomainServiceResponseSystemData =
+const GetDomainServiceResponseSystemData =
   CreateOuContainerResponseSystemData as any as S.Schema<GetDomainServiceResponseSystemData>;
 
 export interface GetDomainServiceResponse {
@@ -1018,7 +1014,7 @@ export interface GetDomainServiceResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
-export const GetDomainServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1041,7 +1037,7 @@ export interface GetOuContainerRequest {
   /** The name of the OuContainer. */
   ouContainerName: string;
 }
-export const GetOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1059,7 +1055,7 @@ export const GetOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type GetOuContainerResponseTagsMap = { [key: string]: string | undefined };
-export const GetOuContainerResponseTagsMap =
+const GetOuContainerResponseTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<GetOuContainerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1068,16 +1064,12 @@ export type GetOuContainerResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetOuContainerResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetOuContainerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetOuContainerResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetOuContainerResponseSystemData {
   /** The identity that created the resource. */
@@ -1093,7 +1085,7 @@ export interface GetOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetOuContainerResponseSystemData =
+const GetOuContainerResponseSystemData =
   CreateOuContainerResponseSystemData as any as S.Schema<GetOuContainerResponseSystemData>;
 
 export interface GetOuContainerResponse {
@@ -1114,7 +1106,7 @@ export interface GetOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
-export const GetOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1133,7 +1125,7 @@ export interface ListDomainServiceByResourceGroupRequest {
   /** The name of the resource group within the user's subscription. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListDomainServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1151,7 +1143,7 @@ export const ListDomainServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend((
 
 /** Resource tags */
 export type DomainServiceTagsMap = { [key: string]: string | undefined };
-export const DomainServiceTagsMap =
+const DomainServiceTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<DomainServiceTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1160,7 +1152,7 @@ export type DomainServiceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainServiceSystemDataCreatedByType = S.String;
+const DomainServiceSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DomainServiceSystemDataLastModifiedByType =
@@ -1168,7 +1160,7 @@ export type DomainServiceSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DomainServiceSystemDataLastModifiedByType = S.String;
+const DomainServiceSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DomainServiceSystemData {
@@ -1185,7 +1177,7 @@ export interface DomainServiceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DomainServiceSystemData = /*@__PURE__*/ S.suspend(() =>
+const DomainServiceSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(DomainServiceSystemDataCreatedByType),
@@ -1215,7 +1207,7 @@ export interface DomainService {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
-export const DomainService = /*@__PURE__*/ S.suspend(() =>
+const DomainService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1230,7 +1222,7 @@ export const DomainService = /*@__PURE__*/ S.suspend(() =>
 
 /** the list of domain services. */
 export type DomainServiceListResultValueList = Array<DomainService>;
-export const DomainServiceListResultValueList = /*@__PURE__*/ S.Array(
+const DomainServiceListResultValueList = /*@__PURE__*/ S.Array(
   DomainService,
 ) as any as S.Schema<DomainServiceListResultValueList>;
 
@@ -1241,7 +1233,7 @@ export interface DomainServiceListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export const DomainServiceListResult = /*@__PURE__*/ S.suspend(() =>
+const DomainServiceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DomainServiceListResultValueList),
     nextLink: S.optional(S.String),
@@ -1249,7 +1241,7 @@ export const DomainServiceListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainServiceListResult" }) as any as S.Schema<DomainServiceListResult>;
 
 export interface ListDomainServiceOperationsRequest {}
-export const ListDomainServiceOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainServiceOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1273,7 +1265,7 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -1291,7 +1283,7 @@ export interface OperationEntity {
   /** The origin of the operation. */
   origin?: string;
 }
-export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
+const OperationEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplayInfo),
@@ -1301,7 +1293,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
+const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
 
@@ -1312,7 +1304,7 @@ export interface OperationEntityListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationEntityListResultValueList),
     nextLink: S.optional(S.String),
@@ -1325,7 +1317,7 @@ export interface ListDomainServicesRequest {
   /** Gets subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListDomainServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1348,7 +1340,7 @@ export interface ListOuContainerRequest {
   /** The name of the domain service. */
   domainServiceName: string;
 }
-export const ListOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1365,21 +1357,16 @@ export const ListOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type OuContainerTagsMap = { [key: string]: string | undefined };
-export const OuContainerTagsMap =
-  CreateOuContainerResponseTagsMap as any as S.Schema<OuContainerTagsMap>;
+const OuContainerTagsMap = CreateOuContainerResponseTagsMap as any as S.Schema<OuContainerTagsMap>;
 
 /** The type of identity that created the resource. */
 export type OuContainerSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const OuContainerSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type OuContainerSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const OuContainerSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface OuContainerSystemData {
   /** The identity that created the resource. */
@@ -1395,8 +1382,7 @@ export interface OuContainerSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const OuContainerSystemData =
-  DomainServiceSystemData as any as S.Schema<OuContainerSystemData>;
+const OuContainerSystemData = DomainServiceSystemData as any as S.Schema<OuContainerSystemData>;
 
 /** Resource for OuContainer. */
 export interface OuContainer {
@@ -1417,7 +1403,7 @@ export interface OuContainer {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
-export const OuContainer = /*@__PURE__*/ S.suspend(() =>
+const OuContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1432,7 +1418,7 @@ export const OuContainer = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of OuContainer. */
 export type OuContainerListResultValueList = Array<OuContainer>;
-export const OuContainerListResultValueList = /*@__PURE__*/ S.Array(
+const OuContainerListResultValueList = /*@__PURE__*/ S.Array(
   OuContainer,
 ) as any as S.Schema<OuContainerListResultValueList>;
 
@@ -1443,7 +1429,7 @@ export interface OuContainerListResult {
   /** The continuation token for the next page of results. */
   nextLink?: string;
 }
-export const OuContainerListResult = /*@__PURE__*/ S.suspend(() =>
+const OuContainerListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OuContainerListResultValueList),
     nextLink: S.optional(S.String),
@@ -1451,7 +1437,7 @@ export const OuContainerListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OuContainerListResult" }) as any as S.Schema<OuContainerListResult>;
 
 export interface ListOuContainerOperationsRequest {}
-export const ListOuContainerOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOuContainerOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1466,7 +1452,7 @@ export const ListOuContainerOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDomainServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainServiceRequestTagsMap =
+const UpdateDomainServiceRequestTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceRequestTagsMap>;
 
 export interface UpdateDomainServiceRequest {
@@ -1485,7 +1471,7 @@ export interface UpdateDomainServiceRequest {
   /** Domain service properties */
   properties?: DomainServicePropertiesInput;
 }
-export const UpdateDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1508,7 +1494,7 @@ export const UpdateDomainServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateDomainServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDomainServiceResponseTagsMap =
+const UpdateDomainServiceResponseTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<UpdateDomainServiceResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1517,16 +1503,12 @@ export type UpdateDomainServiceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainServiceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateDomainServiceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDomainServiceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateDomainServiceResponseSystemData {
   /** The identity that created the resource. */
@@ -1542,7 +1524,7 @@ export interface UpdateDomainServiceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDomainServiceResponseSystemData =
+const UpdateDomainServiceResponseSystemData =
   CreateOuContainerResponseSystemData as any as S.Schema<UpdateDomainServiceResponseSystemData>;
 
 export interface UpdateDomainServiceResponse {
@@ -1563,7 +1545,7 @@ export interface UpdateDomainServiceResponse {
   /** Domain service properties */
   properties?: DomainServiceProperties;
 }
-export const UpdateDomainServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1594,7 +1576,7 @@ export interface UpdateOuContainerRequest {
   /** The account password */
   password?: string | Redacted.Redacted<string>;
 }
-export const UpdateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1615,7 +1597,7 @@ export const UpdateOuContainerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateOuContainerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOuContainerResponseTagsMap =
+const UpdateOuContainerResponseTagsMap =
   CreateOuContainerResponseTagsMap as any as S.Schema<UpdateOuContainerResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1624,16 +1606,12 @@ export type UpdateOuContainerResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateOuContainerResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateOuContainerResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateOuContainerResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateOuContainerResponseSystemData {
   /** The identity that created the resource. */
@@ -1649,7 +1627,7 @@ export interface UpdateOuContainerResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateOuContainerResponseSystemData =
+const UpdateOuContainerResponseSystemData =
   CreateOuContainerResponseSystemData as any as S.Schema<UpdateOuContainerResponseSystemData>;
 
 export interface UpdateOuContainerResponse {
@@ -1670,7 +1648,7 @@ export interface UpdateOuContainerResponse {
   /** OuContainer properties */
   properties?: OuContainerProperties;
 }
-export const UpdateOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateOuContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

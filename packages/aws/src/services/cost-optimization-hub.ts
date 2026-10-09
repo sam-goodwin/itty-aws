@@ -118,26 +118,26 @@ export class ValidationException
     /*@__PURE__*/ T.HttpError(400),
   ).pipe(C.withBadRequestError) {}
 export interface GetPreferencesRequest {}
-export const GetPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetPreferencesRequest" }) as any as S.Schema<GetPreferencesRequest>;
 export type SavingsEstimationMode = "BeforeDiscounts" | "AfterDiscounts" | (string & {});
-export const SavingsEstimationMode = S.String;
+const SavingsEstimationMode = S.String;
 
 export type MemberAccountDiscountVisibility = "All" | "None" | (string & {});
-export const MemberAccountDiscountVisibility = S.String;
+const MemberAccountDiscountVisibility = S.String;
 
 export type Term = "OneYear" | "ThreeYears" | (string & {});
-export const Term = S.String;
+const Term = S.String;
 
 export type PaymentOption = "AllUpfront" | "PartialUpfront" | "NoUpfront" | (string & {});
-export const PaymentOption = S.String;
+const PaymentOption = S.String;
 
 export interface PreferredCommitment {
   term?: Term;
   paymentOption?: PaymentOption;
 }
-export const PreferredCommitment = /*@__PURE__*/ S.suspend(() =>
+const PreferredCommitment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ term: S.optional(Term), paymentOption: S.optional(PaymentOption) }),
 ).annotate({ identifier: "PreferredCommitment" }) as any as S.Schema<PreferredCommitment>;
 export interface GetPreferencesResponse {
@@ -145,7 +145,7 @@ export interface GetPreferencesResponse {
   memberAccountDiscountVisibility?: MemberAccountDiscountVisibility;
   preferredCommitment?: PreferredCommitment;
 }
-export const GetPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsEstimationMode: S.optional(SavingsEstimationMode),
     memberAccountDiscountVisibility: S.optional(MemberAccountDiscountVisibility),
@@ -155,7 +155,7 @@ export const GetPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRecommendationRequest {
   recommendationId: string;
 }
-export const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ recommendationId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -187,10 +187,10 @@ export type ResourceType =
   | "WorkSpaces"
   | "SageMakerEndpoint"
   | (string & {});
-export const ResourceType = S.String;
+const ResourceType = S.String;
 
 export type Source = "ComputeOptimizer" | "CostExplorer" | (string & {});
-export const Source = S.String;
+const Source = S.String;
 
 export type Datetime = Date;
 export type ImplementationEffort =
@@ -200,7 +200,7 @@ export type ImplementationEffort =
   | "High"
   | "VeryHigh"
   | (string & {});
-export const ImplementationEffort = S.String;
+const ImplementationEffort = S.String;
 
 export type ActionType =
   | "Rightsize"
@@ -212,7 +212,7 @@ export type ActionType =
   | "Delete"
   | "ScaleIn"
   | (string & {});
-export const ActionType = S.String;
+const ActionType = S.String;
 
 export interface ComputeConfiguration {
   vCpu?: number;
@@ -220,7 +220,7 @@ export interface ComputeConfiguration {
   architecture?: string;
   platform?: string;
 }
-export const ComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vCpu: S.optional(S.Number),
     memorySizeInMB: S.optional(S.Number),
@@ -231,7 +231,7 @@ export const ComputeConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface LambdaFunctionConfiguration {
   compute?: ComputeConfiguration;
 }
-export const LambdaFunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LambdaFunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ compute: S.optional(ComputeConfiguration) }),
 ).annotate({
   identifier: "LambdaFunctionConfiguration",
@@ -243,7 +243,7 @@ export interface Usage {
   productCode?: string;
   unit?: string;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usageType: S.optional(S.String),
     usageAmount: S.optional(S.Number),
@@ -253,13 +253,13 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
 export type UsageList = Usage[];
-export const UsageList = /*@__PURE__*/ S.Array(Usage);
+const UsageList = /*@__PURE__*/ S.Array(Usage);
 export interface EstimatedDiscounts {
   savingsPlansDiscount?: number;
   reservedInstancesDiscount?: number;
   otherDiscount?: number;
 }
-export const EstimatedDiscounts = /*@__PURE__*/ S.suspend(() =>
+const EstimatedDiscounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlansDiscount: S.optional(S.Number),
     reservedInstancesDiscount: S.optional(S.Number),
@@ -272,7 +272,7 @@ export interface ResourcePricing {
   estimatedDiscounts?: EstimatedDiscounts;
   estimatedCostAfterDiscounts?: number;
 }
-export const ResourcePricing = /*@__PURE__*/ S.suspend(() =>
+const ResourcePricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedCostBeforeDiscounts: S.optional(S.Number),
     estimatedNetUnusedAmortizedCommitments: S.optional(S.Number),
@@ -284,14 +284,14 @@ export interface ResourceCostCalculation {
   usages?: Usage[];
   pricing?: ResourcePricing;
 }
-export const ResourceCostCalculation = /*@__PURE__*/ S.suspend(() =>
+const ResourceCostCalculation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ usages: S.optional(UsageList), pricing: S.optional(ResourcePricing) }),
 ).annotate({ identifier: "ResourceCostCalculation" }) as any as S.Schema<ResourceCostCalculation>;
 export interface LambdaFunction {
   configuration?: LambdaFunctionConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const LambdaFunction = /*@__PURE__*/ S.suspend(() =>
+const LambdaFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(LambdaFunctionConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -300,14 +300,14 @@ export const LambdaFunction = /*@__PURE__*/ S.suspend(() =>
 export interface EcsServiceConfiguration {
   compute?: ComputeConfiguration;
 }
-export const EcsServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EcsServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ compute: S.optional(ComputeConfiguration) }),
 ).annotate({ identifier: "EcsServiceConfiguration" }) as any as S.Schema<EcsServiceConfiguration>;
 export interface EcsService {
   configuration?: EcsServiceConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const EcsService = /*@__PURE__*/ S.suspend(() =>
+const EcsService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(EcsServiceConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -316,20 +316,20 @@ export const EcsService = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceConfiguration {
   type?: string;
 }
-export const InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(S.String) }),
 ).annotate({ identifier: "InstanceConfiguration" }) as any as S.Schema<InstanceConfiguration>;
 export interface Ec2InstanceConfiguration {
   instance?: InstanceConfiguration;
 }
-export const Ec2InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const Ec2InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instance: S.optional(InstanceConfiguration) }),
 ).annotate({ identifier: "Ec2InstanceConfiguration" }) as any as S.Schema<Ec2InstanceConfiguration>;
 export interface Ec2Instance {
   configuration?: Ec2InstanceConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const Ec2Instance = /*@__PURE__*/ S.suspend(() =>
+const Ec2Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(Ec2InstanceConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -339,14 +339,14 @@ export interface StorageConfiguration {
   type?: string;
   sizeInGb?: number;
 }
-export const StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(S.String), sizeInGb: S.optional(S.Number) }),
 ).annotate({ identifier: "StorageConfiguration" }) as any as S.Schema<StorageConfiguration>;
 export interface BlockStoragePerformanceConfiguration {
   iops?: number;
   throughput?: number;
 }
-export const BlockStoragePerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BlockStoragePerformanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ iops: S.optional(S.Number), throughput: S.optional(S.Number) }),
 ).annotate({
   identifier: "BlockStoragePerformanceConfiguration",
@@ -356,7 +356,7 @@ export interface EbsVolumeConfiguration {
   performance?: BlockStoragePerformanceConfiguration;
   attachmentState?: string;
 }
-export const EbsVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EbsVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storage: S.optional(StorageConfiguration),
     performance: S.optional(BlockStoragePerformanceConfiguration),
@@ -367,7 +367,7 @@ export interface EbsVolume {
   configuration?: EbsVolumeConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const EbsVolume = /*@__PURE__*/ S.suspend(() =>
+const EbsVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(EbsVolumeConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -376,18 +376,18 @@ export const EbsVolume = /*@__PURE__*/ S.suspend(() =>
 export interface MixedInstanceConfiguration {
   type?: string;
 }
-export const MixedInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MixedInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(S.String) }),
 ).annotate({
   identifier: "MixedInstanceConfiguration",
 }) as any as S.Schema<MixedInstanceConfiguration>;
 export type MixedInstanceConfigurationList = MixedInstanceConfiguration[];
-export const MixedInstanceConfigurationList = /*@__PURE__*/ S.Array(MixedInstanceConfiguration);
+const MixedInstanceConfigurationList = /*@__PURE__*/ S.Array(MixedInstanceConfiguration);
 export type Ec2AutoScalingGroupType = "SingleInstanceType" | "MixedInstanceTypes" | (string & {});
-export const Ec2AutoScalingGroupType = S.String;
+const Ec2AutoScalingGroupType = S.String;
 
 export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
-export const AllocationStrategy = S.String;
+const AllocationStrategy = S.String;
 
 export interface Ec2AutoScalingGroupConfiguration {
   instance?: InstanceConfiguration;
@@ -395,7 +395,7 @@ export interface Ec2AutoScalingGroupConfiguration {
   type?: Ec2AutoScalingGroupType;
   allocationStrategy?: AllocationStrategy;
 }
-export const Ec2AutoScalingGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
+const Ec2AutoScalingGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(InstanceConfiguration),
     mixedInstances: S.optional(MixedInstanceConfigurationList),
@@ -409,7 +409,7 @@ export interface Ec2AutoScalingGroup {
   configuration?: Ec2AutoScalingGroupConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const Ec2AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
+const Ec2AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(Ec2AutoScalingGroupConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -433,7 +433,7 @@ export interface Ec2ReservedInstancesConfiguration {
   tenancy?: string;
   sizeFlexEligible?: boolean;
 }
-export const Ec2ReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const Ec2ReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -461,7 +461,7 @@ export interface ReservedInstancesPricing {
   savingsPercentage?: number;
   estimatedMonthlyAmortizedReservationCost?: number;
 }
-export const ReservedInstancesPricing = /*@__PURE__*/ S.suspend(() =>
+const ReservedInstancesPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedOnDemandCost: S.optional(S.Number),
     monthlyReservationEligibleCost: S.optional(S.Number),
@@ -472,7 +472,7 @@ export const ReservedInstancesPricing = /*@__PURE__*/ S.suspend(() =>
 export interface ReservedInstancesCostCalculation {
   pricing?: ReservedInstancesPricing;
 }
-export const ReservedInstancesCostCalculation = /*@__PURE__*/ S.suspend(() =>
+const ReservedInstancesCostCalculation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pricing: S.optional(ReservedInstancesPricing) }),
 ).annotate({
   identifier: "ReservedInstancesCostCalculation",
@@ -481,7 +481,7 @@ export interface Ec2ReservedInstances {
   configuration?: Ec2ReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const Ec2ReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const Ec2ReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(Ec2ReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -506,7 +506,7 @@ export interface RdsReservedInstancesConfiguration {
   databaseEngine?: string;
   deploymentOption?: string;
 }
-export const RdsReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RdsReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -533,7 +533,7 @@ export interface RdsReservedInstances {
   configuration?: RdsReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const RdsReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const RdsReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(RdsReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -554,7 +554,7 @@ export interface ElastiCacheReservedInstancesConfiguration {
   currentGeneration?: string;
   sizeFlexEligible?: boolean;
 }
-export const ElastiCacheReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ElastiCacheReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -577,7 +577,7 @@ export interface ElastiCacheReservedInstances {
   configuration?: ElastiCacheReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const ElastiCacheReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const ElastiCacheReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(ElastiCacheReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -599,7 +599,7 @@ export interface OpenSearchReservedInstancesConfiguration {
   currentGeneration?: string;
   sizeFlexEligible?: boolean;
 }
-export const OpenSearchReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OpenSearchReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -621,7 +621,7 @@ export interface OpenSearchReservedInstances {
   configuration?: OpenSearchReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const OpenSearchReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const OpenSearchReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(OpenSearchReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -644,7 +644,7 @@ export interface RedshiftReservedInstancesConfiguration {
   sizeFlexEligible?: boolean;
   currentGeneration?: string;
 }
-export const RedshiftReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RedshiftReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -667,7 +667,7 @@ export interface RedshiftReservedInstances {
   configuration?: RedshiftReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const RedshiftReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const RedshiftReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(RedshiftReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -683,7 +683,7 @@ export interface Ec2InstanceSavingsPlansConfiguration {
   instanceFamily?: string;
   savingsPlansRegion?: string;
 }
-export const Ec2InstanceSavingsPlansConfiguration = /*@__PURE__*/ S.suspend(() =>
+const Ec2InstanceSavingsPlansConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     term: S.optional(S.String),
@@ -701,7 +701,7 @@ export interface SavingsPlansPricing {
   savingsPercentage?: number;
   estimatedOnDemandCost?: number;
 }
-export const SavingsPlansPricing = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlansPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monthlySavingsPlansEligibleCost: S.optional(S.Number),
     estimatedMonthlyCommitment: S.optional(S.Number),
@@ -712,7 +712,7 @@ export const SavingsPlansPricing = /*@__PURE__*/ S.suspend(() =>
 export interface SavingsPlansCostCalculation {
   pricing?: SavingsPlansPricing;
 }
-export const SavingsPlansCostCalculation = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlansCostCalculation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pricing: S.optional(SavingsPlansPricing) }),
 ).annotate({
   identifier: "SavingsPlansCostCalculation",
@@ -721,7 +721,7 @@ export interface Ec2InstanceSavingsPlans {
   configuration?: Ec2InstanceSavingsPlansConfiguration;
   costCalculation?: SavingsPlansCostCalculation;
 }
-export const Ec2InstanceSavingsPlans = /*@__PURE__*/ S.suspend(() =>
+const Ec2InstanceSavingsPlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(Ec2InstanceSavingsPlansConfiguration),
     costCalculation: S.optional(SavingsPlansCostCalculation),
@@ -733,7 +733,7 @@ export interface ComputeSavingsPlansConfiguration {
   paymentOption?: string;
   hourlyCommitment?: string;
 }
-export const ComputeSavingsPlansConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ComputeSavingsPlansConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     term: S.optional(S.String),
@@ -747,7 +747,7 @@ export interface ComputeSavingsPlans {
   configuration?: ComputeSavingsPlansConfiguration;
   costCalculation?: SavingsPlansCostCalculation;
 }
-export const ComputeSavingsPlans = /*@__PURE__*/ S.suspend(() =>
+const ComputeSavingsPlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(ComputeSavingsPlansConfiguration),
     costCalculation: S.optional(SavingsPlansCostCalculation),
@@ -759,23 +759,21 @@ export interface SageMakerSavingsPlansConfiguration {
   paymentOption?: string;
   hourlyCommitment?: string;
 }
-export const SageMakerSavingsPlansConfiguration =
-  ComputeSavingsPlansConfiguration as any as S.Schema<SageMakerSavingsPlansConfiguration>;
 export interface SageMakerSavingsPlans {
   configuration?: SageMakerSavingsPlansConfiguration;
   costCalculation?: SavingsPlansCostCalculation;
 }
-export const SageMakerSavingsPlans = ComputeSavingsPlans as any as S.Schema<SageMakerSavingsPlans>;
+const SageMakerSavingsPlans = ComputeSavingsPlans as any as S.Schema<SageMakerSavingsPlans>;
 export interface DbInstanceConfiguration {
   dbInstanceClass?: string;
 }
-export const DbInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DbInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbInstanceClass: S.optional(S.String) }),
 ).annotate({ identifier: "DbInstanceConfiguration" }) as any as S.Schema<DbInstanceConfiguration>;
 export interface RdsDbInstanceConfiguration {
   instance?: DbInstanceConfiguration;
 }
-export const RdsDbInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RdsDbInstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ instance: S.optional(DbInstanceConfiguration) }),
 ).annotate({
   identifier: "RdsDbInstanceConfiguration",
@@ -784,7 +782,7 @@ export interface RdsDbInstance {
   configuration?: RdsDbInstanceConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const RdsDbInstance = /*@__PURE__*/ S.suspend(() =>
+const RdsDbInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(RdsDbInstanceConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -796,7 +794,7 @@ export interface RdsDbInstanceStorageConfiguration {
   iops?: number;
   storageThroughput?: number;
 }
-export const RdsDbInstanceStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RdsDbInstanceStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageType: S.optional(S.String),
     allocatedStorageInGb: S.optional(S.Number),
@@ -810,7 +808,7 @@ export interface RdsDbInstanceStorage {
   configuration?: RdsDbInstanceStorageConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const RdsDbInstanceStorage = /*@__PURE__*/ S.suspend(() =>
+const RdsDbInstanceStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(RdsDbInstanceStorageConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -819,7 +817,7 @@ export const RdsDbInstanceStorage = /*@__PURE__*/ S.suspend(() =>
 export interface AuroraDbClusterStorageConfiguration {
   storageType?: string;
 }
-export const AuroraDbClusterStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AuroraDbClusterStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ storageType: S.optional(S.String) }),
 ).annotate({
   identifier: "AuroraDbClusterStorageConfiguration",
@@ -828,7 +826,7 @@ export interface AuroraDbClusterStorage {
   configuration?: AuroraDbClusterStorageConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const AuroraDbClusterStorage = /*@__PURE__*/ S.suspend(() =>
+const AuroraDbClusterStorage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(AuroraDbClusterStorageConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -845,7 +843,7 @@ export interface DynamoDbReservedCapacityConfiguration {
   numberOfCapacityUnitsToPurchase?: string;
   capacityUnits?: string;
 }
-export const DynamoDbReservedCapacityConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DynamoDbReservedCapacityConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -864,7 +862,7 @@ export interface DynamoDbReservedCapacity {
   configuration?: DynamoDbReservedCapacityConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const DynamoDbReservedCapacity = /*@__PURE__*/ S.suspend(() =>
+const DynamoDbReservedCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(DynamoDbReservedCapacityConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -885,7 +883,7 @@ export interface MemoryDbReservedInstancesConfiguration {
   sizeFlexEligible?: boolean;
   currentGeneration?: string;
 }
-export const MemoryDbReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MemoryDbReservedInstancesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountScope: S.optional(S.String),
     service: S.optional(S.String),
@@ -908,7 +906,7 @@ export interface MemoryDbReservedInstances {
   configuration?: MemoryDbReservedInstancesConfiguration;
   costCalculation?: ReservedInstancesCostCalculation;
 }
-export const MemoryDbReservedInstances = /*@__PURE__*/ S.suspend(() =>
+const MemoryDbReservedInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(MemoryDbReservedInstancesConfiguration),
     costCalculation: S.optional(ReservedInstancesCostCalculation),
@@ -921,7 +919,7 @@ export interface NatGatewayConfiguration {
   packetsInFromSource?: number;
   packetsInFromDestination?: number;
 }
-export const NatGatewayConfiguration = /*@__PURE__*/ S.suspend(() =>
+const NatGatewayConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeConnectionCount: S.optional(S.Number),
     packetsInFromSource: S.optional(S.Number),
@@ -932,7 +930,7 @@ export interface NatGateway {
   configuration?: NatGatewayConfiguration;
   costCalculation?: ResourceCostCalculation;
 }
-export const NatGateway = /*@__PURE__*/ S.suspend(() =>
+const NatGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(NatGatewayConfiguration),
     costCalculation: S.optional(ResourceCostCalculation),
@@ -941,29 +939,29 @@ export const NatGateway = /*@__PURE__*/ S.suspend(() =>
 export interface DynamoDbTable {
   costCalculation?: ResourceCostCalculation;
 }
-export const DynamoDbTable = /*@__PURE__*/ S.suspend(() =>
+const DynamoDbTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ costCalculation: S.optional(ResourceCostCalculation) }),
 ).annotate({ identifier: "DynamoDbTable" }) as any as S.Schema<DynamoDbTable>;
 export interface ElastiCacheCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const ElastiCacheCluster = DynamoDbTable as any as S.Schema<ElastiCacheCluster>;
+const ElastiCacheCluster = DynamoDbTable as any as S.Schema<ElastiCacheCluster>;
 export interface MemoryDbCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const MemoryDbCluster = DynamoDbTable as any as S.Schema<MemoryDbCluster>;
+const MemoryDbCluster = DynamoDbTable as any as S.Schema<MemoryDbCluster>;
 export interface DocumentDbCluster {
   costCalculation?: ResourceCostCalculation;
 }
-export const DocumentDbCluster = DynamoDbTable as any as S.Schema<DocumentDbCluster>;
+const DocumentDbCluster = DynamoDbTable as any as S.Schema<DocumentDbCluster>;
 export interface WorkSpaces {
   costCalculation?: ResourceCostCalculation;
 }
-export const WorkSpaces = DynamoDbTable as any as S.Schema<WorkSpaces>;
+const WorkSpaces = DynamoDbTable as any as S.Schema<WorkSpaces>;
 export interface SageMakerEndpoint {
   costCalculation?: ResourceCostCalculation;
 }
-export const SageMakerEndpoint = DynamoDbTable as any as S.Schema<SageMakerEndpoint>;
+const SageMakerEndpoint = DynamoDbTable as any as S.Schema<SageMakerEndpoint>;
 export type ResourceDetails =
   | {
       lambdaFunction: LambdaFunction;
@@ -1640,7 +1638,7 @@ export type ResourceDetails =
       workSpaces?: never;
       sageMakerEndpoint: SageMakerEndpoint;
     };
-export const ResourceDetails = /*@__PURE__*/ S.Union([
+const ResourceDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ lambdaFunction: LambdaFunction }),
   /*@__PURE__*/ S.Struct({ ecsService: EcsService }),
   /*@__PURE__*/ S.Struct({ ec2Instance: Ec2Instance }),
@@ -1671,11 +1669,11 @@ export interface Tag {
   key?: string;
   value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface GetRecommendationResponse {
   recommendationId?: string;
   resourceId?: string;
@@ -1701,7 +1699,7 @@ export interface GetRecommendationResponse {
   recommendedResourceDetails?: ResourceDetails;
   tags?: Tag[];
 }
-export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendationId: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -1731,24 +1729,24 @@ export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRecommendationResponse",
 }) as any as S.Schema<GetRecommendationResponse>;
 export type GranularityType = "Daily" | "Monthly" | (string & {});
-export const GranularityType = S.String;
+const GranularityType = S.String;
 
 export interface TimePeriod {
   start: string;
   end: string;
 }
-export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
+const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ start: S.String, end: S.String }),
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 export type MaxResults = number;
 export type Order = "Asc" | "Desc" | (string & {});
-export const Order = S.String;
+const Order = S.String;
 
 export interface OrderBy {
   dimension?: string;
   order?: Order;
 }
-export const OrderBy = /*@__PURE__*/ S.suspend(() =>
+const OrderBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dimension: S.optional(S.String), order: S.optional(Order) }),
 ).annotate({ identifier: "OrderBy" }) as any as S.Schema<OrderBy>;
 export interface ListEfficiencyMetricsRequest {
@@ -1759,7 +1757,7 @@ export interface ListEfficiencyMetricsRequest {
   orderBy?: OrderBy;
   nextToken?: string;
 }
-export const ListEfficiencyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEfficiencyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupBy: S.optional(S.String),
     granularity: GranularityType,
@@ -1777,7 +1775,7 @@ export interface MetricsByTime {
   spend?: number;
   timestamp?: string;
 }
-export const MetricsByTime = /*@__PURE__*/ S.suspend(() =>
+const MetricsByTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.optional(S.Number),
     savings: S.optional(S.Number),
@@ -1786,13 +1784,13 @@ export const MetricsByTime = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MetricsByTime" }) as any as S.Schema<MetricsByTime>;
 export type MetricsByTimeList = MetricsByTime[];
-export const MetricsByTimeList = /*@__PURE__*/ S.Array(MetricsByTime);
+const MetricsByTimeList = /*@__PURE__*/ S.Array(MetricsByTime);
 export interface EfficiencyMetricsByGroup {
   metricsByTime?: MetricsByTime[];
   group?: string;
   message?: string;
 }
-export const EfficiencyMetricsByGroup = /*@__PURE__*/ S.suspend(() =>
+const EfficiencyMetricsByGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsByTime: S.optional(MetricsByTimeList),
     group: S.optional(S.String),
@@ -1800,12 +1798,12 @@ export const EfficiencyMetricsByGroup = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EfficiencyMetricsByGroup" }) as any as S.Schema<EfficiencyMetricsByGroup>;
 export type EfficiencyMetricsByGroupList = EfficiencyMetricsByGroup[];
-export const EfficiencyMetricsByGroupList = /*@__PURE__*/ S.Array(EfficiencyMetricsByGroup);
+const EfficiencyMetricsByGroupList = /*@__PURE__*/ S.Array(EfficiencyMetricsByGroup);
 export interface ListEfficiencyMetricsResponse {
   efficiencyMetricsByGroup?: EfficiencyMetricsByGroup[];
   nextToken?: string;
 }
-export const ListEfficiencyMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEfficiencyMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     efficiencyMetricsByGroup: S.optional(EfficiencyMetricsByGroupList),
     nextToken: S.optional(S.String),
@@ -1820,7 +1818,7 @@ export interface ListEnrollmentStatusesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeOrganizationInfo: S.optional(S.Boolean),
     accountId: S.optional(S.String),
@@ -1831,7 +1829,7 @@ export const ListEnrollmentStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnrollmentStatusesRequest",
 }) as any as S.Schema<ListEnrollmentStatusesRequest>;
 export type EnrollmentStatus = "Active" | "Inactive" | (string & {});
-export const EnrollmentStatus = S.String;
+const EnrollmentStatus = S.String;
 
 export interface AccountEnrollmentStatus {
   accountId?: string;
@@ -1839,7 +1837,7 @@ export interface AccountEnrollmentStatus {
   lastUpdatedTimestamp?: Date;
   createdTimestamp?: Date;
 }
-export const AccountEnrollmentStatus = /*@__PURE__*/ S.suspend(() =>
+const AccountEnrollmentStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     status: S.optional(EnrollmentStatus),
@@ -1848,13 +1846,13 @@ export const AccountEnrollmentStatus = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountEnrollmentStatus" }) as any as S.Schema<AccountEnrollmentStatus>;
 export type AccountEnrollmentStatuses = AccountEnrollmentStatus[];
-export const AccountEnrollmentStatuses = /*@__PURE__*/ S.Array(AccountEnrollmentStatus);
+const AccountEnrollmentStatuses = /*@__PURE__*/ S.Array(AccountEnrollmentStatus);
 export interface ListEnrollmentStatusesResponse {
   items?: AccountEnrollmentStatus[];
   includeMemberAccounts?: boolean;
   nextToken?: string;
 }
-export const ListEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(AccountEnrollmentStatuses),
     includeMemberAccounts: S.optional(S.Boolean),
@@ -1864,21 +1862,21 @@ export const ListEnrollmentStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListEnrollmentStatusesResponse",
 }) as any as S.Schema<ListEnrollmentStatusesResponse>;
 export type ImplementationEffortList = ImplementationEffort[];
-export const ImplementationEffortList = /*@__PURE__*/ S.Array(ImplementationEffort);
+const ImplementationEffortList = /*@__PURE__*/ S.Array(ImplementationEffort);
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export type RegionList = string[];
-export const RegionList = AccountIdList as any as S.Schema<RegionList>;
+const RegionList = AccountIdList as any as S.Schema<RegionList>;
 export type ResourceTypeList = ResourceType[];
-export const ResourceTypeList = ImplementationEffortList as any as S.Schema<ResourceTypeList>;
+const ResourceTypeList = ImplementationEffortList as any as S.Schema<ResourceTypeList>;
 export type ActionTypeList = ActionType[];
-export const ActionTypeList = ImplementationEffortList as any as S.Schema<ActionTypeList>;
+const ActionTypeList = ImplementationEffortList as any as S.Schema<ActionTypeList>;
 export type ResourceIdList = string[];
-export const ResourceIdList = AccountIdList as any as S.Schema<ResourceIdList>;
+const ResourceIdList = AccountIdList as any as S.Schema<ResourceIdList>;
 export type ResourceArnList = string[];
-export const ResourceArnList = AccountIdList as any as S.Schema<ResourceArnList>;
+const ResourceArnList = AccountIdList as any as S.Schema<ResourceArnList>;
 export type RecommendationIdList = string[];
-export const RecommendationIdList = AccountIdList as any as S.Schema<RecommendationIdList>;
+const RecommendationIdList = AccountIdList as any as S.Schema<RecommendationIdList>;
 export interface Filter {
   restartNeeded?: boolean;
   rollbackPossible?: boolean;
@@ -1892,7 +1890,7 @@ export interface Filter {
   resourceArns?: string[];
   recommendationIds?: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restartNeeded: S.optional(S.Boolean),
     rollbackPossible: S.optional(S.Boolean),
@@ -1914,7 +1912,7 @@ export interface ListRecommendationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(Filter),
     orderBy: S.optional(OrderBy),
@@ -1948,7 +1946,7 @@ export interface Recommendation {
   source?: Source;
   tags?: Tag[];
 }
-export const Recommendation = /*@__PURE__*/ S.suspend(() =>
+const Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendationId: S.optional(S.String),
     accountId: S.optional(S.String),
@@ -1974,21 +1972,19 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export type RecommendationList = Recommendation[];
-export const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
+const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
 export interface ListRecommendationsResponse {
   items?: Recommendation[];
   nextToken?: string;
 }
-export const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: S.optional(RecommendationList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRecommendationsResponse",
 }) as any as S.Schema<ListRecommendationsResponse>;
 export type SummaryMetrics = "SavingsPercentage" | (string & {});
-export const SummaryMetrics = S.String;
-
 export type SummaryMetricsList = SummaryMetrics[];
-export const SummaryMetricsList = ImplementationEffortList as any as S.Schema<SummaryMetricsList>;
+const SummaryMetricsList = ImplementationEffortList as any as S.Schema<SummaryMetricsList>;
 export interface ListRecommendationSummariesRequest {
   filter?: Filter;
   groupBy: string;
@@ -1996,7 +1992,7 @@ export interface ListRecommendationSummariesRequest {
   metrics?: SummaryMetrics[];
   nextToken?: string;
 }
-export const ListRecommendationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(Filter),
     groupBy: S.String,
@@ -2012,7 +2008,7 @@ export interface RecommendationSummary {
   estimatedMonthlySavings?: number;
   recommendationCount?: number;
 }
-export const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
+const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     estimatedMonthlySavings: S.optional(S.Number),
@@ -2020,11 +2016,11 @@ export const RecommendationSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RecommendationSummary" }) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummariesList = RecommendationSummary[];
-export const RecommendationSummariesList = /*@__PURE__*/ S.Array(RecommendationSummary);
+const RecommendationSummariesList = /*@__PURE__*/ S.Array(RecommendationSummary);
 export interface SummaryMetricsResult {
   savingsPercentage?: string;
 }
-export const SummaryMetricsResult = /*@__PURE__*/ S.suspend(() =>
+const SummaryMetricsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ savingsPercentage: S.optional(S.String) }),
 ).annotate({ identifier: "SummaryMetricsResult" }) as any as S.Schema<SummaryMetricsResult>;
 export interface ListRecommendationSummariesResponse {
@@ -2035,7 +2031,7 @@ export interface ListRecommendationSummariesResponse {
   metrics?: SummaryMetricsResult;
   nextToken?: string;
 }
-export const ListRecommendationSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationSummariesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedTotalDedupedSavings: S.optional(S.Number),
     items: S.optional(RecommendationSummariesList),
@@ -2051,7 +2047,7 @@ export interface UpdateEnrollmentStatusRequest {
   status: EnrollmentStatus;
   includeMemberAccounts?: boolean;
 }
-export const UpdateEnrollmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnrollmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: EnrollmentStatus, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -2061,7 +2057,7 @@ export const UpdateEnrollmentStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnrollmentStatusResponse {
   status?: string;
 }
-export const UpdateEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(S.String) }),
 ).annotate({
   identifier: "UpdateEnrollmentStatusResponse",
@@ -2071,7 +2067,7 @@ export interface UpdatePreferencesRequest {
   memberAccountDiscountVisibility?: MemberAccountDiscountVisibility;
   preferredCommitment?: PreferredCommitment;
 }
-export const UpdatePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsEstimationMode: S.optional(SavingsEstimationMode),
     memberAccountDiscountVisibility: S.optional(MemberAccountDiscountVisibility),
@@ -2083,7 +2079,7 @@ export interface UpdatePreferencesResponse {
   memberAccountDiscountVisibility?: MemberAccountDiscountVisibility;
   preferredCommitment?: PreferredCommitment;
 }
-export const UpdatePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsEstimationMode: S.optional(SavingsEstimationMode),
     memberAccountDiscountVisibility: S.optional(MemberAccountDiscountVisibility),
@@ -2093,19 +2089,19 @@ export const UpdatePreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdatePreferencesResponse",
 }) as any as S.Schema<UpdatePreferencesResponse>;
 export type ValidationExceptionReason = "FieldValidationFailed" | "Other" | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionDetail {
   fieldName: string;
   message: string;
 }
-export const ValidationExceptionDetail = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fieldName: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionDetail",
 }) as any as S.Schema<ValidationExceptionDetail>;
 export type ValidationExceptionDetails = ValidationExceptionDetail[];
-export const ValidationExceptionDetails = /*@__PURE__*/ S.Array(ValidationExceptionDetail);
+const ValidationExceptionDetails = /*@__PURE__*/ S.Array(ValidationExceptionDetail);
 export type GetPreferencesError =
   | AccessDeniedException
   | InternalServerException

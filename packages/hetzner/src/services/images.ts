@@ -13,14 +13,14 @@ export interface DeleteImageRequest {
   /** ID of the Image. */
   id: number;
 }
-export const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/images/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteImageRequest" }) as any as S.Schema<DeleteImageRequest>;
 
 export interface DeleteImageResponse {}
-export const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteImageResponse",
 }) as any as S.Schema<DeleteImageResponse>;
 
@@ -28,7 +28,7 @@ export interface GetImageRequest {
   /** ID of the Image. */
   id: number;
 }
-export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/images/{id}", code: 200 })),
@@ -36,11 +36,11 @@ export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Image. */
 export type GetImageResponseImageType = "system" | "app" | "snapshot" | "backup";
-export const GetImageResponseImageType = S.String;
+const GetImageResponseImageType = S.String;
 
 /** Status of the Image. */
 export type GetImageResponseImageStatus = "available" | "creating" | "unavailable";
-export const GetImageResponseImageStatus = S.String;
+const GetImageResponseImageStatus = S.String;
 
 /** Information about the Server the Image was created from. */
 export interface GetImageResponseImageCreatedFrom {
@@ -49,7 +49,7 @@ export interface GetImageResponseImageCreatedFrom {
   /** Server name at the time the Image was created. */
   name: string;
 }
-export const GetImageResponseImageCreatedFrom = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponseImageCreatedFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -68,14 +68,14 @@ export type GetImageResponseImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
-export const GetImageResponseImageOsFlavor = S.String;
+const GetImageResponseImageOsFlavor = S.String;
 
 /** Protection configuration for the Resource. */
 export interface GetImageResponseImageProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const GetImageResponseImageProtection = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponseImageProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.Boolean,
   }),
@@ -90,7 +90,7 @@ export interface GetImageResponseImageDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-export const GetImageResponseImageDeprecation = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponseImageDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unavailable_after: S.String,
     announced: S.String,
@@ -101,14 +101,14 @@ export const GetImageResponseImageDeprecation = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetImageResponseImageLabelsMap = { [key: string]: string | undefined };
-export const GetImageResponseImageLabelsMap = /*@__PURE__*/ S.Record(
+const GetImageResponseImageLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetImageResponseImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type GetImageResponseImageArchitecture = "x86" | "arm";
-export const GetImageResponseImageArchitecture = S.String;
+const GetImageResponseImageArchitecture = S.String;
 
 export interface GetImageResponseImage {
   /** ID of the [Image](#tag/images). */
@@ -150,7 +150,7 @@ export interface GetImageResponseImage {
   /** CPU architecture compatible with the Image. */
   architecture: GetImageResponseImageArchitecture;
 }
-export const GetImageResponseImage = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponseImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: GetImageResponseImageType,
@@ -177,7 +177,7 @@ export const GetImageResponseImage = /*@__PURE__*/ S.suspend(() =>
 export interface GetImageResponse {
   image?: GetImageResponseImage;
 }
-export const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(GetImageResponseImage),
   }),
@@ -193,37 +193,33 @@ export type ListImagesRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-export const ListImagesRequestSortItem = S.String;
+const ListImagesRequestSortItem = S.String;
 
 export type ListImagesRequestSortList = Array<ListImagesRequestSortItem | (string & {})>;
-export const ListImagesRequestSortList = /*@__PURE__*/ S.Array(
+const ListImagesRequestSortList = /*@__PURE__*/ S.Array(
   ListImagesRequestSortItem,
 ) as any as S.Schema<ListImagesRequestSortList>;
 
 /** Type of the Image. */
 export type ListImagesRequestTypeItem = "system" | "app" | "snapshot" | "backup";
-export const ListImagesRequestTypeItem = S.String;
-
 export type ListImagesRequestTypeList = Array<ListImagesRequestTypeItem | (string & {})>;
-export const ListImagesRequestTypeList =
+const ListImagesRequestTypeList =
   ListImagesRequestSortList as any as S.Schema<ListImagesRequestTypeList>;
 
 /** Status of the Image. */
 export type ListImagesRequestStatusItem = "available" | "creating" | "unavailable";
-export const ListImagesRequestStatusItem = S.String;
-
 export type ListImagesRequestStatusList = Array<ListImagesRequestStatusItem | (string & {})>;
-export const ListImagesRequestStatusList =
+const ListImagesRequestStatusList =
   ListImagesRequestSortList as any as S.Schema<ListImagesRequestStatusList>;
 
 export type ListImagesRequestBoundToList = Array<string>;
-export const ListImagesRequestBoundToList = /*@__PURE__*/ S.Array(
+const ListImagesRequestBoundToList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListImagesRequestBoundToList>;
 
 /** CPU architecture of the Resource. */
 export type ListImagesRequestArchitecture = "x86" | "arm";
-export const ListImagesRequestArchitecture = S.String;
+const ListImagesRequestArchitecture = S.String;
 
 export interface ListImagesRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
@@ -247,7 +243,7 @@ export interface ListImagesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sort: S.optional(ListImagesRequestSortList.pipe(T.Query())),
     type: S.optional(ListImagesRequestTypeList.pipe(T.Query())),
@@ -264,16 +260,14 @@ export const ListImagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Image. */
 export type ListImagesResponseImagesItemType = "system" | "app" | "snapshot" | "backup";
-export const ListImagesResponseImagesItemType = S.String;
+const ListImagesResponseImagesItemType = S.String;
 
 /** Status of the Image. */
 export type ListImagesResponseImagesItemStatus = "available" | "creating" | "unavailable";
-export const ListImagesResponseImagesItemStatus = S.String;
+const ListImagesResponseImagesItemStatus = S.String;
 
 /** Information about the Server the Image was created from. */
 export type ListImagesResponseImagesItemCreatedFrom = GetImageResponseImageCreatedFrom;
-export const ListImagesResponseImagesItemCreatedFrom = GetImageResponseImageCreatedFrom;
-
 /** Flavor of operating system contained in the Image. */
 export type ListImagesResponseImagesItemOsFlavor =
   | "ubuntu"
@@ -284,24 +278,20 @@ export type ListImagesResponseImagesItemOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
-export const ListImagesResponseImagesItemOsFlavor = S.String;
+const ListImagesResponseImagesItemOsFlavor = S.String;
 
 /** Protection configuration for the Resource. */
 export type ListImagesResponseImagesItemProtection = GetImageResponseImageProtection;
-export const ListImagesResponseImagesItemProtection = GetImageResponseImageProtection;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type ListImagesResponseImagesItemDeprecation = GetImageResponseImageDeprecation;
-export const ListImagesResponseImagesItemDeprecation = GetImageResponseImageDeprecation;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListImagesResponseImagesItemLabelsMap = { [key: string]: string | undefined };
-export const ListImagesResponseImagesItemLabelsMap =
+const ListImagesResponseImagesItemLabelsMap =
   GetImageResponseImageLabelsMap as any as S.Schema<ListImagesResponseImagesItemLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type ListImagesResponseImagesItemArchitecture = "x86" | "arm";
-export const ListImagesResponseImagesItemArchitecture = S.String;
+const ListImagesResponseImagesItemArchitecture = S.String;
 
 export interface ListImagesResponseImagesItem {
   /** ID of the [Image](#tag/images). */
@@ -343,7 +333,7 @@ export interface ListImagesResponseImagesItem {
   /** CPU architecture compatible with the Image. */
   architecture: ListImagesResponseImagesItemArchitecture;
 }
-export const ListImagesResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
+const ListImagesResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: ListImagesResponseImagesItemType,
@@ -370,7 +360,7 @@ export const ListImagesResponseImagesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListImagesResponseImagesItem>;
 
 export type ListImagesResponseImagesList = Array<ListImagesResponseImagesItem>;
-export const ListImagesResponseImagesList = /*@__PURE__*/ S.Array(
+const ListImagesResponseImagesList = /*@__PURE__*/ S.Array(
   ListImagesResponseImagesItem,
 ) as any as S.Schema<ListImagesResponseImagesList>;
 
@@ -389,7 +379,7 @@ export interface ListImagesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListImagesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListImagesResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -406,7 +396,7 @@ export interface ListImagesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListImagesResponseMetaPagination;
 }
-export const ListImagesResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListImagesResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListImagesResponseMetaPagination,
   }),
@@ -416,7 +406,7 @@ export interface ListImagesResponse {
   images: ListImagesResponseImagesList;
   meta: ListImagesResponseMeta;
 }
-export const ListImagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListImagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     images: ListImagesResponseImagesList,
     meta: ListImagesResponseMeta,
@@ -425,11 +415,11 @@ export const ListImagesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Destination Image type to convert to. */
 export type UpdateImageRequestType = "snapshot";
-export const UpdateImageRequestType = S.String;
+const UpdateImageRequestType = S.String;
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateImageRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateImageRequestLabelsMap =
+const UpdateImageRequestLabelsMap =
   GetImageResponseImageLabelsMap as any as S.Schema<UpdateImageRequestLabelsMap>;
 
 export interface UpdateImageRequest {
@@ -442,7 +432,7 @@ export interface UpdateImageRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateImageRequestLabelsMap;
 }
-export const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     description: S.optional(S.String),
@@ -453,16 +443,14 @@ export const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the Image. */
 export type UpdateImageResponseImageType = "system" | "app" | "snapshot" | "backup";
-export const UpdateImageResponseImageType = S.String;
+const UpdateImageResponseImageType = S.String;
 
 /** Status of the Image. */
 export type UpdateImageResponseImageStatus = "available" | "creating" | "unavailable";
-export const UpdateImageResponseImageStatus = S.String;
+const UpdateImageResponseImageStatus = S.String;
 
 /** Information about the Server the Image was created from. */
 export type UpdateImageResponseImageCreatedFrom = GetImageResponseImageCreatedFrom;
-export const UpdateImageResponseImageCreatedFrom = GetImageResponseImageCreatedFrom;
-
 /** Flavor of operating system contained in the Image. */
 export type UpdateImageResponseImageOsFlavor =
   | "ubuntu"
@@ -473,24 +461,20 @@ export type UpdateImageResponseImageOsFlavor =
   | "alma"
   | "opensuse"
   | "unknown";
-export const UpdateImageResponseImageOsFlavor = S.String;
+const UpdateImageResponseImageOsFlavor = S.String;
 
 /** Protection configuration for the Resource. */
 export type UpdateImageResponseImageProtection = GetImageResponseImageProtection;
-export const UpdateImageResponseImageProtection = GetImageResponseImageProtection;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type UpdateImageResponseImageDeprecation = GetImageResponseImageDeprecation;
-export const UpdateImageResponseImageDeprecation = GetImageResponseImageDeprecation;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateImageResponseImageLabelsMap = { [key: string]: string | undefined };
-export const UpdateImageResponseImageLabelsMap =
+const UpdateImageResponseImageLabelsMap =
   GetImageResponseImageLabelsMap as any as S.Schema<UpdateImageResponseImageLabelsMap>;
 
 /** CPU architecture compatible with the Image. */
 export type UpdateImageResponseImageArchitecture = "x86" | "arm";
-export const UpdateImageResponseImageArchitecture = S.String;
+const UpdateImageResponseImageArchitecture = S.String;
 
 export interface UpdateImageResponseImage {
   /** ID of the [Image](#tag/images). */
@@ -532,7 +516,7 @@ export interface UpdateImageResponseImage {
   /** CPU architecture compatible with the Image. */
   architecture: UpdateImageResponseImageArchitecture;
 }
-export const UpdateImageResponseImage = /*@__PURE__*/ S.suspend(() =>
+const UpdateImageResponseImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: UpdateImageResponseImageType,
@@ -559,7 +543,7 @@ export const UpdateImageResponseImage = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateImageResponse {
   image?: UpdateImageResponseImage;
 }
-export const UpdateImageResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(UpdateImageResponseImage),
   }),

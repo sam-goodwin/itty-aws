@@ -79,7 +79,7 @@ export interface CancelEnterprisesDevicesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -95,7 +95,7 @@ export const CancelEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -103,7 +103,7 @@ export type EnterpriseEnterpriseTypeEnum =
   | "ENTERPRISE_TYPE_UNSPECIFIED"
   | "MANAGED_GOOGLE_DOMAIN"
   | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE";
-export const EnterpriseEnterpriseTypeEnum = S.String;
+const EnterpriseEnterpriseTypeEnum = S.String;
 
 /** Data hosted at an external location. The data is to be downloaded by Android Device Policy and verified against the hash. */
 export interface ExternalData {
@@ -112,7 +112,7 @@ export interface ExternalData {
   /** The absolute URL to the data, which must use either the http or https scheme. Android Device Policy doesn't provide any credentials in the GET request, so the URL must be publicly accessible. Including a long, random component in the URL may be used to prevent attackers from discovering the URL. */
   url?: string;
 }
-export const ExternalData = /*@__PURE__*/ S.suspend(() =>
+const ExternalData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256Hash: S.optional(S.String),
     url: S.optional(S.String),
@@ -120,7 +120,7 @@ export const ExternalData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalData" }) as any as S.Schema<ExternalData>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Provides a user-facing message with locale info. The maximum message length is 4096 characters. */
 export interface UserFacingMessage {
@@ -129,7 +129,7 @@ export interface UserFacingMessage {
   /** A map containing pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr. */
   localizedMessages?: StringMap;
 }
-export const UserFacingMessage = /*@__PURE__*/ S.suspend(() =>
+const UserFacingMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMessage: S.optional(S.String),
     localizedMessages: S.optional(StringMap),
@@ -143,7 +143,7 @@ export interface TermsAndConditions {
   /** A well-formatted HTML string. It will be parsed on the client with android.text.Html#fromHtml. */
   content?: UserFacingMessage;
 }
-export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
+const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(UserFacingMessage),
     content: S.optional(UserFacingMessage),
@@ -151,7 +151,7 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TermsAndConditions" }) as any as S.Schema<TermsAndConditions>;
 
 export type TermsAndConditionsList = Array<TermsAndConditions>;
-export const TermsAndConditionsList = /*@__PURE__*/ S.Array(
+const TermsAndConditionsList = /*@__PURE__*/ S.Array(
   TermsAndConditions,
 ) as any as S.Schema<TermsAndConditionsList>;
 
@@ -159,7 +159,7 @@ export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "GOOGLE_AUTHENTICATION_REQUIRED_UNSPECIFIED"
   | "NOT_REQUIRED"
   | "REQUIRED";
-export const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum = S.String;
+const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum = S.String;
 
 /** Contains settings for Google-provided user authentication. */
 export interface GoogleAuthenticationSettings {
@@ -168,7 +168,7 @@ export interface GoogleAuthenticationSettings {
     | GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum
     | (string & {});
 }
-export const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
+const GoogleAuthenticationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAuthenticationRequired: S.optional(
       GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum,
@@ -195,7 +195,7 @@ export interface ContactInfo {
   /** The phone number of the EU representative. The phone number is validated but not verified. */
   euRepresentativePhone?: string;
 }
-export const ContactInfo = /*@__PURE__*/ S.suspend(() =>
+const ContactInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataProtectionOfficerEmail: S.optional(S.String),
     dataProtectionOfficerName: S.optional(S.String),
@@ -211,13 +211,13 @@ export type EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum =
   | "MANAGED_GOOGLE_PLAY_ACCOUNTS_ENTERPRISE_TYPE_UNSPECIFIED"
   | "CUSTOMER_MANAGED"
   | "EMM_MANAGED";
-export const EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum = S.String;
+const EnterpriseManagedGooglePlayAccountsEnterpriseTypeEnum = S.String;
 
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "MANAGED_GOOGLE_DOMAIN_TYPE_UNSPECIFIED"
   | "TYPE_TEAM"
   | "TYPE_DOMAIN";
-export const EnterpriseManagedGoogleDomainTypeEnum = S.String;
+const EnterpriseManagedGoogleDomainTypeEnum = S.String;
 
 export type EnterpriseEnabledNotificationTypesItemEnum =
   | "NOTIFICATION_TYPE_UNSPECIFIED"
@@ -227,12 +227,12 @@ export type EnterpriseEnabledNotificationTypesItemEnum =
   | "COMMAND"
   | "USAGE_LOGS"
   | "ENTERPRISE_UPGRADE";
-export const EnterpriseEnabledNotificationTypesItemEnum = S.String;
+const EnterpriseEnabledNotificationTypesItemEnum = S.String;
 
 export type EnterpriseEnabledNotificationTypesItemEnumList = Array<
   EnterpriseEnabledNotificationTypesItemEnum | (string & {})
 >;
-export const EnterpriseEnabledNotificationTypesItemEnumList = /*@__PURE__*/ S.Array(
+const EnterpriseEnabledNotificationTypesItemEnumList = /*@__PURE__*/ S.Array(
   EnterpriseEnabledNotificationTypesItemEnum,
 ) as any as S.Schema<EnterpriseEnabledNotificationTypesItemEnumList>;
 
@@ -240,13 +240,13 @@ export type SigninDetailDefaultStatusEnum =
   | "SIGNIN_DETAIL_DEFAULT_STATUS_UNSPECIFIED"
   | "SIGNIN_DETAIL_IS_DEFAULT"
   | "SIGNIN_DETAIL_IS_NOT_DEFAULT";
-export const SigninDetailDefaultStatusEnum = S.String;
+const SigninDetailDefaultStatusEnum = S.String;
 
 export type SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
   | "OPTIONAL"
   | "REQUIRED";
-export const SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum = S.String;
+const SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum = S.String;
 
 /** Options for Google authentication during the enrollment.These options control whether the Google authentication screen is shown, and whether it can be skipped, at the start of the sign-in flow. More requirements can be enforced by EnrollmentToken.googleAuthenticationOptions on the EnrollmentToken that is created later. */
 export interface SigninDetailGoogleAuthenticationOptions {
@@ -255,7 +255,7 @@ export interface SigninDetailGoogleAuthenticationOptions {
     | SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum
     | (string & {});
 }
-export const SigninDetailGoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(() =>
+const SigninDetailGoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationRequirement: S.optional(
       SigninDetailGoogleAuthenticationOptionsAuthenticationRequirementEnum,
@@ -270,7 +270,7 @@ export type SigninDetailAllowPersonalUsageEnum =
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
   | "PERSONAL_USAGE_DISALLOWED_USERLESS";
-export const SigninDetailAllowPersonalUsageEnum = S.String;
+const SigninDetailAllowPersonalUsageEnum = S.String;
 
 /** A resource containing sign in details for an enterprise. Use enterprises to manage SigninDetails for a given enterprise.For an enterprise, we can have any number of SigninDetails that is uniquely identified by combination of the following three fields (signin_url, allow_personal_usage, token_tag). One cannot create two SigninDetails with the same (signin_url, allow_personal_usage, token_tag). (token_tag is an optional field).Patch: The operation updates the current list of SigninDetails with the new list of SigninDetails. If the stored SigninDetail configuration is passed, it returns the same signin_enrollment_token and qr_code. If we pass multiple identical SigninDetail configurations that are not stored, it will store the first one amongst those SigninDetail configurations. if the configuration already exists we cannot request it more than once in a particular patch API call, otherwise it will give a duplicate key error and the whole operation will fail. If we remove certain SigninDetail configuration from the request then it will get removed from the storage. We can then request another signin_enrollment_token and qr_code for the same SigninDetail configuration. */
 export interface SigninDetail {
@@ -289,7 +289,7 @@ export interface SigninDetail {
   /** Sign-in URL for authentication when device is provisioned with a sign-in enrollment token. The sign-in endpoint should finish authentication flow with a URL in the form of https://enterprise.google.com/android/enroll?et= for a successful login, or https://enterprise.google.com/android/enroll/invalid for a failed login. */
   signinUrl?: string;
 }
-export const SigninDetail = /*@__PURE__*/ S.suspend(() =>
+const SigninDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultStatus: S.optional(SigninDetailDefaultStatusEnum),
     tokenTag: S.optional(S.String),
@@ -302,9 +302,7 @@ export const SigninDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SigninDetail" }) as any as S.Schema<SigninDetail>;
 
 export type SigninDetailList = Array<SigninDetail>;
-export const SigninDetailList = /*@__PURE__*/ S.Array(
-  SigninDetail,
-) as any as S.Schema<SigninDetailList>;
+const SigninDetailList = /*@__PURE__*/ S.Array(SigninDetail) as any as S.Schema<SigninDetailList>;
 
 /** The configuration applied to an enterprise. */
 export interface Enterprise {
@@ -339,7 +337,7 @@ export interface Enterprise {
   /** Sign-in details of the enterprise. */
   signinDetails?: SigninDetailList;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
+const Enterprise = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appAutoApprovalEnabled: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -372,7 +370,7 @@ export interface CreateEnterprisesRequest {
   /** Request body */
   body?: Enterprise;
 }
-export const CreateEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signupUrlName: S.optional(S.String.pipe(T.Query())),
     enterpriseToken: S.optional(S.String.pipe(T.Query())),
@@ -393,7 +391,7 @@ export interface User {
   /** A unique identifier you create for this user, such as user342 or asset#44418. This field must be set when the user is created and can't be updated. This field must not contain personally identifiable information (PII). This identifier must be 1024 characters or less; otherwise, the update policy request will fail. */
   accountIdentifier?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountIdentifier: S.optional(S.String),
   }),
@@ -403,7 +401,7 @@ export type GoogleAuthenticationOptionsAuthenticationRequirementEnum =
   | "AUTHENTICATION_REQUIREMENT_UNSPECIFIED"
   | "OPTIONAL"
   | "REQUIRED";
-export const GoogleAuthenticationOptionsAuthenticationRequirementEnum = S.String;
+const GoogleAuthenticationOptionsAuthenticationRequirementEnum = S.String;
 
 /** Options for Google authentication during the enrollment.When triggering the enrollment with a SigninDetail, these options are enforced after the user completes third-party sign-in and an EnrollmentToken is created. If this token's authentication_requirement is set to REQUIRED, these options interact with the SigninDetail.googleAuthenticationOptions that initiated the flow in the following ways: - If the user skipped Google sign-in earlier (permitted by SigninDetail.googleAuthenticationOptions), an error will occur and the user will be prompted to sign in again. - If required_account_email is set on this token and the user signed in with a different email earlier, an error will occur and the user will be asked to sign in again with the correct account. */
 export interface GoogleAuthenticationOptions {
@@ -414,7 +412,7 @@ export interface GoogleAuthenticationOptions {
     | GoogleAuthenticationOptionsAuthenticationRequirementEnum
     | (string & {});
 }
-export const GoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleAuthenticationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredAccountEmail: S.optional(S.String),
     authenticationRequirement: S.optional(GoogleAuthenticationOptionsAuthenticationRequirementEnum),
@@ -428,7 +426,7 @@ export type EnrollmentTokenAllowPersonalUsageEnum =
   | "PERSONAL_USAGE_ALLOWED"
   | "PERSONAL_USAGE_DISALLOWED"
   | "PERSONAL_USAGE_DISALLOWED_USERLESS";
-export const EnrollmentTokenAllowPersonalUsageEnum = S.String;
+const EnrollmentTokenAllowPersonalUsageEnum = S.String;
 
 /** An enrollment token. */
 export interface EnrollmentToken {
@@ -455,7 +453,7 @@ export interface EnrollmentToken {
   /** The expiration time of the token. This is a read-only field generated by the server. */
   expirationTimestamp?: string;
 }
-export const EnrollmentToken = /*@__PURE__*/ S.suspend(() =>
+const EnrollmentToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(User),
     qrCode: S.optional(S.String),
@@ -477,7 +475,7 @@ export interface CreateEnterprisesEnrollmentTokensRequest {
   /** Request body */
   body?: EnrollmentToken;
 }
-export const CreateEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(EnrollmentToken.pipe(T.HttpBody())),
@@ -497,7 +495,7 @@ export type MigrationTokenManagementModeEnum =
   | "WORK_PROFILE_PERSONALLY_OWNED"
   | "WORK_PROFILE_COMPANY_OWNED"
   | "FULLY_MANAGED";
-export const MigrationTokenManagementModeEnum = S.String;
+const MigrationTokenManagementModeEnum = S.String;
 
 /** A token to initiate the migration of a device from being managed by a third-party DPC to being managed by Android Management API. A migration token is valid only for a single device. See the guide (https://developers.google.com/android/management/dpc-migration) for more details. */
 export interface MigrationToken {
@@ -524,7 +522,7 @@ export interface MigrationToken {
   /** Output only. Time when this migration token was created. */
   createTime?: string;
 }
-export const MigrationToken = /*@__PURE__*/ S.suspend(() =>
+const MigrationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalData: S.optional(S.String),
     value: S.optional(S.String),
@@ -546,7 +544,7 @@ export interface CreateEnterprisesMigrationTokensRequest {
   /** Request body */
   body?: MigrationToken;
 }
-export const CreateEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(MigrationToken.pipe(T.HttpBody())),
@@ -566,21 +564,21 @@ export interface WebAppIcon {
   /** The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. */
   imageData?: string;
 }
-export const WebAppIcon = /*@__PURE__*/ S.suspend(() =>
+const WebAppIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageData: S.optional(S.String),
   }),
 ).annotate({ identifier: "WebAppIcon" }) as any as S.Schema<WebAppIcon>;
 
 export type WebAppIconList = Array<WebAppIcon>;
-export const WebAppIconList = /*@__PURE__*/ S.Array(WebAppIcon) as any as S.Schema<WebAppIconList>;
+const WebAppIconList = /*@__PURE__*/ S.Array(WebAppIcon) as any as S.Schema<WebAppIconList>;
 
 export type WebAppDisplayModeEnum =
   | "DISPLAY_MODE_UNSPECIFIED"
   | "MINIMAL_UI"
   | "STANDALONE"
   | "FULL_SCREEN";
-export const WebAppDisplayModeEnum = S.String;
+const WebAppDisplayModeEnum = S.String;
 
 /** A web app. */
 export interface WebApp {
@@ -597,7 +595,7 @@ export interface WebApp {
   /** The name of the web app, which is generated by the server during creation in the form enterprises/{enterpriseId}/webApps/{packageName}. */
   name?: string;
 }
-export const WebApp = /*@__PURE__*/ S.suspend(() =>
+const WebApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icons: S.optional(WebAppIconList),
     versionCode: S.optional(S.String),
@@ -614,7 +612,7 @@ export interface CreateEnterprisesWebAppsRequest {
   /** Request body */
   body?: WebApp;
 }
-export const CreateEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(WebApp.pipe(T.HttpBody())),
@@ -630,10 +628,8 @@ export const CreateEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnterprisesWebAppsRequest>;
 
 export type WebTokenPermissionsItemEnum = "WEB_TOKEN_PERMISSION_UNSPECIFIED" | "APPROVE_APPS";
-export const WebTokenPermissionsItemEnum = S.String;
-
 export type WebTokenPermissionsItemEnumList = Array<WebTokenPermissionsItemEnum | (string & {})>;
-export const WebTokenPermissionsItemEnumList =
+const WebTokenPermissionsItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WebTokenPermissionsItemEnumList>;
 
 export type WebTokenEnabledFeaturesItemEnum =
@@ -644,12 +640,10 @@ export type WebTokenEnabledFeaturesItemEnum =
   | "STORE_BUILDER"
   | "MANAGED_CONFIGURATIONS"
   | "ZERO_TOUCH_CUSTOMER_MANAGEMENT";
-export const WebTokenEnabledFeaturesItemEnum = S.String;
-
 export type WebTokenEnabledFeaturesItemEnumList = Array<
   WebTokenEnabledFeaturesItemEnum | (string & {})
 >;
-export const WebTokenEnabledFeaturesItemEnumList =
+const WebTokenEnabledFeaturesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WebTokenEnabledFeaturesItemEnumList>;
 
 /** A web token used to access the managed Google Play iframe. */
@@ -665,7 +659,7 @@ export interface WebToken {
   /** The URL of the parent frame hosting the iframe with the embedded UI. To prevent XSS, the iframe may not be hosted at other URLs. The URL must use the https scheme. */
   parentFrameUrl?: string;
 }
-export const WebToken = /*@__PURE__*/ S.suspend(() =>
+const WebToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     permissions: S.optional(WebTokenPermissionsItemEnumList),
@@ -681,7 +675,7 @@ export interface CreateEnterprisesWebTokensRequest {
   /** Request body */
   body?: WebToken;
 }
-export const CreateEnterprisesWebTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterprisesWebTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(WebToken.pipe(T.HttpBody())),
@@ -697,7 +691,7 @@ export const CreateEnterprisesWebTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnterprisesWebTokensRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface CreateSignupUrlsRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a hint only and can be altered by the user. If allowedDomains is non-empty then this must belong to one of the allowedDomains. */
@@ -709,7 +703,7 @@ export interface CreateSignupUrlsRequest {
   /** The ID of the Google Cloud Platform project which will own the enterprise. */
   projectId?: string;
 }
-export const CreateSignupUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignupUrlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminEmail: S.optional(S.String.pipe(T.Query())),
     callbackUrl: S.optional(S.String.pipe(T.Query())),
@@ -731,7 +725,7 @@ export interface SignupUrl {
   /** The name of the resource. Use this value in the signupUrl field when calling enterprises.create to complete the enterprise signup flow. */
   name?: string;
 }
-export const SignupUrl = /*@__PURE__*/ S.suspend(() =>
+const SignupUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     name: S.optional(S.String),
@@ -742,7 +736,7 @@ export interface DeleteEnterprisesRequest {
   /** The name of the enterprise in the form enterprises/{enterpriseId}. */
   name: string;
 }
-export const DeleteEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -759,12 +753,10 @@ export type DeleteEnterprisesDevicesWipeDataFlagsEnum =
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
   | "WIPE_ESIMS";
-export const DeleteEnterprisesDevicesWipeDataFlagsEnum = S.String;
-
 export type DeleteEnterprisesDevicesWipeDataFlagsEnumList = Array<
   DeleteEnterprisesDevicesWipeDataFlagsEnum | (string & {})
 >;
-export const DeleteEnterprisesDevicesWipeDataFlagsEnumList =
+const DeleteEnterprisesDevicesWipeDataFlagsEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<DeleteEnterprisesDevicesWipeDataFlagsEnumList>;
 
 export interface DeleteEnterprisesDevicesRequest {
@@ -775,7 +767,7 @@ export interface DeleteEnterprisesDevicesRequest {
   /** The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. */
   name: string;
 }
-export const DeleteEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wipeDataFlags: S.optional(DeleteEnterprisesDevicesWipeDataFlagsEnumList.pipe(T.Query())),
     wipeReasonMessage: S.optional(S.String.pipe(T.Query())),
@@ -795,7 +787,7 @@ export interface DeleteEnterprisesEnrollmentTokensRequest {
   /** The name of the enrollment token in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}. */
   name: string;
 }
-export const DeleteEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -813,7 +805,7 @@ export interface DeleteEnterprisesPoliciesRequest {
   /** The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}. */
   name: string;
 }
-export const DeleteEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -831,7 +823,7 @@ export interface DeleteEnterprisesWebAppsRequest {
   /** The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}. */
   name: string;
 }
-export const DeleteEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -852,7 +844,7 @@ export interface GenerateEnterpriseUpgradeUrlRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed. If allowedDomains is non-empty then this must belong to one of the allowedDomains. */
   adminEmail?: string;
 }
-export const GenerateEnterpriseUpgradeUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEnterpriseUpgradeUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedDomains: S.optional(StringList),
     adminEmail: S.optional(S.String),
@@ -867,7 +859,7 @@ export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
   /** Request body */
   body?: GenerateEnterpriseUpgradeUrlRequest;
 }
-export const GenerateEnterpriseUpgradeUrlEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEnterpriseUpgradeUrlEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateEnterpriseUpgradeUrlRequest.pipe(T.HttpBody())),
@@ -887,7 +879,7 @@ export interface GenerateEnterpriseUpgradeUrlResponse {
   /** A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe. */
   url?: string;
 }
-export const GenerateEnterpriseUpgradeUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateEnterpriseUpgradeUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -899,7 +891,7 @@ export interface GetEnterprisesRequest {
   /** The name of the enterprise in the form enterprises/{enterpriseId}. */
   name: string;
 }
-export const GetEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -917,7 +909,7 @@ export interface GetEnterprisesApplicationsRequest {
   /** The name of the application in the form enterprises/{enterpriseId}/applications/{package_name}. */
   name: string;
 }
-export const GetEnterprisesApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -941,7 +933,7 @@ export interface ApplicationPermission {
   /** An opaque string uniquely identifying the permission. Not localized. */
   permissionId?: string;
 }
-export const ApplicationPermission = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -950,7 +942,7 @@ export const ApplicationPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationPermission" }) as any as S.Schema<ApplicationPermission>;
 
 export type ApplicationPermissionList = Array<ApplicationPermission>;
-export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
+const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
 ) as any as S.Schema<ApplicationPermissionList>;
 
@@ -965,7 +957,7 @@ export interface AppVersion {
   /** Track identifiers that the app version is published in. This does not include the production track (see production instead). */
   trackIds?: StringList;
 }
-export const AppVersion = /*@__PURE__*/ S.suspend(() =>
+const AppVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionString: S.optional(S.String),
     production: S.optional(S.Boolean),
@@ -975,20 +967,18 @@ export const AppVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppVersion" }) as any as S.Schema<AppVersion>;
 
 export type AppVersionList = Array<AppVersion>;
-export const AppVersionList = /*@__PURE__*/ S.Array(AppVersion) as any as S.Schema<AppVersionList>;
+const AppVersionList = /*@__PURE__*/ S.Array(AppVersion) as any as S.Schema<AppVersionList>;
 
 export type ApplicationAppPricingEnum =
   | "APP_PRICING_UNSPECIFIED"
   | "FREE"
   | "FREE_WITH_IN_APP_PURCHASE"
   | "PAID";
-export const ApplicationAppPricingEnum = S.String;
+const ApplicationAppPricingEnum = S.String;
 
 export type ApplicationFeaturesItemEnum = "APP_FEATURE_UNSPECIFIED" | "VPN_APP";
-export const ApplicationFeaturesItemEnum = S.String;
-
 export type ApplicationFeaturesItemEnumList = Array<ApplicationFeaturesItemEnum>;
-export const ApplicationFeaturesItemEnumList =
+const ApplicationFeaturesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApplicationFeaturesItemEnumList>;
 
 export type ManagedPropertyTypeEnum =
@@ -1001,7 +991,7 @@ export type ManagedPropertyTypeEnum =
   | "HIDDEN"
   | "BUNDLE"
   | "BUNDLE_ARRAY";
-export const ManagedPropertyTypeEnum = S.String;
+const ManagedPropertyTypeEnum = S.String;
 
 /** An entry of a managed property. */
 export interface ManagedPropertyEntry {
@@ -1010,7 +1000,7 @@ export interface ManagedPropertyEntry {
   /** The human-readable name of the value. Localized. */
   name?: string;
 }
-export const ManagedPropertyEntry = /*@__PURE__*/ S.suspend(() =>
+const ManagedPropertyEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     name: S.optional(S.String),
@@ -1018,7 +1008,7 @@ export const ManagedPropertyEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedPropertyEntry" }) as any as S.Schema<ManagedPropertyEntry>;
 
 export type ManagedPropertyEntryList = Array<ManagedPropertyEntry>;
-export const ManagedPropertyEntryList = /*@__PURE__*/ S.Array(
+const ManagedPropertyEntryList = /*@__PURE__*/ S.Array(
   ManagedPropertyEntry,
 ) as any as S.Schema<ManagedPropertyEntryList>;
 
@@ -1039,7 +1029,7 @@ export interface ManagedProperty {
   /** The unique key that the app uses to identify the property, e.g. "com.google.android.gm.fieldname". */
   key?: string;
 }
-export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
+const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     defaultValue: S.optional(S.Unknown),
@@ -1052,7 +1042,7 @@ export const ManagedProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedProperty" }) as any as S.Schema<ManagedProperty>;
 
 export type ManagedPropertyList = Array<ManagedProperty>;
-export const ManagedPropertyList = /*@__PURE__*/ S.Array(
+const ManagedPropertyList = /*@__PURE__*/ S.Array(
   ManagedProperty,
 ) as any as S.Schema<ManagedPropertyList>;
 
@@ -1063,7 +1053,7 @@ export type ApplicationContentRatingEnum =
   | "TWELVE_YEARS"
   | "SIXTEEN_YEARS"
   | "EIGHTEEN_YEARS";
-export const ApplicationContentRatingEnum = S.String;
+const ApplicationContentRatingEnum = S.String;
 
 /** Id to name association of a app track. */
 export interface AppTrackInfo {
@@ -1072,7 +1062,7 @@ export interface AppTrackInfo {
   /** The unmodifiable unique track identifier, taken from the releaseTrackId in the URL of the Play Console page that displays the app's track information. */
   trackId?: string;
 }
-export const AppTrackInfo = /*@__PURE__*/ S.suspend(() =>
+const AppTrackInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trackAlias: S.optional(S.String),
     trackId: S.optional(S.String),
@@ -1080,16 +1070,14 @@ export const AppTrackInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppTrackInfo" }) as any as S.Schema<AppTrackInfo>;
 
 export type AppTrackInfoList = Array<AppTrackInfo>;
-export const AppTrackInfoList = /*@__PURE__*/ S.Array(
-  AppTrackInfo,
-) as any as S.Schema<AppTrackInfoList>;
+const AppTrackInfoList = /*@__PURE__*/ S.Array(AppTrackInfo) as any as S.Schema<AppTrackInfoList>;
 
 export type ApplicationDistributionChannelEnum =
   | "DISTRIBUTION_CHANNEL_UNSPECIFIED"
   | "PUBLIC_GOOGLE_HOSTED"
   | "PRIVATE_GOOGLE_HOSTED"
   | "PRIVATE_SELF_HOSTED";
-export const ApplicationDistributionChannelEnum = S.String;
+const ApplicationDistributionChannelEnum = S.String;
 
 /** Information about an app. */
 export interface Application {
@@ -1138,7 +1126,7 @@ export interface Application {
   /** A link to a smaller image that can be used as an icon for the app. This image is suitable for use up to a pixel size of 128 x 128. */
   smallIconUrl?: string;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iconUrl: S.optional(S.String),
     author: S.optional(S.String),
@@ -1169,7 +1157,7 @@ export interface GetEnterprisesDevicesRequest {
   /** The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. */
   name: string;
 }
-export const GetEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1190,7 +1178,7 @@ export interface DpcMigrationInfo {
   /** Output only. If this device was migrated from another DPC, the additionalData field of the migration token is populated here. */
   additionalData?: string;
 }
-export const DpcMigrationInfo = /*@__PURE__*/ S.suspend(() =>
+const DpcMigrationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previousDpc: S.optional(S.String),
     additionalData: S.optional(S.String),
@@ -1198,7 +1186,7 @@ export const DpcMigrationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DpcMigrationInfo" }) as any as S.Schema<DpcMigrationInfo>;
 
 export type DisplayStateEnum = "DISPLAY_STATE_UNSPECIFIED" | "OFF" | "ON" | "DOZE" | "SUSPENDED";
-export const DisplayStateEnum = S.String;
+const DisplayStateEnum = S.String;
 
 /** Device display information. */
 export interface Display {
@@ -1217,7 +1205,7 @@ export interface Display {
   /** Display density expressed as dots-per-inch. */
   density?: number;
 }
-export const Display = /*@__PURE__*/ S.suspend(() =>
+const Display = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(DisplayStateEnum),
@@ -1230,20 +1218,20 @@ export const Display = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Display" }) as any as S.Schema<Display>;
 
 export type DisplayList = Array<Display>;
-export const DisplayList = /*@__PURE__*/ S.Array(Display) as any as S.Schema<DisplayList>;
+const DisplayList = /*@__PURE__*/ S.Array(Display) as any as S.Schema<DisplayList>;
 
 export type DeviceOwnershipEnum = "OWNERSHIP_UNSPECIFIED" | "COMPANY_OWNED" | "PERSONALLY_OWNED";
-export const DeviceOwnershipEnum = S.String;
+const DeviceOwnershipEnum = S.String;
 
 export type SecurityPostureDevicePostureEnum =
   | "POSTURE_UNSPECIFIED"
   | "SECURE"
   | "AT_RISK"
   | "POTENTIALLY_COMPROMISED";
-export const SecurityPostureDevicePostureEnum = S.String;
+const SecurityPostureDevicePostureEnum = S.String;
 
 export type UserFacingMessageList = Array<UserFacingMessage>;
-export const UserFacingMessageList = /*@__PURE__*/ S.Array(
+const UserFacingMessageList = /*@__PURE__*/ S.Array(
   UserFacingMessage,
 ) as any as S.Schema<UserFacingMessageList>;
 
@@ -1252,7 +1240,7 @@ export type PostureDetailSecurityRiskEnum =
   | "UNKNOWN_OS"
   | "COMPROMISED_OS"
   | "HARDWARE_BACKED_EVALUATION_FAILED";
-export const PostureDetailSecurityRiskEnum = S.String;
+const PostureDetailSecurityRiskEnum = S.String;
 
 /** Additional details regarding the security posture of the device. */
 export interface PostureDetail {
@@ -1261,7 +1249,7 @@ export interface PostureDetail {
   /** A specific security risk that negatively affects the security posture of the device. */
   securityRisk?: PostureDetailSecurityRiskEnum | (string & {});
 }
-export const PostureDetail = /*@__PURE__*/ S.suspend(() =>
+const PostureDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advice: S.optional(UserFacingMessageList),
     securityRisk: S.optional(PostureDetailSecurityRiskEnum),
@@ -1269,7 +1257,7 @@ export const PostureDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostureDetail" }) as any as S.Schema<PostureDetail>;
 
 export type PostureDetailList = Array<PostureDetail>;
-export const PostureDetailList = /*@__PURE__*/ S.Array(
+const PostureDetailList = /*@__PURE__*/ S.Array(
   PostureDetail,
 ) as any as S.Schema<PostureDetailList>;
 
@@ -1280,7 +1268,7 @@ export interface SecurityPosture {
   /** Additional details regarding the security posture of the device. */
   postureDetails?: PostureDetailList;
 }
-export const SecurityPosture = /*@__PURE__*/ S.suspend(() =>
+const SecurityPosture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devicePosture: S.optional(SecurityPostureDevicePostureEnum),
     postureDetails: S.optional(PostureDetailList),
@@ -1294,7 +1282,7 @@ export type MemoryEventEventTypeEnum =
   | "EXTERNAL_STORAGE_DETECTED"
   | "EXTERNAL_STORAGE_REMOVED"
   | "EXTERNAL_STORAGE_MEASURED";
-export const MemoryEventEventTypeEnum = S.String;
+const MemoryEventEventTypeEnum = S.String;
 
 /** An event related to memory and storage measurements.To distinguish between new and old events, we recommend using the createTime field. */
 export interface MemoryEvent {
@@ -1305,7 +1293,7 @@ export interface MemoryEvent {
   /** Event type. */
   eventType?: MemoryEventEventTypeEnum | (string & {});
 }
-export const MemoryEvent = /*@__PURE__*/ S.suspend(() =>
+const MemoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     byteCount: S.optional(S.String),
@@ -1314,9 +1302,7 @@ export const MemoryEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemoryEvent" }) as any as S.Schema<MemoryEvent>;
 
 export type MemoryEventList = Array<MemoryEvent>;
-export const MemoryEventList = /*@__PURE__*/ S.Array(
-  MemoryEvent,
-) as any as S.Schema<MemoryEventList>;
+const MemoryEventList = /*@__PURE__*/ S.Array(MemoryEvent) as any as S.Schema<MemoryEventList>;
 
 export type SystemUpdateInfoUpdateStatusEnum =
   | "UPDATE_STATUS_UNKNOWN"
@@ -1324,7 +1310,7 @@ export type SystemUpdateInfoUpdateStatusEnum =
   | "UNKNOWN_UPDATE_AVAILABLE"
   | "SECURITY_UPDATE_AVAILABLE"
   | "OS_UPDATE_AVAILABLE";
-export const SystemUpdateInfoUpdateStatusEnum = S.String;
+const SystemUpdateInfoUpdateStatusEnum = S.String;
 
 /** Information about a potential pending system update. */
 export interface SystemUpdateInfo {
@@ -1333,7 +1319,7 @@ export interface SystemUpdateInfo {
   /** The status of an update: whether an update exists and what type it is. */
   updateStatus?: SystemUpdateInfoUpdateStatusEnum | (string & {});
 }
-export const SystemUpdateInfo = /*@__PURE__*/ S.suspend(() =>
+const SystemUpdateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateReceivedTime: S.optional(S.String),
     updateStatus: S.optional(SystemUpdateInfoUpdateStatusEnum),
@@ -1365,7 +1351,7 @@ export interface SoftwareInfo {
   /** Kernel version, for example, 2.6.32.9-g103d848. */
   deviceKernelVersion?: string;
 }
-export const SoftwareInfo = /*@__PURE__*/ S.suspend(() =>
+const SoftwareInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidDevicePolicyVersionCode: S.optional(S.Number),
     primaryLanguageCode: S.optional(S.String),
@@ -1385,13 +1371,13 @@ export type TelephonyInfoConfigModeEnum =
   | "CONFIG_MODE_UNSPECIFIED"
   | "ADMIN_CONFIGURED"
   | "USER_CONFIGURED";
-export const TelephonyInfoConfigModeEnum = S.String;
+const TelephonyInfoConfigModeEnum = S.String;
 
 export type TelephonyInfoActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
   | "NOT_ACTIVATED";
-export const TelephonyInfoActivationStateEnum = S.String;
+const TelephonyInfoActivationStateEnum = S.String;
 
 /** Telephony information associated with a given SIM card on the device. This is supported for all SIM cards on fully managed devices on Android 6 and above. In addition, this is supported for admin-added eSIMs on all devices for Android 15 and above. */
 export interface TelephonyInfo {
@@ -1406,7 +1392,7 @@ export interface TelephonyInfo {
   /** The carrier name associated with this SIM card. */
   carrierName?: string;
 }
-export const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
+const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneNumber: S.optional(S.String),
     iccId: S.optional(S.String),
@@ -1417,7 +1403,7 @@ export const TelephonyInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelephonyInfo" }) as any as S.Schema<TelephonyInfo>;
 
 export type TelephonyInfoList = Array<TelephonyInfo>;
-export const TelephonyInfoList = /*@__PURE__*/ S.Array(
+const TelephonyInfoList = /*@__PURE__*/ S.Array(
   TelephonyInfo,
 ) as any as S.Schema<TelephonyInfoList>;
 
@@ -1434,7 +1420,7 @@ export interface NetworkInfo {
   /** Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11. */
   wifiMacAddress?: string;
 }
-export const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
+const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imei: S.optional(S.String),
     meid: S.optional(S.String),
@@ -1454,7 +1440,7 @@ export type DefaultApplicationInfoDefaultApplicationTypeEnum =
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
   | "DEFAULT_WALLET";
-export const DefaultApplicationInfoDefaultApplicationTypeEnum = S.String;
+const DefaultApplicationInfoDefaultApplicationTypeEnum = S.String;
 
 export type DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   | "ATTEMPT_OUTCOME_UNSPECIFIED"
@@ -1462,7 +1448,7 @@ export type DefaultApplicationSettingAttemptAttemptOutcomeEnum =
   | "APP_NOT_INSTALLED"
   | "APP_SIGNING_CERT_MISMATCH"
   | "OTHER_FAILURE";
-export const DefaultApplicationSettingAttemptAttemptOutcomeEnum = S.String;
+const DefaultApplicationSettingAttemptAttemptOutcomeEnum = S.String;
 
 /** Details on a default application setting attempt. */
 export interface DefaultApplicationSettingAttempt {
@@ -1471,7 +1457,7 @@ export interface DefaultApplicationSettingAttempt {
   /** Output only. The outcome of setting the app as the default. */
   attemptOutcome?: DefaultApplicationSettingAttemptAttemptOutcomeEnum | (string & {});
 }
-export const DefaultApplicationSettingAttempt = /*@__PURE__*/ S.suspend(() =>
+const DefaultApplicationSettingAttempt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     attemptOutcome: S.optional(DefaultApplicationSettingAttemptAttemptOutcomeEnum),
@@ -1481,7 +1467,7 @@ export const DefaultApplicationSettingAttempt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultApplicationSettingAttempt>;
 
 export type DefaultApplicationSettingAttemptList = Array<DefaultApplicationSettingAttempt>;
-export const DefaultApplicationSettingAttemptList = /*@__PURE__*/ S.Array(
+const DefaultApplicationSettingAttemptList = /*@__PURE__*/ S.Array(
   DefaultApplicationSettingAttempt,
 ) as any as S.Schema<DefaultApplicationSettingAttemptList>;
 
@@ -1494,7 +1480,7 @@ export interface DefaultApplicationInfo {
   /** Output only. The package name of the current default application. */
   packageName?: string;
 }
-export const DefaultApplicationInfo = /*@__PURE__*/ S.suspend(() =>
+const DefaultApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultApplicationType: S.optional(DefaultApplicationInfoDefaultApplicationTypeEnum),
     defaultApplicationSettingAttempts: S.optional(DefaultApplicationSettingAttemptList),
@@ -1503,7 +1489,7 @@ export const DefaultApplicationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DefaultApplicationInfo" }) as any as S.Schema<DefaultApplicationInfo>;
 
 export type DefaultApplicationInfoList = Array<DefaultApplicationInfo>;
-export const DefaultApplicationInfoList = /*@__PURE__*/ S.Array(
+const DefaultApplicationInfoList = /*@__PURE__*/ S.Array(
   DefaultApplicationInfo,
 ) as any as S.Schema<DefaultApplicationInfoList>;
 
@@ -1511,16 +1497,16 @@ export type DeviceManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
   | "PROFILE_OWNER";
-export const DeviceManagementModeEnum = S.String;
+const DeviceManagementModeEnum = S.String;
 
 export type ApplicationReportUserFacingTypeEnum =
   | "USER_FACING_TYPE_UNSPECIFIED"
   | "NOT_USER_FACING"
   | "USER_FACING";
-export const ApplicationReportUserFacingTypeEnum = S.String;
+const ApplicationReportUserFacingTypeEnum = S.String;
 
 export type KeyedAppStateSeverityEnum = "SEVERITY_UNSPECIFIED" | "INFO" | "ERROR";
-export const KeyedAppStateSeverityEnum = S.String;
+const KeyedAppStateSeverityEnum = S.String;
 
 /** Keyed app state reported by the app. */
 export interface KeyedAppState {
@@ -1537,7 +1523,7 @@ export interface KeyedAppState {
   /** The key for the app state. Acts as a point of reference for what the app is providing state for. For example, when providing managed configuration feedback, this key could be the managed configuration key. */
   key?: string;
 }
-export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
+const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     lastUpdateTime: S.optional(S.String),
@@ -1549,12 +1535,12 @@ export const KeyedAppState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyedAppState" }) as any as S.Schema<KeyedAppState>;
 
 export type KeyedAppStateList = Array<KeyedAppState>;
-export const KeyedAppStateList = /*@__PURE__*/ S.Array(
+const KeyedAppStateList = /*@__PURE__*/ S.Array(
   KeyedAppState,
 ) as any as S.Schema<KeyedAppStateList>;
 
 export type ApplicationReportStateEnum = "APPLICATION_STATE_UNSPECIFIED" | "REMOVED" | "INSTALLED";
-export const ApplicationReportStateEnum = S.String;
+const ApplicationReportStateEnum = S.String;
 
 export type ApplicationEventEventTypeEnum =
   | "APPLICATION_EVENT_TYPE_UNSPECIFIED"
@@ -1566,7 +1552,7 @@ export type ApplicationEventEventTypeEnum =
   | "RESTARTED"
   | "PINNED"
   | "UNPINNED";
-export const ApplicationEventEventTypeEnum = S.String;
+const ApplicationEventEventTypeEnum = S.String;
 
 /** An app-related event. */
 export interface ApplicationEvent {
@@ -1575,7 +1561,7 @@ export interface ApplicationEvent {
   /** App event type. */
   eventType?: ApplicationEventEventTypeEnum | (string & {});
 }
-export const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
+const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     eventType: S.optional(ApplicationEventEventTypeEnum),
@@ -1583,7 +1569,7 @@ export const ApplicationEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationEvent" }) as any as S.Schema<ApplicationEvent>;
 
 export type ApplicationEventList = Array<ApplicationEvent>;
-export const ApplicationEventList = /*@__PURE__*/ S.Array(
+const ApplicationEventList = /*@__PURE__*/ S.Array(
   ApplicationEvent,
 ) as any as S.Schema<ApplicationEventList>;
 
@@ -1593,14 +1579,14 @@ export type ApplicationReportApplicationSourceEnum =
   | "SYSTEM_APP_UPDATED_VERSION"
   | "INSTALLED_FROM_PLAY_STORE"
   | "CUSTOM";
-export const ApplicationReportApplicationSourceEnum = S.String;
+const ApplicationReportApplicationSourceEnum = S.String;
 
 /** The application signing key certificate. */
 export interface ApplicationSigningKeyCert {
   /** Required. The SHA-256 hash value of the signing key certificate of the app. This must be a valid SHA-256 hash value, i.e. 32 bytes. */
   signingKeyCertFingerprintSha256?: string;
 }
-export const ApplicationSigningKeyCert = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSigningKeyCert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signingKeyCertFingerprintSha256: S.optional(S.String),
   }),
@@ -1609,7 +1595,7 @@ export const ApplicationSigningKeyCert = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationSigningKeyCert>;
 
 export type ApplicationSigningKeyCertList = Array<ApplicationSigningKeyCert>;
-export const ApplicationSigningKeyCertList = /*@__PURE__*/ S.Array(
+const ApplicationSigningKeyCertList = /*@__PURE__*/ S.Array(
   ApplicationSigningKeyCert,
 ) as any as S.Schema<ApplicationSigningKeyCertList>;
 
@@ -1642,7 +1628,7 @@ export interface ApplicationReport {
   /** Package name of the app. */
   packageName?: string;
 }
-export const ApplicationReport = /*@__PURE__*/ S.suspend(() =>
+const ApplicationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userFacingType: S.optional(ApplicationReportUserFacingTypeEnum),
     displayName: S.optional(S.String),
@@ -1661,7 +1647,7 @@ export const ApplicationReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationReport" }) as any as S.Schema<ApplicationReport>;
 
 export type ApplicationReportList = Array<ApplicationReport>;
-export const ApplicationReportList = /*@__PURE__*/ S.Array(
+const ApplicationReportList = /*@__PURE__*/ S.Array(
   ApplicationReport,
 ) as any as S.Schema<ApplicationReportList>;
 
@@ -1674,13 +1660,13 @@ export type DeviceAppliedStateEnum =
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
   | "DEACTIVATED_BY_DEVICE_FINANCE";
-export const DeviceAppliedStateEnum = S.String;
+const DeviceAppliedStateEnum = S.String;
 
 export type PasswordRequirementsRequirePasswordUnlockEnum =
   | "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED"
   | "USE_DEFAULT_DEVICE_TIMEOUT"
   | "REQUIRE_EVERY_DAY";
-export const PasswordRequirementsRequirePasswordUnlockEnum = S.String;
+const PasswordRequirementsRequirePasswordUnlockEnum = S.String;
 
 export type PasswordRequirementsPasswordQualityEnum =
   | "PASSWORD_QUALITY_UNSPECIFIED"
@@ -1694,19 +1680,19 @@ export type PasswordRequirementsPasswordQualityEnum =
   | "COMPLEXITY_LOW"
   | "COMPLEXITY_MEDIUM"
   | "COMPLEXITY_HIGH";
-export const PasswordRequirementsPasswordQualityEnum = S.String;
+const PasswordRequirementsPasswordQualityEnum = S.String;
 
 export type PasswordRequirementsUnifiedLockSettingsEnum =
   | "UNIFIED_LOCK_SETTINGS_UNSPECIFIED"
   | "ALLOW_UNIFIED_WORK_AND_PERSONAL_LOCK"
   | "REQUIRE_SEPARATE_WORK_LOCK";
-export const PasswordRequirementsUnifiedLockSettingsEnum = S.String;
+const PasswordRequirementsUnifiedLockSettingsEnum = S.String;
 
 export type PasswordRequirementsPasswordScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
   | "SCOPE_PROFILE";
-export const PasswordRequirementsPasswordScopeEnum = S.String;
+const PasswordRequirementsPasswordScopeEnum = S.String;
 
 /** Requirements for the password used to unlock a device. */
 export interface PasswordRequirements {
@@ -1739,7 +1725,7 @@ export interface PasswordRequirements {
   /** Optional. Minimum number of symbols required in the password. Only enforced when password_quality is COMPLEX. */
   passwordMinimumSymbols?: number;
 }
-export const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
+const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordMinimumLetters: S.optional(S.Number),
     requirePasswordUnlock: S.optional(PasswordRequirementsRequirePasswordUnlockEnum),
@@ -1759,26 +1745,26 @@ export const PasswordRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PasswordRequirements" }) as any as S.Schema<PasswordRequirements>;
 
 export type PasswordRequirementsList = Array<PasswordRequirements>;
-export const PasswordRequirementsList = /*@__PURE__*/ S.Array(
+const PasswordRequirementsList = /*@__PURE__*/ S.Array(
   PasswordRequirements,
 ) as any as S.Schema<PasswordRequirementsList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Information related to the eUICC chip. */
 export interface EuiccChipInfo {
   /** Output only. The Embedded Identity Document (EID) that identifies the eUICC chip for each eUICC chip on the device. This is available on company owned devices running Android 13 and above. */
   eid?: string;
 }
-export const EuiccChipInfo = /*@__PURE__*/ S.suspend(() =>
+const EuiccChipInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eid: S.optional(S.String),
   }),
 ).annotate({ identifier: "EuiccChipInfo" }) as any as S.Schema<EuiccChipInfo>;
 
 export type EuiccChipInfoList = Array<EuiccChipInfo>;
-export const EuiccChipInfoList = /*@__PURE__*/ S.Array(
+const EuiccChipInfoList = /*@__PURE__*/ S.Array(
   EuiccChipInfo,
 ) as any as S.Schema<EuiccChipInfoList>;
 
@@ -1817,7 +1803,7 @@ export interface HardwareInfo {
   /** Output only. Information related to the eUICC chip. */
   euiccChipInfo?: EuiccChipInfoList;
 }
-export const HardwareInfo = /*@__PURE__*/ S.suspend(() =>
+const HardwareInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manufacturer: S.optional(S.String),
     skinShutdownTemperatures: S.optional(DoubleList),
@@ -1844,13 +1830,13 @@ export type CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum =
   | "POLICY_SIGNATURE_VERIFICATION_SUCCEEDED"
   | "POLICY_SIGNATURE_VERIFICATION_NOT_SUPPORTED"
   | "POLICY_SIGNATURE_VERIFICATION_FAILED";
-export const CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum = S.String;
+const CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum = S.String;
 
 export type CommonCriteriaModeInfoCommonCriteriaModeStatusEnum =
   | "COMMON_CRITERIA_MODE_STATUS_UNKNOWN"
   | "COMMON_CRITERIA_MODE_DISABLED"
   | "COMMON_CRITERIA_MODE_ENABLED";
-export const CommonCriteriaModeInfoCommonCriteriaModeStatusEnum = S.String;
+const CommonCriteriaModeInfoCommonCriteriaModeStatusEnum = S.String;
 
 /** Information about Common Criteria Mode--security standards defined in the Common Criteria for Information Technology Security Evaluation (https://www.commoncriteriaportal.org/) (CC).This information is only available if statusReportingSettings.commonCriteriaModeEnabled is true in the device's policy. */
 export interface CommonCriteriaModeInfo {
@@ -1861,7 +1847,7 @@ export interface CommonCriteriaModeInfo {
   /** Whether Common Criteria Mode is enabled. */
   commonCriteriaModeStatus?: CommonCriteriaModeInfoCommonCriteriaModeStatusEnum | (string & {});
 }
-export const CommonCriteriaModeInfo = /*@__PURE__*/ S.suspend(() =>
+const CommonCriteriaModeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policySignatureVerificationStatus: S.optional(
       CommonCriteriaModeInfoPolicySignatureVerificationStatusEnum,
@@ -1879,7 +1865,7 @@ export type DeviceStateEnum =
   | "LOST"
   | "PREPARING_FOR_MIGRATION"
   | "DEACTIVATED_BY_DEVICE_FINANCE";
-export const DeviceStateEnum = S.String;
+const DeviceStateEnum = S.String;
 
 /** Information about device memory and storage. */
 export interface MemoryInfo {
@@ -1888,7 +1874,7 @@ export interface MemoryInfo {
   /** Total RAM on device in bytes. */
   totalRam?: string;
 }
-export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
+const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalInternalStorage: S.optional(S.String),
     totalRam: S.optional(S.String),
@@ -1909,7 +1895,7 @@ export type NonComplianceDetailInstallationFailureReasonEnum =
   | "USER_INVALID"
   | "NETWORK_ERROR_UNRELIABLE_CONNECTION"
   | "INSUFFICIENT_STORAGE";
-export const NonComplianceDetailInstallationFailureReasonEnum = S.String;
+const NonComplianceDetailInstallationFailureReasonEnum = S.String;
 
 export type NonComplianceDetailSpecificNonComplianceReasonEnum =
   | "SPECIFIC_NON_COMPLIANCE_REASON_UNSPECIFIED"
@@ -1927,20 +1913,20 @@ export type NonComplianceDetailSpecificNonComplianceReasonEnum =
   | "DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES"
   | "DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE"
   | "PRIVATE_DNS_HOST_NOT_SERVING";
-export const NonComplianceDetailSpecificNonComplianceReasonEnum = S.String;
+const NonComplianceDetailSpecificNonComplianceReasonEnum = S.String;
 
 export type PasswordPoliciesContextPasswordPolicyScopeEnum =
   | "SCOPE_UNSPECIFIED"
   | "SCOPE_DEVICE"
   | "SCOPE_PROFILE";
-export const PasswordPoliciesContextPasswordPolicyScopeEnum = S.String;
+const PasswordPoliciesContextPasswordPolicyScopeEnum = S.String;
 
 /** Additional context for non-compliance related to password policies. */
 export interface PasswordPoliciesContext {
   /** The scope of non-compliant password. */
   passwordPolicyScope?: PasswordPoliciesContextPasswordPolicyScopeEnum | (string & {});
 }
-export const PasswordPoliciesContext = /*@__PURE__*/ S.suspend(() =>
+const PasswordPoliciesContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordPolicyScope: S.optional(PasswordPoliciesContextPasswordPolicyScopeEnum),
   }),
@@ -1951,7 +1937,7 @@ export interface OncWifiContext {
   /** The GUID of non-compliant Wi-Fi configuration. */
   wifiGuid?: string;
 }
-export const OncWifiContext = /*@__PURE__*/ S.suspend(() =>
+const OncWifiContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiGuid: S.optional(S.String),
   }),
@@ -1962,14 +1948,14 @@ export type DefaultApplicationContextDefaultApplicationScopeEnum =
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
   | "SCOPE_PERSONAL_PROFILE";
-export const DefaultApplicationContextDefaultApplicationScopeEnum = S.String;
+const DefaultApplicationContextDefaultApplicationScopeEnum = S.String;
 
 /** Additional context for non-compliance related to default application settings. */
 export interface DefaultApplicationContext {
   /** Output only. The scope of non-compliant default application setting. */
   defaultApplicationScope?: DefaultApplicationContextDefaultApplicationScopeEnum | (string & {});
 }
-export const DefaultApplicationContext = /*@__PURE__*/ S.suspend(() =>
+const DefaultApplicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultApplicationScope: S.optional(DefaultApplicationContextDefaultApplicationScopeEnum),
   }),
@@ -1986,7 +1972,7 @@ export interface SpecificNonComplianceContext {
   /** Output only. Additional context for non-compliance related to default application settings. See DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE. */
   defaultApplicationContext?: DefaultApplicationContext;
 }
-export const SpecificNonComplianceContext = /*@__PURE__*/ S.suspend(() =>
+const SpecificNonComplianceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passwordPoliciesContext: S.optional(PasswordPoliciesContext),
     oncWifiContext: S.optional(OncWifiContext),
@@ -2012,7 +1998,7 @@ export type NonComplianceDetailNonComplianceReasonEnum =
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
   | "PROJECT_NOT_PERMITTED";
-export const NonComplianceDetailNonComplianceReasonEnum = S.String;
+const NonComplianceDetailNonComplianceReasonEnum = S.String;
 
 /** Provides detail about non-compliance with a policy setting. */
 export interface NonComplianceDetail {
@@ -2033,7 +2019,7 @@ export interface NonComplianceDetail {
   /** The reason the device is not in compliance with the setting. */
   nonComplianceReason?: NonComplianceDetailNonComplianceReasonEnum | (string & {});
 }
-export const NonComplianceDetail = /*@__PURE__*/ S.suspend(() =>
+const NonComplianceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
     currentValue: S.optional(S.Unknown),
@@ -2047,7 +2033,7 @@ export const NonComplianceDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NonComplianceDetail" }) as any as S.Schema<NonComplianceDetail>;
 
 export type NonComplianceDetailList = Array<NonComplianceDetail>;
-export const NonComplianceDetailList = /*@__PURE__*/ S.Array(
+const NonComplianceDetailList = /*@__PURE__*/ S.Array(
   NonComplianceDetail,
 ) as any as S.Schema<NonComplianceDetailList>;
 
@@ -2059,7 +2045,7 @@ export type DeviceSettingsEncryptionStatusEnum =
   | "ACTIVE"
   | "ACTIVE_DEFAULT_KEY"
   | "ACTIVE_PER_USER";
-export const DeviceSettingsEncryptionStatusEnum = S.String;
+const DeviceSettingsEncryptionStatusEnum = S.String;
 
 /** Information about security related device settings on device. */
 export interface DeviceSettings {
@@ -2078,7 +2064,7 @@ export interface DeviceSettings {
   /** Whether developer mode is enabled on the device. */
   developmentSettingsEnabled?: boolean;
 }
-export const DeviceSettings = /*@__PURE__*/ S.suspend(() =>
+const DeviceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adbEnabled: S.optional(S.Boolean),
     unknownSourcesEnabled: S.optional(S.Boolean),
@@ -2107,7 +2093,7 @@ export interface HardwareStatus {
   /** The time the measurements were taken. */
   createTime?: string;
 }
-export const HardwareStatus = /*@__PURE__*/ S.suspend(() =>
+const HardwareStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuTemperatures: S.optional(DoubleList),
     fanSpeeds: S.optional(DoubleList),
@@ -2120,7 +2106,7 @@ export const HardwareStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HardwareStatus" }) as any as S.Schema<HardwareStatus>;
 
 export type HardwareStatusList = Array<HardwareStatus>;
-export const HardwareStatusList = /*@__PURE__*/ S.Array(
+const HardwareStatusList = /*@__PURE__*/ S.Array(
   HardwareStatus,
 ) as any as S.Schema<HardwareStatusList>;
 
@@ -2133,7 +2119,7 @@ export type PowerManagementEventEventTypeEnum =
   | "BATTERY_OKAY"
   | "BOOT_COMPLETED"
   | "SHUTDOWN";
-export const PowerManagementEventEventTypeEnum = S.String;
+const PowerManagementEventEventTypeEnum = S.String;
 
 /** A power management event. */
 export interface PowerManagementEvent {
@@ -2144,7 +2130,7 @@ export interface PowerManagementEvent {
   /** For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage. */
   batteryLevel?: number;
 }
-export const PowerManagementEvent = /*@__PURE__*/ S.suspend(() =>
+const PowerManagementEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventType: S.optional(PowerManagementEventEventTypeEnum),
     createTime: S.optional(S.String),
@@ -2153,7 +2139,7 @@ export const PowerManagementEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PowerManagementEvent" }) as any as S.Schema<PowerManagementEvent>;
 
 export type PowerManagementEventList = Array<PowerManagementEvent>;
-export const PowerManagementEventList = /*@__PURE__*/ S.Array(
+const PowerManagementEventList = /*@__PURE__*/ S.Array(
   PowerManagementEvent,
 ) as any as S.Schema<PowerManagementEventList>;
 
@@ -2234,7 +2220,7 @@ export interface Device {
   /** If the same physical device has been enrolled multiple times, this field contains its previous device names. The serial number is used as the unique identifier to determine if the same physical device has enrolled previously. The names are in chronological order. */
   previousDeviceNames?: StringList;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
+const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enrollmentTime: S.optional(S.String),
     appliedPolicyVersion: S.optional(S.String),
@@ -2280,7 +2266,7 @@ export interface GetEnterprisesDevicesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2295,15 +2281,10 @@ export const GetEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetEnterprisesDevicesOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -2314,7 +2295,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -2335,7 +2316,7 @@ export interface Operation {
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     error: S.optional(Status),
@@ -2349,7 +2330,7 @@ export interface GetEnterprisesEnrollmentTokensRequest {
   /** Required. The name of the enrollment token in the form enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}. */
   name: string;
 }
-export const GetEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2367,7 +2348,7 @@ export interface GetEnterprisesMigrationTokensRequest {
   /** Required. The name of the migration token to retrieve. Format: enterprises/{enterprise}/migrationTokens/{migration_token} */
   name: string;
 }
-export const GetEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2385,7 +2366,7 @@ export interface GetEnterprisesPoliciesRequest {
   /** The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}. */
   name: string;
 }
-export const GetEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2404,32 +2385,32 @@ export type KioskCustomizationStatusBarEnum =
   | "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED"
   | "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED"
   | "SYSTEM_INFO_ONLY";
-export const KioskCustomizationStatusBarEnum = S.String;
+const KioskCustomizationStatusBarEnum = S.String;
 
 export type KioskCustomizationSystemNavigationEnum =
   | "SYSTEM_NAVIGATION_UNSPECIFIED"
   | "NAVIGATION_ENABLED"
   | "NAVIGATION_DISABLED"
   | "HOME_BUTTON_ONLY";
-export const KioskCustomizationSystemNavigationEnum = S.String;
+const KioskCustomizationSystemNavigationEnum = S.String;
 
 export type KioskCustomizationDeviceSettingsEnum =
   | "DEVICE_SETTINGS_UNSPECIFIED"
   | "SETTINGS_ACCESS_ALLOWED"
   | "SETTINGS_ACCESS_BLOCKED";
-export const KioskCustomizationDeviceSettingsEnum = S.String;
+const KioskCustomizationDeviceSettingsEnum = S.String;
 
 export type KioskCustomizationPowerButtonActionsEnum =
   | "POWER_BUTTON_ACTIONS_UNSPECIFIED"
   | "POWER_BUTTON_AVAILABLE"
   | "POWER_BUTTON_BLOCKED";
-export const KioskCustomizationPowerButtonActionsEnum = S.String;
+const KioskCustomizationPowerButtonActionsEnum = S.String;
 
 export type KioskCustomizationSystemErrorWarningsEnum =
   | "SYSTEM_ERROR_WARNINGS_UNSPECIFIED"
   | "ERROR_AND_WARNINGS_ENABLED"
   | "ERROR_AND_WARNINGS_MUTED";
-export const KioskCustomizationSystemErrorWarningsEnum = S.String;
+const KioskCustomizationSystemErrorWarningsEnum = S.String;
 
 /** Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK. */
 export interface KioskCustomization {
@@ -2444,7 +2425,7 @@ export interface KioskCustomization {
   /** Optional. Specifies whether system error dialogs for crashed or unresponsive apps are blocked in kiosk mode. When blocked, the system will force-stop the app as if the user chooses the "close app" option on the UI. */
   systemErrorWarnings?: KioskCustomizationSystemErrorWarningsEnum | (string & {});
 }
-export const KioskCustomization = /*@__PURE__*/ S.suspend(() =>
+const KioskCustomization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusBar: S.optional(KioskCustomizationStatusBarEnum),
     systemNavigation: S.optional(KioskCustomizationSystemNavigationEnum),
@@ -2463,21 +2444,21 @@ export type PolicyLocationModeEnum =
   | "LOCATION_USER_CHOICE"
   | "LOCATION_ENFORCED"
   | "LOCATION_DISABLED";
-export const PolicyLocationModeEnum = S.String;
+const PolicyLocationModeEnum = S.String;
 
 export type PolicyCredentialProviderPolicyDefaultEnum =
   | "CREDENTIAL_PROVIDER_POLICY_DEFAULT_UNSPECIFIED"
   | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED"
   | "CREDENTIAL_PROVIDER_DEFAULT_DISALLOWED_EXCEPT_SYSTEM"
   | "CREDENTIAL_PROVIDER_DEFAULT_ALLOWED";
-export const PolicyCredentialProviderPolicyDefaultEnum = S.String;
+const PolicyCredentialProviderPolicyDefaultEnum = S.String;
 
 export type DeviceConnectivityManagementUsbDataAccessEnum =
   | "USB_DATA_ACCESS_UNSPECIFIED"
   | "ALLOW_USB_DATA_TRANSFER"
   | "DISALLOW_USB_FILE_TRANSFER"
   | "DISALLOW_USB_DATA_TRANSFER";
-export const DeviceConnectivityManagementUsbDataAccessEnum = S.String;
+const DeviceConnectivityManagementUsbDataAccessEnum = S.String;
 
 export type ApnSettingApnTypesItemEnum =
   | "APN_TYPE_UNSPECIFIED"
@@ -2497,20 +2478,18 @@ export type ApnSettingApnTypesItemEnum =
   | "SUPL"
   | "VSIM"
   | "XCAP";
-export const ApnSettingApnTypesItemEnum = S.String;
-
 export type ApnSettingApnTypesItemEnumList = Array<ApnSettingApnTypesItemEnum | (string & {})>;
-export const ApnSettingApnTypesItemEnumList =
+const ApnSettingApnTypesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApnSettingApnTypesItemEnumList>;
 
 export type ApnSettingMvnoTypeEnum = "MVNO_TYPE_UNSPECIFIED" | "GID" | "ICCID" | "IMSI" | "SPN";
-export const ApnSettingMvnoTypeEnum = S.String;
+const ApnSettingMvnoTypeEnum = S.String;
 
 export type ApnSettingAlwaysOnSettingEnum =
   | "ALWAYS_ON_SETTING_UNSPECIFIED"
   | "NOT_ALWAYS_ON"
   | "ALWAYS_ON";
-export const ApnSettingAlwaysOnSettingEnum = S.String;
+const ApnSettingAlwaysOnSettingEnum = S.String;
 
 export type ApnSettingNetworkTypesItemEnum =
   | "NETWORK_TYPE_UNSPECIFIED"
@@ -2526,12 +2505,10 @@ export type ApnSettingNetworkTypesItemEnum =
   | "NR"
   | "TD_SCDMA"
   | "UMTS";
-export const ApnSettingNetworkTypesItemEnum = S.String;
-
 export type ApnSettingNetworkTypesItemEnumList = Array<
   ApnSettingNetworkTypesItemEnum | (string & {})
 >;
-export const ApnSettingNetworkTypesItemEnumList =
+const ApnSettingNetworkTypesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApnSettingNetworkTypesItemEnumList>;
 
 export type ApnSettingAuthTypeEnum =
@@ -2540,7 +2517,7 @@ export type ApnSettingAuthTypeEnum =
   | "PAP"
   | "CHAP"
   | "PAP_OR_CHAP";
-export const ApnSettingAuthTypeEnum = S.String;
+const ApnSettingAuthTypeEnum = S.String;
 
 export type ApnSettingRoamingProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
@@ -2550,7 +2527,7 @@ export type ApnSettingRoamingProtocolEnum =
   | "NON_IP"
   | "PPP"
   | "UNSTRUCTURED";
-export const ApnSettingRoamingProtocolEnum = S.String;
+const ApnSettingRoamingProtocolEnum = S.String;
 
 export type ApnSettingProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
@@ -2560,7 +2537,7 @@ export type ApnSettingProtocolEnum =
   | "NON_IP"
   | "PPP"
   | "UNSTRUCTURED";
-export const ApnSettingProtocolEnum = S.String;
+const ApnSettingProtocolEnum = S.String;
 
 /** An Access Point Name (APN) configuration for a carrier data connection. The APN provides configuration to connect a cellular network device to an IP data network. A carrier uses this setting to decide which IP address to assign, any security methods to apply, and how the device might be connected to private networks. */
 export interface ApnSetting {
@@ -2605,7 +2582,7 @@ export interface ApnSetting {
   /** Optional. Carrier ID for the APN. A value of 0 (default) means not set and negative values are rejected. */
   carrierId?: number;
 }
-export const ApnSetting = /*@__PURE__*/ S.suspend(() =>
+const ApnSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mmsProxyPort: S.optional(S.Number),
     proxyAddress: S.optional(S.String),
@@ -2631,13 +2608,13 @@ export const ApnSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApnSetting" }) as any as S.Schema<ApnSetting>;
 
 export type ApnSettingList = Array<ApnSetting>;
-export const ApnSettingList = /*@__PURE__*/ S.Array(ApnSetting) as any as S.Schema<ApnSettingList>;
+const ApnSettingList = /*@__PURE__*/ S.Array(ApnSetting) as any as S.Schema<ApnSettingList>;
 
 export type ApnPolicyOverrideApnsEnum =
   | "OVERRIDE_APNS_UNSPECIFIED"
   | "OVERRIDE_APNS_DISABLED"
   | "OVERRIDE_APNS_ENABLED";
-export const ApnPolicyOverrideApnsEnum = S.String;
+const ApnPolicyOverrideApnsEnum = S.String;
 
 /** Access Point Name (APN) policy. Configuration for Access Point Names (APNs) which may override any other APNs on the device. See OVERRIDE_APNS_ENABLED and overrideApns for details. */
 export interface ApnPolicy {
@@ -2646,7 +2623,7 @@ export interface ApnPolicy {
   /** Optional. Whether override APNs are disabled or enabled. See DevicePolicyManager.setOverrideApnsEnabled (https://developer.android.com/reference/android/app/admin/DevicePolicyManager#setOverrideApnsEnabled) for more details. */
   overrideApns?: ApnPolicyOverrideApnsEnum | (string & {});
 }
-export const ApnPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApnPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apnSettings: S.optional(ApnSettingList),
     overrideApns: S.optional(ApnPolicyOverrideApnsEnum),
@@ -2658,7 +2635,7 @@ export type WifiRoamingSettingWifiRoamingModeEnum =
   | "WIFI_ROAMING_DISABLED"
   | "WIFI_ROAMING_DEFAULT"
   | "WIFI_ROAMING_AGGRESSIVE";
-export const WifiRoamingSettingWifiRoamingModeEnum = S.String;
+const WifiRoamingSettingWifiRoamingModeEnum = S.String;
 
 /** Wi-Fi roaming setting. */
 export interface WifiRoamingSetting {
@@ -2667,7 +2644,7 @@ export interface WifiRoamingSetting {
   /** Required. SSID of the Wi-Fi network. */
   wifiSsid?: string;
 }
-export const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
+const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiRoamingMode: S.optional(WifiRoamingSettingWifiRoamingModeEnum),
     wifiSsid: S.optional(S.String),
@@ -2675,7 +2652,7 @@ export const WifiRoamingSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WifiRoamingSetting" }) as any as S.Schema<WifiRoamingSetting>;
 
 export type WifiRoamingSettingList = Array<WifiRoamingSetting>;
-export const WifiRoamingSettingList = /*@__PURE__*/ S.Array(
+const WifiRoamingSettingList = /*@__PURE__*/ S.Array(
   WifiRoamingSetting,
 ) as any as S.Schema<WifiRoamingSettingList>;
 
@@ -2684,7 +2661,7 @@ export interface WifiRoamingPolicy {
   /** Optional. Wi-Fi roaming settings. SSIDs provided in this list must be unique, the policy will be rejected otherwise. */
   wifiRoamingSettings?: WifiRoamingSettingList;
 }
-export const WifiRoamingPolicy = /*@__PURE__*/ S.suspend(() =>
+const WifiRoamingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiRoamingSettings: S.optional(WifiRoamingSettingList),
   }),
@@ -2694,34 +2671,34 @@ export type DeviceConnectivityManagementBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
   | "BLUETOOTH_SHARING_DISALLOWED";
-export const DeviceConnectivityManagementBluetoothSharingEnum = S.String;
+const DeviceConnectivityManagementBluetoothSharingEnum = S.String;
 
 export type DeviceConnectivityManagementConfigureWifiEnum =
   | "CONFIGURE_WIFI_UNSPECIFIED"
   | "ALLOW_CONFIGURING_WIFI"
   | "DISALLOW_ADD_WIFI_CONFIG"
   | "DISALLOW_CONFIGURING_WIFI";
-export const DeviceConnectivityManagementConfigureWifiEnum = S.String;
+const DeviceConnectivityManagementConfigureWifiEnum = S.String;
 
 export type WifiSsidPolicyWifiSsidPolicyTypeEnum =
   | "WIFI_SSID_POLICY_TYPE_UNSPECIFIED"
   | "WIFI_SSID_DENYLIST"
   | "WIFI_SSID_ALLOWLIST";
-export const WifiSsidPolicyWifiSsidPolicyTypeEnum = S.String;
+const WifiSsidPolicyWifiSsidPolicyTypeEnum = S.String;
 
 /** Represents a Wi-Fi SSID. */
 export interface WifiSsid {
   /** Required. Wi-Fi SSID represented as a string. */
   wifiSsid?: string;
 }
-export const WifiSsid = /*@__PURE__*/ S.suspend(() =>
+const WifiSsid = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiSsid: S.optional(S.String),
   }),
 ).annotate({ identifier: "WifiSsid" }) as any as S.Schema<WifiSsid>;
 
 export type WifiSsidList = Array<WifiSsid>;
-export const WifiSsidList = /*@__PURE__*/ S.Array(WifiSsid) as any as S.Schema<WifiSsidList>;
+const WifiSsidList = /*@__PURE__*/ S.Array(WifiSsid) as any as S.Schema<WifiSsidList>;
 
 /** Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can be configured on the device. Supported on company-owned devices running Android 13 and above. */
 export interface WifiSsidPolicy {
@@ -2730,7 +2707,7 @@ export interface WifiSsidPolicy {
   /** Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a NonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a NonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices. */
   wifiSsids?: WifiSsidList;
 }
-export const WifiSsidPolicy = /*@__PURE__*/ S.suspend(() =>
+const WifiSsidPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wifiSsidPolicyType: S.optional(WifiSsidPolicyWifiSsidPolicyTypeEnum),
     wifiSsids: S.optional(WifiSsidList),
@@ -2742,7 +2719,7 @@ export type PrivateDnsSettingsPrivateDnsModeEnum =
   | "PRIVATE_DNS_USER_CHOICE"
   | "PRIVATE_DNS_AUTOMATIC"
   | "PRIVATE_DNS_SPECIFIED_HOST";
-export const PrivateDnsSettingsPrivateDnsModeEnum = S.String;
+const PrivateDnsSettingsPrivateDnsModeEnum = S.String;
 
 /** Controls the device's private DNS settings. */
 export interface PrivateDnsSettings {
@@ -2751,7 +2728,7 @@ export interface PrivateDnsSettings {
   /** Optional. The hostname of the DNS server. This must be set if and only if private_dns_mode is set to PRIVATE_DNS_SPECIFIED_HOST. Supported on Android 10 and above on fully managed devices. A NonComplianceDetail with MANAGEMENT_MODE is reported on other management modes. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with PENDING is reported if the device is not connected to a network. A NonComplianceDetail with nonComplianceReason INVALID_VALUE and specificNonComplianceReason PRIVATE_DNS_HOST_NOT_SERVING is reported if the specified host is not a DNS server or not supported on Android. A NonComplianceDetail with INVALID_VALUE is reported if applying this setting fails for any other reason. */
   privateDnsHost?: string;
 }
-export const PrivateDnsSettings = /*@__PURE__*/ S.suspend(() =>
+const PrivateDnsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateDnsMode: S.optional(PrivateDnsSettingsPrivateDnsModeEnum),
     privateDnsHost: S.optional(S.String),
@@ -2766,13 +2743,13 @@ export type PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
   | "PREFERENTIAL_NETWORK_ID_FIVE";
-export const PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum = S.String;
+const PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum = S.String;
 
 export type PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum =
   | "FALLBACK_TO_DEFAULT_CONNECTION_UNSPECIFIED"
   | "FALLBACK_TO_DEFAULT_CONNECTION_ALLOWED"
   | "FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED";
-export const PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum = S.String;
+const PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum = S.String;
 
 export type PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_UNSPECIFIED"
@@ -2782,13 +2759,13 @@ export type PreferentialNetworkServiceConfigPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
   | "PREFERENTIAL_NETWORK_ID_FIVE";
-export const PreferentialNetworkServiceConfigPreferentialNetworkIdEnum = S.String;
+const PreferentialNetworkServiceConfigPreferentialNetworkIdEnum = S.String;
 
 export type PreferentialNetworkServiceConfigNonMatchingNetworksEnum =
   | "NON_MATCHING_NETWORKS_UNSPECIFIED"
   | "NON_MATCHING_NETWORKS_ALLOWED"
   | "NON_MATCHING_NETWORKS_DISALLOWED";
-export const PreferentialNetworkServiceConfigNonMatchingNetworksEnum = S.String;
+const PreferentialNetworkServiceConfigNonMatchingNetworksEnum = S.String;
 
 /** Individual preferential network service configuration. */
 export interface PreferentialNetworkServiceConfig {
@@ -2801,7 +2778,7 @@ export interface PreferentialNetworkServiceConfig {
   /** Optional. Whether apps this configuration applies to are blocked from using networks other than the preferential service. If this is set to NON_MATCHING_NETWORKS_DISALLOWED, then fallbackToDefaultConnection must be set to FALLBACK_TO_DEFAULT_CONNECTION_DISALLOWED. */
   nonMatchingNetworks?: PreferentialNetworkServiceConfigNonMatchingNetworksEnum | (string & {});
 }
-export const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
+const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fallbackToDefaultConnection: S.optional(
       PreferentialNetworkServiceConfigFallbackToDefaultConnectionEnum,
@@ -2814,7 +2791,7 @@ export const PreferentialNetworkServiceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreferentialNetworkServiceConfig>;
 
 export type PreferentialNetworkServiceConfigList = Array<PreferentialNetworkServiceConfig>;
-export const PreferentialNetworkServiceConfigList = /*@__PURE__*/ S.Array(
+const PreferentialNetworkServiceConfigList = /*@__PURE__*/ S.Array(
   PreferentialNetworkServiceConfig,
 ) as any as S.Schema<PreferentialNetworkServiceConfigList>;
 
@@ -2827,7 +2804,7 @@ export interface PreferentialNetworkServiceSettings {
   /** Required. Preferential network service configurations which enables having multiple enterprise slices. There must not be multiple configurations with the same preferentialNetworkId. If a configuration is not referenced by any application by setting ApplicationPolicy.preferentialNetworkId or by setting defaultPreferentialNetworkId, it will be ignored. For devices on 4G networks, enterprise APN needs to be configured additionally to set up data call for preferential network service. These APNs can be added using apnPolicy. */
   preferentialNetworkServiceConfigs?: PreferentialNetworkServiceConfigList;
 }
-export const PreferentialNetworkServiceSettings = /*@__PURE__*/ S.suspend(() =>
+const PreferentialNetworkServiceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPreferentialNetworkId: S.optional(
       PreferentialNetworkServiceSettingsDefaultPreferentialNetworkIdEnum,
@@ -2842,14 +2819,14 @@ export type DeviceConnectivityManagementWifiDirectSettingsEnum =
   | "WIFI_DIRECT_SETTINGS_UNSPECIFIED"
   | "ALLOW_WIFI_DIRECT"
   | "DISALLOW_WIFI_DIRECT";
-export const DeviceConnectivityManagementWifiDirectSettingsEnum = S.String;
+const DeviceConnectivityManagementWifiDirectSettingsEnum = S.String;
 
 export type DeviceConnectivityManagementTetheringSettingsEnum =
   | "TETHERING_SETTINGS_UNSPECIFIED"
   | "ALLOW_ALL_TETHERING"
   | "DISALLOW_WIFI_TETHERING"
   | "DISALLOW_ALL_TETHERING";
-export const DeviceConnectivityManagementTetheringSettingsEnum = S.String;
+const DeviceConnectivityManagementTetheringSettingsEnum = S.String;
 
 /** Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse connections, and more. */
 export interface DeviceConnectivityManagement {
@@ -2874,7 +2851,7 @@ export interface DeviceConnectivityManagement {
   /** Controls tethering settings. Based on the value set, the user is partially or fully disallowed from using different forms of tethering. */
   tetheringSettings?: DeviceConnectivityManagementTetheringSettingsEnum | (string & {});
 }
-export const DeviceConnectivityManagement = /*@__PURE__*/ S.suspend(() =>
+const DeviceConnectivityManagement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usbDataAccess: S.optional(DeviceConnectivityManagementUsbDataAccessEnum),
     apnPolicy: S.optional(ApnPolicy),
@@ -2895,7 +2872,7 @@ export type WorkAccountSetupConfigAuthenticationTypeEnum =
   | "AUTHENTICATION_TYPE_UNSPECIFIED"
   | "AUTHENTICATION_TYPE_NOT_ENFORCED"
   | "GOOGLE_AUTHENTICATED";
-export const WorkAccountSetupConfigAuthenticationTypeEnum = S.String;
+const WorkAccountSetupConfigAuthenticationTypeEnum = S.String;
 
 /** Controls the work account setup configuration, such as details of whether a Google authenticated account is required. */
 export interface WorkAccountSetupConfig {
@@ -2904,7 +2881,7 @@ export interface WorkAccountSetupConfig {
   /** Optional. The authentication type of the user on the device. */
   authenticationType?: WorkAccountSetupConfigAuthenticationTypeEnum | (string & {});
 }
-export const WorkAccountSetupConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkAccountSetupConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiredAccountEmail: S.optional(S.String),
     authenticationType: S.optional(WorkAccountSetupConfigAuthenticationTypeEnum),
@@ -2927,7 +2904,7 @@ export type NonComplianceDetailConditionNonComplianceReasonEnum =
   | "DEVICE_INCOMPATIBLE"
   | "APP_SIGNING_CERT_MISMATCH"
   | "PROJECT_NOT_PERMITTED";
-export const NonComplianceDetailConditionNonComplianceReasonEnum = S.String;
+const NonComplianceDetailConditionNonComplianceReasonEnum = S.String;
 
 /** A compliance rule condition which is satisfied if there exists any matching NonComplianceDetail for the device. A NonComplianceDetail matches a NonComplianceDetailCondition if all the fields which are set within the NonComplianceDetailCondition match the corresponding NonComplianceDetail fields. */
 export interface NonComplianceDetailCondition {
@@ -2938,7 +2915,7 @@ export interface NonComplianceDetailCondition {
   /** The package name of the app that's out of compliance. If not set, then this condition matches any package name. */
   packageName?: string;
 }
-export const NonComplianceDetailCondition = /*@__PURE__*/ S.suspend(() =>
+const NonComplianceDetailCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonComplianceReason: S.optional(NonComplianceDetailConditionNonComplianceReasonEnum),
     settingName: S.optional(S.String),
@@ -2953,7 +2930,7 @@ export interface ApiLevelCondition {
   /** The minimum desired Android Framework API level. If the device doesn't meet the minimum requirement, this condition is satisfied. Must be greater than zero. */
   minApiLevel?: number;
 }
-export const ApiLevelCondition = /*@__PURE__*/ S.suspend(() =>
+const ApiLevelCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minApiLevel: S.optional(S.Number),
   }),
@@ -2970,7 +2947,7 @@ export interface ComplianceRule {
   /** If set, the rule includes a mitigating action to disable apps specified in the list, but app data is preserved. */
   packageNamesToDisable?: StringList;
 }
-export const ComplianceRule = /*@__PURE__*/ S.suspend(() =>
+const ComplianceRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonComplianceDetailCondition: S.optional(NonComplianceDetailCondition),
     apiLevelCondition: S.optional(ApiLevelCondition),
@@ -2980,7 +2957,7 @@ export const ComplianceRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComplianceRule" }) as any as S.Schema<ComplianceRule>;
 
 export type ComplianceRuleList = Array<ComplianceRule>;
-export const ComplianceRuleList = /*@__PURE__*/ S.Array(
+const ComplianceRuleList = /*@__PURE__*/ S.Array(
   ComplianceRule,
 ) as any as S.Schema<ComplianceRuleList>;
 
@@ -2988,7 +2965,7 @@ export type PolicyAssistContentPolicyEnum =
   | "ASSIST_CONTENT_POLICY_UNSPECIFIED"
   | "ASSIST_CONTENT_DISALLOWED"
   | "ASSIST_CONTENT_ALLOWED";
-export const PolicyAssistContentPolicyEnum = S.String;
+const PolicyAssistContentPolicyEnum = S.String;
 
 /** Controls apps' access to private keys. The rule determines which private key, if any, Android Device Policy grants to the specified app. Access is granted either when the app calls KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29) (or any overloads) to request a private key alias for a given URL, or for rules that are not URL-specific (that is, if urlPattern is not set, or set to the empty string or .*) on Android 11 and above, directly so that the app can call KeyChain.getPrivateKey (https://developer.android.com/reference/android/security/KeyChain#getPrivateKey%28android.content.Context,%20java.lang.String%29), without first having to call KeyChain.choosePrivateKeyAlias.When an app calls KeyChain.choosePrivateKeyAlias if more than one choosePrivateKeyRules matches, the last matching rule defines which key alias to return. */
 export interface ChoosePrivateKeyRule {
@@ -2999,7 +2976,7 @@ export interface ChoosePrivateKeyRule {
   /** The package names to which this rule applies. The signing key certificate fingerprint of the app is verified against the signing key certificate fingerprints provided by Play Store and ApplicationPolicy.signingKeyCerts . If no package names are specified, then the alias is provided to all apps that call KeyChain.choosePrivateKeyAlias (https://developer.android.com/reference/android/security/KeyChain#choosePrivateKeyAlias%28android.app.Activity,%20android.security.KeyChainAliasCallback,%20java.lang.String[],%20java.security.Principal[],%20java.lang.String,%20int,%20java.lang.String%29) or any overloads (but not without calling KeyChain.choosePrivateKeyAlias, even on Android 11 and above). Any app with the same Android UID as a package specified here will have access when they call KeyChain.choosePrivateKeyAlias. */
   packageNames?: StringList;
 }
-export const ChoosePrivateKeyRule = /*@__PURE__*/ S.suspend(() =>
+const ChoosePrivateKeyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateKeyAlias: S.optional(S.String),
     urlPattern: S.optional(S.String),
@@ -3008,7 +2985,7 @@ export const ChoosePrivateKeyRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChoosePrivateKeyRule" }) as any as S.Schema<ChoosePrivateKeyRule>;
 
 export type ChoosePrivateKeyRuleList = Array<ChoosePrivateKeyRule>;
-export const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
+const ChoosePrivateKeyRuleList = /*@__PURE__*/ S.Array(
   ChoosePrivateKeyRule,
 ) as any as S.Schema<ChoosePrivateKeyRuleList>;
 
@@ -3017,7 +2994,7 @@ export interface PackageNameList {
   /** A list of package names. */
   packageNames?: StringList;
 }
-export const PackageNameList = /*@__PURE__*/ S.suspend(() =>
+const PackageNameList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageNames: S.optional(StringList),
   }),
@@ -3028,30 +3005,26 @@ export type PolicyMicrophoneAccessEnum =
   | "MICROPHONE_ACCESS_USER_CHOICE"
   | "MICROPHONE_ACCESS_DISABLED"
   | "MICROPHONE_ACCESS_ENFORCED";
-export const PolicyMicrophoneAccessEnum = S.String;
+const PolicyMicrophoneAccessEnum = S.String;
 
 export type UsageLogEnabledLogTypesItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
   | "NETWORK_ACTIVITY_LOGS";
-export const UsageLogEnabledLogTypesItemEnum = S.String;
-
 export type UsageLogEnabledLogTypesItemEnumList = Array<
   UsageLogEnabledLogTypesItemEnum | (string & {})
 >;
-export const UsageLogEnabledLogTypesItemEnumList =
+const UsageLogEnabledLogTypesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<UsageLogEnabledLogTypesItemEnumList>;
 
 export type UsageLogUploadOnCellularAllowedItemEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "SECURITY_LOGS"
   | "NETWORK_ACTIVITY_LOGS";
-export const UsageLogUploadOnCellularAllowedItemEnum = S.String;
-
 export type UsageLogUploadOnCellularAllowedItemEnumList = Array<
   UsageLogUploadOnCellularAllowedItemEnum | (string & {})
 >;
-export const UsageLogUploadOnCellularAllowedItemEnumList =
+const UsageLogUploadOnCellularAllowedItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<UsageLogUploadOnCellularAllowedItemEnumList>;
 
 /** Controls types of device activity logs collected from the device and reported via Pub/Sub notification (https://developers.google.com/android/management/notifications). */
@@ -3061,7 +3034,7 @@ export interface UsageLog {
   /** Optional. Specifies which of the enabled log types can be uploaded over mobile data. By default logs are queued for upload when the device connects to WiFi. */
   uploadOnCellularAllowed?: UsageLogUploadOnCellularAllowedItemEnumList;
 }
-export const UsageLog = /*@__PURE__*/ S.suspend(() =>
+const UsageLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledLogTypes: S.optional(UsageLogEnabledLogTypesItemEnumList),
     uploadOnCellularAllowed: S.optional(UsageLogUploadOnCellularAllowedItemEnumList),
@@ -3077,7 +3050,7 @@ export interface PersistentPreferredActivity {
   /** The intent categories to match in the filter. An intent includes the categories that it requires, all of which must be included in the filter in order to match. In other words, adding a category to the filter has no impact on matching unless that category is specified in the intent. */
   categories?: StringList;
 }
-export const PersistentPreferredActivity = /*@__PURE__*/ S.suspend(() =>
+const PersistentPreferredActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(StringList),
     receiverActivity: S.optional(S.String),
@@ -3088,29 +3061,27 @@ export const PersistentPreferredActivity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersistentPreferredActivity>;
 
 export type PersistentPreferredActivityList = Array<PersistentPreferredActivity>;
-export const PersistentPreferredActivityList = /*@__PURE__*/ S.Array(
+const PersistentPreferredActivityList = /*@__PURE__*/ S.Array(
   PersistentPreferredActivity,
 ) as any as S.Schema<PersistentPreferredActivityList>;
 
 export type PolicyWipeDataFlagsItemEnum = "WIPE_DATA_FLAG_UNSPECIFIED" | "WIPE_ESIMS";
-export const PolicyWipeDataFlagsItemEnum = S.String;
-
 export type PolicyWipeDataFlagsItemEnumList = Array<PolicyWipeDataFlagsItemEnum | (string & {})>;
-export const PolicyWipeDataFlagsItemEnumList =
+const PolicyWipeDataFlagsItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyWipeDataFlagsItemEnumList>;
 
 export type PolicyPrintingPolicyEnum =
   | "PRINTING_POLICY_UNSPECIFIED"
   | "PRINTING_DISALLOWED"
   | "PRINTING_ALLOWED";
-export const PolicyPrintingPolicyEnum = S.String;
+const PolicyPrintingPolicyEnum = S.String;
 
 export type PermissionGrantPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
   | "DENY";
-export const PermissionGrantPolicyEnum = S.String;
+const PermissionGrantPolicyEnum = S.String;
 
 /** Configuration for an Android permission and its grant state. */
 export interface PermissionGrant {
@@ -3119,7 +3090,7 @@ export interface PermissionGrant {
   /** The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR. */
   permission?: string;
 }
-export const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
+const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(PermissionGrantPolicyEnum),
     permission: S.optional(S.String),
@@ -3127,7 +3098,7 @@ export const PermissionGrant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PermissionGrant" }) as any as S.Schema<PermissionGrant>;
 
 export type PermissionGrantList = Array<PermissionGrant>;
-export const PermissionGrantList = /*@__PURE__*/ S.Array(
+const PermissionGrantList = /*@__PURE__*/ S.Array(
   PermissionGrant,
 ) as any as S.Schema<PermissionGrantList>;
 
@@ -3135,7 +3106,7 @@ export type PolicyAutofillPolicyEnum =
   | "AUTOFILL_POLICY_UNSPECIFIED"
   | "AUTOFILL_USER_CHOICE"
   | "AUTOFILL_DISABLED";
-export const PolicyAutofillPolicyEnum = S.String;
+const PolicyAutofillPolicyEnum = S.String;
 
 /** Configuration for an always-on VPN connection. */
 export interface AlwaysOnVpnPackage {
@@ -3144,7 +3115,7 @@ export interface AlwaysOnVpnPackage {
   /** The package name of the VPN app. */
   packageName?: string;
 }
-export const AlwaysOnVpnPackage = /*@__PURE__*/ S.suspend(() =>
+const AlwaysOnVpnPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lockdownEnabled: S.optional(S.Boolean),
     packageName: S.optional(S.String),
@@ -3162,7 +3133,7 @@ export interface ProxyInfo {
   /** The host of the direct proxy. */
   host?: string;
 }
-export const ProxyInfo = /*@__PURE__*/ S.suspend(() =>
+const ProxyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedHosts: S.optional(StringList),
     port: S.optional(S.Number),
@@ -3175,19 +3146,17 @@ export type PolicyAppFunctionsEnum =
   | "APP_FUNCTIONS_UNSPECIFIED"
   | "APP_FUNCTIONS_DISALLOWED"
   | "APP_FUNCTIONS_ALLOWED";
-export const PolicyAppFunctionsEnum = S.String;
+const PolicyAppFunctionsEnum = S.String;
 
 export type PolicyStayOnPluggedModesItemEnum =
   | "BATTERY_PLUGGED_MODE_UNSPECIFIED"
   | "AC"
   | "USB"
   | "WIRELESS";
-export const PolicyStayOnPluggedModesItemEnum = S.String;
-
 export type PolicyStayOnPluggedModesItemEnumList = Array<
   PolicyStayOnPluggedModesItemEnum | (string & {})
 >;
-export const PolicyStayOnPluggedModesItemEnumList =
+const PolicyStayOnPluggedModesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyStayOnPluggedModesItemEnumList>;
 
 export type SystemUpdateTypeEnum =
@@ -3195,7 +3164,7 @@ export type SystemUpdateTypeEnum =
   | "AUTOMATIC"
   | "WINDOWED"
   | "POSTPONE";
-export const SystemUpdateTypeEnum = S.String;
+const SystemUpdateTypeEnum = S.String;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp */
 export interface Androidmanagement_Date {
@@ -3206,7 +3175,7 @@ export interface Androidmanagement_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Androidmanagement_Date = /*@__PURE__*/ S.suspend(() =>
+const Androidmanagement_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -3221,7 +3190,7 @@ export interface FreezePeriod {
   /** The end date (inclusive) of the freeze period. Must be no later than 90 days from the start date. If the end date is earlier than the start date, the freeze period is considered wrapping year-end. Note: day and month must be set. year should not be set as it is not used. For example, {"month": 1,"date": 30}. */
   endDate?: Androidmanagement_Date;
 }
-export const FreezePeriod = /*@__PURE__*/ S.suspend(() =>
+const FreezePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(Androidmanagement_Date),
     endDate: S.optional(Androidmanagement_Date),
@@ -3229,9 +3198,7 @@ export const FreezePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FreezePeriod" }) as any as S.Schema<FreezePeriod>;
 
 export type FreezePeriodList = Array<FreezePeriod>;
-export const FreezePeriodList = /*@__PURE__*/ S.Array(
-  FreezePeriod,
-) as any as S.Schema<FreezePeriodList>;
+const FreezePeriodList = /*@__PURE__*/ S.Array(FreezePeriod) as any as S.Schema<FreezePeriodList>;
 
 /** Configuration for managing system updatesNote: Google Play system updates (https://source.android.com/docs/core/ota/modular-system) (also called Mainline updates) are automatically downloaded but require a device reboot to be installed. Refer to the mainline section in Manage system updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details. */
 export interface SystemUpdate {
@@ -3244,7 +3211,7 @@ export interface SystemUpdate {
   /** An annually repeating time period in which over-the-air (OTA) system updates are postponed to freeze the OS version running on a device. To prevent freezing the device indefinitely, each freeze period must be separated by at least 60 days. */
   freezePeriods?: FreezePeriodList;
 }
-export const SystemUpdate = /*@__PURE__*/ S.suspend(() =>
+const SystemUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endMinutes: S.optional(S.Number),
     type: S.optional(SystemUpdateTypeEnum),
@@ -3261,7 +3228,7 @@ export type ApplicationPolicyPreferentialNetworkIdEnum =
   | "PREFERENTIAL_NETWORK_ID_THREE"
   | "PREFERENTIAL_NETWORK_ID_FOUR"
   | "PREFERENTIAL_NETWORK_ID_FIVE";
-export const ApplicationPolicyPreferentialNetworkIdEnum = S.String;
+const ApplicationPolicyPreferentialNetworkIdEnum = S.String;
 
 /** The managed configurations template for the app, saved from the managed configurations iframe. */
 export interface ManagedConfigurationTemplate {
@@ -3270,7 +3237,7 @@ export interface ManagedConfigurationTemplate {
   /** Optional, a map containing configuration variables defined for the configuration. */
   configurationVariables?: StringMap;
 }
-export const ManagedConfigurationTemplate = /*@__PURE__*/ S.suspend(() =>
+const ManagedConfigurationTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateId: S.optional(S.String),
     configurationVariables: S.optional(StringMap),
@@ -3283,14 +3250,14 @@ export type CustomAppConfigUserUninstallSettingsEnum =
   | "USER_UNINSTALL_SETTINGS_UNSPECIFIED"
   | "DISALLOW_UNINSTALL_BY_USER"
   | "ALLOW_UNINSTALL_BY_USER";
-export const CustomAppConfigUserUninstallSettingsEnum = S.String;
+const CustomAppConfigUserUninstallSettingsEnum = S.String;
 
 /** Configuration for a custom app. */
 export interface CustomAppConfig {
   /** Optional. User uninstall settings of the custom app. */
   userUninstallSettings?: CustomAppConfigUserUninstallSettingsEnum | (string & {});
 }
-export const CustomAppConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userUninstallSettings: S.optional(CustomAppConfigUserUninstallSettingsEnum),
   }),
@@ -3300,7 +3267,7 @@ export type ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum =
   | "ALWAYS_ON_VPN_LOCKDOWN_EXEMPTION_UNSPECIFIED"
   | "VPN_LOCKDOWN_ENFORCED"
   | "VPN_LOCKDOWN_EXEMPTION";
-export const ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum = S.String;
+const ApplicationPolicyAlwaysOnVpnLockdownExemptionEnum = S.String;
 
 export type ApplicationPolicyDelegatedScopesItemEnum =
   | "DELEGATED_SCOPE_UNSPECIFIED"
@@ -3313,26 +3280,24 @@ export type ApplicationPolicyDelegatedScopesItemEnum =
   | "NETWORK_ACTIVITY_LOGS"
   | "SECURITY_LOGS"
   | "CERT_SELECTION";
-export const ApplicationPolicyDelegatedScopesItemEnum = S.String;
-
 export type ApplicationPolicyDelegatedScopesItemEnumList = Array<
   ApplicationPolicyDelegatedScopesItemEnum | (string & {})
 >;
-export const ApplicationPolicyDelegatedScopesItemEnumList =
+const ApplicationPolicyDelegatedScopesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<ApplicationPolicyDelegatedScopesItemEnumList>;
 
 export type ApplicationPolicyWorkProfileWidgetsEnum =
   | "WORK_PROFILE_WIDGETS_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_ALLOWED"
   | "WORK_PROFILE_WIDGETS_DISALLOWED";
-export const ApplicationPolicyWorkProfileWidgetsEnum = S.String;
+const ApplicationPolicyWorkProfileWidgetsEnum = S.String;
 
 export type ApplicationPolicyDefaultPermissionPolicyEnum =
   | "PERMISSION_POLICY_UNSPECIFIED"
   | "PROMPT"
   | "GRANT"
   | "DENY";
-export const ApplicationPolicyDefaultPermissionPolicyEnum = S.String;
+const ApplicationPolicyDefaultPermissionPolicyEnum = S.String;
 
 export type RoleRoleTypeEnum =
   | "ROLE_TYPE_UNSPECIFIED"
@@ -3340,28 +3305,28 @@ export type RoleRoleTypeEnum =
   | "KIOSK"
   | "MOBILE_THREAT_DEFENSE_ENDPOINT_DETECTION_RESPONSE"
   | "SYSTEM_HEALTH_MONITORING";
-export const RoleRoleTypeEnum = S.String;
+const RoleRoleTypeEnum = S.String;
 
 /** Role an app can have. */
 export interface Role {
   /** Required. The type of the role an app can have. */
   roleType?: RoleRoleTypeEnum | (string & {});
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleType: S.optional(RoleRoleTypeEnum),
   }),
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 
 export type RoleList = Array<Role>;
-export const RoleList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleList>;
+const RoleList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleList>;
 
 export type ApplicationPolicyAutoUpdateModeEnum =
   | "AUTO_UPDATE_MODE_UNSPECIFIED"
   | "AUTO_UPDATE_DEFAULT"
   | "AUTO_UPDATE_POSTPONED"
   | "AUTO_UPDATE_HIGH_PRIORITY";
-export const ApplicationPolicyAutoUpdateModeEnum = S.String;
+const ApplicationPolicyAutoUpdateModeEnum = S.String;
 
 export type ApplicationPolicyInstallTypeEnum =
   | "INSTALL_TYPE_UNSPECIFIED"
@@ -3372,7 +3337,7 @@ export type ApplicationPolicyInstallTypeEnum =
   | "REQUIRED_FOR_SETUP"
   | "KIOSK"
   | "CUSTOM";
-export const ApplicationPolicyInstallTypeEnum = S.String;
+const ApplicationPolicyInstallTypeEnum = S.String;
 
 /** Configuration to enable an app as an extension app, with the capability of interacting with Android Device Policy offline. For Android versions 11 and above, extension apps are exempt from battery restrictions so will not be placed into the restricted App Standby Bucket (https://developer.android.com/topic/performance/appstandby#restricted-bucket). Extensions apps are also protected against users clearing their data or force-closing the application, although admins can continue to use the clear app data command on extension apps if needed for Android 11 and above. */
 export interface ExtensionConfig {
@@ -3381,7 +3346,7 @@ export interface ExtensionConfig {
   /** Hex-encoded SHA-256 hashes of the signing key certificates of the extension app. Only hexadecimal string representations of 64 characters are valid.The signing key certificate fingerprints are always obtained from the Play Store and this field is used to provide additional signing key certificate fingerprints. However, if the application is not available on the Play Store, this field needs to be set. A NonComplianceDetail with INVALID_VALUE is reported if this field is not set when the application is not available on the Play Store.The signing key certificate fingerprint of the extension app on the device must match one of the signing key certificate fingerprints obtained from the Play Store or the ones provided in this field for the app to be able to communicate with Android Device Policy.In production use cases, it is recommended to leave this empty. */
   signingKeyFingerprintsSha256?: StringList;
 }
-export const ExtensionConfig = /*@__PURE__*/ S.suspend(() =>
+const ExtensionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationReceiver: S.optional(S.String),
     signingKeyFingerprintsSha256: S.optional(StringList),
@@ -3392,19 +3357,19 @@ export type InstallConstraintNetworkTypeConstraintEnum =
   | "NETWORK_TYPE_CONSTRAINT_UNSPECIFIED"
   | "INSTALL_ON_ANY_NETWORK"
   | "INSTALL_ONLY_ON_UNMETERED_NETWORK";
-export const InstallConstraintNetworkTypeConstraintEnum = S.String;
+const InstallConstraintNetworkTypeConstraintEnum = S.String;
 
 export type InstallConstraintChargingConstraintEnum =
   | "CHARGING_CONSTRAINT_UNSPECIFIED"
   | "CHARGING_NOT_REQUIRED"
   | "INSTALL_ONLY_WHEN_CHARGING";
-export const InstallConstraintChargingConstraintEnum = S.String;
+const InstallConstraintChargingConstraintEnum = S.String;
 
 export type InstallConstraintDeviceIdleConstraintEnum =
   | "DEVICE_IDLE_CONSTRAINT_UNSPECIFIED"
   | "DEVICE_IDLE_NOT_REQUIRED"
   | "INSTALL_ONLY_WHEN_DEVICE_IDLE";
-export const InstallConstraintDeviceIdleConstraintEnum = S.String;
+const InstallConstraintDeviceIdleConstraintEnum = S.String;
 
 /** Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis defines a set of restrictions for the app installation. At least one of the fields must be set. When multiple fields are set, then all the constraints need to be satisfied for the app to be installed. */
 export interface InstallConstraint {
@@ -3415,7 +3380,7 @@ export interface InstallConstraint {
   /** Optional. Device idle constraint. */
   deviceIdleConstraint?: InstallConstraintDeviceIdleConstraintEnum | (string & {});
 }
-export const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
+const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkTypeConstraint: S.optional(InstallConstraintNetworkTypeConstraintEnum),
     chargingConstraint: S.optional(InstallConstraintChargingConstraintEnum),
@@ -3424,7 +3389,7 @@ export const InstallConstraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstallConstraint" }) as any as S.Schema<InstallConstraint>;
 
 export type InstallConstraintList = Array<InstallConstraint>;
-export const InstallConstraintList = /*@__PURE__*/ S.Array(
+const InstallConstraintList = /*@__PURE__*/ S.Array(
   InstallConstraint,
 ) as any as S.Schema<InstallConstraintList>;
 
@@ -3432,19 +3397,19 @@ export type ApplicationPolicyConnectedWorkAndPersonalAppEnum =
   | "CONNECTED_WORK_AND_PERSONAL_APP_UNSPECIFIED"
   | "CONNECTED_WORK_AND_PERSONAL_APP_DISALLOWED"
   | "CONNECTED_WORK_AND_PERSONAL_APP_ALLOWED";
-export const ApplicationPolicyConnectedWorkAndPersonalAppEnum = S.String;
+const ApplicationPolicyConnectedWorkAndPersonalAppEnum = S.String;
 
 export type ApplicationPolicyUserControlSettingsEnum =
   | "USER_CONTROL_SETTINGS_UNSPECIFIED"
   | "USER_CONTROL_ALLOWED"
   | "USER_CONTROL_DISALLOWED";
-export const ApplicationPolicyUserControlSettingsEnum = S.String;
+const ApplicationPolicyUserControlSettingsEnum = S.String;
 
 export type ApplicationPolicyCredentialProviderPolicyEnum =
   | "CREDENTIAL_PROVIDER_POLICY_UNSPECIFIED"
   | "CREDENTIAL_PROVIDER_ALLOWED"
   | "CREDENTIAL_PROVIDER_DISALLOWED";
-export const ApplicationPolicyCredentialProviderPolicyEnum = S.String;
+const ApplicationPolicyCredentialProviderPolicyEnum = S.String;
 
 /** Policy for an individual app. Note: Application availability on a given device cannot be changed using this policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per policy is 3,000. */
 export interface ApplicationPolicy {
@@ -3497,7 +3462,7 @@ export interface ApplicationPolicy {
   /** Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use InstallType KIOSK or kioskCustomLauncherEnabled to configure a dedicated device. */
   lockTaskAllowed?: boolean;
 }
-export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferentialNetworkId: S.optional(ApplicationPolicyPreferentialNetworkIdEnum),
     managedConfigurationTemplate: S.optional(ManagedConfigurationTemplate),
@@ -3527,7 +3492,7 @@ export const ApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationPolicy" }) as any as S.Schema<ApplicationPolicy>;
 
 export type ApplicationPolicyList = Array<ApplicationPolicy>;
-export const ApplicationPolicyList = /*@__PURE__*/ S.Array(
+const ApplicationPolicyList = /*@__PURE__*/ S.Array(
   ApplicationPolicy,
 ) as any as S.Schema<ApplicationPolicyList>;
 
@@ -3536,7 +3501,7 @@ export interface ApplicationReportingSettings {
   /** Whether removed apps are included in application reports. */
   includeRemovedApps?: boolean;
 }
-export const ApplicationReportingSettings = /*@__PURE__*/ S.suspend(() =>
+const ApplicationReportingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeRemovedApps: S.optional(S.Boolean),
   }),
@@ -3571,7 +3536,7 @@ export interface StatusReportingSettings {
   /** Whether Common Criteria Mode reporting is enabled. This is supported only on company-owned devices. */
   commonCriteriaModeEnabled?: boolean;
 }
-export const StatusReportingSettings = /*@__PURE__*/ S.suspend(() =>
+const StatusReportingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemPropertiesEnabled: S.optional(S.Boolean),
     networkInfoEnabled: S.optional(S.Boolean),
@@ -3592,26 +3557,26 @@ export type PolicyBackupServiceEnum =
   | "BACKUP_SERVICE_UNSPECIFIED"
   | "BACKUP_SERVICE_DISABLED"
   | "BACKUP_SERVICE_USER_CHOICE";
-export const PolicyBackupServiceEnum = S.String;
+const PolicyBackupServiceEnum = S.String;
 
 export type PolicyAutoDateAndTimeZoneEnum =
   | "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED"
   | "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE"
   | "AUTO_DATE_AND_TIME_ZONE_ENFORCED";
-export const PolicyAutoDateAndTimeZoneEnum = S.String;
+const PolicyAutoDateAndTimeZoneEnum = S.String;
 
 export type PersonalCrossDevicePoliciesTaskContinuityHandoffEnum =
   | "TASK_CONTINUITY_HANDOFF_UNSPECIFIED"
   | "TASK_CONTINUITY_HANDOFF_ALLOWED"
   | "TASK_CONTINUITY_HANDOFF_DISALLOWED";
-export const PersonalCrossDevicePoliciesTaskContinuityHandoffEnum = S.String;
+const PersonalCrossDevicePoliciesTaskContinuityHandoffEnum = S.String;
 
 /** Policies controlling cross-device communication in the personal profile. */
 export interface PersonalCrossDevicePolicies {
   /** Optional. Controls the task continuity handoff (https://developer.android.com/partners/android-17/features#handoff) feature for the personal profile on company-owned devices with a work profile. To disable Handoff device-wide on a company-owned device, both crossDevicePolicies.taskContinuityHandoff and this policy should be set to TASK_CONTINUITY_HANDOFF_DISALLOWED. Requires Android 17 QPR1 or higher. */
   taskContinuityHandoff?: PersonalCrossDevicePoliciesTaskContinuityHandoffEnum | (string & {});
 }
-export const PersonalCrossDevicePolicies = /*@__PURE__*/ S.suspend(() =>
+const PersonalCrossDevicePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskContinuityHandoff: S.optional(PersonalCrossDevicePoliciesTaskContinuityHandoffEnum),
   }),
@@ -3624,25 +3589,25 @@ export type PersonalUsagePoliciesPersonalPlayStoreModeEnum =
   | "BLACKLIST"
   | "BLOCKLIST"
   | "ALLOWLIST";
-export const PersonalUsagePoliciesPersonalPlayStoreModeEnum = S.String;
+const PersonalUsagePoliciesPersonalPlayStoreModeEnum = S.String;
 
 export type PersonalUsagePoliciesPrivateSpacePolicyEnum =
   | "PRIVATE_SPACE_POLICY_UNSPECIFIED"
   | "PRIVATE_SPACE_ALLOWED"
   | "PRIVATE_SPACE_DISALLOWED";
-export const PersonalUsagePoliciesPrivateSpacePolicyEnum = S.String;
+const PersonalUsagePoliciesPrivateSpacePolicyEnum = S.String;
 
 export type PersonalUsagePoliciesBluetoothSharingEnum =
   | "BLUETOOTH_SHARING_UNSPECIFIED"
   | "BLUETOOTH_SHARING_ALLOWED"
   | "BLUETOOTH_SHARING_DISALLOWED";
-export const PersonalUsagePoliciesBluetoothSharingEnum = S.String;
+const PersonalUsagePoliciesBluetoothSharingEnum = S.String;
 
 export type PersonalApplicationPolicyInstallTypeEnum =
   | "INSTALL_TYPE_UNSPECIFIED"
   | "BLOCKED"
   | "AVAILABLE";
-export const PersonalApplicationPolicyInstallTypeEnum = S.String;
+const PersonalApplicationPolicyInstallTypeEnum = S.String;
 
 /** Policies for apps in the personal profile of a company-owned device with a work profile. */
 export interface PersonalApplicationPolicy {
@@ -3651,7 +3616,7 @@ export interface PersonalApplicationPolicy {
   /** The package name of the application. */
   packageName?: string;
 }
-export const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
+const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installType: S.optional(PersonalApplicationPolicyInstallTypeEnum),
     packageName: S.optional(S.String),
@@ -3661,7 +3626,7 @@ export const PersonalApplicationPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PersonalApplicationPolicy>;
 
 export type PersonalApplicationPolicyList = Array<PersonalApplicationPolicy>;
-export const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
+const PersonalApplicationPolicyList = /*@__PURE__*/ S.Array(
   PersonalApplicationPolicy,
 ) as any as S.Schema<PersonalApplicationPolicyList>;
 
@@ -3686,7 +3651,7 @@ export interface PersonalUsagePolicies {
   /** Policy applied to applications in the personal profile. */
   personalApplications?: PersonalApplicationPolicyList;
 }
-export const PersonalUsagePolicies = /*@__PURE__*/ S.suspend(() =>
+const PersonalUsagePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crossDevicePolicies: S.optional(PersonalCrossDevicePolicies),
     maxDaysWithWorkOff: S.optional(S.Number),
@@ -3705,46 +3670,46 @@ export type PolicyDefaultPermissionPolicyEnum =
   | "PROMPT"
   | "GRANT"
   | "DENY";
-export const PolicyDefaultPermissionPolicyEnum = S.String;
+const PolicyDefaultPermissionPolicyEnum = S.String;
 
 export type AdvancedSecurityOverridesCommonCriteriaModeEnum =
   | "COMMON_CRITERIA_MODE_UNSPECIFIED"
   | "COMMON_CRITERIA_MODE_DISABLED"
   | "COMMON_CRITERIA_MODE_ENABLED";
-export const AdvancedSecurityOverridesCommonCriteriaModeEnum = S.String;
+const AdvancedSecurityOverridesCommonCriteriaModeEnum = S.String;
 
 export type AdvancedSecurityOverridesContentProtectionPolicyEnum =
   | "CONTENT_PROTECTION_POLICY_UNSPECIFIED"
   | "CONTENT_PROTECTION_DISABLED"
   | "CONTENT_PROTECTION_ENFORCED"
   | "CONTENT_PROTECTION_USER_CHOICE";
-export const AdvancedSecurityOverridesContentProtectionPolicyEnum = S.String;
+const AdvancedSecurityOverridesContentProtectionPolicyEnum = S.String;
 
 export type AdvancedSecurityOverridesUntrustedAppsPolicyEnum =
   | "UNTRUSTED_APPS_POLICY_UNSPECIFIED"
   | "DISALLOW_INSTALL"
   | "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY"
   | "ALLOW_INSTALL_DEVICE_WIDE";
-export const AdvancedSecurityOverridesUntrustedAppsPolicyEnum = S.String;
+const AdvancedSecurityOverridesUntrustedAppsPolicyEnum = S.String;
 
 export type AdvancedSecurityOverridesDeveloperSettingsEnum =
   | "DEVELOPER_SETTINGS_UNSPECIFIED"
   | "DEVELOPER_SETTINGS_DISABLED"
   | "DEVELOPER_SETTINGS_ALLOWED";
-export const AdvancedSecurityOverridesDeveloperSettingsEnum = S.String;
+const AdvancedSecurityOverridesDeveloperSettingsEnum = S.String;
 
 export type AdvancedSecurityOverridesMtePolicyEnum =
   | "MTE_POLICY_UNSPECIFIED"
   | "MTE_USER_CHOICE"
   | "MTE_ENFORCED"
   | "MTE_DISABLED";
-export const AdvancedSecurityOverridesMtePolicyEnum = S.String;
+const AdvancedSecurityOverridesMtePolicyEnum = S.String;
 
 export type AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum =
   | "GOOGLE_PLAY_PROTECT_VERIFY_APPS_UNSPECIFIED"
   | "VERIFY_APPS_ENFORCED"
   | "VERIFY_APPS_USER_CHOICE";
-export const AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum = S.String;
+const AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum = S.String;
 
 /** Advanced security settings. In most cases, setting these is not needed. */
 export interface AdvancedSecurityOverrides {
@@ -3765,7 +3730,7 @@ export interface AdvancedSecurityOverrides {
     | AdvancedSecurityOverridesGooglePlayProtectVerifyAppsEnum
     | (string & {});
 }
-export const AdvancedSecurityOverrides = /*@__PURE__*/ S.suspend(() =>
+const AdvancedSecurityOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonCriteriaMode: S.optional(AdvancedSecurityOverridesCommonCriteriaModeEnum),
     personalAppsThatCanReadWorkNotifications: S.optional(StringList),
@@ -3785,7 +3750,7 @@ export type BlockActionBlockScopeEnum =
   | "BLOCK_SCOPE_UNSPECIFIED"
   | "BLOCK_SCOPE_WORK_PROFILE"
   | "BLOCK_SCOPE_DEVICE";
-export const BlockActionBlockScopeEnum = S.String;
+const BlockActionBlockScopeEnum = S.String;
 
 /** An action to block access to apps and data on a fully managed device or in a work profile. This action also triggers a device or work profile to displays a user-facing notification with information (where possible) on how to correct the compliance issue. Note: wipeAction must also be specified. */
 export interface BlockAction {
@@ -3794,7 +3759,7 @@ export interface BlockAction {
   /** Specifies the scope of this BlockAction. Only applicable to devices that are company-owned. */
   blockScope?: BlockActionBlockScopeEnum | (string & {});
 }
-export const BlockAction = /*@__PURE__*/ S.suspend(() =>
+const BlockAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockAfterDays: S.optional(S.Number),
     blockScope: S.optional(BlockActionBlockScopeEnum),
@@ -3808,7 +3773,7 @@ export interface WipeAction {
   /** Whether the factory-reset protection data is preserved on the device. This setting applies to fully managed devices and work profiles on company-owned devices. */
   preserveFrp?: boolean;
 }
-export const WipeAction = /*@__PURE__*/ S.suspend(() =>
+const WipeAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wipeAfterDays: S.optional(S.Number),
     preserveFrp: S.optional(S.Boolean),
@@ -3824,7 +3789,7 @@ export interface PolicyEnforcementRule {
   /** An action to reset a company owned device or delete a work profile. Note: blockAction must also be specified. */
   wipeAction?: WipeAction;
 }
-export const PolicyEnforcementRule = /*@__PURE__*/ S.suspend(() =>
+const PolicyEnforcementRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settingName: S.optional(S.String),
     blockAction: S.optional(BlockAction),
@@ -3833,7 +3798,7 @@ export const PolicyEnforcementRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyEnforcementRule" }) as any as S.Schema<PolicyEnforcementRule>;
 
 export type PolicyEnforcementRuleList = Array<PolicyEnforcementRule>;
-export const PolicyEnforcementRuleList = /*@__PURE__*/ S.Array(
+const PolicyEnforcementRuleList = /*@__PURE__*/ S.Array(
   PolicyEnforcementRule,
 ) as any as S.Schema<PolicyEnforcementRuleList>;
 
@@ -3842,13 +3807,13 @@ export type PolicyCameraAccessEnum =
   | "CAMERA_ACCESS_USER_CHOICE"
   | "CAMERA_ACCESS_DISABLED"
   | "CAMERA_ACCESS_ENFORCED";
-export const PolicyCameraAccessEnum = S.String;
+const PolicyCameraAccessEnum = S.String;
 
 export type ScreenTimeoutSettingsScreenTimeoutModeEnum =
   | "SCREEN_TIMEOUT_MODE_UNSPECIFIED"
   | "SCREEN_TIMEOUT_USER_CHOICE"
   | "SCREEN_TIMEOUT_ENFORCED";
-export const ScreenTimeoutSettingsScreenTimeoutModeEnum = S.String;
+const ScreenTimeoutSettingsScreenTimeoutModeEnum = S.String;
 
 /** Controls the screen timeout settings. */
 export interface ScreenTimeoutSettings {
@@ -3857,7 +3822,7 @@ export interface ScreenTimeoutSettings {
   /** Optional. Controls whether the user is allowed to configure the screen timeout. */
   screenTimeoutMode?: ScreenTimeoutSettingsScreenTimeoutModeEnum | (string & {});
 }
-export const ScreenTimeoutSettings = /*@__PURE__*/ S.suspend(() =>
+const ScreenTimeoutSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenTimeout: S.optional(S.String),
     screenTimeoutMode: S.optional(ScreenTimeoutSettingsScreenTimeoutModeEnum),
@@ -3869,7 +3834,7 @@ export type ScreenBrightnessSettingsScreenBrightnessModeEnum =
   | "BRIGHTNESS_USER_CHOICE"
   | "BRIGHTNESS_AUTOMATIC"
   | "BRIGHTNESS_FIXED";
-export const ScreenBrightnessSettingsScreenBrightnessModeEnum = S.String;
+const ScreenBrightnessSettingsScreenBrightnessModeEnum = S.String;
 
 /** Controls for the screen brightness settings. */
 export interface ScreenBrightnessSettings {
@@ -3878,7 +3843,7 @@ export interface ScreenBrightnessSettings {
   /** Optional. The screen brightness between 1 and 255 where 1 is the lowest and 255 is the highest brightness. A value of 0 (default) means no screen brightness set. Any other value is rejected. screenBrightnessMode must be either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on Android 9 and above on fully managed devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9. Supported on work profiles on company-owned devices on Android 15 and above. */
   screenBrightness?: number;
 }
-export const ScreenBrightnessSettings = /*@__PURE__*/ S.suspend(() =>
+const ScreenBrightnessSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenBrightnessMode: S.optional(ScreenBrightnessSettingsScreenBrightnessModeEnum),
     screenBrightness: S.optional(S.Number),
@@ -3892,7 +3857,7 @@ export interface DisplaySettings {
   /** Optional. Controls the screen brightness settings. */
   screenBrightnessSettings?: ScreenBrightnessSettings;
 }
-export const DisplaySettings = /*@__PURE__*/ S.suspend(() =>
+const DisplaySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     screenTimeoutSettings: S.optional(ScreenTimeoutSettings),
     screenBrightnessSettings: S.optional(ScreenBrightnessSettings),
@@ -3903,27 +3868,27 @@ export type PolicyEncryptionPolicyEnum =
   | "ENCRYPTION_POLICY_UNSPECIFIED"
   | "ENABLED_WITHOUT_PASSWORD"
   | "ENABLED_WITH_PASSWORD";
-export const PolicyEncryptionPolicyEnum = S.String;
+const PolicyEncryptionPolicyEnum = S.String;
 
 export type CrossDevicePoliciesNearbyNotificationStreamingEnum =
   | "NEARBY_NOTIFICATION_STREAMING_UNSPECIFIED"
   | "NEARBY_NOTIFICATION_STREAMING_USER_CHOICE"
   | "NEARBY_NOTIFICATION_STREAMING_DISABLED"
   | "NEARBY_NOTIFICATION_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT";
-export const CrossDevicePoliciesNearbyNotificationStreamingEnum = S.String;
+const CrossDevicePoliciesNearbyNotificationStreamingEnum = S.String;
 
 export type CrossDevicePoliciesTaskContinuityHandoffEnum =
   | "TASK_CONTINUITY_HANDOFF_UNSPECIFIED"
   | "TASK_CONTINUITY_HANDOFF_ALLOWED"
   | "TASK_CONTINUITY_HANDOFF_DISALLOWED";
-export const CrossDevicePoliciesTaskContinuityHandoffEnum = S.String;
+const CrossDevicePoliciesTaskContinuityHandoffEnum = S.String;
 
 export type CrossDevicePoliciesNearbyAppStreamingEnum =
   | "NEARBY_APP_STREAMING_UNSPECIFIED"
   | "NEARBY_APP_STREAMING_USER_CHOICE"
   | "NEARBY_APP_STREAMING_DISABLED"
   | "NEARBY_APP_STREAMING_USER_CHOICE_SAME_MANAGED_ACCOUNT";
-export const CrossDevicePoliciesNearbyAppStreamingEnum = S.String;
+const CrossDevicePoliciesNearbyAppStreamingEnum = S.String;
 
 /** Policies controlling cross-device communication. */
 export interface CrossDevicePolicies {
@@ -3934,7 +3899,7 @@ export interface CrossDevicePolicies {
   /** Optional. Manages video streaming of apps on the device for fully managed devices or in the work profile for devices with work profiles to nearby devices. This is supported on Android 13 and above. */
   nearbyAppStreaming?: CrossDevicePoliciesNearbyAppStreamingEnum | (string & {});
 }
-export const CrossDevicePolicies = /*@__PURE__*/ S.suspend(() =>
+const CrossDevicePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nearbyNotificationStreaming: S.optional(CrossDevicePoliciesNearbyNotificationStreamingEnum),
     taskContinuityHandoff: S.optional(CrossDevicePoliciesTaskContinuityHandoffEnum),
@@ -3947,7 +3912,7 @@ export interface LaunchAppAction {
   /** Package name of app to be launched */
   packageName?: string;
 }
-export const LaunchAppAction = /*@__PURE__*/ S.suspend(() =>
+const LaunchAppAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
   }),
@@ -3962,7 +3927,7 @@ export interface SetupAction {
   /** Description of this action. */
   description?: UserFacingMessage;
 }
-export const SetupAction = /*@__PURE__*/ S.suspend(() =>
+const SetupAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(UserFacingMessage),
     launchApp: S.optional(LaunchAppAction),
@@ -3971,9 +3936,7 @@ export const SetupAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetupAction" }) as any as S.Schema<SetupAction>;
 
 export type SetupActionList = Array<SetupAction>;
-export const SetupActionList = /*@__PURE__*/ S.Array(
-  SetupAction,
-) as any as S.Schema<SetupActionList>;
+const SetupActionList = /*@__PURE__*/ S.Array(SetupAction) as any as S.Schema<SetupActionList>;
 
 export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
   | "MINIMUM_WIFI_SECURITY_LEVEL_UNSPECIFIED"
@@ -3981,38 +3944,38 @@ export type DeviceRadioStateMinimumWifiSecurityLevelEnum =
   | "PERSONAL_NETWORK_SECURITY"
   | "ENTERPRISE_NETWORK_SECURITY"
   | "ENTERPRISE_BIT192_NETWORK_SECURITY";
-export const DeviceRadioStateMinimumWifiSecurityLevelEnum = S.String;
+const DeviceRadioStateMinimumWifiSecurityLevelEnum = S.String;
 
 export type DeviceRadioStateUltraWidebandStateEnum =
   | "ULTRA_WIDEBAND_STATE_UNSPECIFIED"
   | "ULTRA_WIDEBAND_USER_CHOICE"
   | "ULTRA_WIDEBAND_DISABLED";
-export const DeviceRadioStateUltraWidebandStateEnum = S.String;
+const DeviceRadioStateUltraWidebandStateEnum = S.String;
 
 export type DeviceRadioStateAirplaneModeStateEnum =
   | "AIRPLANE_MODE_STATE_UNSPECIFIED"
   | "AIRPLANE_MODE_USER_CHOICE"
   | "AIRPLANE_MODE_DISABLED";
-export const DeviceRadioStateAirplaneModeStateEnum = S.String;
+const DeviceRadioStateAirplaneModeStateEnum = S.String;
 
 export type DeviceRadioStateCellularTwoGStateEnum =
   | "CELLULAR_TWO_G_STATE_UNSPECIFIED"
   | "CELLULAR_TWO_G_USER_CHOICE"
   | "CELLULAR_TWO_G_DISABLED";
-export const DeviceRadioStateCellularTwoGStateEnum = S.String;
+const DeviceRadioStateCellularTwoGStateEnum = S.String;
 
 export type DeviceRadioStateUserInitiatedAddEsimSettingsEnum =
   | "USER_INITIATED_ADD_ESIM_SETTINGS_UNSPECIFIED"
   | "USER_INITIATED_ADD_ESIM_ALLOWED"
   | "USER_INITIATED_ADD_ESIM_DISALLOWED";
-export const DeviceRadioStateUserInitiatedAddEsimSettingsEnum = S.String;
+const DeviceRadioStateUserInitiatedAddEsimSettingsEnum = S.String;
 
 export type DeviceRadioStateWifiStateEnum =
   | "WIFI_STATE_UNSPECIFIED"
   | "WIFI_STATE_USER_CHOICE"
   | "WIFI_ENABLED"
   | "WIFI_DISABLED";
-export const DeviceRadioStateWifiStateEnum = S.String;
+const DeviceRadioStateWifiStateEnum = S.String;
 
 /** Controls for device radio settings. */
 export interface DeviceRadioState {
@@ -4029,7 +3992,7 @@ export interface DeviceRadioState {
   /** Optional. Controls current state of Wi-Fi and if user can change its state. */
   wifiState?: DeviceRadioStateWifiStateEnum | (string & {});
 }
-export const DeviceRadioState = /*@__PURE__*/ S.suspend(() =>
+const DeviceRadioState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumWifiSecurityLevel: S.optional(DeviceRadioStateMinimumWifiSecurityLevelEnum),
     ultraWidebandState: S.optional(DeviceRadioStateUltraWidebandStateEnum),
@@ -4044,19 +4007,17 @@ export type PolicyAndroidDevicePolicyTracksItemEnum =
   | "APP_TRACK_UNSPECIFIED"
   | "PRODUCTION"
   | "BETA";
-export const PolicyAndroidDevicePolicyTracksItemEnum = S.String;
-
 export type PolicyAndroidDevicePolicyTracksItemEnumList = Array<
   PolicyAndroidDevicePolicyTracksItemEnum | (string & {})
 >;
-export const PolicyAndroidDevicePolicyTracksItemEnumList =
+const PolicyAndroidDevicePolicyTracksItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyAndroidDevicePolicyTracksItemEnumList>;
 
 export type PolicyEnterpriseDisplayNameVisibilityEnum =
   | "ENTERPRISE_DISPLAY_NAME_VISIBILITY_UNSPECIFIED"
   | "ENTERPRISE_DISPLAY_NAME_VISIBLE"
   | "ENTERPRISE_DISPLAY_NAME_HIDDEN";
-export const PolicyEnterpriseDisplayNameVisibilityEnum = S.String;
+const PolicyEnterpriseDisplayNameVisibilityEnum = S.String;
 
 /** This feature is not generally available. */
 export interface ContentProviderEndpoint {
@@ -4067,7 +4028,7 @@ export interface ContentProviderEndpoint {
   /** This feature is not generally available. */
   uri?: string;
 }
-export const ContentProviderEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ContentProviderEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     signingCertsSha256: S.optional(StringList),
@@ -4082,7 +4043,7 @@ export interface OncCertificateProvider {
   /** This feature is not generally available. */
   contentProviderEndpoint?: ContentProviderEndpoint;
 }
-export const OncCertificateProvider = /*@__PURE__*/ S.suspend(() =>
+const OncCertificateProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateReferences: S.optional(StringList),
     contentProviderEndpoint: S.optional(ContentProviderEndpoint),
@@ -4090,7 +4051,7 @@ export const OncCertificateProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OncCertificateProvider" }) as any as S.Schema<OncCertificateProvider>;
 
 export type OncCertificateProviderList = Array<OncCertificateProvider>;
-export const OncCertificateProviderList = /*@__PURE__*/ S.Array(
+const OncCertificateProviderList = /*@__PURE__*/ S.Array(
   OncCertificateProvider,
 ) as any as S.Schema<OncCertificateProviderList>;
 
@@ -4107,51 +4068,49 @@ export type PolicyKeyguardDisabledFeaturesItemEnum =
   | "BIOMETRICS"
   | "SHORTCUTS"
   | "ALL_FEATURES";
-export const PolicyKeyguardDisabledFeaturesItemEnum = S.String;
-
 export type PolicyKeyguardDisabledFeaturesItemEnumList = Array<
   PolicyKeyguardDisabledFeaturesItemEnum | (string & {})
 >;
-export const PolicyKeyguardDisabledFeaturesItemEnumList =
+const PolicyKeyguardDisabledFeaturesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<PolicyKeyguardDisabledFeaturesItemEnumList>;
 
 export type PolicyPreferentialNetworkServiceEnum =
   | "PREFERENTIAL_NETWORK_SERVICE_UNSPECIFIED"
   | "PREFERENTIAL_NETWORK_SERVICE_DISABLED"
   | "PREFERENTIAL_NETWORK_SERVICE_ENABLED";
-export const PolicyPreferentialNetworkServiceEnum = S.String;
+const PolicyPreferentialNetworkServiceEnum = S.String;
 
 export type CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum =
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_UNSPECIFIED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_ALLOWED"
   | "SHOW_WORK_CONTACTS_IN_PERSONAL_PROFILE_DISALLOWED_EXCEPT_SYSTEM";
-export const CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum = S.String;
+const CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum = S.String;
 
 export type CrossProfilePoliciesCrossProfileCopyPasteEnum =
   | "CROSS_PROFILE_COPY_PASTE_UNSPECIFIED"
   | "COPY_FROM_WORK_TO_PERSONAL_DISALLOWED"
   | "CROSS_PROFILE_COPY_PASTE_ALLOWED";
-export const CrossProfilePoliciesCrossProfileCopyPasteEnum = S.String;
+const CrossProfilePoliciesCrossProfileCopyPasteEnum = S.String;
 
 export type CrossProfilePoliciesCrossProfileAppFunctionsEnum =
   | "CROSS_PROFILE_APP_FUNCTIONS_UNSPECIFIED"
   | "CROSS_PROFILE_APP_FUNCTIONS_DISALLOWED"
   | "CROSS_PROFILE_APP_FUNCTIONS_ALLOWED";
-export const CrossProfilePoliciesCrossProfileAppFunctionsEnum = S.String;
+const CrossProfilePoliciesCrossProfileAppFunctionsEnum = S.String;
 
 export type CrossProfilePoliciesCrossProfileDataSharingEnum =
   | "CROSS_PROFILE_DATA_SHARING_UNSPECIFIED"
   | "CROSS_PROFILE_DATA_SHARING_DISALLOWED"
   | "DATA_SHARING_FROM_WORK_TO_PERSONAL_DISALLOWED"
   | "CROSS_PROFILE_DATA_SHARING_ALLOWED";
-export const CrossProfilePoliciesCrossProfileDataSharingEnum = S.String;
+const CrossProfilePoliciesCrossProfileDataSharingEnum = S.String;
 
 export type CrossProfilePoliciesWorkProfileWidgetsDefaultEnum =
   | "WORK_PROFILE_WIDGETS_DEFAULT_UNSPECIFIED"
   | "WORK_PROFILE_WIDGETS_DEFAULT_ALLOWED"
   | "WORK_PROFILE_WIDGETS_DEFAULT_DISALLOWED";
-export const CrossProfilePoliciesWorkProfileWidgetsDefaultEnum = S.String;
+const CrossProfilePoliciesWorkProfileWidgetsDefaultEnum = S.String;
 
 /** Controls the data from the work profile that can be accessed from the personal profile and vice versa. A NonComplianceDetail with MANAGEMENT_MODE is reported if the device does not have a work profile. */
 export interface CrossProfilePolicies {
@@ -4170,7 +4129,7 @@ export interface CrossProfilePolicies {
   /** Optional. Specifies the default behaviour for work profile widgets. If the policy does not specify work_profile_widgets for a specific application, it will behave according to the value specified here. */
   workProfileWidgetsDefault?: CrossProfilePoliciesWorkProfileWidgetsDefaultEnum | (string & {});
 }
-export const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
+const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showWorkContactsInPersonalProfile: S.optional(
       CrossProfilePoliciesShowWorkContactsInPersonalProfileEnum,
@@ -4184,7 +4143,7 @@ export const CrossProfilePolicies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CrossProfilePolicies" }) as any as S.Schema<CrossProfilePolicies>;
 
 export type PolicyPlayStoreModeEnum = "PLAY_STORE_MODE_UNSPECIFIED" | "WHITELIST" | "BLACKLIST";
-export const PolicyPlayStoreModeEnum = S.String;
+const PolicyPlayStoreModeEnum = S.String;
 
 export type PolicyAppAutoUpdatePolicyEnum =
   | "APP_AUTO_UPDATE_POLICY_UNSPECIFIED"
@@ -4192,7 +4151,7 @@ export type PolicyAppAutoUpdatePolicyEnum =
   | "NEVER"
   | "WIFI_ONLY"
   | "ALWAYS";
-export const PolicyAppAutoUpdatePolicyEnum = S.String;
+const PolicyAppAutoUpdatePolicyEnum = S.String;
 
 export type DefaultApplicationSettingDefaultApplicationTypeEnum =
   | "DEFAULT_APPLICATION_TYPE_UNSPECIFIED"
@@ -4204,17 +4163,17 @@ export type DefaultApplicationSettingDefaultApplicationTypeEnum =
   | "DEFAULT_HOME"
   | "DEFAULT_SMS"
   | "DEFAULT_WALLET";
-export const DefaultApplicationSettingDefaultApplicationTypeEnum = S.String;
+const DefaultApplicationSettingDefaultApplicationTypeEnum = S.String;
 
 /** Information about the application to be set as the default. */
 export interface DefaultApplication {
   /** Required. The package name that should be set as the default application. The policy is rejected if the package name is invalid. */
   packageName?: string;
 }
-export const DefaultApplication = LaunchAppAction as any as S.Schema<DefaultApplication>;
+const DefaultApplication = LaunchAppAction as any as S.Schema<DefaultApplication>;
 
 export type DefaultApplicationList = Array<DefaultApplication>;
-export const DefaultApplicationList = /*@__PURE__*/ S.Array(
+const DefaultApplicationList = /*@__PURE__*/ S.Array(
   DefaultApplication,
 ) as any as S.Schema<DefaultApplicationList>;
 
@@ -4223,12 +4182,10 @@ export type DefaultApplicationSettingDefaultApplicationScopesItemEnum =
   | "SCOPE_FULLY_MANAGED"
   | "SCOPE_WORK_PROFILE"
   | "SCOPE_PERSONAL_PROFILE";
-export const DefaultApplicationSettingDefaultApplicationScopesItemEnum = S.String;
-
 export type DefaultApplicationSettingDefaultApplicationScopesItemEnumList = Array<
   DefaultApplicationSettingDefaultApplicationScopesItemEnum | (string & {})
 >;
-export const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
+const DefaultApplicationSettingDefaultApplicationScopesItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<DefaultApplicationSettingDefaultApplicationScopesItemEnumList>;
 
 /** The default application setting for a DefaultApplicationType. */
@@ -4240,7 +4197,7 @@ export interface DefaultApplicationSetting {
   /** Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list). */
   defaultApplicationScopes?: DefaultApplicationSettingDefaultApplicationScopesItemEnumList;
 }
-export const DefaultApplicationSetting = /*@__PURE__*/ S.suspend(() =>
+const DefaultApplicationSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultApplicationType: S.optional(DefaultApplicationSettingDefaultApplicationTypeEnum),
     defaultApplications: S.optional(DefaultApplicationList),
@@ -4253,7 +4210,7 @@ export const DefaultApplicationSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultApplicationSetting>;
 
 export type DefaultApplicationSettingList = Array<DefaultApplicationSetting>;
-export const DefaultApplicationSettingList = /*@__PURE__*/ S.Array(
+const DefaultApplicationSettingList = /*@__PURE__*/ S.Array(
   DefaultApplicationSetting,
 ) as any as S.Schema<DefaultApplicationSettingList>;
 
@@ -4464,7 +4421,7 @@ export interface Policy {
   /** Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details. */
   defaultApplicationSettings?: DefaultApplicationSettingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kioskCustomization: S.optional(KioskCustomization),
     longSupportMessage: S.optional(UserFacingMessage),
@@ -4575,7 +4532,7 @@ export interface GetEnterprisesWebAppsRequest {
   /** The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}. */
   name: string;
 }
-export const GetEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4593,7 +4550,7 @@ export interface GetProvisioningInfoRequest {
   /** Required. The identifier that Android Device Policy passes to the 3P sign-in page in the form of provisioningInfo/{provisioning_info}. */
   name: string;
 }
-export const GetProvisioningInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvisioningInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4611,13 +4568,13 @@ export type ProvisioningInfoOwnershipEnum =
   | "OWNERSHIP_UNSPECIFIED"
   | "COMPANY_OWNED"
   | "PERSONALLY_OWNED";
-export const ProvisioningInfoOwnershipEnum = S.String;
+const ProvisioningInfoOwnershipEnum = S.String;
 
 export type ProvisioningInfoManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "DEVICE_OWNER"
   | "PROFILE_OWNER";
-export const ProvisioningInfoManagementModeEnum = S.String;
+const ProvisioningInfoManagementModeEnum = S.String;
 
 /** Information about a device that is available during setup. */
 export interface ProvisioningInfo {
@@ -4644,7 +4601,7 @@ export interface ProvisioningInfo {
   /** The name of this resource in the form provisioningInfo/{provisioning_info}. */
   name?: string;
 }
-export const ProvisioningInfo = /*@__PURE__*/ S.suspend(() =>
+const ProvisioningInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiLevel: S.optional(S.Number),
     ownership: S.optional(ProvisioningInfoOwnershipEnum),
@@ -4661,14 +4618,14 @@ export const ProvisioningInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProvisioningInfo" }) as any as S.Schema<ProvisioningInfo>;
 
 export type StopLostModeStatusStatusEnum = "STATUS_UNSPECIFIED" | "SUCCESS" | "NOT_IN_LOST_MODE";
-export const StopLostModeStatusStatusEnum = S.String;
+const StopLostModeStatusStatusEnum = S.String;
 
 /** Status of the STOP_LOST_MODE command to take the device out of lost mode. */
 export interface StopLostModeStatus {
   /** The status. See StopLostModeStatus. */
   status?: StopLostModeStatusStatusEnum | (string & {});
 }
-export const StopLostModeStatus = /*@__PURE__*/ S.suspend(() =>
+const StopLostModeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(StopLostModeStatusStatusEnum),
   }),
@@ -4679,7 +4636,7 @@ export interface EsimInfo {
   /** Output only. ICC ID of the eSIM. */
   iccId?: string;
 }
-export const EsimInfo = /*@__PURE__*/ S.suspend(() =>
+const EsimInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iccId: S.optional(S.String),
   }),
@@ -4705,7 +4662,7 @@ export type InternalErrorDetailsErrorCodeDetailEnum =
   | "ERROR_EUICC_INSUFFICIENT_MEMORY"
   | "ERROR_INVALID_PORT"
   | "ERROR_SIM_MISSING";
-export const InternalErrorDetailsErrorCodeDetailEnum = S.String;
+const InternalErrorDetailsErrorCodeDetailEnum = S.String;
 
 export type InternalErrorDetailsOperationCodeDetailEnum =
   | "OPERATION_CODE_DETAIL_UNSPECIFIED"
@@ -4720,7 +4677,7 @@ export type InternalErrorDetailsOperationCodeDetailEnum =
   | "OPERATION_APDU"
   | "OPERATION_SMDX_SUBJECT_REASON_CODE"
   | "OPERATION_HTTP";
-export const InternalErrorDetailsOperationCodeDetailEnum = S.String;
+const InternalErrorDetailsOperationCodeDetailEnum = S.String;
 
 /** Internal error details if present for the ADD_ESIM or REMOVE_ESIM command. */
 export interface InternalErrorDetails {
@@ -4733,7 +4690,7 @@ export interface InternalErrorDetails {
   /** Output only. The operation code detail corresponding to the operation_code. */
   operationCodeDetail?: InternalErrorDetailsOperationCodeDetailEnum | (string & {});
 }
-export const InternalErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const InternalErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationCode: S.optional(S.String),
     errorCode: S.optional(S.String),
@@ -4752,7 +4709,7 @@ export type EsimCommandStatusStatusEnum =
   | "INTERNAL_ERROR"
   | "ERROR_ICC_ID_NOT_FOUND"
   | "ERROR_MULTIPLE_ACTIVE_ESIMS_NO_AVAILABLE_SLOT";
-export const EsimCommandStatusStatusEnum = S.String;
+const EsimCommandStatusStatusEnum = S.String;
 
 /** Status and error details (if present) of an ADD_ESIM or REMOVE_ESIM command. */
 export interface EsimCommandStatus {
@@ -4763,7 +4720,7 @@ export interface EsimCommandStatus {
   /** Output only. Status of an ADD_ESIM or REMOVE_ESIM command. */
   status?: EsimCommandStatusStatusEnum | (string & {});
 }
-export const EsimCommandStatus = /*@__PURE__*/ S.suspend(() =>
+const EsimCommandStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     esimInfo: S.optional(EsimInfo),
     internalErrorDetails: S.optional(InternalErrorDetails),
@@ -4778,19 +4735,17 @@ export type CommandErrorCodeEnum =
   | "MANAGEMENT_MODE"
   | "INVALID_VALUE"
   | "UNSUPPORTED";
-export const CommandErrorCodeEnum = S.String;
+const CommandErrorCodeEnum = S.String;
 
 export type CommandResetPasswordFlagsItemEnum =
   | "RESET_PASSWORD_FLAG_UNSPECIFIED"
   | "REQUIRE_ENTRY"
   | "DO_NOT_ASK_CREDENTIALS_ON_BOOT"
   | "LOCK_NOW";
-export const CommandResetPasswordFlagsItemEnum = S.String;
-
 export type CommandResetPasswordFlagsItemEnumList = Array<
   CommandResetPasswordFlagsItemEnum | (string & {})
 >;
-export const CommandResetPasswordFlagsItemEnumList =
+const CommandResetPasswordFlagsItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<CommandResetPasswordFlagsItemEnumList>;
 
 export type PerAppResultClearingResultEnum =
@@ -4799,21 +4754,21 @@ export type PerAppResultClearingResultEnum =
   | "APP_NOT_FOUND"
   | "APP_PROTECTED"
   | "API_LEVEL";
-export const PerAppResultClearingResultEnum = S.String;
+const PerAppResultClearingResultEnum = S.String;
 
 /** The result of an attempt to clear the data of a single app. */
 export interface PerAppResult {
   /** The result of an attempt to clear the data of a single app. */
   clearingResult?: PerAppResultClearingResultEnum | (string & {});
 }
-export const PerAppResult = /*@__PURE__*/ S.suspend(() =>
+const PerAppResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clearingResult: S.optional(PerAppResultClearingResultEnum),
   }),
 ).annotate({ identifier: "PerAppResult" }) as any as S.Schema<PerAppResult>;
 
 export type PerAppResultMap = { [key: string]: PerAppResult | undefined };
-export const PerAppResultMap = /*@__PURE__*/ S.Record(
+const PerAppResultMap = /*@__PURE__*/ S.Record(
   S.String,
   PerAppResult,
 ) as any as S.Schema<PerAppResultMap>;
@@ -4823,7 +4778,7 @@ export interface ClearAppsDataStatus {
   /** The per-app results, a mapping from package names to the respective clearing result. */
   results?: PerAppResultMap;
 }
-export const ClearAppsDataStatus = /*@__PURE__*/ S.suspend(() =>
+const ClearAppsDataStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(PerAppResultMap),
   }),
@@ -4842,7 +4797,7 @@ export interface StartLostModeParams {
   /** The phone number that will be called when the device is in lost mode and the call owner button is tapped. */
   lostPhoneNumber?: UserFacingMessage;
 }
-export const StartLostModeParams = /*@__PURE__*/ S.suspend(() =>
+const StartLostModeParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lostOrganization: S.optional(UserFacingMessage),
     lostStreetAddress: S.optional(UserFacingMessage),
@@ -4857,19 +4812,17 @@ export interface RemoveEsimParams {
   /** Required. ICC ID of the eSIM profile to be deleted. */
   iccId?: string;
 }
-export const RemoveEsimParams = EsimInfo as any as S.Schema<RemoveEsimParams>;
+const RemoveEsimParams = EsimInfo as any as S.Schema<RemoveEsimParams>;
 
 export type WipeParamsWipeDataFlagsItemEnum =
   | "WIPE_DATA_FLAG_UNSPECIFIED"
   | "PRESERVE_RESET_PROTECTION_DATA"
   | "WIPE_EXTERNAL_STORAGE"
   | "WIPE_ESIMS";
-export const WipeParamsWipeDataFlagsItemEnum = S.String;
-
 export type WipeParamsWipeDataFlagsItemEnumList = Array<
   WipeParamsWipeDataFlagsItemEnum | (string & {})
 >;
-export const WipeParamsWipeDataFlagsItemEnumList =
+const WipeParamsWipeDataFlagsItemEnumList =
   EnterpriseEnabledNotificationTypesItemEnumList as any as S.Schema<WipeParamsWipeDataFlagsItemEnumList>;
 
 /** Parameters associated with the WIPE command to wipe the device. */
@@ -4879,7 +4832,7 @@ export interface WipeParams {
   /** Optional. A short message displayed to the user before wiping the work profile on personal devices. This has no effect on company owned devices. The maximum message length is 200 characters. */
   wipeReason?: UserFacingMessage;
 }
-export const WipeParams = /*@__PURE__*/ S.suspend(() =>
+const WipeParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wipeDataFlags: S.optional(WipeParamsWipeDataFlagsItemEnumList),
     wipeReason: S.optional(UserFacingMessage),
@@ -4888,7 +4841,7 @@ export const WipeParams = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters associated with the STOP_LOST_MODE command to take the device out of lost mode. */
 export interface StopLostModeParams {}
-export const StopLostModeParams = Empty as any as S.Schema<StopLostModeParams>;
+const StopLostModeParams = Empty as any as S.Schema<StopLostModeParams>;
 
 export type StartLostModeStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -4896,21 +4849,19 @@ export type StartLostModeStatusStatusEnum =
   | "RESET_PASSWORD_RECENTLY"
   | "USER_EXIT_LOST_MODE_RECENTLY"
   | "ALREADY_IN_LOST_MODE";
-export const StartLostModeStatusStatusEnum = S.String;
-
 /** Status of the START_LOST_MODE command to put the device into lost mode. */
 export interface StartLostModeStatus {
   /** The status. See StartLostModeStatus. */
   status?: StartLostModeStatusStatusEnum | (string & {});
 }
-export const StartLostModeStatus = StopLostModeStatus as any as S.Schema<StartLostModeStatus>;
+const StartLostModeStatus = StopLostModeStatus as any as S.Schema<StartLostModeStatus>;
 
 /** Parameters associated with the CLEAR_APP_DATA command to clear the data of specified apps from the device. */
 export interface ClearAppsDataParams {
   /** The package names of the apps whose data will be cleared when the command is executed. */
   packageNames?: StringList;
 }
-export const ClearAppsDataParams = PackageNameList as any as S.Schema<ClearAppsDataParams>;
+const ClearAppsDataParams = PackageNameList as any as S.Schema<ClearAppsDataParams>;
 
 export type CommandTypeEnum =
   | "COMMAND_TYPE_UNSPECIFIED"
@@ -4925,7 +4876,7 @@ export type CommandTypeEnum =
   | "REMOVE_ESIM"
   | "REQUEST_DEVICE_INFO"
   | "WIPE";
-export const CommandTypeEnum = S.String;
+const CommandTypeEnum = S.String;
 
 export type RequestDeviceInfoStatusStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -4933,24 +4884,24 @@ export type RequestDeviceInfoStatusStatusEnum =
   | "PENDING_USER_ACTION"
   | "USER_DECLINED"
   | "UNSUPPORTED";
-export const RequestDeviceInfoStatusStatusEnum = S.String;
+const RequestDeviceInfoStatusStatusEnum = S.String;
 
 /** EID information for each eUICC chip. */
 export interface Eid {
   /** Output only. The EID */
   eid?: string;
 }
-export const Eid = EuiccChipInfo as any as S.Schema<Eid>;
+const Eid = EuiccChipInfo as any as S.Schema<Eid>;
 
 export type EidList = Array<Eid>;
-export const EidList = /*@__PURE__*/ S.Array(Eid) as any as S.Schema<EidList>;
+const EidList = /*@__PURE__*/ S.Array(Eid) as any as S.Schema<EidList>;
 
 /** Information related to the EIDs of the device. */
 export interface EidInfo {
   /** Output only. EID information for each eUICC chip. */
   eids?: EidList;
 }
-export const EidInfo = /*@__PURE__*/ S.suspend(() =>
+const EidInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eids: S.optional(EidList),
   }),
@@ -4963,7 +4914,7 @@ export interface RequestDeviceInfoStatus {
   /** Information related to the EIDs of the device. */
   eidInfo?: EidInfo;
 }
-export const RequestDeviceInfoStatus = /*@__PURE__*/ S.suspend(() =>
+const RequestDeviceInfoStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(RequestDeviceInfoStatusStatusEnum),
     eidInfo: S.optional(EidInfo),
@@ -4974,7 +4925,7 @@ export type AddEsimParamsActivationStateEnum =
   | "ACTIVATION_STATE_UNSPECIFIED"
   | "ACTIVATED"
   | "NOT_ACTIVATED";
-export const AddEsimParamsActivationStateEnum = S.String;
+const AddEsimParamsActivationStateEnum = S.String;
 
 /** Parameters associated with the ADD_ESIM command to add an eSIM profile to the device. */
 export interface AddEsimParams {
@@ -4983,7 +4934,7 @@ export interface AddEsimParams {
   /** Required. The activation code for the eSIM profile. */
   activationCode?: string;
 }
-export const AddEsimParams = /*@__PURE__*/ S.suspend(() =>
+const AddEsimParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activationState: S.optional(AddEsimParamsActivationStateEnum),
     activationCode: S.optional(S.String),
@@ -4991,14 +4942,14 @@ export const AddEsimParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddEsimParams" }) as any as S.Schema<AddEsimParams>;
 
 export type RequestDeviceInfoParamsDeviceInfoEnum = "DEVICE_INFO_UNSPECIFIED" | "EID";
-export const RequestDeviceInfoParamsDeviceInfoEnum = S.String;
+const RequestDeviceInfoParamsDeviceInfoEnum = S.String;
 
 /** Parameters associated with the REQUEST_DEVICE_INFO command to get device related information. */
 export interface RequestDeviceInfoParams {
   /** Required. Type of device information to be requested. */
   deviceInfo?: RequestDeviceInfoParamsDeviceInfoEnum | (string & {});
 }
-export const RequestDeviceInfoParams = /*@__PURE__*/ S.suspend(() =>
+const RequestDeviceInfoParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceInfo: S.optional(RequestDeviceInfoParamsDeviceInfoEnum),
   }),
@@ -5045,7 +4996,7 @@ export interface Command {
   /** Optional. Parameters for the REQUEST_DEVICE_INFO command to get device related information. If this is set, then it is suggested that type should not be set. In this case, the server automatically sets it to REQUEST_DEVICE_INFO . It is also acceptable to explicitly set type to REQUEST_DEVICE_INFO. */
   requestDeviceInfoParams?: RequestDeviceInfoParams;
 }
-export const Command = /*@__PURE__*/ S.suspend(() =>
+const Command = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopLostModeStatus: S.optional(StopLostModeStatus),
     esimStatus: S.optional(EsimCommandStatus),
@@ -5075,7 +5026,7 @@ export interface IssueCommandEnterprisesDevicesRequest {
   /** Request body */
   body?: Command;
 }
-export const IssueCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Command.pipe(T.HttpBody())),
@@ -5091,7 +5042,7 @@ export const IssueCommandEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<IssueCommandEnterprisesDevicesRequest>;
 
 export type ListEnterprisesViewEnum = "ENTERPRISE_VIEW_UNSPECIFIED" | "BASIC";
-export const ListEnterprisesViewEnum = S.String;
+const ListEnterprisesViewEnum = S.String;
 
 export interface ListEnterprisesRequest {
   /** Specifies which Enterprise fields to return. This method only supports BASIC. */
@@ -5103,7 +5054,7 @@ export interface ListEnterprisesRequest {
   /** The requested page size. The actual page size may be fixed to a min or max value. */
   pageSize?: number;
 }
-export const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListEnterprisesViewEnum.pipe(T.Query())),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -5119,7 +5070,7 @@ export const ListEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListEnterprisesRequest" }) as any as S.Schema<ListEnterprisesRequest>;
 
 export type EnterpriseList = Array<Enterprise>;
-export const EnterpriseList = /*@__PURE__*/ S.Array(Enterprise) as any as S.Schema<EnterpriseList>;
+const EnterpriseList = /*@__PURE__*/ S.Array(Enterprise) as any as S.Schema<EnterpriseList>;
 
 /** Response to a request to list enterprises. */
 export interface ListEnterprisesResponse {
@@ -5128,7 +5079,7 @@ export interface ListEnterprisesResponse {
   /** The list of enterprises. */
   enterprises?: EnterpriseList;
 }
-export const ListEnterprisesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     enterprises: S.optional(EnterpriseList),
@@ -5143,7 +5094,7 @@ export interface ListEnterprisesDevicesRequest {
   /** The name of the enterprise in the form enterprises/{enterpriseId}. */
   parent: string;
 }
-export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5160,7 +5111,7 @@ export const ListEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesDevicesRequest>;
 
 export type DeviceList = Array<Device>;
-export const DeviceList = /*@__PURE__*/ S.Array(Device) as any as S.Schema<DeviceList>;
+const DeviceList = /*@__PURE__*/ S.Array(Device) as any as S.Schema<DeviceList>;
 
 /** Response to a request to list devices for a given enterprise. */
 export interface ListDevicesResponse {
@@ -5169,7 +5120,7 @@ export interface ListDevicesResponse {
   /** The list of devices. */
   devices?: DeviceList;
 }
-export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     devices: S.optional(DeviceList),
@@ -5188,7 +5139,7 @@ export interface ListEnterprisesDevicesOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5207,7 +5158,7 @@ export const ListEnterprisesDevicesOperationsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListEnterprisesDevicesOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -5218,7 +5169,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -5234,7 +5185,7 @@ export interface ListEnterprisesEnrollmentTokensRequest {
   /** The requested page size. The service may return fewer than this value. If unspecified, at most 10 items will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5251,7 +5202,7 @@ export const ListEnterprisesEnrollmentTokensRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListEnterprisesEnrollmentTokensRequest>;
 
 export type EnrollmentTokenList = Array<EnrollmentToken>;
-export const EnrollmentTokenList = /*@__PURE__*/ S.Array(
+const EnrollmentTokenList = /*@__PURE__*/ S.Array(
   EnrollmentToken,
 ) as any as S.Schema<EnrollmentTokenList>;
 
@@ -5262,7 +5213,7 @@ export interface ListEnrollmentTokensResponse {
   /** The list of enrollment tokens. */
   enrollmentTokens?: EnrollmentTokenList;
 }
-export const ListEnrollmentTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnrollmentTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     enrollmentTokens: S.optional(EnrollmentTokenList),
@@ -5279,7 +5230,7 @@ export interface ListEnterprisesMigrationTokensRequest {
   /** The maximum number of migration tokens to return. Fewer migration tokens may be returned. If unspecified, at most 100 migration tokens will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5296,7 +5247,7 @@ export const ListEnterprisesMigrationTokensRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListEnterprisesMigrationTokensRequest>;
 
 export type MigrationTokenList = Array<MigrationToken>;
-export const MigrationTokenList = /*@__PURE__*/ S.Array(
+const MigrationTokenList = /*@__PURE__*/ S.Array(
   MigrationToken,
 ) as any as S.Schema<MigrationTokenList>;
 
@@ -5307,7 +5258,7 @@ export interface ListMigrationTokensResponse {
   /** The migration tokens from the specified enterprise. */
   migrationTokens?: MigrationTokenList;
 }
-export const ListMigrationTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMigrationTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     migrationTokens: S.optional(MigrationTokenList),
@@ -5324,7 +5275,7 @@ export interface ListEnterprisesPoliciesRequest {
   /** The name of the enterprise in the form enterprises/{enterpriseId}. */
   parent: string;
 }
-export const ListEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5341,7 +5292,7 @@ export const ListEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesPoliciesRequest>;
 
 export type PolicyList = Array<Policy>;
-export const PolicyList = /*@__PURE__*/ S.Array(Policy) as any as S.Schema<PolicyList>;
+const PolicyList = /*@__PURE__*/ S.Array(Policy) as any as S.Schema<PolicyList>;
 
 /** Response to a request to list policies for a given enterprise. */
 export interface ListPoliciesResponse {
@@ -5350,7 +5301,7 @@ export interface ListPoliciesResponse {
   /** The list of policies. */
   policies?: PolicyList;
 }
-export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     policies: S.optional(PolicyList),
@@ -5365,7 +5316,7 @@ export interface ListEnterprisesWebAppsRequest {
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
 }
-export const ListEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5382,7 +5333,7 @@ export const ListEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterprisesWebAppsRequest>;
 
 export type WebAppList = Array<WebApp>;
-export const WebAppList = /*@__PURE__*/ S.Array(WebApp) as any as S.Schema<WebAppList>;
+const WebAppList = /*@__PURE__*/ S.Array(WebApp) as any as S.Schema<WebAppList>;
 
 /** Response to a request to list web apps for a given enterprise. */
 export interface ListWebAppsResponse {
@@ -5391,7 +5342,7 @@ export interface ListWebAppsResponse {
   /** The list of web apps. */
   webApps?: WebAppList;
 }
-export const ListWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     webApps: S.optional(WebAppList),
@@ -5405,7 +5356,7 @@ export interface ApplicationPolicyChange {
   /** If ApplicationPolicy.packageName matches an existing ApplicationPolicy object within the Policy being modified, then that object will be updated. Otherwise, it will be added to the end of the Policy.applications. */
   application?: ApplicationPolicy;
 }
-export const ApplicationPolicyChange = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPolicyChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     application: S.optional(ApplicationPolicy),
@@ -5413,7 +5364,7 @@ export const ApplicationPolicyChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApplicationPolicyChange" }) as any as S.Schema<ApplicationPolicyChange>;
 
 export type ApplicationPolicyChangeList = Array<ApplicationPolicyChange>;
-export const ApplicationPolicyChangeList = /*@__PURE__*/ S.Array(
+const ApplicationPolicyChangeList = /*@__PURE__*/ S.Array(
   ApplicationPolicyChange,
 ) as any as S.Schema<ApplicationPolicyChangeList>;
 
@@ -5422,7 +5373,7 @@ export interface ModifyPolicyApplicationsRequest {
   /** Required. The changes to be made to the ApplicationPolicy objects. There must be at least one ApplicationPolicyChange. */
   changes?: ApplicationPolicyChangeList;
 }
-export const ModifyPolicyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPolicyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changes: S.optional(ApplicationPolicyChangeList),
   }),
@@ -5436,7 +5387,7 @@ export interface ModifyPolicyApplicationsEnterprisesPoliciesRequest {
   /** Request body */
   body?: ModifyPolicyApplicationsRequest;
 }
-export const ModifyPolicyApplicationsEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPolicyApplicationsEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ModifyPolicyApplicationsRequest.pipe(T.HttpBody())),
@@ -5456,7 +5407,7 @@ export interface ModifyPolicyApplicationsResponse {
   /** The updated policy. */
   policy?: Policy;
 }
-export const ModifyPolicyApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ModifyPolicyApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -5472,7 +5423,7 @@ export interface PatchEnterprisesRequest {
   /** Request body */
   body?: Enterprise;
 }
-export const PatchEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEnterprisesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5494,7 +5445,7 @@ export interface PatchEnterprisesDevicesRequest {
   /** Request body */
   body?: Device;
 }
-export const PatchEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEnterprisesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5518,7 +5469,7 @@ export interface PatchEnterprisesPoliciesRequest {
   /** Request body */
   body?: Policy;
 }
-export const PatchEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5542,7 +5493,7 @@ export interface PatchEnterprisesWebAppsRequest {
   /** Request body */
   body?: WebApp;
 }
-export const PatchEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEnterprisesWebAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5563,7 +5514,7 @@ export interface RemovePolicyApplicationsRequest {
   /** Required. Package names to be removed. Entries that are not found are ignored. There must be at least one entry in package_names. */
   packageNames?: StringList;
 }
-export const RemovePolicyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePolicyApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageNames: S.optional(StringList),
   }),
@@ -5577,7 +5528,7 @@ export interface RemovePolicyApplicationsEnterprisesPoliciesRequest {
   /** Request body */
   body?: RemovePolicyApplicationsRequest;
 }
-export const RemovePolicyApplicationsEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePolicyApplicationsEnterprisesPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RemovePolicyApplicationsRequest.pipe(T.HttpBody())),
@@ -5597,7 +5548,7 @@ export interface RemovePolicyApplicationsResponse {
   /** The updated policy after ApplicationPolicy objects have been removed. */
   policy?: Policy;
 }
-export const RemovePolicyApplicationsResponse =
+const RemovePolicyApplicationsResponse =
   ModifyPolicyApplicationsResponse as any as S.Schema<RemovePolicyApplicationsResponse>;
 
 export type CancelEnterprisesDevicesOperationsError =

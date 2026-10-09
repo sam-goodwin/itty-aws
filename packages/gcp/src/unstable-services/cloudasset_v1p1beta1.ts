@@ -45,7 +45,7 @@ export interface SearchAllIamPoliciesRequest {
   /** Optional. If present, retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of all other method parameters must be identical to those in the previous call. */
   pageToken?: string;
 }
-export const SearchAllIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAllIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -63,21 +63,21 @@ export const SearchAllIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAllIamPoliciesRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** IAM permissions. */
 export interface Permissions {
   /** A list of permissions. Example permission string: "compute.disk.get". */
   permissions?: StringList;
 }
-export const Permissions = /*@__PURE__*/ S.suspend(() =>
+const Permissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
 ).annotate({ identifier: "Permissions" }) as any as S.Schema<Permissions>;
 
 export type PermissionsMap = { [key: string]: Permissions | undefined };
-export const PermissionsMap = /*@__PURE__*/ S.Record(
+const PermissionsMap = /*@__PURE__*/ S.Record(
   S.String,
   Permissions,
 ) as any as S.Schema<PermissionsMap>;
@@ -87,7 +87,7 @@ export interface Explanation {
   /** The map from roles to their included permission matching the permission query (e.g. containing `policy.role.permissions:`). Example role string: "roles/compute.instanceAdmin". The roles can also be found in the returned `policy` bindings. Note that the map is populated only if requesting with a permission query. */
   matchedPermissions?: PermissionsMap;
 }
-export const Explanation = /*@__PURE__*/ S.suspend(() =>
+const Explanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchedPermissions: S.optional(PermissionsMap),
   }),
@@ -98,7 +98,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -107,7 +107,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -115,7 +115,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -126,7 +126,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -134,9 +134,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -149,7 +147,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -167,7 +165,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     condition: S.optional(Expr),
@@ -176,7 +174,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -189,7 +187,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     auditConfigs: S.optional(AuditConfigList),
@@ -209,7 +207,7 @@ export interface IamPolicySearchResult {
   /** The project that the associated Google Cloud resource belongs to, in the form of `projects/{project_number}`. If an IAM policy is set on a resource -- such as a Compute Engine instance or a Cloud Storage bucket -- the project field will indicate the project that contains the resource. If an IAM policy is set on a folder or organization, the project field will be empty. */
   project?: string;
 }
-export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
+const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explanation: S.optional(Explanation),
     policy: S.optional(Policy),
@@ -219,7 +217,7 @@ export const IamPolicySearchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IamPolicySearchResult" }) as any as S.Schema<IamPolicySearchResult>;
 
 export type IamPolicySearchResultList = Array<IamPolicySearchResult>;
-export const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
+const IamPolicySearchResultList = /*@__PURE__*/ S.Array(
   IamPolicySearchResult,
 ) as any as S.Schema<IamPolicySearchResultList>;
 
@@ -230,7 +228,7 @@ export interface SearchAllIamPoliciesResponse {
   /** Set if there are more results than those appearing in this response; to get the next set of results, call this method again, using this value as the `page_token`. */
   nextPageToken?: string;
 }
-export const SearchAllIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAllIamPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(IamPolicySearchResultList),
     nextPageToken: S.optional(S.String),
@@ -253,7 +251,7 @@ export interface SearchAllResourcesRequest {
   /** Optional. The page size for search result pagination. Page size is capped at 500 even if a larger value is given. If set to zero, server will pick an appropriate default. Returned results may be fewer than requested. When this happens, there could be more results as long as `next_page_token` is returned. */
   pageSize?: number;
 }
-export const SearchAllResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAllResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -273,7 +271,7 @@ export const SearchAllResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAllResourcesRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** The standard metadata of a cloud resource. */
 export interface StandardResourceMetadata {
@@ -296,7 +294,7 @@ export interface StandardResourceMetadata {
   /** Network tags associated with this resource. Like labels, network tags are a type of annotations used to group Google Cloud resources. See [Labelling Google Cloud resources](lhttps://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources) for more information. */
   networkTags?: StringList;
 }
-export const StandardResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const StandardResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     assetType: S.optional(S.String),
@@ -311,7 +309,7 @@ export const StandardResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardResourceMetadata" }) as any as S.Schema<StandardResourceMetadata>;
 
 export type StandardResourceMetadataList = Array<StandardResourceMetadata>;
-export const StandardResourceMetadataList = /*@__PURE__*/ S.Array(
+const StandardResourceMetadataList = /*@__PURE__*/ S.Array(
   StandardResourceMetadata,
 ) as any as S.Schema<StandardResourceMetadataList>;
 
@@ -322,7 +320,7 @@ export interface SearchAllResourcesResponse {
   /** If there are more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-export const SearchAllResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchAllResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(StandardResourceMetadataList),
     nextPageToken: S.optional(S.String),

@@ -63,13 +63,13 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateIssueRequestAssigneesList = Array<string>;
-export const CreateIssueRequestAssigneesList = /*@__PURE__*/ S.Array(
+const CreateIssueRequestAssigneesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateIssueRequestAssigneesList>;
 
 /** list of label ids */
 export type CreateIssueRequestLabelsList = Array<number>;
-export const CreateIssueRequestLabelsList = /*@__PURE__*/ S.Array(
+const CreateIssueRequestLabelsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateIssueRequestLabelsList>;
 
@@ -91,7 +91,7 @@ export interface CreateIssueRequest {
   ref?: string;
   title: string;
 }
-export const CreateIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -108,7 +108,7 @@ export const CreateIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIssueRequest" }) as any as S.Schema<CreateIssueRequest>;
 
 export type AttachmentType = "attachment" | "external";
-export const AttachmentType = S.String;
+const AttachmentType = S.String;
 
 /** Attachment a generic attachment */
 export interface Attachment {
@@ -121,7 +121,7 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
-export const Attachment = /*@__PURE__*/ S.suspend(() =>
+const Attachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     browser_download_url: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -135,9 +135,7 @@ export const Attachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attachment" }) as any as S.Schema<Attachment>;
 
 export type IssueAssetsList = Array<Attachment>;
-export const IssueAssetsList = /*@__PURE__*/ S.Array(
-  Attachment,
-) as any as S.Schema<IssueAssetsList>;
+const IssueAssetsList = /*@__PURE__*/ S.Array(Attachment) as any as S.Schema<IssueAssetsList>;
 
 /** User represents a user */
 export interface User {
@@ -183,7 +181,7 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     avatar_url: S.optional(S.String),
@@ -212,9 +210,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 
 export type IssueAssigneesList = Array<User>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<IssueAssigneesList>;
+const IssueAssigneesList = /*@__PURE__*/ S.Array(User) as any as S.Schema<IssueAssigneesList>;
 
 /** Label a label to an issue or a pr */
 export interface Label {
@@ -226,7 +222,7 @@ export interface Label {
   name: string;
   url?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.String,
     description: S.optional(S.String),
@@ -239,7 +235,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type IssueLabelsList = Array<Label>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
+const IssueLabelsList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<IssueLabelsList>;
 
 /** Milestone milestone is a collection of issues on one repository */
 export interface Milestone {
@@ -254,7 +250,7 @@ export interface Milestone {
   title?: string;
   updated_at?: string;
 }
-export const Milestone = /*@__PURE__*/ S.suspend(() =>
+const Milestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closed_at: S.optional(S.String),
     closed_issues: S.optional(S.Number),
@@ -276,7 +272,7 @@ export interface PullRequestMeta {
   merged?: boolean;
   merged_at?: string;
 }
-export const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
+const PullRequestMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     draft: S.optional(S.Boolean),
     html_url: S.optional(S.String),
@@ -292,7 +288,7 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
-export const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
+const RepositoryMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     full_name: S.optional(S.String),
     id: S.optional(S.Number),
@@ -329,7 +325,7 @@ export interface Issue {
   url?: string;
   user?: User;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(IssueAssetsList),
     assignee: S.optional(User),
@@ -371,7 +367,7 @@ export interface CreateIssueAttachmentRequest {
   /** time of the attachment's creation. This is a timestamp in RFC 3339 format */
   updated_at?: string;
 }
-export const CreateIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -393,7 +389,7 @@ export interface CreateIssueBlockingRequest {
   /** index of the issue */
   index: number;
 }
-export const CreateIssueBlockingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueBlockingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -417,7 +413,7 @@ export interface CreateIssueCommentAttachmentRequest {
   /** time of the attachment's creation. This is a timestamp in RFC 3339 format */
   updated_at?: string;
 }
-export const CreateIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -439,7 +435,7 @@ export interface CreateIssueDependenciesRequest {
   /** index of the issue */
   index: number;
 }
-export const CreateIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -459,7 +455,7 @@ export interface DeleteIssueRequest {
   /** index of issue to delete */
   index: number;
 }
-export const DeleteIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -468,7 +464,7 @@ export const DeleteIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIssueRequest" }) as any as S.Schema<DeleteIssueRequest>;
 
 export interface DeleteIssueResponse {}
-export const DeleteIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteIssueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteIssueResponse",
 }) as any as S.Schema<DeleteIssueResponse>;
 
@@ -482,7 +478,7 @@ export interface DeleteIssueAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
-export const DeleteIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -500,7 +496,7 @@ export const DeleteIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueAttachmentRequest>;
 
 export interface DeleteIssueAttachmentResponse {}
-export const DeleteIssueAttachmentResponse =
+const DeleteIssueAttachmentResponse =
   DeleteIssueResponse as any as S.Schema<DeleteIssueAttachmentResponse>;
 
 export interface DeleteIssueCommentAttachmentRequest {
@@ -513,7 +509,7 @@ export interface DeleteIssueCommentAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
-export const DeleteIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -531,9 +527,7 @@ export const DeleteIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueCommentAttachmentRequest>;
 
 export interface DeleteIssueCommentAttachmentResponse {}
-export const DeleteIssueCommentAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteIssueCommentAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteIssueCommentAttachmentResponse",
 }) as any as S.Schema<DeleteIssueCommentAttachmentResponse>;
 
@@ -546,7 +540,7 @@ export interface DeleteIssueReactionRequest {
   index: number;
   content?: string;
 }
-export const DeleteIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -560,11 +554,11 @@ export const DeleteIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIssueReactionRequest>;
 
 export interface DeleteIssueReactionResponse {}
-export const DeleteIssueReactionResponse =
+const DeleteIssueReactionResponse =
   DeleteIssueResponse as any as S.Schema<DeleteIssueReactionResponse>;
 
 export type EditIssueRequestAssigneesList = Array<string>;
-export const EditIssueRequestAssigneesList =
+const EditIssueRequestAssigneesList =
   CreateIssueRequestAssigneesList as any as S.Schema<EditIssueRequestAssigneesList>;
 
 export interface EditIssueRequest {
@@ -586,7 +580,7 @@ export interface EditIssueRequest {
   unset_due_date?: boolean;
   updated_at?: string;
 }
-export const EditIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const EditIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -617,7 +611,7 @@ export interface EditIssueAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
-export const EditIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const EditIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -649,7 +643,7 @@ export interface EditIssueCommentAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
-export const EditIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const EditIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -677,7 +671,7 @@ export interface EditIssueDeadlineRequest {
   index: number;
   due_date: string;
 }
-export const EditIssueDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
+const EditIssueDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -692,7 +686,7 @@ export const EditIssueDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IssueDeadline {
   due_date?: string;
 }
-export const IssueDeadline = /*@__PURE__*/ S.suspend(() =>
+const IssueDeadline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     due_date: S.optional(S.String),
   }),
@@ -706,7 +700,7 @@ export interface GetIssueRequest {
   /** index of the issue to get */
   index: number;
 }
-export const GetIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -724,7 +718,7 @@ export interface GetIssueAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
-export const GetIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssueAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -751,7 +745,7 @@ export interface GetIssueCommentAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
-export const GetIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssueCommentAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -780,7 +774,7 @@ export interface GetIssueReactionsRequest {
   /** page size of results */
   limit?: number;
 }
-export const GetIssueReactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIssueReactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -798,7 +792,7 @@ export interface Reaction {
   created_at?: string;
   user?: User;
 }
-export const Reaction = /*@__PURE__*/ S.suspend(() =>
+const Reaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -807,12 +801,12 @@ export const Reaction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Reaction" }) as any as S.Schema<Reaction>;
 
 export type GetIssueReactionsResponseBodyList = Array<Reaction>;
-export const GetIssueReactionsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetIssueReactionsResponseBodyList = /*@__PURE__*/ S.Array(
   Reaction,
 ) as any as S.Schema<GetIssueReactionsResponseBodyList>;
 
 export type GetIssueReactionsResponse = GetIssueReactionsResponseBodyList;
-export const GetIssueReactionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIssueReactionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetIssueReactionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetIssueReactionsResponse",
@@ -820,7 +814,7 @@ export const GetIssueReactionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels can be a list of integers representing label IDs or a list of strings representing label names */
 export type IssueAddLabelRequestLabelsList = Array<unknown>;
-export const IssueAddLabelRequestLabelsList = /*@__PURE__*/ S.Array(
+const IssueAddLabelRequestLabelsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<IssueAddLabelRequestLabelsList>;
 
@@ -835,7 +829,7 @@ export interface IssueAddLabelRequest {
   labels?: IssueAddLabelRequestLabelsList;
   updated_at?: string;
 }
-export const IssueAddLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueAddLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -848,12 +842,12 @@ export const IssueAddLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueAddLabelRequest" }) as any as S.Schema<IssueAddLabelRequest>;
 
 export type IssueAddLabelResponseBodyList = Array<Label>;
-export const IssueAddLabelResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueAddLabelResponseBodyList = /*@__PURE__*/ S.Array(
   Label,
 ) as any as S.Schema<IssueAddLabelResponseBodyList>;
 
 export type IssueAddLabelResponse = IssueAddLabelResponseBodyList;
-export const IssueAddLabelResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueAddLabelResponse = /*@__PURE__*/ S.suspend(() =>
   IssueAddLabelResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "IssueAddLabelResponse" }) as any as S.Schema<IssueAddLabelResponse>;
 
@@ -867,7 +861,7 @@ export interface IssueAddSubscriptionRequest {
   /** user to subscribe */
   user: string;
 }
-export const IssueAddSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueAddSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -885,7 +879,7 @@ export const IssueAddSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueAddSubscriptionRequest>;
 
 export interface IssueAddSubscriptionResponse {}
-export const IssueAddSubscriptionResponse =
+const IssueAddSubscriptionResponse =
   DeleteIssueResponse as any as S.Schema<IssueAddSubscriptionResponse>;
 
 export interface IssueAddTimeRequest {
@@ -901,7 +895,7 @@ export interface IssueAddTimeRequest {
   /** User who spent the time (optional) */
   user_name?: string;
 }
-export const IssueAddTimeRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueAddTimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -925,7 +919,7 @@ export interface TrackedTime {
   user_id?: number;
   user_name?: string;
 }
-export const TrackedTime = /*@__PURE__*/ S.suspend(() =>
+const TrackedTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     id: S.optional(S.Number),
@@ -945,7 +939,7 @@ export interface IssueCheckSubscriptionRequest {
   /** index of the issue */
   index: number;
 }
-export const IssueCheckSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueCheckSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -970,7 +964,7 @@ export interface WatchInfo {
   subscribed?: boolean;
   url?: string;
 }
-export const WatchInfo = /*@__PURE__*/ S.suspend(() =>
+const WatchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     ignored: S.optional(S.Boolean),
@@ -990,7 +984,7 @@ export interface IssueClearLabelsRequest {
   index: number;
   updated_at?: string;
 }
-export const IssueClearLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueClearLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1002,8 +996,7 @@ export const IssueClearLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueClearLabelsRequest" }) as any as S.Schema<IssueClearLabelsRequest>;
 
 export interface IssueClearLabelsResponse {}
-export const IssueClearLabelsResponse =
-  DeleteIssueResponse as any as S.Schema<IssueClearLabelsResponse>;
+const IssueClearLabelsResponse = DeleteIssueResponse as any as S.Schema<IssueClearLabelsResponse>;
 
 export interface IssueCreateCommentRequest {
   /** owner of the repo */
@@ -1017,7 +1010,7 @@ export interface IssueCreateCommentRequest {
   /** The time of the comment's update, needs admin or repository owner permission */
   updated_at?: string;
 }
-export const IssueCreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueCreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1033,7 +1026,7 @@ export const IssueCreateCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-export const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
+const CommentAssetsList = IssueAssetsList as any as S.Schema<CommentAssetsList>;
 
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
@@ -1059,7 +1052,7 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(CommentAssetsList),
     body: S.optional(S.String),
@@ -1086,7 +1079,7 @@ export interface IssueCreateLabelRequest {
   is_archived?: boolean;
   name: string;
 }
-export const IssueCreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueCreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1099,7 +1092,7 @@ export const IssueCreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueCreateLabelRequest" }) as any as S.Schema<IssueCreateLabelRequest>;
 
 export type IssueCreateMilestoneRequestState = "open" | "closed";
-export const IssueCreateMilestoneRequestState = S.String;
+const IssueCreateMilestoneRequestState = S.String;
 
 export interface IssueCreateMilestoneRequest {
   /** owner of the repo */
@@ -1111,7 +1104,7 @@ export interface IssueCreateMilestoneRequest {
   state?: IssueCreateMilestoneRequestState | (string & {});
   title?: string;
 }
-export const IssueCreateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueCreateMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1132,7 +1125,7 @@ export interface IssueDeleteCommentRequest {
   /** id of comment to delete */
   id: number;
 }
-export const IssueDeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1145,7 +1138,7 @@ export const IssueDeleteCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteCommentRequest>;
 
 export interface IssueDeleteCommentResponse {}
-export const IssueDeleteCommentResponse =
+const IssueDeleteCommentResponse =
   DeleteIssueResponse as any as S.Schema<IssueDeleteCommentResponse>;
 
 export interface IssueDeleteCommentReactionRequest {
@@ -1157,7 +1150,7 @@ export interface IssueDeleteCommentReactionRequest {
   id: number;
   content?: string;
 }
-export const IssueDeleteCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1175,7 +1168,7 @@ export const IssueDeleteCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteCommentReactionRequest>;
 
 export interface IssueDeleteCommentReactionResponse {}
-export const IssueDeleteCommentReactionResponse =
+const IssueDeleteCommentReactionResponse =
   DeleteIssueCommentAttachmentResponse as any as S.Schema<IssueDeleteCommentReactionResponse>;
 
 export interface IssueDeleteLabelRequest {
@@ -1186,7 +1179,7 @@ export interface IssueDeleteLabelRequest {
   /** id of the label to delete */
   id: number;
 }
-export const IssueDeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1195,8 +1188,7 @@ export const IssueDeleteLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueDeleteLabelRequest" }) as any as S.Schema<IssueDeleteLabelRequest>;
 
 export interface IssueDeleteLabelResponse {}
-export const IssueDeleteLabelResponse =
-  DeleteIssueResponse as any as S.Schema<IssueDeleteLabelResponse>;
+const IssueDeleteLabelResponse = DeleteIssueResponse as any as S.Schema<IssueDeleteLabelResponse>;
 
 export interface IssueDeleteMilestoneRequest {
   /** owner of the repo */
@@ -1206,7 +1198,7 @@ export interface IssueDeleteMilestoneRequest {
   /** the milestone to delete, identified by ID and if not available by name */
   id: number;
 }
-export const IssueDeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1217,7 +1209,7 @@ export const IssueDeleteMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteMilestoneRequest>;
 
 export interface IssueDeleteMilestoneResponse {}
-export const IssueDeleteMilestoneResponse =
+const IssueDeleteMilestoneResponse =
   DeleteIssueResponse as any as S.Schema<IssueDeleteMilestoneResponse>;
 
 export interface IssueDeleteStopWatchRequest {
@@ -1228,7 +1220,7 @@ export interface IssueDeleteStopWatchRequest {
   /** index of the issue to stop the stopwatch on */
   index: number;
 }
-export const IssueDeleteStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1245,7 +1237,7 @@ export const IssueDeleteStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteStopWatchRequest>;
 
 export interface IssueDeleteStopWatchResponse {}
-export const IssueDeleteStopWatchResponse =
+const IssueDeleteStopWatchResponse =
   DeleteIssueResponse as any as S.Schema<IssueDeleteStopWatchResponse>;
 
 export interface IssueDeleteSubscriptionRequest {
@@ -1258,7 +1250,7 @@ export interface IssueDeleteSubscriptionRequest {
   /** user witch unsubscribe */
   user: string;
 }
-export const IssueDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1276,9 +1268,9 @@ export const IssueDeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueDeleteSubscriptionRequest>;
 
 export interface IssueDeleteSubscriptionResponse {}
-export const IssueDeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "IssueDeleteSubscriptionResponse" },
-) as any as S.Schema<IssueDeleteSubscriptionResponse>;
+const IssueDeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "IssueDeleteSubscriptionResponse",
+}) as any as S.Schema<IssueDeleteSubscriptionResponse>;
 
 export interface IssueDeleteTimeRequest {
   /** owner of the repo */
@@ -1290,7 +1282,7 @@ export interface IssueDeleteTimeRequest {
   /** id of time to delete */
   id: number;
 }
-export const IssueDeleteTimeRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueDeleteTimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1302,8 +1294,7 @@ export const IssueDeleteTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueDeleteTimeRequest" }) as any as S.Schema<IssueDeleteTimeRequest>;
 
 export interface IssueDeleteTimeResponse {}
-export const IssueDeleteTimeResponse =
-  DeleteIssueResponse as any as S.Schema<IssueDeleteTimeResponse>;
+const IssueDeleteTimeResponse = DeleteIssueResponse as any as S.Schema<IssueDeleteTimeResponse>;
 
 export interface IssueEditCommentRequest {
   /** owner of the repo */
@@ -1317,7 +1308,7 @@ export interface IssueEditCommentRequest {
   /** The time of the comment's update, needs admin or repository owner permission */
   updated_at?: string;
 }
-export const IssueEditCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueEditCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1342,7 +1333,7 @@ export interface IssueEditLabelRequest {
   is_archived?: boolean;
   name?: string;
 }
-export const IssueEditLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueEditLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1367,7 +1358,7 @@ export interface IssueEditMilestoneRequest {
   state?: string;
   title?: string;
 }
-export const IssueEditMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueEditMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1389,7 +1380,7 @@ export interface IssueGetCommentRequest {
   /** id of the comment */
   id: number;
 }
-export const IssueGetCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1405,7 +1396,7 @@ export interface IssueGetCommentReactionsRequest {
   /** id of the comment to edit */
   id: number;
 }
-export const IssueGetCommentReactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentReactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1422,11 +1413,8 @@ export const IssueGetCommentReactionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueGetCommentReactionsRequest>;
 
 export type IssueGetCommentReactionsResponseBodyList = Array<Reaction>;
-export const IssueGetCommentReactionsResponseBodyList =
-  GetIssueReactionsResponseBodyList as any as S.Schema<IssueGetCommentReactionsResponseBodyList>;
-
 export type IssueGetCommentReactionsResponse = IssueGetCommentReactionsResponseBodyList;
-export const IssueGetCommentReactionsResponse =
+const IssueGetCommentReactionsResponse =
   GetIssueReactionsResponse as any as S.Schema<IssueGetCommentReactionsResponse>;
 
 export interface IssueGetCommentsRequest {
@@ -1441,7 +1429,7 @@ export interface IssueGetCommentsRequest {
   /** if provided, only comments updated before the provided time are returned. */
   before?: string;
 }
-export const IssueGetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1454,12 +1442,12 @@ export const IssueGetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueGetCommentsRequest" }) as any as S.Schema<IssueGetCommentsRequest>;
 
 export type IssueGetCommentsResponseBodyList = Array<Comment>;
-export const IssueGetCommentsResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueGetCommentsResponseBodyList = /*@__PURE__*/ S.Array(
   Comment,
 ) as any as S.Schema<IssueGetCommentsResponseBodyList>;
 
 export type IssueGetCommentsResponse = IssueGetCommentsResponseBodyList;
-export const IssueGetCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   IssueGetCommentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "IssueGetCommentsResponse" }) as any as S.Schema<IssueGetCommentsResponse>;
 
@@ -1479,7 +1467,7 @@ export interface IssueGetCommentsAndTimelineRequest {
   /** if provided, only comments updated before the provided time are returned. */
   before?: string;
 }
-export const IssueGetCommentsAndTimelineRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentsAndTimelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1511,7 +1499,7 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatar_url: S.optional(S.String),
     created: S.optional(S.String),
@@ -1529,13 +1517,13 @@ export const Organization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Organization" }) as any as S.Schema<Organization>;
 
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-export const TeamPermission = S.String;
+const TeamPermission = S.String;
 
 export type TeamUnitsList = Array<string>;
-export const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
+const TeamUnitsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TeamUnitsList>;
 
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-export const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
+const TeamUnitsMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TeamUnitsMapMap>;
@@ -1552,7 +1540,7 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_create_org_repo: S.optional(S.Boolean),
     description: S.optional(S.String),
@@ -1600,7 +1588,7 @@ export interface TimelineComment {
   updated_at?: string;
   user?: User;
 }
-export const TimelineComment = /*@__PURE__*/ S.suspend(() =>
+const TimelineComment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignee: S.optional(User),
     assignee_team: S.optional(Team),
@@ -1635,12 +1623,12 @@ export const TimelineComment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimelineComment" }) as any as S.Schema<TimelineComment>;
 
 export type IssueGetCommentsAndTimelineResponseBodyList = Array<TimelineComment>;
-export const IssueGetCommentsAndTimelineResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueGetCommentsAndTimelineResponseBodyList = /*@__PURE__*/ S.Array(
   TimelineComment,
 ) as any as S.Schema<IssueGetCommentsAndTimelineResponseBodyList>;
 
 export type IssueGetCommentsAndTimelineResponse = IssueGetCommentsAndTimelineResponseBodyList;
-export const IssueGetCommentsAndTimelineResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueGetCommentsAndTimelineResponse = /*@__PURE__*/ S.suspend(() =>
   IssueGetCommentsAndTimelineResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueGetCommentsAndTimelineResponse",
@@ -1654,7 +1642,7 @@ export interface IssueGetLabelRequest {
   /** id of the label to get */
   id: number;
 }
-export const IssueGetLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1670,7 +1658,7 @@ export interface IssueGetLabelsRequest {
   /** index of the issue */
   index: number;
 }
-export const IssueGetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1679,12 +1667,8 @@ export const IssueGetLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueGetLabelsRequest" }) as any as S.Schema<IssueGetLabelsRequest>;
 
 export type IssueGetLabelsResponseBodyList = Array<Label>;
-export const IssueGetLabelsResponseBodyList =
-  IssueAddLabelResponseBodyList as any as S.Schema<IssueGetLabelsResponseBodyList>;
-
 export type IssueGetLabelsResponse = IssueGetLabelsResponseBodyList;
-export const IssueGetLabelsResponse =
-  IssueAddLabelResponse as any as S.Schema<IssueGetLabelsResponse>;
+const IssueGetLabelsResponse = IssueAddLabelResponse as any as S.Schema<IssueGetLabelsResponse>;
 
 export interface IssueGetMilestoneRequest {
   /** owner of the repo */
@@ -1694,7 +1678,7 @@ export interface IssueGetMilestoneRequest {
   /** the milestone to get, identified by ID and if not available by name */
   id: number;
 }
-export const IssueGetMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetMilestoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1716,7 +1700,7 @@ export interface IssueGetMilestonesListRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueGetMilestonesListRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetMilestonesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1730,12 +1714,12 @@ export const IssueGetMilestonesListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueGetMilestonesListRequest>;
 
 export type IssueGetMilestonesListResponseBodyList = Array<Milestone>;
-export const IssueGetMilestonesListResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueGetMilestonesListResponseBodyList = /*@__PURE__*/ S.Array(
   Milestone,
 ) as any as S.Schema<IssueGetMilestonesListResponseBodyList>;
 
 export type IssueGetMilestonesListResponse = IssueGetMilestonesListResponseBodyList;
-export const IssueGetMilestonesListResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueGetMilestonesListResponse = /*@__PURE__*/ S.suspend(() =>
   IssueGetMilestonesListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueGetMilestonesListResponse",
@@ -1755,7 +1739,7 @@ export interface IssueGetRepoCommentsRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueGetRepoCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueGetRepoCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1769,11 +1753,11 @@ export const IssueGetRepoCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueGetRepoCommentsRequest>;
 
 export type IssueGetRepoCommentsResponseBodyList = Array<Comment>;
-export const IssueGetRepoCommentsResponseBodyList =
+const IssueGetRepoCommentsResponseBodyList =
   IssueGetCommentsResponseBodyList as any as S.Schema<IssueGetRepoCommentsResponseBodyList>;
 
 export type IssueGetRepoCommentsResponse = IssueGetRepoCommentsResponseBodyList;
-export const IssueGetRepoCommentsResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueGetRepoCommentsResponse = /*@__PURE__*/ S.suspend(() =>
   IssueGetRepoCommentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueGetRepoCommentsResponse",
@@ -1791,7 +1775,7 @@ export interface IssueListBlocksRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueListBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueListBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1802,17 +1786,17 @@ export const IssueListBlocksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueListBlocksRequest" }) as any as S.Schema<IssueListBlocksRequest>;
 
 export type IssueListBlocksResponseBodyList = Array<Issue>;
-export const IssueListBlocksResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueListBlocksResponseBodyList = /*@__PURE__*/ S.Array(
   Issue,
 ) as any as S.Schema<IssueListBlocksResponseBodyList>;
 
 export type IssueListBlocksResponse = IssueListBlocksResponseBodyList;
-export const IssueListBlocksResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueListBlocksResponse = /*@__PURE__*/ S.suspend(() =>
   IssueListBlocksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "IssueListBlocksResponse" }) as any as S.Schema<IssueListBlocksResponse>;
 
 export type IssueListLabelsRequestSort = "mostissues" | "leastissues" | "reversealphabetically";
-export const IssueListLabelsRequestSort = S.String;
+const IssueListLabelsRequestSort = S.String;
 
 export interface IssueListLabelsRequest {
   /** owner of the repo */
@@ -1826,7 +1810,7 @@ export interface IssueListLabelsRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1837,12 +1821,8 @@ export const IssueListLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueListLabelsRequest" }) as any as S.Schema<IssueListLabelsRequest>;
 
 export type IssueListLabelsResponseBodyList = Array<Label>;
-export const IssueListLabelsResponseBodyList =
-  IssueAddLabelResponseBodyList as any as S.Schema<IssueListLabelsResponseBodyList>;
-
 export type IssueListLabelsResponse = IssueListLabelsResponseBodyList;
-export const IssueListLabelsResponse =
-  IssueAddLabelResponse as any as S.Schema<IssueListLabelsResponse>;
+const IssueListLabelsResponse = IssueAddLabelResponse as any as S.Schema<IssueListLabelsResponse>;
 
 export interface IssuePostCommentReactionRequest {
   /** owner of the repo */
@@ -1853,7 +1833,7 @@ export interface IssuePostCommentReactionRequest {
   id: number;
   content?: string;
 }
-export const IssuePostCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const IssuePostCommentReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1881,7 +1861,7 @@ export interface IssueRemoveLabelRequest {
   identifier: string;
   updated_at?: string;
 }
-export const IssueRemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueRemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1898,12 +1878,11 @@ export const IssueRemoveLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueRemoveLabelRequest" }) as any as S.Schema<IssueRemoveLabelRequest>;
 
 export interface IssueRemoveLabelResponse {}
-export const IssueRemoveLabelResponse =
-  DeleteIssueResponse as any as S.Schema<IssueRemoveLabelResponse>;
+const IssueRemoveLabelResponse = DeleteIssueResponse as any as S.Schema<IssueRemoveLabelResponse>;
 
 /** Labels can be a list of integers representing label IDs or a list of strings representing label names */
 export type IssueReplaceLabelsRequestLabelsList = Array<unknown>;
-export const IssueReplaceLabelsRequestLabelsList =
+const IssueReplaceLabelsRequestLabelsList =
   IssueAddLabelRequestLabelsList as any as S.Schema<IssueReplaceLabelsRequestLabelsList>;
 
 export interface IssueReplaceLabelsRequest {
@@ -1917,7 +1896,7 @@ export interface IssueReplaceLabelsRequest {
   labels?: IssueReplaceLabelsRequestLabelsList;
   updated_at?: string;
 }
-export const IssueReplaceLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueReplaceLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1930,11 +1909,11 @@ export const IssueReplaceLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueReplaceLabelsRequest>;
 
 export type IssueReplaceLabelsResponseBodyList = Array<Label>;
-export const IssueReplaceLabelsResponseBodyList =
+const IssueReplaceLabelsResponseBodyList =
   IssueAddLabelResponseBodyList as any as S.Schema<IssueReplaceLabelsResponseBodyList>;
 
 export type IssueReplaceLabelsResponse = IssueReplaceLabelsResponseBodyList;
-export const IssueReplaceLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueReplaceLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   IssueReplaceLabelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueReplaceLabelsResponse",
@@ -1948,7 +1927,7 @@ export interface IssueResetTimeRequest {
   /** index of the issue to add tracked time to */
   index: number;
 }
-export const IssueResetTimeRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueResetTimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1959,8 +1938,7 @@ export const IssueResetTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueResetTimeRequest" }) as any as S.Schema<IssueResetTimeRequest>;
 
 export interface IssueResetTimeResponse {}
-export const IssueResetTimeResponse =
-  DeleteIssueResponse as any as S.Schema<IssueResetTimeResponse>;
+const IssueResetTimeResponse = DeleteIssueResponse as any as S.Schema<IssueResetTimeResponse>;
 
 export interface IssueStartStopWatchRequest {
   /** owner of the repo */
@@ -1970,7 +1948,7 @@ export interface IssueStartStopWatchRequest {
   /** index of the issue to create the stopwatch on */
   index: number;
 }
-export const IssueStartStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueStartStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1987,7 +1965,7 @@ export const IssueStartStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueStartStopWatchRequest>;
 
 export interface IssueStartStopWatchResponse {}
-export const IssueStartStopWatchResponse =
+const IssueStartStopWatchResponse =
   DeleteIssueResponse as any as S.Schema<IssueStartStopWatchResponse>;
 
 export interface IssueStopStopWatchRequest {
@@ -1998,7 +1976,7 @@ export interface IssueStopStopWatchRequest {
   /** index of the issue to stop the stopwatch on */
   index: number;
 }
-export const IssueStopStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueStopStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2015,7 +1993,7 @@ export const IssueStopStopWatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueStopStopWatchRequest>;
 
 export interface IssueStopStopWatchResponse {}
-export const IssueStopStopWatchResponse =
+const IssueStopStopWatchResponse =
   DeleteIssueResponse as any as S.Schema<IssueStopStopWatchResponse>;
 
 export interface IssueSubscriptionsRequest {
@@ -2030,7 +2008,7 @@ export interface IssueSubscriptionsRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2045,11 +2023,11 @@ export const IssueSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IssueSubscriptionsRequest>;
 
 export type IssueSubscriptionsResponseBodyList = Array<User>;
-export const IssueSubscriptionsResponseBodyList =
+const IssueSubscriptionsResponseBodyList =
   IssueAssigneesList as any as S.Schema<IssueSubscriptionsResponseBodyList>;
 
 export type IssueSubscriptionsResponse = IssueSubscriptionsResponseBodyList;
-export const IssueSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   IssueSubscriptionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueSubscriptionsResponse",
@@ -2073,7 +2051,7 @@ export interface IssueTrackedTimesRequest {
   /** page size of results */
   limit?: number;
 }
-export const IssueTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2087,12 +2065,12 @@ export const IssueTrackedTimesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueTrackedTimesRequest" }) as any as S.Schema<IssueTrackedTimesRequest>;
 
 export type IssueTrackedTimesResponseBodyList = Array<TrackedTime>;
-export const IssueTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
+const IssueTrackedTimesResponseBodyList = /*@__PURE__*/ S.Array(
   TrackedTime,
 ) as any as S.Schema<IssueTrackedTimesResponseBodyList>;
 
 export type IssueTrackedTimesResponse = IssueTrackedTimesResponseBodyList;
-export const IssueTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueTrackedTimesResponse = /*@__PURE__*/ S.suspend(() =>
   IssueTrackedTimesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "IssueTrackedTimesResponse",
@@ -2106,7 +2084,7 @@ export interface ListIssueAttachmentsRequest {
   /** index of the issue */
   index: number;
 }
-export const ListIssueAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2117,11 +2095,11 @@ export const ListIssueAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueAttachmentsRequest>;
 
 export type ListIssueAttachmentsResponseBodyList = Array<Attachment>;
-export const ListIssueAttachmentsResponseBodyList =
+const ListIssueAttachmentsResponseBodyList =
   IssueAssetsList as any as S.Schema<ListIssueAttachmentsResponseBodyList>;
 
 export type ListIssueAttachmentsResponse = ListIssueAttachmentsResponseBodyList;
-export const ListIssueAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIssueAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
   ListIssueAttachmentsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIssueAttachmentsResponse",
@@ -2135,7 +2113,7 @@ export interface ListIssueCommentAttachmentsRequest {
   /** id of the comment */
   id: number;
 }
-export const ListIssueCommentAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueCommentAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2148,11 +2126,8 @@ export const ListIssueCommentAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueCommentAttachmentsRequest>;
 
 export type ListIssueCommentAttachmentsResponseBodyList = Array<Attachment>;
-export const ListIssueCommentAttachmentsResponseBodyList =
-  IssueAssetsList as any as S.Schema<ListIssueCommentAttachmentsResponseBodyList>;
-
 export type ListIssueCommentAttachmentsResponse = ListIssueCommentAttachmentsResponseBodyList;
-export const ListIssueCommentAttachmentsResponse =
+const ListIssueCommentAttachmentsResponse =
   ListIssueAttachmentsResponse as any as S.Schema<ListIssueCommentAttachmentsResponse>;
 
 export interface ListIssueDependenciesRequest {
@@ -2167,7 +2142,7 @@ export interface ListIssueDependenciesRequest {
   /** page size of results */
   limit?: number;
 }
-export const ListIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2182,21 +2157,21 @@ export const ListIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListIssueDependenciesRequest>;
 
 export type ListIssueDependenciesResponseBodyList = Array<Issue>;
-export const ListIssueDependenciesResponseBodyList =
+const ListIssueDependenciesResponseBodyList =
   IssueListBlocksResponseBodyList as any as S.Schema<ListIssueDependenciesResponseBodyList>;
 
 export type ListIssueDependenciesResponse = ListIssueDependenciesResponseBodyList;
-export const ListIssueDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIssueDependenciesResponse = /*@__PURE__*/ S.suspend(() =>
   ListIssueDependenciesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListIssueDependenciesResponse",
 }) as any as S.Schema<ListIssueDependenciesResponse>;
 
 export type ListIssuesRequestState = "closed" | "open" | "all";
-export const ListIssuesRequestState = S.String;
+const ListIssuesRequestState = S.String;
 
 export type ListIssuesRequestType = "issues" | "pulls";
-export const ListIssuesRequestType = S.String;
+const ListIssuesRequestType = S.String;
 
 export type ListIssuesRequestSort =
   | "relevance"
@@ -2208,7 +2183,7 @@ export type ListIssuesRequestSort =
   | "leastcomment"
   | "nearduedate"
   | "farduedate";
-export const ListIssuesRequestSort = S.String;
+const ListIssuesRequestSort = S.String;
 
 export interface ListIssuesRequest {
   /** owner of the repo */
@@ -2242,7 +2217,7 @@ export interface ListIssuesRequest {
   /** Type of sort */
   sort?: ListIssuesRequestSort | (string & {});
 }
-export const ListIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2263,11 +2238,8 @@ export const ListIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListIssuesRequest" }) as any as S.Schema<ListIssuesRequest>;
 
 export type ListIssuesResponseBodyList = Array<Issue>;
-export const ListIssuesResponseBodyList =
-  IssueListBlocksResponseBodyList as any as S.Schema<ListIssuesResponseBodyList>;
-
 export type ListIssuesResponse = ListIssuesResponseBodyList;
-export const ListIssuesResponse = IssueListBlocksResponse as any as S.Schema<ListIssuesResponse>;
+const ListIssuesResponse = IssueListBlocksResponse as any as S.Schema<ListIssuesResponse>;
 
 export interface MoveIssuePinRequest {
   /** owner of the repo */
@@ -2279,7 +2251,7 @@ export interface MoveIssuePinRequest {
   /** the new position */
   position: number;
 }
-export const MoveIssuePinRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveIssuePinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2295,7 +2267,7 @@ export const MoveIssuePinRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveIssuePinRequest" }) as any as S.Schema<MoveIssuePinRequest>;
 
 export interface MoveIssuePinResponse {}
-export const MoveIssuePinResponse = DeleteIssueResponse as any as S.Schema<MoveIssuePinResponse>;
+const MoveIssuePinResponse = DeleteIssueResponse as any as S.Schema<MoveIssuePinResponse>;
 
 export interface PinIssueRequest {
   /** owner of the repo */
@@ -2305,7 +2277,7 @@ export interface PinIssueRequest {
   /** index of issue to pin */
   index: number;
 }
-export const PinIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const PinIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2314,7 +2286,7 @@ export const PinIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PinIssueRequest" }) as any as S.Schema<PinIssueRequest>;
 
 export interface PinIssueResponse {}
-export const PinIssueResponse = DeleteIssueResponse as any as S.Schema<PinIssueResponse>;
+const PinIssueResponse = DeleteIssueResponse as any as S.Schema<PinIssueResponse>;
 
 export interface PostIssueReactionRequest {
   /** owner of the repo */
@@ -2325,7 +2297,7 @@ export interface PostIssueReactionRequest {
   index: number;
   content?: string;
 }
-export const PostIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
+const PostIssueReactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2344,7 +2316,7 @@ export interface RemoveIssueBlockingRequest {
   /** index of the issue */
   index: number;
 }
-export const RemoveIssueBlockingRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveIssueBlockingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2364,7 +2336,7 @@ export interface RemoveIssueDependenciesRequest {
   /** index of the issue */
   index: number;
 }
-export const RemoveIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2381,10 +2353,10 @@ export const RemoveIssueDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveIssueDependenciesRequest>;
 
 export type SearchIssuesRequestState = "open" | "closed" | "all";
-export const SearchIssuesRequestState = S.String;
+const SearchIssuesRequestState = S.String;
 
 export type SearchIssuesRequestType = "issues" | "pulls";
-export const SearchIssuesRequestType = S.String;
+const SearchIssuesRequestType = S.String;
 
 export type SearchIssuesRequestSort =
   | "relevance"
@@ -2396,7 +2368,7 @@ export type SearchIssuesRequestSort =
   | "leastcomment"
   | "nearduedate"
   | "farduedate";
-export const SearchIssuesRequestSort = S.String;
+const SearchIssuesRequestSort = S.String;
 
 export interface SearchIssuesRequest {
   /** State of the issue */
@@ -2436,7 +2408,7 @@ export interface SearchIssuesRequest {
   /** Type of sort */
   sort?: SearchIssuesRequestSort | (string & {});
 }
-export const SearchIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SearchIssuesRequestState.pipe(T.Query())),
     labels: S.optional(S.String.pipe(T.Query())),
@@ -2460,12 +2432,8 @@ export const SearchIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchIssuesRequest" }) as any as S.Schema<SearchIssuesRequest>;
 
 export type SearchIssuesResponseBodyList = Array<Issue>;
-export const SearchIssuesResponseBodyList =
-  IssueListBlocksResponseBodyList as any as S.Schema<SearchIssuesResponseBodyList>;
-
 export type SearchIssuesResponse = SearchIssuesResponseBodyList;
-export const SearchIssuesResponse =
-  IssueListBlocksResponse as any as S.Schema<SearchIssuesResponse>;
+const SearchIssuesResponse = IssueListBlocksResponse as any as S.Schema<SearchIssuesResponse>;
 
 export interface UnpinIssueRequest {
   /** owner of the repo */
@@ -2475,7 +2443,7 @@ export interface UnpinIssueRequest {
   /** index of issue to unpin */
   index: number;
 }
-export const UnpinIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpinIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2484,7 +2452,7 @@ export const UnpinIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpinIssueRequest" }) as any as S.Schema<UnpinIssueRequest>;
 
 export interface UnpinIssueResponse {}
-export const UnpinIssueResponse = DeleteIssueResponse as any as S.Schema<UnpinIssueResponse>;
+const UnpinIssueResponse = DeleteIssueResponse as any as S.Schema<UnpinIssueResponse>;
 
 export type CreateIssueError = Forbidden | NotFound | UnprocessableEntity | Locked | ForgejoOpError;
 /** Create an issue. If using deadline only the date will be taken into account, and time of day ignored. */

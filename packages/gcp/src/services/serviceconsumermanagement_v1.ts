@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Translates to IAM Policy bindings (without auditing at this level) */
 export interface PolicyBinding {
@@ -71,7 +71,7 @@ export interface PolicyBinding {
   /** Uses the same format as in IAM policy. `member` must include both a prefix and ID. For example, `user:{emailId}`, `serviceAccount:{emailId}`, `group:{emailId}`. */
   members?: StringList;
 }
-export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
+const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -79,7 +79,7 @@ export const PolicyBinding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PolicyBinding" }) as any as S.Schema<PolicyBinding>;
 
 export type PolicyBindingList = Array<PolicyBinding>;
-export const PolicyBindingList = /*@__PURE__*/ S.Array(
+const PolicyBindingList = /*@__PURE__*/ S.Array(
   PolicyBinding,
 ) as any as S.Schema<PolicyBindingList>;
 
@@ -88,7 +88,7 @@ export interface TenantProjectPolicy {
   /** Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted to the Service Consumer Management service account. */
   policyBindings?: PolicyBindingList;
 }
-export const TenantProjectPolicy = /*@__PURE__*/ S.suspend(() =>
+const TenantProjectPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyBindings: S.optional(PolicyBindingList),
   }),
@@ -101,7 +101,7 @@ export interface ServiceAccountConfig {
   /** Roles for the associated service account for the tenant project. */
   tenantProjectRoles?: StringList;
 }
-export const ServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     tenantProjectRoles: S.optional(StringList),
@@ -109,14 +109,14 @@ export const ServiceAccountConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceAccountConfig" }) as any as S.Schema<ServiceAccountConfig>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Describes the billing configuration for a new tenant project. */
 export interface BillingConfig {
   /** Name of the billing account. For example `billingAccounts/012345-567890-ABCDEF`. */
   billingAccount?: string;
 }
-export const BillingConfig = /*@__PURE__*/ S.suspend(() =>
+const BillingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccount: S.optional(S.String),
   }),
@@ -137,7 +137,7 @@ export interface TenantProjectConfig {
   /** Billing account properties. The billing account must be specified. */
   billingConfig?: BillingConfig;
 }
-export const TenantProjectConfig = /*@__PURE__*/ S.suspend(() =>
+const TenantProjectConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantProjectPolicy: S.optional(TenantProjectPolicy),
     folder: S.optional(S.String),
@@ -155,7 +155,7 @@ export interface AddTenantProjectRequest {
   /** Configuration of the new tenant project to be added to tenancy unit resources. */
   projectConfig?: TenantProjectConfig;
 }
-export const AddTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     projectConfig: S.optional(TenantProjectConfig),
@@ -168,7 +168,7 @@ export interface AddProjectServicesTenancyUnitsRequest {
   /** Request body */
   body?: AddTenantProjectRequest;
 }
-export const AddProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AddTenantProjectRequest.pipe(T.HttpBody())),
@@ -184,15 +184,10 @@ export const AddProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AddProjectServicesTenancyUnitsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -203,7 +198,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -224,7 +219,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -241,7 +236,7 @@ export interface ApplyTenantProjectConfigRequest {
   /** Required. Tag of the project. Must be less than 128 characters. Required. */
   tag?: string;
 }
-export const ApplyTenantProjectConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyTenantProjectConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectConfig: S.optional(TenantProjectConfig),
     tag: S.optional(S.String),
@@ -256,7 +251,7 @@ export interface ApplyProjectConfigServicesTenancyUnitsRequest {
   /** Request body */
   body?: ApplyTenantProjectConfigRequest;
 }
-export const ApplyProjectConfigServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyProjectConfigServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApplyTenantProjectConfigRequest.pipe(T.HttpBody())),
@@ -280,7 +275,7 @@ export interface AttachTenantProjectRequest {
   /** When attaching a reserved project already in tenancy units, this is the tag of a tenant resource under the tenancy unit for the managed service's service producer project. The reserved tenant resource must be in an active state. */
   reservedResource?: string;
 }
-export const AttachTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     externalResource: S.optional(S.String),
@@ -296,7 +291,7 @@ export interface AttachProjectServicesTenancyUnitsRequest {
   /** Request body */
   body?: AttachTenantProjectRequest;
 }
-export const AttachProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(AttachTenantProjectRequest.pipe(T.HttpBody())),
@@ -313,7 +308,7 @@ export const AttachProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -323,7 +318,7 @@ export interface CancelOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -338,14 +333,14 @@ export const CancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request to create a tenancy unit for a service consumer of a managed service. */
 export interface CreateTenancyUnitRequest {
   /** Optional. Optional service producer-provided identifier of the tenancy unit. Must be no longer than 40 characters and preferably URI friendly. If it isn't provided, a UID for the tenancy unit is automatically generated. The identifier must be unique across a managed service. If the tenancy unit already exists for the managed service and service consumer pair, calling `CreateTenancyUnit` returns the existing tenancy unit if the provided identifier is identical or empty, otherwise the call fails. */
   tenancyUnitId?: string;
 }
-export const CreateTenancyUnitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTenancyUnitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenancyUnitId: S.optional(S.String),
   }),
@@ -357,7 +352,7 @@ export interface CreateServicesTenancyUnitsRequest {
   /** Request body */
   body?: CreateTenancyUnitRequest;
 }
-export const CreateServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateTenancyUnitRequest.pipe(T.HttpBody())),
@@ -379,7 +374,7 @@ export type TenantResourceStatusEnum =
   | "PENDING_DELETE"
   | "FAILED"
   | "DELETED";
-export const TenantResourceStatusEnum = S.String;
+const TenantResourceStatusEnum = S.String;
 
 /** Resource constituting the TenancyUnit. */
 export interface TenantResource {
@@ -394,7 +389,7 @@ export interface TenantResource {
   /** Status of tenant resource. */
   status?: TenantResourceStatusEnum;
 }
-export const TenantResource = /*@__PURE__*/ S.suspend(() =>
+const TenantResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceTenantProject: S.optional(S.String),
     migratedTenantProject: S.optional(S.String),
@@ -405,7 +400,7 @@ export const TenantResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TenantResource" }) as any as S.Schema<TenantResource>;
 
 export type TenantResourceList = Array<TenantResource>;
-export const TenantResourceList = /*@__PURE__*/ S.Array(
+const TenantResourceList = /*@__PURE__*/ S.Array(
   TenantResource,
 ) as any as S.Schema<TenantResourceList>;
 
@@ -422,7 +417,7 @@ export interface TenancyUnit {
   /** Globally unique identifier of this tenancy unit "services/{service}/{collection id}/{resource id}/tenancyUnits/{unit}" */
   name?: string;
 }
-export const TenancyUnit = /*@__PURE__*/ S.suspend(() =>
+const TenancyUnit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumer: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -436,7 +431,7 @@ export interface DeleteOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -453,7 +448,7 @@ export interface DeleteTenantProjectRequest {
   /** Required. Tag of the resource within the tenancy unit. */
   tag?: string;
 }
-export const DeleteTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTenantProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
   }),
@@ -467,7 +462,7 @@ export interface DeleteProjectServicesTenancyUnitsRequest {
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-export const DeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),
@@ -486,7 +481,7 @@ export interface DeleteServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit to be deleted. */
   name: string;
 }
-export const DeleteServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -504,7 +499,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -528,7 +523,7 @@ export interface ListOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -545,7 +540,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -556,7 +551,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -574,7 +569,7 @@ export interface ListServicesTenancyUnitsRequest {
   /** Required. Managed service and service consumer. Required. services/{service}/{collection id}/{resource id} {collection id} is the cloud resource collection type representing the service consumer, for example 'projects', or 'organizations'. {resource id} is the consumer numeric id, such as project number: '123456'. {service} the name of a service, such as 'service.googleapis.com'. */
   parent: string;
 }
-export const ListServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -592,9 +587,7 @@ export const ListServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServicesTenancyUnitsRequest>;
 
 export type TenancyUnitList = Array<TenancyUnit>;
-export const TenancyUnitList = /*@__PURE__*/ S.Array(
-  TenancyUnit,
-) as any as S.Schema<TenancyUnitList>;
+const TenancyUnitList = /*@__PURE__*/ S.Array(TenancyUnit) as any as S.Schema<TenancyUnitList>;
 
 /** Response for the list request. */
 export interface ListTenancyUnitsResponse {
@@ -603,7 +596,7 @@ export interface ListTenancyUnitsResponse {
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
-export const ListTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenancyUnits: S.optional(TenancyUnitList),
     nextPageToken: S.optional(S.String),
@@ -612,15 +605,13 @@ export const ListTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message to remove a tenant project resource from the tenancy unit. */
 export type RemoveTenantProjectRequest = DeleteTenantProjectRequest;
-export const RemoveTenantProjectRequest = DeleteTenantProjectRequest;
-
 export interface RemoveProjectServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   name: string;
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-export const RemoveProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),
@@ -645,7 +636,7 @@ export interface SearchServicesRequest {
   /** Optional. The maximum number of results returned by this request. Currently, the default maximum is set to 256. If `page_size` <= 256, the request proceeds. Else, the request fails with an `TU_INVALID_PAGE_SIZE` error. */
   pageSize?: number;
 }
-export const SearchServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -667,7 +658,7 @@ export interface SearchTenancyUnitsResponse {
   /** Pagination token for large results. */
   nextPageToken?: string;
 }
-export const SearchTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenancyUnits: S.optional(TenancyUnitList),
     nextPageToken: S.optional(S.String),
@@ -678,15 +669,13 @@ export const SearchTenancyUnitsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message to undelete tenant project resource previously deleted from the tenancy unit. */
 export type UndeleteTenantProjectRequest = DeleteTenantProjectRequest;
-export const UndeleteTenantProjectRequest = DeleteTenantProjectRequest;
-
 export interface UndeleteProjectServicesTenancyUnitsRequest {
   /** Required. Name of the tenancy unit. Such as 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'. */
   name: string;
   /** Request body */
   body?: DeleteTenantProjectRequest;
 }
-export const UndeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectServicesTenancyUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DeleteTenantProjectRequest.pipe(T.HttpBody())),

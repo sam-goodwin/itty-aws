@@ -11,31 +11,30 @@ export type { DaytonaOpError, DaytonaOpContext };
 export interface InitializeRequest {
   token: string;
 }
-export const InitializeRequest = /*@__PURE__*/ S.suspend(() =>
+const InitializeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/init", code: 200 })),
 ).annotate({ identifier: "InitializeRequest" }) as any as S.Schema<InitializeRequest>;
 
 export type InitializeResponseBodyMap = { [key: string]: string | undefined };
-export const InitializeResponseBodyMap = /*@__PURE__*/ S.Record(
+const InitializeResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<InitializeResponseBodyMap>;
 
 export type InitializeResponse = InitializeResponseBodyMap;
-export const InitializeResponse = /*@__PURE__*/ S.suspend(() =>
+const InitializeResponse = /*@__PURE__*/ S.suspend(() =>
   InitializeResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "InitializeResponse" }) as any as S.Schema<InitializeResponse>;
 
 /** Set maps env var names to values applied to the daemon's process env, so processes spawned after the call (exec, sessions, PTYs) inherit them. */
 export type UpdateEnvRequestSetMap = { [key: string]: string | undefined };
-export const UpdateEnvRequestSetMap =
-  InitializeResponseBodyMap as any as S.Schema<UpdateEnvRequestSetMap>;
+const UpdateEnvRequestSetMap = InitializeResponseBodyMap as any as S.Schema<UpdateEnvRequestSetMap>;
 
 /** Unset lists env var names to remove before Set is applied. */
 export type UpdateEnvRequestUnsetList = Array<string>;
-export const UpdateEnvRequestUnsetList = /*@__PURE__*/ S.Array(
+const UpdateEnvRequestUnsetList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateEnvRequestUnsetList>;
 
@@ -47,7 +46,7 @@ export interface UpdateEnvRequest {
   /** UnsetValuePrefix removes every env var whose value has this prefix and whose name is not a key of Set, before Set is applied. Used to reconcile secret placeholder vars without the caller knowing the daemon's env. */
   unsetValuePrefix?: string;
 }
-export const UpdateEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     set: S.optional(UpdateEnvRequestSetMap),
     unset: S.optional(UpdateEnvRequestUnsetList),
@@ -56,11 +55,8 @@ export const UpdateEnvRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateEnvRequest" }) as any as S.Schema<UpdateEnvRequest>;
 
 export type UpdateEnvResponseBodyMap = { [key: string]: string | undefined };
-export const UpdateEnvResponseBodyMap =
-  InitializeResponseBodyMap as any as S.Schema<UpdateEnvResponseBodyMap>;
-
 export type UpdateEnvResponse = UpdateEnvResponseBodyMap;
-export const UpdateEnvResponse = InitializeResponse as any as S.Schema<UpdateEnvResponse>;
+const UpdateEnvResponse = InitializeResponse as any as S.Schema<UpdateEnvResponse>;
 
 export type InitializeError = DaytonaOpError;
 /** Initialize toolbox server Set the auth token and initialize telemetry for the toolbox server */

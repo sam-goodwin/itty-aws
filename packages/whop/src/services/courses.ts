@@ -50,7 +50,7 @@ export interface CreateCourseRequestThumbnail {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateCourseRequestThumbnail = /*@__PURE__*/ S.suspend(() =>
+const CreateCourseRequestThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -60,7 +60,7 @@ export const CreateCourseRequestThumbnail = /*@__PURE__*/ S.suspend(() =>
 
 /** The available visibilities for a course. Determines how / whether a course is visible to users. */
 export type CourseVisibilities = "visible" | "hidden";
-export const CourseVisibilities = S.String;
+const CourseVisibilities = S.String;
 
 export interface CreateCourseRequest {
   /** Whether the course awards students a PDF certificate after completing all lessons. */
@@ -80,7 +80,7 @@ export interface CreateCourseRequest {
   /** Controls whether this course is visible to students or hidden as a draft. */
   visibility?: CourseVisibilities | (string & {}) | null;
 }
-export const CreateCourseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCourseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_after_completion_enabled: S.optional(S.NullOr(S.Boolean)),
     experience_id: S.String,
@@ -95,14 +95,14 @@ export const CreateCourseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The available types for a lesson */
 export type LessonTypes = "text" | "video" | "pdf" | "multi" | "quiz" | "knowledge_check";
-export const LessonTypes = S.String;
+const LessonTypes = S.String;
 
 /** The thumbnail image displayed on lesson cards and previews. Null if no thumbnail has been uploaded. */
 export interface CourseChaptersItemLessonsItemThumbnail {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const CourseChaptersItemLessonsItemThumbnail = /*@__PURE__*/ S.suspend(() =>
+const CourseChaptersItemLessonsItemThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.NullOr(S.String),
   }),
@@ -119,7 +119,7 @@ export interface CourseChaptersItemLessonsItemVideoAsset {
   /** The signed thumbnail playback token of the Mux asset */
   signed_thumbnail_playback_token: string | null;
 }
-export const CourseChaptersItemLessonsItemVideoAsset = /*@__PURE__*/ S.suspend(() =>
+const CourseChaptersItemLessonsItemVideoAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration_seconds: S.NullOr(S.Number),
     signed_playback_id: S.NullOr(S.String),
@@ -144,7 +144,7 @@ export interface CourseChaptersItemLessonsItem {
   /** The Mux video asset for video-type lessons, used for streaming playback. Null if this lesson has no hosted video. */
   video_asset: CourseChaptersItemLessonsItemVideoAsset | null;
 }
-export const CourseChaptersItemLessonsItem = /*@__PURE__*/ S.suspend(() =>
+const CourseChaptersItemLessonsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     lesson_type: LessonTypes,
@@ -159,7 +159,7 @@ export const CourseChaptersItemLessonsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of lessons in this chapter, sorted by display position. Hidden lessons are excluded for non-admin users. */
 export type CourseChaptersItemLessonsList = Array<CourseChaptersItemLessonsItem>;
-export const CourseChaptersItemLessonsList = /*@__PURE__*/ S.Array(
+const CourseChaptersItemLessonsList = /*@__PURE__*/ S.Array(
   CourseChaptersItemLessonsItem,
 ) as any as S.Schema<CourseChaptersItemLessonsList>;
 
@@ -174,7 +174,7 @@ export interface CourseChaptersItem {
   /** The display name of the chapter shown to students. Maximum 150 characters. */
   title: string;
 }
-export const CourseChaptersItem = /*@__PURE__*/ S.suspend(() =>
+const CourseChaptersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     lessons: CourseChaptersItemLessonsList,
@@ -185,7 +185,7 @@ export const CourseChaptersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of all chapters in this course, sorted by their display position. */
 export type CourseChaptersList = Array<CourseChaptersItem>;
-export const CourseChaptersList = /*@__PURE__*/ S.Array(
+const CourseChaptersList = /*@__PURE__*/ S.Array(
   CourseChaptersItem,
 ) as any as S.Schema<CourseChaptersList>;
 
@@ -213,11 +213,11 @@ export type Languages =
   | "da"
   | "ro"
   | "bg";
-export const Languages = S.String;
+const Languages = S.String;
 
 /** The distinct drip schedules, in days after the course start, of lessons visible to the current user. Combine with startedAt to work out which have unlocked. Empty when the user has not started the course or no lesson is on a schedule. */
 export type CourseLessonUnlockDaysList = Array<number>;
-export const CourseLessonUnlockDaysList = /*@__PURE__*/ S.Array(
+const CourseLessonUnlockDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CourseLessonUnlockDaysList>;
 
@@ -226,7 +226,7 @@ export interface CourseResumeLesson {
   /** The unique identifier for the lesson. */
   id: string;
 }
-export const CourseResumeLesson = /*@__PURE__*/ S.suspend(() =>
+const CourseResumeLesson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -245,7 +245,7 @@ export interface CourseThumbnail {
   /** The original source URL of the attachment, such as a direct link to S3. This should never be displayed on the client and should always be passed through an Imgproxy transformer. */
   source_url: string | null;
 }
-export const CourseThumbnail = /*@__PURE__*/ S.suspend(() =>
+const CourseThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -302,7 +302,7 @@ export interface Course {
   /** The visibility setting that controls whether this course appears to students. One of: visible, hidden. */
   visibility: CourseVisibilities;
 }
-export const Course = /*@__PURE__*/ S.suspend(() =>
+const Course = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_after_completion_enabled: S.NullOr(S.Boolean),
     chapters: CourseChaptersList,
@@ -333,14 +333,14 @@ export interface DeleteCourseRequest {
   /** The unique identifier of the course to delete (e.g., "course_XXXXX"). */
   id: string;
 }
-export const DeleteCourseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/courses/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteCourseRequest" }) as any as S.Schema<DeleteCourseRequest>;
 
 export type DeleteCourseResponse = boolean;
-export const DeleteCourseResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteCourseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteCourseResponse" }) as any as S.Schema<DeleteCourseResponse>;
 
@@ -348,7 +348,7 @@ export interface GetCourseRequest {
   /** The unique identifier of the course to retrieve. */
   id: string;
 }
-export const GetCourseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCourseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/courses/{id}", code: 200 })),
@@ -362,7 +362,7 @@ export interface ListCourseRequest {
   experience_id?: string;
   account_id?: string;
 }
-export const ListCourseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCourseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -375,17 +375,13 @@ export const ListCourseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The distinct drip schedules, in days after the course start, of lessons visible to the current user. Combine with startedAt to work out which have unlocked. Empty when the user has not started the course or no lesson is on a schedule. */
 export type CourseListItemLessonUnlockDaysList = Array<number>;
-export const CourseListItemLessonUnlockDaysList =
+const CourseListItemLessonUnlockDaysList =
   CourseLessonUnlockDaysList as any as S.Schema<CourseListItemLessonUnlockDaysList>;
 
 /** The lesson the current user should continue from: their first incomplete lesson, or the first lesson when they have finished the course, have not started it, or can edit it. Null if the course has no lessons. */
 export type CourseListItemResumeLesson = CourseResumeLesson;
-export const CourseListItemResumeLesson = CourseResumeLesson;
-
 /** The thumbnail image displayed on course cards and previews. Null if no thumbnail has been uploaded. */
 export type CourseListItemThumbnail = CourseThumbnail;
-export const CourseListItemThumbnail = CourseThumbnail;
-
 /** A structured learning module containing chapters and lessons, belonging to an experience. */
 export interface CourseListItem {
   /** Whether students receive a PDF certificate after completing all lessons in this course. Null if the setting has not been configured. */
@@ -431,7 +427,7 @@ export interface CourseListItem {
   /** The visibility setting that controls whether this course appears to students. One of: visible, hidden. */
   visibility: CourseVisibilities;
 }
-export const CourseListItem = /*@__PURE__*/ S.suspend(() =>
+const CourseListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate_after_completion_enabled: S.NullOr(S.Boolean),
     chapters_count: S.Number,
@@ -459,7 +455,7 @@ export const CourseListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListCourseResponseDataList = Array<CourseListItem>;
-export const ListCourseResponseDataList = /*@__PURE__*/ S.Array(
+const ListCourseResponseDataList = /*@__PURE__*/ S.Array(
   CourseListItem,
 ) as any as S.Schema<ListCourseResponseDataList>;
 
@@ -474,7 +470,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -489,7 +485,7 @@ export interface ListCourseResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListCourseResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCourseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListCourseResponseDataList,
     page_info: PageInfo,
@@ -507,7 +503,7 @@ export interface UpdateCourseRequestChaptersItemLessonsItem {
   /** The title of the lesson */
   title: string;
 }
-export const UpdateCourseRequestChaptersItemLessonsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseRequestChaptersItemLessonsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chapter_id: S.String,
     id: S.String,
@@ -521,7 +517,7 @@ export const UpdateCourseRequestChaptersItemLessonsItem = /*@__PURE__*/ S.suspen
 /** The lessons to update within this chapter */
 export type UpdateCourseRequestChaptersItemLessonsList =
   Array<UpdateCourseRequestChaptersItemLessonsItem>;
-export const UpdateCourseRequestChaptersItemLessonsList = /*@__PURE__*/ S.Array(
+const UpdateCourseRequestChaptersItemLessonsList = /*@__PURE__*/ S.Array(
   UpdateCourseRequestChaptersItemLessonsItem,
 ) as any as S.Schema<UpdateCourseRequestChaptersItemLessonsList>;
 
@@ -536,7 +532,7 @@ export interface UpdateCourseRequestChaptersItem {
   /** The title of the chapter */
   title: string;
 }
-export const UpdateCourseRequestChaptersItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseRequestChaptersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     lessons: S.optional(S.NullOr(UpdateCourseRequestChaptersItemLessonsList)),
@@ -549,14 +545,12 @@ export const UpdateCourseRequestChaptersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of chapters with nested lessons to reorder or rename in bulk. */
 export type UpdateCourseRequestChaptersList = Array<UpdateCourseRequestChaptersItem>;
-export const UpdateCourseRequestChaptersList = /*@__PURE__*/ S.Array(
+const UpdateCourseRequestChaptersList = /*@__PURE__*/ S.Array(
   UpdateCourseRequestChaptersItem,
 ) as any as S.Schema<UpdateCourseRequestChaptersList>;
 
 /** The thumbnail image for the course in PNG, JPEG, or GIF format. */
 export type UpdateCourseRequestThumbnail = CreateCourseRequestThumbnail;
-export const UpdateCourseRequestThumbnail = CreateCourseRequestThumbnail;
-
 export interface UpdateCourseRequest {
   /** The unique identifier of the course to update (e.g., "course_XXXXX"). */
   id: string;
@@ -581,7 +575,7 @@ export interface UpdateCourseRequest {
   /** Controls whether this course is visible to students or hidden as a draft. */
   visibility?: CourseVisibilities | (string & {}) | null;
 }
-export const UpdateCourseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCourseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     certificate_after_completion_enabled: S.optional(S.NullOr(S.Boolean)),

@@ -65,7 +65,7 @@ export interface DeleteAccountsProductsLocalInventoriesRequest {
   /** Required. The name of the local inventory for the given product to delete. Format: `accounts/{account}/products/{product}/localInventories/{store_code}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an unpadded base64url encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123` for `store_code` "store123", the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the local inventory would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw/localInventories/store123`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   name: string;
 }
-export const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,7 +81,7 @@ export const DeleteAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -89,7 +89,7 @@ export interface DeleteAccountsProductsRegionalInventoriesRequest {
   /** Required. The name of the `RegionalInventory` resource to delete. Format: `accounts/{account}/products/{product}/regionalInventories/{region}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an **unpadded base64url** encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123` for `region` "region123", the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the regional inventory would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   name: string;
 }
-export const DeleteAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -110,7 +110,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -123,7 +123,7 @@ export type LocalInventoryAttributesPickupMethodEnum =
   | "RESERVE"
   | "SHIP_TO_STORE"
   | "NOT_SUPPORTED";
-export const LocalInventoryAttributesPickupMethodEnum = S.String;
+const LocalInventoryAttributesPickupMethodEnum = S.String;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -132,7 +132,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -148,7 +148,7 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     groupValues: S.optional(S.suspend(() => CustomAttributeList)),
@@ -157,7 +157,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeList = Array<CustomAttribute>;
-export const CustomAttributeList = /*@__PURE__*/ S.Array(
+const CustomAttributeList = /*@__PURE__*/ S.Array(
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeList>;
 
@@ -178,7 +178,7 @@ export interface InventoryLoyaltyProgram {
   /** The cashback that can be used for future purchases. */
   cashbackForFutureUse?: Price;
 }
-export const InventoryLoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
+const InventoryLoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     programLabel: S.optional(S.String),
     tierLabel: S.optional(S.String),
@@ -191,7 +191,7 @@ export const InventoryLoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InventoryLoyaltyProgram" }) as any as S.Schema<InventoryLoyaltyProgram>;
 
 export type InventoryLoyaltyProgramList = Array<InventoryLoyaltyProgram>;
-export const InventoryLoyaltyProgramList = /*@__PURE__*/ S.Array(
+const InventoryLoyaltyProgramList = /*@__PURE__*/ S.Array(
   InventoryLoyaltyProgram,
 ) as any as S.Schema<InventoryLoyaltyProgramList>;
 
@@ -206,7 +206,7 @@ export type LocalInventoryAttributesPickupSlaEnum =
   | "SIX_DAY"
   | "SEVEN_DAY"
   | "MULTI_WEEK";
-export const LocalInventoryAttributesPickupSlaEnum = S.String;
+const LocalInventoryAttributesPickupSlaEnum = S.String;
 
 export type LocalInventoryAttributesAvailabilityEnum =
   | "LOCAL_INVENTORY_AVAILABILITY_UNSPECIFIED"
@@ -214,7 +214,7 @@ export type LocalInventoryAttributesAvailabilityEnum =
   | "LIMITED_AVAILABILITY"
   | "ON_DISPLAY_TO_ORDER"
   | "OUT_OF_STOCK";
-export const LocalInventoryAttributesAvailabilityEnum = S.String;
+const LocalInventoryAttributesAvailabilityEnum = S.String;
 
 /** Local inventory attributes. */
 export interface LocalInventoryAttributes {
@@ -241,7 +241,7 @@ export interface LocalInventoryAttributes {
   /** Optional. Location of the product inside the store. Maximum length is 20 bytes. */
   instoreProductLocation?: string;
 }
-export const LocalInventoryAttributes = /*@__PURE__*/ S.suspend(() =>
+const LocalInventoryAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     salePriceEffectiveDate: S.optional(Interval),
     pickupMethod: S.optional(LocalInventoryAttributesPickupMethodEnum),
@@ -270,7 +270,7 @@ export interface LocalInventory {
   /** Optional. A list of local inventory attributes. */
   localInventoryAttributes?: LocalInventoryAttributes;
 }
-export const LocalInventory = /*@__PURE__*/ S.suspend(() =>
+const LocalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     name: S.optional(S.String),
@@ -286,7 +286,7 @@ export interface InsertAccountsProductsLocalInventoriesRequest {
   /** Request body */
   body?: LocalInventory;
 }
-export const InsertAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LocalInventory.pipe(T.HttpBody())),
@@ -305,7 +305,7 @@ export type RegionalInventoryAttributesAvailabilityEnum =
   | "REGIONAL_INVENTORY_AVAILABILITY_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK";
-export const RegionalInventoryAttributesAvailabilityEnum = S.String;
+const RegionalInventoryAttributesAvailabilityEnum = S.String;
 
 /** Regional inventory attributes. */
 export interface RegionalInventoryAttributes {
@@ -320,7 +320,7 @@ export interface RegionalInventoryAttributes {
   /** Optional. Price of the product in this region. */
   price?: Price;
 }
-export const RegionalInventoryAttributes = /*@__PURE__*/ S.suspend(() =>
+const RegionalInventoryAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(RegionalInventoryAttributesAvailabilityEnum),
     loyaltyPrograms: S.optional(InventoryLoyaltyProgramList),
@@ -345,7 +345,7 @@ export interface RegionalInventory {
   /** Output only. The name of the `RegionalInventory` resource. Format: `accounts/{account}/products/{product}/regionalInventories/{region}` The `{product}` segment is a unique identifier for the product. This identifier must be unique within a merchant account and generally follows the structure: `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy local products, the structure is: `local~content_language~feed_label~offer_id`. Example: `local~en~US~sku123` The format of the `{product}` segment in the URL is automatically detected by the server, supporting two options: 1. **Encoded Format**: The `{product}` segment is an **unpadded base64url** encoded string (RFC 4648 Section 5). The decoded string must result in the `content_language~feed_label~offer_id` structure. This encoding MUST be used if any part of the product identifier (like `offer_id`) contains characters such as `/`, `%`, or `~`. * Example: To represent the product ID `en~US~sku/123` for `region` "region123", the `{product}` segment must be the unpadded base64url encoding of this string, which is `ZW5-VVN-c2t1LzEyMw`. The full resource name for the regional inventory would be `accounts/123/products/ZW5-VVN-c2t1LzEyMw/regionalInventories/region123`. 2. **Plain Format**: The `{product}` segment is the tilde-separated string `content_language~feed_label~offer_id`. This format is suitable only when `content_language`, `feed_label`, and `offer_id` do not contain URL-problematic characters like `/`, `%`, or `~`. We recommend using the **Encoded Format** for all product IDs to ensure correct parsing, especially those containing special characters. The presence of tilde (`~`) characters in the `{product}` segment is used to differentiate between the two formats. */
   name?: string;
 }
-export const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
+const RegionalInventory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     account: S.optional(S.String),
@@ -361,7 +361,7 @@ export interface InsertAccountsProductsRegionalInventoriesRequest {
   /** Request body */
   body?: RegionalInventory;
 }
-export const InsertAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RegionalInventory.pipe(T.HttpBody())),
@@ -384,7 +384,7 @@ export interface ListAccountsProductsLocalInventoriesRequest {
   /** The maximum number of `LocalInventory` resources for the given product to return. The service returns fewer than this value if the number of inventories for the given product is less that than the `pageSize`. The default value is 25000. The maximum value is 25000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum */
   pageSize?: number;
 }
-export const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -401,7 +401,7 @@ export const ListAccountsProductsLocalInventoriesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListAccountsProductsLocalInventoriesRequest>;
 
 export type LocalInventoryList = Array<LocalInventory>;
-export const LocalInventoryList = /*@__PURE__*/ S.Array(
+const LocalInventoryList = /*@__PURE__*/ S.Array(
   LocalInventory,
 ) as any as S.Schema<LocalInventoryList>;
 
@@ -412,7 +412,7 @@ export interface ListLocalInventoriesResponse {
   /** The `LocalInventory` resources for the given product from the specified account. */
   localInventories?: LocalInventoryList;
 }
-export const ListLocalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     localInventories: S.optional(LocalInventoryList),
@@ -429,7 +429,7 @@ export interface ListAccountsProductsRegionalInventoriesRequest {
   /** The maximum number of `RegionalInventory` resources for the given product to return. The service returns fewer than this value if the number of inventories for the given product is less that than the `pageSize`. The default value is 25000. The maximum value is 100000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. */
   pageSize?: number;
 }
-export const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -446,7 +446,7 @@ export const ListAccountsProductsRegionalInventoriesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListAccountsProductsRegionalInventoriesRequest>;
 
 export type RegionalInventoryList = Array<RegionalInventory>;
-export const RegionalInventoryList = /*@__PURE__*/ S.Array(
+const RegionalInventoryList = /*@__PURE__*/ S.Array(
   RegionalInventory,
 ) as any as S.Schema<RegionalInventoryList>;
 
@@ -457,7 +457,7 @@ export interface ListRegionalInventoriesResponse {
   /** The `RegionalInventory` resources for the given product from the specified account. */
   regionalInventories?: RegionalInventoryList;
 }
-export const ListRegionalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalInventoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     regionalInventories: S.optional(RegionalInventoryList),

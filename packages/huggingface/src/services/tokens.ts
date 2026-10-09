@@ -13,7 +13,7 @@ export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 /** Raw access token values to invalidate, at most 1000. */
 export type RevokeLeakedTokensRequestCredentialsList = Array<string>;
-export const RevokeLeakedTokensRequestCredentialsList = /*@__PURE__*/ S.Array(
+const RevokeLeakedTokensRequestCredentialsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RevokeLeakedTokensRequestCredentialsList>;
 
@@ -21,7 +21,7 @@ export interface RevokeLeakedTokensRequest {
   /** Raw access token values to invalidate, at most 1000. */
   credentials: RevokeLeakedTokensRequestCredentialsList;
 }
-export const RevokeLeakedTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeLeakedTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: RevokeLeakedTokensRequestCredentialsList,
   }).pipe(T.Http({ method: "POST", uri: "/api/credentials/revoke", code: 200 })),
@@ -30,7 +30,7 @@ export const RevokeLeakedTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeLeakedTokensRequest>;
 
 export interface RevokeLeakedTokensResponse {}
-export const RevokeLeakedTokensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RevokeLeakedTokensResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RevokeLeakedTokensResponse",
 }) as any as S.Schema<RevokeLeakedTokensResponse>;
 

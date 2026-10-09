@@ -20,7 +20,7 @@ export interface ApplyUpdatesCreateOrUpdateRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ApplyUpdatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -45,7 +45,7 @@ export type ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -53,7 +53,7 @@ export type ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplyUpdatesCreateOrUpdateResponseSystemData {
@@ -70,7 +70,7 @@ export interface ApplyUpdatesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApplyUpdatesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType),
@@ -90,7 +90,7 @@ export type ApplyUpdatePropertiesStatus =
   | "Completed"
   | "RetryNow"
   | "RetryLater";
-export const ApplyUpdatePropertiesStatus = S.String;
+const ApplyUpdatePropertiesStatus = S.String;
 
 /** Properties for apply update */
 export interface ApplyUpdateProperties {
@@ -101,7 +101,7 @@ export interface ApplyUpdateProperties {
   /** Last Update time */
   lastUpdateTime?: string;
 }
-export const ApplyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ApplyUpdatePropertiesStatus),
     resourceId: S.optional(S.String),
@@ -121,7 +121,7 @@ export interface ApplyUpdatesCreateOrUpdateResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-export const ApplyUpdatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -149,7 +149,7 @@ export interface ApplyUpdatesCreateOrUpdateParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ApplyUpdatesCreateOrUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -176,7 +176,7 @@ export type ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
+const ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType =
@@ -184,7 +184,7 @@ export type ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType = S.String;
+const ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplyUpdatesCreateOrUpdateParentResponseSystemData {
@@ -201,7 +201,7 @@ export interface ApplyUpdatesCreateOrUpdateParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApplyUpdatesCreateOrUpdateParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType),
@@ -228,7 +228,7 @@ export interface ApplyUpdatesCreateOrUpdateParentResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-export const ApplyUpdatesCreateOrUpdateParentResponse = /*@__PURE__*/ S.suspend(() =>
+const ApplyUpdatesCreateOrUpdateParentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -242,41 +242,41 @@ export const ApplyUpdatesCreateOrUpdateParentResponse = /*@__PURE__*/ S.suspend(
 
 /** List of allowed resources. */
 export type ConfigurationAssignmentFilterPropertiesResourceTypesList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesResourceTypesList = /*@__PURE__*/ S.Array(
+const ConfigurationAssignmentFilterPropertiesResourceTypesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceTypesList>;
 
 /** List of allowed resource groups. */
 export type ConfigurationAssignmentFilterPropertiesResourceGroupsList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesResourceGroupsList =
+const ConfigurationAssignmentFilterPropertiesResourceGroupsList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceGroupsList>;
 
 /** List of allowed operating systems. */
 export type ConfigurationAssignmentFilterPropertiesOsTypesList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesOsTypesList =
+const ConfigurationAssignmentFilterPropertiesOsTypesList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesOsTypesList>;
 
 /** List of locations to scope the query to. */
 export type ConfigurationAssignmentFilterPropertiesLocationsList = Array<string>;
-export const ConfigurationAssignmentFilterPropertiesLocationsList =
+const ConfigurationAssignmentFilterPropertiesLocationsList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesLocationsList>;
 
 export type TagSettingsPropertiesTagsValueList = Array<string>;
-export const TagSettingsPropertiesTagsValueList =
+const TagSettingsPropertiesTagsValueList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<TagSettingsPropertiesTagsValueList>;
 
 /** Dictionary of tags with its list of values. */
 export type TagSettingsPropertiesTagsMap = {
   [key: string]: TagSettingsPropertiesTagsValueList | undefined;
 };
-export const TagSettingsPropertiesTagsMap = /*@__PURE__*/ S.Record(
+const TagSettingsPropertiesTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   TagSettingsPropertiesTagsValueList,
 ) as any as S.Schema<TagSettingsPropertiesTagsMap>;
 
 /** Filter VMs by Any or All specified tags. */
 export type TagSettingsPropertiesFilterOperator = "All" | "Any";
-export const TagSettingsPropertiesFilterOperator = S.String;
+const TagSettingsPropertiesFilterOperator = S.String;
 
 /** Tag filter information for the VM. */
 export interface TagSettingsProperties {
@@ -285,7 +285,7 @@ export interface TagSettingsProperties {
   /** Filter VMs by Any or All specified tags. */
   filterOperator?: TagSettingsPropertiesFilterOperator | (string & {});
 }
-export const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const TagSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagSettingsPropertiesTagsMap),
     filterOperator: S.optional(TagSettingsPropertiesFilterOperator),
@@ -305,7 +305,7 @@ export interface ConfigurationAssignmentFilterProperties {
   /** Tag settings for the VM. */
   tagSettings?: TagSettingsProperties;
 }
-export const ConfigurationAssignmentFilterProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentFilterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceTypes: S.optional(ConfigurationAssignmentFilterPropertiesResourceTypesList),
     resourceGroups: S.optional(ConfigurationAssignmentFilterPropertiesResourceGroupsList),
@@ -326,7 +326,7 @@ export interface ConfigurationAssignmentProperties {
   /** Properties of the configuration assignment */
   filter?: ConfigurationAssignmentFilterProperties;
 }
-export const ConfigurationAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceConfigurationId: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -354,7 +354,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -382,7 +382,7 @@ export type ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByTyp
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
+const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
@@ -390,7 +390,7 @@ export type ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModified
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
+const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsCreateOrUpdateResponseSystemData {
@@ -407,20 +407,19 @@ export interface ConfigurationAssignmentsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
+const ConfigurationAssignmentsCreateOrUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ConfigurationAssignmentsCreateOrUpdateResponseSystemData",
 }) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponseSystemData>;
@@ -439,7 +438,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -474,7 +473,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsCreateOrUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentsCreateOrUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -504,7 +503,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreate
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
+const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType =
@@ -512,8 +511,7 @@ export type ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastMo
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType =
-  S.String;
+const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData {
@@ -530,23 +528,22 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData 
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData",
-  }) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData>;
+const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData",
+}) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData>;
 
 export interface ConfigurationAssignmentsCreateOrUpdateParentResponse {
   /** Fully qualified identifier of the resource */
@@ -562,7 +559,7 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsCreateOrUpdateParentResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignmentsCreateOrUpdateParentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -587,25 +584,24 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      configurationAssignmentName: S.String.pipe(T.Label()),
-      location: S.optional(S.String),
-      properties: S.optional(ConfigurationAssignmentProperties),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest",
-  }) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest>;
+const ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    configurationAssignmentName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    properties: S.optional(ConfigurationAssignmentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest",
+}) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataCreatedByType =
@@ -613,18 +609,12 @@ export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystem
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -640,7 +630,7 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseS
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData =
+const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData =
   ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData>;
 
 export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse {
@@ -657,21 +647,20 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse 
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(
-        ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData,
-      ),
-      location: S.optional(S.String),
-      properties: S.optional(ConfigurationAssignmentProperties),
-    }),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse",
-  }) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse>;
+const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(
+      ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData,
+    ),
+    location: S.optional(S.String),
+    properties: S.optional(ConfigurationAssignmentProperties),
+  }),
+).annotate({
+  identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse",
+}) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse>;
 
 export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -683,24 +672,23 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      configurationAssignmentName: S.String.pipe(T.Label()),
-      location: S.optional(S.String),
-      properties: S.optional(ConfigurationAssignmentProperties),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest",
-  }) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest>;
+const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    configurationAssignmentName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    properties: S.optional(ConfigurationAssignmentProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest",
+}) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest>;
 
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
@@ -708,18 +696,12 @@ export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystem
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -735,9 +717,6 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseS
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemData>;
-
 export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -752,7 +731,7 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse 
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse =
+const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse =
   ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>;
 
 export interface DeleteConfigurationAssignmentRequest {
@@ -769,7 +748,7 @@ export interface DeleteConfigurationAssignmentRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-export const DeleteConfigurationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -795,16 +774,12 @@ export type DeleteConfigurationAssignmentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeleteConfigurationAssignmentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeleteConfigurationAssignmentResponseSystemData {
   /** The identity that created the resource. */
@@ -820,7 +795,7 @@ export interface DeleteConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentResponseSystemData =
+const DeleteConfigurationAssignmentResponseSystemData =
   ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentResponseSystemData>;
 
 export interface DeleteConfigurationAssignmentResponse {
@@ -837,7 +812,7 @@ export interface DeleteConfigurationAssignmentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -868,7 +843,7 @@ export interface DeleteConfigurationAssignmentParentRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-export const DeleteConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -896,16 +871,12 @@ export type DeleteConfigurationAssignmentParentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentParentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeleteConfigurationAssignmentParentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentParentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeleteConfigurationAssignmentParentResponseSystemData {
   /** The identity that created the resource. */
@@ -921,9 +892,6 @@ export interface DeleteConfigurationAssignmentParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentParentResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentParentResponseSystemData>;
-
 export interface DeleteConfigurationAssignmentParentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -938,7 +906,7 @@ export interface DeleteConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentParentResponse =
+const DeleteConfigurationAssignmentParentResponse =
   DeleteConfigurationAssignmentResponse as any as S.Schema<DeleteConfigurationAssignmentParentResponse>;
 
 export interface DeleteConfigurationAssignmentsForResourceGroupRequest {
@@ -949,7 +917,7 @@ export interface DeleteConfigurationAssignmentsForResourceGroupRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-export const DeleteConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -972,18 +940,12 @@ export type DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataCrea
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeleteConfigurationAssignmentsForResourceGroupResponseSystemData {
   /** The identity that created the resource. */
@@ -999,9 +961,6 @@ export interface DeleteConfigurationAssignmentsForResourceGroupResponseSystemDat
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentsForResourceGroupResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponseSystemData>;
-
 export interface DeleteConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1016,7 +975,7 @@ export interface DeleteConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentsForResourceGroupResponse =
+const DeleteConfigurationAssignmentsForResourceGroupResponse =
   ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface DeleteConfigurationAssignmentsForSubscriptionRequest {
@@ -1025,7 +984,7 @@ export interface DeleteConfigurationAssignmentsForSubscriptionRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-export const DeleteConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     configurationAssignmentName: S.String.pipe(T.Label()),
@@ -1047,18 +1006,12 @@ export type DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataCreat
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeleteConfigurationAssignmentsForSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -1074,9 +1027,6 @@ export interface DeleteConfigurationAssignmentsForSubscriptionResponseSystemData
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteConfigurationAssignmentsForSubscriptionResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponseSystemData>;
-
 export interface DeleteConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1091,7 +1041,7 @@ export interface DeleteConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const DeleteConfigurationAssignmentsForSubscriptionResponse =
+const DeleteConfigurationAssignmentsForSubscriptionResponse =
   ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>;
 
 export interface DeleteMaintenanceConfigurationRequest {
@@ -1102,7 +1052,7 @@ export interface DeleteMaintenanceConfigurationRequest {
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-export const DeleteMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1125,16 +1075,12 @@ export type DeleteMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteMaintenanceConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DeleteMaintenanceConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DeleteMaintenanceConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DeleteMaintenanceConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -1150,12 +1096,12 @@ export interface DeleteMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DeleteMaintenanceConfigurationResponseSystemData =
+const DeleteMaintenanceConfigurationResponseSystemData =
   ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type DeleteMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const DeleteMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
+const DeleteMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DeleteMaintenanceConfigurationResponseTagsMap>;
@@ -1164,7 +1110,7 @@ export const DeleteMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ S.Rec
 export type MaintenanceConfigurationPropertiesExtensionPropertiesMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationPropertiesExtensionPropertiesMap =
+const MaintenanceConfigurationPropertiesExtensionPropertiesMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationPropertiesExtensionPropertiesMap>;
 
 /** Gets or sets maintenanceScope of the configuration */
@@ -1176,7 +1122,7 @@ export type MaintenanceConfigurationPropertiesMaintenanceScope =
   | "InGuestPatch"
   | "SQLDB"
   | "SQLManagedInstance";
-export const MaintenanceConfigurationPropertiesMaintenanceScope = S.String;
+const MaintenanceConfigurationPropertiesMaintenanceScope = S.String;
 
 /** Definition of a MaintenanceWindow */
 export interface MaintenanceWindow {
@@ -1191,7 +1137,7 @@ export interface MaintenanceWindow {
   /** Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days. Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6. */
   recurEvery?: string;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDateTime: S.optional(S.String),
     expirationDateTime: S.optional(S.String),
@@ -1203,25 +1149,25 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the visibility of the configuration. The default value is 'Custom' */
 export type MaintenanceConfigurationPropertiesVisibility = "Custom" | "Public";
-export const MaintenanceConfigurationPropertiesVisibility = S.String;
+const MaintenanceConfigurationPropertiesVisibility = S.String;
 
 /** Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. */
 export type InputPatchConfigurationRebootSetting = "IfRequired" | "Never" | "Always";
-export const InputPatchConfigurationRebootSetting = S.String;
+const InputPatchConfigurationRebootSetting = S.String;
 
 /** Windows KBID to be excluded for patching. */
 export type InputWindowsParametersKbNumbersToExcludeList = Array<string>;
-export const InputWindowsParametersKbNumbersToExcludeList =
+const InputWindowsParametersKbNumbersToExcludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToExcludeList>;
 
 /** Windows KBID to be included for patching. */
 export type InputWindowsParametersKbNumbersToIncludeList = Array<string>;
-export const InputWindowsParametersKbNumbersToIncludeList =
+const InputWindowsParametersKbNumbersToIncludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'. */
 export type InputWindowsParametersClassificationsToIncludeList = Array<string>;
-export const InputWindowsParametersClassificationsToIncludeList =
+const InputWindowsParametersClassificationsToIncludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersClassificationsToIncludeList>;
 
 /** Input properties for patching a Windows machine. */
@@ -1235,7 +1181,7 @@ export interface InputWindowsParameters {
   /** Exclude patches which need reboot */
   excludeKbsRequiringReboot?: boolean;
 }
-export const InputWindowsParameters = /*@__PURE__*/ S.suspend(() =>
+const InputWindowsParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kbNumbersToExclude: S.optional(InputWindowsParametersKbNumbersToExcludeList),
     kbNumbersToInclude: S.optional(InputWindowsParametersKbNumbersToIncludeList),
@@ -1246,17 +1192,17 @@ export const InputWindowsParameters = /*@__PURE__*/ S.suspend(() =>
 
 /** Package names to be excluded for patching. */
 export type InputLinuxParametersPackageNameMasksToExcludeList = Array<string>;
-export const InputLinuxParametersPackageNameMasksToExcludeList =
+const InputLinuxParametersPackageNameMasksToExcludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToExcludeList>;
 
 /** Package names to be included for patching. */
 export type InputLinuxParametersPackageNameMasksToIncludeList = Array<string>;
-export const InputLinuxParametersPackageNameMasksToIncludeList =
+const InputLinuxParametersPackageNameMasksToIncludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToIncludeList>;
 
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
 export type InputLinuxParametersClassificationsToIncludeList = Array<string>;
-export const InputLinuxParametersClassificationsToIncludeList =
+const InputLinuxParametersClassificationsToIncludeList =
   ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersClassificationsToIncludeList>;
 
 /** Input properties for patching a Linux machine. */
@@ -1268,7 +1214,7 @@ export interface InputLinuxParameters {
   /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
   classificationsToInclude?: InputLinuxParametersClassificationsToIncludeList;
 }
-export const InputLinuxParameters = /*@__PURE__*/ S.suspend(() =>
+const InputLinuxParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageNameMasksToExclude: S.optional(InputLinuxParametersPackageNameMasksToExcludeList),
     packageNameMasksToInclude: S.optional(InputLinuxParametersPackageNameMasksToIncludeList),
@@ -1285,7 +1231,7 @@ export interface InputPatchConfiguration {
   /** Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. */
   linuxParameters?: InputLinuxParameters;
 }
-export const InputPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+const InputPatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rebootSetting: S.optional(InputPatchConfigurationRebootSetting),
     windowsParameters: S.optional(InputWindowsParameters),
@@ -1308,7 +1254,7 @@ export interface MaintenanceConfigurationProperties {
   /** The input parameters to be passed to the patch run operation. */
   installPatches?: InputPatchConfiguration;
 }
-export const MaintenanceConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     extensionProperties: S.optional(MaintenanceConfigurationPropertiesExtensionPropertiesMap),
@@ -1337,7 +1283,7 @@ export interface DeleteMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const DeleteMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1365,7 +1311,7 @@ export interface GetApplyUpdateRequest {
   /** applyUpdate Id */
   applyUpdateName: string;
 }
-export const GetApplyUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplyUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1389,16 +1335,12 @@ export type GetApplyUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplyUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetApplyUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplyUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetApplyUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1414,7 +1356,7 @@ export interface GetApplyUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplyUpdateResponseSystemData =
+const GetApplyUpdateResponseSystemData =
   ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetApplyUpdateResponseSystemData>;
 
 export interface GetApplyUpdateResponse {
@@ -1429,7 +1371,7 @@ export interface GetApplyUpdateResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-export const GetApplyUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplyUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1457,7 +1399,7 @@ export interface GetApplyUpdateParentRequest {
   /** applyUpdate Id */
   applyUpdateName: string;
 }
-export const GetApplyUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplyUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1485,16 +1427,12 @@ export type GetApplyUpdateParentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplyUpdateParentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetApplyUpdateParentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplyUpdateParentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetApplyUpdateParentResponseSystemData {
   /** The identity that created the resource. */
@@ -1510,9 +1448,6 @@ export interface GetApplyUpdateParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplyUpdateParentResponseSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetApplyUpdateParentResponseSystemData>;
-
 export interface GetApplyUpdateParentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1525,7 +1460,7 @@ export interface GetApplyUpdateParentResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-export const GetApplyUpdateParentResponse =
+const GetApplyUpdateParentResponse =
   ApplyUpdatesCreateOrUpdateResponse as any as S.Schema<GetApplyUpdateParentResponse>;
 
 export interface GetConfigurationAssignmentRequest {
@@ -1542,7 +1477,7 @@ export interface GetConfigurationAssignmentRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-export const GetConfigurationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1568,16 +1503,12 @@ export type GetConfigurationAssignmentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationAssignmentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationAssignmentResponseSystemData {
   /** The identity that created the resource. */
@@ -1593,7 +1524,7 @@ export interface GetConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentResponseSystemData =
+const GetConfigurationAssignmentResponseSystemData =
   ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationAssignmentResponseSystemData>;
 
 export interface GetConfigurationAssignmentResponse {
@@ -1610,7 +1541,7 @@ export interface GetConfigurationAssignmentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1641,7 +1572,7 @@ export interface GetConfigurationAssignmentParentRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-export const GetConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1669,16 +1600,12 @@ export type GetConfigurationAssignmentParentResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentParentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationAssignmentParentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentParentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationAssignmentParentResponseSystemData {
   /** The identity that created the resource. */
@@ -1694,9 +1621,6 @@ export interface GetConfigurationAssignmentParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentParentResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<GetConfigurationAssignmentParentResponseSystemData>;
-
 export interface GetConfigurationAssignmentParentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1711,7 +1635,7 @@ export interface GetConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentParentResponse =
+const GetConfigurationAssignmentParentResponse =
   DeleteConfigurationAssignmentResponse as any as S.Schema<GetConfigurationAssignmentParentResponse>;
 
 export interface GetConfigurationAssignmentsForResourceGroupRequest {
@@ -1722,7 +1646,7 @@ export interface GetConfigurationAssignmentsForResourceGroupRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-export const GetConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1745,17 +1669,12 @@ export type GetConfigurationAssignmentsForResourceGroupResponseSystemDataCreated
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationAssignmentsForResourceGroupResponseSystemData {
   /** The identity that created the resource. */
@@ -1771,9 +1690,6 @@ export interface GetConfigurationAssignmentsForResourceGroupResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentsForResourceGroupResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponseSystemData>;
-
 export interface GetConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1788,7 +1704,7 @@ export interface GetConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentsForResourceGroupResponse =
+const GetConfigurationAssignmentsForResourceGroupResponse =
   ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface GetConfigurationAssignmentsForSubscriptionRequest {
@@ -1797,7 +1713,7 @@ export interface GetConfigurationAssignmentsForSubscriptionRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-export const GetConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     configurationAssignmentName: S.String.pipe(T.Label()),
@@ -1819,17 +1735,12 @@ export type GetConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedB
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetConfigurationAssignmentsForSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -1845,9 +1756,6 @@ export interface GetConfigurationAssignmentsForSubscriptionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetConfigurationAssignmentsForSubscriptionResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponseSystemData>;
-
 export interface GetConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1862,7 +1770,7 @@ export interface GetConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const GetConfigurationAssignmentsForSubscriptionResponse =
+const GetConfigurationAssignmentsForSubscriptionResponse =
   ConfigurationAssignmentsCreateOrUpdateResponse as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>;
 
 export interface GetMaintenanceConfigurationRequest {
@@ -1873,7 +1781,7 @@ export interface GetMaintenanceConfigurationRequest {
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-export const GetMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1896,16 +1804,12 @@ export type GetMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetMaintenanceConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetMaintenanceConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetMaintenanceConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetMaintenanceConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -1921,12 +1825,12 @@ export interface GetMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetMaintenanceConfigurationResponseSystemData =
+const GetMaintenanceConfigurationResponseSystemData =
   ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type GetMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const GetMaintenanceConfigurationResponseTagsMap =
+const GetMaintenanceConfigurationResponseTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetMaintenanceConfigurationResponseTagsMap>;
 
 export interface GetMaintenanceConfigurationResponse {
@@ -1945,7 +1849,7 @@ export interface GetMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const GetMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1965,7 +1869,7 @@ export interface GetPublicMaintenanceConfigurationRequest {
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-export const GetPublicMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
@@ -1987,16 +1891,12 @@ export type GetPublicMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPublicMaintenanceConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPublicMaintenanceConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPublicMaintenanceConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPublicMaintenanceConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -2012,14 +1912,14 @@ export interface GetPublicMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPublicMaintenanceConfigurationResponseSystemData =
+const GetPublicMaintenanceConfigurationResponseSystemData =
   ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<GetPublicMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type GetPublicMaintenanceConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetPublicMaintenanceConfigurationResponseTagsMap =
+const GetPublicMaintenanceConfigurationResponseTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetPublicMaintenanceConfigurationResponseTagsMap>;
 
 export interface GetPublicMaintenanceConfigurationResponse {
@@ -2038,7 +1938,7 @@ export interface GetPublicMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const GetPublicMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPublicMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2068,7 +1968,7 @@ export interface ListConfigurationAssignmentParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ListConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationAssignmentParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2095,16 +1995,12 @@ export type ConfigurationAssignmentSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfigurationAssignmentSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentSystemData {
   /** The identity that created the resource. */
@@ -2120,7 +2016,7 @@ export interface ConfigurationAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfigurationAssignmentSystemData =
+const ConfigurationAssignmentSystemData =
   ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationAssignmentSystemData>;
 
 /** Configuration Assignment */
@@ -2138,7 +2034,7 @@ export interface ConfigurationAssignment {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const ConfigurationAssignment = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2151,7 +2047,7 @@ export const ConfigurationAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of configuration Assignments */
 export type ListConfigurationAssignmentsResultValueList = Array<ConfigurationAssignment>;
-export const ListConfigurationAssignmentsResultValueList = /*@__PURE__*/ S.Array(
+const ListConfigurationAssignmentsResultValueList = /*@__PURE__*/ S.Array(
   ConfigurationAssignment,
 ) as any as S.Schema<ListConfigurationAssignmentsResultValueList>;
 
@@ -2160,7 +2056,7 @@ export interface ListConfigurationAssignmentsResult {
   /** The list of configuration Assignments */
   value?: ListConfigurationAssignmentsResultValueList;
 }
-export const ListConfigurationAssignmentsResult = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationAssignmentsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListConfigurationAssignmentsResultValueList),
   }),
@@ -2180,7 +2076,7 @@ export interface ListConfigurationAssignmentsRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ListConfigurationAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2203,7 +2099,7 @@ export interface ListConfigurationAssignmentsWithinSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListConfigurationAssignmentsWithinSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationAssignmentsWithinSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2222,7 +2118,7 @@ export interface ListMaintenanceConfigurationsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListMaintenanceConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenanceConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2243,16 +2139,12 @@ export type MaintenanceConfigurationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MaintenanceConfigurationSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type MaintenanceConfigurationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MaintenanceConfigurationSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MaintenanceConfigurationSystemData {
   /** The identity that created the resource. */
@@ -2268,12 +2160,12 @@ export interface MaintenanceConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MaintenanceConfigurationSystemData =
+const MaintenanceConfigurationSystemData =
   ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationSystemData>;
 
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationTagsMap = { [key: string]: string | undefined };
-export const MaintenanceConfigurationTagsMap =
+const MaintenanceConfigurationTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationTagsMap>;
 
 /** Maintenance configuration record type */
@@ -2293,7 +2185,7 @@ export interface MaintenanceConfiguration {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const MaintenanceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2307,7 +2199,7 @@ export const MaintenanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of maintenance Configurations */
 export type ListMaintenanceConfigurationsResultValueList = Array<MaintenanceConfiguration>;
-export const ListMaintenanceConfigurationsResultValueList = /*@__PURE__*/ S.Array(
+const ListMaintenanceConfigurationsResultValueList = /*@__PURE__*/ S.Array(
   MaintenanceConfiguration,
 ) as any as S.Schema<ListMaintenanceConfigurationsResultValueList>;
 
@@ -2316,7 +2208,7 @@ export interface ListMaintenanceConfigurationsResult {
   /** The list of maintenance Configurations */
   value?: ListMaintenanceConfigurationsResultValueList;
 }
-export const ListMaintenanceConfigurationsResult = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenanceConfigurationsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListMaintenanceConfigurationsResultValueList),
   }),
@@ -2330,7 +2222,7 @@ export interface ListMaintenanceConfigurationsForResourceGroupRequest {
   /** Resource Group Name */
   resourceGroupName: string;
 }
-export const ListMaintenanceConfigurationsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenanceConfigurationsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2347,7 +2239,7 @@ export const ListMaintenanceConfigurationsForResourceGroupRequest = /*@__PURE__*
 }) as any as S.Schema<ListMaintenanceConfigurationsForResourceGroupRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2369,7 +2261,7 @@ export interface OperationInfo {
   /** Description of the operation */
   description?: string;
 }
-export const OperationInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2391,7 +2283,7 @@ export interface Operation {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationInfo),
@@ -2403,7 +2295,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of operations */
 export type OperationsListResultValueList = Array<Operation>;
-export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
+const OperationsListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResultValueList>;
 
@@ -2412,7 +2304,7 @@ export interface OperationsListResult {
   /** A collection of operations */
   value?: OperationsListResultValueList;
 }
-export const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResultValueList),
   }),
@@ -2422,7 +2314,7 @@ export interface ListPublicMaintenanceConfigurationsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListPublicMaintenanceConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicMaintenanceConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2453,7 +2345,7 @@ export interface ListUpdateParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ListUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdateParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2481,22 +2373,22 @@ export type UpdateMaintenanceScope =
   | "InGuestPatch"
   | "SQLDB"
   | "SQLManagedInstance";
-export const UpdateMaintenanceScope = S.String;
+const UpdateMaintenanceScope = S.String;
 
 /** The impact type */
 export type UpdateImpactType = "None" | "Freeze" | "Restart" | "Redeploy";
-export const UpdateImpactType = S.String;
+const UpdateImpactType = S.String;
 
 /** The status */
 export type UpdateStatus = "Pending" | "InProgress" | "Completed" | "RetryNow" | "RetryLater";
-export const UpdateStatus = S.String;
+const UpdateStatus = S.String;
 
 /** Properties for update */
 export interface UpdateProperties {
   /** The resourceId */
   resourceId?: string;
 }
-export const UpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
   }),
@@ -2517,7 +2409,7 @@ export interface Update {
   /** Properties of the apply update */
   properties?: UpdateProperties;
 }
-export const Update = /*@__PURE__*/ S.suspend(() =>
+const Update = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceScope: S.optional(UpdateMaintenanceScope),
     impactType: S.optional(UpdateImpactType),
@@ -2530,7 +2422,7 @@ export const Update = /*@__PURE__*/ S.suspend(() =>
 
 /** The pending updates */
 export type ListUpdatesResultValueList = Array<Update>;
-export const ListUpdatesResultValueList = /*@__PURE__*/ S.Array(
+const ListUpdatesResultValueList = /*@__PURE__*/ S.Array(
   Update,
 ) as any as S.Schema<ListUpdatesResultValueList>;
 
@@ -2539,7 +2431,7 @@ export interface ListUpdatesResult {
   /** The pending updates */
   value?: ListUpdatesResultValueList;
 }
-export const ListUpdatesResult = /*@__PURE__*/ S.suspend(() =>
+const ListUpdatesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListUpdatesResultValueList),
   }),
@@ -2557,7 +2449,7 @@ export interface ListUpdatesRequest {
   /** Resource identifier */
   resourceName: string;
 }
-export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2578,7 +2470,7 @@ export const ListUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 export type MaintenanceConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationsCreateOrUpdateRequestTagsMap =
+const MaintenanceConfigurationsCreateOrUpdateRequestTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequestTagsMap>;
 
 export interface MaintenanceConfigurationsCreateOrUpdateRequest {
@@ -2595,7 +2487,7 @@ export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const MaintenanceConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2621,16 +2513,12 @@ export type MaintenanceConfigurationsCreateOrUpdateResponseSystemDataCreatedByTy
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MaintenanceConfigurationsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type MaintenanceConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const MaintenanceConfigurationsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface MaintenanceConfigurationsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -2646,14 +2534,14 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const MaintenanceConfigurationsCreateOrUpdateResponseSystemData =
+const MaintenanceConfigurationsCreateOrUpdateResponseSystemData =
   ConfigurationAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MaintenanceConfigurationsCreateOrUpdateResponseTagsMap =
+const MaintenanceConfigurationsCreateOrUpdateResponseTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseTagsMap>;
 
 export interface MaintenanceConfigurationsCreateOrUpdateResponse {
@@ -2672,7 +2560,7 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const MaintenanceConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2698,7 +2586,7 @@ export interface UpdateConfigurationAssignmentsForResourceGroupRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2723,18 +2611,12 @@ export type UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataCrea
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateConfigurationAssignmentsForResourceGroupResponseSystemData {
   /** The identity that created the resource. */
@@ -2750,9 +2632,6 @@ export interface UpdateConfigurationAssignmentsForResourceGroupResponseSystemDat
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateConfigurationAssignmentsForResourceGroupResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponseSystemData>;
-
 export interface UpdateConfigurationAssignmentsForResourceGroupResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -2767,7 +2646,7 @@ export interface UpdateConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForResourceGroupResponse =
+const UpdateConfigurationAssignmentsForResourceGroupResponse =
   ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>;
 
 export interface UpdateConfigurationAssignmentsForSubscriptionRequest {
@@ -2780,7 +2659,7 @@ export interface UpdateConfigurationAssignmentsForSubscriptionRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     configurationAssignmentName: S.String.pipe(T.Label()),
@@ -2804,18 +2683,12 @@ export type UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataCreat
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType =
-  S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateConfigurationAssignmentsForSubscriptionResponseSystemData {
   /** The identity that created the resource. */
@@ -2831,9 +2704,6 @@ export interface UpdateConfigurationAssignmentsForSubscriptionResponseSystemData
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateConfigurationAssignmentsForSubscriptionResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponseSystemData>;
-
 export interface UpdateConfigurationAssignmentsForSubscriptionResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -2848,12 +2718,12 @@ export interface UpdateConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-export const UpdateConfigurationAssignmentsForSubscriptionResponse =
+const UpdateConfigurationAssignmentsForSubscriptionResponse =
   ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>;
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMaintenanceConfigurationRequestTagsMap =
+const UpdateMaintenanceConfigurationRequestTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationRequestTagsMap>;
 
 export interface UpdateMaintenanceConfigurationRequest {
@@ -2870,7 +2740,7 @@ export interface UpdateMaintenanceConfigurationRequest {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const UpdateMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2896,16 +2766,12 @@ export type UpdateMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateMaintenanceConfigurationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateMaintenanceConfigurationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateMaintenanceConfigurationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateMaintenanceConfigurationResponseSystemData {
   /** The identity that created the resource. */
@@ -2921,12 +2787,12 @@ export interface UpdateMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateMaintenanceConfigurationResponseSystemData =
+const UpdateMaintenanceConfigurationResponseSystemData =
   ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateMaintenanceConfigurationResponseSystemData>;
 
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMaintenanceConfigurationResponseTagsMap =
+const UpdateMaintenanceConfigurationResponseTagsMap =
   DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationResponseTagsMap>;
 
 export interface UpdateMaintenanceConfigurationResponse {
@@ -2945,7 +2811,7 @@ export interface UpdateMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-export const UpdateMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

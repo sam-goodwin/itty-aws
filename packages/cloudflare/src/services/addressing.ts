@@ -243,12 +243,12 @@ export class UnsupportedBindingConfiguration
   ) {}
 
 export type AddressMapsCreateRequestIpsList = Array<string>;
-export const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
+const AddressMapsCreateRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddressMapsCreateRequestIpsList>;
 
 export type AddressMapsCreateRequestMembershipsItemKind = "zone" | "account";
-export const AddressMapsCreateRequestMembershipsItemKind = S.String;
+const AddressMapsCreateRequestMembershipsItemKind = S.String;
 
 export interface AddressMapsCreateRequestMembershipsItem {
   /** The identifier for the membership (eg. a zone or account tag). */
@@ -256,7 +256,7 @@ export interface AddressMapsCreateRequestMembershipsItem {
   /** The type of the membership. */
   kind?: AddressMapsCreateRequestMembershipsItemKind | (string & {});
 }
-export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(() =>
+const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     kind: S.optional(AddressMapsCreateRequestMembershipsItemKind),
@@ -267,7 +267,7 @@ export const AddressMapsCreateRequestMembershipsItem = /*@__PURE__*/ S.suspend((
 
 export type AddressMapsCreateRequestMembershipsList =
   Array<AddressMapsCreateRequestMembershipsItem>;
-export const AddressMapsCreateRequestMembershipsList = /*@__PURE__*/ S.Array(
+const AddressMapsCreateRequestMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateRequestMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateRequestMembershipsList>;
 
@@ -282,7 +282,7 @@ export interface CreateAddressMapRequest {
   /** Zones and Accounts which will be assigned IPs on this Address Map. A zone membership will take priority over an account membership. */
   memberships?: AddressMapsCreateRequestMembershipsList;
 }
-export const CreateAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     description: S.optional(S.String),
@@ -301,7 +301,7 @@ export interface AddressMapsCreateResponseIps {
   /** An IPv4 or IPv6 address. */
   ip?: string | null;
 }
-export const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
+const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
     ip: S.optional(S.NullOr(S.String)),
@@ -311,12 +311,12 @@ export const AddressMapsCreateResponseIps = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsCreateResponseIps>;
 
 export type AddressMapsCreateResponseIpsList = Array<AddressMapsCreateResponseIps>;
-export const AddressMapsCreateResponseIpsList = /*@__PURE__*/ S.Array(
+const AddressMapsCreateResponseIpsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseIps,
 ) as any as S.Schema<AddressMapsCreateResponseIpsList>;
 
 export type AddressMapsCreateResponseMembershipsItemKind = "zone" | "account";
-export const AddressMapsCreateResponseMembershipsItemKind = S.String;
+const AddressMapsCreateResponseMembershipsItemKind = S.String;
 
 export interface AddressMapsCreateResponseMembershipsItem {
   /** Controls whether the membership can be deleted via the API or not. */
@@ -327,7 +327,7 @@ export interface AddressMapsCreateResponseMembershipsItem {
   /** The type of the membership. */
   kind?: AddressMapsCreateResponseMembershipsItemKind | null;
 }
-export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(() =>
+const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -340,7 +340,7 @@ export const AddressMapsCreateResponseMembershipsItem = /*@__PURE__*/ S.suspend(
 
 export type AddressMapsCreateResponseMembershipsList =
   Array<AddressMapsCreateResponseMembershipsItem>;
-export const AddressMapsCreateResponseMembershipsList = /*@__PURE__*/ S.Array(
+const AddressMapsCreateResponseMembershipsList = /*@__PURE__*/ S.Array(
   AddressMapsCreateResponseMembershipsItem,
 ) as any as S.Schema<AddressMapsCreateResponseMembershipsList>;
 
@@ -365,7 +365,7 @@ export interface CreateAddressMapResponse {
   memberships?: AddressMapsCreateResponseMembershipsList | null;
   modifiedAt?: string | null;
 }
-export const CreateAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
@@ -386,7 +386,7 @@ export interface CreateLoaDocumentRequest {
   /** LOA document to upload. */
   loaDocument: string;
 }
-export const CreateLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     loaDocument: S.String.pipe(T.Body("loa_document")),
@@ -415,7 +415,7 @@ export interface CreateLoaDocumentResponse {
   /** Timestamp of the moment the LOA was marked as validated. */
   verifiedAt?: string | null;
 }
-export const CreateLoaDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLoaDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
@@ -444,7 +444,7 @@ export interface CreatePrefixRequest {
   /** Identifier for the uploaded LOA document. */
   loaDocumentId?: string;
 }
-export const CreatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     asn: S.Number,
@@ -494,7 +494,7 @@ export interface CreatePrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const CreatePrefixResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
@@ -529,7 +529,7 @@ export interface CreatePrefixBgpPrefixRequest {
   /** IP Prefix in Classless Inter-Domain Routing format. */
   cidr: string;
 }
-export const CreatePrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -553,7 +553,7 @@ export interface PrefixesBgpPrefixesCreateResponseBgpSignalOpts {
   /** Last time BGP signaling control was toggled. This field is null if BGP signaling has never been enabled. */
   modifiedAt?: string | null;
 }
-export const PrefixesBgpPrefixesCreateResponseBgpSignalOpts = /*@__PURE__*/ S.suspend(() =>
+const PrefixesBgpPrefixesCreateResponseBgpSignalOpts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     modifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("modified_at"))),
@@ -572,7 +572,7 @@ export interface PrefixesBgpPrefixesCreateResponseOnDemand {
   /** Whether the advertisement status of the prefix is locked, meaning it cannot be changed. */
   onDemandLocked?: boolean | null;
 }
-export const PrefixesBgpPrefixesCreateResponseOnDemand = /*@__PURE__*/ S.suspend(() =>
+const PrefixesBgpPrefixesCreateResponseOnDemand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertised: S.optional(S.NullOr(S.Boolean)),
     advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
@@ -600,7 +600,7 @@ export interface CreatePrefixBgpPrefixResponse {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const CreatePrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixBgpPrefixResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     asn: S.optional(S.NullOr(S.Number)),
@@ -630,7 +630,7 @@ export interface CreatePrefixDelegationRequest {
   /** Account identifier for the account to which prefix is being delegated. */
   delegatedAccountId: string;
 }
-export const CreatePrefixDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -662,7 +662,7 @@ export interface CreatePrefixDelegationResponse {
   /** Identifier of an IP Prefix. */
   parentPrefixId?: string | null;
 }
-export const CreatePrefixDelegationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixDelegationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cidr: S.optional(S.NullOr(S.String)),
@@ -685,7 +685,7 @@ export interface CreatePrefixServiceBindingRequest {
   /** Identifier of a Service on the Cloudflare network. Available services and their IDs may be found in the **List Services** endpoint. */
   serviceId: string;
 }
-export const CreatePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -708,13 +708,13 @@ export type PrefixesServiceBindingsCreateResponseProvisioningState =
   | "provisioning"
   | "active"
   | "magic_transit_route_missing";
-export const PrefixesServiceBindingsCreateResponseProvisioningState = S.String;
+const PrefixesServiceBindingsCreateResponseProvisioningState = S.String;
 
 export interface PrefixesServiceBindingsCreateResponseProvisioning {
   /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
   state?: PrefixesServiceBindingsCreateResponseProvisioningState | null;
 }
-export const PrefixesServiceBindingsCreateResponseProvisioning = /*@__PURE__*/ S.suspend(() =>
+const PrefixesServiceBindingsCreateResponseProvisioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.NullOr(PrefixesServiceBindingsCreateResponseProvisioningState)),
   }),
@@ -735,7 +735,7 @@ export interface CreatePrefixServiceBindingResponse {
   /** Name of a service running on the Cloudflare network */
   serviceName?: string | null;
 }
-export const CreatePrefixServiceBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrefixServiceBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cidr: S.optional(S.NullOr(S.String)),
@@ -757,7 +757,7 @@ export interface CreateRegionalHostnameRequest {
   /** Configure which routing method to use for the regional hostname */
   routing?: string;
 }
-export const CreateRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String,
@@ -783,7 +783,7 @@ export interface CreateRegionalHostnameResponse {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const CreateRegionalHostnameResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionalHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
@@ -800,7 +800,7 @@ export interface DeleteAddressMapRequest {
   /** Identifier of an Address Map. */
   addressMapId: string;
 }
-export const DeleteAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -816,7 +816,7 @@ export const DeleteAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddressMapRequest" }) as any as S.Schema<DeleteAddressMapRequest>;
 
 export interface DeleteAddressMapResponse {}
-export const DeleteAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteAddressMapResponse" }) as any as S.Schema<DeleteAddressMapResponse>;
 
@@ -828,7 +828,7 @@ export interface DeleteAddressMapAccountRequest {
   /** Identifier of a Cloudflare account. */
   memberAccountId: string;
 }
-export const DeleteAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -847,7 +847,7 @@ export const DeleteAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressMapAccountRequest>;
 
 export interface DeleteAddressMapAccountResponse {}
-export const DeleteAddressMapAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteAddressMapAccountResponse",
@@ -861,7 +861,7 @@ export interface DeleteAddressMapIpRequest {
   /** An IPv4 or IPv6 address. */
   ipAddress: string;
 }
-export const DeleteAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -880,7 +880,7 @@ export const DeleteAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressMapIpRequest>;
 
 export interface DeleteAddressMapIpResponse {}
-export const DeleteAddressMapIpResponse =
+const DeleteAddressMapIpResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<DeleteAddressMapIpResponse>;
 
 export interface DeleteAddressMapZoneRequest {
@@ -891,7 +891,7 @@ export interface DeleteAddressMapZoneRequest {
   /** Identifier of a zone. */
   zoneId: string;
 }
-export const DeleteAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -910,7 +910,7 @@ export const DeleteAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAddressMapZoneRequest>;
 
 export interface DeleteAddressMapZoneResponse {}
-export const DeleteAddressMapZoneResponse =
+const DeleteAddressMapZoneResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<DeleteAddressMapZoneResponse>;
 
 export interface DeletePrefixRequest {
@@ -919,7 +919,7 @@ export interface DeletePrefixRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -935,8 +935,7 @@ export const DeletePrefixRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePrefixRequest" }) as any as S.Schema<DeletePrefixRequest>;
 
 export interface DeletePrefixResponse {}
-export const DeletePrefixResponse =
-  DeleteAddressMapResponse as any as S.Schema<DeletePrefixResponse>;
+const DeletePrefixResponse = DeleteAddressMapResponse as any as S.Schema<DeletePrefixResponse>;
 
 export interface DeletePrefixDelegationRequest {
   /** Identifier of a Cloudflare account. */
@@ -946,7 +945,7 @@ export interface DeletePrefixDelegationRequest {
   /** Identifier of a Delegation. */
   delegationId: string;
 }
-export const DeletePrefixDelegationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -969,7 +968,7 @@ export interface DeletePrefixDelegationResponse {
   /** Identifier of a Delegation. */
   id?: string | null;
 }
-export const DeletePrefixDelegationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixDelegationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -985,7 +984,7 @@ export interface DeletePrefixesBgpPrefixRequest {
   /** Identifier of BGP Prefix. */
   bgpPrefixId: string;
 }
-export const DeletePrefixesBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixesBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1004,7 +1003,7 @@ export const DeletePrefixesBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrefixesBgpPrefixRequest>;
 
 export interface DeletePrefixesBgpPrefixResponse {}
-export const DeletePrefixesBgpPrefixResponse =
+const DeletePrefixesBgpPrefixResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<DeletePrefixesBgpPrefixResponse>;
 
 export interface DeletePrefixServiceBindingRequest {
@@ -1015,7 +1014,7 @@ export interface DeletePrefixServiceBindingRequest {
   /** Identifier of a Service Binding. */
   bindingId: string;
 }
-export const DeletePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1034,7 +1033,7 @@ export const DeletePrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrefixServiceBindingRequest>;
 
 export interface DeletePrefixServiceBindingResponse {}
-export const DeletePrefixServiceBindingResponse =
+const DeletePrefixServiceBindingResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<DeletePrefixServiceBindingResponse>;
 
 export interface DeleteRegionalHostnameRequest {
@@ -1043,7 +1042,7 @@ export interface DeleteRegionalHostnameRequest {
   /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
 }
-export const DeleteRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
@@ -1061,7 +1060,7 @@ export const DeleteRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegionalHostnameRequest>;
 
 export interface DeleteRegionalHostnameResponse {}
-export const DeleteRegionalHostnameResponse =
+const DeleteRegionalHostnameResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<DeleteRegionalHostnameResponse>;
 
 export interface GetAddressMapRequest {
@@ -1070,7 +1069,7 @@ export interface GetAddressMapRequest {
   /** Identifier of an Address Map. */
   addressMapId: string;
 }
-export const GetAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -1086,15 +1085,11 @@ export const GetAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAddressMapRequest" }) as any as S.Schema<GetAddressMapRequest>;
 
 export type AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
-export const AddressMapsGetResponseIps = AddressMapsCreateResponseIps;
-
 export type AddressMapsGetResponseIpsList = Array<AddressMapsCreateResponseIps>;
-export const AddressMapsGetResponseIpsList =
+const AddressMapsGetResponseIpsList =
   AddressMapsCreateResponseIpsList as any as S.Schema<AddressMapsGetResponseIpsList>;
 
 export type AddressMapsGetResponseMembershipsItemKind = "zone" | "account";
-export const AddressMapsGetResponseMembershipsItemKind = S.String;
-
 export interface AddressMapsGetResponseMembershipsItem {
   /** Controls whether the membership can be deleted via the API or not. */
   canDelete?: boolean | null;
@@ -1104,11 +1099,8 @@ export interface AddressMapsGetResponseMembershipsItem {
   /** The type of the membership. */
   kind?: AddressMapsGetResponseMembershipsItemKind | null;
 }
-export const AddressMapsGetResponseMembershipsItem =
-  AddressMapsCreateResponseMembershipsItem as any as S.Schema<AddressMapsGetResponseMembershipsItem>;
-
 export type AddressMapsGetResponseMembershipsList = Array<AddressMapsGetResponseMembershipsItem>;
-export const AddressMapsGetResponseMembershipsList =
+const AddressMapsGetResponseMembershipsList =
   AddressMapsCreateResponseMembershipsList as any as S.Schema<AddressMapsGetResponseMembershipsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1132,7 +1124,7 @@ export interface GetAddressMapResponse {
   memberships?: AddressMapsGetResponseMembershipsList | null;
   modifiedAt?: string | null;
 }
-export const GetAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
@@ -1153,7 +1145,7 @@ export interface GetLoaDocumentRequest {
   /** Identifier for the uploaded LOA document. */
   loaDocumentId: string;
 }
-export const GetLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     loaDocumentId: S.String.pipe(T.Label("loa_document_id")),
@@ -1169,8 +1161,7 @@ export const GetLoaDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLoaDocumentRequest" }) as any as S.Schema<GetLoaDocumentRequest>;
 
 export interface GetLoaDocumentResponse {}
-export const GetLoaDocumentResponse =
-  DeleteAddressMapResponse as any as S.Schema<GetLoaDocumentResponse>;
+const GetLoaDocumentResponse = DeleteAddressMapResponse as any as S.Schema<GetLoaDocumentResponse>;
 
 export interface GetPrefixRequest {
   /** Identifier of a Cloudflare account. */
@@ -1178,7 +1169,7 @@ export interface GetPrefixRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const GetPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1230,7 +1221,7 @@ export interface GetPrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const GetPrefixResponse = CreatePrefixResponse as any as S.Schema<GetPrefixResponse>;
+const GetPrefixResponse = CreatePrefixResponse as any as S.Schema<GetPrefixResponse>;
 
 export interface GetPrefixAdvertisementStatusRequest {
   /** Identifier of a Cloudflare account. */
@@ -1238,7 +1229,7 @@ export interface GetPrefixAdvertisementStatusRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const GetPrefixAdvertisementStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixAdvertisementStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1262,7 +1253,7 @@ export interface GetPrefixAdvertisementStatusResponse {
   /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
   advertisedModifiedAt?: string | null;
 }
-export const GetPrefixAdvertisementStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixAdvertisementStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertised: S.optional(S.NullOr(S.Boolean)),
     advertisedModifiedAt: S.optional(S.NullOr(S.String).pipe(T.Body("advertised_modified_at"))),
@@ -1279,7 +1270,7 @@ export interface GetPrefixBgpPrefixRequest {
   /** Identifier of BGP Prefix. */
   bgpPrefixId: string;
 }
-export const GetPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1299,12 +1290,7 @@ export const GetPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesBgpPrefixesGetResponseBgpSignalOpts =
   PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-export const PrefixesBgpPrefixesGetResponseBgpSignalOpts =
-  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-
 export type PrefixesBgpPrefixesGetResponseOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-export const PrefixesBgpPrefixesGetResponseOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPrefixBgpPrefixResponse {
   /** Identifier of BGP Prefix. */
@@ -1322,7 +1308,7 @@ export interface GetPrefixBgpPrefixResponse {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const GetPrefixBgpPrefixResponse =
+const GetPrefixBgpPrefixResponse =
   CreatePrefixBgpPrefixResponse as any as S.Schema<GetPrefixBgpPrefixResponse>;
 
 export interface GetPrefixServiceBindingRequest {
@@ -1333,7 +1319,7 @@ export interface GetPrefixServiceBindingRequest {
   /** Identifier of a Service Binding. */
   bindingId: string;
 }
-export const GetPrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrefixServiceBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1355,15 +1341,10 @@ export type PrefixesServiceBindingsGetResponseProvisioningState =
   | "provisioning"
   | "active"
   | "magic_transit_route_missing";
-export const PrefixesServiceBindingsGetResponseProvisioningState = S.String;
-
 export interface PrefixesServiceBindingsGetResponseProvisioning {
   /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
   state?: PrefixesServiceBindingsGetResponseProvisioningState | null;
 }
-export const PrefixesServiceBindingsGetResponseProvisioning =
-  PrefixesServiceBindingsCreateResponseProvisioning as any as S.Schema<PrefixesServiceBindingsGetResponseProvisioning>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPrefixServiceBindingResponse {
   /** Identifier of a Service Binding. */
@@ -1377,7 +1358,7 @@ export interface GetPrefixServiceBindingResponse {
   /** Name of a service running on the Cloudflare network */
   serviceName?: string | null;
 }
-export const GetPrefixServiceBindingResponse =
+const GetPrefixServiceBindingResponse =
   CreatePrefixServiceBindingResponse as any as S.Schema<GetPrefixServiceBindingResponse>;
 
 export interface GetRegionalHostnameRequest {
@@ -1386,7 +1367,7 @@ export interface GetRegionalHostnameRequest {
   /** DNS hostname to be regionalized, must be a subdomain of the zone. Wildcards are supported for one level, e.g `*.example.com` */
   hostname: string;
 }
-export const GetRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
@@ -1414,14 +1395,14 @@ export interface GetRegionalHostnameResponse {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const GetRegionalHostnameResponse =
+const GetRegionalHostnameResponse =
   CreateRegionalHostnameResponse as any as S.Schema<GetRegionalHostnameResponse>;
 
 export interface ListAddressMapsRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
 }
-export const ListAddressMapsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddressMapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1447,7 +1428,7 @@ export interface AddressMapsListResultItem {
   enabled?: boolean | null;
   modifiedAt?: string | null;
 }
-export const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
@@ -1463,7 +1444,7 @@ export const AddressMapsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddressMapsListResultItem>;
 
 export type AddressMapsListResultList = Array<AddressMapsListResultItem>;
-export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
+const AddressMapsListResultList = /*@__PURE__*/ S.Array(
   AddressMapsListResultItem,
 ) as any as S.Schema<AddressMapsListResultList>;
 
@@ -1473,7 +1454,7 @@ export interface ListAddressMapsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAddressMapsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAddressMapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AddressMapsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1486,7 +1467,7 @@ export interface ListPrefixBgpPrefixesRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const ListPrefixBgpPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixBgpPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1505,12 +1486,7 @@ export const ListPrefixBgpPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesBgpPrefixesListResultItemBgpSignalOpts =
   PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-export const PrefixesBgpPrefixesListResultItemBgpSignalOpts =
-  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-
 export type PrefixesBgpPrefixesListResultItemOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-export const PrefixesBgpPrefixesListResultItemOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-
 export interface PrefixesBgpPrefixesListResultItem {
   /** Identifier of BGP Prefix. */
   id?: string | null;
@@ -1527,7 +1503,7 @@ export interface PrefixesBgpPrefixesListResultItem {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     asn: S.optional(S.NullOr(S.Number)),
@@ -1548,7 +1524,7 @@ export const PrefixesBgpPrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesBgpPrefixesListResultItem>;
 
 export type PrefixesBgpPrefixesListResultList = Array<PrefixesBgpPrefixesListResultItem>;
-export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
+const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesBgpPrefixesListResultItem,
 ) as any as S.Schema<PrefixesBgpPrefixesListResultList>;
 
@@ -1558,7 +1534,7 @@ export interface ListPrefixBgpPrefixesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPrefixBgpPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixBgpPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrefixesBgpPrefixesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1573,7 +1549,7 @@ export interface ListPrefixDelegationsRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const ListPrefixDelegationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixDelegationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1602,7 +1578,7 @@ export interface PrefixesDelegationsListResultItem {
   /** Identifier of an IP Prefix. */
   parentPrefixId?: string | null;
 }
-export const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cidr: S.optional(S.NullOr(S.String)),
@@ -1616,7 +1592,7 @@ export const PrefixesDelegationsListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrefixesDelegationsListResultItem>;
 
 export type PrefixesDelegationsListResultList = Array<PrefixesDelegationsListResultItem>;
-export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
+const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
   PrefixesDelegationsListResultItem,
 ) as any as S.Schema<PrefixesDelegationsListResultList>;
 
@@ -1626,7 +1602,7 @@ export interface ListPrefixDelegationsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPrefixDelegationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixDelegationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrefixesDelegationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1639,7 +1615,7 @@ export interface ListPrefixesRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
 }
-export const ListPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1683,7 +1659,7 @@ export interface PrefixesListResultItem {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     accountId: S.optional(S.NullOr(S.String).pipe(T.Body("account_id"))),
@@ -1711,7 +1687,7 @@ export const PrefixesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrefixesListResultItem" }) as any as S.Schema<PrefixesListResultItem>;
 
 export type PrefixesListResultList = Array<PrefixesListResultItem>;
-export const PrefixesListResultList = /*@__PURE__*/ S.Array(
+const PrefixesListResultList = /*@__PURE__*/ S.Array(
   PrefixesListResultItem,
 ) as any as S.Schema<PrefixesListResultList>;
 
@@ -1721,7 +1697,7 @@ export interface ListPrefixesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrefixesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1734,7 +1710,7 @@ export interface ListPrefixServiceBindingsRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const ListPrefixServiceBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixServiceBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -1755,13 +1731,11 @@ export type PrefixesServiceBindingsListResultItemProvisioningState =
   | "provisioning"
   | "active"
   | "magic_transit_route_missing";
-export const PrefixesServiceBindingsListResultItemProvisioningState = S.String;
-
 export interface PrefixesServiceBindingsListResultItemProvisioning {
   /** When a binding has been deployed to a majority of Cloudflare datacenters, the binding will become active and can be used with its associated service. */
   state?: PrefixesServiceBindingsListResultItemProvisioningState | null;
 }
-export const PrefixesServiceBindingsListResultItemProvisioning =
+const PrefixesServiceBindingsListResultItemProvisioning =
   PrefixesServiceBindingsCreateResponseProvisioning as any as S.Schema<PrefixesServiceBindingsListResultItemProvisioning>;
 
 export interface PrefixesServiceBindingsListResultItem {
@@ -1776,7 +1750,7 @@ export interface PrefixesServiceBindingsListResultItem {
   /** Name of a service running on the Cloudflare network */
   serviceName?: string | null;
 }
-export const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cidr: S.optional(S.NullOr(S.String)),
@@ -1789,7 +1763,7 @@ export const PrefixesServiceBindingsListResultItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<PrefixesServiceBindingsListResultItem>;
 
 export type PrefixesServiceBindingsListResultList = Array<PrefixesServiceBindingsListResultItem>;
-export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
+const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
   PrefixesServiceBindingsListResultItem,
 ) as any as S.Schema<PrefixesServiceBindingsListResultList>;
 
@@ -1799,7 +1773,7 @@ export interface ListPrefixServiceBindingsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListPrefixServiceBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrefixServiceBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PrefixesServiceBindingsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1812,7 +1786,7 @@ export interface ListRegionalHostnameRegionsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ListRegionalHostnameRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalHostnameRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1834,7 +1808,7 @@ export interface RegionalHostnamesRegionsListResultItem {
   /** Human-readable text label for the region */
   label?: string | null;
 }
-export const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
     label: S.optional(S.NullOr(S.String)),
@@ -1844,7 +1818,7 @@ export const RegionalHostnamesRegionsListResultItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RegionalHostnamesRegionsListResultItem>;
 
 export type RegionalHostnamesRegionsListResultList = Array<RegionalHostnamesRegionsListResultItem>;
-export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
+const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesRegionsListResultItem,
 ) as any as S.Schema<RegionalHostnamesRegionsListResultList>;
 
@@ -1854,7 +1828,7 @@ export interface ListRegionalHostnameRegionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRegionalHostnameRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalHostnameRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RegionalHostnamesRegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1867,7 +1841,7 @@ export interface ListRegionalHostnamesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListRegionalHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1889,7 +1863,7 @@ export interface RegionalHostnamesListResultItem {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     hostname: S.String,
@@ -1901,7 +1875,7 @@ export const RegionalHostnamesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RegionalHostnamesListResultItem>;
 
 export type RegionalHostnamesListResultList = Array<RegionalHostnamesListResultItem>;
-export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
+const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
   RegionalHostnamesListResultItem,
 ) as any as S.Schema<RegionalHostnamesListResultList>;
 
@@ -1911,7 +1885,7 @@ export interface ListRegionalHostnamesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRegionalHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionalHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RegionalHostnamesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1924,7 +1898,7 @@ export interface ListServicesRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1938,7 +1912,7 @@ export interface ServicesListResultItem {
   /** Name of a service running on the Cloudflare network */
   name?: string | null;
 }
-export const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -1946,7 +1920,7 @@ export const ServicesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServicesListResultItem" }) as any as S.Schema<ServicesListResultItem>;
 
 export type ServicesListResultList = Array<ServicesListResultItem>;
-export const ServicesListResultList = /*@__PURE__*/ S.Array(
+const ServicesListResultList = /*@__PURE__*/ S.Array(
   ServicesListResultItem,
 ) as any as S.Schema<ServicesListResultList>;
 
@@ -1956,7 +1930,7 @@ export interface ListServicesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ServicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1975,7 +1949,7 @@ export interface PatchAddressMapRequest {
   /** Whether the Address Map is enabled or not. Cloudflare's DNS will not respond with IP addresses on an Address Map until the map is enabled. */
   enabled?: boolean;
 }
-export const PatchAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAddressMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -2010,7 +1984,7 @@ export interface PatchAddressMapResponse {
   enabled?: boolean | null;
   modifiedAt?: string | null;
 }
-export const PatchAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchAddressMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     canDelete: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_delete"))),
@@ -2031,7 +2005,7 @@ export interface PatchPrefixRequest {
   /** Description of the prefix. */
   description: string;
 }
-export const PatchPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -2084,7 +2058,7 @@ export interface PatchPrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const PatchPrefixResponse = CreatePrefixResponse as any as S.Schema<PatchPrefixResponse>;
+const PatchPrefixResponse = CreatePrefixResponse as any as S.Schema<PatchPrefixResponse>;
 
 export interface PatchPrefixAdvertisementStatusRequest {
   /** Identifier of a Cloudflare account. */
@@ -2094,7 +2068,7 @@ export interface PatchPrefixAdvertisementStatusRequest {
   /** Advertisement status of the prefix. If `true`, the BGP route for the prefix is advertised to the Internet. If `false`, the BGP route is withdrawn. */
   advertised: boolean;
 }
-export const PatchPrefixAdvertisementStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPrefixAdvertisementStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -2119,13 +2093,13 @@ export interface PatchPrefixAdvertisementStatusResponse {
   /** Last time the advertisement status was changed. This field is only not 'null' if on demand is enabled. */
   advertisedModifiedAt?: string | null;
 }
-export const PatchPrefixAdvertisementStatusResponse =
+const PatchPrefixAdvertisementStatusResponse =
   GetPrefixAdvertisementStatusResponse as any as S.Schema<PatchPrefixAdvertisementStatusResponse>;
 
 export interface PrefixesBgpPrefixesEditRequestOnDemand {
   advertised?: boolean;
 }
-export const PrefixesBgpPrefixesEditRequestOnDemand = /*@__PURE__*/ S.suspend(() =>
+const PrefixesBgpPrefixesEditRequestOnDemand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertised: S.optional(S.Boolean),
   }),
@@ -2146,7 +2120,7 @@ export interface PatchPrefixBgpPrefixRequest {
   autoAdvertiseWithdraw?: boolean;
   onDemand?: PrefixesBgpPrefixesEditRequestOnDemand;
 }
-export const PatchPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -2169,12 +2143,7 @@ export const PatchPrefixBgpPrefixRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type PrefixesBgpPrefixesEditResponseBgpSignalOpts =
   PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-export const PrefixesBgpPrefixesEditResponseBgpSignalOpts =
-  PrefixesBgpPrefixesCreateResponseBgpSignalOpts;
-
 export type PrefixesBgpPrefixesEditResponseOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-export const PrefixesBgpPrefixesEditResponseOnDemand = PrefixesBgpPrefixesCreateResponseOnDemand;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchPrefixBgpPrefixResponse {
   /** Identifier of BGP Prefix. */
@@ -2192,7 +2161,7 @@ export interface PatchPrefixBgpPrefixResponse {
   modifiedAt?: string | null;
   onDemand?: PrefixesBgpPrefixesCreateResponseOnDemand | null;
 }
-export const PatchPrefixBgpPrefixResponse =
+const PatchPrefixBgpPrefixResponse =
   CreatePrefixBgpPrefixResponse as any as S.Schema<PatchPrefixBgpPrefixResponse>;
 
 export interface PatchRegionalHostnameRequest {
@@ -2203,7 +2172,7 @@ export interface PatchRegionalHostnameRequest {
   /** Identifying key for the region */
   regionKey: string;
 }
-export const PatchRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRegionalHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     hostname: S.String.pipe(T.Label()),
@@ -2232,7 +2201,7 @@ export interface PatchRegionalHostnameResponse {
   /** Configure which routing method to use for the regional hostname */
   routing: string;
 }
-export const PatchRegionalHostnameResponse =
+const PatchRegionalHostnameResponse =
   CreateRegionalHostnameResponse as any as S.Schema<PatchRegionalHostnameResponse>;
 
 export interface PutAddressMapAccountRequest {
@@ -2243,7 +2212,7 @@ export interface PutAddressMapAccountRequest {
   /** Identifier of a Cloudflare account. */
   memberAccountId: string;
 }
-export const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -2262,7 +2231,7 @@ export const PutAddressMapAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutAddressMapAccountRequest>;
 
 export interface PutAddressMapAccountResponse {}
-export const PutAddressMapAccountResponse =
+const PutAddressMapAccountResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<PutAddressMapAccountResponse>;
 
 export interface PutAddressMapIpRequest {
@@ -2273,7 +2242,7 @@ export interface PutAddressMapIpRequest {
   /** An IPv4 or IPv6 address. */
   ipAddress: string;
 }
-export const PutAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -2290,7 +2259,7 @@ export const PutAddressMapIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAddressMapIpRequest" }) as any as S.Schema<PutAddressMapIpRequest>;
 
 export interface PutAddressMapIpResponse {}
-export const PutAddressMapIpResponse =
+const PutAddressMapIpResponse =
   DeleteAddressMapResponse as any as S.Schema<PutAddressMapIpResponse>;
 
 export interface PutAddressMapZoneRequest {
@@ -2301,7 +2270,7 @@ export interface PutAddressMapZoneRequest {
   /** Identifier of a zone. */
   zoneId: string;
 }
-export const PutAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     addressMapId: S.String.pipe(T.Label("address_map_id")),
@@ -2318,7 +2287,7 @@ export const PutAddressMapZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutAddressMapZoneRequest" }) as any as S.Schema<PutAddressMapZoneRequest>;
 
 export interface PutAddressMapZoneResponse {}
-export const PutAddressMapZoneResponse =
+const PutAddressMapZoneResponse =
   DeleteAddressMapAccountResponse as any as S.Schema<PutAddressMapZoneResponse>;
 
 export interface ValidatePrefixRequest {
@@ -2327,7 +2296,7 @@ export interface ValidatePrefixRequest {
   /** Identifier of an IP Prefix. */
   prefixId: string;
 }
-export const ValidatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidatePrefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefixId: S.String.pipe(T.Label("prefix_id")),
@@ -2379,8 +2348,7 @@ export interface ValidatePrefixResponse {
   /** State of one kind of validation for an IP prefix. */
   rpkiValidationState?: string | null;
 }
-export const ValidatePrefixResponse =
-  CreatePrefixResponse as any as S.Schema<ValidatePrefixResponse>;
+const ValidatePrefixResponse = CreatePrefixResponse as any as S.Schema<ValidatePrefixResponse>;
 
 export type CreateAddressMapError =
   | FeatureNotEnabled

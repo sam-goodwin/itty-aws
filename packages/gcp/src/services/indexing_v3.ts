@@ -65,7 +65,7 @@ export interface GetMetadataUrlNotificationsRequest {
   /** URL that is being queried. */
   url?: string;
 }
-export const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -83,7 +83,7 @@ export type UrlNotificationTypeEnum =
   | "URL_NOTIFICATION_TYPE_UNSPECIFIED"
   | "URL_UPDATED"
   | "URL_DELETED";
-export const UrlNotificationTypeEnum = S.String;
+const UrlNotificationTypeEnum = S.String;
 
 /** `UrlNotification` is the resource used in all Indexing API calls. It describes one event in the life cycle of a Web Document. */
 export interface UrlNotification {
@@ -94,7 +94,7 @@ export interface UrlNotification {
   /** The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google. */
   url?: string;
 }
-export const UrlNotification = /*@__PURE__*/ S.suspend(() =>
+const UrlNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notifyTime: S.optional(S.String),
     type: S.optional(UrlNotificationTypeEnum),
@@ -111,7 +111,7 @@ export interface UrlNotificationMetadata {
   /** Latest notification received with type `URL_REMOVED`. */
   latestRemove?: UrlNotification;
 }
-export const UrlNotificationMetadata = /*@__PURE__*/ S.suspend(() =>
+const UrlNotificationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestUpdate: S.optional(UrlNotification),
     url: S.optional(S.String),
@@ -123,7 +123,7 @@ export interface PublishUrlNotificationsRequest {
   /** Request body */
   body?: UrlNotification;
 }
-export const PublishUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishUrlNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(UrlNotification.pipe(T.HttpBody())),
   }).pipe(
@@ -142,7 +142,7 @@ export interface PublishUrlNotificationResponse {
   /** Description of the notification events received for this URL. */
   urlNotificationMetadata?: UrlNotificationMetadata;
 }
-export const PublishUrlNotificationResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishUrlNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlNotificationMetadata: S.optional(UrlNotificationMetadata),
   }),

@@ -117,12 +117,14 @@ export class WorkflowNotFound
   ) {}
 
 export type InstancesBulkRequestBodyItemInstanceRetentionErrorRetention = string | number;
-export const InstancesBulkRequestBodyItemInstanceRetentionErrorRetention =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const InstancesBulkRequestBodyItemInstanceRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export type InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention = string | number;
-export const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([[], []]),
+);
 
 export interface InstancesBulkRequestBodyItemInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
@@ -130,7 +132,7 @@ export interface InstancesBulkRequestBodyItemInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
   successRetention?: InstancesBulkRequestBodyItemInstanceRetentionSuccessRetention;
 }
-export const InstancesBulkRequestBodyItemInstanceRetention = /*@__PURE__*/ S.suspend(() =>
+const InstancesBulkRequestBodyItemInstanceRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorRetention: S.optional(
       InstancesBulkRequestBodyItemInstanceRetentionErrorRetention.pipe(T.Body("error_retention")),
@@ -157,7 +159,7 @@ export type InstancesBulkRequestBodyItemLocationHint =
   | "sam"
   | "afr"
   | "me";
-export const InstancesBulkRequestBodyItemLocationHint = S.String;
+const InstancesBulkRequestBodyItemLocationHint = S.String;
 
 export interface InstancesBulkRequestBodyItem {
   /** The system reserves IDs that consist of the `cf_` prefix and exactly 64 lowercase hexadecimal characters. */
@@ -167,7 +169,7 @@ export interface InstancesBulkRequestBodyItem {
   /** JSON-encoded event payload passed into the new instance. */
   params?: string;
 }
-export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String.pipe(T.Body("instance_id"))),
     instanceRetention: S.optional(
@@ -183,7 +185,7 @@ export const InstancesBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesBulkRequestBodyItem>;
 
 export type InstancesBulkRequestBodyList = Array<InstancesBulkRequestBodyItem>;
-export const InstancesBulkRequestBodyList = /*@__PURE__*/ S.Array(
+const InstancesBulkRequestBodyList = /*@__PURE__*/ S.Array(
   InstancesBulkRequestBodyItem,
 ) as any as S.Schema<InstancesBulkRequestBodyList>;
 
@@ -192,7 +194,7 @@ export interface BulkInstanceRequest {
   workflowName: string;
   body: InstancesBulkRequestBodyList;
 }
-export const BulkInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -218,10 +220,10 @@ export type InstancesBulkResultItemStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesBulkResultItemStatus = S.String;
+const InstancesBulkResultItemStatus = S.String;
 
 export type InstancesBulkResultItemTriggerSource = "unknown" | "api" | "binding" | "event" | "cron";
-export const InstancesBulkResultItemTriggerSource = S.String;
+const InstancesBulkResultItemTriggerSource = S.String;
 
 export interface InstancesBulkResultItem {
   id: string;
@@ -230,7 +232,7 @@ export interface InstancesBulkResultItem {
   workflowId: string;
   triggerSource?: InstancesBulkResultItemTriggerSource | null;
 }
-export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
+const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: InstancesBulkResultItemStatus,
@@ -243,7 +245,7 @@ export const InstancesBulkResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancesBulkResultItem" }) as any as S.Schema<InstancesBulkResultItem>;
 
 export type InstancesBulkResultList = Array<InstancesBulkResultItem>;
-export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
+const InstancesBulkResultList = /*@__PURE__*/ S.Array(
   InstancesBulkResultItem,
 ) as any as S.Schema<InstancesBulkResultList>;
 
@@ -253,7 +255,7 @@ export interface BulkInstanceResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InstancesBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -261,12 +263,12 @@ export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkInstanceResponse" }) as any as S.Schema<BulkInstanceResponse>;
 
 export type InstancesCreateRequestInstanceRetentionErrorRetention = string | number;
-export const InstancesCreateRequestInstanceRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
+const InstancesCreateRequestInstanceRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesCreateRequestInstanceRetentionSuccessRetention = string | number;
-export const InstancesCreateRequestInstanceRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
+const InstancesCreateRequestInstanceRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -276,7 +278,7 @@ export interface InstancesCreateRequestInstanceRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
   successRetention?: InstancesCreateRequestInstanceRetentionSuccessRetention;
 }
-export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(() =>
+const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorRetention: S.optional(
       InstancesCreateRequestInstanceRetentionErrorRetention.pipe(T.Body("error_retention")),
@@ -301,7 +303,7 @@ export type InstancesCreateRequestLocationHint =
   | "sam"
   | "afr"
   | "me";
-export const InstancesCreateRequestLocationHint = S.String;
+const InstancesCreateRequestLocationHint = S.String;
 
 export interface CreateInstanceRequest {
   accountId: string;
@@ -313,7 +315,7 @@ export interface CreateInstanceRequest {
   /** JSON-encoded event payload passed into the new instance. */
   params?: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -344,10 +346,10 @@ export type InstancesCreateResponseStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesCreateResponseStatus = S.String;
+const InstancesCreateResponseStatus = S.String;
 
 export type InstancesCreateResponseTriggerSource = "unknown" | "api" | "binding" | "event" | "cron";
-export const InstancesCreateResponseTriggerSource = S.String;
+const InstancesCreateResponseTriggerSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateInstanceResponse {
@@ -357,7 +359,7 @@ export interface CreateInstanceResponse {
   workflowId: string;
   triggerSource?: InstancesCreateResponseTriggerSource | null;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: InstancesCreateResponseStatus,
@@ -375,7 +377,7 @@ export interface CreateInstanceEventRequest {
   instanceId: string;
   eventType: string;
 }
-export const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -400,7 +402,7 @@ export interface CreateInstanceEventResponse {
   /** Accepts ISO 8601 with no timezone offsets and in UTC. */
   timestamp: string;
 }
-export const CreateInstanceEventResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
     timestamp: S.String,
@@ -413,7 +415,7 @@ export interface DeleteWorkflowRequest {
   accountId: string;
   workflowName: string;
 }
-export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -429,14 +431,14 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export type DeleteResponseStatus = "ok";
-export const DeleteResponseStatus = S.String;
+const DeleteResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWorkflowResponse {
   status: DeleteResponseStatus;
   success: boolean;
 }
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DeleteResponseStatus,
     success: S.Boolean,
@@ -444,7 +446,7 @@ export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowResponse" }) as any as S.Schema<DeleteWorkflowResponse>;
 
 export type InstancesGetRequestOrder = "asc" | "desc";
-export const InstancesGetRequestOrder = S.String;
+const InstancesGetRequestOrder = S.String;
 
 export interface GetInstanceRequest {
   accountId: string;
@@ -455,7 +457,7 @@ export interface GetInstanceRequest {
   /** When true, omits step details and returns only metadata with step_count. */
   simple?: boolean;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -477,7 +479,7 @@ export interface InstancesGetResponseError {
   message: string;
   name: string;
 }
-export const InstancesGetResponseError = /*@__PURE__*/ S.suspend(() =>
+const InstancesGetResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     name: S.String,
@@ -487,21 +489,19 @@ export const InstancesGetResponseError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesGetResponseError>;
 
 export type InstancesGetResponseOutput = string | number;
-export const InstancesGetResponseOutput = /*@__PURE__*/ S.Unknown.pipe(
+const InstancesGetResponseOutput = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type InstancesGetResponseRollbackError = InstancesGetResponseError;
-export const InstancesGetResponseRollbackError = InstancesGetResponseError;
-
 export type InstancesGetResponseRollbackOutcome = "complete" | "failed";
-export const InstancesGetResponseRollbackOutcome = S.String;
+const InstancesGetResponseRollbackOutcome = S.String;
 
 export interface InstancesGetResponseRollback {
   error: InstancesGetResponseError;
   outcome: InstancesGetResponseRollbackOutcome;
 }
-export const InstancesGetResponseRollback = /*@__PURE__*/ S.suspend(() =>
+const InstancesGetResponseRollback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: InstancesGetResponseError,
     outcome: InstancesGetResponseRollbackOutcome,
@@ -520,69 +520,30 @@ export type InstancesGetResponseStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesGetResponseStatus = S.String;
+const InstancesGetResponseStatus = S.String;
 
 export type InstancesGetResponseStepsItemCase0AttemptsItemError = InstancesGetResponseError;
-export const InstancesGetResponseStepsItemCase0AttemptsItemError = InstancesGetResponseError;
-
 export interface InstancesGetResponseStepsItemCase0AttemptsItem {
   end: string;
   error: InstancesGetResponseError;
   start: string;
   success: boolean;
 }
-export const InstancesGetResponseStepsItemCase0AttemptsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.String,
-    error: InstancesGetResponseError,
-    start: S.String,
-    success: S.Boolean,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase0AttemptsItem",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase0AttemptsItem>;
-
 export type InstancesGetResponseStepsItemCase0AttemptsList =
   Array<InstancesGetResponseStepsItemCase0AttemptsItem>;
-export const InstancesGetResponseStepsItemCase0AttemptsList = /*@__PURE__*/ S.Array(
-  InstancesGetResponseStepsItemCase0AttemptsItem,
-) as any as S.Schema<InstancesGetResponseStepsItemCase0AttemptsList>;
-
 export type InstancesGetResponseStepsItemCase0ConfigRetriesDelay = string | number;
-export const InstancesGetResponseStepsItemCase0ConfigRetriesDelay = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type InstancesGetResponseStepsItemCase0ConfigRetriesBackoff =
   | "constant"
   | "linear"
   | "exponential";
-export const InstancesGetResponseStepsItemCase0ConfigRetriesBackoff = S.String;
-
 export interface InstancesGetResponseStepsItemCase0ConfigRetries {
   /** Specifies the delay duration. The value '[dynamic]' means that a user-supplied function computes the delay. */
   delay: InstancesGetResponseStepsItemCase0ConfigRetriesDelay;
   limit: number;
   backoff?: InstancesGetResponseStepsItemCase0ConfigRetriesBackoff | null;
 }
-export const InstancesGetResponseStepsItemCase0ConfigRetries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    delay: InstancesGetResponseStepsItemCase0ConfigRetriesDelay,
-    limit: S.Number,
-    backoff: S.optional(S.NullOr(InstancesGetResponseStepsItemCase0ConfigRetriesBackoff)),
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase0ConfigRetries",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase0ConfigRetries>;
-
 export type InstancesGetResponseStepsItemCase0ConfigTimeout = string | number;
-export const InstancesGetResponseStepsItemCase0ConfigTimeout = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type InstancesGetResponseStepsItemCase0ConfigSensitive = "output";
-export const InstancesGetResponseStepsItemCase0ConfigSensitive = S.String;
-
 export interface InstancesGetResponseStepsItemCase0Config {
   retries: InstancesGetResponseStepsItemCase0ConfigRetries;
   /** Specifies the timeout duration. */
@@ -590,19 +551,7 @@ export interface InstancesGetResponseStepsItemCase0Config {
   /** When set to 'output', step output is redacted from log and step output responses. */
   sensitive?: InstancesGetResponseStepsItemCase0ConfigSensitive | null;
 }
-export const InstancesGetResponseStepsItemCase0Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retries: InstancesGetResponseStepsItemCase0ConfigRetries,
-    timeout: InstancesGetResponseStepsItemCase0ConfigTimeout,
-    sensitive: S.optional(S.NullOr(InstancesGetResponseStepsItemCase0ConfigSensitive)),
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase0Config",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase0Config>;
-
 export type InstancesGetResponseStepsItemCase0Type = "step" | "rollback";
-export const InstancesGetResponseStepsItemCase0Type = S.String;
-
 export interface InstancesGetResponseStepsItemCase0 {
   attempts: InstancesGetResponseStepsItemCase0AttemptsList;
   config: InstancesGetResponseStepsItemCase0Config;
@@ -613,27 +562,8 @@ export interface InstancesGetResponseStepsItemCase0 {
   success: boolean;
   type: InstancesGetResponseStepsItemCase0Type;
 }
-export const InstancesGetResponseStepsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attempts: InstancesGetResponseStepsItemCase0AttemptsList,
-    config: InstancesGetResponseStepsItemCase0Config,
-    end: S.String,
-    name: S.String,
-    output: S.String,
-    start: S.String,
-    success: S.Boolean,
-    type: InstancesGetResponseStepsItemCase0Type,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase0",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase0>;
-
 export type InstancesGetResponseStepsItemCase1Error = InstancesGetResponseError;
-export const InstancesGetResponseStepsItemCase1Error = InstancesGetResponseError;
-
 export type InstancesGetResponseStepsItemCase1Type = "sleep";
-export const InstancesGetResponseStepsItemCase1Type = S.String;
-
 export interface InstancesGetResponseStepsItemCase1 {
   end: string;
   error: InstancesGetResponseError;
@@ -642,52 +572,16 @@ export interface InstancesGetResponseStepsItemCase1 {
   start: string;
   type: InstancesGetResponseStepsItemCase1Type;
 }
-export const InstancesGetResponseStepsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.String,
-    error: InstancesGetResponseError,
-    finished: S.Boolean,
-    name: S.String,
-    start: S.String,
-    type: InstancesGetResponseStepsItemCase1Type,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase1",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase1>;
-
 export interface InstancesGetResponseStepsItemCase2Trigger {
   source: string;
 }
-export const InstancesGetResponseStepsItemCase2Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.String,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase2Trigger",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase2Trigger>;
-
 export type InstancesGetResponseStepsItemCase2Type = "termination";
-export const InstancesGetResponseStepsItemCase2Type = S.String;
-
 export interface InstancesGetResponseStepsItemCase2 {
   trigger: InstancesGetResponseStepsItemCase2Trigger;
   type: InstancesGetResponseStepsItemCase2Type;
 }
-export const InstancesGetResponseStepsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trigger: InstancesGetResponseStepsItemCase2Trigger,
-    type: InstancesGetResponseStepsItemCase2Type,
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase2",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase2>;
-
 export type InstancesGetResponseStepsItemCase3Error = InstancesGetResponseError;
-export const InstancesGetResponseStepsItemCase3Error = InstancesGetResponseError;
-
 export type InstancesGetResponseStepsItemCase3Type = "waitForEvent";
-export const InstancesGetResponseStepsItemCase3Type = S.String;
-
 export interface InstancesGetResponseStepsItemCase3 {
   end: string;
   error: InstancesGetResponseError;
@@ -698,27 +592,12 @@ export interface InstancesGetResponseStepsItemCase3 {
   eventType?: string | null;
   output?: string | null;
 }
-export const InstancesGetResponseStepsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.String,
-    error: InstancesGetResponseError,
-    finished: S.Boolean,
-    name: S.String,
-    start: S.String,
-    type: InstancesGetResponseStepsItemCase3Type,
-    eventType: S.optional(S.NullOr(S.String).pipe(T.Body("event_type"))),
-    output: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "InstancesGetResponseStepsItemCase3",
-}) as any as S.Schema<InstancesGetResponseStepsItemCase3>;
-
 export type InstancesGetResponseStepsItem =
   | InstancesGetResponseStepsItemCase0
   | InstancesGetResponseStepsItemCase1
   | InstancesGetResponseStepsItemCase2
   | InstancesGetResponseStepsItemCase3;
-export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.Unknown.pipe(
+const InstancesGetResponseStepsItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["attempts", "config", "end", "name", "output", "start", "success", "type"],
     ["end", "error", "finished", "name", "start", "type"],
@@ -728,17 +607,17 @@ export const InstancesGetResponseStepsItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type InstancesGetResponseStepsList = Array<InstancesGetResponseStepsItem>;
-export const InstancesGetResponseStepsList = /*@__PURE__*/ S.Array(
+const InstancesGetResponseStepsList = /*@__PURE__*/ S.Array(
   InstancesGetResponseStepsItem,
 ) as any as S.Schema<InstancesGetResponseStepsList>;
 
 export type InstancesGetResponseTriggerSource = "unknown" | "api" | "binding" | "event" | "cron";
-export const InstancesGetResponseTriggerSource = S.String;
+const InstancesGetResponseTriggerSource = S.String;
 
 export interface InstancesGetResponseTrigger {
   source: InstancesGetResponseTriggerSource;
 }
-export const InstancesGetResponseTrigger = /*@__PURE__*/ S.suspend(() =>
+const InstancesGetResponseTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: InstancesGetResponseTriggerSource,
   }),
@@ -750,7 +629,7 @@ export interface InstancesGetResponseSchedule {
   cron: string;
   scheduledTime: number;
 }
-export const InstancesGetResponseSchedule = /*@__PURE__*/ S.suspend(() =>
+const InstancesGetResponseSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
     scheduledTime: S.Number,
@@ -776,7 +655,7 @@ export interface GetInstanceResponse {
   versionId: string;
   schedule?: InstancesGetResponseSchedule | null;
 }
-export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
     error: InstancesGetResponseError,
@@ -800,7 +679,7 @@ export interface GetVersionRequest {
   workflowName: string;
   versionId: string;
 }
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -817,13 +696,13 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVersionRequest" }) as any as S.Schema<GetVersionRequest>;
 
 export type VersionsGetResponseLanguage = "javascript" | "python";
-export const VersionsGetResponseLanguage = S.String;
+const VersionsGetResponseLanguage = S.String;
 
 export interface VersionsGetResponseConcurrency {
   /** Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit. */
   limit?: number | null;
 }
-export const VersionsGetResponseConcurrency = /*@__PURE__*/ S.suspend(() =>
+const VersionsGetResponseConcurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.NullOr(S.Number)),
   }),
@@ -837,7 +716,7 @@ export interface VersionsGetResponseDefaultRetention {
   /** Default success retention in milliseconds. */
   successRetention?: number | null;
 }
-export const VersionsGetResponseDefaultRetention = /*@__PURE__*/ S.suspend(() =>
+const VersionsGetResponseDefaultRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("error_retention"))),
     successRetention: S.optional(S.NullOr(S.Number).pipe(T.Body("success_retention"))),
@@ -849,7 +728,7 @@ export const VersionsGetResponseDefaultRetention = /*@__PURE__*/ S.suspend(() =>
 export interface VersionsGetResponseLimits {
   steps?: number | null;
 }
-export const VersionsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
+const VersionsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(S.NullOr(S.Number)),
   }),
@@ -871,7 +750,7 @@ export interface GetVersionResponse {
   defaultRetention?: VersionsGetResponseDefaultRetention | null;
   limits?: VersionsGetResponseLimits | null;
 }
-export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -892,7 +771,7 @@ export interface GetWorkflowRequest {
   accountId: string;
   workflowName: string;
 }
-export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -904,7 +783,7 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWorkflowRequest" }) as any as S.Schema<GetWorkflowRequest>;
 
 export type GetResponseInstancesMap = { [key: string]: number | undefined };
-export const GetResponseInstancesMap = /*@__PURE__*/ S.Record(
+const GetResponseInstancesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<GetResponseInstancesMap>;
@@ -913,7 +792,7 @@ export interface GetResponseSchedulesItem {
   cron: string;
   nextInstance: string;
 }
-export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
+const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
     nextInstance: S.String.pipe(T.Body("next_instance")),
@@ -921,7 +800,7 @@ export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseSchedulesItem" }) as any as S.Schema<GetResponseSchedulesItem>;
 
 export type GetResponseSchedulesList = Array<GetResponseSchedulesItem>;
-export const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
+const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
   GetResponseSchedulesItem,
 ) as any as S.Schema<GetResponseSchedulesList>;
 
@@ -939,7 +818,7 @@ export interface GetWorkflowResponse {
   /** Whether the bound Worker was deleted, leaving this Workflow inactive. */
   scriptDeleted?: boolean | null;
 }
-export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -959,7 +838,7 @@ export interface GraphVersionRequest {
   workflowName: string;
   versionId: string;
 }
-export const GraphVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GraphVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -976,12 +855,12 @@ export const GraphVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GraphVersionRequest" }) as any as S.Schema<GraphVersionRequest>;
 
 export type VersionsGraphResponseGraphWorkflowFunctionsValueNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowFunctionsValueNodesList = /*@__PURE__*/ S.Array(
+const VersionsGraphResponseGraphWorkflowFunctionsValueNodesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<VersionsGraphResponseGraphWorkflowFunctionsValueNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowFunctionsValueType = "function_def";
-export const VersionsGraphResponseGraphWorkflowFunctionsValueType = S.String;
+const VersionsGraphResponseGraphWorkflowFunctionsValueType = S.String;
 
 export interface VersionsGraphResponseGraphWorkflowFunctionsValue {
   name: string;
@@ -989,7 +868,7 @@ export interface VersionsGraphResponseGraphWorkflowFunctionsValue {
   nodes: VersionsGraphResponseGraphWorkflowFunctionsValueNodesList;
   type: VersionsGraphResponseGraphWorkflowFunctionsValueType;
 }
-export const VersionsGraphResponseGraphWorkflowFunctionsValue = /*@__PURE__*/ S.suspend(() =>
+const VersionsGraphResponseGraphWorkflowFunctionsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     nodes: VersionsGraphResponseGraphWorkflowFunctionsValueNodesList,
@@ -1002,18 +881,13 @@ export const VersionsGraphResponseGraphWorkflowFunctionsValue = /*@__PURE__*/ S.
 export type VersionsGraphResponseGraphWorkflowFunctionsMap = {
   [key: string]: VersionsGraphResponseGraphWorkflowFunctionsValue | undefined;
 };
-export const VersionsGraphResponseGraphWorkflowFunctionsMap = /*@__PURE__*/ S.Record(
+const VersionsGraphResponseGraphWorkflowFunctionsMap = /*@__PURE__*/ S.Record(
   S.String,
   VersionsGraphResponseGraphWorkflowFunctionsValue,
 ) as any as S.Schema<VersionsGraphResponseGraphWorkflowFunctionsMap>;
 
 export type VersionsGraphResponseGraphWorkflowNodesItemCase0Duration = string | number;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase0Duration =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase0Type = "step_sleep";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase0Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase0 {
   /** Duration as milliseconds (number) or human-readable string. */
   duration: VersionsGraphResponseGraphWorkflowNodesItemCase0Duration;
@@ -1022,28 +896,11 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase0 {
   resolves?: number | null;
   starts?: number | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    duration: VersionsGraphResponseGraphWorkflowNodesItemCase0Duration,
-    name: S.String,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase0Type,
-    resolves: S.optional(S.NullOr(S.Number)),
-    starts: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase0",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase0>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff =
   | "constant"
   | "linear"
   | "exponential";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff = S.String;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay = string | number;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries {
   /** Backoff strategy for step retries. */
   backoff: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff;
@@ -1051,43 +908,15 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries {
   delay: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay;
   limit: number;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backoff: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesBackoff,
-      delay: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetriesDelay,
-      limit: S.Number,
-    }),
-  ).annotate({
-    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries",
-  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout = string | number;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase1Config {
   /** Retry policy for a step. */
   retries: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries;
   /** Duration as milliseconds (number) or human-readable string. */
   timeout: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1Config = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retries: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigRetries,
-    timeout: VersionsGraphResponseGraphWorkflowNodesItemCase1ConfigTimeout,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase1Config",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1Config>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase1Type = "step_do";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase1 {
   /** Configuration for a step (retries and timeout). */
   config: VersionsGraphResponseGraphWorkflowNodesItemCase1Config;
@@ -1098,92 +927,29 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase1 {
   resolves?: number | null;
   starts?: number | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: VersionsGraphResponseGraphWorkflowNodesItemCase1Config,
-    name: S.String,
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase1NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase1Type,
-    resolves: S.optional(S.NullOr(S.Number)),
-    starts: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase1",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase1>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout = string | number;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2Options {
   eventType: string;
   /** Duration as milliseconds (number) or human-readable string. */
   timeout: VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2Options = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventType: S.String.pipe(T.Body("event_type")),
-    timeout: VersionsGraphResponseGraphWorkflowNodesItemCase2OptionsTimeout,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2Options",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2Options>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2Type = "step_wait_for_event";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2Type = S.String;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType = "unknown";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType {
   type: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadTypeType,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap = {
   [key: string]: unknown | undefined;
 };
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type = "object";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1 {
   /** Nested JsonShape fields (recursive structure). */
   fields: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fields: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1Type,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase2Payload =
   | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType
   | VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2Payload = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
-    key: "type",
-    values: ["unknown", "object"],
-  }),
-);
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase2 {
   name: string;
   /** Options for a waitForEvent step. */
@@ -1194,22 +960,7 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase2 {
   resolves?: number | null;
   starts?: number | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    options: VersionsGraphResponseGraphWorkflowNodesItemCase2Options,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase2Type,
-    payload: S.optional(S.NullOr(VersionsGraphResponseGraphWorkflowNodesItemCase2Payload)),
-    resolves: S.optional(S.NullOr(S.Number)),
-    starts: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase2",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase2>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase3Type = "step_sleep_until";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase3Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase3 {
   name: string;
   timestamp: string;
@@ -1217,53 +968,20 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase3 {
   resolves?: number | null;
   starts?: number | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    timestamp: S.String,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase3Type,
-    resolves: S.optional(S.NullOr(S.Number)),
-    starts: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase3",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase3>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase4Type = "loop";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase4Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase4 {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase4Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase4NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase4Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase4",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase4>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5Kind =
   | "all"
   | "any"
   | "all_settled"
   | "race";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase5Kind = S.String;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase5Type = "parallel";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase5Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase5 {
   /** Parallel execution strategy. */
   kind: VersionsGraphResponseGraphWorkflowNodesItemCase5Kind;
@@ -1271,289 +989,98 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase5 {
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase5Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: VersionsGraphResponseGraphWorkflowNodesItemCase5Kind,
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase5NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase5Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase5",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase5>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType = "block";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockType,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType = "block";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockNodesList,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlockType,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType = "block";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockNodesList,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlockType,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase6Type = "try";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase6 {
   catchBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock;
   finallyBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock;
   tryBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase6Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    catchBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlock.pipe(
-      T.Body("catch_block"),
-    ),
-    finallyBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6FinallyBlock.pipe(
-      T.Body("finally_block"),
-    ),
-    tryBlock: VersionsGraphResponseGraphWorkflowNodesItemCase6TryBlock.pipe(T.Body("try_block")),
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase6Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase6",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase6>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase7Type = "block";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase7Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase7 {
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase7Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase7NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase7Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase7",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase7>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList>;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem {
   condition: string;
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      condition: S.String,
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItemNodesList,
-    }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList =
   Array<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList = /*@__PURE__*/ S.Array(
-  VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase8Type = "if";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase8Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase8 {
   branches: VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase8Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branches: VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase8Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase8",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase8>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList>;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem {
   condition: string;
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItemNodesList;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem =
-  VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesItem as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
   Array<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesItem>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase8BranchesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase9Type = "switch";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase9 {
   branches: VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList;
   discriminant: string;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase9Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branches: VersionsGraphResponseGraphWorkflowNodesItemCase9BranchesList,
-    discriminant: S.String,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase9Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase9",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase9>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
   Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList =
-  VersionsGraphResponseGraphWorkflowNodesItemCase6CatchBlockNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType = "function_def";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue {
   name: string;
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      nodes: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueNodesList,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValueType,
-    }),
-  ).annotate({
-    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue",
-  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap = {
   [key: string]: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue | undefined;
 };
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsValue,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10Type = "start";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10Type = S.String;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType = "unknown";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType {
   type: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType =
-  VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadType as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap = {
   [key: string]: unknown | undefined;
 };
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap =
-  VersionsGraphResponseGraphWorkflowNodesItemCase2PayloadCase1FieldsMap as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type = "object";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1 {
   /** Nested JsonShape fields (recursive structure). */
   fields: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fields: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1FieldsMap,
-      type: VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1Type,
-    }),
-  ).annotate({
-    identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1",
-  }) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
   | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadType
   | VersionsGraphResponseGraphWorkflowNodesItemCase10PayloadCase1;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10Payload =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
-      key: "type",
-      values: ["unknown", "object"],
-    }),
-  );
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase10 {
   className: string;
   functions: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap;
@@ -1563,81 +1090,28 @@ export interface VersionsGraphResponseGraphWorkflowNodesItemCase10 {
   /** Shape descriptor for JSON payloads. */
   payload?: VersionsGraphResponseGraphWorkflowNodesItemCase10Payload | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase10 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    className: S.String.pipe(T.Body("class_name")),
-    functions: VersionsGraphResponseGraphWorkflowNodesItemCase10FunctionsMap,
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase10NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase10Type,
-    payload: S.optional(S.NullOr(VersionsGraphResponseGraphWorkflowNodesItemCase10Payload)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase10",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase10>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase11Type = "function_call";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase11Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase11 {
   name: string;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase11Type;
   resolves?: number | null;
   starts?: number | null;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase11 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase11Type,
-    resolves: S.optional(S.NullOr(S.Number)),
-    starts: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase11",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase11>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList = Array<unknown>;
-export const VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList =
-  VersionsGraphResponseGraphWorkflowFunctionsValueNodesList as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase12Type = "function_def";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase12Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase12 {
   name: string;
   /** Child nodes (recursive). */
   nodes: VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase12Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase12 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    nodes: VersionsGraphResponseGraphWorkflowNodesItemCase12NodesList,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase12Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase12",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase12>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase13Kind = "break" | "return";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase13Kind = S.String;
-
 export type VersionsGraphResponseGraphWorkflowNodesItemCase13Type = "break";
-export const VersionsGraphResponseGraphWorkflowNodesItemCase13Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowNodesItemCase13 {
   /** Break or return from a loop. */
   kind: VersionsGraphResponseGraphWorkflowNodesItemCase13Kind;
   type: VersionsGraphResponseGraphWorkflowNodesItemCase13Type;
 }
-export const VersionsGraphResponseGraphWorkflowNodesItemCase13 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: VersionsGraphResponseGraphWorkflowNodesItemCase13Kind,
-    type: VersionsGraphResponseGraphWorkflowNodesItemCase13Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowNodesItemCase13",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesItemCase13>;
-
 export type VersionsGraphResponseGraphWorkflowNodesItem =
   | VersionsGraphResponseGraphWorkflowNodesItemCase0
   | VersionsGraphResponseGraphWorkflowNodesItemCase1
@@ -1653,7 +1127,7 @@ export type VersionsGraphResponseGraphWorkflowNodesItem =
   | VersionsGraphResponseGraphWorkflowNodesItemCase11
   | VersionsGraphResponseGraphWorkflowNodesItemCase12
   | VersionsGraphResponseGraphWorkflowNodesItemCase13;
-export const VersionsGraphResponseGraphWorkflowNodesItem = /*@__PURE__*/ S.Unknown.pipe(
+const VersionsGraphResponseGraphWorkflowNodesItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["duration", "name", "type", "resolves", "starts"],
@@ -1695,53 +1169,27 @@ export const VersionsGraphResponseGraphWorkflowNodesItem = /*@__PURE__*/ S.Unkno
 
 export type VersionsGraphResponseGraphWorkflowNodesList =
   Array<VersionsGraphResponseGraphWorkflowNodesItem>;
-export const VersionsGraphResponseGraphWorkflowNodesList = /*@__PURE__*/ S.Array(
+const VersionsGraphResponseGraphWorkflowNodesList = /*@__PURE__*/ S.Array(
   VersionsGraphResponseGraphWorkflowNodesItem,
 ) as any as S.Schema<VersionsGraphResponseGraphWorkflowNodesList>;
 
 export type VersionsGraphResponseGraphWorkflowPayloadTypeType = "unknown";
-export const VersionsGraphResponseGraphWorkflowPayloadTypeType = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowPayloadType {
   type: VersionsGraphResponseGraphWorkflowPayloadTypeType;
 }
-export const VersionsGraphResponseGraphWorkflowPayloadType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: VersionsGraphResponseGraphWorkflowPayloadTypeType,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowPayloadType",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadType>;
-
 export type VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap = {
   [key: string]: unknown | undefined;
 };
-export const VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap>;
-
 export type VersionsGraphResponseGraphWorkflowPayloadCase1Type = "object";
-export const VersionsGraphResponseGraphWorkflowPayloadCase1Type = S.String;
-
 export interface VersionsGraphResponseGraphWorkflowPayloadCase1 {
   /** Nested JsonShape fields (recursive structure). */
   fields: VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap;
   type: VersionsGraphResponseGraphWorkflowPayloadCase1Type;
 }
-export const VersionsGraphResponseGraphWorkflowPayloadCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: VersionsGraphResponseGraphWorkflowPayloadCase1FieldsMap,
-    type: VersionsGraphResponseGraphWorkflowPayloadCase1Type,
-  }),
-).annotate({
-  identifier: "VersionsGraphResponseGraphWorkflowPayloadCase1",
-}) as any as S.Schema<VersionsGraphResponseGraphWorkflowPayloadCase1>;
-
 export type VersionsGraphResponseGraphWorkflowPayload =
   | VersionsGraphResponseGraphWorkflowPayloadType
   | VersionsGraphResponseGraphWorkflowPayloadCase1;
-export const VersionsGraphResponseGraphWorkflowPayload = /*@__PURE__*/ S.Unknown.pipe(
+const VersionsGraphResponseGraphWorkflowPayload = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["type"], ["fields", "type"]], {
     key: "type",
     values: ["unknown", "object"],
@@ -1755,7 +1203,7 @@ export interface VersionsGraphResponseGraphWorkflow {
   /** Shape descriptor for JSON payloads. */
   payload?: VersionsGraphResponseGraphWorkflowPayload | null;
 }
-export const VersionsGraphResponseGraphWorkflow = /*@__PURE__*/ S.suspend(() =>
+const VersionsGraphResponseGraphWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     className: S.String.pipe(T.Body("class_name")),
     functions: VersionsGraphResponseGraphWorkflowFunctionsMap,
@@ -1771,7 +1219,7 @@ export interface VersionsGraphResponseGraph {
   /** A parsed workflow entrypoint with its step graph. */
   workflow: VersionsGraphResponseGraphWorkflow;
 }
-export const VersionsGraphResponseGraph = /*@__PURE__*/ S.suspend(() =>
+const VersionsGraphResponseGraph = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.Number,
     workflow: VersionsGraphResponseGraphWorkflow,
@@ -1790,7 +1238,7 @@ export interface GraphVersionResponse {
   modifiedOn: string;
   workflowId: string;
 }
-export const GraphVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GraphVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -1802,7 +1250,7 @@ export const GraphVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GraphVersionResponse" }) as any as S.Schema<GraphVersionResponse>;
 
 export type InstancesListRequestDirection = "asc" | "desc";
-export const InstancesListRequestDirection = S.String;
+const InstancesListRequestDirection = S.String;
 
 export type InstancesListRequestStatus =
   | "queued"
@@ -1814,7 +1262,7 @@ export type InstancesListRequestStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesListRequestStatus = S.String;
+const InstancesListRequestStatus = S.String;
 
 export interface ListInstancesRequest {
   accountId: string;
@@ -1832,7 +1280,7 @@ export interface ListInstancesRequest {
   perPage?: number;
   status?: InstancesListRequestStatus | (string & {});
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -1864,10 +1312,10 @@ export type InstancesListResultItemStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesListResultItemStatus = S.String;
+const InstancesListResultItemStatus = S.String;
 
 export type InstancesListResultItemTriggerSource = "unknown" | "api" | "binding" | "event" | "cron";
-export const InstancesListResultItemTriggerSource = S.String;
+const InstancesListResultItemTriggerSource = S.String;
 
 export interface InstancesListResultItem {
   id: string;
@@ -1880,7 +1328,7 @@ export interface InstancesListResultItem {
   workflowId: string;
   triggerSource?: InstancesListResultItemTriggerSource | null;
 }
-export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -1897,7 +1345,7 @@ export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstancesListResultItem" }) as any as S.Schema<InstancesListResultItem>;
 
 export type InstancesListResultList = Array<InstancesListResultItem>;
-export const InstancesListResultList = /*@__PURE__*/ S.Array(
+const InstancesListResultList = /*@__PURE__*/ S.Array(
   InstancesListResultItem,
 ) as any as S.Schema<InstancesListResultList>;
 
@@ -1907,7 +1355,7 @@ export interface ListInstancesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: InstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1920,7 +1368,7 @@ export interface ListVersionsRequest {
   page?: number;
   perPage?: number;
 }
-export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -1938,17 +1386,11 @@ export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVersionsRequest" }) as any as S.Schema<ListVersionsRequest>;
 
 export type VersionsListResultItemLanguage = "javascript" | "python";
-export const VersionsListResultItemLanguage = S.String;
+const VersionsListResultItemLanguage = S.String;
 
 export type VersionsListResultItemConcurrency = VersionsGetResponseConcurrency;
-export const VersionsListResultItemConcurrency = VersionsGetResponseConcurrency;
-
 export type VersionsListResultItemDefaultRetention = VersionsGetResponseDefaultRetention;
-export const VersionsListResultItemDefaultRetention = VersionsGetResponseDefaultRetention;
-
 export type VersionsListResultItemLimits = VersionsGetResponseLimits;
-export const VersionsListResultItemLimits = VersionsGetResponseLimits;
-
 export interface VersionsListResultItem {
   id: string;
   className: string;
@@ -1962,7 +1404,7 @@ export interface VersionsListResultItem {
   defaultRetention?: VersionsGetResponseDefaultRetention | null;
   limits?: VersionsGetResponseLimits | null;
 }
-export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -1980,7 +1422,7 @@ export const VersionsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionsListResultItem" }) as any as S.Schema<VersionsListResultItem>;
 
 export type VersionsListResultList = Array<VersionsListResultItem>;
-export const VersionsListResultList = /*@__PURE__*/ S.Array(
+const VersionsListResultList = /*@__PURE__*/ S.Array(
   VersionsListResultItem,
 ) as any as S.Schema<VersionsListResultList>;
 
@@ -1990,7 +1432,7 @@ export interface ListVersionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: VersionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2004,7 +1446,7 @@ export interface ListWorkflowsRequest {
   /** Allows filtering workflows` name. */
   search?: string;
 }
-export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2016,14 +1458,12 @@ export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkflowsRequest" }) as any as S.Schema<ListWorkflowsRequest>;
 
 export type ListResultItemInstancesMap = { [key: string]: number | undefined };
-export const ListResultItemInstancesMap =
+const ListResultItemInstancesMap =
   GetResponseInstancesMap as any as S.Schema<ListResultItemInstancesMap>;
 
 export type ListResultItemSchedulesItem = GetResponseSchedulesItem;
-export const ListResultItemSchedulesItem = GetResponseSchedulesItem;
-
 export type ListResultItemSchedulesList = Array<GetResponseSchedulesItem>;
-export const ListResultItemSchedulesList =
+const ListResultItemSchedulesList =
   GetResponseSchedulesList as any as S.Schema<ListResultItemSchedulesList>;
 
 export interface ListResultItem {
@@ -2039,7 +1479,7 @@ export interface ListResultItem {
   /** Whether the bound Worker was deleted, leaving this Workflow inactive. */
   scriptDeleted?: boolean | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -2055,9 +1495,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListWorkflowsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -2065,7 +1503,7 @@ export interface ListWorkflowsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2073,10 +1511,10 @@ export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkflowsResponse" }) as any as S.Schema<ListWorkflowsResponse>;
 
 export type InstancesStatusEditRequestStatus = "pause" | "resume" | "terminate" | "restart";
-export const InstancesStatusEditRequestStatus = S.String;
+const InstancesStatusEditRequestStatus = S.String;
 
 export type InstancesStatusEditRequestFromType = "do" | "sleep" | "waitForEvent";
-export const InstancesStatusEditRequestFromType = S.String;
+const InstancesStatusEditRequestFromType = S.String;
 
 export interface InstancesStatusEditRequestFrom {
   name: string;
@@ -2084,7 +1522,7 @@ export interface InstancesStatusEditRequestFrom {
   count?: number;
   type?: InstancesStatusEditRequestFromType | (string & {});
 }
-export const InstancesStatusEditRequestFrom = /*@__PURE__*/ S.suspend(() =>
+const InstancesStatusEditRequestFrom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     count: S.optional(S.Number),
@@ -2104,7 +1542,7 @@ export interface PatchInstanceStatusRequest {
   /** Step to restart from. */
   from?: InstancesStatusEditRequestFrom;
 }
-export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -2135,7 +1573,7 @@ export type InstancesStatusEditResponseStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesStatusEditResponseStatus = S.String;
+const InstancesStatusEditResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchInstanceStatusResponse {
@@ -2143,7 +1581,7 @@ export interface PatchInstanceStatusResponse {
   /** Accepts ISO 8601 with no timezone offsets and in UTC. */
   timestamp: string;
 }
-export const PatchInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: InstancesStatusEditResponseStatus,
     timestamp: S.String,
@@ -2156,19 +1594,19 @@ export interface UpdateRequestConcurrency {
   /** Maximum number of instances of this workflow that can run concurrently. Additional instances are queued and started as running instances complete. Must not exceed the account concurrency limit. */
   limit?: number;
 }
-export const UpdateRequestConcurrency = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestConcurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
   }),
 ).annotate({ identifier: "UpdateRequestConcurrency" }) as any as S.Schema<UpdateRequestConcurrency>;
 
 export type UpdateRequestDefaultRetentionErrorRetention = string | number;
-export const UpdateRequestDefaultRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
+const UpdateRequestDefaultRetentionErrorRetention = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
 export type UpdateRequestDefaultRetentionSuccessRetention = string | number;
-export const UpdateRequestDefaultRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
+const UpdateRequestDefaultRetentionSuccessRetention = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -2178,7 +1616,7 @@ export interface UpdateRequestDefaultRetention {
   /** Specifies the duration in milliseconds or as a string like '5 minutes'. */
   successRetention?: UpdateRequestDefaultRetentionSuccessRetention;
 }
-export const UpdateRequestDefaultRetention = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestDefaultRetention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorRetention: S.optional(
       UpdateRequestDefaultRetentionErrorRetention.pipe(T.Body("error_retention")),
@@ -2194,7 +1632,7 @@ export const UpdateRequestDefaultRetention = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRequestLimits {
   steps?: number;
 }
-export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(S.Number),
   }),
@@ -2203,7 +1641,7 @@ export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRequestSchedulesItem {
   cron: string;
 }
-export const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.String,
   }),
@@ -2212,7 +1650,7 @@ export const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRequestSchedulesItem>;
 
 export type UpdateRequestSchedulesList = Array<UpdateRequestSchedulesItem>;
-export const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
+const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
   UpdateRequestSchedulesItem,
 ) as any as S.Schema<UpdateRequestSchedulesList>;
 
@@ -2227,7 +1665,7 @@ export interface PutWorkflowRequest {
   limits?: UpdateRequestLimits;
   schedules?: UpdateRequestSchedulesList;
 }
-export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -2257,7 +1695,7 @@ export interface PutWorkflowResponse {
   triggeredOn: string;
   versionId: string;
 }
-export const PutWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const PutWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -2273,7 +1711,7 @@ export const PutWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutWorkflowResponse" }) as any as S.Schema<PutWorkflowResponse>;
 
 export type InstancesStepRequestType = "step" | "waitForEvent";
-export const InstancesStepRequestType = S.String;
+const InstancesStepRequestType = S.String;
 
 export interface StepInstanceRequest {
   accountId: string;
@@ -2286,7 +1724,7 @@ export interface StepInstanceRequest {
   /** Specific attempt number to retrieve output or error for. */
   attempt?: number;
 }
-export const StepInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const StepInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -2306,8 +1744,6 @@ export const StepInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StepInstanceRequest" }) as any as S.Schema<StepInstanceRequest>;
 
 export type InstancesStepResponseError = InstancesGetResponseError;
-export const InstancesStepResponseError = InstancesGetResponseError;
-
 export type InstancesStepResponseStatus =
   | "queued"
   | "running"
@@ -2318,7 +1754,7 @@ export type InstancesStepResponseStatus =
   | "waitingForPause"
   | "waiting"
   | "rollingBack";
-export const InstancesStepResponseStatus = S.String;
+const InstancesStepResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StepInstanceResponse {
@@ -2330,7 +1766,7 @@ export interface StepInstanceResponse {
   /** Contains the full step output or waitForEvent payload without truncation. Uses '[REDACTED]' for sensitive outputs. Contains a value when status='complete'. May contain a ReadableStream when step.do returns one; the response serves stream outputs as application/octet-stream rather than JSON. */
   output?: unknown | null;
 }
-export const StepInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const StepInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: InstancesGetResponseError,
     status: InstancesStepResponseStatus,

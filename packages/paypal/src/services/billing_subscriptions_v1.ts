@@ -49,14 +49,14 @@ export interface ActivatePlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-export const ActivatePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans/{id}/activate", code: 200 })),
 ).annotate({ identifier: "ActivatePlanRequest" }) as any as S.Schema<ActivatePlanRequest>;
 
 export interface ActivatePlanResponse {}
-export const ActivatePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ActivatePlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivatePlanResponse",
 }) as any as S.Schema<ActivatePlanResponse>;
 
@@ -66,7 +66,7 @@ export interface ActivateSubscriptionRequest {
   /** The reason for activation of a subscription. Required to reactivate the subscription. */
   reason?: string;
 }
-export const ActivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     reason: S.optional(S.String),
@@ -76,7 +76,7 @@ export const ActivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateSubscriptionRequest>;
 
 export interface ActivateSubscriptionResponse {}
-export const ActivateSubscriptionResponse =
+const ActivateSubscriptionResponse =
   ActivatePlanResponse as any as S.Schema<ActivateSubscriptionResponse>;
 
 export interface CancelSubscriptionRequest {
@@ -85,7 +85,7 @@ export interface CancelSubscriptionRequest {
   /** The reason for the cancellation of a subscription. */
   reason: string;
 }
-export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     reason: S.String,
@@ -95,12 +95,12 @@ export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelSubscriptionRequest>;
 
 export interface CancelSubscriptionResponse {}
-export const CancelSubscriptionResponse =
+const CancelSubscriptionResponse =
   ActivatePlanResponse as any as S.Schema<CancelSubscriptionResponse>;
 
 /** The type of capture. */
 export type CaptureSubscriptionRequestCaptureType = "OUTSTANDING_BALANCE";
-export const CaptureSubscriptionRequestCaptureType = S.String;
+const CaptureSubscriptionRequestCaptureType = S.String;
 
 /** The currency and amount for a financial transaction, such as a balance or payment due. */
 export interface Money {
@@ -108,7 +108,7 @@ export interface Money {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/api/rest/reference/currency-codes/). */
   value: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency_code: S.String,
     value: S.String,
@@ -127,7 +127,7 @@ export interface CaptureSubscriptionRequest {
   /** The amount of the outstanding balance. This value cannot be greater than the current outstanding balance amount. */
   amount: Money;
 }
-export const CaptureSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CaptureSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
@@ -147,7 +147,7 @@ export type TransactionStatus =
   | "PENDING"
   | "REFUNDED"
   | "FAILED";
-export const TransactionStatus = S.String;
+const TransactionStatus = S.String;
 
 /** The breakdown details for the amount. Includes the gross, tax, fee, and shipping amounts. */
 export interface AmountWithBreakdown {
@@ -164,7 +164,7 @@ export interface AmountWithBreakdown {
   /** The net amount that the payee receives for this transaction in their PayPal account. The net amount is computed as <code>gross_amount</code> minus the <code>paypal_fee</code>. */
   net_amount?: Money;
 }
-export const AmountWithBreakdown = /*@__PURE__*/ S.suspend(() =>
+const AmountWithBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gross_amount: Money,
     total_item_amount: S.optional(Money),
@@ -190,7 +190,7 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     given_name: S.optional(S.String),
@@ -215,7 +215,7 @@ export interface Transaction {
   /** The date and time when the transaction was processed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   time: string;
 }
-export const Transaction = /*@__PURE__*/ S.suspend(() =>
+const Transaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TransactionStatus),
     id: S.String,
@@ -228,11 +228,11 @@ export const Transaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The initial state of the plan. Allowed input values are CREATED and ACTIVE. */
 export type CreatePlanRequestStatus = "CREATED" | "INACTIVE" | "ACTIVE";
-export const CreatePlanRequestStatus = S.String;
+const CreatePlanRequestStatus = S.String;
 
 /** The pricing model for tiered plan. The `tiers` parameter is required. */
 export type PricingSchemeInputPricingModel = "VOLUME" | "TIERED";
-export const PricingSchemeInputPricingModel = S.String;
+const PricingSchemeInputPricingModel = S.String;
 
 /** The pricing tier details. */
 export interface PricingTier {
@@ -243,7 +243,7 @@ export interface PricingTier {
   /** The pricing amount for the tier. */
   amount: Money;
 }
-export const PricingTier = /*@__PURE__*/ S.suspend(() =>
+const PricingTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     starting_quantity: S.String,
     ending_quantity: S.optional(S.String),
@@ -253,9 +253,7 @@ export const PricingTier = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of pricing tiers which are used for billing volume/tiered plans. pricing_model field has to be specified. */
 export type PricingTierList = Array<PricingTier>;
-export const PricingTierList = /*@__PURE__*/ S.Array(
-  PricingTier,
-) as any as S.Schema<PricingTierList>;
+const PricingTierList = /*@__PURE__*/ S.Array(PricingTier) as any as S.Schema<PricingTierList>;
 
 /** The pricing scheme details. */
 export interface PricingSchemeInput {
@@ -265,7 +263,7 @@ export interface PricingSchemeInput {
   pricing_model?: PricingSchemeInputPricingModel | (string & {});
   tiers?: PricingTierList;
 }
-export const PricingSchemeInput = /*@__PURE__*/ S.suspend(() =>
+const PricingSchemeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed_price: S.optional(Money),
     pricing_model: S.optional(PricingSchemeInputPricingModel),
@@ -275,7 +273,7 @@ export const PricingSchemeInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The interval at which the subscription is charged or billed. */
 export type FrequencyIntervalUnit = "DAY" | "WEEK" | "MONTH" | "YEAR";
-export const FrequencyIntervalUnit = S.String;
+const FrequencyIntervalUnit = S.String;
 
 /** The frequency of the billing cycle. */
 export interface Frequency {
@@ -284,7 +282,7 @@ export interface Frequency {
   /** The number of intervals after which a subscriber is billed. For example, if the `interval_unit` is `DAY` with an `interval_count` of `2`, the subscription is billed once every two days. The following table lists the maximum allowed values for the `interval_count` for each `interval_unit`:<table><thead><tr><th><code>Interval unit</code></th><th>Maximum interval count</th></tr></thead><tbody><tr><td><code>DAY</code></td><td align="right">365</td></tr><tr><td><code>WEEK</code></td><td align="right">52</td></tr><tr><td><code>MONTH</code></td><td align="right">12</td></tr><tr><td><code>YEAR</code></td><td align="right">1</td></tr></tbody></table> */
   interval_count?: number;
 }
-export const Frequency = /*@__PURE__*/ S.suspend(() =>
+const Frequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interval_unit: FrequencyIntervalUnit,
     interval_count: S.optional(S.Number),
@@ -293,7 +291,7 @@ export const Frequency = /*@__PURE__*/ S.suspend(() =>
 
 /** The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan. */
 export type BillingCycleInputTenureType = "REGULAR" | "TRIAL";
-export const BillingCycleInputTenureType = S.String;
+const BillingCycleInputTenureType = S.String;
 
 /** The billing cycle details. */
 export interface BillingCycleInput {
@@ -308,7 +306,7 @@ export interface BillingCycleInput {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-export const BillingCycleInput = /*@__PURE__*/ S.suspend(() =>
+const BillingCycleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_scheme: S.optional(PricingSchemeInput),
     frequency: Frequency,
@@ -320,13 +318,13 @@ export const BillingCycleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type BillingCycleListInput = Array<BillingCycleInput>;
-export const BillingCycleListInput = /*@__PURE__*/ S.Array(
+const BillingCycleListInput = /*@__PURE__*/ S.Array(
   BillingCycleInput,
 ) as any as S.Schema<BillingCycleListInput>;
 
 /** The action to take on the subscription if the initial payment for the setup fails. */
 export type PaymentPreferencesSetupFeeFailureAction = "CONTINUE" | "CANCEL";
-export const PaymentPreferencesSetupFeeFailureAction = S.String;
+const PaymentPreferencesSetupFeeFailureAction = S.String;
 
 /** The payment preferences for a subscription. */
 export interface PaymentPreferences {
@@ -339,7 +337,7 @@ export interface PaymentPreferences {
   /** The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail. */
   payment_failure_threshold?: number;
 }
-export const PaymentPreferences = /*@__PURE__*/ S.suspend(() =>
+const PaymentPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_bill_outstanding: S.optional(S.Boolean),
     setup_fee: S.optional(Money),
@@ -355,7 +353,7 @@ export interface Taxes {
   /** Indicates whether the tax was already included in the billing amount. */
   inclusive?: boolean;
 }
-export const Taxes = /*@__PURE__*/ S.suspend(() =>
+const Taxes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.String,
     inclusive: S.optional(S.Boolean),
@@ -381,7 +379,7 @@ export interface CreatePlanRequest {
   /** Indicates whether you can subscribe to this plan by providing a quantity for the goods or service. */
   quantity_supported?: boolean;
 }
-export const CreatePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
@@ -398,11 +396,11 @@ export const CreatePlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The plan status. */
 export type PlanStatus = "CREATED" | "INACTIVE" | "ACTIVE";
-export const PlanStatus = S.String;
+const PlanStatus = S.String;
 
 /** The pricing model for tiered plan. The `tiers` parameter is required. */
 export type PricingSchemePricingModel = "VOLUME" | "TIERED";
-export const PricingSchemePricingModel = S.String;
+const PricingSchemePricingModel = S.String;
 
 /** The pricing scheme details. */
 export interface PricingScheme {
@@ -418,7 +416,7 @@ export interface PricingScheme {
   /** The date and time when this pricing scheme was last updated, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   update_time?: string;
 }
-export const PricingScheme = /*@__PURE__*/ S.suspend(() =>
+const PricingScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     fixed_price: S.optional(Money),
@@ -431,7 +429,7 @@ export const PricingScheme = /*@__PURE__*/ S.suspend(() =>
 
 /** The tenure type of the billing cycle. In case of a plan having trial cycle, only 2 trial cycles are allowed per plan. */
 export type BillingCycleTenureType = "REGULAR" | "TRIAL";
-export const BillingCycleTenureType = S.String;
+const BillingCycleTenureType = S.String;
 
 /** The billing cycle details. */
 export interface BillingCycle {
@@ -446,7 +444,7 @@ export interface BillingCycle {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-export const BillingCycle = /*@__PURE__*/ S.suspend(() =>
+const BillingCycle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_scheme: S.optional(PricingScheme),
     frequency: Frequency,
@@ -458,9 +456,7 @@ export const BillingCycle = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle. */
 export type BillingCycleList = Array<BillingCycle>;
-export const BillingCycleList = /*@__PURE__*/ S.Array(
-  BillingCycle,
-) as any as S.Schema<BillingCycleList>;
+const BillingCycleList = /*@__PURE__*/ S.Array(BillingCycle) as any as S.Schema<BillingCycleList>;
 
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
@@ -472,7 +468,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -483,7 +479,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -493,7 +489,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -520,7 +516,7 @@ export interface Plan {
   update_time?: string;
   links?: LinkDescriptionList;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     product_id: S.optional(S.String),
@@ -544,7 +540,7 @@ export interface SubscriberRequestName {
   /** When the party is a person, the party's surname or family name. Also known as the last name. Required when the party is a person. Use also to store multiple surnames including the matronymic, or mother's, surname. */
   surname?: string;
 }
-export const SubscriberRequestName = /*@__PURE__*/ S.suspend(() =>
+const SubscriberRequestName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     given_name: S.optional(S.String),
     surname: S.optional(S.String),
@@ -553,14 +549,14 @@ export const SubscriberRequestName = /*@__PURE__*/ S.suspend(() =>
 
 /** The phone type. */
 export type PhoneType = "FAX" | "HOME" | "MOBILE" | "OTHER" | "PAGER";
-export const PhoneType = S.String;
+const PhoneType = S.String;
 
 /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
 export interface PhoneWithTypePhoneNumber {
   /** The national number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). The combined length of the country calling code (CC) and the national number must not be greater than 15 digits. The national number consists of a national destination code (NDC) and subscriber number (SN). */
   national_number: string;
 }
-export const PhoneWithTypePhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PhoneWithTypePhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     national_number: S.String,
   }),
@@ -572,7 +568,7 @@ export interface PhoneWithType {
   /** The phone number, in its canonical international [E.164 numbering plan format](https://www.itu.int/rec/T-REC-E.164/en). */
   phone_number: PhoneWithTypePhoneNumber;
 }
-export const PhoneWithType = /*@__PURE__*/ S.suspend(() =>
+const PhoneWithType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_type: S.optional(PhoneType),
     phone_number: PhoneWithTypePhoneNumber,
@@ -584,7 +580,7 @@ export interface ShippingDetailName {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-export const ShippingDetailName = /*@__PURE__*/ S.suspend(() =>
+const ShippingDetailName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     full_name: S.optional(S.String),
   }),
@@ -596,11 +592,11 @@ export type ShippingDetailType =
   | "PICKUP_IN_PERSON"
   | "PICKUP_IN_STORE"
   | "PICKUP_FROM_PERSON";
-export const ShippingDetailType = S.String;
+const ShippingDetailType = S.String;
 
 /** A classification for the method of purchase fulfillment. */
 export type ShippingType = "SHIPPING" | "PICKUP" | "PICKUP_IN_STORE" | "PICKUP_FROM_PERSON";
-export const ShippingType = S.String;
+const ShippingType = S.String;
 
 /** The options that the payee or merchant offers to the payer to ship or pick up their items. */
 export interface ShippingOption {
@@ -615,7 +611,7 @@ export interface ShippingOption {
   /** If the API request sets `selected = true`, it represents the shipping option that the payee or merchant expects to be pre-selected for the payer when they first view the `shipping.options` in the PayPal Checkout experience. As part of the response if a `shipping.option` contains `selected=true`, it represents the shipping option that the payer selected during the course of checkout with PayPal. Only one `shipping.option` can be set to `selected=true`. */
   selected: boolean;
 }
-export const ShippingOption = /*@__PURE__*/ S.suspend(() =>
+const ShippingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     label: S.String,
@@ -627,7 +623,7 @@ export const ShippingOption = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items. */
 export type ShippingOptionList = Array<ShippingOption>;
-export const ShippingOptionList = /*@__PURE__*/ S.Array(
+const ShippingOptionList = /*@__PURE__*/ S.Array(
   ShippingOption,
 ) as any as S.Schema<ShippingOptionList>;
 
@@ -645,7 +641,7 @@ export interface ShippingDetailAddress {
   postal_code?: string;
   country_code: string;
 }
-export const ShippingDetailAddress = /*@__PURE__*/ S.suspend(() =>
+const ShippingDetailAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_line_1: S.optional(S.String),
     address_line_2: S.optional(S.String),
@@ -666,7 +662,7 @@ export interface ShippingDetail {
   /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
   address?: ShippingDetailAddress;
 }
-export const ShippingDetail = /*@__PURE__*/ S.suspend(() =>
+const ShippingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ShippingDetailName),
     type: S.optional(ShippingDetailType),
@@ -677,7 +673,7 @@ export const ShippingDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of card. i.e Credit, Debit and so on. */
 export type CardType = "CREDIT" | "DEBIT" | "PREPAID" | "STORE" | "UNKNOWN";
-export const CardType = S.String;
+const CardType = S.String;
 
 /** The card network or brand. Applies to credit, debit, gift, and payment cards. */
 export type CardBrand =
@@ -705,12 +701,10 @@ export type CardBrand =
   | "GE"
   | "SYNCHRONY"
   | "UNKNOWN";
-export const CardBrand = S.String;
+const CardBrand = S.String;
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type PaymentSourceCardBillingAddress = ShippingDetailAddress;
-export const PaymentSourceCardBillingAddress = ShippingDetailAddress;
-
 /** The details about a customer in PayPal's system of record. */
 export interface Customer {
   id?: string;
@@ -719,7 +713,7 @@ export interface Customer {
   /** The phone number of the buyer as provided to the merchant or on file with the merchant. The `phone.phone_number` supports only `national_number`. */
   phone?: PhoneWithType;
 }
-export const Customer = /*@__PURE__*/ S.suspend(() =>
+const Customer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     email_address: S.optional(S.String),
@@ -729,13 +723,13 @@ export const Customer = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines how and when the payment source gets vaulted. */
 export type StoreInVaultInstruction = "ON_SUCCESS";
-export const StoreInVaultInstruction = S.String;
+const StoreInVaultInstruction = S.String;
 
 /** Basic vault instruction specification that can be extended by specific payment sources that supports vaulting. */
 export interface VaultInstructionBase {
   store_in_vault?: StoreInVaultInstruction | (string & {});
 }
-export const VaultInstructionBase = /*@__PURE__*/ S.suspend(() =>
+const VaultInstructionBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_in_vault: S.optional(StoreInVaultInstruction),
   }),
@@ -743,14 +737,14 @@ export const VaultInstructionBase = /*@__PURE__*/ S.suspend(() =>
 
 /** The method used for card verification. */
 export type CardVerificationMethod = "SCA_ALWAYS" | "SCA_WHEN_REQUIRED" | "3D_SECURE" | "AVS_CVV";
-export const CardVerificationMethod = S.String;
+const CardVerificationMethod = S.String;
 
 /** The API caller can opt in to verify the card through PayPal offered verification services (e.g. Smart Dollar Auth, 3DS). */
 export interface CardVerification {
   /** The method used for card verification. */
   method?: CardVerificationMethod | (string & {});
 }
-export const CardVerification = /*@__PURE__*/ S.suspend(() =>
+const CardVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(CardVerificationMethod),
   }),
@@ -764,7 +758,7 @@ export interface CardAttributes {
   /** Instruction to optionally verify the card based on the specified strategy. */
   verification?: CardVerification;
 }
-export const CardAttributes = /*@__PURE__*/ S.suspend(() =>
+const CardAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer: S.optional(Customer),
     vault: S.optional(VaultInstructionBase),
@@ -791,7 +785,7 @@ export interface PaymentSourceCard {
   /** Additional attributes associated with the use of this card. */
   attributes?: CardAttributes;
 }
-export const PaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
+const PaymentSourceCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.String),
@@ -809,7 +803,7 @@ export interface PaymentSource {
   /** The payment card to use to fund a payment. Can be a credit or debit card. */
   card?: PaymentSourceCard;
 }
-export const PaymentSource = /*@__PURE__*/ S.suspend(() =>
+const PaymentSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(PaymentSourceCard),
   }),
@@ -825,7 +819,7 @@ export interface SubscriberRequest {
   shipping_address?: ShippingDetail;
   payment_source?: PaymentSource;
 }
-export const SubscriberRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(S.String),
     name: S.optional(SubscriberRequestName),
@@ -840,21 +834,21 @@ export type ApplicationContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-export const ApplicationContextShippingPreference = S.String;
+const ApplicationContextShippingPreference = S.String;
 
 /** Configures the label name to `Continue` or `Subscribe Now` for subscription consent experience. */
 export type ApplicationContextUserAction = "CONTINUE" | "SUBSCRIBE_NOW";
-export const ApplicationContextUserAction = S.String;
+const ApplicationContextUserAction = S.String;
 
 /** The merchant-preferred payment methods. */
 export type PayeePaymentMethodPreference = "UNRESTRICTED" | "IMMEDIATE_PAYMENT_REQUIRED";
-export const PayeePaymentMethodPreference = S.String;
+const PayeePaymentMethodPreference = S.String;
 
 /** The customer and merchant payment preferences. */
 export interface ApplicationContextPaymentMethod {
   payee_preferred?: PayeePaymentMethodPreference | (string & {});
 }
-export const ApplicationContextPaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const ApplicationContextPaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payee_preferred: S.optional(PayeePaymentMethodPreference),
   }),
@@ -879,7 +873,7 @@ export interface ApplicationContext {
   /** The URL where the customer is redirected after the customer cancels the payment. */
   cancel_url: string;
 }
-export const ApplicationContext = /*@__PURE__*/ S.suspend(() =>
+const ApplicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand_name: S.optional(S.String),
     locale: S.optional(S.String),
@@ -900,7 +894,7 @@ export interface BillingCycleOverrideInput {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-export const BillingCycleOverrideInput = /*@__PURE__*/ S.suspend(() =>
+const BillingCycleOverrideInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_scheme: S.optional(PricingSchemeInput),
     sequence: S.Number,
@@ -912,13 +906,13 @@ export const BillingCycleOverrideInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of billing cycles for trial billing and regular billing. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export type BillingCycleOverrideListInput = Array<BillingCycleOverrideInput>;
-export const BillingCycleOverrideListInput = /*@__PURE__*/ S.Array(
+const BillingCycleOverrideListInput = /*@__PURE__*/ S.Array(
   BillingCycleOverrideInput,
 ) as any as S.Schema<BillingCycleOverrideListInput>;
 
 /** The action to take on the subscription if the initial payment for the setup fails. */
 export type PaymentPreferencesOverrideSetupFeeFailureAction = "CONTINUE" | "CANCEL";
-export const PaymentPreferencesOverrideSetupFeeFailureAction = S.String;
+const PaymentPreferencesOverrideSetupFeeFailureAction = S.String;
 
 /** The payment preferences to override at subscription level. */
 export interface PaymentPreferencesOverride {
@@ -931,7 +925,7 @@ export interface PaymentPreferencesOverride {
   /** The maximum number of payment failures before a subscription is suspended. For example, if `payment_failure_threshold` is `2`, the subscription automatically updates to the `SUSPEND` state if two consecutive payments fail. */
   payment_failure_threshold?: number;
 }
-export const PaymentPreferencesOverride = /*@__PURE__*/ S.suspend(() =>
+const PaymentPreferencesOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_bill_outstanding: S.optional(S.Boolean),
     setup_fee: S.optional(Money),
@@ -949,7 +943,7 @@ export interface TaxesOverride {
   /** Indicates whether the tax was already included in the billing amount. */
   inclusive?: boolean;
 }
-export const TaxesOverride = /*@__PURE__*/ S.suspend(() =>
+const TaxesOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.String),
     inclusive: S.optional(S.Boolean),
@@ -962,7 +956,7 @@ export interface PlanOverrideInput {
   payment_preferences?: PaymentPreferencesOverride;
   taxes?: TaxesOverride;
 }
-export const PlanOverrideInput = /*@__PURE__*/ S.suspend(() =>
+const PlanOverrideInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycles: S.optional(BillingCycleOverrideListInput),
     payment_preferences: S.optional(PaymentPreferencesOverride),
@@ -994,7 +988,7 @@ export interface CreateSubscriptionRequest {
   /** Merchant's inventory identifier details for the WPS hosted button. */
   merchant_inventory?: unknown;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
     payPalRequestId: S.optional(S.String.pipe(T.Header("PayPal-Request-Id"))),
@@ -1021,27 +1015,25 @@ export type CreateSubscriptionResponseStatus =
   | "SUSPENDED"
   | "CANCELLED"
   | "EXPIRED";
-export const CreateSubscriptionResponseStatus = S.String;
+const CreateSubscriptionResponseStatus = S.String;
 
 /** The name of the party. */
 export type SubscriberName = SubscriberRequestName;
-export const SubscriberName = SubscriberRequestName;
-
 /** Array of brands or networks associated with the card. */
 export type CardBrandList = Array<CardBrand>;
-export const CardBrandList = /*@__PURE__*/ S.Array(CardBrand) as any as S.Schema<CardBrandList>;
+const CardBrandList = /*@__PURE__*/ S.Array(CardBrand) as any as S.Schema<CardBrandList>;
 
 /** Liability shift indicator. The outcome of the issuer's authentication. */
 export type LiabilityShift = "NO" | "POSSIBLE" | "UNKNOWN";
-export const LiabilityShift = S.String;
+const LiabilityShift = S.String;
 
 /** Transactions status result identifier. The outcome of the issuer's authentication. */
 export type ParesStatus = "Y" | "N" | "U" | "A" | "C" | "R" | "D" | "I";
-export const ParesStatus = S.String;
+const ParesStatus = S.String;
 
 /** Status of Authentication eligibility. */
 export type Enrolled = "Y" | "N" | "U" | "B";
-export const Enrolled = S.String;
+const Enrolled = S.String;
 
 /** Results of 3D Secure Authentication. */
 export interface ThreeDSecureAuthenticationResponse {
@@ -1050,7 +1042,7 @@ export interface ThreeDSecureAuthenticationResponse {
   /** Status of authentication eligibility. */
   enrollment_status?: Enrolled;
 }
-export const ThreeDSecureAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
+const ThreeDSecureAuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication_status: S.optional(ParesStatus),
     enrollment_status: S.optional(Enrolled),
@@ -1064,7 +1056,7 @@ export interface AuthenticationResponse {
   liability_shift?: LiabilityShift;
   three_d_secure?: ThreeDSecureAuthenticationResponse;
 }
-export const AuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     liability_shift: S.optional(LiabilityShift),
     three_d_secure: S.optional(ThreeDSecureAuthenticationResponse),
@@ -1073,13 +1065,13 @@ export const AuthenticationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The vault status. */
 export type VaultResponseStatus = "VAULTED" | "CREATED" | "APPROVED";
-export const VaultResponseStatus = S.String;
+const VaultResponseStatus = S.String;
 
 /** The details about a customer in PayPal's system of record. */
 export interface VaultResponseCustomer {
   id?: string;
 }
-export const VaultResponseCustomer = /*@__PURE__*/ S.suspend(() =>
+const VaultResponseCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1087,7 +1079,7 @@ export const VaultResponseCustomer = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related HATEOAS links. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const DefinitionsLinkDescriptionList =
+const DefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The details about a saved payment source. */
@@ -1100,7 +1092,7 @@ export interface VaultResponse {
   customer?: VaultResponseCustomer;
   links?: DefinitionsLinkDescriptionList;
 }
-export const VaultResponse = /*@__PURE__*/ S.suspend(() =>
+const VaultResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(VaultResponseStatus),
@@ -1113,7 +1105,7 @@ export const VaultResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CardAttributesResponse {
   vault?: VaultResponse;
 }
-export const CardAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const CardAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vault: S.optional(VaultResponse),
   }),
@@ -1126,7 +1118,7 @@ export interface CardFromRequest {
   /** The last digits of the payment card. */
   last_digits?: string;
 }
-export const CardFromRequest = /*@__PURE__*/ S.suspend(() =>
+const CardFromRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expiry: S.optional(S.String),
     last_digits: S.optional(S.String),
@@ -1135,7 +1127,7 @@ export const CardFromRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of card product assigned to the BIN by the issuer. These values are defined by the issuer and may change over time. Some examples include: PREPAID_GIFT, CONSUMER, CORPORATE. */
 export type ProductsList = Array<string>;
-export const ProductsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProductsList>;
+const ProductsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ProductsList>;
 
 /** Bank Identification Number (BIN) details used to fund a payment. */
 export interface BinDetails {
@@ -1147,7 +1139,7 @@ export interface BinDetails {
   bin_country_code?: string;
   products?: ProductsList;
 }
-export const BinDetails = /*@__PURE__*/ S.suspend(() =>
+const BinDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bin: S.optional(S.String),
     issuing_bank: S.optional(S.String),
@@ -1158,8 +1150,6 @@ export const BinDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). */
 export type CardResponseWithBillingAddressBillingAddress = ShippingDetailAddress;
-export const CardResponseWithBillingAddressBillingAddress = ShippingDetailAddress;
-
 export interface CardResponseWithBillingAddress {
   /** The card holder's name as it appears on the card. */
   name?: string;
@@ -1182,7 +1172,7 @@ export interface CardResponseWithBillingAddress {
   /** Currency code of the given instrument */
   currency_code?: string;
 }
-export const CardResponseWithBillingAddress = /*@__PURE__*/ S.suspend(() =>
+const CardResponseWithBillingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     last_digits: S.optional(S.String),
@@ -1205,7 +1195,7 @@ export const CardResponseWithBillingAddress = /*@__PURE__*/ S.suspend(() =>
 export interface PaymentSourceResponse {
   card?: CardResponseWithBillingAddress;
 }
-export const PaymentSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const PaymentSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card: S.optional(CardResponseWithBillingAddress),
   }),
@@ -1223,7 +1213,7 @@ export interface Subscriber {
   shipping_address?: ShippingDetail;
   payment_source?: PaymentSourceResponse;
 }
-export const Subscriber = /*@__PURE__*/ S.suspend(() =>
+const Subscriber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(S.String),
     payer_id: S.optional(S.String),
@@ -1236,7 +1226,7 @@ export const Subscriber = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the billing cycle. */
 export type CycleExecutionTenureType = "REGULAR" | "TRIAL";
-export const CycleExecutionTenureType = S.String;
+const CycleExecutionTenureType = S.String;
 
 /** The regular and trial execution details for a billing cycle. */
 export interface CycleExecution {
@@ -1253,7 +1243,7 @@ export interface CycleExecution {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-export const CycleExecution = /*@__PURE__*/ S.suspend(() =>
+const CycleExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenure_type: CycleExecutionTenureType,
     sequence: S.Number,
@@ -1266,7 +1256,7 @@ export const CycleExecution = /*@__PURE__*/ S.suspend(() =>
 
 /** The trial and regular billing executions. */
 export type CycleExecutionList = Array<CycleExecution>;
-export const CycleExecutionList = /*@__PURE__*/ S.Array(
+const CycleExecutionList = /*@__PURE__*/ S.Array(
   CycleExecution,
 ) as any as S.Schema<CycleExecutionList>;
 
@@ -1276,7 +1266,7 @@ export interface LastPaymentDetails {
   /** The date and time when the last payment was made, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   time?: string;
 }
-export const LastPaymentDetails = /*@__PURE__*/ S.suspend(() =>
+const LastPaymentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(Money),
     time: S.optional(S.String),
@@ -1293,7 +1283,7 @@ export type FailedPaymentDetailsReasonCode =
   | "SENDING_LIMIT_EXCEEDED"
   | "TRANSACTION_RECEIVING_LIMIT_EXCEEDED"
   | "CURRENCY_MISMATCH";
-export const FailedPaymentDetailsReasonCode = S.String;
+const FailedPaymentDetailsReasonCode = S.String;
 
 /** The details for the failed payment of the subscription. */
 export interface FailedPaymentDetails {
@@ -1306,7 +1296,7 @@ export interface FailedPaymentDetails {
   /** The time when the retry attempt for the failed payment occurs, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   next_payment_retry_time?: string;
 }
-export const FailedPaymentDetails = /*@__PURE__*/ S.suspend(() =>
+const FailedPaymentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: Money,
     time: S.String,
@@ -1331,7 +1321,7 @@ export interface SubscriptionBillingInfo {
   /** The details for the last failed payment of the subscription. */
   last_failed_payment?: FailedPaymentDetails;
 }
-export const SubscriptionBillingInfo = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionBillingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outstanding_balance: Money,
     cycle_executions: S.optional(CycleExecutionList),
@@ -1357,7 +1347,7 @@ export interface CreateSubscriptionResponsePlan {
   /** Indicates whether you can subscribe to this plan by providing a quantity for the goods or service. */
   quantity_supported?: boolean;
 }
-export const CreateSubscriptionResponsePlan = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionResponsePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1397,7 +1387,7 @@ export interface CreateSubscriptionResponse {
   plan?: CreateSubscriptionResponsePlan;
   links?: LinkDescriptionList;
 }
-export const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(CreateSubscriptionResponseStatus),
     status_change_note: S.optional(S.String),
@@ -1424,21 +1414,20 @@ export interface DeactivatePlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-export const DeactivatePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const DeactivatePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/v1/billing/plans/{id}/deactivate", code: 200 })),
 ).annotate({ identifier: "DeactivatePlanRequest" }) as any as S.Schema<DeactivatePlanRequest>;
 
 export interface DeactivatePlanResponse {}
-export const DeactivatePlanResponse =
-  ActivatePlanResponse as any as S.Schema<DeactivatePlanResponse>;
+const DeactivatePlanResponse = ActivatePlanResponse as any as S.Schema<DeactivatePlanResponse>;
 
 export interface GetPlanRequest {
   /** The ID of the subscription. */
   id: string;
 }
-export const GetPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/billing/plans/{id}", code: 200 })),
@@ -1450,7 +1439,7 @@ export interface GetSubscriptionRequest {
   /** List of fields that are to be returned in the response. Possible value for fields are last_failed_payment and plan. */
   fields?: string;
 }
-export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     fields: S.optional(S.String.pipe(T.Query())),
@@ -1465,12 +1454,10 @@ export type GetSubscriptionResponseStatus =
   | "SUSPENDED"
   | "CANCELLED"
   | "EXPIRED";
-export const GetSubscriptionResponseStatus = S.String;
+const GetSubscriptionResponseStatus = S.String;
 
 /** The plan details. */
 export type GetSubscriptionResponsePlan = CreateSubscriptionResponsePlan;
-export const GetSubscriptionResponsePlan = CreateSubscriptionResponsePlan;
-
 export interface GetSubscriptionResponse {
   /** The status of the subscription. */
   status?: GetSubscriptionResponseStatus;
@@ -1497,7 +1484,7 @@ export interface GetSubscriptionResponse {
   plan?: CreateSubscriptionResponsePlan;
   links?: LinkDescriptionList;
 }
-export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetSubscriptionResponseStatus),
     status_change_note: S.optional(S.String),
@@ -1530,7 +1517,7 @@ export interface ListPlansRequest {
   /** The preferred server response upon successful completion of the request. Value is:<ul><li><code>return=minimal</code>. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the <code>id</code>, <code>status</code> and HATEOAS links.</li><li><code>return=representation</code>. The server returns a complete resource representation, including the current state of the resource.</li></ul> */
   prefer?: string;
 }
-export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product_id: S.optional(S.String.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -1542,7 +1529,7 @@ export const ListPlansRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of plans. */
 export type PlanList = Array<Plan>;
-export const PlanList = /*@__PURE__*/ S.Array(Plan) as any as S.Schema<PlanList>;
+const PlanList = /*@__PURE__*/ S.Array(Plan) as any as S.Schema<PlanList>;
 
 /** The list of plans with details. */
 export interface PlanCollection {
@@ -1553,7 +1540,7 @@ export interface PlanCollection {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-export const PlanCollection = /*@__PURE__*/ S.suspend(() =>
+const PlanCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plans: S.optional(PlanList),
     total_items: S.optional(S.Number),
@@ -1564,7 +1551,7 @@ export const PlanCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation. */
 export type PatchOp = "add" | "remove" | "replace" | "move" | "copy" | "test";
-export const PatchOp = S.String;
+const PatchOp = S.String;
 
 /** The JSON patch object to apply partial updates to resources. */
 export interface Patch {
@@ -1577,7 +1564,7 @@ export interface Patch {
   /** The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the target document location from which to move the value. Required for the <code>move</code> operation. */
   from?: string;
 }
-export const Patch = /*@__PURE__*/ S.suspend(() =>
+const Patch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: PatchOp,
     path: S.optional(S.String),
@@ -1588,14 +1575,14 @@ export const Patch = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of JSON patch objects to apply partial updates to resources. */
 export type PatchRequest = Array<Patch>;
-export const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
+const PatchRequest = /*@__PURE__*/ S.Array(Patch) as any as S.Schema<PatchRequest>;
 
 export interface PatchPlanRequest {
   /** The ID of the subscription. */
   id: string;
   body?: PatchRequest;
 }
-export const PatchPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -1603,14 +1590,14 @@ export const PatchPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchPlanRequest" }) as any as S.Schema<PatchPlanRequest>;
 
 export interface PatchPlanResponse {}
-export const PatchPlanResponse = ActivatePlanResponse as any as S.Schema<PatchPlanResponse>;
+const PatchPlanResponse = ActivatePlanResponse as any as S.Schema<PatchPlanResponse>;
 
 export interface PatchSubscriptionRequest {
   /** The ID of the subscription. */
   id: string;
   body?: PatchRequest;
 }
-export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(PatchRequest.pipe(T.HttpBody())),
@@ -1618,7 +1605,7 @@ export const PatchSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSubscriptionRequest" }) as any as S.Schema<PatchSubscriptionRequest>;
 
 export interface PatchSubscriptionResponse {}
-export const PatchSubscriptionResponse =
+const PatchSubscriptionResponse =
   ActivatePlanResponse as any as S.Schema<PatchSubscriptionResponse>;
 
 /** The update pricing scheme request details. */
@@ -1627,7 +1614,7 @@ export interface UpdatePricingSchemeRequestInput {
   billing_cycle_sequence: number;
   pricing_scheme: PricingSchemeInput;
 }
-export const UpdatePricingSchemeRequestInput = /*@__PURE__*/ S.suspend(() =>
+const UpdatePricingSchemeRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycle_sequence: S.Number,
     pricing_scheme: PricingSchemeInput,
@@ -1638,7 +1625,7 @@ export const UpdatePricingSchemeRequestInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of pricing schemes. */
 export type UpdatePricingSchemeRequestListInput = Array<UpdatePricingSchemeRequestInput>;
-export const UpdatePricingSchemeRequestListInput = /*@__PURE__*/ S.Array(
+const UpdatePricingSchemeRequestListInput = /*@__PURE__*/ S.Array(
   UpdatePricingSchemeRequestInput,
 ) as any as S.Schema<UpdatePricingSchemeRequestListInput>;
 
@@ -1647,7 +1634,7 @@ export interface PlansUpdatePricingSchemesRequest {
   id: string;
   pricing_schemes: UpdatePricingSchemeRequestListInput;
 }
-export const PlansUpdatePricingSchemesRequest = /*@__PURE__*/ S.suspend(() =>
+const PlansUpdatePricingSchemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     pricing_schemes: UpdatePricingSchemeRequestListInput,
@@ -1659,9 +1646,7 @@ export const PlansUpdatePricingSchemesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlansUpdatePricingSchemesRequest>;
 
 export interface PlansUpdatePricingSchemesResponse {}
-export const PlansUpdatePricingSchemesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const PlansUpdatePricingSchemesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PlansUpdatePricingSchemesResponse",
 }) as any as S.Schema<PlansUpdatePricingSchemesResponse>;
 
@@ -1670,14 +1655,11 @@ export type SubscriptionsReviseRequestApplicationContextShippingPreference =
   | "GET_FROM_FILE"
   | "NO_SHIPPING"
   | "SET_PROVIDED_ADDRESS";
-export const SubscriptionsReviseRequestApplicationContextShippingPreference = S.String;
+const SubscriptionsReviseRequestApplicationContextShippingPreference = S.String;
 
 /** The customer and merchant payment preferences. */
 export type SubscriptionsReviseRequestApplicationContextPaymentMethod =
   ApplicationContextPaymentMethod;
-export const SubscriptionsReviseRequestApplicationContextPaymentMethod =
-  ApplicationContextPaymentMethod;
-
 /** The application context, which customizes the payer experience during the subscription approval process with PayPal. */
 export interface SubscriptionsReviseRequestApplicationContext {
   /** The label that overrides the business name in the PayPal account on the PayPal site. */
@@ -1695,7 +1677,7 @@ export interface SubscriptionsReviseRequestApplicationContext {
   /** The URL where the customer is redirected after the customer cancels the payment. */
   cancel_url: string;
 }
-export const SubscriptionsReviseRequestApplicationContext = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsReviseRequestApplicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand_name: S.optional(S.String),
     locale: S.optional(S.String),
@@ -1724,7 +1706,7 @@ export interface SubscriptionsReviseRequest {
   /** An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. Any existing overrides will not be carried forward during subscription revise. */
   plan?: PlanOverrideInput;
 }
-export const SubscriptionsReviseRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsReviseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     plan_id: S.optional(S.String),
@@ -1747,7 +1729,7 @@ export interface BillingCycleOverride {
   /** The number of times this billing cycle gets executed. Trial billing cycles can only be executed a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). Regular billing cycles can be executed infinite times (value of <code>0</code> for <code>total_cycles</code>) or a finite number of times (value between <code>1</code> and <code>999</code> for <code>total_cycles</code>). */
   total_cycles?: number;
 }
-export const BillingCycleOverride = /*@__PURE__*/ S.suspend(() =>
+const BillingCycleOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing_scheme: S.optional(PricingScheme),
     sequence: S.Number,
@@ -1757,7 +1739,7 @@ export const BillingCycleOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of billing cycles for trial billing and regular billing. The subscription billing cycle definition has to adhere to the plan billing cycle definition. */
 export type BillingCycleOverrideList = Array<BillingCycleOverride>;
-export const BillingCycleOverrideList = /*@__PURE__*/ S.Array(
+const BillingCycleOverrideList = /*@__PURE__*/ S.Array(
   BillingCycleOverride,
 ) as any as S.Schema<BillingCycleOverrideList>;
 
@@ -1767,7 +1749,7 @@ export interface PlanOverride {
   payment_preferences?: PaymentPreferencesOverride;
   taxes?: TaxesOverride;
 }
-export const PlanOverride = /*@__PURE__*/ S.suspend(() =>
+const PlanOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing_cycles: S.optional(BillingCycleOverrideList),
     payment_preferences: S.optional(PaymentPreferencesOverride),
@@ -1777,7 +1759,7 @@ export const PlanOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type SubscriptionReviseResponseDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const SubscriptionReviseResponseDefinitionsLinkDescriptionList =
+const SubscriptionReviseResponseDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<SubscriptionReviseResponseDefinitionsLinkDescriptionList>;
 
 /** The response to a request to update the quantity of the product or service in a subscription. You can also use this method to switch the plan and update the `shipping_amount` and `shipping_address` values for the subscription. This type of update requires the buyer's consent. */
@@ -1796,7 +1778,7 @@ export interface SubscriptionReviseResponse {
   plan_overridden?: boolean;
   links?: SubscriptionReviseResponseDefinitionsLinkDescriptionList;
 }
-export const SubscriptionReviseResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionReviseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_id: S.optional(S.String),
     quantity: S.optional(S.String),
@@ -1818,7 +1800,7 @@ export interface SubscriptionsTransactionsRequest {
   /** The end time of the range of transactions to list. */
   end_time: string;
 }
-export const SubscriptionsTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     start_time: S.String.pipe(T.Query()),
@@ -1830,9 +1812,7 @@ export const SubscriptionsTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of transactions. */
 export type TransactionList = Array<Transaction>;
-export const TransactionList = /*@__PURE__*/ S.Array(
-  Transaction,
-) as any as S.Schema<TransactionList>;
+const TransactionList = /*@__PURE__*/ S.Array(Transaction) as any as S.Schema<TransactionList>;
 
 /** The list transactions for a subscription request details. */
 export interface TransactionsList {
@@ -1843,7 +1823,7 @@ export interface TransactionsList {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-export const TransactionsList = /*@__PURE__*/ S.suspend(() =>
+const TransactionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactions: S.optional(TransactionList),
     total_items: S.optional(S.Number),
@@ -1858,7 +1838,7 @@ export interface SuspendSubscriptionRequest {
   /** The reason for suspension of the Subscription. */
   reason: string;
 }
-export const SuspendSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     reason: S.String,
@@ -1868,7 +1848,7 @@ export const SuspendSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuspendSubscriptionRequest>;
 
 export interface SuspendSubscriptionResponse {}
-export const SuspendSubscriptionResponse =
+const SuspendSubscriptionResponse =
   ActivatePlanResponse as any as S.Schema<SuspendSubscriptionResponse>;
 
 export type ActivatePlanError = Forbidden | NotFound | UnprocessableEntity | PaypalOpError;

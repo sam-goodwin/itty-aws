@@ -65,7 +65,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -77,12 +77,12 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Lustre_Date {
@@ -93,7 +93,7 @@ export interface Lustre_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Lustre_Date = /*@__PURE__*/ S.suspend(() =>
+const Lustre_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -112,7 +112,7 @@ export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
   hours?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -130,7 +130,7 @@ export interface MaintenanceExclusionWindow {
   /** Required. Time in UTC when the exclusion window starts on start_date and ends on end_date. This can be: * Full time OR * All zeros for 00:00:00 UTC */
   time?: TimeOfDay;
 }
-export const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Lustre_Date),
     startDate: S.optional(Lustre_Date),
@@ -141,7 +141,7 @@ export const MaintenanceExclusionWindow = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MaintenanceExclusionWindow>;
 
 export type MaintenanceExclusionWindowList = Array<MaintenanceExclusionWindow>;
-export const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(
+const MaintenanceExclusionWindowList = /*@__PURE__*/ S.Array(
   MaintenanceExclusionWindow,
 ) as any as S.Schema<MaintenanceExclusionWindowList>;
 
@@ -154,7 +154,7 @@ export type WeeklyMaintenanceWindowDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const WeeklyMaintenanceWindowDayOfWeekEnum = S.String;
+const WeeklyMaintenanceWindowDayOfWeekEnum = S.String;
 
 /** Weekly time window in which maintenance updates may occur. Duration of the window is currently fixed at 1 hour. Time zone is UTC. */
 export interface WeeklyMaintenanceWindow {
@@ -163,7 +163,7 @@ export interface WeeklyMaintenanceWindow {
   /** Required. Start time of the maintenance window in UTC time zone. */
   startTime?: TimeOfDay;
 }
-export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: S.optional(WeeklyMaintenanceWindowDayOfWeekEnum),
     startTime: S.optional(TimeOfDay),
@@ -171,7 +171,7 @@ export const WeeklyMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeeklyMaintenanceWindow" }) as any as S.Schema<WeeklyMaintenanceWindow>;
 
 export type WeeklyMaintenanceWindowList = Array<WeeklyMaintenanceWindow>;
-export const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
+const WeeklyMaintenanceWindowList = /*@__PURE__*/ S.Array(
   WeeklyMaintenanceWindow,
 ) as any as S.Schema<WeeklyMaintenanceWindowList>;
 
@@ -182,7 +182,7 @@ export interface MaintenancePolicy {
   /** Required. The weekly maintenance windows for the instance. Currently limited to 1 window. */
   weeklyMaintenanceWindows?: WeeklyMaintenanceWindowList;
 }
-export const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
+const MaintenancePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceExclusionWindow: S.optional(MaintenanceExclusionWindowList),
     weeklyMaintenanceWindows: S.optional(WeeklyMaintenanceWindowList),
@@ -196,7 +196,7 @@ export interface MaintenanceSchedule {
   /** Output only. The scheduled start time for the maintenance. */
   startTime?: string;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -213,27 +213,27 @@ export type InstanceStateEnum =
   | "STOPPED"
   | "UPDATING"
   | "SUSPENDED";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 export type DynamicTierOptionsModeEnum = "MODE_UNSPECIFIED" | "DISABLED" | "DEFAULT_CACHE";
-export const DynamicTierOptionsModeEnum = S.String;
+const DynamicTierOptionsModeEnum = S.String;
 
 /** Dynamic tier options for a Managed Lustre instance. */
 export interface DynamicTierOptions {
   /** Required. Immutable. The dynamic tier mode of the instance. */
   mode?: DynamicTierOptionsModeEnum | (string & {});
 }
-export const DynamicTierOptions = /*@__PURE__*/ S.suspend(() =>
+const DynamicTierOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(DynamicTierOptionsModeEnum),
   }),
 ).annotate({ identifier: "DynamicTierOptions" }) as any as S.Schema<DynamicTierOptions>;
 
 export type AccessRuleSquashModeEnum = "SQUASH_MODE_UNSPECIFIED" | "NO_SQUASH" | "ROOT_SQUASH";
-export const AccessRuleSquashModeEnum = S.String;
+const AccessRuleSquashModeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A single policy group with IP-based access rules for the Managed Lustre instance. */
 export interface AccessRule {
@@ -244,7 +244,7 @@ export interface AccessRule {
   /** Required. The IP address ranges to which to apply this access rule. Accepts non-overlapping CIDR ranges (e.g., `192.168.1.0/24`) and IP addresses (e.g., `192.168.1.0`). */
   ipAddressRanges?: StringList;
 }
-export const AccessRule = /*@__PURE__*/ S.suspend(() =>
+const AccessRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     squashMode: S.optional(AccessRuleSquashModeEnum),
@@ -253,13 +253,13 @@ export const AccessRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessRule" }) as any as S.Schema<AccessRule>;
 
 export type AccessRuleList = Array<AccessRule>;
-export const AccessRuleList = /*@__PURE__*/ S.Array(AccessRule) as any as S.Schema<AccessRuleList>;
+const AccessRuleList = /*@__PURE__*/ S.Array(AccessRule) as any as S.Schema<AccessRuleList>;
 
 export type AccessRulesOptionsDefaultSquashModeEnum =
   | "SQUASH_MODE_UNSPECIFIED"
   | "NO_SQUASH"
   | "ROOT_SQUASH";
-export const AccessRulesOptionsDefaultSquashModeEnum = S.String;
+const AccessRulesOptionsDefaultSquashModeEnum = S.String;
 
 /** IP-based access rules for the Managed Lustre instance. These options define the root user squash configuration. */
 export interface AccessRulesOptions {
@@ -272,7 +272,7 @@ export interface AccessRulesOptions {
   /** Required. The squash mode for the default access rule. */
   defaultSquashMode?: AccessRulesOptionsDefaultSquashModeEnum | (string & {});
 }
-export const AccessRulesOptions = /*@__PURE__*/ S.suspend(() =>
+const AccessRulesOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessRules: S.optional(AccessRuleList),
     defaultSquashUid: S.optional(S.Number),
@@ -330,7 +330,7 @@ export interface Instance {
   /** Output only. The effective version of the instance. Format: `Lustre_YYYYMMDD.NN_pXX` */
   effectiveVersion?: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetVersion: S.optional(S.String),
     capacityGib: S.optional(S.String),
@@ -368,7 +368,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -386,15 +386,10 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -405,7 +400,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -426,7 +421,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -437,7 +432,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type DirectoryPolicyStateEnum = "STATE_UNSPECIFIED" | "CREATING" | "ACTIVE" | "DELETING";
-export const DirectoryPolicyStateEnum = S.String;
+const DirectoryPolicyStateEnum = S.String;
 
 /** A directory policy for a Managed Lustre instance. */
 export interface DirectoryPolicy {
@@ -452,7 +447,7 @@ export interface DirectoryPolicy {
   /** Immutable. Identifier. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. {id} is user provided. */
   name?: string;
 }
-export const DirectoryPolicy = /*@__PURE__*/ S.suspend(() =>
+const DirectoryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     lustreProjectId: S.optional(S.String),
@@ -470,19 +465,18 @@ export interface CreateProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Request body */
   body?: DirectoryPolicy;
 }
-export const CreateProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      directoryPolicyId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(DirectoryPolicy.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/directoryPolicies",
-        baseUrl: "https://lustre.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    directoryPolicyId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(DirectoryPolicy.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/directoryPolicies",
+      baseUrl: "https://lustre.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsInstancesDirectoryPoliciesRequest",
 }) as any as S.Schema<CreateProjectsLocationsInstancesDirectoryPoliciesRequest>;
@@ -494,17 +488,17 @@ export type MirrorStateEnum =
   | "DELETING"
   | "ACTIVE"
   | "SUSPENDED";
-export const MirrorStateEnum = S.String;
+const MirrorStateEnum = S.String;
 
 export type MirrorDirectionEnum = "DIRECTION_UNSPECIFIED" | "FROM_CLOUD_STORAGE";
-export const MirrorDirectionEnum = S.String;
+const MirrorDirectionEnum = S.String;
 
 /** Specifies a Cloud Storage bucket and, optionally, a path inside the bucket. */
 export interface GcsPath {
   /** Required. The URI to a Cloud Storage bucket, or a path within a bucket, using the format `gs:////`. If a path inside the bucket is specified, it must end with a forward slash (`/`). */
   uri?: string;
 }
-export const GcsPath = /*@__PURE__*/ S.suspend(() =>
+const GcsPath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -515,7 +509,7 @@ export interface LustrePath {
   /** Optional. The root directory path to the Managed Lustre file system. Must start with `/`. Default is `/`. If you're importing data into Managed Lustre, any path other than the default must already exist on the file system. */
   path?: string;
 }
-export const LustrePath = /*@__PURE__*/ S.suspend(() =>
+const LustrePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
   }),
@@ -546,7 +540,7 @@ export interface Mirror {
   /** Required. Can be dir/subDir. */
   lustrePath?: LustrePath;
 }
-export const Mirror = /*@__PURE__*/ S.suspend(() =>
+const Mirror = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     deletedFilesRetained: S.optional(S.Boolean),
@@ -572,7 +566,7 @@ export interface CreateProjectsLocationsInstancesMirrorsRequest {
   /** Request body */
   body?: Mirror;
 }
-export const CreateProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     mirrorId: S.optional(S.String.pipe(T.Query())),
@@ -597,7 +591,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -613,13 +607,12 @@ export interface DeleteProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsInstancesDirectoryPoliciesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsInstancesDirectoryPoliciesRequest>;
@@ -630,7 +623,7 @@ export interface DeleteProjectsLocationsInstancesMirrorsRequest {
   /** Required. Name of the mirror to delete, in the format: projects/{project}/locations/{location}/instances/{instance}/mirrors/{mirror} */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -645,7 +638,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -666,7 +659,7 @@ export interface ExportDataRequest {
   /** Optional. User-specified service account used to perform the transfer. If unspecified, the Managed Lustre service agent is used. Use one of the following formats: * `{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` * `projects/-/serviceAccounts/{EMAIL_ADDRESS_OR_UNIQUE_ID}` */
   serviceAccount?: string;
 }
-export const ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lustrePath: S.optional(LustrePath),
     gcsPath: S.optional(GcsPath),
@@ -681,7 +674,7 @@ export interface ExportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportDataRequest;
 }
-export const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportDataRequest.pipe(T.HttpBody())),
@@ -702,7 +695,7 @@ export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -722,7 +715,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -731,7 +724,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -739,7 +732,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -750,7 +743,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -758,9 +751,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -773,7 +764,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     expression: S.optional(S.String),
@@ -791,7 +782,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -800,7 +791,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -813,7 +804,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     etag: S.optional(S.String),
@@ -828,27 +819,26 @@ export interface GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest 
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://lustre.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
+const GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://lustre.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
 
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" })),
@@ -869,7 +859,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     locationId: S.optional(S.String),
@@ -883,7 +873,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. The instance resource name, in the format `projects/{projectId}/locations/{location}/instances/{instanceId}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" })),
@@ -895,7 +885,7 @@ export interface GetProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Required. The resource name of the directory policy. DirectoryPolicy names have the form `projects/{project}/locations/{location}/instances/{instance}/directoryPolicies/{id}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" })),
@@ -907,7 +897,7 @@ export interface GetProjectsLocationsInstancesMirrorsRequest {
   /** Required. Name of the mirror to retrieve, in the format: projects/{project}/locations/{location}/instances/{instance}/mirrors/{mirror} */
   name: string;
 }
-export const GetProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" })),
@@ -919,7 +909,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://lustre.googleapis.com/" })),
@@ -938,7 +928,7 @@ export interface ImportDataRequest {
   /** Lustre path destination. */
   lustrePath?: LustrePath;
 }
-export const ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsPath: S.optional(GcsPath),
     requestId: S.optional(S.String),
@@ -953,7 +943,7 @@ export interface ImportDataProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportDataRequest;
 }
-export const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDataProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportDataRequest.pipe(T.HttpBody())),
@@ -980,7 +970,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -999,7 +989,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1008,7 +998,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1027,7 +1017,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Requested page size. Server might return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1046,7 +1036,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Message for response to listing Instances */
 export interface ListInstancesResponse {
@@ -1057,7 +1047,7 @@ export interface ListInstancesResponse {
   /** Response from ListInstances. */
   instances?: InstanceList;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1073,7 +1063,7 @@ export interface ListProjectsLocationsInstancesDirectoryPoliciesRequest {
   /** Optional. A page token, received from a previous `ListDirectoryPolicies` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDirectoryPolicies` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1090,7 +1080,7 @@ export const ListProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE_
 }) as any as S.Schema<ListProjectsLocationsInstancesDirectoryPoliciesRequest>;
 
 export type DirectoryPolicyList = Array<DirectoryPolicy>;
-export const DirectoryPolicyList = /*@__PURE__*/ S.Array(
+const DirectoryPolicyList = /*@__PURE__*/ S.Array(
   DirectoryPolicy,
 ) as any as S.Schema<DirectoryPolicyList>;
 
@@ -1101,7 +1091,7 @@ export interface ListDirectoryPoliciesResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListDirectoryPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directoryPolicies: S.optional(DirectoryPolicyList),
     nextPageToken: S.optional(S.String),
@@ -1122,7 +1112,7 @@ export interface ListProjectsLocationsInstancesMirrorsRequest {
   /** Required. Parent instance resource where the mirrors will be listed, in the format: projects/{project}/locations/{location}/instances/{instance} */
   parent: string;
 }
-export const ListProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1141,7 +1131,7 @@ export const ListProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsInstancesMirrorsRequest>;
 
 export type MirrorList = Array<Mirror>;
-export const MirrorList = /*@__PURE__*/ S.Array(Mirror) as any as S.Schema<MirrorList>;
+const MirrorList = /*@__PURE__*/ S.Array(Mirror) as any as S.Schema<MirrorList>;
 
 /** Response for ListMirrors. */
 export interface ListMirrorsResponse {
@@ -1152,7 +1142,7 @@ export interface ListMirrorsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListMirrorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMirrorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     mirrors: S.optional(MirrorList),
@@ -1172,7 +1162,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1191,7 +1181,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1202,7 +1192,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -1220,7 +1210,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1243,7 +1233,7 @@ export interface PatchProjectsLocationsInstancesMirrorsRequest {
   /** Request body */
   body?: Mirror;
 }
-export const PatchProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesMirrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -1261,7 +1251,7 @@ export type RescheduleRescheduleTypeEnum =
   | "IMMEDIATE"
   | "NEXT_AVAILABLE_WINDOW"
   | "BY_TIME";
-export const RescheduleRescheduleTypeEnum = S.String;
+const RescheduleRescheduleTypeEnum = S.String;
 
 /** The desired reschedule settings. */
 export interface Reschedule {
@@ -1270,7 +1260,7 @@ export interface Reschedule {
   /** Optional. Required if reschedule_type is BY_TIME. Timestamp when the maintenance shall be rescheduled to. This time must be within 28 days of the original scheduled maintenance start time. */
   scheduleTime?: string;
 }
-export const Reschedule = /*@__PURE__*/ S.suspend(() =>
+const Reschedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rescheduleType: S.optional(RescheduleRescheduleTypeEnum),
     scheduleTime: S.optional(S.String),
@@ -1284,7 +1274,7 @@ export interface RescheduleMaintenanceRequest {
   /** Optional. A unique identifier for this request. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. */
   requestId?: string;
 }
-export const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RescheduleMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reschedule: S.optional(Reschedule),
     requestId: S.optional(S.String),
@@ -1299,7 +1289,7 @@ export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RescheduleMaintenanceRequest;
 }
-export const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RescheduleMaintenanceProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RescheduleMaintenanceRequest.pipe(T.HttpBody())),
@@ -1321,7 +1311,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -1334,7 +1324,7 @@ export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1355,28 +1345,27 @@ export interface SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest 
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://lustre.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
+const SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://lustre.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesDirectoryPoliciesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1390,7 +1379,7 @@ export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1410,7 +1399,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest {
@@ -1419,7 +1408,7 @@ export interface TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRe
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest =
+const TestIamPermissionsProjectsLocationsInstancesDirectoryPoliciesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),

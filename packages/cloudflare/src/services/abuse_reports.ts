@@ -80,22 +80,22 @@ export type CreateRequestAct =
   | "abuse_threat"
   | "abuse_registrar_whois"
   | "abuse_ncsei";
-export const CreateRequestAct = S.String;
+const CreateRequestAct = S.String;
 
 export type CreateRequestAgree = 1;
-export const CreateRequestAgree = S.Number;
+const CreateRequestAgree = S.Number;
 
 export type CreateRequestHostNotification = "send" | "send-anon";
-export const CreateRequestHostNotification = S.String;
+const CreateRequestHostNotification = S.String;
 
 export type CreateRequestOwnerNotification = "send" | "send-anon" | "none";
-export const CreateRequestOwnerNotification = S.String;
+const CreateRequestOwnerNotification = S.String;
 
 export type CreateRequestNcmecNotification = "send" | "send-anon";
-export const CreateRequestNcmecNotification = S.String;
+const CreateRequestNcmecNotification = S.String;
 
 export type CreateRequestRegWhoRequestRegWhoRequestType = "disclosure" | "invalid_whois";
-export const CreateRequestRegWhoRequestRegWhoRequestType = S.String;
+const CreateRequestRegWhoRequestRegWhoRequestType = S.String;
 
 export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
   | "registrant_name"
@@ -115,12 +115,12 @@ export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem =
   | "tech_email"
   | "tech_phone"
   | "tech_address";
-export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
+const CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
 
 export type CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = Array<
   CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem | (string & {})
 >;
-export const CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = /*@__PURE__*/ S.Array(
+const CreateRequestRegWhoRequestRegWhoRequestedDataElementsList = /*@__PURE__*/ S.Array(
   CreateRequestRegWhoRequestRegWhoRequestedDataElementsItem,
 ) as any as S.Schema<CreateRequestRegWhoRequestRegWhoRequestedDataElementsList>;
 
@@ -128,7 +128,7 @@ export type CreateRequestRegWhoRequestRegWhoRequestorType =
   | "government"
   | "corporation"
   | "individual";
-export const CreateRequestRegWhoRequestRegWhoRequestorType = S.String;
+const CreateRequestRegWhoRequestRegWhoRequestorType = S.String;
 
 export interface CreateRequestRegWhoRequest {
   /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
@@ -146,7 +146,7 @@ export interface CreateRequestRegWhoRequest {
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?: CreateRequestRegWhoRequestRegWhoRequestorType | (string & {});
 }
-export const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequestRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regWhoGoodFaithAffirmation: S.Boolean.pipe(T.Body("reg_who_good_faith_affirmation")),
     regWhoLawfulProcessingAgreement: S.Boolean.pipe(T.Body("reg_who_lawful_processing_agreement")),
@@ -235,7 +235,7 @@ export interface CreateAbuseReportRequest {
   /** If the submitter is the target of NCSEI in the URLs of the abuse report. */
   ncseiSubjectRepresentation?: boolean;
 }
-export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
@@ -284,7 +284,7 @@ export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAbuseReportRequest" }) as any as S.Schema<CreateAbuseReportRequest>;
 
 export type CreateAbuseReportResponse = string;
-export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateAbuseReportResponse",
@@ -294,7 +294,7 @@ export interface GetRequest {
   accountId: string;
   reportParam: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
@@ -321,7 +321,7 @@ export interface GetResponseMitigationSummary {
   /** How many mitigations are pending their effective date. */
   pendingCount: number;
 }
-export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
+const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptedUrlCount: S.Number.pipe(T.Body("accepted_url_count")),
     activeCount: S.Number.pipe(T.Body("active_count")),
@@ -334,7 +334,7 @@ export const GetResponseMitigationSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseMitigationSummary>;
 
 export type GetResponseStatus = "accepted" | "in_review";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 export type GetResponseType =
   | "PHISH"
@@ -346,7 +346,7 @@ export type GetResponseType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const GetResponseType = S.String;
+const GetResponseType = S.String;
 
 export interface GetResponseSubmitter {
   company?: string | null;
@@ -354,7 +354,7 @@ export interface GetResponseSubmitter {
   name?: string | null;
   telephone?: string | null;
 }
-export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
+const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -364,9 +364,7 @@ export const GetResponseSubmitter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetResponseSubmitter" }) as any as S.Schema<GetResponseSubmitter>;
 
 export type GetResponseUrlsList = Array<string>;
-export const GetResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseUrlsList>;
+const GetResponseUrlsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<GetResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
@@ -390,7 +388,7 @@ export interface GetResponse {
   submitter?: GetResponseSubmitter | null;
   urls?: GetResponseUrlsList | null;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cdate: S.String,
@@ -409,7 +407,7 @@ export interface GetSubmittedRequest {
   accountId: string;
   reportId: string;
 }
-export const GetSubmittedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubmittedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -438,10 +436,10 @@ export type GetSubmittedResponseDenialReason =
   | "content_unavailable"
   | "law_enforcement_referral_required"
   | "domain_dispute_process_required";
-export const GetSubmittedResponseDenialReason = S.String;
+const GetSubmittedResponseDenialReason = S.String;
 
 export type GetSubmittedResponseStatus = "submitted" | "accepted" | "denied";
-export const GetSubmittedResponseStatus = S.String;
+const GetSubmittedResponseStatus = S.String;
 
 export type GetSubmittedResponseType =
   | "PHISH"
@@ -453,22 +451,22 @@ export type GetSubmittedResponseType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const GetSubmittedResponseType = S.String;
+const GetSubmittedResponseType = S.String;
 
 export type GetSubmittedResponseUrlsList = Array<string>;
-export const GetSubmittedResponseUrlsList =
+const GetSubmittedResponseUrlsList =
   GetResponseUrlsList as any as S.Schema<GetSubmittedResponseUrlsList>;
 
 export type GetSubmittedResponseDestinationIpsList = Array<string>;
-export const GetSubmittedResponseDestinationIpsList =
+const GetSubmittedResponseDestinationIpsList =
   GetResponseUrlsList as any as S.Schema<GetSubmittedResponseDestinationIpsList>;
 
 export type GetSubmittedResponsePortsProtocolsList = Array<string>;
-export const GetSubmittedResponsePortsProtocolsList =
+const GetSubmittedResponsePortsProtocolsList =
   GetResponseUrlsList as any as S.Schema<GetSubmittedResponsePortsProtocolsList>;
 
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestType = "disclosure" | "invalid_whois";
-export const GetSubmittedResponseRegWhoRequestRegWhoRequestType = S.String;
+const GetSubmittedResponseRegWhoRequestRegWhoRequestType = S.String;
 
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem =
   | "registrant_name"
@@ -488,20 +486,19 @@ export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem =
   | "tech_email"
   | "tech_phone"
   | "tech_address";
-export const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
+const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem = S.String;
 
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList =
   Array<GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem>;
-export const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList =
-  /*@__PURE__*/ S.Array(
-    GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem,
-  ) as any as S.Schema<GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList>;
+const GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList = /*@__PURE__*/ S.Array(
+  GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsItem,
+) as any as S.Schema<GetSubmittedResponseRegWhoRequestRegWhoRequestedDataElementsList>;
 
 export type GetSubmittedResponseRegWhoRequestRegWhoRequestorType =
   | "government"
   | "corporation"
   | "individual";
-export const GetSubmittedResponseRegWhoRequestRegWhoRequestorType = S.String;
+const GetSubmittedResponseRegWhoRequestRegWhoRequestorType = S.String;
 
 export interface GetSubmittedResponseRegWhoRequest {
   /** Affirmation that the request is made in good faith per RDP 10.2.4. Must be true. */
@@ -519,7 +516,7 @@ export interface GetSubmittedResponseRegWhoRequest {
   /** The nature of the requestor per RDP 10.2.1.2. */
   regWhoRequestorType?: GetSubmittedResponseRegWhoRequestRegWhoRequestorType | null;
 }
-export const GetSubmittedResponseRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubmittedResponseRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regWhoGoodFaithAffirmation: S.Boolean.pipe(T.Body("reg_who_good_faith_affirmation")),
     regWhoLawfulProcessingAgreement: S.Boolean.pipe(T.Body("reg_who_lawful_processing_agreement")),
@@ -545,14 +542,12 @@ export const GetSubmittedResponseRegWhoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubmittedResponseRegWhoRequest>;
 
 export type GetSubmittedResponseSourceIpsList = Array<string>;
-export const GetSubmittedResponseSourceIpsList =
+const GetSubmittedResponseSourceIpsList =
   GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSourceIpsList>;
 
 export type GetSubmittedResponseSubmitter = GetResponseSubmitter;
-export const GetSubmittedResponseSubmitter = GetResponseSubmitter;
-
 export type GetSubmittedResponseSubtypesList = Array<string>;
-export const GetSubmittedResponseSubtypesList =
+const GetSubmittedResponseSubtypesList =
   GetResponseUrlsList as any as S.Schema<GetSubmittedResponseSubtypesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -614,7 +609,7 @@ export interface GetSubmittedResponse {
   /** The string "on" when a URS proceeding applies to the report; otherwise omitted. */
   urs?: string | null;
 }
-export const GetSubmittedResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSubmittedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cdate: S.String,
@@ -661,10 +656,10 @@ export type ListRequestMitigationStatus =
   | "in_review"
   | "cancelled"
   | "removed";
-export const ListRequestMitigationStatus = S.String;
+const ListRequestMitigationStatus = S.String;
 
 export type ListRequestStatus = "accepted" | "in_review";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export type ListRequestType =
   | "PHISH"
@@ -676,7 +671,7 @@ export type ListRequestType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const ListRequestType = S.String;
+const ListRequestType = S.String;
 
 export interface ListAbuseReportsRequest {
   accountId: string;
@@ -699,7 +694,7 @@ export interface ListAbuseReportsRequest {
   /** Filter by the type of the report. */
   type?: ListRequestType | (string & {});
 }
-export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
@@ -717,10 +712,8 @@ export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAbuseReportsRequest" }) as any as S.Schema<ListAbuseReportsRequest>;
 
 export type ListResponseReportsItemMitigationSummary = GetResponseMitigationSummary;
-export const ListResponseReportsItemMitigationSummary = GetResponseMitigationSummary;
-
 export type ListResponseReportsItemStatus = "accepted" | "in_review";
-export const ListResponseReportsItemStatus = S.String;
+const ListResponseReportsItemStatus = S.String;
 
 export type ListResponseReportsItemType =
   | "PHISH"
@@ -732,13 +725,11 @@ export type ListResponseReportsItemType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const ListResponseReportsItemType = S.String;
+const ListResponseReportsItemType = S.String;
 
 export type ListResponseReportsItemSubmitter = GetResponseSubmitter;
-export const ListResponseReportsItemSubmitter = GetResponseSubmitter;
-
 export type ListResponseReportsItemUrlsList = Array<string>;
-export const ListResponseReportsItemUrlsList =
+const ListResponseReportsItemUrlsList =
   GetResponseUrlsList as any as S.Schema<ListResponseReportsItemUrlsList>;
 
 export interface ListResponseReportsItem {
@@ -762,7 +753,7 @@ export interface ListResponseReportsItem {
   submitter?: GetResponseSubmitter | null;
   urls?: ListResponseReportsItemUrlsList | null;
 }
-export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
+const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cdate: S.String,
@@ -778,7 +769,7 @@ export const ListResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResponseReportsItem" }) as any as S.Schema<ListResponseReportsItem>;
 
 export type ListResponseReportsList = Array<ListResponseReportsItem>;
-export const ListResponseReportsList = /*@__PURE__*/ S.Array(
+const ListResponseReportsList = /*@__PURE__*/ S.Array(
   ListResponseReportsItem,
 ) as any as S.Schema<ListResponseReportsList>;
 
@@ -786,7 +777,7 @@ export const ListResponseReportsList = /*@__PURE__*/ S.Array(
 export interface ListAbuseReportsResponse {
   reports: ListResponseReportsList;
 }
-export const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: ListResponseReportsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -797,7 +788,7 @@ export type MitigationsListRequestEntityType =
   | "account"
   | "zone"
   | "custom_expression";
-export const MitigationsListRequestEntityType = S.String;
+const MitigationsListRequestEntityType = S.String;
 
 export type MitigationsListRequestSort =
   | "type,asc"
@@ -808,7 +799,7 @@ export type MitigationsListRequestSort =
   | "status,desc"
   | "entity_type,asc"
   | "entity_type,desc";
-export const MitigationsListRequestSort = S.String;
+const MitigationsListRequestSort = S.String;
 
 export type MitigationsListRequestStatus =
   | "pending"
@@ -816,7 +807,7 @@ export type MitigationsListRequestStatus =
   | "in_review"
   | "cancelled"
   | "removed";
-export const MitigationsListRequestStatus = S.String;
+const MitigationsListRequestStatus = S.String;
 
 export interface ListMitigationsRequest {
   accountId: string;
@@ -838,7 +829,7 @@ export interface ListMitigationsRequest {
   /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set. */
   type?: string;
 }
-export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -866,7 +857,7 @@ export type MitigationsListResponseMitigationsItemEntityType =
   | "account"
   | "zone"
   | "custom_expression";
-export const MitigationsListResponseMitigationsItemEntityType = S.String;
+const MitigationsListResponseMitigationsItemEntityType = S.String;
 
 export type MitigationsListResponseMitigationsItemStatus =
   | "pending"
@@ -874,7 +865,7 @@ export type MitigationsListResponseMitigationsItemStatus =
   | "in_review"
   | "cancelled"
   | "removed";
-export const MitigationsListResponseMitigationsItemStatus = S.String;
+const MitigationsListResponseMitigationsItemStatus = S.String;
 
 export interface MitigationsListResponseMitigationsItem {
   /** ID of remediation. */
@@ -889,7 +880,7 @@ export interface MitigationsListResponseMitigationsItem {
   /** The type of mitigation applied to a reported entity. */
   type: string;
 }
-export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(() =>
+const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     effectiveDate: S.String.pipe(T.Body("effective_date")),
@@ -903,7 +894,7 @@ export const MitigationsListResponseMitigationsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<MitigationsListResponseMitigationsItem>;
 
 export type MitigationsListResponseMitigationsList = Array<MitigationsListResponseMitigationsItem>;
-export const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
+const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
   MitigationsListResponseMitigationsItem,
 ) as any as S.Schema<MitigationsListResponseMitigationsList>;
 
@@ -911,21 +902,19 @@ export const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
 export interface ListMitigationsResponse {
   mitigations: MitigationsListResponseMitigationsList;
 }
-export const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mitigations: MitigationsListResponseMitigationsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListMitigationsResponse" }) as any as S.Schema<ListMitigationsResponse>;
 
 export type ListSubmittedRequestDomainList = Array<string>;
-export const ListSubmittedRequestDomainList =
+const ListSubmittedRequestDomainList =
   GetResponseUrlsList as any as S.Schema<ListSubmittedRequestDomainList>;
 
 export type ListSubmittedRequestStatus = "submitted" | "accepted" | "denied";
-export const ListSubmittedRequestStatus = S.String;
-
 export type ListSubmittedRequestStatusList = Array<ListSubmittedRequestStatus | (string & {})>;
-export const ListSubmittedRequestStatusList =
+const ListSubmittedRequestStatusList =
   CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestStatusList>;
 
 export type ListSubmittedRequestType =
@@ -938,10 +927,8 @@ export type ListSubmittedRequestType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const ListSubmittedRequestType = S.String;
-
 export type ListSubmittedRequestTypeList = Array<ListSubmittedRequestType | (string & {})>;
-export const ListSubmittedRequestTypeList =
+const ListSubmittedRequestTypeList =
   CreateRequestRegWhoRequestRegWhoRequestedDataElementsList as any as S.Schema<ListSubmittedRequestTypeList>;
 
 export interface ListSubmittedRequest {
@@ -965,7 +952,7 @@ export interface ListSubmittedRequest {
   /** Filter by report type. This parameter can be specified multiple times. */
   type?: ListSubmittedRequestTypeList;
 }
-export const ListSubmittedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -998,10 +985,10 @@ export type ListSubmittedResponseReportsItemDenialReason =
   | "content_unavailable"
   | "law_enforcement_referral_required"
   | "domain_dispute_process_required";
-export const ListSubmittedResponseReportsItemDenialReason = S.String;
+const ListSubmittedResponseReportsItemDenialReason = S.String;
 
 export type ListSubmittedResponseReportsItemStatus = "submitted" | "accepted" | "denied";
-export const ListSubmittedResponseReportsItemStatus = S.String;
+const ListSubmittedResponseReportsItemStatus = S.String;
 
 export type ListSubmittedResponseReportsItemType =
   | "PHISH"
@@ -1013,11 +1000,9 @@ export type ListSubmittedResponseReportsItemType =
   | "REG_WHO"
   | "NCSEI"
   | "NETWORK";
-export const ListSubmittedResponseReportsItemType = S.String;
+const ListSubmittedResponseReportsItemType = S.String;
 
 export type ListSubmittedResponseReportsItemSubmitter = GetResponseSubmitter;
-export const ListSubmittedResponseReportsItemSubmitter = GetResponseSubmitter;
-
 export interface ListSubmittedResponseReportsItem {
   /** Public report code. */
   id: string;
@@ -1034,7 +1019,7 @@ export interface ListSubmittedResponseReportsItem {
   /** Information about the submitter of the report. */
   submitter?: GetResponseSubmitter | null;
 }
-export const ListSubmittedResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cdate: S.String,
@@ -1049,7 +1034,7 @@ export const ListSubmittedResponseReportsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubmittedResponseReportsItem>;
 
 export type ListSubmittedResponseReportsList = Array<ListSubmittedResponseReportsItem>;
-export const ListSubmittedResponseReportsList = /*@__PURE__*/ S.Array(
+const ListSubmittedResponseReportsList = /*@__PURE__*/ S.Array(
   ListSubmittedResponseReportsItem,
 ) as any as S.Schema<ListSubmittedResponseReportsList>;
 
@@ -1057,7 +1042,7 @@ export const ListSubmittedResponseReportsList = /*@__PURE__*/ S.Array(
 export interface ListSubmittedResponse {
   reports: ListSubmittedResponseReportsList;
 }
-export const ListSubmittedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: ListSubmittedResponseReportsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1071,7 +1056,7 @@ export interface ListSubmittedEmailsRequest {
   /** Number of emails per page (default 20, max 100). */
   perPage?: number;
 }
-export const ListSubmittedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -1102,7 +1087,7 @@ export interface ListSubmittedEmailsResponseEmailsItem {
   /** Subject line of the email. */
   subject: string;
 }
-export const ListSubmittedEmailsResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedEmailsResponseEmailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     body: S.String,
@@ -1115,7 +1100,7 @@ export const ListSubmittedEmailsResponseEmailsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListSubmittedEmailsResponseEmailsItem>;
 
 export type ListSubmittedEmailsResponseEmailsList = Array<ListSubmittedEmailsResponseEmailsItem>;
-export const ListSubmittedEmailsResponseEmailsList = /*@__PURE__*/ S.Array(
+const ListSubmittedEmailsResponseEmailsList = /*@__PURE__*/ S.Array(
   ListSubmittedEmailsResponseEmailsItem,
 ) as any as S.Schema<ListSubmittedEmailsResponseEmailsList>;
 
@@ -1123,7 +1108,7 @@ export const ListSubmittedEmailsResponseEmailsList = /*@__PURE__*/ S.Array(
 export interface ListSubmittedEmailsResponse {
   emails: ListSubmittedEmailsResponseEmailsList;
 }
-export const ListSubmittedEmailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubmittedEmailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: ListSubmittedEmailsResponseEmailsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1132,7 +1117,7 @@ export const ListSubmittedEmailsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubmittedEmailsResponse>;
 
 export type MitigationsReviewRequestAppealsItemReason = "removed" | "misclassified";
-export const MitigationsReviewRequestAppealsItemReason = S.String;
+const MitigationsReviewRequestAppealsItemReason = S.String;
 
 export interface MitigationsReviewRequestAppealsItem {
   /** ID of the mitigation to appeal. */
@@ -1140,7 +1125,7 @@ export interface MitigationsReviewRequestAppealsItem {
   /** Reason why the customer is appealing. */
   reason: MitigationsReviewRequestAppealsItemReason | (string & {});
 }
-export const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
+const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     reason: MitigationsReviewRequestAppealsItemReason,
@@ -1150,12 +1135,12 @@ export const MitigationsReviewRequestAppealsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MitigationsReviewRequestAppealsItem>;
 
 export type MitigationsReviewRequestAppealsList = Array<MitigationsReviewRequestAppealsItem>;
-export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
+const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
   MitigationsReviewRequestAppealsItem,
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
 
 export type MitigationsReviewRequestDataUrlsList = Array<string>;
-export const MitigationsReviewRequestDataUrlsList =
+const MitigationsReviewRequestDataUrlsList =
   GetResponseUrlsList as any as S.Schema<MitigationsReviewRequestDataUrlsList>;
 
 export interface MitigationsReviewRequestData {
@@ -1174,7 +1159,7 @@ export interface MitigationsReviewRequestData {
   company?: string;
   counterNoticeResponse?: string;
 }
-export const MitigationsReviewRequestData = /*@__PURE__*/ S.suspend(() =>
+const MitigationsReviewRequestData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     country: S.String,
@@ -1196,7 +1181,7 @@ export const MitigationsReviewRequestData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MitigationsReviewRequestData>;
 
 export type MitigationsReviewRequestType = "counter_notice" | "content_removed";
-export const MitigationsReviewRequestType = S.String;
+const MitigationsReviewRequestType = S.String;
 
 export interface ReviewMitigationRequest {
   accountId: string;
@@ -1208,7 +1193,7 @@ export interface ReviewMitigationRequest {
   /** The type of appeal being submitted. */
   type?: MitigationsReviewRequestType | (string & {});
 }
-export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -1231,16 +1216,12 @@ export type MitigationsReviewResultItemEntityType =
   | "account"
   | "zone"
   | "custom_expression";
-export const MitigationsReviewResultItemEntityType = S.String;
-
 export type MitigationsReviewResultItemStatus =
   | "pending"
   | "active"
   | "in_review"
   | "cancelled"
   | "removed";
-export const MitigationsReviewResultItemStatus = S.String;
-
 export interface MitigationsReviewResultItem {
   /** ID of remediation. */
   id: string;
@@ -1254,11 +1235,8 @@ export interface MitigationsReviewResultItem {
   /** The type of mitigation applied to a reported entity. */
   type: string;
 }
-export const MitigationsReviewResultItem =
-  MitigationsListResponseMitigationsItem as any as S.Schema<MitigationsReviewResultItem>;
-
 export type MitigationsReviewResultList = Array<MitigationsReviewResultItem>;
-export const MitigationsReviewResultList =
+const MitigationsReviewResultList =
   MitigationsListResponseMitigationsList as any as S.Schema<MitigationsReviewResultList>;
 
 export interface ReviewMitigationResponse {
@@ -1267,7 +1245,7 @@ export interface ReviewMitigationResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: MitigationsReviewResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

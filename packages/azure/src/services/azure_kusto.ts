@@ -21,11 +21,11 @@ export type CalloutType =
   | "postgresql"
   | "genevametrics"
   | "azure_openai";
-export const CalloutType = S.String;
+const CalloutType = S.String;
 
 /** Indicates whether outbound access is permitted for the specified URI pattern. */
 export type OutboundAccess = "Allow" | "Deny";
-export const OutboundAccess = S.String;
+const OutboundAccess = S.String;
 
 /** Configuration for external callout policies, including URI patterns, access types, and service types. */
 export interface CalloutPolicyInput {
@@ -36,7 +36,7 @@ export interface CalloutPolicyInput {
   /** Indicates whether outbound access is permitted for the specified URI pattern. */
   outboundAccess?: OutboundAccess | (string & {});
 }
-export const CalloutPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const CalloutPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calloutUriRegex: S.optional(S.String),
     calloutType: S.optional(CalloutType),
@@ -46,7 +46,7 @@ export const CalloutPolicyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The CalloutPolicy items on this page */
 export type AddClusterCalloutPoliciesRequestValueList = Array<CalloutPolicyInput>;
-export const AddClusterCalloutPoliciesRequestValueList = /*@__PURE__*/ S.Array(
+const AddClusterCalloutPoliciesRequestValueList = /*@__PURE__*/ S.Array(
   CalloutPolicyInput,
 ) as any as S.Schema<AddClusterCalloutPoliciesRequestValueList>;
 
@@ -62,7 +62,7 @@ export interface AddClusterCalloutPoliciesRequest {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AddClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -82,15 +82,13 @@ export const AddClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddClusterCalloutPoliciesRequest>;
 
 export interface AddClusterCalloutPoliciesResponse {}
-export const AddClusterCalloutPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddClusterCalloutPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddClusterCalloutPoliciesResponse",
 }) as any as S.Schema<AddClusterCalloutPoliciesResponse>;
 
 /** Language extension that can run within KQL query. */
 export type LanguageExtensionName = "PYTHON" | "R";
-export const LanguageExtensionName = S.String;
+const LanguageExtensionName = S.String;
 
 /** Language extension image name. */
 export type LanguageExtensionImageName =
@@ -101,7 +99,7 @@ export type LanguageExtensionImageName =
   | "PythonCustomImage"
   | "Python3_11_7"
   | "Python3_11_7_DL";
-export const LanguageExtensionImageName = S.String;
+const LanguageExtensionImageName = S.String;
 
 /** The language extension object. */
 export interface LanguageExtension {
@@ -112,7 +110,7 @@ export interface LanguageExtension {
   /** The sandbox custom image name that should be enabled as the active language extension. Sandbox custom image is a cluster sub resource. When this property is set, LanguageExtensionImageName should be set to 'PythonCustomImage'. */
   languageExtensionCustomImageName?: string;
 }
-export const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
+const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageExtensionName: S.optional(LanguageExtensionName),
     languageExtensionImageName: S.optional(LanguageExtensionImageName),
@@ -122,7 +120,7 @@ export const LanguageExtension = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of language extensions. */
 export type AddClusterLanguageExtensionsRequestValueList = Array<LanguageExtension>;
-export const AddClusterLanguageExtensionsRequestValueList = /*@__PURE__*/ S.Array(
+const AddClusterLanguageExtensionsRequestValueList = /*@__PURE__*/ S.Array(
   LanguageExtension,
 ) as any as S.Schema<AddClusterLanguageExtensionsRequestValueList>;
 
@@ -138,7 +136,7 @@ export interface AddClusterLanguageExtensionsRequest {
   /** The link to the next page of resources. */
   nextLink?: string;
 }
-export const AddClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -158,7 +156,7 @@ export const AddClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddClusterLanguageExtensionsRequest>;
 
 export interface AddClusterLanguageExtensionsResponse {}
-export const AddClusterLanguageExtensionsResponse =
+const AddClusterLanguageExtensionsResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<AddClusterLanguageExtensionsResponse>;
 
 /** Database principal role. */
@@ -169,11 +167,11 @@ export type DatabasePrincipalRole =
   | "User"
   | "UnrestrictedViewer"
   | "Viewer";
-export const DatabasePrincipalRole = S.String;
+const DatabasePrincipalRole = S.String;
 
 /** Database principal type. */
 export type DatabasePrincipalType = "App" | "Group" | "User";
-export const DatabasePrincipalType = S.String;
+const DatabasePrincipalType = S.String;
 
 /** A class representing database principal entity. */
 export interface DatabasePrincipalInput {
@@ -190,7 +188,7 @@ export interface DatabasePrincipalInput {
   /** Application id - relevant only for application principal type. */
   appId?: string;
 }
-export const DatabasePrincipalInput = /*@__PURE__*/ S.suspend(() =>
+const DatabasePrincipalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: DatabasePrincipalRole,
     name: S.String,
@@ -203,7 +201,7 @@ export const DatabasePrincipalInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principals. */
 export type AddDatabasePrincipalsRequestValueList = Array<DatabasePrincipalInput>;
-export const AddDatabasePrincipalsRequestValueList = /*@__PURE__*/ S.Array(
+const AddDatabasePrincipalsRequestValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipalInput,
 ) as any as S.Schema<AddDatabasePrincipalsRequestValueList>;
 
@@ -219,7 +217,7 @@ export interface AddDatabasePrincipalsRequest {
   /** The list of Kusto database principals. */
   value?: AddDatabasePrincipalsRequestValueList;
 }
-export const AddDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -255,7 +253,7 @@ export interface DatabasePrincipal {
   /** The tenant name of the principal */
   tenantName?: string;
 }
-export const DatabasePrincipal = /*@__PURE__*/ S.suspend(() =>
+const DatabasePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: DatabasePrincipalRole,
     name: S.String,
@@ -269,7 +267,7 @@ export const DatabasePrincipal = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto database principals. */
 export type DatabasePrincipalListResultValueList = Array<DatabasePrincipal>;
-export const DatabasePrincipalListResultValueList = /*@__PURE__*/ S.Array(
+const DatabasePrincipalListResultValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipal,
 ) as any as S.Schema<DatabasePrincipalListResultValueList>;
 
@@ -280,7 +278,7 @@ export interface DatabasePrincipalListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const DatabasePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
+const DatabasePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DatabasePrincipalListResultValueList),
     nextLink: S.optional(S.String),
@@ -291,47 +289,47 @@ export const DatabasePrincipalListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The default principals modification kind */
 export type DefaultPrincipalsModificationKind = "Union" | "Replace" | "None";
-export const DefaultPrincipalsModificationKind = S.String;
+const DefaultPrincipalsModificationKind = S.String;
 
 /** List of tables to include in the follower database */
 export type TableLevelSharingPropertiesTablesToIncludeList = Array<string>;
-export const TableLevelSharingPropertiesTablesToIncludeList = /*@__PURE__*/ S.Array(
+const TableLevelSharingPropertiesTablesToIncludeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TableLevelSharingPropertiesTablesToIncludeList>;
 
 /** List of tables to exclude from the follower database */
 export type TableLevelSharingPropertiesTablesToExcludeList = Array<string>;
-export const TableLevelSharingPropertiesTablesToExcludeList =
+const TableLevelSharingPropertiesTablesToExcludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesTablesToExcludeList>;
 
 /** List of external tables to include in the follower database */
 export type TableLevelSharingPropertiesExternalTablesToIncludeList = Array<string>;
-export const TableLevelSharingPropertiesExternalTablesToIncludeList =
+const TableLevelSharingPropertiesExternalTablesToIncludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesExternalTablesToIncludeList>;
 
 /** List of external tables to exclude from the follower database */
 export type TableLevelSharingPropertiesExternalTablesToExcludeList = Array<string>;
-export const TableLevelSharingPropertiesExternalTablesToExcludeList =
+const TableLevelSharingPropertiesExternalTablesToExcludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesExternalTablesToExcludeList>;
 
 /** List of materialized views to include in the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToIncludeList = Array<string>;
-export const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
+const TableLevelSharingPropertiesMaterializedViewsToIncludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesMaterializedViewsToIncludeList>;
 
 /** List of materialized views to exclude from the follower database */
 export type TableLevelSharingPropertiesMaterializedViewsToExcludeList = Array<string>;
-export const TableLevelSharingPropertiesMaterializedViewsToExcludeList =
+const TableLevelSharingPropertiesMaterializedViewsToExcludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesMaterializedViewsToExcludeList>;
 
 /** List of functions to include in the follower database */
 export type TableLevelSharingPropertiesFunctionsToIncludeList = Array<string>;
-export const TableLevelSharingPropertiesFunctionsToIncludeList =
+const TableLevelSharingPropertiesFunctionsToIncludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesFunctionsToIncludeList>;
 
 /** List of functions to exclude from the follower database */
 export type TableLevelSharingPropertiesFunctionsToExcludeList = Array<string>;
-export const TableLevelSharingPropertiesFunctionsToExcludeList =
+const TableLevelSharingPropertiesFunctionsToExcludeList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<TableLevelSharingPropertiesFunctionsToExcludeList>;
 
 /** Tables that will be included and excluded in the follower database */
@@ -353,7 +351,7 @@ export interface TableLevelSharingProperties {
   /** List of functions to exclude from the follower database */
   functionsToExclude?: TableLevelSharingPropertiesFunctionsToExcludeList;
 }
-export const TableLevelSharingProperties = /*@__PURE__*/ S.suspend(() =>
+const TableLevelSharingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tablesToInclude: S.optional(TableLevelSharingPropertiesTablesToIncludeList),
     tablesToExclude: S.optional(TableLevelSharingPropertiesTablesToExcludeList),
@@ -387,7 +385,7 @@ export interface AttachedDatabaseConfigurationPropertiesInput {
   /** Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster. */
   databaseNamePrefix?: string;
 }
-export const AttachedDatabaseConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AttachedDatabaseConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.String,
     clusterResourceId: S.String,
@@ -414,7 +412,7 @@ export interface AttachedDatabaseConfigurationsCreateOrUpdateRequest {
   /** Resource location. */
   location?: string;
 }
-export const AttachedDatabaseConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachedDatabaseConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -436,11 +434,11 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateRequest = /*@__PURE__*/
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -457,7 +455,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -477,14 +475,13 @@ export type ProvisioningState =
   | "Failed"
   | "Moving"
   | "Canceled";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The list of databases from the clusterResourceId which are currently attached to the cluster. */
 export type AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList = Array<string>;
-export const AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList>;
+const AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AttachedDatabaseConfigurationPropertiesAttachedDatabaseNamesList>;
 
 /** Class representing the an attached database configuration properties of kind specific. */
 export interface AttachedDatabaseConfigurationProperties {
@@ -505,7 +502,7 @@ export interface AttachedDatabaseConfigurationProperties {
   /** Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster. */
   databaseNamePrefix?: string;
 }
-export const AttachedDatabaseConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const AttachedDatabaseConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     databaseName: S.String,
@@ -536,7 +533,7 @@ export interface AttachedDatabaseConfigurationsCreateOrUpdateResponse {
   /** Resource location. */
   location?: string;
 }
-export const AttachedDatabaseConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AttachedDatabaseConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -552,7 +549,7 @@ export const AttachedDatabaseConfigurationsCreateOrUpdateResponse = /*@__PURE__*
 /** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
 export type CheckAttachedDatabaseConfigurationNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
-export const CheckAttachedDatabaseConfigurationNameAvailabilityRequestType = S.String;
+const CheckAttachedDatabaseConfigurationNameAvailabilityRequestType = S.String;
 
 export interface CheckAttachedDatabaseConfigurationNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -566,29 +563,28 @@ export interface CheckAttachedDatabaseConfigurationNameAvailabilityRequest {
   /** The type of resource, for instance Microsoft.Kusto/clusters/attachedDatabaseConfigurations. */
   type: CheckAttachedDatabaseConfigurationNameAvailabilityRequestType | (string & {});
 }
-export const CheckAttachedDatabaseConfigurationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      clusterName: S.String.pipe(T.Label()),
-      name: S.String,
-      type: CheckAttachedDatabaseConfigurationNameAvailabilityRequestType,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
-        code: 200,
-        apiVersion: "2025-02-14",
-      }),
-    ),
+const CheckAttachedDatabaseConfigurationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    clusterName: S.String.pipe(T.Label()),
+    name: S.String,
+    type: CheckAttachedDatabaseConfigurationNameAvailabilityRequestType,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/clusters/{clusterName}/attachedDatabaseConfigurationCheckNameAvailability",
+      code: 200,
+      apiVersion: "2025-02-14",
+    }),
+  ),
 ).annotate({
   identifier: "CheckAttachedDatabaseConfigurationNameAvailabilityRequest",
 }) as any as S.Schema<CheckAttachedDatabaseConfigurationNameAvailabilityRequest>;
 
 /** Message providing the reason why the given name is invalid. */
 export type Reason = "Invalid" | "AlreadyExists";
-export const Reason = S.String;
+const Reason = S.String;
 
 /** The result returned from a check name availability request. */
 export interface CheckNameResult {
@@ -601,7 +597,7 @@ export interface CheckNameResult {
   /** Message providing the reason why the given name is invalid. */
   reason?: Reason;
 }
-export const CheckNameResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -612,7 +608,7 @@ export const CheckNameResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, Microsoft.Kusto/clusters. */
 export type CheckClusterNameAvailabilityRequestType = "Microsoft.Kusto/clusters";
-export const CheckClusterNameAvailabilityRequestType = S.String;
+const CheckClusterNameAvailabilityRequestType = S.String;
 
 export interface CheckClusterNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -624,7 +620,7 @@ export interface CheckClusterNameAvailabilityRequest {
   /** The type of resource, Microsoft.Kusto/clusters. */
   type: CheckClusterNameAvailabilityRequestType | (string & {});
 }
-export const CheckClusterNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckClusterNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -645,7 +641,7 @@ export const CheckClusterNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 /** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
 export type CheckClusterPrincipalAssignmentNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/principalAssignments";
-export const CheckClusterPrincipalAssignmentNameAvailabilityRequestType = S.String;
+const CheckClusterPrincipalAssignmentNameAvailabilityRequestType = S.String;
 
 export interface CheckClusterPrincipalAssignmentNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -659,7 +655,7 @@ export interface CheckClusterPrincipalAssignmentNameAvailabilityRequest {
   /** The type of resource, Microsoft.Kusto/clusters/principalAssignments. */
   type: CheckClusterPrincipalAssignmentNameAvailabilityRequestType | (string & {});
 }
-export const CheckClusterPrincipalAssignmentNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckClusterPrincipalAssignmentNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -682,7 +678,7 @@ export const CheckClusterPrincipalAssignmentNameAvailabilityRequest = /*@__PURE_
 export type Type =
   | "Microsoft.Kusto/clusters/databases"
   | "Microsoft.Kusto/clusters/attachedDatabaseConfigurations";
-export const Type = S.String;
+const Type = S.String;
 
 export interface CheckDatabaseNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -696,7 +692,7 @@ export interface CheckDatabaseNameAvailabilityRequest {
   /** The type of resource, for instance Microsoft.Kusto/clusters/databases. */
   type: Type | (string & {});
 }
-export const CheckDatabaseNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDatabaseNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -718,7 +714,7 @@ export const CheckDatabaseNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =
 /** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
 export type CheckDatabasePrincipalAssignmentNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/databases/principalAssignments";
-export const CheckDatabasePrincipalAssignmentNameAvailabilityRequestType = S.String;
+const CheckDatabasePrincipalAssignmentNameAvailabilityRequestType = S.String;
 
 export interface CheckDatabasePrincipalAssignmentNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -734,7 +730,7 @@ export interface CheckDatabasePrincipalAssignmentNameAvailabilityRequest {
   /** The type of resource, Microsoft.Kusto/clusters/databases/principalAssignments. */
   type: CheckDatabasePrincipalAssignmentNameAvailabilityRequestType | (string & {});
 }
-export const CheckDatabasePrincipalAssignmentNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDatabasePrincipalAssignmentNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -757,7 +753,7 @@ export const CheckDatabasePrincipalAssignmentNameAvailabilityRequest = /*@__PURE
 /** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
 export type CheckDataConnectionNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/databases/dataConnections";
-export const CheckDataConnectionNameAvailabilityRequestType = S.String;
+const CheckDataConnectionNameAvailabilityRequestType = S.String;
 
 export interface CheckDataConnectionNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -773,7 +769,7 @@ export interface CheckDataConnectionNameAvailabilityRequest {
   /** The type of resource, Microsoft.Kusto/clusters/databases/dataConnections. */
   type: CheckDataConnectionNameAvailabilityRequestType | (string & {});
 }
-export const CheckDataConnectionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDataConnectionNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -796,7 +792,7 @@ export const CheckDataConnectionNameAvailabilityRequest = /*@__PURE__*/ S.suspen
 /** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
 export type CheckManagedPrivateEndpointNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/managedPrivateEndpoints";
-export const CheckManagedPrivateEndpointNameAvailabilityRequestType = S.String;
+const CheckManagedPrivateEndpointNameAvailabilityRequestType = S.String;
 
 export interface CheckManagedPrivateEndpointNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -810,7 +806,7 @@ export interface CheckManagedPrivateEndpointNameAvailabilityRequest {
   /** The type of resource, for instance Microsoft.Kusto/clusters/managedPrivateEndpoints. */
   type: CheckManagedPrivateEndpointNameAvailabilityRequestType | (string & {});
 }
-export const CheckManagedPrivateEndpointNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckManagedPrivateEndpointNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -832,7 +828,7 @@ export const CheckManagedPrivateEndpointNameAvailabilityRequest = /*@__PURE__*/ 
 /** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
 export type CheckSandboxCustomImageNameAvailabilityRequestType =
   "Microsoft.Kusto/clusters/sandboxCustomImages";
-export const CheckSandboxCustomImageNameAvailabilityRequestType = S.String;
+const CheckSandboxCustomImageNameAvailabilityRequestType = S.String;
 
 export interface CheckSandboxCustomImageNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -846,7 +842,7 @@ export interface CheckSandboxCustomImageNameAvailabilityRequest {
   /** The type of resource, for instance Microsoft.Kusto/clusters/sandboxCustomImages. */
   type: CheckSandboxCustomImageNameAvailabilityRequestType | (string & {});
 }
-export const CheckSandboxCustomImageNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckSandboxCustomImageNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -867,7 +863,7 @@ export const CheckSandboxCustomImageNameAvailabilityRequest = /*@__PURE__*/ S.su
 
 /** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
 export type CheckScriptNameAvailabilityRequestType = "Microsoft.Kusto/clusters/databases/scripts";
-export const CheckScriptNameAvailabilityRequestType = S.String;
+const CheckScriptNameAvailabilityRequestType = S.String;
 
 export interface CheckScriptNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -883,7 +879,7 @@ export interface CheckScriptNameAvailabilityRequest {
   /** The type of resource, Microsoft.Kusto/clusters/databases/scripts. */
   type: CheckScriptNameAvailabilityRequestType | (string & {});
 }
-export const CheckScriptNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckScriptNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -908,11 +904,11 @@ export type ClusterPrincipalRole =
   | "AllDatabasesAdmin"
   | "AllDatabasesViewer"
   | "AllDatabasesMonitor";
-export const ClusterPrincipalRole = S.String;
+const ClusterPrincipalRole = S.String;
 
 /** Principal type. */
 export type PrincipalType = "App" | "Group" | "User";
-export const PrincipalType = S.String;
+const PrincipalType = S.String;
 
 /** A class representing cluster principal property. */
 export interface ClusterPrincipalPropertiesInput {
@@ -925,7 +921,7 @@ export interface ClusterPrincipalPropertiesInput {
   /** Principal type. */
   principalType: PrincipalType | (string & {});
 }
-export const ClusterPrincipalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPrincipalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.String,
     role: ClusterPrincipalRole,
@@ -948,7 +944,7 @@ export interface ClusterPrincipalAssignmentsCreateOrUpdateRequest {
   /** The cluster principal. */
   properties?: ClusterPrincipalPropertiesInput;
 }
-export const ClusterPrincipalAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClusterPrincipalAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -986,7 +982,7 @@ export interface ClusterPrincipalProperties {
   /** The service principal object id in AAD (Azure active directory) */
   aadObjectId?: string;
 }
-export const ClusterPrincipalProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterPrincipalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.String,
     role: ClusterPrincipalRole,
@@ -1013,7 +1009,7 @@ export interface ClusterPrincipalAssignmentsCreateOrUpdateResponse {
   /** The cluster principal. */
   properties?: ClusterPrincipalProperties;
 }
-export const ClusterPrincipalAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClusterPrincipalAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1027,7 +1023,7 @@ export const ClusterPrincipalAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ S
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
@@ -1037,7 +1033,7 @@ export interface TrustedExternalTenant {
   /** GUID representing an external tenant. */
   value?: string;
 }
-export const TrustedExternalTenant = /*@__PURE__*/ S.suspend(() =>
+const TrustedExternalTenant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -1045,7 +1041,7 @@ export const TrustedExternalTenant = /*@__PURE__*/ S.suspend(() =>
 
 /** The cluster's external tenants. */
 export type ClusterPropertiesInputTrustedExternalTenantsList = Array<TrustedExternalTenant>;
-export const ClusterPropertiesInputTrustedExternalTenantsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputTrustedExternalTenantsList = /*@__PURE__*/ S.Array(
   TrustedExternalTenant,
 ) as any as S.Schema<ClusterPropertiesInputTrustedExternalTenantsList>;
 
@@ -1060,7 +1056,7 @@ export interface OptimizedAutoscale {
   /** Maximum allowed instances count. */
   maximum: number;
 }
-export const OptimizedAutoscale = /*@__PURE__*/ S.suspend(() =>
+const OptimizedAutoscale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.Number,
     isEnabled: S.Boolean,
@@ -1071,7 +1067,7 @@ export const OptimizedAutoscale = /*@__PURE__*/ S.suspend(() =>
 
 /** When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet. */
 export type VirtualNetworkConfigurationState = "Enabled" | "Disabled";
-export const VirtualNetworkConfigurationState = S.String;
+const VirtualNetworkConfigurationState = S.String;
 
 /** A class that contains virtual network definition. */
 export interface VirtualNetworkConfiguration {
@@ -1084,7 +1080,7 @@ export interface VirtualNetworkConfiguration {
   /** When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet. */
   state?: VirtualNetworkConfigurationState | (string & {});
 }
-export const VirtualNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.String,
     enginePublicIpId: S.String,
@@ -1108,7 +1104,7 @@ export interface KeyVaultProperties {
   /** The application (client) ID of the multi-tenant Microsoft Entra application. Used for cross-tenant customer-managed key scenarios where the encryption key is stored in a different tenant than the cluster. The application must be configured with the user-assigned managed identity as a federated identity credential. */
   federatedIdentityClientId?: string;
 }
-export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     keyVersion: S.optional(S.String),
@@ -1120,7 +1116,7 @@ export const KeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of language extensions. */
 export type LanguageExtensionsListValueList = Array<LanguageExtension>;
-export const LanguageExtensionsListValueList =
+const LanguageExtensionsListValueList =
   AddClusterLanguageExtensionsRequestValueList as any as S.Schema<LanguageExtensionsListValueList>;
 
 /** The list of language extension objects. */
@@ -1130,7 +1126,7 @@ export interface LanguageExtensionsList {
   /** The link to the next page of resources. */
   nextLink?: string;
 }
-export const LanguageExtensionsList = /*@__PURE__*/ S.suspend(() =>
+const LanguageExtensionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(LanguageExtensionsListValueList),
     nextLink: S.optional(S.String),
@@ -1142,46 +1138,44 @@ export type ClusterPropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-export const ClusterPropertiesInputPublicNetworkAccess = S.String;
+const ClusterPropertiesInputPublicNetworkAccess = S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
 export type ClusterPropertiesInputAllowedIpRangeListList = Array<string>;
-export const ClusterPropertiesInputAllowedIpRangeListList =
+const ClusterPropertiesInputAllowedIpRangeListList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClusterPropertiesInputAllowedIpRangeListList>;
 
 /** The engine type */
 export type ClusterPropertiesInputEngineType = "V2" | "V3";
-export const ClusterPropertiesInputEngineType = S.String;
+const ClusterPropertiesInputEngineType = S.String;
 
 /** Represents an accepted audience trusted by the cluster. */
 export interface AcceptedAudiences {
   /** GUID or valid URL representing an accepted audience. */
   value?: string;
 }
-export const AcceptedAudiences = TrustedExternalTenant as any as S.Schema<AcceptedAudiences>;
-
 /** The cluster's accepted audiences. */
 export type ClusterPropertiesInputAcceptedAudiencesList = Array<AcceptedAudiences>;
-export const ClusterPropertiesInputAcceptedAudiencesList =
+const ClusterPropertiesInputAcceptedAudiencesList =
   ClusterPropertiesInputTrustedExternalTenantsList as any as S.Schema<ClusterPropertiesInputAcceptedAudiencesList>;
 
 /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ClusterPropertiesInputRestrictOutboundNetworkAccess = "Enabled" | "Disabled";
-export const ClusterPropertiesInputRestrictOutboundNetworkAccess = S.String;
+const ClusterPropertiesInputRestrictOutboundNetworkAccess = S.String;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
 export type ClusterPropertiesInputAllowedFqdnListList = Array<string>;
-export const ClusterPropertiesInputAllowedFqdnListList =
+const ClusterPropertiesInputAllowedFqdnListList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClusterPropertiesInputAllowedFqdnListList>;
 
 /** List of callout policies for egress from Cluster. */
 export type ClusterPropertiesInputCalloutPoliciesList = Array<CalloutPolicyInput>;
-export const ClusterPropertiesInputCalloutPoliciesList =
+const ClusterPropertiesInputCalloutPoliciesList =
   AddClusterCalloutPoliciesRequestValueList as any as S.Schema<ClusterPropertiesInputCalloutPoliciesList>;
 
 /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
 export type ClusterPropertiesInputPublicIPType = "IPv4" | "DualStack";
-export const ClusterPropertiesInputPublicIPType = S.String;
+const ClusterPropertiesInputPublicIPType = S.String;
 
 /** Class representing the Kusto cluster properties. */
 export interface ClusterPropertiesInput {
@@ -1226,7 +1220,7 @@ export interface ClusterPropertiesInput {
   /** Virtual Cluster graduation properties */
   virtualClusterGraduationProperties?: string;
 }
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trustedExternalTenants: S.optional(ClusterPropertiesInputTrustedExternalTenantsList),
     optimizedAutoscale: S.optional(OptimizedAutoscale),
@@ -1316,11 +1310,11 @@ export type AzureSkuName =
   | "Standard_E4d_v5"
   | "Standard_E8d_v5"
   | "Standard_E16d_v5";
-export const AzureSkuName = S.String;
+const AzureSkuName = S.String;
 
 /** SKU tier. */
 export type AzureSkuTier = "Basic" | "Standard";
-export const AzureSkuTier = S.String;
+const AzureSkuTier = S.String;
 
 /** Azure SKU definition. */
 export interface AzureSku {
@@ -1331,7 +1325,7 @@ export interface AzureSku {
   /** SKU tier. */
   tier: AzureSkuTier | (string & {});
 }
-export const AzureSku = /*@__PURE__*/ S.suspend(() =>
+const AzureSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: AzureSkuName,
     capacity: S.optional(S.Number),
@@ -1341,7 +1335,7 @@ export const AzureSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type ClustersCreateOrUpdateRequestZonesList = Array<string>;
-export const ClustersCreateOrUpdateRequestZonesList =
+const ClustersCreateOrUpdateRequestZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClustersCreateOrUpdateRequestZonesList>;
 
 /** The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities. */
@@ -1350,10 +1344,10 @@ export type IdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput {}
-export const ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput =
+const ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier:
       "ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput",
@@ -1365,7 +1359,7 @@ export type IdentityInputUserAssignedIdentitiesMap = {
     | ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput
     | undefined;
 };
-export const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalpropertiesInput,
 ) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
@@ -1377,7 +1371,7 @@ export interface IdentityInput {
   /** The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: IdentityType,
     userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
@@ -1404,7 +1398,7 @@ export interface ClustersCreateOrUpdateRequest {
   /** The identity of the cluster, if configured. */
   identity?: IdentityInput;
 }
-export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1429,7 +1423,7 @@ export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const ClustersCreateOrUpdateResponseTagsMap =
+const ClustersCreateOrUpdateResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
 
 /** The state of the resource. */
@@ -1444,38 +1438,38 @@ export type State =
   | "Starting"
   | "Updating"
   | "Migrated";
-export const State = S.String;
+const State = S.String;
 
 /** The cluster's external tenants. */
 export type ClusterPropertiesTrustedExternalTenantsList = Array<TrustedExternalTenant>;
-export const ClusterPropertiesTrustedExternalTenantsList =
+const ClusterPropertiesTrustedExternalTenantsList =
   ClusterPropertiesInputTrustedExternalTenantsList as any as S.Schema<ClusterPropertiesTrustedExternalTenantsList>;
 
 /** Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster is allowed */
 export type ClusterPropertiesPublicNetworkAccess = "Enabled" | "Disabled" | "SecuredByPerimeter";
-export const ClusterPropertiesPublicNetworkAccess = S.String;
+const ClusterPropertiesPublicNetworkAccess = S.String;
 
 /** The list of ips in the format of CIDR allowed to connect to the cluster. */
 export type ClusterPropertiesAllowedIpRangeListList = Array<string>;
-export const ClusterPropertiesAllowedIpRangeListList =
+const ClusterPropertiesAllowedIpRangeListList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClusterPropertiesAllowedIpRangeListList>;
 
 /** The engine type */
 export type ClusterPropertiesEngineType = "V2" | "V3";
-export const ClusterPropertiesEngineType = S.String;
+const ClusterPropertiesEngineType = S.String;
 
 /** The cluster's accepted audiences. */
 export type ClusterPropertiesAcceptedAudiencesList = Array<AcceptedAudiences>;
-export const ClusterPropertiesAcceptedAudiencesList =
+const ClusterPropertiesAcceptedAudiencesList =
   ClusterPropertiesInputTrustedExternalTenantsList as any as S.Schema<ClusterPropertiesAcceptedAudiencesList>;
 
 /** Whether or not to restrict outbound network access. Value is optional but if passed in, must be 'Enabled' or 'Disabled' */
 export type ClusterPropertiesRestrictOutboundNetworkAccess = "Enabled" | "Disabled";
-export const ClusterPropertiesRestrictOutboundNetworkAccess = S.String;
+const ClusterPropertiesRestrictOutboundNetworkAccess = S.String;
 
 /** List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster. */
 export type ClusterPropertiesAllowedFqdnListList = Array<string>;
-export const ClusterPropertiesAllowedFqdnListList =
+const ClusterPropertiesAllowedFqdnListList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClusterPropertiesAllowedFqdnListList>;
 
 /** Configuration for external callout policies, including URI patterns, access types, and service types. */
@@ -1489,7 +1483,7 @@ export interface CalloutPolicy {
   /** Unique identifier for the callout configuration. */
   calloutId?: string;
 }
-export const CalloutPolicy = /*@__PURE__*/ S.suspend(() =>
+const CalloutPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calloutUriRegex: S.optional(S.String),
     calloutType: S.optional(CalloutType),
@@ -1500,20 +1494,20 @@ export const CalloutPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of callout policies for egress from Cluster. */
 export type ClusterPropertiesCalloutPoliciesList = Array<CalloutPolicy>;
-export const ClusterPropertiesCalloutPoliciesList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesCalloutPoliciesList = /*@__PURE__*/ S.Array(
   CalloutPolicy,
 ) as any as S.Schema<ClusterPropertiesCalloutPoliciesList>;
 
 /** Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6) */
 export type ClusterPropertiesPublicIPType = "IPv4" | "DualStack";
-export const ClusterPropertiesPublicIPType = S.String;
+const ClusterPropertiesPublicIPType = S.String;
 
 /** Private endpoint which the connection belongs to. */
 export interface PrivateEndpointProperty {
   /** Resource id of the private endpoint. */
   id?: string;
 }
-export const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -1528,7 +1522,7 @@ export interface PrivateLinkServiceConnectionStateProperty {
   /** Any action that is required beyond basic workflow (approve/ reject/ disconnect) */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionStateProperty = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionStateProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -1549,7 +1543,7 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the private endpoint. */
   provisioningState?: string;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointProperty),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionStateProperty,
@@ -1573,7 +1567,7 @@ export interface PrivateEndpointConnection {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1587,13 +1581,13 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of private endpoint connections. */
 export type ClusterPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-export const ClusterPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<ClusterPropertiesPrivateEndpointConnectionsList>;
 
 /** The role of the cluster in the migration process. */
 export type MigrationClusterRole = "Source" | "Destination";
-export const MigrationClusterRole = S.String;
+const MigrationClusterRole = S.String;
 
 /** Represents a properties of a cluster that is part of a migration. */
 export interface MigrationClusterProperties {
@@ -1606,7 +1600,7 @@ export interface MigrationClusterProperties {
   /** The role of the cluster in the migration process. */
   role?: MigrationClusterRole;
 }
-export const MigrationClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const MigrationClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     uri: S.optional(S.String),
@@ -1619,7 +1613,7 @@ export const MigrationClusterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the cluster is zonal or non-zonal. */
 export type ZoneStatus = "NonZonal" | "ZonalInconsistency" | "Zonal";
-export const ZoneStatus = S.String;
+const ZoneStatus = S.String;
 
 /** Class representing the Kusto cluster properties. */
 export interface ClusterProperties {
@@ -1678,7 +1672,7 @@ export interface ClusterProperties {
   /** Indicates whether the cluster is zonal or non-zonal. */
   zoneStatus?: ZoneStatus;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(State),
     provisioningState: S.optional(ProvisioningState),
@@ -1712,7 +1706,7 @@ export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type ClustersCreateOrUpdateResponseZonesList = Array<string>;
-export const ClustersCreateOrUpdateResponseZonesList =
+const ClustersCreateOrUpdateResponseZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClustersCreateOrUpdateResponseZonesList>;
 
 export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties {
@@ -1721,7 +1715,7 @@ export interface ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentities
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-export const ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties =
+const ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       principalId: S.optional(S.String),
@@ -1738,7 +1732,7 @@ export type IdentityUserAssignedIdentitiesMap = {
     | ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties
     | undefined;
 };
-export const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   ComponentsSgqdofSchemasIdentityPropertiesUserassignedidentitiesAdditionalproperties,
 ) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
@@ -1754,7 +1748,7 @@ export interface Identity {
   /** The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-export const Identity = /*@__PURE__*/ S.suspend(() =>
+const Identity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1787,7 +1781,7 @@ export interface ClustersCreateOrUpdateResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1813,7 +1807,7 @@ export interface ClustersDiagnoseVirtualNetworkRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ClustersDiagnoseVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersDiagnoseVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1832,14 +1826,14 @@ export const ClustersDiagnoseVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The list of network connectivity diagnostic finding */
 export type DiagnoseVirtualNetworkResultFindingsList = Array<string>;
-export const DiagnoseVirtualNetworkResultFindingsList =
+const DiagnoseVirtualNetworkResultFindingsList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<DiagnoseVirtualNetworkResultFindingsList>;
 
 export interface DiagnoseVirtualNetworkResult {
   /** The list of network connectivity diagnostic finding */
   findings?: DiagnoseVirtualNetworkResultFindingsList;
 }
-export const DiagnoseVirtualNetworkResult = /*@__PURE__*/ S.suspend(() =>
+const DiagnoseVirtualNetworkResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findings: S.optional(DiagnoseVirtualNetworkResultFindingsList),
   }),
@@ -1855,7 +1849,7 @@ export interface ClustersListFollowerDatabasesGetRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ClustersListFollowerDatabasesGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersListFollowerDatabasesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1874,7 +1868,7 @@ export const ClustersListFollowerDatabasesGetRequest = /*@__PURE__*/ S.suspend((
 
 /** The origin of the following setup. */
 export type DatabaseShareOrigin = "Direct" | "DataShare" | "Other";
-export const DatabaseShareOrigin = S.String;
+const DatabaseShareOrigin = S.String;
 
 /** A class representing the properties of a follower database object. */
 export interface FollowerDatabaseProperties {
@@ -1889,7 +1883,7 @@ export interface FollowerDatabaseProperties {
   /** The origin of the following setup. */
   databaseShareOrigin?: DatabaseShareOrigin;
 }
-export const FollowerDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
+const FollowerDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterResourceId: S.String,
     attachedDatabaseConfigurationName: S.String,
@@ -1906,7 +1900,7 @@ export interface FollowerDatabaseDefinitionGet {
   /** Follower database definition. */
   properties?: FollowerDatabaseProperties;
 }
-export const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
+const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(FollowerDatabaseProperties),
   }),
@@ -1916,7 +1910,7 @@ export const FollowerDatabaseDefinitionGet = /*@__PURE__*/ S.suspend(() =>
 
 /** The FollowerDatabaseDefinitionGet items on this page */
 export type FollowerDatabaseListResultGetValueList = Array<FollowerDatabaseDefinitionGet>;
-export const FollowerDatabaseListResultGetValueList = /*@__PURE__*/ S.Array(
+const FollowerDatabaseListResultGetValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseDefinitionGet,
 ) as any as S.Schema<FollowerDatabaseListResultGetValueList>;
 
@@ -1927,7 +1921,7 @@ export interface FollowerDatabaseListResultGet {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FollowerDatabaseListResultGet = /*@__PURE__*/ S.suspend(() =>
+const FollowerDatabaseListResultGet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FollowerDatabaseListResultGetValueList,
     nextLink: S.optional(S.String),
@@ -1947,7 +1941,7 @@ export interface DatabasePrincipalPropertiesInput {
   /** Principal type. */
   principalType: PrincipalType | (string & {});
 }
-export const DatabasePrincipalPropertiesInput =
+const DatabasePrincipalPropertiesInput =
   ClusterPrincipalPropertiesInput as any as S.Schema<DatabasePrincipalPropertiesInput>;
 
 export interface DatabasePrincipalAssignmentsCreateOrUpdateRequest {
@@ -1964,7 +1958,7 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateRequest {
   /** The database principal. */
   properties?: DatabasePrincipalPropertiesInput;
 }
-export const DatabasePrincipalAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DatabasePrincipalAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2003,9 +1997,6 @@ export interface DatabasePrincipalProperties {
   /** The service principal object id in AAD (Azure active directory) */
   aadObjectId?: string;
 }
-export const DatabasePrincipalProperties =
-  ClusterPrincipalProperties as any as S.Schema<DatabasePrincipalProperties>;
-
 export interface DatabasePrincipalAssignmentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2018,15 +2009,15 @@ export interface DatabasePrincipalAssignmentsCreateOrUpdateResponse {
   /** The database principal. */
   properties?: DatabasePrincipalProperties;
 }
-export const DatabasePrincipalAssignmentsCreateOrUpdateResponse =
+const DatabasePrincipalAssignmentsCreateOrUpdateResponse =
   ClusterPrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<DatabasePrincipalAssignmentsCreateOrUpdateResponse>;
 
 export type DatabasesCreateOrUpdateRequestCallerRole = "Admin" | "None";
-export const DatabasesCreateOrUpdateRequestCallerRole = S.String;
+const DatabasesCreateOrUpdateRequestCallerRole = S.String;
 
 /** Kind of the database */
 export type Kind = "ReadWrite" | "ReadOnlyFollowing";
-export const Kind = S.String;
+const Kind = S.String;
 
 /** Properties of a ReadWrite database (the `kind: ReadWrite` variant of the polymorphic Database; ReadOnlyFollowing databases return a superset). */
 export interface ReadWriteDatabaseProperties {
@@ -2045,7 +2036,7 @@ export interface ReadWriteDatabaseProperties {
   /** The database suspension details. */
   suspensionDetails?: unknown;
 }
-export const ReadWriteDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
+const ReadWriteDatabaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(S.String),
     softDeletePeriod: S.optional(S.String),
@@ -2077,7 +2068,7 @@ export interface DatabasesCreateOrUpdateRequest {
   /** The database properties. */
   properties?: ReadWriteDatabaseProperties;
 }
-export const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DatabasesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2115,7 +2106,7 @@ export interface DatabasesCreateOrUpdateResponse {
   /** The database properties. */
   properties?: ReadWriteDatabaseProperties;
 }
-export const DatabasesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabasesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2137,10 +2128,10 @@ export type DataConnectionKind =
   | "CosmosDb"
   | "EventHubWithManagedIdentity"
   | "EventGridWithManagedIdentity";
-export const DataConnectionKind = S.String;
+const DataConnectionKind = S.String;
 
 export type DataConnectionPropertiesEventSystemPropertiesList = Array<string>;
-export const DataConnectionPropertiesEventSystemPropertiesList =
+const DataConnectionPropertiesEventSystemPropertiesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<DataConnectionPropertiesEventSystemPropertiesList>;
 
 /** Union of the data connection `properties` across kinds (EventHub, EventGrid, IotHub, CosmosDb). */
@@ -2188,7 +2179,7 @@ export interface DataConnectionProperties {
   /** The Cosmos DB container name (CosmosDb kind). */
   cosmosDbContainer?: string;
 }
-export const DataConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventHubResourceId: S.optional(S.String),
     consumerGroup: S.optional(S.String),
@@ -2232,7 +2223,7 @@ export interface DataConnectionsCreateOrUpdateRequest {
   /** The data connection properties. */
   properties?: DataConnectionProperties;
 }
-export const DataConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2270,7 +2261,7 @@ export interface DataConnectionsCreateOrUpdateResponse {
   /** The data connection properties. */
   properties?: DataConnectionProperties;
 }
-export const DataConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2291,7 +2282,7 @@ export interface DataConnectionInput {
   /** Kind of the endpoint for the data connection */
   kind: DataConnectionKind | (string & {});
 }
-export const DataConnectionInput = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     kind: DataConnectionKind,
@@ -2312,7 +2303,7 @@ export interface DataConnectionsDataConnectionValidationRequest {
   /** The data connection properties to validate. */
   properties?: DataConnectionInput;
 }
-export const DataConnectionsDataConnectionValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionsDataConnectionValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2337,7 +2328,7 @@ export interface DataConnectionValidationResult {
   /** A message which indicates a problem in data connection validation. */
   errorMessage?: string;
 }
-export const DataConnectionValidationResult = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionValidationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
   }),
@@ -2347,7 +2338,7 @@ export const DataConnectionValidationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Kusto data connection validation errors. */
 export type DataConnectionValidationListResultValueList = Array<DataConnectionValidationResult>;
-export const DataConnectionValidationListResultValueList = /*@__PURE__*/ S.Array(
+const DataConnectionValidationListResultValueList = /*@__PURE__*/ S.Array(
   DataConnectionValidationResult,
 ) as any as S.Schema<DataConnectionValidationListResultValueList>;
 
@@ -2356,7 +2347,7 @@ export interface DataConnectionValidationListResult {
   /** The list of Kusto data connection validation errors. */
   value?: DataConnectionValidationListResultValueList;
 }
-export const DataConnectionValidationListResult = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionValidationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataConnectionValidationListResultValueList),
   }),
@@ -2374,7 +2365,7 @@ export interface DeleteAttachedDatabaseConfigurationRequest {
   /** The name of the attached database configuration. */
   attachedDatabaseConfigurationName: string;
 }
-export const DeleteAttachedDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAttachedDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2393,7 +2384,7 @@ export const DeleteAttachedDatabaseConfigurationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteAttachedDatabaseConfigurationRequest>;
 
 export interface DeleteAttachedDatabaseConfigurationResponse {}
-export const DeleteAttachedDatabaseConfigurationResponse =
+const DeleteAttachedDatabaseConfigurationResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeleteAttachedDatabaseConfigurationResponse>;
 
 export interface DeleteClusterRequest {
@@ -2404,7 +2395,7 @@ export interface DeleteClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2420,7 +2411,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteClusterResponse",
 }) as any as S.Schema<DeleteClusterResponse>;
 
@@ -2434,7 +2425,7 @@ export interface DeleteClusterPrincipalAssignmentRequest {
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
 }
-export const DeleteClusterPrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterPrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2453,7 +2444,7 @@ export const DeleteClusterPrincipalAssignmentRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteClusterPrincipalAssignmentRequest>;
 
 export interface DeleteClusterPrincipalAssignmentResponse {}
-export const DeleteClusterPrincipalAssignmentResponse =
+const DeleteClusterPrincipalAssignmentResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeleteClusterPrincipalAssignmentResponse>;
 
 export interface DeleteDatabaseRequest {
@@ -2466,7 +2457,7 @@ export interface DeleteDatabaseRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2483,8 +2474,7 @@ export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatabaseRequest" }) as any as S.Schema<DeleteDatabaseRequest>;
 
 export interface DeleteDatabaseResponse {}
-export const DeleteDatabaseResponse =
-  DeleteClusterResponse as any as S.Schema<DeleteDatabaseResponse>;
+const DeleteDatabaseResponse = DeleteClusterResponse as any as S.Schema<DeleteDatabaseResponse>;
 
 export interface DeleteDatabasePrincipalAssignmentRequest {
   /** The ID of the target subscription. */
@@ -2498,7 +2488,7 @@ export interface DeleteDatabasePrincipalAssignmentRequest {
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
 }
-export const DeleteDatabasePrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabasePrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2518,7 +2508,7 @@ export const DeleteDatabasePrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteDatabasePrincipalAssignmentRequest>;
 
 export interface DeleteDatabasePrincipalAssignmentResponse {}
-export const DeleteDatabasePrincipalAssignmentResponse =
+const DeleteDatabasePrincipalAssignmentResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeleteDatabasePrincipalAssignmentResponse>;
 
 export interface DeleteDataConnectionRequest {
@@ -2533,7 +2523,7 @@ export interface DeleteDataConnectionRequest {
   /** The name of the data connection. */
   dataConnectionName: string;
 }
-export const DeleteDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2553,7 +2543,7 @@ export const DeleteDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDataConnectionRequest>;
 
 export interface DeleteDataConnectionResponse {}
-export const DeleteDataConnectionResponse =
+const DeleteDataConnectionResponse =
   DeleteClusterResponse as any as S.Schema<DeleteDataConnectionResponse>;
 
 export interface DeleteManagedPrivateEndpointRequest {
@@ -2566,7 +2556,7 @@ export interface DeleteManagedPrivateEndpointRequest {
   /** The name of the managed private endpoint. */
   managedPrivateEndpointName: string;
 }
-export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2585,7 +2575,7 @@ export const DeleteManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteManagedPrivateEndpointRequest>;
 
 export interface DeleteManagedPrivateEndpointResponse {}
-export const DeleteManagedPrivateEndpointResponse =
+const DeleteManagedPrivateEndpointResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeleteManagedPrivateEndpointResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -2598,7 +2588,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2617,7 +2607,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse =
+const DeletePrivateEndpointConnectionResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export interface DeleteSandboxCustomImageRequest {
@@ -2630,7 +2620,7 @@ export interface DeleteSandboxCustomImageRequest {
   /** The name of the sandbox custom image. */
   sandboxCustomImageName: string;
 }
-export const DeleteSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2649,7 +2639,7 @@ export const DeleteSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSandboxCustomImageRequest>;
 
 export interface DeleteSandboxCustomImageResponse {}
-export const DeleteSandboxCustomImageResponse =
+const DeleteSandboxCustomImageResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DeleteSandboxCustomImageResponse>;
 
 export interface DeleteScriptRequest {
@@ -2664,7 +2654,7 @@ export interface DeleteScriptRequest {
   /** The name of the Kusto database script. */
   scriptName: string;
 }
-export const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2682,7 +2672,7 @@ export const DeleteScriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScriptRequest" }) as any as S.Schema<DeleteScriptRequest>;
 
 export interface DeleteScriptResponse {}
-export const DeleteScriptResponse = DeleteClusterResponse as any as S.Schema<DeleteScriptResponse>;
+const DeleteScriptResponse = DeleteClusterResponse as any as S.Schema<DeleteScriptResponse>;
 
 export interface DetachClusterFollowerDatabasesRequest {
   /** The ID of the target subscription. */
@@ -2696,7 +2686,7 @@ export interface DetachClusterFollowerDatabasesRequest {
   /** Resource name of the attached database configuration in the follower cluster. */
   attachedDatabaseConfigurationName: string;
 }
-export const DetachClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2716,7 +2706,7 @@ export const DetachClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DetachClusterFollowerDatabasesRequest>;
 
 export interface DetachClusterFollowerDatabasesResponse {}
-export const DetachClusterFollowerDatabasesResponse =
+const DetachClusterFollowerDatabasesResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<DetachClusterFollowerDatabasesResponse>;
 
 export interface GetAttachedDatabaseConfigurationRequest {
@@ -2729,7 +2719,7 @@ export interface GetAttachedDatabaseConfigurationRequest {
   /** The name of the attached database configuration. */
   attachedDatabaseConfigurationName: string;
 }
-export const GetAttachedDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttachedDatabaseConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2761,7 +2751,7 @@ export interface GetAttachedDatabaseConfigurationResponse {
   /** Resource location. */
   location?: string;
 }
-export const GetAttachedDatabaseConfigurationResponse =
+const GetAttachedDatabaseConfigurationResponse =
   AttachedDatabaseConfigurationsCreateOrUpdateResponse as any as S.Schema<GetAttachedDatabaseConfigurationResponse>;
 
 export interface GetClusterRequest {
@@ -2772,7 +2762,7 @@ export interface GetClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2789,12 +2779,12 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap =
+const GetClusterResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 /** The availability zones. */
 export type GetClusterResponseZonesList = Array<string>;
-export const GetClusterResponseZonesList =
+const GetClusterResponseZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<GetClusterResponseZonesList>;
 
 export interface GetClusterResponse {
@@ -2821,7 +2811,7 @@ export interface GetClusterResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2847,7 +2837,7 @@ export interface GetClusterPrincipalAssignmentRequest {
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
 }
-export const GetClusterPrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterPrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2877,7 +2867,7 @@ export interface GetClusterPrincipalAssignmentResponse {
   /** The cluster principal. */
   properties?: ClusterPrincipalProperties;
 }
-export const GetClusterPrincipalAssignmentResponse =
+const GetClusterPrincipalAssignmentResponse =
   ClusterPrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<GetClusterPrincipalAssignmentResponse>;
 
 export interface GetDatabaseRequest {
@@ -2890,7 +2880,7 @@ export interface GetDatabaseRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2922,7 +2912,7 @@ export interface GetDatabaseResponse {
   /** The database properties. */
   properties?: ReadWriteDatabaseProperties;
 }
-export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2946,7 +2936,7 @@ export interface GetDatabasePrincipalAssignmentRequest {
   /** The name of the Kusto principalAssignment. */
   principalAssignmentName: string;
 }
-export const GetDatabasePrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabasePrincipalAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2977,7 +2967,7 @@ export interface GetDatabasePrincipalAssignmentResponse {
   /** The database principal. */
   properties?: DatabasePrincipalProperties;
 }
-export const GetDatabasePrincipalAssignmentResponse =
+const GetDatabasePrincipalAssignmentResponse =
   DatabasePrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<GetDatabasePrincipalAssignmentResponse>;
 
 export interface GetDataConnectionRequest {
@@ -2992,7 +2982,7 @@ export interface GetDataConnectionRequest {
   /** The name of the data connection. */
   dataConnectionName: string;
 }
-export const GetDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3025,7 +3015,7 @@ export interface GetDataConnectionResponse {
   /** The data connection properties. */
   properties?: DataConnectionProperties;
 }
-export const GetDataConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3049,7 +3039,7 @@ export interface GetManagedPrivateEndpointRequest {
   /** The name of the managed private endpoint. */
   managedPrivateEndpointName: string;
 }
-export const GetManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3080,7 +3070,7 @@ export interface ManagedPrivateEndpointProperties {
   /** The provisioned state of the resource. */
   provisioningState?: ProvisioningState | (string & {});
 }
-export const ManagedPrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkResourceId: S.String,
     privateLinkResourceRegion: S.optional(S.String),
@@ -3104,7 +3094,7 @@ export interface GetManagedPrivateEndpointResponse {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const GetManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetManagedPrivateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3124,7 +3114,7 @@ export interface GetOperationsResultRequest {
   /** The ID of an ongoing async operation. */
   operationId: string;
 }
-export const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3143,7 +3133,7 @@ export const GetOperationsResultRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of operation. */
 export type Status = "Succeeded" | "Canceled" | "Failed" | "Running";
-export const Status = S.String;
+const Status = S.String;
 
 /** Operation result properties */
 export interface OperationResultProperties {
@@ -3154,7 +3144,7 @@ export interface OperationResultProperties {
   /** The state of the operation. */
   operationState?: string;
 }
-export const OperationResultProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationResultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationKind: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState),
@@ -3171,7 +3161,7 @@ export interface OperationResultErrorProperties {
   /** The error message. */
   message?: string;
 }
-export const OperationResultErrorProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationResultErrorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -3199,7 +3189,7 @@ export interface OperationResult {
   /** Object that contains the error code and message if the operation failed. */
   error?: OperationResultErrorProperties;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3222,7 +3212,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3252,7 +3242,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface GetPrivateLinkResourceRequest {
@@ -3265,7 +3255,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3285,12 +3275,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource required zone names. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -3302,7 +3292,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource required zone names. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -3324,7 +3314,7 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3346,7 +3336,7 @@ export interface GetSandboxCustomImageRequest {
   /** The name of the sandbox custom image. */
   sandboxCustomImageName: string;
 }
-export const GetSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3366,7 +3356,7 @@ export const GetSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The language name, for example Python. */
 export type Language = "Python";
-export const Language = S.String;
+const Language = S.String;
 
 /** A class representing the properties of a sandbox custom image object. */
 export interface SandboxCustomImageProperties {
@@ -3381,7 +3371,7 @@ export interface SandboxCustomImageProperties {
   /** The provisioned state of the resource. */
   provisioningState?: ProvisioningState | (string & {});
 }
-export const SandboxCustomImageProperties = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: Language,
     languageVersion: S.optional(S.String),
@@ -3405,7 +3395,7 @@ export interface GetSandboxCustomImageResponse {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const GetSandboxCustomImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxCustomImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3429,7 +3419,7 @@ export interface GetScriptRequest {
   /** The name of the Kusto database script. */
   scriptName: string;
 }
-export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3448,13 +3438,13 @@ export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Differentiates between the type of script commands included - Database or Cluster. The default is Database. */
 export type ScriptLevel = "Database" | "Cluster";
-export const ScriptLevel = S.String;
+const ScriptLevel = S.String;
 
 /** Indicates if the permissions for the script caller are kept following completion of the script. */
 export type PrincipalPermissionsAction =
   | "RetainPermissionOnScriptCompletion"
   | "RemovePermissionOnScriptCompletion";
-export const PrincipalPermissionsAction = S.String;
+const PrincipalPermissionsAction = S.String;
 
 /** A class representing database script property. */
 export interface ScriptProperties {
@@ -3477,7 +3467,7 @@ export interface ScriptProperties {
   /** The resource identifier of the managed identity to be used. When provided, the managed identity will be used to read the script content from the scriptUrl. */
   managedIdentityResourceId?: string;
 }
-export const ScriptProperties = /*@__PURE__*/ S.suspend(() =>
+const ScriptProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptUrl: S.optional(S.String),
     scriptUrlSasToken: S.optional(S.String),
@@ -3503,7 +3493,7 @@ export interface GetScriptResponse {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3527,7 +3517,7 @@ export interface InviteDatabaseFollowerRequest {
   /** Table level sharing specifications */
   tableLevelSharingProperties?: TableLevelSharingProperties;
 }
-export const InviteDatabaseFollowerRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteDatabaseFollowerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3552,7 +3542,7 @@ export interface DatabaseInviteFollowerResult {
   /** The generated invitation token. */
   generatedInvitation?: string;
 }
-export const DatabaseInviteFollowerResult = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInviteFollowerResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generatedInvitation: S.optional(S.String),
   }),
@@ -3568,7 +3558,7 @@ export interface ListAttachedDatabaseConfigurationByClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListAttachedDatabaseConfigurationByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttachedDatabaseConfigurationByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3600,12 +3590,12 @@ export interface AttachedDatabaseConfiguration {
   /** Resource location. */
   location?: string;
 }
-export const AttachedDatabaseConfiguration =
+const AttachedDatabaseConfiguration =
   AttachedDatabaseConfigurationsCreateOrUpdateResponse as any as S.Schema<AttachedDatabaseConfiguration>;
 
 /** The list of attached database configurations. */
 export type AttachedDatabaseConfigurationListResultValueList = Array<AttachedDatabaseConfiguration>;
-export const AttachedDatabaseConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const AttachedDatabaseConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   AttachedDatabaseConfiguration,
 ) as any as S.Schema<AttachedDatabaseConfigurationListResultValueList>;
 
@@ -3616,7 +3606,7 @@ export interface AttachedDatabaseConfigurationListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const AttachedDatabaseConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const AttachedDatabaseConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AttachedDatabaseConfigurationListResultValueList),
     nextLink: S.optional(S.String),
@@ -3631,7 +3621,7 @@ export interface ListClusterByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3649,14 +3639,8 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterTagsMap>;
-
 /** The availability zones. */
 export type ClusterZonesList = Array<string>;
-export const ClusterZonesList =
-  TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ClusterZonesList>;
-
 /** Class representing a Kusto cluster. */
 export interface Cluster {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3682,11 +3666,11 @@ export interface Cluster {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
+const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** The list of Kusto clusters. */
 export type ClusterListResultValueList = Array<Cluster>;
-export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
 
@@ -3697,7 +3681,7 @@ export interface ClusterListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterListResultValueList),
     nextLink: S.optional(S.String),
@@ -3712,7 +3696,7 @@ export interface ListClusterCalloutPoliciesRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3731,7 +3715,7 @@ export const ListClusterCalloutPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The CalloutPolicy items on this page */
 export type CalloutPoliciesListValueList = Array<CalloutPolicy>;
-export const CalloutPoliciesListValueList =
+const CalloutPoliciesListValueList =
   ClusterPropertiesCalloutPoliciesList as any as S.Schema<CalloutPoliciesListValueList>;
 
 /** A list of the service's callout policy objects. */
@@ -3741,7 +3725,7 @@ export interface CalloutPoliciesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CalloutPoliciesList = /*@__PURE__*/ S.suspend(() =>
+const CalloutPoliciesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CalloutPoliciesListValueList,
     nextLink: S.optional(S.String),
@@ -3756,7 +3740,7 @@ export interface ListClusterFollowerDatabasesRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3775,11 +3759,9 @@ export const ListClusterFollowerDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A class representing follower database request. */
 export type FollowerDatabaseDefinition = FollowerDatabaseProperties;
-export const FollowerDatabaseDefinition = FollowerDatabaseProperties;
-
 /** The list of follower database result. */
 export type FollowerDatabaseListResultValueList = Array<FollowerDatabaseProperties>;
-export const FollowerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
+const FollowerDatabaseListResultValueList = /*@__PURE__*/ S.Array(
   FollowerDatabaseProperties,
 ) as any as S.Schema<FollowerDatabaseListResultValueList>;
 
@@ -3790,7 +3772,7 @@ export interface FollowerDatabaseListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const FollowerDatabaseListResult = /*@__PURE__*/ S.suspend(() =>
+const FollowerDatabaseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FollowerDatabaseListResultValueList),
     nextLink: S.optional(S.String),
@@ -3807,7 +3789,7 @@ export interface ListClusterLanguageExtensionsRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3832,7 +3814,7 @@ export interface ListClusterOutboundNetworkDependenciesEndpointsRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3856,7 +3838,7 @@ export interface EndpointDetail {
   /** The ip address of the endpoint. */
   ipAddress?: string;
 }
-export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
+const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     ipAddress: S.optional(S.String),
@@ -3865,7 +3847,7 @@ export const EndpointDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The ports used when connecting to DomainName. */
 export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
-export const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
+const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ S.Array(
   EndpointDetail,
 ) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
 
@@ -3876,7 +3858,7 @@ export interface EndpointDependency {
   /** The ports used when connecting to DomainName. */
   endpointDetails?: EndpointDependencyEndpointDetailsList;
 }
-export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
+const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     endpointDetails: S.optional(EndpointDependencyEndpointDetailsList),
@@ -3885,7 +3867,7 @@ export const EndpointDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The endpoints that the Kusto Service Environment reaches the service at. */
 export type OutboundNetworkDependenciesEndpointPropertiesEndpointsList = Array<EndpointDependency>;
-export const OutboundNetworkDependenciesEndpointPropertiesEndpointsList = /*@__PURE__*/ S.Array(
+const OutboundNetworkDependenciesEndpointPropertiesEndpointsList = /*@__PURE__*/ S.Array(
   EndpointDependency,
 ) as any as S.Schema<OutboundNetworkDependenciesEndpointPropertiesEndpointsList>;
 
@@ -3898,7 +3880,7 @@ export interface OutboundNetworkDependenciesEndpointProperties {
   /** The provisioned state of the resource. */
   provisioningState?: ProvisioningState;
 }
-export const OutboundNetworkDependenciesEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const OutboundNetworkDependenciesEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     endpoints: S.optional(OutboundNetworkDependenciesEndpointPropertiesEndpointsList),
@@ -3923,7 +3905,7 @@ export interface OutboundNetworkDependenciesEndpoint {
   /** A unique read-only string that changes whenever the resource is updated. */
   etag?: string;
 }
-export const OutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
+const OutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3939,7 +3921,7 @@ export const OutboundNetworkDependenciesEndpoint = /*@__PURE__*/ S.suspend(() =>
 /** The OutboundNetworkDependenciesEndpoint items on this page */
 export type OutboundNetworkDependenciesEndpointListResultValueList =
   Array<OutboundNetworkDependenciesEndpoint>;
-export const OutboundNetworkDependenciesEndpointListResultValueList = /*@__PURE__*/ S.Array(
+const OutboundNetworkDependenciesEndpointListResultValueList = /*@__PURE__*/ S.Array(
   OutboundNetworkDependenciesEndpoint,
 ) as any as S.Schema<OutboundNetworkDependenciesEndpointListResultValueList>;
 
@@ -3950,7 +3932,7 @@ export interface OutboundNetworkDependenciesEndpointListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OutboundNetworkDependenciesEndpointListResult = /*@__PURE__*/ S.suspend(() =>
+const OutboundNetworkDependenciesEndpointListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OutboundNetworkDependenciesEndpointListResultValueList,
     nextLink: S.optional(S.String),
@@ -3967,7 +3949,7 @@ export interface ListClusterPrincipalAssignmentsRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterPrincipalAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterPrincipalAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3997,12 +3979,12 @@ export interface ClusterPrincipalAssignment {
   /** The cluster principal. */
   properties?: ClusterPrincipalProperties;
 }
-export const ClusterPrincipalAssignment =
+const ClusterPrincipalAssignment =
   ClusterPrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<ClusterPrincipalAssignment>;
 
 /** The list of Kusto cluster principal assignments. */
 export type ClusterPrincipalAssignmentListResultValueList = Array<ClusterPrincipalAssignment>;
-export const ClusterPrincipalAssignmentListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterPrincipalAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   ClusterPrincipalAssignment,
 ) as any as S.Schema<ClusterPrincipalAssignmentListResultValueList>;
 
@@ -4013,7 +3995,7 @@ export interface ClusterPrincipalAssignmentListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const ClusterPrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterPrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterPrincipalAssignmentListResultValueList),
     nextLink: S.optional(S.String),
@@ -4026,7 +4008,7 @@ export interface ListClustersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4043,7 +4025,7 @@ export interface ListClusterSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListClusterSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4058,17 +4040,17 @@ export const ListClusterSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of locations that the SKU is available */
 export type SkuDescriptionLocationsList = Array<string>;
-export const SkuDescriptionLocationsList =
+const SkuDescriptionLocationsList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<SkuDescriptionLocationsList>;
 
 /** The available zone of the SKU. */
 export type SkuLocationInfoItemZonesList = Array<string>;
-export const SkuLocationInfoItemZonesList =
+const SkuLocationInfoItemZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<SkuLocationInfoItemZonesList>;
 
 /** The set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
-export const ResourceSkuZoneDetailsNameList =
+const ResourceSkuZoneDetailsNameList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** Describes The SKU capabilities object. */
@@ -4078,7 +4060,7 @@ export interface ResourceSkuCapabilities {
   /** An invariant if the feature is measured by quantity. */
   value?: string;
 }
-export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -4087,7 +4069,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
 
@@ -4098,7 +4080,7 @@ export interface ResourceSkuZoneDetails {
   /** A list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities?: ResourceSkuZoneDetailsCapabilitiesList;
 }
-export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(ResourceSkuZoneDetailsNameList),
     capabilities: S.optional(ResourceSkuZoneDetailsCapabilitiesList),
@@ -4107,7 +4089,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type SkuLocationInfoItemZoneDetailsList = Array<ResourceSkuZoneDetails>;
-export const SkuLocationInfoItemZoneDetailsList = /*@__PURE__*/ S.Array(
+const SkuLocationInfoItemZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<SkuLocationInfoItemZoneDetailsList>;
 
@@ -4120,7 +4102,7 @@ export interface SkuLocationInfoItem {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails?: SkuLocationInfoItemZoneDetailsList;
 }
-export const SkuLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
+const SkuLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     zones: S.optional(SkuLocationInfoItemZonesList),
@@ -4130,13 +4112,13 @@ export const SkuLocationInfoItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Locations and zones */
 export type SkuDescriptionLocationInfoList = Array<SkuLocationInfoItem>;
-export const SkuDescriptionLocationInfoList = /*@__PURE__*/ S.Array(
+const SkuDescriptionLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfoItem,
 ) as any as S.Schema<SkuDescriptionLocationInfoList>;
 
 /** The restrictions because of which SKU cannot be used */
 export type SkuDescriptionRestrictionsList = Array<unknown>;
-export const SkuDescriptionRestrictionsList = /*@__PURE__*/ S.Array(
+const SkuDescriptionRestrictionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<SkuDescriptionRestrictionsList>;
 
@@ -4155,7 +4137,7 @@ export interface SkuDescription {
   /** The restrictions because of which SKU cannot be used */
   restrictions?: SkuDescriptionRestrictionsList;
 }
-export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
+const SkuDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     name: S.optional(S.String),
@@ -4168,7 +4150,7 @@ export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** SKU descriptions */
 export type SkuDescriptionListValueList = Array<SkuDescription>;
-export const SkuDescriptionListValueList = /*@__PURE__*/ S.Array(
+const SkuDescriptionListValueList = /*@__PURE__*/ S.Array(
   SkuDescription,
 ) as any as S.Schema<SkuDescriptionListValueList>;
 
@@ -4179,7 +4161,7 @@ export interface SkuDescriptionList {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const SkuDescriptionList = /*@__PURE__*/ S.suspend(() =>
+const SkuDescriptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SkuDescriptionListValueList),
     nextLink: S.optional(S.String),
@@ -4194,7 +4176,7 @@ export interface ListClusterSkusByResourceRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListClusterSkusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterSkusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4213,7 +4195,7 @@ export const ListClusterSkusByResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scale type. */
 export type AzureScaleType = "automatic" | "manual" | "none";
-export const AzureScaleType = S.String;
+const AzureScaleType = S.String;
 
 /** Azure capacity definition. */
 export interface AzureCapacity {
@@ -4226,7 +4208,7 @@ export interface AzureCapacity {
   /** The default capacity that would be used. */
   default: number;
 }
-export const AzureCapacity = /*@__PURE__*/ S.suspend(() =>
+const AzureCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scaleType: AzureScaleType,
     minimum: S.Number,
@@ -4244,7 +4226,7 @@ export interface AzureResourceSku {
   /** The number of instances of the cluster. */
   capacity?: AzureCapacity;
 }
-export const AzureResourceSku = /*@__PURE__*/ S.suspend(() =>
+const AzureResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     sku: S.optional(AzureSku),
@@ -4254,7 +4236,7 @@ export const AzureResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The collection of available SKUs for an existing resource. */
 export type ListResourceSkusResultValueList = Array<AzureResourceSku>;
-export const ListResourceSkusResultValueList = /*@__PURE__*/ S.Array(
+const ListResourceSkusResultValueList = /*@__PURE__*/ S.Array(
   AzureResourceSku,
 ) as any as S.Schema<ListResourceSkusResultValueList>;
 
@@ -4265,7 +4247,7 @@ export interface ListResourceSkusResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const ListResourceSkusResult = /*@__PURE__*/ S.suspend(() =>
+const ListResourceSkusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListResourceSkusResultValueList),
     nextLink: S.optional(S.String),
@@ -4284,7 +4266,7 @@ export interface ListDatabaseByClusterRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListDatabaseByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4318,7 +4300,7 @@ export interface Database {
   /** Kind of the database */
   kind: Kind;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4331,7 +4313,7 @@ export const Database = /*@__PURE__*/ S.suspend(() =>
 
 /** The Database items on this page */
 export type DatabaseListResultValueList = Array<Database>;
-export const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
+const DatabaseListResultValueList = /*@__PURE__*/ S.Array(
   Database,
 ) as any as S.Schema<DatabaseListResultValueList>;
 
@@ -4342,7 +4324,7 @@ export interface DatabaseListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatabaseListResult = /*@__PURE__*/ S.suspend(() =>
+const DatabaseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatabaseListResultValueList,
     nextLink: S.optional(S.String),
@@ -4359,7 +4341,7 @@ export interface ListDatabasePrincipalAssignmentsRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const ListDatabasePrincipalAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasePrincipalAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4390,12 +4372,12 @@ export interface DatabasePrincipalAssignment {
   /** The database principal. */
   properties?: DatabasePrincipalProperties;
 }
-export const DatabasePrincipalAssignment =
+const DatabasePrincipalAssignment =
   DatabasePrincipalAssignmentsCreateOrUpdateResponse as any as S.Schema<DatabasePrincipalAssignment>;
 
 /** The list of Kusto database principal assignments. */
 export type DatabasePrincipalAssignmentListResultValueList = Array<DatabasePrincipalAssignment>;
-export const DatabasePrincipalAssignmentListResultValueList = /*@__PURE__*/ S.Array(
+const DatabasePrincipalAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   DatabasePrincipalAssignment,
 ) as any as S.Schema<DatabasePrincipalAssignmentListResultValueList>;
 
@@ -4406,7 +4388,7 @@ export interface DatabasePrincipalAssignmentListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const DatabasePrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
+const DatabasePrincipalAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DatabasePrincipalAssignmentListResultValueList),
     nextLink: S.optional(S.String),
@@ -4425,7 +4407,7 @@ export interface ListDatabasePrincipalsRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const ListDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4453,7 +4435,7 @@ export interface ListDataConnectionByDatabaseRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const ListDataConnectionByDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataConnectionByDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4486,11 +4468,9 @@ export interface DataConnection {
   /** Kind of the endpoint for the data connection */
   kind: DataConnectionKind;
 }
-export const DataConnection = Database as any as S.Schema<DataConnection>;
-
 /** The list of Kusto data connections. */
 export type DataConnectionListResultValueList = Array<DataConnection>;
-export const DataConnectionListResultValueList =
+const DataConnectionListResultValueList =
   DatabaseListResultValueList as any as S.Schema<DataConnectionListResultValueList>;
 
 /** The list Kusto data connections operation response. */
@@ -4500,7 +4480,7 @@ export interface DataConnectionListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const DataConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const DataConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -4515,7 +4495,7 @@ export interface ListManagedPrivateEndpointsRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListManagedPrivateEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListManagedPrivateEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4545,7 +4525,7 @@ export interface ManagedPrivateEndpoint {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4557,7 +4537,7 @@ export const ManagedPrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of managed private endpoints. */
 export type ManagedPrivateEndpointListResultValueList = Array<ManagedPrivateEndpoint>;
-export const ManagedPrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
+const ManagedPrivateEndpointListResultValueList = /*@__PURE__*/ S.Array(
   ManagedPrivateEndpoint,
 ) as any as S.Schema<ManagedPrivateEndpointListResultValueList>;
 
@@ -4568,7 +4548,7 @@ export interface ManagedPrivateEndpointListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const ManagedPrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ManagedPrivateEndpointListResultValueList),
     nextLink: S.optional(S.String),
@@ -4578,7 +4558,7 @@ export const ManagedPrivateEndpointListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedPrivateEndpointListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4600,7 +4580,7 @@ export interface OperationDisplay {
   /** The friendly name of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     operation: S.optional(S.String),
@@ -4620,7 +4600,7 @@ export interface Operation {
   /** Properties of the operation. */
   properties?: unknown;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -4631,7 +4611,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations supported by the resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -4642,7 +4622,7 @@ export interface OperationListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -4657,7 +4637,7 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4676,7 +4656,7 @@ export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList =
+const PrivateEndpointConnectionListResultValueList =
   ClusterPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
 /** A list of private endpoint connections */
@@ -4686,7 +4666,7 @@ export interface PrivateEndpointConnectionListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -4703,7 +4683,7 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4733,7 +4713,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4745,7 +4725,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -4756,7 +4736,7 @@ export interface PrivateLinkResourceListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
     nextLink: S.optional(S.String),
@@ -4773,7 +4753,7 @@ export interface ListSandboxCustomImageByClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const ListSandboxCustomImageByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxCustomImageByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4803,7 +4783,7 @@ export interface SandboxCustomImage {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const SandboxCustomImage = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4815,7 +4795,7 @@ export const SandboxCustomImage = /*@__PURE__*/ S.suspend(() =>
 
 /** The SandboxCustomImage items on this page */
 export type SandboxCustomImagesListResultValueList = Array<SandboxCustomImage>;
-export const SandboxCustomImagesListResultValueList = /*@__PURE__*/ S.Array(
+const SandboxCustomImagesListResultValueList = /*@__PURE__*/ S.Array(
   SandboxCustomImage,
 ) as any as S.Schema<SandboxCustomImagesListResultValueList>;
 
@@ -4826,7 +4806,7 @@ export interface SandboxCustomImagesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SandboxCustomImagesListResult = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SandboxCustomImagesListResultValueList,
     nextLink: S.optional(S.String),
@@ -4845,7 +4825,7 @@ export interface ListScriptByDatabaseRequest {
   /** The name of the database in the Kusto cluster. */
   databaseName: string;
 }
-export const ListScriptByDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptByDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4876,11 +4856,11 @@ export interface Script {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const Script = GetScriptResponse as any as S.Schema<Script>;
+const Script = GetScriptResponse as any as S.Schema<Script>;
 
 /** The list of Kusto scripts. */
 export type ScriptListResultValueList = Array<Script>;
-export const ScriptListResultValueList = /*@__PURE__*/ S.Array(
+const ScriptListResultValueList = /*@__PURE__*/ S.Array(
   Script,
 ) as any as S.Schema<ScriptListResultValueList>;
 
@@ -4891,7 +4871,7 @@ export interface ScriptListResult {
   /** Link to the next page of results. */
   nextLink?: string;
 }
-export const ScriptListResult = /*@__PURE__*/ S.suspend(() =>
+const ScriptListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ScriptListResultValueList),
     nextLink: S.optional(S.String),
@@ -4904,7 +4884,7 @@ export interface ListSkusRequest {
   /** The name of Azure region. */
   location: string;
 }
-export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -4930,7 +4910,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateRequest {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const ManagedPrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ManagedPrivateEndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4961,7 +4941,7 @@ export interface ManagedPrivateEndpointsCreateOrUpdateResponse {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const ManagedPrivateEndpointsCreateOrUpdateResponse =
+const ManagedPrivateEndpointsCreateOrUpdateResponse =
   GetManagedPrivateEndpointResponse as any as S.Schema<ManagedPrivateEndpointsCreateOrUpdateResponse>;
 
 export interface MigrateClusterRequest {
@@ -4974,7 +4954,7 @@ export interface MigrateClusterRequest {
   /** Resource ID of the destination cluster or kusto pool. */
   clusterResourceId: string;
 }
-export const MigrateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4991,8 +4971,7 @@ export const MigrateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrateClusterRequest" }) as any as S.Schema<MigrateClusterRequest>;
 
 export interface MigrateClusterResponse {}
-export const MigrateClusterResponse =
-  DeleteClusterResponse as any as S.Schema<MigrateClusterResponse>;
+const MigrateClusterResponse = DeleteClusterResponse as any as S.Schema<MigrateClusterResponse>;
 
 /** Connection State of the Private Endpoint Connection. */
 export interface PrivateLinkServiceConnectionStatePropertyInput {
@@ -5001,7 +4980,7 @@ export interface PrivateLinkServiceConnectionStatePropertyInput {
   /** The private link service connection description. */
   description?: string;
 }
-export const PrivateLinkServiceConnectionStatePropertyInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionStatePropertyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     description: S.optional(S.String),
@@ -5015,7 +4994,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** Connection State of the Private Endpoint Connection. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionStatePropertyInput;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionStatePropertyInput,
   }),
@@ -5035,7 +5014,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5066,7 +5045,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
   PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface RemoveClusterCalloutPolicyRequest {
@@ -5079,7 +5058,7 @@ export interface RemoveClusterCalloutPolicyRequest {
   /** Unique identifier for the callout configuration. */
   calloutId?: string;
 }
-export const RemoveClusterCalloutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveClusterCalloutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5098,12 +5077,12 @@ export const RemoveClusterCalloutPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RemoveClusterCalloutPolicyRequest>;
 
 export interface RemoveClusterCalloutPolicyResponse {}
-export const RemoveClusterCalloutPolicyResponse =
+const RemoveClusterCalloutPolicyResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<RemoveClusterCalloutPolicyResponse>;
 
 /** The list of language extensions. */
 export type RemoveClusterLanguageExtensionsRequestValueList = Array<LanguageExtension>;
-export const RemoveClusterLanguageExtensionsRequestValueList =
+const RemoveClusterLanguageExtensionsRequestValueList =
   AddClusterLanguageExtensionsRequestValueList as any as S.Schema<RemoveClusterLanguageExtensionsRequestValueList>;
 
 export interface RemoveClusterLanguageExtensionsRequest {
@@ -5118,7 +5097,7 @@ export interface RemoveClusterLanguageExtensionsRequest {
   /** The link to the next page of resources. */
   nextLink?: string;
 }
-export const RemoveClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5138,12 +5117,12 @@ export const RemoveClusterLanguageExtensionsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveClusterLanguageExtensionsRequest>;
 
 export interface RemoveClusterLanguageExtensionsResponse {}
-export const RemoveClusterLanguageExtensionsResponse =
+const RemoveClusterLanguageExtensionsResponse =
   AddClusterCalloutPoliciesResponse as any as S.Schema<RemoveClusterLanguageExtensionsResponse>;
 
 /** The list of Kusto database principals. */
 export type RemoveDatabasePrincipalsRequestValueList = Array<DatabasePrincipalInput>;
-export const RemoveDatabasePrincipalsRequestValueList =
+const RemoveDatabasePrincipalsRequestValueList =
   AddDatabasePrincipalsRequestValueList as any as S.Schema<RemoveDatabasePrincipalsRequestValueList>;
 
 export interface RemoveDatabasePrincipalsRequest {
@@ -5158,7 +5137,7 @@ export interface RemoveDatabasePrincipalsRequest {
   /** The list of Kusto database principals. */
   value?: RemoveDatabasePrincipalsRequestValueList;
 }
-export const RemoveDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveDatabasePrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5189,7 +5168,7 @@ export interface SandboxCustomImagesCreateOrUpdateRequest {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const SandboxCustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5220,7 +5199,7 @@ export interface SandboxCustomImagesCreateOrUpdateResponse {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const SandboxCustomImagesCreateOrUpdateResponse =
+const SandboxCustomImagesCreateOrUpdateResponse =
   GetSandboxCustomImageResponse as any as S.Schema<SandboxCustomImagesCreateOrUpdateResponse>;
 
 export interface ScriptsCreateOrUpdateRequest {
@@ -5237,7 +5216,7 @@ export interface ScriptsCreateOrUpdateRequest {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const ScriptsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScriptsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5269,7 +5248,7 @@ export interface ScriptsCreateOrUpdateResponse {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const ScriptsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ScriptsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5289,7 +5268,7 @@ export interface StartClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const StartClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const StartClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5305,7 +5284,7 @@ export const StartClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartClusterRequest" }) as any as S.Schema<StartClusterRequest>;
 
 export interface StartClusterResponse {}
-export const StartClusterResponse = DeleteClusterResponse as any as S.Schema<StartClusterResponse>;
+const StartClusterResponse = DeleteClusterResponse as any as S.Schema<StartClusterResponse>;
 
 export interface StopClusterRequest {
   /** The ID of the target subscription. */
@@ -5315,7 +5294,7 @@ export interface StopClusterRequest {
   /** The name of the Kusto cluster. */
   clusterName: string;
 }
-export const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5331,16 +5310,16 @@ export const StopClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopClusterRequest" }) as any as S.Schema<StopClusterRequest>;
 
 export interface StopClusterResponse {}
-export const StopClusterResponse = DeleteClusterResponse as any as S.Schema<StopClusterResponse>;
+const StopClusterResponse = DeleteClusterResponse as any as S.Schema<StopClusterResponse>;
 
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap =
+const UpdateClusterRequestTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 /** The availability zones of the cluster. */
 export type UpdateClusterRequestZonesList = Array<string>;
-export const UpdateClusterRequestZonesList =
+const UpdateClusterRequestZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<UpdateClusterRequestZonesList>;
 
 export interface UpdateClusterRequest {
@@ -5363,7 +5342,7 @@ export interface UpdateClusterRequest {
   /** The cluster properties. */
   properties?: ClusterPropertiesInput;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5386,12 +5365,12 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap =
+const UpdateClusterResponseTagsMap =
   ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 /** The availability zones. */
 export type UpdateClusterResponseZonesList = Array<string>;
-export const UpdateClusterResponseZonesList =
+const UpdateClusterResponseZonesList =
   TableLevelSharingPropertiesTablesToIncludeList as any as S.Schema<UpdateClusterResponseZonesList>;
 
 export interface UpdateClusterResponse {
@@ -5418,7 +5397,7 @@ export interface UpdateClusterResponse {
   /** "If etag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.") */
   etag?: string;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5435,7 +5414,7 @@ export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
 
 export type UpdateDatabaseRequestCallerRole = "Admin" | "None";
-export const UpdateDatabaseRequestCallerRole = S.String;
+const UpdateDatabaseRequestCallerRole = S.String;
 
 export interface UpdateDatabaseRequest {
   /** The ID of the target subscription. */
@@ -5455,7 +5434,7 @@ export interface UpdateDatabaseRequest {
   /** The database properties. */
   properties?: ReadWriteDatabaseProperties;
 }
-export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5491,7 +5470,7 @@ export interface UpdateDatabaseResponse {
   /** The database properties. */
   properties?: ReadWriteDatabaseProperties;
 }
-export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5521,7 +5500,7 @@ export interface UpdateDataConnectionRequest {
   /** The data connection properties. */
   properties?: DataConnectionProperties;
 }
-export const UpdateDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5559,7 +5538,7 @@ export interface UpdateDataConnectionResponse {
   /** The data connection properties. */
   properties?: DataConnectionProperties;
 }
-export const UpdateDataConnectionResponse =
+const UpdateDataConnectionResponse =
   DataConnectionsCreateOrUpdateResponse as any as S.Schema<UpdateDataConnectionResponse>;
 
 export interface UpdateManagedPrivateEndpointRequest {
@@ -5574,7 +5553,7 @@ export interface UpdateManagedPrivateEndpointRequest {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const UpdateManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateManagedPrivateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5605,7 +5584,7 @@ export interface UpdateManagedPrivateEndpointResponse {
   /** A managed private endpoint. */
   properties?: ManagedPrivateEndpointProperties;
 }
-export const UpdateManagedPrivateEndpointResponse =
+const UpdateManagedPrivateEndpointResponse =
   GetManagedPrivateEndpointResponse as any as S.Schema<UpdateManagedPrivateEndpointResponse>;
 
 export interface UpdateSandboxCustomImageRequest {
@@ -5620,7 +5599,7 @@ export interface UpdateSandboxCustomImageRequest {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const UpdateSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5651,7 +5630,7 @@ export interface UpdateSandboxCustomImageResponse {
   /** A sandbox custom image. */
   properties?: SandboxCustomImageProperties;
 }
-export const UpdateSandboxCustomImageResponse =
+const UpdateSandboxCustomImageResponse =
   GetSandboxCustomImageResponse as any as S.Schema<UpdateSandboxCustomImageResponse>;
 
 export interface UpdateScriptRequest {
@@ -5668,7 +5647,7 @@ export interface UpdateScriptRequest {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const UpdateScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5698,7 +5677,7 @@ export interface UpdateScriptResponse {
   /** The database script. */
   properties?: ScriptProperties;
 }
-export const UpdateScriptResponse = GetScriptResponse as any as S.Schema<UpdateScriptResponse>;
+const UpdateScriptResponse = GetScriptResponse as any as S.Schema<UpdateScriptResponse>;
 
 export type AddClusterCalloutPoliciesError = AzureOpError;
 /** Adds a list of callout policies for engine services. */

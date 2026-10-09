@@ -55,8 +55,6 @@ export class UnprocessableEntity
 
 /** * `cohort` - cohort * `person` - person * `group` - group */
 export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
-export const PropertyGroupTypeEnum = S.String;
-
 /** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
 export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "exact"
@@ -73,8 +71,6 @@ export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
   | "gte"
   | "lt"
   | "lte";
-export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyGenericSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -89,23 +85,8 @@ export interface FeatureFlagFilterPropertyGenericSchema {
   /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
   operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum | (string & {});
 }
-export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    value: S.optional(S.Unknown),
-    operator: S.optional(FeatureFlagFilterPropertyGenericSchemaOperatorEnum),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyGenericSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
-
 /** * `is_set` - is_set * `is_not_set` - is_not_set */
 export type ExistenceOperatorEnum = "is_set" | "is_not_set";
-export const ExistenceOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyExistsSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -120,23 +101,8 @@ export interface FeatureFlagFilterPropertyExistsSchema {
   /** Optional value. Runtime behavior determines whether this is ignored. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(ExistenceOperatorEnum),
-    value: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyExistsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyExistsSchema>;
-
 /** * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
 export type DateOperatorEnum = "is_date_exact" | "is_date_before" | "is_date_after";
-export const DateOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyDateSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -151,19 +117,6 @@ export interface FeatureFlagFilterPropertyDateSchema {
   /** Date value in ISO format or relative date expression. */
   value?: string;
 }
-export const FeatureFlagFilterPropertyDateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(DateOperatorEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyDateSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyDateSchema>;
-
 /** * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
 export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_gt"
@@ -175,8 +128,6 @@ export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
   | "semver_tilde"
   | "semver_caret"
   | "semver_wildcard";
-export const FeatureFlagFilterPropertySemverSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertySemverSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -191,18 +142,13 @@ export interface FeatureFlagFilterPropertySemverSchema {
   /** Semantic version string. */
   value?: string;
 }
-export const FeatureFlagFilterPropertySemverSchema =
-  FeatureFlagFilterPropertyDateSchema as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
-
 /** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
 export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
   | "icontains_multi"
   | "not_icontains_multi";
-export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum = S.String;
-
 /** List of strings to evaluate against. */
 export type FeatureFlagFilterPropertyMultiContainsSchemaValueList = Array<string>;
-export const FeatureFlagFilterPropertyMultiContainsSchemaValueList = /*@__PURE__*/ S.Array(
+const FeatureFlagFilterPropertyMultiContainsSchemaValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
 
@@ -220,27 +166,10 @@ export interface FeatureFlagFilterPropertyMultiContainsSchema {
   /** List of strings to evaluate against. */
   value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
 }
-export const FeatureFlagFilterPropertyMultiContainsSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum),
-    value: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaValueList),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyMultiContainsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
-
 /** * `cohort` - cohort */
 export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
-export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum = S.String;
-
 /** * `in` - in * `not_in` - not_in */
 export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = "in" | "not_in";
-export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -255,17 +184,10 @@ export interface FeatureFlagFilterPropertyCohortInSchema {
   /** Cohort comparison value (single or list, depending on usage). */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyCohortInSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
-
 /** * `flag` - flag */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = S.String;
-
 /** * `flag_evaluates_to` - flag_evaluates_to */
 export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = "flag_evaluates_to";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum = S.String;
-
 export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Property key used in this feature flag condition. */
   key?: string;
@@ -280,9 +202,6 @@ export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
   /** Value to compare flag evaluation against. */
   value?: unknown;
 }
-export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
-  FeatureFlagFilterPropertyExistsSchema as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
-
 export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyGenericSchema
   | FeatureFlagFilterPropertyExistsSchema
@@ -291,12 +210,12 @@ export type FeatureFlagFilterPropertySchema =
   | FeatureFlagFilterPropertyMultiContainsSchema
   | FeatureFlagFilterPropertyCohortInSchema
   | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-export const FeatureFlagFilterPropertySchema =
+const FeatureFlagFilterPropertySchema =
   S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
 
 /** Property conditions for this release condition group. */
 export type FeatureFlagConditionGroupSchemaPropertiesList = Array<FeatureFlagFilterPropertySchema>;
-export const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConditionGroupSchemaPropertiesList = /*@__PURE__*/ S.Array(
   FeatureFlagFilterPropertySchema,
 ) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
 
@@ -310,7 +229,7 @@ export interface FeatureFlagConditionGroupSchema {
   /** Group type index for this condition set. None means person-level aggregation. */
   aggregation_group_type_index?: number | null;
 }
-export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
     rollout_percentage: S.optional(S.Number),
@@ -323,7 +242,7 @@ export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Release condition groups for the feature flag. */
 export type FeatureFlagFiltersSchemaGroupsList = Array<FeatureFlagConditionGroupSchema>;
-export const FeatureFlagFiltersSchemaGroupsList = /*@__PURE__*/ S.Array(
+const FeatureFlagFiltersSchemaGroupsList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionGroupSchema,
 ) as any as S.Schema<FeatureFlagFiltersSchemaGroupsList>;
 
@@ -335,7 +254,7 @@ export interface FeatureFlagMultivariateVariantSchema {
   /** Variant rollout percentage. */
   rollout_percentage?: number;
 }
-export const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -347,7 +266,7 @@ export const FeatureFlagMultivariateVariantSchema = /*@__PURE__*/ S.suspend(() =
 
 /** Variant definitions for multivariate feature flags. */
 export type FeatureFlagMultivariateSchemaVariantsList = Array<FeatureFlagMultivariateVariantSchema>;
-export const FeatureFlagMultivariateSchemaVariantsList = /*@__PURE__*/ S.Array(
+const FeatureFlagMultivariateSchemaVariantsList = /*@__PURE__*/ S.Array(
   FeatureFlagMultivariateVariantSchema,
 ) as any as S.Schema<FeatureFlagMultivariateSchemaVariantsList>;
 
@@ -355,7 +274,7 @@ export interface FeatureFlagMultivariateSchema {
   /** Variant definitions for multivariate feature flags. */
   variants?: FeatureFlagMultivariateSchemaVariantsList;
 }
-export const FeatureFlagMultivariateSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagMultivariateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variants: S.optional(FeatureFlagMultivariateSchemaVariantsList),
   }),
@@ -365,7 +284,7 @@ export const FeatureFlagMultivariateSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional payload values keyed by variant key. */
 export type FeatureFlagFiltersSchemaPayloadsMap = { [key: string]: string | undefined };
-export const FeatureFlagFiltersSchemaPayloadsMap = /*@__PURE__*/ S.Record(
+const FeatureFlagFiltersSchemaPayloadsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<FeatureFlagFiltersSchemaPayloadsMap>;
@@ -384,7 +303,7 @@ export interface FeatureFlagFiltersSchema {
   /** When true, condition evaluation stops at the first matching condition set rather than continuing to evaluate subsequent groups. */
   early_exit?: boolean;
 }
-export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(FeatureFlagFiltersSchemaGroupsList),
     multivariate: S.optional(S.NullOr(FeatureFlagMultivariateSchema)),
@@ -397,21 +316,21 @@ export const FeatureFlagFiltersSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this feature flag. */
 export type CreateFeatureFlagRequestTagsList = Array<string>;
-export const CreateFeatureFlagRequestTagsList =
+const CreateFeatureFlagRequestTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<CreateFeatureFlagRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
 export type CreateFeatureFlagRequestEvaluationContextsList = Array<string>;
-export const CreateFeatureFlagRequestEvaluationContextsList =
+const CreateFeatureFlagRequestEvaluationContextsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<CreateFeatureFlagRequestEvaluationContextsList>;
 
 /** * `server` - Server * `client` - Client * `all` - All */
 export type EvaluationRuntimeEnum = "server" | "client" | "all";
-export const EvaluationRuntimeEnum = S.String;
+const EvaluationRuntimeEnum = S.String;
 
 /** * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type BucketingIdentifierEnum = "distinct_id" | "device_id";
-export const BucketingIdentifierEnum = S.String;
+const BucketingIdentifierEnum = S.String;
 
 export interface CreateFeatureFlagRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -439,7 +358,7 @@ export interface CreateFeatureFlagRequest {
   /** Identifier used to bucket users into rollout percentages and variants: 'distinct_id' (user ID, the default) or 'device_id'. Using 'device_id' is incompatible with ensure_experience_continuity=True. * `distinct_id` - User ID (default) * `device_id` - Device ID */
   bucketing_identifier?: BucketingIdentifierEnum | (string & {}) | null;
 }
-export const CreateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.optional(S.String),
@@ -457,13 +376,13 @@ export const CreateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFeatureFlagRequest" }) as any as S.Schema<CreateFeatureFlagRequest>;
 
 export type FeatureFlagOutputFiltersMap = { [key: string]: unknown | undefined };
-export const FeatureFlagOutputFiltersMap = /*@__PURE__*/ S.Record(
+const FeatureFlagOutputFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<FeatureFlagOutputFiltersMap>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -477,14 +396,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -497,7 +411,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -512,7 +426,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type FeatureFlagOutputExperimentSetList = Array<number>;
-export const FeatureFlagOutputExperimentSetList = /*@__PURE__*/ S.Array(
+const FeatureFlagOutputExperimentSetList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FeatureFlagOutputExperimentSetList>;
 
@@ -524,7 +438,7 @@ export interface FeatureFlagExperimentSetMetadata {
   /** Whether the experiment is currently running (started and not yet stopped). A running experiment blocks deletion of the linked flag. */
   is_running: boolean;
 }
-export const FeatureFlagExperimentSetMetadata = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagExperimentSetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -535,35 +449,35 @@ export const FeatureFlagExperimentSetMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagExperimentSetMetadata>;
 
 export type FeatureFlagOutputExperimentSetMetadataList = Array<FeatureFlagExperimentSetMetadata>;
-export const FeatureFlagOutputExperimentSetMetadataList = /*@__PURE__*/ S.Array(
+const FeatureFlagOutputExperimentSetMetadataList = /*@__PURE__*/ S.Array(
   FeatureFlagExperimentSetMetadata,
 ) as any as S.Schema<FeatureFlagOutputExperimentSetMetadataList>;
 
 export type FeatureFlagOutputSurveysMap = { [key: string]: unknown | undefined };
-export const FeatureFlagOutputSurveysMap =
+const FeatureFlagOutputSurveysMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagOutputSurveysMap>;
 
 export type FeatureFlagOutputFeaturesMap = { [key: string]: unknown | undefined };
-export const FeatureFlagOutputFeaturesMap =
+const FeatureFlagOutputFeaturesMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagOutputFeaturesMap>;
 
 export type FeatureFlagOutputTagsList = Array<unknown>;
-export const FeatureFlagOutputTagsList = /*@__PURE__*/ S.Array(
+const FeatureFlagOutputTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<FeatureFlagOutputTagsList>;
 
 export type FeatureFlagOutputAnalyticsDashboardsList = Array<number>;
-export const FeatureFlagOutputAnalyticsDashboardsList =
+const FeatureFlagOutputAnalyticsDashboardsList =
   FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagOutputAnalyticsDashboardsList>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagOutputEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const FeatureFlagOutputEvaluationRuntime =
+const FeatureFlagOutputEvaluationRuntime =
   S.Unknown as any as S.Schema<FeatureFlagOutputEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type FeatureFlagOutputBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const FeatureFlagOutputBucketingIdentifier =
+const FeatureFlagOutputBucketingIdentifier =
   S.Unknown as any as S.Schema<FeatureFlagOutputBucketingIdentifier>;
 
 /** Serializer mixin that handles tags for objects. */
@@ -610,7 +524,7 @@ export interface FeatureFlagOutput {
   /** Whether this flag can back an experiment: multivariate with 2 to 20 variants. */
   is_eligible_for_experiment?: boolean;
 }
-export const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -656,7 +570,7 @@ export interface CreateFeatureFlagsRollOutToEveryoneRequest {
   /** The variant every user gets. Required for a multivariate flag and rejected for any other flag, because a release condition decides who the flag serves and not which variant they get. */
   variant_key?: string | null;
 }
-export const CreateFeatureFlagsRollOutToEveryoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureFlagsRollOutToEveryoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -685,7 +599,7 @@ export interface CreateFeatureFlagsSetReleaseConditionRolloutRequest {
   /** The `version` from your most recent read of this flag. The change is refused with 409 if anyone else changed the flag after that version. A flag written before versioning reads as `null`; send that back unchanged and it is read as 0, so the value a read returns is always one this accepts. */
   version: number | null;
 }
-export const CreateFeatureFlagsSetReleaseConditionRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureFlagsSetReleaseConditionRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -717,7 +631,7 @@ export interface CreateFeatureFlagsTestEvaluationRequest {
   /** Groups for feature flag evaluation (JSON object, defaults to empty dict) */
   groups?: unknown;
 }
-export const CreateFeatureFlagsTestEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureFlagsTestEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -740,7 +654,7 @@ export const CreateFeatureFlagsTestEvaluationRequest = /*@__PURE__*/ S.suspend((
 export type FeatureFlagTestEvaluationResponsePersonPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const FeatureFlagTestEvaluationResponsePersonPropertiesMap =
+const FeatureFlagTestEvaluationResponsePersonPropertiesMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagTestEvaluationResponsePersonPropertiesMap>;
 
 export interface FeatureFlagConditionPropertyAnalysis {
@@ -759,7 +673,7 @@ export interface FeatureFlagConditionPropertyAnalysis {
   /** Human-readable explanation of the match result */
   explanation: string;
 }
-export const FeatureFlagConditionPropertyAnalysis = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConditionPropertyAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -776,7 +690,7 @@ export const FeatureFlagConditionPropertyAnalysis = /*@__PURE__*/ S.suspend(() =
 /** Analysis of each property in this condition */
 export type FeatureFlagConditionAnalysisPropertiesList =
   Array<FeatureFlagConditionPropertyAnalysis>;
-export const FeatureFlagConditionAnalysisPropertiesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConditionAnalysisPropertiesList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionPropertyAnalysis,
 ) as any as S.Schema<FeatureFlagConditionAnalysisPropertiesList>;
 
@@ -798,7 +712,7 @@ export interface FeatureFlagConditionAnalysis {
   /** Analysis of each property in this condition */
   properties: FeatureFlagConditionAnalysisPropertiesList;
 }
-export const FeatureFlagConditionAnalysis = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConditionAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.Number,
     matched: S.Boolean,
@@ -815,7 +729,7 @@ export const FeatureFlagConditionAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** Detailed analysis of each condition in the feature flag */
 export type FeatureFlagTestEvaluationResponseConditionsList = Array<FeatureFlagConditionAnalysis>;
-export const FeatureFlagTestEvaluationResponseConditionsList = /*@__PURE__*/ S.Array(
+const FeatureFlagTestEvaluationResponseConditionsList = /*@__PURE__*/ S.Array(
   FeatureFlagConditionAnalysis,
 ) as any as S.Schema<FeatureFlagTestEvaluationResponseConditionsList>;
 
@@ -839,7 +753,7 @@ export interface FeatureFlagTestEvaluationResponse {
   /** Detailed analysis of each condition in the feature flag */
   conditions: FeatureFlagTestEvaluationResponseConditionsList;
 }
-export const FeatureFlagTestEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagTestEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag_key: S.String,
     result: S.Unknown,
@@ -859,7 +773,7 @@ export const FeatureFlagTestEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateFeatureFlagsUserBlastRadiusRequestConditionMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateFeatureFlagsUserBlastRadiusRequestConditionMap =
+const CreateFeatureFlagsUserBlastRadiusRequestConditionMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<CreateFeatureFlagsUserBlastRadiusRequestConditionMap>;
 
 export interface CreateFeatureFlagsUserBlastRadiusRequest {
@@ -870,7 +784,7 @@ export interface CreateFeatureFlagsUserBlastRadiusRequest {
   /** Group type index for group-based flags (null for person-based flags) */
   group_type_index?: number | null;
 }
-export const CreateFeatureFlagsUserBlastRadiusRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureFlagsUserBlastRadiusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     condition: S.optional(CreateFeatureFlagsUserBlastRadiusRequestConditionMap),
@@ -892,7 +806,7 @@ export interface UserBlastRadiusResponse {
   /** Total number of entities of this type in the project */
   total?: number;
 }
-export const UserBlastRadiusResponse = /*@__PURE__*/ S.suspend(() =>
+const UserBlastRadiusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected: S.optional(S.Number),
     total: S.optional(S.Number),
@@ -905,7 +819,7 @@ export interface FeatureFlagsArchiveCreateRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const FeatureFlagsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -922,20 +836,20 @@ export const FeatureFlagsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `true` - true * `false` - false * `STALE` - STALE */
 export type ActiveEnum = "true" | "false" | "STALE";
-export const ActiveEnum = S.String;
+const ActiveEnum = S.String;
 
 /** * `boolean` - boolean * `multivariant` - multivariant * `experiment` - experiment * `remote_config` - remote_config */
 export type BulkDeleteFiltersTypeEnum = "boolean" | "multivariant" | "experiment" | "remote_config";
-export const BulkDeleteFiltersTypeEnum = S.String;
+const BulkDeleteFiltersTypeEnum = S.String;
 
 /** Tag names to filter by. Flags carrying at least one of these tags match. */
 export type BulkDeleteFiltersTagsList = Array<string>;
-export const BulkDeleteFiltersTagsList =
+const BulkDeleteFiltersTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkDeleteFiltersTagsList>;
 
 /** Tag names to exclude. Flags carrying any of these tags are filtered out. */
 export type BulkDeleteFiltersExcludedTagsList = Array<string>;
-export const BulkDeleteFiltersExcludedTagsList =
+const BulkDeleteFiltersExcludedTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkDeleteFiltersExcludedTagsList>;
 
 /** Allowed filter keys for bulk_delete -- same shape as the list endpoint's query params. */
@@ -961,7 +875,7 @@ export interface BulkDeleteFilters {
   /** Filter by archived state. When omitted, archived flags are excluded. */
   archived?: boolean;
 }
-export const BulkDeleteFilters = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(ActiveEnum),
     created_by_id: S.optional(S.Number),
@@ -978,7 +892,7 @@ export const BulkDeleteFilters = /*@__PURE__*/ S.suspend(() =>
 
 /** Explicit feature flag IDs to soft-delete. Mutually exclusive with `filters`. */
 export type FeatureFlagsBulkDeleteCreateRequestIdsList = Array<number>;
-export const FeatureFlagsBulkDeleteCreateRequestIdsList =
+const FeatureFlagsBulkDeleteCreateRequestIdsList =
   FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagsBulkDeleteCreateRequestIdsList>;
 
 export interface FeatureFlagsBulkDeleteCreateRequest {
@@ -989,7 +903,7 @@ export interface FeatureFlagsBulkDeleteCreateRequest {
   /** Explicit feature flag IDs to soft-delete. Mutually exclusive with `filters`. */
   ids?: FeatureFlagsBulkDeleteCreateRequestIdsList;
 }
-export const FeatureFlagsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     filters: S.optional(BulkDeleteFilters),
@@ -1007,7 +921,7 @@ export const FeatureFlagsBulkDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `fully_rolled_out` - fully_rolled_out * `not_rolled_out` - not_rolled_out * `partial` - partial */
 export type RolloutStateEnum = "fully_rolled_out" | "not_rolled_out" | "partial";
-export const RolloutStateEnum = S.String;
+const RolloutStateEnum = S.String;
 
 export interface BulkDeleteDeletedItem {
   /** ID of the soft-deleted flag. */
@@ -1019,7 +933,7 @@ export interface BulkDeleteDeletedItem {
   /** Variant key when a multivariate flag was fully rolled out to a single variant; otherwise null. */
   active_variant: string | null;
 }
-export const BulkDeleteDeletedItem = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteDeletedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     key: S.String,
@@ -1030,7 +944,7 @@ export const BulkDeleteDeletedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Flags successfully soft-deleted. */
 export type BulkDeleteResponseDeletedList = Array<BulkDeleteDeletedItem>;
-export const BulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
+const BulkDeleteResponseDeletedList = /*@__PURE__*/ S.Array(
   BulkDeleteDeletedItem,
 ) as any as S.Schema<BulkDeleteResponseDeletedList>;
 
@@ -1042,7 +956,7 @@ export interface BulkDeleteErrorItem {
   /** Human-readable reason the flag could not be deleted. */
   reason: string;
 }
-export const BulkDeleteErrorItem = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteErrorItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Unknown,
     key: S.optional(S.String),
@@ -1052,7 +966,7 @@ export const BulkDeleteErrorItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Flags that could not be deleted, with reasons. */
 export type BulkDeleteResponseErrorsList = Array<BulkDeleteErrorItem>;
-export const BulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
+const BulkDeleteResponseErrorsList = /*@__PURE__*/ S.Array(
   BulkDeleteErrorItem,
 ) as any as S.Schema<BulkDeleteResponseErrorsList>;
 
@@ -1063,7 +977,7 @@ export interface BulkDeleteResponse {
   /** Flags that could not be deleted, with reasons. */
   errors: BulkDeleteResponseErrorsList;
 }
-export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: BulkDeleteResponseDeletedList,
     errors: BulkDeleteResponseErrorsList,
@@ -1072,7 +986,7 @@ export const BulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flag IDs to look up keys for. Strings of digits are also accepted; any other value is reported in the response `warning` field and otherwise ignored. */
 export type FeatureFlagsBulkKeysRetrieveRequestIdsList = Array<unknown>;
-export const FeatureFlagsBulkKeysRetrieveRequestIdsList =
+const FeatureFlagsBulkKeysRetrieveRequestIdsList =
   FeatureFlagOutputTagsList as any as S.Schema<FeatureFlagsBulkKeysRetrieveRequestIdsList>;
 
 export interface FeatureFlagsBulkKeysRetrieveRequest {
@@ -1081,7 +995,7 @@ export interface FeatureFlagsBulkKeysRetrieveRequest {
   /** Feature flag IDs to look up keys for. Strings of digits are also accepted; any other value is reported in the response `warning` field and otherwise ignored. */
   ids?: FeatureFlagsBulkKeysRetrieveRequestIdsList;
 }
-export const FeatureFlagsBulkKeysRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsBulkKeysRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: S.optional(FeatureFlagsBulkKeysRetrieveRequestIdsList),
@@ -1098,7 +1012,7 @@ export const FeatureFlagsBulkKeysRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of feature flag ID (as a string) to flag key, for IDs that exist in this project. */
 export type BulkKeysResponseKeysMap = { [key: string]: string | undefined };
-export const BulkKeysResponseKeysMap =
+const BulkKeysResponseKeysMap =
   FeatureFlagFiltersSchemaPayloadsMap as any as S.Schema<BulkKeysResponseKeysMap>;
 
 export interface BulkKeysResponse {
@@ -1107,7 +1021,7 @@ export interface BulkKeysResponse {
   /** Present when some submitted IDs were not numeric and were ignored. */
   warning?: string;
 }
-export const BulkKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: BulkKeysResponseKeysMap,
     warning: S.optional(S.String),
@@ -1116,16 +1030,16 @@ export const BulkKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of object IDs to update tags on. */
 export type FeatureFlagsBulkUpdateTagsCreateRequestIdsList = Array<number>;
-export const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
+const FeatureFlagsBulkUpdateTagsCreateRequestIdsList =
   FeatureFlagOutputExperimentSetList as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestIdsList>;
 
 /** * `add` - add * `remove` - remove * `set` - set */
 export type BulkUpdateTagsActionEnum = "add" | "remove" | "set";
-export const BulkUpdateTagsActionEnum = S.String;
+const BulkUpdateTagsActionEnum = S.String;
 
 /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
 export type FeatureFlagsBulkUpdateTagsCreateRequestTagsList = Array<string>;
-export const FeatureFlagsBulkUpdateTagsCreateRequestTagsList =
+const FeatureFlagsBulkUpdateTagsCreateRequestTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequestTagsList>;
 
 export interface FeatureFlagsBulkUpdateTagsCreateRequest {
@@ -1138,7 +1052,7 @@ export interface FeatureFlagsBulkUpdateTagsCreateRequest {
   /** Tag names to add, remove, or set (up to 100 per request, 255 characters each). */
   tags?: FeatureFlagsBulkUpdateTagsCreateRequestTagsList;
 }
-export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: S.optional(FeatureFlagsBulkUpdateTagsCreateRequestIdsList),
@@ -1156,14 +1070,14 @@ export const FeatureFlagsBulkUpdateTagsCreateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<FeatureFlagsBulkUpdateTagsCreateRequest>;
 
 export type BulkUpdateTagsItemTagsList = Array<string>;
-export const BulkUpdateTagsItemTagsList =
+const BulkUpdateTagsItemTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<BulkUpdateTagsItemTagsList>;
 
 export interface BulkUpdateTagsItem {
   id?: number;
   tags?: BulkUpdateTagsItemTagsList;
 }
-export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     tags: S.optional(BulkUpdateTagsItemTagsList),
@@ -1171,7 +1085,7 @@ export const BulkUpdateTagsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsItem" }) as any as S.Schema<BulkUpdateTagsItem>;
 
 export type BulkUpdateTagsResponseUpdatedList = Array<BulkUpdateTagsItem>;
-export const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseUpdatedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsItem,
 ) as any as S.Schema<BulkUpdateTagsResponseUpdatedList>;
 
@@ -1179,7 +1093,7 @@ export interface BulkUpdateTagsError {
   id?: number;
   reason?: string;
 }
-export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     reason: S.optional(S.String),
@@ -1187,7 +1101,7 @@ export const BulkUpdateTagsError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateTagsError" }) as any as S.Schema<BulkUpdateTagsError>;
 
 export type BulkUpdateTagsResponseSkippedList = Array<BulkUpdateTagsError>;
-export const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
+const BulkUpdateTagsResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsError,
 ) as any as S.Schema<BulkUpdateTagsResponseSkippedList>;
 
@@ -1195,7 +1109,7 @@ export interface BulkUpdateTagsResponse {
   updated?: BulkUpdateTagsResponseUpdatedList;
   skipped?: BulkUpdateTagsResponseSkippedList;
 }
-export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.optional(BulkUpdateTagsResponseUpdatedList),
     skipped: S.optional(BulkUpdateTagsResponseSkippedList),
@@ -1205,23 +1119,23 @@ export const BulkUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap = {
   [key: string]: unknown | undefined;
 };
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestFiltersMap>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList = Array<unknown>;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList =
   FeatureFlagOutputTagsList as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestTagsList>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
   Array<unknown>;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationContextsList>;
 
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList =
   Array<number>;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestAnalyticsDashboardsList>;
@@ -1234,20 +1148,20 @@ export type FeatureFlagCreationContextEnum =
   | "early_access_features"
   | "web_experiments"
   | "product_tours";
-export const FeatureFlagCreationContextEnum = S.String;
+const FeatureFlagCreationContextEnum = S.String;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime =
   | EvaluationRuntimeEnum
   | BlankEnum;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime =
   S.Unknown as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier =
   | BucketingIdentifierEnum
   | BlankEnum;
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier =
+const FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier =
   S.Unknown as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier>;
 
 export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
@@ -1279,7 +1193,7 @@ export interface FeatureFlagsCreateStaticCohortForFlagCreateRequest {
   bucketing_identifier?: FeatureFlagsCreateStaticCohortForFlagCreateRequestBucketingIdentifier | null;
   _create_in_folder?: string;
 }
-export const FeatureFlagsCreateStaticCohortForFlagCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsCreateStaticCohortForFlagCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1321,7 +1235,7 @@ export const FeatureFlagsCreateStaticCohortForFlagCreateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<FeatureFlagsCreateStaticCohortForFlagCreateRequest>;
 
 export interface FeatureFlagsCreateStaticCohortForFlagCreateResponse {}
-export const FeatureFlagsCreateStaticCohortForFlagCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsCreateStaticCohortForFlagCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "FeatureFlagsCreateStaticCohortForFlagCreateResponse",
@@ -1333,7 +1247,7 @@ export interface FeatureFlagsDestroyRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const FeatureFlagsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1345,7 +1259,7 @@ export const FeatureFlagsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagsDestroyRequest>;
 
 export interface FeatureFlagsDestroyResponse {}
-export const FeatureFlagsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const FeatureFlagsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FeatureFlagsDestroyResponse",
 }) as any as S.Schema<FeatureFlagsDestroyResponse>;
 
@@ -1355,7 +1269,7 @@ export interface FeatureFlagsDisableCreateRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const FeatureFlagsDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsDisableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1376,7 +1290,7 @@ export interface FeatureFlagsEnableCreateRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const FeatureFlagsEnableCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsEnableCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1397,7 +1311,7 @@ export interface FeatureFlagsUnarchiveCreateRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const FeatureFlagsUnarchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagsUnarchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1418,7 +1332,7 @@ export interface GetFeatureFlagRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const GetFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1437,7 +1351,7 @@ export interface GetFeatureFlagsActivityRequest {
   /** Page number */
   page?: number;
 }
-export const GetFeatureFlagsActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1461,7 +1375,7 @@ export interface Change {
   before?: unknown;
   after?: unknown;
 }
-export const Change = /*@__PURE__*/ S.suspend(() =>
+const Change = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     action: S.optional(S.String),
@@ -1472,16 +1386,14 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
 export type DetailChangesList = Array<Change>;
-export const DetailChangesList = /*@__PURE__*/ S.Array(
-  Change,
-) as any as S.Schema<DetailChangesList>;
+const DetailChangesList = /*@__PURE__*/ S.Array(Change) as any as S.Schema<DetailChangesList>;
 
 export interface Merge {
   type?: string;
   source?: unknown;
   target?: unknown;
 }
-export const Merge = /*@__PURE__*/ S.suspend(() =>
+const Merge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     source: S.optional(S.Unknown),
@@ -1494,7 +1406,7 @@ export interface Trigger {
   job_id?: string;
   payload?: unknown;
 }
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
+const Trigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_type: S.optional(S.String),
     job_id: S.optional(S.String),
@@ -1511,7 +1423,7 @@ export interface Detail {
   short_id?: string;
   type?: string;
 }
-export const Detail = /*@__PURE__*/ S.suspend(() =>
+const Detail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     changes: S.optional(DetailChangesList),
@@ -1538,7 +1450,7 @@ export interface ActivityLogEntry {
   /** API client that triggered the activity. Self-reported through the x-posthog-client request header (e.g. 'mcp'), or 'scout:<skill_name>' when a scout run made the change, which the server derives from the run's own token. Null for requests that did neither. */
   client?: string | null;
 }
-export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user: S.optional(S.NullOr(S.Unknown)),
@@ -1554,7 +1466,7 @@ export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActivityLogEntry" }) as any as S.Schema<ActivityLogEntry>;
 
 export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
-export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
+const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
   ActivityLogEntry,
 ) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
 
@@ -1565,7 +1477,7 @@ export interface ActivityLogPaginatedResponse {
   previous?: string | null;
   total_count?: number;
 }
-export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(ActivityLogPaginatedResponseResultsList),
     next: S.optional(S.NullOr(S.String)),
@@ -1584,7 +1496,7 @@ export interface GetFeatureFlagsAllActivityRequest {
   /** Page number */
   page?: number;
 }
-export const GetFeatureFlagsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1597,7 +1509,7 @@ export const GetFeatureFlagsAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsAllActivityRequest>;
 
 export type GetFeatureFlagsEvaluationReasonRequestFlagKeysList = Array<string>;
-export const GetFeatureFlagsEvaluationReasonRequestFlagKeysList =
+const GetFeatureFlagsEvaluationReasonRequestFlagKeysList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GetFeatureFlagsEvaluationReasonRequestFlagKeysList>;
 
 export interface GetFeatureFlagsEvaluationReasonRequest {
@@ -1610,7 +1522,7 @@ export interface GetFeatureFlagsEvaluationReasonRequest {
   /** Groups for feature flag evaluation (JSON object string) */
   groups?: string;
 }
-export const GetFeatureFlagsEvaluationReasonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsEvaluationReasonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     distinct_id: S.String.pipe(T.Query()),
@@ -1628,14 +1540,14 @@ export const GetFeatureFlagsEvaluationReasonRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetFeatureFlagsEvaluationReasonRequest>;
 
 export interface GetFeatureFlagsEvaluationReasonResponse {}
-export const GetFeatureFlagsEvaluationReasonResponse =
+const GetFeatureFlagsEvaluationReasonResponse =
   FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsEvaluationReasonResponse>;
 
 export interface GetFeatureFlagsMatchingIdsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetFeatureFlagsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1650,11 +1562,11 @@ export const GetFeatureFlagsMatchingIdsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsMatchingIdsRequest>;
 
 export interface GetFeatureFlagsMatchingIdsResponse {}
-export const GetFeatureFlagsMatchingIdsResponse =
+const GetFeatureFlagsMatchingIdsResponse =
   FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsMatchingIdsResponse>;
 
 export type GetFeatureFlagsMyFlagRequestFlagKeysList = Array<string>;
-export const GetFeatureFlagsMyFlagRequestFlagKeysList =
+const GetFeatureFlagsMyFlagRequestFlagKeysList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<GetFeatureFlagsMyFlagRequestFlagKeysList>;
 
 export interface GetFeatureFlagsMyFlagRequest {
@@ -1665,7 +1577,7 @@ export interface GetFeatureFlagsMyFlagRequest {
   /** Groups for feature flag evaluation (JSON object string) */
   groups?: string;
 }
-export const GetFeatureFlagsMyFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsMyFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     flag_keys: S.optional(GetFeatureFlagsMyFlagRequestFlagKeysList.pipe(T.Query())),
@@ -1678,21 +1590,21 @@ export const GetFeatureFlagsMyFlagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsMyFlagRequest>;
 
 export type MinimalFeatureFlagFiltersMap = { [key: string]: unknown | undefined };
-export const MinimalFeatureFlagFiltersMap =
+const MinimalFeatureFlagFiltersMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<MinimalFeatureFlagFiltersMap>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type MinimalFeatureFlagEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const MinimalFeatureFlagEvaluationRuntime =
+const MinimalFeatureFlagEvaluationRuntime =
   S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type MinimalFeatureFlagBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const MinimalFeatureFlagBucketingIdentifier =
+const MinimalFeatureFlagBucketingIdentifier =
   S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
 
 export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList =
+const MinimalFeatureFlagEvaluationContextsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
 
 export interface MinimalFeatureFlag {
@@ -1711,7 +1623,7 @@ export interface MinimalFeatureFlag {
   bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
   evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
 }
-export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
+const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     team_id: S.optional(S.Number),
@@ -1732,7 +1644,7 @@ export interface MyFlagsResponse {
   feature_flag?: MinimalFeatureFlag;
   value?: unknown;
 }
-export const MyFlagsResponse = /*@__PURE__*/ S.suspend(() =>
+const MyFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feature_flag: S.optional(MinimalFeatureFlag),
     value: S.optional(S.Unknown),
@@ -1740,12 +1652,12 @@ export const MyFlagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MyFlagsResponse" }) as any as S.Schema<MyFlagsResponse>;
 
 export type GetFeatureFlagsMyFlagResponseBodyList = Array<MyFlagsResponse>;
-export const GetFeatureFlagsMyFlagResponseBodyList = /*@__PURE__*/ S.Array(
+const GetFeatureFlagsMyFlagResponseBodyList = /*@__PURE__*/ S.Array(
   MyFlagsResponse,
 ) as any as S.Schema<GetFeatureFlagsMyFlagResponseBodyList>;
 
 export type GetFeatureFlagsMyFlagResponse = GetFeatureFlagsMyFlagResponseBodyList;
-export const GetFeatureFlagsMyFlagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsMyFlagResponse = /*@__PURE__*/ S.suspend(() =>
   GetFeatureFlagsMyFlagResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetFeatureFlagsMyFlagResponse",
@@ -1757,7 +1669,7 @@ export interface GetFeatureFlagsRemoteConfigRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const GetFeatureFlagsRemoteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsRemoteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1773,7 +1685,7 @@ export const GetFeatureFlagsRemoteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsRemoteConfigRequest>;
 
 export interface GetFeatureFlagsRemoteConfigResponse {}
-export const GetFeatureFlagsRemoteConfigResponse =
+const GetFeatureFlagsRemoteConfigResponse =
   FeatureFlagsCreateStaticCohortForFlagCreateResponse as any as S.Schema<GetFeatureFlagsRemoteConfigResponse>;
 
 export interface GetFeatureFlagsStatusRequest {
@@ -1782,7 +1694,7 @@ export interface GetFeatureFlagsStatusRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const GetFeatureFlagsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1807,7 +1719,7 @@ export interface FeatureFlagRolloutSummary {
   /** True if the flag serves multiple variants (has a multivariate variant set). */
   is_multivariate: boolean;
 }
-export const FeatureFlagRolloutSummary = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagRolloutSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectively_full_rollout: S.Boolean,
     has_targeting_conditions: S.Boolean,
@@ -1828,7 +1740,7 @@ export interface FeatureFlagStatusResponse {
   /** Summary of the flag's rollout configuration, for determining whether it is fully rolled out. */
   rollout?: FeatureFlagRolloutSummary;
 }
-export const FeatureFlagStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     reason: S.optional(S.String),
@@ -1847,7 +1759,7 @@ export interface GetFeatureFlagsVersionRequest {
   /** The version number to reconstruct. */
   version_number: number;
 }
-export const GetFeatureFlagsVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1864,17 +1776,17 @@ export const GetFeatureFlagsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagsVersionRequest>;
 
 export type FeatureFlagVersionResponseFiltersMap = { [key: string]: unknown | undefined };
-export const FeatureFlagVersionResponseFiltersMap =
+const FeatureFlagVersionResponseFiltersMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<FeatureFlagVersionResponseFiltersMap>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type FeatureFlagVersionResponseEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const FeatureFlagVersionResponseEvaluationRuntime =
+const FeatureFlagVersionResponseEvaluationRuntime =
   S.Unknown as any as S.Schema<FeatureFlagVersionResponseEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type FeatureFlagVersionResponseBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const FeatureFlagVersionResponseBucketingIdentifier =
+const FeatureFlagVersionResponseBucketingIdentifier =
   S.Unknown as any as S.Schema<FeatureFlagVersionResponseBucketingIdentifier>;
 
 /** Feature flag state at a given version plus reconstruction metadata. */
@@ -1904,7 +1816,7 @@ export interface FeatureFlagVersionResponse {
   /** User from the activity log entry that produced this version. */
   modified_by?: number | null;
 }
-export const FeatureFlagVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     key: S.optional(S.String),
@@ -1931,20 +1843,20 @@ export const FeatureFlagVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FeatureFlagVersionResponse>;
 
 export type ListFeatureFlagsRequestActive = "STALE" | "false" | "true";
-export const ListFeatureFlagsRequestActive = S.String;
+const ListFeatureFlagsRequestActive = S.String;
 
 export type ListFeatureFlagsRequestEligibleForExperiment = "true";
-export const ListFeatureFlagsRequestEligibleForExperiment = S.String;
+const ListFeatureFlagsRequestEligibleForExperiment = S.String;
 
 export type ListFeatureFlagsRequestEvaluationRuntime = "all" | "client" | "server";
-export const ListFeatureFlagsRequestEvaluationRuntime = S.String;
+const ListFeatureFlagsRequestEvaluationRuntime = S.String;
 
 export type ListFeatureFlagsRequestType =
   | "boolean"
   | "experiment"
   | "multivariant"
   | "remote_config";
-export const ListFeatureFlagsRequestType = S.String;
+const ListFeatureFlagsRequestType = S.String;
 
 export interface ListFeatureFlagsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1977,7 +1889,7 @@ export interface ListFeatureFlagsRequest {
   tags?: string;
   type?: ListFeatureFlagsRequestType | (string & {});
 }
-export const ListFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     active: S.optional(ListFeatureFlagsRequestActive.pipe(T.Query())),
@@ -2000,7 +1912,7 @@ export const ListFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFeatureFlagsRequest" }) as any as S.Schema<ListFeatureFlagsRequest>;
 
 export type PaginatedFeatureFlagListOutputResultsList = Array<FeatureFlagOutput>;
-export const PaginatedFeatureFlagListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedFeatureFlagListOutputResultsList = /*@__PURE__*/ S.Array(
   FeatureFlagOutput,
 ) as any as S.Schema<PaginatedFeatureFlagListOutputResultsList>;
 
@@ -2010,7 +1922,7 @@ export interface PaginatedFeatureFlagListOutput {
   previous?: string | null;
   results?: PaginatedFeatureFlagListOutputResultsList;
 }
-export const PaginatedFeatureFlagListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedFeatureFlagListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2027,7 +1939,7 @@ export interface ListFeatureFlagsDependentFlagsRequest {
   /** A unique integer value identifying this feature flag. */
   id: number;
 }
-export const ListFeatureFlagsDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureFlagsDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2050,7 +1962,7 @@ export interface DependentFlag {
   /** Feature flag name */
   name?: string;
 }
-export const DependentFlag = /*@__PURE__*/ S.suspend(() =>
+const DependentFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     key: S.optional(S.String),
@@ -2059,41 +1971,41 @@ export const DependentFlag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DependentFlag" }) as any as S.Schema<DependentFlag>;
 
 export type ListFeatureFlagsDependentFlagsResponseBodyList = Array<DependentFlag>;
-export const ListFeatureFlagsDependentFlagsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFeatureFlagsDependentFlagsResponseBodyList = /*@__PURE__*/ S.Array(
   DependentFlag,
 ) as any as S.Schema<ListFeatureFlagsDependentFlagsResponseBodyList>;
 
 export type ListFeatureFlagsDependentFlagsResponse = ListFeatureFlagsDependentFlagsResponseBodyList;
-export const ListFeatureFlagsDependentFlagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureFlagsDependentFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   ListFeatureFlagsDependentFlagsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFeatureFlagsDependentFlagsResponse",
 }) as any as S.Schema<ListFeatureFlagsDependentFlagsResponse>;
 
 export type UpdateFeatureFlagRequestFiltersMap = { [key: string]: unknown | undefined };
-export const UpdateFeatureFlagRequestFiltersMap =
+const UpdateFeatureFlagRequestFiltersMap =
   FeatureFlagOutputFiltersMap as any as S.Schema<UpdateFeatureFlagRequestFiltersMap>;
 
 export type UpdateFeatureFlagRequestTagsList = Array<unknown>;
-export const UpdateFeatureFlagRequestTagsList =
+const UpdateFeatureFlagRequestTagsList =
   FeatureFlagOutputTagsList as any as S.Schema<UpdateFeatureFlagRequestTagsList>;
 
 export type UpdateFeatureFlagRequestEvaluationContextsList = Array<unknown>;
-export const UpdateFeatureFlagRequestEvaluationContextsList =
+const UpdateFeatureFlagRequestEvaluationContextsList =
   FeatureFlagOutputTagsList as any as S.Schema<UpdateFeatureFlagRequestEvaluationContextsList>;
 
 export type UpdateFeatureFlagRequestAnalyticsDashboardsList = Array<number>;
-export const UpdateFeatureFlagRequestAnalyticsDashboardsList =
+const UpdateFeatureFlagRequestAnalyticsDashboardsList =
   FeatureFlagOutputExperimentSetList as any as S.Schema<UpdateFeatureFlagRequestAnalyticsDashboardsList>;
 
 /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
 export type UpdateFeatureFlagRequestEvaluationRuntime = EvaluationRuntimeEnum | BlankEnum;
-export const UpdateFeatureFlagRequestEvaluationRuntime =
+const UpdateFeatureFlagRequestEvaluationRuntime =
   S.Unknown as any as S.Schema<UpdateFeatureFlagRequestEvaluationRuntime>;
 
 /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
 export type UpdateFeatureFlagRequestBucketingIdentifier = BucketingIdentifierEnum | BlankEnum;
-export const UpdateFeatureFlagRequestBucketingIdentifier =
+const UpdateFeatureFlagRequestBucketingIdentifier =
   S.Unknown as any as S.Schema<UpdateFeatureFlagRequestBucketingIdentifier>;
 
 export interface UpdateFeatureFlagRequest {
@@ -2125,7 +2037,7 @@ export interface UpdateFeatureFlagRequest {
   bucketing_identifier?: UpdateFeatureFlagRequestBucketingIdentifier | null;
   _create_in_folder?: string;
 }
-export const UpdateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2154,12 +2066,12 @@ export const UpdateFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this feature flag. */
 export type UpdateFeatureFlagsPartialRequestTagsList = Array<string>;
-export const UpdateFeatureFlagsPartialRequestTagsList =
+const UpdateFeatureFlagsPartialRequestTagsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<UpdateFeatureFlagsPartialRequestTagsList>;
 
 /** Evaluation contexts that control where this flag evaluates at runtime. */
 export type UpdateFeatureFlagsPartialRequestEvaluationContextsList = Array<string>;
-export const UpdateFeatureFlagsPartialRequestEvaluationContextsList =
+const UpdateFeatureFlagsPartialRequestEvaluationContextsList =
   FeatureFlagFilterPropertyMultiContainsSchemaValueList as any as S.Schema<UpdateFeatureFlagsPartialRequestEvaluationContextsList>;
 
 export interface UpdateFeatureFlagsPartialRequest {
@@ -2190,7 +2102,7 @@ export interface UpdateFeatureFlagsPartialRequest {
   /** Identifier used to bucket users into rollout percentages and variants: 'distinct_id' (user ID, the default) or 'device_id'. Using 'device_id' is incompatible with ensure_experience_continuity=True. * `distinct_id` - User ID (default) * `device_id` - Device ID */
   bucketing_identifier?: BucketingIdentifierEnum | (string & {}) | null;
 }
-export const UpdateFeatureFlagsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureFlagsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

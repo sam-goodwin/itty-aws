@@ -31,7 +31,7 @@ export interface GenerateOfferAccessTokenRequest {
   /** The device sku version. */
   deviceVersion?: string;
 }
-export const GenerateOfferAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOfferAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
@@ -64,7 +64,7 @@ export interface DiskAccessToken {
   /** The access token. */
   accessToken: string | Redacted.Redacted<string>;
 }
-export const DiskAccessToken = /*@__PURE__*/ S.suspend(() =>
+const DiskAccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskId: S.optional(S.String),
     status: S.optional(S.String),
@@ -78,7 +78,7 @@ export interface GetOfferRequest {
   /** Id of the offer */
   offerId: string;
 }
-export const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
@@ -94,11 +94,11 @@ export const GetOfferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -115,7 +115,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -133,7 +133,7 @@ export interface OfferPublisher {
   /** The publisher name */
   publisherDisplayName: string;
 }
-export const OfferPublisher = /*@__PURE__*/ S.suspend(() =>
+const OfferPublisher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.String,
     publisherDisplayName: S.String,
@@ -142,11 +142,11 @@ export const OfferPublisher = /*@__PURE__*/ S.suspend(() =>
 
 /** OfferAvailability Enum */
 export type OfferAvailability = "Private" | "Public";
-export const OfferAvailability = S.String;
+const OfferAvailability = S.String;
 
 /** Offer release type Enum */
 export type OfferReleaseType = "Preview" | "GA";
-export const OfferReleaseType = S.String;
+const OfferReleaseType = S.String;
 
 /** Icon files */
 export interface IconFileUris {
@@ -159,7 +159,7 @@ export interface IconFileUris {
   /** uri of large icon */
   large?: string;
 }
-export const IconFileUris = /*@__PURE__*/ S.suspend(() =>
+const IconFileUris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     small: S.optional(S.String),
     medium: S.optional(S.String),
@@ -177,7 +177,7 @@ export interface TermsAndConditions {
   /** The privacy policy uri */
   privacyPolicyUri?: string;
 }
-export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
+const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legalTermsUri: S.optional(S.String),
     legalTermsType: S.optional(S.String),
@@ -187,13 +187,13 @@ export const TermsAndConditions = /*@__PURE__*/ S.suspend(() =>
 
 /** The category ids */
 export type OfferContentCategoryIdsList = Array<string>;
-export const OfferContentCategoryIdsList = /*@__PURE__*/ S.Array(
+const OfferContentCategoryIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OfferContentCategoryIdsList>;
 
 /** The operating systems */
 export type OfferContentOperatingSystemsList = Array<string>;
-export const OfferContentOperatingSystemsList =
+const OfferContentOperatingSystemsList =
   OfferContentCategoryIdsList as any as S.Schema<OfferContentOperatingSystemsList>;
 
 /** The offer content */
@@ -229,7 +229,7 @@ export interface OfferContent {
   /** The operating systems */
   operatingSystems?: OfferContentOperatingSystemsList;
 }
-export const OfferContent = /*@__PURE__*/ S.suspend(() =>
+const OfferContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     summary: S.optional(S.String),
@@ -251,7 +251,7 @@ export const OfferContent = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** The sku operating system */
 export interface SkuOperatingSystem {
@@ -262,7 +262,7 @@ export interface SkuOperatingSystem {
   /** The name of the operating system */
   name: string;
 }
-export const SkuOperatingSystem = /*@__PURE__*/ S.suspend(() =>
+const SkuOperatingSystem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     family: S.optional(S.String),
     type: S.optional(S.String),
@@ -272,7 +272,7 @@ export const SkuOperatingSystem = /*@__PURE__*/ S.suspend(() =>
 
 /** Offer launch type Enum */
 export type OfferLaunchType = "Trusted" | "Unknown";
-export const OfferLaunchType = S.String;
+const OfferLaunchType = S.String;
 
 /** The marketplace sku version */
 export interface MarketplaceSkuVersion {
@@ -287,7 +287,7 @@ export interface MarketplaceSkuVersion {
   /** The launch type */
   launchType?: OfferLaunchType;
 }
-export const MarketplaceSkuVersion = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSkuVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sizeOnDiskInMb: S.optional(S.Number),
@@ -299,7 +299,7 @@ export const MarketplaceSkuVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** The marketplace sku version */
 export type MarketplaceSkuMarketplaceSkuVersionsList = Array<MarketplaceSkuVersion>;
-export const MarketplaceSkuMarketplaceSkuVersionsList = /*@__PURE__*/ S.Array(
+const MarketplaceSkuMarketplaceSkuVersionsList = /*@__PURE__*/ S.Array(
   MarketplaceSkuVersion,
 ) as any as S.Schema<MarketplaceSkuMarketplaceSkuVersionsList>;
 
@@ -328,7 +328,7 @@ export interface MarketplaceSku {
   /** The marketplace sku version */
   marketplaceSkuVersions?: MarketplaceSkuMarketplaceSkuVersionsList;
 }
-export const MarketplaceSku = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catalogPlanId: S.String,
     marketplaceSkuId: S.String,
@@ -346,7 +346,7 @@ export const MarketplaceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The marketplace skus */
 export type OfferPropertiesMarketplaceSkusList = Array<MarketplaceSku>;
-export const OfferPropertiesMarketplaceSkusList = /*@__PURE__*/ S.Array(
+const OfferPropertiesMarketplaceSkusList = /*@__PURE__*/ S.Array(
   MarketplaceSku,
 ) as any as S.Schema<OfferPropertiesMarketplaceSkusList>;
 
@@ -363,7 +363,7 @@ export interface OfferProperties {
   /** The marketplace skus */
   marketplaceSkus?: OfferPropertiesMarketplaceSkusList;
 }
-export const OfferProperties = /*@__PURE__*/ S.suspend(() =>
+const OfferProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentVersion: S.optional(S.String),
     contentUrl: S.optional(S.String),
@@ -385,7 +385,7 @@ export interface GetOfferResponse {
   /** The resource-specific properties for this resource. */
   properties?: OfferProperties;
 }
-export const GetOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -403,7 +403,7 @@ export interface GetOfferAccessTokenRequest {
   /** The name of the publisher. */
   requestId: string;
 }
-export const GetOfferAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOfferAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
@@ -426,7 +426,7 @@ export interface GetPublisherRequest {
   /** Name of the publisher */
   publisherName: string;
 }
-export const GetPublisherRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublisherRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     publisherName: S.String.pipe(T.Label()),
@@ -445,7 +445,7 @@ export interface PublisherProperties {
   /** The resource provisioning state */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const PublisherProperties = /*@__PURE__*/ S.suspend(() =>
+const PublisherProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
   }),
@@ -463,7 +463,7 @@ export interface GetPublisherResponse {
   /** The resource-specific properties for this resource. */
   properties?: PublisherProperties;
 }
-export const GetPublisherResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPublisherResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -477,7 +477,7 @@ export interface ListOfferBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListOfferBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -505,11 +505,11 @@ export interface Offer {
   /** The resource-specific properties for this resource. */
   properties?: OfferProperties;
 }
-export const Offer = GetOfferResponse as any as S.Schema<Offer>;
+const Offer = GetOfferResponse as any as S.Schema<Offer>;
 
 /** The Offer items on this page */
 export type OfferListResultValueList = Array<Offer>;
-export const OfferListResultValueList = /*@__PURE__*/ S.Array(
+const OfferListResultValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResultValueList>;
 
@@ -520,7 +520,7 @@ export interface OfferListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OfferListResult = /*@__PURE__*/ S.suspend(() =>
+const OfferListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OfferListResultValueList,
     nextLink: S.optional(S.String),
@@ -541,7 +541,7 @@ export interface ListOffersRequest {
   /** Skip over when retrieving results. */
   _skipToken?: string;
 }
-export const ListOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -560,7 +560,7 @@ export const ListOffersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOffersRequest" }) as any as S.Schema<ListOffersRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -582,7 +582,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -593,11 +593,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -612,7 +612,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -624,7 +624,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -634,7 +634,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -645,7 +645,7 @@ export interface ListPublisherBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListPublisherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublisherBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -673,11 +673,11 @@ export interface Publisher {
   /** The resource-specific properties for this resource. */
   properties?: PublisherProperties;
 }
-export const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
+const Publisher = GetPublisherResponse as any as S.Schema<Publisher>;
 
 /** The Publisher items on this page */
 export type PublisherListResultValueList = Array<Publisher>;
-export const PublisherListResultValueList = /*@__PURE__*/ S.Array(
+const PublisherListResultValueList = /*@__PURE__*/ S.Array(
   Publisher,
 ) as any as S.Schema<PublisherListResultValueList>;
 
@@ -688,7 +688,7 @@ export interface PublisherListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PublisherListResult = /*@__PURE__*/ S.suspend(() =>
+const PublisherListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PublisherListResultValueList,
     nextLink: S.optional(S.String),
@@ -709,7 +709,7 @@ export interface ListPublishersRequest {
   /** Skip over when retrieving results. */
   _skipToken?: string;
 }
-export const ListPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),

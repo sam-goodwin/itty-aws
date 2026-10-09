@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { S2OpError, S2OpContext };
 
 export interface GetDefaultLocationRequest {}
-export const GetDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/locations/default", code: 200 })),
 ).annotate({
   identifier: "GetDefaultLocationRequest",
@@ -17,7 +17,7 @@ export const GetDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** [Storage classes](https://s2.dev/docs/storage-classes) available to the account in this location. */
 export type LocationInfoStorageClassesList = Array<string>;
-export const LocationInfoStorageClassesList = /*@__PURE__*/ S.Array(
+const LocationInfoStorageClassesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LocationInfoStorageClassesList>;
 
@@ -31,7 +31,7 @@ export interface LocationInfo {
   /** [Storage classes](https://s2.dev/docs/storage-classes) available to the account in this location. */
   storage_classes?: LocationInfoStorageClassesList | null;
 }
-export const LocationInfo = /*@__PURE__*/ S.suspend(() =>
+const LocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_storage_class: S.optional(S.NullOr(S.String)),
     is_private: S.Boolean,
@@ -41,24 +41,24 @@ export const LocationInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocationInfo" }) as any as S.Schema<LocationInfo>;
 
 export interface ListLocationsRequest {}
-export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/locations", code: 200 })),
 ).annotate({ identifier: "ListLocationsRequest" }) as any as S.Schema<ListLocationsRequest>;
 
 export type ListLocationsResponseBodyList = Array<LocationInfo>;
-export const ListLocationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLocationsResponseBodyList = /*@__PURE__*/ S.Array(
   LocationInfo,
 ) as any as S.Schema<ListLocationsResponseBodyList>;
 
 export type ListLocationsResponse = ListLocationsResponseBodyList;
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListLocationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListLocationsResponse" }) as any as S.Schema<ListLocationsResponse>;
 
 export interface SetDefaultLocationRequest {
   body: string;
 }
-export const SetDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDefaultLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "PUT", uri: "/locations/default", code: 200 })),

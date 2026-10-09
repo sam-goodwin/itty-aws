@@ -42,7 +42,7 @@ export interface AccountsNotebooksDestroyRequest {
   account_id: string;
   short_id: string;
 }
-export const AccountsNotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsNotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -59,9 +59,7 @@ export const AccountsNotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsNotebooksDestroyRequest>;
 
 export interface AccountsNotebooksDestroyResponse {}
-export const AccountsNotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AccountsNotebooksDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AccountsNotebooksDestroyResponse",
 }) as any as S.Schema<AccountsNotebooksDestroyResponse>;
 
@@ -72,7 +70,7 @@ export interface AccountsRelationshipsDestroyRequest {
   account_id: string;
   id: string;
 }
-export const AccountsRelationshipsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsRelationshipsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -89,12 +87,12 @@ export const AccountsRelationshipsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountsRelationshipsDestroyRequest>;
 
 export interface AccountsRelationshipsDestroyResponse {}
-export const AccountsRelationshipsDestroyResponse =
+const AccountsRelationshipsDestroyResponse =
   AccountsNotebooksDestroyResponse as any as S.Schema<AccountsRelationshipsDestroyResponse>;
 
 /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history. */
 export type CreateAccountsCustomPropertyValueRequestValue = string | number | boolean;
-export const CreateAccountsCustomPropertyValueRequestValue =
+const CreateAccountsCustomPropertyValueRequestValue =
   S.Unknown as any as S.Schema<CreateAccountsCustomPropertyValueRequestValue>;
 
 export interface CreateAccountsCustomPropertyValueRequest {
@@ -107,7 +105,7 @@ export interface CreateAccountsCustomPropertyValueRequest {
   /** Value to store, matching the definition's type: a number for number/currency/percent, a boolean for boolean, an ISO-8601 string for date/datetime, an HTTP or HTTPS URL for link properties, or text for text properties. Null clears the current value while preserving its history. */
   value: CreateAccountsCustomPropertyValueRequestValue | null;
 }
-export const CreateAccountsCustomPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsCustomPropertyValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -126,7 +124,7 @@ export const CreateAccountsCustomPropertyValueRequest = /*@__PURE__*/ S.suspend(
 
 /** The stored value, typed per the property's data type. */
 export type CustomPropertyValueValue = string | number | boolean;
-export const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
+const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
 
 /** An account's current value for a custom property (read shape). */
 export interface CustomPropertyValue {
@@ -143,7 +141,7 @@ export interface CustomPropertyValue {
   /** Id of the user who set this value, if known. */
   created_by_id: number | null;
 }
-export const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     account_id: S.String,
@@ -166,7 +164,7 @@ export interface CreateAccountsNotebookRequest {
   /** Plain text representation of the notebook content for search. */
   text_content?: string | null;
 }
-export const CreateAccountsNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -185,7 +183,7 @@ export const CreateAccountsNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccountsNotebookRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -201,14 +199,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -221,7 +214,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -249,7 +242,7 @@ export interface AccountNotebook {
   last_modified_at: string;
   last_modified_by: UserBasic;
 }
-export const AccountNotebook = /*@__PURE__*/ S.suspend(() =>
+const AccountNotebook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     short_id: S.String,
@@ -273,7 +266,7 @@ export interface CreateAccountsRelationshipRequest {
   /** PostHog user id of the assignee. Must be a member of the account's organization. */
   user: number;
 }
-export const CreateAccountsRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsRelationshipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -303,7 +296,7 @@ export interface AccountRelationshipDefinition {
   /** Whether customer analytics can take control of this relationship per account. Rows under a controlled relationship can't be deleted. On an account where control has started, only a person can change the relationship and an empty relationship is a deliberate decision. Set by project operators, not through this API. */
   is_controlled: boolean;
 }
-export const AccountRelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationshipDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -322,7 +315,7 @@ export interface AccountAssignment {
   /** Email of the assignee. */
   email: string;
 }
-export const AccountAssignment = /*@__PURE__*/ S.suspend(() =>
+const AccountAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     email: S.String,
@@ -336,7 +329,7 @@ export type AccountRelationshipSourceEnum =
   | "ai"
   | "salesforce_claim"
   | "migration";
-export const AccountRelationshipSourceEnum = S.String;
+const AccountRelationshipSourceEnum = S.String;
 
 /** One assignment of a user to an account relationship, with its effective range. */
 export interface AccountRelationship {
@@ -353,7 +346,7 @@ export interface AccountRelationship {
   /** Which kind of writer made this assignment; null on rows older than provenance tracking. * `human` - Human * `workflow` - Workflow * `ai` - AI * `salesforce_claim` - Salesforce claim * `migration` - Migration */
   source: AccountRelationshipSourceEnum | null;
 }
-export const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     definition: AccountRelationshipDefinition,
@@ -371,7 +364,7 @@ export interface CreateAccountsRelationshipsEndRequest {
   account_id: string;
   id: string;
 }
-export const CreateAccountsRelationshipsEndRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsRelationshipsEndRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -389,14 +382,14 @@ export const CreateAccountsRelationshipsEndRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList = Array<string>;
-export const CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList =
+const CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList = Array<string>;
-export const CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList =
+const CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList =
   CreateCustomerAnalyticsExternalAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateCustomerAnalyticsExternalAccountRequestPropertiesKnownEmailsList>;
 
 /** Typed properties for a new account: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), email_domains and known_emails. Unknown keys are rejected. Ignored when the account already exists. */
@@ -416,7 +409,7 @@ export interface CreateCustomerAnalyticsExternalAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const CreateCustomerAnalyticsExternalAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerAnalyticsExternalAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_domain: S.optional(S.NullOr(S.String)),
     email_domains: S.optional(
@@ -446,7 +439,7 @@ export interface CreateCustomerAnalyticsExternalAccountRequest {
   /** Typed properties for a new account: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), email_domains and known_emails. Unknown keys are rejected. Ignored when the account already exists. */
   properties?: CreateCustomerAnalyticsExternalAccountRequestProperties | null;
 }
-export const CreateCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -458,12 +451,12 @@ export const CreateCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.sus
 
 /** Typed account properties: external-system ids. Role assignments live under `relationships`. */
 export type ExternalAccountPropertiesMap = { [key: string]: unknown | undefined };
-export const ExternalAccountPropertiesMap =
+const ExternalAccountPropertiesMap =
   UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountPropertiesMap>;
 
 /** * `unmanaged` - Unmanaged * `assigned` - Assigned * `cleared` - Cleared * `blocked` - Blocked */
 export type OwnershipRoleStateEnum = "unmanaged" | "assigned" | "cleared" | "blocked";
-export const OwnershipRoleStateEnum = S.String;
+const OwnershipRoleStateEnum = S.String;
 
 export interface ExternalAccountOwnershipHolder {
   /** PostHog user id of the holder. */
@@ -477,7 +470,7 @@ export interface ExternalAccountOwnershipHolder {
   /** Whether the holder's PostHog user account is active. */
   is_active: boolean;
 }
-export const ExternalAccountOwnershipHolder = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountOwnershipHolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number,
     email: S.NullOr(S.String),
@@ -495,11 +488,11 @@ export type OwnershipRoleDiagnosticEnum =
   | "holder_inactive"
   | "holder_not_in_organization"
   | "multiple_active_holders";
-export const OwnershipRoleDiagnosticEnum = S.String;
+const OwnershipRoleDiagnosticEnum = S.String;
 
 /** Why a managed relationship is blocked. Informational on an unmanaged one. */
 export type ExternalAccountRoleOwnershipDiagnosticsList = Array<OwnershipRoleDiagnosticEnum>;
-export const ExternalAccountRoleOwnershipDiagnosticsList = /*@__PURE__*/ S.Array(
+const ExternalAccountRoleOwnershipDiagnosticsList = /*@__PURE__*/ S.Array(
   OwnershipRoleDiagnosticEnum,
 ) as any as S.Schema<ExternalAccountRoleOwnershipDiagnosticsList>;
 
@@ -519,7 +512,7 @@ export interface ExternalAccountRoleOwnership {
   /** Why a managed relationship is blocked. Informational on an unmanaged one. */
   diagnostics: ExternalAccountRoleOwnershipDiagnosticsList;
 }
-export const ExternalAccountRoleOwnership = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountRoleOwnership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition_id: S.String,
     definition_name: S.String,
@@ -535,7 +528,7 @@ export const ExternalAccountRoleOwnership = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per controlled relationship definition of the project, in name order, whether or not this account is managed under it. Empty when the project controls no relationship. */
 export type ExternalAccountOwnershipRolesList = Array<ExternalAccountRoleOwnership>;
-export const ExternalAccountOwnershipRolesList = /*@__PURE__*/ S.Array(
+const ExternalAccountOwnershipRolesList = /*@__PURE__*/ S.Array(
   ExternalAccountRoleOwnership,
 ) as any as S.Schema<ExternalAccountOwnershipRolesList>;
 
@@ -549,7 +542,7 @@ export interface ExternalAccountOwnership {
   /** One entry per controlled relationship definition of the project, in name order, whether or not this account is managed under it. Empty when the project controls no relationship. */
   roles: ExternalAccountOwnershipRolesList;
 }
-export const ExternalAccountOwnership = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountOwnership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     external_id: S.NullOr(S.String),
@@ -560,7 +553,7 @@ export const ExternalAccountOwnership = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag names on the account, sorted alphabetically. */
 export type ExternalAccountTagsList = Array<string>;
-export const ExternalAccountTagsList = /*@__PURE__*/ S.Array(
+const ExternalAccountTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalAccountTagsList>;
 
@@ -570,7 +563,7 @@ export interface ExternalAccountAssignment {
   /** Email address of the assigned user. */
   email: string;
 }
-export const ExternalAccountAssignment = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number,
     email: S.String,
@@ -580,7 +573,7 @@ export const ExternalAccountAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountAssignment>;
 
 export type ExternalAccountRelationshipsValueList = Array<ExternalAccountAssignment>;
-export const ExternalAccountRelationshipsValueList = /*@__PURE__*/ S.Array(
+const ExternalAccountRelationshipsValueList = /*@__PURE__*/ S.Array(
   ExternalAccountAssignment,
 ) as any as S.Schema<ExternalAccountRelationshipsValueList>;
 
@@ -588,14 +581,14 @@ export const ExternalAccountRelationshipsValueList = /*@__PURE__*/ S.Array(
 export type ExternalAccountRelationshipsMap = {
   [key: string]: ExternalAccountRelationshipsValueList | undefined;
 };
-export const ExternalAccountRelationshipsMap = /*@__PURE__*/ S.Record(
+const ExternalAccountRelationshipsMap = /*@__PURE__*/ S.Record(
   S.String,
   ExternalAccountRelationshipsValueList,
 ) as any as S.Schema<ExternalAccountRelationshipsMap>;
 
 /** Every team custom property definition keyed by name, with the account's active value or null. */
 export type ExternalAccountCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const ExternalAccountCustomPropertiesMap =
+const ExternalAccountCustomPropertiesMap =
   UserBasicHedgehogConfigMap as any as S.Schema<ExternalAccountCustomPropertiesMap>;
 
 export interface ExternalAccount {
@@ -620,7 +613,7 @@ export interface ExternalAccount {
   /** Every team custom property definition keyed by name, with the account's active value or null. */
   custom_properties: ExternalAccountCustomPropertiesMap;
 }
-export const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     external_id: S.NullOr(S.String),
@@ -637,7 +630,7 @@ export const ExternalAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type CreateEventStreamRequestEventNamesList = Array<string>;
-export const CreateEventStreamRequestEventNamesList =
+const CreateEventStreamRequestEventNamesList =
   ExternalAccountTagsList as any as S.Schema<CreateEventStreamRequestEventNamesList>;
 
 export interface CreateEventStreamRequest {
@@ -654,7 +647,7 @@ export interface CreateEventStreamRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
-export const CreateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     enabled: S.optional(S.Boolean),
@@ -667,12 +660,12 @@ export const CreateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type EventStreamEventNamesList = Array<string>;
-export const EventStreamEventNamesList =
+const EventStreamEventNamesList =
   ExternalAccountTagsList as any as S.Schema<EventStreamEventNamesList>;
 
 /** UUIDs of the member accounts whose users' events are streamed. Managed via the add_account/remove_account endpoints. */
 export type EventStreamAccountIdsList = Array<string>;
-export const EventStreamAccountIdsList =
+const EventStreamAccountIdsList =
   ExternalAccountTagsList as any as S.Schema<EventStreamAccountIdsList>;
 
 /** The caller's event stream -- a live feed of selected accounts' events posted to a Slack channel of their choice. One stream per user per project. */
@@ -694,7 +687,7 @@ export interface EventStream {
   created_by: number | null;
   updated_at: string | null;
 }
-export const EventStream = /*@__PURE__*/ S.suspend(() =>
+const EventStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.optional(S.Boolean),
@@ -717,7 +710,7 @@ export interface EventStreamsAddAccountCreateRequest {
   /** UUID of the account to add to or remove from the stream. */
   account_id: string;
 }
-export const EventStreamsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventStreamsAddAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -739,7 +732,7 @@ export interface EventStreamsDestroyRequest {
   /** A UUID string identifying this event stream. */
   id: string;
 }
-export const EventStreamsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EventStreamsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -751,7 +744,7 @@ export const EventStreamsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventStreamsDestroyRequest>;
 
 export interface EventStreamsDestroyResponse {}
-export const EventStreamsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const EventStreamsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "EventStreamsDestroyResponse",
 }) as any as S.Schema<EventStreamsDestroyResponse>;
 
@@ -763,7 +756,7 @@ export interface EventStreamsRemoveAccountCreateRequest {
   /** UUID of the account to add to or remove from the stream. */
   account_id: string;
 }
-export const EventStreamsRemoveAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventStreamsRemoveAccountCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -785,7 +778,7 @@ export interface EventStreamsSendTestMessageCreateRequest {
   /** A UUID string identifying this event stream. */
   id: string;
 }
-export const EventStreamsSendTestMessageCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventStreamsSendTestMessageCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -805,7 +798,7 @@ export interface EventStreamTestMessage {
   /** Slack channel ID the test message was posted to (e.g. C0123ABC). */
   channel_id: string;
 }
-export const EventStreamTestMessage = /*@__PURE__*/ S.suspend(() =>
+const EventStreamTestMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
   }),
@@ -818,7 +811,7 @@ export interface GetAccountsNotebookRequest {
   account_id: string;
   short_id: string;
 }
-export const GetAccountsNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -838,7 +831,7 @@ export interface GetCustomerAnalyticsExternalAccountRequest {
   /** External account key: the group key the account is linked to. */
   external_id: string;
 }
-export const GetCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerAnalyticsExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/api/customer_analytics/external/account", code: 200 })),
@@ -860,7 +853,7 @@ export interface GetCustomerAnalyticsExternalAccountRequest2 {
   /** Project ID. Required for personal API keys. Project secret API keys use their bound project. */
   project_id?: number;
 }
-export const GetCustomerAnalyticsExternalAccountRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerAnalyticsExternalAccountRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assigned_only: S.optional(S.Boolean.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -881,7 +874,7 @@ export interface ExternalAccountListAssignment {
   /** Current display name of the assigned user, or null when the user has no name set. */
   name: string | null;
 }
-export const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number,
     email: S.String,
@@ -892,7 +885,7 @@ export const ExternalAccountListAssignment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountListAssignment>;
 
 export type ExternalAccountListItemRelationshipsValueList = Array<ExternalAccountListAssignment>;
-export const ExternalAccountListItemRelationshipsValueList = /*@__PURE__*/ S.Array(
+const ExternalAccountListItemRelationshipsValueList = /*@__PURE__*/ S.Array(
   ExternalAccountListAssignment,
 ) as any as S.Schema<ExternalAccountListItemRelationshipsValueList>;
 
@@ -900,7 +893,7 @@ export const ExternalAccountListItemRelationshipsValueList = /*@__PURE__*/ S.Arr
 export type ExternalAccountListItemRelationshipsMap = {
   [key: string]: ExternalAccountListItemRelationshipsValueList | undefined;
 };
-export const ExternalAccountListItemRelationshipsMap = /*@__PURE__*/ S.Record(
+const ExternalAccountListItemRelationshipsMap = /*@__PURE__*/ S.Record(
   S.String,
   ExternalAccountListItemRelationshipsValueList,
 ) as any as S.Schema<ExternalAccountListItemRelationshipsMap>;
@@ -919,7 +912,7 @@ export interface ExternalAccountListItem {
   /** Active relationship assignments to current organization members, keyed by relationship definition name (e.g. 'CSM', 'Account executive'). Definitions with no active assignment are omitted. */
   relationships: ExternalAccountListItemRelationshipsMap;
 }
-export const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.String,
     name: S.String,
@@ -932,7 +925,7 @@ export const ExternalAccountListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Accounts in this page, ordered by account id. */
 export type ExternalAccountListPageResultsList = Array<ExternalAccountListItem>;
-export const ExternalAccountListPageResultsList = /*@__PURE__*/ S.Array(
+const ExternalAccountListPageResultsList = /*@__PURE__*/ S.Array(
   ExternalAccountListItem,
 ) as any as S.Schema<ExternalAccountListPageResultsList>;
 
@@ -942,7 +935,7 @@ export interface ExternalAccountListPage {
   /** Account UUID to pass as `cursor` for the next page, or null when the list is exhausted. */
   next_cursor: string | null;
 }
-export const ExternalAccountListPage = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountListPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ExternalAccountListPageResultsList,
     next_cursor: S.NullOr(S.String),
@@ -950,12 +943,12 @@ export const ExternalAccountListPage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalAccountListPage" }) as any as S.Schema<ExternalAccountListPage>;
 
 export type ListAccountNotesRequestAssignedToList = Array<number>;
-export const ListAccountNotesRequestAssignedToList = /*@__PURE__*/ S.Array(
+const ListAccountNotesRequestAssignedToList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListAccountNotesRequestAssignedToList>;
 
 export type ListAccountNotesRequestCreatedByList = Array<number>;
-export const ListAccountNotesRequestCreatedByList =
+const ListAccountNotesRequestCreatedByList =
   ListAccountNotesRequestAssignedToList as any as S.Schema<ListAccountNotesRequestCreatedByList>;
 
 export interface ListAccountNotesRequest {
@@ -974,7 +967,7 @@ export interface ListAccountNotesRequest {
   /** Full-text search across note title and content, plus substring match on account name. */
   search?: string;
 }
-export const ListAccountNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -1003,7 +996,7 @@ export interface AccountNote {
   /** User who created the note, if known. */
   created_by: UserBasic | null;
 }
-export const AccountNote = /*@__PURE__*/ S.suspend(() =>
+const AccountNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     short_id: S.String,
     title: S.NullOr(S.String),
@@ -1016,7 +1009,7 @@ export const AccountNote = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountNote" }) as any as S.Schema<AccountNote>;
 
 export type PaginatedAccountNoteListResultsList = Array<AccountNote>;
-export const PaginatedAccountNoteListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountNoteListResultsList = /*@__PURE__*/ S.Array(
   AccountNote,
 ) as any as S.Schema<PaginatedAccountNoteListResultsList>;
 
@@ -1026,7 +1019,7 @@ export interface PaginatedAccountNoteList {
   previous?: string | null;
   results: PaginatedAccountNoteListResultsList;
 }
-export const PaginatedAccountNoteList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountNoteList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1041,7 +1034,7 @@ export interface ListAccountsCustomPropertyValuesRequest {
   /** UUID of the parent account. */
   account_id: string;
 }
-export const ListAccountsCustomPropertyValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsCustomPropertyValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -1057,13 +1050,13 @@ export const ListAccountsCustomPropertyValuesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListAccountsCustomPropertyValuesRequest>;
 
 export type ListAccountsCustomPropertyValuesResponseBodyList = Array<CustomPropertyValue>;
-export const ListAccountsCustomPropertyValuesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountsCustomPropertyValuesResponseBodyList = /*@__PURE__*/ S.Array(
   CustomPropertyValue,
 ) as any as S.Schema<ListAccountsCustomPropertyValuesResponseBodyList>;
 
 export type ListAccountsCustomPropertyValuesResponse =
   ListAccountsCustomPropertyValuesResponseBodyList;
-export const ListAccountsCustomPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsCustomPropertyValuesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountsCustomPropertyValuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccountsCustomPropertyValuesResponse",
@@ -1074,7 +1067,7 @@ export type ListAccountsNotebooksRequestOrdering =
   | "-created_by"
   | "created_at"
   | "created_by";
-export const ListAccountsNotebooksRequestOrdering = S.String;
+const ListAccountsNotebooksRequestOrdering = S.String;
 
 export interface ListAccountsNotebooksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1090,7 +1083,7 @@ export interface ListAccountsNotebooksRequest {
   /** Full-text search across notebook title and content. */
   search?: string;
 }
-export const ListAccountsNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -1110,7 +1103,7 @@ export const ListAccountsNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsNotebooksRequest>;
 
 export type PaginatedAccountNotebookListResultsList = Array<AccountNotebook>;
-export const PaginatedAccountNotebookListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountNotebookListResultsList = /*@__PURE__*/ S.Array(
   AccountNotebook,
 ) as any as S.Schema<PaginatedAccountNotebookListResultsList>;
 
@@ -1120,7 +1113,7 @@ export interface PaginatedAccountNotebookList {
   previous?: string | null;
   results: PaginatedAccountNotebookListResultsList;
 }
-export const PaginatedAccountNotebookList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountNotebookList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -1139,7 +1132,7 @@ export interface ListAccountsRelationshipsRequest {
   /** Include ended assignments (the full timeline), not just active ones. */
   include_history?: boolean;
 }
-export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_id: S.String.pipe(T.Label()),
@@ -1156,12 +1149,12 @@ export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRelationshipsRequest>;
 
 export type ListAccountsRelationshipsResponseBodyList = Array<AccountRelationship>;
-export const ListAccountsRelationshipsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountsRelationshipsResponseBodyList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<ListAccountsRelationshipsResponseBodyList>;
 
 export type ListAccountsRelationshipsResponse = ListAccountsRelationshipsResponseBodyList;
-export const ListAccountsRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountsRelationshipsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccountsRelationshipsResponse",
@@ -1171,25 +1164,25 @@ export interface ListEventStreamsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListEventStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/event_streams/", code: 200 })),
 ).annotate({ identifier: "ListEventStreamsRequest" }) as any as S.Schema<ListEventStreamsRequest>;
 
 export type ListEventStreamsResponseBodyList = Array<EventStream>;
-export const ListEventStreamsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventStreamsResponseBodyList = /*@__PURE__*/ S.Array(
   EventStream,
 ) as any as S.Schema<ListEventStreamsResponseBodyList>;
 
 export type ListEventStreamsResponse = ListEventStreamsResponseBodyList;
-export const ListEventStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventStreamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListEventStreamsResponse" }) as any as S.Schema<ListEventStreamsResponse>;
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamRequestEventNamesList = Array<string>;
-export const UpdateEventStreamRequestEventNamesList =
+const UpdateEventStreamRequestEventNamesList =
   ExternalAccountTagsList as any as S.Schema<UpdateEventStreamRequestEventNamesList>;
 
 export interface UpdateEventStreamRequest {
@@ -1208,7 +1201,7 @@ export interface UpdateEventStreamRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
-export const UpdateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1224,7 +1217,7 @@ export const UpdateEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Names of the events to stream (matched exactly). Duplicates and blanks are dropped. */
 export type UpdateEventStreamsPartialRequestEventNamesList = Array<string>;
-export const UpdateEventStreamsPartialRequestEventNamesList =
+const UpdateEventStreamsPartialRequestEventNamesList =
   ExternalAccountTagsList as any as S.Schema<UpdateEventStreamsPartialRequestEventNamesList>;
 
 export interface UpdateEventStreamsPartialRequest {
@@ -1243,7 +1236,7 @@ export interface UpdateEventStreamsPartialRequest {
   /** Display name of the Slack channel (e.g. #customer-events). Informational only. */
   slack_channel_name?: string;
 }
-export const UpdateEventStreamsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventStreamsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

@@ -66,7 +66,7 @@ export interface WebAsset {
   /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
   site?: string;
 }
-export const WebAsset = /*@__PURE__*/ S.suspend(() =>
+const WebAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     site: S.optional(S.String),
   }),
@@ -77,7 +77,7 @@ export interface CertificateInfo {
   /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
   sha256Fingerprint?: string;
 }
-export const CertificateInfo = /*@__PURE__*/ S.suspend(() =>
+const CertificateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256Fingerprint: S.optional(S.String),
   }),
@@ -90,7 +90,7 @@ export interface AndroidAppAsset {
   /** Because there is no global enforcement of package name uniqueness, we also require a signing certificate, which in combination with the package name uniquely identifies an app. Some apps' signing keys are rotated, so they may be signed by different keys over time. We treat these as distinct assets, since we use (package name, cert) as the unique ID. This should not normally pose any problems as both versions of the app will make the same or similar statements. Other assets making statements about the app will have to be updated when a key is rotated, however. (Note that the syntaxes for publishing and querying for statements contain syntactic sugar to easily let you specify apps that are known by multiple certificates.) REQUIRED */
   certificate?: CertificateInfo;
 }
-export const AndroidAppAsset = /*@__PURE__*/ S.suspend(() =>
+const AndroidAppAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packageName: S.optional(S.String),
     certificate: S.optional(CertificateInfo),
@@ -104,7 +104,7 @@ export interface Asset {
   /** Set if this is an Android App asset. */
   androidApp?: AndroidAppAsset;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
+const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     web: S.optional(WebAsset),
     androidApp: S.optional(AndroidAppAsset),
@@ -120,7 +120,7 @@ export interface StatementTemplate {
   /** The target that the source is declaring the relationship with. If omitted, you must specify a BulkCheckRequest.default_target to use here. */
   target?: Asset;
 }
-export const StatementTemplate = /*@__PURE__*/ S.suspend(() =>
+const StatementTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Asset),
     relation: S.optional(S.String),
@@ -129,7 +129,7 @@ export const StatementTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatementTemplate" }) as any as S.Schema<StatementTemplate>;
 
 export type StatementTemplateList = Array<StatementTemplate>;
-export const StatementTemplateList = /*@__PURE__*/ S.Array(
+const StatementTemplateList = /*@__PURE__*/ S.Array(
   StatementTemplate,
 ) as any as S.Schema<StatementTemplateList>;
 
@@ -146,7 +146,7 @@ export interface BulkCheckRequest {
   /** If specified, will be used in any given template statement that doesn't specify a relation. */
   defaultRelation?: string;
 }
-export const BulkCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(StatementTemplateList),
     returnRelationExtensions: S.optional(S.Boolean),
@@ -160,7 +160,7 @@ export interface BulkCheckAssetlinksRequest {
   /** Request body */
   body?: BulkCheckRequest;
 }
-export const BulkCheckAssetlinksRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCheckAssetlinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BulkCheckRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -186,18 +186,13 @@ export type BulkCheckResponseBulkErrorCodeEnum =
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
-export const BulkCheckResponseBulkErrorCodeEnum = S.String;
+const BulkCheckResponseBulkErrorCodeEnum = S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_UNSPECIFIED"
@@ -211,10 +206,10 @@ export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
-export const CheckResponseErrorCodeItemEnum = S.String;
+const CheckResponseErrorCodeItemEnum = S.String;
 
 export type CheckResponseErrorCodeItemEnumList = Array<CheckResponseErrorCodeItemEnum>;
-export const CheckResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
+const CheckResponseErrorCodeItemEnumList = /*@__PURE__*/ S.Array(
   CheckResponseErrorCodeItemEnum,
 ) as any as S.Schema<CheckResponseErrorCodeItemEnumList>;
 
@@ -231,7 +226,7 @@ export interface CheckResponse {
   /** Error codes that describe the result of the Check operation. NOTE: Error codes may be populated even when `linked` is true. The error codes do not necessarily imply that the request failed, but rather, specify any errors encountered in the statements file(s) which may or may not impact whether the server determines the requested source and target to be linked. */
   errorCode?: CheckResponseErrorCodeItemEnumList;
 }
-export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linked: S.optional(S.Boolean),
     debugString: S.optional(S.String),
@@ -242,7 +237,7 @@ export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
 
 export type CheckResponseList = Array<CheckResponse>;
-export const CheckResponseList = /*@__PURE__*/ S.Array(
+const CheckResponseList = /*@__PURE__*/ S.Array(
   CheckResponse,
 ) as any as S.Schema<CheckResponseList>;
 
@@ -253,7 +248,7 @@ export interface BulkCheckResponse {
   /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
   checkResults?: CheckResponseList;
 }
-export const BulkCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bulkErrorCode: S.optional(BulkCheckResponseBulkErrorCodeEnum),
     checkResults: S.optional(CheckResponseList),
@@ -278,7 +273,7 @@ export interface CheckAssetlinksRequest {
   /** Query string for the relation. We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use case of the statement. Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported relations. For a query to match an asset link, both the query's and the asset link's relation strings must match exactly. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
   relation?: string;
 }
-export const CheckAssetlinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAssetlinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "source.web.site": S.optional(S.String.pipe(T.Query())),
     returnRelationExtensions: S.optional(S.Boolean.pipe(T.Query())),
@@ -309,7 +304,7 @@ export interface ListStatementsRequest {
   /** Use only associations that match the specified relation. See the [`Statement`](#Statement) message for a detailed definition of relation strings. For a query to match a statement, one of the following must be true: * both the query's and the statement's relation strings match exactly, or * the query's relation string is empty or missing. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
   relation?: string;
 }
-export const ListStatementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStatementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnRelationExtensions: S.optional(S.Boolean.pipe(T.Query())),
     "source.androidApp.certificate.sha256Fingerprint": S.optional(S.String.pipe(T.Query())),
@@ -337,10 +332,8 @@ export type ListResponseErrorCodeItemEnum =
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
-export const ListResponseErrorCodeItemEnum = S.String;
-
 export type ListResponseErrorCodeItemEnumList = Array<ListResponseErrorCodeItemEnum>;
-export const ListResponseErrorCodeItemEnumList =
+const ListResponseErrorCodeItemEnumList =
   CheckResponseErrorCodeItemEnumList as any as S.Schema<ListResponseErrorCodeItemEnumList>;
 
 /** Describes a reliable statement that has been made about the relationship between a source asset and a target asset. Statements are always made by the source asset, either directly or by delegating to a statement list that is stored elsewhere. For more detailed definitions of statements and assets, please refer to our [API documentation landing page](/digital-asset-links/v1/getting-started). */
@@ -354,7 +347,7 @@ export interface Statement {
   /** Every statement has a source asset. REQUIRED */
   source?: Asset;
 }
-export const Statement = /*@__PURE__*/ S.suspend(() =>
+const Statement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(Asset),
     relation: S.optional(S.String),
@@ -364,7 +357,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Statement" }) as any as S.Schema<Statement>;
 
 export type StatementList = Array<Statement>;
-export const StatementList = /*@__PURE__*/ S.Array(Statement) as any as S.Schema<StatementList>;
+const StatementList = /*@__PURE__*/ S.Array(Statement) as any as S.Schema<StatementList>;
 
 /** Response message for the List call. */
 export interface ListResponse {
@@ -377,7 +370,7 @@ export interface ListResponse {
   /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
   maxAge?: string;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(ListResponseErrorCodeItemEnumList),
     debugString: S.optional(S.String),

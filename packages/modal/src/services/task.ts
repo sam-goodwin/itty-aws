@@ -12,7 +12,7 @@ export interface ListTaskRequest {
   environmentName?: string;
   appId?: string;
 }
-export const ListTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     appId: S.optional(S.String),
@@ -26,7 +26,7 @@ export interface TaskStats {
   startedAt?: number;
   enqueuedAt?: number;
 }
-export const TaskStats = /*@__PURE__*/ S.suspend(() =>
+const TaskStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     appId: S.optional(S.String),
@@ -37,12 +37,12 @@ export const TaskStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskStats" }) as any as S.Schema<TaskStats>;
 
 export type TaskStatsList = Array<TaskStats>;
-export const TaskStatsList = /*@__PURE__*/ S.Array(TaskStats) as any as S.Schema<TaskStatsList>;
+const TaskStatsList = /*@__PURE__*/ S.Array(TaskStats) as any as S.Schema<TaskStatsList>;
 
 export interface ListTaskResponse {
   tasks?: TaskStatsList;
 }
-export const ListTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: S.optional(TaskStatsList),
   }),
@@ -53,7 +53,7 @@ export interface TaskClusterHelloRequest {
   containerIp?: string;
   imexHostIp?: string;
 }
-export const TaskClusterHelloRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskClusterHelloRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     containerIp: S.optional(S.String),
@@ -62,7 +62,7 @@ export const TaskClusterHelloRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskClusterHelloRequest" }) as any as S.Schema<TaskClusterHelloRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface TaskClusterHelloResponse {
   clusterId?: string;
@@ -75,7 +75,7 @@ export interface TaskClusterHelloResponse {
   /** GPU-memory-fabric labels, ordered by cluster rank */
   fabricIds?: StringList;
 }
-export const TaskClusterHelloResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskClusterHelloResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterId: S.optional(S.String),
     clusterRank: S.optional(S.Number),
@@ -87,7 +87,7 @@ export const TaskClusterHelloResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskClusterHelloResponse" }) as any as S.Schema<TaskClusterHelloResponse>;
 
 export interface TaskCurrentInputsRequest {}
-export const TaskCurrentInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskCurrentInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/TaskCurrentInputs", code: 200 }),
   ),
@@ -96,7 +96,7 @@ export const TaskCurrentInputsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TaskCurrentInputsResponse {
   inputIds?: StringList;
 }
-export const TaskCurrentInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskCurrentInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputIds: S.optional(StringList),
   }),
@@ -107,7 +107,7 @@ export const TaskCurrentInputsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TaskGetCommandRouterAccessRequest {
   taskId?: string;
 }
-export const TaskGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }).pipe(
@@ -125,7 +125,7 @@ export interface TaskGetCommandRouterAccessResponse {
   jwt?: string;
   url?: string;
 }
-export const TaskGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
     url: S.optional(S.String),
@@ -137,7 +137,7 @@ export const TaskGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TaskGetInfoRequest {
   taskId?: string;
 }
-export const TaskGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/TaskGetInfo", code: 200 })),
@@ -154,7 +154,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -176,7 +176,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -196,7 +196,7 @@ export type TaskSnapshotBehavior =
   | "TASK_SNAPSHOT_BEHAVIOR_SNAPSHOT"
   | "TASK_SNAPSHOT_BEHAVIOR_RESTORE"
   | "TASK_SNAPSHOT_BEHAVIOR_NONE";
-export const TaskSnapshotBehavior = S.String;
+const TaskSnapshotBehavior = S.String;
 
 export type GPUType =
   | "GPU_TYPE_UNSPECIFIED"
@@ -209,7 +209,7 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
-export const GPUType = S.String;
+const GPUType = S.String;
 
 export interface GPUConfig {
   type?: GPUType;
@@ -217,7 +217,7 @@ export interface GPUConfig {
   count?: number;
   gpuType?: string;
 }
-export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GPUType),
     count: S.optional(S.Number),
@@ -237,7 +237,7 @@ export interface TaskInfo {
   snapshotBehavior?: TaskSnapshotBehavior;
   gpuConfig?: GPUConfig;
 }
-export const TaskInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     startedAt: S.optional(S.Number),
@@ -255,7 +255,7 @@ export interface TaskGetInfoResponse {
   appId?: string;
   info?: TaskInfo;
 }
-export const TaskGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const TaskGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     info: S.optional(TaskInfo),
@@ -265,14 +265,14 @@ export const TaskGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
 export interface TaskResultRequest {
   result?: GenericResult;
 }
-export const TaskResultRequest = /*@__PURE__*/ S.suspend(() =>
+const TaskResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/TaskResult", code: 200 })),
 ).annotate({ identifier: "TaskResultRequest" }) as any as S.Schema<TaskResultRequest>;
 
 export interface TaskResultResponse {}
-export const TaskResultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TaskResultResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TaskResultResponse",
 }) as any as S.Schema<TaskResultResponse>;
 

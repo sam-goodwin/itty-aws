@@ -10,7 +10,7 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetConfigControllerConfigRequest {}
-export const GetConfigControllerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigControllerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/config", code: 200 })),
 ).annotate({
   identifier: "GetConfigControllerConfigRequest",
@@ -22,7 +22,7 @@ export interface PosthogConfig {
   /** PostHog host URL */
   host: string;
 }
-export const PosthogConfig = /*@__PURE__*/ S.suspend(() =>
+const PosthogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.String.pipe(T.SensitiveValue({})),
     host: S.String,
@@ -31,7 +31,7 @@ export const PosthogConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Which identity provider the advertised issuer above belongs to. The dashboard needs this because provider-specific logout URLs are not discoverable from the issuer alone: ending an Auth0 session uses its proprietary /v2/logout, which does not exist on WorkOS AuthKit. Anything that branches on provider behaviour must read this rather than pattern-matching the issuer hostname. */
 export type OidcConfigProvider = "auth0" | "workos";
-export const OidcConfigProvider = S.String;
+const OidcConfigProvider = S.String;
 
 export interface CliOidcConfig {
   /** WorkOS issuer of the Daytona CLI application */
@@ -39,7 +39,7 @@ export interface CliOidcConfig {
   /** WorkOS client ID of the Daytona CLI application */
   clientId: string;
 }
-export const CliOidcConfig = /*@__PURE__*/ S.suspend(() =>
+const CliOidcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     clientId: S.String,
@@ -60,7 +60,7 @@ export interface OidcConfig {
   /** WorkOS application the Daytona CLI logs in through, configured apart from the dashboard's so CLI sessions can have their own lifetime. Present only when the provider is workos and a CLI application is configured; absent means the CLI uses the issuer and client ID above. */
   cli?: CliOidcConfig;
 }
-export const OidcConfig = /*@__PURE__*/ S.suspend(() =>
+const OidcConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     clientId: S.String,
@@ -77,11 +77,11 @@ export interface SsoOidcConfig {
   /** OIDC client ID for org-SSO logins */
   clientId: string;
 }
-export const SsoOidcConfig = CliOidcConfig as any as S.Schema<SsoOidcConfig>;
+const SsoOidcConfig = CliOidcConfig as any as S.Schema<SsoOidcConfig>;
 
 /** Feature flags forced on for this deployment regardless of PostHog targeting. Lets environments without PostHog (previews, local dev) enable flag-gated dashboard features. */
 export type DaytonaConfigurationForcedFeatureFlagsList = Array<string>;
-export const DaytonaConfigurationForcedFeatureFlagsList = /*@__PURE__*/ S.Array(
+const DaytonaConfigurationForcedFeatureFlagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DaytonaConfigurationForcedFeatureFlagsList>;
 
@@ -91,7 +91,7 @@ export interface Announcement {
   /** URL to learn more about the announcement */
   learnMoreUrl?: string;
 }
-export const Announcement = /*@__PURE__*/ S.suspend(() =>
+const Announcement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     learnMoreUrl: S.optional(S.String),
@@ -100,19 +100,19 @@ export const Announcement = /*@__PURE__*/ S.suspend(() =>
 
 /** System announcements */
 export type DaytonaConfigurationAnnouncementsMap = { [key: string]: Announcement | undefined };
-export const DaytonaConfigurationAnnouncementsMap = /*@__PURE__*/ S.Record(
+const DaytonaConfigurationAnnouncementsMap = /*@__PURE__*/ S.Record(
   S.String,
   Announcement,
 ) as any as S.Schema<DaytonaConfigurationAnnouncementsMap>;
 
 /** SSH host public keys presented by the SSH Gateway, as OpenSSH public key lines (`<type> <base64>`). To build a known_hosts entry, prefix each with `sshGatewayHost` when `sshGatewayPort` is 22, or with `[sshGatewayHost]:sshGatewayPort` otherwise. */
 export type DaytonaConfigurationSshGatewayHostKeysList = Array<string>;
-export const DaytonaConfigurationSshGatewayHostKeysList =
+const DaytonaConfigurationSshGatewayHostKeysList =
   DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeysList>;
 
 /** SHA256 fingerprints of sshGatewayHostKeys, in the same order, in `ssh-keygen -lf` format. Compare against the fingerprint published at https://github.com/daytona/.github/blob/main/SECURITY.md#ssh-host-key-verification */
 export type DaytonaConfigurationSshGatewayHostKeyFingerprintsList = Array<string>;
-export const DaytonaConfigurationSshGatewayHostKeyFingerprintsList =
+const DaytonaConfigurationSshGatewayHostKeyFingerprintsList =
   DaytonaConfigurationForcedFeatureFlagsList as any as S.Schema<DaytonaConfigurationSshGatewayHostKeyFingerprintsList>;
 
 export interface RateLimitEntry {
@@ -121,7 +121,7 @@ export interface RateLimitEntry {
   /** Rate limit max requests */
   limit?: number;
 }
-export const RateLimitEntry = /*@__PURE__*/ S.suspend(() =>
+const RateLimitEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -140,7 +140,7 @@ export interface RateLimitConfig {
   /** Sandbox list rate limit */
   sandboxList?: RateLimitEntry;
 }
-export const RateLimitConfig = /*@__PURE__*/ S.suspend(() =>
+const RateLimitConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedAuth: S.optional(RateLimitEntry),
     authenticated: S.optional(RateLimitEntry),
@@ -204,7 +204,7 @@ export interface DaytonaConfiguration {
   /** Rate limit configuration */
   rateLimit?: RateLimitConfig;
 }
-export const DaytonaConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DaytonaConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     buildSha: S.optional(S.String),

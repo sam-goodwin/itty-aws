@@ -43,7 +43,7 @@ export interface ApplyOrganizationQuotaRequest {
   organizationId: string;
   quotaId: string;
 }
-export const ApplyOrganizationQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyOrganizationQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -68,7 +68,7 @@ export interface OrganizationQuota {
   quotaId: string;
   region: string;
 }
-export const OrganizationQuota = /*@__PURE__*/ S.suspend(() =>
+const OrganizationQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgId: S.String,
     platformId: S.String,
@@ -84,7 +84,7 @@ export interface CreateOrganizationRequest {
   name: string;
   platformId?: string;
 }
-export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -108,7 +108,7 @@ export interface OrganizationCreateResponse {
   projectId: string;
   region: string;
 }
-export const OrganizationCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guid: S.String,
     platformId: S.String,
@@ -124,7 +124,7 @@ export interface CreateOrgManagerRequest {
   region: string;
   organizationId: string;
 }
-export const CreateOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -150,7 +150,7 @@ export interface OrgManagerResponse {
   updatedAt: string;
   username: string;
 }
-export const OrgManagerResponse = /*@__PURE__*/ S.suspend(() =>
+const OrgManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     guid: S.String,
@@ -169,7 +169,7 @@ export type OrgRoleType =
   | "organization_auditor"
   | "organization_manager"
   | "organization_billing_manager";
-export const OrgRoleType = S.String;
+const OrgRoleType = S.String;
 
 export interface CreateOrgRoleRequest {
   projectId: string;
@@ -179,7 +179,7 @@ export interface CreateOrgRoleRequest {
   userGuid?: string;
   userName?: string;
 }
-export const CreateOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -205,7 +205,7 @@ export interface OrgRoleResponse {
   region: string;
   type: OrgRoleType;
 }
-export const OrgRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const OrgRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guid: S.String,
     orgId: S.String,
@@ -222,7 +222,7 @@ export interface CreateSpaceRequest {
   organizationId: string;
   name: string;
 }
-export const CreateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -248,7 +248,7 @@ export interface Space {
   region: string;
   updatedAt: string;
 }
-export const Space = /*@__PURE__*/ S.suspend(() =>
+const Space = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     guid: S.String,
@@ -266,7 +266,7 @@ export type SpaceRoleType =
   | "space_developer"
   | "space_manager"
   | "space_supporter";
-export const SpaceRoleType = S.String;
+const SpaceRoleType = S.String;
 
 export interface CreateSpaceRoleRequest {
   projectId: string;
@@ -277,7 +277,7 @@ export interface CreateSpaceRoleRequest {
   userGuid?: string;
   userName?: string;
 }
-export const CreateSpaceRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpaceRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -305,7 +305,7 @@ export interface SpaceRoleCreateResponse {
   spaceId: string;
   type: SpaceRoleType;
 }
-export const SpaceRoleCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const SpaceRoleCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guid: S.String,
     orgId: S.String,
@@ -322,7 +322,7 @@ export interface DeleteOrganizationRequest {
   region: string;
   organizationId: string;
 }
-export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -345,7 +345,7 @@ export interface OrganizationDeleteResponse {
   projectId: string;
   region: string;
 }
-export const OrganizationDeleteResponse =
+const OrganizationDeleteResponse =
   OrganizationCreateResponse as any as S.Schema<OrganizationDeleteResponse>;
 
 export interface DeleteOrgManagerRequest {
@@ -353,7 +353,7 @@ export interface DeleteOrgManagerRequest {
   region: string;
   organizationId: string;
 }
-export const DeleteOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -371,7 +371,7 @@ export const DeleteOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OrgManagerDeleteResponse {
   message: string;
 }
-export const OrgManagerDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const OrgManagerDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }),
@@ -383,7 +383,7 @@ export interface DeleteSpaceRequest {
   organizationId: string;
   spaceId: string;
 }
-export const DeleteSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -402,14 +402,14 @@ export const DeleteSpaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SpaceDeleteResponse {
   message: string;
 }
-export const SpaceDeleteResponse = OrgManagerDeleteResponse as any as S.Schema<SpaceDeleteResponse>;
+const SpaceDeleteResponse = OrgManagerDeleteResponse as any as S.Schema<SpaceDeleteResponse>;
 
 export interface GetOrganizationRequest {
   projectId: string;
   region: string;
   organizationId: string;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -436,7 +436,7 @@ export interface Organization {
   suspended: boolean;
   updatedAt: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     guid: S.String,
@@ -457,7 +457,7 @@ export interface GetOrganizationQuotaRequest {
   organizationId: string;
   quotaId: string;
 }
-export const GetOrganizationQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -487,7 +487,7 @@ export interface QuotaApps {
   /** The value `null` means `unlimited`. */
   totalMemoryInMb: number | null;
 }
-export const QuotaApps = /*@__PURE__*/ S.suspend(() =>
+const QuotaApps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logRateLimitInBytesPerSecond: S.NullOr(S.Number),
     perAppTasks: S.NullOr(S.Number),
@@ -501,7 +501,7 @@ export interface QuotaDomains {
   /** The value `null` means `unlimited`. */
   totalDomains: number | null;
 }
-export const QuotaDomains = /*@__PURE__*/ S.suspend(() =>
+const QuotaDomains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalDomains: S.NullOr(S.Number),
   }),
@@ -513,7 +513,7 @@ export interface QuotaRoutes {
   /** The value `null` means `unlimited`. */
   totalRoutes: number | null;
 }
-export const QuotaRoutes = /*@__PURE__*/ S.suspend(() =>
+const QuotaRoutes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalReservedPorts: S.NullOr(S.Number),
     totalRoutes: S.NullOr(S.Number),
@@ -527,7 +527,7 @@ export interface QuotaServices {
   /** The value `null` means `unlimited`. */
   totalServiceKeys: number | null;
 }
-export const QuotaServices = /*@__PURE__*/ S.suspend(() =>
+const QuotaServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paidServicesAllowed: S.Boolean,
     totalServiceInstances: S.NullOr(S.Number),
@@ -549,7 +549,7 @@ export interface Quota {
   services: QuotaServices;
   updatedAt: string;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
+const Quota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apps: QuotaApps,
     createdAt: S.String,
@@ -571,7 +571,7 @@ export interface GetOrganizationUsageSummaryRequest {
   region: string;
   organizationId: string;
 }
-export const GetOrganizationUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationUsageSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -598,7 +598,7 @@ export interface UsageSummary {
   serviceKeys: number;
   startedInstances: number;
 }
-export const UsageSummary = /*@__PURE__*/ S.suspend(() =>
+const UsageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.Number,
     memoryInMb: S.Number,
@@ -618,7 +618,7 @@ export interface OrganizationUsageSummary {
   region: string;
   usageSummary: UsageSummary;
 }
-export const OrganizationUsageSummary = /*@__PURE__*/ S.suspend(() =>
+const OrganizationUsageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgId: S.String,
     platformId: S.String,
@@ -633,7 +633,7 @@ export interface GetOrgManagerRequest {
   region: string;
   organizationId: string;
 }
-export const GetOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -658,7 +658,7 @@ export interface OrgManager {
   updatedAt: string;
   username: string;
 }
-export const OrgManager = /*@__PURE__*/ S.suspend(() =>
+const OrgManager = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     guid: S.String,
@@ -676,7 +676,7 @@ export interface GetPlatformRequest {
   region: string;
   platformId: string;
 }
-export const GetPlatformRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlatformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -699,7 +699,7 @@ export interface Platforms {
   region: string;
   systemId: string;
 }
-export const Platforms = /*@__PURE__*/ S.suspend(() =>
+const Platforms = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiUrl: S.String,
     consoleUrl: S.optional(S.String),
@@ -716,7 +716,7 @@ export interface GetPlatformQuotaRequest {
   platformId: string;
   quotaId: string;
 }
-export const GetPlatformQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlatformQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -738,7 +738,7 @@ export interface GetSpaceRequest {
   organizationId: string;
   spaceId: string;
 }
-export const GetSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -759,7 +759,7 @@ export interface ListOrganizationQuotasRequest {
   region: string;
   organizationId: string;
 }
-export const ListOrganizationQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -777,12 +777,12 @@ export const ListOrganizationQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationQuotasRequest>;
 
 export type ListOrganizationQuotasResponseBodyList = Array<Quota>;
-export const ListOrganizationQuotasResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationQuotasResponseBodyList = /*@__PURE__*/ S.Array(
   Quota,
 ) as any as S.Schema<ListOrganizationQuotasResponseBodyList>;
 
 export type ListOrganizationQuotasResponse = ListOrganizationQuotasResponseBodyList;
-export const ListOrganizationQuotasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationQuotasResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationQuotasResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationQuotasResponse",
@@ -800,7 +800,7 @@ export interface ListOrganizationsRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -822,7 +822,7 @@ export interface Pagination {
   totalPages?: number;
   totalResults?: number;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
+const Pagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalPages: S.optional(S.Number),
     totalResults: S.optional(S.Number),
@@ -841,7 +841,7 @@ export interface OrganizationsListItem {
   suspended?: boolean;
   updatedAt?: string;
 }
-export const OrganizationsListItem = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     guid: S.String,
@@ -857,7 +857,7 @@ export const OrganizationsListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationsListItem" }) as any as S.Schema<OrganizationsListItem>;
 
 export type OrganizationsListResourcesList = Array<OrganizationsListItem>;
-export const OrganizationsListResourcesList = /*@__PURE__*/ S.Array(
+const OrganizationsListResourcesList = /*@__PURE__*/ S.Array(
   OrganizationsListItem,
 ) as any as S.Schema<OrganizationsListResourcesList>;
 
@@ -865,7 +865,7 @@ export interface OrganizationsList {
   pagination: Pagination;
   resources: OrganizationsListResourcesList;
 }
-export const OrganizationsList = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: Pagination,
     resources: OrganizationsListResourcesList,
@@ -877,7 +877,7 @@ export interface ListPlatformQuotasRequest {
   region: string;
   platformId: string;
 }
-export const ListPlatformQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -895,11 +895,8 @@ export const ListPlatformQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlatformQuotasRequest>;
 
 export type ListPlatformQuotasResponseBodyList = Array<Quota>;
-export const ListPlatformQuotasResponseBodyList =
-  ListOrganizationQuotasResponseBodyList as any as S.Schema<ListPlatformQuotasResponseBodyList>;
-
 export type ListPlatformQuotasResponse = ListPlatformQuotasResponseBodyList;
-export const ListPlatformQuotasResponse =
+const ListPlatformQuotasResponse =
   ListOrganizationQuotasResponse as any as S.Schema<ListPlatformQuotasResponse>;
 
 export interface ListPlatformsRequest {
@@ -910,7 +907,7 @@ export interface ListPlatformsRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
-export const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -927,7 +924,7 @@ export const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPlatformsRequest" }) as any as S.Schema<ListPlatformsRequest>;
 
 export type PlatformListResourcesList = Array<Platforms>;
-export const PlatformListResourcesList = /*@__PURE__*/ S.Array(
+const PlatformListResourcesList = /*@__PURE__*/ S.Array(
   Platforms,
 ) as any as S.Schema<PlatformListResourcesList>;
 
@@ -935,7 +932,7 @@ export interface PlatformList {
   pagination: Pagination;
   resources: PlatformListResourcesList;
 }
-export const PlatformList = /*@__PURE__*/ S.suspend(() =>
+const PlatformList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: Pagination,
     resources: PlatformListResourcesList,
@@ -951,7 +948,7 @@ export interface ListSpacesRequest {
   /** Elements to be returned per page */
   perPage?: number;
 }
-export const ListSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -969,7 +966,7 @@ export const ListSpacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSpacesRequest" }) as any as S.Schema<ListSpacesRequest>;
 
 export type SpacesListResourcesList = Array<Space>;
-export const SpacesListResourcesList = /*@__PURE__*/ S.Array(
+const SpacesListResourcesList = /*@__PURE__*/ S.Array(
   Space,
 ) as any as S.Schema<SpacesListResourcesList>;
 
@@ -977,7 +974,7 @@ export interface SpacesList {
   pagination: Pagination;
   resources: SpacesListResourcesList;
 }
-export const SpacesList = /*@__PURE__*/ S.suspend(() =>
+const SpacesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: Pagination,
     resources: SpacesListResourcesList,
@@ -991,7 +988,7 @@ export interface UpdateOrganizationRequest {
   name?: string;
   suspended?: boolean;
 }
-export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1017,7 +1014,7 @@ export interface UpdateSpaceRequest {
   spaceId: string;
   name: string;
 }
-export const UpdateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSpaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

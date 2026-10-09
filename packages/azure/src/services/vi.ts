@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AccountsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccountsCreateOrUpdateRequestTagsMap>;
@@ -23,7 +23,7 @@ export interface StorageServicesForPutRequest {
   /** The user assigned identity to be used to grant permissions */
   userAssignedIdentity?: string;
 }
-export const StorageServicesForPutRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageServicesForPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     userAssignedIdentity: S.optional(S.String),
@@ -39,22 +39,22 @@ export interface OpenAiServicesForPutRequest {
   /** The user assigned identity to be used to grant permissions */
   userAssignedIdentity?: string;
 }
-export const OpenAiServicesForPutRequest =
+const OpenAiServicesForPutRequest =
   StorageServicesForPutRequest as any as S.Schema<OpenAiServicesForPutRequest>;
 
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const AccountPropertiesForPutRequestInputPublicNetworkAccess = S.String;
+const AccountPropertiesForPutRequestInputPublicNetworkAccess = S.String;
 
 /** The private endpoint resource. */
 export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PrivateEndpointInput",
 }) as any as S.Schema<PrivateEndpointInput>;
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -65,7 +65,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -82,7 +82,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpointInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -96,22 +96,21 @@ export interface AccountPropertiesForPutRequestInputPrivateEndpointConnectionsIt
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       properties: S.optional(PrivateEndpointConnectionPropertiesInput),
     }),
-  ).annotate({
-    identifier: "AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem",
-  }) as any as S.Schema<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem>;
+).annotate({
+  identifier: "AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem",
+}) as any as S.Schema<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem>;
 
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList =
   Array<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem>;
-export const AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList =
-  /*@__PURE__*/ S.Array(
-    AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem,
-  ) as any as S.Schema<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList>;
+const AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+  AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem,
+) as any as S.Schema<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList>;
 
 /** Azure Video Indexer account properties */
 export interface AccountPropertiesForPutRequestInput {
@@ -126,7 +125,7 @@ export interface AccountPropertiesForPutRequestInput {
   /** List of private endpoint connections associated with the account. */
   privateEndpointConnections?: AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList;
 }
-export const AccountPropertiesForPutRequestInput = /*@__PURE__*/ S.suspend(() =>
+const AccountPropertiesForPutRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     storageServices: S.optional(StorageServicesForPutRequest),
@@ -146,15 +145,13 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
-export const UserAssignedIdentityInput = PrivateEndpointInput;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: PrivateEndpointInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   PrivateEndpointInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -164,7 +161,7 @@ export interface AccountsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-export const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
@@ -189,7 +186,7 @@ export interface AccountsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateRequestIdentity;
 }
-export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -212,11 +209,11 @@ export const AccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -233,7 +230,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -246,16 +243,16 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateOrUpdateResponseTagsMap =
+const AccountsCreateOrUpdateResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountsCreateOrUpdateResponseTagsMap>;
 
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPutRequestPublicNetworkAccess = "Enabled" | "Disabled";
-export const AccountPropertiesForPutRequestPublicNetworkAccess = S.String;
+const AccountPropertiesForPutRequestPublicNetworkAccess = S.String;
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -264,7 +261,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -276,7 +273,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -289,7 +286,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -313,15 +310,14 @@ export interface AccountPropertiesForPutRequestPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const AccountPropertiesForPutRequestPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
+const AccountPropertiesForPutRequestPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(PrivateEndpointConnectionProperties),
+  }),
 ).annotate({
   identifier: "AccountPropertiesForPutRequestPrivateEndpointConnectionsItem",
 }) as any as S.Schema<AccountPropertiesForPutRequestPrivateEndpointConnectionsItem>;
@@ -329,7 +325,7 @@ export const AccountPropertiesForPutRequestPrivateEndpointConnectionsItem = /*@_
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesForPutRequestPrivateEndpointConnectionsList =
   Array<AccountPropertiesForPutRequestPrivateEndpointConnectionsItem>;
-export const AccountPropertiesForPutRequestPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const AccountPropertiesForPutRequestPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   AccountPropertiesForPutRequestPrivateEndpointConnectionsItem,
 ) as any as S.Schema<AccountPropertiesForPutRequestPrivateEndpointConnectionsList>;
 
@@ -341,7 +337,7 @@ export type AccountPropertiesForPutRequestProvisioningState =
   | "Accepted"
   | "Provisioning"
   | "Deleting";
-export const AccountPropertiesForPutRequestProvisioningState = S.String;
+const AccountPropertiesForPutRequestProvisioningState = S.String;
 
 /** Azure Video Indexer account properties */
 export interface AccountPropertiesForPutRequest {
@@ -366,7 +362,7 @@ export interface AccountPropertiesForPutRequest {
   /** Gets the status of the account at the time the operation was called. */
   provisioningState?: AccountPropertiesForPutRequestProvisioningState;
 }
-export const AccountPropertiesForPutRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountPropertiesForPutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     accountId: S.optional(S.String),
@@ -392,7 +388,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -401,7 +397,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -415,7 +411,7 @@ export interface AccountsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-export const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -444,7 +440,7 @@ export interface AccountsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -461,7 +457,7 @@ export const AccountsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource, Microsoft.VideoIndexer/accounts */
 export type CheckAccountNameAvailabilityRequestType = "Microsoft.VideoIndexer/accounts";
-export const CheckAccountNameAvailabilityRequestType = S.String;
+const CheckAccountNameAvailabilityRequestType = S.String;
 
 export interface CheckAccountNameAvailabilityRequest {
   /** The ID of the target subscription. */
@@ -471,7 +467,7 @@ export interface CheckAccountNameAvailabilityRequest {
   /** The type of resource, Microsoft.VideoIndexer/accounts */
   type: CheckAccountNameAvailabilityRequestType | (string & {});
 }
-export const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -490,7 +486,7 @@ export const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets the reason that a Video Indexer account name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type CheckNameAvailabilityResultReason = "AlreadyExists";
-export const CheckNameAvailabilityResultReason = S.String;
+const CheckNameAvailabilityResultReason = S.String;
 
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
@@ -501,7 +497,7 @@ export interface CheckNameAvailabilityResult {
   /** Gets an error message explaining the Reason value in more detail. */
   message?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckNameAvailabilityResultReason),
@@ -519,7 +515,7 @@ export interface DeleteAccountRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -535,7 +531,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
+const DeleteAccountResponse = PrivateEndpointInput as any as S.Schema<DeleteAccountResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -547,7 +543,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -566,7 +562,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -574,11 +570,11 @@ export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend((
 
 /** The requested permission */
 export type GenerateAccessTokenRequestPermissionType = "Contributor" | "Reader";
-export const GenerateAccessTokenRequestPermissionType = S.String;
+const GenerateAccessTokenRequestPermissionType = S.String;
 
 /** The requested media type */
 export type GenerateAccessTokenRequestScope = "Video" | "Account" | "Project";
-export const GenerateAccessTokenRequestScope = S.String;
+const GenerateAccessTokenRequestScope = S.String;
 
 export interface GenerateAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -596,7 +592,7 @@ export interface GenerateAccessTokenRequest {
   /** The project ID */
   projectId?: string;
 }
-export const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -622,7 +618,7 @@ export interface AccessToken {
   /** The access token. */
   accessToken?: string | Redacted.Redacted<string>;
 }
-export const AccessToken = /*@__PURE__*/ S.suspend(() =>
+const AccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -630,11 +626,11 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
 
 /** The requested permission */
 export type GenerateExtensionAccessTokenRequestPermissionType = "Contributor" | "Reader";
-export const GenerateExtensionAccessTokenRequestPermissionType = S.String;
+const GenerateExtensionAccessTokenRequestPermissionType = S.String;
 
 /** The requested media type */
 export type GenerateExtensionAccessTokenRequestScope = "Video" | "Account" | "Project";
-export const GenerateExtensionAccessTokenRequestScope = S.String;
+const GenerateExtensionAccessTokenRequestScope = S.String;
 
 export interface GenerateExtensionAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -654,7 +650,7 @@ export interface GenerateExtensionAccessTokenRequest {
   /** Lifetime of the access token (in seconds). Default value: 3600 (1 hour), Max value: 43200 (12 hours). Setting this value is enabled for tokens in 'Video' scope. */
   tokenLifetimeInSeconds?: number;
 }
-export const GenerateExtensionAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateExtensionAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -681,7 +677,7 @@ export type GenerateExtensionRestrictedViewerAccessTokenRequestScope =
   | "Video"
   | "Account"
   | "Project";
-export const GenerateExtensionRestrictedViewerAccessTokenRequestScope = S.String;
+const GenerateExtensionRestrictedViewerAccessTokenRequestScope = S.String;
 
 export interface GenerateExtensionRestrictedViewerAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -699,7 +695,7 @@ export interface GenerateExtensionRestrictedViewerAccessTokenRequest {
   /** Lifetime of the access token (in seconds). Default value: 3600 (1 hour), Max value: 43200 (12 hours). Setting this value is enabled for tokens in 'Video' scope. */
   tokenLifetimeInSeconds?: number;
 }
-export const GenerateExtensionRestrictedViewerAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateExtensionRestrictedViewerAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -722,7 +718,7 @@ export const GenerateExtensionRestrictedViewerAccessTokenRequest = /*@__PURE__*/
 
 /** The requested media type */
 export type GenerateRestrictedViewerAccessTokenRequestScope = "Video" | "Account" | "Project";
-export const GenerateRestrictedViewerAccessTokenRequestScope = S.String;
+const GenerateRestrictedViewerAccessTokenRequestScope = S.String;
 
 export interface GenerateRestrictedViewerAccessTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -738,7 +734,7 @@ export interface GenerateRestrictedViewerAccessTokenRequest {
   /** The project ID */
   projectId?: string;
 }
-export const GenerateRestrictedViewerAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRestrictedViewerAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -766,7 +762,7 @@ export interface GetAccountRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -783,13 +779,11 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap =
+const GetAccountResponseTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const GetAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 export interface GetAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -808,7 +802,7 @@ export interface GetAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -831,7 +825,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -861,7 +855,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -883,7 +877,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The group ID of the private link resource. */
   groupId: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -903,12 +897,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -920,7 +914,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -942,7 +936,7 @@ export interface GetPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -960,7 +954,7 @@ export interface ListAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -978,13 +972,8 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
-export const AccountTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<AccountTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type AccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const AccountIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 /** An Azure Video Indexer account. */
 export interface Account {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1004,11 +993,11 @@ export interface Account {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const Account = GetAccountResponse as any as S.Schema<Account>;
+const Account = GetAccountResponse as any as S.Schema<Account>;
 
 /** List of accounts and their properties. */
 export type AccountListValueList = Array<Account>;
-export const AccountListValueList = /*@__PURE__*/ S.Array(
+const AccountListValueList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<AccountListValueList>;
 
@@ -1019,7 +1008,7 @@ export interface AccountList {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const AccountList = /*@__PURE__*/ S.suspend(() =>
+const AccountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AccountListValueList),
     nextLink: S.optional(S.String),
@@ -1030,7 +1019,7 @@ export interface ListAccountsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1044,7 +1033,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1066,7 +1055,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1088,7 +1077,7 @@ export interface Operation {
   /** Origin of the operation */
   origin?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1100,7 +1089,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the Resource Provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1111,7 +1100,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1126,7 +1115,7 @@ export interface ListPrivateEndpointConnectionByAccountRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
 }
-export const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1146,13 +1135,10 @@ export const ListPrivateEndpointConnectionByAccountRequest = /*@__PURE__*/ S.sus
 /** The private endpoint connection resource. */
 export type PrivateEndpointConnection =
   AccountPropertiesForPutRequestPrivateEndpointConnectionsItem;
-export const PrivateEndpointConnection =
-  AccountPropertiesForPutRequestPrivateEndpointConnectionsItem;
-
 /** Array of private endpoint connections. */
 export type ListPrivateEndpointConnectionByAccountResponseValueList =
   Array<AccountPropertiesForPutRequestPrivateEndpointConnectionsItem>;
-export const ListPrivateEndpointConnectionByAccountResponseValueList =
+const ListPrivateEndpointConnectionByAccountResponseValueList =
   AccountPropertiesForPutRequestPrivateEndpointConnectionsList as any as S.Schema<ListPrivateEndpointConnectionByAccountResponseValueList>;
 
 export interface ListPrivateEndpointConnectionByAccountResponse {
@@ -1161,7 +1147,7 @@ export interface ListPrivateEndpointConnectionByAccountResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListPrivateEndpointConnectionByAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateEndpointConnectionByAccountResponseValueList),
     nextLink: S.optional(S.String),
@@ -1178,7 +1164,7 @@ export interface ListPrivateLinkResourceByAccountRequest {
   /** The name of the Azure Video Indexer account. */
   accountName: string;
 }
-export const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1208,7 +1194,7 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1220,7 +1206,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type ListPrivateLinkResourceByAccountResponseValueList = Array<PrivateLinkResource>;
-export const ListPrivateLinkResourceByAccountResponseValueList = /*@__PURE__*/ S.Array(
+const ListPrivateLinkResourceByAccountResponseValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<ListPrivateLinkResourceByAccountResponseValueList>;
 
@@ -1230,7 +1216,7 @@ export interface ListPrivateLinkResourceByAccountResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListPrivateLinkResourceByAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListPrivateLinkResourceByAccountResponseValueList),
     nextLink: S.optional(S.String),
@@ -1251,7 +1237,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1282,12 +1268,12 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
   GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 /** Resource tags */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap =
+const UpdateAccountRequestTagsMap =
   AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The storage services details */
@@ -1295,7 +1281,7 @@ export interface StorageServicesForPatchRequest {
   /** The user assigned identity to be used to grant permissions */
   userAssignedIdentity?: string;
 }
-export const StorageServicesForPatchRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageServicesForPatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userAssignedIdentity: S.optional(S.String),
   }),
@@ -1305,22 +1291,17 @@ export const StorageServicesForPatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The openAi services details */
 export type OpenAiServicesForPatchRequest = OpenAiServicesForPutRequest;
-export const OpenAiServicesForPatchRequest = OpenAiServicesForPutRequest;
-
 /** Whether or not public network access is allowed for the account. */
 export type AccountPropertiesForPatchRequestInputPublicNetworkAccess = "Enabled" | "Disabled";
-export const AccountPropertiesForPatchRequestInputPublicNetworkAccess = S.String;
+const AccountPropertiesForPatchRequestInputPublicNetworkAccess = S.String;
 
 /** The private endpoint connection resource. */
 export type AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsItem =
   AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem;
-export const AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsItem =
-  AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem;
-
 /** List of private endpoint connections associated with the account. */
 export type AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList =
   Array<AccountPropertiesForPutRequestInputPrivateEndpointConnectionsItem>;
-export const AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList =
+const AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList =
   AccountPropertiesForPutRequestInputPrivateEndpointConnectionsList as any as S.Schema<AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList>;
 
 /** Azure Video Indexer account properties */
@@ -1334,7 +1315,7 @@ export interface AccountPropertiesForPatchRequestInput {
   /** List of private endpoint connections associated with the account. */
   privateEndpointConnections?: AccountPropertiesForPatchRequestInputPrivateEndpointConnectionsList;
 }
-export const AccountPropertiesForPatchRequestInput = /*@__PURE__*/ S.suspend(() =>
+const AccountPropertiesForPatchRequestInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageServices: S.optional(StorageServicesForPatchRequest),
     openAiServices: S.optional(OpenAiServicesForPutRequest),
@@ -1349,8 +1330,6 @@ export const AccountPropertiesForPatchRequestInput = /*@__PURE__*/ S.suspend(() 
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountRequestIdentity = AccountsCreateOrUpdateRequestIdentity;
-export const UpdateAccountRequestIdentity = AccountsCreateOrUpdateRequestIdentity;
-
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1365,7 +1344,7 @@ export interface UpdateAccountRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateRequestIdentity;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1385,13 +1364,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap =
-  AccountsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-export const UpdateAccountResponseIdentity = AccountsCreateOrUpdateResponseIdentity;
-
 export interface UpdateAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1410,7 +1384,7 @@ export interface UpdateAccountResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: AccountsCreateOrUpdateResponseIdentity;
 }
-export const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
+const UpdateAccountResponse = GetAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export type AccountsCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Azure Video Indexer account. */

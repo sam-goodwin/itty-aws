@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeStore/accounts */
 export type CheckAccountNameAvailabilityRequestType = "Microsoft.DataLakeStore/accounts";
-export const CheckAccountNameAvailabilityRequestType = S.String;
+const CheckAccountNameAvailabilityRequestType = S.String;
 
 export interface CheckAccountNameAvailabilityRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -22,7 +22,7 @@ export interface CheckAccountNameAvailabilityRequest {
   /** The resource type. Note: This should not be set by the user, as the constant value is Microsoft.DataLakeStore/accounts */
   type: CheckAccountNameAvailabilityRequestType | (string & {});
 }
-export const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -49,7 +49,7 @@ export interface NameAvailabilityInformation {
   /** The message describing why the Data Lake Store account name is not available, if nameAvailable is false. */
   message?: string;
 }
-export const NameAvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
+const NameAvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -61,21 +61,21 @@ export const NameAvailabilityInformation = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateAccountRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateAccountRequestTagsMap>;
 
 /** The type of encryption being used. Currently the only supported type is 'SystemAssigned'. */
 export type EncryptionIdentityInputType = "SystemAssigned";
-export const EncryptionIdentityInputType = S.String;
+const EncryptionIdentityInputType = S.String;
 
 /** The encryption identity properties. */
 export interface EncryptionIdentityInput {
   /** The type of encryption being used. Currently the only supported type is 'SystemAssigned'. */
   type: EncryptionIdentityInputType | (string & {});
 }
-export const EncryptionIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EncryptionIdentityInputType,
   }),
@@ -83,7 +83,7 @@ export const EncryptionIdentityInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'. */
 export type EncryptionConfigType = "UserManaged" | "ServiceManaged";
-export const EncryptionConfigType = S.String;
+const EncryptionConfigType = S.String;
 
 /** Metadata information used by account encryption. */
 export interface KeyVaultMetaInfo {
@@ -94,7 +94,7 @@ export interface KeyVaultMetaInfo {
   /** The version of the user managed encryption key. */
   encryptionKeyVersion: string;
 }
-export const KeyVaultMetaInfo = /*@__PURE__*/ S.suspend(() =>
+const KeyVaultMetaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyVaultResourceId: S.String,
     encryptionKeyName: S.String,
@@ -109,7 +109,7 @@ export interface EncryptionConfig {
   /** The Key Vault information for connecting to user managed encryption keys. */
   keyVaultMetaInfo?: KeyVaultMetaInfo;
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EncryptionConfigType,
     keyVaultMetaInfo: S.optional(KeyVaultMetaInfo),
@@ -118,7 +118,7 @@ export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of encryption for this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesEncryptionState = "Enabled" | "Disabled";
-export const CreateDataLakeStoreAccountPropertiesEncryptionState = S.String;
+const CreateDataLakeStoreAccountPropertiesEncryptionState = S.String;
 
 /** The firewall rule properties to use when creating a new firewall rule. */
 export interface CreateOrUpdateFirewallRuleProperties {
@@ -127,7 +127,7 @@ export interface CreateOrUpdateFirewallRuleProperties {
   /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
   endIpAddress: string;
 }
-export const CreateOrUpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateFirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIpAddress: S.String,
     endIpAddress: S.String,
@@ -143,7 +143,7 @@ export interface CreateFirewallRuleWithAccountParameters {
   /** The firewall rule properties to use when creating a new firewall rule. */
   properties: CreateOrUpdateFirewallRuleProperties;
 }
-export const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: CreateOrUpdateFirewallRuleProperties,
@@ -155,7 +155,7 @@ export const CreateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend((
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesFirewallRulesList =
   Array<CreateFirewallRuleWithAccountParameters>;
-export const CreateDataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
+const CreateDataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
   CreateFirewallRuleWithAccountParameters,
 ) as any as S.Schema<CreateDataLakeStoreAccountPropertiesFirewallRulesList>;
 
@@ -164,7 +164,7 @@ export interface CreateOrUpdateVirtualNetworkRuleProperties {
   /** The resource identifier for the subnet. */
   subnetId: string;
 }
-export const CreateOrUpdateVirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateVirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.String,
   }),
@@ -179,7 +179,7 @@ export interface CreateVirtualNetworkRuleWithAccountParameters {
   /** The virtual network rule properties to use when creating a new virtual network rule. */
   properties: CreateOrUpdateVirtualNetworkRuleProperties;
 }
-export const CreateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const CreateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: CreateOrUpdateVirtualNetworkRuleProperties,
@@ -191,24 +191,24 @@ export const CreateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.sus
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
   Array<CreateVirtualNetworkRuleWithAccountParameters>;
-export const CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
+const CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   CreateVirtualNetworkRuleWithAccountParameters,
 ) as any as S.Schema<CreateDataLakeStoreAccountPropertiesVirtualNetworkRulesList>;
 
 /** The current state of the IP address firewall for this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesFirewallState = "Enabled" | "Disabled";
-export const CreateDataLakeStoreAccountPropertiesFirewallState = S.String;
+const CreateDataLakeStoreAccountPropertiesFirewallState = S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type CreateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = "Enabled" | "Disabled";
-export const CreateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
+const CreateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
 
 /** The trusted identity provider properties to use when creating a new trusted identity provider. */
 export interface CreateOrUpdateTrustedIdProviderProperties {
   /** The URL of this trusted identity provider. */
   idProvider: string;
 }
-export const CreateOrUpdateTrustedIdProviderProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateTrustedIdProviderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idProvider: S.String,
   }),
@@ -223,7 +223,7 @@ export interface CreateTrustedIdProviderWithAccountParameters {
   /** The trusted identity provider properties to use when creating a new trusted identity provider. */
   properties: CreateOrUpdateTrustedIdProviderProperties;
 }
-export const CreateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: CreateOrUpdateTrustedIdProviderProperties,
@@ -235,13 +235,13 @@ export const CreateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.susp
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
   Array<CreateTrustedIdProviderWithAccountParameters>;
-export const CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
+const CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
   CreateTrustedIdProviderWithAccountParameters,
 ) as any as S.Schema<CreateDataLakeStoreAccountPropertiesTrustedIdProvidersList>;
 
 /** The current state of the trusted identity provider feature for this Data Lake Store account. */
 export type CreateDataLakeStoreAccountPropertiesTrustedIdProviderState = "Enabled" | "Disabled";
-export const CreateDataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
+const CreateDataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
 
 /** The commitment tier to use for next month. */
 export type CreateDataLakeStoreAccountPropertiesNewTier =
@@ -252,7 +252,7 @@ export type CreateDataLakeStoreAccountPropertiesNewTier =
   | "Commitment_500TB"
   | "Commitment_1PB"
   | "Commitment_5PB";
-export const CreateDataLakeStoreAccountPropertiesNewTier = S.String;
+const CreateDataLakeStoreAccountPropertiesNewTier = S.String;
 
 export interface CreateDataLakeStoreAccountProperties {
   /** The default owner group for all new folders and files created in the Data Lake Store account. */
@@ -278,7 +278,7 @@ export interface CreateDataLakeStoreAccountProperties {
   /** The commitment tier to use for next month. */
   newTier?: CreateDataLakeStoreAccountPropertiesNewTier | (string & {});
 }
-export const CreateDataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateDataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGroup: S.optional(S.String),
     encryptionConfig: S.optional(EncryptionConfig),
@@ -311,7 +311,7 @@ export interface CreateAccountRequest {
   /** The Data Lake Store account properties to use for creating. */
   properties?: CreateDataLakeStoreAccountProperties;
 }
-export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -332,12 +332,12 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateAccountResponseTagsMap =
+const CreateAccountResponseTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
 
 /** The type of encryption being used. Currently the only supported type is 'SystemAssigned'. */
 export type EncryptionIdentityType = "SystemAssigned";
-export const EncryptionIdentityType = S.String;
+const EncryptionIdentityType = S.String;
 
 /** The encryption identity properties. */
 export interface EncryptionIdentity {
@@ -348,7 +348,7 @@ export interface EncryptionIdentity {
   /** The tenant identifier associated with the encryption. */
   tenantId?: string;
 }
-export const EncryptionIdentity = /*@__PURE__*/ S.suspend(() =>
+const EncryptionIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: EncryptionIdentityType,
     principalId: S.optional(S.String),
@@ -369,19 +369,19 @@ export type DataLakeStoreAccountPropertiesProvisioningState =
   | "Deleted"
   | "Undeleting"
   | "Canceled";
-export const DataLakeStoreAccountPropertiesProvisioningState = S.String;
+const DataLakeStoreAccountPropertiesProvisioningState = S.String;
 
 /** The state of the Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesState = "Active" | "Suspended";
-export const DataLakeStoreAccountPropertiesState = S.String;
+const DataLakeStoreAccountPropertiesState = S.String;
 
 /** The current state of encryption for this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesEncryptionState = "Enabled" | "Disabled";
-export const DataLakeStoreAccountPropertiesEncryptionState = S.String;
+const DataLakeStoreAccountPropertiesEncryptionState = S.String;
 
 /** The current state of encryption provisioning for this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesEncryptionProvisioningState = "Creating" | "Succeeded";
-export const DataLakeStoreAccountPropertiesEncryptionProvisioningState = S.String;
+const DataLakeStoreAccountPropertiesEncryptionProvisioningState = S.String;
 
 /** The firewall rule properties. */
 export interface FirewallRuleProperties {
@@ -390,7 +390,7 @@ export interface FirewallRuleProperties {
   /** The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol. */
   endIpAddress?: string;
 }
-export const FirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const FirewallRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIpAddress: S.optional(S.String),
     endIpAddress: S.optional(S.String),
@@ -408,7 +408,7 @@ export interface FirewallRule {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
+const FirewallRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -419,7 +419,7 @@ export const FirewallRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesFirewallRulesList = Array<FirewallRule>;
-export const DataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
+const DataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
   FirewallRule,
 ) as any as S.Schema<DataLakeStoreAccountPropertiesFirewallRulesList>;
 
@@ -428,7 +428,7 @@ export interface VirtualNetworkRuleProperties {
   /** The resource identifier for the subnet. */
   subnetId?: string;
 }
-export const VirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRuleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.optional(S.String),
   }),
@@ -447,7 +447,7 @@ export interface VirtualNetworkRule {
   /** The virtual network rule properties. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -458,24 +458,24 @@ export const VirtualNetworkRule = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesVirtualNetworkRulesList = Array<VirtualNetworkRule>;
-export const DataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
+const DataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   VirtualNetworkRule,
 ) as any as S.Schema<DataLakeStoreAccountPropertiesVirtualNetworkRulesList>;
 
 /** The current state of the IP address firewall for this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesFirewallState = "Enabled" | "Disabled";
-export const DataLakeStoreAccountPropertiesFirewallState = S.String;
+const DataLakeStoreAccountPropertiesFirewallState = S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type DataLakeStoreAccountPropertiesFirewallAllowAzureIps = "Enabled" | "Disabled";
-export const DataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
+const DataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
 
 /** The trusted identity provider properties. */
 export interface TrustedIdProviderProperties {
   /** The URL of this trusted identity provider. */
   idProvider?: string;
 }
-export const TrustedIdProviderProperties = /*@__PURE__*/ S.suspend(() =>
+const TrustedIdProviderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idProvider: S.optional(S.String),
   }),
@@ -494,7 +494,7 @@ export interface TrustedIdProvider {
   /** The trusted identity provider properties. */
   properties?: TrustedIdProviderProperties;
 }
-export const TrustedIdProvider = /*@__PURE__*/ S.suspend(() =>
+const TrustedIdProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -505,13 +505,13 @@ export const TrustedIdProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesTrustedIdProvidersList = Array<TrustedIdProvider>;
-export const DataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
+const DataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
   TrustedIdProvider,
 ) as any as S.Schema<DataLakeStoreAccountPropertiesTrustedIdProvidersList>;
 
 /** The current state of the trusted identity provider feature for this Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesTrustedIdProviderState = "Enabled" | "Disabled";
-export const DataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
+const DataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
 
 /** The commitment tier to use for next month. */
 export type DataLakeStoreAccountPropertiesNewTier =
@@ -522,7 +522,7 @@ export type DataLakeStoreAccountPropertiesNewTier =
   | "Commitment_500TB"
   | "Commitment_1PB"
   | "Commitment_5PB";
-export const DataLakeStoreAccountPropertiesNewTier = S.String;
+const DataLakeStoreAccountPropertiesNewTier = S.String;
 
 /** The commitment tier in use for the current month. */
 export type DataLakeStoreAccountPropertiesCurrentTier =
@@ -533,7 +533,7 @@ export type DataLakeStoreAccountPropertiesCurrentTier =
   | "Commitment_500TB"
   | "Commitment_1PB"
   | "Commitment_5PB";
-export const DataLakeStoreAccountPropertiesCurrentTier = S.String;
+const DataLakeStoreAccountPropertiesCurrentTier = S.String;
 
 /** Data Lake Store account properties information. */
 export interface DataLakeStoreAccountProperties {
@@ -574,7 +574,7 @@ export interface DataLakeStoreAccountProperties {
   /** The commitment tier in use for the current month. */
   currentTier?: DataLakeStoreAccountPropertiesCurrentTier;
 }
-export const DataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const DataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     provisioningState: S.optional(DataLakeStoreAccountPropertiesProvisioningState),
@@ -617,7 +617,7 @@ export interface CreateAccountResponse {
   /** The Data Lake Store account properties. */
   properties?: DataLakeStoreAccountProperties;
 }
-export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -637,7 +637,7 @@ export interface DeleteAccountRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -653,7 +653,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccountResponse",
 }) as any as S.Schema<DeleteAccountResponse>;
 
@@ -667,7 +667,7 @@ export interface DeleteFirewallRuleRequest {
   /** The name of the firewall rule to delete. */
   firewallRuleName: string;
 }
-export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -686,7 +686,7 @@ export const DeleteFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFirewallRuleRequest>;
 
 export interface DeleteFirewallRuleResponse {}
-export const DeleteFirewallRuleResponse =
+const DeleteFirewallRuleResponse =
   DeleteAccountResponse as any as S.Schema<DeleteFirewallRuleResponse>;
 
 export interface DeleteTrustedIdProviderRequest {
@@ -699,7 +699,7 @@ export interface DeleteTrustedIdProviderRequest {
   /** The name of the trusted identity provider to delete. */
   trustedIdProviderName: string;
 }
-export const DeleteTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -718,9 +718,9 @@ export const DeleteTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrustedIdProviderRequest>;
 
 export interface DeleteTrustedIdProviderResponse {}
-export const DeleteTrustedIdProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteTrustedIdProviderResponse" },
-) as any as S.Schema<DeleteTrustedIdProviderResponse>;
+const DeleteTrustedIdProviderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteTrustedIdProviderResponse",
+}) as any as S.Schema<DeleteTrustedIdProviderResponse>;
 
 export interface DeleteVirtualNetworkRuleRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -732,7 +732,7 @@ export interface DeleteVirtualNetworkRuleRequest {
   /** The name of the virtual network rule to delete. */
   virtualNetworkRuleName: string;
 }
-export const DeleteVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -751,9 +751,7 @@ export const DeleteVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualNetworkRuleRequest>;
 
 export interface DeleteVirtualNetworkRuleResponse {}
-export const DeleteVirtualNetworkRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteVirtualNetworkRuleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVirtualNetworkRuleResponse",
 }) as any as S.Schema<DeleteVirtualNetworkRuleResponse>;
 
@@ -765,7 +763,7 @@ export interface EnableAccountKeyVaultRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const EnableAccountKeyVaultRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableAccountKeyVaultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -783,7 +781,7 @@ export const EnableAccountKeyVaultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableAccountKeyVaultRequest>;
 
 export interface EnableAccountKeyVaultResponse {}
-export const EnableAccountKeyVaultResponse =
+const EnableAccountKeyVaultResponse =
   DeleteAccountResponse as any as S.Schema<EnableAccountKeyVaultResponse>;
 
 export interface FirewallRulesCreateOrUpdateRequest {
@@ -798,7 +796,7 @@ export interface FirewallRulesCreateOrUpdateRequest {
   /** The firewall rule properties to use when creating a new firewall rule. */
   properties: CreateOrUpdateFirewallRuleProperties;
 }
-export const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const FirewallRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -827,7 +825,7 @@ export interface FirewallRulesCreateOrUpdateResponse {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const FirewallRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -846,7 +844,7 @@ export interface GetAccountRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -863,9 +861,6 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap =
-  CreateAccountRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
-
 export interface GetAccountResponse {
   /** The resource identifier. */
   id?: string;
@@ -882,7 +877,7 @@ export interface GetAccountResponse {
   /** The Data Lake Store account properties. */
   properties?: DataLakeStoreAccountProperties;
 }
-export const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
+const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
 
 export interface GetFirewallRuleRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -894,7 +889,7 @@ export interface GetFirewallRuleRequest {
   /** The name of the firewall rule to retrieve. */
   firewallRuleName: string;
 }
-export const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -920,7 +915,7 @@ export interface GetFirewallRuleResponse {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const GetFirewallRuleResponse = FirewallRule as any as S.Schema<GetFirewallRuleResponse>;
+const GetFirewallRuleResponse = FirewallRule as any as S.Schema<GetFirewallRuleResponse>;
 
 export interface GetLocationCapabilityRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -928,7 +923,7 @@ export interface GetLocationCapabilityRequest {
   /** The resource location without whitespace. */
   location: string;
 }
-export const GetLocationCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationCapabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -951,7 +946,7 @@ export type CapabilityInformationState =
   | "Deleted"
   | "Unregistered"
   | "Warned";
-export const CapabilityInformationState = S.String;
+const CapabilityInformationState = S.String;
 
 /** Subscription-level properties and limits for Data Lake Store. */
 export interface CapabilityInformation {
@@ -966,7 +961,7 @@ export interface CapabilityInformation {
   /** The Boolean value of true or false to indicate the maintenance state. */
   migrationState?: boolean;
 }
-export const CapabilityInformation = /*@__PURE__*/ S.suspend(() =>
+const CapabilityInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     state: S.optional(CapabilityInformationState),
@@ -982,7 +977,7 @@ export interface GetLocationUsageRequest {
   /** The resource location without whitespace. */
   location: string;
 }
-export const GetLocationUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1004,7 +999,7 @@ export type UsageUnit =
   | "Percent"
   | "CountsPerSecond"
   | "BytesPerSecond";
-export const UsageUnit = S.String;
+const UsageUnit = S.String;
 
 /** The usage names that can be used. */
 export interface UsageName {
@@ -1013,7 +1008,7 @@ export interface UsageName {
   /** Gets a localized string describing the resource name. */
   localizedValue?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -1033,7 +1028,7 @@ export interface Usage {
   /** Gets the name of the type of usage. */
   name?: UsageName;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(UsageUnit),
     id: S.optional(S.String),
@@ -1045,7 +1040,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the list of Storage Resource Usages. */
 export type UsageListResultValueList = Array<Usage>;
-export const UsageListResultValueList = /*@__PURE__*/ S.Array(
+const UsageListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResultValueList>;
 
@@ -1054,7 +1049,7 @@ export interface UsageListResult {
   /** Gets or sets the list of Storage Resource Usages. */
   value?: UsageListResultValueList;
 }
-export const UsageListResult = /*@__PURE__*/ S.suspend(() =>
+const UsageListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageListResultValueList),
   }),
@@ -1070,7 +1065,7 @@ export interface GetTrustedIdProviderRequest {
   /** The name of the trusted identity provider to retrieve. */
   trustedIdProviderName: string;
 }
-export const GetTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1098,7 +1093,7 @@ export interface GetTrustedIdProviderResponse {
   /** The trusted identity provider properties. */
   properties?: TrustedIdProviderProperties;
 }
-export const GetTrustedIdProviderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTrustedIdProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1119,7 +1114,7 @@ export interface GetVirtualNetworkRuleRequest {
   /** The name of the virtual network rule to retrieve. */
   virtualNetworkRuleName: string;
 }
-export const GetVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1147,7 +1142,7 @@ export interface GetVirtualNetworkRuleResponse {
   /** The virtual network rule properties. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const GetVirtualNetworkRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1176,7 +1171,7 @@ export interface ListAccountByResourceGroupRequest {
   /** A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional. */
   _count?: boolean;
 }
-export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1200,7 +1195,7 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type DataLakeStoreAccountBasicTagsMap = { [key: string]: string | undefined };
-export const DataLakeStoreAccountBasicTagsMap =
+const DataLakeStoreAccountBasicTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<DataLakeStoreAccountBasicTagsMap>;
 
 /** The provisioning status of the Data Lake Store account. */
@@ -1216,11 +1211,11 @@ export type DataLakeStoreAccountPropertiesBasicProvisioningState =
   | "Deleted"
   | "Undeleting"
   | "Canceled";
-export const DataLakeStoreAccountPropertiesBasicProvisioningState = S.String;
+const DataLakeStoreAccountPropertiesBasicProvisioningState = S.String;
 
 /** The state of the Data Lake Store account. */
 export type DataLakeStoreAccountPropertiesBasicState = "Active" | "Suspended";
-export const DataLakeStoreAccountPropertiesBasicState = S.String;
+const DataLakeStoreAccountPropertiesBasicState = S.String;
 
 /** The basic account specific properties that are associated with an underlying Data Lake Store account. */
 export interface DataLakeStoreAccountPropertiesBasic {
@@ -1237,7 +1232,7 @@ export interface DataLakeStoreAccountPropertiesBasic {
   /** The full CName endpoint for this account. */
   endpoint?: string;
 }
-export const DataLakeStoreAccountPropertiesBasic = /*@__PURE__*/ S.suspend(() =>
+const DataLakeStoreAccountPropertiesBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     provisioningState: S.optional(DataLakeStoreAccountPropertiesBasicProvisioningState),
@@ -1265,7 +1260,7 @@ export interface DataLakeStoreAccountBasic {
   /** The basic Data Lake Store account properties. */
   properties?: DataLakeStoreAccountPropertiesBasic;
 }
-export const DataLakeStoreAccountBasic = /*@__PURE__*/ S.suspend(() =>
+const DataLakeStoreAccountBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1280,7 +1275,7 @@ export const DataLakeStoreAccountBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type DataLakeStoreAccountListResultValueList = Array<DataLakeStoreAccountBasic>;
-export const DataLakeStoreAccountListResultValueList = /*@__PURE__*/ S.Array(
+const DataLakeStoreAccountListResultValueList = /*@__PURE__*/ S.Array(
   DataLakeStoreAccountBasic,
 ) as any as S.Schema<DataLakeStoreAccountListResultValueList>;
 
@@ -1291,7 +1286,7 @@ export interface DataLakeStoreAccountListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const DataLakeStoreAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const DataLakeStoreAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DataLakeStoreAccountListResultValueList),
     nextLink: S.optional(S.String),
@@ -1316,7 +1311,7 @@ export interface ListAccountsRequest {
   /** The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count=true. Optional. */
   _count?: boolean;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1343,7 +1338,7 @@ export interface ListFirewallRuleByAccountRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const ListFirewallRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFirewallRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1362,7 +1357,7 @@ export const ListFirewallRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type FirewallRuleListResultValueList = Array<FirewallRule>;
-export const FirewallRuleListResultValueList =
+const FirewallRuleListResultValueList =
   DataLakeStoreAccountPropertiesFirewallRulesList as any as S.Schema<FirewallRuleListResultValueList>;
 
 /** Data Lake Store firewall rule list information. */
@@ -1372,7 +1367,7 @@ export interface FirewallRuleListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const FirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const FirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(FirewallRuleListResultValueList),
     nextLink: S.optional(S.String),
@@ -1380,7 +1375,7 @@ export const FirewallRuleListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FirewallRuleListResult" }) as any as S.Schema<FirewallRuleListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1402,7 +1397,7 @@ export interface OperationDisplay {
   /** A friendly description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1413,7 +1408,7 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation. */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** An available operation for Data Lake Store. */
 export interface Operation {
@@ -1424,7 +1419,7 @@ export interface Operation {
   /** The intended executor of the operation. */
   origin?: OperationOrigin;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1434,7 +1429,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The results of the list operation. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1445,7 +1440,7 @@ export interface OperationListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1460,7 +1455,7 @@ export interface ListTrustedIdProviderByAccountRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const ListTrustedIdProviderByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTrustedIdProviderByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1479,7 +1474,7 @@ export const ListTrustedIdProviderByAccountRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The results of the list operation. */
 export type TrustedIdProviderListResultValueList = Array<TrustedIdProvider>;
-export const TrustedIdProviderListResultValueList =
+const TrustedIdProviderListResultValueList =
   DataLakeStoreAccountPropertiesTrustedIdProvidersList as any as S.Schema<TrustedIdProviderListResultValueList>;
 
 /** Data Lake Store trusted identity provider list information. */
@@ -1489,7 +1484,7 @@ export interface TrustedIdProviderListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const TrustedIdProviderListResult = /*@__PURE__*/ S.suspend(() =>
+const TrustedIdProviderListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(TrustedIdProviderListResultValueList),
     nextLink: S.optional(S.String),
@@ -1506,7 +1501,7 @@ export interface ListVirtualNetworkRuleByAccountRequest {
   /** The name of the Data Lake Store account. */
   accountName: string;
 }
-export const ListVirtualNetworkRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworkRuleByAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1525,7 +1520,7 @@ export const ListVirtualNetworkRuleByAccountRequest = /*@__PURE__*/ S.suspend(()
 
 /** The results of the list operation. */
 export type VirtualNetworkRuleListResultValueList = Array<VirtualNetworkRule>;
-export const VirtualNetworkRuleListResultValueList =
+const VirtualNetworkRuleListResultValueList =
   DataLakeStoreAccountPropertiesVirtualNetworkRulesList as any as S.Schema<VirtualNetworkRuleListResultValueList>;
 
 /** Data Lake Store virtual network rule list information. */
@@ -1535,7 +1530,7 @@ export interface VirtualNetworkRuleListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const VirtualNetworkRuleListResult = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRuleListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(VirtualNetworkRuleListResultValueList),
     nextLink: S.optional(S.String),
@@ -1556,7 +1551,7 @@ export interface TrustedIdProvidersCreateOrUpdateRequest {
   /** The trusted identity provider properties to use when creating a new trusted identity provider. */
   properties: CreateOrUpdateTrustedIdProviderProperties;
 }
-export const TrustedIdProvidersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TrustedIdProvidersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1585,12 +1580,12 @@ export interface TrustedIdProvidersCreateOrUpdateResponse {
   /** The trusted identity provider properties. */
   properties?: TrustedIdProviderProperties;
 }
-export const TrustedIdProvidersCreateOrUpdateResponse =
+const TrustedIdProvidersCreateOrUpdateResponse =
   GetTrustedIdProviderResponse as any as S.Schema<TrustedIdProvidersCreateOrUpdateResponse>;
 
 /** Resource tags */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap =
+const UpdateAccountRequestTagsMap =
   CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 /** The Key Vault update information used for user managed key rotation. */
@@ -1598,7 +1593,7 @@ export interface UpdateKeyVaultMetaInfo {
   /** The version of the user managed encryption key to update through a key rotation. */
   encryptionKeyVersion?: string;
 }
-export const UpdateKeyVaultMetaInfo = /*@__PURE__*/ S.suspend(() =>
+const UpdateKeyVaultMetaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionKeyVersion: S.optional(S.String),
   }),
@@ -1609,7 +1604,7 @@ export interface UpdateEncryptionConfig {
   /** The updated Key Vault key to use in user managed key rotation. */
   keyVaultMetaInfo?: UpdateKeyVaultMetaInfo;
 }
-export const UpdateEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyVaultMetaInfo: S.optional(UpdateKeyVaultMetaInfo),
   }),
@@ -1617,8 +1612,6 @@ export const UpdateEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The firewall rule properties to use when updating a firewall rule. */
 export type UpdateFirewallRuleProperties = FirewallRuleProperties;
-export const UpdateFirewallRuleProperties = FirewallRuleProperties;
-
 /** The parameters used to update a firewall rule while updating a Data Lake Store account. */
 export interface UpdateFirewallRuleWithAccountParameters {
   /** The unique name of the firewall rule to update. */
@@ -1626,7 +1619,7 @@ export interface UpdateFirewallRuleWithAccountParameters {
   /** The firewall rule properties to use when updating a firewall rule. */
   properties?: FirewallRuleProperties;
 }
-export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: S.optional(FirewallRuleProperties),
@@ -1638,14 +1631,12 @@ export const UpdateFirewallRuleWithAccountParameters = /*@__PURE__*/ S.suspend((
 /** The list of firewall rules associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesFirewallRulesList =
   Array<UpdateFirewallRuleWithAccountParameters>;
-export const UpdateDataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
+const UpdateDataLakeStoreAccountPropertiesFirewallRulesList = /*@__PURE__*/ S.Array(
   UpdateFirewallRuleWithAccountParameters,
 ) as any as S.Schema<UpdateDataLakeStoreAccountPropertiesFirewallRulesList>;
 
 /** The virtual network rule properties to use when updating a virtual network rule. */
 export type UpdateVirtualNetworkRuleProperties = VirtualNetworkRuleProperties;
-export const UpdateVirtualNetworkRuleProperties = VirtualNetworkRuleProperties;
-
 /** The parameters used to update a virtual network rule while updating a Data Lake Store account. */
 export interface UpdateVirtualNetworkRuleWithAccountParameters {
   /** The unique name of the virtual network rule to update. */
@@ -1653,7 +1644,7 @@ export interface UpdateVirtualNetworkRuleWithAccountParameters {
   /** The virtual network rule properties to use when updating a virtual network rule. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const UpdateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: S.optional(VirtualNetworkRuleProperties),
@@ -1665,22 +1656,20 @@ export const UpdateVirtualNetworkRuleWithAccountParameters = /*@__PURE__*/ S.sus
 /** The list of virtual network rules associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList =
   Array<UpdateVirtualNetworkRuleWithAccountParameters>;
-export const UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
+const UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList = /*@__PURE__*/ S.Array(
   UpdateVirtualNetworkRuleWithAccountParameters,
 ) as any as S.Schema<UpdateDataLakeStoreAccountPropertiesVirtualNetworkRulesList>;
 
 /** The current state of the IP address firewall for this Data Lake Store account. Disabling the firewall does not remove existing rules, they will just be ignored until the firewall is re-enabled. */
 export type UpdateDataLakeStoreAccountPropertiesFirewallState = "Enabled" | "Disabled";
-export const UpdateDataLakeStoreAccountPropertiesFirewallState = S.String;
+const UpdateDataLakeStoreAccountPropertiesFirewallState = S.String;
 
 /** The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced. */
 export type UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = "Enabled" | "Disabled";
-export const UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
+const UpdateDataLakeStoreAccountPropertiesFirewallAllowAzureIps = S.String;
 
 /** The trusted identity provider properties to use when updating a trusted identity provider. */
 export type UpdateTrustedIdProviderProperties = TrustedIdProviderProperties;
-export const UpdateTrustedIdProviderProperties = TrustedIdProviderProperties;
-
 /** The parameters used to update a trusted identity provider while updating a Data Lake Store account. */
 export interface UpdateTrustedIdProviderWithAccountParameters {
   /** The unique name of the trusted identity provider to update. */
@@ -1688,7 +1677,7 @@ export interface UpdateTrustedIdProviderWithAccountParameters {
   /** The trusted identity provider properties to use when updating a trusted identity provider. */
   properties?: TrustedIdProviderProperties;
 }
-export const UpdateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: S.optional(TrustedIdProviderProperties),
@@ -1700,13 +1689,13 @@ export const UpdateTrustedIdProviderWithAccountParameters = /*@__PURE__*/ S.susp
 /** The list of trusted identity providers associated with this Data Lake Store account. */
 export type UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList =
   Array<UpdateTrustedIdProviderWithAccountParameters>;
-export const UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
+const UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList = /*@__PURE__*/ S.Array(
   UpdateTrustedIdProviderWithAccountParameters,
 ) as any as S.Schema<UpdateDataLakeStoreAccountPropertiesTrustedIdProvidersList>;
 
 /** The current state of the trusted identity provider feature for this Data Lake Store account. Disabling trusted identity provider functionality does not remove the providers, they will just be ignored until this feature is re-enabled. */
 export type UpdateDataLakeStoreAccountPropertiesTrustedIdProviderState = "Enabled" | "Disabled";
-export const UpdateDataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
+const UpdateDataLakeStoreAccountPropertiesTrustedIdProviderState = S.String;
 
 /** The commitment tier to use for next month. */
 export type UpdateDataLakeStoreAccountPropertiesNewTier =
@@ -1717,7 +1706,7 @@ export type UpdateDataLakeStoreAccountPropertiesNewTier =
   | "Commitment_500TB"
   | "Commitment_1PB"
   | "Commitment_5PB";
-export const UpdateDataLakeStoreAccountPropertiesNewTier = S.String;
+const UpdateDataLakeStoreAccountPropertiesNewTier = S.String;
 
 /** Data Lake Store account properties information to be updated. */
 export interface UpdateDataLakeStoreAccountProperties {
@@ -1742,7 +1731,7 @@ export interface UpdateDataLakeStoreAccountProperties {
   /** The commitment tier to use for next month. */
   newTier?: UpdateDataLakeStoreAccountPropertiesNewTier | (string & {});
 }
-export const UpdateDataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataLakeStoreAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultGroup: S.optional(S.String),
     encryptionConfig: S.optional(UpdateEncryptionConfig),
@@ -1770,7 +1759,7 @@ export interface UpdateAccountRequest {
   /** The Data Lake Store account properties to update. */
   properties?: UpdateDataLakeStoreAccountProperties;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1789,9 +1778,6 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap =
-  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
-
 export interface UpdateAccountResponse {
   /** The resource identifier. */
   id?: string;
@@ -1808,8 +1794,7 @@ export interface UpdateAccountResponse {
   /** The Data Lake Store account properties. */
   properties?: DataLakeStoreAccountProperties;
 }
-export const UpdateAccountResponse =
-  CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
+const UpdateAccountResponse = CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
 
 export interface UpdateFirewallRuleRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -1823,7 +1808,7 @@ export interface UpdateFirewallRuleRequest {
   /** The firewall rule properties to use when updating a firewall rule. */
   properties?: FirewallRuleProperties;
 }
-export const UpdateFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1852,7 +1837,7 @@ export interface UpdateFirewallRuleResponse {
   /** The firewall rule properties. */
   properties?: FirewallRuleProperties;
 }
-export const UpdateFirewallRuleResponse =
+const UpdateFirewallRuleResponse =
   FirewallRulesCreateOrUpdateResponse as any as S.Schema<UpdateFirewallRuleResponse>;
 
 export interface UpdateTrustedIdProviderRequest {
@@ -1867,7 +1852,7 @@ export interface UpdateTrustedIdProviderRequest {
   /** The trusted identity provider properties to use when updating a trusted identity provider. */
   properties?: TrustedIdProviderProperties;
 }
-export const UpdateTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTrustedIdProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1896,7 +1881,7 @@ export interface UpdateTrustedIdProviderResponse {
   /** The trusted identity provider properties. */
   properties?: TrustedIdProviderProperties;
 }
-export const UpdateTrustedIdProviderResponse =
+const UpdateTrustedIdProviderResponse =
   GetTrustedIdProviderResponse as any as S.Schema<UpdateTrustedIdProviderResponse>;
 
 export interface UpdateVirtualNetworkRuleRequest {
@@ -1911,7 +1896,7 @@ export interface UpdateVirtualNetworkRuleRequest {
   /** The virtual network rule properties to use when updating a virtual network rule. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const UpdateVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualNetworkRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1940,7 +1925,7 @@ export interface UpdateVirtualNetworkRuleResponse {
   /** The virtual network rule properties. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const UpdateVirtualNetworkRuleResponse =
+const UpdateVirtualNetworkRuleResponse =
   GetVirtualNetworkRuleResponse as any as S.Schema<UpdateVirtualNetworkRuleResponse>;
 
 export interface VirtualNetworkRulesCreateOrUpdateRequest {
@@ -1955,7 +1940,7 @@ export interface VirtualNetworkRulesCreateOrUpdateRequest {
   /** The virtual network rule properties to use when creating a new virtual network rule. */
   properties: CreateOrUpdateVirtualNetworkRuleProperties;
 }
-export const VirtualNetworkRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1984,7 +1969,7 @@ export interface VirtualNetworkRulesCreateOrUpdateResponse {
   /** The virtual network rule properties. */
   properties?: VirtualNetworkRuleProperties;
 }
-export const VirtualNetworkRulesCreateOrUpdateResponse =
+const VirtualNetworkRulesCreateOrUpdateResponse =
   GetVirtualNetworkRuleResponse as any as S.Schema<VirtualNetworkRulesCreateOrUpdateResponse>;
 
 export type CheckAccountNameAvailabilityError = AzureOpError;

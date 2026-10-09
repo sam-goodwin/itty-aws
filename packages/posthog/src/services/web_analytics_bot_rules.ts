@@ -17,7 +17,7 @@ export interface WebAnalyticsBotCondition {
   /** Value matched against the property named by `key`. For 'cidr' this is a network range like 192.0.2.0/24. */
   pattern: string;
 }
-export const WebAnalyticsBotCondition = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsBotCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     key: S.String,
@@ -28,7 +28,7 @@ export const WebAnalyticsBotCondition = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions of this rule. Each one reads a single event property. */
 export type CreateWebAnalyticsBotRuleRequestItemsList = Array<WebAnalyticsBotCondition>;
-export const CreateWebAnalyticsBotRuleRequestItemsList = /*@__PURE__*/ S.Array(
+const CreateWebAnalyticsBotRuleRequestItemsList = /*@__PURE__*/ S.Array(
   WebAnalyticsBotCondition,
 ) as any as S.Schema<CreateWebAnalyticsBotRuleRequestItemsList>;
 
@@ -44,7 +44,7 @@ export interface CreateWebAnalyticsBotRuleRequest {
   /** The conditions of this rule. Each one reads a single event property. */
   items: CreateWebAnalyticsBotRuleRequestItemsList;
 }
-export const CreateWebAnalyticsBotRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAnalyticsBotRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -64,7 +64,7 @@ export const CreateWebAnalyticsBotRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The conditions of this rule. Each one reads a single event property. */
 export type WebAnalyticsBotRuleItemsList = Array<WebAnalyticsBotCondition>;
-export const WebAnalyticsBotRuleItemsList =
+const WebAnalyticsBotRuleItemsList =
   CreateWebAnalyticsBotRuleRequestItemsList as any as S.Schema<WebAnalyticsBotRuleItemsList>;
 
 export interface WebAnalyticsBotRule {
@@ -79,7 +79,7 @@ export interface WebAnalyticsBotRule {
   /** The conditions of this rule. Each one reads a single event property. */
   items: WebAnalyticsBotRuleItemsList;
 }
-export const WebAnalyticsBotRule = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsBotRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -93,7 +93,7 @@ export interface ListWebAnalyticsBotRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListWebAnalyticsBotRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsBotRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -108,12 +108,12 @@ export const ListWebAnalyticsBotRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebAnalyticsBotRulesRequest>;
 
 export type ListWebAnalyticsBotRulesResponseBodyList = Array<WebAnalyticsBotRule>;
-export const ListWebAnalyticsBotRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWebAnalyticsBotRulesResponseBodyList = /*@__PURE__*/ S.Array(
   WebAnalyticsBotRule,
 ) as any as S.Schema<ListWebAnalyticsBotRulesResponseBodyList>;
 
 export type ListWebAnalyticsBotRulesResponse = ListWebAnalyticsBotRulesResponseBodyList;
-export const ListWebAnalyticsBotRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsBotRulesResponse = /*@__PURE__*/ S.suspend(() =>
   ListWebAnalyticsBotRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWebAnalyticsBotRulesResponse",
@@ -124,7 +124,7 @@ export interface WebAnalyticsBotRulesDestroyRequest {
   project_id: string;
   id: string;
 }
-export const WebAnalyticsBotRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsBotRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -140,9 +140,7 @@ export const WebAnalyticsBotRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebAnalyticsBotRulesDestroyRequest>;
 
 export interface WebAnalyticsBotRulesDestroyResponse {}
-export const WebAnalyticsBotRulesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const WebAnalyticsBotRulesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WebAnalyticsBotRulesDestroyResponse",
 }) as any as S.Schema<WebAnalyticsBotRulesDestroyResponse>;
 

@@ -108,7 +108,7 @@ export class ValidationException
 export type JobArn = string;
 export type TrajectoryId = string;
 export type CompletionStatus = "ready" | "failed" | (string & {});
-export const CompletionStatus = S.String;
+const CompletionStatus = S.String;
 
 export interface CompleteRolloutRequest {
   JobArn: string;
@@ -116,7 +116,7 @@ export interface CompleteRolloutRequest {
   Status?: CompletionStatus;
   ClientToken?: string;
 }
-export const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String,
@@ -127,7 +127,7 @@ export const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CompleteRolloutRequest" }) as any as S.Schema<CompleteRolloutRequest>;
 export interface CompleteRolloutResponse {}
-export const CompleteRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CompleteRolloutResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CompleteRolloutResponse",
 }) as any as S.Schema<CompleteRolloutResponse>;
 export interface SampleRequest {
@@ -135,7 +135,7 @@ export interface SampleRequest {
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-export const SampleRequest = /*@__PURE__*/ S.suspend(() =>
+const SampleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
@@ -146,7 +146,7 @@ export interface SampleResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-export const SampleResponse = /*@__PURE__*/ S.suspend(() =>
+const SampleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Body: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -157,7 +157,7 @@ export interface SampleWithResponseStreamRequest {
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-export const SampleWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const SampleWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
@@ -179,7 +179,7 @@ export interface SampleWithResponseStreamResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-export const SampleWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
+const SampleWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Body: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -188,14 +188,14 @@ export const SampleWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SampleWithResponseStreamResponse",
 }) as any as S.Schema<SampleWithResponseStreamResponse>;
 export type DoubleList = number[];
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
+const DoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface UpdateRewardRequest {
   JobArn: string;
   TrajectoryId: string;
   Rewards: number[];
   ClientToken?: string;
 }
-export const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String,
@@ -204,8 +204,7 @@ export const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/update-reward" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "UpdateRewardRequest" }) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
-export const UpdateRewardResponse =
-  CompleteRolloutResponse as any as S.Schema<UpdateRewardResponse>;
+const UpdateRewardResponse = CompleteRolloutResponse as any as S.Schema<UpdateRewardResponse>;
 export type FailureReason = string;
 export type CompleteRolloutError =
   | AccessDeniedException

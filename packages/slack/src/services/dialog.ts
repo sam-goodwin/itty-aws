@@ -14,7 +14,7 @@ export interface DialogOpenRequest {
   /** Exchange a trigger to post to the user. */
   trigger_id: string;
 }
-export const DialogOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const DialogOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dialog: S.String,
     trigger_id: S.String,
@@ -25,7 +25,7 @@ export interface DialogOpenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DialogOpenResponse = /*@__PURE__*/ S.suspend(() =>
+const DialogOpenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),

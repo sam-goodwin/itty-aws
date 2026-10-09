@@ -47,14 +47,14 @@ export class UnprocessableEntity
 
 /** The AI agent that handles an AI chat. */
 export type AiChatAgentIdentifiers = "general" | "support";
-export const AiChatAgentIdentifiers = S.String;
+const AiChatAgentIdentifiers = S.String;
 
 /** Input for an attachment */
 export interface CreateAiChatRequestMessageAttachmentsItem {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateAiChatRequestMessageAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateAiChatRequestMessageAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -65,13 +65,13 @@ export const CreateAiChatRequestMessageAttachmentsItem = /*@__PURE__*/ S.suspend
 /** A list of previously uploaded file attachments to include with the first message. */
 export type CreateAiChatRequestMessageAttachmentsList =
   Array<CreateAiChatRequestMessageAttachmentsItem>;
-export const CreateAiChatRequestMessageAttachmentsList = /*@__PURE__*/ S.Array(
+const CreateAiChatRequestMessageAttachmentsList = /*@__PURE__*/ S.Array(
   CreateAiChatRequestMessageAttachmentsItem,
 ) as any as S.Schema<CreateAiChatRequestMessageAttachmentsList>;
 
 /** The source of an AI chat message */
 export type AiChatMessageSourceTypes = "manual" | "suggestion" | "link";
-export const AiChatMessageSourceTypes = S.String;
+const AiChatMessageSourceTypes = S.String;
 
 export interface CreateAiChatRequest {
   /** The AI agent that handles the chat. Defaults to `support`. */
@@ -89,7 +89,7 @@ export interface CreateAiChatRequest {
   /** An optional display title for the AI chat thread (e.g., "Help with billing"). */
   title?: string | null;
 }
-export const CreateAiChatRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAiChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_identifier: S.optional(S.NullOr(AiChatAgentIdentifiers)),
     current_account_id: S.optional(S.NullOr(S.String)),
@@ -103,14 +103,14 @@ export const CreateAiChatRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The notification preference for an AI chat */
 export type AiChatNotificationPreferences = "all" | "none";
-export const AiChatNotificationPreferences = S.String;
+const AiChatNotificationPreferences = S.String;
 
 /** The user who owns this AI chat conversation. */
 export interface AiChatUser {
   /** The unique identifier for the user. */
   id: string;
 }
-export const AiChatUser = /*@__PURE__*/ S.suspend(() =>
+const AiChatUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -139,7 +139,7 @@ export interface AiChat {
   /** The user who owns this AI chat conversation. */
   user: AiChatUser;
 }
-export const AiChat = /*@__PURE__*/ S.suspend(() =>
+const AiChat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_identifier: AiChatAgentIdentifiers,
     blended_token_usage: S.String,
@@ -158,14 +158,14 @@ export interface DeleteAiChatRequest {
   /** The unique identifier of the AI chat to delete (e.g., "ai_chat_XXXXX"). */
   id: string;
 }
-export const DeleteAiChatRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAiChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/ai_chats/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteAiChatRequest" }) as any as S.Schema<DeleteAiChatRequest>;
 
 export type DeleteAiChatResponse = boolean;
-export const DeleteAiChatResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAiChatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteAiChatResponse" }) as any as S.Schema<DeleteAiChatResponse>;
 
@@ -173,7 +173,7 @@ export interface GetAiChatRequest {
   /** The unique identifier of the AI chat to retrieve. */
   id: string;
 }
-export const GetAiChatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/ai_chats/{id}", code: 200 })),
@@ -187,7 +187,7 @@ export interface ListAiChatRequest {
   agent_identifier?: AiChatAgentIdentifiers | (string & {});
   only_active_crons?: boolean;
 }
-export const ListAiChatRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAiChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -200,8 +200,6 @@ export const ListAiChatRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The user who owns this AI chat conversation. */
 export type AiChatListItemUser = AiChatUser;
-export const AiChatListItemUser = AiChatUser;
-
 /** An AI-powered chat conversation belonging to a user, with optional scheduled automation. */
 export interface AiChatListItem {
   /** The AI agent that handles this chat. Set when the chat is created and fixed for its lifetime. */
@@ -225,11 +223,11 @@ export interface AiChatListItem {
   /** The user who owns this AI chat conversation. */
   user: AiChatUser;
 }
-export const AiChatListItem = AiChat as any as S.Schema<AiChatListItem>;
+const AiChatListItem = AiChat as any as S.Schema<AiChatListItem>;
 
 /** A list of nodes. */
 export type ListAiChatResponseDataList = Array<AiChatListItem>;
-export const ListAiChatResponseDataList = /*@__PURE__*/ S.Array(
+const ListAiChatResponseDataList = /*@__PURE__*/ S.Array(
   AiChatListItem,
 ) as any as S.Schema<ListAiChatResponseDataList>;
 
@@ -244,7 +242,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -259,7 +257,7 @@ export interface ListAiChatResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListAiChatResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAiChatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAiChatResponseDataList,
     page_info: PageInfo,
@@ -276,7 +274,7 @@ export interface UpdateAiChatRequest {
   /** The new display title for the AI chat thread (e.g., "Help with billing"). */
   title?: string | null;
 }
-export const UpdateAiChatRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAiChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     current_account_id: S.optional(S.NullOr(S.String)),

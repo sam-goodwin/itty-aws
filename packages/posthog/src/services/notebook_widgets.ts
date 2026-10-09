@@ -50,11 +50,11 @@ export type WidgetGenerateRequestModelEnum =
   | "claude-sonnet-4-6"
   | "claude-sonnet-5"
   | "claude-opus-5";
-export const WidgetGenerateRequestModelEnum = S.String;
+const WidgetGenerateRequestModelEnum = S.String;
 
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve */
 export type GenerationOperationEnum = "initial" | "regenerate" | "improve";
-export const GenerationOperationEnum = S.String;
+const GenerationOperationEnum = S.String;
 
 export interface GenerateReusableWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -71,7 +71,7 @@ export interface GenerateReusableWidgetRequest {
   /** Current widget version the improvement is based on. Required for improve operations. */
   expected_current_version_id?: string;
 }
-export const GenerateReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -92,7 +92,7 @@ export const GenerateReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateReusableWidgetRequest>;
 
 export interface GenerateReusableWidgetResponse {}
-export const GenerateReusableWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GenerateReusableWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GenerateReusableWidgetResponse",
 }) as any as S.Schema<GenerateReusableWidgetResponse>;
 
@@ -101,7 +101,7 @@ export interface GetReusableWidgetRequest {
   project_id: string;
   id: string;
 }
-export const GetReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -112,25 +112,25 @@ export const GetReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable widget labels. */
 export type ReusableWidgetDetailTagsList = Array<string>;
-export const ReusableWidgetDetailTagsList = /*@__PURE__*/ S.Array(
+const ReusableWidgetDetailTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReusableWidgetDetailTagsList>;
 
 /** * `published` - published * `deprecated` - deprecated */
 export type PublicationStatusEnum = "published" | "deprecated";
-export const PublicationStatusEnum = S.String;
+const PublicationStatusEnum = S.String;
 
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve * `revert` - revert */
 export type GeneratedWidgetVersionOperationEnum = "initial" | "regenerate" | "improve" | "revert";
-export const GeneratedWidgetVersionOperationEnum = S.String;
+const GeneratedWidgetVersionOperationEnum = S.String;
 
 /** * `queued` - queued * `building` - building * `ready` - ready * `failed` - failed */
 export type BuildStatusEnum = "queued" | "building" | "ready" | "failed";
-export const BuildStatusEnum = S.String;
+const BuildStatusEnum = S.String;
 
 /** Logical dataframe slots accepted by this widget version. */
 export type ReusableWidgetVersionDetailFrameNamesList = Array<string>;
-export const ReusableWidgetVersionDetailFrameNamesList =
+const ReusableWidgetVersionDetailFrameNamesList =
   ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
 
 export interface WidgetInputContractColumn {
@@ -139,7 +139,7 @@ export interface WidgetInputContractColumn {
   /** Column type expected by the reusable widget. */
   type: string;
 }
-export const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
+const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -150,7 +150,7 @@ export const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns the notebook-local binding must produce after its optional Hog mapping. */
 export type WidgetInputContractItemColumnsList = Array<WidgetInputContractColumn>;
-export const WidgetInputContractItemColumnsList = /*@__PURE__*/ S.Array(
+const WidgetInputContractItemColumnsList = /*@__PURE__*/ S.Array(
   WidgetInputContractColumn,
 ) as any as S.Schema<WidgetInputContractItemColumnsList>;
 
@@ -164,7 +164,7 @@ export interface WidgetInputContractItem {
   /** Hash of the expected column schema. */
   schemaHash: string;
 }
-export const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
+const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slot: S.String,
     sourceName: S.String,
@@ -175,7 +175,7 @@ export const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Dataframe slots and schemas expected by this widget version. */
 export type ReusableWidgetVersionDetailInputContractList = Array<WidgetInputContractItem>;
-export const ReusableWidgetVersionDetailInputContractList = /*@__PURE__*/ S.Array(
+const ReusableWidgetVersionDetailInputContractList = /*@__PURE__*/ S.Array(
   WidgetInputContractItem,
 ) as any as S.Schema<ReusableWidgetVersionDetailInputContractList>;
 
@@ -186,11 +186,11 @@ export type GeneratedWidgetVersionSecurityReviewSeverityEnum =
   | "medium"
   | "high"
   | "critical";
-export const GeneratedWidgetVersionSecurityReviewSeverityEnum = S.String;
+const GeneratedWidgetVersionSecurityReviewSeverityEnum = S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
 export type ErrorTrackingIssueSeverityRuleEnum = "low" | "medium" | "high" | "critical";
-export const ErrorTrackingIssueSeverityRuleEnum = S.String;
+const ErrorTrackingIssueSeverityRuleEnum = S.String;
 
 export interface WidgetSecurityFinding {
   /** Severity of this potential security issue. * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
@@ -200,7 +200,7 @@ export interface WidgetSecurityFinding {
   /** Why the source may be unsafe and what it could do. */
   details: string;
 }
-export const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
+const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: ErrorTrackingIssueSeverityRuleEnum,
     title: S.String,
@@ -210,7 +210,7 @@ export const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** Potential security issues found in the source. */
 export type WidgetSecurityReviewFindingsList = Array<WidgetSecurityFinding>;
-export const WidgetSecurityReviewFindingsList = /*@__PURE__*/ S.Array(
+const WidgetSecurityReviewFindingsList = /*@__PURE__*/ S.Array(
   WidgetSecurityFinding,
 ) as any as S.Schema<WidgetSecurityReviewFindingsList>;
 
@@ -228,7 +228,7 @@ export interface WidgetSecurityReview {
   /** When this exact widget source was reviewed. */
   reviewed_at: string;
 }
-export const WidgetSecurityReview = /*@__PURE__*/ S.suspend(() =>
+const WidgetSecurityReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: GeneratedWidgetVersionSecurityReviewSeverityEnum,
     summary: S.String,
@@ -269,7 +269,7 @@ export interface ReusableWidgetVersionDetail {
   /** When this immutable version was created. */
   created_at: string;
 }
-export const ReusableWidgetVersionDetail = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetVersionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation_cost_usd: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -316,7 +316,7 @@ export interface ReusableWidgetDetail {
   /** When the reusable widget was last changed. */
   updated_at: string;
 }
-export const ReusableWidgetDetail = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -340,7 +340,7 @@ export interface ListReusableWidgetsRequest {
   offset?: number;
   search?: string;
 }
-export const ListReusableWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReusableWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -355,7 +355,7 @@ export const ListReusableWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable widget labels. */
 export type ReusableWidgetSummaryTagsList = Array<string>;
-export const ReusableWidgetSummaryTagsList =
+const ReusableWidgetSummaryTagsList =
   ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetSummaryTagsList>;
 
 export interface ReusableWidgetSummary {
@@ -382,7 +382,7 @@ export interface ReusableWidgetSummary {
   /** When the reusable widget was last changed. */
   updated_at: string;
 }
-export const ReusableWidgetSummary = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -400,7 +400,7 @@ export const ReusableWidgetSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Reusable widgets in this page. */
 export type ReusableWidgetPageResultsList = Array<ReusableWidgetSummary>;
-export const ReusableWidgetPageResultsList = /*@__PURE__*/ S.Array(
+const ReusableWidgetPageResultsList = /*@__PURE__*/ S.Array(
   ReusableWidgetSummary,
 ) as any as S.Schema<ReusableWidgetPageResultsList>;
 
@@ -412,7 +412,7 @@ export interface ReusableWidgetPage {
   /** Offset for the next page, or null when this is the final page. */
   next_offset: number | null;
 }
-export const ReusableWidgetPage = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ReusableWidgetPageResultsList,
     count: S.Number,
@@ -429,7 +429,7 @@ export interface RestoreReusableWidgetRequest {
   /** Latest version observed before restoring. */
   expected_current_version_id: string;
 }
-export const RestoreReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreReusableWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -455,7 +455,7 @@ export interface ReusableWidgetsDemoFrameRequest {
   /** Immutable version whose saved demo data should be returned. */
   version_id?: string;
 }
-export const ReusableWidgetsDemoFrameRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsDemoFrameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -478,7 +478,7 @@ export interface WidgetFrameColumn {
   /** Column type reported by the completed notebook run. */
   type: string;
 }
-export const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
+const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -487,18 +487,18 @@ export const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Dataframe columns in display order. */
 export type WidgetFrameColumnsList = Array<WidgetFrameColumn>;
-export const WidgetFrameColumnsList = /*@__PURE__*/ S.Array(
+const WidgetFrameColumnsList = /*@__PURE__*/ S.Array(
   WidgetFrameColumn,
 ) as any as S.Schema<WidgetFrameColumnsList>;
 
 export type WidgetFrameRowsItemList = Array<unknown>;
-export const WidgetFrameRowsItemList = /*@__PURE__*/ S.Array(
+const WidgetFrameRowsItemList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WidgetFrameRowsItemList>;
 
 /** Requested page of dataframe rows. */
 export type WidgetFrameRowsList = Array<WidgetFrameRowsItemList>;
-export const WidgetFrameRowsList = /*@__PURE__*/ S.Array(
+const WidgetFrameRowsList = /*@__PURE__*/ S.Array(
   WidgetFrameRowsItemList,
 ) as any as S.Schema<WidgetFrameRowsList>;
 
@@ -522,7 +522,7 @@ export interface WidgetFrame {
   /** Whether more rows exist after this page. */
   truncated: boolean;
 }
-export const WidgetFrame = /*@__PURE__*/ S.suspend(() =>
+const WidgetFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     runId: S.String,
@@ -545,7 +545,7 @@ export interface ReusableWidgetsDiscardVersionRequest {
   /** Published version observed when the review action started. */
   expected_current_version_id: string;
 }
-export const ReusableWidgetsDiscardVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsDiscardVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -571,7 +571,7 @@ export interface ReusableWidgetsSaveVersionRequest {
   /** Published version observed when the review action started. */
   expected_current_version_id: string;
 }
-export const ReusableWidgetsSaveVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsSaveVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -595,7 +595,7 @@ export interface ReusableWidgetsSourceRequest {
   /** Immutable reusable widget version whose source should be returned. */
   version_id?: string;
 }
-export const ReusableWidgetsSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -615,7 +615,7 @@ export interface WidgetSource {
   /** Read-only source code for the current widget version. */
   source: string;
 }
-export const WidgetSource = /*@__PURE__*/ S.suspend(() =>
+const WidgetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
   }),
@@ -626,7 +626,7 @@ export interface ReusableWidgetsStatusRequest {
   project_id: string;
   id: string;
 }
-export const ReusableWidgetsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -649,7 +649,7 @@ export type LifecycleStatusEnum =
   | "ready"
   | "failed"
   | "incompatible";
-export const LifecycleStatusEnum = S.String;
+const LifecycleStatusEnum = S.String;
 
 /** * `generating_source` - generating_source * `reviewing_source` - reviewing_source * `publishing_source` - publishing_source * `unknown` - unknown */
 export type FailurePhaseEnum =
@@ -657,18 +657,18 @@ export type FailurePhaseEnum =
   | "reviewing_source"
   | "publishing_source"
   | "unknown";
-export const FailurePhaseEnum = S.String;
+const FailurePhaseEnum = S.String;
 
 /** Logical dataframe slots available to the selected version. */
 export type WidgetStatusFrameNamesList = Array<string>;
-export const WidgetStatusFrameNamesList =
+const WidgetStatusFrameNamesList =
   ReusableWidgetDetailTagsList as any as S.Schema<WidgetStatusFrameNamesList>;
 
 export interface WidgetStatusInputBindingsValue {
   source: string;
   hog?: string;
 }
-export const WidgetStatusInputBindingsValue = /*@__PURE__*/ S.suspend(() =>
+const WidgetStatusInputBindingsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     hog: S.optional(S.String),
@@ -681,19 +681,19 @@ export const WidgetStatusInputBindingsValue = /*@__PURE__*/ S.suspend(() =>
 export type WidgetStatusInputBindingsMap = {
   [key: string]: WidgetStatusInputBindingsValue | undefined;
 };
-export const WidgetStatusInputBindingsMap = /*@__PURE__*/ S.Record(
+const WidgetStatusInputBindingsMap = /*@__PURE__*/ S.Record(
   S.String,
   WidgetStatusInputBindingsValue,
 ) as any as S.Schema<WidgetStatusInputBindingsMap>;
 
 /** Logical dataframe slots and output schemas required by the selected widget version. */
 export type WidgetStatusInputContractList = Array<WidgetInputContractItem>;
-export const WidgetStatusInputContractList =
+const WidgetStatusInputContractList =
   ReusableWidgetVersionDetailInputContractList as any as S.Schema<WidgetStatusInputContractList>;
 
 /** * `queued` - queued * `generating` - generating * `publishing` - publishing */
 export type WidgetJobStatusEnum = "queued" | "generating" | "publishing";
-export const WidgetJobStatusEnum = S.String;
+const WidgetJobStatusEnum = S.String;
 
 export interface WidgetJob {
   /** Generation job identifier. */
@@ -709,7 +709,7 @@ export interface WidgetJob {
   /** When a worker started the job. */
   started_at: string | null;
 }
-export const WidgetJob = /*@__PURE__*/ S.suspend(() =>
+const WidgetJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: WidgetJobStatusEnum,
@@ -756,7 +756,7 @@ export interface WidgetStatus {
   /** Hex SHA-256 over the exact immutable artifact manifest selected for display. */
   build_hash: string | null;
 }
-export const WidgetStatus = /*@__PURE__*/ S.suspend(() =>
+const WidgetStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycle_status: LifecycleStatusEnum,
     error_detail: S.optional(S.NullOr(S.String)),
@@ -787,7 +787,7 @@ export interface ReusableWidgetsVersionsRequest {
   /** Zero-based version offset. */
   offset?: number;
 }
-export const ReusableWidgetsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -806,7 +806,7 @@ export const ReusableWidgetsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Published versions, newest first. */
 export type ReusableWidgetVersionPageResultsList = Array<ReusableWidgetVersionDetail>;
-export const ReusableWidgetVersionPageResultsList = /*@__PURE__*/ S.Array(
+const ReusableWidgetVersionPageResultsList = /*@__PURE__*/ S.Array(
   ReusableWidgetVersionDetail,
 ) as any as S.Schema<ReusableWidgetVersionPageResultsList>;
 
@@ -818,7 +818,7 @@ export interface ReusableWidgetVersionPage {
   /** Next page offset, or null on the final page. */
   next_offset: number | null;
 }
-export const ReusableWidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ReusableWidgetVersionPageResultsList,
     count: S.Number,
@@ -829,13 +829,10 @@ export const ReusableWidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReusableWidgetVersionPage>;
 
 export type UpdateReusableWidgetDemoDataRequestRowsItemList = Array<unknown>;
-export const UpdateReusableWidgetDemoDataRequestRowsItemList =
-  WidgetFrameRowsItemList as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsItemList>;
-
 /** Saved demo rows in input-contract column order. Replaces this slot's entire sample, up to 20 rows. */
 export type UpdateReusableWidgetDemoDataRequestRowsList =
   Array<UpdateReusableWidgetDemoDataRequestRowsItemList>;
-export const UpdateReusableWidgetDemoDataRequestRowsList =
+const UpdateReusableWidgetDemoDataRequestRowsList =
   WidgetFrameRowsList as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsList>;
 
 export interface UpdateReusableWidgetDemoDataRequest {
@@ -849,7 +846,7 @@ export interface UpdateReusableWidgetDemoDataRequest {
   /** Saved demo rows in input-contract column order. Replaces this slot's entire sample, up to 20 rows. */
   rows: UpdateReusableWidgetDemoDataRequestRowsList;
 }
-export const UpdateReusableWidgetDemoDataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReusableWidgetDemoDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

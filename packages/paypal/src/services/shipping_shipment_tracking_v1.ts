@@ -42,7 +42,7 @@ export interface GetTrackerRequest {
   /** Encrypted PayPal Account ID of the buyer or seller. */
   account_id?: string;
 }
-export const GetTrackerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrackerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -51,7 +51,7 @@ export const GetTrackerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tracking number type. */
 export type TrackingNumberType = "CARRIER_PROVIDED" | "E2E_PARTNER_PROVIDED";
-export const TrackingNumberType = S.String;
+const TrackingNumberType = S.String;
 
 /** The status of the item shipment. For allowed values, see <a href="/docs/tracking/reference/shipping-status/">Shipping Statuses</a>. */
 export type TrackingStatus =
@@ -78,7 +78,7 @@ export type TrackingStatus =
   | "PROCESSED"
   | "NOT_SHIPPED"
   | "COMPLETED";
-export const TrackingStatus = S.String;
+const TrackingStatus = S.String;
 
 /** The carrier for the shipment. Carrier information is required when tracking_number is provided. Some carriers have a global version as well as local subsidiaries. The subsidiaries are repeated over many countries and might also have an entry in the global list. Choose the carrier for your country. If the carrier is not available for your country, choose the global version of the carrier. If your carrier name is not in the list, set `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For allowed values, see <a href="/docs/tracking/reference/carriers/">Carriers</a>. */
 export type Carrier =
@@ -892,15 +892,15 @@ export type Carrier =
   | "ZJS_EXPRESS"
   | "ZTO_EXPRESS"
   | "ZYLLEM";
-export const Carrier = S.String;
+const Carrier = S.String;
 
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type TrackerShipmentDirection = "FORWARD" | "RETURN";
-export const TrackerShipmentDirection = S.String;
+const TrackerShipmentDirection = S.String;
 
 /** To denote which party uploaded the shipment tracking info. */
 export type TrackerShipmentUploader = "MERCHANT" | "CONSUMER" | "PARTNER";
-export const TrackerShipmentUploader = S.String;
+const TrackerShipmentUploader = S.String;
 
 /** The HTTP method required to make the related call. */
 export type LinkDescriptionMethod =
@@ -912,7 +912,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** A request-related [HATEOAS link](/api/rest/responses/#hateoas-links). */
 export interface LinkDescription {
@@ -923,7 +923,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -933,7 +933,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -971,7 +971,7 @@ export interface Tracker {
   tracking_url?: string;
   links?: LinkDescriptionList;
 }
-export const Tracker = /*@__PURE__*/ S.suspend(() =>
+const Tracker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_id: S.String,
     tracking_number: S.optional(S.String),
@@ -1001,7 +1001,7 @@ export interface GetTrackerBatchRequest {
   /** Encrypted PayPal Account ID of the buyer or seller. */
   account_id?: string;
 }
-export const GetTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_id: S.String.pipe(T.Query()),
     tracking_number: S.optional(S.String.pipe(T.Query())),
@@ -1011,7 +1011,7 @@ export const GetTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type TrackerInputShipmentDirection = "FORWARD" | "RETURN";
-export const TrackerInputShipmentDirection = S.String;
+const TrackerInputShipmentDirection = S.String;
 
 /** The tracking information for a shipment. */
 export interface TrackerInput {
@@ -1036,7 +1036,7 @@ export interface TrackerInput {
   /** Tracking Link of the shipment. */
   tracking_url?: string;
 }
-export const TrackerInput = /*@__PURE__*/ S.suspend(() =>
+const TrackerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_id: S.String,
     tracking_number: S.optional(S.String),
@@ -1054,14 +1054,12 @@ export const TrackerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tracking information for shipments. */
 export type TrackerListInput = Array<TrackerInput>;
-export const TrackerListInput = /*@__PURE__*/ S.Array(
-  TrackerInput,
-) as any as S.Schema<TrackerListInput>;
+const TrackerListInput = /*@__PURE__*/ S.Array(TrackerInput) as any as S.Schema<TrackerListInput>;
 
 export interface PostTrackerRequest {
   trackers?: TrackerListInput;
 }
-export const PostTrackerRequest = /*@__PURE__*/ S.suspend(() =>
+const PostTrackerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trackers: S.optional(TrackerListInput),
   }).pipe(T.Http({ method: "POST", uri: "/v1/shipping/trackers", code: 200 })),
@@ -1075,7 +1073,7 @@ export interface TrackerIdentifier {
   tracking_number?: string;
   links?: LinkDescriptionList;
 }
-export const TrackerIdentifier = /*@__PURE__*/ S.suspend(() =>
+const TrackerIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_id: S.String,
     tracking_number: S.optional(S.String),
@@ -1085,13 +1083,13 @@ export const TrackerIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tracking IDs. */
 export type DefinitionsTrackerIdentifierList = Array<TrackerIdentifier>;
-export const DefinitionsTrackerIdentifierList = /*@__PURE__*/ S.Array(
+const DefinitionsTrackerIdentifierList = /*@__PURE__*/ S.Array(
   TrackerIdentifier,
 ) as any as S.Schema<DefinitionsTrackerIdentifierList>;
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type TrackerIdentifierCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const TrackerIdentifierCollectionDefinitionsLinkDescriptionList =
+const TrackerIdentifierCollectionDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<TrackerIdentifierCollectionDefinitionsLinkDescriptionList>;
 
 /** The add tracking information for a PayPal transaction response details. */
@@ -1099,7 +1097,7 @@ export interface TrackerIdentifierCollection {
   tracker_identifiers?: DefinitionsTrackerIdentifierList;
   links?: TrackerIdentifierCollectionDefinitionsLinkDescriptionList;
 }
-export const TrackerIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
+const TrackerIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tracker_identifiers: S.optional(DefinitionsTrackerIdentifierList),
     links: S.optional(TrackerIdentifierCollectionDefinitionsLinkDescriptionList),
@@ -1111,7 +1109,7 @@ export const TrackerIdentifierCollection = /*@__PURE__*/ S.suspend(() =>
 export interface PostTrackerBatchRequest {
   trackers?: TrackerListInput;
 }
-export const PostTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const PostTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trackers: S.optional(TrackerListInput),
   }).pipe(T.Http({ method: "POST", uri: "/v1/shipping/trackers-batch", code: 200 })),
@@ -1119,7 +1117,7 @@ export const PostTrackerBatchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The batch header. */
 export type TrackerIdentifierList = Array<TrackerIdentifier>;
-export const TrackerIdentifierList =
+const TrackerIdentifierList =
   DefinitionsTrackerIdentifierList as any as S.Schema<TrackerIdentifierList>;
 
 /** The HTTP method required to make the related call. */
@@ -1132,8 +1130,6 @@ export type LinkDescription2Method =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescription2Method = S.String;
-
 /** The request-related [HATEOAS link](/api/rest/responses/#hateoas-links) information. */
 export interface LinkDescription2 {
   /** The complete target URL. To make the related call, combine the method with this [URI Template-formatted](https://tools.ietf.org/html/rfc6570) link. For pre-processing, include the `$`, `(`, and `)` characters. The `href` is the key HATEOAS component that links a completed call with a subsequent call. */
@@ -1143,11 +1139,9 @@ export interface LinkDescription2 {
   /** The HTTP method required to make the related call. */
   method?: LinkDescription2Method;
 }
-export const LinkDescription2 = LinkDescription as any as S.Schema<LinkDescription2>;
-
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links) that are either relevant to the issue by providing additional information or offering potential resolutions. */
 export type DefinitionsLinkDescriptionList = Array<LinkDescription2>;
-export const DefinitionsLinkDescriptionList =
+const DefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<DefinitionsLinkDescriptionList>;
 
 /** The error details. Required for client-side `4XX` errors. */
@@ -1164,7 +1158,7 @@ export interface ErrorDetails2 {
   description?: string;
   links?: DefinitionsLinkDescriptionList;
 }
-export const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     value: S.optional(S.String),
@@ -1177,13 +1171,11 @@ export const ErrorDetails2 = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of additional details about the error. */
 export type ErrorDetailsList = Array<ErrorDetails2>;
-export const ErrorDetailsList = /*@__PURE__*/ S.Array(
-  ErrorDetails2,
-) as any as S.Schema<ErrorDetailsList>;
+const ErrorDetailsList = /*@__PURE__*/ S.Array(ErrorDetails2) as any as S.Schema<ErrorDetailsList>;
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type ErrorDefinitionsLinkDescriptionList = Array<LinkDescription2>;
-export const ErrorDefinitionsLinkDescriptionList =
+const ErrorDefinitionsLinkDescriptionList =
   DefinitionsLinkDescriptionList as any as S.Schema<ErrorDefinitionsLinkDescriptionList>;
 
 /** The error details. */
@@ -1199,7 +1191,7 @@ export interface Error {
   details?: ErrorDetailsList;
   links?: ErrorDefinitionsLinkDescriptionList;
 }
-export const Error = /*@__PURE__*/ S.suspend(() =>
+const Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     message: S.String,
@@ -1212,11 +1204,11 @@ export const Error = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of error responses. */
 export type ErrorList = Array<Error>;
-export const ErrorList = /*@__PURE__*/ S.Array(Error) as any as S.Schema<ErrorList>;
+const ErrorList = /*@__PURE__*/ S.Array(Error) as any as S.Schema<ErrorList>;
 
 /** An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). */
 export type BatchTrackerCollectionDefinitionsLinkDescriptionList = Array<LinkDescription>;
-export const BatchTrackerCollectionDefinitionsLinkDescriptionList =
+const BatchTrackerCollectionDefinitionsLinkDescriptionList =
   LinkDescriptionList as any as S.Schema<BatchTrackerCollectionDefinitionsLinkDescriptionList>;
 
 /** The add tracking information for multiple PayPal transactions response details. */
@@ -1225,7 +1217,7 @@ export interface BatchTrackerCollection {
   errors?: ErrorList;
   links?: BatchTrackerCollectionDefinitionsLinkDescriptionList;
 }
-export const BatchTrackerCollection = /*@__PURE__*/ S.suspend(() =>
+const BatchTrackerCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tracker_identifiers: S.optional(TrackerIdentifierList),
     errors: S.optional(ErrorList),
@@ -1235,7 +1227,7 @@ export const BatchTrackerCollection = /*@__PURE__*/ S.suspend(() =>
 
 /** To denote whether the shipment is sent forward to the receiver or returned back. */
 export type PutTrackerRequestShipmentDirection = "FORWARD" | "RETURN";
-export const PutTrackerRequestShipmentDirection = S.String;
+const PutTrackerRequestShipmentDirection = S.String;
 
 export interface PutTrackerRequest {
   /** The ID of the tracker in the <code><var>transaction_id</var>-<var>tracking_number</var></code> format. */
@@ -1261,7 +1253,7 @@ export interface PutTrackerRequest {
   /** Tracking Link of the shipment. */
   tracking_url?: string;
 }
-export const PutTrackerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutTrackerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     transaction_id: S.String,
@@ -1279,7 +1271,7 @@ export const PutTrackerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutTrackerRequest" }) as any as S.Schema<PutTrackerRequest>;
 
 export interface PutTrackerResponse {}
-export const PutTrackerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const PutTrackerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "PutTrackerResponse",
 }) as any as S.Schema<PutTrackerResponse>;
 

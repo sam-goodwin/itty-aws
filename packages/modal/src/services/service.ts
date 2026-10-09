@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export interface ListServiceUserRequest {}
-export const ListServiceUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/ServiceUserList", code: 200 }),
   ),
@@ -24,7 +24,7 @@ export interface ServiceUser {
   createdByAvatarUrl?: string;
   serviceUserId?: string;
 }
-export const ServiceUser = /*@__PURE__*/ S.suspend(() =>
+const ServiceUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tokenId: S.optional(S.String),
@@ -37,14 +37,12 @@ export const ServiceUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceUser" }) as any as S.Schema<ServiceUser>;
 
 export type ServiceUserList2 = Array<ServiceUser>;
-export const ServiceUserList2 = /*@__PURE__*/ S.Array(
-  ServiceUser,
-) as any as S.Schema<ServiceUserList2>;
+const ServiceUserList2 = /*@__PURE__*/ S.Array(ServiceUser) as any as S.Schema<ServiceUserList2>;
 
 export interface ListServiceUserResponse {
   serviceUsers?: ServiceUserList2;
 }
-export const ListServiceUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceUsers: S.optional(ServiceUserList2),
   }),

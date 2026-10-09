@@ -38,14 +38,14 @@ export class NotFound
   ) {}
 
 export type CreateAccessPolicyRequestRegionId = "eu01" | "eu02";
-export const CreateAccessPolicyRequestRegionId = S.String;
+const CreateAccessPolicyRequestRegionId = S.String;
 
 export type PermissionsItem = "read" | "write";
-export const PermissionsItem = S.String;
+const PermissionsItem = S.String;
 
 /** The access permissions granted to the access token or access policy. */
 export type Permissions = Array<PermissionsItem | (string & {})>;
-export const Permissions = /*@__PURE__*/ S.Array(PermissionsItem) as any as S.Schema<Permissions>;
+const Permissions = /*@__PURE__*/ S.Array(PermissionsItem) as any as S.Schema<Permissions>;
 
 export interface CreateAccessPolicyRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -60,7 +60,7 @@ export interface CreateAccessPolicyRequest {
   email: string;
   permissions: Permissions;
 }
-export const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateAccessPolicyRequestRegionId.pipe(T.Label()),
@@ -89,7 +89,7 @@ export interface AccessPolicy {
   id: string;
   permissions: Permissions;
 }
-export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     email: S.String,
@@ -99,7 +99,7 @@ export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessPolicy" }) as any as S.Schema<AccessPolicy>;
 
 export type CreateAccessTokenRequestRegionId = "eu01" | "eu02";
-export const CreateAccessTokenRequestRegionId = S.String;
+const CreateAccessTokenRequestRegionId = S.String;
 
 export interface CreateAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -116,7 +116,7 @@ export interface CreateAccessTokenRequest {
   lifetime?: number;
   permissions: Permissions;
 }
-export const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateAccessTokenRequestRegionId.pipe(T.Label()),
@@ -136,7 +136,7 @@ export const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAccessTokenRequest" }) as any as S.Schema<CreateAccessTokenRequest>;
 
 export type AccessTokenStatus = "active" | "expired";
-export const AccessTokenStatus = S.String;
+const AccessTokenStatus = S.String;
 
 export interface AccessToken {
   /** A generated access token. Only available on creation. */
@@ -156,7 +156,7 @@ export interface AccessToken {
   /** The date and time util an access token is valid to (inclusively). */
   validUntil?: string;
 }
-export const AccessToken = /*@__PURE__*/ S.suspend(() =>
+const AccessToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
     creator: S.String,
@@ -171,11 +171,11 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessToken" }) as any as S.Schema<AccessToken>;
 
 export type CreateLogsInstanceRequestRegionId = "eu01" | "eu02";
-export const CreateLogsInstanceRequestRegionId = S.String;
+const CreateLogsInstanceRequestRegionId = S.String;
 
 /** The access control list for the Logs instance. */
 export type CreateLogsInstanceRequestAclList = Array<string>;
-export const CreateLogsInstanceRequestAclList = /*@__PURE__*/ S.Array(
+const CreateLogsInstanceRequestAclList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateLogsInstanceRequestAclList>;
 
@@ -193,7 +193,7 @@ export interface CreateLogsInstanceRequest {
   /** The log retention time in days. */
   retentionDays: number;
 }
-export const CreateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateLogsInstanceRequestRegionId.pipe(T.Label()),
@@ -215,12 +215,12 @@ export const CreateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The access control list for the Logs instance. */
 export type LogsInstanceAclList = Array<string>;
-export const LogsInstanceAclList =
+const LogsInstanceAclList =
   CreateLogsInstanceRequestAclList as any as S.Schema<LogsInstanceAclList>;
 
 /** The current status of the Logs instance. */
 export type LogsInstanceStatus = "active" | "deleting" | "reconciling";
-export const LogsInstanceStatus = S.String;
+const LogsInstanceStatus = S.String;
 
 export interface LogsInstance {
   /** The access control list for the Logs instance. */
@@ -248,7 +248,7 @@ export interface LogsInstance {
   /** The current status of the Logs instance. */
   status: LogsInstanceStatus;
 }
-export const LogsInstance = /*@__PURE__*/ S.suspend(() =>
+const LogsInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(LogsInstanceAclList),
     created: S.String,
@@ -266,7 +266,7 @@ export const LogsInstance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsInstance" }) as any as S.Schema<LogsInstance>;
 
 export type DeleteAccessPolicyRequestRegionId = "eu01" | "eu02";
-export const DeleteAccessPolicyRequestRegionId = S.String;
+const DeleteAccessPolicyRequestRegionId = S.String;
 
 export interface DeleteAccessPolicyRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -278,7 +278,7 @@ export interface DeleteAccessPolicyRequest {
   /** The access policy unique id. */
   pId: string;
 }
-export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAccessPolicyRequestRegionId.pipe(T.Label()),
@@ -297,12 +297,12 @@ export const DeleteAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessPolicyRequest>;
 
 export interface DeleteAccessPolicyResponse {}
-export const DeleteAccessPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccessPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccessPolicyResponse",
 }) as any as S.Schema<DeleteAccessPolicyResponse>;
 
 export type DeleteAccessTokenRequestRegionId = "eu01" | "eu02";
-export const DeleteAccessTokenRequestRegionId = S.String;
+const DeleteAccessTokenRequestRegionId = S.String;
 
 export interface DeleteAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -314,7 +314,7 @@ export interface DeleteAccessTokenRequest {
   /** The access token UUID. */
   tId: string;
 }
-export const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAccessTokenRequestRegionId.pipe(T.Label()),
@@ -331,11 +331,11 @@ export const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccessTokenRequest" }) as any as S.Schema<DeleteAccessTokenRequest>;
 
 export interface DeleteAccessTokenResponse {}
-export const DeleteAccessTokenResponse =
+const DeleteAccessTokenResponse =
   DeleteAccessPolicyResponse as any as S.Schema<DeleteAccessTokenResponse>;
 
 export type DeleteAllAccessPoliciesRequestRegionId = "eu01" | "eu02";
-export const DeleteAllAccessPoliciesRequestRegionId = S.String;
+const DeleteAllAccessPoliciesRequestRegionId = S.String;
 
 export interface DeleteAllAccessPoliciesRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -345,7 +345,7 @@ export interface DeleteAllAccessPoliciesRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const DeleteAllAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAllAccessPoliciesRequestRegionId.pipe(T.Label()),
@@ -363,21 +363,21 @@ export const DeleteAllAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAllAccessPoliciesRequest>;
 
 export type AccessPolicyListPoliciesList = Array<AccessPolicy>;
-export const AccessPolicyListPoliciesList = /*@__PURE__*/ S.Array(
+const AccessPolicyListPoliciesList = /*@__PURE__*/ S.Array(
   AccessPolicy,
 ) as any as S.Schema<AccessPolicyListPoliciesList>;
 
 export interface AccessPolicyList {
   policies: AccessPolicyListPoliciesList;
 }
-export const AccessPolicyList = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: AccessPolicyListPoliciesList,
   }),
 ).annotate({ identifier: "AccessPolicyList" }) as any as S.Schema<AccessPolicyList>;
 
 export type DeleteAllAccessTokensRequestRegionId = "eu01" | "eu02";
-export const DeleteAllAccessTokensRequestRegionId = S.String;
+const DeleteAllAccessTokensRequestRegionId = S.String;
 
 export interface DeleteAllAccessTokensRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -387,7 +387,7 @@ export interface DeleteAllAccessTokensRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const DeleteAllAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAllAccessTokensRequestRegionId.pipe(T.Label()),
@@ -405,21 +405,21 @@ export const DeleteAllAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAllAccessTokensRequest>;
 
 export type AccessTokenListTokensList = Array<AccessToken>;
-export const AccessTokenListTokensList = /*@__PURE__*/ S.Array(
+const AccessTokenListTokensList = /*@__PURE__*/ S.Array(
   AccessToken,
 ) as any as S.Schema<AccessTokenListTokensList>;
 
 export interface AccessTokenList {
   tokens: AccessTokenListTokensList;
 }
-export const AccessTokenList = /*@__PURE__*/ S.suspend(() =>
+const AccessTokenList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: AccessTokenListTokensList,
   }),
 ).annotate({ identifier: "AccessTokenList" }) as any as S.Schema<AccessTokenList>;
 
 export type DeleteAllExpiredAccessTokensRequestRegionId = "eu01" | "eu02";
-export const DeleteAllExpiredAccessTokensRequestRegionId = S.String;
+const DeleteAllExpiredAccessTokensRequestRegionId = S.String;
 
 export interface DeleteAllExpiredAccessTokensRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -429,7 +429,7 @@ export interface DeleteAllExpiredAccessTokensRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const DeleteAllExpiredAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllExpiredAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAllExpiredAccessTokensRequestRegionId.pipe(T.Label()),
@@ -447,7 +447,7 @@ export const DeleteAllExpiredAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAllExpiredAccessTokensRequest>;
 
 export type DeleteLogsInstanceRequestRegionId = "eu01" | "eu02";
-export const DeleteLogsInstanceRequestRegionId = S.String;
+const DeleteLogsInstanceRequestRegionId = S.String;
 
 export interface DeleteLogsInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -457,7 +457,7 @@ export interface DeleteLogsInstanceRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const DeleteLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteLogsInstanceRequestRegionId.pipe(T.Label()),
@@ -475,11 +475,11 @@ export const DeleteLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLogsInstanceRequest>;
 
 export interface DeleteLogsInstanceResponse {}
-export const DeleteLogsInstanceResponse =
+const DeleteLogsInstanceResponse =
   DeleteAccessPolicyResponse as any as S.Schema<DeleteLogsInstanceResponse>;
 
 export type GetAccessPolicyRequestRegionId = "eu01" | "eu02";
-export const GetAccessPolicyRequestRegionId = S.String;
+const GetAccessPolicyRequestRegionId = S.String;
 
 export interface GetAccessPolicyRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -491,7 +491,7 @@ export interface GetAccessPolicyRequest {
   /** The access policy unique id. */
   pId: string;
 }
-export const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetAccessPolicyRequestRegionId.pipe(T.Label()),
@@ -508,7 +508,7 @@ export const GetAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccessPolicyRequest" }) as any as S.Schema<GetAccessPolicyRequest>;
 
 export type GetAccessTokenRequestRegionId = "eu01" | "eu02";
-export const GetAccessTokenRequestRegionId = S.String;
+const GetAccessTokenRequestRegionId = S.String;
 
 export interface GetAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -520,7 +520,7 @@ export interface GetAccessTokenRequest {
   /** The access token UUID. */
   tId: string;
 }
-export const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetAccessTokenRequestRegionId.pipe(T.Label()),
@@ -537,7 +537,7 @@ export const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccessTokenRequest" }) as any as S.Schema<GetAccessTokenRequest>;
 
 export type GetLogsInstanceRequestRegionId = "eu01" | "eu02";
-export const GetLogsInstanceRequestRegionId = S.String;
+const GetLogsInstanceRequestRegionId = S.String;
 
 export interface GetLogsInstanceRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -547,7 +547,7 @@ export interface GetLogsInstanceRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const GetLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetLogsInstanceRequestRegionId.pipe(T.Label()),
@@ -563,7 +563,7 @@ export const GetLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogsInstanceRequest" }) as any as S.Schema<GetLogsInstanceRequest>;
 
 export type ListAccessPoliciesRequestRegionId = "eu01" | "eu02";
-export const ListAccessPoliciesRequestRegionId = S.String;
+const ListAccessPoliciesRequestRegionId = S.String;
 
 export interface ListAccessPoliciesRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -573,7 +573,7 @@ export interface ListAccessPoliciesRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListAccessPoliciesRequestRegionId.pipe(T.Label()),
@@ -591,7 +591,7 @@ export const ListAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessPoliciesRequest>;
 
 export type ListAccessTokensRequestRegionId = "eu01" | "eu02";
-export const ListAccessTokensRequestRegionId = S.String;
+const ListAccessTokensRequestRegionId = S.String;
 
 export interface ListAccessTokensRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -601,7 +601,7 @@ export interface ListAccessTokensRequest {
   /** The Logs Instance UUID. */
   instanceId: string;
 }
-export const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListAccessTokensRequestRegionId.pipe(T.Label()),
@@ -617,7 +617,7 @@ export const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccessTokensRequest" }) as any as S.Schema<ListAccessTokensRequest>;
 
 export type ListLogsInstancesRequestRegionId = "eu01" | "eu02";
-export const ListLogsInstancesRequestRegionId = S.String;
+const ListLogsInstancesRequestRegionId = S.String;
 
 export interface ListLogsInstancesRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -625,7 +625,7 @@ export interface ListLogsInstancesRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: ListLogsInstancesRequestRegionId | (string & {});
 }
-export const ListLogsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListLogsInstancesRequestRegionId.pipe(T.Label()),
@@ -640,21 +640,21 @@ export const ListLogsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLogsInstancesRequest" }) as any as S.Schema<ListLogsInstancesRequest>;
 
 export type LogsInstancesListInstancesList = Array<LogsInstance>;
-export const LogsInstancesListInstancesList = /*@__PURE__*/ S.Array(
+const LogsInstancesListInstancesList = /*@__PURE__*/ S.Array(
   LogsInstance,
 ) as any as S.Schema<LogsInstancesListInstancesList>;
 
 export interface LogsInstancesList {
   instances: LogsInstancesListInstancesList;
 }
-export const LogsInstancesList = /*@__PURE__*/ S.suspend(() =>
+const LogsInstancesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: LogsInstancesListInstancesList,
   }),
 ).annotate({ identifier: "LogsInstancesList" }) as any as S.Schema<LogsInstancesList>;
 
 export type UpdateAccessPolicyRequestRegionId = "eu01" | "eu02";
-export const UpdateAccessPolicyRequestRegionId = S.String;
+const UpdateAccessPolicyRequestRegionId = S.String;
 
 export interface UpdateAccessPolicyRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -669,7 +669,7 @@ export interface UpdateAccessPolicyRequest {
   description?: string | null;
   permissions?: Permissions;
 }
-export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateAccessPolicyRequestRegionId.pipe(T.Label()),
@@ -690,7 +690,7 @@ export const UpdateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccessPolicyRequest>;
 
 export type UpdateAccessTokenRequestRegionId = "eu01" | "eu02";
-export const UpdateAccessTokenRequestRegionId = S.String;
+const UpdateAccessTokenRequestRegionId = S.String;
 
 export interface UpdateAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -706,7 +706,7 @@ export interface UpdateAccessTokenRequest {
   /** The displayed name of the access token. */
   displayName?: string;
 }
-export const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateAccessTokenRequestRegionId.pipe(T.Label()),
@@ -725,15 +725,15 @@ export const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAccessTokenRequest" }) as any as S.Schema<UpdateAccessTokenRequest>;
 
 export interface UpdateAccessTokenResponse {}
-export const UpdateAccessTokenResponse =
+const UpdateAccessTokenResponse =
   DeleteAccessPolicyResponse as any as S.Schema<UpdateAccessTokenResponse>;
 
 export type UpdateLogsInstanceRequestRegionId = "eu01" | "eu02";
-export const UpdateLogsInstanceRequestRegionId = S.String;
+const UpdateLogsInstanceRequestRegionId = S.String;
 
 /** The access control list for the Logs instance. */
 export type UpdateLogsInstanceRequestAclList = Array<string>;
-export const UpdateLogsInstanceRequestAclList =
+const UpdateLogsInstanceRequestAclList =
   CreateLogsInstanceRequestAclList as any as S.Schema<UpdateLogsInstanceRequestAclList>;
 
 export interface UpdateLogsInstanceRequest {
@@ -752,7 +752,7 @@ export interface UpdateLogsInstanceRequest {
   /** The log retention time in days. */
   retentionDays?: number;
 }
-export const UpdateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLogsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateLogsInstanceRequestRegionId.pipe(T.Label()),

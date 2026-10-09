@@ -13,7 +13,7 @@ export interface GetLocationRequest {
   /** ID of the Location. */
   id: number;
 }
-export const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/locations/{id}", code: 200 })),
@@ -37,7 +37,7 @@ export interface GetLocationResponseLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-export const GetLocationResponseLocation = /*@__PURE__*/ S.suspend(() =>
+const GetLocationResponseLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -55,7 +55,7 @@ export const GetLocationResponseLocation = /*@__PURE__*/ S.suspend(() =>
 export interface GetLocationResponse {
   location: GetLocationResponseLocation;
 }
-export const GetLocationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: GetLocationResponseLocation,
   }),
@@ -68,10 +68,10 @@ export type ListLocationsRequestSortItem =
   | "name"
   | "name:asc"
   | "name:desc";
-export const ListLocationsRequestSortItem = S.String;
+const ListLocationsRequestSortItem = S.String;
 
 export type ListLocationsRequestSortList = Array<ListLocationsRequestSortItem | (string & {})>;
-export const ListLocationsRequestSortList = /*@__PURE__*/ S.Array(
+const ListLocationsRequestSortList = /*@__PURE__*/ S.Array(
   ListLocationsRequestSortItem,
 ) as any as S.Schema<ListLocationsRequestSortList>;
 
@@ -85,7 +85,7 @@ export interface ListLocationsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     sort: S.optional(ListLocationsRequestSortList.pipe(T.Query())),
@@ -95,11 +95,9 @@ export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLocationsRequest" }) as any as S.Schema<ListLocationsRequest>;
 
 export type ListLocationsResponseLocationsItem = GetLocationResponseLocation;
-export const ListLocationsResponseLocationsItem = GetLocationResponseLocation;
-
 /** List of [Locations](#tag/locations). */
 export type ListLocationsResponseLocationsList = Array<GetLocationResponseLocation>;
-export const ListLocationsResponseLocationsList = /*@__PURE__*/ S.Array(
+const ListLocationsResponseLocationsList = /*@__PURE__*/ S.Array(
   GetLocationResponseLocation,
 ) as any as S.Schema<ListLocationsResponseLocationsList>;
 
@@ -118,7 +116,7 @@ export interface ListLocationsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListLocationsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -135,7 +133,7 @@ export interface ListLocationsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLocationsResponseMetaPagination;
 }
-export const ListLocationsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListLocationsResponseMetaPagination,
   }),
@@ -148,7 +146,7 @@ export interface ListLocationsResponse {
   locations: ListLocationsResponseLocationsList;
   meta: ListLocationsResponseMeta;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: ListLocationsResponseLocationsList,
     meta: ListLocationsResponseMeta,

@@ -32,7 +32,7 @@ export interface AddFilesToVersionRequest {
   id: string;
   data?: unknown;
 }
-export const AddFilesToVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddFilesToVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     data: S.optional(S.Unknown),
@@ -42,7 +42,7 @@ export const AddFilesToVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddFilesToVersionRequest" }) as any as S.Schema<AddFilesToVersionRequest>;
 
 export interface AddFilesToVersionResponse {}
-export const AddFilesToVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AddFilesToVersionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddFilesToVersionResponse",
 }) as any as S.Schema<AddFilesToVersionResponse>;
 
@@ -56,7 +56,7 @@ export type AddGalleryImageRequestExt =
   | "svg"
   | "svgz"
   | "rgb";
-export const AddGalleryImageRequestExt = S.String;
+const AddGalleryImageRequestExt = S.String;
 
 export interface AddGalleryImageRequest {
   /** The ID or slug of the project */
@@ -72,7 +72,7 @@ export interface AddGalleryImageRequest {
   /** Ordering of the image */
   ordering?: number;
 }
-export const AddGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const AddGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     ext: AddGalleryImageRequestExt.pipe(T.Query()),
@@ -84,7 +84,7 @@ export const AddGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddGalleryImageRequest" }) as any as S.Schema<AddGalleryImageRequest>;
 
 export interface AddGalleryImageResponse {}
-export const AddGalleryImageResponse =
+const AddGalleryImageResponse =
   AddFilesToVersionResponse as any as S.Schema<AddGalleryImageResponse>;
 
 export interface AddTeamMemberRequest {
@@ -92,7 +92,7 @@ export interface AddTeamMemberRequest {
   id: string;
   user_id: string;
 }
-export const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     user_id: S.String,
@@ -100,8 +100,7 @@ export const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddTeamMemberRequest" }) as any as S.Schema<AddTeamMemberRequest>;
 
 export interface AddTeamMemberResponse {}
-export const AddTeamMemberResponse =
-  AddFilesToVersionResponse as any as S.Schema<AddTeamMemberResponse>;
+const AddTeamMemberResponse = AddFilesToVersionResponse as any as S.Schema<AddTeamMemberResponse>;
 
 export type ChangeProjectIconRequestExt =
   | "png"
@@ -113,7 +112,7 @@ export type ChangeProjectIconRequestExt =
   | "svg"
   | "svgz"
   | "rgb";
-export const ChangeProjectIconRequestExt = S.String;
+const ChangeProjectIconRequestExt = S.String;
 
 export interface ChangeProjectIconRequest {
   /** The ID or slug of the project */
@@ -121,7 +120,7 @@ export interface ChangeProjectIconRequest {
   /** Image extension */
   ext: ChangeProjectIconRequestExt | (string & {});
 }
-export const ChangeProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     ext: ChangeProjectIconRequestExt.pipe(T.Query()),
@@ -129,28 +128,27 @@ export const ChangeProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChangeProjectIconRequest" }) as any as S.Schema<ChangeProjectIconRequest>;
 
 export interface ChangeProjectIconResponse {}
-export const ChangeProjectIconResponse =
+const ChangeProjectIconResponse =
   AddFilesToVersionResponse as any as S.Schema<ChangeProjectIconResponse>;
 
 export interface ChangeUserIconRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const ChangeUserIconRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeUserIconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PATCH", uri: "/user/{id_username}/icon", code: 200 })),
 ).annotate({ identifier: "ChangeUserIconRequest" }) as any as S.Schema<ChangeUserIconRequest>;
 
 export interface ChangeUserIconResponse {}
-export const ChangeUserIconResponse =
-  AddFilesToVersionResponse as any as S.Schema<ChangeUserIconResponse>;
+const ChangeUserIconResponse = AddFilesToVersionResponse as any as S.Schema<ChangeUserIconResponse>;
 
 export interface CheckProjectValidityRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const CheckProjectValidityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckProjectValidityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/check", code: 200 })),
@@ -161,7 +159,7 @@ export const CheckProjectValidityRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectIdentifier {
   id?: string;
 }
-export const ProjectIdentifier = /*@__PURE__*/ S.suspend(() =>
+const ProjectIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -169,13 +167,13 @@ export const ProjectIdentifier = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the featured categories that the project has. */
 export type CreatableProjectCategoriesList = Array<string>;
-export const CreatableProjectCategoriesList = /*@__PURE__*/ S.Array(
+const CreatableProjectCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreatableProjectCategoriesList>;
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type CreatableProjectAdditionalCategoriesList = Array<string>;
-export const CreatableProjectAdditionalCategoriesList =
+const CreatableProjectAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<CreatableProjectAdditionalCategoriesList>;
 
 /** The status of the project */
@@ -190,7 +188,7 @@ export type CreatableProjectStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const CreatableProjectStatus = S.String;
+const CreatableProjectStatus = S.String;
 
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type CreatableProjectRequestedStatus =
@@ -199,7 +197,7 @@ export type CreatableProjectRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
-export const CreatableProjectRequestedStatus = S.String;
+const CreatableProjectRequestedStatus = S.String;
 
 export interface ProjectDonationURL {
   /** The ID of the donation platform */
@@ -209,7 +207,7 @@ export interface ProjectDonationURL {
   /** The URL of the donation platform and user */
   url?: string;
 }
-export const ProjectDonationURL = /*@__PURE__*/ S.suspend(() =>
+const ProjectDonationURL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     platform: S.optional(S.String),
@@ -219,25 +217,25 @@ export const ProjectDonationURL = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of donation links for the project */
 export type CreatableProjectDonationUrlsList = Array<ProjectDonationURL>;
-export const CreatableProjectDonationUrlsList = /*@__PURE__*/ S.Array(
+const CreatableProjectDonationUrlsList = /*@__PURE__*/ S.Array(
   ProjectDonationURL,
 ) as any as S.Schema<CreatableProjectDonationUrlsList>;
 
 /** Deprecated - use `environment` instead. */
 export type CreatableProjectClientSide = "required" | "optional" | "unsupported";
-export const CreatableProjectClientSide = S.String;
+const CreatableProjectClientSide = S.String;
 
 /** Deprecated - use `environment` instead. */
 export type CreatableProjectServerSide = "required" | "optional" | "unsupported";
-export const CreatableProjectServerSide = S.String;
+const CreatableProjectServerSide = S.String;
 
 /** The project type of the project */
 export type CreatableProjectProjectType = "mod" | "modpack";
-export const CreatableProjectProjectType = S.String;
+const CreatableProjectProjectType = S.String;
 
 /** The type of dependency that this version has */
 export type VersionDependencyDependencyType = "required" | "optional" | "incompatible" | "embedded";
-export const VersionDependencyDependencyType = S.String;
+const VersionDependencyDependencyType = S.String;
 
 export interface VersionDependency {
   /** The ID of the version that this version depends on */
@@ -249,7 +247,7 @@ export interface VersionDependency {
   /** The type of dependency that this version has */
   dependency_type: VersionDependencyDependencyType | (string & {});
 }
-export const VersionDependency = /*@__PURE__*/ S.suspend(() =>
+const VersionDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version_id: S.optional(S.NullOr(S.String)),
     project_id: S.optional(S.NullOr(S.String)),
@@ -260,22 +258,22 @@ export const VersionDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type EditableVersionDependenciesList = Array<VersionDependency>;
-export const EditableVersionDependenciesList = /*@__PURE__*/ S.Array(
+const EditableVersionDependenciesList = /*@__PURE__*/ S.Array(
   VersionDependency,
 ) as any as S.Schema<EditableVersionDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type EditableVersionGameVersionsList = Array<string>;
-export const EditableVersionGameVersionsList =
+const EditableVersionGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<EditableVersionGameVersionsList>;
 
 /** The release channel for this version */
 export type EditableVersionVersionType = "release" | "beta" | "alpha";
-export const EditableVersionVersionType = S.String;
+const EditableVersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type EditableVersionLoadersList = Array<string>;
-export const EditableVersionLoadersList =
+const EditableVersionLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<EditableVersionLoadersList>;
 
 export type EditableVersionStatus =
@@ -285,14 +283,14 @@ export type EditableVersionStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const EditableVersionStatus = S.String;
+const EditableVersionStatus = S.String;
 
 export type EditableVersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const EditableVersionRequestedStatus = S.String;
+const EditableVersionRequestedStatus = S.String;
 
 /** The hash format and the hash of the new primary file */
 export type EditableVersionPrimaryFileList = Array<string>;
-export const EditableVersionPrimaryFileList =
+const EditableVersionPrimaryFileList =
   CreatableProjectCategoriesList as any as S.Schema<EditableVersionPrimaryFileList>;
 
 export interface EditableFileType {
@@ -302,7 +300,7 @@ export interface EditableFileType {
   hash: string;
   file_type: unknown;
 }
-export const EditableFileType = /*@__PURE__*/ S.suspend(() =>
+const EditableFileType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.String,
     hash: S.String,
@@ -312,7 +310,7 @@ export const EditableFileType = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of file_types to edit */
 export type EditableVersionFileTypesList = Array<EditableFileType>;
-export const EditableVersionFileTypesList = /*@__PURE__*/ S.Array(
+const EditableVersionFileTypesList = /*@__PURE__*/ S.Array(
   EditableFileType,
 ) as any as S.Schema<EditableVersionFileTypesList>;
 
@@ -340,7 +338,7 @@ export interface EditableVersion {
   /** A list of file_types to edit */
   file_types?: EditableVersionFileTypesList;
 }
-export const EditableVersion = /*@__PURE__*/ S.suspend(() =>
+const EditableVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version_number: S.optional(S.String),
@@ -359,7 +357,7 @@ export const EditableVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of initial versions to upload with the created project. Deprecated - please upload version files after initial upload. */
 export type CreatableProjectInitialVersionsList = Array<EditableVersion>;
-export const CreatableProjectInitialVersionsList = /*@__PURE__*/ S.Array(
+const CreatableProjectInitialVersionsList = /*@__PURE__*/ S.Array(
   EditableVersion,
 ) as any as S.Schema<CreatableProjectInitialVersionsList>;
 
@@ -375,7 +373,7 @@ export interface CreatableProjectGalleryItem {
   /** The order of the gallery image. Gallery images are sorted by this field and then alphabetically by title. */
   ordering?: number;
 }
-export const CreatableProjectGalleryItem = /*@__PURE__*/ S.suspend(() =>
+const CreatableProjectGalleryItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.optional(S.String),
     featured: S.optional(S.Boolean),
@@ -389,7 +387,7 @@ export const CreatableProjectGalleryItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload. */
 export type CreatableProjectGalleryItemsList = Array<CreatableProjectGalleryItem | null>;
-export const CreatableProjectGalleryItemsList = /*@__PURE__*/ S.Array(
+const CreatableProjectGalleryItemsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(CreatableProjectGalleryItem),
 ) as any as S.Schema<CreatableProjectGalleryItemsList>;
 
@@ -437,7 +435,7 @@ export interface CreatableProject {
   /** Gallery images to be uploaded with the created project. Deprecated - please upload gallery images after initial upload. */
   gallery_items?: CreatableProjectGalleryItemsList;
 }
-export const CreatableProject = /*@__PURE__*/ S.suspend(() =>
+const CreatableProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String,
     title: S.String,
@@ -474,14 +472,14 @@ export type CreateProjectRequestIcon =
   | "*.svg"
   | "*.svgz"
   | "*.rgb";
-export const CreateProjectRequestIcon = S.String;
+const CreateProjectRequestIcon = S.String;
 
 export interface CreateProjectRequest {
   data: CreatableProject;
   /** Project icon file */
   icon?: CreateProjectRequestIcon | (string & {});
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreatableProject,
     icon: S.optional(CreateProjectRequestIcon),
@@ -500,20 +498,20 @@ export type ProjectStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const ProjectStatus = S.String;
+const ProjectStatus = S.String;
 
 /** The project type of the project */
 export type ProjectProjectType = "mod" | "modpack" | "resourcepack" | "shader";
-export const ProjectProjectType = S.String;
+const ProjectProjectType = S.String;
 
 /** A list of the featured categories that the project has. */
 export type ProjectCategoriesList = Array<string>;
-export const ProjectCategoriesList =
+const ProjectCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectCategoriesList>;
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ProjectAdditionalCategoriesList = Array<string>;
-export const ProjectAdditionalCategoriesList =
+const ProjectAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectAdditionalCategoriesList>;
 
 /** The environment a project or version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
@@ -528,28 +526,26 @@ export type EnvironmentEnum =
   | "client_or_server"
   | "client_or_server_prefers_both"
   | "unknown";
-export const EnvironmentEnum = S.String;
+const EnvironmentEnum = S.String;
 
 /** All the environments that versions of this project support. Not in any particular order, we recommend using the environment information on a version instead. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type ProjectEnvironmentList = Array<EnvironmentEnum>;
-export const ProjectEnvironmentList = /*@__PURE__*/ S.Array(
+const ProjectEnvironmentList = /*@__PURE__*/ S.Array(
   EnvironmentEnum,
 ) as any as S.Schema<ProjectEnvironmentList>;
 
 /** A list of all of the game versions supported by the project */
 export type ProjectGameVersionsList = Array<string>;
-export const ProjectGameVersionsList =
+const ProjectGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectGameVersionsList>;
 
 /** A list of all of the loaders supported by the project. These vary based on project type. */
 export type ProjectLoadersList = Array<string>;
-export const ProjectLoadersList =
-  CreatableProjectCategoriesList as any as S.Schema<ProjectLoadersList>;
+const ProjectLoadersList = CreatableProjectCategoriesList as any as S.Schema<ProjectLoadersList>;
 
 /** A list of the version IDs of the project */
 export type ProjectVersionsList = Array<string>;
-export const ProjectVersionsList =
-  CreatableProjectCategoriesList as any as S.Schema<ProjectVersionsList>;
+const ProjectVersionsList = CreatableProjectCategoriesList as any as S.Schema<ProjectVersionsList>;
 
 /** The license of the project */
 export interface ProjectLicense {
@@ -560,7 +556,7 @@ export interface ProjectLicense {
   /** The URL to this license */
   url?: string | null;
 }
-export const ProjectLicense = /*@__PURE__*/ S.suspend(() =>
+const ProjectLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -582,7 +578,7 @@ export interface GalleryImage {
   /** The order of the gallery image. Gallery images are sorted by this field and then alphabetically by title. */
   ordering?: number;
 }
-export const GalleryImage = /*@__PURE__*/ S.suspend(() =>
+const GalleryImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     featured: S.Boolean,
@@ -595,29 +591,29 @@ export const GalleryImage = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectGalleryList = Array<GalleryImage | null>;
-export const ProjectGalleryList = /*@__PURE__*/ S.Array(
+const ProjectGalleryList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(GalleryImage),
 ) as any as S.Schema<ProjectGalleryList>;
 
 export type ProjectMonetizationStatus = "monetized" | "demonetized" | "force-demonetized";
-export const ProjectMonetizationStatus = S.String;
+const ProjectMonetizationStatus = S.String;
 
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type ProjectRequestedStatus = "approved" | "archived" | "unlisted" | "private" | "draft";
-export const ProjectRequestedStatus = S.String;
+const ProjectRequestedStatus = S.String;
 
 /** A list of donation links for the project */
 export type ProjectDonationUrlsList = Array<ProjectDonationURL>;
-export const ProjectDonationUrlsList =
+const ProjectDonationUrlsList =
   CreatableProjectDonationUrlsList as any as S.Schema<ProjectDonationUrlsList>;
 
 /** Deprecated - use `environment` instead. */
 export type ProjectClientSide = "required" | "optional" | "unsupported" | "unknown";
-export const ProjectClientSide = S.String;
+const ProjectClientSide = S.String;
 
 /** Deprecated - use `environment` instead. */
 export type ProjectServerSide = "required" | "optional" | "unsupported" | "unknown";
-export const ProjectServerSide = S.String;
+const ProjectServerSide = S.String;
 
 /** Deprecated - A message that a moderator sent regarding the project */
 export interface ModeratorMessage {
@@ -626,7 +622,7 @@ export interface ModeratorMessage {
   /** The longer body of the message that a moderator has left for the project */
   body?: string | null;
 }
-export const ModeratorMessage = /*@__PURE__*/ S.suspend(() =>
+const ModeratorMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     body: S.optional(S.NullOr(S.String)),
@@ -708,7 +704,7 @@ export interface Project {
   body_url?: string | null;
   moderator_message?: ModeratorMessage | null;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     team: S.String,
@@ -753,21 +749,21 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type CreatableVersionDependenciesList = Array<VersionDependency>;
-export const CreatableVersionDependenciesList =
+const CreatableVersionDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<CreatableVersionDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type CreatableVersionGameVersionsList = Array<string>;
-export const CreatableVersionGameVersionsList =
+const CreatableVersionGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<CreatableVersionGameVersionsList>;
 
 /** The release channel for this version */
 export type CreatableVersionVersionType = "release" | "beta" | "alpha";
-export const CreatableVersionVersionType = S.String;
+const CreatableVersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreatableVersionLoadersList = Array<string>;
-export const CreatableVersionLoadersList =
+const CreatableVersionLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<CreatableVersionLoadersList>;
 
 export type CreatableVersionStatus =
@@ -777,14 +773,14 @@ export type CreatableVersionStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const CreatableVersionStatus = S.String;
+const CreatableVersionStatus = S.String;
 
 export type CreatableVersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const CreatableVersionRequestedStatus = S.String;
+const CreatableVersionRequestedStatus = S.String;
 
 /** An array of the multipart field names of each file that goes with this version */
 export type CreatableVersionFilePartsList = Array<string>;
-export const CreatableVersionFilePartsList =
+const CreatableVersionFilePartsList =
   CreatableProjectCategoriesList as any as S.Schema<CreatableVersionFilePartsList>;
 
 /** The environment a version supports. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
@@ -798,7 +794,7 @@ export type EnvironmentInputEnum =
   | "dedicated_server_only"
   | "client_or_server"
   | "client_or_server_prefers_both";
-export const EnvironmentInputEnum = S.String;
+const EnvironmentInputEnum = S.String;
 
 export type FileTypeEnum =
   | "required-resource-pack"
@@ -808,13 +804,13 @@ export type FileTypeEnum =
   | "javadoc-jar"
   | "unknown"
   | "signature";
-export const FileTypeEnum = S.String;
+const FileTypeEnum = S.String;
 
 /** A map of file parts to their associated file type, a file type is used for additional files such as sources jars. */
 export type CreatableVersionFileTypesMap = {
   [key: string]: FileTypeEnum | (string & {}) | undefined;
 };
-export const CreatableVersionFileTypesMap = /*@__PURE__*/ S.Record(
+const CreatableVersionFileTypesMap = /*@__PURE__*/ S.Record(
   S.String,
   FileTypeEnum,
 ) as any as S.Schema<CreatableVersionFileTypesMap>;
@@ -848,7 +844,7 @@ export interface CreatableVersion {
   /** A map of file parts to their associated file type, a file type is used for additional files such as sources jars. */
   file_types?: CreatableVersionFileTypesMap;
 }
-export const CreatableVersion = /*@__PURE__*/ S.suspend(() =>
+const CreatableVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -871,7 +867,7 @@ export const CreatableVersion = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVersionRequest {
   data: CreatableVersion;
 }
-export const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CreatableVersion,
   }).pipe(T.Http({ method: "POST", uri: "/version", code: 200, contentType: "multipart" })),
@@ -879,21 +875,21 @@ export const CreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type CreateVersionResponseDependenciesList = Array<VersionDependency>;
-export const CreateVersionResponseDependenciesList =
+const CreateVersionResponseDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<CreateVersionResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type CreateVersionResponseGameVersionsList = Array<string>;
-export const CreateVersionResponseGameVersionsList =
+const CreateVersionResponseGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type CreateVersionResponseVersionType = "release" | "beta" | "alpha";
-export const CreateVersionResponseVersionType = S.String;
+const CreateVersionResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type CreateVersionResponseLoadersList = Array<string>;
-export const CreateVersionResponseLoadersList =
+const CreateVersionResponseLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<CreateVersionResponseLoadersList>;
 
 export type CreateVersionResponseStatus =
@@ -903,17 +899,17 @@ export type CreateVersionResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const CreateVersionResponseStatus = S.String;
+const CreateVersionResponseStatus = S.String;
 
 export type CreateVersionResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const CreateVersionResponseRequestedStatus = S.String;
+const CreateVersionResponseRequestedStatus = S.String;
 
 /** A map of hashes of the file. The key is the hashing algorithm and the value is the string version of the hash. */
 export interface VersionFileHashes {
   sha512?: string;
   sha1?: string;
 }
-export const VersionFileHashes = /*@__PURE__*/ S.suspend(() =>
+const VersionFileHashes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha512: S.optional(S.String),
     sha1: S.optional(S.String),
@@ -932,7 +928,7 @@ export interface VersionFile {
   size: number;
   file_type?: unknown;
 }
-export const VersionFile = /*@__PURE__*/ S.suspend(() =>
+const VersionFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: VersionFileHashes,
     url: S.String,
@@ -945,7 +941,7 @@ export const VersionFile = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of files available for download for this version */
 export type CreateVersionResponseFilesList = Array<VersionFile>;
-export const CreateVersionResponseFilesList = /*@__PURE__*/ S.Array(
+const CreateVersionResponseFilesList = /*@__PURE__*/ S.Array(
   VersionFile,
 ) as any as S.Schema<CreateVersionResponseFilesList>;
 
@@ -983,7 +979,7 @@ export interface CreateVersionResponse {
   /** A list of files available for download for this version */
   files: CreateVersionResponseFilesList;
 }
-export const CreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -1007,7 +1003,7 @@ export const CreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVersionResponse" }) as any as S.Schema<CreateVersionResponse>;
 
 export type DeleteFileFromHashRequestAlgorithm = "sha1" | "sha512";
-export const DeleteFileFromHashRequestAlgorithm = S.String;
+const DeleteFileFromHashRequestAlgorithm = S.String;
 
 export interface DeleteFileFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
@@ -1017,7 +1013,7 @@ export interface DeleteFileFromHashRequest {
   /** Version ID to delete the version from, if multiple files of the same hash exist */
   version_id?: string;
 }
-export const DeleteFileFromHashRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileFromHashRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     algorithm: DeleteFileFromHashRequestAlgorithm.pipe(T.Query()),
@@ -1028,7 +1024,7 @@ export const DeleteFileFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFileFromHashRequest>;
 
 export interface DeleteFileFromHashResponse {}
-export const DeleteFileFromHashResponse =
+const DeleteFileFromHashResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteFileFromHashResponse>;
 
 export interface DeleteGalleryImageRequest {
@@ -1037,7 +1033,7 @@ export interface DeleteGalleryImageRequest {
   /** URL link of the image to delete */
   url: string;
 }
-export const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     url: S.String.pipe(T.Query()),
@@ -1047,14 +1043,14 @@ export const DeleteGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGalleryImageRequest>;
 
 export interface DeleteGalleryImageResponse {}
-export const DeleteGalleryImageResponse =
+const DeleteGalleryImageResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteGalleryImageResponse>;
 
 export interface DeleteNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
-export const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/notification/{id}", code: 200 })),
@@ -1063,14 +1059,14 @@ export const DeleteNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationRequest>;
 
 export interface DeleteNotificationResponse {}
-export const DeleteNotificationResponse =
+const DeleteNotificationResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteNotificationResponse>;
 
 export interface DeleteNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
-export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "DELETE", uri: "/notifications", code: 200 })),
@@ -1079,35 +1075,34 @@ export const DeleteNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNotificationsRequest>;
 
 export interface DeleteNotificationsResponse {}
-export const DeleteNotificationsResponse =
+const DeleteNotificationsResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteNotificationsResponse>;
 
 export interface DeleteProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}", code: 200 })),
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse =
-  AddFilesToVersionResponse as any as S.Schema<DeleteProjectResponse>;
+const DeleteProjectResponse = AddFilesToVersionResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteProjectIconRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const DeleteProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectIconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/icon", code: 200 })),
 ).annotate({ identifier: "DeleteProjectIconRequest" }) as any as S.Schema<DeleteProjectIconRequest>;
 
 export interface DeleteProjectIconResponse {}
-export const DeleteProjectIconResponse =
+const DeleteProjectIconResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteProjectIconResponse>;
 
 export interface DeleteTeamMemberRequest {
@@ -1116,7 +1111,7 @@ export interface DeleteTeamMemberRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     id_username: S.String.pipe(T.Label()),
@@ -1124,14 +1119,14 @@ export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamMemberRequest" }) as any as S.Schema<DeleteTeamMemberRequest>;
 
 export interface DeleteTeamMemberResponse {}
-export const DeleteTeamMemberResponse =
+const DeleteTeamMemberResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteTeamMemberResponse>;
 
 export interface DeleteThreadMessageRequest {
   /** The ID of the message */
   id: string;
 }
-export const DeleteThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/message/{id}", code: 200 })),
@@ -1140,53 +1135,50 @@ export const DeleteThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreadMessageRequest>;
 
 export interface DeleteThreadMessageResponse {}
-export const DeleteThreadMessageResponse =
+const DeleteThreadMessageResponse =
   AddFilesToVersionResponse as any as S.Schema<DeleteThreadMessageResponse>;
 
 export interface DeleteUserIconRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const DeleteUserIconRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserIconRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/user/{id_username}/icon", code: 200 })),
 ).annotate({ identifier: "DeleteUserIconRequest" }) as any as S.Schema<DeleteUserIconRequest>;
 
 export interface DeleteUserIconResponse {}
-export const DeleteUserIconResponse =
-  AddFilesToVersionResponse as any as S.Schema<DeleteUserIconResponse>;
+const DeleteUserIconResponse = AddFilesToVersionResponse as any as S.Schema<DeleteUserIconResponse>;
 
 export interface DeleteVersionRequest {
   /** The ID of the version */
   id: string;
 }
-export const DeleteVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/version/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteVersionRequest" }) as any as S.Schema<DeleteVersionRequest>;
 
 export interface DeleteVersionResponse {}
-export const DeleteVersionResponse =
-  AddFilesToVersionResponse as any as S.Schema<DeleteVersionResponse>;
+const DeleteVersionResponse = AddFilesToVersionResponse as any as S.Schema<DeleteVersionResponse>;
 
 export interface FollowProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const FollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const FollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/project/{id_slug}/follow", code: 200 })),
 ).annotate({ identifier: "FollowProjectRequest" }) as any as S.Schema<FollowProjectRequest>;
 
 export interface FollowProjectResponse {}
-export const FollowProjectResponse =
-  AddFilesToVersionResponse as any as S.Schema<FollowProjectResponse>;
+const FollowProjectResponse = AddFilesToVersionResponse as any as S.Schema<FollowProjectResponse>;
 
 export type ForgeUpdatesRequestNeoforge = "only" | "include";
-export const ForgeUpdatesRequestNeoforge = S.String;
+const ForgeUpdatesRequestNeoforge = S.String;
 
 export interface ForgeUpdatesRequest {
   /** The ID or slug of the project */
@@ -1194,7 +1186,7 @@ export interface ForgeUpdatesRequest {
   /** Whether to include NeoForge versions. Can be `only` (NeoForge-only versions), `include` (both Forge and NeoForge versions), or omitted (Forge-only versions). */
   neoforge?: ForgeUpdatesRequestNeoforge | (string & {});
 }
-export const ForgeUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ForgeUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     neoforge: S.optional(ForgeUpdatesRequestNeoforge.pipe(T.Query())),
@@ -1208,7 +1200,7 @@ export interface ForgeUpdateCheckerPromos {
   /** The latest mod version for `{version}`. Shows versions with the `alpha` and `beta` version types. */
   _version__latest?: string;
 }
-export const ForgeUpdateCheckerPromos = /*@__PURE__*/ S.suspend(() =>
+const ForgeUpdateCheckerPromos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _version__recommended: S.optional(S.String.pipe(T.Body("{version}-recommended"))),
     _version__latest: S.optional(S.String.pipe(T.Body("{version}-latest"))),
@@ -1221,7 +1213,7 @@ export interface ForgeUpdates {
   homepage?: string;
   promos?: ForgeUpdateCheckerPromos;
 }
-export const ForgeUpdates = /*@__PURE__*/ S.suspend(() =>
+const ForgeUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homepage: S.optional(S.String),
     promos: S.optional(ForgeUpdateCheckerPromos),
@@ -1232,7 +1224,7 @@ export interface GetDependenciesRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const GetDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/dependencies", code: 200 })),
@@ -1240,38 +1232,37 @@ export const GetDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Projects that the project depends upon */
 export type ProjectDependencyListProjectsList = Array<Project>;
-export const ProjectDependencyListProjectsList = /*@__PURE__*/ S.Array(
+const ProjectDependencyListProjectsList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectDependencyListProjectsList>;
 
 /** A list of specific versions of projects that this version depends on */
 export type VersionDependenciesList = Array<VersionDependency>;
-export const VersionDependenciesList =
+const VersionDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<VersionDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type VersionGameVersionsList = Array<string>;
-export const VersionGameVersionsList =
+const VersionGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<VersionGameVersionsList>;
 
 /** The release channel for this version */
 export type VersionVersionType = "release" | "beta" | "alpha";
-export const VersionVersionType = S.String;
+const VersionVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionLoadersList = Array<string>;
-export const VersionLoadersList =
-  CreatableProjectCategoriesList as any as S.Schema<VersionLoadersList>;
+const VersionLoadersList = CreatableProjectCategoriesList as any as S.Schema<VersionLoadersList>;
 
 export type VersionStatus = "listed" | "archived" | "draft" | "unlisted" | "scheduled" | "unknown";
-export const VersionStatus = S.String;
+const VersionStatus = S.String;
 
 export type VersionRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const VersionRequestedStatus = S.String;
+const VersionRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type VersionFilesList = Array<VersionFile>;
-export const VersionFilesList = CreateVersionResponseFilesList as any as S.Schema<VersionFilesList>;
+const VersionFilesList = CreateVersionResponseFilesList as any as S.Schema<VersionFilesList>;
 
 export interface Version {
   /** The name of this version */
@@ -1307,7 +1298,7 @@ export interface Version {
   /** A list of files available for download for this version */
   files: VersionFilesList;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -1332,7 +1323,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 
 /** Versions that the project depends upon */
 export type ProjectDependencyListVersionsList = Array<Version>;
-export const ProjectDependencyListVersionsList = /*@__PURE__*/ S.Array(
+const ProjectDependencyListVersionsList = /*@__PURE__*/ S.Array(
   Version,
 ) as any as S.Schema<ProjectDependencyListVersionsList>;
 
@@ -1342,7 +1333,7 @@ export interface ProjectDependencyList {
   /** Versions that the project depends upon */
   versions?: ProjectDependencyListVersionsList;
 }
-export const ProjectDependencyList = /*@__PURE__*/ S.suspend(() =>
+const ProjectDependencyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: S.optional(ProjectDependencyListProjectsList),
     versions: S.optional(ProjectDependencyListVersionsList),
@@ -1353,7 +1344,7 @@ export interface GetFollowedProjectsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const GetFollowedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFollowedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/follows", code: 200 })),
@@ -1362,34 +1353,32 @@ export const GetFollowedProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFollowedProjectsRequest>;
 
 export type GetFollowedProjectsResponseBodyList = Array<Project>;
-export const GetFollowedProjectsResponseBodyList =
+const GetFollowedProjectsResponseBodyList =
   ProjectDependencyListProjectsList as any as S.Schema<GetFollowedProjectsResponseBodyList>;
 
 export type GetFollowedProjectsResponse = GetFollowedProjectsResponseBodyList;
-export const GetFollowedProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFollowedProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   GetFollowedProjectsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetFollowedProjectsResponse",
 }) as any as S.Schema<GetFollowedProjectsResponse>;
 
 export type GetLatestVersionFromHashRequestAlgorithm = "sha1" | "sha512";
-export const GetLatestVersionFromHashRequestAlgorithm = S.String;
+const GetLatestVersionFromHashRequestAlgorithm = S.String;
 
 export type GetLatestVersionFromHashRequestLoadersList = Array<string>;
-export const GetLatestVersionFromHashRequestLoadersList =
+const GetLatestVersionFromHashRequestLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestLoadersList>;
 
 export type GetLatestVersionFromHashRequestGameVersionsList = Array<string>;
-export const GetLatestVersionFromHashRequestGameVersionsList =
+const GetLatestVersionFromHashRequestGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashRequestGameVersionsList>;
 
 export type GetLatestVersionFromHashRequestVersionTypesItem = "release" | "alpha" | "beta";
-export const GetLatestVersionFromHashRequestVersionTypesItem = S.String;
-
 export type GetLatestVersionFromHashRequestVersionTypesList = Array<
   GetLatestVersionFromHashRequestVersionTypesItem | (string & {})
 >;
-export const GetLatestVersionFromHashRequestVersionTypesList =
+const GetLatestVersionFromHashRequestVersionTypesList =
   ProjectEnvironmentList as any as S.Schema<GetLatestVersionFromHashRequestVersionTypesList>;
 
 export interface GetLatestVersionFromHashRequest {
@@ -1401,7 +1390,7 @@ export interface GetLatestVersionFromHashRequest {
   game_versions: GetLatestVersionFromHashRequestGameVersionsList;
   version_types?: GetLatestVersionFromHashRequestVersionTypesList;
 }
-export const GetLatestVersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestVersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     algorithm: GetLatestVersionFromHashRequestAlgorithm.pipe(T.Query()),
@@ -1415,21 +1404,21 @@ export const GetLatestVersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetLatestVersionFromHashResponseDependenciesList = Array<VersionDependency>;
-export const GetLatestVersionFromHashResponseDependenciesList =
+const GetLatestVersionFromHashResponseDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<GetLatestVersionFromHashResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetLatestVersionFromHashResponseGameVersionsList = Array<string>;
-export const GetLatestVersionFromHashResponseGameVersionsList =
+const GetLatestVersionFromHashResponseGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetLatestVersionFromHashResponseVersionType = "release" | "beta" | "alpha";
-export const GetLatestVersionFromHashResponseVersionType = S.String;
+const GetLatestVersionFromHashResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetLatestVersionFromHashResponseLoadersList = Array<string>;
-export const GetLatestVersionFromHashResponseLoadersList =
+const GetLatestVersionFromHashResponseLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionFromHashResponseLoadersList>;
 
 export type GetLatestVersionFromHashResponseStatus =
@@ -1439,18 +1428,18 @@ export type GetLatestVersionFromHashResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const GetLatestVersionFromHashResponseStatus = S.String;
+const GetLatestVersionFromHashResponseStatus = S.String;
 
 export type GetLatestVersionFromHashResponseRequestedStatus =
   | "listed"
   | "archived"
   | "draft"
   | "unlisted";
-export const GetLatestVersionFromHashResponseRequestedStatus = S.String;
+const GetLatestVersionFromHashResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetLatestVersionFromHashResponseFilesList = Array<VersionFile>;
-export const GetLatestVersionFromHashResponseFilesList =
+const GetLatestVersionFromHashResponseFilesList =
   CreateVersionResponseFilesList as any as S.Schema<GetLatestVersionFromHashResponseFilesList>;
 
 export interface GetLatestVersionFromHashResponse {
@@ -1487,7 +1476,7 @@ export interface GetLatestVersionFromHashResponse {
   /** A list of files available for download for this version */
   files: GetLatestVersionFromHashResponseFilesList;
 }
-export const GetLatestVersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLatestVersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -1513,27 +1502,25 @@ export const GetLatestVersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLatestVersionFromHashResponse>;
 
 export type GetLatestVersionsFromHashesRequestHashesList = Array<string>;
-export const GetLatestVersionsFromHashesRequestHashesList =
+const GetLatestVersionsFromHashesRequestHashesList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestHashesList>;
 
 export type GetLatestVersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
-export const GetLatestVersionsFromHashesRequestAlgorithm = S.String;
+const GetLatestVersionsFromHashesRequestAlgorithm = S.String;
 
 export type GetLatestVersionsFromHashesRequestLoadersList = Array<string>;
-export const GetLatestVersionsFromHashesRequestLoadersList =
+const GetLatestVersionsFromHashesRequestLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestLoadersList>;
 
 export type GetLatestVersionsFromHashesRequestGameVersionsList = Array<string>;
-export const GetLatestVersionsFromHashesRequestGameVersionsList =
+const GetLatestVersionsFromHashesRequestGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<GetLatestVersionsFromHashesRequestGameVersionsList>;
 
 export type GetLatestVersionsFromHashesRequestVersionTypesItem = "release" | "alpha" | "beta";
-export const GetLatestVersionsFromHashesRequestVersionTypesItem = S.String;
-
 export type GetLatestVersionsFromHashesRequestVersionTypesList = Array<
   GetLatestVersionsFromHashesRequestVersionTypesItem | (string & {})
 >;
-export const GetLatestVersionsFromHashesRequestVersionTypesList =
+const GetLatestVersionsFromHashesRequestVersionTypesList =
   ProjectEnvironmentList as any as S.Schema<GetLatestVersionsFromHashesRequestVersionTypesList>;
 
 export interface GetLatestVersionsFromHashesRequest {
@@ -1543,7 +1530,7 @@ export interface GetLatestVersionsFromHashesRequest {
   game_versions: GetLatestVersionsFromHashesRequestGameVersionsList;
   version_types?: GetLatestVersionsFromHashesRequestVersionTypesList;
 }
-export const GetLatestVersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestVersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: GetLatestVersionsFromHashesRequestHashesList,
     algorithm: GetLatestVersionsFromHashesRequestAlgorithm,
@@ -1557,13 +1544,10 @@ export const GetLatestVersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A map from hashes to versions */
 export type HashVersionMap = { [key: string]: Version | undefined };
-export const HashVersionMap = /*@__PURE__*/ S.Record(
-  S.String,
-  Version,
-) as any as S.Schema<HashVersionMap>;
+const HashVersionMap = /*@__PURE__*/ S.Record(S.String, Version) as any as S.Schema<HashVersionMap>;
 
 export type GetLatestVersionsFromHashesResponse = HashVersionMap;
-export const GetLatestVersionsFromHashesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLatestVersionsFromHashesResponse = /*@__PURE__*/ S.suspend(() =>
   HashVersionMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetLatestVersionsFromHashesResponse",
@@ -1573,7 +1557,7 @@ export interface GetNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
-export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/notification/{id}", code: 200 })),
@@ -1585,11 +1569,11 @@ export type NotificationType =
   | "team_invite"
   | "status_change"
   | "moderator_message";
-export const NotificationType = S.String;
+const NotificationType = S.String;
 
 /** The HTTP code and path to request in order to perform this action. */
 export type NotificationActionActionRouteList = Array<string>;
-export const NotificationActionActionRouteList =
+const NotificationActionActionRouteList =
   CreatableProjectCategoriesList as any as S.Schema<NotificationActionActionRouteList>;
 
 /** An action that can be performed on a notification */
@@ -1599,7 +1583,7 @@ export interface NotificationAction {
   /** The HTTP code and path to request in order to perform this action. */
   action_route?: NotificationActionActionRouteList;
 }
-export const NotificationAction = /*@__PURE__*/ S.suspend(() =>
+const NotificationAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     action_route: S.optional(NotificationActionActionRouteList),
@@ -1608,7 +1592,7 @@ export const NotificationAction = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of actions that can be performed */
 export type NotificationActionsList = Array<NotificationAction>;
-export const NotificationActionsList = /*@__PURE__*/ S.Array(
+const NotificationActionsList = /*@__PURE__*/ S.Array(
   NotificationAction,
 ) as any as S.Schema<NotificationActionsList>;
 
@@ -1632,7 +1616,7 @@ export interface Notification {
   /** A list of actions that can be performed */
   actions: NotificationActionsList;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     user_id: S.String,
@@ -1650,26 +1634,26 @@ export interface GetNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
-export const GetNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/notifications", code: 200 })),
 ).annotate({ identifier: "GetNotificationsRequest" }) as any as S.Schema<GetNotificationsRequest>;
 
 export type GetNotificationsResponseBodyList = Array<Notification>;
-export const GetNotificationsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetNotificationsResponseBodyList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<GetNotificationsResponseBodyList>;
 
 export type GetNotificationsResponse = GetNotificationsResponseBodyList;
-export const GetNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetNotificationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetNotificationsResponse" }) as any as S.Schema<GetNotificationsResponse>;
 
 export interface GetOpenReportsRequest {
   count?: number;
 }
-export const GetOpenReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOpenReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/report", code: 200 })),
@@ -1677,7 +1661,7 @@ export const GetOpenReportsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the item being reported */
 export type ReportItemType = "project" | "user" | "version";
-export const ReportItemType = S.String;
+const ReportItemType = S.String;
 
 export interface Report {
   /** The type of the report being sent */
@@ -1699,7 +1683,7 @@ export interface Report {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_type: S.String,
     item_id: S.String,
@@ -1714,12 +1698,12 @@ export const Report = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export type GetOpenReportsResponseBodyList = Array<Report>;
-export const GetOpenReportsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOpenReportsResponseBodyList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<GetOpenReportsResponseBodyList>;
 
 export type GetOpenReportsResponse = GetOpenReportsResponseBodyList;
-export const GetOpenReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOpenReportsResponse = /*@__PURE__*/ S.suspend(() =>
   GetOpenReportsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOpenReportsResponse" }) as any as S.Schema<GetOpenReportsResponse>;
 
@@ -1727,7 +1711,7 @@ export interface GetPayoutHistoryRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const GetPayoutHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPayoutHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/payouts", code: 200 })),
@@ -1741,7 +1725,7 @@ export interface UserPayoutHistoryEntry {
   /** The status of this transaction */
   status?: string;
 }
-export const UserPayoutHistoryEntry = /*@__PURE__*/ S.suspend(() =>
+const UserPayoutHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     amount: S.optional(S.Number),
@@ -1751,7 +1735,7 @@ export const UserPayoutHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** A history of all of the user's past transactions */
 export type UserPayoutHistoryPayoutsList = Array<UserPayoutHistoryEntry>;
-export const UserPayoutHistoryPayoutsList = /*@__PURE__*/ S.Array(
+const UserPayoutHistoryPayoutsList = /*@__PURE__*/ S.Array(
   UserPayoutHistoryEntry,
 ) as any as S.Schema<UserPayoutHistoryPayoutsList>;
 
@@ -1763,7 +1747,7 @@ export interface UserPayoutHistory {
   /** A history of all of the user's past transactions */
   payouts?: UserPayoutHistoryPayoutsList;
 }
-export const UserPayoutHistory = /*@__PURE__*/ S.suspend(() =>
+const UserPayoutHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all_time: S.optional(S.String),
     last_month: S.optional(S.String),
@@ -1775,7 +1759,7 @@ export interface GetProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}", code: 200 })),
@@ -1785,18 +1769,18 @@ export interface GetProjectsRequest {
   /** The IDs and/or slugs of the projects */
   ids: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/projects", code: 200 })),
 ).annotate({ identifier: "GetProjectsRequest" }) as any as S.Schema<GetProjectsRequest>;
 
 export type GetProjectsResponseBodyList = Array<Project>;
-export const GetProjectsResponseBodyList =
+const GetProjectsResponseBodyList =
   ProjectDependencyListProjectsList as any as S.Schema<GetProjectsResponseBodyList>;
 
 export type GetProjectsResponse = GetProjectsResponseBodyList;
-export const GetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   GetProjectsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetProjectsResponse" }) as any as S.Schema<GetProjectsResponse>;
 
@@ -1804,7 +1788,7 @@ export interface GetProjectTeamMembersRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const GetProjectTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/project/{id_slug}/members", code: 200 })),
@@ -1814,11 +1798,11 @@ export const GetProjectTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The wallet that the user has selected */
 export type UserPayoutDataPayoutWallet = "paypal" | "venmo";
-export const UserPayoutDataPayoutWallet = S.String;
+const UserPayoutDataPayoutWallet = S.String;
 
 /** The type of the user's wallet */
 export type UserPayoutDataPayoutWalletType = "email" | "phone" | "user_handle";
-export const UserPayoutDataPayoutWalletType = S.String;
+const UserPayoutDataPayoutWalletType = S.String;
 
 /** Various data relating to the user's payouts status (you can only see your own) */
 export interface UserPayoutData {
@@ -1831,7 +1815,7 @@ export interface UserPayoutData {
   /** The user's payout address */
   payout_address?: string;
 }
-export const UserPayoutData = /*@__PURE__*/ S.suspend(() =>
+const UserPayoutData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.optional(S.Number),
     payout_wallet: S.optional(UserPayoutDataPayoutWallet),
@@ -1842,11 +1826,11 @@ export const UserPayoutData = /*@__PURE__*/ S.suspend(() =>
 
 /** The user's role */
 export type UserRole = "admin" | "moderator" | "developer";
-export const UserRole = S.String;
+const UserRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type UserAuthProvidersList = Array<string>;
-export const UserAuthProvidersList =
+const UserAuthProvidersList =
   CreatableProjectCategoriesList as any as S.Schema<UserAuthProvidersList>;
 
 export interface User {
@@ -1880,7 +1864,7 @@ export interface User {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -1915,7 +1899,7 @@ export interface TeamMember {
   /** The order of the team member. */
   ordering?: number;
 }
-export const TeamMember = /*@__PURE__*/ S.suspend(() =>
+const TeamMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String,
     user: User,
@@ -1929,12 +1913,12 @@ export const TeamMember = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of team members */
 export type GetProjectTeamMembersResponseBodyList = Array<TeamMember>;
-export const GetProjectTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetProjectTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
   TeamMember,
 ) as any as S.Schema<GetProjectTeamMembersResponseBodyList>;
 
 export type GetProjectTeamMembersResponse = GetProjectTeamMembersResponseBodyList;
-export const GetProjectTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
   GetProjectTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetProjectTeamMembersResponse",
@@ -1952,7 +1936,7 @@ export interface GetProjectVersionsRequest {
   /** Allows you to toggle the inclusion of the changelog field in the response. It is highly recommended to use include_changelog=false in most cases unless you specifically need the changelog for all versions. */
   include_changelog?: boolean;
 }
-export const GetProjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     loaders: S.optional(S.String.pipe(T.Query())),
@@ -1965,11 +1949,11 @@ export const GetProjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectVersionsRequest>;
 
 export type GetProjectVersionsResponseBodyList = Array<Version>;
-export const GetProjectVersionsResponseBodyList =
+const GetProjectVersionsResponseBodyList =
   ProjectDependencyListVersionsList as any as S.Schema<GetProjectVersionsResponseBodyList>;
 
 export type GetProjectVersionsResponse = GetProjectVersionsResponseBodyList;
-export const GetProjectVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetProjectVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetProjectVersionsResponse",
@@ -1979,7 +1963,7 @@ export interface GetReportRequest {
   /** The ID of the report */
   id: string;
 }
-export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/report/{id}", code: 200 })),
@@ -1987,8 +1971,6 @@ export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the item being reported */
 export type GetReportResponseItemType = "project" | "user" | "version";
-export const GetReportResponseItemType = S.String;
-
 export interface GetReportResponse {
   /** The type of the report being sent */
   report_type: string;
@@ -2009,30 +1991,27 @@ export interface GetReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
-export const GetReportResponse = Report as any as S.Schema<GetReportResponse>;
+const GetReportResponse = Report as any as S.Schema<GetReportResponse>;
 
 export interface GetReportsRequest {
   /** The IDs of the reports */
   ids: string;
 }
-export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/reports", code: 200 })),
 ).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
 
 export type GetReportsResponseBodyList = Array<Report>;
-export const GetReportsResponseBodyList =
-  GetOpenReportsResponseBodyList as any as S.Schema<GetReportsResponseBodyList>;
-
 export type GetReportsResponse = GetReportsResponseBodyList;
-export const GetReportsResponse = GetOpenReportsResponse as any as S.Schema<GetReportsResponse>;
+const GetReportsResponse = GetOpenReportsResponse as any as S.Schema<GetReportsResponse>;
 
 export interface GetTeamMembersRequest {
   /** The ID of the team */
   id: string;
 }
-export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/team/{id}/members", code: 200 })),
@@ -2040,11 +2019,11 @@ export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of team members */
 export type GetTeamMembersResponseBodyList = Array<TeamMember>;
-export const GetTeamMembersResponseBodyList =
+const GetTeamMembersResponseBodyList =
   GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamMembersResponseBodyList>;
 
 export type GetTeamMembersResponse = GetTeamMembersResponseBodyList;
-export const GetTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
   GetTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTeamMembersResponse" }) as any as S.Schema<GetTeamMembersResponse>;
 
@@ -2052,23 +2031,23 @@ export interface GetTeamsRequest {
   /** The IDs of the teams */
   ids: string;
 }
-export const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/teams", code: 200 })),
 ).annotate({ identifier: "GetTeamsRequest" }) as any as S.Schema<GetTeamsRequest>;
 
 export type GetTeamsResponseBodyItemList = Array<TeamMember>;
-export const GetTeamsResponseBodyItemList =
+const GetTeamsResponseBodyItemList =
   GetProjectTeamMembersResponseBodyList as any as S.Schema<GetTeamsResponseBodyItemList>;
 
 export type GetTeamsResponseBodyList = Array<GetTeamsResponseBodyItemList>;
-export const GetTeamsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTeamsResponseBodyList = /*@__PURE__*/ S.Array(
   GetTeamsResponseBodyItemList,
 ) as any as S.Schema<GetTeamsResponseBodyList>;
 
 export type GetTeamsResponse = GetTeamsResponseBodyList;
-export const GetTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   GetTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTeamsResponse" }) as any as S.Schema<GetTeamsResponse>;
 
@@ -2076,18 +2055,18 @@ export interface GetThreadRequest {
   /** The ID of the thread */
   id: string;
 }
-export const GetThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/thread/{id}", code: 200 })),
 ).annotate({ identifier: "GetThreadRequest" }) as any as S.Schema<GetThreadRequest>;
 
 export type ThreadType = "project" | "report" | "direct_message";
-export const ThreadType = S.String;
+const ThreadType = S.String;
 
 /** The type of message */
 export type ThreadMessageBodyType = "status_change" | "text" | "thread_closure" | "deleted";
-export const ThreadMessageBodyType = S.String;
+const ThreadMessageBodyType = S.String;
 
 /** The old status of the project. **Only present for `status_change` message type** */
 export type ThreadMessageBodyOldStatus =
@@ -2101,7 +2080,7 @@ export type ThreadMessageBodyOldStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const ThreadMessageBodyOldStatus = S.String;
+const ThreadMessageBodyOldStatus = S.String;
 
 /** The new status of the project. **Only present for `status_change` message type** */
 export type ThreadMessageBodyNewStatus =
@@ -2115,7 +2094,7 @@ export type ThreadMessageBodyNewStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const ThreadMessageBodyNewStatus = S.String;
+const ThreadMessageBodyNewStatus = S.String;
 
 /** The contents of the message. **Fields will vary depending on message type.** */
 export interface ThreadMessageBody {
@@ -2132,7 +2111,7 @@ export interface ThreadMessageBody {
   /** The new status of the project. **Only present for `status_change` message type** */
   new_status?: ThreadMessageBodyNewStatus;
 }
-export const ThreadMessageBody = /*@__PURE__*/ S.suspend(() =>
+const ThreadMessageBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ThreadMessageBodyType,
     body: S.optional(S.String),
@@ -2152,7 +2131,7 @@ export interface ThreadMessage {
   /** The time at which the message was created */
   created: string;
 }
-export const ThreadMessage = /*@__PURE__*/ S.suspend(() =>
+const ThreadMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     author_id: S.optional(S.NullOr(S.String)),
@@ -2162,12 +2141,12 @@ export const ThreadMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ThreadMessage" }) as any as S.Schema<ThreadMessage>;
 
 export type ThreadMessagesList = Array<ThreadMessage>;
-export const ThreadMessagesList = /*@__PURE__*/ S.Array(
+const ThreadMessagesList = /*@__PURE__*/ S.Array(
   ThreadMessage,
 ) as any as S.Schema<ThreadMessagesList>;
 
 export type ThreadMembersList = Array<User>;
-export const ThreadMembersList = /*@__PURE__*/ S.Array(User) as any as S.Schema<ThreadMembersList>;
+const ThreadMembersList = /*@__PURE__*/ S.Array(User) as any as S.Schema<ThreadMembersList>;
 
 export interface Thread {
   /** The ID of the thread */
@@ -2180,7 +2159,7 @@ export interface Thread {
   messages: ThreadMessagesList;
   members: ThreadMembersList;
 }
-export const Thread = /*@__PURE__*/ S.suspend(() =>
+const Thread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: ThreadType,
@@ -2195,19 +2174,19 @@ export interface GetThreadsRequest {
   /** The IDs of the threads */
   ids: string;
 }
-export const GetThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/threads", code: 200 })),
 ).annotate({ identifier: "GetThreadsRequest" }) as any as S.Schema<GetThreadsRequest>;
 
 export type GetThreadsResponseBodyList = Array<Thread>;
-export const GetThreadsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetThreadsResponseBodyList = /*@__PURE__*/ S.Array(
   Thread,
 ) as any as S.Schema<GetThreadsResponseBodyList>;
 
 export type GetThreadsResponse = GetThreadsResponseBodyList;
-export const GetThreadsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThreadsResponse = /*@__PURE__*/ S.suspend(() =>
   GetThreadsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetThreadsResponse" }) as any as S.Schema<GetThreadsResponse>;
 
@@ -2215,7 +2194,7 @@ export interface GetUserRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}", code: 200 })),
@@ -2223,11 +2202,11 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The user's role */
 export type GetUserResponseRole = "admin" | "moderator" | "developer";
-export const GetUserResponseRole = S.String;
+const GetUserResponseRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserResponseAuthProvidersList = Array<string>;
-export const GetUserResponseAuthProvidersList =
+const GetUserResponseAuthProvidersList =
   CreatableProjectCategoriesList as any as S.Schema<GetUserResponseAuthProvidersList>;
 
 export interface GetUserResponse {
@@ -2261,7 +2240,7 @@ export interface GetUserResponse {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -2282,17 +2261,17 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
 
 export interface GetUserFromAuthRequest {}
-export const GetUserFromAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserFromAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
 ).annotate({ identifier: "GetUserFromAuthRequest" }) as any as S.Schema<GetUserFromAuthRequest>;
 
 /** The user's role */
 export type GetUserFromAuthResponseRole = "admin" | "moderator" | "developer";
-export const GetUserFromAuthResponseRole = S.String;
+const GetUserFromAuthResponseRole = S.String;
 
 /** A list of authentication providers you have signed up for (only displayed if requesting your own account) */
 export type GetUserFromAuthResponseAuthProvidersList = Array<string>;
-export const GetUserFromAuthResponseAuthProvidersList =
+const GetUserFromAuthResponseAuthProvidersList =
   CreatableProjectCategoriesList as any as S.Schema<GetUserFromAuthResponseAuthProvidersList>;
 
 export interface GetUserFromAuthResponse {
@@ -2326,7 +2305,7 @@ export interface GetUserFromAuthResponse {
   /** Deprecated - this is no longer public for security reasons and is always null */
   github_id?: number | null;
 }
-export const GetUserFromAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserFromAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -2350,7 +2329,7 @@ export interface GetUserNotificationsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const GetUserNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/notifications", code: 200 })),
@@ -2359,11 +2338,11 @@ export const GetUserNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserNotificationsRequest>;
 
 export type GetUserNotificationsResponseBodyList = Array<Notification>;
-export const GetUserNotificationsResponseBodyList =
+const GetUserNotificationsResponseBodyList =
   GetNotificationsResponseBodyList as any as S.Schema<GetUserNotificationsResponseBodyList>;
 
 export type GetUserNotificationsResponse = GetUserNotificationsResponseBodyList;
-export const GetUserNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserNotificationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetUserNotificationsResponse",
@@ -2373,37 +2352,33 @@ export interface GetUserProjectsRequest {
   /** The ID or username of the user */
   id_username: string;
 }
-export const GetUserProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/user/{id_username}/projects", code: 200 })),
 ).annotate({ identifier: "GetUserProjectsRequest" }) as any as S.Schema<GetUserProjectsRequest>;
 
 export type GetUserProjectsResponseBodyList = Array<Project>;
-export const GetUserProjectsResponseBodyList =
-  ProjectDependencyListProjectsList as any as S.Schema<GetUserProjectsResponseBodyList>;
-
 export type GetUserProjectsResponse = GetUserProjectsResponseBodyList;
-export const GetUserProjectsResponse =
-  GetProjectsResponse as any as S.Schema<GetUserProjectsResponse>;
+const GetUserProjectsResponse = GetProjectsResponse as any as S.Schema<GetUserProjectsResponse>;
 
 export interface GetUsersRequest {
   /** The IDs of the users */
   ids: string;
 }
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/users", code: 200 })),
 ).annotate({ identifier: "GetUsersRequest" }) as any as S.Schema<GetUsersRequest>;
 
 export type GetUsersResponseBodyList = Array<User>;
-export const GetUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetUsersResponseBodyList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<GetUsersResponseBodyList>;
 
 export type GetUsersResponse = GetUsersResponseBodyList;
-export const GetUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUsersResponse = /*@__PURE__*/ S.suspend(() =>
   GetUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetUsersResponse" }) as any as S.Schema<GetUsersResponse>;
 
@@ -2411,7 +2386,7 @@ export interface GetVersionRequest {
   /** The ID of the version */
   id: string;
 }
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/version/{id}", code: 200 })),
@@ -2419,21 +2394,21 @@ export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionResponseDependenciesList = Array<VersionDependency>;
-export const GetVersionResponseDependenciesList =
+const GetVersionResponseDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<GetVersionResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionResponseGameVersionsList = Array<string>;
-export const GetVersionResponseGameVersionsList =
+const GetVersionResponseGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetVersionResponseVersionType = "release" | "beta" | "alpha";
-export const GetVersionResponseVersionType = S.String;
+const GetVersionResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionResponseLoadersList = Array<string>;
-export const GetVersionResponseLoadersList =
+const GetVersionResponseLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<GetVersionResponseLoadersList>;
 
 export type GetVersionResponseStatus =
@@ -2443,14 +2418,14 @@ export type GetVersionResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const GetVersionResponseStatus = S.String;
+const GetVersionResponseStatus = S.String;
 
 export type GetVersionResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const GetVersionResponseRequestedStatus = S.String;
+const GetVersionResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetVersionResponseFilesList = Array<VersionFile>;
-export const GetVersionResponseFilesList =
+const GetVersionResponseFilesList =
   CreateVersionResponseFilesList as any as S.Schema<GetVersionResponseFilesList>;
 
 export interface GetVersionResponse {
@@ -2487,7 +2462,7 @@ export interface GetVersionResponse {
   /** A list of files available for download for this version */
   files: GetVersionResponseFilesList;
 }
-export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -2516,7 +2491,7 @@ export interface GetVersionFromIdOrNumberRequest {
   /** The version ID or version number */
   id_number: string;
 }
-export const GetVersionFromIdOrNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionFromIdOrNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     id_number: S.String.pipe(T.Label()),
@@ -2527,21 +2502,21 @@ export const GetVersionFromIdOrNumberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type GetVersionFromIdOrNumberResponseDependenciesList = Array<VersionDependency>;
-export const GetVersionFromIdOrNumberResponseDependenciesList =
+const GetVersionFromIdOrNumberResponseDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<GetVersionFromIdOrNumberResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type GetVersionFromIdOrNumberResponseGameVersionsList = Array<string>;
-export const GetVersionFromIdOrNumberResponseGameVersionsList =
+const GetVersionFromIdOrNumberResponseGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type GetVersionFromIdOrNumberResponseVersionType = "release" | "beta" | "alpha";
-export const GetVersionFromIdOrNumberResponseVersionType = S.String;
+const GetVersionFromIdOrNumberResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type GetVersionFromIdOrNumberResponseLoadersList = Array<string>;
-export const GetVersionFromIdOrNumberResponseLoadersList =
+const GetVersionFromIdOrNumberResponseLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<GetVersionFromIdOrNumberResponseLoadersList>;
 
 export type GetVersionFromIdOrNumberResponseStatus =
@@ -2551,18 +2526,18 @@ export type GetVersionFromIdOrNumberResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const GetVersionFromIdOrNumberResponseStatus = S.String;
+const GetVersionFromIdOrNumberResponseStatus = S.String;
 
 export type GetVersionFromIdOrNumberResponseRequestedStatus =
   | "listed"
   | "archived"
   | "draft"
   | "unlisted";
-export const GetVersionFromIdOrNumberResponseRequestedStatus = S.String;
+const GetVersionFromIdOrNumberResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type GetVersionFromIdOrNumberResponseFilesList = Array<VersionFile>;
-export const GetVersionFromIdOrNumberResponseFilesList =
+const GetVersionFromIdOrNumberResponseFilesList =
   CreateVersionResponseFilesList as any as S.Schema<GetVersionFromIdOrNumberResponseFilesList>;
 
 export interface GetVersionFromIdOrNumberResponse {
@@ -2599,7 +2574,7 @@ export interface GetVersionFromIdOrNumberResponse {
   /** A list of files available for download for this version */
   files: GetVersionFromIdOrNumberResponseFilesList;
 }
-export const GetVersionFromIdOrNumberResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionFromIdOrNumberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -2628,18 +2603,18 @@ export interface GetVersionsRequest {
   /** The IDs of the versions */
   ids: string;
 }
-export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/versions", code: 200 })),
 ).annotate({ identifier: "GetVersionsRequest" }) as any as S.Schema<GetVersionsRequest>;
 
 export type GetVersionsResponseBodyList = Array<Version>;
-export const GetVersionsResponseBodyList =
+const GetVersionsResponseBodyList =
   ProjectDependencyListVersionsList as any as S.Schema<GetVersionsResponseBodyList>;
 
 export type GetVersionsResponse = GetVersionsResponseBodyList;
-export const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVersionsResponse" }) as any as S.Schema<GetVersionsResponse>;
 
@@ -2647,20 +2622,20 @@ export interface JoinTeamRequest {
   /** The ID of the team */
   id: string;
 }
-export const JoinTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const JoinTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/team/{id}/join", code: 200 })),
 ).annotate({ identifier: "JoinTeamRequest" }) as any as S.Schema<JoinTeamRequest>;
 
 export interface JoinTeamResponse {}
-export const JoinTeamResponse = AddFilesToVersionResponse as any as S.Schema<JoinTeamResponse>;
+const JoinTeamResponse = AddFilesToVersionResponse as any as S.Schema<JoinTeamResponse>;
 
 export interface LicenseTextRequest {
   /** The license ID to get the text of */
   id: string;
 }
-export const LicenseTextRequest = /*@__PURE__*/ S.suspend(() =>
+const LicenseTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/tag/license/{id}", code: 200 })),
@@ -2671,7 +2646,7 @@ export interface License {
   title?: string;
   body?: string;
 }
-export const License = /*@__PURE__*/ S.suspend(() =>
+const License = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     body: S.optional(S.String),
@@ -2679,7 +2654,7 @@ export const License = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "License" }) as any as S.Schema<License>;
 
 export interface ListCategoryRequest {}
-export const ListCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/category", code: 200 })),
 ).annotate({ identifier: "ListCategoryRequest" }) as any as S.Schema<ListCategoryRequest>;
 
@@ -2693,7 +2668,7 @@ export interface CategoryTag {
   /** The header under which the category should go */
   header: string;
 }
-export const CategoryTag = /*@__PURE__*/ S.suspend(() =>
+const CategoryTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icon: S.String,
     name: S.String,
@@ -2703,17 +2678,17 @@ export const CategoryTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CategoryTag" }) as any as S.Schema<CategoryTag>;
 
 export type ListCategoryResponseBodyList = Array<CategoryTag>;
-export const ListCategoryResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCategoryResponseBodyList = /*@__PURE__*/ S.Array(
   CategoryTag,
 ) as any as S.Schema<ListCategoryResponseBodyList>;
 
 export type ListCategoryResponse = ListCategoryResponseBodyList;
-export const ListCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCategoryResponse = /*@__PURE__*/ S.suspend(() =>
   ListCategoryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCategoryResponse" }) as any as S.Schema<ListCategoryResponse>;
 
 export interface ListDonationPlatformRequest {}
-export const ListDonationPlatformRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDonationPlatformRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/donation_platform", code: 200 })),
 ).annotate({
   identifier: "ListDonationPlatformRequest",
@@ -2725,7 +2700,7 @@ export interface DonationPlatformTag {
   /** The full name of the donation platform */
   name: string;
 }
-export const DonationPlatformTag = /*@__PURE__*/ S.suspend(() =>
+const DonationPlatformTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     short: S.String,
     name: S.String,
@@ -2733,25 +2708,25 @@ export const DonationPlatformTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DonationPlatformTag" }) as any as S.Schema<DonationPlatformTag>;
 
 export type ListDonationPlatformResponseBodyList = Array<DonationPlatformTag>;
-export const ListDonationPlatformResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDonationPlatformResponseBodyList = /*@__PURE__*/ S.Array(
   DonationPlatformTag,
 ) as any as S.Schema<ListDonationPlatformResponseBodyList>;
 
 export type ListDonationPlatformResponse = ListDonationPlatformResponseBodyList;
-export const ListDonationPlatformResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDonationPlatformResponse = /*@__PURE__*/ S.suspend(() =>
   ListDonationPlatformResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDonationPlatformResponse",
 }) as any as S.Schema<ListDonationPlatformResponse>;
 
 export interface ListLoaderRequest {}
-export const ListLoaderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLoaderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/loader", code: 200 })),
 ).annotate({ identifier: "ListLoaderRequest" }) as any as S.Schema<ListLoaderRequest>;
 
 /** The project types that this loader is applicable to */
 export type LoaderTagSupportedProjectTypesList = Array<string>;
-export const LoaderTagSupportedProjectTypesList =
+const LoaderTagSupportedProjectTypesList =
   CreatableProjectCategoriesList as any as S.Schema<LoaderTagSupportedProjectTypesList>;
 
 export interface LoaderTag {
@@ -2762,7 +2737,7 @@ export interface LoaderTag {
   /** The project types that this loader is applicable to */
   supported_project_types: LoaderTagSupportedProjectTypesList;
 }
-export const LoaderTag = /*@__PURE__*/ S.suspend(() =>
+const LoaderTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icon: S.String,
     name: S.String,
@@ -2771,63 +2746,55 @@ export const LoaderTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoaderTag" }) as any as S.Schema<LoaderTag>;
 
 export type ListLoaderResponseBodyList = Array<LoaderTag>;
-export const ListLoaderResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLoaderResponseBodyList = /*@__PURE__*/ S.Array(
   LoaderTag,
 ) as any as S.Schema<ListLoaderResponseBodyList>;
 
 export type ListLoaderResponse = ListLoaderResponseBodyList;
-export const ListLoaderResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLoaderResponse = /*@__PURE__*/ S.suspend(() =>
   ListLoaderResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListLoaderResponse" }) as any as S.Schema<ListLoaderResponse>;
 
 export interface ListProjectTypeRequest {}
-export const ListProjectTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/project_type", code: 200 })),
 ).annotate({ identifier: "ListProjectTypeRequest" }) as any as S.Schema<ListProjectTypeRequest>;
 
 export type ListProjectTypeResponseBodyList = Array<string>;
-export const ListProjectTypeResponseBodyList =
+const ListProjectTypeResponseBodyList =
   CreatableProjectCategoriesList as any as S.Schema<ListProjectTypeResponseBodyList>;
 
 export type ListProjectTypeResponse = ListProjectTypeResponseBodyList;
-export const ListProjectTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectTypeResponse = /*@__PURE__*/ S.suspend(() =>
   ListProjectTypeResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListProjectTypeResponse" }) as any as S.Schema<ListProjectTypeResponse>;
 
 export interface ListReportTypeRequest {}
-export const ListReportTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/report_type", code: 200 })),
 ).annotate({ identifier: "ListReportTypeRequest" }) as any as S.Schema<ListReportTypeRequest>;
 
 export type ListReportTypeResponseBodyList = Array<string>;
-export const ListReportTypeResponseBodyList =
-  CreatableProjectCategoriesList as any as S.Schema<ListReportTypeResponseBodyList>;
-
 export type ListReportTypeResponse = ListReportTypeResponseBodyList;
-export const ListReportTypeResponse =
-  ListProjectTypeResponse as any as S.Schema<ListReportTypeResponse>;
+const ListReportTypeResponse = ListProjectTypeResponse as any as S.Schema<ListReportTypeResponse>;
 
 export interface ListSideTypeRequest {}
-export const ListSideTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSideTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/side_type", code: 200 })),
 ).annotate({ identifier: "ListSideTypeRequest" }) as any as S.Schema<ListSideTypeRequest>;
 
 export type ListSideTypeResponseBodyList = Array<string>;
-export const ListSideTypeResponseBodyList =
-  CreatableProjectCategoriesList as any as S.Schema<ListSideTypeResponseBodyList>;
-
 export type ListSideTypeResponse = ListSideTypeResponseBodyList;
-export const ListSideTypeResponse =
-  ListProjectTypeResponse as any as S.Schema<ListSideTypeResponse>;
+const ListSideTypeResponse = ListProjectTypeResponse as any as S.Schema<ListSideTypeResponse>;
 
 export interface ListVersionRequest {}
-export const ListVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tag/game_version", code: 200 })),
 ).annotate({ identifier: "ListVersionRequest" }) as any as S.Schema<ListVersionRequest>;
 
 /** The type of the game version */
 export type GameVersionTagVersionType = "release" | "snapshot" | "alpha" | "beta";
-export const GameVersionTagVersionType = S.String;
+const GameVersionTagVersionType = S.String;
 
 export interface GameVersionTag {
   /** The name/number of the game version */
@@ -2839,7 +2806,7 @@ export interface GameVersionTag {
   /** Whether or not this is a major version, used for Featured Versions */
   major: boolean;
 }
-export const GameVersionTag = /*@__PURE__*/ S.suspend(() =>
+const GameVersionTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     version_type: GameVersionTagVersionType,
@@ -2849,12 +2816,12 @@ export const GameVersionTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GameVersionTag" }) as any as S.Schema<GameVersionTag>;
 
 export type ListVersionResponseBodyList = Array<GameVersionTag>;
-export const ListVersionResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVersionResponseBodyList = /*@__PURE__*/ S.Array(
   GameVersionTag,
 ) as any as S.Schema<ListVersionResponseBodyList>;
 
 export type ListVersionResponse = ListVersionResponseBodyList;
-export const ListVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionResponse = /*@__PURE__*/ S.suspend(() =>
   ListVersionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVersionResponse" }) as any as S.Schema<ListVersionResponse>;
 
@@ -2872,7 +2839,7 @@ export interface ModifyGalleryImageRequest {
   /** New ordering of the image */
   ordering?: number;
 }
-export const ModifyGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     url: S.String.pipe(T.Query()),
@@ -2886,17 +2853,17 @@ export const ModifyGalleryImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyGalleryImageRequest>;
 
 export interface ModifyGalleryImageResponse {}
-export const ModifyGalleryImageResponse =
+const ModifyGalleryImageResponse =
   AddFilesToVersionResponse as any as S.Schema<ModifyGalleryImageResponse>;
 
 /** A list of the featured categories that the project has. */
 export type ModifyProjectRequestCategoriesList = Array<string>;
-export const ModifyProjectRequestCategoriesList =
+const ModifyProjectRequestCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestCategoriesList>;
 
 /** A list of additional categories that the project also has. These are supplementary to the featured categories, and does not include them again. */
 export type ModifyProjectRequestAdditionalCategoriesList = Array<string>;
-export const ModifyProjectRequestAdditionalCategoriesList =
+const ModifyProjectRequestAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ModifyProjectRequestAdditionalCategoriesList>;
 
 /** The status of the project */
@@ -2911,7 +2878,7 @@ export type ModifyProjectRequestStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const ModifyProjectRequestStatus = S.String;
+const ModifyProjectRequestStatus = S.String;
 
 /** The requested status when submitting for review or scheduling the project for release. Approved status refers to "Public" visibility. */
 export type ModifyProjectRequestRequestedStatus =
@@ -2920,20 +2887,20 @@ export type ModifyProjectRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
-export const ModifyProjectRequestRequestedStatus = S.String;
+const ModifyProjectRequestRequestedStatus = S.String;
 
 /** A list of donation links for the project */
 export type ModifyProjectRequestDonationUrlsList = Array<ProjectDonationURL>;
-export const ModifyProjectRequestDonationUrlsList =
+const ModifyProjectRequestDonationUrlsList =
   CreatableProjectDonationUrlsList as any as S.Schema<ModifyProjectRequestDonationUrlsList>;
 
 /** Deprecated - use `environment` instead. */
 export type ModifyProjectRequestClientSide = "required" | "optional" | "unsupported";
-export const ModifyProjectRequestClientSide = S.String;
+const ModifyProjectRequestClientSide = S.String;
 
 /** Deprecated - use `environment` instead. */
 export type ModifyProjectRequestServerSide = "required" | "optional" | "unsupported";
-export const ModifyProjectRequestServerSide = S.String;
+const ModifyProjectRequestServerSide = S.String;
 
 export interface ModifyProjectRequest {
   /** The ID or slug of the project */
@@ -2977,7 +2944,7 @@ export interface ModifyProjectRequest {
   /** The body of the moderators' message for the project */
   moderation_message_body?: string | null;
 }
-export const ModifyProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     slug: S.optional(S.String),
@@ -3003,8 +2970,7 @@ export const ModifyProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyProjectRequest" }) as any as S.Schema<ModifyProjectRequest>;
 
 export interface ModifyProjectResponse {}
-export const ModifyProjectResponse =
-  AddFilesToVersionResponse as any as S.Schema<ModifyProjectResponse>;
+const ModifyProjectResponse = AddFilesToVersionResponse as any as S.Schema<ModifyProjectResponse>;
 
 export interface ModifyReportRequest {
   /** The ID of the report */
@@ -3014,7 +2980,7 @@ export interface ModifyReportRequest {
   /** Whether the thread should be closed */
   closed?: boolean;
 }
-export const ModifyReportRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: S.optional(S.String),
@@ -3023,8 +2989,7 @@ export const ModifyReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyReportRequest" }) as any as S.Schema<ModifyReportRequest>;
 
 export interface ModifyReportResponse {}
-export const ModifyReportResponse =
-  AddFilesToVersionResponse as any as S.Schema<ModifyReportResponse>;
+const ModifyReportResponse = AddFilesToVersionResponse as any as S.Schema<ModifyReportResponse>;
 
 export interface ModifyTeamMemberRequest {
   /** The ID of the team */
@@ -3039,7 +3004,7 @@ export interface ModifyTeamMemberRequest {
   /** The order of the team member. */
   ordering?: number;
 }
-export const ModifyTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     id_username: S.String.pipe(T.Label()),
@@ -3051,7 +3016,7 @@ export const ModifyTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyTeamMemberRequest" }) as any as S.Schema<ModifyTeamMemberRequest>;
 
 export interface ModifyTeamMemberResponse {}
-export const ModifyTeamMemberResponse =
+const ModifyTeamMemberResponse =
   AddFilesToVersionResponse as any as S.Schema<ModifyTeamMemberResponse>;
 
 export interface ModifyUserRequest {
@@ -3067,7 +3032,7 @@ export interface ModifyUserRequest {
   bio?: string;
   payout_data?: UserPayoutData | null;
 }
-export const ModifyUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
     username: S.String,
@@ -3079,25 +3044,25 @@ export const ModifyUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyUserRequest" }) as any as S.Schema<ModifyUserRequest>;
 
 export interface ModifyUserResponse {}
-export const ModifyUserResponse = AddFilesToVersionResponse as any as S.Schema<ModifyUserResponse>;
+const ModifyUserResponse = AddFilesToVersionResponse as any as S.Schema<ModifyUserResponse>;
 
 /** A list of specific versions of projects that this version depends on */
 export type ModifyVersionRequestDependenciesList = Array<VersionDependency>;
-export const ModifyVersionRequestDependenciesList =
+const ModifyVersionRequestDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<ModifyVersionRequestDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type ModifyVersionRequestGameVersionsList = Array<string>;
-export const ModifyVersionRequestGameVersionsList =
+const ModifyVersionRequestGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestGameVersionsList>;
 
 /** The release channel for this version */
 export type ModifyVersionRequestVersionType = "release" | "beta" | "alpha";
-export const ModifyVersionRequestVersionType = S.String;
+const ModifyVersionRequestVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type ModifyVersionRequestLoadersList = Array<string>;
-export const ModifyVersionRequestLoadersList =
+const ModifyVersionRequestLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestLoadersList>;
 
 export type ModifyVersionRequestStatus =
@@ -3107,19 +3072,19 @@ export type ModifyVersionRequestStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const ModifyVersionRequestStatus = S.String;
+const ModifyVersionRequestStatus = S.String;
 
 export type ModifyVersionRequestRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const ModifyVersionRequestRequestedStatus = S.String;
+const ModifyVersionRequestRequestedStatus = S.String;
 
 /** The hash format and the hash of the new primary file */
 export type ModifyVersionRequestPrimaryFileList = Array<string>;
-export const ModifyVersionRequestPrimaryFileList =
+const ModifyVersionRequestPrimaryFileList =
   CreatableProjectCategoriesList as any as S.Schema<ModifyVersionRequestPrimaryFileList>;
 
 /** A list of file_types to edit */
 export type ModifyVersionRequestFileTypesList = Array<EditableFileType>;
-export const ModifyVersionRequestFileTypesList =
+const ModifyVersionRequestFileTypesList =
   EditableVersionFileTypesList as any as S.Schema<ModifyVersionRequestFileTypesList>;
 
 export interface ModifyVersionRequest {
@@ -3148,7 +3113,7 @@ export interface ModifyVersionRequest {
   /** A list of file_types to edit */
   file_types?: ModifyVersionRequestFileTypesList;
 }
-export const ModifyVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -3167,53 +3132,48 @@ export const ModifyVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModifyVersionRequest" }) as any as S.Schema<ModifyVersionRequest>;
 
 export interface ModifyVersionResponse {}
-export const ModifyVersionResponse =
-  AddFilesToVersionResponse as any as S.Schema<ModifyVersionResponse>;
+const ModifyVersionResponse = AddFilesToVersionResponse as any as S.Schema<ModifyVersionResponse>;
 
 export interface RandomProjectsRequest {
   /** The number of random projects to return */
   count: number;
 }
-export const RandomProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RandomProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/projects_random", code: 200 })),
 ).annotate({ identifier: "RandomProjectsRequest" }) as any as S.Schema<RandomProjectsRequest>;
 
 export type RandomProjectsResponseBodyList = Array<Project>;
-export const RandomProjectsResponseBodyList =
-  ProjectDependencyListProjectsList as any as S.Schema<RandomProjectsResponseBodyList>;
-
 export type RandomProjectsResponse = RandomProjectsResponseBodyList;
-export const RandomProjectsResponse =
-  GetProjectsResponse as any as S.Schema<RandomProjectsResponse>;
+const RandomProjectsResponse = GetProjectsResponse as any as S.Schema<RandomProjectsResponse>;
 
 export interface ReadNotificationRequest {
   /** The ID of the notification */
   id: string;
 }
-export const ReadNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PATCH", uri: "/notification/{id}", code: 200 })),
 ).annotate({ identifier: "ReadNotificationRequest" }) as any as S.Schema<ReadNotificationRequest>;
 
 export interface ReadNotificationResponse {}
-export const ReadNotificationResponse =
+const ReadNotificationResponse =
   AddFilesToVersionResponse as any as S.Schema<ReadNotificationResponse>;
 
 export interface ReadNotificationsRequest {
   /** The IDs of the notifications */
   ids: string;
 }
-export const ReadNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "PATCH", uri: "/notifications", code: 200 })),
 ).annotate({ identifier: "ReadNotificationsRequest" }) as any as S.Schema<ReadNotificationsRequest>;
 
 export interface ReadNotificationsResponse {}
-export const ReadNotificationsResponse =
+const ReadNotificationsResponse =
   AddFilesToVersionResponse as any as S.Schema<ReadNotificationsResponse>;
 
 /** The requested status when scheduling the project for release */
@@ -3223,7 +3183,7 @@ export type ScheduleProjectRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
-export const ScheduleProjectRequestRequestedStatus = S.String;
+const ScheduleProjectRequestRequestedStatus = S.String;
 
 export interface ScheduleProjectRequest {
   /** The ID or slug of the project */
@@ -3232,7 +3192,7 @@ export interface ScheduleProjectRequest {
   /** The requested status when scheduling the project for release */
   requested_status: ScheduleProjectRequestRequestedStatus | (string & {});
 }
-export const ScheduleProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
     time: S.String,
@@ -3241,7 +3201,7 @@ export const ScheduleProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleProjectRequest" }) as any as S.Schema<ScheduleProjectRequest>;
 
 export interface ScheduleProjectResponse {}
-export const ScheduleProjectResponse =
+const ScheduleProjectResponse =
   AddFilesToVersionResponse as any as S.Schema<ScheduleProjectResponse>;
 
 /** The requested status when scheduling the project for release */
@@ -3251,7 +3211,7 @@ export type ScheduleVersionRequestRequestedStatus =
   | "unlisted"
   | "private"
   | "draft";
-export const ScheduleVersionRequestRequestedStatus = S.String;
+const ScheduleVersionRequestRequestedStatus = S.String;
 
 export interface ScheduleVersionRequest {
   /** The ID of the version */
@@ -3260,7 +3220,7 @@ export interface ScheduleVersionRequest {
   /** The requested status when scheduling the project for release */
   requested_status: ScheduleVersionRequestRequestedStatus | (string & {});
 }
-export const ScheduleVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     time: S.String,
@@ -3269,7 +3229,7 @@ export const ScheduleVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleVersionRequest" }) as any as S.Schema<ScheduleVersionRequest>;
 
 export interface ScheduleVersionResponse {}
-export const ScheduleVersionResponse =
+const ScheduleVersionResponse =
   AddFilesToVersionResponse as any as S.Schema<ScheduleVersionResponse>;
 
 export type SearchProjectsRequestIndex =
@@ -3278,7 +3238,7 @@ export type SearchProjectsRequestIndex =
   | "follows"
   | "newest"
   | "updated";
-export const SearchProjectsRequestIndex = S.String;
+const SearchProjectsRequestIndex = S.String;
 
 export interface SearchProjectsRequest {
   /** The query to search for */
@@ -3292,7 +3252,7 @@ export interface SearchProjectsRequest {
   /** The number of results returned by the search */
   limit?: number;
 }
-export const SearchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     facets: S.optional(S.String.pipe(T.Query())),
@@ -3304,7 +3264,7 @@ export const SearchProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The project type of the project */
 export type ProjectResultProjectType = "mod" | "modpack" | "resourcepack" | "shader";
-export const ProjectResultProjectType = S.String;
+const ProjectResultProjectType = S.String;
 
 export type ProjectResultAllProjectTypesItem =
   | "mod"
@@ -3313,31 +3273,29 @@ export type ProjectResultAllProjectTypesItem =
   | "shader"
   | "modpack"
   | "plugin";
-export const ProjectResultAllProjectTypesItem = S.String;
-
 /** All project types across every version of the project, unlike `project_type` which only reflects a version-specific type */
 export type ProjectResultAllProjectTypesList = Array<ProjectResultAllProjectTypesItem>;
-export const ProjectResultAllProjectTypesList =
+const ProjectResultAllProjectTypesList =
   ProjectEnvironmentList as any as S.Schema<ProjectResultAllProjectTypesList>;
 
 /** A list of the featured categories that the project has. */
 export type ProjectResultCategoriesList = Array<string>;
-export const ProjectResultCategoriesList =
+const ProjectResultCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectResultCategoriesList>;
 
 /** A list of the featured categories that the project has. Equivalent to `categories` on the project itself. */
 export type ProjectResultDisplayCategoriesList = Array<string>;
-export const ProjectResultDisplayCategoriesList =
+const ProjectResultDisplayCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectResultDisplayCategoriesList>;
 
 /** A list of the minecraft versions supported by the project */
 export type ProjectResultVersionsList = Array<string>;
-export const ProjectResultVersionsList =
+const ProjectResultVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectResultVersionsList>;
 
 /** All the environments that versions of this project support. Not in any particular order, we recommend using the environment information on a version instead. For an explanation of each environment, see the blog post here: https://modrinth.com/news/article/new-environments/#new-system */
 export type ProjectResultEnvironmentList = Array<EnvironmentEnum>;
-export const ProjectResultEnvironmentList =
+const ProjectResultEnvironmentList =
   ProjectEnvironmentList as any as S.Schema<ProjectResultEnvironmentList>;
 
 export type DisclosureTypeEnum =
@@ -3356,25 +3314,23 @@ export type DisclosureTypeEnum =
   | "derivative_work"
   | "paid_features"
   | "archived";
-export const DisclosureTypeEnum = S.String;
-
 /** Disclosures listed on the project. */
 export type ProjectResultDisclosureTypesList = Array<DisclosureTypeEnum>;
-export const ProjectResultDisclosureTypesList =
+const ProjectResultDisclosureTypesList =
   ProjectEnvironmentList as any as S.Schema<ProjectResultDisclosureTypesList>;
 
 /** A list of images that have been uploaded to the project's gallery */
 export type ProjectResultGalleryList = Array<string>;
-export const ProjectResultGalleryList =
+const ProjectResultGalleryList =
   CreatableProjectCategoriesList as any as S.Schema<ProjectResultGalleryList>;
 
 /** Deprecated - use `environment` instead. The client side support of the project */
 export type ProjectResultClientSide = "required" | "optional" | "unsupported" | "unknown";
-export const ProjectResultClientSide = S.String;
+const ProjectResultClientSide = S.String;
 
 /** Deprecated - use `environment` instead. The server side support of the project */
 export type ProjectResultServerSide = "required" | "optional" | "unsupported" | "unknown";
-export const ProjectResultServerSide = S.String;
+const ProjectResultServerSide = S.String;
 
 export interface ProjectResult {
   /** The ID of the project, encoded as a base62 string */
@@ -3432,7 +3388,7 @@ export interface ProjectResult {
   /** Deprecated - use `environment` instead. The server side support of the project */
   server_side: ProjectResultServerSide;
 }
-export const ProjectResult = /*@__PURE__*/ S.suspend(() =>
+const ProjectResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String,
     project_type: ProjectResultProjectType,
@@ -3466,7 +3422,7 @@ export const ProjectResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of results */
 export type SearchResultsHitsList = Array<ProjectResult>;
-export const SearchResultsHitsList = /*@__PURE__*/ S.Array(
+const SearchResultsHitsList = /*@__PURE__*/ S.Array(
   ProjectResult,
 ) as any as S.Schema<SearchResultsHitsList>;
 
@@ -3480,7 +3436,7 @@ export interface SearchResults {
   /** The total number of results that match the query */
   total_hits: number;
 }
-export const SearchResults = /*@__PURE__*/ S.suspend(() =>
+const SearchResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hits: SearchResultsHitsList,
     offset: S.Number,
@@ -3491,7 +3447,7 @@ export const SearchResults = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of message */
 export type SendThreadMessageRequestType = "status_change" | "text" | "thread_closure" | "deleted";
-export const SendThreadMessageRequestType = S.String;
+const SendThreadMessageRequestType = S.String;
 
 /** The old status of the project. **Only present for `status_change` message type** */
 export type SendThreadMessageRequestOldStatus =
@@ -3505,7 +3461,7 @@ export type SendThreadMessageRequestOldStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const SendThreadMessageRequestOldStatus = S.String;
+const SendThreadMessageRequestOldStatus = S.String;
 
 /** The new status of the project. **Only present for `status_change` message type** */
 export type SendThreadMessageRequestNewStatus =
@@ -3519,7 +3475,7 @@ export type SendThreadMessageRequestNewStatus =
   | "scheduled"
   | "private"
   | "unknown";
-export const SendThreadMessageRequestNewStatus = S.String;
+const SendThreadMessageRequestNewStatus = S.String;
 
 export interface SendThreadMessageRequest {
   /** The ID of the thread */
@@ -3537,7 +3493,7 @@ export interface SendThreadMessageRequest {
   /** The new status of the project. **Only present for `status_change` message type** */
   new_status?: SendThreadMessageRequestNewStatus | (string & {});
 }
-export const SendThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     type: SendThreadMessageRequestType,
@@ -3550,7 +3506,7 @@ export const SendThreadMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendThreadMessageRequest" }) as any as S.Schema<SendThreadMessageRequest>;
 
 export interface Statistics2Request {}
-export const Statistics2Request = /*@__PURE__*/ S.suspend(() =>
+const Statistics2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/statistics", code: 200 })),
 ).annotate({ identifier: "Statistics2Request" }) as any as S.Schema<Statistics2Request>;
 
@@ -3564,7 +3520,7 @@ export interface Statistics {
   /** Number of authors (users with projects) on Modrinth */
   authors?: number;
 }
-export const Statistics = /*@__PURE__*/ S.suspend(() =>
+const Statistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: S.optional(S.Number),
     versions: S.optional(S.Number),
@@ -3575,7 +3531,7 @@ export const Statistics = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the item being reported */
 export type SubmitReportRequestItemType = "project" | "user" | "version";
-export const SubmitReportRequestItemType = S.String;
+const SubmitReportRequestItemType = S.String;
 
 export interface SubmitReportRequest {
   /** The type of the report being sent */
@@ -3587,7 +3543,7 @@ export interface SubmitReportRequest {
   /** The extended explanation of the report */
   body: string;
 }
-export const SubmitReportRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_type: S.String,
     item_id: S.String,
@@ -3598,8 +3554,6 @@ export const SubmitReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the item being reported */
 export type SubmitReportResponseItemType = "project" | "user" | "version";
-export const SubmitReportResponseItemType = S.String;
-
 export interface SubmitReportResponse {
   /** The type of the report being sent */
   report_type: string;
@@ -3620,14 +3574,14 @@ export interface SubmitReportResponse {
   /** The ID of the moderation thread associated with this report */
   thread_id: string;
 }
-export const SubmitReportResponse = Report as any as S.Schema<SubmitReportResponse>;
+const SubmitReportResponse = Report as any as S.Schema<SubmitReportResponse>;
 
 export interface TransferTeamOwnershipRequest {
   /** The ID of the team */
   id: string;
   user_id: string;
 }
-export const TransferTeamOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferTeamOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     user_id: S.String,
@@ -3637,66 +3591,66 @@ export const TransferTeamOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferTeamOwnershipRequest>;
 
 export interface TransferTeamOwnershipResponse {}
-export const TransferTeamOwnershipResponse =
+const TransferTeamOwnershipResponse =
   AddFilesToVersionResponse as any as S.Schema<TransferTeamOwnershipResponse>;
 
 export interface UnfollowProjectRequest {
   /** The ID or slug of the project */
   id_slug: string;
 }
-export const UnfollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UnfollowProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/project/{id_slug}/follow", code: 200 })),
 ).annotate({ identifier: "UnfollowProjectRequest" }) as any as S.Schema<UnfollowProjectRequest>;
 
 export interface UnfollowProjectResponse {}
-export const UnfollowProjectResponse =
+const UnfollowProjectResponse =
   AddFilesToVersionResponse as any as S.Schema<UnfollowProjectResponse>;
 
 /** Set all of the categories to the categories specified here */
 export type UpdateProjectsRequestCategoriesList = Array<string>;
-export const UpdateProjectsRequestCategoriesList =
+const UpdateProjectsRequestCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestCategoriesList>;
 
 /** Add all of the categories specified here */
 export type UpdateProjectsRequestAddCategoriesList = Array<string>;
-export const UpdateProjectsRequestAddCategoriesList =
+const UpdateProjectsRequestAddCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddCategoriesList>;
 
 /** Remove all of the categories specified here */
 export type UpdateProjectsRequestRemoveCategoriesList = Array<string>;
-export const UpdateProjectsRequestRemoveCategoriesList =
+const UpdateProjectsRequestRemoveCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveCategoriesList>;
 
 /** Set all of the additional categories to the categories specified here */
 export type UpdateProjectsRequestAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestAdditionalCategoriesList =
+const UpdateProjectsRequestAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAdditionalCategoriesList>;
 
 /** Add all of the additional categories specified here */
 export type UpdateProjectsRequestAddAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestAddAdditionalCategoriesList =
+const UpdateProjectsRequestAddAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestAddAdditionalCategoriesList>;
 
 /** Remove all of the additional categories specified here */
 export type UpdateProjectsRequestRemoveAdditionalCategoriesList = Array<string>;
-export const UpdateProjectsRequestRemoveAdditionalCategoriesList =
+const UpdateProjectsRequestRemoveAdditionalCategoriesList =
   CreatableProjectCategoriesList as any as S.Schema<UpdateProjectsRequestRemoveAdditionalCategoriesList>;
 
 /** Set all of the donation links to the donation links specified here */
 export type UpdateProjectsRequestDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestDonationUrlsList =
+const UpdateProjectsRequestDonationUrlsList =
   CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestDonationUrlsList>;
 
 /** Add all of the donation links specified here */
 export type UpdateProjectsRequestAddDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestAddDonationUrlsList =
+const UpdateProjectsRequestAddDonationUrlsList =
   CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestAddDonationUrlsList>;
 
 /** Remove all of the donation links specified here */
 export type UpdateProjectsRequestRemoveDonationUrlsList = Array<ProjectDonationURL>;
-export const UpdateProjectsRequestRemoveDonationUrlsList =
+const UpdateProjectsRequestRemoveDonationUrlsList =
   CreatableProjectDonationUrlsList as any as S.Schema<UpdateProjectsRequestRemoveDonationUrlsList>;
 
 export interface UpdateProjectsRequest {
@@ -3729,7 +3683,7 @@ export interface UpdateProjectsRequest {
   /** An optional invite link to the projects' discord */
   discord_url?: string | null;
 }
-export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.String.pipe(T.Query()),
     categories: S.optional(UpdateProjectsRequestCategoriesList),
@@ -3749,11 +3703,10 @@ export const UpdateProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectsRequest" }) as any as S.Schema<UpdateProjectsRequest>;
 
 export interface UpdateProjectsResponse {}
-export const UpdateProjectsResponse =
-  AddFilesToVersionResponse as any as S.Schema<UpdateProjectsResponse>;
+const UpdateProjectsResponse = AddFilesToVersionResponse as any as S.Schema<UpdateProjectsResponse>;
 
 export type VersionFromHashRequestAlgorithm = "sha1" | "sha512";
-export const VersionFromHashRequestAlgorithm = S.String;
+const VersionFromHashRequestAlgorithm = S.String;
 
 export interface VersionFromHashRequest {
   /** The hash of the file, considering its byte content, and encoded in hexadecimal */
@@ -3763,7 +3716,7 @@ export interface VersionFromHashRequest {
   /** Whether to return multiple results when looking for this hash */
   multiple?: boolean;
 }
-export const VersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
+const VersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String.pipe(T.Label()),
     algorithm: VersionFromHashRequestAlgorithm.pipe(T.Query()),
@@ -3773,21 +3726,21 @@ export const VersionFromHashRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of specific versions of projects that this version depends on */
 export type VersionFromHashResponseDependenciesList = Array<VersionDependency>;
-export const VersionFromHashResponseDependenciesList =
+const VersionFromHashResponseDependenciesList =
   EditableVersionDependenciesList as any as S.Schema<VersionFromHashResponseDependenciesList>;
 
 /** A list of versions of Minecraft that this version supports */
 export type VersionFromHashResponseGameVersionsList = Array<string>;
-export const VersionFromHashResponseGameVersionsList =
+const VersionFromHashResponseGameVersionsList =
   CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseGameVersionsList>;
 
 /** The release channel for this version */
 export type VersionFromHashResponseVersionType = "release" | "beta" | "alpha";
-export const VersionFromHashResponseVersionType = S.String;
+const VersionFromHashResponseVersionType = S.String;
 
 /** The mod loaders that this version supports. In case of resource packs, use "minecraft" */
 export type VersionFromHashResponseLoadersList = Array<string>;
-export const VersionFromHashResponseLoadersList =
+const VersionFromHashResponseLoadersList =
   CreatableProjectCategoriesList as any as S.Schema<VersionFromHashResponseLoadersList>;
 
 export type VersionFromHashResponseStatus =
@@ -3797,14 +3750,14 @@ export type VersionFromHashResponseStatus =
   | "unlisted"
   | "scheduled"
   | "unknown";
-export const VersionFromHashResponseStatus = S.String;
+const VersionFromHashResponseStatus = S.String;
 
 export type VersionFromHashResponseRequestedStatus = "listed" | "archived" | "draft" | "unlisted";
-export const VersionFromHashResponseRequestedStatus = S.String;
+const VersionFromHashResponseRequestedStatus = S.String;
 
 /** A list of files available for download for this version */
 export type VersionFromHashResponseFilesList = Array<VersionFile>;
-export const VersionFromHashResponseFilesList =
+const VersionFromHashResponseFilesList =
   CreateVersionResponseFilesList as any as S.Schema<VersionFromHashResponseFilesList>;
 
 export interface VersionFromHashResponse {
@@ -3841,7 +3794,7 @@ export interface VersionFromHashResponse {
   /** A list of files available for download for this version */
   files: VersionFromHashResponseFilesList;
 }
-export const VersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
+const VersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version_number: S.String,
@@ -3865,17 +3818,17 @@ export const VersionFromHashResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionFromHashResponse" }) as any as S.Schema<VersionFromHashResponse>;
 
 export type VersionsFromHashesRequestHashesList = Array<string>;
-export const VersionsFromHashesRequestHashesList =
+const VersionsFromHashesRequestHashesList =
   CreatableProjectCategoriesList as any as S.Schema<VersionsFromHashesRequestHashesList>;
 
 export type VersionsFromHashesRequestAlgorithm = "sha1" | "sha512";
-export const VersionsFromHashesRequestAlgorithm = S.String;
+const VersionsFromHashesRequestAlgorithm = S.String;
 
 export interface VersionsFromHashesRequest {
   hashes: VersionsFromHashesRequestHashesList;
   algorithm: VersionsFromHashesRequestAlgorithm | (string & {});
 }
-export const VersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
+const VersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: VersionsFromHashesRequestHashesList,
     algorithm: VersionsFromHashesRequestAlgorithm,
@@ -3885,7 +3838,7 @@ export const VersionsFromHashesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsFromHashesRequest>;
 
 export type VersionsFromHashesResponse = HashVersionMap;
-export const VersionsFromHashesResponse =
+const VersionsFromHashesResponse =
   GetLatestVersionsFromHashesResponse as any as S.Schema<VersionsFromHashesResponse>;
 
 export interface WithdrawPayoutRequest {
@@ -3894,7 +3847,7 @@ export interface WithdrawPayoutRequest {
   /** Amount to withdraw */
   amount: number;
 }
-export const WithdrawPayoutRequest = /*@__PURE__*/ S.suspend(() =>
+const WithdrawPayoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_username: S.String.pipe(T.Label()),
     amount: S.Number.pipe(T.Query()),
@@ -3902,8 +3855,7 @@ export const WithdrawPayoutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WithdrawPayoutRequest" }) as any as S.Schema<WithdrawPayoutRequest>;
 
 export interface WithdrawPayoutResponse {}
-export const WithdrawPayoutResponse =
-  AddFilesToVersionResponse as any as S.Schema<WithdrawPayoutResponse>;
+const WithdrawPayoutResponse = AddFilesToVersionResponse as any as S.Schema<WithdrawPayoutResponse>;
 
 export type AddFilesToVersionError = NotFound | ModrinthOpError;
 /** Add files to version Project files are attached. `.mrpack` and `.jar` files are accepted. */

@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request to delete multiple Photos. */
 export interface BatchDeletePhotosRequest {
   /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
   photoIds?: StringList;
 }
-export const BatchDeletePhotosRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePhotosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photoIds: S.optional(StringList),
   }),
@@ -79,7 +79,7 @@ export interface BatchDeletePhotosRequest_ {
   /** Request body */
   body?: BatchDeletePhotosRequest;
 }
-export const BatchDeletePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchDeletePhotosRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -94,15 +94,10 @@ export const BatchDeletePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeletePhotosRequest_>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -113,7 +108,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -122,14 +117,14 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** Response to batch delete of one or more Photos. */
 export interface BatchDeletePhotosResponse {
   /** The status for the operation to delete a single Photo in the batch request. */
   status?: StatusList;
 }
-export const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(StatusList),
   }),
@@ -138,7 +133,7 @@ export const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeletePhotosResponse>;
 
 export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-export const BatchGetPhotosViewEnum = S.String;
+const BatchGetPhotosViewEnum = S.String;
 
 export interface BatchGetPhotosRequest {
   /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
@@ -148,7 +143,7 @@ export interface BatchGetPhotosRequest {
   /** Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be `photoIds=&photoIds=&...`. */
   photoIds?: StringList;
 }
-export const BatchGetPhotosRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetPhotosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(BatchGetPhotosViewEnum.pipe(T.Query())),
     languageCode: S.optional(S.String.pipe(T.Query())),
@@ -167,7 +162,7 @@ export interface PhotoId {
   /** A unique identifier for a photo. */
   id?: string;
 }
-export const PhotoId = /*@__PURE__*/ S.suspend(() =>
+const PhotoId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -182,7 +177,7 @@ export interface Place {
   /** Output only. The name of the place, localized to the language_code. */
   name?: string;
 }
-export const Place = /*@__PURE__*/ S.suspend(() =>
+const Place = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeId: S.optional(S.String),
     languageCode: S.optional(S.String),
@@ -191,13 +186,13 @@ export const Place = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Place" }) as any as S.Schema<Place>;
 
 export type PlaceList = Array<Place>;
-export const PlaceList = /*@__PURE__*/ S.Array(Place) as any as S.Schema<PlaceList>;
+const PlaceList = /*@__PURE__*/ S.Array(Place) as any as S.Schema<PlaceList>;
 
 export type PhotoMapsPublishStatusEnum =
   | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
   | "PUBLISHED"
   | "REJECTED_UNKNOWN";
-export const PhotoMapsPublishStatusEnum = S.String;
+const PhotoMapsPublishStatusEnum = S.String;
 
 /** Level information containing level number and its corresponding name. */
 export interface Level {
@@ -206,7 +201,7 @@ export interface Level {
   /** Optional. Floor number, used for ordering. 0 indicates the ground level, 1 indicates the first level above ground level, -1 indicates the first level under ground level. Non-integer values are OK. */
   number?: number;
 }
-export const Level = /*@__PURE__*/ S.suspend(() =>
+const Level = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.Number),
@@ -220,7 +215,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -246,7 +241,7 @@ export interface Pose {
   /** Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an unmeasured quantity. */
   altitude?: number;
 }
-export const Pose = /*@__PURE__*/ S.suspend(() =>
+const Pose = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roll: S.optional(S.Number),
     gpsRecordTimestampUnixEpoch: S.optional(S.String),
@@ -264,14 +259,14 @@ export interface Connection {
   /** Required. The destination of the connection from the containing photo to another photo. */
   target?: PhotoId;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(PhotoId),
   }),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
 
 export type ConnectionList = Array<Connection>;
-export const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
+const ConnectionList = /*@__PURE__*/ S.Array(Connection) as any as S.Schema<ConnectionList>;
 
 export type PhotoTransferStatusEnum =
   | "TRANSFER_STATUS_UNKNOWN"
@@ -282,14 +277,14 @@ export type PhotoTransferStatusEnum =
   | "EXPIRED"
   | "CANCELLED"
   | "RECEIVED_VIA_TRANSFER";
-export const PhotoTransferStatusEnum = S.String;
+const PhotoTransferStatusEnum = S.String;
 
 /** Upload reference for media files. */
 export interface UploadRef {
   /** An upload reference should be unique for each user. It follows the form: "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}" */
   uploadUrl?: string;
 }
-export const UploadRef = /*@__PURE__*/ S.suspend(() =>
+const UploadRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uploadUrl: S.optional(S.String),
   }),
@@ -324,7 +319,7 @@ export interface Photo {
   /** Output only. The share link for the photo. */
   shareLink?: string;
 }
-export const Photo = /*@__PURE__*/ S.suspend(() =>
+const Photo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photoId: S.optional(PhotoId),
     viewCount: S.optional(S.String),
@@ -349,7 +344,7 @@ export interface PhotoResponse {
   /** The status for the operation to get or update a single photo in the batch request. */
   status?: Status;
 }
-export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
+const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photo: S.optional(Photo),
     status: S.optional(Status),
@@ -357,7 +352,7 @@ export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhotoResponse" }) as any as S.Schema<PhotoResponse>;
 
 export type PhotoResponseList = Array<PhotoResponse>;
-export const PhotoResponseList = /*@__PURE__*/ S.Array(
+const PhotoResponseList = /*@__PURE__*/ S.Array(
   PhotoResponse,
 ) as any as S.Schema<PhotoResponseList>;
 
@@ -366,7 +361,7 @@ export interface BatchGetPhotosResponse {
   /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
   results?: PhotoResponseList;
 }
-export const BatchGetPhotosResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetPhotosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(PhotoResponseList),
   }),
@@ -379,7 +374,7 @@ export interface UpdatePhotoRequest {
   /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
   updateMask?: string;
 }
-export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photo: S.optional(Photo),
     updateMask: S.optional(S.String),
@@ -387,7 +382,7 @@ export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePhotoRequest" }) as any as S.Schema<UpdatePhotoRequest>;
 
 export type UpdatePhotoRequestList = Array<UpdatePhotoRequest>;
-export const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
+const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
   UpdatePhotoRequest,
 ) as any as S.Schema<UpdatePhotoRequestList>;
 
@@ -396,7 +391,7 @@ export interface BatchUpdatePhotosRequest {
   /** Required. List of UpdatePhotoRequests. */
   updatePhotoRequests?: UpdatePhotoRequestList;
 }
-export const BatchUpdatePhotosRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePhotosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updatePhotoRequests: S.optional(UpdatePhotoRequestList),
   }),
@@ -406,7 +401,7 @@ export interface BatchUpdatePhotosRequest_ {
   /** Request body */
   body?: BatchUpdatePhotosRequest;
 }
-export const BatchUpdatePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BatchUpdatePhotosRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -425,7 +420,7 @@ export interface BatchUpdatePhotosResponse {
   /** List of results for each individual Photo updated, in the same order as the request. */
   results?: PhotoResponseList;
 }
-export const BatchUpdatePhotosResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdatePhotosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(PhotoResponseList),
   }),
@@ -437,7 +432,7 @@ export interface CreatePhotoRequest {
   /** Request body */
   body?: Photo;
 }
-export const CreatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Photo.pipe(T.HttpBody())),
   }).pipe(
@@ -450,7 +445,7 @@ export const CreatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePhotoRequest" }) as any as S.Schema<CreatePhotoRequest>;
 
 export type CreatePhotoSequenceInputTypeEnum = "INPUT_TYPE_UNSPECIFIED" | "VIDEO" | "XDM";
-export const CreatePhotoSequenceInputTypeEnum = S.String;
+const CreatePhotoSequenceInputTypeEnum = S.String;
 
 export type PhotoSequenceFailureReasonEnum =
   | "PROCESSING_FAILURE_REASON_UNSPECIFIED"
@@ -478,13 +473,13 @@ export type PhotoSequenceFailureReasonEnum =
   | "INSUFFICIENT_MOVEMENT"
   | "MAST_DOWN"
   | "CAMERA_COVERED";
-export const PhotoSequenceFailureReasonEnum = S.String;
+const PhotoSequenceFailureReasonEnum = S.String;
 
 export type PhotoSequenceGpsSourceEnum = "PHOTO_SEQUENCE" | "CAMERA_MOTION_METADATA_TRACK";
-export const PhotoSequenceGpsSourceEnum = S.String;
+const PhotoSequenceGpsSourceEnum = S.String;
 
 export type PoseList = Array<Pose>;
-export const PoseList = /*@__PURE__*/ S.Array(Pose) as any as S.Schema<PoseList>;
+const PoseList = /*@__PURE__*/ S.Array(Pose) as any as S.Schema<PoseList>;
 
 export type PhotoSequenceProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
@@ -492,10 +487,10 @@ export type PhotoSequenceProcessingStateEnum =
   | "PROCESSING"
   | "PROCESSED"
   | "FAILED";
-export const PhotoSequenceProcessingStateEnum = S.String;
+const PhotoSequenceProcessingStateEnum = S.String;
 
 export type PhotoList = Array<Photo>;
-export const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
+const PhotoList = /*@__PURE__*/ S.Array(Photo) as any as S.Schema<PhotoList>;
 
 /** Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS. */
 export interface NoOverlapGpsFailureDetails {
@@ -508,7 +503,7 @@ export interface NoOverlapGpsFailureDetails {
   /** Start time of video. */
   videoStartTime?: string;
 }
-export const NoOverlapGpsFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const NoOverlapGpsFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpsStartTime: S.optional(S.String),
     gpsEndTime: S.optional(S.String),
@@ -524,7 +519,7 @@ export interface NotOutdoorsFailureDetails {
   /** Relative time (from the start of the video stream) when an indoor frame was found. */
   startTime?: string;
 }
-export const NotOutdoorsFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const NotOutdoorsFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
   }),
@@ -537,7 +532,7 @@ export interface InsufficientGpsFailureDetails {
   /** The number of GPS points that were found in the video. */
   gpsPointsFound?: number;
 }
-export const InsufficientGpsFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const InsufficientGpsFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpsPointsFound: S.optional(S.Number),
   }),
@@ -552,7 +547,7 @@ export interface GpsDataGapFailureDetails {
   /** Relative time (from the start of the video stream) when the gap started. */
   gapStartTime?: string;
 }
-export const GpsDataGapFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const GpsDataGapFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gapDuration: S.optional(S.String),
     gapStartTime: S.optional(S.String),
@@ -566,7 +561,7 @@ export interface ImuDataGapFailureDetails {
   /** The duration of the gap in IMU data that was found. */
   gapDuration?: string;
 }
-export const ImuDataGapFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const ImuDataGapFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gapStartTime: S.optional(S.String),
     gapDuration: S.optional(S.String),
@@ -586,7 +581,7 @@ export interface ProcessingFailureDetails {
   /** See ImuDataGapFailureDetails. */
   imuDataGapDetails?: ImuDataGapFailureDetails;
 }
-export const ProcessingFailureDetails = /*@__PURE__*/ S.suspend(() =>
+const ProcessingFailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     noOverlapGpsDetails: S.optional(NoOverlapGpsFailureDetails),
     notOutdoorsDetails: S.optional(NotOutdoorsFailureDetails),
@@ -603,7 +598,7 @@ export interface LatLngBounds {
   /** The northeast corner of these bounds. */
   northeast?: LatLng;
 }
-export const LatLngBounds = /*@__PURE__*/ S.suspend(() =>
+const LatLngBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     southwest: S.optional(LatLng),
     northeast: S.optional(LatLng),
@@ -621,7 +616,7 @@ export interface Measurement3d {
   /** The timestamp of the IMU measurement. */
   captureTime?: string;
 }
-export const Measurement3d = /*@__PURE__*/ S.suspend(() =>
+const Measurement3d = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -631,7 +626,7 @@ export const Measurement3d = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Measurement3d" }) as any as S.Schema<Measurement3d>;
 
 export type Measurement3dList = Array<Measurement3d>;
-export const Measurement3dList = /*@__PURE__*/ S.Array(
+const Measurement3dList = /*@__PURE__*/ S.Array(
   Measurement3d,
 ) as any as S.Schema<Measurement3dList>;
 
@@ -644,7 +639,7 @@ export interface Imu {
   /** The gyroscope measurements in radians/sec with increasing timestamps from devices. */
   gyroRps?: Measurement3dList;
 }
-export const Imu = /*@__PURE__*/ S.suspend(() =>
+const Imu = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accelMpsps: S.optional(Measurement3dList),
     magUt: S.optional(Measurement3dList),
@@ -685,7 +680,7 @@ export interface PhotoSequence {
   /** Output only. The total number of views that all the published images in this PhotoSequence have received. */
   viewCount?: string;
 }
-export const PhotoSequence = /*@__PURE__*/ S.suspend(() =>
+const PhotoSequence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failureReason: S.optional(PhotoSequenceFailureReasonEnum),
     gpsSource: S.optional(PhotoSequenceGpsSourceEnum),
@@ -711,7 +706,7 @@ export interface CreatePhotoSequenceRequest {
   /** Request body */
   body?: PhotoSequence;
 }
-export const CreatePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputType: S.optional(CreatePhotoSequenceInputTypeEnum.pipe(T.Query())),
     body: S.optional(PhotoSequence.pipe(T.HttpBody())),
@@ -739,7 +734,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     metadata: S.optional(DocumentMap),
@@ -753,7 +748,7 @@ export interface DeletePhotoRequest {
   /** Required. ID of the Photo. */
   photoId: string;
 }
-export const DeletePhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photoId: S.String.pipe(T.Label()),
   }).pipe(
@@ -767,7 +762,7 @@ export const DeletePhotoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -775,7 +770,7 @@ export interface DeletePhotoSequenceRequest {
   /** Required. ID of the PhotoSequence. */
   sequenceId: string;
 }
-export const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sequenceId: S.String.pipe(T.Label()),
   }).pipe(
@@ -790,7 +785,7 @@ export const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePhotoSequenceRequest>;
 
 export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-export const GetPhotoViewEnum = S.String;
+const GetPhotoViewEnum = S.String;
 
 export interface GetPhotoRequest {
   /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
@@ -800,7 +795,7 @@ export interface GetPhotoRequest {
   /** The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the user's language preference for Google services is used. */
   languageCode?: string;
 }
-export const GetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(GetPhotoViewEnum.pipe(T.Query())),
     photoId: S.String.pipe(T.Label()),
@@ -815,7 +810,7 @@ export const GetPhotoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPhotoRequest" }) as any as S.Schema<GetPhotoRequest>;
 
 export type GetPhotoSequenceViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-export const GetPhotoSequenceViewEnum = S.String;
+const GetPhotoSequenceViewEnum = S.String;
 
 export interface GetPhotoSequenceRequest {
   /** Specifies if a download URL for the photo sequence should be returned in `download_url` of individual photos in the PhotoSequence response. > Note: Currently not implemented. */
@@ -825,7 +820,7 @@ export interface GetPhotoSequenceRequest {
   /** Optional. The filter expression. For example: `published_status=PUBLISHED`. The filters supported are: `published_status`. See https://google.aip.dev/160 for more information. */
   filter?: string;
 }
-export const GetPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(GetPhotoSequenceViewEnum.pipe(T.Query())),
     sequenceId: S.String.pipe(T.Label()),
@@ -840,7 +835,7 @@ export const GetPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPhotoSequenceRequest" }) as any as S.Schema<GetPhotoSequenceRequest>;
 
 export type ListPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-export const ListPhotosViewEnum = S.String;
+const ListPhotosViewEnum = S.String;
 
 export interface ListPhotosRequest {
   /** Optional. The nextPageToken value returned from a previous ListPhotos request, if any. */
@@ -854,7 +849,7 @@ export interface ListPhotosRequest {
   /** Optional. The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero or is not provided, the default page size of 100 is used. The number of photos returned in the response may be less than `pageSize` if the number of photos that belong to the user is less than `pageSize`. */
   pageSize?: number;
 }
-export const ListPhotosRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPhotosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -877,7 +872,7 @@ export interface ListPhotosResponse {
   /** List of photos. The pageSize field in the request determines the number of items returned. */
   photos?: PhotoList;
 }
-export const ListPhotosResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPhotosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     photos: S.optional(PhotoList),
@@ -892,7 +887,7 @@ export interface ListPhotoSequencesRequest {
   /** Optional. The maximum number of photo sequences to return. `pageSize` must be non-negative. If `pageSize` is zero or is not provided, the default page size of 100 is used. The number of photo sequences returned in the response may be less than `pageSize` if the number of matches is less than `pageSize`. This is currently unimplemented but is in process. */
   pageSize?: number;
 }
-export const ListPhotoSequencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPhotoSequencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -909,7 +904,7 @@ export const ListPhotoSequencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPhotoSequencesRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** Response to list all photo sequences that belong to a user. */
 export interface ListPhotoSequencesResponse {
@@ -918,7 +913,7 @@ export interface ListPhotoSequencesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListPhotoSequencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPhotoSequencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     photoSequences: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -931,7 +926,7 @@ export interface StartUploadPhotoRequest {
   /** Request body */
   body?: Empty;
 }
-export const StartUploadPhotoRequest = /*@__PURE__*/ S.suspend(() =>
+const StartUploadPhotoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Empty.pipe(T.HttpBody())),
   }).pipe(
@@ -947,7 +942,7 @@ export interface StartUploadPhotoSequenceRequest {
   /** Request body */
   body?: Empty;
 }
-export const StartUploadPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
+const StartUploadPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Empty.pipe(T.HttpBody())),
   }).pipe(
@@ -969,7 +964,7 @@ export interface UpdatePhotoRequest_ {
   /** Request body */
   body?: Photo;
 }
-export const UpdatePhotoRequest_ = /*@__PURE__*/ S.suspend(() =>
+const UpdatePhotoRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

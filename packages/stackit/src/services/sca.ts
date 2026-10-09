@@ -39,20 +39,18 @@ export class NotFound
 
 /** Container argument override. */
 export type ContainerArgsList = Array<string>;
-export const ContainerArgsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ContainerArgsList>;
+const ContainerArgsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ContainerArgsList>;
 
 /** Container command override. */
 export type ContainerCommandList = Array<string>;
-export const ContainerCommandList = ContainerArgsList as any as S.Schema<ContainerCommandList>;
+const ContainerCommandList = ContainerArgsList as any as S.Schema<ContainerCommandList>;
 
 /** EnvVarType identifies the origin of an environment variable. - ENV_FROM_SOURCE_TYPE_UNSPECIFIED: Used as zero value. - ENV_FROM_SOURCE_TYPE_MANUAL: Environment source from a literal value. - ENV_FROM_SOURCE_TYPE_SECRET: Environment source from a secret. */
 export type EnvVarType =
   | "ENV_FROM_SOURCE_TYPE_UNSPECIFIED"
   | "ENV_FROM_SOURCE_TYPE_MANUAL"
   | "ENV_FROM_SOURCE_TYPE_SECRET";
-export const EnvVarType = S.String;
+const EnvVarType = S.String;
 
 /** EnvVar defines a single environment variable. */
 export interface EnvVar {
@@ -62,7 +60,7 @@ export interface EnvVar {
   /** Environment variable value. */
   value: string;
 }
-export const EnvVar = /*@__PURE__*/ S.suspend(() =>
+const EnvVar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     origin: S.optional(EnvVarType),
@@ -72,7 +70,7 @@ export const EnvVar = /*@__PURE__*/ S.suspend(() =>
 
 /** Environment variables exposed to the container. */
 export type ContainerEnvironmentVariablesList = Array<EnvVar>;
-export const ContainerEnvironmentVariablesList = /*@__PURE__*/ S.Array(
+const ContainerEnvironmentVariablesList = /*@__PURE__*/ S.Array(
   EnvVar,
 ) as any as S.Schema<ContainerEnvironmentVariablesList>;
 
@@ -93,7 +91,7 @@ export interface Container {
   /** Container name. */
   name: string;
 }
-export const Container = /*@__PURE__*/ S.suspend(() =>
+const Container = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(ContainerArgsList),
     command: S.optional(ContainerCommandList),
@@ -107,13 +105,13 @@ export const Container = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers to deploy for the application. */
 export type CreateApplicationRequestContainersList = Array<Container>;
-export const CreateApplicationRequestContainersList = /*@__PURE__*/ S.Array(
+const CreateApplicationRequestContainersList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<CreateApplicationRequestContainersList>;
 
 /** Allowed destination CIDRs for Ingress traffic. */
 export type NetworkIngressAclList = Array<string>;
-export const NetworkIngressAclList = ContainerArgsList as any as S.Schema<NetworkIngressAclList>;
+const NetworkIngressAclList = ContainerArgsList as any as S.Schema<NetworkIngressAclList>;
 
 /** Network configuration for an application. */
 export interface Network {
@@ -126,7 +124,7 @@ export interface Network {
   /** Whether the application should be accessible from the internet. */
   publicIngress?: boolean;
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
+const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressAcl: S.optional(NetworkIngressAclList),
     internalPort: S.optional(S.Number),
@@ -141,7 +139,7 @@ export interface ApplicationRegistryCredentialsAuth {
   url: string;
   user: string;
 }
-export const ApplicationRegistryCredentialsAuth = /*@__PURE__*/ S.suspend(() =>
+const ApplicationRegistryCredentialsAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     url: S.String,
@@ -152,13 +150,13 @@ export const ApplicationRegistryCredentialsAuth = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationRegistryCredentialsAuth>;
 
 export type ApplicationRegistryAuthType = "AUTH_TYPE_NONE" | "AUTH_TYPE_CREDENTIALS";
-export const ApplicationRegistryAuthType = S.String;
+const ApplicationRegistryAuthType = S.String;
 
 export interface ApplicationRegistry {
   credentials?: ApplicationRegistryCredentialsAuth;
   type: ApplicationRegistryAuthType | (string & {});
 }
-export const ApplicationRegistry = /*@__PURE__*/ S.suspend(() =>
+const ApplicationRegistry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: S.optional(ApplicationRegistryCredentialsAuth),
     type: ApplicationRegistryAuthType,
@@ -167,7 +165,7 @@ export const ApplicationRegistry = /*@__PURE__*/ S.suspend(() =>
 
 /** Image registry configuration for the application. */
 export type CreateApplicationRequestRegistryList = Array<ApplicationRegistry>;
-export const CreateApplicationRequestRegistryList = /*@__PURE__*/ S.Array(
+const CreateApplicationRequestRegistryList = /*@__PURE__*/ S.Array(
   ApplicationRegistry,
 ) as any as S.Schema<CreateApplicationRequestRegistryList>;
 
@@ -179,12 +177,12 @@ export type CurrentStatus =
   | "CURRENT_STATUS_FAILED"
   | "CURRENT_STATUS_IDLE"
   | "CURRENT_STATUS_NONE";
-export const CurrentStatus = S.String;
+const CurrentStatus = S.String;
 
 export interface RuntimeStatusInput {
   currentStatus?: CurrentStatus | (string & {});
 }
-export const RuntimeStatusInput = /*@__PURE__*/ S.suspend(() =>
+const RuntimeStatusInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentStatus: S.optional(CurrentStatus),
   }),
@@ -195,7 +193,7 @@ export interface CustomRuleParameter {
   name: string;
   value: string;
 }
-export const CustomRuleParameter = /*@__PURE__*/ S.suspend(() =>
+const CustomRuleParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -204,7 +202,7 @@ export const CustomRuleParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Scaler parameters. */
 export type CustomScaleRuleParametersList = Array<CustomRuleParameter>;
-export const CustomScaleRuleParametersList = /*@__PURE__*/ S.Array(
+const CustomScaleRuleParametersList = /*@__PURE__*/ S.Array(
   CustomRuleParameter,
 ) as any as S.Schema<CustomScaleRuleParametersList>;
 
@@ -215,7 +213,7 @@ export interface CustomRuleSecretMapping {
   /** Environment secret name. */
   secret: string | Redacted.Redacted<string>;
 }
-export const CustomRuleSecretMapping = /*@__PURE__*/ S.suspend(() =>
+const CustomRuleSecretMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameter: S.String,
     secret: S.String.pipe(T.SensitiveValue({})),
@@ -224,7 +222,7 @@ export const CustomRuleSecretMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** Secret mappings for the scaler. */
 export type CustomScaleRuleSecretsMappingList = Array<CustomRuleSecretMapping>;
-export const CustomScaleRuleSecretsMappingList = /*@__PURE__*/ S.Array(
+const CustomScaleRuleSecretsMappingList = /*@__PURE__*/ S.Array(
   CustomRuleSecretMapping,
 ) as any as S.Schema<CustomScaleRuleSecretsMappingList>;
 
@@ -237,7 +235,7 @@ export interface CustomScaleRule {
   /** Scaler type. */
   type: string;
 }
-export const CustomScaleRule = /*@__PURE__*/ S.suspend(() =>
+const CustomScaleRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(CustomScaleRuleParametersList),
     secretsMapping: S.optional(CustomScaleRuleSecretsMappingList),
@@ -252,7 +250,7 @@ export interface HttpScaleRule {
   /** Target requests per second per instance. */
   rps?: number;
 }
-export const HttpScaleRule = /*@__PURE__*/ S.suspend(() =>
+const HttpScaleRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrency: S.optional(S.Number),
     rps: S.optional(S.Number),
@@ -261,7 +259,7 @@ export const HttpScaleRule = /*@__PURE__*/ S.suspend(() =>
 
 /** - RULE_TYPE_UNSPECIFIED: Used as zero value. - RULE_TYPE_HTTP: HTTP scaling rule. - RULE_TYPE_CUSTOM: Custom scaling rule (e.g. KEDA). */
 export type RuleType = "RULE_TYPE_UNSPECIFIED" | "RULE_TYPE_HTTP" | "RULE_TYPE_CUSTOM";
-export const RuleType = S.String;
+const RuleType = S.String;
 
 /** ScaleRule defines one autoscaling trigger. */
 export interface ScaleRule {
@@ -271,7 +269,7 @@ export interface ScaleRule {
   name: string;
   type: RuleType | (string & {});
 }
-export const ScaleRule = /*@__PURE__*/ S.suspend(() =>
+const ScaleRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRule: S.optional(CustomScaleRule),
     httpRule: S.optional(HttpScaleRule),
@@ -282,7 +280,7 @@ export const ScaleRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Scaling rules. */
 export type AutoScalingRulesList = Array<ScaleRule>;
-export const AutoScalingRulesList = /*@__PURE__*/ S.Array(
+const AutoScalingRulesList = /*@__PURE__*/ S.Array(
   ScaleRule,
 ) as any as S.Schema<AutoScalingRulesList>;
 
@@ -297,7 +295,7 @@ export interface AutoScaling {
   /** Scaling rules. */
   rules: AutoScalingRulesList;
 }
-export const AutoScaling = /*@__PURE__*/ S.suspend(() =>
+const AutoScaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowScaleToZero: S.optional(S.Boolean),
     maxInstances: S.Number,
@@ -311,7 +309,7 @@ export interface ManualScaling {
   /** Number of instances to run. */
   instances: number;
 }
-export const ManualScaling = /*@__PURE__*/ S.suspend(() =>
+const ManualScaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: S.Number,
   }),
@@ -319,7 +317,7 @@ export const ManualScaling = /*@__PURE__*/ S.suspend(() =>
 
 /** - SCALING_TYPE_UNSPECIFIED: Used as zero value. - SCALING_TYPE_AUTO: Auto scaling based on rules. - SCALING_TYPE_MANUAL: Manual scaling with fixed number of instances. */
 export type ScalingType = "SCALING_TYPE_UNSPECIFIED" | "SCALING_TYPE_AUTO" | "SCALING_TYPE_MANUAL";
-export const ScalingType = S.String;
+const ScalingType = S.String;
 
 /** Scaling configuration for the application. */
 export interface Scaling {
@@ -327,7 +325,7 @@ export interface Scaling {
   manualScaling?: ManualScaling;
   type: ScalingType | (string & {});
 }
-export const Scaling = /*@__PURE__*/ S.suspend(() =>
+const Scaling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoScaling: S.optional(AutoScaling),
     manualScaling: S.optional(ManualScaling),
@@ -342,7 +340,7 @@ export interface ApplicationSecret {
   /** Secret value. Omit or set to null to keep the existing value unchanged. */
   value?: string;
 }
-export const ApplicationSecret = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.optional(S.String),
@@ -351,7 +349,7 @@ export const ApplicationSecret = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets associated with the application. */
 export type CreateApplicationRequestSecretsList = Array<ApplicationSecret>;
-export const CreateApplicationRequestSecretsList = /*@__PURE__*/ S.Array(
+const CreateApplicationRequestSecretsList = /*@__PURE__*/ S.Array(
   ApplicationSecret,
 ) as any as S.Schema<CreateApplicationRequestSecretsList>;
 
@@ -374,7 +372,7 @@ export interface CreateApplicationRequest {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
-export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -398,17 +396,17 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers to deploy for the application. */
 export type ApplicationContainersList = Array<Container>;
-export const ApplicationContainersList =
+const ApplicationContainersList =
   CreateApplicationRequestContainersList as any as S.Schema<ApplicationContainersList>;
 
 /** Image registry configuration for the application. */
 export type ApplicationRegistryList = Array<ApplicationRegistry>;
-export const ApplicationRegistryList =
+const ApplicationRegistryList =
   CreateApplicationRequestRegistryList as any as S.Schema<ApplicationRegistryList>;
 
 /** Failure reasons collected from workload conditions. */
 export type RuntimeStatusFailureReasonsList = Array<string>;
-export const RuntimeStatusFailureReasonsList =
+const RuntimeStatusFailureReasonsList =
   ContainerArgsList as any as S.Schema<RuntimeStatusFailureReasonsList>;
 
 /** - INSTANCE_STATUS_PROGRESSING: Instance is being created. - INSTANCE_STATUS_RUNNING: Instance is available and running. - INSTANCE_STATUS_FAILED: Instance is not available and has some error. */
@@ -416,7 +414,7 @@ export type InstanceStatus =
   | "INSTANCE_STATUS_PROGRESSING"
   | "INSTANCE_STATUS_RUNNING"
   | "INSTANCE_STATUS_FAILED";
-export const InstanceStatus = S.String;
+const InstanceStatus = S.String;
 
 /** Application instance summary. */
 export interface Instance {
@@ -424,7 +422,7 @@ export interface Instance {
   name?: string;
   status?: InstanceStatus;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(InstanceStatus),
@@ -432,13 +430,13 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export type RuntimeStatusInstancesList = Array<Instance>;
-export const RuntimeStatusInstancesList = /*@__PURE__*/ S.Array(
+const RuntimeStatusInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<RuntimeStatusInstancesList>;
 
 /** Known URLs for the running application. */
 export type RuntimeStatusUrlsList = Array<string>;
-export const RuntimeStatusUrlsList = ContainerArgsList as any as S.Schema<RuntimeStatusUrlsList>;
+const RuntimeStatusUrlsList = ContainerArgsList as any as S.Schema<RuntimeStatusUrlsList>;
 
 export interface RuntimeStatus {
   currentStatus?: CurrentStatus;
@@ -452,7 +450,7 @@ export interface RuntimeStatus {
   /** Known URLs for the running application. */
   urls?: RuntimeStatusUrlsList;
 }
-export const RuntimeStatus = /*@__PURE__*/ S.suspend(() =>
+const RuntimeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentStatus: S.optional(CurrentStatus),
     failureReasons: S.optional(RuntimeStatusFailureReasonsList),
@@ -465,7 +463,7 @@ export const RuntimeStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Secrets associated with the application. */
 export type ApplicationSecretsList = Array<ApplicationSecret>;
-export const ApplicationSecretsList =
+const ApplicationSecretsList =
   CreateApplicationRequestSecretsList as any as S.Schema<ApplicationSecretsList>;
 
 /** Application describes a deployable multi-container workload instance. */
@@ -490,7 +488,7 @@ export interface Application {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containers: ApplicationContainersList,
     displayName: S.String,
@@ -511,7 +509,7 @@ export type EnvironmentStatus =
   | "ENVIRONMENT_STATUS_UNSPECIFIED"
   | "ENVIRONMENT_STATUS_PROGRESSING"
   | "ENVIRONMENT_STATUS_CREATED";
-export const EnvironmentStatus = S.String;
+const EnvironmentStatus = S.String;
 
 export interface CreateEnvironmentRequest {
   /** Parent project resource name to create under */
@@ -520,7 +518,7 @@ export interface CreateEnvironmentRequest {
   displayName: string;
   status?: EnvironmentStatus | (string & {});
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     displayName: S.String,
@@ -547,7 +545,7 @@ export interface Environment {
   id?: string;
   status?: EnvironmentStatus;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     default: S.optional(S.Boolean),
@@ -565,7 +563,7 @@ export interface DeleteApplicationRequest {
   /** Application id to delete. */
   applicationId: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -588,7 +586,7 @@ export interface GetApplicationRequest {
   /** Application id to fetch. */
   applicationId: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -611,7 +609,7 @@ export interface GetApplicationEventsRequest {
   /** Application id to fetch. */
   applicationId: string;
 }
-export const GetApplicationEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -633,7 +631,7 @@ export interface Event {
   /** Event message. */
   message?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -641,7 +639,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 
 /** Events list. */
 export type GetApplicationEventsResponseEventsList = Array<Event>;
-export const GetApplicationEventsResponseEventsList = /*@__PURE__*/ S.Array(
+const GetApplicationEventsResponseEventsList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<GetApplicationEventsResponseEventsList>;
 
@@ -650,7 +648,7 @@ export interface GetApplicationEventsResponse {
   /** Events list. */
   events?: GetApplicationEventsResponseEventsList;
 }
-export const GetApplicationEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(GetApplicationEventsResponseEventsList),
   }),
@@ -672,7 +670,7 @@ export interface GetApplicationLogsRequest {
   /** Get previous failed execution of the container. */
   previous?: boolean;
 }
-export const GetApplicationLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -697,11 +695,9 @@ export interface Log {
   /** Log message. */
   message?: string;
 }
-export const Log = Event as any as S.Schema<Log>;
-
 /** Logs list. */
 export type GetApplicationLogsResponseLogsList = Array<Log>;
-export const GetApplicationLogsResponseLogsList =
+const GetApplicationLogsResponseLogsList =
   GetApplicationEventsResponseEventsList as any as S.Schema<GetApplicationLogsResponseLogsList>;
 
 /** GetApplicationLogsResponse contains an application's logs list. */
@@ -709,7 +705,7 @@ export interface GetApplicationLogsResponse {
   /** Logs list. */
   logs?: GetApplicationLogsResponseLogsList;
 }
-export const GetApplicationLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(GetApplicationLogsResponseLogsList),
   }),
@@ -723,7 +719,7 @@ export interface GetEnvironmentRequest {
   /** Environment identifier, for example: default. */
   environmentId: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -741,7 +737,7 @@ export interface GetOverviewRequest {
   /** Parent project resource name to list under. */
   projectId: string;
 }
-export const GetOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -761,7 +757,7 @@ export interface Summary {
   /** Number of applications created in a project. */
   applicationsTotal?: number;
 }
-export const Summary = /*@__PURE__*/ S.suspend(() =>
+const Summary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationsRunning: S.optional(S.Number),
     applicationsTotal: S.optional(S.Number),
@@ -772,7 +768,7 @@ export const Summary = /*@__PURE__*/ S.suspend(() =>
 export interface GetOverviewResponse {
   summary: Summary;
 }
-export const GetOverviewResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOverviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: Summary,
   }),
@@ -784,7 +780,7 @@ export interface ListApplicationsRequest {
   /** environment to list the applications in. */
   environmentId: string;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),
@@ -824,7 +820,7 @@ export interface ApplicationSummary {
   /** Application's published URL. */
   url?: string;
 }
-export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containers: S.optional(S.Number),
     createdAt: S.optional(S.String),
@@ -843,7 +839,7 @@ export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Applications under the requested parent. */
 export type ListApplicationsResponseItemsList = Array<ApplicationSummary>;
-export const ListApplicationsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListApplicationsResponseItemsList = /*@__PURE__*/ S.Array(
   ApplicationSummary,
 ) as any as S.Schema<ListApplicationsResponseItemsList>;
 
@@ -852,7 +848,7 @@ export interface ListApplicationsResponse {
   /** Applications under the requested parent. */
   items?: ListApplicationsResponseItemsList;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListApplicationsResponseItemsList),
   }),
@@ -862,7 +858,7 @@ export interface ListEnvironmentsRequest {
   /** Parent project resource name to list under. */
   projectId: string;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -888,7 +884,7 @@ export interface EnvironmentSummary {
   /** Environment identifier, for example: default. */
   id?: string;
 }
-export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationsNumber: S.optional(S.Number),
     createdAt: S.optional(S.String),
@@ -900,7 +896,7 @@ export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Environments under the requested parent. */
 export type ListEnvironmentsResponseItemsList = Array<EnvironmentSummary>;
-export const ListEnvironmentsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListEnvironmentsResponseItemsList = /*@__PURE__*/ S.Array(
   EnvironmentSummary,
 ) as any as S.Schema<ListEnvironmentsResponseItemsList>;
 
@@ -909,7 +905,7 @@ export interface ListEnvironmentsResponse {
   /** Environments under the requested parent. */
   items?: ListEnvironmentsResponseItemsList;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListEnvironmentsResponseItemsList),
   }),
@@ -919,7 +915,7 @@ export interface ListProjectApplicationsRequest {
   /** Project to list the applications in. */
   projectId: string;
 }
-export const ListProjectApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -936,17 +932,17 @@ export const ListProjectApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Containers to deploy for the application. */
 export type UpdateApplicationRequestContainersList = Array<Container>;
-export const UpdateApplicationRequestContainersList =
+const UpdateApplicationRequestContainersList =
   CreateApplicationRequestContainersList as any as S.Schema<UpdateApplicationRequestContainersList>;
 
 /** Image registry configuration for the application. */
 export type UpdateApplicationRequestRegistryList = Array<ApplicationRegistry>;
-export const UpdateApplicationRequestRegistryList =
+const UpdateApplicationRequestRegistryList =
   CreateApplicationRequestRegistryList as any as S.Schema<UpdateApplicationRequestRegistryList>;
 
 /** Secrets associated with the application. */
 export type UpdateApplicationRequestSecretsList = Array<ApplicationSecret>;
-export const UpdateApplicationRequestSecretsList =
+const UpdateApplicationRequestSecretsList =
   CreateApplicationRequestSecretsList as any as S.Schema<UpdateApplicationRequestSecretsList>;
 
 export interface UpdateApplicationRequest {
@@ -967,7 +963,7 @@ export interface UpdateApplicationRequest {
   /** Indicates if the application resources are stopped. */
   stopped?: boolean;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     environmentId: S.String.pipe(T.Label()),

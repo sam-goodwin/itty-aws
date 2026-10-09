@@ -67,7 +67,7 @@ export interface AcceptActiveActiveTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-export const AcceptActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -84,7 +84,7 @@ export const AcceptActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AcceptActiveActiveTgwResourceShareRequest>;
 
 export interface AcceptActiveActiveTgwResourceShareResponse {}
-export const AcceptActiveActiveTgwResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptActiveActiveTgwResourceShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AcceptActiveActiveTgwResourceShareResponse",
@@ -96,7 +96,7 @@ export interface AcceptTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-export const AcceptTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     tgwInvitationId: S.Number.pipe(T.Label()),
@@ -112,20 +112,20 @@ export const AcceptTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptTgwResourceShareRequest>;
 
 export interface AcceptTgwResourceShareResponse {}
-export const AcceptTgwResourceShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AcceptTgwResourceShareResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptTgwResourceShareResponse",
 }) as any as S.Schema<AcceptTgwResourceShareResponse>;
 
 /** Optional. Enter a list of subnets identifiers that exists in the hosted AWS account. Subnet Identifier must exist within the hosting account. */
 export type AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList = Array<string>;
-export const AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList = /*@__PURE__*/ S.Array(
+const AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList>;
 
 /** Optional. List the zone IDs for your preferred availability zones for the cloud provider and region. */
 export type AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList =
   Array<string>;
-export const AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList =
+const AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList>;
@@ -139,7 +139,7 @@ export interface LocalThroughput {
   /** Read operations for this region per second. Default: 1000 ops/sec */
   readOperationsPerSecond?: number;
 }
-export const LocalThroughput = /*@__PURE__*/ S.suspend(() =>
+const LocalThroughput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     writeOperationsPerSecond: S.optional(S.Number),
@@ -153,7 +153,7 @@ export interface CrdbRegionSpec {
   name?: string;
   localThroughputMeasurement?: LocalThroughput;
 }
-export const CrdbRegionSpec = /*@__PURE__*/ S.suspend(() =>
+const CrdbRegionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     localThroughputMeasurement: S.optional(LocalThroughput),
@@ -162,13 +162,13 @@ export const CrdbRegionSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** List of databases in the subscription with local throughput details. Default: 1000 read and write ops/sec for each database */
 export type AddNewRegionToActiveActiveSubscriptionRequestDatabasesList = Array<CrdbRegionSpec>;
-export const AddNewRegionToActiveActiveSubscriptionRequestDatabasesList = /*@__PURE__*/ S.Array(
+const AddNewRegionToActiveActiveSubscriptionRequestDatabasesList = /*@__PURE__*/ S.Array(
   CrdbRegionSpec,
 ) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestDatabasesList>;
 
 /** Optional. RESP version must be compatible with Redis version. */
 export type AddNewRegionToActiveActiveSubscriptionRequestRespVersion = "resp2" | "resp3";
-export const AddNewRegionToActiveActiveSubscriptionRequestRespVersion = S.String;
+const AddNewRegionToActiveActiveSubscriptionRequestRespVersion = S.String;
 
 export interface AddNewRegionToActiveActiveSubscriptionRequest {
   /** Subscription ID. */
@@ -196,7 +196,7 @@ export interface AddNewRegionToActiveActiveSubscriptionRequest {
   /** Required for subscriptions where 'persistentStorageEncryptionType' is 'customer-managed-key'. The resource name of the customer-managed encryption key for the region. */
   customerManagedKeyResourceName?: string;
 }
-export const AddNewRegionToActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNewRegionToActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     region: S.optional(S.String),
@@ -223,7 +223,7 @@ export type TaskStateUpdateStatus =
   | "processing-in-progress"
   | "processing-completed"
   | "processing-error";
-export const TaskStateUpdateStatus = S.String;
+const TaskStateUpdateStatus = S.String;
 
 export type ProcessorResponseError =
   | "UNAUTHORIZED"
@@ -855,7 +855,7 @@ export type ProcessorResponseError =
   | "AGENT_MEMORY_STORE_NOT_FOUND"
   | "AGENT_MEMORY_STORE_FORBIDDEN"
   | "AGENT_MEMORY_STORE_DEPENDENCY_FAILED";
-export const ProcessorResponseError = S.String;
+const ProcessorResponseError = S.String;
 
 export interface ProcessorResponse {
   resourceId?: number;
@@ -864,7 +864,7 @@ export interface ProcessorResponse {
   error?: ProcessorResponseError;
   additionalInfo?: string;
 }
-export const ProcessorResponse = /*@__PURE__*/ S.suspend(() =>
+const ProcessorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.Number),
     additionalResourceId: S.optional(S.Number),
@@ -875,13 +875,13 @@ export const ProcessorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessorResponse" }) as any as S.Schema<ProcessorResponse>;
 
 export type TaskStateUpdateLinksItemMap = { [key: string]: string | undefined };
-export const TaskStateUpdateLinksItemMap = /*@__PURE__*/ S.Record(
+const TaskStateUpdateLinksItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<TaskStateUpdateLinksItemMap>;
 
 export type TaskStateUpdateLinksList = Array<TaskStateUpdateLinksItemMap>;
-export const TaskStateUpdateLinksList = /*@__PURE__*/ S.Array(
+const TaskStateUpdateLinksList = /*@__PURE__*/ S.Array(
   TaskStateUpdateLinksItemMap,
 ) as any as S.Schema<TaskStateUpdateLinksList>;
 
@@ -894,7 +894,7 @@ export interface TaskStateUpdate {
   response?: ProcessorResponse;
   links?: TaskStateUpdateLinksList;
 }
-export const TaskStateUpdate = /*@__PURE__*/ S.suspend(() =>
+const TaskStateUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     commandType: S.optional(S.String),
@@ -916,7 +916,7 @@ export interface BackupDatabaseRequest {
   /** Optional. Manually backs up data to this location, instead of the set 'remoteBackup' location. */
   adhocBackupPath?: string;
 }
-export const BackupDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const BackupDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -939,7 +939,7 @@ export interface BackupDatabase1Request {
   /** Optional. Manually backs up data to this location, instead of the set 'periodicBackupPath' location. */
   adhocBackupPath?: string;
 }
-export const BackupDatabase1Request = /*@__PURE__*/ S.suspend(() =>
+const BackupDatabase1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -961,7 +961,7 @@ export type CreateActiveActivePrivateLinkRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-export const CreateActiveActivePrivateLinkRequestType = S.String;
+const CreateActiveActivePrivateLinkRequestType = S.String;
 
 export interface CreateActiveActivePrivateLinkRequest {
   /** Subscription ID. */
@@ -977,7 +977,7 @@ export interface CreateActiveActivePrivateLinkRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-export const CreateActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -1004,7 +1004,7 @@ export type CreateActiveActivePrivateLinkPrincipalRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-export const CreateActiveActivePrivateLinkPrincipalRequestType = S.String;
+const CreateActiveActivePrivateLinkPrincipalRequestType = S.String;
 
 export interface CreateActiveActivePrivateLinkPrincipalRequest {
   /** Subscription ID. */
@@ -1018,7 +1018,7 @@ export interface CreateActiveActivePrivateLinkPrincipalRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-export const CreateActiveActivePrivateLinkPrincipalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActivePrivateLinkPrincipalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -1042,7 +1042,7 @@ export interface CreateActiveActivePscServiceRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const CreateActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -1058,7 +1058,7 @@ export const CreateActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateActiveActivePscServiceRequest>;
 
 export interface CreateActiveActivePscServiceResponse {}
-export const CreateActiveActivePscServiceResponse =
+const CreateActiveActivePscServiceResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActivePscServiceResponse>;
 
 export interface CreateActiveActivePscServiceEndpointRequest {
@@ -1077,7 +1077,7 @@ export interface CreateActiveActivePscServiceEndpointRequest {
   /** Prefix used to create PSC endpoints in the consumer application VPC. Endpoint names appear in Google Cloud as endpoint name prefix + endpoint number. */
   endpointConnectionName: string;
 }
-export const CreateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -1098,7 +1098,7 @@ export const CreateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<CreateActiveActivePscServiceEndpointRequest>;
 
 export interface CreateActiveActivePscServiceEndpointResponse {}
-export const CreateActiveActivePscServiceEndpointResponse =
+const CreateActiveActivePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActivePscServiceEndpointResponse>;
 
 export interface CreateActiveActiveTgwAttachmentRequest {
@@ -1109,7 +1109,7 @@ export interface CreateActiveActiveTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-export const CreateActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -1126,7 +1126,7 @@ export const CreateActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateActiveActiveTgwAttachmentRequest>;
 
 export interface CreateActiveActiveTgwAttachmentResponse {}
-export const CreateActiveActiveTgwAttachmentResponse =
+const CreateActiveActiveTgwAttachmentResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActiveTgwAttachmentResponse>;
 
 export interface CreateActiveActiveVpcPeeringRequest {
@@ -1136,7 +1136,7 @@ export interface CreateActiveActiveVpcPeeringRequest {
   /** Name of region to create a VPC peering from. */
   sourceRegion: string;
 }
-export const CreateActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     provider: S.optional(S.String),
@@ -1154,7 +1154,7 @@ export const CreateActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Cloud provider. Default: 'AWS' */
 export type CreateCloudAccountRequestProvider = "AWS" | "GCP";
-export const CreateCloudAccountRequestProvider = S.String;
+const CreateCloudAccountRequestProvider = S.String;
 
 export interface CreateCloudAccountRequest {
   /** Cloud account display name. */
@@ -1172,7 +1172,7 @@ export interface CreateCloudAccountRequest {
   /** Cloud provider management console login URL. */
   signInLoginUrl: string;
 }
-export const CreateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     provider: S.optional(CreateCloudAccountRequestProvider),
@@ -1187,31 +1187,31 @@ export const CreateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudAccountRequest>;
 
 export interface CreateCloudAccountResponse {}
-export const CreateCloudAccountResponse =
+const CreateCloudAccountResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateCloudAccountResponse>;
 
 /** Output format for the cost report */
 export type CreateCostReportRequestFormat = "json" | "csv";
-export const CreateCostReportRequestFormat = S.String;
+const CreateCostReportRequestFormat = S.String;
 
 /** Array of subscriptionIDs to filter by */
 export type CreateCostReportRequestSubscriptionIdsList = Array<number>;
-export const CreateCostReportRequestSubscriptionIdsList = /*@__PURE__*/ S.Array(
+const CreateCostReportRequestSubscriptionIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateCostReportRequestSubscriptionIdsList>;
 
 /** Array of database IDs to filter by */
 export type CreateCostReportRequestDatabaseIdsList = Array<number>;
-export const CreateCostReportRequestDatabaseIdsList =
+const CreateCostReportRequestDatabaseIdsList =
   CreateCostReportRequestSubscriptionIdsList as any as S.Schema<CreateCostReportRequestDatabaseIdsList>;
 
 /** Filter by plan type */
 export type CreateCostReportRequestSubscriptionType = "pro" | "essentials";
-export const CreateCostReportRequestSubscriptionType = S.String;
+const CreateCostReportRequestSubscriptionType = S.String;
 
 /** Array of regions to filter by */
 export type CreateCostReportRequestRegionsList = Array<string>;
-export const CreateCostReportRequestRegionsList =
+const CreateCostReportRequestRegionsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateCostReportRequestRegionsList>;
 
 /** Tag filter for cost report */
@@ -1221,7 +1221,7 @@ export interface Tag {
   /** Tag value */
   value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -1230,7 +1230,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of key-value pairs for tag filtering */
 export type CreateCostReportRequestTagsList = Array<Tag>;
-export const CreateCostReportRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateCostReportRequestTagsList = /*@__PURE__*/ S.Array(
   Tag,
 ) as any as S.Schema<CreateCostReportRequestTagsList>;
 
@@ -1252,7 +1252,7 @@ export interface CreateCostReportRequest {
   /** Array of key-value pairs for tag filtering */
   tags?: CreateCostReportRequestTagsList;
 }
-export const CreateCostReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCostReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.String,
     endDate: S.String,
@@ -1266,16 +1266,16 @@ export const CreateCostReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCostReportRequest" }) as any as S.Schema<CreateCostReportRequest>;
 
 export interface CreateCostReportResponse {}
-export const CreateCostReportResponse =
+const CreateCostReportResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateCostReportResponse>;
 
 /** Optional. Database protocol. Only set to 'memcached' if you have a legacy application. Default: 'redis' */
 export type CreateDatabaseRequestProtocol = "redis" | "memcached";
-export const CreateDatabaseRequestProtocol = S.String;
+const CreateDatabaseRequestProtocol = S.String;
 
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type CreateDatabaseRequestRespVersion = "resp2" | "resp3";
-export const CreateDatabaseRequestRespVersion = S.String;
+const CreateDatabaseRequestRespVersion = S.String;
 
 /** Optional. Type and rate of data persistence in persistent storage. Default: 'none' */
 export type CreateDatabaseRequestDataPersistence =
@@ -1285,7 +1285,7 @@ export type CreateDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const CreateDatabaseRequestDataPersistence = S.String;
+const CreateDatabaseRequestDataPersistence = S.String;
 
 /** Optional. Data eviction policy. Default: 'volatile-lru' */
 export type CreateDatabaseRequestDataEvictionPolicy =
@@ -1299,11 +1299,11 @@ export type CreateDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const CreateDatabaseRequestDataEvictionPolicy = S.String;
+const CreateDatabaseRequestDataEvictionPolicy = S.String;
 
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type CreateDatabaseRequestReplicaOfList = Array<string>;
-export const CreateDatabaseRequestReplicaOfList =
+const CreateDatabaseRequestReplicaOfList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateDatabaseRequestReplicaOfList>;
 
 /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
@@ -1315,7 +1315,7 @@ export interface DatabaseSyncSourceSpec {
   /** TLS/SSL certificate chain of the sync source. If not set and the source is a Redis Cloud database, it will automatically detect the certificate to use. */
   serverCert?: string;
 }
-export const DatabaseSyncSourceSpec = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSyncSourceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.String,
     encryption: S.optional(S.Boolean),
@@ -1325,7 +1325,7 @@ export const DatabaseSyncSourceSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
 export type ReplicaOfSpecSyncSourcesList = Array<DatabaseSyncSourceSpec>;
-export const ReplicaOfSpecSyncSourcesList = /*@__PURE__*/ S.Array(
+const ReplicaOfSpecSyncSourcesList = /*@__PURE__*/ S.Array(
   DatabaseSyncSourceSpec,
 ) as any as S.Schema<ReplicaOfSpecSyncSourcesList>;
 
@@ -1334,7 +1334,7 @@ export interface ReplicaOfSpec {
   /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
   syncSources: ReplicaOfSpecSyncSourcesList;
 }
-export const ReplicaOfSpec = /*@__PURE__*/ S.suspend(() =>
+const ReplicaOfSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     syncSources: ReplicaOfSpecSyncSourcesList,
   }),
@@ -1342,7 +1342,7 @@ export const ReplicaOfSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Throughput measurement method. Use 'operations-per-second' for all new databases. */
 export type DatabaseThroughputSpecBy = "operations-per-second" | "number-of-shards";
-export const DatabaseThroughputSpecBy = S.String;
+const DatabaseThroughputSpecBy = S.String;
 
 /** Optional. Throughput measurement method. */
 export interface DatabaseThroughputSpec {
@@ -1351,7 +1351,7 @@ export interface DatabaseThroughputSpec {
   /** Throughput value in the selected measurement method. */
   value: number;
 }
-export const DatabaseThroughputSpec = /*@__PURE__*/ S.suspend(() =>
+const DatabaseThroughputSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     by: DatabaseThroughputSpecBy,
     value: S.Number,
@@ -1360,7 +1360,7 @@ export const DatabaseThroughputSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Expected throughput per region for an Active-Active database. Default: 1000 read and write ops/sec for each region */
 export type CreateDatabaseRequestLocalThroughputMeasurementList = Array<LocalThroughput>;
-export const CreateDatabaseRequestLocalThroughputMeasurementList = /*@__PURE__*/ S.Array(
+const CreateDatabaseRequestLocalThroughputMeasurementList = /*@__PURE__*/ S.Array(
   LocalThroughput,
 ) as any as S.Schema<CreateDatabaseRequestLocalThroughputMeasurementList>;
 
@@ -1377,7 +1377,7 @@ export interface DatabaseBackupConfigInput {
   /** Required when active is 'true'. Path to the backup storage location. */
   storagePath?: string;
 }
-export const DatabaseBackupConfigInput = /*@__PURE__*/ S.suspend(() =>
+const DatabaseBackupConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     interval: S.optional(S.String),
@@ -1391,7 +1391,7 @@ export const DatabaseBackupConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type CreateDatabaseRequestSourceIpList = Array<string>;
-export const CreateDatabaseRequestSourceIpList =
+const CreateDatabaseRequestSourceIpList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateDatabaseRequestSourceIpList>;
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
@@ -1399,7 +1399,7 @@ export interface DatabaseCertificateSpec {
   /** Client certificate public key in PEM format, with new line characters replaced with '\n'. */
   publicCertificatePEMString: string;
 }
-export const DatabaseCertificateSpec = /*@__PURE__*/ S.suspend(() =>
+const DatabaseCertificateSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicCertificatePEMString: S.String,
   }),
@@ -1407,7 +1407,7 @@ export const DatabaseCertificateSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. */
 export type CreateDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-export const CreateDatabaseRequestClientTlsCertificatesList = /*@__PURE__*/ S.Array(
+const CreateDatabaseRequestClientTlsCertificatesList = /*@__PURE__*/ S.Array(
   DatabaseCertificateSpec,
 ) as any as S.Schema<CreateDatabaseRequestClientTlsCertificatesList>;
 
@@ -1421,7 +1421,7 @@ export type DatabaseAlertSpecName =
   | "syncsource-error"
   | "syncsource-lag"
   | "connections-limit";
-export const DatabaseAlertSpecName = S.String;
+const DatabaseAlertSpecName = S.String;
 
 /** Optional. Changes Redis database alert details. */
 export interface DatabaseAlertSpec {
@@ -1430,7 +1430,7 @@ export interface DatabaseAlertSpec {
   /** Value over which an alert will be sent. Default values and range depend on the alert type. See [Configure alerts](https://redis.io/docs/latest/operate/rc/databases/monitor-performance/#configure-metric-alerts) for more information. */
   value: number;
 }
-export const DatabaseAlertSpec = /*@__PURE__*/ S.suspend(() =>
+const DatabaseAlertSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: DatabaseAlertSpecName,
     value: S.Number,
@@ -1439,13 +1439,13 @@ export const DatabaseAlertSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Redis database alert details. */
 export type CreateDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-export const CreateDatabaseRequestAlertsList = /*@__PURE__*/ S.Array(
+const CreateDatabaseRequestAlertsList = /*@__PURE__*/ S.Array(
   DatabaseAlertSpec,
 ) as any as S.Schema<CreateDatabaseRequestAlertsList>;
 
 /** Optional. Redis advanced capability parameters. Use GET /database-modules to get the available capabilities and their parameters. */
 export type DatabaseModuleSpecParametersMap = { [key: string]: unknown | undefined };
-export const DatabaseModuleSpecParametersMap = /*@__PURE__*/ S.Record(
+const DatabaseModuleSpecParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<DatabaseModuleSpecParametersMap>;
@@ -1457,7 +1457,7 @@ export interface DatabaseModuleSpec {
   /** Optional. Redis advanced capability parameters. Use GET /database-modules to get the available capabilities and their parameters. */
   parameters?: DatabaseModuleSpecParametersMap;
 }
-export const DatabaseModuleSpec = /*@__PURE__*/ S.suspend(() =>
+const DatabaseModuleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     parameters: S.optional(DatabaseModuleSpecParametersMap),
@@ -1466,7 +1466,7 @@ export const DatabaseModuleSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type CreateDatabaseRequestModulesList = Array<DatabaseModuleSpec>;
-export const CreateDatabaseRequestModulesList = /*@__PURE__*/ S.Array(
+const CreateDatabaseRequestModulesList = /*@__PURE__*/ S.Array(
   DatabaseModuleSpec,
 ) as any as S.Schema<CreateDatabaseRequestModulesList>;
 
@@ -1475,7 +1475,7 @@ export type CreateDatabaseRequestShardingType =
   | "default-regex-rules"
   | "custom-regex-rules"
   | "redis-oss-hashing";
-export const CreateDatabaseRequestShardingType = S.String;
+const CreateDatabaseRequestShardingType = S.String;
 
 export interface CreateDatabaseRequest {
   /** Subscription ID. */
@@ -1544,7 +1544,7 @@ export interface CreateDatabaseRequest {
   /** Optional. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     dryRun: S.optional(S.Boolean),
@@ -1586,12 +1586,12 @@ export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDatabaseRequest" }) as any as S.Schema<CreateDatabaseRequest>;
 
 export interface CreateDatabaseResponse {}
-export const CreateDatabaseResponse =
+const CreateDatabaseResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateDatabaseResponse>;
 
 /** Type of endpoint to redirect. */
 export type CreateEndpointsRedirectionRequestEndpointTargetType = "public" | "private";
-export const CreateEndpointsRedirectionRequestEndpointTargetType = S.String;
+const CreateEndpointsRedirectionRequestEndpointTargetType = S.String;
 
 export interface CreateEndpointsRedirectionRequest {
   /** ID of the source database to redirect the endpoint from. */
@@ -1605,7 +1605,7 @@ export interface CreateEndpointsRedirectionRequest {
   /** Must be explicitly set to true to start the migration. This is a protective measure to avoid accidental migrations. */
   migrationProtection: boolean;
 }
-export const CreateEndpointsRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointsRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDatabaseId: S.Number,
     targetDatabaseId: S.Number,
@@ -1625,15 +1625,15 @@ export type EndpointsRedirectionResponseStatus =
   | "completed"
   | "failed"
   | "reverted";
-export const EndpointsRedirectionResponseStatus = S.String;
+const EndpointsRedirectionResponseStatus = S.String;
 
 /** Type of the source endpoint. */
 export type EndpointRedirectionDTOSourceEndpointType = "public" | "private";
-export const EndpointRedirectionDTOSourceEndpointType = S.String;
+const EndpointRedirectionDTOSourceEndpointType = S.String;
 
 /** Type of the target endpoint. */
 export type EndpointRedirectionDTOTargetEndpointType = "public" | "private";
-export const EndpointRedirectionDTOTargetEndpointType = S.String;
+const EndpointRedirectionDTOTargetEndpointType = S.String;
 
 /** Details of a single endpoint redirection. */
 export interface EndpointRedirectionDTO {
@@ -1648,7 +1648,7 @@ export interface EndpointRedirectionDTO {
   /** Error message describing why this endpoint redirection failed, if applicable. */
   errorMessage?: string;
 }
-export const EndpointRedirectionDTO = /*@__PURE__*/ S.suspend(() =>
+const EndpointRedirectionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceEndpointName: S.optional(S.String),
     targetEndpointName: S.optional(S.String),
@@ -1660,7 +1660,7 @@ export const EndpointRedirectionDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of the individual endpoint redirections performed. */
 export type EndpointsRedirectionResponseEndpointsList = Array<EndpointRedirectionDTO>;
-export const EndpointsRedirectionResponseEndpointsList = /*@__PURE__*/ S.Array(
+const EndpointsRedirectionResponseEndpointsList = /*@__PURE__*/ S.Array(
   EndpointRedirectionDTO,
 ) as any as S.Schema<EndpointsRedirectionResponseEndpointsList>;
 
@@ -1689,7 +1689,7 @@ export interface EndpointsRedirectionResponse {
   /** Details of the individual endpoint redirections performed. */
   endpoints?: EndpointsRedirectionResponseEndpointsList;
 }
-export const EndpointsRedirectionResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointsRedirectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectionId: S.optional(S.String),
     status: S.optional(EndpointsRedirectionResponseStatus),
@@ -1709,11 +1709,11 @@ export const EndpointsRedirectionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Database protocol. Use 'stack' to get all of Redis' advanced capabilities. Only use 'redis' for Pay-as-you-go or Redis Flex subscriptions. Default: 'stack' for most subscriptions, 'redis' for Redis Flex subscriptions. */
 export type CreateFixedDatabaseRequestProtocol = "redis" | "memcached" | "stack";
-export const CreateFixedDatabaseRequestProtocol = S.String;
+const CreateFixedDatabaseRequestProtocol = S.String;
 
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type CreateFixedDatabaseRequestRespVersion = "resp2" | "resp3";
-export const CreateFixedDatabaseRequestRespVersion = S.String;
+const CreateFixedDatabaseRequestRespVersion = S.String;
 
 /** Optional. Type and rate of data persistence in persistent storage. Use GET /fixed/plans/{planId} to see if your plan supports data persistence. */
 export type CreateFixedDatabaseRequestDataPersistence =
@@ -1723,7 +1723,7 @@ export type CreateFixedDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const CreateFixedDatabaseRequestDataPersistence = S.String;
+const CreateFixedDatabaseRequestDataPersistence = S.String;
 
 /** Optional. Data eviction policy. */
 export type CreateFixedDatabaseRequestDataEvictionPolicy =
@@ -1737,36 +1737,36 @@ export type CreateFixedDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const CreateFixedDatabaseRequestDataEvictionPolicy = S.String;
+const CreateFixedDatabaseRequestDataEvictionPolicy = S.String;
 
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Use GET /fixed/plans/{planId} to see how many CIDR allow rules your plan supports. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type CreateFixedDatabaseRequestSourceIpsList = Array<string>;
-export const CreateFixedDatabaseRequestSourceIpsList =
+const CreateFixedDatabaseRequestSourceIpsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestSourceIpsList>;
 
 /** (Pay-as-you-go subscriptions only) Optional. Hashing policy Regex rules. Used only if 'enableDatabaseClustering' is set to 'true' and . */
 export type CreateFixedDatabaseRequestRegexRulesList = Array<string>;
-export const CreateFixedDatabaseRequestRegexRulesList =
+const CreateFixedDatabaseRequestRegexRulesList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestRegexRulesList>;
 
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type CreateFixedDatabaseRequestReplicaOfList = Array<string>;
-export const CreateFixedDatabaseRequestReplicaOfList =
+const CreateFixedDatabaseRequestReplicaOfList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestReplicaOfList>;
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. */
 export type CreateFixedDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-export const CreateFixedDatabaseRequestClientTlsCertificatesList =
+const CreateFixedDatabaseRequestClientTlsCertificatesList =
   CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<CreateFixedDatabaseRequestClientTlsCertificatesList>;
 
 /** Optional. Redis database alert details. */
 export type CreateFixedDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-export const CreateFixedDatabaseRequestAlertsList =
+const CreateFixedDatabaseRequestAlertsList =
   CreateDatabaseRequestAlertsList as any as S.Schema<CreateFixedDatabaseRequestAlertsList>;
 
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Can only be set if 'protocol' is 'redis'. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type CreateFixedDatabaseRequestModulesList = Array<DatabaseModuleSpec>;
-export const CreateFixedDatabaseRequestModulesList =
+const CreateFixedDatabaseRequestModulesList =
   CreateDatabaseRequestModulesList as any as S.Schema<CreateFixedDatabaseRequestModulesList>;
 
 export interface CreateFixedDatabaseRequest {
@@ -1820,7 +1820,7 @@ export interface CreateFixedDatabaseRequest {
   /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Can only be set if 'protocol' is 'redis'. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
   modules?: CreateFixedDatabaseRequestModulesList;
 }
-export const CreateFixedDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFixedDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     name: S.String,
@@ -1863,7 +1863,7 @@ export interface MemoryStoreShortMemoryConfig {
   /** Time-to-live of short-term memory entries, in seconds (1 second to 1 year). Required */
   ttlSeconds: number;
 }
-export const MemoryStoreShortMemoryConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreShortMemoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlSeconds: S.Number,
   }),
@@ -1873,7 +1873,7 @@ export const MemoryStoreShortMemoryConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** How the supplied secret is interpreted. Required */
 export type MemoryStoreModelCredentialsType = "apiKey";
-export const MemoryStoreModelCredentialsType = S.String;
+const MemoryStoreModelCredentialsType = S.String;
 
 /** Customer-supplied credential for a model provider. Write-only: never returned by any operation */
 export interface MemoryStoreModelCredentials {
@@ -1882,7 +1882,7 @@ export interface MemoryStoreModelCredentials {
   /** The provider API key. Required on create. On update an omitted or blank value keeps the current key, so only the key being rotated needs to be sent */
   apiKey?: string | Redacted.Redacted<string>;
 }
-export const MemoryStoreModelCredentials = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreModelCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: MemoryStoreModelCredentialsType,
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1899,7 +1899,7 @@ export interface MemoryStoreModelConfig {
   model?: string;
   credentials?: MemoryStoreModelCredentials;
 }
-export const MemoryStoreModelConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     model: S.optional(S.String),
@@ -1913,7 +1913,7 @@ export interface MemoryStoreLongTermMemoryCreateConfig {
   ttlSeconds: number;
   embedding?: MemoryStoreModelConfig;
 }
-export const MemoryStoreLongTermMemoryCreateConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreLongTermMemoryCreateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlSeconds: S.Number,
     embedding: S.optional(MemoryStoreModelConfig),
@@ -1924,11 +1924,11 @@ export const MemoryStoreLongTermMemoryCreateConfig = /*@__PURE__*/ S.suspend(() 
 
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type CreateMemoryStoreRequestExtractionStrategy = "INSTRUCT";
-export const CreateMemoryStoreRequestExtractionStrategy = S.String;
+const CreateMemoryStoreRequestExtractionStrategy = S.String;
 
 /** What triggers a summarization cycle. Defaults to event_count */
 export type MemoryStoreSummarizationConfigTriggerStrategy = "event_count";
-export const MemoryStoreSummarizationConfigTriggerStrategy = S.String;
+const MemoryStoreSummarizationConfigTriggerStrategy = S.String;
 
 /** Event-count trigger for session summarization. threshold must be greater than retainCount */
 export interface MemoryStoreSummarizationThresholdConfig {
@@ -1937,7 +1937,7 @@ export interface MemoryStoreSummarizationThresholdConfig {
   /** Number of most recent events kept unsummarized after each cycle (0-10000); everything older is condensed into the running summary. Must be less than threshold. Required */
   retainCount: number;
 }
-export const MemoryStoreSummarizationThresholdConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreSummarizationThresholdConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threshold: S.Number,
     retainCount: S.Number,
@@ -1954,7 +1954,7 @@ export interface MemoryStoreSummarizationConfig {
   triggerStrategy?: MemoryStoreSummarizationConfigTriggerStrategy | (string & {});
   eventCount?: MemoryStoreSummarizationThresholdConfig;
 }
-export const MemoryStoreSummarizationConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreSummarizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     triggerStrategy: S.optional(MemoryStoreSummarizationConfigTriggerStrategy),
@@ -1971,7 +1971,7 @@ export interface MemoryStoreSemanticExclusionConfig {
   /** Customer-authored instruction describing what must not be remembered (max 2000 characters). On update, omit to keep the stored prompt */
   prompt?: string;
 }
-export const MemoryStoreSemanticExclusionConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreSemanticExclusionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     prompt: S.optional(S.String),
@@ -1982,7 +1982,7 @@ export const MemoryStoreSemanticExclusionConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** What happens to a memory this detector matches. Defaults to redact. When several detectors disagree, drop wins */
 export type MemoryStoreDetectorSelectionAction = "redact" | "drop";
-export const MemoryStoreDetectorSelectionAction = S.String;
+const MemoryStoreDetectorSelectionAction = S.String;
 
 /** One selected platform built-in detector */
 export interface MemoryStoreDetectorSelection {
@@ -1993,7 +1993,7 @@ export interface MemoryStoreDetectorSelection {
   /** What happens to a memory this detector matches. Defaults to redact. When several detectors disagree, drop wins */
   action?: MemoryStoreDetectorSelectionAction | (string & {});
 }
-export const MemoryStoreDetectorSelection = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreDetectorSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
@@ -2005,7 +2005,7 @@ export const MemoryStoreDetectorSelection = /*@__PURE__*/ S.suspend(() =>
 
 /** Selected detectors. On update, omitting this list keeps the stored selections; a non-empty list replaces them wholesale; an explicitly empty list clears them */
 export type MemoryStoreBuiltInDetectorsConfigDetectorsList = Array<MemoryStoreDetectorSelection>;
-export const MemoryStoreBuiltInDetectorsConfigDetectorsList = /*@__PURE__*/ S.Array(
+const MemoryStoreBuiltInDetectorsConfigDetectorsList = /*@__PURE__*/ S.Array(
   MemoryStoreDetectorSelection,
 ) as any as S.Schema<MemoryStoreBuiltInDetectorsConfigDetectorsList>;
 
@@ -2016,7 +2016,7 @@ export interface MemoryStoreBuiltInDetectorsConfig {
   /** Selected detectors. On update, omitting this list keeps the stored selections; a non-empty list replaces them wholesale; an explicitly empty list clears them */
   detectors?: MemoryStoreBuiltInDetectorsConfigDetectorsList;
 }
-export const MemoryStoreBuiltInDetectorsConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreBuiltInDetectorsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     detectors: S.optional(MemoryStoreBuiltInDetectorsConfigDetectorsList),
@@ -2027,18 +2027,18 @@ export const MemoryStoreBuiltInDetectorsConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** What happens to a memory this detector matches. Defaults to redact */
 export type MemoryStoreCustomDetectorAction = "redact" | "drop";
-export const MemoryStoreCustomDetectorAction = S.String;
+const MemoryStoreCustomDetectorAction = S.String;
 
 /** Matching technique. Required */
 export type MemoryStoreMatcherSpecKind = "regex";
-export const MemoryStoreMatcherSpecKind = S.String;
+const MemoryStoreMatcherSpecKind = S.String;
 
 /** Regular expression matcher */
 export interface MemoryStoreRegexSpec {
   /** Pattern in RE2 syntax (1-512 characters). Lookaround and backreferences are not supported. Rejected if it does not compile or can match empty text. Required */
   pattern: string;
 }
-export const MemoryStoreRegexSpec = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreRegexSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pattern: S.String,
   }),
@@ -2050,7 +2050,7 @@ export interface MemoryStoreMatcherSpec {
   kind: MemoryStoreMatcherSpecKind | (string & {});
   regex?: MemoryStoreRegexSpec;
 }
-export const MemoryStoreMatcherSpec = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreMatcherSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: MemoryStoreMatcherSpecKind,
     regex: S.optional(MemoryStoreRegexSpec),
@@ -2067,7 +2067,7 @@ export interface MemoryStoreCustomDetector {
   action?: MemoryStoreCustomDetectorAction | (string & {});
   matcher: MemoryStoreMatcherSpec;
 }
-export const MemoryStoreCustomDetector = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreCustomDetector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     enabled: S.Boolean,
@@ -2080,7 +2080,7 @@ export const MemoryStoreCustomDetector = /*@__PURE__*/ S.suspend(() =>
 
 /** Authored detectors (at most 32). On update, omitting this list keeps the stored detectors; a non-empty list replaces them wholesale; an explicitly empty list clears them */
 export type MemoryStoreCustomDetectorsConfigDetectorsList = Array<MemoryStoreCustomDetector>;
-export const MemoryStoreCustomDetectorsConfigDetectorsList = /*@__PURE__*/ S.Array(
+const MemoryStoreCustomDetectorsConfigDetectorsList = /*@__PURE__*/ S.Array(
   MemoryStoreCustomDetector,
 ) as any as S.Schema<MemoryStoreCustomDetectorsConfigDetectorsList>;
 
@@ -2091,7 +2091,7 @@ export interface MemoryStoreCustomDetectorsConfig {
   /** Authored detectors (at most 32). On update, omitting this list keeps the stored detectors; a non-empty list replaces them wholesale; an explicitly empty list clears them */
   detectors?: MemoryStoreCustomDetectorsConfigDetectorsList;
 }
-export const MemoryStoreCustomDetectorsConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreCustomDetectorsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     detectors: S.optional(MemoryStoreCustomDetectorsConfigDetectorsList),
@@ -2108,7 +2108,7 @@ export interface MemoryStoreLongTermMemoryExclusions {
   builtInDetectors?: MemoryStoreBuiltInDetectorsConfig;
   customDetectors?: MemoryStoreCustomDetectorsConfig;
 }
-export const MemoryStoreLongTermMemoryExclusions = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreLongTermMemoryExclusions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     semantic: S.optional(MemoryStoreSemanticExclusionConfig),
@@ -2128,7 +2128,7 @@ export type MemoryStoreCustomFieldType =
   | "list[str]"
   | "list[float]"
   | "object";
-export const MemoryStoreCustomFieldType = S.String;
+const MemoryStoreCustomFieldType = S.String;
 
 /** A structured field of a custom memory type */
 export interface MemoryStoreCustomField {
@@ -2139,7 +2139,7 @@ export interface MemoryStoreCustomField {
   /** Field data type. Required */
   type: MemoryStoreCustomFieldType | (string & {});
 }
-export const MemoryStoreCustomField = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreCustomField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.String,
@@ -2149,7 +2149,7 @@ export const MemoryStoreCustomField = /*@__PURE__*/ S.suspend(() =>
 
 /** Structured fields of a record of this type. Optional; a type without fields accepts direct writes without structured attributes */
 export type MemoryStoreCustomMemoryTypeFieldsList = Array<MemoryStoreCustomField>;
-export const MemoryStoreCustomMemoryTypeFieldsList = /*@__PURE__*/ S.Array(
+const MemoryStoreCustomMemoryTypeFieldsList = /*@__PURE__*/ S.Array(
   MemoryStoreCustomField,
 ) as any as S.Schema<MemoryStoreCustomMemoryTypeFieldsList>;
 
@@ -2160,7 +2160,7 @@ export interface MemoryStoreCustomExtractionStrategy {
   /** Whether extraction for this type is active. Defaults to true */
   enabled?: boolean;
 }
-export const MemoryStoreCustomExtractionStrategy = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreCustomExtractionStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.String,
     enabled: S.optional(S.Boolean),
@@ -2179,7 +2179,7 @@ export interface MemoryStoreCustomMemoryType {
   fields?: MemoryStoreCustomMemoryTypeFieldsList;
   extractionStrategy?: MemoryStoreCustomExtractionStrategy;
 }
-export const MemoryStoreCustomMemoryType = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreCustomMemoryType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.String,
@@ -2192,7 +2192,7 @@ export const MemoryStoreCustomMemoryType = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Custom memory types to register on the store (at most 3 per store). When omitted only the built-in types are available */
 export type CreateMemoryStoreRequestCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-export const CreateMemoryStoreRequestCustomMemoryTypesList = /*@__PURE__*/ S.Array(
+const CreateMemoryStoreRequestCustomMemoryTypesList = /*@__PURE__*/ S.Array(
   MemoryStoreCustomMemoryType,
 ) as any as S.Schema<CreateMemoryStoreRequestCustomMemoryTypesList>;
 
@@ -2201,7 +2201,7 @@ export interface MemoryStoreExtractionCadenceConfig {
   /** Interval in seconds between extraction runs while a session is active (60-600). Required */
   activeIntervalSeconds: number;
 }
-export const MemoryStoreExtractionCadenceConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreExtractionCadenceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeIntervalSeconds: S.Number,
   }),
@@ -2225,7 +2225,7 @@ export interface CreateMemoryStoreRequest {
   customMemoryTypes?: CreateMemoryStoreRequestCustomMemoryTypesList;
   extractionCadence?: MemoryStoreExtractionCadenceConfig;
 }
-export const CreateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     databaseId: S.Number,
@@ -2241,7 +2241,7 @@ export const CreateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMemoryStoreRequest" }) as any as S.Schema<CreateMemoryStoreRequest>;
 
 export interface CreateMemoryStoreResponse {}
-export const CreateMemoryStoreResponse =
+const CreateMemoryStoreResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateMemoryStoreResponse>;
 
 export interface CreateMemoryStoreApiKeyRequest {
@@ -2250,7 +2250,7 @@ export interface CreateMemoryStoreApiKeyRequest {
   /** Name of the API key. */
   keyName: string;
 }
-export const CreateMemoryStoreApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMemoryStoreApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
     keyName: S.String,
@@ -2264,7 +2264,7 @@ export interface MemoryStoreApiKeyCreateResponse {
   /** Generated API key. Returned only once. */
   apiKey?: string | Redacted.Redacted<string>;
 }
-export const MemoryStoreApiKeyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreApiKeyCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -2280,7 +2280,7 @@ export type CreatePrivateLinkRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-export const CreatePrivateLinkRequestType = S.String;
+const CreatePrivateLinkRequestType = S.String;
 
 export interface CreatePrivateLinkRequest {
   /** Subscription ID. */
@@ -2294,7 +2294,7 @@ export interface CreatePrivateLinkRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-export const CreatePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     shareName: S.String,
@@ -2314,7 +2314,7 @@ export type CreatePrivateLinkPrincipalRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-export const CreatePrivateLinkPrincipalRequestType = S.String;
+const CreatePrivateLinkPrincipalRequestType = S.String;
 
 export interface CreatePrivateLinkPrincipalRequest {
   /** Subscription ID. */
@@ -2326,7 +2326,7 @@ export interface CreatePrivateLinkPrincipalRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-export const CreatePrivateLinkPrincipalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateLinkPrincipalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     principal: S.String,
@@ -2347,7 +2347,7 @@ export interface CreatePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const CreatePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -2360,7 +2360,7 @@ export const CreatePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreatePscServiceRequest" }) as any as S.Schema<CreatePscServiceRequest>;
 
 export interface CreatePscServiceResponse {}
-export const CreatePscServiceResponse =
+const CreatePscServiceResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreatePscServiceResponse>;
 
 export interface CreatePscServiceEndpointRequest {
@@ -2377,7 +2377,7 @@ export interface CreatePscServiceEndpointRequest {
   /** Prefix used to create PSC endpoints in the consumer application VPC. Endpoint names appear in Google Cloud as endpoint name prefix + endpoint number. */
   endpointConnectionName: string;
 }
-export const CreatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -2397,7 +2397,7 @@ export const CreatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePscServiceEndpointRequest>;
 
 export interface CreatePscServiceEndpointResponse {}
-export const CreatePscServiceEndpointResponse =
+const CreatePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreatePscServiceEndpointResponse>;
 
 export interface CreateRedisRuleRequest {
@@ -2406,7 +2406,7 @@ export interface CreateRedisRuleRequest {
   /** Redis ACL rule pattern. See [ACL syntax](https://redis.io/docs/latest/operate/rc/security/access-control/data-access-control/configure-acls/#define-permissions-with-acl-syntax) to learn how to define rules. */
   redisRule: string;
 }
-export const CreateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     redisRule: S.String,
@@ -2414,12 +2414,12 @@ export const CreateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRedisRuleRequest" }) as any as S.Schema<CreateRedisRuleRequest>;
 
 export interface CreateRedisRuleResponse {}
-export const CreateRedisRuleResponse =
+const CreateRedisRuleResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateRedisRuleResponse>;
 
 /** (Active-Active databases only) Optional. A list of regions where this rule applies for this role. */
 export type AclRoleDatabaseSpecRegionsList = Array<string>;
-export const AclRoleDatabaseSpecRegionsList =
+const AclRoleDatabaseSpecRegionsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<AclRoleDatabaseSpecRegionsList>;
 
 /** A list of databases where the specified rule applies for this role. */
@@ -2431,7 +2431,7 @@ export interface AclRoleDatabaseSpec {
   /** (Active-Active databases only) Optional. A list of regions where this rule applies for this role. */
   regions?: AclRoleDatabaseSpecRegionsList;
 }
-export const AclRoleDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
+const AclRoleDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number,
     databaseId: S.Number,
@@ -2441,7 +2441,7 @@ export const AclRoleDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of databases where the specified rule applies for this role. */
 export type AclRoleRedisRuleSpecDatabasesList = Array<AclRoleDatabaseSpec>;
-export const AclRoleRedisRuleSpecDatabasesList = /*@__PURE__*/ S.Array(
+const AclRoleRedisRuleSpecDatabasesList = /*@__PURE__*/ S.Array(
   AclRoleDatabaseSpec,
 ) as any as S.Schema<AclRoleRedisRuleSpecDatabasesList>;
 
@@ -2452,7 +2452,7 @@ export interface AclRoleRedisRuleSpec {
   /** A list of databases where the specified rule applies for this role. */
   databases: AclRoleRedisRuleSpecDatabasesList;
 }
-export const AclRoleRedisRuleSpec = /*@__PURE__*/ S.suspend(() =>
+const AclRoleRedisRuleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.String,
     databases: AclRoleRedisRuleSpecDatabasesList,
@@ -2461,7 +2461,7 @@ export const AclRoleRedisRuleSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Redis ACL rules to assign to this database access role. */
 export type CreateRoleRequestRedisRulesList = Array<AclRoleRedisRuleSpec>;
-export const CreateRoleRequestRedisRulesList = /*@__PURE__*/ S.Array(
+const CreateRoleRequestRedisRulesList = /*@__PURE__*/ S.Array(
   AclRoleRedisRuleSpec,
 ) as any as S.Schema<CreateRoleRequestRedisRulesList>;
 
@@ -2471,7 +2471,7 @@ export interface CreateRoleRequest {
   /** A list of Redis ACL rules to assign to this database access role. */
   redisRules: CreateRoleRequestRedisRulesList;
 }
-export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     redisRules: CreateRoleRequestRedisRulesList,
@@ -2479,26 +2479,25 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleRequest" }) as any as S.Schema<CreateRoleRequest>;
 
 export interface CreateRoleResponse {}
-export const CreateRoleResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateRoleResponse>;
+const CreateRoleResponse = AcceptTgwResourceShareResponse as any as S.Schema<CreateRoleResponse>;
 
 /** Optional. When 'single-region' or not set: Creates a single region subscription. When 'active-active': creates an Active-Active (multi-region) subscription. */
 export type CreateSubscriptionRequestDeploymentType = "single-region" | "active-active";
-export const CreateSubscriptionRequestDeploymentType = S.String;
+const CreateSubscriptionRequestDeploymentType = S.String;
 
 /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscriptionRequestPaymentMethod = "credit-card" | "marketplace";
-export const CreateSubscriptionRequestPaymentMethod = S.String;
+const CreateSubscriptionRequestPaymentMethod = S.String;
 
 /** Optional. Memory storage preference: either 'ram' or a combination of 'ram-and-flash' (also known as Auto Tiering). Default: 'ram' */
 export type CreateSubscriptionRequestMemoryStorage = "ram" | "ram-and-flash";
-export const CreateSubscriptionRequestMemoryStorage = S.String;
+const CreateSubscriptionRequestMemoryStorage = S.String;
 
 /** Optional. Persistent storage encryption secures data at rest for database persistence. By default, disk storage is encrypted by keys managed by the cloud provider. Use 'customer-managed-key' if you want to use self-managed persistent storage encryption keys. Default: 'cloud-provider-managed-key' */
 export type CreateSubscriptionRequestPersistentStorageEncryptionType =
   | "cloud-provider-managed-key"
   | "customer-managed-key";
-export const CreateSubscriptionRequestPersistentStorageEncryptionType = S.String;
+const CreateSubscriptionRequestPersistentStorageEncryptionType = S.String;
 
 /** Object representing a customer managed key (CMK), along with the region it is associated to. */
 export interface CustomerManagedKey {
@@ -2507,7 +2506,7 @@ export interface CustomerManagedKey {
   /** (Required for Active-Active subscriptions only) Region for the customer managed key as defined by the cloud provider. */
   region?: string;
 }
-export const CustomerManagedKey = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String,
     region: S.optional(S.String),
@@ -2516,7 +2515,7 @@ export const CustomerManagedKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The customer managed keys (CMK) to use for this subscription. If is active-active subscription, must set a key for each region. */
 export type CustomerManagedKeyPropertiesCustomerManagedKeysList = Array<CustomerManagedKey>;
-export const CustomerManagedKeyPropertiesCustomerManagedKeysList = /*@__PURE__*/ S.Array(
+const CustomerManagedKeyPropertiesCustomerManagedKeysList = /*@__PURE__*/ S.Array(
   CustomerManagedKey,
 ) as any as S.Schema<CustomerManagedKeyPropertiesCustomerManagedKeysList>;
 
@@ -2531,7 +2530,7 @@ export type CustomerManagedKeyPropertiesDeletionGracePeriod =
   | "8-hours"
   | "12-hours"
   | "24-hours";
-export const CustomerManagedKeyPropertiesDeletionGracePeriod = S.String;
+const CustomerManagedKeyPropertiesDeletionGracePeriod = S.String;
 
 /** Optional. Contains information about the keys used for each region. Can be used only with external cloud account */
 export interface CustomerManagedKeyProperties {
@@ -2540,7 +2539,7 @@ export interface CustomerManagedKeyProperties {
   /** Optional. The grace period for deleting the subscription if Redis cannot access the provided key. Required when applying customer managed keys for a new subscription. */
   deletionGracePeriod?: CustomerManagedKeyPropertiesDeletionGracePeriod | (string & {});
 }
-export const CustomerManagedKeyProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedKeys: CustomerManagedKeyPropertiesCustomerManagedKeysList,
     deletionGracePeriod: S.optional(CustomerManagedKeyPropertiesDeletionGracePeriod),
@@ -2551,16 +2550,16 @@ export const CustomerManagedKeyProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Cloud provider. Default: 'AWS' */
 export type SubscriptionSpecProvider = "AWS" | "GCP";
-export const SubscriptionSpecProvider = S.String;
+const SubscriptionSpecProvider = S.String;
 
 /** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If 'multipleAvailabilityZones' is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
 export type SubscriptionRegionSpecPreferredAvailabilityZonesList = Array<string>;
-export const SubscriptionRegionSpecPreferredAvailabilityZonesList =
+const SubscriptionRegionSpecPreferredAvailabilityZonesList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SubscriptionRegionSpecPreferredAvailabilityZonesList>;
 
 /** Optional. Enter a list of subnets identifiers that exists in the hosted AWS account. Subnet Identifier must exist within the hosting account. */
 export type SubscriptionRegionNetworkingSpecSubnetIdsList = Array<string>;
-export const SubscriptionRegionNetworkingSpecSubnetIdsList =
+const SubscriptionRegionNetworkingSpecSubnetIdsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SubscriptionRegionNetworkingSpecSubnetIdsList>;
 
 /** Optional. Cloud networking details, per region. Required if creating an Active-Active subscription. */
@@ -2574,7 +2573,7 @@ export interface SubscriptionRegionNetworkingSpec {
   /** Optional. Enter a security group identifier that exists in the hosted AWS account. Security group Identifier must be in a valid format (for example: 'sg-0125be68a4625884ad') and must exist within the hosting account. */
   securityGroupId?: string;
 }
-export const SubscriptionRegionNetworkingSpec = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionRegionNetworkingSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentCIDR: S.optional(S.String),
     vpcId: S.optional(S.String),
@@ -2595,7 +2594,7 @@ export interface SubscriptionRegionSpec {
   preferredAvailabilityZones?: SubscriptionRegionSpecPreferredAvailabilityZonesList;
   networking?: SubscriptionRegionNetworkingSpec;
 }
-export const SubscriptionRegionSpec = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionRegionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.String,
     multipleAvailabilityZones: S.optional(S.Boolean),
@@ -2606,7 +2605,7 @@ export const SubscriptionRegionSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** The cloud provider region or list of regions (Active-Active only) and networking details. */
 export type SubscriptionSpecRegionsList = Array<SubscriptionRegionSpec>;
-export const SubscriptionSpecRegionsList = /*@__PURE__*/ S.Array(
+const SubscriptionSpecRegionsList = /*@__PURE__*/ S.Array(
   SubscriptionRegionSpec,
 ) as any as S.Schema<SubscriptionSpecRegionsList>;
 
@@ -2615,7 +2614,7 @@ export interface ResourceTag {
   key?: string;
   value?: string;
 }
-export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
+const ResourceTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -2624,7 +2623,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. A list of resource tags to apply to the subscription. (max. 30 tags). */
 export type SubscriptionSpecResourceTagsList = Array<ResourceTag>;
-export const SubscriptionSpecResourceTagsList = /*@__PURE__*/ S.Array(
+const SubscriptionSpecResourceTagsList = /*@__PURE__*/ S.Array(
   ResourceTag,
 ) as any as S.Schema<SubscriptionSpecResourceTagsList>;
 
@@ -2639,7 +2638,7 @@ export interface SubscriptionSpec {
   /** Optional. A list of resource tags to apply to the subscription. (max. 30 tags). */
   resourceTags?: SubscriptionSpecResourceTagsList;
 }
-export const SubscriptionSpec = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(SubscriptionSpecProvider),
     cloudAccountId: S.optional(S.Number),
@@ -2650,13 +2649,13 @@ export const SubscriptionSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Cloud provider, region, and networking details. */
 export type CreateSubscriptionRequestCloudProvidersList = Array<SubscriptionSpec>;
-export const CreateSubscriptionRequestCloudProvidersList = /*@__PURE__*/ S.Array(
+const CreateSubscriptionRequestCloudProvidersList = /*@__PURE__*/ S.Array(
   SubscriptionSpec,
 ) as any as S.Schema<CreateSubscriptionRequestCloudProvidersList>;
 
 /** Optional. Database protocol. Only set to 'memcached' if you have a legacy application. Default: 'redis' */
 export type SubscriptionDatabaseSpecProtocol = "redis" | "memcached";
-export const SubscriptionDatabaseSpecProtocol = S.String;
+const SubscriptionDatabaseSpecProtocol = S.String;
 
 /** Optional. Type and rate of data persistence in persistent storage. Default: 'none' */
 export type SubscriptionDatabaseSpecDataPersistence =
@@ -2666,28 +2665,28 @@ export type SubscriptionDatabaseSpecDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const SubscriptionDatabaseSpecDataPersistence = S.String;
+const SubscriptionDatabaseSpecDataPersistence = S.String;
 
 /** Optional. Expected throughput per region for an Active-Active database. Default: 1000 read and write ops/sec for each region */
 export type SubscriptionDatabaseSpecLocalThroughputMeasurementList = Array<LocalThroughput>;
-export const SubscriptionDatabaseSpecLocalThroughputMeasurementList =
+const SubscriptionDatabaseSpecLocalThroughputMeasurementList =
   CreateDatabaseRequestLocalThroughputMeasurementList as any as S.Schema<SubscriptionDatabaseSpecLocalThroughputMeasurementList>;
 
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type SubscriptionDatabaseSpecModulesList = Array<DatabaseModuleSpec>;
-export const SubscriptionDatabaseSpecModulesList =
+const SubscriptionDatabaseSpecModulesList =
   CreateDatabaseRequestModulesList as any as S.Schema<SubscriptionDatabaseSpecModulesList>;
 
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type SubscriptionDatabaseSpecRespVersion = "resp2" | "resp3";
-export const SubscriptionDatabaseSpecRespVersion = S.String;
+const SubscriptionDatabaseSpecRespVersion = S.String;
 
 /** Optional. Database [Hashing policy](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#manage-the-hashing-policy). */
 export type SubscriptionDatabaseSpecShardingType =
   | "default-regex-rules"
   | "custom-regex-rules"
   | "redis-oss-hashing";
-export const SubscriptionDatabaseSpecShardingType = S.String;
+const SubscriptionDatabaseSpecShardingType = S.String;
 
 /** One or more database specification(s) to create in this subscription. */
 export interface SubscriptionDatabaseSpec {
@@ -2729,7 +2728,7 @@ export interface SubscriptionDatabaseSpec {
   /** Optional. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-export const SubscriptionDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     protocol: SubscriptionDatabaseSpecProtocol,
@@ -2755,7 +2754,7 @@ export const SubscriptionDatabaseSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more database specification(s) to create in this subscription. */
 export type CreateSubscriptionRequestDatabasesList = Array<SubscriptionDatabaseSpec>;
-export const CreateSubscriptionRequestDatabasesList = /*@__PURE__*/ S.Array(
+const CreateSubscriptionRequestDatabasesList = /*@__PURE__*/ S.Array(
   SubscriptionDatabaseSpec,
 ) as any as S.Schema<CreateSubscriptionRequestDatabasesList>;
 
@@ -2786,7 +2785,7 @@ export interface CreateSubscriptionRequest {
   /** Optional. When 'false', all databases on this subscription will reject any connection attempt to the public endpoint and any connection attempt to the private endpoint that does not come from an IP address in the private address space defined in [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918#section-3 ). You must use a [private connectivity method](https://redis.io/docs/latest/operate/rc/security/database-security/block-public-endpoints/#private-connectivity-methods ) to connect to a database with a blocked public endpoint. Default: 'true'. */
   publicEndpointAccess?: boolean;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dryRun: S.optional(S.Boolean),
@@ -2808,12 +2807,12 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSubscriptionRequest>;
 
 export interface CreateSubscriptionResponse {}
-export const CreateSubscriptionResponse =
+const CreateSubscriptionResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateSubscriptionResponse>;
 
 /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
-export const CreateSubscription1RequestPaymentMethod = S.String;
+const CreateSubscription1RequestPaymentMethod = S.String;
 
 export interface CreateSubscription1Request {
   /** New Essentials subscription name. */
@@ -2825,7 +2824,7 @@ export interface CreateSubscription1Request {
   /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required for all other account types. */
   paymentMethodId?: number;
 }
-export const CreateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     planId: S.Number,
@@ -2837,7 +2836,7 @@ export const CreateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSubscription1Request>;
 
 export interface CreateSubscription1Response {}
-export const CreateSubscription1Response =
+const CreateSubscription1Response =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateSubscription1Response>;
 
 export interface CreateTagRequest {
@@ -2850,7 +2849,7 @@ export interface CreateTagRequest {
   /** Database tag value. */
   value: string;
 }
-export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -2866,11 +2865,8 @@ export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTagRequest" }) as any as S.Schema<CreateTagRequest>;
 
 export type CloudTagLinksItemMap = { [key: string]: string | undefined };
-export const CloudTagLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<CloudTagLinksItemMap>;
-
 export type CloudTagLinksList = Array<CloudTagLinksItemMap>;
-export const CloudTagLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagLinksList>;
+const CloudTagLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagLinksList>;
 
 /** Database tag */
 export interface CloudTag {
@@ -2880,7 +2876,7 @@ export interface CloudTag {
   createdAt?: string;
   updatedAt?: string;
 }
-export const CloudTag = /*@__PURE__*/ S.suspend(() =>
+const CloudTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(CloudTagLinksList),
     key: S.optional(S.String),
@@ -2900,7 +2896,7 @@ export interface CreateTag1Request {
   /** Database tag value. */
   value: string;
 }
-export const CreateTag1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateTag1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -2921,7 +2917,7 @@ export interface CreateTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-export const CreateTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     TgwId: S.Number.pipe(T.Label()),
@@ -2937,7 +2933,7 @@ export const CreateTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTgwAttachmentRequest>;
 
 export interface CreateTgwAttachmentResponse {}
-export const CreateTgwAttachmentResponse =
+const CreateTgwAttachmentResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateTgwAttachmentResponse>;
 
 export interface CreateUserRequest {
@@ -2948,7 +2944,7 @@ export interface CreateUserRequest {
   /** The database password for this user. */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     role: S.String,
@@ -2957,15 +2953,14 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export interface CreateUserResponse {}
-export const CreateUserResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateUserResponse>;
+const CreateUserResponse = AcceptTgwResourceShareResponse as any as S.Schema<CreateUserResponse>;
 
 export interface CreateVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
   provider?: string;
 }
-export const CreateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     provider: S.optional(S.String),
@@ -2975,14 +2970,14 @@ export const CreateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateVpcPeeringRequest" }) as any as S.Schema<CreateVpcPeeringRequest>;
 
 export interface CreateVpcPeeringResponse {}
-export const CreateVpcPeeringResponse =
+const CreateVpcPeeringResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<CreateVpcPeeringResponse>;
 
 export interface DeleteAclRoleRequest {
   /** Database access role ID. */
   aclRoleId: number;
 }
-export const DeleteAclRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAclRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclRoleId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/roles/{aclRoleId}", code: 200 })),
@@ -2994,7 +2989,7 @@ export interface DeleteActiveActivePrivateLinkRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const DeleteActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3017,7 +3012,7 @@ export interface DeleteActiveActivePrivateLinkPrincipalsRequest {
   /** An AWS account ID or ARN to remove from the private link */
   principal: string;
 }
-export const DeleteActiveActivePrivateLinkPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActivePrivateLinkPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3039,7 +3034,7 @@ export interface DeleteActiveActivePscServiceRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const DeleteActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3055,7 +3050,7 @@ export const DeleteActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteActiveActivePscServiceRequest>;
 
 export interface DeleteActiveActivePscServiceResponse {}
-export const DeleteActiveActivePscServiceResponse =
+const DeleteActiveActivePscServiceResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActivePscServiceResponse>;
 
 export interface DeleteActiveActivePscServiceEndpointRequest {
@@ -3068,7 +3063,7 @@ export interface DeleteActiveActivePscServiceEndpointRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const DeleteActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3086,7 +3081,7 @@ export const DeleteActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DeleteActiveActivePscServiceEndpointRequest>;
 
 export interface DeleteActiveActivePscServiceEndpointResponse {}
-export const DeleteActiveActivePscServiceEndpointResponse =
+const DeleteActiveActivePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActivePscServiceEndpointResponse>;
 
 export interface DeleteActiveActiveTgwAttachmentRequest {
@@ -3097,7 +3092,7 @@ export interface DeleteActiveActiveTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-export const DeleteActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3114,7 +3109,7 @@ export const DeleteActiveActiveTgwAttachmentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteActiveActiveTgwAttachmentRequest>;
 
 export interface DeleteActiveActiveTgwAttachmentResponse {}
-export const DeleteActiveActiveTgwAttachmentResponse =
+const DeleteActiveActiveTgwAttachmentResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActiveTgwAttachmentResponse>;
 
 export interface DeleteActiveActiveVpcPeeringRequest {
@@ -3123,7 +3118,7 @@ export interface DeleteActiveActiveVpcPeeringRequest {
   /** VPC Peering ID. */
   peeringId: number;
 }
-export const DeleteActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     peeringId: S.Number.pipe(T.Label()),
@@ -3142,7 +3137,7 @@ export interface DeleteCloudAccountRequest {
   /** Cloud Account Id */
   cloudAccountId: number;
 }
-export const DeleteCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudAccountId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 })),
@@ -3156,7 +3151,7 @@ export interface DeleteDatabaseByIdRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const DeleteDatabaseByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatabaseByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3173,7 +3168,7 @@ export const DeleteDatabaseByIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type DeleteFixedDatabaseByIDRequestRespVersion = "resp2" | "resp3";
-export const DeleteFixedDatabaseByIDRequestRespVersion = S.String;
+const DeleteFixedDatabaseByIDRequestRespVersion = S.String;
 
 /** Optional. Type and rate of data persistence in persistent storage. Use GET /fixed/plans/{planId} to see if your plan supports data persistence. */
 export type DeleteFixedDatabaseByIDRequestDataPersistence =
@@ -3183,7 +3178,7 @@ export type DeleteFixedDatabaseByIDRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const DeleteFixedDatabaseByIDRequestDataPersistence = S.String;
+const DeleteFixedDatabaseByIDRequestDataPersistence = S.String;
 
 /** Optional. Turns database replication on or off. */
 export type DeleteFixedDatabaseByIDRequestDataEvictionPolicy =
@@ -3197,32 +3192,32 @@ export type DeleteFixedDatabaseByIDRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const DeleteFixedDatabaseByIDRequestDataEvictionPolicy = S.String;
+const DeleteFixedDatabaseByIDRequestDataEvictionPolicy = S.String;
 
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type DeleteFixedDatabaseByIDRequestSourceIpsList = Array<string>;
-export const DeleteFixedDatabaseByIDRequestSourceIpsList =
+const DeleteFixedDatabaseByIDRequestSourceIpsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestSourceIpsList>;
 
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379', 'redis://endpoint2:6380'] ). */
 export type DeleteFixedDatabaseByIDRequestReplicaOfList = Array<string>;
-export const DeleteFixedDatabaseByIDRequestReplicaOfList =
+const DeleteFixedDatabaseByIDRequestReplicaOfList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestReplicaOfList>;
 
 /** (Pay-as-you-go subscriptions only) Optional. Hashing policy Regex rules. Used only if 'shardingType' is 'custom-regex-rules'. */
 export type DeleteFixedDatabaseByIDRequestRegexRulesList = Array<string>;
-export const DeleteFixedDatabaseByIDRequestRegexRulesList =
+const DeleteFixedDatabaseByIDRequestRegexRulesList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestRegexRulesList>;
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type DeleteFixedDatabaseByIDRequestClientTlsCertificatesList =
   Array<DatabaseCertificateSpec>;
-export const DeleteFixedDatabaseByIDRequestClientTlsCertificatesList =
+const DeleteFixedDatabaseByIDRequestClientTlsCertificatesList =
   CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<DeleteFixedDatabaseByIDRequestClientTlsCertificatesList>;
 
 /** Optional. Changes Redis database alert details. */
 export type DeleteFixedDatabaseByIDRequestAlertsList = Array<DatabaseAlertSpec>;
-export const DeleteFixedDatabaseByIDRequestAlertsList =
+const DeleteFixedDatabaseByIDRequestAlertsList =
   CreateDatabaseRequestAlertsList as any as S.Schema<DeleteFixedDatabaseByIDRequestAlertsList>;
 
 export interface DeleteFixedDatabaseByIDRequest {
@@ -3274,7 +3269,7 @@ export interface DeleteFixedDatabaseByIDRequest {
   /** Optional. Changes Redis database alert details. */
   alerts?: DeleteFixedDatabaseByIDRequestAlertsList;
 }
-export const DeleteFixedDatabaseByIDRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFixedDatabaseByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3317,7 +3312,7 @@ export interface DeleteFixedDatabaseByID1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const DeleteFixedDatabaseByID1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteFixedDatabaseByID1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3338,7 +3333,7 @@ export interface DeleteMemoryStoreRequest {
   /** Whether to flush all data from the database before deleting the memory store */
   flush?: boolean;
 }
-export const DeleteMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
     flush: S.optional(S.Boolean.pipe(T.Query())),
@@ -3346,7 +3341,7 @@ export const DeleteMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMemoryStoreRequest" }) as any as S.Schema<DeleteMemoryStoreRequest>;
 
 export interface DeleteMemoryStoreResponse {}
-export const DeleteMemoryStoreResponse =
+const DeleteMemoryStoreResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<DeleteMemoryStoreResponse>;
 
 export interface DeleteMemoryStoreApiKeyRequest {
@@ -3355,7 +3350,7 @@ export interface DeleteMemoryStoreApiKeyRequest {
   /** Memory store API key ID. */
   apiKeyId: string;
 }
-export const DeleteMemoryStoreApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMemoryStoreApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
     apiKeyId: S.String.pipe(T.Label()),
@@ -3367,15 +3362,15 @@ export const DeleteMemoryStoreApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMemoryStoreApiKeyRequest>;
 
 export interface DeleteMemoryStoreApiKeyResponse {}
-export const DeleteMemoryStoreApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteMemoryStoreApiKeyResponse" },
-) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>;
+const DeleteMemoryStoreApiKeyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteMemoryStoreApiKeyResponse",
+}) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>;
 
 export interface DeletePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const DeletePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -3389,7 +3384,7 @@ export interface DeletePrivateLinkPrincipalsRequest {
   /** An AWS account ID or ARN to remove from the private link */
   principal: string;
 }
-export const DeletePrivateLinkPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateLinkPrincipalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     principal: S.String,
@@ -3408,7 +3403,7 @@ export interface DeletePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const DeletePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -3421,7 +3416,7 @@ export const DeletePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePscServiceRequest" }) as any as S.Schema<DeletePscServiceRequest>;
 
 export interface DeletePscServiceResponse {}
-export const DeletePscServiceResponse =
+const DeletePscServiceResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<DeletePscServiceResponse>;
 
 export interface DeletePscServiceEndpointRequest {
@@ -3432,7 +3427,7 @@ export interface DeletePscServiceEndpointRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const DeletePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -3449,21 +3444,21 @@ export const DeletePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePscServiceEndpointRequest>;
 
 export interface DeletePscServiceEndpointResponse {}
-export const DeletePscServiceEndpointResponse =
+const DeletePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeletePscServiceEndpointResponse>;
 
 export interface DeleteRedisRuleRequest {
   /** Redis ACL rule ID. */
   aclRedisRuleId: number;
 }
-export const DeleteRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclRedisRuleId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/redisRules/{aclRedisRuleId}", code: 200 })),
 ).annotate({ identifier: "DeleteRedisRuleRequest" }) as any as S.Schema<DeleteRedisRuleRequest>;
 
 export interface DeleteRedisRuleResponse {}
-export const DeleteRedisRuleResponse =
+const DeleteRedisRuleResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<DeleteRedisRuleResponse>;
 
 /** The names of the regions to delete. */
@@ -3471,7 +3466,7 @@ export interface ActiveActiveRegionToDelete {
   /** Name of the cloud provider region to delete. */
   region?: string;
 }
-export const ActiveActiveRegionToDelete = /*@__PURE__*/ S.suspend(() =>
+const ActiveActiveRegionToDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
   }),
@@ -3482,7 +3477,7 @@ export const ActiveActiveRegionToDelete = /*@__PURE__*/ S.suspend(() =>
 /** The names of the regions to delete. */
 export type DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList =
   Array<ActiveActiveRegionToDelete>;
-export const DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList = /*@__PURE__*/ S.Array(
+const DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList = /*@__PURE__*/ S.Array(
   ActiveActiveRegionToDelete,
 ) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList>;
 
@@ -3494,7 +3489,7 @@ export interface DeleteRegionsFromActiveActiveSubscriptionRequest {
   /** Optional. When 'false': Creates a deployment plan and deploys it, deleting any resources required by the plan. When 'true': creates a read-only deployment plan and does not delete or modify any resources. Default: 'false' */
   dryRun?: boolean;
 }
-export const DeleteRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regions: S.optional(DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList),
@@ -3510,7 +3505,7 @@ export interface DeleteSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
@@ -3522,7 +3517,7 @@ export interface DeleteSubscriptionById1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const DeleteSubscriptionById1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionById1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/fixed/subscriptions/{subscriptionId}", code: 200 })),
@@ -3538,7 +3533,7 @@ export interface DeleteTagRequest {
   /** Tag Key. */
   tagKey: string;
 }
-export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3553,7 +3548,7 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export type DeleteTagResponse = unknown;
-export const DeleteTagResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteTagResponse" }) as any as S.Schema<DeleteTagResponse>;
 
@@ -3565,7 +3560,7 @@ export interface DeleteTag1Request {
   /** Tag Key. */
   tagKey: string;
 }
-export const DeleteTag1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteTag1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3580,7 +3575,7 @@ export const DeleteTag1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTag1Request" }) as any as S.Schema<DeleteTag1Request>;
 
 export type DeleteTag1Response = unknown;
-export const DeleteTag1Response = DeleteTagResponse as any as S.Schema<DeleteTag1Response>;
+const DeleteTag1Response = DeleteTagResponse as any as S.Schema<DeleteTag1Response>;
 
 export interface DeleteTgwAttachmentRequest {
   /** Subscription ID. */
@@ -3588,7 +3583,7 @@ export interface DeleteTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-export const DeleteTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     TgwId: S.Number.pipe(T.Label()),
@@ -3604,14 +3599,14 @@ export const DeleteTgwAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTgwAttachmentRequest>;
 
 export interface DeleteTgwAttachmentResponse {}
-export const DeleteTgwAttachmentResponse =
+const DeleteTgwAttachmentResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<DeleteTgwAttachmentResponse>;
 
 export interface DeleteUserRequest {
   /** User ID. */
   userId: number;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/users/{userId}", code: 200 })),
@@ -3621,7 +3616,7 @@ export interface DeleteUserRequest2 {
   /** Access control user ID. */
   aclUserId: number;
 }
-export const DeleteUserRequest2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclUserId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
@@ -3633,7 +3628,7 @@ export interface DeleteVpcPeeringRequest {
   /** VPC Peering ID. */
   peeringId: number;
 }
-export const DeleteVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     peeringId: S.Number.pipe(T.Label()),
@@ -3647,7 +3642,7 @@ export const DeleteVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVpcPeeringRequest" }) as any as S.Schema<DeleteVpcPeeringRequest>;
 
 export interface DeleteVpcPeeringResponse {}
-export const DeleteVpcPeeringResponse =
+const DeleteVpcPeeringResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<DeleteVpcPeeringResponse>;
 
 /** Private link connection information for disassociation request */
@@ -3661,7 +3656,7 @@ export interface PrivateLinkConnectionDisassociate {
   /** Principal ID that owns the connection, e.g. AWS account ID */
   principalId: string;
 }
-export const PrivateLinkConnectionDisassociate = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConnectionDisassociate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.String,
     connectionId: S.optional(S.String),
@@ -3675,10 +3670,9 @@ export const PrivateLinkConnectionDisassociate = /*@__PURE__*/ S.suspend(() =>
 /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
 export type DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList =
   Array<PrivateLinkConnectionDisassociate>;
-export const DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList =
-  /*@__PURE__*/ S.Array(
-    PrivateLinkConnectionDisassociate,
-  ) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList>;
+const DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList = /*@__PURE__*/ S.Array(
+  PrivateLinkConnectionDisassociate,
+) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList>;
 
 export interface DisassociateActiveActivePrivateLinkConnectionsRequest {
   /** Subscription ID. */
@@ -3688,7 +3682,7 @@ export interface DisassociateActiveActivePrivateLinkConnectionsRequest {
   /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
   connections: DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList;
 }
-export const DisassociateActiveActivePrivateLinkConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateActiveActivePrivateLinkConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3705,13 +3699,13 @@ export const DisassociateActiveActivePrivateLinkConnectionsRequest = /*@__PURE__
 }) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequest>;
 
 export interface DisassociateActiveActivePrivateLinkConnectionsResponse {}
-export const DisassociateActiveActivePrivateLinkConnectionsResponse =
+const DisassociateActiveActivePrivateLinkConnectionsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsResponse>;
 
 /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
 export type DisassociatePrivateLinkConnectionsRequestConnectionsList =
   Array<PrivateLinkConnectionDisassociate>;
-export const DisassociatePrivateLinkConnectionsRequestConnectionsList = /*@__PURE__*/ S.Array(
+const DisassociatePrivateLinkConnectionsRequestConnectionsList = /*@__PURE__*/ S.Array(
   PrivateLinkConnectionDisassociate,
 ) as any as S.Schema<DisassociatePrivateLinkConnectionsRequestConnectionsList>;
 
@@ -3721,7 +3715,7 @@ export interface DisassociatePrivateLinkConnectionsRequest {
   /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
   connections: DisassociatePrivateLinkConnectionsRequestConnectionsList;
 }
-export const DisassociatePrivateLinkConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociatePrivateLinkConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     connections: DisassociatePrivateLinkConnectionsRequestConnectionsList,
@@ -3737,14 +3731,14 @@ export const DisassociatePrivateLinkConnectionsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DisassociatePrivateLinkConnectionsRequest>;
 
 export interface DisassociatePrivateLinkConnectionsResponse {}
-export const DisassociatePrivateLinkConnectionsResponse =
+const DisassociatePrivateLinkConnectionsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DisassociatePrivateLinkConnectionsResponse>;
 
 export interface EmptyMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-export const EmptyMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const EmptyMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3753,7 +3747,7 @@ export const EmptyMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmptyMemoryStoreRequest" }) as any as S.Schema<EmptyMemoryStoreRequest>;
 
 export interface EmptyMemoryStoreResponse {}
-export const EmptyMemoryStoreResponse =
+const EmptyMemoryStoreResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<EmptyMemoryStoreResponse>;
 
 export interface FlushCrdbRequest {
@@ -3762,7 +3756,7 @@ export interface FlushCrdbRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const FlushCrdbRequest = /*@__PURE__*/ S.suspend(() =>
+const FlushCrdbRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -3779,29 +3773,26 @@ export interface FlushMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-export const FlushMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const FlushMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/memory-stores/{storeId}/entries", code: 200 })),
 ).annotate({ identifier: "FlushMemoryStoreRequest" }) as any as S.Schema<FlushMemoryStoreRequest>;
 
 export interface FlushMemoryStoreResponse {}
-export const FlushMemoryStoreResponse =
+const FlushMemoryStoreResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<FlushMemoryStoreResponse>;
 
 export interface GetAccountPaymentMethodsRequest {}
-export const GetAccountPaymentMethodsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPaymentMethodsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/payment-methods", code: 200 })),
 ).annotate({
   identifier: "GetAccountPaymentMethodsRequest",
 }) as any as S.Schema<GetAccountPaymentMethodsRequest>;
 
 export type PaymentMethodsLinksItemMap = { [key: string]: string | undefined };
-export const PaymentMethodsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<PaymentMethodsLinksItemMap>;
-
 export type PaymentMethodsLinksList = Array<PaymentMethodsLinksItemMap>;
-export const PaymentMethodsLinksList =
+const PaymentMethodsLinksList =
   TaskStateUpdateLinksList as any as S.Schema<PaymentMethodsLinksList>;
 
 /** RedisLabs Account payment methods */
@@ -3809,7 +3800,7 @@ export interface PaymentMethods {
   accountId?: number;
   links?: PaymentMethodsLinksList;
 }
-export const PaymentMethods = /*@__PURE__*/ S.suspend(() =>
+const PaymentMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.Number),
     links: S.optional(PaymentMethodsLinksList),
@@ -3826,7 +3817,7 @@ export interface GetAccountSessionLogsRequest {
   /** Filter session logs with time <= endTime (UTC) */
   endTime?: string;
 }
-export const GetAccountSessionLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSessionLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3848,7 +3839,7 @@ export interface AccountSessionLogEntry {
   type?: string;
   action?: string;
 }
-export const AccountSessionLogEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountSessionLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     time: S.optional(S.String),
@@ -3862,23 +3853,20 @@ export const AccountSessionLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountSessionLogEntry" }) as any as S.Schema<AccountSessionLogEntry>;
 
 export type AccountSessionLogEntriesEntriesList = Array<AccountSessionLogEntry>;
-export const AccountSessionLogEntriesEntriesList = /*@__PURE__*/ S.Array(
+const AccountSessionLogEntriesEntriesList = /*@__PURE__*/ S.Array(
   AccountSessionLogEntry,
 ) as any as S.Schema<AccountSessionLogEntriesEntriesList>;
 
 export type AccountSessionLogEntriesLinksItemMap = { [key: string]: string | undefined };
-export const AccountSessionLogEntriesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountSessionLogEntriesLinksItemMap>;
-
 export type AccountSessionLogEntriesLinksList = Array<AccountSessionLogEntriesLinksItemMap>;
-export const AccountSessionLogEntriesLinksList =
+const AccountSessionLogEntriesLinksList =
   TaskStateUpdateLinksList as any as S.Schema<AccountSessionLogEntriesLinksList>;
 
 export interface AccountSessionLogEntries {
   entries?: AccountSessionLogEntriesEntriesList;
   links?: AccountSessionLogEntriesLinksList;
 }
-export const AccountSessionLogEntries = /*@__PURE__*/ S.suspend(() =>
+const AccountSessionLogEntries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountSessionLogEntriesEntriesList),
     links: S.optional(AccountSessionLogEntriesLinksList),
@@ -3897,7 +3885,7 @@ export interface GetAccountSystemLogsRequest {
   /** Filter logs by resourceId */
   resourceId?: number;
 }
-export const GetAccountSystemLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSystemLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3920,7 +3908,7 @@ export interface AccountSystemLogEntry {
   type?: string;
   description?: string;
 }
-export const AccountSystemLogEntry = /*@__PURE__*/ S.suspend(() =>
+const AccountSystemLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     time: S.optional(S.String),
@@ -3934,23 +3922,20 @@ export const AccountSystemLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountSystemLogEntry" }) as any as S.Schema<AccountSystemLogEntry>;
 
 export type AccountSystemLogEntriesEntriesList = Array<AccountSystemLogEntry>;
-export const AccountSystemLogEntriesEntriesList = /*@__PURE__*/ S.Array(
+const AccountSystemLogEntriesEntriesList = /*@__PURE__*/ S.Array(
   AccountSystemLogEntry,
 ) as any as S.Schema<AccountSystemLogEntriesEntriesList>;
 
 export type AccountSystemLogEntriesLinksItemMap = { [key: string]: string | undefined };
-export const AccountSystemLogEntriesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountSystemLogEntriesLinksItemMap>;
-
 export type AccountSystemLogEntriesLinksList = Array<AccountSystemLogEntriesLinksItemMap>;
-export const AccountSystemLogEntriesLinksList =
+const AccountSystemLogEntriesLinksList =
   TaskStateUpdateLinksList as any as S.Schema<AccountSystemLogEntriesLinksList>;
 
 export interface AccountSystemLogEntries {
   entries?: AccountSystemLogEntriesEntriesList;
   links?: AccountSystemLogEntriesLinksList;
 }
-export const AccountSystemLogEntries = /*@__PURE__*/ S.suspend(() =>
+const AccountSystemLogEntries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(AccountSystemLogEntriesEntriesList),
     links: S.optional(AccountSystemLogEntriesLinksList),
@@ -3963,7 +3948,7 @@ export interface GetActiveActivePrivateLinkRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const GetActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -3979,7 +3964,7 @@ export const GetActiveActivePrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActiveActivePrivateLinkRequest>;
 
 export interface GetActiveActivePrivateLinkResponse {}
-export const GetActiveActivePrivateLinkResponse =
+const GetActiveActivePrivateLinkResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePrivateLinkResponse>;
 
 export interface GetActiveActivePrivateLinkEndpointScriptRequest {
@@ -3988,7 +3973,7 @@ export interface GetActiveActivePrivateLinkEndpointScriptRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const GetActiveActivePrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivePrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4004,7 +3989,7 @@ export const GetActiveActivePrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptRequest>;
 
 export interface GetActiveActivePrivateLinkEndpointScriptResponse {}
-export const GetActiveActivePrivateLinkEndpointScriptResponse =
+const GetActiveActivePrivateLinkEndpointScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptResponse>;
 
 export interface GetActiveActivePscServiceRequest {
@@ -4013,7 +3998,7 @@ export interface GetActiveActivePscServiceRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const GetActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4029,7 +4014,7 @@ export const GetActiveActivePscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActiveActivePscServiceRequest>;
 
 export interface GetActiveActivePscServiceResponse {}
-export const GetActiveActivePscServiceResponse =
+const GetActiveActivePscServiceResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePscServiceResponse>;
 
 export interface GetActiveActivePscServiceEndpointsRequest {
@@ -4040,7 +4025,7 @@ export interface GetActiveActivePscServiceEndpointsRequest {
   /** Private Service Connect service ID. */
   pscServiceId: number;
 }
-export const GetActiveActivePscServiceEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivePscServiceEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4057,7 +4042,7 @@ export const GetActiveActivePscServiceEndpointsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetActiveActivePscServiceEndpointsRequest>;
 
 export interface GetActiveActivePscServiceEndpointsResponse {}
-export const GetActiveActivePscServiceEndpointsResponse =
+const GetActiveActivePscServiceEndpointsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePscServiceEndpointsResponse>;
 
 export interface GetActiveActiveTgwsRequest {
@@ -4066,7 +4051,7 @@ export interface GetActiveActiveTgwsRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const GetActiveActiveTgwsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActiveTgwsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4087,7 +4072,7 @@ export interface GetActiveActiveTgwSharedInvitationsRequest {
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-export const GetActiveActiveTgwSharedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActiveTgwSharedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4106,7 +4091,7 @@ export interface GetActiveActiveVpcPeeringsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetActiveActiveVpcPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActiveVpcPeeringsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -4130,7 +4115,7 @@ export interface GetActiveActivPscServiceEndpointCreationScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const GetActiveActivPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4148,7 +4133,7 @@ export const GetActiveActivPscServiceEndpointCreationScriptRequest = /*@__PURE__
 }) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptRequest>;
 
 export interface GetActiveActivPscServiceEndpointCreationScriptResponse {}
-export const GetActiveActivPscServiceEndpointCreationScriptResponse =
+const GetActiveActivPscServiceEndpointCreationScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptResponse>;
 
 export interface GetActiveActivPscServiceEndpointDeletionScriptRequest {
@@ -4161,7 +4146,7 @@ export interface GetActiveActivPscServiceEndpointDeletionScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const GetActiveActivPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActiveActivPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -4179,11 +4164,11 @@ export const GetActiveActivPscServiceEndpointDeletionScriptRequest = /*@__PURE__
 }) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptRequest>;
 
 export interface GetActiveActivPscServiceEndpointDeletionScriptResponse {}
-export const GetActiveActivPscServiceEndpointDeletionScriptResponse =
+const GetActiveActivPscServiceEndpointDeletionScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptResponse>;
 
 export type GetAllFixedSubscriptionsPlansRequestProvider = "AWS" | "GCP" | "AZURE";
-export const GetAllFixedSubscriptionsPlansRequestProvider = S.String;
+const GetAllFixedSubscriptionsPlansRequestProvider = S.String;
 
 export interface GetAllFixedSubscriptionsPlansRequest {
   /** Returns plans supported by the specified Cloud Provider. */
@@ -4191,7 +4176,7 @@ export interface GetAllFixedSubscriptionsPlansRequest {
   /** Returns Redis Flex plans. */
   redisFlex?: boolean;
 }
-export const GetAllFixedSubscriptionsPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllFixedSubscriptionsPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(GetAllFixedSubscriptionsPlansRequestProvider.pipe(T.Query())),
     redisFlex: S.optional(S.Boolean.pipe(T.Query())),
@@ -4201,98 +4186,76 @@ export const GetAllFixedSubscriptionsPlansRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetAllFixedSubscriptionsPlansRequest>;
 
 export type FixedSubscriptionsPlansLinksItemMap = { [key: string]: string | undefined };
-export const FixedSubscriptionsPlansLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<FixedSubscriptionsPlansLinksItemMap>;
-
 export type FixedSubscriptionsPlansLinksList = Array<FixedSubscriptionsPlansLinksItemMap>;
-export const FixedSubscriptionsPlansLinksList =
+const FixedSubscriptionsPlansLinksList =
   TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionsPlansLinksList>;
 
 /** Redis list of Essentials subscriptions plans */
 export interface FixedSubscriptionsPlans {
   links?: FixedSubscriptionsPlansLinksList;
 }
-export const FixedSubscriptionsPlans = /*@__PURE__*/ S.suspend(() =>
+const FixedSubscriptionsPlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(FixedSubscriptionsPlansLinksList),
   }),
 ).annotate({ identifier: "FixedSubscriptionsPlans" }) as any as S.Schema<FixedSubscriptionsPlans>;
 
 export interface GetAllRedisRulesRequest {}
-export const GetAllRedisRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllRedisRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/redisRules", code: 200 })),
 ).annotate({ identifier: "GetAllRedisRulesRequest" }) as any as S.Schema<GetAllRedisRulesRequest>;
 
 export type AccountACLRedisRulesLinksItemMap = { [key: string]: string | undefined };
-export const AccountACLRedisRulesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountACLRedisRulesLinksItemMap>;
-
 export type AccountACLRedisRulesLinksList = Array<AccountACLRedisRulesLinksItemMap>;
-export const AccountACLRedisRulesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountACLRedisRulesLinksList>;
-
 /** Redis list of ACL redis rules in current account */
 export interface AccountACLRedisRules {
   accountId?: number;
   links?: AccountACLRedisRulesLinksList;
 }
-export const AccountACLRedisRules = PaymentMethods as any as S.Schema<AccountACLRedisRules>;
+const AccountACLRedisRules = PaymentMethods as any as S.Schema<AccountACLRedisRules>;
 
 export interface GetAllSubscriptionsRequest {}
-export const GetAllSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions", code: 200 })),
 ).annotate({
   identifier: "GetAllSubscriptionsRequest",
 }) as any as S.Schema<GetAllSubscriptionsRequest>;
 
 export type AccountSubscriptionsLinksItemMap = { [key: string]: string | undefined };
-export const AccountSubscriptionsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountSubscriptionsLinksItemMap>;
-
 export type AccountSubscriptionsLinksList = Array<AccountSubscriptionsLinksItemMap>;
-export const AccountSubscriptionsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountSubscriptionsLinksList>;
-
 /** RedisLabs list of subscriptions in current account */
 export interface AccountSubscriptions {
   accountId?: number;
   links?: AccountSubscriptionsLinksList;
 }
-export const AccountSubscriptions = PaymentMethods as any as S.Schema<AccountSubscriptions>;
+const AccountSubscriptions = PaymentMethods as any as S.Schema<AccountSubscriptions>;
 
 export interface GetAllSubscriptions1Request {}
-export const GetAllSubscriptions1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAllSubscriptions1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/fixed/subscriptions", code: 200 })),
 ).annotate({
   identifier: "GetAllSubscriptions1Request",
 }) as any as S.Schema<GetAllSubscriptions1Request>;
 
 export type FixedSubscriptionsLinksItemMap = { [key: string]: string | undefined };
-export const FixedSubscriptionsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<FixedSubscriptionsLinksItemMap>;
-
 export type FixedSubscriptionsLinksList = Array<FixedSubscriptionsLinksItemMap>;
-export const FixedSubscriptionsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionsLinksList>;
-
 /** Redis list of Essentials subscriptions in current account */
 export interface FixedSubscriptions {
   accountId?: number;
   links?: FixedSubscriptionsLinksList;
 }
-export const FixedSubscriptions = PaymentMethods as any as S.Schema<FixedSubscriptions>;
+const FixedSubscriptions = PaymentMethods as any as S.Schema<FixedSubscriptions>;
 
 export interface GetAllTasksRequest {}
-export const GetAllTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/tasks", code: 200 })),
 ).annotate({ identifier: "GetAllTasksRequest" }) as any as S.Schema<GetAllTasksRequest>;
 
 export interface GetAllTasksResponse {}
-export const GetAllTasksResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetAllTasksResponse>;
+const GetAllTasksResponse = AcceptTgwResourceShareResponse as any as S.Schema<GetAllTasksResponse>;
 
 export interface GetAllUsersRequest {}
-export const GetAllUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/users", code: 200 })),
 ).annotate({ identifier: "GetAllUsersRequest" }) as any as S.Schema<GetAllUsersRequest>;
 
@@ -4300,66 +4263,56 @@ export const GetAllUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AccountUsers {
   account?: number;
 }
-export const AccountUsers = /*@__PURE__*/ S.suspend(() =>
+const AccountUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AccountUsers" }) as any as S.Schema<AccountUsers>;
 
 export interface GetAllUsers1Request {}
-export const GetAllUsers1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAllUsers1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/users", code: 200 })),
 ).annotate({ identifier: "GetAllUsers1Request" }) as any as S.Schema<GetAllUsers1Request>;
 
 export type AccountACLUsersLinksItemMap = { [key: string]: string | undefined };
-export const AccountACLUsersLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountACLUsersLinksItemMap>;
-
 export type AccountACLUsersLinksList = Array<AccountACLUsersLinksItemMap>;
-export const AccountACLUsersLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountACLUsersLinksList>;
-
 /** Redis list of ACL users in current account */
 export interface AccountACLUsers {
   accountId?: number;
   links?: AccountACLUsersLinksList;
 }
-export const AccountACLUsers = PaymentMethods as any as S.Schema<AccountACLUsers>;
+const AccountACLUsers = PaymentMethods as any as S.Schema<AccountACLUsers>;
 
 export interface GetCidrWhiteListRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetCidrWhiteListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCidrWhiteListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/cidr", code: 200 })),
 ).annotate({ identifier: "GetCidrWhiteListRequest" }) as any as S.Schema<GetCidrWhiteListRequest>;
 
 export interface GetCidrWhiteListResponse {}
-export const GetCidrWhiteListResponse =
+const GetCidrWhiteListResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetCidrWhiteListResponse>;
 
 export interface GetCloudAccountRequest {
   /** Cloud Account Id */
   cloudAccountId: number;
 }
-export const GetCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudAccountId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts/{cloudAccountId}", code: 200 })),
 ).annotate({ identifier: "GetCloudAccountRequest" }) as any as S.Schema<GetCloudAccountRequest>;
 
 export type CloudAccountLinksItemMap = { [key: string]: string | undefined };
-export const CloudAccountLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<CloudAccountLinksItemMap>;
-
 export type CloudAccountLinksList = Array<CloudAccountLinksItemMap>;
-export const CloudAccountLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<CloudAccountLinksList>;
+const CloudAccountLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudAccountLinksList>;
 
 export type CloudAccountProvider = "AWS" | "GCP";
-export const CloudAccountProvider = S.String;
+const CloudAccountProvider = S.String;
 
 /** RedisLabs Cloud Account information */
 export interface CloudAccount {
@@ -4373,7 +4326,7 @@ export interface CloudAccount {
   links?: CloudAccountLinksList;
   provider?: CloudAccountProvider;
 }
-export const CloudAccount = /*@__PURE__*/ S.suspend(() =>
+const CloudAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -4388,56 +4341,44 @@ export const CloudAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudAccount" }) as any as S.Schema<CloudAccount>;
 
 export interface GetCloudAccountsRequest {}
-export const GetCloudAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/cloud-accounts", code: 200 })),
 ).annotate({ identifier: "GetCloudAccountsRequest" }) as any as S.Schema<GetCloudAccountsRequest>;
 
 export type CloudAccountsLinksItemMap = { [key: string]: string | undefined };
-export const CloudAccountsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<CloudAccountsLinksItemMap>;
-
 export type CloudAccountsLinksList = Array<CloudAccountsLinksItemMap>;
-export const CloudAccountsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<CloudAccountsLinksList>;
-
 /** RedisLabs Cloud Accounts information */
 export interface CloudAccounts {
   accountId?: number;
   links?: CloudAccountsLinksList;
 }
-export const CloudAccounts = PaymentMethods as any as S.Schema<CloudAccounts>;
+const CloudAccounts = PaymentMethods as any as S.Schema<CloudAccounts>;
 
 export interface GetCostReportRequest {
   /** Cost Report ID. Returned from a Cost Report generation task. */
   costReportId: string;
 }
-export const GetCostReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCostReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costReportId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/cost-report/{costReportId}", code: 200 })),
 ).annotate({ identifier: "GetCostReportRequest" }) as any as S.Schema<GetCostReportRequest>;
 
 export interface GetCostReportResponse {}
-export const GetCostReportResponse =
+const GetCostReportResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetCostReportResponse>;
 
 export interface GetCurrentAccountRequest {}
-export const GetCurrentAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/", code: 200 })),
 ).annotate({ identifier: "GetCurrentAccountRequest" }) as any as S.Schema<GetCurrentAccountRequest>;
 
 export type RootAccountLinksItemMap = { [key: string]: string | undefined };
-export const RootAccountLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<RootAccountLinksItemMap>;
-
 export type RootAccountLinksList = Array<RootAccountLinksItemMap>;
-export const RootAccountLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<RootAccountLinksList>;
-
 export interface RootAccount {
   links?: RootAccountLinksList;
 }
-export const RootAccount = FixedSubscriptionsPlans as any as S.Schema<RootAccount>;
+const RootAccount = FixedSubscriptionsPlans as any as S.Schema<RootAccount>;
 
 export interface GetDatabaseAvailableVersionsRequest {
   /** Subscription ID. */
@@ -4445,7 +4386,7 @@ export interface GetDatabaseAvailableVersionsRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4463,21 +4404,21 @@ export const GetDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TargetVersion {
   redisVersion?: string;
 }
-export const TargetVersion = /*@__PURE__*/ S.suspend(() =>
+const TargetVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "TargetVersion" }) as any as S.Schema<TargetVersion>;
 
 export type DatabaseAvailableVersionsResponseTargetsList = Array<TargetVersion>;
-export const DatabaseAvailableVersionsResponseTargetsList = /*@__PURE__*/ S.Array(
+const DatabaseAvailableVersionsResponseTargetsList = /*@__PURE__*/ S.Array(
   TargetVersion,
 ) as any as S.Schema<DatabaseAvailableVersionsResponseTargetsList>;
 
 export interface DatabaseAvailableVersionsResponse {
   targets?: DatabaseAvailableVersionsResponseTargetsList;
 }
-export const DatabaseAvailableVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseAvailableVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targets: S.optional(DatabaseAvailableVersionsResponseTargetsList),
   }),
@@ -4493,7 +4434,7 @@ export interface GetDatabaseBackupStatusRequest {
   /** Region name - required for Active-Active subscription */
   regionName?: string;
 }
-export const GetDatabaseBackupStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseBackupStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4515,7 +4456,7 @@ export interface GetDatabaseBackupStatus1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseBackupStatus1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseBackupStatus1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4536,7 +4477,7 @@ export interface GetDatabaseImportStatusRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseImportStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseImportStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4557,7 +4498,7 @@ export interface GetDatabaseImportStatus1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseImportStatus1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseImportStatus1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4578,7 +4519,7 @@ export interface GetDatabaseRedisVersionUpgradeStatusRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4598,7 +4539,7 @@ export type DatabaseVersionUpgradeStatusUpgradeStatus =
   | "in-progress-recovery-pending"
   | "done"
   | "failed";
-export const DatabaseVersionUpgradeStatusUpgradeStatus = S.String;
+const DatabaseVersionUpgradeStatusUpgradeStatus = S.String;
 
 export interface DatabaseVersionUpgradeStatus {
   databaseId?: number;
@@ -4606,7 +4547,7 @@ export interface DatabaseVersionUpgradeStatus {
   progress?: number;
   upgradeStatus?: DatabaseVersionUpgradeStatusUpgradeStatus;
 }
-export const DatabaseVersionUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
+const DatabaseVersionUpgradeStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.Number),
     targetRedisVersion: S.optional(S.String),
@@ -4623,7 +4564,7 @@ export interface GetDatabaseTrafficRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4646,7 +4587,7 @@ export interface DatabaseTrafficStateResponse {
   stopReason?: string;
   resumeEligibleAt?: string;
 }
-export const DatabaseTrafficStateResponse = /*@__PURE__*/ S.suspend(() =>
+const DatabaseTrafficStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bdbId: S.optional(S.Number),
     trafficStatus: S.optional(S.String),
@@ -4665,7 +4606,7 @@ export interface GetDatabaseTraffic1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetDatabaseTraffic1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDatabaseTraffic1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4681,21 +4622,21 @@ export const GetDatabaseTraffic1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatabaseTraffic1Request>;
 
 export interface GetDataIntegrationWorkspacesRequest {}
-export const GetDataIntegrationWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/data-integration-workspaces", code: 200 })),
 ).annotate({
   identifier: "GetDataIntegrationWorkspacesRequest",
 }) as any as S.Schema<GetDataIntegrationWorkspacesRequest>;
 
 export type GetDataIntegrationWorkspacesResponse = unknown;
-export const GetDataIntegrationWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataIntegrationWorkspacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDataIntegrationWorkspacesResponse",
 }) as any as S.Schema<GetDataIntegrationWorkspacesResponse>;
 
 export interface GetDataPersistenceOptionsRequest {}
-export const GetDataPersistenceOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataPersistenceOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/data-persistence", code: 200 })),
 ).annotate({
   identifier: "GetDataPersistenceOptionsRequest",
@@ -4706,7 +4647,7 @@ export interface DataPersistenceEntry {
   name?: string;
   description?: string;
 }
-export const DataPersistenceEntry = /*@__PURE__*/ S.suspend(() =>
+const DataPersistenceEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -4714,23 +4655,20 @@ export const DataPersistenceEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataPersistenceEntry" }) as any as S.Schema<DataPersistenceEntry>;
 
 export type DataPersistenceOptionsDataPersistenceList = Array<DataPersistenceEntry>;
-export const DataPersistenceOptionsDataPersistenceList = /*@__PURE__*/ S.Array(
+const DataPersistenceOptionsDataPersistenceList = /*@__PURE__*/ S.Array(
   DataPersistenceEntry,
 ) as any as S.Schema<DataPersistenceOptionsDataPersistenceList>;
 
 export type DataPersistenceOptionsLinksItemMap = { [key: string]: string | undefined };
-export const DataPersistenceOptionsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<DataPersistenceOptionsLinksItemMap>;
-
 export type DataPersistenceOptionsLinksList = Array<DataPersistenceOptionsLinksItemMap>;
-export const DataPersistenceOptionsLinksList =
+const DataPersistenceOptionsLinksList =
   TaskStateUpdateLinksList as any as S.Schema<DataPersistenceOptionsLinksList>;
 
 export interface DataPersistenceOptions {
   dataPersistence?: DataPersistenceOptionsDataPersistenceList;
   links?: DataPersistenceOptionsLinksList;
 }
-export const DataPersistenceOptions = /*@__PURE__*/ S.suspend(() =>
+const DataPersistenceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataPersistence: S.optional(DataPersistenceOptionsDataPersistenceList),
     links: S.optional(DataPersistenceOptionsLinksList),
@@ -4741,7 +4679,7 @@ export interface GetEndpointsRedirectionStatusRequest {
   /** Dynamic endpoint redirection ID. */
   redirectionId: string;
 }
-export const GetEndpointsRedirectionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEndpointsRedirectionStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectionId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/endpoint-redirections/{redirectionId}", code: 200 })),
@@ -4755,7 +4693,7 @@ export interface GetEssentialsDatabaseAvailableVersionsRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetEssentialsDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEssentialsDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4776,7 +4714,7 @@ export interface GetEssentialsDatabaseRedisVersionUpgradeStatusRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetEssentialsDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEssentialsDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -4799,7 +4737,7 @@ export interface GetFixedSubscriptionDatabasesRequest {
   /** Maximum number of items to return. */
   limit?: number;
 }
-export const GetFixedSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFixedSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -4812,12 +4750,9 @@ export const GetFixedSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetFixedSubscriptionDatabasesRequest>;
 
 export type AccountFixedSubscriptionDatabasesLinksItemMap = { [key: string]: string | undefined };
-export const AccountFixedSubscriptionDatabasesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountFixedSubscriptionDatabasesLinksItemMap>;
-
 export type AccountFixedSubscriptionDatabasesLinksList =
   Array<AccountFixedSubscriptionDatabasesLinksItemMap>;
-export const AccountFixedSubscriptionDatabasesLinksList =
+const AccountFixedSubscriptionDatabasesLinksList =
   TaskStateUpdateLinksList as any as S.Schema<AccountFixedSubscriptionDatabasesLinksList>;
 
 /** RedisLabs Account Subscription Databases information */
@@ -4825,7 +4760,7 @@ export interface AccountFixedSubscriptionDatabases {
   accountId?: number;
   links?: AccountFixedSubscriptionDatabasesLinksList;
 }
-export const AccountFixedSubscriptionDatabases = /*@__PURE__*/ S.suspend(() =>
+const AccountFixedSubscriptionDatabases = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.Number),
     links: S.optional(AccountFixedSubscriptionDatabasesLinksList),
@@ -4838,7 +4773,7 @@ export interface GetFixedSubscriptionsPlanByIdRequest {
   /** Essentials plan ID. */
   planId: number;
 }
-export const GetFixedSubscriptionsPlanByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFixedSubscriptionsPlanByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/plans/{planId}", code: 200 })),
@@ -4847,11 +4782,8 @@ export const GetFixedSubscriptionsPlanByIdRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetFixedSubscriptionsPlanByIdRequest>;
 
 export type FixedSubscriptionsPlanLinksItemMap = { [key: string]: string | undefined };
-export const FixedSubscriptionsPlanLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<FixedSubscriptionsPlanLinksItemMap>;
-
 export type FixedSubscriptionsPlanLinksList = Array<FixedSubscriptionsPlanLinksItemMap>;
-export const FixedSubscriptionsPlanLinksList =
+const FixedSubscriptionsPlanLinksList =
   TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionsPlanLinksList>;
 
 /** Redis Essentials subscription plan information */
@@ -4882,7 +4814,7 @@ export interface FixedSubscriptionsPlan {
   customerSupport?: string;
   links?: FixedSubscriptionsPlanLinksList;
 }
-export const FixedSubscriptionsPlan = /*@__PURE__*/ S.suspend(() =>
+const FixedSubscriptionsPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -4916,7 +4848,7 @@ export interface GetFixedSubscriptionsPlansBySubscriptionIdRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetFixedSubscriptionsPlansBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFixedSubscriptionsPlansBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -4930,14 +4862,14 @@ export interface GetMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-export const GetMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/memory-stores/{storeId}", code: 200 })),
 ).annotate({ identifier: "GetMemoryStoreRequest" }) as any as S.Schema<GetMemoryStoreRequest>;
 
 export type MemoryStoreResponseDatabaseAccessCidrsList = Array<string>;
-export const MemoryStoreResponseDatabaseAccessCidrsList =
+const MemoryStoreResponseDatabaseAccessCidrsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MemoryStoreResponseDatabaseAccessCidrsList>;
 
 /** Resolved model in use for one purpose. Present only on stores with an explicit model selection */
@@ -4947,7 +4879,7 @@ export interface MemoryStoreModelStatus {
   /** Model in use */
   model?: string;
 }
-export const MemoryStoreModelStatus = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreModelStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     model: S.optional(S.String),
@@ -4960,7 +4892,7 @@ export interface MemoryStoreLongTermMemoryStatus {
   ttlSeconds?: number;
   embedding?: MemoryStoreModelStatus;
 }
-export const MemoryStoreLongTermMemoryStatus = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreLongTermMemoryStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlSeconds: S.optional(S.Number),
     embedding: S.optional(MemoryStoreModelStatus),
@@ -4971,7 +4903,7 @@ export const MemoryStoreLongTermMemoryStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Egress IP addresses used by the endpoint */
 export type MemoryStoreEndpointEgressIpsList = Array<string>;
-export const MemoryStoreEndpointEgressIpsList =
+const MemoryStoreEndpointEgressIpsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MemoryStoreEndpointEgressIpsList>;
 
 /** A regional endpoint through which the memory store is served */
@@ -4987,7 +4919,7 @@ export interface MemoryStoreEndpoint {
   /** Whether the endpoint is reachable from the store's database network */
   isAccessible?: boolean;
 }
-export const MemoryStoreEndpoint = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     provider: S.optional(S.String),
@@ -4998,21 +4930,21 @@ export const MemoryStoreEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemoryStoreEndpoint" }) as any as S.Schema<MemoryStoreEndpoint>;
 
 export type MemoryStoreResponseEndpointsList = Array<MemoryStoreEndpoint>;
-export const MemoryStoreResponseEndpointsList = /*@__PURE__*/ S.Array(
+const MemoryStoreResponseEndpointsList = /*@__PURE__*/ S.Array(
   MemoryStoreEndpoint,
 ) as any as S.Schema<MemoryStoreResponseEndpointsList>;
 
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type MemoryStoreResponseExtractionStrategy = "INSTRUCT";
-export const MemoryStoreResponseExtractionStrategy = S.String;
+const MemoryStoreResponseExtractionStrategy = S.String;
 
 export type MemoryStoreResponseCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-export const MemoryStoreResponseCustomMemoryTypesList =
+const MemoryStoreResponseCustomMemoryTypesList =
   CreateMemoryStoreRequestCustomMemoryTypesList as any as S.Schema<MemoryStoreResponseCustomMemoryTypesList>;
 
 /** Lifecycle status of the memory store */
 export type MemoryStoreResponseStatus = "PROVISIONING" | "READY" | "UNAVAILABLE";
-export const MemoryStoreResponseStatus = S.String;
+const MemoryStoreResponseStatus = S.String;
 
 /** Memory store configuration and status */
 export interface MemoryStoreResponse {
@@ -5041,7 +4973,7 @@ export interface MemoryStoreResponse {
   errorMessage?: string;
   errorMessageTimestamp?: number;
 }
-export const MemoryStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.optional(S.String),
     name: S.optional(S.String),
@@ -5072,7 +5004,7 @@ export interface GetPrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5081,14 +5013,14 @@ export const GetPrivateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPrivateLinkRequest" }) as any as S.Schema<GetPrivateLinkRequest>;
 
 export interface GetPrivateLinkResponse {}
-export const GetPrivateLinkResponse =
+const GetPrivateLinkResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetPrivateLinkResponse>;
 
 export interface GetPrivateLinkEndpointScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetPrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5103,14 +5035,14 @@ export const GetPrivateLinkEndpointScriptRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivateLinkEndpointScriptRequest>;
 
 export interface GetPrivateLinkEndpointScriptResponse {}
-export const GetPrivateLinkEndpointScriptResponse =
+const GetPrivateLinkEndpointScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPrivateLinkEndpointScriptResponse>;
 
 export interface GetPscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetPscServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPscServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5123,7 +5055,7 @@ export const GetPscServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPscServiceRequest" }) as any as S.Schema<GetPscServiceRequest>;
 
 export interface GetPscServiceResponse {}
-export const GetPscServiceResponse =
+const GetPscServiceResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetPscServiceResponse>;
 
 export interface GetPscServiceEndpointCreationScriptRequest {
@@ -5134,7 +5066,7 @@ export interface GetPscServiceEndpointCreationScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const GetPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -5151,7 +5083,7 @@ export const GetPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetPscServiceEndpointCreationScriptRequest>;
 
 export interface GetPscServiceEndpointCreationScriptResponse {}
-export const GetPscServiceEndpointCreationScriptResponse =
+const GetPscServiceEndpointCreationScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointCreationScriptResponse>;
 
 export interface GetPscServiceEndpointDeletionScriptRequest {
@@ -5162,7 +5094,7 @@ export interface GetPscServiceEndpointDeletionScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-export const GetPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -5179,7 +5111,7 @@ export const GetPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<GetPscServiceEndpointDeletionScriptRequest>;
 
 export interface GetPscServiceEndpointDeletionScriptResponse {}
-export const GetPscServiceEndpointDeletionScriptResponse =
+const GetPscServiceEndpointDeletionScriptResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointDeletionScriptResponse>;
 
 export interface GetPscServiceEndpointsRequest {
@@ -5188,7 +5120,7 @@ export interface GetPscServiceEndpointsRequest {
   /** Private Service Connect service ID. */
   pscServiceId: number;
 }
-export const GetPscServiceEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPscServiceEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -5204,14 +5136,14 @@ export const GetPscServiceEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPscServiceEndpointsRequest>;
 
 export interface GetPscServiceEndpointsResponse {}
-export const GetPscServiceEndpointsResponse =
+const GetPscServiceEndpointsResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointsResponse>;
 
 export interface GetRedisVersionsRequest {
   /** Subscription ID (required for an existing subscription) */
   subscriptionId?: number;
 }
-export const GetRedisVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedisVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/redis-versions", code: 200 })),
@@ -5223,7 +5155,7 @@ export interface RedisVersion {
   isPreview?: boolean;
   isDefault?: boolean;
 }
-export const RedisVersion = /*@__PURE__*/ S.suspend(() =>
+const RedisVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     eolDate: S.optional(S.String),
@@ -5233,14 +5165,14 @@ export const RedisVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RedisVersion" }) as any as S.Schema<RedisVersion>;
 
 export type RedisVersionsRedisVersionsList = Array<RedisVersion>;
-export const RedisVersionsRedisVersionsList = /*@__PURE__*/ S.Array(
+const RedisVersionsRedisVersionsList = /*@__PURE__*/ S.Array(
   RedisVersion,
 ) as any as S.Schema<RedisVersionsRedisVersionsList>;
 
 export interface RedisVersions {
   redisVersions?: RedisVersionsRedisVersionsList;
 }
-export const RedisVersions = /*@__PURE__*/ S.suspend(() =>
+const RedisVersions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisVersions: S.optional(RedisVersionsRedisVersionsList),
   }),
@@ -5250,7 +5182,7 @@ export interface GetRedisVersions1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetRedisVersions1Request = /*@__PURE__*/ S.suspend(() =>
+const GetRedisVersions1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/redis-versions", code: 200 })),
@@ -5260,7 +5192,7 @@ export interface GetRegionsFromActiveActiveSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/regions", code: 200 })),
@@ -5269,12 +5201,9 @@ export const GetRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetRegionsFromActiveActiveSubscriptionRequest>;
 
 export type ActiveActiveSubscriptionRegionsLinksItemMap = { [key: string]: string | undefined };
-export const ActiveActiveSubscriptionRegionsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<ActiveActiveSubscriptionRegionsLinksItemMap>;
-
 export type ActiveActiveSubscriptionRegionsLinksList =
   Array<ActiveActiveSubscriptionRegionsLinksItemMap>;
-export const ActiveActiveSubscriptionRegionsLinksList =
+const ActiveActiveSubscriptionRegionsLinksList =
   TaskStateUpdateLinksList as any as S.Schema<ActiveActiveSubscriptionRegionsLinksList>;
 
 /** List of active-active subscription regions */
@@ -5282,7 +5211,7 @@ export interface ActiveActiveSubscriptionRegions {
   subscriptionId?: number;
   links?: ActiveActiveSubscriptionRegionsLinksList;
 }
-export const ActiveActiveSubscriptionRegions = /*@__PURE__*/ S.suspend(() =>
+const ActiveActiveSubscriptionRegions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.Number),
     links: S.optional(ActiveActiveSubscriptionRegionsLinksList),
@@ -5292,24 +5221,18 @@ export const ActiveActiveSubscriptionRegions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveActiveSubscriptionRegions>;
 
 export interface GetRolesRequest {}
-export const GetRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/acl/roles", code: 200 })),
 ).annotate({ identifier: "GetRolesRequest" }) as any as S.Schema<GetRolesRequest>;
 
 export type AccountACLRolesLinksItemMap = { [key: string]: string | undefined };
-export const AccountACLRolesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountACLRolesLinksItemMap>;
-
 export type AccountACLRolesLinksList = Array<AccountACLRolesLinksItemMap>;
-export const AccountACLRolesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountACLRolesLinksList>;
-
 /** Redis list of ACL roles in current account */
 export interface AccountACLRoles {
   accountId?: number;
   links?: AccountACLRolesLinksList;
 }
-export const AccountACLRoles = PaymentMethods as any as S.Schema<AccountACLRoles>;
+const AccountACLRoles = PaymentMethods as any as S.Schema<AccountACLRoles>;
 
 export interface GetSlowLogRequest {
   /** Subscription ID. */
@@ -5319,7 +5242,7 @@ export interface GetSlowLogRequest {
   /** Region name - required for Active-Active subscription */
   regionName?: string;
 }
-export const GetSlowLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSlowLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -5340,7 +5263,7 @@ export interface DatabaseSlowLogEntry {
   duration?: number;
   arguments?: string;
 }
-export const DatabaseSlowLogEntry = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSlowLogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     startTime: S.optional(S.String),
@@ -5350,23 +5273,20 @@ export const DatabaseSlowLogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatabaseSlowLogEntry" }) as any as S.Schema<DatabaseSlowLogEntry>;
 
 export type DatabaseSlowLogEntriesEntriesList = Array<DatabaseSlowLogEntry>;
-export const DatabaseSlowLogEntriesEntriesList = /*@__PURE__*/ S.Array(
+const DatabaseSlowLogEntriesEntriesList = /*@__PURE__*/ S.Array(
   DatabaseSlowLogEntry,
 ) as any as S.Schema<DatabaseSlowLogEntriesEntriesList>;
 
 export type DatabaseSlowLogEntriesLinksItemMap = { [key: string]: string | undefined };
-export const DatabaseSlowLogEntriesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<DatabaseSlowLogEntriesLinksItemMap>;
-
 export type DatabaseSlowLogEntriesLinksList = Array<DatabaseSlowLogEntriesLinksItemMap>;
-export const DatabaseSlowLogEntriesLinksList =
+const DatabaseSlowLogEntriesLinksList =
   TaskStateUpdateLinksList as any as S.Schema<DatabaseSlowLogEntriesLinksList>;
 
 export interface DatabaseSlowLogEntries {
   entries?: DatabaseSlowLogEntriesEntriesList;
   links?: DatabaseSlowLogEntriesLinksList;
 }
-export const DatabaseSlowLogEntries = /*@__PURE__*/ S.suspend(() =>
+const DatabaseSlowLogEntries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(DatabaseSlowLogEntriesEntriesList),
     links: S.optional(DatabaseSlowLogEntriesLinksList),
@@ -5379,7 +5299,7 @@ export interface GetSlowLog1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetSlowLog1Request = /*@__PURE__*/ S.suspend(() =>
+const GetSlowLog1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -5396,36 +5316,32 @@ export interface GetSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
 ).annotate({ identifier: "GetSubscriptionRequest" }) as any as S.Schema<GetSubscriptionRequest>;
 
 export type SubscriptionMemoryStorage = "ram" | "ram-and-flash";
-export const SubscriptionMemoryStorage = S.String;
+const SubscriptionMemoryStorage = S.String;
 
 export type SubscriptionPaymentMethodType = "credit-card" | "marketplace";
-export const SubscriptionPaymentMethodType = S.String;
+const SubscriptionPaymentMethodType = S.String;
 
 export type SubscriptionLinksItemMap = { [key: string]: string | undefined };
-export const SubscriptionLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<SubscriptionLinksItemMap>;
-
 export type SubscriptionLinksList = Array<SubscriptionLinksItemMap>;
-export const SubscriptionLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<SubscriptionLinksList>;
+const SubscriptionLinksList = TaskStateUpdateLinksList as any as S.Schema<SubscriptionLinksList>;
 
 export type CustomerManagedKeyAccessDetailsGooglePredefinedRolesList = Array<string>;
-export const CustomerManagedKeyAccessDetailsGooglePredefinedRolesList =
+const CustomerManagedKeyAccessDetailsGooglePredefinedRolesList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsGooglePredefinedRolesList>;
 
 export type CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList = Array<string>;
-export const CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList =
+const CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList>;
 
 export type CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList = Array<string>;
-export const CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList =
+const CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList>;
 
 /** Configuration regarding customer managed persistent storage encryption */
@@ -5437,7 +5353,7 @@ export interface CustomerManagedKeyAccessDetails {
   requiredKeyPolicyStatements?: unknown;
   deletionGracePeriodOptions?: CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList;
 }
-export const CustomerManagedKeyAccessDetails = /*@__PURE__*/ S.suspend(() =>
+const CustomerManagedKeyAccessDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redisServiceAccount: S.optional(S.String),
     googlePredefinedRoles: S.optional(CustomerManagedKeyAccessDetailsGooglePredefinedRolesList),
@@ -5467,7 +5383,7 @@ export interface Subscription {
   deletionGracePeriod?: string;
   customerManagedKeyAccessDetails?: CustomerManagedKeyAccessDetails;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -5488,7 +5404,7 @@ export interface GetSubscriptionById1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetSubscriptionById1Request = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionById1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/subscriptions/{subscriptionId}", code: 200 })),
@@ -5497,11 +5413,8 @@ export const GetSubscriptionById1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionById1Request>;
 
 export type FixedSubscriptionLinksItemMap = { [key: string]: string | undefined };
-export const FixedSubscriptionLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<FixedSubscriptionLinksItemMap>;
-
 export type FixedSubscriptionLinksList = Array<FixedSubscriptionLinksItemMap>;
-export const FixedSubscriptionLinksList =
+const FixedSubscriptionLinksList =
   TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionLinksList>;
 
 /** Redis Essentials Subscription information */
@@ -5534,7 +5447,7 @@ export interface FixedSubscription {
   links?: FixedSubscriptionLinksList;
   databaseStatus?: string;
 }
-export const FixedSubscription = /*@__PURE__*/ S.suspend(() =>
+const FixedSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -5572,7 +5485,7 @@ export interface GetSubscriptionDatabaseRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetSubscriptionDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -5588,17 +5501,14 @@ export const GetSubscriptionDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionDatabaseRequest>;
 
 export type DatabaseLinksItemMap = { [key: string]: string | undefined };
-export const DatabaseLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<DatabaseLinksItemMap>;
-
 export type DatabaseLinksList = Array<DatabaseLinksItemMap>;
-export const DatabaseLinksList = TaskStateUpdateLinksList as any as S.Schema<DatabaseLinksList>;
+const DatabaseLinksList = TaskStateUpdateLinksList as any as S.Schema<DatabaseLinksList>;
 
 export interface Database {
   databaseId?: number;
   links?: DatabaseLinksList;
 }
-export const Database = /*@__PURE__*/ S.suspend(() =>
+const Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.Number),
     links: S.optional(DatabaseLinksList),
@@ -5611,7 +5521,7 @@ export interface GetSubscriptionDatabaseByID1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetSubscriptionDatabaseByID1Request = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionDatabaseByID1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -5627,13 +5537,13 @@ export const GetSubscriptionDatabaseByID1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionDatabaseByID1Request>;
 
 export type FixedDatabaseProtocol = "redis" | "memcached" | "stack";
-export const FixedDatabaseProtocol = S.String;
+const FixedDatabaseProtocol = S.String;
 
 export type FixedDatabaseRespVersion = "resp2" | "resp3";
-export const FixedDatabaseRespVersion = S.String;
+const FixedDatabaseRespVersion = S.String;
 
 export type FixedDatabaseMemoryStorage = "ram" | "ram-and-flash";
-export const FixedDatabaseMemoryStorage = S.String;
+const FixedDatabaseMemoryStorage = S.String;
 
 export type FixedDatabaseDataPersistence =
   | "none"
@@ -5642,7 +5552,7 @@ export type FixedDatabaseDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const FixedDatabaseDataPersistence = S.String;
+const FixedDatabaseDataPersistence = S.String;
 
 export type FixedDatabaseDataEvictionPolicy =
   | "allkeys-lru"
@@ -5655,7 +5565,7 @@ export type FixedDatabaseDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const FixedDatabaseDataEvictionPolicy = S.String;
+const FixedDatabaseDataEvictionPolicy = S.String;
 
 /** Database dynamic endpoints. This is available in private preview. */
 export interface DynamicEndpoints {
@@ -5664,7 +5574,7 @@ export interface DynamicEndpoints {
   /** Private dynamic endpoint of the database. This is available in private preview. */
   private?: string;
 }
-export const DynamicEndpoints = /*@__PURE__*/ S.suspend(() =>
+const DynamicEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public: S.optional(S.String),
     private: S.optional(S.String),
@@ -5678,16 +5588,11 @@ export interface ReplicaAsSourceEndpoints {
   /** Private cluster endpoint that can be used as source for replication */
   private?: string;
 }
-export const ReplicaAsSourceEndpoints =
-  DynamicEndpoints as any as S.Schema<ReplicaAsSourceEndpoints>;
+const ReplicaAsSourceEndpoints = DynamicEndpoints as any as S.Schema<ReplicaAsSourceEndpoints>;
 
 export type FixedDatabaseLinksItemMap = { [key: string]: string | undefined };
-export const FixedDatabaseLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<FixedDatabaseLinksItemMap>;
-
 export type FixedDatabaseLinksList = Array<FixedDatabaseLinksItemMap>;
-export const FixedDatabaseLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<FixedDatabaseLinksList>;
+const FixedDatabaseLinksList = TaskStateUpdateLinksList as any as S.Schema<FixedDatabaseLinksList>;
 
 export interface FixedDatabase {
   databaseId?: number;
@@ -5721,7 +5626,7 @@ export interface FixedDatabase {
   replicaAsSourceEndpoints?: ReplicaAsSourceEndpoints;
   links?: FixedDatabaseLinksList;
 }
-export const FixedDatabase = /*@__PURE__*/ S.suspend(() =>
+const FixedDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.Number),
     name: S.optional(S.String),
@@ -5762,7 +5667,7 @@ export interface GetSubscriptionDatabaseCertificateRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetSubscriptionDatabaseCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionDatabaseCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -5782,7 +5687,7 @@ export interface DatabaseCertificate {
   /** An X.509 PEM (base64) encoded server certificate with new line characters replaced by '\n'. */
   publicCertificatePEMString?: string;
 }
-export const DatabaseCertificate = /*@__PURE__*/ S.suspend(() =>
+const DatabaseCertificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicCertificatePEMString: S.optional(S.String),
   }),
@@ -5796,7 +5701,7 @@ export interface GetSubscriptionDatabasesRequest {
   /** Maximum number of items to return. */
   limit?: number;
 }
-export const GetSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -5809,26 +5714,20 @@ export const GetSubscriptionDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionDatabasesRequest>;
 
 export type AccountSubscriptionDatabasesLinksItemMap = { [key: string]: string | undefined };
-export const AccountSubscriptionDatabasesLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<AccountSubscriptionDatabasesLinksItemMap>;
-
 export type AccountSubscriptionDatabasesLinksList = Array<AccountSubscriptionDatabasesLinksItemMap>;
-export const AccountSubscriptionDatabasesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountSubscriptionDatabasesLinksList>;
-
 /** RedisLabs Account Subscription Databases information */
 export interface AccountSubscriptionDatabases {
   accountId?: number;
   links?: AccountSubscriptionDatabasesLinksList;
 }
-export const AccountSubscriptionDatabases =
+const AccountSubscriptionDatabases =
   AccountFixedSubscriptionDatabases as any as S.Schema<AccountSubscriptionDatabases>;
 
 export interface GetSubscriptionMaintenanceWindowsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -5843,10 +5742,10 @@ export const GetSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSubscriptionMaintenanceWindowsRequest>;
 
 export type SubscriptionMaintenanceWindowsMode = "manual" | "automatic";
-export const SubscriptionMaintenanceWindowsMode = S.String;
+const SubscriptionMaintenanceWindowsMode = S.String;
 
 export type MaintenanceWindowDaysList = Array<string>;
-export const MaintenanceWindowDaysList =
+const MaintenanceWindowDaysList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MaintenanceWindowDaysList>;
 
 export interface MaintenanceWindow {
@@ -5854,7 +5753,7 @@ export interface MaintenanceWindow {
   startHour?: number;
   durationInHours?: number;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.optional(MaintenanceWindowDaysList),
     startHour: S.optional(S.Number),
@@ -5863,7 +5762,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 export type SubscriptionMaintenanceWindowsWindowsList = Array<MaintenanceWindow>;
-export const SubscriptionMaintenanceWindowsWindowsList = /*@__PURE__*/ S.Array(
+const SubscriptionMaintenanceWindowsWindowsList = /*@__PURE__*/ S.Array(
   MaintenanceWindow,
 ) as any as S.Schema<SubscriptionMaintenanceWindowsWindowsList>;
 
@@ -5871,7 +5770,7 @@ export interface MaintenanceWindowSkipStatus {
   remainingSkips?: number;
   currentSkipEnd?: string;
 }
-export const MaintenanceWindowSkipStatus = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindowSkipStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remainingSkips: S.optional(S.Number),
     currentSkipEnd: S.optional(S.String),
@@ -5886,7 +5785,7 @@ export interface SubscriptionMaintenanceWindows {
   windows?: SubscriptionMaintenanceWindowsWindowsList;
   skipStatus?: MaintenanceWindowSkipStatus;
 }
-export const SubscriptionMaintenanceWindows = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionMaintenanceWindows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(SubscriptionMaintenanceWindowsMode),
     timeZone: S.optional(S.String),
@@ -5901,7 +5800,7 @@ export interface GetSubscriptionPricingRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetSubscriptionPricingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionPricingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/pricing", code: 200 })),
@@ -5919,7 +5818,7 @@ export interface SubscriptionPricing {
   pricePeriod?: string;
   region?: string;
 }
-export const SubscriptionPricing = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     typeDetails: S.optional(S.String),
@@ -5933,21 +5832,21 @@ export const SubscriptionPricing = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionPricing" }) as any as S.Schema<SubscriptionPricing>;
 
 export type SubscriptionPricingsPricingList = Array<SubscriptionPricing>;
-export const SubscriptionPricingsPricingList = /*@__PURE__*/ S.Array(
+const SubscriptionPricingsPricingList = /*@__PURE__*/ S.Array(
   SubscriptionPricing,
 ) as any as S.Schema<SubscriptionPricingsPricingList>;
 
 export interface SubscriptionPricings {
   pricing?: SubscriptionPricingsPricingList;
 }
-export const SubscriptionPricings = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPricings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricing: S.optional(SubscriptionPricingsPricingList),
   }),
 ).annotate({ identifier: "SubscriptionPricings" }) as any as S.Schema<SubscriptionPricings>;
 
 export interface GetSupportedDatabaseModulesRequest {}
-export const GetSupportedDatabaseModulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportedDatabaseModulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/database-modules", code: 200 })),
 ).annotate({
   identifier: "GetSupportedDatabaseModulesRequest",
@@ -5959,7 +5858,7 @@ export interface Module {
   capabilityName?: string;
   description?: string;
 }
-export const Module = /*@__PURE__*/ S.suspend(() =>
+const Module = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     capabilityName: S.optional(S.String),
@@ -5968,23 +5867,19 @@ export const Module = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Module" }) as any as S.Schema<Module>;
 
 export type ModulesDataModulesList = Array<Module>;
-export const ModulesDataModulesList = /*@__PURE__*/ S.Array(
+const ModulesDataModulesList = /*@__PURE__*/ S.Array(
   Module,
 ) as any as S.Schema<ModulesDataModulesList>;
 
 export type ModulesDataLinksItemMap = { [key: string]: string | undefined };
-export const ModulesDataLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<ModulesDataLinksItemMap>;
-
 export type ModulesDataLinksList = Array<ModulesDataLinksItemMap>;
-export const ModulesDataLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<ModulesDataLinksList>;
+const ModulesDataLinksList = TaskStateUpdateLinksList as any as S.Schema<ModulesDataLinksList>;
 
 export interface ModulesData {
   modules?: ModulesDataModulesList;
   links?: ModulesDataLinksList;
 }
-export const ModulesData = /*@__PURE__*/ S.suspend(() =>
+const ModulesData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modules: S.optional(ModulesDataModulesList),
     links: S.optional(ModulesDataLinksList),
@@ -5992,13 +5887,13 @@ export const ModulesData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ModulesData" }) as any as S.Schema<ModulesData>;
 
 export type GetSupportedRegionsRequestProvider = "AWS" | "GCP";
-export const GetSupportedRegionsRequestProvider = S.String;
+const GetSupportedRegionsRequestProvider = S.String;
 
 export interface GetSupportedRegionsRequest {
   /** Filters results to the specified cloud provider. */
   provider?: GetSupportedRegionsRequestProvider | (string & {});
 }
-export const GetSupportedRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportedRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(GetSupportedRegionsRequestProvider.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v1/regions", code: 200 })),
@@ -6007,7 +5902,7 @@ export const GetSupportedRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSupportedRegionsRequest>;
 
 export type RegionProvider = "AWS" | "GCP";
-export const RegionProvider = S.String;
+const RegionProvider = S.String;
 
 /** RedisLabs region information */
 export interface Region {
@@ -6015,7 +5910,7 @@ export interface Region {
   name?: string;
   provider?: RegionProvider;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -6024,22 +5919,17 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type RegionsRegionsList = Array<Region>;
-export const RegionsRegionsList = /*@__PURE__*/ S.Array(
-  Region,
-) as any as S.Schema<RegionsRegionsList>;
+const RegionsRegionsList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionsRegionsList>;
 
 export type RegionsLinksItemMap = { [key: string]: string | undefined };
-export const RegionsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<RegionsLinksItemMap>;
-
 export type RegionsLinksList = Array<RegionsLinksItemMap>;
-export const RegionsLinksList = TaskStateUpdateLinksList as any as S.Schema<RegionsLinksList>;
+const RegionsLinksList = TaskStateUpdateLinksList as any as S.Schema<RegionsLinksList>;
 
 export interface Regions {
   regions?: RegionsRegionsList;
   links?: RegionsLinksList;
 }
-export const Regions = /*@__PURE__*/ S.suspend(() =>
+const Regions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(RegionsRegionsList),
     links: S.optional(RegionsLinksList),
@@ -6047,29 +5937,26 @@ export const Regions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Regions" }) as any as S.Schema<Regions>;
 
 export interface GetSupportedSearchScalingFactorsRequest {}
-export const GetSupportedSearchScalingFactorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportedSearchScalingFactorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/query-performance-factors", code: 200 })),
 ).annotate({
   identifier: "GetSupportedSearchScalingFactorsRequest",
 }) as any as S.Schema<GetSupportedSearchScalingFactorsRequest>;
 
 export type SearchScalingFactorsDataQueryPerformanceFactorsList = Array<string>;
-export const SearchScalingFactorsDataQueryPerformanceFactorsList =
+const SearchScalingFactorsDataQueryPerformanceFactorsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SearchScalingFactorsDataQueryPerformanceFactorsList>;
 
 export type SearchScalingFactorsDataLinksItemMap = { [key: string]: string | undefined };
-export const SearchScalingFactorsDataLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<SearchScalingFactorsDataLinksItemMap>;
-
 export type SearchScalingFactorsDataLinksList = Array<SearchScalingFactorsDataLinksItemMap>;
-export const SearchScalingFactorsDataLinksList =
+const SearchScalingFactorsDataLinksList =
   TaskStateUpdateLinksList as any as S.Schema<SearchScalingFactorsDataLinksList>;
 
 export interface SearchScalingFactorsData {
   queryPerformanceFactors?: SearchScalingFactorsDataQueryPerformanceFactorsList;
   links?: SearchScalingFactorsDataLinksList;
 }
-export const SearchScalingFactorsData = /*@__PURE__*/ S.suspend(() =>
+const SearchScalingFactorsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryPerformanceFactors: S.optional(SearchScalingFactorsDataQueryPerformanceFactorsList),
     links: S.optional(SearchScalingFactorsDataLinksList),
@@ -6082,7 +5969,7 @@ export interface GetTagsRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6096,18 +5983,15 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTagsRequest" }) as any as S.Schema<GetTagsRequest>;
 
 export type CloudTagsLinksItemMap = { [key: string]: string | undefined };
-export const CloudTagsLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<CloudTagsLinksItemMap>;
-
 export type CloudTagsLinksList = Array<CloudTagsLinksItemMap>;
-export const CloudTagsLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagsLinksList>;
+const CloudTagsLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagsLinksList>;
 
 /** Redis list of database tags */
 export interface CloudTags {
   links?: CloudTagsLinksList;
   accountId?: number;
 }
-export const CloudTags = /*@__PURE__*/ S.suspend(() =>
+const CloudTags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: S.optional(CloudTagsLinksList),
     accountId: S.optional(S.Number),
@@ -6120,7 +6004,7 @@ export interface GetTags1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const GetTags1Request = /*@__PURE__*/ S.suspend(() =>
+const GetTags1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6137,7 +6021,7 @@ export interface GetTaskRequest {
   /** Task ID. */
   taskId: string;
 }
-export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/tasks/{taskId}", code: 200 })),
@@ -6147,7 +6031,7 @@ export interface GetTgwsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetTgwsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTgwsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6159,7 +6043,7 @@ export interface GetTgwSharedInvitationsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetTgwSharedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTgwSharedInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6177,7 +6061,7 @@ export interface GetUserRequest {
   /** User ID. */
   userId: number;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/users/{userId}", code: 200 })),
@@ -6190,7 +6074,7 @@ export interface AccountUserOptions {
   operationalEmails?: boolean;
   mfaEnabled?: boolean;
 }
-export const AccountUserOptions = /*@__PURE__*/ S.suspend(() =>
+const AccountUserOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billing: S.optional(S.Boolean),
     emailAlerts: S.optional(S.Boolean),
@@ -6210,7 +6094,7 @@ export interface AccountUser {
   hasApiKey?: boolean;
   options?: AccountUserOptions;
 }
-export const AccountUser = /*@__PURE__*/ S.suspend(() =>
+const AccountUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -6227,18 +6111,15 @@ export interface GetUserByIDRequest {
   /** Access control user ID. */
   aclUserId: number;
 }
-export const GetUserByIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclUserId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/acl/users/{aclUserId}", code: 200 })),
 ).annotate({ identifier: "GetUserByIDRequest" }) as any as S.Schema<GetUserByIDRequest>;
 
 export type ACLUserLinksItemMap = { [key: string]: string | undefined };
-export const ACLUserLinksItemMap =
-  TaskStateUpdateLinksItemMap as any as S.Schema<ACLUserLinksItemMap>;
-
 export type ACLUserLinksList = Array<ACLUserLinksItemMap>;
-export const ACLUserLinksList = TaskStateUpdateLinksList as any as S.Schema<ACLUserLinksList>;
+const ACLUserLinksList = TaskStateUpdateLinksList as any as S.Schema<ACLUserLinksList>;
 
 /** Redis ACL user information */
 export interface ACLUser {
@@ -6248,7 +6129,7 @@ export interface ACLUser {
   status?: string;
   links?: ACLUserLinksList;
 }
-export const ACLUser = /*@__PURE__*/ S.suspend(() =>
+const ACLUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -6262,14 +6143,14 @@ export interface GetVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const GetVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/subscriptions/{subscriptionId}/peerings", code: 200 })),
 ).annotate({ identifier: "GetVpcPeeringRequest" }) as any as S.Schema<GetVpcPeeringRequest>;
 
 export interface GetVpcPeeringResponse {}
-export const GetVpcPeeringResponse =
+const GetVpcPeeringResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<GetVpcPeeringResponse>;
 
 /** Type of storage from which to import the database RDB file or Redis data. */
@@ -6280,11 +6161,11 @@ export type ImportDatabaseRequestSourceType =
   | "aws-s3"
   | "azure-blob-storage"
   | "google-blob-storage";
-export const ImportDatabaseRequestSourceType = S.String;
+const ImportDatabaseRequestSourceType = S.String;
 
 /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
 export type ImportDatabaseRequestImportFromUriList = Array<string>;
-export const ImportDatabaseRequestImportFromUriList =
+const ImportDatabaseRequestImportFromUriList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<ImportDatabaseRequestImportFromUriList>;
 
 export interface ImportDatabaseRequest {
@@ -6297,7 +6178,7 @@ export interface ImportDatabaseRequest {
   /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
   importFromUri: ImportDatabaseRequestImportFromUriList;
 }
-export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6320,11 +6201,11 @@ export type ImportDatabase1RequestSourceType =
   | "aws-s3"
   | "azure-blob-storage"
   | "google-blob-storage";
-export const ImportDatabase1RequestSourceType = S.String;
+const ImportDatabase1RequestSourceType = S.String;
 
 /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
 export type ImportDatabase1RequestImportFromUriList = Array<string>;
-export const ImportDatabase1RequestImportFromUriList =
+const ImportDatabase1RequestImportFromUriList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<ImportDatabase1RequestImportFromUriList>;
 
 export interface ImportDatabase1Request {
@@ -6337,7 +6218,7 @@ export interface ImportDatabase1Request {
   /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
   importFromUri: ImportDatabase1RequestImportFromUriList;
 }
-export const ImportDatabase1Request = /*@__PURE__*/ S.suspend(() =>
+const ImportDatabase1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6356,7 +6237,7 @@ export interface ListMemoryStoreApiKeysRequest {
   /** Memory store ID. */
   storeId: string;
 }
-export const ListMemoryStoreApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMemoryStoreApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/memory-stores/{storeId}/api-keys", code: 200 })),
@@ -6365,21 +6246,21 @@ export const ListMemoryStoreApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMemoryStoreApiKeysRequest>;
 
 export interface ListMemoryStoreApiKeysResponse {}
-export const ListMemoryStoreApiKeysResponse =
+const ListMemoryStoreApiKeysResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<ListMemoryStoreApiKeysResponse>;
 
 export interface ListMemoryStoresRequest {}
-export const ListMemoryStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMemoryStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/memory-stores", code: 200 })),
 ).annotate({ identifier: "ListMemoryStoresRequest" }) as any as S.Schema<ListMemoryStoresRequest>;
 
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type MemoryStoreSummaryExtractionStrategy = "INSTRUCT";
-export const MemoryStoreSummaryExtractionStrategy = S.String;
+const MemoryStoreSummaryExtractionStrategy = S.String;
 
 /** Lifecycle status of the memory store */
 export type MemoryStoreSummaryStatus = "PROVISIONING" | "READY" | "UNAVAILABLE";
-export const MemoryStoreSummaryStatus = S.String;
+const MemoryStoreSummaryStatus = S.String;
 
 export interface MemoryStoreSummary {
   storeId?: string;
@@ -6395,7 +6276,7 @@ export interface MemoryStoreSummary {
   /** Lifecycle status of the memory store */
   status?: MemoryStoreSummaryStatus;
 }
-export const MemoryStoreSummary = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.optional(S.String),
     name: S.optional(S.String),
@@ -6411,7 +6292,7 @@ export const MemoryStoreSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemoryStoreSummary" }) as any as S.Schema<MemoryStoreSummary>;
 
 export type MemoryStoreListResponseDataList = Array<MemoryStoreSummary>;
-export const MemoryStoreListResponseDataList = /*@__PURE__*/ S.Array(
+const MemoryStoreListResponseDataList = /*@__PURE__*/ S.Array(
   MemoryStoreSummary,
 ) as any as S.Schema<MemoryStoreListResponseDataList>;
 
@@ -6419,7 +6300,7 @@ export const MemoryStoreListResponseDataList = /*@__PURE__*/ S.Array(
 export interface MemoryStoreListResponse {
   data?: MemoryStoreListResponseDataList;
 }
-export const MemoryStoreListResponse = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MemoryStoreListResponseDataList),
   }),
@@ -6430,7 +6311,7 @@ export interface ProxyDataIntegrationWorkspace5Request {
   subscriptionId: number;
   requestBody: unknown;
 }
-export const ProxyDataIntegrationWorkspace5Request = /*@__PURE__*/ S.suspend(() =>
+const ProxyDataIntegrationWorkspace5Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     requestBody: S.Unknown.pipe(T.Query()),
@@ -6446,14 +6327,14 @@ export const ProxyDataIntegrationWorkspace5Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProxyDataIntegrationWorkspace5Request>;
 
 export type ProxyDataIntegrationWorkspace5Response = unknown;
-export const ProxyDataIntegrationWorkspace5Response =
+const ProxyDataIntegrationWorkspace5Response =
   GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace5Response>;
 
 export interface ProxyDataIntegrationWorkspace6Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const ProxyDataIntegrationWorkspace6Request = /*@__PURE__*/ S.suspend(() =>
+const ProxyDataIntegrationWorkspace6Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6468,14 +6349,14 @@ export const ProxyDataIntegrationWorkspace6Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProxyDataIntegrationWorkspace6Request>;
 
 export type ProxyDataIntegrationWorkspace6Response = unknown;
-export const ProxyDataIntegrationWorkspace6Response =
+const ProxyDataIntegrationWorkspace6Response =
   GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace6Response>;
 
 export interface ProxyDataIntegrationWorkspace7Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const ProxyDataIntegrationWorkspace7Request = /*@__PURE__*/ S.suspend(() =>
+const ProxyDataIntegrationWorkspace7Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6490,14 +6371,14 @@ export const ProxyDataIntegrationWorkspace7Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProxyDataIntegrationWorkspace7Request>;
 
 export type ProxyDataIntegrationWorkspace7Response = unknown;
-export const ProxyDataIntegrationWorkspace7Response =
+const ProxyDataIntegrationWorkspace7Response =
   GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace7Response>;
 
 export interface ProxyDataIntegrationWorkspace8Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const ProxyDataIntegrationWorkspace8Request = /*@__PURE__*/ S.suspend(() =>
+const ProxyDataIntegrationWorkspace8Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6512,14 +6393,14 @@ export const ProxyDataIntegrationWorkspace8Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProxyDataIntegrationWorkspace8Request>;
 
 export type ProxyDataIntegrationWorkspace8Response = unknown;
-export const ProxyDataIntegrationWorkspace8Response =
+const ProxyDataIntegrationWorkspace8Response =
   GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace8Response>;
 
 export interface ProxyDataIntegrationWorkspace9Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const ProxyDataIntegrationWorkspace9Request = /*@__PURE__*/ S.suspend(() =>
+const ProxyDataIntegrationWorkspace9Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -6534,7 +6415,7 @@ export const ProxyDataIntegrationWorkspace9Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ProxyDataIntegrationWorkspace9Request>;
 
 export type ProxyDataIntegrationWorkspace9Response = unknown;
-export const ProxyDataIntegrationWorkspace9Response =
+const ProxyDataIntegrationWorkspace9Response =
   GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace9Response>;
 
 export interface RejectActiveActiveTgwResourceShareRequest {
@@ -6545,7 +6426,7 @@ export interface RejectActiveActiveTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-export const RejectActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -6562,7 +6443,7 @@ export const RejectActiveActiveTgwResourceShareRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RejectActiveActiveTgwResourceShareRequest>;
 
 export interface RejectActiveActiveTgwResourceShareResponse {}
-export const RejectActiveActiveTgwResourceShareResponse =
+const RejectActiveActiveTgwResourceShareResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<RejectActiveActiveTgwResourceShareResponse>;
 
 export interface RejectTgwResourceShareRequest {
@@ -6571,7 +6452,7 @@ export interface RejectTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-export const RejectTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     tgwInvitationId: S.Number.pipe(T.Label()),
@@ -6587,7 +6468,7 @@ export const RejectTgwResourceShareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RejectTgwResourceShareRequest>;
 
 export interface RejectTgwResourceShareResponse {}
-export const RejectTgwResourceShareResponse =
+const RejectTgwResourceShareResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<RejectTgwResourceShareResponse>;
 
 export interface ResumeBdbTrafficRequest {
@@ -6596,7 +6477,7 @@ export interface ResumeBdbTrafficRequest {
   /** Database ID. */
   databaseId: number;
 }
-export const ResumeBdbTrafficRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeBdbTrafficRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6610,7 +6491,7 @@ export const ResumeBdbTrafficRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeBdbTrafficRequest" }) as any as S.Schema<ResumeBdbTrafficRequest>;
 
 export interface ResumeBdbTrafficResponse {}
-export const ResumeBdbTrafficResponse =
+const ResumeBdbTrafficResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<ResumeBdbTrafficResponse>;
 
 export interface ResumeBdbTraffic1Request {
@@ -6619,7 +6500,7 @@ export interface ResumeBdbTraffic1Request {
   /** Database ID. */
   databaseId: number;
 }
-export const ResumeBdbTraffic1Request = /*@__PURE__*/ S.suspend(() =>
+const ResumeBdbTraffic1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6633,14 +6514,14 @@ export const ResumeBdbTraffic1Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResumeBdbTraffic1Request" }) as any as S.Schema<ResumeBdbTraffic1Request>;
 
 export interface ResumeBdbTraffic1Response {}
-export const ResumeBdbTraffic1Response =
+const ResumeBdbTraffic1Response =
   AcceptTgwResourceShareResponse as any as S.Schema<ResumeBdbTraffic1Response>;
 
 export interface RevertEndpointsRedirectionRequest {
   /** Dynamic endpoint redirection ID. */
   redirectionId: string;
 }
-export const RevertEndpointsRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RevertEndpointsRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6652,7 +6533,7 @@ export const RevertEndpointsRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Action to perform on the endpoint. */
 export type UpdateActiveActivePscServiceEndpointRequestAction = "accept" | "reject";
-export const UpdateActiveActivePscServiceEndpointRequestAction = S.String;
+const UpdateActiveActivePscServiceEndpointRequestAction = S.String;
 
 export interface UpdateActiveActivePscServiceEndpointRequest {
   /** Subscription ID. */
@@ -6674,7 +6555,7 @@ export interface UpdateActiveActivePscServiceEndpointRequest {
   /** Action to perform on the endpoint. */
   action?: UpdateActiveActivePscServiceEndpointRequestAction | (string & {});
 }
-export const UpdateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -6697,14 +6578,14 @@ export const UpdateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateActiveActivePscServiceEndpointRequest>;
 
 export interface UpdateActiveActivePscServiceEndpointResponse {}
-export const UpdateActiveActivePscServiceEndpointResponse =
+const UpdateActiveActivePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateActiveActivePscServiceEndpointResponse>;
 
 /** Optional. List of transit gateway attachment CIDRs. */
 export interface Cidr {
   cidrAddress?: string;
 }
-export const Cidr = /*@__PURE__*/ S.suspend(() =>
+const Cidr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidrAddress: S.optional(S.String),
   }),
@@ -6712,7 +6593,7 @@ export const Cidr = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. List of transit gateway attachment CIDRs. */
 export type UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList = Array<Cidr>;
-export const UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList = /*@__PURE__*/ S.Array(
+const UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList = /*@__PURE__*/ S.Array(
   Cidr,
 ) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList>;
 
@@ -6726,7 +6607,7 @@ export interface UpdateActiveActiveTgwAttachmentCidrsRequest {
   /** Optional. List of transit gateway attachment CIDRs. */
   cidrs?: UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList;
 }
-export const UpdateActiveActiveTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateActiveActiveTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     regionId: S.Number.pipe(T.Label()),
@@ -6744,12 +6625,12 @@ export const UpdateActiveActiveTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequest>;
 
 export interface UpdateActiveActiveTgwAttachmentCidrsResponse {}
-export const UpdateActiveActiveTgwAttachmentCidrsResponse =
+const UpdateActiveActiveTgwAttachmentCidrsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsResponse>;
 
 /** Optional. List of VPC CIDRs. */
 export type UpdateActiveActiveVpcPeeringRequestVpcCidrsList = Array<string>;
-export const UpdateActiveActiveVpcPeeringRequestVpcCidrsList =
+const UpdateActiveActiveVpcPeeringRequestVpcCidrsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateActiveActiveVpcPeeringRequestVpcCidrsList>;
 
 export interface UpdateActiveActiveVpcPeeringRequest {
@@ -6762,7 +6643,7 @@ export interface UpdateActiveActiveVpcPeeringRequest {
   /** Optional. List of VPC CIDRs. */
   vpcCidrs?: UpdateActiveActiveVpcPeeringRequestVpcCidrsList;
 }
-export const UpdateActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateActiveActiveVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     peeringId: S.Number.pipe(T.Label()),
@@ -6795,7 +6676,7 @@ export interface UpdateCloudAccountRequest {
   /** Optional. Cloud provider management console login URL. */
   signInLoginUrl?: string;
 }
-export const UpdateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudAccountId: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -6810,13 +6691,13 @@ export const UpdateCloudAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCloudAccountRequest>;
 
 export interface UpdateCloudAccountResponse {}
-export const UpdateCloudAccountResponse =
+const UpdateCloudAccountResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<UpdateCloudAccountResponse>;
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList =
   Array<DatabaseCertificateSpec>;
-export const UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList =
+const UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList =
   CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList>;
 
 /** Optional. Type and rate of data persistence in all regions that don't set local 'dataPersistence'. */
@@ -6827,16 +6708,16 @@ export type UpdateCrdbLocalPropertiesRequestGlobalDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const UpdateCrdbLocalPropertiesRequestGlobalDataPersistence = S.String;
+const UpdateCrdbLocalPropertiesRequestGlobalDataPersistence = S.String;
 
 /** Optional. List of source IP addresses or subnet masks to whitelist in all regions that don't set local 'sourceIp' settings. If set, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: ['192.168.10.0/32', '192.168.12.0/24'] */
 export type UpdateCrdbLocalPropertiesRequestGlobalSourceIpList = Array<string>;
-export const UpdateCrdbLocalPropertiesRequestGlobalSourceIpList =
+const UpdateCrdbLocalPropertiesRequestGlobalSourceIpList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateCrdbLocalPropertiesRequestGlobalSourceIpList>;
 
 /** Optional. Redis database alert settings in all regions that don't set local 'alerts'. */
 export type UpdateCrdbLocalPropertiesRequestGlobalAlertsList = Array<DatabaseAlertSpec>;
-export const UpdateCrdbLocalPropertiesRequestGlobalAlertsList =
+const UpdateCrdbLocalPropertiesRequestGlobalAlertsList =
   CreateDatabaseRequestAlertsList as any as S.Schema<UpdateCrdbLocalPropertiesRequestGlobalAlertsList>;
 
 /** Optional. Type and rate of data persistence for this region. If set, 'globalDataPersistence' will not apply to this region. */
@@ -6847,21 +6728,21 @@ export type LocalRegionPropertiesInputDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const LocalRegionPropertiesInputDataPersistence = S.String;
+const LocalRegionPropertiesInputDataPersistence = S.String;
 
 /** Optional. List of source IP addresses or subnet masks to whitelist in this region. If set, Redis clients will be able to connect to the database in this region only from within the specified source IP addresses ranges, and 'globalSourceIp' will not apply to this region. Example: ['192.168.10.0/32', '192.168.12.0/24'] */
 export type LocalRegionPropertiesInputSourceIpList = Array<string>;
-export const LocalRegionPropertiesInputSourceIpList =
+const LocalRegionPropertiesInputSourceIpList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<LocalRegionPropertiesInputSourceIpList>;
 
 /** Optional. Redis database alert settings for this region. If set, 'glboalAlerts' will not apply to this region. */
 export type LocalRegionPropertiesInputAlertsList = Array<DatabaseAlertSpec>;
-export const LocalRegionPropertiesInputAlertsList =
+const LocalRegionPropertiesInputAlertsList =
   CreateDatabaseRequestAlertsList as any as S.Schema<LocalRegionPropertiesInputAlertsList>;
 
 /** Optional. Redis Serialization Protocol version for this region. Must be compatible with Redis version. */
 export type LocalRegionPropertiesInputRespVersion = "resp2" | "resp3";
-export const LocalRegionPropertiesInputRespVersion = S.String;
+const LocalRegionPropertiesInputRespVersion = S.String;
 
 /** Optional. A list of regions and local settings to update. */
 export interface LocalRegionPropertiesInput {
@@ -6882,7 +6763,7 @@ export interface LocalRegionPropertiesInput {
   /** Optional. When 'true', allows connecting to the database with the 'default' user. When 'false', only defined access control users can connect to the database. If set, 'globalEnableDefaultUser' will not apply to this region. */
   enableDefaultUser?: boolean;
 }
-export const LocalRegionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LocalRegionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     remoteBackup: S.optional(DatabaseBackupConfigInput),
@@ -6900,7 +6781,7 @@ export const LocalRegionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. A list of regions and local settings to update. */
 export type UpdateCrdbLocalPropertiesRequestRegionsList = Array<LocalRegionPropertiesInput>;
-export const UpdateCrdbLocalPropertiesRequestRegionsList = /*@__PURE__*/ S.Array(
+const UpdateCrdbLocalPropertiesRequestRegionsList = /*@__PURE__*/ S.Array(
   LocalRegionPropertiesInput,
 ) as any as S.Schema<UpdateCrdbLocalPropertiesRequestRegionsList>;
 
@@ -6916,7 +6797,7 @@ export type UpdateCrdbLocalPropertiesRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const UpdateCrdbLocalPropertiesRequestDataEvictionPolicy = S.String;
+const UpdateCrdbLocalPropertiesRequestDataEvictionPolicy = S.String;
 
 export interface UpdateCrdbLocalPropertiesRequest {
   /** Subscription ID. */
@@ -6958,7 +6839,7 @@ export interface UpdateCrdbLocalPropertiesRequest {
   /** Optional. Automatically upgrades the database to newer minor versions within the same major release. Applies to version 8.4 and above. */
   autoMinorVersionUpgrade?: boolean;
 }
-export const UpdateCrdbLocalPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCrdbLocalPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -6992,7 +6873,7 @@ export const UpdateCrdbLocalPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type UpdateDatabaseRequestRespVersion = "resp2" | "resp3";
-export const UpdateDatabaseRequestRespVersion = S.String;
+const UpdateDatabaseRequestRespVersion = S.String;
 
 /** Optional. Type and rate of data persistence in persistent storage. */
 export type UpdateDatabaseRequestDataPersistence =
@@ -7002,7 +6883,7 @@ export type UpdateDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-export const UpdateDatabaseRequestDataPersistence = S.String;
+const UpdateDatabaseRequestDataPersistence = S.String;
 
 /** Optional. Data eviction policy. */
 export type UpdateDatabaseRequestDataEvictionPolicy =
@@ -7016,31 +6897,31 @@ export type UpdateDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-export const UpdateDatabaseRequestDataEvictionPolicy = S.String;
+const UpdateDatabaseRequestDataEvictionPolicy = S.String;
 
 /** Optional. Hashing policy Regex rules. Used only if 'shardingType' is 'custom-regex-rules'. */
 export type UpdateDatabaseRequestRegexRulesList = Array<string>;
-export const UpdateDatabaseRequestRegexRulesList =
+const UpdateDatabaseRequestRegexRulesList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestRegexRulesList>;
 
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type UpdateDatabaseRequestReplicaOfList = Array<string>;
-export const UpdateDatabaseRequestReplicaOfList =
+const UpdateDatabaseRequestReplicaOfList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestReplicaOfList>;
 
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type UpdateDatabaseRequestSourceIpList = Array<string>;
-export const UpdateDatabaseRequestSourceIpList =
+const UpdateDatabaseRequestSourceIpList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestSourceIpList>;
 
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type UpdateDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-export const UpdateDatabaseRequestClientTlsCertificatesList =
+const UpdateDatabaseRequestClientTlsCertificatesList =
   CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<UpdateDatabaseRequestClientTlsCertificatesList>;
 
 /** Optional. Changes Redis database alert details. */
 export type UpdateDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-export const UpdateDatabaseRequestAlertsList =
+const UpdateDatabaseRequestAlertsList =
   CreateDatabaseRequestAlertsList as any as S.Schema<UpdateDatabaseRequestAlertsList>;
 
 export interface UpdateDatabaseRequest {
@@ -7102,7 +6983,7 @@ export interface UpdateDatabaseRequest {
   /** Optional. Changes the query performance factor. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7149,7 +7030,7 @@ export interface MemoryStoreLongTermMemoryUpdateConfig {
   ttlSeconds?: number;
   embedding?: MemoryStoreModelConfig;
 }
-export const MemoryStoreLongTermMemoryUpdateConfig = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreLongTermMemoryUpdateConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlSeconds: S.optional(S.Number),
     embedding: S.optional(MemoryStoreModelConfig),
@@ -7160,7 +7041,7 @@ export const MemoryStoreLongTermMemoryUpdateConfig = /*@__PURE__*/ S.suspend(() 
 
 /** Optional. New custom memory types to append to the store's registry. A store may define at most 3 custom memory types in total, including those already registered. Existing types cannot be redefined */
 export type UpdateMemoryStoreRequestAddCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-export const UpdateMemoryStoreRequestAddCustomMemoryTypesList =
+const UpdateMemoryStoreRequestAddCustomMemoryTypesList =
   CreateMemoryStoreRequestCustomMemoryTypesList as any as S.Schema<UpdateMemoryStoreRequestAddCustomMemoryTypesList>;
 
 /** Edit of the extraction strategy of an existing custom memory type. Only the prompt and the enabled flag may change; the type's name, description and fields are immutable */
@@ -7172,7 +7053,7 @@ export interface MemoryStoreTypeStrategyUpdate {
   /** Replacement enabled flag. Omit to leave unchanged */
   enabled?: boolean;
 }
-export const MemoryStoreTypeStrategyUpdate = /*@__PURE__*/ S.suspend(() =>
+const MemoryStoreTypeStrategyUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeName: S.String,
     prompt: S.optional(S.String),
@@ -7185,7 +7066,7 @@ export const MemoryStoreTypeStrategyUpdate = /*@__PURE__*/ S.suspend(() =>
 /** Optional. Extraction strategy edits (prompt and enabled flag) for existing custom memory types */
 export type UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList =
   Array<MemoryStoreTypeStrategyUpdate>;
-export const UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList = /*@__PURE__*/ S.Array(
+const UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList = /*@__PURE__*/ S.Array(
   MemoryStoreTypeStrategyUpdate,
 ) as any as S.Schema<UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList>;
 
@@ -7205,7 +7086,7 @@ export interface UpdateMemoryStoreRequest {
   updateCustomMemoryTypeStrategies?: UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList;
   extractionCadence?: MemoryStoreExtractionCadenceConfig;
 }
-export const UpdateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -7223,12 +7104,12 @@ export const UpdateMemoryStoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMemoryStoreRequest" }) as any as S.Schema<UpdateMemoryStoreRequest>;
 
 export interface UpdateMemoryStoreResponse {}
-export const UpdateMemoryStoreResponse =
+const UpdateMemoryStoreResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<UpdateMemoryStoreResponse>;
 
 /** Action to perform on the endpoint. */
 export type UpdatePscServiceEndpointRequestAction = "accept" | "reject";
-export const UpdatePscServiceEndpointRequestAction = S.String;
+const UpdatePscServiceEndpointRequestAction = S.String;
 
 export interface UpdatePscServiceEndpointRequest {
   /** Subscription ID. */
@@ -7248,7 +7129,7 @@ export interface UpdatePscServiceEndpointRequest {
   /** Action to perform on the endpoint. */
   action?: UpdatePscServiceEndpointRequestAction | (string & {});
 }
-export const UpdatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     pscServiceId: S.Number.pipe(T.Label()),
@@ -7270,7 +7151,7 @@ export const UpdatePscServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePscServiceEndpointRequest>;
 
 export interface UpdatePscServiceEndpointResponse {}
-export const UpdatePscServiceEndpointResponse =
+const UpdatePscServiceEndpointResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdatePscServiceEndpointResponse>;
 
 export interface UpdateRedisRuleRequest {
@@ -7281,7 +7162,7 @@ export interface UpdateRedisRuleRequest {
   /** Optional. Changes the Redis ACL rule pattern. See [ACL syntax](https://redis.io/docs/latest/operate/rc/security/access-control/data-access-control/configure-acls/#define-permissions-with-acl-syntax) to learn how to define rules. */
   redisRule: string;
 }
-export const UpdateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclRedisRuleId: S.Number.pipe(T.Label()),
     name: S.String,
@@ -7290,12 +7171,12 @@ export const UpdateRedisRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRedisRuleRequest" }) as any as S.Schema<UpdateRedisRuleRequest>;
 
 export interface UpdateRedisRuleResponse {}
-export const UpdateRedisRuleResponse =
+const UpdateRedisRuleResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<UpdateRedisRuleResponse>;
 
 /** Optional. Changes the Redis ACL rules to assign to this database access role. */
 export type UpdateRoleRequestRedisRulesList = Array<AclRoleRedisRuleSpec>;
-export const UpdateRoleRequestRedisRulesList =
+const UpdateRoleRequestRedisRulesList =
   CreateRoleRequestRedisRulesList as any as S.Schema<UpdateRoleRequestRedisRulesList>;
 
 export interface UpdateRoleRequest {
@@ -7306,7 +7187,7 @@ export interface UpdateRoleRequest {
   /** Optional. Changes the Redis ACL rules to assign to this database access role. */
   redisRules?: UpdateRoleRequestRedisRulesList;
 }
-export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclRoleId: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -7315,14 +7196,13 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRoleRequest" }) as any as S.Schema<UpdateRoleRequest>;
 
 export interface UpdateRoleResponse {}
-export const UpdateRoleResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateRoleResponse>;
+const UpdateRoleResponse = AcceptTgwResourceShareResponse as any as S.Schema<UpdateRoleResponse>;
 
 export interface UpdateSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/v1/subscriptions/{subscriptionId}", code: 200 })),
@@ -7332,7 +7212,7 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. The payment method for the subscription. If set to 'credit-card' , 'paymentMethodId' must be defined. */
 export type UpdateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
-export const UpdateSubscription1RequestPaymentMethod = S.String;
+const UpdateSubscription1RequestPaymentMethod = S.String;
 
 export interface UpdateSubscription1Request {
   subscriptionId: number;
@@ -7345,7 +7225,7 @@ export interface UpdateSubscription1Request {
   /** Optional. The payment method ID you'd like to use for this subscription. Must be a valid payment method ID for this account. Use GET /payment-methods to get a list of payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required if 'paymentMethod' is 'credit-card'. */
   paymentMethodId?: number;
 }
-export const UpdateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -7358,17 +7238,17 @@ export const UpdateSubscription1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscription1Request>;
 
 export interface UpdateSubscription1Response {}
-export const UpdateSubscription1Response =
+const UpdateSubscription1Response =
   AcceptTgwResourceShareResponse as any as S.Schema<UpdateSubscription1Response>;
 
 /** List of CIDR values. Example: ['10.1.1.0/32'] */
 export type UpdateSubscriptionCidrWhiteListRequestCidrIpsList = Array<string>;
-export const UpdateSubscriptionCidrWhiteListRequestCidrIpsList =
+const UpdateSubscriptionCidrWhiteListRequestCidrIpsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateSubscriptionCidrWhiteListRequestCidrIpsList>;
 
 /** List of AWS Security group IDs. */
 export type UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList = Array<string>;
-export const UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList =
+const UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList>;
 
 export interface UpdateSubscriptionCidrWhiteListRequest {
@@ -7379,7 +7259,7 @@ export interface UpdateSubscriptionCidrWhiteListRequest {
   /** List of AWS Security group IDs. */
   securityGroupIds?: UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList;
 }
-export const UpdateSubscriptionCidrWhiteListRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionCidrWhiteListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     cidrIps: S.optional(UpdateSubscriptionCidrWhiteListRequestCidrIpsList),
@@ -7390,16 +7270,16 @@ export const UpdateSubscriptionCidrWhiteListRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<UpdateSubscriptionCidrWhiteListRequest>;
 
 export interface UpdateSubscriptionCidrWhiteListResponse {}
-export const UpdateSubscriptionCidrWhiteListResponse =
+const UpdateSubscriptionCidrWhiteListResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateSubscriptionCidrWhiteListResponse>;
 
 /** Maintenance window mode: either 'manual' or 'automatic'. Must provide 'windows' if manual. */
 export type UpdateSubscriptionMaintenanceWindowsRequestMode = "manual" | "automatic";
-export const UpdateSubscriptionMaintenanceWindowsRequestMode = S.String;
+const UpdateSubscriptionMaintenanceWindowsRequestMode = S.String;
 
 /** Days where this maintenance window applies. Can contain one or more of: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday". */
 export type MaintenanceWindowSpecDaysList = Array<string>;
-export const MaintenanceWindowSpecDaysList =
+const MaintenanceWindowSpecDaysList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MaintenanceWindowSpecDaysList>;
 
 /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
@@ -7411,7 +7291,7 @@ export interface MaintenanceWindowSpec {
   /** Days where this maintenance window applies. Can contain one or more of: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday". */
   days: MaintenanceWindowSpecDaysList;
 }
-export const MaintenanceWindowSpec = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindowSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startHour: S.Number,
     durationInHours: S.Number,
@@ -7421,7 +7301,7 @@ export const MaintenanceWindowSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
 export type UpdateSubscriptionMaintenanceWindowsRequestWindowsList = Array<MaintenanceWindowSpec>;
-export const UpdateSubscriptionMaintenanceWindowsRequestWindowsList = /*@__PURE__*/ S.Array(
+const UpdateSubscriptionMaintenanceWindowsRequestWindowsList = /*@__PURE__*/ S.Array(
   MaintenanceWindowSpec,
 ) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequestWindowsList>;
 
@@ -7433,7 +7313,7 @@ export interface UpdateSubscriptionMaintenanceWindowsRequest {
   /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
   windows?: UpdateSubscriptionMaintenanceWindowsRequestWindowsList;
 }
-export const UpdateSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     mode: UpdateSubscriptionMaintenanceWindowsRequestMode,
@@ -7451,7 +7331,7 @@ export const UpdateSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ S.suspe
 
 /** List of resource tags to apply to the subscription. This will replace all existing tags. */
 export type UpdateSubscriptionResourceTagsRequestResourceTagsList = Array<ResourceTag>;
-export const UpdateSubscriptionResourceTagsRequestResourceTagsList =
+const UpdateSubscriptionResourceTagsRequestResourceTagsList =
   SubscriptionSpecResourceTagsList as any as S.Schema<UpdateSubscriptionResourceTagsRequestResourceTagsList>;
 
 export interface UpdateSubscriptionResourceTagsRequest {
@@ -7460,7 +7340,7 @@ export interface UpdateSubscriptionResourceTagsRequest {
   /** List of resource tags to apply to the subscription. This will replace all existing tags. */
   resourceTags: UpdateSubscriptionResourceTagsRequestResourceTagsList;
 }
-export const UpdateSubscriptionResourceTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionResourceTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     resourceTags: UpdateSubscriptionResourceTagsRequestResourceTagsList,
@@ -7472,7 +7352,7 @@ export const UpdateSubscriptionResourceTagsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateSubscriptionResourceTagsRequest>;
 
 export interface UpdateSubscriptionResourceTagsResponse {}
-export const UpdateSubscriptionResourceTagsResponse =
+const UpdateSubscriptionResourceTagsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateSubscriptionResourceTagsResponse>;
 
 export interface UpdateTagRequest {
@@ -7485,7 +7365,7 @@ export interface UpdateTagRequest {
   /** Database tag value */
   value: string;
 }
-export const UpdateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7510,7 +7390,7 @@ export interface UpdateTag1Request {
   /** Database tag value */
   value: string;
 }
-export const UpdateTag1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateTag1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7532,11 +7412,9 @@ export interface TagInput {
   /** Database tag value. */
   value: string;
 }
-export const TagInput = Tag as any as S.Schema<TagInput>;
-
 /** List of database tags. */
 export type UpdateTagsRequestTagsList = Array<TagInput>;
-export const UpdateTagsRequestTagsList =
+const UpdateTagsRequestTagsList =
   CreateCostReportRequestTagsList as any as S.Schema<UpdateTagsRequestTagsList>;
 
 export interface UpdateTagsRequest {
@@ -7547,7 +7425,7 @@ export interface UpdateTagsRequest {
   /** List of database tags. */
   tags: UpdateTagsRequestTagsList;
 }
-export const UpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7563,7 +7441,7 @@ export const UpdateTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of database tags. */
 export type UpdateTags1RequestTagsList = Array<TagInput>;
-export const UpdateTags1RequestTagsList =
+const UpdateTags1RequestTagsList =
   CreateCostReportRequestTagsList as any as S.Schema<UpdateTags1RequestTagsList>;
 
 export interface UpdateTags1Request {
@@ -7574,7 +7452,7 @@ export interface UpdateTags1Request {
   /** List of database tags. */
   tags: UpdateTags1RequestTagsList;
 }
-export const UpdateTags1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateTags1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7590,7 +7468,7 @@ export const UpdateTags1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. List of transit gateway attachment CIDRs. */
 export type UpdateTgwAttachmentCidrsRequestCidrsList = Array<Cidr>;
-export const UpdateTgwAttachmentCidrsRequestCidrsList =
+const UpdateTgwAttachmentCidrsRequestCidrsList =
   UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList as any as S.Schema<UpdateTgwAttachmentCidrsRequestCidrsList>;
 
 export interface UpdateTgwAttachmentCidrsRequest {
@@ -7601,7 +7479,7 @@ export interface UpdateTgwAttachmentCidrsRequest {
   /** Optional. List of transit gateway attachment CIDRs. */
   cidrs?: UpdateTgwAttachmentCidrsRequestCidrsList;
 }
-export const UpdateTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     TgwId: S.Number.pipe(T.Label()),
@@ -7618,7 +7496,7 @@ export const UpdateTgwAttachmentCidrsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTgwAttachmentCidrsRequest>;
 
 export interface UpdateTgwAttachmentCidrsResponse {}
-export const UpdateTgwAttachmentCidrsResponse =
+const UpdateTgwAttachmentCidrsResponse =
   AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateTgwAttachmentCidrsResponse>;
 
 /** Changes the account user's role. See [Team management roles](https://redis.io/docs/latest/operate/rc/security/access-control/access-management/#team-management-roles) to learn about available account roles. */
@@ -7629,7 +7507,7 @@ export type UpdateUserRequestRole =
   | "Logs Viewer (API use only)"
   | "Manager"
   | "Billing Admin";
-export const UpdateUserRequestRole = S.String;
+const UpdateUserRequestRole = S.String;
 
 export interface UpdateUserRequest {
   /** User ID. */
@@ -7639,7 +7517,7 @@ export interface UpdateUserRequest {
   /** Changes the account user's role. See [Team management roles](https://redis.io/docs/latest/operate/rc/security/access-control/access-management/#team-management-roles) to learn about available account roles. */
   role?: UpdateUserRequestRole | (string & {});
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
     name: S.String,
@@ -7655,7 +7533,7 @@ export interface UpdateUser1Request {
   /** Optional. Changes the user's database password. */
   password?: string | Redacted.Redacted<string>;
 }
-export const UpdateUser1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateUser1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aclUserId: S.Number.pipe(T.Label()),
     role: S.optional(S.String),
@@ -7665,7 +7543,7 @@ export const UpdateUser1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional. List of VPC CIDRs. */
 export type UpdateVpcPeeringRequestVpcCidrsList = Array<string>;
-export const UpdateVpcPeeringRequestVpcCidrsList =
+const UpdateVpcPeeringRequestVpcCidrsList =
   AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateVpcPeeringRequestVpcCidrsList>;
 
 export interface UpdateVpcPeeringRequest {
@@ -7678,7 +7556,7 @@ export interface UpdateVpcPeeringRequest {
   /** Optional. List of VPC CIDRs. */
   vpcCidrs?: UpdateVpcPeeringRequestVpcCidrsList;
 }
-export const UpdateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     peeringId: S.Number.pipe(T.Label()),
@@ -7694,7 +7572,7 @@ export const UpdateVpcPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateVpcPeeringRequest" }) as any as S.Schema<UpdateVpcPeeringRequest>;
 
 export interface UpdateVpcPeeringResponse {}
-export const UpdateVpcPeeringResponse =
+const UpdateVpcPeeringResponse =
   AcceptTgwResourceShareResponse as any as S.Schema<UpdateVpcPeeringResponse>;
 
 export interface UpgradeDatabaseRedisVersionRequest {
@@ -7705,7 +7583,7 @@ export interface UpgradeDatabaseRedisVersionRequest {
   /** The target Redis version the database will be upgraded to. Use GET /subscriptions/redis-versions to get a list of available Redis versions. */
   targetRedisVersion: string;
 }
-export const UpgradeDatabaseRedisVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeDatabaseRedisVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),
@@ -7729,7 +7607,7 @@ export interface UpgradeEssentialsDatabaseRedisVersionRequest {
   /** The target Redis version the database will be upgraded to. Use GET /subscriptions/redis-versions to get a list of available Redis versions. */
   targetRedisVersion: string;
 }
-export const UpgradeEssentialsDatabaseRedisVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeEssentialsDatabaseRedisVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.Number.pipe(T.Label()),
     databaseId: S.Number.pipe(T.Label()),

@@ -9,14 +9,10 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
-export const RecurrenceIntervalEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type CreateReminderRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-export const CreateReminderRequestRecurrenceInterval =
+const CreateReminderRequestRecurrenceInterval =
   S.Unknown as any as S.Schema<CreateReminderRequestRecurrenceInterval>;
 
 export interface CreateReminderRequest {
@@ -44,7 +40,7 @@ export interface CreateReminderRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-export const CreateReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String,
     team: S.optional(S.NullOr(S.Number)),
@@ -63,14 +59,14 @@ export const CreateReminderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type ReminderRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-export const ReminderRecurrenceInterval = S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
+const ReminderRecurrenceInterval = S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
 
 /** * `active` - Active * `completed` - Completed * `errored` - Errored */
 export type ReminderStatusEnum = "active" | "completed" | "errored";
-export const ReminderStatusEnum = S.String;
+const ReminderStatusEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -86,11 +82,8 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -103,7 +96,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -149,7 +142,7 @@ export interface Reminder {
   created_at: string;
   updated_at: string | null;
 }
-export const Reminder = /*@__PURE__*/ S.suspend(() =>
+const Reminder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organization: S.String,
@@ -177,7 +170,7 @@ export interface GetReminderRequest {
   /** A UUID string identifying this reminder. */
   id: string;
 }
-export const GetReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/reminders/{id}/", code: 200 })),
@@ -189,7 +182,7 @@ export interface ListRemindersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListRemindersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRemindersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -197,7 +190,7 @@ export const ListRemindersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRemindersRequest" }) as any as S.Schema<ListRemindersRequest>;
 
 export type PaginatedReminderListResultsList = Array<Reminder>;
-export const PaginatedReminderListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReminderListResultsList = /*@__PURE__*/ S.Array(
   Reminder,
 ) as any as S.Schema<PaginatedReminderListResultsList>;
 
@@ -207,7 +200,7 @@ export interface PaginatedReminderList {
   previous?: string | null;
   results: PaginatedReminderListResultsList;
 }
-export const PaginatedReminderList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReminderList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -220,20 +213,20 @@ export interface RemindersDestroyRequest {
   /** A UUID string identifying this reminder. */
   id: string;
 }
-export const RemindersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const RemindersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/reminders/{id}/", code: 200 })),
 ).annotate({ identifier: "RemindersDestroyRequest" }) as any as S.Schema<RemindersDestroyRequest>;
 
 export interface RemindersDestroyResponse {}
-export const RemindersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RemindersDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RemindersDestroyResponse",
 }) as any as S.Schema<RemindersDestroyResponse>;
 
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type UpdateReminderRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-export const UpdateReminderRequestRecurrenceInterval =
+const UpdateReminderRequestRecurrenceInterval =
   S.Unknown as any as S.Schema<UpdateReminderRequestRecurrenceInterval>;
 
 export interface UpdateReminderRequest {
@@ -263,7 +256,7 @@ export interface UpdateReminderRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-export const UpdateReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     organization: S.String,
@@ -283,7 +276,7 @@ export const UpdateReminderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type UpdateRemindersPartialRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-export const UpdateRemindersPartialRequestRecurrenceInterval =
+const UpdateRemindersPartialRequestRecurrenceInterval =
   S.Unknown as any as S.Schema<UpdateRemindersPartialRequestRecurrenceInterval>;
 
 export interface UpdateRemindersPartialRequest {
@@ -313,7 +306,7 @@ export interface UpdateRemindersPartialRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-export const UpdateRemindersPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRemindersPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     organization: S.optional(S.String),

@@ -51,7 +51,7 @@ export interface AttachExperienceRequest {
   /** The unique identifier of the product to attach the experience to. */
   product_id: string;
 }
-export const AttachExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     product_id: S.String,
@@ -63,7 +63,7 @@ export interface ExperienceAppIcon {
   /** A pre-optimized URL for rendering this attachment on the client. This should be used for displaying attachments in apps. */
   url: string | null;
 }
-export const ExperienceAppIcon = /*@__PURE__*/ S.suspend(() =>
+const ExperienceAppIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.NullOr(S.String),
   }),
@@ -78,7 +78,7 @@ export interface ExperienceApp {
   /** The display name of this app shown on the app store and in experience navigation. Maximum 30 characters. */
   name: string;
 }
-export const ExperienceApp = /*@__PURE__*/ S.suspend(() =>
+const ExperienceApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icon: S.NullOr(ExperienceAppIcon),
     id: S.String,
@@ -95,7 +95,7 @@ export interface ExperienceCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
-export const ExperienceCompany = /*@__PURE__*/ S.suspend(() =>
+const ExperienceCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     route: S.String,
@@ -105,8 +105,6 @@ export const ExperienceCompany = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom logo image for this experience. Null if no custom logo has been uploaded. */
 export type ExperienceImage = ExperienceAppIcon;
-export const ExperienceImage = ExperienceAppIcon;
-
 /** A product is a digital good or service sold on Whop. Products contain plans for pricing and experiences for content delivery. */
 export interface ExperienceProductsItem {
   /** The unique identifier for the product. */
@@ -116,11 +114,11 @@ export interface ExperienceProductsItem {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const ExperienceProductsItem = ExperienceCompany as any as S.Schema<ExperienceProductsItem>;
+const ExperienceProductsItem = ExperienceCompany as any as S.Schema<ExperienceProductsItem>;
 
 /** The list of products this experience is attached to, which determines which customers have access. Empty if the experience is only visible to authorized company team members. */
 export type ExperienceProductsList = Array<ExperienceProductsItem>;
-export const ExperienceProductsList = /*@__PURE__*/ S.Array(
+const ExperienceProductsList = /*@__PURE__*/ S.Array(
   ExperienceProductsItem,
 ) as any as S.Schema<ExperienceProductsList>;
 
@@ -145,7 +143,7 @@ export interface Experience {
   /** The list of products this experience is attached to, which determines which customers have access. Empty if the experience is only visible to authorized company team members. */
   products: ExperienceProductsList;
 }
-export const Experience = /*@__PURE__*/ S.suspend(() =>
+const Experience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: ExperienceApp,
     company: ExperienceCompany,
@@ -164,7 +162,7 @@ export interface CreateExperienceRequestLogo {
   /** The ID of an existing file object. */
   id: string;
 }
-export const CreateExperienceRequestLogo = /*@__PURE__*/ S.suspend(() =>
+const CreateExperienceRequestLogo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -188,7 +186,7 @@ export interface CreateExperienceRequest {
   /** The unique identifier of the section to place the experience in. */
   section_id?: string | null;
 }
-export const CreateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     app_id: S.String,
@@ -204,14 +202,14 @@ export interface DeleteExperienceRequest {
   /** The unique identifier of the experience to delete. */
   id: string;
 }
-export const DeleteExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/experiences/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteExperienceRequest" }) as any as S.Schema<DeleteExperienceRequest>;
 
 export type DeleteExperienceResponse = boolean;
-export const DeleteExperienceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteExperienceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteExperienceResponse" }) as any as S.Schema<DeleteExperienceResponse>;
 
@@ -221,7 +219,7 @@ export interface DetachExperienceRequest {
   /** The unique identifier of the product to detach the experience from. */
   product_id: string;
 }
-export const DetachExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     product_id: S.String,
@@ -234,7 +232,7 @@ export interface DuplicateExperienceRequest {
   /** The display name for the duplicated experience. Defaults to the original experience's name. */
   name?: string | null;
 }
-export const DuplicateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -247,7 +245,7 @@ export interface GetExperienceRequest {
   /** The unique identifier of the experience. */
   id: string;
 }
-export const GetExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/experiences/{id}", code: 200 })),
@@ -264,7 +262,7 @@ export interface ListExperienceRequest {
   created_after?: string;
   account_id: string;
 }
-export const ListExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -280,20 +278,12 @@ export const ListExperienceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The icon image for this app, displayed on the app store, product pages, checkout, and as the default icon for experiences using this app. */
 export type ExperienceListItemAppIcon = ExperienceAppIcon;
-export const ExperienceListItemAppIcon = ExperienceAppIcon;
-
 /** The app that powers this experience, defining its interface and behavior. */
 export type ExperienceListItemApp = ExperienceApp;
-export const ExperienceListItemApp = ExperienceApp;
-
 /** The company that owns this experience. */
 export type ExperienceListItemCompany = ExperienceCompany;
-export const ExperienceListItemCompany = ExperienceCompany;
-
 /** The custom logo image for this experience. Null if no custom logo has been uploaded. */
 export type ExperienceListItemImage = ExperienceAppIcon;
-export const ExperienceListItemImage = ExperienceAppIcon;
-
 /** An experience is a feature or content module within a product, such as a chat, course, or custom app. */
 export interface ExperienceListItem {
   /** The app that powers this experience, defining its interface and behavior. */
@@ -313,7 +303,7 @@ export interface ExperienceListItem {
   /** The sort position of this experience within its section. Lower values appear first. Null if no position has been set. */
   order: string | null;
 }
-export const ExperienceListItem = /*@__PURE__*/ S.suspend(() =>
+const ExperienceListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: ExperienceApp,
     company: ExperienceCompany,
@@ -328,7 +318,7 @@ export const ExperienceListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListExperienceResponseDataList = Array<ExperienceListItem>;
-export const ListExperienceResponseDataList = /*@__PURE__*/ S.Array(
+const ListExperienceResponseDataList = /*@__PURE__*/ S.Array(
   ExperienceListItem,
 ) as any as S.Schema<ListExperienceResponseDataList>;
 
@@ -343,7 +333,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -358,7 +348,7 @@ export interface ListExperienceResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListExperienceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExperienceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListExperienceResponseDataList,
     page_info: PageInfo,
@@ -367,12 +357,10 @@ export const ListExperienceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The different access levels for experiences (PUBLIC IS NEVER USED ANYMORE). */
 export type ExperienceAccessLevels = "public" | "private";
-export const ExperienceAccessLevels = S.String;
+const ExperienceAccessLevels = S.String;
 
 /** A logo image displayed alongside the experience name. */
 export type UpdateExperienceRequestLogo = CreateExperienceRequestLogo;
-export const UpdateExperienceRequestLogo = CreateExperienceRequestLogo;
-
 export interface UpdateExperienceRequest {
   /** The unique identifier of the experience to update. */
   id: string;
@@ -391,7 +379,7 @@ export interface UpdateExperienceRequest {
   /** The unique identifier of the section to move the experience into. */
   section_id?: string | null;
 }
-export const UpdateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperienceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     access_level: S.optional(S.NullOr(ExperienceAccessLevels)),

@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
+const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
 
 export type BlockchainNodeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -102,16 +102,16 @@ export type BlockchainNodeStateEnum =
   | "REPAIRING"
   | "RECONCILING"
   | "SYNCING";
-export const BlockchainNodeStateEnum = S.String;
+const BlockchainNodeStateEnum = S.String;
 
 export type BlockchainNodeBlockchainTypeEnum = "BLOCKCHAIN_TYPE_UNSPECIFIED" | "ETHEREUM";
-export const BlockchainNodeBlockchainTypeEnum = S.String;
+const BlockchainNodeBlockchainTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type EthereumDetailsNodeTypeEnum = "NODE_TYPE_UNSPECIFIED" | "LIGHT" | "FULL" | "ARCHIVE";
-export const EthereumDetailsNodeTypeEnum = S.String;
+const EthereumDetailsNodeTypeEnum = S.String;
 
 export type EthereumDetailsNetworkEnum =
   | "NETWORK_UNSPECIFIED"
@@ -119,7 +119,7 @@ export type EthereumDetailsNetworkEnum =
   | "TESTNET_GOERLI_PRATER"
   | "TESTNET_SEPOLIA"
   | "TESTNET_HOLESKY";
-export const EthereumDetailsNetworkEnum = S.String;
+const EthereumDetailsNetworkEnum = S.String;
 
 /** Contains endpoint information specific to Ethereum nodes. */
 export interface EthereumEndpoints {
@@ -130,7 +130,7 @@ export interface EthereumEndpoints {
   /** Output only. The assigned URL for the node's execution client's Prometheus metrics endpoint. */
   executionClientPrometheusMetricsApiEndpoint?: string;
 }
-export const EthereumEndpoints = /*@__PURE__*/ S.suspend(() =>
+const EthereumEndpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beaconApiEndpoint: S.optional(S.String),
     beaconPrometheusMetricsApiEndpoint: S.optional(S.String),
@@ -142,14 +142,14 @@ export type GethDetailsGarbageCollectionModeEnum =
   | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
   | "FULL"
   | "ARCHIVE";
-export const GethDetailsGarbageCollectionModeEnum = S.String;
+const GethDetailsGarbageCollectionModeEnum = S.String;
 
 /** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
 export interface GethDetails {
   /** Immutable. Blockchain garbage collection mode. */
   garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum | (string & {});
 }
-export const GethDetails = /*@__PURE__*/ S.suspend(() =>
+const GethDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     garbageCollectionMode: S.optional(GethDetailsGarbageCollectionModeEnum),
   }),
@@ -159,13 +159,13 @@ export type EthereumDetailsConsensusClientEnum =
   | "CONSENSUS_CLIENT_UNSPECIFIED"
   | "LIGHTHOUSE"
   | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
-export const EthereumDetailsConsensusClientEnum = S.String;
+const EthereumDetailsConsensusClientEnum = S.String;
 
 export type EthereumDetailsExecutionClientEnum = "EXECUTION_CLIENT_UNSPECIFIED" | "GETH" | "ERIGON";
-export const EthereumDetailsExecutionClientEnum = S.String;
+const EthereumDetailsExecutionClientEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
 export interface ValidatorConfig {
@@ -176,7 +176,7 @@ export interface ValidatorConfig {
   /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
   mevRelayUrls?: StringList;
 }
-export const ValidatorConfig = /*@__PURE__*/ S.suspend(() =>
+const ValidatorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beaconFeeRecipient: S.optional(S.String),
     managedValidatorClient: S.optional(S.Boolean),
@@ -205,7 +205,7 @@ export interface EthereumDetails {
   /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
   validatorConfig?: ValidatorConfig;
 }
-export const EthereumDetails = /*@__PURE__*/ S.suspend(() =>
+const EthereumDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiEnableAdmin: S.optional(S.Boolean),
     nodeType: S.optional(EthereumDetailsNodeTypeEnum),
@@ -226,7 +226,7 @@ export interface EndpointInfo {
   /** Output only. The assigned URL for the node WebSockets API endpoint. */
   websocketsApiEndpoint?: string;
 }
-export const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
+const EndpointInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonRpcApiEndpoint: S.optional(S.String),
     websocketsApiEndpoint: S.optional(S.String),
@@ -240,7 +240,7 @@ export interface ConnectionInfo {
   /** Output only. The endpoint information through which to interact with a blockchain node. */
   endpointInfo?: EndpointInfo;
 }
-export const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
+const ConnectionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAttachment: S.optional(S.String),
     endpointInfo: S.optional(EndpointInfo),
@@ -268,7 +268,7 @@ export interface BlockchainNode {
   /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
   privateServiceConnectEnabled?: boolean;
 }
-export const BlockchainNode = /*@__PURE__*/ S.suspend(() =>
+const BlockchainNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(BlockchainNodeStateEnum),
     name: S.optional(S.String),
@@ -292,7 +292,7 @@ export interface CreateProjectsLocationsBlockchainNodesRequest {
   /** Request body */
   body?: BlockchainNode;
 }
-export const CreateProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockchainNodeId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -310,15 +310,10 @@ export const CreateProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateProjectsLocationsBlockchainNodesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -329,7 +324,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -350,7 +345,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -366,7 +361,7 @@ export interface DeleteProjectsLocationsBlockchainNodesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -385,7 +380,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -403,7 +398,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -430,7 +425,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -444,7 +439,7 @@ export interface GetProjectsLocationsBlockchainNodesRequest {
   /** Required. The fully qualified name of the blockchain node to fetch. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name: string;
 }
-export const GetProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -462,7 +457,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -488,7 +483,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -507,7 +502,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -516,7 +511,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -535,7 +530,7 @@ export interface ListProjectsLocationsBlockchainNodesRequest {
   /** Filtering results. */
   filter?: string;
 }
-export const ListProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -554,7 +549,7 @@ export const ListProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>;
 
 export type BlockchainNodeList = Array<BlockchainNode>;
-export const BlockchainNodeList = /*@__PURE__*/ S.Array(
+const BlockchainNodeList = /*@__PURE__*/ S.Array(
   BlockchainNode,
 ) as any as S.Schema<BlockchainNodeList>;
 
@@ -567,7 +562,7 @@ export interface ListBlockchainNodesResponse {
   /** The list of nodes */
   blockchainNodes?: BlockchainNodeList;
 }
-export const ListBlockchainNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBlockchainNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -587,7 +582,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -605,7 +600,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -614,7 +609,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -631,7 +626,7 @@ export interface PatchProjectsLocationsBlockchainNodesRequest {
   /** Request body */
   body?: BlockchainNode;
 }
-export const PatchProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),

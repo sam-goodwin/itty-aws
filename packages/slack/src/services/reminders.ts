@@ -20,7 +20,7 @@ export interface AddReminderRequest {
   /** Specify the repeating behavior of a reminder. Available options: `daily`, `weekly`, `monthly`, or `yearly`. If `weekly`, may further specify the days of the week. */
   recurrence?: unknown;
 }
-export const AddReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const AddReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     time: S.String,
@@ -35,7 +35,7 @@ export interface AddReminderResponse {
   ok: boolean;
   reminder: unknown;
 }
-export const AddReminderResponse = /*@__PURE__*/ S.suspend(() =>
+const AddReminderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     reminder: S.Unknown,
@@ -48,7 +48,7 @@ export interface CompleteReminderRequest {
   /** Encoded team id, required if org token is used */
   team_id?: string;
 }
-export const CompleteReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reminder: S.String,
     team_id: S.optional(S.String),
@@ -59,7 +59,7 @@ export interface CompleteReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const CompleteReminderResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteReminderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -71,7 +71,7 @@ export interface DeleteReminderRequest {
   /** Encoded team id, required if org token is used */
   team_id?: string;
 }
-export const DeleteReminderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReminderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reminder: S.String,
     team_id: S.optional(S.String),
@@ -82,21 +82,20 @@ export interface DeleteReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const DeleteReminderResponse =
-  CompleteReminderResponse as any as S.Schema<DeleteReminderResponse>;
+const DeleteReminderResponse = CompleteReminderResponse as any as S.Schema<DeleteReminderResponse>;
 
 export interface ListRemindersRequest {
   /** Encoded team id, required if org token is passed */
   team_id?: string;
 }
-export const ListRemindersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRemindersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/reminders.list", code: 200 })),
 ).annotate({ identifier: "ListRemindersRequest" }) as any as S.Schema<ListRemindersRequest>;
 
 export type ListRemindersResponseRemindersList = Array<unknown>;
-export const ListRemindersResponseRemindersList = /*@__PURE__*/ S.Array(
+const ListRemindersResponseRemindersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ListRemindersResponseRemindersList>;
 
@@ -105,7 +104,7 @@ export interface ListRemindersResponse {
   ok: boolean;
   reminders?: ListRemindersResponseRemindersList;
 }
-export const ListRemindersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRemindersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     reminders: S.optional(ListRemindersResponseRemindersList),
@@ -118,7 +117,7 @@ export interface RemindersInfoRequest {
   /** Encoded team id, required if org token is passed */
   team_id?: string;
 }
-export const RemindersInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const RemindersInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reminder: S.String.pipe(T.Query()),
     team_id: S.optional(S.String.pipe(T.Query())),
@@ -130,7 +129,7 @@ export interface RemindersInfoResponse {
   ok: boolean;
   reminder: unknown;
 }
-export const RemindersInfoResponse = AddReminderResponse as any as S.Schema<RemindersInfoResponse>;
+const RemindersInfoResponse = AddReminderResponse as any as S.Schema<RemindersInfoResponse>;
 
 export type AddReminderError = SlackOpError;
 /** Creates a reminder. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_add_bot` -- Reminders can't be sent to bots. - `cannot_add_others` -- Guests can't set reminders for other team members. - `cannot_add_others_recurring` -- Recurring reminders can't be set for other team members. - `cannot_add_profile_only_user` -- Reminders can't be sent to profile only users. - `cannot_add_slackbot` -- Reminders can't be sent to Slackbot. - `cannot_parse` -- The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: `1458678068`, `20`, `in 5 minutes`, `tomorrow`, `at 3:30pm`, `on Tuesday`, or `next week`. - `missing_argument` -- An argument is missing. - `user_not_found` -- That user can't be found. See https://docs.slack.dev/reference/methods/reminders.add */

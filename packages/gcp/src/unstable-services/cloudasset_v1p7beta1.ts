@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   | "CONTENT_TYPE_UNSPECIFIED"
@@ -71,20 +71,20 @@ export type GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum =
   | "ORG_POLICY"
   | "ACCESS_POLICY"
   | "RELATIONSHIP";
-export const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum = S.String;
+const GoogleCloudAssetV1p7beta1ExportAssetsRequestContentTypeEnum = S.String;
 
 export type GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum =
   | "PARTITION_KEY_UNSPECIFIED"
   | "READ_TIME"
   | "REQUEST_TIME";
-export const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum = S.String;
+const GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum = S.String;
 
 /** Specifications of BigQuery partitioned table as export destination. */
 export interface GoogleCloudAssetV1p7beta1PartitionSpec {
   /** The partition key for BigQuery partitioned table. */
   partitionKey?: GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum | (string & {});
 }
-export const GoogleCloudAssetV1p7beta1PartitionSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1p7beta1PartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionKey: S.optional(GoogleCloudAssetV1p7beta1PartitionSpecPartitionKeyEnum),
   }),
@@ -105,7 +105,7 @@ export interface GoogleCloudAssetV1p7beta1BigQueryDestination {
   /** Required. The BigQuery table to which the snapshot result should be written. If this table does not exist, a new table with the given name will be created. */
   table?: string;
 }
-export const GoogleCloudAssetV1p7beta1BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1p7beta1BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     separateTablesPerAssetType: S.optional(S.Boolean),
     force: S.optional(S.Boolean),
@@ -124,7 +124,7 @@ export interface GoogleCloudAssetV1p7beta1GcsDestination {
   /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. */
   uri?: string;
 }
-export const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1p7beta1GcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
     uri: S.optional(S.String),
@@ -140,7 +140,7 @@ export interface GoogleCloudAssetV1p7beta1OutputConfig {
   /** Destination on Cloud Storage. */
   gcsDestination?: GoogleCloudAssetV1p7beta1GcsDestination;
 }
-export const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1p7beta1OutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(GoogleCloudAssetV1p7beta1BigQueryDestination),
     gcsDestination: S.optional(GoogleCloudAssetV1p7beta1GcsDestination),
@@ -162,7 +162,7 @@ export interface GoogleCloudAssetV1p7beta1ExportAssetsRequest {
   /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. If specified, it will snapshot [asset_types]' specified relationships, or give errors if any relationship_types' supported types are not in [asset_types]. If not specified, it will snapshot all [asset_types]' supported relationships. An unspecified [asset_types] field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
   relationshipTypes?: StringList;
 }
-export const GoogleCloudAssetV1p7beta1ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudAssetV1p7beta1ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     assetTypes: S.optional(StringList),
@@ -180,7 +180,7 @@ export interface ExportAssetsV1p7beta1Request {
   /** Request body */
   body?: GoogleCloudAssetV1p7beta1ExportAssetsRequest;
 }
-export const ExportAssetsV1p7beta1Request = /*@__PURE__*/ S.suspend(() =>
+const ExportAssetsV1p7beta1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudAssetV1p7beta1ExportAssetsRequest.pipe(T.HttpBody())),
@@ -196,15 +196,10 @@ export const ExportAssetsV1p7beta1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportAssetsV1p7beta1Request>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -215,7 +210,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -236,7 +231,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -250,7 +245,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(

@@ -65,7 +65,7 @@ export interface CalculateFoldersContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateFoldersContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateFoldersContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -85,19 +85,16 @@ export type ConfigModuleEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const ConfigModuleEnablementStateEnum = S.String;
+const ConfigModuleEnablementStateEnum = S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export interface Config {
   moduleEnablementState?: ConfigModuleEnablementStateEnum | (string & {});
   value?: DocumentMap;
 }
-export const Config = /*@__PURE__*/ S.suspend(() =>
+const Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleEnablementState: S.optional(ConfigModuleEnablementStateEnum),
     value: S.optional(DocumentMap),
@@ -105,14 +102,14 @@ export const Config = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Config" }) as any as S.Schema<Config>;
 
 export type ConfigMap = { [key: string]: Config | undefined };
-export const ConfigMap = /*@__PURE__*/ S.Record(S.String, Config) as any as S.Schema<ConfigMap>;
+const ConfigMap = /*@__PURE__*/ S.Record(S.String, Config) as any as S.Schema<ConfigMap>;
 
 export type ContainerThreatDetectionSettingsServiceEnablementStateEnum =
   | "ENABLEMENT_STATE_UNSPECIFIED"
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const ContainerThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+const ContainerThreatDetectionSettingsServiceEnablementStateEnum = S.String;
 
 export interface ContainerThreatDetectionSettings {
   modules?: ConfigMap;
@@ -123,7 +120,7 @@ export interface ContainerThreatDetectionSettings {
     | ContainerThreatDetectionSettingsServiceEnablementStateEnum
     | (string & {});
 }
-export const ContainerThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+const ContainerThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modules: S.optional(ConfigMap),
     serviceAccount: S.optional(S.String),
@@ -139,7 +136,7 @@ export interface CalculateFoldersEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateFoldersEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -159,7 +156,7 @@ export type EventThreatDetectionSettingsServiceEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const EventThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+const EventThreatDetectionSettingsServiceEnablementStateEnum = S.String;
 
 export interface EventThreatDetectionSettings {
   modules?: ConfigMap;
@@ -167,7 +164,7 @@ export interface EventThreatDetectionSettings {
   updateTime?: string;
   name?: string;
 }
-export const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modules: S.optional(ConfigMap),
     serviceEnablementState: S.optional(EventThreatDetectionSettingsServiceEnablementStateEnum),
@@ -181,17 +178,16 @@ export const EventThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
 export interface CalculateFoldersRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
-export const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const CalculateFoldersRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateFoldersRapidVulnerabilityDetectionSettingsRequest",
 }) as any as S.Schema<CalculateFoldersRapidVulnerabilityDetectionSettingsRequest>;
@@ -201,7 +197,7 @@ export type RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum = S.String;
+const RapidVulnerabilityDetectionSettingsServiceEnablementStateEnum = S.String;
 
 export interface RapidVulnerabilityDetectionSettings {
   modules?: ConfigMap;
@@ -211,7 +207,7 @@ export interface RapidVulnerabilityDetectionSettings {
     | (string & {});
   updateTime?: string;
 }
-export const RapidVulnerabilityDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+const RapidVulnerabilityDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modules: S.optional(ConfigMap),
     name: S.optional(S.String),
@@ -228,7 +224,7 @@ export interface CalculateFoldersSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateFoldersSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -248,7 +244,7 @@ export type SecurityHealthAnalyticsSettingsServiceEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum = S.String;
+const SecurityHealthAnalyticsSettingsServiceEnablementStateEnum = S.String;
 
 export interface SecurityHealthAnalyticsSettings {
   serviceAccount?: string;
@@ -259,7 +255,7 @@ export interface SecurityHealthAnalyticsSettings {
     | SecurityHealthAnalyticsSettingsServiceEnablementStateEnum
     | (string & {});
 }
-export const SecurityHealthAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
+const SecurityHealthAnalyticsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     modules: S.optional(ConfigMap),
@@ -275,18 +271,17 @@ export interface CalculateFoldersVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const CalculateFoldersVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateFoldersVirtualMachineThreatDetectionSettingsRequest",
 }) as any as S.Schema<CalculateFoldersVirtualMachineThreatDetectionSettingsRequest>;
@@ -296,7 +291,7 @@ export type VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum = S.String;
+const VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum = S.String;
 
 export interface VirtualMachineThreatDetectionSettings {
   serviceEnablementState?:
@@ -307,7 +302,7 @@ export interface VirtualMachineThreatDetectionSettings {
   serviceAccount?: string;
   modules?: ConfigMap;
 }
-export const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineThreatDetectionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceEnablementState: S.optional(
       VirtualMachineThreatDetectionSettingsServiceEnablementStateEnum,
@@ -325,7 +320,7 @@ export interface CalculateFoldersWebSecurityScannerSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateFoldersWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateFoldersWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -345,7 +340,7 @@ export type WebSecurityScannerSettingsServiceEnablementStateEnum =
   | "INHERITED"
   | "ENABLED"
   | "DISABLED";
-export const WebSecurityScannerSettingsServiceEnablementStateEnum = S.String;
+const WebSecurityScannerSettingsServiceEnablementStateEnum = S.String;
 
 export interface WebSecurityScannerSettings {
   updateTime?: string;
@@ -353,7 +348,7 @@ export interface WebSecurityScannerSettings {
   modules?: ConfigMap;
   name?: string;
 }
-export const WebSecurityScannerSettings = /*@__PURE__*/ S.suspend(() =>
+const WebSecurityScannerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     serviceEnablementState: S.optional(WebSecurityScannerSettingsServiceEnablementStateEnum),
@@ -368,31 +363,47 @@ export interface CalculateOrganizationsContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateOrganizationsContainerThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsContainerThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
+const CalculateOrganizationsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CalculateOrganizationsContainerThreatDetectionSettingsRequest",
+}) as any as S.Schema<CalculateOrganizationsContainerThreatDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsEventThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
+const CalculateOrganizationsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CalculateOrganizationsEventThreatDetectionSettingsRequest",
+}) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
+
+export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest {
+  name: string;
+}
+const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
         method: "GET",
@@ -401,43 +412,24 @@ export const CalculateOrganizationsEventThreatDetectionSettingsRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "CalculateOrganizationsEventThreatDetectionSettingsRequest",
-}) as any as S.Schema<CalculateOrganizationsEventThreatDetectionSettingsRequest>;
-
-export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest {
-  name: string;
-}
-export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
+  identifier: "CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest",
+}) as any as S.Schema<CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest",
 }) as any as S.Schema<CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest>;
@@ -446,8 +438,8 @@ export interface CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequ
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -458,15 +450,15 @@ export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest 
         baseUrl: "https://securitycenter.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
+).annotate({
+  identifier: "CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest",
+}) as any as S.Schema<CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest>;
 
 export interface CalculateOrganizationsWebSecurityScannerSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateOrganizationsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateOrganizationsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -485,18 +477,17 @@ export interface CalculateProjectsContainerThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateProjectsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const CalculateProjectsContainerThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateProjectsContainerThreatDetectionSettingsRequest",
 }) as any as S.Schema<CalculateProjectsContainerThreatDetectionSettingsRequest>;
@@ -505,7 +496,7 @@ export interface CalculateProjectsEventThreatDetectionSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateProjectsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateProjectsEventThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -524,7 +515,7 @@ export interface CalculateProjectsLocationsClustersContainerThreatDetectionSetti
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest =
+const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -543,17 +534,16 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
 export interface CalculateProjectsRapidVulnerabilityDetectionSettingsRequest {
   name: string;
 }
-export const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const CalculateProjectsRapidVulnerabilityDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CalculateProjectsRapidVulnerabilityDetectionSettingsRequest",
 }) as any as S.Schema<CalculateProjectsRapidVulnerabilityDetectionSettingsRequest>;
@@ -562,7 +552,7 @@ export interface CalculateProjectsSecurityHealthAnalyticsSettingsRequest {
   showEligibleModulesOnly?: boolean;
   name: string;
 }
-export const CalculateProjectsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateProjectsSecurityHealthAnalyticsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -581,27 +571,26 @@ export interface CalculateProjectsVirtualMachineThreatDetectionSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}:calculate",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CalculateProjectsVirtualMachineThreatDetectionSettingsRequest",
-  }) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
+const CalculateProjectsVirtualMachineThreatDetectionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}:calculate",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CalculateProjectsVirtualMachineThreatDetectionSettingsRequest",
+}) as any as S.Schema<CalculateProjectsVirtualMachineThreatDetectionSettingsRequest>;
 
 export interface CalculateProjectsWebSecurityScannerSettingsRequest {
   name: string;
   showEligibleModulesOnly?: boolean;
 }
-export const CalculateProjectsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CalculateProjectsWebSecurityScannerSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     showEligibleModulesOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -619,7 +608,7 @@ export const CalculateProjectsWebSecurityScannerSettingsRequest = /*@__PURE__*/ 
 export interface GetContainerThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -636,7 +625,7 @@ export const GetContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S
 export interface GetContainerThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -653,7 +642,7 @@ export const GetContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE
 export interface GetContainerThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -670,8 +659,8 @@ export const GetContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ 
 export interface GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
   name: string;
 }
-export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -681,14 +670,14 @@ export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest
         baseUrl: "https://securitycenter.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest",
-  }) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
+).annotate({
+  identifier: "GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest",
+}) as any as S.Schema<GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest>;
 
 export interface GetEventThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -705,7 +694,7 @@ export const GetEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.sus
 export interface GetEventThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -722,7 +711,7 @@ export const GetEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/
 export interface GetEventThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -739,7 +728,7 @@ export const GetEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.su
 export interface GetRapidVulnerabilityDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -756,17 +745,16 @@ export const GetRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*
 export interface GetRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetRapidVulnerabilityDetectionSettingsOrganizationsRequest",
 }) as any as S.Schema<GetRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
@@ -774,7 +762,7 @@ export const GetRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__P
 export interface GetRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -791,7 +779,7 @@ export const GetRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__
 export interface GetSecurityCenterSettingsFoldersRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityCenterSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -812,7 +800,7 @@ export interface SecurityCenterSettings {
   logSinkProject?: string;
   orgServiceAccount?: string;
 }
-export const SecurityCenterSettings = /*@__PURE__*/ S.suspend(() =>
+const SecurityCenterSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoKeyName: S.optional(S.String),
     onboardingTime: S.optional(S.String),
@@ -825,7 +813,7 @@ export const SecurityCenterSettings = /*@__PURE__*/ S.suspend(() =>
 export interface GetSecurityCenterSettingsOrganizationsRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityCenterSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -842,7 +830,7 @@ export const GetSecurityCenterSettingsOrganizationsRequest = /*@__PURE__*/ S.sus
 export interface GetSecurityCenterSettingsProjectsRequest {
   name: string;
 }
-export const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -859,7 +847,7 @@ export const GetSecurityCenterSettingsProjectsRequest = /*@__PURE__*/ S.suspend(
 export interface GetSecurityHealthAnalyticsSettingsFoldersRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -876,7 +864,7 @@ export const GetSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.
 export interface GetSecurityHealthAnalyticsSettingsOrganizationsRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -893,7 +881,7 @@ export const GetSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE_
 export interface GetSecurityHealthAnalyticsSettingsProjectsRequest {
   name: string;
 }
-export const GetSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -910,7 +898,7 @@ export const GetSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S
 export interface GetSubscriptionOrganizationsRequest {
   name: string;
 }
-export const GetSubscriptionOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -930,7 +918,7 @@ export type SubscriptionTierEnum =
   | "PREMIUM"
   | "ENTERPRISE"
   | "ENTERPRISE_MC";
-export const SubscriptionTierEnum = S.String;
+const SubscriptionTierEnum = S.String;
 
 export type DetailsTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -942,14 +930,14 @@ export type DetailsTypeEnum =
   | "SUBSCRIPTION"
   | "SUB_FIXED"
   | "SUB_BASE_OVERAGE";
-export const DetailsTypeEnum = S.String;
+const DetailsTypeEnum = S.String;
 
 export interface Details {
   startTime?: string;
   endTime?: string;
   type?: DetailsTypeEnum;
 }
-export const Details = /*@__PURE__*/ S.suspend(() =>
+const Details = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -962,7 +950,7 @@ export interface Subscription {
   tier?: SubscriptionTierEnum;
   details?: Details;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tier: S.optional(SubscriptionTierEnum),
@@ -973,7 +961,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 export interface GetVirtualMachineThreatDetectionSettingsFoldersRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -990,17 +978,16 @@ export const GetVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE_
 export interface GetVirtualMachineThreatDetectionSettingsOrganizationsRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetVirtualMachineThreatDetectionSettingsOrganizationsRequest",
 }) as any as S.Schema<GetVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
@@ -1008,7 +995,7 @@ export const GetVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@_
 export interface GetVirtualMachineThreatDetectionSettingsProjectsRequest {
   name: string;
 }
-export const GetVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1025,7 +1012,7 @@ export const GetVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE
 export interface GetWebSecurityScannerSettingsFoldersRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1042,7 +1029,7 @@ export const GetWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspe
 export interface GetWebSecurityScannerSettingsOrganizationsRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1059,7 +1046,7 @@ export const GetWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S
 export interface GetWebSecurityScannerSettingsProjectsRequest {
   name: string;
 }
-export const GetWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1079,7 +1066,7 @@ export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContainerThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1101,19 +1088,18 @@ export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const UpdateContainerThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ContainerThreatDetectionSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateContainerThreatDetectionSettingsOrganizationsRequest",
 }) as any as S.Schema<UpdateContainerThreatDetectionSettingsOrganizationsRequest>;
@@ -1124,7 +1110,7 @@ export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContainerThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1146,7 +1132,7 @@ export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClusters
   /** Request body */
   body?: ContainerThreatDetectionSettings;
 }
-export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
+const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1169,7 +1155,7 @@ export interface UpdateEventThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1191,7 +1177,7 @@ export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1213,7 +1199,7 @@ export interface UpdateEventThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: EventThreatDetectionSettings;
 }
-export const UpdateEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1235,7 +1221,7 @@ export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRapidVulnerabilityDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1257,22 +1243,21 @@ export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
+const UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest",
+}) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
   name: string;
@@ -1280,19 +1265,18 @@ export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
   /** Request body */
   body?: RapidVulnerabilityDetectionSettings;
 }
-export const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const UpdateRapidVulnerabilityDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(RapidVulnerabilityDetectionSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateRapidVulnerabilityDetectionSettingsProjectsRequest",
 }) as any as S.Schema<UpdateRapidVulnerabilityDetectionSettingsProjectsRequest>;
@@ -1303,7 +1287,7 @@ export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecurityHealthAnalyticsSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1325,19 +1309,18 @@ export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(SecurityHealthAnalyticsSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest",
 }) as any as S.Schema<UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest>;
@@ -1348,7 +1331,7 @@ export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
   /** Request body */
   body?: SecurityHealthAnalyticsSettings;
 }
-export const UpdateSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecurityHealthAnalyticsSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1370,19 +1353,18 @@ export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const UpdateVirtualMachineThreatDetectionSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateVirtualMachineThreatDetectionSettingsFoldersRequest",
 }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsFoldersRequest>;
@@ -1393,8 +1375,8 @@ export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1406,9 +1388,9 @@ export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest =
         baseUrl: "https://securitycenter.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest",
-  }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
+).annotate({
+  identifier: "UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest",
+}) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest>;
 
 export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
   updateMask?: string;
@@ -1416,19 +1398,18 @@ export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
   /** Request body */
   body?: VirtualMachineThreatDetectionSettings;
 }
-export const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://securitycenter.googleapis.com/",
-      }),
-    ),
+const UpdateVirtualMachineThreatDetectionSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(VirtualMachineThreatDetectionSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://securitycenter.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UpdateVirtualMachineThreatDetectionSettingsProjectsRequest",
 }) as any as S.Schema<UpdateVirtualMachineThreatDetectionSettingsProjectsRequest>;
@@ -1439,7 +1420,7 @@ export interface UpdateWebSecurityScannerSettingsFoldersRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebSecurityScannerSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1461,7 +1442,7 @@ export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebSecurityScannerSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1483,7 +1464,7 @@ export interface UpdateWebSecurityScannerSettingsProjectsRequest {
   /** Request body */
   body?: WebSecurityScannerSettings;
 }
-export const UpdateWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebSecurityScannerSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

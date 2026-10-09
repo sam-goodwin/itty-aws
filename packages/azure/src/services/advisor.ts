@@ -9,15 +9,15 @@ import * as T from "../traits.ts";
 export type { AzureOpError, AzureOpContext };
 
 export type CreateConfigurationInResourceGroupRequestConfigurationName = "default";
-export const CreateConfigurationInResourceGroupRequestConfigurationName = S.String;
+const CreateConfigurationInResourceGroupRequestConfigurationName = S.String;
 
 /** Minimum percentage threshold for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 5 (default), 10, 15 or 20. */
 export type ConfigDataPropertiesLowCpuThreshold = "5" | "10" | "15" | "20";
-export const ConfigDataPropertiesLowCpuThreshold = S.String;
+const ConfigDataPropertiesLowCpuThreshold = S.String;
 
 /** Minimum duration for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 7 (default), 14, 21, 30, 60 or 90. */
 export type ConfigDataPropertiesDuration = "7" | "14" | "21" | "30" | "60" | "90";
-export const ConfigDataPropertiesDuration = S.String;
+const ConfigDataPropertiesDuration = S.String;
 
 export type DigestConfigCategoriesItem =
   | "HighAvailability"
@@ -25,17 +25,17 @@ export type DigestConfigCategoriesItem =
   | "Performance"
   | "Cost"
   | "OperationalExcellence";
-export const DigestConfigCategoriesItem = S.String;
+const DigestConfigCategoriesItem = S.String;
 
 /** Categories to send digest for. If categories are not provided, then digest will be sent for all categories. */
 export type DigestConfigCategoriesList = Array<DigestConfigCategoriesItem | (string & {})>;
-export const DigestConfigCategoriesList = /*@__PURE__*/ S.Array(
+const DigestConfigCategoriesList = /*@__PURE__*/ S.Array(
   DigestConfigCategoriesItem,
 ) as any as S.Schema<DigestConfigCategoriesList>;
 
 /** State of digest configuration. */
 export type DigestConfigState = "Active" | "Disabled";
-export const DigestConfigState = S.String;
+const DigestConfigState = S.String;
 
 /** Advisor Digest configuration entity */
 export interface DigestConfig {
@@ -52,7 +52,7 @@ export interface DigestConfig {
   /** State of digest configuration. */
   state?: DigestConfigState | (string & {});
 }
-export const DigestConfig = /*@__PURE__*/ S.suspend(() =>
+const DigestConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     actionGroupResourceId: S.optional(S.String),
@@ -65,7 +65,7 @@ export const DigestConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Advisor digest configuration. Valid only for subscriptions */
 export type ConfigDataPropertiesDigestsList = Array<DigestConfig>;
-export const ConfigDataPropertiesDigestsList = /*@__PURE__*/ S.Array(
+const ConfigDataPropertiesDigestsList = /*@__PURE__*/ S.Array(
   DigestConfig,
 ) as any as S.Schema<ConfigDataPropertiesDigestsList>;
 
@@ -80,7 +80,7 @@ export interface ConfigDataProperties {
   /** Advisor digest configuration. Valid only for subscriptions */
   digests?: ConfigDataPropertiesDigestsList;
 }
-export const ConfigDataProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfigDataProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.Boolean),
     lowCpuThreshold: S.optional(ConfigDataPropertiesLowCpuThreshold),
@@ -99,7 +99,7 @@ export interface CreateConfigurationInResourceGroupRequest {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const CreateConfigurationInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationInResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroup: S.String.pipe(T.Label()),
@@ -119,11 +119,11 @@ export const CreateConfigurationInResourceGroupRequest = /*@__PURE__*/ S.suspend
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -140,7 +140,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -163,7 +163,7 @@ export interface CreateConfigurationInResourceGroupResponse {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const CreateConfigurationInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationInResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -176,7 +176,7 @@ export const CreateConfigurationInResourceGroupResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateConfigurationInResourceGroupResponse>;
 
 export type CreateConfigurationInSubscriptionRequestConfigurationName = "default";
-export const CreateConfigurationInSubscriptionRequestConfigurationName = S.String;
+const CreateConfigurationInSubscriptionRequestConfigurationName = S.String;
 
 export interface CreateConfigurationInSubscriptionRequest {
   /** The Azure subscription ID. */
@@ -186,7 +186,7 @@ export interface CreateConfigurationInSubscriptionRequest {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const CreateConfigurationInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     configurationName: CreateConfigurationInSubscriptionRequestConfigurationName.pipe(T.Label()),
@@ -215,7 +215,7 @@ export interface CreateConfigurationInSubscriptionResponse {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const CreateConfigurationInSubscriptionResponse =
+const CreateConfigurationInSubscriptionResponse =
   CreateConfigurationInResourceGroupResponse as any as S.Schema<CreateConfigurationInSubscriptionResponse>;
 
 /** The properties of the suppression. */
@@ -225,7 +225,7 @@ export interface SuppressionPropertiesInput {
   /** The duration for which the suppression is valid. */
   ttl?: string;
 }
-export const SuppressionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SuppressionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suppressionId: S.optional(S.String),
     ttl: S.optional(S.String),
@@ -244,7 +244,7 @@ export interface CreateSuppressionRequest {
   /** The properties of the suppression. */
   properties?: SuppressionPropertiesInput;
 }
-export const CreateSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     recommendationId: S.String.pipe(T.Label()),
@@ -269,7 +269,7 @@ export interface SuppressionProperties {
   /** Gets or sets the expiration time stamp. */
   expirationTimeStamp?: string;
 }
-export const SuppressionProperties = /*@__PURE__*/ S.suspend(() =>
+const SuppressionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suppressionId: S.optional(S.String),
     ttl: S.optional(S.String),
@@ -289,7 +289,7 @@ export interface CreateSuppressionResponse {
   /** The properties of the suppression. */
   properties?: SuppressionProperties;
 }
-export const CreateSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface DeleteSuppressionRequest {
   /** The name of the suppression. */
   name: string;
 }
-export const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     recommendationId: S.String.pipe(T.Label()),
@@ -325,7 +325,7 @@ export const DeleteSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSuppressionRequest" }) as any as S.Schema<DeleteSuppressionRequest>;
 
 export interface DeleteSuppressionResponse {}
-export const DeleteSuppressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSuppressionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSuppressionResponse",
 }) as any as S.Schema<DeleteSuppressionResponse>;
 
@@ -333,7 +333,7 @@ export interface GenerateRecommendationRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
-export const GenerateRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -349,7 +349,7 @@ export const GenerateRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateRecommendationRequest>;
 
 export interface GenerateRecommendationResponse {}
-export const GenerateRecommendationResponse =
+const GenerateRecommendationResponse =
   DeleteSuppressionResponse as any as S.Schema<GenerateRecommendationResponse>;
 
 export interface GetAdvisorScoreRequest {
@@ -358,7 +358,7 @@ export interface GetAdvisorScoreRequest {
   /** The scope of Advisor score entity. */
   name: string;
 }
-export const GetAdvisorScoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdvisorScoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -387,7 +387,7 @@ export interface ScoreEntity {
   /** The count of impacted categories. */
   categoryCount?: number;
 }
-export const ScoreEntity = /*@__PURE__*/ S.suspend(() =>
+const ScoreEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     score: S.optional(S.Number),
@@ -400,11 +400,11 @@ export const ScoreEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The aggregation level of the score. */
 export type TimeSeriesEntityItemAggregationLevel = "week" | "day" | "month";
-export const TimeSeriesEntityItemAggregationLevel = S.String;
+const TimeSeriesEntityItemAggregationLevel = S.String;
 
 /** The past score data */
 export type TimeSeriesEntityItemScoreHistoryList = Array<ScoreEntity>;
-export const TimeSeriesEntityItemScoreHistoryList = /*@__PURE__*/ S.Array(
+const TimeSeriesEntityItemScoreHistoryList = /*@__PURE__*/ S.Array(
   ScoreEntity,
 ) as any as S.Schema<TimeSeriesEntityItemScoreHistoryList>;
 
@@ -415,7 +415,7 @@ export interface TimeSeriesEntityItem {
   /** The past score data */
   scoreHistory?: TimeSeriesEntityItemScoreHistoryList;
 }
-export const TimeSeriesEntityItem = /*@__PURE__*/ S.suspend(() =>
+const TimeSeriesEntityItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationLevel: S.optional(TimeSeriesEntityItemAggregationLevel),
     scoreHistory: S.optional(TimeSeriesEntityItemScoreHistoryList),
@@ -424,7 +424,7 @@ export const TimeSeriesEntityItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The historic data at different aggregation levels. */
 export type TimeSeriesEntity = Array<TimeSeriesEntityItem>;
-export const TimeSeriesEntity = /*@__PURE__*/ S.Array(
+const TimeSeriesEntity = /*@__PURE__*/ S.Array(
   TimeSeriesEntityItem,
 ) as any as S.Schema<TimeSeriesEntity>;
 
@@ -435,7 +435,7 @@ export interface GetAdvisorScoreResponseProperties {
   /** The historic Advisor score data. */
   timeSeries?: TimeSeriesEntity;
 }
-export const GetAdvisorScoreResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetAdvisorScoreResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastRefreshedScore: S.optional(ScoreEntity),
     timeSeries: S.optional(TimeSeriesEntity),
@@ -456,7 +456,7 @@ export interface GetAdvisorScoreResponse {
   /** The Advisor score data. */
   properties?: GetAdvisorScoreResponseProperties;
 }
-export const GetAdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -472,7 +472,7 @@ export interface GetRecommendationRequest {
   /** The recommendation ID. */
   recommendationId: string;
 }
-export const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     recommendationId: S.String.pipe(T.Label()),
@@ -493,7 +493,7 @@ export type RecommendationPropertiesCategory =
   | "Performance"
   | "Cost"
   | "OperationalExcellence";
-export const RecommendationPropertiesCategory = S.String;
+const RecommendationPropertiesCategory = S.String;
 
 /** The sub-category of the recommendation. */
 export type RecommendationPropertiesControl =
@@ -506,22 +506,22 @@ export type RecommendationPropertiesControl =
   | "Other"
   | "PrioritizedRecommendations"
   | "Personalized";
-export const RecommendationPropertiesControl = S.String;
+const RecommendationPropertiesControl = S.String;
 
 /** The business impact of the recommendation. */
 export type RecommendationPropertiesImpact = "High" | "Medium" | "Low";
-export const RecommendationPropertiesImpact = S.String;
+const RecommendationPropertiesImpact = S.String;
 
 /** The recommendation metadata. */
 export type RecommendationPropertiesMetadataMap = { [key: string]: unknown | undefined };
-export const RecommendationPropertiesMetadataMap = /*@__PURE__*/ S.Record(
+const RecommendationPropertiesMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<RecommendationPropertiesMetadataMap>;
 
 /** The potential risk of not implementing the recommendation. */
 export type RecommendationPropertiesRisk = "Error" | "Warning" | "None";
-export const RecommendationPropertiesRisk = S.String;
+const RecommendationPropertiesRisk = S.String;
 
 /** A summary of the recommendation. */
 export interface ShortDescription {
@@ -530,7 +530,7 @@ export interface ShortDescription {
   /** The issue or opportunity identified by the recommendation and proposed solution. */
   solution?: string;
 }
-export const ShortDescription = /*@__PURE__*/ S.suspend(() =>
+const ShortDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     problem: S.optional(S.String),
     solution: S.optional(S.String),
@@ -539,20 +539,20 @@ export const ShortDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of snoozed and dismissed rules for the recommendation. */
 export type RecommendationPropertiesSuppressionIdsList = Array<string>;
-export const RecommendationPropertiesSuppressionIdsList = /*@__PURE__*/ S.Array(
+const RecommendationPropertiesSuppressionIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RecommendationPropertiesSuppressionIdsList>;
 
 /** Extended properties */
 export type RecommendationPropertiesExtendedPropertiesMap = { [key: string]: string | undefined };
-export const RecommendationPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
+const RecommendationPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RecommendationPropertiesExtendedPropertiesMap>;
 
 /** The action to view resource. */
 export type ResourceMetadataActionMap = { [key: string]: unknown | undefined };
-export const ResourceMetadataActionMap =
+const ResourceMetadataActionMap =
   RecommendationPropertiesMetadataMap as any as S.Schema<ResourceMetadataActionMap>;
 
 /** Recommendation resource metadata */
@@ -568,7 +568,7 @@ export interface ResourceMetadata {
   /** The plural user friendly name of resource type. eg: virtual machines */
   plural?: string;
 }
-export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     source: S.optional(S.String),
@@ -579,25 +579,25 @@ export const ResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceMetadata" }) as any as S.Schema<ResourceMetadata>;
 
 export type RecommendationPropertiesActionsItemMap = { [key: string]: unknown | undefined };
-export const RecommendationPropertiesActionsItemMap =
+const RecommendationPropertiesActionsItemMap =
   RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesActionsItemMap>;
 
 /** The list of recommended actions to implement recommendation. */
 export type RecommendationPropertiesActionsList = Array<RecommendationPropertiesActionsItemMap>;
-export const RecommendationPropertiesActionsList = /*@__PURE__*/ S.Array(
+const RecommendationPropertiesActionsList = /*@__PURE__*/ S.Array(
   RecommendationPropertiesActionsItemMap,
 ) as any as S.Schema<RecommendationPropertiesActionsList>;
 
 /** The automated way to apply recommendation. */
 export type RecommendationPropertiesRemediationMap = { [key: string]: unknown | undefined };
-export const RecommendationPropertiesRemediationMap =
+const RecommendationPropertiesRemediationMap =
   RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesRemediationMap>;
 
 /** The recommendation metadata properties exposed to customer to provide additional information. */
 export type RecommendationPropertiesExposedMetadataPropertiesMap = {
   [key: string]: unknown | undefined;
 };
-export const RecommendationPropertiesExposedMetadataPropertiesMap =
+const RecommendationPropertiesExposedMetadataPropertiesMap =
   RecommendationPropertiesMetadataMap as any as S.Schema<RecommendationPropertiesExposedMetadataPropertiesMap>;
 
 /** The properties of the recommendation. */
@@ -643,7 +643,7 @@ export interface RecommendationProperties {
   /** The recommendation metadata properties exposed to customer to provide additional information. */
   exposedMetadataProperties?: RecommendationPropertiesExposedMetadataPropertiesMap;
 }
-export const RecommendationProperties = /*@__PURE__*/ S.suspend(() =>
+const RecommendationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(RecommendationPropertiesCategory),
     control: S.optional(RecommendationPropertiesControl),
@@ -680,7 +680,7 @@ export interface GetRecommendationResponse {
   /** The properties of the recommendation. */
   properties?: RecommendationProperties;
 }
-export const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -696,7 +696,7 @@ export interface GetRecommendationMetadataRequest {
   /** Name of metadata entity. */
   name: string;
 }
-export const GetRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -713,16 +713,14 @@ export const GetRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
-export const MetadataEntityPropertiesDependsOnList =
+const MetadataEntityPropertiesDependsOnList =
   RecommendationPropertiesSuppressionIdsList as any as S.Schema<MetadataEntityPropertiesDependsOnList>;
 
 export type MetadataEntityPropertiesApplicableScenariosItem = "Alerts";
-export const MetadataEntityPropertiesApplicableScenariosItem = S.String;
-
 /** The list of scenarios applicable to this metadata entity. */
 export type MetadataEntityPropertiesApplicableScenariosList =
   Array<MetadataEntityPropertiesApplicableScenariosItem>;
-export const MetadataEntityPropertiesApplicableScenariosList =
+const MetadataEntityPropertiesApplicableScenariosList =
   DigestConfigCategoriesList as any as S.Schema<MetadataEntityPropertiesApplicableScenariosList>;
 
 /** The metadata supported value detail. */
@@ -732,7 +730,7 @@ export interface MetadataSupportedValueDetail {
   /** The display name. */
   displayName?: string;
 }
-export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
+const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -743,7 +741,7 @@ export const MetadataSupportedValueDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of supported values. */
 export type MetadataEntityPropertiesSupportedValuesList = Array<MetadataSupportedValueDetail>;
-export const MetadataEntityPropertiesSupportedValuesList = /*@__PURE__*/ S.Array(
+const MetadataEntityPropertiesSupportedValuesList = /*@__PURE__*/ S.Array(
   MetadataSupportedValueDetail,
 ) as any as S.Schema<MetadataEntityPropertiesSupportedValuesList>;
 
@@ -758,7 +756,7 @@ export interface MetadataEntityProperties {
   /** The list of supported values. */
   supportedValues?: MetadataEntityPropertiesSupportedValuesList;
 }
-export const MetadataEntityProperties = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dependsOn: S.optional(MetadataEntityPropertiesDependsOnList),
@@ -778,7 +776,7 @@ export interface MetadataEntity {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-export const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -795,7 +793,7 @@ export interface GetSuppressionRequest {
   /** The name of the suppression. */
   name: string;
 }
-export const GetSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSuppressionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     recommendationId: S.String.pipe(T.Label()),
@@ -822,7 +820,7 @@ export interface GetSuppressionResponse {
   /** The properties of the suppression. */
   properties?: SuppressionProperties;
 }
-export const GetSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSuppressionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -836,7 +834,7 @@ export interface ListAdvisorScoresRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
-export const ListAdvisorScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdvisorScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -851,8 +849,6 @@ export const ListAdvisorScoresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The Advisor score data. */
 export type AdvisorScoreEntityProperties = GetAdvisorScoreResponseProperties;
-export const AdvisorScoreEntityProperties = GetAdvisorScoreResponseProperties;
-
 /** The details of Advisor score for a single category. */
 export interface AdvisorScoreEntity {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -866,11 +862,11 @@ export interface AdvisorScoreEntity {
   /** The Advisor score data. */
   properties?: GetAdvisorScoreResponseProperties;
 }
-export const AdvisorScoreEntity = GetAdvisorScoreResponse as any as S.Schema<AdvisorScoreEntity>;
+const AdvisorScoreEntity = GetAdvisorScoreResponse as any as S.Schema<AdvisorScoreEntity>;
 
 /** The list of operations. */
 export type AdvisorScoreResponseValueList = Array<AdvisorScoreEntity>;
-export const AdvisorScoreResponseValueList = /*@__PURE__*/ S.Array(
+const AdvisorScoreResponseValueList = /*@__PURE__*/ S.Array(
   AdvisorScoreEntity,
 ) as any as S.Schema<AdvisorScoreResponseValueList>;
 
@@ -878,7 +874,7 @@ export interface AdvisorScoreResponse {
   /** The list of operations. */
   value?: AdvisorScoreResponseValueList;
 }
-export const AdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
+const AdvisorScoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AdvisorScoreResponseValueList),
   }),
@@ -890,7 +886,7 @@ export interface ListConfigurationByResourceGroupRequest {
   /** The name of the Azure resource group. */
   resourceGroup: string;
 }
-export const ListConfigurationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroup: S.String.pipe(T.Label()),
@@ -919,7 +915,7 @@ export interface ConfigData {
   /** The Advisor configuration data structure. */
   properties?: ConfigDataProperties;
 }
-export const ConfigData = /*@__PURE__*/ S.suspend(() =>
+const ConfigData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -931,7 +927,7 @@ export const ConfigData = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of configurations. */
 export type ConfigurationListResultValueList = Array<ConfigData>;
-export const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
+const ConfigurationListResultValueList = /*@__PURE__*/ S.Array(
   ConfigData,
 ) as any as S.Schema<ConfigurationListResultValueList>;
 
@@ -942,7 +938,7 @@ export interface ConfigurationListResult {
   /** The link used to get the next page of configurations. */
   nextLink?: string;
 }
-export const ConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ConfigurationListResultValueList),
     nextLink: S.optional(S.String),
@@ -953,7 +949,7 @@ export interface ListConfigurationBySubscriptionRequest {
   /** The Azure subscription ID. */
   subscriptionId: string;
 }
-export const ListConfigurationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -969,7 +965,7 @@ export const ListConfigurationBySubscriptionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListConfigurationBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -991,7 +987,7 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-export const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -1007,7 +1003,7 @@ export interface OperationEntity {
   /** The operation supported by Advisor. */
   display?: OperationDisplayInfo;
 }
-export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
+const OperationEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplayInfo),
@@ -1016,7 +1012,7 @@ export const OperationEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationEntityListResultValueList = Array<OperationEntity>;
-export const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
+const OperationEntityListResultValueList = /*@__PURE__*/ S.Array(
   OperationEntity,
 ) as any as S.Schema<OperationEntityListResultValueList>;
 
@@ -1027,7 +1023,7 @@ export interface OperationEntityListResult {
   /** The list of operations. */
   value?: OperationEntityListResultValueList;
 }
-export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(OperationEntityListResultValueList),
@@ -1040,7 +1036,7 @@ export interface ListRecommendationMetadataRequest {
   /** The filter to apply to the recommendation metadata.<br>Filter can be applied to properties ['[recommendationCategory](#category)', '[recommendationSubCategory](#recommendationSubCategory)', 'RetirementDate'] with operators ['eq', 'and', 'le', 'ge']<br>The filter can also be applied to property ['[TrackingIds]']<br><br>U+26A0 **Note:** `recommendationControl` is a legacy filter property and will be deprecated in the future. Please use `recommendationSubCategory` for filtering recommendation subcategory.<br><br>Valid options for recommendationSubCategory: ['BusinessContinuity', 'DisasterRecovery', 'HighAvailability', 'MonitoringAndAlerting', 'Other', 'Personalized', 'PrioritizedRecommendations', 'Scalability', 'ServiceUpgradeAndRetirement', 'Validation']<br><br>Example:<br>- $filter=recommendationCategory eq 'HighAvailability' and recommendationSubCategory eq 'ServiceUpgradeAndRetirement' and retirementDate ge '2024-01-01' and retirementDate le '2028-01-01'. Filter can be applied on trackingIds as well.<br>- $filter=trackingIds/any(t: t eq 'some-guid')<br><br>U+26A0 **Note:** `trackingIDs` filter can be used for filtering one value at a time. The support to filter multiple values is not currently available. Also the support to add other filters along with `trackingIDs` is not available. */
   _filter?: string;
 }
-export const ListRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
   }).pipe(
@@ -1057,7 +1053,7 @@ export const ListRecommendationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of metadata entities. */
 export type MetadataEntityListResultValueList = Array<MetadataEntity>;
-export const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
+const MetadataEntityListResultValueList = /*@__PURE__*/ S.Array(
   MetadataEntity,
 ) as any as S.Schema<MetadataEntityListResultValueList>;
 
@@ -1068,7 +1064,7 @@ export interface MetadataEntityListResult {
   /** The link used to get the next page of metadata. */
   nextLink?: string;
 }
-export const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MetadataEntityListResultValueList),
     nextLink: S.optional(S.String),
@@ -1085,7 +1081,7 @@ export interface ListRecommendationsRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1116,12 +1112,12 @@ export interface ResourceRecommendationBase {
   /** The properties of the recommendation. */
   properties?: RecommendationProperties;
 }
-export const ResourceRecommendationBase =
+const ResourceRecommendationBase =
   GetRecommendationResponse as any as S.Schema<ResourceRecommendationBase>;
 
 /** The list of recommendations. */
 export type ResourceRecommendationBaseListResultValueList = Array<ResourceRecommendationBase>;
-export const ResourceRecommendationBaseListResultValueList = /*@__PURE__*/ S.Array(
+const ResourceRecommendationBaseListResultValueList = /*@__PURE__*/ S.Array(
   ResourceRecommendationBase,
 ) as any as S.Schema<ResourceRecommendationBaseListResultValueList>;
 
@@ -1132,7 +1128,7 @@ export interface ResourceRecommendationBaseListResult {
   /** The list of recommendations. */
   value?: ResourceRecommendationBaseListResultValueList;
 }
-export const ResourceRecommendationBaseListResult = /*@__PURE__*/ S.suspend(() =>
+const ResourceRecommendationBaseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ResourceRecommendationBaseListResultValueList),
@@ -1149,7 +1145,7 @@ export interface ListSuppressionsRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-export const ListSuppressionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSuppressionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _top: S.optional(S.Number.pipe(T.Query("$top"))),
@@ -1177,11 +1173,11 @@ export interface SuppressionContract {
   /** The properties of the suppression. */
   properties?: SuppressionProperties;
 }
-export const SuppressionContract = GetSuppressionResponse as any as S.Schema<SuppressionContract>;
+const SuppressionContract = GetSuppressionResponse as any as S.Schema<SuppressionContract>;
 
 /** The list of suppressions. */
 export type SuppressionContractListResultValueList = Array<SuppressionContract>;
-export const SuppressionContractListResultValueList = /*@__PURE__*/ S.Array(
+const SuppressionContractListResultValueList = /*@__PURE__*/ S.Array(
   SuppressionContract,
 ) as any as S.Schema<SuppressionContractListResultValueList>;
 
@@ -1192,7 +1188,7 @@ export interface SuppressionContractListResult {
   /** The list of suppressions. */
   value?: SuppressionContractListResultValueList;
 }
-export const SuppressionContractListResult = /*@__PURE__*/ S.suspend(() =>
+const SuppressionContractListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(SuppressionContractListResultValueList),
@@ -1203,7 +1199,7 @@ export const SuppressionContractListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the prediction. */
 export type PredictionRequestPropertiesPredictionType = "PredictiveRightsizing";
-export const PredictionRequestPropertiesPredictionType = S.String;
+const PredictionRequestPropertiesPredictionType = S.String;
 
 /** Properties given for the predictor. */
 export interface PredictionRequestProperties {
@@ -1212,7 +1208,7 @@ export interface PredictionRequestProperties {
   /** Extended properties are arguments specific for each prediction type. */
   extendedProperties?: unknown;
 }
-export const PredictionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const PredictionRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predictionType: S.optional(PredictionRequestPropertiesPredictionType),
     extendedProperties: S.optional(S.Unknown),
@@ -1227,7 +1223,7 @@ export interface PredictRequest {
   /** Request properties for prediction recommendation. */
   properties?: PredictionRequestProperties;
 }
-export const PredictRequest = /*@__PURE__*/ S.suspend(() =>
+const PredictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     properties: S.optional(PredictionRequestProperties),
@@ -1243,7 +1239,7 @@ export const PredictRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the prediction. */
 export type PredictionResponsePropertiesPredictionType = "PredictiveRightsizing";
-export const PredictionResponsePropertiesPredictionType = S.String;
+const PredictionResponsePropertiesPredictionType = S.String;
 
 /** The category of the recommendation. */
 export type PredictionResponsePropertiesCategory =
@@ -1252,11 +1248,11 @@ export type PredictionResponsePropertiesCategory =
   | "Performance"
   | "Cost"
   | "OperationalExcellence";
-export const PredictionResponsePropertiesCategory = S.String;
+const PredictionResponsePropertiesCategory = S.String;
 
 /** The business impact of the recommendation. */
 export type PredictionResponsePropertiesImpact = "High" | "Medium" | "Low";
-export const PredictionResponsePropertiesImpact = S.String;
+const PredictionResponsePropertiesImpact = S.String;
 
 /** Properties of the prediction */
 export interface PredictionResponseProperties {
@@ -1275,7 +1271,7 @@ export interface PredictionResponseProperties {
   /** A summary of the recommendation. */
   shortDescription?: ShortDescription;
 }
-export const PredictionResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const PredictionResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extendedProperties: S.optional(S.Unknown),
     predictionType: S.optional(PredictionResponsePropertiesPredictionType),
@@ -1294,7 +1290,7 @@ export interface PredictionResponse {
   /** The properties of the prediction. */
   properties?: PredictionResponseProperties;
 }
-export const PredictionResponse = /*@__PURE__*/ S.suspend(() =>
+const PredictionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(PredictionResponseProperties),
   }),
@@ -1306,7 +1302,7 @@ export interface RecommendationsGetGenerateStatusRequest {
   /** The operation ID, which can be found from the Location field in the generate recommendation response header. */
   operationId: string;
 }
-export const RecommendationsGetGenerateStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const RecommendationsGetGenerateStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -1323,7 +1319,7 @@ export const RecommendationsGetGenerateStatusRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RecommendationsGetGenerateStatusRequest>;
 
 export interface RecommendationsGetGenerateStatusResponse {}
-export const RecommendationsGetGenerateStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const RecommendationsGetGenerateStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "RecommendationsGetGenerateStatusResponse",

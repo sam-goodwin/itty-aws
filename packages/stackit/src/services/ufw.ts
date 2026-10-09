@@ -37,7 +37,7 @@ export class NotFound
   ) {}
 
 export type CreateRuleRequestRegionId = "eu01" | "eu02";
-export const CreateRuleRequestRegionId = S.String;
+const CreateRuleRequestRegionId = S.String;
 
 export interface CreateRuleRequest {
   /** The STACKIT portal project UUID */
@@ -71,7 +71,7 @@ export interface CreateRuleRequest {
   /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
   type: string;
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateRuleRequestRegionId.pipe(T.Label()),
@@ -102,14 +102,14 @@ export interface CreateRuleResponse {
   /** Represents the uuid of the created rule */
   refId?: string;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refId: S.optional(S.String),
   }),
 ).annotate({ identifier: "CreateRuleResponse" }) as any as S.Schema<CreateRuleResponse>;
 
 export type DeleteRuleRequestRegionId = "eu01" | "eu02";
-export const DeleteRuleRequestRegionId = S.String;
+const DeleteRuleRequestRegionId = S.String;
 
 export interface DeleteRuleRequest {
   /** The STACKIT portal project UUID */
@@ -119,7 +119,7 @@ export interface DeleteRuleRequest {
   /** The STACKIT security rule UUID. */
   ruleId: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteRuleRequestRegionId.pipe(T.Label()),
@@ -138,14 +138,14 @@ export interface DeleteRuleResponse {
   /** Represents if the call was successfully made */
   success?: boolean;
 }
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DeleteRuleResponse" }) as any as S.Schema<DeleteRuleResponse>;
 
 export type GetRuleRequestRegionId = "eu01" | "eu02";
-export const GetRuleRequestRegionId = S.String;
+const GetRuleRequestRegionId = S.String;
 
 export interface GetRuleRequest {
   /** The STACKIT portal project UUID */
@@ -155,7 +155,7 @@ export interface GetRuleRequest {
   /** The STACKIT security rule UUID. */
   ruleId: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetRuleRequestRegionId.pipe(T.Label()),
@@ -178,11 +178,11 @@ export type RuleResponseStatus =
   | "Updating"
   | "Deleting"
   | "Creating";
-export const RuleResponseStatus = S.String;
+const RuleResponseStatus = S.String;
 
 /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
 export type RuleResponseType = "ACL" | "PublicIP" | "SecurityRule" | "SecurityGroup";
-export const RuleResponseType = S.String;
+const RuleResponseType = S.String;
 
 export interface RuleResponse {
   description?: string;
@@ -208,7 +208,7 @@ export interface RuleResponse {
   /** The type of the rule (e.g., "ACL", "PublicIP", "SecurityRule"). */
   type: RuleResponseType;
 }
-export const RuleResponse = /*@__PURE__*/ S.suspend(() =>
+const RuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     destination: S.String,
@@ -241,7 +241,7 @@ export interface ListFolderContainersRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
-export const ListFolderContainersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContainersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -263,7 +263,7 @@ export interface ContainerResponse {
   name: string;
   type: string;
 }
-export const ContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -272,7 +272,7 @@ export const ContainerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContainerResponse" }) as any as S.Schema<ContainerResponse>;
 
 export type ListContainersResponseItemsList = Array<ContainerResponse>;
-export const ListContainersResponseItemsList = /*@__PURE__*/ S.Array(
+const ListContainersResponseItemsList = /*@__PURE__*/ S.Array(
   ContainerResponse,
 ) as any as S.Schema<ListContainersResponseItemsList>;
 
@@ -281,7 +281,7 @@ export interface ListContainersResponse {
   items: ListContainersResponseItemsList;
   limit: number;
 }
-export const ListContainersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContainersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.String,
     items: ListContainersResponseItemsList,
@@ -297,7 +297,7 @@ export interface ListOrganizationContainersRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
-export const ListOrganizationContainersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationContainersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -315,13 +315,13 @@ export const ListOrganizationContainersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationContainersRequest>;
 
 export type ListProviderOptionsRequestRegionId = "eu01" | "eu02";
-export const ListProviderOptionsRequestRegionId = S.String;
+const ListProviderOptionsRequestRegionId = S.String;
 
 export interface ListProviderOptionsRequest {
   /** The STACKIT region name the resource is located in. */
   regionId: ListProviderOptionsRequestRegionId | (string & {});
 }
-export const ListProviderOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProviderOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: ListProviderOptionsRequestRegionId.pipe(T.Label()),
   }).pipe(
@@ -337,19 +337,19 @@ export const ListProviderOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProviderOptionsRequest>;
 
 export type ProviderOptionsProductMetaActionsList = Array<string>;
-export const ProviderOptionsProductMetaActionsList = /*@__PURE__*/ S.Array(
+const ProviderOptionsProductMetaActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ProviderOptionsProductMetaActionsList>;
 
 export type ProviderOptionsProductMetaTypesList = Array<string>;
-export const ProviderOptionsProductMetaTypesList =
+const ProviderOptionsProductMetaTypesList =
   ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsProductMetaTypesList>;
 
 export interface ProviderOptionsProductMeta {
   actions: ProviderOptionsProductMetaActionsList;
   types: ProviderOptionsProductMetaTypesList;
 }
-export const ProviderOptionsProductMeta = /*@__PURE__*/ S.suspend(() =>
+const ProviderOptionsProductMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ProviderOptionsProductMetaActionsList,
     types: ProviderOptionsProductMetaTypesList,
@@ -361,17 +361,17 @@ export const ProviderOptionsProductMeta = /*@__PURE__*/ S.suspend(() =>
 export type ProviderOptionsResponseProductMetaMap = {
   [key: string]: ProviderOptionsProductMeta | undefined;
 };
-export const ProviderOptionsResponseProductMetaMap = /*@__PURE__*/ S.Record(
+const ProviderOptionsResponseProductMetaMap = /*@__PURE__*/ S.Record(
   S.String,
   ProviderOptionsProductMeta,
 ) as any as S.Schema<ProviderOptionsResponseProductMetaMap>;
 
 export type ProviderOptionsResponseProductsList = Array<string>;
-export const ProviderOptionsResponseProductsList =
+const ProviderOptionsResponseProductsList =
   ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseProductsList>;
 
 export type ProviderOptionsResponseTypesList = Array<string>;
-export const ProviderOptionsResponseTypesList =
+const ProviderOptionsResponseTypesList =
   ProviderOptionsProductMetaActionsList as any as S.Schema<ProviderOptionsResponseTypesList>;
 
 export interface ProviderOptionsResponse {
@@ -379,7 +379,7 @@ export interface ProviderOptionsResponse {
   products: ProviderOptionsResponseProductsList;
   types: ProviderOptionsResponseTypesList;
 }
-export const ProviderOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ProviderOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productMeta: ProviderOptionsResponseProductMetaMap,
     products: ProviderOptionsResponseProductsList,
@@ -388,13 +388,13 @@ export const ProviderOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProviderOptionsResponse" }) as any as S.Schema<ProviderOptionsResponse>;
 
 export type ListRulesRequestRegionId = "eu01" | "eu02";
-export const ListRulesRequestRegionId = S.String;
+const ListRulesRequestRegionId = S.String;
 
 export type ListRulesRequestDirection = "ingress" | "egress";
-export const ListRulesRequestDirection = S.String;
+const ListRulesRequestDirection = S.String;
 
 export type ListRulesRequestSortOrder = "asc" | "desc";
-export const ListRulesRequestSortOrder = S.String;
+const ListRulesRequestSortOrder = S.String;
 
 export interface ListRulesRequest {
   /** The STACKIT portal project UUID */
@@ -428,7 +428,7 @@ export interface ListRulesRequest {
   /** A pagination cursor that represents a position in the dataset. If given, results will be returned from the item after the cursor. If not given, results will be returned from the beginning. */
   cursor?: string;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListRulesRequestRegionId.pipe(T.Label()),
@@ -456,11 +456,11 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type ListRulesResponseErrorsList = Array<string>;
-export const ListRulesResponseErrorsList =
+const ListRulesResponseErrorsList =
   ProviderOptionsProductMetaActionsList as any as S.Schema<ListRulesResponseErrorsList>;
 
 export type ListRulesResponseRulesList = Array<RuleResponse>;
-export const ListRulesResponseRulesList = /*@__PURE__*/ S.Array(
+const ListRulesResponseRulesList = /*@__PURE__*/ S.Array(
   RuleResponse,
 ) as any as S.Schema<ListRulesResponseRulesList>;
 
@@ -468,7 +468,7 @@ export interface ListRulesResponse {
   errors?: ListRulesResponseErrorsList;
   rules: ListRulesResponseRulesList;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(ListRulesResponseErrorsList),
     rules: ListRulesResponseRulesList,
@@ -476,7 +476,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export type UpdateRuleRequestRegionId = "eu01" | "eu02";
-export const UpdateRuleRequestRegionId = S.String;
+const UpdateRuleRequestRegionId = S.String;
 
 export interface UpdateRuleRequest {
   /** The STACKIT portal project UUID */
@@ -498,7 +498,7 @@ export interface UpdateRuleRequest {
   /** The IP (CIDR) to which the rule applies. */
   sourceIP: string;
 }
-export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateRuleRequestRegionId.pipe(T.Label()),
@@ -523,7 +523,7 @@ export interface UpdateRuleResponse {
   /** Represents the uuid of the updated rule */
   refId?: string;
 }
-export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
+const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export type CreateRuleError = BadRequest | Forbidden | NotFound | StackitOpError;
 /** Create rule for a project Returns the created rule for a specific project */

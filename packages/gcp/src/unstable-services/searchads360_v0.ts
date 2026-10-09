@@ -65,7 +65,7 @@ export interface GetCustomersCustomColumnsRequest {
   /** Required. The resource name of the custom column to fetch. */
   resourceName: string;
 }
-export const GetCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -87,7 +87,7 @@ export type GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum =
   | "DOUBLE"
   | "BOOLEAN"
   | "DATE";
-export const GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum =
   | "UNSPECIFIED"
@@ -98,10 +98,10 @@ export type GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum =
   | "STRING"
   | "BOOLEAN"
   | "DATE";
-export const GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomColumnRenderTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A custom column. See Search Ads 360 custom column at https://support.google.com/sa360/answer/9633916 */
 export interface GoogleAdsSearchads360V0Resources__CustomColumn {
@@ -126,7 +126,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomColumn {
   /** Output only. User-defined description of the custom column. */
   description?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CustomColumn = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CustomColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referencesMetrics: S.optional(S.Boolean),
     valueType: S.optional(GoogleAdsSearchads360V0Resources__CustomColumnValueTypeEnum),
@@ -147,7 +147,7 @@ export interface GetSearchAds360FieldsRequest {
   /** Required. The resource name of the field to get. */
   resourceName: string;
 }
-export const GetSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -168,7 +168,7 @@ export type GoogleAdsSearchads360V0Resources__SearchAds360FieldCategoryEnum =
   | "ATTRIBUTE"
   | "SEGMENT"
   | "METRIC";
-export const GoogleAdsSearchads360V0Resources__SearchAds360FieldCategoryEnum = S.String;
+const GoogleAdsSearchads360V0Resources__SearchAds360FieldCategoryEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum =
   | "UNSPECIFIED"
@@ -184,7 +184,7 @@ export type GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum =
   | "RESOURCE_NAME"
   | "STRING"
   | "UINT64";
-export const GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__SearchAds360FieldDataTypeEnum = S.String;
 
 /** A field or resource (artifact) used by SearchAds360Service. */
 export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
@@ -217,7 +217,7 @@ export interface GoogleAdsSearchads360V0Resources__SearchAds360Field {
   /** Output only. Whether the artifact can be used in a WHERE clause in search queries. */
   filterable?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources__SearchAds360Field = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__SearchAds360Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeUrl: S.optional(S.String),
     name: S.optional(S.String),
@@ -239,7 +239,7 @@ export const GoogleAdsSearchads360V0Resources__SearchAds360Field = /*@__PURE__*/
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
 
 export interface ListAccessibleCustomersCustomersRequest {}
-export const ListAccessibleCustomersCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessibleCustomersCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -256,20 +256,20 @@ export interface GoogleAdsSearchads360V0Services__ListAccessibleCustomersRespons
   /** Resource name of customers directly accessible by the user authenticating the call. */
   resourceNames?: StringList;
 }
-export const GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceNames: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse",
+}) as any as S.Schema<GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse>;
 
 export interface ListCustomersCustomColumnsRequest {
   /** Required. The ID of the customer to apply the CustomColumn list operation to. */
   customerId: string;
 }
-export const ListCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
   }).pipe(
@@ -285,7 +285,7 @@ export const ListCustomersCustomColumnsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V0Resources__CustomColumnList =
   Array<GoogleAdsSearchads360V0Resources__CustomColumn>;
-export const GoogleAdsSearchads360V0Resources__CustomColumnList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Resources__CustomColumnList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Resources__CustomColumn,
 ) as any as S.Schema<GoogleAdsSearchads360V0Resources__CustomColumnList>;
 
@@ -294,11 +294,10 @@ export interface GoogleAdsSearchads360V0Services__ListCustomColumnsResponse {
   /** The CustomColumns owned by the provided customer. */
   customColumns?: GoogleAdsSearchads360V0Resources__CustomColumnList;
 }
-export const GoogleAdsSearchads360V0Services__ListCustomColumnsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customColumns: S.optional(GoogleAdsSearchads360V0Resources__CustomColumnList),
-    }),
+const GoogleAdsSearchads360V0Services__ListCustomColumnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customColumns: S.optional(GoogleAdsSearchads360V0Resources__CustomColumnList),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Services__ListCustomColumnsResponse",
 }) as any as S.Schema<GoogleAdsSearchads360V0Services__ListCustomColumnsResponse>;
@@ -309,8 +308,7 @@ export type GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRow
   | "NO_SUMMARY_ROW"
   | "SUMMARY_ROW_WITH_RESULTS"
   | "SUMMARY_ROW_ONLY";
-export const GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRowSettingEnum =
-  S.String;
+const GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRowSettingEnum = S.String;
 
 /** Request message for SearchAds360Service.Search. */
 export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Request {
@@ -329,18 +327,17 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Request {
   /** Required. The query string. */
   query?: string;
 }
-export const GoogleAdsSearchads360V0Services__SearchSearchAds360Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String),
-      summaryRowSetting: S.optional(
-        GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRowSettingEnum,
-      ),
-      validateOnly: S.optional(S.Boolean),
-      pageSize: S.optional(S.Number),
-      returnTotalResultsCount: S.optional(S.Boolean),
-      query: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Services__SearchSearchAds360Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String),
+    summaryRowSetting: S.optional(
+      GoogleAdsSearchads360V0Services__SearchSearchAds360RequestSummaryRowSettingEnum,
+    ),
+    validateOnly: S.optional(S.Boolean),
+    pageSize: S.optional(S.Number),
+    returnTotalResultsCount: S.optional(S.Boolean),
+    query: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360Request",
 }) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360Request>;
@@ -351,7 +348,7 @@ export interface SearchCustomersSearchAds360Request {
   /** Request body */
   body?: GoogleAdsSearchads360V0Services__SearchSearchAds360Request;
 }
-export const SearchCustomersSearchAds360Request = /*@__PURE__*/ S.suspend(() =>
+const SearchCustomersSearchAds360Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     body: S.optional(GoogleAdsSearchads360V0Services__SearchSearchAds360Request.pipe(T.HttpBody())),
@@ -375,7 +372,7 @@ export interface GoogleAdsSearchads360V0Services__CustomColumnHeader {
   /** The user defined name of the custom column. */
   name?: string;
 }
-export const GoogleAdsSearchads360V0Services__CustomColumnHeader = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__CustomColumnHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referencesMetrics: S.optional(S.Boolean),
     id: S.optional(S.String),
@@ -387,7 +384,7 @@ export const GoogleAdsSearchads360V0Services__CustomColumnHeader = /*@__PURE__*/
 
 export type GoogleAdsSearchads360V0Services__CustomColumnHeaderList =
   Array<GoogleAdsSearchads360V0Services__CustomColumnHeader>;
-export const GoogleAdsSearchads360V0Services__CustomColumnHeaderList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Services__CustomColumnHeaderList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Services__CustomColumnHeader,
 ) as any as S.Schema<GoogleAdsSearchads360V0Services__CustomColumnHeaderList>;
 
@@ -398,22 +395,21 @@ export interface GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeade
   /** The user defined name of the conversion custom dimension. */
   name?: string;
 }
-export const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader",
+}) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
 
 export type GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList =
   Array<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader>;
-export const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList>;
+const GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList = /*@__PURE__*/ S.Array(
+  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader,
+) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList>;
 
 export type GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum =
   | "UNSPECIFIED"
@@ -426,7 +422,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum =
   | "MICROSOFT"
   | "SEARCH_ADS_360"
   | "YAHOO_JAPAN";
-export const GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerAccountTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum =
   | "UNSPECIFIED"
@@ -436,7 +432,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum =
   | "SUSPENDED"
   | "REMOVED"
   | "DRAFT";
-export const GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerAccountStatusEnum = S.String;
 
 /** DoubleClick Campaign Manager (DCM) setting for a manager customer. */
 export interface GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting {
@@ -447,16 +443,16 @@ export interface GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSet
   /** Output only. ID of the Campaign Manager network associated with this customer. */
   networkId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       advertiserId: S.optional(S.String),
       timeZone: S.optional(S.String),
       networkId: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__DoubleClickCampaignManagerSetting>;
 
 export type GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum =
   | "UNSPECIFIED"
@@ -469,7 +465,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum =
   | "MANAGER"
   | "SUB_MANAGER"
   | "ASSOCIATE_MANAGER";
-export const GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerAccountLevelEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CustomerStatusEnum =
   | "UNSPECIFIED"
@@ -478,7 +474,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerStatusEnum =
   | "CANCELED"
   | "SUSPENDED"
   | "CLOSED";
-export const GoogleAdsSearchads360V0Resources__CustomerStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum =
   | "UNSPECIFIED"
@@ -487,7 +483,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversio
   | "CONVERSION_TRACKING_MANAGED_BY_SELF"
   | "CONVERSION_TRACKING_MANAGED_BY_THIS_MANAGER"
   | "CONVERSION_TRACKING_MANAGED_BY_ANOTHER_MANAGER";
-export const GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum =
+const GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum =
   S.String;
 
 /** A collection of customer-wide settings related to Search Ads 360 Conversion Tracking. */
@@ -507,19 +503,18 @@ export interface GoogleAdsSearchads360V0Resources__ConversionTrackingSetting {
   /** Output only. Whether the customer has accepted customer data terms. If using cross-account conversion tracking, this value is inherited from the manager. This field is read-only. For more information, see https://support.google.com/adspolicy/answer/7475709. */
   acceptedCustomerDataTerms?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources__ConversionTrackingSetting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enhancedConversionsForLeadsEnabled: S.optional(S.Boolean),
-      googleAdsCrossAccountConversionTrackingId: S.optional(S.String),
-      crossAccountConversionTrackingId: S.optional(S.String),
-      conversionTrackingStatus: S.optional(
-        GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum,
-      ),
-      conversionTrackingId: S.optional(S.String),
-      googleAdsConversionCustomer: S.optional(S.String),
-      acceptedCustomerDataTerms: S.optional(S.Boolean),
-    }),
+const GoogleAdsSearchads360V0Resources__ConversionTrackingSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enhancedConversionsForLeadsEnabled: S.optional(S.Boolean),
+    googleAdsCrossAccountConversionTrackingId: S.optional(S.String),
+    crossAccountConversionTrackingId: S.optional(S.String),
+    conversionTrackingStatus: S.optional(
+      GoogleAdsSearchads360V0Resources__ConversionTrackingSettingConversionTrackingStatusEnum,
+    ),
+    conversionTrackingId: S.optional(S.String),
+    googleAdsConversionCustomer: S.optional(S.String),
+    acceptedCustomerDataTerms: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__ConversionTrackingSetting",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ConversionTrackingSetting>;
@@ -575,7 +570,7 @@ export interface GoogleAdsSearchads360V0Resources__Customer {
   /** Output only. The customer ID of the sub manager. A 0 value indicates that the customer has no sub SA360 manager. */
   subManagerId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__Customer = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Customer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descriptiveName: S.optional(S.String),
     manager: S.optional(S.Boolean),
@@ -616,7 +611,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum =
   | "UNSPECIFIED"
@@ -638,14 +633,14 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum =
   | "AD_GROUP_AD_ACCOUNT_PAUSED"
   | "AD_GROUP_AD_CAMPAIGN_PAUSED"
   | "AD_GROUP_AD_AD_GROUP_PAUSED";
-export const GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupAdEngineStatusEnum = S.String;
 
 /** A text asset used inside an ad. */
 export interface GoogleAdsSearchads360V0Common__AdTextAsset {
   /** Asset text. */
   text?: string;
 }
-export const GoogleAdsSearchads360V0Common__AdTextAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__AdTextAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -655,7 +650,7 @@ export const GoogleAdsSearchads360V0Common__AdTextAsset = /*@__PURE__*/ S.suspen
 
 export type GoogleAdsSearchads360V0Common__AdTextAssetList =
   Array<GoogleAdsSearchads360V0Common__AdTextAsset>;
-export const GoogleAdsSearchads360V0Common__AdTextAssetList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__AdTextAssetList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__AdTextAsset,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__AdTextAssetList>;
 
@@ -672,8 +667,8 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdIn
   /** Text appended to path1 with a delimiter. */
   path2?: string;
 }
-export const GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       path1: S.optional(S.String),
       adTrackingId: S.optional(S.String),
@@ -681,9 +676,9 @@ export const GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo =
       headlines: S.optional(GoogleAdsSearchads360V0Common__AdTextAssetList),
       path2: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo",
+}) as any as S.Schema<GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo>;
 
 /** A Search Ads 360 text ad. */
 export interface GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo {
@@ -700,7 +695,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo {
   /** The second line of the ad's description. */
   description2?: string;
 }
-export const GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__SearchAds360TextAdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description1: S.optional(S.String),
     displayUrl: S.optional(S.String),
@@ -718,7 +713,7 @@ export type GoogleAdsSearchads360V0Common__SyntheticContentAttestationStatusEnum
   | "UNKNOWN"
   | "NOT_SYNTHETIC"
   | "IS_SYNTHETIC";
-export const GoogleAdsSearchads360V0Common__SyntheticContentAttestationStatusEnum = S.String;
+const GoogleAdsSearchads360V0Common__SyntheticContentAttestationStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum =
   | "UNSPECIFIED"
@@ -726,7 +721,7 @@ export type GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum
   | "ADVERTISER_ATTESTED"
   | "GOOGLE_GENERATED_ADVERTISER_REVIEWED"
   | "GOOGLE_GENERATED_FULLY_AUTOMATED";
-export const GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum = S.String;
+const GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum = S.String;
 
 /** Represents an attestation about synthetic content from a single source. */
 export interface GoogleAdsSearchads360V0Common__SyntheticContentAttestation {
@@ -735,12 +730,11 @@ export interface GoogleAdsSearchads360V0Common__SyntheticContentAttestation {
   /** The source of the synthetic content attestation. */
   source?: GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum;
 }
-export const GoogleAdsSearchads360V0Common__SyntheticContentAttestation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestationStatusEnum),
-      source: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum),
-    }),
+const GoogleAdsSearchads360V0Common__SyntheticContentAttestation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestationStatusEnum),
+    source: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestationSourceEnum),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Common__SyntheticContentAttestation",
 }) as any as S.Schema<GoogleAdsSearchads360V0Common__SyntheticContentAttestation>;
@@ -752,7 +746,7 @@ export interface GoogleAdsSearchads360V0Common__SyntheticContentInfo {
   /** Input provided by the advertiser. */
   advertiserAttestation?: GoogleAdsSearchads360V0Common__SyntheticContentAttestation;
 }
-export const GoogleAdsSearchads360V0Common__SyntheticContentInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__SyntheticContentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemAttestation: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestation),
     advertiserAttestation: S.optional(GoogleAdsSearchads360V0Common__SyntheticContentAttestation),
@@ -770,7 +764,7 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearc
   /** The first line of the ad's description. */
   description1?: string;
 }
-export const GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearchAdInfo =
+const GoogleAdsSearchads360V0Common__SearchAds360ExpandedDynamicSearchAdInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       description2: S.optional(S.String),
@@ -814,7 +808,7 @@ export type GoogleAdsSearchads360V0Resources__AdTypeEnum =
   | "APP_PRE_REGISTRATION_AD"
   | "TRAVEL_AD"
   | "MULTIMEDIA_AD";
-export const GoogleAdsSearchads360V0Resources__AdTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdTypeEnum = S.String;
 
 /** A Search Ads 360 expanded text ad. Expanded text ads are deprecated. Use SearchAds360ResponsiveSearchAd instead. */
 export interface GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo {
@@ -835,28 +829,27 @@ export interface GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo {
   /** The third headline of the ad. */
   headline3?: string;
 }
-export const GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      description2: S.optional(S.String),
-      adTrackingId: S.optional(S.String),
-      headline: S.optional(S.String),
-      path1: S.optional(S.String),
-      headline2: S.optional(S.String),
-      path2: S.optional(S.String),
-      description1: S.optional(S.String),
-      headline3: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo>;
+const GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description2: S.optional(S.String),
+    adTrackingId: S.optional(S.String),
+    headline: S.optional(S.String),
+    path1: S.optional(S.String),
+    headline2: S.optional(S.String),
+    path2: S.optional(S.String),
+    description1: S.optional(S.String),
+    headline3: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo",
+}) as any as S.Schema<GoogleAdsSearchads360V0Common__SearchAds360ExpandedTextAdInfo>;
 
 export type GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "IOS"
   | "ANDROID";
-export const GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum = S.String;
 
 /** A URL for deep linking into an app for the given operating system. */
 export interface GoogleAdsSearchads360V0Common__FinalAppUrl {
@@ -865,7 +858,7 @@ export interface GoogleAdsSearchads360V0Common__FinalAppUrl {
   /** The operating system targeted by this URL. Required. */
   osType?: GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__FinalAppUrl = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__FinalAppUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     osType: S.optional(GoogleAdsSearchads360V0Common__FinalAppUrlOsTypeEnum),
@@ -876,14 +869,14 @@ export const GoogleAdsSearchads360V0Common__FinalAppUrl = /*@__PURE__*/ S.suspen
 
 export type GoogleAdsSearchads360V0Common__FinalAppUrlList =
   Array<GoogleAdsSearchads360V0Common__FinalAppUrl>;
-export const GoogleAdsSearchads360V0Common__FinalAppUrlList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__FinalAppUrlList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__FinalAppUrl,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__FinalAppUrlList>;
 
 /** A Search Ads 360 product ad. */
 export interface GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo {}
-export const GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo",
 }) as any as S.Schema<GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo>;
@@ -923,7 +916,7 @@ export interface GoogleAdsSearchads360V0Resources__Ad {
   /** Immutable. Details pertaining to a product ad. */
   productAd?: GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
 }
-export const GoogleAdsSearchads360V0Resources__Ad = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Ad = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responsiveSearchAd: S.optional(
       GoogleAdsSearchads360V0Common__SearchAds360ResponsiveSearchAdInfo,
@@ -971,7 +964,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAd {
   /** Immutable. The ad. */
   ad?: GoogleAdsSearchads360V0Resources__Ad;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAd = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupAd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__AdGroupAdStatusEnum),
     resourceName: S.optional(S.String),
@@ -998,7 +991,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignLabel {
   /** Output only. The ID of the Customer which owns the label. */
   ownerCustomerId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CampaignLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     campaign: S.optional(S.String),
@@ -1020,7 +1013,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel {
   /** Immutable. The label assigned to the ad group criterion. */
   label?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupCriterionLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ownerCustomerId: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -1036,7 +1029,7 @@ export type GoogleAdsSearchads360V0Resources__LabelStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__LabelStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__LabelStatusEnum = S.String;
 
 /** A type of label displaying text on a colored background. */
 export interface GoogleAdsSearchads360V0Common__TextLabel {
@@ -1045,7 +1038,7 @@ export interface GoogleAdsSearchads360V0Common__TextLabel {
   /** A short description of the label. The length must be no more than 200 characters. */
   description?: string;
 }
-export const GoogleAdsSearchads360V0Common__TextLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TextLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backgroundColor: S.optional(S.String),
     description: S.optional(S.String),
@@ -1067,7 +1060,7 @@ export interface GoogleAdsSearchads360V0Resources__Label {
   /** A type of label displaying text on a colored background. */
   textLabel?: GoogleAdsSearchads360V0Common__TextLabel;
 }
-export const GoogleAdsSearchads360V0Resources__Label = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(GoogleAdsSearchads360V0Resources__LabelStatusEnum),
@@ -1086,7 +1079,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetSet {
   /** Immutable. The resource name of the asset set. Asset set resource names have the form: `customers/{customer_id}/assetSets/{asset_set_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AssetSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -1101,7 +1094,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "PAUSED";
-export const GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum = S.String;
 
 /** A link between a customer and an asset. */
 export interface GoogleAdsSearchads360V0Resources__CustomerAsset {
@@ -1112,7 +1105,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerAsset {
   /** Immutable. The resource name of the customer asset. CustomerAsset resource names have the form: `customers/{customer_id}/customerAssets/{asset_id}~{field_type}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CustomerAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CustomerAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__CustomerAssetStatusEnum),
     asset: S.optional(S.String),
@@ -1127,7 +1120,7 @@ export interface GoogleAdsSearchads360V0Resources__WebpageView {
   /** Output only. The resource name of the webpage view. Webpage view resource names have the form: `customers/{customer_id}/webpageViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__WebpageView = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__WebpageView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
   }),
@@ -1142,11 +1135,11 @@ export type GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum 
   | "ENGAGEMENT"
   | "VIDEO_VIEW"
   | "NONE";
-export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum = S.String;
+const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum>;
-export const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList =
+const GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList =
   /*@__PURE__*/ S.Array(
     GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnum,
   ) as any as S.Schema<GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList>;
@@ -1164,7 +1157,7 @@ export interface GoogleAdsSearchads360V0Common__Value {
   /** A boolean. */
   booleanValue?: boolean;
 }
-export const GoogleAdsSearchads360V0Common__Value = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValue: S.optional(S.String),
     doubleValue: S.optional(S.Number),
@@ -1177,7 +1170,7 @@ export const GoogleAdsSearchads360V0Common__Value = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleAdsSearchads360V0Common__Value>;
 
 export type GoogleAdsSearchads360V0Common__ValueList = Array<GoogleAdsSearchads360V0Common__Value>;
-export const GoogleAdsSearchads360V0Common__ValueList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__ValueList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__Value,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__ValueList>;
 
@@ -1187,7 +1180,7 @@ export type GoogleAdsSearchads360V0Common__MetricsHistoricalLandingPageQualitySc
   | "BELOW_AVERAGE"
   | "AVERAGE"
   | "ABOVE_AVERAGE";
-export const GoogleAdsSearchads360V0Common__MetricsHistoricalLandingPageQualityScoreEnum = S.String;
+const GoogleAdsSearchads360V0Common__MetricsHistoricalLandingPageQualityScoreEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScoreEnum =
   | "UNSPECIFIED"
@@ -1195,7 +1188,7 @@ export type GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScore
   | "BELOW_AVERAGE"
   | "AVERAGE"
   | "ABOVE_AVERAGE";
-export const GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScoreEnum = S.String;
+const GoogleAdsSearchads360V0Common__MetricsHistoricalCreativeQualityScoreEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEnum =
   | "UNSPECIFIED"
@@ -1203,7 +1196,7 @@ export type GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEn
   | "BELOW_AVERAGE"
   | "AVERAGE"
   | "ABOVE_AVERAGE";
-export const GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEnum = S.String;
+const GoogleAdsSearchads360V0Common__MetricsHistoricalSearchPredictedCtrEnum = S.String;
 
 /** Metrics data. */
 export interface GoogleAdsSearchads360V0Common__Metrics {
@@ -1408,7 +1401,7 @@ export interface GoogleAdsSearchads360V0Common__Metrics {
   /** The number of times people clicked a "Get directions" button to navigate to a business after clicking an ad. This metric applies to feed items only. */
   allConversionsFromDirections?: number;
 }
-export const GoogleAdsSearchads360V0Common__Metrics = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     costMicros: S.optional(S.String),
     interactionEventTypes: S.optional(
@@ -1528,7 +1521,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum = S.String;
 
 /** CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset set with a customer. */
 export interface GoogleAdsSearchads360V0Resources__CustomerAssetSet {
@@ -1541,7 +1534,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerAssetSet {
   /** Immutable. The resource name of the customer asset set. Asset set asset resource names have the form: `customers/{customer_id}/customerAssetSets/{asset_set_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CustomerAssetSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CustomerAssetSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer: S.optional(S.String),
     status: S.optional(GoogleAdsSearchads360V0Resources__CustomerAssetSetStatusEnum),
@@ -1559,7 +1552,7 @@ export type GoogleAdsSearchads360V0Resources__AssetStatusEnum =
   | "REMOVED"
   | "ARCHIVED"
   | "PENDING_SYSTEM_GENERATED";
-export const GoogleAdsSearchads360V0Resources__AssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AssetTypeEnum =
   | "UNSPECIFIED"
@@ -1591,7 +1584,7 @@ export type GoogleAdsSearchads360V0Resources__AssetTypeEnum =
   | "DYNAMIC_JOBS"
   | "LOCATION"
   | "HOTEL_PROPERTY";
-export const GoogleAdsSearchads360V0Resources__AssetTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum =
   | "UNSPECIFIED"
@@ -1613,14 +1606,14 @@ export type GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum =
   | "START_NOW"
   | "VISIT_SITE"
   | "WATCH_NOW";
-export const GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum = S.String;
+const GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum = S.String;
 
 /** A call to action asset. */
 export interface GoogleAdsSearchads360V0Common__CallToActionAsset {
   /** Call to action. */
   callToAction?: GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum;
 }
-export const GoogleAdsSearchads360V0Common__CallToActionAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__CallToActionAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callToAction: S.optional(GoogleAdsSearchads360V0Common__CallToActionAssetCallToActionEnum),
   }),
@@ -1638,7 +1631,7 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum = S.String;
+const GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum =
   | "UNSPECIFIED"
@@ -1647,7 +1640,7 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum =
   | "FIFTEEN"
   | "THIRTY"
   | "FORTY_FIVE";
-export const GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum = S.String;
+const GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum =
   | "UNSPECIFIED"
@@ -1656,7 +1649,7 @@ export type GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum =
   | "FIFTEEN"
   | "THIRTY"
   | "FORTY_FIVE";
-export const GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum = S.String;
+const GoogleAdsSearchads360V0Common__AdScheduleInfoEndMinuteEnum = S.String;
 
 /** Represents an AdSchedule criterion. AdSchedule is specified as the day of the week and a time interval within which ads will be shown. No more than six AdSchedules can be added for the same day. */
 export interface GoogleAdsSearchads360V0Common__AdScheduleInfo {
@@ -1671,7 +1664,7 @@ export interface GoogleAdsSearchads360V0Common__AdScheduleInfo {
   /** Starting hour in 24 hour time. This field must be between 0 and 23, inclusive. This field is required for CREATE operations and is prohibited on UPDATE operations. */
   startHour?: number;
 }
-export const GoogleAdsSearchads360V0Common__AdScheduleInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__AdScheduleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfWeek: S.optional(GoogleAdsSearchads360V0Common__AdScheduleInfoDayOfWeekEnum),
     startMinute: S.optional(GoogleAdsSearchads360V0Common__AdScheduleInfoStartMinuteEnum),
@@ -1685,7 +1678,7 @@ export const GoogleAdsSearchads360V0Common__AdScheduleInfo = /*@__PURE__*/ S.sus
 
 export type GoogleAdsSearchads360V0Common__AdScheduleInfoList =
   Array<GoogleAdsSearchads360V0Common__AdScheduleInfo>;
-export const GoogleAdsSearchads360V0Common__AdScheduleInfoList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__AdScheduleInfoList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__AdScheduleInfo,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__AdScheduleInfoList>;
 
@@ -1702,7 +1695,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedCalloutAsset {
   /** Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format. */
   startDate?: string;
 }
-export const GoogleAdsSearchads360V0Common__UnifiedCalloutAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UnifiedCalloutAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calloutText: S.optional(S.String),
     useSearcherTimeZone: S.optional(S.Boolean),
@@ -1721,7 +1714,7 @@ export interface GoogleAdsSearchads360V0Common__CustomParameter {
   /** The value to be substituted. */
   value?: string;
 }
-export const GoogleAdsSearchads360V0Common__CustomParameter = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__CustomParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -1732,7 +1725,7 @@ export const GoogleAdsSearchads360V0Common__CustomParameter = /*@__PURE__*/ S.su
 
 export type GoogleAdsSearchads360V0Common__CustomParameterList =
   Array<GoogleAdsSearchads360V0Common__CustomParameter>;
-export const GoogleAdsSearchads360V0Common__CustomParameterList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__CustomParameterList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__CustomParameter,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__CustomParameterList>;
 
@@ -1757,7 +1750,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset {
   /** First line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive, and description2 must also be set. */
   description1?: string;
 }
-export const GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UnifiedSitelinkAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mobilePreferred: S.optional(S.Boolean),
     linkText: S.optional(S.String),
@@ -1778,7 +1771,7 @@ export interface GoogleAdsSearchads360V0Common__TextAsset {
   /** Text content of the text asset. */
   text?: string;
 }
-export const GoogleAdsSearchads360V0Common__TextAsset =
+const GoogleAdsSearchads360V0Common__TextAsset =
   GoogleAdsSearchads360V0Common__AdTextAsset as any as S.Schema<GoogleAdsSearchads360V0Common__TextAsset>;
 
 /** Business Profile location data synced from the linked Business Profile account. */
@@ -1790,7 +1783,7 @@ export interface GoogleAdsSearchads360V0Common__BusinessProfileLocation {
   /** Business Profile store code of this location. This is synced from the Business Profile account. */
   storeCode?: string;
 }
-export const GoogleAdsSearchads360V0Common__BusinessProfileLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__BusinessProfileLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listingId: S.optional(S.String),
     labels: S.optional(StringList),
@@ -1802,7 +1795,7 @@ export const GoogleAdsSearchads360V0Common__BusinessProfileLocation = /*@__PURE_
 
 export type GoogleAdsSearchads360V0Common__BusinessProfileLocationList =
   Array<GoogleAdsSearchads360V0Common__BusinessProfileLocation>;
-export const GoogleAdsSearchads360V0Common__BusinessProfileLocationList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__BusinessProfileLocationList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__BusinessProfileLocation,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__BusinessProfileLocationList>;
 
@@ -1811,8 +1804,7 @@ export type GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnership
   | "UNKNOWN"
   | "BUSINESS_OWNER"
   | "AFFILIATE";
-export const GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnershipTypeEnum =
-  S.String;
+const GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnershipTypeEnum = S.String;
 
 /** A unified location asset. */
 export interface GoogleAdsSearchads360V0Common__UnifiedLocationAsset {
@@ -1823,7 +1815,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedLocationAsset {
   /** The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If the type is AFFILIATE, it will be served as an affiliate location. */
   locationOwnershipType?: GoogleAdsSearchads360V0Common__UnifiedLocationAssetLocationOwnershipTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__UnifiedLocationAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UnifiedLocationAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeId: S.optional(S.String),
     businessProfileLocations: S.optional(
@@ -1845,7 +1837,7 @@ export type GoogleAdsSearchads360V0Resources__AssetEngineStatusEnum =
   | "DISAPPROVED"
   | "DISABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AssetEngineStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetEngineStatusEnum = S.String;
 
 /** A Unified Page Feed asset. */
 export interface GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset {
@@ -1854,7 +1846,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset {
   /** The webpage that advertisers want to target. */
   pageUrl?: string;
 }
-export const GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UnifiedPageFeedAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringList),
     pageUrl: S.optional(S.String),
@@ -1870,7 +1862,7 @@ export interface GoogleAdsSearchads360V0Common__YoutubeVideoAsset {
   /** YouTube video title. */
   youtubeVideoTitle?: string;
 }
-export const GoogleAdsSearchads360V0Common__YoutubeVideoAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__YoutubeVideoAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     youtubeVideoId: S.optional(S.String),
     youtubeVideoTitle: S.optional(S.String),
@@ -1888,7 +1880,7 @@ export interface GoogleAdsSearchads360V0Common__ImageDimension {
   /** Width of the image. */
   widthPixels?: string;
 }
-export const GoogleAdsSearchads360V0Common__ImageDimension = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__ImageDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     heightPixels: S.optional(S.String),
     url: S.optional(S.String),
@@ -1913,7 +1905,7 @@ export type GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum =
   | "AUDIO_WAV"
   | "AUDIO_MP3"
   | "HTML5_AD_ZIP";
-export const GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum = S.String;
 
 /** An Image asset. */
 export interface GoogleAdsSearchads360V0Common__ImageAsset {
@@ -1924,7 +1916,7 @@ export interface GoogleAdsSearchads360V0Common__ImageAsset {
   /** MIME type of the image asset. */
   mimeType?: GoogleAdsSearchads360V0Common__ImageAssetMimeTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__ImageAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__ImageAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullSize: S.optional(GoogleAdsSearchads360V0Common__ImageDimension),
     fileSize: S.optional(S.String),
@@ -1940,8 +1932,7 @@ export type GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReporti
   | "DISABLED"
   | "USE_ACCOUNT_LEVEL_CALL_CONVERSION_ACTION"
   | "USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION";
-export const GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReportingStateEnum =
-  S.String;
+const GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReportingStateEnum = S.String;
 
 /** A unified call asset. */
 export interface GoogleAdsSearchads360V0Common__UnifiedCallAsset {
@@ -1966,7 +1957,7 @@ export interface GoogleAdsSearchads360V0Common__UnifiedCallAsset {
   /** Last date of when this asset is effective and still serving, in yyyy-MM-dd format. */
   endDate?: string;
 }
-export const GoogleAdsSearchads360V0Common__UnifiedCallAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UnifiedCallAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callConversionReportingState: S.optional(
       GoogleAdsSearchads360V0Common__UnifiedCallAssetCallConversionReportingStateEnum,
@@ -1990,7 +1981,7 @@ export type GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum =
   | "UNKNOWN"
   | "APPLE_APP_STORE"
   | "GOOGLE_APP_STORE";
-export const GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum = S.String;
+const GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum = S.String;
 
 /** An asset representing a mobile app. */
 export interface GoogleAdsSearchads360V0Common__MobileAppAsset {
@@ -1999,7 +1990,7 @@ export interface GoogleAdsSearchads360V0Common__MobileAppAsset {
   /** Required. A string that uniquely identifies a mobile application. It should just contain the platform native id, like "com.android.ebay" for Android or "12345689" for iOS. */
   appId?: string;
 }
-export const GoogleAdsSearchads360V0Common__MobileAppAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__MobileAppAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appStore: S.optional(GoogleAdsSearchads360V0Common__MobileAppAssetAppStoreEnum),
     appId: S.optional(S.String),
@@ -2059,7 +2050,7 @@ export interface GoogleAdsSearchads360V0Resources__Asset {
   /** A mobile app asset. */
   mobileAppAsset?: GoogleAdsSearchads360V0Common__MobileAppAsset;
 }
-export const GoogleAdsSearchads360V0Resources__Asset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__AssetStatusEnum),
     finalMobileUrls: S.optional(StringList),
@@ -2123,28 +2114,28 @@ export type GoogleAdsSearchads360V0Resources__ConversionAssetFieldTypeEnum =
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
   | "CALL_TO_ACTION";
-export const GoogleAdsSearchads360V0Resources__ConversionAssetFieldTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionAssetFieldTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionAttributionTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "VISIT"
   | "CRITERION_AD";
-export const GoogleAdsSearchads360V0Resources__ConversionAttributionTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionAttributionTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
   | "LOCAL";
-export const GoogleAdsSearchads360V0Resources__ConversionProductChannelEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionProductChannelEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionStatusEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__ConversionStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionStatusEnum = S.String;
 
 /** A conversion. */
 export interface GoogleAdsSearchads360V0Resources__Conversion {
@@ -2197,7 +2188,7 @@ export interface GoogleAdsSearchads360V0Resources__Conversion {
   /** Output only. The quantity of items recorded by the conversion, as determined by the qty url parameter. The advertiser is responsible for dynamically populating the parameter (such as number of items sold in the conversion), otherwise it defaults to 1. */
   conversionQuantity?: string;
 }
-export const GoogleAdsSearchads360V0Resources__Conversion = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Conversion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     conversionLastModifiedDateTime: S.optional(S.String),
@@ -2233,7 +2224,7 @@ export interface GoogleAdsSearchads360V0Resources__LocationView {
   /** Output only. The resource name of the location view. Location view resource names have the form: `customers/{customer_id}/locationViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__LocationView =
+const GoogleAdsSearchads360V0Resources__LocationView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__LocationView>;
 
 export type GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum =
@@ -2244,7 +2235,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum =
   | "PENDING"
   | "REFUSED"
   | "CANCELED";
-export const GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerManagerLinkStatusEnum = S.String;
 
 /** Represents customer-manager link relationship. */
 export interface GoogleAdsSearchads360V0Resources__CustomerManagerLink {
@@ -2259,7 +2250,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerManagerLink {
   /** Output only. ID of the customer-manager link. This field is read only. */
   managerLinkId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CustomerManagerLink = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CustomerManagerLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -2280,7 +2271,7 @@ export interface GoogleAdsSearchads360V0Common__MaximizeConversionValue {
   /** Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only. */
   cpcBidCeilingMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__MaximizeConversionValue = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__MaximizeConversionValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidFloorMicros: S.optional(S.String),
     targetRoas: S.optional(S.Number),
@@ -2295,7 +2286,7 @@ export interface GoogleAdsSearchads360V0Common__TargetOutrankShare {
   /** Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. */
   cpcBidCeilingMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__TargetOutrankShare = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetOutrankShare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidCeilingMicros: S.optional(S.String),
   }),
@@ -2309,7 +2300,7 @@ export type GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum =
   | "ANYWHERE_ON_PAGE"
   | "TOP_OF_PAGE"
   | "ABSOLUTE_TOP_OF_PAGE";
-export const GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum = S.String;
+const GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum = S.String;
 
 /** An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location). */
 export interface GoogleAdsSearchads360V0Common__TargetImpressionShare {
@@ -2320,7 +2311,7 @@ export interface GoogleAdsSearchads360V0Common__TargetImpressionShare {
   /** The chosen fraction of ads to be shown in the targeted location in micros. For example, 1% equals 10,000. */
   locationFractionMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__TargetImpressionShare = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetImpressionShare = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(GoogleAdsSearchads360V0Common__TargetImpressionShareLocationEnum),
     cpcBidCeilingMicros: S.optional(S.String),
@@ -2337,7 +2328,7 @@ export interface GoogleAdsSearchads360V0Common__TargetSpend {
   /** Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. */
   cpcBidCeilingMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__TargetSpend = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetSpend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetSpendMicros: S.optional(S.String),
     cpcBidCeilingMicros: S.optional(S.String),
@@ -2355,7 +2346,7 @@ export interface GoogleAdsSearchads360V0Common__TargetCpa {
   /** Average CPA target. This target should be greater than or equal to minimum billable unit based on the currency for the account. */
   targetCpaMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__TargetCpa = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetCpa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidFloorMicros: S.optional(S.String),
     cpcBidCeilingMicros: S.optional(S.String),
@@ -2370,14 +2361,11 @@ export type GoogleAdsSearchads360V0Resources__BiddingStrategyStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__BiddingStrategyStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__BiddingStrategyStatusEnum = S.String;
 
 /** An automated bidding strategy that raises bids for clicks that seem more likely to lead to a conversion and lowers them for clicks where they seem less likely. This bidding strategy is deprecated and cannot be created anymore. Use ManualCpc with enhanced_cpc_enabled set to true for equivalent functionality. */
 export type GoogleAdsSearchads360V0Common__EnhancedCpc =
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-export const GoogleAdsSearchads360V0Common__EnhancedCpc =
-  GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-
 export type GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
@@ -2398,7 +2386,7 @@ export type GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum =
   | "TARGET_OUTRANK_SHARE"
   | "TARGET_ROAS"
   | "TARGET_SPEND";
-export const GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__BiddingStrategyTypeEnum = S.String;
 
 /** An automated bidding strategy to help get the most conversions for your campaigns while spending your budget. */
 export interface GoogleAdsSearchads360V0Common__MaximizeConversions {
@@ -2409,7 +2397,7 @@ export interface GoogleAdsSearchads360V0Common__MaximizeConversions {
   /** Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. Mutable for portfolio bidding strategies only. */
   cpcBidFloorMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__MaximizeConversions = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__MaximizeConversions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidCeilingMicros: S.optional(S.String),
     targetCpaMicros: S.optional(S.String),
@@ -2428,7 +2416,7 @@ export interface GoogleAdsSearchads360V0Common__TargetRoas {
   /** Minimum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. This should only be set for portfolio bid strategies. */
   cpcBidFloorMicros?: string;
 }
-export const GoogleAdsSearchads360V0Common__TargetRoas = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetRoas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidCeilingMicros: S.optional(S.String),
     targetRoas: S.optional(S.Number),
@@ -2475,7 +2463,7 @@ export interface GoogleAdsSearchads360V0Resources__BiddingStrategy {
   /** A bidding strategy that helps you maximize revenue while averaging a specific target Return On Ad Spend (ROAS). */
   targetRoas?: GoogleAdsSearchads360V0Common__TargetRoas;
 }
-export const GoogleAdsSearchads360V0Resources__BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__BiddingStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximizeConversionValue: S.optional(GoogleAdsSearchads360V0Common__MaximizeConversionValue),
     id: S.optional(S.String),
@@ -2505,7 +2493,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "PAUSED";
-export const GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum = S.String;
 
 /** A link between a Campaign and an Asset. */
 export interface GoogleAdsSearchads360V0Resources__CampaignAsset {
@@ -2518,7 +2506,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAsset {
   /** Immutable. The campaign to which the asset is linked. */
   campaign?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CampaignAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(S.String),
     status: S.optional(GoogleAdsSearchads360V0Resources__CampaignAssetStatusEnum),
@@ -2562,14 +2550,14 @@ export type GoogleAdsSearchads360V0Resources__VisitAssetFieldTypeEnum =
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
   | "CALL_TO_ACTION";
-export const GoogleAdsSearchads360V0Resources__VisitAssetFieldTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__VisitAssetFieldTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__VisitProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
   | "LOCAL";
-export const GoogleAdsSearchads360V0Resources__VisitProductChannelEnum = S.String;
+const GoogleAdsSearchads360V0Resources__VisitProductChannelEnum = S.String;
 
 /** A visit. */
 export interface GoogleAdsSearchads360V0Resources__Visit {
@@ -2602,7 +2590,7 @@ export interface GoogleAdsSearchads360V0Resources__Visit {
   /** Output only. The Search Ads 360 inventory account ID containing the product that was clicked on. Search Ads 360 generates this ID when you link an inventory account in Search Ads 360. */
   merchantId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__Visit = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Visit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adId: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -2638,16 +2626,15 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting {
   /** Immutable. ID of the Merchant Center account. This field is required for create operations. This field is immutable for Shopping campaigns. */
   merchantId?: string;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      feedLabel: S.optional(S.String),
-      salesCountry: S.optional(S.String),
-      useVehicleInventory: S.optional(S.Boolean),
-      enableLocal: S.optional(S.Boolean),
-      campaignPriority: S.optional(S.Number),
-      merchantId: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feedLabel: S.optional(S.String),
+    salesCountry: S.optional(S.String),
+    useVehicleInventory: S.optional(S.Boolean),
+    enableLocal: S.optional(S.Boolean),
+    campaignPriority: S.optional(S.Number),
+    merchantId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting>;
@@ -2660,23 +2647,17 @@ export type GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum =
   | "ENDED"
   | "PENDING"
   | "SUSPENDED";
-export const GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum = S.String;
 
 /** Manual impression-based bidding where user pays per thousand impressions. */
 export type GoogleAdsSearchads360V0Common__ManualCpm =
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-export const GoogleAdsSearchads360V0Common__ManualCpm =
-  GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-
 /** A rule specifying the maximum number of times an ad (or some set of ads) can be shown to a user over a particular time period. */
 export type GoogleAdsSearchads360V0Common__FrequencyCapEntry =
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-export const GoogleAdsSearchads360V0Common__FrequencyCapEntry =
-  GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-
 export type GoogleAdsSearchads360V0Common__FrequencyCapEntryList =
   Array<GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo>;
-export const GoogleAdsSearchads360V0Common__FrequencyCapEntryList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__FrequencyCapEntryList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__FrequencyCapEntryList>;
 
@@ -2703,7 +2684,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelSubTypeE
   | "VIDEO_REACH_TARGET_FREQUENCY"
   | "TRAVEL_ACTIVITIES"
   | "SOCIAL_FACEBOOK_TRACKING_ONLY";
-export const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelSubTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelSubTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatusEnum =
   | "UNSPECIFIED"
@@ -2733,18 +2714,17 @@ export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatu
   | "MULTIPLE_LIMITED"
   | "MULTIPLE_MISCONFIGURED"
   | "MULTIPLE";
-export const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategySystemStatusEnum = S.String;
 
 /** Campaign-level settings for tracking information. */
 export interface GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting {
   /** Output only. The url used for dynamic tracking. */
   trackingUrl?: string;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      trackingUrl: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trackingUrl: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_TrackingSetting>;
@@ -2768,11 +2748,9 @@ export type GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum =
   | "STATIC_LOCATION_GROUP"
   | "HOTEL_PROPERTY"
   | "TRAVEL_FEED";
-export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum = S.String;
-
 export type GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnum>;
-export const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
+const GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList =
   GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignFeedTypesItemEnumList>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum =
@@ -2791,7 +2769,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum
   | "DISCOVERY"
   | "TRAVEL"
   | "SOCIAL";
-export const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignAdvertisingChannelTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum =
   | "UNSPECIFIED"
@@ -2799,12 +2777,9 @@ export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOpt
   | "CALL_CLICKS"
   | "DRIVING_DIRECTIONS"
   | "APP_PRE_REGISTRATION";
-export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum =
-  S.String;
-
 export type GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnum>;
-export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
+const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList =
   GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList>;
 
 /** Optimization goal setting for this campaign, which includes a set of optimization goal types. */
@@ -2812,16 +2787,16 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetti
   /** The list of optimization goal types. */
   optimizationGoalTypes?: GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       optimizationGoalTypes: S.optional(
         GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSettingOptimizationGoalTypesItemEnumList,
       ),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_OptimizationGoalSetting>;
 
 /** The network settings for the campaign. */
 export interface GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings {
@@ -2834,14 +2809,13 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings {
   /** Whether ads will be served with google.com search results. */
   targetGoogleSearch?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetContentNetwork: S.optional(S.Boolean),
-      targetPartnerSearchNetwork: S.optional(S.Boolean),
-      targetSearchNetwork: S.optional(S.Boolean),
-      targetGoogleSearch: S.optional(S.Boolean),
-    }),
+const GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetContentNetwork: S.optional(S.Boolean),
+    targetPartnerSearchNetwork: S.optional(S.Boolean),
+    targetSearchNetwork: S.optional(S.Boolean),
+    targetGoogleSearch: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_NetworkSettings>;
@@ -2851,7 +2825,7 @@ export interface GoogleAdsSearchads360V0Common__RealTimeBiddingSetting {
   /** Whether the campaign is opted in to real-time bidding. */
   optIn?: boolean;
 }
-export const GoogleAdsSearchads360V0Common__RealTimeBiddingSetting = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__RealTimeBiddingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optIn: S.optional(S.Boolean),
   }),
@@ -2862,9 +2836,6 @@ export const GoogleAdsSearchads360V0Common__RealTimeBiddingSetting = /*@__PURE__
 /** Manual bidding strategy that allows advertiser to set the bid per advertiser-specified action. */
 export type GoogleAdsSearchads360V0Common__ManualCpa =
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-export const GoogleAdsSearchads360V0Common__ManualCpa =
-  GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-
 /** A bidding strategy where bids are a fraction of the advertised price for some good or service. */
 export interface GoogleAdsSearchads360V0Common__PercentCpc {
   /** Maximum bid limit that can be set by the bid strategy. This is an optional field entered by the advertiser and specified in local micros. Note: A zero value is interpreted in the same way as having bid_ceiling undefined. */
@@ -2872,7 +2843,7 @@ export interface GoogleAdsSearchads360V0Common__PercentCpc {
   /** Adjusts the bid for each auction upward or downward, depending on the likelihood of a conversion. Individual bids may exceed cpc_bid_ceiling_micros, but the average bid amount for a campaign should not. */
   enhancedCpcEnabled?: boolean;
 }
-export const GoogleAdsSearchads360V0Common__PercentCpc = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__PercentCpc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpcBidCeilingMicros: S.optional(S.String),
     enhancedCpcEnabled: S.optional(S.Boolean),
@@ -2886,14 +2857,14 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization
   /** The selected set of resource names for conversion actions for optimizing this campaign. */
   conversionActions?: StringList;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       conversionActions: S.optional(StringList),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_SelectiveOptimization>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum =
   | "UNSPECIFIED"
@@ -2928,20 +2899,14 @@ export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTy
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
   | "CALL_TO_ACTION";
-export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum =
-  S.String;
-
 export type GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
   Array<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnum>;
-export const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
+const GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList =
   GoogleAdsSearchads360V0Common__MetricsInteractionEventTypesItemEnumList as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignExcludedParentAssetFieldTypesItemEnumList>;
 
 /** Target CPM (cost per thousand impressions) is an automated bidding strategy that sets bids to optimize performance given the target CPM you set. */
 export type GoogleAdsSearchads360V0Common__TargetCpm =
   GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-export const GoogleAdsSearchads360V0Common__TargetCpm =
-  GoogleAdsSearchads360V0Common__SearchAds360ProductAdInfo;
-
 export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
@@ -2962,7 +2927,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum =
   | "TARGET_OUTRANK_SHARE"
   | "TARGET_ROAS"
   | "TARGET_SPEND";
-export const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignBiddingStrategyTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatusEnum =
   | "UNSPECIFIED"
@@ -2972,7 +2937,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatu
   | "ROTATE"
   | "ROTATE_INDEFINITELY"
   | "UNAVAILABLE";
-export const GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignAdServingOptimizationStatusEnum = S.String;
 
 /** The setting for controlling Dynamic Search Ads (DSA). */
 export interface GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting {
@@ -2983,23 +2948,23 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetti
   /** Whether the campaign uses advertiser supplied URLs exclusively. */
   useSuppliedUrlsOnly?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       domainName: S.optional(S.String),
       languageCode: S.optional(S.String),
       useSuppliedUrlsOnly: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_DynamicSearchAdsSetting>;
 
 /** Manual click-based bidding where user pays per click. */
 export interface GoogleAdsSearchads360V0Common__ManualCpc {
   /** Whether bids are to be enhanced based on conversion optimizer data. */
   enhancedCpcEnabled?: boolean;
 }
-export const GoogleAdsSearchads360V0Common__ManualCpc = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__ManualCpc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enhancedCpcEnabled: S.optional(S.Boolean),
   }),
@@ -3013,7 +2978,7 @@ export type GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositi
   | "PRESENCE_OR_INTEREST"
   | "SEARCH_INTEREST"
   | "PRESENCE";
-export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum =
+const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum =
   S.String;
 
 export type GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum =
@@ -3021,7 +2986,7 @@ export type GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegati
   | "UNKNOWN"
   | "PRESENCE_OR_INTEREST"
   | "PRESENCE";
-export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum =
+const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum =
   S.String;
 
 /** Represents a collection of settings related to ads geotargeting. */
@@ -3031,19 +2996,18 @@ export interface GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting 
   /** The setting used for negative geotargeting in this particular campaign. */
   negativeGeoTargetType?: GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum;
 }
-export const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      positiveGeoTargetType: S.optional(
-        GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum,
-      ),
-      negativeGeoTargetType: S.optional(
-        GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting>;
+const GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    positiveGeoTargetType: S.optional(
+      GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingPositiveGeoTargetTypeEnum,
+    ),
+    negativeGeoTargetType: S.optional(
+      GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSettingNegativeGeoTargetTypeEnum,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_Campaign_GeoTargetTypeSetting>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignStatusEnum =
   | "UNSPECIFIED"
@@ -3051,7 +3015,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__CampaignStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignStatusEnum = S.String;
 
 /** A campaign. */
 export interface GoogleAdsSearchads360V0Resources__Campaign {
@@ -3150,7 +3114,7 @@ export interface GoogleAdsSearchads360V0Resources__Campaign {
   /** Standard Maximize Conversion Value bidding strategy that automatically sets bids to maximize revenue while spending your budget. */
   maximizeConversionValue?: GoogleAdsSearchads360V0Common__MaximizeConversionValue;
 }
-export const GoogleAdsSearchads360V0Resources__Campaign = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Campaign = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shoppingSetting: S.optional(GoogleAdsSearchads360V0Resources_Campaign_ShoppingSetting),
     servingStatus: S.optional(GoogleAdsSearchads360V0Resources__CampaignServingStatusEnum),
@@ -3235,17 +3199,17 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabe
   /** Immutable. The resource name of the ad group criterion effective label. Ad group criterion effective label resource names have the form: `customers/{owner_customer_id}/adGroupCriterionEffectiveLabels/{ad_group_id}~{criterion_id}~{label_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       label: S.optional(S.String),
       adGroupCriterion: S.optional(S.String),
       ownerCustomerId: S.optional(S.String),
       resourceName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupCriterionEffectiveLabel>;
 
 export type GoogleAdsSearchads360V0Resources__UserListTypeEnum =
   | "UNSPECIFIED"
@@ -3256,7 +3220,7 @@ export type GoogleAdsSearchads360V0Resources__UserListTypeEnum =
   | "RULE_BASED"
   | "SIMILAR"
   | "CRM_BASED";
-export const GoogleAdsSearchads360V0Resources__UserListTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__UserListTypeEnum = S.String;
 
 /** A user list. This is a list of users a customer may target. The unique key of a user list consists of the following fields: `id`. Note that the `name` must also be unique for user lists owned by a given customer, except in some cases where `access_reason` is set to `SHARED`. Violating the unique name constraint produces error: `UserListError.INVALID_NAME`. */
 export interface GoogleAdsSearchads360V0Resources__UserList {
@@ -3269,7 +3233,7 @@ export interface GoogleAdsSearchads360V0Resources__UserList {
   /** Immutable. The resource name of the user list. User list resource names have the form: `customers/{customer_id}/userLists/{user_list_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__UserList = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__UserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleAdsSearchads360V0Resources__UserListTypeEnum),
     id: S.optional(S.String),
@@ -3288,14 +3252,14 @@ export type GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum =
   | "PAGE_TITLE"
   | "PAGE_CONTENT"
   | "CUSTOM_LABEL";
-export const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum = S.String;
+const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "EQUALS"
   | "CONTAINS";
-export const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum = S.String;
+const GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum = S.String;
 
 /** Logical expression for targeting webpages of an advertiser's website. */
 export interface GoogleAdsSearchads360V0Common__WebpageConditionInfo {
@@ -3306,7 +3270,7 @@ export interface GoogleAdsSearchads360V0Common__WebpageConditionInfo {
   /** Operator of webpage targeting condition. */
   operator?: GoogleAdsSearchads360V0Common__WebpageConditionInfoOperatorEnum;
 }
-export const GoogleAdsSearchads360V0Common__WebpageConditionInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__WebpageConditionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     argument: S.optional(S.String),
     operand: S.optional(GoogleAdsSearchads360V0Common__WebpageConditionInfoOperandEnum),
@@ -3318,7 +3282,7 @@ export const GoogleAdsSearchads360V0Common__WebpageConditionInfo = /*@__PURE__*/
 
 export type GoogleAdsSearchads360V0Common__WebpageConditionInfoList =
   Array<GoogleAdsSearchads360V0Common__WebpageConditionInfo>;
-export const GoogleAdsSearchads360V0Common__WebpageConditionInfoList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__WebpageConditionInfoList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__WebpageConditionInfo,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__WebpageConditionInfoList>;
 
@@ -3331,7 +3295,7 @@ export interface GoogleAdsSearchads360V0Common__WebpageInfo {
   /** The name of the criterion that is defined by this parameter. The name value will be used for identifying, sorting and filtering criteria with this type of parameters. This field is required for CREATE operations and is prohibited on UPDATE operations. */
   criterionName?: string;
 }
-export const GoogleAdsSearchads360V0Common__WebpageInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__WebpageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(GoogleAdsSearchads360V0Common__WebpageConditionInfoList),
     coveragePercentage: S.optional(S.Number),
@@ -3346,7 +3310,7 @@ export interface GoogleAdsSearchads360V0Common__UserListInfo {
   /** The User List resource name. */
   userList?: string;
 }
-export const GoogleAdsSearchads360V0Common__UserListInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__UserListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userList: S.optional(S.String),
   }),
@@ -3360,14 +3324,14 @@ export type GoogleAdsSearchads360V0Resources__CampaignCriterionStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__CampaignCriterionStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignCriterionStatusEnum = S.String;
 
 /** A language criterion. */
 export interface GoogleAdsSearchads360V0Common__LanguageInfo {
   /** The language constant resource name. */
   languageConstant?: string;
 }
-export const GoogleAdsSearchads360V0Common__LanguageInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__LanguageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageConstant: S.optional(S.String),
   }),
@@ -3381,14 +3345,14 @@ export type GoogleAdsSearchads360V0Common__GenderInfoTypeEnum =
   | "MALE"
   | "FEMALE"
   | "UNDETERMINED";
-export const GoogleAdsSearchads360V0Common__GenderInfoTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__GenderInfoTypeEnum = S.String;
 
 /** A gender criterion. */
 export interface GoogleAdsSearchads360V0Common__GenderInfo {
   /** Type of the gender. */
   type?: GoogleAdsSearchads360V0Common__GenderInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__GenderInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__GenderInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GoogleAdsSearchads360V0Common__GenderInfoTypeEnum),
   }),
@@ -3406,14 +3370,12 @@ export type GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum =
   | "AGE_RANGE_55_64"
   | "AGE_RANGE_65_UP"
   | "AGE_RANGE_UNDETERMINED";
-export const GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum = S.String;
-
 /** An age range criterion. */
 export interface GoogleAdsSearchads360V0Common__AgeRangeInfo {
   /** Type of the age range. */
   type?: GoogleAdsSearchads360V0Common__AgeRangeInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__AgeRangeInfo =
+const GoogleAdsSearchads360V0Common__AgeRangeInfo =
   GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__AgeRangeInfo>;
 
 export type GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum =
@@ -3457,7 +3419,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum =
   | "BRAND"
   | "BRAND_LIST"
   | "LIFE_EVENT";
-export const GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignCriterionTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum =
   | "UNSPECIFIED"
@@ -3465,7 +3427,7 @@ export type GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum =
   | "EXACT"
   | "PHRASE"
   | "BROAD";
-export const GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum = S.String;
 
 /** A keyword criterion. */
 export interface GoogleAdsSearchads360V0Common__KeywordInfo {
@@ -3474,7 +3436,7 @@ export interface GoogleAdsSearchads360V0Common__KeywordInfo {
   /** The match type of the keyword. */
   matchType?: GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__KeywordInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__KeywordInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     matchType: S.optional(GoogleAdsSearchads360V0Common__KeywordInfoMatchTypeEnum),
@@ -3491,14 +3453,12 @@ export type GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum =
   | "DESKTOP"
   | "CONNECTED_TV"
   | "OTHER";
-export const GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum = S.String;
-
 /** A device criterion. */
 export interface GoogleAdsSearchads360V0Common__DeviceInfo {
   /** Type of the device. */
   type?: GoogleAdsSearchads360V0Common__DeviceInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__DeviceInfo =
+const GoogleAdsSearchads360V0Common__DeviceInfo =
   GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__DeviceInfo>;
 
 /** A location criterion. */
@@ -3506,7 +3466,7 @@ export interface GoogleAdsSearchads360V0Common__LocationInfo {
   /** The geo target constant resource name. */
   geoTargetConstant?: string;
 }
-export const GoogleAdsSearchads360V0Common__LocationInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__LocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoTargetConstant: S.optional(S.String),
   }),
@@ -3520,7 +3480,7 @@ export type GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum =
   | "METERS"
   | "MILES"
   | "MILLI_MILES";
-export const GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum = S.String;
+const GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum = S.String;
 
 /** A radius around a list of locations specified through a feed. */
 export interface GoogleAdsSearchads360V0Common__LocationGroupInfo {
@@ -3533,7 +3493,7 @@ export interface GoogleAdsSearchads360V0Common__LocationGroupInfo {
   /** Unit of the radius. Miles and meters are supported for geo target constants. Milli miles and meters are supported for feed item sets. This is required and must be set in CREATE operations. */
   radiusUnits?: GoogleAdsSearchads360V0Common__LocationGroupInfoRadiusUnitsEnum;
 }
-export const GoogleAdsSearchads360V0Common__LocationGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__LocationGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedItemSets: S.optional(StringList),
     radius: S.optional(S.String),
@@ -3581,7 +3541,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignCriterion {
   /** Immutable. Location Group */
   locationGroup?: GoogleAdsSearchads360V0Common__LocationGroupInfo;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignCriterion = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CampaignCriterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastModifiedTime: S.optional(S.String),
     webpage: S.optional(GoogleAdsSearchads360V0Common__WebpageInfo),
@@ -3616,14 +3576,13 @@ export interface GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel {
   /** Output only. The ID of the Customer which owns the effective label. */
   ownerCustomerId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      label: S.optional(S.String),
-      resourceName: S.optional(S.String),
-      campaign: S.optional(S.String),
-      ownerCustomerId: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    campaign: S.optional(S.String),
+    ownerCustomerId: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignEffectiveLabel>;
@@ -3633,7 +3592,7 @@ export interface GoogleAdsSearchads360V0Resources__GenderView {
   /** Output only. The resource name of the gender view. Gender view resource names have the form: `customers/{customer_id}/genderViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__GenderView =
+const GoogleAdsSearchads360V0Resources__GenderView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__GenderView>;
 
 /** A language. */
@@ -3649,7 +3608,7 @@ export interface GoogleAdsSearchads360V0Resources__LanguageConstant {
   /** Output only. Whether the language is targetable. */
   targetable?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources__LanguageConstant = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__LanguageConstant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     name: S.optional(S.String),
@@ -3668,7 +3627,7 @@ export type GoogleAdsSearchads360V0Resources__CustomerClientStatusEnum =
   | "CANCELED"
   | "SUSPENDED"
   | "CLOSED";
-export const GoogleAdsSearchads360V0Resources__CustomerClientStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CustomerClientStatusEnum = S.String;
 
 /** A link between the given customer and a client customer. CustomerClients only exist for manager customers. All direct and indirect client customers are included, as well as the manager itself. */
 export interface GoogleAdsSearchads360V0Resources__CustomerClient {
@@ -3697,7 +3656,7 @@ export interface GoogleAdsSearchads360V0Resources__CustomerClient {
   /** Output only. Specifies whether this is a hidden account. Read only. */
   hidden?: boolean;
 }
-export const GoogleAdsSearchads360V0Resources__CustomerClient = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CustomerClient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     id: S.optional(S.String),
@@ -3725,7 +3684,7 @@ export interface GoogleAdsSearchads360V0Resources__UserLocationView {
   /** Output only. Criterion Id for the country. */
   countryCriterionId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__UserLocationView = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__UserLocationView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     targetingLocation: S.optional(S.Boolean),
@@ -3742,14 +3701,14 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductConditionEnum =
   | "NEW"
   | "REFURBISHED"
   | "USED";
-export const GoogleAdsSearchads360V0Common__SegmentsProductConditionEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsProductConditionEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsProductChannelEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "ONLINE"
   | "LOCAL";
-export const GoogleAdsSearchads360V0Common__SegmentsProductChannelEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsProductChannelEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum =
   | "UNSPECIFIED"
@@ -3757,7 +3716,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum =
   | "VERTICAL_ADS_PROMOTION"
   | "VERTICAL_ADS_BOOKING_LINK"
   | "TEXT";
-export const GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsAdFormatTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum =
   | "UNSPECIFIED"
@@ -3784,7 +3743,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum 
   | "STORE_SALE"
   | "QUALIFIED_LEAD"
   | "CONVERTED_LEAD";
-export const GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsConversionActionCategoryEnum = S.String;
 
 /** A Keyword criterion segment. */
 export interface GoogleAdsSearchads360V0Common__Keyword {
@@ -3793,7 +3752,7 @@ export interface GoogleAdsSearchads360V0Common__Keyword {
   /** The AdGroupCriterion resource name. */
   adGroupCriterion?: string;
 }
-export const GoogleAdsSearchads360V0Common__Keyword = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__Keyword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(GoogleAdsSearchads360V0Common__KeywordInfo),
     adGroupCriterion: S.optional(S.String),
@@ -3807,7 +3766,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductChannelExclusivityEnum
   | "UNKNOWN"
   | "SINGLE_CHANNEL"
   | "MULTI_CHANNEL";
-export const GoogleAdsSearchads360V0Common__SegmentsProductChannelExclusivityEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsProductChannelExclusivityEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum =
   | "UNSPECIFIED"
@@ -3819,7 +3778,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsDayOfWeekEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum =
   | "UNSPECIFIED"
@@ -3830,7 +3789,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum =
   | "YOUTUBE_SEARCH"
   | "YOUTUBE_WATCH"
   | "MIXED";
-export const GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsAdNetworkTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsDeviceEnum =
   | "UNSPECIFIED"
@@ -3840,7 +3799,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsDeviceEnum =
   | "DESKTOP"
   | "CONNECTED_TV"
   | "OTHER";
-export const GoogleAdsSearchads360V0Common__SegmentsDeviceEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsDeviceEnum = S.String;
 
 /** An AssetInteractionTarget segment. */
 export interface GoogleAdsSearchads360V0Common__AssetInteractionTarget {
@@ -3849,7 +3808,7 @@ export interface GoogleAdsSearchads360V0Common__AssetInteractionTarget {
   /** The asset resource name. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V0Common__AssetInteractionTarget = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__AssetInteractionTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interactionOnThisAsset: S.optional(S.Boolean),
     asset: S.optional(S.String),
@@ -3865,7 +3824,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsProductSoldConditionEnum =
   | "NEW"
   | "REFURBISHED"
   | "USED";
-export const GoogleAdsSearchads360V0Common__SegmentsProductSoldConditionEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsProductSoldConditionEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum =
   | "UNSPECIFIED"
@@ -3876,7 +3835,7 @@ export type GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum =
   | "EVENTS"
   | "THINGS_TO_DO"
   | "FLIGHTS";
-export const GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum = S.String;
+const GoogleAdsSearchads360V0Common__SegmentsVerticalAdsVerticalEnum = S.String;
 
 /** Segment only fields. */
 export interface GoogleAdsSearchads360V0Common__Segments {
@@ -4029,7 +3988,7 @@ export interface GoogleAdsSearchads360V0Common__Segments {
   /** Type (level 2) of the product sold. */
   productSoldTypeL2?: string;
 }
-export const GoogleAdsSearchads360V0Common__Segments = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__Segments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productSoldItemId: S.optional(S.String),
     year: S.optional(S.Number),
@@ -4127,7 +4086,7 @@ export interface GoogleAdsSearchads360V0Resources__Audience {
   /** Immutable. The resource name of the audience. Audience names have the form: `customers/{customer_id}/audiences/{audience_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__Audience = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__Audience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -4143,7 +4102,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAudienceView {
   /** Output only. The resource name of the ad group audience view. Ad group audience view resource names have the form: `customers/{customer_id}/adGroupAudienceViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAudienceView =
+const GoogleAdsSearchads360V0Resources__AdGroupAudienceView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupAudienceView>;
 
 /** A relationship between an ad group ad and a label. */
@@ -4157,7 +4116,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAdLabel {
   /** Immutable. The label assigned to the ad group ad. */
   label?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAdLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupAdLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroupAd: S.optional(S.String),
     ownerCustomerId: S.optional(S.String),
@@ -4206,7 +4165,7 @@ export type GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum =
   | "HEADLINE_AS_SITELINK_POSITION_TWO"
   | "DESCRIPTION_LINE_HEADLINE_AS_SITELINK_POSITION_ONE"
   | "DESCRIPTION_LINE_HEADLINE_AS_SITELINK_POSITION_TWO";
-export const GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum = S.String;
+const GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum = S.String;
 
 /** Contains the usage information of the asset. */
 export interface GoogleAdsSearchads360V0Common__AssetUsage {
@@ -4215,7 +4174,7 @@ export interface GoogleAdsSearchads360V0Common__AssetUsage {
   /** Resource name of the asset. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V0Common__AssetUsage = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__AssetUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     servedAssetFieldType: S.optional(
       GoogleAdsSearchads360V0Common__AssetUsageServedAssetFieldTypeEnum,
@@ -4228,7 +4187,7 @@ export const GoogleAdsSearchads360V0Common__AssetUsage = /*@__PURE__*/ S.suspend
 
 export type GoogleAdsSearchads360V0Common__AssetUsageList =
   Array<GoogleAdsSearchads360V0Common__AssetUsage>;
-export const GoogleAdsSearchads360V0Common__AssetUsageList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__AssetUsageList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__AssetUsage,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__AssetUsageList>;
 
@@ -4237,21 +4196,20 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDat
   /** Output only. Served assets. */
   assetCombinationServedAssets?: GoogleAdsSearchads360V0Common__AssetUsageList;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       assetCombinationServedAssets: S.optional(GoogleAdsSearchads360V0Common__AssetUsageList),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList =
   Array<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData>;
-export const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList>;
+const GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList = /*@__PURE__*/ S.Array(
+  GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationData,
+) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList>;
 
 /** A view on the usage of asset group asset top combinations. */
 export interface GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView {
@@ -4260,17 +4218,16 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView 
   /** Output only. The top combinations of assets that served together. */
   assetGroupTopCombinations?: GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-      assetGroupTopCombinations: S.optional(
-        GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView>;
+const GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.optional(S.String),
+    assetGroupTopCombinations: S.optional(
+      GoogleAdsSearchads360V0Resources__AssetGroupAssetCombinationDataList,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupTopCombinationView>;
 
 /** A relationship between an ad group and an effective label. An effective label is a label inherited or directly assigned to this ad group. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel {
@@ -4283,7 +4240,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel {
   /** Output only. The ID of the Customer which owns the effective label. */
   ownerCustomerId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupEffectiveLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroup: S.optional(S.String),
     label: S.optional(S.String),
@@ -4299,7 +4256,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum =
   | "UNKNOWN"
   | "STANDARD"
   | "ACCELERATED";
-export const GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum =
   | "UNSPECIFIED"
@@ -4307,7 +4264,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum =
   | "DAILY"
   | "FIXED_DAILY"
   | "CUSTOM_PERIOD";
-export const GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignBudgetPeriodEnum = S.String;
 
 /** A campaign budget. */
 export interface GoogleAdsSearchads360V0Resources__CampaignBudget {
@@ -4320,7 +4277,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignBudget {
   /** Immutable. The resource name of the campaign budget. Campaign budget resource names have the form: `customers/{customer_id}/campaignBudgets/{campaign_budget_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignBudget = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CampaignBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     deliveryMethod: S.optional(GoogleAdsSearchads360V0Resources__CampaignBudgetDeliveryMethodEnum),
@@ -4340,7 +4297,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupBidModifier {
   /** Immutable. A device criterion. */
   device?: GoogleAdsSearchads360V0Common__DeviceInfo;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupBidModifier = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupBidModifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bidModifier: S.optional(S.Number),
     resourceName: S.optional(S.String),
@@ -4355,7 +4312,7 @@ export type GoogleAdsSearchads360V0Resources__GeoTargetConstantStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVAL_PLANNED";
-export const GoogleAdsSearchads360V0Resources__GeoTargetConstantStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__GeoTargetConstantStatusEnum = S.String;
 
 /** A geo target constant. */
 export interface GoogleAdsSearchads360V0Resources__GeoTargetConstant {
@@ -4376,7 +4333,7 @@ export interface GoogleAdsSearchads360V0Resources__GeoTargetConstant {
   /** Output only. The fully qualified English name, consisting of the target's name and that of its parent and country. */
   canonicalName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__GeoTargetConstant = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__GeoTargetConstant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(S.String),
     parentGeoTarget: S.optional(S.String),
@@ -4397,7 +4354,7 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "PAUSED";
-export const GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum =
   | "UNSPECIFIED"
@@ -4432,7 +4389,7 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum =
   | "DISCOVERY_CAROUSEL_CARD"
   | "LONG_DESCRIPTION"
   | "CALL_TO_ACTION";
-export const GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum = S.String;
 
 /** AssetGroupAsset is the link between an asset and an asset group. Adding an AssetGroupAsset links an asset with an asset group. */
 export interface GoogleAdsSearchads360V0Resources__AssetGroupAsset {
@@ -4447,7 +4404,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupAsset {
   /** Immutable. The asset which this asset group asset is linking. */
   asset?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroupAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetGroupAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__AssetGroupAssetStatusEnum),
     fieldType: S.optional(GoogleAdsSearchads360V0Resources__AssetGroupAssetFieldTypeEnum),
@@ -4464,7 +4421,7 @@ export type GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantStat
   | "UNKNOWN"
   | "ACTIVE"
   | "OBSOLETE";
-export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLevelEnum =
   | "UNSPECIFIED"
@@ -4474,7 +4431,7 @@ export type GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLeve
   | "LEVEL3"
   | "LEVEL4"
   | "LEVEL5";
-export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLevelEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstantLevelEnum = S.String;
 
 /** A Product Bidding Category. */
 export interface GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant {
@@ -4495,8 +4452,8 @@ export interface GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstan
   /** Output only. Language code of the product bidding category. */
   languageCode?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceName: S.optional(S.String),
       localizedName: S.optional(S.String),
@@ -4509,9 +4466,9 @@ export const GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant =
       productBiddingCategoryConstantParent: S.optional(S.String),
       languageCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__ProductBiddingCategoryConstant>;
 
 /** A relationship between an ad group and a label. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupLabel {
@@ -4524,7 +4481,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupLabel {
   /** Immutable. The ad group to which the label is attached. */
   adGroup?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupLabel = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     ownerCustomerId: S.optional(S.String),
@@ -4546,14 +4503,13 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel {
   /** Immutable. The ad group ad to which the effective label is attached. */
   adGroupAd?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      label: S.optional(S.String),
-      resourceName: S.optional(S.String),
-      ownerCustomerId: S.optional(S.String),
-      adGroupAd: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    ownerCustomerId: S.optional(S.String),
+    adGroupAd: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AdGroupAdEffectiveLabel>;
@@ -4563,7 +4519,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum = S.String;
 
 /** AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset set with an ad group. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupAssetSet {
@@ -4576,7 +4532,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAssetSet {
   /** Immutable. The asset set which is linked to the ad group. */
   assetSet?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAssetSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupAssetSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__AdGroupAssetSetStatusEnum),
     resourceName: S.optional(S.String),
@@ -4592,7 +4548,7 @@ export interface GoogleAdsSearchads360V0Resources__ProductGroupView {
   /** Output only. The resource name of the product group view. Product group view resource names have the form: `customers/{customer_id}/productGroupViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ProductGroupView =
+const GoogleAdsSearchads360V0Resources__ProductGroupView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__ProductGroupView>;
 
 /** A campaign audience view. Includes performance data from interests and remarketing lists for Display Network and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated by campaign and audience criterion. This view only includes audiences attached at the campaign level. */
@@ -4600,7 +4556,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAudienceView {
   /** Output only. The resource name of the campaign audience view. Campaign audience view resource names have the form: `customers/{customer_id}/campaignAudienceViews/{campaign_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignAudienceView =
+const GoogleAdsSearchads360V0Resources__CampaignAudienceView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__CampaignAudienceView>;
 
 /** Settings related to a Floodlight conversion action. */
@@ -4612,7 +4568,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSet
   /** Output only. String used to identify a Floodlight activity when reporting conversions. */
   activityTag?: string;
 }
-export const GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSettings =
+const GoogleAdsSearchads360V0Resources_ConversionAction_FloodlightSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       activityId: S.optional(S.String),
@@ -4629,7 +4585,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "HIDDEN";
-export const GoogleAdsSearchads360V0Resources__ConversionActionStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionActionStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum =
   | "UNSPECIFIED"
@@ -4674,7 +4630,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum =
   | "UNIVERSAL_ANALYTICS_TRANSACTION"
   | "GOOGLE_ANALYTICS_4_CUSTOM"
   | "GOOGLE_ANALYTICS_4_PURCHASE";
-export const GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionActionTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum =
   | "UNSPECIFIED"
@@ -4686,7 +4642,7 @@ export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSe
   | "GOOGLE_SEARCH_ATTRIBUTION_TIME_DECAY"
   | "GOOGLE_SEARCH_ATTRIBUTION_POSITION_BASED"
   | "GOOGLE_SEARCH_ATTRIBUTION_DATA_DRIVEN";
-export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum =
+const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsAttributionModelEnum =
   S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum =
@@ -4696,7 +4652,7 @@ export type GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSe
   | "STALE"
   | "EXPIRED"
   | "NEVER_GENERATED";
-export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum =
+const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum =
   S.String;
 
 /** Settings related to this conversion action's attribution model. */
@@ -4706,7 +4662,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_AttributionMo
   /** Output only. The status of the data-driven attribution model for the conversion action. */
   dataDrivenModelStatus?: GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettingsDataDrivenModelStatusEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettings =
+const GoogleAdsSearchads360V0Resources_ConversionAction_AttributionModelSettings =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributionModel: S.optional(
@@ -4729,16 +4685,16 @@ export interface GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings
   /** The currency code to use when conversion events for this conversion action are sent with an invalid or missing currency code, or when this conversion action is configured to always use the default value. */
   defaultCurrencyCode?: string;
 }
-export const GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       defaultValue: S.optional(S.Number),
       alwaysUseDefaultValue: S.optional(S.Boolean),
       defaultCurrencyCode: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_ConversionAction_ValueSettings>;
 
 export type GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum =
   | "UNSPECIFIED"
@@ -4765,7 +4721,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum =
   | "STORE_SALE"
   | "QUALIFIED_LEAD"
   | "CONVERTED_LEAD";
-export const GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionActionCategoryEnum = S.String;
 
 /** A conversion action. */
 export interface GoogleAdsSearchads360V0Resources__ConversionAction {
@@ -4802,7 +4758,7 @@ export interface GoogleAdsSearchads360V0Resources__ConversionAction {
   /** Output only. Timestamp of the Floodlight activity's creation, formatted in ISO 8601. */
   creationTime?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ConversionAction = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__ConversionAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clickThroughLookbackWindowDays: S.optional(S.String),
     includeInClientAccountConversionsMetric: S.optional(S.Boolean),
@@ -4835,7 +4791,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum =
   | "ENABLED"
   | "REMOVED"
   | "PAUSED";
-export const GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum = S.String;
 
 /** A link between an ad group and an asset. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupAsset {
@@ -4848,7 +4804,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupAsset {
   /** Required. Immutable. The ad group to which the asset is linked. */
   adGroup?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GoogleAdsSearchads360V0Resources__AdGroupAssetStatusEnum),
     asset: S.optional(S.String),
@@ -4864,7 +4820,7 @@ export type GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum = S.String;
 
 /** AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an asset set. */
 export interface GoogleAdsSearchads360V0Resources__AssetSetAsset {
@@ -4877,7 +4833,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetSetAsset {
   /** Output only. The status of the asset set asset. Read-only. */
   status?: GoogleAdsSearchads360V0Resources__AssetSetAssetStatusEnum;
 }
-export const GoogleAdsSearchads360V0Resources__AssetSetAsset = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetSetAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -4893,7 +4849,7 @@ export interface GoogleAdsSearchads360V0Resources__AgeRangeView {
   /** Output only. The resource name of the age range view. Age range view resource names have the form: `customers/{customer_id}/ageRangeViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AgeRangeView =
+const GoogleAdsSearchads360V0Resources__AgeRangeView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__AgeRangeView>;
 
 /** An audience criterion. */
@@ -4901,7 +4857,7 @@ export interface GoogleAdsSearchads360V0Common__AudienceInfo {
   /** The Audience resource name. */
   audience?: string;
 }
-export const GoogleAdsSearchads360V0Common__AudienceInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__AudienceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.String),
   }),
@@ -4918,7 +4874,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupSignal {
   /** Immutable. The resource name of the asset group signal. Asset group signal resource name have the form: `customers/{customer_id}/assetGroupSignals/{asset_group_id}~{signal_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroupSignal = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetGroupSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetGroup: S.optional(S.String),
     audience: S.optional(GoogleAdsSearchads360V0Common__AudienceInfo),
@@ -4948,7 +4904,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupTypeEnum =
   | "VIDEO_EFFICIENT_REACH"
   | "SMART_CAMPAIGN_ADS"
   | "TRAVEL_ADS";
-export const GoogleAdsSearchads360V0Resources__AdGroupTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEnum =
   | "UNSPECIFIED"
@@ -4961,7 +4917,7 @@ export type GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEn
   | "PLACEMENT"
   | "PARENTAL_STATUS"
   | "INCOME_RANGE";
-export const GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEnum = S.String;
+const GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEnum = S.String;
 
 /** The list of per-targeting-dimension targeting settings. */
 export interface GoogleAdsSearchads360V0Common__TargetRestriction {
@@ -4970,7 +4926,7 @@ export interface GoogleAdsSearchads360V0Common__TargetRestriction {
   /** Indicates whether to restrict your ads to show only for the criteria you have selected for this targeting_dimension, or to target all values for this targeting_dimension and show ads based on your targeting in other TargetingDimensions. A value of `true` means that these criteria will only apply bid modifiers, and not affect targeting. A value of `false` means that these criteria will restrict targeting as well as applying bid modifiers. */
   bidOnly?: boolean;
 }
-export const GoogleAdsSearchads360V0Common__TargetRestriction = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingDimension: S.optional(
       GoogleAdsSearchads360V0Common__TargetRestrictionTargetingDimensionEnum,
@@ -4983,7 +4939,7 @@ export const GoogleAdsSearchads360V0Common__TargetRestriction = /*@__PURE__*/ S.
 
 export type GoogleAdsSearchads360V0Common__TargetRestrictionList =
   Array<GoogleAdsSearchads360V0Common__TargetRestriction>;
-export const GoogleAdsSearchads360V0Common__TargetRestrictionList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Common__TargetRestrictionList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Common__TargetRestriction,
 ) as any as S.Schema<GoogleAdsSearchads360V0Common__TargetRestrictionList>;
 
@@ -4992,7 +4948,7 @@ export interface GoogleAdsSearchads360V0Common__TargetingSetting {
   /** The per-targeting-dimension setting to restrict the reach of your campaign or ad group. */
   targetRestrictions?: GoogleAdsSearchads360V0Common__TargetRestrictionList;
 }
-export const GoogleAdsSearchads360V0Common__TargetingSetting = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Common__TargetingSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetRestrictions: S.optional(GoogleAdsSearchads360V0Common__TargetRestrictionList),
   }),
@@ -5005,7 +4961,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupAdRotationModeEnum =
   | "UNKNOWN"
   | "OPTIMIZE"
   | "ROTATE_FOREVER";
-export const GoogleAdsSearchads360V0Resources__AdGroupAdRotationModeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupAdRotationModeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum =
   | "UNSPECIFIED"
@@ -5019,7 +4975,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum =
   | "AD_GROUP_SUBMITTED"
   | "CAMPAIGN_PAUSED"
   | "ACCOUNT_PAUSED";
-export const GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupEngineStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupStatusEnum =
   | "UNSPECIFIED"
@@ -5027,7 +4983,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AdGroupStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupStatusEnum = S.String;
 
 /** An ad group. */
 export interface GoogleAdsSearchads360V0Resources__AdGroup {
@@ -5070,7 +5026,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroup {
   /** Output only. The ID of the ad group. */
   id?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engineId: S.optional(S.String),
     startDate: S.optional(S.String),
@@ -5101,11 +5057,10 @@ export interface GoogleAdsSearchads360V0Resources__ShoppingPerformanceView {
   /** Output only. The resource name of the Shopping performance view. Shopping performance view resource names have the form: `customers/{customer_id}/shoppingPerformanceView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ShoppingPerformanceView = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceName: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources__ShoppingPerformanceView = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__ShoppingPerformanceView",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ShoppingPerformanceView>;
@@ -5115,7 +5070,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
   /** Output only. Average CPA target. This target should be greater than or equal to minimum billable unit based on the currency for the account. */
   targetCpaMicros?: string;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetCpaMicros: S.optional(S.String),
@@ -5129,7 +5084,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
   /** Output only. The chosen revenue (based on conversion data) per unit of spend. */
   targetRoas?: number;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetRoas: S.optional(S.Number),
@@ -5144,7 +5099,7 @@ export type GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImp
   | "ANYWHERE_ON_PAGE"
   | "TOP_OF_PAGE"
   | "ABSOLUTE_TOP_OF_PAGE";
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShareLocationEnum =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShareLocationEnum =
   S.String;
 
 /** An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of the first page (or other targeted location). */
@@ -5156,7 +5111,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
   /** Output only. The targeted location on the search results page. */
   location?: GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShareLocationEnum;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       cpcBidCeilingMicros: S.optional(S.String),
@@ -5176,7 +5131,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Targ
   /** Output only. Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords managed by the strategy. */
   cpcBidCeilingMicros?: string;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetSpendMicros: S.optional(S.String),
@@ -5191,7 +5146,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Maxi
   /** Output only. The target return on ad spend (ROAS) option. If set, the bid strategy will maximize revenue while averaging the target return on ad spend. If the target ROAS is high, the bid strategy may not be able to spend the full budget. If the target ROAS is not set, the bid strategy will aim to achieve the highest possible ROAS for the budget. */
   targetRoas?: number;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetRoas: S.optional(S.Number),
@@ -5208,7 +5163,7 @@ export interface GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_Maxi
   /** Output only. The target cost per acquisition (CPA) option. This is the average amount that you would like to spend per acquisition. */
   targetCpa?: string;
 }
-export const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions =
+const GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       targetCpaMicros: S.optional(S.String),
@@ -5238,7 +5193,7 @@ export type GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum 
   | "TARGET_OUTRANK_SHARE"
   | "TARGET_ROAS"
   | "TARGET_SPEND";
-export const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum = S.String;
 
 /** Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy, this resource includes strategies owned by managers of the customer and shared with this customer - in addition to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset of the BiddingStrategy attributes. */
 export interface GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy {
@@ -5267,30 +5222,27 @@ export interface GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy {
   /** Output only. The type of the bidding strategy. */
   type?: GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum;
 }
-export const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetCpa: S.optional(GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa),
-      targetRoas: S.optional(GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas),
-      ownerDescriptiveName: S.optional(S.String),
-      ownerCustomerId: S.optional(S.String),
-      targetImpressionShare: S.optional(
-        GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare,
-      ),
-      targetSpend: S.optional(
-        GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend,
-      ),
-      resourceName: S.optional(S.String),
-      maximizeConversionValue: S.optional(
-        GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue,
-      ),
-      id: S.optional(S.String),
-      maximizeConversions: S.optional(
-        GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions,
-      ),
-      name: S.optional(S.String),
-      type: S.optional(GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum),
-    }),
+const GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetCpa: S.optional(GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetCpa),
+    targetRoas: S.optional(GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetRoas),
+    ownerDescriptiveName: S.optional(S.String),
+    ownerCustomerId: S.optional(S.String),
+    targetImpressionShare: S.optional(
+      GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetImpressionShare,
+    ),
+    targetSpend: S.optional(GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_TargetSpend),
+    resourceName: S.optional(S.String),
+    maximizeConversionValue: S.optional(
+      GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversionValue,
+    ),
+    id: S.optional(S.String),
+    maximizeConversions: S.optional(
+      GoogleAdsSearchads360V0Resources_AccessibleBiddingStrategy_MaximizeConversions,
+    ),
+    name: S.optional(S.String),
+    type: S.optional(GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategyTypeEnum),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AccessibleBiddingStrategy>;
@@ -5301,7 +5253,7 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AssetGroupStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum =
   | "UNSPECIFIED"
@@ -5312,7 +5264,7 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum =
   | "AVERAGE"
   | "GOOD"
   | "EXCELLENT";
-export const GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum = S.String;
 
 /** An asset group. AssetGroupAsset is used to link an asset to the asset group. AssetGroupSignal is used to associate a signal to an asset group. */
 export interface GoogleAdsSearchads360V0Resources__AssetGroup {
@@ -5337,7 +5289,7 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroup {
   /** Output only. Overall ad strength of this asset group. */
   adStrength?: GoogleAdsSearchads360V0Resources__AssetGroupAdStrengthEnum;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroup = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AssetGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     campaign: S.optional(S.String),
     path2: S.optional(S.String),
@@ -5376,35 +5328,33 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionEngineStatusEnum =
   | "AD_GROUP_CRITERION_DISAPPROVED"
   | "AD_GROUP_CRITERION_SERVING"
   | "AD_GROUP_CRITERION_ACCOUNT_PAUSED";
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterionEngineStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupCriterionEngineStatusEnum = S.String;
 
 /** Estimates for criterion bids at various positions. */
 export interface GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates {
   /** Output only. The estimate of the CPC bid required for ad to be displayed at the top of the first page of search results. */
   topOfPageCpcMicros?: string;
 }
-export const GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       topOfPageCpcMicros: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_AdGroupCriterion_PositionEstimates>;
 
 export type GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "SUBDIVISION"
   | "UNIT";
-export const GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum = S.String;
-
 /** A listing group criterion. */
 export interface GoogleAdsSearchads360V0Common__ListingGroupInfo {
   /** Type of the listing group. */
   type?: GoogleAdsSearchads360V0Common__ListingGroupInfoTypeEnum;
 }
-export const GoogleAdsSearchads360V0Common__ListingGroupInfo =
+const GoogleAdsSearchads360V0Common__ListingGroupInfo =
   GoogleAdsSearchads360V0Common__GenderInfo as any as S.Schema<GoogleAdsSearchads360V0Common__ListingGroupInfo>;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum =
@@ -5413,7 +5363,7 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum =
   | "ENABLED"
   | "PAUSED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupCriterionStatusEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum =
   | "UNSPECIFIED"
@@ -5456,21 +5406,20 @@ export type GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum =
   | "BRAND"
   | "BRAND_LIST"
   | "LIFE_EVENT";
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AdGroupCriterionTypeEnum = S.String;
 
 /** A container for ad group criterion quality information. */
 export interface GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo {
   /** Output only. The quality score. This field may not be populated if Google does not have enough information to determine a value. */
   qualityScore?: number;
 }
-export const GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      qualityScore: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo>;
+const GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    qualityScore: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources_AdGroupCriterion_QualityInfo>;
 
 /** An ad group criterion. The ad_group_criterion report only returns criteria that were explicitly added to the ad group. */
 export interface GoogleAdsSearchads360V0Resources__AdGroupCriterion {
@@ -5533,7 +5482,7 @@ export interface GoogleAdsSearchads360V0Resources__AdGroupCriterion {
   /** Output only. ID of the ad group criterion in the external engine account. This field is for non-Google Ads account only, for example, Yahoo Japan, Microsoft, Baidu etc. For Google Ads entity, use "ad_group_criterion.criterion_id" instead. */
   engineId?: string;
 }
-export const GoogleAdsSearchads360V0Resources__AdGroupCriterion = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__AdGroupCriterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adGroup: S.optional(S.String),
     labels: S.optional(StringList),
@@ -5576,7 +5525,7 @@ export type GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum =
   | "UNKNOWN"
   | "ENABLED"
   | "REMOVED";
-export const GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum = S.String;
 
 /** CampaignAssetSet is the linkage between a campaign and an asset set. Adding a CampaignAssetSet links an asset set with a campaign. */
 export interface GoogleAdsSearchads360V0Resources__CampaignAssetSet {
@@ -5589,7 +5538,7 @@ export interface GoogleAdsSearchads360V0Resources__CampaignAssetSet {
   /** Immutable. The asset set which is linked to the campaign. */
   assetSet?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CampaignAssetSet = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__CampaignAssetSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     status: S.optional(GoogleAdsSearchads360V0Resources__CampaignAssetSetStatusEnum),
@@ -5605,7 +5554,7 @@ export interface GoogleAdsSearchads360V0Resources__CartDataSalesView {
   /** Output only. The resource name of the Cart data sales view. Cart data sales view resource names have the form: `customers/{customer_id}/cartDataSalesView` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__CartDataSalesView =
+const GoogleAdsSearchads360V0Resources__CartDataSalesView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__CartDataSalesView>;
 
 /** A dynamic search ads search term view. */
@@ -5615,15 +5564,15 @@ export interface GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermVie
   /** Output only. The dynamically selected landing page URL of the impression. This field is read-only. */
   landingPage?: string;
 }
-export const GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resourceName: S.optional(S.String),
       landingPage: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__DynamicSearchAdsSearchTermView>;
 
 export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum =
   | "UNSPECIFIED"
@@ -5632,14 +5581,14 @@ export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalit
   | "EXCEEDS_SEGMENTATION_LIMIT_BUT_NOT_STATS_LIMIT"
   | "APPROACHES_STATS_LIMIT"
   | "EXCEEDS_STATS_LIMIT";
-export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "NUMBER"
   | "STRING";
-export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum =
+const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableDataTypeEnum =
   S.String;
 
 export type GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum =
@@ -5648,7 +5597,7 @@ export type GoogleAdsSearchads360V0Resources_ConversionCustomVariable_Floodlight
   | "DIMENSION"
   | "METRIC"
   | "UNSET";
-export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum =
+const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum =
   S.String;
 
 /** Information for Search Ads 360 Floodlight Conversion Custom Variables. */
@@ -5658,7 +5607,7 @@ export interface GoogleAdsSearchads360V0Resources_ConversionCustomVariable_Flood
   /** Output only. Floodlight variable type defined in Search Ads 360. */
   floodlightVariableType?: GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfoFloodlightVariableTypeEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo =
+const GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       floodlightVariableDataType: S.optional(
@@ -5678,7 +5627,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum
   | "UNKNOWN"
   | "STANDARD"
   | "FLOODLIGHT";
-export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum =
   | "UNSPECIFIED"
@@ -5686,7 +5635,7 @@ export type GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum
   | "ACTIVATION_NEEDED"
   | "ENABLED"
   | "PAUSED";
-export const GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum = S.String;
+const GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum = S.String;
 
 /** A conversion custom variable. See "About custom Floodlight metrics and dimensions in the new Search Ads 360" at https://support.google.com/sa360/answer/13567857 */
 export interface GoogleAdsSearchads360V0Resources__ConversionCustomVariable {
@@ -5711,24 +5660,23 @@ export interface GoogleAdsSearchads360V0Resources__ConversionCustomVariable {
   /** Required. The name of the conversion custom variable. Name should be unique. The maximum length of name is 100 characters. There should not be any extra spaces before and after. */
   name?: string;
 }
-export const GoogleAdsSearchads360V0Resources__ConversionCustomVariable = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cardinality: S.optional(
-        GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum,
-      ),
-      customColumnIds: S.optional(StringList),
-      tag: S.optional(S.String),
-      floodlightConversionCustomVariableInfo: S.optional(
-        GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo,
-      ),
-      ownerCustomer: S.optional(S.String),
-      resourceName: S.optional(S.String),
-      family: S.optional(GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum),
-      status: S.optional(GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum),
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
+const GoogleAdsSearchads360V0Resources__ConversionCustomVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cardinality: S.optional(
+      GoogleAdsSearchads360V0Resources__ConversionCustomVariableCardinalityEnum,
+    ),
+    customColumnIds: S.optional(StringList),
+    tag: S.optional(S.String),
+    floodlightConversionCustomVariableInfo: S.optional(
+      GoogleAdsSearchads360V0Resources_ConversionCustomVariable_FloodlightConversionCustomVariableInfo,
+    ),
+    ownerCustomer: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    family: S.optional(GoogleAdsSearchads360V0Resources__ConversionCustomVariableFamilyEnum),
+    status: S.optional(GoogleAdsSearchads360V0Resources__ConversionCustomVariableStatusEnum),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Resources__ConversionCustomVariable",
 }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ConversionCustomVariable>;
@@ -5738,7 +5686,7 @@ export interface GoogleAdsSearchads360V0Resources__KeywordView {
   /** Output only. The resource name of the keyword view. Keyword view resource names have the form: `customers/{customer_id}/keywordViews/{ad_group_id}~{criterion_id}` */
   resourceName?: string;
 }
-export const GoogleAdsSearchads360V0Resources__KeywordView =
+const GoogleAdsSearchads360V0Resources__KeywordView =
   GoogleAdsSearchads360V0Resources__WebpageView as any as S.Schema<GoogleAdsSearchads360V0Resources__KeywordView>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum =
@@ -5747,7 +5695,7 @@ export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEn
   | "SUBDIVISION"
   | "UNIT_INCLUDED"
   | "UNIT_EXCLUDED";
-export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum = S.String;
 
 export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductTypeLevelEnum =
   | "UNSPECIFIED"
@@ -5757,8 +5705,7 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
   | "LEVEL3"
   | "LEVEL4"
   | "LEVEL5";
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductTypeLevelEnum =
-  S.String;
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductTypeLevelEnum = S.String;
 
 /** Type of a product offer. */
 export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType {
@@ -5767,7 +5714,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Level of the type. */
   level?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductTypeLevelEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(S.String),
@@ -5784,7 +5731,7 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
   | "UNKNOWN"
   | "ONLINE"
   | "LOCAL";
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannelChannelEnum =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannelChannelEnum =
   S.String;
 
 /** Locality of a product offer. */
@@ -5792,7 +5739,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Value of the locality. */
   channel?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannelChannelEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       channel: S.optional(
@@ -5811,7 +5758,7 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
   | "INDEX2"
   | "INDEX3"
   | "INDEX4";
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum =
   S.String;
 
 /** Custom attribute of a product offer. */
@@ -5821,7 +5768,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Indicates the index of the custom attribute. */
   index?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttributeIndexEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(S.String),
@@ -5839,7 +5786,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** String value of the product brand. */
   value?: string;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(S.String),
@@ -5853,7 +5800,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Value of the id. */
   value?: string;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId =
   GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand as any as S.Schema<GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId>;
 
 export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum =
@@ -5864,7 +5811,7 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
   | "LEVEL3"
   | "LEVEL4"
   | "LEVEL5";
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum =
   S.String;
 
 /** One element of a bidding category at a certain level. Top-level categories are at level 1, their children at level 2, and so on. We currently support up to 5 levels. The user must specify a dimension type that indicates the level of the category. All cases of the same subdivision must have the same dimension type (category level). */
@@ -5874,7 +5821,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Indicates the level of the category in the taxonomy. */
   level?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategoryLevelEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -5893,7 +5840,7 @@ export type GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Product
   | "NEW"
   | "REFURBISHED"
   | "USED";
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductConditionConditionEnum =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductConditionConditionEnum =
   S.String;
 
 /** Condition of a product offer. */
@@ -5901,7 +5848,7 @@ export interface GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_Pr
   /** Value of the condition. */
   condition?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductConditionConditionEnum;
 }
-export const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition =
+const GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       condition: S.optional(
@@ -5929,61 +5876,59 @@ export interface GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension {
   /** Condition of a product offer. */
   productCondition?: GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition;
 }
-export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      productType: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType,
-      ),
-      productChannel: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel,
-      ),
-      productCustomAttribute: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute,
-      ),
-      productBrand: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand,
-      ),
-      productItemId: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId,
-      ),
-      productBiddingCategory: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory,
-      ),
-      productCondition: S.optional(
-        GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
+const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    productType: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductType,
+    ),
+    productChannel: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductChannel,
+    ),
+    productCustomAttribute: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCustomAttribute,
+    ),
+    productBrand: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBrand,
+    ),
+    productItemId: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductItemId,
+    ),
+    productBiddingCategory: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductBiddingCategory,
+    ),
+    productCondition: S.optional(
+      GoogleAdsSearchads360V0Resources_ListingGroupFilterDimension_ProductCondition,
+    ),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
 
 export type GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList =
   Array<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension>;
-export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList>;
+const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList = /*@__PURE__*/ S.Array(
+  GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension,
+) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList>;
 
 /** The path defining of dimensions defining a listing group filter. */
 export interface GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath {
   /** Output only. The complete path of dimensions through the listing group filter hierarchy (excluding the root node) to this listing group filter. */
   dimensions?: GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList;
 }
-export const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       dimensions: S.optional(GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionList),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath>;
 
 export type GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum =
   | "UNSPECIFIED"
   | "UNKNOWN"
   | "SHOPPING";
-export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum = S.String;
+const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum = S.String;
 
 /** AssetGroupListingGroupFilter represents a listing group filter tree node in an asset group. */
 export interface GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter {
@@ -6004,23 +5949,22 @@ export interface GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter 
   /** Dimension value with which this listing group is refining its parent. Undefined for the root group. */
   caseValue?: GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension;
 }
-export const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum),
-      path: S.optional(GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath),
-      parentListingGroupFilter: S.optional(S.String),
-      id: S.optional(S.String),
-      resourceName: S.optional(S.String),
-      assetGroup: S.optional(S.String),
-      vertical: S.optional(
-        GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum,
-      ),
-      caseValue: S.optional(GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter>;
+const GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterTypeEnum),
+    path: S.optional(GoogleAdsSearchads360V0Resources__ListingGroupFilterDimensionPath),
+    parentListingGroupFilter: S.optional(S.String),
+    id: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    assetGroup: S.optional(S.String),
+    vertical: S.optional(
+      GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilterVerticalEnum,
+    ),
+    caseValue: S.optional(GoogleAdsSearchads360V0Resources__ListingGroupFilterDimension),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter",
+}) as any as S.Schema<GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter>;
 
 /** A returned row from the query. */
 export interface GoogleAdsSearchads360V0Services__SearchAds360Row {
@@ -6143,7 +6087,7 @@ export interface GoogleAdsSearchads360V0Services__SearchAds360Row {
   /** The asset group listing group filter referenced in the query. */
   assetGroupListingGroupFilter?: GoogleAdsSearchads360V0Resources__AssetGroupListingGroupFilter;
 }
-export const GoogleAdsSearchads360V0Services__SearchAds360Row = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__SearchAds360Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer: S.optional(GoogleAdsSearchads360V0Resources__Customer),
     adGroupAd: S.optional(GoogleAdsSearchads360V0Resources__AdGroupAd),
@@ -6225,7 +6169,7 @@ export const GoogleAdsSearchads360V0Services__SearchAds360Row = /*@__PURE__*/ S.
 
 export type GoogleAdsSearchads360V0Services__SearchAds360RowList =
   Array<GoogleAdsSearchads360V0Services__SearchAds360Row>;
-export const GoogleAdsSearchads360V0Services__SearchAds360RowList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Services__SearchAds360RowList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Services__SearchAds360Row,
 ) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchAds360RowList>;
 
@@ -6236,22 +6180,20 @@ export interface GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader {
   /** The conversion custom metric ID. */
   id?: string;
 }
-export const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
+const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader",
+}) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
 
 export type GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList =
   Array<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader>;
-export const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList =
-  /*@__PURE__*/ S.Array(
-    GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader,
-  ) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList>;
+const GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList = /*@__PURE__*/ S.Array(
+  GoogleAdsSearchads360V0Services__ConversionCustomMetricHeader,
+) as any as S.Schema<GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList>;
 
 /** Message for raw event conversion dimension header. */
 export interface GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader {
@@ -6260,12 +6202,9 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionDimensionHea
   /** The user defined name of the raw event dimension. */
   name?: string;
 }
-export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader =
-  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
-
 export type GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
   Array<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeader>;
-export const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
+const GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList =
   GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList>;
 
 /** Message for raw event conversion metric header. */
@@ -6275,12 +6214,9 @@ export interface GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader
   /** The user defined name of the raw event metric. */
   name?: string;
 }
-export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader =
-  GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeader as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
-
 export type GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
   Array<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeader>;
-export const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
+const GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList =
   GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList as any as S.Schema<GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList>;
 
 /** Response message for SearchAds360Service.Search. */
@@ -6306,28 +6242,27 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360Response {
   /** Summary row that contains summary of metrics in results. Summary of metrics means aggregation of metrics across all results, here aggregation could be sum, average, rate, etc. */
   summaryRow?: GoogleAdsSearchads360V0Services__SearchAds360Row;
 }
-export const GoogleAdsSearchads360V0Services__SearchSearchAds360Response = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customColumnHeaders: S.optional(GoogleAdsSearchads360V0Services__CustomColumnHeaderList),
-      conversionCustomDimensionHeaders: S.optional(
-        GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList,
-      ),
-      results: S.optional(GoogleAdsSearchads360V0Services__SearchAds360RowList),
-      conversionCustomMetricHeaders: S.optional(
-        GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList,
-      ),
-      totalResultsCount: S.optional(S.String),
-      rawEventConversionDimensionHeaders: S.optional(
-        GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList,
-      ),
-      rawEventConversionMetricHeaders: S.optional(
-        GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList,
-      ),
-      fieldMask: S.optional(S.String),
-      nextPageToken: S.optional(S.String),
-      summaryRow: S.optional(GoogleAdsSearchads360V0Services__SearchAds360Row),
-    }),
+const GoogleAdsSearchads360V0Services__SearchSearchAds360Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customColumnHeaders: S.optional(GoogleAdsSearchads360V0Services__CustomColumnHeaderList),
+    conversionCustomDimensionHeaders: S.optional(
+      GoogleAdsSearchads360V0Services__ConversionCustomDimensionHeaderList,
+    ),
+    results: S.optional(GoogleAdsSearchads360V0Services__SearchAds360RowList),
+    conversionCustomMetricHeaders: S.optional(
+      GoogleAdsSearchads360V0Services__ConversionCustomMetricHeaderList,
+    ),
+    totalResultsCount: S.optional(S.String),
+    rawEventConversionDimensionHeaders: S.optional(
+      GoogleAdsSearchads360V0Services__RawEventConversionDimensionHeaderList,
+    ),
+    rawEventConversionMetricHeaders: S.optional(
+      GoogleAdsSearchads360V0Services__RawEventConversionMetricHeaderList,
+    ),
+    fieldMask: S.optional(S.String),
+    nextPageToken: S.optional(S.String),
+    summaryRow: S.optional(GoogleAdsSearchads360V0Services__SearchAds360Row),
+  }),
 ).annotate({
   identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360Response",
 }) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360Response>;
@@ -6341,22 +6276,22 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsReques
   /** Number of elements to retrieve in a single page. When too large a page is requested, the server may decide to further limit the number of returned resources. */
   pageSize?: number;
 }
-export const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       query: S.optional(S.String),
       pageToken: S.optional(S.String),
       pageSize: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest",
+}) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest>;
 
 export interface SearchSearchAds360FieldsRequest {
   /** Request body */
   body?: GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest;
 }
-export const SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(
       GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest.pipe(T.HttpBody()),
@@ -6374,7 +6309,7 @@ export const SearchSearchAds360FieldsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleAdsSearchads360V0Resources__SearchAds360FieldList =
   Array<GoogleAdsSearchads360V0Resources__SearchAds360Field>;
-export const GoogleAdsSearchads360V0Resources__SearchAds360FieldList = /*@__PURE__*/ S.Array(
+const GoogleAdsSearchads360V0Resources__SearchAds360FieldList = /*@__PURE__*/ S.Array(
   GoogleAdsSearchads360V0Resources__SearchAds360Field,
 ) as any as S.Schema<GoogleAdsSearchads360V0Resources__SearchAds360FieldList>;
 
@@ -6387,16 +6322,16 @@ export interface GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRespon
   /** The list of fields that matched the query. */
   results?: GoogleAdsSearchads360V0Resources__SearchAds360FieldList;
 }
-export const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       totalResultsCount: S.optional(S.String),
       nextPageToken: S.optional(S.String),
       results: S.optional(GoogleAdsSearchads360V0Resources__SearchAds360FieldList),
     }),
-  ).annotate({
-    identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse",
-  }) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse>;
+).annotate({
+  identifier: "GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse",
+}) as any as S.Schema<GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse>;
 
 export type GetCustomersCustomColumnsError = NotFound | Forbidden | GcpOpError;
 /** Returns the requested custom column in full detail. */

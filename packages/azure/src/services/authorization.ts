@@ -17,7 +17,7 @@ export type RoleAssignmentPropertiesInputPrincipalType =
   | "Device"
   | "AgentUser"
   | "AgentServicePrincipal";
-export const RoleAssignmentPropertiesInputPrincipalType = S.String;
+const RoleAssignmentPropertiesInputPrincipalType = S.String;
 
 /** Role assignment properties. */
 export interface RoleAssignmentPropertiesInput {
@@ -36,7 +36,7 @@ export interface RoleAssignmentPropertiesInput {
   /** Id of the delegated managed identity resource */
   delegatedManagedIdentityResourceId?: string;
 }
-export const RoleAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleDefinitionId: S.String,
     principalId: S.String,
@@ -58,7 +58,7 @@ export interface CreateRoleAssignmentRequest {
   /** Role assignment properties. */
   properties: RoleAssignmentPropertiesInput;
 }
-export const CreateRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleAssignmentName: S.String.pipe(T.Label()),
@@ -77,11 +77,11 @@ export const CreateRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -98,7 +98,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -118,7 +118,7 @@ export type RoleAssignmentPropertiesPrincipalType =
   | "Device"
   | "AgentUser"
   | "AgentServicePrincipal";
-export const RoleAssignmentPropertiesPrincipalType = S.String;
+const RoleAssignmentPropertiesPrincipalType = S.String;
 
 /** Role assignment properties. */
 export interface RoleAssignmentProperties {
@@ -147,7 +147,7 @@ export interface RoleAssignmentProperties {
   /** Id of the delegated managed identity resource */
   delegatedManagedIdentityResourceId?: string;
 }
-export const RoleAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.String),
     roleDefinitionId: S.String,
@@ -176,7 +176,7 @@ export interface CreateRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const CreateRoleAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -194,7 +194,7 @@ export interface CreateRoleAssignmentByIdRequest {
   /** Role assignment properties. */
   properties: RoleAssignmentPropertiesInput;
 }
-export const CreateRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleAssignmentId: S.String.pipe(T.Label()),
     properties: RoleAssignmentPropertiesInput,
@@ -217,7 +217,7 @@ export interface CreateRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const CreateRoleAssignmentByIdResponse =
+const CreateRoleAssignmentByIdResponse =
   CreateRoleAssignmentResponse as any as S.Schema<CreateRoleAssignmentByIdResponse>;
 
 export interface DeleteRoleAssignmentRequest {
@@ -228,7 +228,7 @@ export interface DeleteRoleAssignmentRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const DeleteRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleAssignmentName: S.String.pipe(T.Label()),
@@ -257,7 +257,7 @@ export interface DeleteRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const DeleteRoleAssignmentResponse =
+const DeleteRoleAssignmentResponse =
   CreateRoleAssignmentResponse as any as S.Schema<DeleteRoleAssignmentResponse>;
 
 export interface DeleteRoleAssignmentByIdRequest {
@@ -266,7 +266,7 @@ export interface DeleteRoleAssignmentByIdRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const DeleteRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleAssignmentId: S.String.pipe(T.Label()),
     tenantId: S.optional(S.String.pipe(T.Query())),
@@ -289,7 +289,7 @@ export interface DeleteRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const DeleteRoleAssignmentByIdResponse =
+const DeleteRoleAssignmentByIdResponse =
   CreateRoleAssignmentResponse as any as S.Schema<DeleteRoleAssignmentByIdResponse>;
 
 export interface DeleteRoleDefinitionRequest {
@@ -298,7 +298,7 @@ export interface DeleteRoleDefinitionRequest {
   /** The ID of the role definition to delete. */
   roleDefinitionId: string;
 }
-export const DeleteRoleDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleDefinitionId: S.String.pipe(T.Label()),
@@ -316,23 +316,22 @@ export const DeleteRoleDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Allowed actions. */
 export type PermissionActionsList = Array<string>;
-export const PermissionActionsList = /*@__PURE__*/ S.Array(
+const PermissionActionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PermissionActionsList>;
 
 /** Denied actions. */
 export type PermissionNotActionsList = Array<string>;
-export const PermissionNotActionsList =
-  PermissionActionsList as any as S.Schema<PermissionNotActionsList>;
+const PermissionNotActionsList = PermissionActionsList as any as S.Schema<PermissionNotActionsList>;
 
 /** Allowed Data actions. */
 export type PermissionDataActionsList = Array<string>;
-export const PermissionDataActionsList =
+const PermissionDataActionsList =
   PermissionActionsList as any as S.Schema<PermissionDataActionsList>;
 
 /** Denied Data actions. */
 export type PermissionNotDataActionsList = Array<string>;
-export const PermissionNotDataActionsList =
+const PermissionNotDataActionsList =
   PermissionActionsList as any as S.Schema<PermissionNotDataActionsList>;
 
 /** Role definition permissions. */
@@ -346,7 +345,7 @@ export interface Permission {
   /** Denied Data actions. */
   notDataActions?: PermissionNotDataActionsList;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(PermissionActionsList),
     notActions: S.optional(PermissionNotActionsList),
@@ -357,13 +356,13 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 
 /** Role definition permissions. */
 export type RoleDefinitionPropertiesPermissionsList = Array<Permission>;
-export const RoleDefinitionPropertiesPermissionsList = /*@__PURE__*/ S.Array(
+const RoleDefinitionPropertiesPermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RoleDefinitionPropertiesPermissionsList>;
 
 /** Role definition assignable scopes. */
 export type RoleDefinitionPropertiesAssignableScopesList = Array<string>;
-export const RoleDefinitionPropertiesAssignableScopesList =
+const RoleDefinitionPropertiesAssignableScopesList =
   PermissionActionsList as any as S.Schema<RoleDefinitionPropertiesAssignableScopesList>;
 
 /** Role definition properties. */
@@ -387,7 +386,7 @@ export interface RoleDefinitionProperties {
   /** Id of the user who updated the assignment */
   updatedBy?: string;
 }
-export const RoleDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const RoleDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleName: S.optional(S.String),
     description: S.optional(S.String),
@@ -412,7 +411,7 @@ export interface RoleDefinition {
   /** Role definition properties. */
   properties?: RoleDefinitionProperties;
 }
-export const RoleDefinition = /*@__PURE__*/ S.suspend(() =>
+const RoleDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -427,7 +426,7 @@ export interface GetDenyAssignmentRequest {
   /** The ID of the deny assignment to get. */
   denyAssignmentId: string;
 }
-export const GetDenyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDenyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     denyAssignmentId: S.String.pipe(T.Label()),
@@ -443,22 +442,22 @@ export const GetDenyAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Actions to which the deny assignment does not grant access. */
 export type DenyAssignmentPermissionActionsList = Array<string>;
-export const DenyAssignmentPermissionActionsList =
+const DenyAssignmentPermissionActionsList =
   PermissionActionsList as any as S.Schema<DenyAssignmentPermissionActionsList>;
 
 /** Actions to exclude from that the deny assignment does not grant access. */
 export type DenyAssignmentPermissionNotActionsList = Array<string>;
-export const DenyAssignmentPermissionNotActionsList =
+const DenyAssignmentPermissionNotActionsList =
   PermissionActionsList as any as S.Schema<DenyAssignmentPermissionNotActionsList>;
 
 /** Data actions to which the deny assignment does not grant access. */
 export type DenyAssignmentPermissionDataActionsList = Array<string>;
-export const DenyAssignmentPermissionDataActionsList =
+const DenyAssignmentPermissionDataActionsList =
   PermissionActionsList as any as S.Schema<DenyAssignmentPermissionDataActionsList>;
 
 /** Data actions to exclude from that the deny assignment does not grant access. */
 export type DenyAssignmentPermissionNotDataActionsList = Array<string>;
-export const DenyAssignmentPermissionNotDataActionsList =
+const DenyAssignmentPermissionNotDataActionsList =
   PermissionActionsList as any as S.Schema<DenyAssignmentPermissionNotDataActionsList>;
 
 /** Deny assignment permissions. */
@@ -476,7 +475,7 @@ export interface DenyAssignmentPermission {
   /** Version of the condition. */
   conditionVersion?: string;
 }
-export const DenyAssignmentPermission = /*@__PURE__*/ S.suspend(() =>
+const DenyAssignmentPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(DenyAssignmentPermissionActionsList),
     notActions: S.optional(DenyAssignmentPermissionNotActionsList),
@@ -489,7 +488,7 @@ export const DenyAssignmentPermission = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of permissions that are denied by the deny assignment. */
 export type DenyAssignmentPropertiesPermissionsList = Array<DenyAssignmentPermission>;
-export const DenyAssignmentPropertiesPermissionsList = /*@__PURE__*/ S.Array(
+const DenyAssignmentPropertiesPermissionsList = /*@__PURE__*/ S.Array(
   DenyAssignmentPermission,
 ) as any as S.Schema<DenyAssignmentPropertiesPermissionsList>;
 
@@ -504,7 +503,7 @@ export interface DenyAssignmentPropertiesPrincipalsItem {
   /** Email of principal */
   email?: string;
 }
-export const DenyAssignmentPropertiesPrincipalsItem = /*@__PURE__*/ S.suspend(() =>
+const DenyAssignmentPropertiesPrincipalsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -517,18 +516,16 @@ export const DenyAssignmentPropertiesPrincipalsItem = /*@__PURE__*/ S.suspend(()
 
 /** Array of principals to which the deny assignment applies. */
 export type DenyAssignmentPropertiesPrincipalsList = Array<DenyAssignmentPropertiesPrincipalsItem>;
-export const DenyAssignmentPropertiesPrincipalsList = /*@__PURE__*/ S.Array(
+const DenyAssignmentPropertiesPrincipalsList = /*@__PURE__*/ S.Array(
   DenyAssignmentPropertiesPrincipalsItem,
 ) as any as S.Schema<DenyAssignmentPropertiesPrincipalsList>;
 
 /** The name of the entity last modified it */
 export type DenyAssignmentPropertiesExcludePrincipalsItem = DenyAssignmentPropertiesPrincipalsItem;
-export const DenyAssignmentPropertiesExcludePrincipalsItem = DenyAssignmentPropertiesPrincipalsItem;
-
 /** Array of principals to which the deny assignment does not apply. */
 export type DenyAssignmentPropertiesExcludePrincipalsList =
   Array<DenyAssignmentPropertiesPrincipalsItem>;
-export const DenyAssignmentPropertiesExcludePrincipalsList =
+const DenyAssignmentPropertiesExcludePrincipalsList =
   DenyAssignmentPropertiesPrincipalsList as any as S.Schema<DenyAssignmentPropertiesExcludePrincipalsList>;
 
 /** Deny assignment properties. */
@@ -562,7 +559,7 @@ export interface DenyAssignmentProperties {
   /** Id of the user who updated the assignment */
   updatedBy?: string;
 }
-export const DenyAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
+const DenyAssignmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denyAssignmentName: S.optional(S.String),
     description: S.optional(S.String),
@@ -592,7 +589,7 @@ export interface DenyAssignment {
   /** Deny assignment properties. */
   properties?: DenyAssignmentProperties;
 }
-export const DenyAssignment = /*@__PURE__*/ S.suspend(() =>
+const DenyAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -605,7 +602,7 @@ export interface GetDenyAssignmentByIdRequest {
   /** The fully qualified deny assignment ID. For example, use the format, /subscriptions/{guid}/providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for subscription level deny assignments, or /providers/Microsoft.Authorization/denyAssignments/{denyAssignmentId} for tenant level deny assignments. */
   denyAssignmentId: string;
 }
-export const GetDenyAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDenyAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denyAssignmentId: S.String.pipe(T.Label()),
   }).pipe(
@@ -621,7 +618,7 @@ export interface GetProviderOperationsMetadataRequest {
   /** Specifies whether to expand the values. */
   _expand?: string;
 }
-export const GetProviderOperationsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProviderOperationsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceProviderNamespace: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -652,7 +649,7 @@ export interface ProviderOperation {
   /** The dataAction flag to specify the operation type. */
   isDataAction?: boolean;
 }
-export const ProviderOperation = /*@__PURE__*/ S.suspend(() =>
+const ProviderOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -665,7 +662,7 @@ export const ProviderOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource type operations. */
 export type ResourceTypeOperationsList = Array<ProviderOperation>;
-export const ResourceTypeOperationsList = /*@__PURE__*/ S.Array(
+const ResourceTypeOperationsList = /*@__PURE__*/ S.Array(
   ProviderOperation,
 ) as any as S.Schema<ResourceTypeOperationsList>;
 
@@ -678,7 +675,7 @@ export interface ResourceType {
   /** The resource type operations. */
   operations?: ResourceTypeOperationsList;
 }
-export const ResourceType = /*@__PURE__*/ S.suspend(() =>
+const ResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -688,13 +685,13 @@ export const ResourceType = /*@__PURE__*/ S.suspend(() =>
 
 /** The provider resource types */
 export type GetProviderOperationsMetadataResponseResourceTypesList = Array<ResourceType>;
-export const GetProviderOperationsMetadataResponseResourceTypesList = /*@__PURE__*/ S.Array(
+const GetProviderOperationsMetadataResponseResourceTypesList = /*@__PURE__*/ S.Array(
   ResourceType,
 ) as any as S.Schema<GetProviderOperationsMetadataResponseResourceTypesList>;
 
 /** The provider operations. */
 export type GetProviderOperationsMetadataResponseOperationsList = Array<ProviderOperation>;
-export const GetProviderOperationsMetadataResponseOperationsList =
+const GetProviderOperationsMetadataResponseOperationsList =
   ResourceTypeOperationsList as any as S.Schema<GetProviderOperationsMetadataResponseOperationsList>;
 
 export interface GetProviderOperationsMetadataResponse {
@@ -711,7 +708,7 @@ export interface GetProviderOperationsMetadataResponse {
   /** The provider operations. */
   operations?: GetProviderOperationsMetadataResponseOperationsList;
 }
-export const GetProviderOperationsMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProviderOperationsMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -732,7 +729,7 @@ export interface GetRoleAssignmentRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const GetRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleAssignmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleAssignmentName: S.String.pipe(T.Label()),
@@ -759,7 +756,7 @@ export interface GetRoleAssignmentResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const GetRoleAssignmentResponse =
+const GetRoleAssignmentResponse =
   CreateRoleAssignmentResponse as any as S.Schema<GetRoleAssignmentResponse>;
 
 export interface GetRoleAssignmentByIdRequest {
@@ -768,7 +765,7 @@ export interface GetRoleAssignmentByIdRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const GetRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleAssignmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleAssignmentId: S.String.pipe(T.Label()),
     tenantId: S.optional(S.String.pipe(T.Query())),
@@ -791,7 +788,7 @@ export interface GetRoleAssignmentByIdResponse {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const GetRoleAssignmentByIdResponse =
+const GetRoleAssignmentByIdResponse =
   CreateRoleAssignmentResponse as any as S.Schema<GetRoleAssignmentByIdResponse>;
 
 export interface GetRoleDefinitionRequest {
@@ -800,7 +797,7 @@ export interface GetRoleDefinitionRequest {
   /** The ID of the role definition. */
   roleDefinitionId: string;
 }
-export const GetRoleDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleDefinitionId: S.String.pipe(T.Label()),
@@ -830,7 +827,7 @@ export interface ListDenyAssignmentForResourceRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-export const ListDenyAssignmentForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDenyAssignmentForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -853,7 +850,7 @@ export const ListDenyAssignmentForResourceRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Deny assignment list. */
 export type DenyAssignmentListResultValueList = Array<DenyAssignment>;
-export const DenyAssignmentListResultValueList = /*@__PURE__*/ S.Array(
+const DenyAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   DenyAssignment,
 ) as any as S.Schema<DenyAssignmentListResultValueList>;
 
@@ -864,7 +861,7 @@ export interface DenyAssignmentListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const DenyAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
+const DenyAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DenyAssignmentListResultValueList),
     nextLink: S.optional(S.String),
@@ -879,7 +876,7 @@ export interface ListDenyAssignmentForResourceGroupRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-export const ListDenyAssignmentForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDenyAssignmentForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -902,7 +899,7 @@ export interface ListDenyAssignmentForScopeRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-export const ListDenyAssignmentForScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDenyAssignmentForScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -924,7 +921,7 @@ export interface ListDenyAssignmentsRequest {
   /** The filter to apply on the operation. Use $filter=atScope() to return all deny assignments at or above the scope. Use $filter=denyAssignmentName eq '{name}' to search deny assignments by name at specified scope. Use $filter=principalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. Use $filter=gdprExportPrincipalId eq '{id}' to return all deny assignments at, above and below the scope for the specified principal. This filter is different from the principalId filter as it returns not only those deny assignments that contain the specified principal is the Principals list but also those deny assignments that contain the specified principal is the ExcludePrincipals list. Additionally, when gdprExportPrincipalId filter is used, only the deny assignment name and description properties are returned. */
   _filter?: string;
 }
-export const ListDenyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDenyAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -954,7 +951,7 @@ export interface ListPermissionsForResourceRequest {
   /** The name of the resource to get the permissions for. */
   resourceName: string;
 }
-export const ListPermissionsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -976,7 +973,7 @@ export const ListPermissionsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of permissions. */
 export type PermissionGetResultValueList = Array<Permission>;
-export const PermissionGetResultValueList =
+const PermissionGetResultValueList =
   RoleDefinitionPropertiesPermissionsList as any as S.Schema<PermissionGetResultValueList>;
 
 /** Permissions information. */
@@ -986,7 +983,7 @@ export interface PermissionGetResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const PermissionGetResult = /*@__PURE__*/ S.suspend(() =>
+const PermissionGetResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PermissionGetResultValueList),
     nextLink: S.optional(S.String),
@@ -999,7 +996,7 @@ export interface ListPermissionsForResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPermissionsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1019,7 +1016,7 @@ export interface ListProviderOperationsMetadataRequest {
   /** Specifies whether to expand the values. */
   _expand?: string;
 }
-export const ListProviderOperationsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProviderOperationsMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
   }).pipe(
@@ -1036,14 +1033,8 @@ export const ListProviderOperationsMetadataRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The provider resource types */
 export type ProviderOperationsMetadataResourceTypesList = Array<ResourceType>;
-export const ProviderOperationsMetadataResourceTypesList =
-  GetProviderOperationsMetadataResponseResourceTypesList as any as S.Schema<ProviderOperationsMetadataResourceTypesList>;
-
 /** The provider operations. */
 export type ProviderOperationsMetadataOperationsList = Array<ProviderOperation>;
-export const ProviderOperationsMetadataOperationsList =
-  ResourceTypeOperationsList as any as S.Schema<ProviderOperationsMetadataOperationsList>;
-
 /** Provider Operations metadata */
 export interface ProviderOperationsMetadata {
   /** The provider ID. */
@@ -1059,12 +1050,12 @@ export interface ProviderOperationsMetadata {
   /** The provider operations. */
   operations?: ProviderOperationsMetadataOperationsList;
 }
-export const ProviderOperationsMetadata =
+const ProviderOperationsMetadata =
   GetProviderOperationsMetadataResponse as any as S.Schema<ProviderOperationsMetadata>;
 
 /** The ProviderOperationsMetadata items on this page */
 export type ProviderOperationsMetadataListResultValueList = Array<ProviderOperationsMetadata>;
-export const ProviderOperationsMetadataListResultValueList = /*@__PURE__*/ S.Array(
+const ProviderOperationsMetadataListResultValueList = /*@__PURE__*/ S.Array(
   ProviderOperationsMetadata,
 ) as any as S.Schema<ProviderOperationsMetadataListResultValueList>;
 
@@ -1075,7 +1066,7 @@ export interface ProviderOperationsMetadataListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProviderOperationsMetadataListResult = /*@__PURE__*/ S.suspend(() =>
+const ProviderOperationsMetadataListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProviderOperationsMetadataListResultValueList,
     nextLink: S.optional(S.String),
@@ -1100,7 +1091,7 @@ export interface ListRoleAssignmentForResourceRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const ListRoleAssignmentForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleAssignmentForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1134,7 +1125,7 @@ export interface RoleAssignment {
   /** Role assignment properties. */
   properties?: RoleAssignmentProperties;
 }
-export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1146,7 +1137,7 @@ export const RoleAssignment = /*@__PURE__*/ S.suspend(() =>
 
 /** The RoleAssignment items on this page */
 export type RoleAssignmentListResultValueList = Array<RoleAssignment>;
-export const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
+const RoleAssignmentListResultValueList = /*@__PURE__*/ S.Array(
   RoleAssignment,
 ) as any as S.Schema<RoleAssignmentListResultValueList>;
 
@@ -1157,7 +1148,7 @@ export interface RoleAssignmentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RoleAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RoleAssignmentListResultValueList,
     nextLink: S.optional(S.String),
@@ -1174,7 +1165,7 @@ export interface ListRoleAssignmentForResourceGroupRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const ListRoleAssignmentForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleAssignmentForResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1202,7 +1193,7 @@ export interface ListRoleAssignmentForScopeRequest {
   /** The skipToken to apply on the operation. Use $skipToken={skiptoken} to return paged role assignments following the skipToken passed. Only supported on provider level calls. */
   _skipToken?: string;
 }
-export const ListRoleAssignmentForScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleAssignmentForScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1228,7 +1219,7 @@ export interface ListRoleAssignmentForSubscriptionRequest {
   /** Tenant ID for cross-tenant request */
   tenantId?: string;
 }
-export const ListRoleAssignmentForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleAssignmentForSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1251,7 +1242,7 @@ export interface ListRoleDefinitionsRequest {
   /** The filter to apply on the operation. Use atScopeAndBelow filter to search below the given scope as well. */
   _filter?: string;
 }
-export const ListRoleDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1269,7 +1260,7 @@ export const ListRoleDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Role definition list. */
 export type RoleDefinitionListResultValueList = Array<RoleDefinition>;
-export const RoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
+const RoleDefinitionListResultValueList = /*@__PURE__*/ S.Array(
   RoleDefinition,
 ) as any as S.Schema<RoleDefinitionListResultValueList>;
 
@@ -1280,7 +1271,7 @@ export interface RoleDefinitionListResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const RoleDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
+const RoleDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RoleDefinitionListResultValueList),
     nextLink: S.optional(S.String),
@@ -1289,12 +1280,12 @@ export const RoleDefinitionListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Role definition permissions. */
 export type RoleDefinitionPropertiesInputPermissionsList = Array<Permission>;
-export const RoleDefinitionPropertiesInputPermissionsList =
+const RoleDefinitionPropertiesInputPermissionsList =
   RoleDefinitionPropertiesPermissionsList as any as S.Schema<RoleDefinitionPropertiesInputPermissionsList>;
 
 /** Role definition assignable scopes. */
 export type RoleDefinitionPropertiesInputAssignableScopesList = Array<string>;
-export const RoleDefinitionPropertiesInputAssignableScopesList =
+const RoleDefinitionPropertiesInputAssignableScopesList =
   PermissionActionsList as any as S.Schema<RoleDefinitionPropertiesInputAssignableScopesList>;
 
 /** Role definition properties. */
@@ -1310,7 +1301,7 @@ export interface RoleDefinitionPropertiesInput {
   /** Role definition assignable scopes. */
   assignableScopes?: RoleDefinitionPropertiesInputAssignableScopesList;
 }
-export const RoleDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RoleDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleName: S.optional(S.String),
     description: S.optional(S.String),
@@ -1330,7 +1321,7 @@ export interface RoleDefinitionsCreateOrUpdateRequest {
   /** Role definition properties. */
   properties?: RoleDefinitionPropertiesInput;
 }
-export const RoleDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RoleDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     roleDefinitionId: S.String.pipe(T.Label()),

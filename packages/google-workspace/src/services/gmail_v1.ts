@@ -66,13 +66,13 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface BatchDeleteMessagesRequest {
   /** The IDs of the messages to delete. */
   ids?: StringList;
 }
-export const BatchDeleteMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.optional(StringList),
   }),
@@ -86,7 +86,7 @@ export interface BatchDeleteUsersMessagesRequest {
   /** Request body */
   body?: BatchDeleteMessagesRequest;
 }
-export const BatchDeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(BatchDeleteMessagesRequest.pipe(T.HttpBody())),
@@ -102,9 +102,7 @@ export const BatchDeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeleteUsersMessagesRequest>;
 
 export interface BatchDeleteUsersMessagesResponse {}
-export const BatchDeleteUsersMessagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const BatchDeleteUsersMessagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BatchDeleteUsersMessagesResponse",
 }) as any as S.Schema<BatchDeleteUsersMessagesResponse>;
 
@@ -115,7 +113,7 @@ export interface ClassificationLabelFieldValue {
   /** Required. The field ID for the Classification Label Value. Maps to the ID field of the Google Drive `Label.Field` object. */
   fieldId?: string;
 }
-export const ClassificationLabelFieldValue = /*@__PURE__*/ S.suspend(() =>
+const ClassificationLabelFieldValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selection: S.optional(S.String),
     fieldId: S.optional(S.String),
@@ -125,7 +123,7 @@ export const ClassificationLabelFieldValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClassificationLabelFieldValue>;
 
 export type ClassificationLabelFieldValueList = Array<ClassificationLabelFieldValue>;
-export const ClassificationLabelFieldValueList = /*@__PURE__*/ S.Array(
+const ClassificationLabelFieldValueList = /*@__PURE__*/ S.Array(
   ClassificationLabelFieldValue,
 ) as any as S.Schema<ClassificationLabelFieldValueList>;
 
@@ -136,7 +134,7 @@ export interface ClassificationLabelValue {
   /** Required. The canonical or raw alphanumeric classification label ID. Maps to the ID field of the Google Drive Label resource. */
   labelId?: string;
 }
-export const ClassificationLabelValue = /*@__PURE__*/ S.suspend(() =>
+const ClassificationLabelValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(ClassificationLabelFieldValueList),
     labelId: S.optional(S.String),
@@ -144,7 +142,7 @@ export const ClassificationLabelValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassificationLabelValue" }) as any as S.Schema<ClassificationLabelValue>;
 
 export type ClassificationLabelValueList = Array<ClassificationLabelValue>;
-export const ClassificationLabelValueList = /*@__PURE__*/ S.Array(
+const ClassificationLabelValueList = /*@__PURE__*/ S.Array(
   ClassificationLabelValue,
 ) as any as S.Schema<ClassificationLabelValueList>;
 
@@ -160,7 +158,7 @@ export interface BatchModifyMessagesRequest {
   /** A list of Classification Label values to remove from messages. */
   removeClassificationLabelIds?: StringList;
 }
-export const BatchModifyMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchModifyMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addLabelIds: S.optional(StringList),
     addClassificationLabels: S.optional(ClassificationLabelValueList),
@@ -178,7 +176,7 @@ export interface BatchModifyUsersMessagesRequest {
   /** Request body */
   body?: BatchModifyMessagesRequest;
 }
-export const BatchModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(BatchModifyMessagesRequest.pipe(T.HttpBody())),
@@ -194,7 +192,7 @@ export const BatchModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchModifyUsersMessagesRequest>;
 
 export interface BatchModifyUsersMessagesResponse {}
-export const BatchModifyUsersMessagesResponse =
+const BatchModifyUsersMessagesResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<BatchModifyUsersMessagesResponse>;
 
 export interface MessagePartHeader {
@@ -203,7 +201,7 @@ export interface MessagePartHeader {
   /** The name of the header before the `:` separator. For example, `To`. */
   name?: string;
 }
-export const MessagePartHeader = /*@__PURE__*/ S.suspend(() =>
+const MessagePartHeader = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     name: S.optional(S.String),
@@ -211,12 +209,12 @@ export const MessagePartHeader = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessagePartHeader" }) as any as S.Schema<MessagePartHeader>;
 
 export type MessagePartHeaderList = Array<MessagePartHeader>;
-export const MessagePartHeaderList = /*@__PURE__*/ S.Array(
+const MessagePartHeaderList = /*@__PURE__*/ S.Array(
   MessagePartHeader,
 ) as any as S.Schema<MessagePartHeaderList>;
 
 export type MessagePartList = Array<MessagePart>;
-export const MessagePartList = /*@__PURE__*/ S.Array(
+const MessagePartList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => MessagePart),
 ) as any as S.Schema<MessagePartList>;
 
@@ -229,7 +227,7 @@ export interface MessagePartBody {
   /** When present, contains the ID of an external attachment that can be retrieved in a separate `messages.attachments.get` request. When not present, the entire content of the message part body is contained in the data field. */
   attachmentId?: string;
 }
-export const MessagePartBody = /*@__PURE__*/ S.suspend(() =>
+const MessagePartBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.Number),
     data: S.optional(S.String),
@@ -252,7 +250,7 @@ export interface MessagePart {
   /** The filename of the attachment. Only present if this message part represents an attachment. */
   filename?: string;
 }
-export const MessagePart = /*@__PURE__*/ S.suspend(() =>
+const MessagePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partId: S.optional(S.String),
     headers: S.optional(MessagePartHeaderList),
@@ -286,7 +284,7 @@ export interface Message {
   /** The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in `messages.get` and `drafts.get` responses when the `format=RAW` parameter is supplied. @required gmail.users.drafts.create gmail.users.drafts.update */
   raw?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historyId: S.optional(S.String),
     threadId: S.optional(S.String),
@@ -308,7 +306,7 @@ export interface Draft {
   /** The message content of the draft. */
   message?: Message;
 }
-export const Draft = /*@__PURE__*/ S.suspend(() =>
+const Draft = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     message: S.optional(Message),
@@ -321,7 +319,7 @@ export interface CreateUsersDraftsRequest {
   /** Request body */
   body?: Draft;
 }
-export const CreateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Draft.pipe(T.HttpBody())),
@@ -335,7 +333,7 @@ export const CreateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUsersDraftsRequest" }) as any as S.Schema<CreateUsersDraftsRequest>;
 
 export type LabelMessageListVisibilityEnum = "show" | "hide";
-export const LabelMessageListVisibilityEnum = S.String;
+const LabelMessageListVisibilityEnum = S.String;
 
 export interface LabelColor {
   /** The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018 */
@@ -343,7 +341,7 @@ export interface LabelColor {
   /** The background color represented as hex string #RRGGBB (ex #000000). This field is required in order to set the color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c, \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765, #757575, #1e53b8, \#007286, #7858c3, #c2185b, #d93025, #54240e, #633e04, #521d28, #202124, \#083018 */
   backgroundColor?: string;
 }
-export const LabelColor = /*@__PURE__*/ S.suspend(() =>
+const LabelColor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textColor: S.optional(S.String),
     backgroundColor: S.optional(S.String),
@@ -351,10 +349,10 @@ export const LabelColor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelColor" }) as any as S.Schema<LabelColor>;
 
 export type LabelLabelListVisibilityEnum = "labelShow" | "labelShowIfUnread" | "labelHide";
-export const LabelLabelListVisibilityEnum = S.String;
+const LabelLabelListVisibilityEnum = S.String;
 
 export type LabelTypeEnum = "system" | "user";
-export const LabelTypeEnum = S.String;
+const LabelTypeEnum = S.String;
 
 /** Labels are used to categorize messages and threads within the user's mailbox. The maximum number of labels supported for a user's mailbox is 10,000. */
 export interface Label {
@@ -379,7 +377,7 @@ export interface Label {
   /** The owner type for the label. User labels are created by the user and can be modified and deleted by the user and can be applied to any message or thread. System labels are internally created and cannot be added, modified, or deleted. System labels may be able to be applied to or removed from messages and threads under some circumstances but this is not guaranteed. For example, users can apply and remove the `INBOX` and `UNREAD` labels from messages and threads, but cannot apply or remove the `DRAFTS` or `SENT` labels from messages or threads. */
   type?: LabelTypeEnum | (string & {});
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messagesUnread: S.optional(S.Number),
     id: S.optional(S.String),
@@ -400,7 +398,7 @@ export interface CreateUsersLabelsRequest {
   /** Request body */
   body?: Label;
 }
-export const CreateUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Label.pipe(T.HttpBody())),
@@ -420,7 +418,7 @@ export interface SignAndEncryptKeyPairs {
   /** The ID of the CseKeyPair that signs outgoing mail. */
   signingKeyPairId?: string;
 }
-export const SignAndEncryptKeyPairs = /*@__PURE__*/ S.suspend(() =>
+const SignAndEncryptKeyPairs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionKeyPairId: S.optional(S.String),
     signingKeyPairId: S.optional(S.String),
@@ -436,7 +434,7 @@ export interface CseIdentity {
   /** The email address for the sending identity. The email address must be the primary email address of the authenticated user. */
   emailAddress?: string;
 }
-export const CseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryKeyPairId: S.optional(S.String),
     signAndEncryptKeyPairs: S.optional(SignAndEncryptKeyPairs),
@@ -450,7 +448,7 @@ export interface CreateUsersSettingsCseIdentitiesRequest {
   /** Request body */
   body?: CseIdentity;
 }
-export const CreateUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(CseIdentity.pipe(T.HttpBody())),
@@ -466,14 +464,14 @@ export const CreateUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateUsersSettingsCseIdentitiesRequest>;
 
 export type CreateUsersSettingsCseKeypairsChainValidationEnum = "all" | "none";
-export const CreateUsersSettingsCseKeypairsChainValidationEnum = S.String;
+const CreateUsersSettingsCseKeypairsChainValidationEnum = S.String;
 
 /** Metadata for hardware keys. If [hardware key encryption](https://support.google.com/a/answer/14153163) is set up for the Google Workspace organization, users can optionally store their private key on their smart card and use it to sign and decrypt email messages in Gmail by inserting their smart card into a reader attached to their Windows device. */
 export interface HardwareKeyMetadata {
   /** Description about the hardware key. */
   description?: string;
 }
-export const HardwareKeyMetadata = /*@__PURE__*/ S.suspend(() =>
+const HardwareKeyMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -486,7 +484,7 @@ export interface KaclsKeyMetadata {
   /** Opaque data generated and used by the key access control list service. Maximum size: 8 KiB. */
   kaclsData?: string;
 }
-export const KaclsKeyMetadata = /*@__PURE__*/ S.suspend(() =>
+const KaclsKeyMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kaclsUri: S.optional(S.String),
     kaclsData: S.optional(S.String),
@@ -502,7 +500,7 @@ export interface CsePrivateKeyMetadata {
   /** Metadata for a private key instance managed by an external key access control list service. */
   kaclsKeyMetadata?: KaclsKeyMetadata;
 }
-export const CsePrivateKeyMetadata = /*@__PURE__*/ S.suspend(() =>
+const CsePrivateKeyMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hardwareKeyMetadata: S.optional(HardwareKeyMetadata),
     privateKeyMetadataId: S.optional(S.String),
@@ -511,12 +509,12 @@ export const CsePrivateKeyMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CsePrivateKeyMetadata" }) as any as S.Schema<CsePrivateKeyMetadata>;
 
 export type CsePrivateKeyMetadataList = Array<CsePrivateKeyMetadata>;
-export const CsePrivateKeyMetadataList = /*@__PURE__*/ S.Array(
+const CsePrivateKeyMetadataList = /*@__PURE__*/ S.Array(
   CsePrivateKeyMetadata,
 ) as any as S.Schema<CsePrivateKeyMetadataList>;
 
 export type CseKeyPairEnablementStateEnum = "stateUnspecified" | "enabled" | "disabled";
-export const CseKeyPairEnablementStateEnum = S.String;
+const CseKeyPairEnablementStateEnum = S.String;
 
 /** A client-side encryption S/MIME key pair, which is comprised of a public key, its certificate chain, and metadata for its paired private key. Gmail uses the key pair to complete the following tasks: - Sign outgoing client-side encrypted messages. - Save and reopen drafts of client-side encrypted messages. - Save and reopen sent messages. - Decrypt incoming or archived S/MIME messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export interface CseKeyPair {
@@ -535,7 +533,7 @@ export interface CseKeyPair {
   /** Output only. If a key pair is set to `DISABLED`, the time that the key pair's state changed from `ENABLED` to `DISABLED`. This field is present only when the key pair is in state `DISABLED`. */
   disableTime?: string;
 }
-export const CseKeyPair = /*@__PURE__*/ S.suspend(() =>
+const CseKeyPair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyPairId: S.optional(S.String),
     pem: S.optional(S.String),
@@ -555,7 +553,7 @@ export interface CreateUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: CseKeyPair;
 }
-export const CreateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chainValidation: S.optional(CreateUsersSettingsCseKeypairsChainValidationEnum.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
@@ -577,7 +575,7 @@ export type DelegateVerificationStatusEnum =
   | "pending"
   | "rejected"
   | "expired";
-export const DelegateVerificationStatusEnum = S.String;
+const DelegateVerificationStatusEnum = S.String;
 
 /** Settings for a delegate. Delegates can read, send, and delete messages, as well as view and add contacts, for the delegator's account. See "Set up mail delegation" for more information about delegates. */
 export interface Delegate {
@@ -586,7 +584,7 @@ export interface Delegate {
   /** The email address of the delegate. */
   delegateEmail?: string;
 }
-export const Delegate = /*@__PURE__*/ S.suspend(() =>
+const Delegate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationStatus: S.optional(DelegateVerificationStatusEnum),
     delegateEmail: S.optional(S.String),
@@ -599,7 +597,7 @@ export interface CreateUsersSettingsDelegatesRequest {
   /** Request body */
   body?: Delegate;
 }
-export const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Delegate.pipe(T.HttpBody())),
@@ -615,7 +613,7 @@ export const CreateUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUsersSettingsDelegatesRequest>;
 
 export type FilterCriteriaSizeComparisonEnum = "unspecified" | "smaller" | "larger";
-export const FilterCriteriaSizeComparisonEnum = S.String;
+const FilterCriteriaSizeComparisonEnum = S.String;
 
 /** Message matching criteria. */
 export interface FilterCriteria {
@@ -638,7 +636,7 @@ export interface FilterCriteria {
   /** Only return messages not matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. */
   negatedQuery?: string;
 }
-export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
+const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(S.String),
     sizeComparison: S.optional(FilterCriteriaSizeComparisonEnum),
@@ -661,7 +659,7 @@ export interface FilterAction {
   /** List of labels to add to the message. */
   addLabelIds?: StringList;
 }
-export const FilterAction = /*@__PURE__*/ S.suspend(() =>
+const FilterAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeLabelIds: S.optional(StringList),
     forward: S.optional(S.String),
@@ -678,7 +676,7 @@ export interface Filter {
   /** Action that the filter performs. */
   action?: FilterAction;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     criteria: S.optional(FilterCriteria),
@@ -692,7 +690,7 @@ export interface CreateUsersSettingsFiltersRequest {
   /** Request body */
   body?: Filter;
 }
-export const CreateUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Filter.pipe(T.HttpBody())),
@@ -711,7 +709,7 @@ export type ForwardingAddressVerificationStatusEnum =
   | "verificationStatusUnspecified"
   | "accepted"
   | "pending";
-export const ForwardingAddressVerificationStatusEnum = S.String;
+const ForwardingAddressVerificationStatusEnum = S.String;
 
 /** Settings for a forwarding address. */
 export interface ForwardingAddress {
@@ -720,7 +718,7 @@ export interface ForwardingAddress {
   /** Indicates whether this address has been verified and is usable for forwarding. Read-only. */
   verificationStatus?: ForwardingAddressVerificationStatusEnum | (string & {});
 }
-export const ForwardingAddress = /*@__PURE__*/ S.suspend(() =>
+const ForwardingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingEmail: S.optional(S.String),
     verificationStatus: S.optional(ForwardingAddressVerificationStatusEnum),
@@ -733,7 +731,7 @@ export interface CreateUsersSettingsForwardingAddressesRequest {
   /** Request body */
   body?: ForwardingAddress;
 }
-export const CreateUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(ForwardingAddress.pipe(T.HttpBody())),
@@ -749,7 +747,7 @@ export const CreateUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateUsersSettingsForwardingAddressesRequest>;
 
 export type SmtpMsaSecurityModeEnum = "securityModeUnspecified" | "none" | "ssl" | "starttls";
-export const SmtpMsaSecurityModeEnum = S.String;
+const SmtpMsaSecurityModeEnum = S.String;
 
 /** Configuration for communication with an SMTP service. */
 export interface SmtpMsa {
@@ -764,7 +762,7 @@ export interface SmtpMsa {
   /** The protocol that will be used to secure communication with the SMTP service. Required. */
   securityMode?: SmtpMsaSecurityModeEnum | (string & {});
 }
-export const SmtpMsa = /*@__PURE__*/ S.suspend(() =>
+const SmtpMsa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     host: S.optional(S.String),
@@ -775,7 +773,7 @@ export const SmtpMsa = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmtpMsa" }) as any as S.Schema<SmtpMsa>;
 
 export type SendAsVerificationStatusEnum = "verificationStatusUnspecified" | "accepted" | "pending";
-export const SendAsVerificationStatusEnum = S.String;
+const SendAsVerificationStatusEnum = S.String;
 
 /** Settings associated with a send-as alias, which can be either the primary login address associated with the account or a custom "from" address. Send-as aliases correspond to the "Send Mail As" feature in the web interface. The send-as alias must be a valid email address. */
 export interface SendAs {
@@ -798,7 +796,7 @@ export interface SendAs {
   /** Whether this address is selected as the default "From:" address in situations such as composing a new message or sending a vacation auto-reply. Every Gmail account has exactly one default send-as address, so the only legal value that clients may write to this field is `true`. Changing this from `false` to `true` for an address will result in this field becoming `false` for the other previous default address. */
   isDefault?: boolean;
 }
-export const SendAs = /*@__PURE__*/ S.suspend(() =>
+const SendAs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signature: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -818,7 +816,7 @@ export interface CreateUsersSettingsSendAsRequest {
   /** Request body */
   body?: SendAs;
 }
-export const CreateUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(SendAs.pipe(T.HttpBody())),
@@ -839,7 +837,7 @@ export interface DeleteUsersDraftsRequest {
   /** The ID of the draft to delete. */
   id: string;
 }
-export const DeleteUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -853,7 +851,7 @@ export const DeleteUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersDraftsRequest" }) as any as S.Schema<DeleteUsersDraftsRequest>;
 
 export interface DeleteUsersDraftsResponse {}
-export const DeleteUsersDraftsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteUsersDraftsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteUsersDraftsResponse",
 }) as any as S.Schema<DeleteUsersDraftsResponse>;
 
@@ -863,7 +861,7 @@ export interface DeleteUsersLabelsRequest {
   /** The ID of the label to delete. */
   id: string;
 }
-export const DeleteUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -877,7 +875,7 @@ export const DeleteUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUsersLabelsRequest" }) as any as S.Schema<DeleteUsersLabelsRequest>;
 
 export interface DeleteUsersLabelsResponse {}
-export const DeleteUsersLabelsResponse =
+const DeleteUsersLabelsResponse =
   DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersLabelsResponse>;
 
 export interface DeleteUsersMessagesRequest {
@@ -886,7 +884,7 @@ export interface DeleteUsersMessagesRequest {
   /** The ID of the message to delete. */
   id: string;
 }
-export const DeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -902,7 +900,7 @@ export const DeleteUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersMessagesRequest>;
 
 export interface DeleteUsersMessagesResponse {}
-export const DeleteUsersMessagesResponse =
+const DeleteUsersMessagesResponse =
   DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersMessagesResponse>;
 
 export interface DeleteUsersSettingsCseIdentitiesRequest {
@@ -911,7 +909,7 @@ export interface DeleteUsersSettingsCseIdentitiesRequest {
   /** The primary email address associated with the client-side encryption identity configuration that's removed. */
   cseEmailAddress: string;
 }
-export const DeleteUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     cseEmailAddress: S.String.pipe(T.Label()),
@@ -927,7 +925,7 @@ export const DeleteUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteUsersSettingsCseIdentitiesRequest>;
 
 export interface DeleteUsersSettingsCseIdentitiesResponse {}
-export const DeleteUsersSettingsCseIdentitiesResponse =
+const DeleteUsersSettingsCseIdentitiesResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
 
 export interface DeleteUsersSettingsDelegatesRequest {
@@ -936,7 +934,7 @@ export interface DeleteUsersSettingsDelegatesRequest {
   /** The email address of the user to be removed as a delegate. */
   delegateEmail: string;
 }
-export const DeleteUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     delegateEmail: S.String.pipe(T.Label()),
@@ -952,7 +950,7 @@ export const DeleteUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsDelegatesRequest>;
 
 export interface DeleteUsersSettingsDelegatesResponse {}
-export const DeleteUsersSettingsDelegatesResponse =
+const DeleteUsersSettingsDelegatesResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsDelegatesResponse>;
 
 export interface DeleteUsersSettingsFiltersRequest {
@@ -961,7 +959,7 @@ export interface DeleteUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const DeleteUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -977,7 +975,7 @@ export const DeleteUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsFiltersRequest>;
 
 export interface DeleteUsersSettingsFiltersResponse {}
-export const DeleteUsersSettingsFiltersResponse =
+const DeleteUsersSettingsFiltersResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsFiltersResponse>;
 
 export interface DeleteUsersSettingsForwardingAddressesRequest {
@@ -986,7 +984,7 @@ export interface DeleteUsersSettingsForwardingAddressesRequest {
   /** The forwarding address to be deleted. */
   forwardingEmail: string;
 }
-export const DeleteUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     forwardingEmail: S.String.pipe(T.Label()),
@@ -1002,7 +1000,7 @@ export const DeleteUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteUsersSettingsForwardingAddressesRequest>;
 
 export interface DeleteUsersSettingsForwardingAddressesResponse {}
-export const DeleteUsersSettingsForwardingAddressesResponse =
+const DeleteUsersSettingsForwardingAddressesResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
 
 export interface DeleteUsersSettingsSendAsRequest {
@@ -1011,7 +1009,7 @@ export interface DeleteUsersSettingsSendAsRequest {
   /** The send-as alias to be deleted. */
   sendAsEmail: string;
 }
-export const DeleteUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -1027,7 +1025,7 @@ export const DeleteUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersSettingsSendAsRequest>;
 
 export interface DeleteUsersSettingsSendAsResponse {}
-export const DeleteUsersSettingsSendAsResponse =
+const DeleteUsersSettingsSendAsResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsResponse>;
 
 export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
@@ -1038,7 +1036,7 @@ export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
   /** The email address that appears in the "From:" header for mail sent using this alias. */
   sendAsEmail: string;
 }
-export const DeleteUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1055,7 +1053,7 @@ export const DeleteUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface DeleteUsersSettingsSendAsSmimeInfoResponse {}
-export const DeleteUsersSettingsSendAsSmimeInfoResponse =
+const DeleteUsersSettingsSendAsSmimeInfoResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
 
 export interface DeleteUsersThreadsRequest {
@@ -1064,7 +1062,7 @@ export interface DeleteUsersThreadsRequest {
   /** ID of the Thread to delete. */
   id: string;
 }
-export const DeleteUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1080,12 +1078,12 @@ export const DeleteUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUsersThreadsRequest>;
 
 export interface DeleteUsersThreadsResponse {}
-export const DeleteUsersThreadsResponse =
+const DeleteUsersThreadsResponse =
   DeleteUsersDraftsResponse as any as S.Schema<DeleteUsersThreadsResponse>;
 
 /** Requests to turn off a client-side encryption key pair. */
 export interface DisableCseKeyPairRequest {}
-export const DisableCseKeyPairRequest =
+const DisableCseKeyPairRequest =
   DeleteUsersDraftsResponse as any as S.Schema<DisableCseKeyPairRequest>;
 
 export interface DisableUsersSettingsCseKeypairsRequest {
@@ -1096,7 +1094,7 @@ export interface DisableUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-export const DisableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     keyPairId: S.String.pipe(T.Label()),
@@ -1114,8 +1112,6 @@ export const DisableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(()
 
 /** Requests to turn on a client-side encryption key pair. */
 export type EnableCseKeyPairRequest = DisableCseKeyPairRequest;
-export const EnableCseKeyPairRequest = DisableCseKeyPairRequest;
-
 export interface EnableUsersSettingsCseKeypairsRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
@@ -1124,7 +1120,7 @@ export interface EnableUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-export const EnableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     keyPairId: S.String.pipe(T.Label()),
@@ -1144,7 +1140,7 @@ export interface GetAutoForwardingUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetAutoForwardingUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoForwardingUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1164,7 +1160,7 @@ export type AutoForwardingDispositionEnum =
   | "archive"
   | "trash"
   | "markRead";
-export const AutoForwardingDispositionEnum = S.String;
+const AutoForwardingDispositionEnum = S.String;
 
 /** Auto-forwarding settings for an account. */
 export interface AutoForwarding {
@@ -1175,7 +1171,7 @@ export interface AutoForwarding {
   /** The state that a message should be left in after it has been forwarded. */
   disposition?: AutoForwardingDispositionEnum | (string & {});
 }
-export const AutoForwarding = /*@__PURE__*/ S.suspend(() =>
+const AutoForwarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -1187,7 +1183,7 @@ export interface GetImapUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetImapUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImapUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1206,7 +1202,7 @@ export type ImapSettingsExpungeBehaviorEnum =
   | "archive"
   | "trash"
   | "deleteForever";
-export const ImapSettingsExpungeBehaviorEnum = S.String;
+const ImapSettingsExpungeBehaviorEnum = S.String;
 
 /** IMAP settings for an account. */
 export interface ImapSettings {
@@ -1219,7 +1215,7 @@ export interface ImapSettings {
   /** If this value is true, Gmail will immediately expunge a message when it is marked as deleted in IMAP. Otherwise, Gmail will wait for an update from the client before expunging messages marked as deleted. */
   autoExpunge?: boolean;
 }
-export const ImapSettings = /*@__PURE__*/ S.suspend(() =>
+const ImapSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxFolderSize: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
@@ -1232,7 +1228,7 @@ export interface GetLanguageUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetLanguageUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLanguageUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1251,7 +1247,7 @@ export interface LanguageSettings {
   /** The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example `en-GB`, `fr` or `ja` for British English, French, or Japanese respectively). The set of languages supported by Gmail evolves over time, so please refer to the "Language" dropdown in the Gmail settings for all available options, as described in the language settings help article. For a table of sample values, see [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). Not all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default). */
   displayLanguage?: string;
 }
-export const LanguageSettings = /*@__PURE__*/ S.suspend(() =>
+const LanguageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayLanguage: S.optional(S.String),
   }),
@@ -1261,7 +1257,7 @@ export interface GetPopUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetPopUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPopUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1281,14 +1277,14 @@ export type PopSettingsDispositionEnum =
   | "archive"
   | "trash"
   | "markRead";
-export const PopSettingsDispositionEnum = S.String;
+const PopSettingsDispositionEnum = S.String;
 
 export type PopSettingsAccessWindowEnum =
   | "accessWindowUnspecified"
   | "disabled"
   | "fromNowOn"
   | "allMail";
-export const PopSettingsAccessWindowEnum = S.String;
+const PopSettingsAccessWindowEnum = S.String;
 
 /** POP settings for an account. */
 export interface PopSettings {
@@ -1297,7 +1293,7 @@ export interface PopSettings {
   /** The range of messages which are accessible via POP. */
   accessWindow?: PopSettingsAccessWindowEnum | (string & {});
 }
-export const PopSettings = /*@__PURE__*/ S.suspend(() =>
+const PopSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disposition: S.optional(PopSettingsDispositionEnum),
     accessWindow: S.optional(PopSettingsAccessWindowEnum),
@@ -1308,7 +1304,7 @@ export interface GetProfileUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProfileUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1331,7 +1327,7 @@ export interface Profile {
   /** The total number of messages in the mailbox. */
   messagesTotal?: number;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
     threadsTotal: S.optional(S.Number),
@@ -1341,7 +1337,7 @@ export const Profile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
 
 export type GetUsersDraftsFormatEnum = "minimal" | "full" | "raw" | "metadata";
-export const GetUsersDraftsFormatEnum = S.String;
+const GetUsersDraftsFormatEnum = S.String;
 
 export interface GetUsersDraftsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -1351,7 +1347,7 @@ export interface GetUsersDraftsRequest {
   /** The ID of the draft to retrieve. */
   id: string;
 }
-export const GetUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     format: S.optional(GetUsersDraftsFormatEnum.pipe(T.Query())),
@@ -1371,7 +1367,7 @@ export interface GetUsersLabelsRequest {
   /** The ID of the label to retrieve. */
   id: string;
 }
-export const GetUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1385,7 +1381,7 @@ export const GetUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsersLabelsRequest" }) as any as S.Schema<GetUsersLabelsRequest>;
 
 export type GetUsersMessagesFormatEnum = "minimal" | "full" | "raw" | "metadata";
-export const GetUsersMessagesFormatEnum = S.String;
+const GetUsersMessagesFormatEnum = S.String;
 
 export interface GetUsersMessagesRequest {
   /** When given and format is `METADATA`, only include headers specified. */
@@ -1397,7 +1393,7 @@ export interface GetUsersMessagesRequest {
   /** The format to return the message in. */
   format?: GetUsersMessagesFormatEnum | (string & {});
 }
-export const GetUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadataHeaders: S.optional(StringList.pipe(T.Query())),
     id: S.String.pipe(T.Label()),
@@ -1420,7 +1416,7 @@ export interface GetUsersMessagesAttachmentsRequest {
   /** The ID of the attachment. */
   id: string;
 }
-export const GetUsersMessagesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersMessagesAttachmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -1442,7 +1438,7 @@ export interface GetUsersSettingsCseIdentitiesRequest {
   /** The primary email address associated with the client-side encryption identity configuration that's retrieved. */
   cseEmailAddress: string;
 }
-export const GetUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     cseEmailAddress: S.String.pipe(T.Label()),
@@ -1463,7 +1459,7 @@ export interface GetUsersSettingsCseKeypairsRequest {
   /** The identifier of the key pair to retrieve. */
   keyPairId: string;
 }
-export const GetUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     keyPairId: S.String.pipe(T.Label()),
@@ -1484,7 +1480,7 @@ export interface GetUsersSettingsDelegatesRequest {
   /** The email address of the user whose delegate relationship is to be retrieved. */
   delegateEmail: string;
 }
-export const GetUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     delegateEmail: S.String.pipe(T.Label()),
@@ -1505,7 +1501,7 @@ export interface GetUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -1526,7 +1522,7 @@ export interface GetUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingEmail: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -1547,7 +1543,7 @@ export interface GetUsersSettingsSendAsRequest {
   /** The send-as alias to be retrieved. */
   sendAsEmail: string;
 }
-export const GetUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -1570,7 +1566,7 @@ export interface GetUsersSettingsSendAsSmimeInfoRequest {
   /** The email address that appears in the "From:" header for mail sent using this alias. */
   sendAsEmail: string;
 }
-export const GetUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1603,7 +1599,7 @@ export interface SmimeInfo {
   /** Encrypted key password, when key is encrypted. */
   encryptedKeyPassword?: string;
 }
-export const SmimeInfo = /*@__PURE__*/ S.suspend(() =>
+const SmimeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pem: S.optional(S.String),
     isDefault: S.optional(S.Boolean),
@@ -1616,7 +1612,7 @@ export const SmimeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SmimeInfo" }) as any as S.Schema<SmimeInfo>;
 
 export type GetUsersThreadsFormatEnum = "full" | "metadata" | "minimal";
-export const GetUsersThreadsFormatEnum = S.String;
+const GetUsersThreadsFormatEnum = S.String;
 
 export interface GetUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -1628,7 +1624,7 @@ export interface GetUsersThreadsRequest {
   /** The ID of the thread to retrieve. */
   id: string;
 }
-export const GetUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     format: S.optional(GetUsersThreadsFormatEnum.pipe(T.Query())),
@@ -1644,7 +1640,7 @@ export const GetUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsersThreadsRequest" }) as any as S.Schema<GetUsersThreadsRequest>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 /** A collection of messages representing a conversation. */
 export interface Thread {
@@ -1657,7 +1653,7 @@ export interface Thread {
   /** A short part of the message text. */
   snippet?: string;
 }
-export const Thread = /*@__PURE__*/ S.suspend(() =>
+const Thread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     messages: S.optional(MessageList),
@@ -1670,7 +1666,7 @@ export interface GetVacationUsersSettingsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const GetVacationUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVacationUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1703,7 +1699,7 @@ export interface VacationSettings {
   /** Optional text to prepend to the subject line in vacation responses. In order to enable auto-replies, either the response subject or the response body must be nonempty. */
   responseSubject?: string;
 }
-export const VacationSettings = /*@__PURE__*/ S.suspend(() =>
+const VacationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableAutoReply: S.optional(S.Boolean),
     startTime: S.optional(S.String),
@@ -1717,7 +1713,7 @@ export const VacationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VacationSettings" }) as any as S.Schema<VacationSettings>;
 
 export type ImportUsersMessagesInternalDateSourceEnum = "receivedTime" | "dateHeader";
-export const ImportUsersMessagesInternalDateSourceEnum = S.String;
+const ImportUsersMessagesInternalDateSourceEnum = S.String;
 
 export interface ImportUsersMessagesRequest {
   /** Source for Gmail's internal date of the message. */
@@ -1733,7 +1729,7 @@ export interface ImportUsersMessagesRequest {
   /** Request body */
   body?: Message;
 }
-export const ImportUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internalDateSource: S.optional(ImportUsersMessagesInternalDateSourceEnum.pipe(T.Query())),
     userId: S.String.pipe(T.Label()),
@@ -1753,7 +1749,7 @@ export const ImportUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportUsersMessagesRequest>;
 
 export type InsertUsersMessagesInternalDateSourceEnum = "receivedTime" | "dateHeader";
-export const InsertUsersMessagesInternalDateSourceEnum = S.String;
+const InsertUsersMessagesInternalDateSourceEnum = S.String;
 
 export interface InsertUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -1765,7 +1761,7 @@ export interface InsertUsersMessagesRequest {
   /** Request body */
   body?: Message;
 }
-export const InsertUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     internalDateSource: S.optional(InsertUsersMessagesInternalDateSourceEnum.pipe(T.Query())),
@@ -1790,7 +1786,7 @@ export interface InsertUsersSettingsSendAsSmimeInfoRequest {
   /** Request body */
   body?: SmimeInfo;
 }
-export const InsertUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendAsEmail: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -1818,7 +1814,7 @@ export interface ListUsersDraftsRequest {
   /** Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500. */
   maxResults?: number;
 }
-export const ListUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     q: S.optional(S.String.pipe(T.Query())),
@@ -1835,7 +1831,7 @@ export const ListUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersDraftsRequest" }) as any as S.Schema<ListUsersDraftsRequest>;
 
 export type DraftList = Array<Draft>;
-export const DraftList = /*@__PURE__*/ S.Array(Draft) as any as S.Schema<DraftList>;
+const DraftList = /*@__PURE__*/ S.Array(Draft) as any as S.Schema<DraftList>;
 
 export interface ListDraftsResponse {
   /** List of drafts. Note that the `Message` property in each `Draft` resource only contains an `id` and a `threadId`. The [`messages.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/messages/get) method can fetch additional message details. */
@@ -1845,7 +1841,7 @@ export interface ListDraftsResponse {
   /** Token to retrieve the next page of results in the list. */
   nextPageToken?: string;
 }
-export const ListDraftsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDraftsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drafts: S.optional(DraftList),
     resultSizeEstimate: S.optional(S.Number),
@@ -1858,12 +1854,12 @@ export type ListUsersHistoryHistoryTypesEnum =
   | "messageDeleted"
   | "labelAdded"
   | "labelRemoved";
-export const ListUsersHistoryHistoryTypesEnum = S.String;
+const ListUsersHistoryHistoryTypesEnum = S.String;
 
 export type ListUsersHistoryHistoryTypesEnumList = Array<
   ListUsersHistoryHistoryTypesEnum | (string & {})
 >;
-export const ListUsersHistoryHistoryTypesEnumList = /*@__PURE__*/ S.Array(
+const ListUsersHistoryHistoryTypesEnumList = /*@__PURE__*/ S.Array(
   ListUsersHistoryHistoryTypesEnum,
 ) as any as S.Schema<ListUsersHistoryHistoryTypesEnumList>;
 
@@ -1881,7 +1877,7 @@ export interface ListUsersHistoryRequest {
   /** Maximum number of history records to return. This field defaults to 100. The maximum allowed value for this field is 500. */
   maxResults?: number;
 }
-export const ListUsersHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startHistoryId: S.optional(S.String.pipe(T.Query())),
     labelId: S.optional(S.String.pipe(T.Query())),
@@ -1901,14 +1897,14 @@ export const ListUsersHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 export interface HistoryMessageAdded {
   message?: Message;
 }
-export const HistoryMessageAdded = /*@__PURE__*/ S.suspend(() =>
+const HistoryMessageAdded = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
   }),
 ).annotate({ identifier: "HistoryMessageAdded" }) as any as S.Schema<HistoryMessageAdded>;
 
 export type HistoryMessageAddedList = Array<HistoryMessageAdded>;
-export const HistoryMessageAddedList = /*@__PURE__*/ S.Array(
+const HistoryMessageAddedList = /*@__PURE__*/ S.Array(
   HistoryMessageAdded,
 ) as any as S.Schema<HistoryMessageAddedList>;
 
@@ -1917,7 +1913,7 @@ export interface HistoryLabelRemoved {
   /** Label IDs removed from the message. */
   labelIds?: StringList;
 }
-export const HistoryLabelRemoved = /*@__PURE__*/ S.suspend(() =>
+const HistoryLabelRemoved = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     labelIds: S.optional(StringList),
@@ -1925,7 +1921,7 @@ export const HistoryLabelRemoved = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistoryLabelRemoved" }) as any as S.Schema<HistoryLabelRemoved>;
 
 export type HistoryLabelRemovedList = Array<HistoryLabelRemoved>;
-export const HistoryLabelRemovedList = /*@__PURE__*/ S.Array(
+const HistoryLabelRemovedList = /*@__PURE__*/ S.Array(
   HistoryLabelRemoved,
 ) as any as S.Schema<HistoryLabelRemovedList>;
 
@@ -1934,17 +1930,12 @@ export interface HistoryLabelAdded {
   /** Label IDs added to the message. */
   labelIds?: StringList;
 }
-export const HistoryLabelAdded = HistoryLabelRemoved as any as S.Schema<HistoryLabelAdded>;
-
 export type HistoryLabelAddedList = Array<HistoryLabelAdded>;
-export const HistoryLabelAddedList =
-  HistoryLabelRemovedList as any as S.Schema<HistoryLabelAddedList>;
+const HistoryLabelAddedList = HistoryLabelRemovedList as any as S.Schema<HistoryLabelAddedList>;
 
 export type HistoryMessageDeleted = HistoryMessageAdded;
-export const HistoryMessageDeleted = HistoryMessageAdded;
-
 export type HistoryMessageDeletedList = Array<HistoryMessageAdded>;
-export const HistoryMessageDeletedList =
+const HistoryMessageDeletedList =
   HistoryMessageAddedList as any as S.Schema<HistoryMessageDeletedList>;
 
 /** A record of a change to the user's mailbox. Each history change may affect multiple messages in multiple ways. */
@@ -1962,7 +1953,7 @@ export interface History {
   /** Messages deleted (not Trashed) from the mailbox in this history record. */
   messagesDeleted?: HistoryMessageDeletedList;
 }
-export const History = /*@__PURE__*/ S.suspend(() =>
+const History = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messagesAdded: S.optional(HistoryMessageAddedList),
     id: S.optional(S.String),
@@ -1974,7 +1965,7 @@ export const History = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "History" }) as any as S.Schema<History>;
 
 export type HistoryList = Array<History>;
-export const HistoryList = /*@__PURE__*/ S.Array(History) as any as S.Schema<HistoryList>;
+const HistoryList = /*@__PURE__*/ S.Array(History) as any as S.Schema<HistoryList>;
 
 export interface ListHistoryResponse {
   /** The ID of the mailbox's current history record. */
@@ -1984,7 +1975,7 @@ export interface ListHistoryResponse {
   /** Page token to retrieve the next page of results in the list. */
   nextPageToken?: string;
 }
-export const ListHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historyId: S.optional(S.String),
     history: S.optional(HistoryList),
@@ -1996,7 +1987,7 @@ export interface ListUsersLabelsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-export const ListUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2009,13 +2000,13 @@ export const ListUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersLabelsRequest" }) as any as S.Schema<ListUsersLabelsRequest>;
 
 export type LabelList = Array<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
+const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
 
 export interface ListLabelsResponse {
   /** List of labels. Note that each label resource only contains an `id`, `name`, `messageListVisibility`, `labelListVisibility`, and `type`. The [`labels.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/labels/get) method can fetch additional label details. */
   labels?: LabelList;
 }
-export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(LabelList),
   }),
@@ -2035,7 +2026,7 @@ export interface ListUsersMessagesRequest {
   /** Maximum number of messages to return. This field defaults to 100. The maximum allowed value for this field is 500. */
   maxResults?: number;
 }
-export const ListUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelIds: S.optional(StringList.pipe(T.Query())),
     includeSpamTrash: S.optional(S.Boolean.pipe(T.Query())),
@@ -2060,7 +2051,7 @@ export interface ListMessagesResponse {
   /** Estimated total number of results. */
   resultSizeEstimate?: number;
 }
-export const ListMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(MessageList),
     nextPageToken: S.optional(S.String),
@@ -2076,7 +2067,7 @@ export interface ListUsersSettingsCseIdentitiesRequest {
   /** Pagination token indicating which page of identities to return. If the token is not supplied, then the API will return the first page of results. */
   pageToken?: string;
 }
-export const ListUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2093,9 +2084,7 @@ export const ListUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListUsersSettingsCseIdentitiesRequest>;
 
 export type CseIdentityList = Array<CseIdentity>;
-export const CseIdentityList = /*@__PURE__*/ S.Array(
-  CseIdentity,
-) as any as S.Schema<CseIdentityList>;
+const CseIdentityList = /*@__PURE__*/ S.Array(CseIdentity) as any as S.Schema<CseIdentityList>;
 
 export interface ListCseIdentitiesResponse {
   /** One page of the list of CSE identities configured for the user. */
@@ -2103,7 +2092,7 @@ export interface ListCseIdentitiesResponse {
   /** Pagination token to be passed to a subsequent ListCseIdentities call in order to retrieve the next page of identities. If this value is not returned or is the empty string, then no further pages remain. */
   nextPageToken?: string;
 }
-export const ListCseIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCseIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cseIdentities: S.optional(CseIdentityList),
     nextPageToken: S.optional(S.String),
@@ -2120,7 +2109,7 @@ export interface ListUsersSettingsCseKeypairsRequest {
   /** The number of key pairs to return. If not provided, the page size will default to 20 entries. */
   pageSize?: number;
 }
-export const ListUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2137,7 +2126,7 @@ export const ListUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersSettingsCseKeypairsRequest>;
 
 export type CseKeyPairList = Array<CseKeyPair>;
-export const CseKeyPairList = /*@__PURE__*/ S.Array(CseKeyPair) as any as S.Schema<CseKeyPairList>;
+const CseKeyPairList = /*@__PURE__*/ S.Array(CseKeyPair) as any as S.Schema<CseKeyPairList>;
 
 export interface ListCseKeyPairsResponse {
   /** Pagination token to be passed to a subsequent ListCseKeyPairs call in order to retrieve the next page of key pairs. If this value is not returned, then no further pages remain. */
@@ -2145,7 +2134,7 @@ export interface ListCseKeyPairsResponse {
   /** One page of the list of CSE key pairs installed for the user. */
   cseKeyPairs?: CseKeyPairList;
 }
-export const ListCseKeyPairsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCseKeyPairsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     cseKeyPairs: S.optional(CseKeyPairList),
@@ -2156,7 +2145,7 @@ export interface ListUsersSettingsDelegatesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const ListUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2171,14 +2160,14 @@ export const ListUsersSettingsDelegatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersSettingsDelegatesRequest>;
 
 export type DelegateList = Array<Delegate>;
-export const DelegateList = /*@__PURE__*/ S.Array(Delegate) as any as S.Schema<DelegateList>;
+const DelegateList = /*@__PURE__*/ S.Array(Delegate) as any as S.Schema<DelegateList>;
 
 /** Response for the ListDelegates method. */
 export interface ListDelegatesResponse {
   /** List of the user's delegates (with any verification status). If an account doesn't have delegates, this field doesn't appear. */
   delegates?: DelegateList;
 }
-export const ListDelegatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDelegatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delegates: S.optional(DelegateList),
   }),
@@ -2188,7 +2177,7 @@ export interface ListUsersSettingsFiltersRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const ListUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2203,14 +2192,14 @@ export const ListUsersSettingsFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersSettingsFiltersRequest>;
 
 export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(Filter) as any as S.Schema<FilterList>;
+const FilterList = /*@__PURE__*/ S.Array(Filter) as any as S.Schema<FilterList>;
 
 /** Response for the ListFilters method. */
 export interface ListFiltersResponse {
   /** List of a user's filters. */
   filter?: FilterList;
 }
-export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(FilterList),
   }),
@@ -2220,7 +2209,7 @@ export interface ListUsersSettingsForwardingAddressesRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const ListUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2235,7 +2224,7 @@ export const ListUsersSettingsForwardingAddressesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListUsersSettingsForwardingAddressesRequest>;
 
 export type ForwardingAddressList = Array<ForwardingAddress>;
-export const ForwardingAddressList = /*@__PURE__*/ S.Array(
+const ForwardingAddressList = /*@__PURE__*/ S.Array(
   ForwardingAddress,
 ) as any as S.Schema<ForwardingAddressList>;
 
@@ -2244,7 +2233,7 @@ export interface ListForwardingAddressesResponse {
   /** List of addresses that may be used for forwarding. */
   forwardingAddresses?: ForwardingAddressList;
 }
-export const ListForwardingAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForwardingAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwardingAddresses: S.optional(ForwardingAddressList),
   }),
@@ -2256,7 +2245,7 @@ export interface ListUsersSettingsSendAsRequest {
   /** User's email address. The special value "me" can be used to indicate the authenticated user. */
   userId: string;
 }
-export const ListUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2271,14 +2260,14 @@ export const ListUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersSettingsSendAsRequest>;
 
 export type SendAsList = Array<SendAs>;
-export const SendAsList = /*@__PURE__*/ S.Array(SendAs) as any as S.Schema<SendAsList>;
+const SendAsList = /*@__PURE__*/ S.Array(SendAs) as any as S.Schema<SendAsList>;
 
 /** Response for the ListSendAs method. */
 export interface ListSendAsResponse {
   /** List of send-as aliases. */
   sendAs?: SendAsList;
 }
-export const ListSendAsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSendAsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendAs: S.optional(SendAsList),
   }),
@@ -2290,7 +2279,7 @@ export interface ListUsersSettingsSendAsSmimeInfoRequest {
   /** The email address that appears in the "From:" header for mail sent using this alias. */
   sendAsEmail: string;
 }
-export const ListUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -2306,13 +2295,13 @@ export const ListUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListUsersSettingsSendAsSmimeInfoRequest>;
 
 export type SmimeInfoList = Array<SmimeInfo>;
-export const SmimeInfoList = /*@__PURE__*/ S.Array(SmimeInfo) as any as S.Schema<SmimeInfoList>;
+const SmimeInfoList = /*@__PURE__*/ S.Array(SmimeInfo) as any as S.Schema<SmimeInfoList>;
 
 export interface ListSmimeInfoResponse {
   /** List of SmimeInfo. */
   smimeInfo?: SmimeInfoList;
 }
-export const ListSmimeInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmimeInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smimeInfo: S.optional(SmimeInfoList),
   }),
@@ -2332,7 +2321,7 @@ export interface ListUsersThreadsRequest {
   /** Page token to retrieve a specific page of results in the list. */
   pageToken?: string;
 }
-export const ListUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeSpamTrash: S.optional(S.Boolean.pipe(T.Query())),
     labelIds: S.optional(StringList.pipe(T.Query())),
@@ -2350,7 +2339,7 @@ export const ListUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersThreadsRequest" }) as any as S.Schema<ListUsersThreadsRequest>;
 
 export type ThreadList = Array<Thread>;
-export const ThreadList = /*@__PURE__*/ S.Array(Thread) as any as S.Schema<ThreadList>;
+const ThreadList = /*@__PURE__*/ S.Array(Thread) as any as S.Schema<ThreadList>;
 
 export interface ListThreadsResponse {
   /** Page token to retrieve the next page of results in the list. */
@@ -2360,7 +2349,7 @@ export interface ListThreadsResponse {
   /** List of threads. Note that each thread resource does not contain a list of `messages`. The list of `messages` for a given thread can be fetched using the [`threads.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/threads/get) method. */
   threads?: ThreadList;
 }
-export const ListThreadsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListThreadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     resultSizeEstimate: S.optional(S.Number),
@@ -2378,7 +2367,7 @@ export interface ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. You can add up to 100 labels with each update. */
   addLabelIds?: StringList;
 }
-export const ModifyMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeClassificationLabelIds: S.optional(StringList),
     addClassificationLabels: S.optional(ClassificationLabelValueList),
@@ -2395,7 +2384,7 @@ export interface ModifyUsersMessagesRequest {
   /** Request body */
   body?: ModifyMessageRequest;
 }
-export const ModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2417,7 +2406,7 @@ export interface ModifyThreadRequest {
   /** A list of IDs of labels to add to this thread. You can add up to 100 labels with each update. */
   addLabelIds?: StringList;
 }
-export const ModifyThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeLabelIds: S.optional(StringList),
     addLabelIds: S.optional(StringList),
@@ -2432,7 +2421,7 @@ export interface ModifyUsersThreadsRequest {
   /** Request body */
   body?: ModifyThreadRequest;
 }
-export const ModifyUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2450,8 +2439,6 @@ export const ModifyUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to obliterate a CSE key pair. */
 export type ObliterateCseKeyPairRequest = DisableCseKeyPairRequest;
-export const ObliterateCseKeyPairRequest = DisableCseKeyPairRequest;
-
 export interface ObliterateUsersSettingsCseKeypairsRequest {
   /** The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. */
   userId: string;
@@ -2460,7 +2447,7 @@ export interface ObliterateUsersSettingsCseKeypairsRequest {
   /** Request body */
   body?: DisableCseKeyPairRequest;
 }
-export const ObliterateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
+const ObliterateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     keyPairId: S.String.pipe(T.Label()),
@@ -2477,7 +2464,7 @@ export const ObliterateUsersSettingsCseKeypairsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ObliterateUsersSettingsCseKeypairsRequest>;
 
 export interface ObliterateUsersSettingsCseKeypairsResponse {}
-export const ObliterateUsersSettingsCseKeypairsResponse =
+const ObliterateUsersSettingsCseKeypairsResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
 
 export interface PatchUsersLabelsRequest {
@@ -2488,7 +2475,7 @@ export interface PatchUsersLabelsRequest {
   /** Request body */
   body?: Label;
 }
-export const PatchUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2510,7 +2497,7 @@ export interface PatchUsersSettingsCseIdentitiesRequest {
   /** Request body */
   body?: CseIdentity;
 }
-export const PatchUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersSettingsCseIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     emailAddress: S.String.pipe(T.Label()),
@@ -2534,7 +2521,7 @@ export interface PatchUsersSettingsSendAsRequest {
   /** Request body */
   body?: SendAs;
 }
-export const PatchUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -2556,7 +2543,7 @@ export interface SendUsersDraftsRequest {
   /** Request body */
   body?: Draft;
 }
-export const SendUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const SendUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Draft.pipe(T.HttpBody())),
@@ -2575,7 +2562,7 @@ export interface SendUsersMessagesRequest {
   /** Request body */
   body?: Message;
 }
-export const SendUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const SendUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(Message.pipe(T.HttpBody())),
@@ -2596,7 +2583,7 @@ export interface SetDefaultUsersSettingsSendAsSmimeInfoRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-export const SetDefaultUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDefaultUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendAsEmail: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2613,14 +2600,14 @@ export const SetDefaultUsersSettingsSendAsSmimeInfoRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoRequest>;
 
 export interface SetDefaultUsersSettingsSendAsSmimeInfoResponse {}
-export const SetDefaultUsersSettingsSendAsSmimeInfoResponse =
+const SetDefaultUsersSettingsSendAsSmimeInfoResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
 
 export interface StopUsersRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-export const StopUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const StopUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2633,7 +2620,7 @@ export const StopUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopUsersRequest" }) as any as S.Schema<StopUsersRequest>;
 
 export interface StopUsersResponse {}
-export const StopUsersResponse = DeleteUsersDraftsResponse as any as S.Schema<StopUsersResponse>;
+const StopUsersResponse = DeleteUsersDraftsResponse as any as S.Schema<StopUsersResponse>;
 
 export interface TrashUsersMessagesRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
@@ -2641,7 +2628,7 @@ export interface TrashUsersMessagesRequest {
   /** The ID of the message to Trash. */
   id: string;
 }
-export const TrashUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const TrashUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2662,7 +2649,7 @@ export interface TrashUsersThreadsRequest {
   /** The ID of the thread to Trash. */
   id: string;
 }
-export const TrashUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const TrashUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2681,7 +2668,7 @@ export interface UntrashUsersMessagesRequest {
   /** The ID of the message to remove from Trash. */
   id: string;
 }
-export const UntrashUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const UntrashUsersMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2702,7 +2689,7 @@ export interface UntrashUsersThreadsRequest {
   /** The user's email address. The special value `me` can be used to indicate the authenticated user. */
   userId: string;
 }
-export const UntrashUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const UntrashUsersThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2723,7 +2710,7 @@ export interface UpdateAutoForwardingUsersSettingsRequest {
   /** Request body */
   body?: AutoForwarding;
 }
-export const UpdateAutoForwardingUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutoForwardingUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(AutoForwarding.pipe(T.HttpBody())),
@@ -2744,7 +2731,7 @@ export interface UpdateImapUsersSettingsRequest {
   /** Request body */
   body?: ImapSettings;
 }
-export const UpdateImapUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateImapUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(ImapSettings.pipe(T.HttpBody())),
@@ -2765,7 +2752,7 @@ export interface UpdateLanguageUsersSettingsRequest {
   /** Request body */
   body?: LanguageSettings;
 }
-export const UpdateLanguageUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLanguageUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(LanguageSettings.pipe(T.HttpBody())),
@@ -2786,7 +2773,7 @@ export interface UpdatePopUsersSettingsRequest {
   /** Request body */
   body?: PopSettings;
 }
-export const UpdatePopUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePopUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(PopSettings.pipe(T.HttpBody())),
@@ -2809,7 +2796,7 @@ export interface UpdateUsersDraftsRequest {
   /** Request body */
   body?: Draft;
 }
-export const UpdateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersDraftsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2831,7 +2818,7 @@ export interface UpdateUsersLabelsRequest {
   /** Request body */
   body?: Label;
 }
-export const UpdateUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -2853,7 +2840,7 @@ export interface UpdateUsersSettingsSendAsRequest {
   /** Request body */
   body?: SendAs;
 }
-export const UpdateUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -2875,7 +2862,7 @@ export interface UpdateVacationUsersSettingsRequest {
   /** Request body */
   body?: VacationSettings;
 }
-export const UpdateVacationUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVacationUsersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(VacationSettings.pipe(T.HttpBody())),
@@ -2896,7 +2883,7 @@ export interface VerifyUsersSettingsSendAsRequest {
   /** The send-as alias to be verified. */
   sendAsEmail: string;
 }
-export const VerifyUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     sendAsEmail: S.String.pipe(T.Label()),
@@ -2912,14 +2899,14 @@ export const VerifyUsersSettingsSendAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifyUsersSettingsSendAsRequest>;
 
 export interface VerifyUsersSettingsSendAsResponse {}
-export const VerifyUsersSettingsSendAsResponse =
+const VerifyUsersSettingsSendAsResponse =
   BatchDeleteUsersMessagesResponse as any as S.Schema<VerifyUsersSettingsSendAsResponse>;
 
 export type WatchRequestLabelFilterActionEnum = "include" | "exclude";
-export const WatchRequestLabelFilterActionEnum = S.String;
+const WatchRequestLabelFilterActionEnum = S.String;
 
 export type WatchRequestLabelFilterBehaviorEnum = "include" | "exclude";
-export const WatchRequestLabelFilterBehaviorEnum = S.String;
+const WatchRequestLabelFilterBehaviorEnum = S.String;
 
 /** Set up or update a new push notification watch on this user's mailbox. */
 export interface WatchRequest {
@@ -2932,7 +2919,7 @@ export interface WatchRequest {
   /** Filtering behavior of `labelIds list` specified. This field replaces `label_filter_action`; if set, `label_filter_action` is ignored. */
   labelFilterBehavior?: WatchRequestLabelFilterBehaviorEnum | (string & {});
 }
-export const WatchRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelFilterAction: S.optional(WatchRequestLabelFilterActionEnum),
     labelIds: S.optional(StringList),
@@ -2947,7 +2934,7 @@ export interface WatchUsersRequest {
   /** Request body */
   body?: WatchRequest;
 }
-export const WatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     body: S.optional(WatchRequest.pipe(T.HttpBody())),
@@ -2967,7 +2954,7 @@ export interface WatchResponse {
   /** When Gmail will stop sending notifications for mailbox updates (epoch millis). Call `watch` again before this time to renew the watch. */
   expiration?: string;
 }
-export const WatchResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historyId: S.optional(S.String),
     expiration: S.optional(S.String),

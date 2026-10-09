@@ -16,7 +16,7 @@ export interface SkuDescription {
   /** SKU's name */
   name: string;
 }
-export const SkuDescription = /*@__PURE__*/ S.suspend(() =>
+const SkuDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -36,7 +36,7 @@ export interface DedicatedCloudNodePropertiesInput {
   /** Dedicated Cloud Nodes SKU's description */
   skuDescription?: SkuDescription;
 }
-export const DedicatedCloudNodePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudNodePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.String,
     nodesCount: S.Number,
@@ -61,7 +61,7 @@ export interface Sku {
   /** The tier of the SKU */
   tier?: string;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(S.String),
     description: S.optional(S.String),
@@ -73,7 +73,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags model */
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Tags>;
+const Tags = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Tags>;
 
 export interface DedicatedCloudNodesCreateOrUpdateRequest {
   /** The subscription ID. */
@@ -91,7 +91,7 @@ export interface DedicatedCloudNodesCreateOrUpdateRequest {
   /** Dedicated Cloud Nodes tags */
   tags?: Tags;
 }
-export const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -114,7 +114,7 @@ export const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
 
 /** Node status, indicates is private cloud set up on this node or not */
 export type DedicatedCloudNodePropertiesStatus = "unused" | "used";
-export const DedicatedCloudNodePropertiesStatus = S.String;
+const DedicatedCloudNodePropertiesStatus = S.String;
 
 /** Properties of dedicated cloud node */
 export interface DedicatedCloudNodeProperties {
@@ -147,7 +147,7 @@ export interface DedicatedCloudNodeProperties {
   /** VMWare Cluster Name */
   vmwareClusterName?: string;
 }
-export const DedicatedCloudNodeProperties = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudNodeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.String,
     availabilityZoneName: S.optional(S.String),
@@ -185,7 +185,7 @@ export interface DedicatedCloudNode {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const DedicatedCloudNode = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.String,
@@ -202,7 +202,7 @@ export interface DedicatedCloudServicePropertiesInput {
   /** gateway Subnet for the account. It will collect the subnet address and always treat it as /28 */
   gatewaySubnet: string;
 }
-export const DedicatedCloudServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewaySubnet: S.String,
   }),
@@ -224,7 +224,7 @@ export interface DedicatedCloudServicesCreateOrUpdateRequest {
   /** The list of tags */
   tags?: Tags;
 }
-export const DedicatedCloudServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -250,7 +250,7 @@ export type DedicatedCloudServicePropertiesIsAccountOnboarded =
   | "onBoarded"
   | "onBoardingFailed"
   | "onBoarding";
-export const DedicatedCloudServicePropertiesIsAccountOnboarded = S.String;
+const DedicatedCloudServicePropertiesIsAccountOnboarded = S.String;
 
 /** Properties of dedicated cloud service */
 export interface DedicatedCloudServiceProperties {
@@ -263,7 +263,7 @@ export interface DedicatedCloudServiceProperties {
   /** link to a service management web portal */
   serviceURL?: string;
 }
-export const DedicatedCloudServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewaySubnet: S.String,
     isAccountOnboarded: S.optional(DedicatedCloudServicePropertiesIsAccountOnboarded),
@@ -289,7 +289,7 @@ export interface DedicatedCloudService {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const DedicatedCloudService = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.String,
@@ -308,7 +308,7 @@ export interface DeleteDedicatedCloudNodeRequest {
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
 }
-export const DeleteDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -326,9 +326,7 @@ export const DeleteDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCloudNodeRequest>;
 
 export interface DeleteDedicatedCloudNodeResponse {}
-export const DeleteDedicatedCloudNodeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteDedicatedCloudNodeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDedicatedCloudNodeResponse",
 }) as any as S.Schema<DeleteDedicatedCloudNodeResponse>;
 
@@ -340,7 +338,7 @@ export interface DeleteDedicatedCloudServiceRequest {
   /** dedicated cloud service name */
   dedicatedCloudServiceName: string;
 }
-export const DeleteDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -358,7 +356,7 @@ export const DeleteDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDedicatedCloudServiceRequest>;
 
 export interface DeleteDedicatedCloudServiceResponse {}
-export const DeleteDedicatedCloudServiceResponse =
+const DeleteDedicatedCloudServiceResponse =
   DeleteDedicatedCloudNodeResponse as any as S.Schema<DeleteDedicatedCloudServiceResponse>;
 
 export interface DeleteVirtualMachineRequest {
@@ -369,7 +367,7 @@ export interface DeleteVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-export const DeleteVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -387,7 +385,7 @@ export const DeleteVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualMachineRequest>;
 
 export interface DeleteVirtualMachineResponse {}
-export const DeleteVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVirtualMachineResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVirtualMachineResponse",
 }) as any as S.Schema<DeleteVirtualMachineResponse>;
 
@@ -401,7 +399,7 @@ export interface GetCustomizationPolicyRequest {
   /** customization policy name */
   customizationPolicyName: string;
 }
-export const GetCustomizationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomizationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -426,7 +424,7 @@ export type CustomizationHostNameType =
   | "FIXED"
   | "VIRTUAL_MACHINE_NAME"
   | "CUSTOM_NAME";
-export const CustomizationHostNameType = S.String;
+const CustomizationHostNameType = S.String;
 
 /** Host name model */
 export interface CustomizationHostName {
@@ -435,7 +433,7 @@ export interface CustomizationHostName {
   /** Type of host name */
   type?: CustomizationHostNameType;
 }
-export const CustomizationHostName = /*@__PURE__*/ S.suspend(() =>
+const CustomizationHostName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(CustomizationHostNameType),
@@ -444,14 +442,14 @@ export const CustomizationHostName = /*@__PURE__*/ S.suspend(() =>
 
 /** Identity type */
 export type CustomizationIdentityType = "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
-export const CustomizationIdentityType = S.String;
+const CustomizationIdentityType = S.String;
 
 /** Windows Identity. User data customization */
 export interface CustomizationIdentityUserData {
   /** Is password predefined in customization policy */
   isPasswordPredefined?: boolean;
 }
-export const CustomizationIdentityUserData = /*@__PURE__*/ S.suspend(() =>
+const CustomizationIdentityUserData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPasswordPredefined: S.optional(S.Boolean),
   }),
@@ -469,7 +467,7 @@ export interface CustomizationIdentity {
   /** Windows Identity. User data customization */
   userData?: CustomizationIdentityUserData;
 }
-export const CustomizationIdentity = /*@__PURE__*/ S.suspend(() =>
+const CustomizationIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     hostName: S.optional(CustomizationHostName),
@@ -480,13 +478,13 @@ export const CustomizationIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of gateways */
 export type CustomizationIPSettingsGatewayList = Array<string>;
-export const CustomizationIPSettingsGatewayList = /*@__PURE__*/ S.Array(
+const CustomizationIPSettingsGatewayList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomizationIPSettingsGatewayList>;
 
 /** Customization Specification ip type */
 export type CustomizationIPAddressType = "CUSTOM" | "DHCP_IP" | "FIXED_IP" | "USER_DEFINED";
-export const CustomizationIPAddressType = S.String;
+const CustomizationIPAddressType = S.String;
 
 export interface CustomizationIPAddress {
   /** Argument when Custom ip type is selected */
@@ -496,7 +494,7 @@ export interface CustomizationIPAddress {
   /** Customization Specification ip type */
   type?: CustomizationIPAddressType;
 }
-export const CustomizationIPAddress = /*@__PURE__*/ S.suspend(() =>
+const CustomizationIPAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     argument: S.optional(S.String),
     ipAddress: S.optional(S.String),
@@ -512,7 +510,7 @@ export interface CustomizationIPSettings {
   /** Adapter subnet mask */
   subnetMask?: string;
 }
-export const CustomizationIPSettings = /*@__PURE__*/ S.suspend(() =>
+const CustomizationIPSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(CustomizationIPSettingsGatewayList),
     ip: S.optional(CustomizationIPAddress),
@@ -526,7 +524,7 @@ export interface CustomizationNicSetting {
   /** NIC mac address */
   macAddress?: string;
 }
-export const CustomizationNicSetting = /*@__PURE__*/ S.suspend(() =>
+const CustomizationNicSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapter: S.optional(CustomizationIPSettings),
     macAddress: S.optional(S.String),
@@ -535,7 +533,7 @@ export const CustomizationNicSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Network interface settings */
 export type CustomizationSpecificationNicSettingsList = Array<CustomizationNicSetting>;
-export const CustomizationSpecificationNicSettingsList = /*@__PURE__*/ S.Array(
+const CustomizationSpecificationNicSettingsList = /*@__PURE__*/ S.Array(
   CustomizationNicSetting,
 ) as any as S.Schema<CustomizationSpecificationNicSettingsList>;
 
@@ -546,7 +544,7 @@ export interface CustomizationSpecification {
   /** Network interface settings */
   nicSettings?: CustomizationSpecificationNicSettingsList;
 }
-export const CustomizationSpecification = /*@__PURE__*/ S.suspend(() =>
+const CustomizationSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(CustomizationIdentity),
     nicSettings: S.optional(CustomizationSpecificationNicSettingsList),
@@ -557,7 +555,7 @@ export const CustomizationSpecification = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of customization (Linux or Windows) */
 export type CustomizationPolicyPropertiesType = "LINUX" | "WINDOWS";
-export const CustomizationPolicyPropertiesType = S.String;
+const CustomizationPolicyPropertiesType = S.String;
 
 /** The properties of Customization policy */
 export interface CustomizationPolicyProperties {
@@ -572,7 +570,7 @@ export interface CustomizationPolicyProperties {
   /** Policy version */
   version?: string;
 }
-export const CustomizationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const CustomizationPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     privateCloudId: S.optional(S.String),
@@ -596,7 +594,7 @@ export interface CustomizationPolicy {
   properties?: CustomizationPolicyProperties;
   type?: string;
 }
-export const CustomizationPolicy = /*@__PURE__*/ S.suspend(() =>
+const CustomizationPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -614,7 +612,7 @@ export interface GetDedicatedCloudNodeRequest {
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
 }
-export const GetDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -639,7 +637,7 @@ export interface GetDedicatedCloudServiceRequest {
   /** dedicated cloud Service name */
   dedicatedCloudServiceName: string;
 }
-export const GetDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -664,7 +662,7 @@ export interface GetOperationRequest {
   /** operation id */
   operationId: string;
 }
-export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -686,7 +684,7 @@ export interface OperationError {
   /** Error's message */
   message?: string;
 }
-export const OperationError = /*@__PURE__*/ S.suspend(() =>
+const OperationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -708,7 +706,7 @@ export interface OperationResource {
   /** Operation status */
   status?: string;
 }
-export const OperationResource = /*@__PURE__*/ S.suspend(() =>
+const OperationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     error: S.optional(OperationError),
@@ -727,7 +725,7 @@ export interface GetPrivateCloudRequest {
   /** The private cloud name */
   pcName: string;
 }
-export const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -744,7 +742,7 @@ export const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of DNS servers */
 export type PrivateCloudPropertiesDnsServersList = Array<string>;
-export const PrivateCloudPropertiesDnsServersList =
+const PrivateCloudPropertiesDnsServersList =
   CustomizationIPSettingsGatewayList as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
 
 /** Properties of resource pool */
@@ -752,7 +750,7 @@ export interface ResourcePoolProperties {
   /** Hierarchical resource pool name */
   fullName?: string;
 }
-export const ResourcePoolProperties = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullName: S.optional(S.String),
   }),
@@ -773,7 +771,7 @@ export interface ResourcePool {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const ResourcePool = /*@__PURE__*/ S.suspend(() =>
+const ResourcePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     location: S.optional(S.String),
@@ -786,7 +784,7 @@ export const ResourcePool = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Resource Pools */
 export type PrivateCloudPropertiesResourcePoolsList = Array<ResourcePool>;
-export const PrivateCloudPropertiesResourcePoolsList = /*@__PURE__*/ S.Array(
+const PrivateCloudPropertiesResourcePoolsList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<PrivateCloudPropertiesResourcePoolsList>;
 
@@ -801,7 +799,7 @@ export interface VirtualDiskController {
   /** disk controller type (SCSI) */
   type?: string;
 }
-export const VirtualDiskController = /*@__PURE__*/ S.suspend(() =>
+const VirtualDiskController = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -812,7 +810,7 @@ export const VirtualDiskController = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disk Controllers */
 export type VirtualMachineTemplatePropertiesControllersList = Array<VirtualDiskController>;
-export const VirtualMachineTemplatePropertiesControllersList = /*@__PURE__*/ S.Array(
+const VirtualMachineTemplatePropertiesControllersList = /*@__PURE__*/ S.Array(
   VirtualDiskController,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesControllersList>;
 
@@ -821,7 +819,7 @@ export type VirtualDiskIndependenceMode =
   | "persistent"
   | "independent_persistent"
   | "independent_nonpersistent";
-export const VirtualDiskIndependenceMode = S.String;
+const VirtualDiskIndependenceMode = S.String;
 
 /** Virtual disk model */
 export interface VirtualDisk {
@@ -836,7 +834,7 @@ export interface VirtualDisk {
   /** Disk's display name */
   virtualDiskName?: string;
 }
-export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
+const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controllerId: S.String,
     independenceMode: VirtualDiskIndependenceMode,
@@ -848,22 +846,22 @@ export const VirtualDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks */
 export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
-export const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
+const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ S.Array(
   VirtualDisk,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
 
 /** IP address allocation method */
 export type GuestOSNICCustomizationAllocation = "static" | "dynamic";
-export const GuestOSNICCustomizationAllocation = S.String;
+const GuestOSNICCustomizationAllocation = S.String;
 
 /** List of dns servers to use */
 export type GuestOSNICCustomizationDnsServersList = Array<string>;
-export const GuestOSNICCustomizationDnsServersList =
+const GuestOSNICCustomizationDnsServersList =
   CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
 
 /** Gateway addresses assigned to nic */
 export type GuestOSNICCustomizationGatewayList = Array<string>;
-export const GuestOSNICCustomizationGatewayList =
+const GuestOSNICCustomizationGatewayList =
   CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationGatewayList>;
 
 /** Guest OS nic customization */
@@ -883,7 +881,7 @@ export interface GuestOSNICCustomization {
   /** secondary WINS server for Windows */
   secondaryWinsServer?: string;
 }
-export const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
+const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: S.optional(GuestOSNICCustomizationAllocation),
     dnsServers: S.optional(GuestOSNICCustomizationDnsServersList),
@@ -897,7 +895,7 @@ export const GuestOSNICCustomization = /*@__PURE__*/ S.suspend(() =>
 
 /** NIC ip address */
 export type VirtualNicIpAddressesList = Array<string>;
-export const VirtualNicIpAddressesList =
+const VirtualNicIpAddressesList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicIpAddressesList>;
 
 /** Properties of virtual network */
@@ -905,7 +903,7 @@ export interface VirtualNetworkProperties {
   /** The Private Cloud id */
   privateCloudId?: string;
 }
-export const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateCloudId: S.optional(S.String),
   }),
@@ -926,7 +924,7 @@ export interface VirtualNetwork {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignable: S.optional(S.Boolean),
     id: S.String,
@@ -939,7 +937,7 @@ export const VirtualNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** NIC type */
 export type VirtualNicNicType = "E1000" | "E1000E" | "PCNET32" | "VMXNET" | "VMXNET2" | "VMXNET3";
-export const VirtualNicNicType = S.String;
+const VirtualNicNicType = S.String;
 
 /** Virtual NIC model */
 export interface VirtualNic {
@@ -960,7 +958,7 @@ export interface VirtualNic {
   /** NIC name */
   virtualNicName?: string;
 }
-export const VirtualNic = /*@__PURE__*/ S.suspend(() =>
+const VirtualNic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customization: S.optional(GuestOSNICCustomization),
     ipAddresses: S.optional(VirtualNicIpAddressesList),
@@ -975,18 +973,18 @@ export const VirtualNic = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual NICs */
 export type VirtualMachineTemplatePropertiesNicsList = Array<VirtualNic>;
-export const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ S.Array(
+const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ S.Array(
   VirtualNic,
 ) as any as S.Schema<VirtualMachineTemplatePropertiesNicsList>;
 
 /** The list of VSphere networks */
 export type VirtualMachineTemplatePropertiesVSphereNetworksList = Array<string>;
-export const VirtualMachineTemplatePropertiesVSphereNetworksList =
+const VirtualMachineTemplatePropertiesVSphereNetworksList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
 
 /** The tags from VSphere */
 export type VirtualMachineTemplatePropertiesVSphereTagsList = Array<string>;
-export const VirtualMachineTemplatePropertiesVSphereTagsList =
+const VirtualMachineTemplatePropertiesVSphereTagsList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereTagsList>;
 
 /** Properties of virtual machine template */
@@ -1020,7 +1018,7 @@ export interface VirtualMachineTemplateProperties {
   /** The VMware tools version */
   vmwaretools?: string;
 }
-export const VirtualMachineTemplateProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountOfRam: S.optional(S.Number),
     controllers: S.optional(VirtualMachineTemplatePropertiesControllersList),
@@ -1054,7 +1052,7 @@ export interface VirtualMachineTemplate {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -1066,13 +1064,13 @@ export const VirtualMachineTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Machine Templates */
 export type PrivateCloudPropertiesVirtualMachineTemplatesList = Array<VirtualMachineTemplate>;
-export const PrivateCloudPropertiesVirtualMachineTemplatesList = /*@__PURE__*/ S.Array(
+const PrivateCloudPropertiesVirtualMachineTemplatesList = /*@__PURE__*/ S.Array(
   VirtualMachineTemplate,
 ) as any as S.Schema<PrivateCloudPropertiesVirtualMachineTemplatesList>;
 
 /** The list of Virtual Networks */
 export type PrivateCloudPropertiesVirtualNetworksList = Array<VirtualNetwork>;
-export const PrivateCloudPropertiesVirtualNetworksList = /*@__PURE__*/ S.Array(
+const PrivateCloudPropertiesVirtualNetworksList = /*@__PURE__*/ S.Array(
   VirtualNetwork,
 ) as any as S.Schema<PrivateCloudPropertiesVirtualNetworksList>;
 
@@ -1127,7 +1125,7 @@ export interface PrivateCloudProperties {
   /** Is vRealize Operations Manager enabled/disabled */
   vrOpsEnabled?: boolean;
 }
-export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZoneId: S.optional(S.String),
     availabilityZoneName: S.optional(S.String),
@@ -1158,7 +1156,7 @@ export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure Resource type */
 export type PrivateCloudType = "Microsoft.VMwareCloudSimple/privateClouds";
-export const PrivateCloudType = S.String;
+const PrivateCloudType = S.String;
 
 /** Private cloud model */
 export interface PrivateCloud {
@@ -1173,7 +1171,7 @@ export interface PrivateCloud {
   /** Azure Resource type */
   type?: PrivateCloudType;
 }
-export const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloud = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -1193,7 +1191,7 @@ export interface GetResourcePoolRequest {
   /** resource pool id (vsphereId) */
   resourcePoolName: string;
 }
-export const GetResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1217,7 +1215,7 @@ export interface GetVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1234,12 +1232,12 @@ export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks' Controllers */
 export type VirtualMachinePropertiesControllersList = Array<VirtualDiskController>;
-export const VirtualMachinePropertiesControllersList =
+const VirtualMachinePropertiesControllersList =
   VirtualMachineTemplatePropertiesControllersList as any as S.Schema<VirtualMachinePropertiesControllersList>;
 
 /** List of dns servers to use */
 export type GuestOSCustomizationDnsServersList = Array<string>;
-export const GuestOSCustomizationDnsServersList =
+const GuestOSCustomizationDnsServersList =
   CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSCustomizationDnsServersList>;
 
 /** Guest OS Customization properties */
@@ -1255,7 +1253,7 @@ export interface GuestOSCustomization {
   /** Username for login */
   username?: string;
 }
-export const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
+const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsServers: S.optional(GuestOSCustomizationDnsServersList),
     hostName: S.optional(S.String),
@@ -1267,16 +1265,16 @@ export const GuestOSCustomization = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks */
 export type VirtualMachinePropertiesDisksList = Array<VirtualDisk>;
-export const VirtualMachinePropertiesDisksList =
+const VirtualMachinePropertiesDisksList =
   VirtualMachineTemplatePropertiesDisksList as any as S.Schema<VirtualMachinePropertiesDisksList>;
 
 /** The Guest OS type */
 export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
-export const VirtualMachinePropertiesGuestOSType = S.String;
+const VirtualMachinePropertiesGuestOSType = S.String;
 
 /** The list of Virtual NICs */
 export type VirtualMachinePropertiesNicsList = Array<VirtualNic>;
-export const VirtualMachinePropertiesNicsList =
+const VirtualMachinePropertiesNicsList =
   VirtualMachineTemplatePropertiesNicsList as any as S.Schema<VirtualMachinePropertiesNicsList>;
 
 /** The status of Virtual machine */
@@ -1287,11 +1285,11 @@ export type VirtualMachinePropertiesStatus =
   | "updating"
   | "deallocating"
   | "deleting";
-export const VirtualMachinePropertiesStatus = S.String;
+const VirtualMachinePropertiesStatus = S.String;
 
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesVSphereNetworksList = Array<string>;
-export const VirtualMachinePropertiesVSphereNetworksList =
+const VirtualMachinePropertiesVSphereNetworksList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesVSphereNetworksList>;
 
 /** Properties of virtual machine */
@@ -1341,7 +1339,7 @@ export interface VirtualMachineProperties {
   /** VMware tools version */
   vmwaretools?: string;
 }
-export const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountOfRam: S.Number,
     controllers: S.optional(VirtualMachinePropertiesControllersList),
@@ -1383,7 +1381,7 @@ export interface VirtualMachine {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.String,
@@ -1404,7 +1402,7 @@ export interface GetVirtualMachineTemplateRequest {
   /** virtual machine template id (vsphereId) */
   virtualMachineTemplateName: string;
 }
-export const GetVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1432,7 +1430,7 @@ export interface GetVirtualNetworkRequest {
   /** virtual network id (vsphereId) */
   virtualNetworkName: string;
 }
-export const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1458,7 +1456,7 @@ export interface ListCustomizationPoliciesRequest {
   /** The filter to apply on the list operation. only type is allowed here as a filter e.g. $filter=type eq 'xxxx' */
   _filter?: string;
 }
-export const ListCustomizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1478,7 +1476,7 @@ export const ListCustomizationPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the customization policies */
 export type CustomizationPoliciesListResponseValueList = Array<CustomizationPolicy>;
-export const CustomizationPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
+const CustomizationPoliciesListResponseValueList = /*@__PURE__*/ S.Array(
   CustomizationPolicy,
 ) as any as S.Schema<CustomizationPoliciesListResponseValueList>;
 
@@ -1489,7 +1487,7 @@ export interface CustomizationPoliciesListResponse {
   /** List of the customization policies */
   value?: CustomizationPoliciesListResponseValueList;
 }
-export const CustomizationPoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomizationPoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(CustomizationPoliciesListResponseValueList),
@@ -1510,7 +1508,7 @@ export interface ListDedicatedCloudNodeByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListDedicatedCloudNodeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedCloudNodeByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1531,7 +1529,7 @@ export const ListDedicatedCloudNodeByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Results of the DedicatedCloudNode list */
 export type DedicatedCloudNodeListResponseValueList = Array<DedicatedCloudNode>;
-export const DedicatedCloudNodeListResponseValueList = /*@__PURE__*/ S.Array(
+const DedicatedCloudNodeListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudNode,
 ) as any as S.Schema<DedicatedCloudNodeListResponseValueList>;
 
@@ -1542,7 +1540,7 @@ export interface DedicatedCloudNodeListResponse {
   /** Results of the DedicatedCloudNode list */
   value?: DedicatedCloudNodeListResponseValueList;
 }
-export const DedicatedCloudNodeListResponse = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudNodeListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(DedicatedCloudNodeListResponseValueList),
@@ -1561,7 +1559,7 @@ export interface ListDedicatedCloudNodeBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListDedicatedCloudNodeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedCloudNodeBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1591,7 +1589,7 @@ export interface ListDedicatedCloudServiceByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListDedicatedCloudServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedCloudServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1612,7 +1610,7 @@ export const ListDedicatedCloudServiceByResourceGroupRequest = /*@__PURE__*/ S.s
 
 /** Results of the DedicatedCloudService list */
 export type DedicatedCloudServiceListResponseValueList = Array<DedicatedCloudService>;
-export const DedicatedCloudServiceListResponseValueList = /*@__PURE__*/ S.Array(
+const DedicatedCloudServiceListResponseValueList = /*@__PURE__*/ S.Array(
   DedicatedCloudService,
 ) as any as S.Schema<DedicatedCloudServiceListResponseValueList>;
 
@@ -1623,7 +1621,7 @@ export interface DedicatedCloudServiceListResponse {
   /** Results of the DedicatedCloudService list */
   value?: DedicatedCloudServiceListResponseValueList;
 }
-export const DedicatedCloudServiceListResponse = /*@__PURE__*/ S.suspend(() =>
+const DedicatedCloudServiceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(DedicatedCloudServiceListResponseValueList),
@@ -1642,7 +1640,7 @@ export interface ListDedicatedCloudServiceBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListDedicatedCloudServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDedicatedCloudServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1661,7 +1659,7 @@ export const ListDedicatedCloudServiceBySubscriptionRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1683,7 +1681,7 @@ export interface AvailableOperationDisplay {
   /** Name of the resource type for display purposes */
   resource?: string;
 }
-export const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     operation: S.optional(S.String),
@@ -1696,14 +1694,13 @@ export const AvailableOperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The origin of operation */
 export type AvailableOperationOrigin = "user" | "system" | "user,system";
-export const AvailableOperationOrigin = S.String;
+const AvailableOperationOrigin = S.String;
 
 /** Metric's aggregation type for e.g. (Average, Total) */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
   | "Average"
   | "Total";
-export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
-  S.String;
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType = S.String;
 
 /** Available operation display property service specification metrics item */
 export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsItem {
@@ -1718,8 +1715,8 @@ export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsIte
   /** Metric's unit */
   unit: string;
 }
-export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem =
-  /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       aggregationType:
         AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType,
@@ -1728,14 +1725,14 @@ export const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem =
       name: S.String,
       unit: S.String,
     }),
-  ).annotate({
-    identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsItem",
-  }) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
+).annotate({
+  identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsItem",
+}) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
 
 /** Metric specifications of operation */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
   Array<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
-export const AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
   /*@__PURE__*/ S.Array(
     AvailableOperationDisplayPropertyServiceSpecificationMetricsItem,
   ) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList>;
@@ -1745,23 +1742,23 @@ export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsLis
   /** Metric specifications of operation */
   metricSpecifications?: AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList;
 }
-export const AvailableOperationDisplayPropertyServiceSpecificationMetricsList =
-  /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationDisplayPropertyServiceSpecificationMetricsList = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       metricSpecifications: S.optional(
         AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList,
       ),
     }),
-  ).annotate({
-    identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsList",
-  }) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsList>;
+).annotate({
+  identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsList",
+}) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsList>;
 
 /** Available operation display property service specification model */
 export interface AvailableOperationDisplayPropertyServiceSpecification {
   /** The list of specification's service metrics */
   serviceSpecification?: AvailableOperationDisplayPropertyServiceSpecificationMetricsList;
 }
-export const AvailableOperationDisplayPropertyServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationDisplayPropertyServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(
       AvailableOperationDisplayPropertyServiceSpecificationMetricsList,
@@ -1784,7 +1781,7 @@ export interface AvailableOperation {
   /** The list of operation properties */
   properties?: AvailableOperationDisplayPropertyServiceSpecification;
 }
-export const AvailableOperation = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.optional(AvailableOperationDisplay),
     isDataAction: S.optional(S.Boolean),
@@ -1796,7 +1793,7 @@ export const AvailableOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Returns a list of available operations */
 export type AvailableOperationsListResponseValueList = Array<AvailableOperation>;
-export const AvailableOperationsListResponseValueList = /*@__PURE__*/ S.Array(
+const AvailableOperationsListResponseValueList = /*@__PURE__*/ S.Array(
   AvailableOperation,
 ) as any as S.Schema<AvailableOperationsListResponseValueList>;
 
@@ -1807,7 +1804,7 @@ export interface AvailableOperationsListResponse {
   /** Returns a list of available operations */
   value?: AvailableOperationsListResponseValueList;
 }
-export const AvailableOperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperationsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AvailableOperationsListResponseValueList),
@@ -1822,7 +1819,7 @@ export interface ListPrivateCloudsRequest {
   /** The region Id (westus, eastus) */
   regionId: string;
 }
-export const ListPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1838,7 +1835,7 @@ export const ListPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** the list of private clouds */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
-export const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
+const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudListValueList>;
 
@@ -1849,7 +1846,7 @@ export interface PrivateCloudList {
   /** the list of private clouds */
   value?: PrivateCloudListValueList;
 }
-export const PrivateCloudList = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(PrivateCloudListValueList),
@@ -1864,7 +1861,7 @@ export interface ListResourcePoolsRequest {
   /** The private cloud name */
   pcName: string;
 }
-export const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1881,7 +1878,7 @@ export const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the Resource pools list */
 export type ResourcePoolsListResponseValueList = Array<ResourcePool>;
-export const ResourcePoolsListResponseValueList =
+const ResourcePoolsListResponseValueList =
   PrivateCloudPropertiesResourcePoolsList as any as S.Schema<ResourcePoolsListResponseValueList>;
 
 /** List of resource pools response model */
@@ -1891,7 +1888,7 @@ export interface ResourcePoolsListResponse {
   /** Results of the Resource pools list */
   value?: ResourcePoolsListResponseValueList;
 }
-export const ResourcePoolsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(ResourcePoolsListResponseValueList),
@@ -1908,7 +1905,7 @@ export interface ListSkusAvailabilityRequest {
   /** sku id, if no sku is passed availability for all skus will be returned */
   skuId?: string;
 }
-export const ListSkusAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -1944,7 +1941,7 @@ export interface SkuAvailability {
   /** sku name */
   skuName?: string;
 }
-export const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
+const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dedicatedAvailabilityZoneId: S.optional(S.String),
     dedicatedAvailabilityZoneName: S.optional(S.String),
@@ -1959,7 +1956,7 @@ export const SkuAvailability = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the DedicatedPlacementGroupSkuAvailability list */
 export type SkuAvailabilityListResponseValueList = Array<SkuAvailability>;
-export const SkuAvailabilityListResponseValueList = /*@__PURE__*/ S.Array(
+const SkuAvailabilityListResponseValueList = /*@__PURE__*/ S.Array(
   SkuAvailability,
 ) as any as S.Schema<SkuAvailabilityListResponseValueList>;
 
@@ -1970,7 +1967,7 @@ export interface SkuAvailabilityListResponse {
   /** Results of the DedicatedPlacementGroupSkuAvailability list */
   value?: SkuAvailabilityListResponseValueList;
 }
-export const SkuAvailabilityListResponse = /*@__PURE__*/ S.suspend(() =>
+const SkuAvailabilityListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(SkuAvailabilityListResponseValueList),
@@ -1987,7 +1984,7 @@ export interface ListUsagesRequest {
   /** The filter to apply on the list operation. only name.value is allowed here as a filter e.g. $filter=name.value eq 'xxxx' */
   _filter?: string;
 }
-export const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -2009,7 +2006,7 @@ export interface UsageName {
   /** resource type or resource type sku name, e.g. virtualMachines */
   value?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedValue: S.optional(S.String),
     value: S.optional(S.String),
@@ -2024,7 +2021,7 @@ export type UsageUnit =
   | "Percent"
   | "CountPerSecond"
   | "BytesPerSecond";
-export const UsageUnit = S.String;
+const UsageUnit = S.String;
 
 /** Usage model */
 export interface Usage {
@@ -2037,7 +2034,7 @@ export interface Usage {
   /** The usages' unit */
   unit?: UsageUnit;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentValue: S.Number,
     limit: S.Number,
@@ -2048,7 +2045,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of usages */
 export type UsageListResponseValueList = Array<Usage>;
-export const UsageListResponseValueList = /*@__PURE__*/ S.Array(
+const UsageListResponseValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsageListResponseValueList>;
 
@@ -2059,7 +2056,7 @@ export interface UsageListResponse {
   /** The list of usages */
   value?: UsageListResponseValueList;
 }
-export const UsageListResponse = /*@__PURE__*/ S.suspend(() =>
+const UsageListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(UsageListResponseValueList),
@@ -2078,7 +2075,7 @@ export interface ListVirtualMachineByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListVirtualMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2099,7 +2096,7 @@ export const ListVirtualMachineByResourceGroupRequest = /*@__PURE__*/ S.suspend(
 
 /** Results of the VirtualMachine list */
 export type VirtualMachineListResponseValueList = Array<VirtualMachine>;
-export const VirtualMachineListResponseValueList = /*@__PURE__*/ S.Array(
+const VirtualMachineListResponseValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachineListResponseValueList>;
 
@@ -2110,7 +2107,7 @@ export interface VirtualMachineListResponse {
   /** Results of the VirtualMachine list */
   value?: VirtualMachineListResponseValueList;
 }
-export const VirtualMachineListResponse = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(VirtualMachineListResponseValueList),
@@ -2129,7 +2126,7 @@ export interface ListVirtualMachineBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-export const ListVirtualMachineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2157,7 +2154,7 @@ export interface ListVirtualMachineTemplatesRequest {
   /** Resource pool used to derive vSphere cluster which contains VM templates */
   resourcePoolName: string;
 }
-export const ListVirtualMachineTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -2177,7 +2174,7 @@ export const ListVirtualMachineTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList = Array<VirtualMachineTemplate>;
-export const VirtualMachineTemplateListResponseValueList =
+const VirtualMachineTemplateListResponseValueList =
   PrivateCloudPropertiesVirtualMachineTemplatesList as any as S.Schema<VirtualMachineTemplateListResponseValueList>;
 
 /** List of virtual machine templates */
@@ -2187,7 +2184,7 @@ export interface VirtualMachineTemplateListResponse {
   /** Results of the VM template list */
   value?: VirtualMachineTemplateListResponseValueList;
 }
-export const VirtualMachineTemplateListResponse = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineTemplateListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(VirtualMachineTemplateListResponseValueList),
@@ -2206,7 +2203,7 @@ export interface ListVirtualNetworksRequest {
   /** Resource pool used to derive vSphere cluster which contains virtual networks */
   resourcePoolName: string;
 }
-export const ListVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -2226,7 +2223,7 @@ export const ListVirtualNetworksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the VirtualNetwork list */
 export type VirtualNetworkListResponseValueList = Array<VirtualNetwork>;
-export const VirtualNetworkListResponseValueList =
+const VirtualNetworkListResponseValueList =
   PrivateCloudPropertiesVirtualNetworksList as any as S.Schema<VirtualNetworkListResponseValueList>;
 
 /** List of virtual networks */
@@ -2236,7 +2233,7 @@ export interface VirtualNetworkListResponse {
   /** Results of the VirtualNetwork list */
   value?: VirtualNetworkListResponseValueList;
 }
-export const VirtualNetworkListResponse = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(VirtualNetworkListResponseValueList),
@@ -2253,7 +2250,7 @@ export interface StartVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2271,11 +2268,11 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse =
+const StartVirtualMachineResponse =
   DeleteVirtualMachineResponse as any as S.Schema<StartVirtualMachineResponse>;
 
 export type StopVirtualMachineRequestMode = "reboot" | "suspend" | "shutdown" | "poweroff";
-export const StopVirtualMachineRequestMode = S.String;
+const StopVirtualMachineRequestMode = S.String;
 
 export interface StopVirtualMachineRequest {
   /** The subscription ID. */
@@ -2287,7 +2284,7 @@ export interface StopVirtualMachineRequest {
   /** query stop mode parameter (reboot, shutdown, etc...) */
   mode?: StopVirtualMachineRequestMode | (string & {});
 }
-export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2306,7 +2303,7 @@ export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineRequest>;
 
 export interface StopVirtualMachineResponse {}
-export const StopVirtualMachineResponse =
+const StopVirtualMachineResponse =
   DeleteVirtualMachineResponse as any as S.Schema<StopVirtualMachineResponse>;
 
 export interface UpdateDedicatedCloudNodeRequest {
@@ -2319,7 +2316,7 @@ export interface UpdateDedicatedCloudNodeRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-export const UpdateDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDedicatedCloudNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2347,7 +2344,7 @@ export interface UpdateDedicatedCloudServiceRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-export const UpdateDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDedicatedCloudServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2375,7 +2372,7 @@ export interface UpdateVirtualMachineRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-export const UpdateVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2398,7 +2395,7 @@ export type VirtualDiskInputIndependenceMode =
   | "persistent"
   | "independent_persistent"
   | "independent_nonpersistent";
-export const VirtualDiskInputIndependenceMode = S.String;
+const VirtualDiskInputIndependenceMode = S.String;
 
 /** Virtual disk model */
 export interface VirtualDiskInput {
@@ -2411,7 +2408,7 @@ export interface VirtualDiskInput {
   /** Disk's id */
   virtualDiskId?: string;
 }
-export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     controllerId: S.String,
     independenceMode: VirtualDiskInputIndependenceMode,
@@ -2422,18 +2419,18 @@ export const VirtualDiskInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual Disks */
 export type VirtualMachinePropertiesInputDisksList = Array<VirtualDiskInput>;
-export const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ S.Array(
+const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ S.Array(
   VirtualDiskInput,
 ) as any as S.Schema<VirtualMachinePropertiesInputDisksList>;
 
 /** NIC ip address */
 export type VirtualNicInputIpAddressesList = Array<string>;
-export const VirtualNicInputIpAddressesList =
+const VirtualNicInputIpAddressesList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicInputIpAddressesList>;
 
 /** Properties of virtual network */
 export interface VirtualNetworkPropertiesInput {}
-export const VirtualNetworkPropertiesInput =
+const VirtualNetworkPropertiesInput =
   DeleteVirtualMachineResponse as any as S.Schema<VirtualNetworkPropertiesInput>;
 
 /** Virtual network model */
@@ -2443,7 +2440,7 @@ export interface VirtualNetworkInput {
   /** Virtual Network properties */
   properties?: VirtualNetworkPropertiesInput;
 }
-export const VirtualNetworkInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     properties: S.optional(VirtualNetworkPropertiesInput),
@@ -2458,7 +2455,7 @@ export type VirtualNicInputNicType =
   | "VMXNET"
   | "VMXNET2"
   | "VMXNET3";
-export const VirtualNicInputNicType = S.String;
+const VirtualNicInputNicType = S.String;
 
 /** Virtual NIC model */
 export interface VirtualNicInput {
@@ -2477,7 +2474,7 @@ export interface VirtualNicInput {
   /** NIC id */
   virtualNicId?: string;
 }
-export const VirtualNicInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualNicInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customization: S.optional(GuestOSNICCustomization),
     ipAddresses: S.optional(VirtualNicInputIpAddressesList),
@@ -2491,14 +2488,12 @@ export const VirtualNicInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Virtual NICs */
 export type VirtualMachinePropertiesInputNicsList = Array<VirtualNicInput>;
-export const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ S.Array(
+const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ S.Array(
   VirtualNicInput,
 ) as any as S.Schema<VirtualMachinePropertiesInputNicsList>;
 
 /** Properties of resource pool */
 export type ResourcePoolPropertiesInput = VirtualNetworkPropertiesInput;
-export const ResourcePoolPropertiesInput = VirtualNetworkPropertiesInput;
-
 /** Resource pool model */
 export interface ResourcePoolInput {
   /** resource pool id (privateCloudId:vsphereId) */
@@ -2506,11 +2501,11 @@ export interface ResourcePoolInput {
   /** Resource pool properties */
   properties?: VirtualNetworkPropertiesInput;
 }
-export const ResourcePoolInput = VirtualNetworkInput as any as S.Schema<ResourcePoolInput>;
+const ResourcePoolInput = VirtualNetworkInput as any as S.Schema<ResourcePoolInput>;
 
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesInputVSphereNetworksList = Array<string>;
-export const VirtualMachinePropertiesInputVSphereNetworksList =
+const VirtualMachinePropertiesInputVSphereNetworksList =
   CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesInputVSphereNetworksList>;
 
 /** Properties of virtual machine */
@@ -2540,7 +2535,7 @@ export interface VirtualMachinePropertiesInput {
   /** The list of Virtual VSphere Networks */
   vSphereNetworks?: VirtualMachinePropertiesInputVSphereNetworksList;
 }
-export const VirtualMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachinePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountOfRam: S.Number,
     customization: S.optional(GuestOSCustomization),
@@ -2573,7 +2568,7 @@ export interface VirtualMachinesCreateOrUpdateRequest {
   /** The list of tags */
   tags?: Tags;
 }
-export const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

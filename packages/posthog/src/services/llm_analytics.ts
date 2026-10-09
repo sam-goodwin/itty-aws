@@ -11,7 +11,7 @@ export type { PosthogOpError, PosthogOpContext };
 export type CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap =
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -20,7 +20,7 @@ export const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFilters
 /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
 export type CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap>;
-export const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList =
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList =
   /*@__PURE__*/ S.Array(
     CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap,
   ) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList>;
@@ -31,7 +31,7 @@ export interface CreateLlmAnalyticsClusteringConfigSetEventFilterRequest {
   /** PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters. */
   event_filters: CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList;
 }
-export const CreateLlmAnalyticsClusteringConfigSetEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsClusteringConfigSetEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_filters: CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersList,
@@ -47,14 +47,14 @@ export const CreateLlmAnalyticsClusteringConfigSetEventFilterRequest = /*@__PURE
 }) as any as S.Schema<CreateLlmAnalyticsClusteringConfigSetEventFilterRequest>;
 
 export type ClusteringConfigEventFiltersItemMap = { [key: string]: unknown | undefined };
-export const ClusteringConfigEventFiltersItemMap = /*@__PURE__*/ S.Record(
+const ClusteringConfigEventFiltersItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ClusteringConfigEventFiltersItemMap>;
 
 /** PostHog property filters that scope automated clustering jobs. Empty array means no saved filters. */
 export type ClusteringConfigEventFiltersList = Array<ClusteringConfigEventFiltersItemMap>;
-export const ClusteringConfigEventFiltersList = /*@__PURE__*/ S.Array(
+const ClusteringConfigEventFiltersList = /*@__PURE__*/ S.Array(
   ClusteringConfigEventFiltersItemMap,
 ) as any as S.Schema<ClusteringConfigEventFiltersList>;
 
@@ -64,7 +64,7 @@ export interface ClusteringConfig {
   created_at: string;
   updated_at: string;
 }
-export const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
+const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event_filters: ClusteringConfigEventFiltersList,
     created_at: S.String,
@@ -74,18 +74,15 @@ export const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** * `trace` - trace * `generation` - generation * `evaluation` - evaluation */
 export type AnalysisLevelEnum = "trace" | "generation" | "evaluation";
-export const AnalysisLevelEnum = S.String;
+const AnalysisLevelEnum = S.String;
 
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-export const CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
+const CreateLlmAnalyticsClusteringJobRequestEventFiltersList =
   ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringJobRequestEventFiltersList>;
 
 export interface CreateLlmAnalyticsClusteringJobRequest {
@@ -97,7 +94,7 @@ export interface CreateLlmAnalyticsClusteringJobRequest {
   event_filters?: CreateLlmAnalyticsClusteringJobRequestEventFiltersList;
   enabled?: boolean;
 }
-export const CreateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -116,12 +113,9 @@ export const CreateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLlmAnalyticsClusteringJobRequest>;
 
 export type ClusteringJobEventFiltersItemMap = { [key: string]: unknown | undefined };
-export const ClusteringJobEventFiltersItemMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<ClusteringJobEventFiltersItemMap>;
-
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type ClusteringJobEventFiltersList = Array<ClusteringJobEventFiltersItemMap>;
-export const ClusteringJobEventFiltersList =
+const ClusteringJobEventFiltersList =
   ClusteringConfigEventFiltersList as any as S.Schema<ClusteringJobEventFiltersList>;
 
 export interface ClusteringJob {
@@ -134,7 +128,7 @@ export interface ClusteringJob {
   created_at?: string;
   updated_at?: string;
 }
-export const ClusteringJob = /*@__PURE__*/ S.suspend(() =>
+const ClusteringJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -148,30 +142,27 @@ export const ClusteringJob = /*@__PURE__*/ S.suspend(() =>
 
 /** * `none` - none * `l2` - l2 */
 export type EmbeddingNormalizationEnum = "none" | "l2";
-export const EmbeddingNormalizationEnum = S.String;
+const EmbeddingNormalizationEnum = S.String;
 
 /** * `none` - none * `umap` - umap * `pca` - pca */
 export type DimensionalityReductionMethodEnum = "none" | "umap" | "pca";
-export const DimensionalityReductionMethodEnum = S.String;
+const DimensionalityReductionMethodEnum = S.String;
 
 /** * `hdbscan` - hdbscan * `kmeans` - kmeans */
 export type ClusteringMethodEnum = "hdbscan" | "kmeans";
-export const ClusteringMethodEnum = S.String;
+const ClusteringMethodEnum = S.String;
 
 /** * `umap` - umap * `pca` - pca * `tsne` - tsne */
 export type VisualizationMethodEnum = "umap" | "pca" | "tsne";
-export const VisualizationMethodEnum = S.String;
+const VisualizationMethodEnum = S.String;
 
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
-
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
   Array<CreateLlmAnalyticsClusteringRunRequestEventFiltersItemMap>;
-export const CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
+const CreateLlmAnalyticsClusteringRunRequestEventFiltersList =
   ClusteringConfigEventFiltersList as any as S.Schema<CreateLlmAnalyticsClusteringRunRequestEventFiltersList>;
 
 export interface CreateLlmAnalyticsClusteringRunRequest {
@@ -206,7 +197,7 @@ export interface CreateLlmAnalyticsClusteringRunRequest {
   /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
   clustering_job_id?: string | null;
 }
-export const CreateLlmAnalyticsClusteringRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsClusteringRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     lookback_days: S.optional(S.Number),
@@ -235,12 +226,9 @@ export const CreateLlmAnalyticsClusteringRunRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<CreateLlmAnalyticsClusteringRunRequest>;
 
 export type ClusteringRunRequestEventFiltersItemMap = { [key: string]: unknown | undefined };
-export const ClusteringRunRequestEventFiltersItemMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<ClusteringRunRequestEventFiltersItemMap>;
-
 /** Property filters to scope which traces are included in clustering (PostHog standard format) */
 export type ClusteringRunRequestEventFiltersList = Array<ClusteringRunRequestEventFiltersItemMap>;
-export const ClusteringRunRequestEventFiltersList =
+const ClusteringRunRequestEventFiltersList =
   ClusteringConfigEventFiltersList as any as S.Schema<ClusteringRunRequestEventFiltersList>;
 
 /** Serializer for clustering workflow request parameters. */
@@ -274,7 +262,7 @@ export interface ClusteringRunRequest {
   /** If provided, use this clustering job's analysis_level and event_filters instead of request params */
   clustering_job_id?: string | null;
 }
-export const ClusteringRunRequest = /*@__PURE__*/ S.suspend(() =>
+const ClusteringRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lookback_days: S.optional(S.Number),
     max_samples: S.optional(S.Number),
@@ -299,7 +287,7 @@ export interface CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest {
   /** UUID of an existing LLM provider key (state must be 'ok') to mark as the active key for running llm_judge evaluations team-wide. */
   key_id: string;
 }
-export const CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsEvaluationConfigSetActiveKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key_id: S.String,
@@ -327,14 +315,14 @@ export type LLMProviderEnum =
   | "zeabur"
   | "system_one"
   | "openai_compatible";
-export const LLMProviderEnum = S.String;
+const LLMProviderEnum = S.String;
 
 /** * `unknown` - Unknown * `ok` - Ok * `invalid` - Invalid * `error` - Error */
 export type LLMProviderKeyStateEnum = "unknown" | "ok" | "invalid" | "error";
-export const LLMProviderKeyStateEnum = S.String;
+const LLMProviderKeyStateEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap =
+const UserBasicHedgehogConfigMap =
   ClusteringConfigEventFiltersItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
 
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
@@ -348,14 +336,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -368,7 +351,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -401,7 +384,7 @@ export interface LLMProviderKeyOutput {
   created_by?: UserBasic | null;
   last_used_at?: string | null;
 }
-export const LLMProviderKeyOutput = /*@__PURE__*/ S.suspend(() =>
+const LLMProviderKeyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     provider: S.optional(LLMProviderEnum),
@@ -427,7 +410,7 @@ export interface EvaluationConfigOutput {
   /** Timestamp when the evaluation config row was last modified. */
   updated_at: string;
 }
-export const EvaluationConfigOutput = /*@__PURE__*/ S.suspend(() =>
+const EvaluationConfigOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_provider_key: S.NullOr(LLMProviderKeyOutput),
     created_at: S.String,
@@ -437,7 +420,7 @@ export const EvaluationConfigOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `scheduled` - Scheduled * `every_n` - Every N */
 export type EvaluationReportFrequencyEnum = "scheduled" | "every_n";
-export const EvaluationReportFrequencyEnum = S.String;
+const EvaluationReportFrequencyEnum = S.String;
 
 export interface CreateLlmAnalyticsEvaluationReportRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -463,7 +446,7 @@ export interface CreateLlmAnalyticsEvaluationReportRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
-export const CreateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation: S.optional(S.String),
@@ -524,7 +507,7 @@ export interface EvaluationReport {
   created_by?: number | null;
   created_at?: string;
 }
-export const EvaluationReport = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     evaluation: S.optional(S.String),
@@ -557,7 +540,7 @@ export interface CreateLlmAnalyticsParserRecipeRequest {
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source: string;
 }
-export const CreateLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -584,7 +567,7 @@ export interface ParserRecipe {
   created_at: string;
   updated_at: string | null;
 }
-export const ParserRecipe = /*@__PURE__*/ S.suspend(() =>
+const ParserRecipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -611,7 +594,7 @@ export interface CreateLlmAnalyticsProviderKeyRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
-export const CreateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     provider: S.optional(LLMProviderEnum),
@@ -637,7 +620,7 @@ export interface CreateLlmAnalyticsProviderKeyValidationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateLlmAnalyticsProviderKeyValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsProviderKeyValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -654,12 +637,12 @@ export const CreateLlmAnalyticsProviderKeyValidationRequest = /*@__PURE__*/ S.su
 export type CreateLlmAnalyticsProviderKeyValidationResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateLlmAnalyticsProviderKeyValidationResponseBodyMap =
+const CreateLlmAnalyticsProviderKeyValidationResponseBodyMap =
   ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsProviderKeyValidationResponseBodyMap>;
 
 export type CreateLlmAnalyticsProviderKeyValidationResponse =
   CreateLlmAnalyticsProviderKeyValidationResponseBodyMap;
-export const CreateLlmAnalyticsProviderKeyValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsProviderKeyValidationResponse = /*@__PURE__*/ S.suspend(() =>
   CreateLlmAnalyticsProviderKeyValidationResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateLlmAnalyticsProviderKeyValidationResponse",
@@ -671,7 +654,7 @@ export interface CreateLlmAnalyticsReviewQueueRequest {
   /** Human-readable queue name. */
   name?: string;
 }
-export const CreateLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -698,7 +681,7 @@ export interface ReviewQueue {
   created_by?: UserBasic | null;
   team?: number;
 }
-export const ReviewQueue = /*@__PURE__*/ S.suspend(() =>
+const ReviewQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -718,7 +701,7 @@ export interface CreateLlmAnalyticsReviewQueueItemRequest {
   /** Trace ID to add to the selected review queue. */
   trace_id?: string;
 }
-export const CreateLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     queue_id: S.optional(S.String),
@@ -748,7 +731,7 @@ export interface ReviewQueueItem {
   created_by?: UserBasic | null;
   team?: number;
 }
-export const ReviewQueueItem = /*@__PURE__*/ S.suspend(() =>
+const ReviewQueueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     queue_id: S.optional(S.String),
@@ -763,7 +746,7 @@ export const ReviewQueueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** * `categorical` - categorical * `numeric` - numeric * `boolean` - boolean */
 export type ScoreDefinitionKindEnum = "categorical" | "numeric" | "boolean";
-export const ScoreDefinitionKindEnum = S.String;
+const ScoreDefinitionKindEnum = S.String;
 
 export interface CategoricalScoreOption {
   /** Stable option key. Use lowercase letters, numbers, underscores, or hyphens. */
@@ -771,26 +754,13 @@ export interface CategoricalScoreOption {
   /** Human-readable option label. */
   label?: string;
 }
-export const CategoricalScoreOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    label: S.optional(S.String),
-  }),
-).annotate({ identifier: "CategoricalScoreOption" }) as any as S.Schema<CategoricalScoreOption>;
-
 /** Ordered categorical options available to the scorer. */
 export type CategoricalScoreDefinitionConfigOptionsList = Array<CategoricalScoreOption>;
-export const CategoricalScoreDefinitionConfigOptionsList = /*@__PURE__*/ S.Array(
-  CategoricalScoreOption,
-) as any as S.Schema<CategoricalScoreDefinitionConfigOptionsList>;
-
 /** * `single` - single * `multiple` - multiple */
 export type SelectionModeEnum = "single" | "multiple";
-export const SelectionModeEnum = S.String;
-
 /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
 export type CategoricalScorePassingRuleCategoriesList = Array<string>;
-export const CategoricalScorePassingRuleCategoriesList = /*@__PURE__*/ S.Array(
+const CategoricalScorePassingRuleCategoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CategoricalScorePassingRuleCategoriesList>;
 
@@ -798,14 +768,6 @@ export interface CategoricalScorePassingRule {
   /** Passing category keys. Every returned category must be included. An empty list makes all accepted offline results fail. */
   categories: CategoricalScorePassingRuleCategoriesList;
 }
-export const CategoricalScorePassingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: CategoricalScorePassingRuleCategoriesList,
-  }),
-).annotate({
-  identifier: "CategoricalScorePassingRule",
-}) as any as S.Schema<CategoricalScorePassingRule>;
-
 export interface CategoricalScoreDefinitionConfig {
   /** Ordered categorical options available to the scorer. */
   options?: CategoricalScoreDefinitionConfigOptionsList;
@@ -818,35 +780,14 @@ export interface CategoricalScoreDefinitionConfig {
   /** Optional passing categories. Omit or set null for neutral scores. Each scorer version keeps its own rule. */
   passing_rule?: CategoricalScorePassingRule | null;
 }
-export const CategoricalScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    options: S.optional(CategoricalScoreDefinitionConfigOptionsList),
-    selection_mode: S.optional(SelectionModeEnum),
-    min_selections: S.optional(S.NullOr(S.Number)),
-    max_selections: S.optional(S.NullOr(S.Number)),
-    passing_rule: S.optional(S.NullOr(CategoricalScorePassingRule)),
-  }),
-).annotate({
-  identifier: "CategoricalScoreDefinitionConfig",
-}) as any as S.Schema<CategoricalScoreDefinitionConfig>;
-
 /** * `gte` - At or above * `lte` - At or below */
 export type NumericScorePassingRuleSerializerOperatorEnum = "gte" | "lte";
-export const NumericScorePassingRuleSerializerOperatorEnum = S.String;
-
 export interface NumericScorePassingRule {
   /** Pass at or above (gte), or at or below (lte), the threshold. * `gte` - At or above * `lte` - At or below */
   operator: NumericScorePassingRuleSerializerOperatorEnum | (string & {});
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const NumericScorePassingRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: NumericScorePassingRuleSerializerOperatorEnum,
-    threshold: S.Number,
-  }),
-).annotate({ identifier: "NumericScorePassingRule" }) as any as S.Schema<NumericScorePassingRule>;
-
 export interface NumericScoreDefinitionConfig {
   /** Optional inclusive minimum score. */
   min?: number | null;
@@ -857,17 +798,6 @@ export interface NumericScoreDefinitionConfig {
   /** Optional passing rule. Omit or set null for neutral scores. Each scorer version keeps its own rule. */
   passing_rule?: NumericScorePassingRule | null;
 }
-export const NumericScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    min: S.optional(S.NullOr(S.Number)),
-    max: S.optional(S.NullOr(S.Number)),
-    step: S.optional(S.NullOr(S.Number)),
-    passing_rule: S.optional(S.NullOr(NumericScorePassingRule)),
-  }),
-).annotate({
-  identifier: "NumericScoreDefinitionConfig",
-}) as any as S.Schema<NumericScoreDefinitionConfig>;
-
 export interface BooleanScoreDefinitionConfig {
   /** Whether true means failure. False, omitted, or null means true passes in offline evaluations. */
   true_is_failure?: boolean | null;
@@ -876,21 +806,11 @@ export interface BooleanScoreDefinitionConfig {
   /** Optional label for a false value. */
   false_label?: string;
 }
-export const BooleanScoreDefinitionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    true_is_failure: S.optional(S.NullOr(S.Boolean)),
-    true_label: S.optional(S.String),
-    false_label: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BooleanScoreDefinitionConfig",
-}) as any as S.Schema<BooleanScoreDefinitionConfig>;
-
 export type ScoreDefinitionConfig =
   | CategoricalScoreDefinitionConfig
   | NumericScoreDefinitionConfig
   | BooleanScoreDefinitionConfig;
-export const ScoreDefinitionConfig = S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
+const ScoreDefinitionConfig = S.Unknown as any as S.Schema<ScoreDefinitionConfig>;
 
 export interface CreateLlmAnalyticsScoreDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -906,7 +826,7 @@ export interface CreateLlmAnalyticsScoreDefinitionRequest {
   /** Initial immutable scorer configuration. */
   config?: ScoreDefinitionConfig;
 }
-export const CreateLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -943,7 +863,7 @@ export interface ScoreDefinition {
   updated_at?: string | null;
   team?: number;
 }
-export const ScoreDefinition = /*@__PURE__*/ S.suspend(() =>
+const ScoreDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -974,7 +894,7 @@ export interface CreateLlmAnalyticsScoreDefinitionsNewVersionRequest {
   /** Version number the caller observed before requesting this bump. If provided and it does not match the scorer's current version, the request fails with 409. Omit to skip the optimistic-concurrency check. */
   base_version?: number;
 }
-export const CreateLlmAnalyticsScoreDefinitionsNewVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsScoreDefinitionsNewVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -995,7 +915,7 @@ export const CreateLlmAnalyticsScoreDefinitionsNewVersionRequest = /*@__PURE__*/
 
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreWriteCategoricalValuesList = Array<string>;
-export const TraceReviewScoreWriteCategoricalValuesList =
+const TraceReviewScoreWriteCategoricalValuesList =
   CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreWriteCategoricalValuesList>;
 
 export interface TraceReviewScoreWrite {
@@ -1010,7 +930,7 @@ export interface TraceReviewScoreWrite {
   /** Boolean value selected for this score. */
   boolean_value?: boolean | null;
 }
-export const TraceReviewScoreWrite = /*@__PURE__*/ S.suspend(() =>
+const TraceReviewScoreWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition_id: S.optional(S.String),
     definition_version_id: S.optional(S.NullOr(S.String)),
@@ -1022,7 +942,7 @@ export const TraceReviewScoreWrite = /*@__PURE__*/ S.suspend(() =>
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type CreateLlmAnalyticsTraceReviewRequestScoresList = Array<TraceReviewScoreWrite>;
-export const CreateLlmAnalyticsTraceReviewRequestScoresList = /*@__PURE__*/ S.Array(
+const CreateLlmAnalyticsTraceReviewRequestScoresList = /*@__PURE__*/ S.Array(
   TraceReviewScoreWrite,
 ) as any as S.Schema<CreateLlmAnalyticsTraceReviewRequestScoresList>;
 
@@ -1038,7 +958,7 @@ export interface CreateLlmAnalyticsTraceReviewRequest {
   /** Optional review queue ID for queue-context saves. When provided, the matching pending queue item is cleared after the review is saved. If omitted, any pending queue item for the same trace is cleared. */
   queue_id?: string | null;
 }
-export const CreateLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     trace_id: S.optional(S.String),
@@ -1058,7 +978,7 @@ export const CreateLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Categorical option keys selected for this score. */
 export type TraceReviewScoreCategoricalValuesList = Array<string>;
-export const TraceReviewScoreCategoricalValuesList =
+const TraceReviewScoreCategoricalValuesList =
   CategoricalScorePassingRuleCategoriesList as any as S.Schema<TraceReviewScoreCategoricalValuesList>;
 
 export interface TraceReviewScore {
@@ -1084,7 +1004,7 @@ export interface TraceReviewScore {
   created_at?: string;
   updated_at?: string | null;
 }
-export const TraceReviewScore = /*@__PURE__*/ S.suspend(() =>
+const TraceReviewScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     definition_id: S.optional(S.String),
@@ -1104,7 +1024,7 @@ export const TraceReviewScore = /*@__PURE__*/ S.suspend(() =>
 
 /** Saved scorer values for this review. */
 export type TraceReviewScoresList = Array<TraceReviewScore>;
-export const TraceReviewScoresList = /*@__PURE__*/ S.Array(
+const TraceReviewScoresList = /*@__PURE__*/ S.Array(
   TraceReviewScore,
 ) as any as S.Schema<TraceReviewScoresList>;
 
@@ -1125,7 +1045,7 @@ export interface TraceReview {
   scores?: TraceReviewScoresList;
   team?: number;
 }
-export const TraceReview = /*@__PURE__*/ S.suspend(() =>
+const TraceReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     trace_id: S.optional(S.String),
@@ -1148,7 +1068,7 @@ export interface CreateLlmAnalyticsTranslateRequest {
   /** Target language code (default: 'en' for English) */
   target_language?: string;
 }
-export const CreateLlmAnalyticsTranslateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLlmAnalyticsTranslateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     text: S.optional(S.String),
@@ -1165,11 +1085,8 @@ export const CreateLlmAnalyticsTranslateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLlmAnalyticsTranslateRequest>;
 
 export type CreateLlmAnalyticsTranslateResponseBodyMap = { [key: string]: unknown | undefined };
-export const CreateLlmAnalyticsTranslateResponseBodyMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<CreateLlmAnalyticsTranslateResponseBodyMap>;
-
 export type CreateLlmAnalyticsTranslateResponse = CreateLlmAnalyticsTranslateResponseBodyMap;
-export const CreateLlmAnalyticsTranslateResponse =
+const CreateLlmAnalyticsTranslateResponse =
   CreateLlmAnalyticsProviderKeyValidationResponse as any as S.Schema<CreateLlmAnalyticsTranslateResponse>;
 
 export interface GetLlmAnalyticsClusteringJobRequest {
@@ -1178,7 +1095,7 @@ export interface GetLlmAnalyticsClusteringJobRequest {
   /** A UUID string identifying this clustering job. */
   id: string;
 }
-export const GetLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1197,7 +1114,7 @@ export interface GetLlmAnalyticsEvaluationConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetLlmAnalyticsEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1217,7 +1134,7 @@ export interface GetLlmAnalyticsEvaluationReportRequest {
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
-export const GetLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1244,7 +1161,7 @@ export type GetLlmAnalyticsModelRequestProvider =
   | "system_one"
   | "together_ai"
   | "zeabur";
-export const GetLlmAnalyticsModelRequestProvider = S.String;
+const GetLlmAnalyticsModelRequestProvider = S.String;
 
 export interface GetLlmAnalyticsModelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1254,7 +1171,7 @@ export interface GetLlmAnalyticsModelRequest {
   /** LLM provider to list models for. Omit it to list every supported provider and its models in one call. */
   provider?: GetLlmAnalyticsModelRequestProvider | (string & {});
 }
-export const GetLlmAnalyticsModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key_id: S.optional(S.String.pipe(T.Query())),
@@ -1272,7 +1189,7 @@ export interface LLMModelInfo {
   /** Provider this model belongs to. Pass this value together with `id` when configuring an llm_judge evaluation. */
   provider: string;
 }
-export const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
+const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     provider: S.String,
@@ -1281,7 +1198,7 @@ export const LLMModelInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Models supported for the requested provider, or for every supported provider when `provider` is omitted. */
 export type LLMModelsListResponseModelsList = Array<LLMModelInfo>;
-export const LLMModelsListResponseModelsList = /*@__PURE__*/ S.Array(
+const LLMModelsListResponseModelsList = /*@__PURE__*/ S.Array(
   LLMModelInfo,
 ) as any as S.Schema<LLMModelsListResponseModelsList>;
 
@@ -1293,7 +1210,7 @@ export interface LLMProviderModelsSummary {
   /** True when this provider's models can only be listed by passing `key_id` for one of the team's provider keys. PostHog funds no models for it, so `model_count` is 0 until a key is supplied. */
   requires_provider_key: boolean;
 }
-export const LLMProviderModelsSummary = /*@__PURE__*/ S.suspend(() =>
+const LLMProviderModelsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
     model_count: S.Number,
@@ -1303,7 +1220,7 @@ export const LLMProviderModelsSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
 export type LLMModelsListResponseProvidersList = Array<LLMProviderModelsSummary>;
-export const LLMModelsListResponseProvidersList = /*@__PURE__*/ S.Array(
+const LLMModelsListResponseProvidersList = /*@__PURE__*/ S.Array(
   LLMProviderModelsSummary,
 ) as any as S.Schema<LLMModelsListResponseProvidersList>;
 
@@ -1313,7 +1230,7 @@ export interface LLMModelsListResponse {
   /** One entry per provider covered by this response. Read it to tell an unsupported provider apart from a provider whose models need a team key before they can be listed. */
   providers: LLMModelsListResponseProvidersList;
 }
-export const LLMModelsListResponse = /*@__PURE__*/ S.suspend(() =>
+const LLMModelsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     models: LLMModelsListResponseModelsList,
     providers: LLMModelsListResponseProvidersList,
@@ -1326,7 +1243,7 @@ export interface GetLlmAnalyticsParserRecipeRequest {
   /** A UUID string identifying this parser recipe. */
   id: string;
 }
-export const GetLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsParserRecipeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1347,7 +1264,7 @@ export interface GetLlmAnalyticsProviderKeyRequest {
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
-export const GetLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1368,7 +1285,7 @@ export interface GetLlmAnalyticsProviderKeysDependentConfigRequest {
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
-export const GetLlmAnalyticsProviderKeysDependentConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsProviderKeysDependentConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1389,7 +1306,7 @@ export interface GetLlmAnalyticsReviewQueueRequest {
   /** A UUID string identifying this review queue. */
   id: string;
 }
-export const GetLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsReviewQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1410,7 +1327,7 @@ export interface GetLlmAnalyticsReviewQueueItemRequest {
   /** A UUID string identifying this review queue item. */
   id: string;
 }
-export const GetLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsReviewQueueItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1431,7 +1348,7 @@ export interface GetLlmAnalyticsScoreDefinitionRequest {
   /** A UUID string identifying this score definition. */
   id: string;
 }
-export const GetLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsScoreDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1454,7 +1371,7 @@ export interface GetLlmAnalyticsScoreDefinitionsVersionRequest {
   /** Immutable version UUID. */
   version_id: string;
 }
-export const GetLlmAnalyticsScoreDefinitionsVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsScoreDefinitionsVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1486,7 +1403,7 @@ export interface ScoreDefinitionVersion {
   /** User who created this version. */
   created_by: UserBasic | null;
 }
-export const ScoreDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
+const ScoreDefinitionVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     definition_id: S.String,
@@ -1504,7 +1421,7 @@ export interface GetLlmAnalyticsTraceReviewRequest {
   /** A UUID string identifying this trace review. */
   id: string;
 }
-export const GetLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLlmAnalyticsTraceReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1523,7 +1440,7 @@ export interface ListLlmAnalyticsClusteringConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListLlmAnalyticsClusteringConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsClusteringConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1545,7 +1462,7 @@ export interface ListLlmAnalyticsClusteringJobsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLlmAnalyticsClusteringJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsClusteringJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1562,7 +1479,7 @@ export const ListLlmAnalyticsClusteringJobsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListLlmAnalyticsClusteringJobsRequest>;
 
 export type PaginatedClusteringJobListResultsList = Array<ClusteringJob>;
-export const PaginatedClusteringJobListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedClusteringJobListResultsList = /*@__PURE__*/ S.Array(
   ClusteringJob,
 ) as any as S.Schema<PaginatedClusteringJobListResultsList>;
 
@@ -1572,7 +1489,7 @@ export interface PaginatedClusteringJobList {
   previous?: string | null;
   results?: PaginatedClusteringJobListResultsList;
 }
-export const PaginatedClusteringJobList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedClusteringJobList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1593,7 +1510,7 @@ export interface ListLlmAnalyticsEvaluationReportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLlmAnalyticsEvaluationReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsEvaluationReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     evaluation: S.optional(S.String.pipe(T.Query())),
@@ -1611,7 +1528,7 @@ export const ListLlmAnalyticsEvaluationReportsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListLlmAnalyticsEvaluationReportsRequest>;
 
 export type PaginatedEvaluationReportListResultsList = Array<EvaluationReport>;
-export const PaginatedEvaluationReportListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEvaluationReportListResultsList = /*@__PURE__*/ S.Array(
   EvaluationReport,
 ) as any as S.Schema<PaginatedEvaluationReportListResultsList>;
 
@@ -1621,7 +1538,7 @@ export interface PaginatedEvaluationReportList {
   previous?: string | null;
   results?: PaginatedEvaluationReportListResultsList;
 }
-export const PaginatedEvaluationReportList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEvaluationReportList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1642,7 +1559,7 @@ export interface ListLlmAnalyticsEvaluationReportsRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLlmAnalyticsEvaluationReportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsEvaluationReportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1661,7 +1578,7 @@ export const ListLlmAnalyticsEvaluationReportsRunsRequest = /*@__PURE__*/ S.susp
 
 /** * `generation` - Generation * `trace` - Trace * `session` - Session */
 export type EvaluationTargetEnum = "generation" | "trace" | "session";
-export const EvaluationTargetEnum = S.String;
+const EvaluationTargetEnum = S.String;
 
 export interface EvaluationReportSection {
   /** Agent-generated section heading. */
@@ -1669,7 +1586,7 @@ export interface EvaluationReportSection {
   /** Markdown narrative for this section. */
   content?: string;
 }
-export const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     content: S.optional(S.String),
@@ -1678,7 +1595,7 @@ export const EvaluationReportSection = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered narrative sections in the report. */
 export type EvaluationReportRunContentSectionsList = Array<EvaluationReportSection>;
-export const EvaluationReportRunContentSectionsList = /*@__PURE__*/ S.Array(
+const EvaluationReportRunContentSectionsList = /*@__PURE__*/ S.Array(
   EvaluationReportSection,
 ) as any as S.Schema<EvaluationReportRunContentSectionsList>;
 
@@ -1692,7 +1609,7 @@ export interface EvaluationReportCitation {
   /** Short explanation of why this example is cited. */
   reason?: string;
 }
-export const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation_id: S.optional(S.String),
     trace_id: S.optional(S.String),
@@ -1703,13 +1620,13 @@ export const EvaluationReportCitation = /*@__PURE__*/ S.suspend(() =>
 
 /** References grounding findings in the report. */
 export type EvaluationReportRunContentCitationsList = Array<EvaluationReportCitation>;
-export const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
+const EvaluationReportRunContentCitationsList = /*@__PURE__*/ S.Array(
   EvaluationReportCitation,
 ) as any as S.Schema<EvaluationReportRunContentCitationsList>;
 
 /** * `completed` - completed * `metrics_unavailable` - metrics_unavailable */
 export type GenerationStatusEnum = "completed" | "metrics_unavailable";
-export const GenerationStatusEnum = S.String;
+const GenerationStatusEnum = S.String;
 
 export interface EvaluationReportMetricsOutputConfigOptionsItem {
   /** Stable category key. */
@@ -1717,7 +1634,7 @@ export interface EvaluationReportMetricsOutputConfigOptionsItem {
   /** Category display label. */
   label: string;
 }
-export const EvaluationReportMetricsOutputConfigOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportMetricsOutputConfigOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     label: S.String,
@@ -1729,57 +1646,33 @@ export const EvaluationReportMetricsOutputConfigOptionsItem = /*@__PURE__*/ S.su
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type EvaluationReportMetricsOutputConfigOptionsList =
   Array<EvaluationReportMetricsOutputConfigOptionsItem>;
-export const EvaluationReportMetricsOutputConfigOptionsList = /*@__PURE__*/ S.Array(
+const EvaluationReportMetricsOutputConfigOptionsList = /*@__PURE__*/ S.Array(
   EvaluationReportMetricsOutputConfigOptionsItem,
 ) as any as S.Schema<EvaluationReportMetricsOutputConfigOptionsList>;
 
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type EvaluationReportMetricsOutputConfigSelectionMode = "single" | "multiple";
-export const EvaluationReportMetricsOutputConfigSelectionMode = S.String;
+const EvaluationReportMetricsOutputConfigSelectionMode = S.String;
 
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type EvaluationReportMetricsOutputConfigPassingRuleCase0Operator = "gte" | "lte";
-export const EvaluationReportMetricsOutputConfigPassingRuleCase0Operator = S.String;
-
 export interface EvaluationReportMetricsOutputConfigPassingRuleCase0 {
   /** Pass at or above (gte), or at or below (lte), the threshold. */
   operator: EvaluationReportMetricsOutputConfigPassingRuleCase0Operator;
   /** Finite passing threshold within any configured score bounds. */
   threshold: number;
 }
-export const EvaluationReportMetricsOutputConfigPassingRuleCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: EvaluationReportMetricsOutputConfigPassingRuleCase0Operator,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "EvaluationReportMetricsOutputConfigPassingRuleCase0",
-}) as any as S.Schema<EvaluationReportMetricsOutputConfigPassingRuleCase0>;
-
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type EvaluationReportMetricsOutputConfigPassingRuleCase1CategoriesList = Array<string>;
-export const EvaluationReportMetricsOutputConfigPassingRuleCase1CategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EvaluationReportMetricsOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface EvaluationReportMetricsOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: EvaluationReportMetricsOutputConfigPassingRuleCase1CategoriesList;
 }
-export const EvaluationReportMetricsOutputConfigPassingRuleCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: EvaluationReportMetricsOutputConfigPassingRuleCase1CategoriesList,
-  }),
-).annotate({
-  identifier: "EvaluationReportMetricsOutputConfigPassingRuleCase1",
-}) as any as S.Schema<EvaluationReportMetricsOutputConfigPassingRuleCase1>;
-
 /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
 export type EvaluationReportMetricsOutputConfigPassingRule =
   | EvaluationReportMetricsOutputConfigPassingRuleCase0
   | EvaluationReportMetricsOutputConfigPassingRuleCase1;
-export const EvaluationReportMetricsOutputConfigPassingRule =
+const EvaluationReportMetricsOutputConfigPassingRule =
   S.Unknown as any as S.Schema<EvaluationReportMetricsOutputConfigPassingRule>;
 
 /** Output configuration and passing rule used for both report periods. */
@@ -1801,7 +1694,7 @@ export interface EvaluationReportMetricsOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: EvaluationReportMetricsOutputConfigPassingRule | null;
 }
-export const EvaluationReportMetricsOutputConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportMetricsOutputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allows_na: S.optional(S.Boolean),
     true_is_failure: S.optional(S.Boolean),
@@ -1818,28 +1711,28 @@ export const EvaluationReportMetricsOutputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical * `sentiment` - Sentiment */
 export type OutputTypeEnum = "boolean" | "numeric" | "categorical" | "sentiment";
-export const OutputTypeEnum = S.String;
+const OutputTypeEnum = S.String;
 
 /** Count by output-specific result label, such as pass/fail/N/A or positive/neutral/negative. */
 export type EvaluationReportMetricsResultCountsMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsResultCountsMap = /*@__PURE__*/ S.Record(
+const EvaluationReportMetricsResultCountsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<EvaluationReportMetricsResultCountsMap>;
 
 /** Percentage by output-specific result label, from 0 to 100. */
 export type EvaluationReportMetricsResultRatesMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsResultRatesMap =
+const EvaluationReportMetricsResultRatesMap =
   EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsResultRatesMap>;
 
 /** Count by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultCountsMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsPreviousResultCountsMap =
+const EvaluationReportMetricsPreviousResultCountsMap =
   EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultCountsMap>;
 
 /** Percentage by result label for the previous period, or null when unavailable. */
 export type EvaluationReportMetricsPreviousResultRatesMap = { [key: string]: number | undefined };
-export const EvaluationReportMetricsPreviousResultRatesMap =
+const EvaluationReportMetricsPreviousResultRatesMap =
   EvaluationReportMetricsResultCountsMap as any as S.Schema<EvaluationReportMetricsPreviousResultRatesMap>;
 
 export interface EvaluationReportMetrics {
@@ -1868,7 +1761,7 @@ export interface EvaluationReportMetrics {
   /** Pass percentage for boolean, numeric, or categorical results in the previous period, or null when unavailable. */
   previous_pass_rate?: number | null;
 }
-export const EvaluationReportMetrics = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output_config: S.optional(EvaluationReportMetricsOutputConfig),
     output_type: S.optional(OutputTypeEnum),
@@ -1899,7 +1792,7 @@ export interface EvaluationReportRunContent {
   /** Structured metrics for completed reports, or null when metrics were temporarily unavailable. */
   metrics?: EvaluationReportMetrics | null;
 }
-export const EvaluationReportRunContent = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportRunContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluation_target: S.optional(EvaluationTargetEnum),
     title: S.optional(S.String),
@@ -1919,11 +1812,11 @@ export type EvaluationReportRunDeliveryStatusEnum =
   | "delivered"
   | "partial_failure"
   | "failed";
-export const EvaluationReportRunDeliveryStatusEnum = S.String;
+const EvaluationReportRunDeliveryStatusEnum = S.String;
 
 /** Delivery error messages. Empty when all configured deliveries succeeded. */
 export type EvaluationReportRunDeliveryErrorsList = Array<string>;
-export const EvaluationReportRunDeliveryErrorsList =
+const EvaluationReportRunDeliveryErrorsList =
   CategoricalScorePassingRuleCategoriesList as any as S.Schema<EvaluationReportRunDeliveryErrorsList>;
 
 export interface EvaluationReportRun {
@@ -1946,7 +1839,7 @@ export interface EvaluationReportRun {
   /** When this report run was created. */
   created_at?: string;
 }
-export const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     report: S.optional(S.String),
@@ -1961,7 +1854,7 @@ export const EvaluationReportRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationReportRun" }) as any as S.Schema<EvaluationReportRun>;
 
 export type PaginatedEvaluationReportRunListResultsList = Array<EvaluationReportRun>;
-export const PaginatedEvaluationReportRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEvaluationReportRunListResultsList = /*@__PURE__*/ S.Array(
   EvaluationReportRun,
 ) as any as S.Schema<PaginatedEvaluationReportRunListResultsList>;
 
@@ -1971,7 +1864,7 @@ export interface PaginatedEvaluationReportRunList {
   previous?: string | null;
   results?: PaginatedEvaluationReportRunListResultsList;
 }
-export const PaginatedEvaluationReportRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEvaluationReportRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -1990,7 +1883,7 @@ export interface ListLlmAnalyticsParserRecipesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLlmAnalyticsParserRecipesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsParserRecipesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2007,7 +1900,7 @@ export const ListLlmAnalyticsParserRecipesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListLlmAnalyticsParserRecipesRequest>;
 
 export type PaginatedParserRecipeListResultsList = Array<ParserRecipe>;
-export const PaginatedParserRecipeListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedParserRecipeListResultsList = /*@__PURE__*/ S.Array(
   ParserRecipe,
 ) as any as S.Schema<PaginatedParserRecipeListResultsList>;
 
@@ -2017,7 +1910,7 @@ export interface PaginatedParserRecipeList {
   previous?: string | null;
   results: PaginatedParserRecipeListResultsList;
 }
-export const PaginatedParserRecipeList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedParserRecipeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2036,7 +1929,7 @@ export interface ListLlmAnalyticsProviderKeysRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListLlmAnalyticsProviderKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsProviderKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2053,7 +1946,7 @@ export const ListLlmAnalyticsProviderKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLlmAnalyticsProviderKeysRequest>;
 
 export type PaginatedLLMProviderKeyListOutputResultsList = Array<LLMProviderKeyOutput>;
-export const PaginatedLLMProviderKeyListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedLLMProviderKeyListOutputResultsList = /*@__PURE__*/ S.Array(
   LLMProviderKeyOutput,
 ) as any as S.Schema<PaginatedLLMProviderKeyListOutputResultsList>;
 
@@ -2063,7 +1956,7 @@ export interface PaginatedLLMProviderKeyListOutput {
   previous?: string | null;
   results?: PaginatedLLMProviderKeyListOutputResultsList;
 }
-export const PaginatedLLMProviderKeyListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLLMProviderKeyListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2092,7 +1985,7 @@ export interface ListLlmAnalyticsReviewQueueItemsRequest {
   /** Filter by multiple trace IDs separated by commas. */
   trace_id__in?: string;
 }
-export const ListLlmAnalyticsReviewQueueItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsReviewQueueItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2114,7 +2007,7 @@ export const ListLlmAnalyticsReviewQueueItemsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListLlmAnalyticsReviewQueueItemsRequest>;
 
 export type PaginatedReviewQueueItemListResultsList = Array<ReviewQueueItem>;
-export const PaginatedReviewQueueItemListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReviewQueueItemListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueueItem,
 ) as any as S.Schema<PaginatedReviewQueueItemListResultsList>;
 
@@ -2124,7 +2017,7 @@ export interface PaginatedReviewQueueItemList {
   previous?: string | null;
   results?: PaginatedReviewQueueItemListResultsList;
 }
-export const PaginatedReviewQueueItemList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReviewQueueItemList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2148,7 +2041,7 @@ export interface ListLlmAnalyticsReviewQueuesRequest {
   /** Search review queue names. */
   search?: string;
 }
-export const ListLlmAnalyticsReviewQueuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsReviewQueuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2168,7 +2061,7 @@ export const ListLlmAnalyticsReviewQueuesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLlmAnalyticsReviewQueuesRequest>;
 
 export type PaginatedReviewQueueListResultsList = Array<ReviewQueue>;
-export const PaginatedReviewQueueListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReviewQueueListResultsList = /*@__PURE__*/ S.Array(
   ReviewQueue,
 ) as any as S.Schema<PaginatedReviewQueueListResultsList>;
 
@@ -2178,7 +2071,7 @@ export interface PaginatedReviewQueueList {
   previous?: string | null;
   results?: PaginatedReviewQueueListResultsList;
 }
-export const PaginatedReviewQueueList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReviewQueueList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2203,7 +2096,7 @@ export interface ListLlmAnalyticsScoreDefinitionsRequest {
   /** Search scorers by name or description. */
   search?: string;
 }
-export const ListLlmAnalyticsScoreDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsScoreDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -2224,7 +2117,7 @@ export const ListLlmAnalyticsScoreDefinitionsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListLlmAnalyticsScoreDefinitionsRequest>;
 
 export type PaginatedScoreDefinitionListResultsList = Array<ScoreDefinition>;
-export const PaginatedScoreDefinitionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedScoreDefinitionListResultsList = /*@__PURE__*/ S.Array(
   ScoreDefinition,
 ) as any as S.Schema<PaginatedScoreDefinitionListResultsList>;
 
@@ -2234,7 +2127,7 @@ export interface PaginatedScoreDefinitionList {
   previous?: string | null;
   results?: PaginatedScoreDefinitionListResultsList;
 }
-export const PaginatedScoreDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedScoreDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2255,7 +2148,7 @@ export interface ListLlmAnalyticsScoreDefinitionsVersionsRequest {
   /** Maximum versions to return. */
   limit?: number;
 }
-export const ListLlmAnalyticsScoreDefinitionsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsScoreDefinitionsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2274,7 +2167,7 @@ export const ListLlmAnalyticsScoreDefinitionsVersionsRequest = /*@__PURE__*/ S.s
 
 /** Versions on this page, newest first. */
 export type ScoreDefinitionVersionPageResultsList = Array<ScoreDefinitionVersion>;
-export const ScoreDefinitionVersionPageResultsList = /*@__PURE__*/ S.Array(
+const ScoreDefinitionVersionPageResultsList = /*@__PURE__*/ S.Array(
   ScoreDefinitionVersion,
 ) as any as S.Schema<ScoreDefinitionVersionPageResultsList>;
 
@@ -2286,7 +2179,7 @@ export interface ScoreDefinitionVersionPage {
   /** Versions on this page, newest first. */
   results: ScoreDefinitionVersionPageResultsList;
 }
-export const ScoreDefinitionVersionPage = /*@__PURE__*/ S.suspend(() =>
+const ScoreDefinitionVersionPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next_cursor: S.NullOr(S.String),
@@ -2316,7 +2209,7 @@ export interface ListLlmAnalyticsTraceReviewsRequest {
   /** Filter by multiple trace IDs separated by commas. */
   trace_id__in?: string;
 }
-export const ListLlmAnalyticsTraceReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLlmAnalyticsTraceReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     definition_id: S.optional(S.String.pipe(T.Query())),
@@ -2339,7 +2232,7 @@ export const ListLlmAnalyticsTraceReviewsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLlmAnalyticsTraceReviewsRequest>;
 
 export type PaginatedTraceReviewListResultsList = Array<TraceReview>;
-export const PaginatedTraceReviewListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedTraceReviewListResultsList = /*@__PURE__*/ S.Array(
   TraceReview,
 ) as any as S.Schema<PaginatedTraceReviewListResultsList>;
 
@@ -2349,7 +2242,7 @@ export interface PaginatedTraceReviewList {
   previous?: string | null;
   results?: PaginatedTraceReviewListResultsList;
 }
-export const PaginatedTraceReviewList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedTraceReviewList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2364,7 +2257,7 @@ export interface LlmAnalyticsClusteringJobsDestroyRequest {
   /** A UUID string identifying this clustering job. */
   id: string;
 }
-export const LlmAnalyticsClusteringJobsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsClusteringJobsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2380,7 +2273,7 @@ export const LlmAnalyticsClusteringJobsDestroyRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LlmAnalyticsClusteringJobsDestroyRequest>;
 
 export interface LlmAnalyticsClusteringJobsDestroyResponse {}
-export const LlmAnalyticsClusteringJobsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsClusteringJobsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "LlmAnalyticsClusteringJobsDestroyResponse",
@@ -2392,7 +2285,7 @@ export interface LlmAnalyticsEvaluationReportsDestroyRequest {
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
-export const LlmAnalyticsEvaluationReportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsEvaluationReportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2408,7 +2301,7 @@ export const LlmAnalyticsEvaluationReportsDestroyRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyRequest>;
 
 export interface LlmAnalyticsEvaluationReportsDestroyResponse {}
-export const LlmAnalyticsEvaluationReportsDestroyResponse =
+const LlmAnalyticsEvaluationReportsDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsDestroyResponse>;
 
 export interface LlmAnalyticsEvaluationReportsGenerateCreateRequest {
@@ -2417,7 +2310,7 @@ export interface LlmAnalyticsEvaluationReportsGenerateCreateRequest {
   /** A UUID string identifying this evaluation report. */
   id: string;
 }
-export const LlmAnalyticsEvaluationReportsGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsEvaluationReportsGenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2433,7 +2326,7 @@ export const LlmAnalyticsEvaluationReportsGenerateCreateRequest = /*@__PURE__*/ 
 }) as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateRequest>;
 
 export interface LlmAnalyticsEvaluationReportsGenerateCreateResponse {}
-export const LlmAnalyticsEvaluationReportsGenerateCreateResponse =
+const LlmAnalyticsEvaluationReportsGenerateCreateResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsEvaluationReportsGenerateCreateResponse>;
 
 export interface LlmAnalyticsParserRecipesDestroyRequest {
@@ -2442,7 +2335,7 @@ export interface LlmAnalyticsParserRecipesDestroyRequest {
   /** A UUID string identifying this parser recipe. */
   id: string;
 }
-export const LlmAnalyticsParserRecipesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsParserRecipesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2458,7 +2351,7 @@ export const LlmAnalyticsParserRecipesDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<LlmAnalyticsParserRecipesDestroyRequest>;
 
 export interface LlmAnalyticsParserRecipesDestroyResponse {}
-export const LlmAnalyticsParserRecipesDestroyResponse =
+const LlmAnalyticsParserRecipesDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsParserRecipesDestroyResponse>;
 
 export interface LlmAnalyticsProviderKeysDestroyRequest {
@@ -2467,7 +2360,7 @@ export interface LlmAnalyticsProviderKeysDestroyRequest {
   /** A UUID string identifying this llm provider key. */
   id: string;
 }
-export const LlmAnalyticsProviderKeysDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsProviderKeysDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2483,7 +2376,7 @@ export const LlmAnalyticsProviderKeysDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<LlmAnalyticsProviderKeysDestroyRequest>;
 
 export interface LlmAnalyticsProviderKeysDestroyResponse {}
-export const LlmAnalyticsProviderKeysDestroyResponse =
+const LlmAnalyticsProviderKeysDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsProviderKeysDestroyResponse>;
 
 export interface LlmAnalyticsProviderKeysValidateCreateRequest {
@@ -2504,7 +2397,7 @@ export interface LlmAnalyticsProviderKeysValidateCreateRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
-export const LlmAnalyticsProviderKeysValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsProviderKeysValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2533,7 +2426,7 @@ export interface LlmAnalyticsTraceReviewsDestroyRequest {
   /** A UUID string identifying this trace review. */
   id: string;
 }
-export const LlmAnalyticsTraceReviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const LlmAnalyticsTraceReviewsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2549,7 +2442,7 @@ export const LlmAnalyticsTraceReviewsDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<LlmAnalyticsTraceReviewsDestroyRequest>;
 
 export interface LlmAnalyticsTraceReviewsDestroyResponse {}
-export const LlmAnalyticsTraceReviewsDestroyResponse =
+const LlmAnalyticsTraceReviewsDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<LlmAnalyticsTraceReviewsDestroyResponse>;
 
 export interface ReviewLlmAnalyticsQueueItemsDestroyRequest {
@@ -2558,7 +2451,7 @@ export interface ReviewLlmAnalyticsQueueItemsDestroyRequest {
   /** A UUID string identifying this review queue item. */
   id: string;
 }
-export const ReviewLlmAnalyticsQueueItemsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewLlmAnalyticsQueueItemsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2574,7 +2467,7 @@ export const ReviewLlmAnalyticsQueueItemsDestroyRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyRequest>;
 
 export interface ReviewLlmAnalyticsQueueItemsDestroyResponse {}
-export const ReviewLlmAnalyticsQueueItemsDestroyResponse =
+const ReviewLlmAnalyticsQueueItemsDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueueItemsDestroyResponse>;
 
 export interface ReviewLlmAnalyticsQueuesDestroyRequest {
@@ -2583,7 +2476,7 @@ export interface ReviewLlmAnalyticsQueuesDestroyRequest {
   /** A UUID string identifying this review queue. */
   id: string;
 }
-export const ReviewLlmAnalyticsQueuesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewLlmAnalyticsQueuesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2599,19 +2492,16 @@ export const ReviewLlmAnalyticsQueuesDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyRequest>;
 
 export interface ReviewLlmAnalyticsQueuesDestroyResponse {}
-export const ReviewLlmAnalyticsQueuesDestroyResponse =
+const ReviewLlmAnalyticsQueuesDestroyResponse =
   LlmAnalyticsClusteringJobsDestroyResponse as any as S.Schema<ReviewLlmAnalyticsQueuesDestroyResponse>;
 
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap =
-  ClusteringConfigEventFiltersItemMap as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
   Array<UpdateLlmAnalyticsClusteringJobRequestEventFiltersItemMap>;
-export const UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
+const UpdateLlmAnalyticsClusteringJobRequestEventFiltersList =
   ClusteringConfigEventFiltersList as any as S.Schema<UpdateLlmAnalyticsClusteringJobRequestEventFiltersList>;
 
 export interface UpdateLlmAnalyticsClusteringJobRequest {
@@ -2625,7 +2515,7 @@ export interface UpdateLlmAnalyticsClusteringJobRequest {
   event_filters?: UpdateLlmAnalyticsClusteringJobRequestEventFiltersList;
   enabled?: boolean;
 }
-export const UpdateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2647,13 +2537,13 @@ export const UpdateLlmAnalyticsClusteringJobRequest = /*@__PURE__*/ S.suspend(()
 export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap =
+const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap =
   CreateLlmAnalyticsClusteringConfigSetEventFilterRequestEventFiltersItemMap as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
 
 /** PostHog property filters that scope this clustering job. Empty array means no filters. */
 export type UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList =
   Array<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap>;
-export const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList = /*@__PURE__*/ S.Array(
+const UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList = /*@__PURE__*/ S.Array(
   UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersItemMap,
 ) as any as S.Schema<UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList>;
 
@@ -2668,7 +2558,7 @@ export interface UpdateLlmAnalyticsClusteringJobsPartialRequest {
   event_filters?: UpdateLlmAnalyticsClusteringJobsPartialRequestEventFiltersList;
   enabled?: boolean;
 }
-export const UpdateLlmAnalyticsClusteringJobsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsClusteringJobsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2711,7 +2601,7 @@ export interface UpdateLlmAnalyticsEvaluationReportRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
-export const UpdateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsEvaluationReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2772,7 +2662,7 @@ export interface EvaluationReportUpdate {
   created_by: number | null;
   created_at: string;
 }
-export const EvaluationReportUpdate = /*@__PURE__*/ S.suspend(() =>
+const EvaluationReportUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     evaluation: S.String,
@@ -2821,7 +2711,7 @@ export interface UpdateLlmAnalyticsEvaluationReportsPartialRequest {
   /** Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10. */
   daily_run_cap?: number;
 }
-export const UpdateLlmAnalyticsEvaluationReportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsEvaluationReportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2855,7 +2745,7 @@ export interface UpdateLlmAnalyticsParserRecipesPartialRequest {
   /** Raw YAML recipe source. Must parse as YAML; recipe semantics are compiled and validated client-side. */
   source?: string;
 }
-export const UpdateLlmAnalyticsParserRecipesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsParserRecipesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2890,7 +2780,7 @@ export interface UpdateLlmAnalyticsProviderKeyRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
-export const UpdateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsProviderKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2931,7 +2821,7 @@ export interface UpdateLlmAnalyticsProviderKeysPartialRequest {
   api_version?: string;
   set_as_active?: boolean;
 }
-export const UpdateLlmAnalyticsProviderKeysPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsProviderKeysPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2962,7 +2852,7 @@ export interface UpdateLlmAnalyticsReviewQueueItemPartialRequest {
   /** Review queue ID that should own this pending trace. */
   queue_id?: string;
 }
-export const UpdateLlmAnalyticsReviewQueueItemPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsReviewQueueItemPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2986,7 +2876,7 @@ export interface UpdateLlmAnalyticsReviewQueuePartialRequest {
   /** Human-readable queue name. */
   name?: string;
 }
-export const UpdateLlmAnalyticsReviewQueuePartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsReviewQueuePartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3014,7 +2904,7 @@ export interface UpdateLlmAnalyticsScoreDefinitionsPartialRequest {
   /** Whether the scorer is archived. */
   archived?: boolean;
 }
-export const UpdateLlmAnalyticsScoreDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsScoreDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3034,7 +2924,7 @@ export const UpdateLlmAnalyticsScoreDefinitionsPartialRequest = /*@__PURE__*/ S.
 
 /** Full desired score set for this review. Omit scorers you want to leave blank. */
 export type UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList = Array<TraceReviewScoreWrite>;
-export const UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList =
+const UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList =
   CreateLlmAnalyticsTraceReviewRequestScoresList as any as S.Schema<UpdateLlmAnalyticsTraceReviewsPartialRequestScoresList>;
 
 export interface UpdateLlmAnalyticsTraceReviewsPartialRequest {
@@ -3051,7 +2941,7 @@ export interface UpdateLlmAnalyticsTraceReviewsPartialRequest {
   /** Optional review queue ID for queue-context saves. When provided, the matching pending queue item is cleared after the review is saved. If omitted, any pending queue item for the same trace is cleared. */
   queue_id?: string | null;
 }
-export const UpdateLlmAnalyticsTraceReviewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLlmAnalyticsTraceReviewsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

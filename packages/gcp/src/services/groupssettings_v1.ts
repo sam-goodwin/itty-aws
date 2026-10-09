@@ -65,7 +65,7 @@ export interface GetGroupsRequest {
   /** The group's email address. */
   groupUniqueId: string;
 }
-export const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
   }).pipe(
@@ -206,7 +206,7 @@ export interface Groups {
   /** Deprecated. This is merged into the new whoCanAssistContent setting. Permission to mark any other user's post as a favorite reply. Possible values are: - ALL_MEMBERS - OWNERS_AND_MANAGERS - MANAGERS_ONLY - OWNERS_ONLY - NONE */
   whoCanMarkFavoriteReplyOnAnyTopic?: string;
 }
-export const Groups = /*@__PURE__*/ S.suspend(() =>
+const Groups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spamModerationLevel: S.optional(S.String),
     whoCanAdd: S.optional(S.String),
@@ -280,7 +280,7 @@ export interface PatchGroupsRequest {
   /** Request body */
   body?: Groups;
 }
-export const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
     body: S.optional(Groups.pipe(T.HttpBody())),
@@ -299,7 +299,7 @@ export interface UpdateGroupsRequest {
   /** Request body */
   body?: Groups;
 }
-export const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupUniqueId: S.String.pipe(T.Label()),
     body: S.optional(Groups.pipe(T.HttpBody())),

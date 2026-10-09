@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Addon type. */
 export type AddonType = "IotEdge" | "ArcForKubernetes";
-export const AddonType = S.String;
+const AddonType = S.String;
 
 export interface AddonsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -27,7 +27,7 @@ export interface AddonsCreateOrUpdateRequest {
   /** Addon type. */
   kind: AddonType | (string & {});
 }
-export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -49,11 +49,11 @@ export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -70,7 +70,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -93,7 +93,7 @@ export interface AddonsCreateOrUpdateResponse {
   /** Addon type. */
   kind: AddonType;
 }
-export const AddonsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AddonsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -113,11 +113,11 @@ export type DayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday";
-export const DayOfWeek = S.String;
+const DayOfWeek = S.String;
 
 /** The days of the week when this schedule is applicable. */
 export type BandwidthSchedulePropertiesDaysList = Array<DayOfWeek | (string & {})>;
-export const BandwidthSchedulePropertiesDaysList = /*@__PURE__*/ S.Array(
+const BandwidthSchedulePropertiesDaysList = /*@__PURE__*/ S.Array(
   DayOfWeek,
 ) as any as S.Schema<BandwidthSchedulePropertiesDaysList>;
 
@@ -132,7 +132,7 @@ export interface BandwidthScheduleProperties {
   /** The days of the week when this schedule is applicable. */
   days: BandwidthSchedulePropertiesDaysList;
 }
-export const BandwidthScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const BandwidthScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.String,
     stop: S.String,
@@ -155,7 +155,7 @@ export interface BandwidthSchedulesCreateOrUpdateRequest {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-export const BandwidthSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BandwidthSchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -186,7 +186,7 @@ export interface BandwidthSchedulesCreateOrUpdateResponse {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-export const BandwidthSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BandwidthSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -199,20 +199,20 @@ export const BandwidthSchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>;
 
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = Array<string>;
-export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = /*@__PURE__*/ S.Array(
+const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
 
 /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
   Array<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
-export const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList = /*@__PURE__*/ S.Array(
+const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList = /*@__PURE__*/ S.Array(
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList,
 ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryList>;
 
 /** List of VM sizes being checked. */
 export type VmPlacementRequestResultVmSizeList = Array<string>;
-export const VmPlacementRequestResultVmSizeList =
+const VmPlacementRequestResultVmSizeList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<VmPlacementRequestResultVmSizeList>;
 
 /** List of VM sizes being checked for creation on appliance along with corresponding result. */
@@ -226,7 +226,7 @@ export interface VmPlacementRequestResult {
   /** Localized message to be displayed to the user to explain the check result. */
   message?: string;
 }
-export const VmPlacementRequestResult = /*@__PURE__*/ S.suspend(() =>
+const VmPlacementRequestResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSize: S.optional(VmPlacementRequestResultVmSizeList),
     isFeasible: S.optional(S.Boolean),
@@ -238,7 +238,7 @@ export const VmPlacementRequestResult = /*@__PURE__*/ S.suspend(() =>
 /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
   Array<VmPlacementRequestResult>;
-export const DeviceCapacityRequestInfoPropertiesVmPlacementResultsList = /*@__PURE__*/ S.Array(
+const DeviceCapacityRequestInfoPropertiesVmPlacementResultsList = /*@__PURE__*/ S.Array(
   VmPlacementRequestResult,
 ) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementResultsList>;
 
@@ -249,7 +249,7 @@ export interface DeviceCapacityRequestInfoProperties {
   /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
   vmPlacementResults?: DeviceCapacityRequestInfoPropertiesVmPlacementResultsList;
 }
-export const DeviceCapacityRequestInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const DeviceCapacityRequestInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmPlacementQuery: DeviceCapacityRequestInfoPropertiesVmPlacementQueryList,
     vmPlacementResults: S.optional(DeviceCapacityRequestInfoPropertiesVmPlacementResultsList),
@@ -270,43 +270,42 @@ export interface CheckDeviceCapacityCheckResourceCreationFeasibilityRequest {
   /** The properties of the Device Capacity Request. */
   properties: DeviceCapacityRequestInfoProperties;
 }
-export const CheckDeviceCapacityCheckResourceCreationFeasibilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      capacityName: S.optional(S.String.pipe(T.Query())),
-      properties: DeviceCapacityRequestInfoProperties,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
+const CheckDeviceCapacityCheckResourceCreationFeasibilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    deviceName: S.String.pipe(T.Label()),
+    capacityName: S.optional(S.String.pipe(T.Query())),
+    properties: DeviceCapacityRequestInfoProperties,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/deviceCapacityCheck",
+      code: 200,
+      apiVersion: "2023-12-01",
+    }),
+  ),
 ).annotate({
   identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityRequest",
 }) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityRequest>;
 
 export interface CheckDeviceCapacityCheckResourceCreationFeasibilityResponse {}
-export const CheckDeviceCapacityCheckResourceCreationFeasibilityResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const CheckDeviceCapacityCheckResourceCreationFeasibilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CheckDeviceCapacityCheckResourceCreationFeasibilityResponse",
 }) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityResponse>;
 
 /** Storage format used for the file represented by the share. */
 export type AzureContainerDataFormat = "BlockBlob" | "PageBlob" | "AzureFile";
-export const AzureContainerDataFormat = S.String;
+const AzureContainerDataFormat = S.String;
 
 /** The container properties. */
 export interface ContainerPropertiesInput {
   /** DataFormat for Container */
   dataFormat: AzureContainerDataFormat | (string & {});
 }
-export const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ContainerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataFormat: AzureContainerDataFormat,
   }),
@@ -326,7 +325,7 @@ export interface ContainersCreateOrUpdateRequest {
   /** The container properties. */
   properties: ContainerPropertiesInput;
 }
-export const ContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -348,7 +347,7 @@ export const ContainersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the container. */
 export type ContainerStatus = "OK" | "Offline" | "Unknown" | "Updating" | "NeedsAttention";
-export const ContainerStatus = S.String;
+const ContainerStatus = S.String;
 
 /** Fields for tracking refresh job on the share or container. */
 export interface RefreshDetails {
@@ -361,7 +360,7 @@ export interface RefreshDetails {
   /** Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job. */
   lastJob?: string;
 }
-export const RefreshDetails = /*@__PURE__*/ S.suspend(() =>
+const RefreshDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inProgressRefreshJobId: S.optional(S.String),
     lastCompletedRefreshJobTimeInUTC: S.optional(S.String),
@@ -381,7 +380,7 @@ export interface ContainerProperties {
   /** The UTC time when container got created. */
   createdDateTime?: string;
 }
-export const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
+const ContainerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerStatus: S.optional(ContainerStatus),
     dataFormat: AzureContainerDataFormat,
@@ -402,7 +401,7 @@ export interface ContainersCreateOrUpdateResponse {
   /** The container properties. */
   properties: ContainerProperties;
 }
-export const ContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ContainersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -426,7 +425,7 @@ export interface DeleteAddonRequest {
   /** The name of the addon. */
   addonName: string;
 }
-export const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -444,7 +443,7 @@ export const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddonRequest" }) as any as S.Schema<DeleteAddonRequest>;
 
 export interface DeleteAddonResponse {}
-export const DeleteAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAddonResponse",
 }) as any as S.Schema<DeleteAddonResponse>;
 
@@ -458,7 +457,7 @@ export interface DeleteBandwidthScheduleRequest {
   /** The bandwidth schedule name. */
   name: string;
 }
-export const DeleteBandwidthScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBandwidthScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -477,9 +476,9 @@ export const DeleteBandwidthScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteBandwidthScheduleRequest>;
 
 export interface DeleteBandwidthScheduleResponse {}
-export const DeleteBandwidthScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteBandwidthScheduleResponse" },
-) as any as S.Schema<DeleteBandwidthScheduleResponse>;
+const DeleteBandwidthScheduleResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteBandwidthScheduleResponse",
+}) as any as S.Schema<DeleteBandwidthScheduleResponse>;
 
 export interface DeleteContainerRequest {
   /** The ID of the target subscription. */
@@ -493,7 +492,7 @@ export interface DeleteContainerRequest {
   /** The container Name */
   containerName: string;
 }
-export const DeleteContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -511,8 +510,7 @@ export const DeleteContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteContainerRequest" }) as any as S.Schema<DeleteContainerRequest>;
 
 export interface DeleteContainerResponse {}
-export const DeleteContainerResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteContainerResponse>;
+const DeleteContainerResponse = DeleteAddonResponse as any as S.Schema<DeleteContainerResponse>;
 
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
@@ -522,7 +520,7 @@ export interface DeleteDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -538,7 +536,7 @@ export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
 
 export interface DeleteDeviceResponse {}
-export const DeleteDeviceResponse = DeleteAddonResponse as any as S.Schema<DeleteDeviceResponse>;
+const DeleteDeviceResponse = DeleteAddonResponse as any as S.Schema<DeleteDeviceResponse>;
 
 export interface DeleteMonitoringConfigRequest {
   /** The ID of the target subscription. */
@@ -550,7 +548,7 @@ export interface DeleteMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-export const DeleteMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -569,7 +567,7 @@ export const DeleteMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoringConfigRequest>;
 
 export interface DeleteMonitoringConfigResponse {}
-export const DeleteMonitoringConfigResponse =
+const DeleteMonitoringConfigResponse =
   DeleteAddonResponse as any as S.Schema<DeleteMonitoringConfigResponse>;
 
 export interface DeleteOrderRequest {
@@ -580,7 +578,7 @@ export interface DeleteOrderRequest {
   /** The device name. */
   deviceName: string;
 }
-export const DeleteOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -596,7 +594,7 @@ export const DeleteOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrderRequest" }) as any as S.Schema<DeleteOrderRequest>;
 
 export interface DeleteOrderResponse {}
-export const DeleteOrderResponse = DeleteAddonResponse as any as S.Schema<DeleteOrderResponse>;
+const DeleteOrderResponse = DeleteAddonResponse as any as S.Schema<DeleteOrderResponse>;
 
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. */
@@ -608,7 +606,7 @@ export interface DeleteRoleRequest {
   /** The role name. */
   name: string;
 }
-export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -625,7 +623,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoleRequest" }) as any as S.Schema<DeleteRoleRequest>;
 
 export interface DeleteRoleResponse {}
-export const DeleteRoleResponse = DeleteAddonResponse as any as S.Schema<DeleteRoleResponse>;
+const DeleteRoleResponse = DeleteAddonResponse as any as S.Schema<DeleteRoleResponse>;
 
 export interface DeleteShareRequest {
   /** The ID of the target subscription. */
@@ -637,7 +635,7 @@ export interface DeleteShareRequest {
   /** The share name. */
   name: string;
 }
-export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -654,7 +652,7 @@ export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteShareRequest" }) as any as S.Schema<DeleteShareRequest>;
 
 export interface DeleteShareResponse {}
-export const DeleteShareResponse = DeleteAddonResponse as any as S.Schema<DeleteShareResponse>;
+const DeleteShareResponse = DeleteAddonResponse as any as S.Schema<DeleteShareResponse>;
 
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. */
@@ -666,7 +664,7 @@ export interface DeleteStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -685,7 +683,7 @@ export const DeleteStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageAccountRequest>;
 
 export interface DeleteStorageAccountResponse {}
-export const DeleteStorageAccountResponse =
+const DeleteStorageAccountResponse =
   DeleteAddonResponse as any as S.Schema<DeleteStorageAccountResponse>;
 
 export interface DeleteStorageAccountCredentialsRequest {
@@ -698,7 +696,7 @@ export interface DeleteStorageAccountCredentialsRequest {
   /** The storage account credential name. */
   name: string;
 }
-export const DeleteStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -717,7 +715,7 @@ export const DeleteStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteStorageAccountCredentialsRequest>;
 
 export interface DeleteStorageAccountCredentialsResponse {}
-export const DeleteStorageAccountCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageAccountCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteStorageAccountCredentialsResponse",
@@ -733,7 +731,7 @@ export interface DeleteTriggerRequest {
   /** The trigger name. */
   name: string;
 }
-export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -750,7 +748,7 @@ export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTriggerRequest" }) as any as S.Schema<DeleteTriggerRequest>;
 
 export interface DeleteTriggerResponse {}
-export const DeleteTriggerResponse = DeleteAddonResponse as any as S.Schema<DeleteTriggerResponse>;
+const DeleteTriggerResponse = DeleteAddonResponse as any as S.Schema<DeleteTriggerResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
@@ -762,7 +760,7 @@ export interface DeleteUserRequest {
   /** The user name. */
   name: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -779,25 +777,25 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = DeleteAddonResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = DeleteAddonResponse as any as S.Schema<DeleteUserResponse>;
 
 /** Resource tags. */
 export type DevicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const DevicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const DevicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DevicesCreateOrUpdateRequestTagsMap>;
 
 /** DataResidencyType enum */
 export type DataResidencyType = "GeoZoneReplication" | "ZoneReplication";
-export const DataResidencyType = S.String;
+const DataResidencyType = S.String;
 
 /** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
 export interface DataResidency {
   /** DataResidencyType enum */
   type?: DataResidencyType | (string & {});
 }
-export const DataResidency = /*@__PURE__*/ S.suspend(() =>
+const DataResidency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(DataResidencyType),
   }),
@@ -808,7 +806,7 @@ export interface DataBoxEdgeDevicePropertiesInput {
   /** The details of data-residency related properties for this resource */
   dataResidency?: DataResidency;
 }
-export const DataBoxEdgeDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDevicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataResidency: S.optional(DataResidency),
   }),
@@ -847,11 +845,11 @@ export type SkuName =
   | "EP2_128_GPU1_Mx1_W"
   | "EP2_256_GPU2_Mx1"
   | "EdgeMR_TCP";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** The Sku tier. */
 export type SkuTier = "Standard";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 /** The SKU type. */
 export interface Sku {
@@ -860,7 +858,7 @@ export interface Sku {
   /** The SKU tier. This is based on the SKU name. */
   tier?: SkuTier | (string & {});
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SkuName),
     tier: S.optional(SkuTier),
@@ -869,14 +867,14 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 
 /** Identity type */
 export type MsiIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-export const MsiIdentityType = S.String;
+const MsiIdentityType = S.String;
 
 /** Msi identity details of the resource */
 export interface ResourceIdentityInput {
   /** Identity type */
   type?: MsiIdentityType | (string & {});
 }
-export const ResourceIdentityInput = DataResidency as any as S.Schema<ResourceIdentityInput>;
+const ResourceIdentityInput = DataResidency as any as S.Schema<ResourceIdentityInput>;
 
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -898,7 +896,7 @@ export interface DevicesCreateOrUpdateRequest {
   /** Msi identity of the resource */
   identity?: ResourceIdentityInput;
 }
-export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -923,7 +921,7 @@ export const DevicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DevicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const DevicesCreateOrUpdateResponseTagsMap =
+const DevicesCreateOrUpdateResponseTagsMap =
   DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<DevicesCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -932,7 +930,7 @@ export type DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DataBoxEdgeDevicePropertiesSystemDataCreatedByType = S.String;
+const DataBoxEdgeDevicePropertiesSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
@@ -940,7 +938,7 @@ export type DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType = S.String;
+const DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DataBoxEdgeDevicePropertiesSystemData {
@@ -957,7 +955,7 @@ export interface DataBoxEdgeDevicePropertiesSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DataBoxEdgeDevicePropertiesSystemData = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDevicePropertiesSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(DataBoxEdgeDevicePropertiesSystemDataCreatedByType),
@@ -979,11 +977,11 @@ export type DataBoxEdgeDeviceStatus =
   | "Disconnected"
   | "PartiallyDisconnected"
   | "Maintenance";
-export const DataBoxEdgeDeviceStatus = S.String;
+const DataBoxEdgeDeviceStatus = S.String;
 
 /** The type of the Data Box Edge/Gateway device. */
 export type DeviceType = "DataBoxEdgeDevice";
-export const DeviceType = S.String;
+const DeviceType = S.String;
 
 export type RoleTypes =
   | "IOT"
@@ -993,16 +991,16 @@ export type RoleTypes =
   | "MEC"
   | "CloudEdgeManagement"
   | "Kubernetes";
-export const RoleTypes = S.String;
+const RoleTypes = S.String;
 
 /** Type of compute roles configured. */
 export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList = Array<RoleTypes>;
-export const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
+const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
   BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeDevicePropertiesConfiguredRoleTypesList>;
 
 /** Denotes whether move operation is in progress */
 export type ResourceMoveStatus = "None" | "ResourceMoveInProgress" | "ResourceMoveFailed";
-export const ResourceMoveStatus = S.String;
+const ResourceMoveStatus = S.String;
 
 /** Fields for tracking resource move */
 export interface ResourceMoveDetails {
@@ -1011,7 +1009,7 @@ export interface ResourceMoveDetails {
   /** Denotes the timeout of the operation to finish */
   operationInProgressLockTimeoutInUTC?: string;
 }
-export const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationInProgress: S.optional(ResourceMoveStatus),
     operationInProgressLockTimeoutInUTC: S.optional(S.String),
@@ -1019,13 +1017,13 @@ export const ResourceMoveDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceMoveDetails" }) as any as S.Schema<ResourceMoveDetails>;
 
 export type SubscriptionState = "Registered" | "Warned" | "Suspended" | "Deleted" | "Unregistered";
-export const SubscriptionState = S.String;
+const SubscriptionState = S.String;
 
 export interface SubscriptionRegisteredFeatures {
   name?: string;
   state?: string;
 }
-export const SubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(S.String),
@@ -1035,7 +1033,7 @@ export const SubscriptionRegisteredFeatures = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionRegisteredFeatures>;
 
 export type SubscriptionPropertiesRegisteredFeaturesList = Array<SubscriptionRegisteredFeatures>;
-export const SubscriptionPropertiesRegisteredFeaturesList = /*@__PURE__*/ S.Array(
+const SubscriptionPropertiesRegisteredFeaturesList = /*@__PURE__*/ S.Array(
   SubscriptionRegisteredFeatures,
 ) as any as S.Schema<SubscriptionPropertiesRegisteredFeaturesList>;
 
@@ -1046,7 +1044,7 @@ export interface SubscriptionProperties {
   serializedDetails?: string;
   registeredFeatures?: SubscriptionPropertiesRegisteredFeaturesList;
 }
-export const SubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     locationPlacementId: S.optional(S.String),
@@ -1067,7 +1065,7 @@ export interface EdgeProfileSubscription {
   subscriptionId?: string;
   properties?: SubscriptionProperties;
 }
-export const EdgeProfileSubscription = /*@__PURE__*/ S.suspend(() =>
+const EdgeProfileSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationId: S.optional(S.String),
     id: S.optional(S.String),
@@ -1083,7 +1081,7 @@ export interface EdgeProfile {
   /** Edge Profile Subscription */
   subscription?: EdgeProfileSubscription;
 }
-export const EdgeProfile = /*@__PURE__*/ S.suspend(() =>
+const EdgeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(EdgeProfileSubscription),
   }),
@@ -1130,7 +1128,7 @@ export interface DataBoxEdgeDeviceProperties {
   /** Kubernetes Workload Profile */
   kubernetesWorkloadProfile?: string;
 }
-export const DataBoxEdgeDeviceProperties = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDeviceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     systemData: S.optional(DataBoxEdgeDevicePropertiesSystemData),
     dataBoxEdgeDeviceStatus: S.optional(DataBoxEdgeDeviceStatus),
@@ -1165,7 +1163,7 @@ export interface ResourceIdentity {
   /** Home Tenant Id */
   tenantId?: string;
 }
-export const ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+const ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(MsiIdentityType),
     principalId: S.optional(S.String),
@@ -1179,7 +1177,7 @@ export type DataBoxEdgeDeviceKind =
   | "AzureStackEdge"
   | "AzureStackHub"
   | "AzureModularDataCentre";
-export const DataBoxEdgeDeviceKind = S.String;
+const DataBoxEdgeDeviceKind = S.String;
 
 export interface DevicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1205,7 +1203,7 @@ export interface DevicesCreateOrUpdateResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const DevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1225,7 +1223,7 @@ export const DevicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The algorithm used to encrypt "Value". */
 export type EncryptionAlgorithm = "None" | "AES256" | "RSAES_PKCS1_v_1_5";
-export const EncryptionAlgorithm = S.String;
+const EncryptionAlgorithm = S.String;
 
 /** Represent the secrets intended for encryption with asymmetric key pair. */
 export interface AsymmetricEncryptedSecret {
@@ -1236,7 +1234,7 @@ export interface AsymmetricEncryptedSecret {
   /** The algorithm used to encrypt "Value". */
   encryptionAlgorithm: EncryptionAlgorithm | (string & {});
 }
-export const AsymmetricEncryptedSecret = /*@__PURE__*/ S.suspend(() =>
+const AsymmetricEncryptedSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     encryptionCertThumbprint: S.optional(S.String),
@@ -1251,7 +1249,7 @@ export interface SecuritySettingsProperties {
   /** Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to sign into the local web UI of the device. The Actual password should have at least 8 characters that are a combination of uppercase, lowercase, numeric, and special characters. */
   deviceAdminPassword: AsymmetricEncryptedSecret;
 }
-export const SecuritySettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const SecuritySettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceAdminPassword: AsymmetricEncryptedSecret,
   }),
@@ -1269,7 +1267,7 @@ export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   /** Properties of the security settings. */
   properties: SecuritySettingsProperties;
 }
-export const DevicesCreateOrUpdateSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DevicesCreateOrUpdateSecuritySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1288,7 +1286,7 @@ export const DevicesCreateOrUpdateSecuritySettingsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>;
 
 export interface DevicesCreateOrUpdateSecuritySettingsResponse {}
-export const DevicesCreateOrUpdateSecuritySettingsResponse =
+const DevicesCreateOrUpdateSecuritySettingsResponse =
   DeleteStorageAccountCredentialsResponse as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>;
 
 export interface DevicesGetUpdateSummaryRequest {
@@ -1299,7 +1297,7 @@ export interface DevicesGetUpdateSummaryRequest {
   /** The device name. */
   deviceName: string;
 }
-export const DevicesGetUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const DevicesGetUpdateSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1325,28 +1323,28 @@ export type JobStatus =
   | "Canceled"
   | "Paused"
   | "Scheduled";
-export const JobStatus = S.String;
+const JobStatus = S.String;
 
 /** Indicates if updates are available and at least one of the updates needs a reboot. */
 export type InstallRebootBehavior = "NeverReboots" | "RequiresReboot" | "RequestReboot";
-export const InstallRebootBehavior = S.String;
+const InstallRebootBehavior = S.String;
 
 /** The current update operation. */
 export type UpdateOperation = "None" | "Scan" | "Download" | "Install";
-export const UpdateOperation = S.String;
+const UpdateOperation = S.String;
 
 /** The list of updates available for install. */
 export type UpdateSummaryPropertiesUpdateTitlesList = Array<string>;
-export const UpdateSummaryPropertiesUpdateTitlesList =
+const UpdateSummaryPropertiesUpdateTitlesList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
 
 /** Type of the Update */
 export type UpdateType = "Software" | "Kubernetes" | "Firmware";
-export const UpdateType = S.String;
+const UpdateType = S.String;
 
 /** Impact of Installing an updateType */
 export type InstallationImpact = "None" | "DeviceRebooted" | "KubernetesWorkloadsDown";
-export const InstallationImpact = S.String;
+const InstallationImpact = S.String;
 
 /** Status of the update. */
 export type UpdateStatus =
@@ -1355,7 +1353,7 @@ export type UpdateStatus =
   | "DownloadCompleted"
   | "InstallStarted"
   | "InstallCompleted";
-export const UpdateStatus = S.String;
+const UpdateStatus = S.String;
 
 /** Update Specific attributes */
 export interface UpdateDetails {
@@ -1378,7 +1376,7 @@ export interface UpdateDetails {
   /** Status of the update. */
   status?: UpdateStatus;
 }
-export const UpdateDetails = /*@__PURE__*/ S.suspend(() =>
+const UpdateDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTitle: S.optional(S.String),
     updateSize: S.optional(S.Number),
@@ -1394,7 +1392,7 @@ export const UpdateDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of updates available for install. */
 export type UpdateSummaryPropertiesUpdatesList = Array<UpdateDetails>;
-export const UpdateSummaryPropertiesUpdatesList = /*@__PURE__*/ S.Array(
+const UpdateSummaryPropertiesUpdatesList = /*@__PURE__*/ S.Array(
   UpdateDetails,
 ) as any as S.Schema<UpdateSummaryPropertiesUpdatesList>;
 
@@ -1451,7 +1449,7 @@ export interface UpdateSummaryProperties {
   /** The total time in Minutes */
   totalTimeInMinutes?: number;
 }
-export const UpdateSummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const UpdateSummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deviceVersionNumber: S.optional(S.String),
     friendlyDeviceVersionName: S.optional(S.String),
@@ -1493,7 +1491,7 @@ export interface DevicesGetUpdateSummaryResponse {
   /** The device update information summary. */
   properties?: UpdateSummaryProperties;
 }
-export const DevicesGetUpdateSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const DevicesGetUpdateSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1513,7 +1511,7 @@ export interface DevicesScanForUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export const DevicesScanForUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DevicesScanForUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1531,7 +1529,7 @@ export const DevicesScanForUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DevicesScanForUpdatesRequest>;
 
 export interface DevicesScanForUpdatesResponse {}
-export const DevicesScanForUpdatesResponse =
+const DevicesScanForUpdatesResponse =
   DeleteAddonResponse as any as S.Schema<DevicesScanForUpdatesResponse>;
 
 export interface DownloadDeviceUpdatesRequest {
@@ -1542,7 +1540,7 @@ export interface DownloadDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export const DownloadDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1560,7 +1558,7 @@ export const DownloadDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadDeviceUpdatesRequest>;
 
 export interface DownloadDeviceUpdatesResponse {}
-export const DownloadDeviceUpdatesResponse =
+const DownloadDeviceUpdatesResponse =
   DeleteAddonResponse as any as S.Schema<DownloadDeviceUpdatesResponse>;
 
 export interface GenerateDeviceCertificateRequest {
@@ -1571,7 +1569,7 @@ export interface GenerateDeviceCertificateRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GenerateDeviceCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateDeviceCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1597,7 +1595,7 @@ export interface GenerateCertResponse {
   /** Gets or sets expiry time in UTC */
   expiryTimeInUTC?: string;
 }
-export const GenerateCertResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateCertResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKey: S.optional(S.String),
     privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1617,7 +1615,7 @@ export interface GetAddonRequest {
   /** The name of the addon. */
   addonName: string;
 }
-export const GetAddonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1646,7 +1644,7 @@ export interface GetAddonResponse {
   /** Addon type. */
   kind: AddonType;
 }
-export const GetAddonResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAddonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1666,7 +1664,7 @@ export interface GetAlertRequest {
   /** The alert name. */
   name: string;
 }
-export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1684,7 +1682,7 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Severity of the alert. */
 export type AlertSeverity = "Informational" | "Warning" | "Critical";
-export const AlertSeverity = S.String;
+const AlertSeverity = S.String;
 
 /** Error details for the alert. */
 export interface AlertErrorDetails {
@@ -1695,7 +1693,7 @@ export interface AlertErrorDetails {
   /** Number of occurrences. */
   occurrences?: number;
 }
-export const AlertErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const AlertErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     errorMessage: S.optional(S.String),
@@ -1705,7 +1703,7 @@ export const AlertErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Alert details. */
 export type AlertPropertiesDetailedInformationMap = { [key: string]: string | undefined };
-export const AlertPropertiesDetailedInformationMap =
+const AlertPropertiesDetailedInformationMap =
   DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertPropertiesDetailedInformationMap>;
 
 /** Properties of alert. */
@@ -1725,7 +1723,7 @@ export interface AlertProperties {
   /** Alert details. */
   detailedInformation?: AlertPropertiesDetailedInformationMap;
 }
-export const AlertProperties = /*@__PURE__*/ S.suspend(() =>
+const AlertProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     alertType: S.optional(S.String),
@@ -1749,7 +1747,7 @@ export interface GetAlertResponse {
   /** Properties of alert. */
   properties?: AlertProperties;
 }
-export const GetAlertResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAlertResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1769,7 +1767,7 @@ export interface GetBandwidthScheduleRequest {
   /** The bandwidth schedule name. */
   name: string;
 }
-export const GetBandwidthScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBandwidthScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1799,7 +1797,7 @@ export interface GetBandwidthScheduleResponse {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-export const GetBandwidthScheduleResponse =
+const GetBandwidthScheduleResponse =
   BandwidthSchedulesCreateOrUpdateResponse as any as S.Schema<GetBandwidthScheduleResponse>;
 
 export interface GetContainerRequest {
@@ -1814,7 +1812,7 @@ export interface GetContainerRequest {
   /** The container Name */
   containerName: string;
 }
-export const GetContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1843,7 +1841,7 @@ export interface GetContainerResponse {
   /** The container properties. */
   properties: ContainerProperties;
 }
-export const GetContainerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContainerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1861,7 +1859,7 @@ export interface GetDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1878,7 +1876,7 @@ export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDeviceResponseTagsMap =
+const GetDeviceResponseTagsMap =
   DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDeviceResponseTagsMap>;
 
 export interface GetDeviceResponse {
@@ -1905,7 +1903,7 @@ export interface GetDeviceResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1929,7 +1927,7 @@ export interface GetDeviceCapacityInfoDeviceCapacityInfoRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetDeviceCapacityInfoDeviceCapacityInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceCapacityInfoDeviceCapacityInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1953,7 +1951,7 @@ export interface ClusterStorageViewData {
   /** The available or free storage on the cluster in MB. */
   clusterFreeStorageMb?: number;
 }
-export const ClusterStorageViewData = /*@__PURE__*/ S.suspend(() =>
+const ClusterStorageViewData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterTotalStorageMb: S.optional(S.Number),
     clusterFreeStorageMb: S.optional(S.Number),
@@ -1973,7 +1971,7 @@ export interface ClusterGpuCapacity {
   /** The total GPU units count in the cluster. */
   gpuTotalUnitsCount?: number;
 }
-export const ClusterGpuCapacity = /*@__PURE__*/ S.suspend(() =>
+const ClusterGpuCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuType: S.optional(S.String),
     gpuUsedUnitsCount: S.optional(S.Number),
@@ -2004,7 +2002,7 @@ export interface ClusterMemoryCapacity {
   /** The memory used by VMs in the cluster in MB. */
   clusterMemoryUsedByVmsMb?: number;
 }
-export const ClusterMemoryCapacity = /*@__PURE__*/ S.suspend(() =>
+const ClusterMemoryCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterFreeMemoryMb: S.optional(S.Number),
     clusterUsedMemoryMb: S.optional(S.Number),
@@ -2031,7 +2029,7 @@ export interface ClusterCapacityViewData {
   /** The total # of vCPUs provisioned by non-HPN VM per appliance. */
   totalProvisionedNonHpnCores?: number;
 }
-export const ClusterCapacityViewData = /*@__PURE__*/ S.suspend(() =>
+const ClusterCapacityViewData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     gpuCapacity: S.optional(ClusterGpuCapacity),
@@ -2048,7 +2046,7 @@ export interface VmMemory {
   /** The current memory used by the virtual machine. */
   currentMemoryUsageMB?: number;
 }
-export const VmMemory = /*@__PURE__*/ S.suspend(() =>
+const VmMemory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startupMemoryMB: S.optional(S.Number),
     currentMemoryUsageMB: S.optional(S.Number),
@@ -2057,25 +2055,25 @@ export const VmMemory = /*@__PURE__*/ S.suspend(() =>
 
 /** The VM used memory per VmId. */
 export type HostCapacityVmUsedMemoryMap = { [key: string]: VmMemory | undefined };
-export const HostCapacityVmUsedMemoryMap = /*@__PURE__*/ S.Record(
+const HostCapacityVmUsedMemoryMap = /*@__PURE__*/ S.Record(
   S.String,
   VmMemory,
 ) as any as S.Schema<HostCapacityVmUsedMemoryMap>;
 
 /** The free VCPU indices for the Hpn VMs. */
 export type NumaNodeDataFreeVCpuIndexesForHpnList = Array<number>;
-export const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
+const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NumaNodeDataFreeVCpuIndexesForHpnList>;
 
 /** The VCPU indices for Hpn VMs */
 export type NumaNodeDataVCpuIndexesForHpnList = Array<number>;
-export const NumaNodeDataVCpuIndexesForHpnList =
+const NumaNodeDataVCpuIndexesForHpnList =
   NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
 
 /** The VCPU indices for the root. */
 export type NumaNodeDataVCpuIndexesForRootList = Array<number>;
-export const NumaNodeDataVCpuIndexesForRootList =
+const NumaNodeDataVCpuIndexesForRootList =
   NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
 
 /** NUMA node data. */
@@ -2095,7 +2093,7 @@ export interface NumaNodeData {
   /** The VCPU indices for the root. */
   vCpuIndexesForRoot?: NumaNodeDataVCpuIndexesForRootList;
 }
-export const NumaNodeData = /*@__PURE__*/ S.suspend(() =>
+const NumaNodeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numaNodeIndex: S.optional(S.Number),
     totalMemoryInMb: S.optional(S.Number),
@@ -2109,7 +2107,7 @@ export const NumaNodeData = /*@__PURE__*/ S.suspend(() =>
 
 /** The numa nodes information for Hpn VMs. */
 export type HostCapacityNumaNodesDataList = Array<NumaNodeData>;
-export const HostCapacityNumaNodesDataList = /*@__PURE__*/ S.Array(
+const HostCapacityNumaNodesDataList = /*@__PURE__*/ S.Array(
   NumaNodeData,
 ) as any as S.Schema<HostCapacityNumaNodesDataList>;
 
@@ -2128,7 +2126,7 @@ export interface HostCapacity {
   /** The numa nodes information for Hpn VMs. */
   numaNodesData?: HostCapacityNumaNodesDataList;
 }
-export const HostCapacity = /*@__PURE__*/ S.suspend(() =>
+const HostCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     effectiveAvailableMemoryMbOnHost: S.optional(S.Number),
@@ -2143,7 +2141,7 @@ export const HostCapacity = /*@__PURE__*/ S.suspend(() =>
 export type DeviceCapacityInfoPropertiesNodeCapacityInfosMap = {
   [key: string]: HostCapacity | undefined;
 };
-export const DeviceCapacityInfoPropertiesNodeCapacityInfosMap = /*@__PURE__*/ S.Record(
+const DeviceCapacityInfoPropertiesNodeCapacityInfosMap = /*@__PURE__*/ S.Record(
   S.String,
   HostCapacity,
 ) as any as S.Schema<DeviceCapacityInfoPropertiesNodeCapacityInfosMap>;
@@ -2159,7 +2157,7 @@ export interface DeviceCapacityInfoProperties {
   /** The dictionary of individual node names and node capacities in the cluster. */
   nodeCapacityInfos?: DeviceCapacityInfoPropertiesNodeCapacityInfosMap;
 }
-export const DeviceCapacityInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const DeviceCapacityInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeStamp: S.optional(S.String),
     clusterStorageCapacityInfo: S.optional(ClusterStorageViewData),
@@ -2182,7 +2180,7 @@ export interface GetDeviceCapacityInfoDeviceCapacityInfoResponse {
   /** The device capacity properties. */
   properties?: DeviceCapacityInfoProperties;
 }
-export const GetDeviceCapacityInfoDeviceCapacityInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceCapacityInfoDeviceCapacityInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2202,7 +2200,7 @@ export interface GetDeviceExtendedInformationRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetDeviceExtendedInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceExtendedInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2227,7 +2225,7 @@ export type KeyVaultSyncStatus =
   | "KeyVaultSyncPending"
   | "KeyVaultSyncing"
   | "KeyVaultNotSynced";
-export const KeyVaultSyncStatus = S.String;
+const KeyVaultSyncStatus = S.String;
 
 /** Holds device secret either as a KeyVault reference or as an encrypted value. */
 export interface Secret {
@@ -2236,7 +2234,7 @@ export interface Secret {
   /** Id of the Key-Vault where secret is stored (ex: secrets/AuthClientSecret/82ef4346187a4033a10d629cde07d740). */
   keyVaultId?: string;
 }
-export const Secret = /*@__PURE__*/ S.suspend(() =>
+const Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedSecret: S.optional(AsymmetricEncryptedSecret),
     keyVaultId: S.optional(S.String),
@@ -2247,14 +2245,14 @@ export const Secret = /*@__PURE__*/ S.suspend(() =>
 export type DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap = {
   [key: string]: Secret | undefined;
 };
-export const DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap = /*@__PURE__*/ S.Record(
+const DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap = /*@__PURE__*/ S.Record(
   S.String,
   Secret,
 ) as any as S.Schema<DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap>;
 
 /** Cluster Witness Type */
 export type ClusterWitnessType = "None" | "Cloud" | "FileShare";
-export const ClusterWitnessType = S.String;
+const ClusterWitnessType = S.String;
 
 /** The properties of the Data Box Edge/Gateway device extended info. */
 export interface DataBoxEdgeDeviceExtendedInfoProperties {
@@ -2289,7 +2287,7 @@ export interface DataBoxEdgeDeviceExtendedInfoProperties {
   /** The Azure service endpoint of the cloud witness storage account. */
   cloudWitnessStorageEndpoint?: string;
 }
-export const DataBoxEdgeDeviceExtendedInfoProperties = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDeviceExtendedInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionKeyThumbprint: S.optional(S.String),
     encryptionKey: S.optional(S.String),
@@ -2317,7 +2315,7 @@ export type GetDeviceExtendedInformationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDeviceExtendedInformationResponseSystemDataCreatedByType = S.String;
+const GetDeviceExtendedInformationResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetDeviceExtendedInformationResponseSystemDataLastModifiedByType =
@@ -2325,7 +2323,7 @@ export type GetDeviceExtendedInformationResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetDeviceExtendedInformationResponseSystemDataLastModifiedByType = S.String;
+const GetDeviceExtendedInformationResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDeviceExtendedInformationResponseSystemData {
@@ -2342,7 +2340,7 @@ export interface GetDeviceExtendedInformationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetDeviceExtendedInformationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceExtendedInformationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetDeviceExtendedInformationResponseSystemDataCreatedByType),
@@ -2369,7 +2367,7 @@ export interface GetDeviceExtendedInformationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDeviceExtendedInformationResponseSystemData;
 }
-export const GetDeviceExtendedInformationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceExtendedInformationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2389,7 +2387,7 @@ export interface GetDeviceNetworkSettingsRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetDeviceNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2408,7 +2406,7 @@ export const GetDeviceNetworkSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The network group. */
 export type NetworkGroup = "None" | "NonRDMA" | "RDMA";
-export const NetworkGroup = S.String;
+const NetworkGroup = S.String;
 
 /** The network adapter position. */
 export interface NetworkAdapterPosition {
@@ -2417,7 +2415,7 @@ export interface NetworkAdapterPosition {
   /** The port. */
   port?: number;
 }
-export const NetworkAdapterPosition = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapterPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkGroup: S.optional(NetworkGroup),
     port: S.optional(S.Number),
@@ -2426,15 +2424,15 @@ export const NetworkAdapterPosition = /*@__PURE__*/ S.suspend(() =>
 
 /** Value indicating whether this adapter is valid. */
 export type NetworkAdapterStatus = "Inactive" | "Active";
-export const NetworkAdapterStatus = S.String;
+const NetworkAdapterStatus = S.String;
 
 /** Value indicating whether this adapter is RDMA capable. */
 export type NetworkAdapterRDMAStatus = "Incapable" | "Capable";
-export const NetworkAdapterRDMAStatus = S.String;
+const NetworkAdapterRDMAStatus = S.String;
 
 /** Value indicating whether this adapter has DHCP enabled. */
 export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled";
-export const NetworkAdapterDHCPStatus = S.String;
+const NetworkAdapterDHCPStatus = S.String;
 
 /** Details related to the IPv4 address configuration. */
 export interface Ipv4Config {
@@ -2445,7 +2443,7 @@ export interface Ipv4Config {
   /** The IPv4 gateway of the network adapter. */
   gateway?: string;
 }
-export const Ipv4Config = /*@__PURE__*/ S.suspend(() =>
+const Ipv4Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     subnet: S.optional(S.String),
@@ -2462,7 +2460,7 @@ export interface Ipv6Config {
   /** The IPv6 gateway of the network adapter. */
   gateway?: string;
 }
-export const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
+const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.optional(S.String),
     prefixLength: S.optional(S.Number),
@@ -2472,7 +2470,7 @@ export const Ipv6Config = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of DNS Servers of the device. */
 export type NetworkAdapterDnsServersList = Array<string>;
-export const NetworkAdapterDnsServersList =
+const NetworkAdapterDnsServersList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<NetworkAdapterDnsServersList>;
 
 /** Represents the networkAdapter on a device. */
@@ -2508,7 +2506,7 @@ export interface NetworkAdapter {
   /** The list of DNS Servers of the device. */
   dnsServers?: NetworkAdapterDnsServersList;
 }
-export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
+const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adapterId: S.optional(S.String),
     adapterPosition: S.optional(NetworkAdapterPosition),
@@ -2530,7 +2528,7 @@ export const NetworkAdapter = /*@__PURE__*/ S.suspend(() =>
 
 /** The network adapter list on the device. */
 export type NetworkSettingsPropertiesNetworkAdaptersList = Array<NetworkAdapter>;
-export const NetworkSettingsPropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
+const NetworkSettingsPropertiesNetworkAdaptersList = /*@__PURE__*/ S.Array(
   NetworkAdapter,
 ) as any as S.Schema<NetworkSettingsPropertiesNetworkAdaptersList>;
 
@@ -2539,7 +2537,7 @@ export interface NetworkSettingsProperties {
   /** The network adapter list on the device. */
   networkAdapters?: NetworkSettingsPropertiesNetworkAdaptersList;
 }
-export const NetworkSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkAdapters: S.optional(NetworkSettingsPropertiesNetworkAdaptersList),
   }),
@@ -2559,7 +2557,7 @@ export interface GetDeviceNetworkSettingsResponse {
   /** The properties of network settings of a device. */
   properties?: NetworkSettingsProperties;
 }
-export const GetDeviceNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceNetworkSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2579,7 +2577,7 @@ export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRe
   /** The device name. */
   deviceName: string;
 }
-export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest =
+const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2599,14 +2597,14 @@ export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsReques
 
 /** Proactive diagnostic collection consent flag */
 export type ProactiveDiagnosticsConsent = "Enabled" | "Disabled";
-export const ProactiveDiagnosticsConsent = S.String;
+const ProactiveDiagnosticsConsent = S.String;
 
 /** The properties of proactive log collection settings. */
 export interface ProactiveLogCollectionSettingsProperties {
   /** Proactive diagnostic collection consent flag */
   userConsent: ProactiveDiagnosticsConsent | (string & {});
 }
-export const ProactiveLogCollectionSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const ProactiveLogCollectionSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userConsent: ProactiveDiagnosticsConsent,
   }),
@@ -2626,7 +2624,7 @@ export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRe
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
+const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -2647,31 +2645,30 @@ export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
+const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    deviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
+      code: 200,
+      apiVersion: "2023-12-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest",
 }) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>;
 
 /** Remote application type */
 export type RemoteApplicationType = "Powershell" | "WAC" | "LocalUI" | "AllApplications";
-export const RemoteApplicationType = S.String;
+const RemoteApplicationType = S.String;
 
 /** Access level allowed for this remote application type */
 export type AccessLevel = "None" | "ReadOnly" | "ReadWrite" | "FullAccess";
-export const AccessLevel = S.String;
+const AccessLevel = S.String;
 
 /** RemoteApplicationType for which remote support settings is being modified */
 export interface RemoteSupportSettings {
@@ -2682,7 +2679,7 @@ export interface RemoteSupportSettings {
   /** Expiration time stamp */
   expirationTimeStampInUTC?: string;
 }
-export const RemoteSupportSettings = /*@__PURE__*/ S.suspend(() =>
+const RemoteSupportSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteApplicationType: S.optional(RemoteApplicationType),
     accessLevel: S.optional(AccessLevel),
@@ -2693,7 +2690,7 @@ export const RemoteSupportSettings = /*@__PURE__*/ S.suspend(() =>
 /** Remote support settings list according to the RemoteApplicationType */
 export type DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
   Array<RemoteSupportSettings>;
-export const DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
+const DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
   /*@__PURE__*/ S.Array(
     RemoteSupportSettings,
   ) as any as S.Schema<DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList>;
@@ -2703,7 +2700,7 @@ export interface DiagnosticRemoteSupportSettingsProperties {
   /** Remote support settings list according to the RemoteApplicationType */
   remoteSupportSettingsList?: DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList;
 }
-export const DiagnosticRemoteSupportSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticRemoteSupportSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteSupportSettingsList: S.optional(
       DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList,
@@ -2725,15 +2722,14 @@ export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse {
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-export const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: DiagnosticRemoteSupportSettingsProperties,
-    }),
+const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: DiagnosticRemoteSupportSettingsProperties,
+  }),
 ).annotate({
   identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
 }) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>;
@@ -2748,7 +2744,7 @@ export interface GetJobRequest {
   /** The job name. */
   name: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2775,7 +2771,7 @@ export type JobType =
   | "Backup"
   | "Restore"
   | "TriggerSupportPackage";
-export const JobType = S.String;
+const JobType = S.String;
 
 /** Current stage of the update operation. */
 export type UpdateOperationStage =
@@ -2796,11 +2792,11 @@ export type UpdateOperationStage =
   | "RescanStarted"
   | "RescanComplete"
   | "RescanFailed";
-export const UpdateOperationStage = S.String;
+const UpdateOperationStage = S.String;
 
 /** The download phase. */
 export type DownloadPhase = "Unknown" | "Initializing" | "Downloading" | "Verifying";
-export const DownloadPhase = S.String;
+const DownloadPhase = S.String;
 
 /** Details about the download progress of update. */
 export interface UpdateDownloadProgress {
@@ -2817,7 +2813,7 @@ export interface UpdateDownloadProgress {
   /** Number of updates downloaded. */
   numberOfUpdatesDownloaded?: number;
 }
-export const UpdateDownloadProgress = /*@__PURE__*/ S.suspend(() =>
+const UpdateDownloadProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadPhase: S.optional(DownloadPhase),
     percentComplete: S.optional(S.Number),
@@ -2837,7 +2833,7 @@ export interface UpdateInstallProgress {
   /** Number of updates installed. */
   numberOfUpdatesInstalled?: number;
 }
-export const UpdateInstallProgress = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstallProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentComplete: S.optional(S.Number),
     numberOfUpdatesToInstall: S.optional(S.Number),
@@ -2864,7 +2860,7 @@ export interface JobProperties {
   /** If only subfolders need to be refreshed, then the subfolder path inside the share or container. (The path is empty if there are no subfolders.) */
   folder?: string;
 }
-export const JobProperties = /*@__PURE__*/ S.suspend(() =>
+const JobProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobType: S.optional(JobType),
     currentStage: S.optional(UpdateOperationStage),
@@ -2879,7 +2875,7 @@ export const JobProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The recommended actions. */
 export type JobErrorItemRecommendationsList = Array<string>;
-export const JobErrorItemRecommendationsList =
+const JobErrorItemRecommendationsList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<JobErrorItemRecommendationsList>;
 
 /** The job error items. */
@@ -2891,7 +2887,7 @@ export interface JobErrorItem {
   /** The message that describes the error in detail. */
   message?: string;
 }
-export const JobErrorItem = /*@__PURE__*/ S.suspend(() =>
+const JobErrorItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendations: S.optional(JobErrorItemRecommendationsList),
     code: S.optional(S.String),
@@ -2901,7 +2897,7 @@ export const JobErrorItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type JobErrorDetailsErrorDetailsList = Array<JobErrorItem>;
-export const JobErrorDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
+const JobErrorDetailsErrorDetailsList = /*@__PURE__*/ S.Array(
   JobErrorItem,
 ) as any as S.Schema<JobErrorDetailsErrorDetailsList>;
 
@@ -2914,7 +2910,7 @@ export interface JobErrorDetails {
   /** The message that describes the error in detail. */
   message?: string;
 }
-export const JobErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const JobErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorDetails: S.optional(JobErrorDetailsErrorDetailsList),
     code: S.optional(S.String),
@@ -2944,7 +2940,7 @@ export interface GetJobResponse {
   /** The error details. */
   error?: JobErrorDetails;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2969,7 +2965,7 @@ export interface GetMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-export const GetMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2994,7 +2990,7 @@ export interface MetricDimension {
   /** The dimension value. */
   sourceName: string;
 }
-export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
+const MetricDimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceType: S.String,
     sourceName: S.String,
@@ -3003,13 +2999,13 @@ export const MetricDimension = /*@__PURE__*/ S.suspend(() =>
 
 /** The dimension filter. */
 export type MetricCounterDimensionFilterList = Array<MetricDimension>;
-export const MetricCounterDimensionFilterList = /*@__PURE__*/ S.Array(
+const MetricCounterDimensionFilterList = /*@__PURE__*/ S.Array(
   MetricDimension,
 ) as any as S.Schema<MetricCounterDimensionFilterList>;
 
 /** The additional dimensions to be added to metric. */
 export type MetricCounterAdditionalDimensionsList = Array<MetricDimension>;
-export const MetricCounterAdditionalDimensionsList =
+const MetricCounterAdditionalDimensionsList =
   MetricCounterDimensionFilterList as any as S.Schema<MetricCounterAdditionalDimensionsList>;
 
 /** The metric counter */
@@ -3023,7 +3019,7 @@ export interface MetricCounter {
   /** The additional dimensions to be added to metric. */
   additionalDimensions?: MetricCounterAdditionalDimensionsList;
 }
-export const MetricCounter = /*@__PURE__*/ S.suspend(() =>
+const MetricCounter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     instance: S.optional(S.String),
@@ -3034,7 +3030,7 @@ export const MetricCounter = /*@__PURE__*/ S.suspend(() =>
 
 /** The counters that should be collected in this set. */
 export type MetricCounterSetCountersList = Array<MetricCounter>;
-export const MetricCounterSetCountersList = /*@__PURE__*/ S.Array(
+const MetricCounterSetCountersList = /*@__PURE__*/ S.Array(
   MetricCounter,
 ) as any as S.Schema<MetricCounterSetCountersList>;
 
@@ -3043,7 +3039,7 @@ export interface MetricCounterSet {
   /** The counters that should be collected in this set. */
   counters: MetricCounterSetCountersList;
 }
-export const MetricCounterSet = /*@__PURE__*/ S.suspend(() =>
+const MetricCounterSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counters: MetricCounterSetCountersList,
   }),
@@ -3051,7 +3047,7 @@ export const MetricCounterSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Host name for the IoT hub associated to the device. */
 export type MetricConfigurationCounterSetsList = Array<MetricCounterSet>;
-export const MetricConfigurationCounterSetsList = /*@__PURE__*/ S.Array(
+const MetricConfigurationCounterSetsList = /*@__PURE__*/ S.Array(
   MetricCounterSet,
 ) as any as S.Schema<MetricConfigurationCounterSetsList>;
 
@@ -3066,7 +3062,7 @@ export interface MetricConfiguration {
   /** Host name for the IoT hub associated to the device. */
   counterSets: MetricConfigurationCounterSetsList;
 }
-export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     mdmAccount: S.optional(S.String),
@@ -3078,17 +3074,16 @@ export const MetricConfiguration = /*@__PURE__*/ S.suspend(() =>
 /** The metrics configuration details */
 export type MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
   Array<MetricConfiguration>;
-export const MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
-  /*@__PURE__*/ S.Array(
-    MetricConfiguration,
-  ) as any as S.Schema<MonitoringMetricConfigurationPropertiesMetricConfigurationsList>;
+const MonitoringMetricConfigurationPropertiesMetricConfigurationsList = /*@__PURE__*/ S.Array(
+  MetricConfiguration,
+) as any as S.Schema<MonitoringMetricConfigurationPropertiesMetricConfigurationsList>;
 
 /** Metrics properties */
 export interface MonitoringMetricConfigurationProperties {
   /** The metrics configuration details */
   metricConfigurations: MonitoringMetricConfigurationPropertiesMetricConfigurationsList;
 }
-export const MonitoringMetricConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitoringMetricConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricConfigurations: MonitoringMetricConfigurationPropertiesMetricConfigurationsList,
   }),
@@ -3108,7 +3103,7 @@ export interface GetMonitoringConfigResponse {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const GetMonitoringConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoringConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3130,7 +3125,7 @@ export interface GetOperationsStatusRequest {
   /** The job name. */
   name: string;
 }
-export const GetOperationsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3170,7 +3165,7 @@ export interface GetOperationsStatusResponse {
   /** The error details. */
   error?: JobErrorDetails;
 }
-export const GetOperationsStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3195,7 +3190,7 @@ export interface GetOrderRequest {
   /** The device name. */
   deviceName: string;
 }
-export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3212,7 +3207,7 @@ export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The email list. */
 export type ContactDetailsEmailListList = Array<string>;
-export const ContactDetailsEmailListList =
+const ContactDetailsEmailListList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<ContactDetailsEmailListList>;
 
 /** Contains all the contact details of the customer. */
@@ -3226,7 +3221,7 @@ export interface ContactDetails {
   /** The email list. */
   emailList: ContactDetailsEmailListList;
 }
-export const ContactDetails = /*@__PURE__*/ S.suspend(() =>
+const ContactDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactPerson: S.String,
     companyName: S.String,
@@ -3252,7 +3247,7 @@ export interface Address {
   /** The country name. */
   country: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressLine1: S.optional(S.String),
     addressLine2: S.optional(S.String),
@@ -3283,7 +3278,7 @@ export type OrderState =
   | "AwaitingPickup"
   | "PickupCompleted"
   | "AwaitingDrop";
-export const OrderState = S.String;
+const OrderState = S.String;
 
 /** Tracking courier information. */
 export interface TrackingInfo {
@@ -3296,7 +3291,7 @@ export interface TrackingInfo {
   /** Tracking URL of the shipment. */
   trackingUrl?: string;
 }
-export const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
+const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serialNumber: S.optional(S.String),
     carrierName: S.optional(S.String),
@@ -3307,7 +3302,7 @@ export const TrackingInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary to hold generic information which is not stored by the already existing properties */
 export type OrderStatusAdditionalOrderDetailsMap = { [key: string]: string | undefined };
-export const OrderStatusAdditionalOrderDetailsMap =
+const OrderStatusAdditionalOrderDetailsMap =
   DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<OrderStatusAdditionalOrderDetailsMap>;
 
 /** Represents a single status change. */
@@ -3323,7 +3318,7 @@ export interface OrderStatus {
   /** Dictionary to hold generic information which is not stored by the already existing properties */
   additionalOrderDetails?: OrderStatusAdditionalOrderDetailsMap;
 }
-export const OrderStatus = /*@__PURE__*/ S.suspend(() =>
+const OrderStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: OrderState,
     updateDateTime: S.optional(S.String),
@@ -3335,23 +3330,23 @@ export const OrderStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** List of status changes in the order. */
 export type OrderPropertiesOrderHistoryList = Array<OrderStatus>;
-export const OrderPropertiesOrderHistoryList = /*@__PURE__*/ S.Array(
+const OrderPropertiesOrderHistoryList = /*@__PURE__*/ S.Array(
   OrderStatus,
 ) as any as S.Schema<OrderPropertiesOrderHistoryList>;
 
 /** Tracking information for the package delivered to the customer whether it has an original or a replacement device. */
 export type OrderPropertiesDeliveryTrackingInfoList = Array<TrackingInfo>;
-export const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ S.Array(
+const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ S.Array(
   TrackingInfo,
 ) as any as S.Schema<OrderPropertiesDeliveryTrackingInfoList>;
 
 /** Tracking information for the package returned from the customer whether it has an original or a replacement device. */
 export type OrderPropertiesReturnTrackingInfoList = Array<TrackingInfo>;
-export const OrderPropertiesReturnTrackingInfoList =
+const OrderPropertiesReturnTrackingInfoList =
   OrderPropertiesDeliveryTrackingInfoList as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
 
 export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
-export const ShipmentType = S.String;
+const ShipmentType = S.String;
 
 /** Order properties. */
 export interface OrderProperties {
@@ -3374,7 +3369,7 @@ export interface OrderProperties {
   /** ShipmentType of the order */
   shipmentType?: ShipmentType;
 }
-export const OrderProperties = /*@__PURE__*/ S.suspend(() =>
+const OrderProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.optional(S.String),
     contactInformation: ContactDetails,
@@ -3402,7 +3397,7 @@ export interface GetOrderResponse {
   /** It specify the order api version. */
   kind?: string;
 }
-export const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3423,7 +3418,7 @@ export interface GetRoleRequest {
   /** The role name. */
   name: string;
 }
-export const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3451,7 +3446,7 @@ export interface GetRoleResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-export const GetRoleResponse = GetAddonResponse as any as S.Schema<GetRoleResponse>;
+const GetRoleResponse = GetAddonResponse as any as S.Schema<GetRoleResponse>;
 
 export interface GetShareRequest {
   /** The ID of the target subscription. */
@@ -3463,7 +3458,7 @@ export interface GetShareRequest {
   /** The share name. */
   name: string;
 }
-export const GetShareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3481,11 +3476,11 @@ export const GetShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the share. */
 export type ShareStatus = "Offline" | "Unknown" | "OK" | "Updating" | "NeedsAttention";
-export const ShareStatus = S.String;
+const ShareStatus = S.String;
 
 /** Current monitoring status of the share. */
 export type MonitoringStatus = "Enabled" | "Disabled";
-export const MonitoringStatus = S.String;
+const MonitoringStatus = S.String;
 
 /** Azure container mapping of the endpoint. */
 export interface AzureContainerInfo {
@@ -3496,7 +3491,7 @@ export interface AzureContainerInfo {
   /** Storage format used for the file represented by the share. */
   dataFormat: AzureContainerDataFormat | (string & {});
 }
-export const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
+const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageAccountCredentialId: S.String,
     containerName: S.String,
@@ -3506,11 +3501,11 @@ export const AzureContainerInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Access protocol to be used by the share. */
 export type ShareAccessProtocol = "SMB" | "NFS";
-export const ShareAccessProtocol = S.String;
+const ShareAccessProtocol = S.String;
 
 /** Type of access to be allowed on the share for this user. */
 export type ShareAccessType = "Change" | "Read" | "Custom";
-export const ShareAccessType = S.String;
+const ShareAccessType = S.String;
 
 /** The mapping between a particular user and the access type on the SMB share. */
 export interface UserAccessRight {
@@ -3519,7 +3514,7 @@ export interface UserAccessRight {
   /** Type of access to be allowed for the user. */
   accessType: ShareAccessType | (string & {});
 }
-export const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
+const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String,
     accessType: ShareAccessType,
@@ -3528,13 +3523,13 @@ export const UserAccessRight = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesUserAccessRightsList = Array<UserAccessRight>;
-export const SharePropertiesUserAccessRightsList = /*@__PURE__*/ S.Array(
+const SharePropertiesUserAccessRightsList = /*@__PURE__*/ S.Array(
   UserAccessRight,
 ) as any as S.Schema<SharePropertiesUserAccessRightsList>;
 
 /** Type of access to be allowed for the client. */
 export type ClientPermissionType = "NoAccess" | "ReadOnly" | "ReadWrite";
-export const ClientPermissionType = S.String;
+const ClientPermissionType = S.String;
 
 /** The mapping between a particular client IP and the type of access client has on the NFS share. */
 export interface ClientAccessRight {
@@ -3543,7 +3538,7 @@ export interface ClientAccessRight {
   /** Type of access to be allowed for the client. */
   accessPermission: ClientPermissionType | (string & {});
 }
-export const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
+const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client: S.String,
     accessPermission: ClientPermissionType,
@@ -3552,13 +3547,13 @@ export const ClientAccessRight = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesClientAccessRightsList = Array<ClientAccessRight>;
-export const SharePropertiesClientAccessRightsList = /*@__PURE__*/ S.Array(
+const SharePropertiesClientAccessRightsList = /*@__PURE__*/ S.Array(
   ClientAccessRight,
 ) as any as S.Schema<SharePropertiesClientAccessRightsList>;
 
 /** Mounting type. */
 export type MountType = "Volume" | "HostPath";
-export const MountType = S.String;
+const MountType = S.String;
 
 /** The share mount point. */
 export interface MountPointMap {
@@ -3573,7 +3568,7 @@ export interface MountPointMap {
   /** Role type. */
   roleType?: RoleTypes;
 }
-export const MountPointMap = /*@__PURE__*/ S.suspend(() =>
+const MountPointMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareId: S.String,
     roleId: S.optional(S.String),
@@ -3585,13 +3580,13 @@ export const MountPointMap = /*@__PURE__*/ S.suspend(() =>
 
 /** Share mount point to the role. */
 export type SharePropertiesShareMappingsList = Array<MountPointMap>;
-export const SharePropertiesShareMappingsList = /*@__PURE__*/ S.Array(
+const SharePropertiesShareMappingsList = /*@__PURE__*/ S.Array(
   MountPointMap,
 ) as any as S.Schema<SharePropertiesShareMappingsList>;
 
 /** Data policy of the share. */
 export type DataPolicy = "Cloud" | "Local";
-export const DataPolicy = S.String;
+const DataPolicy = S.String;
 
 /** The share properties. */
 export interface ShareProperties {
@@ -3616,7 +3611,7 @@ export interface ShareProperties {
   /** Data policy of the share. */
   dataPolicy?: DataPolicy;
 }
-export const ShareProperties = /*@__PURE__*/ S.suspend(() =>
+const ShareProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     shareStatus: ShareStatus,
@@ -3643,7 +3638,7 @@ export interface GetShareResponse {
   /** The share properties. */
   properties: ShareProperties;
 }
-export const GetShareResponse = /*@__PURE__*/ S.suspend(() =>
+const GetShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3663,7 +3658,7 @@ export interface GetStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-export const GetStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3681,7 +3676,7 @@ export const GetStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the storage account */
 export type StorageAccountStatus = "OK" | "Offline" | "Unknown" | "Updating" | "NeedsAttention";
-export const StorageAccountStatus = S.String;
+const StorageAccountStatus = S.String;
 
 /** The storage account properties. */
 export interface StorageAccountProperties {
@@ -3698,7 +3693,7 @@ export interface StorageAccountProperties {
   /** The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud. */
   containerCount?: number;
 }
-export const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     storageAccountStatus: S.optional(StorageAccountStatus),
@@ -3721,7 +3716,7 @@ export interface GetStorageAccountResponse {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-export const GetStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3743,7 +3738,7 @@ export interface GetStorageAccountCredentialsRequest {
   /** The storage account credential name. */
   name: string;
 }
-export const GetStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3763,11 +3758,11 @@ export const GetStorageAccountCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Signifies whether SSL needs to be enabled or not. */
 export type SSLStatus = "Enabled" | "Disabled";
-export const SSLStatus = S.String;
+const SSLStatus = S.String;
 
 /** Type of storage accessed on the storage account. */
 export type AccountType = "GeneralPurposeStorage" | "BlobStorage";
-export const AccountType = S.String;
+const AccountType = S.String;
 
 /** The storage account credential properties. */
 export interface StorageAccountCredentialProperties {
@@ -3788,7 +3783,7 @@ export interface StorageAccountCredentialProperties {
   /** Id of the storage account. */
   storageAccountId?: string;
 }
-export const StorageAccountCredentialProperties = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountCredentialProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.String,
     userName: S.optional(S.String),
@@ -3815,7 +3810,7 @@ export interface GetStorageAccountCredentialsResponse {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-export const GetStorageAccountCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageAccountCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3837,7 +3832,7 @@ export interface GetTriggerRequest {
   /** The trigger name. */
   name: string;
 }
-export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3855,7 +3850,7 @@ export const GetTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Trigger Kind. */
 export type TriggerEventType = "FileEvent" | "PeriodicTimerEvent";
-export const TriggerEventType = S.String;
+const TriggerEventType = S.String;
 
 export interface GetTriggerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3869,7 +3864,7 @@ export interface GetTriggerResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const GetTriggerResponse = GetAddonResponse as any as S.Schema<GetTriggerResponse>;
+const GetTriggerResponse = GetAddonResponse as any as S.Schema<GetTriggerResponse>;
 
 export interface GetUserRequest {
   /** The ID of the target subscription. */
@@ -3881,7 +3876,7 @@ export interface GetUserRequest {
   /** The user name. */
   name: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3904,7 +3899,7 @@ export interface ShareAccessRight {
   /** Type of access to be allowed on the share for this user. */
   accessType: ShareAccessType;
 }
-export const ShareAccessRight = /*@__PURE__*/ S.suspend(() =>
+const ShareAccessRight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareId: S.String,
     accessType: ShareAccessType,
@@ -3913,13 +3908,13 @@ export const ShareAccessRight = /*@__PURE__*/ S.suspend(() =>
 
 /** List of shares that the user has rights on. This field should not be specified during user creation. */
 export type UserPropertiesShareAccessRightsList = Array<ShareAccessRight>;
-export const UserPropertiesShareAccessRightsList = /*@__PURE__*/ S.Array(
+const UserPropertiesShareAccessRightsList = /*@__PURE__*/ S.Array(
   ShareAccessRight,
 ) as any as S.Schema<UserPropertiesShareAccessRightsList>;
 
 /** Type of the user. */
 export type UserType = "Share" | "LocalManagement" | "ARM";
-export const UserType = S.String;
+const UserType = S.String;
 
 /** The user properties. */
 export interface UserProperties {
@@ -3930,7 +3925,7 @@ export interface UserProperties {
   /** Type of the user. */
   userType: UserType;
 }
-export const UserProperties = /*@__PURE__*/ S.suspend(() =>
+const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedPassword: S.optional(AsymmetricEncryptedSecret),
     shareAccessRights: S.optional(UserPropertiesShareAccessRightsList),
@@ -3950,7 +3945,7 @@ export interface GetUserResponse {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3968,7 +3963,7 @@ export interface InstallDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-export const InstallDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
+const InstallDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3986,7 +3981,7 @@ export const InstallDeviceUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallDeviceUpdatesRequest>;
 
 export interface InstallDeviceUpdatesResponse {}
-export const InstallDeviceUpdatesResponse =
+const InstallDeviceUpdatesResponse =
   DeleteAddonResponse as any as S.Schema<InstallDeviceUpdatesResponse>;
 
 export interface ListAddonByRoleRequest {
@@ -3999,7 +3994,7 @@ export interface ListAddonByRoleRequest {
   /** The name of the role. */
   roleName: string;
 }
-export const ListAddonByRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddonByRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4028,13 +4023,11 @@ export interface Addon {
   /** Addon type. */
   kind: AddonType;
 }
-export const Addon = GetAddonResponse as any as S.Schema<Addon>;
+const Addon = GetAddonResponse as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
-export const AddonListValueList = /*@__PURE__*/ S.Array(
-  Addon,
-) as any as S.Schema<AddonListValueList>;
+const AddonListValueList = /*@__PURE__*/ S.Array(Addon) as any as S.Schema<AddonListValueList>;
 
 /** Collection of all the Role addon on the Azure Stack Edge device. */
 export interface AddonList {
@@ -4043,7 +4036,7 @@ export interface AddonList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AddonList = /*@__PURE__*/ S.suspend(() =>
+const AddonList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AddonListValueList,
     nextLink: S.optional(S.String),
@@ -4058,7 +4051,7 @@ export interface ListAlertByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListAlertByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4088,13 +4081,11 @@ export interface Alert {
   /** Properties of alert. */
   properties?: AlertProperties;
 }
-export const Alert = GetAlertResponse as any as S.Schema<Alert>;
+const Alert = GetAlertResponse as any as S.Schema<Alert>;
 
 /** The Alert items on this page */
 export type AlertListValueList = Array<Alert>;
-export const AlertListValueList = /*@__PURE__*/ S.Array(
-  Alert,
-) as any as S.Schema<AlertListValueList>;
+const AlertListValueList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertListValueList>;
 
 /** Collection of alerts. */
 export interface AlertList {
@@ -4103,7 +4094,7 @@ export interface AlertList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AlertList = /*@__PURE__*/ S.suspend(() =>
+const AlertList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AlertListValueList,
     nextLink: S.optional(S.String),
@@ -4114,7 +4105,7 @@ export interface ListAvailableSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListAvailableSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4129,22 +4120,22 @@ export const ListAvailableSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability of the Sku for the region. */
 export type DataBoxEdgeSkuLocationsList = Array<string>;
-export const DataBoxEdgeSkuLocationsList =
+const DataBoxEdgeSkuLocationsList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuLocationsList>;
 
 /** The API versions in which Sku is available. */
 export type DataBoxEdgeSkuApiVersionsList = Array<string>;
-export const DataBoxEdgeSkuApiVersionsList =
+const DataBoxEdgeSkuApiVersionsList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
 
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-export const SkuLocationInfoZonesList =
+const SkuLocationInfoZonesList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoZonesList>;
 
 /** The sites. */
 export type SkuLocationInfoSitesList = Array<string>;
-export const SkuLocationInfoSitesList =
+const SkuLocationInfoSitesList =
   DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoSitesList>;
 
 /** The location info. */
@@ -4156,7 +4147,7 @@ export interface SkuLocationInfo {
   /** The sites. */
   sites?: SkuLocationInfoSitesList;
 }
-export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
+const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     zones: S.optional(SkuLocationInfoZonesList),
@@ -4166,7 +4157,7 @@ export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Availability of the Sku for the location/zone/site. */
 export type DataBoxEdgeSkuLocationInfoList = Array<SkuLocationInfo>;
-export const DataBoxEdgeSkuLocationInfoList = /*@__PURE__*/ S.Array(
+const DataBoxEdgeSkuLocationInfoList = /*@__PURE__*/ S.Array(
   SkuLocationInfo,
 ) as any as S.Schema<DataBoxEdgeSkuLocationInfoList>;
 
@@ -4179,7 +4170,7 @@ export interface SkuCost {
   /** The extended unit. */
   extendedUnit?: string;
 }
-export const SkuCost = /*@__PURE__*/ S.suspend(() =>
+const SkuCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meterId: S.optional(S.String),
     quantity: S.optional(S.Number),
@@ -4189,25 +4180,25 @@ export const SkuCost = /*@__PURE__*/ S.suspend(() =>
 
 /** The pricing info of the Sku. */
 export type DataBoxEdgeSkuCostsList = Array<SkuCost>;
-export const DataBoxEdgeSkuCostsList = /*@__PURE__*/ S.Array(
+const DataBoxEdgeSkuCostsList = /*@__PURE__*/ S.Array(
   SkuCost,
 ) as any as S.Schema<DataBoxEdgeSkuCostsList>;
 
 /** Sku can be signed up by customer or not. */
 export type SkuSignupOption = "None" | "Available";
-export const SkuSignupOption = S.String;
+const SkuSignupOption = S.String;
 
 /** Availability of the Sku as preview/stable. */
 export type SkuVersion = "Stable" | "Preview";
-export const SkuVersion = S.String;
+const SkuVersion = S.String;
 
 /** Links to the next set of results */
 export type SkuAvailability = "Available" | "Unavailable";
-export const SkuAvailability = S.String;
+const SkuAvailability = S.String;
 
 /** List of Shipment Types supported by this SKU */
 export type DataBoxEdgeSkuShipmentTypesList = Array<ShipmentType>;
-export const DataBoxEdgeSkuShipmentTypesList =
+const DataBoxEdgeSkuShipmentTypesList =
   BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
 
 /** The metadata to describe the capability. */
@@ -4217,7 +4208,7 @@ export interface SkuCapability {
   /** An invariant if the feature is measured by quantity. */
   value?: string;
 }
-export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
+const SkuCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -4226,7 +4217,7 @@ export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The capability info of the SKU. */
 export type DataBoxEdgeSkuCapabilitiesList = Array<SkuCapability>;
-export const DataBoxEdgeSkuCapabilitiesList = /*@__PURE__*/ S.Array(
+const DataBoxEdgeSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   SkuCapability,
 ) as any as S.Schema<DataBoxEdgeSkuCapabilitiesList>;
 
@@ -4263,7 +4254,7 @@ export interface DataBoxEdgeSku {
   /** The capability info of the SKU. */
   capabilities?: DataBoxEdgeSkuCapabilitiesList;
 }
-export const DataBoxEdgeSku = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     name: S.optional(SkuName),
@@ -4285,7 +4276,7 @@ export const DataBoxEdgeSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The DataBoxEdgeSku items on this page */
 export type DataBoxEdgeSkuListValueList = Array<DataBoxEdgeSku>;
-export const DataBoxEdgeSkuListValueList = /*@__PURE__*/ S.Array(
+const DataBoxEdgeSkuListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeSku,
 ) as any as S.Schema<DataBoxEdgeSkuListValueList>;
 
@@ -4296,7 +4287,7 @@ export interface DataBoxEdgeSkuList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataBoxEdgeSkuList = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeSkuList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DataBoxEdgeSkuListValueList,
     nextLink: S.optional(S.String),
@@ -4311,7 +4302,7 @@ export interface ListBandwidthScheduleByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListBandwidthScheduleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBandwidthScheduleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4341,7 +4332,7 @@ export interface BandwidthSchedule {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-export const BandwidthSchedule = /*@__PURE__*/ S.suspend(() =>
+const BandwidthSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4353,7 +4344,7 @@ export const BandwidthSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** The BandwidthSchedule items on this page */
 export type BandwidthSchedulesListValueList = Array<BandwidthSchedule>;
-export const BandwidthSchedulesListValueList = /*@__PURE__*/ S.Array(
+const BandwidthSchedulesListValueList = /*@__PURE__*/ S.Array(
   BandwidthSchedule,
 ) as any as S.Schema<BandwidthSchedulesListValueList>;
 
@@ -4364,7 +4355,7 @@ export interface BandwidthSchedulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const BandwidthSchedulesList = /*@__PURE__*/ S.suspend(() =>
+const BandwidthSchedulesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: BandwidthSchedulesListValueList,
     nextLink: S.optional(S.String),
@@ -4381,7 +4372,7 @@ export interface ListContainerByStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-export const ListContainerByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContainerByStorageAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4412,11 +4403,11 @@ export interface Container {
   /** The container properties. */
   properties: ContainerProperties;
 }
-export const Container = GetContainerResponse as any as S.Schema<Container>;
+const Container = GetContainerResponse as any as S.Schema<Container>;
 
 /** The Container items on this page */
 export type ContainerListValueList = Array<Container>;
-export const ContainerListValueList = /*@__PURE__*/ S.Array(
+const ContainerListValueList = /*@__PURE__*/ S.Array(
   Container,
 ) as any as S.Schema<ContainerListValueList>;
 
@@ -4427,7 +4418,7 @@ export interface ContainerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ContainerList = /*@__PURE__*/ S.suspend(() =>
+const ContainerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ContainerListValueList,
     nextLink: S.optional(S.String),
@@ -4442,7 +4433,7 @@ export interface ListDeviceByResourceGroupRequest {
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
 }
-export const ListDeviceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeviceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4461,9 +4452,6 @@ export const ListDeviceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DataBoxEdgeDeviceTagsMap = { [key: string]: string | undefined };
-export const DataBoxEdgeDeviceTagsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<DataBoxEdgeDeviceTagsMap>;
-
 /** The Data Box Edge/Gateway device. */
 export interface DataBoxEdgeDevice {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4489,11 +4477,11 @@ export interface DataBoxEdgeDevice {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const DataBoxEdgeDevice = GetDeviceResponse as any as S.Schema<DataBoxEdgeDevice>;
+const DataBoxEdgeDevice = GetDeviceResponse as any as S.Schema<DataBoxEdgeDevice>;
 
 /** The DataBoxEdgeDevice items on this page */
 export type DataBoxEdgeDeviceListValueList = Array<DataBoxEdgeDevice>;
-export const DataBoxEdgeDeviceListValueList = /*@__PURE__*/ S.Array(
+const DataBoxEdgeDeviceListValueList = /*@__PURE__*/ S.Array(
   DataBoxEdgeDevice,
 ) as any as S.Schema<DataBoxEdgeDeviceListValueList>;
 
@@ -4504,7 +4492,7 @@ export interface DataBoxEdgeDeviceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DataBoxEdgeDeviceList = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDeviceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DataBoxEdgeDeviceListValueList,
     nextLink: S.optional(S.String),
@@ -4517,7 +4505,7 @@ export interface ListDeviceBySubscriptionRequest {
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
 }
-export const ListDeviceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeviceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -4543,7 +4531,7 @@ export interface ListMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-export const ListMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoringConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4574,12 +4562,12 @@ export interface MonitoringMetricConfiguration {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const MonitoringMetricConfiguration =
+const MonitoringMetricConfiguration =
   GetMonitoringConfigResponse as any as S.Schema<MonitoringMetricConfiguration>;
 
 /** The MonitoringMetricConfiguration items on this page */
 export type MonitoringMetricConfigurationListValueList = Array<MonitoringMetricConfiguration>;
-export const MonitoringMetricConfigurationListValueList = /*@__PURE__*/ S.Array(
+const MonitoringMetricConfigurationListValueList = /*@__PURE__*/ S.Array(
   MonitoringMetricConfiguration,
 ) as any as S.Schema<MonitoringMetricConfigurationListValueList>;
 
@@ -4590,7 +4578,7 @@ export interface MonitoringMetricConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoringMetricConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const MonitoringMetricConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoringMetricConfigurationListValueList,
     nextLink: S.optional(S.String),
@@ -4607,7 +4595,7 @@ export interface ListNodeByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListNodeByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodeByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4626,7 +4614,7 @@ export const ListNodeByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of the individual node */
 export type NodeStatus = "Unknown" | "Up" | "Down" | "Rebooting" | "ShuttingDown";
-export const NodeStatus = S.String;
+const NodeStatus = S.String;
 
 /** This class represents the nodes in a highly available cluster */
 export interface NodeProperties {
@@ -4645,7 +4633,7 @@ export interface NodeProperties {
   /** Guid instance id of the node */
   nodeInstanceId?: string;
 }
-export const NodeProperties = /*@__PURE__*/ S.suspend(() =>
+const NodeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodeStatus: S.optional(NodeStatus),
     nodeChassisSerialNumber: S.optional(S.String),
@@ -4668,7 +4656,7 @@ export interface Node {
   /** The properties of the node */
   properties?: NodeProperties;
 }
-export const Node = /*@__PURE__*/ S.suspend(() =>
+const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4679,7 +4667,7 @@ export const Node = /*@__PURE__*/ S.suspend(() =>
 
 /** The Node items on this page */
 export type NodeListValueList = Array<Node>;
-export const NodeListValueList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeListValueList>;
+const NodeListValueList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeListValueList>;
 
 /** Collection of Nodes. */
 export interface NodeList {
@@ -4688,7 +4676,7 @@ export interface NodeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const NodeList = /*@__PURE__*/ S.suspend(() =>
+const NodeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: NodeListValueList,
     nextLink: S.optional(S.String),
@@ -4696,7 +4684,7 @@ export const NodeList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeList" }) as any as S.Schema<NodeList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4718,7 +4706,7 @@ export interface OperationDisplay {
   /** Description of the operation to be performed. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -4737,7 +4725,7 @@ export type MetricUnit =
   | "Bytes"
   | "BytesPerSecond"
   | "CountPerSecond";
-export const MetricUnit = S.String;
+const MetricUnit = S.String;
 
 /** Metric aggregation type. */
 export type MetricAggregationType =
@@ -4748,7 +4736,7 @@ export type MetricAggregationType =
   | "Maximum"
   | "Total"
   | "Count";
-export const MetricAggregationType = S.String;
+const MetricAggregationType = S.String;
 
 /** Metric Dimension v1. */
 export interface MetricDimensionV1 {
@@ -4759,7 +4747,7 @@ export interface MetricDimensionV1 {
   /** To be exported to shoe box. */
   toBeExportedForShoebox?: boolean;
 }
-export const MetricDimensionV1 = /*@__PURE__*/ S.suspend(() =>
+const MetricDimensionV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4769,24 +4757,22 @@ export const MetricDimensionV1 = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric dimensions, other than default dimension which is resource. */
 export type MetricSpecificationV1DimensionsList = Array<MetricDimensionV1>;
-export const MetricSpecificationV1DimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationV1DimensionsList = /*@__PURE__*/ S.Array(
   MetricDimensionV1,
 ) as any as S.Schema<MetricSpecificationV1DimensionsList>;
 
 /** Metric category. */
 export type MetricCategory = "Capacity" | "Transaction";
-export const MetricCategory = S.String;
+const MetricCategory = S.String;
 
 export type TimeGrain = "PT1M" | "PT5M" | "PT15M" | "PT30M" | "PT1H" | "PT6H" | "PT12H" | "PT1D";
-export const TimeGrain = S.String;
-
 /** Support granularity of metrics. */
 export type MetricSpecificationV1SupportedTimeGrainTypesList = Array<TimeGrain>;
-export const MetricSpecificationV1SupportedTimeGrainTypesList =
+const MetricSpecificationV1SupportedTimeGrainTypesList =
   BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
 
 export type MetricSpecificationV1SupportedAggregationTypesList = Array<MetricAggregationType>;
-export const MetricSpecificationV1SupportedAggregationTypesList =
+const MetricSpecificationV1SupportedAggregationTypesList =
   BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedAggregationTypesList>;
 
 /** Metric specification version 1. */
@@ -4813,7 +4799,7 @@ export interface MetricSpecificationV1 {
   supportedTimeGrainTypes?: MetricSpecificationV1SupportedTimeGrainTypesList;
   supportedAggregationTypes?: MetricSpecificationV1SupportedAggregationTypesList;
 }
-export const MetricSpecificationV1 = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecificationV1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4831,7 +4817,7 @@ export const MetricSpecificationV1 = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric specification as defined by shoebox. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecificationV1>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecificationV1,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -4840,7 +4826,7 @@ export interface ServiceSpecification {
   /** Metric specification as defined by shoebox. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
   }),
@@ -4851,7 +4837,7 @@ export interface OperationProperties {
   /** Service specification. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -4870,7 +4856,7 @@ export interface Operation {
   /** Operation properties. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -4882,7 +4868,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationsListValueList = Array<Operation>;
-export const OperationsListValueList = /*@__PURE__*/ S.Array(
+const OperationsListValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListValueList>;
 
@@ -4893,7 +4879,7 @@ export interface OperationsList {
   /** The URL to get the next page of operations. */
   nextLink?: string;
 }
-export const OperationsList = /*@__PURE__*/ S.suspend(() =>
+const OperationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationsListValueList,
     nextLink: S.optional(S.String),
@@ -4908,7 +4894,7 @@ export interface ListOrderByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListOrderByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4940,13 +4926,11 @@ export interface Order {
   /** It specify the order api version. */
   kind?: string;
 }
-export const Order = GetOrderResponse as any as S.Schema<Order>;
+const Order = GetOrderResponse as any as S.Schema<Order>;
 
 /** The Order items on this page */
 export type OrderListValueList = Array<Order>;
-export const OrderListValueList = /*@__PURE__*/ S.Array(
-  Order,
-) as any as S.Schema<OrderListValueList>;
+const OrderListValueList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderListValueList>;
 
 /** List of order entities. */
 export interface OrderList {
@@ -4955,7 +4939,7 @@ export interface OrderList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OrderList = /*@__PURE__*/ S.suspend(() =>
+const OrderList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OrderListValueList,
     nextLink: S.optional(S.String),
@@ -4970,7 +4954,7 @@ export interface ListOrderDCAccessCodeRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListOrderDCAccessCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrderDCAccessCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4992,7 +4976,7 @@ export interface DCAccessCodeProperties {
   /** DCAccess Code for the Self Managed shipment. */
   authCode?: string;
 }
-export const DCAccessCodeProperties = /*@__PURE__*/ S.suspend(() =>
+const DCAccessCodeProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authCode: S.optional(S.String),
   }),
@@ -5003,7 +4987,7 @@ export interface DCAccessCode {
   /** DCAccessCode properties. */
   properties?: DCAccessCodeProperties;
 }
-export const DCAccessCode = /*@__PURE__*/ S.suspend(() =>
+const DCAccessCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DCAccessCodeProperties),
   }),
@@ -5017,7 +5001,7 @@ export interface ListRoleByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListRoleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5047,11 +5031,11 @@ export interface Role {
   /** Role type. */
   kind: RoleTypes;
 }
-export const Role = GetRoleResponse as any as S.Schema<Role>;
+const Role = GetRoleResponse as any as S.Schema<Role>;
 
 /** The Role items on this page */
 export type RoleListValueList = Array<Role>;
-export const RoleListValueList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleListValueList>;
+const RoleListValueList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RoleListValueList>;
 
 /** Collection of all the roles on the Data Box Edge device. */
 export interface RoleList {
@@ -5060,7 +5044,7 @@ export interface RoleList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const RoleList = /*@__PURE__*/ S.suspend(() =>
+const RoleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: RoleListValueList,
     nextLink: S.optional(S.String),
@@ -5075,7 +5059,7 @@ export interface ListShareByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListShareByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListShareByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5105,13 +5089,11 @@ export interface Share {
   /** The share properties. */
   properties: ShareProperties;
 }
-export const Share = GetShareResponse as any as S.Schema<Share>;
+const Share = GetShareResponse as any as S.Schema<Share>;
 
 /** The Share items on this page */
 export type ShareListValueList = Array<Share>;
-export const ShareListValueList = /*@__PURE__*/ S.Array(
-  Share,
-) as any as S.Schema<ShareListValueList>;
+const ShareListValueList = /*@__PURE__*/ S.Array(Share) as any as S.Schema<ShareListValueList>;
 
 /** Collection of all the shares on the Data Box Edge/Gateway device. */
 export interface ShareList {
@@ -5120,7 +5102,7 @@ export interface ShareList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ShareList = /*@__PURE__*/ S.suspend(() =>
+const ShareList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ShareListValueList,
     nextLink: S.optional(S.String),
@@ -5135,7 +5117,7 @@ export interface ListStorageAccountByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListStorageAccountByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5165,7 +5147,7 @@ export interface StorageAccount {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
+const StorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5177,7 +5159,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageAccount items on this page */
 export type StorageAccountListValueList = Array<StorageAccount>;
-export const StorageAccountListValueList = /*@__PURE__*/ S.Array(
+const StorageAccountListValueList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageAccountListValueList>;
 
@@ -5188,7 +5170,7 @@ export interface StorageAccountList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageAccountList = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageAccountListValueList,
     nextLink: S.optional(S.String),
@@ -5203,7 +5185,7 @@ export interface ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-export const ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5233,7 +5215,7 @@ export interface StorageAccountCredential {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-export const StorageAccountCredential = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5245,7 +5227,7 @@ export const StorageAccountCredential = /*@__PURE__*/ S.suspend(() =>
 
 /** The StorageAccountCredential items on this page */
 export type StorageAccountCredentialListValueList = Array<StorageAccountCredential>;
-export const StorageAccountCredentialListValueList = /*@__PURE__*/ S.Array(
+const StorageAccountCredentialListValueList = /*@__PURE__*/ S.Array(
   StorageAccountCredential,
 ) as any as S.Schema<StorageAccountCredentialListValueList>;
 
@@ -5256,7 +5238,7 @@ export interface StorageAccountCredentialList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageAccountCredentialList = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountCredentialList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageAccountCredentialListValueList,
     nextLink: S.optional(S.String),
@@ -5275,7 +5257,7 @@ export interface ListTriggerByDataBoxEdgeDeviceRequest {
   /** Specify $filter='CustomContextTag eq <tag>' to filter on custom context tag property */
   _filter?: string;
 }
-export const ListTriggerByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTriggerByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5306,11 +5288,11 @@ export interface Trigger {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const Trigger = GetTriggerResponse as any as S.Schema<Trigger>;
+const Trigger = GetTriggerResponse as any as S.Schema<Trigger>;
 
 /** The Trigger items on this page */
 export type TriggerListValueList = Array<Trigger>;
-export const TriggerListValueList = /*@__PURE__*/ S.Array(
+const TriggerListValueList = /*@__PURE__*/ S.Array(
   Trigger,
 ) as any as S.Schema<TriggerListValueList>;
 
@@ -5321,7 +5303,7 @@ export interface TriggerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TriggerList = /*@__PURE__*/ S.suspend(() =>
+const TriggerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TriggerListValueList,
     nextLink: S.optional(S.String),
@@ -5338,7 +5320,7 @@ export interface ListUserByDataBoxEdgeDeviceRequest {
   /** Specify $filter='Type eq <type>' to filter on user type property */
   _filter?: string;
 }
-export const ListUserByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserByDataBoxEdgeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5369,11 +5351,11 @@ export interface User {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-export const User = GetUserResponse as any as S.Schema<User>;
+const User = GetUserResponse as any as S.Schema<User>;
 
 /** The User items on this page */
 export type UserListValueList = Array<User>;
-export const UserListValueList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserListValueList>;
+const UserListValueList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserListValueList>;
 
 /** Collection of users. */
 export interface UserList {
@@ -5382,7 +5364,7 @@ export interface UserList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UserList = /*@__PURE__*/ S.suspend(() =>
+const UserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UserListValueList,
     nextLink: S.optional(S.String),
@@ -5401,7 +5383,7 @@ export interface MonitoringConfigCreateOrUpdateRequest {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const MonitoringConfigCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const MonitoringConfigCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5432,7 +5414,7 @@ export interface MonitoringConfigCreateOrUpdateResponse {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-export const MonitoringConfigCreateOrUpdateResponse =
+const MonitoringConfigCreateOrUpdateResponse =
   GetMonitoringConfigResponse as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>;
 
 /** Order properties. */
@@ -5444,7 +5426,7 @@ export interface OrderPropertiesInput {
   /** ShipmentType of the order */
   shipmentType?: ShipmentType | (string & {});
 }
-export const OrderPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OrderPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactInformation: ContactDetails,
     shippingAddress: S.optional(Address),
@@ -5462,7 +5444,7 @@ export interface OrdersCreateOrUpdateRequest {
   /** The order properties. */
   properties?: OrderPropertiesInput;
 }
-export const OrdersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const OrdersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5494,7 +5476,7 @@ export interface OrdersCreateOrUpdateResponse {
   /** It specify the order api version. */
   kind?: string;
 }
-export const OrdersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const OrdersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5519,7 +5501,7 @@ export interface RefreshContainerRequest {
   /** The container Name */
   containerName: string;
 }
-export const RefreshContainerRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshContainerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5537,8 +5519,7 @@ export const RefreshContainerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefreshContainerRequest" }) as any as S.Schema<RefreshContainerRequest>;
 
 export interface RefreshContainerResponse {}
-export const RefreshContainerResponse =
-  DeleteAddonResponse as any as S.Schema<RefreshContainerResponse>;
+const RefreshContainerResponse = DeleteAddonResponse as any as S.Schema<RefreshContainerResponse>;
 
 export interface RefreshShareRequest {
   /** The ID of the target subscription. */
@@ -5550,7 +5531,7 @@ export interface RefreshShareRequest {
   /** The share name. */
   name: string;
 }
-export const RefreshShareRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5567,7 +5548,7 @@ export const RefreshShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RefreshShareRequest" }) as any as S.Schema<RefreshShareRequest>;
 
 export interface RefreshShareResponse {}
-export const RefreshShareResponse = DeleteAddonResponse as any as S.Schema<RefreshShareResponse>;
+const RefreshShareResponse = DeleteAddonResponse as any as S.Schema<RefreshShareResponse>;
 
 export interface RolesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
@@ -5581,7 +5562,7 @@ export interface RolesCreateOrUpdateRequest {
   /** Role type. */
   kind: RoleTypes | (string & {});
 }
-export const RolesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const RolesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5612,17 +5593,17 @@ export interface RolesCreateOrUpdateResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-export const RolesCreateOrUpdateResponse =
+const RolesCreateOrUpdateResponse =
   AddonsCreateOrUpdateResponse as any as S.Schema<RolesCreateOrUpdateResponse>;
 
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
-export const SharePropertiesInputUserAccessRightsList =
+const SharePropertiesInputUserAccessRightsList =
   SharePropertiesUserAccessRightsList as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
 
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesInputClientAccessRightsList = Array<ClientAccessRight>;
-export const SharePropertiesInputClientAccessRightsList =
+const SharePropertiesInputClientAccessRightsList =
   SharePropertiesClientAccessRightsList as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
 
 /** The share properties. */
@@ -5646,7 +5627,7 @@ export interface SharePropertiesInput {
   /** Data policy of the share. */
   dataPolicy?: DataPolicy | (string & {});
 }
-export const SharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SharePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     shareStatus: ShareStatus,
@@ -5672,7 +5653,7 @@ export interface SharesCreateOrUpdateRequest {
   /** The share properties. */
   properties: SharePropertiesInput;
 }
-export const SharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SharesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5703,7 +5684,7 @@ export interface SharesCreateOrUpdateResponse {
   /** The share properties. */
   properties: ShareProperties;
 }
-export const SharesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SharesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5727,7 +5708,7 @@ export interface StorageAccountCredentialsCreateOrUpdateRequest {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-export const StorageAccountCredentialsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountCredentialsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5758,7 +5739,7 @@ export interface StorageAccountCredentialsCreateOrUpdateResponse {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-export const StorageAccountCredentialsCreateOrUpdateResponse =
+const StorageAccountCredentialsCreateOrUpdateResponse =
   GetStorageAccountCredentialsResponse as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>;
 
 /** The storage account properties. */
@@ -5772,7 +5753,7 @@ export interface StorageAccountPropertiesInput {
   /** Storage Account Credential Id */
   storageAccountCredentialId?: string;
 }
-export const StorageAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     storageAccountStatus: S.optional(StorageAccountStatus),
@@ -5795,7 +5776,7 @@ export interface StorageAccountsCreateOrUpdateRequest {
   /** The Storage Account properties. */
   properties: StorageAccountPropertiesInput;
 }
-export const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5826,7 +5807,7 @@ export interface StorageAccountsCreateOrUpdateResponse {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-export const StorageAccountsCreateOrUpdateResponse =
+const StorageAccountsCreateOrUpdateResponse =
   GetStorageAccountResponse as any as S.Schema<StorageAccountsCreateOrUpdateResponse>;
 
 export interface TriggersCreateOrUpdateRequest {
@@ -5841,7 +5822,7 @@ export interface TriggersCreateOrUpdateRequest {
   /** Trigger Kind. */
   kind: TriggerEventType | (string & {});
 }
-export const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5872,7 +5853,7 @@ export interface TriggersCreateOrUpdateResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-export const TriggersCreateOrUpdateResponse =
+const TriggersCreateOrUpdateResponse =
   AddonsCreateOrUpdateResponse as any as S.Schema<TriggersCreateOrUpdateResponse>;
 
 /** The share properties. */
@@ -5884,7 +5865,7 @@ export interface SupportPackageRequestProperties {
   /** Type of files, which need to be included in the logs This will contain the type of logs (Default/DefaultWithDumps/None/All/DefaultWithArchived) or a comma separated list of log types that are required */
   include?: string;
 }
-export const SupportPackageRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const SupportPackageRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumTimeStamp: S.optional(S.String),
     maximumTimeStamp: S.optional(S.String),
@@ -5904,7 +5885,7 @@ export interface TriggerSupportPackageSupportPackageRequest {
   /** The TriggerSupportPackageRequest properties. */
   properties: SupportPackageRequestProperties;
 }
-export const TriggerSupportPackageSupportPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerSupportPackageSupportPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5923,12 +5904,12 @@ export const TriggerSupportPackageSupportPackageRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>;
 
 export interface TriggerSupportPackageSupportPackageResponse {}
-export const TriggerSupportPackageSupportPackageResponse =
+const TriggerSupportPackageSupportPackageResponse =
   DeleteStorageAccountCredentialsResponse as any as S.Schema<TriggerSupportPackageSupportPackageResponse>;
 
 /** The tags attached to the Data Box Edge/Gateway resource. */
 export type UpdateDeviceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDeviceRequestTagsMap =
+const UpdateDeviceRequestTagsMap =
   DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDeviceRequestTagsMap>;
 
 /** The Data Box Edge/Gateway Edge Profile Subscription patch. */
@@ -5936,7 +5917,7 @@ export interface EdgeProfileSubscriptionPatch {
   /** The path ID that uniquely identifies the subscription of the edge profile. */
   id?: string;
 }
-export const EdgeProfileSubscriptionPatch = /*@__PURE__*/ S.suspend(() =>
+const EdgeProfileSubscriptionPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -5949,7 +5930,7 @@ export interface EdgeProfilePatch {
   /** The Data Box Edge/Gateway Edge Profile Subscription patch */
   subscription?: EdgeProfileSubscriptionPatch;
 }
-export const EdgeProfilePatch = /*@__PURE__*/ S.suspend(() =>
+const EdgeProfilePatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(EdgeProfileSubscriptionPatch),
   }),
@@ -5960,7 +5941,7 @@ export interface DataBoxEdgeDevicePropertiesPatch {
   /** Edge Profile property of the Data Box Edge/Gateway device */
   edgeProfile?: EdgeProfilePatch;
 }
-export const DataBoxEdgeDevicePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
+const DataBoxEdgeDevicePropertiesPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edgeProfile: S.optional(EdgeProfilePatch),
   }),
@@ -5982,7 +5963,7 @@ export interface UpdateDeviceRequest {
   /** The properties associated with the Data Box Edge/Gateway resource */
   properties?: DataBoxEdgeDevicePropertiesPatch;
 }
-export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6002,9 +5983,6 @@ export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDeviceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDeviceResponseTagsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDeviceResponseTagsMap>;
-
 export interface UpdateDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6029,7 +6007,7 @@ export interface UpdateDeviceResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-export const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
+const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
 
 export interface UpdateDeviceExtendedInformationRequest {
   /** The ID of the target subscription. */
@@ -6049,7 +6027,7 @@ export interface UpdateDeviceExtendedInformationRequest {
   /** For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not be applicable. */
   syncStatus?: KeyVaultSyncStatus | (string & {});
 }
-export const UpdateDeviceExtendedInformationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeviceExtendedInformationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6077,16 +6055,12 @@ export type UpdateDeviceExtendedInformationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDeviceExtendedInformationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateDeviceExtendedInformationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateDeviceExtendedInformationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateDeviceExtendedInformationResponseSystemData {
   /** The identity that created the resource. */
@@ -6102,9 +6076,6 @@ export interface UpdateDeviceExtendedInformationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateDeviceExtendedInformationResponseSystemData =
-  GetDeviceExtendedInformationResponseSystemData as any as S.Schema<UpdateDeviceExtendedInformationResponseSystemData>;
-
 export interface UpdateDeviceExtendedInformationResponse {
   /** The path ID that uniquely identifies the object. */
   id?: string;
@@ -6117,7 +6088,7 @@ export interface UpdateDeviceExtendedInformationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDeviceExtendedInformationResponseSystemData;
 }
-export const UpdateDeviceExtendedInformationResponse =
+const UpdateDeviceExtendedInformationResponse =
   GetDeviceExtendedInformationResponse as any as S.Schema<UpdateDeviceExtendedInformationResponse>;
 
 export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest {
@@ -6130,7 +6101,7 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest =
+const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -6161,7 +6132,7 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
+const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
   GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>;
 
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
@@ -6174,24 +6145,23 @@ export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest 
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      deviceName: S.String.pipe(T.Label()),
-      properties: DiagnosticRemoteSupportSettingsProperties,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
-        code: 200,
-        apiVersion: "2023-12-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest",
-  }) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>;
+const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    deviceName: S.String.pipe(T.Label()),
+    properties: DiagnosticRemoteSupportSettingsProperties,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/diagnosticRemoteSupportSettings/default",
+      code: 200,
+      apiVersion: "2023-12-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest",
+}) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>;
 
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6205,8 +6175,8 @@ export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
@@ -6214,13 +6184,13 @@ export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse =
       systemData: S.optional(SystemData),
       properties: DiagnosticRemoteSupportSettingsProperties,
     }),
-  ).annotate({
-    identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
-  }) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>;
+).annotate({
+  identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
+}) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>;
 
 /** The authentication type. */
 export type AuthenticationType = "Invalid" | "AzureActiveDirectory";
-export const AuthenticationType = S.String;
+const AuthenticationType = S.String;
 
 /** Raw Certificate Data. */
 export interface RawCertificateData {
@@ -6229,7 +6199,7 @@ export interface RawCertificateData {
   /** The base64 encoded certificate raw data. */
   certificate: string;
 }
-export const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
+const RawCertificateData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationType: S.optional(AuthenticationType),
     certificate: S.String,
@@ -6246,7 +6216,7 @@ export interface UploadDeviceCertificateRequest {
   /** The Base 64 encoded certificate raw data. */
   properties: RawCertificateData;
 }
-export const UploadDeviceCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadDeviceCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6283,7 +6253,7 @@ export interface UploadCertificateResponse {
   /** Identifier of the target resource that is the recipient of the requested token. */
   aadAudience?: string;
 }
-export const UploadCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authType: S.optional(AuthenticationType),
     resourceId: S.optional(S.String),
@@ -6305,7 +6275,7 @@ export interface UserPropertiesInput {
   /** Type of the user. */
   userType: UserType | (string & {});
 }
-export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptedPassword: S.optional(AsymmetricEncryptedSecret),
     userType: UserType,
@@ -6324,7 +6294,7 @@ export interface UsersCreateOrUpdateRequest {
   /** The storage account credential properties. */
   properties: UserPropertiesInput;
 }
-export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6355,7 +6325,7 @@ export interface UsersCreateOrUpdateResponse {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-export const UsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

@@ -15,7 +15,7 @@ export interface AcknowledgeWebAnalyticsAchievementCelebrationRequest {
   /** Stage number being acknowledged, 1-5. */
   stage: number;
 }
-export const AcknowledgeWebAnalyticsAchievementCelebrationRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeWebAnalyticsAchievementCelebrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     track_key: S.String,
@@ -35,7 +35,7 @@ export interface AcknowledgeCelebrationResponse {
   /** True if a matching pending celebration was cleared (idempotent). */
   acknowledged: boolean;
 }
-export const AcknowledgeCelebrationResponse = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeCelebrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledged: S.Boolean,
   }),
@@ -49,7 +49,7 @@ export interface UpdateWebAnalyticsAchievementPreferencesRequest {
   /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
   achievements_opt_out: boolean;
 }
-export const UpdateWebAnalyticsAchievementPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebAnalyticsAchievementPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     achievements_opt_out: S.Boolean,
@@ -68,7 +68,7 @@ export interface WebAnalyticsUserPreferences {
   /** When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user). */
   achievements_opt_out: boolean;
 }
-export const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsUserPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     achievements_opt_out: S.Boolean,
   }),
@@ -80,7 +80,7 @@ export interface WebAnalyticsAchievementsOverviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -96,7 +96,7 @@ export const WebAnalyticsAchievementsOverviewRequest = /*@__PURE__*/ S.suspend((
 
 /** * `user` - user * `team` - team */
 export type AchievementDefinitionScopeEnum = "user" | "team";
-export const AchievementDefinitionScopeEnum = S.String;
+const AchievementDefinitionScopeEnum = S.String;
 
 export interface AchievementStage {
   /** Stage number within the track, 1-5. */
@@ -106,7 +106,7 @@ export interface AchievementStage {
   /** Progress value needed to unlock this stage, resolved for the user's streak arm. */
   threshold: number;
 }
-export const AchievementStage = /*@__PURE__*/ S.suspend(() =>
+const AchievementStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stage: S.Number,
     name: S.String,
@@ -116,7 +116,7 @@ export const AchievementStage = /*@__PURE__*/ S.suspend(() =>
 
 /** The five stages of this track, in ascending threshold order. */
 export type AchievementDefinitionStagesList = Array<AchievementStage>;
-export const AchievementDefinitionStagesList = /*@__PURE__*/ S.Array(
+const AchievementDefinitionStagesList = /*@__PURE__*/ S.Array(
   AchievementStage,
 ) as any as S.Schema<AchievementDefinitionStagesList>;
 
@@ -134,7 +134,7 @@ export interface AchievementDefinition {
   /** The five stages of this track, in ascending threshold order. */
   stages: AchievementDefinitionStagesList;
 }
-export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
+const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     display_name: S.String,
@@ -147,13 +147,13 @@ export const AchievementDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** All Wave-1 track definitions, thresholds resolved for the user's streak arm. */
 export type AchievementsListResponseDefinitionsList = Array<AchievementDefinition>;
-export const AchievementsListResponseDefinitionsList = /*@__PURE__*/ S.Array(
+const AchievementsListResponseDefinitionsList = /*@__PURE__*/ S.Array(
   AchievementDefinition,
 ) as any as S.Schema<AchievementsListResponseDefinitionsList>;
 
 /** Map of unlocked stage number (as a string, '1'-'5') to the ISO timestamp it was unlocked. */
 export type AchievementProgressUnlockedAtMap = { [key: string]: string | undefined };
-export const AchievementProgressUnlockedAtMap = /*@__PURE__*/ S.Record(
+const AchievementProgressUnlockedAtMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AchievementProgressUnlockedAtMap>;
@@ -170,7 +170,7 @@ export interface AchievementProgress {
   /** Map of unlocked stage number (as a string, '1'-'5') to the ISO timestamp it was unlocked. */
   unlocked_at: AchievementProgressUnlockedAtMap;
 }
-export const AchievementProgress = /*@__PURE__*/ S.suspend(() =>
+const AchievementProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track_key: S.String,
     current_stage: S.Number,
@@ -182,13 +182,13 @@ export const AchievementProgress = /*@__PURE__*/ S.suspend(() =>
 
 /** The requesting user's progress on per-user tracks. */
 export type AchievementsListResponseUserProgressList = Array<AchievementProgress>;
-export const AchievementsListResponseUserProgressList = /*@__PURE__*/ S.Array(
+const AchievementsListResponseUserProgressList = /*@__PURE__*/ S.Array(
   AchievementProgress,
 ) as any as S.Schema<AchievementsListResponseUserProgressList>;
 
 /** The team's progress on per-team tracks. */
 export type AchievementsListResponseTeamProgressList = Array<AchievementProgress>;
-export const AchievementsListResponseTeamProgressList =
+const AchievementsListResponseTeamProgressList =
   AchievementsListResponseUserProgressList as any as S.Schema<AchievementsListResponseTeamProgressList>;
 
 export interface PendingCelebration {
@@ -199,7 +199,7 @@ export interface PendingCelebration {
   /** Name of the unlocked stage, shown in the celebration UI. */
   stage_name: string;
 }
-export const PendingCelebration = /*@__PURE__*/ S.suspend(() =>
+const PendingCelebration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     track_key: S.String,
     stage: S.Number,
@@ -209,7 +209,7 @@ export const PendingCelebration = /*@__PURE__*/ S.suspend(() =>
 
 /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
 export type AchievementsListResponsePendingCelebrationsList = Array<PendingCelebration>;
-export const AchievementsListResponsePendingCelebrationsList = /*@__PURE__*/ S.Array(
+const AchievementsListResponsePendingCelebrationsList = /*@__PURE__*/ S.Array(
   PendingCelebration,
 ) as any as S.Schema<AchievementsListResponsePendingCelebrationsList>;
 
@@ -223,7 +223,7 @@ export interface AchievementsListResponse {
   /** Newly unlocked stages awaiting an in-session celebration; acknowledge each to clear it. */
   pending_celebrations: AchievementsListResponsePendingCelebrationsList;
 }
-export const AchievementsListResponse = /*@__PURE__*/ S.suspend(() =>
+const AchievementsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definitions: AchievementsListResponseDefinitionsList,
     user_progress: AchievementsListResponseUserProgressList,
@@ -236,7 +236,7 @@ export interface WebAnalyticsAchievementsPreferencesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const WebAnalyticsAchievementsPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsAchievementsPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -252,7 +252,7 @@ export const WebAnalyticsAchievementsPreferencesRequest = /*@__PURE__*/ S.suspen
 
 /** * `data` - data * `recording` - recording */
 export type InteractionKindEnum = "data" | "recording";
-export const InteractionKindEnum = S.String;
+const InteractionKindEnum = S.String;
 
 export interface WebAnalyticsAchievementsRecordInteractionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -260,7 +260,7 @@ export interface WebAnalyticsAchievementsRecordInteractionRequest {
   /** Which interaction counter to increment: 'data' (slicing/filtering the dashboard) or 'recording' (opening a session recording). * `data` - data * `recording` - recording */
   interaction_kind: InteractionKindEnum | (string & {});
 }
-export const WebAnalyticsAchievementsRecordInteractionRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsAchievementsRecordInteractionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     interaction_kind: InteractionKindEnum,
@@ -279,7 +279,7 @@ export interface RecordInteractionResponse {
   /** True once the interaction has been counted for the user. */
   recorded: boolean;
 }
-export const RecordInteractionResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordInteractionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recorded: S.Boolean,
   }),
@@ -291,7 +291,7 @@ export interface WebAnalyticsAchievementsRecordVisitRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const WebAnalyticsAchievementsRecordVisitRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsAchievementsRecordVisitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -309,7 +309,7 @@ export interface RecordVisitResponse {
   /** True once today's visit row exists for the user. */
   recorded: boolean;
 }
-export const RecordVisitResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordVisitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recorded: S.Boolean,
   }),

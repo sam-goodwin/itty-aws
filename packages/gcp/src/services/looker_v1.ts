@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -86,7 +86,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type InstancePlatformEditionEnum =
   | "PLATFORM_EDITION_UNSPECIFIED"
@@ -101,7 +101,7 @@ export type InstancePlatformEditionEnum =
   | "LOOKER_CORE_TRIAL_STANDARD"
   | "LOOKER_CORE_TRIAL_ENTERPRISE"
   | "LOOKER_CORE_TRIAL_EMBED";
-export const InstancePlatformEditionEnum = S.String;
+const InstancePlatformEditionEnum = S.String;
 
 /** Auth type for the Looker instance. */
 export interface AuthType {
@@ -110,7 +110,7 @@ export interface AuthType {
   /** Optional. Whether Workforce auth is enabled on the Looker instance. */
   workforceAuthEnabled?: boolean;
 }
-export const AuthType = /*@__PURE__*/ S.suspend(() =>
+const AuthType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleAuthEnabled: S.optional(S.Boolean),
     workforceAuthEnabled: S.optional(S.Boolean),
@@ -124,7 +124,7 @@ export interface IngressIpAllowlistRule {
   /** Optional. Description for the IP range. */
   description?: string;
 }
-export const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
+const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipRange: S.optional(S.String),
     description: S.optional(S.String),
@@ -132,7 +132,7 @@ export const IngressIpAllowlistRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IngressIpAllowlistRule" }) as any as S.Schema<IngressIpAllowlistRule>;
 
 export type IngressIpAllowlistRuleList = Array<IngressIpAllowlistRule>;
-export const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(
+const IngressIpAllowlistRuleList = /*@__PURE__*/ S.Array(
   IngressIpAllowlistRule,
 ) as any as S.Schema<IngressIpAllowlistRuleList>;
 
@@ -145,7 +145,7 @@ export interface IngressIpAllowlistConfig {
   /** Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance. */
   enabled?: boolean;
 }
-export const IngressIpAllowlistConfig = /*@__PURE__*/ S.suspend(() =>
+const IngressIpAllowlistConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleServicesEnabled: S.optional(S.Boolean),
     allowlistRules: S.optional(IngressIpAllowlistRuleList),
@@ -162,7 +162,7 @@ export interface OAuthConfig {
   /** Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
   clientId?: string;
 }
-export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientSecret: S.optional(S.String),
     sharedOauthClientEnabled: S.optional(S.Boolean),
@@ -175,10 +175,10 @@ export type InstanceReleaseChannelEnum =
   | "RAPID"
   | "REGULAR"
   | "STABLE";
-export const InstanceReleaseChannelEnum = S.String;
+const InstanceReleaseChannelEnum = S.String;
 
 export type EncryptionConfigKmsKeyStateEnum = "KMS_KEY_STATE_UNSPECIFIED" | "VALID" | "REVOKED";
-export const EncryptionConfigKmsKeyStateEnum = S.String;
+const EncryptionConfigKmsKeyStateEnum = S.String;
 
 /** Encryption configuration (i.e. CMEK). */
 export interface EncryptionConfig {
@@ -189,7 +189,7 @@ export interface EncryptionConfig {
   /** Output only. Status of the CMEK key. */
   kmsKeyState?: EncryptionConfigKmsKeyStateEnum | (string & {});
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     kmsKeyNameVersion: S.optional(S.String),
@@ -204,7 +204,7 @@ export interface MaintenanceSchedule {
   /** The scheduled start time for the maintenance. */
   startTime?: string;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -222,7 +222,7 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     minutes: S.optional(S.Number),
@@ -240,7 +240,7 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const MaintenanceWindowDayOfWeekEnum = S.String;
+const MaintenanceWindowDayOfWeekEnum = S.String;
 
 /** Specifies the recurring maintenance window. */
 export interface MaintenanceWindow {
@@ -249,7 +249,7 @@ export interface MaintenanceWindow {
   /** Required. Day of the week for this MaintenanceWindow (in UTC). */
   dayOfWeek?: MaintenanceWindowDayOfWeekEnum | (string & {});
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(TimeOfDay),
     dayOfWeek: S.optional(MaintenanceWindowDayOfWeekEnum),
@@ -257,7 +257,7 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type ServiceAttachmentConnectionStatusEnum =
   | "UNKNOWN"
@@ -266,7 +266,7 @@ export type ServiceAttachmentConnectionStatusEnum =
   | "REJECTED"
   | "NEEDS_ATTENTION"
   | "CLOSED";
-export const ServiceAttachmentConnectionStatusEnum = S.String;
+const ServiceAttachmentConnectionStatusEnum = S.String;
 
 /** Service attachment configuration. */
 export interface ServiceAttachment {
@@ -281,7 +281,7 @@ export interface ServiceAttachment {
   /** Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning. */
   failureReason?: string;
 }
-export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
+const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localFqdn: S.optional(S.String),
     targetServiceAttachmentUri: S.optional(S.String),
@@ -292,7 +292,7 @@ export const ServiceAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceAttachment" }) as any as S.Schema<ServiceAttachment>;
 
 export type ServiceAttachmentList = Array<ServiceAttachment>;
-export const ServiceAttachmentList = /*@__PURE__*/ S.Array(
+const ServiceAttachmentList = /*@__PURE__*/ S.Array(
   ServiceAttachment,
 ) as any as S.Schema<ServiceAttachmentList>;
 
@@ -305,7 +305,7 @@ export interface PscConfig {
   /** Optional. List of egress service attachment configurations. */
   serviceAttachments?: ServiceAttachmentList;
 }
-export const PscConfig = /*@__PURE__*/ S.suspend(() =>
+const PscConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedVpcs: S.optional(StringList),
     lookerServiceAttachmentUri: S.optional(S.String),
@@ -318,10 +318,10 @@ export type InstanceSoftDeleteReasonEnum =
   | "BILLING_ACCOUNT_ISSUE"
   | "TRIAL_EXPIRED"
   | "CUSTOMER_REQUEST";
-export const InstanceSoftDeleteReasonEnum = S.String;
+const InstanceSoftDeleteReasonEnum = S.String;
 
 export type InstanceClassTypeEnum = "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1";
-export const InstanceClassTypeEnum = S.String;
+const InstanceClassTypeEnum = S.String;
 
 /** Metadata about users for a Looker instance. */
 export interface UserMetadata {
@@ -332,7 +332,7 @@ export interface UserMetadata {
   /** Optional. The number of additional viewer users the instance owner has purchased. */
   additionalViewerUserCount?: number;
 }
-export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
+const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalStandardUserCount: S.optional(S.Number),
     additionalDeveloperUserCount: S.optional(S.Number),
@@ -349,7 +349,7 @@ export interface Looker_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Looker_Date = /*@__PURE__*/ S.suspend(() =>
+const Looker_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -366,7 +366,7 @@ export interface DenyMaintenancePeriod {
   /** Required. End date of the deny maintenance period. */
   endDate?: Looker_Date;
 }
-export const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
+const DenyMaintenancePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(TimeOfDay),
     startDate: S.optional(Looker_Date),
@@ -382,7 +382,7 @@ export type CustomDomainStateEnum =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "UNKNOWN";
-export const CustomDomainStateEnum = S.String;
+const CustomDomainStateEnum = S.String;
 
 /** Custom domain information. */
 export interface CustomDomain {
@@ -391,7 +391,7 @@ export interface CustomDomain {
   /** Domain state. */
   state?: CustomDomainStateEnum | (string & {});
 }
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+const CustomDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     state: S.optional(CustomDomainStateEnum),
@@ -407,7 +407,7 @@ export interface ControlledEgressConfig {
   /** Optional. Whether marketplace is enabled. */
   marketplaceEnabled?: boolean;
 }
-export const ControlledEgressConfig = /*@__PURE__*/ S.suspend(() =>
+const ControlledEgressConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     egressFqdns: S.optional(StringList),
     webProxyIps: S.optional(StringList),
@@ -424,7 +424,7 @@ export interface PeriodicExportConfig {
   /** Required. Time in UTC to start the periodic export job. */
   startTime?: TimeOfDay;
 }
-export const PeriodicExportConfig = /*@__PURE__*/ S.suspend(() =>
+const PeriodicExportConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsUri: S.optional(S.String),
     kmsKey: S.optional(S.String),
@@ -437,7 +437,7 @@ export interface AdminSettings {
   /** Email domain allowlist for the instance. */
   allowedEmailDomains?: StringList;
 }
-export const AdminSettings = /*@__PURE__*/ S.suspend(() =>
+const AdminSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedEmailDomains: S.optional(StringList),
   }),
@@ -453,7 +453,7 @@ export type InstanceStateEnum =
   | "DELETING"
   | "EXPORTING"
   | "IMPORTING";
-export const InstanceStateEnum = S.String;
+const InstanceStateEnum = S.String;
 
 /** A Looker instance. */
 export interface Instance {
@@ -540,7 +540,7 @@ export interface Instance {
   /** Optional. Whether controlled egress is enabled on the Looker instance. */
   controlledEgressEnabled?: boolean;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservedRange: S.optional(S.String),
     name: S.optional(S.String),
@@ -594,7 +594,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     instanceId: S.optional(S.String.pipe(T.Query())),
@@ -611,15 +611,10 @@ export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -630,7 +625,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -651,7 +646,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     error: S.optional(Status),
@@ -667,7 +662,7 @@ export type InstanceBackupStateEnum =
   | "DELETING"
   | "ACTIVE"
   | "FAILED";
-export const InstanceBackupStateEnum = S.String;
+const InstanceBackupStateEnum = S.String;
 
 /** The details of a backup resource. */
 export interface InstanceBackup {
@@ -682,7 +677,7 @@ export interface InstanceBackup {
   /** Output only. The time when the backup was started. */
   createTime?: string;
 }
-export const InstanceBackup = /*@__PURE__*/ S.suspend(() =>
+const InstanceBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(InstanceBackupStateEnum),
     encryptionConfig: S.optional(EncryptionConfig),
@@ -698,7 +693,7 @@ export interface CreateProjectsLocationsInstancesBackupsRequest {
   /** Request body */
   body?: InstanceBackup;
 }
-export const CreateProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(InstanceBackup.pipe(T.HttpBody())),
@@ -719,7 +714,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Whether to force cascading delete. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -734,7 +729,7 @@ export interface DeleteProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -748,7 +743,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -763,7 +758,7 @@ export interface ExportEncryptionConfig {
   /** Required. Name of the CMEK key in KMS. */
   kmsKeyName?: string;
 }
-export const ExportEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const ExportEncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -776,7 +771,7 @@ export interface ExportInstanceRequest {
   /** Required. Encryption configuration (CMEK). For CMEK enabled instances it should be same as looker CMEK. */
   encryptionConfig?: ExportEncryptionConfig;
 }
-export const ExportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsUri: S.optional(S.String),
     encryptionConfig: S.optional(ExportEncryptionConfig),
@@ -789,7 +784,7 @@ export interface ExportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ExportInstanceRequest;
 }
-export const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
@@ -804,7 +799,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://looker.googleapis.com/" })),
@@ -813,7 +808,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -828,7 +823,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -842,7 +837,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://looker.googleapis.com/" })),
@@ -854,7 +849,7 @@ export interface GetProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://looker.googleapis.com/" })),
@@ -866,7 +861,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://looker.googleapis.com/" })),
@@ -879,7 +874,7 @@ export interface ImportInstanceRequest {
   /** Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`. */
   gcsUri?: string;
 }
-export const ImportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsUri: S.optional(S.String),
   }),
@@ -891,7 +886,7 @@ export interface ImportProjectsLocationsInstancesRequest {
   /** Request body */
   body?: ImportInstanceRequest;
 }
-export const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
@@ -914,7 +909,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -933,7 +928,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -942,7 +937,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -959,7 +954,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** A page token received from a previous ListInstancesRequest. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -977,7 +972,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type InstanceList = Array<Instance>;
-export const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
+const InstanceList = /*@__PURE__*/ S.Array(Instance) as any as S.Schema<InstanceList>;
 
 /** Response from ListInstances. */
 export interface ListInstancesResponse {
@@ -988,7 +983,7 @@ export interface ListInstancesResponse {
   /** If provided, a page token that can look up the next `pageSize` results. If empty, the results list is exhausted. */
   nextPageToken?: string;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: S.optional(InstanceList),
     unreachable: S.optional(StringList),
@@ -1006,7 +1001,7 @@ export interface ListProjectsLocationsInstancesBackupsRequest {
   /** A page token received from a previous ListInstances request. */
   pageToken?: string;
 }
-export const ListProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1024,7 +1019,7 @@ export const ListProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
 
 export type InstanceBackupList = Array<InstanceBackup>;
-export const InstanceBackupList = /*@__PURE__*/ S.Array(
+const InstanceBackupList = /*@__PURE__*/ S.Array(
   InstanceBackup,
 ) as any as S.Schema<InstanceBackupList>;
 
@@ -1037,7 +1032,7 @@ export interface ListInstanceBackupsResponse {
   /** The list of instances matching the request filters, up to the requested `page_size`. */
   instanceBackups?: InstanceBackupList;
 }
-export const ListInstanceBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1059,7 +1054,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1078,7 +1073,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1089,7 +1084,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     unreachable: S.optional(StringList),
@@ -1105,7 +1100,7 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1119,15 +1114,13 @@ export const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(()
 
 /** Request options for restarting an instance. */
 export type RestartInstanceRequest = CancelOperationRequest;
-export const RestartInstanceRequest = CancelOperationRequest;
-
 export interface RestartProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -1147,7 +1140,7 @@ export interface RestoreInstanceRequest {
   /** Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   backup?: string;
 }
-export const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(S.String),
   }),
@@ -1159,7 +1152,7 @@ export interface RestoreProjectsLocationsInstancesRequest {
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
@@ -1176,15 +1169,13 @@ export const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(
 
 /** Request options for undeleting an instance. */
 export type UndeleteInstanceRequest = CancelOperationRequest;
-export const UndeleteInstanceRequest = CancelOperationRequest;
-
 export interface UndeleteProjectsLocationsInstancesRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance} */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),

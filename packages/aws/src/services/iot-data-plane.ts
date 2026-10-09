@@ -186,7 +186,7 @@ export interface DeleteConnectionRequest {
   cleanSession?: boolean;
   preventWillMessage?: boolean;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.HttpLabel("clientId")),
     cleanSession: S.optional(S.Boolean).pipe(T.HttpQuery("cleanSession")),
@@ -203,7 +203,7 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteConnectionResponse",
 }) as any as S.Schema<DeleteConnectionResponse>;
 export type ThingName = string;
@@ -212,7 +212,7 @@ export interface DeleteThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
-export const DeleteThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thingName: S.String.pipe(T.HttpLabel("thingName")),
     shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -230,7 +230,7 @@ export const DeleteThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteThingShadowResponse {
   payload: T.StreamingOutputBody;
 }
-export const DeleteThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ payload: T.StreamingOutput.pipe(T.HttpPayload()) }),
 ).annotate({
   identifier: "DeleteThingShadowResponse",
@@ -240,7 +240,7 @@ export interface GetConnectionRequest {
   clientId: string;
   includeSocketInformation?: boolean;
 }
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.HttpLabel("clientId")),
     includeSocketInformation: S.optional(S.Boolean).pipe(T.HttpQuery("includeSocketInformation")),
@@ -273,7 +273,7 @@ export interface GetConnectionResponse {
   clientId?: string;
   vpcEndpointId?: string;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connected: S.optional(S.Boolean),
     thingName: S.optional(S.String),
@@ -295,7 +295,7 @@ export type Topic = string;
 export interface GetRetainedMessageRequest {
   topic: string;
 }
-export const GetRetainedMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRetainedMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ topic: S.String.pipe(T.HttpLabel("topic")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/retainedMessage/{topic}" }), svc, auth, proto, ver, rules),
   ),
@@ -312,7 +312,7 @@ export interface GetRetainedMessageResponse {
   lastModifiedTime?: number;
   userProperties?: Uint8Array;
 }
-export const GetRetainedMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRetainedMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     payload: S.optional(T.Blob),
@@ -327,7 +327,7 @@ export interface GetThingShadowRequest {
   thingName: string;
   shadowName?: string;
 }
-export const GetThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thingName: S.String.pipe(T.HttpLabel("thingName")),
     shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -345,7 +345,7 @@ export const GetThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
-export const GetThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
 ).annotate({ identifier: "GetThingShadowResponse" }) as any as S.Schema<GetThingShadowResponse>;
 export type NextToken = string;
@@ -355,7 +355,7 @@ export interface ListNamedShadowsForThingRequest {
   nextToken?: string;
   pageSize?: number;
 }
-export const ListNamedShadowsForThingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamedShadowsForThingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thingName: S.String.pipe(T.HttpLabel("thingName")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -374,13 +374,13 @@ export const ListNamedShadowsForThingRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListNamedShadowsForThingRequest",
 }) as any as S.Schema<ListNamedShadowsForThingRequest>;
 export type NamedShadowList = string[];
-export const NamedShadowList = /*@__PURE__*/ S.Array(S.String);
+const NamedShadowList = /*@__PURE__*/ S.Array(S.String);
 export interface ListNamedShadowsForThingResponse {
   results?: string[];
   nextToken?: string;
   timestamp?: number;
 }
-export const ListNamedShadowsForThingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamedShadowsForThingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(NamedShadowList),
     nextToken: S.optional(S.String),
@@ -394,7 +394,7 @@ export interface ListRetainedMessagesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListRetainedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRetainedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -409,7 +409,7 @@ export interface RetainedMessageSummary {
   qos?: number;
   lastModifiedTime?: number;
 }
-export const RetainedMessageSummary = /*@__PURE__*/ S.suspend(() =>
+const RetainedMessageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     payloadSize: S.optional(S.Number),
@@ -418,12 +418,12 @@ export const RetainedMessageSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RetainedMessageSummary" }) as any as S.Schema<RetainedMessageSummary>;
 export type RetainedMessageList = RetainedMessageSummary[];
-export const RetainedMessageList = /*@__PURE__*/ S.Array(RetainedMessageSummary);
+const RetainedMessageList = /*@__PURE__*/ S.Array(RetainedMessageSummary);
 export interface ListRetainedMessagesResponse {
   retainedTopics?: RetainedMessageSummary[];
   nextToken?: string;
 }
-export const ListRetainedMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRetainedMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ retainedTopics: S.optional(RetainedMessageList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRetainedMessagesResponse",
@@ -433,7 +433,7 @@ export interface ListSubscriptionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.HttpLabel("clientId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -454,16 +454,16 @@ export interface SubscriptionSummary {
   topicFilter: string;
   qos: number;
 }
-export const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ topicFilter: S.String, qos: S.Number }),
 ).annotate({ identifier: "SubscriptionSummary" }) as any as S.Schema<SubscriptionSummary>;
 export type SubscriptionList = SubscriptionSummary[];
-export const SubscriptionList = /*@__PURE__*/ S.Array(SubscriptionSummary);
+const SubscriptionList = /*@__PURE__*/ S.Array(SubscriptionSummary);
 export interface ListSubscriptionsResponse {
   subscriptions?: SubscriptionSummary[];
   nextToken?: string;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subscriptions: S.optional(SubscriptionList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSubscriptionsResponse",
@@ -471,7 +471,7 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
 export type PayloadFormatIndicator = "UNSPECIFIED_BYTES" | "UTF8_DATA" | (string & {});
-export const PayloadFormatIndicator = S.String;
+const PayloadFormatIndicator = S.String;
 
 export type ContentType = string;
 export type ResponseTopic = string;
@@ -489,7 +489,7 @@ export interface PublishRequest {
   correlationData?: string;
   messageExpiry?: number;
 }
-export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.HttpLabel("topic")),
     qos: S.optional(S.Number).pipe(T.HttpQuery("qos")),
@@ -506,7 +506,7 @@ export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/topics/{topic}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "PublishRequest" }) as any as S.Schema<PublishRequest>;
 export interface PublishResponse {}
-export const PublishResponse = DeleteConnectionResponse as any as S.Schema<PublishResponse>;
+const PublishResponse = DeleteConnectionResponse as any as S.Schema<PublishResponse>;
 export type Confirmation = boolean;
 export type TimeoutInSeconds = number;
 export interface SendDirectMessageRequest {
@@ -521,7 +521,7 @@ export interface SendDirectMessageRequest {
   payloadFormatIndicator?: PayloadFormatIndicator;
   correlationData?: string;
 }
-export const SendDirectMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendDirectMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.HttpLabel("clientId")),
     topic: S.String.pipe(T.HttpQuery("topic")),
@@ -552,7 +552,7 @@ export interface SendDirectMessageResponse {
   message?: string;
   traceId?: string;
 }
-export const SendDirectMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const SendDirectMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String), traceId: S.optional(S.String) }),
 ).annotate({
   identifier: "SendDirectMessageResponse",
@@ -562,7 +562,7 @@ export interface UpdateThingShadowRequest {
   shadowName?: string;
   payload: T.StreamingInputBody;
 }
-export const UpdateThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thingName: S.String.pipe(T.HttpLabel("thingName")),
     shadowName: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -581,7 +581,7 @@ export const UpdateThingShadowRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateThingShadowResponse {
   payload?: T.StreamingOutputBody;
 }
-export const UpdateThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateThingShadowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }),
 ).annotate({
   identifier: "UpdateThingShadowResponse",

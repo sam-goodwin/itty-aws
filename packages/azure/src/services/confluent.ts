@@ -13,7 +13,7 @@ export type { AzureOpError, AzureOpContext };
 export type AccessListRoleBindingNameListRequestSearchFiltersMap = {
   [key: string]: string | undefined;
 };
-export const AccessListRoleBindingNameListRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
+const AccessListRoleBindingNameListRequestSearchFiltersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccessListRoleBindingNameListRequestSearchFiltersMap>;
@@ -28,7 +28,7 @@ export interface AccessListRoleBindingNameListRequest {
   /** Search filters for the request */
   searchFilters?: AccessListRoleBindingNameListRequestSearchFiltersMap;
 }
-export const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(() =>
+const AccessListRoleBindingNameListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -59,7 +59,7 @@ export interface ConfluentListMetadata {
   /** Total size of the list */
   total_size?: number;
 }
-export const ConfluentListMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConfluentListMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.String),
     last: S.optional(S.String),
@@ -71,7 +71,7 @@ export const ConfluentListMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** List of role binding names */
 export type AccessRoleBindingNameListSuccessResponseDataList = Array<string>;
-export const AccessRoleBindingNameListSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessRoleBindingNameListSuccessResponseDataList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessRoleBindingNameListSuccessResponseDataList>;
 
@@ -84,7 +84,7 @@ export interface AccessRoleBindingNameListSuccessResponse {
   /** List of role binding names */
   data?: AccessRoleBindingNameListSuccessResponseDataList;
 }
-export const AccessRoleBindingNameListSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessRoleBindingNameListSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -107,7 +107,7 @@ export interface SCMetadataEntity {
   /** Deleted Date time */
   deletedTimestamp?: string;
 }
-export const SCMetadataEntity = /*@__PURE__*/ S.suspend(() =>
+const SCMetadataEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -119,14 +119,14 @@ export const SCMetadataEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** Stream Governance Package. Supported values are ESSENTIALS and ADVANCED */
 export type Package = "ESSENTIALS" | "ADVANCED";
-export const Package = S.String;
+const Package = S.String;
 
 /** The configuration of the Kafka cluster */
 export interface ClusterConfigEntity {
   /** The lifecycle phase of the cluster */
   kind?: string;
 }
-export const ClusterConfigEntity = /*@__PURE__*/ S.suspend(() =>
+const ClusterConfigEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
   }),
@@ -143,7 +143,7 @@ export interface SCClusterNetworkEnvironmentEntity {
   /** CRN reference to the referred resource */
   resourceName?: string;
 }
-export const SCClusterNetworkEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
+const SCClusterNetworkEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     environment: S.optional(S.String),
@@ -163,7 +163,7 @@ export interface SCClusterByokEntity {
   /** CRN reference to the referred resource */
   resourceName?: string;
 }
-export const SCClusterByokEntity = /*@__PURE__*/ S.suspend(() =>
+const SCClusterByokEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     related: S.optional(S.String),
@@ -200,7 +200,7 @@ export interface SCClusterSpecEntity {
   /** Specification of the cluster byok */
   byok?: SCClusterByokEntity;
 }
-export const SCClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
+const SCClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     availability: S.optional(S.String),
@@ -225,7 +225,7 @@ export interface ClusterStatusEntity {
   /** The number of Confluent Kafka Units */
   cku?: number;
 }
-export const ClusterStatusEntity = /*@__PURE__*/ S.suspend(() =>
+const ClusterStatusEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: S.optional(S.String),
     cku: S.optional(S.Number),
@@ -241,7 +241,7 @@ export interface ClusterProperties {
   /** Specification of the cluster status */
   status?: ClusterStatusEntity;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SCMetadataEntity),
     spec: S.optional(SCClusterSpecEntity),
@@ -265,7 +265,7 @@ export interface ClusterCreateOrUpdateRequest {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
-export const ClusterCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClusterCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -288,11 +288,11 @@ export const ClusterCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -309,7 +309,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -334,7 +334,7 @@ export interface ClusterCreateOrUpdateResponse {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
-export const ClusterCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClusterCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -349,15 +349,15 @@ export const ClusterCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Connector Type */
 export type ConnectorType = "SINK" | "SOURCE";
-export const ConnectorType = S.String;
+const ConnectorType = S.String;
 
 /** Connector Class */
 export type ConnectorClass = "AZUREBLOBSOURCE" | "AZUREBLOBSINK";
-export const ConnectorClass = S.String;
+const ConnectorClass = S.String;
 
 /** Connector Status */
 export type ConnectorStatus = "PROVISIONING" | "RUNNING" | "PAUSED" | "FAILED";
-export const ConnectorStatus = S.String;
+const ConnectorStatus = S.String;
 
 /** Connector Info Base properties */
 export interface ConnectorInfoBase {
@@ -372,7 +372,7 @@ export interface ConnectorInfoBase {
   /** Connector Status */
   connectorState?: ConnectorStatus | (string & {});
 }
-export const ConnectorInfoBase = /*@__PURE__*/ S.suspend(() =>
+const ConnectorInfoBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorType: S.optional(ConnectorType),
     connectorClass: S.optional(ConnectorClass),
@@ -391,7 +391,7 @@ export interface ConnectorResourceProperties {
   /** The connection information consumed by applications. */
   partnerConnectorInfo?: unknown;
 }
-export const ConnectorResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectorResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorBasicInfo: S.optional(ConnectorInfoBase),
     connectorServiceTypeInfo: S.optional(S.Unknown),
@@ -417,7 +417,7 @@ export interface ConnectorCreateOrUpdateRequest {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
-export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -450,7 +450,7 @@ export interface ConnectorCreateOrUpdateResponse {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
-export const ConnectorCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectorCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -476,7 +476,7 @@ export interface CreateAccessRoleBindingRequest {
   /** A CRN that specifies the scope and resource patterns necessary for the role to bind */
   crn_pattern?: string;
 }
-export const CreateAccessRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -509,7 +509,7 @@ export interface MetadataEntity {
   /** Deleted Date time */
   deleted_at?: string;
 }
-export const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
+const MetadataEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.String),
     resource_name: S.optional(S.String),
@@ -534,7 +534,7 @@ export interface RoleBindingRecord {
   /** A CRN that specifies the scope and resource patterns necessary for the role to bind */
   crn_pattern?: string;
 }
-export const RoleBindingRecord = /*@__PURE__*/ S.suspend(() =>
+const RoleBindingRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -564,7 +564,7 @@ export interface ConfluentAgreementProperties {
   /** If any version of the terms have been accepted, otherwise false. */
   accepted?: boolean;
 }
-export const ConfluentAgreementProperties = /*@__PURE__*/ S.suspend(() =>
+const ConfluentAgreementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisher: S.optional(S.String),
     product: S.optional(S.String),
@@ -585,7 +585,7 @@ export interface CreateMarketplaceAgreementRequest {
   /** Represents the properties of the resource. */
   properties?: ConfluentAgreementProperties;
 }
-export const CreateMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMarketplaceAgreementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     properties: S.optional(ConfluentAgreementProperties),
@@ -607,7 +607,7 @@ export type ConfluentAgreementResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfluentAgreementResourceSystemDataCreatedByType = S.String;
+const ConfluentAgreementResourceSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ConfluentAgreementResourceSystemDataLastModifiedByType =
@@ -615,7 +615,7 @@ export type ConfluentAgreementResourceSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ConfluentAgreementResourceSystemDataLastModifiedByType = S.String;
+const ConfluentAgreementResourceSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfluentAgreementResourceSystemData {
@@ -632,7 +632,7 @@ export interface ConfluentAgreementResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ConfluentAgreementResourceSystemData = /*@__PURE__*/ S.suspend(() =>
+const ConfluentAgreementResourceSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ConfluentAgreementResourceSystemDataCreatedByType),
@@ -658,7 +658,7 @@ export interface ConfluentAgreementResource {
   /** Represents the properties of the resource. */
   properties?: ConfluentAgreementProperties;
 }
-export const ConfluentAgreementResource = /*@__PURE__*/ S.suspend(() =>
+const ConfluentAgreementResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -672,12 +672,12 @@ export const ConfluentAgreementResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateOrganizationRequestTagsMap =
+const CreateOrganizationRequestTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationRequestTagsMap>;
 
 /** Array of Private Offer Ids */
 export type OfferDetailInputPrivateOfferIdsList = Array<string>;
-export const OfferDetailInputPrivateOfferIdsList =
+const OfferDetailInputPrivateOfferIdsList =
   AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailInputPrivateOfferIdsList>;
 
 /** Confluent Offer detail */
@@ -699,7 +699,7 @@ export interface OfferDetailInput {
   /** Array of Private Offer Ids */
   privateOfferIds?: OfferDetailInputPrivateOfferIdsList;
 }
-export const OfferDetailInput = /*@__PURE__*/ S.suspend(() =>
+const OfferDetailInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.String,
     id: S.String,
@@ -725,7 +725,7 @@ export interface UserDetail {
   /** AAD email address */
   aadEmail?: string;
 }
-export const UserDetail = /*@__PURE__*/ S.suspend(() =>
+const UserDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.optional(S.String),
     lastName: S.optional(S.String),
@@ -740,7 +740,7 @@ export interface LinkOrganization {
   /** User auth token */
   token: string;
 }
-export const LinkOrganization = /*@__PURE__*/ S.suspend(() =>
+const LinkOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }),
@@ -755,7 +755,7 @@ export interface OrganizationResourcePropertiesInput {
   /** Link an existing Confluent organization */
   linkOrganization?: LinkOrganization;
 }
-export const OrganizationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerDetail: OfferDetailInput,
     userDetail: UserDetail,
@@ -779,7 +779,7 @@ export interface CreateOrganizationRequest {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
-export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -801,7 +801,7 @@ export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateOrganizationResponseTagsMap =
+const CreateOrganizationResponseTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<CreateOrganizationResponseTagsMap>;
 
 /** Provision states for confluent RP */
@@ -815,11 +815,11 @@ export type ProvisionState =
   | "Canceled"
   | "Deleted"
   | "NotSpecified";
-export const ProvisionState = S.String;
+const ProvisionState = S.String;
 
 /** Array of Private Offer Ids */
 export type OfferDetailPrivateOfferIdsList = Array<string>;
-export const OfferDetailPrivateOfferIdsList =
+const OfferDetailPrivateOfferIdsList =
   AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<OfferDetailPrivateOfferIdsList>;
 
 /** SaaS Offer Status for confluent RP */
@@ -834,7 +834,7 @@ export type SaaSOfferStatus =
   | "Failed"
   | "Unsubscribed"
   | "Updating";
-export const SaaSOfferStatus = S.String;
+const SaaSOfferStatus = S.String;
 
 /** Confluent Offer detail */
 export interface OfferDetail {
@@ -857,7 +857,7 @@ export interface OfferDetail {
   /** SaaS Offer Status */
   status?: SaaSOfferStatus;
 }
-export const OfferDetail = /*@__PURE__*/ S.suspend(() =>
+const OfferDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.String,
     id: S.String,
@@ -888,7 +888,7 @@ export interface OrganizationResourceProperties {
   /** Link an existing Confluent organization */
   linkOrganization?: LinkOrganization;
 }
-export const OrganizationResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdTime: S.optional(S.String),
     provisioningState: S.optional(ProvisionState),
@@ -918,7 +918,7 @@ export interface CreateOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -948,7 +948,7 @@ export interface CreateOrganizationAPIKeyRequest {
   /** Description of the API Key */
   description?: string;
 }
-export const CreateOrganizationAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -982,7 +982,7 @@ export interface APIKeyResourceEntity {
   /** Type of the owner which can be service or user account */
   kind?: string;
 }
-export const APIKeyResourceEntity = /*@__PURE__*/ S.suspend(() =>
+const APIKeyResourceEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     environment: S.optional(S.String),
@@ -1003,7 +1003,7 @@ export interface APIKeyOwnerEntity {
   /** Type of the owner service or user account */
   kind?: string;
 }
-export const APIKeyOwnerEntity = /*@__PURE__*/ S.suspend(() =>
+const APIKeyOwnerEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     related: S.optional(S.String),
@@ -1025,7 +1025,7 @@ export interface APIKeySpecEntity {
   /** Specification of the cluster */
   owner?: APIKeyOwnerEntity;
 }
-export const APIKeySpecEntity = /*@__PURE__*/ S.suspend(() =>
+const APIKeySpecEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -1042,7 +1042,7 @@ export interface APIKeyProperties {
   /** Specification of the API Key */
   spec?: APIKeySpecEntity;
 }
-export const APIKeyProperties = /*@__PURE__*/ S.suspend(() =>
+const APIKeyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SCMetadataEntity),
     spec: S.optional(APIKeySpecEntity),
@@ -1058,7 +1058,7 @@ export interface APIKeyRecord {
   /** API Key Properties */
   properties?: APIKeyProperties;
 }
-export const APIKeyRecord = /*@__PURE__*/ S.suspend(() =>
+const APIKeyRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -1073,7 +1073,7 @@ export interface TopicMetadataEntity {
   /** Resource name of the record */
   resourceName?: string;
 }
-export const TopicMetadataEntity = /*@__PURE__*/ S.suspend(() =>
+const TopicMetadataEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.String),
     resourceName: S.optional(S.String),
@@ -1085,7 +1085,7 @@ export interface TopicsRelatedLink {
   /** Relationship of the topic */
   related?: string;
 }
-export const TopicsRelatedLink = /*@__PURE__*/ S.suspend(() =>
+const TopicsRelatedLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     related: S.optional(S.String),
   }),
@@ -1098,7 +1098,7 @@ export interface TopicsInputConfig {
   /** Value of the topic input config */
   value?: string;
 }
-export const TopicsInputConfig = /*@__PURE__*/ S.suspend(() =>
+const TopicsInputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -1107,7 +1107,7 @@ export const TopicsInputConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Input Config Specification of the topic */
 export type TopicPropertiesInputConfigsList = Array<TopicsInputConfig>;
-export const TopicPropertiesInputConfigsList = /*@__PURE__*/ S.Array(
+const TopicPropertiesInputConfigsList = /*@__PURE__*/ S.Array(
   TopicsInputConfig,
 ) as any as S.Schema<TopicPropertiesInputConfigsList>;
 
@@ -1132,7 +1132,7 @@ export interface TopicProperties {
   /** Replication factor of the topic */
   replicationFactor?: string;
 }
-export const TopicProperties = /*@__PURE__*/ S.suspend(() =>
+const TopicProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     topicId: S.optional(S.String),
@@ -1162,7 +1162,7 @@ export interface CreateTopicRequest {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1193,7 +1193,7 @@ export interface CreateTopicResponse {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const CreateTopicResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1213,7 +1213,7 @@ export interface DeleteAccessRoleBindingRequest {
   /** Confluent Role binding id */
   roleBindingId: string;
 }
-export const DeleteAccessRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1232,9 +1232,9 @@ export const DeleteAccessRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAccessRoleBindingRequest>;
 
 export interface DeleteAccessRoleBindingResponse {}
-export const DeleteAccessRoleBindingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAccessRoleBindingResponse" },
-) as any as S.Schema<DeleteAccessRoleBindingResponse>;
+const DeleteAccessRoleBindingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAccessRoleBindingResponse",
+}) as any as S.Schema<DeleteAccessRoleBindingResponse>;
 
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1248,7 +1248,7 @@ export interface DeleteClusterRequest {
   /** Confluent kafka or schema registry cluster id */
   clusterId: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1266,7 +1266,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteClusterResponse",
 }) as any as S.Schema<DeleteClusterResponse>;
 
@@ -1284,7 +1284,7 @@ export interface DeleteConnectorRequest {
   /** Confluent connector name */
   connectorName: string;
 }
-export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1303,8 +1303,7 @@ export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectorRequest" }) as any as S.Schema<DeleteConnectorRequest>;
 
 export interface DeleteConnectorResponse {}
-export const DeleteConnectorResponse =
-  DeleteClusterResponse as any as S.Schema<DeleteConnectorResponse>;
+const DeleteConnectorResponse = DeleteClusterResponse as any as S.Schema<DeleteConnectorResponse>;
 
 export interface DeleteEnvironmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1316,7 +1315,7 @@ export interface DeleteEnvironmentRequest {
   /** Confluent environment id */
   environmentId: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1333,7 +1332,7 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   DeleteClusterResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteOrganizationRequest {
@@ -1344,7 +1343,7 @@ export interface DeleteOrganizationRequest {
   /** Organization resource name */
   organizationName: string;
 }
-export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1362,7 +1361,7 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRequest>;
 
 export interface DeleteOrganizationResponse {}
-export const DeleteOrganizationResponse =
+const DeleteOrganizationResponse =
   DeleteClusterResponse as any as S.Schema<DeleteOrganizationResponse>;
 
 export interface DeleteOrganizationClusterAPIKeyRequest {
@@ -1375,7 +1374,7 @@ export interface DeleteOrganizationClusterAPIKeyRequest {
   /** Confluent API Key id */
   apiKeyId: string;
 }
-export const DeleteOrganizationClusterAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationClusterAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1394,7 +1393,7 @@ export const DeleteOrganizationClusterAPIKeyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteOrganizationClusterAPIKeyRequest>;
 
 export interface DeleteOrganizationClusterAPIKeyResponse {}
-export const DeleteOrganizationClusterAPIKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationClusterAPIKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteOrganizationClusterAPIKeyResponse",
@@ -1414,7 +1413,7 @@ export interface DeleteTopicRequest {
   /** Confluent kafka or schema registry topic name */
   topicName: string;
 }
-export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1433,14 +1432,14 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse = DeleteClusterResponse as any as S.Schema<DeleteTopicResponse>;
+const DeleteTopicResponse = DeleteClusterResponse as any as S.Schema<DeleteTopicResponse>;
 
 /** Stream governance configuration */
 export interface StreamGovernanceConfig {
   /** Stream governance configuration */
   package?: Package | (string & {});
 }
-export const StreamGovernanceConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamGovernanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: S.optional(Package),
   }),
@@ -1453,7 +1452,7 @@ export interface EnvironmentProperties {
   /** Metadata of the record */
   metadata?: SCMetadataEntity;
 }
-export const EnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamGovernanceConfig: S.optional(StreamGovernanceConfig),
     metadata: S.optional(SCMetadataEntity),
@@ -1474,7 +1473,7 @@ export interface EnvironmentCreateOrUpdateRequest {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
-export const EnvironmentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1508,7 +1507,7 @@ export interface EnvironmentCreateOrUpdateResponse {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
-export const EnvironmentCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1535,7 +1534,7 @@ export interface GetConnectorRequest {
   /** Confluent connector name */
   connectorName: string;
 }
-export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1565,7 +1564,7 @@ export interface GetConnectorResponse {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
-export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1583,7 +1582,7 @@ export interface GetOrganizationRequest {
   /** Organization resource name */
   organizationName: string;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1600,7 +1599,7 @@ export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const GetOrganizationResponseTagsMap =
+const GetOrganizationResponseTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<GetOrganizationResponseTagsMap>;
 
 export interface GetOrganizationResponse {
@@ -1619,7 +1618,7 @@ export interface GetOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1641,7 +1640,7 @@ export interface GetOrganizationClusterAPIKeyRequest {
   /** Confluent API Key id */
   apiKeyId: string;
 }
-export const GetOrganizationClusterAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationClusterAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1671,7 +1670,7 @@ export interface GetOrganizationClusterByIdRequest {
   /** Confluent kafka or schema registry cluster id */
   clusterId: string;
 }
-export const GetOrganizationClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1704,7 +1703,7 @@ export interface GetOrganizationClusterByIdResponse {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
-export const GetOrganizationClusterByIdResponse =
+const GetOrganizationClusterByIdResponse =
   ClusterCreateOrUpdateResponse as any as S.Schema<GetOrganizationClusterByIdResponse>;
 
 export interface GetOrganizationEnvironmentByIdRequest {
@@ -1717,7 +1716,7 @@ export interface GetOrganizationEnvironmentByIdRequest {
   /** Confluent environment id */
   environmentId: string;
 }
-export const GetOrganizationEnvironmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationEnvironmentByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1749,7 +1748,7 @@ export interface GetOrganizationEnvironmentByIdResponse {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
-export const GetOrganizationEnvironmentByIdResponse =
+const GetOrganizationEnvironmentByIdResponse =
   EnvironmentCreateOrUpdateResponse as any as S.Schema<GetOrganizationEnvironmentByIdResponse>;
 
 export interface GetOrganizationSchemaRegistryClusterByIdRequest {
@@ -1764,7 +1763,7 @@ export interface GetOrganizationSchemaRegistryClusterByIdRequest {
   /** Confluent connector name */
   clusterId: string;
 }
-export const GetOrganizationSchemaRegistryClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationSchemaRegistryClusterByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1785,8 +1784,6 @@ export const GetOrganizationSchemaRegistryClusterByIdRequest = /*@__PURE__*/ S.s
 
 /** The environment associated with this object */
 export type SchemaRegistryClusterEnvironmentRegionEntity = SCClusterByokEntity;
-export const SchemaRegistryClusterEnvironmentRegionEntity = SCClusterByokEntity;
-
 /** Details of schema registry cluster spec */
 export interface SchemaRegistryClusterSpecEntity {
   /** Name of the schema registry cluster */
@@ -1802,7 +1799,7 @@ export interface SchemaRegistryClusterSpecEntity {
   /** The cloud service provider */
   cloud?: string;
 }
-export const SchemaRegistryClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
+const SchemaRegistryClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     httpEndpoint: S.optional(S.String),
@@ -1820,7 +1817,7 @@ export interface SchemaRegistryClusterStatusEntity {
   /** The lifecycle phase of the cluster */
   phase?: string;
 }
-export const SchemaRegistryClusterStatusEntity = /*@__PURE__*/ S.suspend(() =>
+const SchemaRegistryClusterStatusEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: S.optional(S.String),
   }),
@@ -1837,7 +1834,7 @@ export interface SchemaRegistryClusterProperties {
   /** Specification of the cluster status */
   status?: SchemaRegistryClusterStatusEntity;
 }
-export const SchemaRegistryClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const SchemaRegistryClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SCMetadataEntity),
     spec: S.optional(SchemaRegistryClusterSpecEntity),
@@ -1856,7 +1853,7 @@ export interface SchemaRegistryClusterRecord {
   /** Schema Registry Cluster Properties */
   properties?: SchemaRegistryClusterProperties;
 }
-export const SchemaRegistryClusterRecord = /*@__PURE__*/ S.suspend(() =>
+const SchemaRegistryClusterRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -1880,7 +1877,7 @@ export interface GetTopicRequest {
   /** Confluent kafka or schema registry topic name */
   topicName: string;
 }
-export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1910,7 +1907,7 @@ export interface GetTopicResponse {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const GetTopicResponse = CreateTopicResponse as any as S.Schema<GetTopicResponse>;
+const GetTopicResponse = CreateTopicResponse as any as S.Schema<GetTopicResponse>;
 
 /** Details of the user being invited */
 export interface AccessInvitedUserDetails {
@@ -1919,7 +1916,7 @@ export interface AccessInvitedUserDetails {
   /** Auth type of the user */
   auth_type?: string;
 }
-export const AccessInvitedUserDetails = /*@__PURE__*/ S.suspend(() =>
+const AccessInvitedUserDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitedEmail: S.optional(S.String),
     auth_type: S.optional(S.String),
@@ -1942,7 +1939,7 @@ export interface InviteAccessUserRequest {
   /** Details of the user who is being invited */
   invitedUserDetails?: AccessInvitedUserDetails;
 }
-export const InviteAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteAccessUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1980,7 +1977,7 @@ export interface InvitationRecord {
   /** Expiration date time of the invitation */
   expires_at?: string;
 }
-export const InvitationRecord = /*@__PURE__*/ S.suspend(() =>
+const InvitationRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -1995,7 +1992,7 @@ export const InvitationRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListAccessClustersRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessClustersRequestSearchFiltersMap =
+const ListAccessClustersRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessClustersRequestSearchFiltersMap>;
 
 export interface ListAccessClustersRequest {
@@ -2008,7 +2005,7 @@ export interface ListAccessClustersRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessClustersRequestSearchFiltersMap;
 }
-export const ListAccessClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2037,7 +2034,7 @@ export interface ClusterEnvironmentEntity {
   /** CRN reference to the referred resource */
   resource_name?: string;
 }
-export const ClusterEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
+const ClusterEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     environment: S.optional(S.String),
@@ -2048,8 +2045,6 @@ export const ClusterEnvironmentEntity = /*@__PURE__*/ S.suspend(() =>
 
 /** The network associated with this object */
 export type ClusterNetworkEntity = ClusterEnvironmentEntity;
-export const ClusterNetworkEntity = ClusterEnvironmentEntity;
-
 /** The network associated with this object */
 export interface ClusterByokEntity {
   /** ID of the referred resource */
@@ -2059,7 +2054,7 @@ export interface ClusterByokEntity {
   /** CRN reference to the referred resource */
   resource_name?: string;
 }
-export const ClusterByokEntity = /*@__PURE__*/ S.suspend(() =>
+const ClusterByokEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     related: S.optional(S.String),
@@ -2094,7 +2089,7 @@ export interface ClusterSpecEntity {
   /** Specification of the cluster */
   byok?: ClusterByokEntity;
 }
-export const ClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
+const ClusterSpecEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display_name: S.optional(S.String),
     availability: S.optional(S.String),
@@ -2126,7 +2121,7 @@ export interface ClusterRecord {
   /** Specification of the cluster */
   status?: ClusterStatusEntity;
 }
-export const ClusterRecord = /*@__PURE__*/ S.suspend(() =>
+const ClusterRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2139,7 +2134,7 @@ export const ClusterRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** List of clusters */
 export type AccessListClusterSuccessResponseDataList = Array<ClusterRecord>;
-export const AccessListClusterSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListClusterSuccessResponseDataList = /*@__PURE__*/ S.Array(
   ClusterRecord,
 ) as any as S.Schema<AccessListClusterSuccessResponseDataList>;
 
@@ -2152,7 +2147,7 @@ export interface AccessListClusterSuccessResponse {
   /** List of clusters */
   data?: AccessListClusterSuccessResponseDataList;
 }
-export const AccessListClusterSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListClusterSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2164,7 +2159,7 @@ export const AccessListClusterSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListAccessEnvironmentsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessEnvironmentsRequestSearchFiltersMap =
+const ListAccessEnvironmentsRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessEnvironmentsRequestSearchFiltersMap>;
 
 export interface ListAccessEnvironmentsRequest {
@@ -2177,7 +2172,7 @@ export interface ListAccessEnvironmentsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessEnvironmentsRequestSearchFiltersMap;
 }
-export const ListAccessEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2206,7 +2201,7 @@ export interface EnvironmentRecord {
   /** Display name of the user */
   display_name?: string;
 }
-export const EnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2217,7 +2212,7 @@ export const EnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Environment list data */
 export type AccessListEnvironmentsSuccessResponseDataList = Array<EnvironmentRecord>;
-export const AccessListEnvironmentsSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListEnvironmentsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   EnvironmentRecord,
 ) as any as S.Schema<AccessListEnvironmentsSuccessResponseDataList>;
 
@@ -2230,7 +2225,7 @@ export interface AccessListEnvironmentsSuccessResponse {
   /** Environment list data */
   data?: AccessListEnvironmentsSuccessResponseDataList;
 }
-export const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2242,7 +2237,7 @@ export const AccessListEnvironmentsSuccessResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Search filters for the request */
 export type ListAccessInvitationsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessInvitationsRequestSearchFiltersMap =
+const ListAccessInvitationsRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessInvitationsRequestSearchFiltersMap>;
 
 export interface ListAccessInvitationsRequest {
@@ -2255,7 +2250,7 @@ export interface ListAccessInvitationsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessInvitationsRequestSearchFiltersMap;
 }
-export const ListAccessInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2275,7 +2270,7 @@ export const ListAccessInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the invitations list */
 export type AccessListInvitationsSuccessResponseDataList = Array<InvitationRecord>;
-export const AccessListInvitationsSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListInvitationsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   InvitationRecord,
 ) as any as S.Schema<AccessListInvitationsSuccessResponseDataList>;
 
@@ -2288,7 +2283,7 @@ export interface AccessListInvitationsSuccessResponse {
   /** Data of the invitations list */
   data?: AccessListInvitationsSuccessResponseDataList;
 }
-export const AccessListInvitationsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListInvitationsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2300,7 +2295,7 @@ export const AccessListInvitationsSuccessResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Search filters for the request */
 export type ListAccessRoleBindingsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessRoleBindingsRequestSearchFiltersMap =
+const ListAccessRoleBindingsRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessRoleBindingsRequestSearchFiltersMap>;
 
 export interface ListAccessRoleBindingsRequest {
@@ -2313,7 +2308,7 @@ export interface ListAccessRoleBindingsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessRoleBindingsRequestSearchFiltersMap;
 }
-export const ListAccessRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2333,7 +2328,7 @@ export const ListAccessRoleBindingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of role binding */
 export type AccessListRoleBindingsSuccessResponseDataList = Array<RoleBindingRecord>;
-export const AccessListRoleBindingsSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListRoleBindingsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   RoleBindingRecord,
 ) as any as S.Schema<AccessListRoleBindingsSuccessResponseDataList>;
 
@@ -2346,7 +2341,7 @@ export interface AccessListRoleBindingsSuccessResponse {
   /** List of role binding */
   data?: AccessListRoleBindingsSuccessResponseDataList;
 }
-export const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2360,7 +2355,7 @@ export const AccessListRoleBindingsSuccessResponse = /*@__PURE__*/ S.suspend(() 
 export type ListAccessServiceAccountsRequestSearchFiltersMap = {
   [key: string]: string | undefined;
 };
-export const ListAccessServiceAccountsRequestSearchFiltersMap =
+const ListAccessServiceAccountsRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessServiceAccountsRequestSearchFiltersMap>;
 
 export interface ListAccessServiceAccountsRequest {
@@ -2373,7 +2368,7 @@ export interface ListAccessServiceAccountsRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessServiceAccountsRequestSearchFiltersMap;
 }
-export const ListAccessServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2404,7 +2399,7 @@ export interface ServiceAccountRecord {
   /** Description of the service account */
   description?: string;
 }
-export const ServiceAccountRecord = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2416,7 +2411,7 @@ export const ServiceAccountRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the service accounts list */
 export type AccessListServiceAccountsSuccessResponseDataList = Array<ServiceAccountRecord>;
-export const AccessListServiceAccountsSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListServiceAccountsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   ServiceAccountRecord,
 ) as any as S.Schema<AccessListServiceAccountsSuccessResponseDataList>;
 
@@ -2429,7 +2424,7 @@ export interface AccessListServiceAccountsSuccessResponse {
   /** Data of the service accounts list */
   data?: AccessListServiceAccountsSuccessResponseDataList;
 }
-export const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2441,7 +2436,7 @@ export const AccessListServiceAccountsSuccessResponse = /*@__PURE__*/ S.suspend(
 
 /** Search filters for the request */
 export type ListAccessUsersRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListAccessUsersRequestSearchFiltersMap =
+const ListAccessUsersRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListAccessUsersRequestSearchFiltersMap>;
 
 export interface ListAccessUsersRequest {
@@ -2454,7 +2449,7 @@ export interface ListAccessUsersRequest {
   /** Search filters for the request */
   searchFilters?: ListAccessUsersRequestSearchFiltersMap;
 }
-export const ListAccessUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2485,7 +2480,7 @@ export interface UserRecord {
   /** Auth type of the user */
   auth_type?: string;
 }
-export const UserRecord = /*@__PURE__*/ S.suspend(() =>
+const UserRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -2498,7 +2493,7 @@ export const UserRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Data of the users list */
 export type AccessListUsersSuccessResponseDataList = Array<UserRecord>;
-export const AccessListUsersSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const AccessListUsersSuccessResponseDataList = /*@__PURE__*/ S.Array(
   UserRecord,
 ) as any as S.Schema<AccessListUsersSuccessResponseDataList>;
 
@@ -2511,7 +2506,7 @@ export interface AccessListUsersSuccessResponse {
   /** Data of the users list */
   data?: AccessListUsersSuccessResponseDataList;
 }
-export const AccessListUsersSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessListUsersSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     metadata: S.optional(ConfluentListMetadata),
@@ -2537,7 +2532,7 @@ export interface ListConnectorRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
-export const ListConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2569,11 +2564,11 @@ export interface ConnectorResource {
   /** The properties of the Connector */
   properties: ConnectorResourceProperties;
 }
-export const ConnectorResource = GetConnectorResponse as any as S.Schema<ConnectorResource>;
+const ConnectorResource = GetConnectorResponse as any as S.Schema<ConnectorResource>;
 
 /** The ConnectorResource items on this page */
 export type ListConnectorsSuccessResponseValueList = Array<ConnectorResource>;
-export const ListConnectorsSuccessResponseValueList = /*@__PURE__*/ S.Array(
+const ListConnectorsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   ConnectorResource,
 ) as any as S.Schema<ListConnectorsSuccessResponseValueList>;
 
@@ -2584,7 +2579,7 @@ export interface ListConnectorsSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListConnectorsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectorsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListConnectorsSuccessResponseValueList,
     nextLink: S.optional(S.String),
@@ -2597,7 +2592,7 @@ export interface ListMarketplaceAgreementsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2614,7 +2609,7 @@ export const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The ConfluentAgreementResource items on this page */
 export type ConfluentAgreementResourceListResponseValueList = Array<ConfluentAgreementResource>;
-export const ConfluentAgreementResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const ConfluentAgreementResourceListResponseValueList = /*@__PURE__*/ S.Array(
   ConfluentAgreementResource,
 ) as any as S.Schema<ConfluentAgreementResourceListResponseValueList>;
 
@@ -2625,7 +2620,7 @@ export interface ConfluentAgreementResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConfluentAgreementResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfluentAgreementResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConfluentAgreementResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -2640,7 +2635,7 @@ export interface ListOrganizationByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListOrganizationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2658,9 +2653,6 @@ export const ListOrganizationByResourceGroupRequest = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type OrganizationResourceTagsMap = { [key: string]: string | undefined };
-export const OrganizationResourceTagsMap =
-  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<OrganizationResourceTagsMap>;
-
 /** Organization resource. */
 export interface OrganizationResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2678,12 +2670,11 @@ export interface OrganizationResource {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const OrganizationResource =
-  GetOrganizationResponse as any as S.Schema<OrganizationResource>;
+const OrganizationResource = GetOrganizationResponse as any as S.Schema<OrganizationResource>;
 
 /** The OrganizationResource items on this page */
 export type OrganizationResourceListResultValueList = Array<OrganizationResource>;
-export const OrganizationResourceListResultValueList = /*@__PURE__*/ S.Array(
+const OrganizationResourceListResultValueList = /*@__PURE__*/ S.Array(
   OrganizationResource,
 ) as any as S.Schema<OrganizationResourceListResultValueList>;
 
@@ -2694,7 +2685,7 @@ export interface OrganizationResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OrganizationResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const OrganizationResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OrganizationResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -2707,7 +2698,7 @@ export interface ListOrganizationBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListOrganizationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2736,7 +2727,7 @@ export interface ListOrganizationClustersRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
-export const ListOrganizationClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2771,7 +2762,7 @@ export interface SCClusterRecord {
   /** Cluster Properties */
   properties?: ClusterProperties;
 }
-export const SCClusterRecord = /*@__PURE__*/ S.suspend(() =>
+const SCClusterRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2784,7 +2775,7 @@ export const SCClusterRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The SCClusterRecord items on this page */
 export type ListClustersSuccessResponseValueList = Array<SCClusterRecord>;
-export const ListClustersSuccessResponseValueList = /*@__PURE__*/ S.Array(
+const ListClustersSuccessResponseValueList = /*@__PURE__*/ S.Array(
   SCClusterRecord,
 ) as any as S.Schema<ListClustersSuccessResponseValueList>;
 
@@ -2795,7 +2786,7 @@ export interface ListClustersSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListClustersSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClustersSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListClustersSuccessResponseValueList,
     nextLink: S.optional(S.String),
@@ -2816,7 +2807,7 @@ export interface ListOrganizationEnvironmentsRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
-export const ListOrganizationEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2850,7 +2841,7 @@ export interface SCEnvironmentRecord {
   /** Environment properties */
   properties?: EnvironmentProperties;
 }
-export const SCEnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
+const SCEnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2863,7 +2854,7 @@ export const SCEnvironmentRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** The SCEnvironmentRecord items on this page */
 export type GetEnvironmentsResponseValueList = Array<SCEnvironmentRecord>;
-export const GetEnvironmentsResponseValueList = /*@__PURE__*/ S.Array(
+const GetEnvironmentsResponseValueList = /*@__PURE__*/ S.Array(
   SCEnvironmentRecord,
 ) as any as S.Schema<GetEnvironmentsResponseValueList>;
 
@@ -2874,7 +2865,7 @@ export interface GetEnvironmentsResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GetEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GetEnvironmentsResponseValueList,
     nextLink: S.optional(S.String),
@@ -2882,7 +2873,7 @@ export const GetEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEnvironmentsResponse" }) as any as S.Schema<GetEnvironmentsResponse>;
 
 export interface ListOrganizationOperationsRequest {}
-export const ListOrganizationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2906,7 +2897,7 @@ export interface OperationDisplay {
   /** Description of the operation, e.g., 'Write confluent'. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2924,7 +2915,7 @@ export interface OperationResult {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -2934,7 +2925,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Confluent operations supported by the Microsoft.Confluent provider. */
 export type OperationListResultValueList = Array<OperationResult>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -2945,7 +2936,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -2954,7 +2945,7 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Search filters for the request */
 export type ListOrganizationRegionsRequestSearchFiltersMap = { [key: string]: string | undefined };
-export const ListOrganizationRegionsRequestSearchFiltersMap =
+const ListOrganizationRegionsRequestSearchFiltersMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ListOrganizationRegionsRequestSearchFiltersMap>;
 
 export interface ListOrganizationRegionsRequest {
@@ -2967,7 +2958,7 @@ export interface ListOrganizationRegionsRequest {
   /** Search filters for the request */
   searchFilters?: ListOrganizationRegionsRequestSearchFiltersMap;
 }
-export const ListOrganizationRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2986,7 +2977,7 @@ export const ListOrganizationRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationRegionsRequest>;
 
 export type RegionSpecEntityPackagesList = Array<string>;
-export const RegionSpecEntityPackagesList =
+const RegionSpecEntityPackagesList =
   AccessRoleBindingNameListSuccessResponseDataList as any as S.Schema<RegionSpecEntityPackagesList>;
 
 /** Region spec details */
@@ -2999,7 +2990,7 @@ export interface RegionSpecEntity {
   regionName?: string;
   packages?: RegionSpecEntityPackagesList;
 }
-export const RegionSpecEntity = /*@__PURE__*/ S.suspend(() =>
+const RegionSpecEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     cloud: S.optional(S.String),
@@ -3015,7 +3006,7 @@ export interface RegionProperties {
   /** Specification of the region */
   spec?: RegionSpecEntity;
 }
-export const RegionProperties = /*@__PURE__*/ S.suspend(() =>
+const RegionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(SCMetadataEntity),
     spec: S.optional(RegionSpecEntity),
@@ -3031,7 +3022,7 @@ export interface RegionRecord {
   /** Region Properties */
   properties?: RegionProperties;
 }
-export const RegionRecord = /*@__PURE__*/ S.suspend(() =>
+const RegionRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -3041,7 +3032,7 @@ export const RegionRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** List of regions supported by confluent */
 export type ListRegionsSuccessResponseDataList = Array<RegionRecord>;
-export const ListRegionsSuccessResponseDataList = /*@__PURE__*/ S.Array(
+const ListRegionsSuccessResponseDataList = /*@__PURE__*/ S.Array(
   RegionRecord,
 ) as any as S.Schema<ListRegionsSuccessResponseDataList>;
 
@@ -3050,7 +3041,7 @@ export interface ListRegionsSuccessResponse {
   /** List of regions supported by confluent */
   data?: ListRegionsSuccessResponseDataList;
 }
-export const ListRegionsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ListRegionsSuccessResponseDataList),
   }),
@@ -3072,7 +3063,7 @@ export interface ListOrganizationSchemaRegistryClustersRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
-export const ListOrganizationSchemaRegistryClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationSchemaRegistryClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3094,7 +3085,7 @@ export const ListOrganizationSchemaRegistryClustersRequest = /*@__PURE__*/ S.sus
 
 /** The SchemaRegistryClusterRecord items on this page */
 export type ListSchemaRegistryClustersResponseValueList = Array<SchemaRegistryClusterRecord>;
-export const ListSchemaRegistryClustersResponseValueList = /*@__PURE__*/ S.Array(
+const ListSchemaRegistryClustersResponseValueList = /*@__PURE__*/ S.Array(
   SchemaRegistryClusterRecord,
 ) as any as S.Schema<ListSchemaRegistryClustersResponseValueList>;
 
@@ -3105,7 +3096,7 @@ export interface ListSchemaRegistryClustersResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListSchemaRegistryClustersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSchemaRegistryClustersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListSchemaRegistryClustersResponseValueList,
     nextLink: S.optional(S.String),
@@ -3130,7 +3121,7 @@ export interface ListTopicsRequest {
   /** An opaque pagination token to fetch the next set of records */
   pageToken?: string;
 }
-export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3162,11 +3153,11 @@ export interface TopicRecord {
   /** Topic Properties */
   properties?: TopicProperties;
 }
-export const TopicRecord = CreateTopicResponse as any as S.Schema<TopicRecord>;
+const TopicRecord = CreateTopicResponse as any as S.Schema<TopicRecord>;
 
 /** The TopicRecord items on this page */
 export type ListTopicsSuccessResponseValueList = Array<TopicRecord>;
-export const ListTopicsSuccessResponseValueList = /*@__PURE__*/ S.Array(
+const ListTopicsSuccessResponseValueList = /*@__PURE__*/ S.Array(
   TopicRecord,
 ) as any as S.Schema<ListTopicsSuccessResponseValueList>;
 
@@ -3177,7 +3168,7 @@ export interface ListTopicsSuccessResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ListTopicsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ListTopicsSuccessResponseValueList,
     nextLink: S.optional(S.String),
@@ -3188,7 +3179,7 @@ export const ListTopicsSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ARM resource tags */
 export type UpdateOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateOrganizationRequestTagsMap =
+const UpdateOrganizationRequestTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<UpdateOrganizationRequestTagsMap>;
 
 export interface UpdateOrganizationRequest {
@@ -3201,7 +3192,7 @@ export interface UpdateOrganizationRequest {
   /** ARM resource tags */
   tags?: UpdateOrganizationRequestTagsMap;
 }
-export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3221,9 +3212,6 @@ export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateOrganizationResponseTagsMap =
-  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<UpdateOrganizationResponseTagsMap>;
-
 export interface UpdateOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3240,12 +3228,12 @@ export interface UpdateOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const UpdateOrganizationResponse =
+const UpdateOrganizationResponse =
   CreateOrganizationResponse as any as S.Schema<UpdateOrganizationResponse>;
 
 /** Resource tags. */
 export type ValidateValidationOrganizationRequestTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationRequestTagsMap =
+const ValidateValidationOrganizationRequestTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationRequestTagsMap>;
 
 export interface ValidateValidationOrganizationRequest {
@@ -3262,7 +3250,7 @@ export interface ValidateValidationOrganizationRequest {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
-export const ValidateValidationOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateValidationOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3284,9 +3272,6 @@ export const ValidateValidationOrganizationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type ValidateValidationOrganizationResponseTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationResponseTagsMap =
-  AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationResponseTagsMap>;
-
 export interface ValidateValidationOrganizationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3303,12 +3288,12 @@ export interface ValidateValidationOrganizationResponse {
   /** Organization resource properties */
   properties: OrganizationResourceProperties;
 }
-export const ValidateValidationOrganizationResponse =
+const ValidateValidationOrganizationResponse =
   CreateOrganizationResponse as any as S.Schema<ValidateValidationOrganizationResponse>;
 
 /** Resource tags. */
 export type ValidateValidationOrganizationV2RequestTagsMap = { [key: string]: string | undefined };
-export const ValidateValidationOrganizationV2RequestTagsMap =
+const ValidateValidationOrganizationV2RequestTagsMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidateValidationOrganizationV2RequestTagsMap>;
 
 export interface ValidateValidationOrganizationV2Request {
@@ -3325,7 +3310,7 @@ export interface ValidateValidationOrganizationV2Request {
   /** Organization resource properties */
   properties: OrganizationResourcePropertiesInput;
 }
-export const ValidateValidationOrganizationV2Request = /*@__PURE__*/ S.suspend(() =>
+const ValidateValidationOrganizationV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3347,7 +3332,7 @@ export const ValidateValidationOrganizationV2Request = /*@__PURE__*/ S.suspend((
 
 /** Info from the response */
 export type ValidationResponseInfoMap = { [key: string]: string | undefined };
-export const ValidationResponseInfoMap =
+const ValidationResponseInfoMap =
   AccessListRoleBindingNameListRequestSearchFiltersMap as any as S.Schema<ValidationResponseInfoMap>;
 
 /** Validation response from the provider */
@@ -3355,7 +3340,7 @@ export interface ValidationResponse {
   /** Info from the response */
   info?: ValidationResponseInfoMap;
 }
-export const ValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(ValidationResponseInfoMap),
   }),

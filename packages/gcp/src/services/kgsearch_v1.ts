@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SearchEntitiesRequest {
   /** The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B */
@@ -54,7 +54,7 @@ export interface SearchEntitiesRequest {
   /** Enables prefix match against names and aliases of entities */
   prefix?: boolean;
 }
-export const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: S.optional(StringList.pipe(T.Query())),
     types: S.optional(StringList.pipe(T.Query())),
@@ -73,7 +73,7 @@ export const SearchEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchEntitiesRequest" }) as any as S.Schema<SearchEntitiesRequest>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** Response message includes the context and a list of matching results which contain the detail of associated entities. */
 export interface SearchResponse {
@@ -84,7 +84,7 @@ export interface SearchResponse {
   /** The item list of search results. */
   itemListElement?: DocumentList;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "@type": S.optional(S.Unknown),
     "@context": S.optional(S.Unknown),

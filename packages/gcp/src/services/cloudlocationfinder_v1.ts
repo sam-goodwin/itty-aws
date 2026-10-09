@@ -39,7 +39,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -54,13 +54,10 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -75,7 +72,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -89,7 +86,7 @@ export interface GetProjectsLocationsCloudLocationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -109,7 +106,7 @@ export type CloudLocationCloudProviderEnum =
   | "CLOUD_PROVIDER_AWS"
   | "CLOUD_PROVIDER_AZURE"
   | "CLOUD_PROVIDER_OCI";
-export const CloudLocationCloudProviderEnum = S.String;
+const CloudLocationCloudProviderEnum = S.String;
 
 export type CloudLocationCloudLocationTypeEnum =
   | "CLOUD_LOCATION_TYPE_UNSPECIFIED"
@@ -117,17 +114,17 @@ export type CloudLocationCloudLocationTypeEnum =
   | "CLOUD_LOCATION_TYPE_ZONE"
   | "CLOUD_LOCATION_TYPE_GDCC_ZONE"
   | "CLOUD_LOCATION_TYPE_GLOBAL";
-export const CloudLocationCloudLocationTypeEnum = S.String;
+const CloudLocationCloudLocationTypeEnum = S.String;
 
 export type GcpAttributesZoneTypeEnum = "GCP_ZONE_TYPE_UNSPECIFIED" | "GENERAL_PURPOSE" | "AI_ZONE";
-export const GcpAttributesZoneTypeEnum = S.String;
+const GcpAttributesZoneTypeEnum = S.String;
 
 /** GCP-specific attributes. */
 export interface GcpAttributes {
   /** Optional. The type of the cloud zone. */
   zoneType?: GcpAttributesZoneTypeEnum;
 }
-export const GcpAttributes = /*@__PURE__*/ S.suspend(() =>
+const GcpAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneType: S.optional(GcpAttributesZoneTypeEnum),
   }),
@@ -152,7 +149,7 @@ export interface CloudLocation {
   /** Identifier. Name of the cloud location. Unique name of the cloud location including project and location using the form: `projects/{project_id}/locations/{location}/cloudLocations/{cloud_location}` */
   name?: string;
 }
-export const CloudLocation = /*@__PURE__*/ S.suspend(() =>
+const CloudLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProvider: S.optional(CloudLocationCloudProviderEnum),
     territoryCode: S.optional(S.String),
@@ -166,7 +163,7 @@ export const CloudLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudLocation" }) as any as S.Schema<CloudLocation>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
@@ -180,7 +177,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -199,7 +196,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -208,7 +205,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -225,7 +222,7 @@ export interface ListProjectsLocationsCloudLocationsRequest {
   /** Optional. A filter expression that filters resources listed in the response. The expression is in the form of field=value. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION'. Multiple filter queries are space-separated. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION territory_code="US"' By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. */
   filter?: string;
 }
-export const ListProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -243,7 +240,7 @@ export const ListProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsCloudLocationsRequest>;
 
 export type CloudLocationList = Array<CloudLocation>;
-export const CloudLocationList = /*@__PURE__*/ S.Array(
+const CloudLocationList = /*@__PURE__*/ S.Array(
   CloudLocation,
 ) as any as S.Schema<CloudLocationList>;
 
@@ -254,7 +251,7 @@ export interface ListCloudLocationsResponse {
   /** Output only. List of cloud locations. */
   cloudLocations?: CloudLocationList;
 }
-export const ListCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     cloudLocations: S.optional(CloudLocationList),
@@ -275,7 +272,7 @@ export interface SearchProjectsLocationsCloudLocationsRequest {
   /** Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token. */
   pageToken?: string;
 }
-export const SearchProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsCloudLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -300,7 +297,7 @@ export interface SearchCloudLocationsResponse {
   /** Output only. The continuation token, used to page through large result sets. Provide this value in a subsequent request as page_token in subsequent requests to retrieve the next page. If this field is not present, there are no subsequent results. */
   nextPageToken?: string;
 }
-export const SearchCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchCloudLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudLocations: S.optional(CloudLocationList),
     nextPageToken: S.optional(S.String),

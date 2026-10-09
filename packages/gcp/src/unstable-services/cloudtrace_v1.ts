@@ -67,7 +67,7 @@ export interface GetProjectsTracesRequest {
   /** Required. ID of the trace to return. */
   traceId: string;
 }
-export const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     traceId: S.String.pipe(T.Label()),
@@ -81,10 +81,10 @@ export const GetProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectsTracesRequest" }) as any as S.Schema<GetProjectsTracesRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type TraceSpanKindEnum = "SPAN_KIND_UNSPECIFIED" | "RPC_SERVER" | "RPC_CLIENT";
-export const TraceSpanKindEnum = S.String;
+const TraceSpanKindEnum = S.String;
 
 /** A span represents a single timed event within a trace. Spans can be nested and form a trace tree. Often, a trace contains a root span that describes the end-to-end latency of an operation and, optionally, one or more subspans for its suboperations. Spans do not need to be contiguous. There may be gaps between spans in a trace. */
 export interface TraceSpan {
@@ -103,7 +103,7 @@ export interface TraceSpan {
   /** Optional. ID of the parent span, if any. */
   parentSpanId?: string;
 }
-export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
+const TraceSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -116,7 +116,7 @@ export const TraceSpan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TraceSpan" }) as any as S.Schema<TraceSpan>;
 
 export type TraceSpanList = Array<TraceSpan>;
-export const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
+const TraceSpanList = /*@__PURE__*/ S.Array(TraceSpan) as any as S.Schema<TraceSpanList>;
 
 /** A trace describes how long it takes for an application to perform an operation. It consists of a set of spans, each of which represent a single timed event within the operation. */
 export interface Trace {
@@ -127,7 +127,7 @@ export interface Trace {
   /** Required. Project ID of the Cloud project where the trace data is stored. */
   projectId?: string;
 }
-export const Trace = /*@__PURE__*/ S.suspend(() =>
+const Trace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spans: S.optional(TraceSpanList),
     traceId: S.optional(S.String),
@@ -140,7 +140,7 @@ export type ListProjectsTracesViewEnum =
   | "MINIMAL"
   | "ROOTSPAN"
   | "COMPLETE";
-export const ListProjectsTracesViewEnum = S.String;
+const ListProjectsTracesViewEnum = S.String;
 
 export interface ListProjectsTracesRequest {
   /** Required. End of the time interval (inclusive) during which the trace data was collected from the application. */
@@ -160,7 +160,7 @@ export interface ListProjectsTracesRequest {
   /** Required. Start of the time interval (inclusive) during which the trace data was collected from the application. */
   startTime?: string;
 }
-export const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -182,7 +182,7 @@ export const ListProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsTracesRequest>;
 
 export type TraceList = Array<Trace>;
-export const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
+const TraceList = /*@__PURE__*/ S.Array(Trace) as any as S.Schema<TraceList>;
 
 /** The response message for the `ListTraces` method. */
 export interface ListTracesResponse {
@@ -191,7 +191,7 @@ export interface ListTracesResponse {
   /** List of trace records as specified by the view parameter. */
   traces?: TraceList;
 }
-export const ListTracesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTracesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     traces: S.optional(TraceList),
@@ -203,7 +203,7 @@ export interface Traces {
   /** List of traces. */
   traces?: TraceList;
 }
-export const Traces = /*@__PURE__*/ S.suspend(() =>
+const Traces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traces: S.optional(TraceList),
   }),
@@ -215,7 +215,7 @@ export interface PatchTracesProjectsRequest {
   /** Request body */
   body?: Traces;
 }
-export const PatchTracesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTracesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(Traces.pipe(T.HttpBody())),
@@ -232,7 +232,7 @@ export const PatchTracesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 

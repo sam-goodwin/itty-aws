@@ -45,7 +45,7 @@ export class PaymentRequired
   ) {}
 
 export type DangerouslyDeleteBySrcImagesRequestSrcImagesList = Array<string>;
-export const DangerouslyDeleteBySrcImagesRequestSrcImagesList = /*@__PURE__*/ S.Array(
+const DangerouslyDeleteBySrcImagesRequestSrcImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DangerouslyDeleteBySrcImagesRequestSrcImagesList>;
 
@@ -58,7 +58,7 @@ export interface DangerouslyDeleteBySrcImagesRequest {
   revalidationDeadlineSeconds?: number;
   srcImages: DangerouslyDeleteBySrcImagesRequestSrcImagesList;
 }
-export const DangerouslyDeleteBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DangerouslyDeleteBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -73,24 +73,19 @@ export const DangerouslyDeleteBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DangerouslyDeleteBySrcImagesRequest>;
 
 export interface DangerouslyDeleteBySrcImagesResponse {}
-export const DangerouslyDeleteBySrcImagesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DangerouslyDeleteBySrcImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DangerouslyDeleteBySrcImagesResponse",
 }) as any as S.Schema<DangerouslyDeleteBySrcImagesResponse>;
 
 export type DangerouslyDeleteByTagsRequestTagsCase0List = Array<string>;
-export const DangerouslyDeleteByTagsRequestTagsCase0List =
-  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<DangerouslyDeleteByTagsRequestTagsCase0List>;
-
 export type DangerouslyDeleteByTagsRequestTags =
   | DangerouslyDeleteByTagsRequestTagsCase0List
   | string;
-export const DangerouslyDeleteByTagsRequestTags =
+const DangerouslyDeleteByTagsRequestTags =
   S.Unknown as any as S.Schema<DangerouslyDeleteByTagsRequestTags>;
 
 export type DangerouslyDeleteByTagsRequestTarget = "production" | "preview";
-export const DangerouslyDeleteByTagsRequestTarget = S.String;
+const DangerouslyDeleteByTagsRequestTarget = S.String;
 
 export interface DangerouslyDeleteByTagsRequest {
   projectIdOrName: string;
@@ -102,7 +97,7 @@ export interface DangerouslyDeleteByTagsRequest {
   tags: DangerouslyDeleteByTagsRequestTags;
   target?: DangerouslyDeleteByTagsRequestTarget | (string & {});
 }
-export const DangerouslyDeleteByTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const DangerouslyDeleteByTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -116,12 +111,12 @@ export const DangerouslyDeleteByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DangerouslyDeleteByTagsRequest>;
 
 export interface DangerouslyDeleteByTagsResponse {}
-export const DangerouslyDeleteByTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DangerouslyDeleteByTagsResponse" },
-) as any as S.Schema<DangerouslyDeleteByTagsResponse>;
+const DangerouslyDeleteByTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DangerouslyDeleteByTagsResponse",
+}) as any as S.Schema<DangerouslyDeleteByTagsResponse>;
 
 export type InvalidateBySrcImagesRequestSrcImagesList = Array<string>;
-export const InvalidateBySrcImagesRequestSrcImagesList =
+const InvalidateBySrcImagesRequestSrcImagesList =
   DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<InvalidateBySrcImagesRequestSrcImagesList>;
 
 export interface InvalidateBySrcImagesRequest {
@@ -132,7 +127,7 @@ export interface InvalidateBySrcImagesRequest {
   slug?: string;
   srcImages: InvalidateBySrcImagesRequestSrcImagesList;
 }
-export const InvalidateBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -144,20 +139,16 @@ export const InvalidateBySrcImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvalidateBySrcImagesRequest>;
 
 export interface InvalidateBySrcImagesResponse {}
-export const InvalidateBySrcImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const InvalidateBySrcImagesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "InvalidateBySrcImagesResponse",
 }) as any as S.Schema<InvalidateBySrcImagesResponse>;
 
 export type InvalidateByTagsRequestTagsCase0List = Array<string>;
-export const InvalidateByTagsRequestTagsCase0List =
-  DangerouslyDeleteBySrcImagesRequestSrcImagesList as any as S.Schema<InvalidateByTagsRequestTagsCase0List>;
-
 export type InvalidateByTagsRequestTags = InvalidateByTagsRequestTagsCase0List | string;
-export const InvalidateByTagsRequestTags =
-  S.Unknown as any as S.Schema<InvalidateByTagsRequestTags>;
+const InvalidateByTagsRequestTags = S.Unknown as any as S.Schema<InvalidateByTagsRequestTags>;
 
 export type InvalidateByTagsRequestTarget = "production" | "preview";
-export const InvalidateByTagsRequestTarget = S.String;
+const InvalidateByTagsRequestTarget = S.String;
 
 export interface InvalidateByTagsRequest {
   projectIdOrName: string;
@@ -168,7 +159,7 @@ export interface InvalidateByTagsRequest {
   tags: InvalidateByTagsRequestTags;
   target?: InvalidateByTagsRequestTarget | (string & {});
 }
-export const InvalidateByTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateByTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIdOrName: S.String.pipe(T.Query()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -179,7 +170,7 @@ export const InvalidateByTagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InvalidateByTagsRequest" }) as any as S.Schema<InvalidateByTagsRequest>;
 
 export interface InvalidateByTagsResponse {}
-export const InvalidateByTagsResponse =
+const InvalidateByTagsResponse =
   InvalidateBySrcImagesResponse as any as S.Schema<InvalidateByTagsResponse>;
 
 export type DangerouslyDeleteBySrcImagesError =

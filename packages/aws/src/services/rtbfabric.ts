@@ -115,22 +115,20 @@ export class ValidationException
 export type GatewayId = string;
 export type LinkId = string;
 export type ResponderErrorMaskingAction = "NO_BID" | "PASSTHROUGH" | (string & {});
-export const ResponderErrorMaskingAction = S.String;
+const ResponderErrorMaskingAction = S.String;
 
 export type ResponderErrorMaskingLoggingType = "NONE" | "METRIC" | "RESPONSE" | (string & {});
-export const ResponderErrorMaskingLoggingType = S.String;
+const ResponderErrorMaskingLoggingType = S.String;
 
 export type ResponderErrorMaskingLoggingTypes = ResponderErrorMaskingLoggingType[];
-export const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(
-  ResponderErrorMaskingLoggingType,
-);
+const ResponderErrorMaskingLoggingTypes = /*@__PURE__*/ S.Array(ResponderErrorMaskingLoggingType);
 export interface ResponderErrorMaskingForHttpCode {
   httpCode: string;
   action: ResponderErrorMaskingAction;
   loggingTypes: ResponderErrorMaskingLoggingType[];
   responseLoggingPercentage?: number;
 }
-export const ResponderErrorMaskingForHttpCode = /*@__PURE__*/ S.suspend(() =>
+const ResponderErrorMaskingForHttpCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpCode: S.String,
     action: ResponderErrorMaskingAction,
@@ -141,13 +139,13 @@ export const ResponderErrorMaskingForHttpCode = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResponderErrorMaskingForHttpCode",
 }) as any as S.Schema<ResponderErrorMaskingForHttpCode>;
 export type ResponderErrorMasking = ResponderErrorMaskingForHttpCode[];
-export const ResponderErrorMasking = /*@__PURE__*/ S.Array(ResponderErrorMaskingForHttpCode);
+const ResponderErrorMasking = /*@__PURE__*/ S.Array(ResponderErrorMaskingForHttpCode);
 export type CustomerProvidedId = string;
 export interface LinkAttributes {
   responderErrorMasking?: ResponderErrorMaskingForHttpCode[];
   customerProvidedId?: string;
 }
-export const LinkAttributes = /*@__PURE__*/ S.suspend(() =>
+const LinkAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responderErrorMasking: S.optional(ResponderErrorMasking),
     customerProvidedId: S.optional(S.String),
@@ -157,7 +155,7 @@ export interface LinkApplicationLogSampling {
   errorLog: number;
   filterLog: number;
 }
-export const LinkApplicationLogSampling = /*@__PURE__*/ S.suspend(() =>
+const LinkApplicationLogSampling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorLog: S.Number, filterLog: S.Number }),
 ).annotate({
   identifier: "LinkApplicationLogSampling",
@@ -165,7 +163,7 @@ export const LinkApplicationLogSampling = /*@__PURE__*/ S.suspend(() =>
 export interface LinkApplicationLogConfiguration {
   sampling: LinkApplicationLogSampling;
 }
-export const LinkApplicationLogConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LinkApplicationLogConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sampling: LinkApplicationLogSampling }),
 ).annotate({
   identifier: "LinkApplicationLogConfiguration",
@@ -173,7 +171,7 @@ export const LinkApplicationLogConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface LinkLogSettings {
   applicationLogs: LinkApplicationLogConfiguration;
 }
-export const LinkLogSettings = /*@__PURE__*/ S.suspend(() =>
+const LinkLogSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationLogs: LinkApplicationLogConfiguration }),
 ).annotate({ identifier: "LinkLogSettings" }) as any as S.Schema<LinkLogSettings>;
 export type LinkTimeoutInMillis = number;
@@ -184,7 +182,7 @@ export interface AcceptLinkRequest {
   logSettings: LinkLogSettings;
   timeoutInMillis?: number;
 }
-export const AcceptLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -217,21 +215,21 @@ export type LinkStatus =
   | "ISOLATED"
   | "PENDING_RESTORATION"
   | (string & {});
-export const LinkStatus = S.String;
+const LinkStatus = S.String;
 
 export type LinkDirection = "RESPONSE" | "REQUEST" | (string & {});
-export const LinkDirection = S.String;
+const LinkDirection = S.String;
 
 export type Version = string;
 export type FlowModuleName = string;
 export type FlowModuleNameList = string[];
-export const FlowModuleNameList = /*@__PURE__*/ S.Array(S.String);
+const FlowModuleNameList = /*@__PURE__*/ S.Array(S.String);
 export interface NoBidModuleParameters {
   reason?: string;
   reasonCode?: number;
   passThroughPercentage?: number;
 }
-export const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
+const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     reasonCode: S.optional(S.Number),
@@ -239,44 +237,44 @@ export const NoBidModuleParameters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NoBidModuleParameters" }) as any as S.Schema<NoBidModuleParameters>;
 export type FilterType = "INCLUDE" | "EXCLUDE" | (string & {});
-export const FilterType = S.String;
+const FilterType = S.String;
 
 export type ValueList = string[];
-export const ValueList = FlowModuleNameList as any as S.Schema<ValueList>;
+const ValueList = FlowModuleNameList as any as S.Schema<ValueList>;
 export interface FilterCriterion {
   path: string;
   values: string[];
 }
-export const FilterCriterion = /*@__PURE__*/ S.suspend(() =>
+const FilterCriterion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ path: S.String, values: ValueList }),
 ).annotate({ identifier: "FilterCriterion" }) as any as S.Schema<FilterCriterion>;
 export type FilterCriteria = FilterCriterion[];
-export const FilterCriteria = /*@__PURE__*/ S.Array(FilterCriterion);
+const FilterCriteria = /*@__PURE__*/ S.Array(FilterCriterion);
 export interface Filter {
   criteria: FilterCriterion[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ criteria: FilterCriteria }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+const Filter = /*@__PURE__*/ S.suspend(() => S.Struct({ criteria: FilterCriteria })).annotate({
+  identifier: "Filter",
+}) as any as S.Schema<Filter>;
 export type FilterConfiguration = Filter[];
-export const FilterConfiguration = /*@__PURE__*/ S.Array(Filter);
+const FilterConfiguration = /*@__PURE__*/ S.Array(Filter);
 export interface NoBidAction {
   noBidReasonCode?: number;
 }
-export const NoBidAction = /*@__PURE__*/ S.suspend(() =>
+const NoBidAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ noBidReasonCode: S.optional(S.Number) }),
 ).annotate({ identifier: "NoBidAction" }) as any as S.Schema<NoBidAction>;
 export interface HeaderTagAction {
   name: string;
   value: string;
 }
-export const HeaderTagAction = /*@__PURE__*/ S.suspend(() =>
+const HeaderTagAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, value: S.String }),
 ).annotate({ identifier: "HeaderTagAction" }) as any as S.Schema<HeaderTagAction>;
 export type Action =
   | { noBid: NoBidAction; headerTag?: never }
   | { noBid?: never; headerTag: HeaderTagAction };
-export const Action = /*@__PURE__*/ S.Union([
+const Action = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ noBid: NoBidAction }),
   /*@__PURE__*/ S.Struct({ headerTag: HeaderTagAction }),
 ]);
@@ -286,7 +284,7 @@ export interface OpenRtbAttributeModuleParameters {
   action: Action;
   holdbackPercentage: number;
 }
-export const OpenRtbAttributeModuleParameters = /*@__PURE__*/ S.suspend(() =>
+const OpenRtbAttributeModuleParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterType: FilterType,
     filterConfiguration: FilterConfiguration,
@@ -299,7 +297,7 @@ export const OpenRtbAttributeModuleParameters = /*@__PURE__*/ S.suspend(() =>
 export interface RateLimiterModuleParameters {
   tps?: number;
 }
-export const RateLimiterModuleParameters = /*@__PURE__*/ S.suspend(() =>
+const RateLimiterModuleParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tps: S.optional(S.Number) }),
 ).annotate({
   identifier: "RateLimiterModuleParameters",
@@ -308,7 +306,7 @@ export type ModuleParameters =
   | { noBid: NoBidModuleParameters; openRtbAttribute?: never; rateLimiter?: never }
   | { noBid?: never; openRtbAttribute: OpenRtbAttributeModuleParameters; rateLimiter?: never }
   | { noBid?: never; openRtbAttribute?: never; rateLimiter: RateLimiterModuleParameters };
-export const ModuleParameters = /*@__PURE__*/ S.Union([
+const ModuleParameters = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ noBid: NoBidModuleParameters }),
   /*@__PURE__*/ S.Struct({ openRtbAttribute: OpenRtbAttributeModuleParameters }),
   /*@__PURE__*/ S.Struct({ rateLimiter: RateLimiterModuleParameters }),
@@ -319,7 +317,7 @@ export interface ModuleConfiguration {
   dependsOn?: string[];
   moduleParameters?: ModuleParameters;
 }
-export const ModuleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ModuleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     name: S.String,
@@ -328,14 +326,14 @@ export const ModuleConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ModuleConfiguration" }) as any as S.Schema<ModuleConfiguration>;
 export type ModuleConfigurationList = ModuleConfiguration[];
-export const ModuleConfigurationList = /*@__PURE__*/ S.Array(ModuleConfiguration);
+const ModuleConfigurationList = /*@__PURE__*/ S.Array(ModuleConfiguration);
 export type ConnectivityType =
   | "DEFAULT"
   | "PUBLIC_INGRESS"
   | "PUBLIC_EGRESS"
   | "EXTERNAL_INBOUND"
   | (string & {});
-export const ConnectivityType = S.String;
+const ConnectivityType = S.String;
 
 export interface AcceptLinkResponse {
   gatewayId: string;
@@ -351,7 +349,7 @@ export interface AcceptLinkResponse {
   connectivityType?: ConnectivityType;
   linkId: string;
 }
-export const AcceptLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     peerGatewayId: S.String,
@@ -373,7 +371,7 @@ export interface AssociateCertificateRequest {
   acmCertificateArn: string;
   clientToken: string;
 }
-export const AssociateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     acmCertificateArn: S.String,
@@ -398,14 +396,14 @@ export type CertificateAssociationStatus =
   | "DISASSOCIATED"
   | "FAILED"
   | (string & {});
-export const CertificateAssociationStatus = S.String;
+const CertificateAssociationStatus = S.String;
 
 export interface AssociateCertificateResponse {
   gatewayId: string;
   acmCertificateArn: string;
   status: CertificateAssociationStatus;
 }
-export const AssociateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     acmCertificateArn: S.String,
@@ -417,7 +415,7 @@ export const AssociateCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateInboundExternalLinkRequest {
   clientToken: string;
   gatewayId: string;
@@ -425,7 +423,7 @@ export interface CreateInboundExternalLinkRequest {
   logSettings: LinkLogSettings;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String.pipe(T.IdempotencyToken()),
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -452,7 +450,7 @@ export interface CreateInboundExternalLinkResponse {
   status: LinkStatus;
   domainName: string;
 }
-export const CreateInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String, linkId: S.String, status: LinkStatus, domainName: S.String }),
 ).annotate({
   identifier: "CreateInboundExternalLinkResponse",
@@ -466,7 +464,7 @@ export interface CreateLinkRequest {
   logSettings: LinkLogSettings;
   timeoutInMillis?: number;
 }
-export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     peerGatewayId: S.String,
@@ -501,7 +499,7 @@ export interface CreateLinkResponse {
   linkId: string;
   customerProvidedId?: string;
 }
-export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     peerGatewayId: S.String,
@@ -523,7 +521,7 @@ export interface QueryStringKeyValuePair {
   key: string;
   value: string;
 }
-export const QueryStringKeyValuePair = /*@__PURE__*/ S.suspend(() =>
+const QueryStringKeyValuePair = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, value: S.String }),
 ).annotate({ identifier: "QueryStringKeyValuePair" }) as any as S.Schema<QueryStringKeyValuePair>;
 export interface RuleCondition {
@@ -534,7 +532,7 @@ export interface RuleCondition {
   queryStringEquals?: QueryStringKeyValuePair;
   queryStringExists?: string;
 }
-export const RuleCondition = /*@__PURE__*/ S.suspend(() =>
+const RuleCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostHeader: S.optional(S.String),
     hostHeaderWildcard: S.optional(S.String),
@@ -552,7 +550,7 @@ export interface CreateLinkRoutingRuleRequest {
   conditions: RuleCondition;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String.pipe(T.IdempotencyToken()),
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -582,14 +580,14 @@ export type RuleStatus =
   | "DELETED"
   | "FAILED"
   | (string & {});
-export const RuleStatus = S.String;
+const RuleStatus = S.String;
 
 export interface CreateLinkRoutingRuleResponse {
   ruleId: string;
   status: RuleStatus;
   createdAt: Date;
 }
-export const CreateLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
     status: RuleStatus,
@@ -607,7 +605,7 @@ export interface CreateOutboundExternalLinkRequest {
   logSettings: LinkLogSettings;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String.pipe(T.IdempotencyToken()),
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -633,7 +631,7 @@ export interface CreateOutboundExternalLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const CreateOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String, linkId: S.String, status: LinkStatus }),
 ).annotate({
   identifier: "CreateOutboundExternalLinkResponse",
@@ -641,10 +639,10 @@ export const CreateOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
 export type VpcId = string;
 export type SubnetId = string;
 export type SubnetIdList = string[];
-export const SubnetIdList = FlowModuleNameList as any as S.Schema<SubnetIdList>;
+const SubnetIdList = FlowModuleNameList as any as S.Schema<SubnetIdList>;
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = FlowModuleNameList as any as S.Schema<SecurityGroupIdList>;
+const SecurityGroupIdList = FlowModuleNameList as any as S.Schema<SecurityGroupIdList>;
 export interface CreateRequesterGatewayRequest {
   vpcId: string;
   subnetIds: string[];
@@ -653,7 +651,7 @@ export interface CreateRequesterGatewayRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcId: S.String,
     subnetIds: SubnetIdList,
@@ -678,42 +676,41 @@ export type RequesterGatewayStatus =
   | "PENDING_ISOLATION"
   | "PENDING_RESTORATION"
   | (string & {});
-export const RequesterGatewayStatus = S.String;
+const RequesterGatewayStatus = S.String;
 
 export interface CreateRequesterGatewayResponse {
   gatewayId: string;
   domainName: string;
   status: RequesterGatewayStatus;
 }
-export const CreateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String, domainName: S.String, status: RequesterGatewayStatus }),
 ).annotate({
   identifier: "CreateRequesterGatewayResponse",
 }) as any as S.Schema<CreateRequesterGatewayResponse>;
 export type Protocol = "HTTP" | "HTTPS" | (string & {});
-export const Protocol = S.String;
+const Protocol = S.String;
 
 export type ProtocolList = Protocol[];
-export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
+const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export interface ListenerConfig {
   protocols: Protocol[];
 }
-export const ListenerConfig = /*@__PURE__*/ S.suspend(() =>
+const ListenerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ protocols: ProtocolList }),
 ).annotate({ identifier: "ListenerConfig" }) as any as S.Schema<ListenerConfig>;
 export type Base64EncodedCertificateChain = string | redacted.Redacted<string>;
 export type CertificateAuthorityCertificates = (string | redacted.Redacted<string>)[];
-export const CertificateAuthorityCertificates = /*@__PURE__*/ S.Array(SensitiveString);
+const CertificateAuthorityCertificates = /*@__PURE__*/ S.Array(SensitiveString);
 export interface TrustStoreConfiguration {
   certificateAuthorityCertificates: (string | redacted.Redacted<string>)[];
 }
-export const TrustStoreConfiguration = /*@__PURE__*/ S.suspend(() =>
+const TrustStoreConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ certificateAuthorityCertificates: CertificateAuthorityCertificates }),
 ).annotate({ identifier: "TrustStoreConfiguration" }) as any as S.Schema<TrustStoreConfiguration>;
 export type AutoScalingGroupName = string;
 export type AutoScalingGroupNameList = string[];
-export const AutoScalingGroupNameList =
-  FlowModuleNameList as any as S.Schema<AutoScalingGroupNameList>;
+const AutoScalingGroupNameList = FlowModuleNameList as any as S.Schema<AutoScalingGroupNameList>;
 export type StatusCodeMatcher = string;
 export interface HealthCheckConfig {
   port: number;
@@ -725,7 +722,7 @@ export interface HealthCheckConfig {
   healthyThresholdCount?: number;
   unhealthyThresholdCount?: number;
 }
-export const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
+const HealthCheckConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.Number,
     path: S.String,
@@ -742,7 +739,7 @@ export interface AutoScalingGroupsConfiguration {
   roleArn: string;
   healthCheckConfig?: HealthCheckConfig;
 }
-export const AutoScalingGroupsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AutoScalingGroupsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoScalingGroupNames: AutoScalingGroupNameList,
     roleArn: S.String,
@@ -763,7 +760,7 @@ export interface EksEndpointsConfiguration {
   clusterName: string;
   roleArn: string;
 }
-export const EksEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EksEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointsResourceName: S.String,
     endpointsResourceNamespace: S.String,
@@ -778,18 +775,18 @@ export const EksEndpointsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type ManagedEndpointConfiguration =
   | { autoScalingGroups: AutoScalingGroupsConfiguration; eksEndpoints?: never }
   | { autoScalingGroups?: never; eksEndpoints: EksEndpointsConfiguration };
-export const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
+const ManagedEndpointConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ autoScalingGroups: AutoScalingGroupsConfiguration }),
   /*@__PURE__*/ S.Struct({ eksEndpoints: EksEndpointsConfiguration }),
 ]);
 export type GatewayType = "EXTERNAL" | "INTERNAL" | (string & {});
-export const GatewayType = S.String;
+const GatewayType = S.String;
 
 export type ClientRoutingPolicy =
   | "AVAILABILITY_ZONE_AFFINITY"
   | "ANY_AVAILABILITY_ZONE"
   | (string & {});
-export const ClientRoutingPolicy = S.String;
+const ClientRoutingPolicy = S.String;
 
 export interface CreateResponderGatewayRequest {
   vpcId: string;
@@ -807,7 +804,7 @@ export interface CreateResponderGatewayRequest {
   gatewayType?: GatewayType;
   clientRoutingPolicy?: ClientRoutingPolicy;
 }
-export const CreateResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcId: S.String,
     subnetIds: SubnetIdList,
@@ -840,7 +837,7 @@ export type ResponderGatewayStatus =
   | "PENDING_ISOLATION"
   | "PENDING_RESTORATION"
   | (string & {});
-export const ResponderGatewayStatus = S.String;
+const ResponderGatewayStatus = S.String;
 
 export interface CreateResponderGatewayResponse {
   gatewayId: string;
@@ -849,7 +846,7 @@ export interface CreateResponderGatewayResponse {
   externalInboundEndpoint?: string;
   clientRoutingPolicy?: ClientRoutingPolicy;
 }
-export const CreateResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     status: ResponderGatewayStatus,
@@ -864,7 +861,7 @@ export interface DeleteInboundExternalLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const DeleteInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -888,7 +885,7 @@ export interface DeleteInboundExternalLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const DeleteInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ linkId: S.String, status: LinkStatus }),
 ).annotate({
   identifier: "DeleteInboundExternalLinkResponse",
@@ -897,7 +894,7 @@ export interface DeleteLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -916,7 +913,7 @@ export interface DeleteLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const DeleteLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ linkId: S.String, status: LinkStatus }),
 ).annotate({ identifier: "DeleteLinkResponse" }) as any as S.Schema<DeleteLinkResponse>;
 export interface DeleteLinkRoutingRuleRequest {
@@ -924,7 +921,7 @@ export interface DeleteLinkRoutingRuleRequest {
   linkId: string;
   ruleId: string;
 }
-export const DeleteLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -949,7 +946,7 @@ export interface DeleteLinkRoutingRuleResponse {
   ruleId: string;
   status: RuleStatus;
 }
-export const DeleteLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ruleId: S.String, status: RuleStatus }),
 ).annotate({
   identifier: "DeleteLinkRoutingRuleResponse",
@@ -958,7 +955,7 @@ export interface DeleteOutboundExternalLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const DeleteOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -982,12 +979,12 @@ export interface DeleteOutboundExternalLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const DeleteOutboundExternalLinkResponse =
+const DeleteOutboundExternalLinkResponse =
   DeleteInboundExternalLinkResponse as any as S.Schema<DeleteOutboundExternalLinkResponse>;
 export interface DeleteRequesterGatewayRequest {
   gatewayId: string;
 }
-export const DeleteRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/requester-gateway/{gatewayId}" }),
@@ -1005,7 +1002,7 @@ export interface DeleteRequesterGatewayResponse {
   gatewayId: string;
   status: RequesterGatewayStatus;
 }
-export const DeleteRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String, status: RequesterGatewayStatus }),
 ).annotate({
   identifier: "DeleteRequesterGatewayResponse",
@@ -1013,7 +1010,7 @@ export const DeleteRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteResponderGatewayRequest {
   gatewayId: string;
 }
-export const DeleteResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/responder-gateway/{gatewayId}" }),
@@ -1031,13 +1028,13 @@ export interface DeleteResponderGatewayResponse {
   gatewayId: string;
   status: ResponderGatewayStatus;
 }
-export const DeleteResponderGatewayResponse =
+const DeleteResponderGatewayResponse =
   DeleteRequesterGatewayResponse as any as S.Schema<DeleteResponderGatewayResponse>;
 export interface DisassociateCertificateRequest {
   gatewayId: string;
   acmCertificateArn: string;
 }
-export const DisassociateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     acmCertificateArn: S.String.pipe(T.HttpQuery("acmCertificateArn")),
@@ -1059,13 +1056,13 @@ export interface DisassociateCertificateResponse {
   acmCertificateArn: string;
   status: CertificateAssociationStatus;
 }
-export const DisassociateCertificateResponse =
+const DisassociateCertificateResponse =
   AssociateCertificateResponse as any as S.Schema<DisassociateCertificateResponse>;
 export interface GetCertificateAssociationRequest {
   gatewayId: string;
   acmCertificateArn: string;
 }
-export const GetCertificateAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     acmCertificateArn: S.String.pipe(T.HttpQuery("acmCertificateArn")),
@@ -1089,7 +1086,7 @@ export interface GetCertificateAssociationResponse {
   associatedAt?: Date;
   updatedAt?: Date;
 }
-export const GetCertificateAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     acmCertificateArn: S.String,
@@ -1104,7 +1101,7 @@ export interface GetInboundExternalLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const GetInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1138,7 +1135,7 @@ export interface GetInboundExternalLinkResponse {
   logSettings?: LinkLogSettings;
   connectivityType?: ConnectivityType;
 }
-export const GetInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetInboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     linkId: S.String,
@@ -1160,7 +1157,7 @@ export interface GetLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const GetLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1192,7 +1189,7 @@ export interface GetLinkResponse {
   httpResponderAllowed?: boolean;
   timeoutInMillis?: number;
 }
-export const GetLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     peerGatewayId: S.String,
@@ -1216,7 +1213,7 @@ export interface GetLinkRoutingRuleRequest {
   linkId: string;
   ruleId: string;
 }
-export const GetLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1248,7 +1245,7 @@ export interface GetLinkRoutingRuleResponse {
   updatedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const GetLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     linkId: S.String,
@@ -1267,7 +1264,7 @@ export interface GetOutboundExternalLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const GetOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOutboundExternalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1301,7 +1298,7 @@ export interface GetOutboundExternalLinkResponse {
   logSettings?: LinkLogSettings;
   connectivityType?: ConnectivityType;
 }
-export const GetOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     linkId: S.String,
@@ -1322,7 +1319,7 @@ export const GetOutboundExternalLinkResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRequesterGatewayRequest {
   gatewayId: string;
 }
-export const GetRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/requester-gateway/{gatewayId}" }),
@@ -1350,7 +1347,7 @@ export interface GetRequesterGatewayResponse {
   activeLinksCount?: number;
   totalLinksCount?: number;
 }
-export const GetRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: RequesterGatewayStatus,
     domainName: S.String,
@@ -1371,7 +1368,7 @@ export const GetRequesterGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetResponderGatewayRequest {
   gatewayId: string;
 }
-export const GetResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayId: S.String.pipe(T.HttpLabel("gatewayId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/responder-gateway/{gatewayId}" }),
@@ -1408,7 +1405,7 @@ export interface GetResponderGatewayResponse {
   externalInboundEndpoint?: string;
   clientRoutingPolicy?: ClientRoutingPolicy;
 }
-export const GetResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vpcId: S.String,
     subnetIds: SubnetIdList,
@@ -1440,7 +1437,7 @@ export interface ListCertificateAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListCertificateAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1464,7 +1461,7 @@ export interface CertificateAssociationSummary {
   associatedAt?: Date;
   updatedAt?: Date;
 }
-export const CertificateAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const CertificateAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acmCertificateArn: S.String,
     status: CertificateAssociationStatus,
@@ -1475,14 +1472,12 @@ export const CertificateAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificateAssociationSummary",
 }) as any as S.Schema<CertificateAssociationSummary>;
 export type CertificateAssociationSummaryList = CertificateAssociationSummary[];
-export const CertificateAssociationSummaryList = /*@__PURE__*/ S.Array(
-  CertificateAssociationSummary,
-);
+const CertificateAssociationSummaryList = /*@__PURE__*/ S.Array(CertificateAssociationSummary);
 export interface ListCertificateAssociationsResponse {
   certificateAssociations: CertificateAssociationSummary[];
   nextToken?: string;
 }
-export const ListCertificateAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateAssociations: CertificateAssociationSummaryList,
     nextToken: S.optional(S.String),
@@ -1496,7 +1491,7 @@ export interface ListLinkRoutingRulesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListLinkRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinkRoutingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1523,7 +1518,7 @@ export interface LinkRoutingRuleSummary {
   createdAt: Date;
   updatedAt: Date;
 }
-export const LinkRoutingRuleSummary = /*@__PURE__*/ S.suspend(() =>
+const LinkRoutingRuleSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
     priority: S.Number,
@@ -1534,12 +1529,12 @@ export const LinkRoutingRuleSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LinkRoutingRuleSummary" }) as any as S.Schema<LinkRoutingRuleSummary>;
 export type LinkRoutingRuleList = LinkRoutingRuleSummary[];
-export const LinkRoutingRuleList = /*@__PURE__*/ S.Array(LinkRoutingRuleSummary);
+const LinkRoutingRuleList = /*@__PURE__*/ S.Array(LinkRoutingRuleSummary);
 export interface ListLinkRoutingRulesResponse {
   rules?: LinkRoutingRuleSummary[];
   nextToken?: string;
 }
-export const ListLinkRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinkRoutingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rules: S.optional(LinkRoutingRuleList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListLinkRoutingRulesResponse",
@@ -1549,7 +1544,7 @@ export interface ListLinksRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1581,7 +1576,7 @@ export interface ListLinksResponseStructure {
   tags?: { [key: string]: string | undefined };
   publicEndpoint?: string;
 }
-export const ListLinksResponseStructure = /*@__PURE__*/ S.suspend(() =>
+const ListLinksResponseStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     peerGatewayId: S.String,
@@ -1602,19 +1597,19 @@ export const ListLinksResponseStructure = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListLinksResponseStructure",
 }) as any as S.Schema<ListLinksResponseStructure>;
 export type LinkList = ListLinksResponseStructure[];
-export const LinkList = /*@__PURE__*/ S.Array(ListLinksResponseStructure);
+const LinkList = /*@__PURE__*/ S.Array(ListLinksResponseStructure);
 export interface ListLinksResponse {
   links?: ListLinksResponseStructure[];
   nextToken?: string;
 }
-export const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ links: S.optional(LinkList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListLinksResponse" }) as any as S.Schema<ListLinksResponse>;
 export interface ListRequesterGatewaysRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRequesterGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRequesterGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1625,12 +1620,12 @@ export const ListRequesterGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListRequesterGatewaysRequest",
 }) as any as S.Schema<ListRequesterGatewaysRequest>;
 export type GatewayIdList = string[];
-export const GatewayIdList = FlowModuleNameList as any as S.Schema<GatewayIdList>;
+const GatewayIdList = FlowModuleNameList as any as S.Schema<GatewayIdList>;
 export interface ListRequesterGatewaysResponse {
   gatewayIds?: string[];
   nextToken?: string;
 }
-export const ListRequesterGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRequesterGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ gatewayIds: S.optional(GatewayIdList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRequesterGatewaysResponse",
@@ -1639,7 +1634,7 @@ export interface ListResponderGatewaysRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListResponderGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResponderGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1653,13 +1648,13 @@ export interface ListResponderGatewaysResponse {
   gatewayIds?: string[];
   nextToken?: string;
 }
-export const ListResponderGatewaysResponse =
+const ListResponderGatewaysResponse =
   ListRequesterGatewaysResponse as any as S.Schema<ListResponderGatewaysResponse>;
 export type RtbTaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1669,7 +1664,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1678,7 +1673,7 @@ export interface RejectLinkRequest {
   gatewayId: string;
   linkId: string;
 }
-export const RejectLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1707,27 +1702,27 @@ export interface RejectLinkResponse {
   connectivityType?: ConnectivityType;
   linkId: string;
 }
-export const RejectLinkResponse = AcceptLinkResponse as any as S.Schema<RejectLinkResponse>;
+const RejectLinkResponse = AcceptLinkResponse as any as S.Schema<RejectLinkResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = FlowModuleNameList as any as S.Schema<TagKeyList>;
+const TagKeyList = FlowModuleNameList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1736,14 +1731,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateLinkRequest {
   gatewayId: string;
   linkId: string;
   logSettings?: LinkLogSettings;
   timeoutInMillis?: number;
 }
-export const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1764,14 +1759,14 @@ export interface UpdateLinkResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const UpdateLinkResponse = DeleteLinkResponse as any as S.Schema<UpdateLinkResponse>;
+const UpdateLinkResponse = DeleteLinkResponse as any as S.Schema<UpdateLinkResponse>;
 export interface UpdateLinkModuleFlowRequest {
   clientToken: string;
   gatewayId: string;
   linkId: string;
   modules: ModuleConfiguration[];
 }
-export const UpdateLinkModuleFlowRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinkModuleFlowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String.pipe(T.IdempotencyToken()),
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -1795,7 +1790,7 @@ export interface UpdateLinkModuleFlowResponse {
   linkId: string;
   status: LinkStatus;
 }
-export const UpdateLinkModuleFlowResponse =
+const UpdateLinkModuleFlowResponse =
   CreateOutboundExternalLinkResponse as any as S.Schema<UpdateLinkModuleFlowResponse>;
 export interface UpdateLinkRoutingRuleRequest {
   gatewayId: string;
@@ -1804,7 +1799,7 @@ export interface UpdateLinkRoutingRuleRequest {
   priority: number;
   conditions: RuleCondition;
 }
-export const UpdateLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinkRoutingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
     linkId: S.String.pipe(T.HttpLabel("linkId")),
@@ -1832,7 +1827,7 @@ export interface UpdateLinkRoutingRuleResponse {
   status: RuleStatus;
   updatedAt: Date;
 }
-export const UpdateLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLinkRoutingRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
     status: RuleStatus,
@@ -1846,7 +1841,7 @@ export interface UpdateRequesterGatewayRequest {
   gatewayId: string;
   description?: string;
 }
-export const UpdateRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequesterGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.String.pipe(T.IdempotencyToken()),
     gatewayId: S.String.pipe(T.HttpLabel("gatewayId")),
@@ -1868,7 +1863,7 @@ export interface UpdateRequesterGatewayResponse {
   gatewayId: string;
   status: RequesterGatewayStatus;
 }
-export const UpdateRequesterGatewayResponse =
+const UpdateRequesterGatewayResponse =
   DeleteRequesterGatewayResponse as any as S.Schema<UpdateRequesterGatewayResponse>;
 export interface UpdateResponderGatewayRequest {
   domainName?: string;
@@ -1882,7 +1877,7 @@ export interface UpdateResponderGatewayRequest {
   description?: string;
   clientRoutingPolicy?: ClientRoutingPolicy;
 }
-export const UpdateResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponderGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     port: S.Number,
@@ -1912,7 +1907,7 @@ export interface UpdateResponderGatewayResponse {
   status: ResponderGatewayStatus;
   clientRoutingPolicy?: ClientRoutingPolicy;
 }
-export const UpdateResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateResponderGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.String,
     status: ResponderGatewayStatus,

@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request to create a subnetwork in a previously peered service network. */
 export interface AddSubnetworkRequest {
@@ -83,7 +83,7 @@ export interface AddSubnetworkRequest {
   /** An optional description of the subnet. */
   description?: string;
 }
-export const AddSubnetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSubnetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedAddress: S.optional(S.String),
     subnetworkUsers: S.optional(StringList),
@@ -102,7 +102,7 @@ export interface AddSubnetworkServicesRequest {
   /** Request body */
   body?: AddSubnetworkRequest;
 }
-export const AddSubnetworkServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSubnetworkServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AddSubnetworkRequest.pipe(T.HttpBody())),
@@ -118,15 +118,10 @@ export const AddSubnetworkServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSubnetworkServicesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -137,7 +132,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -158,7 +153,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -179,7 +174,7 @@ export interface GoogleCloudServicenetworkingV1betaConnection {
   /** Output only. The name of the VPC Network Peering connection that was created by the service producer. */
   peering?: string;
 }
-export const GoogleCloudServicenetworkingV1betaConnection = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudServicenetworkingV1betaConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     network: S.optional(S.String),
@@ -196,7 +191,7 @@ export interface CreateServicesConnectionsRequest {
   /** Request body */
   body?: GoogleCloudServicenetworkingV1betaConnection;
 }
-export const CreateServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudServicenetworkingV1betaConnection.pipe(T.HttpBody())),
@@ -215,7 +210,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -233,7 +228,7 @@ export interface ListServicesConnectionsRequest {
   /** The name of service consumer's VPC network that's connected with service producer network through a private connection. The network name must be in the following format: `projects/{project}/global/networks/{network}`. {project} is a project number, such as in `12345` that includes the VPC service consumer's VPC network. {network} is the name of the service consumer's VPC network. */
   network?: string;
 }
-export const ListServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     network: S.optional(S.String.pipe(T.Query())),
@@ -250,7 +245,7 @@ export const ListServicesConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudServicenetworkingV1betaConnectionList =
   Array<GoogleCloudServicenetworkingV1betaConnection>;
-export const GoogleCloudServicenetworkingV1betaConnectionList = /*@__PURE__*/ S.Array(
+const GoogleCloudServicenetworkingV1betaConnectionList = /*@__PURE__*/ S.Array(
   GoogleCloudServicenetworkingV1betaConnection,
 ) as any as S.Schema<GoogleCloudServicenetworkingV1betaConnectionList>;
 
@@ -259,7 +254,7 @@ export interface ListConnectionsResponse {
   /** The list of Connections. */
   connections?: GoogleCloudServicenetworkingV1betaConnectionList;
 }
-export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: S.optional(GoogleCloudServicenetworkingV1betaConnectionList),
   }),
@@ -272,7 +267,7 @@ export interface SearchRangeRequest {
   /** Required. The prefix length of the IP range. Use usual CIDR range notation. For example, '30' to find unused x.x.x.x/30 CIDR range. Actual range will be determined using allocated range for the consumer peered network and returned in the result. */
   ipPrefixLength?: number;
 }
-export const SearchRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     network: S.optional(S.String),
     ipPrefixLength: S.optional(S.Number),
@@ -285,7 +280,7 @@ export interface SearchRangeServicesRequest {
   /** Request body */
   body?: SearchRangeRequest;
 }
-export const SearchRangeServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRangeServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SearchRangeRequest.pipe(T.HttpBody())),
@@ -310,7 +305,7 @@ export interface UpdateConnectionsServicesRequest {
   /** Request body */
   body?: GoogleCloudServicenetworkingV1betaConnection;
 }
-export const UpdateConnectionsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConnectionsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

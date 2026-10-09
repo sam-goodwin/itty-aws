@@ -9,19 +9,18 @@ import * as T from "../traits.ts";
 export type { AzureOpError, AzureOpContext };
 
 export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest {}
-export const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange",
-        code: 200,
-        apiVersion: "2025-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest",
-  }) as any as S.Schema<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest>;
+const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Carbon/queryCarbonEmissionDataAvailableDateRange",
+      code: 200,
+      apiVersion: "2025-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest",
+}) as any as S.Schema<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest>;
 
 /** Response for available date range of carbon emission data */
 export interface CarbonEmissionDataAvailableDateRange {
@@ -30,7 +29,7 @@ export interface CarbonEmissionDataAvailableDateRange {
   /** End date parameter, format is yyyy-MM-dd */
   endDate: string;
 }
-export const CarbonEmissionDataAvailableDateRange = /*@__PURE__*/ S.suspend(() =>
+const CarbonEmissionDataAvailableDateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.String,
     endDate: S.String,
@@ -46,7 +45,7 @@ export type ReportTypeEnum =
   | "TopItemsSummaryReport"
   | "TopItemsMonthlySummaryReport"
   | "ItemDetailsReport";
-export const ReportTypeEnum = S.String;
+const ReportTypeEnum = S.String;
 
 /** Date range to be used with QueryParameter, it should be within 12 months between start and end date. In certain cases, start and end dates must be the same date. */
 export interface DateRange {
@@ -55,7 +54,7 @@ export interface DateRange {
   /** End date parameter in yyyy-MM-01 format. Only the first day of each month is accepted. */
   end: string;
 }
-export const DateRange = /*@__PURE__*/ S.suspend(() =>
+const DateRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.String,
     end: S.String,
@@ -64,39 +63,37 @@ export const DateRange = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList = Array<string>;
-export const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList>;
+const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList>;
 
 /** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList = Array<string>;
-export const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
+const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
   CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList>;
 
 /** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList = Array<string>;
-export const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
+const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
   CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList>;
 
 /** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = Array<string>;
-export const CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = /*@__PURE__*/ S.Array(
+const CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestLocationListList>;
 
 /** Supported carbon emission scopes to be used with QueryParameter, as defined by the GHG Protocol. At least one scope must be specified. The output will return a total of all specified scopes. */
 export type EmissionScopeEnum = "Scope1" | "Scope2" | "Scope3";
-export const EmissionScopeEnum = S.String;
+const EmissionScopeEnum = S.String;
 
 /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList = Array<
   EmissionScopeEnum | (string & {})
 >;
-export const CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList =
-  /*@__PURE__*/ S.Array(
-    EmissionScopeEnum,
-  ) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList>;
+const CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList = /*@__PURE__*/ S.Array(
+  EmissionScopeEnum,
+) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList>;
 
 export interface CarbonServiceQueryCarbonEmissionReportsRequest {
   /** The ReportType requested for carbon emissions data. Required. Specifies how data is aggregated and displayed in the output, as explained in the ReportTypeEnum. */
@@ -114,7 +111,7 @@ export interface CarbonServiceQueryCarbonEmissionReportsRequest {
   /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
   carbonScopeList: CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList;
 }
-export const CarbonServiceQueryCarbonEmissionReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const CarbonServiceQueryCarbonEmissionReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportType: ReportTypeEnum,
     dateRange: DateRange,
@@ -152,7 +149,7 @@ export type ResponseDataTypeEnum =
   | "ItemDetailsData"
   | "ResourceItemDetailsData"
   | "ResourceGroupItemDetailsData";
-export const ResponseDataTypeEnum = S.String;
+const ResponseDataTypeEnum = S.String;
 
 /** The basic response for different query report, all query report result will have these information */
 export interface CarbonEmissionData {
@@ -167,7 +164,7 @@ export interface CarbonEmissionData {
   /** The change in carbon emissions between the current and previous period, calculated as: latestMonthEmissions - previousMonthEmissions. */
   monthlyEmissionsChangeValue?: number;
 }
-export const CarbonEmissionData = /*@__PURE__*/ S.suspend(() =>
+const CarbonEmissionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: ResponseDataTypeEnum,
     latestMonthEmissions: S.Number,
@@ -179,13 +176,13 @@ export const CarbonEmissionData = /*@__PURE__*/ S.suspend(() =>
 
 /** The CarbonEmissionData items on this page */
 export type CarbonEmissionDataListResultValueList = Array<CarbonEmissionData>;
-export const CarbonEmissionDataListResultValueList = /*@__PURE__*/ S.Array(
+const CarbonEmissionDataListResultValueList = /*@__PURE__*/ S.Array(
   CarbonEmissionData,
 ) as any as S.Schema<CarbonEmissionDataListResultValueList>;
 
 /** Enum for Access Decision */
 export type AccessDecisionEnum = "Allowed" | "Denied";
-export const AccessDecisionEnum = S.String;
+const AccessDecisionEnum = S.String;
 
 /** Access Decision for each Subscription */
 export interface SubscriptionAccessDecision {
@@ -196,7 +193,7 @@ export interface SubscriptionAccessDecision {
   /** The reason why access request got denied */
   denialReason?: string;
 }
-export const SubscriptionAccessDecision = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionAccessDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String,
     decision: AccessDecisionEnum,
@@ -209,7 +206,7 @@ export const SubscriptionAccessDecision = /*@__PURE__*/ S.suspend(() =>
 /** The access decision list for each input subscription */
 export type CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
   Array<SubscriptionAccessDecision>;
-export const CarbonEmissionDataListResultSubscriptionAccessDecisionListList = /*@__PURE__*/ S.Array(
+const CarbonEmissionDataListResultSubscriptionAccessDecisionListList = /*@__PURE__*/ S.Array(
   SubscriptionAccessDecision,
 ) as any as S.Schema<CarbonEmissionDataListResultSubscriptionAccessDecisionListList>;
 
@@ -222,7 +219,7 @@ export interface CarbonEmissionDataListResult {
   /** The access decision list for each input subscription */
   subscriptionAccessDecisionList?: CarbonEmissionDataListResultSubscriptionAccessDecisionListList;
 }
-export const CarbonEmissionDataListResult = /*@__PURE__*/ S.suspend(() =>
+const CarbonEmissionDataListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CarbonEmissionDataListResultValueList,
     skipToken: S.optional(S.String),
@@ -235,7 +232,7 @@ export const CarbonEmissionDataListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CarbonEmissionDataListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -257,7 +254,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -268,11 +265,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -287,7 +284,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -299,7 +296,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -309,7 +306,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),

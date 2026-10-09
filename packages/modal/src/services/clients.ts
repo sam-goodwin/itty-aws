@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { ModalOpError, ModalOpContext };
 
 export interface ClientHelloRequest {}
-export const ClientHelloRequest = /*@__PURE__*/ S.suspend(() =>
+const ClientHelloRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClientHello", code: 200 }),
   ),
@@ -20,13 +20,13 @@ export type WarningWarningType =
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
-export const WarningWarningType = S.String;
+const WarningWarningType = S.String;
 
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WarningWarningType),
     message: S.optional(S.String),
@@ -34,7 +34,7 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 export interface ClientHelloResponse {
   warning?: string;
@@ -42,7 +42,7 @@ export interface ClientHelloResponse {
   /** Deprecated, no longer used in client */
   serverWarnings?: WarningList;
 }
-export const ClientHelloResponse = /*@__PURE__*/ S.suspend(() =>
+const ClientHelloResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warning: S.optional(S.String),
     imageBuilderVersion: S.optional(S.String),

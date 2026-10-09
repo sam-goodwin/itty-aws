@@ -63,9 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface ApigatewayCancelOperationRequest {}
-export const ApigatewayCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ApigatewayCancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApigatewayCancelOperationRequest",
 }) as any as S.Schema<ApigatewayCancelOperationRequest>;
 
@@ -75,7 +73,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: ApigatewayCancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApigatewayCancelOperationRequest.pipe(T.HttpBody())),
@@ -92,12 +90,12 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ApigatewayApiStateEnum =
   | "STATE_UNSPECIFIED"
@@ -106,7 +104,7 @@ export type ApigatewayApiStateEnum =
   | "FAILED"
   | "DELETING"
   | "UPDATING";
-export const ApigatewayApiStateEnum = S.String;
+const ApigatewayApiStateEnum = S.String;
 
 /** An API that can be served by one or more Gateways. */
 export interface ApigatewayApi {
@@ -125,7 +123,7 @@ export interface ApigatewayApi {
   /** Output only. Created time. */
   createTime?: string;
 }
-export const ApigatewayApi = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -145,7 +143,7 @@ export interface CreateProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewayApi;
 }
-export const CreateProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     apiId: S.optional(S.String.pipe(T.Query())),
@@ -162,15 +160,10 @@ export const CreateProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsLocationsApisRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface ApigatewayStatus {
@@ -181,7 +174,7 @@ export interface ApigatewayStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const ApigatewayStatus = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -202,7 +195,7 @@ export interface ApigatewayOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const ApigatewayOperation = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(ApigatewayStatus),
     response: S.optional(DocumentMap),
@@ -219,7 +212,7 @@ export interface ApigatewayApiConfigFile {
   /** The bytes that constitute the file. */
   contents?: string;
 }
-export const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     contents: S.optional(S.String),
@@ -227,7 +220,7 @@ export const ApigatewayApiConfigFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApigatewayApiConfigFile" }) as any as S.Schema<ApigatewayApiConfigFile>;
 
 export type ApigatewayApiConfigFileList = Array<ApigatewayApiConfigFile>;
-export const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(
+const ApigatewayApiConfigFileList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigFile,
 ) as any as S.Schema<ApigatewayApiConfigFileList>;
 
@@ -238,7 +231,7 @@ export interface ApigatewayApiConfigGrpcServiceDefinition {
   /** Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set. */
   source?: ApigatewayApiConfigFileList;
 }
-export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileDescriptorSet: S.optional(ApigatewayApiConfigFile),
     source: S.optional(ApigatewayApiConfigFileList),
@@ -249,7 +242,7 @@ export const ApigatewayApiConfigGrpcServiceDefinition = /*@__PURE__*/ S.suspend(
 
 export type ApigatewayApiConfigGrpcServiceDefinitionList =
   Array<ApigatewayApiConfigGrpcServiceDefinition>;
-export const ApigatewayApiConfigGrpcServiceDefinitionList = /*@__PURE__*/ S.Array(
+const ApigatewayApiConfigGrpcServiceDefinitionList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigGrpcServiceDefinition,
 ) as any as S.Schema<ApigatewayApiConfigGrpcServiceDefinitionList>;
 
@@ -258,7 +251,7 @@ export interface ApigatewayApiConfigOpenApiDocument {
   /** The OpenAPI Specification document file. */
   document?: ApigatewayApiConfigFile;
 }
-export const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(ApigatewayApiConfigFile),
   }),
@@ -267,7 +260,7 @@ export const ApigatewayApiConfigOpenApiDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApigatewayApiConfigOpenApiDocument>;
 
 export type ApigatewayApiConfigOpenApiDocumentList = Array<ApigatewayApiConfigOpenApiDocument>;
-export const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(
+const ApigatewayApiConfigOpenApiDocumentList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfigOpenApiDocument,
 ) as any as S.Schema<ApigatewayApiConfigOpenApiDocumentList>;
 
@@ -279,7 +272,7 @@ export type ApigatewayApiConfigStateEnum =
   | "DELETING"
   | "UPDATING"
   | "ACTIVATING";
-export const ApigatewayApiConfigStateEnum = S.String;
+const ApigatewayApiConfigStateEnum = S.String;
 
 /** An API Configuration is a combination of settings for both the Managed Service and Gateways serving this API Config. */
 export interface ApigatewayApiConfig {
@@ -306,7 +299,7 @@ export interface ApigatewayApiConfig {
   /** Output only. State of the API Config. */
   state?: ApigatewayApiConfigStateEnum | (string & {});
 }
-export const ApigatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -330,7 +323,7 @@ export interface CreateProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayApiConfig;
 }
-export const CreateProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiConfigId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -350,12 +343,12 @@ export type ApigatewayGatewayEffectiveStreamingModeEnum =
   | "EFFECTIVE_STREAMING_MODE_UNSPECIFIED"
   | "EFFECTIVE_STREAMING_MODE_DISABLED"
   | "EFFECTIVE_STREAMING_MODE_ENABLED";
-export const ApigatewayGatewayEffectiveStreamingModeEnum = S.String;
+const ApigatewayGatewayEffectiveStreamingModeEnum = S.String;
 
 export type ApigatewayGatewayStreamingModeEnum =
   | "STREAMING_MODE_UNSPECIFIED"
   | "STREAMING_MODE_ENABLED";
-export const ApigatewayGatewayStreamingModeEnum = S.String;
+const ApigatewayGatewayStreamingModeEnum = S.String;
 
 export type ApigatewayGatewayStateEnum =
   | "STATE_UNSPECIFIED"
@@ -364,7 +357,7 @@ export type ApigatewayGatewayStateEnum =
   | "FAILED"
   | "DELETING"
   | "UPDATING";
-export const ApigatewayGatewayStateEnum = S.String;
+const ApigatewayGatewayStateEnum = S.String;
 
 /** A Gateway is an API-aware HTTP proxy. It performs API-Method and/or API-Consumer specific actions based on an API Config such as authentication, policy enforcement, and backend selection. */
 export interface ApigatewayGateway {
@@ -389,7 +382,7 @@ export interface ApigatewayGateway {
   /** Output only. Created time. */
   createTime?: string;
 }
-export const ApigatewayGateway = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveStreamingMode: S.optional(ApigatewayGatewayEffectiveStreamingModeEnum),
     streamingMode: S.optional(ApigatewayGatewayStreamingModeEnum),
@@ -412,7 +405,7 @@ export interface CreateProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayGateway;
 }
-export const CreateProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gatewayId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -432,7 +425,7 @@ export interface DeleteProjectsLocationsApisRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*` */
   name: string;
 }
-export const DeleteProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -446,7 +439,7 @@ export interface DeleteProjectsLocationsApisConfigsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*\/configs/*` */
   name: string;
 }
-export const DeleteProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -460,7 +453,7 @@ export interface DeleteProjectsLocationsGatewaysRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/gateways/*` */
   name: string;
 }
-export const DeleteProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -474,7 +467,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -490,7 +483,7 @@ export interface GetIamPolicyProjectsLocationsApisRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -510,10 +503,10 @@ export type ApigatewayAuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const ApigatewayAuditLogConfigLogTypeEnum = S.String;
+const ApigatewayAuditLogConfigLogTypeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface ApigatewayAuditLogConfig {
@@ -522,7 +515,7 @@ export interface ApigatewayAuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(ApigatewayAuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -530,7 +523,7 @@ export const ApigatewayAuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApigatewayAuditLogConfig" }) as any as S.Schema<ApigatewayAuditLogConfig>;
 
 export type ApigatewayAuditLogConfigList = Array<ApigatewayAuditLogConfig>;
-export const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(
+const ApigatewayAuditLogConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditLogConfig,
 ) as any as S.Schema<ApigatewayAuditLogConfigList>;
 
@@ -541,7 +534,7 @@ export interface ApigatewayAuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(ApigatewayAuditLogConfigList),
     service: S.optional(S.String),
@@ -549,7 +542,7 @@ export const ApigatewayAuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApigatewayAuditConfig" }) as any as S.Schema<ApigatewayAuditConfig>;
 
 export type ApigatewayAuditConfigList = Array<ApigatewayAuditConfig>;
-export const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(
+const ApigatewayAuditConfigList = /*@__PURE__*/ S.Array(
   ApigatewayAuditConfig,
 ) as any as S.Schema<ApigatewayAuditConfigList>;
 
@@ -564,7 +557,7 @@ export interface ApigatewayExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const ApigatewayExpr = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayExpr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     expression: S.optional(S.String),
@@ -582,7 +575,7 @@ export interface ApigatewayBinding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: ApigatewayExpr;
 }
-export const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     members: S.optional(StringList),
@@ -591,7 +584,7 @@ export const ApigatewayBinding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApigatewayBinding" }) as any as S.Schema<ApigatewayBinding>;
 
 export type ApigatewayBindingList = Array<ApigatewayBinding>;
-export const ApigatewayBindingList = /*@__PURE__*/ S.Array(
+const ApigatewayBindingList = /*@__PURE__*/ S.Array(
   ApigatewayBinding,
 ) as any as S.Schema<ApigatewayBindingList>;
 
@@ -606,7 +599,7 @@ export interface ApigatewayPolicy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: ApigatewayBindingList;
 }
-export const ApigatewayPolicy = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     version: S.optional(S.Number),
@@ -621,7 +614,7 @@ export interface GetIamPolicyProjectsLocationsApisConfigsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -642,7 +635,7 @@ export interface GetIamPolicyProjectsLocationsGatewaysRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -661,7 +654,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -684,7 +677,7 @@ export interface ApigatewayLocation {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const ApigatewayLocation = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     locationId: S.optional(S.String),
@@ -698,7 +691,7 @@ export interface GetProjectsLocationsApisRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*` */
   name: string;
 }
-export const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -709,7 +702,7 @@ export const GetProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsApisRequest>;
 
 export type GetProjectsLocationsApisConfigsViewEnum = "CONFIG_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const GetProjectsLocationsApisConfigsViewEnum = S.String;
+const GetProjectsLocationsApisConfigsViewEnum = S.String;
 
 export interface GetProjectsLocationsApisConfigsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/apis/*\/configs/*` */
@@ -717,7 +710,7 @@ export interface GetProjectsLocationsApisConfigsRequest {
   /** Specifies which fields of the API Config are returned in the response. Defaults to `BASIC` view. */
   view?: GetProjectsLocationsApisConfigsViewEnum | (string & {});
 }
-export const GetProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsApisConfigsViewEnum.pipe(T.Query())),
@@ -732,7 +725,7 @@ export interface GetProjectsLocationsGatewaysRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/gateways/*` */
   name: string;
 }
-export const GetProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -746,7 +739,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -768,7 +761,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -787,7 +780,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type ApigatewayLocationList = Array<ApigatewayLocation>;
-export const ApigatewayLocationList = /*@__PURE__*/ S.Array(
+const ApigatewayLocationList = /*@__PURE__*/ S.Array(
   ApigatewayLocation,
 ) as any as S.Schema<ApigatewayLocationList>;
 
@@ -798,7 +791,7 @@ export interface ApigatewayListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: ApigatewayLocationList;
 }
-export const ApigatewayListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(ApigatewayLocationList),
@@ -819,7 +812,7 @@ export interface ListProjectsLocationsApisRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -838,7 +831,7 @@ export const ListProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsApisRequest>;
 
 export type ApigatewayApiList = Array<ApigatewayApi>;
-export const ApigatewayApiList = /*@__PURE__*/ S.Array(
+const ApigatewayApiList = /*@__PURE__*/ S.Array(
   ApigatewayApi,
 ) as any as S.Schema<ApigatewayApiList>;
 
@@ -851,7 +844,7 @@ export interface ApigatewayListApisResponse {
   /** APIs. */
   apis?: ApigatewayApiList;
 }
-export const ApigatewayListApisResponse = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayListApisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachableLocations: S.optional(StringList),
@@ -873,7 +866,7 @@ export interface ListProjectsLocationsApisConfigsRequest {
   /** Filter. */
   filter?: string;
 }
-export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -892,7 +885,7 @@ export const ListProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListProjectsLocationsApisConfigsRequest>;
 
 export type ApigatewayApiConfigList = Array<ApigatewayApiConfig>;
-export const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(
+const ApigatewayApiConfigList = /*@__PURE__*/ S.Array(
   ApigatewayApiConfig,
 ) as any as S.Schema<ApigatewayApiConfigList>;
 
@@ -905,7 +898,7 @@ export interface ApigatewayListApiConfigsResponse {
   /** Locations that could not be reached. */
   unreachableLocations?: StringList;
 }
-export const ApigatewayListApiConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayListApiConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     apiConfigs: S.optional(ApigatewayApiConfigList),
@@ -927,7 +920,7 @@ export interface ListProjectsLocationsGatewaysRequest {
   /** Required. Parent resource of the Gateway, of the form: `projects/*\/locations/*` */
   parent: string;
 }
-export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -946,7 +939,7 @@ export const ListProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsGatewaysRequest>;
 
 export type ApigatewayGatewayList = Array<ApigatewayGateway>;
-export const ApigatewayGatewayList = /*@__PURE__*/ S.Array(
+const ApigatewayGatewayList = /*@__PURE__*/ S.Array(
   ApigatewayGateway,
 ) as any as S.Schema<ApigatewayGatewayList>;
 
@@ -959,7 +952,7 @@ export interface ApigatewayListGatewaysResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-export const ApigatewayListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateways: S.optional(ApigatewayGatewayList),
     unreachableLocations: S.optional(StringList),
@@ -981,7 +974,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1000,7 +993,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type ApigatewayOperationList = Array<ApigatewayOperation>;
-export const ApigatewayOperationList = /*@__PURE__*/ S.Array(
+const ApigatewayOperationList = /*@__PURE__*/ S.Array(
   ApigatewayOperation,
 ) as any as S.Schema<ApigatewayOperationList>;
 
@@ -1013,7 +1006,7 @@ export interface ApigatewayListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ApigatewayListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(ApigatewayOperationList),
     nextPageToken: S.optional(S.String),
@@ -1031,7 +1024,7 @@ export interface PatchProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewayApi;
 }
-export const PatchProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1051,7 +1044,7 @@ export interface PatchProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayApiConfig;
 }
-export const PatchProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1071,7 +1064,7 @@ export interface PatchProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayGateway;
 }
-export const PatchProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1090,7 +1083,7 @@ export interface ApigatewaySetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const ApigatewaySetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const ApigatewaySetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(ApigatewayPolicy),
     updateMask: S.optional(S.String),
@@ -1105,7 +1098,7 @@ export interface SetIamPolicyProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1126,7 +1119,7 @@ export interface SetIamPolicyProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1147,7 +1140,7 @@ export interface SetIamPolicyProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewaySetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewaySetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1167,7 +1160,7 @@ export interface ApigatewayTestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const ApigatewayTestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApigatewayTestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1181,7 +1174,7 @@ export interface TestIamPermissionsProjectsLocationsApisRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1201,7 +1194,7 @@ export interface ApigatewayTestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const ApigatewayTestIamPermissionsResponse =
+const ApigatewayTestIamPermissionsResponse =
   ApigatewayTestIamPermissionsRequest as any as S.Schema<ApigatewayTestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsApisConfigsRequest {
@@ -1210,7 +1203,7 @@ export interface TestIamPermissionsProjectsLocationsApisConfigsRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsApisConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1231,7 +1224,7 @@ export interface TestIamPermissionsProjectsLocationsGatewaysRequest {
   /** Request body */
   body?: ApigatewayTestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(ApigatewayTestIamPermissionsRequest.pipe(T.HttpBody())),

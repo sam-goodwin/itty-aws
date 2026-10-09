@@ -38,7 +38,7 @@ export class NotFound
   ) {}
 
 export type CreateAccessTokenRequestRegionId = "eu01" | "eu02";
-export const CreateAccessTokenRequestRegionId = S.String;
+const CreateAccessTokenRequestRegionId = S.String;
 
 export interface CreateAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -54,7 +54,7 @@ export interface CreateAccessTokenRequest {
   /** The time-to-live (TTL) in days for the access token. If not set, token will not expire. */
   ttl?: number | null;
 }
-export const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateAccessTokenRequestRegionId.pipe(T.Label()),
@@ -73,7 +73,7 @@ export const CreateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAccessTokenRequest" }) as any as S.Schema<CreateAccessTokenRequest>;
 
 export type CreateAccessTokenResponseStatus = "active" | "expired" | "deleting";
-export const CreateAccessTokenResponseStatus = S.String;
+const CreateAccessTokenResponseStatus = S.String;
 
 export interface CreateAccessTokenResponse {
   /** The user ID of the creator of the access token. */
@@ -90,7 +90,7 @@ export interface CreateAccessTokenResponse {
   /** The generated access token. */
   accessToken: string | Redacted.Redacted<string>;
 }
-export const CreateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorId: S.String,
     description: S.optional(S.String),
@@ -105,20 +105,20 @@ export const CreateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessTokenResponse>;
 
 export type CreateDestinationRequestRegionId = "eu01" | "eu02";
-export const CreateDestinationRequestRegionId = S.String;
+const CreateDestinationRequestRegionId = S.String;
 
 /** Type of the destination. */
 export type DestinationConfigType = "OpenTelemetry" | "S3";
-export const DestinationConfigType = S.String;
+const DestinationConfigType = S.String;
 
 export type ConfigFilterLevel = "resource" | "scope" | "logRecord";
-export const ConfigFilterLevel = S.String;
+const ConfigFilterLevel = S.String;
 
 export type ConfigFilterMatcher = "=" | "!=";
-export const ConfigFilterMatcher = S.String;
+const ConfigFilterMatcher = S.String;
 
 export type ConfigFilterAttributesValuesList = Array<string>;
-export const ConfigFilterAttributesValuesList = /*@__PURE__*/ S.Array(
+const ConfigFilterAttributesValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConfigFilterAttributesValuesList>;
 
@@ -128,7 +128,7 @@ export interface ConfigFilterAttributes {
   matcher: ConfigFilterMatcher | (string & {});
   values: ConfigFilterAttributesValuesList;
 }
-export const ConfigFilterAttributes = /*@__PURE__*/ S.suspend(() =>
+const ConfigFilterAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     level: ConfigFilterLevel,
@@ -138,7 +138,7 @@ export const ConfigFilterAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigFilterAttributes" }) as any as S.Schema<ConfigFilterAttributes>;
 
 export type ConfigFilterAttributesList = Array<ConfigFilterAttributes>;
-export const ConfigFilterAttributesList = /*@__PURE__*/ S.Array(
+const ConfigFilterAttributesList = /*@__PURE__*/ S.Array(
   ConfigFilterAttributes,
 ) as any as S.Schema<ConfigFilterAttributesList>;
 
@@ -146,7 +146,7 @@ export interface ConfigFilter {
   attributes: ConfigFilterAttributesList;
   disabled?: boolean;
 }
-export const ConfigFilter = /*@__PURE__*/ S.suspend(() =>
+const ConfigFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: ConfigFilterAttributesList,
     disabled: S.optional(S.Boolean),
@@ -158,7 +158,7 @@ export interface DestinationConfigOpenTelemetryBasicAuth {
   password: string | Redacted.Redacted<string>;
   username: string;
 }
-export const DestinationConfigOpenTelemetryBasicAuth = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfigOpenTelemetryBasicAuth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.String.pipe(T.SensitiveValue({})),
     username: S.String,
@@ -174,7 +174,7 @@ export interface DestinationConfigOpenTelemetry {
   /** The URI for reaching the resource. */
   uri: string;
 }
-export const DestinationConfigOpenTelemetry = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfigOpenTelemetry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basicAuth: S.optional(DestinationConfigOpenTelemetryBasicAuth),
     bearerToken: S.optional(S.String),
@@ -189,7 +189,7 @@ export interface DestinationConfigS3AccessKey {
   id: string;
   secret: string | Redacted.Redacted<string>;
 }
-export const DestinationConfigS3AccessKey = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfigS3AccessKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     secret: S.String.pipe(T.SensitiveValue({})),
@@ -204,7 +204,7 @@ export interface DestinationConfigS3 {
   /** The URI for reaching the resource. */
   endpoint: string;
 }
-export const DestinationConfigS3 = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfigS3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKey: S.optional(DestinationConfigS3AccessKey),
     bucket: S.String,
@@ -218,7 +218,7 @@ export interface DestinationConfig {
   openTelemetry?: DestinationConfigOpenTelemetry;
   s3?: DestinationConfigS3;
 }
-export const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const DestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configType: DestinationConfigType,
     filter: S.optional(ConfigFilter),
@@ -240,7 +240,7 @@ export interface CreateDestinationRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName: string;
 }
-export const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateDestinationRequestRegionId.pipe(T.Label()),
@@ -260,11 +260,11 @@ export const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The credential type for the resource. */
 export type DestinationResponseCredentialType = "bearerToken" | "basicAuth" | "accessKey";
-export const DestinationResponseCredentialType = S.String;
+const DestinationResponseCredentialType = S.String;
 
 /** The current status of the resource. */
 export type DestinationResponseStatus = "reconciling" | "active" | "deleting";
-export const DestinationResponseStatus = S.String;
+const DestinationResponseStatus = S.String;
 
 export interface DestinationResponse {
   config: DestinationConfig;
@@ -281,7 +281,7 @@ export interface DestinationResponse {
   /** The current status of the resource. */
   status: DestinationResponseStatus;
 }
-export const DestinationResponse = /*@__PURE__*/ S.suspend(() =>
+const DestinationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: DestinationConfig,
     creationTime: S.String,
@@ -294,7 +294,7 @@ export const DestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DestinationResponse" }) as any as S.Schema<DestinationResponse>;
 
 export type CreateTelemetryRouterRequestRegionId = "eu01" | "eu02";
-export const CreateTelemetryRouterRequestRegionId = S.String;
+const CreateTelemetryRouterRequestRegionId = S.String;
 
 export interface CreateTelemetryRouterRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -307,7 +307,7 @@ export interface CreateTelemetryRouterRequest {
   displayName: string;
   filter?: ConfigFilter;
 }
-export const CreateTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateTelemetryRouterRequestRegionId.pipe(T.Label()),
@@ -328,7 +328,7 @@ export const CreateTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of the resource. */
 export type TelemetryRouterResponseStatus = "reconciling" | "active" | "deleting";
-export const TelemetryRouterResponseStatus = S.String;
+const TelemetryRouterResponseStatus = S.String;
 
 export interface TelemetryRouterResponse {
   /** The point in time the resource was created. */
@@ -345,7 +345,7 @@ export interface TelemetryRouterResponse {
   /** The URI for reaching the resource. */
   uri: string;
 }
-export const TelemetryRouterResponse = /*@__PURE__*/ S.suspend(() =>
+const TelemetryRouterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationTime: S.String,
     description: S.optional(S.String),
@@ -358,7 +358,7 @@ export const TelemetryRouterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TelemetryRouterResponse" }) as any as S.Schema<TelemetryRouterResponse>;
 
 export type DeleteAccessTokenRequestRegionId = "eu01" | "eu02";
-export const DeleteAccessTokenRequestRegionId = S.String;
+const DeleteAccessTokenRequestRegionId = S.String;
 
 export interface DeleteAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -370,7 +370,7 @@ export interface DeleteAccessTokenRequest {
   /** The Access Token UUID. */
   accessTokenId: string;
 }
-export const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteAccessTokenRequestRegionId.pipe(T.Label()),
@@ -387,12 +387,12 @@ export const DeleteAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccessTokenRequest" }) as any as S.Schema<DeleteAccessTokenRequest>;
 
 export interface DeleteAccessTokenResponse {}
-export const DeleteAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccessTokenResponse",
 }) as any as S.Schema<DeleteAccessTokenResponse>;
 
 export type DeleteDestinationRequestRegionId = "eu01" | "eu02";
-export const DeleteDestinationRequestRegionId = S.String;
+const DeleteDestinationRequestRegionId = S.String;
 
 export interface DeleteDestinationRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -404,7 +404,7 @@ export interface DeleteDestinationRequest {
   /** The Destination UUID. */
   destinationId: string;
 }
-export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteDestinationRequestRegionId.pipe(T.Label()),
@@ -421,11 +421,11 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse =
+const DeleteDestinationResponse =
   DeleteAccessTokenResponse as any as S.Schema<DeleteDestinationResponse>;
 
 export type DeleteTelemetryRouterRequestRegionId = "eu01" | "eu02";
-export const DeleteTelemetryRouterRequestRegionId = S.String;
+const DeleteTelemetryRouterRequestRegionId = S.String;
 
 export interface DeleteTelemetryRouterRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -437,7 +437,7 @@ export interface DeleteTelemetryRouterRequest {
   /** If true, deletes all child resources. If false, the resource remains in a 'deletion state' while child resources exist. */
   force?: boolean;
 }
-export const DeleteTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteTelemetryRouterRequestRegionId.pipe(T.Label()),
@@ -456,11 +456,11 @@ export const DeleteTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTelemetryRouterRequest>;
 
 export interface DeleteTelemetryRouterResponse {}
-export const DeleteTelemetryRouterResponse =
+const DeleteTelemetryRouterResponse =
   DeleteAccessTokenResponse as any as S.Schema<DeleteTelemetryRouterResponse>;
 
 export type GetAccessTokenRequestRegionId = "eu01" | "eu02";
-export const GetAccessTokenRequestRegionId = S.String;
+const GetAccessTokenRequestRegionId = S.String;
 
 export interface GetAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -472,7 +472,7 @@ export interface GetAccessTokenRequest {
   /** The Access Token UUID. */
   accessTokenId: string;
 }
-export const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetAccessTokenRequestRegionId.pipe(T.Label()),
@@ -489,7 +489,7 @@ export const GetAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccessTokenRequest" }) as any as S.Schema<GetAccessTokenRequest>;
 
 export type GetAccessTokenResponseStatus = "active" | "expired" | "deleting";
-export const GetAccessTokenResponseStatus = S.String;
+const GetAccessTokenResponseStatus = S.String;
 
 export interface GetAccessTokenResponse2 {
   /** The user ID of the creator of the access token. */
@@ -504,7 +504,7 @@ export interface GetAccessTokenResponse2 {
   id: string;
   status: GetAccessTokenResponseStatus;
 }
-export const GetAccessTokenResponse2 = /*@__PURE__*/ S.suspend(() =>
+const GetAccessTokenResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorId: S.String,
     description: S.optional(S.String),
@@ -516,7 +516,7 @@ export const GetAccessTokenResponse2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAccessTokenResponse2" }) as any as S.Schema<GetAccessTokenResponse2>;
 
 export type GetDestinationRequestRegionId = "eu01" | "eu02";
-export const GetDestinationRequestRegionId = S.String;
+const GetDestinationRequestRegionId = S.String;
 
 export interface GetDestinationRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -528,7 +528,7 @@ export interface GetDestinationRequest {
   /** The Destination UUID. */
   destinationId: string;
 }
-export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetDestinationRequestRegionId.pipe(T.Label()),
@@ -545,7 +545,7 @@ export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDestinationRequest" }) as any as S.Schema<GetDestinationRequest>;
 
 export type GetTelemetryRouterRequestRegionId = "eu01" | "eu02";
-export const GetTelemetryRouterRequestRegionId = S.String;
+const GetTelemetryRouterRequestRegionId = S.String;
 
 export interface GetTelemetryRouterRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -555,7 +555,7 @@ export interface GetTelemetryRouterRequest {
   /** The Telemetry Router UUID. */
   telemetryRouterId: string;
 }
-export const GetTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetTelemetryRouterRequestRegionId.pipe(T.Label()),
@@ -573,7 +573,7 @@ export const GetTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelemetryRouterRequest>;
 
 export type ListAccessTokensRequestRegionId = "eu01" | "eu02";
-export const ListAccessTokensRequestRegionId = S.String;
+const ListAccessTokensRequestRegionId = S.String;
 
 export interface ListAccessTokensRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -587,7 +587,7 @@ export interface ListAccessTokensRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListAccessTokensRequestRegionId.pipe(T.Label()),
@@ -605,8 +605,6 @@ export const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccessTokensRequest" }) as any as S.Schema<ListAccessTokensRequest>;
 
 export type AccessTokenBaseResponseStatus = "active" | "expired" | "deleting";
-export const AccessTokenBaseResponseStatus = S.String;
-
 export interface AccessTokenBaseResponse {
   /** The user ID of the creator of the access token. */
   creatorId: string;
@@ -620,11 +618,10 @@ export interface AccessTokenBaseResponse {
   id: string;
   status: AccessTokenBaseResponseStatus;
 }
-export const AccessTokenBaseResponse =
-  GetAccessTokenResponse2 as any as S.Schema<AccessTokenBaseResponse>;
+const AccessTokenBaseResponse = GetAccessTokenResponse2 as any as S.Schema<AccessTokenBaseResponse>;
 
 export type ListAccessTokensResponseAccessTokensList = Array<AccessTokenBaseResponse>;
-export const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ S.Array(
+const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ S.Array(
   AccessTokenBaseResponse,
 ) as any as S.Schema<ListAccessTokensResponseAccessTokensList>;
 
@@ -633,7 +630,7 @@ export interface ListAccessTokensResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListAccessTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessTokens: ListAccessTokensResponseAccessTokensList,
     nextPageToken: S.optional(S.String),
@@ -641,7 +638,7 @@ export const ListAccessTokensResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccessTokensResponse" }) as any as S.Schema<ListAccessTokensResponse>;
 
 export type ListDestinationsRequestRegionId = "eu01" | "eu02";
-export const ListDestinationsRequestRegionId = S.String;
+const ListDestinationsRequestRegionId = S.String;
 
 export interface ListDestinationsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -655,7 +652,7 @@ export interface ListDestinationsRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListDestinationsRequestRegionId.pipe(T.Label()),
@@ -673,7 +670,7 @@ export const ListDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDestinationsRequest" }) as any as S.Schema<ListDestinationsRequest>;
 
 export type ListDestinationsResponseDestinationsList = Array<DestinationResponse>;
-export const ListDestinationsResponseDestinationsList = /*@__PURE__*/ S.Array(
+const ListDestinationsResponseDestinationsList = /*@__PURE__*/ S.Array(
   DestinationResponse,
 ) as any as S.Schema<ListDestinationsResponseDestinationsList>;
 
@@ -682,7 +679,7 @@ export interface ListDestinationsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: ListDestinationsResponseDestinationsList,
     nextPageToken: S.optional(S.String),
@@ -690,7 +687,7 @@ export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDestinationsResponse" }) as any as S.Schema<ListDestinationsResponse>;
 
 export type ListTelemetryRoutersRequestRegionId = "eu01" | "eu02";
-export const ListTelemetryRoutersRequestRegionId = S.String;
+const ListTelemetryRoutersRequestRegionId = S.String;
 
 export interface ListTelemetryRoutersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -702,7 +699,7 @@ export interface ListTelemetryRoutersRequest {
   /** Maximum number of items to return */
   pageSize?: number;
 }
-export const ListTelemetryRoutersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTelemetryRoutersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListTelemetryRoutersRequestRegionId.pipe(T.Label()),
@@ -721,7 +718,7 @@ export const ListTelemetryRoutersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelemetryRoutersRequest>;
 
 export type ListTelemetryRoutersResponseTelemetryRoutersList = Array<TelemetryRouterResponse>;
-export const ListTelemetryRoutersResponseTelemetryRoutersList = /*@__PURE__*/ S.Array(
+const ListTelemetryRoutersResponseTelemetryRoutersList = /*@__PURE__*/ S.Array(
   TelemetryRouterResponse,
 ) as any as S.Schema<ListTelemetryRoutersResponseTelemetryRoutersList>;
 
@@ -730,7 +727,7 @@ export interface ListTelemetryRoutersResponse {
   nextPageToken?: string;
   telemetryRouters: ListTelemetryRoutersResponseTelemetryRoutersList;
 }
-export const ListTelemetryRoutersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTelemetryRoutersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     telemetryRouters: ListTelemetryRoutersResponseTelemetryRoutersList,
@@ -740,7 +737,7 @@ export const ListTelemetryRoutersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTelemetryRoutersResponse>;
 
 export type UpdateAccessTokenRequestRegionId = "eu01" | "eu02";
-export const UpdateAccessTokenRequestRegionId = S.String;
+const UpdateAccessTokenRequestRegionId = S.String;
 
 export interface UpdateAccessTokenRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -754,7 +751,7 @@ export interface UpdateAccessTokenRequest {
   description?: string | null;
   displayName?: string | null;
 }
-export const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateAccessTokenRequestRegionId.pipe(T.Label()),
@@ -773,7 +770,7 @@ export const UpdateAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAccessTokenRequest" }) as any as S.Schema<UpdateAccessTokenRequest>;
 
 export type UpdateAccessTokenResponseStatus = "active" | "expired" | "deleting";
-export const UpdateAccessTokenResponseStatus = S.String;
+const UpdateAccessTokenResponseStatus = S.String;
 
 export interface UpdateAccessTokenResponse {
   /** The user ID of the creator of the access token. */
@@ -788,7 +785,7 @@ export interface UpdateAccessTokenResponse {
   id: string;
   status: UpdateAccessTokenResponseStatus;
 }
-export const UpdateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creatorId: S.String,
     description: S.optional(S.String),
@@ -802,7 +799,7 @@ export const UpdateAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAccessTokenResponse>;
 
 export type UpdateDestinationRequestRegionId = "eu01" | "eu02";
-export const UpdateDestinationRequestRegionId = S.String;
+const UpdateDestinationRequestRegionId = S.String;
 
 export interface UpdateDestinationRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -819,7 +816,7 @@ export interface UpdateDestinationRequest {
   /** The display name is a short name chosen by the user to identify the resource. */
   displayName?: string;
 }
-export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateDestinationRequestRegionId.pipe(T.Label()),
@@ -839,7 +836,7 @@ export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDestinationRequest" }) as any as S.Schema<UpdateDestinationRequest>;
 
 export type UpdateTelemetryRouterRequestRegionId = "eu01" | "eu02";
-export const UpdateTelemetryRouterRequestRegionId = S.String;
+const UpdateTelemetryRouterRequestRegionId = S.String;
 
 export interface UpdateTelemetryRouterRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -854,7 +851,7 @@ export interface UpdateTelemetryRouterRequest {
   displayName?: string;
   filter?: ConfigFilter;
 }
-export const UpdateTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTelemetryRouterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateTelemetryRouterRequestRegionId.pipe(T.Label()),

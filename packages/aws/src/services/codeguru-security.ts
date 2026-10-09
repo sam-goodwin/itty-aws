@@ -152,42 +152,42 @@ export interface FindingIdentifier {
   scanName: string;
   findingId: string;
 }
-export const FindingIdentifier = /*@__PURE__*/ S.suspend(() =>
+const FindingIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scanName: S.String, findingId: S.String }),
 ).annotate({ identifier: "FindingIdentifier" }) as any as S.Schema<FindingIdentifier>;
 export type FindingIdentifiers = FindingIdentifier[];
-export const FindingIdentifiers = /*@__PURE__*/ S.Array(FindingIdentifier);
+const FindingIdentifiers = /*@__PURE__*/ S.Array(FindingIdentifier);
 export interface BatchGetFindingsRequest {
   findingIdentifiers: FindingIdentifier[];
 }
-export const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingIdentifiers: FindingIdentifiers }).pipe(
     T.all(T.Http({ method: "POST", uri: "/batchGetFindings" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "BatchGetFindingsRequest" }) as any as S.Schema<BatchGetFindingsRequest>;
 export type Status = "Closed" | "Open" | "All" | (string & {});
-export const Status = S.String;
+const Status = S.String;
 
 export interface Resource {
   id?: string;
   subResourceId?: string;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String), subResourceId: S.optional(S.String) }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ReferenceUrls = string[];
-export const ReferenceUrls = /*@__PURE__*/ S.Array(S.String);
+const ReferenceUrls = /*@__PURE__*/ S.Array(S.String);
 export type RelatedVulnerabilities = string[];
-export const RelatedVulnerabilities = ReferenceUrls as any as S.Schema<RelatedVulnerabilities>;
+const RelatedVulnerabilities = ReferenceUrls as any as S.Schema<RelatedVulnerabilities>;
 export interface CodeLine {
   number?: number;
   content?: string;
 }
-export const CodeLine = /*@__PURE__*/ S.suspend(() =>
+const CodeLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ number: S.optional(S.Number), content: S.optional(S.String) }),
 ).annotate({ identifier: "CodeLine" }) as any as S.Schema<CodeLine>;
 export type CodeSnippet = CodeLine[];
-export const CodeSnippet = /*@__PURE__*/ S.Array(CodeLine);
+const CodeSnippet = /*@__PURE__*/ S.Array(CodeLine);
 export interface FilePath {
   name?: string;
   path?: string;
@@ -195,7 +195,7 @@ export interface FilePath {
   endLine?: number;
   codeSnippet?: CodeLine[];
 }
-export const FilePath = /*@__PURE__*/ S.suspend(() =>
+const FilePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -211,7 +211,7 @@ export interface Vulnerability {
   filePath?: FilePath;
   itemCount?: number;
 }
-export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
+const Vulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceUrls: S.optional(ReferenceUrls),
     relatedVulnerabilities: S.optional(RelatedVulnerabilities),
@@ -221,36 +221,36 @@ export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Vulnerability" }) as any as S.Schema<Vulnerability>;
 export type Severity = "Critical" | "High" | "Medium" | "Low" | "Info" | (string & {});
-export const Severity = S.String;
+const Severity = S.String;
 
 export interface Recommendation {
   text?: string;
   url?: string;
 }
-export const Recommendation = /*@__PURE__*/ S.suspend(() =>
+const Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.optional(S.String), url: S.optional(S.String) }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export interface SuggestedFix {
   description?: string;
   code?: string;
 }
-export const SuggestedFix = /*@__PURE__*/ S.suspend(() =>
+const SuggestedFix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.optional(S.String), code: S.optional(S.String) }),
 ).annotate({ identifier: "SuggestedFix" }) as any as S.Schema<SuggestedFix>;
 export type SuggestedFixes = SuggestedFix[];
-export const SuggestedFixes = /*@__PURE__*/ S.Array(SuggestedFix);
+const SuggestedFixes = /*@__PURE__*/ S.Array(SuggestedFix);
 export interface Remediation {
   recommendation?: Recommendation;
   suggestedFixes?: SuggestedFix[];
 }
-export const Remediation = /*@__PURE__*/ S.suspend(() =>
+const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendation: S.optional(Recommendation),
     suggestedFixes: S.optional(SuggestedFixes),
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 export type DetectorTags = string[];
-export const DetectorTags = ReferenceUrls as any as S.Schema<DetectorTags>;
+const DetectorTags = ReferenceUrls as any as S.Schema<DetectorTags>;
 export interface Finding {
   createdAt?: Date;
   description?: string;
@@ -269,7 +269,7 @@ export interface Finding {
   detectorName?: string;
   ruleId?: string;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     description: S.optional(S.String),
@@ -290,7 +290,7 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 export type Findings = Finding[];
-export const Findings = /*@__PURE__*/ S.Array(Finding);
+const Findings = /*@__PURE__*/ S.Array(Finding);
 export type ScanName = string;
 export type ErrorCode =
   | "DUPLICATE_IDENTIFIER"
@@ -299,7 +299,7 @@ export type ErrorCode =
   | "INVALID_FINDING_ID"
   | "INVALID_SCAN_NAME"
   | (string & {});
-export const ErrorCode = S.String;
+const ErrorCode = S.String;
 
 export interface BatchGetFindingsError_ {
   scanName: string;
@@ -307,34 +307,32 @@ export interface BatchGetFindingsError_ {
   errorCode: ErrorCode;
   message: string;
 }
-export const BatchGetFindingsError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchGetFindingsError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scanName: S.String, findingId: S.String, errorCode: ErrorCode, message: S.String }),
 ).annotate({ identifier: "BatchGetFindingsError" }) as any as S.Schema<BatchGetFindingsError_>;
 export type BatchGetFindingsErrors = BatchGetFindingsError_[];
-export const BatchGetFindingsErrors = /*@__PURE__*/ S.Array(BatchGetFindingsError_);
+const BatchGetFindingsErrors = /*@__PURE__*/ S.Array(BatchGetFindingsError_);
 export interface BatchGetFindingsResponse {
   findings: Finding[];
   failedFindings: BatchGetFindingsError_[];
 }
-export const BatchGetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findings: Findings, failedFindings: BatchGetFindingsErrors }),
 ).annotate({ identifier: "BatchGetFindingsResponse" }) as any as S.Schema<BatchGetFindingsResponse>;
 export type ClientToken = string;
 export type Uuid = string;
 export type ResourceId = { codeArtifactId: string };
-export const ResourceId = /*@__PURE__*/ S.Union([
-  /*@__PURE__*/ S.Struct({ codeArtifactId: S.String }),
-]);
+const ResourceId = /*@__PURE__*/ S.Union([/*@__PURE__*/ S.Struct({ codeArtifactId: S.String })]);
 export type ScanType = "Standard" | "Express" | (string & {});
-export const ScanType = S.String;
+const ScanType = S.String;
 
 export type AnalysisType = "Security" | "All" | (string & {});
-export const AnalysisType = S.String;
+const AnalysisType = S.String;
 
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateScanRequest {
   clientToken?: string;
   resourceId: ResourceId;
@@ -343,7 +341,7 @@ export interface CreateScanRequest {
   analysisType?: AnalysisType;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     resourceId: ResourceId,
@@ -354,7 +352,7 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/scans" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "CreateScanRequest" }) as any as S.Schema<CreateScanRequest>;
 export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
-export const ScanState = S.String;
+const ScanState = S.String;
 
 export type ScanNameArn = string;
 export interface CreateScanResponse {
@@ -364,7 +362,7 @@ export interface CreateScanResponse {
   scanState: ScanState;
   scanNameArn?: string;
 }
-export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String,
     runId: S.String,
@@ -376,7 +374,7 @@ export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateUploadUrlRequest {
   scanName: string;
 }
-export const CreateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scanName: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/uploadUrl" }), svc, auth, proto, ver, rules),
   ),
@@ -385,20 +383,17 @@ export type S3Url = string | redacted.Redacted<string>;
 export type HeaderKey = string;
 export type HeaderValue = string;
 export type RequestHeaderMap = { [key: string]: string | undefined };
-export const RequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const RequestHeaderMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateUploadUrlResponse {
   s3Url: string | redacted.Redacted<string>;
   requestHeaders: { [key: string]: string | undefined };
   codeArtifactId: string;
 }
-export const CreateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Url: SensitiveString, requestHeaders: RequestHeaderMap, codeArtifactId: S.String }),
 ).annotate({ identifier: "CreateUploadUrlResponse" }) as any as S.Schema<CreateUploadUrlResponse>;
 export interface GetAccountConfigurationRequest {}
-export const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/accountConfiguration/get" }),
@@ -416,13 +411,13 @@ export type KmsKeyArn = string;
 export interface EncryptionConfig {
   kmsKeyArn?: string;
 }
-export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kmsKeyArn: S.optional(S.String) }),
 ).annotate({ identifier: "EncryptionConfig" }) as any as S.Schema<EncryptionConfig>;
 export interface GetAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
-export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ encryptionConfig: EncryptionConfig }),
 ).annotate({
   identifier: "GetAccountConfigurationResponse",
@@ -434,7 +429,7 @@ export interface GetFindingsRequest {
   maxResults?: number;
   status?: Status;
 }
-export const GetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String.pipe(T.HttpLabel("scanName")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -448,13 +443,13 @@ export interface GetFindingsResponse {
   findings?: Finding[];
   nextToken?: string;
 }
-export const GetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findings: S.optional(Findings), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetFindingsResponse" }) as any as S.Schema<GetFindingsResponse>;
 export interface GetMetricsSummaryRequest {
   date: Date;
 }
-export const GetMetricsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("date")),
   }).pipe(T.all(T.Http({ method: "GET", uri: "/metrics/summary" }), svc, auth, proto, ver, rules)),
@@ -466,7 +461,7 @@ export interface FindingMetricsValuePerSeverity {
   high?: number;
   critical?: number;
 }
-export const FindingMetricsValuePerSeverity = /*@__PURE__*/ S.suspend(() =>
+const FindingMetricsValuePerSeverity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(S.Number),
     low: S.optional(S.Number),
@@ -481,22 +476,22 @@ export interface CategoryWithFindingNum {
   categoryName?: string;
   findingNumber?: number;
 }
-export const CategoryWithFindingNum = /*@__PURE__*/ S.suspend(() =>
+const CategoryWithFindingNum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ categoryName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
 ).annotate({ identifier: "CategoryWithFindingNum" }) as any as S.Schema<CategoryWithFindingNum>;
 export type CategoriesWithMostFindings = CategoryWithFindingNum[];
-export const CategoriesWithMostFindings = /*@__PURE__*/ S.Array(CategoryWithFindingNum);
+const CategoriesWithMostFindings = /*@__PURE__*/ S.Array(CategoryWithFindingNum);
 export interface ScanNameWithFindingNum {
   scanName?: string;
   findingNumber?: number;
 }
-export const ScanNameWithFindingNum = /*@__PURE__*/ S.suspend(() =>
+const ScanNameWithFindingNum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scanName: S.optional(S.String), findingNumber: S.optional(S.Number) }),
 ).annotate({ identifier: "ScanNameWithFindingNum" }) as any as S.Schema<ScanNameWithFindingNum>;
 export type ScansWithMostOpenFindings = ScanNameWithFindingNum[];
-export const ScansWithMostOpenFindings = /*@__PURE__*/ S.Array(ScanNameWithFindingNum);
+const ScansWithMostOpenFindings = /*@__PURE__*/ S.Array(ScanNameWithFindingNum);
 export type ScansWithMostOpenCriticalFindings = ScanNameWithFindingNum[];
-export const ScansWithMostOpenCriticalFindings =
+const ScansWithMostOpenCriticalFindings =
   ScansWithMostOpenFindings as any as S.Schema<ScansWithMostOpenCriticalFindings>;
 export interface MetricsSummary {
   date?: Date;
@@ -505,7 +500,7 @@ export interface MetricsSummary {
   scansWithMostOpenFindings?: ScanNameWithFindingNum[];
   scansWithMostOpenCriticalFindings?: ScanNameWithFindingNum[];
 }
-export const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
+const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     openFindings: S.optional(FindingMetricsValuePerSeverity),
@@ -517,7 +512,7 @@ export const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
 export interface GetMetricsSummaryResponse {
   metricsSummary?: MetricsSummary;
 }
-export const GetMetricsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ metricsSummary: S.optional(MetricsSummary) }),
 ).annotate({
   identifier: "GetMetricsSummaryResponse",
@@ -526,7 +521,7 @@ export interface GetScanRequest {
   scanName: string;
   runId?: string;
 }
-export const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String.pipe(T.HttpLabel("scanName")),
     runId: S.optional(S.String).pipe(T.HttpQuery("runId")),
@@ -544,7 +539,7 @@ export interface GetScanResponse {
   scanNameArn?: string;
   errorMessage?: string;
 }
-export const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String,
     runId: S.String,
@@ -563,7 +558,7 @@ export interface ListFindingsMetricsRequest {
   startDate: Date;
   endDate: Date;
 }
-export const ListFindingsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -580,7 +575,7 @@ export interface AccountFindingsMetric {
   openFindings?: FindingMetricsValuePerSeverity;
   meanTimeToClose?: FindingMetricsValuePerSeverity;
 }
-export const AccountFindingsMetric = /*@__PURE__*/ S.suspend(() =>
+const AccountFindingsMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     newFindings: S.optional(FindingMetricsValuePerSeverity),
@@ -590,12 +585,12 @@ export const AccountFindingsMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AccountFindingsMetric" }) as any as S.Schema<AccountFindingsMetric>;
 export type FindingsMetricList = AccountFindingsMetric[];
-export const FindingsMetricList = /*@__PURE__*/ S.Array(AccountFindingsMetric);
+const FindingsMetricList = /*@__PURE__*/ S.Array(AccountFindingsMetric);
 export interface ListFindingsMetricsResponse {
   findingsMetrics?: AccountFindingsMetric[];
   nextToken?: string;
 }
-export const ListFindingsMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findingsMetrics: S.optional(FindingsMetricList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFindingsMetricsResponse",
@@ -604,7 +599,7 @@ export interface ListScansRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -618,7 +613,7 @@ export interface ScanSummary {
   runId: string;
   scanNameArn?: string;
 }
-export const ScanSummary = /*@__PURE__*/ S.suspend(() =>
+const ScanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanState: ScanState,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -629,18 +624,18 @@ export const ScanSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScanSummary" }) as any as S.Schema<ScanSummary>;
 export type ScanSummaries = ScanSummary[];
-export const ScanSummaries = /*@__PURE__*/ S.Array(ScanSummary);
+const ScanSummaries = /*@__PURE__*/ S.Array(ScanSummary);
 export interface ListScansResponse {
   summaries?: ScanSummary[];
   nextToken?: string;
 }
-export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ summaries: S.optional(ScanSummaries), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListScansResponse" }) as any as S.Schema<ListScansResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -650,7 +645,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -659,22 +654,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ReferenceUrls as any as S.Schema<TagKeyList>;
+const TagKeyList = ReferenceUrls as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -683,11 +678,11 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAccountConfigurationRequest {
   encryptionConfig: EncryptionConfig;
 }
-export const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ encryptionConfig: EncryptionConfig }).pipe(
     T.all(
       T.Http({ method: "PUT", uri: "/updateAccountConfiguration" }),
@@ -704,7 +699,7 @@ export const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
-export const UpdateAccountConfigurationResponse =
+const UpdateAccountConfigurationResponse =
   GetAccountConfigurationResponse as any as S.Schema<UpdateAccountConfigurationResponse>;
 export type ValidationExceptionReason =
   | "unknownOperation"
@@ -713,17 +708,17 @@ export type ValidationExceptionReason =
   | "other"
   | "lambdaCodeShaMisMatch"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type BatchGetFindingsError =
   | AccessDeniedException
   | InternalServerException

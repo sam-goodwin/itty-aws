@@ -162,10 +162,10 @@ export type SoftwareSetUpdateSchedule =
   | "USE_MAINTENANCE_WINDOW"
   | "APPLY_IMMEDIATELY"
   | (string & {});
-export const SoftwareSetUpdateSchedule = S.String;
+const SoftwareSetUpdateSchedule = S.String;
 
 export type MaintenanceWindowType = "SYSTEM" | "CUSTOM" | (string & {});
-export const MaintenanceWindowType = S.String;
+const MaintenanceWindowType = S.String;
 
 export type Hour = number;
 export type Minute = number;
@@ -178,12 +178,12 @@ export type DayOfWeek =
   | "SATURDAY"
   | "SUNDAY"
   | (string & {});
-export const DayOfWeek = S.String;
+const DayOfWeek = S.String;
 
 export type DayOfWeekList = DayOfWeek[];
-export const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
+const DayOfWeekList = /*@__PURE__*/ S.Array(DayOfWeek);
 export type ApplyTimeOf = "UTC" | "DEVICE" | (string & {});
-export const ApplyTimeOf = S.String;
+const ApplyTimeOf = S.String;
 
 export interface MaintenanceWindow {
   type: MaintenanceWindowType;
@@ -194,7 +194,7 @@ export interface MaintenanceWindow {
   daysOfTheWeek?: DayOfWeek[];
   applyTimeOf?: ApplyTimeOf;
 }
-export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: MaintenanceWindowType,
     startTimeHour: S.optional(S.Number),
@@ -206,17 +206,17 @@ export const MaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MaintenanceWindow" }) as any as S.Schema<MaintenanceWindow>;
 export type SoftwareSetUpdateMode = "USE_LATEST" | "USE_DESIRED" | (string & {});
-export const SoftwareSetUpdateMode = S.String;
+const SoftwareSetUpdateMode = S.String;
 
 export type SoftwareSetId = string;
 export type KmsKeyArn = string;
 export type ClientToken = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type DeviceCreationTagKey = string;
 export type DeviceCreationTagValue = string;
 export type DeviceCreationTagsMap = { [key: string]: string | undefined };
-export const DeviceCreationTagsMap = /*@__PURE__*/ S.Record(
+const DeviceCreationTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -233,7 +233,7 @@ export interface CreateEnvironmentRequest {
   tags?: { [key: string]: string | undefined };
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SensitiveString),
     desktopArn: S.String,
@@ -250,7 +250,7 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvironmentRequest" }) as any as S.Schema<CreateEnvironmentRequest>;
 export type EnvironmentId = string;
 export type DesktopType = "workspaces" | "appstream" | "workspaces-web" | (string & {});
-export const DesktopType = S.String;
+const DesktopType = S.String;
 
 export type ActivationCode = string | redacted.Redacted<string>;
 export interface EnvironmentSummary {
@@ -269,7 +269,7 @@ export interface EnvironmentSummary {
   updatedAt?: Date;
   arn?: string;
 }
-export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(SensitiveString),
@@ -290,7 +290,7 @@ export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
 export interface CreateEnvironmentResponse {
   environment?: EnvironmentSummary;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environment: S.optional(EnvironmentSummary) }),
 ).annotate({
   identifier: "CreateEnvironmentResponse",
@@ -300,21 +300,21 @@ export interface DeleteDeviceRequest {
   id: string;
   clientToken?: string;
 }
-export const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
   }).pipe(T.all(T.Http({ method: "DELETE", uri: "/devices/{id}" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "DeleteDeviceRequest" }) as any as S.Schema<DeleteDeviceRequest>;
 export interface DeleteDeviceResponse {}
-export const DeleteDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDeviceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDeviceResponse",
 }) as any as S.Schema<DeleteDeviceResponse>;
 export interface DeleteEnvironmentRequest {
   id: string;
   clientToken?: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     clientToken: S.optional(S.String).pipe(T.HttpQuery("clientToken"), T.IdempotencyToken()),
@@ -323,17 +323,17 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   DeleteDeviceResponse as any as S.Schema<DeleteEnvironmentResponse>;
 export type TargetDeviceStatus = "DEREGISTERED" | "ARCHIVED" | (string & {});
-export const TargetDeviceStatus = S.String;
+const TargetDeviceStatus = S.String;
 
 export interface DeregisterDeviceRequest {
   id: string;
   targetDeviceStatus?: TargetDeviceStatus;
   clientToken?: string;
 }
-export const DeregisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeregisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     targetDeviceStatus: S.optional(TargetDeviceStatus),
@@ -343,12 +343,11 @@ export const DeregisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeregisterDeviceRequest" }) as any as S.Schema<DeregisterDeviceRequest>;
 export interface DeregisterDeviceResponse {}
-export const DeregisterDeviceResponse =
-  DeleteDeviceResponse as any as S.Schema<DeregisterDeviceResponse>;
+const DeregisterDeviceResponse = DeleteDeviceResponse as any as S.Schema<DeregisterDeviceResponse>;
 export interface GetDeviceRequest {
   id: string;
 }
-export const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/devices/{id}" }), svc, auth, proto, ver, rules),
   ),
@@ -360,17 +359,17 @@ export type DeviceStatus =
   | "DEREGISTERED"
   | "ARCHIVED"
   | (string & {});
-export const DeviceStatus = S.String;
+const DeviceStatus = S.String;
 
 export type DeviceSoftwareSetComplianceStatus =
   | "NONE"
   | "COMPLIANT"
   | "NOT_COMPLIANT"
   | (string & {});
-export const DeviceSoftwareSetComplianceStatus = S.String;
+const DeviceSoftwareSetComplianceStatus = S.String;
 
 export type SoftwareSetUpdateStatus = "AVAILABLE" | "IN_PROGRESS" | "UP_TO_DATE" | (string & {});
-export const SoftwareSetUpdateStatus = S.String;
+const SoftwareSetUpdateStatus = S.String;
 
 export type UserId = string | redacted.Redacted<string>;
 export interface Device {
@@ -396,7 +395,7 @@ export interface Device {
   kmsKeyArn?: string;
   lastUserId?: string | redacted.Redacted<string>;
 }
-export const Device = /*@__PURE__*/ S.suspend(() =>
+const Device = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     serialNumber: S.optional(S.String),
@@ -424,13 +423,13 @@ export const Device = /*@__PURE__*/ S.suspend(() =>
 export interface GetDeviceResponse {
   device?: Device;
 }
-export const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ device: S.optional(Device) }),
 ).annotate({ identifier: "GetDeviceResponse" }) as any as S.Schema<GetDeviceResponse>;
 export interface GetEnvironmentRequest {
   id: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/environments/{id}" }), svc, auth, proto, ver, rules),
   ),
@@ -440,7 +439,7 @@ export type EnvironmentSoftwareSetComplianceStatus =
   | "COMPLIANT"
   | "NOT_COMPLIANT"
   | (string & {});
-export const EnvironmentSoftwareSetComplianceStatus = S.String;
+const EnvironmentSoftwareSetComplianceStatus = S.String;
 
 export interface Environment {
   id?: string;
@@ -463,7 +462,7 @@ export interface Environment {
   kmsKeyArn?: string;
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(SensitiveString),
@@ -489,29 +488,29 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 export interface GetEnvironmentResponse {
   environment?: Environment;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environment: S.optional(Environment) }),
 ).annotate({ identifier: "GetEnvironmentResponse" }) as any as S.Schema<GetEnvironmentResponse>;
 export interface GetSoftwareSetRequest {
   id: string;
 }
-export const GetSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String.pipe(T.HttpLabel("id")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/softwaresets/{id}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetSoftwareSetRequest" }) as any as S.Schema<GetSoftwareSetRequest>;
 export type SoftwareSetValidationStatus = "VALIDATED" | "NOT_VALIDATED" | (string & {});
-export const SoftwareSetValidationStatus = S.String;
+const SoftwareSetValidationStatus = S.String;
 
 export interface Software {
   name?: string;
   version?: string;
 }
-export const Software = /*@__PURE__*/ S.suspend(() =>
+const Software = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), version: S.optional(S.String) }),
 ).annotate({ identifier: "Software" }) as any as S.Schema<Software>;
 export type SoftwareList = Software[];
-export const SoftwareList = /*@__PURE__*/ S.Array(Software);
+const SoftwareList = /*@__PURE__*/ S.Array(Software);
 export interface SoftwareSet {
   id?: string;
   version?: string;
@@ -521,7 +520,7 @@ export interface SoftwareSet {
   software?: Software[];
   arn?: string;
 }
-export const SoftwareSet = /*@__PURE__*/ S.suspend(() =>
+const SoftwareSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -535,7 +534,7 @@ export const SoftwareSet = /*@__PURE__*/ S.suspend(() =>
 export interface GetSoftwareSetResponse {
   softwareSet?: SoftwareSet;
 }
-export const GetSoftwareSetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSoftwareSetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ softwareSet: S.optional(SoftwareSet) }),
 ).annotate({ identifier: "GetSoftwareSetResponse" }) as any as S.Schema<GetSoftwareSetResponse>;
 export type PaginationToken = string;
@@ -544,7 +543,7 @@ export interface ListDevicesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -568,7 +567,7 @@ export interface DeviceSummary {
   arn?: string;
   lastUserId?: string | redacted.Redacted<string>;
 }
-export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
+const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     serialNumber: S.optional(S.String),
@@ -589,38 +588,38 @@ export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeviceSummary" }) as any as S.Schema<DeviceSummary>;
 export type DeviceList = DeviceSummary[];
-export const DeviceList = /*@__PURE__*/ S.Array(DeviceSummary);
+const DeviceList = /*@__PURE__*/ S.Array(DeviceSummary);
 export interface ListDevicesResponse {
   devices?: DeviceSummary[];
   nextToken?: string;
 }
-export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ devices: S.optional(DeviceList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDevicesResponse" }) as any as S.Schema<ListDevicesResponse>;
 export interface ListEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
   }).pipe(T.all(T.Http({ method: "GET", uri: "/environments" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListEnvironmentsRequest" }) as any as S.Schema<ListEnvironmentsRequest>;
 export type EnvironmentList = EnvironmentSummary[];
-export const EnvironmentList = /*@__PURE__*/ S.Array(EnvironmentSummary);
+const EnvironmentList = /*@__PURE__*/ S.Array(EnvironmentSummary);
 export interface ListEnvironmentsResponse {
   environments?: EnvironmentSummary[];
   nextToken?: string;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environments: S.optional(EnvironmentList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListEnvironmentsResponse" }) as any as S.Schema<ListEnvironmentsResponse>;
 export interface ListSoftwareSetsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListSoftwareSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSoftwareSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -634,7 +633,7 @@ export interface SoftwareSetSummary {
   validationStatus?: SoftwareSetValidationStatus;
   arn?: string;
 }
-export const SoftwareSetSummary = /*@__PURE__*/ S.suspend(() =>
+const SoftwareSetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -645,18 +644,18 @@ export const SoftwareSetSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SoftwareSetSummary" }) as any as S.Schema<SoftwareSetSummary>;
 export type SoftwareSetList = SoftwareSetSummary[];
-export const SoftwareSetList = /*@__PURE__*/ S.Array(SoftwareSetSummary);
+const SoftwareSetList = /*@__PURE__*/ S.Array(SoftwareSetSummary);
 export interface ListSoftwareSetsResponse {
   softwareSets?: SoftwareSetSummary[];
   nextToken?: string;
 }
-export const ListSoftwareSetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSoftwareSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ softwareSets: S.optional(SoftwareSetList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSoftwareSetsResponse" }) as any as S.Schema<ListSoftwareSetsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -666,7 +665,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -675,20 +674,20 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteDeviceResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteDeviceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -697,14 +696,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = DeleteDeviceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteDeviceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceRequest {
   id: string;
   name?: string | redacted.Redacted<string>;
   desiredSoftwareSetId?: string;
   softwareSetUpdateSchedule?: SoftwareSetUpdateSchedule;
 }
-export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     name: S.optional(SensitiveString),
@@ -715,7 +714,7 @@ export const UpdateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDeviceResponse {
   device?: DeviceSummary;
 }
-export const UpdateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ device: S.optional(DeviceSummary) }),
 ).annotate({ identifier: "UpdateDeviceResponse" }) as any as S.Schema<UpdateDeviceResponse>;
 export type SoftwareSetIdOrEmptyString = string;
@@ -730,7 +729,7 @@ export interface UpdateEnvironmentRequest {
   desiredSoftwareSetId?: string;
   deviceCreationTags?: { [key: string]: string | undefined };
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     name: S.optional(SensitiveString),
@@ -748,13 +747,13 @@ export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateEnvironmentResponse {
   environment?: EnvironmentSummary;
 }
-export const UpdateEnvironmentResponse =
+const UpdateEnvironmentResponse =
   CreateEnvironmentResponse as any as S.Schema<UpdateEnvironmentResponse>;
 export interface UpdateSoftwareSetRequest {
   id: string;
   validationStatus: SoftwareSetValidationStatus;
 }
-export const UpdateSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.HttpLabel("id")),
     validationStatus: SoftwareSetValidationStatus,
@@ -763,7 +762,7 @@ export const UpdateSoftwareSetRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateSoftwareSetRequest" }) as any as S.Schema<UpdateSoftwareSetRequest>;
 export interface UpdateSoftwareSetResponse {}
-export const UpdateSoftwareSetResponse =
+const UpdateSoftwareSetResponse =
   DeleteDeviceResponse as any as S.Schema<UpdateSoftwareSetResponse>;
 export type ExceptionMessage = string;
 export type ResourceId = string;
@@ -777,18 +776,18 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export type FieldName = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type CreateEnvironmentError =
   | AccessDeniedException
   | ConflictException

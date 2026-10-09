@@ -16,7 +16,7 @@ export interface CreateServiceAccountRequest {
   /** Optional description of what this service account is used for */
   description?: string;
 }
-export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -32,7 +32,7 @@ export interface CreateServiceAccountResponse {
   description?: string;
   createdAt: string;
 }
-export const CreateServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     user: S.String,
@@ -60,37 +60,35 @@ export type CreateServiceAccountTokenRequestPermissionsItem =
   | "org.serviceAccounts.read"
   | "org.serviceAccounts.write"
   | "org.auditLog.write";
-export const CreateServiceAccountTokenRequestPermissionsItem = S.String;
+const CreateServiceAccountTokenRequestPermissionsItem = S.String;
 
 /** Org-wide permissions for this token */
 export type CreateServiceAccountTokenRequestPermissionsList = Array<
   CreateServiceAccountTokenRequestPermissionsItem | (string & {})
 >;
-export const CreateServiceAccountTokenRequestPermissionsList = /*@__PURE__*/ S.Array(
+const CreateServiceAccountTokenRequestPermissionsList = /*@__PURE__*/ S.Array(
   CreateServiceAccountTokenRequestPermissionsItem,
 ) as any as S.Schema<CreateServiceAccountTokenRequestPermissionsList>;
 
 /** Repositories to grant `repoPermissions` on. Can be repositories owned by the organization or any public repository. These override the org-wide permissions. */
 export type CreateServiceAccountTokenRequestRepoIdsList = Array<string>;
-export const CreateServiceAccountTokenRequestRepoIdsList = /*@__PURE__*/ S.Array(
+const CreateServiceAccountTokenRequestRepoIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateServiceAccountTokenRequestRepoIdsList>;
 
 export type CreateServiceAccountTokenRequestRepoPermissionsItem =
   | "repo.content.read"
   | "repo.write";
-export const CreateServiceAccountTokenRequestRepoPermissionsItem = S.String;
-
 /** Permissions granted on the selected `repoIds`. */
 export type CreateServiceAccountTokenRequestRepoPermissionsList = Array<
   CreateServiceAccountTokenRequestRepoPermissionsItem | (string & {})
 >;
-export const CreateServiceAccountTokenRequestRepoPermissionsList =
+const CreateServiceAccountTokenRequestRepoPermissionsList =
   CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<CreateServiceAccountTokenRequestRepoPermissionsList>;
 
 /** Inference endpoint name patterns (wildcards allowed, e.g. `gpt2-*`) restricting the token's org-wide Inference Endpoint permissions to matching endpoints. Empty means all endpoints. */
 export type CreateServiceAccountTokenRequestEndpointPatternsList = Array<string>;
-export const CreateServiceAccountTokenRequestEndpointPatternsList =
+const CreateServiceAccountTokenRequestEndpointPatternsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<CreateServiceAccountTokenRequestEndpointPatternsList>;
 
 export interface CreateServiceAccountTokenRequest {
@@ -109,7 +107,7 @@ export interface CreateServiceAccountTokenRequest {
   /** Exempt this token from the org's Network Security enforcement (IP allowlist and content access policy). Enterprise Plus only, and requires the `org.networkSecurity.write` permission. */
   skipNetworkSecurity?: boolean;
 }
-export const CreateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -131,19 +129,19 @@ export const CreateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceAccountTokenRequest>;
 
 export type CreateServiceAccountTokenResponseTokenInfoPermissionsList = Array<string>;
-export const CreateServiceAccountTokenResponseTokenInfoPermissionsList =
+const CreateServiceAccountTokenResponseTokenInfoPermissionsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<CreateServiceAccountTokenResponseTokenInfoPermissionsList>;
 
 export type CreateServiceAccountTokenResponseTokenInfoRepoIdsList = Array<string>;
-export const CreateServiceAccountTokenResponseTokenInfoRepoIdsList =
+const CreateServiceAccountTokenResponseTokenInfoRepoIdsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<CreateServiceAccountTokenResponseTokenInfoRepoIdsList>;
 
 export type CreateServiceAccountTokenResponseTokenInfoRepoPermissionsList = Array<string>;
-export const CreateServiceAccountTokenResponseTokenInfoRepoPermissionsList =
+const CreateServiceAccountTokenResponseTokenInfoRepoPermissionsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<CreateServiceAccountTokenResponseTokenInfoRepoPermissionsList>;
 
 export type CreateServiceAccountTokenResponseTokenInfoEndpointPatternsList = Array<string>;
-export const CreateServiceAccountTokenResponseTokenInfoEndpointPatternsList =
+const CreateServiceAccountTokenResponseTokenInfoEndpointPatternsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<CreateServiceAccountTokenResponseTokenInfoEndpointPatternsList>;
 
 export interface CreateServiceAccountTokenResponseTokenInfo {
@@ -156,7 +154,7 @@ export interface CreateServiceAccountTokenResponseTokenInfo {
   endpointPatterns: CreateServiceAccountTokenResponseTokenInfoEndpointPatternsList;
   skipNetworkSecurity: boolean;
 }
-export const CreateServiceAccountTokenResponseTokenInfo = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountTokenResponseTokenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     displayName: S.String,
@@ -176,7 +174,7 @@ export interface CreateServiceAccountTokenResponse {
   token: string;
   tokenInfo: CreateServiceAccountTokenResponseTokenInfo;
 }
-export const CreateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     tokenInfo: CreateServiceAccountTokenResponseTokenInfo,
@@ -189,7 +187,7 @@ export interface DeleteServiceAccountRequest {
   name: string;
   serviceAccountId: string;
 }
-export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -205,7 +203,7 @@ export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceAccountRequest>;
 
 export type DeleteServiceAccountResponse = unknown;
-export const DeleteServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteServiceAccountResponse",
@@ -216,7 +214,7 @@ export interface DeleteServiceAccountTokenRequest {
   serviceAccountId: string;
   tokenId: string;
 }
-export const DeleteServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -233,14 +231,14 @@ export const DeleteServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteServiceAccountTokenRequest>;
 
 export type DeleteServiceAccountTokenResponse = unknown;
-export const DeleteServiceAccountTokenResponse =
+const DeleteServiceAccountTokenResponse =
   DeleteServiceAccountResponse as any as S.Schema<DeleteServiceAccountTokenResponse>;
 
 export interface GetServiceAccountRequest {
   name: string;
   serviceAccountId: string;
 }
-export const GetServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -254,7 +252,7 @@ export const GetServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetServiceAccountRequest" }) as any as S.Schema<GetServiceAccountRequest>;
 
 export type GetServiceAccountResponseAccessTokensItemRole = "read" | "write" | "fineGrained";
-export const GetServiceAccountResponseAccessTokensItemRole = S.String;
+const GetServiceAccountResponseAccessTokensItemRole = S.String;
 
 export type GetServiceAccountResponseAccessTokensItemPermissionsItem =
   | "repo.content.read"
@@ -272,29 +270,25 @@ export type GetServiceAccountResponseAccessTokensItemPermissionsItem =
   | "org.serviceAccounts.read"
   | "org.serviceAccounts.write"
   | "org.auditLog.write";
-export const GetServiceAccountResponseAccessTokensItemPermissionsItem = S.String;
-
 export type GetServiceAccountResponseAccessTokensItemPermissionsList =
   Array<GetServiceAccountResponseAccessTokensItemPermissionsItem>;
-export const GetServiceAccountResponseAccessTokensItemPermissionsList =
+const GetServiceAccountResponseAccessTokensItemPermissionsList =
   CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemPermissionsList>;
 
 export type GetServiceAccountResponseAccessTokensItemRepoIdsList = Array<string>;
-export const GetServiceAccountResponseAccessTokensItemRepoIdsList =
+const GetServiceAccountResponseAccessTokensItemRepoIdsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemRepoIdsList>;
 
 export type GetServiceAccountResponseAccessTokensItemRepoPermissionsItem =
   | "repo.content.read"
   | "repo.write";
-export const GetServiceAccountResponseAccessTokensItemRepoPermissionsItem = S.String;
-
 export type GetServiceAccountResponseAccessTokensItemRepoPermissionsList =
   Array<GetServiceAccountResponseAccessTokensItemRepoPermissionsItem>;
-export const GetServiceAccountResponseAccessTokensItemRepoPermissionsList =
+const GetServiceAccountResponseAccessTokensItemRepoPermissionsList =
   CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemRepoPermissionsList>;
 
 export type GetServiceAccountResponseAccessTokensItemEndpointPatternsList = Array<string>;
-export const GetServiceAccountResponseAccessTokensItemEndpointPatternsList =
+const GetServiceAccountResponseAccessTokensItemEndpointPatternsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<GetServiceAccountResponseAccessTokensItemEndpointPatternsList>;
 
 export interface GetServiceAccountResponseAccessTokensItem {
@@ -312,7 +306,7 @@ export interface GetServiceAccountResponseAccessTokensItem {
   last4?: string;
   skipNetworkSecurity?: boolean;
 }
-export const GetServiceAccountResponseAccessTokensItem = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountResponseAccessTokensItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     displayName: S.String,
@@ -333,7 +327,7 @@ export const GetServiceAccountResponseAccessTokensItem = /*@__PURE__*/ S.suspend
 
 export type GetServiceAccountResponseAccessTokensList =
   Array<GetServiceAccountResponseAccessTokensItem>;
-export const GetServiceAccountResponseAccessTokensList = /*@__PURE__*/ S.Array(
+const GetServiceAccountResponseAccessTokensList = /*@__PURE__*/ S.Array(
   GetServiceAccountResponseAccessTokensItem,
 ) as any as S.Schema<GetServiceAccountResponseAccessTokensList>;
 
@@ -347,7 +341,7 @@ export interface GetServiceAccountResponse {
   createdAt: string;
   accessTokens?: GetServiceAccountResponseAccessTokensList;
 }
-export const GetServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     user: S.String,
@@ -364,7 +358,7 @@ export const GetServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListServiceAccountsRequest {
   name: string;
 }
-export const ListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/organizations/{name}/service-accounts", code: 200 })),
@@ -380,7 +374,7 @@ export interface ListServiceAccountsResponseBodyItem {
   description?: string;
   createdAt: string;
 }
-export const ListServiceAccountsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     user: S.String,
@@ -394,12 +388,12 @@ export const ListServiceAccountsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceAccountsResponseBodyItem>;
 
 export type ListServiceAccountsResponseBodyList = Array<ListServiceAccountsResponseBodyItem>;
-export const ListServiceAccountsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListServiceAccountsResponseBodyList = /*@__PURE__*/ S.Array(
   ListServiceAccountsResponseBodyItem,
 ) as any as S.Schema<ListServiceAccountsResponseBodyList>;
 
 export type ListServiceAccountsResponse = ListServiceAccountsResponseBodyList;
-export const ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   ListServiceAccountsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListServiceAccountsResponse",
@@ -410,7 +404,7 @@ export interface RotateServiceAccountTokenRequest {
   serviceAccountId: string;
   tokenId: string;
 }
-export const RotateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -432,7 +426,7 @@ export interface RotateServiceAccountTokenResponseTokenInfo {
   createdAt: string;
   last4?: string;
 }
-export const RotateServiceAccountTokenResponseTokenInfo = /*@__PURE__*/ S.suspend(() =>
+const RotateServiceAccountTokenResponseTokenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     displayName: S.String,
@@ -448,7 +442,7 @@ export interface RotateServiceAccountTokenResponse {
   token: string;
   tokenInfo: RotateServiceAccountTokenResponseTokenInfo;
 }
-export const RotateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     tokenInfo: RotateServiceAccountTokenResponseTokenInfo,
@@ -473,35 +467,31 @@ export type UpdateServiceAccountTokenRequestPermissionsItem =
   | "org.serviceAccounts.read"
   | "org.serviceAccounts.write"
   | "org.auditLog.write";
-export const UpdateServiceAccountTokenRequestPermissionsItem = S.String;
-
 /** Org-wide permissions for this token */
 export type UpdateServiceAccountTokenRequestPermissionsList = Array<
   UpdateServiceAccountTokenRequestPermissionsItem | (string & {})
 >;
-export const UpdateServiceAccountTokenRequestPermissionsList =
+const UpdateServiceAccountTokenRequestPermissionsList =
   CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<UpdateServiceAccountTokenRequestPermissionsList>;
 
 /** Repositories to grant `repoPermissions` on. Can be repositories owned by the organization or any public repository. These override the org-wide permissions. */
 export type UpdateServiceAccountTokenRequestRepoIdsList = Array<string>;
-export const UpdateServiceAccountTokenRequestRepoIdsList =
+const UpdateServiceAccountTokenRequestRepoIdsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenRequestRepoIdsList>;
 
 export type UpdateServiceAccountTokenRequestRepoPermissionsItem =
   | "repo.content.read"
   | "repo.write";
-export const UpdateServiceAccountTokenRequestRepoPermissionsItem = S.String;
-
 /** Permissions granted on the selected `repoIds`. */
 export type UpdateServiceAccountTokenRequestRepoPermissionsList = Array<
   UpdateServiceAccountTokenRequestRepoPermissionsItem | (string & {})
 >;
-export const UpdateServiceAccountTokenRequestRepoPermissionsList =
+const UpdateServiceAccountTokenRequestRepoPermissionsList =
   CreateServiceAccountTokenRequestPermissionsList as any as S.Schema<UpdateServiceAccountTokenRequestRepoPermissionsList>;
 
 /** Inference endpoint name patterns (wildcards allowed, e.g. `gpt2-*`) restricting the token's org-wide Inference Endpoint permissions to matching endpoints. Empty means all endpoints. */
 export type UpdateServiceAccountTokenRequestEndpointPatternsList = Array<string>;
-export const UpdateServiceAccountTokenRequestEndpointPatternsList =
+const UpdateServiceAccountTokenRequestEndpointPatternsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenRequestEndpointPatternsList>;
 
 export interface UpdateServiceAccountTokenRequest {
@@ -521,7 +511,7 @@ export interface UpdateServiceAccountTokenRequest {
   /** Exempt this token from the org's Network Security enforcement (IP allowlist and content access policy). Enterprise Plus only, and requires the `org.networkSecurity.write` permission. */
   skipNetworkSecurity?: boolean;
 }
-export const UpdateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     serviceAccountId: S.String.pipe(T.Label()),
@@ -544,19 +534,19 @@ export const UpdateServiceAccountTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServiceAccountTokenRequest>;
 
 export type UpdateServiceAccountTokenResponsePermissionsList = Array<string>;
-export const UpdateServiceAccountTokenResponsePermissionsList =
+const UpdateServiceAccountTokenResponsePermissionsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenResponsePermissionsList>;
 
 export type UpdateServiceAccountTokenResponseRepoIdsList = Array<string>;
-export const UpdateServiceAccountTokenResponseRepoIdsList =
+const UpdateServiceAccountTokenResponseRepoIdsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenResponseRepoIdsList>;
 
 export type UpdateServiceAccountTokenResponseRepoPermissionsList = Array<string>;
-export const UpdateServiceAccountTokenResponseRepoPermissionsList =
+const UpdateServiceAccountTokenResponseRepoPermissionsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenResponseRepoPermissionsList>;
 
 export type UpdateServiceAccountTokenResponseEndpointPatternsList = Array<string>;
-export const UpdateServiceAccountTokenResponseEndpointPatternsList =
+const UpdateServiceAccountTokenResponseEndpointPatternsList =
   CreateServiceAccountTokenRequestRepoIdsList as any as S.Schema<UpdateServiceAccountTokenResponseEndpointPatternsList>;
 
 export interface UpdateServiceAccountTokenResponse {
@@ -568,7 +558,7 @@ export interface UpdateServiceAccountTokenResponse {
   endpointPatterns: UpdateServiceAccountTokenResponseEndpointPatternsList;
   skipNetworkSecurity: boolean;
 }
-export const UpdateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccountTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     displayName: S.String,

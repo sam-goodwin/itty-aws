@@ -166,16 +166,16 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface AddTagsToCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-export const AddTagsToCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTagsToCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -191,20 +191,20 @@ export const AddTagsToCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddTagsToCertificateRequest",
 }) as any as S.Schema<AddTagsToCertificateRequest>;
 export interface AddTagsToCertificateResponse {}
-export const AddTagsToCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AddTagsToCertificateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddTagsToCertificateResponse",
 }) as any as S.Schema<AddTagsToCertificateResponse>;
 export type AcmeEndpointArn = string;
 export type DomainName = string;
 export type DomainScopeOption = "ENABLED" | "DISABLED" | (string & {});
-export const DomainScopeOption = S.String;
+const DomainScopeOption = S.String;
 
 export interface DomainScope {
   ExactDomain?: DomainScopeOption;
   Subdomains?: DomainScopeOption;
   Wildcards?: DomainScopeOption;
 }
-export const DomainScope = /*@__PURE__*/ S.suspend(() =>
+const DomainScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExactDomain: S.optional(DomainScopeOption),
     Subdomains: S.optional(DomainScopeOption),
@@ -216,11 +216,11 @@ export interface DnsPrevalidationOptions {
   DomainScope?: DomainScope;
   HostedZoneId?: string;
 }
-export const DnsPrevalidationOptions = /*@__PURE__*/ S.suspend(() =>
+const DnsPrevalidationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainScope: S.optional(DomainScope), HostedZoneId: S.optional(S.String) }),
 ).annotate({ identifier: "DnsPrevalidationOptions" }) as any as S.Schema<DnsPrevalidationOptions>;
 export type PrevalidationOptions = { DnsPrevalidation: DnsPrevalidationOptions };
-export const PrevalidationOptions = /*@__PURE__*/ S.Union([
+const PrevalidationOptions = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationOptions }),
 ]);
 export interface CreateAcmeDomainValidationRequest {
@@ -230,7 +230,7 @@ export interface CreateAcmeDomainValidationRequest {
   PrevalidationOptions: PrevalidationOptions;
   Tags?: Tag[];
 }
-export const CreateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     AcmeEndpointArn: S.String,
@@ -255,32 +255,32 @@ export type AcmeDomainValidationArn = string;
 export interface CreateAcmeDomainValidationResponse {
   AcmeDomainValidationArn: string;
 }
-export const CreateAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeDomainValidationArn: S.String }),
 ).annotate({
   identifier: "CreateAcmeDomainValidationResponse",
 }) as any as S.Schema<CreateAcmeDomainValidationResponse>;
 export type AcmeAuthorizationBehavior = "PRE_APPROVED" | (string & {});
-export const AcmeAuthorizationBehavior = S.String;
+const AcmeAuthorizationBehavior = S.String;
 
 export type AcmeContact = "REQUIRED" | "NOT_REQUIRED" | (string & {});
-export const AcmeContact = S.String;
+const AcmeContact = S.String;
 
 export type PublicKeyAlgorithm = "RSA_2048" | "EC_prime256v1" | "EC_secp384r1" | (string & {});
-export const PublicKeyAlgorithm = S.String;
+const PublicKeyAlgorithm = S.String;
 
 export type PublicKeyAlgorithmList = PublicKeyAlgorithm[];
-export const PublicKeyAlgorithmList = /*@__PURE__*/ S.Array(PublicKeyAlgorithm);
+const PublicKeyAlgorithmList = /*@__PURE__*/ S.Array(PublicKeyAlgorithm);
 export interface PublicCertificateAuthority {
   AllowedKeyAlgorithms?: PublicKeyAlgorithm[];
 }
-export const PublicCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+const PublicCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AllowedKeyAlgorithms: S.optional(PublicKeyAlgorithmList) }),
 ).annotate({
   identifier: "PublicCertificateAuthority",
 }) as any as S.Schema<PublicCertificateAuthority>;
 export type CertificateAuthority = { PublicCertificateAuthority: PublicCertificateAuthority };
-export const CertificateAuthority = /*@__PURE__*/ S.Union([
+const CertificateAuthority = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ PublicCertificateAuthority: PublicCertificateAuthority }),
 ]);
 export interface CreateAcmeEndpointRequest {
@@ -291,7 +291,7 @@ export interface CreateAcmeEndpointRequest {
   Tags?: Tag[];
   CertificateTags?: Tag[];
 }
-export const CreateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     AuthorizationBehavior: AcmeAuthorizationBehavior,
@@ -316,20 +316,20 @@ export const CreateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAcmeEndpointResponse {
   AcmeEndpointArn?: string;
 }
-export const CreateAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpointArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateAcmeEndpointResponse",
 }) as any as S.Schema<CreateAcmeEndpointResponse>;
 export type RoleArn = string;
 export type TimeType = "MINUTES" | "HOURS" | "DAYS" | (string & {});
-export const TimeType = S.String;
+const TimeType = S.String;
 
 export interface Expiration {
   Value: number;
   Type: TimeType;
 }
-export const Expiration = /*@__PURE__*/ S.suspend(() =>
+const Expiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.Number, Type: TimeType }),
 ).annotate({ identifier: "Expiration" }) as any as S.Schema<Expiration>;
 export interface CreateAcmeExternalAccountBindingRequest {
@@ -339,7 +339,7 @@ export interface CreateAcmeExternalAccountBindingRequest {
   Expiration?: Expiration;
   Tags?: Tag[];
 }
-export const CreateAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdempotencyToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     AcmeEndpointArn: S.String,
@@ -371,7 +371,7 @@ export interface AcmeExternalAccountBinding {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
+const AcmeExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeExternalAccountBindingArn: S.optional(S.String),
     AcmeEndpointArn: S.optional(S.String),
@@ -388,7 +388,7 @@ export const AcmeExternalAccountBinding = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
-export const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ExternalAccountBinding: S.optional(AcmeExternalAccountBinding) }),
 ).annotate({
   identifier: "CreateAcmeExternalAccountBindingResponse",
@@ -396,7 +396,7 @@ export const CreateAcmeExternalAccountBindingResponse = /*@__PURE__*/ S.suspend(
 export interface DeleteAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-export const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -412,15 +412,13 @@ export const DeleteAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAcmeDomainValidationRequest",
 }) as any as S.Schema<DeleteAcmeDomainValidationRequest>;
 export interface DeleteAcmeDomainValidationResponse {}
-export const DeleteAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAcmeDomainValidationResponse",
 }) as any as S.Schema<DeleteAcmeDomainValidationResponse>;
 export interface DeleteAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-export const DeleteAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpointArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -436,12 +434,12 @@ export const DeleteAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAcmeEndpointRequest",
 }) as any as S.Schema<DeleteAcmeEndpointRequest>;
 export interface DeleteAcmeEndpointResponse {}
-export const DeleteAcmeEndpointResponse =
+const DeleteAcmeEndpointResponse =
   AddTagsToCertificateResponse as any as S.Schema<DeleteAcmeEndpointResponse>;
 export interface DeleteAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-export const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -457,12 +455,12 @@ export const DeleteAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend((
   identifier: "DeleteAcmeExternalAccountBindingRequest",
 }) as any as S.Schema<DeleteAcmeExternalAccountBindingRequest>;
 export interface DeleteAcmeExternalAccountBindingResponse {}
-export const DeleteAcmeExternalAccountBindingResponse =
+const DeleteAcmeExternalAccountBindingResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<DeleteAcmeExternalAccountBindingResponse>;
 export interface DeleteCertificateRequest {
   CertificateArn: string;
 }
-export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -476,13 +474,13 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 export interface DeleteCertificateResponse {}
-export const DeleteCertificateResponse =
+const DeleteCertificateResponse =
   AddTagsToCertificateResponse as any as S.Schema<DeleteCertificateResponse>;
 export interface DescribeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-export const DescribeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -498,10 +496,10 @@ export const DescribeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAcmeAccountRequest",
 }) as any as S.Schema<DescribeAcmeAccountRequest>;
 export type AcmeAccountStatus = "VALID" | "DEACTIVATED" | "REVOKED" | (string & {});
-export const AcmeAccountStatus = S.String;
+const AcmeAccountStatus = S.String;
 
 export type ContactList = string[];
-export const ContactList = /*@__PURE__*/ S.Array(S.String);
+const ContactList = /*@__PURE__*/ S.Array(S.String);
 export interface AcmeAccount {
   AccountUrl?: string;
   PublicKeyThumbprint?: string;
@@ -510,7 +508,7 @@ export interface AcmeAccount {
   AcmeExternalAccountBindingArn?: string;
   Contacts?: string[];
 }
-export const AcmeAccount = /*@__PURE__*/ S.suspend(() =>
+const AcmeAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountUrl: S.optional(S.String),
     PublicKeyThumbprint: S.optional(S.String),
@@ -523,7 +521,7 @@ export const AcmeAccount = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcmeAccountResponse {
   AcmeAccount?: AcmeAccount;
 }
-export const DescribeAcmeAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeAccount: S.optional(AcmeAccount) }),
 ).annotate({
   identifier: "DescribeAcmeAccountResponse",
@@ -531,7 +529,7 @@ export const DescribeAcmeAccountResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
 }
-export const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeDomainValidationArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -547,17 +545,17 @@ export const DescribeAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAcmeDomainValidationRequest",
 }) as any as S.Schema<DescribeAcmeDomainValidationRequest>;
 export type PrevalidationType = "DNS_PREVALIDATION" | (string & {});
-export const PrevalidationType = S.String;
+const PrevalidationType = S.String;
 
 export type RecordType = "CNAME" | (string & {});
-export const RecordType = S.String;
+const RecordType = S.String;
 
 export interface ResourceRecord {
   Name: string;
   Type: RecordType;
   Value: string;
 }
-export const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
+const ResourceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Type: RecordType, Value: S.String }),
 ).annotate({ identifier: "ResourceRecord" }) as any as S.Schema<ResourceRecord>;
 export interface DnsPrevalidationDetails {
@@ -565,7 +563,7 @@ export interface DnsPrevalidationDetails {
   HostedZoneId?: string;
   ResourceRecord?: ResourceRecord;
 }
-export const DnsPrevalidationDetails = /*@__PURE__*/ S.suspend(() =>
+const DnsPrevalidationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainScope: S.optional(DomainScope),
     HostedZoneId: S.optional(S.String),
@@ -573,7 +571,7 @@ export const DnsPrevalidationDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnsPrevalidationDetails" }) as any as S.Schema<DnsPrevalidationDetails>;
 export type PrevalidationDetails = { DnsPrevalidation: DnsPrevalidationDetails };
-export const PrevalidationDetails = /*@__PURE__*/ S.Union([
+const PrevalidationDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ DnsPrevalidation: DnsPrevalidationDetails }),
 ]);
 export type AcmeDomainValidationStatus =
@@ -582,7 +580,7 @@ export type AcmeDomainValidationStatus =
   | "INVALID"
   | "DELETING"
   | (string & {});
-export const AcmeDomainValidationStatus = S.String;
+const AcmeDomainValidationStatus = S.String;
 
 export type AcmeDomainValidationFailureReason =
   | "ACCESS_DENIED"
@@ -595,13 +593,13 @@ export type AcmeDomainValidationFailureReason =
   | "INVALID_PUBLIC_DOMAIN"
   | "TIMED_OUT"
   | (string & {});
-export const AcmeDomainValidationFailureReason = S.String;
+const AcmeDomainValidationFailureReason = S.String;
 
 export interface FailureDetails {
   Reason?: AcmeDomainValidationFailureReason;
   Message?: string;
 }
-export const FailureDetails = /*@__PURE__*/ S.suspend(() =>
+const FailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Reason: S.optional(AcmeDomainValidationFailureReason),
     Message: S.optional(S.String),
@@ -618,7 +616,7 @@ export interface AcmeDomainValidation {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeDomainValidation = /*@__PURE__*/ S.suspend(() =>
+const AcmeDomainValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeDomainValidationArn: S.optional(S.String),
     AcmeEndpointArn: S.optional(S.String),
@@ -634,7 +632,7 @@ export const AcmeDomainValidation = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcmeDomainValidationResponse {
   AcmeDomainValidation?: AcmeDomainValidation;
 }
-export const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeDomainValidation: S.optional(AcmeDomainValidation) }),
 ).annotate({
   identifier: "DescribeAcmeDomainValidationResponse",
@@ -642,7 +640,7 @@ export const DescribeAcmeDomainValidationResponse = /*@__PURE__*/ S.suspend(() =
 export interface DescribeAcmeEndpointRequest {
   AcmeEndpointArn: string;
 }
-export const DescribeAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpointArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -658,7 +656,7 @@ export const DescribeAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeAcmeEndpointRequest",
 }) as any as S.Schema<DescribeAcmeEndpointRequest>;
 export type AcmeEndpointStatus = "CREATING" | "ACTIVE" | "DELETING" | "FAILED" | (string & {});
-export const AcmeEndpointStatus = S.String;
+const AcmeEndpointStatus = S.String;
 
 export interface AcmeEndpoint {
   AcmeEndpointArn?: string;
@@ -672,7 +670,7 @@ export interface AcmeEndpoint {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeEndpoint = /*@__PURE__*/ S.suspend(() =>
+const AcmeEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeEndpointArn: S.optional(S.String),
     EndpointUrl: S.optional(S.String),
@@ -689,7 +687,7 @@ export const AcmeEndpoint = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcmeEndpointResponse {
   AcmeEndpoint?: AcmeEndpoint;
 }
-export const DescribeAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpoint: S.optional(AcmeEndpoint) }),
 ).annotate({
   identifier: "DescribeAcmeEndpointResponse",
@@ -697,7 +695,7 @@ export const DescribeAcmeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-export const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -715,12 +713,12 @@ export const DescribeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend
 export interface DescribeAcmeExternalAccountBindingResponse {
   ExternalAccountBinding?: AcmeExternalAccountBinding;
 }
-export const DescribeAcmeExternalAccountBindingResponse =
+const DescribeAcmeExternalAccountBindingResponse =
   CreateAcmeExternalAccountBindingResponse as any as S.Schema<DescribeAcmeExternalAccountBindingResponse>;
 export interface DescribeCertificateRequest {
   CertificateArn: string;
 }
-export const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -737,24 +735,24 @@ export const DescribeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeCertificateRequest>;
 export type DomainNameString = string;
 export type DomainList = string[];
-export const DomainList = ContactList as any as S.Schema<DomainList>;
+const DomainList = ContactList as any as S.Schema<DomainList>;
 export type CertificateManagedBy = "CLOUDFRONT" | (string & {});
-export const CertificateManagedBy = S.String;
+const CertificateManagedBy = S.String;
 
 export type ValidationEmailList = string[];
-export const ValidationEmailList = ContactList as any as S.Schema<ValidationEmailList>;
+const ValidationEmailList = ContactList as any as S.Schema<ValidationEmailList>;
 export type DomainStatus = "PENDING_VALIDATION" | "SUCCESS" | "FAILED" | (string & {});
-export const DomainStatus = S.String;
+const DomainStatus = S.String;
 
 export interface HttpRedirect {
   RedirectFrom?: string;
   RedirectTo?: string;
 }
-export const HttpRedirect = /*@__PURE__*/ S.suspend(() =>
+const HttpRedirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RedirectFrom: S.optional(S.String), RedirectTo: S.optional(S.String) }),
 ).annotate({ identifier: "HttpRedirect" }) as any as S.Schema<HttpRedirect>;
 export type ValidationMethod = "EMAIL" | "DNS" | "HTTP" | (string & {});
-export const ValidationMethod = S.String;
+const ValidationMethod = S.String;
 
 export interface DomainValidation {
   DomainName: string;
@@ -765,7 +763,7 @@ export interface DomainValidation {
   HttpRedirect?: HttpRedirect;
   ValidationMethod?: ValidationMethod;
 }
-export const DomainValidation = /*@__PURE__*/ S.suspend(() =>
+const DomainValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ValidationEmails: S.optional(ValidationEmailList),
@@ -777,7 +775,7 @@ export const DomainValidation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainValidation" }) as any as S.Schema<DomainValidation>;
 export type DomainValidationList = DomainValidation[];
-export const DomainValidationList = /*@__PURE__*/ S.Array(DomainValidation);
+const DomainValidationList = /*@__PURE__*/ S.Array(DomainValidation);
 export type CertificateStatus =
   | "PENDING_VALIDATION"
   | "ISSUED"
@@ -787,7 +785,7 @@ export type CertificateStatus =
   | "REVOKED"
   | "FAILED"
   | (string & {});
-export const CertificateStatus = S.String;
+const CertificateStatus = S.String;
 
 export type RevocationReason =
   | "UNSPECIFIED"
@@ -802,7 +800,7 @@ export type RevocationReason =
   | "PRIVILEGE_WITHDRAWN"
   | "A_A_COMPROMISE"
   | (string & {});
-export const RevocationReason = S.String;
+const RevocationReason = S.String;
 
 export type KeyAlgorithm =
   | "RSA_1024"
@@ -813,10 +811,10 @@ export type KeyAlgorithm =
   | "EC_secp384r1"
   | "EC_secp521r1"
   | (string & {});
-export const KeyAlgorithm = S.String;
+const KeyAlgorithm = S.String;
 
 export type InUseList = string[];
-export const InUseList = ContactList as any as S.Schema<InUseList>;
+const InUseList = ContactList as any as S.Schema<InUseList>;
 export type FailureReason =
   | "NO_AVAILABLE_CONTACTS"
   | "ADDITIONAL_VERIFICATION_REQUIRED"
@@ -836,10 +834,10 @@ export type FailureReason =
   | "SLR_NOT_FOUND"
   | "OTHER"
   | (string & {});
-export const FailureReason = S.String;
+const FailureReason = S.String;
 
 export type CertificateType = "IMPORTED" | "AMAZON_ISSUED" | "PRIVATE" | (string & {});
-export const CertificateType = S.String;
+const CertificateType = S.String;
 
 export type RenewalStatus =
   | "PENDING_AUTO_RENEWAL"
@@ -847,7 +845,7 @@ export type RenewalStatus =
   | "SUCCESS"
   | "FAILED"
   | (string & {});
-export const RenewalStatus = S.String;
+const RenewalStatus = S.String;
 
 export interface RenewalSummary {
   RenewalStatus: RenewalStatus;
@@ -855,7 +853,7 @@ export interface RenewalSummary {
   RenewalStatusReason?: FailureReason;
   UpdatedAt: Date;
 }
-export const RenewalSummary = /*@__PURE__*/ S.suspend(() =>
+const RenewalSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RenewalStatus: RenewalStatus,
     DomainValidationOptions: DomainValidationList,
@@ -876,16 +874,16 @@ export type KeyUsageName =
   | "ANY"
   | "CUSTOM"
   | (string & {});
-export const KeyUsageName = S.String;
+const KeyUsageName = S.String;
 
 export interface KeyUsage {
   Name?: KeyUsageName;
 }
-export const KeyUsage = /*@__PURE__*/ S.suspend(() =>
+const KeyUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(KeyUsageName) }),
 ).annotate({ identifier: "KeyUsage" }) as any as S.Schema<KeyUsage>;
 export type KeyUsageList = KeyUsage[];
-export const KeyUsageList = /*@__PURE__*/ S.Array(KeyUsage);
+const KeyUsageList = /*@__PURE__*/ S.Array(KeyUsage);
 export type ExtendedKeyUsageName =
   | "TLS_WEB_SERVER_AUTHENTICATION"
   | "TLS_WEB_CLIENT_AUTHENTICATION"
@@ -900,32 +898,32 @@ export type ExtendedKeyUsageName =
   | "NONE"
   | "CUSTOM"
   | (string & {});
-export const ExtendedKeyUsageName = S.String;
+const ExtendedKeyUsageName = S.String;
 
 export interface ExtendedKeyUsage {
   Name?: ExtendedKeyUsageName;
   OID?: string;
 }
-export const ExtendedKeyUsage = /*@__PURE__*/ S.suspend(() =>
+const ExtendedKeyUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(ExtendedKeyUsageName), OID: S.optional(S.String) }),
 ).annotate({ identifier: "ExtendedKeyUsage" }) as any as S.Schema<ExtendedKeyUsage>;
 export type ExtendedKeyUsageList = ExtendedKeyUsage[];
-export const ExtendedKeyUsageList = /*@__PURE__*/ S.Array(ExtendedKeyUsage);
+const ExtendedKeyUsageList = /*@__PURE__*/ S.Array(ExtendedKeyUsage);
 export type RenewalEligibility = "ELIGIBLE" | "INELIGIBLE" | (string & {});
-export const RenewalEligibility = S.String;
+const RenewalEligibility = S.String;
 
 export type CertificateTransparencyLoggingPreference = "ENABLED" | "DISABLED" | (string & {});
-export const CertificateTransparencyLoggingPreference = S.String;
+const CertificateTransparencyLoggingPreference = S.String;
 
 export type CertificateExport = "ENABLED" | "DISABLED" | (string & {});
-export const CertificateExport = S.String;
+const CertificateExport = S.String;
 
 export interface CertificateOptions {
   CertificateTransparencyLoggingPreference?: CertificateTransparencyLoggingPreference;
   Export?: CertificateExport;
   ValidationMethod?: ValidationMethod;
 }
-export const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
+const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateTransparencyLoggingPreference: S.optional(CertificateTransparencyLoggingPreference),
     Export: S.optional(CertificateExport),
@@ -933,16 +931,16 @@ export const CertificateOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertificateOptions" }) as any as S.Schema<CertificateOptions>;
 export type UpdateStatus = "PENDING_DOMAIN_VALIDATION" | "SUCCESS" | "FAILED" | (string & {});
-export const UpdateStatus = S.String;
+const UpdateStatus = S.String;
 
 export type UpdateType = "DOMAIN_VALIDATION_METHOD" | (string & {});
-export const UpdateType = S.String;
+const UpdateType = S.String;
 
 export interface DomainValidationMethodUpdateSummary {
   From?: ValidationMethod;
   To?: ValidationMethod;
 }
-export const DomainValidationMethodUpdateSummary = /*@__PURE__*/ S.suspend(() =>
+const DomainValidationMethodUpdateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ From: S.optional(ValidationMethod), To: S.optional(ValidationMethod) }),
 ).annotate({
   identifier: "DomainValidationMethodUpdateSummary",
@@ -954,7 +952,7 @@ export interface UpdateSummary {
   RequestedAt?: Date;
   UpdatedAt?: Date;
 }
-export const UpdateSummary = /*@__PURE__*/ S.suspend(() =>
+const UpdateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(UpdateStatus),
     Type: S.optional(UpdateType),
@@ -964,7 +962,7 @@ export const UpdateSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpdateSummary" }) as any as S.Schema<UpdateSummary>;
 export type CertificateKeyPairOrigin = "AWS_MANAGED" | "ACME" | "CUSTOMER_PROVIDED" | (string & {});
-export const CertificateKeyPairOrigin = S.String;
+const CertificateKeyPairOrigin = S.String;
 
 export type AcmeAccountId = string;
 export interface CertificateDetail {
@@ -1000,7 +998,7 @@ export interface CertificateDetail {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-export const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
+const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     DomainName: S.optional(S.String),
@@ -1038,7 +1036,7 @@ export const CertificateDetail = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeCertificateResponse {
   Certificate?: CertificateDetail;
 }
-export const DescribeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Certificate: S.optional(CertificateDetail) }),
 ).annotate({
   identifier: "DescribeCertificateResponse",
@@ -1048,7 +1046,7 @@ export interface ExportCertificateRequest {
   CertificateArn: string;
   Passphrase: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const ExportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, Passphrase: SensitiveBlob }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1069,7 +1067,7 @@ export interface ExportCertificateResponse {
   CertificateChain?: string;
   PrivateKey?: string | redacted.Redacted<string>;
 }
-export const ExportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Certificate: S.optional(S.String),
     CertificateChain: S.optional(S.String),
@@ -1079,7 +1077,7 @@ export const ExportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExportCertificateResponse",
 }) as any as S.Schema<ExportCertificateResponse>;
 export interface GetAccountConfigurationRequest {}
-export const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1098,7 +1096,7 @@ export type PositiveInteger = number;
 export interface ExpiryEventsConfiguration {
   DaysBeforeExpiry?: number;
 }
-export const ExpiryEventsConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ExpiryEventsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DaysBeforeExpiry: S.optional(S.Number) }),
 ).annotate({
   identifier: "ExpiryEventsConfiguration",
@@ -1106,7 +1104,7 @@ export const ExpiryEventsConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountConfigurationResponse {
   ExpiryEvents?: ExpiryEventsConfiguration;
 }
-export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ExpiryEvents: S.optional(ExpiryEventsConfiguration) }),
 ).annotate({
   identifier: "GetAccountConfigurationResponse",
@@ -1114,7 +1112,7 @@ export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAcmeExternalAccountBindingCredentialsRequest {
   AcmeExternalAccountBindingArn: string;
 }
-export const GetAcmeExternalAccountBindingCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAcmeExternalAccountBindingCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1134,7 +1132,7 @@ export interface GetAcmeExternalAccountBindingCredentialsResponse {
   KeyId?: string;
   MacKey?: string | redacted.Redacted<string>;
 }
-export const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KeyId: S.optional(S.String), MacKey: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "GetAcmeExternalAccountBindingCredentialsResponse",
@@ -1142,7 +1140,7 @@ export const GetAcmeExternalAccountBindingCredentialsResponse = /*@__PURE__*/ S.
 export interface GetCertificateRequest {
   CertificateArn: string;
 }
-export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1159,7 +1157,7 @@ export interface GetCertificateResponse {
   Certificate?: string;
   CertificateChain?: string;
 }
-export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Certificate: S.optional(S.String), CertificateChain: S.optional(S.String) }),
 ).annotate({ identifier: "GetCertificateResponse" }) as any as S.Schema<GetCertificateResponse>;
 export type CertificateBodyBlob = Uint8Array;
@@ -1172,7 +1170,7 @@ export interface ImportCertificateRequest {
   CertificateChain?: Uint8Array;
   Tags?: Tag[];
 }
-export const ImportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     Certificate: T.Blob,
@@ -1194,7 +1192,7 @@ export const ImportCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImportCertificateResponse {
   CertificateArn?: string;
 }
-export const ImportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.optional(S.String) }),
 ).annotate({
   identifier: "ImportCertificateResponse",
@@ -1204,7 +1202,7 @@ export interface ListAcmeAccountsRequest {
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-export const ListAcmeAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1229,14 +1227,14 @@ export interface AcmeAccountSummary {
   AcmeExternalAccountBindingArn?: string;
   Contacts?: string[];
 }
-export const AcmeAccountSummary = AcmeAccount as any as S.Schema<AcmeAccountSummary>;
+const AcmeAccountSummary = AcmeAccount as any as S.Schema<AcmeAccountSummary>;
 export type AcmeAccountList = AcmeAccountSummary[];
-export const AcmeAccountList = /*@__PURE__*/ S.Array(AcmeAccountSummary);
+const AcmeAccountList = /*@__PURE__*/ S.Array(AcmeAccountSummary);
 export interface ListAcmeAccountsResponse {
   AcmeAccounts?: AcmeAccountSummary[];
   NextToken?: string;
 }
-export const ListAcmeAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeAccounts: S.optional(AcmeAccountList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListAcmeAccountsResponse" }) as any as S.Schema<ListAcmeAccountsResponse>;
 export interface ListAcmeDomainValidationsRequest {
@@ -1244,7 +1242,7 @@ export interface ListAcmeDomainValidationsRequest {
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-export const ListAcmeDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1274,7 +1272,7 @@ export interface AcmeDomainValidationSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeDomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
+const AcmeDomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeDomainValidationArn: S.optional(S.String),
     AcmeEndpointArn: S.optional(S.String),
@@ -1290,12 +1288,12 @@ export const AcmeDomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "AcmeDomainValidationSummary",
 }) as any as S.Schema<AcmeDomainValidationSummary>;
 export type AcmeDomainValidationList = AcmeDomainValidationSummary[];
-export const AcmeDomainValidationList = /*@__PURE__*/ S.Array(AcmeDomainValidationSummary);
+const AcmeDomainValidationList = /*@__PURE__*/ S.Array(AcmeDomainValidationSummary);
 export interface ListAcmeDomainValidationsResponse {
   AcmeDomainValidations?: AcmeDomainValidationSummary[];
   NextToken?: string;
 }
-export const ListAcmeDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeDomainValidations: S.optional(AcmeDomainValidationList),
     NextToken: S.optional(S.String),
@@ -1307,7 +1305,7 @@ export interface ListAcmeEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListAcmeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String), MaxResults: S.optional(S.Number) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1332,14 +1330,14 @@ export interface AcmeEndpointSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeEndpointSummary = AcmeEndpoint as any as S.Schema<AcmeEndpointSummary>;
+const AcmeEndpointSummary = AcmeEndpoint as any as S.Schema<AcmeEndpointSummary>;
 export type AcmeEndpointList = AcmeEndpointSummary[];
-export const AcmeEndpointList = /*@__PURE__*/ S.Array(AcmeEndpointSummary);
+const AcmeEndpointList = /*@__PURE__*/ S.Array(AcmeEndpointSummary);
 export interface ListAcmeEndpointsResponse {
   AcmeEndpoints?: AcmeEndpointSummary[];
   NextToken?: string;
 }
-export const ListAcmeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpoints: S.optional(AcmeEndpointList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAcmeEndpointsResponse",
@@ -1349,7 +1347,7 @@ export interface ListAcmeExternalAccountBindingsRequest {
   MaxResults?: number;
   AcmeEndpointArn: string;
 }
-export const ListAcmeExternalAccountBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeExternalAccountBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1378,17 +1376,15 @@ export interface AcmeExternalAccountBindingSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const AcmeExternalAccountBindingSummary =
+const AcmeExternalAccountBindingSummary =
   AcmeExternalAccountBinding as any as S.Schema<AcmeExternalAccountBindingSummary>;
 export type AcmeExternalAccountBindingList = AcmeExternalAccountBindingSummary[];
-export const AcmeExternalAccountBindingList = /*@__PURE__*/ S.Array(
-  AcmeExternalAccountBindingSummary,
-);
+const AcmeExternalAccountBindingList = /*@__PURE__*/ S.Array(AcmeExternalAccountBindingSummary);
 export interface ListAcmeExternalAccountBindingsResponse {
   ExternalAccountBindings?: AcmeExternalAccountBindingSummary[];
   NextToken?: string;
 }
-export const ListAcmeExternalAccountBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAcmeExternalAccountBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExternalAccountBindings: S.optional(AcmeExternalAccountBindingList),
     NextToken: S.optional(S.String),
@@ -1404,7 +1400,7 @@ export interface ListCertificateDomainValidationsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-export const ListCertificateDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateDomainValidationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.String,
     NextToken: S.optional(S.String),
@@ -1427,7 +1423,7 @@ export interface EmailValidationChallenge {
   ValidationEmails?: string[];
   ValidationDomain?: string;
 }
-export const EmailValidationChallenge = /*@__PURE__*/ S.suspend(() =>
+const EmailValidationChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ValidationEmails: S.optional(ValidationEmailList),
     ValidationDomain: S.optional(S.String),
@@ -1436,13 +1432,13 @@ export const EmailValidationChallenge = /*@__PURE__*/ S.suspend(() =>
 export interface DnsValidationChallenge {
   ResourceRecord?: ResourceRecord;
 }
-export const DnsValidationChallenge = /*@__PURE__*/ S.suspend(() =>
+const DnsValidationChallenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceRecord: S.optional(ResourceRecord) }),
 ).annotate({ identifier: "DnsValidationChallenge" }) as any as S.Schema<DnsValidationChallenge>;
 export type ValidationChallenge =
   | { EmailValidationChallenge: EmailValidationChallenge; DnsValidationChallenge?: never }
   | { EmailValidationChallenge?: never; DnsValidationChallenge: DnsValidationChallenge };
-export const ValidationChallenge = /*@__PURE__*/ S.Union([
+const ValidationChallenge = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ EmailValidationChallenge: EmailValidationChallenge }),
   /*@__PURE__*/ S.Struct({ DnsValidationChallenge: DnsValidationChallenge }),
 ]);
@@ -1451,7 +1447,7 @@ export interface ValidationConfiguration {
   ValidationChallenge?: ValidationChallenge;
   ValidationStatus?: DomainStatus;
 }
-export const ValidationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ValidationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ValidationMethod: S.optional(ValidationMethod),
     ValidationChallenge: S.optional(ValidationChallenge),
@@ -1463,7 +1459,7 @@ export interface DomainValidationSummary {
   ActiveValidationConfiguration?: ValidationConfiguration;
   RequestedValidationConfiguration?: ValidationConfiguration;
 }
-export const DomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
+const DomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ActiveValidationConfiguration: S.optional(ValidationConfiguration),
@@ -1471,12 +1467,12 @@ export const DomainValidationSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainValidationSummary" }) as any as S.Schema<DomainValidationSummary>;
 export type DomainValidationSummaryList = DomainValidationSummary[];
-export const DomainValidationSummaryList = /*@__PURE__*/ S.Array(DomainValidationSummary);
+const DomainValidationSummaryList = /*@__PURE__*/ S.Array(DomainValidationSummary);
 export interface ListCertificateDomainValidationsResponse {
   DomainValidationSummaryList?: DomainValidationSummary[];
   NextToken?: string;
 }
-export const ListCertificateDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateDomainValidationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainValidationSummaryList: S.optional(DomainValidationSummaryList),
     NextToken: S.optional(S.String),
@@ -1485,17 +1481,17 @@ export const ListCertificateDomainValidationsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListCertificateDomainValidationsResponse",
 }) as any as S.Schema<ListCertificateDomainValidationsResponse>;
 export type CertificateStatuses = CertificateStatus[];
-export const CertificateStatuses = PublicKeyAlgorithmList as any as S.Schema<CertificateStatuses>;
+const CertificateStatuses = PublicKeyAlgorithmList as any as S.Schema<CertificateStatuses>;
 export type CertificateKeyPairOrigins = CertificateKeyPairOrigin[];
-export const CertificateKeyPairOrigins =
+const CertificateKeyPairOrigins =
   PublicKeyAlgorithmList as any as S.Schema<CertificateKeyPairOrigins>;
 export type ExtendedKeyUsageFilterList = ExtendedKeyUsageName[];
-export const ExtendedKeyUsageFilterList =
+const ExtendedKeyUsageFilterList =
   PublicKeyAlgorithmList as any as S.Schema<ExtendedKeyUsageFilterList>;
 export type KeyUsageFilterList = KeyUsageName[];
-export const KeyUsageFilterList = PublicKeyAlgorithmList as any as S.Schema<KeyUsageFilterList>;
+const KeyUsageFilterList = PublicKeyAlgorithmList as any as S.Schema<KeyUsageFilterList>;
 export type KeyAlgorithmList = KeyAlgorithm[];
-export const KeyAlgorithmList = PublicKeyAlgorithmList as any as S.Schema<KeyAlgorithmList>;
+const KeyAlgorithmList = PublicKeyAlgorithmList as any as S.Schema<KeyAlgorithmList>;
 export interface Filters {
   extendedKeyUsage?: ExtendedKeyUsageName[];
   keyUsage?: KeyUsageName[];
@@ -1503,7 +1499,7 @@ export interface Filters {
   exportOption?: CertificateExport;
   managedBy?: CertificateManagedBy;
 }
-export const Filters = /*@__PURE__*/ S.suspend(() =>
+const Filters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extendedKeyUsage: S.optional(ExtendedKeyUsageFilterList),
     keyUsage: S.optional(KeyUsageFilterList),
@@ -1513,10 +1509,10 @@ export const Filters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Filters" }) as any as S.Schema<Filters>;
 export type SortBy = "CREATED_AT" | (string & {});
-export const SortBy = S.String;
+const SortBy = S.String;
 
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SortOrder = S.String;
+const SortOrder = S.String;
 
 export interface ListCertificatesRequest {
   CertificateStatuses?: CertificateStatus[];
@@ -1527,7 +1523,7 @@ export interface ListCertificatesRequest {
   SortBy?: SortBy;
   SortOrder?: SortOrder;
 }
-export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateStatuses: S.optional(CertificateStatuses),
     CertificateKeyPairOrigins: S.optional(CertificateKeyPairOrigins),
@@ -1549,10 +1545,9 @@ export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
 export type KeyUsageNames = KeyUsageName[];
-export const KeyUsageNames = KeyUsageFilterList as any as S.Schema<KeyUsageNames>;
+const KeyUsageNames = KeyUsageFilterList as any as S.Schema<KeyUsageNames>;
 export type ExtendedKeyUsageNames = ExtendedKeyUsageName[];
-export const ExtendedKeyUsageNames =
-  ExtendedKeyUsageFilterList as any as S.Schema<ExtendedKeyUsageNames>;
+const ExtendedKeyUsageNames = ExtendedKeyUsageFilterList as any as S.Schema<ExtendedKeyUsageNames>;
 export interface CertificateSummary {
   CertificateArn?: string;
   DomainName?: string;
@@ -1576,7 +1571,7 @@ export interface CertificateSummary {
   ManagedBy?: CertificateManagedBy;
   CertificateKeyPairOrigin?: CertificateKeyPairOrigin;
 }
-export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
+const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     DomainName: S.optional(S.String),
@@ -1602,12 +1597,12 @@ export const CertificateSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertificateSummary" }) as any as S.Schema<CertificateSummary>;
 export type CertificateSummaryList = CertificateSummary[];
-export const CertificateSummaryList = /*@__PURE__*/ S.Array(CertificateSummary);
+const CertificateSummaryList = /*@__PURE__*/ S.Array(CertificateSummary);
 export interface ListCertificatesResponse {
   NextToken?: string;
   CertificateSummaryList?: CertificateSummary[];
 }
-export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     CertificateSummaryList: S.optional(CertificateSummaryList),
@@ -1616,7 +1611,7 @@ export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForCertificateRequest {
   CertificateArn: string;
 }
-export const ListTagsForCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1634,7 +1629,7 @@ export const ListTagsForCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForCertificateResponse {
   Tags?: Tag[];
 }
-export const ListTagsForCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }),
 ).annotate({
   identifier: "ListTagsForCertificateResponse",
@@ -1642,7 +1637,7 @@ export const ListTagsForCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1660,14 +1655,14 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
+const ListTagsForResourceResponse =
   ListTagsForCertificateResponse as any as S.Schema<ListTagsForResourceResponse>;
 export type IdempotencyToken = string;
 export interface PutAccountConfigurationRequest {
   ExpiryEvents?: ExpiryEventsConfiguration;
   IdempotencyToken: string;
 }
-export const PutAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExpiryEvents: S.optional(ExpiryEventsConfiguration),
     IdempotencyToken: S.String,
@@ -1686,14 +1681,14 @@ export const PutAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAccountConfigurationRequest",
 }) as any as S.Schema<PutAccountConfigurationRequest>;
 export interface PutAccountConfigurationResponse {}
-export const PutAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutAccountConfigurationResponse" },
-) as any as S.Schema<PutAccountConfigurationResponse>;
+const PutAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutAccountConfigurationResponse",
+}) as any as S.Schema<PutAccountConfigurationResponse>;
 export interface RemoveTagsFromCertificateRequest {
   CertificateArn: string;
   Tags: Tag[];
 }
-export const RemoveTagsFromCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsFromCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, Tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1709,12 +1704,12 @@ export const RemoveTagsFromCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromCertificateRequest",
 }) as any as S.Schema<RemoveTagsFromCertificateRequest>;
 export interface RemoveTagsFromCertificateResponse {}
-export const RemoveTagsFromCertificateResponse =
+const RemoveTagsFromCertificateResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<RemoveTagsFromCertificateResponse>;
 export interface RenewCertificateRequest {
   CertificateArn: string;
 }
-export const RenewCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1728,17 +1723,17 @@ export const RenewCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RenewCertificateRequest" }) as any as S.Schema<RenewCertificateRequest>;
 export interface RenewCertificateResponse {}
-export const RenewCertificateResponse =
+const RenewCertificateResponse =
   AddTagsToCertificateResponse as any as S.Schema<RenewCertificateResponse>;
 export interface DomainValidationOption {
   DomainName: string;
   ValidationDomain: string;
 }
-export const DomainValidationOption = /*@__PURE__*/ S.suspend(() =>
+const DomainValidationOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, ValidationDomain: S.String }),
 ).annotate({ identifier: "DomainValidationOption" }) as any as S.Schema<DomainValidationOption>;
 export type DomainValidationOptionList = DomainValidationOption[];
-export const DomainValidationOptionList = /*@__PURE__*/ S.Array(DomainValidationOption);
+const DomainValidationOptionList = /*@__PURE__*/ S.Array(DomainValidationOption);
 export type PcaArn = string;
 export interface RequestCertificateRequest {
   DomainName: string;
@@ -1752,7 +1747,7 @@ export interface RequestCertificateRequest {
   KeyAlgorithm?: KeyAlgorithm;
   ManagedBy?: CertificateManagedBy;
 }
-export const RequestCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ValidationMethod: S.optional(ValidationMethod),
@@ -1781,14 +1776,14 @@ export const RequestCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RequestCertificateResponse {
   CertificateArn?: string;
 }
-export const RequestCertificateResponse =
+const RequestCertificateResponse =
   ImportCertificateResponse as any as S.Schema<RequestCertificateResponse>;
 export interface ResendValidationEmailRequest {
   CertificateArn: string;
   Domain: string;
   ValidationDomain: string;
 }
-export const ResendValidationEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const ResendValidationEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, Domain: S.String, ValidationDomain: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1804,13 +1799,13 @@ export const ResendValidationEmailRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResendValidationEmailRequest",
 }) as any as S.Schema<ResendValidationEmailRequest>;
 export interface ResendValidationEmailResponse {}
-export const ResendValidationEmailResponse =
+const ResendValidationEmailResponse =
   AddTagsToCertificateResponse as any as S.Schema<ResendValidationEmailResponse>;
 export interface RevokeAcmeAccountRequest {
   AcmeEndpointArn: string;
   AccountUrl: string;
 }
-export const RevokeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeEndpointArn: S.String, AccountUrl: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1824,12 +1819,12 @@ export const RevokeAcmeAccountRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RevokeAcmeAccountRequest" }) as any as S.Schema<RevokeAcmeAccountRequest>;
 export interface RevokeAcmeAccountResponse {}
-export const RevokeAcmeAccountResponse =
+const RevokeAcmeAccountResponse =
   AddTagsToCertificateResponse as any as S.Schema<RevokeAcmeAccountResponse>;
 export interface RevokeAcmeExternalAccountBindingRequest {
   AcmeExternalAccountBindingArn: string;
 }
-export const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcmeExternalAccountBindingArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1845,13 +1840,13 @@ export const RevokeAcmeExternalAccountBindingRequest = /*@__PURE__*/ S.suspend((
   identifier: "RevokeAcmeExternalAccountBindingRequest",
 }) as any as S.Schema<RevokeAcmeExternalAccountBindingRequest>;
 export interface RevokeAcmeExternalAccountBindingResponse {}
-export const RevokeAcmeExternalAccountBindingResponse =
+const RevokeAcmeExternalAccountBindingResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<RevokeAcmeExternalAccountBindingResponse>;
 export interface RevokeCertificateRequest {
   CertificateArn: string;
   RevocationReason: RevocationReason;
 }
-export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, RevocationReason: RevocationReason }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -1867,36 +1862,36 @@ export const RevokeCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RevokeCertificateResponse {
   CertificateArn?: string;
 }
-export const RevokeCertificateResponse =
+const RevokeCertificateResponse =
   ImportCertificateResponse as any as S.Schema<RevokeCertificateResponse>;
 export type CertificateFilterStatementList = CertificateFilterStatement[];
-export const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
+const CertificateFilterStatementList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => CertificateFilterStatement).annotate({
     identifier: "CertificateFilterStatement",
   }),
 ) as any as S.Schema<CertificateFilterStatementList>;
 export type FilterString = string;
 export type ComparisonOperator = "CONTAINS" | "EQUALS" | (string & {});
-export const ComparisonOperator = S.String;
+const ComparisonOperator = S.String;
 
 export interface CommonNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
-export const CommonNameFilter = /*@__PURE__*/ S.suspend(() =>
+const CommonNameFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.String, ComparisonOperator: ComparisonOperator }),
 ).annotate({ identifier: "CommonNameFilter" }) as any as S.Schema<CommonNameFilter>;
 export type SubjectFilter = { CommonName: CommonNameFilter };
-export const SubjectFilter = /*@__PURE__*/ S.Union([
+const SubjectFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ CommonName: CommonNameFilter }),
 ]);
 export interface DnsNameFilter {
   Value: string;
   ComparisonOperator: ComparisonOperator;
 }
-export const DnsNameFilter = CommonNameFilter as any as S.Schema<DnsNameFilter>;
+const DnsNameFilter = CommonNameFilter as any as S.Schema<DnsNameFilter>;
 export type SubjectAlternativeNameFilter = { DnsName: DnsNameFilter };
-export const SubjectAlternativeNameFilter = /*@__PURE__*/ S.Union([
+const SubjectAlternativeNameFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ DnsName: DnsNameFilter }),
 ]);
 export type SerialNumber = string;
@@ -1904,7 +1899,7 @@ export interface TimestampRange {
   Start?: Date;
   End?: Date;
 }
-export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
+const TimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     End: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1991,7 +1986,7 @@ export type X509AttributeFilter =
       NotAfter?: never;
       NotBefore: TimestampRange;
     };
-export const X509AttributeFilter = /*@__PURE__*/ S.Union([
+const X509AttributeFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ Subject: SubjectFilter }),
   /*@__PURE__*/ S.Struct({ SubjectAlternativeName: SubjectAlternativeNameFilter }),
   /*@__PURE__*/ S.Struct({ ExtendedKeyUsage: ExtendedKeyUsageName }),
@@ -2145,7 +2140,7 @@ export type AcmCertificateMetadataFilter =
       AcmeEndpointArn?: never;
       AcmeAccountId: string;
     };
-export const AcmCertificateMetadataFilter = /*@__PURE__*/ S.Union([
+const AcmCertificateMetadataFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ Status: CertificateStatus }),
   /*@__PURE__*/ S.Struct({ RenewalStatus: RenewalStatus }),
   /*@__PURE__*/ S.Struct({ Type: CertificateType }),
@@ -2170,7 +2165,7 @@ export type CertificateFilter =
       X509AttributeFilter?: never;
       AcmCertificateMetadataFilter: AcmCertificateMetadataFilter;
     };
-export const CertificateFilter = /*@__PURE__*/ S.Union([
+const CertificateFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ CertificateArn: S.String }),
   /*@__PURE__*/ S.Struct({ X509AttributeFilter: X509AttributeFilter }),
   /*@__PURE__*/ S.Struct({ AcmCertificateMetadataFilter: AcmCertificateMetadataFilter }),
@@ -2180,7 +2175,7 @@ export type CertificateFilterStatement =
   | { And?: never; Or: CertificateFilterStatement[]; Not?: never; Filter?: never }
   | { And?: never; Or?: never; Not: CertificateFilterStatement; Filter?: never }
   | { And?: never; Or?: never; Not?: never; Filter: CertificateFilter };
-export const CertificateFilterStatement = /*@__PURE__*/ S.Union([
+const CertificateFilterStatement = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({
     And: /*@__PURE__*/ S.suspend(() => CertificateFilterStatementList).annotate({
       identifier: "CertificateFilterStatementList",
@@ -2222,10 +2217,10 @@ export type SearchCertificatesSortBy =
   | "ACME_ACCOUNT_ID"
   | "CERTIFICATE_KEY_PAIR_ORIGIN"
   | (string & {});
-export const SearchCertificatesSortBy = S.String;
+const SearchCertificatesSortBy = S.String;
 
 export type SearchCertificatesSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-export const SearchCertificatesSortOrder = S.String;
+const SearchCertificatesSortOrder = S.String;
 
 export interface SearchCertificatesRequest {
   FilterStatement?: CertificateFilterStatement;
@@ -2234,7 +2229,7 @@ export interface SearchCertificatesRequest {
   SortBy?: SearchCertificatesSortBy;
   SortOrder?: SearchCertificatesSortOrder;
 }
-export const SearchCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterStatement: S.optional(CertificateFilterStatement),
     MaxResults: S.optional(S.Number),
@@ -2256,16 +2251,16 @@ export const SearchCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchCertificatesRequest",
 }) as any as S.Schema<SearchCertificatesRequest>;
 export type DomainComponentList = string[];
-export const DomainComponentList = ContactList as any as S.Schema<DomainComponentList>;
+const DomainComponentList = ContactList as any as S.Schema<DomainComponentList>;
 export interface CustomAttribute {
   ObjectIdentifier?: string;
   Value?: string;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ObjectIdentifier: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 export type CustomAttributeList = CustomAttribute[];
-export const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute);
+const CustomAttributeList = /*@__PURE__*/ S.Array(CustomAttribute);
 export interface DistinguishedName {
   CommonName?: string;
   DomainComponents?: string[];
@@ -2284,7 +2279,7 @@ export interface DistinguishedName {
   Surname?: string;
   Title?: string;
 }
-export const DistinguishedName = /*@__PURE__*/ S.suspend(() =>
+const DistinguishedName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CommonName: S.optional(S.String),
     DomainComponents: S.optional(DomainComponentList),
@@ -2308,7 +2303,7 @@ export interface OtherName {
   ObjectIdentifier?: string;
   Value?: string;
 }
-export const OtherName = CustomAttribute as any as S.Schema<OtherName>;
+const OtherName = CustomAttribute as any as S.Schema<OtherName>;
 export type GeneralName =
   | {
       DirectoryName: DistinguishedName;
@@ -2373,7 +2368,7 @@ export type GeneralName =
       Rfc822Name?: never;
       UniformResourceIdentifier: string;
     };
-export const GeneralName = /*@__PURE__*/ S.Union([
+const GeneralName = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ DirectoryName: DistinguishedName }),
   /*@__PURE__*/ S.Struct({ DnsName: S.String }),
   /*@__PURE__*/ S.Struct({ IpAddress: S.String }),
@@ -2383,7 +2378,7 @@ export const GeneralName = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ UniformResourceIdentifier: S.String }),
 ]);
 export type GeneralNameList = GeneralName[];
-export const GeneralNameList = /*@__PURE__*/ S.Array(GeneralName);
+const GeneralNameList = /*@__PURE__*/ S.Array(GeneralName);
 export interface X509Attributes {
   Issuer?: DistinguishedName;
   Subject?: DistinguishedName;
@@ -2395,7 +2390,7 @@ export interface X509Attributes {
   NotAfter?: Date;
   NotBefore?: Date;
 }
-export const X509Attributes = /*@__PURE__*/ S.suspend(() =>
+const X509Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Issuer: S.optional(DistinguishedName),
     Subject: S.optional(DistinguishedName),
@@ -2426,7 +2421,7 @@ export interface AcmCertificateMetadata {
   AcmeEndpointArn?: string;
   AcmeAccountId?: string;
 }
-export const AcmCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
+const AcmCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Exported: S.optional(S.Boolean),
@@ -2447,7 +2442,7 @@ export const AcmCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AcmCertificateMetadata" }) as any as S.Schema<AcmCertificateMetadata>;
 export type CertificateMetadata = { AcmCertificateMetadata: AcmCertificateMetadata };
-export const CertificateMetadata = /*@__PURE__*/ S.Union([
+const CertificateMetadata = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ AcmCertificateMetadata: AcmCertificateMetadata }),
 ]);
 export interface CertificateSearchResult {
@@ -2455,7 +2450,7 @@ export interface CertificateSearchResult {
   X509Attributes?: X509Attributes;
   CertificateMetadata?: CertificateMetadata;
 }
-export const CertificateSearchResult = /*@__PURE__*/ S.suspend(() =>
+const CertificateSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CertificateArn: S.optional(S.String),
     X509Attributes: S.optional(X509Attributes),
@@ -2463,12 +2458,12 @@ export const CertificateSearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CertificateSearchResult" }) as any as S.Schema<CertificateSearchResult>;
 export type CertificateSearchResultList = CertificateSearchResult[];
-export const CertificateSearchResultList = /*@__PURE__*/ S.Array(CertificateSearchResult);
+const CertificateSearchResultList = /*@__PURE__*/ S.Array(CertificateSearchResult);
 export interface SearchCertificatesResponse {
   Results?: CertificateSearchResult[];
   NextToken?: string;
 }
-export const SearchCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Results: S.optional(CertificateSearchResultList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "SearchCertificatesResponse",
@@ -2477,7 +2472,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2491,15 +2486,14 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse =
-  AddTagsToCertificateResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = AddTagsToCertificateResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ContactList as any as S.Schema<TagKeyList>;
+const TagKeyList = ContactList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2513,13 +2507,13 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
+const UntagResourceResponse =
   AddTagsToCertificateResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAcmeDomainValidationRequest {
   AcmeDomainValidationArn: string;
   PrevalidationOptions?: PrevalidationOptions;
 }
-export const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeDomainValidationArn: S.String,
     PrevalidationOptions: S.optional(PrevalidationOptions),
@@ -2538,7 +2532,7 @@ export const UpdateAcmeDomainValidationRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAcmeDomainValidationRequest",
 }) as any as S.Schema<UpdateAcmeDomainValidationRequest>;
 export interface UpdateAcmeDomainValidationResponse {}
-export const UpdateAcmeDomainValidationResponse =
+const UpdateAcmeDomainValidationResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateAcmeDomainValidationResponse>;
 export interface UpdateAcmeEndpointRequest {
   AcmeEndpointArn: string;
@@ -2546,7 +2540,7 @@ export interface UpdateAcmeEndpointRequest {
   Contact?: AcmeContact;
   CertificateAuthority?: CertificateAuthority;
 }
-export const UpdateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AcmeEndpointArn: S.String,
     AuthorizationBehavior: S.optional(AcmeAuthorizationBehavior),
@@ -2567,13 +2561,13 @@ export const UpdateAcmeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAcmeEndpointRequest",
 }) as any as S.Schema<UpdateAcmeEndpointRequest>;
 export interface UpdateAcmeEndpointResponse {}
-export const UpdateAcmeEndpointResponse =
+const UpdateAcmeEndpointResponse =
   AddTagsToCertificateResponse as any as S.Schema<UpdateAcmeEndpointResponse>;
 export interface UpdateCertificateOptionsRequest {
   CertificateArn: string;
   Options: CertificateOptions;
 }
-export const UpdateCertificateOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCertificateOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CertificateArn: S.String, Options: CertificateOptions }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/" }),
@@ -2589,7 +2583,7 @@ export const UpdateCertificateOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateCertificateOptionsRequest",
 }) as any as S.Schema<UpdateCertificateOptionsRequest>;
 export interface UpdateCertificateOptionsResponse {}
-export const UpdateCertificateOptionsResponse =
+const UpdateCertificateOptionsResponse =
   DeleteAcmeDomainValidationResponse as any as S.Schema<UpdateCertificateOptionsResponse>;
 export type AvailabilityErrorMessage = string;
 export type CoralAvailabilityThrottlingReason = string;
@@ -2598,11 +2592,11 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
-export const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
+const ThrottlingReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
 ).annotate({ identifier: "ThrottlingReason" }) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
-export const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
+const ThrottlingReasonList = /*@__PURE__*/ S.Array(ThrottlingReason);
 export type ValidationExceptionMessage = string;
 export type ServiceErrorMessage = string;
 export type AddTagsToCertificateError =

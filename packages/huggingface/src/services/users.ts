@@ -14,19 +14,19 @@ export type { HuggingFaceOpError, HuggingFaceOpContext };
 export interface GetAvatarRequest {
   namespace: string;
 }
-export const GetAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/avatars/{namespace}", code: 200 })),
 ).annotate({ identifier: "GetAvatarRequest" }) as any as S.Schema<GetAvatarRequest>;
 
 export interface GetAvatarResponse {}
-export const GetAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetAvatarResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetAvatarResponse",
 }) as any as S.Schema<GetAvatarResponse>;
 
 export interface GetJobsUsageRequest {}
-export const GetJobsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/billing/usage/jobs", code: 200 })),
 ).annotate({ identifier: "GetJobsUsageRequest" }) as any as S.Schema<GetJobsUsageRequest>;
 
@@ -38,7 +38,7 @@ export interface GetJobsUsageResponseUsageJobDetailsItem {
   startedAt: string;
   completedAt?: string;
 }
-export const GetJobsUsageResponseUsageJobDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const GetJobsUsageResponseUsageJobDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String,
     hardwareFlavor: S.String,
@@ -53,7 +53,7 @@ export const GetJobsUsageResponseUsageJobDetailsItem = /*@__PURE__*/ S.suspend((
 
 export type GetJobsUsageResponseUsageJobDetailsList =
   Array<GetJobsUsageResponseUsageJobDetailsItem>;
-export const GetJobsUsageResponseUsageJobDetailsList = /*@__PURE__*/ S.Array(
+const GetJobsUsageResponseUsageJobDetailsList = /*@__PURE__*/ S.Array(
   GetJobsUsageResponseUsageJobDetailsItem,
 ) as any as S.Schema<GetJobsUsageResponseUsageJobDetailsList>;
 
@@ -64,7 +64,7 @@ export interface GetJobsUsageResponseUsage {
   periodEnd: string;
   jobDetails: GetJobsUsageResponseUsageJobDetailsList;
 }
-export const GetJobsUsageResponseUsage = /*@__PURE__*/ S.suspend(() =>
+const GetJobsUsageResponseUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usedMicroUsd: S.Number,
     totalMinutes: S.Number,
@@ -80,7 +80,7 @@ export interface GetJobsUsageResponse {
   usage: GetJobsUsageResponseUsage;
   hasAccess: boolean;
 }
-export const GetJobsUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobsUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usage: GetJobsUsageResponseUsage,
     hasAccess: S.Boolean,
@@ -88,12 +88,12 @@ export const GetJobsUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetJobsUsageResponse" }) as any as S.Schema<GetJobsUsageResponse>;
 
 export interface GetMcpToolsRequest {}
-export const GetMcpToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMcpToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/mcp", code: 200 })),
 ).annotate({ identifier: "GetMcpToolsRequest" }) as any as S.Schema<GetMcpToolsRequest>;
 
 export type GetMcpToolsResponseBuiltInToolsList = Array<string>;
-export const GetMcpToolsResponseBuiltInToolsList = /*@__PURE__*/ S.Array(
+const GetMcpToolsResponseBuiltInToolsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetMcpToolsResponseBuiltInToolsList>;
 
@@ -103,7 +103,7 @@ export interface GetMcpToolsResponseSpaceToolsItem {
   emoji: string;
   subdomain: string;
 }
-export const GetMcpToolsResponseSpaceToolsItem = /*@__PURE__*/ S.suspend(() =>
+const GetMcpToolsResponseSpaceToolsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     name: S.String,
@@ -115,7 +115,7 @@ export const GetMcpToolsResponseSpaceToolsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMcpToolsResponseSpaceToolsItem>;
 
 export type GetMcpToolsResponseSpaceToolsList = Array<GetMcpToolsResponseSpaceToolsItem>;
-export const GetMcpToolsResponseSpaceToolsList = /*@__PURE__*/ S.Array(
+const GetMcpToolsResponseSpaceToolsList = /*@__PURE__*/ S.Array(
   GetMcpToolsResponseSpaceToolsItem,
 ) as any as S.Schema<GetMcpToolsResponseSpaceToolsList>;
 
@@ -123,7 +123,7 @@ export interface GetMcpToolsResponse {
   builtInTools: GetMcpToolsResponseBuiltInToolsList;
   spaceTools: GetMcpToolsResponseSpaceToolsList;
 }
-export const GetMcpToolsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMcpToolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builtInTools: GetMcpToolsResponseBuiltInToolsList,
     spaceTools: GetMcpToolsResponseSpaceToolsList,
@@ -134,7 +134,7 @@ export interface GetSessionInferenceUsageRequest {
   startDate?: string;
   endDate?: string;
 }
-export const GetSessionInferenceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionInferenceUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.String.pipe(T.Query())),
     endDate: S.optional(S.String.pipe(T.Query())),
@@ -150,7 +150,7 @@ export interface GetSessionInferenceUsageResponsePeriodsItemSessionsItem {
   requestCount: number;
   costCents: number;
 }
-export const GetSessionInferenceUsageResponsePeriodsItemSessionsItem = /*@__PURE__*/ S.suspend(() =>
+const GetSessionInferenceUsageResponsePeriodsItemSessionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     requestCount: S.Number,
@@ -162,7 +162,7 @@ export const GetSessionInferenceUsageResponsePeriodsItemSessionsItem = /*@__PURE
 
 export type GetSessionInferenceUsageResponsePeriodsItemSessionsList =
   Array<GetSessionInferenceUsageResponsePeriodsItemSessionsItem>;
-export const GetSessionInferenceUsageResponsePeriodsItemSessionsList = /*@__PURE__*/ S.Array(
+const GetSessionInferenceUsageResponsePeriodsItemSessionsList = /*@__PURE__*/ S.Array(
   GetSessionInferenceUsageResponsePeriodsItemSessionsItem,
 ) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItemSessionsList>;
 
@@ -170,7 +170,7 @@ export interface GetSessionInferenceUsageResponsePeriodsItem {
   period: string;
   sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList;
 }
-export const GetSessionInferenceUsageResponsePeriodsItem = /*@__PURE__*/ S.suspend(() =>
+const GetSessionInferenceUsageResponsePeriodsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: S.String,
     sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList,
@@ -181,7 +181,7 @@ export const GetSessionInferenceUsageResponsePeriodsItem = /*@__PURE__*/ S.suspe
 
 export type GetSessionInferenceUsageResponsePeriodsList =
   Array<GetSessionInferenceUsageResponsePeriodsItem>;
-export const GetSessionInferenceUsageResponsePeriodsList = /*@__PURE__*/ S.Array(
+const GetSessionInferenceUsageResponsePeriodsList = /*@__PURE__*/ S.Array(
   GetSessionInferenceUsageResponsePeriodsItem,
 ) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsList>;
 
@@ -189,7 +189,7 @@ export interface GetSessionInferenceUsageResponse {
   currency: string;
   periods: GetSessionInferenceUsageResponsePeriodsList;
 }
-export const GetSessionInferenceUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSessionInferenceUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     periods: GetSessionInferenceUsageResponsePeriodsList,
@@ -201,7 +201,7 @@ export const GetSessionInferenceUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSocialHandlesRequest {
   username: string;
 }
-export const GetSocialHandlesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSocialHandlesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/socials", code: 200 })),
@@ -213,7 +213,7 @@ export interface GetSocialHandlesResponseSocialHandles {
   linkedin?: string;
   bluesky?: string;
 }
-export const GetSocialHandlesResponseSocialHandles = /*@__PURE__*/ S.suspend(() =>
+const GetSocialHandlesResponseSocialHandles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     twitter: S.optional(S.String),
     github: S.optional(S.String),
@@ -229,7 +229,7 @@ export interface GetSocialHandlesResponse {
   user: string;
   socialHandles: GetSocialHandlesResponseSocialHandles;
 }
-export const GetSocialHandlesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSocialHandlesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     user: S.String,
@@ -241,7 +241,7 @@ export interface GetUserAvatarRequest {
   username: string;
   redirect?: string;
 }
-export const GetUserAvatarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserAvatarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     redirect: S.optional(S.String.pipe(T.Query())),
@@ -251,7 +251,7 @@ export const GetUserAvatarRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserAvatarResponse {
   avatarUrl: string;
 }
-export const GetUserAvatarResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserAvatarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatarUrl: S.String,
   }),
@@ -261,7 +261,7 @@ export interface GetUserUsageV2Request {
   startDate: number;
   endDate: number;
 }
-export const GetUserUsageV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetUserUsageV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.Number.pipe(T.Query()),
     endDate: S.Number.pipe(T.Query()),
@@ -269,13 +269,13 @@ export const GetUserUsageV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserUsageV2Request" }) as any as S.Schema<GetUserUsageV2Request>;
 
 export interface GetUserUsageV2Response {}
-export const GetUserUsageV2Response = GetAvatarResponse as any as S.Schema<GetUserUsageV2Response>;
+const GetUserUsageV2Response = GetAvatarResponse as any as S.Schema<GetUserUsageV2Response>;
 
 export interface ListFollowedOrganizationsRequest {
   username: string;
   cursor?: string;
 }
-export const ListFollowedOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -291,32 +291,31 @@ export type ListFollowedOrganizationsResponseBodyItemOrgType =
   | "non-profit"
   | "government"
   | "community";
-export const ListFollowedOrganizationsResponseBodyItemOrgType = S.String;
+const ListFollowedOrganizationsResponseBodyItemOrgType = S.String;
 
 export type ListFollowedOrganizationsResponseBodyItemPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ListFollowedOrganizationsResponseBodyItemPlan = S.String;
+const ListFollowedOrganizationsResponseBodyItemPlan = S.String;
 
 export interface ListFollowedOrganizationsResponseBodyItemEmailDomainsItem {
   domain: string;
   verified?: boolean;
 }
-export const ListFollowedOrganizationsResponseBodyItemEmailDomainsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domain: S.String,
-      verified: S.optional(S.Boolean),
-    }),
+const ListFollowedOrganizationsResponseBodyItemEmailDomainsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String,
+    verified: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "ListFollowedOrganizationsResponseBodyItemEmailDomainsItem",
 }) as any as S.Schema<ListFollowedOrganizationsResponseBodyItemEmailDomainsItem>;
 
 export type ListFollowedOrganizationsResponseBodyItemEmailDomainsList =
   Array<ListFollowedOrganizationsResponseBodyItemEmailDomainsItem>;
-export const ListFollowedOrganizationsResponseBodyItemEmailDomainsList = /*@__PURE__*/ S.Array(
+const ListFollowedOrganizationsResponseBodyItemEmailDomainsList = /*@__PURE__*/ S.Array(
   ListFollowedOrganizationsResponseBodyItemEmailDomainsItem,
 ) as any as S.Schema<ListFollowedOrganizationsResponseBodyItemEmailDomainsList>;
 
@@ -336,7 +335,7 @@ export interface ListFollowedOrganizationsResponseBodyItem {
   reasonToFollow?: string;
   emailDomains?: ListFollowedOrganizationsResponseBodyItemEmailDomainsList;
 }
-export const ListFollowedOrganizationsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedOrganizationsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     avatarUrl: S.String,
@@ -358,12 +357,12 @@ export const ListFollowedOrganizationsResponseBodyItem = /*@__PURE__*/ S.suspend
 
 export type ListFollowedOrganizationsResponseBodyList =
   Array<ListFollowedOrganizationsResponseBodyItem>;
-export const ListFollowedOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFollowedOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
   ListFollowedOrganizationsResponseBodyItem,
 ) as any as S.Schema<ListFollowedOrganizationsResponseBodyList>;
 
 export type ListFollowedOrganizationsResponse = ListFollowedOrganizationsResponseBodyList;
-export const ListFollowedOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListFollowedOrganizationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFollowedOrganizationsResponse",
@@ -373,7 +372,7 @@ export interface ListFollowedUsersRequest {
   username: string;
   cursor?: string;
 }
-export const ListFollowedUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -386,7 +385,7 @@ export interface ListFollowedUsersResponseBodyItemOrgsItem {
   fullname: string;
   avatarUrl: string;
 }
-export const ListFollowedUsersResponseBodyItemOrgsItem = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedUsersResponseBodyItemOrgsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -399,7 +398,7 @@ export const ListFollowedUsersResponseBodyItemOrgsItem = /*@__PURE__*/ S.suspend
 
 export type ListFollowedUsersResponseBodyItemOrgsList =
   Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-export const ListFollowedUsersResponseBodyItemOrgsList = /*@__PURE__*/ S.Array(
+const ListFollowedUsersResponseBodyItemOrgsList = /*@__PURE__*/ S.Array(
   ListFollowedUsersResponseBodyItemOrgsItem,
 ) as any as S.Schema<ListFollowedUsersResponseBodyItemOrgsList>;
 
@@ -411,7 +410,7 @@ export interface ListFollowedUsersResponseBodyItemServiceAccount {
   orgAvatarUrl: string;
   description?: string;
 }
-export const ListFollowedUsersResponseBodyItemServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedUsersResponseBodyItemServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     org: S.String,
@@ -450,7 +449,7 @@ export interface ListFollowedUsersResponseBodyItem {
   serviceAccount?: ListFollowedUsersResponseBodyItemServiceAccount;
   type: string;
 }
-export const ListFollowedUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     orgs: S.optional(ListFollowedUsersResponseBodyItemOrgsList),
@@ -482,24 +481,24 @@ export const ListFollowedUsersResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFollowedUsersResponseBodyItem>;
 
 export type ListFollowedUsersResponseBodyList = Array<ListFollowedUsersResponseBodyItem>;
-export const ListFollowedUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFollowedUsersResponseBodyList = /*@__PURE__*/ S.Array(
   ListFollowedUsersResponseBodyItem,
 ) as any as S.Schema<ListFollowedUsersResponseBodyList>;
 
 export type ListFollowedUsersResponse = ListFollowedUsersResponseBodyList;
-export const ListFollowedUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFollowedUsersResponse = /*@__PURE__*/ S.suspend(() =>
   ListFollowedUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFollowedUsersResponse",
 }) as any as S.Schema<ListFollowedUsersResponse>;
 
 export type ListUserFollowersRequestExpandItem = "followedAt";
-export const ListUserFollowersRequestExpandItem = S.String;
+const ListUserFollowersRequestExpandItem = S.String;
 
 export type ListUserFollowersRequestExpandList = Array<
   ListUserFollowersRequestExpandItem | (string & {})
 >;
-export const ListUserFollowersRequestExpandList = /*@__PURE__*/ S.Array(
+const ListUserFollowersRequestExpandList = /*@__PURE__*/ S.Array(
   ListUserFollowersRequestExpandItem,
 ) as any as S.Schema<ListUserFollowersRequestExpandList>;
 
@@ -509,7 +508,7 @@ export interface ListUserFollowersRequest {
   limit?: number;
   expand?: ListUserFollowersRequestExpandList;
 }
-export const ListUserFollowersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserFollowersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -520,20 +519,11 @@ export const ListUserFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListUserFollowersResponseBodyItemCase0OrgsItem =
   ListFollowedUsersResponseBodyItemOrgsItem;
-export const ListUserFollowersResponseBodyItemCase0OrgsItem =
-  ListFollowedUsersResponseBodyItemOrgsItem;
-
 export type ListUserFollowersResponseBodyItemCase0OrgsList =
   Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-export const ListUserFollowersResponseBodyItemCase0OrgsList =
-  ListFollowedUsersResponseBodyItemOrgsList as any as S.Schema<ListUserFollowersResponseBodyItemCase0OrgsList>;
-
 /** Set when the user is a service account */
 export type ListUserFollowersResponseBodyItemCase0ServiceAccount =
   ListFollowedUsersResponseBodyItemServiceAccount;
-export const ListUserFollowersResponseBodyItemCase0ServiceAccount =
-  ListFollowedUsersResponseBodyItemServiceAccount;
-
 export interface ListUserFollowersResponseBodyItemCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -562,37 +552,25 @@ export interface ListUserFollowersResponseBodyItemCase0 {
   serviceAccount?: ListFollowedUsersResponseBodyItemServiceAccount;
   type: string;
 }
-export const ListUserFollowersResponseBodyItemCase0 =
-  ListFollowedUsersResponseBodyItem as any as S.Schema<ListUserFollowersResponseBodyItemCase0>;
-
 /** Returned when `expand=followedAt` is set */
 export interface ListUserFollowersResponseBodyItemCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
   followedAt: string;
 }
-export const ListUserFollowersResponseBodyItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    followedAt: S.String,
-  }),
-).annotate({
-  identifier: "ListUserFollowersResponseBodyItemCase1",
-}) as any as S.Schema<ListUserFollowersResponseBodyItemCase1>;
-
 export type ListUserFollowersResponseBodyItem =
   | ListUserFollowersResponseBodyItemCase0
   | ListUserFollowersResponseBodyItemCase1;
-export const ListUserFollowersResponseBodyItem =
+const ListUserFollowersResponseBodyItem =
   S.Unknown as any as S.Schema<ListUserFollowersResponseBodyItem>;
 
 export type ListUserFollowersResponseBodyList = Array<ListUserFollowersResponseBodyItem>;
-export const ListUserFollowersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListUserFollowersResponseBodyList = /*@__PURE__*/ S.Array(
   ListUserFollowersResponseBodyItem,
 ) as any as S.Schema<ListUserFollowersResponseBodyList>;
 
 export type ListUserFollowersResponse = ListUserFollowersResponseBodyList;
-export const ListUserFollowersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserFollowersResponse = /*@__PURE__*/ S.suspend(() =>
   ListUserFollowersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListUserFollowersResponse",
@@ -603,7 +581,7 @@ export interface ListUserLikesRequest {
   limit?: number;
   cursor?: string;
 }
-export const ListUserLikesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserLikesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -618,13 +596,13 @@ export type ListUserLikesResponseBodyItemRepoType =
   | "bucket"
   | "kernel"
   | "container";
-export const ListUserLikesResponseBodyItemRepoType = S.String;
+const ListUserLikesResponseBodyItemRepoType = S.String;
 
 export interface ListUserLikesResponseBodyItemRepo {
   name: string;
   type: ListUserLikesResponseBodyItemRepoType;
 }
-export const ListUserLikesResponseBodyItemRepo = /*@__PURE__*/ S.suspend(() =>
+const ListUserLikesResponseBodyItemRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: ListUserLikesResponseBodyItemRepoType,
@@ -637,7 +615,7 @@ export interface ListUserLikesResponseBodyItem {
   createdAt: string;
   repo: ListUserLikesResponseBodyItemRepo;
 }
-export const ListUserLikesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListUserLikesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     repo: ListUserLikesResponseBodyItemRepo,
@@ -647,12 +625,12 @@ export const ListUserLikesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserLikesResponseBodyItem>;
 
 export type ListUserLikesResponseBodyList = Array<ListUserLikesResponseBodyItem>;
-export const ListUserLikesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListUserLikesResponseBodyList = /*@__PURE__*/ S.Array(
   ListUserLikesResponseBodyItem,
 ) as any as S.Schema<ListUserLikesResponseBodyList>;
 
 export type ListUserLikesResponse = ListUserLikesResponseBodyList;
-export const ListUserLikesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserLikesResponse = /*@__PURE__*/ S.suspend(() =>
   ListUserLikesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListUserLikesResponse" }) as any as S.Schema<ListUserLikesResponse>;
 
@@ -664,15 +642,15 @@ export type ListUserRepositoriesRequestType =
   | "bucket"
   | "kernel"
   | "container";
-export const ListUserRepositoriesRequestType = S.String;
+const ListUserRepositoriesRequestType = S.String;
 
 /** Sort field (default: storage) */
 export type ListUserRepositoriesRequestSort = "storage" | "updatedAt";
-export const ListUserRepositoriesRequestSort = S.String;
+const ListUserRepositoriesRequestSort = S.String;
 
 /** Sort direction (default: desc) */
 export type ListUserRepositoriesRequestDirection = "asc" | "desc";
-export const ListUserRepositoriesRequestDirection = S.String;
+const ListUserRepositoriesRequestDirection = S.String;
 
 export interface ListUserRepositoriesRequest {
   search?: string;
@@ -681,7 +659,7 @@ export interface ListUserRepositoriesRequest {
   sort?: ListUserRepositoriesRequestSort | (string & {});
   direction?: ListUserRepositoriesRequestDirection | (string & {});
 }
-export const ListUserRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     search: S.optional(S.String.pipe(T.Query())),
     type: S.optional(ListUserRepositoriesRequestType.pipe(T.Query())),
@@ -700,10 +678,10 @@ export type ListUserRepositoriesResponseBodyItemType =
   | "bucket"
   | "kernel"
   | "container";
-export const ListUserRepositoriesResponseBodyItemType = S.String;
+const ListUserRepositoriesResponseBodyItemType = S.String;
 
 export type ListUserRepositoriesResponseBodyItemVisibility = "public" | "private" | "protected";
-export const ListUserRepositoriesResponseBodyItemVisibility = S.String;
+const ListUserRepositoriesResponseBodyItemVisibility = S.String;
 
 export interface ListUserRepositoriesResponseBodyItem {
   id: string;
@@ -713,7 +691,7 @@ export interface ListUserRepositoriesResponseBodyItem {
   storage: number;
   storagePercent: number;
 }
-export const ListUserRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListUserRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: ListUserRepositoriesResponseBodyItemType,
@@ -727,38 +705,37 @@ export const ListUserRepositoriesResponseBodyItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListUserRepositoriesResponseBodyItem>;
 
 export type ListUserRepositoriesResponseBodyList = Array<ListUserRepositoriesResponseBodyItem>;
-export const ListUserRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListUserRepositoriesResponseBodyList = /*@__PURE__*/ S.Array(
   ListUserRepositoriesResponseBodyItem,
 ) as any as S.Schema<ListUserRepositoriesResponseBodyList>;
 
 export type ListUserRepositoriesResponse = ListUserRepositoriesResponseBodyList;
-export const ListUserRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   ListUserRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListUserRepositoriesResponse",
 }) as any as S.Schema<ListUserRepositoriesResponse>;
 
 export interface StreamMetricsRequest {}
-export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/metrics/live", code: 200 })),
 ).annotate({ identifier: "StreamMetricsRequest" }) as any as S.Schema<StreamMetricsRequest>;
 
 export interface StreamMetricsResponse {}
-export const StreamMetricsResponse = GetAvatarResponse as any as S.Schema<StreamMetricsResponse>;
+const StreamMetricsResponse = GetAvatarResponse as any as S.Schema<StreamMetricsResponse>;
 
 export interface StreamUserUsageRequest {}
-export const StreamUserUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamUserUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/settings/billing/usage/live", code: 200 })),
 ).annotate({ identifier: "StreamUserUsageRequest" }) as any as S.Schema<StreamUserUsageRequest>;
 
 export interface StreamUserUsageResponse {}
-export const StreamUserUsageResponse =
-  GetAvatarResponse as any as S.Schema<StreamUserUsageResponse>;
+const StreamUserUsageResponse = GetAvatarResponse as any as S.Schema<StreamUserUsageResponse>;
 
 export interface StreamUserUsageByUsernameRequest {
   username: string;
 }
-export const StreamUserUsageByUsernameRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamUserUsageByUsernameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/billing/usage/live", code: 200 })),
@@ -767,35 +744,29 @@ export const StreamUserUsageByUsernameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamUserUsageByUsernameRequest>;
 
 export interface StreamUserUsageByUsernameResponse {}
-export const StreamUserUsageByUsernameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const StreamUserUsageByUsernameResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "StreamUserUsageByUsernameResponse",
 }) as any as S.Schema<StreamUserUsageByUsernameResponse>;
 
 export interface UserOverviewRequest {
   username: string;
 }
-export const UserOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const UserOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/overview", code: 200 })),
 ).annotate({ identifier: "UserOverviewRequest" }) as any as S.Schema<UserOverviewRequest>;
 
 export type UserOverviewResponseOrgsItem = ListFollowedUsersResponseBodyItemOrgsItem;
-export const UserOverviewResponseOrgsItem = ListFollowedUsersResponseBodyItemOrgsItem;
-
 export type UserOverviewResponseOrgsList = Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-export const UserOverviewResponseOrgsList =
+const UserOverviewResponseOrgsList =
   ListFollowedUsersResponseBodyItemOrgsList as any as S.Schema<UserOverviewResponseOrgsList>;
 
 /** Set when the user is a service account */
 export type UserOverviewResponseServiceAccount = ListFollowedUsersResponseBodyItemServiceAccount;
-export const UserOverviewResponseServiceAccount = ListFollowedUsersResponseBodyItemServiceAccount;
-
 /** Hardware SKU as [type, vendor, model] */
 export type UserOverviewResponseHardwareItemsItemSkuList = Array<unknown>;
-export const UserOverviewResponseHardwareItemsItemSkuList = /*@__PURE__*/ S.Array(
+const UserOverviewResponseHardwareItemsItemSkuList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<UserOverviewResponseHardwareItemsItemSkuList>;
 
@@ -808,7 +779,7 @@ export interface UserOverviewResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
-export const UserOverviewResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =>
+const UserOverviewResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: UserOverviewResponseHardwareItemsItemSkuList,
     mem: S.Number,
@@ -821,7 +792,7 @@ export const UserOverviewResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() 
 
 /** The user's hardware items, unless the user set them as private */
 export type UserOverviewResponseHardwareItemsList = Array<UserOverviewResponseHardwareItemsItem>;
-export const UserOverviewResponseHardwareItemsList = /*@__PURE__*/ S.Array(
+const UserOverviewResponseHardwareItemsList = /*@__PURE__*/ S.Array(
   UserOverviewResponseHardwareItemsItem,
 ) as any as S.Schema<UserOverviewResponseHardwareItemsList>;
 
@@ -856,7 +827,7 @@ export interface UserOverviewResponse {
   /** The user's hardware items, unless the user set them as private */
   hardwareItems?: UserOverviewResponseHardwareItemsList;
 }
-export const UserOverviewResponse = /*@__PURE__*/ S.suspend(() =>
+const UserOverviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     orgs: S.optional(UserOverviewResponseOrgsList),

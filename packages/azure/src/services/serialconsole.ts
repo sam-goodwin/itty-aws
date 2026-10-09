@@ -23,7 +23,7 @@ export interface ConnectSerialPortRequest {
   /** The name of the serial port to connect to. */
   serialPort: string;
 }
-export const ConnectSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -46,7 +46,7 @@ export interface SerialPortConnectResult {
   /** Connection string to the serial port of the resource. */
   connectionString?: string | Redacted.Redacted<string>;
 }
-export const SerialPortConnectResult = /*@__PURE__*/ S.suspend(() =>
+const SerialPortConnectResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -54,11 +54,11 @@ export const SerialPortConnectResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies whether the port is enabled for a serial console connection. */
 export type SerialPortState = "enabled" | "disabled";
-export const SerialPortState = S.String;
+const SerialPortState = S.String;
 
 /** Specifies whether the port is currently active. */
 export type SerialPortConnectionState = "active" | "inactive";
-export const SerialPortConnectionState = S.String;
+const SerialPortConnectionState = S.String;
 
 /** The properties of the serial port. */
 export interface SerialPortProperties {
@@ -67,7 +67,7 @@ export interface SerialPortProperties {
   /** Specifies whether the port is currently active. */
   connectionState?: SerialPortConnectionState | (string & {});
 }
-export const SerialPortProperties = /*@__PURE__*/ S.suspend(() =>
+const SerialPortProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SerialPortState),
     connectionState: S.optional(SerialPortConnectionState),
@@ -90,7 +90,7 @@ export interface CreateSerialPortRequest {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const CreateSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -111,11 +111,11 @@ export const CreateSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -132,7 +132,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -155,7 +155,7 @@ export interface CreateSerialPortResponse {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const CreateSerialPortResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSerialPortResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -179,7 +179,7 @@ export interface DeleteSerialPortRequest {
   /** The name of the serial port to delete. */
   serialPort: string;
 }
-export const DeleteSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -198,7 +198,7 @@ export const DeleteSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSerialPortRequest" }) as any as S.Schema<DeleteSerialPortRequest>;
 
 export interface DeleteSerialPortResponse {}
-export const DeleteSerialPortResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSerialPortResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSerialPortResponse",
 }) as any as S.Schema<DeleteSerialPortResponse>;
 
@@ -208,7 +208,7 @@ export interface DisableConsoleRequest {
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-export const DisableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     default: S.String.pipe(T.Label()),
@@ -226,7 +226,7 @@ export interface DisableSerialConsoleResultProperties {
   /** Whether or not Serial Console is disabled. */
   disabled?: boolean;
 }
-export const DisableSerialConsoleResultProperties = /*@__PURE__*/ S.suspend(() =>
+const DisableSerialConsoleResultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
   }),
@@ -238,7 +238,7 @@ export const DisableSerialConsoleResultProperties = /*@__PURE__*/ S.suspend(() =
 export interface DisableSerialConsoleResult {
   properties?: DisableSerialConsoleResultProperties;
 }
-export const DisableSerialConsoleResult = /*@__PURE__*/ S.suspend(() =>
+const DisableSerialConsoleResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DisableSerialConsoleResultProperties),
   }),
@@ -252,7 +252,7 @@ export interface EnableConsoleRequest {
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-export const EnableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     default: S.String.pipe(T.Label()),
@@ -267,13 +267,11 @@ export const EnableConsoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableConsoleRequest" }) as any as S.Schema<EnableConsoleRequest>;
 
 export type EnableSerialConsoleResultProperties = DisableSerialConsoleResultProperties;
-export const EnableSerialConsoleResultProperties = DisableSerialConsoleResultProperties;
-
 /** Returns whether or not Serial Console is disabled (enabled). */
 export interface EnableSerialConsoleResult {
   properties?: DisableSerialConsoleResultProperties;
 }
-export const EnableSerialConsoleResult =
+const EnableSerialConsoleResult =
   DisableSerialConsoleResult as any as S.Schema<EnableSerialConsoleResult>;
 
 export interface GetConsoleStatusRequest {
@@ -282,7 +280,7 @@ export interface GetConsoleStatusRequest {
   /** Default parameter. Leave the value as "default". */
   default: string;
 }
-export const GetConsoleStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsoleStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     default: S.String.pipe(T.Label()),
@@ -297,13 +295,11 @@ export const GetConsoleStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConsoleStatusRequest" }) as any as S.Schema<GetConsoleStatusRequest>;
 
 export type SerialConsoleStatusProperties = DisableSerialConsoleResultProperties;
-export const SerialConsoleStatusProperties = DisableSerialConsoleResultProperties;
-
 /** Returns whether or not Serial Console is disabled. */
 export interface SerialConsoleStatus {
   properties?: DisableSerialConsoleResultProperties;
 }
-export const SerialConsoleStatus = /*@__PURE__*/ S.suspend(() =>
+const SerialConsoleStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(DisableSerialConsoleResultProperties),
   }),
@@ -323,7 +319,7 @@ export interface GetSerialPortRequest {
   /** The name of the serial port to connect to. */
   serialPort: string;
 }
-export const GetSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSerialPortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -353,11 +349,10 @@ export interface GetSerialPortResponse {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const GetSerialPortResponse =
-  CreateSerialPortResponse as any as S.Schema<GetSerialPortResponse>;
+const GetSerialPortResponse = CreateSerialPortResponse as any as S.Schema<GetSerialPortResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -374,7 +369,7 @@ export interface SerialConsoleOperationsValueItemDisplay {
   operation?: string;
   description?: string;
 }
-export const SerialConsoleOperationsValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
+const SerialConsoleOperationsValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -390,7 +385,7 @@ export interface SerialConsoleOperationsValueItem {
   isDataAction?: string;
   display?: SerialConsoleOperationsValueItemDisplay;
 }
-export const SerialConsoleOperationsValueItem = /*@__PURE__*/ S.suspend(() =>
+const SerialConsoleOperationsValueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.String),
@@ -402,7 +397,7 @@ export const SerialConsoleOperationsValueItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Serial Console operations */
 export type SerialConsoleOperationsValueList = Array<SerialConsoleOperationsValueItem>;
-export const SerialConsoleOperationsValueList = /*@__PURE__*/ S.Array(
+const SerialConsoleOperationsValueList = /*@__PURE__*/ S.Array(
   SerialConsoleOperationsValueItem,
 ) as any as S.Schema<SerialConsoleOperationsValueList>;
 
@@ -411,7 +406,7 @@ export interface SerialConsoleOperations {
   /** A list of Serial Console operations */
   value?: SerialConsoleOperationsValueList;
 }
-export const SerialConsoleOperations = /*@__PURE__*/ S.suspend(() =>
+const SerialConsoleOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SerialConsoleOperationsValueList),
   }),
@@ -421,7 +416,7 @@ export interface ListSerialPortBySubscriptionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSerialPortBySubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSerialPortBySubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -449,11 +444,11 @@ export interface SerialPort {
   /** The properties of the serial port. */
   properties?: SerialPortProperties;
 }
-export const SerialPort = CreateSerialPortResponse as any as S.Schema<SerialPort>;
+const SerialPort = CreateSerialPortResponse as any as S.Schema<SerialPort>;
 
 /** The list of serial ports. */
 export type SerialPortListResultValueList = Array<SerialPort>;
-export const SerialPortListResultValueList = /*@__PURE__*/ S.Array(
+const SerialPortListResultValueList = /*@__PURE__*/ S.Array(
   SerialPort,
 ) as any as S.Schema<SerialPortListResultValueList>;
 
@@ -462,7 +457,7 @@ export interface SerialPortListResult {
   /** The list of serial ports. */
   value?: SerialPortListResultValueList;
 }
-export const SerialPortListResult = /*@__PURE__*/ S.suspend(() =>
+const SerialPortListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SerialPortListResultValueList),
   }),
@@ -480,7 +475,7 @@ export interface ListSerialPortsRequest {
   /** The name of the parent resource. */
   parentResource: string;
 }
-export const ListSerialPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSerialPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

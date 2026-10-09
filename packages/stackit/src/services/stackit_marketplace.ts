@@ -51,7 +51,7 @@ export interface ApproveSubscriptionRequest {
   /** The target URL of the user instance, used to redirect the user to the instance after the subscription is active. */
   instanceTarget?: string;
 }
-export const ApproveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -69,7 +69,7 @@ export const ApproveSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApproveSubscriptionRequest>;
 
 export interface ApproveSubscriptionResponse {}
-export const ApproveSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ApproveSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApproveSubscriptionResponse",
 }) as any as S.Schema<ApproveSubscriptionResponse>;
 
@@ -77,7 +77,7 @@ export interface CancelConsumersSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
-export const CancelConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -94,9 +94,7 @@ export const CancelConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelConsumersSubscriptionRequest>;
 
 export interface CancelConsumersSubscriptionResponse {}
-export const CancelConsumersSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelConsumersSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelConsumersSubscriptionResponse",
 }) as any as S.Schema<CancelConsumersSubscriptionResponse>;
 
@@ -108,7 +106,7 @@ export interface ConsumersSubscriptionsListByOrganizationRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const ConsumersSubscriptionsListByOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConsumersSubscriptionsListByOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -136,7 +134,7 @@ export type MarketplaceSubscriptionV1SubscriptionLifecycleState =
   | "SUBSCRIPTION_CANCELLED"
   | "SUBSCRIPTION_REJECTED"
   | "SUBSCRIPTION_APPROVAL_TIMED_OUT";
-export const MarketplaceSubscriptionV1SubscriptionLifecycleState = S.String;
+const MarketplaceSubscriptionV1SubscriptionLifecycleState = S.String;
 
 export interface MarketplaceSubscriptionV1FileLocalizedVersion {
   /** The file version matching the file name (localized). */
@@ -144,7 +142,7 @@ export interface MarketplaceSubscriptionV1FileLocalizedVersion {
   /** The file version matching the file name (localized). */
   en?: string;
 }
-export const MarketplaceSubscriptionV1FileLocalizedVersion = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1FileLocalizedVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     de: S.optional(S.String),
     en: S.optional(S.String),
@@ -156,7 +154,7 @@ export const MarketplaceSubscriptionV1FileLocalizedVersion = /*@__PURE__*/ S.sus
 export interface MarketplaceSubscriptionV1File {
   version?: MarketplaceSubscriptionV1FileLocalizedVersion;
 }
-export const MarketplaceSubscriptionV1File = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(MarketplaceSubscriptionV1FileLocalizedVersion),
   }),
@@ -170,7 +168,7 @@ export interface MarketplaceSubscriptionV1Assets {
   serviceCertificate?: MarketplaceSubscriptionV1File;
   serviceLevelAgreement?: MarketplaceSubscriptionV1File;
 }
-export const MarketplaceSubscriptionV1Assets = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1Assets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endUserLicenseAgreement: S.optional(MarketplaceSubscriptionV1File),
     productDescription: S.optional(MarketplaceSubscriptionV1File),
@@ -187,14 +185,14 @@ export type MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod =
   | "CONTAINER_IMAGE"
   | "CLOUD_IMAGE"
   | "PROFESSIONAL_SERVICE";
-export const MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod = S.String;
+const MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod = S.String;
 
 /** The lifecycle state of the product. */
 export type MarketplaceSubscriptionV1SubscriptionProductLifecycleState =
   | "PRODUCT_LIVE"
   | "PRODUCT_PENDING_APPROVAL"
   | "PRODUCT_PREVIEW";
-export const MarketplaceSubscriptionV1SubscriptionProductLifecycleState = S.String;
+const MarketplaceSubscriptionV1SubscriptionProductLifecycleState = S.String;
 
 /** The product's price type. */
 export type MarketplaceSubscriptionV1SubscriptionProductPriceType =
@@ -203,7 +201,7 @@ export type MarketplaceSubscriptionV1SubscriptionProductPriceType =
   | "FREE_TRIAL"
   | "BYOL"
   | "PAYG";
-export const MarketplaceSubscriptionV1SubscriptionProductPriceType = S.String;
+const MarketplaceSubscriptionV1SubscriptionProductPriceType = S.String;
 
 export interface MarketplaceSubscriptionV1SubscriptionProduct {
   assets?: MarketplaceSubscriptionV1Assets;
@@ -236,7 +234,7 @@ export interface MarketplaceSubscriptionV1SubscriptionProduct {
   /** The vendor's website. */
   vendorWebsiteUrl: string;
 }
-export const MarketplaceSubscriptionV1SubscriptionProduct = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1SubscriptionProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assets: S.optional(MarketplaceSubscriptionV1Assets),
     deliveryMethod: MarketplaceSubscriptionV1SubscriptionProductDeliveryMethod,
@@ -281,7 +279,7 @@ export interface MarketplaceSubscriptionV1Subscription {
   /** Timestamp when the current subscription validity will end. May be automatically renewed. */
   validUntil?: string;
 }
-export const MarketplaceSubscriptionV1Subscription = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvalTimeout: S.optional(S.String),
     autoRenewal: S.optional(S.Boolean),
@@ -301,7 +299,7 @@ export const MarketplaceSubscriptionV1Subscription = /*@__PURE__*/ S.suspend(() 
 
 export type MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList =
   Array<MarketplaceSubscriptionV1Subscription>;
-export const MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList = /*@__PURE__*/ S.Array(
+const MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList = /*@__PURE__*/ S.Array(
   MarketplaceSubscriptionV1Subscription,
 ) as any as S.Schema<MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList>;
 
@@ -310,7 +308,7 @@ export interface MarketplaceSubscriptionV1ListSubscriptionsResponse {
   items?: MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList;
   limit?: number;
 }
-export const MarketplaceSubscriptionV1ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String),
     items: S.optional(MarketplaceSubscriptionV1ListSubscriptionsResponseItemsList),
@@ -328,7 +326,7 @@ export interface ConsumersSubscriptionsListByProjectRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const ConsumersSubscriptionsListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ConsumersSubscriptionsListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -356,7 +354,7 @@ export interface CreateConsumersSubscriptionRequest {
   /** The concrete variant of the product. */
   sku: string;
 }
-export const CreateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     consumerNotificationEmail: S.optional(S.String),
@@ -380,7 +378,7 @@ export interface GetConsumersSubscriptionRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const GetConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -402,7 +400,7 @@ export interface GetConsumersSubscriptionsRedirectRequest {
   subscriptionId: string;
   redirectTarget?: string;
 }
-export const GetConsumersSubscriptionsRedirectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConsumersSubscriptionsRedirectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -423,7 +421,7 @@ export interface MarketplaceSubscriptionV1SubscriptionRedirect {
   redirectTarget: string;
   redirectUrl: string;
 }
-export const MarketplaceSubscriptionV1SubscriptionRedirect = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSubscriptionV1SubscriptionRedirect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirectTarget: S.String,
     redirectUrl: S.String,
@@ -438,7 +436,7 @@ export interface GetVendorsSubscriptionRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const GetVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -459,7 +457,7 @@ export interface RejectVendorsSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
-export const RejectVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -476,7 +474,7 @@ export const RejectVendorsSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RejectVendorsSubscriptionRequest>;
 
 export interface RejectVendorsSubscriptionResponse {}
-export const RejectVendorsSubscriptionResponse =
+const RejectVendorsSubscriptionResponse =
   CancelConsumersSubscriptionResponse as any as S.Schema<RejectVendorsSubscriptionResponse>;
 
 export interface ResolveCustomerRequest {
@@ -484,7 +482,7 @@ export interface ResolveCustomerRequest {
   /** Opaque token exchangeable for subscription details. */
   token: string;
 }
-export const ResolveCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     token: S.String,
@@ -502,7 +500,7 @@ export interface TerminateConsumersSubscriptionRequest {
   projectId: string;
   subscriptionId: string;
 }
-export const TerminateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -519,7 +517,7 @@ export const TerminateConsumersSubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<TerminateConsumersSubscriptionRequest>;
 
 export interface TerminateConsumersSubscriptionResponse {}
-export const TerminateConsumersSubscriptionResponse =
+const TerminateConsumersSubscriptionResponse =
   CancelConsumersSubscriptionResponse as any as S.Schema<TerminateConsumersSubscriptionResponse>;
 
 export interface VendorsSubscriptionsListByOrganizationRequest {
@@ -530,7 +528,7 @@ export interface VendorsSubscriptionsListByOrganizationRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const VendorsSubscriptionsListByOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const VendorsSubscriptionsListByOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -557,7 +555,7 @@ export interface VendorsSubscriptionsListByProjectRequest {
   /** Flag to control if cancelled or rejected subscriptions should be returned. */
   includeExpired?: boolean;
 }
-export const VendorsSubscriptionsListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const VendorsSubscriptionsListByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),

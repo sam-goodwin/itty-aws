@@ -55,11 +55,11 @@ export class UnprocessableEntity
   ) {}
 
 export type CreateSubscriptionRequestRegionId = "eu01";
-export const CreateSubscriptionRequestRegionId = S.String;
+const CreateSubscriptionRequestRegionId = S.String;
 
 /** Labels are key-value pairs used to group and organize subsets of resources. **Key constraints:** - May contain an optional domain prefix separated by a slash (`/`). - The domain prefix must be less than or equal to 250 characters and a valid DNS subdomain containing only lowercase alphanumerics (`[a-z0-9]`) and dashes (`-`), separated by dots (`.`). - The name part (excluding the domain prefix) must be between 1 and 63 characters long. - The name part must begin and end with an alphanumeric character (`[a-z0-9A-Z]`). - The name part may contain dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics in between. - Keys starting with the prefix `stackit-` or having a domain prefix of `stackit.cloud` (including its subdomains, e.g., `*.stackit.cloud/`) are reserved for system use. **Value constraints:** - Must be less than or equal to 63 characters long (can be empty). - Must begin and end with an alphanumeric character (`[a-z0-9A-Z]`) if not empty. - May contain dashes (`-`), underscores (`_`), dots (`.`), and alphanumerics in between. **Count constraint:** - A maximum of 64 labels can be applied per resource. Restricted labels are excluded from this count. */
 export type Labels = { [key: string]: string | null | undefined };
-export const Labels = /*@__PURE__*/ S.Record(
+const Labels = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<Labels>;
@@ -69,7 +69,7 @@ export interface SubscriptionSettings {
   /** The maximum amount of time the system waits for a message acknowledgment. If a message is not acknowledged within this window, it will be redelivered. **Format:** Must be a duration string consisting of a number (integer or decimal) followed by a unit ('s', 'm', or 'h'). **Constraints:** - **Minimum:** "1s" - **Maximum:** "168h" (7 days) */
   ackDeadline?: string;
 }
-export const SubscriptionSettings = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackDeadline: S.optional(S.String),
   }),
@@ -89,7 +89,7 @@ export interface CreateSubscriptionRequest {
   labels?: Labels;
   settings?: SubscriptionSettings;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateSubscriptionRequestRegionId.pipe(T.Label()),
@@ -112,7 +112,7 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the resource. */
 export type SubscriptionResponseState = "reconciling" | "active" | "deleting";
-export const SubscriptionResponseState = S.String;
+const SubscriptionResponseState = S.String;
 
 export interface SubscriptionResponse {
   /** The point in time the resource was created. */
@@ -130,7 +130,7 @@ export interface SubscriptionResponse {
   /** The id of the topic to which the subscription belongs. */
   topicId: string;
 }
-export const SubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -144,11 +144,11 @@ export const SubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionResponse" }) as any as S.Schema<SubscriptionResponse>;
 
 export type CreateTopicRequestRegionId = "eu01";
-export const CreateTopicRequestRegionId = S.String;
+const CreateTopicRequestRegionId = S.String;
 
 /** Whitelist of IPs in CIDR notation that can access the topic and its underlying subscriptions. */
 export type TopicSettingsAclList = Array<string>;
-export const TopicSettingsAclList = /*@__PURE__*/ S.Array(
+const TopicSettingsAclList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TopicSettingsAclList>;
 
@@ -163,7 +163,7 @@ export interface TopicSettings {
   /** Enables or disables sending of service logs for the topic. */
   serviceLogs?: boolean;
 }
-export const TopicSettings = /*@__PURE__*/ S.suspend(() =>
+const TopicSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(TopicSettingsAclList),
     metrics: S.optional(S.Boolean),
@@ -184,7 +184,7 @@ export interface CreateTopicRequest {
   labels?: Labels;
   settings?: TopicSettings;
 }
-export const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: CreateTopicRequestRegionId.pipe(T.Label()),
@@ -204,7 +204,7 @@ export const CreateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current state of the resource. */
 export type TopicResponseState = "reconciling" | "active" | "deleting";
-export const TopicResponseState = S.String;
+const TopicResponseState = S.String;
 
 export interface TopicResponse {
   /** The point in time the resource was created. */
@@ -222,7 +222,7 @@ export interface TopicResponse {
   /** The URI for reaching the resource. */
   uri?: string;
 }
-export const TopicResponse = /*@__PURE__*/ S.suspend(() =>
+const TopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -236,7 +236,7 @@ export const TopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TopicResponse" }) as any as S.Schema<TopicResponse>;
 
 export type DeleteSubscriptionRequestRegionId = "eu01";
-export const DeleteSubscriptionRequestRegionId = S.String;
+const DeleteSubscriptionRequestRegionId = S.String;
 
 export interface DeleteSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -250,7 +250,7 @@ export interface DeleteSubscriptionRequest {
   /** If true, deletes the topic and all its active subscriptions (cascading delete). If false (default), the operation returns a 409 conflict if active subscriptions exist. */
   force?: boolean;
 }
-export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteSubscriptionRequestRegionId.pipe(T.Label()),
@@ -270,12 +270,12 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {}
-export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSubscriptionResponse",
 }) as any as S.Schema<DeleteSubscriptionResponse>;
 
 export type DeleteTopicRequestRegionId = "eu01";
-export const DeleteTopicRequestRegionId = S.String;
+const DeleteTopicRequestRegionId = S.String;
 
 export interface DeleteTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -287,7 +287,7 @@ export interface DeleteTopicRequest {
   /** If true, deletes the topic and all its active subscriptions (cascading delete). If false (default), the operation returns a 409 conflict if active subscriptions exist. */
   force?: boolean;
 }
-export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: DeleteTopicRequestRegionId.pipe(T.Label()),
@@ -304,11 +304,10 @@ export const DeleteTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTopicRequest" }) as any as S.Schema<DeleteTopicRequest>;
 
 export interface DeleteTopicResponse {}
-export const DeleteTopicResponse =
-  DeleteSubscriptionResponse as any as S.Schema<DeleteTopicResponse>;
+const DeleteTopicResponse = DeleteSubscriptionResponse as any as S.Schema<DeleteTopicResponse>;
 
 export type GetSubscriptionRequestRegionId = "eu01";
-export const GetSubscriptionRequestRegionId = S.String;
+const GetSubscriptionRequestRegionId = S.String;
 
 export interface GetSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -320,7 +319,7 @@ export interface GetSubscriptionRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetSubscriptionRequestRegionId.pipe(T.Label()),
@@ -337,7 +336,7 @@ export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSubscriptionRequest" }) as any as S.Schema<GetSubscriptionRequest>;
 
 export type GetTopicRequestRegionId = "eu01";
-export const GetTopicRequestRegionId = S.String;
+const GetTopicRequestRegionId = S.String;
 
 export interface GetTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -347,7 +346,7 @@ export interface GetTopicRequest {
   /** The topic UUID. */
   topicId: string;
 }
-export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GetTopicRequestRegionId.pipe(T.Label()),
@@ -363,7 +362,7 @@ export const GetTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTopicRequest" }) as any as S.Schema<GetTopicRequest>;
 
 export type GrantSubscriptionSubscriberAccessRequestRegionId = "eu01";
-export const GrantSubscriptionSubscriberAccessRequestRegionId = S.String;
+const GrantSubscriptionSubscriberAccessRequestRegionId = S.String;
 
 export interface GrantSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -377,7 +376,7 @@ export interface GrantSubscriptionSubscriberAccessRequest {
   /** A single RFC 5322 compliant email address. */
   emailAddress: string;
 }
-export const GrantSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GrantSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GrantSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
@@ -397,14 +396,14 @@ export const GrantSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GrantSubscriptionSubscriberAccessRequest>;
 
 export interface GrantSubscriptionSubscriberAccessResponse {}
-export const GrantSubscriptionSubscriberAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const GrantSubscriptionSubscriberAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GrantSubscriptionSubscriberAccessResponse",
 }) as any as S.Schema<GrantSubscriptionSubscriberAccessResponse>;
 
 export type GrantTopicPublisherAccessRequestRegionId = "eu01";
-export const GrantTopicPublisherAccessRequestRegionId = S.String;
+const GrantTopicPublisherAccessRequestRegionId = S.String;
 
 export interface GrantTopicPublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -416,7 +415,7 @@ export interface GrantTopicPublisherAccessRequest {
   /** A single RFC 5322 compliant email address. */
   emailAddress: string;
 }
-export const GrantTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GrantTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: GrantTopicPublisherAccessRequestRegionId.pipe(T.Label()),
@@ -435,11 +434,11 @@ export const GrantTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GrantTopicPublisherAccessRequest>;
 
 export interface GrantTopicPublisherAccessResponse {}
-export const GrantTopicPublisherAccessResponse =
+const GrantTopicPublisherAccessResponse =
   GrantSubscriptionSubscriberAccessResponse as any as S.Schema<GrantTopicPublisherAccessResponse>;
 
 export type ListSubscriptionsRequestRegionId = "eu01";
-export const ListSubscriptionsRequestRegionId = S.String;
+const ListSubscriptionsRequestRegionId = S.String;
 
 export interface ListSubscriptionsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -455,7 +454,7 @@ export interface ListSubscriptionsRequest {
   /** Supply a query string to filter the results. */
   query?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListSubscriptionsRequestRegionId.pipe(T.Label()),
@@ -474,7 +473,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type ListSubscriptionsResponseSubscriptionsList = Array<SubscriptionResponse>;
-export const ListSubscriptionsResponseSubscriptionsList = /*@__PURE__*/ S.Array(
+const ListSubscriptionsResponseSubscriptionsList = /*@__PURE__*/ S.Array(
   SubscriptionResponse,
 ) as any as S.Schema<ListSubscriptionsResponseSubscriptionsList>;
 
@@ -483,7 +482,7 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
   subscriptions: ListSubscriptionsResponseSubscriptionsList;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     subscriptions: ListSubscriptionsResponseSubscriptionsList,
@@ -493,7 +492,7 @@ export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionsResponse>;
 
 export type ListSubscriptionSubscribersRequestRegionId = "eu01";
-export const ListSubscriptionSubscribersRequestRegionId = S.String;
+const ListSubscriptionSubscribersRequestRegionId = S.String;
 
 export interface ListSubscriptionSubscribersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -505,7 +504,7 @@ export interface ListSubscriptionSubscribersRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-export const ListSubscriptionSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListSubscriptionSubscribersRequestRegionId.pipe(T.Label()),
@@ -524,13 +523,13 @@ export const ListSubscriptionSubscribersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSubscriptionSubscribersRequest>;
 
 export type ListEmailAddressesResponseEmailAddressesList = Array<string>;
-export const ListEmailAddressesResponseEmailAddressesList =
+const ListEmailAddressesResponseEmailAddressesList =
   TopicSettingsAclList as any as S.Schema<ListEmailAddressesResponseEmailAddressesList>;
 
 export interface ListEmailAddressesResponse {
   emailAddresses: ListEmailAddressesResponseEmailAddressesList;
 }
-export const ListEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddresses: ListEmailAddressesResponseEmailAddressesList,
   }),
@@ -539,7 +538,7 @@ export const ListEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmailAddressesResponse>;
 
 export type ListTopicPublishersRequestRegionId = "eu01";
-export const ListTopicPublishersRequestRegionId = S.String;
+const ListTopicPublishersRequestRegionId = S.String;
 
 export interface ListTopicPublishersRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -549,7 +548,7 @@ export interface ListTopicPublishersRequest {
   /** The topic UUID. */
   topicId: string;
 }
-export const ListTopicPublishersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicPublishersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListTopicPublishersRequestRegionId.pipe(T.Label()),
@@ -567,7 +566,7 @@ export const ListTopicPublishersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTopicPublishersRequest>;
 
 export type ListTopicsRequestRegionId = "eu01";
-export const ListTopicsRequestRegionId = S.String;
+const ListTopicsRequestRegionId = S.String;
 
 export interface ListTopicsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -581,7 +580,7 @@ export interface ListTopicsRequest {
   /** Supply a query string to filter the results. */
   query?: string;
 }
-export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: ListTopicsRequestRegionId.pipe(T.Label()),
@@ -599,7 +598,7 @@ export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTopicsRequest" }) as any as S.Schema<ListTopicsRequest>;
 
 export type ListTopicsResponseTopicsList = Array<TopicResponse>;
-export const ListTopicsResponseTopicsList = /*@__PURE__*/ S.Array(
+const ListTopicsResponseTopicsList = /*@__PURE__*/ S.Array(
   TopicResponse,
 ) as any as S.Schema<ListTopicsResponseTopicsList>;
 
@@ -608,7 +607,7 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
   topics: ListTopicsResponseTopicsList;
 }
-export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     topics: ListTopicsResponseTopicsList,
@@ -616,7 +615,7 @@ export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTopicsResponse" }) as any as S.Schema<ListTopicsResponse>;
 
 export type RevokeSubscriptionSubscriberAccessRequestRegionId = "eu01";
-export const RevokeSubscriptionSubscriberAccessRequestRegionId = S.String;
+const RevokeSubscriptionSubscriberAccessRequestRegionId = S.String;
 
 export interface RevokeSubscriptionSubscriberAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -628,7 +627,7 @@ export interface RevokeSubscriptionSubscriberAccessRequest {
   /** The subscription UUID. */
   subscriptionId: string;
 }
-export const RevokeSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: RevokeSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
@@ -647,11 +646,11 @@ export const RevokeSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RevokeSubscriptionSubscriberAccessRequest>;
 
 export interface RevokeSubscriptionSubscriberAccessResponse {}
-export const RevokeSubscriptionSubscriberAccessResponse =
+const RevokeSubscriptionSubscriberAccessResponse =
   GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeSubscriptionSubscriberAccessResponse>;
 
 export type RevokeTopicPublisherAccessRequestRegionId = "eu01";
-export const RevokeTopicPublisherAccessRequestRegionId = S.String;
+const RevokeTopicPublisherAccessRequestRegionId = S.String;
 
 export interface RevokeTopicPublisherAccessRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -661,7 +660,7 @@ export interface RevokeTopicPublisherAccessRequest {
   /** The topic UUID. */
   topicId: string;
 }
-export const RevokeTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: RevokeTopicPublisherAccessRequestRegionId.pipe(T.Label()),
@@ -679,15 +678,15 @@ export const RevokeTopicPublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeTopicPublisherAccessRequest>;
 
 export interface RevokeTopicPublisherAccessResponse {}
-export const RevokeTopicPublisherAccessResponse =
+const RevokeTopicPublisherAccessResponse =
   GrantSubscriptionSubscriberAccessResponse as any as S.Schema<RevokeTopicPublisherAccessResponse>;
 
 export type UpdatePublisherAccessRequestRegionId = "eu01";
-export const UpdatePublisherAccessRequestRegionId = S.String;
+const UpdatePublisherAccessRequestRegionId = S.String;
 
 /** A list of valid subscriber email addresses. */
 export type UpdatePublisherAccessRequestEmailAddressesList = Array<string>;
-export const UpdatePublisherAccessRequestEmailAddressesList =
+const UpdatePublisherAccessRequestEmailAddressesList =
   TopicSettingsAclList as any as S.Schema<UpdatePublisherAccessRequestEmailAddressesList>;
 
 export interface UpdatePublisherAccessRequest {
@@ -700,7 +699,7 @@ export interface UpdatePublisherAccessRequest {
   /** A list of valid subscriber email addresses. */
   emailAddresses: UpdatePublisherAccessRequestEmailAddressesList;
 }
-export const UpdatePublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdatePublisherAccessRequestRegionId.pipe(T.Label()),
@@ -719,11 +718,11 @@ export const UpdatePublisherAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePublisherAccessRequest>;
 
 export interface UpdatePublisherAccessResponse {}
-export const UpdatePublisherAccessResponse =
+const UpdatePublisherAccessResponse =
   DeleteSubscriptionResponse as any as S.Schema<UpdatePublisherAccessResponse>;
 
 export type UpdateSubscriptionRequestRegionId = "eu01";
-export const UpdateSubscriptionRequestRegionId = S.String;
+const UpdateSubscriptionRequestRegionId = S.String;
 
 export interface UpdateSubscriptionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -741,7 +740,7 @@ export interface UpdateSubscriptionRequest {
   labels?: Labels;
   settings?: SubscriptionSettings;
 }
-export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateSubscriptionRequestRegionId.pipe(T.Label()),
@@ -764,15 +763,15 @@ export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSubscriptionRequest>;
 
 export interface UpdateSubscriptionResponse {}
-export const UpdateSubscriptionResponse =
+const UpdateSubscriptionResponse =
   DeleteSubscriptionResponse as any as S.Schema<UpdateSubscriptionResponse>;
 
 export type UpdateSubscriptionSubscriberAccessRequestRegionId = "eu01";
-export const UpdateSubscriptionSubscriberAccessRequestRegionId = S.String;
+const UpdateSubscriptionSubscriberAccessRequestRegionId = S.String;
 
 /** A list of valid subscriber email addresses. */
 export type UpdateSubscriptionSubscriberAccessRequestEmailAddressesList = Array<string>;
-export const UpdateSubscriptionSubscriberAccessRequestEmailAddressesList =
+const UpdateSubscriptionSubscriberAccessRequestEmailAddressesList =
   TopicSettingsAclList as any as S.Schema<UpdateSubscriptionSubscriberAccessRequestEmailAddressesList>;
 
 export interface UpdateSubscriptionSubscriberAccessRequest {
@@ -787,7 +786,7 @@ export interface UpdateSubscriptionSubscriberAccessRequest {
   /** A list of valid subscriber email addresses. */
   emailAddresses: UpdateSubscriptionSubscriberAccessRequestEmailAddressesList;
 }
-export const UpdateSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateSubscriptionSubscriberAccessRequestRegionId.pipe(T.Label()),
@@ -807,11 +806,11 @@ export const UpdateSubscriptionSubscriberAccessRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<UpdateSubscriptionSubscriberAccessRequest>;
 
 export interface UpdateSubscriptionSubscriberAccessResponse {}
-export const UpdateSubscriptionSubscriberAccessResponse =
+const UpdateSubscriptionSubscriberAccessResponse =
   GrantSubscriptionSubscriberAccessResponse as any as S.Schema<UpdateSubscriptionSubscriberAccessResponse>;
 
 export type UpdateTopicRequestRegionId = "eu01";
-export const UpdateTopicRequestRegionId = S.String;
+const UpdateTopicRequestRegionId = S.String;
 
 export interface UpdateTopicRequest {
   /** The STACKIT portal project UUID the resource is located in. */
@@ -827,7 +826,7 @@ export interface UpdateTopicRequest {
   labels?: Labels;
   settings?: TopicSettings;
 }
-export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: UpdateTopicRequestRegionId.pipe(T.Label()),
@@ -847,8 +846,7 @@ export const UpdateTopicRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTopicRequest" }) as any as S.Schema<UpdateTopicRequest>;
 
 export interface UpdateTopicResponse {}
-export const UpdateTopicResponse =
-  DeleteSubscriptionResponse as any as S.Schema<UpdateTopicResponse>;
+const UpdateTopicResponse = DeleteSubscriptionResponse as any as S.Schema<UpdateTopicResponse>;
 
 export type CreateSubscriptionError =
   | BadRequest

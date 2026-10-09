@@ -70,7 +70,7 @@ export interface ApproveApprovalRequest {
   /** Optional. A message to accompany the reviewer response on the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const ApproveApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -84,7 +84,7 @@ export interface ApproveApprovalsRequest {
   /** Request body */
   body?: ApproveApprovalRequest;
 }
-export const ApproveApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     approvalId: S.String.pipe(T.Label()),
@@ -104,13 +104,13 @@ export type ApprovalStatusEnum =
   | "APPROVED"
   | "CANCELLED"
   | "DECLINED";
-export const ApprovalStatusEnum = S.String;
+const ApprovalStatusEnum = S.String;
 
 export type ApprovalFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
   | "NO_APPROVAL_ACTION";
-export const ApprovalFileContentChangeBehaviorEnum = S.String;
+const ApprovalFileContentChangeBehaviorEnum = S.String;
 
 /** Information about a Drive user. */
 export interface User {
@@ -127,7 +127,7 @@ export interface User {
   /** Output only. A plain text displayable name for this user. */
   displayName?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     me: S.optional(S.Boolean),
     permissionId: S.optional(S.String),
@@ -143,7 +143,7 @@ export type ReviewerResponseResponseEnum =
   | "NO_RESPONSE"
   | "APPROVED"
   | "DECLINED";
-export const ReviewerResponseResponseEnum = S.String;
+const ReviewerResponseResponseEnum = S.String;
 
 /** A response on an approval made by a specific reviewer. */
 export interface ReviewerResponse {
@@ -154,7 +154,7 @@ export interface ReviewerResponse {
   /** A reviewer's response for the approval. */
   response?: ReviewerResponseResponseEnum;
 }
-export const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     reviewer: S.optional(User),
@@ -163,7 +163,7 @@ export const ReviewerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewerResponse" }) as any as S.Schema<ReviewerResponse>;
 
 export type ReviewerResponseList = Array<ReviewerResponse>;
-export const ReviewerResponseList = /*@__PURE__*/ S.Array(
+const ReviewerResponseList = /*@__PURE__*/ S.Array(
   ReviewerResponse,
 ) as any as S.Schema<ReviewerResponseList>;
 
@@ -192,7 +192,7 @@ export interface Approval {
   /** Output only. The most recent time the approval was modified. */
   modifyTime?: string;
 }
-export const Approval = /*@__PURE__*/ S.suspend(() =>
+const Approval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     approvalId: S.optional(S.String),
@@ -213,8 +213,7 @@ export interface CancelApprovalRequest {
   /** Optional. A message to accompany the cancellation of the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const CancelApprovalRequest =
-  ApproveApprovalRequest as any as S.Schema<CancelApprovalRequest>;
+const CancelApprovalRequest = ApproveApprovalRequest as any as S.Schema<CancelApprovalRequest>;
 
 export interface CancelApprovalsRequest {
   /** Required. The ID of the approval to cancel. */
@@ -224,7 +223,7 @@ export interface CancelApprovalsRequest {
   /** Request body */
   body?: CancelApprovalRequest;
 }
-export const CancelApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvalId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -243,8 +242,7 @@ export interface CommentApprovalRequest {
   /** Required. A message to comment on the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const CommentApprovalRequest =
-  ApproveApprovalRequest as any as S.Schema<CommentApprovalRequest>;
+const CommentApprovalRequest = ApproveApprovalRequest as any as S.Schema<CommentApprovalRequest>;
 
 export interface CommentApprovalsRequest {
   /** Required. The ID of the approval to comment on. */
@@ -254,7 +252,7 @@ export interface CommentApprovalsRequest {
   /** Request body */
   body?: CommentApprovalRequest;
 }
-export const CommentApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommentApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvalId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -285,7 +283,7 @@ export interface DecryptionMetadata {
   /** The signed JSON Web Token (JWT) which can be used to authorize the requesting user with the Key ACL Service (KACLS). The JWT asserts that the requesting user has at least read permissions on the file. */
   jwt?: string;
 }
-export const DecryptionMetadata = /*@__PURE__*/ S.suspend(() =>
+const DecryptionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionResourceKeyHash: S.optional(S.String),
     kaclsId: S.optional(S.String),
@@ -304,7 +302,7 @@ export interface ClientEncryptionDetails {
   /** The encryption state of the file. The values expected here are: - encrypted - unencrypted */
   encryptionState?: string;
 }
-export const ClientEncryptionDetails = /*@__PURE__*/ S.suspend(() =>
+const ClientEncryptionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     decryptionMetadata: S.optional(DecryptionMetadata),
     encryptionState: S.optional(S.String),
@@ -321,7 +319,7 @@ export interface PermissionTeamDrivePermissionDetailsItem {
   /** Deprecated: Output only. Use `permissionDetails/role` instead. */
   role?: string;
 }
-export const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inherited: S.optional(S.Boolean),
     inheritedFrom: S.optional(S.String),
@@ -334,7 +332,7 @@ export const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ S.suspend(
 
 export type PermissionTeamDrivePermissionDetailsItemList =
   Array<PermissionTeamDrivePermissionDetailsItem>;
-export const PermissionTeamDrivePermissionDetailsItemList = /*@__PURE__*/ S.Array(
+const PermissionTeamDrivePermissionDetailsItemList = /*@__PURE__*/ S.Array(
   PermissionTeamDrivePermissionDetailsItem,
 ) as any as S.Schema<PermissionTeamDrivePermissionDetailsItemList>;
 
@@ -348,7 +346,7 @@ export interface PermissionPermissionDetailsItem {
   /** Output only. Whether this permission is inherited. This field is always populated. This is an output-only field. */
   inherited?: boolean;
 }
-export const PermissionPermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const PermissionPermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     permissionType: S.optional(S.String),
@@ -360,7 +358,7 @@ export const PermissionPermissionDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionPermissionDetailsItem>;
 
 export type PermissionPermissionDetailsItemList = Array<PermissionPermissionDetailsItem>;
-export const PermissionPermissionDetailsItemList = /*@__PURE__*/ S.Array(
+const PermissionPermissionDetailsItemList = /*@__PURE__*/ S.Array(
   PermissionPermissionDetailsItem,
 ) as any as S.Schema<PermissionPermissionDetailsItemList>;
 
@@ -399,7 +397,7 @@ export interface Permission {
   /** Output only. The "pretty" name of the value of the permission. The following is a list of examples for each type of permission: * `user` - User's full name, as defined for their Google Account, such as "Dana A." * `group` - Name of the Google Group, such as "The Company Administrators." * `domain` - String domain name, such as "cymbalgroup.com." * `anyone` - No `displayName` is present. */
   displayName?: string;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamDrivePermissionDetails: S.optional(PermissionTeamDrivePermissionDetailsItemList),
     type: S.optional(S.String),
@@ -421,12 +419,10 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type PermissionList_ = Array<Permission>;
-export const PermissionList_ = /*@__PURE__*/ S.Array(
-  Permission,
-) as any as S.Schema<PermissionList_>;
+const PermissionList_ = /*@__PURE__*/ S.Array(Permission) as any as S.Schema<PermissionList_>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 export interface FileContentHintsThumbnail {
   /** The thumbnail data encoded with URL-safe Base64 ([RFC 4648 section 5](https://datatracker.ietf.org/doc/html/rfc4648#section-5)). */
@@ -434,7 +430,7 @@ export interface FileContentHintsThumbnail {
   /** The MIME type of the thumbnail. */
   mimeType?: string;
 }
-export const FileContentHintsThumbnail = /*@__PURE__*/ S.suspend(() =>
+const FileContentHintsThumbnail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -449,7 +445,7 @@ export interface FileContentHints {
   /** A thumbnail for the file. This will only be used if Google Drive cannot generate a standard thumbnail. */
   thumbnail?: FileContentHintsThumbnail;
 }
-export const FileContentHints = /*@__PURE__*/ S.suspend(() =>
+const FileContentHints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexableText: S.optional(S.String),
     thumbnail: S.optional(FileContentHintsThumbnail),
@@ -464,7 +460,7 @@ export interface FileShortcutDetails {
   /** The ID of the file that this shortcut points to. Can only be set on `files.create` requests. */
   targetId?: string;
 }
-export const FileShortcutDetails = /*@__PURE__*/ S.suspend(() =>
+const FileShortcutDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetMimeType: S.optional(S.String),
     targetResourceKey: S.optional(S.String),
@@ -478,7 +474,7 @@ export interface FileLinkShareMetadata {
   /** Output only. Whether the security update is enabled for this file. */
   securityUpdateEnabled?: boolean;
 }
-export const FileLinkShareMetadata = /*@__PURE__*/ S.suspend(() =>
+const FileLinkShareMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityUpdateEligible: S.optional(S.Boolean),
     securityUpdateEnabled: S.optional(S.Boolean),
@@ -486,7 +482,7 @@ export const FileLinkShareMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileLinkShareMetadata" }) as any as S.Schema<FileLinkShareMetadata>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A restriction for copy and download of the file. */
 export interface DownloadRestriction {
@@ -495,7 +491,7 @@ export interface DownloadRestriction {
   /** Whether download and copy is restricted for writers. If true, download is also restricted for readers. */
   restrictedForWriters?: boolean;
 }
-export const DownloadRestriction = /*@__PURE__*/ S.suspend(() =>
+const DownloadRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictedForReaders: S.optional(S.Boolean),
     restrictedForWriters: S.optional(S.Boolean),
@@ -509,7 +505,7 @@ export interface DownloadRestrictionsMetadata {
   /** The download restriction of the file applied directly by the owner or organizer. This doesn't take into account shared drive settings or DLP rules. */
   itemDownloadRestriction?: DownloadRestriction;
 }
-export const DownloadRestrictionsMetadata = /*@__PURE__*/ S.suspend(() =>
+const DownloadRestrictionsMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveDownloadRestrictionWithContext: S.optional(DownloadRestriction),
     itemDownloadRestriction: S.optional(DownloadRestriction),
@@ -519,7 +515,7 @@ export const DownloadRestrictionsMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadRestrictionsMetadata>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Representation of field, which is a typed key-value pair. */
 export interface LabelField {
@@ -540,7 +536,7 @@ export interface LabelField {
   /** Only present if `valueType` is `user`. */
   user?: UserList;
 }
-export const LabelField = /*@__PURE__*/ S.suspend(() =>
+const LabelField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(StringList),
     valueType: S.optional(S.String),
@@ -554,7 +550,7 @@ export const LabelField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelField" }) as any as S.Schema<LabelField>;
 
 export type LabelFieldMap = { [key: string]: LabelField | undefined };
-export const LabelFieldMap = /*@__PURE__*/ S.Record(
+const LabelFieldMap = /*@__PURE__*/ S.Record(
   S.String,
   LabelField,
 ) as any as S.Schema<LabelFieldMap>;
@@ -570,7 +566,7 @@ export interface Label {
   /** A map of the fields on the label, keyed by the field's ID. */
   fields?: LabelFieldMap;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.optional(S.String),
     kind: S.optional(S.String),
@@ -580,13 +576,13 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList_ = Array<Label>;
-export const LabelList_ = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList_>;
+const LabelList_ = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList_>;
 
 export interface FileLabelInfo {
   /** Output only. The set of labels on the file as requested by the label IDs in the `includeLabels` parameter. By default, no labels are returned. */
   labels?: LabelList_;
 }
-export const FileLabelInfo = /*@__PURE__*/ S.suspend(() =>
+const FileLabelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(LabelList_),
   }),
@@ -600,7 +596,7 @@ export interface FileVideoMediaMetadata {
   /** Output only. The height of the video in pixels. */
   height?: number;
 }
-export const FileVideoMediaMetadata = /*@__PURE__*/ S.suspend(() =>
+const FileVideoMediaMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.optional(S.Number),
     durationMillis: S.optional(S.String),
@@ -625,7 +621,7 @@ export interface ContentRestriction {
   /** Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be added, comments may not be added or modified, and the title of the file may not be modified. */
   readOnly?: boolean;
 }
-export const ContentRestriction = /*@__PURE__*/ S.suspend(() =>
+const ContentRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     restrictingUser: S.optional(User),
@@ -638,7 +634,7 @@ export const ContentRestriction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContentRestriction" }) as any as S.Schema<ContentRestriction>;
 
 export type ContentRestrictionList = Array<ContentRestriction>;
-export const ContentRestrictionList = /*@__PURE__*/ S.Array(
+const ContentRestrictionList = /*@__PURE__*/ S.Array(
   ContentRestriction,
 ) as any as S.Schema<ContentRestrictionList>;
 
@@ -736,7 +732,7 @@ export interface FileCapabilities {
   /** Output only. Whether the current user can delete children of this folder. This is `false` when the item isn't a folder. Only populated for items in shared drives. */
   canDeleteChildren?: boolean;
 }
-export const FileCapabilities = /*@__PURE__*/ S.suspend(() =>
+const FileCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canMoveChildrenWithinTeamDrive: S.optional(S.Boolean),
     canMoveChildrenOutOfTeamDrive: S.optional(S.Boolean),
@@ -795,7 +791,7 @@ export interface FileImageMediaMetadataLocation {
   /** Output only. The longitude stored in the image. */
   longitude?: number;
 }
-export const FileImageMediaMetadataLocation = /*@__PURE__*/ S.suspend(() =>
+const FileImageMediaMetadataLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -849,7 +845,7 @@ export interface FileImageMediaMetadata {
   /** Output only. Geographic location information stored in the image. */
   location?: FileImageMediaMetadataLocation;
 }
-export const FileImageMediaMetadata = /*@__PURE__*/ S.suspend(() =>
+const FileImageMediaMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     time: S.optional(S.String),
@@ -1008,7 +1004,7 @@ export interface File {
   /** Output only. Additional metadata about image media, if available. */
   imageMediaMetadata?: FileImageMediaMetadata;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientEncryptionDetails: S.optional(ClientEncryptionDetails),
     createdTime: S.optional(S.String),
@@ -1102,7 +1098,7 @@ export interface CopyFilesRequest {
   /** Request body */
   body?: File;
 }
-export const CopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ocrLanguage: S.optional(S.String.pipe(T.Query())),
     supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
@@ -1130,7 +1126,7 @@ export interface CommentQuotedFileContent {
   /** The MIME type of the quoted content. */
   mimeType?: string;
 }
-export const CommentQuotedFileContent = /*@__PURE__*/ S.suspend(() =>
+const CommentQuotedFileContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -1162,7 +1158,7 @@ export interface Reply {
   /** Output only. The author of the reply. The author's email address and permission ID won't be populated. */
   author?: User;
 }
-export const Reply = /*@__PURE__*/ S.suspend(() =>
+const Reply = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mentionedEmailAddresses: S.optional(StringList),
     deleted: S.optional(S.Boolean),
@@ -1179,7 +1175,7 @@ export const Reply = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Reply" }) as any as S.Schema<Reply>;
 
 export type ReplyList_ = Array<Reply>;
-export const ReplyList_ = /*@__PURE__*/ S.Array(Reply) as any as S.Schema<ReplyList_>;
+const ReplyList_ = /*@__PURE__*/ S.Array(Reply) as any as S.Schema<ReplyList_>;
 
 /** A comment on a file. Some resource methods (such as `comments.update`) require a `commentId`. Use the `comments.list` method to retrieve the ID for a comment in a file. */
 export interface Comment {
@@ -1212,7 +1208,7 @@ export interface Comment {
   /** The last time the comment or any of its replies was modified (RFC 3339 date-time). */
   modifiedTime?: string;
 }
-export const Comment = /*@__PURE__*/ S.suspend(() =>
+const Comment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resolved: S.optional(S.Boolean),
@@ -1237,7 +1233,7 @@ export interface CreateCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-export const CreateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     body: S.optional(Comment.pipe(T.HttpBody())),
@@ -1260,7 +1256,7 @@ export interface DriveBackgroundImageFile {
   /** The width of the cropped image in the closed range of 0 to 1. This value represents the width of the cropped image divided by the width of the entire image. The height is computed by applying a width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144 pixels high. */
   width?: number;
 }
-export const DriveBackgroundImageFile = /*@__PURE__*/ S.suspend(() =>
+const DriveBackgroundImageFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xCoordinate: S.optional(S.Number),
     yCoordinate: S.optional(S.Number),
@@ -1313,7 +1309,7 @@ export interface DriveCapabilities {
   /** Output only. Whether the current user can share files or folders in this shared drive. */
   canShare?: boolean;
 }
-export const DriveCapabilities = /*@__PURE__*/ S.suspend(() =>
+const DriveCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canChangeDownloadRestriction: S.optional(S.Boolean),
     canAddChildren: S.optional(S.Boolean),
@@ -1353,7 +1349,7 @@ export interface DriveRestrictions {
   /** If true, only users with the organizer role can share folders. If false, users with either the organizer role or the file organizer role can share folders. */
   sharingFoldersRequiresOrganizerPermission?: boolean;
 }
-export const DriveRestrictions = /*@__PURE__*/ S.suspend(() =>
+const DriveRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveMembersOnly: S.optional(S.Boolean),
     copyRequiresWriterPermission: S.optional(S.Boolean),
@@ -1391,7 +1387,7 @@ export interface Drive {
   /** The time at which the shared drive was created (RFC 3339 date-time). */
   createdTime?: string;
 }
-export const Drive = /*@__PURE__*/ S.suspend(() =>
+const Drive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     orgUnitId: S.optional(S.String),
@@ -1414,7 +1410,7 @@ export interface CreateDrivesRequest {
   /** Request body */
   body?: Drive;
 }
-export const CreateDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.String.pipe(T.Query()),
     body: S.optional(Drive.pipe(T.HttpBody())),
@@ -1445,7 +1441,7 @@ export interface CreateFilesRequest {
   /** Request body */
   body?: File;
 }
-export const CreateFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includePermissionsForView: S.optional(S.String.pipe(T.Query())),
     useContentAsIndexableText: S.optional(S.Boolean.pipe(T.Query())),
@@ -1486,7 +1482,7 @@ export interface CreatePermissionsRequest {
   /** Request body */
   body?: Permission;
 }
-export const CreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moveToNewOwnersRoot: S.optional(S.Boolean.pipe(T.Query())),
     enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
@@ -1516,7 +1512,7 @@ export interface CreateRepliesRequest {
   /** Request body */
   body?: Reply;
 }
-export const CreateRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -1576,7 +1572,7 @@ export interface TeamDriveCapabilities {
   /** Whether the current user can rename this Team Drive. */
   canRenameTeamDrive?: boolean;
 }
-export const TeamDriveCapabilities = /*@__PURE__*/ S.suspend(() =>
+const TeamDriveCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canShare: S.optional(S.Boolean),
     canComment: S.optional(S.Boolean),
@@ -1617,7 +1613,7 @@ export interface TeamDriveRestrictions {
   /** Whether administrative privileges on this Team Drive are required to modify restrictions. */
   adminManagedRestrictions?: boolean;
 }
-export const TeamDriveRestrictions = /*@__PURE__*/ S.suspend(() =>
+const TeamDriveRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadRestriction: S.optional(DownloadRestriction),
     domainUsersOnly: S.optional(S.Boolean),
@@ -1638,7 +1634,7 @@ export interface TeamDriveBackgroundImageFile {
   /** The width of the cropped image in the closed range of 0 to 1. This value represents the width of the cropped image divided by the width of the entire image. The height is computed by applying a width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144 pixels high. */
   width?: number;
 }
-export const TeamDriveBackgroundImageFile = /*@__PURE__*/ S.suspend(() =>
+const TeamDriveBackgroundImageFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     xCoordinate: S.optional(S.Number),
@@ -1674,7 +1670,7 @@ export interface TeamDrive {
   /** The ID of the theme from which the background image and color will be set. The set of possible `teamDriveThemes` can be retrieved from a `drive.about.get` response. When not specified on a `drive.teamdrives.create` request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set `colorRgb` or `backgroundImageFile`. */
   themeId?: string;
 }
-export const TeamDrive = /*@__PURE__*/ S.suspend(() =>
+const TeamDrive = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     capabilities: S.optional(TeamDriveCapabilities),
@@ -1696,7 +1692,7 @@ export interface CreateTeamdrivesRequest {
   /** Request body */
   body?: TeamDrive;
 }
-export const CreateTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.String.pipe(T.Query()),
     body: S.optional(TeamDrive.pipe(T.HttpBody())),
@@ -1707,8 +1703,6 @@ export const CreateTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for declining an approval as a reviewer. */
 export type DeclineApprovalRequest = ApproveApprovalRequest;
-export const DeclineApprovalRequest = ApproveApprovalRequest;
-
 export interface DeclineApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
@@ -1717,7 +1711,7 @@ export interface DeclineApprovalsRequest {
   /** Request body */
   body?: ApproveApprovalRequest;
 }
-export const DeclineApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeclineApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     approvalId: S.String.pipe(T.Label()),
@@ -1737,7 +1731,7 @@ export interface DeleteCommentsRequest {
   /** The ID of the comment. */
   commentId: string;
 }
-export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -1751,7 +1745,7 @@ export const DeleteCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCommentsRequest" }) as any as S.Schema<DeleteCommentsRequest>;
 
 export interface DeleteCommentsResponse {}
-export const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCommentsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCommentsResponse",
 }) as any as S.Schema<DeleteCommentsResponse>;
 
@@ -1763,7 +1757,7 @@ export interface DeleteDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
 }
-export const DeleteDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
     allowItemDeletion: S.optional(S.Boolean.pipe(T.Query())),
@@ -1778,7 +1772,7 @@ export const DeleteDrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDrivesRequest" }) as any as S.Schema<DeleteDrivesRequest>;
 
 export interface DeleteDrivesResponse {}
-export const DeleteDrivesResponse = DeleteCommentsResponse as any as S.Schema<DeleteDrivesResponse>;
+const DeleteDrivesResponse = DeleteCommentsResponse as any as S.Schema<DeleteDrivesResponse>;
 
 export interface DeleteFilesRequest {
   /** Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't, the item will be placed under its owner's root. */
@@ -1790,7 +1784,7 @@ export interface DeleteFilesRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
 }
-export const DeleteFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -1806,7 +1800,7 @@ export const DeleteFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFilesRequest" }) as any as S.Schema<DeleteFilesRequest>;
 
 export interface DeleteFilesResponse {}
-export const DeleteFilesResponse = DeleteCommentsResponse as any as S.Schema<DeleteFilesResponse>;
+const DeleteFilesResponse = DeleteCommentsResponse as any as S.Schema<DeleteFilesResponse>;
 
 export interface DeletePermissionsRequest {
   /** Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators). */
@@ -1822,7 +1816,7 @@ export interface DeletePermissionsRequest {
   /** Deprecated: Use `supportsAllDrives` instead. */
   supportsTeamDrives?: boolean;
 }
-export const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -1840,7 +1834,7 @@ export const DeletePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePermissionsRequest" }) as any as S.Schema<DeletePermissionsRequest>;
 
 export interface DeletePermissionsResponse {}
-export const DeletePermissionsResponse =
+const DeletePermissionsResponse =
   DeleteCommentsResponse as any as S.Schema<DeletePermissionsResponse>;
 
 export interface DeleteRepliesRequest {
@@ -1851,7 +1845,7 @@ export interface DeleteRepliesRequest {
   /** The ID of the file. */
   fileId: string;
 }
-export const DeleteRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.String.pipe(T.Label()),
     replyId: S.String.pipe(T.Label()),
@@ -1866,8 +1860,7 @@ export const DeleteRepliesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepliesRequest" }) as any as S.Schema<DeleteRepliesRequest>;
 
 export interface DeleteRepliesResponse {}
-export const DeleteRepliesResponse =
-  DeleteCommentsResponse as any as S.Schema<DeleteRepliesResponse>;
+const DeleteRepliesResponse = DeleteCommentsResponse as any as S.Schema<DeleteRepliesResponse>;
 
 export interface DeleteRevisionsRequest {
   /** The ID of the revision. */
@@ -1875,7 +1868,7 @@ export interface DeleteRevisionsRequest {
   /** The ID of the file. */
   fileId: string;
 }
-export const DeleteRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -1889,14 +1882,13 @@ export const DeleteRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRevisionsRequest" }) as any as S.Schema<DeleteRevisionsRequest>;
 
 export interface DeleteRevisionsResponse {}
-export const DeleteRevisionsResponse =
-  DeleteCommentsResponse as any as S.Schema<DeleteRevisionsResponse>;
+const DeleteRevisionsResponse = DeleteCommentsResponse as any as S.Schema<DeleteRevisionsResponse>;
 
 export interface DeleteTeamdrivesRequest {
   /** The ID of the Team Drive */
   teamDriveId: string;
 }
-export const DeleteTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamDriveId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1909,7 +1901,7 @@ export const DeleteTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTeamdrivesRequest" }) as any as S.Schema<DeleteTeamdrivesRequest>;
 
 export interface DeleteTeamdrivesResponse {}
-export const DeleteTeamdrivesResponse =
+const DeleteTeamdrivesResponse =
   DeleteCommentsResponse as any as S.Schema<DeleteTeamdrivesResponse>;
 
 export interface DownloadFilesRequest {
@@ -1920,7 +1912,7 @@ export interface DownloadFilesRequest {
   /** Optional. The revision ID of the file to download. This field can only be set when downloading blob files, Google Docs, and Google Sheets. Returns `INVALID_ARGUMENT` if downloading a specific revision on the file is unsupported. */
   revisionId?: string;
 }
-export const DownloadFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -1935,15 +1927,10 @@ export const DownloadFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadFilesRequest" }) as any as S.Schema<DownloadFilesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1954,7 +1941,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -1975,7 +1962,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -1991,7 +1978,7 @@ export interface EmptyTrashFilesRequest {
   /** Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't, the item will be placed under its owner's root. */
   enforceSingleParent?: boolean;
 }
-export const EmptyTrashFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const EmptyTrashFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.optional(S.String.pipe(T.Query())),
     enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
@@ -2005,8 +1992,7 @@ export const EmptyTrashFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmptyTrashFilesRequest" }) as any as S.Schema<EmptyTrashFilesRequest>;
 
 export interface EmptyTrashFilesResponse {}
-export const EmptyTrashFilesResponse =
-  DeleteCommentsResponse as any as S.Schema<EmptyTrashFilesResponse>;
+const EmptyTrashFilesResponse = DeleteCommentsResponse as any as S.Schema<EmptyTrashFilesResponse>;
 
 export interface ExportFilesRequest {
   /** Required. The MIME type of the format requested for this export. For a list of supported MIME types, see [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats). */
@@ -2014,7 +2000,7 @@ export interface ExportFilesRequest {
   /** The ID of the file. */
   fileId: string;
 }
-export const ExportFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.String.pipe(T.Query()),
     fileId: S.String.pipe(T.Label()),
@@ -2028,7 +2014,7 @@ export const ExportFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportFilesRequest" }) as any as S.Schema<ExportFilesRequest>;
 
 export interface ExportFilesResponse {}
-export const ExportFilesResponse = DeleteCommentsResponse as any as S.Schema<ExportFilesResponse>;
+const ExportFilesResponse = DeleteCommentsResponse as any as S.Schema<ExportFilesResponse>;
 
 export interface GenerateCseTokenFilesRequest {
   /** The ID of the file for which the JWT should be generated. If not provided, an id will be generated. */
@@ -2036,7 +2022,7 @@ export interface GenerateCseTokenFilesRequest {
   /** The ID of the expected parent of the file. Used when generating a JWT for a new CSE file. If specified, the parent will be fetched, and if the parent is a shared drive item, the shared drive's policy will be used to determine the KACLS that should be used. It is invalid to specify both file_id and parent in a single request. */
   parent?: string;
 }
-export const GenerateCseTokenFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateCseTokenFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.optional(S.String.pipe(T.Query())),
     parent: S.optional(S.String.pipe(T.Query())),
@@ -2064,7 +2050,7 @@ export interface GenerateCseTokenResponse {
   /** The fileId for which the JWT was generated. */
   fileId?: string;
 }
-export const GenerateCseTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateCseTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentKaclsId: S.optional(S.String),
     currentKaclsName: S.optional(S.String),
@@ -2082,7 +2068,7 @@ export interface GenerateIdsFilesRequest {
   /** The space in which the IDs can be used to create files. Supported values are `drive` and `appDataFolder`. (Default: `drive`.) For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization). */
   space?: string;
 }
-export const GenerateIdsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateIdsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String.pipe(T.Query())),
     count: S.optional(S.Number.pipe(T.Query())),
@@ -2105,7 +2091,7 @@ export interface GeneratedIds {
   /** The IDs generated for the requesting user in the specified space. */
   ids?: StringList;
 }
-export const GeneratedIds = /*@__PURE__*/ S.suspend(() =>
+const GeneratedIds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     space: S.optional(S.String),
@@ -2114,7 +2100,7 @@ export const GeneratedIds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeneratedIds" }) as any as S.Schema<GeneratedIds>;
 
 export interface GetAboutRequest {}
-export const GetAboutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAboutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "about", baseUrl: "https://www.googleapis.com/drive/v3/" }),
   ),
@@ -2128,7 +2114,7 @@ export interface AboutTeamDriveThemesItem {
   /** Deprecated: Use `driveThemes/backgroundImageLink` instead. */
   backgroundImageLink?: string;
 }
-export const AboutTeamDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
+const AboutTeamDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     colorRgb: S.optional(S.String),
     id: S.optional(S.String),
@@ -2137,7 +2123,7 @@ export const AboutTeamDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AboutTeamDriveThemesItem" }) as any as S.Schema<AboutTeamDriveThemesItem>;
 
 export type AboutTeamDriveThemesItemList = Array<AboutTeamDriveThemesItem>;
-export const AboutTeamDriveThemesItemList = /*@__PURE__*/ S.Array(
+const AboutTeamDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutTeamDriveThemesItem,
 ) as any as S.Schema<AboutTeamDriveThemesItemList>;
 
@@ -2149,7 +2135,7 @@ export interface AboutDriveThemesItem {
   /** A link to this theme's background image. */
   backgroundImageLink?: string;
 }
-export const AboutDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
+const AboutDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     colorRgb: S.optional(S.String),
@@ -2158,12 +2144,12 @@ export const AboutDriveThemesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AboutDriveThemesItem" }) as any as S.Schema<AboutDriveThemesItem>;
 
 export type AboutDriveThemesItemList = Array<AboutDriveThemesItem>;
-export const AboutDriveThemesItemList = /*@__PURE__*/ S.Array(
+const AboutDriveThemesItemList = /*@__PURE__*/ S.Array(
   AboutDriveThemesItem,
 ) as any as S.Schema<AboutDriveThemesItemList>;
 
 export type StringListMap = { [key: string]: StringList | undefined };
-export const StringListMap = /*@__PURE__*/ S.Record(
+const StringListMap = /*@__PURE__*/ S.Record(
   S.String,
   StringList,
 ) as any as S.Schema<StringListMap>;
@@ -2178,7 +2164,7 @@ export interface AboutStorageQuota {
   /** The usage by trashed files in Google Drive. */
   usageInDriveTrash?: string;
 }
-export const AboutStorageQuota = /*@__PURE__*/ S.suspend(() =>
+const AboutStorageQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usageInDrive: S.optional(S.String),
     limit: S.optional(S.String),
@@ -2216,7 +2202,7 @@ export interface About {
   /** The user's storage quota limits and usage. For users that are part of an organization with pooled storage, information about the limit and usage across all services is for the organization, rather than the individual user. All fields are measured in bytes. */
   storageQuota?: AboutStorageQuota;
 }
-export const About = /*@__PURE__*/ S.suspend(() =>
+const About = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxImportSizes: S.optional(StringMap),
     teamDriveThemes: S.optional(AboutTeamDriveThemesItemList),
@@ -2240,7 +2226,7 @@ export interface GetAccessproposalsRequest {
   /** Required. The ID of the item the request is on. */
   fileId: string;
 }
-export const GetAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposalId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -2262,7 +2248,7 @@ export interface AccessProposalRoleAndView {
   /** Indicates the view for this access proposal. Only populated for proposals that belong to a view. Only `published` is supported. */
   view?: string;
 }
-export const AccessProposalRoleAndView = /*@__PURE__*/ S.suspend(() =>
+const AccessProposalRoleAndView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     view: S.optional(S.String),
@@ -2272,7 +2258,7 @@ export const AccessProposalRoleAndView = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessProposalRoleAndView>;
 
 export type AccessProposalRoleAndViewList = Array<AccessProposalRoleAndView>;
-export const AccessProposalRoleAndViewList = /*@__PURE__*/ S.Array(
+const AccessProposalRoleAndViewList = /*@__PURE__*/ S.Array(
   AccessProposalRoleAndView,
 ) as any as S.Schema<AccessProposalRoleAndViewList>;
 
@@ -2293,7 +2279,7 @@ export interface AccessProposal {
   /** The ID of the access proposal. */
   proposalId?: string;
 }
-export const AccessProposal = /*@__PURE__*/ S.suspend(() =>
+const AccessProposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.optional(S.String),
     requesterEmailAddress: S.optional(S.String),
@@ -2311,7 +2297,7 @@ export interface GetApprovalsRequest {
   /** Required. The ID of the approval. */
   approvalId: string;
 }
-export const GetApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     approvalId: S.String.pipe(T.Label()),
@@ -2328,7 +2314,7 @@ export interface GetAppsRequest {
   /** The ID of the app. */
   appId: string;
 }
-export const GetAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2344,7 +2330,7 @@ export interface AppIcons {
   /** Category of the icon. Allowed values are: * `application` - The icon for the application. * `document` - The icon for a file associated with the app. * `documentShared` - The icon for a shared file associated with the app. */
   category?: string;
 }
-export const AppIcons = /*@__PURE__*/ S.suspend(() =>
+const AppIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iconUrl: S.optional(S.String),
     size: S.optional(S.Number),
@@ -2353,7 +2339,7 @@ export const AppIcons = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppIcons" }) as any as S.Schema<AppIcons>;
 
 export type AppIconsList = Array<AppIcons>;
-export const AppIconsList = /*@__PURE__*/ S.Array(AppIcons) as any as S.Schema<AppIconsList>;
+const AppIconsList = /*@__PURE__*/ S.Array(AppIcons) as any as S.Schema<AppIconsList>;
 
 /** The `apps` resource provides a list of apps that a user has installed, with information about each app's supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an `appId`. Use the `apps.list` method to retrieve the ID for an installed application. */
 export interface App {
@@ -2406,7 +2392,7 @@ export interface App {
   /** Whether the app is authorized to access data on the user's Drive. */
   authorized?: boolean;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productUrl: S.optional(S.String),
     supportsImport: S.optional(S.Boolean),
@@ -2443,7 +2429,7 @@ export interface GetCommentsRequest {
   /** Whether to return deleted comments. Deleted comments will not include their original content. */
   includeDeleted?: boolean;
 }
-export const GetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -2463,7 +2449,7 @@ export interface GetDrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs. */
   useDomainAdminAccess?: boolean;
 }
-export const GetDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.String.pipe(T.Label()),
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -2490,7 +2476,7 @@ export interface GetFilesRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
 }
-export const GetFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgeAbuse: S.optional(S.Boolean.pipe(T.Query())),
     includePermissionsForView: S.optional(S.String.pipe(T.Query())),
@@ -2511,7 +2497,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2535,7 +2521,7 @@ export interface GetPermissionsRequest {
   /** Deprecated: Use `supportsAllDrives` instead. */
   supportsTeamDrives?: boolean;
 }
-export const GetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissionId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -2561,7 +2547,7 @@ export interface GetRepliesRequest {
   /** Whether to return deleted replies. Deleted replies don't include their original content. */
   includeDeleted?: boolean;
 }
-export const GetRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replyId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -2584,7 +2570,7 @@ export interface GetRevisionsRequest {
   /** The ID of the revision. */
   revisionId: string;
 }
-export const GetRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgeAbuse: S.optional(S.Boolean.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -2629,7 +2615,7 @@ export interface Revision {
   /** Output only. Identifies what kind of resource this is. Value: the fixed string `"drive#revision"`. */
   kind?: string;
 }
-export const Revision = /*@__PURE__*/ S.suspend(() =>
+const Revision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publishedOutsideDomain: S.optional(S.Boolean),
     size: S.optional(S.String),
@@ -2658,7 +2644,7 @@ export interface GetStartPageTokenChangesRequest {
   /** Deprecated: Use `driveId` instead. */
   teamDriveId?: string;
 }
-export const GetStartPageTokenChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStartPageTokenChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
     supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
@@ -2681,7 +2667,7 @@ export interface StartPageToken {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#startPageToken"`. */
   kind?: string;
 }
-export const StartPageToken = /*@__PURE__*/ S.suspend(() =>
+const StartPageToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -2694,7 +2680,7 @@ export interface GetTeamdrivesRequest {
   /** The ID of the Team Drive */
   teamDriveId: string;
 }
-export const GetTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
     teamDriveId: S.String.pipe(T.Label()),
@@ -2711,7 +2697,7 @@ export interface HideDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
 }
-export const HideDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const HideDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2731,7 +2717,7 @@ export interface ListAccessproposalsRequest {
   /** Required. The ID of the item the request is on. */
   fileId: string;
 }
-export const ListAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2748,7 +2734,7 @@ export const ListAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessproposalsRequest>;
 
 export type AccessProposalList = Array<AccessProposal>;
-export const AccessProposalList = /*@__PURE__*/ S.Array(
+const AccessProposalList = /*@__PURE__*/ S.Array(
   AccessProposal,
 ) as any as S.Schema<AccessProposalList>;
 
@@ -2759,7 +2745,7 @@ export interface ListAccessProposalsResponse {
   /** The list of access proposals. This field is only populated in Drive API v3. */
   accessProposals?: AccessProposalList;
 }
-export const ListAccessProposalsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessProposalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accessProposals: S.optional(AccessProposalList),
@@ -2776,7 +2762,7 @@ export interface ListApprovalsRequest {
   /** The maximum number of approvals to return. When not set, at most 100 approvals are returned. */
   pageSize?: number;
 }
-export const ListApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2791,7 +2777,7 @@ export const ListApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApprovalsRequest" }) as any as S.Schema<ListApprovalsRequest>;
 
 export type ApprovalList_ = Array<Approval>;
-export const ApprovalList_ = /*@__PURE__*/ S.Array(Approval) as any as S.Schema<ApprovalList_>;
+const ApprovalList_ = /*@__PURE__*/ S.Array(Approval) as any as S.Schema<ApprovalList_>;
 
 /** The response of an approvals list request. */
 export interface ApprovalList {
@@ -2802,7 +2788,7 @@ export interface ApprovalList {
   /** This is always drive#approvalList */
   kind?: string;
 }
-export const ApprovalList = /*@__PURE__*/ S.suspend(() =>
+const ApprovalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     items: ApprovalList_,
@@ -2818,7 +2804,7 @@ export interface ListAppsRequest {
   /** A comma-separated list of file extensions to limit returned results. All results within the given app query scope which can open any of the given file extensions are included in the response. If `appFilterMimeTypes` are provided as well, the result is a union of the two resulting app lists. */
   appFilterExtensions?: string;
 }
-export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appFilterMimeTypes: S.optional(S.String.pipe(T.Query())),
     languageCode: S.optional(S.String.pipe(T.Query())),
@@ -2827,7 +2813,7 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppsRequest" }) as any as S.Schema<ListAppsRequest>;
 
 export type AppList_ = Array<App>;
-export const AppList_ = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList_>;
+const AppList_ = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList_>;
 
 /** A list of third-party applications which the user has installed or given access to Google Drive. */
 export interface AppList {
@@ -2840,7 +2826,7 @@ export interface AppList {
   /** The list of app IDs that the user has specified to use by default. The list is in reverse-priority order (lowest to highest). */
   defaultAppIds?: StringList;
 }
-export const AppList = /*@__PURE__*/ S.suspend(() =>
+const AppList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(AppList_),
     kind: S.optional(S.String),
@@ -2879,7 +2865,7 @@ export interface ListChangesRequest {
   /** The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier. */
   driveId?: string;
 }
-export const ListChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeLabels: S.optional(S.String.pipe(T.Query())),
     spaces: S.optional(S.String.pipe(T.Query())),
@@ -2925,7 +2911,7 @@ export interface Change {
   /** Deprecated: Use `changeType` instead. */
   type?: string;
 }
-export const Change = /*@__PURE__*/ S.suspend(() =>
+const Change = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     drive: S.optional(Drive),
     kind: S.optional(S.String),
@@ -2942,7 +2928,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 
 export type ChangeList_ = Array<Change>;
-export const ChangeList_ = /*@__PURE__*/ S.Array(Change) as any as S.Schema<ChangeList_>;
+const ChangeList_ = /*@__PURE__*/ S.Array(Change) as any as S.Schema<ChangeList_>;
 
 /** A list of changes for a user. */
 export interface ChangeList {
@@ -2955,7 +2941,7 @@ export interface ChangeList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#changeList"`. */
   kind?: string;
 }
-export const ChangeList = /*@__PURE__*/ S.suspend(() =>
+const ChangeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changes: S.optional(ChangeList_),
     newStartPageToken: S.optional(S.String),
@@ -2976,7 +2962,7 @@ export interface ListCommentsRequest {
   /** The maximum number of comments to return. The service may return fewer than this value. If unspecified, at most 20 comments will be returned. The maximum value is 100; values above 100 will be coerced to 100. */
   pageSize?: number;
 }
-export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startModifiedTime: S.optional(S.String.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -2993,7 +2979,7 @@ export const ListCommentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommentsRequest" }) as any as S.Schema<ListCommentsRequest>;
 
 export type CommentList_ = Array<Comment>;
-export const CommentList_ = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList_>;
+const CommentList_ = /*@__PURE__*/ S.Array(Comment) as any as S.Schema<CommentList_>;
 
 /** A list of comments on a file. */
 export interface CommentList {
@@ -3004,7 +2990,7 @@ export interface CommentList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#commentList"`. */
   kind?: string;
 }
-export const CommentList = /*@__PURE__*/ S.suspend(() =>
+const CommentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: S.optional(CommentList_),
     nextPageToken: S.optional(S.String),
@@ -3022,7 +3008,7 @@ export interface ListDrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then all shared drives of the domain in which the requester is an administrator are returned. */
   useDomainAdminAccess?: boolean;
 }
-export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     q: S.optional(S.String.pipe(T.Query())),
@@ -3034,7 +3020,7 @@ export const ListDrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDrivesRequest" }) as any as S.Schema<ListDrivesRequest>;
 
 export type DriveList_ = Array<Drive>;
-export const DriveList_ = /*@__PURE__*/ S.Array(Drive) as any as S.Schema<DriveList_>;
+const DriveList_ = /*@__PURE__*/ S.Array(Drive) as any as S.Schema<DriveList_>;
 
 /** A list of shared drives. */
 export interface DriveList {
@@ -3045,7 +3031,7 @@ export interface DriveList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#driveList"`. */
   kind?: string;
 }
-export const DriveList = /*@__PURE__*/ S.suspend(() =>
+const DriveList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     drives: S.optional(DriveList_),
@@ -3054,7 +3040,7 @@ export const DriveList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DriveList" }) as any as S.Schema<DriveList>;
 
 export type ListFilesCorpusEnum = "domain" | "user";
-export const ListFilesCorpusEnum = S.String;
+const ListFilesCorpusEnum = S.String;
 
 export interface ListFilesRequest {
   /** Specifies a collection of items (files or documents) to which the query applies. Supported items include: * `user` * `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By default, corpora is set to `user`. However, this can change depending on the filter set through the `q` parameter. For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization). */
@@ -3088,7 +3074,7 @@ export interface ListFilesRequest {
   /** A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. */
   includeLabels?: string;
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     corpora: S.optional(S.String.pipe(T.Query())),
     driveId: S.optional(S.String.pipe(T.Query())),
@@ -3109,7 +3095,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFilesRequest" }) as any as S.Schema<ListFilesRequest>;
 
 export type FileList_ = Array<File>;
-export const FileList_ = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList_>;
+const FileList_ = /*@__PURE__*/ S.Array(File) as any as S.Schema<FileList_>;
 
 /** A list of files. */
 export interface FileList {
@@ -3122,7 +3108,7 @@ export interface FileList {
   /** The page token for the next page of files. This will be absent if the end of the files list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
-export const FileList = /*@__PURE__*/ S.suspend(() =>
+const FileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incompleteSearch: S.optional(S.Boolean),
     files: S.optional(FileList_),
@@ -3139,7 +3125,7 @@ export interface ListLabelsFilesRequest {
   /** The maximum number of labels to return per page. When not set, defaults to 100. */
   maxResults?: number;
 }
-export const ListLabelsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabelsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     fileId: S.String.pipe(T.Label()),
@@ -3162,7 +3148,7 @@ export interface LabelList {
   /** This is always `"drive#labelList"`. */
   kind?: string;
 }
-export const LabelList = /*@__PURE__*/ S.suspend(() =>
+const LabelList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     labels: S.optional(LabelList_),
@@ -3186,7 +3172,7 @@ export interface ListPermissionsRequest {
   /** Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators). */
   useDomainAdminAccess?: boolean;
 }
-export const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3213,7 +3199,7 @@ export interface PermissionList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#permissionList"`. */
   kind?: string;
 }
-export const PermissionList = /*@__PURE__*/ S.suspend(() =>
+const PermissionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(PermissionList_),
     nextPageToken: S.optional(S.String),
@@ -3233,7 +3219,7 @@ export interface ListRepliesRequest {
   /** Whether to include deleted replies. Deleted replies don't include their original content. */
   includeDeleted?: boolean;
 }
-export const ListRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3258,7 +3244,7 @@ export interface ReplyList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#replyList"`. */
   kind?: string;
 }
-export const ReplyList = /*@__PURE__*/ S.suspend(() =>
+const ReplyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replies: S.optional(ReplyList_),
     nextPageToken: S.optional(S.String),
@@ -3274,7 +3260,7 @@ export interface ListRevisionsRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response. */
   pageToken?: string;
 }
-export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3289,7 +3275,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRevisionsRequest" }) as any as S.Schema<ListRevisionsRequest>;
 
 export type RevisionList_ = Array<Revision>;
-export const RevisionList_ = /*@__PURE__*/ S.Array(Revision) as any as S.Schema<RevisionList_>;
+const RevisionList_ = /*@__PURE__*/ S.Array(Revision) as any as S.Schema<RevisionList_>;
 
 /** A list of revisions of a file. */
 export interface RevisionList {
@@ -3300,7 +3286,7 @@ export interface RevisionList {
   /** The page token for the next page of revisions. This will be absent if the end of the revisions list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
-export const RevisionList = /*@__PURE__*/ S.suspend(() =>
+const RevisionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisions: S.optional(RevisionList_),
     kind: S.optional(S.String),
@@ -3318,7 +3304,7 @@ export interface ListTeamdrivesRequest {
   /** Maximum number of Team Drives to return. */
   pageSize?: number;
 }
-export const ListTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3330,7 +3316,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamdrivesRequest" }) as any as S.Schema<ListTeamdrivesRequest>;
 
 export type TeamDriveList_ = Array<TeamDrive>;
-export const TeamDriveList_ = /*@__PURE__*/ S.Array(TeamDrive) as any as S.Schema<TeamDriveList_>;
+const TeamDriveList_ = /*@__PURE__*/ S.Array(TeamDrive) as any as S.Schema<TeamDriveList_>;
 
 /** A list of Team Drives. */
 export interface TeamDriveList {
@@ -3341,7 +3327,7 @@ export interface TeamDriveList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#teamDriveList"`. */
   kind?: string;
 }
-export const TeamDriveList = /*@__PURE__*/ S.suspend(() =>
+const TeamDriveList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     teamDrives: S.optional(TeamDriveList_),
@@ -3368,7 +3354,7 @@ export interface LabelFieldModification {
   /** Replaces a `user` field with these new values. The values must be a valid email addresses. */
   setUserValues?: StringList;
 }
-export const LabelFieldModification = /*@__PURE__*/ S.suspend(() =>
+const LabelFieldModification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setDateValues: S.optional(StringList),
     kind: S.optional(S.String),
@@ -3382,7 +3368,7 @@ export const LabelFieldModification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelFieldModification" }) as any as S.Schema<LabelFieldModification>;
 
 export type LabelFieldModificationList = Array<LabelFieldModification>;
-export const LabelFieldModificationList = /*@__PURE__*/ S.Array(
+const LabelFieldModificationList = /*@__PURE__*/ S.Array(
   LabelFieldModification,
 ) as any as S.Schema<LabelFieldModificationList>;
 
@@ -3397,7 +3383,7 @@ export interface LabelModification {
   /** The list of modifications to this label's fields. */
   fieldModifications?: LabelFieldModificationList;
 }
-export const LabelModification = /*@__PURE__*/ S.suspend(() =>
+const LabelModification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeLabel: S.optional(S.Boolean),
     kind: S.optional(S.String),
@@ -3407,7 +3393,7 @@ export const LabelModification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelModification" }) as any as S.Schema<LabelModification>;
 
 export type LabelModificationList = Array<LabelModification>;
-export const LabelModificationList = /*@__PURE__*/ S.Array(
+const LabelModificationList = /*@__PURE__*/ S.Array(
   LabelModification,
 ) as any as S.Schema<LabelModificationList>;
 
@@ -3418,7 +3404,7 @@ export interface ModifyLabelsRequest {
   /** This is always `"drive#modifyLabelsRequest"`. */
   kind?: string;
 }
-export const ModifyLabelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyLabelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labelModifications: S.optional(LabelModificationList),
     kind: S.optional(S.String),
@@ -3431,7 +3417,7 @@ export interface ModifyLabelsFilesRequest {
   /** Request body */
   body?: ModifyLabelsRequest;
 }
-export const ModifyLabelsFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyLabelsFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     body: S.optional(ModifyLabelsRequest.pipe(T.HttpBody())),
@@ -3451,7 +3437,7 @@ export interface ModifyLabelsResponse {
   /** This is always `"drive#modifyLabelsResponse"`. */
   kind?: string;
 }
-export const ModifyLabelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ModifyLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modifiedLabels: S.optional(LabelList_),
     kind: S.optional(S.String),
@@ -3463,16 +3449,14 @@ export interface AddReviewer {
   /** Required. The email of the reviewer to add. */
   addedReviewerEmail?: string;
 }
-export const AddReviewer = /*@__PURE__*/ S.suspend(() =>
+const AddReviewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addedReviewerEmail: S.optional(S.String),
   }),
 ).annotate({ identifier: "AddReviewer" }) as any as S.Schema<AddReviewer>;
 
 export type AddReviewerList = Array<AddReviewer>;
-export const AddReviewerList = /*@__PURE__*/ S.Array(
-  AddReviewer,
-) as any as S.Schema<AddReviewerList>;
+const AddReviewerList = /*@__PURE__*/ S.Array(AddReviewer) as any as S.Schema<AddReviewerList>;
 
 /** Representation of a reviewer replacement. */
 export interface ReplaceReviewer {
@@ -3481,7 +3465,7 @@ export interface ReplaceReviewer {
   /** Required. The email of the reviewer to add. */
   addedReviewerEmail?: string;
 }
-export const ReplaceReviewer = /*@__PURE__*/ S.suspend(() =>
+const ReplaceReviewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removedReviewerEmail: S.optional(S.String),
     addedReviewerEmail: S.optional(S.String),
@@ -3489,7 +3473,7 @@ export const ReplaceReviewer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplaceReviewer" }) as any as S.Schema<ReplaceReviewer>;
 
 export type ReplaceReviewerList = Array<ReplaceReviewer>;
-export const ReplaceReviewerList = /*@__PURE__*/ S.Array(
+const ReplaceReviewerList = /*@__PURE__*/ S.Array(
   ReplaceReviewer,
 ) as any as S.Schema<ReplaceReviewerList>;
 
@@ -3502,7 +3486,7 @@ export interface ReassignApprovalRequest {
   /** Optional. A message to send to the new reviewers. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-export const ReassignApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const ReassignApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addReviewers: S.optional(AddReviewerList),
     replaceReviewers: S.optional(ReplaceReviewerList),
@@ -3518,7 +3502,7 @@ export interface ReassignApprovalsRequest {
   /** Request body */
   body?: ReassignApprovalRequest;
 }
-export const ReassignApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReassignApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     approvalId: S.String.pipe(T.Label()),
@@ -3533,7 +3517,7 @@ export const ReassignApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReassignApprovalsRequest" }) as any as S.Schema<ReassignApprovalsRequest>;
 
 export type ResolveAccessProposalRequestActionEnum = "ACTION_UNSPECIFIED" | "ACCEPT" | "DENY";
-export const ResolveAccessProposalRequestActionEnum = S.String;
+const ResolveAccessProposalRequestActionEnum = S.String;
 
 /** Request message for resolving an AccessProposal on a file. */
 export interface ResolveAccessProposalRequest {
@@ -3546,7 +3530,7 @@ export interface ResolveAccessProposalRequest {
   /** Optional. Whether to send an email to the requester when the access proposal is denied or accepted. */
   sendNotification?: boolean;
 }
-export const ResolveAccessProposalRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveAccessProposalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(StringList),
     view: S.optional(S.String),
@@ -3565,7 +3549,7 @@ export interface ResolveAccessproposalsRequest {
   /** Request body */
   body?: ResolveAccessProposalRequest;
 }
-export const ResolveAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     proposalId: S.String.pipe(T.Label()),
@@ -3582,14 +3566,14 @@ export const ResolveAccessproposalsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResolveAccessproposalsRequest>;
 
 export interface ResolveAccessproposalsResponse {}
-export const ResolveAccessproposalsResponse =
+const ResolveAccessproposalsResponse =
   DeleteCommentsResponse as any as S.Schema<ResolveAccessproposalsResponse>;
 
 export type StartApprovalRequestFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
   | "NO_APPROVAL_ACTION";
-export const StartApprovalRequestFileContentChangeBehaviorEnum = S.String;
+const StartApprovalRequestFileContentChangeBehaviorEnum = S.String;
 
 /** Allows creating an approval on a file. */
 export interface StartApprovalRequest {
@@ -3604,7 +3588,7 @@ export interface StartApprovalRequest {
   /** Required. The emails of the users who are set to review the approval. */
   reviewerEmails?: StringList;
 }
-export const StartApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const StartApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dueTime: S.optional(S.String),
     lockFile: S.optional(S.Boolean),
@@ -3620,7 +3604,7 @@ export interface StartApprovalsRequest {
   /** Request body */
   body?: StartApprovalRequest;
 }
-export const StartApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileId: S.String.pipe(T.Label()),
     body: S.optional(StartApprovalRequest.pipe(T.HttpBody())),
@@ -3656,7 +3640,7 @@ export interface Channel {
   /** The type of delivery mechanism used for this channel. Valid values are "web_hook" or "webhook". */
   type?: string;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -3675,7 +3659,7 @@ export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Channel.pipe(T.HttpBody())),
   }).pipe(
@@ -3688,13 +3672,13 @@ export const StopChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopChannelsRequest" }) as any as S.Schema<StopChannelsRequest>;
 
 export interface StopChannelsResponse {}
-export const StopChannelsResponse = DeleteCommentsResponse as any as S.Schema<StopChannelsResponse>;
+const StopChannelsResponse = DeleteCommentsResponse as any as S.Schema<StopChannelsResponse>;
 
 export interface UnhideDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
 }
-export const UnhideDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const UnhideDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3714,7 +3698,7 @@ export interface UpdateCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-export const UpdateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -3736,7 +3720,7 @@ export interface UpdateDrivesRequest {
   /** Request body */
   body?: Drive;
 }
-export const UpdateDrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     driveId: S.String.pipe(T.Label()),
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3776,7 +3760,7 @@ export interface UpdateFilesRequest {
   /** Request body */
   body?: File;
 }
-export const UpdateFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ocrLanguage: S.optional(S.String.pipe(T.Query())),
     removeParents: S.optional(S.String.pipe(T.Query())),
@@ -3819,7 +3803,7 @@ export interface UpdatePermissionsRequest {
   /** Request body */
   body?: Permission;
 }
-export const UpdatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removeExpiration: S.optional(S.Boolean.pipe(T.Query())),
     enforceExpansiveAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3849,7 +3833,7 @@ export interface UpdateRepliesRequest {
   /** Request body */
   body?: Reply;
 }
-export const UpdateRepliesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepliesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commentId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -3872,7 +3856,7 @@ export interface UpdateRevisionsRequest {
   /** Request body */
   body?: Revision;
 }
-export const UpdateRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String.pipe(T.Label()),
     fileId: S.String.pipe(T.Label()),
@@ -3894,7 +3878,7 @@ export interface UpdateTeamdrivesRequest {
   /** Request body */
   body?: TeamDrive;
 }
-export const UpdateTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamdrivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamDriveId: S.String.pipe(T.Label()),
     useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3940,7 +3924,7 @@ export interface WatchChangesRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restrictToMyDrive: S.optional(S.Boolean.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3982,7 +3966,7 @@ export interface WatchFilesRequest {
   /** Request body */
   body?: Channel;
 }
-export const WatchFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includePermissionsForView: S.optional(S.String.pipe(T.Query())),
     includeLabels: S.optional(S.String.pipe(T.Query())),

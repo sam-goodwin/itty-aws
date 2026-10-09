@@ -16,7 +16,7 @@ export interface DeleteWorkspaceRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkspaceRequest" }) as any as S.Schema<DeleteWorkspaceRequest>;
 
 export interface DeleteWorkspaceResponse {}
-export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWorkspaceResponse",
 }) as any as S.Schema<DeleteWorkspaceResponse>;
 
@@ -44,7 +44,7 @@ export interface GetWorkspaceRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,7 +61,7 @@ export const GetWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type GetWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetWorkspaceResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetWorkspaceResponseTagsMap>;
@@ -73,7 +73,7 @@ export interface Sku {
   /** Tier of the sku like Basic or Enterprise */
   tier?: string;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tier: S.optional(S.String),
@@ -87,7 +87,7 @@ export type WorkspacePropertiesWorkspaceType =
   | "Anonymous"
   | "PaidStandard"
   | "PaidPremium";
-export const WorkspacePropertiesWorkspaceType = S.String;
+const WorkspacePropertiesWorkspaceType = S.String;
 
 /** The current state of workspace resource. */
 export type WorkspacePropertiesWorkspaceState =
@@ -98,7 +98,7 @@ export type WorkspacePropertiesWorkspaceState =
   | "Updated"
   | "Registered"
   | "Unregistered";
-export const WorkspacePropertiesWorkspaceState = S.String;
+const WorkspacePropertiesWorkspaceState = S.String;
 
 /** The properties of a machine learning workspace. */
 export interface WorkspaceProperties {
@@ -119,7 +119,7 @@ export interface WorkspaceProperties {
   /** The key vault identifier used for encrypted workspaces. */
   keyVaultIdentifierId?: string;
 }
-export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userStorageAccountId: S.String,
     ownerEmail: S.String,
@@ -148,7 +148,7 @@ export interface GetWorkspaceResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const GetWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -161,7 +161,7 @@ export const GetWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWorkspaceResponse" }) as any as S.Schema<GetWorkspaceResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -183,7 +183,7 @@ export interface OperationDisplay {
   /** The description for the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface Operation {
   /** Display name of operation */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -208,7 +208,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of AML Studio operations supported by the AML Studio resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -217,7 +217,7 @@ export interface OperationListResult {
   /** List of AML Studio operations supported by the AML Studio resource provider. */
   value?: OperationListResultValueList;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
   }),
@@ -229,7 +229,7 @@ export interface ListWorkspaceByResourceGroupRequest {
   /** The name of the resource group to which the machine learning workspace belongs. */
   resourceGroupName: string;
 }
-export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -247,8 +247,6 @@ export const ListWorkspaceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type WorkspaceTagsMap = { [key: string]: string | undefined };
-export const WorkspaceTagsMap = GetWorkspaceResponseTagsMap as any as S.Schema<WorkspaceTagsMap>;
-
 /** An object that represents a machine learning workspace. */
 export interface Workspace {
   /** The resource ID. */
@@ -266,11 +264,11 @@ export interface Workspace {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
+const Workspace = GetWorkspaceResponse as any as S.Schema<Workspace>;
 
 /** The list of machine learning workspaces. Since this list may be incomplete, the nextLink field should be used to request the next list of machine learning workspaces. */
 export type WorkspaceListResultValueList = Array<Workspace>;
-export const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
+const WorkspaceListResultValueList = /*@__PURE__*/ S.Array(
   Workspace,
 ) as any as S.Schema<WorkspaceListResultValueList>;
 
@@ -281,7 +279,7 @@ export interface WorkspaceListResult {
   /** The URI that can be used to request the next list of machine learning workspaces. */
   nextLink?: string;
 }
-export const WorkspaceListResult = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkspaceListResultValueList),
     nextLink: S.optional(S.String),
@@ -292,7 +290,7 @@ export interface ListWorkspacesRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
 }
-export const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -313,7 +311,7 @@ export interface ListWorkspaceWorkspaceKeysRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-export const ListWorkspaceWorkspaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceWorkspaceKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -337,7 +335,7 @@ export interface WorkspaceKeysResponse {
   /** Secondary authorization key for this workspace. */
   secondaryToken?: string;
 }
-export const WorkspaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryToken: S.optional(S.String),
     secondaryToken: S.optional(S.String),
@@ -346,7 +344,7 @@ export const WorkspaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags for the machine learning workspace. */
 export type UpdateWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceRequestTagsMap =
+const UpdateWorkspaceRequestTagsMap =
   GetWorkspaceResponseTagsMap as any as S.Schema<UpdateWorkspaceRequestTagsMap>;
 
 /** The current state of workspace resource. */
@@ -358,7 +356,7 @@ export type WorkspacePropertiesUpdateParametersWorkspaceState =
   | "Updated"
   | "Registered"
   | "Unregistered";
-export const WorkspacePropertiesUpdateParametersWorkspaceState = S.String;
+const WorkspacePropertiesUpdateParametersWorkspaceState = S.String;
 
 /** The parameters for updating the properties of a machine learning workspace. */
 export interface WorkspacePropertiesUpdateParameters {
@@ -369,7 +367,7 @@ export interface WorkspacePropertiesUpdateParameters {
   /** The sku of the workspace. */
   sku?: Sku;
 }
-export const WorkspacePropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const WorkspacePropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceState: S.optional(WorkspacePropertiesUpdateParametersWorkspaceState),
     keyVaultIdentifierId: S.optional(S.String),
@@ -391,7 +389,7 @@ export interface UpdateWorkspaceRequest {
   /** The properties that the machine learning workspace will be updated with. */
   properties?: WorkspacePropertiesUpdateParameters;
 }
-export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -410,9 +408,6 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type UpdateWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkspaceResponseTagsMap =
-  GetWorkspaceResponseTagsMap as any as S.Schema<UpdateWorkspaceResponseTagsMap>;
-
 export interface UpdateWorkspaceResponse {
   /** The resource ID. */
   id?: string;
@@ -429,12 +424,11 @@ export interface UpdateWorkspaceResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const UpdateWorkspaceResponse =
-  GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
+const UpdateWorkspaceResponse = GetWorkspaceResponse as any as S.Schema<UpdateWorkspaceResponse>;
 
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateRequestTagsMap =
+const WorkspacesCreateOrUpdateRequestTagsMap =
   GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateRequestTagsMap>;
 
 /** The properties of a machine learning workspace. */
@@ -446,7 +440,7 @@ export interface WorkspacePropertiesInput {
   /** The key vault identifier used for encrypted workspaces. */
   keyVaultIdentifierId?: string;
 }
-export const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkspacePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userStorageAccountId: S.String,
     ownerEmail: S.String,
@@ -470,7 +464,7 @@ export interface WorkspacesCreateOrUpdateRequest {
   /** The properties of the machine learning workspace. */
   properties?: WorkspacePropertiesInput;
 }
-export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -493,7 +487,7 @@ export const WorkspacesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags of the resource. */
 export type WorkspacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkspacesCreateOrUpdateResponseTagsMap =
+const WorkspacesCreateOrUpdateResponseTagsMap =
   GetWorkspaceResponseTagsMap as any as S.Schema<WorkspacesCreateOrUpdateResponseTagsMap>;
 
 export interface WorkspacesCreateOrUpdateResponse {
@@ -512,7 +506,7 @@ export interface WorkspacesCreateOrUpdateResponse {
   /** The properties of the machine learning workspace. */
   properties?: WorkspaceProperties;
 }
-export const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspacesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -534,7 +528,7 @@ export interface WorkspacesResyncStorageKeysRequest {
   /** The name of the machine learning workspace. */
   workspaceName: string;
 }
-export const WorkspacesResyncStorageKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspacesResyncStorageKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -552,9 +546,7 @@ export const WorkspacesResyncStorageKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesResyncStorageKeysRequest>;
 
 export interface WorkspacesResyncStorageKeysResponse {}
-export const WorkspacesResyncStorageKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const WorkspacesResyncStorageKeysResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "WorkspacesResyncStorageKeysResponse",
 }) as any as S.Schema<WorkspacesResyncStorageKeysResponse>;
 

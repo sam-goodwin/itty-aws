@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for the BatchDeleteRowAccessPoliciesRequest method. */
 export interface BatchDeleteRowAccessPoliciesRequest {
@@ -71,7 +71,7 @@ export interface BatchDeleteRowAccessPoliciesRequest {
   /** Required. Policy IDs of the row access policies. */
   policyIds?: StringList;
 }
-export const BatchDeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
     policyIds: S.optional(StringList),
@@ -90,7 +90,7 @@ export interface BatchDeleteRowAccessPoliciesRequest_ {
   /** Request body */
   body?: BatchDeleteRowAccessPoliciesRequest;
 }
-export const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -108,9 +108,7 @@ export const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>;
 
 export interface BatchDeleteRowAccessPoliciesResponse {}
-export const BatchDeleteRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const BatchDeleteRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BatchDeleteRowAccessPoliciesResponse",
 }) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>;
 
@@ -122,7 +120,7 @@ export interface CancelJobsRequest {
   /** Required. Job ID of the job to cancel */
   jobId: string;
 }
-export const CancelJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -145,7 +143,7 @@ export interface JobReference {
   /** Optional. The geographic location of the job. The default value is US. For more information about BigQuery locations, see: https://cloud.google.com/bigquery/docs/locations */
   location?: string;
 }
-export const JobReference = /*@__PURE__*/ S.suspend(() =>
+const JobReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -158,7 +156,7 @@ export interface RowLevelSecurityStatistics {
   /** Whether any accessed data was protected by row access policies. */
   rowLevelSecurityApplied?: boolean;
 }
-export const RowLevelSecurityStatistics = /*@__PURE__*/ S.suspend(() =>
+const RowLevelSecurityStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rowLevelSecurityApplied: S.optional(S.Boolean),
   }),
@@ -171,7 +169,7 @@ export interface GenAiErrorStats {
   /** A list of unique errors at query level (up to 5, truncated to 100 chars) */
   errors?: StringList;
 }
-export const GenAiErrorStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiErrorStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(StringList),
   }),
@@ -184,7 +182,7 @@ export interface GenAiFunctionErrorStats {
   /** A list of unique errors at function level (up to 5, truncated to 100 chars). */
   errors?: StringList;
 }
-export const GenAiFunctionErrorStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiFunctionErrorStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numFailedRows: S.optional(S.String),
     errors: S.optional(StringList),
@@ -198,7 +196,7 @@ export interface GenAiFunctionCostOptimizationStats {
   /** Number of rows inferred via cost optimized workflow. */
   numCostOptimizedRows?: string;
 }
-export const GenAiFunctionCostOptimizationStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiFunctionCostOptimizationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     numCostOptimizedRows: S.optional(S.String),
@@ -212,7 +210,7 @@ export interface GenAiFunctionCacheStats {
   /** Number of rows served from cache. */
   numCacheHitRows?: string;
 }
-export const GenAiFunctionCacheStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiFunctionCacheStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numCacheHitRows: S.optional(S.String),
   }),
@@ -233,7 +231,7 @@ export interface GenAiFunctionStats {
   /** Number of rows processed by this GenAi function. This includes all cost_optimized, llm_inferred and failed_rows. */
   numProcessedRows?: string;
 }
-export const GenAiFunctionStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiFunctionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
     errorStats: S.optional(GenAiFunctionErrorStats),
@@ -245,7 +243,7 @@ export const GenAiFunctionStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GenAiFunctionStats" }) as any as S.Schema<GenAiFunctionStats>;
 
 export type GenAiFunctionStatsList = Array<GenAiFunctionStats>;
-export const GenAiFunctionStatsList = /*@__PURE__*/ S.Array(
+const GenAiFunctionStatsList = /*@__PURE__*/ S.Array(
   GenAiFunctionStats,
 ) as any as S.Schema<GenAiFunctionStatsList>;
 
@@ -256,7 +254,7 @@ export interface GenAiStats {
   /** Function level stats for GenAI Functions. For more information, see [Generative AI overview](https://docs.cloud.google.com/bigquery/docs/generative-ai-overview). */
   functionStats?: GenAiFunctionStatsList;
 }
-export const GenAiStats = /*@__PURE__*/ S.suspend(() =>
+const GenAiStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorStats: S.optional(GenAiErrorStats),
     functionStats: S.optional(GenAiFunctionStatsList),
@@ -271,7 +269,7 @@ export interface TableReference {
   /** Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`. */
   tableId?: string;
 }
-export const TableReference = /*@__PURE__*/ S.suspend(() =>
+const TableReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -290,7 +288,7 @@ export interface IndexPruningStats {
   /** The number of parallel inputs before index pruning. */
   preIndexPruningParallelInputCount?: string;
 }
-export const IndexPruningStats = /*@__PURE__*/ S.suspend(() =>
+const IndexPruningStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postIndexPruningParallelInputCount: S.optional(S.String),
     baseTable: S.optional(TableReference),
@@ -300,7 +298,7 @@ export const IndexPruningStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexPruningStats" }) as any as S.Schema<IndexPruningStats>;
 
 export type IndexPruningStatsList = Array<IndexPruningStats>;
-export const IndexPruningStatsList = /*@__PURE__*/ S.Array(
+const IndexPruningStatsList = /*@__PURE__*/ S.Array(
   IndexPruningStats,
 ) as any as S.Schema<IndexPruningStatsList>;
 
@@ -309,7 +307,7 @@ export type SearchStatisticsIndexUsageModeEnum =
   | "UNUSED"
   | "PARTIALLY_USED"
   | "FULLY_USED";
-export const SearchStatisticsIndexUsageModeEnum = S.String;
+const SearchStatisticsIndexUsageModeEnum = S.String;
 
 export type IndexUnusedReasonCodeEnum =
   | "CODE_UNSPECIFIED"
@@ -334,7 +332,7 @@ export type IndexUnusedReasonCodeEnum =
   | "STALE_INDEX"
   | "INTERNAL_ERROR"
   | "OTHER_REASON";
-export const IndexUnusedReasonCodeEnum = S.String;
+const IndexUnusedReasonCodeEnum = S.String;
 
 /** Reason about why no search index was used in the search query (or sub-query). */
 export interface IndexUnusedReason {
@@ -347,7 +345,7 @@ export interface IndexUnusedReason {
   /** Specifies the name of the unused search index, if available. */
   indexName?: string;
 }
-export const IndexUnusedReason = /*@__PURE__*/ S.suspend(() =>
+const IndexUnusedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(IndexUnusedReasonCodeEnum),
     message: S.optional(S.String),
@@ -357,7 +355,7 @@ export const IndexUnusedReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexUnusedReason" }) as any as S.Schema<IndexUnusedReason>;
 
 export type IndexUnusedReasonList = Array<IndexUnusedReason>;
-export const IndexUnusedReasonList = /*@__PURE__*/ S.Array(
+const IndexUnusedReasonList = /*@__PURE__*/ S.Array(
   IndexUnusedReason,
 ) as any as S.Schema<IndexUnusedReasonList>;
 
@@ -370,7 +368,7 @@ export interface SearchStatistics {
   /** When `indexUsageMode` is `UNUSED` or `PARTIALLY_USED`, this field explains why indexes were not used in all or part of the search query. If `indexUsageMode` is `FULLY_USED`, this field is not populated. */
   indexUnusedReasons?: IndexUnusedReasonList;
 }
-export const SearchStatistics = /*@__PURE__*/ S.suspend(() =>
+const SearchStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexPruningStats: S.optional(IndexPruningStatsList),
     indexUsageMode: S.optional(SearchStatisticsIndexUsageModeEnum),
@@ -383,7 +381,7 @@ export type TableMetadataCacheUsageUnusedReasonEnum =
   | "EXCEEDED_MAX_STALENESS"
   | "METADATA_CACHING_NOT_ENABLED"
   | "OTHER_REASON";
-export const TableMetadataCacheUsageUnusedReasonEnum = S.String;
+const TableMetadataCacheUsageUnusedReasonEnum = S.String;
 
 /** The column metadata index pruning statistics. */
 export interface PruningStats {
@@ -394,7 +392,7 @@ export interface PruningStats {
   /** The number of parallel inputs scanned. */
   preCmetaPruningParallelInputCount?: string;
 }
-export const PruningStats = /*@__PURE__*/ S.suspend(() =>
+const PruningStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postCmetaPruningParallelInputCount: S.optional(S.String),
     postCmetaPruningPartitionCount: S.optional(S.String),
@@ -417,7 +415,7 @@ export interface TableMetadataCacheUsage {
   /** Free form human-readable reason metadata caching was unused for the job. */
   explanation?: string;
 }
-export const TableMetadataCacheUsage = /*@__PURE__*/ S.suspend(() =>
+const TableMetadataCacheUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableReference: S.optional(TableReference),
     staleness: S.optional(S.String),
@@ -429,7 +427,7 @@ export const TableMetadataCacheUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableMetadataCacheUsage" }) as any as S.Schema<TableMetadataCacheUsage>;
 
 export type TableMetadataCacheUsageList = Array<TableMetadataCacheUsage>;
-export const TableMetadataCacheUsageList = /*@__PURE__*/ S.Array(
+const TableMetadataCacheUsageList = /*@__PURE__*/ S.Array(
   TableMetadataCacheUsage,
 ) as any as S.Schema<TableMetadataCacheUsageList>;
 
@@ -438,24 +436,21 @@ export interface MetadataCacheStatistics {
   /** Set for the Metadata caching eligible tables referenced in the query. */
   tableMetadataCacheUsage?: TableMetadataCacheUsageList;
 }
-export const MetadataCacheStatistics = /*@__PURE__*/ S.suspend(() =>
+const MetadataCacheStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableMetadataCacheUsage: S.optional(TableMetadataCacheUsageList),
   }),
 ).annotate({ identifier: "MetadataCacheStatistics" }) as any as S.Schema<MetadataCacheStatistics>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Query optimization information for a QUERY job. */
 export interface QueryInfo {
   /** Output only. Information about query optimizations. */
   optimizationDetails?: DocumentMap;
 }
-export const QueryInfo = /*@__PURE__*/ S.suspend(() =>
+const QueryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optimizationDetails: S.optional(DocumentMap),
   }),
@@ -467,7 +462,7 @@ export interface JobStatistics2ReservationUsageItem {
   /** Total slot milliseconds used by the reservation for a particular job. */
   slotMs?: string;
 }
-export const JobStatistics2ReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics2ReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slotMs: S.optional(S.String),
@@ -477,7 +472,7 @@ export const JobStatistics2ReservationUsageItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobStatistics2ReservationUsageItem>;
 
 export type JobStatistics2ReservationUsageItemList = Array<JobStatistics2ReservationUsageItem>;
-export const JobStatistics2ReservationUsageItemList = /*@__PURE__*/ S.Array(
+const JobStatistics2ReservationUsageItemList = /*@__PURE__*/ S.Array(
   JobStatistics2ReservationUsageItem,
 ) as any as S.Schema<JobStatistics2ReservationUsageItemList>;
 
@@ -489,7 +484,7 @@ export type StoredColumnsUnusedReasonCodeEnum =
   | "UNSUPPORTED_PREFILTER"
   | "INTERNAL_ERROR"
   | "OTHER_REASON";
-export const StoredColumnsUnusedReasonCodeEnum = S.String;
+const StoredColumnsUnusedReasonCodeEnum = S.String;
 
 /** If the stored column was not used, explain why. */
 export interface StoredColumnsUnusedReason {
@@ -500,7 +495,7 @@ export interface StoredColumnsUnusedReason {
   /** Specifies the detailed description for the scenario. */
   message?: string;
 }
-export const StoredColumnsUnusedReason = /*@__PURE__*/ S.suspend(() =>
+const StoredColumnsUnusedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uncoveredColumns: S.optional(StringList),
     code: S.optional(StoredColumnsUnusedReasonCodeEnum),
@@ -511,7 +506,7 @@ export const StoredColumnsUnusedReason = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StoredColumnsUnusedReason>;
 
 export type StoredColumnsUnusedReasonList = Array<StoredColumnsUnusedReason>;
-export const StoredColumnsUnusedReasonList = /*@__PURE__*/ S.Array(
+const StoredColumnsUnusedReasonList = /*@__PURE__*/ S.Array(
   StoredColumnsUnusedReason,
 ) as any as S.Schema<StoredColumnsUnusedReasonList>;
 
@@ -524,7 +519,7 @@ export interface StoredColumnsUsage {
   /** Specifies whether the query was accelerated with stored columns. */
   isQueryAccelerated?: boolean;
 }
-export const StoredColumnsUsage = /*@__PURE__*/ S.suspend(() =>
+const StoredColumnsUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storedColumnsUnusedReasons: S.optional(StoredColumnsUnusedReasonList),
     baseTable: S.optional(TableReference),
@@ -533,7 +528,7 @@ export const StoredColumnsUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoredColumnsUsage" }) as any as S.Schema<StoredColumnsUsage>;
 
 export type StoredColumnsUsageList = Array<StoredColumnsUsage>;
-export const StoredColumnsUsageList = /*@__PURE__*/ S.Array(
+const StoredColumnsUsageList = /*@__PURE__*/ S.Array(
   StoredColumnsUsage,
 ) as any as S.Schema<StoredColumnsUsageList>;
 
@@ -542,7 +537,7 @@ export type VectorSearchStatisticsIndexUsageModeEnum =
   | "UNUSED"
   | "PARTIALLY_USED"
   | "FULLY_USED";
-export const VectorSearchStatisticsIndexUsageModeEnum = S.String;
+const VectorSearchStatisticsIndexUsageModeEnum = S.String;
 
 /** Statistics for a vector search query. Populated as part of JobStatistics2. */
 export interface VectorSearchStatistics {
@@ -553,7 +548,7 @@ export interface VectorSearchStatistics {
   /** Specifies the index usage mode for the query. */
   indexUsageMode?: VectorSearchStatisticsIndexUsageModeEnum | (string & {});
 }
-export const VectorSearchStatistics = /*@__PURE__*/ S.suspend(() =>
+const VectorSearchStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexUnusedReasons: S.optional(IndexUnusedReasonList),
     storedColumnsUsages: S.optional(StoredColumnsUsageList),
@@ -568,7 +563,7 @@ export interface DatasetReference {
   /** Required. A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters. */
   datasetId?: string;
 }
-export const DatasetReference = /*@__PURE__*/ S.suspend(() =>
+const DatasetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     datasetId: S.optional(S.String),
@@ -586,7 +581,7 @@ export interface RowAccessPolicyReference {
   /** Required. The ID of the project containing this row access policy. */
   projectId?: string;
 }
-export const RowAccessPolicyReference = /*@__PURE__*/ S.suspend(() =>
+const RowAccessPolicyReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
     tableId: S.optional(S.String),
@@ -604,7 +599,7 @@ export interface RoutineReference {
   /** Required. The ID of the dataset containing this routine. */
   datasetId?: string;
 }
-export const RoutineReference = /*@__PURE__*/ S.suspend(() =>
+const RoutineReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     routineId: S.optional(S.String),
@@ -613,7 +608,7 @@ export const RoutineReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoutineReference" }) as any as S.Schema<RoutineReference>;
 
 export type RoutineReferenceList = Array<RoutineReference>;
-export const RoutineReferenceList = /*@__PURE__*/ S.Array(
+const RoutineReferenceList = /*@__PURE__*/ S.Array(
   RoutineReference,
 ) as any as S.Schema<RoutineReferenceList>;
 
@@ -632,7 +627,7 @@ export interface ExternalServiceCost {
   /** External service cost in terms of bigquery slot milliseconds. */
   slotMs?: string;
 }
-export const ExternalServiceCost = /*@__PURE__*/ S.suspend(() =>
+const ExternalServiceCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservedSlotCount: S.optional(S.String),
     billingMethod: S.optional(S.String),
@@ -644,7 +639,7 @@ export const ExternalServiceCost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalServiceCost" }) as any as S.Schema<ExternalServiceCost>;
 
 export type ExternalServiceCostList = Array<ExternalServiceCost>;
-export const ExternalServiceCostList = /*@__PURE__*/ S.Array(
+const ExternalServiceCostList = /*@__PURE__*/ S.Array(
   ExternalServiceCost,
 ) as any as S.Schema<ExternalServiceCostList>;
 
@@ -652,7 +647,7 @@ export type ExplainQueryStageComputeModeEnum =
   | "COMPUTE_MODE_UNSPECIFIED"
   | "BIGQUERY"
   | "BI_ENGINE";
-export const ExplainQueryStageComputeModeEnum = S.String;
+const ExplainQueryStageComputeModeEnum = S.String;
 
 /** An operation within a stage. */
 export interface ExplainQueryStep {
@@ -661,7 +656,7 @@ export interface ExplainQueryStep {
   /** Human-readable description of the step(s). */
   substeps?: StringList;
 }
-export const ExplainQueryStep = /*@__PURE__*/ S.suspend(() =>
+const ExplainQueryStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     substeps: S.optional(StringList),
@@ -669,7 +664,7 @@ export const ExplainQueryStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExplainQueryStep" }) as any as S.Schema<ExplainQueryStep>;
 
 export type ExplainQueryStepList = Array<ExplainQueryStep>;
-export const ExplainQueryStepList = /*@__PURE__*/ S.Array(
+const ExplainQueryStepList = /*@__PURE__*/ S.Array(
   ExplainQueryStep,
 ) as any as S.Schema<ExplainQueryStepList>;
 
@@ -738,7 +733,7 @@ export interface ExplainQueryStage {
   /** Milliseconds the slowest shard spent reading input. */
   readMsMax?: string;
 }
-export const ExplainQueryStage = /*@__PURE__*/ S.suspend(() =>
+const ExplainQueryStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waitRatioAvg: S.optional(S.Number),
     waitMsMax: S.optional(S.String),
@@ -775,7 +770,7 @@ export const ExplainQueryStage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExplainQueryStage" }) as any as S.Schema<ExplainQueryStage>;
 
 export type ExplainQueryStageList = Array<ExplainQueryStage>;
-export const ExplainQueryStageList = /*@__PURE__*/ S.Array(
+const ExplainQueryStageList = /*@__PURE__*/ S.Array(
   ExplainQueryStage,
 ) as any as S.Schema<ExplainQueryStageList>;
 
@@ -784,7 +779,7 @@ export interface InputDataChange {
   /** Output only. Records read difference percentage compared to a previous run. */
   recordsReadDiffPercentage?: number;
 }
-export const InputDataChange = /*@__PURE__*/ S.suspend(() =>
+const InputDataChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordsReadDiffPercentage: S.optional(S.Number),
   }),
@@ -797,7 +792,7 @@ export interface StagePerformanceChangeInsight {
   /** Output only. The stage id that the insight mapped to. */
   stageId?: string;
 }
-export const StagePerformanceChangeInsight = /*@__PURE__*/ S.suspend(() =>
+const StagePerformanceChangeInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputDataChange: S.optional(InputDataChange),
     stageId: S.optional(S.String),
@@ -807,7 +802,7 @@ export const StagePerformanceChangeInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StagePerformanceChangeInsight>;
 
 export type StagePerformanceChangeInsightList = Array<StagePerformanceChangeInsight>;
-export const StagePerformanceChangeInsightList = /*@__PURE__*/ S.Array(
+const StagePerformanceChangeInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceChangeInsight,
 ) as any as S.Schema<StagePerformanceChangeInsightList>;
 
@@ -818,7 +813,7 @@ export interface MetadataCacheStalenessInsight {
   /** Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash. */
   stalenessPercentageIncrease?: number;
 }
-export const MetadataCacheStalenessInsight = /*@__PURE__*/ S.suspend(() =>
+const MetadataCacheStalenessInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avgPreviousStalenessMs: S.optional(S.String),
     stalenessPercentageIncrease: S.optional(S.Number),
@@ -836,7 +831,7 @@ export interface TableChangeInsight {
   /** Output only. True if the table's column metadata index was not used in the current job, but was used in a previous job with the same query hash. */
   metadataCacheNotUsedButUsedPreviously?: boolean;
 }
-export const TableChangeInsight = /*@__PURE__*/ S.suspend(() =>
+const TableChangeInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadataCacheStalenessInsight: S.optional(MetadataCacheStalenessInsight),
     tableReference: S.optional(TableReference),
@@ -845,7 +840,7 @@ export const TableChangeInsight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableChangeInsight" }) as any as S.Schema<TableChangeInsight>;
 
 export type TableChangeInsightList = Array<TableChangeInsight>;
-export const TableChangeInsightList = /*@__PURE__*/ S.Array(
+const TableChangeInsightList = /*@__PURE__*/ S.Array(
   TableChangeInsight,
 ) as any as S.Schema<TableChangeInsightList>;
 
@@ -857,7 +852,7 @@ export type BiEngineReasonCodeEnum =
   | "INPUT_TOO_LARGE"
   | "OTHER_REASON"
   | "TABLE_EXCLUDED";
-export const BiEngineReasonCodeEnum = S.String;
+const BiEngineReasonCodeEnum = S.String;
 
 /** Reason why BI Engine didn't accelerate the query (or sub-query). */
 export interface BiEngineReason {
@@ -866,7 +861,7 @@ export interface BiEngineReason {
   /** Output only. High-level BI Engine reason for partial or disabled acceleration */
   code?: BiEngineReasonCodeEnum | (string & {});
 }
-export const BiEngineReason = /*@__PURE__*/ S.suspend(() =>
+const BiEngineReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(BiEngineReasonCodeEnum),
@@ -874,7 +869,7 @@ export const BiEngineReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BiEngineReason" }) as any as S.Schema<BiEngineReason>;
 
 export type BiEngineReasonList = Array<BiEngineReason>;
-export const BiEngineReasonList = /*@__PURE__*/ S.Array(
+const BiEngineReasonList = /*@__PURE__*/ S.Array(
   BiEngineReason,
 ) as any as S.Schema<BiEngineReasonList>;
 
@@ -889,7 +884,7 @@ export interface HighCardinalityJoin {
   /** Output only. The index of the join operator in the ExplainQueryStep lists. */
   stepIndex?: number;
 }
-export const HighCardinalityJoin = /*@__PURE__*/ S.suspend(() =>
+const HighCardinalityJoin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rightRows: S.optional(S.String),
     leftRows: S.optional(S.String),
@@ -899,7 +894,7 @@ export const HighCardinalityJoin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HighCardinalityJoin" }) as any as S.Schema<HighCardinalityJoin>;
 
 export type HighCardinalityJoinList = Array<HighCardinalityJoin>;
-export const HighCardinalityJoinList = /*@__PURE__*/ S.Array(
+const HighCardinalityJoinList = /*@__PURE__*/ S.Array(
   HighCardinalityJoin,
 ) as any as S.Schema<HighCardinalityJoinList>;
 
@@ -914,7 +909,7 @@ export interface SkewSource {
   /** Output only. Median partition output size (in bytes) for this stage. */
   outputBytesMedian?: string;
 }
-export const SkewSource = /*@__PURE__*/ S.suspend(() =>
+const SkewSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputBytesMax: S.optional(S.String),
     outputBytesP95: S.optional(S.String),
@@ -924,14 +919,14 @@ export const SkewSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SkewSource" }) as any as S.Schema<SkewSource>;
 
 export type SkewSourceList = Array<SkewSource>;
-export const SkewSourceList = /*@__PURE__*/ S.Array(SkewSource) as any as S.Schema<SkewSourceList>;
+const SkewSourceList = /*@__PURE__*/ S.Array(SkewSource) as any as S.Schema<SkewSourceList>;
 
 /** Partition skew detailed information. */
 export interface PartitionSkew {
   /** Output only. Source stages which produce skewed data. */
   skewSources?: SkewSourceList;
 }
-export const PartitionSkew = /*@__PURE__*/ S.suspend(() =>
+const PartitionSkew = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skewSources: S.optional(SkewSourceList),
   }),
@@ -952,7 +947,7 @@ export interface StagePerformanceStandaloneInsight {
   /** Output only. Partition skew in the stage. */
   partitionSkew?: PartitionSkew;
 }
-export const StagePerformanceStandaloneInsight = /*@__PURE__*/ S.suspend(() =>
+const StagePerformanceStandaloneInsight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insufficientShuffleQuota: S.optional(S.Boolean),
     biEngineReasons: S.optional(BiEngineReasonList),
@@ -966,7 +961,7 @@ export const StagePerformanceStandaloneInsight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StagePerformanceStandaloneInsight>;
 
 export type StagePerformanceStandaloneInsightList = Array<StagePerformanceStandaloneInsight>;
-export const StagePerformanceStandaloneInsightList = /*@__PURE__*/ S.Array(
+const StagePerformanceStandaloneInsightList = /*@__PURE__*/ S.Array(
   StagePerformanceStandaloneInsight,
 ) as any as S.Schema<StagePerformanceStandaloneInsightList>;
 
@@ -981,7 +976,7 @@ export interface PerformanceInsights {
   /** Output only. Average execution ms of previous runs. Indicates the job ran slow compared to previous executions. To find previous executions, use INFORMATION_SCHEMA tables and filter jobs with same query hash. */
   avgPreviousExecutionMs?: string;
 }
-export const PerformanceInsights = /*@__PURE__*/ S.suspend(() =>
+const PerformanceInsights = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stagePerformanceChangeInsights: S.optional(StagePerformanceChangeInsightList),
     tableChangeInsights: S.optional(TableChangeInsightList),
@@ -991,12 +986,12 @@ export const PerformanceInsights = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PerformanceInsights" }) as any as S.Schema<PerformanceInsights>;
 
 export type TableReferenceList = Array<TableReference>;
-export const TableReferenceList = /*@__PURE__*/ S.Array(
+const TableReferenceList = /*@__PURE__*/ S.Array(
   TableReference,
 ) as any as S.Schema<TableReferenceList>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Spark job logs can be filtered by these fields in Cloud Logging. */
 export interface SparkLoggingInfo {
@@ -1005,7 +1000,7 @@ export interface SparkLoggingInfo {
   /** Output only. Project ID where the Spark logs were written. */
   projectId?: string;
 }
-export const SparkLoggingInfo = /*@__PURE__*/ S.suspend(() =>
+const SparkLoggingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -1027,7 +1022,7 @@ export interface SparkStatistics {
   /** Output only. The Google Cloud Storage bucket that is used as the default file system by the Spark application. This field is only filled when the Spark procedure uses the invoker security mode. The `gcsStagingBucket` bucket is inferred from the `@@spark_proc_properties.staging_bucket` system variable (if it is provided). Otherwise, BigQuery creates a default staging bucket for the job and returns the bucket name in this field. Example: * `gs://[bucket_name]` */
   gcsStagingBucket?: string;
 }
-export const SparkStatistics = /*@__PURE__*/ S.suspend(() =>
+const SparkStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(StringMap),
     loggingInfo: S.optional(SparkLoggingInfo),
@@ -1045,7 +1040,7 @@ export interface ExportDataStatistics {
   /** [Alpha] Number of destination rows generated in case of EXPORT DATA statement only. */
   rowCount?: string;
 }
-export const ExportDataStatistics = /*@__PURE__*/ S.suspend(() =>
+const ExportDataStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileCount: S.optional(S.String),
     rowCount: S.optional(S.String),
@@ -1067,7 +1062,7 @@ export interface LoadQueryStatistics {
   /** Output only. Number of rows imported in a LOAD query. Note that while a LOAD query is in the running state, this value may change. */
   outputRows?: string;
 }
-export const LoadQueryStatistics = /*@__PURE__*/ S.suspend(() =>
+const LoadQueryStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputBytes: S.optional(S.String),
     bytesTransferred: S.optional(S.String),
@@ -1091,7 +1086,7 @@ export type MaterializedViewRejectedReasonEnum =
   | "OUT_OF_TIME_TRAVEL_WINDOW"
   | "BASE_TABLE_FINE_GRAINED_SECURITY_POLICY"
   | "BASE_TABLE_TOO_STALE";
-export const MaterializedViewRejectedReasonEnum = S.String;
+const MaterializedViewRejectedReasonEnum = S.String;
 
 /** A materialized view considered for a query job. */
 export interface MaterializedView {
@@ -1104,7 +1099,7 @@ export interface MaterializedView {
   /** If present, specifies the reason why the materialized view was not chosen for the query. */
   rejectedReason?: MaterializedViewRejectedReasonEnum | (string & {});
 }
-export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
+const MaterializedView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableReference: S.optional(TableReference),
     chosen: S.optional(S.Boolean),
@@ -1114,7 +1109,7 @@ export const MaterializedView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaterializedView" }) as any as S.Schema<MaterializedView>;
 
 export type MaterializedViewList = Array<MaterializedView>;
-export const MaterializedViewList = /*@__PURE__*/ S.Array(
+const MaterializedViewList = /*@__PURE__*/ S.Array(
   MaterializedView,
 ) as any as S.Schema<MaterializedViewList>;
 
@@ -1123,7 +1118,7 @@ export interface MaterializedViewStatistics {
   /** Materialized views considered for the query job. Only certain materialized views are used. For a detailed list, see the child message. If many materialized views are considered, then the list might be incomplete. */
   materializedView?: MaterializedViewList;
 }
-export const MaterializedViewStatistics = /*@__PURE__*/ S.suspend(() =>
+const MaterializedViewStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     materializedView: S.optional(MaterializedViewList),
   }),
@@ -1148,7 +1143,7 @@ export interface QueryTimelineSample {
   /** Cumulative slot-ms consumed by the query. */
   totalSlotMs?: string;
 }
-export const QueryTimelineSample = /*@__PURE__*/ S.suspend(() =>
+const QueryTimelineSample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elapsedMs: S.optional(S.String),
     estimatedRunnableUnits: S.optional(S.String),
@@ -1161,7 +1156,7 @@ export const QueryTimelineSample = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryTimelineSample" }) as any as S.Schema<QueryTimelineSample>;
 
 export type QueryTimelineSampleList = Array<QueryTimelineSample>;
-export const QueryTimelineSampleList = /*@__PURE__*/ S.Array(
+const QueryTimelineSampleList = /*@__PURE__*/ S.Array(
   QueryTimelineSample,
 ) as any as S.Schema<QueryTimelineSampleList>;
 
@@ -1171,7 +1166,7 @@ export interface BigQueryModelTraining {
   /** Deprecated. */
   currentIteration?: number;
 }
-export const BigQueryModelTraining = /*@__PURE__*/ S.suspend(() =>
+const BigQueryModelTraining = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedTotalIterations: S.optional(S.String),
     currentIteration: S.optional(S.Number),
@@ -1184,14 +1179,14 @@ export type BiEngineStatisticsAccelerationModeEnum =
   | "PARTIAL_INPUT"
   | "FULL_INPUT"
   | "FULL_QUERY";
-export const BiEngineStatisticsAccelerationModeEnum = S.String;
+const BiEngineStatisticsAccelerationModeEnum = S.String;
 
 export type BiEngineStatisticsBiEngineModeEnum =
   | "ACCELERATION_MODE_UNSPECIFIED"
   | "DISABLED"
   | "PARTIAL"
   | "FULL";
-export const BiEngineStatisticsBiEngineModeEnum = S.String;
+const BiEngineStatisticsBiEngineModeEnum = S.String;
 
 /** Statistics for a BI Engine specific query. Populated as part of JobStatistics2 */
 export interface BiEngineStatistics {
@@ -1202,7 +1197,7 @@ export interface BiEngineStatistics {
   /** Output only. Specifies which mode of BI Engine acceleration was performed (if any). */
   biEngineMode?: BiEngineStatisticsBiEngineModeEnum | (string & {});
 }
-export const BiEngineStatistics = /*@__PURE__*/ S.suspend(() =>
+const BiEngineStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accelerationMode: S.optional(BiEngineStatisticsAccelerationModeEnum),
     biEngineReasons: S.optional(BiEngineReasonList),
@@ -1214,7 +1209,7 @@ export type IncrementalResultStatsDisabledReasonEnum =
   | "DISABLED_REASON_UNSPECIFIED"
   | "OTHER"
   | "UNSUPPORTED_OPERATOR";
-export const IncrementalResultStatsDisabledReasonEnum = S.String;
+const IncrementalResultStatsDisabledReasonEnum = S.String;
 
 /** Statistics related to Incremental Query Results. Populated as part of JobStatistics2. This feature is not yet available. */
 export interface IncrementalResultStats {
@@ -1233,7 +1228,7 @@ export interface IncrementalResultStats {
   /** Output only. Number of rows that were in the latest result set before query completion. */
   incrementalRowCount?: string;
 }
-export const IncrementalResultStats = /*@__PURE__*/ S.suspend(() =>
+const IncrementalResultStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastIncrementalRowTime: S.optional(S.String),
     disabledReasonDetails: S.optional(S.String),
@@ -1250,7 +1245,7 @@ export type ObjectStorageStatsCloudProviderEnum =
   | "GCP"
   | "AWS"
   | "AZURE";
-export const ObjectStorageStatsCloudProviderEnum = S.String;
+const ObjectStorageStatsCloudProviderEnum = S.String;
 
 /** Storage and caching statistics for object storage. */
 export interface ObjectStorageStats {
@@ -1261,7 +1256,7 @@ export interface ObjectStorageStats {
   /** Total bytes read directly from the cloud provider's storage. */
   objectStorageBytesRead?: string;
 }
-export const ObjectStorageStats = /*@__PURE__*/ S.suspend(() =>
+const ObjectStorageStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProvider: S.optional(ObjectStorageStatsCloudProviderEnum),
     cacheBytesRead: S.optional(S.String),
@@ -1270,12 +1265,12 @@ export const ObjectStorageStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObjectStorageStats" }) as any as S.Schema<ObjectStorageStats>;
 
 export type ObjectStorageStatsList = Array<ObjectStorageStats>;
-export const ObjectStorageStatsList = /*@__PURE__*/ S.Array(
+const ObjectStorageStatsList = /*@__PURE__*/ S.Array(
   ObjectStorageStats,
 ) as any as S.Schema<ObjectStorageStatsList>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Arima coefficients. */
 export interface ArimaCoefficients {
@@ -1286,7 +1281,7 @@ export interface ArimaCoefficients {
   /** Moving-average coefficients, an array of double. */
   movingAverageCoefficients?: DoubleList;
 }
-export const ArimaCoefficients = /*@__PURE__*/ S.suspend(() =>
+const ArimaCoefficients = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRegressiveCoefficients: S.optional(DoubleList),
     interceptCoefficient: S.optional(S.Number),
@@ -1303,7 +1298,7 @@ export interface ArimaOrder {
   /** Order of the autoregressive part. */
   p?: string;
 }
-export const ArimaOrder = /*@__PURE__*/ S.suspend(() =>
+const ArimaOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     d: S.optional(S.String),
     q: S.optional(S.String),
@@ -1320,7 +1315,7 @@ export interface ArimaFittingMetrics {
   /** AIC. */
   aic?: number;
 }
-export const ArimaFittingMetrics = /*@__PURE__*/ S.suspend(() =>
+const ArimaFittingMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variance: S.optional(S.Number),
     logLikelihood: S.optional(S.Number),
@@ -1337,12 +1332,12 @@ export type ArimaModelInfoSeasonalPeriodsItemEnum =
   | "QUARTERLY"
   | "YEARLY"
   | "HOURLY";
-export const ArimaModelInfoSeasonalPeriodsItemEnum = S.String;
+const ArimaModelInfoSeasonalPeriodsItemEnum = S.String;
 
 export type ArimaModelInfoSeasonalPeriodsItemEnumList = Array<
   ArimaModelInfoSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaModelInfoSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
+const ArimaModelInfoSeasonalPeriodsItemEnumList = /*@__PURE__*/ S.Array(
   ArimaModelInfoSeasonalPeriodsItemEnum,
 ) as any as S.Schema<ArimaModelInfoSeasonalPeriodsItemEnumList>;
 
@@ -1369,7 +1364,7 @@ export interface ArimaModelInfo {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaModelInfoSeasonalPeriodsItemEnumList;
 }
-export const ArimaModelInfo = /*@__PURE__*/ S.suspend(() =>
+const ArimaModelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arimaCoefficients: S.optional(ArimaCoefficients),
     hasDrift: S.optional(S.Boolean),
@@ -1385,7 +1380,7 @@ export const ArimaModelInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ArimaModelInfo" }) as any as S.Schema<ArimaModelInfo>;
 
 export type ArimaModelInfoList = Array<ArimaModelInfo>;
-export const ArimaModelInfoList = /*@__PURE__*/ S.Array(
+const ArimaModelInfoList = /*@__PURE__*/ S.Array(
   ArimaModelInfo,
 ) as any as S.Schema<ArimaModelInfoList>;
 
@@ -1398,12 +1393,10 @@ export type ArimaResultSeasonalPeriodsItemEnum =
   | "QUARTERLY"
   | "YEARLY"
   | "HOURLY";
-export const ArimaResultSeasonalPeriodsItemEnum = S.String;
-
 export type ArimaResultSeasonalPeriodsItemEnumList = Array<
   ArimaResultSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaResultSeasonalPeriodsItemEnumList =
+const ArimaResultSeasonalPeriodsItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaResultSeasonalPeriodsItemEnumList>;
 
 /** (Auto-)arima fitting result. Wrap everything in ArimaResult for easier refactoring if we want to use model-specific iteration results. */
@@ -1413,7 +1406,7 @@ export interface ArimaResult {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaResultSeasonalPeriodsItemEnumList;
 }
-export const ArimaResult = /*@__PURE__*/ S.suspend(() =>
+const ArimaResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arimaModelInfo: S.optional(ArimaModelInfoList),
     seasonalPeriods: S.optional(ArimaResultSeasonalPeriodsItemEnumList),
@@ -1431,7 +1424,7 @@ export interface PrincipalComponentInfo {
   /** Id of the principal component. */
   principalComponentId?: string;
 }
-export const PrincipalComponentInfo = /*@__PURE__*/ S.suspend(() =>
+const PrincipalComponentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cumulativeExplainedVarianceRatio: S.optional(S.Number),
     explainedVariance: S.optional(S.Number),
@@ -1441,7 +1434,7 @@ export const PrincipalComponentInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PrincipalComponentInfo" }) as any as S.Schema<PrincipalComponentInfo>;
 
 export type PrincipalComponentInfoList = Array<PrincipalComponentInfo>;
-export const PrincipalComponentInfoList = /*@__PURE__*/ S.Array(
+const PrincipalComponentInfoList = /*@__PURE__*/ S.Array(
   PrincipalComponentInfo,
 ) as any as S.Schema<PrincipalComponentInfoList>;
 
@@ -1454,7 +1447,7 @@ export interface ClusterInfo {
   /** Cluster radius, the average distance from centroid to each point assigned to the cluster. */
   clusterRadius?: number;
 }
-export const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
+const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     centroidId: S.optional(S.String),
     clusterSize: S.optional(S.String),
@@ -1463,9 +1456,7 @@ export const ClusterInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterInfo" }) as any as S.Schema<ClusterInfo>;
 
 export type ClusterInfoList = Array<ClusterInfo>;
-export const ClusterInfoList = /*@__PURE__*/ S.Array(
-  ClusterInfo,
-) as any as S.Schema<ClusterInfoList>;
+const ClusterInfoList = /*@__PURE__*/ S.Array(ClusterInfo) as any as S.Schema<ClusterInfoList>;
 
 /** Information about a single iteration of the training run. */
 export interface IterationResult {
@@ -1486,7 +1477,7 @@ export interface IterationResult {
   /** Time taken to run the iteration in milliseconds. */
   durationMs?: string;
 }
-export const IterationResult = /*@__PURE__*/ S.suspend(() =>
+const IterationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     learnRate: S.optional(S.Number),
     arimaResult: S.optional(ArimaResult),
@@ -1500,7 +1491,7 @@ export const IterationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IterationResult" }) as any as S.Schema<IterationResult>;
 
 export type IterationResultList = Array<IterationResult>;
-export const IterationResultList = /*@__PURE__*/ S.Array(
+const IterationResultList = /*@__PURE__*/ S.Array(
   IterationResult,
 ) as any as S.Schema<IterationResultList>;
 
@@ -1531,16 +1522,16 @@ export type MlStatisticsModelTypeEnum =
   | "ONNX"
   | "TRANSFORM_ONLY"
   | "CONTRIBUTION_ANALYSIS";
-export const MlStatisticsModelTypeEnum = S.String;
+const MlStatisticsModelTypeEnum = S.String;
 
 export type MlStatisticsTrainingTypeEnum =
   | "TRAINING_TYPE_UNSPECIFIED"
   | "SINGLE_TRAINING"
   | "HPARAM_TUNING";
-export const MlStatisticsTrainingTypeEnum = S.String;
+const MlStatisticsTrainingTypeEnum = S.String;
 
 export type TrainingOptionsFeedbackTypeEnum = "FEEDBACK_TYPE_UNSPECIFIED" | "IMPLICIT" | "EXPLICIT";
-export const TrainingOptionsFeedbackTypeEnum = S.String;
+const TrainingOptionsFeedbackTypeEnum = S.String;
 
 export type TrainingOptionsTreeMethodEnum =
   | "TREE_METHOD_UNSPECIFIED"
@@ -1548,7 +1539,7 @@ export type TrainingOptionsTreeMethodEnum =
   | "EXACT"
   | "APPROX"
   | "HIST";
-export const TrainingOptionsTreeMethodEnum = S.String;
+const TrainingOptionsTreeMethodEnum = S.String;
 
 export type TrainingOptionsHolidayRegionsItemEnum =
   | "HOLIDAY_REGION_UNSPECIFIED"
@@ -1620,12 +1611,10 @@ export type TrainingOptionsHolidayRegionsItemEnum =
   | "VE"
   | "VN"
   | "ZA";
-export const TrainingOptionsHolidayRegionsItemEnum = S.String;
-
 export type TrainingOptionsHolidayRegionsItemEnumList = Array<
   TrainingOptionsHolidayRegionsItemEnum | (string & {})
 >;
-export const TrainingOptionsHolidayRegionsItemEnumList =
+const TrainingOptionsHolidayRegionsItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHolidayRegionsItemEnumList>;
 
 export type TrainingOptionsDataSplitMethodEnum =
@@ -1635,16 +1624,16 @@ export type TrainingOptionsDataSplitMethodEnum =
   | "SEQUENTIAL"
   | "NO_SPLIT"
   | "AUTO_SPLIT";
-export const TrainingOptionsDataSplitMethodEnum = S.String;
+const TrainingOptionsDataSplitMethodEnum = S.String;
 
 export type TrainingOptionsLearnRateStrategyEnum =
   | "LEARN_RATE_STRATEGY_UNSPECIFIED"
   | "LINE_SEARCH"
   | "CONSTANT";
-export const TrainingOptionsLearnRateStrategyEnum = S.String;
+const TrainingOptionsLearnRateStrategyEnum = S.String;
 
 export type TrainingOptionsBoosterTypeEnum = "BOOSTER_TYPE_UNSPECIFIED" | "GBTREE" | "DART";
-export const TrainingOptionsBoosterTypeEnum = S.String;
+const TrainingOptionsBoosterTypeEnum = S.String;
 
 export type TrainingOptionsHparamTuningObjectivesItemEnum =
   | "HPARAM_TUNING_OBJECTIVE_UNSPECIFIED"
@@ -1664,30 +1653,28 @@ export type TrainingOptionsHparamTuningObjectivesItemEnum =
   | "MEAN_AVERAGE_PRECISION"
   | "NORMALIZED_DISCOUNTED_CUMULATIVE_GAIN"
   | "AVERAGE_RANK";
-export const TrainingOptionsHparamTuningObjectivesItemEnum = S.String;
-
 export type TrainingOptionsHparamTuningObjectivesItemEnumList = Array<
   TrainingOptionsHparamTuningObjectivesItemEnum | (string & {})
 >;
-export const TrainingOptionsHparamTuningObjectivesItemEnumList =
+const TrainingOptionsHparamTuningObjectivesItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<TrainingOptionsHparamTuningObjectivesItemEnumList>;
 
 export type TrainingOptionsPcaSolverEnum = "UNSPECIFIED" | "FULL" | "RANDOMIZED" | "AUTO";
-export const TrainingOptionsPcaSolverEnum = S.String;
+const TrainingOptionsPcaSolverEnum = S.String;
 
 export type TrainingOptionsKmeansInitializationMethodEnum =
   | "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED"
   | "RANDOM"
   | "CUSTOM"
   | "KMEANS_PLUS_PLUS";
-export const TrainingOptionsKmeansInitializationMethodEnum = S.String;
+const TrainingOptionsKmeansInitializationMethodEnum = S.String;
 
 export type TrainingOptionsReservationAffinityTypeEnum =
   | "RESERVATION_AFFINITY_TYPE_UNSPECIFIED"
   | "NO_RESERVATION"
   | "ANY_RESERVATION"
   | "SPECIFIC_RESERVATION";
-export const TrainingOptionsReservationAffinityTypeEnum = S.String;
+const TrainingOptionsReservationAffinityTypeEnum = S.String;
 
 export type TrainingOptionsHolidayRegionEnum =
   | "HOLIDAY_REGION_UNSPECIFIED"
@@ -1759,16 +1746,16 @@ export type TrainingOptionsHolidayRegionEnum =
   | "VE"
   | "VN"
   | "ZA";
-export const TrainingOptionsHolidayRegionEnum = S.String;
+const TrainingOptionsHolidayRegionEnum = S.String;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
 
 export type TrainingOptionsLossTypeEnum =
   | "LOSS_TYPE_UNSPECIFIED"
   | "MEAN_SQUARED_LOSS"
   | "MEAN_LOG_LOSS";
-export const TrainingOptionsLossTypeEnum = S.String;
+const TrainingOptionsLossTypeEnum = S.String;
 
 export type TrainingOptionsDataFrequencyEnum =
   | "DATA_FREQUENCY_UNSPECIFIED"
@@ -1780,16 +1767,16 @@ export type TrainingOptionsDataFrequencyEnum =
   | "DAILY"
   | "HOURLY"
   | "PER_MINUTE";
-export const TrainingOptionsDataFrequencyEnum = S.String;
+const TrainingOptionsDataFrequencyEnum = S.String;
 
 export type TrainingOptionsDartNormalizeTypeEnum =
   | "DART_NORMALIZE_TYPE_UNSPECIFIED"
   | "TREE"
   | "FOREST";
-export const TrainingOptionsDartNormalizeTypeEnum = S.String;
+const TrainingOptionsDartNormalizeTypeEnum = S.String;
 
 export type TrainingOptionsDistanceTypeEnum = "DISTANCE_TYPE_UNSPECIFIED" | "EUCLIDEAN" | "COSINE";
-export const TrainingOptionsDistanceTypeEnum = S.String;
+const TrainingOptionsDistanceTypeEnum = S.String;
 
 export type TrainingOptionsColorSpaceEnum =
   | "COLOR_SPACE_UNSPECIFIED"
@@ -1798,23 +1785,23 @@ export type TrainingOptionsColorSpaceEnum =
   | "YIQ"
   | "YUV"
   | "GRAYSCALE";
-export const TrainingOptionsColorSpaceEnum = S.String;
+const TrainingOptionsColorSpaceEnum = S.String;
 
 export type TrainingOptionsModelRegistryEnum = "MODEL_REGISTRY_UNSPECIFIED" | "VERTEX_AI";
-export const TrainingOptionsModelRegistryEnum = S.String;
+const TrainingOptionsModelRegistryEnum = S.String;
 
 export type TrainingOptionsOptimizationStrategyEnum =
   | "OPTIMIZATION_STRATEGY_UNSPECIFIED"
   | "BATCH_GRADIENT_DESCENT"
   | "NORMAL_EQUATION";
-export const TrainingOptionsOptimizationStrategyEnum = S.String;
+const TrainingOptionsOptimizationStrategyEnum = S.String;
 
 export type TrainingOptionsCategoryEncodingMethodEnum =
   | "ENCODING_METHOD_UNSPECIFIED"
   | "ONE_HOT_ENCODING"
   | "LABEL_ENCODING"
   | "DUMMY_ENCODING";
-export const TrainingOptionsCategoryEncodingMethodEnum = S.String;
+const TrainingOptionsCategoryEncodingMethodEnum = S.String;
 
 /** Options used in model training. */
 export interface TrainingOptions {
@@ -2021,7 +2008,7 @@ export interface TrainingOptions {
   /** Number of integral steps for the integrated gradients explain method. */
   integratedGradientsNumSteps?: string;
 }
-export const TrainingOptions = /*@__PURE__*/ S.suspend(() =>
+const TrainingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedbackType: S.optional(TrainingOptionsFeedbackTypeEnum),
     subsample: S.optional(S.Number),
@@ -2134,7 +2121,7 @@ export interface Entry {
   /** The predicted label. For confidence_threshold > 0, we will also add an entry indicating the number of items under the confidence threshold. */
   predictedLabel?: string;
 }
-export const Entry = /*@__PURE__*/ S.suspend(() =>
+const Entry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemCount: S.optional(S.String),
     predictedLabel: S.optional(S.String),
@@ -2142,7 +2129,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
 export type EntryList = Array<Entry>;
-export const EntryList = /*@__PURE__*/ S.Array(Entry) as any as S.Schema<EntryList>;
+const EntryList = /*@__PURE__*/ S.Array(Entry) as any as S.Schema<EntryList>;
 
 /** A single row in the confusion matrix. */
 export interface Row {
@@ -2151,7 +2138,7 @@ export interface Row {
   /** The original label of this row. */
   actualLabel?: string;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(EntryList),
     actualLabel: S.optional(S.String),
@@ -2159,7 +2146,7 @@ export const Row = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** Confusion matrix for multi-class classification models. */
 export interface ConfusionMatrix {
@@ -2168,7 +2155,7 @@ export interface ConfusionMatrix {
   /** One row per actual label. */
   rows?: RowList;
 }
-export const ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
+const ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidenceThreshold: S.optional(S.Number),
     rows: S.optional(RowList),
@@ -2176,7 +2163,7 @@ export const ConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfusionMatrix" }) as any as S.Schema<ConfusionMatrix>;
 
 export type ConfusionMatrixList = Array<ConfusionMatrix>;
-export const ConfusionMatrixList = /*@__PURE__*/ S.Array(
+const ConfusionMatrixList = /*@__PURE__*/ S.Array(
   ConfusionMatrix,
 ) as any as S.Schema<ConfusionMatrixList>;
 
@@ -2197,7 +2184,7 @@ export interface AggregateClassificationMetrics {
   /** Logarithmic Loss. For multiclass this is a macro-averaged metric. */
   logLoss?: number;
 }
-export const AggregateClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregateClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rocAuc: S.optional(S.Number),
     accuracy: S.optional(S.Number),
@@ -2218,7 +2205,7 @@ export interface MultiClassClassificationMetrics {
   /** Aggregate classification metrics. */
   aggregateClassificationMetrics?: AggregateClassificationMetrics;
 }
-export const MultiClassClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
+const MultiClassClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confusionMatrixList: S.optional(ConfusionMatrixList),
     aggregateClassificationMetrics: S.optional(AggregateClassificationMetrics),
@@ -2232,7 +2219,7 @@ export interface DimensionalityReductionMetrics {
   /** Total percentage of variance explained by the selected principal components. */
   totalExplainedVarianceRatio?: number;
 }
-export const DimensionalityReductionMetrics = /*@__PURE__*/ S.suspend(() =>
+const DimensionalityReductionMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalExplainedVarianceRatio: S.optional(S.Number),
   }),
@@ -2247,7 +2234,7 @@ export interface CategoryCount {
   /** The count of training samples matching the category within the cluster. */
   count?: string;
 }
-export const CategoryCount = /*@__PURE__*/ S.suspend(() =>
+const CategoryCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     count: S.optional(S.String),
@@ -2255,7 +2242,7 @@ export const CategoryCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CategoryCount" }) as any as S.Schema<CategoryCount>;
 
 export type CategoryCountList = Array<CategoryCount>;
-export const CategoryCountList = /*@__PURE__*/ S.Array(
+const CategoryCountList = /*@__PURE__*/ S.Array(
   CategoryCount,
 ) as any as S.Schema<CategoryCountList>;
 
@@ -2264,7 +2251,7 @@ export interface CategoricalValue {
   /** Counts of all categories for the categorical feature. If there are more than ten categories, we return top ten (by count) and return one more CategoryCount with category "_OTHER_" and count as aggregate counts of remaining categories. */
   categoryCounts?: CategoryCountList;
 }
-export const CategoricalValue = /*@__PURE__*/ S.suspend(() =>
+const CategoricalValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryCounts: S.optional(CategoryCountList),
   }),
@@ -2279,7 +2266,7 @@ export interface FeatureValue {
   /** The categorical feature value. */
   categoricalValue?: CategoricalValue;
 }
-export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
+const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numericalValue: S.optional(S.Number),
     featureColumn: S.optional(S.String),
@@ -2288,9 +2275,7 @@ export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 
 export type FeatureValueList = Array<FeatureValue>;
-export const FeatureValueList = /*@__PURE__*/ S.Array(
-  FeatureValue,
-) as any as S.Schema<FeatureValueList>;
+const FeatureValueList = /*@__PURE__*/ S.Array(FeatureValue) as any as S.Schema<FeatureValueList>;
 
 /** Message containing the information about one cluster. */
 export interface Cluster {
@@ -2301,7 +2286,7 @@ export interface Cluster {
   /** Count of training data rows that were assigned to this cluster. */
   count?: string;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     centroidId: S.optional(S.String),
     featureValues: S.optional(FeatureValueList),
@@ -2310,7 +2295,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Cluster" }) as any as S.Schema<Cluster>;
 
 export type ClusterList = Array<Cluster>;
-export const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
+const ClusterList = /*@__PURE__*/ S.Array(Cluster) as any as S.Schema<ClusterList>;
 
 /** Evaluation metrics for clustering models. */
 export interface ClusteringMetrics {
@@ -2321,7 +2306,7 @@ export interface ClusteringMetrics {
   /** Davies-Bouldin index. */
   daviesBouldinIndex?: number;
 }
-export const ClusteringMetrics = /*@__PURE__*/ S.suspend(() =>
+const ClusteringMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meanSquaredDistance: S.optional(S.Number),
     clusters: S.optional(ClusterList),
@@ -2330,7 +2315,7 @@ export const ClusteringMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusteringMetrics" }) as any as S.Schema<ClusteringMetrics>;
 
 export type ArimaFittingMetricsList = Array<ArimaFittingMetrics>;
-export const ArimaFittingMetricsList = /*@__PURE__*/ S.Array(
+const ArimaFittingMetricsList = /*@__PURE__*/ S.Array(
   ArimaFittingMetrics,
 ) as any as S.Schema<ArimaFittingMetricsList>;
 
@@ -2343,12 +2328,10 @@ export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum =
   | "QUARTERLY"
   | "YEARLY"
   | "HOURLY";
-export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum = S.String;
-
 export type ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
+const ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList>;
 
 /** Model evaluation metrics for a single ARIMA forecasting model. */
@@ -2372,7 +2355,7 @@ export interface ArimaSingleModelForecastingMetrics {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaSingleModelForecastingMetricsSeasonalPeriodsItemEnumList;
 }
-export const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
+const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasDrift: S.optional(S.Boolean),
     hasHolidayEffect: S.optional(S.Boolean),
@@ -2389,15 +2372,15 @@ export const ArimaSingleModelForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArimaSingleModelForecastingMetrics>;
 
 export type ArimaSingleModelForecastingMetricsList = Array<ArimaSingleModelForecastingMetrics>;
-export const ArimaSingleModelForecastingMetricsList = /*@__PURE__*/ S.Array(
+const ArimaSingleModelForecastingMetricsList = /*@__PURE__*/ S.Array(
   ArimaSingleModelForecastingMetrics,
 ) as any as S.Schema<ArimaSingleModelForecastingMetricsList>;
 
 export type BooleanList = Array<boolean>;
-export const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
+const BooleanList = /*@__PURE__*/ S.Array(S.Boolean) as any as S.Schema<BooleanList>;
 
 export type ArimaOrderList = Array<ArimaOrder>;
-export const ArimaOrderList = /*@__PURE__*/ S.Array(ArimaOrder) as any as S.Schema<ArimaOrderList>;
+const ArimaOrderList = /*@__PURE__*/ S.Array(ArimaOrder) as any as S.Schema<ArimaOrderList>;
 
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   | "SEASONAL_PERIOD_TYPE_UNSPECIFIED"
@@ -2408,12 +2391,10 @@ export type ArimaForecastingMetricsSeasonalPeriodsItemEnum =
   | "QUARTERLY"
   | "YEARLY"
   | "HOURLY";
-export const ArimaForecastingMetricsSeasonalPeriodsItemEnum = S.String;
-
 export type ArimaForecastingMetricsSeasonalPeriodsItemEnumList = Array<
   ArimaForecastingMetricsSeasonalPeriodsItemEnum | (string & {})
 >;
-export const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
+const ArimaForecastingMetricsSeasonalPeriodsItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ArimaForecastingMetricsSeasonalPeriodsItemEnumList>;
 
 /** Model evaluation metrics for ARIMA forecasting models. */
@@ -2431,7 +2412,7 @@ export interface ArimaForecastingMetrics {
   /** Seasonal periods. Repeated because multiple periods are supported for one time series. */
   seasonalPeriods?: ArimaForecastingMetricsSeasonalPeriodsItemEnumList;
 }
-export const ArimaForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
+const ArimaForecastingMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arimaFittingMetrics: S.optional(ArimaFittingMetricsList),
     arimaSingleModelForecastingMetrics: S.optional(ArimaSingleModelForecastingMetricsList),
@@ -2453,7 +2434,7 @@ export interface RankingMetrics {
   /** Similar to the mean squared error computed in regression and explicit recommendation models except instead of computing the rating directly, the output from evaluate is computed against a preference which is 1 or 0 depending on if the rating exists or not. */
   meanSquaredError?: number;
 }
-export const RankingMetrics = /*@__PURE__*/ S.suspend(() =>
+const RankingMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meanAveragePrecision: S.optional(S.Number),
     normalizedDiscountedCumulativeGain: S.optional(S.Number),
@@ -2483,7 +2464,7 @@ export interface BinaryConfusionMatrix {
   /** Number of true samples predicted as false. */
   trueNegatives?: string;
 }
-export const BinaryConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
+const BinaryConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recall: S.optional(S.Number),
     f1Score: S.optional(S.Number),
@@ -2498,7 +2479,7 @@ export const BinaryConfusionMatrix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BinaryConfusionMatrix" }) as any as S.Schema<BinaryConfusionMatrix>;
 
 export type BinaryConfusionMatrixList = Array<BinaryConfusionMatrix>;
-export const BinaryConfusionMatrixList = /*@__PURE__*/ S.Array(
+const BinaryConfusionMatrixList = /*@__PURE__*/ S.Array(
   BinaryConfusionMatrix,
 ) as any as S.Schema<BinaryConfusionMatrixList>;
 
@@ -2513,7 +2494,7 @@ export interface BinaryClassificationMetrics {
   /** Label representing the positive class. */
   positiveLabel?: string;
 }
-export const BinaryClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
+const BinaryClassificationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateClassificationMetrics: S.optional(AggregateClassificationMetrics),
     binaryConfusionMatrixList: S.optional(BinaryConfusionMatrixList),
@@ -2537,7 +2518,7 @@ export interface RegressionMetrics {
   /** R^2 score. This corresponds to r2_score in ML.EVALUATE. */
   rSquared?: number;
 }
-export const RegressionMetrics = /*@__PURE__*/ S.suspend(() =>
+const RegressionMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meanSquaredLogError: S.optional(S.Number),
     meanAbsoluteError: S.optional(S.Number),
@@ -2564,7 +2545,7 @@ export interface EvaluationMetrics {
   /** Populated for regression models and explicit feedback type matrix factorization models. */
   regressionMetrics?: RegressionMetrics;
 }
-export const EvaluationMetrics = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     multiClassClassificationMetrics: S.optional(MultiClassClassificationMetrics),
     dimensionalityReductionMetrics: S.optional(DimensionalityReductionMetrics),
@@ -2584,7 +2565,7 @@ export type HparamTuningTrialStatusEnum =
   | "FAILED"
   | "INFEASIBLE"
   | "STOPPED_EARLY";
-export const HparamTuningTrialStatusEnum = S.String;
+const HparamTuningTrialStatusEnum = S.String;
 
 /** Training info of a trial in [hyperparameter tuning](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-hp-tuning-overview) models. */
 export interface HparamTuningTrial {
@@ -2609,7 +2590,7 @@ export interface HparamTuningTrial {
   /** Loss computed on the training data at the end of trial. */
   trainingLoss?: number;
 }
-export const HparamTuningTrial = /*@__PURE__*/ S.suspend(() =>
+const HparamTuningTrial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hparams: S.optional(TrainingOptions),
     startTimeMs: S.optional(S.String),
@@ -2625,7 +2606,7 @@ export const HparamTuningTrial = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HparamTuningTrial" }) as any as S.Schema<HparamTuningTrial>;
 
 export type HparamTuningTrialList = Array<HparamTuningTrial>;
-export const HparamTuningTrialList = /*@__PURE__*/ S.Array(
+const HparamTuningTrialList = /*@__PURE__*/ S.Array(
   HparamTuningTrial,
 ) as any as S.Schema<HparamTuningTrialList>;
 
@@ -2642,7 +2623,7 @@ export interface MlStatistics {
   /** Output only. Maximum number of iterations specified as max_iterations in the 'CREATE MODEL' query. The actual number of iterations may be less than this number due to early stop. */
   maxIterations?: string;
 }
-export const MlStatistics = /*@__PURE__*/ S.suspend(() =>
+const MlStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iterationResults: S.optional(IterationResultList),
     modelType: S.optional(MlStatisticsModelTypeEnum),
@@ -2657,13 +2638,13 @@ export type DmlStatisticsFineGrainedDmlUnusedReasonEnum =
   | "MAX_PARTITION_SIZE_EXCEEDED"
   | "TABLE_NOT_ENROLLED"
   | "DML_IN_MULTI_STATEMENT_TRANSACTION";
-export const DmlStatisticsFineGrainedDmlUnusedReasonEnum = S.String;
+const DmlStatisticsFineGrainedDmlUnusedReasonEnum = S.String;
 
 export type DmlStatisticsDmlModeEnum =
   | "DML_MODE_UNSPECIFIED"
   | "COARSE_GRAINED_DML"
   | "FINE_GRAINED_DML";
-export const DmlStatisticsDmlModeEnum = S.String;
+const DmlStatisticsDmlModeEnum = S.String;
 
 /** Detailed statistics for DML statements */
 export interface DmlStatistics {
@@ -2678,7 +2659,7 @@ export interface DmlStatistics {
   /** Output only. Number of deleted Rows. populated by DML DELETE, MERGE and TRUNCATE statements. */
   deletedRowCount?: string;
 }
-export const DmlStatistics = /*@__PURE__*/ S.suspend(() =>
+const DmlStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fineGrainedDmlUnusedReason: S.optional(DmlStatisticsFineGrainedDmlUnusedReasonEnum),
     updatedRowCount: S.optional(S.String),
@@ -2697,7 +2678,7 @@ export interface PropertyGraphReference {
   /** Required. The ID of the dataset containing this property graph. */
   datasetId?: string;
 }
-export const PropertyGraphReference = /*@__PURE__*/ S.suspend(() =>
+const PropertyGraphReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyGraphId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -2706,12 +2687,12 @@ export const PropertyGraphReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyGraphReference" }) as any as S.Schema<PropertyGraphReference>;
 
 export type PropertyGraphReferenceList = Array<PropertyGraphReference>;
-export const PropertyGraphReferenceList = /*@__PURE__*/ S.Array(
+const PropertyGraphReferenceList = /*@__PURE__*/ S.Array(
   PropertyGraphReference,
 ) as any as S.Schema<PropertyGraphReferenceList>;
 
 export type QueryParameterValueList = Array<QueryParameterValue>;
-export const QueryParameterValueList = /*@__PURE__*/ S.Array(
+const QueryParameterValueList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueList>;
 
@@ -2722,7 +2703,7 @@ export interface RangeValue {
   /** Optional. The start value of the range. A missing value represents an unbounded start. */
   start?: QueryParameterValue;
 }
-export const RangeValue = /*@__PURE__*/ S.suspend(() =>
+const RangeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.suspend(() => QueryParameterValue)),
     start: S.optional(S.suspend(() => QueryParameterValue)),
@@ -2730,7 +2711,7 @@ export const RangeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RangeValue" }) as any as S.Schema<RangeValue>;
 
 export type QueryParameterValueMap = { [key: string]: QueryParameterValue | undefined };
-export const QueryParameterValueMap = /*@__PURE__*/ S.Record(
+const QueryParameterValueMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => QueryParameterValue),
 ) as any as S.Schema<QueryParameterValueMap>;
@@ -2746,7 +2727,7 @@ export interface QueryParameterValue {
   /** The struct field values. */
   structValues?: QueryParameterValueMap;
 }
-export const QueryParameterValue = /*@__PURE__*/ S.suspend(() =>
+const QueryParameterValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arrayValues: S.optional(QueryParameterValueList),
     value: S.optional(S.String),
@@ -2763,7 +2744,7 @@ export interface QueryParameterTypeStructTypesItem {
   /** Optional. The name of this field. */
   name?: string;
 }
-export const QueryParameterTypeStructTypesItem = /*@__PURE__*/ S.suspend(() =>
+const QueryParameterTypeStructTypesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.suspend(() => QueryParameterType)),
     description: S.optional(S.String),
@@ -2774,7 +2755,7 @@ export const QueryParameterTypeStructTypesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryParameterTypeStructTypesItem>;
 
 export type QueryParameterTypeStructTypesItemList = Array<QueryParameterTypeStructTypesItem>;
-export const QueryParameterTypeStructTypesItemList = /*@__PURE__*/ S.Array(
+const QueryParameterTypeStructTypesItemList = /*@__PURE__*/ S.Array(
   QueryParameterTypeStructTypesItem,
 ) as any as S.Schema<QueryParameterTypeStructTypesItemList>;
 
@@ -2791,7 +2772,7 @@ export interface QueryParameterType {
   /** Required. The top level type of this field. */
   type?: string;
 }
-export const QueryParameterType = /*@__PURE__*/ S.suspend(() =>
+const QueryParameterType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestampPrecision: S.optional(S.String),
     rangeElementType: S.optional(QueryParameterType),
@@ -2810,7 +2791,7 @@ export interface QueryParameter {
   /** Required. The type of this parameter. */
   parameterType?: QueryParameterType;
 }
-export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
+const QueryParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     parameterValue: S.optional(QueryParameterValue),
@@ -2819,7 +2800,7 @@ export const QueryParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryParameter" }) as any as S.Schema<QueryParameter>;
 
 export type QueryParameterList = Array<QueryParameter>;
-export const QueryParameterList = /*@__PURE__*/ S.Array(
+const QueryParameterList = /*@__PURE__*/ S.Array(
   QueryParameter,
 ) as any as S.Schema<QueryParameterList>;
 
@@ -2828,14 +2809,14 @@ export interface DataPolicyOption {
   /** Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id. */
   name?: string;
 }
-export const DataPolicyOption = /*@__PURE__*/ S.suspend(() =>
+const DataPolicyOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "DataPolicyOption" }) as any as S.Schema<DataPolicyOption>;
 
 export type DataPolicyOptionList = Array<DataPolicyOption>;
-export const DataPolicyOptionList = /*@__PURE__*/ S.Array(
+const DataPolicyOptionList = /*@__PURE__*/ S.Array(
   DataPolicyOption,
 ) as any as S.Schema<DataPolicyOptionList>;
 
@@ -2844,7 +2825,7 @@ export interface DataPolicyList {
   /** Contains a list of data policy options. At most 9 data policies are allowed per field. */
   dataPolicies?: DataPolicyOptionList;
 }
-export const DataPolicyList = /*@__PURE__*/ S.suspend(() =>
+const DataPolicyList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataPolicies: S.optional(DataPolicyOptionList),
   }),
@@ -2854,13 +2835,13 @@ export type TableFieldSchemaRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
-export const TableFieldSchemaRoundingModeEnum = S.String;
+const TableFieldSchemaRoundingModeEnum = S.String;
 
 export interface TableFieldSchemaDataGovernanceTagsInfo {
   /** Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where parent-id is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example "sensitive". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: "parent-id/pii": "sensitive", "myProject/cost_center": "sales" */
   dataGovernanceTags?: StringMap;
 }
-export const TableFieldSchemaDataGovernanceTagsInfo = /*@__PURE__*/ S.suspend(() =>
+const TableFieldSchemaDataGovernanceTagsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataGovernanceTags: S.optional(StringMap),
   }),
@@ -2872,7 +2853,7 @@ export interface TableFieldSchemaCategories {
   /** Deprecated. */
   names?: StringList;
 }
-export const TableFieldSchemaCategories = /*@__PURE__*/ S.suspend(() =>
+const TableFieldSchemaCategories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -2884,7 +2865,7 @@ export interface TableFieldSchemaRangeElementType {
   /** Required. The type of a field element. For more information, see TableFieldSchema.type. */
   type?: string;
 }
-export const TableFieldSchemaRangeElementType = /*@__PURE__*/ S.suspend(() =>
+const TableFieldSchemaRangeElementType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -2901,7 +2882,7 @@ export interface GeneratedExpressionInfo {
   /** Optional. Whether the column generation is done asynchronously. */
   asynchronous?: boolean;
 }
-export const GeneratedExpressionInfo = /*@__PURE__*/ S.suspend(() =>
+const GeneratedExpressionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stored: S.optional(S.Boolean),
     generationExpression: S.optional(S.String),
@@ -2913,7 +2894,7 @@ export type GeneratedColumnGeneratedModeEnum =
   | "GENERATED_MODE_UNSPECIFIED"
   | "GENERATED_ALWAYS"
   | "GENERATED_BY_DEFAULT";
-export const GeneratedColumnGeneratedModeEnum = S.String;
+const GeneratedColumnGeneratedModeEnum = S.String;
 
 /** Optional. Definition of how values are generated for the field. Only valid for top-level schema fields (not nested fields). */
 export interface GeneratedColumn {
@@ -2922,7 +2903,7 @@ export interface GeneratedColumn {
   /** Optional. Dictates when system generated values are used to populate the field. */
   generatedMode?: GeneratedColumnGeneratedModeEnum | (string & {});
 }
-export const GeneratedColumn = /*@__PURE__*/ S.suspend(() =>
+const GeneratedColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generatedExpressionInfo: S.optional(GeneratedExpressionInfo),
     generatedMode: S.optional(GeneratedColumnGeneratedModeEnum),
@@ -2933,7 +2914,7 @@ export interface TableFieldSchemaPolicyTags {
   /** A list of policy tag resource names. For example, "projects/1/locations/eu/taxonomies/2/policyTags/3". At most 1 policy tag is currently allowed. */
   names?: StringList;
 }
-export const TableFieldSchemaPolicyTags =
+const TableFieldSchemaPolicyTags =
   TableFieldSchemaCategories as any as S.Schema<TableFieldSchemaPolicyTags>;
 
 /** A field in TableSchema */
@@ -2979,7 +2960,7 @@ export interface TableFieldSchema {
   /** Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * 'und:ci': undetermined locale, case insensitive. * '': empty string. Default to case-sensitive behavior. */
   collation?: string;
 }
-export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
+const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataPolicyList: S.optional(DataPolicyList),
     roundingMode: S.optional(TableFieldSchemaRoundingModeEnum),
@@ -3005,19 +2986,19 @@ export const TableFieldSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableFieldSchema" }) as any as S.Schema<TableFieldSchema>;
 
 export type TableFieldSchemaList = Array<TableFieldSchema>;
-export const TableFieldSchemaList = /*@__PURE__*/ S.Array(
+const TableFieldSchemaList = /*@__PURE__*/ S.Array(
   TableFieldSchema,
 ) as any as S.Schema<TableFieldSchemaList>;
 
 export type ForeignTypeInfoTypeSystemEnum = "TYPE_SYSTEM_UNSPECIFIED" | "HIVE";
-export const ForeignTypeInfoTypeSystemEnum = S.String;
+const ForeignTypeInfoTypeSystemEnum = S.String;
 
 /** Metadata about the foreign data type definition such as the system in which the type is defined. */
 export interface ForeignTypeInfo {
   /** Required. Specifies the system which defines the foreign data type. */
   typeSystem?: ForeignTypeInfoTypeSystemEnum | (string & {});
 }
-export const ForeignTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const ForeignTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeSystem: S.optional(ForeignTypeInfoTypeSystemEnum),
   }),
@@ -3030,7 +3011,7 @@ export interface TableSchema {
   /** Optional. Specifies metadata of the foreign data type definition in field schema (TableFieldSchema.foreign_type_definition). */
   foreignTypeInfo?: ForeignTypeInfo;
 }
-export const TableSchema = /*@__PURE__*/ S.suspend(() =>
+const TableSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(TableFieldSchemaList),
     foreignTypeInfo: S.optional(ForeignTypeInfo),
@@ -3140,7 +3121,7 @@ export interface JobStatistics2 {
   /** Output only. For dry-run jobs, totalBytesProcessed is an estimate and this field specifies the accuracy of the estimate. Possible values can be: UNKNOWN: accuracy of the estimate is unknown. PRECISE: estimate is precise. LOWER_BOUND: estimate is lower bound of what the query would cost. UPPER_BOUND: estimate is upper bound of what the query would cost. */
   totalBytesProcessedAccuracy?: string;
 }
-export const JobStatistics2 = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     genAiStats: S.optional(GenAiStats),
     searchStatistics: S.optional(SearchStatistics),
@@ -3210,7 +3191,7 @@ export interface JobStatistics3 {
   /** Output only. The number of bad records encountered. Note that if the job has failed because of more bad records encountered than the maximum allowed in the load job configuration, then this number can be less than the total number of bad records present in the input data. */
   badRecords?: string;
 }
-export const JobStatistics3 = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputFileBytes: S.optional(S.String),
     timeline: S.optional(QueryTimelineSampleList),
@@ -3226,7 +3207,7 @@ export interface DataMaskingStatistics {
   /** Whether any accessed data was protected by the data masking. */
   dataMaskingApplied?: boolean;
 }
-export const DataMaskingStatistics = /*@__PURE__*/ S.suspend(() =>
+const DataMaskingStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataMaskingApplied: S.optional(S.Boolean),
   }),
@@ -3237,7 +3218,7 @@ export interface TransactionInfo {
   /** Output only. [Alpha] Id of the transaction. */
   transactionId?: string;
 }
-export const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
+const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionId: S.optional(S.String),
   }),
@@ -3247,7 +3228,7 @@ export type ScriptStatisticsEvaluationKindEnum =
   | "EVALUATION_KIND_UNSPECIFIED"
   | "STATEMENT"
   | "EXPRESSION";
-export const ScriptStatisticsEvaluationKindEnum = S.String;
+const ScriptStatisticsEvaluationKindEnum = S.String;
 
 /** Represents the location of the statement/expression being evaluated. Line and column numbers are defined as follows: - Line and column numbers start with one. That is, line 1 column 1 denotes the start of the script. - When inside a stored procedure, all line/column numbers are relative to the procedure body, not the script in which the procedure was defined. - Start/end positions exclude leading/trailing comments and whitespace. The end position always ends with a ";", when present. - Multi-byte Unicode characters are treated as just one column. - If the original script (or procedure definition) contains TAB characters, a tab "snaps" the indentation forward to the nearest multiple of 8 characters, plus 1. For example, a TAB on column 1, 2, 3, 4, 5, 6 , or 8 will advance the next character to column 9. A TAB on column 9, 10, 11, 12, 13, 14, 15, or 16 will advance the next character to column 17. */
 export interface ScriptStackFrame {
@@ -3264,7 +3245,7 @@ export interface ScriptStackFrame {
   /** Output only. One-based start column. */
   startColumn?: number;
 }
-export const ScriptStackFrame = /*@__PURE__*/ S.suspend(() =>
+const ScriptStackFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endColumn: S.optional(S.Number),
     endLine: S.optional(S.Number),
@@ -3276,7 +3257,7 @@ export const ScriptStackFrame = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptStackFrame" }) as any as S.Schema<ScriptStackFrame>;
 
 export type ScriptStackFrameList = Array<ScriptStackFrame>;
-export const ScriptStackFrameList = /*@__PURE__*/ S.Array(
+const ScriptStackFrameList = /*@__PURE__*/ S.Array(
   ScriptStackFrame,
 ) as any as S.Schema<ScriptStackFrameList>;
 
@@ -3287,7 +3268,7 @@ export interface ScriptStatistics {
   /** Stack trace showing the line/column/procedure name of each frame on the stack at the point where the current evaluation happened. The leaf frame is first, the primary script is last. Never empty. */
   stackFrames?: ScriptStackFrameList;
 }
-export const ScriptStatistics = /*@__PURE__*/ S.suspend(() =>
+const ScriptStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationKind: S.optional(ScriptStatisticsEvaluationKindEnum),
     stackFrames: S.optional(ScriptStackFrameList),
@@ -3295,10 +3276,8 @@ export const ScriptStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScriptStatistics" }) as any as S.Schema<ScriptStatistics>;
 
 export type JobStatisticsReservationUsageItem = JobStatistics2ReservationUsageItem;
-export const JobStatisticsReservationUsageItem = JobStatistics2ReservationUsageItem;
-
 export type JobStatisticsReservationUsageItemList = Array<JobStatistics2ReservationUsageItem>;
-export const JobStatisticsReservationUsageItemList =
+const JobStatisticsReservationUsageItemList =
   JobStatistics2ReservationUsageItemList as any as S.Schema<JobStatisticsReservationUsageItemList>;
 
 /** [Preview] Information related to sessions. */
@@ -3306,7 +3285,7 @@ export interface SessionInfo {
   /** Output only. The id of the session. */
   sessionId?: string;
 }
-export const SessionInfo = /*@__PURE__*/ S.suspend(() =>
+const SessionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionId: S.optional(S.String),
   }),
@@ -3317,7 +3296,7 @@ export type JobStatisticsEditionEnum =
   | "STANDARD"
   | "ENTERPRISE"
   | "ENTERPRISE_PLUS";
-export const JobStatisticsEditionEnum = S.String;
+const JobStatisticsEditionEnum = S.String;
 
 /** Statistics for an extract job. */
 export interface JobStatistics4 {
@@ -3328,7 +3307,7 @@ export interface JobStatistics4 {
   /** Output only. Describes a timeline of job execution. */
   timeline?: QueryTimelineSampleList;
 }
-export const JobStatistics4 = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics4 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationUriFileCounts: S.optional(StringList),
     inputBytes: S.optional(S.String),
@@ -3345,7 +3324,7 @@ export interface JobStatistics5 {
   /** Output only. Number of logical bytes copied to the destination table. */
   copiedLogicalBytes?: string;
 }
-export const JobStatistics5 = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteDestinationRegion: S.optional(S.String),
     copiedRows: S.optional(S.String),
@@ -3406,7 +3385,7 @@ export interface JobStatistics {
   /** Output only. Statistics for a copy job. */
   copy?: JobStatistics5;
 }
-export const JobStatistics = /*@__PURE__*/ S.suspend(() =>
+const JobStatistics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalBytesProcessed: S.optional(S.String),
     rowLevelSecurityStatistics: S.optional(RowLevelSecurityStatistics),
@@ -3447,7 +3426,7 @@ export interface ErrorProto {
   /** Specifies where the error occurred, if present. */
   location?: string;
 }
-export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
+const ErrorProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugInfo: S.optional(S.String),
     reason: S.optional(S.String),
@@ -3457,7 +3436,7 @@ export const ErrorProto = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorProto" }) as any as S.Schema<ErrorProto>;
 
 export type ErrorProtoList = Array<ErrorProto>;
-export const ErrorProtoList = /*@__PURE__*/ S.Array(ErrorProto) as any as S.Schema<ErrorProtoList>;
+const ErrorProtoList = /*@__PURE__*/ S.Array(ErrorProto) as any as S.Schema<ErrorProtoList>;
 
 export interface JobStatus {
   /** Output only. Running state of the job. Valid states include 'PENDING', 'RUNNING', and 'DONE'. */
@@ -3467,7 +3446,7 @@ export interface JobStatus {
   /** Output only. Final error result of the job. If present, indicates that the job has completed and was unsuccessful. */
   errorResult?: ErrorProto;
 }
-export const JobStatus = /*@__PURE__*/ S.suspend(() =>
+const JobStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
     errors: S.optional(ErrorProtoList),
@@ -3486,7 +3465,7 @@ export interface HivePartitioningOptions {
   /** Optional. If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified. Note that this field should only be true when creating a permanent external table or querying a temporary external table. Hive-partitioned loads with require_partition_filter explicitly set to true will fail. */
   requirePartitionFilter?: boolean;
 }
-export const HivePartitioningOptions = /*@__PURE__*/ S.suspend(() =>
+const HivePartitioningOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     sourceUriPrefix: S.optional(S.String),
@@ -3496,7 +3475,7 @@ export const HivePartitioningOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HivePartitioningOptions" }) as any as S.Schema<HivePartitioningOptions>;
 
 export type ParquetOptionsMapTargetTypeEnum = "MAP_TARGET_TYPE_UNSPECIFIED" | "ARRAY_OF_STRUCT";
-export const ParquetOptionsMapTargetTypeEnum = S.String;
+const ParquetOptionsMapTargetTypeEnum = S.String;
 
 /** Parquet Options for load and make external tables. */
 export interface ParquetOptions {
@@ -3507,7 +3486,7 @@ export interface ParquetOptions {
   /** Optional. Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default. */
   enumAsString?: boolean;
 }
-export const ParquetOptions = /*@__PURE__*/ S.suspend(() =>
+const ParquetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableListInference: S.optional(S.Boolean),
     mapTargetType: S.optional(ParquetOptionsMapTargetTypeEnum),
@@ -3516,7 +3495,7 @@ export const ParquetOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ParquetOptions" }) as any as S.Schema<ParquetOptions>;
 
 export type JobConfigurationLoadJsonExtensionEnum = "JSON_EXTENSION_UNSPECIFIED" | "GEOJSON";
-export const JobConfigurationLoadJsonExtensionEnum = S.String;
+const JobConfigurationLoadJsonExtensionEnum = S.String;
 
 /** A connection-level property to customize query behavior. Under JDBC, these correspond directly to connection properties passed to the DriverManager. Under ODBC, these correspond to properties in the connection string. Currently supported connection properties: * **dataset_project_id**: represents the default project for datasets that are used in the query. Setting the system variable `@@dataset_project_id` achieves the same behavior. For more information about system variables, see: https://cloud.google.com/bigquery/docs/reference/system-variables * **time_zone**: represents the default timezone used to run the query. * **session_id**: associates the query with a given session. * **query_label**: associates the query with a given job label. If set, all subsequent queries in a script or session will have this label. For the format in which a you can specify a query label, see labels in the JobConfiguration resource type: https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration * **service_account**: indicates the service account to use to run a continuous query. If set, the query job uses the service account to access Google Cloud resources. Service account access is bounded by the IAM permissions that you have granted to the service account. Additional properties are allowed, but ignored. Specifying multiple connection properties with the same key returns an error. */
 export interface ConnectionProperty {
@@ -3525,7 +3504,7 @@ export interface ConnectionProperty {
   /** The key of the property to set. */
   key?: string;
 }
-export const ConnectionProperty = /*@__PURE__*/ S.suspend(() =>
+const ConnectionProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     key: S.optional(S.String),
@@ -3533,7 +3512,7 @@ export const ConnectionProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConnectionProperty" }) as any as S.Schema<ConnectionProperty>;
 
 export type ConnectionPropertyList = Array<ConnectionProperty>;
-export const ConnectionPropertyList = /*@__PURE__*/ S.Array(
+const ConnectionPropertyList = /*@__PURE__*/ S.Array(
   ConnectionProperty,
 ) as any as S.Schema<ConnectionPropertyList>;
 
@@ -3541,7 +3520,7 @@ export type JobConfigurationLoadSourceColumnMatchEnum =
   | "SOURCE_COLUMN_MATCH_UNSPECIFIED"
   | "POSITION"
   | "NAME";
-export const JobConfigurationLoadSourceColumnMatchEnum = S.String;
+const JobConfigurationLoadSourceColumnMatchEnum = S.String;
 
 /** Properties for the destination table. */
 export interface DestinationTableProperties {
@@ -3554,7 +3533,7 @@ export interface DestinationTableProperties {
   /** Optional. The labels associated with this table. You can use these to organize and group your tables. This will only be used if the destination table is newly created. If the table already exists and labels are different than the current labels are provided, the job will fail. */
   labels?: StringMap;
 }
-export const DestinationTableProperties = /*@__PURE__*/ S.suspend(() =>
+const DestinationTableProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     friendlyName: S.optional(S.String),
@@ -3570,12 +3549,10 @@ export type JobConfigurationLoadDecimalTargetTypesItemEnum =
   | "NUMERIC"
   | "BIGNUMERIC"
   | "STRING";
-export const JobConfigurationLoadDecimalTargetTypesItemEnum = S.String;
-
 export type JobConfigurationLoadDecimalTargetTypesItemEnumList = Array<
   JobConfigurationLoadDecimalTargetTypesItemEnum | (string & {})
 >;
-export const JobConfigurationLoadDecimalTargetTypesItemEnumList =
+const JobConfigurationLoadDecimalTargetTypesItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<JobConfigurationLoadDecimalTargetTypesItemEnumList>;
 
 /** Configuration for Cloud KMS encryption settings. */
@@ -3583,7 +3560,7 @@ export interface EncryptionConfiguration {
   /** Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. */
   kmsKeyName?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -3594,14 +3571,14 @@ export type JobConfigurationLoadColumnNameCharacterMapEnum =
   | "STRICT"
   | "V1"
   | "V2";
-export const JobConfigurationLoadColumnNameCharacterMapEnum = S.String;
+const JobConfigurationLoadColumnNameCharacterMapEnum = S.String;
 
 /** Configures table clustering. */
 export interface Clustering {
   /** One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The ordering of the clustering fields should be prioritized from most to least important for filtering purposes. For additional information, see [Introduction to clustered tables](https://cloud.google.com/bigquery/docs/clustered-tables#limitations). */
   fields?: StringList;
 }
-export const Clustering = /*@__PURE__*/ S.suspend(() =>
+const Clustering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(StringList),
   }),
@@ -3610,7 +3587,7 @@ export const Clustering = /*@__PURE__*/ S.suspend(() =>
 export type JobConfigurationLoadFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
   | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
-export const JobConfigurationLoadFileSetSpecTypeEnum = S.String;
+const JobConfigurationLoadFileSetSpecTypeEnum = S.String;
 
 export interface TimePartitioning {
   /** Optional. Number of milliseconds for which to keep the storage for a partition. A wrapper is used here because 0 is an invalid value. */
@@ -3622,7 +3599,7 @@ export interface TimePartitioning {
   /** Required. The supported types are DAY, HOUR, MONTH, and YEAR, which will generate one partition per day, hour, month, and year, respectively. */
   type?: string;
 }
-export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
+const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationMs: S.optional(S.String),
     requirePartitionFilter: S.optional(S.Boolean),
@@ -3639,7 +3616,7 @@ export interface RangePartitioningRange {
   /** [Experimental] The width of each interval. */
   interval?: string;
 }
-export const RangePartitioningRange = /*@__PURE__*/ S.suspend(() =>
+const RangePartitioningRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -3653,7 +3630,7 @@ export interface RangePartitioning {
   /** [Experimental] Defines the ranges for range partitioning. */
   range?: RangePartitioningRange;
 }
-export const RangePartitioning = /*@__PURE__*/ S.suspend(() =>
+const RangePartitioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     range: S.optional(RangePartitioningRange),
@@ -3661,7 +3638,7 @@ export const RangePartitioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RangePartitioning" }) as any as S.Schema<RangePartitioning>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = DoubleList as any as S.Schema<IntegerList>;
+const IntegerList = DoubleList as any as S.Schema<IntegerList>;
 
 /** JobConfigurationLoad contains the configuration properties for loading data into a destination table. */
 export interface JobConfigurationLoad {
@@ -3756,7 +3733,7 @@ export interface JobConfigurationLoad {
   /** Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated. */
   timestampTargetPrecision?: IntegerList;
 }
-export const JobConfigurationLoad = /*@__PURE__*/ S.suspend(() =>
+const JobConfigurationLoad = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createSession: S.optional(S.Boolean),
     schemaInline: S.optional(S.String),
@@ -3812,7 +3789,7 @@ export type JobConfigurationTableCopyOperationTypeEnum =
   | "SNAPSHOT"
   | "RESTORE"
   | "CLONE";
-export const JobConfigurationTableCopyOperationTypeEnum = S.String;
+const JobConfigurationTableCopyOperationTypeEnum = S.String;
 
 /** JobConfigurationTableCopy configures a job that copies data from one table to another. For more information on copying tables, see [Copy a table](https://cloud.google.com/bigquery/docs/managing-tables#copy-table). */
 export interface JobConfigurationTableCopy {
@@ -3833,7 +3810,7 @@ export interface JobConfigurationTableCopy {
   /** Custom encryption configuration (e.g., Cloud KMS keys). */
   destinationEncryptionConfiguration?: EncryptionConfiguration;
 }
-export const JobConfigurationTableCopy = /*@__PURE__*/ S.suspend(() =>
+const JobConfigurationTableCopy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createDisposition: S.optional(S.String),
     operationType: S.optional(JobConfigurationTableCopyOperationTypeEnum),
@@ -3855,7 +3832,7 @@ export interface StandardSqlField {
   /** Optional. The name of this field. Can be absent for struct fields. */
   name?: string;
 }
-export const StandardSqlField = /*@__PURE__*/ S.suspend(() =>
+const StandardSqlField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.suspend(() => StandardSqlDataType)),
     name: S.optional(S.String),
@@ -3863,7 +3840,7 @@ export const StandardSqlField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardSqlField" }) as any as S.Schema<StandardSqlField>;
 
 export type StandardSqlFieldList = Array<StandardSqlField>;
-export const StandardSqlFieldList = /*@__PURE__*/ S.Array(
+const StandardSqlFieldList = /*@__PURE__*/ S.Array(
   StandardSqlField,
 ) as any as S.Schema<StandardSqlFieldList>;
 
@@ -3872,7 +3849,7 @@ export interface StandardSqlStructType {
   /** Fields within the struct. */
   fields?: StandardSqlFieldList;
 }
-export const StandardSqlStructType = /*@__PURE__*/ S.suspend(() =>
+const StandardSqlStructType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(StandardSqlFieldList),
   }),
@@ -3898,7 +3875,7 @@ export type StandardSqlDataTypeTypeKindEnum =
   | "STRUCT"
   | "RANGE"
   | "UUID";
-export const StandardSqlDataTypeTypeKindEnum = S.String;
+const StandardSqlDataTypeTypeKindEnum = S.String;
 
 /** The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } } * RANGE: { "typeKind": "RANGE", "rangeElementType": {"typeKind": "DATE"} } */
 export interface StandardSqlDataType {
@@ -3911,7 +3888,7 @@ export interface StandardSqlDataType {
   /** Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY"). */
   typeKind?: StandardSqlDataTypeTypeKindEnum | (string & {});
 }
-export const StandardSqlDataType = /*@__PURE__*/ S.suspend(() =>
+const StandardSqlDataType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rangeElementType: S.optional(StandardSqlDataType),
     structType: S.optional(StandardSqlStructType),
@@ -3921,7 +3898,7 @@ export const StandardSqlDataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StandardSqlDataType" }) as any as S.Schema<StandardSqlDataType>;
 
 export type StandardSqlDataTypeMap = { [key: string]: StandardSqlDataType | undefined };
-export const StandardSqlDataTypeMap = /*@__PURE__*/ S.Record(
+const StandardSqlDataTypeMap = /*@__PURE__*/ S.Record(
   S.String,
   StandardSqlDataType,
 ) as any as S.Schema<StandardSqlDataTypeMap>;
@@ -3933,7 +3910,7 @@ export interface SystemVariables {
   /** Output only. Value for each system variable. */
   values?: DocumentMap;
 }
-export const SystemVariables = /*@__PURE__*/ S.suspend(() =>
+const SystemVariables = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     types: S.optional(StandardSqlDataTypeMap),
     values: S.optional(DocumentMap),
@@ -3947,7 +3924,7 @@ export interface UserDefinedFunctionResource {
   /** [Pick one] A code resource to load from a Google Cloud Storage URI (gs://bucket/path). */
   resourceUri?: string;
 }
-export const UserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
+const UserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inlineCode: S.optional(S.String),
     resourceUri: S.optional(S.String),
@@ -3957,14 +3934,14 @@ export const UserDefinedFunctionResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserDefinedFunctionResource>;
 
 export type UserDefinedFunctionResourceList = Array<UserDefinedFunctionResource>;
-export const UserDefinedFunctionResourceList = /*@__PURE__*/ S.Array(
+const UserDefinedFunctionResourceList = /*@__PURE__*/ S.Array(
   UserDefinedFunctionResource,
 ) as any as S.Schema<UserDefinedFunctionResourceList>;
 
 export type ExternalDataConfigurationFileSetSpecTypeEnum =
   | "FILE_SET_SPEC_TYPE_FILE_SYSTEM_MATCH"
   | "FILE_SET_SPEC_TYPE_NEW_LINE_DELIMITED_MANIFEST";
-export const ExternalDataConfigurationFileSetSpecTypeEnum = S.String;
+const ExternalDataConfigurationFileSetSpecTypeEnum = S.String;
 
 /** Information related to a CSV data source. */
 export interface CsvOptions {
@@ -3989,7 +3966,7 @@ export interface CsvOptions {
   /** Optional. Controls the strategy used to match loaded columns to the schema. If not set, a sensible default is chosen based on how the schema is provided. If autodetect is used, then columns are matched by name. Otherwise, columns are matched by position. This is done to keep the behavior backward-compatible. Acceptable values are: POSITION - matches by position. This assumes that the columns are ordered the same way as the schema. NAME - matches by name. This reads the header row as column names and reorders columns to match the field names in the schema. */
   sourceColumnMatch?: string;
 }
-export const CsvOptions = /*@__PURE__*/ S.suspend(() =>
+const CsvOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipLeadingRows: S.optional(S.String),
     preserveAsciiControlCharacters: S.optional(S.Boolean),
@@ -4005,13 +3982,13 @@ export const CsvOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CsvOptions" }) as any as S.Schema<CsvOptions>;
 
 export type ExternalDataConfigurationJsonExtensionEnum = "JSON_EXTENSION_UNSPECIFIED" | "GEOJSON";
-export const ExternalDataConfigurationJsonExtensionEnum = S.String;
+const ExternalDataConfigurationJsonExtensionEnum = S.String;
 
 export type ExternalDataConfigurationMetadataCacheModeEnum =
   | "METADATA_CACHE_MODE_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
-export const ExternalDataConfigurationMetadataCacheModeEnum = S.String;
+const ExternalDataConfigurationMetadataCacheModeEnum = S.String;
 
 /** Options specific to Google Sheets data sources. */
 export interface GoogleSheetsOptions {
@@ -4020,7 +3997,7 @@ export interface GoogleSheetsOptions {
   /** Optional. The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema. */
   skipLeadingRows?: string;
 }
-export const GoogleSheetsOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleSheetsOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(S.String),
     skipLeadingRows: S.optional(S.String),
@@ -4031,14 +4008,14 @@ export type ExternalDataConfigurationObjectMetadataEnum =
   | "OBJECT_METADATA_UNSPECIFIED"
   | "DIRECTORY"
   | "SIMPLE";
-export const ExternalDataConfigurationObjectMetadataEnum = S.String;
+const ExternalDataConfigurationObjectMetadataEnum = S.String;
 
 /** Json Options for load and make external tables. */
 export interface JsonOptions {
   /** Optional. The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8. */
   encoding?: string;
 }
-export const JsonOptions = /*@__PURE__*/ S.suspend(() =>
+const JsonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encoding: S.optional(S.String),
   }),
@@ -4049,12 +4026,10 @@ export type ExternalDataConfigurationDecimalTargetTypesItemEnum =
   | "NUMERIC"
   | "BIGNUMERIC"
   | "STRING";
-export const ExternalDataConfigurationDecimalTargetTypesItemEnum = S.String;
-
 export type ExternalDataConfigurationDecimalTargetTypesItemEnumList = Array<
   ExternalDataConfigurationDecimalTargetTypesItemEnum | (string & {})
 >;
-export const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
+const ExternalDataConfigurationDecimalTargetTypesItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ExternalDataConfigurationDecimalTargetTypesItemEnumList>;
 
 /** Information related to a Bigtable protobuf column. */
@@ -4064,7 +4039,7 @@ export interface BigtableProtoConfig {
   /** Optional. The ID of the Bigtable SchemaBundle resource associated with this protobuf. The ID should be referred to within the parent table, e.g., `foo` rather than `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/foo`. See [more details on Bigtable SchemaBundles](https://docs.cloud.google.com/bigtable/docs/create-manage-protobuf-schemas). */
   schemaBundleId?: string;
 }
-export const BigtableProtoConfig = /*@__PURE__*/ S.suspend(() =>
+const BigtableProtoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protoMessageName: S.optional(S.String),
     schemaBundleId: S.optional(S.String),
@@ -4088,7 +4063,7 @@ export interface BigtableColumn {
   /** Optional. Protobuf-specific configurations, only takes effect when the encoding is PROTO_BINARY. */
   protoConfig?: BigtableProtoConfig;
 }
-export const BigtableColumn = /*@__PURE__*/ S.suspend(() =>
+const BigtableColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldName: S.optional(S.String),
     type: S.optional(S.String),
@@ -4101,7 +4076,7 @@ export const BigtableColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BigtableColumn" }) as any as S.Schema<BigtableColumn>;
 
 export type BigtableColumnList = Array<BigtableColumn>;
-export const BigtableColumnList = /*@__PURE__*/ S.Array(
+const BigtableColumnList = /*@__PURE__*/ S.Array(
   BigtableColumn,
 ) as any as S.Schema<BigtableColumnList>;
 
@@ -4120,7 +4095,7 @@ export interface BigtableColumnFamily {
   /** Optional. If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column. */
   onlyReadLatest?: boolean;
 }
-export const BigtableColumnFamily = /*@__PURE__*/ S.suspend(() =>
+const BigtableColumnFamily = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(BigtableColumnList),
     protoConfig: S.optional(BigtableProtoConfig),
@@ -4132,7 +4107,7 @@ export const BigtableColumnFamily = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BigtableColumnFamily" }) as any as S.Schema<BigtableColumnFamily>;
 
 export type BigtableColumnFamilyList = Array<BigtableColumnFamily>;
-export const BigtableColumnFamilyList = /*@__PURE__*/ S.Array(
+const BigtableColumnFamilyList = /*@__PURE__*/ S.Array(
   BigtableColumnFamily,
 ) as any as S.Schema<BigtableColumnFamilyList>;
 
@@ -4147,7 +4122,7 @@ export interface BigtableOptions {
   /** Optional. If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false. */
   ignoreUnspecifiedColumnFamilies?: boolean;
 }
-export const BigtableOptions = /*@__PURE__*/ S.suspend(() =>
+const BigtableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputColumnFamiliesAsJson: S.optional(S.Boolean),
     readRowkeyAsString: S.optional(S.Boolean),
@@ -4161,7 +4136,7 @@ export interface AvroOptions {
   /** Optional. If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER). */
   useAvroLogicalTypes?: boolean;
 }
-export const AvroOptions = /*@__PURE__*/ S.suspend(() =>
+const AvroOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useAvroLogicalTypes: S.optional(S.Boolean),
   }),
@@ -4223,7 +4198,7 @@ export interface ExternalDataConfiguration {
   /** [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". For Apache Iceberg tables, specify "ICEBERG". For ORC files, specify "ORC". For Parquet files, specify "PARQUET". [Beta] For Google Cloud Bigtable, specify "BIGTABLE". */
   sourceFormat?: string;
 }
-export const ExternalDataConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreUnknownValues: S.optional(S.Boolean),
     fileSetSpecType: S.optional(ExternalDataConfigurationFileSetSpecTypeEnum),
@@ -4258,7 +4233,7 @@ export const ExternalDataConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalDataConfiguration>;
 
 export type ExternalDataConfigurationMap = { [key: string]: ExternalDataConfiguration | undefined };
-export const ExternalDataConfigurationMap = /*@__PURE__*/ S.Record(
+const ExternalDataConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   ExternalDataConfiguration,
 ) as any as S.Schema<ExternalDataConfigurationMap>;
@@ -4267,7 +4242,7 @@ export type ScriptOptionsKeyResultStatementEnum =
   | "KEY_RESULT_STATEMENT_KIND_UNSPECIFIED"
   | "LAST"
   | "FIRST_SELECT";
-export const ScriptOptionsKeyResultStatementEnum = S.String;
+const ScriptOptionsKeyResultStatementEnum = S.String;
 
 /** Options related to script execution. */
 export interface ScriptOptions {
@@ -4278,7 +4253,7 @@ export interface ScriptOptions {
   /** Timeout period for each statement in a script. */
   statementTimeoutMs?: string;
 }
-export const ScriptOptions = /*@__PURE__*/ S.suspend(() =>
+const ScriptOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyResultStatement: S.optional(ScriptOptionsKeyResultStatementEnum),
     statementByteBudget: S.optional(S.String),
@@ -4291,7 +4266,7 @@ export interface SecureContext {
   /** Optional. A set of key-value pairs representing the secure parameter values. They can be retrieved via the SECURE_CONTEXT() function and used to modify the run-time behavior of a query. */
   secureParameterEntries?: DocumentMap;
 }
-export const SecureContext = /*@__PURE__*/ S.suspend(() =>
+const SecureContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secureParameterEntries: S.optional(DocumentMap),
   }),
@@ -4358,7 +4333,7 @@ export interface JobConfigurationQuery {
   /** [Deprecated] This property is deprecated. */
   preserveNulls?: boolean;
 }
-export const JobConfigurationQuery = /*@__PURE__*/ S.suspend(() =>
+const JobConfigurationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useLegacySql: S.optional(S.Boolean),
     defaultDataset: S.optional(DatasetReference),
@@ -4397,7 +4372,7 @@ export interface ModelExtractOptions {
   /** The 1-based ID of the trial to be exported from a hyperparameter tuning model. If not specified, the trial with id = [Model](https://cloud.google.com/bigquery/docs/reference/rest/v2/models#resource:-model).defaultTrialId is exported. This field is ignored for models not trained with hyperparameter tuning. */
   trialId?: string;
 }
-export const ModelExtractOptions = /*@__PURE__*/ S.suspend(() =>
+const ModelExtractOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trialId: S.optional(S.String),
   }),
@@ -4412,7 +4387,7 @@ export interface ModelReference {
   /** Required. The ID of the dataset containing this model. */
   datasetId?: string;
 }
-export const ModelReference = /*@__PURE__*/ S.suspend(() =>
+const ModelReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -4445,7 +4420,7 @@ export interface JobConfigurationExtract {
   /** [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI as necessary. The fully-qualified Google Cloud Storage URI where the extracted table should be written. */
   destinationUri?: string;
 }
-export const JobConfigurationExtract = /*@__PURE__*/ S.suspend(() =>
+const JobConfigurationExtract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelExtractOptions: S.optional(ModelExtractOptions),
     printHeader: S.optional(S.Boolean),
@@ -4483,7 +4458,7 @@ export interface JobConfiguration {
   /** [Pick one] Configures an extract job. */
   extract?: JobConfigurationExtract;
 }
-export const JobConfiguration = /*@__PURE__*/ S.suspend(() =>
+const JobConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     load: S.optional(JobConfigurationLoad),
     dryRun: S.optional(S.Boolean),
@@ -4504,14 +4479,14 @@ export type JobCreationReasonCodeEnum =
   | "LONG_RUNNING"
   | "LARGE_RESULTS"
   | "OTHER";
-export const JobCreationReasonCodeEnum = S.String;
+const JobCreationReasonCodeEnum = S.String;
 
 /** Reason about why a Job was created from a [`jobs.query`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query) method when used with `JOB_CREATION_OPTIONAL` Job creation mode. For [`jobs.insert`](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/insert) method calls it will always be `REQUESTED`. */
 export interface JobCreationReason {
   /** Output only. Specifies the high level reason why a Job was created. */
   code?: JobCreationReasonCodeEnum | (string & {});
 }
-export const JobCreationReason = /*@__PURE__*/ S.suspend(() =>
+const JobCreationReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(JobCreationReasonCodeEnum),
   }),
@@ -4541,7 +4516,7 @@ export interface Job {
   /** Output only. A URL that can be used to access the resource again. */
   selfLink?: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     user_email: S.optional(S.String),
@@ -4564,7 +4539,7 @@ export interface JobCancelResponse {
   /** The final state of the job. */
   job?: Job;
 }
-export const JobCancelResponse = /*@__PURE__*/ S.suspend(() =>
+const JobCancelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     job: S.optional(Job),
@@ -4579,7 +4554,7 @@ export interface DeleteDatasetsRequest {
   /** Required. Project ID of the dataset being deleted */
   projectId: string;
 }
-export const DeleteDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteContents: S.optional(S.Boolean.pipe(T.Query())),
     datasetId: S.String.pipe(T.Label()),
@@ -4594,7 +4569,7 @@ export const DeleteDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatasetsRequest" }) as any as S.Schema<DeleteDatasetsRequest>;
 
 export interface DeleteDatasetsResponse {}
-export const DeleteDatasetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDatasetsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDatasetsResponse",
 }) as any as S.Schema<DeleteDatasetsResponse>;
 
@@ -4606,7 +4581,7 @@ export interface DeleteJobsRequest {
   /** The geographic location of the job. Required. For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations). */
   location?: string;
 }
-export const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -4621,7 +4596,7 @@ export const DeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteJobsRequest" }) as any as S.Schema<DeleteJobsRequest>;
 
 export interface DeleteJobsResponse {}
-export const DeleteJobsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteJobsResponse>;
+const DeleteJobsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteJobsResponse>;
 
 export interface DeleteModelsRequest {
   /** Required. Project ID of the model to delete. */
@@ -4631,7 +4606,7 @@ export interface DeleteModelsRequest {
   /** Required. Model ID of the model to delete. */
   modelId: string;
 }
-export const DeleteModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -4646,7 +4621,7 @@ export const DeleteModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelsRequest" }) as any as S.Schema<DeleteModelsRequest>;
 
 export interface DeleteModelsResponse {}
-export const DeleteModelsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteModelsResponse>;
+const DeleteModelsResponse = DeleteDatasetsResponse as any as S.Schema<DeleteModelsResponse>;
 
 export interface DeleteRoutinesRequest {
   /** Required. Dataset ID of the routine to delete */
@@ -4656,7 +4631,7 @@ export interface DeleteRoutinesRequest {
   /** Required. Routine ID of the routine to delete */
   routineId: string;
 }
-export const DeleteRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -4671,8 +4646,7 @@ export const DeleteRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRoutinesRequest" }) as any as S.Schema<DeleteRoutinesRequest>;
 
 export interface DeleteRoutinesResponse {}
-export const DeleteRoutinesResponse =
-  DeleteDatasetsResponse as any as S.Schema<DeleteRoutinesResponse>;
+const DeleteRoutinesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteRoutinesResponse>;
 
 export interface DeleteRowAccessPoliciesRequest {
   /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
@@ -4686,7 +4660,7 @@ export interface DeleteRowAccessPoliciesRequest {
   /** Required. Project ID of the table to delete the row access policy. */
   projectId: string;
 }
-export const DeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     tableId: S.String.pipe(T.Label()),
@@ -4705,9 +4679,9 @@ export const DeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRowAccessPoliciesRequest>;
 
 export interface DeleteRowAccessPoliciesResponse {}
-export const DeleteRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteRowAccessPoliciesResponse" },
-) as any as S.Schema<DeleteRowAccessPoliciesResponse>;
+const DeleteRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteRowAccessPoliciesResponse",
+}) as any as S.Schema<DeleteRowAccessPoliciesResponse>;
 
 export interface DeleteTablesRequest {
   /** Required. Table ID of the table to delete */
@@ -4717,7 +4691,7 @@ export interface DeleteTablesRequest {
   /** Required. Project ID of the table to delete */
   projectId: string;
 }
-export const DeleteTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -4732,10 +4706,10 @@ export const DeleteTablesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTablesRequest" }) as any as S.Schema<DeleteTablesRequest>;
 
 export interface DeleteTablesResponse {}
-export const DeleteTablesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteTablesResponse>;
+const DeleteTablesResponse = DeleteDatasetsResponse as any as S.Schema<DeleteTablesResponse>;
 
 export type GetDatasetsDatasetViewEnum = "DATASET_VIEW_UNSPECIFIED" | "METADATA" | "ACL" | "FULL";
-export const GetDatasetsDatasetViewEnum = S.String;
+const GetDatasetsDatasetViewEnum = S.String;
 
 export interface GetDatasetsRequest {
   /** Required. Dataset ID of the requested dataset */
@@ -4747,7 +4721,7 @@ export interface GetDatasetsRequest {
   /** Optional. Specifies the view that determines which dataset information is returned. By default, metadata and ACL information are returned. */
   datasetView?: GetDatasetsDatasetViewEnum | (string & {});
 }
-export const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
@@ -4763,13 +4737,13 @@ export const GetDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDatasetsRequest" }) as any as S.Schema<GetDatasetsRequest>;
 
 export type RestrictionConfigTypeEnum = "RESTRICTION_TYPE_UNSPECIFIED" | "RESTRICTED_DATA_EGRESS";
-export const RestrictionConfigTypeEnum = S.String;
+const RestrictionConfigTypeEnum = S.String;
 
 export interface RestrictionConfig {
   /** Output only. Specifies the type of dataset/table restriction. */
   type?: RestrictionConfigTypeEnum | (string & {});
 }
-export const RestrictionConfig = /*@__PURE__*/ S.suspend(() =>
+const RestrictionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(RestrictionConfigTypeEnum),
   }),
@@ -4779,7 +4753,7 @@ export type DatasetStorageBillingModelEnum =
   | "STORAGE_BILLING_MODEL_UNSPECIFIED"
   | "LOGICAL"
   | "PHYSICAL";
-export const DatasetStorageBillingModelEnum = S.String;
+const DatasetStorageBillingModelEnum = S.String;
 
 /** Options defining open source compatible datasets living in the BigQuery catalog. Contains metadata of open source database, schema, or namespace represented by the current dataset. */
 export interface ExternalCatalogDatasetOptions {
@@ -4788,7 +4762,7 @@ export interface ExternalCatalogDatasetOptions {
   /** Optional. The storage location URI for all tables in the dataset. Equivalent to hive metastore's database locationUri. Maximum length of 1024 characters. */
   defaultStorageLocationUri?: string;
 }
-export const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
+const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
     defaultStorageLocationUri: S.optional(S.String),
@@ -4798,14 +4772,14 @@ export const ExternalCatalogDatasetOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalCatalogDatasetOptions>;
 
 export type LinkedDatasetMetadataLinkStateEnum = "LINK_STATE_UNSPECIFIED" | "LINKED" | "UNLINKED";
-export const LinkedDatasetMetadataLinkStateEnum = S.String;
+const LinkedDatasetMetadataLinkStateEnum = S.String;
 
 /** Metadata about the Linked Dataset. */
 export interface LinkedDatasetMetadata {
   /** Output only. Specifies whether Linked Dataset is currently in a linked state or not. */
   linkState?: LinkedDatasetMetadataLinkStateEnum | (string & {});
 }
-export const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
+const LinkedDatasetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkState: S.optional(LinkedDatasetMetadataLinkStateEnum),
   }),
@@ -4816,7 +4790,7 @@ export interface LinkedDatasetSource {
   /** The source dataset reference contains project numbers and not project ids. */
   sourceDataset?: DatasetReference;
 }
-export const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
+const LinkedDatasetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDataset: S.optional(DatasetReference),
   }),
@@ -4829,7 +4803,7 @@ export interface ExternalDatasetReference {
   /** Required. External source that backs this dataset. */
   externalSource?: string;
 }
-export const ExternalDatasetReference = /*@__PURE__*/ S.suspend(() =>
+const ExternalDatasetReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection: S.optional(S.String),
     externalSource: S.optional(S.String),
@@ -4842,7 +4816,7 @@ export interface DatasetTagsItem {
   /** Required. The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id. */
   tagKey?: string;
 }
-export const DatasetTagsItem = /*@__PURE__*/ S.suspend(() =>
+const DatasetTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagValue: S.optional(S.String),
     tagKey: S.optional(S.String),
@@ -4850,7 +4824,7 @@ export const DatasetTagsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetTagsItem" }) as any as S.Schema<DatasetTagsItem>;
 
 export type DatasetTagsItemList = Array<DatasetTagsItem>;
-export const DatasetTagsItemList = /*@__PURE__*/ S.Array(
+const DatasetTagsItemList = /*@__PURE__*/ S.Array(
   DatasetTagsItem,
 ) as any as S.Schema<DatasetTagsItemList>;
 
@@ -4858,18 +4832,16 @@ export type DatasetDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
-export const DatasetDefaultRoundingModeEnum = S.String;
+const DatasetDefaultRoundingModeEnum = S.String;
 
 export type DatasetAccessEntryTargetTypesItemEnum =
   | "TARGET_TYPE_UNSPECIFIED"
   | "VIEWS"
   | "ROUTINES";
-export const DatasetAccessEntryTargetTypesItemEnum = S.String;
-
 export type DatasetAccessEntryTargetTypesItemEnumList = Array<
   DatasetAccessEntryTargetTypesItemEnum | (string & {})
 >;
-export const DatasetAccessEntryTargetTypesItemEnumList =
+const DatasetAccessEntryTargetTypesItemEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<DatasetAccessEntryTargetTypesItemEnumList>;
 
 /** Grants all resources of particular types in a particular dataset read access to the current dataset. Similar to how individually authorized views work, updates to any resource granted through its dataset (including creation of new resources) requires read permission to referenced resources, plus write permission to the authorizing dataset. */
@@ -4879,7 +4851,7 @@ export interface DatasetAccessEntry {
   /** Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. */
   targetTypes?: DatasetAccessEntryTargetTypesItemEnumList;
 }
-export const DatasetAccessEntry = /*@__PURE__*/ S.suspend(() =>
+const DatasetAccessEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(DatasetReference),
     targetTypes: S.optional(DatasetAccessEntryTargetTypesItemEnumList),
@@ -4897,7 +4869,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -4928,7 +4900,7 @@ export interface DatasetAccessItem {
   /** [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation. */
   routine?: RoutineReference;
 }
-export const DatasetAccessItem = /*@__PURE__*/ S.suspend(() =>
+const DatasetAccessItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataset: S.optional(DatasetAccessEntry),
     view: S.optional(TableReference),
@@ -4944,7 +4916,7 @@ export const DatasetAccessItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetAccessItem" }) as any as S.Schema<DatasetAccessItem>;
 
 export type DatasetAccessItemList = Array<DatasetAccessItem>;
-export const DatasetAccessItemList = /*@__PURE__*/ S.Array(
+const DatasetAccessItemList = /*@__PURE__*/ S.Array(
   DatasetAccessItem,
 ) as any as S.Schema<DatasetAccessItemList>;
 
@@ -5013,7 +4985,7 @@ export interface Dataset {
   /** Output only. Reserved for future use. */
   satisfiesPzi?: boolean;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     defaultTableExpirationMs: S.optional(S.String),
@@ -5054,7 +5026,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -5065,7 +5037,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -5077,7 +5049,7 @@ export interface GetIamPolicyRoutinesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5101,7 +5073,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -5110,14 +5082,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -5126,7 +5098,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -5134,7 +5106,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -5145,7 +5117,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -5153,9 +5125,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -5168,7 +5138,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     auditConfigs: S.optional(AuditConfigList),
@@ -5183,7 +5153,7 @@ export interface GetIamPolicyRowAccessPoliciesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5204,7 +5174,7 @@ export interface GetIamPolicyTablesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -5227,7 +5197,7 @@ export interface GetJobsRequest {
   /** Required. Project ID of the requested job. */
   projectId: string;
 }
-export const GetJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     location: S.optional(S.String.pipe(T.Query())),
@@ -5249,7 +5219,7 @@ export interface GetModelsRequest {
   /** Required. Project ID of the requested model. */
   projectId: string;
 }
-export const GetModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -5290,7 +5260,7 @@ export type ModelModelTypeEnum =
   | "ONNX"
   | "TRANSFORM_ONLY"
   | "CONTRIBUTION_ANALYSIS";
-export const ModelModelTypeEnum = S.String;
+const ModelModelTypeEnum = S.String;
 
 /** Explanation for a single feature. */
 export interface Explanation {
@@ -5299,7 +5269,7 @@ export interface Explanation {
   /** The full feature name. For non-numerical features, will be formatted like `.`. Overall size of feature name will always be truncated to first 120 characters. */
   featureName?: string;
 }
-export const Explanation = /*@__PURE__*/ S.suspend(() =>
+const Explanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribution: S.optional(S.Number),
     featureName: S.optional(S.String),
@@ -5307,9 +5277,7 @@ export const Explanation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Explanation" }) as any as S.Schema<Explanation>;
 
 export type ExplanationList = Array<Explanation>;
-export const ExplanationList = /*@__PURE__*/ S.Array(
-  Explanation,
-) as any as S.Schema<ExplanationList>;
+const ExplanationList = /*@__PURE__*/ S.Array(Explanation) as any as S.Schema<ExplanationList>;
 
 /** Global explanations containing the top most important features after training. */
 export interface GlobalExplanation {
@@ -5318,7 +5286,7 @@ export interface GlobalExplanation {
   /** A list of the top global explanations. Sorted by absolute value of attribution in descending order. */
   explanations?: ExplanationList;
 }
-export const GlobalExplanation = /*@__PURE__*/ S.suspend(() =>
+const GlobalExplanation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classLabel: S.optional(S.String),
     explanations: S.optional(ExplanationList),
@@ -5326,7 +5294,7 @@ export const GlobalExplanation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GlobalExplanation" }) as any as S.Schema<GlobalExplanation>;
 
 export type GlobalExplanationList = Array<GlobalExplanation>;
-export const GlobalExplanationList = /*@__PURE__*/ S.Array(
+const GlobalExplanationList = /*@__PURE__*/ S.Array(
   GlobalExplanation,
 ) as any as S.Schema<GlobalExplanationList>;
 
@@ -5339,7 +5307,7 @@ export interface DataSplitResult {
   /** Table reference of the evaluation data after split. */
   evaluationTable?: TableReference;
 }
-export const DataSplitResult = /*@__PURE__*/ S.suspend(() =>
+const DataSplitResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     testTable: S.optional(TableReference),
     trainingTable: S.optional(TableReference),
@@ -5370,7 +5338,7 @@ export interface TrainingRun {
   /** Output only. The start time of this training run. */
   startTime?: string;
 }
-export const TrainingRun = /*@__PURE__*/ S.suspend(() =>
+const TrainingRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationMetrics: S.optional(EvaluationMetrics),
     results: S.optional(IterationResultList),
@@ -5386,16 +5354,14 @@ export const TrainingRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrainingRun" }) as any as S.Schema<TrainingRun>;
 
 export type TrainingRunList = Array<TrainingRun>;
-export const TrainingRunList = /*@__PURE__*/ S.Array(
-  TrainingRun,
-) as any as S.Schema<TrainingRunList>;
+const TrainingRunList = /*@__PURE__*/ S.Array(TrainingRun) as any as S.Schema<TrainingRunList>;
 
 /** Search space for string and enum. */
 export interface StringHparamSearchSpace {
   /** Canididates for the string or enum parameter in lower case. */
   candidates?: StringList;
 }
-export const StringHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
+const StringHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     candidates: S.optional(StringList),
   }),
@@ -5406,7 +5372,7 @@ export interface DoubleCandidates {
   /** Candidates for the double parameter in increasing order. */
   candidates?: DoubleList;
 }
-export const DoubleCandidates = /*@__PURE__*/ S.suspend(() =>
+const DoubleCandidates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     candidates: S.optional(DoubleList),
   }),
@@ -5419,7 +5385,7 @@ export interface DoubleRange {
   /** Max value of the double parameter. */
   max?: number;
 }
-export const DoubleRange = /*@__PURE__*/ S.suspend(() =>
+const DoubleRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.Number),
     max: S.optional(S.Number),
@@ -5433,7 +5399,7 @@ export interface DoubleHparamSearchSpace {
   /** Range of the double hyperparameter. */
   range?: DoubleRange;
 }
-export const DoubleHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
+const DoubleHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     candidates: S.optional(DoubleCandidates),
     range: S.optional(DoubleRange),
@@ -5447,7 +5413,7 @@ export interface IntRange {
   /** Min value of the int parameter. */
   min?: string;
 }
-export const IntRange = /*@__PURE__*/ S.suspend(() =>
+const IntRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     max: S.optional(S.String),
     min: S.optional(S.String),
@@ -5459,7 +5425,7 @@ export interface IntCandidates {
   /** Candidates for the int parameter in increasing order. */
   candidates?: StringList;
 }
-export const IntCandidates = StringHparamSearchSpace as any as S.Schema<IntCandidates>;
+const IntCandidates = StringHparamSearchSpace as any as S.Schema<IntCandidates>;
 
 /** Search space for an int hyperparameter. */
 export interface IntHparamSearchSpace {
@@ -5468,7 +5434,7 @@ export interface IntHparamSearchSpace {
   /** Candidates of the int hyperparameter. */
   candidates?: IntCandidates;
 }
-export const IntHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
+const IntHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(IntRange),
     candidates: S.optional(IntCandidates),
@@ -5480,21 +5446,21 @@ export interface IntArray {
   /** Elements in the int array. */
   elements?: StringList;
 }
-export const IntArray = /*@__PURE__*/ S.suspend(() =>
+const IntArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(StringList),
   }),
 ).annotate({ identifier: "IntArray" }) as any as S.Schema<IntArray>;
 
 export type IntArrayList = Array<IntArray>;
-export const IntArrayList = /*@__PURE__*/ S.Array(IntArray) as any as S.Schema<IntArrayList>;
+const IntArrayList = /*@__PURE__*/ S.Array(IntArray) as any as S.Schema<IntArrayList>;
 
 /** Search space for int array. */
 export interface IntArrayHparamSearchSpace {
   /** Candidates for the int array parameter. */
   candidates?: IntArrayList;
 }
-export const IntArrayHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
+const IntArrayHparamSearchSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     candidates: S.optional(IntArrayList),
   }),
@@ -5549,7 +5515,7 @@ export interface HparamSearchSpaces {
   /** Activation functions of neural network models. */
   activationFn?: StringHparamSearchSpace;
 }
-export const HparamSearchSpaces = /*@__PURE__*/ S.suspend(() =>
+const HparamSearchSpaces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boosterType: S.optional(StringHparamSearchSpace),
     minSplitLoss: S.optional(DoubleHparamSearchSpace),
@@ -5582,7 +5548,7 @@ export type RemoteModelInfoRemoteServiceTypeEnum =
   | "CLOUD_AI_VISION_V1"
   | "CLOUD_AI_NATURAL_LANGUAGE_V1"
   | "CLOUD_AI_SPEECH_TO_TEXT_V2";
-export const RemoteModelInfoRemoteServiceTypeEnum = S.String;
+const RemoteModelInfoRemoteServiceTypeEnum = S.String;
 
 /** Remote Model Info */
 export interface RemoteModelInfo {
@@ -5599,7 +5565,7 @@ export interface RemoteModelInfo {
   /** Output only. The model version for LLM. */
   remoteModelVersion?: string;
 }
-export const RemoteModelInfo = /*@__PURE__*/ S.suspend(() =>
+const RemoteModelInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxBatchingRows: S.optional(S.String),
     speechRecognizer: S.optional(S.String),
@@ -5619,7 +5585,7 @@ export interface TransformColumn {
   /** Output only. Data type of the column after the transform. */
   type?: StandardSqlDataType;
 }
-export const TransformColumn = /*@__PURE__*/ S.suspend(() =>
+const TransformColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     transformSql: S.optional(S.String),
@@ -5628,7 +5594,7 @@ export const TransformColumn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransformColumn" }) as any as S.Schema<TransformColumn>;
 
 export type TransformColumnList = Array<TransformColumn>;
-export const TransformColumnList = /*@__PURE__*/ S.Array(
+const TransformColumnList = /*@__PURE__*/ S.Array(
   TransformColumn,
 ) as any as S.Schema<TransformColumnList>;
 
@@ -5676,7 +5642,7 @@ export interface Model {
   /** Output only. This field will be populated if a TRANSFORM clause was used to train a model. TRANSFORM clause (if used) takes feature_columns as input and outputs transform_columns. transform_columns then are used to train the model. */
   transformColumns?: TransformColumnList;
 }
-export const Model = /*@__PURE__*/ S.suspend(() =>
+const Model = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optimalTrialIds: S.optional(StringList),
     featureColumns: S.optional(StandardSqlFieldList),
@@ -5707,7 +5673,7 @@ export type GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum =
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
-export const GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum = S.String;
+const GetQueryResultsJobsFormatOptions_timestampOutputFormatEnum = S.String;
 
 export interface GetQueryResultsJobsRequest {
   /** The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations). */
@@ -5731,7 +5697,7 @@ export interface GetQueryResultsJobsRequest {
   /** Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to wait for the query to complete. By default, this limit is 10 seconds (10,000 milliseconds). If the query is complete, the jobComplete field in the response is true. If the query has not yet completed, jobComplete is false. You can request a longer timeout period in the timeoutMs field. However, the call is not guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000 milliseconds), even if the query is not complete. If jobComplete is false, you can continue to wait for the query to complete by calling the getQueryResults method until the jobComplete field in the getQueryResults response is true. */
   timeoutMs?: number;
 }
-export const GetQueryResultsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueryResultsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String.pipe(T.Query())),
     "formatOptions.timestampOutputFormat": S.optional(
@@ -5758,27 +5724,27 @@ export const GetQueryResultsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TableCell {
   v?: unknown;
 }
-export const TableCell = /*@__PURE__*/ S.suspend(() =>
+const TableCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     v: S.optional(S.Unknown),
   }),
 ).annotate({ identifier: "TableCell" }) as any as S.Schema<TableCell>;
 
 export type TableCellList = Array<TableCell>;
-export const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
+const TableCellList = /*@__PURE__*/ S.Array(TableCell) as any as S.Schema<TableCellList>;
 
 export interface TableRow {
   /** Represents a single row in the result set, consisting of one or more fields. */
   f?: TableCellList;
 }
-export const TableRow = /*@__PURE__*/ S.suspend(() =>
+const TableRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     f: S.optional(TableCellList),
   }),
 ).annotate({ identifier: "TableRow" }) as any as S.Schema<TableRow>;
 
 export type TableRowList = Array<TableRow>;
-export const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
+const TableRowList = /*@__PURE__*/ S.Array(TableRow) as any as S.Schema<TableRowList>;
 
 /** Response object of GetQueryResults. */
 export interface GetQueryResultsResponse {
@@ -5807,7 +5773,7 @@ export interface GetQueryResultsResponse {
   /** A token used for paging results. When this token is non-empty, it indicates additional results are available. */
   pageToken?: string;
 }
-export const GetQueryResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQueryResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: S.optional(TableRowList),
     numDmlAffectedRows: S.optional(S.String),
@@ -5834,7 +5800,7 @@ export interface GetRoutinesRequest {
   /** Required. Dataset ID of the requested routine */
   datasetId: string;
 }
-export const GetRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -5860,7 +5826,7 @@ export interface RemoteFunctionOptions {
   /** Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch. */
   maxBatchingRows?: string;
 }
-export const RemoteFunctionOptions = /*@__PURE__*/ S.suspend(() =>
+const RemoteFunctionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection: S.optional(S.String),
     userDefinedContext: S.optional(StringMap),
@@ -5874,7 +5840,7 @@ export type RoutineBuildStatusBuildStateEnum =
   | "IN_PROGRESS"
   | "SUCCEEDED"
   | "FAILED";
-export const RoutineBuildStatusBuildStateEnum = S.String;
+const RoutineBuildStatusBuildStateEnum = S.String;
 
 /** The status of a routine build. */
 export interface RoutineBuildStatus {
@@ -5889,7 +5855,7 @@ export interface RoutineBuildStatus {
   /** Output only. The current build state of the routine. */
   buildState?: RoutineBuildStatusBuildStateEnum | (string & {});
 }
-export const RoutineBuildStatus = /*@__PURE__*/ S.suspend(() =>
+const RoutineBuildStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildDuration: S.optional(S.String),
     buildStateUpdateTime: S.optional(S.String),
@@ -5904,7 +5870,7 @@ export interface StandardSqlTableType {
   /** The columns in this table type */
   columns?: StandardSqlFieldList;
 }
-export const StandardSqlTableType = /*@__PURE__*/ S.suspend(() =>
+const StandardSqlTableType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(StandardSqlFieldList),
   }),
@@ -5917,7 +5883,7 @@ export interface PythonOptions {
   /** Optional. A list of Python package names along with versions to be installed. Example: ["pandas>=2.1", "google-cloud-translate==3.11"]. For more information, see [Use third-party packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages). */
   packages?: StringList;
 }
-export const PythonOptions = /*@__PURE__*/ S.suspend(() =>
+const PythonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryPoint: S.optional(S.String),
     packages: S.optional(StringList),
@@ -5947,7 +5913,7 @@ export interface SparkOptions {
   /** The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type. */
   mainFileUri?: string;
 }
-export const SparkOptions = /*@__PURE__*/ S.suspend(() =>
+const SparkOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(StringMap),
     jarUris: S.optional(StringList),
@@ -5963,10 +5929,10 @@ export const SparkOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SparkOptions" }) as any as S.Schema<SparkOptions>;
 
 export type RoutineDataGovernanceTypeEnum = "DATA_GOVERNANCE_TYPE_UNSPECIFIED" | "DATA_MASKING";
-export const RoutineDataGovernanceTypeEnum = S.String;
+const RoutineDataGovernanceTypeEnum = S.String;
 
 export type ArgumentModeEnum = "MODE_UNSPECIFIED" | "IN" | "OUT" | "INOUT";
-export const ArgumentModeEnum = S.String;
+const ArgumentModeEnum = S.String;
 
 export type ArgumentArgumentKindEnum =
   | "ARGUMENT_KIND_UNSPECIFIED"
@@ -5974,7 +5940,7 @@ export type ArgumentArgumentKindEnum =
   | "ANY_TYPE"
   | "FIXED_TABLE"
   | "ANY_TABLE";
-export const ArgumentArgumentKindEnum = S.String;
+const ArgumentArgumentKindEnum = S.String;
 
 /** Input/output argument of a function or a stored procedure. */
 export interface Argument {
@@ -5991,7 +5957,7 @@ export interface Argument {
   /** Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL. */
   isAggregate?: boolean;
 }
-export const Argument = /*@__PURE__*/ S.suspend(() =>
+const Argument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataType: S.optional(StandardSqlDataType),
     tableType: S.optional(StandardSqlTableType),
@@ -6003,7 +5969,7 @@ export const Argument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Argument" }) as any as S.Schema<Argument>;
 
 export type ArgumentList = Array<Argument>;
-export const ArgumentList = /*@__PURE__*/ S.Array(Argument) as any as S.Schema<ArgumentList>;
+const ArgumentList = /*@__PURE__*/ S.Array(Argument) as any as S.Schema<ArgumentList>;
 
 /** Configuration of a volume mount for the Python UDF container that executes the managed function. */
 export interface ExternalVolumeMount {
@@ -6012,7 +5978,7 @@ export interface ExternalVolumeMount {
   /** Optional. The absolute path of the source to be mounted, only support Google Cloud Storage bucket or folder now. Eg: gs://bucket-xxx for Google Cloud Storage bucket, gs://bucket-xxx/folder1/folder2 for Google Cloud Storage folder. */
   sourcePath?: string;
 }
-export const ExternalVolumeMount = /*@__PURE__*/ S.suspend(() =>
+const ExternalVolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountPath: S.optional(S.String),
     sourcePath: S.optional(S.String),
@@ -6020,7 +5986,7 @@ export const ExternalVolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExternalVolumeMount" }) as any as S.Schema<ExternalVolumeMount>;
 
 export type ExternalVolumeMountList = Array<ExternalVolumeMount>;
-export const ExternalVolumeMountList = /*@__PURE__*/ S.Array(
+const ExternalVolumeMountList = /*@__PURE__*/ S.Array(
   ExternalVolumeMount,
 ) as any as S.Schema<ExternalVolumeMountList>;
 
@@ -6041,7 +6007,7 @@ export interface ExternalRuntimeOptions {
   /** Optional. Fully qualified name of the connection whose service account will be used to execute the code in the container. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"``` */
   runtimeConnection?: string;
 }
-export const ExternalRuntimeOptions = /*@__PURE__*/ S.suspend(() =>
+const ExternalRuntimeOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     containerCpu: S.optional(S.Number),
     containerMemory: S.optional(S.String),
@@ -6060,16 +6026,16 @@ export type RoutineLanguageEnum =
   | "PYTHON"
   | "JAVA"
   | "SCALA";
-export const RoutineLanguageEnum = S.String;
+const RoutineLanguageEnum = S.String;
 
 export type RoutineDeterminismLevelEnum =
   | "DETERMINISM_LEVEL_UNSPECIFIED"
   | "DETERMINISTIC"
   | "NOT_DETERMINISTIC";
-export const RoutineDeterminismLevelEnum = S.String;
+const RoutineDeterminismLevelEnum = S.String;
 
 export type RoutineSecurityModeEnum = "SECURITY_MODE_UNSPECIFIED" | "DEFINER" | "INVOKER";
-export const RoutineSecurityModeEnum = S.String;
+const RoutineSecurityModeEnum = S.String;
 
 export type RoutineRoutineTypeEnum =
   | "ROUTINE_TYPE_UNSPECIFIED"
@@ -6077,7 +6043,7 @@ export type RoutineRoutineTypeEnum =
   | "PROCEDURE"
   | "TABLE_VALUED_FUNCTION"
   | "AGGREGATE_FUNCTION";
-export const RoutineRoutineTypeEnum = S.String;
+const RoutineRoutineTypeEnum = S.String;
 
 /** A user-defined function or a stored procedure. */
 export interface Routine {
@@ -6124,7 +6090,7 @@ export interface Routine {
   /** Required. The body of the routine. For functions, this is the expression in the AS clause. If `language = "SQL"`, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks. If `definition_body` references another routine, then that routine must be fully qualified with its project ID. */
   definitionBody?: string;
 }
-export const Routine = /*@__PURE__*/ S.suspend(() =>
+const Routine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteFunctionOptions: S.optional(RemoteFunctionOptions),
     description: S.optional(S.String),
@@ -6160,7 +6126,7 @@ export interface GetRowAccessPoliciesRequest {
   /** Required. Dataset ID of the table to get the row access policy. */
   datasetId: string;
 }
-export const GetRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.String.pipe(T.Label()),
     tableId: S.String.pipe(T.Label()),
@@ -6192,7 +6158,7 @@ export interface RowAccessPolicy {
   /** Required. Reference describing the ID of this row access policy. */
   rowAccessPolicyReference?: RowAccessPolicyReference;
 }
-export const RowAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const RowAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     lastModifiedTime: S.optional(S.String),
@@ -6207,7 +6173,7 @@ export interface GetServiceAccountProjectsRequest {
   /** Required. ID of the project. */
   projectId: string;
 }
-export const GetServiceAccountProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6228,7 +6194,7 @@ export interface GetServiceAccountResponse {
   /** The resource type of the response. */
   kind?: string;
 }
-export const GetServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     kind: S.optional(S.String),
@@ -6242,7 +6208,7 @@ export type GetTablesViewEnum =
   | "BASIC"
   | "STORAGE_STATS"
   | "FULL";
-export const GetTablesViewEnum = S.String;
+const GetTablesViewEnum = S.String;
 
 export interface GetTablesRequest {
   /** Required. Project ID of the requested table */
@@ -6256,7 +6222,7 @@ export interface GetTablesRequest {
   /** Optional. Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. */
   view?: GetTablesViewEnum | (string & {});
 }
-export const GetTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -6278,7 +6244,7 @@ export type JoinRestrictionPolicyJoinConditionEnum =
   | "JOIN_ALL"
   | "JOIN_NOT_REQUIRED"
   | "JOIN_BLOCKED";
-export const JoinRestrictionPolicyJoinConditionEnum = S.String;
+const JoinRestrictionPolicyJoinConditionEnum = S.String;
 
 /** Represents privacy policy associated with "join restrictions". Join restriction gives data providers the ability to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view. */
 export interface JoinRestrictionPolicy {
@@ -6287,7 +6253,7 @@ export interface JoinRestrictionPolicy {
   /** Optional. Specifies if a join is required or not on queries for the view. Default is JOIN_CONDITION_UNSPECIFIED. */
   joinCondition?: JoinRestrictionPolicyJoinConditionEnum | (string & {});
 }
-export const JoinRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
+const JoinRestrictionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     joinAllowedColumns: S.optional(StringList),
     joinCondition: S.optional(JoinRestrictionPolicyJoinConditionEnum),
@@ -6301,7 +6267,7 @@ export interface AggregationThresholdPolicy {
   /** Optional. The threshold for the "aggregation threshold" policy. */
   threshold?: string;
 }
-export const AggregationThresholdPolicy = /*@__PURE__*/ S.suspend(() =>
+const AggregationThresholdPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privacyUnitColumns: S.optional(StringList),
     threshold: S.optional(S.String),
@@ -6329,7 +6295,7 @@ export interface DifferentialPrivacyPolicy {
   /** Optional. The total epsilon budget for all queries against the privacy-protected view. Each subscriber query against this view charges the amount of epsilon they request in their query. If there is sufficient budget, then the subscriber query attempts to complete. It might still fail due to other reasons, in which case the charge is refunded. If there is insufficient budget the query is rejected. There might be multiple charge attempts if a single query references multiple views. In this case there must be sufficient budget for all charges or the query is rejected and charges are refunded in best effort. The budget does not have a refresh policy and can only be updated via ALTER VIEW or circumvented by creating a new view that can be queried with a fresh budget. */
   epsilonBudget?: number;
 }
-export const DifferentialPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
+const DifferentialPrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxEpsilonPerQuery: S.optional(S.Number),
     deltaPerQuery: S.optional(S.Number),
@@ -6353,7 +6319,7 @@ export interface PrivacyPolicy {
   /** Optional. Policy used for differential privacy. */
   differentialPrivacyPolicy?: DifferentialPrivacyPolicy;
 }
-export const PrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
+const PrivacyPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     joinRestrictionPolicy: S.optional(JoinRestrictionPolicy),
     aggregationThresholdPolicy: S.optional(AggregationThresholdPolicy),
@@ -6368,7 +6334,7 @@ export interface ForeignViewDefinition {
   /** Required. The query that defines the view. */
   query?: string;
 }
-export const ForeignViewDefinition = /*@__PURE__*/ S.suspend(() =>
+const ForeignViewDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dialect: S.optional(S.String),
     query: S.optional(S.String),
@@ -6376,7 +6342,7 @@ export const ForeignViewDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ForeignViewDefinition" }) as any as S.Schema<ForeignViewDefinition>;
 
 export type ForeignViewDefinitionList = Array<ForeignViewDefinition>;
-export const ForeignViewDefinitionList = /*@__PURE__*/ S.Array(
+const ForeignViewDefinitionList = /*@__PURE__*/ S.Array(
   ForeignViewDefinition,
 ) as any as S.Schema<ForeignViewDefinitionList>;
 
@@ -6395,7 +6361,7 @@ export interface ViewDefinition {
   /** Optional. Foreign view representations. */
   foreignDefinitions?: ForeignViewDefinitionList;
 }
-export const ViewDefinition = /*@__PURE__*/ S.suspend(() =>
+const ViewDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privacyPolicy: S.optional(PrivacyPolicy),
     userDefinedFunctionResources: S.optional(UserDefinedFunctionResourceList),
@@ -6413,7 +6379,7 @@ export interface CloneDefinition {
   /** Required. Reference describing the ID of the table that was cloned. */
   baseTableReference?: TableReference;
 }
-export const CloneDefinition = /*@__PURE__*/ S.suspend(() =>
+const CloneDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloneTime: S.optional(S.String),
     baseTableReference: S.optional(TableReference),
@@ -6425,14 +6391,14 @@ export interface PartitionedColumn {
   /** Required. The name of the partition column. */
   field?: string;
 }
-export const PartitionedColumn = /*@__PURE__*/ S.suspend(() =>
+const PartitionedColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
   }),
 ).annotate({ identifier: "PartitionedColumn" }) as any as S.Schema<PartitionedColumn>;
 
 export type PartitionedColumnList = Array<PartitionedColumn>;
-export const PartitionedColumnList = /*@__PURE__*/ S.Array(
+const PartitionedColumnList = /*@__PURE__*/ S.Array(
   PartitionedColumn,
 ) as any as S.Schema<PartitionedColumnList>;
 
@@ -6441,7 +6407,7 @@ export interface PartitioningDefinition {
   /** Optional. Details about each partitioning column. This field is output only for all partitioning types other than metastore partitioned tables. BigQuery native tables only support 1 partitioning column. Other table types may support 0, 1 or more partitioning columns. For metastore partitioned tables, the order must match the definition order in the Hive Metastore, where it must match the physical layout of the table. For example, CREATE TABLE a_table(id BIGINT, name STRING) PARTITIONED BY (city STRING, state STRING). In this case the values must be ['city', 'state'] in that order. */
   partitionedColumn?: PartitionedColumnList;
 }
-export const PartitioningDefinition = /*@__PURE__*/ S.suspend(() =>
+const PartitioningDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionedColumn: S.optional(PartitionedColumnList),
   }),
@@ -6455,7 +6421,7 @@ export interface Streamingbuffer {
   /** Output only. A lower-bound estimate of the number of rows currently in the streaming buffer. */
   estimatedRows?: string;
 }
-export const Streamingbuffer = /*@__PURE__*/ S.suspend(() =>
+const Streamingbuffer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oldestEntryTime: S.optional(S.String),
     estimatedBytes: S.optional(S.String),
@@ -6469,7 +6435,7 @@ export type TableReplicationInfoReplicationStatusEnum =
   | "SOURCE_DELETED"
   | "PERMISSION_DENIED"
   | "UNSUPPORTED_CONFIGURATION";
-export const TableReplicationInfoReplicationStatusEnum = S.String;
+const TableReplicationInfoReplicationStatusEnum = S.String;
 
 /** Replication info of a table created using `AS REPLICA` DDL like: `CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv` */
 export interface TableReplicationInfo {
@@ -6484,7 +6450,7 @@ export interface TableReplicationInfo {
   /** Required. Source table reference that is replicated. */
   sourceTable?: TableReference;
 }
-export const TableReplicationInfo = /*@__PURE__*/ S.suspend(() =>
+const TableReplicationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     replicationError: S.optional(ErrorProto),
     replicationIntervalMs: S.optional(S.String),
@@ -6503,7 +6469,7 @@ export interface SerDeInfo {
   /** Optional. Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib. */
   parameters?: StringMap;
 }
-export const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
+const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serializationLibrary: S.optional(S.String),
     name: S.optional(S.String),
@@ -6522,7 +6488,7 @@ export interface StorageDescriptor {
   /** Optional. Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters. */
   outputFormat?: string;
 }
-export const StorageDescriptor = /*@__PURE__*/ S.suspend(() =>
+const StorageDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serdeInfo: S.optional(SerDeInfo),
     inputFormat: S.optional(S.String),
@@ -6540,7 +6506,7 @@ export interface ExternalCatalogTableOptions {
   /** Optional. A storage descriptor containing information about the physical storage of this table. */
   storageDescriptor?: StorageDescriptor;
 }
-export const ExternalCatalogTableOptions = /*@__PURE__*/ S.suspend(() =>
+const ExternalCatalogTableOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(StringMap),
     connectionId: S.optional(S.String),
@@ -6565,7 +6531,7 @@ export interface MaterializedViewDefinition {
   /** Optional. The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes). */
   refreshIntervalMs?: string;
 }
-export const MaterializedViewDefinition = /*@__PURE__*/ S.suspend(() =>
+const MaterializedViewDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowNonIncrementalDefinition: S.optional(S.Boolean),
     lastRefreshTime: S.optional(S.String),
@@ -6585,7 +6551,7 @@ export interface MaterializedViewStatus {
   /** Output only. Refresh watermark of materialized view. The base tables' data were collected into the materialized view cache until this time. */
   refreshWatermark?: string;
 }
-export const MaterializedViewStatus = /*@__PURE__*/ S.suspend(() =>
+const MaterializedViewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastRefreshStatus: S.optional(ErrorProto),
     refreshWatermark: S.optional(S.String),
@@ -6593,10 +6559,10 @@ export const MaterializedViewStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaterializedViewStatus" }) as any as S.Schema<MaterializedViewStatus>;
 
 export type BigLakeConfigurationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
-export const BigLakeConfigurationTableFormatEnum = S.String;
+const BigLakeConfigurationTableFormatEnum = S.String;
 
 export type BigLakeConfigurationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
-export const BigLakeConfigurationFileFormatEnum = S.String;
+const BigLakeConfigurationFileFormatEnum = S.String;
 
 /** Configuration for BigQuery tables for Apache Iceberg (formerly BigLake managed tables.) */
 export interface BigLakeConfiguration {
@@ -6609,7 +6575,7 @@ export interface BigLakeConfiguration {
   /** Optional. The file format the table data is stored in. */
   fileFormat?: BigLakeConfigurationFileFormatEnum | (string & {});
 }
-export const BigLakeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const BigLakeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageUri: S.optional(S.String),
     tableFormat: S.optional(BigLakeConfigurationTableFormatEnum),
@@ -6619,7 +6585,7 @@ export const BigLakeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BigLakeConfiguration" }) as any as S.Schema<BigLakeConfiguration>;
 
 export type TableManagedTableTypeEnum = "MANAGED_TABLE_TYPE_UNSPECIFIED" | "NATIVE" | "BIGLAKE";
-export const TableManagedTableTypeEnum = S.String;
+const TableManagedTableTypeEnum = S.String;
 
 /** Information about base table and snapshot time of the snapshot. */
 export interface SnapshotDefinition {
@@ -6628,7 +6594,7 @@ export interface SnapshotDefinition {
   /** Required. Reference describing the ID of the table that was snapshot. */
   baseTableReference?: TableReference;
 }
-export const SnapshotDefinition = /*@__PURE__*/ S.suspend(() =>
+const SnapshotDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotTime: S.optional(S.String),
     baseTableReference: S.optional(TableReference),
@@ -6640,7 +6606,7 @@ export interface TableConstraintsForeignKeysItemReferencedTable {
   projectId?: string;
   datasetId?: string;
 }
-export const TableConstraintsForeignKeysItemReferencedTable = /*@__PURE__*/ S.suspend(() =>
+const TableConstraintsForeignKeysItemReferencedTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableId: S.optional(S.String),
     projectId: S.optional(S.String),
@@ -6656,7 +6622,7 @@ export interface TableConstraintsForeignKeysItemColumnReferencesItem {
   /** Required. The column that composes the foreign key. */
   referencingColumn?: string;
 }
-export const TableConstraintsForeignKeysItemColumnReferencesItem = /*@__PURE__*/ S.suspend(() =>
+const TableConstraintsForeignKeysItemColumnReferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referencedColumn: S.optional(S.String),
     referencingColumn: S.optional(S.String),
@@ -6667,7 +6633,7 @@ export const TableConstraintsForeignKeysItemColumnReferencesItem = /*@__PURE__*/
 
 export type TableConstraintsForeignKeysItemColumnReferencesItemList =
   Array<TableConstraintsForeignKeysItemColumnReferencesItem>;
-export const TableConstraintsForeignKeysItemColumnReferencesItemList = /*@__PURE__*/ S.Array(
+const TableConstraintsForeignKeysItemColumnReferencesItemList = /*@__PURE__*/ S.Array(
   TableConstraintsForeignKeysItemColumnReferencesItem,
 ) as any as S.Schema<TableConstraintsForeignKeysItemColumnReferencesItemList>;
 
@@ -6678,7 +6644,7 @@ export interface TableConstraintsForeignKeysItem {
   /** Required. The columns that compose the foreign key. */
   columnReferences?: TableConstraintsForeignKeysItemColumnReferencesItemList;
 }
-export const TableConstraintsForeignKeysItem = /*@__PURE__*/ S.suspend(() =>
+const TableConstraintsForeignKeysItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     referencedTable: S.optional(TableConstraintsForeignKeysItemReferencedTable),
@@ -6689,7 +6655,7 @@ export const TableConstraintsForeignKeysItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableConstraintsForeignKeysItem>;
 
 export type TableConstraintsForeignKeysItemList = Array<TableConstraintsForeignKeysItem>;
-export const TableConstraintsForeignKeysItemList = /*@__PURE__*/ S.Array(
+const TableConstraintsForeignKeysItemList = /*@__PURE__*/ S.Array(
   TableConstraintsForeignKeysItem,
 ) as any as S.Schema<TableConstraintsForeignKeysItemList>;
 
@@ -6697,7 +6663,7 @@ export interface TableConstraintsPrimaryKey {
   /** Required. The columns that are composed of the primary key constraint. */
   columns?: StringList;
 }
-export const TableConstraintsPrimaryKey = /*@__PURE__*/ S.suspend(() =>
+const TableConstraintsPrimaryKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(StringList),
   }),
@@ -6712,7 +6678,7 @@ export interface TableConstraints {
   /** Represents the primary key constraint on a table's columns. */
   primaryKey?: TableConstraintsPrimaryKey;
 }
-export const TableConstraints = /*@__PURE__*/ S.suspend(() =>
+const TableConstraints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     foreignKeys: S.optional(TableConstraintsForeignKeysItemList),
     primaryKey: S.optional(TableConstraintsPrimaryKey),
@@ -6723,14 +6689,14 @@ export type TableDefaultRoundingModeEnum =
   | "ROUNDING_MODE_UNSPECIFIED"
   | "ROUND_HALF_AWAY_FROM_ZERO"
   | "ROUND_HALF_EVEN";
-export const TableDefaultRoundingModeEnum = S.String;
+const TableDefaultRoundingModeEnum = S.String;
 
 export interface ModelDefinitionModelOptions {
   labels?: StringList;
   lossType?: string;
   modelType?: string;
 }
-export const ModelDefinitionModelOptions = /*@__PURE__*/ S.suspend(() =>
+const ModelDefinitionModelOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringList),
     lossType: S.optional(S.String),
@@ -6751,7 +6717,7 @@ export interface BqmlTrainingRunTrainingOptions {
   l2Reg?: number;
   earlyStop?: boolean;
 }
-export const BqmlTrainingRunTrainingOptions = /*@__PURE__*/ S.suspend(() =>
+const BqmlTrainingRunTrainingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineSearchInitLearnRate: S.optional(S.Number),
     learnRate: S.optional(S.Number),
@@ -6779,7 +6745,7 @@ export interface BqmlIterationResult {
   /** Deprecated. */
   learnRate?: number;
 }
-export const BqmlIterationResult = /*@__PURE__*/ S.suspend(() =>
+const BqmlIterationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     durationMs: S.optional(S.String),
@@ -6790,7 +6756,7 @@ export const BqmlIterationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BqmlIterationResult" }) as any as S.Schema<BqmlIterationResult>;
 
 export type BqmlIterationResultList = Array<BqmlIterationResult>;
-export const BqmlIterationResultList = /*@__PURE__*/ S.Array(
+const BqmlIterationResultList = /*@__PURE__*/ S.Array(
   BqmlIterationResult,
 ) as any as S.Schema<BqmlIterationResultList>;
 
@@ -6804,7 +6770,7 @@ export interface BqmlTrainingRun {
   /** Deprecated. */
   iterationResults?: BqmlIterationResultList;
 }
-export const BqmlTrainingRun = /*@__PURE__*/ S.suspend(() =>
+const BqmlTrainingRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -6814,7 +6780,7 @@ export const BqmlTrainingRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BqmlTrainingRun" }) as any as S.Schema<BqmlTrainingRun>;
 
 export type BqmlTrainingRunList = Array<BqmlTrainingRun>;
-export const BqmlTrainingRunList = /*@__PURE__*/ S.Array(
+const BqmlTrainingRunList = /*@__PURE__*/ S.Array(
   BqmlTrainingRun,
 ) as any as S.Schema<BqmlTrainingRunList>;
 
@@ -6824,7 +6790,7 @@ export interface ModelDefinition {
   /** Deprecated. */
   trainingRuns?: BqmlTrainingRunList;
 }
-export const ModelDefinition = /*@__PURE__*/ S.suspend(() =>
+const ModelDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelOptions: S.optional(ModelDefinitionModelOptions),
     trainingRuns: S.optional(BqmlTrainingRunList),
@@ -6937,7 +6903,7 @@ export interface Table {
   /** Deprecated. */
   model?: ModelDefinition;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numBytes: S.optional(S.String),
     resourceTags: S.optional(StringMap),
@@ -6995,14 +6961,11 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type JsonValue = unknown;
-export const JsonValue = /*@__PURE__*/ S.Unknown;
+const JsonValue = /*@__PURE__*/ S.Unknown;
 
 /** Represents a single JSON object. */
 export type JsonObject = { [key: string]: JsonValue | undefined };
-export const JsonObject = /*@__PURE__*/ S.Record(
-  S.String,
-  JsonValue,
-) as any as S.Schema<JsonObject>;
+const JsonObject = /*@__PURE__*/ S.Record(S.String, JsonValue) as any as S.Schema<JsonObject>;
 
 export interface TableDataInsertAllRequestRowsItem {
   /** Data for a single row. */
@@ -7010,7 +6973,7 @@ export interface TableDataInsertAllRequestRowsItem {
   /** Insertion ID for best-effort deduplication. This feature is not recommended, and users seeking stronger insertion semantics are encouraged to use other mechanisms such as the BigQuery Write API. */
   insertId?: string;
 }
-export const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ S.suspend(() =>
+const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     json: S.optional(JsonObject),
     insertId: S.optional(S.String),
@@ -7020,7 +6983,7 @@ export const TableDataInsertAllRequestRowsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableDataInsertAllRequestRowsItem>;
 
 export type TableDataInsertAllRequestRowsItemList = Array<TableDataInsertAllRequestRowsItem>;
-export const TableDataInsertAllRequestRowsItemList = /*@__PURE__*/ S.Array(
+const TableDataInsertAllRequestRowsItemList = /*@__PURE__*/ S.Array(
   TableDataInsertAllRequestRowsItem,
 ) as any as S.Schema<TableDataInsertAllRequestRowsItemList>;
 
@@ -7038,7 +7001,7 @@ export interface TableDataInsertAllRequest {
   /** Optional. Unique request trace id. Used for debugging purposes only. It is case-sensitive, limited to up to 36 ASCII characters. A UUID is recommended. */
   traceId?: string;
 }
-export const TableDataInsertAllRequest = /*@__PURE__*/ S.suspend(() =>
+const TableDataInsertAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateSuffix: S.optional(S.String),
     rows: S.optional(TableDataInsertAllRequestRowsItemList),
@@ -7061,7 +7024,7 @@ export interface InsertAllTabledataRequest {
   /** Request body */
   body?: TableDataInsertAllRequest;
 }
-export const InsertAllTabledataRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAllTabledataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -7084,7 +7047,7 @@ export interface TableDataInsertAllResponseInsertErrorsItem {
   /** The index of the row that error applies to. */
   index?: number;
 }
-export const TableDataInsertAllResponseInsertErrorsItem = /*@__PURE__*/ S.suspend(() =>
+const TableDataInsertAllResponseInsertErrorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(ErrorProtoList),
     index: S.optional(S.Number),
@@ -7095,7 +7058,7 @@ export const TableDataInsertAllResponseInsertErrorsItem = /*@__PURE__*/ S.suspen
 
 export type TableDataInsertAllResponseInsertErrorsItemList =
   Array<TableDataInsertAllResponseInsertErrorsItem>;
-export const TableDataInsertAllResponseInsertErrorsItemList = /*@__PURE__*/ S.Array(
+const TableDataInsertAllResponseInsertErrorsItemList = /*@__PURE__*/ S.Array(
   TableDataInsertAllResponseInsertErrorsItem,
 ) as any as S.Schema<TableDataInsertAllResponseInsertErrorsItemList>;
 
@@ -7106,7 +7069,7 @@ export interface TableDataInsertAllResponse {
   /** Returns "bigquery#tableDataInsertAllResponse". */
   kind?: string;
 }
-export const TableDataInsertAllResponse = /*@__PURE__*/ S.suspend(() =>
+const TableDataInsertAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insertErrors: S.optional(TableDataInsertAllResponseInsertErrorsItemList),
     kind: S.optional(S.String),
@@ -7123,7 +7086,7 @@ export interface InsertDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const InsertDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
     projectId: S.String.pipe(T.Label()),
@@ -7143,7 +7106,7 @@ export interface InsertJobsRequest {
   /** Request body */
   body?: Job;
 }
-export const InsertJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(Job.pipe(T.HttpBody())),
@@ -7164,7 +7127,7 @@ export interface InsertRoutinesRequest {
   /** Request body */
   body?: Routine;
 }
-export const InsertRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -7188,7 +7151,7 @@ export interface InsertRowAccessPoliciesRequest {
   /** Request body */
   body?: RowAccessPolicy;
 }
-export const InsertRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -7213,7 +7176,7 @@ export interface InsertTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const InsertTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -7239,7 +7202,7 @@ export interface ListDatasetsRequest {
   /** The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. */
   maxResults?: number;
 }
-export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -7275,7 +7238,7 @@ export interface DatasetListDatasetsItem {
   /** The resource type. This property always returns the value "bigquery#dataset" */
   kind?: string;
 }
-export const DatasetListDatasetsItem = /*@__PURE__*/ S.suspend(() =>
+const DatasetListDatasetsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     type: S.optional(S.String),
@@ -7290,7 +7253,7 @@ export const DatasetListDatasetsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetListDatasetsItem" }) as any as S.Schema<DatasetListDatasetsItem>;
 
 export type DatasetListDatasetsItemList = Array<DatasetListDatasetsItem>;
-export const DatasetListDatasetsItemList = /*@__PURE__*/ S.Array(
+const DatasetListDatasetsItemList = /*@__PURE__*/ S.Array(
   DatasetListDatasetsItem,
 ) as any as S.Schema<DatasetListDatasetsItemList>;
 
@@ -7307,7 +7270,7 @@ export interface DatasetList {
   /** A token that can be used to request the next results page. This property is omitted on the final results page. */
   nextPageToken?: string;
 }
-export const DatasetList = /*@__PURE__*/ S.suspend(() =>
+const DatasetList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(DatasetListDatasetsItemList),
     etag: S.optional(S.String),
@@ -7318,13 +7281,11 @@ export const DatasetList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetList" }) as any as S.Schema<DatasetList>;
 
 export type ListJobsProjectionEnum = "full" | "minimal";
-export const ListJobsProjectionEnum = S.String;
+const ListJobsProjectionEnum = S.String;
 
 export type ListJobsStateFilterEnum = "done" | "pending" | "running";
-export const ListJobsStateFilterEnum = S.String;
-
 export type ListJobsStateFilterEnumList = Array<ListJobsStateFilterEnum | (string & {})>;
-export const ListJobsStateFilterEnumList =
+const ListJobsStateFilterEnumList =
   ArimaModelInfoSeasonalPeriodsItemEnumList as any as S.Schema<ListJobsStateFilterEnumList>;
 
 export interface ListJobsRequest {
@@ -7347,7 +7308,7 @@ export interface ListJobsRequest {
   /** Filter for job state */
   stateFilter?: ListJobsStateFilterEnumList;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allUsers: S.optional(S.Boolean.pipe(T.Query())),
     parentJobId: S.optional(S.String.pipe(T.Query())),
@@ -7389,7 +7350,7 @@ export interface JobListJobsItem {
   /** Required. Describes the job configuration. */
   configuration?: JobConfiguration;
 }
-export const JobListJobsItem = /*@__PURE__*/ S.suspend(() =>
+const JobListJobsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(S.String),
     jobReference: S.optional(JobReference),
@@ -7405,7 +7366,7 @@ export const JobListJobsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobListJobsItem" }) as any as S.Schema<JobListJobsItem>;
 
 export type JobListJobsItemList = Array<JobListJobsItem>;
-export const JobListJobsItemList = /*@__PURE__*/ S.Array(
+const JobListJobsItemList = /*@__PURE__*/ S.Array(
   JobListJobsItem,
 ) as any as S.Schema<JobListJobsItemList>;
 
@@ -7422,7 +7383,7 @@ export interface JobList {
   /** The resource type of the response. */
   kind?: string;
 }
-export const JobList = /*@__PURE__*/ S.suspend(() =>
+const JobList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     jobs: S.optional(JobListJobsItemList),
@@ -7442,7 +7403,7 @@ export interface ListModelsRequest {
   /** Required. Project ID of the models to list. */
   projectId: string;
 }
-export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     datasetId: S.String.pipe(T.Label()),
@@ -7458,7 +7419,7 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListModelsRequest" }) as any as S.Schema<ListModelsRequest>;
 
 export type ModelList = Array<Model>;
-export const ModelList = /*@__PURE__*/ S.Array(Model) as any as S.Schema<ModelList>;
+const ModelList = /*@__PURE__*/ S.Array(Model) as any as S.Schema<ModelList>;
 
 /** Response format for a single page when listing BigQuery ML models. */
 export interface ListModelsResponse {
@@ -7467,7 +7428,7 @@ export interface ListModelsResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     models: S.optional(ModelList),
     nextPageToken: S.optional(S.String),
@@ -7480,7 +7441,7 @@ export interface ListProjectsRequest {
   /** `maxResults` unset returns all results, up to 50 per page. Additionally, the number of projects in a page may be fewer than `maxResults` because projects are retrieved and then filtered to only projects with the BigQuery API enabled. */
   maxResults?: number;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7498,7 +7459,7 @@ export interface ProjectReference {
   /** Required. ID of the project. Can be either the numeric ID or the assigned ID of the project. */
   projectId?: string;
 }
-export const ProjectReference = /*@__PURE__*/ S.suspend(() =>
+const ProjectReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
   }),
@@ -7516,7 +7477,7 @@ export interface ProjectListProjectsItem {
   /** The numeric ID of this project. */
   numericId?: string;
 }
-export const ProjectListProjectsItem = /*@__PURE__*/ S.suspend(() =>
+const ProjectListProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     friendlyName: S.optional(S.String),
@@ -7527,7 +7488,7 @@ export const ProjectListProjectsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectListProjectsItem" }) as any as S.Schema<ProjectListProjectsItem>;
 
 export type ProjectListProjectsItemList = Array<ProjectListProjectsItem>;
-export const ProjectListProjectsItemList = /*@__PURE__*/ S.Array(
+const ProjectListProjectsItemList = /*@__PURE__*/ S.Array(
   ProjectListProjectsItem,
 ) as any as S.Schema<ProjectListProjectsItemList>;
 
@@ -7544,7 +7505,7 @@ export interface ProjectList {
   /** The resource type of the response. */
   kind?: string;
 }
-export const ProjectList = /*@__PURE__*/ S.suspend(() =>
+const ProjectList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalItems: S.optional(S.Number),
     nextPageToken: S.optional(S.String),
@@ -7568,7 +7529,7 @@ export interface ListRoutinesRequest {
   /** Required. Dataset ID of the routines to list */
   datasetId: string;
 }
-export const ListRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7586,7 +7547,7 @@ export const ListRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRoutinesRequest" }) as any as S.Schema<ListRoutinesRequest>;
 
 export type RoutineList = Array<Routine>;
-export const RoutineList = /*@__PURE__*/ S.Array(Routine) as any as S.Schema<RoutineList>;
+const RoutineList = /*@__PURE__*/ S.Array(Routine) as any as S.Schema<RoutineList>;
 
 /** Describes the format of a single result page when listing routines. */
 export interface ListRoutinesResponse {
@@ -7595,7 +7556,7 @@ export interface ListRoutinesResponse {
   /** A token to request the next page of results. */
   nextPageToken?: string;
 }
-export const ListRoutinesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoutinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routines: S.optional(RoutineList),
     nextPageToken: S.optional(S.String),
@@ -7614,7 +7575,7 @@ export interface ListRowAccessPoliciesRequest {
   /** Page token, returned by a previous call, to request the next page of results. */
   pageToken?: string;
 }
-export const ListRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     datasetId: S.String.pipe(T.Label()),
@@ -7633,7 +7594,7 @@ export const ListRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRowAccessPoliciesRequest>;
 
 export type RowAccessPolicyList = Array<RowAccessPolicy>;
-export const RowAccessPolicyList = /*@__PURE__*/ S.Array(
+const RowAccessPolicyList = /*@__PURE__*/ S.Array(
   RowAccessPolicy,
 ) as any as S.Schema<RowAccessPolicyList>;
 
@@ -7644,7 +7605,7 @@ export interface ListRowAccessPoliciesResponse {
   /** Row access policies on the requested table. */
   rowAccessPolicies?: RowAccessPolicyList;
 }
-export const ListRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     rowAccessPolicies: S.optional(RowAccessPolicyList),
@@ -7658,7 +7619,7 @@ export type ListTabledataFormatOptions_timestampOutputFormatEnum =
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
-export const ListTabledataFormatOptions_timestampOutputFormatEnum = S.String;
+const ListTabledataFormatOptions_timestampOutputFormatEnum = S.String;
 
 export interface ListTabledataRequest {
   /** Start row index of the table. */
@@ -7682,7 +7643,7 @@ export interface ListTabledataRequest {
   /** Row limit of the table. */
   maxResults?: number;
 }
-export const ListTabledataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTabledataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.String.pipe(T.Query())),
     tableId: S.String.pipe(T.Label()),
@@ -7716,7 +7677,7 @@ export interface TableDataList {
   /** The resource type of the response. */
   kind?: string;
 }
-export const TableDataList = /*@__PURE__*/ S.suspend(() =>
+const TableDataList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalRows: S.optional(S.String),
     rows: S.optional(TableRowList),
@@ -7736,7 +7697,7 @@ export interface ListTablesRequest {
   /** Required. Project ID of the tables to list */
   projectId: string;
 }
-export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -7757,7 +7718,7 @@ export interface TableListTablesItemView {
   /** Specifies the privacy policy for the view. */
   privacyPolicy?: PrivacyPolicy;
 }
-export const TableListTablesItemView = /*@__PURE__*/ S.suspend(() =>
+const TableListTablesItemView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useLegacySql: S.optional(S.Boolean),
     privacyPolicy: S.optional(PrivacyPolicy),
@@ -7792,7 +7753,7 @@ export interface TableListTablesItem {
   /** Clustering specification for this table, if configured. */
   clustering?: Clustering;
 }
-export const TableListTablesItem = /*@__PURE__*/ S.suspend(() =>
+const TableListTablesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     tableReference: S.optional(TableReference),
@@ -7811,7 +7772,7 @@ export const TableListTablesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TableListTablesItem" }) as any as S.Schema<TableListTablesItem>;
 
 export type TableListTablesItemList = Array<TableListTablesItem>;
-export const TableListTablesItemList = /*@__PURE__*/ S.Array(
+const TableListTablesItemList = /*@__PURE__*/ S.Array(
   TableListTablesItem,
 ) as any as S.Schema<TableListTablesItemList>;
 
@@ -7828,7 +7789,7 @@ export interface TableList {
   /** The total number of tables in the dataset. */
   totalItems?: number;
 }
-export const TableList = /*@__PURE__*/ S.suspend(() =>
+const TableList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: S.optional(TableListTablesItemList),
     nextPageToken: S.optional(S.String),
@@ -7843,7 +7804,7 @@ export type PatchDatasetsUpdateModeEnum =
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
   | "UPDATE_FULL";
-export const PatchDatasetsUpdateModeEnum = S.String;
+const PatchDatasetsUpdateModeEnum = S.String;
 
 export interface PatchDatasetsRequest {
   /** Required. Dataset ID of the dataset being updated */
@@ -7857,7 +7818,7 @@ export interface PatchDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const PatchDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -7883,7 +7844,7 @@ export interface PatchModelsRequest {
   /** Request body */
   body?: Model;
 }
-export const PatchModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     modelId: S.String.pipe(T.Label()),
@@ -7910,7 +7871,7 @@ export interface PatchTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const PatchTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -7931,7 +7892,7 @@ export type DataFormatOptionsTimestampOutputFormatEnum =
   | "FLOAT64"
   | "INT64"
   | "ISO8601_STRING";
-export const DataFormatOptionsTimestampOutputFormatEnum = S.String;
+const DataFormatOptionsTimestampOutputFormatEnum = S.String;
 
 /** Options for data format adjustments. */
 export interface DataFormatOptions {
@@ -7940,7 +7901,7 @@ export interface DataFormatOptions {
   /** Optional. Output timestamp as usec int64. Default is false. */
   useInt64Timestamp?: boolean;
 }
-export const DataFormatOptions = /*@__PURE__*/ S.suspend(() =>
+const DataFormatOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestampOutputFormat: S.optional(DataFormatOptionsTimestampOutputFormatEnum),
     useInt64Timestamp: S.optional(S.Boolean),
@@ -7951,14 +7912,14 @@ export type ArrowSerializationOptionsBufferCompressionEnum =
   | "COMPRESSION_UNSPECIFIED"
   | "LZ4_FRAME"
   | "ZSTD";
-export const ArrowSerializationOptionsBufferCompressionEnum = S.String;
+const ArrowSerializationOptionsBufferCompressionEnum = S.String;
 
 export type ArrowSerializationOptionsPicosTimestampPrecisionEnum =
   | "PICOS_TIMESTAMP_PRECISION_UNSPECIFIED"
   | "TIMESTAMP_PRECISION_MICROS"
   | "TIMESTAMP_PRECISION_NANOS"
   | "TIMESTAMP_PRECISION_PICOS";
-export const ArrowSerializationOptionsPicosTimestampPrecisionEnum = S.String;
+const ArrowSerializationOptionsPicosTimestampPrecisionEnum = S.String;
 
 /** Contains options specific to Arrow Serialization. This feature is not yet available. */
 export interface ArrowSerializationOptions {
@@ -7967,7 +7928,7 @@ export interface ArrowSerializationOptions {
   /** Optional. Set timestamp precision option. If not set, the default precision is microseconds. */
   picosTimestampPrecision?: ArrowSerializationOptionsPicosTimestampPrecisionEnum | (string & {});
 }
-export const ArrowSerializationOptions = /*@__PURE__*/ S.suspend(() =>
+const ArrowSerializationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bufferCompression: S.optional(ArrowSerializationOptionsBufferCompressionEnum),
     picosTimestampPrecision: S.optional(ArrowSerializationOptionsPicosTimestampPrecisionEnum),
@@ -7980,13 +7941,13 @@ export type QueryRequestQueryResultsFormatEnum =
   | "QUERY_RESULTS_FORMAT_UNSPECIFIED"
   | "STRUCT_ENCODING"
   | "ARROW";
-export const QueryRequestQueryResultsFormatEnum = S.String;
+const QueryRequestQueryResultsFormatEnum = S.String;
 
 export type QueryRequestJobCreationModeEnum =
   | "JOB_CREATION_MODE_UNSPECIFIED"
   | "JOB_CREATION_REQUIRED"
   | "JOB_CREATION_OPTIONAL";
-export const QueryRequestJobCreationModeEnum = S.String;
+const QueryRequestJobCreationModeEnum = S.String;
 
 /** Describes the format of the jobs.query request. */
 export interface QueryRequest {
@@ -8047,7 +8008,7 @@ export interface QueryRequest {
   /** Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query uses BigQuery's [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql). When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false. */
   useLegacySql?: boolean;
 }
-export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secureContext: S.optional(SecureContext),
     location: S.optional(S.String),
@@ -8086,7 +8047,7 @@ export interface QueryJobsRequest {
   /** Request body */
   body?: QueryRequest;
 }
-export const QueryJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(QueryRequest.pipe(T.HttpBody())),
@@ -8104,7 +8065,7 @@ export interface ArrowSchema {
   /** IPC serialized Arrow schema. */
   serializedSchema?: string;
 }
-export const ArrowSchema = /*@__PURE__*/ S.suspend(() =>
+const ArrowSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serializedSchema: S.optional(S.String),
   }),
@@ -8115,7 +8076,7 @@ export interface ArrowRecordBatch {
   /** IPC-serialized Arrow RecordBatch. */
   serializedRecordBatch?: string;
 }
-export const ArrowRecordBatch = /*@__PURE__*/ S.suspend(() =>
+const ArrowRecordBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serializedRecordBatch: S.optional(S.String),
   }),
@@ -8173,7 +8134,7 @@ export interface QueryResponse {
   /** Output only. The type of query statement, if valid. Possible values: * `SELECT`: [`SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#select_list) statement. * `ASSERT`: [`ASSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/debugging-statements#assert) statement. * `INSERT`: [`INSERT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#insert_statement) statement. * `UPDATE`: [`UPDATE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#update_statement) statement. * `DELETE`: [`DELETE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `MERGE`: [`MERGE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language) statement. * `TRUNCATE_TABLE`: [`TRUNCATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/dml-syntax#truncate_table_statement) statement. * `CREATE_TABLE`: [`CREATE TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement, without `AS SELECT`. * `CREATE_TABLE_AS_SELECT`: [`CREATE TABLE AS SELECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_statement) statement. * `CREATE_VIEW`: [`CREATE VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_view_statement) statement. * `CREATE_MODEL`: [`CREATE MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#create_model_statement) statement. * `CREATE_MATERIALIZED_VIEW`: [`CREATE MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_materialized_view_statement) statement. * `CREATE_FUNCTION`: [`CREATE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_function_statement) statement. * `CREATE_TABLE_FUNCTION`: [`CREATE TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_table_function_statement) statement. * `CREATE_PROCEDURE`: [`CREATE PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_procedure) statement. * `CREATE_ROW_ACCESS_POLICY`: [`CREATE ROW ACCESS POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_row_access_policy_statement) statement. * `CREATE_SCHEMA`: [`CREATE SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_schema_statement) statement. * `CREATE_EXTERNAL_SCHEMA`: [`CREATE EXTERNAL SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_schema_statement) statement. * `CREATE_EXTERNAL_TABLE`: [`CREATE EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_external_table_statement) statement. * `CREATE_SNAPSHOT_TABLE`: [`CREATE SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_snapshot_table_statement) statement. * `CREATE_SEARCH_INDEX`: [`CREATE SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_search_index_statement) statement. * `CREATE_VECTOR_INDEX`: [`CREATE VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_vector_index_statement) statement. * `CREATE_CONNECTION`: [`CREATE CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_connection_statement) statement. * `CREATE_DATA_POLICY`: [`CREATE DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_data_policy_statement) statement. * `CREATE_PROPERTY_GRAPH`: [`CREATE PROPERTY GRAPH`](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-schema-statements#gql_create_graph) statement. * `CREATE_CAPACITY`: [`CREATE CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_capacity_statement) statement. * `CREATE_RESERVATION`: [`CREATE RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_reservation_statement) statement. * `CREATE_ASSIGNMENT`: [`CREATE ASSIGNMENT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#create_assignment_statement) statement. * `DROP_TABLE`: [`DROP TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_statement) statement. * `DROP_EXTERNAL_TABLE`: [`DROP EXTERNAL TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_external_table_statement) statement. * `DROP_VIEW`: [`DROP VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_view_statement) statement. * `DROP_MODEL`: [`DROP MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-drop-model) statement. * `DROP_MATERIALIZED_VIEW`: [`DROP MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_materialized_view_statement) statement. * `DROP_FUNCTION`: [`DROP FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_function_statement) statement. * `DROP_TABLE_FUNCTION`: [`DROP TABLE FUNCTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_table_function) statement. * `DROP_PROCEDURE`: [`DROP PROCEDURE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_procedure_statement) statement. * `DROP_SEARCH_INDEX`: [`DROP SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_search_index) statement. * `DROP_VECTOR_INDEX`: [`DROP VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_vector_index) statement. * `DROP_SCHEMA`: [`DROP SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_schema_statement) statement. * `UNDROP_SCHEMA`: [`UNDROP SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#undrop_schema_statement) statement. * `DROP_SNAPSHOT_TABLE`: [`DROP SNAPSHOT TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_snapshot_table_statement) statement. * `DROP_ROW_ACCESS_POLICY`: [`DROP [ALL] ROW ACCESS POLICY|POLICIES`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_row_access_policy_statement) statement. * `DROP_CONNECTION`: [`DROP CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_connection_statement) statement. * `DROP_DATA_POLICY`: [`DROP DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_data_policy) statement. * `DROP_PROPERTY_GRAPH`: [`DROP PROPERTY GRAPH`](https://cloud.google.com/bigquery/docs/reference/standard-sql/graph-schema-statements#gql_drop_graph) statement. * `DROP_CAPACITY`: [`DROP CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_capacity_statement) statement. * `DROP_RESERVATION`: [`DROP RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_reservation_statement) statement. * `DROP_ASSIGNMENT`: [`DROP ASSIGNMENT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#drop_assignment_statement) statement. * `ALTER_TABLE`: [`ALTER TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_table_set_options_statement) statement. * `ALTER_VIEW`: [`ALTER VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_view_set_options_statement) statement. * `ALTER_MATERIALIZED_VIEW`: [`ALTER MATERIALIZED VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_materialized_view_set_options_statement) statement. * `ALTER_SCHEMA`: [`ALTER SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_schema_set_options_statement) statement. * `ALTER_MODEL`: [`ALTER MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-alter-model) statement. * `ALTER_SEARCH_INDEX`: [`ALTER SEARCH INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_search_index_statement) statement. * `ALTER_VECTOR_INDEX`: [`ALTER VECTOR INDEX`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_vector_index_rebuild_statement) statement. * `ALTER_CONNECTION`: [`ALTER CONNECTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_connection_set_options_statement) statement. * `ALTER_DATA_POLICY`: [`ALTER DATA_POLICY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_data_policy_statement) statement. * `ALTER_PROJECT`: [`ALTER PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_project_set_options_statement) statement. * `ALTER_ORGANIZATION`: [`ALTER ORGANIZATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_organization_set_options_statement) statement. * `ALTER_BI_CAPACITY`: [`ALTER BI_CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_bi_capacity_set_options_statement) statement. * `ALTER_CAPACITY`: [`ALTER CAPACITY`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_capacity_set_options_statement) statement. * `ALTER_RESERVATION`: [`ALTER RESERVATION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#alter_reservation_set_options_statement) statement. * `SCRIPT`: [`SCRIPT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language) statement. * `CALL`: [`CALL`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#call) statement. * `BEGIN_TRANSACTION`: [`BEGIN TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#begin_transaction) statement. * `COMMIT_TRANSACTION`: [`COMMIT TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#commit_transaction) statement. * `ROLLBACK_TRANSACTION`: [`ROLLBACK TRANSACTION`](https://cloud.google.com/bigquery/docs/reference/standard-sql/procedural-language#rollback_transaction) statement. * `EXPORT_DATA`: [`EXPORT DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/export-statements#export_data_statement) statement. * `EXPORT_MODEL`: [`EXPORT MODEL`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-export-model) statement. * `EXPORT_METADATA`: [`EXPORT TABLE METADATA`](https://cloud.google.com/bigquery/docs/biglake-iceberg-tables-in-bigquery) statement, for BigLake Iceberg tables. * `LOAD_DATA`: [`LOAD DATA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/load-statements#load_data_statement) statement. * `GRANT_ON_SCHEMA`: [`GRANT ... ON SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `GRANT_ON_TABLE`: [`GRANT ... ON TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. Also used for `GRANT ... ON EXTERNAL TABLE`. * `GRANT_ON_VIEW`: [`GRANT ... ON VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `GRANT_ON_PROJECT`: [`GRANT ... ON PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#grant_statement) statement. * `REVOKE_ON_SCHEMA`: [`REVOKE ... ON SCHEMA`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. * `REVOKE_ON_TABLE`: [`REVOKE ... ON TABLE`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. Also used for `REVOKE ... ON EXTERNAL TABLE`. * `REVOKE_ON_VIEW`: [`REVOKE ... ON VIEW`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. * `REVOKE_ON_PROJECT`: [`REVOKE ... ON PROJECT`](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-control-language#revoke_statement) statement. */
   statementType?: string;
 }
-export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     dmlStats: S.optional(DmlStatistics),
@@ -8210,7 +8171,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -8223,7 +8184,7 @@ export interface SetIamPolicyRoutinesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -8244,7 +8205,7 @@ export interface SetIamPolicyTablesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -8264,7 +8225,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -8278,7 +8239,7 @@ export interface TestIamPermissionsRoutinesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -8298,7 +8259,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsRowAccessPoliciesRequest {
@@ -8307,7 +8268,7 @@ export interface TestIamPermissionsRowAccessPoliciesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -8328,7 +8289,7 @@ export interface TestIamPermissionsTablesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -8348,7 +8309,7 @@ export interface UndeleteDatasetRequest {
   /** Optional. The exact time when the dataset was deleted. If not specified, the most recently deleted version is undeleted. Undeleting a dataset using deletion time is not supported. */
   deletionTime?: string;
 }
-export const UndeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionTime: S.optional(S.String),
   }),
@@ -8362,7 +8323,7 @@ export interface UndeleteDatasetsRequest {
   /** Request body */
   body?: UndeleteDatasetRequest;
 }
-export const UndeleteDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -8381,7 +8342,7 @@ export type UpdateDatasetsUpdateModeEnum =
   | "UPDATE_METADATA"
   | "UPDATE_ACL"
   | "UPDATE_FULL";
-export const UpdateDatasetsUpdateModeEnum = S.String;
+const UpdateDatasetsUpdateModeEnum = S.String;
 
 export interface UpdateDatasetsRequest {
   /** Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Operations updating conditional access policy binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy entry with condition. - Removing an access policy entry with condition. - Updating an access policy entry with condition. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM. */
@@ -8395,7 +8356,7 @@ export interface UpdateDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const UpdateDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessPolicyVersion: S.optional(S.Number.pipe(T.Query())),
     datasetId: S.String.pipe(T.Label()),
@@ -8421,7 +8382,7 @@ export interface UpdateRoutinesRequest {
   /** Request body */
   body?: Routine;
 }
-export const UpdateRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoutinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     routineId: S.String.pipe(T.Label()),
@@ -8448,7 +8409,7 @@ export interface UpdateRowAccessPoliciesRequest {
   /** Request body */
   body?: RowAccessPolicy;
 }
-export const UpdateRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     datasetId: S.String.pipe(T.Label()),
@@ -8478,7 +8439,7 @@ export interface UpdateTablesRequest {
   /** Request body */
   body?: Table;
 }
-export const UpdateTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autodetect_schema: S.optional(S.Boolean.pipe(T.Query())),
     datasetId: S.String.pipe(T.Label()),

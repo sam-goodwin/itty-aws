@@ -62,10 +62,10 @@ export class NotFound
   ) {}
 
 export type BatchGetCategoriesViewEnum = "CATEGORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const BatchGetCategoriesViewEnum = S.String;
+const BatchGetCategoriesViewEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface BatchGetCategoriesRequest {
   /** Required. Specifies which parts to the Category resource should be returned in the response. */
@@ -77,7 +77,7 @@ export interface BatchGetCategoriesRequest {
   /** Required. At least one name must be set. The GConcept ids the localized category names should be returned for. To return details for more than one category, repeat this parameter in the request. */
   names?: StringList;
 }
-export const BatchGetCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(BatchGetCategoriesViewEnum.pipe(T.Query())),
     regionCode: S.optional(S.String.pipe(T.Query())),
@@ -101,7 +101,7 @@ export interface ServiceType {
   /** Output only. A stable ID (provided by Google) for this service type. */
   serviceTypeId?: string;
 }
-export const ServiceType = /*@__PURE__*/ S.suspend(() =>
+const ServiceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     serviceTypeId: S.optional(S.String),
@@ -109,9 +109,7 @@ export const ServiceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
 
 export type ServiceTypeList = Array<ServiceType>;
-export const ServiceTypeList = /*@__PURE__*/ S.Array(
-  ServiceType,
-) as any as S.Schema<ServiceTypeList>;
+const ServiceTypeList = /*@__PURE__*/ S.Array(ServiceType) as any as S.Schema<ServiceTypeList>;
 
 /** More hours types that a business can offers, in addition to its regular hours. */
 export interface MoreHoursType {
@@ -122,7 +120,7 @@ export interface MoreHoursType {
   /** Output only. The human-readable localized display name for the hours type. */
   localizedDisplayName?: string;
 }
-export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
+const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hoursTypeId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -131,7 +129,7 @@ export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
 
 export type MoreHoursTypeList = Array<MoreHoursType>;
-export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
+const MoreHoursTypeList = /*@__PURE__*/ S.Array(
   MoreHoursType,
 ) as any as S.Schema<MoreHoursTypeList>;
 
@@ -146,7 +144,7 @@ export interface Category {
   /** Required. A stable ID (provided by Google) for this category. The value must be specified when modifying the category (when creating or updating a location). */
   name?: string;
 }
-export const Category = /*@__PURE__*/ S.suspend(() =>
+const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     serviceTypes: S.optional(ServiceTypeList),
@@ -156,14 +154,14 @@ export const Category = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
 
 export type CategoryList = Array<Category>;
-export const CategoryList = /*@__PURE__*/ S.Array(Category) as any as S.Schema<CategoryList>;
+const CategoryList = /*@__PURE__*/ S.Array(Category) as any as S.Schema<CategoryList>;
 
 /** Response message for BusinessCategories.BatchGetBusinessCategories. */
 export interface BatchGetCategoriesResponse {
   /** Categories that match the GConcept ids provided in the request. They will not come in the same order as category ids in the request. */
   categories?: CategoryList;
 }
-export const BatchGetCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(CategoryList),
   }),
@@ -178,7 +176,7 @@ export interface PhoneNumbers {
   /** Required. A phone number that connects to your individual business location as directly as possible. Use a local phone number instead of a central, call center helpline number whenever possible. */
   primaryPhone?: string;
 }
-export const PhoneNumbers = /*@__PURE__*/ S.suspend(() =>
+const PhoneNumbers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalPhones: S.optional(StringList),
     primaryPhone: S.optional(S.String),
@@ -196,7 +194,7 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minutes: S.optional(S.Number),
     hours: S.optional(S.Number),
@@ -214,7 +212,7 @@ export type TimePeriodCloseDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const TimePeriodCloseDayEnum = S.String;
+const TimePeriodCloseDayEnum = S.String;
 
 export type TimePeriodOpenDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -225,7 +223,7 @@ export type TimePeriodOpenDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const TimePeriodOpenDayEnum = S.String;
+const TimePeriodOpenDayEnum = S.String;
 
 /** Represents a span of time that the business is open, starting on the specified open day/time and closing on the specified close day/time. The closing time must occur after the opening time, for example later in the same day, or on a subsequent day. */
 export interface TimePeriod {
@@ -238,7 +236,7 @@ export interface TimePeriod {
   /** Required. Indicates the day of the week this period starts on. */
   openDay?: TimePeriodOpenDayEnum | (string & {});
 }
-export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
+const TimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closeTime: S.optional(TimeOfDay),
     openTime: S.optional(TimeOfDay),
@@ -248,7 +246,7 @@ export const TimePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimePeriod" }) as any as S.Schema<TimePeriod>;
 
 export type TimePeriodList = Array<TimePeriod>;
-export const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
+const TimePeriodList = /*@__PURE__*/ S.Array(TimePeriod) as any as S.Schema<TimePeriodList>;
 
 /** The time periods during which a location is open for certain types of business. */
 export interface MoreHours {
@@ -257,7 +255,7 @@ export interface MoreHours {
   /** Required. A collection of times that this location is open. Each period represents a range of hours when the location is open during the week. */
   periods?: TimePeriodList;
 }
-export const MoreHours = /*@__PURE__*/ S.suspend(() =>
+const MoreHours = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hoursTypeId: S.optional(S.String),
     periods: S.optional(TimePeriodList),
@@ -265,7 +263,7 @@ export const MoreHours = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoreHours" }) as any as S.Schema<MoreHours>;
 
 export type MoreHoursList = Array<MoreHours>;
-export const MoreHoursList = /*@__PURE__*/ S.Array(MoreHours) as any as S.Schema<MoreHoursList>;
+const MoreHoursList = /*@__PURE__*/ S.Array(MoreHours) as any as S.Schema<MoreHoursList>;
 
 /** A collection of categories that describes the business. During updates, both fields must be set. Clients are prohibited from individually updating the primary or additional categories using the update mask. */
 export interface Categories {
@@ -274,7 +272,7 @@ export interface Categories {
   /** Optional. Additional categories to describe your business. Categories help your customers find accurate, specific results for services they're interested in. To keep your business information accurate and live, make sure that you use as few categories as possible to describe your overall core business. Choose categories that are as specific as possible, but representative of your main business. */
   additionalCategories?: CategoryList;
 }
-export const Categories = /*@__PURE__*/ S.suspend(() =>
+const Categories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryCategory: S.optional(Category),
     additionalCategories: S.optional(CategoryList),
@@ -306,7 +304,7 @@ export interface PostalAddress {
   /** Optional. Generally refers to the city or town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave `locality` empty and use `address_lines`. */
   locality?: string;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortingCode: S.optional(S.String),
     organization: S.optional(S.String),
@@ -331,7 +329,7 @@ export interface Mybusinessbusinessinformation_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-export const Mybusinessbusinessinformation_Date = /*@__PURE__*/ S.suspend(() =>
+const Mybusinessbusinessinformation_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     year: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -354,7 +352,7 @@ export interface SpecialHourPeriod {
   /** Optional. Valid values are 00:00-24:00 where 24:00 represents midnight at the end of the specified day field. Must be specified if `closed` is false. */
   openTime?: TimeOfDay;
 }
-export const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
+const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     closeTime: S.optional(TimeOfDay),
     endDate: S.optional(Mybusinessbusinessinformation_Date),
@@ -365,7 +363,7 @@ export const SpecialHourPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SpecialHourPeriod" }) as any as S.Schema<SpecialHourPeriod>;
 
 export type SpecialHourPeriodList = Array<SpecialHourPeriod>;
-export const SpecialHourPeriodList = /*@__PURE__*/ S.Array(
+const SpecialHourPeriodList = /*@__PURE__*/ S.Array(
   SpecialHourPeriod,
 ) as any as S.Schema<SpecialHourPeriodList>;
 
@@ -374,7 +372,7 @@ export interface SpecialHours {
   /** Required. A list of exceptions to the business's regular hours. */
   specialHourPeriods?: SpecialHourPeriodList;
 }
-export const SpecialHours = /*@__PURE__*/ S.suspend(() =>
+const SpecialHours = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     specialHourPeriods: S.optional(SpecialHourPeriodList),
   }),
@@ -389,7 +387,7 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -406,7 +404,7 @@ export interface Label {
   /** Required. Display name for the price list, section, or item. */
   displayName?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     languageCode: S.optional(S.String),
@@ -421,7 +419,7 @@ export interface FreeFormServiceItem {
   /** Required. This field represents the category name (i.e. the category's stable ID). The `category` and `service_type_id` should match the possible combinations provided in the `Category` message. */
   category?: string;
 }
-export const FreeFormServiceItem = /*@__PURE__*/ S.suspend(() =>
+const FreeFormServiceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(Label),
     category: S.optional(S.String),
@@ -435,7 +433,7 @@ export interface StructuredServiceItem {
   /** Optional. Description of structured service item. The character limit is 300. */
   description?: string;
 }
-export const StructuredServiceItem = /*@__PURE__*/ S.suspend(() =>
+const StructuredServiceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceTypeId: S.optional(S.String),
     description: S.optional(S.String),
@@ -451,7 +449,7 @@ export interface ServiceItem {
   /** Optional. This field will be set case of structured services data. */
   structuredServiceItem?: StructuredServiceItem;
 }
-export const ServiceItem = /*@__PURE__*/ S.suspend(() =>
+const ServiceItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     price: S.optional(Money),
     freeFormServiceItem: S.optional(FreeFormServiceItem),
@@ -460,16 +458,14 @@ export const ServiceItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceItem" }) as any as S.Schema<ServiceItem>;
 
 export type ServiceItemList = Array<ServiceItem>;
-export const ServiceItemList = /*@__PURE__*/ S.Array(
-  ServiceItem,
-) as any as S.Schema<ServiceItemList>;
+const ServiceItemList = /*@__PURE__*/ S.Array(ServiceItem) as any as S.Schema<ServiceItemList>;
 
 /** All information pertaining to the location's profile. */
 export interface Profile {
   /** Required. Description of the location in your own voice, not editable by anyone else. */
   description?: string;
 }
-export const Profile = /*@__PURE__*/ S.suspend(() =>
+const Profile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -508,7 +504,7 @@ export interface Metadata {
   /** Output only. Indicates whether the location can operate on Health data. */
   canOperateHealthData?: boolean;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDelete: S.optional(S.Boolean),
     canHaveBusinessCalls: S.optional(S.Boolean),
@@ -533,7 +529,7 @@ export interface BusinessHours {
   /** Required. A collection of times that this location is open for business. Each period represents a range of hours when the location is open during the week. */
   periods?: TimePeriodList;
 }
-export const BusinessHours = /*@__PURE__*/ S.suspend(() =>
+const BusinessHours = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     periods: S.optional(TimePeriodList),
   }),
@@ -546,7 +542,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -558,7 +554,7 @@ export interface AdWordsLocationExtensions {
   /** Required. An alternate phone number to display on AdWords location extensions instead of the location's primary phone number. */
   adPhone?: string;
 }
-export const AdWordsLocationExtensions = /*@__PURE__*/ S.suspend(() =>
+const AdWordsLocationExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adPhone: S.optional(S.String),
   }),
@@ -573,7 +569,7 @@ export interface PlaceInfo {
   /** Required. The localized name of the place. For example, `Scottsdale, AZ`. */
   placeName?: string;
 }
-export const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
+const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeId: S.optional(S.String),
     placeName: S.optional(S.String),
@@ -581,14 +577,14 @@ export const PlaceInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlaceInfo" }) as any as S.Schema<PlaceInfo>;
 
 export type PlaceInfoList = Array<PlaceInfo>;
-export const PlaceInfoList = /*@__PURE__*/ S.Array(PlaceInfo) as any as S.Schema<PlaceInfoList>;
+const PlaceInfoList = /*@__PURE__*/ S.Array(PlaceInfo) as any as S.Schema<PlaceInfoList>;
 
 /** Defines the union of areas represented by a set of places. */
 export interface Places {
   /** Optional. The areas represented by place IDs. Limited to a maximum of 20 places. */
   placeInfos?: PlaceInfoList;
 }
-export const Places = /*@__PURE__*/ S.suspend(() =>
+const Places = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeInfos: S.optional(PlaceInfoList),
   }),
@@ -598,7 +594,7 @@ export type ServiceAreaBusinessBusinessTypeEnum =
   | "BUSINESS_TYPE_UNSPECIFIED"
   | "CUSTOMER_LOCATION_ONLY"
   | "CUSTOMER_AND_BUSINESS_LOCATION";
-export const ServiceAreaBusinessBusinessTypeEnum = S.String;
+const ServiceAreaBusinessBusinessTypeEnum = S.String;
 
 /** Service area businesses provide their service at the customer's location (for example, a locksmith or plumber). */
 export interface ServiceAreaBusiness {
@@ -609,7 +605,7 @@ export interface ServiceAreaBusiness {
   /** Required. Indicates the type of the service area business. */
   businessType?: ServiceAreaBusinessBusinessTypeEnum | (string & {});
 }
-export const ServiceAreaBusiness = /*@__PURE__*/ S.suspend(() =>
+const ServiceAreaBusiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     places: S.optional(Places),
     regionCode: S.optional(S.String),
@@ -622,7 +618,7 @@ export type OpenInfoStatusEnum =
   | "OPEN"
   | "CLOSED_PERMANENTLY"
   | "CLOSED_TEMPORARILY";
-export const OpenInfoStatusEnum = S.String;
+const OpenInfoStatusEnum = S.String;
 
 /** Information related to the opening state of the business. */
 export interface OpenInfo {
@@ -633,7 +629,7 @@ export interface OpenInfo {
   /** Required. Indicates whether or not the Location is currently open for business. All locations are open by default, unless updated to be closed. */
   status?: OpenInfoStatusEnum | (string & {});
 }
-export const OpenInfo = /*@__PURE__*/ S.suspend(() =>
+const OpenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canReopen: S.optional(S.Boolean),
     openingDate: S.optional(Mybusinessbusinessinformation_Date),
@@ -645,7 +641,7 @@ export type RelevantLocationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "DEPARTMENT_OF"
   | "INDEPENDENT_ESTABLISHMENT_IN";
-export const RelevantLocationRelationTypeEnum = S.String;
+const RelevantLocationRelationTypeEnum = S.String;
 
 /** Information about another location that is related to current one. The relation can be any one of DEPARTMENT_OF or INDEPENDENT_ESTABLISHMENT_OF, and the location specified here can be on either side (parent/child) of the location. */
 export interface RelevantLocation {
@@ -654,7 +650,7 @@ export interface RelevantLocation {
   /** Required. The type of the relationship. */
   relationType?: RelevantLocationRelationTypeEnum | (string & {});
 }
-export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
+const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeId: S.optional(S.String),
     relationType: S.optional(RelevantLocationRelationTypeEnum),
@@ -662,7 +658,7 @@ export const RelevantLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelevantLocation" }) as any as S.Schema<RelevantLocation>;
 
 export type RelevantLocationList = Array<RelevantLocation>;
-export const RelevantLocationList = /*@__PURE__*/ S.Array(
+const RelevantLocationList = /*@__PURE__*/ S.Array(
   RelevantLocation,
 ) as any as S.Schema<RelevantLocationList>;
 
@@ -675,7 +671,7 @@ export interface RelationshipData {
   /** Optional. The parent location that this location has relations with. */
   parentLocation?: RelevantLocation;
 }
-export const RelationshipData = /*@__PURE__*/ S.suspend(() =>
+const RelationshipData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     childrenLocations: S.optional(RelevantLocationList),
     parentChain: S.optional(S.String),
@@ -726,7 +722,7 @@ export interface Location {
   /** Optional. All locations and chain related to this one. */
   relationshipData?: RelationshipData;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneNumbers: S.optional(PhoneNumbers),
     moreHours: S.optional(MoreHoursList),
@@ -761,7 +757,7 @@ export interface CreateAccountsLocationsRequest {
   /** Request body */
   body?: Location;
 }
-export const CreateAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -782,7 +778,7 @@ export interface DeleteLocationsRequest {
   /** Required. The name of the location to delete. */
   name: string;
 }
-export const DeleteLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -796,7 +792,7 @@ export const DeleteLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -804,7 +800,7 @@ export interface GetAttributesLocationsRequest {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name: string;
 }
-export const GetAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -819,7 +815,7 @@ export const GetAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAttributesLocationsRequest>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** Values for an attribute with a `value_type` of REPEATED_ENUM. This consists of two lists of value IDs: those that are set (true) and those that are unset (false). Values absent are considered unknown. At least one value must be specified. */
 export interface RepeatedEnumAttributeValue {
@@ -828,7 +824,7 @@ export interface RepeatedEnumAttributeValue {
   /** Enum values that are set. */
   setValues?: StringList;
 }
-export const RepeatedEnumAttributeValue = /*@__PURE__*/ S.suspend(() =>
+const RepeatedEnumAttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unsetValues: S.optional(StringList),
     setValues: S.optional(StringList),
@@ -843,21 +839,21 @@ export type AttributeValueTypeEnum =
   | "ENUM"
   | "URL"
   | "REPEATED_ENUM";
-export const AttributeValueTypeEnum = S.String;
+const AttributeValueTypeEnum = S.String;
 
 /** Values for an attribute with a `value_type` of URL. */
 export interface UriAttributeValue {
   /** Required. The proposed URI value for this attribute. */
   uri?: string;
 }
-export const UriAttributeValue = /*@__PURE__*/ S.suspend(() =>
+const UriAttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
 ).annotate({ identifier: "UriAttributeValue" }) as any as S.Schema<UriAttributeValue>;
 
 export type UriAttributeValueList = Array<UriAttributeValue>;
-export const UriAttributeValueList = /*@__PURE__*/ S.Array(
+const UriAttributeValueList = /*@__PURE__*/ S.Array(
   UriAttributeValue,
 ) as any as S.Schema<UriAttributeValueList>;
 
@@ -874,7 +870,7 @@ export interface Attribute {
   /** When the attribute value type is URL, this field contains the value(s) for this attribute, and the other values fields must be empty. */
   uriValues?: UriAttributeValueList;
 }
-export const Attribute = /*@__PURE__*/ S.suspend(() =>
+const Attribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     values: S.optional(DocumentList),
@@ -885,7 +881,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 export type AttributeList = Array<Attribute>;
-export const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
+const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
 
 /** A container for all the attributes for a given location. */
 export interface Attributes {
@@ -894,7 +890,7 @@ export interface Attributes {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name?: string;
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(AttributeList),
     name: S.optional(S.String),
@@ -905,7 +901,7 @@ export interface GetChainsRequest {
   /** Required. The chain's resource name, in the format `chains/{chain_place_id}`. */
   name: string;
 }
-export const GetChainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -924,7 +920,7 @@ export interface ChainName {
   /** The BCP 47 code of language of the name. */
   languageCode?: string;
 }
-export const ChainName = /*@__PURE__*/ S.suspend(() =>
+const ChainName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     languageCode: S.optional(S.String),
@@ -932,17 +928,17 @@ export const ChainName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChainName" }) as any as S.Schema<ChainName>;
 
 export type ChainNameList = Array<ChainName>;
-export const ChainNameList = /*@__PURE__*/ S.Array(ChainName) as any as S.Schema<ChainNameList>;
+const ChainNameList = /*@__PURE__*/ S.Array(ChainName) as any as S.Schema<ChainNameList>;
 
 /** Url to be used when displaying the chain. */
 export interface ChainUri {
   /** The uri for this chain. */
   uri?: string;
 }
-export const ChainUri = UriAttributeValue as any as S.Schema<ChainUri>;
+const ChainUri = UriAttributeValue as any as S.Schema<ChainUri>;
 
 export type ChainUriList = Array<ChainUri>;
-export const ChainUriList = /*@__PURE__*/ S.Array(ChainUri) as any as S.Schema<ChainUriList>;
+const ChainUriList = /*@__PURE__*/ S.Array(ChainUri) as any as S.Schema<ChainUriList>;
 
 /** A chain is a brand that your business's locations can be affiliated with. */
 export interface Chain {
@@ -955,7 +951,7 @@ export interface Chain {
   /** Number of locations that are part of this chain. */
   locationCount?: number;
 }
-export const Chain = /*@__PURE__*/ S.suspend(() =>
+const Chain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chainNames: S.optional(ChainNameList),
     websites: S.optional(ChainUriList),
@@ -970,7 +966,7 @@ export interface GetGoogleUpdatedLocationsRequest {
   /** Required. Read mask to specify what fields will be returned in the response. */
   readMask?: string;
 }
-export const GetGoogleUpdatedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleUpdatedLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -994,7 +990,7 @@ export interface GoogleUpdatedLocation {
   /** The fields where the values in the view as it appears to consumers are different than the merchant's information. To accept these changes, patch the location. To reject, patch with your preferred values. */
   diffMask?: string;
 }
-export const GoogleUpdatedLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleUpdatedLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pendingMask: S.optional(S.String),
     location: S.optional(Location),
@@ -1006,7 +1002,7 @@ export interface GetGoogleUpdatedLocationsAttributesRequest {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
   name: string;
 }
-export const GetGoogleUpdatedLocationsAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGoogleUpdatedLocationsAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1026,7 +1022,7 @@ export interface GetLocationsRequest {
   /** Required. Read mask to specify what fields will be returned in the response. */
   readMask?: string;
 }
-export const GetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     readMask: S.optional(S.String.pipe(T.Query())),
@@ -1053,7 +1049,7 @@ export interface ListAccountsLocationsRequest {
   /** Optional. Sorting order for the request. Multiple fields should be comma-separated, following SQL syntax. The default sorting order is ascending. To specify descending order, a suffix " desc" should be added. Valid fields to order_by are title and store_code. For example: "title, store_code desc" or "title" or "store_code desc" */
   orderBy?: string;
 }
-export const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readMask: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1073,7 +1069,7 @@ export const ListAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** Response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1084,7 +1080,7 @@ export interface ListLocationsResponse {
   /** The approximate number of Locations in the list irrespective of pagination. This field will only be returned if `filter` is used as a query parameter. */
   totalSize?: number;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1108,7 +1104,7 @@ export interface ListAttributesRequest {
   /** Optional. If set to true, metadata for all available attributes are returned, disregarding `parent` and `category_name` fields. `language_code` and `region_code` are required when `show_all` is set to true. */
   showAll?: boolean;
 }
-export const ListAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1132,7 +1128,7 @@ export type AttributeMetadataValueTypeEnum =
   | "ENUM"
   | "URL"
   | "REPEATED_ENUM";
-export const AttributeMetadataValueTypeEnum = S.String;
+const AttributeMetadataValueTypeEnum = S.String;
 
 /** Metadata for supported attribute values. */
 export interface AttributeValueMetadata {
@@ -1141,7 +1137,7 @@ export interface AttributeValueMetadata {
   /** The attribute value. */
   value?: unknown;
 }
-export const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
+const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     value: S.optional(S.Unknown),
@@ -1149,7 +1145,7 @@ export const AttributeValueMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeValueMetadata" }) as any as S.Schema<AttributeValueMetadata>;
 
 export type AttributeValueMetadataList = Array<AttributeValueMetadata>;
-export const AttributeValueMetadataList = /*@__PURE__*/ S.Array(
+const AttributeValueMetadataList = /*@__PURE__*/ S.Array(
   AttributeValueMetadata,
 ) as any as S.Schema<AttributeValueMetadataList>;
 
@@ -1170,7 +1166,7 @@ export interface AttributeMetadata {
   /** If true, the attribute is deprecated and should no longer be used. If deprecated, updating this attribute will not result in an error, but updates will not be saved. At some point after being deprecated, the attribute will be removed entirely and it will become an error. */
   deprecated?: boolean;
 }
-export const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
+const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueType: S.optional(AttributeMetadataValueTypeEnum),
     displayName: S.optional(S.String),
@@ -1183,7 +1179,7 @@ export const AttributeMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeMetadata" }) as any as S.Schema<AttributeMetadata>;
 
 export type AttributeMetadataList = Array<AttributeMetadata>;
-export const AttributeMetadataList = /*@__PURE__*/ S.Array(
+const AttributeMetadataList = /*@__PURE__*/ S.Array(
   AttributeMetadata,
 ) as any as S.Schema<AttributeMetadataList>;
 
@@ -1194,7 +1190,7 @@ export interface ListAttributeMetadataResponse {
   /** If the number of attributes exceeded the requested page size, this field will be populated with a token to fetch the next page of attributes on a subsequent call to `attributes.list`. If there are no more attributes, this field will not be present in the response. */
   nextPageToken?: string;
 }
-export const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeMetadata: S.optional(AttributeMetadataList),
     nextPageToken: S.optional(S.String),
@@ -1204,7 +1200,7 @@ export const ListAttributeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAttributeMetadataResponse>;
 
 export type ListCategoriesViewEnum = "CATEGORY_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const ListCategoriesViewEnum = S.String;
+const ListCategoriesViewEnum = S.String;
 
 export interface ListCategoriesRequest {
   /** Required. Specifies which parts to the Category resource should be returned in the response. */
@@ -1220,7 +1216,7 @@ export interface ListCategoriesRequest {
   /** Optional. Filter string from user. The only field that supported is `displayName`. Eg: `filter=displayName=foo`. */
   filter?: string;
 }
-export const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(ListCategoriesViewEnum.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1244,7 +1240,7 @@ export interface ListCategoriesResponse {
   /** If the number of categories exceeded the requested page size, this field will be populated with a token to fetch the next page of categories on a subsequent call to `ListCategories`. */
   nextPageToken?: string;
 }
-export const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(CategoryList),
     nextPageToken: S.optional(S.String),
@@ -1261,7 +1257,7 @@ export interface PatchLocationsRequest {
   /** Request body */
   body?: Location;
 }
-export const PatchLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1282,7 +1278,7 @@ export interface SearchChainsRequest {
   /** Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "U+6C83U+5C14U+739B" */
   chainName?: string;
 }
-export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     chainName: S.optional(S.String.pipe(T.Query())),
@@ -1296,14 +1292,14 @@ export const SearchChainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchChainsRequest" }) as any as S.Schema<SearchChainsRequest>;
 
 export type ChainList = Array<Chain>;
-export const ChainList = /*@__PURE__*/ S.Array(Chain) as any as S.Schema<ChainList>;
+const ChainList = /*@__PURE__*/ S.Array(Chain) as any as S.Schema<ChainList>;
 
 /** Response message for Locations.SearchChains. */
 export interface SearchChainsResponse {
   /** Chains that match the queried chain_display_name in SearchChainsRequest. If there are no matches, this field will be empty. Results are listed in order of relevance. */
   chains?: ChainList;
 }
-export const SearchChainsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchChainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chains: S.optional(ChainList),
   }),
@@ -1318,7 +1314,7 @@ export interface SearchGoogleLocationsRequest {
   /** Location to search for. If provided, will find locations which match the provided location details, which must include a value for the title. */
   location?: Location;
 }
-export const SearchGoogleLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchGoogleLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     query: S.optional(S.String),
@@ -1332,7 +1328,7 @@ export interface SearchGoogleLocationsRequest_ {
   /** Request body */
   body?: SearchGoogleLocationsRequest;
 }
-export const SearchGoogleLocationsRequest_ = /*@__PURE__*/ S.suspend(() =>
+const SearchGoogleLocationsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SearchGoogleLocationsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1355,7 +1351,7 @@ export interface GoogleLocation {
   /** The sparsely populated Location information. This field can be re-used in CreateLocation if it is not currently claimed by a user. */
   location?: Location;
 }
-export const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestAdminRightsUri: S.optional(S.String),
     name: S.optional(S.String),
@@ -1364,7 +1360,7 @@ export const GoogleLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GoogleLocation" }) as any as S.Schema<GoogleLocation>;
 
 export type GoogleLocationList = Array<GoogleLocation>;
-export const GoogleLocationList = /*@__PURE__*/ S.Array(
+const GoogleLocationList = /*@__PURE__*/ S.Array(
   GoogleLocation,
 ) as any as S.Schema<GoogleLocationList>;
 
@@ -1373,7 +1369,7 @@ export interface SearchGoogleLocationsResponse {
   /** A collection of GoogleLocations that are potential matches to the specified request, listed in order from most to least accuracy. */
   googleLocations?: GoogleLocationList;
 }
-export const SearchGoogleLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchGoogleLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleLocations: S.optional(GoogleLocationList),
   }),
@@ -1389,7 +1385,7 @@ export interface UpdateAttributesLocationsRequest {
   /** Request body */
   body?: Attributes;
 }
-export const UpdateAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

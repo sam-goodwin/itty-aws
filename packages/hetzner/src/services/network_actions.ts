@@ -17,7 +17,7 @@ export interface AddNetworkRouteRequest {
   /** Gateway of the route. Packages addressed for the specified destination will be send to this IP address. Cannot be * the first IP of the networks ip_range, * an IP behind a vSwitch or * `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   gateway: string;
 }
-export const AddNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     destination: S.String,
@@ -27,7 +27,7 @@ export const AddNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AddNetworkRouteResponseActionStatus = "running" | "success" | "error";
-export const AddNetworkRouteResponseActionStatus = S.String;
+const AddNetworkRouteResponseActionStatus = S.String;
 
 export interface AddNetworkRouteResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -35,7 +35,7 @@ export interface AddNetworkRouteResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const AddNetworkRouteResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkRouteResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -47,7 +47,7 @@ export const AddNetworkRouteResponseActionResourcesItem = /*@__PURE__*/ S.suspen
 /** Resources the Action relates to. */
 export type AddNetworkRouteResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const AddNetworkRouteResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const AddNetworkRouteResponseActionResourcesList = /*@__PURE__*/ S.Array(
   AddNetworkRouteResponseActionResourcesItem,
 ) as any as S.Schema<AddNetworkRouteResponseActionResourcesList>;
 
@@ -58,7 +58,7 @@ export interface AddNetworkRouteResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const AddNetworkRouteResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkRouteResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -85,7 +85,7 @@ export interface AddNetworkRouteResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const AddNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -103,7 +103,7 @@ export const AddNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface AddNetworkRouteResponse {
   action: AddNetworkRouteResponseAction;
 }
-export const AddNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AddNetworkRouteResponseAction,
   }),
@@ -111,7 +111,7 @@ export const AddNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of subnet. */
 export type AddNetworkSubnetRequestType = "cloud" | "server" | "vswitch";
-export const AddNetworkSubnetRequestType = S.String;
+const AddNetworkSubnetRequestType = S.String;
 
 export interface AddNetworkSubnetRequest {
   /** ID of the Network. */
@@ -125,7 +125,7 @@ export interface AddNetworkSubnetRequest {
   /** ID of the robot vSwitch. Must be supplied if the subnet is of type `vswitch`. */
   vswitch_id?: number;
 }
-export const AddNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     type: AddNetworkSubnetRequestType,
@@ -137,23 +137,18 @@ export const AddNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type AddNetworkSubnetResponseActionStatus = "running" | "success" | "error";
-export const AddNetworkSubnetResponseActionStatus = S.String;
+const AddNetworkSubnetResponseActionStatus = S.String;
 
 export type AddNetworkSubnetResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const AddNetworkSubnetResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type AddNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const AddNetworkSubnetResponseActionResourcesList =
+const AddNetworkSubnetResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<AddNetworkSubnetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type AddNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
-export const AddNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface AddNetworkSubnetResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -172,7 +167,7 @@ export interface AddNetworkSubnetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const AddNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -190,7 +185,7 @@ export const AddNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface AddNetworkSubnetResponse {
   action: AddNetworkSubnetResponseAction;
 }
-export const AddNetworkSubnetResponse = /*@__PURE__*/ S.suspend(() =>
+const AddNetworkSubnetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AddNetworkSubnetResponseAction,
   }),
@@ -202,7 +197,7 @@ export interface ChangeNetworkIpRangeRequest {
   /** IP range of the [Network](#tag/networks). Uses CIDR notation. Must span all included subnets. Must be one of the private IPv4 ranges of RFC1918. Minimum network size is /24. We highly recommend that you pick a larger [Network](#tag/networks) with a /16 netmask. */
   ip_range: string;
 }
-export const ChangeNetworkIpRangeRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkIpRangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     ip_range: S.String,
@@ -213,23 +208,18 @@ export const ChangeNetworkIpRangeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeNetworkIpRangeResponseActionStatus = "running" | "success" | "error";
-export const ChangeNetworkIpRangeResponseActionStatus = S.String;
+const ChangeNetworkIpRangeResponseActionStatus = S.String;
 
 export type ChangeNetworkIpRangeResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const ChangeNetworkIpRangeResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeNetworkIpRangeResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ChangeNetworkIpRangeResponseActionResourcesList =
+const ChangeNetworkIpRangeResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkIpRangeResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkIpRangeResponseActionError = AddNetworkRouteResponseActionError;
-export const ChangeNetworkIpRangeResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface ChangeNetworkIpRangeResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -248,7 +238,7 @@ export interface ChangeNetworkIpRangeResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const ChangeNetworkIpRangeResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkIpRangeResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -266,7 +256,7 @@ export const ChangeNetworkIpRangeResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeNetworkIpRangeResponse {
   action: ChangeNetworkIpRangeResponseAction;
 }
-export const ChangeNetworkIpRangeResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkIpRangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeNetworkIpRangeResponseAction,
   }),
@@ -280,7 +270,7 @@ export interface ChangeNetworkProtectionRequest {
   /** Delete protection setting. If true, prevents the [Network](#tag/networks) from being deleted. */
   delete?: boolean;
 }
-export const ChangeNetworkProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkProtectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     delete: S.optional(S.Boolean),
@@ -291,23 +281,18 @@ export const ChangeNetworkProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ChangeNetworkProtectionResponseActionStatus = "running" | "success" | "error";
-export const ChangeNetworkProtectionResponseActionStatus = S.String;
+const ChangeNetworkProtectionResponseActionStatus = S.String;
 
 export type ChangeNetworkProtectionResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const ChangeNetworkProtectionResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ChangeNetworkProtectionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ChangeNetworkProtectionResponseActionResourcesList =
+const ChangeNetworkProtectionResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<ChangeNetworkProtectionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ChangeNetworkProtectionResponseActionError = AddNetworkRouteResponseActionError;
-export const ChangeNetworkProtectionResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface ChangeNetworkProtectionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -326,7 +311,7 @@ export interface ChangeNetworkProtectionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const ChangeNetworkProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkProtectionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -344,7 +329,7 @@ export const ChangeNetworkProtectionResponseAction = /*@__PURE__*/ S.suspend(() 
 export interface ChangeNetworkProtectionResponse {
   action: ChangeNetworkProtectionResponseAction;
 }
-export const ChangeNetworkProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeNetworkProtectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ChangeNetworkProtectionResponseAction,
   }),
@@ -360,7 +345,7 @@ export interface DeleteNetworkRouteRequest {
   /** Gateway of the route. Packages addressed for the specified destination will be send to this IP address. Cannot be * the first IP of the networks ip_range, * an IP behind a vSwitch or * `172.31.1.1`. `172.31.1.1` is being used as a gateway for the public network interface of [Servers](#tag/servers). */
   gateway: string;
 }
-export const DeleteNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     destination: S.String,
@@ -372,23 +357,18 @@ export const DeleteNetworkRouteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DeleteNetworkRouteResponseActionStatus = "running" | "success" | "error";
-export const DeleteNetworkRouteResponseActionStatus = S.String;
+const DeleteNetworkRouteResponseActionStatus = S.String;
 
 export type DeleteNetworkRouteResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const DeleteNetworkRouteResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DeleteNetworkRouteResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const DeleteNetworkRouteResponseActionResourcesList =
+const DeleteNetworkRouteResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkRouteResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkRouteResponseActionError = AddNetworkRouteResponseActionError;
-export const DeleteNetworkRouteResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface DeleteNetworkRouteResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -407,7 +387,7 @@ export interface DeleteNetworkRouteResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const DeleteNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -425,7 +405,7 @@ export const DeleteNetworkRouteResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteNetworkRouteResponse {
   action: DeleteNetworkRouteResponseAction;
 }
-export const DeleteNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DeleteNetworkRouteResponseAction,
   }),
@@ -439,7 +419,7 @@ export interface DeleteNetworkSubnetRequest {
   /** IP range in CIDR block notation of the subnet to delete. */
   ip_range: string;
 }
-export const DeleteNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     ip_range: S.String,
@@ -450,23 +430,18 @@ export const DeleteNetworkSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type DeleteNetworkSubnetResponseActionStatus = "running" | "success" | "error";
-export const DeleteNetworkSubnetResponseActionStatus = S.String;
+const DeleteNetworkSubnetResponseActionStatus = S.String;
 
 export type DeleteNetworkSubnetResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const DeleteNetworkSubnetResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type DeleteNetworkSubnetResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const DeleteNetworkSubnetResponseActionResourcesList =
+const DeleteNetworkSubnetResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<DeleteNetworkSubnetResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type DeleteNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
-export const DeleteNetworkSubnetResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface DeleteNetworkSubnetResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -485,7 +460,7 @@ export interface DeleteNetworkSubnetResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const DeleteNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -503,7 +478,7 @@ export const DeleteNetworkSubnetResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteNetworkSubnetResponse {
   action: DeleteNetworkSubnetResponseAction;
 }
-export const DeleteNetworkSubnetResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteNetworkSubnetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DeleteNetworkSubnetResponseAction,
   }),
@@ -515,7 +490,7 @@ export interface GetNetworksActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetNetworksActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworksActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/networks/actions/{id}", code: 200 })),
@@ -523,23 +498,18 @@ export const GetNetworksActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetNetworksActionResponseActionStatus = "running" | "success" | "error";
-export const GetNetworksActionResponseActionStatus = S.String;
+const GetNetworksActionResponseActionStatus = S.String;
 
 export type GetNetworksActionResponseActionResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const GetNetworksActionResponseActionResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type GetNetworksActionResponseActionResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const GetNetworksActionResponseActionResourcesList =
+const GetNetworksActionResponseActionResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<GetNetworksActionResponseActionResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetNetworksActionResponseActionError = AddNetworkRouteResponseActionError;
-export const GetNetworksActionResponseActionError = AddNetworkRouteResponseActionError;
-
 export interface GetNetworksActionResponseAction {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -558,7 +528,7 @@ export interface GetNetworksActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const GetNetworksActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetNetworksActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -576,7 +546,7 @@ export const GetNetworksActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetNetworksActionResponse {
   action: GetNetworksActionResponseAction;
 }
-export const GetNetworksActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNetworksActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetNetworksActionResponseAction,
   }),
@@ -600,23 +570,21 @@ export type ListNetworkActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListNetworkActionsRequestSortItem = S.String;
+const ListNetworkActionsRequestSortItem = S.String;
 
 export type ListNetworkActionsRequestSortList = Array<
   ListNetworkActionsRequestSortItem | (string & {})
 >;
-export const ListNetworkActionsRequestSortList = /*@__PURE__*/ S.Array(
+const ListNetworkActionsRequestSortList = /*@__PURE__*/ S.Array(
   ListNetworkActionsRequestSortItem,
 ) as any as S.Schema<ListNetworkActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListNetworkActionsRequestStatusItem = "running" | "success" | "error";
-export const ListNetworkActionsRequestStatusItem = S.String;
-
 export type ListNetworkActionsRequestStatusList = Array<
   ListNetworkActionsRequestStatusItem | (string & {})
 >;
-export const ListNetworkActionsRequestStatusList =
+const ListNetworkActionsRequestStatusList =
   ListNetworkActionsRequestSortList as any as S.Schema<ListNetworkActionsRequestStatusList>;
 
 export interface ListNetworkActionsRequest {
@@ -631,7 +599,7 @@ export interface ListNetworkActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListNetworkActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     sort: S.optional(ListNetworkActionsRequestSortList.pipe(T.Query())),
@@ -645,23 +613,18 @@ export const ListNetworkActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListNetworkActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListNetworkActionsResponseActionsItemStatus = S.String;
+const ListNetworkActionsResponseActionsItemStatus = S.String;
 
 export type ListNetworkActionsResponseActionsItemResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const ListNetworkActionsResponseActionsItemResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListNetworkActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ListNetworkActionsResponseActionsItemResourcesList =
+const ListNetworkActionsResponseActionsItemResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworkActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworkActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
-export const ListNetworkActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
-
 export interface ListNetworkActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -680,7 +643,7 @@ export interface ListNetworkActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const ListNetworkActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -696,7 +659,7 @@ export const ListNetworkActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListNetworkActionsResponseActionsItem>;
 
 export type ListNetworkActionsResponseActionsList = Array<ListNetworkActionsResponseActionsItem>;
-export const ListNetworkActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListNetworkActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListNetworkActionsResponseActionsItem,
 ) as any as S.Schema<ListNetworkActionsResponseActionsList>;
 
@@ -715,7 +678,7 @@ export interface ListNetworkActionsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListNetworkActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkActionsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -732,7 +695,7 @@ export interface ListNetworkActionsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListNetworkActionsResponseMetaPagination;
 }
-export const ListNetworkActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkActionsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListNetworkActionsResponseMetaPagination,
   }),
@@ -744,7 +707,7 @@ export interface ListNetworkActionsResponse {
   actions: ListNetworkActionsResponseActionsList;
   meta: ListNetworkActionsResponseMeta;
 }
-export const ListNetworkActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworkActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListNetworkActionsResponseActionsList,
     meta: ListNetworkActionsResponseMeta,
@@ -754,7 +717,7 @@ export const ListNetworkActionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNetworkActionsResponse>;
 
 export type ListNetworksActionsRequestIdList = Array<number>;
-export const ListNetworksActionsRequestIdList = /*@__PURE__*/ S.Array(
+const ListNetworksActionsRequestIdList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ListNetworksActionsRequestIdList>;
 
@@ -774,22 +737,18 @@ export type ListNetworksActionsRequestSortItem =
   | "finished"
   | "finished:asc"
   | "finished:desc";
-export const ListNetworksActionsRequestSortItem = S.String;
-
 export type ListNetworksActionsRequestSortList = Array<
   ListNetworksActionsRequestSortItem | (string & {})
 >;
-export const ListNetworksActionsRequestSortList =
+const ListNetworksActionsRequestSortList =
   ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestSortList>;
 
 /** Status of the Action. */
 export type ListNetworksActionsRequestStatusItem = "running" | "success" | "error";
-export const ListNetworksActionsRequestStatusItem = S.String;
-
 export type ListNetworksActionsRequestStatusList = Array<
   ListNetworksActionsRequestStatusItem | (string & {})
 >;
-export const ListNetworksActionsRequestStatusList =
+const ListNetworksActionsRequestStatusList =
   ListNetworkActionsRequestSortList as any as S.Schema<ListNetworksActionsRequestStatusList>;
 
 export interface ListNetworksActionsRequest {
@@ -804,7 +763,7 @@ export interface ListNetworksActionsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListNetworksActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNetworksActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(ListNetworksActionsRequestIdList.pipe(T.Query())),
     sort: S.optional(ListNetworksActionsRequestSortList.pipe(T.Query())),
@@ -818,23 +777,18 @@ export const ListNetworksActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type ListNetworksActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const ListNetworksActionsResponseActionsItemStatus = S.String;
+const ListNetworksActionsResponseActionsItemStatus = S.String;
 
 export type ListNetworksActionsResponseActionsItemResourcesItem =
   AddNetworkRouteResponseActionResourcesItem;
-export const ListNetworksActionsResponseActionsItemResourcesItem =
-  AddNetworkRouteResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type ListNetworksActionsResponseActionsItemResourcesList =
   Array<AddNetworkRouteResponseActionResourcesItem>;
-export const ListNetworksActionsResponseActionsItemResourcesList =
+const ListNetworksActionsResponseActionsItemResourcesList =
   AddNetworkRouteResponseActionResourcesList as any as S.Schema<ListNetworksActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type ListNetworksActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
-export const ListNetworksActionsResponseActionsItemError = AddNetworkRouteResponseActionError;
-
 export interface ListNetworksActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -853,7 +807,7 @@ export interface ListNetworksActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: AddNetworkRouteResponseActionError | null;
 }
-export const ListNetworksActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListNetworksActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -869,22 +823,18 @@ export const ListNetworksActionsResponseActionsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListNetworksActionsResponseActionsItem>;
 
 export type ListNetworksActionsResponseActionsList = Array<ListNetworksActionsResponseActionsItem>;
-export const ListNetworksActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const ListNetworksActionsResponseActionsList = /*@__PURE__*/ S.Array(
   ListNetworksActionsResponseActionsItem,
 ) as any as S.Schema<ListNetworksActionsResponseActionsList>;
 
 /** See "[Pagination](#description/pagination)" for more information. */
 export type ListNetworksActionsResponseMetaPagination = ListNetworkActionsResponseMetaPagination;
-export const ListNetworksActionsResponseMetaPagination = ListNetworkActionsResponseMetaPagination;
-
 export type ListNetworksActionsResponseMeta = ListNetworkActionsResponseMeta;
-export const ListNetworksActionsResponseMeta = ListNetworkActionsResponseMeta;
-
 export interface ListNetworksActionsResponse {
   actions: ListNetworksActionsResponseActionsList;
   meta: ListNetworkActionsResponseMeta;
 }
-export const ListNetworksActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNetworksActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ListNetworksActionsResponseActionsList,
     meta: ListNetworkActionsResponseMeta,

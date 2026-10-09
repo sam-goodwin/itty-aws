@@ -66,7 +66,7 @@ export class RegistrarUpdateNotAllowed
   ) {}
 
 export type CheckRequestDomainsList = Array<string>;
-export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
+const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckRequestDomainsList>;
 
@@ -76,7 +76,7 @@ export interface CheckRegistrarRequest {
   /** List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension. */
   domains: CheckRequestDomainsList;
 }
-export const CheckRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domains: CheckRequestDomainsList,
@@ -95,7 +95,7 @@ export interface CheckResponseDomainsItemPricing {
   /** Per-year renewal cost for this domain. Applied to each year beyond the first year of a multi-year registration, and to each annual auto-renewal thereafter. May differ from `registration_cost`, especially for premium domains where initial registration often costs more than renewals. */
   renewalCost: string;
 }
-export const CheckResponseDomainsItemPricing = /*@__PURE__*/ S.suspend(() =>
+const CheckResponseDomainsItemPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     registrationCost: S.String.pipe(T.Body("registration_cost")),
@@ -111,10 +111,10 @@ export type CheckResponseDomainsItemReason =
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-export const CheckResponseDomainsItemReason = S.String;
+const CheckResponseDomainsItemReason = S.String;
 
 export type CheckResponseDomainsItemTier = "standard" | "premium";
-export const CheckResponseDomainsItemTier = S.String;
+const CheckResponseDomainsItemTier = S.String;
 
 export interface CheckResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
@@ -128,7 +128,7 @@ export interface CheckResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: CheckResponseDomainsItemTier | null;
 }
-export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
@@ -139,7 +139,7 @@ export const CheckResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckResponseDomainsItem" }) as any as S.Schema<CheckResponseDomainsItem>;
 
 export type CheckResponseDomainsList = Array<CheckResponseDomainsItem>;
-export const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
+const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
   CheckResponseDomainsItem,
 ) as any as S.Schema<CheckResponseDomainsList>;
 
@@ -148,20 +148,20 @@ export interface CheckRegistrarResponse {
   /** Array of domain availability results. Results for unsupported extensions contain `registrable: false` and a `reason` field. The response may omit malformed domain names. */
   domains: CheckResponseDomainsList;
 }
-export const CheckRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: CheckResponseDomainsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CheckRegistrarResponse" }) as any as S.Schema<CheckRegistrarResponse>;
 
 export type CreateRegistrationRequestAcknowledgementsMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ S.Record(
+const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateRegistrationRequestAcknowledgementsMap>;
 
 export type CreateRegistrationRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationRequestContactExtensionsMap =
+const CreateRegistrationRequestContactExtensionsMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationRequestContactExtensionsMap>;
 
 export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress {
@@ -176,8 +176,8 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress
   /** Street address including building/suite number. */
   street: string;
 }
-export const CreateRegistrationRequestContactsAdministratorPostalInfoAddress =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContactsAdministratorPostalInfoAddress = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       city: S.String,
       countryCode: S.String.pipe(T.Body("country_code")),
@@ -185,9 +185,9 @@ export const CreateRegistrationRequestContactsAdministratorPostalInfoAddress =
       state: S.String,
       street: S.String,
     }),
-  ).annotate({
-    identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
-  }) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfoAddress>;
+).annotate({
+  identifier: "CreateRegistrationRequestContactsAdministratorPostalInfoAddress",
+}) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfoAddress>;
 
 export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Physical mailing address for the registrant contact. */
@@ -197,13 +197,12 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Organization or company name. Optional for individual registrants. */
   organization?: string;
 }
-export const CreateRegistrationRequestContactsAdministratorPostalInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress,
-      name: S.String,
-      organization: S.optional(S.String),
-    }),
+const CreateRegistrationRequestContactsAdministratorPostalInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress,
+    name: S.String,
+    organization: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "CreateRegistrationRequestContactsAdministratorPostalInfo",
 }) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfo>;
@@ -218,7 +217,7 @@ export interface CreateRegistrationRequestContactsAdministrator {
   /** Fax number in E.164 format (e.g., `+1.5555555555`). Optional. Most registrations do not require a fax number. */
   fax?: string;
 }
-export const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     phone: S.String,
@@ -233,49 +232,22 @@ export const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ S.su
 
 export type CreateRegistrationRequestContactsBillingPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsBillingPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsBillingPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsBillingPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsBilling =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsBilling =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateRegistrationRequestContactsRegistrantPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsRegistrantPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsRegistrantPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsRegistrantPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsRegistrant =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsRegistrant =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateRegistrationRequestContactsTechnicalPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateRegistrationRequestContactsTechnicalPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateRegistrationRequestContactsTechnicalPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateRegistrationRequestContactsTechnicalPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateRegistrationRequestContactsTechnical =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateRegistrationRequestContactsTechnical =
-  CreateRegistrationRequestContactsAdministrator;
-
 export interface CreateRegistrationRequestContacts {
   /** Optional administrator contact. Accepted only when the extension schema includes this role. When the registry requires an omitted contact, Cloudflare may derive it from `contacts.registrant`. */
   administrator?: CreateRegistrationRequestContactsAdministrator;
@@ -286,7 +258,7 @@ export interface CreateRegistrationRequestContacts {
   /** Optional technical contact. Accepted only when the extension schema includes this role. When the registry requires an omitted contact, Cloudflare may derive it from `contacts.registrant`. */
   technical?: CreateRegistrationRequestContactsAdministrator;
 }
-export const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     administrator: S.optional(CreateRegistrationRequestContactsAdministrator),
     billing: S.optional(CreateRegistrationRequestContactsAdministrator),
@@ -298,7 +270,7 @@ export const CreateRegistrationRequestContacts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegistrationRequestContacts>;
 
 export type CreateRegistrationRequestPrivacyMode = "off" | "redaction";
-export const CreateRegistrationRequestPrivacyMode = S.String;
+const CreateRegistrationRequestPrivacyMode = S.String;
 
 export interface CreateRegistrationRequest {
   /** Identifier. */
@@ -319,7 +291,7 @@ export interface CreateRegistrationRequest {
   /** Sets the registration term from 1 to 10 years. When omitted, this field defaults to the registry's minimum registration period for the extension. Most extensions require 1 year, while some require longer minimum terms (e.g., `.ai` requires 2 years). */
   years?: number;
 }
-export const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
@@ -347,7 +319,7 @@ export interface CreateRegistrationResponseLinks {
   /** URL to the domain resource. */
   resource?: string | null;
 }
-export const CreateRegistrationResponseLinks = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.String,
     resource: S.optional(S.NullOr(S.String)),
@@ -363,10 +335,10 @@ export type CreateRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const CreateRegistrationResponseState = S.String;
+const CreateRegistrationResponseState = S.String;
 
 export type CreateRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const CreateRegistrationResponseContextMap =
+const CreateRegistrationResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationResponseContextMap>;
 
 export interface CreateRegistrationResponseError {
@@ -375,7 +347,7 @@ export interface CreateRegistrationResponseError {
   /** Human-readable explanation of the failure. May include registry-specific details. */
   message: string;
 }
-export const CreateRegistrationResponseError = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -398,7 +370,7 @@ export interface CreateRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -413,73 +385,35 @@ export const CreateRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRegistrationResponse>;
 
 export type CreateTransferInRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-export const CreateTransferInRequestContactExtensionsMap =
+const CreateTransferInRequestContactExtensionsMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInRequestContactExtensionsMap>;
 
 export type CreateTransferInRequestContactsAdministratorPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateTransferInRequestContactsAdministratorPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateTransferInRequestContactsAdministratorPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateTransferInRequestContactsAdministratorPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateTransferInRequestContactsAdministrator =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateTransferInRequestContactsAdministrator =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateTransferInRequestContactsBillingPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateTransferInRequestContactsBillingPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateTransferInRequestContactsBillingPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateTransferInRequestContactsBillingPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateTransferInRequestContactsBilling = CreateRegistrationRequestContactsAdministrator;
-export const CreateTransferInRequestContactsBilling =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateTransferInRequestContactsRegistrantPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateTransferInRequestContactsRegistrantPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateTransferInRequestContactsRegistrantPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateTransferInRequestContactsRegistrantPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateTransferInRequestContactsRegistrant =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateTransferInRequestContactsRegistrant =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateTransferInRequestContactsTechnicalPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-export const CreateTransferInRequestContactsTechnicalPostalInfoAddress =
-  CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
-
 export type CreateTransferInRequestContactsTechnicalPostalInfo =
   CreateRegistrationRequestContactsAdministratorPostalInfo;
-export const CreateTransferInRequestContactsTechnicalPostalInfo =
-  CreateRegistrationRequestContactsAdministratorPostalInfo;
-
 export type CreateTransferInRequestContactsTechnical =
   CreateRegistrationRequestContactsAdministrator;
-export const CreateTransferInRequestContactsTechnical =
-  CreateRegistrationRequestContactsAdministrator;
-
 export type CreateTransferInRequestContacts = CreateRegistrationRequestContacts;
-export const CreateTransferInRequestContacts = CreateRegistrationRequestContacts;
-
 export type CreateTransferInRequestPrivacyMode = "off" | "redaction";
-export const CreateTransferInRequestPrivacyMode = S.String;
+const CreateTransferInRequestPrivacyMode = S.String;
 
 export interface CreateTransferInRequest {
   /** Identifier. */
@@ -498,7 +432,7 @@ export interface CreateTransferInRequest {
   /** WHOIS privacy mode to apply after transfer completes. Defaults to the extension's default privacy mode (typically `redaction`). */
   privacyMode?: CreateTransferInRequestPrivacyMode | (string & {});
 }
-export const CreateTransferInRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransferInRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -522,8 +456,6 @@ export const CreateTransferInRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTransferInRequest" }) as any as S.Schema<CreateTransferInRequest>;
 
 export type CreateTransferInResponseLinks = CreateRegistrationResponseLinks;
-export const CreateTransferInResponseLinks = CreateRegistrationResponseLinks;
-
 export type CreateTransferInResponseState =
   | "pending"
   | "in_progress"
@@ -531,15 +463,13 @@ export type CreateTransferInResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const CreateTransferInResponseState = S.String;
+const CreateTransferInResponseState = S.String;
 
 export type CreateTransferInResponseContextMap = { [key: string]: unknown | undefined };
-export const CreateTransferInResponseContextMap =
+const CreateTransferInResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInResponseContextMap>;
 
 export type CreateTransferInResponseError = CreateRegistrationResponseError;
-export const CreateTransferInResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTransferInResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -554,7 +484,7 @@ export interface CreateTransferInResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const CreateTransferInResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTransferInResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -567,7 +497,7 @@ export const CreateTransferInResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTransferInResponse" }) as any as S.Schema<CreateTransferInResponse>;
 
 export type EditRegistrationRequestPrefer = "respond-async";
-export const EditRegistrationRequestPrefer = S.String;
+const EditRegistrationRequestPrefer = S.String;
 
 export interface EditRegistrationRequest {
   /** Identifier. */
@@ -578,7 +508,7 @@ export interface EditRegistrationRequest {
   /** Enable or disable automatic renewal. Setting this field to `true` authorizes Cloudflare to charge the account's default payment method up to 30 days before domain expiry to renew the domain automatically. Renewal pricing may change over time based on registry pricing. */
   autoRenew?: boolean;
 }
-export const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -596,8 +526,6 @@ export const EditRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRegistrationRequest" }) as any as S.Schema<EditRegistrationRequest>;
 
 export type EditRegistrationResponseLinks = CreateRegistrationResponseLinks;
-export const EditRegistrationResponseLinks = CreateRegistrationResponseLinks;
-
 export type EditRegistrationResponseState =
   | "pending"
   | "in_progress"
@@ -605,15 +533,13 @@ export type EditRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const EditRegistrationResponseState = S.String;
+const EditRegistrationResponseState = S.String;
 
 export type EditRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-export const EditRegistrationResponseContextMap =
+const EditRegistrationResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<EditRegistrationResponseContextMap>;
 
 export type EditRegistrationResponseError = CreateRegistrationResponseError;
-export const EditRegistrationResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditRegistrationResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -628,7 +554,7 @@ export interface EditRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const EditRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const EditRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -646,7 +572,7 @@ export interface GetDomainRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -662,7 +588,7 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainRequest" }) as any as S.Schema<GetDomainRequest>;
 
 export type GetDomainResponse = unknown;
-export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDomainResponse" }) as any as S.Schema<GetDomainResponse>;
 
@@ -671,7 +597,7 @@ export interface GetExtensionRequest {
   accountId: string;
   extension: string;
 }
-export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     extension: S.String.pipe(T.Label()),
@@ -692,7 +618,7 @@ export interface GetExtensionResponseMetadata {
   /** The TLD of the extension. For example, for "co.uk", it is "uk". For "uk", it is "uk". */
   tld: string;
 }
-export const GetExtensionResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tld: S.String,
@@ -710,7 +636,7 @@ export interface GetExtensionResponse {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-export const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: GetExtensionResponseMetadata,
     registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
@@ -724,7 +650,7 @@ export interface GetRegistrationRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -740,7 +666,7 @@ export const GetRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRegistrationRequest" }) as any as S.Schema<GetRegistrationRequest>;
 
 export type GetRegistrationResponsePrivacyMode = "off" | "redaction";
-export const GetRegistrationResponsePrivacyMode = S.String;
+const GetRegistrationResponsePrivacyMode = S.String;
 
 export type GetRegistrationResponseStatus =
   | "active"
@@ -750,7 +676,7 @@ export type GetRegistrationResponseStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-export const GetRegistrationResponseStatus = S.String;
+const GetRegistrationResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationResponse {
@@ -769,7 +695,7 @@ export interface GetRegistrationResponse {
   /** Current registration status. */
   status: GetRegistrationResponseStatus;
 }
-export const GetRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -787,7 +713,7 @@ export interface GetRegistrationStatusRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -805,8 +731,6 @@ export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRegistrationStatusRequest>;
 
 export type RegistrationStatusGetResponseLinks = CreateRegistrationResponseLinks;
-export const RegistrationStatusGetResponseLinks = CreateRegistrationResponseLinks;
-
 export type RegistrationStatusGetResponseState =
   | "pending"
   | "in_progress"
@@ -814,15 +738,13 @@ export type RegistrationStatusGetResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const RegistrationStatusGetResponseState = S.String;
+const RegistrationStatusGetResponseState = S.String;
 
 export type RegistrationStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-export const RegistrationStatusGetResponseContextMap =
+const RegistrationStatusGetResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<RegistrationStatusGetResponseContextMap>;
 
 export type RegistrationStatusGetResponseError = CreateRegistrationResponseError;
-export const RegistrationStatusGetResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationStatusResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -837,7 +759,7 @@ export interface GetRegistrationStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -857,7 +779,7 @@ export interface GetTransferInStatusRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetTransferInStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransferInStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -875,8 +797,6 @@ export const GetTransferInStatusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTransferInStatusRequest>;
 
 export type GetTransferInStatusResponseLinks = CreateRegistrationResponseLinks;
-export const GetTransferInStatusResponseLinks = CreateRegistrationResponseLinks;
-
 export type GetTransferInStatusResponseState =
   | "pending"
   | "in_progress"
@@ -884,15 +804,13 @@ export type GetTransferInStatusResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const GetTransferInStatusResponseState = S.String;
+const GetTransferInStatusResponseState = S.String;
 
 export type GetTransferInStatusResponseContextMap = { [key: string]: unknown | undefined };
-export const GetTransferInStatusResponseContextMap =
+const GetTransferInStatusResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<GetTransferInStatusResponseContextMap>;
 
 export type GetTransferInStatusResponseError = CreateRegistrationResponseError;
-export const GetTransferInStatusResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTransferInStatusResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -907,7 +825,7 @@ export interface GetTransferInStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const GetTransferInStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransferInStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -927,7 +845,7 @@ export interface GetUpdateStatusRequest {
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-export const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -943,8 +861,6 @@ export const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUpdateStatusRequest" }) as any as S.Schema<GetUpdateStatusRequest>;
 
 export type UpdateStatusGetResponseLinks = CreateRegistrationResponseLinks;
-export const UpdateStatusGetResponseLinks = CreateRegistrationResponseLinks;
-
 export type UpdateStatusGetResponseState =
   | "pending"
   | "in_progress"
@@ -952,15 +868,13 @@ export type UpdateStatusGetResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-export const UpdateStatusGetResponseState = S.String;
+const UpdateStatusGetResponseState = S.String;
 
 export type UpdateStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-export const UpdateStatusGetResponseContextMap =
+const UpdateStatusGetResponseContextMap =
   CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<UpdateStatusGetResponseContextMap>;
 
 export type UpdateStatusGetResponseError = CreateRegistrationResponseError;
-export const UpdateStatusGetResponseError = CreateRegistrationResponseError;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUpdateStatusResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -975,7 +889,7 @@ export interface GetUpdateStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completed: S.Boolean,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -991,7 +905,7 @@ export interface ListDomainsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1027,7 +941,7 @@ export interface DomainsListResultItemRegistrantContact {
   /** Contact fax number. */
   fax?: string | null;
 }
-export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(() =>
+const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     city: S.String,
@@ -1048,7 +962,7 @@ export const DomainsListResultItemRegistrantContact = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DomainsListResultItemRegistrantContact>;
 
 export type DomainsListResultItemTransferInAcceptFoa = "needed" | "ok";
-export const DomainsListResultItemTransferInAcceptFoa = S.String;
+const DomainsListResultItemTransferInAcceptFoa = S.String;
 
 export type DomainsListResultItemTransferInApproveTransfer =
   | "needed"
@@ -1057,10 +971,10 @@ export type DomainsListResultItemTransferInApproveTransfer =
   | "trying"
   | "rejected"
   | "unknown";
-export const DomainsListResultItemTransferInApproveTransfer = S.String;
+const DomainsListResultItemTransferInApproveTransfer = S.String;
 
 export type DomainsListResultItemTransferInDisablePrivacy = "needed" | "ok" | "unknown";
-export const DomainsListResultItemTransferInDisablePrivacy = S.String;
+const DomainsListResultItemTransferInDisablePrivacy = S.String;
 
 export type DomainsListResultItemTransferInEnterAuthCode =
   | "needed"
@@ -1068,7 +982,7 @@ export type DomainsListResultItemTransferInEnterAuthCode =
   | "pending"
   | "trying"
   | "rejected";
-export const DomainsListResultItemTransferInEnterAuthCode = S.String;
+const DomainsListResultItemTransferInEnterAuthCode = S.String;
 
 export type DomainsListResultItemTransferInUnlockDomain =
   | "needed"
@@ -1076,7 +990,7 @@ export type DomainsListResultItemTransferInUnlockDomain =
   | "pending"
   | "trying"
   | "unknown";
-export const DomainsListResultItemTransferInUnlockDomain = S.String;
+const DomainsListResultItemTransferInUnlockDomain = S.String;
 
 export interface DomainsListResultItemTransferIn {
   /** Status of the registrant authorization step. */
@@ -1092,7 +1006,7 @@ export interface DomainsListResultItemTransferIn {
   /** Status of the domain-unlock step at the foreign registrar. */
   unlockDomain?: DomainsListResultItemTransferInUnlockDomain | null;
 }
-export const DomainsListResultItemTransferIn = /*@__PURE__*/ S.suspend(() =>
+const DomainsListResultItemTransferIn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptFoa: S.optional(
       S.NullOr(DomainsListResultItemTransferInAcceptFoa).pipe(T.Body("accept_foa")),
@@ -1147,7 +1061,7 @@ export interface DomainsListResultItem {
   /** Whether WHOIS privacy is enabled. */
   privacy?: boolean | null;
 }
-export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     available: S.optional(S.NullOr(S.Boolean)),
@@ -1170,7 +1084,7 @@ export const DomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainsListResultItem" }) as any as S.Schema<DomainsListResultItem>;
 
 export type DomainsListResultList = Array<DomainsListResultItem>;
-export const DomainsListResultList = /*@__PURE__*/ S.Array(
+const DomainsListResultList = /*@__PURE__*/ S.Array(
   DomainsListResultItem,
 ) as any as S.Schema<DomainsListResultList>;
 
@@ -1180,7 +1094,7 @@ export interface ListDomainsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1188,10 +1102,10 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
 
 export type ListExtensionsRequestDirection = "asc" | "desc";
-export const ListExtensionsRequestDirection = S.String;
+const ListExtensionsRequestDirection = S.String;
 
 export type ListExtensionsRequestSortBy = "name" | "created_at" | "updated_at";
-export const ListExtensionsRequestSortBy = S.String;
+const ListExtensionsRequestSortBy = S.String;
 
 export interface ListExtensionsRequest {
   /** Identifier. */
@@ -1207,7 +1121,7 @@ export interface ListExtensionsRequest {
   /** Column to sort results by. Defaults to `name` when omitted. */
   sortBy?: ListExtensionsRequestSortBy | (string & {});
 }
-export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1221,8 +1135,6 @@ export const ListExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExtensionsRequest" }) as any as S.Schema<ListExtensionsRequest>;
 
 export type ListExtensionsResultItemMetadata = GetExtensionResponseMetadata;
-export const ListExtensionsResultItemMetadata = GetExtensionResponseMetadata;
-
 export interface ListExtensionsResultItem {
   /** Extension metadata. */
   metadata: GetExtensionResponseMetadata;
@@ -1231,7 +1143,7 @@ export interface ListExtensionsResultItem {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-export const ListExtensionsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: GetExtensionResponseMetadata,
     registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
@@ -1240,20 +1152,20 @@ export const ListExtensionsResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExtensionsResultItem" }) as any as S.Schema<ListExtensionsResultItem>;
 
 export type ListExtensionsResultList = Array<ListExtensionsResultItem>;
-export const ListExtensionsResultList = /*@__PURE__*/ S.Array(
+const ListExtensionsResultList = /*@__PURE__*/ S.Array(
   ListExtensionsResultItem,
 ) as any as S.Schema<ListExtensionsResultList>;
 
 export type ListExtensionsResponse = ListExtensionsResultList;
-export const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExtensionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListExtensionsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListExtensionsResponse" }) as any as S.Schema<ListExtensionsResponse>;
 
 export type ListRegistrationsRequestDirection = "asc" | "desc";
-export const ListRegistrationsRequestDirection = S.String;
+const ListRegistrationsRequestDirection = S.String;
 
 export type ListRegistrationsRequestSortBy = "registry_created_at" | "registry_expires_at" | "name";
-export const ListRegistrationsRequestSortBy = S.String;
+const ListRegistrationsRequestSortBy = S.String;
 
 export interface ListRegistrationsRequest {
   /** Identifier. */
@@ -1267,7 +1179,7 @@ export interface ListRegistrationsRequest {
   /** Column to sort results by. Defaults to registration date (`registry_created_at`) when omitted. */
   sortBy?: ListRegistrationsRequestSortBy | (string & {});
 }
-export const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1282,7 +1194,7 @@ export const ListRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRegistrationsRequest" }) as any as S.Schema<ListRegistrationsRequest>;
 
 export type ListRegistrationsResultItemPrivacyMode = "off" | "redaction";
-export const ListRegistrationsResultItemPrivacyMode = S.String;
+const ListRegistrationsResultItemPrivacyMode = S.String;
 
 export type ListRegistrationsResultItemStatus =
   | "active"
@@ -1292,7 +1204,7 @@ export type ListRegistrationsResultItemStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-export const ListRegistrationsResultItemStatus = S.String;
+const ListRegistrationsResultItemStatus = S.String;
 
 export interface ListRegistrationsResultItem {
   /** Whether automatic renewal occurs before expiration. */
@@ -1310,7 +1222,7 @@ export interface ListRegistrationsResultItem {
   /** Current registration status. */
   status: ListRegistrationsResultItemStatus;
 }
-export const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRenew: S.Boolean.pipe(T.Body("auto_renew")),
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -1325,12 +1237,12 @@ export const ListRegistrationsResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRegistrationsResultItem>;
 
 export type ListRegistrationsResultList = Array<ListRegistrationsResultItem>;
-export const ListRegistrationsResultList = /*@__PURE__*/ S.Array(
+const ListRegistrationsResultList = /*@__PURE__*/ S.Array(
   ListRegistrationsResultItem,
 ) as any as S.Schema<ListRegistrationsResultList>;
 
 export type ListRegistrationsResponse = ListRegistrationsResultList;
-export const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListRegistrationsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListRegistrationsResponse",
@@ -1348,7 +1260,7 @@ export interface PutDomainRequest {
   /** Privacy option controls redacting WHOIS information. */
   privacy?: boolean;
 }
-export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -1367,10 +1279,10 @@ export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDomainRequest" }) as any as S.Schema<PutDomainRequest>;
 
 export type PutDomainResponse = unknown;
-export const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
+const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
 
 export type SearchRequestExtensionsList = Array<string>;
-export const SearchRequestExtensionsList =
+const SearchRequestExtensionsList =
   CheckRequestDomainsList as any as S.Schema<SearchRequestExtensionsList>;
 
 export interface SearchRegistrarRequest {
@@ -1383,7 +1295,7 @@ export interface SearchRegistrarRequest {
   /** Maximum number of domain suggestions to return. Defaults to 20 if not specified. */
   limit?: number;
 }
-export const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     q: S.String.pipe(T.Query()),
@@ -1397,18 +1309,16 @@ export const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRegistrarRequest" }) as any as S.Schema<SearchRegistrarRequest>;
 
 export type SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
-export const SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
-
 export type SearchResponseDomainsItemReason =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-export const SearchResponseDomainsItemReason = S.String;
+const SearchResponseDomainsItemReason = S.String;
 
 export type SearchResponseDomainsItemTier = "standard" | "premium";
-export const SearchResponseDomainsItemTier = S.String;
+const SearchResponseDomainsItemTier = S.String;
 
 export interface SearchResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
@@ -1422,7 +1332,7 @@ export interface SearchResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: SearchResponseDomainsItemTier | null;
 }
-export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     registrable: S.Boolean,
@@ -1435,7 +1345,7 @@ export const SearchResponseDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchResponseDomainsItem>;
 
 export type SearchResponseDomainsList = Array<SearchResponseDomainsItem>;
-export const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
+const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
   SearchResponseDomainsItem,
 ) as any as S.Schema<SearchResponseDomainsList>;
 
@@ -1444,7 +1354,7 @@ export interface SearchRegistrarResponse {
   /** Lists domain suggestions in relevance order. An empty array indicates that the search criteria matched zero domains. */
   domains: SearchResponseDomainsList;
 }
-export const SearchRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: SearchResponseDomainsList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1456,7 +1366,7 @@ export interface TransferCheckRequestDomainsItem {
   /** Base64-encoded auth/EPP code from the current registrar. Required for most TLDs. `.uk` namespaces do not use auth codes. */
   authCode?: string;
 }
-export const TransferCheckRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
+const TransferCheckRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.String.pipe(T.Body("domain_name")),
     authCode: S.optional(S.String.pipe(T.Body("auth_code"))),
@@ -1466,7 +1376,7 @@ export const TransferCheckRequestDomainsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransferCheckRequestDomainsItem>;
 
 export type TransferCheckRequestDomainsList = Array<TransferCheckRequestDomainsItem>;
-export const TransferCheckRequestDomainsList = /*@__PURE__*/ S.Array(
+const TransferCheckRequestDomainsList = /*@__PURE__*/ S.Array(
   TransferCheckRequestDomainsItem,
 ) as any as S.Schema<TransferCheckRequestDomainsList>;
 
@@ -1476,7 +1386,7 @@ export interface TransferCheckRequest {
   /** List of domain objects to evaluate for transfer eligibility. */
   domains: TransferCheckRequestDomainsList;
 }
-export const TransferCheckRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domains: TransferCheckRequestDomainsList,
@@ -1499,17 +1409,6 @@ export interface TransferCheckResponseDomainsValueTransferableResultPricing {
   /** The first-year cost to transfer this domain. */
   transferCost: string;
 }
-export const TransferCheckResponseDomainsValueTransferableResultPricing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      currency: S.String,
-      renewalCost: S.String.pipe(T.Body("renewal_cost")),
-      transferCost: S.String.pipe(T.Body("transfer_cost")),
-    }),
-).annotate({
-  identifier: "TransferCheckResponseDomainsValueTransferableResultPricing",
-}) as any as S.Schema<TransferCheckResponseDomainsValueTransferableResultPricing>;
-
 export type TransferCheckResponseDomainsValueTransferableResultReasonsItemCode =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
@@ -1528,27 +1427,12 @@ export type TransferCheckResponseDomainsValueTransferableResultReasonsItemCode =
   | "zone_status_invalid"
   | "invalid_zone_plan"
   | "domain_unsupported";
-export const TransferCheckResponseDomainsValueTransferableResultReasonsItemCode = S.String;
-
 export interface TransferCheckResponseDomainsValueTransferableResultReasonsItem {
   /** Transfer eligibility reason code. */
   code: TransferCheckResponseDomainsValueTransferableResultReasonsItemCode;
 }
-export const TransferCheckResponseDomainsValueTransferableResultReasonsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: TransferCheckResponseDomainsValueTransferableResultReasonsItemCode,
-    }),
-  ).annotate({
-    identifier: "TransferCheckResponseDomainsValueTransferableResultReasonsItem",
-  }) as any as S.Schema<TransferCheckResponseDomainsValueTransferableResultReasonsItem>;
-
 export type TransferCheckResponseDomainsValueTransferableResultReasonsList =
   Array<TransferCheckResponseDomainsValueTransferableResultReasonsItem>;
-export const TransferCheckResponseDomainsValueTransferableResultReasonsList = /*@__PURE__*/ S.Array(
-  TransferCheckResponseDomainsValueTransferableResultReasonsItem,
-) as any as S.Schema<TransferCheckResponseDomainsValueTransferableResultReasonsList>;
-
 export interface TransferCheckResponseDomainsValueTransferableResult {
   /** Provides annual pricing information for a given domain. The API returns all per-year prices as strings to preserve decimal precision. */
   pricing: TransferCheckResponseDomainsValueTransferableResultPricing;
@@ -1557,22 +1441,8 @@ export interface TransferCheckResponseDomainsValueTransferableResult {
   name?: string | null;
   reasons?: TransferCheckResponseDomainsValueTransferableResultReasonsList | null;
 }
-export const TransferCheckResponseDomainsValueTransferableResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pricing: TransferCheckResponseDomainsValueTransferableResultPricing,
-    transferable: S.Boolean,
-    name: S.optional(S.NullOr(S.String)),
-    reasons: S.optional(S.NullOr(TransferCheckResponseDomainsValueTransferableResultReasonsList)),
-  }),
-).annotate({
-  identifier: "TransferCheckResponseDomainsValueTransferableResult",
-}) as any as S.Schema<TransferCheckResponseDomainsValueTransferableResult>;
-
 export type TransferCheckResponseDomainsValueNonTransferableResultPricing =
   TransferCheckResponseDomainsValueTransferableResultPricing;
-export const TransferCheckResponseDomainsValueNonTransferableResultPricing =
-  TransferCheckResponseDomainsValueTransferableResultPricing;
-
 export type TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCode =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
@@ -1591,22 +1461,12 @@ export type TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCod
   | "zone_status_invalid"
   | "invalid_zone_plan"
   | "domain_unsupported";
-export const TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCode = S.String;
-
 export interface TransferCheckResponseDomainsValueNonTransferableResultReasonsItem {
   /** Transfer eligibility reason code. */
   code: TransferCheckResponseDomainsValueNonTransferableResultReasonsItemCode;
 }
-export const TransferCheckResponseDomainsValueNonTransferableResultReasonsItem =
-  TransferCheckResponseDomainsValueTransferableResultReasonsItem as any as S.Schema<TransferCheckResponseDomainsValueNonTransferableResultReasonsItem>;
-
 export type TransferCheckResponseDomainsValueNonTransferableResultReasonsList =
   Array<TransferCheckResponseDomainsValueNonTransferableResultReasonsItem>;
-export const TransferCheckResponseDomainsValueNonTransferableResultReasonsList =
-  /*@__PURE__*/ S.Array(
-    TransferCheckResponseDomainsValueNonTransferableResultReasonsItem,
-  ) as any as S.Schema<TransferCheckResponseDomainsValueNonTransferableResultReasonsList>;
-
 export interface TransferCheckResponseDomainsValueNonTransferableResult {
   transferable: boolean;
   /** The check evaluates this domain name. */
@@ -1615,23 +1475,10 @@ export interface TransferCheckResponseDomainsValueNonTransferableResult {
   pricing?: TransferCheckResponseDomainsValueTransferableResultPricing | null;
   reasons?: TransferCheckResponseDomainsValueNonTransferableResultReasonsList | null;
 }
-export const TransferCheckResponseDomainsValueNonTransferableResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transferable: S.Boolean,
-    name: S.optional(S.NullOr(S.String)),
-    pricing: S.optional(S.NullOr(TransferCheckResponseDomainsValueTransferableResultPricing)),
-    reasons: S.optional(
-      S.NullOr(TransferCheckResponseDomainsValueNonTransferableResultReasonsList),
-    ),
-  }),
-).annotate({
-  identifier: "TransferCheckResponseDomainsValueNonTransferableResult",
-}) as any as S.Schema<TransferCheckResponseDomainsValueNonTransferableResult>;
-
 export type TransferCheckResponseDomainsValue =
   | TransferCheckResponseDomainsValueTransferableResult
   | TransferCheckResponseDomainsValueNonTransferableResult;
-export const TransferCheckResponseDomainsValue = /*@__PURE__*/ S.Unknown.pipe(
+const TransferCheckResponseDomainsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["pricing", "transferable", "name", "reasons"],
     ["transferable", "name", "pricing", "reasons"],
@@ -1641,7 +1488,7 @@ export const TransferCheckResponseDomainsValue = /*@__PURE__*/ S.Unknown.pipe(
 export type TransferCheckResponseDomainsMap = {
   [key: string]: TransferCheckResponseDomainsValue | undefined;
 };
-export const TransferCheckResponseDomainsMap = /*@__PURE__*/ S.Record(
+const TransferCheckResponseDomainsMap = /*@__PURE__*/ S.Record(
   S.String,
   TransferCheckResponseDomainsValue,
 ) as any as S.Schema<TransferCheckResponseDomainsMap>;
@@ -1651,7 +1498,7 @@ export interface TransferCheckResponse {
   /** Maps domain names to transfer eligibility results. Each value contains `name`, `transferable`, and `reasons`. */
   domains: TransferCheckResponseDomainsMap;
 }
-export const TransferCheckResponse = /*@__PURE__*/ S.suspend(() =>
+const TransferCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: TransferCheckResponseDomainsMap,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),

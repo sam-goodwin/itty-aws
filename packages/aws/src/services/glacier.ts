@@ -167,7 +167,7 @@ export interface AbortMultipartUploadInput {
   vaultName: string;
   uploadId: string;
 }
-export const AbortMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
+const AbortMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -190,16 +190,14 @@ export const AbortMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AbortMultipartUploadInput",
 }) as any as S.Schema<AbortMultipartUploadInput>;
 export interface AbortMultipartUploadResponse {}
-export const AbortMultipartUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({
+const AbortMultipartUploadResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "AbortMultipartUploadResponse",
 }) as any as S.Schema<AbortMultipartUploadResponse>;
 export interface AbortVaultLockInput {
   accountId: string;
   vaultName: string;
 }
-export const AbortVaultLockInput = /*@__PURE__*/ S.suspend(() =>
+const AbortVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -216,19 +214,19 @@ export const AbortVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AbortVaultLockInput" }) as any as S.Schema<AbortVaultLockInput>;
 export interface AbortVaultLockResponse {}
-export const AbortVaultLockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "AbortVaultLockResponse" },
-) as any as S.Schema<AbortVaultLockResponse>;
+const AbortVaultLockResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "AbortVaultLockResponse",
+}) as any as S.Schema<AbortVaultLockResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface AddTagsToVaultInput {
   accountId: string;
   vaultName: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const AddTagsToVaultInput = /*@__PURE__*/ S.suspend(() =>
+const AddTagsToVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -246,8 +244,7 @@ export const AddTagsToVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AddTagsToVaultInput" }) as any as S.Schema<AddTagsToVaultInput>;
 export interface AddTagsToVaultResponse {}
-export const AddTagsToVaultResponse =
-  AbortVaultLockResponse as any as S.Schema<AddTagsToVaultResponse>;
+const AddTagsToVaultResponse = AbortVaultLockResponse as any as S.Schema<AddTagsToVaultResponse>;
 export interface CompleteMultipartUploadInput {
   accountId: string;
   vaultName: string;
@@ -255,7 +252,7 @@ export interface CompleteMultipartUploadInput {
   archiveSize?: string;
   checksum?: string;
 }
-export const CompleteMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
+const CompleteMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -284,7 +281,7 @@ export interface ArchiveCreationOutput {
   checksum?: string;
   archiveId?: string;
 }
-export const ArchiveCreationOutput = /*@__PURE__*/ S.suspend(() =>
+const ArchiveCreationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String).pipe(T.HttpHeader("Location")),
     checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-sha256-tree-hash")),
@@ -296,7 +293,7 @@ export interface CompleteVaultLockInput {
   vaultName: string;
   lockId: string;
 }
-export const CompleteVaultLockInput = /*@__PURE__*/ S.suspend(() =>
+const CompleteVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -314,13 +311,13 @@ export const CompleteVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CompleteVaultLockInput" }) as any as S.Schema<CompleteVaultLockInput>;
 export interface CompleteVaultLockResponse {}
-export const CompleteVaultLockResponse =
+const CompleteVaultLockResponse =
   AbortMultipartUploadResponse as any as S.Schema<CompleteVaultLockResponse>;
 export interface CreateVaultInput {
   accountId: string;
   vaultName: string;
 }
-export const CreateVaultInput = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -339,7 +336,7 @@ export const CreateVaultInput = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVaultOutput {
   location?: string;
 }
-export const CreateVaultOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateVaultOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ location: S.optional(S.String).pipe(T.HttpHeader("Location")) }).pipe(ns),
 ).annotate({ identifier: "CreateVaultOutput" }) as any as S.Schema<CreateVaultOutput>;
 export interface DeleteArchiveInput {
@@ -347,7 +344,7 @@ export interface DeleteArchiveInput {
   vaultName: string;
   archiveId: string;
 }
-export const DeleteArchiveInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteArchiveInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -365,14 +362,14 @@ export const DeleteArchiveInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteArchiveInput" }) as any as S.Schema<DeleteArchiveInput>;
 export interface DeleteArchiveResponse {}
-export const DeleteArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const DeleteArchiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteArchiveResponse",
 }) as any as S.Schema<DeleteArchiveResponse>;
 export interface DeleteVaultInput {
   accountId: string;
   vaultName: string;
 }
-export const DeleteVaultInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -389,12 +386,12 @@ export const DeleteVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteVaultInput" }) as any as S.Schema<DeleteVaultInput>;
 export interface DeleteVaultResponse {}
-export const DeleteVaultResponse = DeleteArchiveResponse as any as S.Schema<DeleteVaultResponse>;
+const DeleteVaultResponse = DeleteArchiveResponse as any as S.Schema<DeleteVaultResponse>;
 export interface DeleteVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
 }
-export const DeleteVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -413,13 +410,13 @@ export const DeleteVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVaultAccessPolicyInput",
 }) as any as S.Schema<DeleteVaultAccessPolicyInput>;
 export interface DeleteVaultAccessPolicyResponse {}
-export const DeleteVaultAccessPolicyResponse =
+const DeleteVaultAccessPolicyResponse =
   AbortMultipartUploadResponse as any as S.Schema<DeleteVaultAccessPolicyResponse>;
 export interface DeleteVaultNotificationsInput {
   accountId: string;
   vaultName: string;
 }
-export const DeleteVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -441,14 +438,14 @@ export const DeleteVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteVaultNotificationsInput",
 }) as any as S.Schema<DeleteVaultNotificationsInput>;
 export interface DeleteVaultNotificationsResponse {}
-export const DeleteVaultNotificationsResponse =
+const DeleteVaultNotificationsResponse =
   AbortMultipartUploadResponse as any as S.Schema<DeleteVaultNotificationsResponse>;
 export interface DescribeJobInput {
   accountId: string;
   vaultName: string;
   jobId: string;
 }
-export const DescribeJobInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -466,10 +463,10 @@ export const DescribeJobInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DescribeJobInput" }) as any as S.Schema<DescribeJobInput>;
 export type ActionCode = "ArchiveRetrieval" | "InventoryRetrieval" | "Select" | (string & {});
-export const ActionCode = S.String;
+const ActionCode = S.String;
 
 export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
-export const StatusCode = S.String;
+const StatusCode = S.String;
 
 export type Size = number;
 export interface InventoryRetrievalJobDescription {
@@ -479,7 +476,7 @@ export interface InventoryRetrievalJobDescription {
   Limit?: string;
   Marker?: string;
 }
-export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
+const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Format: S.optional(S.String),
     StartDate: S.optional(S.String),
@@ -491,7 +488,7 @@ export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "InventoryRetrievalJobDescription",
 }) as any as S.Schema<InventoryRetrievalJobDescription>;
 export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
-export const FileHeaderInfo = S.String;
+const FileHeaderInfo = S.String;
 
 export interface CSVInput {
   FileHeaderInfo?: FileHeaderInfo;
@@ -501,7 +498,7 @@ export interface CSVInput {
   FieldDelimiter?: string;
   QuoteCharacter?: string;
 }
-export const CSVInput = /*@__PURE__*/ S.suspend(() =>
+const CSVInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FileHeaderInfo: S.optional(FileHeaderInfo),
     Comments: S.optional(S.String),
@@ -514,14 +511,14 @@ export const CSVInput = /*@__PURE__*/ S.suspend(() =>
 export interface InputSerialization {
   csv?: CSVInput;
 }
-export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
+const InputSerialization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ csv: S.optional(CSVInput) }),
 ).annotate({ identifier: "InputSerialization" }) as any as S.Schema<InputSerialization>;
 export type ExpressionType = "SQL" | (string & {});
-export const ExpressionType = S.String;
+const ExpressionType = S.String;
 
 export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
-export const QuoteFields = S.String;
+const QuoteFields = S.String;
 
 export interface CSVOutput {
   QuoteFields?: QuoteFields;
@@ -530,7 +527,7 @@ export interface CSVOutput {
   FieldDelimiter?: string;
   QuoteCharacter?: string;
 }
-export const CSVOutput = /*@__PURE__*/ S.suspend(() =>
+const CSVOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QuoteFields: S.optional(QuoteFields),
     QuoteEscapeCharacter: S.optional(S.String),
@@ -542,7 +539,7 @@ export const CSVOutput = /*@__PURE__*/ S.suspend(() =>
 export interface OutputSerialization {
   csv?: CSVOutput;
 }
-export const OutputSerialization = /*@__PURE__*/ S.suspend(() =>
+const OutputSerialization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ csv: S.optional(CSVOutput) }),
 ).annotate({ identifier: "OutputSerialization" }) as any as S.Schema<OutputSerialization>;
 export interface SelectParameters {
@@ -551,7 +548,7 @@ export interface SelectParameters {
   Expression?: string;
   OutputSerialization?: OutputSerialization;
 }
-export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
+const SelectParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InputSerialization: S.optional(InputSerialization),
     ExpressionType: S.optional(ExpressionType),
@@ -560,14 +557,14 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SelectParameters" }) as any as S.Schema<SelectParameters>;
 export type EncryptionType = "aws:kms" | "AES256" | (string & {});
-export const EncryptionType = S.String;
+const EncryptionType = S.String;
 
 export interface Encryption {
   EncryptionType?: EncryptionType;
   KMSKeyId?: string;
   KMSContext?: string;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EncryptionType: S.optional(EncryptionType),
     KMSKeyId: S.optional(S.String),
@@ -583,10 +580,10 @@ export type CannedACL =
   | "bucket-owner-read"
   | "bucket-owner-full-control"
   | (string & {});
-export const CannedACL = S.String;
+const CannedACL = S.String;
 
 export type Type = "AmazonCustomerByEmail" | "CanonicalUser" | "Group" | (string & {});
-export const Type = S.String;
+const Type = S.String;
 
 export interface Grantee {
   Type: Type;
@@ -595,7 +592,7 @@ export interface Grantee {
   ID?: string;
   EmailAddress?: string;
 }
-export const Grantee = /*@__PURE__*/ S.suspend(() =>
+const Grantee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: Type,
     DisplayName: S.optional(S.String),
@@ -611,21 +608,21 @@ export type Permission =
   | "READ"
   | "READ_ACP"
   | (string & {});
-export const Permission = S.String;
+const Permission = S.String;
 
 export interface Grant {
   Grantee?: Grantee;
   Permission?: Permission;
 }
-export const Grant = /*@__PURE__*/ S.suspend(() =>
+const Grant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Grantee: S.optional(Grantee), Permission: S.optional(Permission) }),
 ).annotate({ identifier: "Grant" }) as any as S.Schema<Grant>;
 export type AccessControlPolicyList = Grant[];
-export const AccessControlPolicyList = /*@__PURE__*/ S.Array(Grant);
+const AccessControlPolicyList = /*@__PURE__*/ S.Array(Grant);
 export type Hashmap = { [key: string]: string | undefined };
-export const Hashmap = TagMap as any as S.Schema<Hashmap>;
+const Hashmap = TagMap as any as S.Schema<Hashmap>;
 export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA" | (string & {});
-export const StorageClass = S.String;
+const StorageClass = S.String;
 
 export interface S3Location {
   BucketName?: string;
@@ -637,7 +634,7 @@ export interface S3Location {
   UserMetadata?: { [key: string]: string | undefined };
   StorageClass?: StorageClass;
 }
-export const S3Location = /*@__PURE__*/ S.suspend(() =>
+const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketName: S.optional(S.String),
     Prefix: S.optional(S.String),
@@ -652,7 +649,7 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
 export interface OutputLocation {
   S3?: S3Location;
 }
-export const OutputLocation = /*@__PURE__*/ S.suspend(() =>
+const OutputLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3: S.optional(S3Location) }),
 ).annotate({ identifier: "OutputLocation" }) as any as S.Schema<OutputLocation>;
 export interface GlacierJobDescription {
@@ -678,7 +675,7 @@ export interface GlacierJobDescription {
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
 }
-export const GlacierJobDescription = /*@__PURE__*/ S.suspend(() =>
+const GlacierJobDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobId: S.optional(S.String),
     JobDescription: S.optional(S.String),
@@ -707,7 +704,7 @@ export interface DescribeVaultInput {
   accountId: string;
   vaultName: string;
 }
-export const DescribeVaultInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -731,7 +728,7 @@ export interface DescribeVaultOutput {
   NumberOfArchives?: number;
   SizeInBytes?: number;
 }
-export const DescribeVaultOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeVaultOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VaultARN: S.optional(S.String),
     VaultName: S.optional(S.String),
@@ -744,7 +741,7 @@ export const DescribeVaultOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataRetrievalPolicyInput {
   accountId: string;
 }
-export const GetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const GetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
     T.all(
       ns,
@@ -763,21 +760,21 @@ export interface DataRetrievalRule {
   Strategy?: string;
   BytesPerHour?: number;
 }
-export const DataRetrievalRule = /*@__PURE__*/ S.suspend(() =>
+const DataRetrievalRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Strategy: S.optional(S.String), BytesPerHour: S.optional(S.Number) }),
 ).annotate({ identifier: "DataRetrievalRule" }) as any as S.Schema<DataRetrievalRule>;
 export type DataRetrievalRulesList = DataRetrievalRule[];
-export const DataRetrievalRulesList = /*@__PURE__*/ S.Array(DataRetrievalRule);
+const DataRetrievalRulesList = /*@__PURE__*/ S.Array(DataRetrievalRule);
 export interface DataRetrievalPolicy {
   Rules?: DataRetrievalRule[];
 }
-export const DataRetrievalPolicy = /*@__PURE__*/ S.suspend(() =>
+const DataRetrievalPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Rules: S.optional(DataRetrievalRulesList) }),
 ).annotate({ identifier: "DataRetrievalPolicy" }) as any as S.Schema<DataRetrievalPolicy>;
 export interface GetDataRetrievalPolicyOutput {
   Policy?: DataRetrievalPolicy;
 }
-export const GetDataRetrievalPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+const GetDataRetrievalPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(DataRetrievalPolicy) }).pipe(ns),
 ).annotate({
   identifier: "GetDataRetrievalPolicyOutput",
@@ -788,7 +785,7 @@ export interface GetJobOutputInput {
   jobId: string;
   range?: string;
 }
-export const GetJobOutputInput = /*@__PURE__*/ S.suspend(() =>
+const GetJobOutputInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -816,7 +813,7 @@ export interface GetJobOutputOutput {
   contentType?: string;
   archiveDescription?: string;
 }
-export const GetJobOutputOutput = /*@__PURE__*/ S.suspend(() =>
+const GetJobOutputOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
     checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-sha256-tree-hash")),
@@ -831,7 +828,7 @@ export interface GetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
 }
-export const GetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -852,13 +849,13 @@ export const GetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
 export interface VaultAccessPolicy {
   Policy?: string;
 }
-export const VaultAccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const VaultAccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.optional(S.String) }),
 ).annotate({ identifier: "VaultAccessPolicy" }) as any as S.Schema<VaultAccessPolicy>;
 export interface GetVaultAccessPolicyOutput {
   policy?: VaultAccessPolicy;
 }
-export const GetVaultAccessPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultAccessPolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(VaultAccessPolicy)
       .pipe(T.HttpPayload())
@@ -871,7 +868,7 @@ export interface GetVaultLockInput {
   accountId: string;
   vaultName: string;
 }
-export const GetVaultLockInput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -893,7 +890,7 @@ export interface GetVaultLockOutput {
   ExpirationDate?: string;
   CreationDate?: string;
 }
-export const GetVaultLockOutput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultLockOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Policy: S.optional(S.String),
     State: S.optional(S.String),
@@ -905,7 +902,7 @@ export interface GetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
 }
-export const GetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -924,18 +921,18 @@ export const GetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetVaultNotificationsInput",
 }) as any as S.Schema<GetVaultNotificationsInput>;
 export type NotificationEventList = string[];
-export const NotificationEventList = /*@__PURE__*/ S.Array(S.String);
+const NotificationEventList = /*@__PURE__*/ S.Array(S.String);
 export interface VaultNotificationConfig {
   SNSTopic?: string;
   Events?: string[];
 }
-export const VaultNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const VaultNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SNSTopic: S.optional(S.String), Events: S.optional(NotificationEventList) }),
 ).annotate({ identifier: "VaultNotificationConfig" }) as any as S.Schema<VaultNotificationConfig>;
 export interface GetVaultNotificationsOutput {
   vaultNotificationConfig?: VaultNotificationConfig;
 }
-export const GetVaultNotificationsOutput = /*@__PURE__*/ S.suspend(() =>
+const GetVaultNotificationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultNotificationConfig: S.optional(VaultNotificationConfig)
       .pipe(T.HttpPayload())
@@ -950,7 +947,7 @@ export interface InventoryRetrievalJobInput {
   Limit?: string;
   Marker?: string;
 }
-export const InventoryRetrievalJobInput = /*@__PURE__*/ S.suspend(() =>
+const InventoryRetrievalJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartDate: S.optional(S.String),
     EndDate: S.optional(S.String),
@@ -972,7 +969,7 @@ export interface JobParameters {
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
 }
-export const JobParameters = /*@__PURE__*/ S.suspend(() =>
+const JobParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Format: S.optional(S.String),
     Type: S.optional(S.String),
@@ -991,7 +988,7 @@ export interface InitiateJobInput {
   vaultName: string;
   jobParameters?: JobParameters;
 }
-export const InitiateJobInput = /*@__PURE__*/ S.suspend(() =>
+const InitiateJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1015,7 +1012,7 @@ export interface InitiateJobOutput {
   jobId?: string;
   jobOutputPath?: string;
 }
-export const InitiateJobOutput = /*@__PURE__*/ S.suspend(() =>
+const InitiateJobOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String).pipe(T.HttpHeader("Location")),
     jobId: S.optional(S.String).pipe(T.HttpHeader("x-amz-job-id")),
@@ -1028,7 +1025,7 @@ export interface InitiateMultipartUploadInput {
   archiveDescription?: string;
   partSize?: string;
 }
-export const InitiateMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
+const InitiateMultipartUploadInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1052,7 +1049,7 @@ export interface InitiateMultipartUploadOutput {
   location?: string;
   uploadId?: string;
 }
-export const InitiateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
+const InitiateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String).pipe(T.HttpHeader("Location")),
     uploadId: S.optional(S.String).pipe(T.HttpHeader("x-amz-multipart-upload-id")),
@@ -1063,13 +1060,13 @@ export const InitiateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
 export interface VaultLockPolicy {
   Policy?: string;
 }
-export const VaultLockPolicy = VaultAccessPolicy as any as S.Schema<VaultLockPolicy>;
+const VaultLockPolicy = VaultAccessPolicy as any as S.Schema<VaultLockPolicy>;
 export interface InitiateVaultLockInput {
   accountId: string;
   vaultName: string;
   policy?: VaultLockPolicy;
 }
-export const InitiateVaultLockInput = /*@__PURE__*/ S.suspend(() =>
+const InitiateVaultLockInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1091,7 +1088,7 @@ export const InitiateVaultLockInput = /*@__PURE__*/ S.suspend(() =>
 export interface InitiateVaultLockOutput {
   lockId?: string;
 }
-export const InitiateVaultLockOutput = /*@__PURE__*/ S.suspend(() =>
+const InitiateVaultLockOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lockId: S.optional(S.String).pipe(T.HttpHeader("x-amz-lock-id")) }).pipe(ns),
 ).annotate({ identifier: "InitiateVaultLockOutput" }) as any as S.Schema<InitiateVaultLockOutput>;
 export interface ListJobsInput {
@@ -1102,7 +1099,7 @@ export interface ListJobsInput {
   statuscode?: string;
   completed?: string;
 }
-export const ListJobsInput = /*@__PURE__*/ S.suspend(() =>
+const ListJobsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1123,12 +1120,12 @@ export const ListJobsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListJobsInput" }) as any as S.Schema<ListJobsInput>;
 export type JobList = GlacierJobDescription[];
-export const JobList = /*@__PURE__*/ S.Array(GlacierJobDescription);
+const JobList = /*@__PURE__*/ S.Array(GlacierJobDescription);
 export interface ListJobsOutput {
   JobList?: GlacierJobDescription[];
   Marker?: string;
 }
-export const ListJobsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListJobsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ JobList: S.optional(JobList), Marker: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListJobsOutput" }) as any as S.Schema<ListJobsOutput>;
 export interface ListMultipartUploadsInput {
@@ -1137,7 +1134,7 @@ export interface ListMultipartUploadsInput {
   limit?: number;
   marker?: string;
 }
-export const ListMultipartUploadsInput = /*@__PURE__*/ S.suspend(() =>
+const ListMultipartUploadsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1164,7 +1161,7 @@ export interface UploadListElement {
   PartSizeInBytes?: number;
   CreationDate?: string;
 }
-export const UploadListElement = /*@__PURE__*/ S.suspend(() =>
+const UploadListElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultipartUploadId: S.optional(S.String),
     VaultARN: S.optional(S.String),
@@ -1174,12 +1171,12 @@ export const UploadListElement = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UploadListElement" }) as any as S.Schema<UploadListElement>;
 export type UploadsList = UploadListElement[];
-export const UploadsList = /*@__PURE__*/ S.Array(UploadListElement);
+const UploadsList = /*@__PURE__*/ S.Array(UploadListElement);
 export interface ListMultipartUploadsOutput {
   UploadsList?: UploadListElement[];
   Marker?: string;
 }
-export const ListMultipartUploadsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListMultipartUploadsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ UploadsList: S.optional(UploadsList), Marker: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListMultipartUploadsOutput",
@@ -1191,7 +1188,7 @@ export interface ListPartsInput {
   marker?: string;
   limit?: number;
 }
-export const ListPartsInput = /*@__PURE__*/ S.suspend(() =>
+const ListPartsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1217,11 +1214,11 @@ export interface PartListElement {
   RangeInBytes?: string;
   SHA256TreeHash?: string;
 }
-export const PartListElement = /*@__PURE__*/ S.suspend(() =>
+const PartListElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RangeInBytes: S.optional(S.String), SHA256TreeHash: S.optional(S.String) }),
 ).annotate({ identifier: "PartListElement" }) as any as S.Schema<PartListElement>;
 export type PartList = PartListElement[];
-export const PartList = /*@__PURE__*/ S.Array(PartListElement);
+const PartList = /*@__PURE__*/ S.Array(PartListElement);
 export interface ListPartsOutput {
   MultipartUploadId?: string;
   VaultARN?: string;
@@ -1231,7 +1228,7 @@ export interface ListPartsOutput {
   Parts?: PartListElement[];
   Marker?: string;
 }
-export const ListPartsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListPartsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultipartUploadId: S.optional(S.String),
     VaultARN: S.optional(S.String),
@@ -1245,7 +1242,7 @@ export const ListPartsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface ListProvisionedCapacityInput {
   accountId: string;
 }
-export const ListProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
     T.all(
       ns,
@@ -1265,7 +1262,7 @@ export interface ProvisionedCapacityDescription {
   StartDate?: string;
   ExpirationDate?: string;
 }
-export const ProvisionedCapacityDescription = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedCapacityDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CapacityId: S.optional(S.String),
     StartDate: S.optional(S.String),
@@ -1275,11 +1272,11 @@ export const ProvisionedCapacityDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProvisionedCapacityDescription",
 }) as any as S.Schema<ProvisionedCapacityDescription>;
 export type ProvisionedCapacityList = ProvisionedCapacityDescription[];
-export const ProvisionedCapacityList = /*@__PURE__*/ S.Array(ProvisionedCapacityDescription);
+const ProvisionedCapacityList = /*@__PURE__*/ S.Array(ProvisionedCapacityDescription);
 export interface ListProvisionedCapacityOutput {
   ProvisionedCapacityList?: ProvisionedCapacityDescription[];
 }
-export const ListProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProvisionedCapacityList: S.optional(ProvisionedCapacityList) }).pipe(ns),
 ).annotate({
   identifier: "ListProvisionedCapacityOutput",
@@ -1288,7 +1285,7 @@ export interface ListTagsForVaultInput {
   accountId: string;
   vaultName: string;
 }
-export const ListTagsForVaultInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1307,7 +1304,7 @@ export const ListTagsForVaultInput = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForVaultOutput {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForVaultOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForVaultOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagMap) }).pipe(ns),
 ).annotate({ identifier: "ListTagsForVaultOutput" }) as any as S.Schema<ListTagsForVaultOutput>;
 export interface ListVaultsInput {
@@ -1315,7 +1312,7 @@ export interface ListVaultsInput {
   marker?: string;
   limit?: number;
 }
-export const ListVaultsInput = /*@__PURE__*/ S.suspend(() =>
+const ListVaultsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     marker: S.optional(S.String).pipe(T.HttpQuery("marker")),
@@ -1325,18 +1322,18 @@ export const ListVaultsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListVaultsInput" }) as any as S.Schema<ListVaultsInput>;
 export type VaultList = DescribeVaultOutput[];
-export const VaultList = /*@__PURE__*/ S.Array(DescribeVaultOutput);
+const VaultList = /*@__PURE__*/ S.Array(DescribeVaultOutput);
 export interface ListVaultsOutput {
   VaultList?: DescribeVaultOutput[];
   Marker?: string;
 }
-export const ListVaultsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListVaultsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VaultList: S.optional(VaultList), Marker: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListVaultsOutput" }) as any as S.Schema<ListVaultsOutput>;
 export interface PurchaseProvisionedCapacityInput {
   accountId: string;
 }
-export const PurchaseProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
+const PurchaseProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.String.pipe(T.HttpLabel("accountId")) }).pipe(
     T.all(
       ns,
@@ -1354,19 +1351,19 @@ export const PurchaseProvisionedCapacityInput = /*@__PURE__*/ S.suspend(() =>
 export interface PurchaseProvisionedCapacityOutput {
   capacityId?: string;
 }
-export const PurchaseProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
+const PurchaseProvisionedCapacityOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ capacityId: S.optional(S.String).pipe(T.HttpHeader("x-amz-capacity-id")) }).pipe(ns),
 ).annotate({
   identifier: "PurchaseProvisionedCapacityOutput",
 }) as any as S.Schema<PurchaseProvisionedCapacityOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = NotificationEventList as any as S.Schema<TagKeyList>;
+const TagKeyList = NotificationEventList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromVaultInput {
   accountId: string;
   vaultName: string;
   TagKeys?: string[];
 }
-export const RemoveTagsFromVaultInput = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsFromVaultInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1384,13 +1381,13 @@ export const RemoveTagsFromVaultInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsFromVaultInput" }) as any as S.Schema<RemoveTagsFromVaultInput>;
 export interface RemoveTagsFromVaultResponse {}
-export const RemoveTagsFromVaultResponse =
+const RemoveTagsFromVaultResponse =
   AbortMultipartUploadResponse as any as S.Schema<RemoveTagsFromVaultResponse>;
 export interface SetDataRetrievalPolicyInput {
   accountId: string;
   Policy?: DataRetrievalPolicy;
 }
-export const SetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const SetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     Policy: S.optional(DataRetrievalPolicy),
@@ -1409,14 +1406,14 @@ export const SetDataRetrievalPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetDataRetrievalPolicyInput",
 }) as any as S.Schema<SetDataRetrievalPolicyInput>;
 export interface SetDataRetrievalPolicyResponse {}
-export const SetDataRetrievalPolicyResponse =
+const SetDataRetrievalPolicyResponse =
   AbortMultipartUploadResponse as any as S.Schema<SetDataRetrievalPolicyResponse>;
 export interface SetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
   policy?: VaultAccessPolicy;
 }
-export const SetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
+const SetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1438,14 +1435,14 @@ export const SetVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultAccessPolicyInput",
 }) as any as S.Schema<SetVaultAccessPolicyInput>;
 export interface SetVaultAccessPolicyResponse {}
-export const SetVaultAccessPolicyResponse =
+const SetVaultAccessPolicyResponse =
   AbortMultipartUploadResponse as any as S.Schema<SetVaultAccessPolicyResponse>;
 export interface SetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
   vaultNotificationConfig?: VaultNotificationConfig;
 }
-export const SetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
+const SetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1467,7 +1464,7 @@ export const SetVaultNotificationsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetVaultNotificationsInput",
 }) as any as S.Schema<SetVaultNotificationsInput>;
 export interface SetVaultNotificationsResponse {}
-export const SetVaultNotificationsResponse =
+const SetVaultNotificationsResponse =
   AbortMultipartUploadResponse as any as S.Schema<SetVaultNotificationsResponse>;
 export interface UploadArchiveInput {
   vaultName: string;
@@ -1476,7 +1473,7 @@ export interface UploadArchiveInput {
   checksum?: string;
   body?: T.StreamingInputBody;
 }
-export const UploadArchiveInput = /*@__PURE__*/ S.suspend(() =>
+const UploadArchiveInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
     accountId: S.String.pipe(T.HttpLabel("accountId")),
@@ -1503,7 +1500,7 @@ export interface UploadMultipartPartInput {
   range?: string;
   body?: T.StreamingInputBody;
 }
-export const UploadMultipartPartInput = /*@__PURE__*/ S.suspend(() =>
+const UploadMultipartPartInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.HttpLabel("accountId")),
     vaultName: S.String.pipe(T.HttpLabel("vaultName")),
@@ -1529,7 +1526,7 @@ export const UploadMultipartPartInput = /*@__PURE__*/ S.suspend(() =>
 export interface UploadMultipartPartOutput {
   checksum?: string;
 }
-export const UploadMultipartPartOutput = /*@__PURE__*/ S.suspend(() =>
+const UploadMultipartPartOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ checksum: S.optional(S.String).pipe(T.HttpHeader("x-amz-sha256-tree-hash")) }).pipe(
     ns,
   ),

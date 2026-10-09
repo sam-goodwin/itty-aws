@@ -49,7 +49,7 @@ export interface GetForumRequest {
   /** The unique identifier of the forum or experience to retrieve. */
   id: string;
 }
-export const GetForumRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/forums/{id}", code: 200 })),
@@ -57,7 +57,7 @@ export const GetForumRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email notification preference option for a forum feed */
 export type ForumEmailNotificationPreferences = "all_admin_posts" | "only_weekly_summary" | "none";
-export const ForumEmailNotificationPreferences = S.String;
+const ForumEmailNotificationPreferences = S.String;
 
 /** The parent experience that this forum belongs to. */
 export interface ForumExperience {
@@ -68,7 +68,7 @@ export interface ForumExperience {
   /** The display name of this experience shown to users in the product navigation. Maximum 255 characters. */
   name: string;
 }
-export const ForumExperience = /*@__PURE__*/ S.suspend(() =>
+const ForumExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     is_public: S.Boolean,
@@ -78,11 +78,11 @@ export const ForumExperience = /*@__PURE__*/ S.suspend(() =>
 
 /** Who can comment on a forum feed */
 export type ForumWhoCanCommentTypes = "everyone" | "admins";
-export const ForumWhoCanCommentTypes = S.String;
+const ForumWhoCanCommentTypes = S.String;
 
 /** Who can post on a forum feed */
 export type ForumWhoCanPostTypes = "everyone" | "admins";
-export const ForumWhoCanPostTypes = S.String;
+const ForumWhoCanPostTypes = S.String;
 
 /** A discussion forum where members can create posts, comment, and react, belonging to an experience. */
 export interface Forum {
@@ -97,7 +97,7 @@ export interface Forum {
   /** The permission level controlling who can create new posts. One of: everyone, admins. */
   who_can_post: ForumWhoCanPostTypes;
 }
-export const Forum = /*@__PURE__*/ S.suspend(() =>
+const Forum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_notification_preference: ForumEmailNotificationPreferences,
     experience: ForumExperience,
@@ -115,7 +115,7 @@ export interface ListForumRequest {
   product_id?: string;
   account_id: string;
 }
-export const ListForumRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -128,8 +128,6 @@ export const ListForumRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The parent experience that this forum belongs to. */
 export type ForumListItemExperience = ForumExperience;
-export const ForumListItemExperience = ForumExperience;
-
 /** A discussion forum where members can create posts, comment, and react, belonging to an experience. */
 export interface ForumListItem {
   /** The email notification setting that controls which posts trigger email alerts. One of: all_admin_posts, only_weekly_summary, none. */
@@ -143,11 +141,11 @@ export interface ForumListItem {
   /** The permission level controlling who can create new posts. One of: everyone, admins. */
   who_can_post: ForumWhoCanPostTypes;
 }
-export const ForumListItem = Forum as any as S.Schema<ForumListItem>;
+const ForumListItem = Forum as any as S.Schema<ForumListItem>;
 
 /** A list of nodes. */
 export type ListForumResponseDataList = Array<ForumListItem>;
-export const ListForumResponseDataList = /*@__PURE__*/ S.Array(
+const ListForumResponseDataList = /*@__PURE__*/ S.Array(
   ForumListItem,
 ) as any as S.Schema<ListForumResponseDataList>;
 
@@ -162,7 +160,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -177,7 +175,7 @@ export interface ListForumResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListForumResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForumResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListForumResponseDataList,
     page_info: PageInfo,
@@ -186,7 +184,7 @@ export const ListForumResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of words that are automatically blocked from posts in this forum. For example, ['spam', 'scam']. */
 export type UpdateForumRequestBannedWordsList = Array<string>;
-export const UpdateForumRequestBannedWordsList = /*@__PURE__*/ S.Array(
+const UpdateForumRequestBannedWordsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateForumRequestBannedWordsList>;
 
@@ -195,7 +193,7 @@ export interface UpdateForumRequestBannerImage {
   /** The ID of an existing file object. */
   id: string;
 }
-export const UpdateForumRequestBannerImage = /*@__PURE__*/ S.suspend(() =>
+const UpdateForumRequestBannerImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -217,7 +215,7 @@ export interface UpdateForumRequest {
   /** Controls which roles are allowed to create new posts in this forum. */
   who_can_post?: ForumWhoCanPostTypes | (string & {}) | null;
 }
-export const UpdateForumRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateForumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     banned_words: S.optional(S.NullOr(UpdateForumRequestBannedWordsList)),

@@ -16,7 +16,7 @@ export interface GetNotificationRequest {
   /** user's principal id */
   principalId: string;
 }
-export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     notification: S.String.pipe(T.Label()),
@@ -37,7 +37,7 @@ export type GetNotificationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNotificationResponseSystemDataCreatedByType = S.String;
+const GetNotificationResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetNotificationResponseSystemDataLastModifiedByType =
@@ -45,7 +45,7 @@ export type GetNotificationResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetNotificationResponseSystemDataLastModifiedByType = S.String;
+const GetNotificationResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetNotificationResponseSystemData {
@@ -62,7 +62,7 @@ export interface GetNotificationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetNotificationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetNotificationResponseSystemDataCreatedByType),
@@ -85,7 +85,7 @@ export interface OfferProperties {
   /** user's principal id */
   principalId?: string;
 }
-export const OfferProperties = /*@__PURE__*/ S.suspend(() =>
+const OfferProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     createdDate: S.optional(S.String),
@@ -106,7 +106,7 @@ export interface GetNotificationResponse {
   /** The offer data structure. */
   properties?: OfferProperties;
 }
-export const GetNotificationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -117,7 +117,7 @@ export const GetNotificationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetNotificationResponse" }) as any as S.Schema<GetNotificationResponse>;
 
 export interface GetNotificationOperationsRequest {}
-export const GetNotificationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -141,7 +141,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     provider: S.optional(S.String),
@@ -163,7 +163,7 @@ export interface OperationDetail {
   /** operation properties */
   properties?: unknown;
 }
-export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
+const OperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -175,7 +175,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of available operation details */
 export type AvailableOperationsValueList = Array<OperationDetail>;
-export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
+const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;
 
@@ -186,7 +186,7 @@ export interface AvailableOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AvailableOperationsValueList),
     nextLink: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface ListNotificationsRequest {
   /** user's principal id */
   principalId: string;
 }
-export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
     principalId: S.String.pipe(T.Query()),
@@ -219,7 +219,7 @@ export type NotificationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NotificationSystemDataCreatedByType = S.String;
+const NotificationSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type NotificationSystemDataLastModifiedByType =
@@ -227,7 +227,7 @@ export type NotificationSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const NotificationSystemDataLastModifiedByType = S.String;
+const NotificationSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface NotificationSystemData {
@@ -244,7 +244,7 @@ export interface NotificationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const NotificationSystemData = /*@__PURE__*/ S.suspend(() =>
+const NotificationSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(NotificationSystemDataCreatedByType),
@@ -268,7 +268,7 @@ export interface Notification {
   /** The offer data structure. */
   properties?: OfferProperties;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -279,7 +279,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 export type NotificationListValueList = Array<Notification>;
-export const NotificationListValueList = /*@__PURE__*/ S.Array(
+const NotificationListValueList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<NotificationListValueList>;
 
@@ -289,7 +289,7 @@ export interface NotificationList {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const NotificationList = /*@__PURE__*/ S.suspend(() =>
+const NotificationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(NotificationListValueList),
     nextLink: S.optional(S.String),

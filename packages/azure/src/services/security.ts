@@ -10,13 +10,13 @@ export type { AzureOpError, AzureOpContext };
 
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
-export const SystemAssignedServiceIdentityType = S.String;
+const SystemAssignedServiceIdentityType = S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface DataScannersCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
-export const DataScannersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const DataScannersCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SystemAssignedServiceIdentityType,
   }),
@@ -34,7 +34,7 @@ export interface DataScannersCreateOrUpdateRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateRequestIdentity;
 }
-export const DataScannersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DataScannersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String.pipe(T.Label()),
     scannerName: S.String.pipe(T.Label()),
@@ -54,11 +54,11 @@ export const DataScannersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -75,7 +75,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -94,7 +94,7 @@ export interface DataScannersCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
-export const DataScannersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const DataScannersCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -118,7 +118,7 @@ export interface DataScannersCreateOrUpdateResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
-export const DataScannersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DataScannersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -137,7 +137,7 @@ export interface DeleteDataScannerRequest {
   /** The name of the data scanner. */
   scannerName: string;
 }
-export const DeleteDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String.pipe(T.Label()),
     scannerName: S.String.pipe(T.Label()),
@@ -152,7 +152,7 @@ export const DeleteDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDataScannerRequest" }) as any as S.Schema<DeleteDataScannerRequest>;
 
 export interface DeleteDataScannerResponse {}
-export const DeleteDataScannerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDataScannerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDataScannerResponse",
 }) as any as S.Schema<DeleteDataScannerResponse>;
 
@@ -162,7 +162,7 @@ export interface GetDataScannerRequest {
   /** The name of the data scanner. */
   scannerName: string;
 }
-export const GetDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String.pipe(T.Label()),
     scannerName: S.String.pipe(T.Label()),
@@ -178,8 +178,6 @@ export const GetDataScannerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (either system assigned, or none) */
 export type GetDataScannerResponseIdentity = DataScannersCreateOrUpdateResponseIdentity;
-export const GetDataScannerResponseIdentity = DataScannersCreateOrUpdateResponseIdentity;
-
 export interface GetDataScannerResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -194,7 +192,7 @@ export interface GetDataScannerResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
-export const GetDataScannerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataScannerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -209,7 +207,7 @@ export interface ListDataScannersRequest {
   /** The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'). */
   scopeId: string;
 }
-export const ListDataScannersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataScannersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String.pipe(T.Label()),
   }).pipe(
@@ -224,8 +222,6 @@ export const ListDataScannersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (either system assigned, or none) */
 export type DataScannerIdentity = DataScannersCreateOrUpdateResponseIdentity;
-export const DataScannerIdentity = DataScannersCreateOrUpdateResponseIdentity;
-
 /** The data scanner resource used by Defender for Storage to scan data for malware and sensitive data discovery. */
 export interface DataScanner {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -241,11 +237,11 @@ export interface DataScanner {
   /** Managed service identity (either system assigned, or none) */
   identity?: DataScannersCreateOrUpdateResponseIdentity;
 }
-export const DataScanner = GetDataScannerResponse as any as S.Schema<DataScanner>;
+const DataScanner = GetDataScannerResponse as any as S.Schema<DataScanner>;
 
 /** The list of data scanner resources. */
 export type DataScannerListValueList = Array<DataScanner>;
-export const DataScannerListValueList = /*@__PURE__*/ S.Array(
+const DataScannerListValueList = /*@__PURE__*/ S.Array(
   DataScanner,
 ) as any as S.Schema<DataScannerListValueList>;
 
@@ -256,7 +252,7 @@ export interface DataScannerList {
   /** The URI to fetch the next page. */
   nextLink?: string;
 }
-export const DataScannerList = /*@__PURE__*/ S.suspend(() =>
+const DataScannerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DataScannerListValueList,
     nextLink: S.optional(S.String),

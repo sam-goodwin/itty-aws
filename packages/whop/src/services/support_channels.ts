@@ -55,7 +55,7 @@ export interface CreateSupportChannelRequest {
   /** The user ID (e.g. 'user_xxxxx') or username of the customer to open a support channel for. */
   user_id: string;
 }
-export const CreateSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     custom_name: S.optional(S.NullOr(S.String)),
@@ -75,7 +75,7 @@ export interface SupportChannelCustomerUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const SupportChannelCustomerUser = /*@__PURE__*/ S.suspend(() =>
+const SupportChannelCustomerUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -102,7 +102,7 @@ export interface SupportChannel {
   /** The timestamp when the linked support ticket was marked as resolved. Null if unresolved or not a support chat. */
   resolved_at: string | null;
 }
-export const SupportChannel = /*@__PURE__*/ S.suspend(() =>
+const SupportChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     company_id: S.NullOr(S.String),
@@ -118,7 +118,7 @@ export interface GetSupportChannelRequest {
   /** The unique identifier of the support channel to retrieve. */
   id: string;
 }
-export const GetSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/support_channels/{id}", code: 200 })),
@@ -126,15 +126,15 @@ export const GetSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The perspective to filter support channels by. */
 export type SupportChannelView = "all" | "admin" | "customer";
-export const SupportChannelView = S.String;
+const SupportChannelView = S.String;
 
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-export const Direction = S.String;
+const Direction = S.String;
 
 /** Sort options for message channels */
 export type MessageChannelOrder = "created_at" | "last_post_sent_at";
-export const MessageChannelOrder = S.String;
+const MessageChannelOrder = S.String;
 
 export interface ListSupportChannelRequest {
   after?: string;
@@ -147,7 +147,7 @@ export interface ListSupportChannelRequest {
   order?: MessageChannelOrder | (string & {});
   account_id?: string;
 }
-export const ListSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -165,8 +165,6 @@ export const ListSupportChannelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The customer who initiated this support conversation. Null if this is not a support chat. */
 export type SupportChannelListItemCustomerUser = SupportChannelCustomerUser;
-export const SupportChannelListItemCustomerUser = SupportChannelCustomerUser;
-
 /** A messaging channel that can be a one-on-one DM, group chat, company support conversation, or platform-level direct message. */
 export interface SupportChannelListItem {
   /** The unique identifier of the account associated with this channel. Null if this is not a support or account-scoped conversation. */
@@ -184,11 +182,11 @@ export interface SupportChannelListItem {
   /** The timestamp when the linked support ticket was marked as resolved. Null if unresolved or not a support chat. */
   resolved_at: string | null;
 }
-export const SupportChannelListItem = SupportChannel as any as S.Schema<SupportChannelListItem>;
+const SupportChannelListItem = SupportChannel as any as S.Schema<SupportChannelListItem>;
 
 /** A list of nodes. */
 export type ListSupportChannelResponseDataList = Array<SupportChannelListItem>;
-export const ListSupportChannelResponseDataList = /*@__PURE__*/ S.Array(
+const ListSupportChannelResponseDataList = /*@__PURE__*/ S.Array(
   SupportChannelListItem,
 ) as any as S.Schema<ListSupportChannelResponseDataList>;
 
@@ -203,7 +201,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -218,7 +216,7 @@ export interface ListSupportChannelResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListSupportChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSupportChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListSupportChannelResponseDataList,
     page_info: PageInfo,

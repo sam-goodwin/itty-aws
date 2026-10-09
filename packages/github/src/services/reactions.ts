@@ -45,7 +45,7 @@ export type CreateForCommitCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const CreateForCommitCommentRequestContent = S.String;
+const CreateForCommitCommentRequestContent = S.String;
 
 export interface CreateForCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -57,7 +57,7 @@ export interface CreateForCommitCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment. */
   content: CreateForCommitCommentRequestContent | (string & {});
 }
-export const CreateForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -99,7 +99,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -136,7 +136,7 @@ export type ReactionContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const ReactionContent = S.String;
+const ReactionContent = S.String;
 
 /** Reactions to conversations provide a way to help people express their feelings more simply and effectively. */
 export interface Reaction {
@@ -147,7 +147,7 @@ export interface Reaction {
   content: ReactionContent;
   created_at: string;
 }
-export const Reaction = /*@__PURE__*/ S.suspend(() =>
+const Reaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -167,7 +167,7 @@ export type CreateForIssueRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const CreateForIssueRequestContent = S.String;
+const CreateForIssueRequestContent = S.String;
 
 export interface CreateForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -179,7 +179,7 @@ export interface CreateForIssueRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue. */
   content: CreateForIssueRequestContent | (string & {});
 }
-export const CreateForIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -204,7 +204,7 @@ export type CreateForIssueCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const CreateForIssueCommentRequestContent = S.String;
+const CreateForIssueCommentRequestContent = S.String;
 
 export interface CreateForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -216,7 +216,7 @@ export interface CreateForIssueCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment. */
   content: CreateForIssueCommentRequestContent | (string & {});
 }
-export const CreateForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -243,7 +243,7 @@ export type CreateForPullRequestReviewCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const CreateForPullRequestReviewCommentRequestContent = S.String;
+const CreateForPullRequestReviewCommentRequestContent = S.String;
 
 export interface CreateForPullRequestReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -255,7 +255,7 @@ export interface CreateForPullRequestReviewCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment. */
   content: CreateForPullRequestReviewCommentRequestContent | (string & {});
 }
-export const CreateForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -280,7 +280,7 @@ export type CreateForReleaseRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const CreateForReleaseRequestContent = S.String;
+const CreateForReleaseRequestContent = S.String;
 
 export interface CreateForReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -292,7 +292,7 @@ export interface CreateForReleaseRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release. */
   content: CreateForReleaseRequestContent | (string & {});
 }
-export const CreateForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -317,7 +317,7 @@ export interface DeleteForCommitCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-export const DeleteForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -335,7 +335,7 @@ export const DeleteForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForCommitCommentRequest>;
 
 export interface DeleteForCommitCommentResponse {}
-export const DeleteForCommitCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteForCommitCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteForCommitCommentResponse",
 }) as any as S.Schema<DeleteForCommitCommentResponse>;
 
@@ -349,7 +349,7 @@ export interface DeleteForIssueRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-export const DeleteForIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -365,7 +365,7 @@ export const DeleteForIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteForIssueRequest" }) as any as S.Schema<DeleteForIssueRequest>;
 
 export interface DeleteForIssueResponse {}
-export const DeleteForIssueResponse =
+const DeleteForIssueResponse =
   DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueResponse>;
 
 export interface DeleteForIssueCommentRequest {
@@ -378,7 +378,7 @@ export interface DeleteForIssueCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-export const DeleteForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -396,7 +396,7 @@ export const DeleteForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForIssueCommentRequest>;
 
 export interface DeleteForIssueCommentResponse {}
-export const DeleteForIssueCommentResponse =
+const DeleteForIssueCommentResponse =
   DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueCommentResponse>;
 
 export interface DeleteForPullRequestCommentRequest {
@@ -409,7 +409,7 @@ export interface DeleteForPullRequestCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-export const DeleteForPullRequestCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForPullRequestCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -427,9 +427,7 @@ export const DeleteForPullRequestCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteForPullRequestCommentRequest>;
 
 export interface DeleteForPullRequestCommentResponse {}
-export const DeleteForPullRequestCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteForPullRequestCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteForPullRequestCommentResponse",
 }) as any as S.Schema<DeleteForPullRequestCommentResponse>;
 
@@ -443,7 +441,7 @@ export interface DeleteForReleaseRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-export const DeleteForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -459,7 +457,7 @@ export const DeleteForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteForReleaseRequest" }) as any as S.Schema<DeleteForReleaseRequest>;
 
 export interface DeleteForReleaseResponse {}
-export const DeleteForReleaseResponse =
+const DeleteForReleaseResponse =
   DeleteForCommitCommentResponse as any as S.Schema<DeleteForReleaseResponse>;
 
 export type ListForCommitCommentRequestContent =
@@ -471,7 +469,7 @@ export type ListForCommitCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const ListForCommitCommentRequestContent = S.String;
+const ListForCommitCommentRequestContent = S.String;
 
 export interface ListForCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -487,7 +485,7 @@ export interface ListForCommitCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -507,12 +505,12 @@ export const ListForCommitCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForCommitCommentRequest>;
 
 export type ListForCommitCommentResponseBodyList = Array<Reaction>;
-export const ListForCommitCommentResponseBodyList = /*@__PURE__*/ S.Array(
+const ListForCommitCommentResponseBodyList = /*@__PURE__*/ S.Array(
   Reaction,
 ) as any as S.Schema<ListForCommitCommentResponseBodyList>;
 
 export type ListForCommitCommentResponse = ListForCommitCommentResponseBodyList;
-export const ListForCommitCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForCommitCommentResponse = /*@__PURE__*/ S.suspend(() =>
   ListForCommitCommentResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListForCommitCommentResponse",
@@ -527,7 +525,7 @@ export type ListForIssueRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const ListForIssueRequestContent = S.String;
+const ListForIssueRequestContent = S.String;
 
 export interface ListForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -543,7 +541,7 @@ export interface ListForIssueRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForIssueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForIssueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -561,11 +559,11 @@ export const ListForIssueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForIssueRequest" }) as any as S.Schema<ListForIssueRequest>;
 
 export type ListForIssueResponseBodyList = Array<Reaction>;
-export const ListForIssueResponseBodyList =
+const ListForIssueResponseBodyList =
   ListForCommitCommentResponseBodyList as any as S.Schema<ListForIssueResponseBodyList>;
 
 export type ListForIssueResponse = ListForIssueResponseBodyList;
-export const ListForIssueResponse = /*@__PURE__*/ S.suspend(() =>
+const ListForIssueResponse = /*@__PURE__*/ S.suspend(() =>
   ListForIssueResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListForIssueResponse" }) as any as S.Schema<ListForIssueResponse>;
 
@@ -578,7 +576,7 @@ export type ListForIssueCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const ListForIssueCommentRequestContent = S.String;
+const ListForIssueCommentRequestContent = S.String;
 
 export interface ListForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -594,7 +592,7 @@ export interface ListForIssueCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -614,11 +612,8 @@ export const ListForIssueCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListForIssueCommentRequest>;
 
 export type ListForIssueCommentResponseBodyList = Array<Reaction>;
-export const ListForIssueCommentResponseBodyList =
-  ListForCommitCommentResponseBodyList as any as S.Schema<ListForIssueCommentResponseBodyList>;
-
 export type ListForIssueCommentResponse = ListForIssueCommentResponseBodyList;
-export const ListForIssueCommentResponse =
+const ListForIssueCommentResponse =
   ListForCommitCommentResponse as any as S.Schema<ListForIssueCommentResponse>;
 
 export type ListForPullRequestReviewCommentRequestContent =
@@ -630,7 +625,7 @@ export type ListForPullRequestReviewCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-export const ListForPullRequestReviewCommentRequestContent = S.String;
+const ListForPullRequestReviewCommentRequestContent = S.String;
 
 export interface ListForPullRequestReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -646,7 +641,7 @@ export interface ListForPullRequestReviewCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -666,16 +661,13 @@ export const ListForPullRequestReviewCommentRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListForPullRequestReviewCommentRequest>;
 
 export type ListForPullRequestReviewCommentResponseBodyList = Array<Reaction>;
-export const ListForPullRequestReviewCommentResponseBodyList =
-  ListForCommitCommentResponseBodyList as any as S.Schema<ListForPullRequestReviewCommentResponseBodyList>;
-
 export type ListForPullRequestReviewCommentResponse =
   ListForPullRequestReviewCommentResponseBodyList;
-export const ListForPullRequestReviewCommentResponse =
+const ListForPullRequestReviewCommentResponse =
   ListForCommitCommentResponse as any as S.Schema<ListForPullRequestReviewCommentResponse>;
 
 export type ListForReleaseRequestContent = "+1" | "laugh" | "heart" | "hooray" | "rocket" | "eyes";
-export const ListForReleaseRequestContent = S.String;
+const ListForReleaseRequestContent = S.String;
 
 export interface ListForReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -691,7 +683,7 @@ export interface ListForReleaseRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -709,12 +701,8 @@ export const ListForReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListForReleaseRequest" }) as any as S.Schema<ListForReleaseRequest>;
 
 export type ListForReleaseResponseBodyList = Array<Reaction>;
-export const ListForReleaseResponseBodyList =
-  ListForCommitCommentResponseBodyList as any as S.Schema<ListForReleaseResponseBodyList>;
-
 export type ListForReleaseResponse = ListForReleaseResponseBodyList;
-export const ListForReleaseResponse =
-  ListForIssueResponse as any as S.Schema<ListForReleaseResponse>;
+const ListForReleaseResponse = ListForIssueResponse as any as S.Schema<ListForReleaseResponse>;
 
 export type CreateForCommitCommentError = UnprocessableEntity | GithubOpError;
 /** Create reaction for a commit comment Create a reaction to a [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment. */

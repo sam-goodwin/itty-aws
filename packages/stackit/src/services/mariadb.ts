@@ -45,7 +45,7 @@ export interface CreateBackupRequest {
   /** Instance id */
   instanceId: string;
 }
-export const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -64,7 +64,7 @@ export interface CreateBackupResponseItem {
   id: number;
   message: string;
 }
-export const CreateBackupResponseItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBackupResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     message: S.String,
@@ -80,7 +80,7 @@ export interface CreateCredentialsRequest {
   instanceId: string;
   parameters?: unknown;
 }
-export const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -97,7 +97,7 @@ export const CreateCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCredentialsRequest" }) as any as S.Schema<CreateCredentialsRequest>;
 
 export type CredentialsHostsList = Array<string>;
-export const CredentialsHostsList = /*@__PURE__*/ S.Array(
+const CredentialsHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CredentialsHostsList>;
 
@@ -110,7 +110,7 @@ export interface Credentials {
   uri?: string;
   username: string;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     hosts: S.optional(CredentialsHostsList),
@@ -125,7 +125,7 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
 export interface RawCredentials {
   credentials: Credentials;
 }
-export const RawCredentials = /*@__PURE__*/ S.suspend(() =>
+const RawCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: Credentials,
   }),
@@ -136,7 +136,7 @@ export interface CredentialsResponse {
   raw?: RawCredentials;
   uri: string;
 }
-export const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     raw: S.optional(RawCredentials),
@@ -145,7 +145,7 @@ export const CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CredentialsResponse" }) as any as S.Schema<CredentialsResponse>;
 
 export type InstanceParametersSyslogList = Array<string>;
-export const InstanceParametersSyslogList =
+const InstanceParametersSyslogList =
   CredentialsHostsList as any as S.Schema<InstanceParametersSyslogList>;
 
 export interface InstanceParameters {
@@ -163,7 +163,7 @@ export interface InstanceParameters {
   sgw_acl?: string;
   syslog?: InstanceParametersSyslogList;
 }
-export const InstanceParameters = /*@__PURE__*/ S.suspend(() =>
+const InstanceParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enable_monitoring: S.optional(S.Boolean),
     graphite: S.optional(S.String),
@@ -185,7 +185,7 @@ export interface CreateInstanceRequest {
   parameters?: InstanceParameters;
   planId: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -205,7 +205,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateInstanceResponse {
   instanceId: string;
 }
-export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceId: S.String,
   }),
@@ -221,7 +221,7 @@ export interface DeleteCredentialsRequest {
   /** Id of the credentials being deleted */
   credentialsId: string;
 }
-export const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -238,7 +238,7 @@ export const DeleteCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCredentialsRequest" }) as any as S.Schema<DeleteCredentialsRequest>;
 
 export interface DeleteCredentialsResponse {}
-export const DeleteCredentialsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCredentialsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCredentialsResponse",
 }) as any as S.Schema<DeleteCredentialsResponse>;
 
@@ -250,7 +250,7 @@ export interface DeleteInstanceRequest {
   /** Instance id */
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -266,8 +266,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse =
-  DeleteCredentialsResponse as any as S.Schema<DeleteInstanceResponse>;
+const DeleteInstanceResponse = DeleteCredentialsResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DownloadBackupRequest {
   /** Project id on which user has permissions */
@@ -279,7 +278,7 @@ export interface DownloadBackupRequest {
   /** Backup id */
   backupId: number;
 }
-export const DownloadBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -296,8 +295,7 @@ export const DownloadBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadBackupRequest" }) as any as S.Schema<DownloadBackupRequest>;
 
 export interface DownloadBackupResponse {}
-export const DownloadBackupResponse =
-  DeleteCredentialsResponse as any as S.Schema<DownloadBackupResponse>;
+const DownloadBackupResponse = DeleteCredentialsResponse as any as S.Schema<DownloadBackupResponse>;
 
 export interface GetCredentialsRequest {
   /** Project id on which user has permissions */
@@ -309,7 +307,7 @@ export interface GetCredentialsRequest {
   /** Credentials id of credentials to fetch */
   credentialsId: string;
 }
-export const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -333,7 +331,7 @@ export interface GetInstanceRequest {
   /** Instance id */
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -349,17 +347,17 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInstanceRequest" }) as any as S.Schema<GetInstanceRequest>;
 
 export type InstanceLastOperationState = "in progress" | "succeeded" | "failed";
-export const InstanceLastOperationState = S.String;
+const InstanceLastOperationState = S.String;
 
 export type InstanceLastOperationType = "create" | "update" | "delete";
-export const InstanceLastOperationType = S.String;
+const InstanceLastOperationType = S.String;
 
 export interface InstanceLastOperation {
   description: string;
   state: InstanceLastOperationState;
   type: InstanceLastOperationType;
 }
-export const InstanceLastOperation = /*@__PURE__*/ S.suspend(() =>
+const InstanceLastOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     state: InstanceLastOperationState,
@@ -368,7 +366,7 @@ export const InstanceLastOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceLastOperation" }) as any as S.Schema<InstanceLastOperation>;
 
 export type InstanceStatus = "active" | "failed" | "stopped" | "creating" | "deleting" | "updating";
-export const InstanceStatus = S.String;
+const InstanceStatus = S.String;
 
 export interface Instance {
   cfGuid: string;
@@ -386,7 +384,7 @@ export interface Instance {
   planName: string;
   status?: InstanceStatus;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cfGuid: S.String,
     cfOrganizationGuid: S.String,
@@ -413,7 +411,7 @@ export interface GetMetricsRequest {
   /** Instance id */
   instanceId: string;
 }
-export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -453,7 +451,7 @@ export interface GetMetricsResponse {
   parachuteDiskPersistentUsedPercent: number;
   parachuteDiskPersistentUsedThreshold: number;
 }
-export const GetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuIdleTime: S.optional(S.Number),
     cpuLoadPercent: S.Number,
@@ -489,7 +487,7 @@ export interface ListBackupsRequest {
   /** Instance id */
   instanceId: string;
 }
-export const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -512,7 +510,7 @@ export interface Backup {
   status: string;
   triggered_at?: string;
 }
-export const Backup = /*@__PURE__*/ S.suspend(() =>
+const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadable: S.optional(S.Boolean),
     finished_at: S.String,
@@ -524,12 +522,10 @@ export const Backup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Backup" }) as any as S.Schema<Backup>;
 
 export type ListBackupsResponse = Array<Backup>;
-export const ListBackupsResponse = /*@__PURE__*/ S.Array(
-  Backup,
-) as any as S.Schema<ListBackupsResponse>;
+const ListBackupsResponse = /*@__PURE__*/ S.Array(Backup) as any as S.Schema<ListBackupsResponse>;
 
 export type ListBackupsResponse2 = ListBackupsResponse;
-export const ListBackupsResponse2 = /*@__PURE__*/ S.suspend(() =>
+const ListBackupsResponse2 = /*@__PURE__*/ S.suspend(() =>
   ListBackupsResponse.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListBackupsResponse2" }) as any as S.Schema<ListBackupsResponse2>;
 
@@ -541,7 +537,7 @@ export interface ListCredentialsRequest {
   /** Instance id */
   instanceId: string;
 }
-export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -559,21 +555,21 @@ export const ListCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CredentialsListItem {
   id: string;
 }
-export const CredentialsListItem = /*@__PURE__*/ S.suspend(() =>
+const CredentialsListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({ identifier: "CredentialsListItem" }) as any as S.Schema<CredentialsListItem>;
 
 export type ListCredentialsResponseCredentialsListList = Array<CredentialsListItem>;
-export const ListCredentialsResponseCredentialsListList = /*@__PURE__*/ S.Array(
+const ListCredentialsResponseCredentialsListList = /*@__PURE__*/ S.Array(
   CredentialsListItem,
 ) as any as S.Schema<ListCredentialsResponseCredentialsListList>;
 
 export interface ListCredentialsResponse {
   credentialsList: ListCredentialsResponseCredentialsListList;
 }
-export const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialsList: ListCredentialsResponseCredentialsListList,
   }),
@@ -585,7 +581,7 @@ export interface ListInstancesRequest {
   /** region in which the project resides */
   regionId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -600,14 +596,14 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 
 export type ListInstancesResponseInstancesList = Array<Instance>;
-export const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
+const ListInstancesResponseInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<ListInstancesResponseInstancesList>;
 
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
 }
-export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: ListInstancesResponseInstancesList,
   }),
@@ -619,7 +615,7 @@ export interface ListOfferingsRequest {
   /** region in which the project resides */
   regionId: string;
 }
-export const ListOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -640,7 +636,7 @@ export interface Plan {
   name: string;
   skuName: string;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     free: S.Boolean,
@@ -651,12 +647,12 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 export type OfferingPlansList = Array<Plan>;
-export const OfferingPlansList = /*@__PURE__*/ S.Array(Plan) as any as S.Schema<OfferingPlansList>;
+const OfferingPlansList = /*@__PURE__*/ S.Array(Plan) as any as S.Schema<OfferingPlansList>;
 
 export interface Schema {
   parameters: unknown;
 }
-export const Schema = /*@__PURE__*/ S.suspend(() =>
+const Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.Unknown,
   }),
@@ -666,7 +662,7 @@ export interface InstanceSchema {
   create: Schema;
   update: Schema;
 }
-export const InstanceSchema = /*@__PURE__*/ S.suspend(() =>
+const InstanceSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     create: Schema,
     update: Schema,
@@ -685,7 +681,7 @@ export interface Offering {
   schema?: InstanceSchema;
   version: string;
 }
-export const Offering = /*@__PURE__*/ S.suspend(() =>
+const Offering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     documentationUrl: S.String,
@@ -701,14 +697,14 @@ export const Offering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Offering" }) as any as S.Schema<Offering>;
 
 export type ListOfferingsResponseOfferingsList = Array<Offering>;
-export const ListOfferingsResponseOfferingsList = /*@__PURE__*/ S.Array(
+const ListOfferingsResponseOfferingsList = /*@__PURE__*/ S.Array(
   Offering,
 ) as any as S.Schema<ListOfferingsResponseOfferingsList>;
 
 export interface ListOfferingsResponse {
   offerings: ListOfferingsResponseOfferingsList;
 }
-export const ListOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerings: ListOfferingsResponseOfferingsList,
   }),
@@ -722,7 +718,7 @@ export interface ListRestoresRequest {
   /** Instance id */
   instanceId: string;
 }
-export const ListRestoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRestoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -744,7 +740,7 @@ export interface Restore {
   status: string;
   triggered_at?: string;
 }
-export const Restore = /*@__PURE__*/ S.suspend(() =>
+const Restore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup_id: S.Number,
     finished_at: S.String,
@@ -755,14 +751,14 @@ export const Restore = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Restore" }) as any as S.Schema<Restore>;
 
 export type ListRestoresResponseInstanceRestoresList = Array<Restore>;
-export const ListRestoresResponseInstanceRestoresList = /*@__PURE__*/ S.Array(
+const ListRestoresResponseInstanceRestoresList = /*@__PURE__*/ S.Array(
   Restore,
 ) as any as S.Schema<ListRestoresResponseInstanceRestoresList>;
 
 export interface ListRestoresResponse {
   instanceRestores: ListRestoresResponseInstanceRestoresList;
 }
-export const ListRestoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRestoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instanceRestores: ListRestoresResponseInstanceRestoresList,
   }),
@@ -779,7 +775,7 @@ export interface PartialUpdateInstanceRequest {
   parameters?: InstanceParameters;
   planId?: string;
 }
-export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -800,7 +796,7 @@ export const PartialUpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PartialUpdateInstanceRequest>;
 
 export interface PartialUpdateInstanceResponse {}
-export const PartialUpdateInstanceResponse =
+const PartialUpdateInstanceResponse =
   DeleteCredentialsResponse as any as S.Schema<PartialUpdateInstanceResponse>;
 
 export interface TriggerRecreateRequest {
@@ -811,7 +807,7 @@ export interface TriggerRecreateRequest {
   /** Instance id */
   instanceId: string;
 }
-export const TriggerRecreateRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRecreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -834,7 +830,7 @@ export interface TriggerRestartRequest {
   /** Instance id */
   instanceId: string;
 }
-export const TriggerRestartRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRestartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -859,7 +855,7 @@ export interface TriggerRestoreRequest {
   /** Backup id */
   backupId: number;
 }
-export const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -878,7 +874,7 @@ export const TriggerRestoreRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TriggerRestoreResponse {
   id: number;
 }
-export const TriggerRestoreResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerRestoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
   }),
@@ -893,7 +889,7 @@ export interface UpdateBackupsConfigRequest {
   instanceId: string;
   encryption_key?: string;
 }
-export const UpdateBackupsConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBackupsConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -914,7 +910,7 @@ export const UpdateBackupsConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateBackupsConfigResponse {
   message: string;
 }
-export const UpdateBackupsConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateBackupsConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
   }),

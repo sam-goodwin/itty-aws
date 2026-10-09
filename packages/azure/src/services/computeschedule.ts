@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { AzureOpError, AzureOpContext };
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -31,7 +31,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -42,11 +42,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -61,7 +61,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -73,7 +73,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -83,7 +83,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -92,7 +92,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operation ids to cancel operations on */
 export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList = Array<string>;
-export const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
+const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList>;
@@ -107,7 +107,7 @@ export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesCancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesCancelOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -127,11 +127,11 @@ export const ScheduledActionsVirtualMachinesCancelOperationsRequest = /*@__PURE_
 
 /** Type of operation performed on the resources */
 export type ResourceOperationDetailsOpType = "Unknown" | "Start" | "Deallocate" | "Hibernate";
-export const ResourceOperationDetailsOpType = S.String;
+const ResourceOperationDetailsOpType = S.String;
 
 /** Type of deadline of the operation */
 export type ResourceOperationDetailsDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
-export const ResourceOperationDetailsDeadlineType = S.String;
+const ResourceOperationDetailsDeadlineType = S.String;
 
 /** Current state of the operation */
 export type ResourceOperationDetailsState =
@@ -144,7 +144,7 @@ export type ResourceOperationDetailsState =
   | "Failed"
   | "Cancelled"
   | "Blocked";
-export const ResourceOperationDetailsState = S.String;
+const ResourceOperationDetailsState = S.String;
 
 /** These describe errors that occur at the resource level */
 export interface ResourceOperationError {
@@ -153,7 +153,7 @@ export interface ResourceOperationError {
   /** Detailed message about the error */
   errorDetails: string;
 }
-export const ResourceOperationError = /*@__PURE__*/ S.suspend(() =>
+const ResourceOperationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.String,
     errorDetails: S.String,
@@ -167,7 +167,7 @@ export interface RetryPolicy {
   /** Retry window in minutes for user request */
   retryWindowInMinutes?: number;
 }
-export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryCount: S.optional(S.Number),
     retryWindowInMinutes: S.optional(S.Number),
@@ -201,7 +201,7 @@ export interface ResourceOperationDetails {
   /** Retry policy the user can pass */
   retryPolicy?: RetryPolicy;
 }
-export const ResourceOperationDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceOperationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String,
     resourceId: S.optional(S.String),
@@ -229,7 +229,7 @@ export interface ResourceOperation {
   /** Details of the operation performed on a resource */
   operation?: ResourceOperationDetails;
 }
-export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
+const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.optional(S.String),
     errorCode: S.optional(S.String),
@@ -240,7 +240,7 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of resource operations that were successfully cancelled */
 export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
-export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
+const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
   ResourceOperation,
 ) as any as S.Schema<CancelOperationsResponseResultsList>;
 
@@ -249,7 +249,7 @@ export interface CancelOperationsResponse {
   /** An array of resource operations that were successfully cancelled */
   results: CancelOperationsResponseResultsList;
 }
-export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CancelOperationsResponseResultsList,
   }),
@@ -257,7 +257,7 @@ export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
 export type ResourceProvisionPayloadBaseProfileMap = { [key: string]: unknown | undefined };
-export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
+const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ResourceProvisionPayloadBaseProfileMap>;
@@ -265,13 +265,13 @@ export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
 export type ResourceProvisionPayloadResourceOverridesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const ResourceProvisionPayloadResourceOverridesItemMap =
+const ResourceProvisionPayloadResourceOverridesItemMap =
   ResourceProvisionPayloadBaseProfileMap as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
 
 /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
 export type ResourceProvisionPayloadResourceOverridesList =
   Array<ResourceProvisionPayloadResourceOverridesItemMap>;
-export const ResourceProvisionPayloadResourceOverridesList = /*@__PURE__*/ S.Array(
+const ResourceProvisionPayloadResourceOverridesList = /*@__PURE__*/ S.Array(
   ResourceProvisionPayloadResourceOverridesItemMap,
 ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesList>;
 
@@ -286,7 +286,7 @@ export interface ResourceProvisionPayload {
   /** if resourceOverrides doesn't contain "name", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.. */
   resourcePrefix?: string;
 }
-export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
+const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseProfile: S.optional(ResourceProvisionPayloadBaseProfileMap),
     resourceOverrides: S.optional(ResourceProvisionPayloadResourceOverridesList),
@@ -297,7 +297,7 @@ export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
 
 /** The preferences customers can select to optimize their requests to ScheduledActions */
 export type OptimizationPreference = "Cost" | "Availability" | "CostAvailabilityBalanced";
-export const OptimizationPreference = S.String;
+const OptimizationPreference = S.String;
 
 /** Extra details needed to run the user's request */
 export interface ExecutionParameters {
@@ -306,7 +306,7 @@ export interface ExecutionParameters {
   /** Retry policy the user can pass */
   retryPolicy?: RetryPolicy;
 }
-export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
+const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optimizationPreference: S.optional(OptimizationPreference),
     retryPolicy: S.optional(RetryPolicy),
@@ -325,7 +325,7 @@ export interface ScheduledActionsVirtualMachinesExecuteCreateRequest {
   /** CorrelationId item */
   correlationid?: string;
 }
-export const ScheduledActionsVirtualMachinesExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -346,7 +346,7 @@ export const ScheduledActionsVirtualMachinesExecuteCreateRequest = /*@__PURE__*/
 
 /** The results from the start request if no errors exist */
 export type CreateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const CreateResourceOperationResponseResultsList =
+const CreateResourceOperationResponseResultsList =
   CancelOperationsResponseResultsList as any as S.Schema<CreateResourceOperationResponseResultsList>;
 
 /** The response from a create request */
@@ -360,7 +360,7 @@ export interface CreateResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: CreateResourceOperationResponseResultsList;
 }
-export const CreateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     type: S.String,
@@ -373,16 +373,14 @@ export const CreateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource ids used for the request */
 export type ResourcesIdsList = Array<string>;
-export const ResourcesIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesIdsList>;
+const ResourcesIdsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ResourcesIdsList>;
 
 /** The resources needed for the user request */
 export interface Resources {
   /** The resource ids used for the request */
   ids: ResourcesIdsList;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ids: ResourcesIdsList,
   }),
@@ -400,7 +398,7 @@ export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesExecuteDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -421,9 +419,6 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest = /*@__PURE
 
 /** The results from the deallocate request if no errors exist */
 export type DeallocateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const DeallocateResourceOperationResponseResultsList =
-  CancelOperationsResponseResultsList as any as S.Schema<DeallocateResourceOperationResponseResultsList>;
-
 /** The response from a deallocate request */
 export interface DeallocateResourceOperationResponse {
   /** The description of the operation response */
@@ -435,7 +430,7 @@ export interface DeallocateResourceOperationResponse {
   /** The results from the deallocate request if no errors exist */
   results?: DeallocateResourceOperationResponseResultsList;
 }
-export const DeallocateResourceOperationResponse =
+const DeallocateResourceOperationResponse =
   CreateResourceOperationResponse as any as S.Schema<DeallocateResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
@@ -452,7 +447,7 @@ export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   /** Forced delete resource item */
   forceDeletion?: boolean;
 }
-export const ScheduledActionsVirtualMachinesExecuteDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesExecuteDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -474,9 +469,6 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteRequest = /*@__PURE__*/
 
 /** The results from the start request if no errors exist */
 export type DeleteResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const DeleteResourceOperationResponseResultsList =
-  CancelOperationsResponseResultsList as any as S.Schema<DeleteResourceOperationResponseResultsList>;
-
 /** The response from a delete request */
 export interface DeleteResourceOperationResponse {
   /** The description of the operation response */
@@ -488,7 +480,7 @@ export interface DeleteResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: DeleteResourceOperationResponseResultsList;
 }
-export const DeleteResourceOperationResponse =
+const DeleteResourceOperationResponse =
   CreateResourceOperationResponse as any as S.Schema<DeleteResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
@@ -503,7 +495,7 @@ export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesExecuteHibernateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesExecuteHibernateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -524,9 +516,6 @@ export const ScheduledActionsVirtualMachinesExecuteHibernateRequest = /*@__PURE_
 
 /** The results from the Hibernate request if no errors exist */
 export type HibernateResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const HibernateResourceOperationResponseResultsList =
-  CancelOperationsResponseResultsList as any as S.Schema<HibernateResourceOperationResponseResultsList>;
-
 /** The response from a Hibernate request */
 export interface HibernateResourceOperationResponse {
   /** The description of the operation response */
@@ -538,7 +527,7 @@ export interface HibernateResourceOperationResponse {
   /** The results from the Hibernate request if no errors exist */
   results?: HibernateResourceOperationResponseResultsList;
 }
-export const HibernateResourceOperationResponse =
+const HibernateResourceOperationResponse =
   CreateResourceOperationResponse as any as S.Schema<HibernateResourceOperationResponse>;
 
 export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
@@ -553,7 +542,7 @@ export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesExecuteStartRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesExecuteStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -574,9 +563,6 @@ export const ScheduledActionsVirtualMachinesExecuteStartRequest = /*@__PURE__*/ 
 
 /** The results from the start request if no errors exist */
 export type StartResourceOperationResponseResultsList = Array<ResourceOperation>;
-export const StartResourceOperationResponseResultsList =
-  CancelOperationsResponseResultsList as any as S.Schema<StartResourceOperationResponseResultsList>;
-
 /** The response from a start request */
 export interface StartResourceOperationResponse {
   /** The description of the operation response */
@@ -588,13 +574,13 @@ export interface StartResourceOperationResponse {
   /** The results from the start request if no errors exist */
   results?: StartResourceOperationResponseResultsList;
 }
-export const StartResourceOperationResponse =
+const StartResourceOperationResponse =
   CreateResourceOperationResponse as any as S.Schema<StartResourceOperationResponse>;
 
 /** The list of operation ids to query errors of */
 export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   Array<string>;
-export const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
+const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
 
 export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
@@ -605,20 +591,19 @@ export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The list of operation ids to query errors of */
   operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList;
 }
-export const ScheduledActionsVirtualMachinesGetOperationErrorsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
+const ScheduledActionsVirtualMachinesGetOperationErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    locationparameter: S.String.pipe(T.Label()),
+    operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationErrors",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
 ).annotate({
   identifier: "ScheduledActionsVirtualMachinesGetOperationErrorsRequest",
 }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequest>;
@@ -638,7 +623,7 @@ export interface OperationErrorDetails {
   /** The compute operationid of the Start/Deallocate/Hibernate request */
   crpOperationId?: string;
 }
-export const OperationErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const OperationErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.String,
     errorDetails: S.String,
@@ -651,7 +636,7 @@ export const OperationErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors associated with the operationid */
 export type OperationErrorsResultOperationErrorsList = Array<OperationErrorDetails>;
-export const OperationErrorsResultOperationErrorsList = /*@__PURE__*/ S.Array(
+const OperationErrorsResultOperationErrorsList = /*@__PURE__*/ S.Array(
   OperationErrorDetails,
 ) as any as S.Schema<OperationErrorsResultOperationErrorsList>;
 
@@ -672,7 +657,7 @@ export interface OperationErrorsResult {
   /** Request level error details */
   requestErrorDetails?: string;
 }
-export const OperationErrorsResult = /*@__PURE__*/ S.suspend(() =>
+const OperationErrorsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     creationTime: S.optional(S.String),
@@ -686,7 +671,7 @@ export const OperationErrorsResult = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of operationids and their corresponding errors if any */
 export type GetOperationErrorsResponseResultsList = Array<OperationErrorsResult>;
-export const GetOperationErrorsResponseResultsList = /*@__PURE__*/ S.Array(
+const GetOperationErrorsResponseResultsList = /*@__PURE__*/ S.Array(
   OperationErrorsResult,
 ) as any as S.Schema<GetOperationErrorsResponseResultsList>;
 
@@ -695,7 +680,7 @@ export interface GetOperationErrorsResponse {
   /** An array of operationids and their corresponding errors if any */
   results: GetOperationErrorsResponseResultsList;
 }
-export const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: GetOperationErrorsResponseResultsList,
   }),
@@ -706,7 +691,7 @@ export const GetOperationErrorsResponse = /*@__PURE__*/ S.suspend(() =>
 /** The list of operation ids to get the status of */
 export type ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
   Array<string>;
-export const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
+const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList =
   ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
 
 export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
@@ -719,28 +704,27 @@ export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesGetOperationStatusRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      operationIds: ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList,
-      correlationid: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
+const ScheduledActionsVirtualMachinesGetOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    locationparameter: S.String.pipe(T.Label()),
+    operationIds: ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList,
+    correlationid: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesGetOperationStatus",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
 ).annotate({
   identifier: "ScheduledActionsVirtualMachinesGetOperationStatusRequest",
 }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
 export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
-export const GetOperationStatusResponseResultsList =
+const GetOperationStatusResponseResultsList =
   CancelOperationsResponseResultsList as any as S.Schema<GetOperationStatusResponseResultsList>;
 
 /** This is the response from a get operations status request */
@@ -748,7 +732,7 @@ export interface GetOperationStatusResponse {
   /** An array of resource operations based on their operation ids */
   results: GetOperationStatusResponseResultsList;
 }
-export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: GetOperationStatusResponseResultsList,
   }),
@@ -758,7 +742,7 @@ export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
 export type ScheduleDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
-export const ScheduleDeadlineType = S.String;
+const ScheduleDeadlineType = S.String;
 
 /** The schedule details for the user request */
 export interface Schedule {
@@ -773,7 +757,7 @@ export interface Schedule {
   /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
   deadlineType: ScheduleDeadlineType | (string & {});
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deadline: S.optional(S.String),
     deadLine: S.optional(S.String),
@@ -797,7 +781,7 @@ export interface ScheduledActionsVirtualMachinesSubmitDeallocateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesSubmitDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesSubmitDeallocateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -831,7 +815,7 @@ export interface ScheduledActionsVirtualMachinesSubmitHibernateRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesSubmitHibernateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesSubmitHibernateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),
@@ -865,7 +849,7 @@ export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesSubmitStartRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduledActionsVirtualMachinesSubmitStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     locationparameter: S.String.pipe(T.Label()),

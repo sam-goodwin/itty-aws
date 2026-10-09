@@ -13,7 +13,7 @@ export interface AcceptOrganizationInvitationRequest {
   /** Invitation ID */
   invitationId: string;
 }
-export const AcceptOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -25,11 +25,11 @@ export const AcceptOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Invitation status */
 export type OrganizationInvitationStatus = "pending" | "accepted" | "declined" | "cancelled";
-export const OrganizationInvitationStatus = S.String;
+const OrganizationInvitationStatus = S.String;
 
 /** Member role */
 export type OrganizationInvitationRole = "owner" | "member";
-export const OrganizationInvitationRole = S.String;
+const OrganizationInvitationRole = S.String;
 
 export type OrganizationRolePermissionsItem =
   | "write:registries"
@@ -53,11 +53,11 @@ export type OrganizationRolePermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const OrganizationRolePermissionsItem = S.String;
+const OrganizationRolePermissionsItem = S.String;
 
 /** Roles assigned to the user */
 export type OrganizationRolePermissionsList = Array<OrganizationRolePermissionsItem>;
-export const OrganizationRolePermissionsList = /*@__PURE__*/ S.Array(
+const OrganizationRolePermissionsList = /*@__PURE__*/ S.Array(
   OrganizationRolePermissionsItem,
 ) as any as S.Schema<OrganizationRolePermissionsList>;
 
@@ -77,7 +77,7 @@ export interface OrganizationRole {
   /** Last update timestamp */
   updatedAt: string;
 }
-export const OrganizationRole = /*@__PURE__*/ S.suspend(() =>
+const OrganizationRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -91,7 +91,7 @@ export const OrganizationRole = /*@__PURE__*/ S.suspend(() =>
 
 /** Assigned roles */
 export type OrganizationInvitationAssignedRolesList = Array<OrganizationRole>;
-export const OrganizationInvitationAssignedRolesList = /*@__PURE__*/ S.Array(
+const OrganizationInvitationAssignedRolesList = /*@__PURE__*/ S.Array(
   OrganizationRole,
 ) as any as S.Schema<OrganizationInvitationAssignedRolesList>;
 
@@ -119,7 +119,7 @@ export interface OrganizationInvitation {
   /** Last update timestamp */
   updatedAt: string;
 }
-export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -141,7 +141,7 @@ export interface CancelOrganizationInvitationRequest {
   /** Invitation ID */
   invitationId: string;
 }
-export const CancelOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     invitationId: S.String.pipe(T.Label()),
@@ -157,9 +157,7 @@ export const CancelOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelOrganizationInvitationRequest>;
 
 export interface CancelOrganizationInvitationResponse {}
-export const CancelOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CancelOrganizationInvitationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOrganizationInvitationResponse",
 }) as any as S.Schema<CancelOrganizationInvitationResponse>;
 
@@ -169,7 +167,7 @@ export interface CreateOrganizationRequest {
   /** The ID of the default region for the organization */
   defaultRegionId: string;
 }
-export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     defaultRegionId: S.String,
@@ -180,11 +178,11 @@ export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Connection state of the WorkOS SCIM directory, as last reported by WorkOS (absent when no directory has ever reported in) */
 export type DirectorySyncStatus = "active" | "inactive" | "deleted";
-export const DirectorySyncStatus = S.String;
+const DirectorySyncStatus = S.String;
 
 /** Headers */
 export type OtelConfigHeadersMap = { [key: string]: string | undefined };
-export const OtelConfigHeadersMap = /*@__PURE__*/ S.Record(
+const OtelConfigHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<OtelConfigHeadersMap>;
@@ -197,7 +195,7 @@ export interface OtelConfig {
   /** Organization ID the config belongs to */
   organizationId?: string;
 }
-export const OtelConfig = /*@__PURE__*/ S.suspend(() =>
+const OtelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.String,
     headers: S.optional(S.NullOr(OtelConfigHeadersMap)),
@@ -277,7 +275,7 @@ export interface Organization {
   /** Sandbox lifecycle rate limit TTL in seconds */
   sandboxLifecycleRateLimitTtlSeconds: number | null;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -327,7 +325,7 @@ export interface OidcIdPConfig {
   /** OAuth scopes */
   scope?: string;
 }
-export const OidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
+const OidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerUrl: S.String,
     clientId: S.String,
@@ -338,16 +336,15 @@ export const OidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains used for IdP discovery on the login form and to validate the user identity returned by the IdP. Required and must be non-empty unless `allowAnyDomain` is true. */
 export type CreateOrganizationIdentityProviderRequestEmailDomainsList = Array<string>;
-export const CreateOrganizationIdentityProviderRequestEmailDomainsList = /*@__PURE__*/ S.Array(
+const CreateOrganizationIdentityProviderRequestEmailDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateOrganizationIdentityProviderRequestEmailDomainsList>;
 
 /** Organization role IDs assigned to users who join the organization via SSO through this identity provider. Roles must be global or belong to this organization. Empty (default) grants the lowest access: membership with no resource permissions. */
 export type CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList = Array<string>;
-export const CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList>;
+const CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList>;
 
 export interface CreateOrganizationIdentityProviderRequest {
   /** Organization ID */
@@ -367,7 +364,7 @@ export interface CreateOrganizationIdentityProviderRequest {
   /** Whether the identity provider is enabled */
   enabled?: boolean;
 }
-export const CreateOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     name: S.String,
@@ -398,7 +395,7 @@ export interface OidcIdPConfigResponse {
   /** OAuth scopes */
   scope?: string;
 }
-export const OidcIdPConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const OidcIdPConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerUrl: S.String,
     clientId: S.String,
@@ -408,12 +405,12 @@ export const OidcIdPConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains used for IdP discovery on the login form. May be empty when `allowAnyDomain` is true. */
 export type IdentityProviderEmailDomainsList = Array<string>;
-export const IdentityProviderEmailDomainsList =
+const IdentityProviderEmailDomainsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<IdentityProviderEmailDomainsList>;
 
 /** Organization role IDs assigned to users who join via SSO through this identity provider */
 export type IdentityProviderDefaultAssignedRoleIdsList = Array<string>;
-export const IdentityProviderDefaultAssignedRoleIdsList =
+const IdentityProviderDefaultAssignedRoleIdsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<IdentityProviderDefaultAssignedRoleIdsList>;
 
 export interface IdentityProvider {
@@ -440,7 +437,7 @@ export interface IdentityProvider {
   /** Last update timestamp */
   updatedAt: string;
 }
-export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
+const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     organizationId: S.String,
@@ -458,11 +455,11 @@ export const IdentityProvider = /*@__PURE__*/ S.suspend(() =>
 
 /** Organization member role for the invitee */
 export type CreateOrganizationInvitationRequestRole = "owner" | "member";
-export const CreateOrganizationInvitationRequestRole = S.String;
+const CreateOrganizationInvitationRequestRole = S.String;
 
 /** Array of assigned role IDs for the invitee */
 export type CreateOrganizationInvitationRequestAssignedRoleIdsList = Array<string>;
-export const CreateOrganizationInvitationRequestAssignedRoleIdsList =
+const CreateOrganizationInvitationRequestAssignedRoleIdsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<CreateOrganizationInvitationRequestAssignedRoleIdsList>;
 
 export interface CreateOrganizationInvitationRequest {
@@ -477,7 +474,7 @@ export interface CreateOrganizationInvitationRequest {
   /** Expiration date of the invitation */
   expiresAt?: string;
 }
-export const CreateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     email: S.String,
@@ -513,13 +510,11 @@ export type CreateOrganizationRoleRequestPermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const CreateOrganizationRoleRequestPermissionsItem = S.String;
-
 /** The list of permissions assigned to the role */
 export type CreateOrganizationRoleRequestPermissionsList = Array<
   CreateOrganizationRoleRequestPermissionsItem | (string & {})
 >;
-export const CreateOrganizationRoleRequestPermissionsList =
+const CreateOrganizationRoleRequestPermissionsList =
   OrganizationRolePermissionsList as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
 
 export interface CreateOrganizationRoleRequest {
@@ -532,7 +527,7 @@ export interface CreateOrganizationRoleRequest {
   /** The list of permissions assigned to the role */
   permissions: CreateOrganizationRoleRequestPermissionsList;
 }
-export const CreateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     name: S.String,
@@ -557,7 +552,7 @@ export interface CreateRegionRequest {
   /** OTel collector endpoint for sandboxes created in this region. When set, sandbox OTel data is sent to this endpoint instead of the Daytona-hosted collector and will not be available in the Daytona analytics API or dashboard. */
   otelEndpoint?: string | null;
 }
-export const CreateRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     name: S.String,
@@ -580,7 +575,7 @@ export interface CreateRegionResponse {
   /** Snapshot Manager password for the region */
   snapshotManagerPassword?: string | Redacted.Redacted<string> | null;
 }
-export const CreateRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRegionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     proxyApiKey: S.optional(S.NullOr(S.String)),
@@ -594,7 +589,7 @@ export interface DeclineOrganizationInvitationRequest {
   /** Invitation ID */
   invitationId: string;
 }
-export const DeclineOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeclineOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -605,14 +600,14 @@ export const DeclineOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeclineOrganizationInvitationRequest>;
 
 export interface DeclineOrganizationInvitationResponse {}
-export const DeclineOrganizationInvitationResponse =
+const DeclineOrganizationInvitationResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<DeclineOrganizationInvitationResponse>;
 
 export interface DeleteOrganizationRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{organizationId}", code: 200 })),
@@ -621,7 +616,7 @@ export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRequest>;
 
 export interface DeleteOrganizationResponse {}
-export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteOrganizationResponse",
 }) as any as S.Schema<DeleteOrganizationResponse>;
 
@@ -631,7 +626,7 @@ export interface DeleteOrganizationIdentityProviderRequest {
   /** Identity provider ID */
   id: string;
 }
-export const DeleteOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -647,7 +642,7 @@ export const DeleteOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteOrganizationIdentityProviderRequest>;
 
 export interface DeleteOrganizationIdentityProviderResponse {}
-export const DeleteOrganizationIdentityProviderResponse =
+const DeleteOrganizationIdentityProviderResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationIdentityProviderResponse>;
 
 export interface DeleteOrganizationMemberRequest {
@@ -656,7 +651,7 @@ export interface DeleteOrganizationMemberRequest {
   /** User ID */
   userId: string;
 }
-export const DeleteOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -668,14 +663,14 @@ export const DeleteOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationMemberRequest>;
 
 export interface DeleteOrganizationMemberResponse {}
-export const DeleteOrganizationMemberResponse =
+const DeleteOrganizationMemberResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationMemberResponse>;
 
 export interface DeleteOrganizationOtelConfigRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const DeleteOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -686,7 +681,7 @@ export const DeleteOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationOtelConfigRequest>;
 
 export interface DeleteOrganizationOtelConfigResponse {}
-export const DeleteOrganizationOtelConfigResponse =
+const DeleteOrganizationOtelConfigResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<DeleteOrganizationOtelConfigResponse>;
 
 export interface DeleteOrganizationRoleRequest {
@@ -695,7 +690,7 @@ export interface DeleteOrganizationRoleRequest {
   /** Role ID */
   roleId: string;
 }
-export const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -707,7 +702,7 @@ export const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOrganizationRoleRequest>;
 
 export interface DeleteOrganizationRoleResponse {}
-export const DeleteOrganizationRoleResponse =
+const DeleteOrganizationRoleResponse =
   DeleteOrganizationResponse as any as S.Schema<DeleteOrganizationRoleResponse>;
 
 export interface DeleteRegionRequest {
@@ -716,7 +711,7 @@ export interface DeleteRegionRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -724,12 +719,11 @@ export const DeleteRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRegionRequest" }) as any as S.Schema<DeleteRegionRequest>;
 
 export interface DeleteRegionResponse {}
-export const DeleteRegionResponse =
-  DeleteOrganizationResponse as any as S.Schema<DeleteRegionResponse>;
+const DeleteRegionResponse = DeleteOrganizationResponse as any as S.Schema<DeleteRegionResponse>;
 
 /** Which setup flow to open: sso for a single sign-on connection, dsync for SCIM directory sync */
 export type WorkosAdminPortalIntent = "sso" | "dsync";
-export const WorkosAdminPortalIntent = S.String;
+const WorkosAdminPortalIntent = S.String;
 
 export interface GenerateWorkosAdminPortalLinkRequest {
   /** Organization ID */
@@ -737,7 +731,7 @@ export interface GenerateWorkosAdminPortalLinkRequest {
   /** Which setup flow to open: sso for a single sign-on connection, dsync for SCIM directory sync */
   intent: WorkosAdminPortalIntent | (string & {});
 }
-export const GenerateWorkosAdminPortalLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateWorkosAdminPortalLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     intent: WorkosAdminPortalIntent,
@@ -756,7 +750,7 @@ export interface WorkosAdminPortalLink {
   /** Single-purpose WorkOS Admin Portal URL. Expires five minutes after issuance; open it immediately. */
   link: string;
 }
-export const WorkosAdminPortalLink = /*@__PURE__*/ S.suspend(() =>
+const WorkosAdminPortalLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.String,
   }),
@@ -766,7 +760,7 @@ export interface GetGpuCapacityRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const GetGpuCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGpuCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -782,7 +776,7 @@ export type GpuType =
   | "RTX-4090"
   | "RTX-5090"
   | "MI355X";
-export const GpuType = S.String;
+const GpuType = S.String;
 
 export interface GpuCapacity {
   gpuType: GpuType;
@@ -791,7 +785,7 @@ export interface GpuCapacity {
   /** GPU units currently free for spot placement across schedulable runners. */
   availableSpot: number;
 }
-export const GpuCapacity = /*@__PURE__*/ S.suspend(() =>
+const GpuCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gpuType: GpuType,
     availableOnDemand: S.Number,
@@ -800,7 +794,7 @@ export const GpuCapacity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GpuCapacity" }) as any as S.Schema<GpuCapacity>;
 
 export type GpuCapacityResponseCapacityList = Array<GpuCapacity>;
-export const GpuCapacityResponseCapacityList = /*@__PURE__*/ S.Array(
+const GpuCapacityResponseCapacityList = /*@__PURE__*/ S.Array(
   GpuCapacity,
 ) as any as S.Schema<GpuCapacityResponseCapacityList>;
 
@@ -809,7 +803,7 @@ export interface GpuCapacityResponse {
   observedAt: string;
   capacity: GpuCapacityResponseCapacityList;
 }
-export const GpuCapacityResponse = /*@__PURE__*/ S.suspend(() =>
+const GpuCapacityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observedAt: S.String,
     capacity: GpuCapacityResponseCapacityList,
@@ -820,7 +814,7 @@ export interface GetOrganizationRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}", code: 200 })),
@@ -832,7 +826,7 @@ export interface GetOrganizationIdentityProviderRequest {
   /** Identity provider ID */
   id: string;
 }
-export const GetOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -848,18 +842,15 @@ export const GetOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetOrganizationIdentityProviderRequest>;
 
 export interface GetOrganizationInvitationsCountForAuthenticatedUserRequest {}
-export const GetOrganizationInvitationsCountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.Http({ method: "GET", uri: "/organizations/invitations/count", code: 200 }),
-    ),
+const GetOrganizationInvitationsCountForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/organizations/invitations/count", code: 200 })),
 ).annotate({
   identifier: "GetOrganizationInvitationsCountForAuthenticatedUserRequest",
 }) as any as S.Schema<GetOrganizationInvitationsCountForAuthenticatedUserRequest>;
 
 export type GetOrganizationInvitationsCountForAuthenticatedUserResponse = number;
-export const GetOrganizationInvitationsCountForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(
-  () => S.Number.pipe(T.RawResponseRoot()),
+const GetOrganizationInvitationsCountForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOrganizationInvitationsCountForAuthenticatedUserResponse",
 }) as any as S.Schema<GetOrganizationInvitationsCountForAuthenticatedUserResponse>;
@@ -868,7 +859,7 @@ export interface GetOrganizationOtelConfigRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const GetOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}/otel-config", code: 200 })),
@@ -880,7 +871,7 @@ export interface GetOrganizationOtelConfigBySandboxAuthTokenRequest {
   /** Sandbox Auth Token */
   authToken: string;
 }
-export const GetOrganizationOtelConfigBySandboxAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationOtelConfigBySandboxAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authToken: S.String.pipe(T.Label()),
   }).pipe(
@@ -898,7 +889,7 @@ export interface GetOrganizationUsageOverviewRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const GetOrganizationUsageOverviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationUsageOverviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}/usage", code: 200 })),
@@ -907,10 +898,10 @@ export const GetOrganizationUsageOverviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationUsageOverviewRequest>;
 
 export type SandboxClass = "linux-vm" | "container" | "windows";
-export const SandboxClass = S.String;
+const SandboxClass = S.String;
 
 export type RegionUsageOverviewAllowedGpuTypesList = Array<GpuType>;
-export const RegionUsageOverviewAllowedGpuTypesList =
+const RegionUsageOverviewAllowedGpuTypesList =
   OrganizationRolePermissionsList as any as S.Schema<RegionUsageOverviewAllowedGpuTypesList>;
 
 export interface RegionUsageOverview {
@@ -936,7 +927,7 @@ export interface RegionUsageOverview {
   /** Disk maximum per requested GPU unit for GPU sandboxes. */
   maxDiskPerGpu: number | null;
 }
-export const RegionUsageOverview = /*@__PURE__*/ S.suspend(() =>
+const RegionUsageOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String,
     sandboxClass: SandboxClass,
@@ -960,7 +951,7 @@ export const RegionUsageOverview = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegionUsageOverview" }) as any as S.Schema<RegionUsageOverview>;
 
 export type OrganizationUsageOverviewRegionUsageList = Array<RegionUsageOverview>;
-export const OrganizationUsageOverviewRegionUsageList = /*@__PURE__*/ S.Array(
+const OrganizationUsageOverviewRegionUsageList = /*@__PURE__*/ S.Array(
   RegionUsageOverview,
 ) as any as S.Schema<OrganizationUsageOverviewRegionUsageList>;
 
@@ -971,7 +962,7 @@ export interface OrganizationUsageOverview {
   totalVolumeQuota: number;
   currentVolumeUsage: number;
 }
-export const OrganizationUsageOverview = /*@__PURE__*/ S.suspend(() =>
+const OrganizationUsageOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionUsage: OrganizationUsageOverviewRegionUsageList,
     totalSnapshotQuota: S.Number,
@@ -989,7 +980,7 @@ export interface GetRegionRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -998,7 +989,7 @@ export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the region */
 export type RegionType = "shared" | "dedicated" | "custom";
-export const RegionType = S.String;
+const RegionType = S.String;
 
 export interface Region {
   /** Region ID */
@@ -1022,7 +1013,7 @@ export interface Region {
   /** OTel collector endpoint for sandboxes created in this region. When set, sandbox OTel data is sent to this endpoint instead of the Daytona-hosted collector and will not be available in the Daytona analytics API or dashboard. */
   otelEndpoint?: string | null;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1041,7 +1032,7 @@ export interface GetSandboxIdentityBySandboxAuthTokenRequest {
   /** Sandbox Auth Token */
   authToken: string;
 }
-export const GetSandboxIdentityBySandboxAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxIdentityBySandboxAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authToken: S.String.pipe(T.Label()),
   }).pipe(
@@ -1061,7 +1052,7 @@ export interface SandboxIdentity {
   /** Organization ID */
   organizationId: string;
 }
-export const SandboxIdentity = /*@__PURE__*/ S.suspend(() =>
+const SandboxIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String,
     organizationId: S.String,
@@ -1072,21 +1063,21 @@ export interface LeaveOrganizationRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const LeaveOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const LeaveOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/organizations/{organizationId}/leave", code: 200 })),
 ).annotate({ identifier: "LeaveOrganizationRequest" }) as any as S.Schema<LeaveOrganizationRequest>;
 
 export interface LeaveOrganizationResponse {}
-export const LeaveOrganizationResponse =
+const LeaveOrganizationResponse =
   DeleteOrganizationResponse as any as S.Schema<LeaveOrganizationResponse>;
 
 export interface ListAvailableRegionsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ListAvailableRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
   }).pipe(T.Http({ method: "GET", uri: "/regions", code: 200 })),
@@ -1095,12 +1086,12 @@ export const ListAvailableRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableRegionsRequest>;
 
 export type ListAvailableRegionsResponseBodyList = Array<Region>;
-export const ListAvailableRegionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAvailableRegionsResponseBodyList = /*@__PURE__*/ S.Array(
   Region,
 ) as any as S.Schema<ListAvailableRegionsResponseBodyList>;
 
 export type ListAvailableRegionsResponse = ListAvailableRegionsResponseBodyList;
-export const ListAvailableRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAvailableRegionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAvailableRegionsResponse",
@@ -1110,7 +1101,7 @@ export interface ListAvailableSandboxClassesRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListAvailableSandboxClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableSandboxClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1125,7 +1116,7 @@ export const ListAvailableSandboxClassesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableSandboxClassesRequest>;
 
 export type AvailableSandboxClassAllowedGpuTypesList = Array<GpuType>;
-export const AvailableSandboxClassAllowedGpuTypesList =
+const AvailableSandboxClassAllowedGpuTypesList =
   RegionUsageOverviewAllowedGpuTypesList as any as S.Schema<AvailableSandboxClassAllowedGpuTypesList>;
 
 export interface AvailableSandboxClass {
@@ -1134,7 +1125,7 @@ export interface AvailableSandboxClass {
   gpuAvailable: boolean;
   allowedGpuTypes?: AvailableSandboxClassAllowedGpuTypesList;
 }
-export const AvailableSandboxClass = /*@__PURE__*/ S.suspend(() =>
+const AvailableSandboxClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionId: S.String,
     sandboxClass: SandboxClass,
@@ -1144,12 +1135,12 @@ export const AvailableSandboxClass = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AvailableSandboxClass" }) as any as S.Schema<AvailableSandboxClass>;
 
 export type ListAvailableSandboxClassesResponseBodyList = Array<AvailableSandboxClass>;
-export const ListAvailableSandboxClassesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAvailableSandboxClassesResponseBodyList = /*@__PURE__*/ S.Array(
   AvailableSandboxClass,
 ) as any as S.Schema<ListAvailableSandboxClassesResponseBodyList>;
 
 export type ListAvailableSandboxClassesResponse = ListAvailableSandboxClassesResponseBodyList;
-export const ListAvailableSandboxClassesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAvailableSandboxClassesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAvailableSandboxClassesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAvailableSandboxClassesResponse",
@@ -1159,7 +1150,7 @@ export interface ListOrganizationIdentityProvidersRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListOrganizationIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationIdentityProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1170,13 +1161,13 @@ export const ListOrganizationIdentityProvidersRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationIdentityProvidersRequest>;
 
 export type ListOrganizationIdentityProvidersResponseBodyList = Array<IdentityProvider>;
-export const ListOrganizationIdentityProvidersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationIdentityProvidersResponseBodyList = /*@__PURE__*/ S.Array(
   IdentityProvider,
 ) as any as S.Schema<ListOrganizationIdentityProvidersResponseBodyList>;
 
 export type ListOrganizationIdentityProvidersResponse =
   ListOrganizationIdentityProvidersResponseBodyList;
-export const ListOrganizationIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationIdentityProvidersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationIdentityProvidersResponse",
@@ -1186,7 +1177,7 @@ export interface ListOrganizationInvitationsRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}/invitations", code: 200 })),
@@ -1195,19 +1186,19 @@ export const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitationsRequest>;
 
 export type ListOrganizationInvitationsResponseBodyList = Array<OrganizationInvitation>;
-export const ListOrganizationInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationInvitation,
 ) as any as S.Schema<ListOrganizationInvitationsResponseBodyList>;
 
 export type ListOrganizationInvitationsResponse = ListOrganizationInvitationsResponseBodyList;
-export const ListOrganizationInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationInvitationsResponse",
 }) as any as S.Schema<ListOrganizationInvitationsResponse>;
 
 export interface ListOrganizationInvitationsForAuthenticatedUserRequest {}
-export const ListOrganizationInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationInvitationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/organizations/invitations", code: 200 })),
 ).annotate({
   identifier: "ListOrganizationInvitationsForAuthenticatedUserRequest",
@@ -1215,14 +1206,13 @@ export const ListOrganizationInvitationsForAuthenticatedUserRequest = /*@__PURE_
 
 export type ListOrganizationInvitationsForAuthenticatedUserResponseBodyList =
   Array<OrganizationInvitation>;
-export const ListOrganizationInvitationsForAuthenticatedUserResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    OrganizationInvitation,
-  ) as any as S.Schema<ListOrganizationInvitationsForAuthenticatedUserResponseBodyList>;
+const ListOrganizationInvitationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+  OrganizationInvitation,
+) as any as S.Schema<ListOrganizationInvitationsForAuthenticatedUserResponseBodyList>;
 
 export type ListOrganizationInvitationsForAuthenticatedUserResponse =
   ListOrganizationInvitationsForAuthenticatedUserResponseBodyList;
-export const ListOrganizationInvitationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationInvitationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationInvitationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationInvitationsForAuthenticatedUserResponse",
@@ -1232,7 +1222,7 @@ export interface ListOrganizationMembersRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}/users", code: 200 })),
@@ -1242,11 +1232,11 @@ export const ListOrganizationMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Member role */
 export type OrganizationUserRole = "owner" | "member";
-export const OrganizationUserRole = S.String;
+const OrganizationUserRole = S.String;
 
 /** Roles assigned to the user */
 export type OrganizationUserAssignedRolesList = Array<OrganizationRole>;
-export const OrganizationUserAssignedRolesList =
+const OrganizationUserAssignedRolesList =
   OrganizationInvitationAssignedRolesList as any as S.Schema<OrganizationUserAssignedRolesList>;
 
 export interface OrganizationUser {
@@ -1267,7 +1257,7 @@ export interface OrganizationUser {
   /** Last update timestamp */
   updatedAt: string;
 }
-export const OrganizationUser = /*@__PURE__*/ S.suspend(() =>
+const OrganizationUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String,
     organizationId: S.String,
@@ -1281,12 +1271,12 @@ export const OrganizationUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationUser" }) as any as S.Schema<OrganizationUser>;
 
 export type ListOrganizationMembersResponseBodyList = Array<OrganizationUser>;
-export const ListOrganizationMembersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationMembersResponseBodyList = /*@__PURE__*/ S.Array(
   OrganizationUser,
 ) as any as S.Schema<ListOrganizationMembersResponseBodyList>;
 
 export type ListOrganizationMembersResponse = ListOrganizationMembersResponseBodyList;
-export const ListOrganizationMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationMembersResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationMembersResponse",
@@ -1296,7 +1286,7 @@ export interface ListOrganizationRolesRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organizations/{organizationId}/roles", code: 200 })),
@@ -1305,28 +1295,28 @@ export const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationRolesRequest>;
 
 export type ListOrganizationRolesResponseBodyList = Array<OrganizationRole>;
-export const ListOrganizationRolesResponseBodyList =
+const ListOrganizationRolesResponseBodyList =
   OrganizationInvitationAssignedRolesList as any as S.Schema<ListOrganizationRolesResponseBodyList>;
 
 export type ListOrganizationRolesResponse = ListOrganizationRolesResponseBodyList;
-export const ListOrganizationRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationRolesResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationRolesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationRolesResponse",
 }) as any as S.Schema<ListOrganizationRolesResponse>;
 
 export interface ListOrganizationsRequest {}
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type ListOrganizationsResponseBodyList = Array<Organization>;
-export const ListOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListOrganizationsResponseBodyList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<ListOrganizationsResponseBodyList>;
 
 export type ListOrganizationsResponse = ListOrganizationsResponseBodyList;
-export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListOrganizationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListOrganizationsResponse",
@@ -1336,7 +1326,7 @@ export interface ListWorkosSsoConnectionsRequest {
   /** Organization ID */
   organizationId: string;
 }
-export const ListWorkosSsoConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkosSsoConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1352,7 +1342,7 @@ export const ListWorkosSsoConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains routed to this connection */
 export type WorkosSsoConnectionDomainsList = Array<string>;
-export const WorkosSsoConnectionDomainsList =
+const WorkosSsoConnectionDomainsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<WorkosSsoConnectionDomainsList>;
 
 export interface WorkosSsoConnection {
@@ -1371,7 +1361,7 @@ export interface WorkosSsoConnection {
   /** When the connection was last changed in WorkOS */
   updatedAt: string;
 }
-export const WorkosSsoConnection = /*@__PURE__*/ S.suspend(() =>
+const WorkosSsoConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1384,12 +1374,12 @@ export const WorkosSsoConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkosSsoConnection" }) as any as S.Schema<WorkosSsoConnection>;
 
 export type ListWorkosSsoConnectionsResponseBodyList = Array<WorkosSsoConnection>;
-export const ListWorkosSsoConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListWorkosSsoConnectionsResponseBodyList = /*@__PURE__*/ S.Array(
   WorkosSsoConnection,
 ) as any as S.Schema<ListWorkosSsoConnectionsResponseBodyList>;
 
 export type ListWorkosSsoConnectionsResponse = ListWorkosSsoConnectionsResponseBodyList;
-export const ListWorkosSsoConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkosSsoConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListWorkosSsoConnectionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWorkosSsoConnectionsResponse",
@@ -1401,7 +1391,7 @@ export interface RegenerateProxyApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const RegenerateProxyApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateProxyApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -1414,7 +1404,7 @@ export interface RegenerateApiKeyResponse {
   /** The newly generated API key */
   apiKey: string | Redacted.Redacted<string>;
 }
-export const RegenerateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RegenerateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.String.pipe(T.SensitiveValue({})),
   }),
@@ -1426,7 +1416,7 @@ export interface RegenerateSnapshotManagerCredentialsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const RegenerateSnapshotManagerCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateSnapshotManagerCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -1447,7 +1437,7 @@ export interface SnapshotManagerCredentials {
   /** Snapshot Manager password for the region */
   password: string | Redacted.Redacted<string>;
 }
-export const SnapshotManagerCredentials = /*@__PURE__*/ S.suspend(() =>
+const SnapshotManagerCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -1462,7 +1452,7 @@ export interface RegenerateSshGatewayApiKeyRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const RegenerateSshGatewayApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegenerateSshGatewayApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -1479,7 +1469,7 @@ export interface SetOrganizationDefaultRegionRequest {
   /** The ID of the default region for the organization */
   defaultRegionId: string;
 }
-export const SetOrganizationDefaultRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetOrganizationDefaultRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     defaultRegionId: S.String,
@@ -1491,7 +1481,7 @@ export const SetOrganizationDefaultRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetOrganizationDefaultRegionRequest>;
 
 export interface SetOrganizationDefaultRegionResponse {}
-export const SetOrganizationDefaultRegionResponse =
+const SetOrganizationDefaultRegionResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<SetOrganizationDefaultRegionResponse>;
 
 export interface TestOrganizationIdentityProviderConnectionRequest {
@@ -1500,7 +1490,7 @@ export interface TestOrganizationIdentityProviderConnectionRequest {
   /** OIDC Issuer URL to test */
   issuerUrl: string;
 }
-export const TestOrganizationIdentityProviderConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const TestOrganizationIdentityProviderConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     issuerUrl: S.String,
@@ -1523,7 +1513,7 @@ export interface TestIdentityProviderConnectionResponse {
   /** Error message if the connection test failed */
   error?: string;
 }
-export const TestIdentityProviderConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const TestIdentityProviderConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     issuer: S.optional(S.String),
@@ -1535,11 +1525,11 @@ export const TestIdentityProviderConnectionResponse = /*@__PURE__*/ S.suspend(()
 
 /** Organization member role */
 export type UpdateAccessForOrganizationMemberRequestRole = "owner" | "member";
-export const UpdateAccessForOrganizationMemberRequestRole = S.String;
+const UpdateAccessForOrganizationMemberRequestRole = S.String;
 
 /** Array of assigned role IDs */
 export type UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList = Array<string>;
-export const UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList =
+const UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList>;
 
 export interface UpdateAccessForOrganizationMemberRequest {
@@ -1552,7 +1542,7 @@ export interface UpdateAccessForOrganizationMemberRequest {
   /** Array of assigned role IDs */
   assignedRoleIds: UpdateAccessForOrganizationMemberRequestAssignedRoleIdsList;
 }
-export const UpdateAccessForOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessForOrganizationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -1570,7 +1560,7 @@ export const UpdateAccessForOrganizationMemberRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateAccessForOrganizationMemberRequest>;
 
 export type UpdateExperimentalConfigRequestBodyMap = { [key: string]: unknown | undefined };
-export const UpdateExperimentalConfigRequestBodyMap = /*@__PURE__*/ S.Record(
+const UpdateExperimentalConfigRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UpdateExperimentalConfigRequestBodyMap>;
@@ -1580,7 +1570,7 @@ export interface UpdateExperimentalConfigRequest {
   organizationId: string;
   body?: UpdateExperimentalConfigRequestBodyMap;
 }
-export const UpdateExperimentalConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentalConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     body: S.optional(UpdateExperimentalConfigRequestBodyMap.pipe(T.HttpBody())),
@@ -1596,7 +1586,7 @@ export const UpdateExperimentalConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateExperimentalConfigRequest>;
 
 export interface UpdateExperimentalConfigResponse {}
-export const UpdateExperimentalConfigResponse =
+const UpdateExperimentalConfigResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<UpdateExperimentalConfigResponse>;
 
 export interface UpdateOrganizationDefaultQueueTimeoutRequest {
@@ -1605,7 +1595,7 @@ export interface UpdateOrganizationDefaultQueueTimeoutRequest {
   /** Default minutes to wait for runner assignment before cancelling sandbox creation. Null disables the default. A number must be a positive integer. */
   defaultQueueTimeout: number | null;
 }
-export const UpdateOrganizationDefaultQueueTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationDefaultQueueTimeoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     defaultQueueTimeout: S.NullOr(S.Number),
@@ -1621,7 +1611,7 @@ export const UpdateOrganizationDefaultQueueTimeoutRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<UpdateOrganizationDefaultQueueTimeoutRequest>;
 
 export interface UpdateOrganizationDefaultQueueTimeoutResponse {}
-export const UpdateOrganizationDefaultQueueTimeoutResponse =
+const UpdateOrganizationDefaultQueueTimeoutResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<UpdateOrganizationDefaultQueueTimeoutResponse>;
 
 export interface UpdateOidcIdPConfig {
@@ -1634,7 +1624,7 @@ export interface UpdateOidcIdPConfig {
   /** OAuth scopes */
   scope?: string;
 }
-export const UpdateOidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateOidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuerUrl: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1645,12 +1635,12 @@ export const UpdateOidcIdPConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains used for IdP discovery on the login form and to validate the user identity returned by the IdP. If provided and `allowAnyDomain` is not being set to true, must contain at least one domain. To clear domains in the same request, set `allowAnyDomain: true` and `emailDomains: []`. */
 export type UpdateOrganizationIdentityProviderRequestEmailDomainsList = Array<string>;
-export const UpdateOrganizationIdentityProviderRequestEmailDomainsList =
+const UpdateOrganizationIdentityProviderRequestEmailDomainsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateOrganizationIdentityProviderRequestEmailDomainsList>;
 
 /** Organization role IDs assigned to users who join the organization via SSO through this identity provider. Roles must be global or belong to this organization. Empty grants the lowest access: membership with no resource permissions. */
 export type UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList = Array<string>;
-export const UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList =
+const UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList =
   CreateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList as any as S.Schema<UpdateOrganizationIdentityProviderRequestDefaultAssignedRoleIdsList>;
 
 export interface UpdateOrganizationIdentityProviderRequest {
@@ -1673,7 +1663,7 @@ export interface UpdateOrganizationIdentityProviderRequest {
   /** Whether the identity provider is enabled */
   enabled?: boolean;
 }
-export const UpdateOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1699,11 +1689,11 @@ export const UpdateOrganizationIdentityProviderRequest = /*@__PURE__*/ S.suspend
 
 /** Organization member role */
 export type UpdateOrganizationInvitationRequestRole = "owner" | "member";
-export const UpdateOrganizationInvitationRequestRole = S.String;
+const UpdateOrganizationInvitationRequestRole = S.String;
 
 /** Array of role IDs */
 export type UpdateOrganizationInvitationRequestAssignedRoleIdsList = Array<string>;
-export const UpdateOrganizationInvitationRequestAssignedRoleIdsList =
+const UpdateOrganizationInvitationRequestAssignedRoleIdsList =
   CreateOrganizationIdentityProviderRequestEmailDomainsList as any as S.Schema<UpdateOrganizationInvitationRequestAssignedRoleIdsList>;
 
 export interface UpdateOrganizationInvitationRequest {
@@ -1718,7 +1708,7 @@ export interface UpdateOrganizationInvitationRequest {
   /** Expiration date of the invitation */
   expiresAt?: string;
 }
-export const UpdateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     invitationId: S.String.pipe(T.Label()),
@@ -1738,7 +1728,7 @@ export const UpdateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Headers */
 export type UpdateOrganizationOtelConfigRequestHeadersMap = { [key: string]: string | undefined };
-export const UpdateOrganizationOtelConfigRequestHeadersMap =
+const UpdateOrganizationOtelConfigRequestHeadersMap =
   OtelConfigHeadersMap as any as S.Schema<UpdateOrganizationOtelConfigRequestHeadersMap>;
 
 export interface UpdateOrganizationOtelConfigRequest {
@@ -1749,7 +1739,7 @@ export interface UpdateOrganizationOtelConfigRequest {
   /** Headers */
   headers?: UpdateOrganizationOtelConfigRequestHeadersMap | null;
 }
-export const UpdateOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     endpoint: S.String,
@@ -1760,7 +1750,7 @@ export const UpdateOrganizationOtelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrganizationOtelConfigRequest>;
 
 export interface UpdateOrganizationOtelConfigResponse {}
-export const UpdateOrganizationOtelConfigResponse =
+const UpdateOrganizationOtelConfigResponse =
   CancelOrganizationInvitationResponse as any as S.Schema<UpdateOrganizationOtelConfigResponse>;
 
 export type UpdateOrganizationRoleRequestPermissionsItem =
@@ -1785,13 +1775,11 @@ export type UpdateOrganizationRoleRequestPermissionsItem =
   | "manage:sso"
   | "read:billing"
   | "manage:billing";
-export const UpdateOrganizationRoleRequestPermissionsItem = S.String;
-
 /** The list of permissions assigned to the role */
 export type UpdateOrganizationRoleRequestPermissionsList = Array<
   UpdateOrganizationRoleRequestPermissionsItem | (string & {})
 >;
-export const UpdateOrganizationRoleRequestPermissionsList =
+const UpdateOrganizationRoleRequestPermissionsList =
   OrganizationRolePermissionsList as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
 
 export interface UpdateOrganizationRoleRequest {
@@ -1806,7 +1794,7 @@ export interface UpdateOrganizationRoleRequest {
   /** The list of permissions assigned to the role */
   permissions: UpdateOrganizationRoleRequestPermissionsList;
 }
-export const UpdateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label()),
     roleId: S.String.pipe(T.Label()),
@@ -1834,7 +1822,7 @@ export interface UpdateRegionRequest {
   /** OTel collector endpoint for sandboxes created in this region. When set, sandbox OTel data is sent to this endpoint instead of the Daytona-hosted collector and will not be available in the Daytona analytics API or dashboard. */
   otelEndpoint?: string | null;
 }
-export const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -1846,8 +1834,7 @@ export const UpdateRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRegionRequest" }) as any as S.Schema<UpdateRegionRequest>;
 
 export interface UpdateRegionResponse {}
-export const UpdateRegionResponse =
-  DeleteOrganizationResponse as any as S.Schema<UpdateRegionResponse>;
+const UpdateRegionResponse = DeleteOrganizationResponse as any as S.Schema<UpdateRegionResponse>;
 
 export type AcceptOrganizationInvitationError = DaytonaOpError;
 /** Accept organization invitation */

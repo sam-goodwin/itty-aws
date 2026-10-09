@@ -98,22 +98,22 @@ export type CreateApiKeyRequestApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-export const CreateApiKeyRequestApiVersionDate = S.String;
+const CreateApiKeyRequestApiVersionDate = S.String;
 
 /** IPv4/IPv6 CIDR ranges allowed to use this key, for example `["203.0.113.0/24"]`. Empty or `null` allows any IP. */
 export type CreateApiKeyRequestIpAllowlistList = Array<string>;
-export const CreateApiKeyRequestIpAllowlistList = /*@__PURE__*/ S.Array(
+const CreateApiKeyRequestIpAllowlistList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateApiKeyRequestIpAllowlistList>;
 
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type CreateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
-export const CreateApiKeyRequestPermissionsStatementsItemActionsList =
+const CreateApiKeyRequestPermissionsStatementsItemActionsList =
   CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemActionsList>;
 
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
 export type CreateApiKeyRequestPermissionsStatementsItemResourcesList = Array<string>;
-export const CreateApiKeyRequestPermissionsStatementsItemResourcesList =
+const CreateApiKeyRequestPermissionsStatementsItemResourcesList =
   CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemResourcesList>;
 
 export interface CreateApiKeyRequestPermissionsStatementsItem {
@@ -124,7 +124,7 @@ export interface CreateApiKeyRequestPermissionsStatementsItem {
   /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
   resources?: CreateApiKeyRequestPermissionsStatementsItemResourcesList;
 }
-export const CreateApiKeyRequestPermissionsStatementsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequestPermissionsStatementsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: CreateApiKeyRequestPermissionsStatementsItemActionsList,
     grant: S.Boolean,
@@ -137,7 +137,7 @@ export const CreateApiKeyRequestPermissionsStatementsItem = /*@__PURE__*/ S.susp
 /** Explicit permission statements. Required unless `system_role` is set. */
 export type CreateApiKeyRequestPermissionsStatementsList =
   Array<CreateApiKeyRequestPermissionsStatementsItem>;
-export const CreateApiKeyRequestPermissionsStatementsList = /*@__PURE__*/ S.Array(
+const CreateApiKeyRequestPermissionsStatementsList = /*@__PURE__*/ S.Array(
   CreateApiKeyRequestPermissionsStatementsItem,
 ) as any as S.Schema<CreateApiKeyRequestPermissionsStatementsList>;
 
@@ -148,7 +148,7 @@ export type CreateApiKeyRequestPermissionsSystemRole =
   | "moderator"
   | "sales_manager"
   | "advertiser";
-export const CreateApiKeyRequestPermissionsSystemRole = S.String;
+const CreateApiKeyRequestPermissionsSystemRole = S.String;
 
 /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
 export interface CreateApiKeyRequestPermissions {
@@ -157,7 +157,7 @@ export interface CreateApiKeyRequestPermissions {
   /** A system role to inherit permissions from. Only Account API keys can use a system role. */
   system_role?: CreateApiKeyRequestPermissionsSystemRole | (string & {}) | null;
 }
-export const CreateApiKeyRequestPermissions = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(CreateApiKeyRequestPermissionsStatementsList),
     system_role: S.optional(S.NullOr(CreateApiKeyRequestPermissionsSystemRole)),
@@ -168,7 +168,7 @@ export const CreateApiKeyRequestPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of resource that will own this API key. */
 export type CreateApiKeyRequestResourceType = "account" | "app";
-export const CreateApiKeyRequestResourceType = S.String;
+const CreateApiKeyRequestResourceType = S.String;
 
 export interface CreateApiKeyRequest {
   /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. New keys default to the latest version. */
@@ -188,7 +188,7 @@ export interface CreateApiKeyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_version_date: S.optional(CreateApiKeyRequestApiVersionDate),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -253,7 +253,7 @@ export type ApiKeyApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-export const ApiKeyApiVersionDate = S.String;
+const ApiKeyApiVersionDate = S.String;
 
 export interface ApiKeyGrantAction {
   /** The permission action's identifier, for example `company:basic:read`. */
@@ -261,7 +261,7 @@ export interface ApiKeyGrantAction {
   /** Whether the key holds the action on the grant's resource. */
   granted: boolean;
 }
-export const ApiKeyGrantAction = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyGrantAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     granted: S.Boolean,
@@ -269,7 +269,7 @@ export const ApiKeyGrantAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKeyGrantAction" }) as any as S.Schema<ApiKeyGrantAction>;
 
 export type ApiKeyGrantActionsList = Array<ApiKeyGrantAction>;
-export const ApiKeyGrantActionsList = /*@__PURE__*/ S.Array(
+const ApiKeyGrantActionsList = /*@__PURE__*/ S.Array(
   ApiKeyGrantAction,
 ) as any as S.Schema<ApiKeyGrantActionsList>;
 
@@ -280,7 +280,7 @@ export interface ApiKeyGrant {
   /** The type of resource the actions apply to, such as `account`, `product`, or `app`. */
   resource_type: string;
 }
-export const ApiKeyGrant = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: ApiKeyGrantActionsList,
     resource_id: S.String,
@@ -289,17 +289,15 @@ export const ApiKeyGrant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKeyGrant" }) as any as S.Schema<ApiKeyGrant>;
 
 export type ApiKeyGrantsList = Array<ApiKeyGrant>;
-export const ApiKeyGrantsList = /*@__PURE__*/ S.Array(
-  ApiKeyGrant,
-) as any as S.Schema<ApiKeyGrantsList>;
+const ApiKeyGrantsList = /*@__PURE__*/ S.Array(ApiKeyGrant) as any as S.Schema<ApiKeyGrantsList>;
 
 export type ApiKeyIpAllowlistList = Array<string>;
-export const ApiKeyIpAllowlistList =
+const ApiKeyIpAllowlistList =
   CreateApiKeyRequestIpAllowlistList as any as S.Schema<ApiKeyIpAllowlistList>;
 
 /** System role the key inherits its permissions from, or `null` when it uses an explicit permissions policy. Only account API keys can use a system role. */
 export type ApiKeySystemRole = "owner" | "admin" | "moderator" | "sales_manager" | "advertiser";
-export const ApiKeySystemRole = S.String;
+const ApiKeySystemRole = S.String;
 
 export interface ApiKey {
   /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. */
@@ -325,7 +323,7 @@ export interface ApiKey {
   /** When the API key was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
+const ApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_version_date: ApiKeyApiVersionDate,
     created_at: S.String,
@@ -346,7 +344,7 @@ export interface DeleteApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
 }
-export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api_keys/{id}", code: 200 })),
@@ -358,7 +356,7 @@ export interface DeleteApiKeyResponse {
   /** The ID of the revoked key. */
   id: string;
 }
-export const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -369,14 +367,14 @@ export interface GetApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
 }
-export const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api_keys/{id}", code: 200 })),
 ).annotate({ identifier: "GetApiKeyRequest" }) as any as S.Schema<GetApiKeyRequest>;
 
 export interface ListApiKeyPermissionsRequest {}
-export const ListApiKeyPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeyPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api_keys/permissions", code: 200 })),
 ).annotate({
   identifier: "ListApiKeyPermissionsRequest",
@@ -390,10 +388,10 @@ export type PermissionGrantedToSystemRolesItem =
   | "sales_manager"
   | "advertiser"
   | "partner";
-export const PermissionGrantedToSystemRolesItem = S.String;
+const PermissionGrantedToSystemRolesItem = S.String;
 
 export type PermissionGrantedToSystemRolesList = Array<PermissionGrantedToSystemRolesItem>;
-export const PermissionGrantedToSystemRolesList = /*@__PURE__*/ S.Array(
+const PermissionGrantedToSystemRolesList = /*@__PURE__*/ S.Array(
   PermissionGrantedToSystemRolesItem,
 ) as any as S.Schema<PermissionGrantedToSystemRolesList>;
 
@@ -414,7 +412,7 @@ export interface Permission {
   /** Human-readable name of the action. */
   name: string;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     allowed_on_api_key: S.Boolean,
@@ -428,7 +426,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type ListApiKeyPermissionsResponseDataList = Array<Permission>;
-export const ListApiKeyPermissionsResponseDataList = /*@__PURE__*/ S.Array(
+const ListApiKeyPermissionsResponseDataList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<ListApiKeyPermissionsResponseDataList>;
 
@@ -438,7 +436,7 @@ export interface ListApiKeyPermissionsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListApiKeyPermissionsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeyPermissionsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -453,7 +451,7 @@ export interface ListApiKeyPermissionsResponse {
   data: ListApiKeyPermissionsResponseDataList;
   page_info: ListApiKeyPermissionsResponsePageInfo;
 }
-export const ListApiKeyPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeyPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListApiKeyPermissionsResponseDataList,
     page_info: ListApiKeyPermissionsResponsePageInfo,
@@ -463,13 +461,13 @@ export const ListApiKeyPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListApiKeyPermissionsResponse>;
 
 export type ListApiKeysRequestResourceType = "account" | "app";
-export const ListApiKeysRequestResourceType = S.String;
+const ListApiKeysRequestResourceType = S.String;
 
 export type ListApiKeysRequestOrder = "created_at";
-export const ListApiKeysRequestOrder = S.String;
+const ListApiKeysRequestOrder = S.String;
 
 export type ListApiKeysRequestDirection = "asc" | "desc";
-export const ListApiKeysRequestDirection = S.String;
+const ListApiKeysRequestDirection = S.String;
 
 export interface ListApiKeysRequest {
   /** The account (`biz_`) or app (`app_`) tag to list API keys for. */
@@ -493,7 +491,7 @@ export interface ListApiKeysRequest {
   /** Sort direction. */
   direction?: ListApiKeysRequestDirection | (string & {});
 }
-export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource_id: S.String.pipe(T.Query()),
     resource_type: ListApiKeysRequestResourceType.pipe(T.Query()),
@@ -509,18 +507,16 @@ export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListApiKeysRequest" }) as any as S.Schema<ListApiKeysRequest>;
 
 export type ListApiKeysResponseDataList = Array<ApiKey>;
-export const ListApiKeysResponseDataList = /*@__PURE__*/ S.Array(
+const ListApiKeysResponseDataList = /*@__PURE__*/ S.Array(
   ApiKey,
 ) as any as S.Schema<ListApiKeysResponseDataList>;
 
 export type ListApiKeysResponsePageInfo = ListApiKeyPermissionsResponsePageInfo;
-export const ListApiKeysResponsePageInfo = ListApiKeyPermissionsResponsePageInfo;
-
 export interface ListApiKeysResponse {
   data: ListApiKeysResponseDataList;
   page_info: ListApiKeyPermissionsResponsePageInfo;
 }
-export const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListApiKeysResponseDataList,
     page_info: ListApiKeyPermissionsResponsePageInfo,
@@ -533,7 +529,7 @@ export interface RotateApiKeyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RotateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -592,23 +588,17 @@ export type UpdateApiKeyRequestApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-export const UpdateApiKeyRequestApiVersionDate = S.String;
+const UpdateApiKeyRequestApiVersionDate = S.String;
 
 /** IPv4/IPv6 CIDR ranges allowed to use this key, for example `["203.0.113.0/24"]`. Empty or `null` allows any IP. */
 export type UpdateApiKeyRequestIpAllowlistList = Array<string>;
-export const UpdateApiKeyRequestIpAllowlistList =
+const UpdateApiKeyRequestIpAllowlistList =
   CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestIpAllowlistList>;
 
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type UpdateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
-export const UpdateApiKeyRequestPermissionsStatementsItemActionsList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemActionsList>;
-
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
 export type UpdateApiKeyRequestPermissionsStatementsItemResourcesList = Array<string>;
-export const UpdateApiKeyRequestPermissionsStatementsItemResourcesList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItemResourcesList>;
-
 export interface UpdateApiKeyRequestPermissionsStatementsItem {
   /** Permission actions covered by this statement, for example `company:basic:read`. */
   actions: UpdateApiKeyRequestPermissionsStatementsItemActionsList;
@@ -617,13 +607,10 @@ export interface UpdateApiKeyRequestPermissionsStatementsItem {
   /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
   resources?: UpdateApiKeyRequestPermissionsStatementsItemResourcesList;
 }
-export const UpdateApiKeyRequestPermissionsStatementsItem =
-  CreateApiKeyRequestPermissionsStatementsItem as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsItem>;
-
 /** Explicit permission statements. Required unless `system_role` is set. */
 export type UpdateApiKeyRequestPermissionsStatementsList =
   Array<UpdateApiKeyRequestPermissionsStatementsItem>;
-export const UpdateApiKeyRequestPermissionsStatementsList =
+const UpdateApiKeyRequestPermissionsStatementsList =
   CreateApiKeyRequestPermissionsStatementsList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsList>;
 
 /** A system role to inherit permissions from. Only Account API keys can use a system role. */
@@ -633,7 +620,7 @@ export type UpdateApiKeyRequestPermissionsSystemRole =
   | "moderator"
   | "sales_manager"
   | "advertiser";
-export const UpdateApiKeyRequestPermissionsSystemRole = S.String;
+const UpdateApiKeyRequestPermissionsSystemRole = S.String;
 
 /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
 export interface UpdateApiKeyRequestPermissions {
@@ -642,7 +629,7 @@ export interface UpdateApiKeyRequestPermissions {
   /** A system role to inherit permissions from. Only Account API keys can use a system role. */
   system_role?: UpdateApiKeyRequestPermissionsSystemRole | (string & {}) | null;
 }
-export const UpdateApiKeyRequestPermissions = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiKeyRequestPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(UpdateApiKeyRequestPermissionsStatementsList),
     system_role: S.optional(S.NullOr(UpdateApiKeyRequestPermissionsSystemRole)),
@@ -665,7 +652,7 @@ export interface UpdateApiKeyRequest {
   /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
   permissions?: UpdateApiKeyRequestPermissions;
 }
-export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     api_version_date: S.optional(UpdateApiKeyRequestApiVersionDate),

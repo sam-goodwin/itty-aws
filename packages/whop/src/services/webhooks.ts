@@ -140,11 +140,11 @@ export type CreateWebhookRequestEventsItem =
   | "refund.updated"
   | "dispute_alert.created"
   | "membership.cancel_at_period_end_changed";
-export const CreateWebhookRequestEventsItem = S.String;
+const CreateWebhookRequestEventsItem = S.String;
 
 /** The events to send the webhook for, in dot form (for example `payment.succeeded`). */
 export type CreateWebhookRequestEventsList = Array<CreateWebhookRequestEventsItem | (string & {})>;
-export const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+const CreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   CreateWebhookRequestEventsItem,
 ) as any as S.Schema<CreateWebhookRequestEventsList>;
 
@@ -164,7 +164,7 @@ export interface CreateWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_version_date: S.optional(S.NullOr(S.String)),
     child_resource_events: S.optional(S.Boolean),
@@ -178,11 +178,11 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The API version used to format payloads sent to this webhook endpoint. */
 export type WebhookApiVersion = "v1" | "v2" | "v5";
-export const WebhookApiVersion = S.String;
+const WebhookApiVersion = S.String;
 
 /** Why Whop disabled this webhook. `delivery_failures` means every delivery failed for 3 days straight. `null` when `disabled_at` is `null`. */
 export type WebhookDisabledReason = "delivery_failures";
-export const WebhookDisabledReason = S.String;
+const WebhookDisabledReason = S.String;
 
 /** Event types this webhook is subscribed to, in dot form (for example `payment.succeeded`). */
 export type WebhookEventsItem =
@@ -289,11 +289,8 @@ export type WebhookEventsItem =
   | "app_payment.pending"
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
-export const WebhookEventsItem = S.String;
-
 export type WebhookEventsList = Array<WebhookEventsItem>;
-export const WebhookEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<WebhookEventsList>;
+const WebhookEventsList = CreateWebhookRequestEventsList as any as S.Schema<WebhookEventsList>;
 
 /** The subset of subscribed event types that support sending test payloads, in dot form. */
 export type WebhookTestableEventsItem =
@@ -400,10 +397,8 @@ export type WebhookTestableEventsItem =
   | "app_payment.pending"
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
-export const WebhookTestableEventsItem = S.String;
-
 export type WebhookTestableEventsList = Array<WebhookTestableEventsItem>;
-export const WebhookTestableEventsList =
+const WebhookTestableEventsList =
   CreateWebhookRequestEventsList as any as S.Schema<WebhookTestableEventsList>;
 
 export interface Webhook {
@@ -438,7 +433,7 @@ export interface Webhook {
   /** Secret key used to sign webhook payloads for verification. Include this in your HMAC validation logic. Returned on the create response and to interactive dashboard sessions; `null` for API-key and OAuth callers on later reads. */
   webhook_secret: string | Redacted.Redacted<string> | null;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
+const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_version: WebhookApiVersion,
     api_version_date: S.NullOr(S.String),
@@ -463,7 +458,7 @@ export interface DeleteWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{id}", code: 200 })),
@@ -475,7 +470,7 @@ export interface DeleteWebhookResponse {
   /** The ID of the deleted resource. */
   id: string;
 }
-export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -490,7 +485,7 @@ export interface DeliveriesWebhookRequest {
   first?: number;
   last?: number;
 }
-export const DeliveriesWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeliveriesWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook_id: S.String.pipe(T.Label()),
     after: S.optional(S.String.pipe(T.Query())),
@@ -504,7 +499,7 @@ export const DeliveriesWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 export type DeliveriesWebhookResponseDataItemRequestBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const DeliveriesWebhookResponseDataItemRequestBodyMap = /*@__PURE__*/ S.Record(
+const DeliveriesWebhookResponseDataItemRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<DeliveriesWebhookResponseDataItemRequestBodyMap>;
@@ -513,7 +508,7 @@ export const DeliveriesWebhookResponseDataItemRequestBodyMap = /*@__PURE__*/ S.R
 export type DeliveriesWebhookResponseDataItemResponseBodyMap = {
   [key: string]: unknown | undefined;
 };
-export const DeliveriesWebhookResponseDataItemResponseBodyMap =
+const DeliveriesWebhookResponseDataItemResponseBodyMap =
   DeliveriesWebhookResponseDataItemRequestBodyMap as any as S.Schema<DeliveriesWebhookResponseDataItemResponseBodyMap>;
 
 /** A webhook log entry containing the request and response details */
@@ -531,7 +526,7 @@ export interface DeliveriesWebhookResponseDataItem {
   /** The total time taken to send the webhook request in seconds */
   total_time: number;
 }
-export const DeliveriesWebhookResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const DeliveriesWebhookResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request_body: DeliveriesWebhookResponseDataItemRequestBodyMap,
     resource_id: S.String,
@@ -546,7 +541,7 @@ export const DeliveriesWebhookResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type DeliveriesWebhookResponseDataList = Array<DeliveriesWebhookResponseDataItem>;
-export const DeliveriesWebhookResponseDataList = /*@__PURE__*/ S.Array(
+const DeliveriesWebhookResponseDataList = /*@__PURE__*/ S.Array(
   DeliveriesWebhookResponseDataItem,
 ) as any as S.Schema<DeliveriesWebhookResponseDataList>;
 
@@ -557,7 +552,7 @@ export interface DeliveriesWebhookResponsePageInfo {
   /** When paginating forwards, are there more items? */
   has_next_page: boolean;
 }
-export const DeliveriesWebhookResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const DeliveriesWebhookResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -572,7 +567,7 @@ export interface DeliveriesWebhookResponse {
   /** Information to aid in pagination. */
   page_info: DeliveriesWebhookResponsePageInfo;
 }
-export const DeliveriesWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const DeliveriesWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DeliveriesWebhookResponseDataList,
     page_info: DeliveriesWebhookResponsePageInfo,
@@ -585,7 +580,7 @@ export interface GetWebhookRequest {
   /** Webhook ID, prefixed `hook_`. */
   id: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhooks/{id}", code: 200 })),
@@ -599,7 +594,7 @@ export interface ListWebhookDeliveriesRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -631,7 +626,7 @@ export interface WebhookDelivery {
   /** Total time taken to send the webhook request, in seconds. */
   total_time: number;
 }
-export const WebhookDelivery = /*@__PURE__*/ S.suspend(() =>
+const WebhookDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.NullOr(S.String),
     id: S.String,
@@ -647,7 +642,7 @@ export const WebhookDelivery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookDelivery" }) as any as S.Schema<WebhookDelivery>;
 
 export type ListWebhookDeliveriesResponseDataList = Array<WebhookDelivery>;
-export const ListWebhookDeliveriesResponseDataList = /*@__PURE__*/ S.Array(
+const ListWebhookDeliveriesResponseDataList = /*@__PURE__*/ S.Array(
   WebhookDelivery,
 ) as any as S.Schema<ListWebhookDeliveriesResponseDataList>;
 
@@ -657,7 +652,7 @@ export interface ListWebhookDeliveriesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListWebhookDeliveriesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -672,7 +667,7 @@ export interface ListWebhookDeliveriesResponse {
   data: ListWebhookDeliveriesResponseDataList;
   page_info: ListWebhookDeliveriesResponsePageInfo;
 }
-export const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookDeliveriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListWebhookDeliveriesResponseDataList,
     page_info: ListWebhookDeliveriesResponsePageInfo,
@@ -699,7 +694,7 @@ export interface ListWebhooksRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     app_id: S.optional(S.String.pipe(T.Query())),
@@ -714,11 +709,11 @@ export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The API version used to format payloads sent to this webhook endpoint. */
 export type WebhookListItemApiVersion = "v1" | "v2" | "v5";
-export const WebhookListItemApiVersion = S.String;
+const WebhookListItemApiVersion = S.String;
 
 /** Why Whop disabled this webhook. `delivery_failures` means every delivery failed for 3 days straight. `null` when `disabled_at` is `null`. */
 export type WebhookListItemDisabledReason = "delivery_failures";
-export const WebhookListItemDisabledReason = S.String;
+const WebhookListItemDisabledReason = S.String;
 
 /** Event types this webhook is subscribed to, in dot form (for example `payment.succeeded`). */
 export type WebhookListItemEventsItem =
@@ -825,10 +820,8 @@ export type WebhookListItemEventsItem =
   | "app_payment.pending"
   | "app_payment.requires_action"
   | "app_membership.cancel_at_period_end_changed";
-export const WebhookListItemEventsItem = S.String;
-
 export type WebhookListItemEventsList = Array<WebhookListItemEventsItem>;
-export const WebhookListItemEventsList =
+const WebhookListItemEventsList =
   CreateWebhookRequestEventsList as any as S.Schema<WebhookListItemEventsList>;
 
 export interface WebhookListItem {
@@ -862,7 +855,7 @@ export interface WebhookListItem {
   /** Secret key used to sign webhook payloads for verification. Include this in your HMAC validation logic. Returned on the create response and to interactive dashboard sessions; `null` for API-key and OAuth callers on later reads. */
   webhook_secret: string | Redacted.Redacted<string> | null;
 }
-export const WebhookListItem = /*@__PURE__*/ S.suspend(() =>
+const WebhookListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_version: WebhookListItemApiVersion,
     api_version_date: S.NullOr(S.String),
@@ -883,18 +876,16 @@ export const WebhookListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookListItem" }) as any as S.Schema<WebhookListItem>;
 
 export type ListWebhooksResponseDataList = Array<WebhookListItem>;
-export const ListWebhooksResponseDataList = /*@__PURE__*/ S.Array(
+const ListWebhooksResponseDataList = /*@__PURE__*/ S.Array(
   WebhookListItem,
 ) as any as S.Schema<ListWebhooksResponseDataList>;
 
 export type ListWebhooksResponsePageInfo = ListWebhookDeliveriesResponsePageInfo;
-export const ListWebhooksResponsePageInfo = ListWebhookDeliveriesResponsePageInfo;
-
 export interface ListWebhooksResponse {
   data: ListWebhooksResponseDataList;
   page_info: ListWebhookDeliveriesResponsePageInfo;
 }
-export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListWebhooksResponseDataList,
     page_info: ListWebhookDeliveriesResponsePageInfo,
@@ -903,7 +894,7 @@ export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Only replay these event types, in dot form (for example `payment.succeeded`). Omit to include every event. */
 export type ReplayWebhookRequestEventsList = Array<string>;
-export const ReplayWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+const ReplayWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReplayWebhookRequestEventsList>;
 
@@ -923,7 +914,7 @@ export interface ReplayWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ReplayWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplayWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     events: S.optional(ReplayWebhookRequestEventsList),
@@ -939,7 +930,7 @@ export interface ReplayWebhookResponse {
   /** Whether the replay was accepted. Watch the webhook's delivery log for the re-sends. */
   queued: boolean;
 }
-export const ReplayWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplayWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queued: S.Boolean,
   }),
@@ -955,7 +946,7 @@ export interface ReplayWebhookDeliveryRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ReplayWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplayWebhookDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     delivery_id: S.String.pipe(T.Label()),
@@ -976,7 +967,7 @@ export interface ReplayWebhookDeliveryResponse {
   /** Whether your endpoint acknowledged the replay with a 2xx response. */
   success: boolean;
 }
-export const ReplayWebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplayWebhookDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.String,
     status: S.Number,
@@ -994,7 +985,7 @@ export interface TestWebhookRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const TestWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const TestWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     event: S.String,
@@ -1010,7 +1001,7 @@ export interface TestWebhookResponse {
   /** Whether or not the webhook test was successful. */
   success: boolean;
 }
-export const TestWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const TestWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.Unknown,
     status: S.Number,
@@ -1103,11 +1094,9 @@ export type UpdateWebhookRequestEventsItem =
   | "refund.updated"
   | "dispute_alert.created"
   | "membership.cancel_at_period_end_changed";
-export const UpdateWebhookRequestEventsItem = S.String;
-
 /** The events to send the webhook for, in dot form (for example `payment.succeeded`). */
 export type UpdateWebhookRequestEventsList = Array<UpdateWebhookRequestEventsItem | (string & {})>;
-export const UpdateWebhookRequestEventsList =
+const UpdateWebhookRequestEventsList =
   CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
 
 export interface UpdateWebhookRequest {
@@ -1124,7 +1113,7 @@ export interface UpdateWebhookRequest {
   /** The URL to send the webhook to. */
   url?: string;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     api_version_date: S.optional(S.NullOr(S.String)),

@@ -149,7 +149,7 @@ export type CrossClusterSearchConnectionId = string;
 export interface AcceptInboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;
 }
-export const AcceptInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnectionId: S.String.pipe(T.HttpLabel("CrossClusterSearchConnectionId")),
   }).pipe(
@@ -177,7 +177,7 @@ export interface DomainInformation {
   DomainName: string;
   Region?: string;
 }
-export const DomainInformation = /*@__PURE__*/ S.suspend(() =>
+const DomainInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OwnerId: S.optional(S.String), DomainName: S.String, Region: S.optional(S.String) }),
 ).annotate({ identifier: "DomainInformation" }) as any as S.Schema<DomainInformation>;
 export type InboundCrossClusterSearchConnectionStatusCode =
@@ -188,14 +188,14 @@ export type InboundCrossClusterSearchConnectionStatusCode =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const InboundCrossClusterSearchConnectionStatusCode = S.String;
+const InboundCrossClusterSearchConnectionStatusCode = S.String;
 
 export type CrossClusterSearchConnectionStatusMessage = string;
 export interface InboundCrossClusterSearchConnectionStatus {
   StatusCode?: InboundCrossClusterSearchConnectionStatusCode;
   Message?: string;
 }
-export const InboundCrossClusterSearchConnectionStatus = /*@__PURE__*/ S.suspend(() =>
+const InboundCrossClusterSearchConnectionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StatusCode: S.optional(InboundCrossClusterSearchConnectionStatusCode),
     Message: S.optional(S.String),
@@ -209,7 +209,7 @@ export interface InboundCrossClusterSearchConnection {
   CrossClusterSearchConnectionId?: string;
   ConnectionStatus?: InboundCrossClusterSearchConnectionStatus;
 }
-export const InboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =>
+const InboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDomainInfo: S.optional(DomainInformation),
     DestinationDomainInfo: S.optional(DomainInformation),
@@ -222,7 +222,7 @@ export const InboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =>
 export interface AcceptInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export const AcceptInboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptInboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CrossClusterSearchConnection: S.optional(InboundCrossClusterSearchConnection) }).pipe(
     ns,
   ),
@@ -236,22 +236,22 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface AddTagsRequest {
   ARN: string;
   TagList: Tag[];
 }
-export const AddTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.String, TagList: TagList }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/2015-01-01/tags" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "AddTagsRequest" }) as any as S.Schema<AddTagsRequest>;
 export interface AddTagsResponse {}
-export const AddTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const AddTagsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "AddTagsResponse",
 }) as any as S.Schema<AddTagsResponse>;
 export type PackageID = string;
@@ -259,7 +259,7 @@ export interface AssociatePackageRequest {
   PackageID: string;
   DomainName: string;
 }
-export const AssociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.String.pipe(T.HttpLabel("PackageID")),
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -277,7 +277,7 @@ export const AssociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssociatePackageRequest" }) as any as S.Schema<AssociatePackageRequest>;
 export type PackageName = string;
 export type PackageType = "TXT-DICTIONARY" | (string & {});
-export const PackageType = S.String;
+const PackageType = S.String;
 
 export type LastUpdated = Date;
 export type DomainPackageStatus =
@@ -287,7 +287,7 @@ export type DomainPackageStatus =
   | "DISSOCIATING"
   | "DISSOCIATION_FAILED"
   | (string & {});
-export const DomainPackageStatus = S.String;
+const DomainPackageStatus = S.String;
 
 export type PackageVersion = string;
 export type ReferencePath = string;
@@ -297,7 +297,7 @@ export interface ErrorDetails {
   ErrorType?: string;
   ErrorMessage?: string;
 }
-export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorType: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 export interface DomainPackageDetails {
@@ -311,7 +311,7 @@ export interface DomainPackageDetails {
   ReferencePath?: string;
   ErrorDetails?: ErrorDetails;
 }
-export const DomainPackageDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainPackageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.optional(S.String),
     PackageName: S.optional(S.String),
@@ -327,7 +327,7 @@ export const DomainPackageDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AssociatePackageResponse {
   DomainPackageDetails?: DomainPackageDetails;
 }
-export const AssociatePackageResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociatePackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainPackageDetails: S.optional(DomainPackageDetails) }).pipe(ns),
 ).annotate({ identifier: "AssociatePackageResponse" }) as any as S.Schema<AssociatePackageResponse>;
 export type AWSAccount = string;
@@ -335,7 +335,7 @@ export interface AuthorizeVpcEndpointAccessRequest {
   DomainName: string;
   Account: string;
 }
-export const AuthorizeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")), Account: S.String }).pipe(
     T.all(
       ns,
@@ -354,19 +354,19 @@ export const AuthorizeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "AuthorizeVpcEndpointAccessRequest",
 }) as any as S.Schema<AuthorizeVpcEndpointAccessRequest>;
 export type PrincipalType = "AWS_ACCOUNT" | "AWS_SERVICE" | (string & {});
-export const PrincipalType = S.String;
+const PrincipalType = S.String;
 
 export interface AuthorizedPrincipal {
   PrincipalType?: PrincipalType;
   Principal?: string;
 }
-export const AuthorizedPrincipal = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PrincipalType: S.optional(PrincipalType), Principal: S.optional(S.String) }),
 ).annotate({ identifier: "AuthorizedPrincipal" }) as any as S.Schema<AuthorizedPrincipal>;
 export interface AuthorizeVpcEndpointAccessResponse {
   AuthorizedPrincipal: AuthorizedPrincipal;
 }
-export const AuthorizeVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AuthorizedPrincipal: AuthorizedPrincipal }).pipe(ns),
 ).annotate({
   identifier: "AuthorizeVpcEndpointAccessResponse",
@@ -376,7 +376,7 @@ export interface CancelDomainConfigChangeRequest {
   DomainName: string;
   DryRun?: boolean;
 }
-export const CancelDomainConfigChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDomainConfigChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     DryRun: S.optional(S.Boolean),
@@ -396,13 +396,13 @@ export const CancelDomainConfigChangeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDomainConfigChangeRequest>;
 export type GUID = string;
 export type GUIDList = string[];
-export const GUIDList = /*@__PURE__*/ S.Array(S.String);
+const GUIDList = /*@__PURE__*/ S.Array(S.String);
 export interface CancelledChangeProperty {
   PropertyName?: string;
   CancelledValue?: string;
   ActiveValue?: string;
 }
-export const CancelledChangeProperty = /*@__PURE__*/ S.suspend(() =>
+const CancelledChangeProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PropertyName: S.optional(S.String),
     CancelledValue: S.optional(S.String),
@@ -410,13 +410,13 @@ export const CancelledChangeProperty = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CancelledChangeProperty" }) as any as S.Schema<CancelledChangeProperty>;
 export type CancelledChangePropertyList = CancelledChangeProperty[];
-export const CancelledChangePropertyList = /*@__PURE__*/ S.Array(CancelledChangeProperty);
+const CancelledChangePropertyList = /*@__PURE__*/ S.Array(CancelledChangeProperty);
 export interface CancelDomainConfigChangeResponse {
   DryRun?: boolean;
   CancelledChangeIds?: string[];
   CancelledChangeProperties?: CancelledChangeProperty[];
 }
-export const CancelDomainConfigChangeResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelDomainConfigChangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DryRun: S.optional(S.Boolean),
     CancelledChangeIds: S.optional(GUIDList),
@@ -428,7 +428,7 @@ export const CancelDomainConfigChangeResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CancelElasticsearchServiceSoftwareUpdateRequest {
   DomainName: string;
 }
-export const CancelElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -450,7 +450,7 @@ export type DeploymentStatus =
   | "NOT_ELIGIBLE"
   | "ELIGIBLE"
   | (string & {});
-export const DeploymentStatus = S.String;
+const DeploymentStatus = S.String;
 
 export type DeploymentCloseDateTimeStamp = Date;
 export interface ServiceSoftwareOptions {
@@ -463,7 +463,7 @@ export interface ServiceSoftwareOptions {
   AutomatedUpdateDate?: Date;
   OptionalDeployment?: boolean;
 }
-export const ServiceSoftwareOptions = /*@__PURE__*/ S.suspend(() =>
+const ServiceSoftwareOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CurrentVersion: S.optional(S.String),
     NewVersion: S.optional(S.String),
@@ -478,7 +478,7 @@ export const ServiceSoftwareOptions = /*@__PURE__*/ S.suspend(() =>
 export interface CancelElasticsearchServiceSoftwareUpdateResponse {
   ServiceSoftwareOptions?: ServiceSoftwareOptions;
 }
-export const CancelElasticsearchServiceSoftwareUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelElasticsearchServiceSoftwareUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServiceSoftwareOptions: S.optional(ServiceSoftwareOptions) }).pipe(ns),
 ).annotate({
   identifier: "CancelElasticsearchServiceSoftwareUpdateResponse",
@@ -544,27 +544,27 @@ export type ESPartitionInstanceType =
   | "i3.8xlarge.elasticsearch"
   | "i3.16xlarge.elasticsearch"
   | (string & {});
-export const ESPartitionInstanceType = S.String;
+const ESPartitionInstanceType = S.String;
 
 export type IntegerClass = number;
 export interface ZoneAwarenessConfig {
   AvailabilityZoneCount?: number;
 }
-export const ZoneAwarenessConfig = /*@__PURE__*/ S.suspend(() =>
+const ZoneAwarenessConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AvailabilityZoneCount: S.optional(S.Number) }),
 ).annotate({ identifier: "ZoneAwarenessConfig" }) as any as S.Schema<ZoneAwarenessConfig>;
 export type ESWarmPartitionInstanceType =
   | "ultrawarm1.medium.elasticsearch"
   | "ultrawarm1.large.elasticsearch"
   | (string & {});
-export const ESWarmPartitionInstanceType = S.String;
+const ESWarmPartitionInstanceType = S.String;
 
 export interface ColdStorageOptions {
   Enabled: boolean;
 }
-export const ColdStorageOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Enabled: S.Boolean }),
-).annotate({ identifier: "ColdStorageOptions" }) as any as S.Schema<ColdStorageOptions>;
+const ColdStorageOptions = /*@__PURE__*/ S.suspend(() => S.Struct({ Enabled: S.Boolean })).annotate(
+  { identifier: "ColdStorageOptions" },
+) as any as S.Schema<ColdStorageOptions>;
 export interface ElasticsearchClusterConfig {
   InstanceType?: ESPartitionInstanceType;
   InstanceCount?: number;
@@ -578,7 +578,7 @@ export interface ElasticsearchClusterConfig {
   WarmCount?: number;
   ColdStorageOptions?: ColdStorageOptions;
 }
-export const ElasticsearchClusterConfig = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchClusterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceType: S.optional(ESPartitionInstanceType),
     InstanceCount: S.optional(S.Number),
@@ -596,7 +596,7 @@ export const ElasticsearchClusterConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "ElasticsearchClusterConfig",
 }) as any as S.Schema<ElasticsearchClusterConfig>;
 export type VolumeType = "standard" | "gp2" | "io1" | "gp3" | (string & {});
-export const VolumeType = S.String;
+const VolumeType = S.String;
 
 export interface EBSOptions {
   EBSEnabled?: boolean;
@@ -605,7 +605,7 @@ export interface EBSOptions {
   Iops?: number;
   Throughput?: number;
 }
-export const EBSOptions = /*@__PURE__*/ S.suspend(() =>
+const EBSOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EBSEnabled: S.optional(S.Boolean),
     VolumeType: S.optional(VolumeType),
@@ -618,16 +618,16 @@ export type PolicyDocument = string;
 export interface SnapshotOptions {
   AutomatedSnapshotStartHour?: number;
 }
-export const SnapshotOptions = /*@__PURE__*/ S.suspend(() =>
+const SnapshotOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutomatedSnapshotStartHour: S.optional(S.Number) }),
 ).annotate({ identifier: "SnapshotOptions" }) as any as S.Schema<SnapshotOptions>;
 export type StringList = string[];
-export const StringList = GUIDList as any as S.Schema<StringList>;
+const StringList = GUIDList as any as S.Schema<StringList>;
 export interface VPCOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
 }
-export const VPCOptions = /*@__PURE__*/ S.suspend(() =>
+const VPCOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubnetIds: S.optional(StringList), SecurityGroupIds: S.optional(StringList) }),
 ).annotate({ identifier: "VPCOptions" }) as any as S.Schema<VPCOptions>;
 export type UserPoolId = string;
@@ -639,7 +639,7 @@ export interface CognitoOptions {
   IdentityPoolId?: string;
   RoleArn?: string;
 }
-export const CognitoOptions = /*@__PURE__*/ S.suspend(() =>
+const CognitoOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.optional(S.Boolean),
     UserPoolId: S.optional(S.String),
@@ -652,40 +652,37 @@ export interface EncryptionAtRestOptions {
   Enabled?: boolean;
   KmsKeyId?: string;
 }
-export const EncryptionAtRestOptions = /*@__PURE__*/ S.suspend(() =>
+const EncryptionAtRestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.optional(S.Boolean), KmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "EncryptionAtRestOptions" }) as any as S.Schema<EncryptionAtRestOptions>;
 export interface NodeToNodeEncryptionOptions {
   Enabled?: boolean;
 }
-export const NodeToNodeEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+const NodeToNodeEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "NodeToNodeEncryptionOptions",
 }) as any as S.Schema<NodeToNodeEncryptionOptions>;
 export type AdvancedOptions = { [key: string]: string | undefined };
-export const AdvancedOptions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.String.pipe(S.optional),
-);
+const AdvancedOptions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type LogType =
   | "INDEX_SLOW_LOGS"
   | "SEARCH_SLOW_LOGS"
   | "ES_APPLICATION_LOGS"
   | "AUDIT_LOGS"
   | (string & {});
-export const LogType = S.String;
+const LogType = S.String;
 
 export type CloudWatchLogsLogGroupArn = string;
 export interface LogPublishingOption {
   CloudWatchLogsLogGroupArn?: string;
   Enabled?: boolean;
 }
-export const LogPublishingOption = /*@__PURE__*/ S.suspend(() =>
+const LogPublishingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CloudWatchLogsLogGroupArn: S.optional(S.String), Enabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "LogPublishingOption" }) as any as S.Schema<LogPublishingOption>;
 export type LogPublishingOptions = { [key in LogType]?: LogPublishingOption };
-export const LogPublishingOptions = /*@__PURE__*/ S.Record(
+const LogPublishingOptions = /*@__PURE__*/ S.Record(
   LogType,
   /*@__PURE__*/ LogPublishingOption.pipe(S.optional),
 );
@@ -695,7 +692,7 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-2-PFS-2023-10"
   | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08"
   | (string & {});
-export const TLSSecurityPolicy = S.String;
+const TLSSecurityPolicy = S.String;
 
 export type DomainNameFqdn = string;
 export interface DomainEndpointOptions {
@@ -705,7 +702,7 @@ export interface DomainEndpointOptions {
   CustomEndpoint?: string;
   CustomEndpointCertificateArn?: string;
 }
-export const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
+const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EnforceHTTPS: S.optional(S.Boolean),
     TLSSecurityPolicy: S.optional(TLSSecurityPolicy),
@@ -721,7 +718,7 @@ export interface MasterUserOptions {
   MasterUserName?: string | redacted.Redacted<string>;
   MasterUserPassword?: string | redacted.Redacted<string>;
 }
-export const MasterUserOptions = /*@__PURE__*/ S.suspend(() =>
+const MasterUserOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MasterUserARN: S.optional(S.String),
     MasterUserName: S.optional(SensitiveString),
@@ -734,7 +731,7 @@ export interface SAMLIdp {
   MetadataContent: string;
   EntityId: string;
 }
-export const SAMLIdp = /*@__PURE__*/ S.suspend(() =>
+const SAMLIdp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MetadataContent: S.String, EntityId: S.String }),
 ).annotate({ identifier: "SAMLIdp" }) as any as S.Schema<SAMLIdp>;
 export type BackendRole = string;
@@ -747,7 +744,7 @@ export interface SAMLOptionsInput {
   RolesKey?: string;
   SessionTimeoutMinutes?: number;
 }
-export const SAMLOptionsInput = /*@__PURE__*/ S.suspend(() =>
+const SAMLOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.optional(S.Boolean),
     Idp: S.optional(SAMLIdp),
@@ -765,7 +762,7 @@ export interface AdvancedSecurityOptionsInput {
   SAMLOptions?: SAMLOptionsInput;
   AnonymousAuthEnabled?: boolean;
 }
-export const AdvancedSecurityOptionsInput = /*@__PURE__*/ S.suspend(() =>
+const AdvancedSecurityOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.optional(S.Boolean),
     InternalUserDatabaseEnabled: S.optional(S.Boolean),
@@ -777,18 +774,18 @@ export const AdvancedSecurityOptionsInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdvancedSecurityOptionsInput",
 }) as any as S.Schema<AdvancedSecurityOptionsInput>;
 export type AutoTuneDesiredState = "ENABLED" | "DISABLED" | (string & {});
-export const AutoTuneDesiredState = S.String;
+const AutoTuneDesiredState = S.String;
 
 export type StartAt = Date;
 export type DurationValue = number;
 export type TimeUnit = "HOURS" | (string & {});
-export const TimeUnit = S.String;
+const TimeUnit = S.String;
 
 export interface Duration {
   Value?: number;
   Unit?: TimeUnit;
 }
-export const Duration = /*@__PURE__*/ S.suspend(() =>
+const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.Number), Unit: S.optional(TimeUnit) }),
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 export interface AutoTuneMaintenanceSchedule {
@@ -796,7 +793,7 @@ export interface AutoTuneMaintenanceSchedule {
   Duration?: Duration;
   CronExpressionForRecurrence?: string;
 }
-export const AutoTuneMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Duration: S.optional(Duration),
@@ -806,24 +803,24 @@ export const AutoTuneMaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoTuneMaintenanceSchedule",
 }) as any as S.Schema<AutoTuneMaintenanceSchedule>;
 export type AutoTuneMaintenanceScheduleList = AutoTuneMaintenanceSchedule[];
-export const AutoTuneMaintenanceScheduleList = /*@__PURE__*/ S.Array(AutoTuneMaintenanceSchedule);
+const AutoTuneMaintenanceScheduleList = /*@__PURE__*/ S.Array(AutoTuneMaintenanceSchedule);
 export interface AutoTuneOptionsInput {
   DesiredState?: AutoTuneDesiredState;
   MaintenanceSchedules?: AutoTuneMaintenanceSchedule[];
 }
-export const AutoTuneOptionsInput = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneOptionsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DesiredState: S.optional(AutoTuneDesiredState),
     MaintenanceSchedules: S.optional(AutoTuneMaintenanceScheduleList),
   }),
 ).annotate({ identifier: "AutoTuneOptionsInput" }) as any as S.Schema<AutoTuneOptionsInput>;
 export type DeploymentStrategy = "Default" | "CapacityOptimized" | (string & {});
-export const DeploymentStrategy = S.String;
+const DeploymentStrategy = S.String;
 
 export interface DeploymentStrategyOptions {
   DeploymentStrategy: DeploymentStrategy;
 }
-export const DeploymentStrategyOptions = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStrategyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeploymentStrategy: DeploymentStrategy }),
 ).annotate({
   identifier: "DeploymentStrategyOptions",
@@ -834,7 +831,7 @@ export interface AutomatedSnapshotPauseRequestOptions {
   StartTime?: Date;
   EndTime?: Date;
 }
-export const AutomatedSnapshotPauseRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const AutomatedSnapshotPauseRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -844,10 +841,10 @@ export const AutomatedSnapshotPauseRequestOptions = /*@__PURE__*/ S.suspend(() =
   identifier: "AutomatedSnapshotPauseRequestOptions",
 }) as any as S.Schema<AutomatedSnapshotPauseRequestOptions>;
 export type DomainUseCase = "SEARCH" | "VECTOR" | "OBSERVABILITY" | "MIXED" | (string & {});
-export const DomainUseCase = S.String;
+const DomainUseCase = S.String;
 
 export type DomainEngineMode = "GENERAL" | "OPTIMIZED" | (string & {});
-export const DomainEngineMode = S.String;
+const DomainEngineMode = S.String;
 
 export interface CreateElasticsearchDomainRequest {
   DomainName: string;
@@ -871,7 +868,7 @@ export interface CreateElasticsearchDomainRequest {
   UseCase?: DomainUseCase;
   EngineMode?: DomainEngineMode;
 }
-export const CreateElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     ElasticsearchVersion: S.optional(S.String),
@@ -910,14 +907,14 @@ export const CreateElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export type DomainId = string;
 export type ServiceUrl = string;
 export type EndpointsMap = { [key: string]: string | undefined };
-export const EndpointsMap = AdvancedOptions as any as S.Schema<EndpointsMap>;
+const EndpointsMap = AdvancedOptions as any as S.Schema<EndpointsMap>;
 export interface VPCDerivedInfo {
   VPCId?: string;
   SubnetIds?: string[];
   AvailabilityZones?: string[];
   SecurityGroupIds?: string[];
 }
-export const VPCDerivedInfo = /*@__PURE__*/ S.suspend(() =>
+const VPCDerivedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VPCId: S.optional(S.String),
     SubnetIds: S.optional(StringList),
@@ -932,7 +929,7 @@ export interface SAMLOptionsOutput {
   RolesKey?: string;
   SessionTimeoutMinutes?: number;
 }
-export const SAMLOptionsOutput = /*@__PURE__*/ S.suspend(() =>
+const SAMLOptionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.optional(S.Boolean),
     Idp: S.optional(SAMLIdp),
@@ -949,7 +946,7 @@ export interface AdvancedSecurityOptions {
   AnonymousAuthDisableDate?: Date;
   AnonymousAuthEnabled?: boolean;
 }
-export const AdvancedSecurityOptions = /*@__PURE__*/ S.suspend(() =>
+const AdvancedSecurityOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.optional(S.Boolean),
     InternalUserDatabaseEnabled: S.optional(S.Boolean),
@@ -969,13 +966,13 @@ export type AutoTuneState =
   | "DISABLED_AND_ROLLBACK_ERROR"
   | "ERROR"
   | (string & {});
-export const AutoTuneState = S.String;
+const AutoTuneState = S.String;
 
 export interface AutoTuneOptionsOutput {
   State?: AutoTuneState;
   ErrorMessage?: string;
 }
-export const AutoTuneOptionsOutput = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneOptionsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ State: S.optional(AutoTuneState), ErrorMessage: S.optional(S.String) }),
 ).annotate({ identifier: "AutoTuneOptionsOutput" }) as any as S.Schema<AutoTuneOptionsOutput>;
 export type Message = string;
@@ -989,10 +986,10 @@ export type ConfigChangeStatus =
   | "PendingUserInput"
   | "Cancelled"
   | (string & {});
-export const ConfigChangeStatus = S.String;
+const ConfigChangeStatus = S.String;
 
 export type InitiatedBy = "CUSTOMER" | "SERVICE" | (string & {});
-export const InitiatedBy = S.String;
+const InitiatedBy = S.String;
 
 export interface ChangeProgressDetails {
   ChangeId?: string;
@@ -1002,7 +999,7 @@ export interface ChangeProgressDetails {
   LastUpdatedTime?: Date;
   InitiatedBy?: InitiatedBy;
 }
-export const ChangeProgressDetails = /*@__PURE__*/ S.suspend(() =>
+const ChangeProgressDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChangeId: S.optional(S.String),
     Message: S.optional(S.String),
@@ -1021,10 +1018,10 @@ export type DomainProcessingStatusType =
   | "Isolated"
   | "Deleting"
   | (string & {});
-export const DomainProcessingStatusType = S.String;
+const DomainProcessingStatusType = S.String;
 
 export type PropertyValueType = "PLAIN_TEXT" | "STRINGIFIED_JSON" | (string & {});
-export const PropertyValueType = S.String;
+const PropertyValueType = S.String;
 
 export interface ModifyingProperties {
   Name?: string;
@@ -1032,7 +1029,7 @@ export interface ModifyingProperties {
   PendingValue?: string;
   ValueType?: PropertyValueType;
 }
-export const ModifyingProperties = /*@__PURE__*/ S.suspend(() =>
+const ModifyingProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     ActiveValue: S.optional(S.String),
@@ -1041,9 +1038,9 @@ export const ModifyingProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ModifyingProperties" }) as any as S.Schema<ModifyingProperties>;
 export type ModifyingPropertiesList = ModifyingProperties[];
-export const ModifyingPropertiesList = /*@__PURE__*/ S.Array(ModifyingProperties);
+const ModifyingPropertiesList = /*@__PURE__*/ S.Array(ModifyingProperties);
 export type PauseState = "Active" | "Completed" | "Scheduled" | "Disabled" | (string & {});
-export const PauseState = S.String;
+const PauseState = S.String;
 
 export interface AutomatedSnapshotPauseOptions {
   Enabled: boolean;
@@ -1051,7 +1048,7 @@ export interface AutomatedSnapshotPauseOptions {
   EndTime?: Date;
   State?: PauseState;
 }
-export const AutomatedSnapshotPauseOptions = /*@__PURE__*/ S.suspend(() =>
+const AutomatedSnapshotPauseOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1094,7 +1091,7 @@ export interface ElasticsearchDomainStatus {
   UseCase?: DomainUseCase;
   EngineMode?: DomainEngineMode;
 }
-export const ElasticsearchDomainStatus = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchDomainStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     DomainName: S.String,
@@ -1134,7 +1131,7 @@ export const ElasticsearchDomainStatus = /*@__PURE__*/ S.suspend(() =>
 export interface CreateElasticsearchDomainResponse {
   DomainStatus?: ElasticsearchDomainStatus;
 }
-export const CreateElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatus: S.optional(ElasticsearchDomainStatus) }).pipe(ns),
 ).annotate({
   identifier: "CreateElasticsearchDomainResponse",
@@ -1145,7 +1142,7 @@ export interface CreateOutboundCrossClusterSearchConnectionRequest {
   DestinationDomainInfo: DomainInformation;
   ConnectionAlias: string;
 }
-export const CreateOutboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOutboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDomainInfo: DomainInformation,
     DestinationDomainInfo: DomainInformation,
@@ -1174,13 +1171,11 @@ export type OutboundCrossClusterSearchConnectionStatusCode =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const OutboundCrossClusterSearchConnectionStatusCode = S.String;
-
 export interface OutboundCrossClusterSearchConnectionStatus {
   StatusCode?: OutboundCrossClusterSearchConnectionStatusCode;
   Message?: string;
 }
-export const OutboundCrossClusterSearchConnectionStatus =
+const OutboundCrossClusterSearchConnectionStatus =
   InboundCrossClusterSearchConnectionStatus as any as S.Schema<OutboundCrossClusterSearchConnectionStatus>;
 export interface CreateOutboundCrossClusterSearchConnectionResponse {
   SourceDomainInfo?: DomainInformation;
@@ -1189,7 +1184,7 @@ export interface CreateOutboundCrossClusterSearchConnectionResponse {
   ConnectionStatus?: OutboundCrossClusterSearchConnectionStatus;
   CrossClusterSearchConnectionId?: string;
 }
-export const CreateOutboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOutboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDomainInfo: S.optional(DomainInformation),
     DestinationDomainInfo: S.optional(DomainInformation),
@@ -1207,7 +1202,7 @@ export interface PackageSource {
   S3BucketName?: string;
   S3Key?: string;
 }
-export const PackageSource = /*@__PURE__*/ S.suspend(() =>
+const PackageSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3BucketName: S.optional(S.String), S3Key: S.optional(S.String) }),
 ).annotate({ identifier: "PackageSource" }) as any as S.Schema<PackageSource>;
 export interface CreatePackageRequest {
@@ -1216,7 +1211,7 @@ export interface CreatePackageRequest {
   PackageDescription?: string;
   PackageSource: PackageSource;
 }
-export const CreatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageName: S.String,
     PackageType: PackageType,
@@ -1244,7 +1239,7 @@ export type PackageStatus =
   | "DELETED"
   | "DELETE_FAILED"
   | (string & {});
-export const PackageStatus = S.String;
+const PackageStatus = S.String;
 
 export type CreatedAt = Date;
 export interface PackageDetails {
@@ -1258,7 +1253,7 @@ export interface PackageDetails {
   AvailablePackageVersion?: string;
   ErrorDetails?: ErrorDetails;
 }
-export const PackageDetails = /*@__PURE__*/ S.suspend(() =>
+const PackageDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.optional(S.String),
     PackageName: S.optional(S.String),
@@ -1274,7 +1269,7 @@ export const PackageDetails = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const CreatePackageResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PackageDetails: S.optional(PackageDetails) }).pipe(ns),
 ).annotate({ identifier: "CreatePackageResponse" }) as any as S.Schema<CreatePackageResponse>;
 export type DomainArn = string;
@@ -1284,7 +1279,7 @@ export interface CreateVpcEndpointRequest {
   VpcOptions: VPCOptions;
   ClientToken?: string;
 }
-export const CreateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainArn: S.String, VpcOptions: VPCOptions, ClientToken: S.optional(S.String) }).pipe(
     T.all(
       ns,
@@ -1307,7 +1302,7 @@ export type VpcEndpointStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-export const VpcEndpointStatus = S.String;
+const VpcEndpointStatus = S.String;
 
 export type Endpoint = string;
 export interface VpcEndpoint {
@@ -1318,7 +1313,7 @@ export interface VpcEndpoint {
   Status?: VpcEndpointStatus;
   Endpoint?: string;
 }
-export const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VpcEndpointId: S.optional(S.String),
     VpcEndpointOwner: S.optional(S.String),
@@ -1331,7 +1326,7 @@ export const VpcEndpoint = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVpcEndpointResponse {
   VpcEndpoint: VpcEndpoint;
 }
-export const CreateVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpoint: VpcEndpoint }).pipe(ns),
 ).annotate({
   identifier: "CreateVpcEndpointResponse",
@@ -1339,7 +1334,7 @@ export const CreateVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteElasticsearchDomainRequest {
   DomainName: string;
 }
-export const DeleteElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       ns,
@@ -1357,10 +1352,10 @@ export const DeleteElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteElasticsearchDomainResponse {
   DomainStatus?: ElasticsearchDomainStatus;
 }
-export const DeleteElasticsearchDomainResponse =
+const DeleteElasticsearchDomainResponse =
   CreateElasticsearchDomainResponse as any as S.Schema<DeleteElasticsearchDomainResponse>;
 export interface DeleteElasticsearchServiceRoleRequest {}
-export const DeleteElasticsearchServiceRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteElasticsearchServiceRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       ns,
@@ -1376,7 +1371,7 @@ export const DeleteElasticsearchServiceRoleRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "DeleteElasticsearchServiceRoleRequest",
 }) as any as S.Schema<DeleteElasticsearchServiceRoleRequest>;
 export interface DeleteElasticsearchServiceRoleResponse {}
-export const DeleteElasticsearchServiceRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteElasticsearchServiceRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteElasticsearchServiceRoleResponse",
@@ -1384,7 +1379,7 @@ export const DeleteElasticsearchServiceRoleResponse = /*@__PURE__*/ S.suspend(()
 export interface DeleteInboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;
 }
-export const DeleteInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnectionId: S.String.pipe(T.HttpLabel("CrossClusterSearchConnectionId")),
   }).pipe(
@@ -1407,12 +1402,12 @@ export const DeleteInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.
 export interface DeleteInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export const DeleteInboundCrossClusterSearchConnectionResponse =
+const DeleteInboundCrossClusterSearchConnectionResponse =
   AcceptInboundCrossClusterSearchConnectionResponse as any as S.Schema<DeleteInboundCrossClusterSearchConnectionResponse>;
 export interface DeleteOutboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;
 }
-export const DeleteOutboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOutboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnectionId: S.String.pipe(T.HttpLabel("CrossClusterSearchConnectionId")),
   }).pipe(
@@ -1439,7 +1434,7 @@ export interface OutboundCrossClusterSearchConnection {
   ConnectionAlias?: string;
   ConnectionStatus?: OutboundCrossClusterSearchConnectionStatus;
 }
-export const OutboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =>
+const OutboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceDomainInfo: S.optional(DomainInformation),
     DestinationDomainInfo: S.optional(DomainInformation),
@@ -1453,7 +1448,7 @@ export const OutboundCrossClusterSearchConnection = /*@__PURE__*/ S.suspend(() =
 export interface DeleteOutboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: OutboundCrossClusterSearchConnection;
 }
-export const DeleteOutboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteOutboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CrossClusterSearchConnection: S.optional(OutboundCrossClusterSearchConnection) }).pipe(
     ns,
   ),
@@ -1463,7 +1458,7 @@ export const DeleteOutboundCrossClusterSearchConnectionResponse = /*@__PURE__*/ 
 export interface DeletePackageRequest {
   PackageID: string;
 }
-export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PackageID: S.String.pipe(T.HttpLabel("PackageID")) }).pipe(
     T.all(
       ns,
@@ -1479,12 +1474,11 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeletePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const DeletePackageResponse =
-  CreatePackageResponse as any as S.Schema<DeletePackageResponse>;
+const DeletePackageResponse = CreatePackageResponse as any as S.Schema<DeletePackageResponse>;
 export interface DeleteVpcEndpointRequest {
   VpcEndpointId: string;
 }
-export const DeleteVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointId: S.String.pipe(T.HttpLabel("VpcEndpointId")) }).pipe(
     T.all(
       ns,
@@ -1503,7 +1497,7 @@ export interface VpcEndpointSummary {
   DomainArn?: string;
   Status?: VpcEndpointStatus;
 }
-export const VpcEndpointSummary = /*@__PURE__*/ S.suspend(() =>
+const VpcEndpointSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VpcEndpointId: S.optional(S.String),
     VpcEndpointOwner: S.optional(S.String),
@@ -1514,7 +1508,7 @@ export const VpcEndpointSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVpcEndpointResponse {
   VpcEndpointSummary: VpcEndpointSummary;
 }
-export const DeleteVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointSummary: VpcEndpointSummary }).pipe(ns),
 ).annotate({
   identifier: "DeleteVpcEndpointResponse",
@@ -1526,7 +1520,7 @@ export interface DescribeDomainAutoTunesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeDomainAutoTunesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainAutoTunesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1546,18 +1540,18 @@ export const DescribeDomainAutoTunesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainAutoTunesRequest",
 }) as any as S.Schema<DescribeDomainAutoTunesRequest>;
 export type AutoTuneType = "SCHEDULED_ACTION" | (string & {});
-export const AutoTuneType = S.String;
+const AutoTuneType = S.String;
 
 export type AutoTuneDate = Date;
 export type ScheduledAutoTuneActionType =
   | "JVM_HEAP_SIZE_TUNING"
   | "JVM_YOUNG_GEN_TUNING"
   | (string & {});
-export const ScheduledAutoTuneActionType = S.String;
+const ScheduledAutoTuneActionType = S.String;
 
 export type ScheduledAutoTuneDescription = string;
 export type ScheduledAutoTuneSeverityType = "LOW" | "MEDIUM" | "HIGH" | (string & {});
-export const ScheduledAutoTuneSeverityType = S.String;
+const ScheduledAutoTuneSeverityType = S.String;
 
 export interface ScheduledAutoTuneDetails {
   Date?: Date;
@@ -1565,7 +1559,7 @@ export interface ScheduledAutoTuneDetails {
   Action?: string;
   Severity?: ScheduledAutoTuneSeverityType;
 }
-export const ScheduledAutoTuneDetails = /*@__PURE__*/ S.suspend(() =>
+const ScheduledAutoTuneDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     ActionType: S.optional(ScheduledAutoTuneActionType),
@@ -1576,26 +1570,26 @@ export const ScheduledAutoTuneDetails = /*@__PURE__*/ S.suspend(() =>
 export interface AutoTuneDetails {
   ScheduledAutoTuneDetails?: ScheduledAutoTuneDetails;
 }
-export const AutoTuneDetails = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduledAutoTuneDetails: S.optional(ScheduledAutoTuneDetails) }),
 ).annotate({ identifier: "AutoTuneDetails" }) as any as S.Schema<AutoTuneDetails>;
 export interface AutoTune {
   AutoTuneType?: AutoTuneType;
   AutoTuneDetails?: AutoTuneDetails;
 }
-export const AutoTune = /*@__PURE__*/ S.suspend(() =>
+const AutoTune = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AutoTuneType: S.optional(AutoTuneType),
     AutoTuneDetails: S.optional(AutoTuneDetails),
   }),
 ).annotate({ identifier: "AutoTune" }) as any as S.Schema<AutoTune>;
 export type AutoTuneList = AutoTune[];
-export const AutoTuneList = /*@__PURE__*/ S.Array(AutoTune);
+const AutoTuneList = /*@__PURE__*/ S.Array(AutoTune);
 export interface DescribeDomainAutoTunesResponse {
   AutoTunes?: AutoTune[];
   NextToken?: string;
 }
-export const DescribeDomainAutoTunesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainAutoTunesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AutoTunes: S.optional(AutoTuneList), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "DescribeDomainAutoTunesResponse",
@@ -1604,7 +1598,7 @@ export interface DescribeDomainChangeProgressRequest {
   DomainName: string;
   ChangeId?: string;
 }
-export const DescribeDomainChangeProgressRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainChangeProgressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     ChangeId: S.optional(S.String).pipe(T.HttpQuery("changeid")),
@@ -1623,7 +1617,7 @@ export const DescribeDomainChangeProgressRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeDomainChangeProgressRequest",
 }) as any as S.Schema<DescribeDomainChangeProgressRequest>;
 export type OverallChangeStatus = "PENDING" | "PROCESSING" | "COMPLETED" | "FAILED" | (string & {});
-export const OverallChangeStatus = S.String;
+const OverallChangeStatus = S.String;
 
 export type TotalNumberOfStages = number;
 export type ChangeProgressStageName = string;
@@ -1635,7 +1629,7 @@ export interface ChangeProgressStage {
   Description?: string;
   LastUpdated?: Date;
 }
-export const ChangeProgressStage = /*@__PURE__*/ S.suspend(() =>
+const ChangeProgressStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Status: S.optional(S.String),
@@ -1644,7 +1638,7 @@ export const ChangeProgressStage = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChangeProgressStage" }) as any as S.Schema<ChangeProgressStage>;
 export type ChangeProgressStageList = ChangeProgressStage[];
-export const ChangeProgressStageList = /*@__PURE__*/ S.Array(ChangeProgressStage);
+const ChangeProgressStageList = /*@__PURE__*/ S.Array(ChangeProgressStage);
 export interface ChangeProgressStatusDetails {
   ChangeId?: string;
   StartTime?: Date;
@@ -1657,7 +1651,7 @@ export interface ChangeProgressStatusDetails {
   LastUpdatedTime?: Date;
   InitiatedBy?: InitiatedBy;
 }
-export const ChangeProgressStatusDetails = /*@__PURE__*/ S.suspend(() =>
+const ChangeProgressStatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChangeId: S.optional(S.String),
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1676,7 +1670,7 @@ export const ChangeProgressStatusDetails = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDomainChangeProgressResponse {
   ChangeProgressStatus?: ChangeProgressStatusDetails;
 }
-export const DescribeDomainChangeProgressResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainChangeProgressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChangeProgressStatus: S.optional(ChangeProgressStatusDetails) }).pipe(ns),
 ).annotate({
   identifier: "DescribeDomainChangeProgressResponse",
@@ -1684,7 +1678,7 @@ export const DescribeDomainChangeProgressResponse = /*@__PURE__*/ S.suspend(() =
 export interface DescribeElasticsearchDomainRequest {
   DomainName: string;
 }
-export const DescribeElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       ns,
@@ -1702,7 +1696,7 @@ export const DescribeElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeElasticsearchDomainResponse {
   DomainStatus: ElasticsearchDomainStatus;
 }
-export const DescribeElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatus: ElasticsearchDomainStatus }).pipe(ns),
 ).annotate({
   identifier: "DescribeElasticsearchDomainResponse",
@@ -1710,7 +1704,7 @@ export const DescribeElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeElasticsearchDomainConfigRequest {
   DomainName: string;
 }
-export const DescribeElasticsearchDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       ns,
@@ -1727,7 +1721,7 @@ export const DescribeElasticsearchDomainConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeElasticsearchDomainConfigRequest>;
 export type UIntValue = number;
 export type OptionState = "RequiresIndexDocuments" | "Processing" | "Active" | (string & {});
-export const OptionState = S.String;
+const OptionState = S.String;
 
 export interface OptionStatus {
   CreationDate: Date;
@@ -1736,7 +1730,7 @@ export interface OptionStatus {
   State: OptionState;
   PendingDeletion?: boolean;
 }
-export const OptionStatus = /*@__PURE__*/ S.suspend(() =>
+const OptionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     UpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1749,7 +1743,7 @@ export interface ElasticsearchVersionStatus {
   Options: string;
   Status: OptionStatus;
 }
-export const ElasticsearchVersionStatus = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchVersionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.String, Status: OptionStatus }),
 ).annotate({
   identifier: "ElasticsearchVersionStatus",
@@ -1758,7 +1752,7 @@ export interface ElasticsearchClusterConfigStatus {
   Options: ElasticsearchClusterConfig;
   Status: OptionStatus;
 }
-export const ElasticsearchClusterConfigStatus = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchClusterConfigStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: ElasticsearchClusterConfig, Status: OptionStatus }),
 ).annotate({
   identifier: "ElasticsearchClusterConfigStatus",
@@ -1767,42 +1761,42 @@ export interface EBSOptionsStatus {
   Options: EBSOptions;
   Status: OptionStatus;
 }
-export const EBSOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const EBSOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: EBSOptions, Status: OptionStatus }),
 ).annotate({ identifier: "EBSOptionsStatus" }) as any as S.Schema<EBSOptionsStatus>;
 export interface AccessPoliciesStatus {
   Options: string;
   Status: OptionStatus;
 }
-export const AccessPoliciesStatus = /*@__PURE__*/ S.suspend(() =>
+const AccessPoliciesStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.String, Status: OptionStatus }),
 ).annotate({ identifier: "AccessPoliciesStatus" }) as any as S.Schema<AccessPoliciesStatus>;
 export interface SnapshotOptionsStatus {
   Options: SnapshotOptions;
   Status: OptionStatus;
 }
-export const SnapshotOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const SnapshotOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: SnapshotOptions, Status: OptionStatus }),
 ).annotate({ identifier: "SnapshotOptionsStatus" }) as any as S.Schema<SnapshotOptionsStatus>;
 export interface VPCDerivedInfoStatus {
   Options: VPCDerivedInfo;
   Status: OptionStatus;
 }
-export const VPCDerivedInfoStatus = /*@__PURE__*/ S.suspend(() =>
+const VPCDerivedInfoStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: VPCDerivedInfo, Status: OptionStatus }),
 ).annotate({ identifier: "VPCDerivedInfoStatus" }) as any as S.Schema<VPCDerivedInfoStatus>;
 export interface CognitoOptionsStatus {
   Options: CognitoOptions;
   Status: OptionStatus;
 }
-export const CognitoOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const CognitoOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: CognitoOptions, Status: OptionStatus }),
 ).annotate({ identifier: "CognitoOptionsStatus" }) as any as S.Schema<CognitoOptionsStatus>;
 export interface EncryptionAtRestOptionsStatus {
   Options: EncryptionAtRestOptions;
   Status: OptionStatus;
 }
-export const EncryptionAtRestOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const EncryptionAtRestOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: EncryptionAtRestOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "EncryptionAtRestOptionsStatus",
@@ -1811,7 +1805,7 @@ export interface NodeToNodeEncryptionOptionsStatus {
   Options: NodeToNodeEncryptionOptions;
   Status: OptionStatus;
 }
-export const NodeToNodeEncryptionOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const NodeToNodeEncryptionOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: NodeToNodeEncryptionOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "NodeToNodeEncryptionOptionsStatus",
@@ -1820,14 +1814,14 @@ export interface AdvancedOptionsStatus {
   Options: { [key: string]: string | undefined };
   Status: OptionStatus;
 }
-export const AdvancedOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const AdvancedOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: AdvancedOptions, Status: OptionStatus }),
 ).annotate({ identifier: "AdvancedOptionsStatus" }) as any as S.Schema<AdvancedOptionsStatus>;
 export interface LogPublishingOptionsStatus {
   Options?: { [key: string]: LogPublishingOption | undefined };
   Status?: OptionStatus;
 }
-export const LogPublishingOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const LogPublishingOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.optional(LogPublishingOptions), Status: S.optional(OptionStatus) }),
 ).annotate({
   identifier: "LogPublishingOptionsStatus",
@@ -1836,7 +1830,7 @@ export interface DomainEndpointOptionsStatus {
   Options: DomainEndpointOptions;
   Status: OptionStatus;
 }
-export const DomainEndpointOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const DomainEndpointOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: DomainEndpointOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "DomainEndpointOptionsStatus",
@@ -1845,20 +1839,20 @@ export interface AdvancedSecurityOptionsStatus {
   Options: AdvancedSecurityOptions;
   Status: OptionStatus;
 }
-export const AdvancedSecurityOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const AdvancedSecurityOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: AdvancedSecurityOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "AdvancedSecurityOptionsStatus",
 }) as any as S.Schema<AdvancedSecurityOptionsStatus>;
 export type RollbackOnDisable = "NO_ROLLBACK" | "DEFAULT_ROLLBACK" | (string & {});
-export const RollbackOnDisable = S.String;
+const RollbackOnDisable = S.String;
 
 export interface AutoTuneOptions {
   DesiredState?: AutoTuneDesiredState;
   RollbackOnDisable?: RollbackOnDisable;
   MaintenanceSchedules?: AutoTuneMaintenanceSchedule[];
 }
-export const AutoTuneOptions = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DesiredState: S.optional(AutoTuneDesiredState),
     RollbackOnDisable: S.optional(RollbackOnDisable),
@@ -1873,7 +1867,7 @@ export interface AutoTuneStatus {
   ErrorMessage?: string;
   PendingDeletion?: boolean;
 }
-export const AutoTuneStatus = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     UpdateDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1887,14 +1881,14 @@ export interface AutoTuneOptionsStatus {
   Options?: AutoTuneOptions;
   Status?: AutoTuneStatus;
 }
-export const AutoTuneOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const AutoTuneOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: S.optional(AutoTuneOptions), Status: S.optional(AutoTuneStatus) }),
 ).annotate({ identifier: "AutoTuneOptionsStatus" }) as any as S.Schema<AutoTuneOptionsStatus>;
 export interface DeploymentStrategyOptionsStatus {
   Options: DeploymentStrategyOptions;
   Status: OptionStatus;
 }
-export const DeploymentStrategyOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const DeploymentStrategyOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: DeploymentStrategyOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "DeploymentStrategyOptionsStatus",
@@ -1903,7 +1897,7 @@ export interface AutomatedSnapshotPauseOptionsStatus {
   Options: AutomatedSnapshotPauseOptions;
   Status: OptionStatus;
 }
-export const AutomatedSnapshotPauseOptionsStatus = /*@__PURE__*/ S.suspend(() =>
+const AutomatedSnapshotPauseOptionsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: AutomatedSnapshotPauseOptions, Status: OptionStatus }),
 ).annotate({
   identifier: "AutomatedSnapshotPauseOptionsStatus",
@@ -1912,14 +1906,14 @@ export interface UseCaseStatus {
   Options: DomainUseCase;
   Status: OptionStatus;
 }
-export const UseCaseStatus = /*@__PURE__*/ S.suspend(() =>
+const UseCaseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Options: DomainUseCase, Status: OptionStatus }),
 ).annotate({ identifier: "UseCaseStatus" }) as any as S.Schema<UseCaseStatus>;
 export interface EngineModeStatus {
   Options: DomainEngineMode;
   Status: OptionStatus;
 }
-export const EngineModeStatus = UseCaseStatus as any as S.Schema<EngineModeStatus>;
+const EngineModeStatus = UseCaseStatus as any as S.Schema<EngineModeStatus>;
 export interface ElasticsearchDomainConfig {
   ElasticsearchVersion?: ElasticsearchVersionStatus;
   ElasticsearchClusterConfig?: ElasticsearchClusterConfigStatus;
@@ -1942,7 +1936,7 @@ export interface ElasticsearchDomainConfig {
   UseCase?: UseCaseStatus;
   EngineMode?: EngineModeStatus;
 }
-export const ElasticsearchDomainConfig = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchDomainConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ElasticsearchVersion: S.optional(ElasticsearchVersionStatus),
     ElasticsearchClusterConfig: S.optional(ElasticsearchClusterConfigStatus),
@@ -1971,17 +1965,17 @@ export const ElasticsearchDomainConfig = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeElasticsearchDomainConfigResponse {
   DomainConfig: ElasticsearchDomainConfig;
 }
-export const DescribeElasticsearchDomainConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainConfig: ElasticsearchDomainConfig }).pipe(ns),
 ).annotate({
   identifier: "DescribeElasticsearchDomainConfigResponse",
 }) as any as S.Schema<DescribeElasticsearchDomainConfigResponse>;
 export type DomainNameList = string[];
-export const DomainNameList = GUIDList as any as S.Schema<DomainNameList>;
+const DomainNameList = GUIDList as any as S.Schema<DomainNameList>;
 export interface DescribeElasticsearchDomainsRequest {
   DomainNames: string[];
 }
-export const DescribeElasticsearchDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainNames: DomainNameList }).pipe(
     T.all(
       ns,
@@ -1997,11 +1991,11 @@ export const DescribeElasticsearchDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeElasticsearchDomainsRequest",
 }) as any as S.Schema<DescribeElasticsearchDomainsRequest>;
 export type ElasticsearchDomainStatusList = ElasticsearchDomainStatus[];
-export const ElasticsearchDomainStatusList = /*@__PURE__*/ S.Array(ElasticsearchDomainStatus);
+const ElasticsearchDomainStatusList = /*@__PURE__*/ S.Array(ElasticsearchDomainStatus);
 export interface DescribeElasticsearchDomainsResponse {
   DomainStatusList: ElasticsearchDomainStatus[];
 }
-export const DescribeElasticsearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainStatusList: ElasticsearchDomainStatusList }).pipe(ns),
 ).annotate({
   identifier: "DescribeElasticsearchDomainsResponse",
@@ -2011,7 +2005,7 @@ export interface DescribeElasticsearchInstanceTypeLimitsRequest {
   InstanceType: ESPartitionInstanceType;
   ElasticsearchVersion: string;
 }
-export const DescribeElasticsearchInstanceTypeLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchInstanceTypeLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String).pipe(T.HttpQuery("domainName")),
     InstanceType: ESPartitionInstanceType.pipe(T.HttpLabel("InstanceType")),
@@ -2039,22 +2033,22 @@ export type StorageSubTypeName = string;
 export type LimitName = string;
 export type LimitValue = string;
 export type LimitValueList = string[];
-export const LimitValueList = GUIDList as any as S.Schema<LimitValueList>;
+const LimitValueList = GUIDList as any as S.Schema<LimitValueList>;
 export interface StorageTypeLimit {
   LimitName?: string;
   LimitValues?: string[];
 }
-export const StorageTypeLimit = /*@__PURE__*/ S.suspend(() =>
+const StorageTypeLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LimitName: S.optional(S.String), LimitValues: S.optional(LimitValueList) }),
 ).annotate({ identifier: "StorageTypeLimit" }) as any as S.Schema<StorageTypeLimit>;
 export type StorageTypeLimitList = StorageTypeLimit[];
-export const StorageTypeLimitList = /*@__PURE__*/ S.Array(StorageTypeLimit);
+const StorageTypeLimitList = /*@__PURE__*/ S.Array(StorageTypeLimit);
 export interface StorageType {
   StorageTypeName?: string;
   StorageSubTypeName?: string;
   StorageTypeLimits?: StorageTypeLimit[];
 }
-export const StorageType = /*@__PURE__*/ S.suspend(() =>
+const StorageType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StorageTypeName: S.optional(S.String),
     StorageSubTypeName: S.optional(S.String),
@@ -2062,14 +2056,14 @@ export const StorageType = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StorageType" }) as any as S.Schema<StorageType>;
 export type StorageTypeList = StorageType[];
-export const StorageTypeList = /*@__PURE__*/ S.Array(StorageType);
+const StorageTypeList = /*@__PURE__*/ S.Array(StorageType);
 export type MinimumInstanceCount = number;
 export type MaximumInstanceCount = number;
 export interface InstanceCountLimits {
   MinimumInstanceCount?: number;
   MaximumInstanceCount?: number;
 }
-export const InstanceCountLimits = /*@__PURE__*/ S.suspend(() =>
+const InstanceCountLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MinimumInstanceCount: S.optional(S.Number),
     MaximumInstanceCount: S.optional(S.Number),
@@ -2078,22 +2072,21 @@ export const InstanceCountLimits = /*@__PURE__*/ S.suspend(() =>
 export interface InstanceLimits {
   InstanceCountLimits?: InstanceCountLimits;
 }
-export const InstanceLimits = /*@__PURE__*/ S.suspend(() =>
+const InstanceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InstanceCountLimits: S.optional(InstanceCountLimits) }),
 ).annotate({ identifier: "InstanceLimits" }) as any as S.Schema<InstanceLimits>;
 export interface AdditionalLimit {
   LimitName?: string;
   LimitValues?: string[];
 }
-export const AdditionalLimit = StorageTypeLimit as any as S.Schema<AdditionalLimit>;
 export type AdditionalLimitList = AdditionalLimit[];
-export const AdditionalLimitList = StorageTypeLimitList as any as S.Schema<AdditionalLimitList>;
+const AdditionalLimitList = StorageTypeLimitList as any as S.Schema<AdditionalLimitList>;
 export interface Limits {
   StorageTypes?: StorageType[];
   InstanceLimits?: InstanceLimits;
   AdditionalLimits?: AdditionalLimit[];
 }
-export const Limits = /*@__PURE__*/ S.suspend(() =>
+const Limits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StorageTypes: S.optional(StorageTypeList),
     InstanceLimits: S.optional(InstanceLimits),
@@ -2101,33 +2094,33 @@ export const Limits = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Limits" }) as any as S.Schema<Limits>;
 export type LimitsByRole = { [key: string]: Limits | undefined };
-export const LimitsByRole = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Limits.pipe(S.optional));
+const LimitsByRole = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ Limits.pipe(S.optional));
 export interface DescribeElasticsearchInstanceTypeLimitsResponse {
   LimitsByRole?: { [key: string]: Limits | undefined };
 }
-export const DescribeElasticsearchInstanceTypeLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeElasticsearchInstanceTypeLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ LimitsByRole: S.optional(LimitsByRole) }).pipe(ns),
 ).annotate({
   identifier: "DescribeElasticsearchInstanceTypeLimitsResponse",
 }) as any as S.Schema<DescribeElasticsearchInstanceTypeLimitsResponse>;
 export type NonEmptyString = string;
 export type ValueStringList = string[];
-export const ValueStringList = GUIDList as any as S.Schema<ValueStringList>;
+const ValueStringList = GUIDList as any as S.Schema<ValueStringList>;
 export interface Filter {
   Name?: string;
   Values?: string[];
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), Values: S.optional(ValueStringList) }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
+const FilterList = /*@__PURE__*/ S.Array(Filter);
 export interface DescribeInboundCrossClusterSearchConnectionsRequest {
   Filters?: Filter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeInboundCrossClusterSearchConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeInboundCrossClusterSearchConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(FilterList),
     MaxResults: S.optional(S.Number),
@@ -2147,14 +2140,14 @@ export const DescribeInboundCrossClusterSearchConnectionsRequest = /*@__PURE__*/
   identifier: "DescribeInboundCrossClusterSearchConnectionsRequest",
 }) as any as S.Schema<DescribeInboundCrossClusterSearchConnectionsRequest>;
 export type InboundCrossClusterSearchConnections = InboundCrossClusterSearchConnection[];
-export const InboundCrossClusterSearchConnections = /*@__PURE__*/ S.Array(
+const InboundCrossClusterSearchConnections = /*@__PURE__*/ S.Array(
   InboundCrossClusterSearchConnection,
 );
 export interface DescribeInboundCrossClusterSearchConnectionsResponse {
   CrossClusterSearchConnections?: InboundCrossClusterSearchConnection[];
   NextToken?: string;
 }
-export const DescribeInboundCrossClusterSearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeInboundCrossClusterSearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnections: S.optional(InboundCrossClusterSearchConnections),
     NextToken: S.optional(S.String),
@@ -2167,7 +2160,7 @@ export interface DescribeOutboundCrossClusterSearchConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeOutboundCrossClusterSearchConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeOutboundCrossClusterSearchConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(FilterList),
     MaxResults: S.optional(S.Number),
@@ -2187,14 +2180,14 @@ export const DescribeOutboundCrossClusterSearchConnectionsRequest = /*@__PURE__*
   identifier: "DescribeOutboundCrossClusterSearchConnectionsRequest",
 }) as any as S.Schema<DescribeOutboundCrossClusterSearchConnectionsRequest>;
 export type OutboundCrossClusterSearchConnections = OutboundCrossClusterSearchConnection[];
-export const OutboundCrossClusterSearchConnections = /*@__PURE__*/ S.Array(
+const OutboundCrossClusterSearchConnections = /*@__PURE__*/ S.Array(
   OutboundCrossClusterSearchConnection,
 );
 export interface DescribeOutboundCrossClusterSearchConnectionsResponse {
   CrossClusterSearchConnections?: OutboundCrossClusterSearchConnection[];
   NextToken?: string;
 }
-export const DescribeOutboundCrossClusterSearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeOutboundCrossClusterSearchConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnections: S.optional(OutboundCrossClusterSearchConnections),
     NextToken: S.optional(S.String),
@@ -2207,30 +2200,29 @@ export type DescribePackagesFilterName =
   | "PackageName"
   | "PackageStatus"
   | (string & {});
-export const DescribePackagesFilterName = S.String;
+const DescribePackagesFilterName = S.String;
 
 export type DescribePackagesFilterValue = string;
 export type DescribePackagesFilterValues = string[];
-export const DescribePackagesFilterValues =
-  GUIDList as any as S.Schema<DescribePackagesFilterValues>;
+const DescribePackagesFilterValues = GUIDList as any as S.Schema<DescribePackagesFilterValues>;
 export interface DescribePackagesFilter {
   Name?: DescribePackagesFilterName;
   Value?: string[];
 }
-export const DescribePackagesFilter = /*@__PURE__*/ S.suspend(() =>
+const DescribePackagesFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(DescribePackagesFilterName),
     Value: S.optional(DescribePackagesFilterValues),
   }),
 ).annotate({ identifier: "DescribePackagesFilter" }) as any as S.Schema<DescribePackagesFilter>;
 export type DescribePackagesFilterList = DescribePackagesFilter[];
-export const DescribePackagesFilterList = /*@__PURE__*/ S.Array(DescribePackagesFilter);
+const DescribePackagesFilterList = /*@__PURE__*/ S.Array(DescribePackagesFilter);
 export interface DescribePackagesRequest {
   Filters?: DescribePackagesFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribePackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribePackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(DescribePackagesFilterList),
     MaxResults: S.optional(S.Number),
@@ -2248,12 +2240,12 @@ export const DescribePackagesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DescribePackagesRequest" }) as any as S.Schema<DescribePackagesRequest>;
 export type PackageDetailsList = PackageDetails[];
-export const PackageDetailsList = /*@__PURE__*/ S.Array(PackageDetails);
+const PackageDetailsList = /*@__PURE__*/ S.Array(PackageDetails);
 export interface DescribePackagesResponse {
   PackageDetailsList?: PackageDetails[];
   NextToken?: string;
 }
-export const DescribePackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribePackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageDetailsList: S.optional(PackageDetailsList),
     NextToken: S.optional(S.String),
@@ -2264,7 +2256,7 @@ export interface DescribeReservedElasticsearchInstanceOfferingsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeReservedElasticsearchInstanceOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeReservedElasticsearchInstanceOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedElasticsearchInstanceOfferingId: S.optional(S.String).pipe(T.HttpQuery("offeringId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2288,20 +2280,20 @@ export type ReservedElasticsearchInstancePaymentOption =
   | "PARTIAL_UPFRONT"
   | "NO_UPFRONT"
   | (string & {});
-export const ReservedElasticsearchInstancePaymentOption = S.String;
+const ReservedElasticsearchInstancePaymentOption = S.String;
 
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
 }
-export const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
+const RecurringCharge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecurringChargeAmount: S.optional(S.Number),
     RecurringChargeFrequency: S.optional(S.String),
   }),
 ).annotate({ identifier: "RecurringCharge" }) as any as S.Schema<RecurringCharge>;
 export type RecurringChargeList = RecurringCharge[];
-export const RecurringChargeList = /*@__PURE__*/ S.Array(
+const RecurringChargeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ RecurringCharge.pipe(/*@__PURE__*/ T.XmlName("RecurringCharge")).annotate({
     identifier: "RecurringCharge",
   }),
@@ -2316,7 +2308,7 @@ export interface ReservedElasticsearchInstanceOffering {
   PaymentOption?: ReservedElasticsearchInstancePaymentOption;
   RecurringCharges?: RecurringCharge[];
 }
-export const ReservedElasticsearchInstanceOffering = /*@__PURE__*/ S.suspend(() =>
+const ReservedElasticsearchInstanceOffering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedElasticsearchInstanceOfferingId: S.optional(S.String),
     ElasticsearchInstanceType: S.optional(ESPartitionInstanceType),
@@ -2331,7 +2323,7 @@ export const ReservedElasticsearchInstanceOffering = /*@__PURE__*/ S.suspend(() 
   identifier: "ReservedElasticsearchInstanceOffering",
 }) as any as S.Schema<ReservedElasticsearchInstanceOffering>;
 export type ReservedElasticsearchInstanceOfferingList = ReservedElasticsearchInstanceOffering[];
-export const ReservedElasticsearchInstanceOfferingList = /*@__PURE__*/ S.Array(
+const ReservedElasticsearchInstanceOfferingList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ ReservedElasticsearchInstanceOffering.pipe(
     /*@__PURE__*/ T.XmlName("ReservedElasticsearchInstanceOffering"),
   ).annotate({ identifier: "ReservedElasticsearchInstanceOffering" }),
@@ -2340,7 +2332,7 @@ export interface DescribeReservedElasticsearchInstanceOfferingsResponse {
   NextToken?: string;
   ReservedElasticsearchInstanceOfferings?: ReservedElasticsearchInstanceOffering[];
 }
-export const DescribeReservedElasticsearchInstanceOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeReservedElasticsearchInstanceOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     ReservedElasticsearchInstanceOfferings: S.optional(ReservedElasticsearchInstanceOfferingList),
@@ -2353,7 +2345,7 @@ export interface DescribeReservedElasticsearchInstancesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const DescribeReservedElasticsearchInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeReservedElasticsearchInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedElasticsearchInstanceId: S.optional(S.String).pipe(T.HttpQuery("reservationId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2388,7 +2380,7 @@ export interface ReservedElasticsearchInstance {
   PaymentOption?: ReservedElasticsearchInstancePaymentOption;
   RecurringCharges?: RecurringCharge[];
 }
-export const ReservedElasticsearchInstance = /*@__PURE__*/ S.suspend(() =>
+const ReservedElasticsearchInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservationName: S.optional(S.String),
     ReservedElasticsearchInstanceId: S.optional(S.String),
@@ -2408,14 +2400,12 @@ export const ReservedElasticsearchInstance = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReservedElasticsearchInstance",
 }) as any as S.Schema<ReservedElasticsearchInstance>;
 export type ReservedElasticsearchInstanceList = ReservedElasticsearchInstance[];
-export const ReservedElasticsearchInstanceList = /*@__PURE__*/ S.Array(
-  ReservedElasticsearchInstance,
-);
+const ReservedElasticsearchInstanceList = /*@__PURE__*/ S.Array(ReservedElasticsearchInstance);
 export interface DescribeReservedElasticsearchInstancesResponse {
   NextToken?: string;
   ReservedElasticsearchInstances?: ReservedElasticsearchInstance[];
 }
-export const DescribeReservedElasticsearchInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeReservedElasticsearchInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     ReservedElasticsearchInstances: S.optional(ReservedElasticsearchInstanceList),
@@ -2424,11 +2414,11 @@ export const DescribeReservedElasticsearchInstancesResponse = /*@__PURE__*/ S.su
   identifier: "DescribeReservedElasticsearchInstancesResponse",
 }) as any as S.Schema<DescribeReservedElasticsearchInstancesResponse>;
 export type VpcEndpointIdList = string[];
-export const VpcEndpointIdList = GUIDList as any as S.Schema<VpcEndpointIdList>;
+const VpcEndpointIdList = GUIDList as any as S.Schema<VpcEndpointIdList>;
 export interface DescribeVpcEndpointsRequest {
   VpcEndpointIds: string[];
 }
-export const DescribeVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointIds: VpcEndpointIdList }).pipe(
     T.all(
       ns,
@@ -2444,16 +2434,16 @@ export const DescribeVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeVpcEndpointsRequest",
 }) as any as S.Schema<DescribeVpcEndpointsRequest>;
 export type VpcEndpoints = VpcEndpoint[];
-export const VpcEndpoints = /*@__PURE__*/ S.Array(VpcEndpoint);
+const VpcEndpoints = /*@__PURE__*/ S.Array(VpcEndpoint);
 export type VpcEndpointErrorCode = "ENDPOINT_NOT_FOUND" | "SERVER_ERROR" | (string & {});
-export const VpcEndpointErrorCode = S.String;
+const VpcEndpointErrorCode = S.String;
 
 export interface VpcEndpointError {
   VpcEndpointId?: string;
   ErrorCode?: VpcEndpointErrorCode;
   ErrorMessage?: string;
 }
-export const VpcEndpointError = /*@__PURE__*/ S.suspend(() =>
+const VpcEndpointError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     VpcEndpointId: S.optional(S.String),
     ErrorCode: S.optional(VpcEndpointErrorCode),
@@ -2461,12 +2451,12 @@ export const VpcEndpointError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VpcEndpointError" }) as any as S.Schema<VpcEndpointError>;
 export type VpcEndpointErrorList = VpcEndpointError[];
-export const VpcEndpointErrorList = /*@__PURE__*/ S.Array(VpcEndpointError);
+const VpcEndpointErrorList = /*@__PURE__*/ S.Array(VpcEndpointError);
 export interface DescribeVpcEndpointsResponse {
   VpcEndpoints: VpcEndpoint[];
   VpcEndpointErrors: VpcEndpointError[];
 }
-export const DescribeVpcEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeVpcEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpoints: VpcEndpoints, VpcEndpointErrors: VpcEndpointErrorList }).pipe(ns),
 ).annotate({
   identifier: "DescribeVpcEndpointsResponse",
@@ -2475,7 +2465,7 @@ export interface DissociatePackageRequest {
   PackageID: string;
   DomainName: string;
 }
-export const DissociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const DissociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.String.pipe(T.HttpLabel("PackageID")),
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
@@ -2494,7 +2484,7 @@ export const DissociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DissociatePackageResponse {
   DomainPackageDetails?: DomainPackageDetails;
 }
-export const DissociatePackageResponse = /*@__PURE__*/ S.suspend(() =>
+const DissociatePackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainPackageDetails: S.optional(DomainPackageDetails) }).pipe(ns),
 ).annotate({
   identifier: "DissociatePackageResponse",
@@ -2502,7 +2492,7 @@ export const DissociatePackageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetCompatibleElasticsearchVersionsRequest {
   DomainName?: string;
 }
-export const GetCompatibleElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompatibleElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.optional(S.String).pipe(T.HttpQuery("domainName")) }).pipe(
     T.all(
       ns,
@@ -2518,23 +2508,23 @@ export const GetCompatibleElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend
   identifier: "GetCompatibleElasticsearchVersionsRequest",
 }) as any as S.Schema<GetCompatibleElasticsearchVersionsRequest>;
 export type ElasticsearchVersionList = string[];
-export const ElasticsearchVersionList = GUIDList as any as S.Schema<ElasticsearchVersionList>;
+const ElasticsearchVersionList = GUIDList as any as S.Schema<ElasticsearchVersionList>;
 export interface CompatibleVersionsMap {
   SourceVersion?: string;
   TargetVersions?: string[];
 }
-export const CompatibleVersionsMap = /*@__PURE__*/ S.suspend(() =>
+const CompatibleVersionsMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SourceVersion: S.optional(S.String),
     TargetVersions: S.optional(ElasticsearchVersionList),
   }),
 ).annotate({ identifier: "CompatibleVersionsMap" }) as any as S.Schema<CompatibleVersionsMap>;
 export type CompatibleElasticsearchVersionsList = CompatibleVersionsMap[];
-export const CompatibleElasticsearchVersionsList = /*@__PURE__*/ S.Array(CompatibleVersionsMap);
+const CompatibleElasticsearchVersionsList = /*@__PURE__*/ S.Array(CompatibleVersionsMap);
 export interface GetCompatibleElasticsearchVersionsResponse {
   CompatibleElasticsearchVersions?: CompatibleVersionsMap[];
 }
-export const GetCompatibleElasticsearchVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCompatibleElasticsearchVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CompatibleElasticsearchVersions: S.optional(CompatibleElasticsearchVersionsList),
   }).pipe(ns),
@@ -2546,7 +2536,7 @@ export interface GetPackageVersionHistoryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetPackageVersionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPackageVersionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.String.pipe(T.HttpLabel("PackageID")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2571,7 +2561,7 @@ export interface PackageVersionHistory {
   CommitMessage?: string;
   CreatedAt?: Date;
 }
-export const PackageVersionHistory = /*@__PURE__*/ S.suspend(() =>
+const PackageVersionHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageVersion: S.optional(S.String),
     CommitMessage: S.optional(S.String),
@@ -2579,13 +2569,13 @@ export const PackageVersionHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PackageVersionHistory" }) as any as S.Schema<PackageVersionHistory>;
 export type PackageVersionHistoryList = PackageVersionHistory[];
-export const PackageVersionHistoryList = /*@__PURE__*/ S.Array(PackageVersionHistory);
+const PackageVersionHistoryList = /*@__PURE__*/ S.Array(PackageVersionHistory);
 export interface GetPackageVersionHistoryResponse {
   PackageID?: string;
   PackageVersionHistoryList?: PackageVersionHistory[];
   NextToken?: string;
 }
-export const GetPackageVersionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPackageVersionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.optional(S.String),
     PackageVersionHistoryList: S.optional(PackageVersionHistoryList),
@@ -2599,7 +2589,7 @@ export interface GetUpgradeHistoryRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetUpgradeHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpgradeHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2624,21 +2614,21 @@ export type UpgradeStatus =
   | "SUCCEEDED_WITH_ISSUES"
   | "FAILED"
   | (string & {});
-export const UpgradeStatus = S.String;
+const UpgradeStatus = S.String;
 
 export type UpgradeStep = "PRE_UPGRADE_CHECK" | "SNAPSHOT" | "UPGRADE" | (string & {});
-export const UpgradeStep = S.String;
+const UpgradeStep = S.String;
 
 export type Issue = string;
 export type Issues = string[];
-export const Issues = GUIDList as any as S.Schema<Issues>;
+const Issues = GUIDList as any as S.Schema<Issues>;
 export interface UpgradeStepItem {
   UpgradeStep?: UpgradeStep;
   UpgradeStepStatus?: UpgradeStatus;
   Issues?: string[];
   ProgressPercent?: number;
 }
-export const UpgradeStepItem = /*@__PURE__*/ S.suspend(() =>
+const UpgradeStepItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpgradeStep: S.optional(UpgradeStep),
     UpgradeStepStatus: S.optional(UpgradeStatus),
@@ -2647,14 +2637,14 @@ export const UpgradeStepItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpgradeStepItem" }) as any as S.Schema<UpgradeStepItem>;
 export type UpgradeStepsList = UpgradeStepItem[];
-export const UpgradeStepsList = /*@__PURE__*/ S.Array(UpgradeStepItem);
+const UpgradeStepsList = /*@__PURE__*/ S.Array(UpgradeStepItem);
 export interface UpgradeHistory {
   UpgradeName?: string;
   StartTimestamp?: Date;
   UpgradeStatus?: UpgradeStatus;
   StepsList?: UpgradeStepItem[];
 }
-export const UpgradeHistory = /*@__PURE__*/ S.suspend(() =>
+const UpgradeHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpgradeName: S.optional(S.String),
     StartTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2663,12 +2653,12 @@ export const UpgradeHistory = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UpgradeHistory" }) as any as S.Schema<UpgradeHistory>;
 export type UpgradeHistoryList = UpgradeHistory[];
-export const UpgradeHistoryList = /*@__PURE__*/ S.Array(UpgradeHistory);
+const UpgradeHistoryList = /*@__PURE__*/ S.Array(UpgradeHistory);
 export interface GetUpgradeHistoryResponse {
   UpgradeHistories?: UpgradeHistory[];
   NextToken?: string;
 }
-export const GetUpgradeHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpgradeHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpgradeHistories: S.optional(UpgradeHistoryList),
     NextToken: S.optional(S.String),
@@ -2679,7 +2669,7 @@ export const GetUpgradeHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetUpgradeStatusRequest {
   DomainName: string;
 }
-export const GetUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUpgradeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")) }).pipe(
     T.all(
       ns,
@@ -2697,7 +2687,7 @@ export interface GetUpgradeStatusResponse {
   StepStatus?: UpgradeStatus;
   UpgradeName?: string;
 }
-export const GetUpgradeStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUpgradeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpgradeStep: S.optional(UpgradeStep),
     StepStatus: S.optional(UpgradeStatus),
@@ -2705,12 +2695,12 @@ export const GetUpgradeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   }).pipe(ns),
 ).annotate({ identifier: "GetUpgradeStatusResponse" }) as any as S.Schema<GetUpgradeStatusResponse>;
 export type EngineType = "OpenSearch" | "Elasticsearch" | (string & {});
-export const EngineType = S.String;
+const EngineType = S.String;
 
 export interface ListDomainNamesRequest {
   EngineType?: EngineType;
 }
-export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EngineType: S.optional(EngineType).pipe(T.HttpQuery("engineType")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/2015-01-01/domain" }), svc, auth, proto, ver, rules),
   ),
@@ -2719,15 +2709,15 @@ export interface DomainInfo {
   DomainName?: string;
   EngineType?: EngineType;
 }
-export const DomainInfo = /*@__PURE__*/ S.suspend(() =>
+const DomainInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.optional(S.String), EngineType: S.optional(EngineType) }),
 ).annotate({ identifier: "DomainInfo" }) as any as S.Schema<DomainInfo>;
 export type DomainInfoList = DomainInfo[];
-export const DomainInfoList = /*@__PURE__*/ S.Array(DomainInfo);
+const DomainInfoList = /*@__PURE__*/ S.Array(DomainInfo);
 export interface ListDomainNamesResponse {
   DomainNames?: DomainInfo[];
 }
-export const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainNames: S.optional(DomainInfoList) }).pipe(ns),
 ).annotate({ identifier: "ListDomainNamesResponse" }) as any as S.Schema<ListDomainNamesResponse>;
 export interface ListDomainsForPackageRequest {
@@ -2735,7 +2725,7 @@ export interface ListDomainsForPackageRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListDomainsForPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsForPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.String.pipe(T.HttpLabel("PackageID")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2755,12 +2745,12 @@ export const ListDomainsForPackageRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsForPackageRequest",
 }) as any as S.Schema<ListDomainsForPackageRequest>;
 export type DomainPackageDetailsList = DomainPackageDetails[];
-export const DomainPackageDetailsList = /*@__PURE__*/ S.Array(DomainPackageDetails);
+const DomainPackageDetailsList = /*@__PURE__*/ S.Array(DomainPackageDetails);
 export interface ListDomainsForPackageResponse {
   DomainPackageDetailsList?: DomainPackageDetails[];
   NextToken?: string;
 }
-export const ListDomainsForPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsForPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainPackageDetailsList: S.optional(DomainPackageDetailsList),
     NextToken: S.optional(S.String),
@@ -2774,7 +2764,7 @@ export interface ListElasticsearchInstanceTypesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListElasticsearchInstanceTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElasticsearchInstanceTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ElasticsearchVersion: S.String.pipe(T.HttpLabel("ElasticsearchVersion")),
     DomainName: S.optional(S.String).pipe(T.HttpQuery("domainName")),
@@ -2795,12 +2785,12 @@ export const ListElasticsearchInstanceTypesRequest = /*@__PURE__*/ S.suspend(() 
   identifier: "ListElasticsearchInstanceTypesRequest",
 }) as any as S.Schema<ListElasticsearchInstanceTypesRequest>;
 export type ElasticsearchInstanceTypeList = ESPartitionInstanceType[];
-export const ElasticsearchInstanceTypeList = /*@__PURE__*/ S.Array(ESPartitionInstanceType);
+const ElasticsearchInstanceTypeList = /*@__PURE__*/ S.Array(ESPartitionInstanceType);
 export interface ListElasticsearchInstanceTypesResponse {
   ElasticsearchInstanceTypes?: ESPartitionInstanceType[];
   NextToken?: string;
 }
-export const ListElasticsearchInstanceTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListElasticsearchInstanceTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ElasticsearchInstanceTypes: S.optional(ElasticsearchInstanceTypeList),
     NextToken: S.optional(S.String),
@@ -2812,7 +2802,7 @@ export interface ListElasticsearchVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElasticsearchVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2834,7 +2824,7 @@ export interface ListElasticsearchVersionsResponse {
   ElasticsearchVersions?: string[];
   NextToken?: string;
 }
-export const ListElasticsearchVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListElasticsearchVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ElasticsearchVersions: S.optional(ElasticsearchVersionList),
     NextToken: S.optional(S.String),
@@ -2847,7 +2837,7 @@ export interface ListPackagesForDomainRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPackagesForDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesForDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2870,12 +2860,12 @@ export interface ListPackagesForDomainResponse {
   DomainPackageDetailsList?: DomainPackageDetails[];
   NextToken?: string;
 }
-export const ListPackagesForDomainResponse =
+const ListPackagesForDomainResponse =
   ListDomainsForPackageResponse as any as S.Schema<ListPackagesForDomainResponse>;
 export interface ListTagsRequest {
   ARN: string;
 }
-export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.String.pipe(T.HttpQuery("arn")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/2015-01-01/tags" }), svc, auth, proto, ver, rules),
   ),
@@ -2883,14 +2873,14 @@ export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsResponse {
   TagList?: Tag[];
 }
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({ identifier: "ListTagsResponse" }) as any as S.Schema<ListTagsResponse>;
 export interface ListVpcEndpointAccessRequest {
   DomainName: string;
   NextToken?: string;
 }
-export const ListVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2909,12 +2899,12 @@ export const ListVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListVpcEndpointAccessRequest",
 }) as any as S.Schema<ListVpcEndpointAccessRequest>;
 export type AuthorizedPrincipalList = AuthorizedPrincipal[];
-export const AuthorizedPrincipalList = /*@__PURE__*/ S.Array(AuthorizedPrincipal);
+const AuthorizedPrincipalList = /*@__PURE__*/ S.Array(AuthorizedPrincipal);
 export interface ListVpcEndpointAccessResponse {
   AuthorizedPrincipalList: AuthorizedPrincipal[];
   NextToken: string;
 }
-export const ListVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AuthorizedPrincipalList: AuthorizedPrincipalList, NextToken: S.String }).pipe(ns),
 ).annotate({
   identifier: "ListVpcEndpointAccessResponse",
@@ -2922,7 +2912,7 @@ export const ListVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListVpcEndpointsRequest {
   NextToken?: string;
 }
-export const ListVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")) }).pipe(
     T.all(
       ns,
@@ -2936,19 +2926,19 @@ export const ListVpcEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListVpcEndpointsRequest" }) as any as S.Schema<ListVpcEndpointsRequest>;
 export type VpcEndpointSummaryList = VpcEndpointSummary[];
-export const VpcEndpointSummaryList = /*@__PURE__*/ S.Array(VpcEndpointSummary);
+const VpcEndpointSummaryList = /*@__PURE__*/ S.Array(VpcEndpointSummary);
 export interface ListVpcEndpointsResponse {
   VpcEndpointSummaryList: VpcEndpointSummary[];
   NextToken: string;
 }
-export const ListVpcEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointSummaryList: VpcEndpointSummaryList, NextToken: S.String }).pipe(ns),
 ).annotate({ identifier: "ListVpcEndpointsResponse" }) as any as S.Schema<ListVpcEndpointsResponse>;
 export interface ListVpcEndpointsForDomainRequest {
   DomainName: string;
   NextToken?: string;
 }
-export const ListVpcEndpointsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2970,7 +2960,7 @@ export interface ListVpcEndpointsForDomainResponse {
   VpcEndpointSummaryList: VpcEndpointSummary[];
   NextToken: string;
 }
-export const ListVpcEndpointsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpcEndpointsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointSummaryList: VpcEndpointSummaryList, NextToken: S.String }).pipe(ns),
 ).annotate({
   identifier: "ListVpcEndpointsForDomainResponse",
@@ -2981,7 +2971,7 @@ export interface PurchaseReservedElasticsearchInstanceOfferingRequest {
   ReservationName: string;
   InstanceCount?: number;
 }
-export const PurchaseReservedElasticsearchInstanceOfferingRequest = /*@__PURE__*/ S.suspend(() =>
+const PurchaseReservedElasticsearchInstanceOfferingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedElasticsearchInstanceOfferingId: S.String,
     ReservationName: S.String,
@@ -3004,7 +2994,7 @@ export interface PurchaseReservedElasticsearchInstanceOfferingResponse {
   ReservedElasticsearchInstanceId?: string;
   ReservationName?: string;
 }
-export const PurchaseReservedElasticsearchInstanceOfferingResponse = /*@__PURE__*/ S.suspend(() =>
+const PurchaseReservedElasticsearchInstanceOfferingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ReservedElasticsearchInstanceId: S.optional(S.String),
     ReservationName: S.optional(S.String),
@@ -3015,7 +3005,7 @@ export const PurchaseReservedElasticsearchInstanceOfferingResponse = /*@__PURE__
 export interface RejectInboundCrossClusterSearchConnectionRequest {
   CrossClusterSearchConnectionId: string;
 }
-export const RejectInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CrossClusterSearchConnectionId: S.String.pipe(T.HttpLabel("CrossClusterSearchConnectionId")),
   }).pipe(
@@ -3038,13 +3028,13 @@ export const RejectInboundCrossClusterSearchConnectionRequest = /*@__PURE__*/ S.
 export interface RejectInboundCrossClusterSearchConnectionResponse {
   CrossClusterSearchConnection?: InboundCrossClusterSearchConnection;
 }
-export const RejectInboundCrossClusterSearchConnectionResponse =
+const RejectInboundCrossClusterSearchConnectionResponse =
   AcceptInboundCrossClusterSearchConnectionResponse as any as S.Schema<RejectInboundCrossClusterSearchConnectionResponse>;
 export interface RemoveTagsRequest {
   ARN: string;
   TagKeys: string[];
 }
-export const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ARN: S.String, TagKeys: StringList }).pipe(
     T.all(
       ns,
@@ -3058,12 +3048,12 @@ export const RemoveTagsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "RemoveTagsRequest" }) as any as S.Schema<RemoveTagsRequest>;
 export interface RemoveTagsResponse {}
-export const RemoveTagsResponse = AddTagsResponse as any as S.Schema<RemoveTagsResponse>;
+const RemoveTagsResponse = AddTagsResponse as any as S.Schema<RemoveTagsResponse>;
 export interface RevokeVpcEndpointAccessRequest {
   DomainName: string;
   Account: string;
 }
-export const RevokeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String.pipe(T.HttpLabel("DomainName")), Account: S.String }).pipe(
     T.all(
       ns,
@@ -3079,12 +3069,12 @@ export const RevokeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "RevokeVpcEndpointAccessRequest",
 }) as any as S.Schema<RevokeVpcEndpointAccessRequest>;
 export interface RevokeVpcEndpointAccessResponse {}
-export const RevokeVpcEndpointAccessResponse =
+const RevokeVpcEndpointAccessResponse =
   DeleteElasticsearchServiceRoleResponse as any as S.Schema<RevokeVpcEndpointAccessResponse>;
 export interface StartElasticsearchServiceSoftwareUpdateRequest {
   DomainName: string;
 }
-export const StartElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StartElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -3102,7 +3092,7 @@ export const StartElasticsearchServiceSoftwareUpdateRequest = /*@__PURE__*/ S.su
 export interface StartElasticsearchServiceSoftwareUpdateResponse {
   ServiceSoftwareOptions?: ServiceSoftwareOptions;
 }
-export const StartElasticsearchServiceSoftwareUpdateResponse =
+const StartElasticsearchServiceSoftwareUpdateResponse =
   CancelElasticsearchServiceSoftwareUpdateResponse as any as S.Schema<StartElasticsearchServiceSoftwareUpdateResponse>;
 export interface UpdateElasticsearchDomainConfigRequest {
   DomainName: string;
@@ -3125,7 +3115,7 @@ export interface UpdateElasticsearchDomainConfigRequest {
   UseCase?: DomainUseCase;
   EngineMode?: DomainEngineMode;
 }
-export const UpdateElasticsearchDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateElasticsearchDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String.pipe(T.HttpLabel("DomainName")),
     ElasticsearchClusterConfig: S.optional(ElasticsearchClusterConfig),
@@ -3165,14 +3155,14 @@ export interface DryRunResults {
   DeploymentType?: string;
   Message?: string;
 }
-export const DryRunResults = /*@__PURE__*/ S.suspend(() =>
+const DryRunResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeploymentType: S.optional(S.String), Message: S.optional(S.String) }),
 ).annotate({ identifier: "DryRunResults" }) as any as S.Schema<DryRunResults>;
 export interface UpdateElasticsearchDomainConfigResponse {
   DomainConfig: ElasticsearchDomainConfig;
   DryRunResults?: DryRunResults;
 }
-export const UpdateElasticsearchDomainConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateElasticsearchDomainConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainConfig: ElasticsearchDomainConfig,
     DryRunResults: S.optional(DryRunResults),
@@ -3186,7 +3176,7 @@ export interface UpdatePackageRequest {
   PackageDescription?: string;
   CommitMessage?: string;
 }
-export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PackageID: S.String,
     PackageSource: PackageSource,
@@ -3207,13 +3197,12 @@ export const UpdatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePackageResponse {
   PackageDetails?: PackageDetails;
 }
-export const UpdatePackageResponse =
-  CreatePackageResponse as any as S.Schema<UpdatePackageResponse>;
+const UpdatePackageResponse = CreatePackageResponse as any as S.Schema<UpdatePackageResponse>;
 export interface UpdateVpcEndpointRequest {
   VpcEndpointId: string;
   VpcOptions: VPCOptions;
 }
-export const UpdateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VpcEndpointId: S.String, VpcOptions: VPCOptions }).pipe(
     T.all(
       ns,
@@ -3229,14 +3218,14 @@ export const UpdateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateVpcEndpointResponse {
   VpcEndpoint: VpcEndpoint;
 }
-export const UpdateVpcEndpointResponse =
+const UpdateVpcEndpointResponse =
   CreateVpcEndpointResponse as any as S.Schema<UpdateVpcEndpointResponse>;
 export interface UpgradeElasticsearchDomainRequest {
   DomainName: string;
   TargetVersion: string;
   PerformCheckOnly?: boolean;
 }
-export const UpgradeElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradeElasticsearchDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     TargetVersion: S.String,
@@ -3261,7 +3250,7 @@ export interface UpgradeElasticsearchDomainResponse {
   PerformCheckOnly?: boolean;
   ChangeProgressDetails?: ChangeProgressDetails;
 }
-export const UpgradeElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const UpgradeElasticsearchDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     TargetVersion: S.optional(S.String),

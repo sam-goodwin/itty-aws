@@ -141,7 +141,7 @@ export interface CancelHarvestJobRequest {
   HarvestJobName: string;
   ETag?: string;
 }
-export const CancelHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -163,31 +163,31 @@ export const CancelHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CancelHarvestJobRequest" }) as any as S.Schema<CancelHarvestJobRequest>;
 export interface CancelHarvestJobResponse {}
-export const CancelHarvestJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelHarvestJobResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelHarvestJobResponse",
 }) as any as S.Schema<CancelHarvestJobResponse>;
 export type IdempotencyToken = string;
 export type InputType = "HLS" | "CMAF" | "MULTIVIEW" | (string & {});
-export const InputType = S.String;
+const InputType = S.String;
 
 export type ResourceDescription = string;
 export interface InputSwitchConfiguration {
   MQCSInputSwitching?: boolean;
   PreferredInput?: number;
 }
-export const InputSwitchConfiguration = /*@__PURE__*/ S.suspend(() =>
+const InputSwitchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MQCSInputSwitching: S.optional(S.Boolean), PreferredInput: S.optional(S.Number) }),
 ).annotate({ identifier: "InputSwitchConfiguration" }) as any as S.Schema<InputSwitchConfiguration>;
 export interface OutputHeaderConfiguration {
   PublishMQCS?: boolean;
 }
-export const OutputHeaderConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OutputHeaderConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PublishMQCS: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "OutputHeaderConfiguration",
 }) as any as S.Schema<OutputHeaderConfiguration>;
 export type MultiviewSourceList = string[];
-export const MultiviewSourceList = /*@__PURE__*/ S.Array(S.String);
+const MultiviewSourceList = /*@__PURE__*/ S.Array(S.String);
 export type MultiviewLayoutType =
   | "LAYOUT_2EH"
   | "LAYOUT_2PL"
@@ -196,24 +196,24 @@ export type MultiviewLayoutType =
   | "LAYOUT_4E"
   | "LAYOUT_4PL"
   | (string & {});
-export const MultiviewLayoutType = S.String;
+const MultiviewLayoutType = S.String;
 
 export type MultiviewLayoutList = MultiviewLayoutType[];
-export const MultiviewLayoutList = /*@__PURE__*/ S.Array(MultiviewLayoutType);
+const MultiviewLayoutList = /*@__PURE__*/ S.Array(MultiviewLayoutType);
 export interface MultiviewConfiguration {
   AvailableSources: string[];
   AvailableLayouts: MultiviewLayoutType[];
 }
-export const MultiviewConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MultiviewConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AvailableSources: MultiviewSourceList, AvailableLayouts: MultiviewLayoutList }),
 ).annotate({ identifier: "MultiviewConfiguration" }) as any as S.Schema<MultiviewConfiguration>;
 export type OutputLockingMode = "EPOCH_LOCKED" | "NON_EPOCH_LOCKED" | (string & {});
-export const OutputLockingMode = S.String;
+const OutputLockingMode = S.String;
 
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -226,7 +226,7 @@ export interface CreateChannelRequest {
   OutputLockingMode?: OutputLockingMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String,
@@ -255,17 +255,17 @@ export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "CreateChannelRequest" }) as any as S.Schema<CreateChannelRequest>;
 export type AttachedMultiviewChannelList = string[];
-export const AttachedMultiviewChannelList =
+const AttachedMultiviewChannelList =
   MultiviewSourceList as any as S.Schema<AttachedMultiviewChannelList>;
 export interface IngestEndpoint {
   Id?: string;
   Url?: string;
 }
-export const IngestEndpoint = /*@__PURE__*/ S.suspend(() =>
+const IngestEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Id: S.optional(S.String), Url: S.optional(S.String) }),
 ).annotate({ identifier: "IngestEndpoint" }) as any as S.Schema<IngestEndpoint>;
 export type IngestEndpointList = IngestEndpoint[];
-export const IngestEndpointList = /*@__PURE__*/ S.Array(IngestEndpoint);
+const IngestEndpointList = /*@__PURE__*/ S.Array(IngestEndpoint);
 export interface CreateChannelResponse {
   MultiviewConfiguration?: MultiviewConfiguration;
   AttachedMultiviewChannels?: string[];
@@ -283,7 +283,7 @@ export interface CreateChannelResponse {
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
   OutputLockingMode?: OutputLockingMode;
 }
-export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultiviewConfiguration: S.optional(MultiviewConfiguration),
     AttachedMultiviewChannels: S.optional(AttachedMultiviewChannelList),
@@ -308,7 +308,7 @@ export interface CreateChannelGroupRequest {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ClientToken: S.optional(S.String).pipe(
@@ -333,7 +333,7 @@ export interface CreateChannelGroupResponse {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     Arn: S.String,
@@ -350,36 +350,33 @@ export const CreateChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
 export interface HarvestedHlsManifest {
   ManifestName: string;
 }
-export const HarvestedHlsManifest = /*@__PURE__*/ S.suspend(() =>
+const HarvestedHlsManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManifestName: S.String }),
 ).annotate({ identifier: "HarvestedHlsManifest" }) as any as S.Schema<HarvestedHlsManifest>;
 export type HarvestedHlsManifestsList = HarvestedHlsManifest[];
-export const HarvestedHlsManifestsList = /*@__PURE__*/ S.Array(HarvestedHlsManifest);
+const HarvestedHlsManifestsList = /*@__PURE__*/ S.Array(HarvestedHlsManifest);
 export interface HarvestedDashManifest {
   ManifestName: string;
 }
-export const HarvestedDashManifest = HarvestedHlsManifest as any as S.Schema<HarvestedDashManifest>;
 export type HarvestedDashManifestsList = HarvestedDashManifest[];
-export const HarvestedDashManifestsList =
+const HarvestedDashManifestsList =
   HarvestedHlsManifestsList as any as S.Schema<HarvestedDashManifestsList>;
 export interface HarvestedLowLatencyHlsManifest {
   ManifestName: string;
 }
-export const HarvestedLowLatencyHlsManifest = /*@__PURE__*/ S.suspend(() =>
+const HarvestedLowLatencyHlsManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManifestName: S.String }),
 ).annotate({
   identifier: "HarvestedLowLatencyHlsManifest",
 }) as any as S.Schema<HarvestedLowLatencyHlsManifest>;
 export type HarvestedLowLatencyHlsManifestsList = HarvestedLowLatencyHlsManifest[];
-export const HarvestedLowLatencyHlsManifestsList = /*@__PURE__*/ S.Array(
-  HarvestedLowLatencyHlsManifest,
-);
+const HarvestedLowLatencyHlsManifestsList = /*@__PURE__*/ S.Array(HarvestedLowLatencyHlsManifest);
 export interface HarvestedManifests {
   HlsManifests?: HarvestedHlsManifest[];
   DashManifests?: HarvestedDashManifest[];
   LowLatencyHlsManifests?: HarvestedLowLatencyHlsManifest[];
 }
-export const HarvestedManifests = /*@__PURE__*/ S.suspend(() =>
+const HarvestedManifests = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HlsManifests: S.optional(HarvestedHlsManifestsList),
     DashManifests: S.optional(HarvestedDashManifestsList),
@@ -390,7 +387,7 @@ export interface HarvesterScheduleConfiguration {
   StartTime: Date;
   EndTime: Date;
 }
-export const HarvesterScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const HarvesterScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -404,13 +401,13 @@ export interface S3DestinationConfig {
   BucketName: string;
   DestinationPath: string;
 }
-export const S3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BucketName: S.String, DestinationPath: S.String }),
 ).annotate({ identifier: "S3DestinationConfig" }) as any as S.Schema<S3DestinationConfig>;
 export interface Destination {
   S3Destination: S3DestinationConfig;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Destination: S3DestinationConfig }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 export interface CreateHarvestJobRequest {
@@ -425,7 +422,7 @@ export interface CreateHarvestJobRequest {
   HarvestJobName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -461,7 +458,7 @@ export type HarvestJobStatus =
   | "COMPLETED"
   | "FAILED"
   | (string & {});
-export const HarvestJobStatus = S.String;
+const HarvestJobStatus = S.String;
 
 export interface CreateHarvestJobResponse {
   ChannelGroupName: string;
@@ -480,7 +477,7 @@ export interface CreateHarvestJobResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ChannelName: S.String,
@@ -500,7 +497,7 @@ export const CreateHarvestJobResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CreateHarvestJobResponse" }) as any as S.Schema<CreateHarvestJobResponse>;
 export type ContainerType = "TS" | "CMAF" | "ISM" | (string & {});
-export const ContainerType = S.String;
+const ContainerType = S.String;
 
 export type ScteFilter =
   | "SPLICE_INSERT"
@@ -523,12 +520,10 @@ export type ScteFilter =
   | "CONTENT_IDENTIFICATION"
   | "CALL_AD_SERVER"
   | (string & {});
-export const ScteFilter = S.String;
-
 export type ScteFilterList = ScteFilter[];
-export const ScteFilterList = MultiviewLayoutList as any as S.Schema<ScteFilterList>;
+const ScteFilterList = MultiviewLayoutList as any as S.Schema<ScteFilterList>;
 export type ScteInSegments = "NONE" | "ALL" | "MATCHES_FILTER" | (string & {});
-export const ScteInSegments = S.String;
+const ScteInSegments = S.String;
 
 export type CustomAdType =
   | "PROGRAM"
@@ -537,16 +532,14 @@ export type CustomAdType =
   | "ALTERNATE_CONTENT_OPPORTUNITY"
   | "NETWORK"
   | (string & {});
-export const CustomAdType = S.String;
-
 export type CustomAdTypeList = CustomAdType[];
-export const CustomAdTypeList = MultiviewLayoutList as any as S.Schema<CustomAdTypeList>;
+const CustomAdTypeList = MultiviewLayoutList as any as S.Schema<CustomAdTypeList>;
 export interface Scte {
   ScteFilter?: ScteFilter[];
   ScteInSegments?: ScteInSegments;
   CustomAdTypes?: CustomAdType[];
 }
-export const Scte = /*@__PURE__*/ S.suspend(() =>
+const Scte = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ScteFilter: S.optional(ScteFilterList),
     ScteInSegments: S.optional(ScteInSegments),
@@ -554,20 +547,20 @@ export const Scte = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Scte" }) as any as S.Schema<Scte>;
 export type TsEncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
-export const TsEncryptionMethod = S.String;
+const TsEncryptionMethod = S.String;
 
 export type CmafEncryptionMethod = "CENC" | "CBCS" | (string & {});
-export const CmafEncryptionMethod = S.String;
+const CmafEncryptionMethod = S.String;
 
 export type IsmEncryptionMethod = "CENC" | (string & {});
-export const IsmEncryptionMethod = S.String;
+const IsmEncryptionMethod = S.String;
 
 export interface EncryptionMethod {
   TsEncryptionMethod?: TsEncryptionMethod;
   CmafEncryptionMethod?: CmafEncryptionMethod;
   IsmEncryptionMethod?: IsmEncryptionMethod;
 }
-export const EncryptionMethod = /*@__PURE__*/ S.suspend(() =>
+const EncryptionMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TsEncryptionMethod: S.optional(TsEncryptionMethod),
     CmafEncryptionMethod: S.optional(CmafEncryptionMethod),
@@ -581,7 +574,7 @@ export type PresetSpeke20Audio =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Audio = S.String;
+const PresetSpeke20Audio = S.String;
 
 export type PresetSpeke20Video =
   | "PRESET_VIDEO_1"
@@ -595,13 +588,13 @@ export type PresetSpeke20Video =
   | "SHARED"
   | "UNENCRYPTED"
   | (string & {});
-export const PresetSpeke20Video = S.String;
+const PresetSpeke20Video = S.String;
 
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio: PresetSpeke20Audio;
   PresetSpeke20Video: PresetSpeke20Video;
 }
-export const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionContractConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PresetSpeke20Audio: PresetSpeke20Audio, PresetSpeke20Video: PresetSpeke20Video }),
 ).annotate({
   identifier: "EncryptionContractConfiguration",
@@ -613,24 +606,22 @@ export type DrmSystem =
   | "WIDEVINE"
   | "IRDETO"
   | (string & {});
-export const DrmSystem = S.String;
-
 export type DrmSystems = DrmSystem[];
-export const DrmSystems = MultiviewLayoutList as any as S.Schema<DrmSystems>;
+const DrmSystems = MultiviewLayoutList as any as S.Schema<DrmSystems>;
 export type SpekeVersion = "V2_0" | "V2_1" | (string & {});
-export const SpekeVersion = S.String;
+const SpekeVersion = S.String;
 
 export type ContentKeyPeriodTiming =
   | "INDEX_ONLY"
   | "START_END_ONLY"
   | "INDEX_WITH_START_END"
   | (string & {});
-export const ContentKeyPeriodTiming = S.String;
+const ContentKeyPeriodTiming = S.String;
 
 export interface ContentKeyPeriodConfiguration {
   ContentKeyPeriodTiming?: ContentKeyPeriodTiming;
 }
-export const ContentKeyPeriodConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ContentKeyPeriodConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentKeyPeriodTiming: S.optional(ContentKeyPeriodTiming) }),
 ).annotate({
   identifier: "ContentKeyPeriodConfiguration",
@@ -645,7 +636,7 @@ export interface SpekeKeyProvider {
   SpekeVersion?: SpekeVersion;
   ContentKeyPeriodConfiguration?: ContentKeyPeriodConfiguration;
 }
-export const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
+const SpekeKeyProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EncryptionContractConfiguration: EncryptionContractConfiguration,
     ResourceId: S.String,
@@ -664,7 +655,7 @@ export interface Encryption {
   CmafExcludeSegmentDrmMetadata?: boolean;
   SpekeKeyProvider: SpekeKeyProvider;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConstantInitializationVector: S.optional(S.String),
     EncryptionMethod: EncryptionMethod,
@@ -674,7 +665,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Encryption" }) as any as S.Schema<Encryption>;
 export type OutputTimestampMode = "PASSTHROUGH" | "REBASED_TO_CHANNEL_START" | (string & {});
-export const OutputTimestampMode = S.String;
+const OutputTimestampMode = S.String;
 
 export interface Segment {
   SegmentDurationSeconds?: number;
@@ -686,7 +677,7 @@ export interface Segment {
   Encryption?: Encryption;
   OutputTimestampMode?: OutputTimestampMode;
 }
-export const Segment = /*@__PURE__*/ S.suspend(() =>
+const Segment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SegmentDurationSeconds: S.optional(S.Number),
     SegmentName: S.optional(S.String),
@@ -700,30 +691,30 @@ export const Segment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 export type ManifestName = string;
 export type AdMarkerHls = "DATERANGE" | "SCTE35_ENHANCED" | (string & {});
-export const AdMarkerHls = S.String;
+const AdMarkerHls = S.String;
 
 export type ScteInManifests = "ALL" | "MATCHES_FILTER" | (string & {});
-export const ScteInManifests = S.String;
+const ScteInManifests = S.String;
 
 export interface ScteHls {
   AdMarkerHls?: AdMarkerHls;
   ScteInManifests?: ScteInManifests;
 }
-export const ScteHls = /*@__PURE__*/ S.suspend(() =>
+const ScteHls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AdMarkerHls: S.optional(AdMarkerHls), ScteInManifests: S.optional(ScteInManifests) }),
 ).annotate({ identifier: "ScteHls" }) as any as S.Schema<ScteHls>;
 export interface StartTag {
   TimeOffset: number;
   Precise?: boolean;
 }
-export const StartTag = /*@__PURE__*/ S.suspend(() =>
+const StartTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TimeOffset: S.Number, Precise: S.optional(S.Boolean) }),
 ).annotate({ identifier: "StartTag" }) as any as S.Schema<StartTag>;
 export interface MultiviewFilterConfiguration {
   Layout: MultiviewLayoutType;
   Sources: string[];
 }
-export const MultiviewFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const MultiviewFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Layout: MultiviewLayoutType, Sources: MultiviewSourceList }),
 ).annotate({
   identifier: "MultiviewFilterConfiguration",
@@ -737,7 +728,7 @@ export interface FilterConfiguration {
   ClipStartTime?: Date;
   Multiview?: MultiviewFilterConfiguration;
 }
-export const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestFilter: S.optional(S.String),
     DrmSettings: S.optional(S.String),
@@ -749,7 +740,7 @@ export const FilterConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FilterConfiguration" }) as any as S.Schema<FilterConfiguration>;
 export type UriPathType = "LEAF" | "ROOT" | (string & {});
-export const UriPathType = S.String;
+const UriPathType = S.String;
 
 export interface CreateHlsManifestConfiguration {
   ManifestName: string;
@@ -762,7 +753,7 @@ export interface CreateHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const CreateHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CreateHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     ChildManifestName: S.optional(S.String),
@@ -778,7 +769,7 @@ export const CreateHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateHlsManifestConfiguration",
 }) as any as S.Schema<CreateHlsManifestConfiguration>;
 export type CreateHlsManifests = CreateHlsManifestConfiguration[];
-export const CreateHlsManifests = /*@__PURE__*/ S.Array(CreateHlsManifestConfiguration);
+const CreateHlsManifests = /*@__PURE__*/ S.Array(CreateHlsManifestConfiguration);
 export interface CreateLowLatencyHlsManifestConfiguration {
   ManifestName: string;
   ChildManifestName?: string;
@@ -790,14 +781,14 @@ export interface CreateLowLatencyHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const CreateLowLatencyHlsManifestConfiguration =
+const CreateLowLatencyHlsManifestConfiguration =
   CreateHlsManifestConfiguration as any as S.Schema<CreateLowLatencyHlsManifestConfiguration>;
 export type CreateLowLatencyHlsManifests = CreateLowLatencyHlsManifestConfiguration[];
-export const CreateLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
+const CreateLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
   CreateLowLatencyHlsManifestConfiguration,
 );
 export type DashSegmentTemplateFormat = "NUMBER_WITH_TIMELINE" | (string & {});
-export const DashSegmentTemplateFormat = S.String;
+const DashSegmentTemplateFormat = S.String;
 
 export type DashPeriodTrigger =
   | "AVAILS"
@@ -806,25 +797,23 @@ export type DashPeriodTrigger =
   | "SOURCE_DISRUPTIONS"
   | "NONE"
   | (string & {});
-export const DashPeriodTrigger = S.String;
-
 export type DashPeriodTriggers = DashPeriodTrigger[];
-export const DashPeriodTriggers = MultiviewLayoutList as any as S.Schema<DashPeriodTriggers>;
+const DashPeriodTriggers = MultiviewLayoutList as any as S.Schema<DashPeriodTriggers>;
 export type AdMarkerDash = "BINARY" | "XML" | (string & {});
-export const AdMarkerDash = S.String;
+const AdMarkerDash = S.String;
 
 export interface ScteDash {
   AdMarkerDash?: AdMarkerDash;
   ScteInManifests?: ScteInManifests;
 }
-export const ScteDash = /*@__PURE__*/ S.suspend(() =>
+const ScteDash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdMarkerDash: S.optional(AdMarkerDash),
     ScteInManifests: S.optional(ScteInManifests),
   }),
 ).annotate({ identifier: "ScteDash" }) as any as S.Schema<ScteDash>;
 export type DashDrmSignaling = "INDIVIDUAL" | "REFERENCED" | (string & {});
-export const DashDrmSignaling = S.String;
+const DashDrmSignaling = S.String;
 
 export type DashUtcTimingMode =
   | "HTTP_HEAD"
@@ -832,27 +821,25 @@ export type DashUtcTimingMode =
   | "HTTP_XSDATE"
   | "UTC_DIRECT"
   | (string & {});
-export const DashUtcTimingMode = S.String;
+const DashUtcTimingMode = S.String;
 
 export interface DashUtcTiming {
   TimingMode?: DashUtcTimingMode;
   TimingSource?: string;
 }
-export const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
+const DashUtcTiming = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TimingMode: S.optional(DashUtcTimingMode), TimingSource: S.optional(S.String) }),
 ).annotate({ identifier: "DashUtcTiming" }) as any as S.Schema<DashUtcTiming>;
 export type DashProfile = "DVB_DASH" | (string & {});
-export const DashProfile = S.String;
-
 export type DashProfiles = DashProfile[];
-export const DashProfiles = MultiviewLayoutList as any as S.Schema<DashProfiles>;
+const DashProfiles = MultiviewLayoutList as any as S.Schema<DashProfiles>;
 export interface DashBaseUrl {
   Url: string;
   ServiceLocation?: string;
   DvbPriority?: number;
   DvbWeight?: number;
 }
-export const DashBaseUrl = /*@__PURE__*/ S.suspend(() =>
+const DashBaseUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Url: S.String,
     ServiceLocation: S.optional(S.String),
@@ -861,7 +848,7 @@ export const DashBaseUrl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DashBaseUrl" }) as any as S.Schema<DashBaseUrl>;
 export type DashBaseUrls = DashBaseUrl[];
-export const DashBaseUrls = /*@__PURE__*/ S.Array(DashBaseUrl);
+const DashBaseUrls = /*@__PURE__*/ S.Array(DashBaseUrl);
 export interface DashProgramInformation {
   Title?: string;
   Source?: string;
@@ -869,7 +856,7 @@ export interface DashProgramInformation {
   LanguageCode?: string;
   MoreInformationUrl?: string;
 }
-export const DashProgramInformation = /*@__PURE__*/ S.suspend(() =>
+const DashProgramInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Title: S.optional(S.String),
     Source: S.optional(S.String),
@@ -883,7 +870,7 @@ export interface DashDvbFontDownload {
   MimeType?: string;
   FontFamily?: string;
 }
-export const DashDvbFontDownload = /*@__PURE__*/ S.suspend(() =>
+const DashDvbFontDownload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Url: S.optional(S.String),
     MimeType: S.optional(S.String),
@@ -894,46 +881,46 @@ export interface DashDvbMetricsReporting {
   ReportingUrl: string;
   Probability?: number;
 }
-export const DashDvbMetricsReporting = /*@__PURE__*/ S.suspend(() =>
+const DashDvbMetricsReporting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ReportingUrl: S.String, Probability: S.optional(S.Number) }),
 ).annotate({ identifier: "DashDvbMetricsReporting" }) as any as S.Schema<DashDvbMetricsReporting>;
 export type DashDvbErrorMetrics = DashDvbMetricsReporting[];
-export const DashDvbErrorMetrics = /*@__PURE__*/ S.Array(DashDvbMetricsReporting);
+const DashDvbErrorMetrics = /*@__PURE__*/ S.Array(DashDvbMetricsReporting);
 export interface DashDvbSettings {
   FontDownload?: DashDvbFontDownload;
   ErrorMetrics?: DashDvbMetricsReporting[];
 }
-export const DashDvbSettings = /*@__PURE__*/ S.suspend(() =>
+const DashDvbSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FontDownload: S.optional(DashDvbFontDownload),
     ErrorMetrics: S.optional(DashDvbErrorMetrics),
   }),
 ).annotate({ identifier: "DashDvbSettings" }) as any as S.Schema<DashDvbSettings>;
 export type DashCompactness = "STANDARD" | "NONE" | (string & {});
-export const DashCompactness = S.String;
+const DashCompactness = S.String;
 
 export type DashAudioTimelinePattern = "NONE" | "PATTERNED" | (string & {});
-export const DashAudioTimelinePattern = S.String;
+const DashAudioTimelinePattern = S.String;
 
 export type DashTtmlProfile = "IMSC_1" | "EBU_TT_D_101" | (string & {});
-export const DashTtmlProfile = S.String;
+const DashTtmlProfile = S.String;
 
 export interface DashTtmlConfiguration {
   TtmlProfile: DashTtmlProfile;
 }
-export const DashTtmlConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DashTtmlConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TtmlProfile: DashTtmlProfile }),
 ).annotate({ identifier: "DashTtmlConfiguration" }) as any as S.Schema<DashTtmlConfiguration>;
 export interface DashSubtitleConfiguration {
   TtmlConfiguration?: DashTtmlConfiguration;
 }
-export const DashSubtitleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DashSubtitleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TtmlConfiguration: S.optional(DashTtmlConfiguration) }),
 ).annotate({
   identifier: "DashSubtitleConfiguration",
 }) as any as S.Schema<DashSubtitleConfiguration>;
 export type DashAvailabilityStartTimeConfiguration = { FixedAvailabilityStartTime: Date };
-export const DashAvailabilityStartTimeConfiguration = /*@__PURE__*/ S.Union([
+const DashAvailabilityStartTimeConfiguration = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({
     FixedAvailabilityStartTime: /*@__PURE__*/ S.Date.pipe(
       /*@__PURE__*/ T.TimestampFormat("epoch-seconds"),
@@ -962,7 +949,7 @@ export interface CreateDashManifestConfiguration {
   UriPathType?: UriPathType;
   AvailabilityStartTimeConfiguration?: DashAvailabilityStartTimeConfiguration;
 }
-export const CreateDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CreateDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     ManifestWindowSeconds: S.optional(S.Number),
@@ -989,9 +976,9 @@ export const CreateDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateDashManifestConfiguration",
 }) as any as S.Schema<CreateDashManifestConfiguration>;
 export type CreateDashManifests = CreateDashManifestConfiguration[];
-export const CreateDashManifests = /*@__PURE__*/ S.Array(CreateDashManifestConfiguration);
+const CreateDashManifests = /*@__PURE__*/ S.Array(CreateDashManifestConfiguration);
 export type MssManifestLayout = "FULL" | "COMPACT" | (string & {});
-export const MssManifestLayout = S.String;
+const MssManifestLayout = S.String;
 
 export interface CreateMssManifestConfiguration {
   ManifestName: string;
@@ -999,7 +986,7 @@ export interface CreateMssManifestConfiguration {
   FilterConfiguration?: FilterConfiguration;
   ManifestLayout?: MssManifestLayout;
 }
-export const CreateMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CreateMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     ManifestWindowSeconds: S.optional(S.Number),
@@ -1010,31 +997,28 @@ export const CreateMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateMssManifestConfiguration",
 }) as any as S.Schema<CreateMssManifestConfiguration>;
 export type CreateMssManifests = CreateMssManifestConfiguration[];
-export const CreateMssManifests = /*@__PURE__*/ S.Array(CreateMssManifestConfiguration);
+const CreateMssManifests = /*@__PURE__*/ S.Array(CreateMssManifestConfiguration);
 export type EndpointErrorCondition =
   | "STALE_MANIFEST"
   | "INCOMPLETE_MANIFEST"
   | "MISSING_DRM_KEY"
   | "SLATE_INPUT"
   | (string & {});
-export const EndpointErrorCondition = S.String;
-
 export type EndpointErrorConditions = EndpointErrorCondition[];
-export const EndpointErrorConditions =
-  MultiviewLayoutList as any as S.Schema<EndpointErrorConditions>;
+const EndpointErrorConditions = MultiviewLayoutList as any as S.Schema<EndpointErrorConditions>;
 export interface ForceEndpointErrorConfiguration {
   EndpointErrorConditions?: EndpointErrorCondition[];
 }
-export const ForceEndpointErrorConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ForceEndpointErrorConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EndpointErrorConditions: S.optional(EndpointErrorConditions) }),
 ).annotate({
   identifier: "ForceEndpointErrorConfiguration",
 }) as any as S.Schema<ForceEndpointErrorConfiguration>;
 export type UriSeparator = "UNDERSCORE" | "HYPHEN" | (string & {});
-export const UriSeparator = S.String;
+const UriSeparator = S.String;
 
 export type StreamNameOutputMode = "INDEX" | "PASSTHROUGH_NAME" | (string & {});
-export const StreamNameOutputMode = S.String;
+const StreamNameOutputMode = S.String;
 
 export interface CreateOriginEndpointRequest {
   ChannelGroupName: string;
@@ -1054,7 +1038,7 @@ export interface CreateOriginEndpointRequest {
   StreamNameOutputMode?: StreamNameOutputMode;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1103,7 +1087,7 @@ export interface GetHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const GetHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GetHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     Url: S.String,
@@ -1120,7 +1104,7 @@ export const GetHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetHlsManifestConfiguration",
 }) as any as S.Schema<GetHlsManifestConfiguration>;
 export type GetHlsManifests = GetHlsManifestConfiguration[];
-export const GetHlsManifests = /*@__PURE__*/ S.Array(GetHlsManifestConfiguration);
+const GetHlsManifests = /*@__PURE__*/ S.Array(GetHlsManifestConfiguration);
 export interface GetLowLatencyHlsManifestConfiguration {
   ManifestName: string;
   Url: string;
@@ -1133,12 +1117,10 @@ export interface GetLowLatencyHlsManifestConfiguration {
   UrlEncodeChildManifest?: boolean;
   UriPathType?: UriPathType;
 }
-export const GetLowLatencyHlsManifestConfiguration =
+const GetLowLatencyHlsManifestConfiguration =
   GetHlsManifestConfiguration as any as S.Schema<GetLowLatencyHlsManifestConfiguration>;
 export type GetLowLatencyHlsManifests = GetLowLatencyHlsManifestConfiguration[];
-export const GetLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
-  GetLowLatencyHlsManifestConfiguration,
-);
+const GetLowLatencyHlsManifests = /*@__PURE__*/ S.Array(GetLowLatencyHlsManifestConfiguration);
 export interface GetDashManifestConfiguration {
   ManifestName: string;
   Url: string;
@@ -1162,7 +1144,7 @@ export interface GetDashManifestConfiguration {
   UriPathType?: UriPathType;
   AvailabilityStartTimeConfiguration?: DashAvailabilityStartTimeConfiguration;
 }
-export const GetDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GetDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     Url: S.String,
@@ -1190,7 +1172,7 @@ export const GetDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDashManifestConfiguration",
 }) as any as S.Schema<GetDashManifestConfiguration>;
 export type GetDashManifests = GetDashManifestConfiguration[];
-export const GetDashManifests = /*@__PURE__*/ S.Array(GetDashManifestConfiguration);
+const GetDashManifests = /*@__PURE__*/ S.Array(GetDashManifestConfiguration);
 export interface GetMssManifestConfiguration {
   ManifestName: string;
   Url: string;
@@ -1198,7 +1180,7 @@ export interface GetMssManifestConfiguration {
   ManifestWindowSeconds?: number;
   ManifestLayout?: MssManifestLayout;
 }
-export const GetMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const GetMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     Url: S.String,
@@ -1210,7 +1192,7 @@ export const GetMssManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetMssManifestConfiguration",
 }) as any as S.Schema<GetMssManifestConfiguration>;
 export type GetMssManifests = GetMssManifestConfiguration[];
-export const GetMssManifests = /*@__PURE__*/ S.Array(GetMssManifestConfiguration);
+const GetMssManifests = /*@__PURE__*/ S.Array(GetMssManifestConfiguration);
 export interface CreateOriginEndpointResponse {
   Arn: string;
   ChannelGroupName: string;
@@ -1232,7 +1214,7 @@ export interface CreateOriginEndpointResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     ChannelGroupName: S.String,
@@ -1261,7 +1243,7 @@ export interface DeleteChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;
 }
-export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1277,12 +1259,11 @@ export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelRequest" }) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse =
-  CancelHarvestJobResponse as any as S.Schema<DeleteChannelResponse>;
+const DeleteChannelResponse = CancelHarvestJobResponse as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelGroupRequest {
   ChannelGroupName: string;
 }
-export const DeleteChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/channelGroup/{ChannelGroupName}" }),
@@ -1297,13 +1278,13 @@ export const DeleteChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelGroupRequest",
 }) as any as S.Schema<DeleteChannelGroupRequest>;
 export interface DeleteChannelGroupResponse {}
-export const DeleteChannelGroupResponse =
+const DeleteChannelGroupResponse =
   CancelHarvestJobResponse as any as S.Schema<DeleteChannelGroupResponse>;
 export interface DeleteChannelPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
 }
-export const DeleteChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1324,14 +1305,14 @@ export const DeleteChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelPolicyRequest",
 }) as any as S.Schema<DeleteChannelPolicyRequest>;
 export interface DeleteChannelPolicyResponse {}
-export const DeleteChannelPolicyResponse =
+const DeleteChannelPolicyResponse =
   CancelHarvestJobResponse as any as S.Schema<DeleteChannelPolicyResponse>;
 export interface DeleteOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
   OriginEndpointName: string;
 }
-export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1353,14 +1334,14 @@ export const DeleteOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOriginEndpointRequest",
 }) as any as S.Schema<DeleteOriginEndpointRequest>;
 export interface DeleteOriginEndpointResponse {}
-export const DeleteOriginEndpointResponse =
+const DeleteOriginEndpointResponse =
   CancelHarvestJobResponse as any as S.Schema<DeleteOriginEndpointResponse>;
 export interface DeleteOriginEndpointPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
   OriginEndpointName: string;
 }
-export const DeleteOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1382,16 +1363,14 @@ export const DeleteOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteOriginEndpointPolicyRequest",
 }) as any as S.Schema<DeleteOriginEndpointPolicyRequest>;
 export interface DeleteOriginEndpointPolicyResponse {}
-export const DeleteOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteOriginEndpointPolicyResponse",
 }) as any as S.Schema<DeleteOriginEndpointPolicyResponse>;
 export interface GetChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;
 }
-export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1424,7 +1403,7 @@ export interface GetChannelResponse {
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
   OutputLockingMode?: OutputLockingMode;
 }
-export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultiviewConfiguration: S.optional(MultiviewConfiguration),
     AttachedMultiviewChannels: S.optional(AttachedMultiviewChannelList),
@@ -1447,7 +1426,7 @@ export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetChannelGroupRequest {
   ChannelGroupName: string;
 }
-export const GetChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/channelGroup/{ChannelGroupName}" }),
@@ -1469,7 +1448,7 @@ export interface GetChannelGroupResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     Arn: S.String,
@@ -1485,7 +1464,7 @@ export interface GetChannelPolicyRequest {
   ChannelGroupName: string;
   ChannelName: string;
 }
-export const GetChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1509,7 +1488,7 @@ export interface GetChannelPolicyResponse {
   ChannelName: string;
   Policy: string;
 }
-export const GetChannelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetChannelPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelGroupName: S.String, ChannelName: S.String, Policy: S.String }),
 ).annotate({ identifier: "GetChannelPolicyResponse" }) as any as S.Schema<GetChannelPolicyResponse>;
 export interface GetHarvestJobRequest {
@@ -1518,7 +1497,7 @@ export interface GetHarvestJobRequest {
   OriginEndpointName: string;
   HarvestJobName: string;
 }
-export const GetHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1555,14 +1534,13 @@ export interface GetHarvestJobResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetHarvestJobResponse =
-  CreateHarvestJobResponse as any as S.Schema<GetHarvestJobResponse>;
+const GetHarvestJobResponse = CreateHarvestJobResponse as any as S.Schema<GetHarvestJobResponse>;
 export interface GetOriginEndpointRequest {
   ChannelGroupName: string;
   ChannelName: string;
   OriginEndpointName: string;
 }
-export const GetOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1603,7 +1581,7 @@ export interface GetOriginEndpointResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     ChannelGroupName: S.String,
@@ -1634,7 +1612,7 @@ export interface GetOriginEndpointPolicyRequest {
   ChannelName: string;
   OriginEndpointName: string;
 }
-export const GetOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1657,13 +1635,12 @@ export const GetOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOriginEndpointPolicyRequest>;
 export type CdnIdentifierSecretArn = string;
 export type CdnIdentifierSecretArns = string[];
-export const CdnIdentifierSecretArns =
-  MultiviewSourceList as any as S.Schema<CdnIdentifierSecretArns>;
+const CdnIdentifierSecretArns = MultiviewSourceList as any as S.Schema<CdnIdentifierSecretArns>;
 export interface CdnAuthConfiguration {
   CdnIdentifierSecretArns: string[];
   SecretsRoleArn: string;
 }
-export const CdnAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
+const CdnAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CdnIdentifierSecretArns: CdnIdentifierSecretArns, SecretsRoleArn: S.String }),
 ).annotate({ identifier: "CdnAuthConfiguration" }) as any as S.Schema<CdnAuthConfiguration>;
 export interface GetOriginEndpointPolicyResponse {
@@ -1673,7 +1650,7 @@ export interface GetOriginEndpointPolicyResponse {
   Policy: string;
   CdnAuthConfiguration?: CdnAuthConfiguration;
 }
-export const GetOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ChannelName: S.String,
@@ -1689,7 +1666,7 @@ export interface ListChannelGroupsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1702,7 +1679,7 @@ export interface ChannelGroupListConfiguration {
   ModifiedAt: Date;
   Description?: string;
 }
-export const ChannelGroupListConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChannelGroupListConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     Arn: S.String,
@@ -1714,12 +1691,12 @@ export const ChannelGroupListConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelGroupListConfiguration",
 }) as any as S.Schema<ChannelGroupListConfiguration>;
 export type ChannelGroupsList = ChannelGroupListConfiguration[];
-export const ChannelGroupsList = /*@__PURE__*/ S.Array(ChannelGroupListConfiguration);
+const ChannelGroupsList = /*@__PURE__*/ S.Array(ChannelGroupListConfiguration);
 export interface ListChannelGroupsResponse {
   Items?: ChannelGroupListConfiguration[];
   NextToken?: string;
 }
-export const ListChannelGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(ChannelGroupsList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListChannelGroupsResponse",
@@ -1729,7 +1706,7 @@ export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1757,7 +1734,7 @@ export interface ChannelListConfiguration {
   MultiviewConfiguration?: MultiviewConfiguration;
   AttachedMultiviewChannels?: string[];
 }
-export const ChannelListConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChannelListConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     ChannelName: S.String,
@@ -1772,12 +1749,12 @@ export const ChannelListConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelListConfiguration" }) as any as S.Schema<ChannelListConfiguration>;
 export type ChannelList = ChannelListConfiguration[];
-export const ChannelList = /*@__PURE__*/ S.Array(ChannelListConfiguration);
+const ChannelList = /*@__PURE__*/ S.Array(ChannelListConfiguration);
 export interface ListChannelsResponse {
   Items?: ChannelListConfiguration[];
   NextToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(ChannelList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListChannelsResponse" }) as any as S.Schema<ListChannelsResponse>;
 export interface ListHarvestJobsRequest {
@@ -1788,7 +1765,7 @@ export interface ListHarvestJobsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListHarvestJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHarvestJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.optional(S.String).pipe(T.HttpQuery("channelName")),
@@ -1823,7 +1800,7 @@ export interface HarvestJob {
   ErrorMessage?: string;
   ETag?: string;
 }
-export const HarvestJob = /*@__PURE__*/ S.suspend(() =>
+const HarvestJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ChannelName: S.String,
@@ -1842,12 +1819,12 @@ export const HarvestJob = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HarvestJob" }) as any as S.Schema<HarvestJob>;
 export type HarvestJobsList = HarvestJob[];
-export const HarvestJobsList = /*@__PURE__*/ S.Array(HarvestJob);
+const HarvestJobsList = /*@__PURE__*/ S.Array(HarvestJob);
 export interface ListHarvestJobsResponse {
   Items?: HarvestJob[];
   NextToken?: string;
 }
-export const ListHarvestJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHarvestJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(HarvestJobsList), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListHarvestJobsResponse" }) as any as S.Schema<ListHarvestJobsResponse>;
 export interface ListOriginEndpointsRequest {
@@ -1856,7 +1833,7 @@ export interface ListOriginEndpointsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListOriginEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOriginEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -1883,7 +1860,7 @@ export interface ListHlsManifestConfiguration {
   ChildManifestName?: string;
   Url?: string;
 }
-export const ListHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ListHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManifestName: S.String,
     ChildManifestName: S.optional(S.String),
@@ -1893,37 +1870,33 @@ export const ListHlsManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListHlsManifestConfiguration",
 }) as any as S.Schema<ListHlsManifestConfiguration>;
 export type ListHlsManifests = ListHlsManifestConfiguration[];
-export const ListHlsManifests = /*@__PURE__*/ S.Array(ListHlsManifestConfiguration);
+const ListHlsManifests = /*@__PURE__*/ S.Array(ListHlsManifestConfiguration);
 export interface ListLowLatencyHlsManifestConfiguration {
   ManifestName: string;
   ChildManifestName?: string;
   Url?: string;
 }
-export const ListLowLatencyHlsManifestConfiguration =
+const ListLowLatencyHlsManifestConfiguration =
   ListHlsManifestConfiguration as any as S.Schema<ListLowLatencyHlsManifestConfiguration>;
 export type ListLowLatencyHlsManifests = ListLowLatencyHlsManifestConfiguration[];
-export const ListLowLatencyHlsManifests = /*@__PURE__*/ S.Array(
-  ListLowLatencyHlsManifestConfiguration,
-);
+const ListLowLatencyHlsManifests = /*@__PURE__*/ S.Array(ListLowLatencyHlsManifestConfiguration);
 export interface ListDashManifestConfiguration {
   ManifestName: string;
   Url?: string;
 }
-export const ListDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ListDashManifestConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManifestName: S.String, Url: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDashManifestConfiguration",
 }) as any as S.Schema<ListDashManifestConfiguration>;
 export type ListDashManifests = ListDashManifestConfiguration[];
-export const ListDashManifests = /*@__PURE__*/ S.Array(ListDashManifestConfiguration);
+const ListDashManifests = /*@__PURE__*/ S.Array(ListDashManifestConfiguration);
 export interface ListMssManifestConfiguration {
   ManifestName: string;
   Url?: string;
 }
-export const ListMssManifestConfiguration =
-  ListDashManifestConfiguration as any as S.Schema<ListMssManifestConfiguration>;
 export type ListMssManifests = ListMssManifestConfiguration[];
-export const ListMssManifests = ListDashManifests as any as S.Schema<ListMssManifests>;
+const ListMssManifests = ListDashManifests as any as S.Schema<ListMssManifests>;
 export interface OriginEndpointListConfiguration {
   Arn: string;
   ChannelGroupName: string;
@@ -1941,7 +1914,7 @@ export interface OriginEndpointListConfiguration {
   UriSeparator?: UriSeparator;
   StreamNameOutputMode?: StreamNameOutputMode;
 }
-export const OriginEndpointListConfiguration = /*@__PURE__*/ S.suspend(() =>
+const OriginEndpointListConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     ChannelGroupName: S.String,
@@ -1963,12 +1936,12 @@ export const OriginEndpointListConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "OriginEndpointListConfiguration",
 }) as any as S.Schema<OriginEndpointListConfiguration>;
 export type OriginEndpointsList = OriginEndpointListConfiguration[];
-export const OriginEndpointsList = /*@__PURE__*/ S.Array(OriginEndpointListConfiguration);
+const OriginEndpointsList = /*@__PURE__*/ S.Array(OriginEndpointListConfiguration);
 export interface ListOriginEndpointsResponse {
   Items?: OriginEndpointListConfiguration[];
   NextToken?: string;
 }
-export const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOriginEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Items: S.optional(OriginEndpointsList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListOriginEndpointsResponse",
@@ -1977,7 +1950,7 @@ export type TagArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -1987,7 +1960,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagMap) }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -1997,7 +1970,7 @@ export interface PutChannelPolicyRequest {
   ChannelName: string;
   Policy: string;
 }
-export const PutChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2017,7 +1990,7 @@ export const PutChannelPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutChannelPolicyRequest" }) as any as S.Schema<PutChannelPolicyRequest>;
 export interface PutChannelPolicyResponse {}
-export const PutChannelPolicyResponse =
+const PutChannelPolicyResponse =
   CancelHarvestJobResponse as any as S.Schema<PutChannelPolicyResponse>;
 export interface PutOriginEndpointPolicyRequest {
   ChannelGroupName: string;
@@ -2026,7 +1999,7 @@ export interface PutOriginEndpointPolicyRequest {
   Policy: string;
   CdnAuthConfiguration?: CdnAuthConfiguration;
 }
-export const PutOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2050,14 +2023,14 @@ export const PutOriginEndpointPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutOriginEndpointPolicyRequest",
 }) as any as S.Schema<PutOriginEndpointPolicyRequest>;
 export interface PutOriginEndpointPolicyResponse {}
-export const PutOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "PutOriginEndpointPolicyResponse" },
-) as any as S.Schema<PutOriginEndpointPolicyResponse>;
+const PutOriginEndpointPolicyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "PutOriginEndpointPolicyResponse",
+}) as any as S.Schema<PutOriginEndpointPolicyResponse>;
 export interface ResetChannelStateRequest {
   ChannelGroupName: string;
   ChannelName: string;
 }
-export const ResetChannelStateRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetChannelStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2081,7 +2054,7 @@ export interface ResetChannelStateResponse {
   Arn: string;
   ResetAt: Date;
 }
-export const ResetChannelStateResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetChannelStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ChannelName: S.String,
@@ -2096,7 +2069,7 @@ export interface ResetOriginEndpointStateRequest {
   ChannelName: string;
   OriginEndpointName: string;
 }
-export const ResetOriginEndpointStateRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetOriginEndpointStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2124,7 +2097,7 @@ export interface ResetOriginEndpointStateResponse {
   Arn: string;
   ResetAt: Date;
 }
-export const ResetOriginEndpointStateResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetOriginEndpointStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     ChannelName: S.String,
@@ -2139,7 +2112,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap })
     .pipe(S.encodeKeys({ Tags: "tags" }))
     .pipe(
@@ -2147,14 +2120,14 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
     ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = CancelHarvestJobResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = CancelHarvestJobResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = MultiviewSourceList as any as S.Schema<TagKeyList>;
+const TagKeyList = MultiviewSourceList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -2163,8 +2136,7 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse =
-  CancelHarvestJobResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = CancelHarvestJobResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelGroupName: string;
   ChannelName: string;
@@ -2174,7 +2146,7 @@ export interface UpdateChannelRequest {
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
   MultiviewConfiguration?: MultiviewConfiguration;
 }
-export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2211,7 +2183,7 @@ export interface UpdateChannelResponse {
   OutputHeaderConfiguration?: OutputHeaderConfiguration;
   OutputLockingMode?: OutputLockingMode;
 }
-export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MultiviewConfiguration: S.optional(MultiviewConfiguration),
     AttachedMultiviewChannels: S.optional(AttachedMultiviewChannelList),
@@ -2235,7 +2207,7 @@ export interface UpdateChannelGroupRequest {
   ETag?: string;
   Description?: string;
 }
-export const UpdateChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ETag: S.optional(S.String).pipe(T.HttpHeader("x-amzn-update-if-match")),
@@ -2263,7 +2235,7 @@ export interface UpdateChannelGroupResponse {
   ETag?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const UpdateChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String,
     Arn: S.String,
@@ -2294,7 +2266,7 @@ export interface UpdateOriginEndpointRequest {
   StreamNameOutputMode?: StreamNameOutputMode;
   ETag?: string;
 }
-export const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOriginEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelGroupName: S.String.pipe(T.HttpLabel("ChannelGroupName")),
     ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
@@ -2348,7 +2320,7 @@ export interface UpdateOriginEndpointResponse {
   Tags?: { [key: string]: string | undefined };
   DashManifests?: GetDashManifestConfiguration[];
 }
-export const UpdateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.String,
     ChannelGroupName: S.String,
@@ -2379,7 +2351,7 @@ export type ConflictExceptionType =
   | "IDEMPOTENT_PARAMETER_MISMATCH"
   | "CONFLICTING_OPERATION"
   | (string & {});
-export const ConflictExceptionType = S.String;
+const ConflictExceptionType = S.String;
 
 export type ResourceTypeNotFound =
   | "CHANNEL_GROUP"
@@ -2387,7 +2359,7 @@ export type ResourceTypeNotFound =
   | "ORIGIN_ENDPOINT"
   | "HARVEST_JOB"
   | (string & {});
-export const ResourceTypeNotFound = S.String;
+const ResourceTypeNotFound = S.String;
 
 export type ValidationExceptionType =
   | "CONTAINER_TYPE_IMMUTABLE"
@@ -2529,7 +2501,7 @@ export type ValidationExceptionType =
   | "MULTIVIEW_SOURCE_CHANNEL_LIMIT_EXCEEDED"
   | "MULTIVIEW_TS_USE_AUDIO_RENDITION_GROUP_DISABLED"
   | (string & {});
-export const ValidationExceptionType = S.String;
+const ValidationExceptionType = S.String;
 
 export type CancelHarvestJobError =
   | AccessDeniedException

@@ -11,7 +11,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Addon type */
 export type AddonType = "SRM" | "VR" | "HCX" | "Arc";
-export const AddonType = S.String;
+const AddonType = S.String;
 
 /** The properties of an addon */
 export interface AddonPropertiesInput {
@@ -26,7 +26,7 @@ export interface AddonPropertiesInput {
   /** Arc addon: the VMware vCenter resource ID. */
   vCenter?: string;
 }
-export const AddonPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AddonPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addonType: AddonType,
     licenseKey: S.optional(S.String),
@@ -48,7 +48,7 @@ export interface AddonsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AddonPropertiesInput;
 }
-export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -69,11 +69,11 @@ export const AddonsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -90,7 +90,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -110,7 +110,7 @@ export type AddonProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const AddonProvisioningState = S.String;
+const AddonProvisioningState = S.String;
 
 /** The properties of an addon */
 export interface AddonProperties {
@@ -127,7 +127,7 @@ export interface AddonProperties {
   /** Arc addon: the VMware vCenter resource ID. */
   vCenter?: string;
 }
-export const AddonProperties = /*@__PURE__*/ S.suspend(() =>
+const AddonProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addonType: AddonType,
     provisioningState: S.optional(AddonProvisioningState),
@@ -150,7 +150,7 @@ export interface AddonsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
-export const AddonsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AddonsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -167,7 +167,7 @@ export interface ExpressRouteAuthorizationPropertiesInput {
   /** The ID of the ExpressRoute Circuit */
   expressRouteId?: string;
 }
-export const ExpressRouteAuthorizationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ExpressRouteAuthorizationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expressRouteId: S.optional(S.String),
   }),
@@ -187,7 +187,7 @@ export interface AuthorizationsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationPropertiesInput;
 }
-export const AuthorizationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -212,7 +212,7 @@ export type ExpressRouteAuthorizationProvisioningState =
   | "Failed"
   | "Canceled"
   | "Updating";
-export const ExpressRouteAuthorizationProvisioningState = S.String;
+const ExpressRouteAuthorizationProvisioningState = S.String;
 
 /** The properties of an ExpressRoute Circuit Authorization resource */
 export interface ExpressRouteAuthorizationProperties {
@@ -225,7 +225,7 @@ export interface ExpressRouteAuthorizationProperties {
   /** The ID of the ExpressRoute Circuit */
   expressRouteId?: string;
 }
-export const ExpressRouteAuthorizationProperties = /*@__PURE__*/ S.suspend(() =>
+const ExpressRouteAuthorizationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ExpressRouteAuthorizationProvisioningState),
     expressRouteAuthorizationId: S.optional(S.String),
@@ -248,7 +248,7 @@ export interface AuthorizationsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
-export const AuthorizationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -266,7 +266,7 @@ export interface CheckLocationQuotaAvailabilityRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const CheckLocationQuotaAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckLocationQuotaAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -284,14 +284,14 @@ export const CheckLocationQuotaAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Remaining hosts quota by sku type */
 export type QuotaHostsRemainingMap = { [key: string]: number | undefined };
-export const QuotaHostsRemainingMap = /*@__PURE__*/ S.Record(
+const QuotaHostsRemainingMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<QuotaHostsRemainingMap>;
 
 /** quota enabled */
 export type QuotaEnabled = "Enabled" | "Disabled";
-export const QuotaEnabled = S.String;
+const QuotaEnabled = S.String;
 
 /** Subscription quotas */
 export interface Quota {
@@ -300,7 +300,7 @@ export interface Quota {
   /** Host quota is active for current subscription */
   quotaEnabled?: QuotaEnabled;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
+const Quota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostsRemaining: S.optional(QuotaHostsRemainingMap),
     quotaEnabled: S.optional(QuotaEnabled),
@@ -309,7 +309,7 @@ export const Quota = /*@__PURE__*/ S.suspend(() =>
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const SkuTier = S.String;
+const SkuTier = S.String;
 
 export interface CheckLocationTrialAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -326,7 +326,7 @@ export interface CheckLocationTrialAvailabilityRequest {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const CheckLocationTrialAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckLocationTrialAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -349,7 +349,7 @@ export const CheckLocationTrialAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** trial status */
 export type TrialStatus = "TrialAvailable" | "TrialUsed" | "TrialDisabled";
-export const TrialStatus = S.String;
+const TrialStatus = S.String;
 
 /** Subscription trial availability */
 export interface Trial {
@@ -358,7 +358,7 @@ export interface Trial {
   /** Number of trial hosts available */
   availableHosts?: number;
 }
-export const Trial = /*@__PURE__*/ S.suspend(() =>
+const Trial = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(TrialStatus),
     availableHosts: S.optional(S.Number),
@@ -373,7 +373,7 @@ export interface CheckServiceComponentAvailabilityRequest {
   /** A service component */
   serviceComponentName: string;
 }
-export const CheckServiceComponentAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckServiceComponentAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -391,7 +391,7 @@ export const CheckServiceComponentAvailabilityRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CheckServiceComponentAvailabilityRequest>;
 
 export interface CheckServiceComponentAvailabilityResponse {}
-export const CheckServiceComponentAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckServiceComponentAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CheckServiceComponentAvailabilityResponse",
@@ -402,7 +402,7 @@ export interface CloudLinkPropertiesInput {
   /** Identifier of the other private cloud participating in the link. */
   linkedCloud?: string;
 }
-export const CloudLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CloudLinkPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkedCloud: S.optional(S.String),
   }),
@@ -420,7 +420,7 @@ export interface CloudLinksCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkPropertiesInput;
 }
-export const CloudLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const CloudLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -441,11 +441,11 @@ export const CloudLinksCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** cloud link provisioning state */
 export type CloudLinkProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const CloudLinkProvisioningState = S.String;
+const CloudLinkProvisioningState = S.String;
 
 /** Cloud Link status */
 export type CloudLinkStatus = "Active" | "Building" | "Deleting" | "Failed" | "Disconnected";
-export const CloudLinkStatus = S.String;
+const CloudLinkStatus = S.String;
 
 /** The properties of a cloud link. */
 export interface CloudLinkProperties {
@@ -456,7 +456,7 @@ export interface CloudLinkProperties {
   /** Identifier of the other private cloud participating in the link. */
   linkedCloud?: string;
 }
-export const CloudLinkProperties = /*@__PURE__*/ S.suspend(() =>
+const CloudLinkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(CloudLinkProvisioningState),
     status: S.optional(CloudLinkStatus),
@@ -476,7 +476,7 @@ export interface CloudLinksCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
-export const CloudLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const CloudLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -490,7 +490,7 @@ export const CloudLinksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The hosts */
 export type ClusterPropertiesInputHostsList = Array<string>;
-export const ClusterPropertiesInputHostsList = /*@__PURE__*/ S.Array(
+const ClusterPropertiesInputHostsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ClusterPropertiesInputHostsList>;
 
@@ -503,7 +503,7 @@ export interface ClusterPropertiesInput {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterSize: S.optional(S.Number),
     hosts: S.optional(ClusterPropertiesInputHostsList),
@@ -523,7 +523,7 @@ export interface ClustersCreateOrUpdateRequestSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const ClustersCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateRequestSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(SkuTier),
@@ -549,7 +549,7 @@ export interface ClustersCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateRequestSku;
 }
-export const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -577,11 +577,11 @@ export type ClusterProvisioningState =
   | "Cancelled"
   | "Deleting"
   | "Updating";
-export const ClusterProvisioningState = S.String;
+const ClusterProvisioningState = S.String;
 
 /** The hosts */
 export type ClusterPropertiesHostsList = Array<string>;
-export const ClusterPropertiesHostsList =
+const ClusterPropertiesHostsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ClusterPropertiesHostsList>;
 
 /** The properties of a cluster */
@@ -597,7 +597,7 @@ export interface ClusterProperties {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterSize: S.optional(S.Number),
     provisioningState: S.optional(ClusterProvisioningState),
@@ -619,7 +619,7 @@ export interface ClustersCreateOrUpdateResponseSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const ClustersCreateOrUpdateResponseSku =
+const ClustersCreateOrUpdateResponseSku =
   ClustersCreateOrUpdateRequestSku as any as S.Schema<ClustersCreateOrUpdateResponseSku>;
 
 export interface ClustersCreateOrUpdateResponse {
@@ -636,7 +636,7 @@ export interface ClustersCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -651,11 +651,11 @@ export const ClustersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of DHCP: SERVER or RELAY. */
 export type DhcpTypeEnum = "SERVER" | "RELAY";
-export const DhcpTypeEnum = S.String;
+const DhcpTypeEnum = S.String;
 
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
+const WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList>;
 
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
@@ -673,7 +673,7 @@ export interface WorkloadNetworkDhcpEntityInput {
   /** RELAY: DHCP relay server addresses. */
   serverAddresses?: WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList;
 }
-export const WorkloadNetworkDhcpEntityInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDhcpEntityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhcpType: DhcpTypeEnum,
     displayName: S.optional(S.String),
@@ -698,7 +698,7 @@ export interface CreateWorkloadNetworkDhcpRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntityInput;
 }
-export const CreateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -719,7 +719,7 @@ export const CreateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** NSX Segments consuming DHCP. */
 export type WorkloadNetworkDhcpEntitySegmentsList = Array<string>;
-export const WorkloadNetworkDhcpEntitySegmentsList =
+const WorkloadNetworkDhcpEntitySegmentsList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDhcpEntitySegmentsList>;
 
 /** Workload Network DHCP provisioning state */
@@ -730,7 +730,7 @@ export type WorkloadNetworkDhcpProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkDhcpProvisioningState = S.String;
+const WorkloadNetworkDhcpProvisioningState = S.String;
 
 /** Base class for WorkloadNetworkDhcpServer and WorkloadNetworkDhcpRelay to inherit from */
 export interface WorkloadNetworkDhcpEntity {
@@ -751,7 +751,7 @@ export interface WorkloadNetworkDhcpEntity {
   /** RELAY: DHCP relay server addresses. */
   serverAddresses?: WorkloadNetworkDnsZonePropertiesInputDnsServerIpsList;
 }
-export const WorkloadNetworkDhcpEntity = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDhcpEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhcpType: DhcpTypeEnum,
     displayName: S.optional(S.String),
@@ -778,7 +778,7 @@ export interface CreateWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const CreateWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -792,12 +792,12 @@ export const CreateWorkloadNetworkDhcpResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesInputFqdnZonesList = Array<string>;
-export const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
+const WorkloadNetworkDnsServicePropertiesInputFqdnZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesInputFqdnZonesList>;
 
 /** DNS service log level */
 export type DnsServiceLogLevelEnum = "DEBUG" | "INFO" | "WARNING" | "ERROR" | "FATAL";
-export const DnsServiceLogLevelEnum = S.String;
+const DnsServiceLogLevelEnum = S.String;
 
 /** NSX DNS Service Properties */
 export interface WorkloadNetworkDnsServicePropertiesInput {
@@ -814,7 +814,7 @@ export interface WorkloadNetworkDnsServicePropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkDnsServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dnsServiceIp: S.optional(S.String),
@@ -839,7 +839,7 @@ export interface CreateWorkloadNetworkDnsServiceRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServicePropertiesInput;
 }
-export const CreateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -860,12 +860,12 @@ export const CreateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(()
 
 /** FQDN zones of the DNS Service. */
 export type WorkloadNetworkDnsServicePropertiesFqdnZonesList = Array<string>;
-export const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
+const WorkloadNetworkDnsServicePropertiesFqdnZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsServicePropertiesFqdnZonesList>;
 
 /** DNS service status */
 export type DnsServiceStatusEnum = "SUCCESS" | "FAILURE";
-export const DnsServiceStatusEnum = S.String;
+const DnsServiceStatusEnum = S.String;
 
 /** Workload Network DNS Service provisioning state */
 export type WorkloadNetworkDnsServiceProvisioningState =
@@ -875,7 +875,7 @@ export type WorkloadNetworkDnsServiceProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkDnsServiceProvisioningState = S.String;
+const WorkloadNetworkDnsServiceProvisioningState = S.String;
 
 /** NSX DNS Service Properties */
 export interface WorkloadNetworkDnsServiceProperties {
@@ -896,7 +896,7 @@ export interface WorkloadNetworkDnsServiceProperties {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkDnsServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     dnsServiceIp: S.optional(S.String),
@@ -923,7 +923,7 @@ export interface CreateWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const CreateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -937,7 +937,7 @@ export const CreateWorkloadNetworkDnsServiceResponse = /*@__PURE__*/ S.suspend((
 
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesInputDomainList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesInputDomainList =
+const WorkloadNetworkDnsZonePropertiesInputDomainList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesInputDomainList>;
 
 /** NSX DNS Zone Properties */
@@ -955,7 +955,7 @@ export interface WorkloadNetworkDnsZonePropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkDnsZonePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsZonePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     domain: S.optional(WorkloadNetworkDnsZonePropertiesInputDomainList),
@@ -980,7 +980,7 @@ export interface CreateWorkloadNetworkDnsZoneRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZonePropertiesInput;
 }
-export const CreateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1001,12 +1001,12 @@ export const CreateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Domain names of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDomainList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesDomainList =
+const WorkloadNetworkDnsZonePropertiesDomainList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDomainList>;
 
 /** DNS Server IP array of the DNS Zone. */
 export type WorkloadNetworkDnsZonePropertiesDnsServerIpsList = Array<string>;
-export const WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
+const WorkloadNetworkDnsZonePropertiesDnsServerIpsList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkDnsZonePropertiesDnsServerIpsList>;
 
 /** Workload Network DNS Zone provisioning state */
@@ -1017,7 +1017,7 @@ export type WorkloadNetworkDnsZoneProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkDnsZoneProvisioningState = S.String;
+const WorkloadNetworkDnsZoneProvisioningState = S.String;
 
 /** NSX DNS Zone Properties */
 export interface WorkloadNetworkDnsZoneProperties {
@@ -1036,7 +1036,7 @@ export interface WorkloadNetworkDnsZoneProperties {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkDnsZoneProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsZoneProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     domain: S.optional(WorkloadNetworkDnsZonePropertiesDomainList),
@@ -1062,7 +1062,7 @@ export interface CreateWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const CreateWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1076,7 +1076,7 @@ export const CreateWorkloadNetworkDnsZoneResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Port Mirroring Direction */
 export type PortMirroringDirectionEnum = "INGRESS" | "EGRESS" | "BIDIRECTIONAL";
-export const PortMirroringDirectionEnum = S.String;
+const PortMirroringDirectionEnum = S.String;
 
 /** NSX Port Mirroring Properties */
 export interface WorkloadNetworkPortMirroringPropertiesInput {
@@ -1091,7 +1091,7 @@ export interface WorkloadNetworkPortMirroringPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkPortMirroringPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPortMirroringPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     direction: S.optional(PortMirroringDirectionEnum),
@@ -1115,7 +1115,7 @@ export interface CreateWorkloadNetworkPortMirroringRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringPropertiesInput;
 }
-export const CreateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1136,7 +1136,7 @@ export const CreateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend
 
 /** Port Mirroring status */
 export type PortMirroringStatusEnum = "SUCCESS" | "FAILURE";
-export const PortMirroringStatusEnum = S.String;
+const PortMirroringStatusEnum = S.String;
 
 /** Workload Network Port Mirroring provisioning state */
 export type WorkloadNetworkPortMirroringProvisioningState =
@@ -1146,7 +1146,7 @@ export type WorkloadNetworkPortMirroringProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkPortMirroringProvisioningState = S.String;
+const WorkloadNetworkPortMirroringProvisioningState = S.String;
 
 /** NSX Port Mirroring Properties */
 export interface WorkloadNetworkPortMirroringProperties {
@@ -1165,7 +1165,7 @@ export interface WorkloadNetworkPortMirroringProperties {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkPortMirroringProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPortMirroringProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     direction: S.optional(PortMirroringDirectionEnum),
@@ -1191,7 +1191,7 @@ export interface CreateWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const CreateWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkPortMirroringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1210,7 +1210,7 @@ export interface WorkloadNetworkPublicIPPropertiesInput {
   /** Number of Public IPs requested. */
   numberOfPublicIPs?: number;
 }
-export const WorkloadNetworkPublicIPPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPublicIPPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     numberOfPublicIPs: S.optional(S.Number),
@@ -1231,7 +1231,7 @@ export interface CreateWorkloadNetworkPublicIPRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPPropertiesInput;
 }
-export const CreateWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1258,7 +1258,7 @@ export type WorkloadNetworkPublicIPProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkPublicIPProvisioningState = S.String;
+const WorkloadNetworkPublicIPProvisioningState = S.String;
 
 /** NSX Public IP Block Properties */
 export interface WorkloadNetworkPublicIPProperties {
@@ -1271,7 +1271,7 @@ export interface WorkloadNetworkPublicIPProperties {
   /** The provisioning state */
   provisioningState?: WorkloadNetworkPublicIPProvisioningState;
 }
-export const WorkloadNetworkPublicIPProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPublicIPProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     numberOfPublicIPs: S.optional(S.Number),
@@ -1294,7 +1294,7 @@ export interface CreateWorkloadNetworkPublicIPResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
-export const CreateWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1308,7 +1308,7 @@ export const CreateWorkloadNetworkPublicIPResponse = /*@__PURE__*/ S.suspend(() 
 
 /** DHCP Range assigned for subnet. */
 export type WorkloadNetworkSegmentSubnetDhcpRangesList = Array<string>;
-export const WorkloadNetworkSegmentSubnetDhcpRangesList =
+const WorkloadNetworkSegmentSubnetDhcpRangesList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkSegmentSubnetDhcpRangesList>;
 
 /** Subnet configuration for segment */
@@ -1318,7 +1318,7 @@ export interface WorkloadNetworkSegmentSubnet {
   /** Gateway address. */
   gatewayAddress?: string;
 }
-export const WorkloadNetworkSegmentSubnet = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegmentSubnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dhcpRanges: S.optional(WorkloadNetworkSegmentSubnetDhcpRangesList),
     gatewayAddress: S.optional(S.String),
@@ -1338,7 +1338,7 @@ export interface WorkloadNetworkSegmentPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkSegmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegmentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     connectedGateway: S.optional(S.String),
@@ -1361,7 +1361,7 @@ export interface CreateWorkloadNetworkSegmentsRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentPropertiesInput;
 }
-export const CreateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1385,7 +1385,7 @@ export interface WorkloadNetworkSegmentPortVif {
   /** Name of port or VIF attached to segment. */
   portName?: string;
 }
-export const WorkloadNetworkSegmentPortVif = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegmentPortVif = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     portName: S.optional(S.String),
   }),
@@ -1395,13 +1395,13 @@ export const WorkloadNetworkSegmentPortVif = /*@__PURE__*/ S.suspend(() =>
 
 /** Port Vif which segment is associated with. */
 export type WorkloadNetworkSegmentPropertiesPortVifList = Array<WorkloadNetworkSegmentPortVif>;
-export const WorkloadNetworkSegmentPropertiesPortVifList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkSegmentPropertiesPortVifList = /*@__PURE__*/ S.Array(
   WorkloadNetworkSegmentPortVif,
 ) as any as S.Schema<WorkloadNetworkSegmentPropertiesPortVifList>;
 
 /** Segment status */
 export type SegmentStatusEnum = "SUCCESS" | "FAILURE";
-export const SegmentStatusEnum = S.String;
+const SegmentStatusEnum = S.String;
 
 /** Workload Network Segment provisioning state */
 export type WorkloadNetworkSegmentProvisioningState =
@@ -1411,7 +1411,7 @@ export type WorkloadNetworkSegmentProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkSegmentProvisioningState = S.String;
+const WorkloadNetworkSegmentProvisioningState = S.String;
 
 /** NSX Segment Properties */
 export interface WorkloadNetworkSegmentProperties {
@@ -1430,7 +1430,7 @@ export interface WorkloadNetworkSegmentProperties {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkSegmentProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegmentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     connectedGateway: S.optional(S.String),
@@ -1456,7 +1456,7 @@ export interface CreateWorkloadNetworkSegmentsResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const CreateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1470,7 +1470,7 @@ export const CreateWorkloadNetworkSegmentsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesInputMembersList = Array<string>;
-export const WorkloadNetworkVMGroupPropertiesInputMembersList =
+const WorkloadNetworkVMGroupPropertiesInputMembersList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesInputMembersList>;
 
 /** NSX VM Group Properties */
@@ -1482,7 +1482,7 @@ export interface WorkloadNetworkVMGroupPropertiesInput {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkVMGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVMGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     members: S.optional(WorkloadNetworkVMGroupPropertiesInputMembersList),
@@ -1504,7 +1504,7 @@ export interface CreateWorkloadNetworkVMGroupRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupPropertiesInput;
 }
-export const CreateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1525,12 +1525,12 @@ export const CreateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual machine members of this group. */
 export type WorkloadNetworkVMGroupPropertiesMembersList = Array<string>;
-export const WorkloadNetworkVMGroupPropertiesMembersList =
+const WorkloadNetworkVMGroupPropertiesMembersList =
   ClusterPropertiesInputHostsList as any as S.Schema<WorkloadNetworkVMGroupPropertiesMembersList>;
 
 /** VM group status */
 export type VMGroupStatusEnum = "SUCCESS" | "FAILURE";
-export const VMGroupStatusEnum = S.String;
+const VMGroupStatusEnum = S.String;
 
 /** Workload Network VM Group provisioning state */
 export type WorkloadNetworkVMGroupProvisioningState =
@@ -1540,7 +1540,7 @@ export type WorkloadNetworkVMGroupProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkVMGroupProvisioningState = S.String;
+const WorkloadNetworkVMGroupProvisioningState = S.String;
 
 /** NSX VM Group Properties */
 export interface WorkloadNetworkVMGroupProperties {
@@ -1555,7 +1555,7 @@ export interface WorkloadNetworkVMGroupProperties {
   /** NSX revision number. */
   revision?: number;
 }
-export const WorkloadNetworkVMGroupProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVMGroupProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     members: S.optional(WorkloadNetworkVMGroupPropertiesMembersList),
@@ -1579,7 +1579,7 @@ export interface CreateWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const CreateWorkloadNetworkVMGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkloadNetworkVMGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1596,7 +1596,7 @@ export interface NetAppVolume {
   /** Azure resource ID of the NetApp volume */
   id: string;
 }
-export const NetAppVolume = /*@__PURE__*/ S.suspend(() =>
+const NetAppVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -1604,7 +1604,7 @@ export const NetAppVolume = /*@__PURE__*/ S.suspend(() =>
 
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
 export type DiskPoolVolumeInputMountOption = "MOUNT" | "ATTACH";
-export const DiskPoolVolumeInputMountOption = S.String;
+const DiskPoolVolumeInputMountOption = S.String;
 
 /** An iSCSI volume from Microsoft.StoragePool provider */
 export interface DiskPoolVolumeInput {
@@ -1615,7 +1615,7 @@ export interface DiskPoolVolumeInput {
   /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
   mountOption?: DiskPoolVolumeInputMountOption | (string & {});
 }
-export const DiskPoolVolumeInput = /*@__PURE__*/ S.suspend(() =>
+const DiskPoolVolumeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.String,
     lunName: S.String,
@@ -1628,7 +1628,7 @@ export interface ElasticSanVolume {
   /** Azure resource ID of the Elastic SAN Volume */
   targetId: string;
 }
-export const ElasticSanVolume = /*@__PURE__*/ S.suspend(() =>
+const ElasticSanVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.String,
   }),
@@ -1641,7 +1641,7 @@ export interface PureStorageVolume {
   /** Volume size to be used to create a Virtual Volumes (vVols) datastore */
   sizeGb: number;
 }
-export const PureStorageVolume = /*@__PURE__*/ S.suspend(() =>
+const PureStorageVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storagePoolId: S.String,
     sizeGb: S.Number,
@@ -1659,7 +1659,7 @@ export interface DatastorePropertiesInput {
   /** A Pure Storage volume */
   pureStorageVolume?: PureStorageVolume;
 }
-export const DatastorePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DatastorePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     netAppVolume: S.optional(NetAppVolume),
     diskPoolVolume: S.optional(DiskPoolVolumeInput),
@@ -1682,7 +1682,7 @@ export interface DatastoresCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DatastorePropertiesInput;
 }
-export const DatastoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const DatastoresCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1712,11 +1712,11 @@ export type DatastoreProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-export const DatastoreProvisioningState = S.String;
+const DatastoreProvisioningState = S.String;
 
 /** Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN */
 export type DiskPoolVolumeMountOption = "MOUNT" | "ATTACH";
-export const DiskPoolVolumeMountOption = S.String;
+const DiskPoolVolumeMountOption = S.String;
 
 /** An iSCSI volume from Microsoft.StoragePool provider */
 export interface DiskPoolVolume {
@@ -1729,7 +1729,7 @@ export interface DiskPoolVolume {
   /** Device path */
   path?: string;
 }
-export const DiskPoolVolume = /*@__PURE__*/ S.suspend(() =>
+const DiskPoolVolume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetId: S.String,
     lunName: S.String,
@@ -1747,7 +1747,7 @@ export type DatastoreStatus =
   | "Detached"
   | "LostCommunication"
   | "DeadOrError";
-export const DatastoreStatus = S.String;
+const DatastoreStatus = S.String;
 
 /** The properties of a datastore */
 export interface DatastoreProperties {
@@ -1764,7 +1764,7 @@ export interface DatastoreProperties {
   /** The operational status of the datastore */
   status?: DatastoreStatus;
 }
-export const DatastoreProperties = /*@__PURE__*/ S.suspend(() =>
+const DatastoreProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(DatastoreProvisioningState),
     netAppVolume: S.optional(NetAppVolume),
@@ -1787,7 +1787,7 @@ export interface DatastoresCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
-export const DatastoresCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const DatastoresCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1809,7 +1809,7 @@ export interface DeleteAddonRequest {
   /** Name of the addon. */
   addonName: string;
 }
-export const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1826,7 +1826,7 @@ export const DeleteAddonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAddonRequest" }) as any as S.Schema<DeleteAddonRequest>;
 
 export interface DeleteAddonResponse {}
-export const DeleteAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAddonResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAddonResponse",
 }) as any as S.Schema<DeleteAddonResponse>;
 
@@ -1840,7 +1840,7 @@ export interface DeleteAuthorizationRequest {
   /** Name of the ExpressRoute Circuit Authorization */
   authorizationName: string;
 }
-export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1859,7 +1859,7 @@ export const DeleteAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthorizationRequest>;
 
 export interface DeleteAuthorizationResponse {}
-export const DeleteAuthorizationResponse =
+const DeleteAuthorizationResponse =
   DeleteAddonResponse as any as S.Schema<DeleteAuthorizationResponse>;
 
 export interface DeleteCloudLinkRequest {
@@ -1872,7 +1872,7 @@ export interface DeleteCloudLinkRequest {
   /** Name of the cloud link. */
   cloudLinkName: string;
 }
-export const DeleteCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1889,8 +1889,7 @@ export const DeleteCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCloudLinkRequest" }) as any as S.Schema<DeleteCloudLinkRequest>;
 
 export interface DeleteCloudLinkResponse {}
-export const DeleteCloudLinkResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteCloudLinkResponse>;
+const DeleteCloudLinkResponse = DeleteAddonResponse as any as S.Schema<DeleteCloudLinkResponse>;
 
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1902,7 +1901,7 @@ export interface DeleteClusterRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1919,7 +1918,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse = DeleteAddonResponse as any as S.Schema<DeleteClusterResponse>;
+const DeleteClusterResponse = DeleteAddonResponse as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteDatastoreRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1933,7 +1932,7 @@ export interface DeleteDatastoreRequest {
   /** Name of the datastore */
   datastoreName: string;
 }
-export const DeleteDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1951,8 +1950,7 @@ export const DeleteDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDatastoreRequest" }) as any as S.Schema<DeleteDatastoreRequest>;
 
 export interface DeleteDatastoreResponse {}
-export const DeleteDatastoreResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteDatastoreResponse>;
+const DeleteDatastoreResponse = DeleteAddonResponse as any as S.Schema<DeleteDatastoreResponse>;
 
 export interface DeleteGlobalReachConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1964,7 +1962,7 @@ export interface DeleteGlobalReachConnectionRequest {
   /** Name of the global reach connection */
   globalReachConnectionName: string;
 }
-export const DeleteGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1983,7 +1981,7 @@ export const DeleteGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGlobalReachConnectionRequest>;
 
 export interface DeleteGlobalReachConnectionResponse {}
-export const DeleteGlobalReachConnectionResponse =
+const DeleteGlobalReachConnectionResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteGlobalReachConnectionResponse>;
 
 export interface DeleteHcxEnterpriseSiteRequest {
@@ -1996,7 +1994,7 @@ export interface DeleteHcxEnterpriseSiteRequest {
   /** Name of the HCX Enterprise Site */
   hcxEnterpriseSiteName: string;
 }
-export const DeleteHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2015,9 +2013,9 @@ export const DeleteHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteHcxEnterpriseSiteRequest>;
 
 export interface DeleteHcxEnterpriseSiteResponse {}
-export const DeleteHcxEnterpriseSiteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteHcxEnterpriseSiteResponse" },
-) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>;
+const DeleteHcxEnterpriseSiteResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteHcxEnterpriseSiteResponse",
+}) as any as S.Schema<DeleteHcxEnterpriseSiteResponse>;
 
 export interface DeleteIscsiPathRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2027,7 +2025,7 @@ export interface DeleteIscsiPathRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const DeleteIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2043,11 +2041,10 @@ export const DeleteIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteIscsiPathRequest" }) as any as S.Schema<DeleteIscsiPathRequest>;
 
 export interface DeleteIscsiPathResponse {}
-export const DeleteIscsiPathResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteIscsiPathResponse>;
+const DeleteIscsiPathResponse = DeleteAddonResponse as any as S.Schema<DeleteIscsiPathResponse>;
 
 export type DeleteLicenseRequestLicenseName = "VmwareFirewall";
-export const DeleteLicenseRequestLicenseName = S.String;
+const DeleteLicenseRequestLicenseName = S.String;
 
 export interface DeleteLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2059,7 +2056,7 @@ export interface DeleteLicenseRequest {
   /** Name of the license. */
   licenseName: DeleteLicenseRequestLicenseName | (string & {});
 }
-export const DeleteLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2076,7 +2073,7 @@ export const DeleteLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLicenseRequest" }) as any as S.Schema<DeleteLicenseRequest>;
 
 export interface DeleteLicenseResponse {}
-export const DeleteLicenseResponse = DeleteAddonResponse as any as S.Schema<DeleteLicenseResponse>;
+const DeleteLicenseResponse = DeleteAddonResponse as any as S.Schema<DeleteLicenseResponse>;
 
 export interface DeletePlacementPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2090,7 +2087,7 @@ export interface DeletePlacementPolicyRequest {
   /** Name of the placement policy. */
   placementPolicyName: string;
 }
-export const DeletePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2110,7 +2107,7 @@ export const DeletePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlacementPolicyRequest>;
 
 export interface DeletePlacementPolicyResponse {}
-export const DeletePlacementPolicyResponse =
+const DeletePlacementPolicyResponse =
   DeleteAddonResponse as any as S.Schema<DeletePlacementPolicyResponse>;
 
 export interface DeletePrivateCloudRequest {
@@ -2121,7 +2118,7 @@ export interface DeletePrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const DeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2139,7 +2136,7 @@ export const DeletePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateCloudRequest>;
 
 export interface DeletePrivateCloudResponse {}
-export const DeletePrivateCloudResponse =
+const DeletePrivateCloudResponse =
   DeleteAddonResponse as any as S.Schema<DeletePrivateCloudResponse>;
 
 export interface DeletePureStoragePolicyRequest {
@@ -2152,7 +2149,7 @@ export interface DeletePureStoragePolicyRequest {
   /** Name of the storage policy. */
   storagePolicyName: string;
 }
-export const DeletePureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2171,7 +2168,7 @@ export const DeletePureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePureStoragePolicyRequest>;
 
 export interface DeletePureStoragePolicyResponse {}
-export const DeletePureStoragePolicyResponse =
+const DeletePureStoragePolicyResponse =
   DeleteHcxEnterpriseSiteResponse as any as S.Schema<DeletePureStoragePolicyResponse>;
 
 export interface DeleteScriptExecutionRequest {
@@ -2184,7 +2181,7 @@ export interface DeleteScriptExecutionRequest {
   /** Name of the script cmdlet. */
   scriptExecutionName: string;
 }
-export const DeleteScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2203,7 +2200,7 @@ export const DeleteScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScriptExecutionRequest>;
 
 export interface DeleteScriptExecutionResponse {}
-export const DeleteScriptExecutionResponse =
+const DeleteScriptExecutionResponse =
   DeleteAddonResponse as any as S.Schema<DeleteScriptExecutionResponse>;
 
 export interface DeleteWorkloadNetworkDhcpRequest {
@@ -2216,7 +2213,7 @@ export interface DeleteWorkloadNetworkDhcpRequest {
   /** The ID of the DHCP configuration */
   dhcpId: string;
 }
-export const DeleteWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2235,7 +2232,7 @@ export const DeleteWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkDhcpRequest>;
 
 export interface DeleteWorkloadNetworkDhcpResponse {}
-export const DeleteWorkloadNetworkDhcpResponse =
+const DeleteWorkloadNetworkDhcpResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDhcpResponse>;
 
 export interface DeleteWorkloadNetworkDnsServiceRequest {
@@ -2248,7 +2245,7 @@ export interface DeleteWorkloadNetworkDnsServiceRequest {
   /** ID of the DNS service. */
   dnsServiceId: string;
 }
-export const DeleteWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2267,7 +2264,7 @@ export const DeleteWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeleteWorkloadNetworkDnsServiceRequest>;
 
 export interface DeleteWorkloadNetworkDnsServiceResponse {}
-export const DeleteWorkloadNetworkDnsServiceResponse =
+const DeleteWorkloadNetworkDnsServiceResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsServiceResponse>;
 
 export interface DeleteWorkloadNetworkDnsZoneRequest {
@@ -2280,7 +2277,7 @@ export interface DeleteWorkloadNetworkDnsZoneRequest {
   /** ID of the DNS zone. */
   dnsZoneId: string;
 }
-export const DeleteWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2299,7 +2296,7 @@ export const DeleteWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkDnsZoneRequest>;
 
 export interface DeleteWorkloadNetworkDnsZoneResponse {}
-export const DeleteWorkloadNetworkDnsZoneResponse =
+const DeleteWorkloadNetworkDnsZoneResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkDnsZoneResponse>;
 
 export interface DeleteWorkloadNetworkPortMirroringRequest {
@@ -2312,7 +2309,7 @@ export interface DeleteWorkloadNetworkPortMirroringRequest {
   /** ID of the NSX port mirroring profile. */
   portMirroringId: string;
 }
-export const DeleteWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2331,7 +2328,7 @@ export const DeleteWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteWorkloadNetworkPortMirroringRequest>;
 
 export interface DeleteWorkloadNetworkPortMirroringResponse {}
-export const DeleteWorkloadNetworkPortMirroringResponse =
+const DeleteWorkloadNetworkPortMirroringResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPortMirroringResponse>;
 
 export interface DeleteWorkloadNetworkPublicIPRequest {
@@ -2344,7 +2341,7 @@ export interface DeleteWorkloadNetworkPublicIPRequest {
   /** ID of the DNS zone. */
   publicIPId: string;
 }
-export const DeleteWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2363,7 +2360,7 @@ export const DeleteWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkloadNetworkPublicIPRequest>;
 
 export interface DeleteWorkloadNetworkPublicIPResponse {}
-export const DeleteWorkloadNetworkPublicIPResponse =
+const DeleteWorkloadNetworkPublicIPResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkPublicIPResponse>;
 
 export interface DeleteWorkloadNetworkSegmentRequest {
@@ -2376,7 +2373,7 @@ export interface DeleteWorkloadNetworkSegmentRequest {
   /** The ID of the NSX Segment */
   segmentId: string;
 }
-export const DeleteWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2395,7 +2392,7 @@ export const DeleteWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkSegmentRequest>;
 
 export interface DeleteWorkloadNetworkSegmentResponse {}
-export const DeleteWorkloadNetworkSegmentResponse =
+const DeleteWorkloadNetworkSegmentResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkSegmentResponse>;
 
 export interface DeleteWorkloadNetworkVMGroupRequest {
@@ -2408,7 +2405,7 @@ export interface DeleteWorkloadNetworkVMGroupRequest {
   /** ID of the VM group. */
   vmGroupId: string;
 }
-export const DeleteWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2427,7 +2424,7 @@ export const DeleteWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkloadNetworkVMGroupRequest>;
 
 export interface DeleteWorkloadNetworkVMGroupResponse {}
-export const DeleteWorkloadNetworkVMGroupResponse =
+const DeleteWorkloadNetworkVMGroupResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<DeleteWorkloadNetworkVMGroupResponse>;
 
 export interface GetAddonRequest {
@@ -2440,7 +2437,7 @@ export interface GetAddonRequest {
   /** Name of the addon. */
   addonName: string;
 }
-export const GetAddonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2468,7 +2465,7 @@ export interface GetAddonResponse {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
-export const GetAddonResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAddonResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2488,7 +2485,7 @@ export interface GetAuthorizationRequest {
   /** Name of the ExpressRoute Circuit Authorization */
   authorizationName: string;
 }
-export const GetAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2516,7 +2513,7 @@ export interface GetAuthorizationResponse {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
-export const GetAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2536,7 +2533,7 @@ export interface GetCloudLinkRequest {
   /** Name of the cloud link. */
   cloudLinkName: string;
 }
-export const GetCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2564,7 +2561,7 @@ export interface GetCloudLinkResponse {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
-export const GetCloudLinkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCloudLinkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2584,7 +2581,7 @@ export interface GetClusterRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2602,8 +2599,6 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type GetClusterResponseSku = ClustersCreateOrUpdateResponseSku;
-export const GetClusterResponseSku = ClustersCreateOrUpdateResponseSku;
-
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2618,7 +2613,7 @@ export interface GetClusterResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2641,7 +2636,7 @@ export interface GetDatastoreRequest {
   /** Name of the datastore */
   datastoreName: string;
 }
-export const GetDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatastoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2670,7 +2665,7 @@ export interface GetDatastoreResponse {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
-export const GetDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatastoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2690,7 +2685,7 @@ export interface GetGlobalReachConnectionRequest {
   /** Name of the global reach connection */
   globalReachConnectionName: string;
 }
-export const GetGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalReachConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2714,11 +2709,11 @@ export type GlobalReachConnectionProvisioningState =
   | "Failed"
   | "Canceled"
   | "Updating";
-export const GlobalReachConnectionProvisioningState = S.String;
+const GlobalReachConnectionProvisioningState = S.String;
 
 /** Global Reach Connection status */
 export type GlobalReachConnectionStatus = "Connected" | "Connecting" | "Disconnected";
-export const GlobalReachConnectionStatus = S.String;
+const GlobalReachConnectionStatus = S.String;
 
 /** The properties of a global reach connection */
 export interface GlobalReachConnectionProperties {
@@ -2735,7 +2730,7 @@ export interface GlobalReachConnectionProperties {
   /** The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection */
   expressRouteId?: string;
 }
-export const GlobalReachConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const GlobalReachConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(GlobalReachConnectionProvisioningState),
     addressPrefix: S.optional(S.String),
@@ -2760,7 +2755,7 @@ export interface GetGlobalReachConnectionResponse {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
-export const GetGlobalReachConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGlobalReachConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2782,7 +2777,7 @@ export interface GetHcxEnterpriseSiteRequest {
   /** Name of the HCX Enterprise Site */
   hcxEnterpriseSiteName: string;
 }
-export const GetHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2802,11 +2797,11 @@ export const GetHcxEnterpriseSiteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HCX Enterprise Site provisioning state */
 export type HcxEnterpriseSiteProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const HcxEnterpriseSiteProvisioningState = S.String;
+const HcxEnterpriseSiteProvisioningState = S.String;
 
 /** HCX Enterprise Site status */
 export type HcxEnterpriseSiteStatus = "Available" | "Consumed" | "Deactivated" | "Deleted";
-export const HcxEnterpriseSiteStatus = S.String;
+const HcxEnterpriseSiteStatus = S.String;
 
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSiteProperties {
@@ -2817,7 +2812,7 @@ export interface HcxEnterpriseSiteProperties {
   /** The status of the HCX Enterprise Site */
   status?: HcxEnterpriseSiteStatus;
 }
-export const HcxEnterpriseSiteProperties = /*@__PURE__*/ S.suspend(() =>
+const HcxEnterpriseSiteProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(HcxEnterpriseSiteProvisioningState),
     activationKey: S.optional(S.String),
@@ -2839,7 +2834,7 @@ export interface GetHcxEnterpriseSiteResponse {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
-export const GetHcxEnterpriseSiteResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHcxEnterpriseSiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2863,7 +2858,7 @@ export interface GetHostRequest {
   /** The host identifier. */
   hostId: string;
 }
-export const GetHostRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2882,26 +2877,26 @@ export const GetHostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of host. */
 export type HostKind = "General" | "Specialized";
-export const HostKind = S.String;
+const HostKind = S.String;
 
 /** provisioning state of the host */
 export type HostProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const HostProvisioningState = S.String;
+const HostProvisioningState = S.String;
 
 /** The reason for host maintenance. */
 export type HostMaintenance = "Replacement" | "Upgrade";
-export const HostMaintenance = S.String;
+const HostMaintenance = S.String;
 
 /** The kind of host license. */
 export type HostLicenseKind = "WindowsServer";
-export const HostLicenseKind = S.String;
+const HostLicenseKind = S.String;
 
 /** A license assigned to a host. */
 export interface HostLicense {
   /** License kind */
   kind: HostLicenseKind | (string & {});
 }
-export const HostLicense = /*@__PURE__*/ S.suspend(() =>
+const HostLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: HostLicenseKind,
   }),
@@ -2909,7 +2904,7 @@ export const HostLicense = /*@__PURE__*/ S.suspend(() =>
 
 /** The licenses assigned to the host. */
 export type HostPropertiesLicensesList = Array<HostLicense>;
-export const HostPropertiesLicensesList = /*@__PURE__*/ S.Array(
+const HostPropertiesLicensesList = /*@__PURE__*/ S.Array(
   HostLicense,
 ) as any as S.Schema<HostPropertiesLicensesList>;
 
@@ -2931,7 +2926,7 @@ export interface HostProperties {
   /** The licenses assigned to the host. */
   licenses?: HostPropertiesLicensesList;
 }
-export const HostProperties = /*@__PURE__*/ S.suspend(() =>
+const HostProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: HostKind,
     provisioningState: S.optional(HostProvisioningState),
@@ -2946,13 +2941,11 @@ export const HostProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type GetHostResponseZonesList = Array<string>;
-export const GetHostResponseZonesList =
+const GetHostResponseZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<GetHostResponseZonesList>;
 
 /** The resource model definition representing SKU */
 export type GetHostResponseSku = ClustersCreateOrUpdateResponseSku;
-export const GetHostResponseSku = ClustersCreateOrUpdateResponseSku;
-
 export interface GetHostResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2969,7 +2962,7 @@ export interface GetHostResponse {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
-export const GetHostResponse = /*@__PURE__*/ S.suspend(() =>
+const GetHostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2989,7 +2982,7 @@ export interface GetIscsiPathRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const GetIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIscsiPathRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3013,7 +3006,7 @@ export type IscsiPathProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const IscsiPathProvisioningState = S.String;
+const IscsiPathProvisioningState = S.String;
 
 /** The properties of an iSCSI path resource */
 export interface IscsiPathProperties {
@@ -3022,7 +3015,7 @@ export interface IscsiPathProperties {
   /** CIDR Block for iSCSI path. */
   networkBlock: string;
 }
-export const IscsiPathProperties = /*@__PURE__*/ S.suspend(() =>
+const IscsiPathProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(IscsiPathProvisioningState),
     networkBlock: S.String,
@@ -3041,7 +3034,7 @@ export interface GetIscsiPathResponse {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
-export const GetIscsiPathResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIscsiPathResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3052,7 +3045,7 @@ export const GetIscsiPathResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIscsiPathResponse" }) as any as S.Schema<GetIscsiPathResponse>;
 
 export type GetLicenseRequestLicenseName = "VmwareFirewall";
-export const GetLicenseRequestLicenseName = S.String;
+const GetLicenseRequestLicenseName = S.String;
 
 export interface GetLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3064,7 +3057,7 @@ export interface GetLicenseRequest {
   /** Name of the license. */
   licenseName: GetLicenseRequestLicenseName | (string & {});
 }
-export const GetLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3082,11 +3075,11 @@ export const GetLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of license. */
 export type LicenseKind = "VmwareFirewall";
-export const LicenseKind = S.String;
+const LicenseKind = S.String;
 
 /** provisioning state of the license */
 export type LicenseProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const LicenseProvisioningState = S.String;
+const LicenseProvisioningState = S.String;
 
 /** The properties of a license */
 export interface LicenseProperties {
@@ -3103,7 +3096,7 @@ export interface LicenseProperties {
   /** VmwareFirewall: the Broadcom contract number associated with the license. */
   broadcomContractNumber?: string;
 }
-export const LicenseProperties = /*@__PURE__*/ S.suspend(() =>
+const LicenseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: LicenseKind,
     provisioningState: S.optional(LicenseProvisioningState),
@@ -3126,7 +3119,7 @@ export interface GetLicenseResponse {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
-export const GetLicenseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLicenseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3137,7 +3130,7 @@ export const GetLicenseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLicenseResponse" }) as any as S.Schema<GetLicenseResponse>;
 
 export type GetLicensePropertiesRequestLicenseName = "VmwareFirewall";
-export const GetLicensePropertiesRequestLicenseName = S.String;
+const GetLicensePropertiesRequestLicenseName = S.String;
 
 export interface GetLicensePropertiesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3149,7 +3142,7 @@ export interface GetLicensePropertiesRequest {
   /** Name of the license. */
   licenseName: GetLicensePropertiesRequestLicenseName | (string & {});
 }
-export const GetLicensePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLicensePropertiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3177,7 +3170,7 @@ export interface GetMaintenanceRequest {
   /** Name of the maintenance */
   maintenanceName: string;
 }
-export const GetMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3195,11 +3188,11 @@ export const GetMaintenanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** type of the maintenance */
 export type MaintenanceType = "VCSA" | "ESXI" | "NSXT";
-export const MaintenanceType = S.String;
+const MaintenanceType = S.String;
 
 /** Defines the type of maintenance activity */
 export type MaintenanceActivityKind = "Upgrade" | "Downgrade" | "CertificateRotation" | "Backup";
-export const MaintenanceActivityKind = S.String;
+const MaintenanceActivityKind = S.String;
 
 /** Represents a maintenance activity performed as part of an operation */
 export interface MaintenanceActivity {
@@ -3214,7 +3207,7 @@ export interface MaintenanceActivity {
   /** Describes impact of the activity */
   impact?: string;
 }
-export const MaintenanceActivity = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: MaintenanceActivityKind,
     component: S.String,
@@ -3226,13 +3219,13 @@ export const MaintenanceActivity = /*@__PURE__*/ S.suspend(() =>
 
 /** Activities performed as part of maintenance */
 export type MaintenancePropertiesActivitiesList = Array<MaintenanceActivity>;
-export const MaintenancePropertiesActivitiesList = /*@__PURE__*/ S.Array(
+const MaintenancePropertiesActivitiesList = /*@__PURE__*/ S.Array(
   MaintenanceActivity,
 ) as any as S.Schema<MaintenancePropertiesActivitiesList>;
 
 /** Defines the kind of group */
 export type MaintenanceGroupKind = "Logical" | "Consolidation";
-export const MaintenanceGroupKind = S.String;
+const MaintenanceGroupKind = S.String;
 
 /** Represents a maintenance group */
 export interface MaintenanceGroup {
@@ -3243,7 +3236,7 @@ export interface MaintenanceGroup {
   /** Type of the group */
   kind: MaintenanceGroupKind;
 }
-export const MaintenanceGroup = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -3253,12 +3246,12 @@ export const MaintenanceGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** List of dependent group identifiers */
 export type MaintenanceRelationshipsDependenciesList = Array<string>;
-export const MaintenanceRelationshipsDependenciesList =
+const MaintenanceRelationshipsDependenciesList =
   ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsDependenciesList>;
 
 /** List of prerequisite group identifiers */
 export type MaintenanceRelationshipsPrerequisitesList = Array<string>;
-export const MaintenanceRelationshipsPrerequisitesList =
+const MaintenanceRelationshipsPrerequisitesList =
   ClusterPropertiesInputHostsList as any as S.Schema<MaintenanceRelationshipsPrerequisitesList>;
 
 /** Defines relationship details between maintenance groups */
@@ -3268,7 +3261,7 @@ export interface MaintenanceRelationships {
   /** List of prerequisite group identifiers */
   prerequisites?: MaintenanceRelationshipsPrerequisitesList;
 }
-export const MaintenanceRelationships = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceRelationships = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencies: S.optional(MaintenanceRelationshipsDependenciesList),
     prerequisites: S.optional(MaintenanceRelationshipsPrerequisitesList),
@@ -3283,7 +3276,7 @@ export type MaintenanceStateName =
   | "Success"
   | "Failed"
   | "Canceled";
-export const MaintenanceStateName = S.String;
+const MaintenanceStateName = S.String;
 
 /** state of the maintenance */
 export interface MaintenanceState {
@@ -3296,7 +3289,7 @@ export interface MaintenanceState {
   /** Time when current state ended */
   endedAt?: string;
 }
-export const MaintenanceState = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(MaintenanceStateName),
     message: S.optional(S.String),
@@ -3307,21 +3300,21 @@ export const MaintenanceState = /*@__PURE__*/ S.suspend(() =>
 
 /** provisioning state of the maintenance */
 export type MaintenanceProvisioningState = "Succeeded" | "Failed" | "Canceled" | "Updating";
-export const MaintenanceProvisioningState = S.String;
+const MaintenanceProvisioningState = S.String;
 
 /** Defines the type of operation */
 export type MaintenanceManagementOperationKind =
   | "Schedule"
   | "Reschedule"
   | "MaintenanceReadinessRefresh";
-export const MaintenanceManagementOperationKind = S.String;
+const MaintenanceManagementOperationKind = S.String;
 
 /** Defines operations that can be performed on maintenance */
 export interface MaintenanceManagementOperation {
   /** The kind of operation */
   kind: MaintenanceManagementOperationKind;
 }
-export const MaintenanceManagementOperation = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceManagementOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: MaintenanceManagementOperationKind,
   }),
@@ -3331,13 +3324,13 @@ export const MaintenanceManagementOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations on maintenance */
 export type MaintenancePropertiesOperationsList = Array<MaintenanceManagementOperation>;
-export const MaintenancePropertiesOperationsList = /*@__PURE__*/ S.Array(
+const MaintenancePropertiesOperationsList = /*@__PURE__*/ S.Array(
   MaintenanceManagementOperation,
 ) as any as S.Schema<MaintenancePropertiesOperationsList>;
 
 /** Defines the type of maintenance readiness check */
 export type MaintenanceCheckType = "Precheck" | "Preflight";
-export const MaintenanceCheckType = S.String;
+const MaintenanceCheckType = S.String;
 
 /** Defines the readiness status of maintenance */
 export type MaintenanceReadinessStatus =
@@ -3345,11 +3338,11 @@ export type MaintenanceReadinessStatus =
   | "NotReady"
   | "DataNotAvailable"
   | "NotApplicable";
-export const MaintenanceReadinessStatus = S.String;
+const MaintenanceReadinessStatus = S.String;
 
 /** Steps to resolve the error */
 export type ImpactedMaintenanceResourceErrorResolutionStepsList = Array<string>;
-export const ImpactedMaintenanceResourceErrorResolutionStepsList =
+const ImpactedMaintenanceResourceErrorResolutionStepsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ImpactedMaintenanceResourceErrorResolutionStepsList>;
 
 /** Details about an error affecting a resource */
@@ -3365,7 +3358,7 @@ export interface ImpactedMaintenanceResourceError {
   /** Indicates whether action is required by the customer */
   actionRequired?: boolean;
 }
-export const ImpactedMaintenanceResourceError = /*@__PURE__*/ S.suspend(() =>
+const ImpactedMaintenanceResourceError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(S.String),
     name: S.optional(S.String),
@@ -3379,7 +3372,7 @@ export const ImpactedMaintenanceResourceError = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of errors associated with the impacted resource */
 export type ImpactedMaintenanceResourceErrorsList = Array<ImpactedMaintenanceResourceError>;
-export const ImpactedMaintenanceResourceErrorsList = /*@__PURE__*/ S.Array(
+const ImpactedMaintenanceResourceErrorsList = /*@__PURE__*/ S.Array(
   ImpactedMaintenanceResourceError,
 ) as any as S.Schema<ImpactedMaintenanceResourceErrorsList>;
 
@@ -3390,7 +3383,7 @@ export interface ImpactedMaintenanceResource {
   /** A list of errors associated with the impacted resource */
   errors?: ImpactedMaintenanceResourceErrorsList;
 }
-export const ImpactedMaintenanceResource = /*@__PURE__*/ S.suspend(() =>
+const ImpactedMaintenanceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     errors: S.optional(ImpactedMaintenanceResourceErrorsList),
@@ -3401,7 +3394,7 @@ export const ImpactedMaintenanceResource = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of resources impacted by the failed check */
 export type MaintenanceFailedCheckImpactedResourcesList = Array<ImpactedMaintenanceResource>;
-export const MaintenanceFailedCheckImpactedResourcesList = /*@__PURE__*/ S.Array(
+const MaintenanceFailedCheckImpactedResourcesList = /*@__PURE__*/ S.Array(
   ImpactedMaintenanceResource,
 ) as any as S.Schema<MaintenanceFailedCheckImpactedResourcesList>;
 
@@ -3412,7 +3405,7 @@ export interface MaintenanceFailedCheck {
   /** A list of resources impacted by the failed check */
   impactedResources?: MaintenanceFailedCheckImpactedResourcesList;
 }
-export const MaintenanceFailedCheck = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceFailedCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     impactedResources: S.optional(MaintenanceFailedCheckImpactedResourcesList),
@@ -3421,7 +3414,7 @@ export const MaintenanceFailedCheck = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of failed checks, if any */
 export type MaintenanceReadinessFailedChecksList = Array<MaintenanceFailedCheck>;
-export const MaintenanceReadinessFailedChecksList = /*@__PURE__*/ S.Array(
+const MaintenanceReadinessFailedChecksList = /*@__PURE__*/ S.Array(
   MaintenanceFailedCheck,
 ) as any as S.Schema<MaintenanceReadinessFailedChecksList>;
 
@@ -3438,7 +3431,7 @@ export interface MaintenanceReadiness {
   /** The timestamp of the last readiness update */
   lastUpdated?: string;
 }
-export const MaintenanceReadiness = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceReadiness = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: MaintenanceCheckType,
     status: MaintenanceReadinessStatus,
@@ -3481,7 +3474,7 @@ export interface MaintenanceProperties {
   /** Indicates whether the maintenance is ready to proceed */
   maintenanceReadiness?: MaintenanceReadiness;
 }
-export const MaintenanceProperties = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     component: S.optional(MaintenanceType),
     displayName: S.optional(S.String),
@@ -3513,7 +3506,7 @@ export interface GetMaintenanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const GetMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3535,7 +3528,7 @@ export interface GetPlacementPolicyRequest {
   /** Name of the placement policy. */
   placementPolicyName: string;
 }
-export const GetPlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3556,11 +3549,11 @@ export const GetPlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Placement Policy type */
 export type PlacementPolicyType = "VmVm" | "VmHost";
-export const PlacementPolicyType = S.String;
+const PlacementPolicyType = S.String;
 
 /** Placement Policy state */
 export type PlacementPolicyState = "Enabled" | "Disabled";
-export const PlacementPolicyState = S.String;
+const PlacementPolicyState = S.String;
 
 /** Placement Policy provisioning state */
 export type PlacementPolicyProvisioningState =
@@ -3570,29 +3563,29 @@ export type PlacementPolicyProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const PlacementPolicyProvisioningState = S.String;
+const PlacementPolicyProvisioningState = S.String;
 
 /** Virtual machine members list */
 export type PlacementPolicyUpdatePropertiesVmMembersList = Array<string>;
-export const PlacementPolicyUpdatePropertiesVmMembersList =
+const PlacementPolicyUpdatePropertiesVmMembersList =
   ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesVmMembersList>;
 
 /** Host members list */
 export type PlacementPolicyUpdatePropertiesHostMembersList = Array<string>;
-export const PlacementPolicyUpdatePropertiesHostMembersList =
+const PlacementPolicyUpdatePropertiesHostMembersList =
   ClusterPropertiesInputHostsList as any as S.Schema<PlacementPolicyUpdatePropertiesHostMembersList>;
 
 /** Placement policy affinity type */
 export type AffinityType = "Affinity" | "AntiAffinity";
-export const AffinityType = S.String;
+const AffinityType = S.String;
 
 /** Affinity Strength */
 export type AffinityStrength = "Should" | "Must";
-export const AffinityStrength = S.String;
+const AffinityStrength = S.String;
 
 /** Azure Hybrid Benefit type */
 export type AzureHybridBenefitType = "SqlHost" | "None";
-export const AzureHybridBenefitType = S.String;
+const AzureHybridBenefitType = S.String;
 
 /** Abstract placement policy properties */
 export interface PlacementPolicyProperties {
@@ -3615,7 +3608,7 @@ export interface PlacementPolicyProperties {
   /** VmHost: Azure Hybrid Benefit opt-in type. */
   azureHybridBenefitType?: AzureHybridBenefitType;
 }
-export const PlacementPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const PlacementPolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: PlacementPolicyType,
     state: S.optional(PlacementPolicyState),
@@ -3643,7 +3636,7 @@ export interface GetPlacementPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const GetPlacementPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3663,7 +3656,7 @@ export interface GetPrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3680,16 +3673,13 @@ export const GetPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPrivateCloudResponseTagsMap = { [key: string]: string | undefined };
-export const GetPrivateCloudResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetPrivateCloudResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetPrivateCloudResponseTagsMap>;
 
 /** The hosts */
 export type ManagementClusterHostsList = Array<string>;
-export const ManagementClusterHostsList =
-  ClusterPropertiesInputHostsList as any as S.Schema<ManagementClusterHostsList>;
-
 /** The properties of a management cluster */
 export interface ManagementCluster {
   /** The cluster size */
@@ -3703,15 +3693,15 @@ export interface ManagementCluster {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ManagementCluster = ClusterProperties as any as S.Schema<ManagementCluster>;
+const ManagementCluster = ClusterProperties as any as S.Schema<ManagementCluster>;
 
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInternet = "Enabled" | "Disabled";
-export const PrivateCloudPropertiesInternet = S.String;
+const PrivateCloudPropertiesInternet = S.String;
 
 /** Whether SSL is enabled or disabled */
 export type SslEnum = "Enabled" | "Disabled";
-export const SslEnum = S.String;
+const SslEnum = S.String;
 
 /** vCenter Single Sign On Identity Source */
 export interface IdentitySource {
@@ -3736,7 +3726,7 @@ export interface IdentitySource {
   /** The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups. */
   password?: string | Redacted.Redacted<string>;
 }
-export const IdentitySource = /*@__PURE__*/ S.suspend(() =>
+const IdentitySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     alias: S.optional(S.String),
@@ -3753,13 +3743,13 @@ export const IdentitySource = /*@__PURE__*/ S.suspend(() =>
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesIdentitySourcesList = Array<IdentitySource>;
-export const PrivateCloudPropertiesIdentitySourcesList = /*@__PURE__*/ S.Array(
+const PrivateCloudPropertiesIdentitySourcesList = /*@__PURE__*/ S.Array(
   IdentitySource,
 ) as any as S.Schema<PrivateCloudPropertiesIdentitySourcesList>;
 
 /** Whether the private clouds is available in a single zone or two zones */
 export type AvailabilityStrategy = "SingleZone" | "DualZone";
-export const AvailabilityStrategy = S.String;
+const AvailabilityStrategy = S.String;
 
 /** The properties describing private cloud availability zone distribution */
 export interface AvailabilityProperties {
@@ -3770,7 +3760,7 @@ export interface AvailabilityProperties {
   /** The secondary availability zone for the private cloud */
   secondaryZone?: number;
 }
-export const AvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
+const AvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     strategy: S.optional(AvailabilityStrategy),
     zone: S.optional(S.Number),
@@ -3780,15 +3770,15 @@ export const AvailabilityProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether encryption is enabled or disabled */
 export type EncryptionState = "Enabled" | "Disabled";
-export const EncryptionState = S.String;
+const EncryptionState = S.String;
 
 /** Whether the the encryption key is connected or access denied */
 export type EncryptionKeyStatus = "Connected" | "AccessDenied";
-export const EncryptionKeyStatus = S.String;
+const EncryptionKeyStatus = S.String;
 
 /** Whether the encryption version is fixed or auto-detected */
 export type EncryptionVersionType = "Fixed" | "AutoDetected";
-export const EncryptionVersionType = S.String;
+const EncryptionVersionType = S.String;
 
 /** An Encryption Key */
 export interface EncryptionKeyVaultProperties {
@@ -3805,7 +3795,7 @@ export interface EncryptionKeyVaultProperties {
   /** Property of the key if user provided or auto detected */
   versionType?: EncryptionVersionType;
 }
-export const EncryptionKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionKeyVaultProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     keyVersion: S.optional(S.String),
@@ -3825,7 +3815,7 @@ export interface Encryption {
   /** The key vault where the encryption key is stored */
   keyVaultProperties?: EncryptionKeyVaultProperties;
 }
-export const Encryption = /*@__PURE__*/ S.suspend(() =>
+const Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(EncryptionState),
     keyVaultProperties: S.optional(EncryptionKeyVaultProperties),
@@ -3834,7 +3824,7 @@ export const Encryption = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudPropertiesExtendedNetworkBlocksList =
+const PrivateCloudPropertiesExtendedNetworkBlocksList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExtendedNetworkBlocksList>;
 
 /** private cloud provisioning state */
@@ -3847,7 +3837,7 @@ export type PrivateCloudProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const PrivateCloudProvisioningState = S.String;
+const PrivateCloudProvisioningState = S.String;
 
 /** An ExpressRoute Circuit */
 export interface Circuit {
@@ -3860,7 +3850,7 @@ export interface Circuit {
   /** ExpressRoute Circuit private peering identifier */
   expressRoutePrivatePeeringID?: string;
 }
-export const Circuit = /*@__PURE__*/ S.suspend(() =>
+const Circuit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primarySubnet: S.optional(S.String),
     secondarySubnet: S.optional(S.String),
@@ -3884,7 +3874,7 @@ export interface Endpoints {
   /** Endpoint IP for the HCX Cloud Manager */
   hcxCloudManagerIp?: string;
 }
-export const Endpoints = /*@__PURE__*/ S.suspend(() =>
+const Endpoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nsxtManager: S.optional(S.String),
     vcsa: S.optional(S.String),
@@ -3897,20 +3887,20 @@ export const Endpoints = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of cloud link IDs from other clouds that connect to this one */
 export type PrivateCloudPropertiesExternalCloudLinksList = Array<string>;
-export const PrivateCloudPropertiesExternalCloudLinksList =
+const PrivateCloudPropertiesExternalCloudLinksList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesExternalCloudLinksList>;
 
 /** NSX public IP quota raised */
 export type NsxPublicIpQuotaRaisedEnum = "Enabled" | "Disabled";
-export const NsxPublicIpQuotaRaisedEnum = S.String;
+const NsxPublicIpQuotaRaisedEnum = S.String;
 
 /** The type of DNS zone. */
 export type DnsZoneType = "Public" | "Private";
-export const DnsZoneType = S.String;
+const DnsZoneType = S.String;
 
 /** The kind of license. */
 export type VcfLicenseKind = "vcf5";
-export const VcfLicenseKind = S.String;
+const VcfLicenseKind = S.String;
 
 /** A VMware Cloud Foundation license */
 export interface VcfLicense {
@@ -3919,7 +3909,7 @@ export interface VcfLicense {
   /** The state of the license provisioning */
   provisioningState?: LicenseProvisioningState;
 }
-export const VcfLicense = /*@__PURE__*/ S.suspend(() =>
+const VcfLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: VcfLicenseKind,
     provisioningState: S.optional(LicenseProvisioningState),
@@ -3975,7 +3965,7 @@ export interface PrivateCloudProperties {
   /** The private cloud license */
   vcfLicense?: VcfLicense;
 }
-export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementCluster: ManagementCluster,
     internet: S.optional(PrivateCloudPropertiesInternet),
@@ -4005,11 +3995,9 @@ export const PrivateCloudProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type GetPrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
-export const GetPrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
-
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
-export const SystemAssignedServiceIdentityType = S.String;
+const SystemAssignedServiceIdentityType = S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface GetPrivateCloudResponseIdentity {
@@ -4019,7 +4007,7 @@ export interface GetPrivateCloudResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
-export const GetPrivateCloudResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateCloudResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -4031,7 +4019,7 @@ export const GetPrivateCloudResponseIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type GetPrivateCloudResponseZonesList = Array<string>;
-export const GetPrivateCloudResponseZonesList =
+const GetPrivateCloudResponseZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<GetPrivateCloudResponseZonesList>;
 
 export interface GetPrivateCloudResponse {
@@ -4056,7 +4044,7 @@ export interface GetPrivateCloudResponse {
   /** The availability zones. */
   zones?: GetPrivateCloudResponseZonesList;
 }
-export const GetPrivateCloudResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateCloudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4079,7 +4067,7 @@ export interface GetPrivateCloudVcfLicenseRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const GetPrivateCloudVcfLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateCloudVcfLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4106,7 +4094,7 @@ export interface GetProvisionedNetworkRequest {
   /** Name of the cloud link. */
   provisionedNetworkName: string;
 }
-export const GetProvisionedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4126,7 +4114,7 @@ export const GetProvisionedNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** provisioned network provisioning state */
 export type ProvisionedNetworkProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const ProvisionedNetworkProvisioningState = S.String;
+const ProvisionedNetworkProvisioningState = S.String;
 
 /** The type of network provisioned. */
 export type ProvisionedNetworkTypes =
@@ -4137,7 +4125,7 @@ export type ProvisionedNetworkTypes =
   | "vcenterManagement"
   | "vmotion"
   | "vsan";
-export const ProvisionedNetworkTypes = S.String;
+const ProvisionedNetworkTypes = S.String;
 
 /** The properties of a provisioned network. */
 export interface ProvisionedNetworkProperties {
@@ -4148,7 +4136,7 @@ export interface ProvisionedNetworkProperties {
   /** The type of network provisioned. */
   networkType?: ProvisionedNetworkTypes;
 }
-export const ProvisionedNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisionedNetworkProvisioningState),
     addressPrefix: S.optional(S.String),
@@ -4170,7 +4158,7 @@ export interface GetProvisionedNetworkResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProvisionedNetworkProperties;
 }
-export const GetProvisionedNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProvisionedNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4192,7 +4180,7 @@ export interface GetPureStoragePolicyRequest {
   /** Name of the storage policy. */
   storagePolicyName: string;
 }
-export const GetPureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPureStoragePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4217,7 +4205,7 @@ export type PureStoragePolicyProvisioningState =
   | "Canceled"
   | "Deleting"
   | "Updating";
-export const PureStoragePolicyProvisioningState = S.String;
+const PureStoragePolicyProvisioningState = S.String;
 
 /** Properties of a Pure Storage Policy Based Management policy */
 export interface PureStoragePolicyProperties {
@@ -4228,7 +4216,7 @@ export interface PureStoragePolicyProperties {
   /** The state of the Pure Storage Policy Based Management policy provisioning */
   provisioningState?: PureStoragePolicyProvisioningState;
 }
-export const PureStoragePolicyProperties = /*@__PURE__*/ S.suspend(() =>
+const PureStoragePolicyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storagePolicyDefinition: S.String,
     storagePoolId: S.String,
@@ -4250,7 +4238,7 @@ export interface GetPureStoragePolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
-export const GetPureStoragePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPureStoragePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4274,7 +4262,7 @@ export interface GetScriptCmdletRequest {
   /** Name of the script cmdlet. */
   scriptCmdletName: string;
 }
-export const GetScriptCmdletRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptCmdletRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4293,11 +4281,11 @@ export const GetScriptCmdletRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A script cmdlet provisioning state */
 export type ScriptCmdletProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const ScriptCmdletProvisioningState = S.String;
+const ScriptCmdletProvisioningState = S.String;
 
 /** Specifies whether a script cmdlet is intended to be invoked only through automation or visible to customers */
 export type ScriptCmdletAudience = "Automation" | "Any";
-export const ScriptCmdletAudience = S.String;
+const ScriptCmdletAudience = S.String;
 
 /** Script Parameter types */
 export type ScriptParameterTypes =
@@ -4307,15 +4295,15 @@ export type ScriptParameterTypes =
   | "Int"
   | "Bool"
   | "Float";
-export const ScriptParameterTypes = S.String;
+const ScriptParameterTypes = S.String;
 
 /** Visibility Parameter */
 export type VisibilityParameterEnum = "Visible" | "Hidden";
-export const VisibilityParameterEnum = S.String;
+const VisibilityParameterEnum = S.String;
 
 /** Optional Param */
 export type OptionalParamEnum = "Optional" | "Required";
-export const OptionalParamEnum = S.String;
+const OptionalParamEnum = S.String;
 
 /** An parameter that the script will accept */
 export interface ScriptParameter {
@@ -4330,7 +4318,7 @@ export interface ScriptParameter {
   /** Is this parameter required or optional */
   optional?: OptionalParamEnum;
 }
-export const ScriptParameter = /*@__PURE__*/ S.suspend(() =>
+const ScriptParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ScriptParameterTypes),
     name: S.optional(S.String),
@@ -4342,7 +4330,7 @@ export const ScriptParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters the script will accept */
 export type ScriptCmdletPropertiesParametersList = Array<ScriptParameter>;
-export const ScriptCmdletPropertiesParametersList = /*@__PURE__*/ S.Array(
+const ScriptCmdletPropertiesParametersList = /*@__PURE__*/ S.Array(
   ScriptParameter,
 ) as any as S.Schema<ScriptCmdletPropertiesParametersList>;
 
@@ -4359,7 +4347,7 @@ export interface ScriptCmdletProperties {
   /** Parameters the script will accept */
   parameters?: ScriptCmdletPropertiesParametersList;
 }
-export const ScriptCmdletProperties = /*@__PURE__*/ S.suspend(() =>
+const ScriptCmdletProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ScriptCmdletProvisioningState),
     description: S.optional(S.String),
@@ -4381,7 +4369,7 @@ export interface GetScriptCmdletResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptCmdletProperties;
 }
-export const GetScriptCmdletResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptCmdletResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4401,7 +4389,7 @@ export interface GetScriptExecutionRequest {
   /** Name of the script cmdlet. */
   scriptExecutionName: string;
 }
-export const GetScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4421,7 +4409,7 @@ export const GetScriptExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** script execution parameter type */
 export type ScriptExecutionParameterType = "Value" | "SecureValue" | "Credential";
-export const ScriptExecutionParameterType = S.String;
+const ScriptExecutionParameterType = S.String;
 
 /** The arguments passed in to the execution */
 export interface ScriptExecutionParameter {
@@ -4430,7 +4418,7 @@ export interface ScriptExecutionParameter {
   /** The parameter name */
   name: string;
 }
-export const ScriptExecutionParameter = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecutionParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ScriptExecutionParameterType,
     name: S.String,
@@ -4439,13 +4427,13 @@ export const ScriptExecutionParameter = /*@__PURE__*/ S.suspend(() =>
 
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesParametersList = /*@__PURE__*/ S.Array(
+const ScriptExecutionPropertiesParametersList = /*@__PURE__*/ S.Array(
   ScriptExecutionParameter,
 ) as any as S.Schema<ScriptExecutionPropertiesParametersList>;
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesHiddenParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesHiddenParametersList =
+const ScriptExecutionPropertiesHiddenParametersList =
   ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesHiddenParametersList>;
 
 /** Script Execution provisioning state */
@@ -4458,33 +4446,33 @@ export type ScriptExecutionProvisioningState =
   | "Cancelling"
   | "Cancelled"
   | "Deleting";
-export const ScriptExecutionProvisioningState = S.String;
+const ScriptExecutionProvisioningState = S.String;
 
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesOutputList = Array<string>;
-export const ScriptExecutionPropertiesOutputList =
+const ScriptExecutionPropertiesOutputList =
   ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesOutputList>;
 
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesNamedOutputsMap = { [key: string]: unknown | undefined };
-export const ScriptExecutionPropertiesNamedOutputsMap = /*@__PURE__*/ S.Record(
+const ScriptExecutionPropertiesNamedOutputsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ScriptExecutionPropertiesNamedOutputsMap>;
 
 /** Standard information out stream from the powershell execution */
 export type ScriptExecutionPropertiesInformationList = Array<string>;
-export const ScriptExecutionPropertiesInformationList =
+const ScriptExecutionPropertiesInformationList =
   ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInformationList>;
 
 /** Standard warning out stream from the powershell execution */
 export type ScriptExecutionPropertiesWarningsList = Array<string>;
-export const ScriptExecutionPropertiesWarningsList =
+const ScriptExecutionPropertiesWarningsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesWarningsList>;
 
 /** Standard error output stream from the powershell execution */
 export type ScriptExecutionPropertiesErrorsList = Array<string>;
-export const ScriptExecutionPropertiesErrorsList =
+const ScriptExecutionPropertiesErrorsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesErrorsList>;
 
 /** Properties of a user-invoked script */
@@ -4520,7 +4508,7 @@ export interface ScriptExecutionProperties {
   /** Standard error output stream from the powershell execution */
   errors?: ScriptExecutionPropertiesErrorsList;
 }
-export const ScriptExecutionProperties = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecutionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptCmdletId: S.optional(S.String),
     parameters: S.optional(ScriptExecutionPropertiesParametersList),
@@ -4554,7 +4542,7 @@ export interface GetScriptExecutionResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const GetScriptExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4568,12 +4556,12 @@ export const GetScriptExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Script Output Stream type */
 export type ScriptOutputStreamType = "Information" | "Warning" | "Output" | "Error";
-export const ScriptOutputStreamType = S.String;
+const ScriptOutputStreamType = S.String;
 
 export type GetScriptExecutionExecutionLogsRequestBodyList = Array<
   ScriptOutputStreamType | (string & {})
 >;
-export const GetScriptExecutionExecutionLogsRequestBodyList = /*@__PURE__*/ S.Array(
+const GetScriptExecutionExecutionLogsRequestBodyList = /*@__PURE__*/ S.Array(
   ScriptOutputStreamType,
 ) as any as S.Schema<GetScriptExecutionExecutionLogsRequestBodyList>;
 
@@ -4588,7 +4576,7 @@ export interface GetScriptExecutionExecutionLogsRequest {
   scriptExecutionName: string;
   body?: GetScriptExecutionExecutionLogsRequestBodyList;
 }
-export const GetScriptExecutionExecutionLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptExecutionExecutionLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4619,7 +4607,7 @@ export interface GetScriptExecutionExecutionLogsResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const GetScriptExecutionExecutionLogsResponse =
+const GetScriptExecutionExecutionLogsResponse =
   GetScriptExecutionResponse as any as S.Schema<GetScriptExecutionExecutionLogsResponse>;
 
 export interface GetScriptPackageRequest {
@@ -4632,7 +4620,7 @@ export interface GetScriptPackageRequest {
   /** Name of the script package. */
   scriptPackageName: string;
 }
-export const GetScriptPackageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptPackageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4650,7 +4638,7 @@ export const GetScriptPackageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Script Package provisioning state */
 export type ScriptPackageProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const ScriptPackageProvisioningState = S.String;
+const ScriptPackageProvisioningState = S.String;
 
 /** Properties of a Script Package subresource */
 export interface ScriptPackageProperties {
@@ -4665,7 +4653,7 @@ export interface ScriptPackageProperties {
   /** Link to support by the package vendor */
   uri?: string;
 }
-export const ScriptPackageProperties = /*@__PURE__*/ S.suspend(() =>
+const ScriptPackageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ScriptPackageProvisioningState),
     description: S.optional(S.String),
@@ -4687,7 +4675,7 @@ export interface GetScriptPackageResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptPackageProperties;
 }
-export const GetScriptPackageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptPackageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4709,7 +4697,7 @@ export interface GetVirtualMachineRequest {
   /** ID of the virtual machine. */
   virtualMachineId: string;
 }
-export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4728,11 +4716,11 @@ export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual Machine provisioning state */
 export type VirtualMachineProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const VirtualMachineProvisioningState = S.String;
+const VirtualMachineProvisioningState = S.String;
 
 /** Virtual Machine Restrict Movement state */
 export type VirtualMachineRestrictMovementState = "Enabled" | "Disabled";
-export const VirtualMachineRestrictMovementState = S.String;
+const VirtualMachineRestrictMovementState = S.String;
 
 /** Virtual Machine Properties */
 export interface VirtualMachineProperties {
@@ -4747,7 +4735,7 @@ export interface VirtualMachineProperties {
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
   restrictMovement?: VirtualMachineRestrictMovementState;
 }
-export const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(VirtualMachineProvisioningState),
     displayName: S.optional(S.String),
@@ -4769,7 +4757,7 @@ export interface GetVirtualMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: VirtualMachineProperties;
 }
-export const GetVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4789,7 +4777,7 @@ export interface GetWorkloadNetworkRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const GetWorkloadNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4814,14 +4802,14 @@ export type WorkloadNetworkProvisioningState =
   | "Building"
   | "Deleting"
   | "Updating";
-export const WorkloadNetworkProvisioningState = S.String;
+const WorkloadNetworkProvisioningState = S.String;
 
 /** The properties of a workload network */
 export interface WorkloadNetworkProperties {
   /** The provisioning state of the resource. */
   provisioningState?: WorkloadNetworkProvisioningState;
 }
-export const WorkloadNetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(WorkloadNetworkProvisioningState),
   }),
@@ -4841,7 +4829,7 @@ export interface GetWorkloadNetworkResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkProperties;
 }
-export const GetWorkloadNetworkResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4863,7 +4851,7 @@ export interface GetWorkloadNetworkDhcpRequest {
   /** The ID of the DHCP configuration */
   dhcpId: string;
 }
-export const GetWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4893,7 +4881,7 @@ export interface GetWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const GetWorkloadNetworkDhcpResponse =
+const GetWorkloadNetworkDhcpResponse =
   CreateWorkloadNetworkDhcpResponse as any as S.Schema<GetWorkloadNetworkDhcpResponse>;
 
 export interface GetWorkloadNetworkDnsServiceRequest {
@@ -4906,7 +4894,7 @@ export interface GetWorkloadNetworkDnsServiceRequest {
   /** ID of the DNS service. */
   dnsServiceId: string;
 }
-export const GetWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4936,7 +4924,7 @@ export interface GetWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const GetWorkloadNetworkDnsServiceResponse =
+const GetWorkloadNetworkDnsServiceResponse =
   CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<GetWorkloadNetworkDnsServiceResponse>;
 
 export interface GetWorkloadNetworkDnsZoneRequest {
@@ -4949,7 +4937,7 @@ export interface GetWorkloadNetworkDnsZoneRequest {
   /** ID of the DNS zone. */
   dnsZoneId: string;
 }
-export const GetWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4979,7 +4967,7 @@ export interface GetWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const GetWorkloadNetworkDnsZoneResponse =
+const GetWorkloadNetworkDnsZoneResponse =
   CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<GetWorkloadNetworkDnsZoneResponse>;
 
 export interface GetWorkloadNetworkGatewayRequest {
@@ -4992,7 +4980,7 @@ export interface GetWorkloadNetworkGatewayRequest {
   /** The ID of the NSX Gateway */
   gatewayId: string;
 }
-export const GetWorkloadNetworkGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5019,7 +5007,7 @@ export interface WorkloadNetworkGatewayProperties {
   /** NSX Gateway Path. */
   path?: string;
 }
-export const WorkloadNetworkGatewayProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkGatewayProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(WorkloadNetworkProvisioningState),
     displayName: S.optional(S.String),
@@ -5041,7 +5029,7 @@ export interface GetWorkloadNetworkGatewayResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkGatewayProperties;
 }
-export const GetWorkloadNetworkGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5063,7 +5051,7 @@ export interface GetWorkloadNetworkPortMirroringRequest {
   /** ID of the NSX port mirroring profile. */
   portMirroringId: string;
 }
-export const GetWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5093,7 +5081,7 @@ export interface GetWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const GetWorkloadNetworkPortMirroringResponse =
+const GetWorkloadNetworkPortMirroringResponse =
   CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<GetWorkloadNetworkPortMirroringResponse>;
 
 export interface GetWorkloadNetworkPublicIPRequest {
@@ -5106,7 +5094,7 @@ export interface GetWorkloadNetworkPublicIPRequest {
   /** ID of the DNS zone. */
   publicIPId: string;
 }
-export const GetWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkPublicIPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5136,7 +5124,7 @@ export interface GetWorkloadNetworkPublicIPResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
-export const GetWorkloadNetworkPublicIPResponse =
+const GetWorkloadNetworkPublicIPResponse =
   CreateWorkloadNetworkPublicIPResponse as any as S.Schema<GetWorkloadNetworkPublicIPResponse>;
 
 export interface GetWorkloadNetworkSegmentRequest {
@@ -5149,7 +5137,7 @@ export interface GetWorkloadNetworkSegmentRequest {
   /** The ID of the NSX Segment */
   segmentId: string;
 }
-export const GetWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5179,7 +5167,7 @@ export interface GetWorkloadNetworkSegmentResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const GetWorkloadNetworkSegmentResponse =
+const GetWorkloadNetworkSegmentResponse =
   CreateWorkloadNetworkSegmentsResponse as any as S.Schema<GetWorkloadNetworkSegmentResponse>;
 
 export interface GetWorkloadNetworkVirtualMachineRequest {
@@ -5192,7 +5180,7 @@ export interface GetWorkloadNetworkVirtualMachineRequest {
   /** ID of the virtual machine. */
   virtualMachineId: string;
 }
-export const GetWorkloadNetworkVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5212,7 +5200,7 @@ export const GetWorkloadNetworkVirtualMachineRequest = /*@__PURE__*/ S.suspend((
 
 /** VM type */
 export type VMTypeEnum = "REGULAR" | "EDGE" | "SERVICE";
-export const VMTypeEnum = S.String;
+const VMTypeEnum = S.String;
 
 /** NSX Virtual Machine Properties */
 export interface WorkloadNetworkVirtualMachineProperties {
@@ -5223,7 +5211,7 @@ export interface WorkloadNetworkVirtualMachineProperties {
   /** Virtual machine type. */
   vmType?: VMTypeEnum;
 }
-export const WorkloadNetworkVirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(WorkloadNetworkProvisioningState),
     displayName: S.optional(S.String),
@@ -5245,7 +5233,7 @@ export interface GetWorkloadNetworkVirtualMachineResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVirtualMachineProperties;
 }
-export const GetWorkloadNetworkVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5267,7 +5255,7 @@ export interface GetWorkloadNetworkVMGroupRequest {
   /** ID of the VM group. */
   vmGroupId: string;
 }
-export const GetWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5297,7 +5285,7 @@ export interface GetWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const GetWorkloadNetworkVMGroupResponse =
+const GetWorkloadNetworkVMGroupResponse =
   CreateWorkloadNetworkVMGroupResponse as any as S.Schema<GetWorkloadNetworkVMGroupResponse>;
 
 /** The properties of a global reach connection */
@@ -5309,7 +5297,7 @@ export interface GlobalReachConnectionPropertiesInput {
   /** The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection */
   expressRouteId?: string;
 }
-export const GlobalReachConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GlobalReachConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationKey: S.optional(S.String),
     peerExpressRouteCircuit: S.optional(S.String),
@@ -5331,7 +5319,7 @@ export interface GlobalReachConnectionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionPropertiesInput;
 }
-export const GlobalReachConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GlobalReachConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5362,12 +5350,12 @@ export interface GlobalReachConnectionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
-export const GlobalReachConnectionsCreateOrUpdateResponse =
+const GlobalReachConnectionsCreateOrUpdateResponse =
   GetGlobalReachConnectionResponse as any as S.Schema<GlobalReachConnectionsCreateOrUpdateResponse>;
 
 /** The properties of an HCX Enterprise Site */
 export interface HcxEnterpriseSitePropertiesInput {}
-export const HcxEnterpriseSitePropertiesInput =
+const HcxEnterpriseSitePropertiesInput =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<HcxEnterpriseSitePropertiesInput>;
 
 export interface HcxEnterpriseSitesCreateOrUpdateRequest {
@@ -5382,7 +5370,7 @@ export interface HcxEnterpriseSitesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSitePropertiesInput;
 }
-export const HcxEnterpriseSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const HcxEnterpriseSitesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5413,7 +5401,7 @@ export interface HcxEnterpriseSitesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
-export const HcxEnterpriseSitesCreateOrUpdateResponse =
+const HcxEnterpriseSitesCreateOrUpdateResponse =
   GetHcxEnterpriseSiteResponse as any as S.Schema<HcxEnterpriseSitesCreateOrUpdateResponse>;
 
 /** The properties of an iSCSI path resource */
@@ -5421,7 +5409,7 @@ export interface IscsiPathPropertiesInput {
   /** CIDR Block for iSCSI path. */
   networkBlock: string;
 }
-export const IscsiPathPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IscsiPathPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkBlock: S.String,
   }),
@@ -5437,7 +5425,7 @@ export interface IscsiPathsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathPropertiesInput;
 }
-export const IscsiPathsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const IscsiPathsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5467,7 +5455,7 @@ export interface IscsiPathsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
-export const IscsiPathsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const IscsiPathsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5480,7 +5468,7 @@ export const IscsiPathsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IscsiPathsCreateOrUpdateResponse>;
 
 export type LicensesCreateOrUpdateRequestLicenseName = "VmwareFirewall";
-export const LicensesCreateOrUpdateRequestLicenseName = S.String;
+const LicensesCreateOrUpdateRequestLicenseName = S.String;
 
 /** The properties of a license */
 export interface LicensePropertiesInput {
@@ -5495,7 +5483,7 @@ export interface LicensePropertiesInput {
   /** VmwareFirewall: the Broadcom contract number associated with the license. */
   broadcomContractNumber?: string;
 }
-export const LicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LicensePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: LicenseKind,
     licenseKey: S.optional(S.String),
@@ -5517,7 +5505,7 @@ export interface LicensesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: LicensePropertiesInput;
 }
-export const LicensesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LicensesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5548,7 +5536,7 @@ export interface LicensesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
-export const LicensesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LicensesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5568,7 +5556,7 @@ export interface ListAddonsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListAddonsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddonsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5596,13 +5584,11 @@ export interface Addon {
   /** The resource-specific properties for this resource. */
   properties?: AddonProperties;
 }
-export const Addon = GetAddonResponse as any as S.Schema<Addon>;
+const Addon = GetAddonResponse as any as S.Schema<Addon>;
 
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
-export const AddonListValueList = /*@__PURE__*/ S.Array(
-  Addon,
-) as any as S.Schema<AddonListValueList>;
+const AddonListValueList = /*@__PURE__*/ S.Array(Addon) as any as S.Schema<AddonListValueList>;
 
 /** The response of a Addon list operation. */
 export interface AddonList {
@@ -5611,7 +5597,7 @@ export interface AddonList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AddonList = /*@__PURE__*/ S.suspend(() =>
+const AddonList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AddonListValueList,
     nextLink: S.optional(S.String),
@@ -5626,7 +5612,7 @@ export interface ListAuthorizationsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5656,12 +5642,12 @@ export interface ExpressRouteAuthorization {
   /** The resource-specific properties for this resource. */
   properties?: ExpressRouteAuthorizationProperties;
 }
-export const ExpressRouteAuthorization =
+const ExpressRouteAuthorization =
   AuthorizationsCreateOrUpdateResponse as any as S.Schema<ExpressRouteAuthorization>;
 
 /** The ExpressRouteAuthorization items on this page */
 export type ExpressRouteAuthorizationListValueList = Array<ExpressRouteAuthorization>;
-export const ExpressRouteAuthorizationListValueList = /*@__PURE__*/ S.Array(
+const ExpressRouteAuthorizationListValueList = /*@__PURE__*/ S.Array(
   ExpressRouteAuthorization,
 ) as any as S.Schema<ExpressRouteAuthorizationListValueList>;
 
@@ -5672,7 +5658,7 @@ export interface ExpressRouteAuthorizationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ExpressRouteAuthorizationList = /*@__PURE__*/ S.suspend(() =>
+const ExpressRouteAuthorizationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ExpressRouteAuthorizationListValueList,
     nextLink: S.optional(S.String),
@@ -5689,7 +5675,7 @@ export interface ListCloudLinksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListCloudLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCloudLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5717,11 +5703,11 @@ export interface CloudLink {
   /** The resource-specific properties for this resource. */
   properties?: CloudLinkProperties;
 }
-export const CloudLink = GetCloudLinkResponse as any as S.Schema<CloudLink>;
+const CloudLink = GetCloudLinkResponse as any as S.Schema<CloudLink>;
 
 /** The CloudLink items on this page */
 export type CloudLinkListValueList = Array<CloudLink>;
-export const CloudLinkListValueList = /*@__PURE__*/ S.Array(
+const CloudLinkListValueList = /*@__PURE__*/ S.Array(
   CloudLink,
 ) as any as S.Schema<CloudLinkListValueList>;
 
@@ -5732,7 +5718,7 @@ export interface CloudLinkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CloudLinkList = /*@__PURE__*/ S.suspend(() =>
+const CloudLinkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CloudLinkListValueList,
     nextLink: S.optional(S.String),
@@ -5747,7 +5733,7 @@ export interface ListClustersRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5764,8 +5750,6 @@ export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type ClusterSku = ClustersCreateOrUpdateResponseSku;
-export const ClusterSku = ClustersCreateOrUpdateResponseSku;
-
 /** A cluster resource */
 export interface Cluster {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -5781,11 +5765,11 @@ export interface Cluster {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
+const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
 
 /** The Cluster items on this page */
 export type ClusterListValueList = Array<Cluster>;
-export const ClusterListValueList = /*@__PURE__*/ S.Array(
+const ClusterListValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListValueList>;
 
@@ -5796,7 +5780,7 @@ export interface ClusterList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ClusterList = /*@__PURE__*/ S.suspend(() =>
+const ClusterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ClusterListValueList,
     nextLink: S.optional(S.String),
@@ -5813,7 +5797,7 @@ export interface ListClusterZonesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const ListClusterZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5831,7 +5815,7 @@ export const ListClusterZonesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of hosts belonging to the availability zone in a cluster */
 export type ClusterZoneHostsList = Array<string>;
-export const ClusterZoneHostsList =
+const ClusterZoneHostsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ClusterZoneHostsList>;
 
 /** Zone and associated hosts info */
@@ -5841,7 +5825,7 @@ export interface ClusterZone {
   /** Availability zone identifier */
   zone?: string;
 }
-export const ClusterZone = /*@__PURE__*/ S.suspend(() =>
+const ClusterZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hosts: S.optional(ClusterZoneHostsList),
     zone: S.optional(S.String),
@@ -5850,7 +5834,7 @@ export const ClusterZone = /*@__PURE__*/ S.suspend(() =>
 
 /** Zone and associated hosts info */
 export type ClusterZoneListZonesList = Array<ClusterZone>;
-export const ClusterZoneListZonesList = /*@__PURE__*/ S.Array(
+const ClusterZoneListZonesList = /*@__PURE__*/ S.Array(
   ClusterZone,
 ) as any as S.Schema<ClusterZoneListZonesList>;
 
@@ -5859,7 +5843,7 @@ export interface ClusterZoneList {
   /** Zone and associated hosts info */
   zones?: ClusterZoneListZonesList;
 }
-export const ClusterZoneList = /*@__PURE__*/ S.suspend(() =>
+const ClusterZoneList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zones: S.optional(ClusterZoneListZonesList),
   }),
@@ -5875,7 +5859,7 @@ export interface ListDatastoresRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const ListDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDatastoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5904,11 +5888,11 @@ export interface Datastore {
   /** The resource-specific properties for this resource. */
   properties?: DatastoreProperties;
 }
-export const Datastore = GetDatastoreResponse as any as S.Schema<Datastore>;
+const Datastore = GetDatastoreResponse as any as S.Schema<Datastore>;
 
 /** The Datastore items on this page */
 export type DatastoreListValueList = Array<Datastore>;
-export const DatastoreListValueList = /*@__PURE__*/ S.Array(
+const DatastoreListValueList = /*@__PURE__*/ S.Array(
   Datastore,
 ) as any as S.Schema<DatastoreListValueList>;
 
@@ -5919,7 +5903,7 @@ export interface DatastoreList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatastoreList = /*@__PURE__*/ S.suspend(() =>
+const DatastoreList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatastoreListValueList,
     nextLink: S.optional(S.String),
@@ -5934,7 +5918,7 @@ export interface ListGlobalReachConnectionsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListGlobalReachConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGlobalReachConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5964,7 +5948,7 @@ export interface GlobalReachConnection {
   /** The resource-specific properties for this resource. */
   properties?: GlobalReachConnectionProperties;
 }
-export const GlobalReachConnection = /*@__PURE__*/ S.suspend(() =>
+const GlobalReachConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5976,7 +5960,7 @@ export const GlobalReachConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The GlobalReachConnection items on this page */
 export type GlobalReachConnectionListValueList = Array<GlobalReachConnection>;
-export const GlobalReachConnectionListValueList = /*@__PURE__*/ S.Array(
+const GlobalReachConnectionListValueList = /*@__PURE__*/ S.Array(
   GlobalReachConnection,
 ) as any as S.Schema<GlobalReachConnectionListValueList>;
 
@@ -5987,7 +5971,7 @@ export interface GlobalReachConnectionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GlobalReachConnectionList = /*@__PURE__*/ S.suspend(() =>
+const GlobalReachConnectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GlobalReachConnectionListValueList,
     nextLink: S.optional(S.String),
@@ -6004,7 +5988,7 @@ export interface ListHcxEnterpriseSitesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListHcxEnterpriseSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHcxEnterpriseSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6034,7 +6018,7 @@ export interface HcxEnterpriseSite {
   /** The resource-specific properties for this resource. */
   properties?: HcxEnterpriseSiteProperties;
 }
-export const HcxEnterpriseSite = /*@__PURE__*/ S.suspend(() =>
+const HcxEnterpriseSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6046,7 +6030,7 @@ export const HcxEnterpriseSite = /*@__PURE__*/ S.suspend(() =>
 
 /** The HcxEnterpriseSite items on this page */
 export type HcxEnterpriseSiteListValueList = Array<HcxEnterpriseSite>;
-export const HcxEnterpriseSiteListValueList = /*@__PURE__*/ S.Array(
+const HcxEnterpriseSiteListValueList = /*@__PURE__*/ S.Array(
   HcxEnterpriseSite,
 ) as any as S.Schema<HcxEnterpriseSiteListValueList>;
 
@@ -6057,7 +6041,7 @@ export interface HcxEnterpriseSiteList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HcxEnterpriseSiteList = /*@__PURE__*/ S.suspend(() =>
+const HcxEnterpriseSiteList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HcxEnterpriseSiteListValueList,
     nextLink: S.optional(S.String),
@@ -6074,7 +6058,7 @@ export interface ListHostsRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6092,12 +6076,10 @@ export const ListHostsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type HostZonesList = Array<string>;
-export const HostZonesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HostZonesList>;
+const HostZonesList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<HostZonesList>;
 
 /** The resource model definition representing SKU */
 export type HostSku = ClustersCreateOrUpdateResponseSku;
-export const HostSku = ClustersCreateOrUpdateResponseSku;
-
 /** A host resource */
 export interface Host {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6115,7 +6097,7 @@ export interface Host {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
-export const Host = /*@__PURE__*/ S.suspend(() =>
+const Host = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6129,7 +6111,7 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 
 /** The Host items on this page */
 export type HostListResultValueList = Array<Host>;
-export const HostListResultValueList = /*@__PURE__*/ S.Array(
+const HostListResultValueList = /*@__PURE__*/ S.Array(
   Host,
 ) as any as S.Schema<HostListResultValueList>;
 
@@ -6140,7 +6122,7 @@ export interface HostListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const HostListResult = /*@__PURE__*/ S.suspend(() =>
+const HostListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: HostListResultValueList,
     nextLink: S.optional(S.String),
@@ -6155,7 +6137,7 @@ export interface ListIscsiPathByPrivateCloudRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListIscsiPathByPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIscsiPathByPrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6185,11 +6167,11 @@ export interface IscsiPath {
   /** The resource-specific properties for this resource. */
   properties?: IscsiPathProperties;
 }
-export const IscsiPath = GetIscsiPathResponse as any as S.Schema<IscsiPath>;
+const IscsiPath = GetIscsiPathResponse as any as S.Schema<IscsiPath>;
 
 /** The IscsiPath items on this page */
 export type IscsiPathListResultValueList = Array<IscsiPath>;
-export const IscsiPathListResultValueList = /*@__PURE__*/ S.Array(
+const IscsiPathListResultValueList = /*@__PURE__*/ S.Array(
   IscsiPath,
 ) as any as S.Schema<IscsiPathListResultValueList>;
 
@@ -6200,7 +6182,7 @@ export interface IscsiPathListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const IscsiPathListResult = /*@__PURE__*/ S.suspend(() =>
+const IscsiPathListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: IscsiPathListResultValueList,
     nextLink: S.optional(S.String),
@@ -6215,7 +6197,7 @@ export interface ListLicensesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListLicensesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLicensesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6243,11 +6225,11 @@ export interface License {
   /** The resource-specific properties for this resource. */
   properties?: LicenseProperties;
 }
-export const License = GetLicenseResponse as any as S.Schema<License>;
+const License = GetLicenseResponse as any as S.Schema<License>;
 
 /** The License items on this page */
 export type LicenseListResultValueList = Array<License>;
-export const LicenseListResultValueList = /*@__PURE__*/ S.Array(
+const LicenseListResultValueList = /*@__PURE__*/ S.Array(
   License,
 ) as any as S.Schema<LicenseListResultValueList>;
 
@@ -6258,7 +6240,7 @@ export interface LicenseListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LicenseListResult = /*@__PURE__*/ S.suspend(() =>
+const LicenseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LicenseListResultValueList,
     nextLink: S.optional(S.String),
@@ -6272,10 +6254,10 @@ export type ListMaintenancesRequestStateName =
   | "Success"
   | "Failed"
   | "Canceled";
-export const ListMaintenancesRequestStateName = S.String;
+const ListMaintenancesRequestStateName = S.String;
 
 export type ListMaintenancesRequestStatus = "Active" | "Inactive";
-export const ListMaintenancesRequestStatus = S.String;
+const ListMaintenancesRequestStatus = S.String;
 
 export interface ListMaintenancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -6293,7 +6275,7 @@ export interface ListMaintenancesRequest {
   /** date till which result should be returned. i.e. scheduledStartTime <= to */
   to?: string;
 }
-export const ListMaintenancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMaintenancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6325,11 +6307,11 @@ export interface Maintenance {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const Maintenance = GetMaintenanceResponse as any as S.Schema<Maintenance>;
+const Maintenance = GetMaintenanceResponse as any as S.Schema<Maintenance>;
 
 /** The Maintenance items on this page */
 export type MaintenanceListResultValueList = Array<Maintenance>;
-export const MaintenanceListResultValueList = /*@__PURE__*/ S.Array(
+const MaintenanceListResultValueList = /*@__PURE__*/ S.Array(
   Maintenance,
 ) as any as S.Schema<MaintenanceListResultValueList>;
 
@@ -6340,7 +6322,7 @@ export interface MaintenanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MaintenanceListResult = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MaintenanceListResultValueList,
     nextLink: S.optional(S.String),
@@ -6348,7 +6330,7 @@ export const MaintenanceListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MaintenanceListResult" }) as any as S.Schema<MaintenanceListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -6370,7 +6352,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -6381,11 +6363,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -6400,7 +6382,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -6412,7 +6394,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -6422,7 +6404,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -6439,7 +6421,7 @@ export interface ListPlacementPoliciesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const ListPlacementPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6470,7 +6452,7 @@ export interface PlacementPolicy {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
+const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6482,7 +6464,7 @@ export const PlacementPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The PlacementPolicy items on this page */
 export type PlacementPoliciesListValueList = Array<PlacementPolicy>;
-export const PlacementPoliciesListValueList = /*@__PURE__*/ S.Array(
+const PlacementPoliciesListValueList = /*@__PURE__*/ S.Array(
   PlacementPolicy,
 ) as any as S.Schema<PlacementPoliciesListValueList>;
 
@@ -6493,7 +6475,7 @@ export interface PlacementPoliciesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PlacementPoliciesList = /*@__PURE__*/ S.suspend(() =>
+const PlacementPoliciesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PlacementPoliciesListValueList,
     nextLink: S.optional(S.String),
@@ -6508,7 +6490,7 @@ export interface ListPrivateCloudAdminCredentialsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListPrivateCloudAdminCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateCloudAdminCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6536,7 +6518,7 @@ export interface AdminCredentials {
   /** vCenter admin password */
   vcenterPassword?: string | Redacted.Redacted<string>;
 }
-export const AdminCredentials = /*@__PURE__*/ S.suspend(() =>
+const AdminCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nsxtUsername: S.optional(S.String),
     nsxtPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -6549,7 +6531,7 @@ export interface ListPrivateCloudInSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListPrivateCloudInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateCloudInSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6566,22 +6548,12 @@ export const ListPrivateCloudInSubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type PrivateCloudTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudTagsMap =
-  GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudTagsMap>;
-
 /** The resource model definition representing SKU */
 export type PrivateCloudSku = ClustersCreateOrUpdateResponseSku;
-export const PrivateCloudSku = ClustersCreateOrUpdateResponseSku;
-
 /** Managed service identity (either system assigned, or none) */
 export type PrivateCloudIdentity = GetPrivateCloudResponseIdentity;
-export const PrivateCloudIdentity = GetPrivateCloudResponseIdentity;
-
 /** The availability zones. */
 export type PrivateCloudZonesList = Array<string>;
-export const PrivateCloudZonesList =
-  ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudZonesList>;
-
 /** A private cloud resource */
 export interface PrivateCloud {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6605,11 +6577,11 @@ export interface PrivateCloud {
   /** The availability zones. */
   zones?: PrivateCloudZonesList;
 }
-export const PrivateCloud = GetPrivateCloudResponse as any as S.Schema<PrivateCloud>;
+const PrivateCloud = GetPrivateCloudResponse as any as S.Schema<PrivateCloud>;
 
 /** The PrivateCloud items on this page */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
-export const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
+const PrivateCloudListValueList = /*@__PURE__*/ S.Array(
   PrivateCloud,
 ) as any as S.Schema<PrivateCloudListValueList>;
 
@@ -6620,7 +6592,7 @@ export interface PrivateCloudList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateCloudList = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateCloudListValueList,
     nextLink: S.optional(S.String),
@@ -6633,7 +6605,7 @@ export interface ListPrivateCloudsRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateCloudsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6655,7 +6627,7 @@ export interface ListProvisionedNetworksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListProvisionedNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProvisionedNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6685,7 +6657,7 @@ export interface ProvisionedNetwork {
   /** The resource-specific properties for this resource. */
   properties?: ProvisionedNetworkProperties;
 }
-export const ProvisionedNetwork = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6697,7 +6669,7 @@ export const ProvisionedNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** The ProvisionedNetwork items on this page */
 export type ProvisionedNetworkListResultValueList = Array<ProvisionedNetwork>;
-export const ProvisionedNetworkListResultValueList = /*@__PURE__*/ S.Array(
+const ProvisionedNetworkListResultValueList = /*@__PURE__*/ S.Array(
   ProvisionedNetwork,
 ) as any as S.Schema<ProvisionedNetworkListResultValueList>;
 
@@ -6708,7 +6680,7 @@ export interface ProvisionedNetworkListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProvisionedNetworkListResult = /*@__PURE__*/ S.suspend(() =>
+const ProvisionedNetworkListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProvisionedNetworkListResultValueList,
     nextLink: S.optional(S.String),
@@ -6725,7 +6697,7 @@ export interface ListPureStoragePoliciesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListPureStoragePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPureStoragePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6755,7 +6727,7 @@ export interface PureStoragePolicy {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
-export const PureStoragePolicy = /*@__PURE__*/ S.suspend(() =>
+const PureStoragePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6767,7 +6739,7 @@ export const PureStoragePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** The PureStoragePolicy items on this page */
 export type PureStoragePolicyListResultValueList = Array<PureStoragePolicy>;
-export const PureStoragePolicyListResultValueList = /*@__PURE__*/ S.Array(
+const PureStoragePolicyListResultValueList = /*@__PURE__*/ S.Array(
   PureStoragePolicy,
 ) as any as S.Schema<PureStoragePolicyListResultValueList>;
 
@@ -6778,7 +6750,7 @@ export interface PureStoragePolicyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PureStoragePolicyListResult = /*@__PURE__*/ S.suspend(() =>
+const PureStoragePolicyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PureStoragePolicyListResultValueList,
     nextLink: S.optional(S.String),
@@ -6797,7 +6769,7 @@ export interface ListScriptCmdletsRequest {
   /** Name of the script package. */
   scriptPackageName: string;
 }
-export const ListScriptCmdletsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptCmdletsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6826,11 +6798,11 @@ export interface ScriptCmdlet {
   /** The resource-specific properties for this resource. */
   properties?: ScriptCmdletProperties;
 }
-export const ScriptCmdlet = GetScriptCmdletResponse as any as S.Schema<ScriptCmdlet>;
+const ScriptCmdlet = GetScriptCmdletResponse as any as S.Schema<ScriptCmdlet>;
 
 /** The ScriptCmdlet items on this page */
 export type ScriptCmdletsListValueList = Array<ScriptCmdlet>;
-export const ScriptCmdletsListValueList = /*@__PURE__*/ S.Array(
+const ScriptCmdletsListValueList = /*@__PURE__*/ S.Array(
   ScriptCmdlet,
 ) as any as S.Schema<ScriptCmdletsListValueList>;
 
@@ -6841,7 +6813,7 @@ export interface ScriptCmdletsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ScriptCmdletsList = /*@__PURE__*/ S.suspend(() =>
+const ScriptCmdletsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ScriptCmdletsListValueList,
     nextLink: S.optional(S.String),
@@ -6856,7 +6828,7 @@ export interface ListScriptExecutionsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListScriptExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6886,7 +6858,7 @@ export interface ScriptExecution {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const ScriptExecution = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6898,7 +6870,7 @@ export const ScriptExecution = /*@__PURE__*/ S.suspend(() =>
 
 /** The ScriptExecution items on this page */
 export type ScriptExecutionsListValueList = Array<ScriptExecution>;
-export const ScriptExecutionsListValueList = /*@__PURE__*/ S.Array(
+const ScriptExecutionsListValueList = /*@__PURE__*/ S.Array(
   ScriptExecution,
 ) as any as S.Schema<ScriptExecutionsListValueList>;
 
@@ -6909,7 +6881,7 @@ export interface ScriptExecutionsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ScriptExecutionsList = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecutionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ScriptExecutionsListValueList,
     nextLink: S.optional(S.String),
@@ -6924,7 +6896,7 @@ export interface ListScriptPackagesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListScriptPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6954,11 +6926,11 @@ export interface ScriptPackage {
   /** The resource-specific properties for this resource. */
   properties?: ScriptPackageProperties;
 }
-export const ScriptPackage = GetScriptPackageResponse as any as S.Schema<ScriptPackage>;
+const ScriptPackage = GetScriptPackageResponse as any as S.Schema<ScriptPackage>;
 
 /** The ScriptPackage items on this page */
 export type ScriptPackagesListValueList = Array<ScriptPackage>;
-export const ScriptPackagesListValueList = /*@__PURE__*/ S.Array(
+const ScriptPackagesListValueList = /*@__PURE__*/ S.Array(
   ScriptPackage,
 ) as any as S.Schema<ScriptPackagesListValueList>;
 
@@ -6969,7 +6941,7 @@ export interface ScriptPackagesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ScriptPackagesList = /*@__PURE__*/ S.suspend(() =>
+const ScriptPackagesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ScriptPackagesListValueList,
     nextLink: S.optional(S.String),
@@ -6980,7 +6952,7 @@ export interface ListSkusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -6995,21 +6967,21 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the type of resource the SKU applies to. */
 export type ResourceSkuResourceType = "privateClouds" | "privateClouds/clusters";
-export const ResourceSkuResourceType = S.String;
+const ResourceSkuResourceType = S.String;
 
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList =
+const ResourceSkuLocationsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationsList>;
 
 /** List of availability zones where the SKU is supported. */
 export type ResourceSkuLocationInfoZonesList = Array<string>;
-export const ResourceSkuLocationInfoZonesList =
+const ResourceSkuLocationInfoZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuLocationInfoZonesList>;
 
 /** Gets the set of zones that the SKU is available in with the specified capabilities. */
 export type ResourceSkuZoneDetailsNameList = Array<string>;
-export const ResourceSkuZoneDetailsNameList =
+const ResourceSkuZoneDetailsNameList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuZoneDetailsNameList>;
 
 /** Describes The SKU capabilities object. */
@@ -7019,7 +6991,7 @@ export interface ResourceSkuCapabilities {
   /** The value of the SKU capability. */
   value: string;
 }
-export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -7028,7 +7000,7 @@ export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of capabilities that are available for the SKU in the specified list of zones. */
 export type ResourceSkuZoneDetailsCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
+const ResourceSkuZoneDetailsCapabilitiesList = /*@__PURE__*/ S.Array(
   ResourceSkuCapabilities,
 ) as any as S.Schema<ResourceSkuZoneDetailsCapabilitiesList>;
 
@@ -7039,7 +7011,7 @@ export interface ResourceSkuZoneDetails {
   /** A list of capabilities that are available for the SKU in the specified list of zones. */
   capabilities: ResourceSkuZoneDetailsCapabilitiesList;
 }
-export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: ResourceSkuZoneDetailsNameList,
     capabilities: ResourceSkuZoneDetailsCapabilitiesList,
@@ -7048,7 +7020,7 @@ export const ResourceSkuZoneDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets details of capabilities available to a SKU in specific zones. */
 export type ResourceSkuLocationInfoZoneDetailsList = Array<ResourceSkuZoneDetails>;
-export const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
+const ResourceSkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
   ResourceSkuZoneDetails,
 ) as any as S.Schema<ResourceSkuLocationInfoZoneDetailsList>;
 
@@ -7061,7 +7033,7 @@ export interface ResourceSkuLocationInfo {
   /** Gets details of capabilities available to a SKU in specific zones. */
   zoneDetails: ResourceSkuLocationInfoZoneDetailsList;
 }
-export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String,
     zones: ResourceSkuLocationInfoZonesList,
@@ -7071,32 +7043,32 @@ export const ResourceSkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of locations and availability zones in those locations where the SKU is available */
 export type ResourceSkuLocationInfoList = Array<ResourceSkuLocationInfo>;
-export const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
+const ResourceSkuLocationInfoList = /*@__PURE__*/ S.Array(
   ResourceSkuLocationInfo,
 ) as any as S.Schema<ResourceSkuLocationInfoList>;
 
 /** Name value pairs to describe the capability. */
 export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuCapabilitiesList =
+const ResourceSkuCapabilitiesList =
   ResourceSkuZoneDetailsCapabilitiesList as any as S.Schema<ResourceSkuCapabilitiesList>;
 
 /** Describes the kind of SKU restrictions that can exist */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
-export const ResourceSkuRestrictionsType = S.String;
+const ResourceSkuRestrictionsType = S.String;
 
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList =
+const ResourceSkuRestrictionsValuesList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
 
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-export const ResourceSkuRestrictionInfoLocationsList =
+const ResourceSkuRestrictionInfoLocationsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
 
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-export const ResourceSkuRestrictionInfoZonesList =
+const ResourceSkuRestrictionInfoZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
 
 /** Describes an available Compute SKU Restriction Information. */
@@ -7106,7 +7078,7 @@ export interface ResourceSkuRestrictionInfo {
   /** List of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
-export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
     zones: S.optional(ResourceSkuRestrictionInfoZonesList),
@@ -7117,7 +7089,7 @@ export const ResourceSkuRestrictionInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Describes the reason for SKU restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
-export const ResourceSkuRestrictionsReasonCode = S.String;
+const ResourceSkuRestrictionsReasonCode = S.String;
 
 /** The restrictions of the SKU. */
 export interface ResourceSkuRestrictions {
@@ -7130,7 +7102,7 @@ export interface ResourceSkuRestrictions {
   /** the reason for restriction. */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
-export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
+const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ResourceSkuRestrictionsType),
     values: ResourceSkuRestrictionsValuesList,
@@ -7141,7 +7113,7 @@ export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** The restrictions of the SKU. */
 export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
-export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
+const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
   ResourceSkuRestrictions,
 ) as any as S.Schema<ResourceSkuRestrictionsList>;
 
@@ -7166,7 +7138,7 @@ export interface ResourceSku {
   /** The restrictions of the SKU. */
   restrictions: ResourceSkuRestrictionsList;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: ResourceSkuResourceType,
     name: S.String,
@@ -7182,7 +7154,7 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceSku items on this page */
 export type PagedResourceSkuValueList = Array<ResourceSku>;
-export const PagedResourceSkuValueList = /*@__PURE__*/ S.Array(
+const PagedResourceSkuValueList = /*@__PURE__*/ S.Array(
   ResourceSku,
 ) as any as S.Schema<PagedResourceSkuValueList>;
 
@@ -7193,7 +7165,7 @@ export interface PagedResourceSku {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PagedResourceSku = /*@__PURE__*/ S.suspend(() =>
+const PagedResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PagedResourceSkuValueList,
     nextLink: S.optional(S.String),
@@ -7210,7 +7182,7 @@ export interface ListVirtualMachinesRequest {
   /** Name of the cluster */
   clusterName: string;
 }
-export const ListVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7241,7 +7213,7 @@ export interface VirtualMachine {
   /** The resource-specific properties for this resource. */
   properties?: VirtualMachineProperties;
 }
-export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7253,7 +7225,7 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The VirtualMachine items on this page */
 export type VirtualMachinesListValueList = Array<VirtualMachine>;
-export const VirtualMachinesListValueList = /*@__PURE__*/ S.Array(
+const VirtualMachinesListValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<VirtualMachinesListValueList>;
 
@@ -7264,7 +7236,7 @@ export interface VirtualMachinesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VirtualMachinesList = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachinesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VirtualMachinesListValueList,
     nextLink: S.optional(S.String),
@@ -7279,7 +7251,7 @@ export interface ListWorkloadNetworkDhcpRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7309,7 +7281,7 @@ export interface WorkloadNetworkDhcp {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const WorkloadNetworkDhcp = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDhcp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7321,7 +7293,7 @@ export const WorkloadNetworkDhcp = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkDhcp items on this page */
 export type WorkloadNetworkDhcpListValueList = Array<WorkloadNetworkDhcp>;
-export const WorkloadNetworkDhcpListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkDhcpListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDhcp,
 ) as any as S.Schema<WorkloadNetworkDhcpListValueList>;
 
@@ -7332,7 +7304,7 @@ export interface WorkloadNetworkDhcpList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkDhcpList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDhcpList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkDhcpListValueList,
     nextLink: S.optional(S.String),
@@ -7347,7 +7319,7 @@ export interface ListWorkloadNetworkDnsServicesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkDnsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkDnsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7377,12 +7349,12 @@ export interface WorkloadNetworkDnsService {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const WorkloadNetworkDnsService =
+const WorkloadNetworkDnsService =
   CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<WorkloadNetworkDnsService>;
 
 /** The WorkloadNetworkDnsService items on this page */
 export type WorkloadNetworkDnsServicesListValueList = Array<WorkloadNetworkDnsService>;
-export const WorkloadNetworkDnsServicesListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkDnsServicesListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDnsService,
 ) as any as S.Schema<WorkloadNetworkDnsServicesListValueList>;
 
@@ -7393,7 +7365,7 @@ export interface WorkloadNetworkDnsServicesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkDnsServicesList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsServicesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkDnsServicesListValueList,
     nextLink: S.optional(S.String),
@@ -7410,7 +7382,7 @@ export interface ListWorkloadNetworkDnsZonesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkDnsZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7440,7 +7412,7 @@ export interface WorkloadNetworkDnsZone {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const WorkloadNetworkDnsZone = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7452,7 +7424,7 @@ export const WorkloadNetworkDnsZone = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkDnsZone items on this page */
 export type WorkloadNetworkDnsZonesListValueList = Array<WorkloadNetworkDnsZone>;
-export const WorkloadNetworkDnsZonesListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkDnsZonesListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkDnsZone,
 ) as any as S.Schema<WorkloadNetworkDnsZonesListValueList>;
 
@@ -7463,7 +7435,7 @@ export interface WorkloadNetworkDnsZonesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkDnsZonesList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkDnsZonesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkDnsZonesListValueList,
     nextLink: S.optional(S.String),
@@ -7480,7 +7452,7 @@ export interface ListWorkloadNetworkGatewaysRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7510,7 +7482,7 @@ export interface WorkloadNetworkGateway {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkGatewayProperties;
 }
-export const WorkloadNetworkGateway = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkGateway = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7522,7 +7494,7 @@ export const WorkloadNetworkGateway = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkGateway items on this page */
 export type WorkloadNetworkGatewayListValueList = Array<WorkloadNetworkGateway>;
-export const WorkloadNetworkGatewayListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkGatewayListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkGateway,
 ) as any as S.Schema<WorkloadNetworkGatewayListValueList>;
 
@@ -7533,7 +7505,7 @@ export interface WorkloadNetworkGatewayList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkGatewayList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkGatewayList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkGatewayListValueList,
     nextLink: S.optional(S.String),
@@ -7550,7 +7522,7 @@ export interface ListWorkloadNetworkPortMirroringRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7580,12 +7552,12 @@ export interface WorkloadNetworkPortMirroring {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const WorkloadNetworkPortMirroring =
+const WorkloadNetworkPortMirroring =
   CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<WorkloadNetworkPortMirroring>;
 
 /** The WorkloadNetworkPortMirroring items on this page */
 export type WorkloadNetworkPortMirroringListValueList = Array<WorkloadNetworkPortMirroring>;
-export const WorkloadNetworkPortMirroringListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkPortMirroringListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkPortMirroring,
 ) as any as S.Schema<WorkloadNetworkPortMirroringListValueList>;
 
@@ -7596,7 +7568,7 @@ export interface WorkloadNetworkPortMirroringList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkPortMirroringList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPortMirroringList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkPortMirroringListValueList,
     nextLink: S.optional(S.String),
@@ -7613,7 +7585,7 @@ export interface ListWorkloadNetworkPublicIPsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkPublicIPsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkPublicIPsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7643,7 +7615,7 @@ export interface WorkloadNetworkPublicIP {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPublicIPProperties;
 }
-export const WorkloadNetworkPublicIP = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPublicIP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7655,7 +7627,7 @@ export const WorkloadNetworkPublicIP = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkPublicIP items on this page */
 export type WorkloadNetworkPublicIPsListValueList = Array<WorkloadNetworkPublicIP>;
-export const WorkloadNetworkPublicIPsListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkPublicIPsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkPublicIP,
 ) as any as S.Schema<WorkloadNetworkPublicIPsListValueList>;
 
@@ -7666,7 +7638,7 @@ export interface WorkloadNetworkPublicIPsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkPublicIPsList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkPublicIPsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkPublicIPsListValueList,
     nextLink: S.optional(S.String),
@@ -7683,7 +7655,7 @@ export interface ListWorkloadNetworksRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7713,7 +7685,7 @@ export interface WorkloadNetwork {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkProperties;
 }
-export const WorkloadNetwork = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7725,7 +7697,7 @@ export const WorkloadNetwork = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetwork items on this page */
 export type WorkloadNetworkListValueList = Array<WorkloadNetwork>;
-export const WorkloadNetworkListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetwork,
 ) as any as S.Schema<WorkloadNetworkListValueList>;
 
@@ -7736,7 +7708,7 @@ export interface WorkloadNetworkList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkListValueList,
     nextLink: S.optional(S.String),
@@ -7751,7 +7723,7 @@ export interface ListWorkloadNetworkSegmentsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7781,7 +7753,7 @@ export interface WorkloadNetworkSegment {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const WorkloadNetworkSegment = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7793,7 +7765,7 @@ export const WorkloadNetworkSegment = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkSegment items on this page */
 export type WorkloadNetworkSegmentsListValueList = Array<WorkloadNetworkSegment>;
-export const WorkloadNetworkSegmentsListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkSegmentsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkSegment,
 ) as any as S.Schema<WorkloadNetworkSegmentsListValueList>;
 
@@ -7804,7 +7776,7 @@ export interface WorkloadNetworkSegmentsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkSegmentsList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkSegmentsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkSegmentsListValueList,
     nextLink: S.optional(S.String),
@@ -7821,7 +7793,7 @@ export interface ListWorkloadNetworkVirtualMachinesRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkVirtualMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7851,12 +7823,12 @@ export interface WorkloadNetworkVirtualMachine {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVirtualMachineProperties;
 }
-export const WorkloadNetworkVirtualMachine =
+const WorkloadNetworkVirtualMachine =
   GetWorkloadNetworkVirtualMachineResponse as any as S.Schema<WorkloadNetworkVirtualMachine>;
 
 /** The WorkloadNetworkVirtualMachine items on this page */
 export type WorkloadNetworkVirtualMachinesListValueList = Array<WorkloadNetworkVirtualMachine>;
-export const WorkloadNetworkVirtualMachinesListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkVirtualMachinesListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkVirtualMachine,
 ) as any as S.Schema<WorkloadNetworkVirtualMachinesListValueList>;
 
@@ -7867,7 +7839,7 @@ export interface WorkloadNetworkVirtualMachinesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkVirtualMachinesList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVirtualMachinesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkVirtualMachinesListValueList,
     nextLink: S.optional(S.String),
@@ -7884,7 +7856,7 @@ export interface ListWorkloadNetworkVMGroupsRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const ListWorkloadNetworkVMGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkloadNetworkVMGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7914,7 +7886,7 @@ export interface WorkloadNetworkVMGroup {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const WorkloadNetworkVMGroup = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVMGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -7926,7 +7898,7 @@ export const WorkloadNetworkVMGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** The WorkloadNetworkVMGroup items on this page */
 export type WorkloadNetworkVMGroupsListValueList = Array<WorkloadNetworkVMGroup>;
-export const WorkloadNetworkVMGroupsListValueList = /*@__PURE__*/ S.Array(
+const WorkloadNetworkVMGroupsListValueList = /*@__PURE__*/ S.Array(
   WorkloadNetworkVMGroup,
 ) as any as S.Schema<WorkloadNetworkVMGroupsListValueList>;
 
@@ -7937,7 +7909,7 @@ export interface WorkloadNetworkVMGroupsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const WorkloadNetworkVMGroupsList = /*@__PURE__*/ S.suspend(() =>
+const WorkloadNetworkVMGroupsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: WorkloadNetworkVMGroupsListValueList,
     nextLink: S.optional(S.String),
@@ -7956,7 +7928,7 @@ export interface MaintenancesInitiateChecksRequest {
   /** Name of the maintenance */
   maintenanceName: string;
 }
-export const MaintenancesInitiateChecksRequest = /*@__PURE__*/ S.suspend(() =>
+const MaintenancesInitiateChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -7986,7 +7958,7 @@ export interface MaintenancesInitiateChecksResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const MaintenancesInitiateChecksResponse = /*@__PURE__*/ S.suspend(() =>
+const MaintenancesInitiateChecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8012,7 +7984,7 @@ export interface MaintenancesRescheduleRequest {
   /** rescheduling reason */
   message?: string;
 }
-export const MaintenancesRescheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const MaintenancesRescheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8044,7 +8016,7 @@ export interface MaintenancesRescheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const MaintenancesRescheduleResponse =
+const MaintenancesRescheduleResponse =
   MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesRescheduleResponse>;
 
 export interface MaintenancesScheduleRequest {
@@ -8061,7 +8033,7 @@ export interface MaintenancesScheduleRequest {
   /** scheduling message */
   message?: string;
 }
-export const MaintenancesScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const MaintenancesScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8093,7 +8065,7 @@ export interface MaintenancesScheduleResponse {
   /** The resource-specific properties for this resource. */
   properties?: MaintenanceProperties;
 }
-export const MaintenancesScheduleResponse =
+const MaintenancesScheduleResponse =
   MaintenancesInitiateChecksResponse as any as S.Schema<MaintenancesScheduleResponse>;
 
 /** Abstract placement policy properties */
@@ -8115,7 +8087,7 @@ export interface PlacementPolicyPropertiesInput {
   /** VmHost: Azure Hybrid Benefit opt-in type. */
   azureHybridBenefitType?: AzureHybridBenefitType | (string & {});
 }
-export const PlacementPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PlacementPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: PlacementPolicyType,
     state: S.optional(PlacementPolicyState),
@@ -8144,7 +8116,7 @@ export interface PlacementPoliciesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyPropertiesInput;
 }
-export const PlacementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PlacementPoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8176,19 +8148,16 @@ export interface PlacementPoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const PlacementPoliciesCreateOrUpdateResponse =
+const PlacementPoliciesCreateOrUpdateResponse =
   GetPlacementPolicyResponse as any as S.Schema<PlacementPoliciesCreateOrUpdateResponse>;
 
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudsCreateOrUpdateRequestTagsMap =
+const PrivateCloudsCreateOrUpdateRequestTagsMap =
   GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateRequestTagsMap>;
 
 /** The hosts */
 export type ManagementClusterInputHostsList = Array<string>;
-export const ManagementClusterInputHostsList =
-  ClusterPropertiesInputHostsList as any as S.Schema<ManagementClusterInputHostsList>;
-
 /** The properties of a management cluster */
 export interface ManagementClusterInput {
   /** The cluster size */
@@ -8198,16 +8167,15 @@ export interface ManagementClusterInput {
   /** Name of the vsan datastore associated with the cluster */
   vsanDatastoreName?: string;
 }
-export const ManagementClusterInput =
-  ClusterPropertiesInput as any as S.Schema<ManagementClusterInput>;
+const ManagementClusterInput = ClusterPropertiesInput as any as S.Schema<ManagementClusterInput>;
 
 /** Connectivity to internet is enabled or disabled */
 export type PrivateCloudPropertiesInputInternet = "Enabled" | "Disabled";
-export const PrivateCloudPropertiesInputInternet = S.String;
+const PrivateCloudPropertiesInputInternet = S.String;
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudPropertiesInputIdentitySourcesList = Array<IdentitySource>;
-export const PrivateCloudPropertiesInputIdentitySourcesList =
+const PrivateCloudPropertiesInputIdentitySourcesList =
   PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudPropertiesInputIdentitySourcesList>;
 
 /** An Encryption Key */
@@ -8219,7 +8187,7 @@ export interface EncryptionKeyVaultPropertiesInput {
   /** The URL of the vault. */
   keyVaultUrl?: string;
 }
-export const EncryptionKeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionKeyVaultPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     keyVersion: S.optional(S.String),
@@ -8236,7 +8204,7 @@ export interface EncryptionInput {
   /** The key vault where the encryption key is stored */
   keyVaultProperties?: EncryptionKeyVaultPropertiesInput;
 }
-export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(EncryptionState),
     keyVaultProperties: S.optional(EncryptionKeyVaultPropertiesInput),
@@ -8245,19 +8213,17 @@ export const EncryptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudPropertiesInputExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
+const PrivateCloudPropertiesInputExtendedNetworkBlocksList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudPropertiesInputExtendedNetworkBlocksList>;
 
 /** An ExpressRoute Circuit */
 export type CircuitInput = HcxEnterpriseSitePropertiesInput;
-export const CircuitInput = HcxEnterpriseSitePropertiesInput;
-
 /** A VMware Cloud Foundation license */
 export interface VcfLicenseInput {
   /** License kind */
   kind: VcfLicenseKind | (string & {});
 }
-export const VcfLicenseInput = HostLicense as any as S.Schema<VcfLicenseInput>;
+const VcfLicenseInput = HostLicense as any as S.Schema<VcfLicenseInput>;
 
 /** The properties of a private cloud resource */
 export interface PrivateCloudPropertiesInput {
@@ -8290,7 +8256,7 @@ export interface PrivateCloudPropertiesInput {
   /** The private cloud license */
   vcfLicense?: VcfLicenseInput;
 }
-export const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementCluster: ManagementClusterInput,
     internet: S.optional(PrivateCloudPropertiesInputInternet),
@@ -8313,13 +8279,11 @@ export const PrivateCloudPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type PrivateCloudsCreateOrUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
-export const PrivateCloudsCreateOrUpdateRequestSku = ClustersCreateOrUpdateRequestSku;
-
 /** Managed service identity (either system assigned, or none) */
 export interface PrivateCloudsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
-export const PrivateCloudsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SystemAssignedServiceIdentityType,
   }),
@@ -8329,7 +8293,7 @@ export const PrivateCloudsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspen
 
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateRequestZonesList = Array<string>;
-export const PrivateCloudsCreateOrUpdateRequestZonesList =
+const PrivateCloudsCreateOrUpdateRequestZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateRequestZonesList>;
 
 export interface PrivateCloudsCreateOrUpdateRequest {
@@ -8352,7 +8316,7 @@ export interface PrivateCloudsCreateOrUpdateRequest {
   /** The availability zones. */
   zones?: PrivateCloudsCreateOrUpdateRequestZonesList;
 }
-export const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8377,20 +8341,16 @@ export const PrivateCloudsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type PrivateCloudsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const PrivateCloudsCreateOrUpdateResponseTagsMap =
+const PrivateCloudsCreateOrUpdateResponseTagsMap =
   GetPrivateCloudResponseTagsMap as any as S.Schema<PrivateCloudsCreateOrUpdateResponseTagsMap>;
 
 /** The resource model definition representing SKU */
 export type PrivateCloudsCreateOrUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
-export const PrivateCloudsCreateOrUpdateResponseSku = ClustersCreateOrUpdateResponseSku;
-
 /** Managed service identity (either system assigned, or none) */
 export type PrivateCloudsCreateOrUpdateResponseIdentity = GetPrivateCloudResponseIdentity;
-export const PrivateCloudsCreateOrUpdateResponseIdentity = GetPrivateCloudResponseIdentity;
-
 /** The availability zones. */
 export type PrivateCloudsCreateOrUpdateResponseZonesList = Array<string>;
-export const PrivateCloudsCreateOrUpdateResponseZonesList =
+const PrivateCloudsCreateOrUpdateResponseZonesList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudsCreateOrUpdateResponseZonesList>;
 
 export interface PrivateCloudsCreateOrUpdateResponse {
@@ -8415,7 +8375,7 @@ export interface PrivateCloudsCreateOrUpdateResponse {
   /** The availability zones. */
   zones?: PrivateCloudsCreateOrUpdateResponseZonesList;
 }
-export const PrivateCloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8439,7 +8399,7 @@ export interface PureStoragePolicyPropertiesInput {
   /** Azure resource ID of the Pure Storage Pool associated with the storage policy */
   storagePoolId: string;
 }
-export const PureStoragePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PureStoragePolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storagePolicyDefinition: S.String,
     storagePoolId: S.String,
@@ -8460,7 +8420,7 @@ export interface PureStoragePoliciesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyPropertiesInput;
 }
-export const PureStoragePoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PureStoragePoliciesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8491,7 +8451,7 @@ export interface PureStoragePoliciesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: PureStoragePolicyProperties;
 }
-export const PureStoragePoliciesCreateOrUpdateResponse =
+const PureStoragePoliciesCreateOrUpdateResponse =
   GetPureStoragePolicyResponse as any as S.Schema<PureStoragePoliciesCreateOrUpdateResponse>;
 
 export interface RotatePrivateCloudNsxtPasswordRequest {
@@ -8502,7 +8462,7 @@ export interface RotatePrivateCloudNsxtPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const RotatePrivateCloudNsxtPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const RotatePrivateCloudNsxtPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8520,7 +8480,7 @@ export const RotatePrivateCloudNsxtPasswordRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RotatePrivateCloudNsxtPasswordRequest>;
 
 export interface RotatePrivateCloudNsxtPasswordResponse {}
-export const RotatePrivateCloudNsxtPasswordResponse =
+const RotatePrivateCloudNsxtPasswordResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudNsxtPasswordResponse>;
 
 export interface RotatePrivateCloudVcenterPasswordRequest {
@@ -8531,7 +8491,7 @@ export interface RotatePrivateCloudVcenterPasswordRequest {
   /** Name of the private cloud */
   privateCloudName: string;
 }
-export const RotatePrivateCloudVcenterPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const RotatePrivateCloudVcenterPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8549,27 +8509,27 @@ export const RotatePrivateCloudVcenterPasswordRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RotatePrivateCloudVcenterPasswordRequest>;
 
 export interface RotatePrivateCloudVcenterPasswordResponse {}
-export const RotatePrivateCloudVcenterPasswordResponse =
+const RotatePrivateCloudVcenterPasswordResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<RotatePrivateCloudVcenterPasswordResponse>;
 
 /** Parameters the script will accept */
 export type ScriptExecutionPropertiesInputParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesInputParametersList =
+const ScriptExecutionPropertiesInputParametersList =
   ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputParametersList>;
 
 /** Parameters that will be hidden/not visible to ARM, such as passwords and credentials */
 export type ScriptExecutionPropertiesInputHiddenParametersList = Array<ScriptExecutionParameter>;
-export const ScriptExecutionPropertiesInputHiddenParametersList =
+const ScriptExecutionPropertiesInputHiddenParametersList =
   ScriptExecutionPropertiesParametersList as any as S.Schema<ScriptExecutionPropertiesInputHiddenParametersList>;
 
 /** Standard output stream from the powershell execution */
 export type ScriptExecutionPropertiesInputOutputList = Array<string>;
-export const ScriptExecutionPropertiesInputOutputList =
+const ScriptExecutionPropertiesInputOutputList =
   ClusterPropertiesInputHostsList as any as S.Schema<ScriptExecutionPropertiesInputOutputList>;
 
 /** User-defined dictionary. */
 export type ScriptExecutionPropertiesInputNamedOutputsMap = { [key: string]: unknown | undefined };
-export const ScriptExecutionPropertiesInputNamedOutputsMap =
+const ScriptExecutionPropertiesInputNamedOutputsMap =
   ScriptExecutionPropertiesNamedOutputsMap as any as S.Schema<ScriptExecutionPropertiesInputNamedOutputsMap>;
 
 /** Properties of a user-invoked script */
@@ -8591,7 +8551,7 @@ export interface ScriptExecutionPropertiesInput {
   /** User-defined dictionary. */
   namedOutputs?: ScriptExecutionPropertiesInputNamedOutputsMap;
 }
-export const ScriptExecutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecutionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scriptCmdletId: S.optional(S.String),
     parameters: S.optional(ScriptExecutionPropertiesInputParametersList),
@@ -8618,7 +8578,7 @@ export interface ScriptExecutionsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionPropertiesInput;
 }
-export const ScriptExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ScriptExecutionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8649,16 +8609,14 @@ export interface ScriptExecutionsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ScriptExecutionProperties;
 }
-export const ScriptExecutionsCreateOrUpdateResponse =
+const ScriptExecutionsCreateOrUpdateResponse =
   GetScriptExecutionResponse as any as S.Schema<ScriptExecutionsCreateOrUpdateResponse>;
 
 /** The resource model definition representing SKU */
 export type UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
-export const UpdateClusterRequestSku = ClustersCreateOrUpdateRequestSku;
-
 /** The hosts */
 export type ClusterUpdatePropertiesHostsList = Array<string>;
-export const ClusterUpdatePropertiesHostsList =
+const ClusterUpdatePropertiesHostsList =
   ClusterPropertiesInputHostsList as any as S.Schema<ClusterUpdatePropertiesHostsList>;
 
 /** The properties of a cluster that may be updated */
@@ -8668,7 +8626,7 @@ export interface ClusterUpdateProperties {
   /** The hosts */
   hosts?: ClusterUpdatePropertiesHostsList;
 }
-export const ClusterUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterSize: S.optional(S.Number),
     hosts: S.optional(ClusterUpdatePropertiesHostsList),
@@ -8689,7 +8647,7 @@ export interface UpdateClusterRequest {
   /** The properties of a cluster resource that may be updated */
   properties?: ClusterUpdateProperties;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8709,8 +8667,6 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource model definition representing SKU */
 export type UpdateClusterResponseSku = ClustersCreateOrUpdateResponseSku;
-export const UpdateClusterResponseSku = ClustersCreateOrUpdateResponseSku;
-
 export interface UpdateClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8725,11 +8681,11 @@ export interface UpdateClusterResponse {
   /** The resource model definition representing SKU */
   sku: ClustersCreateOrUpdateResponseSku;
 }
-export const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
+const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
 
 /** The licenses assigned to the host. */
 export type HostUpdatePropertiesLicensesList = Array<HostLicense>;
-export const HostUpdatePropertiesLicensesList =
+const HostUpdatePropertiesLicensesList =
   HostPropertiesLicensesList as any as S.Schema<HostUpdatePropertiesLicensesList>;
 
 /** The properties for updating a host. */
@@ -8737,7 +8693,7 @@ export interface HostUpdateProperties {
   /** The licenses assigned to the host. */
   licenses?: HostUpdatePropertiesLicensesList;
 }
-export const HostUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const HostUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licenses: S.optional(HostUpdatePropertiesLicensesList),
   }),
@@ -8757,7 +8713,7 @@ export interface UpdateHostRequest {
   /** The properties of a host resource that may be updated */
   properties?: HostUpdateProperties;
 }
-export const UpdateHostRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8777,13 +8733,8 @@ export const UpdateHostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The availability zones. */
 export type UpdateHostResponseZonesList = Array<string>;
-export const UpdateHostResponseZonesList =
-  ClusterPropertiesInputHostsList as any as S.Schema<UpdateHostResponseZonesList>;
-
 /** The resource model definition representing SKU */
 export type UpdateHostResponseSku = ClustersCreateOrUpdateResponseSku;
-export const UpdateHostResponseSku = ClustersCreateOrUpdateResponseSku;
-
 export interface UpdateHostResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8800,7 +8751,7 @@ export interface UpdateHostResponse {
   /** The resource model definition representing SKU */
   sku?: ClustersCreateOrUpdateResponseSku;
 }
-export const UpdateHostResponse = GetHostResponse as any as S.Schema<UpdateHostResponse>;
+const UpdateHostResponse = GetHostResponse as any as S.Schema<UpdateHostResponse>;
 
 /** The properties of a placement policy resource that may be updated */
 export interface PlacementPolicyUpdateProperties {
@@ -8815,7 +8766,7 @@ export interface PlacementPolicyUpdateProperties {
   /** placement policy azure hybrid benefit opt-in type */
   azureHybridBenefitType?: AzureHybridBenefitType | (string & {});
 }
-export const PlacementPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const PlacementPolicyUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PlacementPolicyState),
     vmMembers: S.optional(PlacementPolicyUpdatePropertiesVmMembersList),
@@ -8841,7 +8792,7 @@ export interface UpdatePlacementPolicyRequest {
   /** The properties of a placement policy resource that may be updated */
   properties?: PlacementPolicyUpdateProperties;
 }
-export const UpdatePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlacementPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8873,34 +8824,30 @@ export interface UpdatePlacementPolicyResponse {
   /** The resource-specific properties for this resource. */
   properties?: PlacementPolicyProperties;
 }
-export const UpdatePlacementPolicyResponse =
+const UpdatePlacementPolicyResponse =
   GetPlacementPolicyResponse as any as S.Schema<UpdatePlacementPolicyResponse>;
 
 /** Resource tags. */
 export type UpdatePrivateCloudRequestTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateCloudRequestTagsMap =
+const UpdatePrivateCloudRequestTagsMap =
   GetPrivateCloudResponseTagsMap as any as S.Schema<UpdatePrivateCloudRequestTagsMap>;
 
 /** The resource model definition representing SKU */
 export type UpdatePrivateCloudRequestSku = ClustersCreateOrUpdateRequestSku;
-export const UpdatePrivateCloudRequestSku = ClustersCreateOrUpdateRequestSku;
-
 /** Managed service identity (either system assigned, or none) */
 export type UpdatePrivateCloudRequestIdentity = PrivateCloudsCreateOrUpdateRequestIdentity;
-export const UpdatePrivateCloudRequestIdentity = PrivateCloudsCreateOrUpdateRequestIdentity;
-
 /** Whether internet is enabled or disabled */
 export type InternetEnum = "Enabled" | "Disabled";
-export const InternetEnum = S.String;
+const InternetEnum = S.String;
 
 /** vCenter Single Sign On Identity Sources */
 export type PrivateCloudUpdatePropertiesInputIdentitySourcesList = Array<IdentitySource>;
-export const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
+const PrivateCloudUpdatePropertiesInputIdentitySourcesList =
   PrivateCloudPropertiesIdentitySourcesList as any as S.Schema<PrivateCloudUpdatePropertiesInputIdentitySourcesList>;
 
 /** Array of additional networks noncontiguous with networkBlock. Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute. Make sure the CIDR format conforms to (A.B.C.D/X). */
 export type PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList = Array<string>;
-export const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
+const PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList =
   ClusterPropertiesInputHostsList as any as S.Schema<PrivateCloudUpdatePropertiesInputExtendedNetworkBlocksList>;
 
 /** The properties of a private cloud resource that may be updated */
@@ -8920,7 +8867,7 @@ export interface PrivateCloudUpdatePropertiesInput {
   /** The type of DNS zone to use. */
   dnsZoneType?: DnsZoneType | (string & {});
 }
-export const PrivateCloudUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateCloudUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementCluster: S.optional(ManagementClusterInput),
     internet: S.optional(InternetEnum),
@@ -8950,7 +8897,7 @@ export interface UpdatePrivateCloudRequest {
   /** The updatable properties of a private cloud resource */
   properties?: PrivateCloudUpdatePropertiesInput;
 }
-export const UpdatePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8973,22 +8920,12 @@ export const UpdatePrivateCloudRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdatePrivateCloudResponseTagsMap = { [key: string]: string | undefined };
-export const UpdatePrivateCloudResponseTagsMap =
-  GetPrivateCloudResponseTagsMap as any as S.Schema<UpdatePrivateCloudResponseTagsMap>;
-
 /** The resource model definition representing SKU */
 export type UpdatePrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
-export const UpdatePrivateCloudResponseSku = ClustersCreateOrUpdateResponseSku;
-
 /** Managed service identity (either system assigned, or none) */
 export type UpdatePrivateCloudResponseIdentity = GetPrivateCloudResponseIdentity;
-export const UpdatePrivateCloudResponseIdentity = GetPrivateCloudResponseIdentity;
-
 /** The availability zones. */
 export type UpdatePrivateCloudResponseZonesList = Array<string>;
-export const UpdatePrivateCloudResponseZonesList =
-  ClusterPropertiesInputHostsList as any as S.Schema<UpdatePrivateCloudResponseZonesList>;
-
 export interface UpdatePrivateCloudResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9011,7 +8948,7 @@ export interface UpdatePrivateCloudResponse {
   /** The availability zones. */
   zones?: UpdatePrivateCloudResponseZonesList;
 }
-export const UpdatePrivateCloudResponse =
+const UpdatePrivateCloudResponse =
   PrivateCloudsCreateOrUpdateResponse as any as S.Schema<UpdatePrivateCloudResponse>;
 
 export interface UpdateWorkloadNetworkDhcpRequest {
@@ -9026,7 +8963,7 @@ export interface UpdateWorkloadNetworkDhcpRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntityInput;
 }
-export const UpdateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkDhcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9057,7 +8994,7 @@ export interface UpdateWorkloadNetworkDhcpResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDhcpEntity;
 }
-export const UpdateWorkloadNetworkDhcpResponse =
+const UpdateWorkloadNetworkDhcpResponse =
   CreateWorkloadNetworkDhcpResponse as any as S.Schema<UpdateWorkloadNetworkDhcpResponse>;
 
 export interface UpdateWorkloadNetworkDnsServiceRequest {
@@ -9072,7 +9009,7 @@ export interface UpdateWorkloadNetworkDnsServiceRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServicePropertiesInput;
 }
-export const UpdateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkDnsServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9103,7 +9040,7 @@ export interface UpdateWorkloadNetworkDnsServiceResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsServiceProperties;
 }
-export const UpdateWorkloadNetworkDnsServiceResponse =
+const UpdateWorkloadNetworkDnsServiceResponse =
   CreateWorkloadNetworkDnsServiceResponse as any as S.Schema<UpdateWorkloadNetworkDnsServiceResponse>;
 
 export interface UpdateWorkloadNetworkDnsZoneRequest {
@@ -9118,7 +9055,7 @@ export interface UpdateWorkloadNetworkDnsZoneRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZonePropertiesInput;
 }
-export const UpdateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkDnsZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9149,7 +9086,7 @@ export interface UpdateWorkloadNetworkDnsZoneResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkDnsZoneProperties;
 }
-export const UpdateWorkloadNetworkDnsZoneResponse =
+const UpdateWorkloadNetworkDnsZoneResponse =
   CreateWorkloadNetworkDnsZoneResponse as any as S.Schema<UpdateWorkloadNetworkDnsZoneResponse>;
 
 export interface UpdateWorkloadNetworkPortMirroringRequest {
@@ -9164,7 +9101,7 @@ export interface UpdateWorkloadNetworkPortMirroringRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringPropertiesInput;
 }
-export const UpdateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkPortMirroringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9195,7 +9132,7 @@ export interface UpdateWorkloadNetworkPortMirroringResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkPortMirroringProperties;
 }
-export const UpdateWorkloadNetworkPortMirroringResponse =
+const UpdateWorkloadNetworkPortMirroringResponse =
   CreateWorkloadNetworkPortMirroringResponse as any as S.Schema<UpdateWorkloadNetworkPortMirroringResponse>;
 
 export interface UpdateWorkloadNetworkSegmentsRequest {
@@ -9210,7 +9147,7 @@ export interface UpdateWorkloadNetworkSegmentsRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentPropertiesInput;
 }
-export const UpdateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9241,7 +9178,7 @@ export interface UpdateWorkloadNetworkSegmentsResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkSegmentProperties;
 }
-export const UpdateWorkloadNetworkSegmentsResponse =
+const UpdateWorkloadNetworkSegmentsResponse =
   CreateWorkloadNetworkSegmentsResponse as any as S.Schema<UpdateWorkloadNetworkSegmentsResponse>;
 
 export interface UpdateWorkloadNetworkVMGroupRequest {
@@ -9256,7 +9193,7 @@ export interface UpdateWorkloadNetworkVMGroupRequest {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupPropertiesInput;
 }
-export const UpdateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkloadNetworkVMGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9287,7 +9224,7 @@ export interface UpdateWorkloadNetworkVMGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: WorkloadNetworkVMGroupProperties;
 }
-export const UpdateWorkloadNetworkVMGroupResponse =
+const UpdateWorkloadNetworkVMGroupResponse =
   CreateWorkloadNetworkVMGroupResponse as any as S.Schema<UpdateWorkloadNetworkVMGroupResponse>;
 
 export interface VirtualMachinesRestrictMovementRequest {
@@ -9304,7 +9241,7 @@ export interface VirtualMachinesRestrictMovementRequest {
   /** Whether VM DRS-driven movement is restricted (enabled) or not (disabled) */
   restrictMovement?: VirtualMachineRestrictMovementState | (string & {});
 }
-export const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9325,7 +9262,7 @@ export const VirtualMachinesRestrictMovementRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<VirtualMachinesRestrictMovementRequest>;
 
 export interface VirtualMachinesRestrictMovementResponse {}
-export const VirtualMachinesRestrictMovementResponse =
+const VirtualMachinesRestrictMovementResponse =
   CheckServiceComponentAvailabilityResponse as any as S.Schema<VirtualMachinesRestrictMovementResponse>;
 
 export type AddonsCreateOrUpdateError = AzureOpError;

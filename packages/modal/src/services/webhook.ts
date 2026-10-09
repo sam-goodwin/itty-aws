@@ -13,7 +13,7 @@ export interface AddWebhookTokenEnvironmentRequest {
   tokenId?: string;
   environmentId?: string;
 }
-export const AddWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const AddWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     environmentId: S.optional(S.String),
@@ -29,9 +29,7 @@ export const AddWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddWebhookTokenEnvironmentRequest>;
 
 export interface AddWebhookTokenEnvironmentResponse {}
-export const AddWebhookTokenEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddWebhookTokenEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddWebhookTokenEnvironmentResponse",
 }) as any as S.Schema<AddWebhookTokenEnvironmentResponse>;
 
@@ -39,7 +37,7 @@ export interface CreateWebhookTokenRequest {
   scoped?: boolean;
   name?: string;
 }
-export const CreateWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scoped: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -54,7 +52,7 @@ export interface CreateWebhookTokenResponse {
   tokenId?: string;
   tokenSecret?: string | Redacted.Redacted<string>;
 }
-export const CreateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     tokenSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -66,7 +64,7 @@ export const CreateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteWebhookTokenRequest {
   tokenId?: string;
 }
-export const DeleteWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
   }).pipe(
@@ -77,12 +75,12 @@ export const DeleteWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWebhookTokenRequest>;
 
 export interface DeleteWebhookTokenResponse {}
-export const DeleteWebhookTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteWebhookTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteWebhookTokenResponse",
 }) as any as S.Schema<DeleteWebhookTokenResponse>;
 
 export interface ListWebhookTokenRequest {}
-export const ListWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/WebhookTokenList", code: 200 }),
   ),
@@ -92,7 +90,7 @@ export interface UserIdentity {
   userId?: string;
   username?: string;
 }
-export const UserIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     username: S.optional(S.String),
@@ -107,7 +105,7 @@ export interface WebhookToken {
   name?: string;
   createdBy?: UserIdentity;
 }
-export const WebhookToken = /*@__PURE__*/ S.suspend(() =>
+const WebhookToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -118,14 +116,12 @@ export const WebhookToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebhookToken" }) as any as S.Schema<WebhookToken>;
 
 export type WebhookTokenList2 = Array<WebhookToken>;
-export const WebhookTokenList2 = /*@__PURE__*/ S.Array(
-  WebhookToken,
-) as any as S.Schema<WebhookTokenList2>;
+const WebhookTokenList2 = /*@__PURE__*/ S.Array(WebhookToken) as any as S.Schema<WebhookTokenList2>;
 
 export interface ListWebhookTokenResponse {
   tokens?: WebhookTokenList2;
 }
-export const ListWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: S.optional(WebhookTokenList2),
   }),
@@ -134,7 +130,7 @@ export const ListWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListWebhookTokenEnvironmentRequest {
   tokenId?: string;
 }
-export const ListWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
   }).pipe(
@@ -149,12 +145,12 @@ export const ListWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebhookTokenEnvironmentRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListWebhookTokenEnvironmentResponse {
   environmentIds?: StringList;
 }
-export const ListWebhookTokenEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhookTokenEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentIds: S.optional(StringList),
   }),
@@ -166,7 +162,7 @@ export interface RemoveWebhookTokenEnvironmentRequest {
   tokenId?: string;
   environmentId?: string;
 }
-export const RemoveWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     environmentId: S.optional(S.String),
@@ -182,14 +178,14 @@ export const RemoveWebhookTokenEnvironmentRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RemoveWebhookTokenEnvironmentRequest>;
 
 export interface RemoveWebhookTokenEnvironmentResponse {}
-export const RemoveWebhookTokenEnvironmentResponse =
+const RemoveWebhookTokenEnvironmentResponse =
   AddWebhookTokenEnvironmentResponse as any as S.Schema<RemoveWebhookTokenEnvironmentResponse>;
 
 export interface UpdateWebhookTokenRequest {
   tokenId?: string;
   name?: string;
 }
-export const UpdateWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     name: S.optional(S.String),
@@ -207,7 +203,7 @@ export interface UpdateWebhookTokenResponse {
   name?: string;
   createdBy?: UserIdentity;
 }
-export const UpdateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -222,7 +218,7 @@ export const UpdateWebhookTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface WebhookTokenListForEnvironmentRequest {
   environmentName?: string;
 }
-export const WebhookTokenListForEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const WebhookTokenListForEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(
@@ -239,7 +235,7 @@ export const WebhookTokenListForEnvironmentRequest = /*@__PURE__*/ S.suspend(() 
 export interface WebhookTokenListForEnvironmentResponse {
   tokens?: WebhookTokenList2;
 }
-export const WebhookTokenListForEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const WebhookTokenListForEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: S.optional(WebhookTokenList2),
   }),

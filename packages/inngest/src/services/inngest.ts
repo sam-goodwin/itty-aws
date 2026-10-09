@@ -59,7 +59,7 @@ export class UnprocessableEntity
 export interface CancelV2RunRequest {
   runId: string;
 }
-export const CancelV2RunRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelV2RunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/runs/{runId}/cancel", code: 200 })),
@@ -69,7 +69,7 @@ export interface V2CancelRunData {
   /** Cancelled run ID */
   runId?: string;
 }
-export const V2CancelRunData = /*@__PURE__*/ S.suspend(() =>
+const V2CancelRunData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
   }),
@@ -79,7 +79,7 @@ export interface V2TimeRange {
   from?: string;
   until?: string;
 }
-export const V2TimeRange = /*@__PURE__*/ S.suspend(() =>
+const V2TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     until: S.optional(S.String),
@@ -91,7 +91,7 @@ export interface V2ResponseMetadata {
   fetchedAt?: string;
   timeRange?: V2TimeRange;
 }
-export const V2ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const V2ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cachedUntil: S.optional(S.String),
     fetchedAt: S.optional(S.String),
@@ -103,7 +103,7 @@ export interface V2CancelRunResponse {
   data?: V2CancelRunData;
   metadata?: V2ResponseMetadata;
 }
-export const V2CancelRunResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CancelRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2CancelRunData),
     metadata: S.optional(V2ResponseMetadata),
@@ -114,7 +114,7 @@ export interface CreateV2EnvRequest {
   id?: string;
   name?: string;
 }
-export const CreateV2EnvRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2EnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -122,7 +122,7 @@ export const CreateV2EnvRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateV2EnvRequest" }) as any as S.Schema<CreateV2EnvRequest>;
 
 export type V2EnvType = "PRODUCTION" | "TEST" | "BRANCH";
-export const V2EnvType = S.String;
+const V2EnvType = S.String;
 
 export interface V2Env {
   createdAt?: string;
@@ -131,7 +131,7 @@ export interface V2Env {
   name?: string;
   type?: V2EnvType;
 }
-export const V2Env = /*@__PURE__*/ S.suspend(() =>
+const V2Env = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     id: S.optional(S.String),
@@ -145,7 +145,7 @@ export interface V2CreateEnvResponse {
   data?: V2Env;
   metadata?: V2ResponseMetadata;
 }
-export const V2CreateEnvResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CreateEnvResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2Env),
     metadata: S.optional(V2ResponseMetadata),
@@ -156,7 +156,7 @@ export interface CreateV2PartnerAccountRequest {
   email?: string;
   name?: string;
 }
-export const CreateV2PartnerAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2PartnerAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -173,7 +173,7 @@ export interface V2CreateAccountData {
   name?: string;
   updatedAt?: string;
 }
-export const V2CreateAccountData = /*@__PURE__*/ S.suspend(() =>
+const V2CreateAccountData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
     createdAt: S.optional(S.String),
@@ -188,7 +188,7 @@ export interface V2CreateAccountResponse {
   data?: V2CreateAccountData;
   metadata?: V2ResponseMetadata;
 }
-export const V2CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2CreateAccountData),
     metadata: S.optional(V2ResponseMetadata),
@@ -196,7 +196,7 @@ export const V2CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2CreateAccountResponse" }) as any as S.Schema<V2CreateAccountResponse>;
 
 export type CreateV2SandboxRequestEnvironmentMap = { [key: string]: string | undefined };
-export const CreateV2SandboxRequestEnvironmentMap = /*@__PURE__*/ S.Record(
+const CreateV2SandboxRequestEnvironmentMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateV2SandboxRequestEnvironmentMap>;
@@ -207,7 +207,7 @@ export interface CreateV2SandboxRequest {
   name?: string;
   vcpu?: number;
 }
-export const CreateV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(CreateV2SandboxRequestEnvironmentMap),
     memoryMb: S.optional(S.Number),
@@ -220,7 +220,7 @@ export interface V2SandboxResourceSpec {
   memoryMb?: number;
   vcpu?: number;
 }
-export const V2SandboxResourceSpec = /*@__PURE__*/ S.suspend(() =>
+const V2SandboxResourceSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMb: S.optional(S.Number),
     vcpu: S.optional(S.Number),
@@ -236,7 +236,7 @@ export type V2SandboxStatus =
   | "TERMINATING"
   | "TERMINATED"
   | "FAILED";
-export const V2SandboxStatus = S.String;
+const V2SandboxStatus = S.String;
 
 export interface V2Sandbox {
   createdAt?: string;
@@ -250,7 +250,7 @@ export interface V2Sandbox {
   status?: V2SandboxStatus;
   vpcId?: string;
 }
-export const V2Sandbox = /*@__PURE__*/ S.suspend(() =>
+const V2Sandbox = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     endedAt: S.optional(S.String),
@@ -268,7 +268,7 @@ export const V2Sandbox = /*@__PURE__*/ S.suspend(() =>
 export interface V2SandboxResponseMetadata {
   fetchedAt?: string;
 }
-export const V2SandboxResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const V2SandboxResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fetchedAt: S.optional(S.String),
   }),
@@ -280,7 +280,7 @@ export interface V2CreateSandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2Sandbox),
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -293,7 +293,7 @@ export interface V2ScoreExperiment {
   /** Experiment variant */
   variant?: string;
 }
-export const V2ScoreExperiment = /*@__PURE__*/ S.suspend(() =>
+const V2ScoreExperiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     variant: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface V2CreateScoreInput {
   /** Score value; must be a finite number or a boolean */
   value?: unknown;
 }
-export const V2CreateScoreInput = /*@__PURE__*/ S.suspend(() =>
+const V2CreateScoreInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment: S.optional(V2ScoreExperiment),
     name: S.optional(S.String),
@@ -320,7 +320,7 @@ export const V2CreateScoreInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Scores to record for the run. The REST request body is this array. Writes are applied in order and are not atomic; if a later score fails, earlier scores may already be recorded. Score writes are best-effort: run and step targets are not validated before writing, and scores for targets that do not exist may not surface in queries. Maximum 100 scores. */
 export type CreateV2ScoreRequestBodyList = Array<V2CreateScoreInput>;
-export const CreateV2ScoreRequestBodyList = /*@__PURE__*/ S.Array(
+const CreateV2ScoreRequestBodyList = /*@__PURE__*/ S.Array(
   V2CreateScoreInput,
 ) as any as S.Schema<CreateV2ScoreRequestBodyList>;
 
@@ -329,7 +329,7 @@ export interface CreateV2ScoreRequest {
   runId: string;
   body: CreateV2ScoreRequestBodyList;
 }
-export const CreateV2ScoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2ScoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String.pipe(T.Label()),
     body: CreateV2ScoreRequestBodyList.pipe(T.HttpBody()),
@@ -347,7 +347,7 @@ export interface V2Score {
   /** Score value */
   value?: unknown;
 }
-export const V2Score = /*@__PURE__*/ S.suspend(() =>
+const V2Score = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment: S.optional(V2ScoreExperiment),
     name: S.optional(S.String),
@@ -358,7 +358,7 @@ export const V2Score = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2Score" }) as any as S.Schema<V2Score>;
 
 export type V2CreateScoreResponseDataList = Array<V2Score>;
-export const V2CreateScoreResponseDataList = /*@__PURE__*/ S.Array(
+const V2CreateScoreResponseDataList = /*@__PURE__*/ S.Array(
   V2Score,
 ) as any as S.Schema<V2CreateScoreResponseDataList>;
 
@@ -366,7 +366,7 @@ export interface V2CreateScoreResponse {
   data?: V2CreateScoreResponseDataList;
   metadata?: V2ResponseMetadata;
 }
-export const V2CreateScoreResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CreateScoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2CreateScoreResponseDataList),
     metadata: S.optional(V2ResponseMetadata),
@@ -375,19 +375,19 @@ export const V2CreateScoreResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Allow or deny specific events, e.g. 'orders/payment.created', or 'orders/*' for all orders. Only events in this list will be either allowed or denied. */
 export type V2EventFilterEventsList = Array<string>;
-export const V2EventFilterEventsList = /*@__PURE__*/ S.Array(
+const V2EventFilterEventsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<V2EventFilterEventsList>;
 
 export type V2FilterType = "ALLOW" | "DENY";
-export const V2FilterType = S.String;
+const V2FilterType = S.String;
 
 export interface V2EventFilter {
   /** Allow or deny specific events, e.g. 'orders/payment.created', or 'orders/*' for all orders. Only events in this list will be either allowed or denied. */
   events?: V2EventFilterEventsList;
   filter?: V2FilterType | (string & {});
 }
-export const V2EventFilter = /*@__PURE__*/ S.suspend(() =>
+const V2EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(V2EventFilterEventsList),
     filter: S.optional(V2FilterType),
@@ -403,7 +403,7 @@ export interface CreateV2WebhookRequest {
   /** The inline JS transform function for incoming events */
   transform?: string;
 }
-export const CreateV2WebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateV2WebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventFilter: S.optional(V2EventFilter),
     name: S.optional(S.String),
@@ -423,7 +423,7 @@ export interface V2Webhook {
   updatedAt?: string;
   url?: string;
 }
-export const V2Webhook = /*@__PURE__*/ S.suspend(() =>
+const V2Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     environment: S.optional(S.String),
@@ -441,7 +441,7 @@ export interface V2CreateWebhookResponse {
   data?: V2Webhook;
   metadata?: V2ResponseMetadata;
 }
-export const V2CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const V2CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2Webhook),
     metadata: S.optional(V2ResponseMetadata),
@@ -449,11 +449,11 @@ export const V2CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2CreateWebhookResponse" }) as any as S.Schema<V2CreateWebhookResponse>;
 
 export type ExecV2SandboxRequestCommandList = Array<string>;
-export const ExecV2SandboxRequestCommandList =
+const ExecV2SandboxRequestCommandList =
   V2EventFilterEventsList as any as S.Schema<ExecV2SandboxRequestCommandList>;
 
 export type ExecV2SandboxRequestEnvironmentMap = { [key: string]: string | undefined };
-export const ExecV2SandboxRequestEnvironmentMap =
+const ExecV2SandboxRequestEnvironmentMap =
   CreateV2SandboxRequestEnvironmentMap as any as S.Schema<ExecV2SandboxRequestEnvironmentMap>;
 
 export interface ExecV2SandboxRequest {
@@ -463,7 +463,7 @@ export interface ExecV2SandboxRequest {
   environment?: ExecV2SandboxRequestEnvironmentMap;
   timeout?: string;
 }
-export const ExecV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     command: S.optional(ExecV2SandboxRequestCommandList),
@@ -479,7 +479,7 @@ export interface V2ExecSandboxData {
   stderr?: string;
   stdout?: string;
 }
-export const V2ExecSandboxData = /*@__PURE__*/ S.suspend(() =>
+const V2ExecSandboxData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encoding: S.optional(S.String),
     exitCode: S.optional(S.Number),
@@ -492,7 +492,7 @@ export interface V2ExecSandboxResponse {
   data?: V2ExecSandboxData;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2ExecSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ExecSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2ExecSandboxData),
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -500,7 +500,7 @@ export const V2ExecSandboxResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2ExecSandboxResponse" }) as any as S.Schema<V2ExecSandboxResponse>;
 
 export interface FetchV2AccountRequest {}
-export const FetchV2AccountRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchV2AccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/account", code: 200 })),
 ).annotate({ identifier: "FetchV2AccountRequest" }) as any as S.Schema<FetchV2AccountRequest>;
 
@@ -511,7 +511,7 @@ export interface V2Account {
   name?: string;
   updatedAt?: string;
 }
-export const V2Account = /*@__PURE__*/ S.suspend(() =>
+const V2Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     email: S.optional(S.String),
@@ -525,7 +525,7 @@ export interface V2FetchAccountResponse {
   data?: V2Account;
   metadata?: V2ResponseMetadata;
 }
-export const V2FetchAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const V2FetchAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2Account),
     metadata: S.optional(V2ResponseMetadata),
@@ -538,7 +538,7 @@ export interface FetchV2AccountEnvsRequest {
   /** Number of environments to return per page (min: 1, max: 250) */
   limit?: number;
 }
-export const FetchV2AccountEnvsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchV2AccountEnvsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -548,7 +548,7 @@ export const FetchV2AccountEnvsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchV2AccountEnvsRequest>;
 
 export type V2FetchAccountEnvsResponseDataList = Array<V2Env>;
-export const V2FetchAccountEnvsResponseDataList = /*@__PURE__*/ S.Array(
+const V2FetchAccountEnvsResponseDataList = /*@__PURE__*/ S.Array(
   V2Env,
 ) as any as S.Schema<V2FetchAccountEnvsResponseDataList>;
 
@@ -557,7 +557,7 @@ export interface V2Page {
   hasMore?: boolean;
   limit?: number;
 }
-export const V2Page = /*@__PURE__*/ S.suspend(() =>
+const V2Page = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String),
     hasMore: S.optional(S.Boolean),
@@ -570,7 +570,7 @@ export interface V2FetchAccountEnvsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2FetchAccountEnvsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2FetchAccountEnvsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2FetchAccountEnvsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -586,7 +586,7 @@ export interface FetchV2AccountEventKeysRequest {
   /** Number of event keys to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const FetchV2AccountEventKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchV2AccountEventKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -602,7 +602,7 @@ export interface V2EventKey {
   key?: string;
   name?: string;
 }
-export const V2EventKey = /*@__PURE__*/ S.suspend(() =>
+const V2EventKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     environment: S.optional(S.String),
@@ -613,7 +613,7 @@ export const V2EventKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2EventKey" }) as any as S.Schema<V2EventKey>;
 
 export type V2FetchAccountEventKeysResponseDataList = Array<V2EventKey>;
-export const V2FetchAccountEventKeysResponseDataList = /*@__PURE__*/ S.Array(
+const V2FetchAccountEventKeysResponseDataList = /*@__PURE__*/ S.Array(
   V2EventKey,
 ) as any as S.Schema<V2FetchAccountEventKeysResponseDataList>;
 
@@ -622,7 +622,7 @@ export interface V2FetchAccountEventKeysResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2FetchAccountEventKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const V2FetchAccountEventKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2FetchAccountEventKeysResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -638,7 +638,7 @@ export interface FetchV2AccountSigningKeysRequest {
   /** Number of signing keys to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const FetchV2AccountSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchV2AccountSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -648,18 +648,13 @@ export const FetchV2AccountSigningKeysRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchV2AccountSigningKeysRequest>;
 
 export type V2SigningKey = V2EventKey;
-export const V2SigningKey = V2EventKey;
-
 export type V2FetchAccountSigningKeysResponseDataList = Array<V2EventKey>;
-export const V2FetchAccountSigningKeysResponseDataList =
-  V2FetchAccountEventKeysResponseDataList as any as S.Schema<V2FetchAccountSigningKeysResponseDataList>;
-
 export interface V2FetchAccountSigningKeysResponse {
   data: V2FetchAccountSigningKeysResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2FetchAccountSigningKeysResponse =
+const V2FetchAccountSigningKeysResponse =
   V2FetchAccountEventKeysResponse as any as S.Schema<V2FetchAccountSigningKeysResponse>;
 
 export interface FetchV2PartnerAccountsRequest {
@@ -668,7 +663,7 @@ export interface FetchV2PartnerAccountsRequest {
   /** Number of accounts to return per page (min: 1, max: 1000) */
   limit?: number;
 }
-export const FetchV2PartnerAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchV2PartnerAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -678,7 +673,7 @@ export const FetchV2PartnerAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchV2PartnerAccountsRequest>;
 
 export type V2FetchAccountsResponseDataList = Array<V2Account>;
-export const V2FetchAccountsResponseDataList = /*@__PURE__*/ S.Array(
+const V2FetchAccountsResponseDataList = /*@__PURE__*/ S.Array(
   V2Account,
 ) as any as S.Schema<V2FetchAccountsResponseDataList>;
 
@@ -687,7 +682,7 @@ export interface V2FetchAccountsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2FetchAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2FetchAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2FetchAccountsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -699,7 +694,7 @@ export interface GetV2AppRequest {
   /** The user-defined app ID */
   appId: string;
 }
-export const GetV2AppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2AppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/apps/{appId}", code: 200 })),
@@ -707,7 +702,7 @@ export const GetV2AppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the latest sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
 export type V2AppSyncStatus = "pending" | "success" | "error" | "duplicate";
-export const V2AppSyncStatus = S.String;
+const V2AppSyncStatus = S.String;
 
 export interface V2AppSync {
   /** App version reported by the latest sync, if set */
@@ -727,7 +722,7 @@ export interface V2AppSync {
   /** URL of the Inngest endpoint in the app, if synced via URL */
   url?: string;
 }
-export const V2AppSync = /*@__PURE__*/ S.suspend(() =>
+const V2AppSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appVersion: S.optional(S.String),
     error: S.optional(S.String),
@@ -741,7 +736,7 @@ export const V2AppSync = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2AppSync" }) as any as S.Schema<V2AppSync>;
 
 export type V2AppMethod = "UNSPECIFIED" | "SERVE" | "CONNECT" | "API";
-export const V2AppMethod = S.String;
+const V2AppMethod = S.String;
 
 export interface V2App {
   /** User-defined app version, if set */
@@ -761,7 +756,7 @@ export interface V2App {
   /** App name */
   name?: string;
 }
-export const V2App = /*@__PURE__*/ S.suspend(() =>
+const V2App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appVersion: S.optional(S.String),
     archivedAt: S.optional(S.String),
@@ -779,7 +774,7 @@ export interface V2GetAppResponse {
   data?: V2App;
   metadata?: V2ResponseMetadata;
 }
-export const V2GetAppResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2App),
     metadata: S.optional(V2ResponseMetadata),
@@ -794,7 +789,7 @@ export interface GetV2AppsRequest {
   /** Whether to return archived apps instead of active apps */
   archived?: boolean;
 }
-export const GetV2AppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2AppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -803,7 +798,7 @@ export const GetV2AppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2AppsRequest" }) as any as S.Schema<GetV2AppsRequest>;
 
 export type V2GetAppsResponseDataList = Array<V2App>;
-export const V2GetAppsResponseDataList = /*@__PURE__*/ S.Array(
+const V2GetAppsResponseDataList = /*@__PURE__*/ S.Array(
   V2App,
 ) as any as S.Schema<V2GetAppsResponseDataList>;
 
@@ -812,7 +807,7 @@ export interface V2GetAppsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2GetAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2GetAppsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -828,7 +823,7 @@ export interface GetV2EventRunsRequest {
   /** Number of runs to return per page (min: 1, max: 40) */
   limit?: number;
 }
-export const GetV2EventRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2EventRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.String.pipe(T.Label()),
     includeOutput: S.optional(S.Boolean.pipe(T.Query())),
@@ -840,7 +835,7 @@ export const GetV2EventRunsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface V2AppRef {
   id?: string;
 }
-export const V2AppRef = /*@__PURE__*/ S.suspend(() =>
+const V2AppRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -851,7 +846,7 @@ export interface V2FunctionRef {
   id?: string;
   name?: string;
 }
-export const V2FunctionRef = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.optional(V2AppRef),
     id: S.optional(S.String),
@@ -866,10 +861,10 @@ export type V2FunctionRunStatus =
   | "COMPLETED"
   | "FAILED"
   | "CANCELLED";
-export const V2FunctionRunStatus = S.String;
+const V2FunctionRunStatus = S.String;
 
 export type V2RunTriggerEventIdsList = Array<string>;
-export const V2RunTriggerEventIdsList =
+const V2RunTriggerEventIdsList =
   V2EventFilterEventsList as any as S.Schema<V2RunTriggerEventIdsList>;
 
 export interface V2RunTrigger {
@@ -879,7 +874,7 @@ export interface V2RunTrigger {
   eventName?: string;
   isBatch?: boolean;
 }
-export const V2RunTrigger = /*@__PURE__*/ S.suspend(() =>
+const V2RunTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchId: S.optional(S.String),
     cronSchedule: S.optional(S.String),
@@ -901,7 +896,7 @@ export interface V2FunctionRun {
   status?: V2FunctionRunStatus;
   trigger?: V2RunTrigger;
 }
-export const V2FunctionRun = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.optional(V2AppRef),
     durationMs: S.optional(S.String),
@@ -917,7 +912,7 @@ export const V2FunctionRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2FunctionRun" }) as any as S.Schema<V2FunctionRun>;
 
 export type V2GetEventRunsResponseDataList = Array<V2FunctionRun>;
-export const V2GetEventRunsResponseDataList = /*@__PURE__*/ S.Array(
+const V2GetEventRunsResponseDataList = /*@__PURE__*/ S.Array(
   V2FunctionRun,
 ) as any as S.Schema<V2GetEventRunsResponseDataList>;
 
@@ -926,7 +921,7 @@ export interface V2GetEventRunsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2GetEventRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetEventRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2GetEventRunsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -943,7 +938,7 @@ export interface GetV2ExperimentRequest {
   from?: string;
   until?: string;
 }
-export const GetV2ExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2ExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -964,7 +959,7 @@ export interface V2ExperimentVariantWeight {
   variantName?: string;
   weight?: number;
 }
-export const V2ExperimentVariantWeight = /*@__PURE__*/ S.suspend(() =>
+const V2ExperimentVariantWeight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variantName: S.optional(S.String),
     weight: S.optional(S.Number),
@@ -974,7 +969,7 @@ export const V2ExperimentVariantWeight = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ExperimentVariantWeight>;
 
 export type V2ExperimentDetailVariantWeightsList = Array<V2ExperimentVariantWeight>;
-export const V2ExperimentDetailVariantWeightsList = /*@__PURE__*/ S.Array(
+const V2ExperimentDetailVariantWeightsList = /*@__PURE__*/ S.Array(
   V2ExperimentVariantWeight,
 ) as any as S.Schema<V2ExperimentDetailVariantWeightsList>;
 
@@ -984,7 +979,7 @@ export interface V2ExperimentVariantMetric {
   max?: number;
   min?: number;
 }
-export const V2ExperimentVariantMetric = /*@__PURE__*/ S.suspend(() =>
+const V2ExperimentVariantMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avg: S.optional(S.Number),
     key: S.optional(S.String),
@@ -996,7 +991,7 @@ export const V2ExperimentVariantMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ExperimentVariantMetric>;
 
 export type V2ExperimentVariantMetricsMetricsList = Array<V2ExperimentVariantMetric>;
-export const V2ExperimentVariantMetricsMetricsList = /*@__PURE__*/ S.Array(
+const V2ExperimentVariantMetricsMetricsList = /*@__PURE__*/ S.Array(
   V2ExperimentVariantMetric,
 ) as any as S.Schema<V2ExperimentVariantMetricsMetricsList>;
 
@@ -1005,7 +1000,7 @@ export interface V2ExperimentVariantMetrics {
   runCount?: number;
   variantName?: string;
 }
-export const V2ExperimentVariantMetrics = /*@__PURE__*/ S.suspend(() =>
+const V2ExperimentVariantMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: S.optional(V2ExperimentVariantMetricsMetricsList),
     runCount: S.optional(S.Number),
@@ -1016,7 +1011,7 @@ export const V2ExperimentVariantMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ExperimentVariantMetrics>;
 
 export type V2ExperimentDetailVariantsList = Array<V2ExperimentVariantMetrics>;
-export const V2ExperimentDetailVariantsList = /*@__PURE__*/ S.Array(
+const V2ExperimentDetailVariantsList = /*@__PURE__*/ S.Array(
   V2ExperimentVariantMetrics,
 ) as any as S.Schema<V2ExperimentDetailVariantsList>;
 
@@ -1028,7 +1023,7 @@ export interface V2ExperimentDetail {
   variantWeights?: V2ExperimentDetailVariantWeightsList;
   variants?: V2ExperimentDetailVariantsList;
 }
-export const V2ExperimentDetail = /*@__PURE__*/ S.suspend(() =>
+const V2ExperimentDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstSeen: S.optional(S.String),
     id: S.optional(S.String),
@@ -1043,7 +1038,7 @@ export interface V2GetExperimentResponse {
   data?: V2ExperimentDetail;
   metadata?: V2ResponseMetadata;
 }
-export const V2GetExperimentResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetExperimentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2ExperimentDetail),
     metadata: S.optional(V2ResponseMetadata),
@@ -1054,7 +1049,7 @@ export interface GetV2FunctionRequest {
   appId: string;
   functionId: string;
 }
-export const GetV2FunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2FunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -1062,14 +1057,12 @@ export const GetV2FunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2FunctionRequest" }) as any as S.Schema<GetV2FunctionRequest>;
 
 export type V2FunctionApp = V2AppRef;
-export const V2FunctionApp = V2AppRef;
-
 export interface V2FunctionCancellationConfiguration {
   condition?: string;
   event?: string;
   timeout?: string;
 }
-export const V2FunctionCancellationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionCancellationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(S.String),
     event: S.optional(S.String),
@@ -1080,7 +1073,7 @@ export const V2FunctionCancellationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2FunctionCancellationConfiguration>;
 
 export type V2FunctionConfigurationCancellationsList = Array<V2FunctionCancellationConfiguration>;
-export const V2FunctionConfigurationCancellationsList = /*@__PURE__*/ S.Array(
+const V2FunctionConfigurationCancellationsList = /*@__PURE__*/ S.Array(
   V2FunctionCancellationConfiguration,
 ) as any as S.Schema<V2FunctionConfigurationCancellationsList>;
 
@@ -1088,7 +1081,7 @@ export interface V2FunctionConcurrencyLimitConfiguration {
   isPlanLimit?: boolean;
   value?: number;
 }
-export const V2FunctionConcurrencyLimitConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionConcurrencyLimitConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPlanLimit: S.optional(S.Boolean),
     value: S.optional(S.Number),
@@ -1098,14 +1091,14 @@ export const V2FunctionConcurrencyLimitConfiguration = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<V2FunctionConcurrencyLimitConfiguration>;
 
 export type V2FunctionConcurrencyScope = "UNSPECIFIED" | "ACCOUNT" | "ENVIRONMENT" | "FUNCTION";
-export const V2FunctionConcurrencyScope = S.String;
+const V2FunctionConcurrencyScope = S.String;
 
 export interface V2FunctionConcurrencyConfiguration {
   key?: string;
   limit?: V2FunctionConcurrencyLimitConfiguration;
   scope?: V2FunctionConcurrencyScope;
 }
-export const V2FunctionConcurrencyConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionConcurrencyConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     limit: S.optional(V2FunctionConcurrencyLimitConfiguration),
@@ -1116,7 +1109,7 @@ export const V2FunctionConcurrencyConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2FunctionConcurrencyConfiguration>;
 
 export type V2FunctionConfigurationConcurrencyList = Array<V2FunctionConcurrencyConfiguration>;
-export const V2FunctionConfigurationConcurrencyList = /*@__PURE__*/ S.Array(
+const V2FunctionConfigurationConcurrencyList = /*@__PURE__*/ S.Array(
   V2FunctionConcurrencyConfiguration,
 ) as any as S.Schema<V2FunctionConfigurationConcurrencyList>;
 
@@ -1124,7 +1117,7 @@ export interface V2FunctionDebounceConfiguration {
   key?: string;
   period?: string;
 }
-export const V2FunctionDebounceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionDebounceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     period: S.optional(S.String),
@@ -1138,7 +1131,7 @@ export interface V2FunctionEventsBatchConfiguration {
   maxSize?: number;
   timeout?: string;
 }
-export const V2FunctionEventsBatchConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionEventsBatchConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     maxSize: S.optional(S.Number),
@@ -1153,7 +1146,7 @@ export interface V2FunctionRateLimitConfiguration {
   limit?: number;
   period?: string;
 }
-export const V2FunctionRateLimitConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionRateLimitConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -1167,7 +1160,7 @@ export interface V2FunctionRetryConfiguration {
   isDefault?: boolean;
   value?: number;
 }
-export const V2FunctionRetryConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionRetryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDefault: S.optional(S.Boolean),
     value: S.optional(S.Number),
@@ -1177,13 +1170,13 @@ export const V2FunctionRetryConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2FunctionRetryConfiguration>;
 
 export type V2FunctionSingletonMode = "UNSPECIFIED" | "SKIP" | "CANCEL";
-export const V2FunctionSingletonMode = S.String;
+const V2FunctionSingletonMode = S.String;
 
 export interface V2FunctionSingletonConfiguration {
   key?: string;
   mode?: V2FunctionSingletonMode;
 }
-export const V2FunctionSingletonConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionSingletonConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     mode: S.optional(V2FunctionSingletonMode),
@@ -1198,7 +1191,7 @@ export interface V2FunctionThrottleConfiguration {
   limit?: number;
   period?: string;
 }
-export const V2FunctionThrottleConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionThrottleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     burst: S.optional(S.Number),
     key: S.optional(S.String),
@@ -1220,7 +1213,7 @@ export interface V2FunctionConfiguration {
   singleton?: V2FunctionSingletonConfiguration;
   throttle?: V2FunctionThrottleConfiguration;
 }
-export const V2FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancellations: S.optional(V2FunctionConfigurationCancellationsList),
     concurrency: S.optional(V2FunctionConfigurationConcurrencyList),
@@ -1238,7 +1231,7 @@ export interface V2FunctionFailureHandler {
   name?: string;
   slug?: string;
 }
-export const V2FunctionFailureHandler = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionFailureHandler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -1246,14 +1239,14 @@ export const V2FunctionFailureHandler = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2FunctionFailureHandler" }) as any as S.Schema<V2FunctionFailureHandler>;
 
 export type V2FunctionTriggerType = "UNSPECIFIED" | "EVENT" | "CRON";
-export const V2FunctionTriggerType = S.String;
+const V2FunctionTriggerType = S.String;
 
 export interface V2FunctionTrigger {
   if?: string;
   type?: V2FunctionTriggerType;
   value?: string;
 }
-export const V2FunctionTrigger = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     if: S.optional(S.String),
     type: S.optional(V2FunctionTriggerType),
@@ -1262,7 +1255,7 @@ export const V2FunctionTrigger = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2FunctionTrigger" }) as any as S.Schema<V2FunctionTrigger>;
 
 export type V2FunctionTriggersList = Array<V2FunctionTrigger>;
-export const V2FunctionTriggersList = /*@__PURE__*/ S.Array(
+const V2FunctionTriggersList = /*@__PURE__*/ S.Array(
   V2FunctionTrigger,
 ) as any as S.Schema<V2FunctionTriggersList>;
 
@@ -1277,7 +1270,7 @@ export interface V2Function {
   slug?: string;
   triggers?: V2FunctionTriggersList;
 }
-export const V2Function = /*@__PURE__*/ S.suspend(() =>
+const V2Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.optional(V2AppRef),
     configuration: S.optional(V2FunctionConfiguration),
@@ -1295,7 +1288,7 @@ export interface V2GetFunctionResponse {
   data?: V2Function;
   metadata?: V2ResponseMetadata;
 }
-export const V2GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2Function),
     metadata: S.optional(V2ResponseMetadata),
@@ -1306,7 +1299,7 @@ export interface GetV2FunctionRunRequest {
   runId: string;
   includeOutput?: boolean;
 }
-export const GetV2FunctionRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2FunctionRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String.pipe(T.Label()),
     includeOutput: S.optional(S.Boolean.pipe(T.Query())),
@@ -1317,7 +1310,7 @@ export interface V2GetFunctionRunResponse {
   data?: V2FunctionRun;
   metadata?: V2ResponseMetadata;
 }
-export const V2GetFunctionRunResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetFunctionRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2FunctionRun),
     metadata: S.optional(V2ResponseMetadata),
@@ -1331,7 +1324,7 @@ export interface GetV2FunctionsRequest {
   /** Number of functions to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const GetV2FunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2FunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -1340,7 +1333,7 @@ export const GetV2FunctionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetV2FunctionsRequest" }) as any as S.Schema<GetV2FunctionsRequest>;
 
 export type V2GetFunctionsResponseDataList = Array<V2Function>;
-export const V2GetFunctionsResponseDataList = /*@__PURE__*/ S.Array(
+const V2GetFunctionsResponseDataList = /*@__PURE__*/ S.Array(
   V2Function,
 ) as any as S.Schema<V2GetFunctionsResponseDataList>;
 
@@ -1349,7 +1342,7 @@ export interface V2GetFunctionsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2GetFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2GetFunctionsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -1361,7 +1354,7 @@ export interface GetV2FunctionTraceRequest {
   runId: string;
   includeOutput?: boolean;
 }
-export const GetV2FunctionTraceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2FunctionTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String.pipe(T.Label()),
     includeOutput: S.optional(S.Boolean.pipe(T.Query())),
@@ -1371,12 +1364,12 @@ export const GetV2FunctionTraceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV2FunctionTraceRequest>;
 
 export type V2TraceSpanChildrenList = Array<V2TraceSpan>;
-export const V2TraceSpanChildrenList = /*@__PURE__*/ S.Array(
+const V2TraceSpanChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => V2TraceSpan),
 ) as any as S.Schema<V2TraceSpanChildrenList>;
 
 export type V2TraceSpanMetadataValuesMap = { [key: string]: string | undefined };
-export const V2TraceSpanMetadataValuesMap =
+const V2TraceSpanMetadataValuesMap =
   CreateV2SandboxRequestEnvironmentMap as any as S.Schema<V2TraceSpanMetadataValuesMap>;
 
 export interface V2TraceSpanMetadata {
@@ -1385,7 +1378,7 @@ export interface V2TraceSpanMetadata {
   updatedAt?: string;
   values?: V2TraceSpanMetadataValuesMap;
 }
-export const V2TraceSpanMetadata = /*@__PURE__*/ S.suspend(() =>
+const V2TraceSpanMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     scope: S.optional(S.String),
@@ -1395,7 +1388,7 @@ export const V2TraceSpanMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2TraceSpanMetadata" }) as any as S.Schema<V2TraceSpanMetadata>;
 
 export type V2TraceSpanMetadataList = Array<V2TraceSpanMetadata>;
-export const V2TraceSpanMetadataList = /*@__PURE__*/ S.Array(
+const V2TraceSpanMetadataList = /*@__PURE__*/ S.Array(
   V2TraceSpanMetadata,
 ) as any as S.Schema<V2TraceSpanMetadataList>;
 
@@ -1407,7 +1400,7 @@ export type V2TraceSpanStatus =
   | "WAITING"
   | "CANCELLED"
   | "SKIPPED";
-export const V2TraceSpanStatus = S.String;
+const V2TraceSpanStatus = S.String;
 
 export type V2TraceStepOp =
   | "UNSPECIFIED"
@@ -1418,7 +1411,7 @@ export type V2TraceStepOp =
   | "SEND_EVENT"
   | "AI_GATEWAY"
   | "WAIT_FOR_SIGNAL";
-export const V2TraceStepOp = S.String;
+const V2TraceStepOp = S.String;
 
 export interface V2TraceSpan {
   children?: V2TraceSpanChildrenList;
@@ -1435,7 +1428,7 @@ export interface V2TraceSpan {
   stepId?: string;
   stepOp?: V2TraceStepOp;
 }
-export const V2TraceSpan = /*@__PURE__*/ S.suspend(() =>
+const V2TraceSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     children: S.optional(V2TraceSpanChildrenList),
     durationMs: S.optional(S.String),
@@ -1457,7 +1450,7 @@ export interface V2FunctionTrace {
   rootSpan?: V2TraceSpan;
   runId?: string;
 }
-export const V2FunctionTrace = /*@__PURE__*/ S.suspend(() =>
+const V2FunctionTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootSpan: S.optional(V2TraceSpan),
     runId: S.optional(S.String),
@@ -1468,7 +1461,7 @@ export interface V2GetFunctionTraceResponse {
   data?: V2FunctionTrace;
   metadata?: V2ResponseMetadata;
 }
-export const V2GetFunctionTraceResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetFunctionTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2FunctionTrace),
     metadata: S.optional(V2ResponseMetadata),
@@ -1480,7 +1473,7 @@ export const V2GetFunctionTraceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetV2SandboxRequest {
   sandboxId: string;
 }
-export const GetV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2SandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sandboxes/{sandboxId}", code: 200 })),
@@ -1490,14 +1483,13 @@ export interface V2GetSandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2GetSandboxResponse =
-  V2CreateSandboxResponse as any as S.Schema<V2GetSandboxResponse>;
+const V2GetSandboxResponse = V2CreateSandboxResponse as any as S.Schema<V2GetSandboxResponse>;
 
 export interface GetV2SandboxProcessRequest {
   sandboxId: string;
   processId: string;
 }
-export const GetV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     processId: S.String.pipe(T.Label()),
@@ -1509,7 +1501,7 @@ export const GetV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV2SandboxProcessRequest>;
 
 export type V2SandboxProcessCommandList = Array<string>;
-export const V2SandboxProcessCommandList =
+const V2SandboxProcessCommandList =
   V2EventFilterEventsList as any as S.Schema<V2SandboxProcessCommandList>;
 
 export type V2SandboxProcessState =
@@ -1520,7 +1512,7 @@ export type V2SandboxProcessState =
   | "KILLED"
   | "FAILED"
   | "LOST";
-export const V2SandboxProcessState = S.String;
+const V2SandboxProcessState = S.String;
 
 export interface V2SandboxProcess {
   command?: V2SandboxProcessCommandList;
@@ -1532,7 +1524,7 @@ export interface V2SandboxProcess {
   state?: V2SandboxProcessState;
   terminationSignal?: number;
 }
-export const V2SandboxProcess = /*@__PURE__*/ S.suspend(() =>
+const V2SandboxProcess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(V2SandboxProcessCommandList),
     endedAt: S.optional(S.String),
@@ -1549,7 +1541,7 @@ export interface V2GetSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2GetSandboxProcessResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetSandboxProcessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2SandboxProcess),
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -1563,7 +1555,7 @@ export interface GetV2SandboxProcessOutputRequest {
   processId: string;
   tailBytes?: number;
 }
-export const GetV2SandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2SandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     processId: S.String.pipe(T.Label()),
@@ -1580,7 +1572,7 @@ export const GetV2SandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV2SandboxProcessOutputRequest>;
 
 export type V2SandboxLogStream = "UNSPECIFIED" | "STDOUT" | "STDERR";
-export const V2SandboxLogStream = S.String;
+const V2SandboxLogStream = S.String;
 
 export interface V2SandboxLogChunk {
   at?: string;
@@ -1588,7 +1580,7 @@ export interface V2SandboxLogChunk {
   encoding?: string;
   stream?: V2SandboxLogStream;
 }
-export const V2SandboxLogChunk = /*@__PURE__*/ S.suspend(() =>
+const V2SandboxLogChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     at: S.optional(S.String),
     data: S.optional(S.String),
@@ -1598,14 +1590,14 @@ export const V2SandboxLogChunk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SandboxLogChunk" }) as any as S.Schema<V2SandboxLogChunk>;
 
 export type V2GetSandboxProcessOutputDataChunksList = Array<V2SandboxLogChunk>;
-export const V2GetSandboxProcessOutputDataChunksList = /*@__PURE__*/ S.Array(
+const V2GetSandboxProcessOutputDataChunksList = /*@__PURE__*/ S.Array(
   V2SandboxLogChunk,
 ) as any as S.Schema<V2GetSandboxProcessOutputDataChunksList>;
 
 export interface V2GetSandboxProcessOutputData {
   chunks?: V2GetSandboxProcessOutputDataChunksList;
 }
-export const V2GetSandboxProcessOutputData = /*@__PURE__*/ S.suspend(() =>
+const V2GetSandboxProcessOutputData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: S.optional(V2GetSandboxProcessOutputDataChunksList),
   }),
@@ -1617,7 +1609,7 @@ export interface V2GetSandboxProcessOutputResponse {
   data?: V2GetSandboxProcessOutputData;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2GetSandboxProcessOutputResponse = /*@__PURE__*/ S.suspend(() =>
+const V2GetSandboxProcessOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2GetSandboxProcessOutputData),
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -1636,7 +1628,7 @@ export interface InvokeV2FunctionRequest {
   /** Optional idempotency key to handle duplicate requests within a given idempotency period. */
   idempotencyKey?: string;
 }
-export const InvokeV2FunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeV2FunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -1661,7 +1653,7 @@ export interface V2InvokeFunctionData {
   /** Timestamp when the function execution started (if started) */
   startedAt?: string;
 }
-export const V2InvokeFunctionData = /*@__PURE__*/ S.suspend(() =>
+const V2InvokeFunctionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completedAt: S.optional(S.String),
     error: S.optional(S.String),
@@ -1676,7 +1668,7 @@ export interface V2InvokeFunctionResponse {
   data?: V2InvokeFunctionData;
   metadata?: V2ResponseMetadata;
 }
-export const V2InvokeFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const V2InvokeFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2InvokeFunctionData),
     metadata: S.optional(V2ResponseMetadata),
@@ -1693,7 +1685,7 @@ export interface ListV2ExperimentsRequest {
   from?: string;
   until?: string;
 }
-export const ListV2ExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2ExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1705,7 +1697,7 @@ export const ListV2ExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2ExperimentsRequest" }) as any as S.Schema<ListV2ExperimentsRequest>;
 
 export type V2ExperimentVariantsList = Array<string>;
-export const V2ExperimentVariantsList =
+const V2ExperimentVariantsList =
   V2EventFilterEventsList as any as S.Schema<V2ExperimentVariantsList>;
 
 export interface V2Experiment {
@@ -1718,7 +1710,7 @@ export interface V2Experiment {
   variantCount?: number;
   variants?: V2ExperimentVariantsList;
 }
-export const V2Experiment = /*@__PURE__*/ S.suspend(() =>
+const V2Experiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstSeen: S.optional(S.String),
     function: S.optional(V2FunctionRef),
@@ -1732,7 +1724,7 @@ export const V2Experiment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2Experiment" }) as any as S.Schema<V2Experiment>;
 
 export type V2ListExperimentsResponseDataList = Array<V2Experiment>;
-export const V2ListExperimentsResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListExperimentsResponseDataList = /*@__PURE__*/ S.Array(
   V2Experiment,
 ) as any as S.Schema<V2ListExperimentsResponseDataList>;
 
@@ -1741,7 +1733,7 @@ export interface V2ListExperimentsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListExperimentsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -1761,7 +1753,7 @@ export interface ListV2Experiments2Request {
   from?: string;
   until?: string;
 }
-export const ListV2Experiments2Request = /*@__PURE__*/ S.suspend(() =>
+const ListV2Experiments2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -1777,7 +1769,7 @@ export const ListV2Experiments2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListV2Experiments2Request>;
 
 export type ListV2FunctionRunsRequestStatusList = Array<string>;
-export const ListV2FunctionRunsRequestStatusList =
+const ListV2FunctionRunsRequestStatusList =
   V2EventFilterEventsList as any as S.Schema<ListV2FunctionRunsRequestStatusList>;
 
 export interface ListV2FunctionRunsRequest {
@@ -1801,7 +1793,7 @@ export interface ListV2FunctionRunsRequest {
   /** Sort direction. Accepts ASC or DESC. */
   order?: string;
 }
-export const ListV2FunctionRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2FunctionRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     functionId: S.String.pipe(T.Label()),
@@ -1820,7 +1812,7 @@ export const ListV2FunctionRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListV2FunctionRunsRequest>;
 
 export type V2ListFunctionRunsResponseDataList = Array<V2FunctionRun>;
-export const V2ListFunctionRunsResponseDataList =
+const V2ListFunctionRunsResponseDataList =
   V2GetEventRunsResponseDataList as any as S.Schema<V2ListFunctionRunsResponseDataList>;
 
 export interface V2ListFunctionRunsResponse {
@@ -1828,7 +1820,7 @@ export interface V2ListFunctionRunsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListFunctionRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListFunctionRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListFunctionRunsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -1844,7 +1836,7 @@ export interface ListV2InsightsEventSchemasRequest {
   /** Number of event schemas to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const ListV2InsightsEventSchemasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2InsightsEventSchemasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1859,7 +1851,7 @@ export interface V2InsightsEventSchema {
   /** JSON Schema describing the shape of this event's data, represented as a nested JSON object */
   schema?: unknown;
 }
-export const V2InsightsEventSchema = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsEventSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     schema: S.optional(S.Unknown),
@@ -1868,7 +1860,7 @@ export const V2InsightsEventSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Paginated list of event type schemas */
 export type V2ListInsightsEventSchemasResponseDataList = Array<V2InsightsEventSchema>;
-export const V2ListInsightsEventSchemasResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListInsightsEventSchemasResponseDataList = /*@__PURE__*/ S.Array(
   V2InsightsEventSchema,
 ) as any as S.Schema<V2ListInsightsEventSchemasResponseDataList>;
 
@@ -1878,7 +1870,7 @@ export interface V2ListInsightsEventSchemasResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListInsightsEventSchemasResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListInsightsEventSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListInsightsEventSchemasResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -1889,7 +1881,7 @@ export const V2ListInsightsEventSchemasResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ListInsightsEventSchemasResponse>;
 
 export interface ListV2InsightsTablesRequest {}
-export const ListV2InsightsTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2InsightsTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/insights/tables", code: 200 })),
 ).annotate({
   identifier: "ListV2InsightsTablesRequest",
@@ -1903,7 +1895,7 @@ export interface V2InsightsTableColumn {
   /** Data type of the column (e.g., 'String', 'Int64', 'Array(String)', etc.) */
   type?: string;
 }
-export const V2InsightsTableColumn = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsTableColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -1913,7 +1905,7 @@ export const V2InsightsTableColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns available in this table */
 export type V2InsightsTableColumnsList = Array<V2InsightsTableColumn>;
-export const V2InsightsTableColumnsList = /*@__PURE__*/ S.Array(
+const V2InsightsTableColumnsList = /*@__PURE__*/ S.Array(
   V2InsightsTableColumn,
 ) as any as S.Schema<V2InsightsTableColumnsList>;
 
@@ -1925,7 +1917,7 @@ export interface V2InsightsTable {
   /** Name of the table, used when writing queries */
   name?: string;
 }
-export const V2InsightsTable = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(V2InsightsTableColumnsList),
     description: S.optional(S.String),
@@ -1935,7 +1927,7 @@ export const V2InsightsTable = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available tables that can be queried via the Insights query endpoint */
 export type V2ListInsightsTablesResponseDataList = Array<V2InsightsTable>;
-export const V2ListInsightsTablesResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListInsightsTablesResponseDataList = /*@__PURE__*/ S.Array(
   V2InsightsTable,
 ) as any as S.Schema<V2ListInsightsTablesResponseDataList>;
 
@@ -1944,7 +1936,7 @@ export interface V2ListInsightsTablesResponse {
   data?: V2ListInsightsTablesResponseDataList;
   metadata?: V2ResponseMetadata;
 }
-export const V2ListInsightsTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListInsightsTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2ListInsightsTablesResponseDataList),
     metadata: S.optional(V2ResponseMetadata),
@@ -1954,15 +1946,15 @@ export const V2ListInsightsTablesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2ListInsightsTablesResponse>;
 
 export type ListV2RunsRequestStatusList = Array<string>;
-export const ListV2RunsRequestStatusList =
+const ListV2RunsRequestStatusList =
   V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestStatusList>;
 
 export type ListV2RunsRequestAppIdList = Array<string>;
-export const ListV2RunsRequestAppIdList =
+const ListV2RunsRequestAppIdList =
   V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestAppIdList>;
 
 export type ListV2RunsRequestFunctionIdList = Array<string>;
-export const ListV2RunsRequestFunctionIdList =
+const ListV2RunsRequestFunctionIdList =
   V2EventFilterEventsList as any as S.Schema<ListV2RunsRequestFunctionIdList>;
 
 export interface ListV2RunsRequest {
@@ -1988,7 +1980,7 @@ export interface ListV2RunsRequest {
   /** Sort direction. Accepts ASC or DESC. */
   order?: string;
 }
-export const ListV2RunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2RunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeOutput: S.optional(S.Boolean.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -2005,21 +1997,18 @@ export const ListV2RunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2RunsRequest" }) as any as S.Schema<ListV2RunsRequest>;
 
 export type V2ListRunsResponseDataList = Array<V2FunctionRun>;
-export const V2ListRunsResponseDataList =
-  V2GetEventRunsResponseDataList as any as S.Schema<V2ListRunsResponseDataList>;
-
 export interface V2ListRunsResponse {
   data: V2ListRunsResponseDataList;
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListRunsResponse = V2GetEventRunsResponse as any as S.Schema<V2ListRunsResponse>;
+const V2ListRunsResponse = V2GetEventRunsResponse as any as S.Schema<V2ListRunsResponse>;
 
 export interface ListV2SandboxesRequest {
   cursor?: string;
   limit?: number;
 }
-export const ListV2SandboxesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2SandboxesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2027,19 +2016,17 @@ export const ListV2SandboxesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2SandboxesRequest" }) as any as S.Schema<ListV2SandboxesRequest>;
 
 export type V2ListSandboxesResponseDataList = Array<V2Sandbox>;
-export const V2ListSandboxesResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListSandboxesResponseDataList = /*@__PURE__*/ S.Array(
   V2Sandbox,
 ) as any as S.Schema<V2ListSandboxesResponseDataList>;
 
 export type V2SandboxPage = V2Page;
-export const V2SandboxPage = V2Page;
-
 export interface V2ListSandboxesResponse {
   data: V2ListSandboxesResponseDataList;
   metadata?: V2SandboxResponseMetadata;
   page?: V2Page;
 }
-export const V2ListSandboxesResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListSandboxesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListSandboxesResponseDataList,
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -2052,7 +2039,7 @@ export interface ListV2SandboxProcessesRequest {
   cursor?: string;
   limit?: number;
 }
-export const ListV2SandboxProcessesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2SandboxProcessesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -2063,7 +2050,7 @@ export const ListV2SandboxProcessesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListV2SandboxProcessesRequest>;
 
 export type V2ListSandboxProcessesResponseDataList = Array<V2SandboxProcess>;
-export const V2ListSandboxProcessesResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListSandboxProcessesResponseDataList = /*@__PURE__*/ S.Array(
   V2SandboxProcess,
 ) as any as S.Schema<V2ListSandboxProcessesResponseDataList>;
 
@@ -2072,7 +2059,7 @@ export interface V2ListSandboxProcessesResponse {
   metadata?: V2SandboxResponseMetadata;
   page?: V2Page;
 }
-export const V2ListSandboxProcessesResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListSandboxProcessesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListSandboxProcessesResponseDataList,
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -2089,7 +2076,7 @@ export interface ListV2SessionKeysRequest {
   /** Number of sessions to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const ListV2SessionKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2SessionKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     search: S.optional(S.String.pipe(T.Query())),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -2101,7 +2088,7 @@ export interface V2SessionKey {
   createdAt?: string;
   id?: string;
 }
-export const V2SessionKey = /*@__PURE__*/ S.suspend(() =>
+const V2SessionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     id: S.optional(S.String),
@@ -2109,7 +2096,7 @@ export const V2SessionKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SessionKey" }) as any as S.Schema<V2SessionKey>;
 
 export type V2ListSessionKeysResponseDataList = Array<V2SessionKey>;
-export const V2ListSessionKeysResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListSessionKeysResponseDataList = /*@__PURE__*/ S.Array(
   V2SessionKey,
 ) as any as S.Schema<V2ListSessionKeysResponseDataList>;
 
@@ -2118,7 +2105,7 @@ export interface V2ListSessionKeysResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListSessionKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListSessionKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListSessionKeysResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -2138,7 +2125,7 @@ export interface ListV2SessionRunsRequest {
   from?: string;
   until?: string;
 }
-export const ListV2SessionRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2SessionRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionKey: S.String.pipe(T.Label()),
     sessionId: S.String.pipe(T.Label()),
@@ -2158,7 +2145,7 @@ export interface V2SessionRun {
   startedAt?: string;
   status?: V2FunctionRunStatus;
 }
-export const V2SessionRun = /*@__PURE__*/ S.suspend(() =>
+const V2SessionRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endedAt: S.optional(S.String),
     eventName: S.optional(S.String),
@@ -2171,7 +2158,7 @@ export const V2SessionRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SessionRun" }) as any as S.Schema<V2SessionRun>;
 
 export type V2ListSessionRunsResponseDataList = Array<V2SessionRun>;
-export const V2ListSessionRunsResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListSessionRunsResponseDataList = /*@__PURE__*/ S.Array(
   V2SessionRun,
 ) as any as S.Schema<V2ListSessionRunsResponseDataList>;
 
@@ -2180,7 +2167,7 @@ export interface V2ListSessionRunsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListSessionRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListSessionRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListSessionRunsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -2200,7 +2187,7 @@ export interface ListV2SessionsRequest {
   from?: string;
   until?: string;
 }
-export const ListV2SessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2SessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionKey: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -2212,7 +2199,7 @@ export const ListV2SessionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2SessionsRequest" }) as any as S.Schema<ListV2SessionsRequest>;
 
 export type V2SessionGroupFunctionsList = Array<V2FunctionRef>;
-export const V2SessionGroupFunctionsList = /*@__PURE__*/ S.Array(
+const V2SessionGroupFunctionsList = /*@__PURE__*/ S.Array(
   V2FunctionRef,
 ) as any as S.Schema<V2SessionGroupFunctionsList>;
 
@@ -2224,7 +2211,7 @@ export interface V2SessionGroup {
   lastActiveAt?: string;
   runCount?: number;
 }
-export const V2SessionGroup = /*@__PURE__*/ S.suspend(() =>
+const V2SessionGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failedRunCount: S.optional(S.Number),
     failureRate: S.optional(S.Number),
@@ -2236,7 +2223,7 @@ export const V2SessionGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "V2SessionGroup" }) as any as S.Schema<V2SessionGroup>;
 
 export type V2ListSessionsResponseDataList = Array<V2SessionGroup>;
-export const V2ListSessionsResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListSessionsResponseDataList = /*@__PURE__*/ S.Array(
   V2SessionGroup,
 ) as any as S.Schema<V2ListSessionsResponseDataList>;
 
@@ -2245,7 +2232,7 @@ export interface V2ListSessionsResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListSessionsResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -2259,7 +2246,7 @@ export interface ListV2WebhooksRequest {
   /** Number of webhooks to return per page (min: 1, max: 100) */
   limit?: number;
 }
-export const ListV2WebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListV2WebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2267,7 +2254,7 @@ export const ListV2WebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListV2WebhooksRequest" }) as any as S.Schema<ListV2WebhooksRequest>;
 
 export type V2ListWebhooksResponseDataList = Array<V2Webhook>;
-export const V2ListWebhooksResponseDataList = /*@__PURE__*/ S.Array(
+const V2ListWebhooksResponseDataList = /*@__PURE__*/ S.Array(
   V2Webhook,
 ) as any as S.Schema<V2ListWebhooksResponseDataList>;
 
@@ -2276,7 +2263,7 @@ export interface V2ListWebhooksResponse {
   metadata?: V2ResponseMetadata;
   page?: V2Page;
 }
-export const V2ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const V2ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: V2ListWebhooksResponseDataList,
     metadata: S.optional(V2ResponseMetadata),
@@ -2290,7 +2277,7 @@ export interface PatchV2EnvRequest {
   /** Updates the archived status of the environment. Set to true to archive the environment or false to unarchive it. */
   isArchived?: boolean;
 }
-export const PatchV2EnvRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchV2EnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     isArchived: S.optional(S.Boolean),
@@ -2301,13 +2288,13 @@ export interface V2PatchEnvsResponse {
   data?: V2Env;
   metadata?: V2ResponseMetadata;
 }
-export const V2PatchEnvsResponse = V2CreateEnvResponse as any as S.Schema<V2PatchEnvsResponse>;
+const V2PatchEnvsResponse = V2CreateEnvResponse as any as S.Schema<V2PatchEnvsResponse>;
 
 export interface ReadV2SandboxFileRequest {
   sandboxId: string;
   path?: string;
 }
-export const ReadV2SandboxFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadV2SandboxFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     path: S.optional(S.String.pipe(T.Query())),
@@ -2315,7 +2302,7 @@ export const ReadV2SandboxFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadV2SandboxFileRequest" }) as any as S.Schema<ReadV2SandboxFileRequest>;
 
 export type ReadV2SandboxFileResponse = string;
-export const ReadV2SandboxFileResponse = /*@__PURE__*/ S.suspend(() =>
+const ReadV2SandboxFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ReadV2SandboxFileResponse",
@@ -2333,7 +2320,7 @@ export interface SendV2EventRequest {
   /** Deprecated user data. Put user data in the data field instead. */
   user?: unknown;
 }
-export const SendV2EventRequest = /*@__PURE__*/ S.suspend(() =>
+const SendV2EventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.Unknown),
     id: S.optional(S.String),
@@ -2347,7 +2334,7 @@ export interface V2SendEventData {
   /** Internal event ID assigned by Inngest */
   eventId?: string;
 }
-export const V2SendEventData = /*@__PURE__*/ S.suspend(() =>
+const V2SendEventData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
   }),
@@ -2357,7 +2344,7 @@ export interface V2SendEventResponse {
   data?: V2SendEventData;
   metadata?: V2ResponseMetadata;
 }
-export const V2SendEventResponse = /*@__PURE__*/ S.suspend(() =>
+const V2SendEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2SendEventData),
     metadata: S.optional(V2ResponseMetadata),
@@ -2370,7 +2357,7 @@ export interface SignalV2SandboxProcessRequest {
   includeChildren?: boolean;
   signal?: number;
 }
-export const SignalV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     processId: S.String.pipe(T.Label()),
@@ -2388,18 +2375,18 @@ export const SignalV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SignalV2SandboxProcessRequest>;
 
 export type SignalV2SandboxProcessResponse = unknown;
-export const SignalV2SandboxProcessResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalV2SandboxProcessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SignalV2SandboxProcessResponse",
 }) as any as S.Schema<SignalV2SandboxProcessResponse>;
 
 export type StartV2SandboxProcessRequestCommandList = Array<string>;
-export const StartV2SandboxProcessRequestCommandList =
+const StartV2SandboxProcessRequestCommandList =
   V2EventFilterEventsList as any as S.Schema<StartV2SandboxProcessRequestCommandList>;
 
 export type StartV2SandboxProcessRequestEnvironmentMap = { [key: string]: string | undefined };
-export const StartV2SandboxProcessRequestEnvironmentMap =
+const StartV2SandboxProcessRequestEnvironmentMap =
   CreateV2SandboxRequestEnvironmentMap as any as S.Schema<StartV2SandboxProcessRequestEnvironmentMap>;
 
 export interface StartV2SandboxProcessRequest {
@@ -2408,7 +2395,7 @@ export interface StartV2SandboxProcessRequest {
   cwd?: string;
   environment?: StartV2SandboxProcessRequestEnvironmentMap;
 }
-export const StartV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const StartV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     command: S.optional(StartV2SandboxProcessRequestCommandList),
@@ -2423,7 +2410,7 @@ export interface V2StartSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2StartSandboxProcessResponse =
+const V2StartSandboxProcessResponse =
   V2GetSandboxProcessResponse as any as S.Schema<V2StartSandboxProcessResponse>;
 
 export interface SyncV2AppRequest {
@@ -2432,7 +2419,7 @@ export interface SyncV2AppRequest {
   /** URL for the Inngest endpoint in the app */
   url?: string;
 }
-export const SyncV2AppRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncV2AppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.Label()),
     url: S.optional(S.String),
@@ -2443,7 +2430,7 @@ export interface V2SyncAppError {
   code?: string;
   message?: string;
 }
-export const V2SyncAppError = /*@__PURE__*/ S.suspend(() =>
+const V2SyncAppError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2452,7 +2439,7 @@ export const V2SyncAppError = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
 export type V2SyncAppDataStatus = "pending" | "success" | "error" | "duplicate";
-export const V2SyncAppDataStatus = S.String;
+const V2SyncAppDataStatus = S.String;
 
 export interface V2SyncAppData {
   /** App ID */
@@ -2463,7 +2450,7 @@ export interface V2SyncAppData {
   /** Status of the sync. `success` and `duplicate` are successful terminal states. `duplicate` means the sync payload matched the previous successful sync, so no function configuration changes were applied. `error` is a failed terminal state, and `pending` means the sync is still in progress. */
   status?: V2SyncAppDataStatus;
 }
-export const V2SyncAppData = /*@__PURE__*/ S.suspend(() =>
+const V2SyncAppData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     error: S.optional(V2SyncAppError),
@@ -2476,7 +2463,7 @@ export interface V2SyncAppResponse {
   data?: V2SyncAppData;
   metadata?: V2ResponseMetadata;
 }
-export const V2SyncAppResponse = /*@__PURE__*/ S.suspend(() =>
+const V2SyncAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2SyncAppData),
     metadata: S.optional(V2ResponseMetadata),
@@ -2486,7 +2473,7 @@ export const V2SyncAppResponse = /*@__PURE__*/ S.suspend(() =>
 export interface V2DestroySandboxRequest {
   sandboxId: string;
 }
-export const V2DestroySandboxRequest = /*@__PURE__*/ S.suspend(() =>
+const V2DestroySandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/sandboxes/{sandboxId}", code: 200 })),
@@ -2496,14 +2483,14 @@ export interface V2DestroySandboxResponse {
   data?: V2Sandbox;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2DestroySandboxResponse =
+const V2DestroySandboxResponse =
   V2CreateSandboxResponse as any as S.Schema<V2DestroySandboxResponse>;
 
 export interface V2QueryInsightsRequest {
   /** The insights query to execute, written in modified ClickHouse SQL */
   query?: string;
 }
-export const V2QueryInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/insights/query", code: 200 })),
@@ -2516,14 +2503,14 @@ export type V2InsightsOutputColumnType =
   | "BOOLEAN"
   | "DATETIME"
   | "COMPLEX";
-export const V2InsightsOutputColumnType = S.String;
+const V2InsightsOutputColumnType = S.String;
 
 export interface V2InsightsOutputColumn {
   /** Name of the column in the insights query result */
   name?: string;
   type?: V2InsightsOutputColumnType;
 }
-export const V2InsightsOutputColumn = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsOutputColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(V2InsightsOutputColumnType),
@@ -2532,7 +2519,7 @@ export const V2InsightsOutputColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Column metadata for the insights query result */
 export type V2QueryInsightsDataColumnsList = Array<V2InsightsOutputColumn>;
-export const V2QueryInsightsDataColumnsList = /*@__PURE__*/ S.Array(
+const V2QueryInsightsDataColumnsList = /*@__PURE__*/ S.Array(
   V2InsightsOutputColumn,
 ) as any as S.Schema<V2QueryInsightsDataColumnsList>;
 
@@ -2544,7 +2531,7 @@ export interface V2InsightsDiagnosticPosition {
   /** Starting character index in the query string where the diagnostic applies */
   start?: number;
 }
-export const V2InsightsDiagnosticPosition = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsDiagnosticPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     end: S.optional(S.Number),
@@ -2555,7 +2542,7 @@ export const V2InsightsDiagnosticPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2InsightsDiagnosticPosition>;
 
 export type V2InsightsDiagnosticSeverity = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const V2InsightsDiagnosticSeverity = S.String;
+const V2InsightsDiagnosticSeverity = S.String;
 
 export interface V2InsightsDiagnostic {
   /** Machine-readable code representing the type of diagnostic */
@@ -2565,7 +2552,7 @@ export interface V2InsightsDiagnostic {
   position?: V2InsightsDiagnosticPosition;
   severity?: V2InsightsDiagnosticSeverity;
 }
-export const V2InsightsDiagnostic = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsDiagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -2576,13 +2563,13 @@ export const V2InsightsDiagnostic = /*@__PURE__*/ S.suspend(() =>
 
 /** Any non-fatal diagnostics related to the insights query execution */
 export type V2QueryInsightsDataDiagnosticsList = Array<V2InsightsDiagnostic>;
-export const V2QueryInsightsDataDiagnosticsList = /*@__PURE__*/ S.Array(
+const V2QueryInsightsDataDiagnosticsList = /*@__PURE__*/ S.Array(
   V2InsightsDiagnostic,
 ) as any as S.Schema<V2QueryInsightsDataDiagnosticsList>;
 
 /** Values for a single row of the insights query result, where each value corresponds to a column. The value is represented as a JSON object to allow for flexible typing (e.g., string, number, boolean, etc.) */
 export type V2InsightsRowValuesList = Array<unknown>;
-export const V2InsightsRowValuesList = /*@__PURE__*/ S.Array(
+const V2InsightsRowValuesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<V2InsightsRowValuesList>;
 
@@ -2590,7 +2577,7 @@ export interface V2InsightsRow {
   /** Values for a single row of the insights query result, where each value corresponds to a column. The value is represented as a JSON object to allow for flexible typing (e.g., string, number, boolean, etc.) */
   values?: V2InsightsRowValuesList;
 }
-export const V2InsightsRow = /*@__PURE__*/ S.suspend(() =>
+const V2InsightsRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(V2InsightsRowValuesList),
   }),
@@ -2598,7 +2585,7 @@ export const V2InsightsRow = /*@__PURE__*/ S.suspend(() =>
 
 /** Rows of the insights query result, where each row contains a list of values corresponding to the columns */
 export type V2QueryInsightsDataRowsList = Array<V2InsightsRow>;
-export const V2QueryInsightsDataRowsList = /*@__PURE__*/ S.Array(
+const V2QueryInsightsDataRowsList = /*@__PURE__*/ S.Array(
   V2InsightsRow,
 ) as any as S.Schema<V2QueryInsightsDataRowsList>;
 
@@ -2610,7 +2597,7 @@ export interface V2QueryInsightsData {
   /** Rows of the insights query result, where each row contains a list of values corresponding to the columns */
   rows?: V2QueryInsightsDataRowsList;
 }
-export const V2QueryInsightsData = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(V2QueryInsightsDataColumnsList),
     diagnostics: S.optional(V2QueryInsightsDataDiagnosticsList),
@@ -2622,7 +2609,7 @@ export interface V2QueryInsightsResponse {
   data?: V2QueryInsightsData;
   metadata?: V2ResponseMetadata;
 }
-export const V2QueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2QueryInsightsData),
     metadata: S.optional(V2ResponseMetadata),
@@ -2633,7 +2620,7 @@ export interface V2QueryInsightsPromptRequest {
   /** Natural language description of the query to generate */
   prompt?: string;
 }
-export const V2QueryInsightsPromptRequest = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsPromptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/insights/query/prompt", code: 200 })),
@@ -2647,7 +2634,7 @@ export interface V2QueryInsightsPromptData {
   /** A natural language summary of the generated query, useful for explaining the query's intent to agents */
   summary?: string;
 }
-export const V2QueryInsightsPromptData = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsPromptData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.optional(S.String),
     summary: S.optional(S.String),
@@ -2660,7 +2647,7 @@ export interface V2QueryInsightsPromptResponse {
   data?: V2QueryInsightsPromptData;
   metadata?: V2ResponseMetadata;
 }
-export const V2QueryInsightsPromptResponse = /*@__PURE__*/ S.suspend(() =>
+const V2QueryInsightsPromptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2QueryInsightsPromptData),
     metadata: S.optional(V2ResponseMetadata),
@@ -2671,7 +2658,7 @@ export const V2QueryInsightsPromptResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Optional replacement step input as a JSON array */
 export type V2RerunFromStepInputList = Array<unknown>;
-export const V2RerunFromStepInputList =
+const V2RerunFromStepInputList =
   V2InsightsRowValuesList as any as S.Schema<V2RerunFromStepInputList>;
 
 export interface V2RerunFromStep {
@@ -2680,7 +2667,7 @@ export interface V2RerunFromStep {
   /** User-defined step name to rerun from */
   stepId?: string;
 }
-export const V2RerunFromStep = /*@__PURE__*/ S.suspend(() =>
+const V2RerunFromStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: S.optional(V2RerunFromStepInputList),
     stepId: S.optional(S.String),
@@ -2691,7 +2678,7 @@ export interface V2RerunRequest {
   runId: string;
   fromStep?: V2RerunFromStep;
 }
-export const V2RerunRequest = /*@__PURE__*/ S.suspend(() =>
+const V2RerunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String.pipe(T.Label()),
     fromStep: S.optional(V2RerunFromStep),
@@ -2702,19 +2689,17 @@ export interface V2RerunData {
   /** New run ID created by the rerun */
   runId?: string;
 }
-export const V2RerunData = V2CancelRunData as any as S.Schema<V2RerunData>;
-
 export interface V2RerunResponse {
   data?: V2RerunData;
   metadata?: V2ResponseMetadata;
 }
-export const V2RerunResponse = V2CancelRunResponse as any as S.Schema<V2RerunResponse>;
+const V2RerunResponse = V2CancelRunResponse as any as S.Schema<V2RerunResponse>;
 
 export interface V2StreamSandboxLogsRequest {
   sandboxId: string;
   follow?: boolean;
 }
-export const V2StreamSandboxLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const V2StreamSandboxLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     follow: S.optional(S.Boolean.pipe(T.Query())),
@@ -2728,14 +2713,14 @@ export interface ProtobufAny {
   /** A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. As of May 2023, there are no widely used type server implementations and no plans to implement one. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics. */
   _type?: string;
 }
-export const ProtobufAny = /*@__PURE__*/ S.suspend(() =>
+const ProtobufAny = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _type: S.optional(S.String.pipe(T.Body("@type"))),
   }),
 ).annotate({ identifier: "ProtobufAny" }) as any as S.Schema<ProtobufAny>;
 
 export type RpcStatusDetailsList = Array<ProtobufAny>;
-export const RpcStatusDetailsList = /*@__PURE__*/ S.Array(
+const RpcStatusDetailsList = /*@__PURE__*/ S.Array(
   ProtobufAny,
 ) as any as S.Schema<RpcStatusDetailsList>;
 
@@ -2744,7 +2729,7 @@ export interface RpcStatus {
   details?: RpcStatusDetailsList;
   message?: string;
 }
-export const RpcStatus = /*@__PURE__*/ S.suspend(() =>
+const RpcStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(RpcStatusDetailsList),
@@ -2755,7 +2740,7 @@ export const RpcStatus = /*@__PURE__*/ S.suspend(() =>
 export interface V2StreamSandboxLogsResponse {
   data?: V2SandboxLogChunk;
 }
-export const V2StreamSandboxLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const V2StreamSandboxLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2SandboxLogChunk),
   }),
@@ -2767,7 +2752,7 @@ export interface V2StreamSandboxLogsResponse2 {
   error?: RpcStatus;
   result?: V2StreamSandboxLogsResponse;
 }
-export const V2StreamSandboxLogsResponse2 = /*@__PURE__*/ S.suspend(() =>
+const V2StreamSandboxLogsResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(RpcStatus),
     result: S.optional(V2StreamSandboxLogsResponse),
@@ -2781,7 +2766,7 @@ export interface V2StreamSandboxProcessOutputRequest {
   processId: string;
   tailBytes?: number;
 }
-export const V2StreamSandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
+const V2StreamSandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     processId: S.String.pipe(T.Label()),
@@ -2798,18 +2783,16 @@ export const V2StreamSandboxProcessOutputRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2StreamSandboxProcessOutputRequest>;
 
 export type V2StreamSandboxProcessOutputResponse = V2StreamSandboxLogsResponse;
-export const V2StreamSandboxProcessOutputResponse = V2StreamSandboxLogsResponse;
-
 export interface V2StreamSandboxProcessOutputResponse2 {
   error?: RpcStatus;
   result?: V2StreamSandboxLogsResponse;
 }
-export const V2StreamSandboxProcessOutputResponse2 =
+const V2StreamSandboxProcessOutputResponse2 =
   V2StreamSandboxLogsResponse2 as any as S.Schema<V2StreamSandboxProcessOutputResponse2>;
 
 /** Application specific response metadata. Must be set in the first response for streaming APIs. */
 export type V2WriteSandboxFileRequestExtensionsList = Array<ProtobufAny>;
-export const V2WriteSandboxFileRequestExtensionsList =
+const V2WriteSandboxFileRequestExtensionsList =
   RpcStatusDetailsList as any as S.Schema<V2WriteSandboxFileRequestExtensionsList>;
 
 export interface V2WriteSandboxFileRequest {
@@ -2823,7 +2806,7 @@ export interface V2WriteSandboxFileRequest {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: V2WriteSandboxFileRequestExtensionsList;
 }
-export const V2WriteSandboxFileRequest = /*@__PURE__*/ S.suspend(() =>
+const V2WriteSandboxFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     path: S.optional(S.String.pipe(T.Query())),
@@ -2840,7 +2823,7 @@ export interface V2WriteSandboxFileData {
   bytesWritten?: string;
   path?: string;
 }
-export const V2WriteSandboxFileData = /*@__PURE__*/ S.suspend(() =>
+const V2WriteSandboxFileData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bytesWritten: S.optional(S.String),
     path: S.optional(S.String),
@@ -2851,7 +2834,7 @@ export interface V2WriteSandboxFileResponse {
   data?: V2WriteSandboxFileData;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2WriteSandboxFileResponse = /*@__PURE__*/ S.suspend(() =>
+const V2WriteSandboxFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(V2WriteSandboxFileData),
     metadata: S.optional(V2SandboxResponseMetadata),
@@ -2865,7 +2848,7 @@ export interface WaitV2SandboxProcessRequest {
   processId: string;
   timeout?: string;
 }
-export const WaitV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const WaitV2SandboxProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.String.pipe(T.Label()),
     processId: S.String.pipe(T.Label()),
@@ -2881,7 +2864,7 @@ export interface V2WaitSandboxProcessResponse {
   data?: V2SandboxProcess;
   metadata?: V2SandboxResponseMetadata;
 }
-export const V2WaitSandboxProcessResponse =
+const V2WaitSandboxProcessResponse =
   V2GetSandboxProcessResponse as any as S.Schema<V2WaitSandboxProcessResponse>;
 
 export type CancelV2RunError = InngestOpError;

@@ -12,14 +12,14 @@ export interface TestApiRequest {
   /** Error response to return */
   error?: string;
 }
-export const TestApiRequest = /*@__PURE__*/ S.suspend(() =>
+const TestApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/api.test", code: 200 })),
 ).annotate({ identifier: "TestApiRequest" }) as any as S.Schema<TestApiRequest>;
 
 export type TestApiResponseArgsMap = { [key: string]: unknown | undefined };
-export const TestApiResponseArgsMap = /*@__PURE__*/ S.Record(
+const TestApiResponseArgsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<TestApiResponseArgsMap>;
@@ -29,7 +29,7 @@ export interface TestApiResponse {
   ok: boolean;
   args?: TestApiResponseArgsMap;
 }
-export const TestApiResponse = /*@__PURE__*/ S.suspend(() =>
+const TestApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     args: S.optional(TestApiResponseArgsMap),

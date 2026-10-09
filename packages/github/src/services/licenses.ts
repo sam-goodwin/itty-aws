@@ -29,24 +29,22 @@ export class NotFound
 export interface GetRequest {
   license: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     license: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/licenses/{license}", code: 200 })),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
 export type LicensePermissionsList = Array<string>;
-export const LicensePermissionsList = /*@__PURE__*/ S.Array(
+const LicensePermissionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<LicensePermissionsList>;
 
 export type LicenseConditionsList = Array<string>;
-export const LicenseConditionsList =
-  LicensePermissionsList as any as S.Schema<LicenseConditionsList>;
+const LicenseConditionsList = LicensePermissionsList as any as S.Schema<LicenseConditionsList>;
 
 export type LicenseLimitationsList = Array<string>;
-export const LicenseLimitationsList =
-  LicensePermissionsList as any as S.Schema<LicenseLimitationsList>;
+const LicenseLimitationsList = LicensePermissionsList as any as S.Schema<LicenseLimitationsList>;
 
 /** License */
 export interface License {
@@ -64,7 +62,7 @@ export interface License {
   body: string;
   featured: boolean;
 }
-export const License = /*@__PURE__*/ S.suspend(() =>
+const License = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -89,7 +87,7 @@ export interface GetAllCommonlyUsedRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetAllCommonlyUsedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllCommonlyUsedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     featured: S.optional(S.Boolean.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -108,7 +106,7 @@ export interface LicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const LicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const LicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -120,12 +118,12 @@ export const LicenseSimple = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LicenseSimple" }) as any as S.Schema<LicenseSimple>;
 
 export type GetAllCommonlyUsedResponseBodyList = Array<LicenseSimple>;
-export const GetAllCommonlyUsedResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAllCommonlyUsedResponseBodyList = /*@__PURE__*/ S.Array(
   LicenseSimple,
 ) as any as S.Schema<GetAllCommonlyUsedResponseBodyList>;
 
 export type GetAllCommonlyUsedResponse = GetAllCommonlyUsedResponseBodyList;
-export const GetAllCommonlyUsedResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAllCommonlyUsedResponse = /*@__PURE__*/ S.suspend(() =>
   GetAllCommonlyUsedResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAllCommonlyUsedResponse",
@@ -139,7 +137,7 @@ export interface GetForRepoRequest {
   /** The Git reference for the results you want to list. The `ref` for a branch can be formatted either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use `refs/pull/<number>/merge`. */
   ref?: string;
 }
-export const GetForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -152,7 +150,7 @@ export interface LicenseContentLinks {
   html: string | null;
   self: string;
 }
-export const LicenseContentLinks = /*@__PURE__*/ S.suspend(() =>
+const LicenseContentLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     git: S.NullOr(S.String),
     html: S.NullOr(S.String),
@@ -162,8 +160,6 @@ export const LicenseContentLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** License Simple */
 export type NullableLicenseSimple = LicenseSimple;
-export const NullableLicenseSimple = LicenseSimple;
-
 /** License Content */
 export interface LicenseContent {
   name: string;
@@ -180,7 +176,7 @@ export interface LicenseContent {
   _links: LicenseContentLinks;
   license: LicenseSimple | null;
 }
-export const LicenseContent = /*@__PURE__*/ S.suspend(() =>
+const LicenseContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     path: S.String,

@@ -82,32 +82,32 @@ export interface GetDeploymentsRequest {
   DeviceName?: string;
   DeviceFleetName?: string;
 }
-export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeviceName: S.optional(S.String), DeviceFleetName: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetDeployments" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetDeploymentsRequest" }) as any as S.Schema<GetDeploymentsRequest>;
 export type EntityName = string;
 export type DeploymentType = "Model" | (string & {});
-export const DeploymentType = S.String;
+const DeploymentType = S.String;
 
 export type FailureHandlingPolicy = "ROLLBACK_ON_FAILURE" | "DO_NOTHING" | (string & {});
-export const FailureHandlingPolicy = S.String;
+const FailureHandlingPolicy = S.String;
 
 export type S3Uri = string;
 export type ChecksumType = "SHA1" | (string & {});
-export const ChecksumType = S.String;
+const ChecksumType = S.String;
 
 export type ChecksumString = string;
 export interface Checksum {
   Type?: ChecksumType;
   Sum?: string;
 }
-export const Checksum = /*@__PURE__*/ S.suspend(() =>
+const Checksum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.optional(ChecksumType), Sum: S.optional(S.String) }),
 ).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
 export type ModelState = "DEPLOY" | "UNDEPLOY" | (string & {});
-export const ModelState = S.String;
+const ModelState = S.String;
 
 export interface Definition {
   ModelHandle?: string;
@@ -115,7 +115,7 @@ export interface Definition {
   Checksum?: Checksum;
   State?: ModelState;
 }
-export const Definition = /*@__PURE__*/ S.suspend(() =>
+const Definition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ModelHandle: S.optional(S.String),
     S3Url: S.optional(S.String),
@@ -124,14 +124,14 @@ export const Definition = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Definition" }) as any as S.Schema<Definition>;
 export type Definitions = Definition[];
-export const Definitions = /*@__PURE__*/ S.Array(Definition);
+const Definitions = /*@__PURE__*/ S.Array(Definition);
 export interface EdgeDeployment {
   DeploymentName?: string;
   Type?: DeploymentType;
   FailureHandlingPolicy?: FailureHandlingPolicy;
   Definitions?: Definition[];
 }
-export const EdgeDeployment = /*@__PURE__*/ S.suspend(() =>
+const EdgeDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeploymentName: S.optional(S.String),
     Type: S.optional(DeploymentType),
@@ -140,18 +140,18 @@ export const EdgeDeployment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EdgeDeployment" }) as any as S.Schema<EdgeDeployment>;
 export type EdgeDeployments = EdgeDeployment[];
-export const EdgeDeployments = /*@__PURE__*/ S.Array(EdgeDeployment);
+const EdgeDeployments = /*@__PURE__*/ S.Array(EdgeDeployment);
 export interface GetDeploymentsResult {
   Deployments?: EdgeDeployment[];
 }
-export const GetDeploymentsResult = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Deployments: S.optional(EdgeDeployments) }),
 ).annotate({ identifier: "GetDeploymentsResult" }) as any as S.Schema<GetDeploymentsResult>;
 export interface GetDeviceRegistrationRequest {
   DeviceName?: string;
   DeviceFleetName?: string;
 }
-export const GetDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeviceName: S.optional(S.String), DeviceFleetName: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/GetDeviceRegistration" }), svc, auth, proto, ver, rules),
   ),
@@ -164,7 +164,7 @@ export interface GetDeviceRegistrationResult {
   DeviceRegistration?: string;
   CacheTTL?: string;
 }
-export const GetDeviceRegistrationResult = /*@__PURE__*/ S.suspend(() =>
+const GetDeviceRegistrationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DeviceRegistration: S.optional(S.String), CacheTTL: S.optional(S.String) }),
 ).annotate({
   identifier: "GetDeviceRegistrationResult",
@@ -178,7 +178,7 @@ export interface EdgeMetric {
   Value?: number;
   Timestamp?: Date;
 }
-export const EdgeMetric = /*@__PURE__*/ S.suspend(() =>
+const EdgeMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Dimension: S.optional(S.String),
     MetricName: S.optional(S.String),
@@ -187,7 +187,7 @@ export const EdgeMetric = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EdgeMetric" }) as any as S.Schema<EdgeMetric>;
 export type EdgeMetrics = EdgeMetric[];
-export const EdgeMetrics = /*@__PURE__*/ S.Array(EdgeMetric);
+const EdgeMetrics = /*@__PURE__*/ S.Array(EdgeMetric);
 export type ModelName = string;
 export type Version = string;
 export interface Model {
@@ -197,7 +197,7 @@ export interface Model {
   LatestInference?: Date;
   ModelMetrics?: EdgeMetric[];
 }
-export const Model = /*@__PURE__*/ S.suspend(() =>
+const Model = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ModelName: S.optional(S.String),
     ModelVersion: S.optional(S.String),
@@ -207,9 +207,9 @@ export const Model = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Model" }) as any as S.Schema<Model>;
 export type Models = Model[];
-export const Models = /*@__PURE__*/ S.Array(Model);
+const Models = /*@__PURE__*/ S.Array(Model);
 export type DeploymentStatus = "SUCCESS" | "FAIL" | (string & {});
-export const DeploymentStatus = S.String;
+const DeploymentStatus = S.String;
 
 export interface DeploymentModel {
   ModelHandle?: string;
@@ -221,7 +221,7 @@ export interface DeploymentModel {
   StatusReason?: string;
   RollbackFailureReason?: string;
 }
-export const DeploymentModel = /*@__PURE__*/ S.suspend(() =>
+const DeploymentModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ModelHandle: S.optional(S.String),
     ModelName: S.optional(S.String),
@@ -234,7 +234,7 @@ export const DeploymentModel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DeploymentModel" }) as any as S.Schema<DeploymentModel>;
 export type DeploymentModels = DeploymentModel[];
-export const DeploymentModels = /*@__PURE__*/ S.Array(DeploymentModel);
+const DeploymentModels = /*@__PURE__*/ S.Array(DeploymentModel);
 export interface DeploymentResult {
   DeploymentName?: string;
   DeploymentStatus?: string;
@@ -243,7 +243,7 @@ export interface DeploymentResult {
   DeploymentEndTime?: Date;
   DeploymentModels?: DeploymentModel[];
 }
-export const DeploymentResult = /*@__PURE__*/ S.suspend(() =>
+const DeploymentResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DeploymentName: S.optional(S.String),
     DeploymentStatus: S.optional(S.String),
@@ -261,7 +261,7 @@ export interface SendHeartbeatRequest {
   DeviceFleetName?: string;
   DeploymentResult?: DeploymentResult;
 }
-export const SendHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const SendHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AgentMetrics: S.optional(EdgeMetrics),
     Models: S.optional(Models),
@@ -272,7 +272,7 @@ export const SendHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(T.Http({ method: "POST", uri: "/SendHeartbeat" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "SendHeartbeatRequest" }) as any as S.Schema<SendHeartbeatRequest>;
 export interface SendHeartbeatResponse {}
-export const SendHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SendHeartbeatResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SendHeartbeatResponse",
 }) as any as S.Schema<SendHeartbeatResponse>;
 export type ErrorMessage = string;

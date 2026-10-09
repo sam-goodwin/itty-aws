@@ -36,7 +36,7 @@ export class NotFound
   ) {}
 
 export type CreateExperimentSavedMetricsRequestTagsList = Array<unknown>;
-export const CreateExperimentSavedMetricsRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateExperimentSavedMetricsRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateExperimentSavedMetricsRequestTagsList>;
 
@@ -51,7 +51,7 @@ export interface CreateExperimentSavedMetricsRequest {
   query?: unknown;
   tags?: CreateExperimentSavedMetricsRequestTagsList;
 }
-export const CreateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -70,7 +70,7 @@ export const CreateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateExperimentSavedMetricsRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -86,14 +86,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -106,7 +101,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -121,7 +116,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type ExperimentSavedMetricTagsList = Array<unknown>;
-export const ExperimentSavedMetricTagsList =
+const ExperimentSavedMetricTagsList =
   CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<ExperimentSavedMetricTagsList>;
 
 export interface ExperimentSavedMetricLinkedExperiment {
@@ -132,7 +127,7 @@ export interface ExperimentSavedMetricLinkedExperiment {
   /** True when the experiment is launched and not yet stopped. */
   is_running: boolean;
 }
-export const ExperimentSavedMetricLinkedExperiment = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSavedMetricLinkedExperiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -145,7 +140,7 @@ export const ExperimentSavedMetricLinkedExperiment = /*@__PURE__*/ S.suspend(() 
 /** Experiments using this shared metric (soft-deleted experiments excluded). Populated only on single-metric retrieve; always an empty list in list responses. */
 export type ExperimentSavedMetricLinkedExperimentsList =
   Array<ExperimentSavedMetricLinkedExperiment>;
-export const ExperimentSavedMetricLinkedExperimentsList = /*@__PURE__*/ S.Array(
+const ExperimentSavedMetricLinkedExperimentsList = /*@__PURE__*/ S.Array(
   ExperimentSavedMetricLinkedExperiment,
 ) as any as S.Schema<ExperimentSavedMetricLinkedExperimentsList>;
 
@@ -167,7 +162,7 @@ export interface ExperimentSavedMetric {
   /** Experiments using this shared metric (soft-deleted experiments excluded). Populated only on single-metric retrieve; always an empty list in list responses. */
   linked_experiments?: ExperimentSavedMetricLinkedExperimentsList;
 }
-export const ExperimentSavedMetric = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSavedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -188,7 +183,7 @@ export interface ExperimentSavedMetricsDestroyRequest {
   /** A unique integer value identifying this experiment saved metric. */
   id: number;
 }
-export const ExperimentSavedMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExperimentSavedMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -204,9 +199,7 @@ export const ExperimentSavedMetricsDestroyRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ExperimentSavedMetricsDestroyRequest>;
 
 export interface ExperimentSavedMetricsDestroyResponse {}
-export const ExperimentSavedMetricsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ExperimentSavedMetricsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExperimentSavedMetricsDestroyResponse",
 }) as any as S.Schema<ExperimentSavedMetricsDestroyResponse>;
 
@@ -216,7 +209,7 @@ export interface GetExperimentSavedMetricsRequest {
   /** A unique integer value identifying this experiment saved metric. */
   id: number;
 }
-export const GetExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -243,7 +236,7 @@ export interface ListExperimentSavedMetricsRequest {
   /** A search term. */
   search?: string;
 }
-export const ListExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event: S.optional(S.String.pipe(T.Query())),
@@ -262,7 +255,7 @@ export const ListExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExperimentSavedMetricsRequest>;
 
 export type PaginatedExperimentSavedMetricListResultsList = Array<ExperimentSavedMetric>;
-export const PaginatedExperimentSavedMetricListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExperimentSavedMetricListResultsList = /*@__PURE__*/ S.Array(
   ExperimentSavedMetric,
 ) as any as S.Schema<PaginatedExperimentSavedMetricListResultsList>;
 
@@ -272,7 +265,7 @@ export interface PaginatedExperimentSavedMetricList {
   previous?: string | null;
   results?: PaginatedExperimentSavedMetricListResultsList;
 }
-export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -284,7 +277,7 @@ export const PaginatedExperimentSavedMetricList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginatedExperimentSavedMetricList>;
 
 export type UpdateExperimentSavedMetricsRequestTagsList = Array<unknown>;
-export const UpdateExperimentSavedMetricsRequestTagsList =
+const UpdateExperimentSavedMetricsRequestTagsList =
   CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsRequestTagsList>;
 
 export interface UpdateExperimentSavedMetricsRequest {
@@ -300,7 +293,7 @@ export interface UpdateExperimentSavedMetricsRequest {
   query?: unknown;
   tags?: UpdateExperimentSavedMetricsRequestTagsList;
 }
-export const UpdateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -320,7 +313,7 @@ export const UpdateExperimentSavedMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateExperimentSavedMetricsRequest>;
 
 export type UpdateExperimentSavedMetricsPartialRequestTagsList = Array<unknown>;
-export const UpdateExperimentSavedMetricsPartialRequestTagsList =
+const UpdateExperimentSavedMetricsPartialRequestTagsList =
   CreateExperimentSavedMetricsRequestTagsList as any as S.Schema<UpdateExperimentSavedMetricsPartialRequestTagsList>;
 
 export interface UpdateExperimentSavedMetricsPartialRequest {
@@ -336,7 +329,7 @@ export interface UpdateExperimentSavedMetricsPartialRequest {
   query?: unknown;
   tags?: UpdateExperimentSavedMetricsPartialRequestTagsList;
 }
-export const UpdateExperimentSavedMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentSavedMetricsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),

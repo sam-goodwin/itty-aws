@@ -147,7 +147,7 @@ export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateSavingsPlanRequest {
   savingsPlanOfferingId: string;
   commitment: string;
@@ -156,7 +156,7 @@ export interface CreateSavingsPlanRequest {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOfferingId: S.String,
     commitment: S.String,
@@ -172,7 +172,7 @@ export type SavingsPlanId = string;
 export interface CreateSavingsPlanResponse {
   savingsPlanId?: string;
 }
-export const CreateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ savingsPlanId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateSavingsPlanResponse",
@@ -180,7 +180,7 @@ export const CreateSavingsPlanResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteQueuedSavingsPlanRequest {
   savingsPlanId: string;
 }
-export const DeleteQueuedSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueuedSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ savingsPlanId: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteQueuedSavingsPlan" }),
@@ -195,9 +195,9 @@ export const DeleteQueuedSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteQueuedSavingsPlanRequest",
 }) as any as S.Schema<DeleteQueuedSavingsPlanRequest>;
 export interface DeleteQueuedSavingsPlanResponse {}
-export const DeleteQueuedSavingsPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteQueuedSavingsPlanResponse" },
-) as any as S.Schema<DeleteQueuedSavingsPlanResponse>;
+const DeleteQueuedSavingsPlanResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteQueuedSavingsPlanResponse",
+}) as any as S.Schema<DeleteQueuedSavingsPlanResponse>;
 export type SavingsPlanRateFilterName =
   | "region"
   | "instanceType"
@@ -208,19 +208,19 @@ export type SavingsPlanRateFilterName =
   | "usageType"
   | "operation"
   | (string & {});
-export const SavingsPlanRateFilterName = S.String;
+const SavingsPlanRateFilterName = S.String;
 
 export type ListOfStrings = string[];
-export const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
+const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface SavingsPlanRateFilter {
   name?: SavingsPlanRateFilterName;
   values?: string[];
 }
-export const SavingsPlanRateFilter = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanRateFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(SavingsPlanRateFilterName), values: S.optional(ListOfStrings) }),
 ).annotate({ identifier: "SavingsPlanRateFilter" }) as any as S.Schema<SavingsPlanRateFilter>;
 export type SavingsPlanRateFilterList = SavingsPlanRateFilter[];
-export const SavingsPlanRateFilterList = /*@__PURE__*/ S.Array(SavingsPlanRateFilter);
+const SavingsPlanRateFilterList = /*@__PURE__*/ S.Array(SavingsPlanRateFilter);
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface DescribeSavingsPlanRatesRequest {
@@ -229,7 +229,7 @@ export interface DescribeSavingsPlanRatesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanId: S.String,
     filters: S.optional(SavingsPlanRateFilterList),
@@ -249,7 +249,7 @@ export const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeSavingsPlanRatesRequest",
 }) as any as S.Schema<DescribeSavingsPlanRatesRequest>;
 export type CurrencyCode = "CNY" | "USD" | "EUR" | (string & {});
-export const CurrencyCode = S.String;
+const CurrencyCode = S.String;
 
 export type SavingsPlanRateUnit =
   | "Hrs"
@@ -270,7 +270,7 @@ export type SavingsPlanRateUnit =
   | "OCU-hours"
   | "Jobs"
   | (string & {});
-export const SavingsPlanRateUnit = S.String;
+const SavingsPlanRateUnit = S.String;
 
 export type SavingsPlanProductType =
   | "EC2"
@@ -288,7 +288,7 @@ export type SavingsPlanProductType =
   | "DMS"
   | "OpenSearch"
   | (string & {});
-export const SavingsPlanProductType = S.String;
+const SavingsPlanProductType = S.String;
 
 export type SavingsPlanRateServiceCode =
   | "AmazonEC2"
@@ -307,7 +307,7 @@ export type SavingsPlanRateServiceCode =
   | "AWSDatabaseMigrationSvc"
   | "AmazonES"
   | (string & {});
-export const SavingsPlanRateServiceCode = S.String;
+const SavingsPlanRateServiceCode = S.String;
 
 export type SavingsPlanRateUsageType = string;
 export type SavingsPlanRateOperation = string;
@@ -318,18 +318,18 @@ export type SavingsPlanRatePropertyKey =
   | "productDescription"
   | "tenancy"
   | (string & {});
-export const SavingsPlanRatePropertyKey = S.String;
+const SavingsPlanRatePropertyKey = S.String;
 
 export type JsonSafeFilterValueString = string;
 export interface SavingsPlanRateProperty {
   name?: SavingsPlanRatePropertyKey;
   value?: string;
 }
-export const SavingsPlanRateProperty = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanRateProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(SavingsPlanRatePropertyKey), value: S.optional(S.String) }),
 ).annotate({ identifier: "SavingsPlanRateProperty" }) as any as S.Schema<SavingsPlanRateProperty>;
 export type SavingsPlanRatePropertyList = SavingsPlanRateProperty[];
-export const SavingsPlanRatePropertyList = /*@__PURE__*/ S.Array(SavingsPlanRateProperty);
+const SavingsPlanRatePropertyList = /*@__PURE__*/ S.Array(SavingsPlanRateProperty);
 export interface SavingsPlanRate {
   rate?: string;
   currency?: CurrencyCode;
@@ -340,7 +340,7 @@ export interface SavingsPlanRate {
   operation?: string;
   properties?: SavingsPlanRateProperty[];
 }
-export const SavingsPlanRate = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rate: S.optional(S.String),
     currency: S.optional(CurrencyCode),
@@ -353,13 +353,13 @@ export const SavingsPlanRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavingsPlanRate" }) as any as S.Schema<SavingsPlanRate>;
 export type SavingsPlanRateList = SavingsPlanRate[];
-export const SavingsPlanRateList = /*@__PURE__*/ S.Array(SavingsPlanRate);
+const SavingsPlanRateList = /*@__PURE__*/ S.Array(SavingsPlanRate);
 export interface DescribeSavingsPlanRatesResponse {
   savingsPlanId?: string;
   searchResults?: SavingsPlanRate[];
   nextToken?: string;
 }
-export const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanId: S.optional(S.String),
     searchResults: S.optional(SavingsPlanRateList),
@@ -370,9 +370,9 @@ export const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSavingsPlanRatesResponse>;
 export type SavingsPlanArn = string;
 export type SavingsPlanArnList = string[];
-export const SavingsPlanArnList = ListOfStrings as any as S.Schema<SavingsPlanArnList>;
+const SavingsPlanArnList = ListOfStrings as any as S.Schema<SavingsPlanArnList>;
 export type SavingsPlanIdList = string[];
-export const SavingsPlanIdList = ListOfStrings as any as S.Schema<SavingsPlanIdList>;
+const SavingsPlanIdList = ListOfStrings as any as S.Schema<SavingsPlanIdList>;
 export type SavingsPlanState =
   | "payment-pending"
   | "payment-failed"
@@ -383,10 +383,10 @@ export type SavingsPlanState =
   | "pending-return"
   | "returned"
   | (string & {});
-export const SavingsPlanState = S.String;
+const SavingsPlanState = S.String;
 
 export type SavingsPlanStateList = SavingsPlanState[];
-export const SavingsPlanStateList = /*@__PURE__*/ S.Array(SavingsPlanState);
+const SavingsPlanStateList = /*@__PURE__*/ S.Array(SavingsPlanState);
 export type SavingsPlansFilterName =
   | "region"
   | "ec2-instance-family"
@@ -399,16 +399,12 @@ export type SavingsPlansFilterName =
   | "end"
   | "instance-family"
   | (string & {});
-export const SavingsPlansFilterName = S.String;
-
 export interface SavingsPlanFilter {
   name?: SavingsPlansFilterName;
   values?: string[];
 }
-export const SavingsPlanFilter = SavingsPlanRateFilter as any as S.Schema<SavingsPlanFilter>;
 export type SavingsPlanFilterList = SavingsPlanFilter[];
-export const SavingsPlanFilterList =
-  SavingsPlanRateFilterList as any as S.Schema<SavingsPlanFilterList>;
+const SavingsPlanFilterList = SavingsPlanRateFilterList as any as S.Schema<SavingsPlanFilterList>;
 export interface DescribeSavingsPlansRequest {
   savingsPlanArns?: string[];
   savingsPlanIds?: string[];
@@ -417,7 +413,7 @@ export interface DescribeSavingsPlansRequest {
   states?: SavingsPlanState[];
   filters?: SavingsPlanFilter[];
 }
-export const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanArns: S.optional(SavingsPlanArnList),
     savingsPlanIds: S.optional(SavingsPlanIdList),
@@ -434,17 +430,17 @@ export const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
 export type Region = string;
 export type EC2InstanceFamily = string;
 export type SavingsPlanType = "Compute" | "EC2Instance" | "SageMaker" | "Database" | (string & {});
-export const SavingsPlanType = S.String;
+const SavingsPlanType = S.String;
 
 export type SavingsPlanPaymentOption =
   | "All Upfront"
   | "Partial Upfront"
   | "No Upfront"
   | (string & {});
-export const SavingsPlanPaymentOption = S.String;
+const SavingsPlanPaymentOption = S.String;
 
 export type SavingsPlanProductTypeList = SavingsPlanProductType[];
-export const SavingsPlanProductTypeList =
+const SavingsPlanProductTypeList =
   SavingsPlanStateList as any as S.Schema<SavingsPlanProductTypeList>;
 export type TermDurationInSeconds = number;
 export interface SavingsPlan {
@@ -468,7 +464,7 @@ export interface SavingsPlan {
   tags?: { [key: string]: string | undefined };
   returnableUntil?: string;
 }
-export const SavingsPlan = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offeringId: S.optional(S.String),
     savingsPlanId: S.optional(S.String),
@@ -492,33 +488,31 @@ export const SavingsPlan = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavingsPlan" }) as any as S.Schema<SavingsPlan>;
 export type SavingsPlanList = SavingsPlan[];
-export const SavingsPlanList = /*@__PURE__*/ S.Array(SavingsPlan);
+const SavingsPlanList = /*@__PURE__*/ S.Array(SavingsPlan);
 export interface DescribeSavingsPlansResponse {
   savingsPlans?: SavingsPlan[];
   nextToken?: string;
 }
-export const DescribeSavingsPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ savingsPlans: S.optional(SavingsPlanList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeSavingsPlansResponse",
 }) as any as S.Schema<DescribeSavingsPlansResponse>;
 export type UUID = string;
 export type UUIDs = string[];
-export const UUIDs = ListOfStrings as any as S.Schema<UUIDs>;
+const UUIDs = ListOfStrings as any as S.Schema<UUIDs>;
 export type SavingsPlanPaymentOptionList = SavingsPlanPaymentOption[];
-export const SavingsPlanPaymentOptionList =
+const SavingsPlanPaymentOptionList =
   SavingsPlanStateList as any as S.Schema<SavingsPlanPaymentOptionList>;
 export type SavingsPlanTypeList = SavingsPlanType[];
-export const SavingsPlanTypeList = SavingsPlanStateList as any as S.Schema<SavingsPlanTypeList>;
+const SavingsPlanTypeList = SavingsPlanStateList as any as S.Schema<SavingsPlanTypeList>;
 export type SavingsPlanRateServiceCodeList = SavingsPlanRateServiceCode[];
-export const SavingsPlanRateServiceCodeList =
+const SavingsPlanRateServiceCodeList =
   SavingsPlanStateList as any as S.Schema<SavingsPlanRateServiceCodeList>;
 export type SavingsPlanRateUsageTypeList = string[];
-export const SavingsPlanRateUsageTypeList =
-  ListOfStrings as any as S.Schema<SavingsPlanRateUsageTypeList>;
+const SavingsPlanRateUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanRateUsageTypeList>;
 export type SavingsPlanRateOperationList = string[];
-export const SavingsPlanRateOperationList =
-  ListOfStrings as any as S.Schema<SavingsPlanRateOperationList>;
+const SavingsPlanRateOperationList = ListOfStrings as any as S.Schema<SavingsPlanRateOperationList>;
 export type SavingsPlanRateFilterAttribute =
   | "region"
   | "instanceFamily"
@@ -527,15 +521,15 @@ export type SavingsPlanRateFilterAttribute =
   | "tenancy"
   | "productId"
   | (string & {});
-export const SavingsPlanRateFilterAttribute = S.String;
+const SavingsPlanRateFilterAttribute = S.String;
 
 export type FilterValuesList = string[];
-export const FilterValuesList = ListOfStrings as any as S.Schema<FilterValuesList>;
+const FilterValuesList = ListOfStrings as any as S.Schema<FilterValuesList>;
 export interface SavingsPlanOfferingRateFilterElement {
   name?: SavingsPlanRateFilterAttribute;
   values?: string[];
 }
-export const SavingsPlanOfferingRateFilterElement = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOfferingRateFilterElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SavingsPlanRateFilterAttribute),
     values: S.optional(FilterValuesList),
@@ -544,7 +538,7 @@ export const SavingsPlanOfferingRateFilterElement = /*@__PURE__*/ S.suspend(() =
   identifier: "SavingsPlanOfferingRateFilterElement",
 }) as any as S.Schema<SavingsPlanOfferingRateFilterElement>;
 export type SavingsPlanOfferingRateFiltersList = SavingsPlanOfferingRateFilterElement[];
-export const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ S.Array(
+const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ S.Array(
   SavingsPlanOfferingRateFilterElement,
 );
 export type PageSize = number;
@@ -560,7 +554,7 @@ export interface DescribeSavingsPlansOfferingRatesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const DescribeSavingsPlansOfferingRatesRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansOfferingRatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOfferingIds: S.optional(UUIDs),
     savingsPlanPaymentOptions: S.optional(SavingsPlanPaymentOptionList),
@@ -595,7 +589,7 @@ export interface ParentSavingsPlanOffering {
   currency?: CurrencyCode;
   planDescription?: string;
 }
-export const ParentSavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
+const ParentSavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offeringId: S.optional(S.String),
     paymentOption: S.optional(SavingsPlanPaymentOption),
@@ -612,15 +606,13 @@ export interface SavingsPlanOfferingRateProperty {
   name?: string;
   value?: string;
 }
-export const SavingsPlanOfferingRateProperty = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOfferingRateProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
 ).annotate({
   identifier: "SavingsPlanOfferingRateProperty",
 }) as any as S.Schema<SavingsPlanOfferingRateProperty>;
 export type SavingsPlanOfferingRatePropertyList = SavingsPlanOfferingRateProperty[];
-export const SavingsPlanOfferingRatePropertyList = /*@__PURE__*/ S.Array(
-  SavingsPlanOfferingRateProperty,
-);
+const SavingsPlanOfferingRatePropertyList = /*@__PURE__*/ S.Array(SavingsPlanOfferingRateProperty);
 export interface SavingsPlanOfferingRate {
   savingsPlanOffering?: ParentSavingsPlanOffering;
   rate?: string;
@@ -631,7 +623,7 @@ export interface SavingsPlanOfferingRate {
   operation?: string;
   properties?: SavingsPlanOfferingRateProperty[];
 }
-export const SavingsPlanOfferingRate = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOfferingRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanOffering: S.optional(ParentSavingsPlanOffering),
     rate: S.optional(S.String),
@@ -644,12 +636,12 @@ export const SavingsPlanOfferingRate = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavingsPlanOfferingRate" }) as any as S.Schema<SavingsPlanOfferingRate>;
 export type SavingsPlanOfferingRatesList = SavingsPlanOfferingRate[];
-export const SavingsPlanOfferingRatesList = /*@__PURE__*/ S.Array(SavingsPlanOfferingRate);
+const SavingsPlanOfferingRatesList = /*@__PURE__*/ S.Array(SavingsPlanOfferingRate);
 export interface DescribeSavingsPlansOfferingRatesResponse {
   searchResults?: SavingsPlanOfferingRate[];
   nextToken?: string;
 }
-export const DescribeSavingsPlansOfferingRatesResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansOfferingRatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchResults: S.optional(SavingsPlanOfferingRatesList),
     nextToken: S.optional(S.String),
@@ -658,33 +650,27 @@ export const DescribeSavingsPlansOfferingRatesResponse = /*@__PURE__*/ S.suspend
   identifier: "DescribeSavingsPlansOfferingRatesResponse",
 }) as any as S.Schema<DescribeSavingsPlansOfferingRatesResponse>;
 export type DurationsList = number[];
-export const DurationsList = /*@__PURE__*/ S.Array(S.Number);
+const DurationsList = /*@__PURE__*/ S.Array(S.Number);
 export type CurrencyList = CurrencyCode[];
-export const CurrencyList = SavingsPlanStateList as any as S.Schema<CurrencyList>;
+const CurrencyList = SavingsPlanStateList as any as S.Schema<CurrencyList>;
 export type SavingsPlanDescriptionsList = string[];
-export const SavingsPlanDescriptionsList =
-  ListOfStrings as any as S.Schema<SavingsPlanDescriptionsList>;
+const SavingsPlanDescriptionsList = ListOfStrings as any as S.Schema<SavingsPlanDescriptionsList>;
 export type SavingsPlanServiceCode = string;
 export type SavingsPlanServiceCodeList = string[];
-export const SavingsPlanServiceCodeList =
-  ListOfStrings as any as S.Schema<SavingsPlanServiceCodeList>;
+const SavingsPlanServiceCodeList = ListOfStrings as any as S.Schema<SavingsPlanServiceCodeList>;
 export type SavingsPlanUsageType = string;
 export type SavingsPlanUsageTypeList = string[];
-export const SavingsPlanUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanUsageTypeList>;
+const SavingsPlanUsageTypeList = ListOfStrings as any as S.Schema<SavingsPlanUsageTypeList>;
 export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
-export const SavingsPlanOperationList = ListOfStrings as any as S.Schema<SavingsPlanOperationList>;
+const SavingsPlanOperationList = ListOfStrings as any as S.Schema<SavingsPlanOperationList>;
 export type SavingsPlanOfferingFilterAttribute = "region" | "instanceFamily" | (string & {});
-export const SavingsPlanOfferingFilterAttribute = S.String;
-
 export interface SavingsPlanOfferingFilterElement {
   name?: SavingsPlanOfferingFilterAttribute;
   values?: string[];
 }
-export const SavingsPlanOfferingFilterElement =
-  SavingsPlanOfferingRateFilterElement as any as S.Schema<SavingsPlanOfferingFilterElement>;
 export type SavingsPlanOfferingFiltersList = SavingsPlanOfferingFilterElement[];
-export const SavingsPlanOfferingFiltersList =
+const SavingsPlanOfferingFiltersList =
   SavingsPlanOfferingRateFiltersList as any as S.Schema<SavingsPlanOfferingFiltersList>;
 export interface DescribeSavingsPlansOfferingsRequest {
   offeringIds?: string[];
@@ -701,7 +687,7 @@ export interface DescribeSavingsPlansOfferingsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offeringIds: S.optional(UUIDs),
     paymentOptions: S.optional(SavingsPlanPaymentOptionList),
@@ -730,19 +716,19 @@ export const DescribeSavingsPlansOfferingsRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "DescribeSavingsPlansOfferingsRequest",
 }) as any as S.Schema<DescribeSavingsPlansOfferingsRequest>;
 export type SavingsPlanOfferingPropertyKey = "region" | "instanceFamily" | (string & {});
-export const SavingsPlanOfferingPropertyKey = S.String;
+const SavingsPlanOfferingPropertyKey = S.String;
 
 export interface SavingsPlanOfferingProperty {
   name?: SavingsPlanOfferingPropertyKey;
   value?: string;
 }
-export const SavingsPlanOfferingProperty = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOfferingProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(SavingsPlanOfferingPropertyKey), value: S.optional(S.String) }),
 ).annotate({
   identifier: "SavingsPlanOfferingProperty",
 }) as any as S.Schema<SavingsPlanOfferingProperty>;
 export type SavingsPlanOfferingPropertyList = SavingsPlanOfferingProperty[];
-export const SavingsPlanOfferingPropertyList = /*@__PURE__*/ S.Array(SavingsPlanOfferingProperty);
+const SavingsPlanOfferingPropertyList = /*@__PURE__*/ S.Array(SavingsPlanOfferingProperty);
 export interface SavingsPlanOffering {
   offeringId?: string;
   productTypes?: SavingsPlanProductType[];
@@ -756,7 +742,7 @@ export interface SavingsPlanOffering {
   operation?: string;
   properties?: SavingsPlanOfferingProperty[];
 }
-export const SavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offeringId: S.optional(S.String),
     productTypes: S.optional(SavingsPlanProductTypeList),
@@ -772,12 +758,12 @@ export const SavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SavingsPlanOffering" }) as any as S.Schema<SavingsPlanOffering>;
 export type SavingsPlanOfferingsList = SavingsPlanOffering[];
-export const SavingsPlanOfferingsList = /*@__PURE__*/ S.Array(SavingsPlanOffering);
+const SavingsPlanOfferingsList = /*@__PURE__*/ S.Array(SavingsPlanOffering);
 export interface DescribeSavingsPlansOfferingsResponse {
   searchResults?: SavingsPlanOffering[];
   nextToken?: string;
 }
-export const DescribeSavingsPlansOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSavingsPlansOfferingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchResults: S.optional(SavingsPlanOfferingsList),
     nextToken: S.optional(S.String),
@@ -788,7 +774,7 @@ export const DescribeSavingsPlansOfferingsResponse = /*@__PURE__*/ S.suspend(() 
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/ListTagsForResource" }), svc, auth, proto, ver, rules),
   ),
@@ -798,7 +784,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -807,7 +793,7 @@ export interface ReturnSavingsPlanRequest {
   savingsPlanId: string;
   clientToken?: string;
 }
-export const ReturnSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ReturnSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savingsPlanId: S.String,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -818,34 +804,34 @@ export const ReturnSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ReturnSavingsPlanResponse {
   savingsPlanId?: string;
 }
-export const ReturnSavingsPlanResponse =
+const ReturnSavingsPlanResponse =
   CreateSavingsPlanResponse as any as S.Schema<ReturnSavingsPlanResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = ListOfStrings as any as S.Schema<TagKeyList>;
+const TagKeyList = ListOfStrings as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type CreateSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException

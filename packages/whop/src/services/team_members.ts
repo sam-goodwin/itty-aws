@@ -54,7 +54,7 @@ export type CreateTeamMemberRequestRole =
   | "moderator"
   | "advertiser"
   | "workforce";
-export const CreateTeamMemberRequestRole = S.String;
+const CreateTeamMemberRequestRole = S.String;
 
 export interface CreateTeamMemberRequest {
   /** Account ID, prefixed `biz_`. */
@@ -68,7 +68,7 @@ export interface CreateTeamMemberRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     email: S.optional(S.String),
@@ -84,7 +84,7 @@ export interface TeamMemberAuthorizedRole {
   /** Custom role name. */
   name: string;
 }
-export const TeamMemberAuthorizedRole = /*@__PURE__*/ S.suspend(() =>
+const TeamMemberAuthorizedRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -104,17 +104,17 @@ export type TeamMemberRole =
   | "manager"
   | "workforce"
   | "custom";
-export const TeamMemberRole = S.String;
+const TeamMemberRole = S.String;
 
 /** `joined` for accepted members, `pending` while the invite is pending. */
 export type TeamMemberStatus = "joined" | "pending";
-export const TeamMemberStatus = S.String;
+const TeamMemberStatus = S.String;
 
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -130,7 +130,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -161,7 +161,7 @@ export interface TeamMember {
   /** The user behind this team membership. `null` for an invite sent to an email with no Whop account yet. */
   user: UserSummary | null;
 }
-export const TeamMember = /*@__PURE__*/ S.suspend(() =>
+const TeamMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     authorized_role: S.NullOr(TeamMemberAuthorizedRole),
@@ -180,7 +180,7 @@ export interface DeleteTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
-export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/team_members/{id}", code: 200 })),
@@ -189,7 +189,7 @@ export const DeleteTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTeamMemberResponse {
   success: boolean;
 }
-export const DeleteTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -199,14 +199,14 @@ export interface GetTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
-export const GetTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/team_members/{id}", code: 200 })),
 ).annotate({ identifier: "GetTeamMemberRequest" }) as any as S.Schema<GetTeamMemberRequest>;
 
 export type ListTeamMembersRequestStatus = "joined" | "pending";
-export const ListTeamMembersRequestStatus = S.String;
+const ListTeamMembersRequestStatus = S.String;
 
 export type ListTeamMembersRequestRole =
   | "owner"
@@ -220,13 +220,13 @@ export type ListTeamMembersRequestRole =
   | "manager"
   | "workforce"
   | "custom";
-export const ListTeamMembersRequestRole = S.String;
+const ListTeamMembersRequestRole = S.String;
 
 export type ListTeamMembersRequestOrder = "created_at";
-export const ListTeamMembersRequestOrder = S.String;
+const ListTeamMembersRequestOrder = S.String;
 
 export type ListTeamMembersRequestDirection = "asc" | "desc";
-export const ListTeamMembersRequestDirection = S.String;
+const ListTeamMembersRequestDirection = S.String;
 
 export interface ListTeamMembersRequest {
   /** Account ID, prefixed `biz_`. */
@@ -254,7 +254,7 @@ export interface ListTeamMembersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     status: S.optional(ListTeamMembersRequestStatus.pipe(T.Query())),
@@ -272,7 +272,7 @@ export const ListTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamMembersRequest" }) as any as S.Schema<ListTeamMembersRequest>;
 
 export type ListTeamMembersResponseDataList = Array<TeamMember>;
-export const ListTeamMembersResponseDataList = /*@__PURE__*/ S.Array(
+const ListTeamMembersResponseDataList = /*@__PURE__*/ S.Array(
   TeamMember,
 ) as any as S.Schema<ListTeamMembersResponseDataList>;
 
@@ -282,7 +282,7 @@ export interface ListTeamMembersResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListTeamMembersResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListTeamMembersResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -297,7 +297,7 @@ export interface ListTeamMembersResponse {
   data: ListTeamMembersResponseDataList;
   page_info: ListTeamMembersResponsePageInfo;
 }
-export const ListTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListTeamMembersResponseDataList,
     page_info: ListTeamMembersResponsePageInfo,
@@ -313,7 +313,7 @@ export type UpdateTeamMemberRequestRole =
   | "moderator"
   | "advertiser"
   | "workforce";
-export const UpdateTeamMemberRequestRole = S.String;
+const UpdateTeamMemberRequestRole = S.String;
 
 export interface UpdateTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
@@ -321,7 +321,7 @@ export interface UpdateTeamMemberRequest {
   /** The system role to grant. The Partner role can only be granted to the account's attached, verified partner. */
   role: UpdateTeamMemberRequestRole | (string & {});
 }
-export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     role: UpdateTeamMemberRequestRole,

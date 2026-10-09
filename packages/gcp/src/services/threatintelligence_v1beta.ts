@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request message for MarkAlertAsBenign. */
 export interface MarkAlertAsBenignRequest {}
-export const MarkAlertAsBenignRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const MarkAlertAsBenignRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "MarkAlertAsBenignRequest",
 }) as any as S.Schema<MarkAlertAsBenignRequest>;
 
@@ -73,7 +73,7 @@ export interface BenignProjectsAlertsRequest {
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -89,7 +89,7 @@ export const BenignProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BenignProjectsAlertsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type AlertStateEnum =
   | "STATE_UNSPECIFIED"
@@ -103,7 +103,7 @@ export type AlertStateEnum =
   | "NOT_ACTIONABLE"
   | "BENIGN"
   | "TRACKED_EXTERNALLY";
-export const AlertStateEnum = S.String;
+const AlertStateEnum = S.String;
 
 export type AlertTagsItemEnum =
   | "ALERT_TAG_UNSPECIFIED"
@@ -116,10 +116,10 @@ export type AlertTagsItemEnum =
   | "ALERT_TAG_PASSWORD_HAS_SPECIAL"
   | "ALERT_TAG_MATCH_LOGIN_EMAIL_DOMAIN"
   | "ALERT_TAG_MATCH_SERVICE_DOMAIN";
-export const AlertTagsItemEnum = S.String;
+const AlertTagsItemEnum = S.String;
 
 export type AlertTagsItemEnumList = Array<AlertTagsItemEnum>;
-export const AlertTagsItemEnumList = /*@__PURE__*/ S.Array(
+const AlertTagsItemEnumList = /*@__PURE__*/ S.Array(
   AlertTagsItemEnum,
 ) as any as S.Schema<AlertTagsItemEnumList>;
 
@@ -128,14 +128,14 @@ export type SeverityAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
   | "CONFIDENCE_LEVEL_HIGH";
-export const SeverityAnalysisConfidenceEnum = S.String;
+const SeverityAnalysisConfidenceEnum = S.String;
 
 export type SeverityAnalysisSeverityLevelEnum =
   | "SEVERITY_LEVEL_UNSPECIFIED"
   | "SEVERITY_LEVEL_LOW"
   | "SEVERITY_LEVEL_MEDIUM"
   | "SEVERITY_LEVEL_HIGH";
-export const SeverityAnalysisSeverityLevelEnum = S.String;
+const SeverityAnalysisSeverityLevelEnum = S.String;
 
 /** Structured severity analysis for a threat. */
 export interface SeverityAnalysis {
@@ -146,7 +146,7 @@ export interface SeverityAnalysis {
   /** The level of severity. */
   severityLevel?: SeverityAnalysisSeverityLevelEnum;
 }
-export const SeverityAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SeverityAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasoning: S.optional(S.String),
     confidence: S.optional(SeverityAnalysisConfidenceEnum),
@@ -163,7 +163,7 @@ export type AssociationTypeEnum =
   | "THREAT_INTEL_OBJECT_TYPE_IOC_COLLECTION"
   | "THREAT_INTEL_OBJECT_TYPE_SOFTWARE_AND_TOOLKITS"
   | "THREAT_INTEL_OBJECT_TYPE_VULNERABILITY";
-export const AssociationTypeEnum = S.String;
+const AssociationTypeEnum = S.String;
 
 /** Represents an association with a vulnerability. */
 export interface Association {
@@ -172,7 +172,7 @@ export interface Association {
   /** Required. The type of the association. */
   type?: AssociationTypeEnum;
 }
-export const Association = /*@__PURE__*/ S.suspend(() =>
+const Association = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(AssociationTypeEnum),
@@ -180,9 +180,7 @@ export const Association = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 
 export type AssociationList = Array<Association>;
-export const AssociationList = /*@__PURE__*/ S.Array(
-  Association,
-) as any as S.Schema<AssociationList>;
+const AssociationList = /*@__PURE__*/ S.Array(Association) as any as S.Schema<AssociationList>;
 
 export type VulnerabilityMatchExploitationStateEnum =
   | "EXPLOITATION_STATE_UNSPECIFIED"
@@ -191,7 +189,7 @@ export type VulnerabilityMatchExploitationStateEnum =
   | "EXPLOITATION_STATE_SUSPECTED"
   | "EXPLOITATION_STATE_CONFIRMED"
   | "EXPLOITATION_STATE_WIDESPREAD";
-export const VulnerabilityMatchExploitationStateEnum = S.String;
+const VulnerabilityMatchExploitationStateEnum = S.String;
 
 export type VulnerabilityMatchExploitationVectorsItemEnum =
   | "EXPLOITATION_VECTOR_UNSPECIFIED"
@@ -212,11 +210,9 @@ export type VulnerabilityMatchExploitationVectorsItemEnum =
   | "UNSPECIFIED_REMOTE_VECTOR"
   | "VPN_ACCESS"
   | "WIFI_ACCESS";
-export const VulnerabilityMatchExploitationVectorsItemEnum = S.String;
-
 export type VulnerabilityMatchExploitationVectorsItemEnumList =
   Array<VulnerabilityMatchExploitationVectorsItemEnum>;
-export const VulnerabilityMatchExploitationVectorsItemEnumList =
+const VulnerabilityMatchExploitationVectorsItemEnumList =
   AlertTagsItemEnumList as any as S.Schema<VulnerabilityMatchExploitationVectorsItemEnumList>;
 
 export type VulnerabilityMatchExploitationConsequencesItemEnum =
@@ -233,11 +229,9 @@ export type VulnerabilityMatchExploitationConsequencesItemEnum =
   | "SECURITY_BYPASS"
   | "CONTAINER_ESCAPE"
   | "SPOOFING";
-export const VulnerabilityMatchExploitationConsequencesItemEnum = S.String;
-
 export type VulnerabilityMatchExploitationConsequencesItemEnumList =
   Array<VulnerabilityMatchExploitationConsequencesItemEnum>;
-export const VulnerabilityMatchExploitationConsequencesItemEnumList =
+const VulnerabilityMatchExploitationConsequencesItemEnumList =
   AlertTagsItemEnumList as any as S.Schema<VulnerabilityMatchExploitationConsequencesItemEnumList>;
 
 /** Contains details about a product fix. */
@@ -251,7 +245,7 @@ export interface ProductFix {
   /** Optional. The URI of the fix. */
   uri?: string;
 }
-export const ProductFix = /*@__PURE__*/ S.suspend(() =>
+const ProductFix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -261,7 +255,7 @@ export const ProductFix = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProductFix" }) as any as S.Schema<ProductFix>;
 
 export type ProductFixList = Array<ProductFix>;
-export const ProductFixList = /*@__PURE__*/ S.Array(ProductFix) as any as S.Schema<ProductFixList>;
+const ProductFixList = /*@__PURE__*/ S.Array(ProductFix) as any as S.Schema<ProductFixList>;
 
 export type VulnerabilityMatchRiskRatingEnum =
   | "RISK_RATING_UNSPECIFIED"
@@ -270,7 +264,7 @@ export type VulnerabilityMatchRiskRatingEnum =
   | "HIGH"
   | "CRITICAL"
   | "UNRATED";
-export const VulnerabilityMatchRiskRatingEnum = S.String;
+const VulnerabilityMatchRiskRatingEnum = S.String;
 
 export type PublicExploitExploitGradeEnum =
   | "EXPLOIT_GRADE_UNSPECIFIED"
@@ -280,14 +274,14 @@ export type PublicExploitExploitGradeEnum =
   | "WEAPONIZED"
   | "SCANNER"
   | "FAKE";
-export const PublicExploitExploitGradeEnum = S.String;
+const PublicExploitExploitGradeEnum = S.String;
 
 export type PublicExploitExploitReliabilityEnum =
   | "EXPLOIT_RELIABILITY_UNSPECIFIED"
   | "UNREVIEWED"
   | "REVIEWED"
   | "TESTED";
-export const PublicExploitExploitReliabilityEnum = S.String;
+const PublicExploitExploitReliabilityEnum = S.String;
 
 /** Contains details about a public exploit. */
 export interface PublicExploit {
@@ -304,7 +298,7 @@ export interface PublicExploit {
   /** Optional. The reliability of the exploit. Ex: "Unreviewed". */
   exploitReliability?: PublicExploitExploitReliabilityEnum;
 }
-export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
+const PublicExploit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeBytes: S.optional(S.String),
     exploitName: S.optional(S.String),
@@ -316,7 +310,7 @@ export const PublicExploit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublicExploit" }) as any as S.Schema<PublicExploit>;
 
 export type PublicExploitList = Array<PublicExploit>;
-export const PublicExploitList = /*@__PURE__*/ S.Array(
+const PublicExploitList = /*@__PURE__*/ S.Array(
   PublicExploit,
 ) as any as S.Schema<PublicExploitList>;
 
@@ -327,7 +321,7 @@ export type VulnerabilityMatchPriorityEnum =
   | "P2"
   | "P3"
   | "P4";
-export const VulnerabilityMatchPriorityEnum = S.String;
+const VulnerabilityMatchPriorityEnum = S.String;
 
 /** Contains details about a vulnerability match. */
 export interface VulnerabilityMatch {
@@ -366,7 +360,7 @@ export interface VulnerabilityMatch {
   /** Optional. The EPSS score, representing the probability of exploitation. Example: 0.87. */
   epssScore?: number;
 }
-export const VulnerabilityMatch = /*@__PURE__*/ S.suspend(() =>
+const VulnerabilityMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.optional(S.String),
     matchedTechnologies: S.optional(StringList),
@@ -393,7 +387,7 @@ export interface TargetTechnologyAlertDetail {
   /** Optional. The vulnerability match details. */
   vulnerabilityMatch?: VulnerabilityMatch;
 }
-export const TargetTechnologyAlertDetail = /*@__PURE__*/ S.suspend(() =>
+const TargetTechnologyAlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vulnerabilityMatch: S.optional(VulnerabilityMatch),
   }),
@@ -416,7 +410,7 @@ export interface CommunicationContext {
   /** Optional. Service from the collection event origin (e.g. forum or chat service name). */
   serviceName?: string;
 }
-export const CommunicationContext = /*@__PURE__*/ S.suspend(() =>
+const CommunicationContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelPath: S.optional(S.String),
     channelDescription: S.optional(S.String),
@@ -436,7 +430,7 @@ export interface DiscoveryDocument {
   /** Output only. The classification/type of the document (e.g. `COMMUNICATION`, `DDW_COMMUNICATION`, `message`). */
   documentType?: string;
 }
-export const DiscoveryDocument = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     communicationContext: S.optional(CommunicationContext),
     documentId: S.optional(S.String),
@@ -445,7 +439,7 @@ export const DiscoveryDocument = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DiscoveryDocument" }) as any as S.Schema<DiscoveryDocument>;
 
 export type DiscoveryDocumentList = Array<DiscoveryDocument>;
-export const DiscoveryDocumentList = /*@__PURE__*/ S.Array(
+const DiscoveryDocumentList = /*@__PURE__*/ S.Array(
   DiscoveryDocument,
 ) as any as S.Schema<DiscoveryDocumentList>;
 
@@ -458,7 +452,7 @@ export interface InsiderThreatAlertDetail {
   /** Required. The severity of the Insider Threat alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
   severity?: string;
 }
-export const InsiderThreatAlertDetail = /*@__PURE__*/ S.suspend(() =>
+const InsiderThreatAlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryDocuments: S.optional(DiscoveryDocumentList),
     discoveryDocumentIds: S.optional(StringList),
@@ -475,7 +469,7 @@ export interface InitialAccessBrokerAlertDetail {
   /** Output only. New structured metadata payload. */
   discoveryDocuments?: DiscoveryDocumentList;
 }
-export const InitialAccessBrokerAlertDetail = /*@__PURE__*/ S.suspend(() =>
+const InitialAccessBrokerAlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(S.String),
     discoveryDocumentIds: S.optional(StringList),
@@ -494,7 +488,7 @@ export interface ThreatAttributionDetails {
   /** Optional. The threat actors associated with the target. */
   actors?: StringList;
 }
-export const ThreatAttributionDetails = /*@__PURE__*/ S.suspend(() =>
+const ThreatAttributionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collections: S.optional(StringList),
     malware: S.optional(StringList),
@@ -507,7 +501,7 @@ export interface DomainMonitoringDomainDetails {
   /** Required. The domain name to match against. */
   domain?: string;
 }
-export const DomainMonitoringDomainDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringDomainDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
   }),
@@ -522,7 +516,7 @@ export type DomainMonitoringGtiDetailsVerdictEnum =
   | "DOMAIN_MONITORING_GTI_VERDICT_SUSPICIOUS"
   | "DOMAIN_MONITORING_GTI_VERDICT_MALICIOUS"
   | "DOMAIN_MONITORING_GTI_VERDICT_UNKNOWN";
-export const DomainMonitoringGtiDetailsVerdictEnum = S.String;
+const DomainMonitoringGtiDetailsVerdictEnum = S.String;
 
 /** Details about the detection vendors. */
 export interface AVDetections {
@@ -531,7 +525,7 @@ export interface AVDetections {
   /** Optional. Number of vendors that detected the threat. */
   detectedVendorCount?: number;
 }
-export const AVDetections = /*@__PURE__*/ S.suspend(() =>
+const AVDetections = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalVendorCount: S.optional(S.Number),
     detectedVendorCount: S.optional(S.Number),
@@ -553,7 +547,7 @@ export interface DomainMonitoringGtiDetails {
   /** Optional. Detection counts across vendor feeds. */
   avDetections?: AVDetections;
 }
-export const DomainMonitoringGtiDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringGtiDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainPermutation: S.optional(S.String),
     verdict: S.optional(DomainMonitoringGtiDetailsVerdictEnum),
@@ -575,7 +569,7 @@ export interface Relationships {
   /** Optional. Subdomains associated with the target domain or URL. */
   subdomains?: StringList;
 }
-export const Relationships = /*@__PURE__*/ S.suspend(() =>
+const Relationships = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedUrls: S.optional(StringList),
     siblingDomains: S.optional(StringList),
@@ -600,7 +594,7 @@ export interface DomainMonitoringDnsRecord {
   /** Optional. The resolved IP address. */
   resolvedIp?: string;
 }
-export const DomainMonitoringDnsRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringDnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordData: S.optional(S.String),
     type: S.optional(S.String),
@@ -615,7 +609,7 @@ export const DomainMonitoringDnsRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainMonitoringDnsRecord>;
 
 export type DomainMonitoringDnsRecordList = Array<DomainMonitoringDnsRecord>;
-export const DomainMonitoringDnsRecordList = /*@__PURE__*/ S.Array(
+const DomainMonitoringDnsRecordList = /*@__PURE__*/ S.Array(
   DomainMonitoringDnsRecord,
 ) as any as S.Schema<DomainMonitoringDnsRecordList>;
 
@@ -626,7 +620,7 @@ export interface DomainMonitoringDnsDetails {
   /** Optional. The time the DNS details were retrieved. */
   retrievalTime?: string;
 }
-export const DomainMonitoringDnsDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringDnsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsRecords: S.optional(DomainMonitoringDnsRecordList),
     retrievalTime: S.optional(S.String),
@@ -642,7 +636,7 @@ export interface DomainMonitoringWhoIsDetails {
   /** Optional. The whois details of the domain. */
   whois?: string;
 }
-export const DomainMonitoringWhoIsDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringWhoIsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrievalTime: S.optional(S.String),
     whois: S.optional(S.String),
@@ -658,7 +652,7 @@ export interface CertificateDetails {
   /** Optional. The SSL certificate issuer. */
   issuer?: string;
 }
-export const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
+const CertificateDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectAlternativeNames: S.optional(StringList),
     issuer: S.optional(S.String),
@@ -672,7 +666,7 @@ export interface Infrastructure {
   /** Optional. SSL certificate details. */
   certificateDetails?: CertificateDetails;
 }
-export const Infrastructure = /*@__PURE__*/ S.suspend(() =>
+const Infrastructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urlResponse: S.optional(S.String),
     certificateDetails: S.optional(CertificateDetails),
@@ -692,7 +686,7 @@ export interface DnsRegistrationDetails {
   /** Optional. The specific timestamp when the domain registration was created. */
   registrationTime?: string;
 }
-export const DnsRegistrationDetails = /*@__PURE__*/ S.suspend(() =>
+const DnsRegistrationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrantCountry: S.optional(S.String),
     registrar: S.optional(S.String),
@@ -707,7 +701,7 @@ export interface DomainMonitoringUrlDetails {
   /** Required. The URL to match against. */
   url?: string;
 }
-export const DomainMonitoringUrlDetails = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringUrlDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -742,7 +736,7 @@ export interface DomainMonitoringAlertDetail {
   /** Details specific to a monitored URL. */
   urlDetails?: DomainMonitoringUrlDetails;
 }
-export const DomainMonitoringAlertDetail = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringAlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     threatAttributionDetails: S.optional(ThreatAttributionDetails),
     protectedDomain: S.optional(DomainMonitoringDomainDetails),
@@ -770,7 +764,7 @@ export interface DataLeakAlertDetail {
   /** Required. The severity of the Data Leak alert. Allowed values are: * `LOW` * `MEDIUM` * `HIGH` * `CRITICAL` */
   severity?: string;
 }
-export const DataLeakAlertDetail = /*@__PURE__*/ S.suspend(() =>
+const DataLeakAlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryDocumentIds: S.optional(StringList),
     discoveryDocuments: S.optional(DiscoveryDocumentList),
@@ -793,7 +787,7 @@ export interface AlertDetail {
   /** Data Leak alert detail type. */
   dataLeak?: DataLeakAlertDetail;
 }
-export const AlertDetail = /*@__PURE__*/ S.suspend(() =>
+const AlertDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detailType: S.optional(S.String),
     targetTechnology: S.optional(TargetTechnologyAlertDetail),
@@ -815,7 +809,7 @@ export interface Audit {
   /** Output only. Time of creation. */
   createTime?: string;
 }
-export const Audit = /*@__PURE__*/ S.suspend(() =>
+const Audit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: S.optional(S.String),
     updater: S.optional(S.String),
@@ -830,14 +824,14 @@ export type PriorityAnalysisPriorityLevelEnum =
   | "PRIORITY_LEVEL_MEDIUM"
   | "PRIORITY_LEVEL_HIGH"
   | "PRIORITY_LEVEL_CRITICAL";
-export const PriorityAnalysisPriorityLevelEnum = S.String;
+const PriorityAnalysisPriorityLevelEnum = S.String;
 
 export type PriorityAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_UNSPECIFIED"
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
   | "CONFIDENCE_LEVEL_HIGH";
-export const PriorityAnalysisConfidenceEnum = S.String;
+const PriorityAnalysisConfidenceEnum = S.String;
 
 /** Structured priority analysis for a threat. */
 export interface PriorityAnalysis {
@@ -848,7 +842,7 @@ export interface PriorityAnalysis {
   /** Human-readable explanation from the model, detailing why a particular result is considered to have a certain priority. */
   reasoning?: string;
 }
-export const PriorityAnalysis = /*@__PURE__*/ S.suspend(() =>
+const PriorityAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorityLevel: S.optional(PriorityAnalysisPriorityLevelEnum),
     confidence: S.optional(PriorityAnalysisConfidenceEnum),
@@ -861,14 +855,14 @@ export type RelevanceAnalysisRelevanceLevelEnum =
   | "RELEVANCE_LEVEL_LOW"
   | "RELEVANCE_LEVEL_MEDIUM"
   | "RELEVANCE_LEVEL_HIGH";
-export const RelevanceAnalysisRelevanceLevelEnum = S.String;
+const RelevanceAnalysisRelevanceLevelEnum = S.String;
 
 export type RelevanceAnalysisConfidenceEnum =
   | "CONFIDENCE_LEVEL_UNSPECIFIED"
   | "CONFIDENCE_LEVEL_LOW"
   | "CONFIDENCE_LEVEL_MEDIUM"
   | "CONFIDENCE_LEVEL_HIGH";
-export const RelevanceAnalysisConfidenceEnum = S.String;
+const RelevanceAnalysisConfidenceEnum = S.String;
 
 /** Details the evidence used to determine the relevance verdict. */
 export interface Evidence {
@@ -877,7 +871,7 @@ export interface Evidence {
   /** A list of semantic themes or descriptions unique to one source or semantically distant. */
   distinctThemes?: StringList;
 }
-export const Evidence = /*@__PURE__*/ S.suspend(() =>
+const Evidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonThemes: S.optional(StringList),
     distinctThemes: S.optional(StringList),
@@ -897,7 +891,7 @@ export interface RelevanceAnalysis {
   /** Evidence supporting the verdict, including matched and unmatched items. */
   evidence?: Evidence;
 }
-export const RelevanceAnalysis = /*@__PURE__*/ S.suspend(() =>
+const RelevanceAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasoning: S.optional(S.String),
     relevanceLevel: S.optional(RelevanceAnalysisRelevanceLevelEnum),
@@ -944,7 +938,7 @@ export interface Alert {
   /** Output only. A short title for the alert. */
   displayName?: string;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findings: S.optional(StringList),
     externalId: S.optional(S.String),
@@ -971,7 +965,7 @@ export interface MarkAlertAsDuplicateRequest {
   /** Optional. Name of the alert to mark as a duplicate of. Format: projects/{project}/alerts/{alert} */
   duplicateOf?: string;
 }
-export const MarkAlertAsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkAlertAsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duplicateOf: S.optional(S.String),
   }),
@@ -985,7 +979,7 @@ export interface DuplicateProjectsAlertsRequest {
   /** Request body */
   body?: MarkAlertAsDuplicateRequest;
 }
-export const DuplicateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsDuplicateRequest.pipe(T.HttpBody())),
@@ -1006,7 +1000,7 @@ export interface EnumerateFacetsProjectsAlertsRequest {
   /** Optional. Filter on what alerts will be enumerated. */
   filter?: string;
 }
-export const EnumerateFacetsProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnumerateFacetsProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1028,7 +1022,7 @@ export interface FacetCount {
   /** Count of records with the value. */
   count?: number;
 }
-export const FacetCount = /*@__PURE__*/ S.suspend(() =>
+const FacetCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     count: S.optional(S.Number),
@@ -1036,7 +1030,7 @@ export const FacetCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FacetCount" }) as any as S.Schema<FacetCount>;
 
 export type FacetCountList = Array<FacetCount>;
-export const FacetCountList = /*@__PURE__*/ S.Array(FacetCount) as any as S.Schema<FacetCountList>;
+const FacetCountList = /*@__PURE__*/ S.Array(FacetCount) as any as S.Schema<FacetCountList>;
 
 /** Facet represents a sub element of a resource for filtering. The results from this method are used to populate the filterable facets in the UI. */
 export interface Facet {
@@ -1053,7 +1047,7 @@ export interface Facet {
   /** The type of the facet. Options include "string", "int", "float", "bool", "enum", "timestamp", "user" and are useful to show the right sort of UI controls when building a AIP-160 style filtering string. */
   facetType?: string;
 }
-export const Facet = /*@__PURE__*/ S.suspend(() =>
+const Facet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facet: S.optional(S.String),
     minValue: S.optional(S.String),
@@ -1065,14 +1059,14 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Facet" }) as any as S.Schema<Facet>;
 
 export type FacetList = Array<Facet>;
-export const FacetList = /*@__PURE__*/ S.Array(Facet) as any as S.Schema<FacetList>;
+const FacetList = /*@__PURE__*/ S.Array(Facet) as any as S.Schema<FacetList>;
 
 /** Response message for EnumerateAlertFacets. */
 export interface EnumerateAlertFacetsResponse {
   /** List of facets and the counts. */
   facets?: FacetList;
 }
-export const EnumerateAlertFacetsResponse = /*@__PURE__*/ S.suspend(() =>
+const EnumerateAlertFacetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facets: S.optional(FacetList),
   }),
@@ -1082,15 +1076,13 @@ export const EnumerateAlertFacetsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsEscalated. */
 export type MarkAlertAsEscalatedRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsEscalatedRequest = MarkAlertAsBenignRequest;
-
 export interface EscalateProjectsAlertsRequest {
   /** Required. Name of the alert to mark as escalated. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const EscalateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const EscalateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -1107,15 +1099,13 @@ export const EscalateProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsFalsePositive. */
 export type MarkAlertAsFalsePositiveRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsFalsePositiveRequest = MarkAlertAsBenignRequest;
-
 export interface FalsePositiveProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a false positive. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const FalsePositiveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const FalsePositiveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -1137,7 +1127,7 @@ export interface GenerateOrgProfileConfigurationRequest {
   /** Required. The domain of the organization to generate the profile for. */
   domain?: string;
 }
-export const GenerateOrgProfileConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOrgProfileConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     domain: S.optional(S.String),
@@ -1152,7 +1142,7 @@ export interface GenerateOrgProfileProjectsRequest {
   /** Request body */
   body?: GenerateOrgProfileConfigurationRequest;
 }
-export const GenerateOrgProfileProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOrgProfileProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateOrgProfileConfigurationRequest.pipe(T.HttpBody())),
@@ -1168,15 +1158,10 @@ export const GenerateOrgProfileProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateOrgProfileProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1187,7 +1172,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -1208,7 +1193,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -1222,7 +1207,7 @@ export interface GetPasswordProjectsAlertsRequest {
   /** Required. Name of the alert to get password for. Format: projects/{project}/alerts/{alert} */
   name: string;
 }
-export const GetPasswordProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPasswordProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1241,7 +1226,7 @@ export interface GetPasswordResponse {
   /** The decrypted cleartext password for the compromised credential. */
   password?: string;
 }
-export const GetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(S.String),
   }),
@@ -1251,7 +1236,7 @@ export interface GetProjectsAlertsRequest {
   /** Required. Name of the alert to get. Format: projects/{project}/alerts/{alert} */
   name: string;
 }
-export const GetProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1267,7 +1252,7 @@ export interface GetProjectsAlertsDocumentsRequest {
   /** Required. Name of the alert document to get. Format: projects/{project}/alerts/{alert}/documents/{document} */
   name: string;
 }
-export const GetProjectsAlertsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsAlertsDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1288,7 +1273,7 @@ export interface AlertDocumentTranslation {
   /** Output only. The translated title of the document. */
   translatedTitle?: string;
 }
-export const AlertDocumentTranslation = /*@__PURE__*/ S.suspend(() =>
+const AlertDocumentTranslation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     translatedContent: S.optional(S.String),
     translatedTitle: S.optional(S.String),
@@ -1324,7 +1309,7 @@ export interface AlertDocument {
   /** Output only. The author of the document. */
   author?: string;
 }
-export const AlertDocument = /*@__PURE__*/ S.suspend(() =>
+const AlertDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionTime: S.optional(S.String),
     source: S.optional(S.String),
@@ -1346,7 +1331,7 @@ export interface GetProjectsConfigurationsRequest {
   /** Required. Name of the configuration to get. Format: vaults/{vault}/configurations/{configuration} */
   name: string;
 }
-export const GetProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1361,7 +1346,7 @@ export const GetProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsConfigurationsRequest>;
 
 export type ConfigurationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | "DEPRECATED";
-export const ConfigurationStateEnum = S.String;
+const ConfigurationStateEnum = S.String;
 
 /** Legacy metadata associated with this scenario/monitor. */
 export interface LegacyMetadata {
@@ -1398,7 +1383,7 @@ export interface LegacyMetadata {
   /** Output only. ID of the tenant owning the monitor. */
   tenantId?: string;
 }
-export const LegacyMetadata = /*@__PURE__*/ S.suspend(() =>
+const LegacyMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailNotificationImmediate: S.optional(S.Boolean),
     legacyMonitorId: S.optional(S.String),
@@ -1420,7 +1405,7 @@ export const LegacyMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LegacyMetadata" }) as any as S.Schema<LegacyMetadata>;
 
 export type DocumentQueryQueryTypeEnum = "QUERY_TYPE_UNSPECIFIED" | "JSON" | "STRING";
-export const DocumentQueryQueryTypeEnum = S.String;
+const DocumentQueryQueryTypeEnum = S.String;
 
 /** Represents a query to match documents. */
 export interface DocumentQuery {
@@ -1429,7 +1414,7 @@ export interface DocumentQuery {
   /** Required. The query string. */
   query?: string;
 }
-export const DocumentQuery = /*@__PURE__*/ S.suspend(() =>
+const DocumentQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryType: S.optional(DocumentQueryQueryTypeEnum),
     query: S.optional(S.String),
@@ -1447,7 +1432,7 @@ export type CustomThreatScenarioConfigScenarioTypeEnum =
   | "SUPPLY_CHAIN_COMPROMISE"
   | "CARD_SHOPS"
   | "CUSTOM_MONITOR";
-export const CustomThreatScenarioConfigScenarioTypeEnum = S.String;
+const CustomThreatScenarioConfigScenarioTypeEnum = S.String;
 
 /** CustomThreatScenarioConfig represents a user-defined threat scenario configuration. */
 export interface CustomThreatScenarioConfig {
@@ -1462,7 +1447,7 @@ export interface CustomThreatScenarioConfig {
   /** Optional. The custom threat scenario type used to create this configuration. */
   scenarioType?: CustomThreatScenarioConfigScenarioTypeEnum | (string & {});
 }
-export const CustomThreatScenarioConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomThreatScenarioConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compiledLuceneQuery: S.optional(S.String),
     documentCondition: S.optional(S.String),
@@ -1479,14 +1464,14 @@ export interface DomainMonitoringDomain {
   /** The domain name to match against. */
   domain?: string;
 }
-export const DomainMonitoringDomain = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainMonitoringDomain" }) as any as S.Schema<DomainMonitoringDomain>;
 
 export type DomainMonitoringDomainList = Array<DomainMonitoringDomain>;
-export const DomainMonitoringDomainList = /*@__PURE__*/ S.Array(
+const DomainMonitoringDomainList = /*@__PURE__*/ S.Array(
   DomainMonitoringDomain,
 ) as any as S.Schema<DomainMonitoringDomainList>;
 
@@ -1495,7 +1480,7 @@ export interface DomainMonitoringConfig {
   /** The domains to use as "seeds" for Suspicious Domain Monitoring. */
   domains?: DomainMonitoringDomainList;
 }
-export const DomainMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainMonitoringDomainList),
   }),
@@ -1506,7 +1491,7 @@ export interface DomainMonitoringFeatureConfig {
   /** Optional. Whether the Domain Monitoring feature is disabled for the domain. */
   disabled?: boolean;
 }
-export const DomainMonitoringFeatureConfig = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringFeatureConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
   }),
@@ -1515,7 +1500,7 @@ export const DomainMonitoringFeatureConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainMonitoringFeatureConfig>;
 
 export type DomainSettingStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "VERIFIED";
-export const DomainSettingStateEnum = S.String;
+const DomainSettingStateEnum = S.String;
 
 /** Feature settings and toggles for a single specific domain. */
 export interface DomainSetting {
@@ -1526,7 +1511,7 @@ export interface DomainSetting {
   /** Output only. The verification state of the domain. */
   state?: DomainSettingStateEnum | (string & {});
 }
-export const DomainSetting = /*@__PURE__*/ S.suspend(() =>
+const DomainSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainMonitoringConfig: S.optional(DomainMonitoringFeatureConfig),
     domain: S.optional(S.String),
@@ -1535,7 +1520,7 @@ export const DomainSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainSetting" }) as any as S.Schema<DomainSetting>;
 
 export type DomainSettingList = Array<DomainSetting>;
-export const DomainSettingList = /*@__PURE__*/ S.Array(
+const DomainSettingList = /*@__PURE__*/ S.Array(
   DomainSetting,
 ) as any as S.Schema<DomainSettingList>;
 
@@ -1544,7 +1529,7 @@ export interface DomainConfiguration {
   /** Optional. A list of settings for individual domains. */
   domainSettings?: DomainSettingList;
 }
-export const DomainConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DomainConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainSettings: S.optional(DomainSettingList),
   }),
@@ -1557,7 +1542,7 @@ export interface CustomerProfileWebPresence {
   /** Required. The domain name of the web presence. */
   domain?: string;
 }
-export const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citationIds: S.optional(StringList),
     domain: S.optional(S.String),
@@ -1567,7 +1552,7 @@ export const CustomerProfileWebPresence = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerProfileWebPresence>;
 
 export type CustomerProfileWebPresenceList = Array<CustomerProfileWebPresence>;
-export const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
+const CustomerProfileWebPresenceList = /*@__PURE__*/ S.Array(
   CustomerProfileWebPresence,
 ) as any as S.Schema<CustomerProfileWebPresenceList>;
 
@@ -1580,7 +1565,7 @@ export interface CustomerProfileProduct {
   /** Required. The name of the product. */
   product?: string;
 }
-export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     citationIds: S.optional(StringList),
@@ -1589,7 +1574,7 @@ export const CustomerProfileProduct = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfileProduct" }) as any as S.Schema<CustomerProfileProduct>;
 
 export type CustomerProfileProductList = Array<CustomerProfileProduct>;
-export const CustomerProfileProductList = /*@__PURE__*/ S.Array(
+const CustomerProfileProductList = /*@__PURE__*/ S.Array(
   CustomerProfileProduct,
 ) as any as S.Schema<CustomerProfileProductList>;
 
@@ -1608,7 +1593,7 @@ export interface CustomerProfileContactInfo {
   /** The phone number of the contact. */
   phone?: string;
 }
-export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     citationIds: S.optional(StringList),
@@ -1622,7 +1607,7 @@ export const CustomerProfileContactInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerProfileContactInfo>;
 
 export type CustomerProfileContactInfoList = Array<CustomerProfileContactInfo>;
-export const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
+const CustomerProfileContactInfoList = /*@__PURE__*/ S.Array(
   CustomerProfileContactInfo,
 ) as any as S.Schema<CustomerProfileContactInfoList>;
 
@@ -1633,7 +1618,7 @@ export interface CustomerProfileIndustry {
   /** Optional. The citation ids for the industry. */
   citationIds?: StringList;
 }
-export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     industry: S.optional(S.String),
     citationIds: S.optional(StringList),
@@ -1641,7 +1626,7 @@ export const CustomerProfileIndustry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfileIndustry" }) as any as S.Schema<CustomerProfileIndustry>;
 
 export type CustomerProfileIndustryList = Array<CustomerProfileIndustry>;
-export const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
+const CustomerProfileIndustryList = /*@__PURE__*/ S.Array(
   CustomerProfileIndustry,
 ) as any as S.Schema<CustomerProfileIndustryList>;
 
@@ -1652,7 +1637,7 @@ export interface CustomerProfileCompany {
   /** Optional. The citation ids for the company. */
   citationIds?: StringList;
 }
-export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: S.optional(S.String),
     citationIds: S.optional(StringList),
@@ -1660,7 +1645,7 @@ export const CustomerProfileCompany = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfileCompany" }) as any as S.Schema<CustomerProfileCompany>;
 
 export type CustomerProfileCompanyList = Array<CustomerProfileCompany>;
-export const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
+const CustomerProfileCompanyList = /*@__PURE__*/ S.Array(
   CustomerProfileCompany,
 ) as any as S.Schema<CustomerProfileCompanyList>;
 
@@ -1671,7 +1656,7 @@ export interface CustomerProfileCitedString {
   /** Required. The value of the string. */
   value?: string;
 }
-export const CustomerProfileCitedString = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileCitedString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citationIds: S.optional(StringList),
     value: S.optional(S.String),
@@ -1707,7 +1692,7 @@ export interface CustomerProfileSummary {
   /** Optional. A narrative summary of brands. */
   brands?: CustomerProfileCitedString;
 }
-export const CustomerProfileSummary = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     industry: S.optional(CustomerProfileCitedString),
     headquarters: S.optional(CustomerProfileCitedString),
@@ -1731,7 +1716,7 @@ export interface CustomerProfileSecurityConsiderations {
   /** Optional. A series of considerations for the security of the organization, such as "high risk of compromise" or "vulnerable to cyberbullying". */
   considerations?: StringList;
 }
-export const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileSecurityConsiderations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     note: S.optional(S.String),
     considerations: S.optional(StringList),
@@ -1751,7 +1736,7 @@ export interface CustomerProfileLocation {
   /** Optional. The citation ids for the location. */
   citationIds?: StringList;
 }
-export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brand: S.optional(S.String),
     facilityType: S.optional(S.String),
@@ -1761,7 +1746,7 @@ export const CustomerProfileLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfileLocation" }) as any as S.Schema<CustomerProfileLocation>;
 
 export type CustomerProfileLocationList = Array<CustomerProfileLocation>;
-export const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
+const CustomerProfileLocationList = /*@__PURE__*/ S.Array(
   CustomerProfileLocation,
 ) as any as S.Schema<CustomerProfileLocationList>;
 
@@ -1774,7 +1759,7 @@ export interface CustomerProfilePerson {
   /** Required. The name of the person. */
   name?: string;
 }
-export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citationIds: S.optional(StringList),
     title: S.optional(S.String),
@@ -1783,7 +1768,7 @@ export const CustomerProfilePerson = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfilePerson" }) as any as S.Schema<CustomerProfilePerson>;
 
 export type CustomerProfilePersonList = Array<CustomerProfilePerson>;
-export const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
+const CustomerProfilePersonList = /*@__PURE__*/ S.Array(
   CustomerProfilePerson,
 ) as any as S.Schema<CustomerProfilePersonList>;
 
@@ -1800,7 +1785,7 @@ export interface CustomerProfileCitation {
   /** Required. The source of the citation. */
   source?: string;
 }
-export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retrievalTime: S.optional(S.String),
     citationId: S.optional(S.String),
@@ -1811,7 +1796,7 @@ export const CustomerProfileCitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomerProfileCitation" }) as any as S.Schema<CustomerProfileCitation>;
 
 export type CustomerProfileCitationList = Array<CustomerProfileCitation>;
-export const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
+const CustomerProfileCitationList = /*@__PURE__*/ S.Array(
   CustomerProfileCitation,
 ) as any as S.Schema<CustomerProfileCitationList>;
 
@@ -1822,7 +1807,7 @@ export interface CustomerProfileTechnology {
   /** Required. The name of the technology. */
   technology?: string;
 }
-export const CustomerProfileTechnology = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileTechnology = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     citationIds: S.optional(StringList),
     technology: S.optional(S.String),
@@ -1832,7 +1817,7 @@ export const CustomerProfileTechnology = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomerProfileTechnology>;
 
 export type CustomerProfileTechnologyList = Array<CustomerProfileTechnology>;
-export const CustomerProfileTechnologyList = /*@__PURE__*/ S.Array(
+const CustomerProfileTechnologyList = /*@__PURE__*/ S.Array(
   CustomerProfileTechnology,
 ) as any as S.Schema<CustomerProfileTechnologyList>;
 
@@ -1867,7 +1852,7 @@ export interface CustomerProfileConfig {
   /** Optional. Technologies associated with the organization. */
   technologies?: CustomerProfileTechnologyList;
 }
-export const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomerProfileConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgSummary: S.optional(S.String),
     webPresences: S.optional(CustomerProfileWebPresenceList),
@@ -1893,7 +1878,7 @@ export type TechnologyWatchListAlertThresholdRiskRatingMinimumEnum =
   | "HIGH"
   | "CRITICAL"
   | "UNRATED";
-export const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum = S.String;
+const TechnologyWatchListAlertThresholdRiskRatingMinimumEnum = S.String;
 
 export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
   | "PRIORITY_UNSPECIFIED"
@@ -1902,7 +1887,7 @@ export type TechnologyWatchListAlertThresholdPriorityMinimumEnum =
   | "P2"
   | "P3"
   | "P4";
-export const TechnologyWatchListAlertThresholdPriorityMinimumEnum = S.String;
+const TechnologyWatchListAlertThresholdPriorityMinimumEnum = S.String;
 
 export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   | "EXPLOITATION_STATE_UNSPECIFIED"
@@ -1911,15 +1896,14 @@ export type TechnologyWatchListAlertThresholdExploitationStatesItemEnum =
   | "EXPLOITATION_STATE_SUSPECTED"
   | "EXPLOITATION_STATE_CONFIRMED"
   | "EXPLOITATION_STATE_WIDESPREAD";
-export const TechnologyWatchListAlertThresholdExploitationStatesItemEnum = S.String;
+const TechnologyWatchListAlertThresholdExploitationStatesItemEnum = S.String;
 
 export type TechnologyWatchListAlertThresholdExploitationStatesItemEnumList = Array<
   TechnologyWatchListAlertThresholdExploitationStatesItemEnum | (string & {})
 >;
-export const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList =
-  /*@__PURE__*/ S.Array(
-    TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
-  ) as any as S.Schema<TechnologyWatchListAlertThresholdExploitationStatesItemEnumList>;
+const TechnologyWatchListAlertThresholdExploitationStatesItemEnumList = /*@__PURE__*/ S.Array(
+  TechnologyWatchListAlertThresholdExploitationStatesItemEnum,
+) as any as S.Schema<TechnologyWatchListAlertThresholdExploitationStatesItemEnumList>;
 
 /** TechnologyWatchListAlertThreshold contains the thresholds for alerting. */
 export interface TechnologyWatchListAlertThreshold {
@@ -1934,7 +1918,7 @@ export interface TechnologyWatchListAlertThreshold {
   /** Optional. The minimum epss score for the alert. Ex: 0.8. Valid range is [0.0, 1.0]. */
   epssScoreMinimum?: number;
 }
-export const TechnologyWatchListAlertThreshold = /*@__PURE__*/ S.suspend(() =>
+const TechnologyWatchListAlertThreshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     riskRatingMinimum: S.optional(TechnologyWatchListAlertThresholdRiskRatingMinimumEnum),
     cvssScoreMinimum: S.optional(S.Number),
@@ -1953,7 +1937,7 @@ export interface TechnologyWatchListConfig {
   /** Optional. Alert thresholds to effectively reduce noise. */
   alertThreshold?: TechnologyWatchListAlertThreshold;
 }
-export const TechnologyWatchListConfig = /*@__PURE__*/ S.suspend(() =>
+const TechnologyWatchListConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     technologies: S.optional(StringList),
     alertThreshold: S.optional(TechnologyWatchListAlertThreshold),
@@ -1977,7 +1961,7 @@ export interface ConfigurationDetail {
   /** Technology Watchlist detail config. */
   technologyWatchlist?: TechnologyWatchListConfig;
 }
-export const ConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customThreatScenario: S.optional(CustomThreatScenarioConfig),
     detailType: S.optional(S.String),
@@ -2009,7 +1993,7 @@ export interface Configuration {
   /** Output only. Audit information for the configuration. */
   audit?: Audit;
 }
-export const Configuration = /*@__PURE__*/ S.suspend(() =>
+const Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     etag: S.optional(S.String),
@@ -2027,7 +2011,7 @@ export interface GetProjectsFindingsRequest {
   /** Required. Name of the finding to get. */
   name: string;
 }
-export const GetProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2047,7 +2031,7 @@ export type InitialAccessBrokerFindingDetailSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const InitialAccessBrokerFindingDetailSeverityEnum = S.String;
+const InitialAccessBrokerFindingDetailSeverityEnum = S.String;
 
 /** A detail object for an Initial Access Broker (IAB) finding. */
 export interface InitialAccessBrokerFindingDetail {
@@ -2060,7 +2044,7 @@ export interface InitialAccessBrokerFindingDetail {
   /** Required. The severity of the IAB finding. This indicates the potential impact of the threat. */
   severity?: InitialAccessBrokerFindingDetailSeverityEnum;
 }
-export const InitialAccessBrokerFindingDetail = /*@__PURE__*/ S.suspend(() =>
+const InitialAccessBrokerFindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryDocument: S.optional(DiscoveryDocument),
     matchScore: S.optional(S.Number),
@@ -2077,7 +2061,7 @@ export type DataLeakFindingDetailSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const DataLeakFindingDetailSeverityEnum = S.String;
+const DataLeakFindingDetailSeverityEnum = S.String;
 
 /** A detail object for a Data Leak finding. */
 export interface DataLeakFindingDetail {
@@ -2090,7 +2074,7 @@ export interface DataLeakFindingDetail {
   /** Optional. The discovery document associated with the Data Leak finding. */
   discoveryDocument?: DiscoveryDocument;
 }
-export const DataLeakFindingDetail = /*@__PURE__*/ S.suspend(() =>
+const DataLeakFindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(DataLeakFindingDetailSeverityEnum),
     matchScore: S.optional(S.Number),
@@ -2101,15 +2085,13 @@ export const DataLeakFindingDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains details for a technology watchlist finding. */
 export type TargetTechnologyFindingDetail = TargetTechnologyAlertDetail;
-export const TargetTechnologyFindingDetail = TargetTechnologyAlertDetail;
-
 export type InsiderThreatFindingDetailSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-export const InsiderThreatFindingDetailSeverityEnum = S.String;
+const InsiderThreatFindingDetailSeverityEnum = S.String;
 
 /** A detail object for a InsiderThreat finding. */
 export interface InsiderThreatFindingDetail {
@@ -2122,7 +2104,7 @@ export interface InsiderThreatFindingDetail {
   /** Optional. The discovery document associated with the Insider Threat finding. */
   discoveryDocument?: DiscoveryDocument;
 }
-export const InsiderThreatFindingDetail = /*@__PURE__*/ S.suspend(() =>
+const InsiderThreatFindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(InsiderThreatFindingDetailSeverityEnum),
     matchScore: S.optional(S.Number),
@@ -2160,7 +2142,7 @@ export interface DomainMonitoringFindingDetail {
   /** Optional. The infrastructure of the domain or URL. */
   infrastructure?: Infrastructure;
 }
-export const DomainMonitoringFindingDetail = /*@__PURE__*/ S.suspend(() =>
+const DomainMonitoringFindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationships: S.optional(Relationships),
     domainDetails: S.optional(DomainMonitoringDomainDetails),
@@ -2194,7 +2176,7 @@ export interface FindingDetail {
   /** Domain Monitoring finding detail type. */
   domainMonitoring?: DomainMonitoringFindingDetail;
 }
-export const FindingDetail = /*@__PURE__*/ S.suspend(() =>
+const FindingDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialAccessBroker: S.optional(InitialAccessBrokerFindingDetail),
     detailType: S.optional(S.String),
@@ -2232,7 +2214,7 @@ export interface Finding {
   /** Optional. Name of the alert that this finding is bound to. */
   alert?: string;
 }
-export const Finding = /*@__PURE__*/ S.suspend(() =>
+const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severityAnalysis: S.optional(SeverityAnalysis),
     configurations: S.optional(StringList),
@@ -2261,7 +2243,7 @@ export interface ListProjectsAlertsRequest {
   /** Optional. Page token to retrieve the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2280,7 +2262,7 @@ export const ListProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsAlertsRequest>;
 
 export type AlertList = Array<Alert>;
-export const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
+const AlertList = /*@__PURE__*/ S.Array(Alert) as any as S.Schema<AlertList>;
 
 /** Response message for ListAlerts. */
 export interface ListAlertsResponse {
@@ -2289,7 +2271,7 @@ export interface ListAlertsResponse {
   /** List of alerts. */
   alerts?: AlertList;
 }
-export const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     alerts: S.optional(AlertList),
@@ -2308,7 +2290,7 @@ export interface ListProjectsConfigurationsRequest {
   /** Optional. Page size. */
   pageSize?: number;
 }
-export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2327,7 +2309,7 @@ export const ListProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsConfigurationsRequest>;
 
 export type ConfigurationList = Array<Configuration>;
-export const ConfigurationList = /*@__PURE__*/ S.Array(
+const ConfigurationList = /*@__PURE__*/ S.Array(
   Configuration,
 ) as any as S.Schema<ConfigurationList>;
 
@@ -2338,7 +2320,7 @@ export interface ListConfigurationsResponse {
   /** Page token. */
   nextPageToken?: string;
 }
-export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurations: S.optional(ConfigurationList),
     nextPageToken: S.optional(S.String),
@@ -2359,7 +2341,7 @@ export interface ListProjectsConfigurationsRevisionsRequest {
   /** Optional. A page token provided by the API */
   pageToken?: string;
 }
-export const ListProjectsConfigurationsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsConfigurationsRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2386,7 +2368,7 @@ export interface ConfigurationRevision {
   /** The snapshot of the configuration */
   snapshot?: Configuration;
 }
-export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2395,7 +2377,7 @@ export const ConfigurationRevision = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigurationRevision" }) as any as S.Schema<ConfigurationRevision>;
 
 export type ConfigurationRevisionList = Array<ConfigurationRevision>;
-export const ConfigurationRevisionList = /*@__PURE__*/ S.Array(
+const ConfigurationRevisionList = /*@__PURE__*/ S.Array(
   ConfigurationRevision,
 ) as any as S.Schema<ConfigurationRevisionList>;
 
@@ -2406,7 +2388,7 @@ export interface ListConfigurationRevisionsResponse {
   /** The Configuration Revisions associated with the specified Configuration */
   revisions?: ConfigurationRevisionList;
 }
-export const ListConfigurationRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     revisions: S.optional(ConfigurationRevisionList),
@@ -2427,7 +2409,7 @@ export interface ListProjectsFindingsRequest {
   /** Required. Parent of the findings. */
   parent: string;
 }
-export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2446,7 +2428,7 @@ export const ListProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsFindingsRequest>;
 
 export type FindingList = Array<Finding>;
-export const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
+const FindingList = /*@__PURE__*/ S.Array(Finding) as any as S.Schema<FindingList>;
 
 /** Response message for ListFindings. */
 export interface ListFindingsResponse {
@@ -2455,7 +2437,7 @@ export interface ListFindingsResponse {
   /** Page token. */
   nextPageToken?: string;
 }
-export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     findings: S.optional(FindingList),
     nextPageToken: S.optional(S.String),
@@ -2464,15 +2446,13 @@ export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsNotActionable. */
 export type MarkAlertAsNotActionableRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsNotActionableRequest = MarkAlertAsBenignRequest;
-
 export interface NotActionableProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a not actionable. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const NotActionableProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const NotActionableProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -2489,15 +2469,13 @@ export const NotActionableProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsRead. */
 export type MarkAlertAsReadRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsReadRequest = MarkAlertAsBenignRequest;
-
 export interface ReadProjectsAlertsRequest {
   /** Required. Name of the alert to mark as read. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const ReadProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -2514,15 +2492,13 @@ export const ReadProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsResolved. */
 export type MarkAlertAsResolvedRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsResolvedRequest = MarkAlertAsBenignRequest;
-
 export interface ResolveProjectsAlertsRequest {
   /** Required. Name of the alert to mark as resolved. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const ResolveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -2549,7 +2525,7 @@ export interface SearchProjectsFindingsRequest {
   /** Optional. Page token. */
   pageToken?: string;
 }
-export const SearchProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2574,7 +2550,7 @@ export interface SearchFindingsResponse {
   /** List of findings. */
   findings?: FindingList;
 }
-export const SearchFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     findings: S.optional(FindingList),
@@ -2583,15 +2559,13 @@ export const SearchFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for MarkAlertAsTrackedExternally. */
 export type MarkAlertAsTrackedExternallyRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsTrackedExternallyRequest = MarkAlertAsBenignRequest;
-
 export interface TrackExternallyProjectsAlertsRequest {
   /** Required. Name of the alert to mark as tracked externally. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const TrackExternallyProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const TrackExternallyProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -2608,15 +2582,13 @@ export const TrackExternallyProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Request message for MarkAlertAsTriaged. */
 export type MarkAlertAsTriagedRequest = MarkAlertAsBenignRequest;
-export const MarkAlertAsTriagedRequest = MarkAlertAsBenignRequest;
-
 export interface TriageProjectsAlertsRequest {
   /** Required. Name of the alert to mark as a triaged. Format: projects/{project}/alerts/{alert} */
   name: string;
   /** Request body */
   body?: MarkAlertAsBenignRequest;
 }
-export const TriageProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const TriageProjectsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MarkAlertAsBenignRequest.pipe(T.HttpBody())),
@@ -2639,7 +2611,7 @@ export interface UpsertProjectsConfigurationsRequest {
   /** Request body */
   body?: Configuration;
 }
-export const UpsertProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertProjectsConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     publishTime: S.optional(S.String.pipe(T.Query())),
@@ -2660,7 +2632,7 @@ export interface UpsertConfigurationResponse {
   /** Output only. Created configuration ID with server assigned id. */
   configuration?: string;
 }
-export const UpsertConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const UpsertConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: S.optional(S.String),
   }),

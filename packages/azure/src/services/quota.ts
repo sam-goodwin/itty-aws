@@ -14,7 +14,7 @@ export interface DeleteGroupQuotasRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
 }
-export const DeleteGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -29,7 +29,7 @@ export const DeleteGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGroupQuotasRequest" }) as any as S.Schema<DeleteGroupQuotasRequest>;
 
 export interface DeleteGroupQuotasResponse {}
-export const DeleteGroupQuotasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteGroupQuotasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteGroupQuotasResponse",
 }) as any as S.Schema<DeleteGroupQuotasResponse>;
 
@@ -41,7 +41,7 @@ export interface DeleteGroupQuotaSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const DeleteGroupQuotaSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupQuotaSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -59,9 +59,7 @@ export const DeleteGroupQuotaSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGroupQuotaSubscriptionRequest>;
 
 export interface DeleteGroupQuotaSubscriptionResponse {}
-export const DeleteGroupQuotaSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteGroupQuotaSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteGroupQuotaSubscriptionResponse",
 }) as any as S.Schema<DeleteGroupQuotaSubscriptionResponse>;
 
@@ -73,7 +71,7 @@ export interface GetGroupQuotaLimitsRequestRequest {
   /** Request Id. */
   requestId: string;
 }
-export const GetGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -92,11 +90,11 @@ export const GetGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -113,7 +111,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -131,7 +129,7 @@ export interface GroupQuotaRequestBasePropertiesName {
   /** Resource display name. */
   localizedValue?: string;
 }
-export const GroupQuotaRequestBasePropertiesName = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaRequestBasePropertiesName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -150,7 +148,7 @@ export interface GroupQuotaRequestBaseProperties {
   /** GroupQuota Request comments and details for request. This is optional paramter to provide more details related to the requested resource. */
   comments?: string;
 }
-export const GroupQuotaRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     name: S.optional(GroupQuotaRequestBasePropertiesName),
@@ -165,7 +163,7 @@ export const GroupQuotaRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
 export interface GroupQuotaRequestBase {
   properties?: GroupQuotaRequestBaseProperties;
 }
-export const GroupQuotaRequestBase = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaRequestBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(GroupQuotaRequestBaseProperties),
   }),
@@ -181,7 +179,7 @@ export type RequestState =
   | "Failed"
   | "InProgress"
   | "Canceled";
-export const RequestState = S.String;
+const RequestState = S.String;
 
 export interface SubmittedResourceRequestStatusProperties {
   /** Requested Resource. */
@@ -193,7 +191,7 @@ export interface SubmittedResourceRequestStatusProperties {
   /** Details of the failure. */
   faultCode?: string;
 }
-export const SubmittedResourceRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const SubmittedResourceRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedResource: S.optional(GroupQuotaRequestBase),
     requestSubmitTime: S.optional(S.String),
@@ -215,7 +213,7 @@ export interface GetGroupQuotaLimitsRequestResponse {
   systemData?: SystemData;
   properties?: SubmittedResourceRequestStatusProperties;
 }
-export const GetGroupQuotaLimitsRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaLimitsRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -237,7 +235,7 @@ export interface GetGroupQuotaLocationSettingsRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const GetGroupQuotaLocationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaLocationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -257,7 +255,7 @@ export const GetGroupQuotaLocationSettingsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Enforcement status. */
 export type EnforcementState = "Enabled" | "Disabled" | "NotAvailable";
-export const EnforcementState = S.String;
+const EnforcementState = S.String;
 
 export interface GroupQuotasEnforcementStatusProperties {
   /** Is the GroupQuota Enforcement enabled for the Azure region. */
@@ -269,7 +267,7 @@ export interface GroupQuotasEnforcementStatusProperties {
   /** Details of the failure. */
   faultCode?: string;
 }
-export const GroupQuotasEnforcementStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasEnforcementStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcementEnabled: S.optional(EnforcementState),
     enforcedGroupName: S.optional(S.String),
@@ -291,7 +289,7 @@ export interface GetGroupQuotaLocationSettingsResponse {
   systemData?: SystemData;
   properties?: GroupQuotasEnforcementStatusProperties;
 }
-export const GetGroupQuotaLocationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaLocationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -309,7 +307,7 @@ export interface GetGroupQuotasRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
 }
-export const GetGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -325,7 +323,7 @@ export const GetGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the group. */
 export type GroupType = "AllocationGroup" | "EnforcedGroup";
-export const GroupType = S.String;
+const GroupType = S.String;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
 export interface GroupQuotasEntityBase {
@@ -336,7 +334,7 @@ export interface GroupQuotasEntityBase {
   /** Provisioning state of the operation. */
   provisioningState?: RequestState;
 }
-export const GroupQuotasEntityBase = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasEntityBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     groupType: S.optional(GroupType),
@@ -356,7 +354,7 @@ export interface GetGroupQuotasResponse {
   /** Properties */
   properties?: GroupQuotasEntityBase;
 }
-export const GetGroupQuotasResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -374,7 +372,7 @@ export interface GetGroupQuotaSubscriptionRequest2 {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GetGroupQuotaSubscriptionRequest2 = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -397,7 +395,7 @@ export interface GroupQuotaSubscriptionIdProperties {
   /** Status of this subscriptionId being associated with the GroupQuotasEntity. */
   provisioningState?: RequestState;
 }
-export const GroupQuotaSubscriptionIdProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionIdProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     provisioningState: S.optional(RequestState),
@@ -417,7 +415,7 @@ export interface GetGroupQuotaSubscriptionResponse {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
 }
-export const GetGroupQuotaSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -441,7 +439,7 @@ export interface GetGroupQuotaSubscriptionAllocationRequestRequest {
   /** Request Id. */
   allocationId: string;
 }
-export const GetGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -462,8 +460,6 @@ export const GetGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
 export type QuotaAllocationRequestBasePropertiesName = GroupQuotaRequestBasePropertiesName;
-export const QuotaAllocationRequestBasePropertiesName = GroupQuotaRequestBasePropertiesName;
-
 export interface QuotaAllocationRequestBaseProperties {
   /** The new quota limit for the subscription. The incremental quota will be allocated from pre-approved group quota. */
   limit?: number;
@@ -472,7 +468,7 @@ export interface QuotaAllocationRequestBaseProperties {
   /** The location for which the subscription is allocated */
   region?: string;
 }
-export const QuotaAllocationRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
+const QuotaAllocationRequestBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     name: S.optional(GroupQuotaRequestBasePropertiesName),
@@ -486,7 +482,7 @@ export const QuotaAllocationRequestBaseProperties = /*@__PURE__*/ S.suspend(() =
 export interface QuotaAllocationRequestBase {
   properties?: QuotaAllocationRequestBaseProperties;
 }
-export const QuotaAllocationRequestBase = /*@__PURE__*/ S.suspend(() =>
+const QuotaAllocationRequestBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(QuotaAllocationRequestBaseProperties),
   }),
@@ -504,7 +500,7 @@ export interface QuotaAllocationRequestStatusProperties {
   /** Details of the failure. */
   faultCode?: string;
 }
-export const QuotaAllocationRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const QuotaAllocationRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedResource: S.optional(QuotaAllocationRequestBase),
     requestSubmitTime: S.optional(S.String),
@@ -526,7 +522,7 @@ export interface GetGroupQuotaSubscriptionAllocationRequestResponse {
   systemData?: SystemData;
   properties?: QuotaAllocationRequestStatusProperties;
 }
-export const GetGroupQuotaSubscriptionAllocationRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionAllocationRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -546,7 +542,7 @@ export interface GetGroupQuotaSubscriptionRequestRequest {
   /** Request Id. */
   requestId: string;
 }
-export const GetGroupQuotaSubscriptionRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -571,7 +567,7 @@ export interface GroupQuotaSubscriptionRequestStatusProperties {
   /** Status of this subscriptionId being associated with the GroupQuotasEntity. */
   provisioningState?: RequestState;
 }
-export const GroupQuotaSubscriptionRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionRequestStatusProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     requestSubmitTime: S.optional(S.String),
@@ -592,7 +588,7 @@ export interface GetGroupQuotaSubscriptionRequestResponse {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionRequestStatusProperties;
 }
-export const GetGroupQuotaSubscriptionRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGroupQuotaSubscriptionRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -610,7 +606,7 @@ export interface GetQuotaRequest {
   /** Resource name for a given resource provider. For example: - SKU name for Microsoft.Compute - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices For Microsoft.Network PublicIPAddresses. */
   resourceName: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
@@ -626,7 +622,7 @@ export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The limit object type. */
 export type LimitType = "LimitValue";
-export const LimitType = S.String;
+const LimitType = S.String;
 
 /** LimitJson abstract class. */
 export interface LimitJsonObject {
@@ -637,7 +633,7 @@ export interface LimitJsonObject {
   /** The quota limit type, e.g. `Independent` or `Shared` (`LimitValue` subtype). */
   limitType?: string;
 }
-export const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
+const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limitObjectType: LimitType,
     value: S.optional(S.Number),
@@ -647,8 +643,6 @@ export const LimitJsonObject = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the resource provided by the resource Provider. When requesting quota, use this property name. */
 export type ResourceName = GroupQuotaRequestBasePropertiesName;
-export const ResourceName = GroupQuotaRequestBasePropertiesName;
-
 /** Quota properties for the specified resource. */
 export interface QuotaProperties {
   /** Resource quota limit properties. */
@@ -666,7 +660,7 @@ export interface QuotaProperties {
   /** Additional properties for the specific resource provider. */
   properties?: unknown;
 }
-export const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
+const QuotaProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(LimitJsonObject),
     unit: S.optional(S.String),
@@ -690,7 +684,7 @@ export interface GetQuotaResponse {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -706,7 +700,7 @@ export interface GetQuotaRequestStatusRequest {
   /** Quota request ID. */
   id: string;
 }
-export const GetQuotaRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -724,7 +718,7 @@ export const GetQuotaRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota request status. */
 export type QuotaRequestState = "Accepted" | "Invalid" | "Succeeded" | "Failed" | "InProgress";
-export const QuotaRequestState = S.String;
+const QuotaRequestState = S.String;
 
 /** Error details. */
 export interface ServiceErrorDetail {
@@ -733,7 +727,7 @@ export interface ServiceErrorDetail {
   /** Error message. */
   message?: string;
 }
-export const ServiceErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ServiceErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -757,7 +751,7 @@ export interface SubRequest {
   /** Resource quota limit properties. */
   limit?: LimitJsonObject;
 }
-export const SubRequest = /*@__PURE__*/ S.suspend(() =>
+const SubRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(GroupQuotaRequestBasePropertiesName),
     resourceType: S.optional(S.String),
@@ -771,7 +765,7 @@ export const SubRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Quota request details. */
 export type QuotaRequestPropertiesValueList = Array<SubRequest>;
-export const QuotaRequestPropertiesValueList = /*@__PURE__*/ S.Array(
+const QuotaRequestPropertiesValueList = /*@__PURE__*/ S.Array(
   SubRequest,
 ) as any as S.Schema<QuotaRequestPropertiesValueList>;
 
@@ -788,7 +782,7 @@ export interface QuotaRequestProperties {
   /** Quota request details. */
   value?: QuotaRequestPropertiesValueList;
 }
-export const QuotaRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const QuotaRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(QuotaRequestState),
     message: S.optional(S.String),
@@ -810,7 +804,7 @@ export interface GetQuotaRequestStatusResponse {
   /** Quota request details. */
   properties?: QuotaRequestProperties;
 }
-export const GetQuotaRequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -828,7 +822,7 @@ export interface GetUsageRequest {
   /** Resource name for a given resource provider. For example: - SKU name for Microsoft.Compute - SKU or TotalLowPriorityCores for Microsoft.MachineLearningServices For Microsoft.Network PublicIPAddresses. */
   resourceName: string;
 }
-export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
@@ -844,7 +838,7 @@ export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The quota or usages limit types. */
 export type UsagesTypes = "Individual" | "Combined";
-export const UsagesTypes = S.String;
+const UsagesTypes = S.String;
 
 /** The resource usages value. */
 export interface UsagesObject {
@@ -853,7 +847,7 @@ export interface UsagesObject {
   /** The quota or usages limit types. */
   usagesType?: UsagesTypes;
 }
-export const UsagesObject = /*@__PURE__*/ S.suspend(() =>
+const UsagesObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.Number,
     usagesType: S.optional(UsagesTypes),
@@ -877,7 +871,7 @@ export interface UsagesProperties {
   /** Additional properties for the specific resource provider. */
   properties?: unknown;
 }
-export const UsagesProperties = /*@__PURE__*/ S.suspend(() =>
+const UsagesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usages: S.optional(UsagesObject),
     unit: S.optional(S.String),
@@ -901,7 +895,7 @@ export interface GetUsageResponse {
   /** Usage properties for the specified resource. */
   properties?: UsagesProperties;
 }
-export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -915,7 +909,7 @@ export interface GroupQuotasEnforcementStatusPropertiesInput {
   /** Is the GroupQuota Enforcement enabled for the Azure region. */
   enforcementEnabled?: EnforcementState | (string & {});
 }
-export const GroupQuotasEnforcementStatusPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasEnforcementStatusPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enforcementEnabled: S.optional(EnforcementState),
   }),
@@ -934,7 +928,7 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateRequest {
   location: string;
   properties?: GroupQuotasEnforcementStatusPropertiesInput;
 }
-export const GroupQuotaLocationSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaLocationSettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -964,7 +958,7 @@ export interface GroupQuotaLocationSettingsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: GroupQuotasEnforcementStatusProperties;
 }
-export const GroupQuotaLocationSettingsCreateOrUpdateResponse =
+const GroupQuotaLocationSettingsCreateOrUpdateResponse =
   GetGroupQuotaLocationSettingsResponse as any as S.Schema<GroupQuotaLocationSettingsCreateOrUpdateResponse>;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
@@ -972,7 +966,7 @@ export interface GroupQuotasEntityBaseInput {
   /** Display name of the GroupQuota entity. */
   displayName?: string;
 }
-export const GroupQuotasEntityBaseInput = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasEntityBaseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -988,7 +982,7 @@ export interface GroupQuotasCreateOrUpdateRequest {
   /** Properties */
   properties?: GroupQuotasEntityBaseInput;
 }
-export const GroupQuotasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1017,7 +1011,7 @@ export interface GroupQuotasCreateOrUpdateResponse {
   /** Properties */
   properties?: GroupQuotasEntityBase;
 }
-export const GroupQuotasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotasCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1037,7 +1031,7 @@ export interface GroupQuotaSubscriptionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GroupQuotaSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1065,7 +1059,7 @@ export interface GroupQuotaSubscriptionsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
 }
-export const GroupQuotaSubscriptionsCreateOrUpdateResponse =
+const GroupQuotaSubscriptionsCreateOrUpdateResponse =
   GetGroupQuotaSubscriptionResponse as any as S.Schema<GroupQuotaSubscriptionsCreateOrUpdateResponse>;
 
 export interface ListGroupQuotaLimitsRequest {
@@ -1078,7 +1072,7 @@ export interface ListGroupQuotaLimitsRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListGroupQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1098,8 +1092,6 @@ export const ListGroupQuotaLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
 export type GroupQuotaDetailsName = GroupQuotaRequestBasePropertiesName;
-export const GroupQuotaDetailsName = GroupQuotaRequestBasePropertiesName;
-
 /** SubscriptionIds and quota allocated to subscriptions from the GroupQuota. */
 export interface AllocatedToSubscription {
   /** An Azure subscriptionId. */
@@ -1107,7 +1099,7 @@ export interface AllocatedToSubscription {
   /** The amount of quota allocated to this subscriptionId from the GroupQuotasEntity. */
   quotaAllocated?: number;
 }
-export const AllocatedToSubscription = /*@__PURE__*/ S.suspend(() =>
+const AllocatedToSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     quotaAllocated: S.optional(S.Number),
@@ -1116,7 +1108,7 @@ export const AllocatedToSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit allocated to subscriptions. */
 export type AllocatedQuotaToSubscriptionListValueList = Array<AllocatedToSubscription>;
-export const AllocatedQuotaToSubscriptionListValueList = /*@__PURE__*/ S.Array(
+const AllocatedQuotaToSubscriptionListValueList = /*@__PURE__*/ S.Array(
   AllocatedToSubscription,
 ) as any as S.Schema<AllocatedQuotaToSubscriptionListValueList>;
 
@@ -1125,7 +1117,7 @@ export interface AllocatedQuotaToSubscriptionList {
   /** List of Group Quota Limit allocated to subscriptions. */
   value?: AllocatedQuotaToSubscriptionListValueList;
 }
-export const AllocatedQuotaToSubscriptionList = /*@__PURE__*/ S.suspend(() =>
+const AllocatedQuotaToSubscriptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AllocatedQuotaToSubscriptionListValueList),
   }),
@@ -1150,7 +1142,7 @@ export interface GroupQuotaDetails {
   /** Quota allocated to subscriptions */
   allocatedToSubscriptions?: AllocatedQuotaToSubscriptionList;
 }
-export const GroupQuotaDetails = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -1167,7 +1159,7 @@ export interface GroupQuotaLimit {
   /** Group Quota properties for the specified resource. */
   properties?: GroupQuotaDetails;
 }
-export const GroupQuotaLimit = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(GroupQuotaDetails),
   }),
@@ -1175,7 +1167,7 @@ export const GroupQuotaLimit = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit details. */
 export type GroupQuotaLimitListPropertiesValueList = Array<GroupQuotaLimit>;
-export const GroupQuotaLimitListPropertiesValueList = /*@__PURE__*/ S.Array(
+const GroupQuotaLimitListPropertiesValueList = /*@__PURE__*/ S.Array(
   GroupQuotaLimit,
 ) as any as S.Schema<GroupQuotaLimitListPropertiesValueList>;
 
@@ -1187,7 +1179,7 @@ export interface GroupQuotaLimitListProperties {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const GroupQuotaLimitListProperties = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaLimitListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(RequestState),
     value: S.optional(GroupQuotaLimitListPropertiesValueList),
@@ -1208,7 +1200,7 @@ export interface ListGroupQuotaLimitsResponse {
   systemData?: SystemData;
   properties?: GroupQuotaLimitListProperties;
 }
-export const ListGroupQuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1230,7 +1222,7 @@ export interface ListGroupQuotaLimitsRequestRequest {
   /** | Field | Supported operators \r\n|---------------------|------------------------\n\r\n location eq {location} and resource eq {resourceName}\n Example: $filter=location eq eastus and resourceName eq cores */
   _filter: string;
 }
-export const ListGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1260,12 +1252,12 @@ export interface SubmittedResourceRequestStatus {
   systemData?: SystemData;
   properties?: SubmittedResourceRequestStatusProperties;
 }
-export const SubmittedResourceRequestStatus =
+const SubmittedResourceRequestStatus =
   GetGroupQuotaLimitsRequestResponse as any as S.Schema<SubmittedResourceRequestStatus>;
 
 /** The SubmittedResourceRequestStatus items on this page */
 export type SubmittedResourceRequestStatusListValueList = Array<SubmittedResourceRequestStatus>;
-export const SubmittedResourceRequestStatusListValueList = /*@__PURE__*/ S.Array(
+const SubmittedResourceRequestStatusListValueList = /*@__PURE__*/ S.Array(
   SubmittedResourceRequestStatus,
 ) as any as S.Schema<SubmittedResourceRequestStatusListValueList>;
 
@@ -1276,7 +1268,7 @@ export interface SubmittedResourceRequestStatusList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SubmittedResourceRequestStatusList = /*@__PURE__*/ S.suspend(() =>
+const SubmittedResourceRequestStatusList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SubmittedResourceRequestStatusListValueList,
     nextLink: S.optional(S.String),
@@ -1289,7 +1281,7 @@ export interface ListGroupQuotasRequest {
   /** The management group ID. */
   managementGroupId: string;
 }
-export const ListGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1315,11 +1307,11 @@ export interface GroupQuotasEntity {
   /** Properties */
   properties?: GroupQuotasEntityBase;
 }
-export const GroupQuotasEntity = GetGroupQuotasResponse as any as S.Schema<GroupQuotasEntity>;
+const GroupQuotasEntity = GetGroupQuotasResponse as any as S.Schema<GroupQuotasEntity>;
 
 /** The GroupQuotasEntity items on this page */
 export type GroupQuotaListValueList = Array<GroupQuotasEntity>;
-export const GroupQuotaListValueList = /*@__PURE__*/ S.Array(
+const GroupQuotaListValueList = /*@__PURE__*/ S.Array(
   GroupQuotasEntity,
 ) as any as S.Schema<GroupQuotaListValueList>;
 
@@ -1330,7 +1322,7 @@ export interface GroupQuotaList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GroupQuotaList = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GroupQuotaListValueList,
     nextLink: S.optional(S.String),
@@ -1349,7 +1341,7 @@ export interface ListGroupQuotaSubscriptionAllocationRequest2 {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListGroupQuotaSubscriptionAllocationRequest2 = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaSubscriptionAllocationRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -1370,8 +1362,6 @@ export const ListGroupQuotaSubscriptionAllocationRequest2 = /*@__PURE__*/ S.susp
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
 export type SubscriptionQuotaDetailsName = GroupQuotaRequestBasePropertiesName;
-export const SubscriptionQuotaDetailsName = GroupQuotaRequestBasePropertiesName;
-
 /** Subscription Quota details. */
 export interface SubscriptionQuotaDetails {
   /** The resource name, such as SKU name. */
@@ -1383,7 +1373,7 @@ export interface SubscriptionQuotaDetails {
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
   name?: GroupQuotaRequestBasePropertiesName;
 }
-export const SubscriptionQuotaDetails = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -1397,7 +1387,7 @@ export interface SubscriptionQuotaAllocations {
   /** Quota properties for the specified resource. */
   properties?: SubscriptionQuotaDetails;
 }
-export const SubscriptionQuotaAllocations = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaAllocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SubscriptionQuotaDetails),
   }),
@@ -1408,7 +1398,7 @@ export const SubscriptionQuotaAllocations = /*@__PURE__*/ S.suspend(() =>
 /** Subscription quota list. */
 export type SubscriptionQuotaAllocationsListPropertiesValueList =
   Array<SubscriptionQuotaAllocations>;
-export const SubscriptionQuotaAllocationsListPropertiesValueList = /*@__PURE__*/ S.Array(
+const SubscriptionQuotaAllocationsListPropertiesValueList = /*@__PURE__*/ S.Array(
   SubscriptionQuotaAllocations,
 ) as any as S.Schema<SubscriptionQuotaAllocationsListPropertiesValueList>;
 
@@ -1420,7 +1410,7 @@ export interface SubscriptionQuotaAllocationsListProperties {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-export const SubscriptionQuotaAllocationsListProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaAllocationsListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(RequestState),
     value: S.optional(SubscriptionQuotaAllocationsListPropertiesValueList),
@@ -1441,7 +1431,7 @@ export interface ListGroupQuotaSubscriptionAllocationResponse {
   systemData?: SystemData;
   properties?: SubscriptionQuotaAllocationsListProperties;
 }
-export const ListGroupQuotaSubscriptionAllocationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaSubscriptionAllocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1465,7 +1455,7 @@ export interface ListGroupQuotaSubscriptionAllocationRequestRequest {
   /** | Field | Supported operators |---------------------|------------------------ location eq {location} Example: $filter=location eq eastus */
   _filter: string;
 }
-export const ListGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -1496,12 +1486,12 @@ export interface QuotaAllocationRequestStatus {
   systemData?: SystemData;
   properties?: QuotaAllocationRequestStatusProperties;
 }
-export const QuotaAllocationRequestStatus =
+const QuotaAllocationRequestStatus =
   GetGroupQuotaSubscriptionAllocationRequestResponse as any as S.Schema<QuotaAllocationRequestStatus>;
 
 /** The QuotaAllocationRequestStatus items on this page */
 export type QuotaAllocationRequestStatusListValueList = Array<QuotaAllocationRequestStatus>;
-export const QuotaAllocationRequestStatusListValueList = /*@__PURE__*/ S.Array(
+const QuotaAllocationRequestStatusListValueList = /*@__PURE__*/ S.Array(
   QuotaAllocationRequestStatus,
 ) as any as S.Schema<QuotaAllocationRequestStatusListValueList>;
 
@@ -1512,7 +1502,7 @@ export interface QuotaAllocationRequestStatusList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const QuotaAllocationRequestStatusList = /*@__PURE__*/ S.suspend(() =>
+const QuotaAllocationRequestStatusList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: QuotaAllocationRequestStatusListValueList,
     nextLink: S.optional(S.String),
@@ -1527,7 +1517,7 @@ export interface ListGroupQuotaSubscriptionRequestsRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
 }
-export const ListGroupQuotaSubscriptionRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaSubscriptionRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1555,13 +1545,13 @@ export interface GroupQuotaSubscriptionRequestStatus {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionRequestStatusProperties;
 }
-export const GroupQuotaSubscriptionRequestStatus =
+const GroupQuotaSubscriptionRequestStatus =
   GetGroupQuotaSubscriptionRequestResponse as any as S.Schema<GroupQuotaSubscriptionRequestStatus>;
 
 /** The GroupQuotaSubscriptionRequestStatus items on this page */
 export type GroupQuotaSubscriptionRequestStatusListValueList =
   Array<GroupQuotaSubscriptionRequestStatus>;
-export const GroupQuotaSubscriptionRequestStatusListValueList = /*@__PURE__*/ S.Array(
+const GroupQuotaSubscriptionRequestStatusListValueList = /*@__PURE__*/ S.Array(
   GroupQuotaSubscriptionRequestStatus,
 ) as any as S.Schema<GroupQuotaSubscriptionRequestStatusListValueList>;
 
@@ -1572,7 +1562,7 @@ export interface GroupQuotaSubscriptionRequestStatusList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GroupQuotaSubscriptionRequestStatusList = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionRequestStatusList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GroupQuotaSubscriptionRequestStatusListValueList,
     nextLink: S.optional(S.String),
@@ -1587,7 +1577,7 @@ export interface ListGroupQuotaSubscriptionsRequest {
   /** The GroupQuota name. The name should be unique for the provided context tenantId/MgId. */
   groupQuotaName: string;
 }
-export const ListGroupQuotaSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1615,7 +1605,7 @@ export interface GroupQuotaSubscriptionId {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
 }
-export const GroupQuotaSubscriptionId = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1627,7 +1617,7 @@ export const GroupQuotaSubscriptionId = /*@__PURE__*/ S.suspend(() =>
 
 /** The GroupQuotaSubscriptionId items on this page */
 export type GroupQuotaSubscriptionIdListValueList = Array<GroupQuotaSubscriptionId>;
-export const GroupQuotaSubscriptionIdListValueList = /*@__PURE__*/ S.Array(
+const GroupQuotaSubscriptionIdListValueList = /*@__PURE__*/ S.Array(
   GroupQuotaSubscriptionId,
 ) as any as S.Schema<GroupQuotaSubscriptionIdListValueList>;
 
@@ -1638,7 +1628,7 @@ export interface GroupQuotaSubscriptionIdList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GroupQuotaSubscriptionIdList = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaSubscriptionIdList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GroupQuotaSubscriptionIdListValueList,
     nextLink: S.optional(S.String),
@@ -1657,7 +1647,7 @@ export interface ListGroupQuotaUsagesRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListGroupQuotaUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupQuotaUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -1677,8 +1667,6 @@ export const ListGroupQuotaUsagesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
 export type GroupQuotaUsagesBaseName = GroupQuotaRequestBasePropertiesName;
-export const GroupQuotaUsagesBaseName = GroupQuotaRequestBasePropertiesName;
-
 /** Resource details with usages and GroupQuota. */
 export interface GroupQuotaUsagesBase {
   /** Name of the resource provided by the resource provider. This property is already included in the request URI, so it is a readonly property returned in the response. */
@@ -1690,7 +1678,7 @@ export interface GroupQuotaUsagesBase {
   /** Representing the units of the usage quota. Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond. Based on - https://armwiki.azurewebsites.net/api_contracts/UsagesAPIContract.html?q=usages . Different RPs may have different units, Count, type as int64 should work for most of the integer values. */
   unit?: string;
 }
-export const GroupQuotaUsagesBase = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaUsagesBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(GroupQuotaRequestBasePropertiesName),
     limit: S.optional(S.Number),
@@ -1712,7 +1700,7 @@ export interface ResourceUsages {
   /** Resource details with usages and GroupQuota. */
   properties?: GroupQuotaUsagesBase;
 }
-export const ResourceUsages = /*@__PURE__*/ S.suspend(() =>
+const ResourceUsages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1724,7 +1712,7 @@ export const ResourceUsages = /*@__PURE__*/ S.suspend(() =>
 
 /** The ResourceUsages items on this page */
 export type ResourceUsageListValueList = Array<ResourceUsages>;
-export const ResourceUsageListValueList = /*@__PURE__*/ S.Array(
+const ResourceUsageListValueList = /*@__PURE__*/ S.Array(
   ResourceUsages,
 ) as any as S.Schema<ResourceUsageListValueList>;
 
@@ -1735,7 +1723,7 @@ export interface ResourceUsageList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ResourceUsageList = /*@__PURE__*/ S.suspend(() =>
+const ResourceUsageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ResourceUsageListValueList,
     nextLink: S.optional(S.String),
@@ -1746,7 +1734,7 @@ export interface ListQuotaRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-export const ListQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -1772,11 +1760,11 @@ export interface CurrentQuotaLimitBase {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
 }
-export const CurrentQuotaLimitBase = GetQuotaResponse as any as S.Schema<CurrentQuotaLimitBase>;
+const CurrentQuotaLimitBase = GetQuotaResponse as any as S.Schema<CurrentQuotaLimitBase>;
 
 /** The CurrentQuotaLimitBase items on this page */
 export type QuotaLimitsValueList = Array<CurrentQuotaLimitBase>;
-export const QuotaLimitsValueList = /*@__PURE__*/ S.Array(
+const QuotaLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentQuotaLimitBase,
 ) as any as S.Schema<QuotaLimitsValueList>;
 
@@ -1787,7 +1775,7 @@ export interface QuotaLimits {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const QuotaLimits = /*@__PURE__*/ S.suspend(() =>
+const QuotaLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: QuotaLimitsValueList,
     nextLink: S.optional(S.String),
@@ -1795,7 +1783,7 @@ export const QuotaLimits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaLimits" }) as any as S.Schema<QuotaLimits>;
 
 export interface ListQuotaOperationRequest {}
-export const ListQuotaOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1818,7 +1806,7 @@ export interface OperationDisplay {
   /** Operation description. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1832,7 +1820,7 @@ export interface OperationResponse {
   display?: OperationDisplay;
   origin?: string;
 }
-export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
+const OperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1842,7 +1830,7 @@ export const OperationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connected cluster API operations. */
 export type OperationListValueList = Array<OperationResponse>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
+const OperationListValueList = /*@__PURE__*/ S.Array(
   OperationResponse,
 ) as any as S.Schema<OperationListValueList>;
 
@@ -1853,7 +1841,7 @@ export interface OperationList {
   /** The link to fetch the next page of connected cluster API operations. */
   nextLink?: string;
 }
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
+const OperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListValueList,
     nextLink: S.optional(S.String),
@@ -1870,7 +1858,7 @@ export interface ListQuotaRequestStatusRequest {
   /** The **Skiptoken** parameter is used only if a previous operation returned a partial result. If a previous response contains a **nextLink** element, its value includes a **skiptoken** parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListQuotaRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1901,7 +1889,7 @@ export interface QuotaRequestDetails {
   /** Quota request details. */
   properties?: QuotaRequestProperties;
 }
-export const QuotaRequestDetails = /*@__PURE__*/ S.suspend(() =>
+const QuotaRequestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1913,7 +1901,7 @@ export const QuotaRequestDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The QuotaRequestDetails items on this page */
 export type QuotaRequestDetailsListValueList = Array<QuotaRequestDetails>;
-export const QuotaRequestDetailsListValueList = /*@__PURE__*/ S.Array(
+const QuotaRequestDetailsListValueList = /*@__PURE__*/ S.Array(
   QuotaRequestDetails,
 ) as any as S.Schema<QuotaRequestDetailsListValueList>;
 
@@ -1924,7 +1912,7 @@ export interface QuotaRequestDetailsList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const QuotaRequestDetailsList = /*@__PURE__*/ S.suspend(() =>
+const QuotaRequestDetailsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: QuotaRequestDetailsListValueList,
     nextLink: S.optional(S.String),
@@ -1935,7 +1923,7 @@ export interface ListUsagesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-export const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -1961,11 +1949,11 @@ export interface CurrentUsagesBase {
   /** Usage properties for the specified resource. */
   properties?: UsagesProperties;
 }
-export const CurrentUsagesBase = GetUsageResponse as any as S.Schema<CurrentUsagesBase>;
+const CurrentUsagesBase = GetUsageResponse as any as S.Schema<CurrentUsagesBase>;
 
 /** The CurrentUsagesBase items on this page */
 export type UsagesLimitsValueList = Array<CurrentUsagesBase>;
-export const UsagesLimitsValueList = /*@__PURE__*/ S.Array(
+const UsagesLimitsValueList = /*@__PURE__*/ S.Array(
   CurrentUsagesBase,
 ) as any as S.Schema<UsagesLimitsValueList>;
 
@@ -1976,7 +1964,7 @@ export interface UsagesLimits {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const UsagesLimits = /*@__PURE__*/ S.suspend(() =>
+const UsagesLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: UsagesLimitsValueList,
     nextLink: S.optional(S.String),
@@ -1988,7 +1976,7 @@ export interface ResourceNameInput {
   /** Resource name. */
   value?: string;
 }
-export const ResourceNameInput = /*@__PURE__*/ S.suspend(() =>
+const ResourceNameInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -2005,7 +1993,7 @@ export interface QuotaPropertiesInput {
   /** Additional properties for the specific resource provider. */
   properties?: unknown;
 }
-export const QuotaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const QuotaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(LimitJsonObject),
     name: S.optional(ResourceNameInput),
@@ -2022,7 +2010,7 @@ export interface QuotaCreateOrUpdateRequest {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaPropertiesInput;
 }
-export const QuotaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const QuotaCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
@@ -2051,7 +2039,7 @@ export interface QuotaCreateOrUpdateResponse {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
 }
-export const QuotaCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const QuotaCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2072,7 +2060,7 @@ export interface GroupQuotaDetailsInput {
   /** Any comment related to quota request. */
   comment?: string;
 }
-export const GroupQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -2085,7 +2073,7 @@ export interface GroupQuotaLimitInput {
   /** Group Quota properties for the specified resource. */
   properties?: GroupQuotaDetailsInput;
 }
-export const GroupQuotaLimitInput = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaLimitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(GroupQuotaDetailsInput),
   }),
@@ -2093,7 +2081,7 @@ export const GroupQuotaLimitInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Group Quota Limit details. */
 export type GroupQuotaLimitListPropertiesInputValueList = Array<GroupQuotaLimitInput>;
-export const GroupQuotaLimitListPropertiesInputValueList = /*@__PURE__*/ S.Array(
+const GroupQuotaLimitListPropertiesInputValueList = /*@__PURE__*/ S.Array(
   GroupQuotaLimitInput,
 ) as any as S.Schema<GroupQuotaLimitListPropertiesInputValueList>;
 
@@ -2101,7 +2089,7 @@ export interface GroupQuotaLimitListPropertiesInput {
   /** List of Group Quota Limit details. */
   value?: GroupQuotaLimitListPropertiesInputValueList;
 }
-export const GroupQuotaLimitListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GroupQuotaLimitListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GroupQuotaLimitListPropertiesInputValueList),
   }),
@@ -2120,7 +2108,7 @@ export interface UpdateGroupQuotaLimitsRequestRequest {
   location: string;
   properties?: GroupQuotaLimitListPropertiesInput;
 }
-export const UpdateGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupQuotaLimitsRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -2150,7 +2138,7 @@ export interface UpdateGroupQuotaLimitsRequestResponse {
   systemData?: SystemData;
   properties?: GroupQuotaLimitListProperties;
 }
-export const UpdateGroupQuotaLimitsRequestResponse =
+const UpdateGroupQuotaLimitsRequestResponse =
   ListGroupQuotaLimitsResponse as any as S.Schema<UpdateGroupQuotaLimitsRequestResponse>;
 
 export interface UpdateGroupQuotaLocationSettingsRequest {
@@ -2164,7 +2152,7 @@ export interface UpdateGroupQuotaLocationSettingsRequest {
   location: string;
   properties?: GroupQuotasEnforcementStatusPropertiesInput;
 }
-export const UpdateGroupQuotaLocationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupQuotaLocationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -2194,13 +2182,11 @@ export interface UpdateGroupQuotaLocationSettingsResponse {
   systemData?: SystemData;
   properties?: GroupQuotasEnforcementStatusProperties;
 }
-export const UpdateGroupQuotaLocationSettingsResponse =
+const UpdateGroupQuotaLocationSettingsResponse =
   GetGroupQuotaLocationSettingsResponse as any as S.Schema<UpdateGroupQuotaLocationSettingsResponse>;
 
 /** Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified. */
 export type GroupQuotasEntityBasePatchInput = GroupQuotasEntityBaseInput;
-export const GroupQuotasEntityBasePatchInput = GroupQuotasEntityBaseInput;
-
 export interface UpdateGroupQuotasRequest {
   /** The management group ID. */
   managementGroupId: string;
@@ -2209,7 +2195,7 @@ export interface UpdateGroupQuotasRequest {
   /** Properties */
   properties?: GroupQuotasEntityBaseInput;
 }
-export const UpdateGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -2236,7 +2222,7 @@ export interface UpdateGroupQuotasResponse {
   /** Properties */
   properties?: GroupQuotasEntityBase;
 }
-export const UpdateGroupQuotasResponse =
+const UpdateGroupQuotasResponse =
   GroupQuotasCreateOrUpdateResponse as any as S.Schema<UpdateGroupQuotasResponse>;
 
 export interface UpdateGroupQuotaSubscriptionRequest {
@@ -2247,7 +2233,7 @@ export interface UpdateGroupQuotaSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const UpdateGroupQuotaSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupQuotaSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     groupQuotaName: S.String.pipe(T.Label()),
@@ -2275,7 +2261,7 @@ export interface UpdateGroupQuotaSubscriptionResponse {
   systemData?: SystemData;
   properties?: GroupQuotaSubscriptionIdProperties;
 }
-export const UpdateGroupQuotaSubscriptionResponse =
+const UpdateGroupQuotaSubscriptionResponse =
   GetGroupQuotaSubscriptionResponse as any as S.Schema<UpdateGroupQuotaSubscriptionResponse>;
 
 /** Subscription Quota details. */
@@ -2285,7 +2271,7 @@ export interface SubscriptionQuotaDetailsInput {
   /** The total quota limit for the subscription. */
   limit?: number;
 }
-export const SubscriptionQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     limit: S.optional(S.Number),
@@ -2299,7 +2285,7 @@ export interface SubscriptionQuotaAllocationsInput {
   /** Quota properties for the specified resource. */
   properties?: SubscriptionQuotaDetailsInput;
 }
-export const SubscriptionQuotaAllocationsInput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaAllocationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SubscriptionQuotaDetailsInput),
   }),
@@ -2310,7 +2296,7 @@ export const SubscriptionQuotaAllocationsInput = /*@__PURE__*/ S.suspend(() =>
 /** Subscription quota list. */
 export type SubscriptionQuotaAllocationsListPropertiesInputValueList =
   Array<SubscriptionQuotaAllocationsInput>;
-export const SubscriptionQuotaAllocationsListPropertiesInputValueList = /*@__PURE__*/ S.Array(
+const SubscriptionQuotaAllocationsListPropertiesInputValueList = /*@__PURE__*/ S.Array(
   SubscriptionQuotaAllocationsInput,
 ) as any as S.Schema<SubscriptionQuotaAllocationsListPropertiesInputValueList>;
 
@@ -2318,7 +2304,7 @@ export interface SubscriptionQuotaAllocationsListPropertiesInput {
   /** Subscription quota list. */
   value?: SubscriptionQuotaAllocationsListPropertiesInputValueList;
 }
-export const SubscriptionQuotaAllocationsListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionQuotaAllocationsListPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SubscriptionQuotaAllocationsListPropertiesInputValueList),
   }),
@@ -2339,7 +2325,7 @@ export interface UpdateGroupQuotaSubscriptionAllocationRequestRequest {
   location: string;
   properties?: SubscriptionQuotaAllocationsListPropertiesInput;
 }
-export const UpdateGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupQuotaSubscriptionAllocationRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -2370,7 +2356,7 @@ export interface UpdateGroupQuotaSubscriptionAllocationRequestResponse {
   systemData?: SystemData;
   properties?: SubscriptionQuotaAllocationsListProperties;
 }
-export const UpdateGroupQuotaSubscriptionAllocationRequestResponse =
+const UpdateGroupQuotaSubscriptionAllocationRequestResponse =
   ListGroupQuotaSubscriptionAllocationResponse as any as S.Schema<UpdateGroupQuotaSubscriptionAllocationRequestResponse>;
 
 export interface UpdateQuotaRequest {
@@ -2381,7 +2367,7 @@ export interface UpdateQuotaRequest {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaPropertiesInput;
 }
-export const UpdateQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
@@ -2408,7 +2394,7 @@ export interface UpdateQuotaResponse {
   /** Quota properties for the specified resource, based on the API called, Quotas or Usages. */
   properties?: QuotaProperties;
 }
-export const UpdateQuotaResponse = GetQuotaResponse as any as S.Schema<UpdateQuotaResponse>;
+const UpdateQuotaResponse = GetQuotaResponse as any as S.Schema<UpdateQuotaResponse>;
 
 export type DeleteGroupQuotasError = AzureOpError;
 /** Deletes the GroupQuotas for the name passed. All the remaining shareQuota in the GroupQuotas will be lost. */

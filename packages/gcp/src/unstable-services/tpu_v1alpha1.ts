@@ -65,7 +65,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,12 +81,12 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type NodeStateEnum =
   | "STATE_UNSPECIFIED"
@@ -105,7 +105,7 @@ export type NodeStateEnum =
   | "HIDDEN"
   | "UNHIDING"
   | "UNKNOWN";
-export const NodeStateEnum = S.String;
+const NodeStateEnum = S.String;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. A network endpoint over which a TPU worker can be reached. */
 export interface NetworkEndpoint {
@@ -114,7 +114,7 @@ export interface NetworkEndpoint {
   /** The IP address of this network endpoint. */
   ipAddress?: string;
 }
-export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
+const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     ipAddress: S.optional(S.String),
@@ -122,7 +122,7 @@ export const NetworkEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NetworkEndpoint" }) as any as S.Schema<NetworkEndpoint>;
 
 export type NetworkEndpointList = Array<NetworkEndpoint>;
-export const NetworkEndpointList = /*@__PURE__*/ S.Array(
+const NetworkEndpointList = /*@__PURE__*/ S.Array(
   NetworkEndpoint,
 ) as any as S.Schema<NetworkEndpointList>;
 
@@ -133,7 +133,7 @@ export interface SchedulingConfig {
   /** Defines whether the node is preemptible. */
   preemptible?: boolean;
 }
-export const SchedulingConfig = /*@__PURE__*/ S.suspend(() =>
+const SchedulingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reserved: S.optional(S.Boolean),
     preemptible: S.optional(S.Boolean),
@@ -147,7 +147,7 @@ export type NodeHealthEnum =
   | "TIMEOUT"
   | "UNHEALTHY_TENSORFLOW"
   | "UNHEALTHY_MAINTENANCE";
-export const NodeHealthEnum = S.String;
+const NodeHealthEnum = S.String;
 
 export type SymptomSymptomTypeEnum =
   | "SYMPTOM_TYPE_UNSPECIFIED"
@@ -157,7 +157,7 @@ export type SymptomSymptomTypeEnum =
   | "MESH_BUILD_FAIL"
   | "HBM_OUT_OF_MEMORY"
   | "PROJECT_ABUSE";
-export const SymptomSymptomTypeEnum = S.String;
+const SymptomSymptomTypeEnum = S.String;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. A Symptom instance. */
 export interface Symptom {
@@ -170,7 +170,7 @@ export interface Symptom {
   /** A string used to uniquely distinguish a worker within a TPU node. */
   workerId?: string;
 }
-export const Symptom = /*@__PURE__*/ S.suspend(() =>
+const Symptom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -180,10 +180,10 @@ export const Symptom = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Symptom" }) as any as S.Schema<Symptom>;
 
 export type SymptomList = Array<Symptom>;
-export const SymptomList = /*@__PURE__*/ S.Array(Symptom) as any as S.Schema<SymptomList>;
+const SymptomList = /*@__PURE__*/ S.Array(Symptom) as any as S.Schema<SymptomList>;
 
 export type NodeApiVersionEnum = "API_VERSION_UNSPECIFIED" | "V1_ALPHA1" | "V1" | "V2_ALPHA1";
-export const NodeApiVersionEnum = S.String;
+const NodeApiVersionEnum = S.String;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. A TPU instance. */
 export interface Node {
@@ -226,7 +226,7 @@ export interface Node {
   /** Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances. */
   ipAddress?: string;
 }
-export const Node = /*@__PURE__*/ S.suspend(() =>
+const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     state: S.optional(NodeStateEnum),
@@ -260,7 +260,7 @@ export interface CreateProjectsLocationsNodesRequest {
   /** Request body */
   body?: Node;
 }
-export const CreateProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -278,15 +278,10 @@ export const CreateProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateProjectsLocationsNodesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -297,7 +292,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -318,7 +313,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -334,7 +329,7 @@ export interface DeleteProjectsLocationsNodesRequest {
   /** Idempotent request UUID. */
   requestId?: string;
 }
-export const DeleteProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -349,7 +344,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -363,7 +358,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -386,7 +381,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     metadata: S.optional(DocumentMap),
@@ -400,7 +395,7 @@ export interface GetProjectsLocationsAcceleratorTypesRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -417,7 +412,7 @@ export interface AcceleratorType {
   /** the accelerator type. */
   type?: string;
 }
-export const AcceleratorType = /*@__PURE__*/ S.suspend(() =>
+const AcceleratorType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -428,7 +423,7 @@ export interface GetProjectsLocationsNodesRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -442,7 +437,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -456,7 +451,7 @@ export interface GetProjectsLocationsTensorflowVersionsRequest {
   /** Required. The resource name. */
   name: string;
 }
-export const GetProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -473,7 +468,7 @@ export interface TensorFlowVersion {
   /** the tensorflow version. */
   version?: string;
 }
-export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
+const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -481,7 +476,7 @@ export const TensorFlowVersion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TensorFlowVersion" }) as any as S.Schema<TensorFlowVersion>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
@@ -495,7 +490,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -514,7 +509,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -523,7 +518,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -542,7 +537,7 @@ export interface ListProjectsLocationsAcceleratorTypesRequest {
   /** Required. The parent resource name. */
   parent: string;
 }
-export const ListProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -561,7 +556,7 @@ export const ListProjectsLocationsAcceleratorTypesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListProjectsLocationsAcceleratorTypesRequest>;
 
 export type AcceleratorTypeList = Array<AcceleratorType>;
-export const AcceleratorTypeList = /*@__PURE__*/ S.Array(
+const AcceleratorTypeList = /*@__PURE__*/ S.Array(
   AcceleratorType,
 ) as any as S.Schema<AcceleratorTypeList>;
 
@@ -574,7 +569,7 @@ export interface ListAcceleratorTypesResponse {
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
-export const ListAcceleratorTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAcceleratorTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceleratorTypes: S.optional(AcceleratorTypeList),
     unreachable: S.optional(StringList),
@@ -592,7 +587,7 @@ export interface ListProjectsLocationsNodesRequest {
   /** Required. The parent resource name. */
   parent: string;
 }
-export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -609,7 +604,7 @@ export const ListProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsNodesRequest>;
 
 export type NodeList = Array<Node>;
-export const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
+const NodeList = /*@__PURE__*/ S.Array(Node) as any as S.Schema<NodeList>;
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. Response for ListNodes. */
 export interface ListNodesResponse {
@@ -620,7 +615,7 @@ export interface ListNodesResponse {
   /** The next page token or empty if none. */
   nextPageToken?: string;
 }
-export const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodes: S.optional(NodeList),
     unreachable: S.optional(StringList),
@@ -640,7 +635,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -659,7 +654,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -670,7 +665,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -690,7 +685,7 @@ export interface ListProjectsLocationsTensorflowVersionsRequest {
   /** Required. The parent resource name. */
   parent: string;
 }
-export const ListProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -709,7 +704,7 @@ export const ListProjectsLocationsTensorflowVersionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsTensorflowVersionsRequest>;
 
 export type TensorFlowVersionList = Array<TensorFlowVersion>;
-export const TensorFlowVersionList = /*@__PURE__*/ S.Array(
+const TensorFlowVersionList = /*@__PURE__*/ S.Array(
   TensorFlowVersion,
 ) as any as S.Schema<TensorFlowVersionList>;
 
@@ -722,7 +717,7 @@ export interface ListTensorFlowVersionsResponse {
   /** The listed nodes. */
   tensorflowVersions?: TensorFlowVersionList;
 }
-export const ListTensorFlowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTensorFlowVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     unreachable: S.optional(StringList),
@@ -737,7 +732,7 @@ export interface ReimageNodeRequest {
   /** The version for reimage to create. */
   tensorflowVersion?: string;
 }
-export const ReimageNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const ReimageNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tensorflowVersion: S.optional(S.String),
   }),
@@ -749,7 +744,7 @@ export interface ReimageProjectsLocationsNodesRequest {
   /** Request body */
   body?: ReimageNodeRequest;
 }
-export const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReimageNodeRequest.pipe(T.HttpBody())),
@@ -766,7 +761,7 @@ export const ReimageProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. Request for StartNode. */
 export interface StartNodeRequest {}
-export const StartNodeRequest = Empty as any as S.Schema<StartNodeRequest>;
+const StartNodeRequest = Empty as any as S.Schema<StartNodeRequest>;
 
 export interface StartProjectsLocationsNodesRequest {
   /** The resource name. */
@@ -774,7 +769,7 @@ export interface StartProjectsLocationsNodesRequest {
   /** Request body */
   body?: StartNodeRequest;
 }
-export const StartProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const StartProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartNodeRequest.pipe(T.HttpBody())),
@@ -791,15 +786,13 @@ export const StartProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** DEPRECATED: Please use TPU API v2alpha1 instead. Request for StopNode. */
 export type StopNodeRequest = StartNodeRequest;
-export const StopNodeRequest = StartNodeRequest;
-
 export interface StopProjectsLocationsNodesRequest {
   /** The resource name. */
   name: string;
   /** Request body */
   body?: StartNodeRequest;
 }
-export const StopProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const StopProjectsLocationsNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(StartNodeRequest.pipe(T.HttpBody())),

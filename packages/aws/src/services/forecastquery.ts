@@ -107,7 +107,7 @@ export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type Filters = { [key: string]: string | undefined };
-export const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const Filters = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type NextToken = string;
 export interface QueryForecastRequest {
   ForecastArn: string;
@@ -116,7 +116,7 @@ export interface QueryForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-export const QueryForecastRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryForecastRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ForecastArn: S.String,
     StartDate: S.optional(S.String),
@@ -130,26 +130,23 @@ export interface DataPoint {
   Timestamp?: string;
   Value?: number;
 }
-export const DataPoint = /*@__PURE__*/ S.suspend(() =>
+const DataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Timestamp: S.optional(S.String), Value: S.optional(S.Number) }),
 ).annotate({ identifier: "DataPoint" }) as any as S.Schema<DataPoint>;
 export type TimeSeries = DataPoint[];
-export const TimeSeries = /*@__PURE__*/ S.Array(DataPoint);
+const TimeSeries = /*@__PURE__*/ S.Array(DataPoint);
 export type Predictions = { [key: string]: DataPoint[] | undefined };
-export const Predictions = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ TimeSeries.pipe(S.optional),
-);
+const Predictions = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ TimeSeries.pipe(S.optional));
 export interface Forecast {
   Predictions?: { [key: string]: DataPoint[] | undefined };
 }
-export const Forecast = /*@__PURE__*/ S.suspend(() =>
+const Forecast = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Predictions: S.optional(Predictions) }),
 ).annotate({ identifier: "Forecast" }) as any as S.Schema<Forecast>;
 export interface QueryForecastResponse {
   Forecast?: Forecast;
 }
-export const QueryForecastResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryForecastResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Forecast: S.optional(Forecast) }),
 ).annotate({ identifier: "QueryForecastResponse" }) as any as S.Schema<QueryForecastResponse>;
 export type LongArn = string;
@@ -160,7 +157,7 @@ export interface QueryWhatIfForecastRequest {
   Filters: { [key: string]: string | undefined };
   NextToken?: string;
 }
-export const QueryWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WhatIfForecastArn: S.String,
     StartDate: S.optional(S.String),
@@ -174,7 +171,7 @@ export const QueryWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
 export interface QueryWhatIfForecastResponse {
   Forecast?: Forecast;
 }
-export const QueryWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Forecast: S.optional(Forecast) }),
 ).annotate({
   identifier: "QueryWhatIfForecastResponse",

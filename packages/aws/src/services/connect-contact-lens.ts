@@ -113,7 +113,7 @@ export interface ListRealtimeContactAnalysisSegmentsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRealtimeContactAnalysisSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRealtimeContactAnalysisSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceId: S.optional(S.String),
     ContactId: S.optional(S.String),
@@ -138,24 +138,24 @@ export type ParticipantRole = string;
 export type TranscriptContent = string;
 export type OffsetMillis = number;
 export type SentimentValue = "POSITIVE" | "NEUTRAL" | "NEGATIVE" | (string & {});
-export const SentimentValue = S.String;
+const SentimentValue = S.String;
 
 export type CharacterOffset = number;
 export interface CharacterOffsets {
   BeginOffsetChar?: number;
   EndOffsetChar?: number;
 }
-export const CharacterOffsets = /*@__PURE__*/ S.suspend(() =>
+const CharacterOffsets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BeginOffsetChar: S.optional(S.Number), EndOffsetChar: S.optional(S.Number) }),
 ).annotate({ identifier: "CharacterOffsets" }) as any as S.Schema<CharacterOffsets>;
 export interface IssueDetected {
   CharacterOffsets?: CharacterOffsets;
 }
-export const IssueDetected = /*@__PURE__*/ S.suspend(() =>
+const IssueDetected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CharacterOffsets: S.optional(CharacterOffsets) }),
 ).annotate({ identifier: "IssueDetected" }) as any as S.Schema<IssueDetected>;
 export type IssuesDetected = IssueDetected[];
-export const IssuesDetected = /*@__PURE__*/ S.Array(IssueDetected);
+const IssuesDetected = /*@__PURE__*/ S.Array(IssueDetected);
 export interface Transcript {
   Id?: string;
   ParticipantId?: string;
@@ -166,7 +166,7 @@ export interface Transcript {
   Sentiment?: SentimentValue;
   IssuesDetected?: IssueDetected[];
 }
-export const Transcript = /*@__PURE__*/ S.suspend(() =>
+const Transcript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     ParticipantId: S.optional(S.String),
@@ -180,24 +180,24 @@ export const Transcript = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transcript" }) as any as S.Schema<Transcript>;
 export type CategoryName = string;
 export type MatchedCategories = string[];
-export const MatchedCategories = /*@__PURE__*/ S.Array(S.String);
+const MatchedCategories = /*@__PURE__*/ S.Array(S.String);
 export interface PointOfInterest {
   BeginOffsetMillis?: number;
   EndOffsetMillis?: number;
 }
-export const PointOfInterest = /*@__PURE__*/ S.suspend(() =>
+const PointOfInterest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BeginOffsetMillis: S.optional(S.Number), EndOffsetMillis: S.optional(S.Number) }),
 ).annotate({ identifier: "PointOfInterest" }) as any as S.Schema<PointOfInterest>;
 export type PointsOfInterest = PointOfInterest[];
-export const PointsOfInterest = /*@__PURE__*/ S.Array(PointOfInterest);
+const PointsOfInterest = /*@__PURE__*/ S.Array(PointOfInterest);
 export interface CategoryDetails {
   PointsOfInterest?: PointOfInterest[];
 }
-export const CategoryDetails = /*@__PURE__*/ S.suspend(() =>
+const CategoryDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PointsOfInterest: S.optional(PointsOfInterest) }),
 ).annotate({ identifier: "CategoryDetails" }) as any as S.Schema<CategoryDetails>;
 export type MatchedDetails = { [key: string]: CategoryDetails | undefined };
-export const MatchedDetails = /*@__PURE__*/ S.Record(
+const MatchedDetails = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ CategoryDetails.pipe(S.optional),
 );
@@ -205,7 +205,7 @@ export interface Categories {
   MatchedCategories?: string[];
   MatchedDetails?: { [key: string]: CategoryDetails | undefined };
 }
-export const Categories = /*@__PURE__*/ S.suspend(() =>
+const Categories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MatchedCategories: S.optional(MatchedCategories),
     MatchedDetails: S.optional(MatchedDetails),
@@ -213,7 +213,7 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
 export type PostContactSummaryContent = string;
 export type PostContactSummaryStatus = "FAILED" | "COMPLETED" | (string & {});
-export const PostContactSummaryStatus = S.String;
+const PostContactSummaryStatus = S.String;
 
 export type PostContactSummaryFailureCode =
   | "QUOTA_EXCEEDED"
@@ -222,14 +222,14 @@ export type PostContactSummaryFailureCode =
   | "INVALID_ANALYSIS_CONFIGURATION"
   | "INTERNAL_ERROR"
   | (string & {});
-export const PostContactSummaryFailureCode = S.String;
+const PostContactSummaryFailureCode = S.String;
 
 export interface PostContactSummary {
   Content?: string;
   Status?: PostContactSummaryStatus;
   FailureCode?: PostContactSummaryFailureCode;
 }
-export const PostContactSummary = /*@__PURE__*/ S.suspend(() =>
+const PostContactSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Content: S.optional(S.String),
     Status: S.optional(PostContactSummaryStatus),
@@ -244,13 +244,13 @@ export interface ExtractedInformationValue {
   Content?: string;
   PointsOfInterest?: PointOfInterest[];
 }
-export const ExtractedInformationValue = /*@__PURE__*/ S.suspend(() =>
+const ExtractedInformationValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Content: S.optional(S.String), PointsOfInterest: S.optional(PointsOfInterest) }),
 ).annotate({
   identifier: "ExtractedInformationValue",
 }) as any as S.Schema<ExtractedInformationValue>;
 export type ExtractedInformationValues = ExtractedInformationValue[];
-export const ExtractedInformationValues = /*@__PURE__*/ S.Array(ExtractedInformationValue);
+const ExtractedInformationValues = /*@__PURE__*/ S.Array(ExtractedInformationValue);
 export type ExtractedInformationFailureCode =
   | "QUOTA_EXCEEDED"
   | "INSUFFICIENT_CONVERSATION_CONTENT"
@@ -258,7 +258,7 @@ export type ExtractedInformationFailureCode =
   | "INTERNAL_ERROR"
   | "MAX_PACKAGE_FEATURE_ONLY"
   | (string & {});
-export const ExtractedInformationFailureCode = S.String;
+const ExtractedInformationFailureCode = S.String;
 
 export interface ExtractedInformation {
   ExtractionDefinitionId?: string;
@@ -267,7 +267,7 @@ export interface ExtractedInformation {
   ExtractedValues?: ExtractedInformationValue[];
   FailureCode?: ExtractedInformationFailureCode;
 }
-export const ExtractedInformation = /*@__PURE__*/ S.suspend(() =>
+const ExtractedInformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExtractionDefinitionId: S.optional(S.String),
     ExtractionDefinitionName: S.optional(S.String),
@@ -282,7 +282,7 @@ export interface RealtimeContactAnalysisSegment {
   PostContactSummary?: PostContactSummary;
   ExtractedInformation?: ExtractedInformation;
 }
-export const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.suspend(() =>
+const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Transcript: S.optional(Transcript),
     Categories: S.optional(Categories),
@@ -293,9 +293,7 @@ export const RealtimeContactAnalysisSegment = /*@__PURE__*/ S.suspend(() =>
   identifier: "RealtimeContactAnalysisSegment",
 }) as any as S.Schema<RealtimeContactAnalysisSegment>;
 export type RealtimeContactAnalysisSegments = RealtimeContactAnalysisSegment[];
-export const RealtimeContactAnalysisSegments = /*@__PURE__*/ S.Array(
-  RealtimeContactAnalysisSegment,
-);
+const RealtimeContactAnalysisSegments = /*@__PURE__*/ S.Array(RealtimeContactAnalysisSegment);
 export interface ListRealtimeContactAnalysisSegmentsResponse {
   Segments: (RealtimeContactAnalysisSegment & {
     Transcript: Transcript & {
@@ -340,7 +338,7 @@ export interface ListRealtimeContactAnalysisSegmentsResponse {
   })[];
   NextToken?: string;
 }
-export const ListRealtimeContactAnalysisSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRealtimeContactAnalysisSegmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Segments: S.optional(RealtimeContactAnalysisSegments),
     NextToken: S.optional(S.String),

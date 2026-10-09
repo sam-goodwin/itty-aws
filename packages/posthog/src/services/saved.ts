@@ -37,13 +37,13 @@ export class NotFound
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type CreateSavedRequestWidthsList = Array<number>;
-export const CreateSavedRequestWidthsList = /*@__PURE__*/ S.Array(
+const CreateSavedRequestWidthsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateSavedRequestWidthsList>;
 
 /** * `screenshot` - Screenshot * `iframe` - Iframe * `recording` - Recording */
 export type SavedHeatmapTypeEnum = "screenshot" | "iframe" | "recording";
-export const SavedHeatmapTypeEnum = S.String;
+const SavedHeatmapTypeEnum = S.String;
 
 export interface CreateSavedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -63,7 +63,7 @@ export interface CreateSavedRequest {
   /** When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to 'screenshot' heatmaps. */
   block_consent_modals?: boolean;
 }
-export const CreateSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -78,16 +78,16 @@ export const CreateSavedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Viewport widths (CSS pixels) the screenshot is rendered at. */
 export type HeatmapScreenshotResponseTargetWidthsList = Array<number>;
-export const HeatmapScreenshotResponseTargetWidthsList =
+const HeatmapScreenshotResponseTargetWidthsList =
   CreateSavedRequestWidthsList as any as S.Schema<HeatmapScreenshotResponseTargetWidthsList>;
 
 /** * `server` - Server * `toolbar` - Toolbar */
 export type SavedHeatmapSourceEnum = "server" | "toolbar";
-export const SavedHeatmapSourceEnum = S.String;
+const SavedHeatmapSourceEnum = S.String;
 
 /** * `processing` - Processing * `completed` - Completed * `failed` - Failed */
 export type SavedHeatmapStatusEnum = "processing" | "completed" | "failed";
-export const SavedHeatmapStatusEnum = S.String;
+const SavedHeatmapStatusEnum = S.String;
 
 export interface HeatmapSnapshotMetadata {
   /** Viewport width (CSS pixels) this screenshot was rendered at. */
@@ -95,7 +95,7 @@ export interface HeatmapSnapshotMetadata {
   /** Whether the rendered image for this width is ready to fetch from the content endpoint. */
   has_content: boolean;
 }
-export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
+const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     width: S.Number,
     has_content: S.Boolean,
@@ -104,12 +104,12 @@ export const HeatmapSnapshotMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-width render metadata. Fetch the actual image bytes for a width from the content endpoint. */
 export type HeatmapScreenshotResponseSnapshotsList = Array<HeatmapSnapshotMetadata>;
-export const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
+const HeatmapScreenshotResponseSnapshotsList = /*@__PURE__*/ S.Array(
   HeatmapSnapshotMetadata,
 ) as any as S.Schema<HeatmapScreenshotResponseSnapshotsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -125,14 +125,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -145,7 +140,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -194,7 +189,7 @@ export interface HeatmapScreenshotResponse {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
+const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
@@ -221,13 +216,13 @@ export const HeatmapScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** One screenshot per viewport width, parallel to 'widths' (same length, same order). Lets a single toolbar capture cover the same viewport widths the server renders. At most 16 widths. */
 export type CreateSavedCaptureRequestImagesList = Array<string>;
-export const CreateSavedCaptureRequestImagesList = /*@__PURE__*/ S.Array(
+const CreateSavedCaptureRequestImagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateSavedCaptureRequestImagesList>;
 
 /** Viewport widths (CSS pixels) the 'images' were captured at, parallel to 'images'. */
 export type CreateSavedCaptureRequestWidthsList = Array<number>;
-export const CreateSavedCaptureRequestWidthsList =
+const CreateSavedCaptureRequestWidthsList =
   CreateSavedRequestWidthsList as any as S.Schema<CreateSavedCaptureRequestWidthsList>;
 
 export interface CreateSavedCaptureRequest {
@@ -248,7 +243,7 @@ export interface CreateSavedCaptureRequest {
   /** Human-readable label for the saved heatmap. Defaults to the URL when omitted. */
   name?: string;
 }
-export const CreateSavedCaptureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedCaptureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     image: S.optional(S.NullOr(S.String)),
@@ -276,7 +271,7 @@ export interface CreateSavedPreflightRequest {
   /** Exact page URL to probe. Wildcards are not allowed. This is the URL that would be loaded in the live preview iframe, not the data URL used to look up heatmap events. */
   url: string;
 }
-export const CreateSavedPreflightRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedPreflightRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     url: S.String,
@@ -289,11 +284,11 @@ export const CreateSavedPreflightRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `allowed` - allowed * `blocked` - blocked * `unknown` - unknown */
 export type FramingEnum = "allowed" | "blocked" | "unknown";
-export const FramingEnum = S.String;
+const FramingEnum = S.String;
 
 /** * `x_frame_options` - x_frame_options * `frame_ancestors` - frame_ancestors */
 export type BlockedByEnum = "x_frame_options" | "frame_ancestors";
-export const BlockedByEnum = S.String;
+const BlockedByEnum = S.String;
 
 export interface HeatmapPreflightResponse {
   /** Whether the page can be embedded in the live preview iframe. 'blocked' means the site's own headers forbid it, so only a screenshot or session recording background can work. 'unknown' means we could not tell, for example because the page was unreachable or redirected. * `allowed` - allowed * `blocked` - blocked * `unknown` - unknown */
@@ -305,7 +300,7 @@ export interface HeatmapPreflightResponse {
   /** Short whitespace-collapsed excerpt of the response body, only present for non-2xx responses, so the user can see what their host returned. Truncated. */
   body_excerpt: string | null;
 }
-export const HeatmapPreflightResponse = /*@__PURE__*/ S.suspend(() =>
+const HeatmapPreflightResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     framing: FramingEnum,
     blocked_by: S.NullOr(BlockedByEnum),
@@ -322,7 +317,7 @@ export interface CreateSavedPrewarmRequest {
   /** When true, ask the headless browser to dismiss cookie/consent banners before capturing. Must match the value used at creation time for the prewarmed render to be reused. */
   block_consent_modals?: boolean;
 }
-export const CreateSavedPrewarmRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSavedPrewarmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     url: S.String,
@@ -337,7 +332,7 @@ export interface GetSavedRequest {
   project_id: string;
   short_id: string;
 }
-export const GetSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -364,7 +359,7 @@ export interface ListSavedRequest {
   /** Filter by render mode: 'screenshot', 'iframe', or 'recording'. */
   type?: string;
 }
-export const ListSavedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSavedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.Number.pipe(T.Query())),
@@ -378,7 +373,7 @@ export const ListSavedRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSavedRequest" }) as any as S.Schema<ListSavedRequest>;
 
 export type SavedHeatmapListResponseResultsList = Array<HeatmapScreenshotResponse>;
-export const SavedHeatmapListResponseResultsList = /*@__PURE__*/ S.Array(
+const SavedHeatmapListResponseResultsList = /*@__PURE__*/ S.Array(
   HeatmapScreenshotResponse,
 ) as any as S.Schema<SavedHeatmapListResponseResultsList>;
 
@@ -387,7 +382,7 @@ export interface SavedHeatmapListResponse {
   /** Total number of saved heatmaps matching the filters. */
   count: number;
 }
-export const SavedHeatmapListResponse = /*@__PURE__*/ S.suspend(() =>
+const SavedHeatmapListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: SavedHeatmapListResponseResultsList,
     count: S.Number,
@@ -395,12 +390,12 @@ export const SavedHeatmapListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavedHeatmapListResponse" }) as any as S.Schema<SavedHeatmapListResponse>;
 
 export type ListSavedResponseBodyList = Array<SavedHeatmapListResponse>;
-export const ListSavedResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSavedResponseBodyList = /*@__PURE__*/ S.Array(
   SavedHeatmapListResponse,
 ) as any as S.Schema<ListSavedResponseBodyList>;
 
 export type ListSavedResponse = ListSavedResponseBodyList;
-export const ListSavedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSavedResponse = /*@__PURE__*/ S.suspend(() =>
   ListSavedResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSavedResponse" }) as any as S.Schema<ListSavedResponse>;
 
@@ -409,7 +404,7 @@ export interface SavedDestroyRequest {
   project_id: string;
   short_id: string;
 }
-export const SavedDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SavedDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -419,7 +414,7 @@ export const SavedDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavedDestroyRequest" }) as any as S.Schema<SavedDestroyRequest>;
 
 export interface SavedDestroyResponse {}
-export const SavedDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SavedDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SavedDestroyResponse",
 }) as any as S.Schema<SavedDestroyResponse>;
 
@@ -428,7 +423,7 @@ export interface SavedRegenerateCreateRequest {
   project_id: string;
   short_id: string;
 }
-export const SavedRegenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const SavedRegenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -445,7 +440,7 @@ export const SavedRegenerateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Viewport widths (px, 100-3000) to render the heatmap screenshot at -- one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths. */
 export type UpdateSavedPartialRequestWidthsList = Array<number>;
-export const UpdateSavedPartialRequestWidthsList =
+const UpdateSavedPartialRequestWidthsList =
   CreateSavedRequestWidthsList as any as S.Schema<UpdateSavedPartialRequestWidthsList>;
 
 export interface UpdateSavedPartialRequest {
@@ -467,7 +462,7 @@ export interface UpdateSavedPartialRequest {
   /** When true, ask the headless browser to dismiss cookie/consent banners before capturing the screenshot. Off by default: the blocker can stall the render on some sites and time out. Only applies to 'screenshot' heatmaps. */
   block_consent_modals?: boolean;
 }
-export const UpdateSavedPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSavedPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),

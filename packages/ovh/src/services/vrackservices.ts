@@ -31,7 +31,7 @@ export interface GetVrackServiceResourceRequest {
   /** Vrack services ID */
   vrackServicesId: string;
 }
-export const GetVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrackServicesId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vrackServices/resource/{vrackServicesId}", code: 200 })),
@@ -41,7 +41,7 @@ export const GetVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** ProductStatusEnum */
 export type VrackServicesProductStatusEnum = "ACTIVE" | "DRAFT" | "SUSPENDED";
-export const VrackServicesProductStatusEnum = S.String;
+const VrackServicesProductStatusEnum = S.String;
 
 /** Endpoint holding a managed service IP */
 export interface VrackServicesEndpoint {
@@ -50,7 +50,7 @@ export interface VrackServicesEndpoint {
   /** IP address assigned by OVHcloud */
   ip?: string;
 }
-export const VrackServicesEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     ip: S.optional(S.String),
@@ -59,7 +59,7 @@ export const VrackServicesEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Endpoints representing the IPs assigned to the managed services */
 export type VrackServicesServiceEndpointEndpointsList = Array<VrackServicesEndpoint>;
-export const VrackServicesServiceEndpointEndpointsList = /*@__PURE__*/ S.Array(
+const VrackServicesServiceEndpointEndpointsList = /*@__PURE__*/ S.Array(
   VrackServicesEndpoint,
 ) as any as S.Schema<VrackServicesServiceEndpointEndpointsList>;
 
@@ -70,7 +70,7 @@ export interface VrackServicesServiceEndpoint {
   /** IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call. */
   managedServiceURN?: string;
 }
-export const VrackServicesServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: S.optional(VrackServicesServiceEndpointEndpointsList),
     managedServiceURN: S.optional(S.String),
@@ -81,7 +81,7 @@ export const VrackServicesServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Service endpoints of the subnet */
 export type VrackServicesSubnetServiceEndpointsList = Array<VrackServicesServiceEndpoint>;
-export const VrackServicesSubnetServiceEndpointsList = /*@__PURE__*/ S.Array(
+const VrackServicesSubnetServiceEndpointsList = /*@__PURE__*/ S.Array(
   VrackServicesServiceEndpoint,
 ) as any as S.Schema<VrackServicesSubnetServiceEndpointsList>;
 
@@ -96,7 +96,7 @@ export interface VrackServicesServiceRange {
   /** Number of service range IPs assigned to the managed services */
   usedIps?: number;
 }
-export const VrackServicesServiceRange = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesServiceRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.optional(S.String),
     remainingIps: S.optional(S.Number),
@@ -120,7 +120,7 @@ export interface VrackServicesSubnet {
   /** Unique inner VLAN that allows subnets segregation */
   vlan?: number | null;
 }
-export const VrackServicesSubnet = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesSubnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.optional(S.String),
     displayName: S.optional(S.NullOr(S.String)),
@@ -132,7 +132,7 @@ export const VrackServicesSubnet = /*@__PURE__*/ S.suspend(() =>
 
 /** Subnets of the current vRack Services */
 export type VrackServicesVrackServicesCurrentStateSubnetsList = Array<VrackServicesSubnet>;
-export const VrackServicesVrackServicesCurrentStateSubnetsList = /*@__PURE__*/ S.Array(
+const VrackServicesVrackServicesCurrentStateSubnetsList = /*@__PURE__*/ S.Array(
   VrackServicesSubnet,
 ) as any as S.Schema<VrackServicesVrackServicesCurrentStateSubnetsList>;
 
@@ -147,7 +147,7 @@ export interface VrackServicesVrackServicesCurrentState {
   /** vRack associated to the vRack Services */
   vrackId?: string | null;
 }
-export const VrackServicesVrackServicesCurrentState = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesVrackServicesCurrentState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productStatus: S.optional(VrackServicesProductStatusEnum),
     region: S.optional(S.String),
@@ -160,7 +160,7 @@ export const VrackServicesVrackServicesCurrentState = /*@__PURE__*/ S.suspend(()
 
 /** Current status of a task. A task in ERROR cannot be retried without your inputs. PENDING tasks will be executed as soon as possible. A RUNNING task is currently executing your original request. SCHEDULED is used for tasks that will be executed in the future */
 export type CommonCurrentTaskStatusEnum = "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-export const CommonCurrentTaskStatusEnum = S.String;
+const CommonCurrentTaskStatusEnum = S.String;
 
 /** Asynchronous operation currently running */
 export interface CommonCurrentTask {
@@ -173,7 +173,7 @@ export interface CommonCurrentTask {
   /** Type of the current task */
   type?: string;
 }
-export const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
+const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     link: S.optional(S.String),
@@ -184,13 +184,13 @@ export const CommonCurrentTask = /*@__PURE__*/ S.suspend(() =>
 
 /** Asynchronous operations ongoing on the vRack Services */
 export type VrackServicesVrackServicesWithIAMCurrentTasksList = Array<CommonCurrentTask>;
-export const VrackServicesVrackServicesWithIAMCurrentTasksList = /*@__PURE__*/ S.Array(
+const VrackServicesVrackServicesWithIAMCurrentTasksList = /*@__PURE__*/ S.Array(
   CommonCurrentTask,
 ) as any as S.Schema<VrackServicesVrackServicesWithIAMCurrentTasksList>;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -206,7 +206,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -222,14 +222,14 @@ export type VrackServicesResourceStatusEnum =
   | "ERROR"
   | "READY"
   | "UPDATING";
-export const VrackServicesResourceStatusEnum = S.String;
+const VrackServicesResourceStatusEnum = S.String;
 
 /** Target specification of a Service Endpoint. A Service Endpoint provides an access to a managed service directly from one or several private IPs in the associated vRack */
 export interface VrackServicesTargetServiceEndpoint {
   /** IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call */
   managedServiceURN: string;
 }
-export const VrackServicesTargetServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesTargetServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedServiceURN: S.String,
   }),
@@ -240,7 +240,7 @@ export const VrackServicesTargetServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
 /** Target specification of the Service Endpoints */
 export type VrackServicesTargetSubnetServiceEndpointsList =
   Array<VrackServicesTargetServiceEndpoint>;
-export const VrackServicesTargetSubnetServiceEndpointsList = /*@__PURE__*/ S.Array(
+const VrackServicesTargetSubnetServiceEndpointsList = /*@__PURE__*/ S.Array(
   VrackServicesTargetServiceEndpoint,
 ) as any as S.Schema<VrackServicesTargetSubnetServiceEndpointsList>;
 
@@ -249,7 +249,7 @@ export interface VrackServicesTargetServiceRange {
   /** IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29 */
   cidr: string;
 }
-export const VrackServicesTargetServiceRange = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesTargetServiceRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.String,
   }),
@@ -270,7 +270,7 @@ export interface VrackServicesTargetSubnet {
   /** Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic) */
   vlan?: number | null;
 }
-export const VrackServicesTargetSubnet = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesTargetSubnet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cidr: S.String,
     displayName: S.optional(S.NullOr(S.String)),
@@ -284,7 +284,7 @@ export const VrackServicesTargetSubnet = /*@__PURE__*/ S.suspend(() =>
 
 /** Target specification of the subnets. Maximum one subnet per vRack Services */
 export type VrackServicesVrackServicesTargetSpecSubnetsList = Array<VrackServicesTargetSubnet>;
-export const VrackServicesVrackServicesTargetSpecSubnetsList = /*@__PURE__*/ S.Array(
+const VrackServicesVrackServicesTargetSpecSubnetsList = /*@__PURE__*/ S.Array(
   VrackServicesTargetSubnet,
 ) as any as S.Schema<VrackServicesVrackServicesTargetSpecSubnetsList>;
 
@@ -293,7 +293,7 @@ export interface VrackServicesVrackServicesTargetSpec {
   /** Target specification of the subnets. Maximum one subnet per vRack Services */
   subnets: VrackServicesVrackServicesTargetSpecSubnetsList;
 }
-export const VrackServicesVrackServicesTargetSpec = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesVrackServicesTargetSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnets: VrackServicesVrackServicesTargetSpecSubnetsList,
   }),
@@ -322,7 +322,7 @@ export interface VrackServicesVrackServicesWithIAM {
   /** Date of the Last vRack Services update */
   updatedAt?: string;
 }
-export const VrackServicesVrackServicesWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesVrackServicesWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksum: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -344,7 +344,7 @@ export interface GetVrackServiceResourceTaskRequest {
   /** Task ID */
   taskId: string;
 }
-export const GetVrackServiceResourceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVrackServiceResourceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrackServicesId: S.String.pipe(T.Label()),
     taskId: S.String.pipe(T.Label()),
@@ -364,7 +364,7 @@ export interface CommonTaskError {
   /** Error description */
   message?: string;
 }
-export const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
+const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -372,13 +372,13 @@ export const CommonTaskError = /*@__PURE__*/ S.suspend(() =>
 
 /** Errors that occured on the task */
 export type CommonTaskErrorsList = Array<CommonTaskError>;
-export const CommonTaskErrorsList = /*@__PURE__*/ S.Array(
+const CommonTaskErrorsList = /*@__PURE__*/ S.Array(
   CommonTaskError,
 ) as any as S.Schema<CommonTaskErrorsList>;
 
 /** TaskStatusEnum */
 export type CommonTaskStatusEnum = "DONE" | "ERROR" | "PENDING" | "RUNNING" | "SCHEDULED";
-export const CommonTaskStatusEnum = S.String;
+const CommonTaskStatusEnum = S.String;
 
 /** Detailed information about an asynchronous operation progress steps */
 export interface CommonTaskProgress {
@@ -387,7 +387,7 @@ export interface CommonTaskProgress {
   /** Current status of the progress step */
   status?: CommonTaskStatusEnum;
 }
-export const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
+const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(CommonTaskStatusEnum),
@@ -396,7 +396,7 @@ export const CommonTaskProgress = /*@__PURE__*/ S.suspend(() =>
 
 /** Progress steps of the asynchronous operation */
 export type CommonTaskProgressList = Array<CommonTaskProgress>;
-export const CommonTaskProgressList = /*@__PURE__*/ S.Array(
+const CommonTaskProgressList = /*@__PURE__*/ S.Array(
   CommonTaskProgress,
 ) as any as S.Schema<CommonTaskProgressList>;
 
@@ -425,7 +425,7 @@ export interface CommonTask {
   /** Last update of the task */
   updatedAt?: string;
 }
-export const CommonTask = /*@__PURE__*/ S.suspend(() =>
+const CommonTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     errors: S.optional(S.NullOr(CommonTaskErrorsList)),
@@ -447,36 +447,33 @@ export interface ListVrackServiceReferenceCompatibleManagedServiceTypeRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVrackServiceReferenceCompatibleManagedServiceTypeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
-      xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/vrackServices/reference/compatibleManagedServiceType",
-        code: 200,
-      }),
-    ),
+const ListVrackServiceReferenceCompatibleManagedServiceTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
+    xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/vrackServices/reference/compatibleManagedServiceType",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeRequest",
 }) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeRequest>;
 
 export type ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList = Array<string>;
-export const ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList>;
+const ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList>;
 
 export type ListVrackServiceReferenceCompatibleManagedServiceTypeResponse =
   ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList;
-export const ListVrackServiceReferenceCompatibleManagedServiceTypeResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList.pipe(T.RawResponseRoot()),
-  ).annotate({
-    identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeResponse",
-  }) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponse>;
+const ListVrackServiceReferenceCompatibleManagedServiceTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  ListVrackServiceReferenceCompatibleManagedServiceTypeResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListVrackServiceReferenceCompatibleManagedServiceTypeResponse",
+}) as any as S.Schema<ListVrackServiceReferenceCompatibleManagedServiceTypeResponse>;
 
 export interface ListVrackServiceReferenceRegionRequest {
   /** Pagination cursor */
@@ -484,7 +481,7 @@ export interface ListVrackServiceReferenceRegionRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVrackServiceReferenceRegionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceReferenceRegionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
     xPaginationSize: S.optional(S.Number.pipe(T.Header("X-Pagination-Size"))),
@@ -498,20 +495,20 @@ export interface VrackServicesRegion {
   /** Region name */
   name?: string;
 }
-export const VrackServicesRegion = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesRegion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "VrackServicesRegion" }) as any as S.Schema<VrackServicesRegion>;
 
 export type ListVrackServiceReferenceRegionResponseBodyList = Array<VrackServicesRegion>;
-export const ListVrackServiceReferenceRegionResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVrackServiceReferenceRegionResponseBodyList = /*@__PURE__*/ S.Array(
   VrackServicesRegion,
 ) as any as S.Schema<ListVrackServiceReferenceRegionResponseBodyList>;
 
 export type ListVrackServiceReferenceRegionResponse =
   ListVrackServiceReferenceRegionResponseBodyList;
-export const ListVrackServiceReferenceRegionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceReferenceRegionResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackServiceReferenceRegionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackServiceReferenceRegionResponse",
@@ -519,19 +516,19 @@ export const ListVrackServiceReferenceRegionResponse = /*@__PURE__*/ S.suspend((
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListVrackServiceResourceRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListVrackServiceResourceRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListVrackServiceResourceRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListVrackServiceResourceRequestIamTagsValueList>;
 
 export type ListVrackServiceResourceRequestIamTagsMap = {
   [key: string]: ListVrackServiceResourceRequestIamTagsValueList | undefined;
 };
-export const ListVrackServiceResourceRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListVrackServiceResourceRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListVrackServiceResourceRequestIamTagsValueList,
 ) as any as S.Schema<ListVrackServiceResourceRequestIamTagsMap>;
@@ -544,7 +541,7 @@ export interface ListVrackServiceResourceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListVrackServiceResourceRequestIamTagsMap.pipe(T.Query())),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -555,12 +552,12 @@ export const ListVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackServiceResourceRequest>;
 
 export type ListVrackServiceResourceResponseBodyList = Array<VrackServicesVrackServicesWithIAM>;
-export const ListVrackServiceResourceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVrackServiceResourceResponseBodyList = /*@__PURE__*/ S.Array(
   VrackServicesVrackServicesWithIAM,
 ) as any as S.Schema<ListVrackServiceResourceResponseBodyList>;
 
 export type ListVrackServiceResourceResponse = ListVrackServiceResourceResponseBodyList;
-export const ListVrackServiceResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackServiceResourceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackServiceResourceResponse",
@@ -574,7 +571,7 @@ export interface ListVrackServiceResourceEligibleManagedServiceRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVrackServiceResourceEligibleManagedServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceEligibleManagedServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrackServicesId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -592,7 +589,7 @@ export const ListVrackServiceResourceEligibleManagedServiceRequest = /*@__PURE__
 
 /** List of IAM resource URNs */
 export type VrackServicesEligibleManagedServiceManagedServiceURNsList = Array<string>;
-export const VrackServicesEligibleManagedServiceManagedServiceURNsList = /*@__PURE__*/ S.Array(
+const VrackServicesEligibleManagedServiceManagedServiceURNsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VrackServicesEligibleManagedServiceManagedServiceURNsList>;
 
@@ -603,7 +600,7 @@ export interface VrackServicesEligibleManagedService {
   /** List of IAM resource URNs */
   managedServiceURNs?: VrackServicesEligibleManagedServiceManagedServiceURNsList;
 }
-export const VrackServicesEligibleManagedService = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesEligibleManagedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managedServiceType: S.optional(S.String),
     managedServiceURNs: S.optional(VrackServicesEligibleManagedServiceManagedServiceURNsList),
@@ -614,13 +611,13 @@ export const VrackServicesEligibleManagedService = /*@__PURE__*/ S.suspend(() =>
 
 export type ListVrackServiceResourceEligibleManagedServiceResponseBodyList =
   Array<VrackServicesEligibleManagedService>;
-export const ListVrackServiceResourceEligibleManagedServiceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVrackServiceResourceEligibleManagedServiceResponseBodyList = /*@__PURE__*/ S.Array(
   VrackServicesEligibleManagedService,
 ) as any as S.Schema<ListVrackServiceResourceEligibleManagedServiceResponseBodyList>;
 
 export type ListVrackServiceResourceEligibleManagedServiceResponse =
   ListVrackServiceResourceEligibleManagedServiceResponseBodyList;
-export const ListVrackServiceResourceEligibleManagedServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceEligibleManagedServiceResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackServiceResourceEligibleManagedServiceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackServiceResourceEligibleManagedServiceResponse",
@@ -634,7 +631,7 @@ export interface ListVrackServiceResourceTaskRequest {
   /** Pagination size */
   xPaginationSize?: number;
 }
-export const ListVrackServiceResourceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrackServicesId: S.String.pipe(T.Label()),
     xPaginationCursor: S.optional(S.String.pipe(T.Header("X-Pagination-Cursor"))),
@@ -647,12 +644,12 @@ export const ListVrackServiceResourceTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVrackServiceResourceTaskRequest>;
 
 export type ListVrackServiceResourceTaskResponseBodyList = Array<CommonTask>;
-export const ListVrackServiceResourceTaskResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVrackServiceResourceTaskResponseBodyList = /*@__PURE__*/ S.Array(
   CommonTask,
 ) as any as S.Schema<ListVrackServiceResourceTaskResponseBodyList>;
 
 export type ListVrackServiceResourceTaskResponse = ListVrackServiceResourceTaskResponseBodyList;
-export const ListVrackServiceResourceTaskResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVrackServiceResourceTaskResponse = /*@__PURE__*/ S.suspend(() =>
   ListVrackServiceResourceTaskResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVrackServiceResourceTaskResponse",
@@ -666,7 +663,7 @@ export interface PutVrackServiceResourceRequest {
   /** Requested target specification */
   targetSpec: VrackServicesVrackServicesTargetSpec;
 }
-export const PutVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vrackServicesId: S.String.pipe(T.Label()),
     checksum: S.String,
@@ -678,7 +675,7 @@ export const PutVrackServiceResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Asynchronous operations ongoing on the vRack Services */
 export type VrackServicesVrackServicesCurrentTasksList = Array<CommonCurrentTask>;
-export const VrackServicesVrackServicesCurrentTasksList =
+const VrackServicesVrackServicesCurrentTasksList =
   VrackServicesVrackServicesWithIAMCurrentTasksList as any as S.Schema<VrackServicesVrackServicesCurrentTasksList>;
 
 /** A vRack Services */
@@ -700,7 +697,7 @@ export interface VrackServicesVrackServices {
   /** Date of the Last vRack Services update */
   updatedAt?: string;
 }
-export const VrackServicesVrackServices = /*@__PURE__*/ S.suspend(() =>
+const VrackServicesVrackServices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksum: S.optional(S.String),
     createdAt: S.optional(S.String),

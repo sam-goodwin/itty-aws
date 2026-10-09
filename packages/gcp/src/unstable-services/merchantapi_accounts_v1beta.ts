@@ -69,7 +69,7 @@ export interface AcceptTermsOfServiceRequest {
   /** Required. The account for which to accept the ToS. Format: `accounts/{account}` */
   account?: string;
 }
-export const AcceptTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     regionCode: S.optional(S.String.pipe(T.Query())),
@@ -94,7 +94,7 @@ export interface Merchantapi_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Merchantapi_Date = /*@__PURE__*/ S.suspend(() =>
+const Merchantapi_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(S.Number),
     month: S.optional(S.Number),
@@ -111,7 +111,7 @@ export interface Accepted {
   /** Optional. When set, it states that the accepted `TermsOfService` is only valid until the end of this date (in UTC). A new one must be accepted before then. The information of the required `TermsOfService` is found in the `Required` message. */
   validUntil?: Merchantapi_Date;
 }
-export const Accepted = /*@__PURE__*/ S.suspend(() =>
+const Accepted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptedBy: S.optional(S.String),
     termsOfService: S.optional(S.String),
@@ -126,7 +126,7 @@ export interface Required {
   /** Required. The `TermsOfService` that need to be accepted. */
   termsOfService?: string;
 }
-export const Required = /*@__PURE__*/ S.suspend(() =>
+const Required = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tosFileUri: S.optional(S.String),
     termsOfService: S.optional(S.String),
@@ -136,7 +136,7 @@ export const Required = /*@__PURE__*/ S.suspend(() =>
 export type TermsOfServiceAgreementStateTermsOfServiceKindEnum =
   | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
   | "MERCHANT_CENTER";
-export const TermsOfServiceAgreementStateTermsOfServiceKindEnum = S.String;
+const TermsOfServiceAgreementStateTermsOfServiceKindEnum = S.String;
 
 /** This resource represents the agreement state for a given account and terms of service kind. The state is as follows: * If the business has accepted a terms of service, `accepted` will be populated, otherwise it will be empty * If the business must sign a terms of service, `required` will be populated, otherwise it will be empty. Note that both `required` and `accepted` can be present. In this case the `accepted` terms of services will have an expiration date set in the `valid_until` field. The `required` terms of services need to be accepted before `valid_until` in order for the account to continue having a valid agreement. When accepting new terms of services we expect third-party providers to display the text associated with the given terms of service agreement (the url to the file containing the text is added in the Required message below as `tos_file_uri`). The actual acceptance of the terms of service is done by calling accept on the `TermsOfService` resource. `valid_until` field. */
 export interface TermsOfServiceAgreementState {
@@ -151,7 +151,7 @@ export interface TermsOfServiceAgreementState {
   /** Required. Terms of Service kind associated with the particular version. */
   termsOfServiceKind?: TermsOfServiceAgreementStateTermsOfServiceKindEnum;
 }
-export const TermsOfServiceAgreementState = /*@__PURE__*/ S.suspend(() =>
+const TermsOfServiceAgreementState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted: S.optional(Accepted),
     name: S.optional(S.String),
@@ -168,7 +168,7 @@ export interface AcceptTermsOfServiceResponse {
   /** The agreement state after accepting the ToS. */
   termsOfServiceAgreementState?: TermsOfServiceAgreementState;
 }
-export const AcceptTermsOfServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptTermsOfServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     termsOfServiceAgreementState: S.optional(TermsOfServiceAgreementState),
   }),
@@ -178,7 +178,7 @@ export const AcceptTermsOfServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to approve an account service. */
 export interface ApproveAccountServiceRequest {}
-export const ApproveAccountServiceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ApproveAccountServiceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApproveAccountServiceRequest",
 }) as any as S.Schema<ApproveAccountServiceRequest>;
 
@@ -188,7 +188,7 @@ export interface ApproveAccountsServicesRequest {
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const ApproveAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -205,10 +205,8 @@ export const ApproveAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** `LocalListingManagement` payload. */
 export type LocalListingManagement = ApproveAccountServiceRequest;
-export const LocalListingManagement = ApproveAccountServiceRequest;
-
 export type HandshakeActorEnum = "ACTOR_UNSPECIFIED" | "ACCOUNT" | "OTHER_PARTY";
-export const HandshakeActorEnum = S.String;
+const HandshakeActorEnum = S.String;
 
 export type HandshakeApprovalStateEnum =
   | "APPROVAL_STATE_UNSPECIFIED"
@@ -216,7 +214,7 @@ export type HandshakeApprovalStateEnum =
   | "WAITING"
   | "ESTABLISHED"
   | "REJECTED";
-export const HandshakeApprovalStateEnum = S.String;
+const HandshakeApprovalStateEnum = S.String;
 
 /** The current status of establishing of the service. (for example, pending approval, approved, established). */
 export interface Handshake {
@@ -225,7 +223,7 @@ export interface Handshake {
   /** Output only. The approval state of this handshake. */
   approvalState?: HandshakeApprovalStateEnum | (string & {});
 }
-export const Handshake = /*@__PURE__*/ S.suspend(() =>
+const Handshake = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actor: S.optional(HandshakeActorEnum),
     approvalState: S.optional(HandshakeApprovalStateEnum),
@@ -234,27 +232,17 @@ export const Handshake = /*@__PURE__*/ S.suspend(() =>
 
 /** `AccountAggregation` payload. */
 export type AccountAggregation = ApproveAccountServiceRequest;
-export const AccountAggregation = ApproveAccountServiceRequest;
-
 /** `ProductsManagement` payload. */
 export type ProductsManagement = ApproveAccountServiceRequest;
-export const ProductsManagement = ApproveAccountServiceRequest;
-
 /** `ComparisonShopping` payload. */
 export type ComparisonShopping = ApproveAccountServiceRequest;
-export const ComparisonShopping = ApproveAccountServiceRequest;
-
 export type AccountServiceMutabilityEnum = "MUTABILITY_UNSPECIFIED" | "MUTABLE" | "IMMUTABLE";
-export const AccountServiceMutabilityEnum = S.String;
+const AccountServiceMutabilityEnum = S.String;
 
 /** `CampaignManagement` payload. */
 export type CampaignsManagement = ApproveAccountServiceRequest;
-export const CampaignsManagement = ApproveAccountServiceRequest;
-
 /** `AccountManagement` payload. */
 export type AccountManagement = ApproveAccountServiceRequest;
-export const AccountManagement = ApproveAccountServiceRequest;
-
 /** The `AccountService` message represents a specific service that a provider account offers to a Merchant Center account. `AccountService` defines the permissions and capabilities granted to the provider, allowing for operations such as product management or campaign management. The lifecycle of an `AccountService` involves a proposal phase, where one party suggests the service, and an approval phase, where the other party accepts or rejects it. This handshake mechanism ensures mutual consent before any access is granted. This mechanism safeguards both parties by ensuring that access rights are granted appropriately and that both the business and provider are aware of the services enabled. In scenarios where a user is an admin of both accounts, the approval can happen automatically. The mutability of a service is also managed through `AccountService`. Some services might be immutable, for example, if they were established through other systems or APIs, and you cannot alter them through this API. */
 export interface AccountService {
   /** Immutable. An optional, immutable identifier that Google uses to refer to this account when communicating with the provider. This should be the unique account ID within the provider's system (for example, your shop ID in Shopify). If you have multiple accounts with the same provider - for instance, different accounts for various regions -- the `external_account_id` differentiates between them, ensuring accurate linking and integration between Google and the provider. */
@@ -282,7 +270,7 @@ export interface AccountService {
   /** Service type for account management. Enables the provider to perform administrative actions on the business's account, such as configuring account settings, managing users, or updating business information. */
   accountManagement?: ApproveAccountServiceRequest;
 }
-export const AccountService = /*@__PURE__*/ S.suspend(() =>
+const AccountService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAccountId: S.optional(S.String),
     providerDisplayName: S.optional(S.String),
@@ -304,7 +292,7 @@ export interface ClaimHomepageRequest {
   /** Optional. When set to `true`, this option removes any existing claim on the requested website from any other account to the account making the request, effectively replacing the previous claim. */
   overwrite?: boolean;
 }
-export const ClaimHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+const ClaimHomepageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overwrite: S.optional(S.Boolean),
   }),
@@ -316,7 +304,7 @@ export interface ClaimAccountsHomepageRequest {
   /** Request body */
   body?: ClaimHomepageRequest;
 }
-export const ClaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+const ClaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ClaimHomepageRequest.pipe(T.HttpBody())),
@@ -340,7 +328,7 @@ export interface Homepage {
   /** Required. The URI (typically a URL) of the store's homepage. */
   uri?: string;
 }
-export const Homepage = /*@__PURE__*/ S.suspend(() =>
+const Homepage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claimed: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -354,7 +342,7 @@ export type PickupStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const PickupStateEnum = S.String;
+const PickupStateEnum = S.String;
 
 /** Collection of information related to Pickup. */
 export interface Pickup {
@@ -363,7 +351,7 @@ export interface Pickup {
   /** Output only. The state of the pickup serving. */
   state?: PickupStateEnum | (string & {});
 }
-export const Pickup = /*@__PURE__*/ S.suspend(() =>
+const Pickup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     state: S.optional(PickupStateEnum),
@@ -376,7 +364,7 @@ export type OnDisplayToOrderStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const OnDisplayToOrderStateEnum = S.String;
+const OnDisplayToOrderStateEnum = S.String;
 
 /** Collection of information related to the on display to order ([ODO](https://support.google.com/merchants/answer/14615056?ref_topic=15145747&sjid=6892280366904591178-NC)). */
 export interface OnDisplayToOrder {
@@ -385,7 +373,7 @@ export interface OnDisplayToOrder {
   /** Required. The on display to order (ODO) policy URI. */
   uri?: string;
 }
-export const OnDisplayToOrder = /*@__PURE__*/ S.suspend(() =>
+const OnDisplayToOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(OnDisplayToOrderStateEnum),
     uri: S.optional(S.String),
@@ -398,8 +386,6 @@ export type AboutStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const AboutStateEnum = S.String;
-
 /** Collection of information related to the about page ([impressum](https://support.google.com/merchants/answer/14675634?ref_topic=15145634&sjid=6892280366904591178-NC)). */
 export interface About {
   /** Output only. The state of the URI. */
@@ -407,14 +393,14 @@ export interface About {
   /** Required. The about page URI. */
   uri?: string;
 }
-export const About = OnDisplayToOrder as any as S.Schema<About>;
+const About = OnDisplayToOrder as any as S.Schema<About>;
 
 export type OmnichannelSettingLsfTypeEnum =
   | "LSF_TYPE_UNSPECIFIED"
   | "GHLSF"
   | "MHLSF_BASIC"
   | "MHLSF_FULL";
-export const OmnichannelSettingLsfTypeEnum = S.String;
+const OmnichannelSettingLsfTypeEnum = S.String;
 
 export type InStockStateEnum =
   | "STATE_UNSPECIFIED"
@@ -422,8 +408,6 @@ export type InStockStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const InStockStateEnum = S.String;
-
 /** Collection of information related to InStock. */
 export interface InStock {
   /** Optional. Product landing page URI. It is only used for the review of MHLSF in-stock serving. This URI domain should match with the business's homepage. Required to be empty if the lsf_type is GHLSF, and required when the lsf_type is MHLSF_FULL or MHLSF_BASIC. */
@@ -431,7 +415,7 @@ export interface InStock {
   /** Output only. The state of the in-stock serving. */
   state?: InStockStateEnum | (string & {});
 }
-export const InStock = Pickup as any as S.Schema<InStock>;
+const InStock = Pickup as any as S.Schema<InStock>;
 
 export type InventoryVerificationContactStateEnum =
   | "STATE_UNSPECIFIED"
@@ -439,7 +423,7 @@ export type InventoryVerificationContactStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const InventoryVerificationContactStateEnum = S.String;
+const InventoryVerificationContactStateEnum = S.String;
 
 export type InventoryVerificationStateEnum =
   | "STATE_UNSPECIFIED"
@@ -448,7 +432,7 @@ export type InventoryVerificationStateEnum =
   | "RUNNING"
   | "SUCCEEDED"
   | "SUSPENDED";
-export const InventoryVerificationStateEnum = S.String;
+const InventoryVerificationStateEnum = S.String;
 
 /** Collection of information related to [inventory verification](https://support.google.com/merchants/answer/14684499?ref_topic=15145634&sjid=6892280366904591178-NC). */
 export interface InventoryVerification {
@@ -461,7 +445,7 @@ export interface InventoryVerification {
   /** Required. The name of the contact for the inventory verification process. */
   contact?: string;
 }
-export const InventoryVerification = /*@__PURE__*/ S.suspend(() =>
+const InventoryVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactEmail: S.optional(S.String),
     contactState: S.optional(InventoryVerificationContactStateEnum),
@@ -476,7 +460,7 @@ export type LfpLinkStateEnum =
   | "FAILED"
   | "RUNNING"
   | "ACTION_REQUIRED";
-export const LfpLinkStateEnum = S.String;
+const LfpLinkStateEnum = S.String;
 
 /** Collection of information related to the LFP link. */
 export interface LfpLink {
@@ -487,7 +471,7 @@ export interface LfpLink {
   /** Required. The account ID by which this merchant is known to the LFP provider. */
   externalAccountId?: string;
 }
-export const LfpLink = /*@__PURE__*/ S.suspend(() =>
+const LfpLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lfpProvider: S.optional(S.String),
     state: S.optional(LfpLinkStateEnum),
@@ -516,7 +500,7 @@ export interface OmnichannelSetting {
   /** Required. Immutable. Region code defined by [CLDR](https://cldr.unicode.org/). Must be provided in the Create method, and is immutable. */
   regionCode?: string;
 }
-export const OmnichannelSetting = /*@__PURE__*/ S.suspend(() =>
+const OmnichannelSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pickup: S.optional(Pickup),
     odo: S.optional(OnDisplayToOrder),
@@ -536,7 +520,7 @@ export interface CreateAccountsOmnichannelSettingsRequest {
   /** Request body */
   body?: OmnichannelSetting;
 }
-export const CreateAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(OmnichannelSetting.pipe(T.HttpBody())),
@@ -556,7 +540,7 @@ export type PolicyTypeEnum =
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
   | "LIFETIME_RETURNS";
-export const PolicyTypeEnum = S.String;
+const PolicyTypeEnum = S.String;
 
 /** The available policies. */
 export interface Policy {
@@ -565,7 +549,7 @@ export interface Policy {
   /** Policy type. */
   type?: PolicyTypeEnum | (string & {});
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.optional(S.String),
     type: S.optional(PolicyTypeEnum),
@@ -577,10 +561,10 @@ export type OnlineReturnPolicyReturnLabelSourceEnum =
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_PACKAGE"
   | "CUSTOMER_RESPONSIBILITY";
-export const OnlineReturnPolicyReturnLabelSourceEnum = S.String;
+const OnlineReturnPolicyReturnLabelSourceEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The price represented as a number and currency. */
 export interface Price {
@@ -589,7 +573,7 @@ export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
   currencyCode?: string;
 }
-export const Price = /*@__PURE__*/ S.suspend(() =>
+const Price = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountMicros: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -603,7 +587,7 @@ export interface RestockingFee {
   /** Fixed restocking fee. */
   fixedFee?: Price;
 }
-export const RestockingFee = /*@__PURE__*/ S.suspend(() =>
+const RestockingFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     microPercent: S.optional(S.Number),
     fixedFee: S.optional(Price),
@@ -614,12 +598,12 @@ export type OnlineReturnPolicyItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
   | "USED";
-export const OnlineReturnPolicyItemConditionsItemEnum = S.String;
+const OnlineReturnPolicyItemConditionsItemEnum = S.String;
 
 export type OnlineReturnPolicyItemConditionsItemEnumList = Array<
   OnlineReturnPolicyItemConditionsItemEnum | (string & {})
 >;
-export const OnlineReturnPolicyItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
+const OnlineReturnPolicyItemConditionsItemEnumList = /*@__PURE__*/ S.Array(
   OnlineReturnPolicyItemConditionsItemEnum,
 ) as any as S.Schema<OnlineReturnPolicyItemConditionsItemEnumList>;
 
@@ -635,7 +619,7 @@ export interface SeasonalOverride {
   /** Number of days (from the delivery date) that the product can be returned. */
   returnDays?: number;
 }
-export const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
+const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     returnUntilDate: S.optional(Merchantapi_Date),
@@ -646,7 +630,7 @@ export const SeasonalOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeasonalOverride" }) as any as S.Schema<SeasonalOverride>;
 
 export type SeasonalOverrideList = Array<SeasonalOverride>;
-export const SeasonalOverrideList = /*@__PURE__*/ S.Array(
+const SeasonalOverrideList = /*@__PURE__*/ S.Array(
   SeasonalOverride,
 ) as any as S.Schema<SeasonalOverrideList>;
 
@@ -655,16 +639,14 @@ export type OnlineReturnPolicyReturnMethodsItemEnum =
   | "BY_MAIL"
   | "IN_STORE"
   | "AT_A_KIOSK";
-export const OnlineReturnPolicyReturnMethodsItemEnum = S.String;
-
 export type OnlineReturnPolicyReturnMethodsItemEnumList = Array<
   OnlineReturnPolicyReturnMethodsItemEnum | (string & {})
 >;
-export const OnlineReturnPolicyReturnMethodsItemEnumList =
+const OnlineReturnPolicyReturnMethodsItemEnumList =
   OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<OnlineReturnPolicyReturnMethodsItemEnumList>;
 
 export type ReturnShippingFeeTypeEnum = "TYPE_UNSPECIFIED" | "FIXED" | "CUSTOMER_PAYING_ACTUAL_FEE";
-export const ReturnShippingFeeTypeEnum = S.String;
+const ReturnShippingFeeTypeEnum = S.String;
 
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
 export interface ReturnShippingFee {
@@ -673,7 +655,7 @@ export interface ReturnShippingFee {
   /** Fixed return shipping fee amount. This value is only applicable when type is `FIXED`. We will treat the return shipping fee as free if type is `FIXED` and this value is not set. */
   fixedFee?: Price;
 }
-export const ReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
+const ReturnShippingFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ReturnShippingFeeTypeEnum),
     fixedFee: S.optional(Price),
@@ -713,7 +695,7 @@ export interface OnlineReturnPolicy {
   /** Identifier. The name of the `OnlineReturnPolicy` resource. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name?: string;
 }
-export const OnlineReturnPolicy = /*@__PURE__*/ S.suspend(() =>
+const OnlineReturnPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptExchange: S.optional(S.Boolean),
     policy: S.optional(Policy),
@@ -739,7 +721,7 @@ export interface CreateAccountsOnlineReturnPoliciesRequest {
   /** Request body */
   body?: OnlineReturnPolicy;
 }
-export const CreateAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(OnlineReturnPolicy.pipe(T.HttpBody())),
@@ -759,7 +741,7 @@ export type CheckoutSettingsReviewStateEnum =
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-export const CheckoutSettingsReviewStateEnum = S.String;
+const CheckoutSettingsReviewStateEnum = S.String;
 
 export type CheckoutSettingsEligibleDestinationsItemEnum =
   | "DESTINATION_ENUM_UNSPECIFIED"
@@ -776,12 +758,10 @@ export type CheckoutSettingsEligibleDestinationsItemEnum =
   | "CLOUD_RETAIL"
   | "LOCAL_CLOUD_RETAIL"
   | "RENTAL_ADS";
-export const CheckoutSettingsEligibleDestinationsItemEnum = S.String;
-
 export type CheckoutSettingsEligibleDestinationsItemEnumList = Array<
   CheckoutSettingsEligibleDestinationsItemEnum | (string & {})
 >;
-export const CheckoutSettingsEligibleDestinationsItemEnumList =
+const CheckoutSettingsEligibleDestinationsItemEnumList =
   OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<CheckoutSettingsEligibleDestinationsItemEnumList>;
 
 export type CheckoutSettingsEffectiveReviewStateEnum =
@@ -789,7 +769,7 @@ export type CheckoutSettingsEffectiveReviewStateEnum =
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-export const CheckoutSettingsEffectiveReviewStateEnum = S.String;
+const CheckoutSettingsEffectiveReviewStateEnum = S.String;
 
 /** URL settings for cart or checkout URL. */
 export interface UriSettings {
@@ -798,7 +778,7 @@ export interface UriSettings {
   /** Cart URL template. When the placeholders are expanded will redirect the buyer to the cart page on the merchant website with the selected item in cart. For more details, check the [help center doc](https://support.google.com/merchants/answer/13945960#method1&zippy=%2Cproduct-level-url-formatting%2Caccount-level-url-formatting) */
   cartUriTemplate?: string;
 }
-export const UriSettings = /*@__PURE__*/ S.suspend(() =>
+const UriSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkoutUriTemplate: S.optional(S.String),
     cartUriTemplate: S.optional(S.String),
@@ -810,14 +790,14 @@ export type CheckoutSettingsEnrollmentStateEnum =
   | "INACTIVE"
   | "ENROLLED"
   | "OPTED_OUT";
-export const CheckoutSettingsEnrollmentStateEnum = S.String;
+const CheckoutSettingsEnrollmentStateEnum = S.String;
 
 export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "CHECKOUT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
   | "OPTED_OUT";
-export const CheckoutSettingsEffectiveEnrollmentStateEnum = S.String;
+const CheckoutSettingsEffectiveEnrollmentStateEnum = S.String;
 
 /** [CheckoutSettings](https://support.google.com/merchants/answer/13945960) for a specific merchant. */
 export interface CheckoutSettings {
@@ -838,7 +818,7 @@ export interface CheckoutSettings {
   /** Output only. The effective value of `uri_settings` for a given merchant. If account level settings are present then this value will be a copy of url settings. Otherwise, it will have the value of the parent account (for only marketplace sellers). */
   effectiveUriSettings?: UriSettings;
 }
-export const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
+const CheckoutSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewState: S.optional(CheckoutSettingsReviewStateEnum),
     eligibleDestinations: S.optional(CheckoutSettingsEligibleDestinationsItemEnumList),
@@ -857,7 +837,7 @@ export interface CreateAccountsProgramsCheckoutSettingsRequest {
   /** Request body */
   body?: CheckoutSettings;
 }
-export const CreateAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CheckoutSettings.pipe(T.HttpBody())),
@@ -879,7 +859,7 @@ export interface PostalCodeRange {
   /** Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: `94108`, `9410*`, `9*`. */
   begin?: string;
 }
-export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
+const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.optional(S.String),
     begin: S.optional(S.String),
@@ -887,7 +867,7 @@ export const PostalCodeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostalCodeRange" }) as any as S.Schema<PostalCodeRange>;
 
 export type PostalCodeRangeList = Array<PostalCodeRange>;
-export const PostalCodeRangeList = /*@__PURE__*/ S.Array(
+const PostalCodeRangeList = /*@__PURE__*/ S.Array(
   PostalCodeRange,
 ) as any as S.Schema<PostalCodeRangeList>;
 
@@ -898,7 +878,7 @@ export interface PostalCodeArea {
   /** Required. A range of postal codes. */
   postalCodes?: PostalCodeRangeList;
 }
-export const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
+const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     postalCodes: S.optional(PostalCodeRangeList),
@@ -906,7 +886,7 @@ export const PostalCodeArea = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostalCodeArea" }) as any as S.Schema<PostalCodeArea>;
 
 export type RadiusAreaRadiusUnitsEnum = "RADIUS_UNITS_UNSPECIFIED" | "MILES" | "KILOMETERS";
-export const RadiusAreaRadiusUnitsEnum = S.String;
+const RadiusAreaRadiusUnitsEnum = S.String;
 
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface LatLng {
@@ -915,7 +895,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -933,7 +913,7 @@ export interface RadiusArea {
   /** Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) or the country the radius area applies to. */
   regionCode?: string;
 }
-export const RadiusArea = /*@__PURE__*/ S.suspend(() =>
+const RadiusArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     radius: S.optional(S.Number),
     radiusUnits: S.optional(RadiusAreaRadiusUnitsEnum),
@@ -947,7 +927,7 @@ export interface GeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (for example, state). */
   geotargetCriteriaIds?: StringList;
 }
-export const GeoTargetArea = /*@__PURE__*/ S.suspend(() =>
+const GeoTargetArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geotargetCriteriaIds: S.optional(StringList),
   }),
@@ -970,7 +950,7 @@ export interface Region {
   /** Optional. A list of geotargets that defines the region area. */
   geotargetArea?: GeoTargetArea;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     postalCodeArea: S.optional(PostalCodeArea),
@@ -990,7 +970,7 @@ export interface CreateAccountsRegionsRequest {
   /** Request body */
   body?: Region;
 }
-export const CreateAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     regionId: S.optional(S.String.pipe(T.Query())),
@@ -1013,14 +993,12 @@ export type UserAccessRightsItemEnum =
   | "ADMIN"
   | "PERFORMANCE_REPORTING"
   | "API_DEVELOPER";
-export const UserAccessRightsItemEnum = S.String;
-
 export type UserAccessRightsItemEnumList = Array<UserAccessRightsItemEnum | (string & {})>;
-export const UserAccessRightsItemEnumList =
+const UserAccessRightsItemEnumList =
   OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<UserAccessRightsItemEnumList>;
 
 export type UserStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "VERIFIED";
-export const UserStateEnum = S.String;
+const UserStateEnum = S.String;
 
 /** The `User` resource represents a user associated with a Merchant Center account. It is used to manage user permissions and access rights within the account. For more information, see [Frequently asked questions about people and access levels](//support.google.com/merchants/answer/12160472). */
 export interface User {
@@ -1031,7 +1009,7 @@ export interface User {
   /** Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to refer to your own email address, for example `accounts/{account}/users/me`. */
   name?: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessRights: S.optional(UserAccessRightsItemEnumList),
     state: S.optional(UserStateEnum),
@@ -1047,7 +1025,7 @@ export interface CreateAccountsUsersRequest {
   /** Request body */
   body?: User;
 }
-export const CreateAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     userId: S.optional(S.String.pipe(T.Query())),
@@ -1072,7 +1050,7 @@ export interface CreateUserRequest {
   /** Required. The email address of the user (for example, `john.doe@gmail.com`). */
   userId?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(User),
     parent: S.optional(S.String),
@@ -1081,7 +1059,7 @@ export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateUserRequest" }) as any as S.Schema<CreateUserRequest>;
 
 export type CreateUserRequestList = Array<CreateUserRequest>;
-export const CreateUserRequestList = /*@__PURE__*/ S.Array(
+const CreateUserRequestList = /*@__PURE__*/ S.Array(
   CreateUserRequest,
 ) as any as S.Schema<CreateUserRequestList>;
 
@@ -1092,7 +1070,7 @@ export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -1118,7 +1096,7 @@ export interface Account {
   /** Required. A human-readable name of the account. Don't use punctuation, capitalization, or non-alphanumeric symbols such as the "/" or "_" symbols. See [Adding a business name](https://support.google.com/merchants/answer/12159159) for more information. */
   accountName?: string;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homePageUri: S.optional(S.String),
     accountId: S.optional(S.String),
@@ -1148,7 +1126,7 @@ export interface AddAccountService {
   /** The provider manages products for this account. Payload for service type products management. */
   productsManagement?: ApproveAccountServiceRequest;
 }
-export const AddAccountService = /*@__PURE__*/ S.suspend(() =>
+const AddAccountService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountManagement: S.optional(ApproveAccountServiceRequest),
     accountAggregation: S.optional(ApproveAccountServiceRequest),
@@ -1161,7 +1139,7 @@ export const AddAccountService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddAccountService" }) as any as S.Schema<AddAccountService>;
 
 export type AddAccountServiceList = Array<AddAccountService>;
-export const AddAccountServiceList = /*@__PURE__*/ S.Array(
+const AddAccountServiceList = /*@__PURE__*/ S.Array(
   AddAccountService,
 ) as any as S.Schema<AddAccountServiceList>;
 
@@ -1169,14 +1147,14 @@ export type VerificationMailSettingsVerificationMailModeEnum =
   | "VERIFICATION_MAIL_MODE_UNSPECIFIED"
   | "SEND_VERIFICATION_MAIL"
   | "SUPPRESS_VERIFICATION_MAIL";
-export const VerificationMailSettingsVerificationMailModeEnum = S.String;
+const VerificationMailSettingsVerificationMailModeEnum = S.String;
 
 /** Settings related to the verification email that is sent after adding a user. */
 export interface VerificationMailSettings {
   /** Optional. Mode of the verification mail. If not set, the default is `SEND_VERIFICATION_MAIL`. */
   verificationMailMode?: VerificationMailSettingsVerificationMailModeEnum | (string & {});
 }
-export const VerificationMailSettings = /*@__PURE__*/ S.suspend(() =>
+const VerificationMailSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verificationMailMode: S.optional(VerificationMailSettingsVerificationMailModeEnum),
   }),
@@ -1191,7 +1169,7 @@ export interface AddUser {
   /** Optional. Settings related to configuring the verification email that is sent after adding a user. */
   verificationMailSettings?: VerificationMailSettings;
 }
-export const AddUser = /*@__PURE__*/ S.suspend(() =>
+const AddUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(User),
     userId: S.optional(S.String),
@@ -1200,7 +1178,7 @@ export const AddUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddUser" }) as any as S.Schema<AddUser>;
 
 export type AddUserList = Array<AddUser>;
-export const AddUserList = /*@__PURE__*/ S.Array(AddUser) as any as S.Schema<AddUserList>;
+const AddUserList = /*@__PURE__*/ S.Array(AddUser) as any as S.Schema<AddUserList>;
 
 /** Set an alias for a relationship between a provider and the account to be created. */
 export interface SetAliasForRelationship {
@@ -1209,7 +1187,7 @@ export interface SetAliasForRelationship {
   /** Required. The provider of the service. This is a reference to an account such as `providers/123` or `accounts/123`. The same provider must be specified in at least one of the `service` fields. */
   provider?: string;
 }
-export const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
+const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountIdAlias: S.optional(S.String),
     provider: S.optional(S.String),
@@ -1217,7 +1195,7 @@ export const SetAliasForRelationship = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetAliasForRelationship" }) as any as S.Schema<SetAliasForRelationship>;
 
 export type SetAliasForRelationshipList = Array<SetAliasForRelationship>;
-export const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(
+const SetAliasForRelationshipList = /*@__PURE__*/ S.Array(
   SetAliasForRelationship,
 ) as any as S.Schema<SetAliasForRelationshipList>;
 
@@ -1234,7 +1212,7 @@ export interface CreateAndConfigureAccountRequest {
   /** Optional. If a relationship is created with a provider, you can set an alias for it with this field. The calling user must be an admin on the provider to be able to set an alias. */
   setAlias?: SetAliasForRelationshipList;
 }
-export const CreateAndConfigureAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAndConfigureAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: S.optional(CreateUserRequestList),
     account: S.optional(Account),
@@ -1250,7 +1228,7 @@ export interface CreateAndConfigureAccountsRequest {
   /** Request body */
   body?: CreateAndConfigureAccountRequest;
 }
-export const CreateAndConfigureAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAndConfigureAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateAndConfigureAccountRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1270,7 +1248,7 @@ export interface CreateTestAccountAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const CreateTestAccountAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTestAccountAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Account.pipe(T.HttpBody())),
@@ -1291,7 +1269,7 @@ export interface DeleteAccountsRequest {
   /** Required. The name of the account to delete. Format: `accounts/{account}` */
   name: string;
 }
-export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1306,13 +1284,13 @@ export const DeleteAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = ApproveAccountServiceRequest as any as S.Schema<Empty>;
+const Empty = ApproveAccountServiceRequest as any as S.Schema<Empty>;
 
 export interface DeleteAccountsOnlineReturnPoliciesRequest {
   /** Required. The name of the return policy to delete. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name: string;
 }
-export const DeleteAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1330,7 +1308,7 @@ export interface DeleteAccountsRegionsRequest {
   /** Required. The name of the region to delete. Format: `accounts/{account}/regions/{region}` */
   name: string;
 }
-export const DeleteAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1348,7 +1326,7 @@ export interface DeleteAccountsUsersRequest {
   /** Required. The name of the user to delete. Format: `accounts/{account}/users/{email}` It is also possible to delete the user corresponding to the caller by using `me` rather than an email address as in `accounts/{account}/users/me`. */
   name: string;
 }
-export const DeleteAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1366,32 +1344,29 @@ export interface DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Required. The name/identifier of the merchant account. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
   name: string;
 }
-export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
+const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "accounts/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
+}) as any as S.Schema<DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
 /** Request message for the DisableProgram method. */
 export type DisableProgramRequest = ApproveAccountServiceRequest;
-export const DisableProgramRequest = ApproveAccountServiceRequest;
-
 export interface DisableAccountsProgramsRequest {
   /** Required. The name of the program for which to disable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const DisableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -1415,7 +1390,7 @@ export interface Requirement {
   /** Output only. The regions that are currently affected by this requirement not being met. Region codes are defined by [CLDR](https://cldr.unicode.org/). This is either a country where the program applies specifically to that country or `001` when the program applies globally. */
   affectedRegionCodes?: StringList;
 }
-export const Requirement = /*@__PURE__*/ S.suspend(() =>
+const Requirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documentationUri: S.optional(S.String),
     title: S.optional(S.String),
@@ -1424,12 +1399,10 @@ export const Requirement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Requirement" }) as any as S.Schema<Requirement>;
 
 export type RequirementList = Array<Requirement>;
-export const RequirementList = /*@__PURE__*/ S.Array(
-  Requirement,
-) as any as S.Schema<RequirementList>;
+const RequirementList = /*@__PURE__*/ S.Array(Requirement) as any as S.Schema<RequirementList>;
 
 export type ProgramStateEnum = "STATE_UNSPECIFIED" | "NOT_ELIGIBLE" | "ELIGIBLE" | "ENABLED";
-export const ProgramStateEnum = S.String;
+const ProgramStateEnum = S.String;
 
 /** Defines participation in a given program for the specified account. Programs provide a mechanism for adding functionality to a Merchant Center accounts. A typical example of this is the [Free product listings](https://support.google.com/merchants/answer/13889434) program, which enables products from a business's store to be shown across Google for free. The following list is the available set of program resource IDs accessible through the API: * [`checkout`](https://developers.google.com/merchant/api/guides/products/checkout-settings) * `free-listings` * [`loyalty`](https://developers.google.com/merchant/api/guides/loyalty/loyalty-programs) * `product-ratings` * `shopping-ads` * [`ucp-integration` (limited access)](https://developers.google.com/merchant/api/reference/rest/accounts_v1alpha/accounts.programs.ucpSettings) * [`youtube-affiliate`](https://support.google.com/merchants/answer/14815513) * `youtube-shopping-checkout` */
 export interface Program {
@@ -1444,7 +1417,7 @@ export interface Program {
   /** Output only. The participation state of the account in the program. */
   state?: ProgramStateEnum;
 }
-export const Program = /*@__PURE__*/ S.suspend(() =>
+const Program = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     documentationUri: S.optional(S.String),
@@ -1456,15 +1429,13 @@ export const Program = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for the EnableProgram method. */
 export type EnableProgramRequest = ApproveAccountServiceRequest;
-export const EnableProgramRequest = ApproveAccountServiceRequest;
-
 export interface EnableAccountsProgramsRequest {
   /** Required. The name of the program for which to enable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const EnableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -1487,7 +1458,7 @@ export interface FindAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Required. The name of the parent resource under which the LFP providers are found. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}`. */
   parent: string;
 }
-export const FindAccountsOmnichannelSettingsLfpProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+const FindAccountsOmnichannelSettingsLfpProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1512,7 +1483,7 @@ export interface LfpProvider {
   /** The display name of the LFP provider. */
   displayName?: string;
 }
-export const LfpProvider = /*@__PURE__*/ S.suspend(() =>
+const LfpProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     name: S.optional(S.String),
@@ -1521,9 +1492,7 @@ export const LfpProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfpProvider" }) as any as S.Schema<LfpProvider>;
 
 export type LfpProviderList = Array<LfpProvider>;
-export const LfpProviderList = /*@__PURE__*/ S.Array(
-  LfpProvider,
-) as any as S.Schema<LfpProviderList>;
+const LfpProviderList = /*@__PURE__*/ S.Array(LfpProvider) as any as S.Schema<LfpProviderList>;
 
 /** Response message for the FindLfpProviders method. */
 export interface FindLfpProvidersResponse {
@@ -1532,7 +1501,7 @@ export interface FindLfpProvidersResponse {
   /** The LFP providers from the specified merchant in the specified country. */
   lfpProviders?: LfpProviderList;
 }
-export const FindLfpProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+const FindLfpProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     lfpProviders: S.optional(LfpProviderList),
@@ -1540,8 +1509,8 @@ export const FindLfpProvidersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindLfpProvidersResponse" }) as any as S.Schema<FindLfpProvidersResponse>;
 
 export interface GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest {}
-export const GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({}).pipe(
       T.Http({
         method: "GET",
@@ -1549,16 +1518,16 @@ export const GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest =
         baseUrl: "https://merchantapi.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest",
-  }) as any as S.Schema<GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest>;
+).annotate({
+  identifier: "GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest",
+}) as any as S.Schema<GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest>;
 
 /** Response message for the GetAccountForGcpRegistration method. */
 export interface GetAccountForGcpRegistrationResponse {
   /** The name of the merchant account id that the GCP is registered with. */
   name?: string;
 }
-export const GetAccountForGcpRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountForGcpRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -1570,7 +1539,7 @@ export interface GetAccountsRequest {
   /** Required. The name of the account to retrieve. Format: `accounts/{account}` */
   name: string;
 }
-export const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1586,7 +1555,7 @@ export interface GetAccountsOmnichannelSettingsRequest {
   /** Required. The name of the omnichannel setting to retrieve. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
   name: string;
 }
-export const GetAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1604,7 +1573,7 @@ export interface GetAccountsOnlineReturnPoliciesRequest {
   /** Required. The name of the return policy to retrieve. Format: `accounts/{account}/onlineReturnPolicies/{return_policy}` */
   name: string;
 }
-export const GetAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1622,7 +1591,7 @@ export interface GetAccountsProgramsRequest {
   /** Required. The name of the program to retrieve. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. */
   name: string;
 }
-export const GetAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1640,7 +1609,7 @@ export interface GetAccountsRegionsRequest {
   /** Required. The name of the region to retrieve. Format: `accounts/{account}/regions/{region}` */
   name: string;
 }
-export const GetAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1658,7 +1627,7 @@ export interface GetAccountsRelationshipsRequest {
   /** Required. The resource name of the account relationship to get. Format: `accounts/{account}/relationships/{relationship}`. For example, `accounts/123456/relationships/567890`. */
   name: string;
 }
-export const GetAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1683,7 +1652,7 @@ export interface AccountRelationship {
   /** Immutable. The provider of the service. Either the reference to an account such as `providers/123` or a well-known service provider (one of `providers/GOOGLE_ADS` or `providers/GOOGLE_BUSINESS_PROFILE`). */
   provider?: string;
 }
-export const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
+const AccountRelationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     accountIdAlias: S.optional(S.String),
@@ -1696,7 +1665,7 @@ export interface GetAccountsServicesRequest {
   /** Required. The resource name of the account service to get. Format: `accounts/{account}/services/{service}` */
   name: string;
 }
-export const GetAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1714,7 +1683,7 @@ export interface GetAccountsTermsOfServiceAgreementStatesRequest {
   /** Required. The resource name of the terms of service version. Format: `accounts/{account}/termsOfServiceAgreementStates/{identifier}` The identifier format is: `{TermsOfServiceKind}-{country}` */
   name: string;
 }
-export const GetAccountsTermsOfServiceAgreementStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsTermsOfServiceAgreementStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1732,7 +1701,7 @@ export interface GetAccountsUsersRequest {
   /** Required. The name of the user to retrieve. Format: `accounts/{account}/users/{email}` It is also possible to retrieve the user corresponding to the caller by using `me` rather than an email address as in `accounts/{account}/users/me`. */
   name: string;
 }
-export const GetAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1748,7 +1717,7 @@ export interface GetAutofeedSettingsAccountsAutofeedSettingsRequest {
   /** Required. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings` */
   name: string;
 }
-export const GetAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1771,7 +1740,7 @@ export interface AutofeedSettings {
   /** Output only. Determines whether the business is eligible for being enrolled into an autofeed. */
   eligible?: boolean;
 }
-export const AutofeedSettings = /*@__PURE__*/ S.suspend(() =>
+const AutofeedSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableProducts: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -1783,17 +1752,16 @@ export interface GetAutomaticImprovementsAccountsAutomaticImprovementsRequest {
   /** Required. The resource name of the automatic improvements. Format: `accounts/{account}/automaticImprovements` */
   name: string;
 }
-export const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
+const GetAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "accounts/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetAutomaticImprovementsAccountsAutomaticImprovementsRequest",
 }) as any as S.Schema<GetAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
@@ -1809,7 +1777,7 @@ export interface ItemUpdatesAccountLevelSettings {
   /** If `allow_availability_updates` is enabled, items are automatically updated in all your Shopping target countries. By default, availability updates will only be applied to items that are 'out of stock' on your website but 'in stock' on Shopping. Set this to true to also update items that are 'in stock' on your website, but 'out of stock' on Google Shopping. In order for this field to have an effect, you must also set `allow_availability_updates`. */
   allowStrictAvailabilityUpdates?: boolean;
 }
-export const ItemUpdatesAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
+const ItemUpdatesAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAvailabilityUpdates: S.optional(S.Boolean),
     allowPriceUpdates: S.optional(S.Boolean),
@@ -1833,7 +1801,7 @@ export interface AutomaticItemUpdates {
   /** Output only. The effective value of allow_condition_updates. If account_item_updates_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. The default value is true if no settings are present. Read-only. */
   effectiveAllowConditionUpdates?: boolean;
 }
-export const AutomaticItemUpdates = /*@__PURE__*/ S.suspend(() =>
+const AutomaticItemUpdates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountItemUpdatesSettings: S.optional(ItemUpdatesAccountLevelSettings),
     effectiveAllowStrictAvailabilityUpdates: S.optional(S.Boolean),
@@ -1848,7 +1816,7 @@ export interface AutomaticShippingImprovements {
   /** Enables automatic shipping improvements. */
   allowShippingImprovements?: boolean;
 }
-export const AutomaticShippingImprovements = /*@__PURE__*/ S.suspend(() =>
+const AutomaticShippingImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowShippingImprovements: S.optional(S.Boolean),
   }),
@@ -1861,7 +1829,7 @@ export interface ImageImprovementsAccountLevelSettings {
   /** Enables automatic image improvements. */
   allowAutomaticImageImprovements?: boolean;
 }
-export const ImageImprovementsAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
+const ImageImprovementsAccountLevelSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAutomaticImageImprovements: S.optional(S.Boolean),
   }),
@@ -1876,7 +1844,7 @@ export interface AutomaticImageImprovements {
   /** Optional. Determines how the images should be automatically updated. If this field is not present and provided in the update mask, then the settings will be deleted. If there are no settings for subaccount, they are inherited from aggregator. */
   accountImageImprovementsSettings?: ImageImprovementsAccountLevelSettings;
 }
-export const AutomaticImageImprovements = /*@__PURE__*/ S.suspend(() =>
+const AutomaticImageImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
     accountImageImprovementsSettings: S.optional(ImageImprovementsAccountLevelSettings),
@@ -1896,7 +1864,7 @@ export interface AutomaticImprovements {
   /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) This field is only updated (cleared) if provided in the update mask. */
   imageImprovements?: AutomaticImageImprovements;
 }
-export const AutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
+const AutomaticImprovements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     itemUpdates: S.optional(AutomaticItemUpdates),
@@ -1909,7 +1877,7 @@ export interface GetBusinessIdentityAccountsBusinessIdentityRequest {
   /** Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`. For example, `accounts/123456/businessIdentity`. */
   name: string;
 }
-export const GetBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1927,14 +1895,14 @@ export type IdentityAttributeIdentityDeclarationEnum =
   | "IDENTITY_DECLARATION_UNSPECIFIED"
   | "SELF_IDENTIFIES_AS"
   | "DOES_NOT_SELF_IDENTIFY_AS";
-export const IdentityAttributeIdentityDeclarationEnum = S.String;
+const IdentityAttributeIdentityDeclarationEnum = S.String;
 
 /** All information related to an identity attribute. */
 export interface IdentityAttribute {
   /** Required. The declaration of identity for this attribute. */
   identityDeclaration?: IdentityAttributeIdentityDeclarationEnum | (string & {});
 }
-export const IdentityAttribute = /*@__PURE__*/ S.suspend(() =>
+const IdentityAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identityDeclaration: S.optional(IdentityAttributeIdentityDeclarationEnum),
   }),
@@ -1944,7 +1912,7 @@ export type BusinessIdentityPromotionsConsentEnum =
   | "PROMOTIONS_CONSENT_UNSPECIFIED"
   | "PROMOTIONS_CONSENT_GIVEN"
   | "PROMOTIONS_CONSENT_DENIED";
-export const BusinessIdentityPromotionsConsentEnum = S.String;
+const BusinessIdentityPromotionsConsentEnum = S.String;
 
 /** Collection of information related to the [identity of a business](https://support.google.com/merchants/answer/12564247). */
 export interface BusinessIdentity {
@@ -1963,7 +1931,7 @@ export interface BusinessIdentity {
   /** Optional. Specifies whether the business identifies itself as a small business. This optional field will only be available for businesses with a business country set to `US`. It is also not applicable for marketplaces. */
   smallBusiness?: IdentityAttribute;
 }
-export const BusinessIdentity = /*@__PURE__*/ S.suspend(() =>
+const BusinessIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     blackOwned: S.optional(IdentityAttribute),
@@ -1979,7 +1947,7 @@ export interface GetBusinessInfoAccountsBusinessInfoRequest {
   /** Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`. For example, `accounts/123456/businessInfo`. */
   name: string;
 }
-export const GetBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2000,7 +1968,7 @@ export interface ShortCode {
   /** Required. The BCP-47 region code of the location where calls to this short code can be made, such as "US" and "BB". Reference(s): - http://www.unicode.org/reports/tr35/#unicode_region_subtag */
   regionCode?: string;
 }
-export const ShortCode = /*@__PURE__*/ S.suspend(() =>
+const ShortCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.optional(S.String),
     regionCode: S.optional(S.String),
@@ -2016,7 +1984,7 @@ export interface PhoneNumber {
   /** The phone number's extension. The extension is not standardized in ITU recommendations, except for being defined as a series of numbers with a maximum length of 40 digits. Other than digits, some other dialing characters such as ',' (indicating a wait) or '#' may be stored here. Note that no regions currently use extensions with short codes, so this field is normally only set in conjunction with an E.164 number. It is held separately from the E.164 number to allow for short code extensions in the future. */
   extension?: string;
 }
-export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortCode: S.optional(ShortCode),
     e164Number: S.optional(S.String),
@@ -2033,7 +2001,7 @@ export interface CustomerService {
   /** Optional. The phone number where customer service may be called. */
   phone?: PhoneNumber;
 }
-export const CustomerService = /*@__PURE__*/ S.suspend(() =>
+const CustomerService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
     email: S.optional(S.String),
@@ -2045,7 +2013,7 @@ export type BusinessInfoPhoneVerificationStateEnum =
   | "PHONE_VERIFICATION_STATE_UNSPECIFIED"
   | "PHONE_VERIFICATION_STATE_VERIFIED"
   | "PHONE_VERIFICATION_STATE_UNVERIFIED";
-export const BusinessInfoPhoneVerificationStateEnum = S.String;
+const BusinessInfoPhoneVerificationStateEnum = S.String;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -2072,7 +2040,7 @@ export interface PostalAddress {
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
   addressLines?: StringList;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     locality: S.optional(S.String),
@@ -2103,7 +2071,7 @@ export interface BusinessInfo {
   /** Optional. The address of the business. Only `region_code`, `address_lines`, `postal_code`, `administrative_area` and `locality` fields are supported. All other fields are ignored. */
   address?: PostalAddress;
 }
-export const BusinessInfo = /*@__PURE__*/ S.suspend(() =>
+const BusinessInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerService: S.optional(CustomerService),
     name: S.optional(S.String),
@@ -2118,17 +2086,16 @@ export interface GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Required. The name/identifier of the merchant account. Format: `accounts/{account}/programs/{program}/checkoutSettings` */
   name: string;
 }
-export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
+const GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "accounts/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
 }) as any as S.Schema<GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
@@ -2137,17 +2104,16 @@ export interface GetDeveloperRegistrationAccountsDeveloperRegistrationRequest {
   /** Required. The `name` (ID) of the developer registration. */
   name: string;
 }
-export const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
+const GetDeveloperRegistrationAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "accounts/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetDeveloperRegistrationAccountsDeveloperRegistrationRequest",
 }) as any as S.Schema<GetDeveloperRegistrationAccountsDeveloperRegistrationRequest>;
@@ -2159,7 +2125,7 @@ export interface DeveloperRegistration {
   /** Output only. The GCP ids attached to this developer registration */
   gcpIds?: StringList;
 }
-export const DeveloperRegistration = /*@__PURE__*/ S.suspend(() =>
+const DeveloperRegistration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     gcpIds: S.optional(StringList),
@@ -2170,7 +2136,7 @@ export interface GetEmailPreferencesAccountsEmailPreferencesRequest {
   /** Required. The name of the `EmailPreferences` resource. Format: `accounts/{account}/users/{email}/emailPreferences` */
   name: string;
 }
-export const GetEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2189,7 +2155,7 @@ export type EmailPreferencesNewsAndTipsEnum =
   | "OPTED_OUT"
   | "OPTED_IN"
   | "UNCONFIRMED";
-export const EmailPreferencesNewsAndTipsEnum = S.String;
+const EmailPreferencesNewsAndTipsEnum = S.String;
 
 /** The categories of notifications the user opted into / opted out of. The email preferences do not include mandatory announcements as users can't opt out of them. */
 export interface EmailPreferences {
@@ -2198,7 +2164,7 @@ export interface EmailPreferences {
   /** Optional. Updates on new features, tips and best practices. */
   newsAndTips?: EmailPreferencesNewsAndTipsEnum | (string & {});
 }
-export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
+const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     newsAndTips: S.optional(EmailPreferencesNewsAndTipsEnum),
@@ -2209,26 +2175,25 @@ export interface GetForApplicationAccountsTermsOfServiceAgreementStatesRequest {
   /** Required. The account for which to get a TermsOfServiceAgreementState Format: `accounts/{account}` */
   parent: string;
 }
-export const GetForApplicationAccountsTermsOfServiceAgreementStatesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetForApplicationAccountsTermsOfServiceAgreementStatesRequest",
-  }) as any as S.Schema<GetForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
+const GetForApplicationAccountsTermsOfServiceAgreementStatesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetForApplicationAccountsTermsOfServiceAgreementStatesRequest",
+}) as any as S.Schema<GetForApplicationAccountsTermsOfServiceAgreementStatesRequest>;
 
 export interface GetHomepageAccountsHomepageRequest {
   /** Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage` */
   name: string;
 }
-export const GetHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2245,7 +2210,7 @@ export const GetHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
 export type RetrieveLatestTermsOfServiceKindEnum =
   | "TERMS_OF_SERVICE_KIND_UNSPECIFIED"
   | "MERCHANT_CENTER";
-export const RetrieveLatestTermsOfServiceKindEnum = S.String;
+const RetrieveLatestTermsOfServiceKindEnum = S.String;
 
 export interface GetLatestTermsOfServiceRequest {
   /** Required. The Kind this terms of service version applies to. */
@@ -2253,7 +2218,7 @@ export interface GetLatestTermsOfServiceRequest {
   /** Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS applies specifically to that country or 001 when it applies globally. */
   regionCode?: string;
 }
-export const GetLatestTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLatestTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(RetrieveLatestTermsOfServiceKindEnum.pipe(T.Query())),
     regionCode: S.optional(S.String.pipe(T.Query())),
@@ -2269,7 +2234,7 @@ export const GetLatestTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLatestTermsOfServiceRequest>;
 
 export type TermsOfServiceKindEnum = "TERMS_OF_SERVICE_KIND_UNSPECIFIED" | "MERCHANT_CENTER";
-export const TermsOfServiceKindEnum = S.String;
+const TermsOfServiceKindEnum = S.String;
 
 /** The `TermsOfService` message represents a specific version of the terms of service that merchants must accept to access certain features or services. For more information, see [Terms of Service](https://support.google.com/merchants/answer/160173). This message is important for the onboarding process, ensuring that merchants agree to the necessary legal agreements for using the service. Merchants can retrieve the latest terms of service for a given `kind` and `region` through `RetrieveLatestTermsOfService`, and accept them as required through `AcceptTermsOfService`. */
 export interface TermsOfService {
@@ -2284,7 +2249,7 @@ export interface TermsOfService {
   /** Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country where the ToS applies specifically to that country or `001` when the same `TermsOfService` can be signed in any country. However note that when signing a ToS that applies globally we still expect that a specific country is provided (this should be merchant business country or program country of participation). */
   regionCode?: string;
 }
-export const TermsOfService = /*@__PURE__*/ S.suspend(() =>
+const TermsOfService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kind: S.optional(TermsOfServiceKindEnum),
@@ -2298,7 +2263,7 @@ export interface GetShippingSettingsAccountsShippingSettingsRequest {
   /** Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsettings` */
   name: string;
 }
-export const GetShippingSettingsAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShippingSettingsAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2321,12 +2286,10 @@ export type BusinessDayConfigBusinessDaysItemEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const BusinessDayConfigBusinessDaysItemEnum = S.String;
-
 export type BusinessDayConfigBusinessDaysItemEnumList = Array<
   BusinessDayConfigBusinessDaysItemEnum | (string & {})
 >;
-export const BusinessDayConfigBusinessDaysItemEnumList =
+const BusinessDayConfigBusinessDaysItemEnumList =
   OnlineReturnPolicyItemConditionsItemEnumList as any as S.Schema<BusinessDayConfigBusinessDaysItemEnumList>;
 
 /** Business days of the warehouse. */
@@ -2334,7 +2297,7 @@ export interface BusinessDayConfig {
   /** Required. Regular business days. May not be empty. */
   businessDays?: BusinessDayConfigBusinessDaysItemEnumList;
 }
-export const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
+const BusinessDayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessDays: S.optional(BusinessDayConfigBusinessDaysItemEnumList),
   }),
@@ -2347,7 +2310,7 @@ export interface TransitTimeValue {
   /** Must be greater than or equal to `min_transit_days`. */
   maxTransitDays?: number;
 }
-export const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
+const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minTransitDays: S.optional(S.Number),
     maxTransitDays: S.optional(S.Number),
@@ -2355,7 +2318,7 @@ export const TransitTimeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransitTimeValue" }) as any as S.Schema<TransitTimeValue>;
 
 export type TransitTimeValueList = Array<TransitTimeValue>;
-export const TransitTimeValueList = /*@__PURE__*/ S.Array(
+const TransitTimeValueList = /*@__PURE__*/ S.Array(
   TransitTimeValue,
 ) as any as S.Schema<TransitTimeValueList>;
 
@@ -2364,14 +2327,14 @@ export interface TransitTimeRow {
   /** Required. Transit time range (min-max) in business days. */
   values?: TransitTimeValueList;
 }
-export const TransitTimeRow = /*@__PURE__*/ S.suspend(() =>
+const TransitTimeRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(TransitTimeValueList),
   }),
 ).annotate({ identifier: "TransitTimeRow" }) as any as S.Schema<TransitTimeRow>;
 
 export type TransitTimeRowList = Array<TransitTimeRow>;
-export const TransitTimeRowList = /*@__PURE__*/ S.Array(
+const TransitTimeRowList = /*@__PURE__*/ S.Array(
   TransitTimeRow,
 ) as any as S.Schema<TransitTimeRowList>;
 
@@ -2384,7 +2347,7 @@ export interface TransitTable {
   /** Required. If there's only one dimension set of `postal_code_group_names` or `transit_time_labels`, there are multiple rows each with one value for that dimension. If there are two dimensions, each row corresponds to a `postal_code_group_names`, and columns (values) to a `transit_time_labels`. */
   rows?: TransitTimeRowList;
 }
-export const TransitTable = /*@__PURE__*/ S.suspend(() =>
+const TransitTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transitTimeLabels: S.optional(StringList),
     postalCodeGroupNames: S.optional(StringList),
@@ -2401,7 +2364,7 @@ export interface CutoffTime {
   /** Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day. */
   minute?: number;
 }
-export const CutoffTime = /*@__PURE__*/ S.suspend(() =>
+const CutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.optional(S.Number),
     timeZone: S.optional(S.String),
@@ -2418,7 +2381,7 @@ export interface WarehouseBasedDeliveryTime {
   /** Required. Warehouse name. This should match warehouse. */
   warehouse?: string;
 }
-export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierService: S.optional(S.String),
     carrier: S.optional(S.String),
@@ -2429,7 +2392,7 @@ export const WarehouseBasedDeliveryTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseBasedDeliveryTime>;
 
 export type WarehouseBasedDeliveryTimeList = Array<WarehouseBasedDeliveryTime>;
-export const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
+const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ S.Array(
   WarehouseBasedDeliveryTime,
 ) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
 
@@ -2454,7 +2417,7 @@ export interface DeliveryTime {
   /** Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next day delivery. Must be greater than or equal to `min_transit_days`. */
   maxTransitDays?: number;
 }
-export const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
+const DeliveryTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handlingBusinessDayConfig: S.optional(BusinessDayConfig),
     minHandlingDays: S.optional(S.Number),
@@ -2475,7 +2438,7 @@ export interface StoreCodeSetWithMov {
   /** Optional. A list of unique store codes or empty for the catch all. */
   storeCodes?: StringList;
 }
-export const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
+const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(Price),
     storeCodes: S.optional(StringList),
@@ -2483,7 +2446,7 @@ export const StoreCodeSetWithMov = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoreCodeSetWithMov" }) as any as S.Schema<StoreCodeSetWithMov>;
 
 export type StoreCodeSetWithMovList = Array<StoreCodeSetWithMov>;
-export const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
+const StoreCodeSetWithMovList = /*@__PURE__*/ S.Array(
   StoreCodeSetWithMov,
 ) as any as S.Schema<StoreCodeSetWithMovList>;
 
@@ -2492,7 +2455,7 @@ export interface MinimumOrderValueTable {
   /** Required. A list of store code sets sharing the same minimum order value (MOV). At least two sets are required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the sets. All prices within a service must have the same currency. */
   storeCodeSetWithMovs?: StoreCodeSetWithMovList;
 }
-export const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
+const MinimumOrderValueTable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeCodeSetWithMovs: S.optional(StoreCodeSetWithMovList),
   }),
@@ -2503,14 +2466,14 @@ export interface LoyaltyProgramTiers {
   /** The tier label [tier_label] sub-attribute differentiates offer level benefits between each tier. This value is also set in your program settings in Merchant Center, and is required for data source changes even if your loyalty program only has 1 tier. */
   tierLabel?: string;
 }
-export const LoyaltyProgramTiers = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyProgramTiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tierLabel: S.optional(S.String),
   }),
 ).annotate({ identifier: "LoyaltyProgramTiers" }) as any as S.Schema<LoyaltyProgramTiers>;
 
 export type LoyaltyProgramTiersList = Array<LoyaltyProgramTiers>;
-export const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(
+const LoyaltyProgramTiersList = /*@__PURE__*/ S.Array(
   LoyaltyProgramTiers,
 ) as any as S.Schema<LoyaltyProgramTiersList>;
 
@@ -2521,7 +2484,7 @@ export interface LoyaltyProgram {
   /** This is the loyalty program label set in your loyalty program settings in Merchant Center. This sub-attribute allows Google to map your loyalty program to eligible offers. */
   programLabel?: string;
 }
-export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
+const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loyaltyProgramTiers: S.optional(LoyaltyProgramTiersList),
     programLabel: S.optional(S.String),
@@ -2529,7 +2492,7 @@ export const LoyaltyProgram = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoyaltyProgram" }) as any as S.Schema<LoyaltyProgram>;
 
 export type LoyaltyProgramList = Array<LoyaltyProgram>;
-export const LoyaltyProgramList = /*@__PURE__*/ S.Array(
+const LoyaltyProgramList = /*@__PURE__*/ S.Array(
   LoyaltyProgram,
 ) as any as S.Schema<LoyaltyProgramList>;
 
@@ -2537,7 +2500,7 @@ export type StoreConfigStoreServiceTypeEnum =
   | "STORE_SERVICE_TYPE_UNSPECIFIED"
   | "ALL_STORES"
   | "SELECTED_STORES";
-export const StoreConfigStoreServiceTypeEnum = S.String;
+const StoreConfigStoreServiceTypeEnum = S.String;
 
 /** Time that local delivery ends for the day. */
 export interface LocalCutoffTime {
@@ -2546,7 +2509,7 @@ export interface LocalCutoffTime {
   /** Minute local delivery orders must be placed by to process the same day. */
   minute?: string;
 }
-export const LocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
+const LocalCutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.optional(S.String),
     minute: S.optional(S.String),
@@ -2562,7 +2525,7 @@ export interface CutoffConfig {
   /** Time that local delivery ends for the day. */
   localCutoffTime?: LocalCutoffTime;
 }
-export const CutoffConfig = /*@__PURE__*/ S.suspend(() =>
+const CutoffConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     noDeliveryPostCutoff: S.optional(S.Boolean),
     storeCloseOffsetHours: S.optional(S.String),
@@ -2571,7 +2534,7 @@ export const CutoffConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CutoffConfig" }) as any as S.Schema<CutoffConfig>;
 
 export type DistanceUnitEnum = "UNIT_UNSPECIFIED" | "MILES" | "KILOMETERS";
-export const DistanceUnitEnum = S.String;
+const DistanceUnitEnum = S.String;
 
 /** Maximum delivery radius. This is only required for the local delivery shipment type. */
 export interface Distance {
@@ -2580,7 +2543,7 @@ export interface Distance {
   /** Integer value of distance. */
   value?: string;
 }
-export const Distance = /*@__PURE__*/ S.suspend(() =>
+const Distance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(DistanceUnitEnum),
     value: S.optional(S.String),
@@ -2598,7 +2561,7 @@ export interface StoreConfig {
   /** Maximum delivery radius. This is only required for the local delivery shipment type. */
   serviceRadius?: Distance;
 }
-export const StoreConfig = /*@__PURE__*/ S.suspend(() =>
+const StoreConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storeServiceType: S.optional(StoreConfigStoreServiceTypeEnum),
     cutoffConfig: S.optional(CutoffConfig),
@@ -2622,7 +2585,7 @@ export interface CarrierRate {
   /** Optional. Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example `"5.4"` increases the rate by 5.4%, `"-3"` decreases the rate by 3%. */
   percentageAdjustment?: string;
 }
-export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
+const CarrierRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     carrierService: S.optional(S.String),
     flatAdjustment: S.optional(Price),
@@ -2634,31 +2597,29 @@ export const CarrierRate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CarrierRate" }) as any as S.Schema<CarrierRate>;
 
 export type CarrierRateList = Array<CarrierRate>;
-export const CarrierRateList = /*@__PURE__*/ S.Array(
-  CarrierRate,
-) as any as S.Schema<CarrierRateList>;
+const CarrierRateList = /*@__PURE__*/ S.Array(CarrierRate) as any as S.Schema<CarrierRateList>;
 
 export type PriceList = Array<Price>;
-export const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
+const PriceList = /*@__PURE__*/ S.Array(Price) as any as S.Schema<PriceList>;
 
 /** A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
 export interface LocationIdSet {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (For example, state). */
   locationIds?: StringList;
 }
-export const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
+const LocationIdSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationIds: S.optional(StringList),
   }),
 ).annotate({ identifier: "LocationIdSet" }) as any as S.Schema<LocationIdSet>;
 
 export type LocationIdSetList = Array<LocationIdSet>;
-export const LocationIdSetList = /*@__PURE__*/ S.Array(
+const LocationIdSetList = /*@__PURE__*/ S.Array(
   LocationIdSet,
 ) as any as S.Schema<LocationIdSetList>;
 
 export type WeightUnitEnum = "WEIGHT_UNIT_UNSPECIFIED" | "POUND" | "KILOGRAM";
-export const WeightUnitEnum = S.String;
+const WeightUnitEnum = S.String;
 
 /** The weight represented as the value in string and the unit. */
 export interface Weight {
@@ -2667,7 +2628,7 @@ export interface Weight {
   /** Required. The weight represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 kg = 1000000 micros). This field can also be set as infinity by setting to -1. This field only support -1 and positive value. */
   amountMicros?: string;
 }
-export const Weight = /*@__PURE__*/ S.suspend(() =>
+const Weight = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(WeightUnitEnum),
     amountMicros: S.optional(S.String),
@@ -2675,7 +2636,7 @@ export const Weight = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Weight" }) as any as S.Schema<Weight>;
 
 export type WeightList = Array<Weight>;
-export const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
+const WeightList = /*@__PURE__*/ S.Array(Weight) as any as S.Schema<WeightList>;
 
 /** A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `num_items`, `postal_code_group_names`, or `location` must be set. */
 export interface Headers {
@@ -2690,7 +2651,7 @@ export interface Headers {
   /** Required. A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example `["10", "50", "infinity"]` represents the headers "<= 10 items", "<= 50 items", and "> 50 items". Must be non-empty. Can only be set if all other fields are not set. */
   numberOfItems?: StringList;
 }
-export const Headers = /*@__PURE__*/ S.suspend(() =>
+const Headers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prices: S.optional(PriceList),
     locations: S.optional(LocationIdSetList),
@@ -2713,7 +2674,7 @@ export interface Value {
   /** If true, then the product can't be shipped. Must be true when set, can only be set if all other fields are not set. */
   noShipping?: boolean;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subtable: S.optional(S.String),
     carrierRate: S.optional(S.String),
@@ -2724,21 +2685,21 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(Value) as any as S.Schema<ValueList>;
 
 /** Include a list of cells. */
 export interface Row {
   /** Required. The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. */
   cells?: ValueList;
 }
-export const Row = /*@__PURE__*/ S.suspend(() =>
+const Row = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cells: S.optional(ValueList),
   }),
 ).annotate({ identifier: "Row" }) as any as S.Schema<Row>;
 
 export type RowList = Array<Row>;
-export const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
+const RowList = /*@__PURE__*/ S.Array(Row) as any as S.Schema<RowList>;
 
 /** A table defining the rate group, when `single_value` is not expressive enough. */
 export interface Table {
@@ -2751,7 +2712,7 @@ export interface Table {
   /** Required. The list of rows that constitute the table. Must have the same length as `row_headers`. */
   rows?: RowList;
 }
-export const Table = /*@__PURE__*/ S.suspend(() =>
+const Table = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columnHeaders: S.optional(Headers),
     rowHeaders: S.optional(Headers),
@@ -2761,7 +2722,7 @@ export const Table = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Table" }) as any as S.Schema<Table>;
 
 export type TableList = Array<Table>;
-export const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
+const TableList = /*@__PURE__*/ S.Array(Table) as any as S.Schema<TableList>;
 
 /** Shipping rate group definitions. Only the last one is allowed to have an empty `applicable_shipping_labels`, which means "everything else". The other `applicable_shipping_labels` must not overlap. */
 export interface RateGroup {
@@ -2778,7 +2739,7 @@ export interface RateGroup {
   /** The value of the rate group (For example flat rate $10). Can only be set if `main_table` and `subtables` are not set. */
   singleValue?: Value;
 }
-export const RateGroup = /*@__PURE__*/ S.suspend(() =>
+const RateGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     applicableShippingLabels: S.optional(StringList),
@@ -2790,14 +2751,14 @@ export const RateGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RateGroup" }) as any as S.Schema<RateGroup>;
 
 export type RateGroupList = Array<RateGroup>;
-export const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
+const RateGroupList = /*@__PURE__*/ S.Array(RateGroup) as any as S.Schema<RateGroupList>;
 
 export type ServiceShipmentTypeEnum =
   | "SHIPMENT_TYPE_UNSPECIFIED"
   | "DELIVERY"
   | "LOCAL_DELIVERY"
   | "COLLECTION_POINT";
-export const ServiceShipmentTypeEnum = S.String;
+const ServiceShipmentTypeEnum = S.String;
 
 /** Shipping service. */
 export interface Service {
@@ -2824,7 +2785,7 @@ export interface Service {
   /** Optional. Type of locations this service ships orders to. */
   shipmentType?: ServiceShipmentTypeEnum | (string & {});
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     active: S.optional(S.Boolean),
@@ -2841,7 +2802,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Shipping address of the warehouse. */
 export interface Address {
@@ -2856,7 +2817,7 @@ export interface Address {
   /** Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (For example "US"). */
   regionCode?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streetAddress: S.optional(S.String),
     postalCode: S.optional(S.String),
@@ -2873,7 +2834,7 @@ export interface WarehouseCutoffTime {
   /** Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day by the warehouse. Minute is based on the timezone of warehouse. */
   minute?: number;
 }
-export const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
+const WarehouseCutoffTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.optional(S.Number),
     minute: S.optional(S.Number),
@@ -2893,7 +2854,7 @@ export interface Warehouse {
   /** Required. The name of the warehouse. Must be unique within account. */
   name?: string;
 }
-export const Warehouse = /*@__PURE__*/ S.suspend(() =>
+const Warehouse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     handlingDays: S.optional(S.String),
     shippingAddress: S.optional(Address),
@@ -2904,7 +2865,7 @@ export const Warehouse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warehouse" }) as any as S.Schema<Warehouse>;
 
 export type WarehouseList = Array<Warehouse>;
-export const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
+const WarehouseList = /*@__PURE__*/ S.Array(Warehouse) as any as S.Schema<WarehouseList>;
 
 /** The Merchant Center account's [shipping settings](https://support.google.com/merchants/answer/6069284). The `ShippingSettings` resource lets you retrieve and update the shipping settings of your advanced account and all its associated sub-accounts. */
 export interface ShippingSettings {
@@ -2917,7 +2878,7 @@ export interface ShippingSettings {
   /** Required. This field helps avoid async issues. It ensures that the shipping setting data doesn't change between the `get` call and the `insert` call. The user should follow these steps: 1. Set the etag field as an empty string for the initial shipping setting creation. 2. After the initial creation, call the `get` method to obtain an etag and the current shipping setting data before calling `insert`. 3. Modify the shipping setting information. 4. Call the `insert` method with the shipping setting information and the etag obtained in step 2. 5. If the shipping setting data changes between step 2 and step 4, the insert request will fail because the etag changes every time the shipping setting data changes. In this case, the user should repeat steps 2-4 with the new etag. */
   etag?: string;
 }
-export const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
+const ShippingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(ServiceList),
     warehouses: S.optional(WarehouseList),
@@ -2930,7 +2891,7 @@ export interface GetTermsOfServiceRequest {
   /** Required. The resource name of the terms of service version. Format: `termsOfService/{version}` */
   name: string;
 }
-export const GetTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTermsOfServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2948,7 +2909,7 @@ export interface InsertAccountsShippingSettingsRequest {
   /** Request body */
   body?: ShippingSettings;
 }
-export const InsertAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertAccountsShippingSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ShippingSettings.pipe(T.HttpBody())),
@@ -2968,7 +2929,7 @@ export interface LinkGbpAccountRequest {
   /** Required. The email address of the Business Profile account. */
   gbpEmail?: string;
 }
-export const LinkGbpAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkGbpAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gbpEmail: S.optional(S.String),
   }),
@@ -2980,7 +2941,7 @@ export interface LinkGbpAccountAccountsGbpAccountsRequest {
   /** Request body */
   body?: LinkGbpAccountRequest;
 }
-export const LinkGbpAccountAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkGbpAccountAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LinkGbpAccountRequest.pipe(T.HttpBody())),
@@ -3000,7 +2961,7 @@ export interface LinkGbpAccountResponse {
   /** Empty response. */
   response?: Empty;
 }
-export const LinkGbpAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkGbpAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(Empty),
   }),
@@ -3011,7 +2972,7 @@ export interface LinkLfpProviderRequest {
   /** Required. The external account ID by which this merchant is known to the LFP provider. */
   externalAccountId?: string;
 }
-export const LinkLfpProviderRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkLfpProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalAccountId: S.optional(S.String),
   }),
@@ -3023,29 +2984,27 @@ export interface LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest {
   /** Request body */
   body?: LinkLfpProviderRequest;
 }
-export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(LinkLfpProviderRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:linkLfpProvider",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest",
-  }) as any as S.Schema<LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest>;
+const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(LinkLfpProviderRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "accounts/v1beta/{+name}:linkLfpProvider",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest",
+}) as any as S.Schema<LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest>;
 
 /** Response message for the LinkLfpProvider method. */
 export interface LinkLfpProviderResponse {
   /** Empty response. */
   response?: Empty;
 }
-export const LinkLfpProviderResponse =
-  LinkGbpAccountResponse as any as S.Schema<LinkLfpProviderResponse>;
+const LinkLfpProviderResponse = LinkGbpAccountResponse as any as S.Schema<LinkLfpProviderResponse>;
 
 export interface ListAccountsRequest {
   /** Optional. A page token, received from a previous `accounts.list` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided in the `accounts.list` request must match the call that provided the page token. */
@@ -3055,7 +3014,7 @@ export interface ListAccountsRequest {
   /** Optional. Returns only accounts that match the [filter](https://developers.google.com/merchant/api/guides/accounts/filter). For more details, see the [filter syntax reference](https://developers.google.com/merchant/api/guides/accounts/filter-syntax). */
   filter?: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3070,7 +3029,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response message for the `accounts.list` method. */
 export interface ListAccountsResponse {
@@ -3079,7 +3038,7 @@ export interface ListAccountsResponse {
   /** The accounts matching the `ListAccountsRequest`. */
   accounts?: AccountList;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     accounts: S.optional(AccountList),
@@ -3094,7 +3053,7 @@ export interface ListAccountsGbpAccountsRequest {
   /** Optional. A page token, received from a previous `ListGbpAccounts` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListGbpAccounts` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3111,7 +3070,7 @@ export const ListAccountsGbpAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsGbpAccountsRequest>;
 
 export type GbpAccountTypeEnum = "TYPE_UNSPECIFIED" | "USER" | "BUSINESS_ACCOUNT";
-export const GbpAccountTypeEnum = S.String;
+const GbpAccountTypeEnum = S.String;
 
 /** Collection of information related to a Google Business Profile (GBP) account. */
 export interface GbpAccount {
@@ -3126,7 +3085,7 @@ export interface GbpAccount {
   /** The id of the GBP account. */
   gbpAccountId?: string;
 }
-export const GbpAccount = /*@__PURE__*/ S.suspend(() =>
+const GbpAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(GbpAccountTypeEnum),
@@ -3137,7 +3096,7 @@ export const GbpAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GbpAccount" }) as any as S.Schema<GbpAccount>;
 
 export type GbpAccountList = Array<GbpAccount>;
-export const GbpAccountList = /*@__PURE__*/ S.Array(GbpAccount) as any as S.Schema<GbpAccountList>;
+const GbpAccountList = /*@__PURE__*/ S.Array(GbpAccount) as any as S.Schema<GbpAccountList>;
 
 /** Response message for the ListGbpAccounts method. */
 export interface ListGbpAccountsResponse {
@@ -3146,7 +3105,7 @@ export interface ListGbpAccountsResponse {
   /** The GBP accounts from the specified merchant in the specified country. */
   gbpAccounts?: GbpAccountList;
 }
-export const ListGbpAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGbpAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     gbpAccounts: S.optional(GbpAccountList),
@@ -3165,7 +3124,7 @@ export interface ListAccountsIssuesRequest {
   /** Optional. The issues in the response will have human-readable fields in the given language. The format is [BCP-47](https://tools.ietf.org/html/bcp47), such as `en-US` or `sr-Latn`. If not value is provided, `en-US` will be used. */
   languageCode?: string;
 }
-export const ListAccountsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3205,10 +3164,10 @@ export type ImpactedDestinationReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const ImpactedDestinationReportingContextEnum = S.String;
+const ImpactedDestinationReportingContextEnum = S.String;
 
 export type ImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "SUGGESTION";
-export const ImpactSeverityEnum = S.String;
+const ImpactSeverityEnum = S.String;
 
 /** The impact of the issue on a region. */
 export interface Impact {
@@ -3217,7 +3176,7 @@ export interface Impact {
   /** The [CLDR region code](https://cldr.unicode.org/) where this issue applies. */
   regionCode?: string;
 }
-export const Impact = /*@__PURE__*/ S.suspend(() =>
+const Impact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(ImpactSeverityEnum),
     regionCode: S.optional(S.String),
@@ -3225,7 +3184,7 @@ export const Impact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Impact" }) as any as S.Schema<Impact>;
 
 export type ImpactList = Array<Impact>;
-export const ImpactList = /*@__PURE__*/ S.Array(Impact) as any as S.Schema<ImpactList>;
+const ImpactList = /*@__PURE__*/ S.Array(Impact) as any as S.Schema<ImpactList>;
 
 /** The impact of the issue on a destination. */
 export interface ImpactedDestination {
@@ -3234,7 +3193,7 @@ export interface ImpactedDestination {
   /** The (negative) impact for various regions on the given destination. */
   impacts?: ImpactList;
 }
-export const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
+const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportingContext: S.optional(ImpactedDestinationReportingContextEnum),
     impacts: S.optional(ImpactList),
@@ -3242,12 +3201,12 @@ export const ImpactedDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImpactedDestination" }) as any as S.Schema<ImpactedDestination>;
 
 export type ImpactedDestinationList = Array<ImpactedDestination>;
-export const ImpactedDestinationList = /*@__PURE__*/ S.Array(
+const ImpactedDestinationList = /*@__PURE__*/ S.Array(
   ImpactedDestination,
 ) as any as S.Schema<ImpactedDestinationList>;
 
 export type AccountIssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "CRITICAL" | "ERROR" | "SUGGESTION";
-export const AccountIssueSeverityEnum = S.String;
+const AccountIssueSeverityEnum = S.String;
 
 /** Issues with your Merchant Center account that can impact all your products. For more information, see [Account-level issues in Merchant Center](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account). */
 export interface AccountIssue {
@@ -3264,7 +3223,7 @@ export interface AccountIssue {
   /** Link to Merchant Center Help Center providing further information about the issue and how to fix it. */
   documentationUri?: string;
 }
-export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
+const AccountIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impactedDestinations: S.optional(ImpactedDestinationList),
     name: S.optional(S.String),
@@ -3276,9 +3235,7 @@ export const AccountIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountIssue" }) as any as S.Schema<AccountIssue>;
 
 export type AccountIssueList = Array<AccountIssue>;
-export const AccountIssueList = /*@__PURE__*/ S.Array(
-  AccountIssue,
-) as any as S.Schema<AccountIssueList>;
+const AccountIssueList = /*@__PURE__*/ S.Array(AccountIssue) as any as S.Schema<AccountIssueList>;
 
 /** Response message for the `ListAccountIssues` method. */
 export interface ListAccountIssuesResponse {
@@ -3287,7 +3244,7 @@ export interface ListAccountIssuesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountIssues: S.optional(AccountIssueList),
     nextPageToken: S.optional(S.String),
@@ -3304,7 +3261,7 @@ export interface ListAccountsOmnichannelSettingsRequest {
   /** Optional. A page token, received from a previous `ListOmnichannelSettings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOmnichannelSettings` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3321,7 +3278,7 @@ export const ListAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListAccountsOmnichannelSettingsRequest>;
 
 export type OmnichannelSettingList = Array<OmnichannelSetting>;
-export const OmnichannelSettingList = /*@__PURE__*/ S.Array(
+const OmnichannelSettingList = /*@__PURE__*/ S.Array(
   OmnichannelSetting,
 ) as any as S.Schema<OmnichannelSettingList>;
 
@@ -3332,7 +3289,7 @@ export interface ListOmnichannelSettingsResponse {
   /** The omnichannel settings from the specified merchant. */
   omnichannelSettings?: OmnichannelSettingList;
 }
-export const ListOmnichannelSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOmnichannelSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     omnichannelSettings: S.optional(OmnichannelSettingList),
@@ -3349,7 +3306,7 @@ export interface ListAccountsOnlineReturnPoliciesRequest {
   /** Optional. The maximum number of `OnlineReturnPolicy` resources to return. The service returns fewer than this value if the number of return policies for the given business is less that than the `pageSize`. The default value is 10. The maximum value is 100; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum */
   pageSize?: number;
 }
-export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3366,7 +3323,7 @@ export const ListAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListAccountsOnlineReturnPoliciesRequest>;
 
 export type OnlineReturnPolicyList = Array<OnlineReturnPolicy>;
-export const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(
+const OnlineReturnPolicyList = /*@__PURE__*/ S.Array(
   OnlineReturnPolicy,
 ) as any as S.Schema<OnlineReturnPolicyList>;
 
@@ -3377,7 +3334,7 @@ export interface ListOnlineReturnPoliciesResponse {
   /** A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListOnlineReturnPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOnlineReturnPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onlineReturnPolicies: S.optional(OnlineReturnPolicyList),
     nextPageToken: S.optional(S.String),
@@ -3394,7 +3351,7 @@ export interface ListAccountsProgramsRequest {
   /** Optional. A continuation token, received from a previous `ListPrograms` call. Provide this to retrieve the next page. */
   pageToken?: string;
 }
-export const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3411,7 +3368,7 @@ export const ListAccountsProgramsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsProgramsRequest>;
 
 export type ProgramList = Array<Program>;
-export const ProgramList = /*@__PURE__*/ S.Array(Program) as any as S.Schema<ProgramList>;
+const ProgramList = /*@__PURE__*/ S.Array(Program) as any as S.Schema<ProgramList>;
 
 /** Response message for the ListPrograms method. */
 export interface ListProgramsResponse {
@@ -3420,7 +3377,7 @@ export interface ListProgramsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListProgramsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProgramsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     programs: S.optional(ProgramList),
     nextPageToken: S.optional(S.String),
@@ -3435,7 +3392,7 @@ export interface ListAccountsRegionsRequest {
   /** Optional. The maximum number of regions to return. The service may return fewer than this value. If unspecified, at most 50 regions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3452,7 +3409,7 @@ export const ListAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRegionsRequest>;
 
 export type RegionList = Array<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
+const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 /** Response message for the `ListRegions` method. */
 export interface ListRegionsResponse {
@@ -3461,7 +3418,7 @@ export interface ListRegionsResponse {
   /** The regions from the specified business. */
   regions?: RegionList;
 }
-export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     regions: S.optional(RegionList),
@@ -3476,7 +3433,7 @@ export interface ListAccountsRelationshipsRequest {
   /** Optional. The token returned by the previous `list` request. */
   pageToken?: string;
 }
-export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3493,7 +3450,7 @@ export const ListAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsRelationshipsRequest>;
 
 export type AccountRelationshipList = Array<AccountRelationship>;
-export const AccountRelationshipList = /*@__PURE__*/ S.Array(
+const AccountRelationshipList = /*@__PURE__*/ S.Array(
   AccountRelationship,
 ) as any as S.Schema<AccountRelationshipList>;
 
@@ -3504,7 +3461,7 @@ export interface ListAccountRelationshipsResponse {
   /** A page token. You can send the `page_token` to get the next page. Only included in the `list` response if there are more pages. */
   nextPageToken?: string;
 }
-export const ListAccountRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountRelationships: S.optional(AccountRelationshipList),
     nextPageToken: S.optional(S.String),
@@ -3521,7 +3478,7 @@ export interface ListAccountsServicesRequest {
   /** Required. The parent account of the account service to filter by. Format: `accounts/{account}` */
   parent: string;
 }
-export const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3538,7 +3495,7 @@ export const ListAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsServicesRequest>;
 
 export type AccountServiceList = Array<AccountService>;
-export const AccountServiceList = /*@__PURE__*/ S.Array(
+const AccountServiceList = /*@__PURE__*/ S.Array(
   AccountService,
 ) as any as S.Schema<AccountServiceList>;
 
@@ -3549,7 +3506,7 @@ export interface ListAccountServicesResponse {
   /** A page token. You can send the `page_token` to get the next page. Only included in the `list` response if there are more pages. */
   nextPageToken?: string;
 }
-export const ListAccountServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountServices: S.optional(AccountServiceList),
     nextPageToken: S.optional(S.String),
@@ -3566,7 +3523,7 @@ export interface ListAccountsUsersRequest {
   /** Optional. A page token, received from a previous `ListUsers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUsers` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3581,7 +3538,7 @@ export const ListAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsUsersRequest" }) as any as S.Schema<ListAccountsUsersRequest>;
 
 export type UserList = Array<User>;
-export const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
+const UserList = /*@__PURE__*/ S.Array(User) as any as S.Schema<UserList>;
 
 /** Response message for the `ListUsers` method. */
 export interface ListUsersResponse {
@@ -3590,7 +3547,7 @@ export interface ListUsersResponse {
   /** The users from the specified account. */
   users?: UserList;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     users: S.optional(UserList),
@@ -3605,7 +3562,7 @@ export interface ListSubaccountsAccountsRequest {
   /** Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced to 500. */
   pageSize?: number;
 }
-export const ListSubaccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubaccountsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     provider: S.String.pipe(T.Label()),
@@ -3628,7 +3585,7 @@ export interface ListSubAccountsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListSubAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: S.optional(AccountList),
     nextPageToken: S.optional(S.String),
@@ -3643,7 +3600,7 @@ export interface PatchAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3665,7 +3622,7 @@ export interface PatchAccountsOmnichannelSettingsRequest {
   /** Request body */
   body?: OmnichannelSetting;
 }
-export const PatchAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3689,7 +3646,7 @@ export interface PatchAccountsOnlineReturnPoliciesRequest {
   /** Request body */
   body?: OnlineReturnPolicy;
 }
-export const PatchAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsOnlineReturnPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3713,7 +3670,7 @@ export interface PatchAccountsRegionsRequest {
   /** Request body */
   body?: Region;
 }
-export const PatchAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3737,7 +3694,7 @@ export interface PatchAccountsRelationshipsRequest {
   /** Request body */
   body?: AccountRelationship;
 }
-export const PatchAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsRelationshipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -3761,7 +3718,7 @@ export interface PatchAccountsUsersRequest {
   /** Request body */
   body?: User;
 }
-export const PatchAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3784,7 +3741,7 @@ export interface ProposeAccountServiceRequest {
   /** Required. The account service to propose. */
   accountService?: AccountService;
 }
-export const ProposeAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ProposeAccountServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     accountService: S.optional(AccountService),
@@ -3799,7 +3756,7 @@ export interface ProposeAccountsServicesRequest {
   /** Request body */
   body?: ProposeAccountServiceRequest;
 }
-export const ProposeAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ProposeAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ProposeAccountServiceRequest.pipe(T.HttpBody())),
@@ -3819,7 +3776,7 @@ export interface RegisterGcpRequest {
   /** Immutable. Optional field. Developer role can be also added by using `users.update` method. If the developer email provided is associated with a user in the provided merchant account, the user will be updated to have `API_DEVELOPER` `access_rights` and the email preference corresponding to that user will be updated to have the new API notifications preference. If the developer email provided is not associated with any user, it is added as a contact. The email preference corresponding to that contact will have the new API notifications preference. Make sure the email used is associated with a Google Account and is not a service account as service accounts can't receive emails. */
   developerEmail?: string;
 }
-export const RegisterGcpRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterGcpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     developerEmail: S.optional(S.String),
   }),
@@ -3831,7 +3788,7 @@ export interface RegisterGcpAccountsDeveloperRegistrationRequest {
   /** Request body */
   body?: RegisterGcpRequest;
 }
-export const RegisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RegisterGcpRequest.pipe(T.HttpBody())),
@@ -3848,15 +3805,13 @@ export const RegisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.s
 
 /** Request to reject an account service. */
 export type RejectAccountServiceRequest = ApproveAccountServiceRequest;
-export const RejectAccountServiceRequest = ApproveAccountServiceRequest;
-
 export interface RejectAccountsServicesRequest {
   /** Required. The resource name of the account service to reject. Format: `accounts/{account}/services/{service}` */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const RejectAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -3873,36 +3828,33 @@ export const RejectAccountsServicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for the RequestInventoryVerification method. */
 export type RequestInventoryVerificationRequest = ApproveAccountServiceRequest;
-export const RequestInventoryVerificationRequest = ApproveAccountServiceRequest;
-
 export interface RequestInventoryVerificationAccountsOmnichannelSettingsRequest {
   /** Required. The name of the omnichannel setting to request inventory verification. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const RequestInventoryVerificationAccountsOmnichannelSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "accounts/v1beta/{+name}:requestInventoryVerification",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RequestInventoryVerificationAccountsOmnichannelSettingsRequest",
-  }) as any as S.Schema<RequestInventoryVerificationAccountsOmnichannelSettingsRequest>;
+const RequestInventoryVerificationAccountsOmnichannelSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "accounts/v1beta/{+name}:requestInventoryVerification",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "RequestInventoryVerificationAccountsOmnichannelSettingsRequest",
+}) as any as S.Schema<RequestInventoryVerificationAccountsOmnichannelSettingsRequest>;
 
 /** Response message for the RequestInventoryVerification method. */
 export interface RequestInventoryVerificationResponse {
   /** The omnichannel setting that was updated. */
   omnichannelSetting?: OmnichannelSetting;
 }
-export const RequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const RequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     omnichannelSetting: S.optional(OmnichannelSetting),
   }),
@@ -3912,15 +3864,13 @@ export const RequestInventoryVerificationResponse = /*@__PURE__*/ S.suspend(() =
 
 /** Request message for the `UnclaimHomepage` method. */
 export type UnclaimHomepageRequest = ApproveAccountServiceRequest;
-export const UnclaimHomepageRequest = ApproveAccountServiceRequest;
-
 export interface UnclaimAccountsHomepageRequest {
   /** Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage` */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const UnclaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+const UnclaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -3937,15 +3887,13 @@ export const UnclaimAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request message for the UnregisterGCP method. */
 export type UnregisterGcpRequest = ApproveAccountServiceRequest;
-export const UnregisterGcpRequest = ApproveAccountServiceRequest;
-
 export interface UnregisterGcpAccountsDeveloperRegistrationRequest {
   /** Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` */
   name: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const UnregisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UnregisterGcpAccountsDeveloperRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),
@@ -3968,7 +3916,7 @@ export interface UpdateAutofeedSettingsAccountsAutofeedSettingsRequest {
   /** Request body */
   body?: AutofeedSettings;
 }
-export const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutofeedSettingsAccountsAutofeedSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3992,8 +3940,8 @@ export interface UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest
   /** Request body */
   body?: AutomaticImprovements;
 }
-export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4005,9 +3953,9 @@ export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest =
         baseUrl: "https://merchantapi.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest",
-  }) as any as S.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
+).annotate({
+  identifier: "UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest",
+}) as any as S.Schema<UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest>;
 
 export interface UpdateBusinessIdentityAccountsBusinessIdentityRequest {
   /** Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity` */
@@ -4017,7 +3965,7 @@ export interface UpdateBusinessIdentityAccountsBusinessIdentityRequest {
   /** Request body */
   body?: BusinessIdentity;
 }
-export const UpdateBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBusinessIdentityAccountsBusinessIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -4041,7 +3989,7 @@ export interface UpdateBusinessInfoAccountsBusinessInfoRequest {
   /** Request body */
   body?: BusinessInfo;
 }
-export const UpdateBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBusinessInfoAccountsBusinessInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4065,22 +4013,21 @@ export interface UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
   /** Request body */
   body?: CheckoutSettings;
 }
-export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(CheckoutSettings.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "accounts/v1beta/{+name}",
-        baseUrl: "https://merchantapi.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
-  }) as any as S.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
+const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(CheckoutSettings.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "accounts/v1beta/{+name}",
+      baseUrl: "https://merchantapi.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest",
+}) as any as S.Schema<UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest>;
 
 export interface UpdateEmailPreferencesAccountsEmailPreferencesRequest {
   /** Required. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `news_and_tips` */
@@ -4090,7 +4037,7 @@ export interface UpdateEmailPreferencesAccountsEmailPreferencesRequest {
   /** Request body */
   body?: EmailPreferences;
 }
-export const UpdateEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmailPreferencesAccountsEmailPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4114,7 +4061,7 @@ export interface UpdateHomepageAccountsHomepageRequest {
   /** Request body */
   body?: Homepage;
 }
-export const UpdateHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4132,15 +4079,13 @@ export const UpdateHomepageAccountsHomepageRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Request message for the `VerifySelf` method. */
 export type VerifySelfRequest = ApproveAccountServiceRequest;
-export const VerifySelfRequest = ApproveAccountServiceRequest;
-
 export interface VerifySelfAccountsUsersMeRequest {
   /** Required. The name of the account under which the caller is a user. Format: `accounts/{account}` */
   account: string;
   /** Request body */
   body?: ApproveAccountServiceRequest;
 }
-export const VerifySelfAccountsUsersMeRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifySelfAccountsUsersMeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.String.pipe(T.Label()),
     body: S.optional(ApproveAccountServiceRequest.pipe(T.HttpBody())),

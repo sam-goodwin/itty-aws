@@ -78,7 +78,7 @@ export interface AcceptPromoofferRequest {
   /** device android_id */
   androidId?: string;
 }
-export const AcceptPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manufacturer: S.optional(S.String.pipe(T.Query())),
     model: S.optional(S.String.pipe(T.Query())),
@@ -99,7 +99,7 @@ export const AcceptPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -113,7 +113,7 @@ export interface AddBookCloudloadingRequest {
   /** A drive document id. The upload_client_token must not be set. */
   drive_document_id?: string;
 }
-export const AddBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
+const AddBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upload_client_token: S.optional(S.String.pipe(T.Query())),
     mime_type: S.optional(S.String.pipe(T.Query())),
@@ -136,7 +136,7 @@ export interface BooksCloudloadingResource {
   title?: string;
   processingState?: string;
 }
-export const BooksCloudloadingResource = /*@__PURE__*/ S.suspend(() =>
+const BooksCloudloadingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     author: S.optional(S.String),
@@ -152,7 +152,7 @@ export type AddVolumeMylibraryBookshelvesReasonEnum =
   | "IOS_PREX"
   | "IOS_SEARCH"
   | "ONBOARDING";
-export const AddVolumeMylibraryBookshelvesReasonEnum = S.String;
+const AddVolumeMylibraryBookshelvesReasonEnum = S.String;
 
 export interface AddVolumeMylibraryBookshelvesRequest {
   /** The reason for which the book is added to the library. */
@@ -164,7 +164,7 @@ export interface AddVolumeMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const AddVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const AddVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(AddVolumeMylibraryBookshelvesReasonEnum.pipe(T.Query())),
     shelf: S.String.pipe(T.Label()),
@@ -187,7 +187,7 @@ export interface ClearVolumesMylibraryBookshelvesRequest {
   /** ID of bookshelf from which to remove a volume. */
   shelf: string;
 }
-export const ClearVolumesMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearVolumesMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     shelf: S.String.pipe(T.Label()),
@@ -206,7 +206,7 @@ export interface DeleteBookCloudloadingRequest {
   /** The id of the book to be removed. */
   volumeId: string;
 }
-export const DeleteBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Query()),
   }).pipe(
@@ -226,7 +226,7 @@ export interface DeleteMylibraryAnnotationsRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const DeleteMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationId: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -257,7 +257,7 @@ export interface DismissPromoofferRequest {
   /** device product */
   product?: string;
 }
-export const DismissPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     androidId: S.optional(S.String.pipe(T.Query())),
     offerId: S.optional(S.String.pipe(T.Query())),
@@ -283,7 +283,7 @@ export interface GetBookshelvesRequest {
   /** ID of user for whom to retrieve bookshelves. */
   userId: string;
 }
-export const GetBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     shelf: S.String.pipe(T.Label()),
@@ -319,7 +319,7 @@ export interface Bookshelf {
   /** Created time for this bookshelf (formatted UTC timestamp with millisecond resolution). */
   created?: string;
 }
-export const Bookshelf = /*@__PURE__*/ S.suspend(() =>
+const Bookshelf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.optional(S.String),
     volumesLastUpdated: S.optional(S.String),
@@ -338,7 +338,7 @@ export interface GetFamilyInfoFamilysharingRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const GetFamilyInfoFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFamilyInfoFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -363,7 +363,7 @@ export interface FamilyInfoMembership {
   /** The maximum allowed maturity rating for the user. */
   allowedMaturityRating?: string;
 }
-export const FamilyInfoMembership = /*@__PURE__*/ S.suspend(() =>
+const FamilyInfoMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acquirePermission: S.optional(S.String),
     ageGroup: S.optional(S.String),
@@ -379,7 +379,7 @@ export interface FamilyInfo {
   /** Resource type. */
   kind?: string;
 }
-export const FamilyInfo = /*@__PURE__*/ S.suspend(() =>
+const FamilyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membership: S.optional(FamilyInfoMembership),
     kind: S.optional(S.String),
@@ -396,7 +396,7 @@ export interface GetLayersRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Label()),
     summaryId: S.String.pipe(T.Label()),
@@ -412,7 +412,7 @@ export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLayersRequest" }) as any as S.Schema<GetLayersRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface Layersummary {
   /** The link to get the annotations for this layer. */
@@ -442,7 +442,7 @@ export interface Layersummary {
   /** The current version of this layer's volume annotations. Note that this version applies only to the data in the books.layers.volumeAnnotations.* responses. The actual annotation data is versioned separately. */
   volumeAnnotationsVersion?: string;
 }
-export const Layersummary = /*@__PURE__*/ S.suspend(() =>
+const Layersummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationsLink: S.optional(S.String),
     id: S.optional(S.String),
@@ -482,7 +482,7 @@ export interface GetLayersAnnotationDataRequest {
   /** The ID for the layer to get the annotations. */
   layerId: string;
 }
-export const GetLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     scale: S.optional(S.Number.pipe(T.Query())),
@@ -509,7 +509,7 @@ export interface DictlayerdataDictSource {
   url?: string;
   attribution?: string;
 }
-export const DictlayerdataDictSource = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     attribution: S.optional(S.String),
@@ -517,13 +517,11 @@ export const DictlayerdataDictSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DictlayerdataDictSource" }) as any as S.Schema<DictlayerdataDictSource>;
 
 export type DictlayerdataDictWordsItemDerivativesItemSource = DictlayerdataDictSource;
-export const DictlayerdataDictWordsItemDerivativesItemSource = DictlayerdataDictSource;
-
 export interface DictlayerdataDictWordsItemDerivativesItem {
   text?: string;
   source?: DictlayerdataDictSource;
 }
-export const DictlayerdataDictWordsItemDerivativesItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemDerivativesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     source: S.optional(DictlayerdataDictSource),
@@ -534,7 +532,7 @@ export const DictlayerdataDictWordsItemDerivativesItem = /*@__PURE__*/ S.suspend
 
 export type DictlayerdataDictWordsItemDerivativesItemList =
   Array<DictlayerdataDictWordsItemDerivativesItem>;
-export const DictlayerdataDictWordsItemDerivativesItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemDerivativesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemDerivativesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemDerivativesItemList>;
 
@@ -542,7 +540,7 @@ export interface DictlayerdataDictWordsItemSource {
   attribution?: string;
   url?: string;
 }
-export const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribution: S.optional(S.String),
     url: S.optional(S.String),
@@ -553,14 +551,11 @@ export const DictlayerdataDictWordsItemSource = /*@__PURE__*/ S.suspend(() =>
 
 export type DictlayerdataDictWordsItemSensesItemSynonymsItemSource =
   DictlayerdataDictWordsItemSource;
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemSource =
-  DictlayerdataDictWordsItemSource;
-
 export interface DictlayerdataDictWordsItemSensesItemSynonymsItem {
   source?: DictlayerdataDictWordsItemSource;
   text?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemSynonymsItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSensesItemSynonymsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(DictlayerdataDictWordsItemSource),
     text: S.optional(S.String),
@@ -571,7 +566,7 @@ export const DictlayerdataDictWordsItemSensesItemSynonymsItem = /*@__PURE__*/ S.
 
 export type DictlayerdataDictWordsItemSensesItemSynonymsItemList =
   Array<DictlayerdataDictWordsItemSensesItemSynonymsItem>;
-export const DictlayerdataDictWordsItemSensesItemSynonymsItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemSensesItemSynonymsItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemSensesItemSynonymsItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemSynonymsItemList>;
 
@@ -579,7 +574,7 @@ export interface DictlayerdataDictWordsItemSensesItemConjugationsItem {
   value?: string;
   type?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemConjugationsItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSensesItemConjugationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     type: S.optional(S.String),
@@ -590,41 +585,37 @@ export const DictlayerdataDictWordsItemSensesItemConjugationsItem = /*@__PURE__*
 
 export type DictlayerdataDictWordsItemSensesItemConjugationsItemList =
   Array<DictlayerdataDictWordsItemSensesItemConjugationsItem>;
-export const DictlayerdataDictWordsItemSensesItemConjugationsItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemSensesItemConjugationsItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemSensesItemConjugationsItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemConjugationsItemList>;
 
 export type DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource =
   DictlayerdataDictSource;
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemSource =
-  DictlayerdataDictSource;
-
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem {
   source?: DictlayerdataDictSource;
   text?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem =
-  /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       source: S.optional(DictlayerdataDictSource),
       text: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem",
-  }) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
+).annotate({
+  identifier: "DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem",
+}) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
 
 export type DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
   Array<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem>;
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList =
-  /*@__PURE__*/ S.Array(
-    DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem,
-  ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList>;
+const DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList = /*@__PURE__*/ S.Array(
+  DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItem,
+) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList>;
 
 export interface DictlayerdataDictWordsItemSensesItemDefinitionsItem {
   examples?: DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList;
   definition?: string;
 }
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSensesItemDefinitionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     examples: S.optional(DictlayerdataDictWordsItemSensesItemDefinitionsItemExamplesItemList),
     definition: S.optional(S.String),
@@ -635,13 +626,11 @@ export const DictlayerdataDictWordsItemSensesItemDefinitionsItem = /*@__PURE__*/
 
 export type DictlayerdataDictWordsItemSensesItemDefinitionsItemList =
   Array<DictlayerdataDictWordsItemSensesItemDefinitionsItem>;
-export const DictlayerdataDictWordsItemSensesItemDefinitionsItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemSensesItemDefinitionsItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemSensesItemDefinitionsItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemDefinitionsItemList>;
 
 export type DictlayerdataDictWordsItemSensesItemSource = DictlayerdataDictSource;
-export const DictlayerdataDictWordsItemSensesItemSource = DictlayerdataDictSource;
-
 export interface DictlayerdataDictWordsItemSensesItem {
   partOfSpeech?: string;
   pronunciationUrl?: string;
@@ -652,7 +641,7 @@ export interface DictlayerdataDictWordsItemSensesItem {
   definitions?: DictlayerdataDictWordsItemSensesItemDefinitionsItemList;
   source?: DictlayerdataDictSource;
 }
-export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partOfSpeech: S.optional(S.String),
     pronunciationUrl: S.optional(S.String),
@@ -668,18 +657,16 @@ export const DictlayerdataDictWordsItemSensesItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DictlayerdataDictWordsItemSensesItem>;
 
 export type DictlayerdataDictWordsItemSensesItemList = Array<DictlayerdataDictWordsItemSensesItem>;
-export const DictlayerdataDictWordsItemSensesItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemSensesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemSensesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemSensesItemList>;
 
 export type DictlayerdataDictWordsItemExamplesItemSource = DictlayerdataDictWordsItemSource;
-export const DictlayerdataDictWordsItemExamplesItemSource = DictlayerdataDictWordsItemSource;
-
 export interface DictlayerdataDictWordsItemExamplesItem {
   text?: string;
   source?: DictlayerdataDictWordsItemSource;
 }
-export const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     source: S.optional(DictlayerdataDictWordsItemSource),
@@ -690,7 +677,7 @@ export const DictlayerdataDictWordsItemExamplesItem = /*@__PURE__*/ S.suspend(()
 
 export type DictlayerdataDictWordsItemExamplesItemList =
   Array<DictlayerdataDictWordsItemExamplesItem>;
-export const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemExamplesItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItemExamplesItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemExamplesItemList>;
 
@@ -701,7 +688,7 @@ export interface DictlayerdataDictWordsItem {
   senses?: DictlayerdataDictWordsItemSensesItemList;
   examples?: DictlayerdataDictWordsItemExamplesItemList;
 }
-export const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     derivatives: S.optional(DictlayerdataDictWordsItemDerivativesItemList),
     source: S.optional(DictlayerdataDictWordsItemSource),
@@ -713,7 +700,7 @@ export const DictlayerdataDictWordsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DictlayerdataDictWordsItem>;
 
 export type DictlayerdataDictWordsItemList = Array<DictlayerdataDictWordsItem>;
-export const DictlayerdataDictWordsItemList = /*@__PURE__*/ S.Array(
+const DictlayerdataDictWordsItemList = /*@__PURE__*/ S.Array(
   DictlayerdataDictWordsItem,
 ) as any as S.Schema<DictlayerdataDictWordsItemList>;
 
@@ -722,7 +709,7 @@ export interface DictlayerdataDict {
   source?: DictlayerdataDictSource;
   words?: DictlayerdataDictWordsItemList;
 }
-export const DictlayerdataDict = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataDict = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(DictlayerdataDictSource),
     words: S.optional(DictlayerdataDictWordsItemList),
@@ -733,7 +720,7 @@ export interface DictlayerdataCommon {
   /** The display title and localized canonical name to use when searching for this entity on Google search. */
   title?: string;
 }
-export const DictlayerdataCommon = /*@__PURE__*/ S.suspend(() =>
+const DictlayerdataCommon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
   }),
@@ -744,7 +731,7 @@ export interface Dictlayerdata {
   common?: DictlayerdataCommon;
   kind?: string;
 }
-export const Dictlayerdata = /*@__PURE__*/ S.suspend(() =>
+const Dictlayerdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dict: S.optional(DictlayerdataDict),
     common: S.optional(DictlayerdataCommon),
@@ -772,7 +759,7 @@ export interface DictionaryAnnotationdata {
   /** URL for this resource. * */
   selfLink?: string;
 }
-export const DictionaryAnnotationdata = /*@__PURE__*/ S.suspend(() =>
+const DictionaryAnnotationdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(Dictlayerdata),
     annotationType: S.optional(S.String),
@@ -798,7 +785,7 @@ export interface GetLayersVolumeAnnotationsRequest {
   /** The locale information for the data. ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. */
   locale?: string;
 }
-export const GetLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layerId: S.String.pipe(T.Label()),
     annotationId: S.String.pipe(T.Label()),
@@ -826,7 +813,7 @@ export interface BooksAnnotationsRange {
   /** The offset from the starting position. */
   startOffset?: string;
 }
-export const BooksAnnotationsRange = /*@__PURE__*/ S.suspend(() =>
+const BooksAnnotationsRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endOffset: S.optional(S.String),
     startPosition: S.optional(S.String),
@@ -845,7 +832,7 @@ export interface VolumeannotationContentRanges {
   /** Content version applicable to ranges below. */
   contentVersion?: string;
 }
-export const VolumeannotationContentRanges = /*@__PURE__*/ S.suspend(() =>
+const VolumeannotationContentRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cfiRange: S.optional(BooksAnnotationsRange),
     gbTextRange: S.optional(BooksAnnotationsRange),
@@ -886,7 +873,7 @@ export interface Volumeannotation {
   /** Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-time format). */
   updated?: string;
 }
-export const Volumeannotation = /*@__PURE__*/ S.suspend(() =>
+const Volumeannotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selfLink: S.optional(S.String),
     annotationDataLink: S.optional(S.String),
@@ -911,7 +898,7 @@ export interface GetMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const GetMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shelf: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -934,7 +921,7 @@ export interface GetMylibraryReadingpositionsRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const GetMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Label()),
     contentVersion: S.optional(S.String.pipe(T.Query())),
@@ -966,7 +953,7 @@ export interface ReadingPosition {
   /** Timestamp when this reading position was last updated (formatted UTC timestamp with millisecond resolution). */
   updated?: string;
 }
-export const ReadingPosition = /*@__PURE__*/ S.suspend(() =>
+const ReadingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pdfPosition: S.optional(S.String),
     volumeId: S.optional(S.String),
@@ -986,7 +973,7 @@ export interface GetNotificationRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating notification title and body. */
   locale?: string;
 }
-export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notification_id: S.String.pipe(T.Query()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -1020,7 +1007,7 @@ export interface Notification {
   doc_type?: string;
   targetUrl?: string;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     iconUrl: S.optional(S.String),
@@ -1045,7 +1032,7 @@ export type GetPersonalizedstreamMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
   | "not-mature";
-export const GetPersonalizedstreamMaxAllowedMaturityRatingEnum = S.String;
+const GetPersonalizedstreamMaxAllowedMaturityRatingEnum = S.String;
 
 export interface GetPersonalizedstreamRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
@@ -1055,7 +1042,7 @@ export interface GetPersonalizedstreamRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const GetPersonalizedstreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPersonalizedstreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
     maxAllowedMaturityRating: S.optional(
@@ -1079,7 +1066,7 @@ export interface VolumeLayerInfoLayersItem {
   /** The layer id of this layer (e.g. "geo"). */
   layerId?: string;
 }
-export const VolumeLayerInfoLayersItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeLayerInfoLayersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeAnnotationsVersion: S.optional(S.String),
     layerId: S.optional(S.String),
@@ -1089,7 +1076,7 @@ export const VolumeLayerInfoLayersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeLayerInfoLayersItem>;
 
 export type VolumeLayerInfoLayersItemList = Array<VolumeLayerInfoLayersItem>;
-export const VolumeLayerInfoLayersItemList = /*@__PURE__*/ S.Array(
+const VolumeLayerInfoLayersItemList = /*@__PURE__*/ S.Array(
   VolumeLayerInfoLayersItem,
 ) as any as S.Schema<VolumeLayerInfoLayersItemList>;
 
@@ -1097,7 +1084,7 @@ export interface VolumeLayerInfo {
   /** A layer should appear here if and only if the layer exists for this book. */
   layers?: VolumeLayerInfoLayersItemList;
 }
-export const VolumeLayerInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeLayerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layers: S.optional(VolumeLayerInfoLayersItemList),
   }),
@@ -1107,7 +1094,7 @@ export interface VolumeSearchInfo {
   /** A text snippet containing the search query. */
   textSnippet?: string;
 }
-export const VolumeSearchInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeSearchInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textSnippet: S.optional(S.String),
   }),
@@ -1117,7 +1104,7 @@ export interface VolumeVolumeInfoReadingModes {
   image?: boolean;
   text?: boolean;
 }
-export const VolumeVolumeInfoReadingModes = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfoReadingModes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(S.Boolean),
     text: S.optional(S.Boolean),
@@ -1132,7 +1119,7 @@ export interface VolumeVolumeInfoPanelizationSummary {
   containsImageBubbles?: boolean;
   containsEpubBubbles?: boolean;
 }
-export const VolumeVolumeInfoPanelizationSummary = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfoPanelizationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageBubbleVersion: S.optional(S.String),
     epubBubbleVersion: S.optional(S.String),
@@ -1147,7 +1134,7 @@ export interface VolumeseriesinfoVolumeSeriesItemIssueItem {
   issueOrderNumber?: number;
   issueDisplayNumber?: string;
 }
-export const VolumeseriesinfoVolumeSeriesItemIssueItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeseriesinfoVolumeSeriesItemIssueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issueOrderNumber: S.optional(S.Number),
     issueDisplayNumber: S.optional(S.String),
@@ -1158,7 +1145,7 @@ export const VolumeseriesinfoVolumeSeriesItemIssueItem = /*@__PURE__*/ S.suspend
 
 export type VolumeseriesinfoVolumeSeriesItemIssueItemList =
   Array<VolumeseriesinfoVolumeSeriesItemIssueItem>;
-export const VolumeseriesinfoVolumeSeriesItemIssueItemList = /*@__PURE__*/ S.Array(
+const VolumeseriesinfoVolumeSeriesItemIssueItemList = /*@__PURE__*/ S.Array(
   VolumeseriesinfoVolumeSeriesItemIssueItem,
 ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemIssueItemList>;
 
@@ -1172,7 +1159,7 @@ export interface VolumeseriesinfoVolumeSeriesItem {
   /** The book type in the context of series. Examples - Single Issue, Collection Edition, etc. */
   seriesBookType?: string;
 }
-export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderNumber: S.optional(S.Number),
     issue: S.optional(VolumeseriesinfoVolumeSeriesItemIssueItemList),
@@ -1184,7 +1171,7 @@ export const VolumeseriesinfoVolumeSeriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeseriesinfoVolumeSeriesItem>;
 
 export type VolumeseriesinfoVolumeSeriesItemList = Array<VolumeseriesinfoVolumeSeriesItem>;
-export const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
+const VolumeseriesinfoVolumeSeriesItemList = /*@__PURE__*/ S.Array(
   VolumeseriesinfoVolumeSeriesItem,
 ) as any as S.Schema<VolumeseriesinfoVolumeSeriesItemList>;
 
@@ -1197,7 +1184,7 @@ export interface Volumeseriesinfo {
   bookDisplayNumber?: string;
   volumeSeries?: VolumeseriesinfoVolumeSeriesItemList;
 }
-export const Volumeseriesinfo = /*@__PURE__*/ S.suspend(() =>
+const Volumeseriesinfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shortSeriesBookTitle: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1214,7 +1201,7 @@ export interface VolumeVolumeInfoDimensions {
   /** Width of this volume (in cm). */
   width?: string;
 }
-export const VolumeVolumeInfoDimensions = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfoDimensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.String),
     thickness: S.optional(S.String),
@@ -1230,7 +1217,7 @@ export interface VolumeVolumeInfoIndustryIdentifiersItem {
   /** Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER. */
   type?: string;
 }
-export const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     type: S.optional(S.String),
@@ -1241,7 +1228,7 @@ export const VolumeVolumeInfoIndustryIdentifiersItem = /*@__PURE__*/ S.suspend((
 
 export type VolumeVolumeInfoIndustryIdentifiersItemList =
   Array<VolumeVolumeInfoIndustryIdentifiersItem>;
-export const VolumeVolumeInfoIndustryIdentifiersItemList = /*@__PURE__*/ S.Array(
+const VolumeVolumeInfoIndustryIdentifiersItemList = /*@__PURE__*/ S.Array(
   VolumeVolumeInfoIndustryIdentifiersItem,
 ) as any as S.Schema<VolumeVolumeInfoIndustryIdentifiersItemList>;
 
@@ -1259,7 +1246,7 @@ export interface VolumeVolumeInfoImageLinks {
   /** Image link for large size (width of ~800 pixels). (In LITE projection) */
   large?: string;
 }
-export const VolumeVolumeInfoImageLinks = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfoImageLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smallThumbnail: S.optional(S.String),
     extraLarge: S.optional(S.String),
@@ -1328,7 +1315,7 @@ export interface VolumeVolumeInfo {
   /** Publisher of this volume. (In LITE projection.) */
   publisher?: string;
 }
-export const VolumeVolumeInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeVolumeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowAnonLogging: S.optional(S.Boolean),
     readingModes: S.optional(VolumeVolumeInfoReadingModes),
@@ -1365,7 +1352,7 @@ export interface VolumeSaleInfoOffersItemRentalDuration {
   count?: number;
   unit?: string;
 }
-export const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfoOffersItemRentalDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -1378,7 +1365,7 @@ export interface VolumeSaleInfoOffersItemRetailPrice {
   amountInMicros?: number;
   currencyCode?: string;
 }
-export const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amountInMicros: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -1388,8 +1375,6 @@ export const VolumeSaleInfoOffersItemRetailPrice = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeSaleInfoOffersItemRetailPrice>;
 
 export type VolumeSaleInfoOffersItemListPrice = VolumeSaleInfoOffersItemRetailPrice;
-export const VolumeSaleInfoOffersItemListPrice = VolumeSaleInfoOffersItemRetailPrice;
-
 export interface VolumeSaleInfoOffersItem {
   /** Indicates whether the offer is giftable. */
   giftable?: boolean;
@@ -1402,7 +1387,7 @@ export interface VolumeSaleInfoOffersItem {
   /** Offer list (=undiscounted) price in Micros. */
   listPrice?: VolumeSaleInfoOffersItemRetailPrice;
 }
-export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     giftable: S.optional(S.Boolean),
     finskyOfferType: S.optional(S.Number),
@@ -1413,7 +1398,7 @@ export const VolumeSaleInfoOffersItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeSaleInfoOffersItem" }) as any as S.Schema<VolumeSaleInfoOffersItem>;
 
 export type VolumeSaleInfoOffersItemList = Array<VolumeSaleInfoOffersItem>;
-export const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
+const VolumeSaleInfoOffersItemList = /*@__PURE__*/ S.Array(
   VolumeSaleInfoOffersItem,
 ) as any as S.Schema<VolumeSaleInfoOffersItemList>;
 
@@ -1423,7 +1408,7 @@ export interface VolumeSaleInfoListPrice {
   /** An ISO 4217, three-letter currency code. (In LITE projection.) */
   currencyCode?: string;
 }
-export const VolumeSaleInfoListPrice = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfoListPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -1436,7 +1421,7 @@ export interface VolumeSaleInfoRetailPrice {
   /** Amount in the currency listed below. (In LITE projection.) */
   amount?: number;
 }
-export const VolumeSaleInfoRetailPrice = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfoRetailPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     amount: S.optional(S.Number),
@@ -1463,7 +1448,7 @@ export interface VolumeSaleInfo {
   /** URL to purchase this volume on the Google Books site. (In LITE projection) */
   buyLink?: string;
 }
-export const VolumeSaleInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeSaleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onSaleDate: S.optional(S.String),
     offers: S.optional(VolumeSaleInfoOffersItemList),
@@ -1480,7 +1465,7 @@ export interface VolumeRecommendedInfo {
   /** A text explaining why this volume is recommended. */
   explanation?: string;
 }
-export const VolumeRecommendedInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeRecommendedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explanation: S.optional(S.String),
   }),
@@ -1489,7 +1474,7 @@ export const VolumeRecommendedInfo = /*@__PURE__*/ S.suspend(() =>
 export interface VolumeUserInfoUserUploadedVolumeInfo {
   processingState?: string;
 }
-export const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeUserInfoUserUploadedVolumeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processingState: S.optional(S.String),
   }),
@@ -1501,7 +1486,7 @@ export interface VolumeUserInfoRentalPeriod {
   endUtcSec?: string;
   startUtcSec?: string;
 }
-export const VolumeUserInfoRentalPeriod = /*@__PURE__*/ S.suspend(() =>
+const VolumeUserInfoRentalPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endUtcSec: S.optional(S.String),
     startUtcSec: S.optional(S.String),
@@ -1514,7 +1499,7 @@ export interface ReviewAuthor {
   /** Name of this person. */
   displayName?: string;
 }
-export const ReviewAuthor = /*@__PURE__*/ S.suspend(() =>
+const ReviewAuthor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -1528,7 +1513,7 @@ export interface ReviewSource {
   /** Name of the source. */
   description?: string;
 }
-export const ReviewSource = /*@__PURE__*/ S.suspend(() =>
+const ReviewSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraDescription: S.optional(S.String),
     url: S.optional(S.String),
@@ -1558,7 +1543,7 @@ export interface Review {
   /** Resource type for a review. */
   kind?: string;
 }
-export const Review = /*@__PURE__*/ S.suspend(() =>
+const Review = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.optional(ReviewAuthor),
     fullTextUrl: S.optional(S.String),
@@ -1581,7 +1566,7 @@ export interface VolumeUserInfoFamilySharing {
   /** Whether or not this volume can be shared with the family by the user. This includes sharing eligibility of both the volume and the user. If the value is true, the user can initiate a family sharing action. */
   isSharingAllowed?: boolean;
 }
-export const VolumeUserInfoFamilySharing = /*@__PURE__*/ S.suspend(() =>
+const VolumeUserInfoFamilySharing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isSharingDisabledByFop: S.optional(S.Boolean),
     familyRole: S.optional(S.String),
@@ -1597,7 +1582,7 @@ export interface VolumeUserInfoCopy {
   limitType?: string;
   updated?: string;
 }
-export const VolumeUserInfoCopy = /*@__PURE__*/ S.suspend(() =>
+const VolumeUserInfoCopy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCharacterCount: S.optional(S.Number),
     remainingCharacterCount: S.optional(S.Number),
@@ -1645,7 +1630,7 @@ export interface VolumeUserInfo {
   /** Whether or not the user shared this volume with the family. */
   isFamilySharedFromUser?: boolean;
 }
-export const VolumeUserInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userUploadedVolumeInfo: S.optional(VolumeUserInfoUserUploadedVolumeInfo),
     isPreordered: S.optional(S.Boolean),
@@ -1695,7 +1680,7 @@ export interface DownloadAccessRestriction {
   /** Response signature. */
   signature?: string;
 }
-export const DownloadAccessRestriction = /*@__PURE__*/ S.suspend(() =>
+const DownloadAccessRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     justAcquired: S.optional(S.Boolean),
     volumeId: S.optional(S.String),
@@ -1722,7 +1707,7 @@ export interface VolumeAccessInfoPdf {
   /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
   acsTokenLink?: string;
 }
-export const VolumeAccessInfoPdf = /*@__PURE__*/ S.suspend(() =>
+const VolumeAccessInfoPdf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isAvailable: S.optional(S.Boolean),
     downloadLink: S.optional(S.String),
@@ -1738,7 +1723,7 @@ export interface VolumeAccessInfoEpub {
   /** URL to download epub. (In LITE projection.) */
   downloadLink?: string;
 }
-export const VolumeAccessInfoEpub = /*@__PURE__*/ S.suspend(() =>
+const VolumeAccessInfoEpub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acsTokenLink: S.optional(S.String),
     isAvailable: S.optional(S.Boolean),
@@ -1776,7 +1761,7 @@ export interface VolumeAccessInfo {
   /** Combines the access and viewability of this volume into a single status field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or NONE. (In LITE projection.) */
   accessViewStatus?: string;
 }
-export const VolumeAccessInfo = /*@__PURE__*/ S.suspend(() =>
+const VolumeAccessInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadAccess: S.optional(DownloadAccessRestriction),
     webReaderLink: S.optional(S.String),
@@ -1819,7 +1804,7 @@ export interface Volume {
   /** Opaque identifier for a specific version of a volume resource. (In LITE projection) */
   etag?: string;
 }
-export const Volume = /*@__PURE__*/ S.suspend(() =>
+const Volume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layerInfo: S.optional(VolumeLayerInfo),
     searchInfo: S.optional(VolumeSearchInfo),
@@ -1836,7 +1821,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
 
 export type VolumeList = Array<Volume>;
-export const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
+const VolumeList = /*@__PURE__*/ S.Array(Volume) as any as S.Schema<VolumeList>;
 
 export interface DiscoveryclustersClustersItemBanner_with_content_container {
   moreButtonUrl?: string;
@@ -1846,16 +1831,15 @@ export interface DiscoveryclustersClustersItemBanner_with_content_container {
   textColorArgb?: string;
   imageUrl?: string;
 }
-export const DiscoveryclustersClustersItemBanner_with_content_container = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      moreButtonUrl: S.optional(S.String),
-      maskColorArgb: S.optional(S.String),
-      moreButtonText: S.optional(S.String),
-      fillColorArgb: S.optional(S.String),
-      textColorArgb: S.optional(S.String),
-      imageUrl: S.optional(S.String),
-    }),
+const DiscoveryclustersClustersItemBanner_with_content_container = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    moreButtonUrl: S.optional(S.String),
+    maskColorArgb: S.optional(S.String),
+    moreButtonText: S.optional(S.String),
+    fillColorArgb: S.optional(S.String),
+    textColorArgb: S.optional(S.String),
+    imageUrl: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DiscoveryclustersClustersItemBanner_with_content_container",
 }) as any as S.Schema<DiscoveryclustersClustersItemBanner_with_content_container>;
@@ -1868,7 +1852,7 @@ export interface DiscoveryclustersClustersItem {
   title?: string;
   banner_with_content_container?: DiscoveryclustersClustersItemBanner_with_content_container;
 }
-export const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalVolumes: S.optional(S.Number),
     subTitle: S.optional(S.String),
@@ -1884,7 +1868,7 @@ export const DiscoveryclustersClustersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DiscoveryclustersClustersItem>;
 
 export type DiscoveryclustersClustersItemList = Array<DiscoveryclustersClustersItem>;
-export const DiscoveryclustersClustersItemList = /*@__PURE__*/ S.Array(
+const DiscoveryclustersClustersItemList = /*@__PURE__*/ S.Array(
   DiscoveryclustersClustersItem,
 ) as any as S.Schema<DiscoveryclustersClustersItemList>;
 
@@ -1894,7 +1878,7 @@ export interface Discoveryclusters {
   clusters?: DiscoveryclustersClustersItemList;
   totalClusters?: number;
 }
-export const Discoveryclusters = /*@__PURE__*/ S.suspend(() =>
+const Discoveryclusters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     clusters: S.optional(DiscoveryclustersClustersItemList),
@@ -1916,7 +1900,7 @@ export interface GetPromoofferRequest {
   /** device serial */
   serial?: string;
 }
-export const GetPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPromoofferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.String.pipe(T.Query())),
     androidId: S.optional(S.String.pipe(T.Query())),
@@ -1941,7 +1925,7 @@ export interface OffersItemsItemItemsItem {
   coverUrl?: string;
   canonicalVolumeLink?: string;
 }
-export const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
+const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     volumeId: S.optional(S.String),
@@ -1953,7 +1937,7 @@ export const OffersItemsItemItemsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OffersItemsItemItemsItem" }) as any as S.Schema<OffersItemsItemItemsItem>;
 
 export type OffersItemsItemItemsItemList = Array<OffersItemsItemItemsItem>;
-export const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(
+const OffersItemsItemItemsItemList = /*@__PURE__*/ S.Array(
   OffersItemsItemItemsItem,
 ) as any as S.Schema<OffersItemsItemItemsItemList>;
 
@@ -1963,7 +1947,7 @@ export interface OffersItemsItem {
   artUrl?: string;
   id?: string;
 }
-export const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
+const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gservicesKey: S.optional(S.String),
     items: S.optional(OffersItemsItemItemsItemList),
@@ -1973,7 +1957,7 @@ export const OffersItemsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OffersItemsItem" }) as any as S.Schema<OffersItemsItem>;
 
 export type OffersItemsItemList = Array<OffersItemsItem>;
-export const OffersItemsItemList = /*@__PURE__*/ S.Array(
+const OffersItemsItemList = /*@__PURE__*/ S.Array(
   OffersItemsItem,
 ) as any as S.Schema<OffersItemsItemList>;
 
@@ -1983,7 +1967,7 @@ export interface Offers {
   /** A list of offers. */
   items?: OffersItemsItemList;
 }
-export const Offers = /*@__PURE__*/ S.suspend(() =>
+const Offers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(OffersItemsItemList),
@@ -1994,7 +1978,7 @@ export interface GetSeriesRequest {
   /** String that identifies the series */
   series_id: StringList;
 }
-export const GetSeriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSeriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     series_id: StringList.pipe(T.Query()),
   }).pipe(
@@ -2008,14 +1992,13 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo {
   releaseTime?: string;
   amountInMicros?: number;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      currencyCode: S.optional(S.String),
-      releaseNumber: S.optional(S.String),
-      releaseTime: S.optional(S.String),
-      amountInMicros: S.optional(S.Number),
-    }),
+const SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currencyCode: S.optional(S.String),
+    releaseNumber: S.optional(S.String),
+    releaseTime: S.optional(S.String),
+    amountInMicros: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo",
 }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo>;
@@ -2026,17 +2009,17 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo
   currencyCode?: string;
   releaseTime?: string;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo =
-  /*@__PURE__*/ S.suspend(() =>
+const SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       releaseNumber: S.optional(S.String),
       amountInMicros: S.optional(S.Number),
       currencyCode: S.optional(S.String),
       releaseTime: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo",
-  }) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo>;
+).annotate({
+  identifier: "SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo",
+}) as any as S.Schema<SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo>;
 
 export interface SeriesSeriesItemSeriesSubscriptionReleaseInfo {
   cancelTime?: string;
@@ -2044,7 +2027,7 @@ export interface SeriesSeriesItemSeriesSubscriptionReleaseInfo {
   currentReleaseInfo?: SeriesSeriesItemSeriesSubscriptionReleaseInfoCurrentReleaseInfo;
   seriesSubscriptionType?: string;
 }
-export const SeriesSeriesItemSeriesSubscriptionReleaseInfo = /*@__PURE__*/ S.suspend(() =>
+const SeriesSeriesItemSeriesSubscriptionReleaseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelTime: S.optional(S.String),
     nextReleaseInfo: S.optional(SeriesSeriesItemSeriesSubscriptionReleaseInfoNextReleaseInfo),
@@ -2067,7 +2050,7 @@ export interface SeriesSeriesItem {
   title?: string;
   imageUrl?: string;
 }
-export const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
+const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seriesType: S.optional(S.String),
     seriesId: S.optional(S.String),
@@ -2083,7 +2066,7 @@ export const SeriesSeriesItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SeriesSeriesItem" }) as any as S.Schema<SeriesSeriesItem>;
 
 export type SeriesSeriesItemList = Array<SeriesSeriesItem>;
-export const SeriesSeriesItemList = /*@__PURE__*/ S.Array(
+const SeriesSeriesItemList = /*@__PURE__*/ S.Array(
   SeriesSeriesItem,
 ) as any as S.Schema<SeriesSeriesItemList>;
 
@@ -2092,7 +2075,7 @@ export interface Series {
   /** Resource type. */
   kind?: string;
 }
-export const Series = /*@__PURE__*/ S.suspend(() =>
+const Series = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     series: S.optional(SeriesSeriesItemList),
     kind: S.optional(S.String),
@@ -2107,7 +2090,7 @@ export interface GetSeriesMembershipRequest {
   /** String that identifies the series */
   series_id: string;
 }
-export const GetSeriesMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSeriesMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page_token: S.optional(S.String.pipe(T.Query())),
     page_size: S.optional(S.Number.pipe(T.Query())),
@@ -2129,7 +2112,7 @@ export interface Seriesmembership {
   /** Resorce type. */
   kind?: string;
 }
-export const Seriesmembership = /*@__PURE__*/ S.suspend(() =>
+const Seriesmembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     member: S.optional(VolumeList),
@@ -2141,7 +2124,7 @@ export interface GetUserSettingsMyconfigRequest {
   /** Unused. Added only to workaround TEX mandatory request template requirement */
   country?: string;
 }
-export const GetUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -2158,7 +2141,7 @@ export const GetUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UsersettingsNotificationPriceDrop {
   opted_state?: string;
 }
-export const UsersettingsNotificationPriceDrop = /*@__PURE__*/ S.suspend(() =>
+const UsersettingsNotificationPriceDrop = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opted_state: S.optional(S.String),
   }),
@@ -2167,17 +2150,9 @@ export const UsersettingsNotificationPriceDrop = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsersettingsNotificationPriceDrop>;
 
 export type UsersettingsNotificationMoreFromAuthors = UsersettingsNotificationPriceDrop;
-export const UsersettingsNotificationMoreFromAuthors = UsersettingsNotificationPriceDrop;
-
 export type UsersettingsNotificationRewardExpirations = UsersettingsNotificationPriceDrop;
-export const UsersettingsNotificationRewardExpirations = UsersettingsNotificationPriceDrop;
-
 export type UsersettingsNotificationMoreFromSeries = UsersettingsNotificationPriceDrop;
-export const UsersettingsNotificationMoreFromSeries = UsersettingsNotificationPriceDrop;
-
 export type UsersettingsNotificationMatchMyInterests = UsersettingsNotificationPriceDrop;
-export const UsersettingsNotificationMatchMyInterests = UsersettingsNotificationPriceDrop;
-
 export interface UsersettingsNotification {
   priceDrop?: UsersettingsNotificationPriceDrop;
   moreFromAuthors?: UsersettingsNotificationPriceDrop;
@@ -2185,7 +2160,7 @@ export interface UsersettingsNotification {
   moreFromSeries?: UsersettingsNotificationPriceDrop;
   matchMyInterests?: UsersettingsNotificationPriceDrop;
 }
-export const UsersettingsNotification = /*@__PURE__*/ S.suspend(() =>
+const UsersettingsNotification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priceDrop: S.optional(UsersettingsNotificationPriceDrop),
     moreFromAuthors: S.optional(UsersettingsNotificationPriceDrop),
@@ -2199,7 +2174,7 @@ export interface UsersettingsNotesExport {
   isEnabled?: boolean;
   folderName?: string;
 }
-export const UsersettingsNotesExport = /*@__PURE__*/ S.suspend(() =>
+const UsersettingsNotesExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEnabled: S.optional(S.Boolean),
     folderName: S.optional(S.String),
@@ -2213,7 +2188,7 @@ export interface Usersettings {
   /** Resource type. */
   kind?: string;
 }
-export const Usersettings = /*@__PURE__*/ S.suspend(() =>
+const Usersettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notification: S.optional(UsersettingsNotification),
     notesExport: S.optional(UsersettingsNotesExport),
@@ -2222,7 +2197,7 @@ export const Usersettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Usersettings" }) as any as S.Schema<Usersettings>;
 
 export type GetVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
-export const GetVolumesProjectionEnum = S.String;
+const GetVolumesProjectionEnum = S.String;
 
 export interface GetVolumesRequest {
   /** ISO-3166-1 code to override the IP-based location. */
@@ -2239,7 +2214,7 @@ export interface GetVolumesRequest {
   /** Restrict information returned to a set of selected fields. */
   projection?: GetVolumesProjectionEnum | (string & {});
 }
-export const GetVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(S.String.pipe(T.Query())),
     includeNonComicsSeries: S.optional(S.Boolean.pipe(T.Query())),
@@ -2265,7 +2240,7 @@ export interface AnnotationLayerSummary {
   /** Remaining allowed characters on this layer, especially for the "copy" layer. */
   remainingCharacterCount?: number;
 }
-export const AnnotationLayerSummary = /*@__PURE__*/ S.suspend(() =>
+const AnnotationLayerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCharacterCount: S.optional(S.Number),
     limitType: S.optional(S.String),
@@ -2285,7 +2260,7 @@ export interface AnnotationClientVersionRanges {
   /** Content version the client sent in. */
   contentVersion?: string;
 }
-export const AnnotationClientVersionRanges = /*@__PURE__*/ S.suspend(() =>
+const AnnotationClientVersionRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cfiRange: S.optional(BooksAnnotationsRange),
     gbImageRange: S.optional(BooksAnnotationsRange),
@@ -2309,7 +2284,7 @@ export interface AnnotationCurrentVersionRanges {
   /** Range in GB text format for this annotation for version above. */
   gbTextRange?: BooksAnnotationsRange;
 }
-export const AnnotationCurrentVersionRanges = /*@__PURE__*/ S.suspend(() =>
+const AnnotationCurrentVersionRanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cfiRange: S.optional(BooksAnnotationsRange),
     contentVersion: S.optional(S.String),
@@ -2356,7 +2331,7 @@ export interface Annotation {
   /** Anchor text before excerpt. For requests, if the user bookmarked a screen that has no flowing text on it, then this field should be empty. */
   beforeSelectedText?: string;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: S.optional(S.String),
     id: S.optional(S.String),
@@ -2390,7 +2365,7 @@ export interface InsertMylibraryAnnotationsRequest {
   /** Request body */
   body?: Annotation;
 }
-export const InsertMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationId: S.optional(S.String.pipe(T.Query())),
     showOnlySummaryInResponse: S.optional(S.Boolean.pipe(T.Query())),
@@ -2414,7 +2389,7 @@ export interface ListBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -2428,7 +2403,7 @@ export const ListBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBookshelvesRequest" }) as any as S.Schema<ListBookshelvesRequest>;
 
 export type BookshelfList = Array<Bookshelf>;
-export const BookshelfList = /*@__PURE__*/ S.Array(Bookshelf) as any as S.Schema<BookshelfList>;
+const BookshelfList = /*@__PURE__*/ S.Array(Bookshelf) as any as S.Schema<BookshelfList>;
 
 export interface Bookshelves {
   /** A list of bookshelves. */
@@ -2436,7 +2411,7 @@ export interface Bookshelves {
   /** Resource type. */
   kind?: string;
 }
-export const Bookshelves = /*@__PURE__*/ S.suspend(() =>
+const Bookshelves = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(BookshelfList),
     kind: S.optional(S.String),
@@ -2457,7 +2432,7 @@ export interface ListBookshelvesVolumesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showPreorders: S.optional(S.Boolean.pipe(T.Query())),
     shelf: S.String.pipe(T.Label()),
@@ -2484,7 +2459,7 @@ export interface Volumes {
   /** A list of volumes. */
   items?: VolumeList;
 }
-export const Volumes = /*@__PURE__*/ S.suspend(() =>
+const Volumes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalItems: S.optional(S.Number),
     kind: S.optional(S.String),
@@ -2496,7 +2471,7 @@ export interface ListCategoriesOnboardingRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset. */
   locale?: string;
 }
-export const ListCategoriesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoriesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -2515,7 +2490,7 @@ export interface CategoryItemsItem {
   badgeUrl?: string;
   name?: string;
 }
-export const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
+const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.optional(S.String),
     badgeUrl: S.optional(S.String),
@@ -2524,7 +2499,7 @@ export const CategoryItemsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CategoryItemsItem" }) as any as S.Schema<CategoryItemsItem>;
 
 export type CategoryItemsItemList = Array<CategoryItemsItem>;
-export const CategoryItemsItemList = /*@__PURE__*/ S.Array(
+const CategoryItemsItemList = /*@__PURE__*/ S.Array(
   CategoryItemsItem,
 ) as any as S.Schema<CategoryItemsItemList>;
 
@@ -2534,7 +2509,7 @@ export interface Category {
   /** A list of onboarding categories. */
   items?: CategoryItemsItemList;
 }
-export const Category = /*@__PURE__*/ S.suspend(() =>
+const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(CategoryItemsItemList),
@@ -2545,7 +2520,7 @@ export type ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
   | "not-mature";
-export const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum = S.String;
+const ListCategoryVolumesOnboardingMaxAllowedMaturityRatingEnum = S.String;
 
 export interface ListCategoryVolumesOnboardingRequest {
   /** List of category ids requested. */
@@ -2561,7 +2536,7 @@ export interface ListCategoryVolumesOnboardingRequest {
   /** Number of maximum results per page to be included in the response. */
   pageSize?: number;
 }
-export const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCategoryVolumesOnboardingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryId: S.optional(StringList.pipe(T.Query())),
     locale: S.optional(S.String.pipe(T.Query())),
@@ -2588,7 +2563,7 @@ export interface Volume2 {
   kind?: string;
   nextPageToken?: string;
 }
-export const Volume2 = /*@__PURE__*/ S.suspend(() =>
+const Volume2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: VolumeList,
     kind: S.optional(S.String),
@@ -2608,7 +2583,7 @@ export interface ListLayersRequest {
   /** Maximum number of results to return */
   maxResults?: number;
 }
-export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentVersion: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
@@ -2625,9 +2600,7 @@ export const ListLayersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLayersRequest" }) as any as S.Schema<ListLayersRequest>;
 
 export type LayersummaryList = Array<Layersummary>;
-export const LayersummaryList = /*@__PURE__*/ S.Array(
-  Layersummary,
-) as any as S.Schema<LayersummaryList>;
+const LayersummaryList = /*@__PURE__*/ S.Array(Layersummary) as any as S.Schema<LayersummaryList>;
 
 export interface Layersummaries {
   /** The total number of layer summaries found. */
@@ -2637,7 +2610,7 @@ export interface Layersummaries {
   /** A list of layer summary items. */
   items?: LayersummaryList;
 }
-export const Layersummaries = /*@__PURE__*/ S.suspend(() =>
+const Layersummaries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalItems: S.optional(S.Number),
     kind: S.optional(S.String),
@@ -2673,7 +2646,7 @@ export interface ListLayersAnnotationDataRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLayersAnnotationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     w: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -2711,7 +2684,7 @@ export interface GeolayerdataCommon {
   /** The description for this location. */
   snippet?: string;
 }
-export const GeolayerdataCommon = /*@__PURE__*/ S.suspend(() =>
+const GeolayerdataCommon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previewImageUrl: S.optional(S.String),
     snippetUrl: S.optional(S.String),
@@ -2725,7 +2698,7 @@ export interface GeolayerdataGeoViewportLo {
   latitude?: number;
   longitude?: number;
 }
-export const GeolayerdataGeoViewportLo = /*@__PURE__*/ S.suspend(() =>
+const GeolayerdataGeoViewportLo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -2738,7 +2711,7 @@ export interface GeolayerdataGeoViewportHi {
   longitude?: number;
   latitude?: number;
 }
-export const GeolayerdataGeoViewportHi = /*@__PURE__*/ S.suspend(() =>
+const GeolayerdataGeoViewportHi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -2751,7 +2724,7 @@ export interface GeolayerdataGeoViewport {
   lo?: GeolayerdataGeoViewportLo;
   hi?: GeolayerdataGeoViewportHi;
 }
-export const GeolayerdataGeoViewport = /*@__PURE__*/ S.suspend(() =>
+const GeolayerdataGeoViewport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lo: S.optional(GeolayerdataGeoViewportLo),
     hi: S.optional(GeolayerdataGeoViewportHi),
@@ -2776,7 +2749,7 @@ export interface GeolayerdataGeo {
   /** The latitude of the location. */
   latitude?: number;
 }
-export const GeolayerdataGeo = /*@__PURE__*/ S.suspend(() =>
+const GeolayerdataGeo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boundary: S.optional(StringList),
     mapType: S.optional(S.String),
@@ -2794,7 +2767,7 @@ export interface Geolayerdata {
   common?: GeolayerdataCommon;
   geo?: GeolayerdataGeo;
 }
-export const Geolayerdata = /*@__PURE__*/ S.suspend(() =>
+const Geolayerdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     common: S.optional(GeolayerdataCommon),
@@ -2822,7 +2795,7 @@ export interface GeoAnnotationdata {
   /** URL for this resource. * */
   selfLink?: string;
 }
-export const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
+const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     id: S.optional(S.String),
@@ -2837,7 +2810,7 @@ export const GeoAnnotationdata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoAnnotationdata" }) as any as S.Schema<GeoAnnotationdata>;
 
 export type GeoAnnotationdataList = Array<GeoAnnotationdata>;
-export const GeoAnnotationdataList = /*@__PURE__*/ S.Array(
+const GeoAnnotationdataList = /*@__PURE__*/ S.Array(
   GeoAnnotationdata,
 ) as any as S.Schema<GeoAnnotationdataList>;
 
@@ -2851,7 +2824,7 @@ export interface Annotationsdata {
   /** The total number of volume annotations found. */
   totalItems?: number;
 }
-export const Annotationsdata = /*@__PURE__*/ S.suspend(() =>
+const Annotationsdata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: GeoAnnotationdataList,
     kind: S.optional(S.String),
@@ -2892,7 +2865,7 @@ export interface ListLayersVolumeAnnotationsRequest {
   /** The ID for the layer to get the annotations. */
   layerId: string;
 }
-export const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startOffset: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -2921,7 +2894,7 @@ export const ListLayersVolumeAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLayersVolumeAnnotationsRequest>;
 
 export type VolumeannotationList = Array<Volumeannotation>;
-export const VolumeannotationList = /*@__PURE__*/ S.Array(
+const VolumeannotationList = /*@__PURE__*/ S.Array(
   Volumeannotation,
 ) as any as S.Schema<VolumeannotationList>;
 
@@ -2937,7 +2910,7 @@ export interface Volumeannotations {
   /** The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book). */
   version?: string;
 }
-export const Volumeannotations = /*@__PURE__*/ S.suspend(() =>
+const Volumeannotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: VolumeannotationList,
     kind: S.optional(S.String),
@@ -2969,7 +2942,7 @@ export interface ListMylibraryAnnotationsRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentVersion: S.optional(S.String.pipe(T.Query())),
     updatedMax: S.optional(S.String.pipe(T.Query())),
@@ -2993,7 +2966,7 @@ export const ListMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMylibraryAnnotationsRequest>;
 
 export type AnnotationList = Array<Annotation>;
-export const AnnotationList = /*@__PURE__*/ S.Array(Annotation) as any as S.Schema<AnnotationList>;
+const AnnotationList = /*@__PURE__*/ S.Array(Annotation) as any as S.Schema<AnnotationList>;
 
 export interface Annotations {
   /** A list of annotations. */
@@ -3005,7 +2978,7 @@ export interface Annotations {
   /** Token to pass in for pagination for the next page. This will not be present if this request does not have more results. */
   nextPageToken?: string;
 }
-export const Annotations = /*@__PURE__*/ S.suspend(() =>
+const Annotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AnnotationList,
     kind: S.optional(S.String),
@@ -3018,7 +2991,7 @@ export interface ListMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -3036,7 +3009,7 @@ export type ListMylibraryBookshelvesVolumesProjectionEnum =
   | "PROJECTION_UNDEFINED"
   | "FULL"
   | "LITE";
-export const ListMylibraryBookshelvesVolumesProjectionEnum = S.String;
+const ListMylibraryBookshelvesVolumesProjectionEnum = S.String;
 
 export interface ListMylibraryBookshelvesVolumesRequest {
   /** Maximum number of results to return */
@@ -3056,7 +3029,7 @@ export interface ListMylibraryBookshelvesVolumesRequest {
   /** Restrict information returned to a set of selected fields. */
   projection?: ListMylibraryBookshelvesVolumesProjectionEnum | (string & {});
 }
-export const ListMylibraryBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMylibraryBookshelvesVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number.pipe(T.Query())),
     q: S.optional(S.String.pipe(T.Query())),
@@ -3081,7 +3054,7 @@ export interface ListOfflineMetadataDictionaryRequest {
   /** The device/version ID from which to request the data. */
   cpksver: string;
 }
-export const ListOfflineMetadataDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOfflineMetadataDictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpksver: S.String.pipe(T.Query()),
   }).pipe(
@@ -3102,7 +3075,7 @@ export interface MetadataItemsItem {
   encrypted_key?: string;
   size?: string;
 }
-export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
+const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     download_url: S.optional(S.String),
@@ -3113,7 +3086,7 @@ export const MetadataItemsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetadataItemsItem" }) as any as S.Schema<MetadataItemsItem>;
 
 export type MetadataItemsItemList = Array<MetadataItemsItem>;
-export const MetadataItemsItemList = /*@__PURE__*/ S.Array(
+const MetadataItemsItemList = /*@__PURE__*/ S.Array(
   MetadataItemsItem,
 ) as any as S.Schema<MetadataItemsItemList>;
 
@@ -3123,7 +3096,7 @@ export interface Metadata {
   /** A list of offline dictionary metadata. */
   items?: MetadataItemsItemList;
 }
-export const Metadata = /*@__PURE__*/ S.suspend(() =>
+const Metadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     items: S.optional(MetadataItemsItemList),
@@ -3137,31 +3110,31 @@ export type ListVolumesFilterEnum =
   | "full"
   | "paid-ebooks"
   | "partial";
-export const ListVolumesFilterEnum = S.String;
+const ListVolumesFilterEnum = S.String;
 
 export type ListVolumesPrintTypeEnum = "PRINT_TYPE_UNDEFINED" | "ALL" | "BOOKS" | "MAGAZINES";
-export const ListVolumesPrintTypeEnum = S.String;
+const ListVolumesPrintTypeEnum = S.String;
 
 export type ListVolumesOrderByEnum = "ORDER_BY_UNDEFINED" | "newest" | "relevance";
-export const ListVolumesOrderByEnum = S.String;
+const ListVolumesOrderByEnum = S.String;
 
 export type ListVolumesMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
   | "not-mature";
-export const ListVolumesMaxAllowedMaturityRatingEnum = S.String;
+const ListVolumesMaxAllowedMaturityRatingEnum = S.String;
 
 export type ListVolumesLibraryRestrictEnum =
   | "LIBRARY_RESTRICT_UNDEFINED"
   | "my-library"
   | "no-restrict";
-export const ListVolumesLibraryRestrictEnum = S.String;
+const ListVolumesLibraryRestrictEnum = S.String;
 
 export type ListVolumesDownloadEnum = "DOWNLOAD_UNDEFINED" | "EPUB";
-export const ListVolumesDownloadEnum = S.String;
+const ListVolumesDownloadEnum = S.String;
 
 export type ListVolumesProjectionEnum = "PROJECTION_UNDEFINED" | "FULL" | "LITE";
-export const ListVolumesProjectionEnum = S.String;
+const ListVolumesProjectionEnum = S.String;
 
 export interface ListVolumesRequest {
   /** Full-text search query string. */
@@ -3193,7 +3166,7 @@ export interface ListVolumesRequest {
   /** Index of the first result to return (starts at 0) */
   startIndex?: number;
 }
-export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.String.pipe(T.Query()),
     filter: S.optional(ListVolumesFilterEnum.pipe(T.Query())),
@@ -3219,13 +3192,13 @@ export type ListVolumesAssociatedAssociationEnum =
   | "end-of-sample"
   | "end-of-volume"
   | "related-for-play";
-export const ListVolumesAssociatedAssociationEnum = S.String;
+const ListVolumesAssociatedAssociationEnum = S.String;
 
 export type ListVolumesAssociatedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
   | "not-mature";
-export const ListVolumesAssociatedMaxAllowedMaturityRatingEnum = S.String;
+const ListVolumesAssociatedMaxAllowedMaturityRatingEnum = S.String;
 
 export interface ListVolumesAssociatedRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
@@ -3239,7 +3212,7 @@ export interface ListVolumesAssociatedRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListVolumesAssociatedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesAssociatedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
     association: S.optional(ListVolumesAssociatedAssociationEnum.pipe(T.Query())),
@@ -3264,12 +3237,12 @@ export type ListVolumesMybooksProcessingStateEnum =
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
   | "RUNNING";
-export const ListVolumesMybooksProcessingStateEnum = S.String;
+const ListVolumesMybooksProcessingStateEnum = S.String;
 
 export type ListVolumesMybooksProcessingStateEnumList = Array<
   ListVolumesMybooksProcessingStateEnum | (string & {})
 >;
-export const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
+const ListVolumesMybooksProcessingStateEnumList = /*@__PURE__*/ S.Array(
   ListVolumesMybooksProcessingStateEnum,
 ) as any as S.Schema<ListVolumesMybooksProcessingStateEnumList>;
 
@@ -3283,12 +3256,10 @@ export type ListVolumesMybooksAcquireMethodEnum =
   | "RENTED"
   | "SAMPLE"
   | "UPLOADED";
-export const ListVolumesMybooksAcquireMethodEnum = S.String;
-
 export type ListVolumesMybooksAcquireMethodEnumList = Array<
   ListVolumesMybooksAcquireMethodEnum | (string & {})
 >;
-export const ListVolumesMybooksAcquireMethodEnumList =
+const ListVolumesMybooksAcquireMethodEnumList =
   ListVolumesMybooksProcessingStateEnumList as any as S.Schema<ListVolumesMybooksAcquireMethodEnumList>;
 
 export interface ListVolumesMybooksRequest {
@@ -3307,7 +3278,7 @@ export interface ListVolumesMybooksRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesMybooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processingState: S.optional(ListVolumesMybooksProcessingStateEnumList.pipe(T.Query())),
     acquireMethod: S.optional(ListVolumesMybooksAcquireMethodEnumList.pipe(T.Query())),
@@ -3331,7 +3302,7 @@ export type ListVolumesRecommendedMaxAllowedMaturityRatingEnum =
   | "MAX_ALLOWED_MATURITY_RATING_UNDEFINED"
   | "MATURE"
   | "not-mature";
-export const ListVolumesRecommendedMaxAllowedMaturityRatingEnum = S.String;
+const ListVolumesRecommendedMaxAllowedMaturityRatingEnum = S.String;
 
 export interface ListVolumesRecommendedRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
@@ -3341,7 +3312,7 @@ export interface ListVolumesRecommendedRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
     maxAllowedMaturityRating: S.optional(
@@ -3364,12 +3335,10 @@ export type ListVolumesUseruploadedProcessingStateEnum =
   | "COMPLETED_FAILED"
   | "COMPLETED_SUCCESS"
   | "RUNNING";
-export const ListVolumesUseruploadedProcessingStateEnum = S.String;
-
 export type ListVolumesUseruploadedProcessingStateEnumList = Array<
   ListVolumesUseruploadedProcessingStateEnum | (string & {})
 >;
-export const ListVolumesUseruploadedProcessingStateEnumList =
+const ListVolumesUseruploadedProcessingStateEnumList =
   ListVolumesMybooksProcessingStateEnumList as any as S.Schema<ListVolumesUseruploadedProcessingStateEnumList>;
 
 export interface ListVolumesUseruploadedRequest {
@@ -3386,7 +3355,7 @@ export interface ListVolumesUseruploadedRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const ListVolumesUseruploadedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesUseruploadedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processingState: S.optional(ListVolumesUseruploadedProcessingStateEnumList.pipe(T.Query())),
     startIndex: S.optional(S.Number.pipe(T.Query())),
@@ -3415,7 +3384,7 @@ export interface MoveVolumeMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
   source?: string;
 }
-export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shelf: S.String.pipe(T.Label()),
     volumeId: S.String.pipe(T.Query()),
@@ -3433,7 +3402,7 @@ export const MoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<MoveVolumeMylibraryBookshelvesRequest>;
 
 export type RateVolumesRecommendedRatingEnum = "RATING_UNDEFINED" | "HAVE_IT" | "NOT_INTERESTED";
-export const RateVolumesRecommendedRatingEnum = S.String;
+const RateVolumesRecommendedRatingEnum = S.String;
 
 export interface RateVolumesRecommendedRequest {
   /** String to identify the originator of this request. */
@@ -3445,7 +3414,7 @@ export interface RateVolumesRecommendedRequest {
   /** ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for generating recommendations. */
   locale?: string;
 }
-export const RateVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
+const RateVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     volumeId: S.String.pipe(T.Query()),
@@ -3465,7 +3434,7 @@ export const RateVolumesRecommendedRequest = /*@__PURE__*/ S.suspend(() =>
 export interface BooksVolumesRecommendedRateResponse {
   consistency_token?: string;
 }
-export const BooksVolumesRecommendedRateResponse = /*@__PURE__*/ S.suspend(() =>
+const BooksVolumesRecommendedRateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consistency_token: S.optional(S.String),
   }),
@@ -3483,7 +3452,7 @@ export interface ReleaseDownloadAccessMyconfigRequest {
   /** The volume(s) to release restrictions for. */
   volumeIds: StringList;
 }
-export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
     cpksver: S.String.pipe(T.Query()),
@@ -3501,7 +3470,7 @@ export const ReleaseDownloadAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ReleaseDownloadAccessMyconfigRequest>;
 
 export type DownloadAccessRestrictionList = Array<DownloadAccessRestriction>;
-export const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(
+const DownloadAccessRestrictionList = /*@__PURE__*/ S.Array(
   DownloadAccessRestriction,
 ) as any as S.Schema<DownloadAccessRestrictionList>;
 
@@ -3511,7 +3480,7 @@ export interface DownloadAccesses {
   /** Resource type. */
   kind?: string;
 }
-export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
+const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadAccessList: S.optional(DownloadAccessRestrictionList),
     kind: S.optional(S.String),
@@ -3519,7 +3488,7 @@ export const DownloadAccesses = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadAccesses" }) as any as S.Schema<DownloadAccesses>;
 
 export type RemoveVolumeMylibraryBookshelvesReasonEnum = "REASON_UNDEFINED" | "ONBOARDING";
-export const RemoveVolumeMylibraryBookshelvesReasonEnum = S.String;
+const RemoveVolumeMylibraryBookshelvesReasonEnum = S.String;
 
 export interface RemoveVolumeMylibraryBookshelvesRequest {
   /** String to identify the originator of this request. */
@@ -3531,7 +3500,7 @@ export interface RemoveVolumeMylibraryBookshelvesRequest {
   /** The reason for which the book is removed from the library. */
   reason?: RemoveVolumeMylibraryBookshelvesReasonEnum | (string & {});
 }
-export const RemoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveVolumeMylibraryBookshelvesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     volumeId: S.String.pipe(T.Query()),
@@ -3553,7 +3522,7 @@ export type RequestAccessMyconfigLicenseTypesEnum =
   | "BOTH"
   | "CONCURRENT"
   | "DOWNLOAD";
-export const RequestAccessMyconfigLicenseTypesEnum = S.String;
+const RequestAccessMyconfigLicenseTypesEnum = S.String;
 
 export interface RequestAccessMyconfigRequest {
   /** The device/version ID from which to request the restrictions. */
@@ -3569,7 +3538,7 @@ export interface RequestAccessMyconfigRequest {
   /** The client nonce value. */
   nonce: string;
 }
-export const RequestAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestAccessMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpksver: S.String.pipe(T.Query()),
     licenseTypes: S.optional(RequestAccessMyconfigLicenseTypesEnum.pipe(T.Query())),
@@ -3612,7 +3581,7 @@ export interface ConcurrentAccessRestriction {
   /** Resource type. */
   kind?: string;
 }
-export const ConcurrentAccessRestriction = /*@__PURE__*/ S.suspend(() =>
+const ConcurrentAccessRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeWindowSeconds: S.optional(S.Number),
     signature: S.optional(S.String),
@@ -3638,7 +3607,7 @@ export interface RequestAccessData {
   /** Resource type. */
   kind?: string;
 }
-export const RequestAccessData = /*@__PURE__*/ S.suspend(() =>
+const RequestAccessData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadAccess: S.optional(DownloadAccessRestriction),
     concurrentAccess: S.optional(ConcurrentAccessRestriction),
@@ -3654,7 +3623,7 @@ export type SetPositionMylibraryReadingpositionsActionEnum =
   | "prev-page"
   | "scroll"
   | "search";
-export const SetPositionMylibraryReadingpositionsActionEnum = S.String;
+const SetPositionMylibraryReadingpositionsActionEnum = S.String;
 
 export interface SetPositionMylibraryReadingpositionsRequest {
   /** String to identify the originator of this request. */
@@ -3672,7 +3641,7 @@ export interface SetPositionMylibraryReadingpositionsRequest {
   /** Action that caused this reading position to be set. */
   action?: SetPositionMylibraryReadingpositionsActionEnum | (string & {});
 }
-export const SetPositionMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPositionMylibraryReadingpositionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     timestamp: S.String.pipe(T.Query()),
@@ -3700,7 +3669,7 @@ export interface ShareFamilysharingRequest {
   /** The docid to share. */
   docId?: string;
 }
-export const ShareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
+const ShareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String.pipe(T.Query())),
     source: S.optional(S.String.pipe(T.Query())),
@@ -3724,7 +3693,7 @@ export interface SummaryMylibraryAnnotationsRequest {
   /** Volume id to get the summary for. */
   volumeId: string;
 }
-export const SummaryMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SummaryMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     layerIds: StringList.pipe(T.Query()),
     source: S.optional(S.String.pipe(T.Query())),
@@ -3747,7 +3716,7 @@ export interface AnnotationsSummaryLayersItem {
   remainingCharacterCount?: number;
   updated?: string;
 }
-export const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
+const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedCharacterCount: S.optional(S.Number),
     limitType: S.optional(S.String),
@@ -3760,7 +3729,7 @@ export const AnnotationsSummaryLayersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnotationsSummaryLayersItem>;
 
 export type AnnotationsSummaryLayersItemList = Array<AnnotationsSummaryLayersItem>;
-export const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(
+const AnnotationsSummaryLayersItemList = /*@__PURE__*/ S.Array(
   AnnotationsSummaryLayersItem,
 ) as any as S.Schema<AnnotationsSummaryLayersItemList>;
 
@@ -3768,7 +3737,7 @@ export interface AnnotationsSummary {
   kind?: string;
   layers?: AnnotationsSummaryLayersItemList;
 }
-export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
+const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     layers: S.optional(AnnotationsSummaryLayersItemList),
@@ -3776,12 +3745,10 @@ export const AnnotationsSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnotationsSummary" }) as any as S.Schema<AnnotationsSummary>;
 
 export type SyncVolumeLicensesMyconfigFeaturesEnum = "FEATURES_UNDEFINED" | "RENTALS";
-export const SyncVolumeLicensesMyconfigFeaturesEnum = S.String;
-
 export type SyncVolumeLicensesMyconfigFeaturesEnumList = Array<
   SyncVolumeLicensesMyconfigFeaturesEnum | (string & {})
 >;
-export const SyncVolumeLicensesMyconfigFeaturesEnumList =
+const SyncVolumeLicensesMyconfigFeaturesEnumList =
   ListVolumesMybooksProcessingStateEnumList as any as S.Schema<SyncVolumeLicensesMyconfigFeaturesEnumList>;
 
 export interface SyncVolumeLicensesMyconfigRequest {
@@ -3802,7 +3769,7 @@ export interface SyncVolumeLicensesMyconfigRequest {
   /** Set to true to include non-comics series. Defaults to false. */
   includeNonComicsSeries?: boolean;
 }
-export const SyncVolumeLicensesMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncVolumeLicensesMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String.pipe(T.Query())),
     cpksver: S.String.pipe(T.Query()),
@@ -3831,7 +3798,7 @@ export interface UnshareFamilysharingRequest {
   /** The volume to unshare. */
   volumeId?: string;
 }
-export const UnshareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
+const UnshareFamilysharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     docId: S.optional(S.String.pipe(T.Query())),
@@ -3851,7 +3818,7 @@ export interface UpdateBookCloudloadingRequest {
   /** Request body */
   body?: BooksCloudloadingResource;
 }
-export const UpdateBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBookCloudloadingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(BooksCloudloadingResource.pipe(T.HttpBody())),
   }).pipe(
@@ -3873,7 +3840,7 @@ export interface UpdateMylibraryAnnotationsRequest {
   /** Request body */
   body?: Annotation;
 }
-export const UpdateMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMylibraryAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String.pipe(T.Query())),
     annotationId: S.String.pipe(T.Label()),
@@ -3893,7 +3860,7 @@ export interface UpdateUserSettingsMyconfigRequest {
   /** Request body */
   body?: Usersettings;
 }
-export const UpdateUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserSettingsMyconfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Usersettings.pipe(T.HttpBody())),
   }).pipe(

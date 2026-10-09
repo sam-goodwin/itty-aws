@@ -65,7 +65,7 @@ export interface InsightsRepositoryProject {
   /** The project key */
   projectKey: string;
 }
-export const InsightsRepositoryProject = /*@__PURE__*/ S.suspend(() =>
+const InsightsRepositoryProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryKey: S.String,
     projectKey: S.String,
@@ -75,14 +75,14 @@ export const InsightsRepositoryProject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightsRepositoryProject>;
 
 export type AssociateRepositoriesAndProjectsRequestMappingsList = Array<InsightsRepositoryProject>;
-export const AssociateRepositoriesAndProjectsRequestMappingsList = /*@__PURE__*/ S.Array(
+const AssociateRepositoriesAndProjectsRequestMappingsList = /*@__PURE__*/ S.Array(
   InsightsRepositoryProject,
 ) as any as S.Schema<AssociateRepositoriesAndProjectsRequestMappingsList>;
 
 export interface AssociateRepositoriesAndProjectsRequest {
   mappings: AssociateRepositoriesAndProjectsRequestMappingsList;
 }
-export const AssociateRepositoriesAndProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateRepositoriesAndProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mappings: AssociateRepositoriesAndProjectsRequestMappingsList,
   }).pipe(
@@ -94,14 +94,14 @@ export const AssociateRepositoriesAndProjectsRequest = /*@__PURE__*/ S.suspend((
 
 /** List of repository project associations */
 export type InsightsRepositoryProjectCollectionItemsList = Array<InsightsRepositoryProject>;
-export const InsightsRepositoryProjectCollectionItemsList =
+const InsightsRepositoryProjectCollectionItemsList =
   AssociateRepositoriesAndProjectsRequestMappingsList as any as S.Schema<InsightsRepositoryProjectCollectionItemsList>;
 
 export interface Link {
   href?: string;
   type?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.optional(S.String),
     type: S.optional(S.String),
@@ -110,7 +110,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type InsightsRepositoryProjectCollectionLinksMap = { [key: string]: Link | undefined };
-export const InsightsRepositoryProjectCollectionLinksMap = /*@__PURE__*/ S.Record(
+const InsightsRepositoryProjectCollectionLinksMap = /*@__PURE__*/ S.Record(
   S.String,
   Link,
 ) as any as S.Schema<InsightsRepositoryProjectCollectionLinksMap>;
@@ -123,7 +123,7 @@ export interface InsightsRepositoryProjectCollection {
   /** The location and content type of related resources */
   _links?: InsightsRepositoryProjectCollectionLinksMap;
 }
-export const InsightsRepositoryProjectCollection = /*@__PURE__*/ S.suspend(() =>
+const InsightsRepositoryProjectCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: InsightsRepositoryProjectCollectionItemsList,
@@ -139,7 +139,7 @@ export interface FlagCopyConfigEnvironment {
   /** Optional flag version. If you include this, the operation only succeeds if the current flag version in the environment matches this version. */
   currentVersion?: number;
 }
-export const FlagCopyConfigEnvironment = /*@__PURE__*/ S.suspend(() =>
+const FlagCopyConfigEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     currentVersion: S.optional(S.Number),
@@ -156,13 +156,13 @@ export type CopyFeatureFlagRequestIncludedActionsItem =
   | "updatePrerequisites"
   | "updateTargets"
   | "updateFlagConfigMigrationSettings";
-export const CopyFeatureFlagRequestIncludedActionsItem = S.String;
+const CopyFeatureFlagRequestIncludedActionsItem = S.String;
 
 /** Optional list of the flag changes to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If you include neither, then all flag changes will be copied. */
 export type CopyFeatureFlagRequestIncludedActionsList = Array<
   CopyFeatureFlagRequestIncludedActionsItem | (string & {})
 >;
-export const CopyFeatureFlagRequestIncludedActionsList = /*@__PURE__*/ S.Array(
+const CopyFeatureFlagRequestIncludedActionsList = /*@__PURE__*/ S.Array(
   CopyFeatureFlagRequestIncludedActionsItem,
 ) as any as S.Schema<CopyFeatureFlagRequestIncludedActionsList>;
 
@@ -174,13 +174,11 @@ export type CopyFeatureFlagRequestExcludedActionsItem =
   | "updatePrerequisites"
   | "updateTargets"
   | "updateFlagConfigMigrationSettings";
-export const CopyFeatureFlagRequestExcludedActionsItem = S.String;
-
 /** Optional list of the flag changes NOT to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If you include neither, then all flag changes will be copied. */
 export type CopyFeatureFlagRequestExcludedActionsList = Array<
   CopyFeatureFlagRequestExcludedActionsItem | (string & {})
 >;
-export const CopyFeatureFlagRequestExcludedActionsList =
+const CopyFeatureFlagRequestExcludedActionsList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<CopyFeatureFlagRequestExcludedActionsList>;
 
 export interface CopyFeatureFlagRequest {
@@ -199,7 +197,7 @@ export interface CopyFeatureFlagRequest {
   /** Optional list of the flag changes NOT to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If you include neither, then all flag changes will be copied. */
   excludedActions?: CopyFeatureFlagRequestExcludedActionsList;
 }
-export const CopyFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -215,13 +213,13 @@ export const CopyFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Kind of feature flag */
 export type FeatureFlagKind = "boolean" | "multivariate";
-export const FeatureFlagKind = S.String;
+const FeatureFlagKind = S.String;
 
 export interface ClientSideAvailability {
   usingMobileKey?: boolean;
   usingEnvironmentId?: boolean;
 }
-export const ClientSideAvailability = /*@__PURE__*/ S.suspend(() =>
+const ClientSideAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usingMobileKey: S.optional(S.Boolean),
     usingEnvironmentId: S.optional(S.Boolean),
@@ -240,7 +238,7 @@ export interface Variation {
   /** A human-friendly name for the variation. Defaults to an empty string, but is omitted from the response if not set. */
   name?: string;
 }
-export const Variation = /*@__PURE__*/ S.suspend(() =>
+const Variation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     value: S.Unknown,
@@ -252,24 +250,22 @@ export const Variation = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of possible variations for the flag */
 export type FeatureFlagVariationsList = Array<Variation>;
-export const FeatureFlagVariationsList = /*@__PURE__*/ S.Array(
+const FeatureFlagVariationsList = /*@__PURE__*/ S.Array(
   Variation,
 ) as any as S.Schema<FeatureFlagVariationsList>;
 
 /** Tags for the feature flag */
 export type FeatureFlagTagsList = Array<string>;
-export const FeatureFlagTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<FeatureFlagTagsList>;
+const FeatureFlagTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<FeatureFlagTagsList>;
 
 /** The location and content type of related resources */
 export type FeatureFlagLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagLinksMap =
+const FeatureFlagLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagLinksMap>;
 
 /** The location and content type of related resources */
 export type MemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const MemberSummaryLinksMap =
+const MemberSummaryLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberSummaryLinksMap>;
 
 export interface MemberSummary {
@@ -286,7 +282,7 @@ export interface MemberSummary {
   /** The member's email address */
   email: string;
 }
-export const MemberSummary = /*@__PURE__*/ S.suspend(() =>
+const MemberSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: MemberSummaryLinksMap,
     _id: S.String,
@@ -299,7 +295,7 @@ export const MemberSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type MaintainerTeamLinksMap = { [key: string]: Link | undefined };
-export const MaintainerTeamLinksMap =
+const MaintainerTeamLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MaintainerTeamLinksMap>;
 
 export interface MaintainerTeam {
@@ -310,7 +306,7 @@ export interface MaintainerTeam {
   /** The location and content type of related resources */
   _links?: MaintainerTeamLinksMap;
 }
-export const MaintainerTeam = /*@__PURE__*/ S.suspend(() =>
+const MaintainerTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -320,41 +316,40 @@ export const MaintainerTeam = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated, use <code>experiments</code> instead */
 export type FeatureFlagGoalIdsList = Array<string>;
-export const FeatureFlagGoalIdsList =
-  FeatureFlagTagsList as any as S.Schema<FeatureFlagGoalIdsList>;
+const FeatureFlagGoalIdsList = FeatureFlagTagsList as any as S.Schema<FeatureFlagGoalIdsList>;
 
 /** The kind of event the metric tracks */
 export type MetricListingRepKind = "pageview" | "click" | "custom" | "trace";
-export const MetricListingRepKind = S.String;
+const MetricListingRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricListingRepLinksMap = { [key: string]: Link | undefined };
-export const MetricListingRepLinksMap =
+const MetricListingRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricListingRepLinksMap>;
 
 /** Resource specifier strings */
 export type AccessDeniedReasonResourcesList = Array<string>;
-export const AccessDeniedReasonResourcesList =
+const AccessDeniedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AccessDeniedReasonNotResourcesList = Array<string>;
-export const AccessDeniedReasonNotResourcesList =
+const AccessDeniedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AccessDeniedReasonActionsList = Array<string>;
-export const AccessDeniedReasonActionsList =
+const AccessDeniedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AccessDeniedReasonNotActionsList = Array<string>;
-export const AccessDeniedReasonNotActionsList =
+const AccessDeniedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AccessDeniedReasonEffect = "allow" | "deny";
-export const AccessDeniedReasonEffect = S.String;
+const AccessDeniedReasonEffect = S.String;
 
 export interface AccessDeniedReason {
   /** Resource specifier strings */
@@ -369,7 +364,7 @@ export interface AccessDeniedReason {
   effect: AccessDeniedReasonEffect;
   role_name?: string;
 }
-export const AccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
+const AccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AccessDeniedReasonResourcesList),
     notResources: S.optional(AccessDeniedReasonNotResourcesList),
@@ -384,7 +379,7 @@ export interface AccessDenied {
   action: string;
   reason: AccessDeniedReason;
 }
-export const AccessDenied = /*@__PURE__*/ S.suspend(() =>
+const AccessDenied = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AccessDeniedReason,
@@ -392,33 +387,31 @@ export const AccessDenied = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessDenied" }) as any as S.Schema<AccessDenied>;
 
 export type AccessDeniedList = Array<AccessDenied>;
-export const AccessDeniedList = /*@__PURE__*/ S.Array(
-  AccessDenied,
-) as any as S.Schema<AccessDeniedList>;
+const AccessDeniedList = /*@__PURE__*/ S.Array(AccessDenied) as any as S.Schema<AccessDeniedList>;
 
 /** Resource specifier strings */
 export type AccessAllowedReasonResourcesList = Array<string>;
-export const AccessAllowedReasonResourcesList =
+const AccessAllowedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AccessAllowedReasonNotResourcesList = Array<string>;
-export const AccessAllowedReasonNotResourcesList =
+const AccessAllowedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AccessAllowedReasonActionsList = Array<string>;
-export const AccessAllowedReasonActionsList =
+const AccessAllowedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AccessAllowedReasonNotActionsList = Array<string>;
-export const AccessAllowedReasonNotActionsList =
+const AccessAllowedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AccessAllowedReasonEffect = "allow" | "deny";
-export const AccessAllowedReasonEffect = S.String;
+const AccessAllowedReasonEffect = S.String;
 
 export interface AccessAllowedReason {
   /** Resource specifier strings */
@@ -433,7 +426,7 @@ export interface AccessAllowedReason {
   effect: AccessAllowedReasonEffect;
   role_name?: string;
 }
-export const AccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
+const AccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AccessAllowedReasonResourcesList),
     notResources: S.optional(AccessAllowedReasonNotResourcesList),
@@ -448,7 +441,7 @@ export interface AccessAllowedRep {
   action: string;
   reason: AccessAllowedReason;
 }
-export const AccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
+const AccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AccessAllowedReason,
@@ -456,7 +449,7 @@ export const AccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessAllowedRep" }) as any as S.Schema<AccessAllowedRep>;
 
 export type AccessAllowedList = Array<AccessAllowedRep>;
-export const AccessAllowedList = /*@__PURE__*/ S.Array(
+const AccessAllowedList = /*@__PURE__*/ S.Array(
   AccessAllowedRep,
 ) as any as S.Schema<AccessAllowedList>;
 
@@ -464,7 +457,7 @@ export interface Access {
   denied: AccessDeniedList;
   allowed: AccessAllowedList;
 }
-export const Access = /*@__PURE__*/ S.suspend(() =>
+const Access = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denied: AccessDeniedList,
     allowed: AccessAllowedList,
@@ -473,13 +466,12 @@ export const Access = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the metric */
 export type MetricListingRepTagsList = Array<string>;
-export const MetricListingRepTagsList =
-  FeatureFlagTagsList as any as S.Schema<MetricListingRepTagsList>;
+const MetricListingRepTagsList = FeatureFlagTagsList as any as S.Schema<MetricListingRepTagsList>;
 
 export interface Modification {
   date?: string;
 }
-export const Modification = /*@__PURE__*/ S.suspend(() =>
+const Modification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
   }),
@@ -487,27 +479,25 @@ export const Modification = /*@__PURE__*/ S.suspend(() =>
 
 /** For custom and trace metrics, the success criteria */
 export type MetricListingRepSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
-export const MetricListingRepSuccessCriteria = S.String;
+const MetricListingRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricListingRepRandomizationUnitsList = Array<string>;
-export const MetricListingRepRandomizationUnitsList =
+const MetricListingRepRandomizationUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricListingRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricListingRepAnalysisUnitsList = Array<string>;
-export const MetricListingRepAnalysisUnitsList =
+const MetricListingRepAnalysisUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricListingRepAnalysisUnitsList>;
 
 /** Filter type. One of [contextAttribute, eventProperty, group] */
 export type FilterType = "group" | "contextAttribute" | "eventProperty";
-export const FilterType = S.String;
+const FilterType = S.String;
 
 /** The context attribute / event property values or group member nodes */
 export type FilterValuesList = Array<unknown>;
-export const FilterValuesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<FilterValuesList>;
+const FilterValuesList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<FilterValuesList>;
 
 export interface Filter {
   /** Filter type. One of [contextAttribute, eventProperty, group] */
@@ -523,7 +513,7 @@ export interface Filter {
   /** If set, then take the inverse of the operator. 'in' becomes 'not in'. */
   negate: boolean;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: FilterType,
     attribute: S.optional(S.String),
@@ -536,11 +526,11 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 
 /** The method by which multiple unit event values are aggregated */
 export type MetricListingRepUnitAggregationType = "average" | "sum" | "count_distinct";
-export const MetricListingRepUnitAggregationType = S.String;
+const MetricListingRepUnitAggregationType = S.String;
 
 /** The method for analyzing metric events */
 export type MetricListingRepAnalysisType = "mean" | "percentile";
-export const MetricListingRepAnalysisType = S.String;
+const MetricListingRepAnalysisType = S.String;
 
 export interface MetricEventDefaultRep {
   /** Whether to disable defaulting missing unit events when calculating results. Defaults to false */
@@ -548,7 +538,7 @@ export interface MetricEventDefaultRep {
   /** The default value applied to missing unit events. Set to 0 when <code>disabled</code> is false. No other values are currently supported. */
   value?: number;
 }
-export const MetricEventDefaultRep = /*@__PURE__*/ S.suspend(() =>
+const MetricEventDefaultRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     value: S.optional(S.Number),
@@ -561,7 +551,7 @@ export interface MetricDataSourceRefRep {
   _name?: string;
   _integrationKey?: string;
 }
-export const MetricDataSourceRefRep = /*@__PURE__*/ S.suspend(() =>
+const MetricDataSourceRefRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     environmentKey: S.optional(S.String),
@@ -571,13 +561,10 @@ export const MetricDataSourceRefRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricDataSourceRefRep" }) as any as S.Schema<MetricDataSourceRefRep>;
 
 export type UrlMatcher = { [key: string]: unknown | undefined };
-export const UrlMatcher = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UrlMatcher>;
+const UrlMatcher = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<UrlMatcher>;
 
 export type UrlMatchers = Array<UrlMatcher>;
-export const UrlMatchers = /*@__PURE__*/ S.Array(UrlMatcher) as any as S.Schema<UrlMatchers>;
+const UrlMatchers = /*@__PURE__*/ S.Array(UrlMatcher) as any as S.Schema<UrlMatchers>;
 
 export interface MetricDenominatorRep {
   /** The warehouse event column for the denominator */
@@ -605,7 +592,7 @@ export interface MetricDenominatorRep {
   /** When true, the percentile bound calculation includes imputed zeros */
   winsorIncludeImputed?: boolean;
 }
-export const MetricDenominatorRep = /*@__PURE__*/ S.suspend(() =>
+const MetricDenominatorRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     isNumeric: S.optional(S.Boolean),
@@ -715,7 +702,7 @@ export interface MetricListingRep {
   /** For ratio metrics, the denominator event configuration */
   denominator?: MetricDenominatorRep;
 }
-export const MetricListingRep = /*@__PURE__*/ S.suspend(() =>
+const MetricListingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentCount: S.optional(S.Number),
     metricGroupCount: S.optional(S.Number),
@@ -768,14 +755,14 @@ export const MetricListingRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricListingRep" }) as any as S.Schema<MetricListingRep>;
 
 export type LegacyExperimentRepEnvironmentsList = Array<string>;
-export const LegacyExperimentRepEnvironmentsList =
+const LegacyExperimentRepEnvironmentsList =
   FeatureFlagTagsList as any as S.Schema<LegacyExperimentRepEnvironmentsList>;
 
 export interface ExperimentEnabledPeriodRep {
   startDate?: number;
   stopDate?: number;
 }
-export const ExperimentEnabledPeriodRep = /*@__PURE__*/ S.suspend(() =>
+const ExperimentEnabledPeriodRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.Number),
     stopDate: S.optional(S.Number),
@@ -785,7 +772,7 @@ export const ExperimentEnabledPeriodRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentEnabledPeriodRep>;
 
 export type ExperimentEnvironmentSettingRepEnabledPeriodsList = Array<ExperimentEnabledPeriodRep>;
-export const ExperimentEnvironmentSettingRepEnabledPeriodsList = /*@__PURE__*/ S.Array(
+const ExperimentEnvironmentSettingRepEnabledPeriodsList = /*@__PURE__*/ S.Array(
   ExperimentEnabledPeriodRep,
 ) as any as S.Schema<ExperimentEnvironmentSettingRepEnabledPeriodsList>;
 
@@ -794,7 +781,7 @@ export interface ExperimentEnvironmentSettingRep {
   stopDate?: number;
   enabledPeriods?: ExperimentEnvironmentSettingRepEnabledPeriodsList;
 }
-export const ExperimentEnvironmentSettingRep = /*@__PURE__*/ S.suspend(() =>
+const ExperimentEnvironmentSettingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(S.Number),
     stopDate: S.optional(S.Number),
@@ -807,7 +794,7 @@ export const ExperimentEnvironmentSettingRep = /*@__PURE__*/ S.suspend(() =>
 export type LegacyExperimentRepEnvironmentSettingsMap = {
   [key: string]: ExperimentEnvironmentSettingRep | undefined;
 };
-export const LegacyExperimentRepEnvironmentSettingsMap = /*@__PURE__*/ S.Record(
+const LegacyExperimentRepEnvironmentSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentEnvironmentSettingRep,
 ) as any as S.Schema<LegacyExperimentRepEnvironmentSettingsMap>;
@@ -818,7 +805,7 @@ export interface LegacyExperimentRep {
   environments?: LegacyExperimentRepEnvironmentsList;
   _environmentSettings?: LegacyExperimentRepEnvironmentSettingsMap;
 }
-export const LegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
+const LegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricKey: S.optional(S.String),
     _metric: S.optional(MetricListingRep),
@@ -828,7 +815,7 @@ export const LegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LegacyExperimentRep" }) as any as S.Schema<LegacyExperimentRep>;
 
 export type ExperimentInfoRepItemsList = Array<LegacyExperimentRep>;
-export const ExperimentInfoRepItemsList = /*@__PURE__*/ S.Array(
+const ExperimentInfoRepItemsList = /*@__PURE__*/ S.Array(
   LegacyExperimentRep,
 ) as any as S.Schema<ExperimentInfoRepItemsList>;
 
@@ -836,7 +823,7 @@ export interface ExperimentInfoRep {
   baselineIdx: number;
   items: ExperimentInfoRepItemsList;
 }
-export const ExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
+const ExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baselineIdx: S.Number,
     items: ExperimentInfoRepItemsList,
@@ -845,8 +832,7 @@ export const ExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of values for the custom property data to associate with this flag. */
 export type CustomPropertyValueList = Array<string>;
-export const CustomPropertyValueList =
-  FeatureFlagTagsList as any as S.Schema<CustomPropertyValueList>;
+const CustomPropertyValueList = FeatureFlagTagsList as any as S.Schema<CustomPropertyValueList>;
 
 export interface CustomProperty {
   /** The name of the custom property of this type. */
@@ -854,7 +840,7 @@ export interface CustomProperty {
   /** An array of values for the custom property data to associate with this flag. */
   value: CustomPropertyValueList;
 }
-export const CustomProperty = /*@__PURE__*/ S.suspend(() =>
+const CustomProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: CustomPropertyValueList,
@@ -862,7 +848,7 @@ export const CustomProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomProperty" }) as any as S.Schema<CustomProperty>;
 
 export type CustomProperties = { [key: string]: CustomProperty | undefined };
-export const CustomProperties = /*@__PURE__*/ S.Record(
+const CustomProperties = /*@__PURE__*/ S.Record(
   S.String,
   CustomProperty,
 ) as any as S.Schema<CustomProperties>;
@@ -873,7 +859,7 @@ export interface Defaults {
   /** The index, from the array of variations for this flag, of the variation to serve by default when targeting is off. */
   offVariation: number;
 }
-export const Defaults = /*@__PURE__*/ S.suspend(() =>
+const Defaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onVariation: S.Number,
     offVariation: S.Number,
@@ -886,7 +872,7 @@ export interface FlagMigrationSettingsRep {
   /** The number of stages for this migration flag */
   stageCount?: number;
 }
-export const FlagMigrationSettingsRep = /*@__PURE__*/ S.suspend(() =>
+const FlagMigrationSettingsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextKind: S.optional(S.String),
     stageCount: S.optional(S.Number),
@@ -901,7 +887,7 @@ export interface StaleFlagData {
   /** If a third-party system helps clean up the flag, the ID from that system */
   cleanupId?: string;
 }
-export const StaleFlagData = /*@__PURE__*/ S.suspend(() =>
+const StaleFlagData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readyForCodeRemoval: S.optional(S.Boolean),
     readyToArchive: S.optional(S.Boolean),
@@ -911,7 +897,7 @@ export const StaleFlagData = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the keys for targets that will receive this variation because of individual targeting */
 export type TargetValuesList = Array<string>;
-export const TargetValuesList = FeatureFlagTagsList as any as S.Schema<TargetValuesList>;
+const TargetValuesList = FeatureFlagTagsList as any as S.Schema<TargetValuesList>;
 
 export interface Target {
   /** A list of the keys for targets that will receive this variation because of individual targeting */
@@ -921,7 +907,7 @@ export interface Target {
   /** The context kind of the individual target */
   contextKind?: string;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: TargetValuesList,
     variation: S.Number,
@@ -931,13 +917,13 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the individual targets that will receive a specific variation based on their key. Individual targets with a context kind of 'user' are included here. */
 export type FeatureFlagConfigTargetsList = Array<Target>;
-export const FeatureFlagConfigTargetsList = /*@__PURE__*/ S.Array(
+const FeatureFlagConfigTargetsList = /*@__PURE__*/ S.Array(
   Target,
 ) as any as S.Schema<FeatureFlagConfigTargetsList>;
 
 /** An array of the individual targets that will receive a specific variation based on their key. Individual targets with context kinds other than 'user' are included here. */
 export type FeatureFlagConfigContextTargetsList = Array<Target>;
-export const FeatureFlagConfigContextTargetsList =
+const FeatureFlagConfigContextTargetsList =
   FeatureFlagConfigTargetsList as any as S.Schema<FeatureFlagConfigContextTargetsList>;
 
 export interface WeightedVariation {
@@ -945,7 +931,7 @@ export interface WeightedVariation {
   weight: number;
   _untracked?: boolean;
 }
-export const WeightedVariation = /*@__PURE__*/ S.suspend(() =>
+const WeightedVariation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variation: S.Number,
     weight: S.Number,
@@ -954,7 +940,7 @@ export const WeightedVariation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WeightedVariation" }) as any as S.Schema<WeightedVariation>;
 
 export type RolloutVariationsList = Array<WeightedVariation>;
-export const RolloutVariationsList = /*@__PURE__*/ S.Array(
+const RolloutVariationsList = /*@__PURE__*/ S.Array(
   WeightedVariation,
 ) as any as S.Schema<RolloutVariationsList>;
 
@@ -962,7 +948,7 @@ export interface ExperimentAllocationRep {
   defaultVariation: number;
   canReshuffle: boolean;
 }
-export const ExperimentAllocationRep = /*@__PURE__*/ S.suspend(() =>
+const ExperimentAllocationRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultVariation: S.Number,
     canReshuffle: S.Boolean,
@@ -976,7 +962,7 @@ export interface Rollout {
   bucketBy?: string;
   contextKind?: string;
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variations: RolloutVariationsList,
     experimentAllocation: S.optional(ExperimentAllocationRep),
@@ -987,7 +973,7 @@ export const Rollout = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Rollout" }) as any as S.Schema<Rollout>;
 
 export type ClauseValuesList = Array<unknown>;
-export const ClauseValuesList = FilterValuesList as any as S.Schema<ClauseValuesList>;
+const ClauseValuesList = FilterValuesList as any as S.Schema<ClauseValuesList>;
 
 export interface Clause {
   _id?: string;
@@ -997,7 +983,7 @@ export interface Clause {
   contextKind?: string;
   negate: boolean;
 }
-export const Clause = /*@__PURE__*/ S.suspend(() =>
+const Clause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     attribute: S.String,
@@ -1010,7 +996,7 @@ export const Clause = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of clauses used for individual targeting based on attributes */
 export type RuleClausesList = Array<Clause>;
-export const RuleClausesList = /*@__PURE__*/ S.Array(Clause) as any as S.Schema<RuleClausesList>;
+const RuleClausesList = /*@__PURE__*/ S.Array(Clause) as any as S.Schema<RuleClausesList>;
 
 export interface Rule {
   /** The flag rule ID */
@@ -1029,7 +1015,7 @@ export interface Rule {
   description?: string;
   ref?: string;
 }
-export const Rule = /*@__PURE__*/ S.suspend(() =>
+const Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     disabled: S.optional(S.Boolean),
@@ -1044,7 +1030,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the rules for how to serve a variation to specific targets based on their attributes */
 export type FeatureFlagConfigRulesList = Array<Rule>;
-export const FeatureFlagConfigRulesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConfigRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<FeatureFlagConfigRulesList>;
 
@@ -1054,7 +1040,7 @@ export interface VariationOrRolloutRep {
   /** Details on the percentage rollout, if it exists */
   rollout?: Rollout;
 }
-export const VariationOrRolloutRep = /*@__PURE__*/ S.suspend(() =>
+const VariationOrRolloutRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variation: S.optional(S.Number),
     rollout: S.optional(Rollout),
@@ -1065,7 +1051,7 @@ export interface Prerequisite {
   key: string;
   variation: number;
 }
-export const Prerequisite = /*@__PURE__*/ S.suspend(() =>
+const Prerequisite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     variation: S.Number,
@@ -1074,7 +1060,7 @@ export const Prerequisite = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the prerequisite flags and their variations that are required before this flag takes effect */
 export type FeatureFlagConfigPrerequisitesList = Array<Prerequisite>;
-export const FeatureFlagConfigPrerequisitesList = /*@__PURE__*/ S.Array(
+const FeatureFlagConfigPrerequisitesList = /*@__PURE__*/ S.Array(
   Prerequisite,
 ) as any as S.Schema<FeatureFlagConfigPrerequisitesList>;
 
@@ -1088,7 +1074,7 @@ export interface VariationSummary {
   rollout?: number;
   bucketBy?: string;
 }
-export const VariationSummary = /*@__PURE__*/ S.suspend(() =>
+const VariationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.Number,
     nullRules: S.Number,
@@ -1102,7 +1088,7 @@ export const VariationSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VariationSummary" }) as any as S.Schema<VariationSummary>;
 
 export type AllVariationsSummary = { [key: string]: VariationSummary | undefined };
-export const AllVariationsSummary = /*@__PURE__*/ S.Record(
+const AllVariationsSummary = /*@__PURE__*/ S.Record(
   S.String,
   VariationSummary,
 ) as any as S.Schema<AllVariationsSummary>;
@@ -1113,7 +1099,7 @@ export interface FlagSummary {
   /** The number of prerequisites for this flag */
   prerequisites: number;
 }
-export const FlagSummary = /*@__PURE__*/ S.suspend(() =>
+const FlagSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variations: AllVariationsSummary,
     prerequisites: S.Number,
@@ -1121,13 +1107,13 @@ export const FlagSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlagSummary" }) as any as S.Schema<FlagSummary>;
 
 export type FlagConfigEvaluationContextKindsList = Array<string>;
-export const FlagConfigEvaluationContextKindsList =
+const FlagConfigEvaluationContextKindsList =
   FeatureFlagTagsList as any as S.Schema<FlagConfigEvaluationContextKindsList>;
 
 export interface FlagConfigEvaluation {
   contextKinds?: FlagConfigEvaluationContextKindsList;
 }
-export const FlagConfigEvaluation = /*@__PURE__*/ S.suspend(() =>
+const FlagConfigEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextKinds: S.optional(FlagConfigEvaluationContextKindsList),
   }),
@@ -1136,7 +1122,7 @@ export const FlagConfigEvaluation = /*@__PURE__*/ S.suspend(() =>
 export interface FlagConfigMigrationSettingsRep {
   checkRatio?: number;
 }
-export const FlagConfigMigrationSettingsRep = /*@__PURE__*/ S.suspend(() =>
+const FlagConfigMigrationSettingsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkRatio: S.optional(S.Number),
   }),
@@ -1185,7 +1171,7 @@ export interface FeatureFlagConfig {
   /** Migration-related settings for the flag configuration */
   migrationSettings?: FlagConfigMigrationSettingsRep;
 }
-export const FeatureFlagConfig = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     on: S.Boolean,
     archived: S.Boolean,
@@ -1213,7 +1199,7 @@ export const FeatureFlagConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the environments for this flag. Only returned if the request is filtered by environment, using the <code>filterEnv</code> query parameter. */
 export type FeatureFlagEnvironmentsMap = { [key: string]: FeatureFlagConfig | undefined };
-export const FeatureFlagEnvironmentsMap = /*@__PURE__*/ S.Record(
+const FeatureFlagEnvironmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   FeatureFlagConfig,
 ) as any as S.Schema<FeatureFlagEnvironmentsMap>;
@@ -1275,7 +1261,7 @@ export interface FeatureFlag {
   /** Details on the environments for this flag. Only returned if the request is filtered by environment, using the <code>filterEnv</code> query parameter. */
   environments?: FeatureFlagEnvironmentsMap;
 }
-export const FeatureFlag = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     kind: FeatureFlagKind,
@@ -1310,7 +1296,7 @@ export const FeatureFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** The severity of the announcement */
 export type CreateAnnouncementPublicRequestSeverity = "info" | "warning" | "critical";
-export const CreateAnnouncementPublicRequestSeverity = S.String;
+const CreateAnnouncementPublicRequestSeverity = S.String;
 
 export interface CreateAnnouncementPublicRequest {
   /** true if the announcement is dismissible */
@@ -1326,7 +1312,7 @@ export interface CreateAnnouncementPublicRequest {
   /** The severity of the announcement */
   severity: CreateAnnouncementPublicRequestSeverity | (string & {});
 }
-export const CreateAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDismissible: S.Boolean,
     title: S.String,
@@ -1341,35 +1327,35 @@ export const CreateAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The severity of the announcement */
 export type AnnouncementResponseSeverity = "info" | "warning" | "critical";
-export const AnnouncementResponseSeverity = S.String;
+const AnnouncementResponseSeverity = S.String;
 
 /** The status of the announcement */
 export type AnnouncementResponseStatus = "active" | "inactive" | "scheduled";
-export const AnnouncementResponseStatus = S.String;
+const AnnouncementResponseStatus = S.String;
 
 /** Resource specifier strings */
 export type AnnouncementAccessDeniedReasonResourcesList = Array<string>;
-export const AnnouncementAccessDeniedReasonResourcesList =
+const AnnouncementAccessDeniedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AnnouncementAccessDeniedReasonNotResourcesList = Array<string>;
-export const AnnouncementAccessDeniedReasonNotResourcesList =
+const AnnouncementAccessDeniedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AnnouncementAccessDeniedReasonActionsList = Array<string>;
-export const AnnouncementAccessDeniedReasonActionsList =
+const AnnouncementAccessDeniedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AnnouncementAccessDeniedReasonNotActionsList = Array<string>;
-export const AnnouncementAccessDeniedReasonNotActionsList =
+const AnnouncementAccessDeniedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AnnouncementAccessDeniedReasonEffect = "allow" | "deny";
-export const AnnouncementAccessDeniedReasonEffect = S.String;
+const AnnouncementAccessDeniedReasonEffect = S.String;
 
 export interface AnnouncementAccessDeniedReason {
   /** Resource specifier strings */
@@ -1384,7 +1370,7 @@ export interface AnnouncementAccessDeniedReason {
   effect: AnnouncementAccessDeniedReasonEffect;
   role_name?: string;
 }
-export const AnnouncementAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AnnouncementAccessDeniedReasonResourcesList),
     notResources: S.optional(AnnouncementAccessDeniedReasonNotResourcesList),
@@ -1401,7 +1387,7 @@ export interface AnnouncementAccessDenied {
   action: string;
   reason: AnnouncementAccessDeniedReason;
 }
-export const AnnouncementAccessDenied = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementAccessDenied = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AnnouncementAccessDeniedReason,
@@ -1409,33 +1395,33 @@ export const AnnouncementAccessDenied = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnouncementAccessDenied" }) as any as S.Schema<AnnouncementAccessDenied>;
 
 export type AnnouncementAccessDeniedList = Array<AnnouncementAccessDenied>;
-export const AnnouncementAccessDeniedList = /*@__PURE__*/ S.Array(
+const AnnouncementAccessDeniedList = /*@__PURE__*/ S.Array(
   AnnouncementAccessDenied,
 ) as any as S.Schema<AnnouncementAccessDeniedList>;
 
 /** Resource specifier strings */
 export type AnnouncementAccessAllowedReasonResourcesList = Array<string>;
-export const AnnouncementAccessAllowedReasonResourcesList =
+const AnnouncementAccessAllowedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AnnouncementAccessAllowedReasonNotResourcesList = Array<string>;
-export const AnnouncementAccessAllowedReasonNotResourcesList =
+const AnnouncementAccessAllowedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AnnouncementAccessAllowedReasonActionsList = Array<string>;
-export const AnnouncementAccessAllowedReasonActionsList =
+const AnnouncementAccessAllowedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AnnouncementAccessAllowedReasonNotActionsList = Array<string>;
-export const AnnouncementAccessAllowedReasonNotActionsList =
+const AnnouncementAccessAllowedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AnnouncementAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AnnouncementAccessAllowedReasonEffect = "allow" | "deny";
-export const AnnouncementAccessAllowedReasonEffect = S.String;
+const AnnouncementAccessAllowedReasonEffect = S.String;
 
 export interface AnnouncementAccessAllowedReason {
   /** Resource specifier strings */
@@ -1450,7 +1436,7 @@ export interface AnnouncementAccessAllowedReason {
   effect: AnnouncementAccessAllowedReasonEffect;
   role_name?: string;
 }
-export const AnnouncementAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AnnouncementAccessAllowedReasonResourcesList),
     notResources: S.optional(AnnouncementAccessAllowedReasonNotResourcesList),
@@ -1467,7 +1453,7 @@ export interface AnnouncementAccessAllowedRep {
   action: string;
   reason: AnnouncementAccessAllowedReason;
 }
-export const AnnouncementAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AnnouncementAccessAllowedReason,
@@ -1477,7 +1463,7 @@ export const AnnouncementAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnnouncementAccessAllowedRep>;
 
 export type AnnouncementAccessAllowedList = Array<AnnouncementAccessAllowedRep>;
-export const AnnouncementAccessAllowedList = /*@__PURE__*/ S.Array(
+const AnnouncementAccessAllowedList = /*@__PURE__*/ S.Array(
   AnnouncementAccessAllowedRep,
 ) as any as S.Schema<AnnouncementAccessAllowedList>;
 
@@ -1485,7 +1471,7 @@ export interface AnnouncementAccess {
   denied: AnnouncementAccessDeniedList;
   allowed: AnnouncementAccessAllowedList;
 }
-export const AnnouncementAccess = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denied: AnnouncementAccessDeniedList,
     allowed: AnnouncementAccessAllowedList,
@@ -1493,12 +1479,10 @@ export const AnnouncementAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnouncementAccess" }) as any as S.Schema<AnnouncementAccess>;
 
 export type AnnouncementLink = Link;
-export const AnnouncementLink = Link;
-
 export interface AnnouncementResponseLinks {
   parent: Link;
 }
-export const AnnouncementResponseLinks = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementResponseLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: Link,
   }),
@@ -1527,7 +1511,7 @@ export interface AnnouncementResponse {
   _access?: AnnouncementAccess;
   _links: AnnouncementResponseLinks;
 }
-export const AnnouncementResponse = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     isDismissible: S.Boolean,
@@ -1543,23 +1527,23 @@ export const AnnouncementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnouncementResponse" }) as any as S.Schema<AnnouncementResponse>;
 
 export type Instruction = { [key: string]: unknown | undefined };
-export const Instruction = UrlMatcher as any as S.Schema<Instruction>;
+const Instruction = UrlMatcher as any as S.Schema<Instruction>;
 
 export type Instructions = Array<Instruction>;
-export const Instructions = UrlMatchers as any as S.Schema<Instructions>;
+const Instructions = UrlMatchers as any as S.Schema<Instructions>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type CreateApprovalRequestRequestNotifyMemberIdsList = Array<string>;
-export const CreateApprovalRequestRequestNotifyMemberIdsList =
+const CreateApprovalRequestRequestNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<CreateApprovalRequestRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type CreateApprovalRequestRequestNotifyTeamKeysList = Array<string>;
-export const CreateApprovalRequestRequestNotifyTeamKeysList =
+const CreateApprovalRequestRequestNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<CreateApprovalRequestRequestNotifyTeamKeysList>;
 
 export type FormVariableConfig = { [key: string]: unknown | undefined };
-export const FormVariableConfig = UrlMatcher as any as S.Schema<FormVariableConfig>;
+const FormVariableConfig = UrlMatcher as any as S.Schema<FormVariableConfig>;
 
 export interface CreateApprovalRequestRequest {
   /** String representation of the resource specifier */
@@ -1577,7 +1561,7 @@ export interface CreateApprovalRequestRequest {
   /** Additional approval request fields for third-party integration approval systems. If you are using a third-party integration to manage approval requests, these additional fields will be described in the <code>manifest.json</code> for that integration, at https://github.com/launchdarkly/integration-framework. */
   integrationConfig?: FormVariableConfig;
 }
-export const CreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceId: S.String,
     comment: S.optional(S.String),
@@ -1593,11 +1577,11 @@ export const CreateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the review of this approval request */
 export type ApprovalRequestResponseReviewStatus = "approved" | "declined" | "pending";
-export const ApprovalRequestResponseReviewStatus = S.String;
+const ApprovalRequestResponseReviewStatus = S.String;
 
 /** The type of review action to take */
 export type ReviewResponseKind = "approve" | "decline" | "comment";
-export const ReviewResponseKind = S.String;
+const ReviewResponseKind = S.String;
 
 export interface ReviewResponse {
   /** The approval request ID */
@@ -1613,7 +1597,7 @@ export interface ReviewResponse {
   /** ID of account service token that reviewed request */
   serviceTokenId?: string;
 }
-export const ReviewResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     kind: ReviewResponseKind,
@@ -1626,23 +1610,23 @@ export const ReviewResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of individual reviews of this approval request */
 export type ApprovalRequestResponseAllReviewsList = Array<ReviewResponse>;
-export const ApprovalRequestResponseAllReviewsList = /*@__PURE__*/ S.Array(
+const ApprovalRequestResponseAllReviewsList = /*@__PURE__*/ S.Array(
   ReviewResponse,
 ) as any as S.Schema<ApprovalRequestResponseAllReviewsList>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const ApprovalRequestResponseNotifyMemberIdsList =
+const ApprovalRequestResponseNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<ApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type ApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const ApprovalRequestResponseNotifyTeamKeysList =
+const ApprovalRequestResponseNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<ApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
 export type ApprovalRequestResponseStatus = "pending" | "completed" | "failed" | "scheduled";
-export const ApprovalRequestResponseStatus = S.String;
+const ApprovalRequestResponseStatus = S.String;
 
 export interface Conflict2 {
   /** Instruction in semantic patch format to be applied to the feature flag */
@@ -1650,7 +1634,7 @@ export interface Conflict2 {
   /** Reason why the conflict exists */
   reason?: string;
 }
-export const Conflict2 = /*@__PURE__*/ S.suspend(() =>
+const Conflict2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instruction: S.optional(Instruction),
     reason: S.optional(S.String),
@@ -1659,20 +1643,20 @@ export const Conflict2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on any conflicting approval requests */
 export type ApprovalRequestResponseConflictsList = Array<Conflict2>;
-export const ApprovalRequestResponseConflictsList = /*@__PURE__*/ S.Array(
+const ApprovalRequestResponseConflictsList = /*@__PURE__*/ S.Array(
   Conflict2,
 ) as any as S.Schema<ApprovalRequestResponseConflictsList>;
 
 /** The location and content type of related resources */
 export type ApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const ApprovalRequestResponseLinksMap =
+const ApprovalRequestResponseLinksMap =
   UrlMatcher as any as S.Schema<ApprovalRequestResponseLinksMap>;
 
 export interface IntegrationStatus {
   display: string;
   value: string;
 }
-export const IntegrationStatus = /*@__PURE__*/ S.suspend(() =>
+const IntegrationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     display: S.String,
     value: S.String,
@@ -1685,7 +1669,7 @@ export interface IntegrationMetadata {
   externalUrl: string;
   lastChecked: number;
 }
-export const IntegrationMetadata = /*@__PURE__*/ S.suspend(() =>
+const IntegrationMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalId: S.String,
     externalStatus: IntegrationStatus,
@@ -1700,7 +1684,7 @@ export interface CopiedFromEnv {
   /** Version of feature flag copied */
   version?: number;
 }
-export const CopiedFromEnv = /*@__PURE__*/ S.suspend(() =>
+const CopiedFromEnv = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     version: S.optional(S.Number),
@@ -1713,7 +1697,7 @@ export interface CustomWorkflowStageMeta {
   /** The name of the workflow stage */
   name?: string;
 }
-export const CustomWorkflowStageMeta = /*@__PURE__*/ S.suspend(() =>
+const CustomWorkflowStageMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1726,7 +1710,7 @@ export interface CustomWorkflowMeta {
   /** Details on the stage of the workflow where this approval request is required */
   stage?: CustomWorkflowStageMeta;
 }
-export const CustomWorkflowMeta = /*@__PURE__*/ S.suspend(() =>
+const CustomWorkflowMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     stage: S.optional(CustomWorkflowStageMeta),
@@ -1734,12 +1718,12 @@ export const CustomWorkflowMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomWorkflowMeta" }) as any as S.Schema<CustomWorkflowMeta>;
 
 export type ApprovalSettingsServiceConfigMap = { [key: string]: unknown | undefined };
-export const ApprovalSettingsServiceConfigMap =
+const ApprovalSettingsServiceConfigMap =
   UrlMatcher as any as S.Schema<ApprovalSettingsServiceConfigMap>;
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type ApprovalSettingsRequiredApprovalTagsList = Array<string>;
-export const ApprovalSettingsRequiredApprovalTagsList =
+const ApprovalSettingsRequiredApprovalTagsList =
   FeatureFlagTagsList as any as S.Schema<ApprovalSettingsRequiredApprovalTagsList>;
 
 export interface ApprovalSettings {
@@ -1763,7 +1747,7 @@ export interface ApprovalSettings {
   /** Optional field for integration configuration ID of a custom approval integration. This is an Enterprise-only feature. */
   serviceKindConfigurationId?: string;
 }
-export const ApprovalSettings = /*@__PURE__*/ S.suspend(() =>
+const ApprovalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required: S.Boolean,
     bypassApprovalsForPendingChanges: S.Boolean,
@@ -1828,7 +1812,7 @@ export interface ApprovalRequestResponse {
   /** The settings for this approval */
   approvalSettings?: ApprovalSettings;
 }
-export const ApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const ApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -1863,7 +1847,7 @@ export interface CreateApprovalRequestApplyRequest {
   /** Optional comment about the approval request */
   comment?: string;
 }
-export const CreateApprovalRequestApplyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApprovalRequestApplyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -1874,7 +1858,7 @@ export const CreateApprovalRequestApplyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of review for this approval request */
 export type CreateApprovalRequestReviewRequestKind = "approve" | "comment" | "decline";
-export const CreateApprovalRequestReviewRequestKind = S.String;
+const CreateApprovalRequestReviewRequestKind = S.String;
 
 export interface CreateApprovalRequestReviewRequest {
   /** The approval request ID */
@@ -1884,7 +1868,7 @@ export interface CreateApprovalRequestReviewRequest {
   /** Optional comment about the approval request */
   comment?: string;
 }
-export const CreateApprovalRequestReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApprovalRequestReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     kind: S.optional(CreateApprovalRequestReviewRequestKind),
@@ -1902,7 +1886,7 @@ export interface CreateBigSegmentExportRequest {
   /** The segment key */
   segmentKey: string;
 }
-export const CreateBigSegmentExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBigSegmentExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -1919,7 +1903,7 @@ export const CreateBigSegmentExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBigSegmentExportRequest>;
 
 export interface CreateBigSegmentExportResponse {}
-export const CreateBigSegmentExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateBigSegmentExportResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateBigSegmentExportResponse",
 }) as any as S.Schema<CreateBigSegmentExportResponse>;
 
@@ -1937,7 +1921,7 @@ export interface CreateBigSegmentImportRequest {
   /** Whether to wait for approvals before processing the import */
   waitOnApprovals?: boolean;
 }
-export const CreateBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -1958,12 +1942,12 @@ export const CreateBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBigSegmentImportRequest>;
 
 export interface CreateBigSegmentImportResponse {}
-export const CreateBigSegmentImportResponse =
+const CreateBigSegmentImportResponse =
   CreateBigSegmentExportResponse as any as S.Schema<CreateBigSegmentImportResponse>;
 
 /** Tags to associate with the integration */
 export type CreateBigSegmentStoreIntegrationRequestTagsList = Array<string>;
-export const CreateBigSegmentStoreIntegrationRequestTagsList =
+const CreateBigSegmentStoreIntegrationRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateBigSegmentStoreIntegrationRequestTagsList>;
 
 export interface CreateBigSegmentStoreIntegrationRequest {
@@ -1982,7 +1966,7 @@ export interface CreateBigSegmentStoreIntegrationRequest {
   /** Name to identify the integration */
   name?: string;
 }
-export const CreateBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -2008,7 +1992,7 @@ export interface BigSegmentStoreIntegrationLinks {
   project: Link;
   environment: Link;
 }
-export const BigSegmentStoreIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentStoreIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: Link,
     parent: Link,
@@ -2021,11 +2005,11 @@ export const BigSegmentStoreIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** The integration key */
 export type BigSegmentStoreIntegrationIntegrationKey = "redis" | "dynamodb";
-export const BigSegmentStoreIntegrationIntegrationKey = S.String;
+const BigSegmentStoreIntegrationIntegrationKey = S.String;
 
 /** List of tags for this configuration */
 export type BigSegmentStoreIntegrationTagsList = Array<string>;
-export const BigSegmentStoreIntegrationTagsList =
+const BigSegmentStoreIntegrationTagsList =
   FeatureFlagTagsList as any as S.Schema<BigSegmentStoreIntegrationTagsList>;
 
 export interface StoreIntegrationError {
@@ -2033,7 +2017,7 @@ export interface StoreIntegrationError {
   message?: string;
   timestamp?: number;
 }
-export const StoreIntegrationError = /*@__PURE__*/ S.suspend(() =>
+const StoreIntegrationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number),
     message: S.optional(S.String),
@@ -2042,7 +2026,7 @@ export const StoreIntegrationError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoreIntegrationError" }) as any as S.Schema<StoreIntegrationError>;
 
 export type BigSegmentStoreStatusErrorsList = Array<StoreIntegrationError>;
-export const BigSegmentStoreStatusErrorsList = /*@__PURE__*/ S.Array(
+const BigSegmentStoreStatusErrorsList = /*@__PURE__*/ S.Array(
   StoreIntegrationError,
 ) as any as S.Schema<BigSegmentStoreStatusErrorsList>;
 
@@ -2057,7 +2041,7 @@ export interface BigSegmentStoreStatus {
   lastError?: number;
   errors?: BigSegmentStoreStatusErrorsList;
 }
-export const BigSegmentStoreStatus = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentStoreStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(S.Boolean),
     potentiallyStale: S.optional(S.Boolean),
@@ -2093,7 +2077,7 @@ export interface BigSegmentStoreIntegration {
   /** Details on the connection status of the persistent store integration */
   _status: BigSegmentStoreStatus;
 }
-export const BigSegmentStoreIntegration = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentStoreIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BigSegmentStoreIntegrationLinks,
     _id: S.String,
@@ -2114,22 +2098,22 @@ export const BigSegmentStoreIntegration = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of application. Default: <code>server</code> */
 export type CreateDeploymentEventRequestApplicationKind = "server" | "browser" | "mobile";
-export const CreateDeploymentEventRequestApplicationKind = S.String;
+const CreateDeploymentEventRequestApplicationKind = S.String;
 
 /** The event type */
 export type CreateDeploymentEventRequestEventType = "started" | "failed" | "finished" | "custom";
-export const CreateDeploymentEventRequestEventType = S.String;
+const CreateDeploymentEventRequestEventType = S.String;
 
 /** A JSON object containing metadata about the event */
 export type CreateDeploymentEventRequestEventMetadataMap = { [key: string]: unknown | undefined };
-export const CreateDeploymentEventRequestEventMetadataMap =
+const CreateDeploymentEventRequestEventMetadataMap =
   UrlMatcher as any as S.Schema<CreateDeploymentEventRequestEventMetadataMap>;
 
 /** A JSON object containing metadata about the deployment */
 export type CreateDeploymentEventRequestDeploymentMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateDeploymentEventRequestDeploymentMetadataMap =
+const CreateDeploymentEventRequestDeploymentMetadataMap =
   UrlMatcher as any as S.Schema<CreateDeploymentEventRequestDeploymentMetadataMap>;
 
 export interface CreateDeploymentEventRequest {
@@ -2156,7 +2140,7 @@ export interface CreateDeploymentEventRequest {
   /** A JSON object containing metadata about the deployment */
   deploymentMetadata?: CreateDeploymentEventRequestDeploymentMetadataMap;
 }
-export const CreateDeploymentEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeploymentEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String,
     environmentKey: S.String,
@@ -2177,7 +2161,7 @@ export const CreateDeploymentEventRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDeploymentEventRequest>;
 
 export interface CreateDeploymentEventResponse {}
-export const CreateDeploymentEventResponse =
+const CreateDeploymentEventResponse =
   CreateBigSegmentExportResponse as any as S.Schema<CreateDeploymentEventResponse>;
 
 export interface MetricInput {
@@ -2190,7 +2174,7 @@ export interface MetricInput {
   /** The analysis unit to use for this metric. If omitted, analysis uses the iteration's randomization unit. */
   analysisUnit?: string;
 }
-export const MetricInput = /*@__PURE__*/ S.suspend(() =>
+const MetricInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     isGroup: S.optional(S.Boolean),
@@ -2200,7 +2184,7 @@ export const MetricInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricInput" }) as any as S.Schema<MetricInput>;
 
 export type MetricsInput = Array<MetricInput>;
-export const MetricsInput = /*@__PURE__*/ S.Array(MetricInput) as any as S.Schema<MetricsInput>;
+const MetricsInput = /*@__PURE__*/ S.Array(MetricInput) as any as S.Schema<MetricsInput>;
 
 export interface TreatmentParameterInput {
   /** The flag key */
@@ -2208,7 +2192,7 @@ export interface TreatmentParameterInput {
   /** The ID of the flag variation */
   variationId: string;
 }
-export const TreatmentParameterInput = /*@__PURE__*/ S.suspend(() =>
+const TreatmentParameterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagKey: S.String,
     variationId: S.String,
@@ -2217,7 +2201,7 @@ export const TreatmentParameterInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flag and variation to use for this treatment */
 export type TreatmentInputParametersList = Array<TreatmentParameterInput>;
-export const TreatmentInputParametersList = /*@__PURE__*/ S.Array(
+const TreatmentInputParametersList = /*@__PURE__*/ S.Array(
   TreatmentParameterInput,
 ) as any as S.Schema<TreatmentInputParametersList>;
 
@@ -2231,7 +2215,7 @@ export interface TreatmentInput {
   /** Details on the flag and variation to use for this treatment */
   parameters: TreatmentInputParametersList;
 }
-export const TreatmentInput = /*@__PURE__*/ S.suspend(() =>
+const TreatmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     baseline: S.Boolean,
@@ -2241,9 +2225,7 @@ export const TreatmentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TreatmentInput" }) as any as S.Schema<TreatmentInput>;
 
 export type TreatmentsInput = Array<TreatmentInput>;
-export const TreatmentsInput = /*@__PURE__*/ S.Array(
-  TreatmentInput,
-) as any as S.Schema<TreatmentsInput>;
+const TreatmentsInput = /*@__PURE__*/ S.Array(TreatmentInput) as any as S.Schema<TreatmentsInput>;
 
 export interface FlagInput {
   /** The ID of the variation or rollout of the flag to use. Use "fallthrough" for the default targeting behavior when the flag is on. */
@@ -2253,7 +2235,7 @@ export interface FlagInput {
   /** The ID of the variation to route traffic not part of the experiment analysis to. Defaults to variation ID of baseline treatment, if set. */
   notInExperimentVariationId?: string;
 }
-export const FlagInput = /*@__PURE__*/ S.suspend(() =>
+const FlagInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.String,
     flagConfigVersion: S.Number,
@@ -2262,14 +2244,11 @@ export const FlagInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FlagInput" }) as any as S.Schema<FlagInput>;
 
 export type FlagsInput = { [key: string]: FlagInput | undefined };
-export const FlagsInput = /*@__PURE__*/ S.Record(
-  S.String,
-  FlagInput,
-) as any as S.Schema<FlagsInput>;
+const FlagsInput = /*@__PURE__*/ S.Record(S.String, FlagInput) as any as S.Schema<FlagsInput>;
 
 /** The attributes that this iteration's results can be sliced by */
 export type IterationInputAttributesList = Array<string>;
-export const IterationInputAttributesList =
+const IterationInputAttributesList =
   FeatureFlagTagsList as any as S.Schema<IterationInputAttributesList>;
 
 export interface IterationInput {
@@ -2296,7 +2275,7 @@ export interface IterationInput {
   /** The attributes that this iteration's results can be sliced by */
   attributes?: IterationInputAttributesList;
 }
-export const IterationInput = /*@__PURE__*/ S.suspend(() =>
+const IterationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hypothesis: S.String,
     canReshuffleTraffic: S.optional(S.Boolean),
@@ -2314,25 +2293,25 @@ export const IterationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the experiment */
 export type CreateExperimentRequestTagsList = Array<string>;
-export const CreateExperimentRequestTagsList =
+const CreateExperimentRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateExperimentRequestTagsList>;
 
 /** The results analysis approach. */
 export type CreateExperimentRequestMethodology = "bayesian" | "frequentist" | "export_only";
-export const CreateExperimentRequestMethodology = S.String;
+const CreateExperimentRequestMethodology = S.String;
 
 /** The method to use for multiple comparison correction. */
 export type AnalysisConfigInputMultipleComparisonCorrectionMethod =
   | "bonferroni"
   | "benjamini-hochberg";
-export const AnalysisConfigInputMultipleComparisonCorrectionMethod = S.String;
+const AnalysisConfigInputMultipleComparisonCorrectionMethod = S.String;
 
 /** The scope of the multiple comparison correction. */
 export type AnalysisConfigInputMultipleComparisonCorrectionScope =
   | "variations"
   | "variations-and-metrics"
   | "metrics";
-export const AnalysisConfigInputMultipleComparisonCorrectionScope = S.String;
+const AnalysisConfigInputMultipleComparisonCorrectionScope = S.String;
 
 export interface AnalysisConfigInput {
   /** The threshold for the Probability to Beat Baseline (PBBL) and Probability to Be Best (PBB) comparisons for the Bayesian results analysis approach. */
@@ -2352,7 +2331,7 @@ export interface AnalysisConfigInput {
   /** Whether sequential testing is enabled for Frequentist analysis */
   sequentialTestingEnabled?: boolean;
 }
-export const AnalysisConfigInput = /*@__PURE__*/ S.suspend(() =>
+const AnalysisConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bayesianThreshold: S.optional(S.String),
     significanceThreshold: S.optional(S.String),
@@ -2369,11 +2348,11 @@ export const AnalysisConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The source of metric data in order to analyze results. Defaults to "launchdarkly" when not provided. */
 export type CreateExperimentRequestDataSource = "launchdarkly" | "snowflake";
-export const CreateExperimentRequestDataSource = S.String;
+const CreateExperimentRequestDataSource = S.String;
 
 /** The type of experiment. */
 export type CreateExperimentRequestType = "experiment" | "mab" | "holdout";
-export const CreateExperimentRequestType = S.String;
+const CreateExperimentRequestType = S.String;
 
 export interface CreateExperimentRequest {
   /** The project key */
@@ -2403,7 +2382,7 @@ export interface CreateExperimentRequest {
   /** The type of experiment. */
   type?: CreateExperimentRequestType | (string & {});
 }
-export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -2429,33 +2408,33 @@ export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The results analysis approach. */
 export type ExperimentMethodology = "bayesian" | "frequentist" | "export_only";
-export const ExperimentMethodology = S.String;
+const ExperimentMethodology = S.String;
 
 /** The source of metric data in order to analyze results. Defaults to "launchdarkly" when not provided. */
 export type ExperimentDataSource = "launchdarkly" | "snowflake";
-export const ExperimentDataSource = S.String;
+const ExperimentDataSource = S.String;
 
 /** Tags for the experiment */
 export type ExperimentTagsList = Array<string>;
-export const ExperimentTagsList = FeatureFlagTagsList as any as S.Schema<ExperimentTagsList>;
+const ExperimentTagsList = FeatureFlagTagsList as any as S.Schema<ExperimentTagsList>;
 
 /** The location and content type of related resources */
 export type ExperimentLinksMap = { [key: string]: Link | undefined };
-export const ExperimentLinksMap =
+const ExperimentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExperimentLinksMap>;
 
 /** The status of the iteration: <code>not_started</code>, <code>running</code>, <code>stopped</code> */
 export type IterationRepStatus = "not_started" | "running" | "stopped";
-export const IterationRepStatus = S.String;
+const IterationRepStatus = S.String;
 
 /** An array of clauses used for individual targeting based on attributes */
 export type FlagRepTargetingRuleClausesList = Array<unknown>;
-export const FlagRepTargetingRuleClausesList =
+const FlagRepTargetingRuleClausesList =
   FilterValuesList as any as S.Schema<FlagRepTargetingRuleClausesList>;
 
 /** The location and content type of related resources */
 export type FlagRepLinksMap = { [key: string]: Link | undefined };
-export const FlagRepLinksMap =
+const FlagRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagRepLinksMap>;
 
 export interface FlagRep {
@@ -2472,7 +2451,7 @@ export interface FlagRep {
   /** The location and content type of related resources */
   _links: FlagRepLinksMap;
 }
-export const FlagRep = /*@__PURE__*/ S.suspend(() =>
+const FlagRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetingRule: S.optional(S.String),
     targetingRuleDescription: S.optional(S.String),
@@ -2485,7 +2464,7 @@ export const FlagRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flag used in this experiment */
 export type IterationRepFlagsMap = { [key: string]: FlagRep | undefined };
-export const IterationRepFlagsMap = /*@__PURE__*/ S.Record(
+const IterationRepFlagsMap = /*@__PURE__*/ S.Record(
   S.String,
   FlagRep,
 ) as any as S.Schema<IterationRepFlagsMap>;
@@ -2498,38 +2477,38 @@ export type DependentMetricOrMetricGroupRepKind =
   | "trace"
   | "funnel"
   | "standard";
-export const DependentMetricOrMetricGroupRepKind = S.String;
+const DependentMetricOrMetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricOrMetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricOrMetricGroupRepLinksMap =
+const DependentMetricOrMetricGroupRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricOrMetricGroupRepLinksMap>;
 
 /** The kind of event the metric tracks */
 export type MetricInGroupRepKind = "pageview" | "click" | "custom" | "trace";
-export const MetricInGroupRepKind = S.String;
+const MetricInGroupRepKind = S.String;
 
 /** The type of unit aggregation to use for the metric */
 export type MetricInGroupRepUnitAggregationType = "sum" | "average" | "count_distinct";
-export const MetricInGroupRepUnitAggregationType = S.String;
+const MetricInGroupRepUnitAggregationType = S.String;
 
 /** The method for analyzing metric events */
 export type MetricInGroupRepAnalysisType = "mean" | "percentile";
-export const MetricInGroupRepAnalysisType = S.String;
+const MetricInGroupRepAnalysisType = S.String;
 
 /** The location and content type of related resources */
 export type MetricInGroupRepLinksMap = { [key: string]: Link | undefined };
-export const MetricInGroupRepLinksMap =
+const MetricInGroupRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricInGroupRepLinksMap>;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricInGroupRepRandomizationUnitsList = Array<string>;
-export const MetricInGroupRepRandomizationUnitsList =
+const MetricInGroupRepRandomizationUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricInGroupRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricInGroupRepAnalysisUnitsList = Array<string>;
-export const MetricInGroupRepAnalysisUnitsList =
+const MetricInGroupRepAnalysisUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricInGroupRepAnalysisUnitsList>;
 
 export interface MetricInGroupRep {
@@ -2560,7 +2539,7 @@ export interface MetricInGroupRep {
   /** An array of analysis units allowed for this metric. */
   analysisUnits?: MetricInGroupRepAnalysisUnitsList;
 }
-export const MetricInGroupRep = /*@__PURE__*/ S.suspend(() =>
+const MetricInGroupRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _versionId: S.optional(S.String),
@@ -2580,13 +2559,13 @@ export const MetricInGroupRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the metrics in this metric group */
 export type DependentMetricOrMetricGroupRepMetricsList = Array<MetricInGroupRep>;
-export const DependentMetricOrMetricGroupRepMetricsList = /*@__PURE__*/ S.Array(
+const DependentMetricOrMetricGroupRepMetricsList = /*@__PURE__*/ S.Array(
   MetricInGroupRep,
 ) as any as S.Schema<DependentMetricOrMetricGroupRepMetricsList>;
 
 /** The method for analyzing metric events. Only set for individual metrics, not metric groups. */
 export type DependentMetricOrMetricGroupRepAnalysisType = "mean" | "percentile";
-export const DependentMetricOrMetricGroupRepAnalysisType = S.String;
+const DependentMetricOrMetricGroupRepAnalysisType = S.String;
 
 export interface DependentMetricOrMetricGroupRep {
   /** A unique key to reference the metric or metric group */
@@ -2612,7 +2591,7 @@ export interface DependentMetricOrMetricGroupRep {
   /** The context kind chosen as the analysis unit for this metric in the iteration. If null, analysis uses the iteration's randomization unit. */
   analysisUnit?: string;
 }
-export const DependentMetricOrMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
+const DependentMetricOrMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _versionId: S.String,
@@ -2632,19 +2611,19 @@ export const DependentMetricOrMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of event the metric tracks */
 export type MetricV2RepKind = "pageview" | "click" | "custom" | "trace";
-export const MetricV2RepKind = S.String;
+const MetricV2RepKind = S.String;
 
 /** The type of unit aggregation to use for the metric */
 export type MetricV2RepUnitAggregationType = "sum" | "average" | "count_distinct";
-export const MetricV2RepUnitAggregationType = S.String;
+const MetricV2RepUnitAggregationType = S.String;
 
 /** The method for analyzing metric events */
 export type MetricV2RepAnalysisType = "mean" | "percentile";
-export const MetricV2RepAnalysisType = S.String;
+const MetricV2RepAnalysisType = S.String;
 
 /** The location and content type of related resources */
 export type MetricV2RepLinksMap = { [key: string]: Link | undefined };
-export const MetricV2RepLinksMap =
+const MetricV2RepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricV2RepLinksMap>;
 
 export interface MetricV2Rep {
@@ -2669,7 +2648,7 @@ export interface MetricV2Rep {
   /** The location and content type of related resources */
   _links: MetricV2RepLinksMap;
 }
-export const MetricV2Rep = /*@__PURE__*/ S.suspend(() =>
+const MetricV2Rep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _versionId: S.optional(S.String),
@@ -2686,16 +2665,16 @@ export const MetricV2Rep = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the metric group */
 export type DependentMetricGroupRepWithMetricsKind = "funnel" | "standard";
-export const DependentMetricGroupRepWithMetricsKind = S.String;
+const DependentMetricGroupRepWithMetricsKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricGroupRepWithMetricsLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricGroupRepWithMetricsLinksMap =
+const DependentMetricGroupRepWithMetricsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricGroupRepWithMetricsLinksMap>;
 
 /** The metrics in the metric group */
 export type DependentMetricGroupRepWithMetricsMetricsList = Array<MetricInGroupRep>;
-export const DependentMetricGroupRepWithMetricsMetricsList =
+const DependentMetricGroupRepWithMetricsMetricsList =
   DependentMetricOrMetricGroupRepMetricsList as any as S.Schema<DependentMetricGroupRepWithMetricsMetricsList>;
 
 export interface DependentMetricGroupRepWithMetrics {
@@ -2710,7 +2689,7 @@ export interface DependentMetricGroupRepWithMetrics {
   /** The metrics in the metric group */
   metrics?: DependentMetricGroupRepWithMetricsMetricsList;
 }
-export const DependentMetricGroupRepWithMetrics = /*@__PURE__*/ S.suspend(() =>
+const DependentMetricGroupRepWithMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -2724,14 +2703,14 @@ export const DependentMetricGroupRepWithMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** The available attribute filters for this iteration */
 export type IterationRepAttributesList = Array<string>;
-export const IterationRepAttributesList =
+const IterationRepAttributesList =
   FeatureFlagTagsList as any as S.Schema<IterationRepAttributesList>;
 
 export interface ParameterRep {
   variationId?: string;
   flagKey?: string;
 }
-export const ParameterRep = /*@__PURE__*/ S.suspend(() =>
+const ParameterRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variationId: S.optional(S.String),
     flagKey: S.optional(S.String),
@@ -2740,7 +2719,7 @@ export const ParameterRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flag and variation used for this treatment */
 export type TreatmentRepParametersList = Array<ParameterRep>;
-export const TreatmentRepParametersList = /*@__PURE__*/ S.Array(
+const TreatmentRepParametersList = /*@__PURE__*/ S.Array(
   ParameterRep,
 ) as any as S.Schema<TreatmentRepParametersList>;
 
@@ -2756,7 +2735,7 @@ export interface TreatmentRep {
   /** Details on the flag and variation used for this treatment */
   parameters?: TreatmentRepParametersList;
 }
-export const TreatmentRep = /*@__PURE__*/ S.suspend(() =>
+const TreatmentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     name: S.String,
@@ -2768,19 +2747,19 @@ export const TreatmentRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the variations you are testing in the experiment */
 export type IterationRepTreatmentsList = Array<TreatmentRep>;
-export const IterationRepTreatmentsList = /*@__PURE__*/ S.Array(
+const IterationRepTreatmentsList = /*@__PURE__*/ S.Array(
   TreatmentRep,
 ) as any as S.Schema<IterationRepTreatmentsList>;
 
 /** Deprecated, use <code>metrics</code> instead. Details on the secondary metrics for this experiment. */
 export type IterationRepSecondaryMetricsList = Array<MetricV2Rep>;
-export const IterationRepSecondaryMetricsList = /*@__PURE__*/ S.Array(
+const IterationRepSecondaryMetricsList = /*@__PURE__*/ S.Array(
   MetricV2Rep,
 ) as any as S.Schema<IterationRepSecondaryMetricsList>;
 
 /** Details on the metrics for this experiment */
 export type IterationRepMetricsList = Array<DependentMetricOrMetricGroupRep>;
-export const IterationRepMetricsList = /*@__PURE__*/ S.Array(
+const IterationRepMetricsList = /*@__PURE__*/ S.Array(
   DependentMetricOrMetricGroupRep,
 ) as any as S.Schema<IterationRepMetricsList>;
 
@@ -2794,7 +2773,7 @@ export interface LayerSnapshotRep {
   /** Percent of layer traffic that was reserved for other experiments in the same environment, when this experiment iteration was stopped */
   otherReservationPercent: number;
 }
-export const LayerSnapshotRep = /*@__PURE__*/ S.suspend(() =>
+const LayerSnapshotRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -2811,7 +2790,7 @@ export interface CovariateInfoRep {
   /** Timestamp of when the covariate was uploaded */
   createdAt: number;
 }
-export const CovariateInfoRep = /*@__PURE__*/ S.suspend(() =>
+const CovariateInfoRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     fileName: S.String,
@@ -2865,7 +2844,7 @@ export interface IterationRep {
   /** Details of the covariate file for stratified sampling */
   covariateInfo?: CovariateInfoRep;
 }
-export const IterationRep = /*@__PURE__*/ S.suspend(() =>
+const IterationRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     hypothesis: S.String,
@@ -2894,7 +2873,7 @@ export const IterationRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the previous iterations for this experiment. */
 export type ExperimentPreviousIterationsList = Array<IterationRep>;
-export const ExperimentPreviousIterationsList = /*@__PURE__*/ S.Array(
+const ExperimentPreviousIterationsList = /*@__PURE__*/ S.Array(
   IterationRep,
 ) as any as S.Schema<ExperimentPreviousIterationsList>;
 
@@ -2902,15 +2881,11 @@ export const ExperimentPreviousIterationsList = /*@__PURE__*/ S.Array(
 export type AnalysisConfigRepMultipleComparisonCorrectionMethod =
   | "bonferroni"
   | "benjamini-hochberg";
-export const AnalysisConfigRepMultipleComparisonCorrectionMethod = S.String;
-
 /** The scope for multiple comparison correction. */
 export type AnalysisConfigRepMultipleComparisonCorrectionScope =
   | "variations"
   | "variations-and-metrics"
   | "metrics";
-export const AnalysisConfigRepMultipleComparisonCorrectionScope = S.String;
-
 export interface AnalysisConfigRep {
   /** The threshold for the Probability to Beat Baseline (PBBL) and Probability to Be Best (PBB) comparisons for the Bayesian results analysis approach. Value should be between 0-100 inclusive. */
   bayesianThreshold?: string;
@@ -2925,38 +2900,32 @@ export interface AnalysisConfigRep {
   /** Whether sequential testing is enabled for Frequentist analysis */
   sequentialTestingEnabled?: boolean;
 }
-export const AnalysisConfigRep = AnalysisConfigInput as any as S.Schema<AnalysisConfigRep>;
+const AnalysisConfigRep = AnalysisConfigInput as any as S.Schema<AnalysisConfigRep>;
 
 export type MutableFieldsByStatusRepNotStartedValueList = Array<string>;
-export const MutableFieldsByStatusRepNotStartedValueList =
+const MutableFieldsByStatusRepNotStartedValueList =
   FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepNotStartedValueList>;
 
 export type MutableFieldsByStatusRepNotStartedMap = {
   [key: string]: MutableFieldsByStatusRepNotStartedValueList | undefined;
 };
-export const MutableFieldsByStatusRepNotStartedMap = /*@__PURE__*/ S.Record(
+const MutableFieldsByStatusRepNotStartedMap = /*@__PURE__*/ S.Record(
   S.String,
   MutableFieldsByStatusRepNotStartedValueList,
 ) as any as S.Schema<MutableFieldsByStatusRepNotStartedMap>;
 
 export type MutableFieldsByStatusRepRunningValueList = Array<string>;
-export const MutableFieldsByStatusRepRunningValueList =
-  FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepRunningValueList>;
-
 export type MutableFieldsByStatusRepRunningMap = {
   [key: string]: MutableFieldsByStatusRepRunningValueList | undefined;
 };
-export const MutableFieldsByStatusRepRunningMap =
+const MutableFieldsByStatusRepRunningMap =
   MutableFieldsByStatusRepNotStartedMap as any as S.Schema<MutableFieldsByStatusRepRunningMap>;
 
 export type MutableFieldsByStatusRepStoppedValueList = Array<string>;
-export const MutableFieldsByStatusRepStoppedValueList =
-  FeatureFlagTagsList as any as S.Schema<MutableFieldsByStatusRepStoppedValueList>;
-
 export type MutableFieldsByStatusRepStoppedMap = {
   [key: string]: MutableFieldsByStatusRepStoppedValueList | undefined;
 };
-export const MutableFieldsByStatusRepStoppedMap =
+const MutableFieldsByStatusRepStoppedMap =
   MutableFieldsByStatusRepNotStartedMap as any as S.Schema<MutableFieldsByStatusRepStoppedMap>;
 
 export interface MutableFieldsByStatusRep {
@@ -2964,7 +2933,7 @@ export interface MutableFieldsByStatusRep {
   running?: MutableFieldsByStatusRepRunningMap;
   stopped?: MutableFieldsByStatusRepStoppedMap;
 }
-export const MutableFieldsByStatusRep = /*@__PURE__*/ S.suspend(() =>
+const MutableFieldsByStatusRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     not_started: S.optional(MutableFieldsByStatusRepNotStartedMap),
     running: S.optional(MutableFieldsByStatusRepRunningMap),
@@ -3013,7 +2982,7 @@ export interface Experiment {
   /** Fields that can be changed for each iteration status. */
   mutableFieldsByStatus?: MutableFieldsByStatusRep;
 }
-export const Experiment = /*@__PURE__*/ S.suspend(() =>
+const Experiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     key: S.String,
@@ -3040,7 +3009,7 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the configuration */
 export type CreateFlagImportConfigurationRequestTagsList = Array<string>;
-export const CreateFlagImportConfigurationRequestTagsList =
+const CreateFlagImportConfigurationRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateFlagImportConfigurationRequestTagsList>;
 
 export interface CreateFlagImportConfigurationRequest {
@@ -3055,7 +3024,7 @@ export interface CreateFlagImportConfigurationRequest {
   /** Name to identify the configuration */
   name?: string;
 }
-export const CreateFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     integrationKey: S.String.pipe(T.Label()),
@@ -3078,7 +3047,7 @@ export interface FlagImportIntegrationLinks {
   parent: Link;
   project: Link;
 }
-export const FlagImportIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
+const FlagImportIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: Link,
     parent: Link,
@@ -3090,16 +3059,16 @@ export const FlagImportIntegrationLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** The integration key */
 export type FlagImportIntegrationIntegrationKey = "split" | "unleash";
-export const FlagImportIntegrationIntegrationKey = S.String;
+const FlagImportIntegrationIntegrationKey = S.String;
 
 /** List of tags for this configuration */
 export type FlagImportIntegrationTagsList = Array<string>;
-export const FlagImportIntegrationTagsList =
+const FlagImportIntegrationTagsList =
   FeatureFlagTagsList as any as S.Schema<FlagImportIntegrationTagsList>;
 
 /** The current status of the import integrations related import job */
 export type FlagImportStatusStatus = "complete" | "importing" | "pending" | "failed" | "partial";
-export const FlagImportStatusStatus = S.String;
+const FlagImportStatusStatus = S.String;
 
 export interface StatusResponse {
   integrationId?: string;
@@ -3107,7 +3076,7 @@ export interface StatusResponse {
   statusCode?: number;
   timestamp?: number;
 }
-export const StatusResponse = /*@__PURE__*/ S.suspend(() =>
+const StatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationId: S.optional(S.String),
     message: S.optional(S.String),
@@ -3117,7 +3086,7 @@ export const StatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatusResponse" }) as any as S.Schema<StatusResponse>;
 
 export type FlagImportStatusErrorsList = Array<StatusResponse>;
-export const FlagImportStatusErrorsList = /*@__PURE__*/ S.Array(
+const FlagImportStatusErrorsList = /*@__PURE__*/ S.Array(
   StatusResponse,
 ) as any as S.Schema<FlagImportStatusErrorsList>;
 
@@ -3130,7 +3099,7 @@ export interface FlagImportStatus {
   lastError?: number;
   errors?: FlagImportStatusErrorsList;
 }
-export const FlagImportStatus = /*@__PURE__*/ S.suspend(() =>
+const FlagImportStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(FlagImportStatusStatus),
     lastImport: S.optional(S.Number),
@@ -3161,7 +3130,7 @@ export interface FlagImportIntegration {
   /** Details on the status of the import job */
   _status: FlagImportStatus;
 }
-export const FlagImportIntegration = /*@__PURE__*/ S.suspend(() =>
+const FlagImportIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FlagImportIntegrationLinks,
     _id: S.String,
@@ -3178,7 +3147,7 @@ export const FlagImportIntegration = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata required by this integration in order to create a flag link, if this is a flag link for an existing integration. Defined in the integration's <code>manifest.json</code> file under <code>flagLink</code>. */
 export type CreateFlagLinkRequestMetadataMap = { [key: string]: string | undefined };
-export const CreateFlagLinkRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateFlagLinkRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateFlagLinkRequestMetadataMap>;
@@ -3203,7 +3172,7 @@ export interface CreateFlagLinkRequest {
   /** The metadata required by this integration in order to create a flag link, if this is a flag link for an existing integration. Defined in the integration's <code>manifest.json</code> file under <code>flagLink</code>. */
   metadata?: CreateFlagLinkRequestMetadataMap;
 }
-export const CreateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -3225,7 +3194,7 @@ export const CreateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagLinkRepLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkRepLinksMap =
+const FlagLinkRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkRepLinksMap>;
 
 export interface TimestampRep {
@@ -3234,7 +3203,7 @@ export interface TimestampRep {
   rfc3339?: string;
   simple?: string;
 }
-export const TimestampRep = /*@__PURE__*/ S.suspend(() =>
+const TimestampRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     milliseconds: S.optional(S.Number),
     seconds: S.optional(S.Number),
@@ -3245,11 +3214,11 @@ export const TimestampRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata required by this integration in order to create a flag link, if this is a flag link for an existing integration. Defined in the integration's <code>manifest.json</code> file under <code>flagLink</code>. */
 export type FlagLinkRepMetadataMap = { [key: string]: string | undefined };
-export const FlagLinkRepMetadataMap =
+const FlagLinkRepMetadataMap =
   CreateFlagLinkRequestMetadataMap as any as S.Schema<FlagLinkRepMetadataMap>;
 
 export type FlagLinkMemberLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkMemberLinksMap =
+const FlagLinkMemberLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkMemberLinksMap>;
 
 export interface FlagLinkMember {
@@ -3258,7 +3227,7 @@ export interface FlagLinkMember {
   firstName?: string;
   lastName?: string;
 }
-export const FlagLinkMember = /*@__PURE__*/ S.suspend(() =>
+const FlagLinkMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FlagLinkMemberLinksMap,
     _id: S.String,
@@ -3291,7 +3260,7 @@ export interface FlagLinkRep {
   /** Details on the member associated with this flag link */
   _member?: FlagLinkMember;
 }
-export const FlagLinkRep = /*@__PURE__*/ S.suspend(() =>
+const FlagLinkRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FlagLinkRepLinksMap,
     _key: S.optional(S.String),
@@ -3309,7 +3278,7 @@ export const FlagLinkRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The application keys to associate with the insight group. If not provided, the insight group will include data from all applications. */
 export type CreateInsightGroupRequestApplicationKeysList = Array<string>;
-export const CreateInsightGroupRequestApplicationKeysList =
+const CreateInsightGroupRequestApplicationKeysList =
   FeatureFlagTagsList as any as S.Schema<CreateInsightGroupRequestApplicationKeysList>;
 
 export interface CreateInsightGroupRequest {
@@ -3324,7 +3293,7 @@ export interface CreateInsightGroupRequest {
   /** The application keys to associate with the insight group. If not provided, the insight group will include data from all applications. */
   applicationKeys?: CreateInsightGroupRequestApplicationKeysList;
 }
-export const CreateInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -3340,18 +3309,18 @@ export const CreateInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type EnvironmentLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentLinksMap =
+const EnvironmentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentLinksMap>;
 
 /** A list of tags for this environment */
 export type EnvironmentTagsList = Array<string>;
-export const EnvironmentTagsList = FeatureFlagTagsList as any as S.Schema<EnvironmentTagsList>;
+const EnvironmentTagsList = FeatureFlagTagsList as any as S.Schema<EnvironmentTagsList>;
 
 /** Details about the approval settings for other resources in this environment, organized by resource kind (for example, "aiconfig" and "segment") */
 export type EnvironmentResourceApprovalSettingsMap = {
   [key: string]: ApprovalSettings | undefined;
 };
-export const EnvironmentResourceApprovalSettingsMap = /*@__PURE__*/ S.Record(
+const EnvironmentResourceApprovalSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   ApprovalSettings,
 ) as any as S.Schema<EnvironmentResourceApprovalSettingsMap>;
@@ -3391,7 +3360,7 @@ export interface Environment {
   /** Whether the environment is critical */
   critical: boolean;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: EnvironmentLinksMap,
     _id: S.String,
@@ -3415,7 +3384,7 @@ export const Environment = /*@__PURE__*/ S.suspend(() =>
 
 /** The keys of the metrics that were aggregated to calculate this score */
 export type InsightsMetricScoreAggregateOfList = Array<string>;
-export const InsightsMetricScoreAggregateOfList =
+const InsightsMetricScoreAggregateOfList =
   FeatureFlagTagsList as any as S.Schema<InsightsMetricScoreAggregateOfList>;
 
 export interface InsightsMetricIndicatorRange {
@@ -3424,7 +3393,7 @@ export interface InsightsMetricIndicatorRange {
   /** The maximum value for the indicator range */
   max: number;
 }
-export const InsightsMetricIndicatorRange = /*@__PURE__*/ S.suspend(() =>
+const InsightsMetricIndicatorRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.Number,
     max: S.Number,
@@ -3446,7 +3415,7 @@ export interface InsightsMetricScore {
   /** The score for the metric in the last period */
   lastPeriod?: InsightsMetricScore;
 }
-export const InsightsMetricScore = /*@__PURE__*/ S.suspend(() =>
+const InsightsMetricScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.Number,
     aggregateOf: S.optional(InsightsMetricScoreAggregateOfList),
@@ -3481,7 +3450,7 @@ export interface InsightGroupScores {
   /** The creation ratio score for the insight group */
   creationRatio?: InsightsMetricScore;
 }
-export const InsightGroupScores = /*@__PURE__*/ S.suspend(() =>
+const InsightGroupScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overall: InsightsMetricScore,
     deploymentFrequency: InsightsMetricScore,
@@ -3503,7 +3472,7 @@ export interface InsightPeriod {
   /** The end time of the period */
   endTime: number;
 }
-export const InsightPeriod = /*@__PURE__*/ S.suspend(() =>
+const InsightPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Number,
     endTime: S.Number,
@@ -3516,7 +3485,7 @@ export interface InsightGroupCollectionScoreMetadata {
   /** The time period for the score calculations in the last period */
   lastPeriod: InsightPeriod;
 }
-export const InsightGroupCollectionScoreMetadata = /*@__PURE__*/ S.suspend(() =>
+const InsightGroupCollectionScoreMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: InsightPeriod,
     lastPeriod: InsightPeriod,
@@ -3527,7 +3496,7 @@ export const InsightGroupCollectionScoreMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** The application keys */
 export type InsightGroupApplicationKeysList = Array<string>;
-export const InsightGroupApplicationKeysList =
+const InsightGroupApplicationKeysList =
   FeatureFlagTagsList as any as S.Schema<InsightGroupApplicationKeysList>;
 
 export interface InsightGroup {
@@ -3550,7 +3519,7 @@ export interface InsightGroup {
   /** The time the insight group was created */
   createdAt: number;
 }
-export const InsightGroup = /*@__PURE__*/ S.suspend(() =>
+const InsightGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(Environment),
     scores: S.optional(InsightGroupScores),
@@ -3566,25 +3535,25 @@ export const InsightGroup = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the integration */
 export type CreateIntegrationConfigurationRequestTagsList = Array<string>;
-export const CreateIntegrationConfigurationRequestTagsList =
+const CreateIntegrationConfigurationRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateIntegrationConfigurationRequestTagsList>;
 
 /** The unique set of fields required to configure the integration. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> at https://github.com/launchdarkly/integration-framework/tree/main/integrations for a full list of fields for the integration you wish to configure. */
 export type CreateIntegrationConfigurationRequestConfigValuesMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateIntegrationConfigurationRequestConfigValuesMap =
+const CreateIntegrationConfigurationRequestConfigValuesMap =
   UrlMatcher as any as S.Schema<CreateIntegrationConfigurationRequestConfigValuesMap>;
 
 export type FormVariableAllowedValuesList = Array<string>;
-export const FormVariableAllowedValuesList =
+const FormVariableAllowedValuesList =
   FeatureFlagTagsList as any as S.Schema<FormVariableAllowedValuesList>;
 
 export interface HeaderItems {
   name?: string;
   value?: string;
 }
-export const HeaderItems = /*@__PURE__*/ S.suspend(() =>
+const HeaderItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -3592,7 +3561,7 @@ export const HeaderItems = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeaderItems" }) as any as S.Schema<HeaderItems>;
 
 export type EndpointHeadersList = Array<HeaderItems>;
-export const EndpointHeadersList = /*@__PURE__*/ S.Array(
+const EndpointHeadersList = /*@__PURE__*/ S.Array(
   HeaderItems,
 ) as any as S.Schema<EndpointHeadersList>;
 
@@ -3600,7 +3569,7 @@ export interface HMACSignature {
   headerName?: string;
   hmacSecretFormVariableKey?: string;
 }
-export const HMACSignature = /*@__PURE__*/ S.suspend(() =>
+const HMACSignature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headerName: S.optional(S.String),
     hmacSecretFormVariableKey: S.optional(S.String),
@@ -3613,7 +3582,7 @@ export interface Endpoint {
   method?: string;
   url?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headers: S.optional(EndpointHeadersList),
     hmacSignature: S.optional(HMACSignature),
@@ -3626,7 +3595,7 @@ export interface OptionsArray {
   label?: string;
   value?: string;
 }
-export const OptionsArray = /*@__PURE__*/ S.suspend(() =>
+const OptionsArray = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     value: S.optional(S.String),
@@ -3637,7 +3606,7 @@ export interface DynamicOptionsParser {
   optionsItems?: OptionsArray;
   optionsPath?: string;
 }
-export const DynamicOptionsParser = /*@__PURE__*/ S.suspend(() =>
+const DynamicOptionsParser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     optionsItems: S.optional(OptionsArray),
     optionsPath: S.optional(S.String),
@@ -3648,7 +3617,7 @@ export interface DynamicOptions {
   endpoint?: Endpoint;
   parser?: DynamicOptionsParser;
 }
-export const DynamicOptions = /*@__PURE__*/ S.suspend(() =>
+const DynamicOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(Endpoint),
     parser: S.optional(DynamicOptionsParser),
@@ -3666,7 +3635,7 @@ export interface FormVariable {
   allowedValues?: FormVariableAllowedValuesList;
   dynamicOptions?: DynamicOptions;
 }
-export const FormVariable = /*@__PURE__*/ S.suspend(() =>
+const FormVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -3682,7 +3651,7 @@ export const FormVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** The additional form variables for the approvals capability */
 export type ApprovalsCapabilityConfigAdditionalFormVariablesList = Array<FormVariable>;
-export const ApprovalsCapabilityConfigAdditionalFormVariablesList = /*@__PURE__*/ S.Array(
+const ApprovalsCapabilityConfigAdditionalFormVariablesList = /*@__PURE__*/ S.Array(
   FormVariable,
 ) as any as S.Schema<ApprovalsCapabilityConfigAdditionalFormVariablesList>;
 
@@ -3690,7 +3659,7 @@ export interface ApprovalsCapabilityConfig {
   /** The additional form variables for the approvals capability */
   additionalFormVariables?: ApprovalsCapabilityConfigAdditionalFormVariablesList;
 }
-export const ApprovalsCapabilityConfig = /*@__PURE__*/ S.suspend(() =>
+const ApprovalsCapabilityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalFormVariables: S.optional(ApprovalsCapabilityConfigAdditionalFormVariablesList),
   }),
@@ -3700,27 +3669,26 @@ export const ApprovalsCapabilityConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type StatementPostResourcesList = Array<string>;
-export const StatementPostResourcesList =
+const StatementPostResourcesList =
   FeatureFlagTagsList as any as S.Schema<StatementPostResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> field must be empty to use this field. */
 export type StatementPostNotResourcesList = Array<string>;
-export const StatementPostNotResourcesList =
+const StatementPostNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<StatementPostNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type StatementPostActionsList = Array<string>;
-export const StatementPostActionsList =
-  FeatureFlagTagsList as any as S.Schema<StatementPostActionsList>;
+const StatementPostActionsList = FeatureFlagTagsList as any as S.Schema<StatementPostActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> field must be empty to use this field. */
 export type StatementPostNotActionsList = Array<string>;
-export const StatementPostNotActionsList =
+const StatementPostNotActionsList =
   FeatureFlagTagsList as any as S.Schema<StatementPostNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type StatementPostEffect = "allow" | "deny";
-export const StatementPostEffect = S.String;
+const StatementPostEffect = S.String;
 
 export interface StatementPost {
   /** Resource specifier strings */
@@ -3734,7 +3702,7 @@ export interface StatementPost {
   /** Whether this statement should allow or deny actions on the resources. */
   effect: StatementPostEffect | (string & {});
 }
-export const StatementPost = /*@__PURE__*/ S.suspend(() =>
+const StatementPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StatementPostResourcesList),
     notResources: S.optional(StatementPostNotResourcesList),
@@ -3745,7 +3713,7 @@ export const StatementPost = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatementPost" }) as any as S.Schema<StatementPost>;
 
 export type StatementPostList = Array<StatementPost>;
-export const StatementPostList = /*@__PURE__*/ S.Array(
+const StatementPostList = /*@__PURE__*/ S.Array(
   StatementPost,
 ) as any as S.Schema<StatementPostList>;
 
@@ -3753,7 +3721,7 @@ export interface AuditLogEventsHookCapabilityConfigPost {
   /** The set of resources you wish to subscribe to audit log notifications for. */
   statements?: StatementPostList;
 }
-export const AuditLogEventsHookCapabilityConfigPost = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventsHookCapabilityConfigPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(StatementPostList),
   }),
@@ -3767,7 +3735,7 @@ export interface CapabilityConfigPost {
   /** The audit log events hook capability configuration for the integration */
   auditLogEventsHook?: AuditLogEventsHookCapabilityConfigPost;
 }
-export const CapabilityConfigPost = /*@__PURE__*/ S.suspend(() =>
+const CapabilityConfigPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvals: S.optional(ApprovalsCapabilityConfig),
     auditLogEventsHook: S.optional(AuditLogEventsHookCapabilityConfigPost),
@@ -3788,7 +3756,7 @@ export interface CreateIntegrationConfigurationRequest {
   /** The capability configuration for the integration */
   capabilityConfig?: CapabilityConfigPost;
 }
-export const CreateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     name: S.String,
@@ -3809,41 +3777,38 @@ export const CreateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The location and content type of related resources */
 export type IntegrationConfigurationsRepLinksMap = { [key: string]: Link | undefined };
-export const IntegrationConfigurationsRepLinksMap =
+const IntegrationConfigurationsRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationConfigurationsRepLinksMap>;
 
 /** An array of tags for this integration */
 export type IntegrationConfigurationsRepTagsList = Array<string>;
-export const IntegrationConfigurationsRepTagsList =
+const IntegrationConfigurationsRepTagsList =
   FeatureFlagTagsList as any as S.Schema<IntegrationConfigurationsRepTagsList>;
 
 /** Details on configuration for an integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> for a full list of fields for each integration. */
 export type IntegrationConfigurationsRepConfigValuesMap = { [key: string]: unknown | undefined };
-export const IntegrationConfigurationsRepConfigValuesMap =
+const IntegrationConfigurationsRepConfigValuesMap =
   UrlMatcher as any as S.Schema<IntegrationConfigurationsRepConfigValuesMap>;
 
 /** Resource specifier strings */
 export type StatementResourcesList = Array<string>;
-export const StatementResourcesList =
-  FeatureFlagTagsList as any as S.Schema<StatementResourcesList>;
+const StatementResourcesList = FeatureFlagTagsList as any as S.Schema<StatementResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type StatementNotResourcesList = Array<string>;
-export const StatementNotResourcesList =
-  FeatureFlagTagsList as any as S.Schema<StatementNotResourcesList>;
+const StatementNotResourcesList = FeatureFlagTagsList as any as S.Schema<StatementNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type StatementActionsList = Array<string>;
-export const StatementActionsList = FeatureFlagTagsList as any as S.Schema<StatementActionsList>;
+const StatementActionsList = FeatureFlagTagsList as any as S.Schema<StatementActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type StatementNotActionsList = Array<string>;
-export const StatementNotActionsList =
-  FeatureFlagTagsList as any as S.Schema<StatementNotActionsList>;
+const StatementNotActionsList = FeatureFlagTagsList as any as S.Schema<StatementNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type StatementEffect = "allow" | "deny";
-export const StatementEffect = S.String;
+const StatementEffect = S.String;
 
 export interface Statement {
   /** Resource specifier strings */
@@ -3857,7 +3822,7 @@ export interface Statement {
   /** Whether this statement should allow or deny actions on the resources. */
   effect: StatementEffect | (string & {});
 }
-export const Statement = /*@__PURE__*/ S.suspend(() =>
+const Statement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StatementResourcesList),
     notResources: S.optional(StatementNotResourcesList),
@@ -3869,7 +3834,7 @@ export const Statement = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of resources you wish to subscribe to audit log notifications for. */
 export type AuditLogEventsHookCapabilityConfigRepStatementsList = Array<Statement>;
-export const AuditLogEventsHookCapabilityConfigRepStatementsList = /*@__PURE__*/ S.Array(
+const AuditLogEventsHookCapabilityConfigRepStatementsList = /*@__PURE__*/ S.Array(
   Statement,
 ) as any as S.Schema<AuditLogEventsHookCapabilityConfigRepStatementsList>;
 
@@ -3877,7 +3842,7 @@ export interface AuditLogEventsHookCapabilityConfigRep {
   /** The set of resources you wish to subscribe to audit log notifications for. */
   statements?: AuditLogEventsHookCapabilityConfigRepStatementsList;
 }
-export const AuditLogEventsHookCapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEventsHookCapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statements: S.optional(AuditLogEventsHookCapabilityConfigRepStatementsList),
   }),
@@ -3891,7 +3856,7 @@ export interface CapabilityConfigRep {
   /** The audit log events hook capability configuration for the integration */
   auditLogEventsHook?: AuditLogEventsHookCapabilityConfigRep;
 }
-export const CapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
+const CapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvals: S.optional(ApprovalsCapabilityConfig),
     auditLogEventsHook: S.optional(AuditLogEventsHookCapabilityConfigRep),
@@ -3900,7 +3865,7 @@ export const CapabilityConfigRep = /*@__PURE__*/ S.suspend(() =>
 
 /** SQL setup scripts (4 parts) for Redshift native Experimentation setup. Present on setup endpoint responses and, rehydrated from the persisted config, on active (finalized) Redshift native Experimentation configurations. */
 export type IntegrationConfigurationsRepRedshiftSetupScriptsList = Array<string>;
-export const IntegrationConfigurationsRepRedshiftSetupScriptsList =
+const IntegrationConfigurationsRepRedshiftSetupScriptsList =
   FeatureFlagTagsList as any as S.Schema<IntegrationConfigurationsRepRedshiftSetupScriptsList>;
 
 export interface IntegrationConfigurationsRep {
@@ -3935,7 +3900,7 @@ export interface IntegrationConfigurationsRep {
   /** The ID of the member who maintains this integration configuration. Defaults to the member who created it. */
   _maintainerId?: string;
 }
-export const IntegrationConfigurationsRep = /*@__PURE__*/ S.suspend(() =>
+const IntegrationConfigurationsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: IntegrationConfigurationsRepLinksMap,
     _id: S.String,
@@ -3959,7 +3924,7 @@ export const IntegrationConfigurationsRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags to associate with the integration */
 export type CreateIntegrationDeliveryConfigurationRequestTagsList = Array<string>;
-export const CreateIntegrationDeliveryConfigurationRequestTagsList =
+const CreateIntegrationDeliveryConfigurationRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateIntegrationDeliveryConfigurationRequestTagsList>;
 
 export interface CreateIntegrationDeliveryConfigurationRequest {
@@ -3978,7 +3943,7 @@ export interface CreateIntegrationDeliveryConfigurationRequest {
   /** Name to identify the integration */
   name?: string;
 }
-export const CreateIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -3999,11 +3964,9 @@ export const CreateIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateIntegrationDeliveryConfigurationRequest>;
 
 export type IntegrationDeliveryConfigurationLinks = BigSegmentStoreIntegrationLinks;
-export const IntegrationDeliveryConfigurationLinks = BigSegmentStoreIntegrationLinks;
-
 /** List of tags for this configuration */
 export type IntegrationDeliveryConfigurationTagsList = Array<string>;
-export const IntegrationDeliveryConfigurationTagsList =
+const IntegrationDeliveryConfigurationTagsList =
   FeatureFlagTagsList as any as S.Schema<IntegrationDeliveryConfigurationTagsList>;
 
 export interface IntegrationDeliveryConfiguration {
@@ -4030,7 +3993,7 @@ export interface IntegrationDeliveryConfiguration {
   /** Details on the allowed and denied actions for this configuration */
   _access?: Access;
 }
-export const IntegrationDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BigSegmentStoreIntegrationLinks,
     _id: S.String,
@@ -4052,7 +4015,7 @@ export interface CreateIpAllowlistEntryRequest {
   ipAddress: string;
   description?: string;
 }
-export const CreateIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAddress: S.String,
     description: S.optional(S.String),
@@ -4071,7 +4034,7 @@ export interface IpAllowlistEntryResponse {
   _createdAt: number;
   _updatedAt: number;
 }
-export const IpAllowlistEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const IpAllowlistEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     ipAddress: S.String,
@@ -4092,7 +4055,7 @@ export interface CreateLayerRequest {
   /** The checkout flow for the application */
   description: string;
 }
-export const CreateLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -4109,7 +4072,7 @@ export interface LayerReservationRep {
   /** The percentage of traffic reserved for the experiment */
   reservationPercent: number;
 }
-export const LayerReservationRep = /*@__PURE__*/ S.suspend(() =>
+const LayerReservationRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentKey: S.String,
     flagKey: S.String,
@@ -4119,7 +4082,7 @@ export const LayerReservationRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The experiment reservations for the layer */
 export type LayerConfigurationRepReservationsList = Array<LayerReservationRep>;
-export const LayerConfigurationRepReservationsList = /*@__PURE__*/ S.Array(
+const LayerConfigurationRepReservationsList = /*@__PURE__*/ S.Array(
   LayerReservationRep,
 ) as any as S.Schema<LayerConfigurationRepReservationsList>;
 
@@ -4127,7 +4090,7 @@ export interface LayerConfigurationRep {
   /** The experiment reservations for the layer */
   reservations: LayerConfigurationRepReservationsList;
 }
-export const LayerConfigurationRep = /*@__PURE__*/ S.suspend(() =>
+const LayerConfigurationRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservations: LayerConfigurationRepReservationsList,
   }),
@@ -4135,7 +4098,7 @@ export const LayerConfigurationRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The layer configurations for each requested environment */
 export type LayerRepEnvironmentsMap = { [key: string]: LayerConfigurationRep | undefined };
-export const LayerRepEnvironmentsMap = /*@__PURE__*/ S.Record(
+const LayerRepEnvironmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   LayerConfigurationRep,
 ) as any as S.Schema<LayerRepEnvironmentsMap>;
@@ -4154,7 +4117,7 @@ export interface LayerRep {
   /** The layer configurations for each requested environment */
   environments?: LayerRepEnvironmentsMap;
 }
-export const LayerRep = /*@__PURE__*/ S.suspend(() =>
+const LayerRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -4167,24 +4130,20 @@ export const LayerRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The member's initial role, if you are using a base role for the initial role */
 export type NewMemberFormRole = "reader" | "writer" | "admin" | "no_access";
-export const NewMemberFormRole = S.String;
+const NewMemberFormRole = S.String;
 
 /** An array of the member's initial roles, if you are using custom roles or preset roles provided by LaunchDarkly */
 export type NewMemberFormCustomRolesList = Array<string>;
-export const NewMemberFormCustomRolesList =
+const NewMemberFormCustomRolesList =
   FeatureFlagTagsList as any as S.Schema<NewMemberFormCustomRolesList>;
 
 /** An array of the member's teams */
 export type NewMemberFormTeamKeysList = Array<string>;
-export const NewMemberFormTeamKeysList =
-  FeatureFlagTagsList as any as S.Schema<NewMemberFormTeamKeysList>;
+const NewMemberFormTeamKeysList = FeatureFlagTagsList as any as S.Schema<NewMemberFormTeamKeysList>;
 
 export type RoleAttributeValues = Array<string>;
-export const RoleAttributeValues = FeatureFlagTagsList as any as S.Schema<RoleAttributeValues>;
-
 export type RoleAttributeMap = { [key: string]: RoleAttributeValues | undefined };
-export const RoleAttributeMap =
-  MutableFieldsByStatusRepNotStartedMap as any as S.Schema<RoleAttributeMap>;
+const RoleAttributeMap = MutableFieldsByStatusRepNotStartedMap as any as S.Schema<RoleAttributeMap>;
 
 export interface NewMemberForm {
   /** The member's email */
@@ -4204,7 +4163,7 @@ export interface NewMemberForm {
   /** An object of role attributes for the member */
   roleAttributes?: RoleAttributeMap;
 }
-export const NewMemberForm = /*@__PURE__*/ S.suspend(() =>
+const NewMemberForm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -4218,14 +4177,14 @@ export const NewMemberForm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewMemberForm" }) as any as S.Schema<NewMemberForm>;
 
 export type NewMemberFormListPost = Array<NewMemberForm>;
-export const NewMemberFormListPost = /*@__PURE__*/ S.Array(
+const NewMemberFormListPost = /*@__PURE__*/ S.Array(
   NewMemberForm,
 ) as any as S.Schema<NewMemberFormListPost>;
 
 export interface CreateMemberRequest {
   body: NewMemberFormListPost;
 }
-export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: NewMemberFormListPost.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/api/v2/members", code: 200 })),
@@ -4233,23 +4192,23 @@ export const CreateMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type MemberLinksMap = { [key: string]: Link | undefined };
-export const MemberLinksMap =
+const MemberLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberLinksMap>;
 
 /** The set of additional roles, besides the base role, assigned to the member */
 export type MemberCustomRolesList = Array<string>;
-export const MemberCustomRolesList = FeatureFlagTagsList as any as S.Schema<MemberCustomRolesList>;
+const MemberCustomRolesList = FeatureFlagTagsList as any as S.Schema<MemberCustomRolesList>;
 
 /** Default dashboards that the member has chosen to ignore */
 export type MemberExcludedDashboardsList = Array<string>;
-export const MemberExcludedDashboardsList =
+const MemberExcludedDashboardsList =
   FeatureFlagTagsList as any as S.Schema<MemberExcludedDashboardsList>;
 
 export interface LastSeenMetadata {
   /** The ID of the token used in the member's last session */
   tokenId?: string;
 }
-export const LastSeenMetadata = /*@__PURE__*/ S.suspend(() =>
+const LastSeenMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.optional(S.String),
   }),
@@ -4257,11 +4216,11 @@ export const LastSeenMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of keys of the custom roles this team has access to */
 export type MemberTeamSummaryRepCustomRoleKeysList = Array<string>;
-export const MemberTeamSummaryRepCustomRoleKeysList =
+const MemberTeamSummaryRepCustomRoleKeysList =
   FeatureFlagTagsList as any as S.Schema<MemberTeamSummaryRepCustomRoleKeysList>;
 
 export type MemberTeamSummaryRepLinksMap = { [key: string]: Link | undefined };
-export const MemberTeamSummaryRepLinksMap =
+const MemberTeamSummaryRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberTeamSummaryRepLinksMap>;
 
 export interface MemberTeamSummaryRep {
@@ -4273,7 +4232,7 @@ export interface MemberTeamSummaryRep {
   /** The team name */
   name: string;
 }
-export const MemberTeamSummaryRep = /*@__PURE__*/ S.suspend(() =>
+const MemberTeamSummaryRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRoleKeys: MemberTeamSummaryRepCustomRoleKeysList,
     key: S.String,
@@ -4284,13 +4243,13 @@ export const MemberTeamSummaryRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the teams this member is assigned to */
 export type MemberTeamsList = Array<MemberTeamSummaryRep>;
-export const MemberTeamsList = /*@__PURE__*/ S.Array(
+const MemberTeamsList = /*@__PURE__*/ S.Array(
   MemberTeamSummaryRep,
 ) as any as S.Schema<MemberTeamsList>;
 
 /** A list of actions to allow. A permission grant may have either an <code>actionSet</code> or a list of <code>actions</code> but not both at the same time. */
 export type MemberPermissionGrantSummaryRepActionsList = Array<string>;
-export const MemberPermissionGrantSummaryRepActionsList =
+const MemberPermissionGrantSummaryRepActionsList =
   FeatureFlagTagsList as any as S.Schema<MemberPermissionGrantSummaryRepActionsList>;
 
 export interface MemberPermissionGrantSummaryRep {
@@ -4301,7 +4260,7 @@ export interface MemberPermissionGrantSummaryRep {
   /** The resource for which the actions are allowed */
   resource: string;
 }
-export const MemberPermissionGrantSummaryRep = /*@__PURE__*/ S.suspend(() =>
+const MemberPermissionGrantSummaryRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionSet: S.optional(S.String),
     actions: S.optional(MemberPermissionGrantSummaryRepActionsList),
@@ -4313,14 +4272,13 @@ export const MemberPermissionGrantSummaryRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of permission grants. Permission grants allow a member to have access to a specific action, without having to create or update a custom role. */
 export type MemberPermissionGrantsList = Array<MemberPermissionGrantSummaryRep>;
-export const MemberPermissionGrantsList = /*@__PURE__*/ S.Array(
+const MemberPermissionGrantsList = /*@__PURE__*/ S.Array(
   MemberPermissionGrantSummaryRep,
 ) as any as S.Schema<MemberPermissionGrantsList>;
 
 /** A list of OAuth providers */
 export type MemberOauthProvidersList = Array<string>;
-export const MemberOauthProvidersList =
-  FeatureFlagTagsList as any as S.Schema<MemberOauthProvidersList>;
+const MemberOauthProvidersList = FeatureFlagTagsList as any as S.Schema<MemberOauthProvidersList>;
 
 export interface Member {
   /** The location and content type of related resources */
@@ -4370,7 +4328,7 @@ export interface Member {
   mfaEnforced?: boolean;
   mfaGracePeriodExpiresAt?: number;
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: MemberLinksMap,
     _id: S.String,
@@ -4401,11 +4359,11 @@ export const Member = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of members */
 export type MembersItemsList = Array<Member>;
-export const MembersItemsList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MembersItemsList>;
+const MembersItemsList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MembersItemsList>;
 
 /** The location and content type of related resources */
 export type MembersLinksMap = { [key: string]: Link | undefined };
-export const MembersLinksMap =
+const MembersLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MembersLinksMap>;
 
 export interface Members {
@@ -4416,7 +4374,7 @@ export interface Members {
   /** The number of members returned */
   totalCount?: number;
 }
-export const Members = /*@__PURE__*/ S.suspend(() =>
+const Members = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: MembersItemsList,
     _links: MembersLinksMap,
@@ -4426,7 +4384,7 @@ export const Members = /*@__PURE__*/ S.suspend(() =>
 
 /** List of team keys */
 export type CreateMemberTeamRequestTeamKeysList = Array<string>;
-export const CreateMemberTeamRequestTeamKeysList =
+const CreateMemberTeamRequestTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<CreateMemberTeamRequestTeamKeysList>;
 
 export interface CreateMemberTeamRequest {
@@ -4435,7 +4393,7 @@ export interface CreateMemberTeamRequest {
   /** List of team keys */
   teamKeys: CreateMemberTeamRequestTeamKeysList;
 }
-export const CreateMemberTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMemberTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     teamKeys: CreateMemberTeamRequestTeamKeysList,
@@ -4444,11 +4402,11 @@ export const CreateMemberTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the metric group */
 export type CreateMetricGroupRequestKind = "funnel" | "standard";
-export const CreateMetricGroupRequestKind = S.String;
+const CreateMetricGroupRequestKind = S.String;
 
 /** Tags for the metric group */
 export type CreateMetricGroupRequestTagsList = Array<string>;
-export const CreateMetricGroupRequestTagsList =
+const CreateMetricGroupRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateMetricGroupRequestTagsList>;
 
 export interface MetricInMetricGroupInput {
@@ -4457,7 +4415,7 @@ export interface MetricInMetricGroupInput {
   /** Name of the metric when used within the associated metric group. Can be different from the original name of the metric */
   nameInGroup: string;
 }
-export const MetricInMetricGroupInput = /*@__PURE__*/ S.suspend(() =>
+const MetricInMetricGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     nameInGroup: S.String,
@@ -4466,7 +4424,7 @@ export const MetricInMetricGroupInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the metrics in this metric group */
 export type CreateMetricGroupRequestMetricsList = Array<MetricInMetricGroupInput>;
-export const CreateMetricGroupRequestMetricsList = /*@__PURE__*/ S.Array(
+const CreateMetricGroupRequestMetricsList = /*@__PURE__*/ S.Array(
   MetricInMetricGroupInput,
 ) as any as S.Schema<CreateMetricGroupRequestMetricsList>;
 
@@ -4488,7 +4446,7 @@ export interface CreateMetricGroupRequest {
   /** An ordered list of the metrics in this metric group */
   metrics: CreateMetricGroupRequestMetricsList;
 }
-export const CreateMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -4505,21 +4463,20 @@ export const CreateMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the metric group */
 export type MetricGroupRepKind = "funnel" | "standard";
-export const MetricGroupRepKind = S.String;
+const MetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const MetricGroupRepLinksMap =
+const MetricGroupRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricGroupRepLinksMap>;
 
 /** Tags for the metric group */
 export type MetricGroupRepTagsList = Array<string>;
-export const MetricGroupRepTagsList =
-  FeatureFlagTagsList as any as S.Schema<MetricGroupRepTagsList>;
+const MetricGroupRepTagsList = FeatureFlagTagsList as any as S.Schema<MetricGroupRepTagsList>;
 
 /** The type of the maintainer */
 export type MaintainerRepKind = "member" | "team";
-export const MaintainerRepKind = S.String;
+const MaintainerRepKind = S.String;
 
 export interface MaintainerRep {
   /** The ID of the maintainer member, or the key of the maintainer team */
@@ -4531,7 +4488,7 @@ export interface MaintainerRep {
   /** Details on the team that maintains this resource */
   _team?: MemberTeamSummaryRep;
 }
-export const MaintainerRep = /*@__PURE__*/ S.suspend(() =>
+const MaintainerRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: MaintainerRepKind,
@@ -4542,12 +4499,12 @@ export const MaintainerRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the metrics in this metric group */
 export type MetricGroupRepMetricsList = Array<MetricInGroupRep>;
-export const MetricGroupRepMetricsList =
+const MetricGroupRepMetricsList =
   DependentMetricOrMetricGroupRepMetricsList as any as S.Schema<MetricGroupRepMetricsList>;
 
 /** The location and content type of related resources */
 export type DependentExperimentRepLinksMap = { [key: string]: Link | undefined };
-export const DependentExperimentRepLinksMap =
+const DependentExperimentRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentExperimentRepLinksMap>;
 
 export interface DependentExperimentRep {
@@ -4566,7 +4523,7 @@ export interface DependentExperimentRep {
   /** The location and content type of related resources */
   _links: DependentExperimentRepLinksMap;
 }
-export const DependentExperimentRep = /*@__PURE__*/ S.suspend(() =>
+const DependentExperimentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -4579,7 +4536,7 @@ export const DependentExperimentRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DependentExperimentRep" }) as any as S.Schema<DependentExperimentRep>;
 
 export type DependentExperimentListRep = Array<DependentExperimentRep>;
-export const DependentExperimentListRep = /*@__PURE__*/ S.Array(
+const DependentExperimentListRep = /*@__PURE__*/ S.Array(
   DependentExperimentRep,
 ) as any as S.Schema<DependentExperimentListRep>;
 
@@ -4619,7 +4576,7 @@ export interface MetricGroupRep {
   /** The number of active guarded rollouts using this metric group */
   activeGuardedRolloutCount?: number;
 }
-export const MetricGroupRep = /*@__PURE__*/ S.suspend(() =>
+const MetricGroupRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     key: S.String,
@@ -4649,7 +4606,7 @@ export interface CreateOAuth2ClientRequest {
   /** Description of your OAuth 2.0 client. */
   description?: string;
 }
-export const CreateOAuth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOAuth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     redirectUri: S.optional(S.String),
@@ -4661,7 +4618,7 @@ export const CreateOAuth2ClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ClientLinksMap = { [key: string]: Link | undefined };
-export const ClientLinksMap =
+const ClientLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ClientLinksMap>;
 
 export interface Client {
@@ -4682,7 +4639,7 @@ export interface Client {
   /** Timestamp of client creation date */
   _creationDate: number;
 }
-export const Client = /*@__PURE__*/ S.suspend(() =>
+const Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ClientLinksMap,
     name: S.String,
@@ -4701,7 +4658,7 @@ export interface DefaultClientSideAvailabilityPost {
   /** Whether to enable availability for mobile SDKs. */
   usingMobileKey: boolean;
 }
-export const DefaultClientSideAvailabilityPost = /*@__PURE__*/ S.suspend(() =>
+const DefaultClientSideAvailabilityPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usingEnvironmentId: S.Boolean,
     usingMobileKey: S.Boolean,
@@ -4712,13 +4669,12 @@ export const DefaultClientSideAvailabilityPost = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the project */
 export type CreateProjectRequestTagsList = Array<string>;
-export const CreateProjectRequestTagsList =
+const CreateProjectRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateProjectRequestTagsList>;
 
 /** Tags to apply to the new environment */
 export type EnvironmentPostTagsList = Array<string>;
-export const EnvironmentPostTagsList =
-  FeatureFlagTagsList as any as S.Schema<EnvironmentPostTagsList>;
+const EnvironmentPostTagsList = FeatureFlagTagsList as any as S.Schema<EnvironmentPostTagsList>;
 
 export interface SourceEnv {
   /** The key of the source environment to clone from */
@@ -4726,7 +4682,7 @@ export interface SourceEnv {
   /** (Optional) The version number of the source environment to clone from. Used for optimistic locking */
   version?: number;
 }
-export const SourceEnv = /*@__PURE__*/ S.suspend(() =>
+const SourceEnv = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     version: S.optional(S.Number),
@@ -4757,7 +4713,7 @@ export interface EnvironmentPost {
   /** Whether the environment is critical */
   critical?: boolean;
 }
-export const EnvironmentPost = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -4775,7 +4731,7 @@ export const EnvironmentPost = /*@__PURE__*/ S.suspend(() =>
 
 /** Creates the provided environments for this project. If omitted default environments will be created instead. */
 export type CreateProjectRequestEnvironmentsList = Array<EnvironmentPost>;
-export const CreateProjectRequestEnvironmentsList = /*@__PURE__*/ S.Array(
+const CreateProjectRequestEnvironmentsList = /*@__PURE__*/ S.Array(
   EnvironmentPost,
 ) as any as S.Schema<CreateProjectRequestEnvironmentsList>;
 
@@ -4786,7 +4742,7 @@ export type NamingConventionCase =
   | "snakeCase"
   | "kebabCase"
   | "constantCase";
-export const NamingConventionCase = S.String;
+const NamingConventionCase = S.String;
 
 export interface NamingConvention {
   /** The casing convention to enforce for new flag keys in this project */
@@ -4794,7 +4750,7 @@ export interface NamingConvention {
   /** The prefix to enforce for new flag keys in this project */
   prefix?: string;
 }
-export const NamingConvention = /*@__PURE__*/ S.suspend(() =>
+const NamingConvention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     case: S.optional(NamingConventionCase),
     prefix: S.optional(S.String),
@@ -4817,7 +4773,7 @@ export interface CreateProjectRequest {
   /** The flag key convention for this project. Omit this field if you don't want to enforce any conventions for flag keys. */
   namingConvention?: NamingConvention;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -4831,16 +4787,16 @@ export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ProjectRepLinksMap = { [key: string]: Link | undefined };
-export const ProjectRepLinksMap =
+const ProjectRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectRepLinksMap>;
 
 /** A list of tags for the project */
 export type ProjectRepTagsList = Array<string>;
-export const ProjectRepTagsList = FeatureFlagTagsList as any as S.Schema<ProjectRepTagsList>;
+const ProjectRepTagsList = FeatureFlagTagsList as any as S.Schema<ProjectRepTagsList>;
 
 /** A list of environments for the project */
 export type ProjectRepEnvironmentsList = Array<Environment>;
-export const ProjectRepEnvironmentsList = /*@__PURE__*/ S.Array(
+const ProjectRepEnvironmentsList = /*@__PURE__*/ S.Array(
   Environment,
 ) as any as S.Schema<ProjectRepEnvironmentsList>;
 
@@ -4866,7 +4822,7 @@ export interface ProjectRep {
   /** A list of environments for the project */
   environments: ProjectRepEnvironmentsList;
 }
-export const ProjectRep = /*@__PURE__*/ S.suspend(() =>
+const ProjectRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ProjectRepLinksMap,
     _id: S.String,
@@ -4891,7 +4847,7 @@ export interface CreateReleaseForFlagRequest {
   /** The key of the release pipeline to attach the flag to */
   releasePipelineKey: string;
 }
-export const CreateReleaseForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReleaseForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -4910,11 +4866,11 @@ export const CreateReleaseForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ReleaseLinksMap = { [key: string]: Link | undefined };
-export const ReleaseLinksMap =
+const ReleaseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseLinksMap>;
 
 export type TokenSummaryLinksMap = { [key: string]: Link | undefined };
-export const TokenSummaryLinksMap =
+const TokenSummaryLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokenSummaryLinksMap>;
 
 export interface TokenSummary {
@@ -4927,7 +4883,7 @@ export interface TokenSummary {
   /** Whether this is a service token */
   serviceToken?: boolean;
 }
-export const TokenSummary = /*@__PURE__*/ S.suspend(() =>
+const TokenSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(TokenSummaryLinksMap),
     _id: S.optional(S.String),
@@ -4943,7 +4899,7 @@ export interface CompletedBy {
   /** The service token used to mark this phase as complete */
   token?: TokenSummary;
 }
-export const CompletedBy = /*@__PURE__*/ S.suspend(() =>
+const CompletedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: S.optional(MemberSummary),
     token: S.optional(TokenSummary),
@@ -4952,12 +4908,12 @@ export const CompletedBy = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ReleaseAudienceLinksMap = { [key: string]: Link | undefined };
-export const ReleaseAudienceLinksMap =
+const ReleaseAudienceLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseAudienceLinksMap>;
 
 /** The location and content type of related resources */
 export type EnvironmentSummaryLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentSummaryLinksMap =
+const EnvironmentSummaryLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentSummaryLinksMap>;
 
 export interface EnvironmentSummary {
@@ -4970,7 +4926,7 @@ export interface EnvironmentSummary {
   /** The color used to indicate this environment in the UI */
   color: string;
 }
-export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: EnvironmentSummaryLinksMap,
     key: S.String,
@@ -4981,12 +4937,12 @@ export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type AudienceConfigurationNotifyMemberIdsList = Array<string>;
-export const AudienceConfigurationNotifyMemberIdsList =
+const AudienceConfigurationNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<AudienceConfigurationNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type AudienceConfigurationNotifyTeamKeysList = Array<string>;
-export const AudienceConfigurationNotifyTeamKeysList =
+const AudienceConfigurationNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<AudienceConfigurationNotifyTeamKeysList>;
 
 export interface ReleaseGuardianConfiguration {
@@ -4999,7 +4955,7 @@ export interface ReleaseGuardianConfiguration {
   /** The randomization unit for the measured rollout */
   randomizationUnit?: string;
 }
-export const ReleaseGuardianConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ReleaseGuardianConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringWindowMilliseconds: S.Number,
     rolloutWeight: S.Number,
@@ -5022,7 +4978,7 @@ export interface AudienceConfiguration {
   /** The configuration for the release guardian. */
   releaseGuardianConfiguration?: ReleaseGuardianConfiguration;
 }
-export const AudienceConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AudienceConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseStrategy: S.String,
     requireApproval: S.Boolean,
@@ -5034,12 +4990,12 @@ export const AudienceConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of segment keys */
 export type ReleaseAudienceSegmentKeysList = Array<string>;
-export const ReleaseAudienceSegmentKeysList =
+const ReleaseAudienceSegmentKeysList =
   FeatureFlagTagsList as any as S.Schema<ReleaseAudienceSegmentKeysList>;
 
 /** The rules IDs added or updated by this audience */
 export type ReleaseAudienceRuleIdsList = Array<string>;
-export const ReleaseAudienceRuleIdsList =
+const ReleaseAudienceRuleIdsList =
   FeatureFlagTagsList as any as S.Schema<ReleaseAudienceRuleIdsList>;
 
 export interface ReleaseAudience {
@@ -5060,7 +5016,7 @@ export interface ReleaseAudience {
   /** The rules IDs added or updated by this audience */
   _ruleIds?: ReleaseAudienceRuleIdsList;
 }
-export const ReleaseAudience = /*@__PURE__*/ S.suspend(() =>
+const ReleaseAudience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _links: S.optional(ReleaseAudienceLinksMap),
@@ -5075,7 +5031,7 @@ export const ReleaseAudience = /*@__PURE__*/ S.suspend(() =>
 
 /** A logical grouping of one or more environments that share attributes for rolling out changes */
 export type PipelineReleasePhaseAudiencesList = Array<ReleaseAudience>;
-export const PipelineReleasePhaseAudiencesList = /*@__PURE__*/ S.Array(
+const PipelineReleasePhaseAudiencesList = /*@__PURE__*/ S.Array(
   ReleaseAudience,
 ) as any as S.Schema<PipelineReleasePhaseAudiencesList>;
 
@@ -5103,7 +5059,7 @@ export interface PipelineReleasePhase {
   /** The phase configuration */
   configuration?: unknown;
 }
-export const PipelineReleasePhase = /*@__PURE__*/ S.suspend(() =>
+const PipelineReleasePhase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _name: S.String,
@@ -5121,7 +5077,7 @@ export const PipelineReleasePhase = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the release pipeline phases */
 export type ReleasePhasesList = Array<PipelineReleasePhase>;
-export const ReleasePhasesList = /*@__PURE__*/ S.Array(
+const ReleasePhasesList = /*@__PURE__*/ S.Array(
   PipelineReleasePhase,
 ) as any as S.Schema<ReleasePhasesList>;
 
@@ -5143,7 +5099,7 @@ export interface Release {
   /** Timestamp of when the release was canceled */
   _canceledAt?: number;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ReleaseLinksMap),
     name: S.String,
@@ -5158,12 +5114,12 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tags for this subscription. */
 export type CreateSubscriptionRequestTagsList = Array<string>;
-export const CreateSubscriptionRequestTagsList =
+const CreateSubscriptionRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateSubscriptionRequestTagsList>;
 
 /** The unique set of fields required to configure an audit log subscription integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> at https://github.com/launchdarkly/integration-framework/tree/main/integrations for a full list of fields for the integration you wish to configure. */
 export type CreateSubscriptionRequestConfigMap = { [key: string]: unknown | undefined };
-export const CreateSubscriptionRequestConfigMap =
+const CreateSubscriptionRequestConfigMap =
   UrlMatcher as any as S.Schema<CreateSubscriptionRequestConfigMap>;
 
 export interface CreateSubscriptionRequest {
@@ -5184,7 +5140,7 @@ export interface CreateSubscriptionRequest {
   /** Datadog API key. Only necessary for legacy Datadog webhook integrations. */
   apiKey?: string | Redacted.Redacted<string>;
 }
-export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     name: S.String,
@@ -5201,28 +5157,28 @@ export const CreateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type IntegrationLinksMap = { [key: string]: Link | undefined };
-export const IntegrationLinksMap =
+const IntegrationLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationLinksMap>;
 
 /** Details on configuration for an integration of this type. Refer to the <code>formVariables</code> field in the corresponding <code>manifest.json</code> for a full list of fields for each integration. */
 export type IntegrationConfigMap = { [key: string]: unknown | undefined };
-export const IntegrationConfigMap = UrlMatcher as any as S.Schema<IntegrationConfigMap>;
+const IntegrationConfigMap = UrlMatcher as any as S.Schema<IntegrationConfigMap>;
 
 /** Represents a Custom role policy, defining a resource kinds filter the integration audit log subscription responds to. */
 export type IntegrationStatementsList = Array<Statement>;
-export const IntegrationStatementsList =
+const IntegrationStatementsList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<IntegrationStatementsList>;
 
 /** An array of tags for this integration */
 export type IntegrationTagsList = Array<string>;
-export const IntegrationTagsList = FeatureFlagTagsList as any as S.Schema<IntegrationTagsList>;
+const IntegrationTagsList = FeatureFlagTagsList as any as S.Schema<IntegrationTagsList>;
 
 export interface IntegrationStatusRep {
   statusCode?: number;
   responseBody?: string;
   timestamp?: number;
 }
-export const IntegrationStatusRep = /*@__PURE__*/ S.suspend(() =>
+const IntegrationStatusRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number),
     responseBody: S.optional(S.String),
@@ -5231,7 +5187,7 @@ export const IntegrationStatusRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntegrationStatusRep" }) as any as S.Schema<IntegrationStatusRep>;
 
 export type IntegrationSubscriptionStatusRepErrorsList = Array<IntegrationStatusRep>;
-export const IntegrationSubscriptionStatusRepErrorsList = /*@__PURE__*/ S.Array(
+const IntegrationSubscriptionStatusRepErrorsList = /*@__PURE__*/ S.Array(
   IntegrationStatusRep,
 ) as any as S.Schema<IntegrationSubscriptionStatusRepErrorsList>;
 
@@ -5242,7 +5198,7 @@ export interface IntegrationSubscriptionStatusRep {
   errorCount?: number;
   errors?: IntegrationSubscriptionStatusRepErrorsList;
 }
-export const IntegrationSubscriptionStatusRep = /*@__PURE__*/ S.suspend(() =>
+const IntegrationSubscriptionStatusRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successCount: S.optional(S.Number),
     lastSuccess: S.optional(S.Number),
@@ -5280,7 +5236,7 @@ export interface Integration {
   /** Datadog API key. Only used for legacy Datadog webhook integrations. */
   apiKey?: string | Redacted.Redacted<string>;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
+const Integration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(IntegrationLinksMap),
     _id: S.optional(S.String),
@@ -5299,26 +5255,26 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
 
 /** List of custom role keys the team will access */
 export type CreateTeamRequestCustomRoleKeysList = Array<string>;
-export const CreateTeamRequestCustomRoleKeysList =
+const CreateTeamRequestCustomRoleKeysList =
   FeatureFlagTagsList as any as S.Schema<CreateTeamRequestCustomRoleKeysList>;
 
 /** A list of member IDs who belong to the team */
 export type CreateTeamRequestMemberIDsList = Array<string>;
-export const CreateTeamRequestMemberIDsList =
+const CreateTeamRequestMemberIDsList =
   FeatureFlagTagsList as any as S.Schema<CreateTeamRequestMemberIDsList>;
 
 /** A group of related actions to allow. Specify either <code>actionSet</code> or <code>actions</code>. Use <code>maintainTeam</code> to add team maintainers. */
 export type PermissionGrantInputActionSet = "maintainTeam";
-export const PermissionGrantInputActionSet = S.String;
+const PermissionGrantInputActionSet = S.String;
 
 /** A list of actions to allow. Specify either <code>actionSet</code> or <code>actions</code>. To learn more, read [Role actions](https://launchdarkly.com/docs/ld-docs/home/account/role-actions). */
 export type PermissionGrantInputActionsList = Array<string>;
-export const PermissionGrantInputActionsList =
+const PermissionGrantInputActionsList =
   FeatureFlagTagsList as any as S.Schema<PermissionGrantInputActionsList>;
 
 /** A list of member IDs who receive the permission grant. */
 export type PermissionGrantInputMemberIDsList = Array<string>;
-export const PermissionGrantInputMemberIDsList =
+const PermissionGrantInputMemberIDsList =
   FeatureFlagTagsList as any as S.Schema<PermissionGrantInputMemberIDsList>;
 
 export interface PermissionGrantInput {
@@ -5329,7 +5285,7 @@ export interface PermissionGrantInput {
   /** A list of member IDs who receive the permission grant. */
   memberIDs?: PermissionGrantInputMemberIDsList;
 }
-export const PermissionGrantInput = /*@__PURE__*/ S.suspend(() =>
+const PermissionGrantInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionSet: S.optional(PermissionGrantInputActionSet),
     actions: S.optional(PermissionGrantInputActionsList),
@@ -5339,7 +5295,7 @@ export const PermissionGrantInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of permission grants. Permission grants allow access to a specific action, without having to create or update a custom role. */
 export type CreateTeamRequestPermissionGrantsList = Array<PermissionGrantInput>;
-export const CreateTeamRequestPermissionGrantsList = /*@__PURE__*/ S.Array(
+const CreateTeamRequestPermissionGrantsList = /*@__PURE__*/ S.Array(
   PermissionGrantInput,
 ) as any as S.Schema<CreateTeamRequestPermissionGrantsList>;
 
@@ -5361,7 +5317,7 @@ export interface CreateTeamRequest {
   /** A map of role attributes for the team */
   roleAttributes?: RoleAttributeMap;
 }
-export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expand: S.optional(S.String.pipe(T.Query())),
     customRoleKeys: S.optional(CreateTeamRequestCustomRoleKeysList),
@@ -5376,11 +5332,11 @@ export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type TeamLinksMap = { [key: string]: Link | undefined };
-export const TeamLinksMap = /*@__PURE__*/ S.Record(S.String, Link) as any as S.Schema<TeamLinksMap>;
+const TeamLinksMap = /*@__PURE__*/ S.Record(S.String, Link) as any as S.Schema<TeamLinksMap>;
 
 /** The location and content type of related resources */
 export type ProjectSummaryLinksMap = { [key: string]: Link | undefined };
-export const ProjectSummaryLinksMap =
+const ProjectSummaryLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectSummaryLinksMap>;
 
 export interface ProjectSummary {
@@ -5393,7 +5349,7 @@ export interface ProjectSummary {
   /** The project name */
   name: string;
 }
-export const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
+const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _links: ProjectSummaryLinksMap,
@@ -5404,7 +5360,7 @@ export const ProjectSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on each project where team members have write privileges on at least one resource type (e.g. flags) */
 export type TeamProjectsItemsList = Array<ProjectSummary>;
-export const TeamProjectsItemsList = /*@__PURE__*/ S.Array(
+const TeamProjectsItemsList = /*@__PURE__*/ S.Array(
   ProjectSummary,
 ) as any as S.Schema<TeamProjectsItemsList>;
 
@@ -5413,7 +5369,7 @@ export interface TeamProjects {
   /** Details on each project where team members have write privileges on at least one resource type (e.g. flags) */
   items?: TeamProjectsItemsList;
 }
-export const TeamProjects = /*@__PURE__*/ S.suspend(() =>
+const TeamProjects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.optional(S.Number),
     items: S.optional(TeamProjectsItemsList),
@@ -5430,7 +5386,7 @@ export interface TeamCustomRole {
   /** Timestamp of when the custom role was assigned to this team */
   appliedOn?: number;
 }
-export const TeamCustomRole = /*@__PURE__*/ S.suspend(() =>
+const TeamCustomRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -5441,13 +5397,13 @@ export const TeamCustomRole = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the custom roles that have been assigned to this team */
 export type TeamCustomRolesItemsList = Array<TeamCustomRole>;
-export const TeamCustomRolesItemsList = /*@__PURE__*/ S.Array(
+const TeamCustomRolesItemsList = /*@__PURE__*/ S.Array(
   TeamCustomRole,
 ) as any as S.Schema<TeamCustomRolesItemsList>;
 
 /** The location and content type of related resources */
 export type TeamCustomRolesLinksMap = { [key: string]: Link | undefined };
-export const TeamCustomRolesLinksMap =
+const TeamCustomRolesLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamCustomRolesLinksMap>;
 
 export interface TeamCustomRoles {
@@ -5458,7 +5414,7 @@ export interface TeamCustomRoles {
   /** The location and content type of related resources */
   _links?: TeamCustomRolesLinksMap;
 }
-export const TeamCustomRoles = /*@__PURE__*/ S.suspend(() =>
+const TeamCustomRoles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.optional(S.Number),
     items: S.optional(TeamCustomRolesItemsList),
@@ -5470,7 +5426,7 @@ export interface TeamMembers {
   /** The total count of members that belong to the team */
   totalCount?: number;
 }
-export const TeamMembers = /*@__PURE__*/ S.suspend(() =>
+const TeamMembers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.optional(S.Number),
   }),
@@ -5478,13 +5434,13 @@ export const TeamMembers = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the members that have been assigned as maintainers of the team */
 export type TeamMaintainersItemsList = Array<MemberSummary>;
-export const TeamMaintainersItemsList = /*@__PURE__*/ S.Array(
+const TeamMaintainersItemsList = /*@__PURE__*/ S.Array(
   MemberSummary,
 ) as any as S.Schema<TeamMaintainersItemsList>;
 
 /** The location and content type of related resources */
 export type TeamMaintainersLinksMap = { [key: string]: Link | undefined };
-export const TeamMaintainersLinksMap =
+const TeamMaintainersLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamMaintainersLinksMap>;
 
 export interface TeamMaintainers {
@@ -5495,7 +5451,7 @@ export interface TeamMaintainers {
   /** The location and content type of related resources */
   _links?: TeamMaintainersLinksMap;
 }
-export const TeamMaintainers = /*@__PURE__*/ S.suspend(() =>
+const TeamMaintainers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.optional(S.Number),
     items: S.optional(TeamMaintainersItemsList),
@@ -5533,7 +5489,7 @@ export interface Team {
   /** Paginated list of the maintainers assigned to this team. Only included if specified in the <code>expand</code> query parameter. */
   maintainers?: TeamMaintainers;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     key: S.optional(S.String),
@@ -5558,7 +5514,7 @@ export interface CreateTeamMemberRequest {
   /** CSV file containing email addresses */
   file?: string;
 }
-export const CreateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
     file: S.optional(S.String),
@@ -5580,7 +5536,7 @@ export interface MemberImportItem {
   /** The email address for the member requested to be added to this team. May be blank or an error, such as 'invalid email format', if the email address cannot be found or parsed. */
   value: string;
 }
-export const MemberImportItem = /*@__PURE__*/ S.suspend(() =>
+const MemberImportItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     status: S.String,
@@ -5590,7 +5546,7 @@ export const MemberImportItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of details about the members requested to be added to this team */
 export type TeamImportsRepItemsList = Array<MemberImportItem>;
-export const TeamImportsRepItemsList = /*@__PURE__*/ S.Array(
+const TeamImportsRepItemsList = /*@__PURE__*/ S.Array(
   MemberImportItem,
 ) as any as S.Schema<TeamImportsRepItemsList>;
 
@@ -5598,7 +5554,7 @@ export interface TeamImportsRep {
   /** An array of details about the members requested to be added to this team */
   items?: TeamImportsRepItemsList;
 }
-export const TeamImportsRep = /*@__PURE__*/ S.suspend(() =>
+const TeamImportsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(TeamImportsRepItemsList),
   }),
@@ -5606,16 +5562,16 @@ export const TeamImportsRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Base role for the token */
 export type CreateTokenRequestRole = "reader" | "writer" | "admin";
-export const CreateTokenRequestRole = S.String;
+const CreateTokenRequestRole = S.String;
 
 /** A list of custom role IDs to use as access limits for the access token */
 export type CreateTokenRequestCustomRoleIdsList = Array<string>;
-export const CreateTokenRequestCustomRoleIdsList =
+const CreateTokenRequestCustomRoleIdsList =
   FeatureFlagTagsList as any as S.Schema<CreateTokenRequestCustomRoleIdsList>;
 
 /** A JSON array of statements represented as JSON objects with three attributes: effect, resources, actions. May be used in place of a role. */
 export type CreateTokenRequestInlineRoleList = Array<StatementPost>;
-export const CreateTokenRequestInlineRoleList =
+const CreateTokenRequestInlineRoleList =
   StatementPostList as any as S.Schema<CreateTokenRequestInlineRoleList>;
 
 export interface CreateTokenRequest {
@@ -5634,7 +5590,7 @@ export interface CreateTokenRequest {
   /** The default API version for this token */
   defaultApiVersion?: number;
 }
-export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -5648,18 +5604,16 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of custom role IDs to use as access limits for the access token */
 export type TokenCustomRoleIdsList = Array<string>;
-export const TokenCustomRoleIdsList =
-  FeatureFlagTagsList as any as S.Schema<TokenCustomRoleIdsList>;
+const TokenCustomRoleIdsList = FeatureFlagTagsList as any as S.Schema<TokenCustomRoleIdsList>;
 
 /** An array of policy statements, with three attributes: effect, resources, actions. May be used in place of a role. */
 export type TokenInlineRoleList = Array<Statement>;
-export const TokenInlineRoleList =
+const TokenInlineRoleList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<TokenInlineRoleList>;
 
 /** The location and content type of related resources */
 export type TokenLinksMap = { [key: string]: Link | undefined };
-export const TokenLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokenLinksMap>;
+const TokenLinksMap = InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokenLinksMap>;
 
 export interface Token {
   /** The ID of the access token */
@@ -5697,7 +5651,7 @@ export interface Token {
   /** Timestamp of when the access token expires. Omitted when the token has no expiry. */
   expiry?: number;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
+const Token = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     ownerId: S.String,
@@ -5721,7 +5675,7 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
 
 /** The action to perform when triggering. This should be an array with a single object that looks like <code>{"kind": "flag_action"}</code>. Supported flag actions are <code>turnFlagOn</code> and <code>turnFlagOff</code>. */
 export type CreateTriggerWorkflowRequestInstructionsList = Array<Instruction>;
-export const CreateTriggerWorkflowRequestInstructionsList = /*@__PURE__*/ S.Array(
+const CreateTriggerWorkflowRequestInstructionsList = /*@__PURE__*/ S.Array(
   Instruction,
 ) as any as S.Schema<CreateTriggerWorkflowRequestInstructionsList>;
 
@@ -5739,7 +5693,7 @@ export interface CreateTriggerWorkflowRequest {
   /** The unique identifier of the integration for your trigger. Use <code>generic-trigger</code> for integrations not explicitly supported. */
   integrationKey: string;
 }
-export const CreateTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -5760,12 +5714,11 @@ export const CreateTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The trigger state: active, inactive, or failed */
 export type TriggerWorkflowRepStatus = "active" | "inactive" | "failed";
-export const TriggerWorkflowRepStatus = S.String;
+const TriggerWorkflowRepStatus = S.String;
 
 /** The marshalled JSON request body for the incoming trigger webhook. If this is empty or contains invalid JSON, the timestamp is recorded but this field will be empty. */
 export type RecentTriggerBodyJsonBodyMap = { [key: string]: unknown | undefined };
-export const RecentTriggerBodyJsonBodyMap =
-  UrlMatcher as any as S.Schema<RecentTriggerBodyJsonBodyMap>;
+const RecentTriggerBodyJsonBodyMap = UrlMatcher as any as S.Schema<RecentTriggerBodyJsonBodyMap>;
 
 export interface RecentTriggerBody {
   /** Timestamp of the incoming trigger webhook */
@@ -5773,7 +5726,7 @@ export interface RecentTriggerBody {
   /** The marshalled JSON request body for the incoming trigger webhook. If this is empty or contains invalid JSON, the timestamp is recorded but this field will be empty. */
   jsonBody?: RecentTriggerBodyJsonBodyMap;
 }
-export const RecentTriggerBody = /*@__PURE__*/ S.suspend(() =>
+const RecentTriggerBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     jsonBody: S.optional(RecentTriggerBodyJsonBodyMap),
@@ -5782,13 +5735,13 @@ export const RecentTriggerBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on recent flag trigger requests. */
 export type TriggerWorkflowRepRecentTriggerBodiesList = Array<RecentTriggerBody>;
-export const TriggerWorkflowRepRecentTriggerBodiesList = /*@__PURE__*/ S.Array(
+const TriggerWorkflowRepRecentTriggerBodiesList = /*@__PURE__*/ S.Array(
   RecentTriggerBody,
 ) as any as S.Schema<TriggerWorkflowRepRecentTriggerBodiesList>;
 
 /** The location and content type of related resources */
 export type TriggerWorkflowRepLinksMap = { [key: string]: Link | undefined };
-export const TriggerWorkflowRepLinksMap =
+const TriggerWorkflowRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TriggerWorkflowRepLinksMap>;
 
 export interface TriggerWorkflowRep {
@@ -5823,7 +5776,7 @@ export interface TriggerWorkflowRep {
   /** The location and content type of related resources */
   _links?: TriggerWorkflowRepLinksMap;
 }
-export const TriggerWorkflowRep = /*@__PURE__*/ S.suspend(() =>
+const TriggerWorkflowRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     _version: S.optional(S.Number),
@@ -5845,8 +5798,7 @@ export const TriggerWorkflowRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated with this view */
 export type CreateViewRequestTagsList = Array<string>;
-export const CreateViewRequestTagsList =
-  FeatureFlagTagsList as any as S.Schema<CreateViewRequestTagsList>;
+const CreateViewRequestTagsList = FeatureFlagTagsList as any as S.Schema<CreateViewRequestTagsList>;
 
 export interface CreateViewRequest {
   projectKey: string;
@@ -5863,7 +5815,7 @@ export interface CreateViewRequest {
   /** Tags associated with this view */
   tags?: CreateViewRequestTagsList;
 }
-export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -5877,27 +5829,27 @@ export const CreateViewRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type ViewsAccessDeniedReasonResourcesList = Array<string>;
-export const ViewsAccessDeniedReasonResourcesList =
+const ViewsAccessDeniedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ViewsAccessDeniedReasonNotResourcesList = Array<string>;
-export const ViewsAccessDeniedReasonNotResourcesList =
+const ViewsAccessDeniedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ViewsAccessDeniedReasonActionsList = Array<string>;
-export const ViewsAccessDeniedReasonActionsList =
+const ViewsAccessDeniedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ViewsAccessDeniedReasonNotActionsList = Array<string>;
-export const ViewsAccessDeniedReasonNotActionsList =
+const ViewsAccessDeniedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ViewsAccessDeniedReasonEffect = "allow" | "deny";
-export const ViewsAccessDeniedReasonEffect = S.String;
+const ViewsAccessDeniedReasonEffect = S.String;
 
 export interface ViewsAccessDeniedReason {
   /** Resource specifier strings */
@@ -5912,7 +5864,7 @@ export interface ViewsAccessDeniedReason {
   effect: ViewsAccessDeniedReasonEffect;
   role_name?: string;
 }
-export const ViewsAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
+const ViewsAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(ViewsAccessDeniedReasonResourcesList),
     notResources: S.optional(ViewsAccessDeniedReasonNotResourcesList),
@@ -5927,7 +5879,7 @@ export interface ViewsAccessDenied {
   action: string;
   reason: ViewsAccessDeniedReason;
 }
-export const ViewsAccessDenied = /*@__PURE__*/ S.suspend(() =>
+const ViewsAccessDenied = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: ViewsAccessDeniedReason,
@@ -5935,33 +5887,33 @@ export const ViewsAccessDenied = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewsAccessDenied" }) as any as S.Schema<ViewsAccessDenied>;
 
 export type ViewsAccessDeniedList = Array<ViewsAccessDenied>;
-export const ViewsAccessDeniedList = /*@__PURE__*/ S.Array(
+const ViewsAccessDeniedList = /*@__PURE__*/ S.Array(
   ViewsAccessDenied,
 ) as any as S.Schema<ViewsAccessDeniedList>;
 
 /** Resource specifier strings */
 export type ViewsAccessAllowedReasonResourcesList = Array<string>;
-export const ViewsAccessAllowedReasonResourcesList =
+const ViewsAccessAllowedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ViewsAccessAllowedReasonNotResourcesList = Array<string>;
-export const ViewsAccessAllowedReasonNotResourcesList =
+const ViewsAccessAllowedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ViewsAccessAllowedReasonActionsList = Array<string>;
-export const ViewsAccessAllowedReasonActionsList =
+const ViewsAccessAllowedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ViewsAccessAllowedReasonNotActionsList = Array<string>;
-export const ViewsAccessAllowedReasonNotActionsList =
+const ViewsAccessAllowedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<ViewsAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ViewsAccessAllowedReasonEffect = "allow" | "deny";
-export const ViewsAccessAllowedReasonEffect = S.String;
+const ViewsAccessAllowedReasonEffect = S.String;
 
 export interface ViewsAccessAllowedReason {
   /** Resource specifier strings */
@@ -5976,7 +5928,7 @@ export interface ViewsAccessAllowedReason {
   effect: ViewsAccessAllowedReasonEffect;
   role_name?: string;
 }
-export const ViewsAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
+const ViewsAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(ViewsAccessAllowedReasonResourcesList),
     notResources: S.optional(ViewsAccessAllowedReasonNotResourcesList),
@@ -5991,7 +5943,7 @@ export interface ViewsAccessAllowedRep {
   action: string;
   reason: ViewsAccessAllowedReason;
 }
-export const ViewsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
+const ViewsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: ViewsAccessAllowedReason,
@@ -5999,7 +5951,7 @@ export const ViewsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewsAccessAllowedRep" }) as any as S.Schema<ViewsAccessAllowedRep>;
 
 export type ViewsAccessAllowedList = Array<ViewsAccessAllowedRep>;
-export const ViewsAccessAllowedList = /*@__PURE__*/ S.Array(
+const ViewsAccessAllowedList = /*@__PURE__*/ S.Array(
   ViewsAccessAllowedRep,
 ) as any as S.Schema<ViewsAccessAllowedList>;
 
@@ -6007,7 +5959,7 @@ export interface ViewsAccess {
   denied: ViewsAccessDeniedList;
   allowed: ViewsAccessAllowedList;
 }
-export const ViewsAccess = /*@__PURE__*/ S.suspend(() =>
+const ViewsAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denied: ViewsAccessDeniedList,
     allowed: ViewsAccessAllowedList,
@@ -6018,7 +5970,7 @@ export interface CoreLink {
   href: string;
   type: string;
 }
-export const CoreLink = /*@__PURE__*/ S.suspend(() =>
+const CoreLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     type: S.String,
@@ -6030,7 +5982,7 @@ export interface ParentAndSelfLinks {
   self: CoreLink;
   parent: CoreLink;
 }
-export const ParentAndSelfLinks = /*@__PURE__*/ S.suspend(() =>
+const ParentAndSelfLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: CoreLink,
     parent: CoreLink,
@@ -6039,7 +5991,7 @@ export const ParentAndSelfLinks = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated with this view */
 export type ViewTagsList = Array<string>;
-export const ViewTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ViewTagsList>;
+const ViewTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<ViewTagsList>;
 
 export interface ViewsMaintainerMember {
   id: string;
@@ -6048,7 +6000,7 @@ export interface ViewsMaintainerMember {
   firstName?: string;
   lastName?: string;
 }
-export const ViewsMaintainerMember = /*@__PURE__*/ S.suspend(() =>
+const ViewsMaintainerMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -6063,7 +6015,7 @@ export interface ViewsMaintainerTeam {
   key: string;
   name: string;
 }
-export const ViewsMaintainerTeam = /*@__PURE__*/ S.suspend(() =>
+const ViewsMaintainerTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     key: S.String,
@@ -6077,7 +6029,7 @@ export interface Maintainer {
   maintainerMember?: ViewsMaintainerMember;
   maintainerTeam?: ViewsMaintainerTeam;
 }
-export const Maintainer = /*@__PURE__*/ S.suspend(() =>
+const Maintainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: S.String,
@@ -6089,7 +6041,7 @@ export const Maintainer = /*@__PURE__*/ S.suspend(() =>
 export interface ViewsSelfLink {
   self: CoreLink;
 }
-export const ViewsSelfLink = /*@__PURE__*/ S.suspend(() =>
+const ViewsSelfLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: CoreLink,
   }),
@@ -6100,7 +6052,7 @@ export interface ExpandedDirectlyLinkedFlag {
   name: string;
   links: ViewsSelfLink;
 }
-export const ExpandedDirectlyLinkedFlag = /*@__PURE__*/ S.suspend(() =>
+const ExpandedDirectlyLinkedFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -6111,7 +6063,7 @@ export const ExpandedDirectlyLinkedFlag = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandedDirectlyLinkedFlag>;
 
 export type ExpandedDirectlyLinkedFlagsItemsList = Array<ExpandedDirectlyLinkedFlag>;
-export const ExpandedDirectlyLinkedFlagsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedDirectlyLinkedFlagsItemsList = /*@__PURE__*/ S.Array(
   ExpandedDirectlyLinkedFlag,
 ) as any as S.Schema<ExpandedDirectlyLinkedFlagsItemsList>;
 
@@ -6119,7 +6071,7 @@ export interface ExpandedDirectlyLinkedFlags {
   items: ExpandedDirectlyLinkedFlagsItemsList;
   totalCount: number;
 }
-export const ExpandedDirectlyLinkedFlags = /*@__PURE__*/ S.suspend(() =>
+const ExpandedDirectlyLinkedFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedDirectlyLinkedFlagsItemsList,
     totalCount: S.Number,
@@ -6132,7 +6084,7 @@ export interface FlagsSummary {
   count: number;
   linkedFlags?: ExpandedDirectlyLinkedFlags;
 }
-export const FlagsSummary = /*@__PURE__*/ S.suspend(() =>
+const FlagsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     linkedFlags: S.optional(ExpandedDirectlyLinkedFlags),
@@ -6145,7 +6097,7 @@ export interface ExpandedDirectlyLinkedSegment {
   environmentId: string;
   links: ViewsSelfLink;
 }
-export const ExpandedDirectlyLinkedSegment = /*@__PURE__*/ S.suspend(() =>
+const ExpandedDirectlyLinkedSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -6157,7 +6109,7 @@ export const ExpandedDirectlyLinkedSegment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandedDirectlyLinkedSegment>;
 
 export type ExpandedDirectlyLinkedSegmentsItemsList = Array<ExpandedDirectlyLinkedSegment>;
-export const ExpandedDirectlyLinkedSegmentsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedDirectlyLinkedSegmentsItemsList = /*@__PURE__*/ S.Array(
   ExpandedDirectlyLinkedSegment,
 ) as any as S.Schema<ExpandedDirectlyLinkedSegmentsItemsList>;
 
@@ -6165,7 +6117,7 @@ export interface ExpandedDirectlyLinkedSegments {
   items: ExpandedDirectlyLinkedSegmentsItemsList;
   totalCount: number;
 }
-export const ExpandedDirectlyLinkedSegments = /*@__PURE__*/ S.suspend(() =>
+const ExpandedDirectlyLinkedSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedDirectlyLinkedSegmentsItemsList,
     totalCount: S.Number,
@@ -6178,7 +6130,7 @@ export interface SegmentsSummary {
   count: number;
   linkedSegments?: ExpandedDirectlyLinkedSegments;
 }
-export const SegmentsSummary = /*@__PURE__*/ S.suspend(() =>
+const SegmentsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     linkedSegments: S.optional(ExpandedDirectlyLinkedSegments),
@@ -6188,21 +6140,19 @@ export const SegmentsSummary = /*@__PURE__*/ S.suspend(() =>
 export interface MetricsSummary {
   count: number;
 }
-export const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
+const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
 ).annotate({ identifier: "MetricsSummary" }) as any as S.Schema<MetricsSummary>;
 
 export type AIConfigsSummary = MetricsSummary;
-export const AIConfigsSummary = MetricsSummary;
-
 export interface ResourceSummary {
   flagCount: number;
   segmentCount?: number;
   totalCount: number;
 }
-export const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
+const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagCount: S.Number,
     segmentCount: S.optional(S.Number),
@@ -6212,20 +6162,15 @@ export const ResourceSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the flag */
 export type ExpandedFlagTagsList = Array<string>;
-export const ExpandedFlagTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedFlagTagsList>;
+const ExpandedFlagTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedFlagTagsList>;
 
 /** The type of the maintainer */
 export type ExpandedFlagMaintainerKind = "member" | "team";
-export const ExpandedFlagMaintainerKind = S.String;
+const ExpandedFlagMaintainerKind = S.String;
 
 export type ViewsLink = Link;
-export const ViewsLink = Link;
-
 /** The location and content type of related resources */
 export type ViewsMemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const ViewsMemberSummaryLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ViewsMemberSummaryLinksMap>;
-
 export interface ViewsMemberSummary {
   /** The location and content type of related resources */
   _links: ViewsMemberSummaryLinksMap;
@@ -6240,15 +6185,15 @@ export interface ViewsMemberSummary {
   /** The member's email address */
   email: string;
 }
-export const ViewsMemberSummary = MemberSummary as any as S.Schema<ViewsMemberSummary>;
+const ViewsMemberSummary = MemberSummary as any as S.Schema<ViewsMemberSummary>;
 
 /** A list of keys of the custom roles this team has access to */
 export type ViewsMemberTeamSummaryRepCustomRoleKeysList = Array<string>;
-export const ViewsMemberTeamSummaryRepCustomRoleKeysList =
+const ViewsMemberTeamSummaryRepCustomRoleKeysList =
   FeatureFlagTagsList as any as S.Schema<ViewsMemberTeamSummaryRepCustomRoleKeysList>;
 
 export type ViewsMemberTeamSummaryRepLinksMap = { [key: string]: Link | undefined };
-export const ViewsMemberTeamSummaryRepLinksMap =
+const ViewsMemberTeamSummaryRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ViewsMemberTeamSummaryRepLinksMap>;
 
 export interface ViewsMemberTeamSummaryRep {
@@ -6260,7 +6205,7 @@ export interface ViewsMemberTeamSummaryRep {
   /** The team name */
   name: string;
 }
-export const ViewsMemberTeamSummaryRep = /*@__PURE__*/ S.suspend(() =>
+const ViewsMemberTeamSummaryRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRoleKeys: ViewsMemberTeamSummaryRepCustomRoleKeysList,
     key: S.String,
@@ -6279,7 +6224,7 @@ export interface ExpandedFlagMaintainer {
   _member?: ViewsMemberSummary;
   _team?: ViewsMemberTeamSummaryRep;
 }
-export const ExpandedFlagMaintainer = /*@__PURE__*/ S.suspend(() =>
+const ExpandedFlagMaintainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     kind: ExpandedFlagMaintainerKind,
@@ -6311,7 +6256,7 @@ export interface ExpandedFlag {
   maintainer?: ExpandedFlagMaintainer;
   _links?: ParentAndSelfLinks;
 }
-export const ExpandedFlag = /*@__PURE__*/ S.suspend(() =>
+const ExpandedFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -6328,7 +6273,7 @@ export const ExpandedFlag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedFlag" }) as any as S.Schema<ExpandedFlag>;
 
 export type ExpandedLinkedFlagsItemsList = Array<ExpandedFlag>;
-export const ExpandedLinkedFlagsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedLinkedFlagsItemsList = /*@__PURE__*/ S.Array(
   ExpandedFlag,
 ) as any as S.Schema<ExpandedLinkedFlagsItemsList>;
 
@@ -6337,7 +6282,7 @@ export interface ExpandedLinkedFlags {
   items: ExpandedLinkedFlagsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedFlags = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedFlagsItemsList,
     totalCount: S.Number,
@@ -6346,8 +6291,7 @@ export const ExpandedLinkedFlags = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment */
 export type ExpandedSegmentTagsList = Array<string>;
-export const ExpandedSegmentTagsList =
-  FeatureFlagTagsList as any as S.Schema<ExpandedSegmentTagsList>;
+const ExpandedSegmentTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedSegmentTagsList>;
 
 /** Segment representation for Views API - contains only fields actually used by the Views service */
 export interface ExpandedSegment {
@@ -6377,7 +6321,7 @@ export interface ExpandedSegment {
   generation?: number;
   _links?: ParentAndSelfLinks;
 }
-export const ExpandedSegment = /*@__PURE__*/ S.suspend(() =>
+const ExpandedSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -6396,7 +6340,7 @@ export const ExpandedSegment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedSegment" }) as any as S.Schema<ExpandedSegment>;
 
 export type ExpandedLinkedSegmentsItemsList = Array<ExpandedSegment>;
-export const ExpandedLinkedSegmentsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedLinkedSegmentsItemsList = /*@__PURE__*/ S.Array(
   ExpandedSegment,
 ) as any as S.Schema<ExpandedLinkedSegmentsItemsList>;
 
@@ -6405,7 +6349,7 @@ export interface ExpandedLinkedSegments {
   items: ExpandedLinkedSegmentsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedSegments = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedSegmentsItemsList,
     totalCount: S.Number,
@@ -6441,7 +6385,7 @@ export interface ExpandedMetric {
   lastSeen?: number;
   _links?: ParentAndSelfLinks;
 }
-export const ExpandedMetric = /*@__PURE__*/ S.suspend(() =>
+const ExpandedMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -6461,7 +6405,7 @@ export const ExpandedMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedMetric" }) as any as S.Schema<ExpandedMetric>;
 
 export type ExpandedLinkedMetricsItemsList = Array<ExpandedMetric>;
-export const ExpandedLinkedMetricsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedLinkedMetricsItemsList = /*@__PURE__*/ S.Array(
   ExpandedMetric,
 ) as any as S.Schema<ExpandedLinkedMetricsItemsList>;
 
@@ -6469,7 +6413,7 @@ export interface ExpandedLinkedMetrics {
   items: ExpandedLinkedMetricsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedMetrics = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedMetricsItemsList,
     totalCount: S.Number,
@@ -6478,8 +6422,7 @@ export const ExpandedLinkedMetrics = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the AI config */
 export type ExpandedAIConfigTagsList = Array<string>;
-export const ExpandedAIConfigTagsList =
-  FeatureFlagTagsList as any as S.Schema<ExpandedAIConfigTagsList>;
+const ExpandedAIConfigTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedAIConfigTagsList>;
 
 /** AI Config representation for Views API - contains only fields actually used by the Views service */
 export interface ExpandedAIConfig {
@@ -6501,7 +6444,7 @@ export interface ExpandedAIConfig {
   flagKey?: string;
   _links?: ParentAndSelfLinks;
 }
-export const ExpandedAIConfig = /*@__PURE__*/ S.suspend(() =>
+const ExpandedAIConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -6516,7 +6459,7 @@ export const ExpandedAIConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedAIConfig" }) as any as S.Schema<ExpandedAIConfig>;
 
 export type ExpandedLinkedAIConfigsItemsList = Array<ExpandedAIConfig>;
-export const ExpandedLinkedAIConfigsItemsList = /*@__PURE__*/ S.Array(
+const ExpandedLinkedAIConfigsItemsList = /*@__PURE__*/ S.Array(
   ExpandedAIConfig,
 ) as any as S.Schema<ExpandedLinkedAIConfigsItemsList>;
 
@@ -6524,7 +6467,7 @@ export interface ExpandedLinkedAIConfigs {
   items: ExpandedLinkedAIConfigsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedAIConfigs = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedAIConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedAIConfigsItemsList,
     totalCount: S.Number,
@@ -6532,14 +6475,14 @@ export const ExpandedLinkedAIConfigs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpandedLinkedAIConfigs" }) as any as S.Schema<ExpandedLinkedAIConfigs>;
 
 export type ExpandedLinkedResourcesFlagsItemsList = Array<ExpandedFlag>;
-export const ExpandedLinkedResourcesFlagsItemsList =
+const ExpandedLinkedResourcesFlagsItemsList =
   ExpandedLinkedFlagsItemsList as any as S.Schema<ExpandedLinkedResourcesFlagsItemsList>;
 
 export interface ExpandedLinkedResourcesFlags {
   items: ExpandedLinkedResourcesFlagsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedResourcesFlags = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedResourcesFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedResourcesFlagsItemsList,
     totalCount: S.Number,
@@ -6549,14 +6492,14 @@ export const ExpandedLinkedResourcesFlags = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExpandedLinkedResourcesFlags>;
 
 export type ExpandedLinkedResourcesSegmentsItemsList = Array<ExpandedSegment>;
-export const ExpandedLinkedResourcesSegmentsItemsList =
+const ExpandedLinkedResourcesSegmentsItemsList =
   ExpandedLinkedSegmentsItemsList as any as S.Schema<ExpandedLinkedResourcesSegmentsItemsList>;
 
 export interface ExpandedLinkedResourcesSegments {
   items: ExpandedLinkedResourcesSegmentsItemsList;
   totalCount: number;
 }
-export const ExpandedLinkedResourcesSegments = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedResourcesSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedResourcesSegmentsItemsList,
     totalCount: S.Number,
@@ -6569,7 +6512,7 @@ export interface ExpandedLinkedResourcesItems {
   flags: ExpandedLinkedResourcesFlags;
   segments?: ExpandedLinkedResourcesSegments;
 }
-export const ExpandedLinkedResourcesItems = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedResourcesItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flags: ExpandedLinkedResourcesFlags,
     segments: S.optional(ExpandedLinkedResourcesSegments),
@@ -6583,7 +6526,7 @@ export interface ExpandedLinkedResources {
   items: ExpandedLinkedResourcesItems;
   totalCount: number;
 }
-export const ExpandedLinkedResources = /*@__PURE__*/ S.suspend(() =>
+const ExpandedLinkedResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandedLinkedResourcesItems,
     totalCount: S.Number,
@@ -6632,7 +6575,7 @@ export interface View {
   aiConfigsExpanded?: ExpandedLinkedAIConfigs;
   resourcesExpanded?: ExpandedLinkedResources;
 }
-export const View = /*@__PURE__*/ S.suspend(() =>
+const View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(ViewsAccess),
     _links: S.optional(ParentAndSelfLinks),
@@ -6667,7 +6610,7 @@ export const View = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags for this webhook */
 export type CreateWebhookRequestTagsList = Array<string>;
-export const CreateWebhookRequestTagsList =
+const CreateWebhookRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<CreateWebhookRequestTagsList>;
 
 export interface CreateWebhookRequest {
@@ -6686,7 +6629,7 @@ export interface CreateWebhookRequest {
   /** List of tags for this webhook */
   tags?: CreateWebhookRequestTagsList;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     url: S.String,
@@ -6700,17 +6643,17 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type WebhookLinksMap = { [key: string]: Link | undefined };
-export const WebhookLinksMap =
+const WebhookLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WebhookLinksMap>;
 
 /** Represents a Custom role policy, defining a resource kinds filter the webhook responds to. */
 export type WebhookStatementsList = Array<Statement>;
-export const WebhookStatementsList =
+const WebhookStatementsList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<WebhookStatementsList>;
 
 /** List of tags for this webhook */
 export type WebhookTagsList = Array<string>;
-export const WebhookTagsList = ViewTagsList as any as S.Schema<WebhookTagsList>;
+const WebhookTagsList = ViewTagsList as any as S.Schema<WebhookTagsList>;
 
 export interface Webhook {
   /** The location and content type of related resources */
@@ -6732,7 +6675,7 @@ export interface Webhook {
   /** Details on the allowed and denied actions for this webhook */
   _access?: Access;
 }
-export const Webhook = /*@__PURE__*/ S.suspend(() =>
+const Webhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: WebhookLinksMap,
     _id: S.String,
@@ -6748,12 +6691,12 @@ export const Webhook = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of member IDs for the members to request approval from for this stage */
 export type ConditionInputNotifyMemberIdsList = Array<string>;
-export const ConditionInputNotifyMemberIdsList =
+const ConditionInputNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<ConditionInputNotifyMemberIdsList>;
 
 /** A list of team keys for the teams to request approval from for this stage */
 export type ConditionInputNotifyTeamKeysList = Array<string>;
-export const ConditionInputNotifyTeamKeysList =
+const ConditionInputNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<ConditionInputNotifyTeamKeysList>;
 
 export interface ConditionInput {
@@ -6778,7 +6721,7 @@ export interface ConditionInput {
   /** The type of condition to meet before executing this stage of the workflow. Use <code>schedule</code> to schedule a workflow stage. Use <code>ld-approval</code> to add an approval request to a workflow stage. */
   kind?: string;
 }
-export const ConditionInput = /*@__PURE__*/ S.suspend(() =>
+const ConditionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleKind: S.optional(S.String),
     executionDate: S.optional(S.Number),
@@ -6795,7 +6738,7 @@ export const ConditionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of conditions for the stage */
 export type StageInputConditionsList = Array<ConditionInput>;
-export const StageInputConditionsList = /*@__PURE__*/ S.Array(
+const StageInputConditionsList = /*@__PURE__*/ S.Array(
   ConditionInput,
 ) as any as S.Schema<StageInputConditionsList>;
 
@@ -6803,7 +6746,7 @@ export interface ActionInput {
   /** An array of instructions for the stage. Each object in the array uses the semantic patch format for updating a feature flag. */
   instructions?: unknown;
 }
-export const ActionInput = /*@__PURE__*/ S.suspend(() =>
+const ActionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instructions: S.optional(S.Unknown),
   }),
@@ -6819,7 +6762,7 @@ export interface StageInput {
   /** An <code>instructions</code> field containing an array of instructions for the stage. Each object in the array uses the semantic patch format for updating a feature flag. */
   action?: ActionInput;
 }
-export const StageInput = /*@__PURE__*/ S.suspend(() =>
+const StageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     executeConditionsInSequence: S.optional(S.Boolean),
@@ -6829,7 +6772,7 @@ export const StageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageInput" }) as any as S.Schema<StageInput>;
 
 export type CreateWorkflowTemplateRequestStagesList = Array<StageInput>;
-export const CreateWorkflowTemplateRequestStagesList = /*@__PURE__*/ S.Array(
+const CreateWorkflowTemplateRequestStagesList = /*@__PURE__*/ S.Array(
   StageInput,
 ) as any as S.Schema<CreateWorkflowTemplateRequestStagesList>;
 
@@ -6843,7 +6786,7 @@ export interface CreateWorkflowTemplateRequest {
   environmentKey?: string;
   flagKey?: string;
 }
-export const CreateWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.optional(S.String),
@@ -6859,7 +6802,7 @@ export const CreateWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkflowTemplateRequest>;
 
 export type WorkflowTemplateOutputLinksMap = { [key: string]: Link | undefined };
-export const WorkflowTemplateOutputLinksMap =
+const WorkflowTemplateOutputLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WorkflowTemplateOutputLinksMap>;
 
 export interface ExecutionOutput {
@@ -6868,7 +6811,7 @@ export interface ExecutionOutput {
   /** Timestamp of when the workflow was completed. */
   stopDate?: number;
 }
-export const ExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+const ExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     stopDate: S.optional(S.Number),
@@ -6876,7 +6819,7 @@ export const ExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecutionOutput" }) as any as S.Schema<ExecutionOutput>;
 
 export type ConditionOutputNotifyMemberIdsList = Array<string>;
-export const ConditionOutputNotifyMemberIdsList =
+const ConditionOutputNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<ConditionOutputNotifyMemberIdsList>;
 
 export interface ReviewOutput {
@@ -6887,7 +6830,7 @@ export interface ReviewOutput {
   memberId?: string;
   serviceTokenId?: string;
 }
-export const ReviewOutput = /*@__PURE__*/ S.suspend(() =>
+const ReviewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     kind: S.String,
@@ -6899,7 +6842,7 @@ export const ReviewOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewOutput" }) as any as S.Schema<ReviewOutput>;
 
 export type ConditionOutputAllReviewsList = Array<ReviewOutput>;
-export const ConditionOutputAllReviewsList = /*@__PURE__*/ S.Array(
+const ConditionOutputAllReviewsList = /*@__PURE__*/ S.Array(
   ReviewOutput,
 ) as any as S.Schema<ConditionOutputAllReviewsList>;
 
@@ -6918,7 +6861,7 @@ export interface ConditionOutput {
   appliedDate?: number;
   creationConfig?: FormVariableConfig;
 }
-export const ConditionOutput = /*@__PURE__*/ S.suspend(() =>
+const ConditionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     kind: S.optional(S.String),
@@ -6938,7 +6881,7 @@ export const ConditionOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of conditions for the stage */
 export type StageOutputConditionsList = Array<ConditionOutput>;
-export const StageOutputConditionsList = /*@__PURE__*/ S.Array(
+const StageOutputConditionsList = /*@__PURE__*/ S.Array(
   ConditionOutput,
 ) as any as S.Schema<StageOutputConditionsList>;
 
@@ -6948,7 +6891,7 @@ export interface ActionOutput {
   /** An array of instructions for the stage. Each object in the array uses the semantic patch format for updating a feature flag. */
   instructions: Instructions;
 }
-export const ActionOutput = /*@__PURE__*/ S.suspend(() =>
+const ActionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     instructions: Instructions,
@@ -6967,7 +6910,7 @@ export interface StageOutput {
   /** Details on the execution of this stage */
   _execution: ExecutionOutput;
 }
-export const StageOutput = /*@__PURE__*/ S.suspend(() =>
+const StageOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     name: S.optional(S.String),
@@ -6978,7 +6921,7 @@ export const StageOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StageOutput" }) as any as S.Schema<StageOutput>;
 
 export type WorkflowTemplateOutputStagesList = Array<StageOutput>;
-export const WorkflowTemplateOutputStagesList = /*@__PURE__*/ S.Array(
+const WorkflowTemplateOutputStagesList = /*@__PURE__*/ S.Array(
   StageOutput,
 ) as any as S.Schema<WorkflowTemplateOutputStagesList>;
 
@@ -6993,7 +6936,7 @@ export interface WorkflowTemplateOutput {
   description?: string;
   stages?: WorkflowTemplateOutputStagesList;
 }
-export const WorkflowTemplateOutput = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTemplateOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _key: S.String,
@@ -7012,7 +6955,7 @@ export interface DeleteAdaptiveTriggerRequest {
   environmentKey: string;
   triggerID: string;
 }
-export const DeleteAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7029,14 +6972,14 @@ export const DeleteAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAdaptiveTriggerRequest>;
 
 export interface DeleteAdaptiveTriggerResponse {}
-export const DeleteAdaptiveTriggerResponse =
+const DeleteAdaptiveTriggerResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteAdaptiveTriggerResponse>;
 
 export interface DeleteAgentGraphRequest {
   projectKey: string;
   graphKey: string;
 }
-export const DeleteAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     graphKey: S.String.pipe(T.Label()),
@@ -7050,14 +6993,14 @@ export const DeleteAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentGraphRequest" }) as any as S.Schema<DeleteAgentGraphRequest>;
 
 export interface DeleteAgentGraphResponse {}
-export const DeleteAgentGraphResponse =
+const DeleteAgentGraphResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteAgentGraphResponse>;
 
 export interface DeleteAgentOptimizationRequest {
   projectKey: string;
   optimizationKey: string;
 }
-export const DeleteAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -7073,16 +7016,16 @@ export const DeleteAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAgentOptimizationRequest>;
 
 export interface DeleteAgentOptimizationResponse {}
-export const DeleteAgentOptimizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteAgentOptimizationResponse" },
-) as any as S.Schema<DeleteAgentOptimizationResponse>;
+const DeleteAgentOptimizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteAgentOptimizationResponse",
+}) as any as S.Schema<DeleteAgentOptimizationResponse>;
 
 export interface DeleteAgentOptimizationRunRequest {
   projectKey: string;
   optimizationKey: string;
   runId: string;
 }
-export const DeleteAgentOptimizationRunRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentOptimizationRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -7099,9 +7042,7 @@ export const DeleteAgentOptimizationRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAgentOptimizationRunRequest>;
 
 export interface DeleteAgentOptimizationRunResponse {}
-export const DeleteAgentOptimizationRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteAgentOptimizationRunResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAgentOptimizationRunResponse",
 }) as any as S.Schema<DeleteAgentOptimizationRunResponse>;
 
@@ -7109,7 +7050,7 @@ export interface DeleteAgentSkillRequest {
   projectKey: string;
   skillKey: string;
 }
-export const DeleteAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     skillKey: S.String.pipe(T.Label()),
@@ -7123,14 +7064,14 @@ export const DeleteAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentSkillRequest" }) as any as S.Schema<DeleteAgentSkillRequest>;
 
 export interface DeleteAgentSkillResponse {}
-export const DeleteAgentSkillResponse =
+const DeleteAgentSkillResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteAgentSkillResponse>;
 
 export interface DeleteAIConfigRequest {
   projectKey: string;
   configKey: string;
 }
-export const DeleteAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -7144,7 +7085,7 @@ export const DeleteAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAIConfigRequest" }) as any as S.Schema<DeleteAIConfigRequest>;
 
 export interface DeleteAIConfigResponse {}
-export const DeleteAIConfigResponse =
+const DeleteAIConfigResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteAIConfigResponse>;
 
 export interface DeleteAIConfigVariationRequest {
@@ -7152,7 +7093,7 @@ export interface DeleteAIConfigVariationRequest {
   configKey: string;
   variationKey: string;
 }
-export const DeleteAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -7169,14 +7110,14 @@ export const DeleteAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAIConfigVariationRequest>;
 
 export interface DeleteAIConfigVariationResponse {}
-export const DeleteAIConfigVariationResponse =
+const DeleteAIConfigVariationResponse =
   DeleteAgentOptimizationResponse as any as S.Schema<DeleteAIConfigVariationResponse>;
 
 export interface DeleteAIToolRequest {
   projectKey: string;
   toolKey: string;
 }
-export const DeleteAIToolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAIToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     toolKey: S.String.pipe(T.Label()),
@@ -7190,13 +7131,13 @@ export const DeleteAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAIToolRequest" }) as any as S.Schema<DeleteAIToolRequest>;
 
 export interface DeleteAIToolResponse {}
-export const DeleteAIToolResponse =
+const DeleteAIToolResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteAIToolResponse>;
 
 export interface DeleteAnnouncementPublicRequest {
   announcementId: string;
 }
-export const DeleteAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announcementId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/announcements/{announcementId}", code: 200 })),
@@ -7205,21 +7146,21 @@ export const DeleteAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAnnouncementPublicRequest>;
 
 export interface DeleteAnnouncementPublicResponse {}
-export const DeleteAnnouncementPublicResponse =
+const DeleteAnnouncementPublicResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteAnnouncementPublicResponse>;
 
 export interface DeleteApplicationRequest {
   /** The application key */
   applicationKey: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/applications/{applicationKey}", code: 200 })),
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse =
+const DeleteApplicationResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteApplicationVersionRequest {
@@ -7228,7 +7169,7 @@ export interface DeleteApplicationVersionRequest {
   /** The application version key */
   versionKey: string;
 }
-export const DeleteApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
     versionKey: S.String.pipe(T.Label()),
@@ -7244,14 +7185,14 @@ export const DeleteApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApplicationVersionRequest>;
 
 export interface DeleteApplicationVersionResponse {}
-export const DeleteApplicationVersionResponse =
+const DeleteApplicationVersionResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteApplicationVersionResponse>;
 
 export interface DeleteApprovalRequestRequest {
   /** The approval request ID */
   id: string;
 }
-export const DeleteApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/approval-requests/{id}", code: 200 })),
@@ -7260,7 +7201,7 @@ export const DeleteApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApprovalRequestRequest>;
 
 export interface DeleteApprovalRequestResponse {}
-export const DeleteApprovalRequestResponse =
+const DeleteApprovalRequestResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteApprovalRequestResponse>;
 
 export interface DeleteApprovalRequestForFlagRequest {
@@ -7273,7 +7214,7 @@ export interface DeleteApprovalRequestForFlagRequest {
   /** The feature flag approval request ID */
   id: string;
 }
-export const DeleteApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -7291,7 +7232,7 @@ export const DeleteApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteApprovalRequestForFlagRequest>;
 
 export interface DeleteApprovalRequestForFlagResponse {}
-export const DeleteApprovalRequestForFlagResponse =
+const DeleteApprovalRequestForFlagResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteApprovalRequestForFlagResponse>;
 
 export interface DeleteBigSegmentStoreIntegrationRequest {
@@ -7304,7 +7245,7 @@ export interface DeleteBigSegmentStoreIntegrationRequest {
   /** The integration ID */
   integrationId: string;
 }
-export const DeleteBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7322,11 +7263,11 @@ export const DeleteBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteBigSegmentStoreIntegrationRequest>;
 
 export interface DeleteBigSegmentStoreIntegrationResponse {}
-export const DeleteBigSegmentStoreIntegrationResponse =
+const DeleteBigSegmentStoreIntegrationResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteBigSegmentStoreIntegrationResponse>;
 
 export type DeleteBranchesRequestBodyList = Array<string>;
-export const DeleteBranchesRequestBodyList =
+const DeleteBranchesRequestBodyList =
   FeatureFlagTagsList as any as S.Schema<DeleteBranchesRequestBodyList>;
 
 export interface DeleteBranchesRequest {
@@ -7334,7 +7275,7 @@ export interface DeleteBranchesRequest {
   repo: string;
   body: DeleteBranchesRequestBodyList;
 }
-export const DeleteBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
     body: DeleteBranchesRequestBodyList.pipe(T.HttpBody()),
@@ -7348,21 +7289,21 @@ export const DeleteBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchesRequest" }) as any as S.Schema<DeleteBranchesRequest>;
 
 export interface DeleteBranchesResponse {}
-export const DeleteBranchesResponse =
+const DeleteBranchesResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteBranchesResponse>;
 
 export interface DeleteCustomRoleRequest {
   /** The custom role key */
   customRoleKey: string;
 }
-export const DeleteCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRoleKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
 ).annotate({ identifier: "DeleteCustomRoleRequest" }) as any as S.Schema<DeleteCustomRoleRequest>;
 
 export interface DeleteCustomRoleResponse {}
-export const DeleteCustomRoleResponse =
+const DeleteCustomRoleResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteCustomRoleResponse>;
 
 export interface DeleteDestinationRequest {
@@ -7373,7 +7314,7 @@ export interface DeleteDestinationRequest {
   /** The Data Export destination ID */
   id: string;
 }
-export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7388,7 +7329,7 @@ export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDestinationRequest" }) as any as S.Schema<DeleteDestinationRequest>;
 
 export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse =
+const DeleteDestinationResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteDestinationResponse>;
 
 export interface DeleteEnvironmentRequest {
@@ -7397,7 +7338,7 @@ export interface DeleteEnvironmentRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7411,7 +7352,7 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteFeatureFlagRequest {
@@ -7420,7 +7361,7 @@ export interface DeleteFeatureFlagRequest {
   /** The feature flag key. The key identifies the flag in your code. */
   featureFlagKey: string;
 }
-export const DeleteFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -7430,7 +7371,7 @@ export const DeleteFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFeatureFlagRequest" }) as any as S.Schema<DeleteFeatureFlagRequest>;
 
 export interface DeleteFeatureFlagResponse {}
-export const DeleteFeatureFlagResponse =
+const DeleteFeatureFlagResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteFeatureFlagResponse>;
 
 export interface DeleteFlagConfigScheduledChangesRequest {
@@ -7443,7 +7384,7 @@ export interface DeleteFlagConfigScheduledChangesRequest {
   /** The scheduled change id */
   id: string;
 }
-export const DeleteFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -7461,7 +7402,7 @@ export const DeleteFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteFlagConfigScheduledChangesRequest>;
 
 export interface DeleteFlagConfigScheduledChangesResponse {}
-export const DeleteFlagConfigScheduledChangesResponse =
+const DeleteFlagConfigScheduledChangesResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteFlagConfigScheduledChangesResponse>;
 
 export interface DeleteFlagFollowerRequest {
@@ -7474,7 +7415,7 @@ export interface DeleteFlagFollowerRequest {
   /** The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves. */
   memberId: string;
 }
-export const DeleteFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -7492,7 +7433,7 @@ export const DeleteFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteFlagFollowerRequest>;
 
 export interface DeleteFlagFollowerResponse {}
-export const DeleteFlagFollowerResponse =
+const DeleteFlagFollowerResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteFlagFollowerResponse>;
 
 export interface DeleteFlagImportConfigurationRequest {
@@ -7503,7 +7444,7 @@ export interface DeleteFlagImportConfigurationRequest {
   /** The integration ID */
   integrationId: string;
 }
-export const DeleteFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     integrationKey: S.String.pipe(T.Label()),
@@ -7520,7 +7461,7 @@ export const DeleteFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteFlagImportConfigurationRequest>;
 
 export interface DeleteFlagImportConfigurationResponse {}
-export const DeleteFlagImportConfigurationResponse =
+const DeleteFlagImportConfigurationResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteFlagImportConfigurationResponse>;
 
 export interface DeleteFlagLinkRequest {
@@ -7531,7 +7472,7 @@ export interface DeleteFlagLinkRequest {
   /** The flag link ID or Key */
   id: string;
 }
-export const DeleteFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -7546,14 +7487,14 @@ export const DeleteFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFlagLinkRequest" }) as any as S.Schema<DeleteFlagLinkRequest>;
 
 export interface DeleteFlagLinkResponse {}
-export const DeleteFlagLinkResponse =
+const DeleteFlagLinkResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteFlagLinkResponse>;
 
 export interface DeleteInsightGroupRequest {
   /** The insight group key */
   insightGroupKey: string;
 }
-export const DeleteInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightGroupKey: S.String.pipe(T.Label()),
   }).pipe(
@@ -7568,14 +7509,14 @@ export const DeleteInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInsightGroupRequest>;
 
 export interface DeleteInsightGroupResponse {}
-export const DeleteInsightGroupResponse =
+const DeleteInsightGroupResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteInsightGroupResponse>;
 
 export interface DeleteIntegrationConfigurationRequest {
   /** The ID of the integration configuration to be deleted */
   integrationConfigurationId: string;
 }
-export const DeleteIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -7590,7 +7531,7 @@ export const DeleteIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DeleteIntegrationConfigurationRequest>;
 
 export interface DeleteIntegrationConfigurationResponse {}
-export const DeleteIntegrationConfigurationResponse =
+const DeleteIntegrationConfigurationResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteIntegrationConfigurationResponse>;
 
 export interface DeleteIntegrationDeliveryConfigurationRequest {
@@ -7603,7 +7544,7 @@ export interface DeleteIntegrationDeliveryConfigurationRequest {
   /** The configuration ID */
   id: string;
 }
-export const DeleteIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7621,14 +7562,14 @@ export const DeleteIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<DeleteIntegrationDeliveryConfigurationRequest>;
 
 export interface DeleteIntegrationDeliveryConfigurationResponse {}
-export const DeleteIntegrationDeliveryConfigurationResponse =
+const DeleteIntegrationDeliveryConfigurationResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<DeleteIntegrationDeliveryConfigurationResponse>;
 
 export interface DeleteIpAllowlistEntryRequest {
   /** Unique identifier for the allowlist entry */
   id: string;
 }
-export const DeleteIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/account/ip-allowlist/{id}", code: 200 })),
@@ -7637,21 +7578,21 @@ export const DeleteIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIpAllowlistEntryRequest>;
 
 export interface DeleteIpAllowlistEntryResponse {}
-export const DeleteIpAllowlistEntryResponse =
+const DeleteIpAllowlistEntryResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteIpAllowlistEntryResponse>;
 
 export interface DeleteMemberRequest {
   /** The member ID */
   id: string;
 }
-export const DeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/members/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteMemberRequest" }) as any as S.Schema<DeleteMemberRequest>;
 
 export interface DeleteMemberResponse {}
-export const DeleteMemberResponse =
+const DeleteMemberResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteMemberResponse>;
 
 export interface DeleteMetricRequest {
@@ -7660,7 +7601,7 @@ export interface DeleteMetricRequest {
   /** The metric key */
   metricKey: string;
 }
-export const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricKey: S.String.pipe(T.Label()),
@@ -7668,7 +7609,7 @@ export const DeleteMetricRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMetricRequest" }) as any as S.Schema<DeleteMetricRequest>;
 
 export interface DeleteMetricResponse {}
-export const DeleteMetricResponse =
+const DeleteMetricResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteMetricResponse>;
 
 export interface DeleteMetricGroupRequest {
@@ -7677,7 +7618,7 @@ export interface DeleteMetricGroupRequest {
   /** The metric group key */
   metricGroupKey: string;
 }
-export const DeleteMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricGroupKey: S.String.pipe(T.Label()),
@@ -7691,14 +7632,14 @@ export const DeleteMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMetricGroupRequest" }) as any as S.Schema<DeleteMetricGroupRequest>;
 
 export interface DeleteMetricGroupResponse {}
-export const DeleteMetricGroupResponse =
+const DeleteMetricGroupResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteMetricGroupResponse>;
 
 export interface DeleteModelConfigRequest {
   projectKey: string;
   modelConfigKey: string;
 }
-export const DeleteModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     modelConfigKey: S.String.pipe(T.Label()),
@@ -7712,42 +7653,42 @@ export const DeleteModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteModelConfigRequest" }) as any as S.Schema<DeleteModelConfigRequest>;
 
 export interface DeleteModelConfigResponse {}
-export const DeleteModelConfigResponse =
+const DeleteModelConfigResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteModelConfigResponse>;
 
 export interface DeleteOAuthClientRequest {
   /** The client ID */
   clientId: string;
 }
-export const DeleteOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/oauth/clients/{clientId}", code: 200 })),
 ).annotate({ identifier: "DeleteOAuthClientRequest" }) as any as S.Schema<DeleteOAuthClientRequest>;
 
 export interface DeleteOAuthClientResponse {}
-export const DeleteOAuthClientResponse =
+const DeleteOAuthClientResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteOAuthClientResponse>;
 
 export interface DeleteProjectRequest {
   /** The project key */
   projectKey: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/projects/{projectKey}", code: 200 })),
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse =
+const DeleteProjectResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeletePromptSnippetRequest {
   projectKey: string;
   snippetKey: string;
 }
-export const DeletePromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     snippetKey: S.String.pipe(T.Label()),
@@ -7763,14 +7704,14 @@ export const DeletePromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePromptSnippetRequest>;
 
 export interface DeletePromptSnippetResponse {}
-export const DeletePromptSnippetResponse =
+const DeletePromptSnippetResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeletePromptSnippetResponse>;
 
 export interface DeleteRelayAutoConfigRequest {
   /** The relay auto config id */
   id: string;
 }
-export const DeleteRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/account/relay-auto-configs/{id}", code: 200 })),
@@ -7779,7 +7720,7 @@ export const DeleteRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRelayAutoConfigRequest>;
 
 export interface DeleteRelayAutoConfigResponse {}
-export const DeleteRelayAutoConfigResponse =
+const DeleteRelayAutoConfigResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteRelayAutoConfigResponse>;
 
 export interface DeleteReleaseByFlagKeyRequest {
@@ -7788,7 +7729,7 @@ export interface DeleteReleaseByFlagKeyRequest {
   /** The flag key */
   flagKey: string;
 }
-export const DeleteReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -7800,7 +7741,7 @@ export const DeleteReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleaseByFlagKeyRequest>;
 
 export interface DeleteReleaseByFlagKeyResponse {}
-export const DeleteReleaseByFlagKeyResponse =
+const DeleteReleaseByFlagKeyResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteReleaseByFlagKeyResponse>;
 
 export interface DeleteReleasePipelineRequest {
@@ -7809,7 +7750,7 @@ export interface DeleteReleasePipelineRequest {
   /** The release pipeline key */
   pipelineKey: string;
 }
-export const DeleteReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     pipelineKey: S.String.pipe(T.Label()),
@@ -7825,7 +7766,7 @@ export const DeleteReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleasePipelineRequest>;
 
 export interface DeleteReleasePipelineResponse {}
-export const DeleteReleasePipelineResponse =
+const DeleteReleasePipelineResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteReleasePipelineResponse>;
 
 export interface DeleteReleasePolicyRequest {
@@ -7834,7 +7775,7 @@ export interface DeleteReleasePolicyRequest {
   /** The human-readable key of the release policy */
   policyKey: string;
 }
-export const DeleteReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     policyKey: S.String.pipe(T.Label()),
@@ -7850,21 +7791,21 @@ export const DeleteReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteReleasePolicyRequest>;
 
 export interface DeleteReleasePolicyResponse {}
-export const DeleteReleasePolicyResponse =
+const DeleteReleasePolicyResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteReleasePolicyResponse>;
 
 export interface DeleteRepositoryRequest {
   /** The repository name */
   repo: string;
 }
-export const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 })),
 ).annotate({ identifier: "DeleteRepositoryRequest" }) as any as S.Schema<DeleteRepositoryRequest>;
 
 export interface DeleteRepositoryResponse {}
-export const DeleteRepositoryResponse =
+const DeleteRepositoryResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteRepositoryResponse>;
 
 export interface DeleteRepositoryProjectRequest {
@@ -7873,7 +7814,7 @@ export interface DeleteRepositoryProjectRequest {
   /** The project key */
   projectKey: string;
 }
-export const DeleteRepositoryProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepositoryProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryKey: S.String.pipe(T.Label()),
     projectKey: S.String.pipe(T.Label()),
@@ -7889,18 +7830,18 @@ export const DeleteRepositoryProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepositoryProjectRequest>;
 
 export interface DeleteRepositoryProjectResponse {}
-export const DeleteRepositoryProjectResponse =
+const DeleteRepositoryProjectResponse =
   DeleteAgentOptimizationResponse as any as S.Schema<DeleteRepositoryProjectResponse>;
 
 export type DeleteRestrictedModelsRequestKeysList = Array<string>;
-export const DeleteRestrictedModelsRequestKeysList =
+const DeleteRestrictedModelsRequestKeysList =
   FeatureFlagTagsList as any as S.Schema<DeleteRestrictedModelsRequestKeysList>;
 
 export interface DeleteRestrictedModelsRequest {
   projectKey: string;
   keys: DeleteRestrictedModelsRequestKeysList;
 }
-export const DeleteRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     keys: DeleteRestrictedModelsRequestKeysList,
@@ -7916,7 +7857,7 @@ export const DeleteRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRestrictedModelsRequest>;
 
 export interface DeleteRestrictedModelsResponse {}
-export const DeleteRestrictedModelsResponse =
+const DeleteRestrictedModelsResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteRestrictedModelsResponse>;
 
 export interface DeleteSdkKeyByKeyRequest {
@@ -7925,7 +7866,7 @@ export interface DeleteSdkKeyByKeyRequest {
   /** The user-defined identifying key of the SDK key. This is used solely to identify an SDK key and is distinct from the value field, which is the actual SDK key value. */
   sdkKeyKey: string;
 }
-export const DeleteSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7940,7 +7881,7 @@ export const DeleteSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSdkKeyByKeyRequest" }) as any as S.Schema<DeleteSdkKeyByKeyRequest>;
 
 export interface DeleteSdkKeyByKeyResponse {}
-export const DeleteSdkKeyByKeyResponse =
+const DeleteSdkKeyByKeyResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteSdkKeyByKeyResponse>;
 
 export interface DeleteSegmentRequest {
@@ -7951,7 +7892,7 @@ export interface DeleteSegmentRequest {
   /** The segment key */
   segmentKey: string;
 }
-export const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -7966,7 +7907,7 @@ export const DeleteSegmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSegmentRequest" }) as any as S.Schema<DeleteSegmentRequest>;
 
 export interface DeleteSegmentResponse {}
-export const DeleteSegmentResponse =
+const DeleteSegmentResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteSegmentResponse>;
 
 export interface DeleteSubscriptionRequest {
@@ -7975,7 +7916,7 @@ export interface DeleteSubscriptionRequest {
   /** The subscription ID */
   id: string;
 }
-export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -7987,36 +7928,34 @@ export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionRequest>;
 
 export interface DeleteSubscriptionResponse {}
-export const DeleteSubscriptionResponse =
+const DeleteSubscriptionResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteSubscriptionResponse>;
 
 export interface DeleteTeamRequest {
   /** The team key */
   teamKey: string;
 }
-export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/teams/{teamKey}", code: 200 })),
 ).annotate({ identifier: "DeleteTeamRequest" }) as any as S.Schema<DeleteTeamRequest>;
 
 export interface DeleteTeamResponse {}
-export const DeleteTeamResponse =
-  CreateBigSegmentExportResponse as any as S.Schema<DeleteTeamResponse>;
+const DeleteTeamResponse = CreateBigSegmentExportResponse as any as S.Schema<DeleteTeamResponse>;
 
 export interface DeleteTokenRequest {
   /** The ID of the access token to update */
   id: string;
 }
-export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/tokens/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteTokenRequest" }) as any as S.Schema<DeleteTokenRequest>;
 
 export interface DeleteTokenResponse {}
-export const DeleteTokenResponse =
-  CreateBigSegmentExportResponse as any as S.Schema<DeleteTokenResponse>;
+const DeleteTokenResponse = CreateBigSegmentExportResponse as any as S.Schema<DeleteTokenResponse>;
 
 export interface DeleteTriggerWorkflowRequest {
   /** The project key */
@@ -8028,7 +7967,7 @@ export interface DeleteTriggerWorkflowRequest {
   /** The flag trigger ID */
   id: string;
 }
-export const DeleteTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -8046,14 +7985,14 @@ export const DeleteTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTriggerWorkflowRequest>;
 
 export interface DeleteTriggerWorkflowResponse {}
-export const DeleteTriggerWorkflowResponse =
+const DeleteTriggerWorkflowResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteTriggerWorkflowResponse>;
 
 export interface DeleteViewRequest {
   projectKey: string;
   viewKey: string;
 }
-export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -8063,21 +8002,20 @@ export const DeleteViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteViewRequest" }) as any as S.Schema<DeleteViewRequest>;
 
 export interface DeleteViewResponse {}
-export const DeleteViewResponse =
-  CreateBigSegmentExportResponse as any as S.Schema<DeleteViewResponse>;
+const DeleteViewResponse = CreateBigSegmentExportResponse as any as S.Schema<DeleteViewResponse>;
 
 export interface DeleteWebhookRequest {
   /** The ID of the webhook to delete */
   id: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/webhooks/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse =
+const DeleteWebhookResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface DeleteWorkflowRequest {
@@ -8090,7 +8028,7 @@ export interface DeleteWorkflowRequest {
   /** The workflow id */
   workflowId: string;
 }
-export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -8106,14 +8044,14 @@ export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWorkflowRequest" }) as any as S.Schema<DeleteWorkflowRequest>;
 
 export interface DeleteWorkflowResponse {}
-export const DeleteWorkflowResponse =
+const DeleteWorkflowResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteWorkflowResponse>;
 
 export interface DeleteWorkflowTemplateRequest {
   /** The template key */
   templateKey: string;
 }
-export const DeleteWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/v2/templates/{templateKey}", code: 200 })),
@@ -8122,11 +8060,11 @@ export const DeleteWorkflowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkflowTemplateRequest>;
 
 export interface DeleteWorkflowTemplateResponse {}
-export const DeleteWorkflowTemplateResponse =
+const DeleteWorkflowTemplateResponse =
   CreateBigSegmentExportResponse as any as S.Schema<DeleteWorkflowTemplateResponse>;
 
 export type ContextInstance = { [key: string]: unknown | undefined };
-export const ContextInstance = UrlMatcher as any as S.Schema<ContextInstance>;
+const ContextInstance = UrlMatcher as any as S.Schema<ContextInstance>;
 
 export interface EvaluateContextInstanceRequest {
   /** The project key */
@@ -8143,7 +8081,7 @@ export interface EvaluateContextInstanceRequest {
   filter?: string;
   body: ContextInstance;
 }
-export const EvaluateContextInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateContextInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -8177,7 +8115,7 @@ export interface ContextInstanceEvaluationReason {
   /** The specific error type if the kind is 'ERROR'. */
   errorKind?: string;
 }
-export const ContextInstanceEvaluationReason = /*@__PURE__*/ S.suspend(() =>
+const ContextInstanceEvaluationReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     ruleIndex: S.optional(S.Number),
@@ -8192,7 +8130,7 @@ export const ContextInstanceEvaluationReason = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ContextInstanceEvaluationLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceEvaluationLinksMap =
+const ContextInstanceEvaluationLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceEvaluationLinksMap>;
 
 export interface ContextInstanceEvaluation {
@@ -8207,7 +8145,7 @@ export interface ContextInstanceEvaluation {
   /** The location and content type of related resources */
   _links: ContextInstanceEvaluationLinksMap;
 }
-export const ContextInstanceEvaluation = /*@__PURE__*/ S.suspend(() =>
+const ContextInstanceEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -8221,13 +8159,13 @@ export const ContextInstanceEvaluation = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flag evaluations for this context instance */
 export type ContextInstanceEvaluationsItemsList = Array<ContextInstanceEvaluation>;
-export const ContextInstanceEvaluationsItemsList = /*@__PURE__*/ S.Array(
+const ContextInstanceEvaluationsItemsList = /*@__PURE__*/ S.Array(
   ContextInstanceEvaluation,
 ) as any as S.Schema<ContextInstanceEvaluationsItemsList>;
 
 /** The location and content type of related resources */
 export type ContextInstanceEvaluationsLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceEvaluationsLinksMap =
+const ContextInstanceEvaluationsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceEvaluationsLinksMap>;
 
 export interface ContextInstanceEvaluations {
@@ -8238,7 +8176,7 @@ export interface ContextInstanceEvaluations {
   /** The location and content type of related resources */
   _links: ContextInstanceEvaluationsLinksMap;
 }
-export const ContextInstanceEvaluations = /*@__PURE__*/ S.suspend(() =>
+const ContextInstanceEvaluations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ContextInstanceEvaluationsItemsList,
     totalCount: S.optional(S.Number),
@@ -8253,7 +8191,7 @@ export interface GetAdaptiveTriggerRequest {
   environmentKey: string;
   triggerID: string;
 }
-export const GetAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -8270,16 +8208,16 @@ export const GetAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAdaptiveTriggerRequest>;
 
 export type AdaptiveTriggerResourceKind = "flag" | "ai-config";
-export const AdaptiveTriggerResourceKind = S.String;
+const AdaptiveTriggerResourceKind = S.String;
 
 export type ObservabilityAlertSourceType = "observabilityAlert";
-export const ObservabilityAlertSourceType = S.String;
+const ObservabilityAlertSourceType = S.String;
 
 export interface ObservabilityAlertSource {
   type: ObservabilityAlertSourceType | (string & {});
   alertId: number;
 }
-export const ObservabilityAlertSource = /*@__PURE__*/ S.suspend(() =>
+const ObservabilityAlertSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ObservabilityAlertSourceType,
     alertId: S.Number,
@@ -8289,7 +8227,7 @@ export const ObservabilityAlertSource = /*@__PURE__*/ S.suspend(() =>
 export type AdaptiveTriggerInstructionKind =
   | "updateFallthroughVariationOrRollout"
   | "updateRuleVariationOrRollout";
-export const AdaptiveTriggerInstructionKind = S.String;
+const AdaptiveTriggerInstructionKind = S.String;
 
 export interface AdaptiveTriggerInstruction {
   kind: AdaptiveTriggerInstructionKind | (string & {});
@@ -8297,7 +8235,7 @@ export interface AdaptiveTriggerInstruction {
   /** The targeting rule this adaptive trigger acts on. Required for updateRuleVariationOrRollout instructions. */
   ruleId?: string;
 }
-export const AdaptiveTriggerInstruction = /*@__PURE__*/ S.suspend(() =>
+const AdaptiveTriggerInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: AdaptiveTriggerInstructionKind,
     variationId: S.String,
@@ -8308,14 +8246,14 @@ export const AdaptiveTriggerInstruction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdaptiveTriggerInstruction>;
 
 export type AdaptiveTriggerTaskInstructionsList = Array<AdaptiveTriggerInstruction>;
-export const AdaptiveTriggerTaskInstructionsList = /*@__PURE__*/ S.Array(
+const AdaptiveTriggerTaskInstructionsList = /*@__PURE__*/ S.Array(
   AdaptiveTriggerInstruction,
 ) as any as S.Schema<AdaptiveTriggerTaskInstructionsList>;
 
 export interface AdaptiveTriggerTask {
   instructions: AdaptiveTriggerTaskInstructionsList;
 }
-export const AdaptiveTriggerTask = /*@__PURE__*/ S.suspend(() =>
+const AdaptiveTriggerTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instructions: AdaptiveTriggerTaskInstructionsList,
   }),
@@ -8332,7 +8270,7 @@ export interface AdaptiveTrigger {
   createdAt: number;
   updatedAt: number;
 }
-export const AdaptiveTrigger = /*@__PURE__*/ S.suspend(() =>
+const AdaptiveTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -8350,7 +8288,7 @@ export interface GetAgentGraphRequest {
   projectKey: string;
   graphKey: string;
 }
-export const GetAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     graphKey: S.String.pipe(T.Label()),
@@ -8365,27 +8303,27 @@ export const GetAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type AiConfigsAccessDeniedReasonResourcesList = Array<string>;
-export const AiConfigsAccessDeniedReasonResourcesList =
+const AiConfigsAccessDeniedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AiConfigsAccessDeniedReasonNotResourcesList = Array<string>;
-export const AiConfigsAccessDeniedReasonNotResourcesList =
+const AiConfigsAccessDeniedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AiConfigsAccessDeniedReasonActionsList = Array<string>;
-export const AiConfigsAccessDeniedReasonActionsList =
+const AiConfigsAccessDeniedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AiConfigsAccessDeniedReasonNotActionsList = Array<string>;
-export const AiConfigsAccessDeniedReasonNotActionsList =
+const AiConfigsAccessDeniedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AiConfigsAccessDeniedReasonEffect = "allow" | "deny";
-export const AiConfigsAccessDeniedReasonEffect = S.String;
+const AiConfigsAccessDeniedReasonEffect = S.String;
 
 export interface AiConfigsAccessDeniedReason {
   /** Resource specifier strings */
@@ -8400,7 +8338,7 @@ export interface AiConfigsAccessDeniedReason {
   effect: AiConfigsAccessDeniedReasonEffect;
   role_name?: string;
 }
-export const AiConfigsAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AiConfigsAccessDeniedReasonResourcesList),
     notResources: S.optional(AiConfigsAccessDeniedReasonNotResourcesList),
@@ -8417,7 +8355,7 @@ export interface AiConfigsAccessDenied {
   action: string;
   reason: AiConfigsAccessDeniedReason;
 }
-export const AiConfigsAccessDenied = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsAccessDenied = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AiConfigsAccessDeniedReason,
@@ -8425,33 +8363,33 @@ export const AiConfigsAccessDenied = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AiConfigsAccessDenied" }) as any as S.Schema<AiConfigsAccessDenied>;
 
 export type AiConfigsAccessDeniedList = Array<AiConfigsAccessDenied>;
-export const AiConfigsAccessDeniedList = /*@__PURE__*/ S.Array(
+const AiConfigsAccessDeniedList = /*@__PURE__*/ S.Array(
   AiConfigsAccessDenied,
 ) as any as S.Schema<AiConfigsAccessDeniedList>;
 
 /** Resource specifier strings */
 export type AiConfigsAccessAllowedReasonResourcesList = Array<string>;
-export const AiConfigsAccessAllowedReasonResourcesList =
+const AiConfigsAccessAllowedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type AiConfigsAccessAllowedReasonNotResourcesList = Array<string>;
-export const AiConfigsAccessAllowedReasonNotResourcesList =
+const AiConfigsAccessAllowedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type AiConfigsAccessAllowedReasonActionsList = Array<string>;
-export const AiConfigsAccessAllowedReasonActionsList =
+const AiConfigsAccessAllowedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type AiConfigsAccessAllowedReasonNotActionsList = Array<string>;
-export const AiConfigsAccessAllowedReasonNotActionsList =
+const AiConfigsAccessAllowedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type AiConfigsAccessAllowedReasonEffect = "allow" | "deny";
-export const AiConfigsAccessAllowedReasonEffect = S.String;
+const AiConfigsAccessAllowedReasonEffect = S.String;
 
 export interface AiConfigsAccessAllowedReason {
   /** Resource specifier strings */
@@ -8466,7 +8404,7 @@ export interface AiConfigsAccessAllowedReason {
   effect: AiConfigsAccessAllowedReasonEffect;
   role_name?: string;
 }
-export const AiConfigsAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(AiConfigsAccessAllowedReasonResourcesList),
     notResources: S.optional(AiConfigsAccessAllowedReasonNotResourcesList),
@@ -8483,7 +8421,7 @@ export interface AiConfigsAccessAllowedRep {
   action: string;
   reason: AiConfigsAccessAllowedReason;
 }
-export const AiConfigsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: AiConfigsAccessAllowedReason,
@@ -8493,7 +8431,7 @@ export const AiConfigsAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsAccessAllowedRep>;
 
 export type AiConfigsAccessAllowedList = Array<AiConfigsAccessAllowedRep>;
-export const AiConfigsAccessAllowedList = /*@__PURE__*/ S.Array(
+const AiConfigsAccessAllowedList = /*@__PURE__*/ S.Array(
   AiConfigsAccessAllowedRep,
 ) as any as S.Schema<AiConfigsAccessAllowedList>;
 
@@ -8501,7 +8439,7 @@ export interface AiConfigsAccess {
   denied: AiConfigsAccessDeniedList;
   allowed: AiConfigsAccessAllowedList;
 }
-export const AiConfigsAccess = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denied: AiConfigsAccessDeniedList,
     allowed: AiConfigsAccessAllowedList,
@@ -8515,21 +8453,11 @@ export interface MaintainerMember {
   lastName?: string;
   role: string;
 }
-export const MaintainerMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    email: S.String,
-    firstName: S.optional(S.String),
-    lastName: S.optional(S.String),
-    role: S.String,
-  }),
-).annotate({ identifier: "MaintainerMember" }) as any as S.Schema<MaintainerMember>;
-
 export interface AiConfigsMaintainerTeam {
   key: string;
   name: string;
 }
-export const AiConfigsMaintainerTeam = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsMaintainerTeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -8537,7 +8465,7 @@ export const AiConfigsMaintainerTeam = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AiConfigsMaintainerTeam" }) as any as S.Schema<AiConfigsMaintainerTeam>;
 
 export type AgentGraphMaintainer = MaintainerMember | AiConfigsMaintainerTeam;
-export const AgentGraphMaintainer = S.Unknown as any as S.Schema<AgentGraphMaintainer>;
+const AgentGraphMaintainer = S.Unknown as any as S.Schema<AgentGraphMaintainer>;
 
 /** An edge in an agent graph connecting two configs */
 export interface AgentGraphEdge {
@@ -8550,7 +8478,7 @@ export interface AgentGraphEdge {
   /** The handoff options from the source config to the target config */
   handoff?: unknown;
 }
-export const AgentGraphEdge = /*@__PURE__*/ S.suspend(() =>
+const AgentGraphEdge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     sourceConfig: S.String,
@@ -8561,7 +8489,7 @@ export const AgentGraphEdge = /*@__PURE__*/ S.suspend(() =>
 
 /** The edges in the graph */
 export type AgentGraphEdgesList = Array<AgentGraphEdge>;
-export const AgentGraphEdgesList = /*@__PURE__*/ S.Array(
+const AgentGraphEdgesList = /*@__PURE__*/ S.Array(
   AgentGraphEdge,
 ) as any as S.Schema<AgentGraphEdgesList>;
 
@@ -8583,7 +8511,7 @@ export interface AgentGraph {
   createdAt: number;
   updatedAt: number;
 }
-export const AgentGraph = /*@__PURE__*/ S.suspend(() =>
+const AgentGraph = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(AiConfigsAccess),
     _site: S.optional(CoreLink),
@@ -8602,7 +8530,7 @@ export interface GetAgentOptimizationRequest {
   projectKey: string;
   optimizationKey: string;
 }
-export const GetAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -8618,22 +8546,19 @@ export const GetAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAgentOptimizationRequest>;
 
 export type AgentOptimizationModelChoicesList = Array<string>;
-export const AgentOptimizationModelChoicesList =
+const AgentOptimizationModelChoicesList =
   FeatureFlagTagsList as any as S.Schema<AgentOptimizationModelChoicesList>;
 
 export type AgentOptimizationVariableChoicesItemMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationVariableChoicesItemMap =
-  UrlMatcher as any as S.Schema<AgentOptimizationVariableChoicesItemMap>;
-
 export type AgentOptimizationVariableChoicesList = Array<AgentOptimizationVariableChoicesItemMap>;
-export const AgentOptimizationVariableChoicesList =
+const AgentOptimizationVariableChoicesList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<AgentOptimizationVariableChoicesList>;
 
 export interface AgentOptimizationAcceptanceStatement {
   statement: string;
   threshold: number;
 }
-export const AgentOptimizationAcceptanceStatement = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationAcceptanceStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statement: S.String,
     threshold: S.Number,
@@ -8643,7 +8568,7 @@ export const AgentOptimizationAcceptanceStatement = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AgentOptimizationAcceptanceStatement>;
 
 export type AgentOptimizationAcceptanceStatementsList = Array<AgentOptimizationAcceptanceStatement>;
-export const AgentOptimizationAcceptanceStatementsList = /*@__PURE__*/ S.Array(
+const AgentOptimizationAcceptanceStatementsList = /*@__PURE__*/ S.Array(
   AgentOptimizationAcceptanceStatement,
 ) as any as S.Schema<AgentOptimizationAcceptanceStatementsList>;
 
@@ -8651,7 +8576,7 @@ export interface AgentOptimizationJudge {
   key: string;
   threshold: number;
 }
-export const AgentOptimizationJudge = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationJudge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     threshold: S.Number,
@@ -8659,16 +8584,16 @@ export const AgentOptimizationJudge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentOptimizationJudge" }) as any as S.Schema<AgentOptimizationJudge>;
 
 export type AgentOptimizationJudgesList = Array<AgentOptimizationJudge>;
-export const AgentOptimizationJudgesList = /*@__PURE__*/ S.Array(
+const AgentOptimizationJudgesList = /*@__PURE__*/ S.Array(
   AgentOptimizationJudge,
 ) as any as S.Schema<AgentOptimizationJudgesList>;
 
 export type AgentOptimizationUserInputOptionsList = Array<string>;
-export const AgentOptimizationUserInputOptionsList =
+const AgentOptimizationUserInputOptionsList =
   FeatureFlagTagsList as any as S.Schema<AgentOptimizationUserInputOptionsList>;
 
 export type AgentOptimizationGroundTruthResponsesList = Array<string>;
-export const AgentOptimizationGroundTruthResponsesList =
+const AgentOptimizationGroundTruthResponsesList =
   FeatureFlagTagsList as any as S.Schema<AgentOptimizationGroundTruthResponsesList>;
 
 export interface AgentOptimization {
@@ -8695,7 +8620,7 @@ export interface AgentOptimization {
   version: number;
   createdAt: number;
 }
-export const AgentOptimization = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(AiConfigsAccess),
     _links: S.optional(ParentAndSelfLinks),
@@ -8726,7 +8651,7 @@ export interface GetAgentSkillRequest {
   projectKey: string;
   skillKey: string;
 }
-export const GetAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     skillKey: S.String.pipe(T.Label()),
@@ -8740,10 +8665,10 @@ export const GetAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAgentSkillRequest" }) as any as S.Schema<GetAgentSkillRequest>;
 
 export type AIConfigMaintainer = MaintainerMember | AiConfigsMaintainerTeam;
-export const AIConfigMaintainer = S.Unknown as any as S.Schema<AIConfigMaintainer>;
+const AIConfigMaintainer = S.Unknown as any as S.Schema<AIConfigMaintainer>;
 
 export type AgentSkillTagsList = Array<string>;
-export const AgentSkillTagsList = FeatureFlagTagsList as any as S.Schema<AgentSkillTagsList>;
+const AgentSkillTagsList = FeatureFlagTagsList as any as S.Schema<AgentSkillTagsList>;
 
 export interface AgentSkill {
   key: string;
@@ -8758,7 +8683,7 @@ export interface AgentSkill {
   version: number;
   createdAt: number;
 }
-export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
+const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _access: S.optional(AiConfigsAccess),
@@ -8777,7 +8702,7 @@ export interface GetAIConfigRequest {
   projectKey: string;
   configKey: string;
 }
-export const GetAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -8791,15 +8716,15 @@ export const GetAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAIConfigRequest" }) as any as S.Schema<GetAIConfigRequest>;
 
 export type AIConfigMode = "agent" | "completion" | "judge";
-export const AIConfigMode = S.String;
+const AIConfigMode = S.String;
 
 export type AIConfigTagsList = Array<string>;
-export const AIConfigTagsList = FeatureFlagTagsList as any as S.Schema<AIConfigTagsList>;
+const AIConfigTagsList = FeatureFlagTagsList as any as S.Schema<AIConfigTagsList>;
 
 export interface ParentLink {
   parent: CoreLink;
 }
-export const ParentLink = /*@__PURE__*/ S.suspend(() =>
+const ParentLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: CoreLink,
   }),
@@ -8809,7 +8734,7 @@ export interface Message {
   content: string;
   role: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     role: S.String,
@@ -8817,18 +8742,18 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 export type AIConfigVariationMessagesList = Array<Message>;
-export const AIConfigVariationMessagesList = /*@__PURE__*/ S.Array(
+const AIConfigVariationMessagesList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<AIConfigVariationMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type AIConfigVariationOutputFormatMap = { [key: string]: unknown | undefined };
-export const AIConfigVariationOutputFormatMap =
+const AIConfigVariationOutputFormatMap =
   UrlMatcher as any as S.Schema<AIConfigVariationOutputFormatMap>;
 
 /** Custom metadata and configuration for application-level use */
 export type VariationToolCustomParametersMap = { [key: string]: unknown | undefined };
-export const VariationToolCustomParametersMap =
+const VariationToolCustomParametersMap =
   UrlMatcher as any as S.Schema<VariationToolCustomParametersMap>;
 
 export interface VariationTool {
@@ -8839,7 +8764,7 @@ export interface VariationTool {
   /** Custom metadata and configuration for application-level use */
   customParameters?: VariationToolCustomParametersMap;
 }
-export const VariationTool = /*@__PURE__*/ S.suspend(() =>
+const VariationTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     version: S.Number,
@@ -8848,7 +8773,7 @@ export const VariationTool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VariationTool" }) as any as S.Schema<VariationTool>;
 
 export type AIConfigVariationToolsList = Array<VariationTool>;
-export const AIConfigVariationToolsList = /*@__PURE__*/ S.Array(
+const AIConfigVariationToolsList = /*@__PURE__*/ S.Array(
   VariationTool,
 ) as any as S.Schema<AIConfigVariationToolsList>;
 
@@ -8858,7 +8783,7 @@ export interface VariationSkill {
   /** The pinned skill version. */
   version: number;
 }
-export const VariationSkill = /*@__PURE__*/ S.suspend(() =>
+const VariationSkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     version: S.Number,
@@ -8866,7 +8791,7 @@ export const VariationSkill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VariationSkill" }) as any as S.Schema<VariationSkill>;
 
 export type AIConfigVariationSkillsList = Array<VariationSkill>;
-export const AIConfigVariationSkillsList = /*@__PURE__*/ S.Array(
+const AIConfigVariationSkillsList = /*@__PURE__*/ S.Array(
   VariationSkill,
 ) as any as S.Schema<AIConfigVariationSkillsList>;
 
@@ -8876,7 +8801,7 @@ export interface JudgeAttachment {
   /** Sampling rate for this judge attachment (0.0 to 1.0) */
   samplingRate: number;
 }
-export const JudgeAttachment = /*@__PURE__*/ S.suspend(() =>
+const JudgeAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     judgeConfigKey: S.String,
     samplingRate: S.Number,
@@ -8885,7 +8810,7 @@ export const JudgeAttachment = /*@__PURE__*/ S.suspend(() =>
 
 /** List of judges for this variation. When updating, this replaces all existing judge attachments, and if empty, removes all judge attachments. */
 export type JudgeConfigurationJudgesList = Array<JudgeAttachment>;
-export const JudgeConfigurationJudgesList = /*@__PURE__*/ S.Array(
+const JudgeConfigurationJudgesList = /*@__PURE__*/ S.Array(
   JudgeAttachment,
 ) as any as S.Schema<JudgeConfigurationJudgesList>;
 
@@ -8893,14 +8818,14 @@ export interface JudgeConfiguration {
   /** List of judges for this variation. When updating, this replaces all existing judge attachments, and if empty, removes all judge attachments. */
   judges?: JudgeConfigurationJudgesList;
 }
-export const JudgeConfiguration = /*@__PURE__*/ S.suspend(() =>
+const JudgeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     judges: S.optional(JudgeConfigurationJudgesList),
   }),
 ).annotate({ identifier: "JudgeConfiguration" }) as any as S.Schema<JudgeConfiguration>;
 
 export type AIConfigVariationJudgingConfigKeysList = Array<string>;
-export const AIConfigVariationJudgingConfigKeysList =
+const AIConfigVariationJudgingConfigKeysList =
   FeatureFlagTagsList as any as S.Schema<AIConfigVariationJudgingConfigKeysList>;
 
 export interface AIConfigVariation {
@@ -8931,7 +8856,7 @@ export interface AIConfigVariation {
   judgeConfiguration?: JudgeConfiguration;
   judgingConfigKeys?: AIConfigVariationJudgingConfigKeysList;
 }
-export const AIConfigVariation = /*@__PURE__*/ S.suspend(() =>
+const AIConfigVariation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentLink),
     color: S.optional(S.String),
@@ -8959,18 +8884,18 @@ export const AIConfigVariation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AIConfigVariation" }) as any as S.Schema<AIConfigVariation>;
 
 export type AIConfigVariationsList = Array<AIConfigVariation>;
-export const AIConfigVariationsList = /*@__PURE__*/ S.Array(
+const AIConfigVariationsList = /*@__PURE__*/ S.Array(
   AIConfigVariation,
 ) as any as S.Schema<AIConfigVariationsList>;
 
 /** List of evaluation metric keys for this config */
 export type AIConfigEvaluationMetricKeysList = Array<string>;
-export const AIConfigEvaluationMetricKeysList =
+const AIConfigEvaluationMetricKeysList =
   FeatureFlagTagsList as any as S.Schema<AIConfigEvaluationMetricKeysList>;
 
 /** The type of the dependent resource */
 export type AIConfigDependencyType = "agent-graph";
-export const AIConfigDependencyType = S.String;
+const AIConfigDependencyType = S.String;
 
 /** A resource that depends on this config */
 export interface AIConfigDependency {
@@ -8979,7 +8904,7 @@ export interface AIConfigDependency {
   /** The key of the dependent resource */
   key: string;
 }
-export const AIConfigDependency = /*@__PURE__*/ S.suspend(() =>
+const AIConfigDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AIConfigDependencyType,
     key: S.String,
@@ -8988,7 +8913,7 @@ export const AIConfigDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** Resources that depend on this config, grouped by type */
 export type AIConfigDependenciesList = Array<AIConfigDependency>;
-export const AIConfigDependenciesList = /*@__PURE__*/ S.Array(
+const AIConfigDependenciesList = /*@__PURE__*/ S.Array(
   AIConfigDependency,
 ) as any as S.Schema<AIConfigDependenciesList>;
 
@@ -9015,7 +8940,7 @@ export interface AIConfig {
   /** Resources that depend on this config, grouped by type */
   dependencies?: AIConfigDependenciesList;
 }
-export const AIConfig = /*@__PURE__*/ S.suspend(() =>
+const AIConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(AiConfigsAccess),
     _links: S.optional(ParentAndSelfLinks),
@@ -9051,7 +8976,7 @@ export interface GetAIConfigMetricsRequest {
   /** A context key. Only metrics from events whose context of the `contextKind` kind has this key are included. Requires `contextKind`. */
   contextKey?: string;
 }
-export const GetAIConfigMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -9098,7 +9023,7 @@ export interface Metrics {
   /** Average toxicity judge score (0.0-1.0) */
   judgeToxicity?: number;
 }
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
+const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputTokens: S.optional(S.Number),
     outputTokens: S.optional(S.Number),
@@ -9133,7 +9058,7 @@ export interface GetAIConfigMetricsByVariationRequest {
   /** A context key. Only metrics from events whose context of the `contextKind` kind has this key are included. Requires `contextKind`. */
   contextKey?: string;
 }
-export const GetAIConfigMetricsByVariationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigMetricsByVariationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -9157,7 +9082,7 @@ export interface MetricByVariation {
   variationKey?: string;
   metrics?: Metrics;
 }
-export const MetricByVariation = /*@__PURE__*/ S.suspend(() =>
+const MetricByVariation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variationKey: S.optional(S.String),
     metrics: S.optional(Metrics),
@@ -9165,12 +9090,12 @@ export const MetricByVariation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricByVariation" }) as any as S.Schema<MetricByVariation>;
 
 export type MetricsByVariation = Array<MetricByVariation>;
-export const MetricsByVariation = /*@__PURE__*/ S.Array(
+const MetricsByVariation = /*@__PURE__*/ S.Array(
   MetricByVariation,
 ) as any as S.Schema<MetricsByVariation>;
 
 export type GetAIConfigMetricsByVariationResponse = MetricsByVariation;
-export const GetAIConfigMetricsByVariationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigMetricsByVariationResponse = /*@__PURE__*/ S.suspend(() =>
   MetricsByVariation.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetAIConfigMetricsByVariationResponse",
@@ -9181,7 +9106,7 @@ export interface GetAIConfigQuickStatsRequest {
   /** An environment key. Only metrics from this environment will be included. */
   env: string;
 }
-export const GetAIConfigQuickStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigQuickStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     env: S.String.pipe(T.Query()),
@@ -9202,7 +9127,7 @@ export interface QuickStats {
   averageSatisfaction7D?: number | null;
   spendMonthToDate?: number | null;
 }
-export const QuickStats = /*@__PURE__*/ S.suspend(() =>
+const QuickStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeConfigs: S.Number,
     activeExperiments: S.Number,
@@ -9222,7 +9147,7 @@ export interface GetAIConfigsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const GetAIConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     sort: S.optional(S.String.pipe(T.Query())),
@@ -9233,8 +9158,6 @@ export const GetAIConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAIConfigsRequest" }) as any as S.Schema<GetAIConfigsRequest>;
 
 export type AiConfigsLink = Link;
-export const AiConfigsLink = Link;
-
 export interface PaginatedLinks {
   first?: Link;
   last?: Link;
@@ -9242,7 +9165,7 @@ export interface PaginatedLinks {
   prev?: Link;
   self: Link;
 }
-export const PaginatedLinks = /*@__PURE__*/ S.suspend(() =>
+const PaginatedLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(Link),
     last: S.optional(Link),
@@ -9253,16 +9176,14 @@ export const PaginatedLinks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginatedLinks" }) as any as S.Schema<PaginatedLinks>;
 
 export type AIConfigsItemsList = Array<AIConfig>;
-export const AIConfigsItemsList = /*@__PURE__*/ S.Array(
-  AIConfig,
-) as any as S.Schema<AIConfigsItemsList>;
+const AIConfigsItemsList = /*@__PURE__*/ S.Array(AIConfig) as any as S.Schema<AIConfigsItemsList>;
 
 export interface AIConfigs {
   _links?: PaginatedLinks;
   items: AIConfigsItemsList;
   totalCount: number;
 }
-export const AIConfigs = /*@__PURE__*/ S.suspend(() =>
+const AIConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AIConfigsItemsList,
@@ -9274,7 +9195,7 @@ export interface GetAIConfigTargetingRequest {
   projectKey: string;
   configKey: string;
 }
-export const GetAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -9293,7 +9214,7 @@ export interface AIConfigTargetingDefaults {
   onVariation: number;
   offVariation: number;
 }
-export const AIConfigTargetingDefaults = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     onVariation: S.Number,
     offVariation: S.Number,
@@ -9303,7 +9224,7 @@ export const AIConfigTargetingDefaults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIConfigTargetingDefaults>;
 
 export type AIConfigTargetingEnvironmentTargetValuesList = Array<string>;
-export const AIConfigTargetingEnvironmentTargetValuesList =
+const AIConfigTargetingEnvironmentTargetValuesList =
   FeatureFlagTagsList as any as S.Schema<AIConfigTargetingEnvironmentTargetValuesList>;
 
 export interface AIConfigTargetingEnvironmentTarget {
@@ -9311,7 +9232,7 @@ export interface AIConfigTargetingEnvironmentTarget {
   values: AIConfigTargetingEnvironmentTargetValuesList;
   variation: number;
 }
-export const AIConfigTargetingEnvironmentTarget = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextKind: S.String,
     values: AIConfigTargetingEnvironmentTargetValuesList,
@@ -9323,7 +9244,7 @@ export const AIConfigTargetingEnvironmentTarget = /*@__PURE__*/ S.suspend(() =>
 
 export type AIConfigTargetingEnvironmentContextTargetsList =
   Array<AIConfigTargetingEnvironmentTarget>;
-export const AIConfigTargetingEnvironmentContextTargetsList = /*@__PURE__*/ S.Array(
+const AIConfigTargetingEnvironmentContextTargetsList = /*@__PURE__*/ S.Array(
   AIConfigTargetingEnvironmentTarget,
 ) as any as S.Schema<AIConfigTargetingEnvironmentContextTargetsList>;
 
@@ -9332,7 +9253,7 @@ export interface AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAl
   defaultVariation: number;
   type: string;
 }
-export const AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation =
+const AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       canReshuffle: S.Boolean,
@@ -9348,7 +9269,7 @@ export interface AIConfigTargetingEnvironmentFallthroughRolloutVariation {
   variation: number;
   weight: number;
 }
-export const AIConfigTargetingEnvironmentFallthroughRolloutVariation = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentFallthroughRolloutVariation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _untracked: S.optional(S.Boolean),
     variation: S.Number,
@@ -9360,7 +9281,7 @@ export const AIConfigTargetingEnvironmentFallthroughRolloutVariation = /*@__PURE
 
 export type AIConfigTargetingEnvironmentFallthroughRolloutVariationsList =
   Array<AIConfigTargetingEnvironmentFallthroughRolloutVariation>;
-export const AIConfigTargetingEnvironmentFallthroughRolloutVariationsList = /*@__PURE__*/ S.Array(
+const AIConfigTargetingEnvironmentFallthroughRolloutVariationsList = /*@__PURE__*/ S.Array(
   AIConfigTargetingEnvironmentFallthroughRolloutVariation,
 ) as any as S.Schema<AIConfigTargetingEnvironmentFallthroughRolloutVariationsList>;
 
@@ -9371,7 +9292,7 @@ export interface AIConfigTargetingEnvironmentFallthroughRollout {
   seed?: number;
   variations: AIConfigTargetingEnvironmentFallthroughRolloutVariationsList;
 }
-export const AIConfigTargetingEnvironmentFallthroughRollout = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentFallthroughRollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketBy: S.optional(S.String),
     contextKind: S.String,
@@ -9389,7 +9310,7 @@ export interface AIConfigTargetingEnvironmentFallthrough {
   variation?: number;
   rollout?: AIConfigTargetingEnvironmentFallthroughRollout;
 }
-export const AIConfigTargetingEnvironmentFallthrough = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentFallthrough = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variation: S.optional(S.Number),
     rollout: S.optional(AIConfigTargetingEnvironmentFallthroughRollout),
@@ -9399,7 +9320,7 @@ export const AIConfigTargetingEnvironmentFallthrough = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<AIConfigTargetingEnvironmentFallthrough>;
 
 export type AIConfigTargetingEnvironmentRuleClauseValuesList = Array<unknown>;
-export const AIConfigTargetingEnvironmentRuleClauseValuesList =
+const AIConfigTargetingEnvironmentRuleClauseValuesList =
   FilterValuesList as any as S.Schema<AIConfigTargetingEnvironmentRuleClauseValuesList>;
 
 export interface AIConfigTargetingEnvironmentRuleClause {
@@ -9409,7 +9330,7 @@ export interface AIConfigTargetingEnvironmentRuleClause {
   op: string;
   values: AIConfigTargetingEnvironmentRuleClauseValuesList;
 }
-export const AIConfigTargetingEnvironmentRuleClause = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentRuleClause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.String,
     id: S.String,
@@ -9423,7 +9344,7 @@ export const AIConfigTargetingEnvironmentRuleClause = /*@__PURE__*/ S.suspend(()
 
 export type AIConfigTargetingEnvironmentRuleClausesList =
   Array<AIConfigTargetingEnvironmentRuleClause>;
-export const AIConfigTargetingEnvironmentRuleClausesList = /*@__PURE__*/ S.Array(
+const AIConfigTargetingEnvironmentRuleClausesList = /*@__PURE__*/ S.Array(
   AIConfigTargetingEnvironmentRuleClause,
 ) as any as S.Schema<AIConfigTargetingEnvironmentRuleClausesList>;
 
@@ -9431,7 +9352,7 @@ export interface AIConfigTargetingEnvironmentRule {
   clauses: AIConfigTargetingEnvironmentRuleClausesList;
   trackEvents: boolean;
 }
-export const AIConfigTargetingEnvironmentRule = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironmentRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clauses: AIConfigTargetingEnvironmentRuleClausesList,
     trackEvents: S.Boolean,
@@ -9441,12 +9362,12 @@ export const AIConfigTargetingEnvironmentRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIConfigTargetingEnvironmentRule>;
 
 export type AIConfigTargetingEnvironmentRulesList = Array<AIConfigTargetingEnvironmentRule>;
-export const AIConfigTargetingEnvironmentRulesList = /*@__PURE__*/ S.Array(
+const AIConfigTargetingEnvironmentRulesList = /*@__PURE__*/ S.Array(
   AIConfigTargetingEnvironmentRule,
 ) as any as S.Schema<AIConfigTargetingEnvironmentRulesList>;
 
 export type AIConfigTargetingEnvironmentTargetsList = Array<AIConfigTargetingEnvironmentTarget>;
-export const AIConfigTargetingEnvironmentTargetsList =
+const AIConfigTargetingEnvironmentTargetsList =
   AIConfigTargetingEnvironmentContextTargetsList as any as S.Schema<AIConfigTargetingEnvironmentTargetsList>;
 
 export interface AIConfigTargetingEnvironment {
@@ -9462,7 +9383,7 @@ export interface AIConfigTargetingEnvironment {
   _environmentName: string;
   _version: number;
 }
-export const AIConfigTargetingEnvironment = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextTargets: AIConfigTargetingEnvironmentContextTargetsList,
     enabled: S.Boolean,
@@ -9483,33 +9404,28 @@ export const AIConfigTargetingEnvironment = /*@__PURE__*/ S.suspend(() =>
 export type AIConfigTargetingEnvironmentsMap = {
   [key: string]: AIConfigTargetingEnvironment | undefined;
 };
-export const AIConfigTargetingEnvironmentsMap = /*@__PURE__*/ S.Record(
+const AIConfigTargetingEnvironmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   AIConfigTargetingEnvironment,
 ) as any as S.Schema<AIConfigTargetingEnvironmentsMap>;
 
 /** The kind of event the metric tracks */
 export type AiConfigsMetricListingRepKind = "pageview" | "click" | "custom" | "trace";
-export const AiConfigsMetricListingRepKind = S.String;
+const AiConfigsMetricListingRepKind = S.String;
 
 /** The location and content type of related resources */
 export type AiConfigsMetricListingRepLinksMap = { [key: string]: Link | undefined };
-export const AiConfigsMetricListingRepLinksMap =
+const AiConfigsMetricListingRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AiConfigsMetricListingRepLinksMap>;
 
 /** Tags for the metric */
 export type AiConfigsMetricListingRepTagsList = Array<string>;
-export const AiConfigsMetricListingRepTagsList =
+const AiConfigsMetricListingRepTagsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepTagsList>;
 
 export type AiConfigsModification = Modification;
-export const AiConfigsModification = Modification;
-
 /** The location and content type of related resources */
 export type AiConfigsMemberSummaryLinksMap = { [key: string]: Link | undefined };
-export const AiConfigsMemberSummaryLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AiConfigsMemberSummaryLinksMap>;
-
 export interface AiConfigsMemberSummary {
   /** The location and content type of related resources */
   _links: AiConfigsMemberSummaryLinksMap;
@@ -9524,30 +9440,29 @@ export interface AiConfigsMemberSummary {
   /** The member's email address */
   email: string;
 }
-export const AiConfigsMemberSummary = MemberSummary as any as S.Schema<AiConfigsMemberSummary>;
+const AiConfigsMemberSummary = MemberSummary as any as S.Schema<AiConfigsMemberSummary>;
 
 /** For custom and trace metrics, the success criteria */
 export type AiConfigsMetricListingRepSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
-export const AiConfigsMetricListingRepSuccessCriteria = S.String;
+const AiConfigsMetricListingRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type AiConfigsMetricListingRepRandomizationUnitsList = Array<string>;
-export const AiConfigsMetricListingRepRandomizationUnitsList =
+const AiConfigsMetricListingRepRandomizationUnitsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type AiConfigsMetricListingRepAnalysisUnitsList = Array<string>;
-export const AiConfigsMetricListingRepAnalysisUnitsList =
+const AiConfigsMetricListingRepAnalysisUnitsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsMetricListingRepAnalysisUnitsList>;
 
 /** Filter type. One of [contextAttribute, eventProperty, group] */
 export type AiConfigsFilterType = "group" | "contextAttribute" | "eventProperty";
-export const AiConfigsFilterType = S.String;
+const AiConfigsFilterType = S.String;
 
 /** The context attribute / event property values or group member nodes */
 export type AiConfigsFilterValuesList = Array<unknown>;
-export const AiConfigsFilterValuesList =
-  FilterValuesList as any as S.Schema<AiConfigsFilterValuesList>;
+const AiConfigsFilterValuesList = FilterValuesList as any as S.Schema<AiConfigsFilterValuesList>;
 
 export interface AiConfigsFilter {
   /** Filter type. One of [contextAttribute, eventProperty, group] */
@@ -9562,7 +9477,7 @@ export interface AiConfigsFilter {
   /** If set, then take the inverse of the operator. 'in' becomes 'not in'. */
   negate: boolean;
 }
-export const AiConfigsFilter = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AiConfigsFilterType,
     attribute: S.optional(S.String),
@@ -9575,20 +9490,16 @@ export const AiConfigsFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** The method by which multiple unit event values are aggregated */
 export type AiConfigsMetricListingRepUnitAggregationType = "average" | "sum" | "count_distinct";
-export const AiConfigsMetricListingRepUnitAggregationType = S.String;
+const AiConfigsMetricListingRepUnitAggregationType = S.String;
 
 /** The method for analyzing metric events */
 export type AiConfigsMetricListingRepAnalysisType = "mean" | "percentile";
-export const AiConfigsMetricListingRepAnalysisType = S.String;
+const AiConfigsMetricListingRepAnalysisType = S.String;
 
 export type AiConfigsMetricEventDefaultRep = MetricEventDefaultRep;
-export const AiConfigsMetricEventDefaultRep = MetricEventDefaultRep;
-
 export type AiConfigsMetricDataSourceRefRep = MetricDataSourceRefRep;
-export const AiConfigsMetricDataSourceRefRep = MetricDataSourceRefRep;
-
 export type AiConfigsMetricListingRepUrlsList = Array<UrlMatcher>;
-export const AiConfigsMetricListingRepUrlsList =
+const AiConfigsMetricListingRepUrlsList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<AiConfigsMetricListingRepUrlsList>;
 
 export interface AiConfigsMetricDenominatorRep {
@@ -9615,7 +9526,7 @@ export interface AiConfigsMetricDenominatorRep {
   /** When true, the percentile bound calculation includes imputed zeros */
   winsorIncludeImputed?: boolean;
 }
-export const AiConfigsMetricDenominatorRep = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsMetricDenominatorRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     isNumeric: S.optional(S.Boolean),
@@ -9722,7 +9633,7 @@ export interface AiConfigsMetricListingRep {
   unitAggregationField?: string;
   denominator?: AiConfigsMetricDenominatorRep;
 }
-export const AiConfigsMetricListingRep = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsMetricListingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentCount: S.optional(S.Number),
     metricGroupCount: S.optional(S.Number),
@@ -9779,29 +9690,21 @@ export const AiConfigsMetricListingRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsMetricListingRep>;
 
 export type AiConfigsLegacyExperimentRepEnvironmentsList = Array<string>;
-export const AiConfigsLegacyExperimentRepEnvironmentsList =
+const AiConfigsLegacyExperimentRepEnvironmentsList =
   FeatureFlagTagsList as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentsList>;
 
 export type AiConfigsExperimentEnabledPeriodRep = ExperimentEnabledPeriodRep;
-export const AiConfigsExperimentEnabledPeriodRep = ExperimentEnabledPeriodRep;
-
 export type AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList =
   Array<ExperimentEnabledPeriodRep>;
-export const AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList =
-  ExperimentEnvironmentSettingRepEnabledPeriodsList as any as S.Schema<AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList>;
-
 export interface AiConfigsExperimentEnvironmentSettingRep {
   startDate?: number;
   stopDate?: number;
   enabledPeriods?: AiConfigsExperimentEnvironmentSettingRepEnabledPeriodsList;
 }
-export const AiConfigsExperimentEnvironmentSettingRep =
-  ExperimentEnvironmentSettingRep as any as S.Schema<AiConfigsExperimentEnvironmentSettingRep>;
-
 export type AiConfigsLegacyExperimentRepEnvironmentSettingsMap = {
   [key: string]: AiConfigsExperimentEnvironmentSettingRep | undefined;
 };
-export const AiConfigsLegacyExperimentRepEnvironmentSettingsMap =
+const AiConfigsLegacyExperimentRepEnvironmentSettingsMap =
   LegacyExperimentRepEnvironmentSettingsMap as any as S.Schema<AiConfigsLegacyExperimentRepEnvironmentSettingsMap>;
 
 export interface AiConfigsLegacyExperimentRep {
@@ -9810,7 +9713,7 @@ export interface AiConfigsLegacyExperimentRep {
   environments?: AiConfigsLegacyExperimentRepEnvironmentsList;
   _environmentSettings?: AiConfigsLegacyExperimentRepEnvironmentSettingsMap;
 }
-export const AiConfigsLegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsLegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricKey: S.optional(S.String),
     _metric: S.optional(AiConfigsMetricListingRep),
@@ -9822,7 +9725,7 @@ export const AiConfigsLegacyExperimentRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsLegacyExperimentRep>;
 
 export type AiConfigsExperimentInfoRepItemsList = Array<AiConfigsLegacyExperimentRep>;
-export const AiConfigsExperimentInfoRepItemsList = /*@__PURE__*/ S.Array(
+const AiConfigsExperimentInfoRepItemsList = /*@__PURE__*/ S.Array(
   AiConfigsLegacyExperimentRep,
 ) as any as S.Schema<AiConfigsExperimentInfoRepItemsList>;
 
@@ -9830,7 +9733,7 @@ export interface AiConfigsExperimentInfoRep {
   baselineIdx: number;
   items: AiConfigsExperimentInfoRepItemsList;
 }
-export const AiConfigsExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
+const AiConfigsExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baselineIdx: S.Number,
     items: AiConfigsExperimentInfoRepItemsList,
@@ -9840,11 +9743,10 @@ export const AiConfigsExperimentInfoRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AiConfigsExperimentInfoRep>;
 
 export type AIConfigTargetingTagsList = Array<string>;
-export const AIConfigTargetingTagsList =
-  FeatureFlagTagsList as any as S.Schema<AIConfigTargetingTagsList>;
+const AIConfigTargetingTagsList = FeatureFlagTagsList as any as S.Schema<AIConfigTargetingTagsList>;
 
 export type AIConfigTargetingVariationValue = boolean | unknown | number | string;
-export const AIConfigTargetingVariationValue =
+const AIConfigTargetingVariationValue =
   S.Unknown as any as S.Schema<AIConfigTargetingVariationValue>;
 
 export interface AIConfigTargetingVariation {
@@ -9853,7 +9755,7 @@ export interface AIConfigTargetingVariation {
   name: string;
   value: AIConfigTargetingVariationValue;
 }
-export const AIConfigTargetingVariation = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargetingVariation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     description: S.String,
@@ -9865,7 +9767,7 @@ export const AIConfigTargetingVariation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AIConfigTargetingVariation>;
 
 export type AIConfigTargetingVariationsList = Array<AIConfigTargetingVariation>;
-export const AIConfigTargetingVariationsList = /*@__PURE__*/ S.Array(
+const AIConfigTargetingVariationsList = /*@__PURE__*/ S.Array(
   AIConfigTargetingVariation,
 ) as any as S.Schema<AIConfigTargetingVariationsList>;
 
@@ -9881,7 +9783,7 @@ export interface AIConfigTargeting {
   variations: AIConfigTargetingVariationsList;
   _version: number;
 }
-export const AIConfigTargeting = /*@__PURE__*/ S.suspend(() =>
+const AIConfigTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.Number,
     defaults: S.optional(AIConfigTargetingDefaults),
@@ -9900,7 +9802,7 @@ export interface GetAIConfigVariationRequest {
   configKey: string;
   variationKey: string;
 }
-export const GetAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -9917,14 +9819,14 @@ export const GetAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAIConfigVariationRequest>;
 
 export type AIConfigVariationsResponseItemsList = Array<AIConfigVariation>;
-export const AIConfigVariationsResponseItemsList =
+const AIConfigVariationsResponseItemsList =
   AIConfigVariationsList as any as S.Schema<AIConfigVariationsResponseItemsList>;
 
 export interface AIConfigVariationsResponse {
   items: AIConfigVariationsResponseItemsList;
   totalCount: number;
 }
-export const AIConfigVariationsResponse = /*@__PURE__*/ S.suspend(() =>
+const AIConfigVariationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AIConfigVariationsResponseItemsList,
     totalCount: S.Number,
@@ -9955,7 +9857,7 @@ export interface GetAIRunsUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetAIRunsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIRunsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -9972,25 +9874,23 @@ export const GetAIRunsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SeriesListRepLinksMap = { [key: string]: unknown | undefined };
-export const SeriesListRepLinksMap = UrlMatcher as any as S.Schema<SeriesListRepLinksMap>;
+const SeriesListRepLinksMap = UrlMatcher as any as S.Schema<SeriesListRepLinksMap>;
 
 export type SeriesMetadataRep = { [key: string]: unknown | undefined };
-export const SeriesMetadataRep = UrlMatcher as any as S.Schema<SeriesMetadataRep>;
-
 /** Metadata about each series */
 export type SeriesListRepMetadataList = Array<SeriesMetadataRep>;
-export const SeriesListRepMetadataList =
+const SeriesListRepMetadataList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<SeriesListRepMetadataList>;
 
 export type SeriesTimeSliceRep = { [key: string]: number | undefined };
-export const SeriesTimeSliceRep = /*@__PURE__*/ S.Record(
+const SeriesTimeSliceRep = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<SeriesTimeSliceRep>;
 
 /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
 export type SeriesListRepSeriesList = Array<SeriesTimeSliceRep>;
-export const SeriesListRepSeriesList = /*@__PURE__*/ S.Array(
+const SeriesListRepSeriesList = /*@__PURE__*/ S.Array(
   SeriesTimeSliceRep,
 ) as any as S.Schema<SeriesListRepSeriesList>;
 
@@ -10002,7 +9902,7 @@ export interface SeriesListRep {
   /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
   series: SeriesListRepSeriesList;
 }
-export const SeriesListRep = /*@__PURE__*/ S.suspend(() =>
+const SeriesListRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: SeriesListRepLinksMap,
     metadata: SeriesListRepMetadataList,
@@ -10014,7 +9914,7 @@ export interface GetAIToolRequest {
   projectKey: string;
   toolKey: string;
 }
-export const GetAIToolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAIToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     toolKey: S.String.pipe(T.Label()),
@@ -10024,7 +9924,7 @@ export const GetAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAIToolRequest" }) as any as S.Schema<GetAIToolRequest>;
 
 export type AIToolTagsList = Array<string>;
-export const AIToolTagsList = ViewTagsList as any as S.Schema<AIToolTagsList>;
+const AIToolTagsList = ViewTagsList as any as S.Schema<AIToolTagsList>;
 
 export interface AITool {
   key: string;
@@ -10041,7 +9941,7 @@ export interface AITool {
   version: number;
   createdAt: number;
 }
-export const AITool = /*@__PURE__*/ S.suspend(() =>
+const AITool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _access: S.optional(AiConfigsAccess),
@@ -10067,7 +9967,7 @@ export interface GetAllHoldoutsRequest {
   /** Where to start in the list. Use this with pagination. For example, an `offset` of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetAllHoldoutsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllHoldoutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -10087,7 +9987,7 @@ export interface RelatedExperimentRep {
   name?: string;
   environment?: string;
 }
-export const RelatedExperimentRep = /*@__PURE__*/ S.suspend(() =>
+const RelatedExperimentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -10096,7 +9996,7 @@ export const RelatedExperimentRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelatedExperimentRep" }) as any as S.Schema<RelatedExperimentRep>;
 
 export type SimpleHoldoutRepExperimentsList = Array<RelatedExperimentRep>;
-export const SimpleHoldoutRepExperimentsList = /*@__PURE__*/ S.Array(
+const SimpleHoldoutRepExperimentsList = /*@__PURE__*/ S.Array(
   RelatedExperimentRep,
 ) as any as S.Schema<SimpleHoldoutRepExperimentsList>;
 
@@ -10109,7 +10009,7 @@ export interface SimpleHoldoutRep {
   updatedAt?: number;
   experiments?: SimpleHoldoutRepExperimentsList;
 }
-export const SimpleHoldoutRep = /*@__PURE__*/ S.suspend(() =>
+const SimpleHoldoutRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     key: S.optional(S.String),
@@ -10122,13 +10022,13 @@ export const SimpleHoldoutRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleHoldoutRep" }) as any as S.Schema<SimpleHoldoutRep>;
 
 export type HoldoutsCollectionRepItemsList = Array<SimpleHoldoutRep>;
-export const HoldoutsCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const HoldoutsCollectionRepItemsList = /*@__PURE__*/ S.Array(
   SimpleHoldoutRep,
 ) as any as S.Schema<HoldoutsCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type HoldoutsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const HoldoutsCollectionRepLinksMap =
+const HoldoutsCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<HoldoutsCollectionRepLinksMap>;
 
 export interface HoldoutsCollectionRep {
@@ -10138,7 +10038,7 @@ export interface HoldoutsCollectionRep {
   /** The total number of holdouts in this project and environment. */
   total_count?: number;
 }
-export const HoldoutsCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const HoldoutsCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(HoldoutsCollectionRepItemsList),
     _links: S.optional(HoldoutsCollectionRepLinksMap),
@@ -10152,7 +10052,7 @@ export interface GetAllIntegrationConfigurationsRequest {
   /** When `true`, includes pending two-step setup drafts that were created using `/setup` but are not yet finalized. Defaults to `false`, which returns only active configurations. */
   includePending?: boolean;
 }
-export const GetAllIntegrationConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllIntegrationConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     includePending: S.optional(S.Boolean.pipe(T.Query())),
@@ -10169,13 +10069,13 @@ export const GetAllIntegrationConfigurationsRequest = /*@__PURE__*/ S.suspend(()
 
 /** An array of integration configurations */
 export type IntegrationConfigurationCollectionRepItemsList = Array<IntegrationConfigurationsRep>;
-export const IntegrationConfigurationCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const IntegrationConfigurationCollectionRepItemsList = /*@__PURE__*/ S.Array(
   IntegrationConfigurationsRep,
 ) as any as S.Schema<IntegrationConfigurationCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type IntegrationConfigurationCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const IntegrationConfigurationCollectionRepLinksMap =
+const IntegrationConfigurationCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationConfigurationCollectionRepLinksMap>;
 
 export interface IntegrationConfigurationCollectionRep {
@@ -10184,7 +10084,7 @@ export interface IntegrationConfigurationCollectionRep {
   /** The location and content type of related resources */
   _links: IntegrationConfigurationCollectionRepLinksMap;
 }
-export const IntegrationConfigurationCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const IntegrationConfigurationCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: IntegrationConfigurationCollectionRepItemsList,
     _links: IntegrationConfigurationCollectionRepLinksMap,
@@ -10203,7 +10103,7 @@ export interface GetAllReleasePipelinesRequest {
   /** Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetAllReleasePipelinesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllReleasePipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -10218,8 +10118,7 @@ export const GetAllReleasePipelinesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of segment keys */
 export type AudienceSegmentKeysList = Array<string>;
-export const AudienceSegmentKeysList =
-  FeatureFlagTagsList as any as S.Schema<AudienceSegmentKeysList>;
+const AudienceSegmentKeysList = FeatureFlagTagsList as any as S.Schema<AudienceSegmentKeysList>;
 
 export interface Audience {
   /** Details about the environment. When the environment has been deleted, this field is omitted. */
@@ -10231,7 +10130,7 @@ export interface Audience {
   /** A list of segment keys */
   segmentKeys?: AudienceSegmentKeysList;
 }
-export const Audience = /*@__PURE__*/ S.suspend(() =>
+const Audience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(EnvironmentSummary),
     name: S.String,
@@ -10241,7 +10140,7 @@ export const Audience = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Audience" }) as any as S.Schema<Audience>;
 
 export type Audiences = Array<Audience>;
-export const Audiences = /*@__PURE__*/ S.Array(Audience) as any as S.Schema<Audiences>;
+const Audiences = /*@__PURE__*/ S.Array(Audience) as any as S.Schema<Audiences>;
 
 export interface Phase {
   /** The phase ID */
@@ -10253,7 +10152,7 @@ export interface Phase {
   /** The configuration for the phase's rollout. */
   configuration?: unknown;
 }
-export const Phase = /*@__PURE__*/ S.suspend(() =>
+const Phase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     audiences: Audiences,
@@ -10264,14 +10163,13 @@ export const Phase = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the release pipeline phases. Each phase is a logical grouping of one or more environments that share attributes for rolling out changes. */
 export type ReleasePipelinePhasesList = Array<Phase>;
-export const ReleasePipelinePhasesList = /*@__PURE__*/ S.Array(
+const ReleasePipelinePhasesList = /*@__PURE__*/ S.Array(
   Phase,
 ) as any as S.Schema<ReleasePipelinePhasesList>;
 
 /** A list of the release pipeline's tags */
 export type ReleasePipelineTagsList = Array<string>;
-export const ReleasePipelineTagsList =
-  FeatureFlagTagsList as any as S.Schema<ReleasePipelineTagsList>;
+const ReleasePipelineTagsList = FeatureFlagTagsList as any as S.Schema<ReleasePipelineTagsList>;
 
 export interface ReleasePipeline {
   /** Timestamp of when the release pipeline was created */
@@ -10295,7 +10193,7 @@ export interface ReleasePipeline {
   /** Whether this release pipeline is a legacy pipeline */
   _isLegacy?: boolean;
 }
-export const ReleasePipeline = /*@__PURE__*/ S.suspend(() =>
+const ReleasePipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.String,
     description: S.optional(S.String),
@@ -10312,7 +10210,7 @@ export const ReleasePipeline = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of release pipelines */
 export type ReleasePipelineCollectionItemsList = Array<ReleasePipeline>;
-export const ReleasePipelineCollectionItemsList = /*@__PURE__*/ S.Array(
+const ReleasePipelineCollectionItemsList = /*@__PURE__*/ S.Array(
   ReleasePipeline,
 ) as any as S.Schema<ReleasePipelineCollectionItemsList>;
 
@@ -10322,7 +10220,7 @@ export interface ReleasePipelineCollection {
   /** Total number of release pipelines */
   totalCount: number;
 }
-export const ReleasePipelineCollection = /*@__PURE__*/ S.suspend(() =>
+const ReleasePipelineCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ReleasePipelineCollectionItemsList,
     totalCount: S.Number,
@@ -10343,7 +10241,7 @@ export interface GetAllReleaseProgressionsForReleasePipelineRequest {
   /** Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetAllReleaseProgressionsForReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllReleaseProgressionsForReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     pipelineKey: S.String.pipe(T.Label()),
@@ -10363,7 +10261,7 @@ export const GetAllReleaseProgressionsForReleasePipelineRequest = /*@__PURE__*/ 
 
 /** The location and content type of related resources */
 export type ReleaseProgressionLinksMap = { [key: string]: Link | undefined };
-export const ReleaseProgressionLinksMap =
+const ReleaseProgressionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseProgressionLinksMap>;
 
 export interface ReleaseProgression {
@@ -10380,7 +10278,7 @@ export interface ReleaseProgression {
   /** The location and content type of related resources */
   _links: ReleaseProgressionLinksMap;
 }
-export const ReleaseProgression = /*@__PURE__*/ S.suspend(() =>
+const ReleaseProgression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _createdAt: S.Number,
     _completedAt: S.optional(S.Number),
@@ -10393,7 +10291,7 @@ export const ReleaseProgression = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of details for each release, across all flags, for this release pipeline */
 export type ReleaseProgressionCollectionItemsList = Array<ReleaseProgression>;
-export const ReleaseProgressionCollectionItemsList = /*@__PURE__*/ S.Array(
+const ReleaseProgressionCollectionItemsList = /*@__PURE__*/ S.Array(
   ReleaseProgression,
 ) as any as S.Schema<ReleaseProgressionCollectionItemsList>;
 
@@ -10405,7 +10303,7 @@ export interface PhaseInfo {
   /** The number of active releases in this phase */
   releaseCount: number;
 }
-export const PhaseInfo = /*@__PURE__*/ S.suspend(() =>
+const PhaseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     name: S.String,
@@ -10415,13 +10313,13 @@ export const PhaseInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of details for each phase, across all releases, for this release pipeline */
 export type ReleaseProgressionCollectionPhasesList = Array<PhaseInfo>;
-export const ReleaseProgressionCollectionPhasesList = /*@__PURE__*/ S.Array(
+const ReleaseProgressionCollectionPhasesList = /*@__PURE__*/ S.Array(
   PhaseInfo,
 ) as any as S.Schema<ReleaseProgressionCollectionPhasesList>;
 
 /** The location and content type of related resources */
 export type ReleaseProgressionCollectionLinksMap = { [key: string]: Link | undefined };
-export const ReleaseProgressionCollectionLinksMap =
+const ReleaseProgressionCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ReleaseProgressionCollectionLinksMap>;
 
 export interface ReleaseProgressionCollection {
@@ -10438,7 +10336,7 @@ export interface ReleaseProgressionCollection {
   /** The location and content type of related resources */
   _links: ReleaseProgressionCollectionLinksMap;
 }
-export const ReleaseProgressionCollection = /*@__PURE__*/ S.suspend(() =>
+const ReleaseProgressionCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeCount: S.Number,
     completedCount: S.Number,
@@ -10452,20 +10350,18 @@ export const ReleaseProgressionCollection = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReleaseProgressionCollection>;
 
 export interface GetAllWebhooksRequest {}
-export const GetAllWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/webhooks", code: 200 })),
 ).annotate({ identifier: "GetAllWebhooksRequest" }) as any as S.Schema<GetAllWebhooksRequest>;
 
 /** The location and content type of related resources */
 export type WebhooksLinksMap = { [key: string]: Link | undefined };
-export const WebhooksLinksMap =
+const WebhooksLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<WebhooksLinksMap>;
 
 /** An array of webhooks */
 export type WebhooksItemsList = Array<Webhook>;
-export const WebhooksItemsList = /*@__PURE__*/ S.Array(
-  Webhook,
-) as any as S.Schema<WebhooksItemsList>;
+const WebhooksItemsList = /*@__PURE__*/ S.Array(Webhook) as any as S.Schema<WebhooksItemsList>;
 
 export interface Webhooks {
   /** The location and content type of related resources */
@@ -10473,7 +10369,7 @@ export interface Webhooks {
   /** An array of webhooks */
   items: WebhooksItemsList;
 }
-export const Webhooks = /*@__PURE__*/ S.suspend(() =>
+const Webhooks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: WebhooksLinksMap,
     items: WebhooksItemsList,
@@ -10481,7 +10377,7 @@ export const Webhooks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Webhooks" }) as any as S.Schema<Webhooks>;
 
 export type GetAnnouncementsPublicRequestStatus = "active" | "inactive" | "scheduled";
-export const GetAnnouncementsPublicRequestStatus = S.String;
+const GetAnnouncementsPublicRequestStatus = S.String;
 
 export interface GetAnnouncementsPublicRequest {
   /** Filter announcements by status. */
@@ -10491,7 +10387,7 @@ export interface GetAnnouncementsPublicRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetAnnouncementsPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnouncementsPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetAnnouncementsPublicRequestStatus.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -10502,18 +10398,16 @@ export const GetAnnouncementsPublicRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnnouncementsPublicRequest>;
 
 export type GetAnnouncementsPublic200ResponseItemsList = Array<AnnouncementResponse>;
-export const GetAnnouncementsPublic200ResponseItemsList = /*@__PURE__*/ S.Array(
+const GetAnnouncementsPublic200ResponseItemsList = /*@__PURE__*/ S.Array(
   AnnouncementResponse,
 ) as any as S.Schema<GetAnnouncementsPublic200ResponseItemsList>;
 
 export type AnnouncementPaginatedLinks = PaginatedLinks;
-export const AnnouncementPaginatedLinks = PaginatedLinks;
-
 export interface GetAnnouncementsPublic200Response {
   items: GetAnnouncementsPublic200ResponseItemsList;
   _links: PaginatedLinks;
 }
-export const GetAnnouncementsPublic200Response = /*@__PURE__*/ S.suspend(() =>
+const GetAnnouncementsPublic200Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: GetAnnouncementsPublic200ResponseItemsList,
     _links: PaginatedLinks,
@@ -10528,7 +10422,7 @@ export interface GetApplicationRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. Options: `flags`. */
   expand?: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -10536,7 +10430,7 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApplicationRequest" }) as any as S.Schema<GetApplicationRequest>;
 
 export type FlagListingRepLinksMap = { [key: string]: Link | undefined };
-export const FlagListingRepLinksMap =
+const FlagListingRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagListingRepLinksMap>;
 
 export interface FlagListingRep {
@@ -10547,7 +10441,7 @@ export interface FlagListingRep {
   _links?: FlagListingRepLinksMap;
   _site?: Link;
 }
-export const FlagListingRep = /*@__PURE__*/ S.suspend(() =>
+const FlagListingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -10558,13 +10452,13 @@ export const FlagListingRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the flags that have been evaluated by the application */
 export type ApplicationFlagCollectionRepItemsList = Array<FlagListingRep>;
-export const ApplicationFlagCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const ApplicationFlagCollectionRepItemsList = /*@__PURE__*/ S.Array(
   FlagListingRep,
 ) as any as S.Schema<ApplicationFlagCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type ApplicationFlagCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationFlagCollectionRepLinksMap =
+const ApplicationFlagCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationFlagCollectionRepLinksMap>;
 
 export interface ApplicationFlagCollectionRep {
@@ -10575,7 +10469,7 @@ export interface ApplicationFlagCollectionRep {
   /** The location and content type of related resources */
   _links?: ApplicationFlagCollectionRepLinksMap;
 }
-export const ApplicationFlagCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationFlagCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ApplicationFlagCollectionRepItemsList),
     totalCount: S.optional(S.Number),
@@ -10587,12 +10481,12 @@ export const ApplicationFlagCollectionRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationRepLinksMap =
+const ApplicationRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationRepLinksMap>;
 
 /** To distinguish the kind of application */
 export type ApplicationRepKind = "browser" | "mobile" | "server";
-export const ApplicationRepKind = S.String;
+const ApplicationRepKind = S.String;
 
 export interface ApplicationMaintainerRep {
   /** Details on the member who maintains this resource */
@@ -10600,7 +10494,7 @@ export interface ApplicationMaintainerRep {
   /** Details on the team that maintains this resource */
   team?: MemberTeamSummaryRep;
 }
-export const ApplicationMaintainerRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationMaintainerRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: S.optional(MemberSummary),
     team: S.optional(MemberTeamSummaryRep),
@@ -10631,7 +10525,7 @@ export interface ApplicationRep {
   /** The name of the application */
   name: string;
 }
-export const ApplicationRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flags: S.optional(ApplicationFlagCollectionRep),
     _access: S.optional(Access),
@@ -10659,7 +10553,7 @@ export interface GetApplicationsRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. Options: `flags`. */
   expand?: string;
 }
-export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -10671,12 +10565,12 @@ export const GetApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationCollectionRepLinksMap =
+const ApplicationCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationCollectionRepLinksMap>;
 
 /** A list of applications */
 export type ApplicationCollectionRepItemsList = Array<ApplicationRep>;
-export const ApplicationCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const ApplicationCollectionRepItemsList = /*@__PURE__*/ S.Array(
   ApplicationRep,
 ) as any as S.Schema<ApplicationCollectionRepItemsList>;
 
@@ -10688,7 +10582,7 @@ export interface ApplicationCollectionRep {
   /** The number of applications */
   totalCount?: number;
 }
-export const ApplicationCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ApplicationCollectionRepLinksMap),
     items: S.optional(ApplicationCollectionRepItemsList),
@@ -10708,7 +10602,7 @@ export interface GetApplicationVersionsRequest {
   /** Accepts sorting order and fields. Fields can be comma separated. Possible fields are `creationDate`, `name`. Examples: `sort=name` sort by names ascending, `sort=-name,creationDate` sort by names descending and creationDate ascending. */
   sort?: string;
 }
-export const GetApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -10724,12 +10618,12 @@ export const GetApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ApplicationVersionsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationVersionsCollectionRepLinksMap =
+const ApplicationVersionsCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationVersionsCollectionRepLinksMap>;
 
 /** The location and content type of related resources */
 export type ApplicationVersionRepLinksMap = { [key: string]: Link | undefined };
-export const ApplicationVersionRepLinksMap =
+const ApplicationVersionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ApplicationVersionRepLinksMap>;
 
 export interface ApplicationVersionRep {
@@ -10750,7 +10644,7 @@ export interface ApplicationVersionRep {
   /** Whether this version is supported. Only applicable if the application <code>kind</code> is <code>mobile</code>. */
   supported?: boolean;
 }
-export const ApplicationVersionRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(Access),
     _links: S.optional(ApplicationVersionRepLinksMap),
@@ -10765,7 +10659,7 @@ export const ApplicationVersionRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the versions for this application */
 export type ApplicationVersionsCollectionRepItemsList = Array<ApplicationVersionRep>;
-export const ApplicationVersionsCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const ApplicationVersionsCollectionRepItemsList = /*@__PURE__*/ S.Array(
   ApplicationVersionRep,
 ) as any as S.Schema<ApplicationVersionsCollectionRepItemsList>;
 
@@ -10777,7 +10671,7 @@ export interface ApplicationVersionsCollectionRep {
   /** The number of versions for this application */
   totalCount?: number;
 }
-export const ApplicationVersionsCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ApplicationVersionsCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ApplicationVersionsCollectionRepLinksMap),
     items: S.optional(ApplicationVersionsCollectionRepItemsList),
@@ -10797,7 +10691,7 @@ export interface GetApprovalForFlagRequest {
   /** The feature flag approval request ID */
   id: string;
 }
-export const GetApprovalForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -10816,21 +10710,21 @@ export const GetApprovalForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the review of this approval request */
 export type FlagConfigApprovalRequestResponseReviewStatus = "approved" | "declined" | "pending";
-export const FlagConfigApprovalRequestResponseReviewStatus = S.String;
+const FlagConfigApprovalRequestResponseReviewStatus = S.String;
 
 /** An array of individual reviews of this approval request */
 export type FlagConfigApprovalRequestResponseAllReviewsList = Array<ReviewResponse>;
-export const FlagConfigApprovalRequestResponseAllReviewsList =
+const FlagConfigApprovalRequestResponseAllReviewsList =
   ApprovalRequestResponseAllReviewsList as any as S.Schema<FlagConfigApprovalRequestResponseAllReviewsList>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type FlagConfigApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const FlagConfigApprovalRequestResponseNotifyMemberIdsList =
+const FlagConfigApprovalRequestResponseNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<FlagConfigApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type FlagConfigApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const FlagConfigApprovalRequestResponseNotifyTeamKeysList =
+const FlagConfigApprovalRequestResponseNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<FlagConfigApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
@@ -10839,16 +10733,16 @@ export type FlagConfigApprovalRequestResponseStatus =
   | "completed"
   | "failed"
   | "scheduled";
-export const FlagConfigApprovalRequestResponseStatus = S.String;
+const FlagConfigApprovalRequestResponseStatus = S.String;
 
 /** Details on any conflicting approval requests */
 export type FlagConfigApprovalRequestResponseConflictsList = Array<Conflict2>;
-export const FlagConfigApprovalRequestResponseConflictsList =
+const FlagConfigApprovalRequestResponseConflictsList =
   ApprovalRequestResponseConflictsList as any as S.Schema<FlagConfigApprovalRequestResponseConflictsList>;
 
 /** The location and content type of related resources */
 export type FlagConfigApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const FlagConfigApprovalRequestResponseLinksMap =
+const FlagConfigApprovalRequestResponseLinksMap =
   UrlMatcher as any as S.Schema<FlagConfigApprovalRequestResponseLinksMap>;
 
 export interface FlagConfigApprovalRequestResponse {
@@ -10897,7 +10791,7 @@ export interface FlagConfigApprovalRequestResponse {
   /** Details about the custom workflow, if this approval request is part of a custom workflow */
   customWorkflowMetadata?: CustomWorkflowMeta;
 }
-export const FlagConfigApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const FlagConfigApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -10932,7 +10826,7 @@ export interface GetApprovalRequestRequest {
   /** A comma-separated list of fields to expand in the response. Supported fields are explained above. */
   expand?: string;
 }
-export const GetApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -10943,21 +10837,21 @@ export const GetApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Current status of the review of this approval request */
 export type ExpandableApprovalRequestResponseReviewStatus = "approved" | "declined" | "pending";
-export const ExpandableApprovalRequestResponseReviewStatus = S.String;
+const ExpandableApprovalRequestResponseReviewStatus = S.String;
 
 /** An array of individual reviews of this approval request */
 export type ExpandableApprovalRequestResponseAllReviewsList = Array<ReviewResponse>;
-export const ExpandableApprovalRequestResponseAllReviewsList =
+const ExpandableApprovalRequestResponseAllReviewsList =
   ApprovalRequestResponseAllReviewsList as any as S.Schema<ExpandableApprovalRequestResponseAllReviewsList>;
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ExpandableApprovalRequestResponseNotifyMemberIdsList = Array<string>;
-export const ExpandableApprovalRequestResponseNotifyMemberIdsList =
+const ExpandableApprovalRequestResponseNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<ExpandableApprovalRequestResponseNotifyMemberIdsList>;
 
 /** An array of team keys, if teams were specified when the approval request was created. The members of these teams are listed in <code>notifyMemberIds</code>, resolved when the request was made. Team membership may have changed since then. */
 export type ExpandableApprovalRequestResponseNotifyTeamKeysList = Array<string>;
-export const ExpandableApprovalRequestResponseNotifyTeamKeysList =
+const ExpandableApprovalRequestResponseNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<ExpandableApprovalRequestResponseNotifyTeamKeysList>;
 
 /** Current status of the approval request */
@@ -10966,36 +10860,35 @@ export type ExpandableApprovalRequestResponseStatus =
   | "completed"
   | "failed"
   | "scheduled";
-export const ExpandableApprovalRequestResponseStatus = S.String;
+const ExpandableApprovalRequestResponseStatus = S.String;
 
 /** Details on any conflicting approval requests */
 export type ExpandableApprovalRequestResponseConflictsList = Array<Conflict2>;
-export const ExpandableApprovalRequestResponseConflictsList =
+const ExpandableApprovalRequestResponseConflictsList =
   ApprovalRequestResponseConflictsList as any as S.Schema<ExpandableApprovalRequestResponseConflictsList>;
 
 /** The location and content type of related resources */
 export type ExpandableApprovalRequestResponseLinksMap = { [key: string]: unknown | undefined };
-export const ExpandableApprovalRequestResponseLinksMap =
+const ExpandableApprovalRequestResponseLinksMap =
   UrlMatcher as any as S.Schema<ExpandableApprovalRequestResponseLinksMap>;
 
 /** The location and content type of related resources */
 export type ProjectLinksMap = { [key: string]: Link | undefined };
-export const ProjectLinksMap =
+const ProjectLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectLinksMap>;
 
 /** A list of tags for the project */
 export type ProjectTagsList = Array<string>;
-export const ProjectTagsList = ViewTagsList as any as S.Schema<ProjectTagsList>;
+const ProjectTagsList = ViewTagsList as any as S.Schema<ProjectTagsList>;
 
 /** The location and content type of related resources */
 export type EnvironmentsLinksMap = { [key: string]: Link | undefined };
-export const EnvironmentsLinksMap =
+const EnvironmentsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<EnvironmentsLinksMap>;
 
 /** An array of environments */
 export type EnvironmentsItemsList = Array<Environment>;
-export const EnvironmentsItemsList =
-  ProjectRepEnvironmentsList as any as S.Schema<EnvironmentsItemsList>;
+const EnvironmentsItemsList = ProjectRepEnvironmentsList as any as S.Schema<EnvironmentsItemsList>;
 
 export interface Environments {
   /** The location and content type of related resources */
@@ -11005,7 +10898,7 @@ export interface Environments {
   /** An array of environments */
   items: EnvironmentsItemsList;
 }
-export const Environments = /*@__PURE__*/ S.suspend(() =>
+const Environments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(EnvironmentsLinksMap),
     totalCount: S.optional(S.Number),
@@ -11035,7 +10928,7 @@ export interface Project {
   /** A paginated list of environments for the project. By default this field is omitted unless expanded by the client. */
   environments?: Environments;
 }
-export const Project = /*@__PURE__*/ S.suspend(() =>
+const Project = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ProjectLinksMap,
     _id: S.String,
@@ -11052,26 +10945,25 @@ export const Project = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environments the approval impacts */
 export type ExpandableApprovalRequestResponseEnvironmentsList = Array<Environment>;
-export const ExpandableApprovalRequestResponseEnvironmentsList =
+const ExpandableApprovalRequestResponseEnvironmentsList =
   ProjectRepEnvironmentsList as any as S.Schema<ExpandableApprovalRequestResponseEnvironmentsList>;
 
 /** Kind of feature flag */
 export type ExpandedFlagRepKind = "boolean" | "multivariate";
-export const ExpandedFlagRepKind = S.String;
+const ExpandedFlagRepKind = S.String;
 
 /** An array of possible variations for the flag */
 export type ExpandedFlagRepVariationsList = Array<Variation>;
-export const ExpandedFlagRepVariationsList =
+const ExpandedFlagRepVariationsList =
   FeatureFlagVariationsList as any as S.Schema<ExpandedFlagRepVariationsList>;
 
 /** Tags for the feature flag */
 export type ExpandedFlagRepTagsList = Array<string>;
-export const ExpandedFlagRepTagsList =
-  FeatureFlagTagsList as any as S.Schema<ExpandedFlagRepTagsList>;
+const ExpandedFlagRepTagsList = FeatureFlagTagsList as any as S.Schema<ExpandedFlagRepTagsList>;
 
 /** The location and content type of related resources */
 export type ExpandedFlagRepLinksMap = { [key: string]: Link | undefined };
-export const ExpandedFlagRepLinksMap =
+const ExpandedFlagRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpandedFlagRepLinksMap>;
 
 export interface ExpandedFlagRep {
@@ -11112,7 +11004,7 @@ export interface ExpandedFlagRep {
   /** The indices, from the array of variations, for the variations to serve by default when targeting is on and when targeting is off. These variations will be used for this flag in new environments. If omitted, the first and last variation will be used. */
   defaults?: Defaults;
 }
-export const ExpandedFlagRep = /*@__PURE__*/ S.suspend(() =>
+const ExpandedFlagRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     kind: ExpandedFlagRepKind,
@@ -11141,7 +11033,7 @@ export interface AIConfigRep {
   /** The name of the AI Config */
   name: string;
 }
-export const AIConfigRep = AiConfigsMaintainerTeam as any as S.Schema<AIConfigRep>;
+const AIConfigRep = AiConfigsMaintainerTeam as any as S.Schema<AIConfigRep>;
 
 export interface ExpandedExperimentRep {
   /** The key of the experiment */
@@ -11150,7 +11042,7 @@ export interface ExpandedExperimentRep {
   name: string;
   _access?: Access;
 }
-export const ExpandedExperimentRep = /*@__PURE__*/ S.suspend(() =>
+const ExpandedExperimentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -11160,27 +11052,24 @@ export const ExpandedExperimentRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment. Defaults to an empty array. */
 export type UserSegmentTagsList = Array<string>;
-export const UserSegmentTagsList = FeatureFlagTagsList as any as S.Schema<UserSegmentTagsList>;
+const UserSegmentTagsList = FeatureFlagTagsList as any as S.Schema<UserSegmentTagsList>;
 
 /** An array of keys for included targets. Included individual targets are always segment members, regardless of segment rules. For list-based segments over 15,000 entries, also called big segments, this array is either empty or omitted. */
 export type UserSegmentIncludedList = Array<string>;
-export const UserSegmentIncludedList =
-  FeatureFlagTagsList as any as S.Schema<UserSegmentIncludedList>;
+const UserSegmentIncludedList = FeatureFlagTagsList as any as S.Schema<UserSegmentIncludedList>;
 
 /** An array of keys for excluded targets. Segment rules bypass individual excluded targets, so they will never be included based on rules. Excluded targets may still be included explicitly. This value is omitted for list-based segments over 15,000 entries, also called big segments. */
 export type UserSegmentExcludedList = Array<string>;
-export const UserSegmentExcludedList =
-  FeatureFlagTagsList as any as S.Schema<UserSegmentExcludedList>;
+const UserSegmentExcludedList = FeatureFlagTagsList as any as S.Schema<UserSegmentExcludedList>;
 
 export type SegmentTargetValuesList = Array<string>;
-export const SegmentTargetValuesList =
-  FeatureFlagTagsList as any as S.Schema<SegmentTargetValuesList>;
+const SegmentTargetValuesList = FeatureFlagTagsList as any as S.Schema<SegmentTargetValuesList>;
 
 export interface SegmentTarget {
   values?: SegmentTargetValuesList;
   contextKind?: string;
 }
-export const SegmentTarget = /*@__PURE__*/ S.suspend(() =>
+const SegmentTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(SegmentTargetValuesList),
     contextKind: S.optional(S.String),
@@ -11188,21 +11077,21 @@ export const SegmentTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SegmentTarget" }) as any as S.Schema<SegmentTarget>;
 
 export type UserSegmentIncludedContextsList = Array<SegmentTarget>;
-export const UserSegmentIncludedContextsList = /*@__PURE__*/ S.Array(
+const UserSegmentIncludedContextsList = /*@__PURE__*/ S.Array(
   SegmentTarget,
 ) as any as S.Schema<UserSegmentIncludedContextsList>;
 
 export type UserSegmentExcludedContextsList = Array<SegmentTarget>;
-export const UserSegmentExcludedContextsList =
+const UserSegmentExcludedContextsList =
   UserSegmentIncludedContextsList as any as S.Schema<UserSegmentExcludedContextsList>;
 
 /** The location and content type of related resources */
 export type UserSegmentLinksMap = { [key: string]: Link | undefined };
-export const UserSegmentLinksMap =
+const UserSegmentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UserSegmentLinksMap>;
 
 export type UserSegmentRuleClausesList = Array<Clause>;
-export const UserSegmentRuleClausesList = /*@__PURE__*/ S.Array(
+const UserSegmentRuleClausesList = /*@__PURE__*/ S.Array(
   Clause,
 ) as any as S.Schema<UserSegmentRuleClausesList>;
 
@@ -11214,7 +11103,7 @@ export interface UserSegmentRule {
   bucketBy?: string;
   description?: string;
 }
-export const UserSegmentRule = /*@__PURE__*/ S.suspend(() =>
+const UserSegmentRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     clauses: UserSegmentRuleClausesList,
@@ -11227,13 +11116,13 @@ export const UserSegmentRule = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the targeting rules for this segment. */
 export type UserSegmentRulesList = Array<UserSegmentRule>;
-export const UserSegmentRulesList = /*@__PURE__*/ S.Array(
+const UserSegmentRulesList = /*@__PURE__*/ S.Array(
   UserSegmentRule,
 ) as any as S.Schema<UserSegmentRulesList>;
 
 /** A list of flags targeting this segment. Only included when getting a single segment, using the <code>getSegment</code> endpoint. */
 export type UserSegmentFlagsList = Array<FlagListingRep>;
-export const UserSegmentFlagsList =
+const UserSegmentFlagsList =
   ApplicationFlagCollectionRepItemsList as any as S.Schema<UserSegmentFlagsList>;
 
 export interface SegmentMetadata {
@@ -11245,7 +11134,7 @@ export interface SegmentMetadata {
   lastModified?: number;
   deleted?: boolean;
 }
-export const SegmentMetadata = /*@__PURE__*/ S.suspend(() =>
+const SegmentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     envId: S.optional(S.String),
     segmentId: S.optional(S.String),
@@ -11302,7 +11191,7 @@ export interface UserSegment {
   /** Whether an import is currently in progress for the specified segment. Only applies to big segments. */
   _importInProgress?: boolean;
 }
-export const UserSegment = /*@__PURE__*/ S.suspend(() =>
+const UserSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -11338,7 +11227,7 @@ export interface ExpandedResourceRep {
   flag?: ExpandedFlagRep;
   segment?: UserSegment;
 }
-export const ExpandedResourceRep = /*@__PURE__*/ S.suspend(() =>
+const ExpandedResourceRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     aiConfig: S.optional(AIConfigRep),
@@ -11406,7 +11295,7 @@ export interface ExpandableApprovalRequestResponse {
   /** Resource the approval request belongs to */
   resource?: ExpandedResourceRep;
 }
-export const ExpandableApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpandableApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -11451,7 +11340,7 @@ export interface GetApprovalRequestsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -11464,13 +11353,13 @@ export const GetApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of approval requests */
 export type ExpandableApprovalRequestsResponseItemsList = Array<ExpandableApprovalRequestResponse>;
-export const ExpandableApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array(
+const ExpandableApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array(
   ExpandableApprovalRequestResponse,
 ) as any as S.Schema<ExpandableApprovalRequestsResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpandableApprovalRequestsResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpandableApprovalRequestsResponseLinksMap =
+const ExpandableApprovalRequestsResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpandableApprovalRequestsResponseLinksMap>;
 
 export interface ExpandableApprovalRequestsResponse {
@@ -11481,7 +11370,7 @@ export interface ExpandableApprovalRequestsResponse {
   /** The location and content type of related resources */
   _links: ExpandableApprovalRequestsResponseLinksMap;
 }
-export const ExpandableApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpandableApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpandableApprovalRequestsResponseItemsList,
     totalCount: S.Number,
@@ -11500,7 +11389,7 @@ export interface GetApprovalRequestSettingsRequest {
   /** A comma-separated list of fields to expand in the response. Options include 'default' and 'strict'. */
   expand?: string;
 }
-export const GetApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.optional(S.String.pipe(T.Query())),
@@ -11519,12 +11408,12 @@ export const GetApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Arbitrary service-specific configuration */
 export type ApprovalRequestSettingServiceConfigMap = { [key: string]: unknown | undefined };
-export const ApprovalRequestSettingServiceConfigMap =
+const ApprovalRequestSettingServiceConfigMap =
   UrlMatcher as any as S.Schema<ApprovalRequestSettingServiceConfigMap>;
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type ApprovalRequestSettingRequiredApprovalTagsList = Array<string>;
-export const ApprovalRequestSettingRequiredApprovalTagsList =
+const ApprovalRequestSettingRequiredApprovalTagsList =
   FeatureFlagTagsList as any as S.Schema<ApprovalRequestSettingRequiredApprovalTagsList>;
 
 /** Configuration that controls how changes to a resource are gated by approvals. */
@@ -11550,7 +11439,7 @@ export interface ApprovalRequestSetting {
   /** Optional integration configuration ID of a custom approval integration. This is an Enterprise-only feature. */
   serviceKindConfigurationId?: string | null;
 }
-export const ApprovalRequestSetting = /*@__PURE__*/ S.suspend(() =>
+const ApprovalRequestSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     required: S.Boolean,
     bypassApprovalsForPendingChanges: S.Boolean,
@@ -11569,7 +11458,7 @@ export const ApprovalRequestSetting = /*@__PURE__*/ S.suspend(() =>
 export type ApprovalRequestSettingWithEnvsEnvironmentsMap = {
   [key: string]: ApprovalRequestSetting | undefined;
 };
-export const ApprovalRequestSettingWithEnvsEnvironmentsMap = /*@__PURE__*/ S.Record(
+const ApprovalRequestSettingWithEnvsEnvironmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   ApprovalRequestSetting,
 ) as any as S.Schema<ApprovalRequestSettingWithEnvsEnvironmentsMap>;
@@ -11580,7 +11469,7 @@ export interface ApprovalRequestSettingWithEnvs {
   _default?: ApprovalRequestSetting;
   _strict?: ApprovalRequestSetting;
 }
-export const ApprovalRequestSettingWithEnvs = /*@__PURE__*/ S.suspend(() =>
+const ApprovalRequestSettingWithEnvs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: S.optional(ApprovalRequestSettingWithEnvsEnvironmentsMap),
     _default: S.optional(ApprovalRequestSetting),
@@ -11591,13 +11480,13 @@ export const ApprovalRequestSettingWithEnvs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApprovalRequestSettingWithEnvs>;
 
 export type ApprovalRequestSettings = { [key: string]: ApprovalRequestSettingWithEnvs | undefined };
-export const ApprovalRequestSettings = /*@__PURE__*/ S.Record(
+const ApprovalRequestSettings = /*@__PURE__*/ S.Record(
   S.String,
   ApprovalRequestSettingWithEnvs,
 ) as any as S.Schema<ApprovalRequestSettings>;
 
 export type GetApprovalRequestSettingsResponse = ApprovalRequestSettings;
-export const GetApprovalRequestSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalRequestSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   ApprovalRequestSettings.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetApprovalRequestSettingsResponse",
@@ -11611,7 +11500,7 @@ export interface GetApprovalsForFlagRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetApprovalsForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApprovalsForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -11629,13 +11518,13 @@ export const GetApprovalsForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of approval requests */
 export type FlagConfigApprovalRequestsResponseItemsList = Array<FlagConfigApprovalRequestResponse>;
-export const FlagConfigApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array(
+const FlagConfigApprovalRequestsResponseItemsList = /*@__PURE__*/ S.Array(
   FlagConfigApprovalRequestResponse,
 ) as any as S.Schema<FlagConfigApprovalRequestsResponseItemsList>;
 
 /** The location and content type of related resources */
 export type FlagConfigApprovalRequestsResponseLinksMap = { [key: string]: Link | undefined };
-export const FlagConfigApprovalRequestsResponseLinksMap =
+const FlagConfigApprovalRequestsResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagConfigApprovalRequestsResponseLinksMap>;
 
 export interface FlagConfigApprovalRequestsResponse {
@@ -11644,7 +11533,7 @@ export interface FlagConfigApprovalRequestsResponse {
   /** The location and content type of related resources */
   _links: FlagConfigApprovalRequestsResponseLinksMap;
 }
-export const FlagConfigApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const FlagConfigApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FlagConfigApprovalRequestsResponseItemsList,
     _links: FlagConfigApprovalRequestsResponseLinksMap,
@@ -11669,7 +11558,7 @@ export interface GetAuditLogEntriesRequest {
   /** An access token ID that lets you filter audit log listings by the token that made the change. Repeat the parameter to filter by multiple tokens. */
   token?: string;
 }
-export const GetAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.Number.pipe(T.Query())),
@@ -11685,14 +11574,14 @@ export const GetAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type AuditLogEntryListingRepLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryListingRepLinksMap =
+const AuditLogEntryListingRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryListingRepLinksMap>;
 
 export interface ResourceAccess {
   action?: string;
   resource?: string;
 }
-export const ResourceAccess = /*@__PURE__*/ S.suspend(() =>
+const ResourceAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     resource: S.optional(S.String),
@@ -11701,27 +11590,23 @@ export const ResourceAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the actions performed and resources acted on in this audit log entry */
 export type AuditLogEntryListingRepAccessesList = Array<ResourceAccess>;
-export const AuditLogEntryListingRepAccessesList = /*@__PURE__*/ S.Array(
+const AuditLogEntryListingRepAccessesList = /*@__PURE__*/ S.Array(
   ResourceAccess,
 ) as any as S.Schema<AuditLogEntryListingRepAccessesList>;
 
 export interface RelatedFlag {
   key: string;
 }
-export const RelatedFlag = /*@__PURE__*/ S.suspend(() =>
+const RelatedFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
   }),
 ).annotate({ identifier: "RelatedFlag" }) as any as S.Schema<RelatedFlag>;
 
 export type RelatedExperiment = RelatedFlag;
-export const RelatedExperiment = RelatedFlag;
-
 export type RelatedAIConfig = RelatedFlag;
-export const RelatedAIConfig = RelatedFlag;
-
 export type SubjectDataRepLinksMap = { [key: string]: Link | undefined };
-export const SubjectDataRepLinksMap =
+const SubjectDataRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<SubjectDataRepLinksMap>;
 
 export interface SubjectDataRep {
@@ -11731,7 +11616,7 @@ export interface SubjectDataRep {
   /** The subject's avatar */
   avatarUrl?: string;
 }
-export const SubjectDataRep = /*@__PURE__*/ S.suspend(() =>
+const SubjectDataRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(SubjectDataRepLinksMap),
     name: S.optional(S.String),
@@ -11740,7 +11625,7 @@ export const SubjectDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubjectDataRep" }) as any as S.Schema<SubjectDataRep>;
 
 export type MemberDataRepLinksMap = { [key: string]: Link | undefined };
-export const MemberDataRepLinksMap =
+const MemberDataRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MemberDataRepLinksMap>;
 
 export interface MemberDataRep {
@@ -11754,7 +11639,7 @@ export interface MemberDataRep {
   /** The member last name */
   lastName?: string;
 }
-export const MemberDataRep = /*@__PURE__*/ S.suspend(() =>
+const MemberDataRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(MemberDataRepLinksMap),
     _id: S.optional(S.String),
@@ -11765,7 +11650,7 @@ export const MemberDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MemberDataRep" }) as any as S.Schema<MemberDataRep>;
 
 export type AuthorizedAppDataRepLinksMap = { [key: string]: Link | undefined };
-export const AuthorizedAppDataRepLinksMap =
+const AuthorizedAppDataRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuthorizedAppDataRepLinksMap>;
 
 export interface AuthorizedAppDataRep {
@@ -11783,7 +11668,7 @@ export interface AuthorizedAppDataRep {
   /** Whether this application acted on behalf of the member in this entry. When true, the member and the application are co-authors of the change rather than the member acting alone. Omitted for applications that act on their own. */
   isAgent?: boolean;
 }
-export const AuthorizedAppDataRep = /*@__PURE__*/ S.suspend(() =>
+const AuthorizedAppDataRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(AuthorizedAppDataRepLinksMap),
     _id: S.optional(S.String),
@@ -11796,12 +11681,12 @@ export const AuthorizedAppDataRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthorizedAppDataRep" }) as any as S.Schema<AuthorizedAppDataRep>;
 
 export type TargetResourceRepLinksMap = { [key: string]: Link | undefined };
-export const TargetResourceRepLinksMap =
+const TargetResourceRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TargetResourceRepLinksMap>;
 
 /** The resource specifier */
 export type TargetResourceRepResourcesList = Array<string>;
-export const TargetResourceRepResourcesList =
+const TargetResourceRepResourcesList =
   FeatureFlagTagsList as any as S.Schema<TargetResourceRepResourcesList>;
 
 export interface TargetResourceRep {
@@ -11811,7 +11696,7 @@ export interface TargetResourceRep {
   /** The resource specifier */
   resources?: TargetResourceRepResourcesList;
 }
-export const TargetResourceRep = /*@__PURE__*/ S.suspend(() =>
+const TargetResourceRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(TargetResourceRepLinksMap),
     name: S.optional(S.String),
@@ -11820,7 +11705,7 @@ export const TargetResourceRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetResourceRep" }) as any as S.Schema<TargetResourceRep>;
 
 export type ParentResourceRepLinksMap = { [key: string]: Link | undefined };
-export const ParentResourceRepLinksMap =
+const ParentResourceRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ParentResourceRepLinksMap>;
 
 export interface ParentResourceRep {
@@ -11830,7 +11715,7 @@ export interface ParentResourceRep {
   /** The parent's resource specifier */
   resource?: string;
 }
-export const ParentResourceRep = /*@__PURE__*/ S.suspend(() =>
+const ParentResourceRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentResourceRepLinksMap),
     name: S.optional(S.String),
@@ -11881,7 +11766,7 @@ export interface AuditLogEntryListingRep {
   target?: TargetResourceRep;
   parent?: ParentResourceRep;
 }
-export const AuditLogEntryListingRep = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEntryListingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: AuditLogEntryListingRepLinksMap,
     _id: S.String,
@@ -11909,13 +11794,13 @@ export const AuditLogEntryListingRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of audit log entries */
 export type AuditLogEntryListingRepCollectionItemsList = Array<AuditLogEntryListingRep>;
-export const AuditLogEntryListingRepCollectionItemsList = /*@__PURE__*/ S.Array(
+const AuditLogEntryListingRepCollectionItemsList = /*@__PURE__*/ S.Array(
   AuditLogEntryListingRep,
 ) as any as S.Schema<AuditLogEntryListingRepCollectionItemsList>;
 
 /** The location and content type of related resources */
 export type AuditLogEntryListingRepCollectionLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryListingRepCollectionLinksMap =
+const AuditLogEntryListingRepCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryListingRepCollectionLinksMap>;
 
 export interface AuditLogEntryListingRepCollection {
@@ -11924,7 +11809,7 @@ export interface AuditLogEntryListingRepCollection {
   /** The location and content type of related resources */
   _links: AuditLogEntryListingRepCollectionLinksMap;
 }
-export const AuditLogEntryListingRepCollection = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEntryListingRepCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: AuditLogEntryListingRepCollectionItemsList,
     _links: AuditLogEntryListingRepCollectionLinksMap,
@@ -11937,7 +11822,7 @@ export interface GetAuditLogEntryRequest {
   /** The ID of the audit log entry */
   id: string;
 }
-export const GetAuditLogEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuditLogEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/auditlog/{id}", code: 200 })),
@@ -11945,16 +11830,16 @@ export const GetAuditLogEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type AuditLogEntryRepLinksMap = { [key: string]: Link | undefined };
-export const AuditLogEntryRepLinksMap =
+const AuditLogEntryRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<AuditLogEntryRepLinksMap>;
 
 /** Details on the actions performed and resources acted on in this audit log entry */
 export type AuditLogEntryRepAccessesList = Array<ResourceAccess>;
-export const AuditLogEntryRepAccessesList =
+const AuditLogEntryRepAccessesList =
   AuditLogEntryListingRepAccessesList as any as S.Schema<AuditLogEntryRepAccessesList>;
 
 export type AuditLogEntryRepSubentriesList = Array<AuditLogEntryListingRep>;
-export const AuditLogEntryRepSubentriesList =
+const AuditLogEntryRepSubentriesList =
   AuditLogEntryListingRepCollectionItemsList as any as S.Schema<AuditLogEntryRepSubentriesList>;
 
 export interface AuditLogEntryRep {
@@ -12011,7 +11896,7 @@ export interface AuditLogEntryRep {
   currentVersion?: unknown;
   subentries?: AuditLogEntryRepSubentriesList;
 }
-export const AuditLogEntryRep = /*@__PURE__*/ S.suspend(() =>
+const AuditLogEntryRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: AuditLogEntryRepLinksMap,
     _id: S.String,
@@ -12053,7 +11938,7 @@ export interface GetBigSegmentExportRequest {
   /** The export ID */
   exportID: string;
 }
-export const GetBigSegmentExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigSegmentExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12076,7 +11961,7 @@ export interface InitiatorRep {
   /** The email address of the member who initiated the export */
   email?: string;
 }
-export const InitiatorRep = /*@__PURE__*/ S.suspend(() =>
+const InitiatorRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     email: S.optional(S.String),
@@ -12085,7 +11970,7 @@ export const InitiatorRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources, including the location of the exported file */
 export type ExportLinksMap = { [key: string]: Link | undefined };
-export const ExportLinksMap =
+const ExportLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExportLinksMap>;
 
 export interface Export {
@@ -12106,7 +11991,7 @@ export interface Export {
   /** The location and content type of related resources, including the location of the exported file */
   _links: ExportLinksMap;
 }
-export const Export = /*@__PURE__*/ S.suspend(() =>
+const Export = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     segmentKey: S.String,
@@ -12129,7 +12014,7 @@ export interface GetBigSegmentImportRequest {
   /** The import ID */
   importID: string;
 }
-export const GetBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigSegmentImportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12154,7 +12039,7 @@ export type ImportStatus =
   | "in_progress"
   | "complete"
   | "stopped";
-export const ImportStatus = S.String;
+const ImportStatus = S.String;
 
 export interface FileRep {
   /** The imported file name, including the extension */
@@ -12162,7 +12047,7 @@ export interface FileRep {
   /** The imported file status */
   status?: string;
 }
-export const FileRep = /*@__PURE__*/ S.suspend(() =>
+const FileRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     status: S.optional(S.String),
@@ -12171,11 +12056,11 @@ export const FileRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The imported files and their status */
 export type ImportFilesList = Array<FileRep>;
-export const ImportFilesList = /*@__PURE__*/ S.Array(FileRep) as any as S.Schema<ImportFilesList>;
+const ImportFilesList = /*@__PURE__*/ S.Array(FileRep) as any as S.Schema<ImportFilesList>;
 
 /** The location and content type of related resources */
 export type ImportLinksMap = { [key: string]: Link | undefined };
-export const ImportLinksMap =
+const ImportLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ImportLinksMap>;
 
 export interface Import {
@@ -12194,7 +12079,7 @@ export interface Import {
   /** The location and content type of related resources */
   _links: ImportLinksMap;
 }
-export const Import = /*@__PURE__*/ S.suspend(() =>
+const Import = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     segmentKey: S.String,
@@ -12216,7 +12101,7 @@ export interface GetBigSegmentStoreIntegrationRequest {
   /** The integration ID */
   integrationId: string;
 }
-export const GetBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12234,7 +12119,7 @@ export const GetBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetBigSegmentStoreIntegrationRequest>;
 
 export interface GetBigSegmentStoreIntegrationsRequest {}
-export const GetBigSegmentStoreIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBigSegmentStoreIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v2/integration-capabilities/big-segment-store", code: 200 }),
   ),
@@ -12246,7 +12131,7 @@ export interface BigSegmentStoreIntegrationCollectionLinks {
   self: Link;
   parent?: Link;
 }
-export const BigSegmentStoreIntegrationCollectionLinks = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentStoreIntegrationCollectionLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: Link,
     parent: S.optional(Link),
@@ -12257,7 +12142,7 @@ export const BigSegmentStoreIntegrationCollectionLinks = /*@__PURE__*/ S.suspend
 
 /** An array of persistent store integration configurations */
 export type BigSegmentStoreIntegrationCollectionItemsList = Array<BigSegmentStoreIntegration>;
-export const BigSegmentStoreIntegrationCollectionItemsList = /*@__PURE__*/ S.Array(
+const BigSegmentStoreIntegrationCollectionItemsList = /*@__PURE__*/ S.Array(
   BigSegmentStoreIntegration,
 ) as any as S.Schema<BigSegmentStoreIntegrationCollectionItemsList>;
 
@@ -12267,7 +12152,7 @@ export interface BigSegmentStoreIntegrationCollection {
   /** An array of persistent store integration configurations */
   items: BigSegmentStoreIntegrationCollectionItemsList;
 }
-export const BigSegmentStoreIntegrationCollection = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentStoreIntegrationCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BigSegmentStoreIntegrationCollectionLinks,
     items: BigSegmentStoreIntegrationCollectionItemsList,
@@ -12286,7 +12171,7 @@ export interface GetBranchRequest {
   /** Filter results to a specific flag key */
   flagKey?: string;
 }
-export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
@@ -12303,7 +12188,7 @@ export const GetBranchRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag key aliases */
 export type HunkRepAliasesList = Array<string>;
-export const HunkRepAliasesList = FeatureFlagTagsList as any as S.Schema<HunkRepAliasesList>;
+const HunkRepAliasesList = FeatureFlagTagsList as any as S.Schema<HunkRepAliasesList>;
 
 export interface HunkRep {
   /** Line number of beginning of code reference hunk */
@@ -12317,7 +12202,7 @@ export interface HunkRep {
   /** An array of flag key aliases */
   aliases?: HunkRepAliasesList;
 }
-export const HunkRep = /*@__PURE__*/ S.suspend(() =>
+const HunkRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startingLineNumber: S.Number,
     lines: S.optional(S.String),
@@ -12328,7 +12213,7 @@ export const HunkRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HunkRep" }) as any as S.Schema<HunkRep>;
 
 export type ReferenceRepHunksList = Array<HunkRep>;
-export const ReferenceRepHunksList = /*@__PURE__*/ S.Array(
+const ReferenceRepHunksList = /*@__PURE__*/ S.Array(
   HunkRep,
 ) as any as S.Schema<ReferenceRepHunksList>;
 
@@ -12339,7 +12224,7 @@ export interface ReferenceRep {
   hint?: string;
   hunks: ReferenceRepHunksList;
 }
-export const ReferenceRep = /*@__PURE__*/ S.suspend(() =>
+const ReferenceRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     hint: S.optional(S.String),
@@ -12349,13 +12234,13 @@ export const ReferenceRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag references found on the branch */
 export type BranchRepReferencesList = Array<ReferenceRep>;
-export const BranchRepReferencesList = /*@__PURE__*/ S.Array(
+const BranchRepReferencesList = /*@__PURE__*/ S.Array(
   ReferenceRep,
 ) as any as S.Schema<BranchRepReferencesList>;
 
 /** The location and content type of related resources */
 export type BranchRepLinksMap = { [key: string]: unknown | undefined };
-export const BranchRepLinksMap = UrlMatcher as any as S.Schema<BranchRepLinksMap>;
+const BranchRepLinksMap = UrlMatcher as any as S.Schema<BranchRepLinksMap>;
 
 export interface BranchRep {
   /** The branch name */
@@ -12371,7 +12256,7 @@ export interface BranchRep {
   /** The location and content type of related resources */
   _links: BranchRepLinksMap;
 }
-export const BranchRep = /*@__PURE__*/ S.suspend(() =>
+const BranchRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     head: S.String,
@@ -12386,7 +12271,7 @@ export interface GetBranchesRequest {
   /** The repository name */
   repo: string;
 }
-export const GetBranchesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
   }).pipe(
@@ -12396,12 +12281,12 @@ export const GetBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type BranchCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const BranchCollectionRepLinksMap =
+const BranchCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<BranchCollectionRepLinksMap>;
 
 /** An array of branches */
 export type BranchCollectionRepItemsList = Array<BranchRep>;
-export const BranchCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const BranchCollectionRepItemsList = /*@__PURE__*/ S.Array(
   BranchRep,
 ) as any as S.Schema<BranchCollectionRepItemsList>;
 
@@ -12411,7 +12296,7 @@ export interface BranchCollectionRep {
   /** An array of branches */
   items: BranchCollectionRepItemsList;
 }
-export const BranchCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const BranchCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BranchCollectionRepLinksMap,
     items: BranchCollectionRepItemsList,
@@ -12419,12 +12304,12 @@ export const BranchCollectionRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BranchCollectionRep" }) as any as S.Schema<BranchCollectionRep>;
 
 export interface GetCallerIdentityRequest {}
-export const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/caller-identity", code: 200 })),
 ).annotate({ identifier: "GetCallerIdentityRequest" }) as any as S.Schema<GetCallerIdentityRequest>;
 
 export type CallerIdentityRepScopesList = Array<string>;
-export const CallerIdentityRepScopesList =
+const CallerIdentityRepScopesList =
   FeatureFlagTagsList as any as S.Schema<CallerIdentityRepScopesList>;
 
 export interface CallerIdentityRep {
@@ -12442,7 +12327,7 @@ export interface CallerIdentityRep {
   serviceToken?: boolean;
   scopes?: CallerIdentityRepScopesList;
 }
-export const CallerIdentityRep = /*@__PURE__*/ S.suspend(() =>
+const CallerIdentityRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.optional(S.String),
     environmentId: S.optional(S.String),
@@ -12470,7 +12355,7 @@ export interface GetContextAttributeNamesRequest {
   /** Specifies the maximum number of items in the collection to return (max: 100, default: 100) */
   limit?: number;
 }
-export const GetContextAttributeNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextAttributeNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12495,7 +12380,7 @@ export interface ContextAttributeName {
   /** Whether or not the attribute has one or more redacted values. */
   redacted?: boolean;
 }
-export const ContextAttributeName = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     weight: S.Number,
@@ -12505,7 +12390,7 @@ export const ContextAttributeName = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of context attribute names. */
 export type ContextAttributeNamesNamesList = Array<ContextAttributeName>;
-export const ContextAttributeNamesNamesList = /*@__PURE__*/ S.Array(
+const ContextAttributeNamesNamesList = /*@__PURE__*/ S.Array(
   ContextAttributeName,
 ) as any as S.Schema<ContextAttributeNamesNamesList>;
 
@@ -12515,7 +12400,7 @@ export interface ContextAttributeNames {
   /** A collection of context attribute names. */
   names: ContextAttributeNamesNamesList;
 }
-export const ContextAttributeNames = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeNames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     names: ContextAttributeNamesNamesList,
@@ -12524,7 +12409,7 @@ export const ContextAttributeNames = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of context attribute name data grouped by kind. */
 export type ContextAttributeNamesCollectionItemsList = Array<ContextAttributeNames>;
-export const ContextAttributeNamesCollectionItemsList = /*@__PURE__*/ S.Array(
+const ContextAttributeNamesCollectionItemsList = /*@__PURE__*/ S.Array(
   ContextAttributeNames,
 ) as any as S.Schema<ContextAttributeNamesCollectionItemsList>;
 
@@ -12532,7 +12417,7 @@ export interface ContextAttributeNamesCollection {
   /** A collection of context attribute name data grouped by kind. */
   items: ContextAttributeNamesCollectionItemsList;
 }
-export const ContextAttributeNamesCollection = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeNamesCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ContextAttributeNamesCollectionItemsList,
   }),
@@ -12552,7 +12437,7 @@ export interface GetContextAttributeValuesRequest {
   /** Specifies the maximum number of items in the collection to return (max: 100, default: 50) */
   limit?: number;
 }
-export const GetContextAttributeValuesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextAttributeValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12576,7 +12461,7 @@ export interface ContextAttributeValue {
   /** A relative estimate of the number of contexts seen recently that have a matching value for a given attribute. */
   weight: number;
 }
-export const ContextAttributeValue = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.Unknown,
     weight: S.Number,
@@ -12585,7 +12470,7 @@ export const ContextAttributeValue = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of context attribute values. */
 export type ContextAttributeValuesValuesList = Array<ContextAttributeValue>;
-export const ContextAttributeValuesValuesList = /*@__PURE__*/ S.Array(
+const ContextAttributeValuesValuesList = /*@__PURE__*/ S.Array(
   ContextAttributeValue,
 ) as any as S.Schema<ContextAttributeValuesValuesList>;
 
@@ -12595,7 +12480,7 @@ export interface ContextAttributeValues {
   /** A collection of context attribute values. */
   values: ContextAttributeValuesValuesList;
 }
-export const ContextAttributeValues = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
     values: ContextAttributeValuesValuesList,
@@ -12604,7 +12489,7 @@ export const ContextAttributeValues = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of context attribute value data grouped by kind. */
 export type ContextAttributeValuesCollectionItemsList = Array<ContextAttributeValues>;
-export const ContextAttributeValuesCollectionItemsList = /*@__PURE__*/ S.Array(
+const ContextAttributeValuesCollectionItemsList = /*@__PURE__*/ S.Array(
   ContextAttributeValues,
 ) as any as S.Schema<ContextAttributeValuesCollectionItemsList>;
 
@@ -12612,7 +12497,7 @@ export interface ContextAttributeValuesCollection {
   /** A collection of context attribute value data grouped by kind. */
   items: ContextAttributeValuesCollectionItemsList;
 }
-export const ContextAttributeValuesCollection = /*@__PURE__*/ S.suspend(() =>
+const ContextAttributeValuesCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ContextAttributeValuesCollectionItemsList,
   }),
@@ -12627,7 +12512,7 @@ export interface GetContextInstanceSegmentsMembershipByEnvRequest {
   environmentKey: string;
   body: ContextInstance;
 }
-export const GetContextInstanceSegmentsMembershipByEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextInstanceSegmentsMembershipByEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12645,7 +12530,7 @@ export const GetContextInstanceSegmentsMembershipByEnvRequest = /*@__PURE__*/ S.
 
 /** The location and content type of related resources */
 export type ContextInstanceSegmentMembershipLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceSegmentMembershipLinksMap =
+const ContextInstanceSegmentMembershipLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceSegmentMembershipLinksMap>;
 
 export interface ContextInstanceSegmentMembership {
@@ -12668,7 +12553,7 @@ export interface ContextInstanceSegmentMembership {
   /** The location and content type of related resources */
   _links: ContextInstanceSegmentMembershipLinksMap;
 }
-export const ContextInstanceSegmentMembership = /*@__PURE__*/ S.suspend(() =>
+const ContextInstanceSegmentMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -12685,13 +12570,13 @@ export const ContextInstanceSegmentMembership = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ContextInstanceSegmentMembership>;
 
 export type ContextInstanceSegmentMembershipsItemsList = Array<ContextInstanceSegmentMembership>;
-export const ContextInstanceSegmentMembershipsItemsList = /*@__PURE__*/ S.Array(
+const ContextInstanceSegmentMembershipsItemsList = /*@__PURE__*/ S.Array(
   ContextInstanceSegmentMembership,
 ) as any as S.Schema<ContextInstanceSegmentMembershipsItemsList>;
 
 /** The location and content type of related resources */
 export type ContextInstanceSegmentMembershipsLinksMap = { [key: string]: Link | undefined };
-export const ContextInstanceSegmentMembershipsLinksMap =
+const ContextInstanceSegmentMembershipsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextInstanceSegmentMembershipsLinksMap>;
 
 export interface ContextInstanceSegmentMemberships {
@@ -12699,7 +12584,7 @@ export interface ContextInstanceSegmentMemberships {
   /** The location and content type of related resources */
   _links: ContextInstanceSegmentMembershipsLinksMap;
 }
-export const ContextInstanceSegmentMemberships = /*@__PURE__*/ S.suspend(() =>
+const ContextInstanceSegmentMemberships = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ContextInstanceSegmentMembershipsItemsList,
     _links: ContextInstanceSegmentMembershipsLinksMap,
@@ -12714,7 +12599,7 @@ export interface GetContextKindsByProjectKeyRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. Options: `environmentObservations`. */
   expand?: string;
 }
-export const GetContextKindsByProjectKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextKindsByProjectKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -12729,7 +12614,7 @@ export interface ContextKindEnvironmentObservation {
   /** Timestamp of when a context of this context kind was most recently observed in the environment */
   lastSeen: number;
 }
-export const ContextKindEnvironmentObservation = /*@__PURE__*/ S.suspend(() =>
+const ContextKindEnvironmentObservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentKey: S.String,
     lastSeen: S.Number,
@@ -12740,13 +12625,13 @@ export const ContextKindEnvironmentObservation = /*@__PURE__*/ S.suspend(() =>
 
 /** Recent environment observations retained from flag evaluations. This is not a complete historical record. */
 export type ContextKindRepEnvironmentObservationsList = Array<ContextKindEnvironmentObservation>;
-export const ContextKindRepEnvironmentObservationsList = /*@__PURE__*/ S.Array(
+const ContextKindRepEnvironmentObservationsList = /*@__PURE__*/ S.Array(
   ContextKindEnvironmentObservation,
 ) as any as S.Schema<ContextKindRepEnvironmentObservationsList>;
 
 /** The location and content type of related resources */
 export type ContextKindRepLinksMap = { [key: string]: Link | undefined };
-export const ContextKindRepLinksMap =
+const ContextKindRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextKindRepLinksMap>;
 
 export interface ContextKindRep {
@@ -12775,7 +12660,7 @@ export interface ContextKindRep {
   /** The location and content type of related resources */
   _links?: ContextKindRepLinksMap;
 }
-export const ContextKindRep = /*@__PURE__*/ S.suspend(() =>
+const ContextKindRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -12794,13 +12679,13 @@ export const ContextKindRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of context kinds */
 export type ContextKindsCollectionRepItemsList = Array<ContextKindRep>;
-export const ContextKindsCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const ContextKindsCollectionRepItemsList = /*@__PURE__*/ S.Array(
   ContextKindRep,
 ) as any as S.Schema<ContextKindsCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type ContextKindsCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ContextKindsCollectionRepLinksMap =
+const ContextKindsCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextKindsCollectionRepLinksMap>;
 
 export interface ContextKindsCollectionRep {
@@ -12809,7 +12694,7 @@ export interface ContextKindsCollectionRep {
   /** The location and content type of related resources */
   _links: ContextKindsCollectionRepLinksMap;
 }
-export const ContextKindsCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ContextKindsCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ContextKindsCollectionRepItemsList,
     _links: ContextKindsCollectionRepLinksMap,
@@ -12838,7 +12723,7 @@ export interface GetContextsRequest {
   /** Specifies whether to include or omit the total count of matching contexts. Defaults to true. */
   includeTotalCount?: boolean;
 }
-export const GetContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -12860,12 +12745,12 @@ export const GetContextsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ContextsLinksMap = { [key: string]: Link | undefined };
-export const ContextsLinksMap =
+const ContextsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextsLinksMap>;
 
 /** The location and content type of related resources */
 export type ContextRecordLinksMap = { [key: string]: Link | undefined };
-export const ContextRecordLinksMap =
+const ContextRecordLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ContextRecordLinksMap>;
 
 export interface ContextRecord {
@@ -12882,7 +12767,7 @@ export interface ContextRecord {
   /** Deprecated. This value is always 1. */
   associatedContexts?: number;
 }
-export const ContextRecord = /*@__PURE__*/ S.suspend(() =>
+const ContextRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSeen: S.optional(S.String),
     applicationId: S.optional(S.String),
@@ -12895,7 +12780,7 @@ export const ContextRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** A collection of contexts. Can include multiple versions of contexts that have the same <code>kind</code> and <code>key</code>, but different <code>applicationId</code>s. */
 export type ContextsItemsList = Array<ContextRecord>;
-export const ContextsItemsList = /*@__PURE__*/ S.Array(
+const ContextsItemsList = /*@__PURE__*/ S.Array(
   ContextRecord,
 ) as any as S.Schema<ContextsItemsList>;
 
@@ -12911,7 +12796,7 @@ export interface Contexts {
   /** A collection of contexts. Can include multiple versions of contexts that have the same <code>kind</code> and <code>key</code>, but different <code>applicationId</code>s. */
   items: ContextsItemsList;
 }
-export const Contexts = /*@__PURE__*/ S.suspend(() =>
+const Contexts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ContextsLinksMap),
     totalCount: S.optional(S.Number),
@@ -12943,7 +12828,7 @@ export interface GetContextsClientsideUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only. */
   granularity?: string;
 }
-export const GetContextsClientsideUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextsClientsideUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -12982,7 +12867,7 @@ export interface GetContextsServersideUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only. */
   granularity?: string;
 }
-export const GetContextsServersideUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextsServersideUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -13023,7 +12908,7 @@ export interface GetContextsTotalUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only. */
   granularity?: string;
 }
-export const GetContextsTotalUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContextsTotalUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -13045,7 +12930,7 @@ export interface GetCustomRoleRequest {
   /** The custom role key or ID */
   customRoleKey: string;
 }
-export const GetCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRoleKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/roles/{customRoleKey}", code: 200 })),
@@ -13053,12 +12938,12 @@ export const GetCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type CustomRoleLinksMap = { [key: string]: Link | undefined };
-export const CustomRoleLinksMap =
+const CustomRoleLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomRoleLinksMap>;
 
 /** An array of the policies that comprise this custom role */
 export type CustomRolePolicyList = Array<Statement>;
-export const CustomRolePolicyList =
+const CustomRolePolicyList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<CustomRolePolicyList>;
 
 export interface AssignedToRep {
@@ -13067,7 +12952,7 @@ export interface AssignedToRep {
   /** The number of teams this role is assigned to */
   teamsCount?: number;
 }
-export const AssignedToRep = /*@__PURE__*/ S.suspend(() =>
+const AssignedToRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membersCount: S.optional(S.Number),
     teamsCount: S.optional(S.Number),
@@ -13076,7 +12961,7 @@ export const AssignedToRep = /*@__PURE__*/ S.suspend(() =>
 
 /** If created from a preset, the read-only statements copied from the preset */
 export type CustomRolePresetStatementsList = Array<Statement>;
-export const CustomRolePresetStatementsList =
+const CustomRolePresetStatementsList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<CustomRolePresetStatementsList>;
 
 export interface CustomRole {
@@ -13105,7 +12990,7 @@ export interface CustomRole {
   /** If created from a preset, the read-only statements copied from the preset */
   _presetStatements?: CustomRolePresetStatementsList;
 }
-export const CustomRole = /*@__PURE__*/ S.suspend(() =>
+const CustomRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _links: CustomRoleLinksMap,
@@ -13128,7 +13013,7 @@ export interface GetCustomRolesRequest {
   /** Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetCustomRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -13137,12 +13022,12 @@ export const GetCustomRolesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type CustomRolesLinksMap = { [key: string]: Link | undefined };
-export const CustomRolesLinksMap =
+const CustomRolesLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomRolesLinksMap>;
 
 /** An array of custom roles */
 export type CustomRolesItemsList = Array<CustomRole>;
-export const CustomRolesItemsList = /*@__PURE__*/ S.Array(
+const CustomRolesItemsList = /*@__PURE__*/ S.Array(
   CustomRole,
 ) as any as S.Schema<CustomRolesItemsList>;
 
@@ -13154,7 +13039,7 @@ export interface CustomRoles {
   /** The total number of custom roles */
   totalCount?: number;
 }
-export const CustomRoles = /*@__PURE__*/ S.suspend(() =>
+const CustomRoles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(CustomRolesLinksMap),
     items: CustomRolesItemsList,
@@ -13172,7 +13057,7 @@ export interface GetCustomWorkflowRequest {
   /** The workflow ID */
   workflowId: string;
 }
-export const GetCustomWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -13193,7 +13078,7 @@ export interface ConflictOutput {
   /** Message about the conflict */
   message: string;
 }
-export const ConflictOutput = /*@__PURE__*/ S.suspend(() =>
+const ConflictOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageId: S.String,
     message: S.String,
@@ -13202,18 +13087,18 @@ export const ConflictOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** Any conflicts that are present in the workflow stages */
 export type CustomWorkflowOutputConflictsList = Array<ConflictOutput>;
-export const CustomWorkflowOutputConflictsList = /*@__PURE__*/ S.Array(
+const CustomWorkflowOutputConflictsList = /*@__PURE__*/ S.Array(
   ConflictOutput,
 ) as any as S.Schema<CustomWorkflowOutputConflictsList>;
 
 /** The location and content type of related resources */
 export type CustomWorkflowOutputLinksMap = { [key: string]: Link | undefined };
-export const CustomWorkflowOutputLinksMap =
+const CustomWorkflowOutputLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomWorkflowOutputLinksMap>;
 
 /** The stages that make up the workflow. Each stage contains conditions and actions. */
 export type CustomWorkflowOutputStagesList = Array<StageOutput>;
-export const CustomWorkflowOutputStagesList =
+const CustomWorkflowOutputStagesList =
   WorkflowTemplateOutputStagesList as any as S.Schema<CustomWorkflowOutputStagesList>;
 
 /** The operator to apply to the given attribute */
@@ -13233,7 +13118,7 @@ export type RuleClauseOp =
   | "semVerEqual"
   | "semVerLessThan"
   | "semVerGreaterThan";
-export const RuleClauseOp = S.String;
+const RuleClauseOp = S.String;
 
 export interface RuleClause {
   /** The attribute the rule applies to, for example, last name or email address */
@@ -13243,7 +13128,7 @@ export interface RuleClause {
   /** Whether the operator should be negated */
   negate?: boolean;
 }
-export const RuleClause = /*@__PURE__*/ S.suspend(() =>
+const RuleClause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.optional(S.String),
     op: S.optional(RuleClauseOp),
@@ -13259,7 +13144,7 @@ export interface ParameterDefault {
   /** Metadata related to add rule instructions */
   ruleClause?: RuleClause;
 }
-export const ParameterDefault = /*@__PURE__*/ S.suspend(() =>
+const ParameterDefault = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     booleanVariationValue: S.optional(S.Boolean),
@@ -13277,7 +13162,7 @@ export interface WorkflowTemplateParameter {
   /** Whether the default value is valid for the target flag and environment */
   valid?: boolean;
 }
-export const WorkflowTemplateParameter = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTemplateParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     path: S.optional(S.String),
@@ -13289,14 +13174,14 @@ export const WorkflowTemplateParameter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowTemplateParameter>;
 
 export type WorkflowTemplateMetadataParametersList = Array<WorkflowTemplateParameter>;
-export const WorkflowTemplateMetadataParametersList = /*@__PURE__*/ S.Array(
+const WorkflowTemplateMetadataParametersList = /*@__PURE__*/ S.Array(
   WorkflowTemplateParameter,
 ) as any as S.Schema<WorkflowTemplateMetadataParametersList>;
 
 export interface WorkflowTemplateMetadata {
   parameters?: WorkflowTemplateMetadataParametersList;
 }
-export const WorkflowTemplateMetadata = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTemplateMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(WorkflowTemplateMetadataParametersList),
   }),
@@ -13330,7 +13215,7 @@ export interface CustomWorkflowOutput {
   /** For workflows being created from a workflow template, this value is the template's key */
   templateKey?: string;
 }
-export const CustomWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
+const CustomWorkflowOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -13368,7 +13253,7 @@ export interface GetDataExportEventsUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetDataExportEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataExportEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -13386,17 +13271,17 @@ export const GetDataExportEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DataExportSeriesListRepLinksMap = { [key: string]: unknown | undefined };
-export const DataExportSeriesListRepLinksMap =
+const DataExportSeriesListRepLinksMap =
   UrlMatcher as any as S.Schema<DataExportSeriesListRepLinksMap>;
 
 /** Metadata about each series */
 export type DataExportSeriesListRepMetadataList = Array<SeriesMetadataRep>;
-export const DataExportSeriesListRepMetadataList =
+const DataExportSeriesListRepMetadataList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<DataExportSeriesListRepMetadataList>;
 
 /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
 export type DataExportSeriesListRepSeriesList = Array<SeriesTimeSliceRep>;
-export const DataExportSeriesListRepSeriesList =
+const DataExportSeriesListRepSeriesList =
   SeriesListRepSeriesList as any as S.Schema<DataExportSeriesListRepSeriesList>;
 
 export interface DataExportSeriesListRep {
@@ -13411,7 +13296,7 @@ export interface DataExportSeriesListRep {
   /** Whether this source's usage pipeline is late: it wrote every hour of the 24 hours ending at <code>dataThrough</code>, and more than three hours have passed since <code>dataThrough</code>. Always <code>false</code> for a source with gaps in those 24 hours, where gaps usually mean no usage rather than a stalled pipeline. Omitted when <code>dataThrough</code> is omitted. */
   delayed?: boolean;
 }
-export const DataExportSeriesListRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportSeriesListRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: DataExportSeriesListRepLinksMap,
     metadata: DataExportSeriesListRepMetadataList,
@@ -13422,7 +13307,7 @@ export const DataExportSeriesListRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataExportSeriesListRep" }) as any as S.Schema<DataExportSeriesListRep>;
 
 export type GetDataExportProjectRankingRequestProjectKeyList = Array<string>;
-export const GetDataExportProjectRankingRequestProjectKeyList =
+const GetDataExportProjectRankingRequestProjectKeyList =
   FeatureFlagTagsList as any as S.Schema<GetDataExportProjectRankingRequestProjectKeyList>;
 
 export interface GetDataExportProjectRankingRequest {
@@ -13443,7 +13328,7 @@ export interface GetDataExportProjectRankingRequest {
   /** The maximum number of ranked projects to return. This bounds response rows and look-ahead, not the account-wide candidate universe. */
   limit?: number;
 }
-export const GetDataExportProjectRankingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataExportProjectRankingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.Number.pipe(T.Query()),
     to: S.Number.pipe(T.Query()),
@@ -13464,7 +13349,7 @@ export interface DataExportProjectRankComponentsRep {
   /** Successful Streaming transfers attributed to this project in the requested range. */
   streaming: number;
 }
-export const DataExportProjectRankComponentsRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportProjectRankComponentsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streaming: S.Number,
   }),
@@ -13483,7 +13368,7 @@ export interface DataExportProjectRankRep {
   usage: number;
   components: DataExportProjectRankComponentsRep;
 }
-export const DataExportProjectRankRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportProjectRankRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String,
     projectName: S.String,
@@ -13495,7 +13380,7 @@ export const DataExportProjectRankRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Projects in deterministic rank order. */
 export type DataExportProjectRankingRepItemsList = Array<DataExportProjectRankRep>;
-export const DataExportProjectRankingRepItemsList = /*@__PURE__*/ S.Array(
+const DataExportProjectRankingRepItemsList = /*@__PURE__*/ S.Array(
   DataExportProjectRankRep,
 ) as any as S.Schema<DataExportProjectRankingRepItemsList>;
 
@@ -13509,7 +13394,7 @@ export interface DataExportProjectRankingPageRep {
   /** An opaque cursor for the next page. */
   nextCursor?: string;
 }
-export const DataExportProjectRankingPageRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportProjectRankingPageRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     count: S.Number,
@@ -13522,11 +13407,11 @@ export const DataExportProjectRankingPageRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The included usage source. */
 export type DataExportProjectRankingScopeRepSource = "streaming";
-export const DataExportProjectRankingScopeRepSource = S.String;
+const DataExportProjectRankingScopeRepSource = S.String;
 
 /** The ranked dimension. */
 export type DataExportProjectRankingScopeRepDimension = "project";
-export const DataExportProjectRankingScopeRepDimension = S.String;
+const DataExportProjectRankingScopeRepDimension = S.String;
 
 export interface DataExportProjectRankingScopeRep {
   /** The included usage source. */
@@ -13538,7 +13423,7 @@ export interface DataExportProjectRankingScopeRep {
   /** Exclusive UTC range end in Unix milliseconds. */
   to: number;
 }
-export const DataExportProjectRankingScopeRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportProjectRankingScopeRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: DataExportProjectRankingScopeRepSource,
     dimension: DataExportProjectRankingScopeRepDimension,
@@ -13556,7 +13441,7 @@ export interface DataExportProjectRankingRep {
   page: DataExportProjectRankingPageRep;
   scope: DataExportProjectRankingScopeRep;
 }
-export const DataExportProjectRankingRep = /*@__PURE__*/ S.suspend(() =>
+const DataExportProjectRankingRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: DataExportProjectRankingRepItemsList,
     page: DataExportProjectRankingPageRep,
@@ -13572,7 +13457,7 @@ export interface GetDependentFlagsRequest {
   /** The feature flag key */
   featureFlagKey: string;
 }
-export const GetDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -13587,7 +13472,7 @@ export const GetDependentFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DependentFlagEnvironmentLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagEnvironmentLinksMap =
+const DependentFlagEnvironmentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagEnvironmentLinksMap>;
 
 export interface DependentFlagEnvironment {
@@ -13600,7 +13485,7 @@ export interface DependentFlagEnvironment {
   /** A link to access the dependent flag in this environment in the LaunchDarkly UI. The href is an opaque URL; do not parse or rely on its structure. */
   _site: Link;
 }
-export const DependentFlagEnvironment = /*@__PURE__*/ S.suspend(() =>
+const DependentFlagEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     key: S.String,
@@ -13611,7 +13496,7 @@ export const DependentFlagEnvironment = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of environments in which the dependent flag appears */
 export type MultiEnvironmentDependentFlagEnvironmentsList = Array<DependentFlagEnvironment>;
-export const MultiEnvironmentDependentFlagEnvironmentsList = /*@__PURE__*/ S.Array(
+const MultiEnvironmentDependentFlagEnvironmentsList = /*@__PURE__*/ S.Array(
   DependentFlagEnvironment,
 ) as any as S.Schema<MultiEnvironmentDependentFlagEnvironmentsList>;
 
@@ -13623,7 +13508,7 @@ export interface MultiEnvironmentDependentFlag {
   /** A list of environments in which the dependent flag appears */
   environments: MultiEnvironmentDependentFlagEnvironmentsList;
 }
-export const MultiEnvironmentDependentFlag = /*@__PURE__*/ S.suspend(() =>
+const MultiEnvironmentDependentFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     key: S.String,
@@ -13635,13 +13520,13 @@ export const MultiEnvironmentDependentFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of dependent flags with their environment information */
 export type MultiEnvironmentDependentFlagsItemsList = Array<MultiEnvironmentDependentFlag>;
-export const MultiEnvironmentDependentFlagsItemsList = /*@__PURE__*/ S.Array(
+const MultiEnvironmentDependentFlagsItemsList = /*@__PURE__*/ S.Array(
   MultiEnvironmentDependentFlag,
 ) as any as S.Schema<MultiEnvironmentDependentFlagsItemsList>;
 
 /** The location and content type of related resources */
 export type MultiEnvironmentDependentFlagsLinksMap = { [key: string]: Link | undefined };
-export const MultiEnvironmentDependentFlagsLinksMap =
+const MultiEnvironmentDependentFlagsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MultiEnvironmentDependentFlagsLinksMap>;
 
 export interface MultiEnvironmentDependentFlags {
@@ -13652,7 +13537,7 @@ export interface MultiEnvironmentDependentFlags {
   /** A link to access the prerequisite flag in the LaunchDarkly UI. The href is an opaque URL; do not parse or rely on its structure. */
   _site: Link;
 }
-export const MultiEnvironmentDependentFlags = /*@__PURE__*/ S.suspend(() =>
+const MultiEnvironmentDependentFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: MultiEnvironmentDependentFlagsItemsList,
     _links: MultiEnvironmentDependentFlagsLinksMap,
@@ -13670,7 +13555,7 @@ export interface GetDependentFlagsByEnvRequest {
   /** The feature flag key */
   featureFlagKey: string;
 }
-export const GetDependentFlagsByEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDependentFlagsByEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -13688,9 +13573,6 @@ export const GetDependentFlagsByEnvRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DependentFlagLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagLinksMap>;
-
 export interface DependentFlag {
   /** The flag name */
   name?: string;
@@ -13701,16 +13583,14 @@ export interface DependentFlag {
   /** A link to access the dependent flag in the LaunchDarkly UI. The href is an opaque URL; do not parse or rely on its structure. */
   _site: Link;
 }
-export const DependentFlag = DependentFlagEnvironment as any as S.Schema<DependentFlag>;
-
 /** A list of dependent flags, which are flags that use the requested flag as a prerequisite */
 export type DependentFlagsByEnvironmentItemsList = Array<DependentFlag>;
-export const DependentFlagsByEnvironmentItemsList =
+const DependentFlagsByEnvironmentItemsList =
   MultiEnvironmentDependentFlagEnvironmentsList as any as S.Schema<DependentFlagsByEnvironmentItemsList>;
 
 /** The location and content type of related resources */
 export type DependentFlagsByEnvironmentLinksMap = { [key: string]: Link | undefined };
-export const DependentFlagsByEnvironmentLinksMap =
+const DependentFlagsByEnvironmentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentFlagsByEnvironmentLinksMap>;
 
 export interface DependentFlagsByEnvironment {
@@ -13721,7 +13601,7 @@ export interface DependentFlagsByEnvironment {
   /** A link to access the prerequisite flag in the LaunchDarkly UI. The href is an opaque URL; do not parse or rely on its structure. */
   _site: Link;
 }
-export const DependentFlagsByEnvironment = /*@__PURE__*/ S.suspend(() =>
+const DependentFlagsByEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: DependentFlagsByEnvironmentItemsList,
     _links: DependentFlagsByEnvironmentLinksMap,
@@ -13737,7 +13617,7 @@ export interface GetDeploymentRequest {
   /** Expand properties in response. Options: `pullRequests`, `flagReferences` */
   expand?: string;
 }
-export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentID: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -13752,17 +13632,17 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The metadata associated with the deployment */
 export type DeploymentRepMetadataMap = { [key: string]: unknown | undefined };
-export const DeploymentRepMetadataMap = UrlMatcher as any as S.Schema<DeploymentRepMetadataMap>;
+const DeploymentRepMetadataMap = UrlMatcher as any as S.Schema<DeploymentRepMetadataMap>;
 
 /** A list of deployments */
 export type DeploymentCollectionRepItemsList = Array<DeploymentRep>;
-export const DeploymentCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const DeploymentCollectionRepItemsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => DeploymentRep),
 ) as any as S.Schema<DeploymentCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type DeploymentCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const DeploymentCollectionRepLinksMap =
+const DeploymentCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DeploymentCollectionRepLinksMap>;
 
 export interface DeploymentCollectionRep {
@@ -13773,7 +13653,7 @@ export interface DeploymentCollectionRep {
   /** The location and content type of related resources */
   _links?: DeploymentCollectionRepLinksMap;
 }
-export const DeploymentCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const DeploymentCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: DeploymentCollectionRepItemsList,
@@ -13791,7 +13671,7 @@ export interface FlagReferenceRep {
   /** The number of references removed */
   referencesRemoved: number;
 }
-export const FlagReferenceRep = /*@__PURE__*/ S.suspend(() =>
+const FlagReferenceRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String,
     flagKey: S.String,
@@ -13802,7 +13682,7 @@ export const FlagReferenceRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of flag references */
 export type FlagReferenceCollectionRepItemsList = Array<FlagReferenceRep>;
-export const FlagReferenceCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const FlagReferenceCollectionRepItemsList = /*@__PURE__*/ S.Array(
   FlagReferenceRep,
 ) as any as S.Schema<FlagReferenceCollectionRepItemsList>;
 
@@ -13812,7 +13692,7 @@ export interface FlagReferenceCollectionRep {
   /** A list of flag references */
   items: FlagReferenceCollectionRepItemsList;
 }
-export const FlagReferenceCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const FlagReferenceCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: FlagReferenceCollectionRepItemsList,
@@ -13839,7 +13719,7 @@ export interface PullRequestLeadTimeRep {
   /** The average total lead time in milliseconds */
   avgTotalLeadTimeMs?: number;
 }
-export const PullRequestLeadTimeRep = /*@__PURE__*/ S.suspend(() =>
+const PullRequestLeadTimeRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codingDurationMs: S.Number,
     reviewDurationMs: S.optional(S.Number),
@@ -13888,7 +13768,7 @@ export interface PullRequestRep {
   /** The lead time for the pull request in a given environment */
   leadTime?: PullRequestLeadTimeRep;
 }
-export const PullRequestRep = /*@__PURE__*/ S.suspend(() =>
+const PullRequestRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     externalId: S.String,
@@ -13912,13 +13792,13 @@ export const PullRequestRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of pull requests */
 export type PullRequestCollectionRepItemsList = Array<PullRequestRep>;
-export const PullRequestCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const PullRequestCollectionRepItemsList = /*@__PURE__*/ S.Array(
   PullRequestRep,
 ) as any as S.Schema<PullRequestCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type PullRequestCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const PullRequestCollectionRepLinksMap =
+const PullRequestCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<PullRequestCollectionRepLinksMap>;
 
 export interface PullRequestCollectionRep {
@@ -13929,7 +13809,7 @@ export interface PullRequestCollectionRep {
   /** The location and content type of related resources */
   _links?: PullRequestCollectionRepLinksMap;
 }
-export const PullRequestCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const PullRequestCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: PullRequestCollectionRepItemsList,
@@ -13949,7 +13829,7 @@ export interface LeadTimeStagesRep {
   /** The total lead time in milliseconds */
   totalLeadTimeMs?: number;
 }
-export const LeadTimeStagesRep = /*@__PURE__*/ S.suspend(() =>
+const LeadTimeStagesRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codingDurationMs: S.Number,
     reviewDurationMs: S.optional(S.Number),
@@ -14001,7 +13881,7 @@ export interface DeploymentRep {
   /** The lead time stages for the deployment */
   leadTimeStages?: LeadTimeStagesRep;
 }
-export const DeploymentRep = /*@__PURE__*/ S.suspend(() =>
+const DeploymentRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     applicationKey: S.String,
@@ -14046,7 +13926,7 @@ export interface GetDeploymentFrequencyChartRequest {
   /** Options: `metrics` */
   expand?: string;
 }
-export const GetDeploymentFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.optional(S.String.pipe(T.Query())),
     environmentKey: S.optional(S.String.pipe(T.Query())),
@@ -14069,7 +13949,7 @@ export const GetDeploymentFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDeploymentFrequencyChartRequest>;
 
 export type InsightsChartMetadataCustomValues = { [key: string]: unknown | undefined };
-export const InsightsChartMetadataCustomValues =
+const InsightsChartMetadataCustomValues =
   UrlMatcher as any as S.Schema<InsightsChartMetadataCustomValues>;
 
 export interface InsightsMetricTierDefinition {
@@ -14078,7 +13958,7 @@ export interface InsightsMetricTierDefinition {
   /** Metric indicator description */
   description: string;
 }
-export const InsightsMetricTierDefinition = /*@__PURE__*/ S.suspend(() =>
+const InsightsMetricTierDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicator: S.String,
     description: S.String,
@@ -14089,7 +13969,7 @@ export const InsightsMetricTierDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric indicator tiers */
 export type InsightsChartMetricTiersList = Array<InsightsMetricTierDefinition>;
-export const InsightsChartMetricTiersList = /*@__PURE__*/ S.Array(
+const InsightsChartMetricTiersList = /*@__PURE__*/ S.Array(
   InsightsMetricTierDefinition,
 ) as any as S.Schema<InsightsChartMetricTiersList>;
 
@@ -14105,7 +13985,7 @@ export interface InsightsChartMetric {
   /** Metric indicator tiers */
   tiers: InsightsChartMetricTiersList;
 }
-export const InsightsChartMetric = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indicator: S.String,
     value: S.Number,
@@ -14116,7 +13996,7 @@ export const InsightsChartMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsightsChartMetric" }) as any as S.Schema<InsightsChartMetric>;
 
 export type InsightsChartMetrics = { [key: string]: InsightsChartMetric | undefined };
-export const InsightsChartMetrics = /*@__PURE__*/ S.Record(
+const InsightsChartMetrics = /*@__PURE__*/ S.Record(
   S.String,
   InsightsChartMetric,
 ) as any as S.Schema<InsightsChartMetrics>;
@@ -14125,7 +14005,7 @@ export interface InsightsChartSeriesMetadataAxis {
   /** Unit of the axis */
   unit: string;
 }
-export const InsightsChartSeriesMetadataAxis = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartSeriesMetadataAxis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.String,
   }),
@@ -14145,7 +14025,7 @@ export interface InsightsChartMetadata {
   /** Y-axis metadata */
   yAxis: InsightsChartSeriesMetadataAxis;
 }
-export const InsightsChartMetadata = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: InsightsChartMetadataCustomValues,
     name: S.optional(S.String),
@@ -14161,7 +14041,7 @@ export interface InsightsChartBounds {
   /** Value of the bound */
   value: number;
 }
-export const InsightsChartBounds = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.Number,
@@ -14170,7 +14050,7 @@ export const InsightsChartBounds = /*@__PURE__*/ S.suspend(() =>
 
 /** Bounds for the series data */
 export type InsightsChartSeriesMetadataBoundsList = Array<InsightsChartBounds>;
-export const InsightsChartSeriesMetadataBoundsList = /*@__PURE__*/ S.Array(
+const InsightsChartSeriesMetadataBoundsList = /*@__PURE__*/ S.Array(
   InsightsChartBounds,
 ) as any as S.Schema<InsightsChartSeriesMetadataBoundsList>;
 
@@ -14182,7 +14062,7 @@ export interface InsightsChartSeriesMetadata {
   /** Bounds for the series data */
   bounds?: InsightsChartSeriesMetadataBoundsList;
 }
-export const InsightsChartSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     count: S.optional(S.Number),
@@ -14194,7 +14074,7 @@ export const InsightsChartSeriesMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Additional values for the data point */
 export type InsightsChartSeriesDataPointValuesMap = { [key: string]: unknown | undefined };
-export const InsightsChartSeriesDataPointValuesMap =
+const InsightsChartSeriesDataPointValuesMap =
   UrlMatcher as any as S.Schema<InsightsChartSeriesDataPointValuesMap>;
 
 export interface InsightsChartSeriesDataPoint {
@@ -14205,7 +14085,7 @@ export interface InsightsChartSeriesDataPoint {
   /** Additional values for the data point */
   values?: InsightsChartSeriesDataPointValuesMap;
 }
-export const InsightsChartSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number,
     y: S.Number,
@@ -14217,7 +14097,7 @@ export const InsightsChartSeriesDataPoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Data points for the series */
 export type InsightsChartSeriesDataList = Array<InsightsChartSeriesDataPoint>;
-export const InsightsChartSeriesDataList = /*@__PURE__*/ S.Array(
+const InsightsChartSeriesDataList = /*@__PURE__*/ S.Array(
   InsightsChartSeriesDataPoint,
 ) as any as S.Schema<InsightsChartSeriesDataList>;
 
@@ -14227,7 +14107,7 @@ export interface InsightsChartSeries {
   /** Data points for the series */
   data: InsightsChartSeriesDataList;
 }
-export const InsightsChartSeries = /*@__PURE__*/ S.suspend(() =>
+const InsightsChartSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: InsightsChartSeriesMetadata,
     data: InsightsChartSeriesDataList,
@@ -14236,7 +14116,7 @@ export const InsightsChartSeries = /*@__PURE__*/ S.suspend(() =>
 
 /** Series data for the chart */
 export type InsightsChartSeriesList = Array<InsightsChartSeries>;
-export const InsightsChartSeriesList = /*@__PURE__*/ S.Array(
+const InsightsChartSeriesList = /*@__PURE__*/ S.Array(
   InsightsChartSeries,
 ) as any as S.Schema<InsightsChartSeriesList>;
 
@@ -14246,7 +14126,7 @@ export interface InsightsChart {
   /** Series data for the chart */
   series: InsightsChartSeriesList;
 }
-export const InsightsChart = /*@__PURE__*/ S.suspend(() =>
+const InsightsChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: InsightsChartMetadata,
     series: InsightsChartSeriesList,
@@ -14277,7 +14157,7 @@ export interface GetDeploymentsRequest {
   /** The deployment status */
   status?: string;
 }
-export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -14301,7 +14181,7 @@ export interface GetDestinationRequest {
   /** The Data Export destination ID */
   id: string;
 }
-export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -14317,7 +14197,7 @@ export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type DestinationLinksMap = { [key: string]: Link | undefined };
-export const DestinationLinksMap =
+const DestinationLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DestinationLinksMap>;
 
 /** The type of Data Export destination */
@@ -14331,7 +14211,7 @@ export type DestinationKind =
   | "databricks"
   | "bigquery"
   | "redshift";
-export const DestinationKind = S.String;
+const DestinationKind = S.String;
 
 export interface RedshiftDataExportCompletedArtifactsRep {
   /** The SQL setup script originally run against the Redshift cluster, rehydrated from the destination's persisted custom names. */
@@ -14339,7 +14219,7 @@ export interface RedshiftDataExportCompletedArtifactsRep {
   /** The auto-generated S3 staging bucket name. */
   s3BucketName?: string;
 }
-export const RedshiftDataExportCompletedArtifactsRep = /*@__PURE__*/ S.suspend(() =>
+const RedshiftDataExportCompletedArtifactsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlSetupScript: S.optional(S.String),
     s3BucketName: S.optional(S.String),
@@ -14371,7 +14251,7 @@ export interface Destination {
   /** For completed Redshift Data Export destinations, the SQL setup script and S3 staging bucket name rehydrated from the persisted config. Omitted otherwise. */
   completedArtifacts?: RedshiftDataExportCompletedArtifactsRep;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.optional(S.String),
     _links: S.optional(DestinationLinksMap),
@@ -14388,18 +14268,18 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export interface GetDestinationsRequest {}
-export const GetDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/destinations", code: 200 })),
 ).annotate({ identifier: "GetDestinationsRequest" }) as any as S.Schema<GetDestinationsRequest>;
 
 /** The location and content type of related resources */
 export type DestinationsLinksMap = { [key: string]: Link | undefined };
-export const DestinationsLinksMap =
+const DestinationsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DestinationsLinksMap>;
 
 /** An array of Data Export destinations */
 export type DestinationsItemsList = Array<Destination>;
-export const DestinationsItemsList = /*@__PURE__*/ S.Array(
+const DestinationsItemsList = /*@__PURE__*/ S.Array(
   Destination,
 ) as any as S.Schema<DestinationsItemsList>;
 
@@ -14409,7 +14289,7 @@ export interface Destinations {
   /** An array of Data Export destinations */
   items?: DestinationsItemsList;
 }
-export const Destinations = /*@__PURE__*/ S.suspend(() =>
+const Destinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(DestinationsLinksMap),
     items: S.optional(DestinationsItemsList),
@@ -14422,7 +14302,7 @@ export interface GetEnvironmentRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -14447,7 +14327,7 @@ export interface GetEnvironmentsByProjectRequest {
   /** A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. */
   sort?: string;
 }
-export const GetEnvironmentsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -14473,7 +14353,7 @@ export interface GetEvaluationsUsageRequest {
   /** The timezone to use for breaks between days when returning daily data. */
   tz?: string;
 }
-export const GetEvaluationsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEvaluationsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -14500,7 +14380,7 @@ export interface GetEventsUsageRequest {
   /** The series of data returned ends at this timestamp. Defaults to the current time. */
   to?: string;
 }
-export const GetEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String.pipe(T.Label()),
     from: S.optional(S.String.pipe(T.Query())),
@@ -14518,7 +14398,7 @@ export interface GetExperimentRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. */
   expand?: string;
 }
-export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -14553,7 +14433,7 @@ export interface GetExperimentationEventsUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetExperimentationEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentationEventsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -14587,7 +14467,7 @@ export interface GetExperimentationKeysUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetExperimentationKeysUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentationKeysUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -14606,7 +14486,7 @@ export interface GetExperimentationSettingsRequest {
   /** The project key */
   projectKey: string;
 }
-export const GetExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
   }).pipe(
@@ -14629,7 +14509,7 @@ export interface RandomizationUnitRep {
   /** The display name for the randomization unit, displayed in the LaunchDarkly user interface. */
   _displayName?: string;
 }
-export const RandomizationUnitRep = /*@__PURE__*/ S.suspend(() =>
+const RandomizationUnitRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     randomizationUnit: S.optional(S.String),
     default: S.optional(S.Boolean),
@@ -14640,13 +14520,13 @@ export const RandomizationUnitRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of the randomization units in this project */
 export type RandomizationSettingsRepRandomizationUnitsList = Array<RandomizationUnitRep>;
-export const RandomizationSettingsRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
+const RandomizationSettingsRepRandomizationUnitsList = /*@__PURE__*/ S.Array(
   RandomizationUnitRep,
 ) as any as S.Schema<RandomizationSettingsRepRandomizationUnitsList>;
 
 /** The location and content type of related resources */
 export type RandomizationSettingsRepLinksMap = { [key: string]: Link | undefined };
-export const RandomizationSettingsRepLinksMap =
+const RandomizationSettingsRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RandomizationSettingsRepLinksMap>;
 
 export interface RandomizationSettingsRep {
@@ -14661,7 +14541,7 @@ export interface RandomizationSettingsRep {
   /** The location and content type of related resources */
   _links?: RandomizationSettingsRepLinksMap;
 }
-export const RandomizationSettingsRep = /*@__PURE__*/ S.suspend(() =>
+const RandomizationSettingsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _projectId: S.optional(S.String),
     _projectKey: S.optional(S.String),
@@ -14687,7 +14567,7 @@ export interface GetExperimentsRequest {
   /** A comma-separated list of experiment archived states. Supports `archived`, `active`, or both. Defaults to `active` experiments. */
   lifecycleState?: string;
 }
-export const GetExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -14707,13 +14587,13 @@ export const GetExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of experiments */
 export type ExperimentCollectionRepItemsList = Array<Experiment>;
-export const ExperimentCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const ExperimentCollectionRepItemsList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ExperimentCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type ExperimentCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ExperimentCollectionRepLinksMap =
+const ExperimentCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExperimentCollectionRepLinksMap>;
 
 export interface ExperimentCollectionRep {
@@ -14724,7 +14604,7 @@ export interface ExperimentCollectionRep {
   /** The location and content type of related resources */
   _links?: ExperimentCollectionRepLinksMap;
 }
-export const ExperimentCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ExperimentCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExperimentCollectionRepItemsList,
     total_count: S.optional(S.Number),
@@ -14746,7 +14626,7 @@ export interface GetExperimentsAnyEnvRequest {
   /** A comma-separated list of experiment archived states. Supports `archived`, `active`, or both. Defaults to `active` experiments. */
   lifecycleState?: string;
 }
-export const GetExperimentsAnyEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentsAnyEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -14767,7 +14647,7 @@ export interface GetExpiringContextTargetsRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetExpiringContextTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpiringContextTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -14795,7 +14675,7 @@ export interface ResourceId {
   /** The project key */
   projectKey?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentKey: S.optional(S.String),
     flagKey: S.optional(S.String),
@@ -14823,7 +14703,7 @@ export interface ExpiringTarget {
   /** Details on the segment or flag this expiring target belongs to, its environment, and its project */
   _resourceId: ResourceId;
 }
-export const ExpiringTarget = /*@__PURE__*/ S.suspend(() =>
+const ExpiringTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -14838,13 +14718,13 @@ export const ExpiringTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of expiring targets */
 export type ExpiringTargetGetResponseItemsList = Array<ExpiringTarget>;
-export const ExpiringTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
+const ExpiringTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
   ExpiringTarget,
 ) as any as S.Schema<ExpiringTargetGetResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringTargetGetResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringTargetGetResponseLinksMap =
+const ExpiringTargetGetResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringTargetGetResponseLinksMap>;
 
 export interface ExpiringTargetGetResponse {
@@ -14853,7 +14733,7 @@ export interface ExpiringTargetGetResponse {
   /** The location and content type of related resources */
   _links?: ExpiringTargetGetResponseLinksMap;
 }
-export const ExpiringTargetGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpiringTargetGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpiringTargetGetResponseItemsList,
     _links: S.optional(ExpiringTargetGetResponseLinksMap),
@@ -14870,7 +14750,7 @@ export interface GetExpiringTargetsForSegmentRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     segmentKey: S.String.pipe(T.Label()),
@@ -14894,7 +14774,7 @@ export interface GetExpiringUserTargetsRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -14917,7 +14797,7 @@ export interface ResourceIDResponse {
   flagKey?: string;
   key?: string;
 }
-export const ResourceIDResponse = /*@__PURE__*/ S.suspend(() =>
+const ResourceIDResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     projectKey: S.optional(S.String),
@@ -14943,7 +14823,7 @@ export interface ExpiringUserTargetItem {
   /** Details on the resource from which the user is expiring */
   _resourceId: ResourceIDResponse;
 }
-export const ExpiringUserTargetItem = /*@__PURE__*/ S.suspend(() =>
+const ExpiringUserTargetItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _version: S.Number,
@@ -14957,13 +14837,13 @@ export const ExpiringUserTargetItem = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of expiring user targets */
 export type ExpiringUserTargetGetResponseItemsList = Array<ExpiringUserTargetItem>;
-export const ExpiringUserTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
+const ExpiringUserTargetGetResponseItemsList = /*@__PURE__*/ S.Array(
   ExpiringUserTargetItem,
 ) as any as S.Schema<ExpiringUserTargetGetResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringUserTargetGetResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringUserTargetGetResponseLinksMap =
+const ExpiringUserTargetGetResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringUserTargetGetResponseLinksMap>;
 
 export interface ExpiringUserTargetGetResponse {
@@ -14972,7 +14852,7 @@ export interface ExpiringUserTargetGetResponse {
   /** The location and content type of related resources */
   _links?: ExpiringUserTargetGetResponseLinksMap;
 }
-export const ExpiringUserTargetGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpiringUserTargetGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpiringUserTargetGetResponseItemsList,
     _links: S.optional(ExpiringUserTargetGetResponseLinksMap),
@@ -14989,7 +14869,7 @@ export interface GetExpiringUserTargetsForSegmentRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetExpiringUserTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExpiringUserTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     segmentKey: S.String.pipe(T.Label()),
@@ -15019,7 +14899,7 @@ export interface GetExtinctionsRequest {
   /** Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with `from`. */
   to?: number;
 }
-export const GetExtinctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtinctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoName: S.optional(S.String.pipe(T.Query())),
     branchName: S.optional(S.String.pipe(T.Query())),
@@ -15032,7 +14912,7 @@ export const GetExtinctionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type ExtinctionCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const ExtinctionCollectionRepLinksMap =
+const ExtinctionCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExtinctionCollectionRepLinksMap>;
 
 export interface Extinction {
@@ -15047,7 +14927,7 @@ export interface Extinction {
   /** The project key */
   projKey: string;
 }
-export const Extinction = /*@__PURE__*/ S.suspend(() =>
+const Extinction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revision: S.String,
     message: S.String,
@@ -15058,7 +14938,7 @@ export const Extinction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Extinction" }) as any as S.Schema<Extinction>;
 
 export type ExtinctionCollectionRepItemsValueList = Array<Extinction>;
-export const ExtinctionCollectionRepItemsValueList = /*@__PURE__*/ S.Array(
+const ExtinctionCollectionRepItemsValueList = /*@__PURE__*/ S.Array(
   Extinction,
 ) as any as S.Schema<ExtinctionCollectionRepItemsValueList>;
 
@@ -15066,7 +14946,7 @@ export const ExtinctionCollectionRepItemsValueList = /*@__PURE__*/ S.Array(
 export type ExtinctionCollectionRepItemsMap = {
   [key: string]: ExtinctionCollectionRepItemsValueList | undefined;
 };
-export const ExtinctionCollectionRepItemsMap = /*@__PURE__*/ S.Record(
+const ExtinctionCollectionRepItemsMap = /*@__PURE__*/ S.Record(
   S.String,
   ExtinctionCollectionRepItemsValueList,
 ) as any as S.Schema<ExtinctionCollectionRepItemsMap>;
@@ -15077,7 +14957,7 @@ export interface ExtinctionCollectionRep {
   /** An array of extinction events */
   items: ExtinctionCollectionRepItemsMap;
 }
-export const ExtinctionCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const ExtinctionCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ExtinctionCollectionRepLinksMap,
     items: ExtinctionCollectionRepItemsMap,
@@ -15094,7 +14974,7 @@ export interface GetFeatureFlagRequest {
   /** A comma-separated list of fields to expand in the response. Supported fields are explained above. */
   expand?: string;
 }
-export const GetFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15127,7 +15007,7 @@ export interface GetFeatureFlagsRequest {
   /** A comma-separated list of fields to expand in the response. Supported fields are explained above. */
   expand?: string;
 }
-export const GetFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     env: S.optional(S.String.pipe(T.Query())),
@@ -15145,13 +15025,13 @@ export const GetFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of feature flags */
 export type FeatureFlagsItemsList = Array<FeatureFlag>;
-export const FeatureFlagsItemsList = /*@__PURE__*/ S.Array(
+const FeatureFlagsItemsList = /*@__PURE__*/ S.Array(
   FeatureFlag,
 ) as any as S.Schema<FeatureFlagsItemsList>;
 
 /** The location and content type of related resources */
 export type FeatureFlagsLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagsLinksMap =
+const FeatureFlagsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagsLinksMap>;
 
 export interface FeatureFlags {
@@ -15164,7 +15044,7 @@ export interface FeatureFlags {
   /** The number of flags that have differences between environments. Only shown when query parameter <code>compare</code> is <code>true</code>. */
   totalCountWithDifferences?: number;
 }
-export const FeatureFlags = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FeatureFlagsItemsList,
     _links: FeatureFlagsLinksMap,
@@ -15183,7 +15063,7 @@ export interface GetFeatureFlagScheduledChangeRequest {
   /** The scheduled change id */
   id: string;
 }
-export const GetFeatureFlagScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15202,7 +15082,7 @@ export const GetFeatureFlagScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The location and content type of related resources */
 export type FeatureFlagScheduledChangeLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagScheduledChangeLinksMap =
+const FeatureFlagScheduledChangeLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagScheduledChangeLinksMap>;
 
 export interface FeatureFlagScheduledChange {
@@ -15225,7 +15105,7 @@ export interface FeatureFlagScheduledChange {
   /** The location and content type of related resources */
   _links?: FeatureFlagScheduledChangeLinksMap;
 }
-export const FeatureFlagScheduledChange = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagScheduledChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _creationDate: S.Number,
@@ -15249,7 +15129,7 @@ export interface GetFeatureFlagStatusRequest {
   /** The feature flag key */
   featureFlagKey: string;
 }
-export const GetFeatureFlagStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -15267,10 +15147,10 @@ export const GetFeatureFlagStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the flag */
 export type FlagStatusRepName = "new" | "inactive" | "active" | "launched";
-export const FlagStatusRepName = S.String;
+const FlagStatusRepName = S.String;
 
 export type FlagStatusRepLinksMap = { [key: string]: Link | undefined };
-export const FlagStatusRepLinksMap =
+const FlagStatusRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagStatusRepLinksMap>;
 
 export interface FlagStatusRep {
@@ -15282,7 +15162,7 @@ export interface FlagStatusRep {
   default?: unknown;
   _links: FlagStatusRepLinksMap;
 }
-export const FlagStatusRep = /*@__PURE__*/ S.suspend(() =>
+const FlagStatusRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: FlagStatusRepName,
     lastRequested: S.optional(S.String),
@@ -15299,7 +15179,7 @@ export interface GetFeatureFlagStatusAcrossEnvironmentsRequest {
   /** Optional environment filter */
   env?: string;
 }
-export const GetFeatureFlagStatusAcrossEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagStatusAcrossEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15313,7 +15193,7 @@ export const GetFeatureFlagStatusAcrossEnvironmentsRequest = /*@__PURE__*/ S.sus
 
 /** Status of the flag */
 export type FeatureFlagStatusName = "new" | "inactive" | "active" | "launched";
-export const FeatureFlagStatusName = S.String;
+const FeatureFlagStatusName = S.String;
 
 export interface FeatureFlagStatus {
   /** Status of the flag */
@@ -15323,7 +15203,7 @@ export interface FeatureFlagStatus {
   /** Default value seen from code */
   default?: unknown;
 }
-export const FeatureFlagStatus = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: FeatureFlagStatusName,
     lastRequested: S.optional(S.String),
@@ -15335,13 +15215,13 @@ export const FeatureFlagStatus = /*@__PURE__*/ S.suspend(() =>
 export type FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap = {
   [key: string]: FeatureFlagStatus | undefined;
 };
-export const FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap = /*@__PURE__*/ S.Record(
+const FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap = /*@__PURE__*/ S.Record(
   S.String,
   FeatureFlagStatus,
 ) as any as S.Schema<FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap>;
 
 export type FeatureFlagStatusAcrossEnvironmentsLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagStatusAcrossEnvironmentsLinksMap =
+const FeatureFlagStatusAcrossEnvironmentsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagStatusAcrossEnvironmentsLinksMap>;
 
 export interface FeatureFlagStatusAcrossEnvironments {
@@ -15351,7 +15231,7 @@ export interface FeatureFlagStatusAcrossEnvironments {
   key: string;
   _links: FeatureFlagStatusAcrossEnvironmentsLinksMap;
 }
-export const FeatureFlagStatusAcrossEnvironments = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagStatusAcrossEnvironments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: FeatureFlagStatusAcrossEnvironmentsEnvironmentsMap,
     key: S.String,
@@ -15367,7 +15247,7 @@ export interface GetFeatureFlagStatusesRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetFeatureFlagStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureFlagStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -15383,11 +15263,11 @@ export const GetFeatureFlagStatusesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFeatureFlagStatusesRequest>;
 
 export type FeatureFlagStatusesLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagStatusesLinksMap =
+const FeatureFlagStatusesLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagStatusesLinksMap>;
 
 export type FeatureFlagStatusesItemsList = Array<FlagStatusRep>;
-export const FeatureFlagStatusesItemsList = /*@__PURE__*/ S.Array(
+const FeatureFlagStatusesItemsList = /*@__PURE__*/ S.Array(
   FlagStatusRep,
 ) as any as S.Schema<FeatureFlagStatusesItemsList>;
 
@@ -15395,7 +15275,7 @@ export interface FeatureFlagStatuses {
   _links: FeatureFlagStatusesLinksMap;
   items?: FeatureFlagStatusesItemsList;
 }
-export const FeatureFlagStatuses = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagStatuses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FeatureFlagStatusesLinksMap,
     items: S.optional(FeatureFlagStatusesItemsList),
@@ -15410,7 +15290,7 @@ export interface GetFlagConfigScheduledChangesRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15428,13 +15308,13 @@ export const GetFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Array of scheduled changes */
 export type FeatureFlagScheduledChangesItemsList = Array<FeatureFlagScheduledChange>;
-export const FeatureFlagScheduledChangesItemsList = /*@__PURE__*/ S.Array(
+const FeatureFlagScheduledChangesItemsList = /*@__PURE__*/ S.Array(
   FeatureFlagScheduledChange,
 ) as any as S.Schema<FeatureFlagScheduledChangesItemsList>;
 
 /** The location and content type of related resources */
 export type FeatureFlagScheduledChangesLinksMap = { [key: string]: Link | undefined };
-export const FeatureFlagScheduledChangesLinksMap =
+const FeatureFlagScheduledChangesLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FeatureFlagScheduledChangesLinksMap>;
 
 export interface FeatureFlagScheduledChanges {
@@ -15443,7 +15323,7 @@ export interface FeatureFlagScheduledChanges {
   /** The location and content type of related resources */
   _links?: FeatureFlagScheduledChangesLinksMap;
 }
-export const FeatureFlagScheduledChanges = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagScheduledChanges = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FeatureFlagScheduledChangesItemsList,
     _links: S.optional(FeatureFlagScheduledChangesLinksMap),
@@ -15456,7 +15336,7 @@ export interface GetFlagDefaultsByProjectRequest {
   /** The project key */
   projectKey: string;
 }
-export const GetFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/projects/{projectKey}/flag-defaults", code: 200 })),
@@ -15466,13 +15346,12 @@ export const GetFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagDefaultsRepLinksMap = { [key: string]: Link | undefined };
-export const FlagDefaultsRepLinksMap =
+const FlagDefaultsRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagDefaultsRepLinksMap>;
 
 /** A list of default tags for each flag */
 export type FlagDefaultsRepTagsList = Array<string>;
-export const FlagDefaultsRepTagsList =
-  FeatureFlagTagsList as any as S.Schema<FlagDefaultsRepTagsList>;
+const FlagDefaultsRepTagsList = FeatureFlagTagsList as any as S.Schema<FlagDefaultsRepTagsList>;
 
 export interface BooleanDefaults {
   /** The display name for the true variation, displayed in the LaunchDarkly user interface */
@@ -15488,7 +15367,7 @@ export interface BooleanDefaults {
   /** The variation index of the flag variation to use for the default targeting behavior when a flag's targeting is off */
   offVariation?: number;
 }
-export const BooleanDefaults = /*@__PURE__*/ S.suspend(() =>
+const BooleanDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trueDisplayName: S.optional(S.String),
     falseDisplayName: S.optional(S.String),
@@ -15513,7 +15392,7 @@ export interface FlagDefaultsRep {
   /** Defaults for boolean flags within this project */
   booleanDefaults?: BooleanDefaults;
 }
-export const FlagDefaultsRep = /*@__PURE__*/ S.suspend(() =>
+const FlagDefaultsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(FlagDefaultsRepLinksMap),
     key: S.optional(S.String),
@@ -15552,7 +15431,7 @@ export interface GetFlagEventsRequest {
   /** Identifier used for pagination */
   before?: string;
 }
-export const GetFlagEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -15580,7 +15459,7 @@ export interface FlagEventMemberRep {
   /** The member last name */
   lastName: string;
 }
-export const FlagEventMemberRep = /*@__PURE__*/ S.suspend(() =>
+const FlagEventMemberRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     email: S.String,
@@ -15591,12 +15470,11 @@ export const FlagEventMemberRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource actions */
 export type FlagEventRepActionsList = Array<string>;
-export const FlagEventRepActionsList =
-  FeatureFlagTagsList as any as S.Schema<FlagEventRepActionsList>;
+const FlagEventRepActionsList = FeatureFlagTagsList as any as S.Schema<FlagEventRepActionsList>;
 
 /** The size of the flag event impact. Sizes are defined as: none (0%), small (0-20%), medium (20-80%), large (>80%) */
 export type FlagEventImpactRepSize = "none" | "small" | "medium" | "large";
-export const FlagEventImpactRepSize = S.String;
+const FlagEventImpactRepSize = S.String;
 
 export interface VariationEvalSummary {
   /** The variation value */
@@ -15606,7 +15484,7 @@ export interface VariationEvalSummary {
   /** The number of evaluations in the ten minutes after the flag event */
   after?: number;
 }
-export const VariationEvalSummary = /*@__PURE__*/ S.suspend(() =>
+const VariationEvalSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Unknown),
     before: S.optional(S.Number),
@@ -15616,7 +15494,7 @@ export const VariationEvalSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of variation evaluations */
 export type EvaluationsSummaryVariationsList = Array<VariationEvalSummary>;
-export const EvaluationsSummaryVariationsList = /*@__PURE__*/ S.Array(
+const EvaluationsSummaryVariationsList = /*@__PURE__*/ S.Array(
   VariationEvalSummary,
 ) as any as S.Schema<EvaluationsSummaryVariationsList>;
 
@@ -15624,7 +15502,7 @@ export interface EvaluationsSummary {
   /** A list of variation evaluations */
   variations?: EvaluationsSummaryVariationsList;
 }
-export const EvaluationsSummary = /*@__PURE__*/ S.suspend(() =>
+const EvaluationsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variations: S.optional(EvaluationsSummaryVariationsList),
   }),
@@ -15640,7 +15518,7 @@ export interface FlagEventImpactRep {
   /** A summary of the change in variation evaluations after the flag event */
   evaluationsSummary?: EvaluationsSummary;
 }
-export const FlagEventImpactRep = /*@__PURE__*/ S.suspend(() =>
+const FlagEventImpactRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(FlagEventImpactRepSize),
     percentage: S.optional(S.Number),
@@ -15651,7 +15529,7 @@ export const FlagEventImpactRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagEventExperimentIterationLinksMap = { [key: string]: Link | undefined };
-export const FlagEventExperimentIterationLinksMap =
+const FlagEventExperimentIterationLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventExperimentIterationLinksMap>;
 
 export interface FlagEventExperimentIteration {
@@ -15666,7 +15544,7 @@ export interface FlagEventExperimentIteration {
   /** The location and content type of related resources */
   _links?: FlagEventExperimentIterationLinksMap;
 }
-export const FlagEventExperimentIteration = /*@__PURE__*/ S.suspend(() =>
+const FlagEventExperimentIteration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: S.String,
@@ -15680,7 +15558,7 @@ export const FlagEventExperimentIteration = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagEventExperimentLinksMap = { [key: string]: Link | undefined };
-export const FlagEventExperimentLinksMap =
+const FlagEventExperimentLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventExperimentLinksMap>;
 
 export interface FlagEventExperiment {
@@ -15693,7 +15571,7 @@ export interface FlagEventExperiment {
   /** The location and content type of related resources */
   _links?: FlagEventExperimentLinksMap;
 }
-export const FlagEventExperiment = /*@__PURE__*/ S.suspend(() =>
+const FlagEventExperiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -15704,7 +15582,7 @@ export const FlagEventExperiment = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of experiments */
 export type FlagEventExperimentCollectionItemsList = Array<FlagEventExperiment>;
-export const FlagEventExperimentCollectionItemsList = /*@__PURE__*/ S.Array(
+const FlagEventExperimentCollectionItemsList = /*@__PURE__*/ S.Array(
   FlagEventExperiment,
 ) as any as S.Schema<FlagEventExperimentCollectionItemsList>;
 
@@ -15714,7 +15592,7 @@ export interface FlagEventExperimentCollection {
   /** A list of experiments */
   items: FlagEventExperimentCollectionItemsList;
 }
-export const FlagEventExperimentCollection = /*@__PURE__*/ S.suspend(() =>
+const FlagEventExperimentCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: FlagEventExperimentCollectionItemsList,
@@ -15753,7 +15631,7 @@ export interface FlagEventRep {
   /** A list of experiment iterations related to the flag event */
   experiments?: FlagEventExperimentCollection;
 }
-export const FlagEventRep = /*@__PURE__*/ S.suspend(() =>
+const FlagEventRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     projectId: S.String,
@@ -15774,13 +15652,13 @@ export const FlagEventRep = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of flag events */
 export type FlagEventCollectionRepItemsList = Array<FlagEventRep>;
-export const FlagEventCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const FlagEventCollectionRepItemsList = /*@__PURE__*/ S.Array(
   FlagEventRep,
 ) as any as S.Schema<FlagEventCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type FlagEventCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const FlagEventCollectionRepLinksMap =
+const FlagEventCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagEventCollectionRepLinksMap>;
 
 export interface FlagEventCollectionRep {
@@ -15791,7 +15669,7 @@ export interface FlagEventCollectionRep {
   /** The location and content type of related resources */
   _links?: FlagEventCollectionRepLinksMap;
 }
-export const FlagEventCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const FlagEventCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: FlagEventCollectionRepItemsList,
@@ -15807,7 +15685,7 @@ export interface GetFlagFollowersRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetFlagFollowersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagFollowersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15823,14 +15701,11 @@ export const GetFlagFollowersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagFollowersGetRepLinksMap = { [key: string]: Link | undefined };
-export const FlagFollowersGetRepLinksMap =
+const FlagFollowersGetRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagFollowersGetRepLinksMap>;
 
 /** The location and content type of related resources */
 export type FollowFlagMemberLinksMap = { [key: string]: Link | undefined };
-export const FollowFlagMemberLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FollowFlagMemberLinksMap>;
-
 export interface FollowFlagMember {
   /** The location and content type of related resources */
   _links: FollowFlagMemberLinksMap;
@@ -15845,11 +15720,9 @@ export interface FollowFlagMember {
   /** The member's email address */
   email: string;
 }
-export const FollowFlagMember = MemberSummary as any as S.Schema<FollowFlagMember>;
-
 /** An array of members who are following this flag */
 export type FlagFollowersGetRepItemsList = Array<FollowFlagMember>;
-export const FlagFollowersGetRepItemsList =
+const FlagFollowersGetRepItemsList =
   TeamMaintainersItemsList as any as S.Schema<FlagFollowersGetRepItemsList>;
 
 export interface FlagFollowersGetRep {
@@ -15858,7 +15731,7 @@ export interface FlagFollowersGetRep {
   /** An array of members who are following this flag */
   items: FlagFollowersGetRepItemsList;
 }
-export const FlagFollowersGetRep = /*@__PURE__*/ S.suspend(() =>
+const FlagFollowersGetRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FlagFollowersGetRepLinksMap,
     items: FlagFollowersGetRepItemsList,
@@ -15873,7 +15746,7 @@ export interface GetFlagImportConfigurationRequest {
   /** The integration ID */
   integrationId: string;
 }
-export const GetFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     integrationKey: S.String.pipe(T.Label()),
@@ -15890,7 +15763,7 @@ export const GetFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFlagImportConfigurationRequest>;
 
 export interface GetFlagImportConfigurationsRequest {}
-export const GetFlagImportConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagImportConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v2/integration-capabilities/flag-import", code: 200 }),
   ),
@@ -15899,11 +15772,9 @@ export const GetFlagImportConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFlagImportConfigurationsRequest>;
 
 export type FlagImportIntegrationCollectionLinks = BigSegmentStoreIntegrationCollectionLinks;
-export const FlagImportIntegrationCollectionLinks = BigSegmentStoreIntegrationCollectionLinks;
-
 /** An array of flag import configurations */
 export type FlagImportIntegrationCollectionItemsList = Array<FlagImportIntegration>;
-export const FlagImportIntegrationCollectionItemsList = /*@__PURE__*/ S.Array(
+const FlagImportIntegrationCollectionItemsList = /*@__PURE__*/ S.Array(
   FlagImportIntegration,
 ) as any as S.Schema<FlagImportIntegrationCollectionItemsList>;
 
@@ -15913,7 +15784,7 @@ export interface FlagImportIntegrationCollection {
   /** An array of flag import configurations */
   items: FlagImportIntegrationCollectionItemsList;
 }
-export const FlagImportIntegrationCollection = /*@__PURE__*/ S.suspend(() =>
+const FlagImportIntegrationCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BigSegmentStoreIntegrationCollectionLinks,
     items: FlagImportIntegrationCollectionItemsList,
@@ -15928,7 +15799,7 @@ export interface GetFlagLinksRequest {
   /** The feature flag key */
   featureFlagKey: string;
 }
-export const GetFlagLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -15943,13 +15814,13 @@ export const GetFlagLinksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag links */
 export type FlagLinkCollectionRepItemsList = Array<FlagLinkRep>;
-export const FlagLinkCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const FlagLinkCollectionRepItemsList = /*@__PURE__*/ S.Array(
   FlagLinkRep,
 ) as any as S.Schema<FlagLinkCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type FlagLinkCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const FlagLinkCollectionRepLinksMap =
+const FlagLinkCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagLinkCollectionRepLinksMap>;
 
 export interface FlagLinkCollectionRep {
@@ -15958,7 +15829,7 @@ export interface FlagLinkCollectionRep {
   /** The location and content type of related resources */
   _links: FlagLinkCollectionRepLinksMap;
 }
-export const FlagLinkCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const FlagLinkCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: FlagLinkCollectionRepItemsList,
     _links: FlagLinkCollectionRepLinksMap,
@@ -15973,7 +15844,7 @@ export interface GetFlagStatusChartRequest {
   /** Comma separated list of application keys */
   applicationKey?: string;
 }
-export const GetFlagStatusChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFlagStatusChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -15991,7 +15862,7 @@ export interface GetFollowersByProjEnvRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetFollowersByProjEnvRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFollowersByProjEnvRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -16008,12 +15879,12 @@ export const GetFollowersByProjEnvRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type FlagFollowersByProjEnvGetRepLinksMap = { [key: string]: Link | undefined };
-export const FlagFollowersByProjEnvGetRepLinksMap =
+const FlagFollowersByProjEnvGetRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<FlagFollowersByProjEnvGetRepLinksMap>;
 
 /** A list of members who are following this flag */
 export type FollowersPerFlagFollowersList = Array<FollowFlagMember>;
-export const FollowersPerFlagFollowersList =
+const FollowersPerFlagFollowersList =
   TeamMaintainersItemsList as any as S.Schema<FollowersPerFlagFollowersList>;
 
 export interface FollowersPerFlag {
@@ -16022,7 +15893,7 @@ export interface FollowersPerFlag {
   /** A list of members who are following this flag */
   followers?: FollowersPerFlagFollowersList;
 }
-export const FollowersPerFlag = /*@__PURE__*/ S.suspend(() =>
+const FollowersPerFlag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagKey: S.optional(S.String),
     followers: S.optional(FollowersPerFlagFollowersList),
@@ -16031,7 +15902,7 @@ export const FollowersPerFlag = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flags and their followers */
 export type FlagFollowersByProjEnvGetRepItemsList = Array<FollowersPerFlag>;
-export const FlagFollowersByProjEnvGetRepItemsList = /*@__PURE__*/ S.Array(
+const FlagFollowersByProjEnvGetRepItemsList = /*@__PURE__*/ S.Array(
   FollowersPerFlag,
 ) as any as S.Schema<FlagFollowersByProjEnvGetRepItemsList>;
 
@@ -16041,7 +15912,7 @@ export interface FlagFollowersByProjEnvGetRep {
   /** An array of flags and their followers */
   items?: FlagFollowersByProjEnvGetRepItemsList;
 }
-export const FlagFollowersByProjEnvGetRep = /*@__PURE__*/ S.suspend(() =>
+const FlagFollowersByProjEnvGetRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: FlagFollowersByProjEnvGetRepLinksMap,
     items: S.optional(FlagFollowersByProjEnvGetRepItemsList),
@@ -16060,7 +15931,7 @@ export interface GetHoldoutRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. Holdout experiment expansion fields have no prefix. Related experiment expansion fields have `rel-` as a prefix. */
   expand?: string;
 }
-export const GetHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -16076,10 +15947,10 @@ export const GetHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetHoldoutRequest" }) as any as S.Schema<GetHoldoutRequest>;
 
 export type HoldoutDetailRepStatus = "created" | "enabled" | "running" | "ended";
-export const HoldoutDetailRepStatus = S.String;
+const HoldoutDetailRepStatus = S.String;
 
 export type HoldoutDetailRepRelatedExperimentsList = Array<Experiment>;
-export const HoldoutDetailRepRelatedExperimentsList =
+const HoldoutDetailRepRelatedExperimentsList =
   ExperimentCollectionRepItemsList as any as S.Schema<HoldoutDetailRepRelatedExperimentsList>;
 
 export interface HoldoutDetailRep {
@@ -16095,7 +15966,7 @@ export interface HoldoutDetailRep {
   baseExperiment: Experiment;
   relatedExperiments?: HoldoutDetailRepRelatedExperimentsList;
 }
-export const HoldoutDetailRep = /*@__PURE__*/ S.suspend(() =>
+const HoldoutDetailRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     status: HoldoutDetailRepStatus,
@@ -16117,7 +15988,7 @@ export interface GetHoldoutByIdRequest {
   /** The holdout experiment ID */
   holdoutId: string;
 }
-export const GetHoldoutByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHoldoutByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -16132,10 +16003,10 @@ export const GetHoldoutByIdRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetHoldoutByIdRequest" }) as any as S.Schema<GetHoldoutByIdRequest>;
 
 export type HoldoutRepStatus = "created" | "enabled" | "running" | "ended";
-export const HoldoutRepStatus = S.String;
+const HoldoutRepStatus = S.String;
 
 export type HoldoutRepExperimentsList = Array<RelatedExperimentRep>;
-export const HoldoutRepExperimentsList =
+const HoldoutRepExperimentsList =
   SimpleHoldoutRepExperimentsList as any as S.Schema<HoldoutRepExperimentsList>;
 
 export interface HoldoutRep {
@@ -16149,7 +16020,7 @@ export interface HoldoutRep {
   baseExperiment: Experiment;
   experiments?: HoldoutRepExperimentsList;
 }
-export const HoldoutRep = /*@__PURE__*/ S.suspend(() =>
+const HoldoutRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     status: HoldoutRepStatus,
@@ -16168,7 +16039,7 @@ export interface GetInsightGroupRequest {
   /** Options: `scores`, `environment` */
   expand?: string;
 }
-export const GetInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightGroupKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -16193,7 +16064,7 @@ export interface GetInsightGroupsRequest {
   /** Options: `scores`, `environment`, `metadata` */
   expand?: string;
 }
-export const GetInsightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInsightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -16207,13 +16078,13 @@ export const GetInsightGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of insight groups */
 export type InsightGroupCollectionItemsList = Array<InsightGroup>;
-export const InsightGroupCollectionItemsList = /*@__PURE__*/ S.Array(
+const InsightGroupCollectionItemsList = /*@__PURE__*/ S.Array(
   InsightGroup,
 ) as any as S.Schema<InsightGroupCollectionItemsList>;
 
 /** The location and content type of related resources */
 export type InsightGroupCollectionLinksMap = { [key: string]: Link | undefined };
-export const InsightGroupCollectionLinksMap =
+const InsightGroupCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightGroupCollectionLinksMap>;
 
 export interface InsightGroupsCountByIndicator {
@@ -16232,7 +16103,7 @@ export interface InsightGroupsCountByIndicator {
   /** The total number of insight groups */
   total: number;
 }
-export const InsightGroupsCountByIndicator = /*@__PURE__*/ S.suspend(() =>
+const InsightGroupsCountByIndicator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excellent: S.Number,
     good: S.Number,
@@ -16249,7 +16120,7 @@ export const InsightGroupsCountByIndicator = /*@__PURE__*/ S.suspend(() =>
 export interface InsightGroupCollectionMetadata {
   countByIndicator: InsightGroupsCountByIndicator;
 }
-export const InsightGroupCollectionMetadata = /*@__PURE__*/ S.suspend(() =>
+const InsightGroupCollectionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countByIndicator: InsightGroupsCountByIndicator,
   }),
@@ -16269,7 +16140,7 @@ export interface InsightGroupCollection {
   /** Metadata about the insight scores, when expanded */
   scoreMetadata?: InsightGroupCollectionScoreMetadata;
 }
-export const InsightGroupCollection = /*@__PURE__*/ S.suspend(() =>
+const InsightGroupCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: InsightGroupCollectionItemsList,
@@ -16283,7 +16154,7 @@ export interface GetInsightsRepositoriesRequest {
   /** Expand properties in response. Options: `projects` */
   expand?: string;
 }
-export const GetInsightsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInsightsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expand: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/engineering-insights/repositories", code: 200 })),
@@ -16292,11 +16163,11 @@ export const GetInsightsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightsRepositoriesRequest>;
 
 export type ProjectSummaryCollectionItemsList = Array<ProjectSummary>;
-export const ProjectSummaryCollectionItemsList =
+const ProjectSummaryCollectionItemsList =
   TeamProjectsItemsList as any as S.Schema<ProjectSummaryCollectionItemsList>;
 
 export type ProjectSummaryCollectionLinksMap = { [key: string]: Link | undefined };
-export const ProjectSummaryCollectionLinksMap =
+const ProjectSummaryCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectSummaryCollectionLinksMap>;
 
 export interface ProjectSummaryCollection {
@@ -16304,7 +16175,7 @@ export interface ProjectSummaryCollection {
   items: ProjectSummaryCollectionItemsList;
   _links?: ProjectSummaryCollectionLinksMap;
 }
-export const ProjectSummaryCollection = /*@__PURE__*/ S.suspend(() =>
+const ProjectSummaryCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: ProjectSummaryCollectionItemsList,
@@ -16327,7 +16198,7 @@ export interface InsightsRepository {
   mainBranch: string;
   projects?: ProjectSummaryCollection;
 }
-export const InsightsRepository = /*@__PURE__*/ S.suspend(() =>
+const InsightsRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     version: S.Number,
@@ -16341,13 +16212,13 @@ export const InsightsRepository = /*@__PURE__*/ S.suspend(() =>
 
 /** List of repositories */
 export type InsightsRepositoryCollectionItemsList = Array<InsightsRepository>;
-export const InsightsRepositoryCollectionItemsList = /*@__PURE__*/ S.Array(
+const InsightsRepositoryCollectionItemsList = /*@__PURE__*/ S.Array(
   InsightsRepository,
 ) as any as S.Schema<InsightsRepositoryCollectionItemsList>;
 
 /** The location and content type of related resources */
 export type InsightsRepositoryCollectionLinksMap = { [key: string]: Link | undefined };
-export const InsightsRepositoryCollectionLinksMap =
+const InsightsRepositoryCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightsRepositoryCollectionLinksMap>;
 
 export interface InsightsRepositoryCollection {
@@ -16358,7 +16229,7 @@ export interface InsightsRepositoryCollection {
   /** The location and content type of related resources */
   _links?: InsightsRepositoryCollectionLinksMap;
 }
-export const InsightsRepositoryCollection = /*@__PURE__*/ S.suspend(() =>
+const InsightsRepositoryCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.Number,
     items: InsightsRepositoryCollectionItemsList,
@@ -16376,7 +16247,7 @@ export interface GetInsightsScoresRequest {
   /** Comma separated list of application keys */
   applicationKey?: string;
 }
-export const GetInsightsScoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInsightsScoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -16388,7 +16259,7 @@ export const GetInsightsScoresRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type InsightScoresLinksMap = { [key: string]: Link | undefined };
-export const InsightScoresLinksMap =
+const InsightScoresLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<InsightScoresLinksMap>;
 
 export interface InsightScores {
@@ -16401,7 +16272,7 @@ export interface InsightScores {
   /** The location and content type of related resources */
   _links?: InsightScoresLinksMap;
 }
-export const InsightScores = /*@__PURE__*/ S.suspend(() =>
+const InsightScores = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period: InsightPeriod,
     lastPeriod: InsightPeriod,
@@ -16414,7 +16285,7 @@ export interface GetIntegrationConfigurationRequest {
   /** Integration configuration ID */
   integrationConfigurationId: string;
 }
-export const GetIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -16434,7 +16305,7 @@ export interface GetIntegrationDeliveryConfigurationByEnvironmentRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetIntegrationDeliveryConfigurationByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationDeliveryConfigurationByEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -16451,13 +16322,10 @@ export const GetIntegrationDeliveryConfigurationByEnvironmentRequest = /*@__PURE
 
 export type IntegrationDeliveryConfigurationCollectionLinks =
   BigSegmentStoreIntegrationCollectionLinks;
-export const IntegrationDeliveryConfigurationCollectionLinks =
-  BigSegmentStoreIntegrationCollectionLinks;
-
 /** An array of integration delivery configurations */
 export type IntegrationDeliveryConfigurationCollectionItemsList =
   Array<IntegrationDeliveryConfiguration>;
-export const IntegrationDeliveryConfigurationCollectionItemsList = /*@__PURE__*/ S.Array(
+const IntegrationDeliveryConfigurationCollectionItemsList = /*@__PURE__*/ S.Array(
   IntegrationDeliveryConfiguration,
 ) as any as S.Schema<IntegrationDeliveryConfigurationCollectionItemsList>;
 
@@ -16467,7 +16335,7 @@ export interface IntegrationDeliveryConfigurationCollection {
   /** An array of integration delivery configurations */
   items: IntegrationDeliveryConfigurationCollectionItemsList;
 }
-export const IntegrationDeliveryConfigurationCollection = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDeliveryConfigurationCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: BigSegmentStoreIntegrationCollectionLinks,
     items: IntegrationDeliveryConfigurationCollectionItemsList,
@@ -16486,7 +16354,7 @@ export interface GetIntegrationDeliveryConfigurationByIdRequest {
   /** The configuration ID */
   id: string;
 }
-export const GetIntegrationDeliveryConfigurationByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationDeliveryConfigurationByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -16504,7 +16372,7 @@ export const GetIntegrationDeliveryConfigurationByIdRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<GetIntegrationDeliveryConfigurationByIdRequest>;
 
 export interface GetIntegrationDeliveryConfigurationsRequest {}
-export const GetIntegrationDeliveryConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationDeliveryConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v2/integration-capabilities/featureStore", code: 200 }),
   ),
@@ -16520,7 +16388,7 @@ export interface GetIpAllowlistRequest {
   /** The number of entries to skip. Used for pagination. */
   offset?: number;
 }
-export const GetIpAllowlistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpAllowlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     search: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -16529,10 +16397,8 @@ export const GetIpAllowlistRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIpAllowlistRequest" }) as any as S.Schema<GetIpAllowlistRequest>;
 
 export type IPAllowlistSelfLink = ViewsSelfLink;
-export const IPAllowlistSelfLink = ViewsSelfLink;
-
 export type IpAllowlistResponseEntriesList = Array<IpAllowlistEntryResponse>;
-export const IpAllowlistResponseEntriesList = /*@__PURE__*/ S.Array(
+const IpAllowlistResponseEntriesList = /*@__PURE__*/ S.Array(
   IpAllowlistEntryResponse,
 ) as any as S.Schema<IpAllowlistResponseEntriesList>;
 
@@ -16544,7 +16410,7 @@ export interface IpAllowlistResponse {
   totalCount?: number;
   entries: IpAllowlistResponseEntriesList;
 }
-export const IpAllowlistResponse = /*@__PURE__*/ S.suspend(() =>
+const IpAllowlistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ViewsSelfLink),
     sessionAllowlistEnabled: S.Boolean,
@@ -16555,17 +16421,17 @@ export const IpAllowlistResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAllowlistResponse" }) as any as S.Schema<IpAllowlistResponse>;
 
 export interface GetIpsRequest {}
-export const GetIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/public-ip-list", code: 200 })),
 ).annotate({ identifier: "GetIpsRequest" }) as any as S.Schema<GetIpsRequest>;
 
 /** A list of IP addresses used by the LaunchDarkly service */
 export type IpListAddressesList = Array<string>;
-export const IpListAddressesList = FeatureFlagTagsList as any as S.Schema<IpListAddressesList>;
+const IpListAddressesList = FeatureFlagTagsList as any as S.Schema<IpListAddressesList>;
 
 /** A list of the IP addresses outgoing webhook notifications use */
 export type IpListOutboundAddressesList = Array<string>;
-export const IpListOutboundAddressesList =
+const IpListOutboundAddressesList =
   FeatureFlagTagsList as any as S.Schema<IpListOutboundAddressesList>;
 
 export interface IpList {
@@ -16574,7 +16440,7 @@ export interface IpList {
   /** A list of the IP addresses outgoing webhook notifications use */
   outboundAddresses: IpListOutboundAddressesList;
 }
-export const IpList = /*@__PURE__*/ S.suspend(() =>
+const IpList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addresses: IpListAddressesList,
     outboundAddresses: IpListOutboundAddressesList,
@@ -16587,7 +16453,7 @@ export interface GetLayersRequest {
   /** A comma-separated list of filters. This endpoint only accepts filtering by `experimentKey`. The filter returns layers which include that experiment for the selected environment(s). For example: `filter=reservations.experimentKey contains expKey`. */
   filter?: string;
 }
-export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -16596,13 +16462,13 @@ export const GetLayersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The layers in the project */
 export type LayerCollectionRepItemsList = Array<LayerRep>;
-export const LayerCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const LayerCollectionRepItemsList = /*@__PURE__*/ S.Array(
   LayerRep,
 ) as any as S.Schema<LayerCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type LayerCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const LayerCollectionRepLinksMap =
+const LayerCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<LayerCollectionRepLinksMap>;
 
 export interface LayerCollectionRep {
@@ -16613,7 +16479,7 @@ export interface LayerCollectionRep {
   /** The location and content type of related resources */
   _links: LayerCollectionRepLinksMap;
 }
-export const LayerCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const LayerCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: LayerCollectionRepItemsList,
     totalCount: S.Number,
@@ -16641,7 +16507,7 @@ export interface GetLeadTimeChartRequest {
   /** Options: `metrics`, `percentiles`. */
   expand?: string;
 }
-export const GetLeadTimeChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLeadTimeChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.optional(S.String.pipe(T.Query())),
@@ -16658,18 +16524,16 @@ export const GetLeadTimeChartRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLeadTimeChartRequest" }) as any as S.Schema<GetLeadTimeChartRequest>;
 
 export type GetLinkedResourcesRequestResourceType = "flags" | "segments" | "aiConfigs";
-export const GetLinkedResourcesRequestResourceType = S.String;
+const GetLinkedResourcesRequestResourceType = S.String;
 
 export type GetLinkedResourcesRequestSort = "linkedAt" | "name";
-export const GetLinkedResourcesRequestSort = S.String;
+const GetLinkedResourcesRequestSort = S.String;
 
 export type GetLinkedResourcesRequestExpandItem = "maintainer" | "resourceDetails";
-export const GetLinkedResourcesRequestExpandItem = S.String;
-
 export type GetLinkedResourcesRequestExpandList = Array<
   GetLinkedResourcesRequestExpandItem | (string & {})
 >;
-export const GetLinkedResourcesRequestExpandList =
+const GetLinkedResourcesRequestExpandList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetLinkedResourcesRequestExpandList>;
 
 export interface GetLinkedResourcesRequest {
@@ -16689,7 +16553,7 @@ export interface GetLinkedResourcesRequest {
   /** A comma-separated list of fields to expand. */
   expand?: GetLinkedResourcesRequestExpandList;
 }
-export const GetLinkedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -16712,10 +16576,8 @@ export const GetLinkedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLinkedResourcesRequest>;
 
 export type ViewsPaginatedLinks = PaginatedLinks;
-export const ViewsPaginatedLinks = PaginatedLinks;
-
 export type ViewLinkedResourceResourceType = "flag" | "segment" | "aiConfig";
-export const ViewLinkedResourceResourceType = S.String;
+const ViewLinkedResourceResourceType = S.String;
 
 export interface ViewLinkedResourceDetails {
   view?: View;
@@ -16724,7 +16586,7 @@ export interface ViewLinkedResourceDetails {
   aiConfig?: ExpandedAIConfig;
   metric?: ExpandedMetric;
 }
-export const ViewLinkedResourceDetails = /*@__PURE__*/ S.suspend(() =>
+const ViewLinkedResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view: S.optional(View),
     flag: S.optional(ExpandedFlag),
@@ -16748,7 +16610,7 @@ export interface ViewLinkedResource {
   linkedAt: number;
   resourceDetails?: ViewLinkedResourceDetails;
 }
-export const ViewLinkedResource = /*@__PURE__*/ S.suspend(() =>
+const ViewLinkedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ParentAndSelfLinks,
     resourceKey: S.String,
@@ -16761,7 +16623,7 @@ export const ViewLinkedResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewLinkedResource" }) as any as S.Schema<ViewLinkedResource>;
 
 export type ViewLinkedResourcesItemsList = Array<ViewLinkedResource>;
-export const ViewLinkedResourcesItemsList = /*@__PURE__*/ S.Array(
+const ViewLinkedResourcesItemsList = /*@__PURE__*/ S.Array(
   ViewLinkedResource,
 ) as any as S.Schema<ViewLinkedResourcesItemsList>;
 
@@ -16770,7 +16632,7 @@ export interface ViewLinkedResources {
   items: ViewLinkedResourcesItemsList;
   totalCount: number;
 }
-export const ViewLinkedResources = /*@__PURE__*/ S.suspend(() =>
+const ViewLinkedResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: ViewLinkedResourcesItemsList,
@@ -16779,7 +16641,7 @@ export const ViewLinkedResources = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ViewLinkedResources" }) as any as S.Schema<ViewLinkedResources>;
 
 export type GetLinkedViewsRequestResourceType = "flags" | "segments" | "aiConfigs";
-export const GetLinkedViewsRequestResourceType = S.String;
+const GetLinkedViewsRequestResourceType = S.String;
 
 export interface GetLinkedViewsRequest {
   projectKey: string;
@@ -16792,7 +16654,7 @@ export interface GetLinkedViewsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetLinkedViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLinkedViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     resourceType: GetLinkedViewsRequestResourceType.pipe(T.Label()),
@@ -16810,14 +16672,14 @@ export const GetLinkedViewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLinkedViewsRequest" }) as any as S.Schema<GetLinkedViewsRequest>;
 
 export type ViewsItemsList = Array<View>;
-export const ViewsItemsList = /*@__PURE__*/ S.Array(View) as any as S.Schema<ViewsItemsList>;
+const ViewsItemsList = /*@__PURE__*/ S.Array(View) as any as S.Schema<ViewsItemsList>;
 
 export interface Views {
   _links?: PaginatedLinks;
   items: ViewsItemsList;
   totalCount: number;
 }
-export const Views = /*@__PURE__*/ S.suspend(() =>
+const Views = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: ViewsItemsList,
@@ -16845,7 +16707,7 @@ export interface GetMAUClientsideUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only. */
   granularity?: string;
 }
-export const GetMAUClientsideUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMAUClientsideUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -16869,7 +16731,7 @@ export interface GetMauSdksByTypeRequest {
   /** The type of SDK with monthly active users (MAU) to list. Must be either `client` or `server`. */
   sdktype?: string;
 }
-export const GetMauSdksByTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMauSdksByTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -16879,11 +16741,11 @@ export const GetMauSdksByTypeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SdkListRepLinksMap = { [key: string]: unknown | undefined };
-export const SdkListRepLinksMap = UrlMatcher as any as S.Schema<SdkListRepLinksMap>;
+const SdkListRepLinksMap = UrlMatcher as any as S.Schema<SdkListRepLinksMap>;
 
 /** The list of SDK names */
 export type SdkListRepSdksList = Array<string>;
-export const SdkListRepSdksList = FeatureFlagTagsList as any as S.Schema<SdkListRepSdksList>;
+const SdkListRepSdksList = FeatureFlagTagsList as any as S.Schema<SdkListRepSdksList>;
 
 export interface SdkListRep {
   /** The location and content type of related resources */
@@ -16891,7 +16753,7 @@ export interface SdkListRep {
   /** The list of SDK names */
   sdks: SdkListRepSdksList;
 }
-export const SdkListRep = /*@__PURE__*/ S.suspend(() =>
+const SdkListRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: SdkListRepLinksMap,
     sdks: SdkListRepSdksList,
@@ -16920,7 +16782,7 @@ export interface GetMAUTotalUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only. */
   granularity?: string;
 }
-export const GetMAUTotalUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMAUTotalUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -16941,7 +16803,7 @@ export interface GetMemberRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -16960,7 +16822,7 @@ export interface GetMembersRequest {
   /** A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. */
   sort?: string;
 }
-export const GetMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -16980,7 +16842,7 @@ export interface GetMetricRequest {
   /** The specific version ID of the metric */
   versionId?: string;
 }
-export const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricKey: S.String.pipe(T.Label()),
@@ -16991,46 +16853,46 @@ export const GetMetricRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of event the metric tracks */
 export type MetricRepKind = "pageview" | "click" | "custom" | "trace";
-export const MetricRepKind = S.String;
+const MetricRepKind = S.String;
 
 /** The location and content type of related resources */
 export type MetricRepLinksMap = { [key: string]: Link | undefined };
-export const MetricRepLinksMap =
+const MetricRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricRepLinksMap>;
 
 /** Tags for the metric */
 export type MetricRepTagsList = Array<string>;
-export const MetricRepTagsList = FeatureFlagTagsList as any as S.Schema<MetricRepTagsList>;
+const MetricRepTagsList = FeatureFlagTagsList as any as S.Schema<MetricRepTagsList>;
 
 /** For custom and trace metrics, the success criteria */
 export type MetricRepSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
-export const MetricRepSuccessCriteria = S.String;
+const MetricRepSuccessCriteria = S.String;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type MetricRepRandomizationUnitsList = Array<string>;
-export const MetricRepRandomizationUnitsList =
+const MetricRepRandomizationUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricRepRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type MetricRepAnalysisUnitsList = Array<string>;
-export const MetricRepAnalysisUnitsList =
+const MetricRepAnalysisUnitsList =
   FeatureFlagTagsList as any as S.Schema<MetricRepAnalysisUnitsList>;
 
 /** The method by which multiple unit event values are aggregated */
 export type MetricRepUnitAggregationType = "average" | "sum" | "count_distinct";
-export const MetricRepUnitAggregationType = S.String;
+const MetricRepUnitAggregationType = S.String;
 
 /** The method for analyzing metric events */
 export type MetricRepAnalysisType = "mean" | "percentile";
-export const MetricRepAnalysisType = S.String;
+const MetricRepAnalysisType = S.String;
 
 /** The type of the metric group */
 export type DependentMetricGroupRepKind = "funnel" | "standard";
-export const DependentMetricGroupRepKind = S.String;
+const DependentMetricGroupRepKind = S.String;
 
 /** The location and content type of related resources */
 export type DependentMetricGroupRepLinksMap = { [key: string]: Link | undefined };
-export const DependentMetricGroupRepLinksMap =
+const DependentMetricGroupRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentMetricGroupRepLinksMap>;
 
 export interface DependentMetricGroupRep {
@@ -17043,7 +16905,7 @@ export interface DependentMetricGroupRep {
   /** The location and content type of related resources */
   _links: DependentMetricGroupRepLinksMap;
 }
-export const DependentMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
+const DependentMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -17054,13 +16916,13 @@ export const DependentMetricGroupRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Metric groups that use this metric */
 export type MetricRepMetricGroupsList = Array<DependentMetricGroupRep>;
-export const MetricRepMetricGroupsList = /*@__PURE__*/ S.Array(
+const MetricRepMetricGroupsList = /*@__PURE__*/ S.Array(
   DependentMetricGroupRep,
 ) as any as S.Schema<MetricRepMetricGroupsList>;
 
 /** The location and content type of related resources */
 export type DependentReleasePhaseRepLinksMap = { [key: string]: Link | undefined };
-export const DependentReleasePhaseRepLinksMap =
+const DependentReleasePhaseRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<DependentReleasePhaseRepLinksMap>;
 
 export interface DependentReleasePhaseRep {
@@ -17083,7 +16945,7 @@ export interface DependentReleasePhaseRep {
   /** The location and content type of related resources */
   _links: DependentReleasePhaseRepLinksMap;
 }
-export const DependentReleasePhaseRep = /*@__PURE__*/ S.suspend(() =>
+const DependentReleasePhaseRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     flagKey: S.String,
@@ -17099,7 +16961,7 @@ export const DependentReleasePhaseRep = /*@__PURE__*/ S.suspend(() =>
 
 /** Details on the flags attached to this metric */
 export type MetricRepAttachedFeaturesList = Array<FlagListingRep>;
-export const MetricRepAttachedFeaturesList =
+const MetricRepAttachedFeaturesList =
   ApplicationFlagCollectionRepItemsList as any as S.Schema<MetricRepAttachedFeaturesList>;
 
 export interface MetricRep {
@@ -17207,7 +17069,7 @@ export interface MetricRep {
   /** Details on the flags attached to this metric */
   _attachedFeatures?: MetricRepAttachedFeaturesList;
 }
-export const MetricRep = /*@__PURE__*/ S.suspend(() =>
+const MetricRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentCount: S.optional(S.Number),
     metricGroupCount: S.optional(S.Number),
@@ -17273,7 +17135,7 @@ export interface GetMetricGroupRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricGroupKey: S.String.pipe(T.Label()),
@@ -17301,7 +17163,7 @@ export interface GetMetricGroupsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items. */
   offset?: number;
 }
-export const GetMetricGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -17314,13 +17176,13 @@ export const GetMetricGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of metric groups */
 export type MetricGroupCollectionRepItemsList = Array<MetricGroupRep>;
-export const MetricGroupCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const MetricGroupCollectionRepItemsList = /*@__PURE__*/ S.Array(
   MetricGroupRep,
 ) as any as S.Schema<MetricGroupCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type MetricGroupCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const MetricGroupCollectionRepLinksMap =
+const MetricGroupCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricGroupCollectionRepLinksMap>;
 
 export interface MetricGroupCollectionRep {
@@ -17330,7 +17192,7 @@ export interface MetricGroupCollectionRep {
   _links?: MetricGroupCollectionRepLinksMap;
   totalCount?: number;
 }
-export const MetricGroupCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const MetricGroupCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: MetricGroupCollectionRepItemsList,
     _links: S.optional(MetricGroupCollectionRepLinksMap),
@@ -17352,7 +17214,7 @@ export interface GetMetricsRequest {
   /** A comma-separated list of filters. This endpoint accepts filtering by `query`, `tags`, `eventKind`, `isNumeric`, `unitAggregationType`, `hasConnections`, `maintainerIds`, `maintainerTeamKey`, `view`, `dataSourceKeys`, `metricUsedIn`, `eventKeys`, and `versionIds`. To learn more about the filter syntax, read the 'Filtering metrics' section above. */
   filter?: string;
 }
-export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -17365,13 +17227,13 @@ export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of metrics */
 export type MetricCollectionRepItemsList = Array<MetricListingRep>;
-export const MetricCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const MetricCollectionRepItemsList = /*@__PURE__*/ S.Array(
   MetricListingRep,
 ) as any as S.Schema<MetricCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type MetricCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const MetricCollectionRepLinksMap =
+const MetricCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<MetricCollectionRepLinksMap>;
 
 export interface MetricCollectionRep {
@@ -17381,7 +17243,7 @@ export interface MetricCollectionRep {
   _links?: MetricCollectionRepLinksMap;
   totalCount?: number;
 }
-export const MetricCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const MetricCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(MetricCollectionRepItemsList),
     _links: S.optional(MetricCollectionRepLinksMap),
@@ -17395,7 +17257,7 @@ export interface GetModelConfigRequest {
   /** Specific model config version to return. Omit to return the latest version. */
   version?: number;
 }
-export const GetModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     modelConfigKey: S.String.pipe(T.Label()),
@@ -17410,7 +17272,7 @@ export const GetModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetModelConfigRequest" }) as any as S.Schema<GetModelConfigRequest>;
 
 export type ModelConfigTagsList = Array<string>;
-export const ModelConfigTagsList = FeatureFlagTagsList as any as S.Schema<ModelConfigTagsList>;
+const ModelConfigTagsList = FeatureFlagTagsList as any as S.Schema<ModelConfigTagsList>;
 
 export interface ModelConfig {
   _access?: AiConfigsAccess;
@@ -17442,7 +17304,7 @@ export interface ModelConfig {
   /** Number of distinct AgentControl configs that reference this model */
   usedInCount?: number;
 }
-export const ModelConfig = /*@__PURE__*/ S.suspend(() =>
+const ModelConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(AiConfigsAccess),
     _maintainer: S.optional(AIConfigMaintainer),
@@ -17468,7 +17330,7 @@ export interface GetOAuthClientByIdRequest {
   /** The client ID */
   clientId: string;
 }
-export const GetOAuthClientByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthClientByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/oauth/clients/{clientId}", code: 200 })),
@@ -17477,18 +17339,18 @@ export const GetOAuthClientByIdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOAuthClientByIdRequest>;
 
 export interface GetOAuthClientsRequest {}
-export const GetOAuthClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/oauth/clients", code: 200 })),
 ).annotate({ identifier: "GetOAuthClientsRequest" }) as any as S.Schema<GetOAuthClientsRequest>;
 
 /** The location and content type of related resources */
 export type ClientCollectionLinksMap = { [key: string]: Link | undefined };
-export const ClientCollectionLinksMap =
+const ClientCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ClientCollectionLinksMap>;
 
 /** List of client objects */
 export type ClientCollectionItemsList = Array<Client>;
-export const ClientCollectionItemsList = /*@__PURE__*/ S.Array(
+const ClientCollectionItemsList = /*@__PURE__*/ S.Array(
   Client,
 ) as any as S.Schema<ClientCollectionItemsList>;
 
@@ -17498,7 +17360,7 @@ export interface ClientCollection {
   /** List of client objects */
   items: ClientCollectionItemsList;
 }
-export const ClientCollection = /*@__PURE__*/ S.suspend(() =>
+const ClientCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ClientCollectionLinksMap,
     items: ClientCollectionItemsList,
@@ -17517,7 +17379,7 @@ export interface GetObservabilityErrorsUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`. */
   aggregationType?: string;
 }
-export const GetObservabilityErrorsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityErrorsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -17541,7 +17403,7 @@ export interface GetObservabilityLogsUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`. */
   aggregationType?: string;
 }
-export const GetObservabilityLogsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityLogsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -17565,7 +17427,7 @@ export interface GetObservabilityMetricsUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `average`. */
   aggregationType?: string;
 }
-export const GetObservabilityMetricsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityMetricsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -17589,7 +17451,7 @@ export interface GetObservabilitySessionsUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`. */
   aggregationType?: string;
 }
-export const GetObservabilitySessionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilitySessionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -17613,7 +17475,7 @@ export interface GetObservabilityTracesUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`. */
   aggregationType?: string;
 }
-export const GetObservabilityTracesUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetObservabilityTracesUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -17626,12 +17488,12 @@ export const GetObservabilityTracesUsageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetObservabilityTracesUsageRequest>;
 
 export interface GetOpenapiSpecRequest {}
-export const GetOpenapiSpecRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOpenapiSpecRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/openapi.json", code: 200 })),
 ).annotate({ identifier: "GetOpenapiSpecRequest" }) as any as S.Schema<GetOpenapiSpecRequest>;
 
 export interface GetOpenapiSpecResponse {}
-export const GetOpenapiSpecResponse =
+const GetOpenapiSpecResponse =
   CreateBigSegmentExportResponse as any as S.Schema<GetOpenapiSpecResponse>;
 
 export interface GetProjectRequest {
@@ -17640,7 +17502,7 @@ export interface GetProjectRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -17659,7 +17521,7 @@ export interface GetProjectsRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -17671,14 +17533,12 @@ export const GetProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A link to this resource. */
 export type ProjectsLinksMap = { [key: string]: Link | undefined };
-export const ProjectsLinksMap =
+const ProjectsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ProjectsLinksMap>;
 
 /** List of projects. */
 export type ProjectsItemsList = Array<Project>;
-export const ProjectsItemsList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<ProjectsItemsList>;
+const ProjectsItemsList = /*@__PURE__*/ S.Array(Project) as any as S.Schema<ProjectsItemsList>;
 
 export interface Projects {
   /** A link to this resource. */
@@ -17687,7 +17547,7 @@ export interface Projects {
   items: ProjectsItemsList;
   totalCount?: number;
 }
-export const Projects = /*@__PURE__*/ S.suspend(() =>
+const Projects = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: ProjectsLinksMap,
     items: ProjectsItemsList,
@@ -17696,7 +17556,7 @@ export const Projects = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Projects" }) as any as S.Schema<Projects>;
 
 export type GetProjectSdkKeysRequestSort = "createdAt" | "-createdAt" | "environmentKey";
-export const GetProjectSdkKeysRequestSort = S.String;
+const GetProjectSdkKeysRequestSort = S.String;
 
 export interface GetProjectSdkKeysRequest {
   projectKey: string;
@@ -17711,7 +17571,7 @@ export interface GetProjectSdkKeysRequest {
   /** A sort to apply to the list of SDK keys. Supported fields: `createdAt` and `environmentKey`. Prefix `createdAt` with `-` to sort in descending order (for example, `-createdAt`). `environmentKey` orders keys by environment key ascending, then by creation time ascending within each environment, so each page is environment-contiguous. */
   sort?: GetProjectSdkKeysRequestSort | (string & {});
 }
-export const GetProjectSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -17723,15 +17583,13 @@ export const GetProjectSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetProjectSdkKeysRequest" }) as any as S.Schema<GetProjectSdkKeysRequest>;
 
 export type SdkKeysSelfLink = ViewsSelfLink;
-export const SdkKeysSelfLink = ViewsSelfLink;
-
 /** The kind of SDK key. Can be either "sdk" (server-side) or "mobile" (mobile). */
 export type SdkKeyKind = "sdk" | "mobile";
-export const SdkKeyKind = S.String;
+const SdkKeyKind = S.String;
 
 /** The location and content type of related resources */
 export type SdkKeysEnvironmentSummaryLinksMap = { [key: string]: Link | undefined };
-export const SdkKeysEnvironmentSummaryLinksMap =
+const SdkKeysEnvironmentSummaryLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<SdkKeysEnvironmentSummaryLinksMap>;
 
 export interface SdkKeysEnvironmentSummary {
@@ -17744,7 +17602,7 @@ export interface SdkKeysEnvironmentSummary {
   /** The color used to indicate this environment in the UI */
   color: string;
 }
-export const SdkKeysEnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
+const SdkKeysEnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: SdkKeysEnvironmentSummaryLinksMap,
     key: S.String,
@@ -17761,7 +17619,7 @@ export interface ViewResourceSummary {
   /** The number of segments associated with the view. */
   segmentCount: number;
 }
-export const ViewResourceSummary = /*@__PURE__*/ S.suspend(() =>
+const ViewResourceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagCount: S.Number,
     segmentCount: S.Number,
@@ -17776,7 +17634,7 @@ export interface ViewSummary {
   name: string;
   resourceSummary: ViewResourceSummary;
 }
-export const ViewSummary = /*@__PURE__*/ S.suspend(() =>
+const ViewSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentAndSelfLinks),
     key: S.String,
@@ -17787,7 +17645,7 @@ export const ViewSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Summaries of views associated with the SDK key. */
 export type SdkKeyListItemViewSummariesList = Array<ViewSummary>;
-export const SdkKeyListItemViewSummariesList = /*@__PURE__*/ S.Array(
+const SdkKeyListItemViewSummariesList = /*@__PURE__*/ S.Array(
   ViewSummary,
 ) as any as S.Schema<SdkKeyListItemViewSummariesList>;
 
@@ -17815,7 +17673,7 @@ export interface SdkKeyListItem {
   /** Summaries of views associated with the SDK key. */
   viewSummaries?: SdkKeyListItemViewSummariesList;
 }
-export const SdkKeyListItem = /*@__PURE__*/ S.suspend(() =>
+const SdkKeyListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentAndSelfLinks),
     kind: SdkKeyKind,
@@ -17835,9 +17693,7 @@ export const SdkKeyListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkKeyListItem" }) as any as S.Schema<SdkKeyListItem>;
 
 export type SdkKeysItemsList = Array<SdkKeyListItem>;
-export const SdkKeysItemsList = /*@__PURE__*/ S.Array(
-  SdkKeyListItem,
-) as any as S.Schema<SdkKeysItemsList>;
+const SdkKeysItemsList = /*@__PURE__*/ S.Array(SdkKeyListItem) as any as S.Schema<SdkKeysItemsList>;
 
 export interface SdkKeys {
   _links?: ViewsSelfLink;
@@ -17845,7 +17701,7 @@ export interface SdkKeys {
   /** The total number of SDK keys matching the query, before pagination. */
   totalCount: number;
 }
-export const SdkKeys = /*@__PURE__*/ S.suspend(() =>
+const SdkKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ViewsSelfLink),
     items: SdkKeysItemsList,
@@ -17857,7 +17713,7 @@ export interface GetPromptSnippetRequest {
   projectKey: string;
   snippetKey: string;
 }
-export const GetPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     snippetKey: S.String.pipe(T.Label()),
@@ -17871,7 +17727,7 @@ export const GetPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetPromptSnippetRequest" }) as any as S.Schema<GetPromptSnippetRequest>;
 
 export type PromptSnippetTagsList = Array<string>;
-export const PromptSnippetTagsList = FeatureFlagTagsList as any as S.Schema<PromptSnippetTagsList>;
+const PromptSnippetTagsList = FeatureFlagTagsList as any as S.Schema<PromptSnippetTagsList>;
 
 export interface PromptSnippet {
   key: string;
@@ -17887,7 +17743,7 @@ export interface PromptSnippet {
   version: number;
   createdAt: number;
 }
-export const PromptSnippet = /*@__PURE__*/ S.suspend(() =>
+const PromptSnippet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     _access: S.optional(AiConfigsAccess),
@@ -17929,7 +17785,7 @@ export interface GetPullRequestsRequest {
   /** Identifier used for pagination */
   before?: string;
 }
-export const GetPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPullRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.optional(S.String.pipe(T.Query())),
@@ -17950,7 +17806,7 @@ export interface GetRelayProxyConfigRequest {
   /** The relay auto config id */
   id: string;
 }
-export const GetRelayProxyConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRelayProxyConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/account/relay-auto-configs/{id}", code: 200 })),
@@ -17960,7 +17816,7 @@ export const GetRelayProxyConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A description of what environments and projects the Relay Proxy should include or exclude */
 export type RelayAutoConfigRepPolicyList = Array<Statement>;
-export const RelayAutoConfigRepPolicyList =
+const RelayAutoConfigRepPolicyList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<RelayAutoConfigRepPolicyList>;
 
 export interface RelayAutoConfigRep {
@@ -17983,7 +17839,7 @@ export interface RelayAutoConfigRep {
   /** Timestamp of when the Relay Proxy configuration was most recently modified */
   lastModified: number;
 }
-export const RelayAutoConfigRep = /*@__PURE__*/ S.suspend(() =>
+const RelayAutoConfigRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     _creator: S.optional(MemberSummary),
@@ -17998,7 +17854,7 @@ export const RelayAutoConfigRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RelayAutoConfigRep" }) as any as S.Schema<RelayAutoConfigRep>;
 
 export interface GetRelayProxyConfigsRequest {}
-export const GetRelayProxyConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRelayProxyConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v2/account/relay-auto-configs", code: 200 }),
   ),
@@ -18008,7 +17864,7 @@ export const GetRelayProxyConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of Relay Proxy configurations */
 export type RelayAutoConfigCollectionRepItemsList = Array<RelayAutoConfigRep>;
-export const RelayAutoConfigCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const RelayAutoConfigCollectionRepItemsList = /*@__PURE__*/ S.Array(
   RelayAutoConfigRep,
 ) as any as S.Schema<RelayAutoConfigCollectionRepItemsList>;
 
@@ -18016,7 +17872,7 @@ export interface RelayAutoConfigCollectionRep {
   /** An array of Relay Proxy configurations */
   items: RelayAutoConfigCollectionRepItemsList;
 }
-export const RelayAutoConfigCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const RelayAutoConfigCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: RelayAutoConfigCollectionRepItemsList,
   }),
@@ -18030,7 +17886,7 @@ export interface GetReleaseByFlagKeyRequest {
   /** The flag key */
   flagKey: string;
 }
-export const GetReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -18065,7 +17921,7 @@ export interface GetReleaseFrequencyChartRequest {
   /** Options: `metrics` */
   expand?: string;
 }
-export const GetReleaseFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleaseFrequencyChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -18095,7 +17951,7 @@ export interface GetReleasePipelineByKeyRequest {
   /** The release pipeline key */
   pipelineKey: string;
 }
-export const GetReleasePipelineByKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleasePipelineByKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     pipelineKey: S.String.pipe(T.Label()),
@@ -18116,7 +17972,7 @@ export interface GetReleasePoliciesRequest {
   /** When true, exclude the default release policy from the response. When false or omitted, include the default policy if an environment filter is present. */
   excludeDefault?: boolean;
 }
-export const GetReleasePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleasePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     excludeDefault: S.optional(S.Boolean.pipe(T.Query())),
@@ -18129,27 +17985,27 @@ export const GetReleasePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource specifier strings */
 export type ReleasePoliciesAccessDeniedReasonResourcesList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonResourcesList =
+const ReleasePoliciesAccessDeniedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessDeniedReasonNotResourcesList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonNotResourcesList =
+const ReleasePoliciesAccessDeniedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ReleasePoliciesAccessDeniedReasonActionsList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonActionsList =
+const ReleasePoliciesAccessDeniedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessDeniedReasonNotActionsList = Array<string>;
-export const ReleasePoliciesAccessDeniedReasonNotActionsList =
+const ReleasePoliciesAccessDeniedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessDeniedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ReleasePoliciesAccessDeniedReasonEffect = "allow" | "deny";
-export const ReleasePoliciesAccessDeniedReasonEffect = S.String;
+const ReleasePoliciesAccessDeniedReasonEffect = S.String;
 
 export interface ReleasePoliciesAccessDeniedReason {
   /** Resource specifier strings */
@@ -18164,7 +18020,7 @@ export interface ReleasePoliciesAccessDeniedReason {
   effect: ReleasePoliciesAccessDeniedReasonEffect;
   role_name?: string;
 }
-export const ReleasePoliciesAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesAccessDeniedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(ReleasePoliciesAccessDeniedReasonResourcesList),
     notResources: S.optional(ReleasePoliciesAccessDeniedReasonNotResourcesList),
@@ -18181,7 +18037,7 @@ export interface ReleasePoliciesAccessDenied {
   action: string;
   reason: ReleasePoliciesAccessDeniedReason;
 }
-export const ReleasePoliciesAccessDenied = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesAccessDenied = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: ReleasePoliciesAccessDeniedReason,
@@ -18191,33 +18047,33 @@ export const ReleasePoliciesAccessDenied = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReleasePoliciesAccessDenied>;
 
 export type ReleasePoliciesAccessDeniedList = Array<ReleasePoliciesAccessDenied>;
-export const ReleasePoliciesAccessDeniedList = /*@__PURE__*/ S.Array(
+const ReleasePoliciesAccessDeniedList = /*@__PURE__*/ S.Array(
   ReleasePoliciesAccessDenied,
 ) as any as S.Schema<ReleasePoliciesAccessDeniedList>;
 
 /** Resource specifier strings */
 export type ReleasePoliciesAccessAllowedReasonResourcesList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonResourcesList =
+const ReleasePoliciesAccessAllowedReasonResourcesList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonResourcesList>;
 
 /** Targeted resources are the resources NOT in this list. The <code>resources</code> and <code>notActions</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessAllowedReasonNotResourcesList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonNotResourcesList =
+const ReleasePoliciesAccessAllowedReasonNotResourcesList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotResourcesList>;
 
 /** Actions to perform on a resource */
 export type ReleasePoliciesAccessAllowedReasonActionsList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonActionsList =
+const ReleasePoliciesAccessAllowedReasonActionsList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonActionsList>;
 
 /** Targeted actions are the actions NOT in this list. The <code>actions</code> and <code>notResources</code> fields must be empty to use this field. */
 export type ReleasePoliciesAccessAllowedReasonNotActionsList = Array<string>;
-export const ReleasePoliciesAccessAllowedReasonNotActionsList =
+const ReleasePoliciesAccessAllowedReasonNotActionsList =
   FeatureFlagTagsList as any as S.Schema<ReleasePoliciesAccessAllowedReasonNotActionsList>;
 
 /** Whether this statement should allow or deny actions on the resources. */
 export type ReleasePoliciesAccessAllowedReasonEffect = "allow" | "deny";
-export const ReleasePoliciesAccessAllowedReasonEffect = S.String;
+const ReleasePoliciesAccessAllowedReasonEffect = S.String;
 
 export interface ReleasePoliciesAccessAllowedReason {
   /** Resource specifier strings */
@@ -18232,7 +18088,7 @@ export interface ReleasePoliciesAccessAllowedReason {
   effect: ReleasePoliciesAccessAllowedReasonEffect;
   role_name?: string;
 }
-export const ReleasePoliciesAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesAccessAllowedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(ReleasePoliciesAccessAllowedReasonResourcesList),
     notResources: S.optional(ReleasePoliciesAccessAllowedReasonNotResourcesList),
@@ -18249,7 +18105,7 @@ export interface ReleasePoliciesAccessAllowedRep {
   action: string;
   reason: ReleasePoliciesAccessAllowedReason;
 }
-export const ReleasePoliciesAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     reason: ReleasePoliciesAccessAllowedReason,
@@ -18259,7 +18115,7 @@ export const ReleasePoliciesAccessAllowedRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReleasePoliciesAccessAllowedRep>;
 
 export type ReleasePoliciesAccessAllowedList = Array<ReleasePoliciesAccessAllowedRep>;
-export const ReleasePoliciesAccessAllowedList = /*@__PURE__*/ S.Array(
+const ReleasePoliciesAccessAllowedList = /*@__PURE__*/ S.Array(
   ReleasePoliciesAccessAllowedRep,
 ) as any as S.Schema<ReleasePoliciesAccessAllowedList>;
 
@@ -18267,7 +18123,7 @@ export interface ReleasePoliciesAccess {
   denied: ReleasePoliciesAccessDeniedList;
   allowed: ReleasePoliciesAccessAllowedList;
 }
-export const ReleasePoliciesAccess = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     denied: ReleasePoliciesAccessDeniedList,
     allowed: ReleasePoliciesAccessAllowedList,
@@ -18276,12 +18132,12 @@ export const ReleasePoliciesAccess = /*@__PURE__*/ S.suspend(() =>
 
 /** List of environment keys this policy applies to */
 export type ReleasePolicyScopeEnvironmentKeysList = Array<string>;
-export const ReleasePolicyScopeEnvironmentKeysList =
+const ReleasePolicyScopeEnvironmentKeysList =
   FeatureFlagTagsList as any as S.Schema<ReleasePolicyScopeEnvironmentKeysList>;
 
 /** List of flag tag keys this policy applies to */
 export type ReleasePolicyScopeFlagTagKeysList = Array<string>;
-export const ReleasePolicyScopeFlagTagKeysList =
+const ReleasePolicyScopeFlagTagKeysList =
   FeatureFlagTagsList as any as S.Schema<ReleasePolicyScopeFlagTagKeysList>;
 
 export interface ReleasePolicyScope {
@@ -18290,7 +18146,7 @@ export interface ReleasePolicyScope {
   /** List of flag tag keys this policy applies to */
   flagTagKeys?: ReleasePolicyScopeFlagTagKeysList;
 }
-export const ReleasePolicyScope = /*@__PURE__*/ S.suspend(() =>
+const ReleasePolicyScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentKeys: S.optional(ReleasePolicyScopeEnvironmentKeysList),
     flagTagKeys: S.optional(ReleasePolicyScopeFlagTagKeysList),
@@ -18299,23 +18155,23 @@ export const ReleasePolicyScope = /*@__PURE__*/ S.suspend(() =>
 
 /** The release method for this policy */
 export type ReleaseMethod = "guarded-release" | "immediate-release" | "progressive-release";
-export const ReleaseMethod = S.String;
+const ReleaseMethod = S.String;
 
 /** List of metric keys */
 export type GuardedReleaseConfigMetricKeysList = Array<string>;
-export const GuardedReleaseConfigMetricKeysList =
+const GuardedReleaseConfigMetricKeysList =
   FeatureFlagTagsList as any as S.Schema<GuardedReleaseConfigMetricKeysList>;
 
 /** List of metric group keys */
 export type GuardedReleaseConfigMetricGroupKeysList = Array<string>;
-export const GuardedReleaseConfigMetricGroupKeysList =
+const GuardedReleaseConfigMetricGroupKeysList =
   FeatureFlagTagsList as any as S.Schema<GuardedReleaseConfigMetricGroupKeysList>;
 
 export interface ReleasePolicyStage {
   allocation: number;
   durationMillis: number;
 }
-export const ReleasePolicyStage = /*@__PURE__*/ S.suspend(() =>
+const ReleasePolicyStage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allocation: S.Number,
     durationMillis: S.Number,
@@ -18324,7 +18180,7 @@ export const ReleasePolicyStage = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stages */
 export type GuardedReleaseConfigStagesList = Array<ReleasePolicyStage>;
-export const GuardedReleaseConfigStagesList = /*@__PURE__*/ S.Array(
+const GuardedReleaseConfigStagesList = /*@__PURE__*/ S.Array(
   ReleasePolicyStage,
 ) as any as S.Schema<GuardedReleaseConfigStagesList>;
 
@@ -18343,7 +18199,7 @@ export interface GuardedReleaseConfig {
   /** List of stages */
   stages?: GuardedReleaseConfigStagesList;
 }
-export const GuardedReleaseConfig = /*@__PURE__*/ S.suspend(() =>
+const GuardedReleaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutContextKindKey: S.optional(S.String),
     minSampleSize: S.optional(S.Number),
@@ -18356,7 +18212,7 @@ export const GuardedReleaseConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** List of stages */
 export type ProgressiveReleaseConfigStagesList = Array<ReleasePolicyStage>;
-export const ProgressiveReleaseConfigStagesList =
+const ProgressiveReleaseConfigStagesList =
   GuardedReleaseConfigStagesList as any as S.Schema<ProgressiveReleaseConfigStagesList>;
 
 /** Configuration for progressive releases */
@@ -18366,7 +18222,7 @@ export interface ProgressiveReleaseConfig {
   /** List of stages */
   stages?: ProgressiveReleaseConfigStagesList;
 }
-export const ProgressiveReleaseConfig = /*@__PURE__*/ S.suspend(() =>
+const ProgressiveReleaseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutContextKindKey: S.optional(S.String),
     stages: S.optional(ProgressiveReleaseConfigStagesList),
@@ -18388,7 +18244,7 @@ export interface ReleasePolicy {
   /** The human-readable key of the release policy */
   key: string;
 }
-export const ReleasePolicy = /*@__PURE__*/ S.suspend(() =>
+const ReleasePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(ReleasePoliciesAccess),
     _id: S.String,
@@ -18404,7 +18260,7 @@ export const ReleasePolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** List of release policies */
 export type ReleasePoliciesResponseItemsList = Array<ReleasePolicy>;
-export const ReleasePoliciesResponseItemsList = /*@__PURE__*/ S.Array(
+const ReleasePoliciesResponseItemsList = /*@__PURE__*/ S.Array(
   ReleasePolicy,
 ) as any as S.Schema<ReleasePoliciesResponseItemsList>;
 
@@ -18414,7 +18270,7 @@ export interface ReleasePoliciesResponse {
   /** Total number of release policies */
   totalCount: number;
 }
-export const ReleasePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ReleasePoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ReleasePoliciesResponseItemsList,
     totalCount: S.Number,
@@ -18427,7 +18283,7 @@ export interface GetReleasePolicyRequest {
   /** The release policy key */
   policyKey: string;
 }
-export const GetReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     policyKey: S.String.pipe(T.Label()),
@@ -18450,7 +18306,7 @@ export interface GetRepositoriesRequest {
   /** If set to any value, the endpoint returns repositories with associated branch data, as well as code references for the default git branch */
   flagKey?: string;
 }
-export const GetRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     withBranches: S.optional(S.String.pipe(T.Query())),
     withReferencesForDefaultBranch: S.optional(S.String.pipe(T.Query())),
@@ -18460,20 +18316,20 @@ export const GetRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRepositoriesRequest" }) as any as S.Schema<GetRepositoriesRequest>;
 
 export type RepositoryCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const RepositoryCollectionRepLinksMap =
+const RepositoryCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RepositoryCollectionRepLinksMap>;
 
 /** The type of repository */
 export type RepositoryRepType = "bitbucket" | "custom" | "github" | "gitlab";
-export const RepositoryRepType = S.String;
+const RepositoryRepType = S.String;
 
 /** An array of the repository's branches that have been scanned for code references */
 export type RepositoryRepBranchesList = Array<BranchRep>;
-export const RepositoryRepBranchesList =
+const RepositoryRepBranchesList =
   BranchCollectionRepItemsList as any as S.Schema<RepositoryRepBranchesList>;
 
 export type RepositoryRepLinksMap = { [key: string]: unknown | undefined };
-export const RepositoryRepLinksMap = UrlMatcher as any as S.Schema<RepositoryRepLinksMap>;
+const RepositoryRepLinksMap = UrlMatcher as any as S.Schema<RepositoryRepLinksMap>;
 
 export interface RepositoryRep {
   /** The repository name */
@@ -18497,7 +18353,7 @@ export interface RepositoryRep {
   _links: RepositoryRepLinksMap;
   _access?: Access;
 }
-export const RepositoryRep = /*@__PURE__*/ S.suspend(() =>
+const RepositoryRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sourceLink: S.optional(S.String),
@@ -18515,7 +18371,7 @@ export const RepositoryRep = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of repositories */
 export type RepositoryCollectionRepItemsList = Array<RepositoryRep>;
-export const RepositoryCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const RepositoryCollectionRepItemsList = /*@__PURE__*/ S.Array(
   RepositoryRep,
 ) as any as S.Schema<RepositoryCollectionRepItemsList>;
 
@@ -18524,7 +18380,7 @@ export interface RepositoryCollectionRep {
   /** An array of repositories */
   items: RepositoryCollectionRepItemsList;
 }
-export const RepositoryCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: RepositoryCollectionRepLinksMap,
     items: RepositoryCollectionRepItemsList,
@@ -18535,38 +18391,38 @@ export interface GetRepositoryRequest {
   /** The repository name */
   repo: string;
 }
-export const GetRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/code-refs/repositories/{repo}", code: 200 })),
 ).annotate({ identifier: "GetRepositoryRequest" }) as any as S.Schema<GetRepositoryRequest>;
 
 export interface GetRootRequest {}
-export const GetRootRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRootRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2", code: 200 })),
 ).annotate({ identifier: "GetRootRequest" }) as any as S.Schema<GetRootRequest>;
 
 export type RootResponseLinksMap = { [key: string]: Link | undefined };
-export const RootResponseLinksMap =
+const RootResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<RootResponseLinksMap>;
 
 export interface RootResponse {
   links: RootResponseLinksMap;
 }
-export const RootResponse = /*@__PURE__*/ S.suspend(() =>
+const RootResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     links: RootResponseLinksMap,
   }),
 ).annotate({ identifier: "RootResponse" }) as any as S.Schema<RootResponse>;
 
 export interface GetRootStatisticRequest {}
-export const GetRootStatisticRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRootStatisticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/code-refs/statistics", code: 200 })),
 ).annotate({ identifier: "GetRootStatisticRequest" }) as any as S.Schema<GetRootStatisticRequest>;
 
 /** The location and content type of all projects that have code references */
 export type StatisticsRootProjectsList = Array<Link>;
-export const StatisticsRootProjectsList = /*@__PURE__*/ S.Array(
+const StatisticsRootProjectsList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<StatisticsRootProjectsList>;
 
@@ -18576,7 +18432,7 @@ export interface StatisticsRoot {
   /** The location and content type for accessing this resource */
   self?: Link;
 }
-export const StatisticsRoot = /*@__PURE__*/ S.suspend(() =>
+const StatisticsRoot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projects: S.optional(StatisticsRootProjectsList),
     self: S.optional(Link),
@@ -18597,7 +18453,7 @@ export interface GetSdkAllVersionsRequest {
   /** Filter to a specific connection type (for example, 'direct', 'proxy'). */
   connectionType?: string;
 }
-export const GetSdkAllVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdkAllVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String.pipe(T.Query())),
     projectId: S.optional(S.String.pipe(T.Query())),
@@ -18630,7 +18486,7 @@ export interface SdkVersionDetailsRep {
   relayLatestVersion?: string;
   relayLatestReleaseUrl?: string;
 }
-export const SdkVersionDetailsRep = /*@__PURE__*/ S.suspend(() =>
+const SdkVersionDetailsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -18654,12 +18510,12 @@ export const SdkVersionDetailsRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkVersionDetailsRep" }) as any as S.Schema<SdkVersionDetailsRep>;
 
 export type GetSdkAllVersionsResponseBodyList = Array<SdkVersionDetailsRep>;
-export const GetSdkAllVersionsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSdkAllVersionsResponseBodyList = /*@__PURE__*/ S.Array(
   SdkVersionDetailsRep,
 ) as any as S.Schema<GetSdkAllVersionsResponseBodyList>;
 
 export type GetSdkAllVersionsResponse = GetSdkAllVersionsResponseBodyList;
-export const GetSdkAllVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSdkAllVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetSdkAllVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSdkAllVersionsResponse",
@@ -18671,7 +18527,7 @@ export interface GetSdkKeyByKeyRequest {
   /** The user-defined identifying key of the SDK key. This is used solely to identify an SDK key and is distinct from the value field, which is the actual SDK key value. */
   sdkKeyKey: string;
 }
-export const GetSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18706,7 +18562,7 @@ export interface SdkKey {
   /** The auto-incremented version number of the SDK key. */
   _version: number;
 }
-export const SdkKey = /*@__PURE__*/ S.suspend(() =>
+const SdkKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentAndSelfLinks),
     kind: SdkKeyKind,
@@ -18724,7 +18580,7 @@ export const SdkKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkKey" }) as any as S.Schema<SdkKey>;
 
 export type GetSdkKeysRequestSort = "createdAt" | "-createdAt";
-export const GetSdkKeysRequestSort = S.String;
+const GetSdkKeysRequestSort = S.String;
 
 export interface GetSdkKeysRequest {
   projectKey: string;
@@ -18738,7 +18594,7 @@ export interface GetSdkKeysRequest {
   /** A sort to apply to the list of SDK keys. Supported field: `createdAt`. Prefix the field with `-` to sort in descending order (for example, `-createdAt`). */
   sort?: GetSdkKeysRequestSort | (string & {});
 }
-export const GetSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18756,7 +18612,7 @@ export const GetSdkKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSdkKeysRequest" }) as any as S.Schema<GetSdkKeysRequest>;
 
 export type SdkKeysForGetSdkKeysItemsList = Array<SdkKey>;
-export const SdkKeysForGetSdkKeysItemsList = /*@__PURE__*/ S.Array(
+const SdkKeysForGetSdkKeysItemsList = /*@__PURE__*/ S.Array(
   SdkKey,
 ) as any as S.Schema<SdkKeysForGetSdkKeysItemsList>;
 
@@ -18766,7 +18622,7 @@ export interface SdkKeysForGetSdkKeys {
   /** The total number of SDK keys matching the query, before pagination. */
   totalCount: number;
 }
-export const SdkKeysForGetSdkKeys = /*@__PURE__*/ S.suspend(() =>
+const SdkKeysForGetSdkKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ViewsSelfLink),
     items: SdkKeysForGetSdkKeysItemsList,
@@ -18775,7 +18631,7 @@ export const SdkKeysForGetSdkKeys = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SdkKeysForGetSdkKeys" }) as any as S.Schema<SdkKeysForGetSdkKeys>;
 
 export interface GetSdkVersionsDetailsRequest {}
-export const GetSdkVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSdkVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/api/v2/usage/sdk-versions/details", code: 200 }),
   ),
@@ -18784,11 +18640,8 @@ export const GetSdkVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSdkVersionsDetailsRequest>;
 
 export type GetSdkVersionsDetailsResponseBodyList = Array<SdkVersionDetailsRep>;
-export const GetSdkVersionsDetailsResponseBodyList =
-  GetSdkAllVersionsResponseBodyList as any as S.Schema<GetSdkVersionsDetailsResponseBodyList>;
-
 export type GetSdkVersionsDetailsResponse = GetSdkVersionsDetailsResponseBodyList;
-export const GetSdkVersionsDetailsResponse =
+const GetSdkVersionsDetailsResponse =
   GetSdkAllVersionsResponse as any as S.Schema<GetSdkVersionsDetailsResponse>;
 
 export interface GetSegmentRequest {
@@ -18799,7 +18652,7 @@ export interface GetSegmentRequest {
   /** The segment key */
   segmentKey: string;
 }
-export const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18823,7 +18676,7 @@ export interface GetSegmentMembershipForContextRequest {
   /** The context key */
   contextKey: string;
 }
-export const GetSegmentMembershipForContextRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSegmentMembershipForContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18848,7 +18701,7 @@ export interface BigSegmentTarget {
   /** Indicates whether the target is excluded.<br />Segment rules bypass excluded targets, so they will never be included based on rules. Excluded targets may still be included explicitly. */
   excluded: boolean;
 }
-export const BigSegmentTarget = /*@__PURE__*/ S.suspend(() =>
+const BigSegmentTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userKey: S.String,
     included: S.Boolean,
@@ -18866,7 +18719,7 @@ export interface GetSegmentMembershipForUserRequest {
   /** The user key */
   userKey: string;
 }
-export const GetSegmentMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSegmentMembershipForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18897,7 +18750,7 @@ export interface GetSegmentsRequest {
   /** Accepts filter by `excludedKeys`, `external`, `includedKeys`, `query`, `tags`, `unbounded`, `view`. To learn more about the filter syntax, read the 'Filtering segments' section above. */
   filter?: string;
 }
-export const GetSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -18912,13 +18765,13 @@ export const GetSegmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of segments */
 export type UserSegmentsItemsList = Array<UserSegment>;
-export const UserSegmentsItemsList = /*@__PURE__*/ S.Array(
+const UserSegmentsItemsList = /*@__PURE__*/ S.Array(
   UserSegment,
 ) as any as S.Schema<UserSegmentsItemsList>;
 
 /** The location and content type of related resources */
 export type UserSegmentsLinksMap = { [key: string]: Link | undefined };
-export const UserSegmentsLinksMap =
+const UserSegmentsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UserSegmentsLinksMap>;
 
 export interface UserSegments {
@@ -18929,7 +18782,7 @@ export interface UserSegments {
   /** The total number of segments */
   totalCount?: number;
 }
-export const UserSegments = /*@__PURE__*/ S.suspend(() =>
+const UserSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: UserSegmentsItemsList,
     _links: UserSegmentsLinksMap,
@@ -18965,7 +18818,7 @@ export interface GetServiceConnectionsUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetServiceConnectionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceConnectionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -18987,25 +18840,22 @@ export const GetServiceConnectionsUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SeriesListRepFloatLinksMap = { [key: string]: unknown | undefined };
-export const SeriesListRepFloatLinksMap = UrlMatcher as any as S.Schema<SeriesListRepFloatLinksMap>;
+const SeriesListRepFloatLinksMap = UrlMatcher as any as S.Schema<SeriesListRepFloatLinksMap>;
 
 /** Metadata about each series */
 export type SeriesListRepFloatMetadataList = Array<SeriesMetadataRep>;
-export const SeriesListRepFloatMetadataList =
+const SeriesListRepFloatMetadataList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<SeriesListRepFloatMetadataList>;
 
 export type SeriesTimeSliceRepFloat = { [key: string]: number | undefined };
-export const SeriesTimeSliceRepFloat =
-  SeriesTimeSliceRep as any as S.Schema<SeriesTimeSliceRepFloat>;
-
 /** An array of data points with timestamps. Each element of the array is an object with a 'time' field, whose value is the timestamp, and one or more key fields. If there are multiple key fields, they are labeled '0', '1', and so on, and are explained in the <code>metadata</code>. */
 export type SeriesListRepFloatSeriesList = Array<SeriesTimeSliceRepFloat>;
-export const SeriesListRepFloatSeriesList =
+const SeriesListRepFloatSeriesList =
   SeriesListRepSeriesList as any as S.Schema<SeriesListRepFloatSeriesList>;
 
 /** Cumulative projected usage by day for the full billing period, when available. Each element matches the structure of <code>series</code>: an object with a 'time' field and a '0' value field. The projected (non-actual) portion begins where the actual <code>series</code> ends. */
 export type SeriesListRepFloatProjectedSeriesList = Array<SeriesTimeSliceRepFloat>;
-export const SeriesListRepFloatProjectedSeriesList =
+const SeriesListRepFloatProjectedSeriesList =
   SeriesListRepSeriesList as any as S.Schema<SeriesListRepFloatProjectedSeriesList>;
 
 export interface SeriesListRepFloat {
@@ -19018,7 +18868,7 @@ export interface SeriesListRepFloat {
   /** Cumulative projected usage by day for the full billing period, when available. Each element matches the structure of <code>series</code>: an object with a 'time' field and a '0' value field. The projected (non-actual) portion begins where the actual <code>series</code> ends. */
   projectedSeries?: SeriesListRepFloatProjectedSeriesList;
 }
-export const SeriesListRepFloat = /*@__PURE__*/ S.suspend(() =>
+const SeriesListRepFloat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: SeriesListRepFloatLinksMap,
     metadata: SeriesListRepFloatMetadataList,
@@ -19043,7 +18893,7 @@ export interface GetStaleFlagsChartRequest {
   /** Options: `metrics` */
   expand?: string;
 }
-export const GetStaleFlagsChartRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStaleFlagsChartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Query()),
     environmentKey: S.String.pipe(T.Query()),
@@ -19065,7 +18915,7 @@ export interface GetStatisticsRequest {
   /** Filter results to a specific flag key */
   flagKey?: string;
 }
-export const GetStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.optional(S.String.pipe(T.Query())),
@@ -19074,11 +18924,11 @@ export const GetStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of repository */
 export type StatisticRepType = "bitbucket" | "custom" | "github" | "gitlab";
-export const StatisticRepType = S.String;
+const StatisticRepType = S.String;
 
 /** The location and content type of related resources */
 export type StatisticRepLinksMap = { [key: string]: Link | undefined };
-export const StatisticRepLinksMap =
+const StatisticRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<StatisticRepLinksMap>;
 
 export interface StatisticRep {
@@ -19103,7 +18953,7 @@ export interface StatisticRep {
   /** The timestamp of the latest commit in the repository including the flag */
   latestCommitTime?: number;
 }
-export const StatisticRep = /*@__PURE__*/ S.suspend(() =>
+const StatisticRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: StatisticRepType,
@@ -19119,7 +18969,7 @@ export const StatisticRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatisticRep" }) as any as S.Schema<StatisticRep>;
 
 export type StatisticCollectionRepFlagsValueList = Array<StatisticRep>;
-export const StatisticCollectionRepFlagsValueList = /*@__PURE__*/ S.Array(
+const StatisticCollectionRepFlagsValueList = /*@__PURE__*/ S.Array(
   StatisticRep,
 ) as any as S.Schema<StatisticCollectionRepFlagsValueList>;
 
@@ -19127,14 +18977,14 @@ export const StatisticCollectionRepFlagsValueList = /*@__PURE__*/ S.Array(
 export type StatisticCollectionRepFlagsMap = {
   [key: string]: StatisticCollectionRepFlagsValueList | undefined;
 };
-export const StatisticCollectionRepFlagsMap = /*@__PURE__*/ S.Record(
+const StatisticCollectionRepFlagsMap = /*@__PURE__*/ S.Record(
   S.String,
   StatisticCollectionRepFlagsValueList,
 ) as any as S.Schema<StatisticCollectionRepFlagsMap>;
 
 /** The location and content type of related resources */
 export type StatisticCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const StatisticCollectionRepLinksMap =
+const StatisticCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<StatisticCollectionRepLinksMap>;
 
 export interface StatisticCollectionRep {
@@ -19143,7 +18993,7 @@ export interface StatisticCollectionRep {
   /** The location and content type of related resources */
   _links: StatisticCollectionRepLinksMap;
 }
-export const StatisticCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const StatisticCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flags: StatisticCollectionRepFlagsMap,
     _links: StatisticCollectionRepLinksMap,
@@ -19160,7 +19010,7 @@ export interface GetStreamUsageRequest {
   /** The timezone to use for breaks between days when returning daily data. */
   tz?: string;
 }
-export const GetStreamUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String.pipe(T.Label()),
     from: S.optional(S.String.pipe(T.Query())),
@@ -19183,7 +19033,7 @@ export interface GetStreamUsageBySdkVersionRequest {
   /** If included, this filters the returned series to only those that match this SDK version. */
   version?: string;
 }
-export const GetStreamUsageBySdkVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamUsageBySdkVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String.pipe(T.Label()),
     from: S.optional(S.String.pipe(T.Query())),
@@ -19200,7 +19050,7 @@ export interface GetStreamUsageSdkversionRequest {
   /** The source of streaming connections to describe. Must be either `client` or `server`. */
   source: string;
 }
-export const GetStreamUsageSdkversionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStreamUsageSdkversionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/usage/streams/{source}/sdkversions", code: 200 })),
@@ -19210,7 +19060,7 @@ export const GetStreamUsageSdkversionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type SdkVersionListRepLinksMap = { [key: string]: unknown | undefined };
-export const SdkVersionListRepLinksMap = UrlMatcher as any as S.Schema<SdkVersionListRepLinksMap>;
+const SdkVersionListRepLinksMap = UrlMatcher as any as S.Schema<SdkVersionListRepLinksMap>;
 
 export interface SdkVersionRep {
   /** The SDK name, or "Unknown" */
@@ -19218,7 +19068,7 @@ export interface SdkVersionRep {
   /** The version number, or "Unknown" */
   version: string;
 }
-export const SdkVersionRep = /*@__PURE__*/ S.suspend(() =>
+const SdkVersionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdk: S.String,
     version: S.String,
@@ -19227,7 +19077,7 @@ export const SdkVersionRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SDK names and versions */
 export type SdkVersionListRepSdkVersionsList = Array<SdkVersionRep>;
-export const SdkVersionListRepSdkVersionsList = /*@__PURE__*/ S.Array(
+const SdkVersionListRepSdkVersionsList = /*@__PURE__*/ S.Array(
   SdkVersionRep,
 ) as any as S.Schema<SdkVersionListRepSdkVersionsList>;
 
@@ -19237,7 +19087,7 @@ export interface SdkVersionListRep {
   /** The list of SDK names and versions */
   sdkVersions: SdkVersionListRepSdkVersionsList;
 }
-export const SdkVersionListRep = /*@__PURE__*/ S.suspend(() =>
+const SdkVersionListRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: SdkVersionListRepLinksMap,
     sdkVersions: SdkVersionListRepSdkVersionsList,
@@ -19250,7 +19100,7 @@ export interface GetSubscriptionByIDRequest {
   /** The subscription ID */
   id: string;
 }
-export const GetSubscriptionByIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionByIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -19263,18 +19113,18 @@ export interface GetSubscriptionsRequest {
   /** The integration key */
   integrationKey: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/integrations/{integrationKey}", code: 200 })),
 ).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
 
 export type IntegrationsLinksMap = { [key: string]: Link | undefined };
-export const IntegrationsLinksMap =
+const IntegrationsLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<IntegrationsLinksMap>;
 
 export type IntegrationsItemsList = Array<Integration>;
-export const IntegrationsItemsList = /*@__PURE__*/ S.Array(
+const IntegrationsItemsList = /*@__PURE__*/ S.Array(
   Integration,
 ) as any as S.Schema<IntegrationsItemsList>;
 
@@ -19283,7 +19133,7 @@ export interface Integrations {
   items?: IntegrationsItemsList;
   key?: string;
 }
-export const Integrations = /*@__PURE__*/ S.suspend(() =>
+const Integrations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(IntegrationsLinksMap),
     items: S.optional(IntegrationsItemsList),
@@ -19292,8 +19142,7 @@ export const Integrations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Integrations" }) as any as S.Schema<Integrations>;
 
 export type GetTagsRequestKindList = Array<string>;
-export const GetTagsRequestKindList =
-  FeatureFlagTagsList as any as S.Schema<GetTagsRequestKindList>;
+const GetTagsRequestKindList = FeatureFlagTagsList as any as S.Schema<GetTagsRequestKindList>;
 
 export interface GetTagsRequest {
   /** Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`, `metric`, `metric-data-source`, `aiconfig`, and `view`. Returns all types by default. */
@@ -19309,7 +19158,7 @@ export interface GetTagsRequest {
   /** The time to retrieve tags as of. Default is the current time. */
   asOf?: string;
 }
-export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(GetTagsRequestKindList.pipe(T.Query())),
     pre: S.optional(S.String.pipe(T.Query())),
@@ -19322,14 +19171,11 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of tags */
 export type TagsCollectionItemsList = Array<string>;
-export const TagsCollectionItemsList =
-  FeatureFlagTagsList as any as S.Schema<TagsCollectionItemsList>;
+const TagsCollectionItemsList = FeatureFlagTagsList as any as S.Schema<TagsCollectionItemsList>;
 
 export type TagsLink = Link;
-export const TagsLink = Link;
-
 export type TagsCollectionLinksMap = { [key: string]: Link | undefined };
-export const TagsCollectionLinksMap =
+const TagsCollectionLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TagsCollectionLinksMap>;
 
 export interface TagsCollection {
@@ -19339,7 +19185,7 @@ export interface TagsCollection {
   /** The total number of tags */
   totalCount?: number;
 }
-export const TagsCollection = /*@__PURE__*/ S.suspend(() =>
+const TagsCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: TagsCollectionItemsList,
     _links: TagsCollectionLinksMap,
@@ -19353,7 +19199,7 @@ export interface GetTeamRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -19368,7 +19214,7 @@ export interface GetTeamMaintainersRequest {
   /** Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetTeamMaintainersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMaintainersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -19386,7 +19232,7 @@ export interface GetTeamRolesRequest {
   /** Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -19406,7 +19252,7 @@ export interface GetTeamsRequest {
   /** A comma-separated list of properties that can reveal additional information in the response. */
   expand?: string;
 }
-export const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -19418,12 +19264,11 @@ export const GetTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of teams */
 export type TeamsItemsList = Array<Team>;
-export const TeamsItemsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<TeamsItemsList>;
+const TeamsItemsList = /*@__PURE__*/ S.Array(Team) as any as S.Schema<TeamsItemsList>;
 
 /** The location and content type of related resources */
 export type TeamsLinksMap = { [key: string]: Link | undefined };
-export const TeamsLinksMap =
-  InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamsLinksMap>;
+const TeamsLinksMap = InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TeamsLinksMap>;
 
 export interface Teams {
   /** An array of teams */
@@ -19433,7 +19278,7 @@ export interface Teams {
   /** The number of teams */
   totalCount?: number;
 }
-export const Teams = /*@__PURE__*/ S.suspend(() =>
+const Teams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: TeamsItemsList,
     _links: S.optional(TeamsLinksMap),
@@ -19445,7 +19290,7 @@ export interface GetTokenRequest {
   /** The ID of the access token */
   id: string;
 }
-export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/tokens/{id}", code: 200 })),
@@ -19459,7 +19304,7 @@ export interface GetTokensRequest {
   /** Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showAll: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -19469,10 +19314,10 @@ export const GetTokensRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of access tokens */
 export type TokensItemsList = Array<Token>;
-export const TokensItemsList = /*@__PURE__*/ S.Array(Token) as any as S.Schema<TokensItemsList>;
+const TokensItemsList = /*@__PURE__*/ S.Array(Token) as any as S.Schema<TokensItemsList>;
 
 export type TokensLinksMap = { [key: string]: Link | undefined };
-export const TokensLinksMap =
+const TokensLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TokensLinksMap>;
 
 export interface Tokens {
@@ -19482,7 +19327,7 @@ export interface Tokens {
   /** The number of access tokens returned */
   totalCount?: number;
 }
-export const Tokens = /*@__PURE__*/ S.suspend(() =>
+const Tokens = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(TokensItemsList),
     _links: S.optional(TokensLinksMap),
@@ -19500,7 +19345,7 @@ export interface GetTriggerWorkflowByIdRequest {
   /** The flag trigger ID */
   id: string;
 }
-export const GetTriggerWorkflowByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerWorkflowByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -19525,7 +19370,7 @@ export interface GetTriggerWorkflowsRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const GetTriggerWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTriggerWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -19543,13 +19388,13 @@ export const GetTriggerWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag triggers */
 export type TriggerWorkflowCollectionRepItemsList = Array<TriggerWorkflowRep>;
-export const TriggerWorkflowCollectionRepItemsList = /*@__PURE__*/ S.Array(
+const TriggerWorkflowCollectionRepItemsList = /*@__PURE__*/ S.Array(
   TriggerWorkflowRep,
 ) as any as S.Schema<TriggerWorkflowCollectionRepItemsList>;
 
 /** The location and content type of related resources */
 export type TriggerWorkflowCollectionRepLinksMap = { [key: string]: Link | undefined };
-export const TriggerWorkflowCollectionRepLinksMap =
+const TriggerWorkflowCollectionRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<TriggerWorkflowCollectionRepLinksMap>;
 
 export interface TriggerWorkflowCollectionRep {
@@ -19558,7 +19403,7 @@ export interface TriggerWorkflowCollectionRep {
   /** The location and content type of related resources */
   _links?: TriggerWorkflowCollectionRepLinksMap;
 }
-export const TriggerWorkflowCollectionRep = /*@__PURE__*/ S.suspend(() =>
+const TriggerWorkflowCollectionRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(TriggerWorkflowCollectionRepItemsList),
     _links: S.optional(TriggerWorkflowCollectionRepLinksMap),
@@ -19579,7 +19424,7 @@ export interface GetVegaAIUsageRequest {
   /** Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`. */
   aggregationType?: string;
 }
-export const GetVegaAIUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVegaAIUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -19590,13 +19435,13 @@ export const GetVegaAIUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVegaAIUsageRequest" }) as any as S.Schema<GetVegaAIUsageRequest>;
 
 export interface GetVersionsRequest {}
-export const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v2/versions", code: 200 })),
 ).annotate({ identifier: "GetVersionsRequest" }) as any as S.Schema<GetVersionsRequest>;
 
 /** A list of all valid API versions. To learn more about our versioning, read [Versioning](https://launchdarkly.com/docs/api#versioning). */
 export type VersionsRepValidVersionsList = Array<number>;
-export const VersionsRepValidVersionsList = /*@__PURE__*/ S.Array(
+const VersionsRepValidVersionsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<VersionsRepValidVersionsList>;
 
@@ -19610,7 +19455,7 @@ export interface VersionsRep {
   /** Whether the version of the API currently is use is a beta version. This is always <code>true</code> if you add the <code>LD-API-Version: beta</code> header to your request. */
   beta?: boolean;
 }
-export const VersionsRep = /*@__PURE__*/ S.suspend(() =>
+const VersionsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validVersions: VersionsRepValidVersionsList,
     latestVersion: S.Number,
@@ -19620,7 +19465,7 @@ export const VersionsRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionsRep" }) as any as S.Schema<VersionsRep>;
 
 export type GetViewRequestSort = "key" | "name" | "updatedAt";
-export const GetViewRequestSort = S.String;
+const GetViewRequestSort = S.String;
 
 export type GetViewRequestExpandItem =
   | "allFlags"
@@ -19634,10 +19479,8 @@ export type GetViewRequestExpandItem =
   | "metricsSummary"
   | "aiConfigsSummary"
   | "resourceSummary";
-export const GetViewRequestExpandItem = S.String;
-
 export type GetViewRequestExpandList = Array<GetViewRequestExpandItem | (string & {})>;
-export const GetViewRequestExpandList =
+const GetViewRequestExpandList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetViewRequestExpandList>;
 
 export interface GetViewRequest {
@@ -19654,7 +19497,7 @@ export interface GetViewRequest {
   /** A comma-separated list of fields to expand. */
   expand?: GetViewRequestExpandList;
 }
-export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -19669,7 +19512,7 @@ export const GetViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetViewRequest" }) as any as S.Schema<GetViewRequest>;
 
 export type GetViewsRequestSort = "key" | "name" | "updatedAt";
-export const GetViewsRequestSort = S.String;
+const GetViewsRequestSort = S.String;
 
 export type GetViewsRequestExpandItem =
   | "flagsSummary"
@@ -19677,10 +19520,8 @@ export type GetViewsRequestExpandItem =
   | "metricsSummary"
   | "aiConfigsSummary"
   | "resourceSummary";
-export const GetViewsRequestExpandItem = S.String;
-
 export type GetViewsRequestExpandList = Array<GetViewsRequestExpandItem | (string & {})>;
-export const GetViewsRequestExpandList =
+const GetViewsRequestExpandList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<GetViewsRequestExpandList>;
 
 export interface GetViewsRequest {
@@ -19696,7 +19537,7 @@ export interface GetViewsRequest {
   /** A comma-separated list of fields to expand. */
   expand?: GetViewsRequestExpandList;
 }
-export const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     sort: S.optional(GetViewsRequestSort.pipe(T.Query())),
@@ -19727,7 +19568,7 @@ export interface GetWarehouseExportUsageRequest {
   /** Specifies the data granularity. Defaults to `daily`. `monthly` granularity is only supported with the **month_to_date** aggregation type.<br/>Valid values: `daily`, `hourly`, `monthly`. */
   granularity?: string;
 }
-export const GetWarehouseExportUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseExportUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String.pipe(T.Query())),
     to: S.optional(S.String.pipe(T.Query())),
@@ -19747,7 +19588,7 @@ export interface GetWebhookRequest {
   /** The ID of the webhook */
   id: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/webhooks/{id}", code: 200 })),
@@ -19769,7 +19610,7 @@ export interface GetWorkflowsRequest {
   /** Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const GetWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -19789,13 +19630,13 @@ export const GetWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of workflows */
 export type CustomWorkflowsListingOutputItemsList = Array<CustomWorkflowOutput>;
-export const CustomWorkflowsListingOutputItemsList = /*@__PURE__*/ S.Array(
+const CustomWorkflowsListingOutputItemsList = /*@__PURE__*/ S.Array(
   CustomWorkflowOutput,
 ) as any as S.Schema<CustomWorkflowsListingOutputItemsList>;
 
 /** The location and content type of related resources */
 export type CustomWorkflowsListingOutputLinksMap = { [key: string]: Link | undefined };
-export const CustomWorkflowsListingOutputLinksMap =
+const CustomWorkflowsListingOutputLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<CustomWorkflowsListingOutputLinksMap>;
 
 export interface CustomWorkflowsListingOutput {
@@ -19806,7 +19647,7 @@ export interface CustomWorkflowsListingOutput {
   /** The location and content type of related resources */
   _links: CustomWorkflowsListingOutputLinksMap;
 }
-export const CustomWorkflowsListingOutput = /*@__PURE__*/ S.suspend(() =>
+const CustomWorkflowsListingOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: CustomWorkflowsListingOutputItemsList,
     totalCount: S.Number,
@@ -19822,7 +19663,7 @@ export interface GetWorkflowTemplatesRequest {
   /** The substring in either the name or description of a template */
   search?: string;
 }
-export const GetWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -19832,14 +19673,14 @@ export const GetWorkflowTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkflowTemplatesRequest>;
 
 export type WorkflowTemplatesListingOutputRepItemsList = Array<WorkflowTemplateOutput>;
-export const WorkflowTemplatesListingOutputRepItemsList = /*@__PURE__*/ S.Array(
+const WorkflowTemplatesListingOutputRepItemsList = /*@__PURE__*/ S.Array(
   WorkflowTemplateOutput,
 ) as any as S.Schema<WorkflowTemplatesListingOutputRepItemsList>;
 
 export interface WorkflowTemplatesListingOutputRep {
   items: WorkflowTemplatesListingOutputRepItemsList;
 }
-export const WorkflowTemplatesListingOutputRep = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTemplatesListingOutputRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: WorkflowTemplatesListingOutputRepItemsList,
   }),
@@ -19848,13 +19689,10 @@ export const WorkflowTemplatesListingOutputRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowTemplatesListingOutputRep>;
 
 export type LinkResourceRequestResourceType = "flags" | "segments" | "aiConfigs";
-export const LinkResourceRequestResourceType = S.String;
+const LinkResourceRequestResourceType = S.String;
 
 /** Keys of the resources (flags, segments) to link/unlink */
 export type ViewLinkRequestKeysKeysList = Array<string>;
-export const ViewLinkRequestKeysKeysList =
-  FeatureFlagTagsList as any as S.Schema<ViewLinkRequestKeysKeysList>;
-
 export interface ViewLinkRequestKeys {
   /** Keys of the resources (flags, segments) to link/unlink */
   keys: ViewLinkRequestKeysKeysList;
@@ -19863,34 +19701,13 @@ export interface ViewLinkRequestKeys {
   /** Optional comment for the link/unlink operation */
   comment?: string;
 }
-export const ViewLinkRequestKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: ViewLinkRequestKeysKeysList,
-    filter: S.optional(S.String),
-    comment: S.optional(S.String),
-  }),
-).annotate({ identifier: "ViewLinkRequestKeys" }) as any as S.Schema<ViewLinkRequestKeys>;
-
 export interface ViewLinkRequestSegmentIdentifier {
   environmentId: string;
   segmentKey: string;
 }
-export const ViewLinkRequestSegmentIdentifier = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    segmentKey: S.String,
-  }),
-).annotate({
-  identifier: "ViewLinkRequestSegmentIdentifier",
-}) as any as S.Schema<ViewLinkRequestSegmentIdentifier>;
-
 /** Identifiers of the segments to link/unlink (environmentId and segmentKey) */
 export type ViewLinkRequestSegmentIdentifiersSegmentIdentifiersList =
   Array<ViewLinkRequestSegmentIdentifier>;
-export const ViewLinkRequestSegmentIdentifiersSegmentIdentifiersList = /*@__PURE__*/ S.Array(
-  ViewLinkRequestSegmentIdentifier,
-) as any as S.Schema<ViewLinkRequestSegmentIdentifiersSegmentIdentifiersList>;
-
 export interface ViewLinkRequestSegmentIdentifiers {
   /** Identifiers of the segments to link/unlink (environmentId and segmentKey) */
   segmentIdentifiers: ViewLinkRequestSegmentIdentifiersSegmentIdentifiersList;
@@ -19901,17 +19718,6 @@ export interface ViewLinkRequestSegmentIdentifiers {
   /** Optional comment for the link/unlink operation */
   comment?: string;
 }
-export const ViewLinkRequestSegmentIdentifiers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    segmentIdentifiers: ViewLinkRequestSegmentIdentifiersSegmentIdentifiersList,
-    filter: S.optional(S.String),
-    environmentId: S.optional(S.String),
-    comment: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ViewLinkRequestSegmentIdentifiers",
-}) as any as S.Schema<ViewLinkRequestSegmentIdentifiers>;
-
 export interface ViewLinkRequestFilter {
   /** Filter string to match resources for linking. Uses the same syntax as list endpoints: flags use comma-separated field:value filters, segments use queryfilter syntax. Supported filters by resource type: - flags: query, tags, maintainerId, maintainerTeamKey, type, status, state, staleState, sdkAvailability, targeting, hasExperiment, hasDataExport, evaluated, creationDate, contextKindTargeted, contextKindsEvaluated, filterEnv, segmentTargeted, codeReferences.min, codeReferences.max, excludeSettings, releasePipeline, applicationEvaluated, purpose, guardedRollout, view, key, name, archived, followerId - segments (queryfilter): query, tags, keys, excludedKeys, unbounded, external, view, type Some filters are only available when the corresponding feature is enabled on your account. */
   filter: string;
@@ -19920,19 +19726,11 @@ export interface ViewLinkRequestFilter {
   /** Optional comment for the link/unlink operation */
   comment?: string;
 }
-export const ViewLinkRequestFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filter: S.String,
-    environmentId: S.optional(S.String),
-    comment: S.optional(S.String),
-  }),
-).annotate({ identifier: "ViewLinkRequestFilter" }) as any as S.Schema<ViewLinkRequestFilter>;
-
 export type ViewLinkRequest =
   | ViewLinkRequestKeys
   | ViewLinkRequestSegmentIdentifiers
   | ViewLinkRequestFilter;
-export const ViewLinkRequest = S.Unknown as any as S.Schema<ViewLinkRequest>;
+const ViewLinkRequest = S.Unknown as any as S.Schema<ViewLinkRequest>;
 
 export interface LinkResourceRequest {
   projectKey: string;
@@ -19940,7 +19738,7 @@ export interface LinkResourceRequest {
   resourceType: LinkResourceRequestResourceType | (string & {});
   body: ViewLinkRequest;
 }
-export const LinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const LinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -19957,7 +19755,7 @@ export const LinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the resource that failed to link. */
 export type FailedResourceLinkResourceType = "flag" | "segment" | "aiConfig";
-export const FailedResourceLinkResourceType = S.String;
+const FailedResourceLinkResourceType = S.String;
 
 export interface FailedResourceLink {
   /** The key of the resource that failed to link. */
@@ -19969,7 +19767,7 @@ export interface FailedResourceLink {
   /** The reason why linking this resource failed. */
   errorMessage: string;
 }
-export const FailedResourceLink = /*@__PURE__*/ S.suspend(() =>
+const FailedResourceLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceKey: S.String,
     environmentId: S.optional(S.String),
@@ -19980,7 +19778,7 @@ export const FailedResourceLink = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of resources that failed to link. */
 export type LinkResourceSuccessResponseFailedResourcesList = Array<FailedResourceLink>;
-export const LinkResourceSuccessResponseFailedResourcesList = /*@__PURE__*/ S.Array(
+const LinkResourceSuccessResponseFailedResourcesList = /*@__PURE__*/ S.Array(
   FailedResourceLink,
 ) as any as S.Schema<LinkResourceSuccessResponseFailedResourcesList>;
 
@@ -19993,7 +19791,7 @@ export interface LinkResourceSuccessResponse {
   /** Details of resources that failed to link. */
   failedResources?: LinkResourceSuccessResponseFailedResourcesList;
 }
-export const LinkResourceSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkResourceSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successCount: S.Number,
     failureCount: S.Number,
@@ -20014,7 +19812,7 @@ export interface ListAdaptiveTriggersRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAdaptiveTriggersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAdaptiveTriggersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -20034,13 +19832,9 @@ export const ListAdaptiveTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAdaptiveTriggersRequest>;
 
 export type ExperimentationLink = Link;
-export const ExperimentationLink = Link;
-
 export type AdaptiveTriggersPaginatedLinks = PaginatedLinks;
-export const AdaptiveTriggersPaginatedLinks = PaginatedLinks;
-
 export type AdaptiveTriggersItemsList = Array<AdaptiveTrigger>;
-export const AdaptiveTriggersItemsList = /*@__PURE__*/ S.Array(
+const AdaptiveTriggersItemsList = /*@__PURE__*/ S.Array(
   AdaptiveTrigger,
 ) as any as S.Schema<AdaptiveTriggersItemsList>;
 
@@ -20049,7 +19843,7 @@ export interface AdaptiveTriggers {
   items: AdaptiveTriggersItemsList;
   totalCount: number;
 }
-export const AdaptiveTriggers = /*@__PURE__*/ S.suspend(() =>
+const AdaptiveTriggers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AdaptiveTriggersItemsList,
@@ -20066,7 +19860,7 @@ export interface ListAgentGraphsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListAgentGraphsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentGraphsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -20076,7 +19870,7 @@ export const ListAgentGraphsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAgentGraphsRequest" }) as any as S.Schema<ListAgentGraphsRequest>;
 
 export type AgentGraphsItemsList = Array<AgentGraph>;
-export const AgentGraphsItemsList = /*@__PURE__*/ S.Array(
+const AgentGraphsItemsList = /*@__PURE__*/ S.Array(
   AgentGraph,
 ) as any as S.Schema<AgentGraphsItemsList>;
 
@@ -20086,7 +19880,7 @@ export interface AgentGraphs {
   items: AgentGraphsItemsList;
   totalCount: number;
 }
-export const AgentGraphs = /*@__PURE__*/ S.suspend(() =>
+const AgentGraphs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AgentGraphsItemsList,
@@ -20102,7 +19896,7 @@ export interface ListAgentOptimizationResultsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAgentOptimizationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentOptimizationResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -20120,7 +19914,7 @@ export const ListAgentOptimizationResultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAgentOptimizationResultsRequest>;
 
 export type AgentOptimizationResultStatus = "RUNNING" | "PASSED" | "FAILED" | "ERRORED";
-export const AgentOptimizationResultStatus = S.String;
+const AgentOptimizationResultStatus = S.String;
 
 export type AgentOptimizationResultActivity =
   | "PENDING"
@@ -20129,30 +19923,30 @@ export type AgentOptimizationResultActivity =
   | "GENERATING_VARIATION"
   | "VALIDATING"
   | "COMPLETED";
-export const AgentOptimizationResultActivity = S.String;
+const AgentOptimizationResultActivity = S.String;
 
 export type AgentOptimizationResultParametersMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultParametersMap =
+const AgentOptimizationResultParametersMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultParametersMap>;
 
 export type AgentOptimizationResultVariationMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultVariationMap =
+const AgentOptimizationResultVariationMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultVariationMap>;
 
 export type AgentOptimizationResultScoresMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultScoresMap =
+const AgentOptimizationResultScoresMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultScoresMap>;
 
 export type AgentOptimizationResultGenerationTokensMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultGenerationTokensMap =
+const AgentOptimizationResultGenerationTokensMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultGenerationTokensMap>;
 
 export type AgentOptimizationResultEvaluationTokensMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultEvaluationTokensMap =
+const AgentOptimizationResultEvaluationTokensMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultEvaluationTokensMap>;
 
 export type AgentOptimizationResultEvaluationLatenciesMap = { [key: string]: unknown | undefined };
-export const AgentOptimizationResultEvaluationLatenciesMap =
+const AgentOptimizationResultEvaluationLatenciesMap =
   UrlMatcher as any as S.Schema<AgentOptimizationResultEvaluationLatenciesMap>;
 
 export interface AgentOptimizationResult {
@@ -20180,7 +19974,7 @@ export interface AgentOptimizationResult {
   createdAt: number;
   updatedAt: number;
 }
-export const AgentOptimizationResult = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _access: S.optional(AiConfigsAccess),
     _links: S.optional(ParentAndSelfLinks),
@@ -20209,7 +20003,7 @@ export const AgentOptimizationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentOptimizationResult" }) as any as S.Schema<AgentOptimizationResult>;
 
 export type AgentOptimizationResultsItemsList = Array<AgentOptimizationResult>;
-export const AgentOptimizationResultsItemsList = /*@__PURE__*/ S.Array(
+const AgentOptimizationResultsItemsList = /*@__PURE__*/ S.Array(
   AgentOptimizationResult,
 ) as any as S.Schema<AgentOptimizationResultsItemsList>;
 
@@ -20218,7 +20012,7 @@ export interface AgentOptimizationResults {
   items: AgentOptimizationResultsItemsList;
   totalCount?: number;
 }
-export const AgentOptimizationResults = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AgentOptimizationResultsItemsList,
@@ -20231,7 +20025,7 @@ export interface ListAgentOptimizationResultsByRunIdRequest {
   optimizationKey: string;
   runId: string;
 }
-export const ListAgentOptimizationResultsByRunIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentOptimizationResultsByRunIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -20255,7 +20049,7 @@ export interface ListAgentOptimizationRunsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAgentOptimizationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentOptimizationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -20282,7 +20076,7 @@ export interface AgentOptimizationRun {
   createdAt: number;
   completedAt?: number | null;
 }
-export const AgentOptimizationRun = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.String,
     optimizationKey: S.String,
@@ -20296,7 +20090,7 @@ export const AgentOptimizationRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentOptimizationRun" }) as any as S.Schema<AgentOptimizationRun>;
 
 export type AgentOptimizationRunsItemsList = Array<AgentOptimizationRun>;
-export const AgentOptimizationRunsItemsList = /*@__PURE__*/ S.Array(
+const AgentOptimizationRunsItemsList = /*@__PURE__*/ S.Array(
   AgentOptimizationRun,
 ) as any as S.Schema<AgentOptimizationRunsItemsList>;
 
@@ -20305,7 +20099,7 @@ export interface AgentOptimizationRuns {
   items: AgentOptimizationRunsItemsList;
   totalCount?: number;
 }
-export const AgentOptimizationRuns = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizationRuns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AgentOptimizationRunsItemsList,
@@ -20322,7 +20116,7 @@ export interface ListAgentOptimizationsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListAgentOptimizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentOptimizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -20336,7 +20130,7 @@ export const ListAgentOptimizationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAgentOptimizationsRequest>;
 
 export type AgentOptimizationsItemsList = Array<AgentOptimization>;
-export const AgentOptimizationsItemsList = /*@__PURE__*/ S.Array(
+const AgentOptimizationsItemsList = /*@__PURE__*/ S.Array(
   AgentOptimization,
 ) as any as S.Schema<AgentOptimizationsItemsList>;
 
@@ -20345,7 +20139,7 @@ export interface AgentOptimizations {
   items: AgentOptimizationsItemsList;
   totalCount: number;
 }
-export const AgentOptimizations = /*@__PURE__*/ S.suspend(() =>
+const AgentOptimizations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AgentOptimizationsItemsList,
@@ -20361,7 +20155,7 @@ export interface ListAgentSkillReferencesRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAgentSkillReferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentSkillReferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     skillKey: S.String.pipe(T.Label()),
@@ -20393,7 +20187,7 @@ export interface AgentSkillReference {
   /** The version of the skill being referenced. */
   resourceVersion: number;
 }
-export const AgentSkillReference = /*@__PURE__*/ S.suspend(() =>
+const AgentSkillReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiConfigKey: S.String,
     aiConfigName: S.String,
@@ -20405,7 +20199,7 @@ export const AgentSkillReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentSkillReference" }) as any as S.Schema<AgentSkillReference>;
 
 export type AgentSkillReferencesItemsList = Array<AgentSkillReference>;
-export const AgentSkillReferencesItemsList = /*@__PURE__*/ S.Array(
+const AgentSkillReferencesItemsList = /*@__PURE__*/ S.Array(
   AgentSkillReference,
 ) as any as S.Schema<AgentSkillReferencesItemsList>;
 
@@ -20419,7 +20213,7 @@ export interface AgentSkillReferences {
   /** The total number of references. */
   totalCount: number;
 }
-export const AgentSkillReferences = /*@__PURE__*/ S.suspend(() =>
+const AgentSkillReferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     resourceKey: S.String,
@@ -20438,7 +20232,7 @@ export interface ListAgentSkillsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListAgentSkillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentSkillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -20450,7 +20244,7 @@ export const ListAgentSkillsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAgentSkillsRequest" }) as any as S.Schema<ListAgentSkillsRequest>;
 
 export type AgentSkillsItemsList = Array<AgentSkill>;
-export const AgentSkillsItemsList = /*@__PURE__*/ S.Array(
+const AgentSkillsItemsList = /*@__PURE__*/ S.Array(
   AgentSkill,
 ) as any as S.Schema<AgentSkillsItemsList>;
 
@@ -20459,7 +20253,7 @@ export interface AgentSkills {
   items: AgentSkillsItemsList;
   totalCount: number;
 }
-export const AgentSkills = /*@__PURE__*/ S.suspend(() =>
+const AgentSkills = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AgentSkillsItemsList,
@@ -20475,7 +20269,7 @@ export interface ListAgentSkillVersionsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAgentSkillVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentSkillVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     skillKey: S.String.pipe(T.Label()),
@@ -20500,7 +20294,7 @@ export interface ListAIToolReferencesRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAIToolReferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAIToolReferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     toolKey: S.String.pipe(T.Label()),
@@ -20532,7 +20326,7 @@ export interface ToolReference {
   /** The version of the tool being referenced. */
   toolVersion: number;
 }
-export const ToolReference = /*@__PURE__*/ S.suspend(() =>
+const ToolReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aiConfigKey: S.String,
     aiConfigName: S.String,
@@ -20544,7 +20338,7 @@ export const ToolReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToolReference" }) as any as S.Schema<ToolReference>;
 
 export type ToolReferencesItemsList = Array<ToolReference>;
-export const ToolReferencesItemsList = /*@__PURE__*/ S.Array(
+const ToolReferencesItemsList = /*@__PURE__*/ S.Array(
   ToolReference,
 ) as any as S.Schema<ToolReferencesItemsList>;
 
@@ -20558,7 +20352,7 @@ export interface ToolReferences {
   /** The total number of references. */
   totalCount: number;
 }
-export const ToolReferences = /*@__PURE__*/ S.suspend(() =>
+const ToolReferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     resourceKey: S.String,
@@ -20579,7 +20373,7 @@ export interface ListAIToolsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListAIToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAIToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     sort: S.optional(S.String.pipe(T.Query())),
@@ -20590,14 +20384,14 @@ export const ListAIToolsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAIToolsRequest" }) as any as S.Schema<ListAIToolsRequest>;
 
 export type AIToolsItemsList = Array<AITool>;
-export const AIToolsItemsList = /*@__PURE__*/ S.Array(AITool) as any as S.Schema<AIToolsItemsList>;
+const AIToolsItemsList = /*@__PURE__*/ S.Array(AITool) as any as S.Schema<AIToolsItemsList>;
 
 export interface AITools {
   _links?: PaginatedLinks;
   items: AIToolsItemsList;
   totalCount: number;
 }
-export const AITools = /*@__PURE__*/ S.suspend(() =>
+const AITools = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: AIToolsItemsList,
@@ -20615,7 +20409,7 @@ export interface ListAIToolVersionsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAIToolVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAIToolVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     toolKey: S.String.pipe(T.Label()),
@@ -20641,7 +20435,7 @@ export interface ListAllAgentOptimizationResultsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListAllAgentOptimizationResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllAgentOptimizationResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -20667,7 +20461,7 @@ export interface ListModelConfigsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListModelConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModelConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     restricted: S.optional(S.Boolean.pipe(T.Query())),
@@ -20683,12 +20477,12 @@ export const ListModelConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListModelConfigsRequest" }) as any as S.Schema<ListModelConfigsRequest>;
 
 export type ListModelConfigsResponseBodyList = Array<ModelConfig>;
-export const ListModelConfigsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListModelConfigsResponseBodyList = /*@__PURE__*/ S.Array(
   ModelConfig,
 ) as any as S.Schema<ListModelConfigsResponseBodyList>;
 
 export type ListModelConfigsResponse = ListModelConfigsResponseBodyList;
-export const ListModelConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListModelConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   ListModelConfigsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListModelConfigsResponse" }) as any as S.Schema<ListModelConfigsResponse>;
 
@@ -20700,7 +20494,7 @@ export interface ListModelConfigVersionsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListModelConfigVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModelConfigVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     modelConfigKey: S.String.pipe(T.Label()),
@@ -20718,7 +20512,7 @@ export const ListModelConfigVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListModelConfigVersionsRequest>;
 
 export type ModelConfigsItemsList = Array<ModelConfig>;
-export const ModelConfigsItemsList =
+const ModelConfigsItemsList =
   ListModelConfigsResponseBodyList as any as S.Schema<ModelConfigsItemsList>;
 
 export interface ModelConfigs {
@@ -20726,7 +20520,7 @@ export interface ModelConfigs {
   items: ModelConfigsItemsList;
   totalCount: number;
 }
-export const ModelConfigs = /*@__PURE__*/ S.suspend(() =>
+const ModelConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: ModelConfigsItemsList,
@@ -20742,7 +20536,7 @@ export interface ListPromptSnippetReferencesRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListPromptSnippetReferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPromptSnippetReferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     snippetKey: S.String.pipe(T.Label()),
@@ -20774,12 +20568,7 @@ export interface SnippetReference {
   /** The version of the snippet being referenced. */
   resourceVersion: number;
 }
-export const SnippetReference = AgentSkillReference as any as S.Schema<SnippetReference>;
-
 export type SnippetReferencesItemsList = Array<SnippetReference>;
-export const SnippetReferencesItemsList =
-  AgentSkillReferencesItemsList as any as S.Schema<SnippetReferencesItemsList>;
-
 export interface SnippetReferences {
   _links?: PaginatedLinks;
   /** The key of the prompt snippet. */
@@ -20790,7 +20579,7 @@ export interface SnippetReferences {
   /** The total number of references. */
   totalCount: number;
 }
-export const SnippetReferences = AgentSkillReferences as any as S.Schema<SnippetReferences>;
+const SnippetReferences = AgentSkillReferences as any as S.Schema<SnippetReferences>;
 
 export interface ListPromptSnippetsRequest {
   projectKey: string;
@@ -20801,7 +20590,7 @@ export interface ListPromptSnippetsRequest {
   /** A filter to apply to the list. */
   filter?: string;
 }
-export const ListPromptSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPromptSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -20819,7 +20608,7 @@ export const ListPromptSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPromptSnippetsRequest>;
 
 export type PromptSnippetsItemsList = Array<PromptSnippet>;
-export const PromptSnippetsItemsList = /*@__PURE__*/ S.Array(
+const PromptSnippetsItemsList = /*@__PURE__*/ S.Array(
   PromptSnippet,
 ) as any as S.Schema<PromptSnippetsItemsList>;
 
@@ -20828,7 +20617,7 @@ export interface PromptSnippets {
   items: PromptSnippetsItemsList;
   totalCount: number;
 }
-export const PromptSnippets = /*@__PURE__*/ S.suspend(() =>
+const PromptSnippets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(PaginatedLinks),
     items: PromptSnippetsItemsList,
@@ -20844,7 +20633,7 @@ export interface ListPromptSnippetVersionsRequest {
   /** Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`. */
   offset?: number;
 }
-export const ListPromptSnippetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPromptSnippetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     snippetKey: S.String.pipe(T.Label()),
@@ -20868,7 +20657,7 @@ export interface PatchAdaptiveTriggerRequest {
   name?: string;
   task?: AdaptiveTriggerTask;
 }
-export const PatchAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -20888,7 +20677,7 @@ export const PatchAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The edges in the graph. If present, rootConfigKey must also be present. Replaces all existing edges. */
 export type PatchAgentGraphRequestEdgesList = Array<AgentGraphEdge>;
-export const PatchAgentGraphRequestEdgesList =
+const PatchAgentGraphRequestEdgesList =
   AgentGraphEdgesList as any as S.Schema<PatchAgentGraphRequestEdgesList>;
 
 export interface PatchAgentGraphRequest {
@@ -20907,7 +20696,7 @@ export interface PatchAgentGraphRequest {
   /** The edges in the graph. If present, rootConfigKey must also be present. Replaces all existing edges. */
   edges?: PatchAgentGraphRequestEdgesList;
 }
-export const PatchAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     graphKey: S.String.pipe(T.Label()),
@@ -20927,35 +20716,32 @@ export const PatchAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAgentGraphRequest" }) as any as S.Schema<PatchAgentGraphRequest>;
 
 export type PatchAgentOptimizationRequestModelChoicesList = Array<string>;
-export const PatchAgentOptimizationRequestModelChoicesList =
+const PatchAgentOptimizationRequestModelChoicesList =
   FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestModelChoicesList>;
 
 export type PatchAgentOptimizationRequestVariableChoicesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationRequestVariableChoicesItemMap =
-  UrlMatcher as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesItemMap>;
-
 export type PatchAgentOptimizationRequestVariableChoicesList =
   Array<PatchAgentOptimizationRequestVariableChoicesItemMap>;
-export const PatchAgentOptimizationRequestVariableChoicesList =
+const PatchAgentOptimizationRequestVariableChoicesList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchAgentOptimizationRequestVariableChoicesList>;
 
 export type PatchAgentOptimizationRequestAcceptanceStatementsList =
   Array<AgentOptimizationAcceptanceStatement>;
-export const PatchAgentOptimizationRequestAcceptanceStatementsList =
+const PatchAgentOptimizationRequestAcceptanceStatementsList =
   AgentOptimizationAcceptanceStatementsList as any as S.Schema<PatchAgentOptimizationRequestAcceptanceStatementsList>;
 
 export type PatchAgentOptimizationRequestJudgesList = Array<AgentOptimizationJudge>;
-export const PatchAgentOptimizationRequestJudgesList =
+const PatchAgentOptimizationRequestJudgesList =
   AgentOptimizationJudgesList as any as S.Schema<PatchAgentOptimizationRequestJudgesList>;
 
 export type PatchAgentOptimizationRequestUserInputOptionsList = Array<string>;
-export const PatchAgentOptimizationRequestUserInputOptionsList =
+const PatchAgentOptimizationRequestUserInputOptionsList =
   FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestUserInputOptionsList>;
 
 export type PatchAgentOptimizationRequestGroundTruthResponsesList = Array<string>;
-export const PatchAgentOptimizationRequestGroundTruthResponsesList =
+const PatchAgentOptimizationRequestGroundTruthResponsesList =
   FeatureFlagTagsList as any as S.Schema<PatchAgentOptimizationRequestGroundTruthResponsesList>;
 
 export interface PatchAgentOptimizationRequest {
@@ -20977,7 +20763,7 @@ export interface PatchAgentOptimizationRequest {
   tokenOptimization?: boolean;
   autoCommit?: boolean;
 }
-export const PatchAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -21010,29 +20796,29 @@ export const PatchAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchAgentOptimizationResultRequestVariationMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestVariationMap =
+const PatchAgentOptimizationResultRequestVariationMap =
   UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestVariationMap>;
 
 export type PatchAgentOptimizationResultRequestScoresMap = { [key: string]: unknown | undefined };
-export const PatchAgentOptimizationResultRequestScoresMap =
+const PatchAgentOptimizationResultRequestScoresMap =
   UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestScoresMap>;
 
 export type PatchAgentOptimizationResultRequestGenerationTokensMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestGenerationTokensMap =
+const PatchAgentOptimizationResultRequestGenerationTokensMap =
   UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestGenerationTokensMap>;
 
 export type PatchAgentOptimizationResultRequestEvaluationTokensMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestEvaluationTokensMap =
+const PatchAgentOptimizationResultRequestEvaluationTokensMap =
   UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationTokensMap>;
 
 export type PatchAgentOptimizationResultRequestEvaluationLatenciesMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAgentOptimizationResultRequestEvaluationLatenciesMap =
+const PatchAgentOptimizationResultRequestEvaluationLatenciesMap =
   UrlMatcher as any as S.Schema<PatchAgentOptimizationResultRequestEvaluationLatenciesMap>;
 
 export interface PatchAgentOptimizationResultRequest {
@@ -21050,7 +20836,7 @@ export interface PatchAgentOptimizationResultRequest {
   evaluationLatencies?: PatchAgentOptimizationResultRequestEvaluationLatenciesMap;
   createdVariationKey?: string;
 }
-export const PatchAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -21077,7 +20863,7 @@ export const PatchAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAgentOptimizationResultRequest>;
 
 export type PatchAgentSkillRequestTagsList = Array<string>;
-export const PatchAgentSkillRequestTagsList =
+const PatchAgentSkillRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchAgentSkillRequestTagsList>;
 
 export interface PatchAgentSkillRequest {
@@ -21091,7 +20877,7 @@ export interface PatchAgentSkillRequest {
   maintainerTeamKey?: string;
   tags?: PatchAgentSkillRequestTagsList;
 }
-export const PatchAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     skillKey: S.String.pipe(T.Label()),
@@ -21111,7 +20897,7 @@ export const PatchAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchAgentSkillRequest" }) as any as S.Schema<PatchAgentSkillRequest>;
 
 export type PatchAIConfigRequestTagsList = Array<string>;
-export const PatchAIConfigRequestTagsList =
+const PatchAIConfigRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchAIConfigRequestTagsList>;
 
 export interface PatchAIConfigRequest {
@@ -21129,7 +20915,7 @@ export interface PatchAIConfigRequest {
   /** Whether the evaluation metric is inverted, meaning a lower value is better if set as true */
   isInverted?: boolean;
 }
-export const PatchAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -21153,12 +20939,9 @@ export const PatchAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export type PatchAIConfigTargetingRequestInstructionsItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchAIConfigTargetingRequestInstructionsItemMap =
-  UrlMatcher as any as S.Schema<PatchAIConfigTargetingRequestInstructionsItemMap>;
-
 export type PatchAIConfigTargetingRequestInstructionsList =
   Array<PatchAIConfigTargetingRequestInstructionsItemMap>;
-export const PatchAIConfigTargetingRequestInstructionsList =
+const PatchAIConfigTargetingRequestInstructionsList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchAIConfigTargetingRequestInstructionsList>;
 
 export interface PatchAIConfigTargetingRequest {
@@ -21168,7 +20951,7 @@ export interface PatchAIConfigTargetingRequest {
   environmentKey: string;
   instructions: PatchAIConfigTargetingRequestInstructionsList;
 }
-export const PatchAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -21187,12 +20970,12 @@ export const PatchAIConfigTargetingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAIConfigTargetingRequest>;
 
 export type PatchAIConfigVariationRequestMessagesList = Array<Message>;
-export const PatchAIConfigVariationRequestMessagesList =
+const PatchAIConfigVariationRequestMessagesList =
   AIConfigVariationMessagesList as any as S.Schema<PatchAIConfigVariationRequestMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type PatchAIConfigVariationRequestOutputFormatMap = { [key: string]: unknown | undefined };
-export const PatchAIConfigVariationRequestOutputFormatMap =
+const PatchAIConfigVariationRequestOutputFormatMap =
   UrlMatcher as any as S.Schema<PatchAIConfigVariationRequestOutputFormatMap>;
 
 export interface VariationToolPost {
@@ -21201,16 +20984,14 @@ export interface VariationToolPost {
   /** The version of the tool. */
   version: number;
 }
-export const VariationToolPost = VariationSkill as any as S.Schema<VariationToolPost>;
-
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type PatchAIConfigVariationRequestToolsList = Array<VariationToolPost>;
-export const PatchAIConfigVariationRequestToolsList =
+const PatchAIConfigVariationRequestToolsList =
   AIConfigVariationSkillsList as any as S.Schema<PatchAIConfigVariationRequestToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type PatchAIConfigVariationRequestToolKeysList = Array<string>;
-export const PatchAIConfigVariationRequestToolKeysList =
+const PatchAIConfigVariationRequestToolKeysList =
   FeatureFlagTagsList as any as S.Schema<PatchAIConfigVariationRequestToolKeysList>;
 
 export interface VariationSkillPost {
@@ -21219,11 +21000,9 @@ export interface VariationSkillPost {
   /** The version of the skill to use. */
   version: number;
 }
-export const VariationSkillPost = VariationSkill as any as S.Schema<VariationSkillPost>;
-
 /** List of agent skills to attach to this variation. Replaces the current attachments. */
 export type PatchAIConfigVariationRequestSkillsList = Array<VariationSkillPost>;
-export const PatchAIConfigVariationRequestSkillsList =
+const PatchAIConfigVariationRequestSkillsList =
   AIConfigVariationSkillsList as any as S.Schema<PatchAIConfigVariationRequestSkillsList>;
 
 export interface PatchAIConfigVariationRequest {
@@ -21255,7 +21034,7 @@ export interface PatchAIConfigVariationRequest {
   skills?: PatchAIConfigVariationRequestSkillsList;
   judgeConfiguration?: JudgeConfiguration;
 }
-export const PatchAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -21287,7 +21066,7 @@ export const PatchAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchAIConfigVariationRequest>;
 
 export type PatchAIToolRequestTagsList = Array<string>;
-export const PatchAIToolRequestTagsList =
+const PatchAIToolRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchAIToolRequestTagsList>;
 
 export interface PatchAIToolRequest {
@@ -21302,7 +21081,7 @@ export interface PatchAIToolRequest {
   customParameters?: unknown;
   tags?: PatchAIToolRequestTagsList;
 }
-export const PatchAIToolRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAIToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     toolKey: S.String.pipe(T.Label()),
@@ -21319,14 +21098,14 @@ export const PatchAIToolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Require approval only on flags with the provided tags. Otherwise all flags will require approval. */
 export type PatchApprovalRequestSettingsRequestRequiredApprovalTagsList = Array<string>;
-export const PatchApprovalRequestSettingsRequestRequiredApprovalTagsList =
+const PatchApprovalRequestSettingsRequestRequiredApprovalTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchApprovalRequestSettingsRequestRequiredApprovalTagsList>;
 
 /** Arbitrary service-specific configuration */
 export type PatchApprovalRequestSettingsRequestServiceConfigMap = {
   [key: string]: unknown | undefined;
 };
-export const PatchApprovalRequestSettingsRequestServiceConfigMap =
+const PatchApprovalRequestSettingsRequestServiceConfigMap =
   UrlMatcher as any as S.Schema<PatchApprovalRequestSettingsRequestServiceConfigMap>;
 
 export interface PatchApprovalRequestSettingsRequest {
@@ -21354,7 +21133,7 @@ export interface PatchApprovalRequestSettingsRequest {
   /** Optional integration configuration ID of a custom approval integration. This is an Enterprise-only feature. */
   serviceKindConfigurationId?: string | null;
 }
-export const PatchApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     autoApplyApprovedChanges: S.optional(S.NullOr(S.Boolean)),
@@ -21381,7 +21160,7 @@ export const PatchApprovalRequestSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchApprovalRequestSettingsRequest>;
 
 export type PatchApprovalRequestSettingsResponse = ApprovalRequestSettings;
-export const PatchApprovalRequestSettingsResponse =
+const PatchApprovalRequestSettingsResponse =
   GetApprovalRequestSettingsResponse as any as S.Schema<PatchApprovalRequestSettingsResponse>;
 
 export interface PatchOperation {
@@ -21392,7 +21171,7 @@ export interface PatchOperation {
   /** A JSON value used in "add", "replace", and "test" operations */
   value?: unknown;
 }
-export const PatchOperation = /*@__PURE__*/ S.suspend(() =>
+const PatchOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.String,
     path: S.String,
@@ -21401,7 +21180,7 @@ export const PatchOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOperation" }) as any as S.Schema<PatchOperation>;
 
 export type JSONPatch = Array<PatchOperation>;
-export const JSONPatch = /*@__PURE__*/ S.Array(PatchOperation) as any as S.Schema<JSONPatch>;
+const JSONPatch = /*@__PURE__*/ S.Array(PatchOperation) as any as S.Schema<JSONPatch>;
 
 export interface PatchBigSegmentStoreIntegrationRequest {
   /** The project key */
@@ -21414,7 +21193,7 @@ export interface PatchBigSegmentStoreIntegrationRequest {
   integrationId: string;
   body: JSONPatch;
 }
-export const PatchBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBigSegmentStoreIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -21440,7 +21219,7 @@ export interface PatchCustomRoleRequest {
   /** Optional comment */
   comment?: string;
 }
-export const PatchCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customRoleKey: S.String.pipe(T.Label()),
     patch: JSONPatch,
@@ -21455,7 +21234,7 @@ export interface PatchEnvironmentRequest {
   environmentKey: string;
   body: JSONPatch;
 }
-export const PatchEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -21481,7 +21260,7 @@ export interface PatchExperimentRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require a <code>value</code> field in the array element. */
   instructions: Instructions;
 }
-export const PatchExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -21499,7 +21278,7 @@ export const PatchExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The instructions to perform when updating */
 export type PatchExpiringTargetsRequestInstructionsList = Array<Instruction>;
-export const PatchExpiringTargetsRequestInstructionsList =
+const PatchExpiringTargetsRequestInstructionsList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchExpiringTargetsRequestInstructionsList>;
 
 export interface PatchExpiringTargetsRequest {
@@ -21514,7 +21293,7 @@ export interface PatchExpiringTargetsRequest {
   /** The instructions to perform when updating */
   instructions: PatchExpiringTargetsRequestInstructionsList;
 }
-export const PatchExpiringTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExpiringTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -21534,12 +21313,12 @@ export const PatchExpiringTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the results from each instruction */
 export type ExpiringTargetPatchResponseItemsList = Array<ExpiringTarget>;
-export const ExpiringTargetPatchResponseItemsList =
+const ExpiringTargetPatchResponseItemsList =
   ExpiringTargetGetResponseItemsList as any as S.Schema<ExpiringTargetPatchResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringTargetPatchResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringTargetPatchResponseLinksMap =
+const ExpiringTargetPatchResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringTargetPatchResponseLinksMap>;
 
 export interface ExpiringTargetError {
@@ -21548,7 +21327,7 @@ export interface ExpiringTargetError {
   /** The error message related to a failed PATCH instruction */
   message: string;
 }
-export const ExpiringTargetError = /*@__PURE__*/ S.suspend(() =>
+const ExpiringTargetError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instructionIndex: S.Number,
     message: S.String,
@@ -21556,7 +21335,7 @@ export const ExpiringTargetError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExpiringTargetError" }) as any as S.Schema<ExpiringTargetError>;
 
 export type ExpiringTargetPatchResponseErrorsList = Array<ExpiringTargetError>;
-export const ExpiringTargetPatchResponseErrorsList = /*@__PURE__*/ S.Array(
+const ExpiringTargetPatchResponseErrorsList = /*@__PURE__*/ S.Array(
   ExpiringTargetError,
 ) as any as S.Schema<ExpiringTargetPatchResponseErrorsList>;
 
@@ -21570,7 +21349,7 @@ export interface ExpiringTargetPatchResponse {
   failedInstructions?: number;
   errors?: ExpiringTargetPatchResponseErrorsList;
 }
-export const ExpiringTargetPatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpiringTargetPatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpiringTargetPatchResponseItemsList,
     _links: S.optional(ExpiringTargetPatchResponseLinksMap),
@@ -21588,11 +21367,11 @@ export type PatchSegmentExpiringTargetInstructionKind =
   | "addExpiringTarget"
   | "updateExpiringTarget"
   | "removeExpiringTarget";
-export const PatchSegmentExpiringTargetInstructionKind = S.String;
+const PatchSegmentExpiringTargetInstructionKind = S.String;
 
 /** The segment's target type */
 export type PatchSegmentExpiringTargetInstructionTargetType = "included" | "excluded";
-export const PatchSegmentExpiringTargetInstructionTargetType = S.String;
+const PatchSegmentExpiringTargetInstructionTargetType = S.String;
 
 export interface PatchSegmentExpiringTargetInstruction {
   /** The type of change to make to the context's removal date from this segment */
@@ -21608,7 +21387,7 @@ export interface PatchSegmentExpiringTargetInstruction {
   /** The version of the expiring target to update. Optional and only used if <code>kind</code> is <code>updateExpiringTarget</code>. If included, update will fail if version doesn't match current version of the expiring target. */
   version?: number;
 }
-export const PatchSegmentExpiringTargetInstruction = /*@__PURE__*/ S.suspend(() =>
+const PatchSegmentExpiringTargetInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: PatchSegmentExpiringTargetInstructionKind,
     contextKey: S.String,
@@ -21624,7 +21403,7 @@ export const PatchSegmentExpiringTargetInstruction = /*@__PURE__*/ S.suspend(() 
 /** Semantic patch instructions for the desired changes to the resource */
 export type PatchExpiringTargetsForSegmentRequestInstructionsList =
   Array<PatchSegmentExpiringTargetInstruction>;
-export const PatchExpiringTargetsForSegmentRequestInstructionsList = /*@__PURE__*/ S.Array(
+const PatchExpiringTargetsForSegmentRequestInstructionsList = /*@__PURE__*/ S.Array(
   PatchSegmentExpiringTargetInstruction,
 ) as any as S.Schema<PatchExpiringTargetsForSegmentRequestInstructionsList>;
 
@@ -21640,7 +21419,7 @@ export interface PatchExpiringTargetsForSegmentRequest {
   /** Semantic patch instructions for the desired changes to the resource */
   instructions: PatchExpiringTargetsForSegmentRequestInstructionsList;
 }
-export const PatchExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     segmentKey: S.String.pipe(T.Label()),
@@ -21660,7 +21439,7 @@ export const PatchExpiringTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The instructions to perform when updating */
 export type PatchExpiringUserTargetsRequestInstructionsList = Array<Instruction>;
-export const PatchExpiringUserTargetsRequestInstructionsList =
+const PatchExpiringUserTargetsRequestInstructionsList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchExpiringUserTargetsRequestInstructionsList>;
 
 export interface PatchExpiringUserTargetsRequest {
@@ -21675,7 +21454,7 @@ export interface PatchExpiringUserTargetsRequest {
   /** The instructions to perform when updating */
   instructions: PatchExpiringUserTargetsRequestInstructionsList;
 }
-export const PatchExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -21695,17 +21474,17 @@ export const PatchExpiringUserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of expiring user targets */
 export type ExpiringUserTargetPatchResponseItemsList = Array<ExpiringUserTargetItem>;
-export const ExpiringUserTargetPatchResponseItemsList =
+const ExpiringUserTargetPatchResponseItemsList =
   ExpiringUserTargetGetResponseItemsList as any as S.Schema<ExpiringUserTargetPatchResponseItemsList>;
 
 /** The location and content type of related resources */
 export type ExpiringUserTargetPatchResponseLinksMap = { [key: string]: Link | undefined };
-export const ExpiringUserTargetPatchResponseLinksMap =
+const ExpiringUserTargetPatchResponseLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<ExpiringUserTargetPatchResponseLinksMap>;
 
 /** An array of error messages for the failed instructions */
 export type ExpiringUserTargetPatchResponseErrorsList = Array<ExpiringTargetError>;
-export const ExpiringUserTargetPatchResponseErrorsList =
+const ExpiringUserTargetPatchResponseErrorsList =
   ExpiringTargetPatchResponseErrorsList as any as S.Schema<ExpiringUserTargetPatchResponseErrorsList>;
 
 export interface ExpiringUserTargetPatchResponse {
@@ -21722,7 +21501,7 @@ export interface ExpiringUserTargetPatchResponse {
   /** An array of error messages for the failed instructions */
   errors?: ExpiringUserTargetPatchResponseErrorsList;
 }
-export const ExpiringUserTargetPatchResponse = /*@__PURE__*/ S.suspend(() =>
+const ExpiringUserTargetPatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ExpiringUserTargetPatchResponseItemsList,
     _links: S.optional(ExpiringUserTargetPatchResponseLinksMap),
@@ -21740,11 +21519,11 @@ export type PatchSegmentInstructionKind =
   | "addExpireUserTargetDate"
   | "updateExpireUserTargetDate"
   | "removeExpireUserTargetDate";
-export const PatchSegmentInstructionKind = S.String;
+const PatchSegmentInstructionKind = S.String;
 
 /** The segment's target type */
 export type PatchSegmentInstructionTargetType = "included" | "excluded";
-export const PatchSegmentInstructionTargetType = S.String;
+const PatchSegmentInstructionTargetType = S.String;
 
 export interface PatchSegmentInstruction {
   /** The type of change to make to the user's removal date from this segment */
@@ -21758,7 +21537,7 @@ export interface PatchSegmentInstruction {
   /** The version of the segment to update. Required if <code>kind</code> is <code>updateExpireUserTargetDate</code>. */
   version?: number;
 }
-export const PatchSegmentInstruction = /*@__PURE__*/ S.suspend(() =>
+const PatchSegmentInstruction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: PatchSegmentInstructionKind,
     userKey: S.String,
@@ -21771,7 +21550,7 @@ export const PatchSegmentInstruction = /*@__PURE__*/ S.suspend(() =>
 /** Semantic patch instructions for the desired changes to the resource */
 export type PatchExpiringUserTargetsForSegmentRequestInstructionsList =
   Array<PatchSegmentInstruction>;
-export const PatchExpiringUserTargetsForSegmentRequestInstructionsList = /*@__PURE__*/ S.Array(
+const PatchExpiringUserTargetsForSegmentRequestInstructionsList = /*@__PURE__*/ S.Array(
   PatchSegmentInstruction,
 ) as any as S.Schema<PatchExpiringUserTargetsForSegmentRequestInstructionsList>;
 
@@ -21787,7 +21566,7 @@ export interface PatchExpiringUserTargetsForSegmentRequest {
   /** Semantic patch instructions for the desired changes to the resource */
   instructions: PatchExpiringUserTargetsForSegmentRequestInstructionsList;
 }
-export const PatchExpiringUserTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExpiringUserTargetsForSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     segmentKey: S.String.pipe(T.Label()),
@@ -21819,7 +21598,7 @@ export interface PatchFeatureFlagRequest {
   /** Optional comment */
   comment?: string;
 }
-export const PatchFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -21842,7 +21621,7 @@ export interface PatchFlagConfigApprovalRequestRequest {
   /** The approval ID */
   id: string;
 }
-export const PatchFlagConfigApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlagConfigApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -21875,7 +21654,7 @@ export interface PatchFlagConfigScheduledChangeRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require a <code>value</code> field in the array element. */
   instructions: Instructions;
 }
-export const PatchFlagConfigScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlagConfigScheduledChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -21900,7 +21679,7 @@ export interface PatchFlagDefaultsByProjectRequest {
   projectKey: string;
   body: JSONPatch;
 }
-export const PatchFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -21913,13 +21692,12 @@ export const PatchFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type UpsertPayloadRepLinksMap = { [key: string]: Link | undefined };
-export const UpsertPayloadRepLinksMap =
+const UpsertPayloadRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UpsertPayloadRepLinksMap>;
 
 /** A list of default tags for each flag */
 export type UpsertPayloadRepTagsList = Array<string>;
-export const UpsertPayloadRepTagsList =
-  FeatureFlagTagsList as any as S.Schema<UpsertPayloadRepTagsList>;
+const UpsertPayloadRepTagsList = FeatureFlagTagsList as any as S.Schema<UpsertPayloadRepTagsList>;
 
 export interface BooleanFlagDefaults {
   /** The display name for the true variation, displayed in the LaunchDarkly user interface */
@@ -21935,7 +21713,7 @@ export interface BooleanFlagDefaults {
   /** The variation index of the flag variation to use for the default targeting behavior when a flag's targeting is off */
   offVariation: number;
 }
-export const BooleanFlagDefaults = /*@__PURE__*/ S.suspend(() =>
+const BooleanFlagDefaults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trueDisplayName: S.String,
     falseDisplayName: S.String,
@@ -21952,7 +21730,7 @@ export interface DefaultClientSideAvailability {
   /** Whether to enable availability for client-side SDKs */
   usingEnvironmentId: boolean;
 }
-export const DefaultClientSideAvailability = /*@__PURE__*/ S.suspend(() =>
+const DefaultClientSideAvailability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usingMobileKey: S.Boolean,
     usingEnvironmentId: S.Boolean,
@@ -21972,7 +21750,7 @@ export interface UpsertPayloadRep {
   /** Which client-side SDK types can use this flag by default. */
   defaultClientSideAvailability: DefaultClientSideAvailability;
 }
-export const UpsertPayloadRep = /*@__PURE__*/ S.suspend(() =>
+const UpsertPayloadRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(UpsertPayloadRepLinksMap),
     tags: UpsertPayloadRepTagsList,
@@ -21991,7 +21769,7 @@ export interface PatchFlagImportConfigurationRequest {
   integrationId: string;
   body: JSONPatch;
 }
-export const PatchFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFlagImportConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     integrationKey: S.String.pipe(T.Label()),
@@ -22020,7 +21798,7 @@ export interface PatchHoldoutRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require a <code>value</code> field in the array element. */
   instructions: Instructions;
 }
-export const PatchHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -22041,7 +21819,7 @@ export interface PatchInsightGroupRequest {
   insightGroupKey: string;
   body: JSONPatch;
 }
-export const PatchInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInsightGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insightGroupKey: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -22065,7 +21843,7 @@ export interface PatchIntegrationDeliveryConfigurationRequest {
   id: string;
   body: JSONPatch;
 }
-export const PatchIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -22089,7 +21867,7 @@ export interface PatchIpAllowlistConfigRequest {
   /** Enable or disable API token allowlist */
   apiTokenAllowlistEnabled?: boolean;
 }
-export const PatchIpAllowlistConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchIpAllowlistConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionAllowlistEnabled: S.optional(S.Boolean),
     apiTokenAllowlistEnabled: S.optional(S.Boolean),
@@ -22103,7 +21881,7 @@ export interface PatchIpAllowlistEntryRequest {
   id: string;
   description: string;
 }
-export const PatchIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchIpAllowlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     description: S.String,
@@ -22119,7 +21897,7 @@ export interface PatchMetricRequest {
   metricKey: string;
   body: JSONPatch;
 }
-export const PatchMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricKey: S.String.pipe(T.Label()),
@@ -22134,7 +21912,7 @@ export interface PatchMetricGroupRequest {
   metricGroupKey: string;
   body: JSONPatch;
 }
-export const PatchMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     metricGroupKey: S.String.pipe(T.Label()),
@@ -22149,7 +21927,7 @@ export const PatchMetricGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchMetricGroupRequest" }) as any as S.Schema<PatchMetricGroupRequest>;
 
 export type PatchModelConfigRequestTagsList = Array<string>;
-export const PatchModelConfigRequestTagsList =
+const PatchModelConfigRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchModelConfigRequestTagsList>;
 
 export interface PatchModelConfigRequest {
@@ -22173,7 +21951,7 @@ export interface PatchModelConfigRequest {
   maintainerId?: string;
   maintainerTeamKey?: string;
 }
-export const PatchModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     modelConfigKey: S.String.pipe(T.Label()),
@@ -22202,7 +21980,7 @@ export interface PatchOAuthClientRequest {
   clientId: string;
   body: JSONPatch;
 }
-export const PatchOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientId: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -22210,7 +21988,7 @@ export const PatchOAuthClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchOAuthClientRequest" }) as any as S.Schema<PatchOAuthClientRequest>;
 
 export type PatchPromptSnippetRequestTagsList = Array<string>;
-export const PatchPromptSnippetRequestTagsList =
+const PatchPromptSnippetRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PatchPromptSnippetRequestTagsList>;
 
 export interface PatchPromptSnippetRequest {
@@ -22224,7 +22002,7 @@ export interface PatchPromptSnippetRequest {
   maintainerTeamKey?: string;
   tags?: PatchPromptSnippetRequestTagsList;
 }
-export const PatchPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     snippetKey: S.String.pipe(T.Label()),
@@ -22253,7 +22031,7 @@ export interface PatchRelayAutoConfigRequest {
   /** Optional comment */
   comment?: string;
 }
-export const PatchRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     patch: JSONPatch,
@@ -22270,7 +22048,7 @@ export interface PatchReleaseByFlagKeyRequest {
   flagKey: string;
   body: JSONPatch;
 }
-export const PatchReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchReleaseByFlagKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -22287,7 +22065,7 @@ export interface PatchRepositoryRequest {
   repo: string;
   body: JSONPatch;
 }
-export const PatchRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -22307,7 +22085,7 @@ export interface PatchSdkKeyByKeyRequest {
   description?: string;
   expiry?: number;
 }
-export const PatchSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -22327,7 +22105,7 @@ export const PatchSdkKeyByKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "trigger_action"}</code>. */
 export type PatchTriggerWorkflowRequestInstructionsList = Array<Instruction>;
-export const PatchTriggerWorkflowRequestInstructionsList =
+const PatchTriggerWorkflowRequestInstructionsList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PatchTriggerWorkflowRequestInstructionsList>;
 
 export interface PatchTriggerWorkflowRequest {
@@ -22344,7 +22122,7 @@ export interface PatchTriggerWorkflowRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "trigger_action"}</code>. */
   instructions?: PatchTriggerWorkflowRequestInstructionsList;
 }
-export const PatchTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTriggerWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -22372,7 +22150,7 @@ export interface PostAdaptiveTriggerRequest {
   triggerSource: ObservabilityAlertSource;
   task: AdaptiveTriggerTask;
 }
-export const PostAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -22394,11 +22172,9 @@ export const PostAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An edge in an agent graph connecting two config */
 export type AgentGraphEdgePost = AgentGraphEdge;
-export const AgentGraphEdgePost = AgentGraphEdge;
-
 /** The edges in the graph. If edges or rootConfigKey is present, both must be present. */
 export type PostAgentGraphRequestEdgesList = Array<AgentGraphEdge>;
-export const PostAgentGraphRequestEdgesList =
+const PostAgentGraphRequestEdgesList =
   AgentGraphEdgesList as any as S.Schema<PostAgentGraphRequestEdgesList>;
 
 export interface PostAgentGraphRequest {
@@ -22418,7 +22194,7 @@ export interface PostAgentGraphRequest {
   /** The edges in the graph. If edges or rootConfigKey is present, both must be present. */
   edges?: PostAgentGraphRequestEdgesList;
 }
-export const PostAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -22432,35 +22208,32 @@ export const PostAgentGraphRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAgentGraphRequest" }) as any as S.Schema<PostAgentGraphRequest>;
 
 export type PostAgentOptimizationRequestModelChoicesList = Array<string>;
-export const PostAgentOptimizationRequestModelChoicesList =
+const PostAgentOptimizationRequestModelChoicesList =
   FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestModelChoicesList>;
 
 export type PostAgentOptimizationRequestVariableChoicesItemMap = {
   [key: string]: unknown | undefined;
 };
-export const PostAgentOptimizationRequestVariableChoicesItemMap =
-  UrlMatcher as any as S.Schema<PostAgentOptimizationRequestVariableChoicesItemMap>;
-
 export type PostAgentOptimizationRequestVariableChoicesList =
   Array<PostAgentOptimizationRequestVariableChoicesItemMap>;
-export const PostAgentOptimizationRequestVariableChoicesList =
+const PostAgentOptimizationRequestVariableChoicesList =
   CreateTriggerWorkflowRequestInstructionsList as any as S.Schema<PostAgentOptimizationRequestVariableChoicesList>;
 
 export type PostAgentOptimizationRequestAcceptanceStatementsList =
   Array<AgentOptimizationAcceptanceStatement>;
-export const PostAgentOptimizationRequestAcceptanceStatementsList =
+const PostAgentOptimizationRequestAcceptanceStatementsList =
   AgentOptimizationAcceptanceStatementsList as any as S.Schema<PostAgentOptimizationRequestAcceptanceStatementsList>;
 
 export type PostAgentOptimizationRequestJudgesList = Array<AgentOptimizationJudge>;
-export const PostAgentOptimizationRequestJudgesList =
+const PostAgentOptimizationRequestJudgesList =
   AgentOptimizationJudgesList as any as S.Schema<PostAgentOptimizationRequestJudgesList>;
 
 export type PostAgentOptimizationRequestUserInputOptionsList = Array<string>;
-export const PostAgentOptimizationRequestUserInputOptionsList =
+const PostAgentOptimizationRequestUserInputOptionsList =
   FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestUserInputOptionsList>;
 
 export type PostAgentOptimizationRequestGroundTruthResponsesList = Array<string>;
-export const PostAgentOptimizationRequestGroundTruthResponsesList =
+const PostAgentOptimizationRequestGroundTruthResponsesList =
   FeatureFlagTagsList as any as S.Schema<PostAgentOptimizationRequestGroundTruthResponsesList>;
 
 export interface PostAgentOptimizationRequest {
@@ -22483,7 +22256,7 @@ export interface PostAgentOptimizationRequest {
   tokenOptimization?: boolean;
   autoCommit?: boolean;
 }
-export const PostAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -22513,7 +22286,7 @@ export const PostAgentOptimizationRequest = /*@__PURE__*/ S.suspend(() =>
 export type PostAgentOptimizationResultRequestParametersMap = {
   [key: string]: unknown | undefined;
 };
-export const PostAgentOptimizationResultRequestParametersMap =
+const PostAgentOptimizationResultRequestParametersMap =
   UrlMatcher as any as S.Schema<PostAgentOptimizationResultRequestParametersMap>;
 
 export interface PostAgentOptimizationResultRequest {
@@ -22526,7 +22299,7 @@ export interface PostAgentOptimizationResultRequest {
   userInput: string;
   parameters?: PostAgentOptimizationResultRequestParametersMap;
 }
-export const PostAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     optimizationKey: S.String.pipe(T.Label()),
@@ -22548,7 +22321,7 @@ export const PostAgentOptimizationResultRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAgentOptimizationResultRequest>;
 
 export type PostAgentSkillRequestTagsList = Array<string>;
-export const PostAgentSkillRequestTagsList =
+const PostAgentSkillRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostAgentSkillRequestTagsList>;
 
 export interface PostAgentSkillRequest {
@@ -22562,7 +22335,7 @@ export interface PostAgentSkillRequest {
   maintainerTeamKey?: string;
   tags?: PostAgentSkillRequestTagsList;
 }
-export const PostAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -22578,38 +22351,38 @@ export const PostAgentSkillRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAgentSkillRequest" }) as any as S.Schema<PostAgentSkillRequest>;
 
 export type PostAIConfigRequestMode = "agent" | "completion" | "judge";
-export const PostAIConfigRequestMode = S.String;
+const PostAIConfigRequestMode = S.String;
 
 export type PostAIConfigRequestTagsList = Array<string>;
-export const PostAIConfigRequestTagsList =
+const PostAIConfigRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostAIConfigRequestTagsList>;
 
 export type PostAIConfigRequestViewKeysList = Array<string>;
-export const PostAIConfigRequestViewKeysList =
+const PostAIConfigRequestViewKeysList =
   FeatureFlagTagsList as any as S.Schema<PostAIConfigRequestViewKeysList>;
 
 export type AIConfigVariationPostMessagesList = Array<Message>;
-export const AIConfigVariationPostMessagesList =
+const AIConfigVariationPostMessagesList =
   AIConfigVariationMessagesList as any as S.Schema<AIConfigVariationPostMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type AIConfigVariationPostOutputFormatMap = { [key: string]: unknown | undefined };
-export const AIConfigVariationPostOutputFormatMap =
+const AIConfigVariationPostOutputFormatMap =
   UrlMatcher as any as S.Schema<AIConfigVariationPostOutputFormatMap>;
 
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type AIConfigVariationPostToolsList = Array<VariationToolPost>;
-export const AIConfigVariationPostToolsList =
+const AIConfigVariationPostToolsList =
   AIConfigVariationSkillsList as any as S.Schema<AIConfigVariationPostToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type AIConfigVariationPostToolKeysList = Array<string>;
-export const AIConfigVariationPostToolKeysList =
+const AIConfigVariationPostToolKeysList =
   FeatureFlagTagsList as any as S.Schema<AIConfigVariationPostToolKeysList>;
 
 /** List of agent skills to attach to this variation. */
 export type AIConfigVariationPostSkillsList = Array<VariationSkillPost>;
-export const AIConfigVariationPostSkillsList =
+const AIConfigVariationPostSkillsList =
   AIConfigVariationSkillsList as any as S.Schema<AIConfigVariationPostSkillsList>;
 
 export interface AIConfigVariationPost {
@@ -22636,7 +22409,7 @@ export interface AIConfigVariationPost {
   skills?: AIConfigVariationPostSkillsList;
   judgeConfiguration?: JudgeConfiguration;
 }
-export const AIConfigVariationPost = /*@__PURE__*/ S.suspend(() =>
+const AIConfigVariationPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     description: S.optional(S.String),
@@ -22671,7 +22444,7 @@ export interface PostAIConfigRequest {
   /** Whether the evaluation metric is inverted, meaning a lower value is better if set as true */
   isInverted?: boolean;
 }
-export const PostAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -22689,27 +22462,27 @@ export const PostAIConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostAIConfigRequest" }) as any as S.Schema<PostAIConfigRequest>;
 
 export type PostAIConfigVariationRequestMessagesList = Array<Message>;
-export const PostAIConfigVariationRequestMessagesList =
+const PostAIConfigVariationRequestMessagesList =
   AIConfigVariationMessagesList as any as S.Schema<PostAIConfigVariationRequestMessagesList>;
 
 /** JSON Schema defining the structured output format for the variation. */
 export type PostAIConfigVariationRequestOutputFormatMap = { [key: string]: unknown | undefined };
-export const PostAIConfigVariationRequestOutputFormatMap =
+const PostAIConfigVariationRequestOutputFormatMap =
   UrlMatcher as any as S.Schema<PostAIConfigVariationRequestOutputFormatMap>;
 
 /** List of tools to use for this variation. The latest version of the tool will be used. */
 export type PostAIConfigVariationRequestToolsList = Array<VariationToolPost>;
-export const PostAIConfigVariationRequestToolsList =
+const PostAIConfigVariationRequestToolsList =
   AIConfigVariationSkillsList as any as S.Schema<PostAIConfigVariationRequestToolsList>;
 
 /** List of tool keys to use for this variation. The latest version of the tool will be used. */
 export type PostAIConfigVariationRequestToolKeysList = Array<string>;
-export const PostAIConfigVariationRequestToolKeysList =
+const PostAIConfigVariationRequestToolKeysList =
   FeatureFlagTagsList as any as S.Schema<PostAIConfigVariationRequestToolKeysList>;
 
 /** List of agent skills to attach to this variation. */
 export type PostAIConfigVariationRequestSkillsList = Array<VariationSkillPost>;
-export const PostAIConfigVariationRequestSkillsList =
+const PostAIConfigVariationRequestSkillsList =
   AIConfigVariationSkillsList as any as S.Schema<PostAIConfigVariationRequestSkillsList>;
 
 export interface PostAIConfigVariationRequest {
@@ -22738,7 +22511,7 @@ export interface PostAIConfigVariationRequest {
   skills?: PostAIConfigVariationRequestSkillsList;
   judgeConfiguration?: JudgeConfiguration;
 }
-export const PostAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     configKey: S.String.pipe(T.Label()),
@@ -22768,8 +22541,7 @@ export const PostAIConfigVariationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostAIConfigVariationRequest>;
 
 export type PostAIToolRequestTagsList = Array<string>;
-export const PostAIToolRequestTagsList =
-  FeatureFlagTagsList as any as S.Schema<PostAIToolRequestTagsList>;
+const PostAIToolRequestTagsList = FeatureFlagTagsList as any as S.Schema<PostAIToolRequestTagsList>;
 
 export interface PostAIToolRequest {
   projectKey: string;
@@ -22783,7 +22555,7 @@ export interface PostAIToolRequest {
   customParameters?: unknown;
   tags?: PostAIToolRequestTagsList;
 }
-export const PostAIToolRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAIToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -22808,7 +22580,7 @@ export interface PostApprovalRequestApplyForFlagRequest {
   /** Optional comment about the approval request */
   comment?: string;
 }
-export const PostApprovalRequestApplyForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const PostApprovalRequestApplyForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -22828,12 +22600,12 @@ export const PostApprovalRequestApplyForFlagRequest = /*@__PURE__*/ S.suspend(()
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type PostApprovalRequestForFlagRequestNotifyMemberIdsList = Array<string>;
-export const PostApprovalRequestForFlagRequestNotifyMemberIdsList =
+const PostApprovalRequestForFlagRequestNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<PostApprovalRequestForFlagRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type PostApprovalRequestForFlagRequestNotifyTeamKeysList = Array<string>;
-export const PostApprovalRequestForFlagRequestNotifyTeamKeysList =
+const PostApprovalRequestForFlagRequestNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<PostApprovalRequestForFlagRequestNotifyTeamKeysList>;
 
 export interface PostApprovalRequestForFlagRequest {
@@ -22860,7 +22632,7 @@ export interface PostApprovalRequestForFlagRequest {
   /** Additional approval request fields for third-party integration approval systems. If you are using a third-party integration to manage approval requests, these additional fields will be described in the <code>manifest.json</code> for that integration, at https://github.com/launchdarkly/integration-framework. */
   integrationConfig?: FormVariableConfig;
 }
-export const PostApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const PostApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -22886,7 +22658,7 @@ export const PostApprovalRequestForFlagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of review for this approval request */
 export type PostApprovalRequestReviewForFlagRequestKind = "approve" | "comment" | "decline";
-export const PostApprovalRequestReviewForFlagRequestKind = S.String;
+const PostApprovalRequestReviewForFlagRequestKind = S.String;
 
 export interface PostApprovalRequestReviewForFlagRequest {
   /** The project key */
@@ -22902,7 +22674,7 @@ export interface PostApprovalRequestReviewForFlagRequest {
   /** Optional comment about the approval request */
   comment?: string;
 }
-export const PostApprovalRequestReviewForFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const PostApprovalRequestReviewForFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -22936,7 +22708,7 @@ export interface PostAuditLogEntriesRequest {
   token?: string;
   body?: StatementPostList;
 }
-export const PostAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAuditLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.Number.pipe(T.Query())),
@@ -22963,7 +22735,7 @@ export interface PostAuditLogEntryCountsRequest {
   token?: string;
   body: StatementPostList;
 }
-export const PostAuditLogEntryCountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PostAuditLogEntryCountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.Number.pipe(T.Query())),
     after: S.Number.pipe(T.Query()),
@@ -22980,7 +22752,7 @@ export interface CountBucket {
   timestamp: number;
   count: number;
 }
-export const CountBucket = /*@__PURE__*/ S.suspend(() =>
+const CountBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.Number,
     count: S.Number,
@@ -22988,7 +22760,7 @@ export const CountBucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountBucket" }) as any as S.Schema<CountBucket>;
 
 export type CountBucketsResultBucketsList = Array<CountBucket>;
-export const CountBucketsResultBucketsList = /*@__PURE__*/ S.Array(
+const CountBucketsResultBucketsList = /*@__PURE__*/ S.Array(
   CountBucket,
 ) as any as S.Schema<CountBucketsResultBucketsList>;
 
@@ -22997,7 +22769,7 @@ export interface CountBucketsResult {
   totalCount: number;
   bucketIntervalMs: number;
 }
-export const CountBucketsResult = /*@__PURE__*/ S.suspend(() =>
+const CountBucketsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: CountBucketsResultBucketsList,
     totalCount: S.Number,
@@ -23014,7 +22786,7 @@ export interface PostCompleteWarehouseDestinationSetupRequest {
   kind: string;
   publicKey?: string;
 }
-export const PostCompleteWarehouseDestinationSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const PostCompleteWarehouseDestinationSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projKey: S.String.pipe(T.Label()),
     envKey: S.String.pipe(T.Label()),
@@ -23045,7 +22817,7 @@ export interface PostCustomRoleRequest {
   /** The category of resources this role is intended to manage. Can be <code>organization</code>, <code>project</code>, or <code>any</code>. This field is immutable. */
   resourceCategory?: string;
 }
-export const PostCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PostCustomRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -23061,7 +22833,7 @@ export interface PostDisableAdaptiveTriggerRequest {
   environmentKey: string;
   triggerID: string;
 }
-export const PostDisableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const PostDisableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -23078,7 +22850,7 @@ export const PostDisableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDisableAdaptiveTriggerRequest>;
 
 export interface PostDisableAdaptiveTriggerResponse {}
-export const PostDisableAdaptiveTriggerResponse =
+const PostDisableAdaptiveTriggerResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<PostDisableAdaptiveTriggerResponse>;
 
 export interface PostEnableAdaptiveTriggerRequest {
@@ -23086,7 +22858,7 @@ export interface PostEnableAdaptiveTriggerRequest {
   environmentKey: string;
   triggerID: string;
 }
-export const PostEnableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+const PostEnableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -23103,12 +22875,12 @@ export const PostEnableAdaptiveTriggerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostEnableAdaptiveTriggerRequest>;
 
 export interface PostEnableAdaptiveTriggerResponse {}
-export const PostEnableAdaptiveTriggerResponse =
+const PostEnableAdaptiveTriggerResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<PostEnableAdaptiveTriggerResponse>;
 
 /** Tags to apply to the new environment */
 export type PostEnvironmentRequestTagsList = Array<string>;
-export const PostEnvironmentRequestTagsList =
+const PostEnvironmentRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostEnvironmentRequestTagsList>;
 
 export interface PostEnvironmentRequest {
@@ -23137,7 +22909,7 @@ export interface PostEnvironmentRequest {
   /** Whether the environment is critical */
   critical?: boolean;
 }
-export const PostEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const PostEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     name: S.String,
@@ -23155,7 +22927,7 @@ export const PostEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostEnvironmentRequest" }) as any as S.Schema<PostEnvironmentRequest>;
 
 export type ExtinctionListPost = Array<Extinction>;
-export const ExtinctionListPost =
+const ExtinctionListPost =
   ExtinctionCollectionRepItemsValueList as any as S.Schema<ExtinctionListPost>;
 
 export interface PostExtinctionRequest {
@@ -23165,7 +22937,7 @@ export interface PostExtinctionRequest {
   branch: string;
   body: ExtinctionListPost;
 }
-export const PostExtinctionRequest = /*@__PURE__*/ S.suspend(() =>
+const PostExtinctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
@@ -23180,7 +22952,7 @@ export const PostExtinctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostExtinctionRequest" }) as any as S.Schema<PostExtinctionRequest>;
 
 export interface PostExtinctionResponse {}
-export const PostExtinctionResponse =
+const PostExtinctionResponse =
   CreateBigSegmentExportResponse as any as S.Schema<PostExtinctionResponse>;
 
 export interface ClientSideAvailabilityPost {
@@ -23189,29 +22961,29 @@ export interface ClientSideAvailabilityPost {
   /** Whether to enable availability for mobile SDKs. Defaults to <code>true</code>. */
   usingMobileKey: boolean;
 }
-export const ClientSideAvailabilityPost =
+const ClientSideAvailabilityPost =
   DefaultClientSideAvailabilityPost as any as S.Schema<ClientSideAvailabilityPost>;
 
 /** An array of possible variations for the flag. The variation values must be unique. If omitted, two boolean variations of <code>true</code> and <code>false</code> will be used. */
 export type PostFeatureFlagRequestVariationsList = Array<Variation>;
-export const PostFeatureFlagRequestVariationsList =
+const PostFeatureFlagRequestVariationsList =
   FeatureFlagVariationsList as any as S.Schema<PostFeatureFlagRequestVariationsList>;
 
 /** Tags for the feature flag. Defaults to an empty array. */
 export type PostFeatureFlagRequestTagsList = Array<string>;
-export const PostFeatureFlagRequestTagsList =
+const PostFeatureFlagRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostFeatureFlagRequestTagsList>;
 
 /** Purpose of the flag */
 export type PostFeatureFlagRequestPurpose = "migration" | "holdout";
-export const PostFeatureFlagRequestPurpose = S.String;
+const PostFeatureFlagRequestPurpose = S.String;
 
 export interface MigrationSettingsPost {
   /** Context kind for a migration with 6 stages, where data is being moved */
   contextKind?: string;
   stageCount: number;
 }
-export const MigrationSettingsPost = /*@__PURE__*/ S.suspend(() =>
+const MigrationSettingsPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextKind: S.optional(S.String),
     stageCount: S.Number,
@@ -23224,7 +22996,7 @@ export interface FlagPrerequisitePost {
   /** ID of a variation of the prerequisite flag */
   variationId: string;
 }
-export const FlagPrerequisitePost = /*@__PURE__*/ S.suspend(() =>
+const FlagPrerequisitePost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     variationId: S.String,
@@ -23233,7 +23005,7 @@ export const FlagPrerequisitePost = /*@__PURE__*/ S.suspend(() =>
 
 /** Initial set of prerequisite flags for all environments */
 export type PostFeatureFlagRequestInitialPrerequisitesList = Array<FlagPrerequisitePost>;
-export const PostFeatureFlagRequestInitialPrerequisitesList = /*@__PURE__*/ S.Array(
+const PostFeatureFlagRequestInitialPrerequisitesList = /*@__PURE__*/ S.Array(
   FlagPrerequisitePost,
 ) as any as S.Schema<PostFeatureFlagRequestInitialPrerequisitesList>;
 
@@ -23275,7 +23047,7 @@ export interface PostFeatureFlagRequest {
   /** Whether to automatically turn the flag on across all environments at creation. Defaults to <code>false</code>. */
   isFlagOn?: boolean;
 }
-export const PostFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
+const PostFeatureFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     clone: S.optional(S.String.pipe(T.Query())),
@@ -23314,7 +23086,7 @@ export interface PostFlagConfigScheduledChangesRequest {
   /** The actions to perform on the execution date for these scheduled changes. This should be an array with a single object that looks like <code>{"kind": "scheduled_action"}</code>. Supported scheduled actions include any semantic patch instructions available when updating a feature flag. */
   instructions: Instructions;
 }
-export const PostFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
+const PostFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -23336,12 +23108,12 @@ export const PostFlagConfigScheduledChangesRequest = /*@__PURE__*/ S.suspend(() 
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList = Array<string>;
-export const PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList =
+const PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList = Array<string>;
-export const PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList =
+const PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestNotifyTeamKeysList>;
 
 export interface SourceFlag {
@@ -23350,7 +23122,7 @@ export interface SourceFlag {
   /** The version of the source flag from which to copy */
   version?: number;
 }
-export const SourceFlag = CopiedFromEnv as any as S.Schema<SourceFlag>;
+const SourceFlag = CopiedFromEnv as any as S.Schema<SourceFlag>;
 
 export type PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem =
   | "updateOn"
@@ -23359,13 +23131,11 @@ export type PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem =
   | "updateRules"
   | "updateTargets"
   | "updatePrerequisites";
-export const PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem = S.String;
-
 /** Optional list of the flag changes to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If neither are included, then all flag changes will be copied. */
 export type PostFlagCopyConfigApprovalRequestRequestIncludedActionsList = Array<
   PostFlagCopyConfigApprovalRequestRequestIncludedActionsItem | (string & {})
 >;
-export const PostFlagCopyConfigApprovalRequestRequestIncludedActionsList =
+const PostFlagCopyConfigApprovalRequestRequestIncludedActionsList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestIncludedActionsList>;
 
 export type PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem =
@@ -23375,13 +23145,11 @@ export type PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem =
   | "updateRules"
   | "updateTargets"
   | "updatePrerequisites";
-export const PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem = S.String;
-
 /** Optional list of the flag changes NOT to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If neither are included, then all flag changes will be copied. */
 export type PostFlagCopyConfigApprovalRequestRequestExcludedActionsList = Array<
   PostFlagCopyConfigApprovalRequestRequestExcludedActionsItem | (string & {})
 >;
-export const PostFlagCopyConfigApprovalRequestRequestExcludedActionsList =
+const PostFlagCopyConfigApprovalRequestRequestExcludedActionsList =
   CopyFeatureFlagRequestIncludedActionsList as any as S.Schema<PostFlagCopyConfigApprovalRequestRequestExcludedActionsList>;
 
 export interface PostFlagCopyConfigApprovalRequestRequest {
@@ -23406,7 +23174,7 @@ export interface PostFlagCopyConfigApprovalRequestRequest {
   /** Optional list of the flag changes NOT to copy from the source environment to the target environment. You may include either <code>includedActions</code> or <code>excludedActions</code>, but not both. If neither are included, then all flag changes will be copied. */
   excludedActions?: PostFlagCopyConfigApprovalRequestRequestExcludedActionsList;
 }
-export const PostFlagCopyConfigApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const PostFlagCopyConfigApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -23435,18 +23203,17 @@ export interface PostGenerateProjectEnvWarehouseDestinationKeyPairRequest {
   /** The environment key */
   envKey: string;
 }
-export const PostGenerateProjectEnvWarehouseDestinationKeyPairRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      projKey: S.String.pipe(T.Label()),
-      envKey: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-warehouse-destination-key-pair",
-        code: 200,
-      }),
-    ),
+const PostGenerateProjectEnvWarehouseDestinationKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projKey: S.String.pipe(T.Label()),
+    envKey: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-warehouse-destination-key-pair",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PostGenerateProjectEnvWarehouseDestinationKeyPairRequest",
 }) as any as S.Schema<PostGenerateProjectEnvWarehouseDestinationKeyPairRequest>;
@@ -23457,7 +23224,7 @@ export interface GenerateWarehouseDestinationKeyPairPostRep {
   /** The public key to assign in your Snowflake worksheet */
   public_key_pkcs8?: string;
 }
-export const GenerateWarehouseDestinationKeyPairPostRep = /*@__PURE__*/ S.suspend(() =>
+const GenerateWarehouseDestinationKeyPairPostRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_key: S.optional(S.String),
     public_key_pkcs8: S.optional(S.String),
@@ -23472,7 +23239,7 @@ export interface PostGenerateTrustPolicyRequest {
   /** The environment key */
   envKey: string;
 }
-export const PostGenerateTrustPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PostGenerateTrustPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projKey: S.String.pipe(T.Label()),
     envKey: S.String.pipe(T.Label()),
@@ -23489,7 +23256,7 @@ export const PostGenerateTrustPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The action of trust policy statement */
 export type TrustPolicyStatementActionList = Array<string>;
-export const TrustPolicyStatementActionList =
+const TrustPolicyStatementActionList =
   FeatureFlagTagsList as any as S.Schema<TrustPolicyStatementActionList>;
 
 export interface TrustPolicyStatement {
@@ -23502,7 +23269,7 @@ export interface TrustPolicyStatement {
   /** The condition of trust policy statement */
   Condition?: unknown;
 }
-export const TrustPolicyStatement = /*@__PURE__*/ S.suspend(() =>
+const TrustPolicyStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Effect: S.optional(S.String),
     Action: S.optional(TrustPolicyStatementActionList),
@@ -23513,7 +23280,7 @@ export const TrustPolicyStatement = /*@__PURE__*/ S.suspend(() =>
 
 /** The statements of the trust policy */
 export type TrustPolicyDetailsStatementList = Array<TrustPolicyStatement>;
-export const TrustPolicyDetailsStatementList = /*@__PURE__*/ S.Array(
+const TrustPolicyDetailsStatementList = /*@__PURE__*/ S.Array(
   TrustPolicyStatement,
 ) as any as S.Schema<TrustPolicyDetailsStatementList>;
 
@@ -23523,7 +23290,7 @@ export interface TrustPolicyDetails {
   /** The statements of the trust policy */
   Statement?: TrustPolicyDetailsStatementList;
 }
-export const TrustPolicyDetails = /*@__PURE__*/ S.suspend(() =>
+const TrustPolicyDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Version: S.optional(S.String),
     Statement: S.optional(TrustPolicyDetailsStatementList),
@@ -23534,7 +23301,7 @@ export interface GenerateTrustPolicyPostRep {
   /** The AWS trust policy */
   awsTrustPolicy?: TrustPolicyDetails;
 }
-export const GenerateTrustPolicyPostRep = /*@__PURE__*/ S.suspend(() =>
+const GenerateTrustPolicyPostRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awsTrustPolicy: S.optional(TrustPolicyDetails),
   }),
@@ -23543,7 +23310,7 @@ export const GenerateTrustPolicyPostRep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateTrustPolicyPostRep>;
 
 export interface PostGenerateWarehouseDestinationKeyPairRequest {}
-export const PostGenerateWarehouseDestinationKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
+const PostGenerateWarehouseDestinationKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -23582,7 +23349,7 @@ export interface PostGenerateWarehouseDestinationSetupScriptRequest {
   clickHousePassword?: string | Redacted.Redacted<string>;
   s3BucketName?: string;
 }
-export const PostGenerateWarehouseDestinationSetupScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const PostGenerateWarehouseDestinationSetupScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projKey: S.String.pipe(T.Label()),
     envKey: S.String.pipe(T.Label()),
@@ -23631,7 +23398,7 @@ export interface WarehouseDestinationSetupScriptRep {
   /** The auto-generated S3 staging bucket name (ClickHouse and Redshift) */
   s3BucketName?: string;
 }
-export const WarehouseDestinationSetupScriptRep = /*@__PURE__*/ S.suspend(() =>
+const WarehouseDestinationSetupScriptRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     script: S.optional(S.String),
     publicKey: S.optional(S.String),
@@ -23646,12 +23413,12 @@ export const WarehouseDestinationSetupScriptRep = /*@__PURE__*/ S.suspend(() =>
 
 /** The attributes that the holdout iteration's results can be sliced by */
 export type PostHoldoutRequestAttributesList = Array<string>;
-export const PostHoldoutRequestAttributesList =
+const PostHoldoutRequestAttributesList =
   FeatureFlagTagsList as any as S.Schema<PostHoldoutRequestAttributesList>;
 
 /** Details on the metrics for this experiment */
 export type PostHoldoutRequestMetricsList = Array<MetricInput>;
-export const PostHoldoutRequestMetricsList = /*@__PURE__*/ S.Array(
+const PostHoldoutRequestMetricsList = /*@__PURE__*/ S.Array(
   MetricInput,
 ) as any as S.Schema<PostHoldoutRequestMetricsList>;
 
@@ -23681,7 +23448,7 @@ export interface PostHoldoutRequest {
   /** Maintainer id */
   maintainerId?: string;
 }
-export const PostHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
+const PostHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -23706,10 +23473,10 @@ export const PostHoldoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of event your metric will track */
 export type PostMetricRequestKind = "pageview" | "click" | "custom" | "trace";
-export const PostMetricRequestKind = S.String;
+const PostMetricRequestKind = S.String;
 
 export type UrlPostKind = "exact" | "canonical" | "substring" | "regex";
-export const UrlPostKind = S.String;
+const UrlPostKind = S.String;
 
 export interface UrlPost {
   kind?: UrlPostKind | (string & {});
@@ -23717,7 +23484,7 @@ export interface UrlPost {
   substring?: string;
   pattern?: string;
 }
-export const UrlPost = /*@__PURE__*/ S.suspend(() =>
+const UrlPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(UrlPostKind),
     url: S.optional(S.String),
@@ -23728,36 +23495,35 @@ export const UrlPost = /*@__PURE__*/ S.suspend(() =>
 
 /** One or more target URLs. Required for click and pageview metrics only. */
 export type PostMetricRequestUrlsList = Array<UrlPost>;
-export const PostMetricRequestUrlsList = /*@__PURE__*/ S.Array(
+const PostMetricRequestUrlsList = /*@__PURE__*/ S.Array(
   UrlPost,
 ) as any as S.Schema<PostMetricRequestUrlsList>;
 
 /** Success criteria. Required for custom and trace numeric metrics, optional for custom and trace conversion metrics. */
 export type PostMetricRequestSuccessCriteria = "HigherThanBaseline" | "LowerThanBaseline";
-export const PostMetricRequestSuccessCriteria = S.String;
+const PostMetricRequestSuccessCriteria = S.String;
 
 /** Tags for the metric */
 export type PostMetricRequestTagsList = Array<string>;
-export const PostMetricRequestTagsList =
-  FeatureFlagTagsList as any as S.Schema<PostMetricRequestTagsList>;
+const PostMetricRequestTagsList = FeatureFlagTagsList as any as S.Schema<PostMetricRequestTagsList>;
 
 /** Deprecated, use <code>analysisUnits</code> instead. */
 export type PostMetricRequestRandomizationUnitsList = Array<string>;
-export const PostMetricRequestRandomizationUnitsList =
+const PostMetricRequestRandomizationUnitsList =
   FeatureFlagTagsList as any as S.Schema<PostMetricRequestRandomizationUnitsList>;
 
 /** An array of analysis units allowed for this metric. */
 export type PostMetricRequestAnalysisUnitsList = Array<string>;
-export const PostMetricRequestAnalysisUnitsList =
+const PostMetricRequestAnalysisUnitsList =
   FeatureFlagTagsList as any as S.Schema<PostMetricRequestAnalysisUnitsList>;
 
 /** The method by which multiple unit event values are aggregated */
 export type PostMetricRequestUnitAggregationType = "average" | "sum" | "count_distinct";
-export const PostMetricRequestUnitAggregationType = S.String;
+const PostMetricRequestUnitAggregationType = S.String;
 
 /** The context attribute / event property values or group member nodes. Numeric values must not exceed 14 decimal places. */
 export type EventFilterValuesList = Array<unknown>;
-export const EventFilterValuesList = FilterValuesList as any as S.Schema<EventFilterValuesList>;
+const EventFilterValuesList = FilterValuesList as any as S.Schema<EventFilterValuesList>;
 
 export interface EventFilter {
   /** Filter type. One of [contextAttribute, eventProperty, group] */
@@ -23773,7 +23539,7 @@ export interface EventFilter {
   /** If set, then take the inverse of the operator. 'in' becomes 'not in'. */
   negate: boolean;
 }
-export const EventFilter = /*@__PURE__*/ S.suspend(() =>
+const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     attribute: S.optional(S.String),
@@ -23810,7 +23576,7 @@ export interface DenominatorPost {
   /** When true, includes imputed zeros in the percentile bound calculation */
   winsorIncludeImputed?: boolean;
 }
-export const DenominatorPost = /*@__PURE__*/ S.suspend(() =>
+const DenominatorPost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     isNumeric: S.optional(S.Boolean),
@@ -23889,7 +23655,7 @@ export interface PostMetricRequest {
   /** For ratio metrics, the denominator event configuration. Only supported for warehouse native custom metrics. */
   denominator?: DenominatorPost;
 }
-export const PostMetricRequest = /*@__PURE__*/ S.suspend(() =>
+const PostMetricRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -23936,7 +23702,7 @@ export interface PostMigrationSafetyIssuesRequest {
   instructions: Instructions;
   comment?: string;
 }
-export const PostMigrationSafetyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+const PostMigrationSafetyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -23956,7 +23722,7 @@ export const PostMigrationSafetyIssuesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the IDs of the rules which are affected by this issue. <code>fallthrough</code> is a sentinel value for the default rule. */
 export type MigrationSafetyIssueRepAffectedRuleIdsList = Array<string>;
-export const MigrationSafetyIssueRepAffectedRuleIdsList =
+const MigrationSafetyIssueRepAffectedRuleIdsList =
   FeatureFlagTagsList as any as S.Schema<MigrationSafetyIssueRepAffectedRuleIdsList>;
 
 export interface MigrationSafetyIssueRep {
@@ -23969,7 +23735,7 @@ export interface MigrationSafetyIssueRep {
   /** Whether the changes caused by <code>causingRuleId</code> bring inconsistency to the old system */
   oldSystemAffected?: boolean;
 }
-export const MigrationSafetyIssueRep = /*@__PURE__*/ S.suspend(() =>
+const MigrationSafetyIssueRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causingRuleId: S.optional(S.String),
     affectedRuleIds: S.optional(MigrationSafetyIssueRepAffectedRuleIdsList),
@@ -23979,19 +23745,19 @@ export const MigrationSafetyIssueRep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationSafetyIssueRep" }) as any as S.Schema<MigrationSafetyIssueRep>;
 
 export type PostMigrationSafetyIssuesResponseBodyList = Array<MigrationSafetyIssueRep>;
-export const PostMigrationSafetyIssuesResponseBodyList = /*@__PURE__*/ S.Array(
+const PostMigrationSafetyIssuesResponseBodyList = /*@__PURE__*/ S.Array(
   MigrationSafetyIssueRep,
 ) as any as S.Schema<PostMigrationSafetyIssuesResponseBodyList>;
 
 export type PostMigrationSafetyIssuesResponse = PostMigrationSafetyIssuesResponseBodyList;
-export const PostMigrationSafetyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const PostMigrationSafetyIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   PostMigrationSafetyIssuesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "PostMigrationSafetyIssuesResponse",
 }) as any as S.Schema<PostMigrationSafetyIssuesResponse>;
 
 export type PostModelConfigRequestTagsList = Array<string>;
-export const PostModelConfigRequestTagsList =
+const PostModelConfigRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostModelConfigRequestTagsList>;
 
 export interface PostModelConfigRequest {
@@ -24018,7 +23784,7 @@ export interface PostModelConfigRequest {
   /** Cost per cached input token in USD */
   costPerCachedInputToken?: number;
 }
-export const PostModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PostModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     name: S.String,
@@ -24044,7 +23810,7 @@ export const PostModelConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostModelConfigRequest" }) as any as S.Schema<PostModelConfigRequest>;
 
 export type PostPromptSnippetRequestTagsList = Array<string>;
-export const PostPromptSnippetRequestTagsList =
+const PostPromptSnippetRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostPromptSnippetRequestTagsList>;
 
 export interface PostPromptSnippetRequest {
@@ -24058,7 +23824,7 @@ export interface PostPromptSnippetRequest {
   maintainerTeamKey?: string;
   tags?: PostPromptSnippetRequestTagsList;
 }
-export const PostPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
+const PostPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String,
@@ -24079,7 +23845,7 @@ export const PostPromptSnippetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A description of what environments and projects the Relay Proxy should include or exclude. To learn more, read [Write an inline policy](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration#write-an-inline-policy). */
 export type PostRelayAutoConfigRequestPolicyList = Array<Statement>;
-export const PostRelayAutoConfigRequestPolicyList =
+const PostRelayAutoConfigRequestPolicyList =
   AuditLogEventsHookCapabilityConfigRepStatementsList as any as S.Schema<PostRelayAutoConfigRequestPolicyList>;
 
 export interface PostRelayAutoConfigRequest {
@@ -24088,7 +23854,7 @@ export interface PostRelayAutoConfigRequest {
   /** A description of what environments and projects the Relay Proxy should include or exclude. To learn more, read [Write an inline policy](https://launchdarkly.com/docs/sdk/relay-proxy/automatic-configuration#write-an-inline-policy). */
   policy: PostRelayAutoConfigRequestPolicyList;
 }
-export const PostRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const PostRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     policy: PostRelayAutoConfigRequestPolicyList,
@@ -24099,7 +23865,7 @@ export const PostRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Segments targeted by this audience. */
 export type AudiencePostSegmentKeysList = Array<string>;
-export const AudiencePostSegmentKeysList =
+const AudiencePostSegmentKeysList =
   FeatureFlagTagsList as any as S.Schema<AudiencePostSegmentKeysList>;
 
 export interface AudiencePost {
@@ -24112,7 +23878,7 @@ export interface AudiencePost {
   /** The configuration for the audience's rollout. */
   configuration?: AudienceConfiguration;
 }
-export const AudiencePost = /*@__PURE__*/ S.suspend(() =>
+const AudiencePost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentKey: S.String,
     name: S.String,
@@ -24123,7 +23889,7 @@ export const AudiencePost = /*@__PURE__*/ S.suspend(() =>
 
 /** An ordered list of the audiences for this release phase. Each audience corresponds to a LaunchDarkly environment. */
 export type CreatePhaseInputAudiencesList = Array<AudiencePost>;
-export const CreatePhaseInputAudiencesList = /*@__PURE__*/ S.Array(
+const CreatePhaseInputAudiencesList = /*@__PURE__*/ S.Array(
   AudiencePost,
 ) as any as S.Schema<CreatePhaseInputAudiencesList>;
 
@@ -24135,7 +23901,7 @@ export interface CreatePhaseInput {
   /** The configuration for the phase's rollout. */
   configuration?: unknown;
 }
-export const CreatePhaseInput = /*@__PURE__*/ S.suspend(() =>
+const CreatePhaseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audiences: CreatePhaseInputAudiencesList,
     name: S.String,
@@ -24145,13 +23911,13 @@ export const CreatePhaseInput = /*@__PURE__*/ S.suspend(() =>
 
 /** A logical grouping of one or more environments that share attributes for rolling out changes */
 export type PostReleasePipelineRequestPhasesList = Array<CreatePhaseInput>;
-export const PostReleasePipelineRequestPhasesList = /*@__PURE__*/ S.Array(
+const PostReleasePipelineRequestPhasesList = /*@__PURE__*/ S.Array(
   CreatePhaseInput,
 ) as any as S.Schema<PostReleasePipelineRequestPhasesList>;
 
 /** A list of tags for this release pipeline */
 export type PostReleasePipelineRequestTagsList = Array<string>;
-export const PostReleasePipelineRequestTagsList =
+const PostReleasePipelineRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PostReleasePipelineRequestTagsList>;
 
 export interface PostReleasePipelineRequest {
@@ -24172,7 +23938,7 @@ export interface PostReleasePipelineRequest {
   /** Whether or not the pipeline is enabled for Release Automation. */
   isLegacy?: boolean;
 }
-export const PostReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const PostReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -24191,7 +23957,7 @@ export const PostReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Ordered list of release policy keys */
 export type PostReleasePoliciesOrderRequestBodyList = Array<string>;
-export const PostReleasePoliciesOrderRequestBodyList =
+const PostReleasePoliciesOrderRequestBodyList =
   FeatureFlagTagsList as any as S.Schema<PostReleasePoliciesOrderRequestBodyList>;
 
 export interface PostReleasePoliciesOrderRequest {
@@ -24199,7 +23965,7 @@ export interface PostReleasePoliciesOrderRequest {
   projectKey: string;
   body: PostReleasePoliciesOrderRequestBodyList;
 }
-export const PostReleasePoliciesOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const PostReleasePoliciesOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     body: PostReleasePoliciesOrderRequestBodyList.pipe(T.HttpBody()),
@@ -24215,11 +23981,11 @@ export const PostReleasePoliciesOrderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostReleasePoliciesOrderRequest>;
 
 export type PostReleasePoliciesOrderResponseBodyList = Array<ReleasePolicy>;
-export const PostReleasePoliciesOrderResponseBodyList =
+const PostReleasePoliciesOrderResponseBodyList =
   ReleasePoliciesResponseItemsList as any as S.Schema<PostReleasePoliciesOrderResponseBodyList>;
 
 export type PostReleasePoliciesOrderResponse = PostReleasePoliciesOrderResponseBodyList;
-export const PostReleasePoliciesOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const PostReleasePoliciesOrderResponse = /*@__PURE__*/ S.suspend(() =>
   PostReleasePoliciesOrderResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "PostReleasePoliciesOrderResponse",
@@ -24237,7 +24003,7 @@ export interface PostReleasePolicyRequest {
   /** The human-readable key of the release policy */
   key: string;
 }
-export const PostReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PostReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     scope: S.optional(ReleasePolicyScope),
@@ -24253,7 +24019,7 @@ export const PostReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of repository. If not specified, the default value is <code>custom</code>. */
 export type PostRepositoryRequestType = "bitbucket" | "custom" | "github" | "gitlab";
-export const PostRepositoryRequestType = S.String;
+const PostRepositoryRequestType = S.String;
 
 export interface PostRepositoryRequest {
   /** The repository name */
@@ -24269,7 +24035,7 @@ export interface PostRepositoryRequest {
   /** The repository's default branch. If not specified, the default value is <code>main</code>. */
   defaultBranch?: string;
 }
-export const PostRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PostRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sourceLink: S.optional(S.String),
@@ -24281,14 +24047,14 @@ export const PostRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostRepositoryRequest" }) as any as S.Schema<PostRepositoryRequest>;
 
 export type PostRestrictedModelsRequestKeysList = Array<string>;
-export const PostRestrictedModelsRequestKeysList =
+const PostRestrictedModelsRequestKeysList =
   FeatureFlagTagsList as any as S.Schema<PostRestrictedModelsRequestKeysList>;
 
 export interface PostRestrictedModelsRequest {
   projectKey: string;
   keys: PostRestrictedModelsRequestKeysList;
 }
-export const PostRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const PostRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     keys: PostRestrictedModelsRequestKeysList,
@@ -24304,7 +24070,7 @@ export const PostRestrictedModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostRestrictedModelsRequest>;
 
 export type RestrictedModelsResponseSuccessesList = Array<string>;
-export const RestrictedModelsResponseSuccessesList =
+const RestrictedModelsResponseSuccessesList =
   FeatureFlagTagsList as any as S.Schema<RestrictedModelsResponseSuccessesList>;
 
 export interface RestrictedModelError {
@@ -24312,7 +24078,7 @@ export interface RestrictedModelError {
   message: string;
   code: number;
 }
-export const RestrictedModelError = /*@__PURE__*/ S.suspend(() =>
+const RestrictedModelError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     message: S.String,
@@ -24321,7 +24087,7 @@ export const RestrictedModelError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestrictedModelError" }) as any as S.Schema<RestrictedModelError>;
 
 export type RestrictedModelsResponseErrorsList = Array<RestrictedModelError>;
-export const RestrictedModelsResponseErrorsList = /*@__PURE__*/ S.Array(
+const RestrictedModelsResponseErrorsList = /*@__PURE__*/ S.Array(
   RestrictedModelError,
 ) as any as S.Schema<RestrictedModelsResponseErrorsList>;
 
@@ -24329,7 +24095,7 @@ export interface RestrictedModelsResponse {
   successes: RestrictedModelsResponseSuccessesList;
   errors: RestrictedModelsResponseErrorsList;
 }
-export const RestrictedModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const RestrictedModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successes: RestrictedModelsResponseSuccessesList,
     errors: RestrictedModelsResponseErrorsList,
@@ -24338,11 +24104,11 @@ export const RestrictedModelsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The kind of SDK key. Can be either "sdk" (server-side) or "mobile" (mobile). Defaults to "sdk" when not explicitly defined. */
 export type PostSdkKeyRequestKind = "sdk" | "mobile";
-export const PostSdkKeyRequestKind = S.String;
+const PostSdkKeyRequestKind = S.String;
 
 /** List of view keys to associate with the SDK key. */
 export type PostSdkKeyRequestViewKeysList = Array<string>;
-export const PostSdkKeyRequestViewKeysList =
+const PostSdkKeyRequestViewKeysList =
   FeatureFlagTagsList as any as S.Schema<PostSdkKeyRequestViewKeysList>;
 
 export interface PostSdkKeyRequest {
@@ -24360,7 +24126,7 @@ export interface PostSdkKeyRequest {
   /** List of view keys to associate with the SDK key. */
   viewKeys?: PostSdkKeyRequestViewKeysList;
 }
-export const PostSdkKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PostSdkKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24381,7 +24147,7 @@ export const PostSdkKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of the workflow stages */
 export type PostWorkflowRequestStagesList = Array<StageInput>;
-export const PostWorkflowRequestStagesList =
+const PostWorkflowRequestStagesList =
   CreateWorkflowTemplateRequestStagesList as any as S.Schema<PostWorkflowRequestStagesList>;
 
 export interface PostWorkflowRequest {
@@ -24404,7 +24170,7 @@ export interface PostWorkflowRequest {
   /** A list of the workflow stages */
   stages?: PostWorkflowRequestStagesList;
 }
-export const PostWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const PostWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -24426,7 +24192,7 @@ export const PostWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of flag references found on the branch */
 export type PutBranchRequestReferencesList = Array<ReferenceRep>;
-export const PutBranchRequestReferencesList =
+const PutBranchRequestReferencesList =
   BranchRepReferencesList as any as S.Schema<PutBranchRequestReferencesList>;
 
 export interface PutBranchRequest {
@@ -24447,7 +24213,7 @@ export interface PutBranchRequest {
   /** A timestamp of the current commit */
   commitTime?: number;
 }
-export const PutBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const PutBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repo: S.String.pipe(T.Label()),
     branch: S.String.pipe(T.Label()),
@@ -24467,8 +24233,7 @@ export const PutBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutBranchRequest" }) as any as S.Schema<PutBranchRequest>;
 
 export interface PutBranchResponse {}
-export const PutBranchResponse =
-  CreateBigSegmentExportResponse as any as S.Schema<PutBranchResponse>;
+const PutBranchResponse = CreateBigSegmentExportResponse as any as S.Schema<PutBranchResponse>;
 
 export interface PutContextFlagSettingRequest {
   /** The project key */
@@ -24486,7 +24251,7 @@ export interface PutContextFlagSettingRequest {
   /** Optional comment describing the change */
   comment?: string;
 }
-export const PutContextFlagSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PutContextFlagSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24507,7 +24272,7 @@ export const PutContextFlagSettingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutContextFlagSettingRequest>;
 
 export interface PutContextFlagSettingResponse {}
-export const PutContextFlagSettingResponse =
+const PutContextFlagSettingResponse =
   CreateBigSegmentExportResponse as any as S.Schema<PutContextFlagSettingResponse>;
 
 export interface PutContextKindRequest {
@@ -24526,7 +24291,7 @@ export interface PutContextKindRequest {
   /** The context kind version. If not specified when the context kind is created, defaults to 1. */
   version?: number;
 }
-export const PutContextKindRequest = /*@__PURE__*/ S.suspend(() =>
+const PutContextKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Label()),
@@ -24542,7 +24307,7 @@ export const PutContextKindRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The location and content type of related resources */
 export type UpsertResponseRepLinksMap = { [key: string]: Link | undefined };
-export const UpsertResponseRepLinksMap =
+const UpsertResponseRepLinksMap =
   InsightsRepositoryProjectCollectionLinksMap as any as S.Schema<UpsertResponseRepLinksMap>;
 
 export interface UpsertResponseRep {
@@ -24551,7 +24316,7 @@ export interface UpsertResponseRep {
   /** The location and content type of related resources */
   _links?: UpsertResponseRepLinksMap;
 }
-export const UpsertResponseRep = /*@__PURE__*/ S.suspend(() =>
+const UpsertResponseRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     _links: S.optional(UpsertResponseRepLinksMap),
@@ -24566,7 +24331,7 @@ export interface RandomizationUnitInput {
   /** (deprecated) This field is deprecated and will be removed. Use randomizationUnit instead. */
   standardRandomizationUnit?: string;
 }
-export const RandomizationUnitInput = /*@__PURE__*/ S.suspend(() =>
+const RandomizationUnitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     randomizationUnit: S.String,
     default: S.optional(S.Boolean),
@@ -24576,7 +24341,7 @@ export const RandomizationUnitInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of randomization units allowed for this project. */
 export type PutExperimentationSettingsRequestRandomizationUnitsList = Array<RandomizationUnitInput>;
-export const PutExperimentationSettingsRequestRandomizationUnitsList = /*@__PURE__*/ S.Array(
+const PutExperimentationSettingsRequestRandomizationUnitsList = /*@__PURE__*/ S.Array(
   RandomizationUnitInput,
 ) as any as S.Schema<PutExperimentationSettingsRequestRandomizationUnitsList>;
 
@@ -24586,7 +24351,7 @@ export interface PutExperimentationSettingsRequest {
   /** An array of randomization units allowed for this project. */
   randomizationUnits: PutExperimentationSettingsRequestRandomizationUnitsList;
 }
-export const PutExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     randomizationUnits: PutExperimentationSettingsRequestRandomizationUnitsList,
@@ -24603,7 +24368,7 @@ export const PutExperimentationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of default tags for each flag */
 export type PutFlagDefaultsByProjectRequestTagsList = Array<string>;
-export const PutFlagDefaultsByProjectRequestTagsList =
+const PutFlagDefaultsByProjectRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PutFlagDefaultsByProjectRequestTagsList>;
 
 export interface PutFlagDefaultsByProjectRequest {
@@ -24617,7 +24382,7 @@ export interface PutFlagDefaultsByProjectRequest {
   /** Which client-side SDK types can use this flag by default. */
   defaultClientSideAvailability: DefaultClientSideAvailability;
 }
-export const PutFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFlagDefaultsByProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     tags: PutFlagDefaultsByProjectRequestTagsList,
@@ -24639,7 +24404,7 @@ export interface PutFlagFollowerRequest {
   /** The memberId of the member to add as a follower of the flag. Reader roles can only add themselves. */
   memberId: string;
 }
-export const PutFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
+const PutFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -24655,17 +24420,17 @@ export const PutFlagFollowerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutFlagFollowerRequest" }) as any as S.Schema<PutFlagFollowerRequest>;
 
 export interface PutFlagFollowerResponse {}
-export const PutFlagFollowerResponse =
+const PutFlagFollowerResponse =
   CreateBigSegmentExportResponse as any as S.Schema<PutFlagFollowerResponse>;
 
 /** A logical grouping of one or more environments that share attributes for rolling out changes */
 export type PutReleasePipelineRequestPhasesList = Array<CreatePhaseInput>;
-export const PutReleasePipelineRequestPhasesList =
+const PutReleasePipelineRequestPhasesList =
   PostReleasePipelineRequestPhasesList as any as S.Schema<PutReleasePipelineRequestPhasesList>;
 
 /** A list of tags for this release pipeline */
 export type PutReleasePipelineRequestTagsList = Array<string>;
-export const PutReleasePipelineRequestTagsList =
+const PutReleasePipelineRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<PutReleasePipelineRequestTagsList>;
 
 export interface PutReleasePipelineRequest {
@@ -24682,7 +24447,7 @@ export interface PutReleasePipelineRequest {
   /** A list of tags for this release pipeline */
   tags?: PutReleasePipelineRequestTagsList;
 }
-export const PutReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const PutReleasePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     pipelineKey: S.String.pipe(T.Label()),
@@ -24713,7 +24478,7 @@ export interface PutReleasePolicyRequest {
   /** The name of the release policy */
   name: string;
 }
-export const PutReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const PutReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     policyKey: S.String.pipe(T.Label()),
@@ -24733,7 +24498,7 @@ export const PutReleasePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The complete target list of view keys to associate with this SDK key. An empty array removes all views from the SDK key. */
 export type PutSdkKeyViewsRequestViewKeysList = Array<string>;
-export const PutSdkKeyViewsRequestViewKeysList =
+const PutSdkKeyViewsRequestViewKeysList =
   FeatureFlagTagsList as any as S.Schema<PutSdkKeyViewsRequestViewKeysList>;
 
 export interface PutSdkKeyViewsRequest {
@@ -24745,7 +24510,7 @@ export interface PutSdkKeyViewsRequest {
   /** The complete target list of view keys to associate with this SDK key. An empty array removes all views from the SDK key. */
   viewKeys: PutSdkKeyViewsRequestViewKeysList;
 }
-export const PutSdkKeyViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSdkKeyViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24763,7 +24528,7 @@ export const PutSdkKeyViewsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Summaries of views associated with the SDK key. */
 export type PutSdkKeyViewsResponseViewSummariesList = Array<ViewSummary>;
-export const PutSdkKeyViewsResponseViewSummariesList =
+const PutSdkKeyViewsResponseViewSummariesList =
   SdkKeyListItemViewSummariesList as any as S.Schema<PutSdkKeyViewsResponseViewSummariesList>;
 
 export interface PutSdkKeyViewsResponse {
@@ -24789,7 +24554,7 @@ export interface PutSdkKeyViewsResponse {
   /** Summaries of views associated with the SDK key. */
   viewSummaries?: PutSdkKeyViewsResponseViewSummariesList;
 }
-export const PutSdkKeyViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSdkKeyViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _links: S.optional(ParentAndSelfLinks),
     kind: SdkKeyKind,
@@ -24813,7 +24578,7 @@ export interface ResetEnvironmentMobileKeyRequest {
   /** The environment key */
   environmentKey: string;
 }
-export const ResetEnvironmentMobileKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetEnvironmentMobileKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24836,7 +24601,7 @@ export interface ResetEnvironmentSDKKeyRequest {
   /** The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately. During the period between this call and the time when the old SDK key expires, both the old SDK key and the new SDK key will work. */
   expiry?: number;
 }
-export const ResetEnvironmentSDKKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetEnvironmentSDKKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24858,7 +24623,7 @@ export interface ResetRelayAutoConfigRequest {
   /** An expiration time for the old Relay Proxy configuration key, expressed as a Unix epoch time in milliseconds. By default, the Relay Proxy configuration will expire immediately. */
   expiry?: number;
 }
-export const ResetRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetRelayAutoConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     expiry: S.optional(S.Number.pipe(T.Query())),
@@ -24885,7 +24650,7 @@ export interface SearchContextsRequest {
   /** Specifies whether to include or omit the total count of matching contexts. Defaults to true. The total count is approximate and may be omitted if it is unavailable. */
   includeTotalCount?: boolean;
 }
-export const SearchContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -24911,7 +24676,7 @@ export interface TriggerFlagImportJobRequest {
   /** The integration ID */
   integrationId: string;
 }
-export const TriggerFlagImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerFlagImportJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     integrationKey: S.String.pipe(T.Label()),
@@ -24928,11 +24693,11 @@ export const TriggerFlagImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TriggerFlagImportJobRequest>;
 
 export interface TriggerFlagImportJobResponse {}
-export const TriggerFlagImportJobResponse =
+const TriggerFlagImportJobResponse =
   CreateBigSegmentExportResponse as any as S.Schema<TriggerFlagImportJobResponse>;
 
 export type UnlinkResourceRequestResourceType = "flags" | "segments" | "aiConfigs";
-export const UnlinkResourceRequestResourceType = S.String;
+const UnlinkResourceRequestResourceType = S.String;
 
 export interface UnlinkResourceRequest {
   projectKey: string;
@@ -24940,7 +24705,7 @@ export interface UnlinkResourceRequest {
   resourceType: UnlinkResourceRequestResourceType | (string & {});
   body: ViewLinkRequest;
 }
-export const UnlinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -24957,7 +24722,7 @@ export const UnlinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Details of resources that failed to unlink. */
 export type UnlinkResourceSuccessResponseFailedResourcesList = Array<FailedResourceLink>;
-export const UnlinkResourceSuccessResponseFailedResourcesList =
+const UnlinkResourceSuccessResponseFailedResourcesList =
   LinkResourceSuccessResponseFailedResourcesList as any as S.Schema<UnlinkResourceSuccessResponseFailedResourcesList>;
 
 export interface UnlinkResourceSuccessResponse {
@@ -24968,7 +24733,7 @@ export interface UnlinkResourceSuccessResponse {
   /** Details of resources that failed to unlink. */
   failedResources?: UnlinkResourceSuccessResponseFailedResourcesList;
 }
-export const UnlinkResourceSuccessResponse = /*@__PURE__*/ S.suspend(() =>
+const UnlinkResourceSuccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     successCount: S.Number,
     failureCount: S.Number,
@@ -24979,10 +24744,8 @@ export const UnlinkResourceSuccessResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnlinkResourceSuccessResponse>;
 
 export type AnnouncementPatchOperation = PatchOperation;
-export const AnnouncementPatchOperation = PatchOperation;
-
 export type AnnouncementJSONPatch = Array<PatchOperation>;
-export const AnnouncementJSONPatch = /*@__PURE__*/ S.Array(
+const AnnouncementJSONPatch = /*@__PURE__*/ S.Array(
   PatchOperation,
 ) as any as S.Schema<AnnouncementJSONPatch>;
 
@@ -24990,7 +24753,7 @@ export interface UpdateAnnouncementPublicRequest {
   announcementId: string;
   body: AnnouncementJSONPatch;
 }
-export const UpdateAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnouncementPublicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announcementId: S.String.pipe(T.Label()),
     body: AnnouncementJSONPatch.pipe(T.HttpBody()),
@@ -25004,7 +24767,7 @@ export interface UpdateApplicationRequest {
   applicationKey: string;
   body: JSONPatch;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25018,7 +24781,7 @@ export interface UpdateApplicationVersionRequest {
   versionKey: string;
   body: JSONPatch;
 }
-export const UpdateApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationKey: S.String.pipe(T.Label()),
     versionKey: S.String.pipe(T.Label()),
@@ -25042,7 +24805,7 @@ export interface UpdateApprovalRequestRequest {
   /** The instructions to perform when updating */
   instructions: Instructions;
 }
-export const UpdateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -25053,18 +24816,16 @@ export const UpdateApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateApprovalRequestRequest>;
 
 export type SegmentUserListAddList = Array<string>;
-export const SegmentUserListAddList =
-  FeatureFlagTagsList as any as S.Schema<SegmentUserListAddList>;
+const SegmentUserListAddList = FeatureFlagTagsList as any as S.Schema<SegmentUserListAddList>;
 
 export type SegmentUserListRemoveList = Array<string>;
-export const SegmentUserListRemoveList =
-  FeatureFlagTagsList as any as S.Schema<SegmentUserListRemoveList>;
+const SegmentUserListRemoveList = FeatureFlagTagsList as any as S.Schema<SegmentUserListRemoveList>;
 
 export interface SegmentUserList {
   add?: SegmentUserListAddList;
   remove?: SegmentUserListRemoveList;
 }
-export const SegmentUserList = /*@__PURE__*/ S.suspend(() =>
+const SegmentUserList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     add: S.optional(SegmentUserListAddList),
     remove: S.optional(SegmentUserListRemoveList),
@@ -25081,7 +24842,7 @@ export interface UpdateBigSegmentContextTargetsRequest {
   included?: SegmentUserList;
   excluded?: SegmentUserList;
 }
-export const UpdateBigSegmentContextTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBigSegmentContextTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25100,7 +24861,7 @@ export const UpdateBigSegmentContextTargetsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UpdateBigSegmentContextTargetsRequest>;
 
 export interface UpdateBigSegmentContextTargetsResponse {}
-export const UpdateBigSegmentContextTargetsResponse =
+const UpdateBigSegmentContextTargetsResponse =
   DeleteAgentOptimizationRunResponse as any as S.Schema<UpdateBigSegmentContextTargetsResponse>;
 
 export interface UpdateBigSegmentTargetsRequest {
@@ -25113,7 +24874,7 @@ export interface UpdateBigSegmentTargetsRequest {
   included?: SegmentUserList;
   excluded?: SegmentUserList;
 }
-export const UpdateBigSegmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBigSegmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25132,7 +24893,7 @@ export const UpdateBigSegmentTargetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateBigSegmentTargetsRequest>;
 
 export interface UpdateBigSegmentTargetsResponse {}
-export const UpdateBigSegmentTargetsResponse =
+const UpdateBigSegmentTargetsResponse =
   DeleteAgentOptimizationResponse as any as S.Schema<UpdateBigSegmentTargetsResponse>;
 
 export interface UpdateDeploymentRequest {
@@ -25140,7 +24901,7 @@ export interface UpdateDeploymentRequest {
   deploymentID: string;
   body: JSONPatch;
 }
-export const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentID: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25164,7 +24925,7 @@ export type UpdateDestinationRequestKind =
   | "databricks"
   | "bigquery"
   | "redshift";
-export const UpdateDestinationRequestKind = S.String;
+const UpdateDestinationRequestKind = S.String;
 
 export interface UpdateDestinationRequest {
   /** The project key */
@@ -25180,7 +24941,7 @@ export interface UpdateDestinationRequest {
   /** Whether the export is on. Displayed as the integration status in the LaunchDarkly UI. */
   on?: boolean;
 }
-export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25206,7 +24967,7 @@ export interface UpdateDestinationByIdRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateDestinationByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDestinationByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25232,7 +24993,7 @@ export interface UpdateFlagLinkRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFlagLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     featureFlagKey: S.String.pipe(T.Label()),
@@ -25252,7 +25013,7 @@ export interface UpdateIntegrationConfigurationRequest {
   integrationConfigurationId: string;
   body: JSONPatch;
 }
-export const UpdateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationConfigurationId: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25279,7 +25040,7 @@ export interface UpdateLayerRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require a <code>value</code> field in the array element. */
   instructions: Instructions;
 }
-export const UpdateLayerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLayerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     layerKey: S.String.pipe(T.Label()),
@@ -25296,7 +25057,7 @@ export interface UpdateMemberRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25309,7 +25070,7 @@ export interface UpdateMembersRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require additional parameters as part of this object. */
   instructions: Instructions;
 }
-export const UpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     instructions: Instructions,
@@ -25318,16 +25079,16 @@ export const UpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of members IDs of the members who were successfully updated. */
 export type BulkEditMembersRepMembersList = Array<string>;
-export const BulkEditMembersRepMembersList =
+const BulkEditMembersRepMembersList =
   FeatureFlagTagsList as any as S.Schema<BulkEditMembersRepMembersList>;
 
 export type BulkEditMembersRepErrorsItemMap = { [key: string]: string | undefined };
-export const BulkEditMembersRepErrorsItemMap =
+const BulkEditMembersRepErrorsItemMap =
   CreateFlagLinkRequestMetadataMap as any as S.Schema<BulkEditMembersRepErrorsItemMap>;
 
 /** A list of member IDs and errors for the members whose updates failed. */
 export type BulkEditMembersRepErrorsList = Array<BulkEditMembersRepErrorsItemMap>;
-export const BulkEditMembersRepErrorsList = /*@__PURE__*/ S.Array(
+const BulkEditMembersRepErrorsList = /*@__PURE__*/ S.Array(
   BulkEditMembersRepErrorsItemMap,
 ) as any as S.Schema<BulkEditMembersRepErrorsList>;
 
@@ -25337,7 +25098,7 @@ export interface BulkEditMembersRep {
   /** A list of member IDs and errors for the members whose updates failed. */
   errors?: BulkEditMembersRepErrorsList;
 }
-export const BulkEditMembersRep = /*@__PURE__*/ S.suspend(() =>
+const BulkEditMembersRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(BulkEditMembersRepMembersList),
     errors: S.optional(BulkEditMembersRepErrorsList),
@@ -25354,7 +25115,7 @@ export interface ReleaseGuardianConfigurationInput {
   /** The randomization unit for the measured rollout */
   randomizationUnit?: string;
 }
-export const ReleaseGuardianConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const ReleaseGuardianConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringWindowMilliseconds: S.optional(S.Number),
     rolloutWeight: S.optional(S.Number),
@@ -25367,12 +25128,12 @@ export const ReleaseGuardianConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of member IDs. These members are notified to review the approval request. */
 export type ReleaserAudienceConfigInputNotifyMemberIdsList = Array<string>;
-export const ReleaserAudienceConfigInputNotifyMemberIdsList =
+const ReleaserAudienceConfigInputNotifyMemberIdsList =
   FeatureFlagTagsList as any as S.Schema<ReleaserAudienceConfigInputNotifyMemberIdsList>;
 
 /** An array of team keys. The members of these teams are notified to review the approval request. */
 export type ReleaserAudienceConfigInputNotifyTeamKeysList = Array<string>;
-export const ReleaserAudienceConfigInputNotifyTeamKeysList =
+const ReleaserAudienceConfigInputNotifyTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<ReleaserAudienceConfigInputNotifyTeamKeysList>;
 
 export interface ReleaserAudienceConfigInput {
@@ -25385,7 +25146,7 @@ export interface ReleaserAudienceConfigInput {
   /** An array of team keys. The members of these teams are notified to review the approval request. */
   notifyTeamKeys?: ReleaserAudienceConfigInputNotifyTeamKeysList;
 }
-export const ReleaserAudienceConfigInput = /*@__PURE__*/ S.suspend(() =>
+const ReleaserAudienceConfigInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audienceId: S.optional(S.String),
     releaseGuardianConfiguration: S.optional(ReleaseGuardianConfigurationInput),
@@ -25398,7 +25159,7 @@ export const ReleaserAudienceConfigInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Extra configuration for audiences required upon phase initialization. */
 export type UpdatePhaseStatusRequestAudiencesList = Array<ReleaserAudienceConfigInput>;
-export const UpdatePhaseStatusRequestAudiencesList = /*@__PURE__*/ S.Array(
+const UpdatePhaseStatusRequestAudiencesList = /*@__PURE__*/ S.Array(
   ReleaserAudienceConfigInput,
 ) as any as S.Schema<UpdatePhaseStatusRequestAudiencesList>;
 
@@ -25414,7 +25175,7 @@ export interface UpdatePhaseStatusRequest {
   /** Extra configuration for audiences required upon phase initialization. */
   audiences?: UpdatePhaseStatusRequestAudiencesList;
 }
-export const UpdatePhaseStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePhaseStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     flagKey: S.String.pipe(T.Label()),
@@ -25435,7 +25196,7 @@ export interface UpdateProjectRequest {
   projectKey: string;
   body: JSONPatch;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25444,7 +25205,7 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags for the segment */
 export type UpdateSegmentRequestTagsList = Array<string>;
-export const UpdateSegmentRequestTagsList =
+const UpdateSegmentRequestTagsList =
   FeatureFlagTagsList as any as S.Schema<UpdateSegmentRequestTagsList>;
 
 export interface UpdateSegmentRequest {
@@ -25465,7 +25226,7 @@ export interface UpdateSegmentRequest {
   /** For big segments, the targeted context kind. */
   unboundedContextKind?: string;
 }
-export const UpdateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSegmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25494,7 +25255,7 @@ export interface UpdateSegmentBySegmentKeyRequest {
   /** Optional comment */
   comment?: string;
 }
-export const UpdateSegmentBySegmentKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSegmentBySegmentKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25520,7 +25281,7 @@ export interface UpdateSubscriptionRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrationKey: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -25542,7 +25303,7 @@ export interface UpdateTeamRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require additional parameters as part of this object. */
   instructions: Instructions;
 }
-export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamKey: S.String.pipe(T.Label()),
     expand: S.optional(S.String.pipe(T.Query())),
@@ -25557,7 +25318,7 @@ export interface UpdateTeamsRequest {
   /** The instructions to perform when updating. This should be an array with objects that look like <code>{"kind": "update_action"}</code>. Some instructions also require additional parameters as part of this object. */
   instructions: Instructions;
 }
-export const UpdateTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     instructions: Instructions,
@@ -25566,21 +25327,18 @@ export const UpdateTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of member IDs of the members who were added to the teams. */
 export type BulkEditTeamsRepMemberIDsList = Array<string>;
-export const BulkEditTeamsRepMemberIDsList =
+const BulkEditTeamsRepMemberIDsList =
   FeatureFlagTagsList as any as S.Schema<BulkEditTeamsRepMemberIDsList>;
 
 /** A list of team keys of the teams that were successfully updated. */
 export type BulkEditTeamsRepTeamKeysList = Array<string>;
-export const BulkEditTeamsRepTeamKeysList =
+const BulkEditTeamsRepTeamKeysList =
   FeatureFlagTagsList as any as S.Schema<BulkEditTeamsRepTeamKeysList>;
 
 export type BulkEditTeamsRepErrorsItemMap = { [key: string]: string | undefined };
-export const BulkEditTeamsRepErrorsItemMap =
-  CreateFlagLinkRequestMetadataMap as any as S.Schema<BulkEditTeamsRepErrorsItemMap>;
-
 /** A list of team keys and errors for the teams whose updates failed. */
 export type BulkEditTeamsRepErrorsList = Array<BulkEditTeamsRepErrorsItemMap>;
-export const BulkEditTeamsRepErrorsList =
+const BulkEditTeamsRepErrorsList =
   BulkEditMembersRepErrorsList as any as S.Schema<BulkEditTeamsRepErrorsList>;
 
 export interface BulkEditTeamsRep {
@@ -25591,7 +25349,7 @@ export interface BulkEditTeamsRep {
   /** A list of team keys and errors for the teams whose updates failed. */
   errors?: BulkEditTeamsRepErrorsList;
 }
-export const BulkEditTeamsRep = /*@__PURE__*/ S.suspend(() =>
+const BulkEditTeamsRep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberIDs: S.optional(BulkEditTeamsRepMemberIDsList),
     teamKeys: S.optional(BulkEditTeamsRepTeamKeysList),
@@ -25604,7 +25362,7 @@ export interface UpdateTokenRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25613,8 +25371,7 @@ export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags associated with this view */
 export type UpdateViewRequestTagsList = Array<string>;
-export const UpdateViewRequestTagsList =
-  FeatureFlagTagsList as any as S.Schema<UpdateViewRequestTagsList>;
+const UpdateViewRequestTagsList = FeatureFlagTagsList as any as S.Schema<UpdateViewRequestTagsList>;
 
 export interface UpdateViewRequest {
   projectKey: string;
@@ -25630,7 +25387,7 @@ export interface UpdateViewRequest {
   /** Tags associated with this view */
   tags?: UpdateViewRequestTagsList;
 }
-export const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     viewKey: S.String.pipe(T.Label()),
@@ -25649,7 +25406,7 @@ export interface UpdateWebhookRequest {
   id: string;
   body: JSONPatch;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     body: JSONPatch.pipe(T.HttpBody()),
@@ -25666,7 +25423,7 @@ export interface ValidateIntegrationDeliveryConfigurationRequest {
   /** The configuration ID */
   id: string;
 }
-export const ValidateIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateIntegrationDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectKey: S.String.pipe(T.Label()),
     environmentKey: S.String.pipe(T.Label()),
@@ -25692,7 +25449,7 @@ export interface IntegrationDeliveryConfigurationResponse {
   /** JSON response to the validation request */
   responseBody?: string;
 }
-export const IntegrationDeliveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const IntegrationDeliveryConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number),
     error: S.optional(S.String),

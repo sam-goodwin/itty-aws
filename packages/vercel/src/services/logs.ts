@@ -43,7 +43,7 @@ export interface GetRuntimeLogsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRuntimeLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuntimeLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     deploymentId: S.String.pipe(T.Label()),
@@ -59,7 +59,7 @@ export const GetRuntimeLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuntimeLogsRequest" }) as any as S.Schema<GetRuntimeLogsRequest>;
 
 export interface GetRuntimeLogsResponse {}
-export const GetRuntimeLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetRuntimeLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetRuntimeLogsResponse",
 }) as any as S.Schema<GetRuntimeLogsResponse>;
 

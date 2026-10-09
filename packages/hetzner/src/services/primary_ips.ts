@@ -21,23 +21,22 @@ export class PrimaryIpLimitExceeded
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpRequestLabelsMap = { [key: string]: string | undefined };
-export const CreatePrimaryIpRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreatePrimaryIpRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePrimaryIpRequestLabelsMap>;
 
 /** [Primary IP](#tag/primary-ips) type. */
 export type CreatePrimaryIpRequestType = "ipv4" | "ipv6";
-export const CreatePrimaryIpRequestType = S.String;
+const CreatePrimaryIpRequestType = S.String;
 
 /** [Location](#tag/locations) ID or name the [Primary IP](#tag/primary-ips) will be bound to. Omit if `assignee_id`/`assignee_type` or `datacenter` are provided. */
 export type CreatePrimaryIpRequestLocation = string | number;
-export const CreatePrimaryIpRequestLocation =
-  S.Unknown as any as S.Schema<CreatePrimaryIpRequestLocation>;
+const CreatePrimaryIpRequestLocation = S.Unknown as any as S.Schema<CreatePrimaryIpRequestLocation>;
 
 /** Type of resource to assign the [Primary IP](#tag/primary-ips) to. Omitted if the [Primary IP](#tag/primary-ips) should not get assigned. */
 export type CreatePrimaryIpRequestAssigneeType = "server" | "unassigned";
-export const CreatePrimaryIpRequestAssigneeType = S.String;
+const CreatePrimaryIpRequestAssigneeType = S.String;
 
 export interface CreatePrimaryIpRequest {
   /** Name of the Resource. Must be unique per Project. */
@@ -55,7 +54,7 @@ export interface CreatePrimaryIpRequest {
   /** Auto deletion state. If enabled the [Primary IP](#tag/primary-ips) will be deleted once the assigned resource gets deleted. */
   auto_delete?: boolean;
 }
-export const CreatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     labels: S.optional(CreatePrimaryIpRequestLabelsMap),
@@ -69,7 +68,7 @@ export const CreatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const CreatePrimaryIpResponsePrimaryIpLabelsMap =
+const CreatePrimaryIpResponsePrimaryIpLabelsMap =
   CreatePrimaryIpRequestLabelsMap as any as S.Schema<CreatePrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
@@ -91,7 +90,7 @@ export interface CreatePrimaryIpResponsePrimaryIpLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-export const CreatePrimaryIpResponsePrimaryIpLocation = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponsePrimaryIpLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -112,7 +111,7 @@ export interface CreatePrimaryIpResponsePrimaryIpDnsPtrItem {
   /** Domain Name to point to. PTR record content used for reverse DNS. */
   dns_ptr: string;
 }
-export const CreatePrimaryIpResponsePrimaryIpDnsPtrItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponsePrimaryIpDnsPtrItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.String,
     dns_ptr: S.String,
@@ -124,7 +123,7 @@ export const CreatePrimaryIpResponsePrimaryIpDnsPtrItem = /*@__PURE__*/ S.suspen
 /** List of reverse DNS records. */
 export type CreatePrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const CreatePrimaryIpResponsePrimaryIpDnsPtrList = /*@__PURE__*/ S.Array(
+const CreatePrimaryIpResponsePrimaryIpDnsPtrList = /*@__PURE__*/ S.Array(
   CreatePrimaryIpResponsePrimaryIpDnsPtrItem,
 ) as any as S.Schema<CreatePrimaryIpResponsePrimaryIpDnsPtrList>;
 
@@ -133,7 +132,7 @@ export interface CreatePrimaryIpResponsePrimaryIpProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-export const CreatePrimaryIpResponsePrimaryIpProtection = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponsePrimaryIpProtection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete: S.Boolean,
   }),
@@ -143,11 +142,11 @@ export const CreatePrimaryIpResponsePrimaryIpProtection = /*@__PURE__*/ S.suspen
 
 /** [Primary IP](#tag/primary-ips) type. */
 export type CreatePrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
-export const CreatePrimaryIpResponsePrimaryIpType = S.String;
+const CreatePrimaryIpResponsePrimaryIpType = S.String;
 
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type CreatePrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
-export const CreatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
+const CreatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
 
 export interface CreatePrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -177,7 +176,7 @@ export interface CreatePrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
-export const CreatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -199,7 +198,7 @@ export const CreatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type CreatePrimaryIpResponseActionStatus = "running" | "success" | "error";
-export const CreatePrimaryIpResponseActionStatus = S.String;
+const CreatePrimaryIpResponseActionStatus = S.String;
 
 export interface CreatePrimaryIpResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -207,7 +206,7 @@ export interface CreatePrimaryIpResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const CreatePrimaryIpResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -219,7 +218,7 @@ export const CreatePrimaryIpResponseActionResourcesItem = /*@__PURE__*/ S.suspen
 /** Resources the Action relates to. */
 export type CreatePrimaryIpResponseActionResourcesList =
   Array<CreatePrimaryIpResponseActionResourcesItem>;
-export const CreatePrimaryIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const CreatePrimaryIpResponseActionResourcesList = /*@__PURE__*/ S.Array(
   CreatePrimaryIpResponseActionResourcesItem,
 ) as any as S.Schema<CreatePrimaryIpResponseActionResourcesList>;
 
@@ -230,7 +229,7 @@ export interface CreatePrimaryIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const CreatePrimaryIpResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -258,7 +257,7 @@ export interface CreatePrimaryIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreatePrimaryIpResponseActionError | null;
 }
-export const CreatePrimaryIpResponseAction = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -278,7 +277,7 @@ export interface CreatePrimaryIpResponse {
   /** Action will only be returned if the [Primary IP](#tag/primary-ips) is getting assigned. */
   action?: CreatePrimaryIpResponseAction | null;
 }
-export const CreatePrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary_ip: CreatePrimaryIpResponsePrimaryIp,
     action: S.optional(S.NullOr(CreatePrimaryIpResponseAction)),
@@ -289,14 +288,14 @@ export interface DeletePrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
 }
-export const DeletePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/primary_ips/{id}", code: 200 })),
 ).annotate({ identifier: "DeletePrimaryIpRequest" }) as any as S.Schema<DeletePrimaryIpRequest>;
 
 export interface DeletePrimaryIpResponse {}
-export const DeletePrimaryIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePrimaryIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePrimaryIpResponse",
 }) as any as S.Schema<DeletePrimaryIpResponse>;
 
@@ -304,7 +303,7 @@ export interface GetPrimaryIpRequest {
   /** ID of the Primary IP. */
   id: number;
 }
-export const GetPrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/primary_ips/{id}", code: 200 })),
@@ -312,33 +311,27 @@ export const GetPrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetPrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const GetPrimaryIpResponsePrimaryIpLabelsMap =
+const GetPrimaryIpResponsePrimaryIpLabelsMap =
   CreatePrimaryIpRequestLabelsMap as any as S.Schema<GetPrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type GetPrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
-export const GetPrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
-
 export type GetPrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-export const GetPrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-
 /** List of reverse DNS records. */
 export type GetPrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const GetPrimaryIpResponsePrimaryIpDnsPtrList =
+const GetPrimaryIpResponsePrimaryIpDnsPtrList =
   CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<GetPrimaryIpResponsePrimaryIpDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type GetPrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
-export const GetPrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
-
 /** [Primary IP](#tag/primary-ips) type. */
 export type GetPrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
-export const GetPrimaryIpResponsePrimaryIpType = S.String;
+const GetPrimaryIpResponsePrimaryIpType = S.String;
 
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type GetPrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
-export const GetPrimaryIpResponsePrimaryIpAssigneeType = S.String;
+const GetPrimaryIpResponsePrimaryIpAssigneeType = S.String;
 
 export interface GetPrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -368,7 +361,7 @@ export interface GetPrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
-export const GetPrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
+const GetPrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -391,7 +384,7 @@ export const GetPrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
 export interface GetPrimaryIpResponse {
   primary_ip: GetPrimaryIpResponsePrimaryIp;
 }
-export const GetPrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary_ip: GetPrimaryIpResponsePrimaryIp,
   }),
@@ -404,10 +397,10 @@ export type ListPrimaryIpsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-export const ListPrimaryIpsRequestSortItem = S.String;
+const ListPrimaryIpsRequestSortItem = S.String;
 
 export type ListPrimaryIpsRequestSortList = Array<ListPrimaryIpsRequestSortItem | (string & {})>;
-export const ListPrimaryIpsRequestSortList = /*@__PURE__*/ S.Array(
+const ListPrimaryIpsRequestSortList = /*@__PURE__*/ S.Array(
   ListPrimaryIpsRequestSortItem,
 ) as any as S.Schema<ListPrimaryIpsRequestSortList>;
 
@@ -425,7 +418,7 @@ export interface ListPrimaryIpsRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListPrimaryIpsRequestSortList;
 }
-export const ListPrimaryIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrimaryIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     label_selector: S.optional(S.String.pipe(T.Query())),
@@ -438,38 +431,29 @@ export const ListPrimaryIpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListPrimaryIpsResponsePrimaryIpsItemLabelsMap = { [key: string]: string | undefined };
-export const ListPrimaryIpsResponsePrimaryIpsItemLabelsMap =
+const ListPrimaryIpsResponsePrimaryIpsItemLabelsMap =
   CreatePrimaryIpRequestLabelsMap as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type ListPrimaryIpsResponsePrimaryIpsItemLocation = CreatePrimaryIpResponsePrimaryIpLocation;
-export const ListPrimaryIpsResponsePrimaryIpsItemLocation =
-  CreatePrimaryIpResponsePrimaryIpLocation;
-
 export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrItem =
   CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-export const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrItem =
-  CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-
 /** List of reverse DNS records. */
 export type ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
+const ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList =
   CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItemDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type ListPrimaryIpsResponsePrimaryIpsItemProtection =
   CreatePrimaryIpResponsePrimaryIpProtection;
-export const ListPrimaryIpsResponsePrimaryIpsItemProtection =
-  CreatePrimaryIpResponsePrimaryIpProtection;
-
 /** [Primary IP](#tag/primary-ips) type. */
 export type ListPrimaryIpsResponsePrimaryIpsItemType = "ipv4" | "ipv6";
-export const ListPrimaryIpsResponsePrimaryIpsItemType = S.String;
+const ListPrimaryIpsResponsePrimaryIpsItemType = S.String;
 
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type ListPrimaryIpsResponsePrimaryIpsItemAssigneeType = "server" | "unassigned";
-export const ListPrimaryIpsResponsePrimaryIpsItemAssigneeType = S.String;
+const ListPrimaryIpsResponsePrimaryIpsItemAssigneeType = S.String;
 
 export interface ListPrimaryIpsResponsePrimaryIpsItem {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -499,7 +483,7 @@ export interface ListPrimaryIpsResponsePrimaryIpsItem {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
-export const ListPrimaryIpsResponsePrimaryIpsItem = /*@__PURE__*/ S.suspend(() =>
+const ListPrimaryIpsResponsePrimaryIpsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -520,7 +504,7 @@ export const ListPrimaryIpsResponsePrimaryIpsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsItem>;
 
 export type ListPrimaryIpsResponsePrimaryIpsList = Array<ListPrimaryIpsResponsePrimaryIpsItem>;
-export const ListPrimaryIpsResponsePrimaryIpsList = /*@__PURE__*/ S.Array(
+const ListPrimaryIpsResponsePrimaryIpsList = /*@__PURE__*/ S.Array(
   ListPrimaryIpsResponsePrimaryIpsItem,
 ) as any as S.Schema<ListPrimaryIpsResponsePrimaryIpsList>;
 
@@ -539,7 +523,7 @@ export interface ListPrimaryIpsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListPrimaryIpsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPrimaryIpsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -556,7 +540,7 @@ export interface ListPrimaryIpsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListPrimaryIpsResponseMetaPagination;
 }
-export const ListPrimaryIpsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListPrimaryIpsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListPrimaryIpsResponseMetaPagination,
   }),
@@ -568,7 +552,7 @@ export interface ListPrimaryIpsResponse {
   primary_ips: ListPrimaryIpsResponsePrimaryIpsList;
   meta: ListPrimaryIpsResponseMeta;
 }
-export const ListPrimaryIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPrimaryIpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary_ips: ListPrimaryIpsResponsePrimaryIpsList,
     meta: ListPrimaryIpsResponseMeta,
@@ -577,7 +561,7 @@ export const ListPrimaryIpsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePrimaryIpRequestLabelsMap =
+const UpdatePrimaryIpRequestLabelsMap =
   CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpRequestLabelsMap>;
 
 export interface UpdatePrimaryIpRequest {
@@ -590,7 +574,7 @@ export interface UpdatePrimaryIpRequest {
   /** Auto deletion state. If enabled the [Primary IP](#tag/primary-ips) will be deleted once the assigned resource gets deleted. */
   auto_delete?: boolean;
 }
-export const UpdatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -601,35 +585,27 @@ export const UpdatePrimaryIpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdatePrimaryIpResponsePrimaryIpLabelsMap = { [key: string]: string | undefined };
-export const UpdatePrimaryIpResponsePrimaryIpLabelsMap =
+const UpdatePrimaryIpResponsePrimaryIpLabelsMap =
   CreatePrimaryIpRequestLabelsMap as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpLabelsMap>;
 
 /** [Location](#tag/locations) of the [Primary IP](#tag/primary-ips). */
 export type UpdatePrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
-export const UpdatePrimaryIpResponsePrimaryIpLocation = CreatePrimaryIpResponsePrimaryIpLocation;
-
 export type UpdatePrimaryIpResponsePrimaryIpDnsPtrItem = CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-export const UpdatePrimaryIpResponsePrimaryIpDnsPtrItem =
-  CreatePrimaryIpResponsePrimaryIpDnsPtrItem;
-
 /** List of reverse DNS records. */
 export type UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
   Array<CreatePrimaryIpResponsePrimaryIpDnsPtrItem>;
-export const UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
+const UpdatePrimaryIpResponsePrimaryIpDnsPtrList =
   CreatePrimaryIpResponsePrimaryIpDnsPtrList as any as S.Schema<UpdatePrimaryIpResponsePrimaryIpDnsPtrList>;
 
 /** Protection configuration for the Resource. */
 export type UpdatePrimaryIpResponsePrimaryIpProtection = CreatePrimaryIpResponsePrimaryIpProtection;
-export const UpdatePrimaryIpResponsePrimaryIpProtection =
-  CreatePrimaryIpResponsePrimaryIpProtection;
-
 /** [Primary IP](#tag/primary-ips) type. */
 export type UpdatePrimaryIpResponsePrimaryIpType = "ipv4" | "ipv6";
-export const UpdatePrimaryIpResponsePrimaryIpType = S.String;
+const UpdatePrimaryIpResponsePrimaryIpType = S.String;
 
 /** Type of resource the [Primary IP](#tag/primary-ips) is assigned to. As of 23 September 2026 `unassigned` is returned if the [Primary IP](#tag/primary-ips) is not assigned. */
 export type UpdatePrimaryIpResponsePrimaryIpAssigneeType = "server" | "unassigned";
-export const UpdatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
+const UpdatePrimaryIpResponsePrimaryIpAssigneeType = S.String;
 
 export interface UpdatePrimaryIpResponsePrimaryIp {
   /** ID of the [Primary IP](#tag/primary-ips). */
@@ -659,7 +635,7 @@ export interface UpdatePrimaryIpResponsePrimaryIp {
   /** ID of resource the [Primary IP](#tag/primary-ips) is assigned to. `null` if the [Primary IP](#tag/primary-ips) is not assigned. */
   assignee_id: number | null;
 }
-export const UpdatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -682,7 +658,7 @@ export const UpdatePrimaryIpResponsePrimaryIp = /*@__PURE__*/ S.suspend(() =>
 export interface UpdatePrimaryIpResponse {
   primary_ip: UpdatePrimaryIpResponsePrimaryIp;
 }
-export const UpdatePrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrimaryIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary_ip: UpdatePrimaryIpResponsePrimaryIp,
   }),

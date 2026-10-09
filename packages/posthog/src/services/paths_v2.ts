@@ -23,7 +23,7 @@ export interface PathsV2SegmentItem {
   /** Label value from the source's naming property, after path cleaning. Null or omitted for sources without a naming property; an empty string means the property was missing on the event. */
   label?: string | null;
 }
-export const PathsV2SegmentItem = /*@__PURE__*/ S.suspend(() =>
+const PathsV2SegmentItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     event: S.String,
     label: S.optional(S.NullOr(S.String)),
@@ -32,7 +32,7 @@ export const PathsV2SegmentItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The segment's path items in displayed order. In open mode exactly two items - a single edge, source then target. In anchored mode the concrete chain as shown, starting at the anchor. */
 export type CreatePathsV2SegmentToFunnelRequestItemsList = Array<PathsV2SegmentItem>;
-export const CreatePathsV2SegmentToFunnelRequestItemsList = /*@__PURE__*/ S.Array(
+const CreatePathsV2SegmentToFunnelRequestItemsList = /*@__PURE__*/ S.Array(
   PathsV2SegmentItem,
 ) as any as S.Schema<CreatePathsV2SegmentToFunnelRequestItemsList>;
 
@@ -44,7 +44,7 @@ export interface CreatePathsV2SegmentToFunnelRequest {
   /** The segment's path items in displayed order. In open mode exactly two items - a single edge, source then target. In anchored mode the concrete chain as shown, starting at the anchor. */
   items: CreatePathsV2SegmentToFunnelRequestItemsList;
 }
-export const CreatePathsV2SegmentToFunnelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePathsV2SegmentToFunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.Unknown,
@@ -64,7 +64,7 @@ export interface PathsV2SegmentToFunnelResponse {
   /** The FunnelsQuery (JSON object with kind `FunnelsQuery`) that reproduces the segment's displayed unique-actor count exactly. Wrap it in an InsightVizNode to open it as a funnel insight. */
   funnels_query: unknown;
 }
-export const PathsV2SegmentToFunnelResponse = /*@__PURE__*/ S.suspend(() =>
+const PathsV2SegmentToFunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     funnels_query: S.Unknown,
   }),

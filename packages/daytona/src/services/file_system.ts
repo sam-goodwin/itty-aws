@@ -14,7 +14,7 @@ export interface CreateFolderRequest {
   /** Octal permission mode (default: 0755) */
   mode: string;
 }
-export const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
     mode: S.String.pipe(T.Query()),
@@ -22,7 +22,7 @@ export const CreateFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFolderRequest" }) as any as S.Schema<CreateFolderRequest>;
 
 export interface CreateFolderResponse {}
-export const CreateFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateFolderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateFolderResponse",
 }) as any as S.Schema<CreateFolderResponse>;
 
@@ -32,7 +32,7 @@ export interface DeleteFileRequest {
   /** Enable recursive deletion for directories */
   recursive?: boolean;
 }
-export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
     recursive: S.optional(S.Boolean.pipe(T.Query())),
@@ -40,42 +40,42 @@ export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileRequest" }) as any as S.Schema<DeleteFileRequest>;
 
 export interface DeleteFileResponse {}
-export const DeleteFileResponse = CreateFolderResponse as any as S.Schema<DeleteFileResponse>;
+const DeleteFileResponse = CreateFolderResponse as any as S.Schema<DeleteFileResponse>;
 
 export interface DownloadFileRequest {
   /** File path to download */
   path: string;
 }
-export const DownloadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/files/download", code: 200 })),
 ).annotate({ identifier: "DownloadFileRequest" }) as any as S.Schema<DownloadFileRequest>;
 
 export type DownloadFileResponse = unknown;
-export const DownloadFileResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DownloadFileResponse" }) as any as S.Schema<DownloadFileResponse>;
 
 export type DownloadFilesRequestPathsList = Array<string>;
-export const DownloadFilesRequestPathsList = /*@__PURE__*/ S.Array(
+const DownloadFilesRequestPathsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DownloadFilesRequestPathsList>;
 
 export interface DownloadFilesRequest {
   paths: DownloadFilesRequestPathsList;
 }
-export const DownloadFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: DownloadFilesRequestPathsList,
   }).pipe(T.Http({ method: "POST", uri: "/files/bulk-download", code: 200 })),
 ).annotate({ identifier: "DownloadFilesRequest" }) as any as S.Schema<DownloadFilesRequest>;
 
 export type GinH = { [key: string]: unknown | undefined };
-export const GinH = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<GinH>;
+const GinH = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<GinH>;
 
 export type DownloadFilesResponse = GinH;
-export const DownloadFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadFilesResponse = /*@__PURE__*/ S.suspend(() =>
   GinH.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DownloadFilesResponse" }) as any as S.Schema<DownloadFilesResponse>;
 
@@ -85,7 +85,7 @@ export interface FindInFilesRequest {
   /** Text pattern to search for */
   pattern: string;
 }
-export const FindInFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const FindInFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
     pattern: S.String.pipe(T.Query()),
@@ -97,7 +97,7 @@ export interface Match {
   file: string;
   line: number;
 }
-export const Match = /*@__PURE__*/ S.suspend(() =>
+const Match = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
     file: S.String,
@@ -106,12 +106,12 @@ export const Match = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Match" }) as any as S.Schema<Match>;
 
 export type FindInFilesResponseBodyList = Array<Match>;
-export const FindInFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const FindInFilesResponseBodyList = /*@__PURE__*/ S.Array(
   Match,
 ) as any as S.Schema<FindInFilesResponseBodyList>;
 
 export type FindInFilesResponse = FindInFilesResponseBodyList;
-export const FindInFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const FindInFilesResponse = /*@__PURE__*/ S.suspend(() =>
   FindInFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "FindInFilesResponse" }) as any as S.Schema<FindInFilesResponse>;
 
@@ -119,7 +119,7 @@ export interface GetFileInfoRequest {
   /** File or directory path */
   path: string;
 }
-export const GetFileInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/files/info", code: 200 })),
@@ -139,7 +139,7 @@ export interface FileInfo {
   permissions: string;
   size: number;
 }
-export const FileInfo = /*@__PURE__*/ S.suspend(() =>
+const FileInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.String,
     isDir: S.Boolean,
@@ -160,7 +160,7 @@ export interface ListFilesRequest {
   /** How many levels deep to list (default: 1, must be >= 1) */
   depth?: number;
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String.pipe(T.Query())),
     depth: S.optional(S.Number.pipe(T.Query())),
@@ -168,12 +168,12 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFilesRequest" }) as any as S.Schema<ListFilesRequest>;
 
 export type ListFilesResponseBodyList = Array<FileInfo>;
-export const ListFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFilesResponseBodyList = /*@__PURE__*/ S.Array(
   FileInfo,
 ) as any as S.Schema<ListFilesResponseBodyList>;
 
 export type ListFilesResponse = ListFilesResponseBodyList;
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListFilesResponse" }) as any as S.Schema<ListFilesResponse>;
 
@@ -183,7 +183,7 @@ export interface MoveFileRequest {
   /** Destination file or directory path */
   destination: string;
 }
-export const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String.pipe(T.Query()),
     destination: S.String.pipe(T.Query()),
@@ -191,10 +191,10 @@ export const MoveFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MoveFileRequest" }) as any as S.Schema<MoveFileRequest>;
 
 export interface MoveFileResponse {}
-export const MoveFileResponse = CreateFolderResponse as any as S.Schema<MoveFileResponse>;
+const MoveFileResponse = CreateFolderResponse as any as S.Schema<MoveFileResponse>;
 
 export type ReplaceInFilesRequestFilesList = Array<string>;
-export const ReplaceInFilesRequestFilesList =
+const ReplaceInFilesRequestFilesList =
   DownloadFilesRequestPathsList as any as S.Schema<ReplaceInFilesRequestFilesList>;
 
 export interface ReplaceInFilesRequest {
@@ -202,7 +202,7 @@ export interface ReplaceInFilesRequest {
   newValue: string;
   pattern: string;
 }
-export const ReplaceInFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceInFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: ReplaceInFilesRequestFilesList,
     newValue: S.String,
@@ -215,7 +215,7 @@ export interface ReplaceResult {
   file?: string;
   success?: boolean;
 }
-export const ReplaceResult = /*@__PURE__*/ S.suspend(() =>
+const ReplaceResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
     file: S.optional(S.String),
@@ -224,12 +224,12 @@ export const ReplaceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplaceResult" }) as any as S.Schema<ReplaceResult>;
 
 export type ReplaceInFilesResponseBodyList = Array<ReplaceResult>;
-export const ReplaceInFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ReplaceInFilesResponseBodyList = /*@__PURE__*/ S.Array(
   ReplaceResult,
 ) as any as S.Schema<ReplaceInFilesResponseBodyList>;
 
 export type ReplaceInFilesResponse = ReplaceInFilesResponseBodyList;
-export const ReplaceInFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceInFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ReplaceInFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ReplaceInFilesResponse" }) as any as S.Schema<ReplaceInFilesResponse>;
 
@@ -239,7 +239,7 @@ export interface SearchFilesRequest {
   /** File pattern to match (e.g., *.txt, *.go) */
   pattern: string;
 }
-export const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
     pattern: S.String.pipe(T.Query()),
@@ -247,13 +247,13 @@ export const SearchFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilesRequest" }) as any as S.Schema<SearchFilesRequest>;
 
 export type SearchFilesResponseFilesList = Array<string>;
-export const SearchFilesResponseFilesList =
+const SearchFilesResponseFilesList =
   DownloadFilesRequestPathsList as any as S.Schema<SearchFilesResponseFilesList>;
 
 export interface SearchFilesResponse {
   files: SearchFilesResponseFilesList;
 }
-export const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: SearchFilesResponseFilesList,
   }),
@@ -269,7 +269,7 @@ export interface SetFilePermissionsRequest {
   /** File mode in octal format (e.g., 0755) */
   mode?: string;
 }
-export const SetFilePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFilePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
     owner: S.optional(S.String.pipe(T.Query())),
@@ -281,14 +281,14 @@ export const SetFilePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetFilePermissionsRequest>;
 
 export interface SetFilePermissionsResponse {}
-export const SetFilePermissionsResponse =
+const SetFilePermissionsResponse =
   CreateFolderResponse as any as S.Schema<SetFilePermissionsResponse>;
 
 export interface UploadFileRequest {
   /** Destination path for the uploaded file */
   path: string;
 }
-export const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "POST", uri: "/files/upload-v2", code: 200 })),
@@ -299,7 +299,7 @@ export interface UploadedFile {
   path: string;
   type: string;
 }
-export const UploadedFile = /*@__PURE__*/ S.suspend(() =>
+const UploadedFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     path: S.String,
@@ -308,12 +308,12 @@ export const UploadedFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadedFile" }) as any as S.Schema<UploadedFile>;
 
 export interface UploadFilesRequest {}
-export const UploadFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/files/bulk-upload", code: 200 })),
 ).annotate({ identifier: "UploadFilesRequest" }) as any as S.Schema<UploadFilesRequest>;
 
 export interface UploadFilesResponse {}
-export const UploadFilesResponse = CreateFolderResponse as any as S.Schema<UploadFilesResponse>;
+const UploadFilesResponse = CreateFolderResponse as any as S.Schema<UploadFilesResponse>;
 
 export type CreateFolderError = DaytonaOpError;
 /** Create a folder Create a folder with the specified path and optional permissions */

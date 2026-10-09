@@ -50,7 +50,7 @@ export interface CreateSfuRequest {
   /** A short description of a Realtime SFU app, not shown to end users. */
   name?: string;
 }
-export const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
@@ -72,7 +72,7 @@ export interface CreateSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     modified: S.String,
@@ -88,7 +88,7 @@ export interface CreateTurnRequest {
   /** A short description of a TURN key, not shown to end users. */
   name?: string;
 }
-export const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
@@ -110,7 +110,7 @@ export interface CreateTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     key: S.String,
@@ -126,7 +126,7 @@ export interface DeleteSfuRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-export const DeleteSfuRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -148,7 +148,7 @@ export interface DeleteSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const DeleteSfuResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     modified: S.String,
@@ -163,7 +163,7 @@ export interface DeleteTurnRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   keyId: string;
 }
-export const DeleteTurnRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
@@ -189,7 +189,7 @@ export interface DeleteTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const DeleteTurnResponse = DeleteSfuResponse as any as S.Schema<DeleteTurnResponse>;
+const DeleteTurnResponse = DeleteSfuResponse as any as S.Schema<DeleteTurnResponse>;
 
 export interface GetSfuRequest {
   /** The account identifier tag. */
@@ -197,7 +197,7 @@ export interface GetSfuRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-export const GetSfuRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -217,7 +217,7 @@ export interface GetSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const GetSfuResponse = DeleteSfuResponse as any as S.Schema<GetSfuResponse>;
+const GetSfuResponse = DeleteSfuResponse as any as S.Schema<GetSfuResponse>;
 
 export interface GetTurnRequest {
   /** The account identifier tag. */
@@ -225,7 +225,7 @@ export interface GetTurnRequest {
   /** A Cloudflare-generated unique identifier for a item. */
   keyId: string;
 }
-export const GetTurnRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
@@ -247,13 +247,13 @@ export interface GetTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const GetTurnResponse = DeleteSfuResponse as any as S.Schema<GetTurnResponse>;
+const GetTurnResponse = DeleteSfuResponse as any as S.Schema<GetTurnResponse>;
 
 export interface ListSfusRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const ListSfusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSfusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -271,7 +271,7 @@ export interface SfuListResultItem {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const SfuListResultItem = /*@__PURE__*/ S.suspend(() =>
+const SfuListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     modified: S.String,
@@ -281,7 +281,7 @@ export const SfuListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SfuListResultItem" }) as any as S.Schema<SfuListResultItem>;
 
 export type SfuListResultList = Array<SfuListResultItem>;
-export const SfuListResultList = /*@__PURE__*/ S.Array(
+const SfuListResultList = /*@__PURE__*/ S.Array(
   SfuListResultItem,
 ) as any as S.Schema<SfuListResultList>;
 
@@ -291,7 +291,7 @@ export interface ListSfusResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SfuListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -302,7 +302,7 @@ export interface ListTurnsRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -311,18 +311,14 @@ export const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTurnsRequest" }) as any as S.Schema<ListTurnsRequest>;
 
 export type TurnListResultItem = SfuListResultItem;
-export const TurnListResultItem = SfuListResultItem;
-
 export type TurnListResultList = Array<SfuListResultItem>;
-export const TurnListResultList = SfuListResultList as any as S.Schema<TurnListResultList>;
-
 export interface ListTurnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TurnListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListTurnsResponse = ListSfusResponse as any as S.Schema<ListTurnsResponse>;
+const ListTurnsResponse = ListSfusResponse as any as S.Schema<ListTurnsResponse>;
 
 export interface UpdateSfuRequest {
   /** The account identifier tag. */
@@ -332,7 +328,7 @@ export interface UpdateSfuRequest {
   /** A short description of a Realtime SFU app, not shown to end users. */
   name?: string;
 }
-export const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -353,7 +349,7 @@ export interface UpdateSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const UpdateSfuResponse = DeleteSfuResponse as any as S.Schema<UpdateSfuResponse>;
+const UpdateSfuResponse = DeleteSfuResponse as any as S.Schema<UpdateSfuResponse>;
 
 export interface UpdateTurnRequest {
   /** The account identifier tag. */
@@ -363,7 +359,7 @@ export interface UpdateTurnRequest {
   /** A short description of a TURN key, not shown to end users. */
   name?: string;
 }
-export const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
@@ -386,7 +382,7 @@ export interface UpdateTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-export const UpdateTurnResponse = DeleteSfuResponse as any as S.Schema<UpdateTurnResponse>;
+const UpdateTurnResponse = DeleteSfuResponse as any as S.Schema<UpdateTurnResponse>;
 
 export type CreateSfuError = Forbidden | CloudflareOpError;
 /** Creates a Realtime SFU app. An app is an isolated namespace in which sessions can access the app's tracks. */

@@ -21,7 +21,7 @@ export interface RevokeLeakedKeyCreateRequest {
   /** The leaked PostHog personal API key, project secret API key, or OAuth access/refresh token to revoke. */
   token: string;
 }
-export const RevokeLeakedKeyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeLeakedKeyCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/revoke_leaked_key/", code: 200 })),
@@ -35,7 +35,7 @@ export type LeakedKeyReportResponseTypeEnum =
   | "project_secret_api_key"
   | "oauth_access_token"
   | "oauth_refresh_token";
-export const LeakedKeyReportResponseTypeEnum = S.String;
+const LeakedKeyReportResponseTypeEnum = S.String;
 
 export interface LeakedKeyReportResponse {
   /** Whether a matching PostHog key or token was found and revoked. */
@@ -43,7 +43,7 @@ export interface LeakedKeyReportResponse {
   /** The type of key that was found and revoked, or null if no match was found. * `personal_api_key` - personal_api_key * `project_secret_api_key` - project_secret_api_key * `oauth_access_token` - oauth_access_token * `oauth_refresh_token` - oauth_refresh_token */
   type: LeakedKeyReportResponseTypeEnum | null;
 }
-export const LeakedKeyReportResponse = /*@__PURE__*/ S.suspend(() =>
+const LeakedKeyReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.Boolean,
     type: S.NullOr(LeakedKeyReportResponseTypeEnum),

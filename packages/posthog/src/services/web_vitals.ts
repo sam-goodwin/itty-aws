@@ -13,7 +13,7 @@ export interface GetWebVitalRequest {
   /** Filter web vitals by pathname */
   pathname: string;
 }
-export const GetWebVitalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebVitalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pathname: S.String.pipe(T.Query()),
@@ -21,13 +21,13 @@ export const GetWebVitalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWebVitalRequest" }) as any as S.Schema<GetWebVitalRequest>;
 
 export type GetWebVitalResponseBodyMap = { [key: string]: unknown | undefined };
-export const GetWebVitalResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetWebVitalResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetWebVitalResponseBodyMap>;
 
 export type GetWebVitalResponse = GetWebVitalResponseBodyMap;
-export const GetWebVitalResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebVitalResponse = /*@__PURE__*/ S.suspend(() =>
   GetWebVitalResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetWebVitalResponse" }) as any as S.Schema<GetWebVitalResponse>;
 

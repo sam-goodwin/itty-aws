@@ -163,7 +163,7 @@ export type Arn = string;
 export interface GetRoutingControlStateRequest {
   RoutingControlArn: string;
 }
-export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoutingControlArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -171,7 +171,7 @@ export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetRoutingControlStateRequest",
 }) as any as S.Schema<GetRoutingControlStateRequest>;
 export type RoutingControlState = "On" | "Off" | (string & {});
-export const RoutingControlState = S.String;
+const RoutingControlState = S.String;
 
 export type RoutingControlName = string;
 export interface GetRoutingControlStateResponse {
@@ -179,7 +179,7 @@ export interface GetRoutingControlStateResponse {
   RoutingControlState: RoutingControlState;
   RoutingControlName?: string;
 }
-export const GetRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoutingControlArn: S.String,
     RoutingControlState: RoutingControlState,
@@ -195,7 +195,7 @@ export interface ListRoutingControlsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListRoutingControlsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoutingControlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ControlPanelArn: S.optional(S.String),
     NextToken: S.optional(S.String),
@@ -214,7 +214,7 @@ export interface RoutingControl {
   RoutingControlState?: RoutingControlState;
   Owner?: string;
 }
-export const RoutingControl = /*@__PURE__*/ S.suspend(() =>
+const RoutingControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ControlPanelArn: S.optional(S.String),
     ControlPanelName: S.optional(S.String),
@@ -225,24 +225,24 @@ export const RoutingControl = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RoutingControl" }) as any as S.Schema<RoutingControl>;
 export type RoutingControls = RoutingControl[];
-export const RoutingControls = /*@__PURE__*/ S.Array(RoutingControl);
+const RoutingControls = /*@__PURE__*/ S.Array(RoutingControl);
 export interface ListRoutingControlsResponse {
   RoutingControls: RoutingControl[];
   NextToken?: string;
 }
-export const ListRoutingControlsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRoutingControlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoutingControls: RoutingControls, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRoutingControlsResponse",
 }) as any as S.Schema<ListRoutingControlsResponse>;
 export type Arns = string[];
-export const Arns = /*@__PURE__*/ S.Array(S.String);
+const Arns = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateRoutingControlStateRequest {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
   SafetyRulesToOverride?: string[];
 }
-export const UpdateRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoutingControlArn: S.String,
     RoutingControlState: RoutingControlState,
@@ -252,29 +252,25 @@ export const UpdateRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoutingControlStateRequest",
 }) as any as S.Schema<UpdateRoutingControlStateRequest>;
 export interface UpdateRoutingControlStateResponse {}
-export const UpdateRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const UpdateRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UpdateRoutingControlStateResponse",
 }) as any as S.Schema<UpdateRoutingControlStateResponse>;
 export interface UpdateRoutingControlStateEntry {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
 }
-export const UpdateRoutingControlStateEntry = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoutingControlStateEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RoutingControlArn: S.String, RoutingControlState: RoutingControlState }),
 ).annotate({
   identifier: "UpdateRoutingControlStateEntry",
 }) as any as S.Schema<UpdateRoutingControlStateEntry>;
 export type UpdateRoutingControlStateEntries = UpdateRoutingControlStateEntry[];
-export const UpdateRoutingControlStateEntries = /*@__PURE__*/ S.Array(
-  UpdateRoutingControlStateEntry,
-);
+const UpdateRoutingControlStateEntries = /*@__PURE__*/ S.Array(UpdateRoutingControlStateEntry);
 export interface UpdateRoutingControlStatesRequest {
   UpdateRoutingControlStateEntries: UpdateRoutingControlStateEntry[];
   SafetyRulesToOverride?: string[];
 }
-export const UpdateRoutingControlStatesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoutingControlStatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UpdateRoutingControlStateEntries: UpdateRoutingControlStateEntries,
     SafetyRulesToOverride: S.optional(Arns),
@@ -283,7 +279,7 @@ export const UpdateRoutingControlStatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRoutingControlStatesRequest",
 }) as any as S.Schema<UpdateRoutingControlStatesRequest>;
 export interface UpdateRoutingControlStatesResponse {}
-export const UpdateRoutingControlStatesResponse =
+const UpdateRoutingControlStatesResponse =
   UpdateRoutingControlStateResponse as any as S.Schema<UpdateRoutingControlStatesResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
@@ -292,17 +288,17 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type GetRoutingControlStateError =
   | AccessDeniedException
   | EndpointTemporarilyUnavailableException

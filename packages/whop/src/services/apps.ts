@@ -62,7 +62,7 @@ export type CreateAppRequestAppType =
   | "company_app"
   | "component"
   | "website";
-export const CreateAppRequestAppType = S.String;
+const CreateAppRequestAppType = S.String;
 
 /** The icon image for the app in PNG, JPEG, or GIF format, referencing an uploaded file: `{ id }` for an existing attachment or `{ direct_upload_id }` for a new direct upload. */
 export interface CreateAppRequestIcon {
@@ -71,7 +71,7 @@ export interface CreateAppRequestIcon {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-export const CreateAppRequestIcon = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequestIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     id: S.optional(S.String),
@@ -80,7 +80,7 @@ export const CreateAppRequestIcon = /*@__PURE__*/ S.suspend(() =>
 
 /** The whitelisted OAuth callback URLs that users are redirected to after authorizing the app. */
 export type CreateAppRequestRedirectUrisList = Array<string>;
-export const CreateAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
+const CreateAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAppRequestRedirectUrisList>;
 
@@ -102,7 +102,7 @@ export interface CreateAppRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     app_type: S.optional(CreateAppRequestAppType),
@@ -121,7 +121,7 @@ export interface AccountParentFeesValue {
   /** Percentage of the transaction charged as markup. */
   percentage_fee: number;
 }
-export const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
+const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed_fee_usd: S.Number,
     percentage_fee: S.Number,
@@ -130,7 +130,7 @@ export const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Markup rates this parent charges the connected account being read, keyed by fee type (for example `crypto_deposit_markup`), each with `percentage_fee` and `fixed_fee_usd`. Resolved with the connected account's own overrides winning over the platform default. */
 export type AccountParentFeesMap = { [key: string]: AccountParentFeesValue | undefined };
-export const AccountParentFeesMap = /*@__PURE__*/ S.Record(
+const AccountParentFeesMap = /*@__PURE__*/ S.Record(
   S.String,
   AccountParentFeesValue,
 ) as any as S.Schema<AccountParentFeesMap>;
@@ -147,7 +147,7 @@ export interface AccountParent {
   /** Account display name. */
   title: string;
 }
-export const AccountParent = /*@__PURE__*/ S.suspend(() =>
+const AccountParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fees: S.optional(AccountParentFeesMap),
     id: S.String,
@@ -163,7 +163,7 @@ export interface AppApiKey {
   /** The key's secret token, sent as a bearer token to authenticate requests on the app's behalf. */
   token: string;
 }
-export const AppApiKey = /*@__PURE__*/ S.suspend(() =>
+const AppApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     token: S.String,
@@ -172,20 +172,20 @@ export const AppApiKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of end-user the app is built for. */
 export type AppAppType = "b2b_app" | "b2c_app" | "company_app" | "component" | "website";
-export const AppAppType = S.String;
+const AppAppType = S.String;
 
 export interface AppBannerImage {
   /** Banner image URL, taken from the app's product listing. */
   url: string;
 }
-export const AppBannerImage = /*@__PURE__*/ S.suspend(() =>
+const AppBannerImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
 ).annotate({ identifier: "AppBannerImage" }) as any as S.Schema<AppBannerImage>;
 
 export type AppBusinessesCreatedLogoUrlsList = Array<string>;
-export const AppBusinessesCreatedLogoUrlsList =
+const AppBusinessesCreatedLogoUrlsList =
   CreateAppRequestRedirectUrisList as any as S.Schema<AppBusinessesCreatedLogoUrlsList>;
 
 export interface AppCreator {
@@ -196,7 +196,7 @@ export interface AppCreator {
   /** Public username. */
   username: string;
 }
-export const AppCreator = /*@__PURE__*/ S.suspend(() =>
+const AppCreator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -214,7 +214,7 @@ export interface AppDefaultApiKey {
   /** The full secret used to authenticate requests. `null` unless the caller could have created the key themselves. */
   secret_key: string | Redacted.Redacted<string> | null;
 }
-export const AppDefaultApiKey = /*@__PURE__*/ S.suspend(() =>
+const AppDefaultApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -233,7 +233,7 @@ export type AppDeploymentPhase =
   | "process_archive"
   | "create_build"
   | "promote";
-export const AppDeploymentPhase = S.String;
+const AppDeploymentPhase = S.String;
 
 /** Whether the app has anything to publish, and what a publish in flight is doing. `unpublished` means publishing would ship something new; `no_source` means the sandbox holds no copy of this app, so there is nothing to publish from. */
 export type AppDeploymentStatus =
@@ -242,7 +242,7 @@ export type AppDeploymentStatus =
   | "publishing"
   | "failed"
   | "no_source";
-export const AppDeploymentStatus = S.String;
+const AppDeploymentStatus = S.String;
 
 export interface AppDeployment {
   /** The app being deployed, prefixed `app_`. */
@@ -270,7 +270,7 @@ export interface AppDeployment {
   /** Where the deployed site is served, or `null` unless the deployment went live. */
   url: string | null;
 }
-export const AppDeployment = /*@__PURE__*/ S.suspend(() =>
+const AppDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_id: S.String,
     build_id: S.NullOr(S.String),
@@ -295,7 +295,7 @@ export type AppDomainStatus =
   | "action_required"
   | "deleting"
   | "removed";
-export const AppDomainStatus = S.String;
+const AppDomainStatus = S.String;
 
 export interface AppDomain {
   /** Normalized hostname assigned to this app. */
@@ -305,7 +305,7 @@ export interface AppDomain {
   /** Domain lifecycle status, matching the domain resource. */
   status: AppDomainStatus;
 }
-export const AppDomain = /*@__PURE__*/ S.suspend(() =>
+const AppDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     id: S.String,
@@ -314,7 +314,7 @@ export const AppDomain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppDomain" }) as any as S.Schema<AppDomain>;
 
 export type AppDomainsList = Array<AppDomain>;
-export const AppDomainsList = /*@__PURE__*/ S.Array(AppDomain) as any as S.Schema<AppDomainsList>;
+const AppDomainsList = /*@__PURE__*/ S.Array(AppDomain) as any as S.Schema<AppDomainsList>;
 
 /** Whop Elements the app's production web build mounts, as `<namespace>.<element>` keys (sub-controller children take a third segment, e.g. `payments.cardFields.cardNumber`). A bare namespace means the build reaches that namespace but the individual elements could not be resolved. Empty when the build mounts none, when it has not been scanned yet, or when the app has no production web build. */
 export type AppElementsUsedItem =
@@ -353,10 +353,10 @@ export type AppElementsUsedItem =
   | "websites"
   | "websites.pixel-setup"
   | "websites.websites";
-export const AppElementsUsedItem = S.String;
+const AppElementsUsedItem = S.String;
 
 export type AppElementsUsedList = Array<AppElementsUsedItem>;
-export const AppElementsUsedList = /*@__PURE__*/ S.Array(
+const AppElementsUsedList = /*@__PURE__*/ S.Array(
   AppElementsUsedItem,
 ) as any as S.Schema<AppElementsUsedList>;
 
@@ -364,23 +364,23 @@ export interface AppIcon {
   /** Icon image URL. Always present -- the default app icon when none is uploaded. */
   url: string;
 }
-export const AppIcon = AppBannerImage as any as S.Schema<AppIcon>;
+const AppIcon = AppBannerImage as any as S.Schema<AppIcon>;
 
 /** Approval status of the app's product listing on the Whop app store, or `null` when the app has no associated product. */
 export type AppMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
-export const AppMarketplaceStatus = S.String;
+const AppMarketplaceStatus = S.String;
 
 /** How the app authenticates at the OAuth token endpoint. */
 export type AppOauthClientType = "public" | "confidential";
-export const AppOauthClientType = S.String;
+const AppOauthClientType = S.String;
 
 export type AppPreviousHostedUrlsList = Array<string>;
-export const AppPreviousHostedUrlsList =
+const AppPreviousHostedUrlsList =
   CreateAppRequestRedirectUrisList as any as S.Schema<AppPreviousHostedUrlsList>;
 
 /** The build's review status. */
 export type AppProductionBuildStatus = "draft" | "pending" | "approved" | "rejected";
-export const AppProductionBuildStatus = S.String;
+const AppProductionBuildStatus = S.String;
 
 export interface AppProductionBuild {
   /** Client-generated checksum of the build file, used to verify file integrity. */
@@ -394,7 +394,7 @@ export interface AppProductionBuild {
   /** The build's review status. */
   status: AppProductionBuildStatus;
 }
-export const AppProductionBuild = /*@__PURE__*/ S.suspend(() =>
+const AppProductionBuild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksum: S.NullOr(S.String),
     file_url: S.NullOr(S.String),
@@ -405,7 +405,7 @@ export const AppProductionBuild = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppProductionBuild" }) as any as S.Schema<AppProductionBuild>;
 
 export type AppRedirectUrisList = Array<string>;
-export const AppRedirectUrisList =
+const AppRedirectUrisList =
   CreateAppRequestRedirectUrisList as any as S.Schema<AppRedirectUrisList>;
 
 export interface AppRequestedPermissionAction {
@@ -414,7 +414,7 @@ export interface AppRequestedPermissionAction {
   /** Human-readable name of the action. */
   name: string;
 }
-export const AppRequestedPermissionAction = /*@__PURE__*/ S.suspend(() =>
+const AppRequestedPermissionAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     name: S.String,
@@ -431,7 +431,7 @@ export interface AppRequestedPermission {
   /** The permission action the app requests. */
   permission_action: AppRequestedPermissionAction;
 }
-export const AppRequestedPermission = /*@__PURE__*/ S.suspend(() =>
+const AppRequestedPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_required: S.Boolean,
     justification: S.NullOr(S.String),
@@ -440,20 +440,18 @@ export const AppRequestedPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppRequestedPermission" }) as any as S.Schema<AppRequestedPermission>;
 
 export type AppRequestedPermissionsList = Array<AppRequestedPermission>;
-export const AppRequestedPermissionsList = /*@__PURE__*/ S.Array(
+const AppRequestedPermissionsList = /*@__PURE__*/ S.Array(
   AppRequestedPermission,
 ) as any as S.Schema<AppRequestedPermissionsList>;
 
 /** Scopes the app asks a user to grant when they authorize it, shown on the consent screen. */
 export type AppRequiredScopesItem = "read_user";
-export const AppRequiredScopesItem = S.String;
-
 export type AppRequiredScopesList = Array<AppRequiredScopesItem>;
-export const AppRequiredScopesList = AppElementsUsedList as any as S.Schema<AppRequiredScopesList>;
+const AppRequiredScopesList = AppElementsUsedList as any as S.Schema<AppRequiredScopesList>;
 
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppStatus = "live" | "unlisted" | "hidden";
-export const AppStatus = S.String;
+const AppStatus = S.String;
 
 export interface App {
   /** The account that owns the app. */
@@ -530,7 +528,7 @@ export interface App {
   /** Whether the app has been verified by Whop and is eligible for the featured apps section. */
   verified: boolean;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: AccountParent,
     api_key: S.NullOr(AppApiKey),
@@ -579,7 +577,7 @@ export interface DeleteAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
   id: string;
 }
-export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/apps/{id}", code: 200 })),
@@ -591,7 +589,7 @@ export interface DeleteAppResponse {
   /** ID of the deleted app. */
   id: string;
 }
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -606,7 +604,7 @@ export interface DeployAppRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DeployAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeployAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     draft: S.optional(S.Boolean),
@@ -618,14 +616,14 @@ export interface GetAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
   id: string;
 }
-export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/apps/{id}", code: 200 })),
 ).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 export type ListAppLogsRequestLevel = "log" | "debug" | "info" | "warn" | "error";
-export const ListAppLogsRequestLevel = S.String;
+const ListAppLogsRequestLevel = S.String;
 
 export interface ListAppLogsRequest {
   /** The ID of the app, which will look like app_*************. */
@@ -647,7 +645,7 @@ export interface ListAppLogsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListAppLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     app_build_id: S.optional(S.String.pipe(T.Query())),
@@ -662,10 +660,10 @@ export const ListAppLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAppLogsRequest" }) as any as S.Schema<ListAppLogsRequest>;
 
 export type ListAppLogsResponseDataItemLevel = "log" | "debug" | "info" | "warn" | "error";
-export const ListAppLogsResponseDataItemLevel = S.String;
+const ListAppLogsResponseDataItemLevel = S.String;
 
 export type ListAppLogsResponseDataItemSource = "console" | "exception" | "request";
-export const ListAppLogsResponseDataItemSource = S.String;
+const ListAppLogsResponseDataItemSource = S.String;
 
 export interface ListAppLogsResponseDataItem {
   app_build_id: string;
@@ -684,7 +682,7 @@ export interface ListAppLogsResponseDataItem {
   truncated?: boolean;
   wall_time_ms?: number;
 }
-export const ListAppLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const ListAppLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_build_id: S.String,
     app_id: S.String,
@@ -707,7 +705,7 @@ export const ListAppLogsResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAppLogsResponseDataItem>;
 
 export type ListAppLogsResponseDataList = Array<ListAppLogsResponseDataItem>;
-export const ListAppLogsResponseDataList = /*@__PURE__*/ S.Array(
+const ListAppLogsResponseDataList = /*@__PURE__*/ S.Array(
   ListAppLogsResponseDataItem,
 ) as any as S.Schema<ListAppLogsResponseDataList>;
 
@@ -717,7 +715,7 @@ export interface ListAppLogsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor?: string | null;
 }
-export const ListAppLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAppLogsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.optional(S.NullOr(S.String)),
     has_next_page: S.Boolean,
@@ -732,7 +730,7 @@ export interface ListAppLogsResponse {
   data: ListAppLogsResponseDataList;
   page_info: ListAppLogsResponsePageInfo;
 }
-export const ListAppLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAppLogsResponseDataList,
     page_info: ListAppLogsResponsePageInfo,
@@ -745,7 +743,7 @@ export type ListAppsRequestAppType =
   | "company_app"
   | "component"
   | "website";
-export const ListAppsRequestAppType = S.String;
+const ListAppsRequestAppType = S.String;
 
 export type ListAppsRequestViewType =
   | "hub"
@@ -755,7 +753,7 @@ export type ListAppsRequestViewType =
   | "analytics"
   | "skills"
   | "openapi";
-export const ListAppsRequestViewType = S.String;
+const ListAppsRequestViewType = S.String;
 
 export type ListAppsRequestOrder =
   | "created_at"
@@ -763,10 +761,10 @@ export type ListAppsRequestOrder =
   | "template_usage"
   | "total_installs_last_30_days"
   | "total_installs_last_7_days";
-export const ListAppsRequestOrder = S.String;
+const ListAppsRequestOrder = S.String;
 
 export type ListAppsRequestDirection = "asc" | "desc";
-export const ListAppsRequestDirection = S.String;
+const ListAppsRequestDirection = S.String;
 
 export interface ListAppsRequest {
   /** Only return apps created by this account (`biz_` tag). With developer access to the account this includes its unlisted and hidden apps. */
@@ -796,7 +794,7 @@ export interface ListAppsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     app_type: S.optional(ListAppsRequestAppType.pipe(T.Query())),
@@ -816,24 +814,24 @@ export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of end-user the app is built for. */
 export type AppListItemAppType = "b2b_app" | "b2c_app" | "company_app" | "component" | "website";
-export const AppListItemAppType = S.String;
+const AppListItemAppType = S.String;
 
 export type AppListItemBusinessesCreatedLogoUrlsList = Array<string>;
-export const AppListItemBusinessesCreatedLogoUrlsList =
+const AppListItemBusinessesCreatedLogoUrlsList =
   CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemBusinessesCreatedLogoUrlsList>;
 
 export type AppListItemDomainsList = Array<AppDomain>;
-export const AppListItemDomainsList = /*@__PURE__*/ S.Array(
+const AppListItemDomainsList = /*@__PURE__*/ S.Array(
   AppDomain,
 ) as any as S.Schema<AppListItemDomainsList>;
 
 export type AppListItemPreviousHostedUrlsList = Array<string>;
-export const AppListItemPreviousHostedUrlsList =
+const AppListItemPreviousHostedUrlsList =
   CreateAppRequestRedirectUrisList as any as S.Schema<AppListItemPreviousHostedUrlsList>;
 
 /** Visibility on the Whop app store: `live` is publicly discoverable, `unlisted` is accessible only via direct link, `hidden` is not visible anywhere. */
 export type AppListItemStatus = "live" | "unlisted" | "hidden";
-export const AppListItemStatus = S.String;
+const AppListItemStatus = S.String;
 
 export interface AppListItem {
   /** The account that owns the app. */
@@ -882,7 +880,7 @@ export interface AppListItem {
   /** Whether the app has been verified by Whop and is eligible for the featured apps section. */
   verified: boolean;
 }
-export const AppListItem = /*@__PURE__*/ S.suspend(() =>
+const AppListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: AccountParent,
     app_type: AppListItemAppType,
@@ -912,7 +910,7 @@ export const AppListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppListItem" }) as any as S.Schema<AppListItem>;
 
 export type ListAppsResponseDataList = Array<AppListItem>;
-export const ListAppsResponseDataList = /*@__PURE__*/ S.Array(
+const ListAppsResponseDataList = /*@__PURE__*/ S.Array(
   AppListItem,
 ) as any as S.Schema<ListAppsResponseDataList>;
 
@@ -922,7 +920,7 @@ export interface ListAppsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListAppsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -935,7 +933,7 @@ export interface ListAppsResponse {
   data: ListAppsResponseDataList;
   page_info: ListAppsResponsePageInfo;
 }
-export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAppsResponseDataList,
     page_info: ListAppsResponsePageInfo,
@@ -949,29 +947,27 @@ export type UpdateAppRequestAppType =
   | "company_app"
   | "component"
   | "website";
-export const UpdateAppRequestAppType = S.String;
+const UpdateAppRequestAppType = S.String;
 
 /** The icon image for the app in PNG, JPEG, or GIF format, referencing an uploaded file: `{ id }` for an existing attachment or `{ direct_upload_id }` for a new direct upload. */
 export type UpdateAppRequestIcon = CreateAppRequestIcon;
-export const UpdateAppRequestIcon = CreateAppRequestIcon;
-
 /** How the app authenticates at the OAuth token endpoint. */
 export type UpdateAppRequestOauthClientType = "public" | "confidential";
-export const UpdateAppRequestOauthClientType = S.String;
+const UpdateAppRequestOauthClientType = S.String;
 
 /** The whitelisted OAuth callback URLs users are redirected to after authorizing the app. */
 export type UpdateAppRequestRedirectUrisList = Array<string>;
-export const UpdateAppRequestRedirectUrisList =
+const UpdateAppRequestRedirectUrisList =
   CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRedirectUrisList>;
 
 /** The OAuth scopes the app requests from users when they install it. */
 export type UpdateAppRequestRequiredScopesList = Array<string>;
-export const UpdateAppRequestRequiredScopesList =
+const UpdateAppRequestRequiredScopesList =
   CreateAppRequestRedirectUrisList as any as S.Schema<UpdateAppRequestRequiredScopesList>;
 
 /** Controls whether the app is published on Whop discovery or accessible only through its direct link. Publishing requires a name, icon, and description. */
 export type UpdateAppRequestStatus = "live" | "unlisted" | "hidden";
-export const UpdateAppRequestStatus = S.String;
+const UpdateAppRequestStatus = S.String;
 
 export interface UpdateAppRequest {
   /** App ID (prefixed `app_`). Retrieval also accepts the app's claimed route, an active verified custom hostname, or its proxy domain id. */
@@ -1017,7 +1013,7 @@ export interface UpdateAppRequest {
   /** Controls whether the app is published on Whop discovery or accessible only through its direct link. Publishing requires a name, icon, and description. */
   status?: UpdateAppRequestStatus | (string & {});
 }
-export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     app_store_description: S.optional(S.String),
@@ -1051,7 +1047,7 @@ export interface UpdateAppPermissionsRequestRequestedPermissionsItem {
   /** Why the app needs this permission (20-512 characters), shown to the installing user. */
   justification: string;
 }
-export const UpdateAppPermissionsRequestRequestedPermissionsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppPermissionsRequestRequestedPermissionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.String,
     is_required: S.Boolean,
@@ -1064,7 +1060,7 @@ export const UpdateAppPermissionsRequestRequestedPermissionsItem = /*@__PURE__*/
 /** The full set of permissions the app requests on install; permissions not listed are removed. */
 export type UpdateAppPermissionsRequestRequestedPermissionsList =
   Array<UpdateAppPermissionsRequestRequestedPermissionsItem>;
-export const UpdateAppPermissionsRequestRequestedPermissionsList = /*@__PURE__*/ S.Array(
+const UpdateAppPermissionsRequestRequestedPermissionsList = /*@__PURE__*/ S.Array(
   UpdateAppPermissionsRequestRequestedPermissionsItem,
 ) as any as S.Schema<UpdateAppPermissionsRequestRequestedPermissionsList>;
 
@@ -1074,7 +1070,7 @@ export interface UpdateAppPermissionsRequest {
   /** The full set of permissions the app requests on install; permissions not listed are removed. */
   requested_permissions: UpdateAppPermissionsRequestRequestedPermissionsList;
 }
-export const UpdateAppPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     requested_permissions: UpdateAppPermissionsRequestRequestedPermissionsList,
@@ -1092,13 +1088,10 @@ export interface UpdatePermissionsAppRequestRequestedPermissionsItem {
   /** The reason for requesting the action. */
   justification: string;
 }
-export const UpdatePermissionsAppRequestRequestedPermissionsItem =
-  UpdateAppPermissionsRequestRequestedPermissionsItem as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsItem>;
-
 /** The permissions that the app will request off of users when a user installs the app. */
 export type UpdatePermissionsAppRequestRequestedPermissionsList =
   Array<UpdatePermissionsAppRequestRequestedPermissionsItem>;
-export const UpdatePermissionsAppRequestRequestedPermissionsList =
+const UpdatePermissionsAppRequestRequestedPermissionsList =
   UpdateAppPermissionsRequestRequestedPermissionsList as any as S.Schema<UpdatePermissionsAppRequestRequestedPermissionsList>;
 
 export interface UpdatePermissionsAppRequest {
@@ -1107,7 +1100,7 @@ export interface UpdatePermissionsAppRequest {
   /** The permissions that the app will request off of users when a user installs the app. */
   requested_permissions: UpdatePermissionsAppRequestRequestedPermissionsList;
 }
-export const UpdatePermissionsAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePermissionsAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_id: S.String.pipe(T.Label()),
     requested_permissions: UpdatePermissionsAppRequestRequestedPermissionsList,
@@ -1117,7 +1110,7 @@ export const UpdatePermissionsAppRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePermissionsAppRequest>;
 
 export type UpdatePermissionsAppResponse = boolean;
-export const UpdatePermissionsAppResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePermissionsAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdatePermissionsAppResponse",

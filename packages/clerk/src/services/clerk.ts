@@ -63,7 +63,7 @@ export interface AddDomainRequest {
   /** The full URL of the proxy which will forward requests to the Clerk Frontend API for this domain. Applicable only to production instances. */
   proxy_url?: string | null;
 }
-export const AddDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     is_satellite: S.Boolean,
@@ -72,7 +72,7 @@ export const AddDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddDomainRequest" }) as any as S.Schema<AddDomainRequest>;
 
 export type DomainObject = "domain";
-export const DomainObject = S.String;
+const DomainObject = S.String;
 
 export interface CNameTarget {
   host: string;
@@ -80,7 +80,7 @@ export interface CNameTarget {
   /** Denotes whether this CNAME target is required to be set in order for the domain to be considered deployed. */
   required: boolean;
 }
-export const CNameTarget = /*@__PURE__*/ S.suspend(() =>
+const CNameTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     value: S.String,
@@ -90,18 +90,18 @@ export const CNameTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** Legacy CNAME-only DNS targets. Prefer `dns_targets` when present. */
 export type DomainCnameTargetsList = Array<CNameTarget>;
-export const DomainCnameTargetsList = /*@__PURE__*/ S.Array(
+const DomainCnameTargetsList = /*@__PURE__*/ S.Array(
   CNameTarget,
 ) as any as S.Schema<DomainCnameTargetsList>;
 
 export type DNSTargetRecordType = "CNAME" | "TXT";
-export const DNSTargetRecordType = S.String;
+const DNSTargetRecordType = S.String;
 
 export type DNSTargetAutomationDisposition =
   | "already_satisfied"
   | "safe_to_create"
   | "manual_resolution_required";
-export const DNSTargetAutomationDisposition = S.String;
+const DNSTargetAutomationDisposition = S.String;
 
 export interface DNSTarget {
   host: string;
@@ -111,7 +111,7 @@ export interface DNSTarget {
   /** Denotes whether this DNS target is required to be set in order for the domain to be considered deployed. */
   required: boolean;
 }
-export const DNSTarget = /*@__PURE__*/ S.suspend(() =>
+const DNSTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.String,
     value: S.String,
@@ -123,7 +123,7 @@ export const DNSTarget = /*@__PURE__*/ S.suspend(() =>
 
 /** The complete typed DNS contract. Consumers should use this field instead of merging it with `cname_targets`. */
 export type DomainDnsTargetsList = Array<DNSTarget>;
-export const DomainDnsTargetsList = /*@__PURE__*/ S.Array(
+const DomainDnsTargetsList = /*@__PURE__*/ S.Array(
   DNSTarget,
 ) as any as S.Schema<DomainDnsTargetsList>;
 
@@ -142,7 +142,7 @@ export interface Domain {
   /** The complete typed DNS contract. Consumers should use this field instead of merging it with `cname_targets`. */
   dns_targets?: DomainDnsTargetsList | null;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DomainObject,
     id: S.String,
@@ -159,7 +159,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of role keys to add to the role set. Must contain at least one role and no more than 10 roles. */
 export type AddRolesToRoleSetRequestRoleKeysList = Array<string>;
-export const AddRolesToRoleSetRequestRoleKeysList = /*@__PURE__*/ S.Array(
+const AddRolesToRoleSetRequestRoleKeysList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddRolesToRoleSetRequestRoleKeysList>;
 
@@ -173,7 +173,7 @@ export interface AddRolesToRoleSetRequest {
   /** Optionally update the creator role to one of the newly added roles. */
   creator_role_key?: string;
 }
-export const AddRolesToRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const AddRolesToRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_set_key_or_id: S.String.pipe(T.Label()),
     role_keys: AddRolesToRoleSetRequestRoleKeysList,
@@ -183,10 +183,10 @@ export const AddRolesToRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddRolesToRoleSetRequest" }) as any as S.Schema<AddRolesToRoleSetRequest>;
 
 export type RoleSetObject = "role_set";
-export const RoleSetObject = S.String;
+const RoleSetObject = S.String;
 
 export type RoleSetItemObject = "role_set_item";
-export const RoleSetItemObject = S.String;
+const RoleSetItemObject = S.String;
 
 /** A role within a role set */
 export interface RoleSetItem {
@@ -208,7 +208,7 @@ export interface RoleSetItem {
   /** Unix timestamp of last role update */
   updated_at: number;
 }
-export const RoleSetItem = /*@__PURE__*/ S.suspend(() =>
+const RoleSetItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RoleSetItemObject,
     id: S.String,
@@ -224,20 +224,18 @@ export const RoleSetItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles in this role set */
 export type RoleSetRolesList = Array<RoleSetItem>;
-export const RoleSetRolesList = /*@__PURE__*/ S.Array(
-  RoleSetItem,
-) as any as S.Schema<RoleSetRolesList>;
+const RoleSetRolesList = /*@__PURE__*/ S.Array(RoleSetItem) as any as S.Schema<RoleSetRolesList>;
 
 /** The type of the role set ("initial" or "custom") */
 export type RoleSetType = "initial" | "custom";
-export const RoleSetType = S.String;
+const RoleSetType = S.String;
 
 export type RoleSetMigrationObject = "role_set_migration";
-export const RoleSetMigrationObject = S.String;
+const RoleSetMigrationObject = S.String;
 
 /** Role key mappings from source to destination roles */
 export type RoleSetMigrationMappingsMap = { [key: string]: string | undefined };
-export const RoleSetMigrationMappingsMap = /*@__PURE__*/ S.Record(
+const RoleSetMigrationMappingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<RoleSetMigrationMappingsMap>;
@@ -272,7 +270,7 @@ export interface RoleSetMigration {
   /** Unix timestamp of last migration update */
   updated_at: number;
 }
-export const RoleSetMigration = /*@__PURE__*/ S.suspend(() =>
+const RoleSetMigration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RoleSetMigrationObject,
     id: S.String,
@@ -317,7 +315,7 @@ export interface RoleSet {
   /** Unix timestamp of last role set update */
   updated_at: number;
 }
-export const RoleSet = /*@__PURE__*/ S.suspend(() =>
+const RoleSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RoleSetObject,
     id: S.String,
@@ -336,7 +334,7 @@ export const RoleSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to increase or decrease the credit balance. */
 export type AdjustOrganizationBillingCreditBalanceRequestAction = "increase" | "decrease";
-export const AdjustOrganizationBillingCreditBalanceRequestAction = S.String;
+const AdjustOrganizationBillingCreditBalanceRequestAction = S.String;
 
 export interface AdjustOrganizationBillingCreditBalanceRequest {
   /** The ID of the organization whose credit balance to adjust */
@@ -352,7 +350,7 @@ export interface AdjustOrganizationBillingCreditBalanceRequest {
   /** An optional note to attach to the ledger entry. */
   note?: string;
 }
-export const AdjustOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const AdjustOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -377,7 +375,7 @@ export interface CommerceMoneyResponse {
   /** The currency symbol (e.g., "$"). */
   currency_symbol: string;
 }
-export const CommerceMoneyResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceMoneyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     amount_formatted: S.String,
@@ -404,7 +402,7 @@ export interface CommerceCreditLedgerResponse {
   /** Timestamp when the ledger entry was created. */
   created_at: string;
 }
-export const CommerceCreditLedgerResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceCreditLedgerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -421,7 +419,7 @@ export const CommerceCreditLedgerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to increase or decrease the credit balance. */
 export type AdjustUserBillingCreditBalanceRequestAction = "increase" | "decrease";
-export const AdjustUserBillingCreditBalanceRequestAction = S.String;
+const AdjustUserBillingCreditBalanceRequestAction = S.String;
 
 export interface AdjustUserBillingCreditBalanceRequest {
   /** The ID of the user whose credit balance to adjust */
@@ -437,7 +435,7 @@ export interface AdjustUserBillingCreditBalanceRequest {
   /** An optional note to attach to the ledger entry. */
   note?: string;
 }
-export const AdjustUserBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const AdjustUserBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     amount: S.Number,
@@ -456,7 +454,7 @@ export interface ApplyBillingSubscriptionItemDiscountRequest {
   /** The ID of the discount to apply to the subscription item. */
   discount_id: string;
 }
-export const ApplyBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription_item_id: S.String.pipe(T.Label()),
     discount_id: S.String,
@@ -473,19 +471,19 @@ export const ApplyBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ S.suspe
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceDiscountRedemptionResponseObject = "commerce_discount_redemption";
-export const CommerceDiscountRedemptionResponseObject = S.String;
+const CommerceDiscountRedemptionResponseObject = S.String;
 
 /** How the discount was applied to the subscription item. */
 export type CommerceDiscountRedemptionResponseSource = "promotion" | "manual" | "promo_code";
-export const CommerceDiscountRedemptionResponseSource = S.String;
+const CommerceDiscountRedemptionResponseSource = S.String;
 
 /** The snapshotted discount effect. */
 export type CommerceDiscountRedemptionResponseEffect = "percentage" | "fixed_amount";
-export const CommerceDiscountRedemptionResponseEffect = S.String;
+const CommerceDiscountRedemptionResponseEffect = S.String;
 
 /** Current status of the discount redemption. */
 export type CommerceDiscountRedemptionResponseStatus = "active" | "exhausted" | "removed";
-export const CommerceDiscountRedemptionResponseStatus = S.String;
+const CommerceDiscountRedemptionResponseStatus = S.String;
 
 export interface CommerceDiscountRedemptionResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -521,7 +519,7 @@ export interface CommerceDiscountRedemptionResponse {
   /** Identifier of the actor that redeemed the discount, when available. */
   redeemed_by: string | null;
 }
-export const CommerceDiscountRedemptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceDiscountRedemptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommerceDiscountRedemptionResponseObject,
     id: S.String,
@@ -550,7 +548,7 @@ export interface AssignPermissionToOrganizationRoleRequest {
   /** The ID of the permission to assign */
   permission_id: string;
 }
-export const AssignPermissionToOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AssignPermissionToOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_role_id: S.String.pipe(T.Label()),
     permission_id: S.String.pipe(T.Label()),
@@ -566,10 +564,10 @@ export const AssignPermissionToOrganizationRoleRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AssignPermissionToOrganizationRoleRequest>;
 
 export type RoleObject = "role";
-export const RoleObject = S.String;
+const RoleObject = S.String;
 
 export type PermissionObject = "permission";
-export const PermissionObject = S.String;
+const PermissionObject = S.String;
 
 export interface Permission {
   object: PermissionObject;
@@ -583,7 +581,7 @@ export interface Permission {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: PermissionObject,
     id: S.String,
@@ -597,7 +595,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type RolePermissionsList = Array<Permission>;
-export const RolePermissionsList = /*@__PURE__*/ S.Array(
+const RolePermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<RolePermissionsList>;
 
@@ -615,7 +613,7 @@ export interface Role {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RoleObject,
     id: S.String,
@@ -637,7 +635,7 @@ export interface AttemptEmailAddressVerificationRequest {
   /** The verification code that was sent to the email address */
   code: string;
 }
-export const AttemptEmailAddressVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const AttemptEmailAddressVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address_id: S.String.pipe(T.Label()),
     verification_id: S.String,
@@ -669,7 +667,7 @@ export interface AttemptEmailAddressVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const AttemptEmailAddressVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const AttemptEmailAddressVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(S.String),
     id: S.optional(S.String),
@@ -691,7 +689,7 @@ export interface AttemptPhoneNumberVerificationRequest {
   /** The verification code that was sent to the phone number */
   code: string;
 }
-export const AttemptPhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const AttemptPhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number_id: S.String.pipe(T.Label()),
     verification_id: S.String,
@@ -723,14 +721,14 @@ export interface AttemptPhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const AttemptPhoneNumberVerificationResponse =
+const AttemptPhoneNumberVerificationResponse =
   AttemptEmailAddressVerificationResponse as any as S.Schema<AttemptPhoneNumberVerificationResponse>;
 
 export interface BanUserRequest {
   /** The ID of the user to ban */
   user_id: string;
 }
-export const BanUserRequest = /*@__PURE__*/ S.suspend(() =>
+const BanUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/ban", code: 200 })),
@@ -738,35 +736,27 @@ export const BanUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type UserObject = "user";
-export const UserObject = S.String;
+const UserObject = S.String;
 
 export type UserPublicMetadataMap = { [key: string]: unknown | undefined };
-export const UserPublicMetadataMap = /*@__PURE__*/ S.Record(
+const UserPublicMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserPublicMetadataMap>;
 
 export type UserPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const UserPrivateMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UserPrivateMetadataMap>;
+const UserPrivateMetadataMap = UserPublicMetadataMap as any as S.Schema<UserPrivateMetadataMap>;
 
 export type UserUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const UserUnsafeMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<UserUnsafeMetadataMap>;
+const UserUnsafeMetadataMap = UserPublicMetadataMap as any as S.Schema<UserUnsafeMetadataMap>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type EmailAddressObject = "email_address";
-export const EmailAddressObject = S.String;
+const EmailAddressObject = S.String;
 
 export type VerificationOtpObject = "verification_otp";
-export const VerificationOtpObject = S.String;
-
 export type VerificationOtpStatus = "unverified" | "verified" | "failed" | "expired";
-export const VerificationOtpStatus = S.String;
-
 export type VerificationOtpStrategy = "phone_code" | "email_code" | "reset_password_email_code";
-export const VerificationOtpStrategy = S.String;
-
 export interface VerificationOtp {
   object?: VerificationOtpObject;
   status: VerificationOtpStatus;
@@ -777,27 +767,9 @@ export interface VerificationOtp {
   channel?: string | null;
   verified_at_client?: string | null;
 }
-export const VerificationOtp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationOtpObject),
-    status: VerificationOtpStatus,
-    strategy: VerificationOtpStrategy,
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-    channel: S.optional(S.NullOr(S.String)),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationOtp" }) as any as S.Schema<VerificationOtp>;
-
 export type VerificationAdminObject = "verification_admin";
-export const VerificationAdminObject = S.String;
-
 export type VerificationAdminStatus = "verified";
-export const VerificationAdminStatus = S.String;
-
 export type VerificationAdminStrategy = "admin";
-export const VerificationAdminStrategy = S.String;
-
 export interface VerificationAdmin {
   object?: VerificationAdminObject;
   status: VerificationAdminStatus;
@@ -806,41 +778,15 @@ export interface VerificationAdmin {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationAdmin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationAdminObject),
-    status: VerificationAdminStatus,
-    strategy: VerificationAdminStrategy,
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationAdmin" }) as any as S.Schema<VerificationAdmin>;
-
 export type VerificationFromOauthObject = "verification_from_oauth";
-export const VerificationFromOauthObject = S.String;
-
 export type VerificationFromOauthStatus = "unverified" | "verified";
-export const VerificationFromOauthStatus = S.String;
-
 export type ClerkErrorMetaMap = { [key: string]: unknown | undefined };
-export const ClerkErrorMetaMap = UserPublicMetadataMap as any as S.Schema<ClerkErrorMetaMap>;
-
 export interface ClerkError {
   message: string;
   long_message: string;
   code: string;
   meta?: ClerkErrorMetaMap;
 }
-export const ClerkError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    long_message: S.String,
-    code: S.String,
-    meta: S.optional(ClerkErrorMetaMap),
-  }),
-).annotate({ identifier: "ClerkError" }) as any as S.Schema<ClerkError>;
-
 export interface VerificationFromOauth {
   object?: VerificationFromOauthObject;
   status: VerificationFromOauthStatus;
@@ -850,27 +796,9 @@ export interface VerificationFromOauth {
   attempts: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationFromOauth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationFromOauthObject),
-    status: VerificationFromOauthStatus,
-    strategy: S.String,
-    error: S.optional(S.NullOr(ClerkError)),
-    expire_at: S.NullOr(S.Number),
-    attempts: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationFromOauth" }) as any as S.Schema<VerificationFromOauth>;
-
 export type VerificationTicketObject = "verification_ticket";
-export const VerificationTicketObject = S.String;
-
 export type VerificationTicketStatus = "unverified" | "verified" | "expired";
-export const VerificationTicketStatus = S.String;
-
 export type VerificationTicketStrategy = "ticket";
-export const VerificationTicketStrategy = S.String;
-
 export interface VerificationTicket {
   object?: VerificationTicketObject;
   status: VerificationTicketStatus;
@@ -879,22 +807,14 @@ export interface VerificationTicket {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationTicket = VerificationAdmin as any as S.Schema<VerificationTicket>;
-
 export type VerificationSamlObject = "verification_saml";
-export const VerificationSamlObject = S.String;
-
 export type VerificationSamlStatus =
   | "unverified"
   | "verified"
   | "failed"
   | "expired"
   | "transferable";
-export const VerificationSamlStatus = S.String;
-
 export type VerificationSamlStrategy = "saml";
-export const VerificationSamlStrategy = S.String;
-
 export interface VerificationSaml {
   object?: VerificationSamlObject;
   status: VerificationSamlStatus;
@@ -905,28 +825,9 @@ export interface VerificationSaml {
   attempts: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationSaml = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationSamlObject),
-    status: VerificationSamlStatus,
-    strategy: VerificationSamlStrategy,
-    external_verification_redirect_url: S.optional(S.NullOr(S.String)),
-    error: S.optional(S.NullOr(ClerkError)),
-    expire_at: S.optional(S.NullOr(S.Number)),
-    attempts: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationSaml" }) as any as S.Schema<VerificationSaml>;
-
 export type VerificationEmailLinkObject = "verification_email_link";
-export const VerificationEmailLinkObject = S.String;
-
 export type VerificationEmailLinkStatus = "unverified" | "verified" | "failed" | "expired";
-export const VerificationEmailLinkStatus = S.String;
-
 export type VerificationEmailLinkStrategy = "email_link";
-export const VerificationEmailLinkStrategy = S.String;
-
 export interface VerificationEmailLink {
   object?: VerificationEmailLinkObject;
   status: VerificationEmailLinkStatus;
@@ -935,17 +836,9 @@ export interface VerificationEmailLink {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationEmailLink = VerificationAdmin as any as S.Schema<VerificationEmailLink>;
-
 export type VerificationScimObject = "verification_scim";
-export const VerificationScimObject = S.String;
-
 export type VerificationScimStatus = "verified";
-export const VerificationScimStatus = S.String;
-
 export type VerificationScimStrategy = "scim";
-export const VerificationScimStrategy = S.String;
-
 export interface VerificationScim {
   object?: VerificationScimObject;
   status: VerificationScimStatus;
@@ -953,16 +846,6 @@ export interface VerificationScim {
   attempts: number | null;
   expire_at: number | null;
 }
-export const VerificationScim = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationScimObject),
-    status: VerificationScimStatus,
-    strategy: VerificationScimStrategy,
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "VerificationScim" }) as any as S.Schema<VerificationScim>;
-
 export type EmailAddressVerification =
   | VerificationOtp
   | VerificationAdmin
@@ -971,13 +854,13 @@ export type EmailAddressVerification =
   | VerificationSaml
   | VerificationEmailLink
   | VerificationScim;
-export const EmailAddressVerification = S.Unknown as any as S.Schema<EmailAddressVerification>;
+const EmailAddressVerification = S.Unknown as any as S.Schema<EmailAddressVerification>;
 
 export interface IdentificationLink {
   type: string;
   id: string;
 }
-export const IdentificationLink = /*@__PURE__*/ S.suspend(() =>
+const IdentificationLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     id: S.String,
@@ -985,7 +868,7 @@ export const IdentificationLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdentificationLink" }) as any as S.Schema<IdentificationLink>;
 
 export type EmailAddressLinkedToList = Array<IdentificationLink>;
-export const EmailAddressLinkedToList = /*@__PURE__*/ S.Array(
+const EmailAddressLinkedToList = /*@__PURE__*/ S.Array(
   IdentificationLink,
 ) as any as S.Schema<EmailAddressLinkedToList>;
 
@@ -1004,7 +887,7 @@ export interface EmailAddress {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
+const EmailAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     object: EmailAddressObject,
@@ -1019,23 +902,23 @@ export const EmailAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailAddress" }) as any as S.Schema<EmailAddress>;
 
 export type UserEmailAddressesList = Array<EmailAddress>;
-export const UserEmailAddressesList = /*@__PURE__*/ S.Array(
+const UserEmailAddressesList = /*@__PURE__*/ S.Array(
   EmailAddress,
 ) as any as S.Schema<UserEmailAddressesList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type PhoneNumberObject = "phone_number";
-export const PhoneNumberObject = S.String;
+const PhoneNumberObject = S.String;
 
 export type PhoneNumberVerification = VerificationOtp | VerificationAdmin;
-export const PhoneNumberVerification = S.Unknown as any as S.Schema<PhoneNumberVerification>;
+const PhoneNumberVerification = S.Unknown as any as S.Schema<PhoneNumberVerification>;
 
 export type PhoneNumberLinkedToList = Array<IdentificationLink>;
-export const PhoneNumberLinkedToList =
+const PhoneNumberLinkedToList =
   EmailAddressLinkedToList as any as S.Schema<PhoneNumberLinkedToList>;
 
 export type PhoneNumberBackupCodesList = Array<string>;
-export const PhoneNumberBackupCodesList =
+const PhoneNumberBackupCodesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<PhoneNumberBackupCodesList>;
 
 export interface PhoneNumber {
@@ -1054,7 +937,7 @@ export interface PhoneNumber {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
+const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     object: PhoneNumberObject,
@@ -1071,28 +954,22 @@ export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhoneNumber" }) as any as S.Schema<PhoneNumber>;
 
 export type UserPhoneNumbersList = Array<PhoneNumber>;
-export const UserPhoneNumbersList = /*@__PURE__*/ S.Array(
+const UserPhoneNumbersList = /*@__PURE__*/ S.Array(
   PhoneNumber,
 ) as any as S.Schema<UserPhoneNumbersList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type Web3WalletObject = "web3_wallet";
-export const Web3WalletObject = S.String;
+const Web3WalletObject = S.String;
 
 export type VerificationWeb3Object = "verification_web3";
-export const VerificationWeb3Object = S.String;
-
 export type VerificationWeb3Status = "unverified" | "verified" | "failed" | "expired";
-export const VerificationWeb3Status = S.String;
-
 export type VerificationWeb3Strategy =
   | "web3_metamask_signature"
   | "web3_base_signature"
   | "web3_coinbase_wallet_signature"
   | "web3_okx_wallet_signature"
   | "web3_solana_signature";
-export const VerificationWeb3Strategy = S.String;
-
 export interface VerificationWeb3 {
   object?: VerificationWeb3Object;
   status: VerificationWeb3Status;
@@ -1103,21 +980,8 @@ export interface VerificationWeb3 {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationWeb3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationWeb3Object),
-    status: VerificationWeb3Status,
-    strategy: VerificationWeb3Strategy,
-    nonce: S.optional(S.NullOr(S.String)),
-    message: S.optional(S.NullOr(S.String)),
-    attempts: S.NullOr(S.Number),
-    expire_at: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationWeb3" }) as any as S.Schema<VerificationWeb3>;
-
 export type Web3WalletVerification = VerificationWeb3 | VerificationAdmin;
-export const Web3WalletVerification = S.Unknown as any as S.Schema<Web3WalletVerification>;
+const Web3WalletVerification = S.Unknown as any as S.Schema<Web3WalletVerification>;
 
 export interface Web3Wallet {
   id?: string;
@@ -1130,7 +994,7 @@ export interface Web3Wallet {
   /** Unix timestamp of creation */
   updated_at: number;
 }
-export const Web3Wallet = /*@__PURE__*/ S.suspend(() =>
+const Web3Wallet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     object: Web3WalletObject,
@@ -1142,25 +1006,25 @@ export const Web3Wallet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Web3Wallet" }) as any as S.Schema<Web3Wallet>;
 
 export type UserWeb3WalletsList = Array<Web3Wallet>;
-export const UserWeb3WalletsList = /*@__PURE__*/ S.Array(
+const UserWeb3WalletsList = /*@__PURE__*/ S.Array(
   Web3Wallet,
 ) as any as S.Schema<UserWeb3WalletsList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type PasskeyObject = "passkey";
-export const PasskeyObject = S.String;
+const PasskeyObject = S.String;
 
 export type VerificationPasskeyObject = "verification_passkey";
-export const VerificationPasskeyObject = S.String;
+const VerificationPasskeyObject = S.String;
 
 export type VerificationPasskeyStatus = "verified";
-export const VerificationPasskeyStatus = S.String;
+const VerificationPasskeyStatus = S.String;
 
 export type VerificationPasskeyStrategy = "passkey";
-export const VerificationPasskeyStrategy = S.String;
+const VerificationPasskeyStrategy = S.String;
 
 export type VerificationPasskeyNonce = "nonce";
-export const VerificationPasskeyNonce = S.String;
+const VerificationPasskeyNonce = S.String;
 
 export interface VerificationPasskey {
   object?: VerificationPasskeyObject;
@@ -1172,7 +1036,7 @@ export interface VerificationPasskey {
   expire_at: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationPasskey = /*@__PURE__*/ S.suspend(() =>
+const VerificationPasskey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(VerificationPasskeyObject),
     status: VerificationPasskeyStatus,
@@ -1194,7 +1058,7 @@ export interface Passkey {
   last_used_at: number;
   verification: VerificationPasskey | null;
 }
-export const Passkey = /*@__PURE__*/ S.suspend(() =>
+const Passkey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     object: PasskeyObject,
@@ -1205,32 +1069,28 @@ export const Passkey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Passkey" }) as any as S.Schema<Passkey>;
 
 export type UserPasskeysList = Array<Passkey>;
-export const UserPasskeysList = /*@__PURE__*/ S.Array(Passkey) as any as S.Schema<UserPasskeysList>;
+const UserPasskeysList = /*@__PURE__*/ S.Array(Passkey) as any as S.Schema<UserPasskeysList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ExternalAccountWithVerificationObject =
   | "external_account"
   | "facebook_account"
   | "google_account";
-export const ExternalAccountWithVerificationObject = S.String;
+const ExternalAccountWithVerificationObject = S.String;
 
 export type ExternalAccountWithVerificationPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ExternalAccountWithVerificationPublicMetadataMap =
+const ExternalAccountWithVerificationPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ExternalAccountWithVerificationPublicMetadataMap>;
 
 export type VerificationOauthObject = "verification_oauth";
-export const VerificationOauthObject = S.String;
-
 export type VerificationOauthStatus =
   | "unverified"
   | "verified"
   | "failed"
   | "expired"
   | "transferable";
-export const VerificationOauthStatus = S.String;
-
 export interface VerificationOauth {
   object?: VerificationOauthObject;
   status: VerificationOauthStatus;
@@ -1241,28 +1101,9 @@ export interface VerificationOauth {
   attempts: number | null;
   verified_at_client?: string | null;
 }
-export const VerificationOauth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationOauthObject),
-    status: VerificationOauthStatus,
-    strategy: S.String,
-    external_verification_redirect_url: S.optional(S.String),
-    error: S.optional(S.NullOr(ClerkError)),
-    expire_at: S.Number,
-    attempts: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "VerificationOauth" }) as any as S.Schema<VerificationOauth>;
-
 export type VerificationGoogleOneTapObject = "verification_google_one_tap";
-export const VerificationGoogleOneTapObject = S.String;
-
 export type VerificationGoogleOneTapStatus = "unverified" | "verified";
-export const VerificationGoogleOneTapStatus = S.String;
-
 export type VerificationGoogleOneTapStrategy = "google_one_tap";
-export const VerificationGoogleOneTapStrategy = S.String;
-
 export interface VerificationGoogleOneTap {
   object?: VerificationGoogleOneTapObject;
   status: VerificationGoogleOneTapStatus;
@@ -1272,22 +1113,10 @@ export interface VerificationGoogleOneTap {
   verified_at_client?: string | null;
   error?: ClerkError | null;
 }
-export const VerificationGoogleOneTap = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: S.optional(VerificationGoogleOneTapObject),
-    status: VerificationGoogleOneTapStatus,
-    strategy: VerificationGoogleOneTapStrategy,
-    expire_at: S.NullOr(S.Number),
-    attempts: S.NullOr(S.Number),
-    verified_at_client: S.optional(S.NullOr(S.String)),
-    error: S.optional(S.NullOr(ClerkError)),
-  }),
-).annotate({ identifier: "VerificationGoogleOneTap" }) as any as S.Schema<VerificationGoogleOneTap>;
-
 export type ExternalAccountWithVerificationVerification =
   | VerificationOauth
   | VerificationGoogleOneTap;
-export const ExternalAccountWithVerificationVerification =
+const ExternalAccountWithVerificationVerification =
   S.Unknown as any as S.Schema<ExternalAccountWithVerificationVerification>;
 
 export interface ExternalAccountWithVerification {
@@ -1317,7 +1146,7 @@ export interface ExternalAccountWithVerification {
   updated_at: number;
   verification: ExternalAccountWithVerificationVerification | null;
 }
-export const ExternalAccountWithVerification = /*@__PURE__*/ S.suspend(() =>
+const ExternalAccountWithVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: ExternalAccountWithVerificationObject,
     id: S.String,
@@ -1344,20 +1173,20 @@ export const ExternalAccountWithVerification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalAccountWithVerification>;
 
 export type UserExternalAccountsList = Array<ExternalAccountWithVerification>;
-export const UserExternalAccountsList = /*@__PURE__*/ S.Array(
+const UserExternalAccountsList = /*@__PURE__*/ S.Array(
   ExternalAccountWithVerification,
 ) as any as S.Schema<UserExternalAccountsList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type SAMLAccountObject = "saml_account";
-export const SAMLAccountObject = S.String;
+const SAMLAccountObject = S.String;
 
 export type SAMLAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-export const SAMLAccountPublicMetadataMap =
+const SAMLAccountPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<SAMLAccountPublicMetadataMap>;
 
 export type SAMLAccountVerification = VerificationSaml | VerificationTicket;
-export const SAMLAccountVerification = S.Unknown as any as S.Schema<SAMLAccountVerification>;
+const SAMLAccountVerification = S.Unknown as any as S.Schema<SAMLAccountVerification>;
 
 export interface SAMLAccount {
   id: string;
@@ -1375,7 +1204,7 @@ export interface SAMLAccount {
   verification: SAMLAccountVerification | null;
   saml_connection?: unknown | null;
 }
-export const SAMLAccount = /*@__PURE__*/ S.suspend(() =>
+const SAMLAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: SAMLAccountObject,
@@ -1393,28 +1222,27 @@ export const SAMLAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SAMLAccount" }) as any as S.Schema<SAMLAccount>;
 
 export type UserSamlAccountsList = Array<SAMLAccount>;
-export const UserSamlAccountsList = /*@__PURE__*/ S.Array(
+const UserSamlAccountsList = /*@__PURE__*/ S.Array(
   SAMLAccount,
 ) as any as S.Schema<UserSamlAccountsList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type EnterpriseAccountObject = "enterprise_account";
-export const EnterpriseAccountObject = S.String;
+const EnterpriseAccountObject = S.String;
 
 /** The authentication protocol used to sign in. */
 export type EnterpriseAccountProtocol = "oauth" | "saml";
-export const EnterpriseAccountProtocol = S.String;
+const EnterpriseAccountProtocol = S.String;
 
 export type EnterpriseAccountPublicMetadataMap = { [key: string]: unknown | undefined };
-export const EnterpriseAccountPublicMetadataMap =
+const EnterpriseAccountPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<EnterpriseAccountPublicMetadataMap>;
 
 export type EnterpriseAccountVerification =
   | VerificationTicket
   | VerificationSaml
   | VerificationOauth;
-export const EnterpriseAccountVerification =
-  S.Unknown as any as S.Schema<EnterpriseAccountVerification>;
+const EnterpriseAccountVerification = S.Unknown as any as S.Schema<EnterpriseAccountVerification>;
 
 export interface EnterpriseAccount {
   id: string;
@@ -1436,7 +1264,7 @@ export interface EnterpriseAccount {
   /** Unix timestamp of last authentication. */
   last_authenticated_at?: number | null;
 }
-export const EnterpriseAccount = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: EnterpriseAccountObject,
@@ -1456,37 +1284,37 @@ export const EnterpriseAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnterpriseAccount" }) as any as S.Schema<EnterpriseAccount>;
 
 export type UserEnterpriseAccountsList = Array<EnterpriseAccount>;
-export const UserEnterpriseAccountsList = /*@__PURE__*/ S.Array(
+const UserEnterpriseAccountsList = /*@__PURE__*/ S.Array(
   EnterpriseAccount,
 ) as any as S.Schema<UserEnterpriseAccountsList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationMembershipObject = "organization_membership";
-export const OrganizationMembershipObject = S.String;
+const OrganizationMembershipObject = S.String;
 
 export type OrganizationMembershipPermissionsList = Array<string>;
-export const OrganizationMembershipPermissionsList =
+const OrganizationMembershipPermissionsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OrganizationMembershipPermissionsList>;
 
 /** Metadata saved on the organization membership, accessible from both Frontend and Backend APIs */
 export type OrganizationMembershipPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationMembershipPublicMetadataMap =
+const OrganizationMembershipPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPublicMetadataMap>;
 
 /** Metadata saved on the organization membership, accessible only from the Backend API */
 export type OrganizationMembershipPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationMembershipPrivateMetadataMap =
+const OrganizationMembershipPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationMembershipPrivateMetadataMap>;
 
 export type OrganizationObject = "organization";
-export const OrganizationObject = S.String;
+const OrganizationObject = S.String;
 
 export type OrganizationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationPublicMetadataMap =
+const OrganizationPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationPublicMetadataMap>;
 
 export type OrganizationPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationPrivateMetadataMap =
+const OrganizationPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationPrivateMetadataMap>;
 
 export interface Organization {
@@ -1515,7 +1343,7 @@ export interface Organization {
   /** The key of the [role set](https://clerk.com/docs/guides/organizations/control-access/role-sets) assigned to this organization. */
   role_set_key?: string | null;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OrganizationObject,
     id: S.String,
@@ -1552,7 +1380,7 @@ export interface OrganizationMembershipPublicUserData {
   banned?: boolean;
   deprovisioned?: boolean;
 }
-export const OrganizationMembershipPublicUserData = /*@__PURE__*/ S.suspend(() =>
+const OrganizationMembershipPublicUserData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     first_name: S.NullOr(S.String),
@@ -1588,7 +1416,7 @@ export interface OrganizationMembership {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const OrganizationMembership = /*@__PURE__*/ S.suspend(() =>
+const OrganizationMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: OrganizationMembershipObject,
@@ -1605,7 +1433,7 @@ export const OrganizationMembership = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationMembership" }) as any as S.Schema<OrganizationMembership>;
 
 export type UserOrganizationMembershipsList = Array<OrganizationMembership>;
-export const UserOrganizationMembershipsList = /*@__PURE__*/ S.Array(
+const UserOrganizationMembershipsList = /*@__PURE__*/ S.Array(
   OrganizationMembership,
 ) as any as S.Schema<UserOrganizationMembershipsList>;
 
@@ -1613,7 +1441,7 @@ export interface SCIMUserMetadataGroupsItem {
   id: string;
   display_name: string;
 }
-export const SCIMUserMetadataGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const SCIMUserMetadataGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     display_name: S.String,
@@ -1624,7 +1452,7 @@ export const SCIMUserMetadataGroupsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Omitted when groups were not loaded; an empty array means no group memberships. */
 export type SCIMUserMetadataGroupsList = Array<SCIMUserMetadataGroupsItem>;
-export const SCIMUserMetadataGroupsList = /*@__PURE__*/ S.Array(
+const SCIMUserMetadataGroupsList = /*@__PURE__*/ S.Array(
   SCIMUserMetadataGroupsItem,
 ) as any as S.Schema<SCIMUserMetadataGroupsList>;
 
@@ -1644,7 +1472,7 @@ export interface SCIMUserMetadata {
   /** The user's external ID as reported by the directory, if any. */
   external_id: string | null;
 }
-export const SCIMUserMetadata = /*@__PURE__*/ S.suspend(() =>
+const SCIMUserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     directory_name: S.String,
@@ -1659,7 +1487,7 @@ export const SCIMUserMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** All loaded directory links. Omitted when links were not loaded; an empty array means the user has no directory links. */
 export type UserDirectoriesList = Array<SCIMUserMetadata>;
-export const UserDirectoriesList = /*@__PURE__*/ S.Array(
+const UserDirectoriesList = /*@__PURE__*/ S.Array(
   SCIMUserMetadata,
 ) as any as S.Schema<UserDirectoriesList>;
 
@@ -1735,7 +1563,7 @@ export interface User {
   /** Alias of directory. Use directories for all links. */
   scim?: SCIMUserMetadata | null;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: UserObject,
@@ -1791,26 +1619,26 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user IDs to ban */
 export type BanUserRequestUserIdsList = Array<string>;
-export const BanUserRequestUserIdsList =
+const BanUserRequestUserIdsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<BanUserRequestUserIdsList>;
 
 export interface BanUserRequest2 {
   /** Array of user IDs to ban */
   user_ids: BanUserRequestUserIdsList;
 }
-export const BanUserRequest2 = /*@__PURE__*/ S.suspend(() =>
+const BanUserRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_ids: BanUserRequestUserIdsList,
   }).pipe(T.Http({ method: "POST", uri: "/users/ban", code: 200 })),
 ).annotate({ identifier: "BanUserRequest2" }) as any as S.Schema<BanUserRequest2>;
 
 export type BanUserResponseBodyList = Array<User>;
-export const BanUserResponseBodyList = /*@__PURE__*/ S.Array(
+const BanUserResponseBodyList = /*@__PURE__*/ S.Array(
   User,
 ) as any as S.Schema<BanUserResponseBodyList>;
 
 export type BanUserResponse = BanUserResponseBodyList;
-export const BanUserResponse = /*@__PURE__*/ S.suspend(() =>
+const BanUserResponse = /*@__PURE__*/ S.suspend(() =>
   BanUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "BanUserResponse" }) as any as S.Schema<BanUserResponse>;
 
@@ -1820,7 +1648,7 @@ export interface CancelCommerceSubscriptionItemRequest {
   /** Whether to cancel the subscription immediately (true) or at the end of the current billing period (false, default) */
   end_now?: boolean;
 }
-export const CancelCommerceSubscriptionItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCommerceSubscriptionItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription_item_id: S.String.pipe(T.Label()),
     end_now: S.optional(S.Boolean.pipe(T.Query())),
@@ -1837,7 +1665,7 @@ export const CancelCommerceSubscriptionItemRequest = /*@__PURE__*/ S.suspend(() 
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionItemObject = "commerce_subscription_item";
-export const CommerceSubscriptionItemObject = S.String;
+const CommerceSubscriptionItemObject = S.String;
 
 /** Current status of the subscription item. */
 export type CommerceSubscriptionItemStatus =
@@ -1849,7 +1677,7 @@ export type CommerceSubscriptionItemStatus =
   | "upcoming"
   | "incomplete"
   | "abandoned";
-export const CommerceSubscriptionItemStatus = S.String;
+const CommerceSubscriptionItemStatus = S.String;
 
 export interface CommerceSubscriptionCreditResponse {
   /** Credit amount. */
@@ -1857,7 +1685,7 @@ export interface CommerceSubscriptionCreditResponse {
   /** Percentage of the billing cycle remaining. */
   cycle_remaining_percent?: number;
 }
-export const CommerceSubscriptionCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.NullOr(CommerceMoneyResponse)),
     cycle_remaining_percent: S.optional(S.Number),
@@ -1872,7 +1700,7 @@ export interface CommerceProrationCreditDetailResponse {
   cycle_days_total: number;
   cycle_remaining_percent: number;
 }
-export const CommerceProrationCreditDetailResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceProrationCreditDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: CommerceMoneyResponse,
     cycle_days_remaining: S.Number,
@@ -1887,7 +1715,7 @@ export interface CommercePayerCreditResponse {
   remaining_balance: CommerceMoneyResponse;
   applied_amount: CommerceMoneyResponse;
 }
-export const CommercePayerCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const CommercePayerCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remaining_balance: CommerceMoneyResponse,
     applied_amount: CommerceMoneyResponse,
@@ -1901,7 +1729,7 @@ export interface CommerceCreditsResponse {
   payer: CommercePayerCreditResponse | null;
   total: CommerceMoneyResponse;
 }
-export const CommerceCreditsResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceCreditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proration: S.NullOr(CommerceProrationCreditDetailResponse),
     payer: S.NullOr(CommercePayerCreditResponse),
@@ -1911,11 +1739,11 @@ export const CommerceCreditsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePlanObject = "commerce_plan";
-export const CommercePlanObject = S.String;
+const CommercePlanObject = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type FeatureResponseObject = "feature";
-export const FeatureResponseObject = S.String;
+const FeatureResponseObject = S.String;
 
 export interface FeatureResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -1931,7 +1759,7 @@ export interface FeatureResponse {
   /** The URL of the feature's avatar image. */
   avatar_url: string | null;
 }
-export const FeatureResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: FeatureResponseObject,
     id: S.String,
@@ -1944,7 +1772,7 @@ export const FeatureResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The features included in this plan. */
 export type CommercePlanFeaturesList = Array<FeatureResponse>;
-export const CommercePlanFeaturesList = /*@__PURE__*/ S.Array(
+const CommercePlanFeaturesList = /*@__PURE__*/ S.Array(
   FeatureResponse,
 ) as any as S.Schema<CommercePlanFeaturesList>;
 
@@ -1956,7 +1784,7 @@ export interface CommercePlanUnitPriceTier {
   /** Price charged per block in this tier */
   fee_per_block: CommerceMoneyResponse;
 }
-export const CommercePlanUnitPriceTier = /*@__PURE__*/ S.suspend(() =>
+const CommercePlanUnitPriceTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     starts_at_block: S.Number,
     ends_after_block: S.optional(S.NullOr(S.Number)),
@@ -1968,7 +1796,7 @@ export const CommercePlanUnitPriceTier = /*@__PURE__*/ S.suspend(() =>
 
 /** Tiered pricing configuration for this unit */
 export type CommercePlanUnitPriceTiersList = Array<CommercePlanUnitPriceTier>;
-export const CommercePlanUnitPriceTiersList = /*@__PURE__*/ S.Array(
+const CommercePlanUnitPriceTiersList = /*@__PURE__*/ S.Array(
   CommercePlanUnitPriceTier,
 ) as any as S.Schema<CommercePlanUnitPriceTiersList>;
 
@@ -1980,7 +1808,7 @@ export interface CommercePlanUnitPrice {
   /** Tiered pricing configuration for this unit */
   tiers: CommercePlanUnitPriceTiersList;
 }
-export const CommercePlanUnitPrice = /*@__PURE__*/ S.suspend(() =>
+const CommercePlanUnitPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     block_size: S.Number,
@@ -1990,7 +1818,7 @@ export const CommercePlanUnitPrice = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-unit pricing tiers for this plan (for example, seats) */
 export type CommercePlanUnitPricesList = Array<CommercePlanUnitPrice>;
-export const CommercePlanUnitPricesList = /*@__PURE__*/ S.Array(
+const CommercePlanUnitPricesList = /*@__PURE__*/ S.Array(
   CommercePlanUnitPrice,
 ) as any as S.Schema<CommercePlanUnitPricesList>;
 
@@ -2031,7 +1859,7 @@ export interface CommercePlan {
   /** Per-unit pricing tiers for this plan (for example, seats) */
   unit_prices?: CommercePlanUnitPricesList;
 }
-export const CommercePlan = /*@__PURE__*/ S.suspend(() =>
+const CommercePlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePlanObject,
     id: S.String,
@@ -2057,19 +1885,19 @@ export const CommercePlan = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing period for this subscription item. */
 export type CommerceSubscriptionItemPlanPeriod = "month" | "annual";
-export const CommerceSubscriptionItemPlanPeriod = S.String;
+const CommerceSubscriptionItemPlanPeriod = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePaymentMethodResponseObject = "commerce_payment_method";
-export const CommercePaymentMethodResponseObject = S.String;
+const CommercePaymentMethodResponseObject = S.String;
 
 /** The payment method type. */
 export type CommercePaymentMethodResponsePaymentType = "card" | "link" | "payer-credits";
-export const CommercePaymentMethodResponsePaymentType = S.String;
+const CommercePaymentMethodResponsePaymentType = S.String;
 
 /** Status of the payment method. */
 export type CommercePaymentMethodResponseStatus = "active" | "disconnected";
-export const CommercePaymentMethodResponseStatus = S.String;
+const CommercePaymentMethodResponseStatus = S.String;
 
 export interface CommercePaymentMethodResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -2107,7 +1935,7 @@ export interface CommercePaymentMethodResponse {
   /** Whether this payment method can be removed. */
   is_removable?: boolean;
 }
-export const CommercePaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
+const CommercePaymentMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePaymentMethodResponseObject,
     id: S.String,
@@ -2139,7 +1967,7 @@ export interface CommercePerUnitTotalTier {
   /** Total charge for this tier. */
   total: CommerceMoneyResponse;
 }
-export const CommercePerUnitTotalTier = /*@__PURE__*/ S.suspend(() =>
+const CommercePerUnitTotalTier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.NullOr(S.Number)),
     fee_per_block: CommerceMoneyResponse,
@@ -2149,7 +1977,7 @@ export const CommercePerUnitTotalTier = /*@__PURE__*/ S.suspend(() =>
 
 /** Computed totals for each pricing tier. */
 export type CommercePerUnitTotalTiersList = Array<CommercePerUnitTotalTier>;
-export const CommercePerUnitTotalTiersList = /*@__PURE__*/ S.Array(
+const CommercePerUnitTotalTiersList = /*@__PURE__*/ S.Array(
   CommercePerUnitTotalTier,
 ) as any as S.Schema<CommercePerUnitTotalTiersList>;
 
@@ -2161,7 +1989,7 @@ export interface CommercePerUnitTotal {
   /** Computed totals for each pricing tier. */
   tiers: CommercePerUnitTotalTiersList;
 }
-export const CommercePerUnitTotal = /*@__PURE__*/ S.suspend(() =>
+const CommercePerUnitTotal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     block_size: S.Number,
@@ -2172,12 +2000,12 @@ export const CommercePerUnitTotal = /*@__PURE__*/ S.suspend(() =>
 /** Per-unit total breakdown (for example, seats) for the next payment. */
 export type CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList =
   Array<CommercePerUnitTotal>;
-export const CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList = /*@__PURE__*/ S.Array(
+const CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList = /*@__PURE__*/ S.Array(
   CommercePerUnitTotal,
 ) as any as S.Schema<CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList>;
 
 export type CommerceTotalsResponsePerUnitTotalsList = Array<CommercePerUnitTotal>;
-export const CommerceTotalsResponsePerUnitTotalsList =
+const CommerceTotalsResponsePerUnitTotalsList =
   CommerceSubscriptionItemNextPaymentResponsePerUnitTotalsList as any as S.Schema<CommerceTotalsResponsePerUnitTotalsList>;
 
 export interface CommerceProrationDiscountResponse {
@@ -2186,7 +2014,7 @@ export interface CommerceProrationDiscountResponse {
   cycle_days_total: number;
   cycle_passed_percent: number;
 }
-export const CommerceProrationDiscountResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceProrationDiscountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: CommerceMoneyResponse,
     cycle_days_passed: S.Number,
@@ -2201,7 +2029,7 @@ export interface CommerceDiscountsResponse {
   proration: CommerceProrationDiscountResponse | null;
   total: CommerceMoneyResponse;
 }
-export const CommerceDiscountsResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceDiscountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proration: S.NullOr(CommerceProrationDiscountResponse),
     total: CommerceMoneyResponse,
@@ -2219,7 +2047,7 @@ export interface CommerceTotalsResponse {
   credits?: CommerceCreditsResponse | null;
   discounts?: CommerceDiscountsResponse | null;
 }
-export const CommerceTotalsResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceTotalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subtotal: CommerceMoneyResponse,
     base_fee: CommerceMoneyResponse,
@@ -2241,7 +2069,7 @@ export interface CommerceSubscriptionItemNextPaymentResponse {
   /** Breakdown of the recurring amount that will be billed at renewal (base fee + per-unit charges). Tax and credits are not previewed. */
   totals?: CommerceTotalsResponse | null;
 }
-export const CommerceSubscriptionItemNextPaymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionItemNextPaymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.NullOr(CommerceMoneyResponse)),
     date: S.optional(S.NullOr(S.Number)),
@@ -2254,7 +2082,7 @@ export const CommerceSubscriptionItemNextPaymentResponse = /*@__PURE__*/ S.suspe
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePayerResponseObject = "commerce_payer";
-export const CommercePayerResponseObject = S.String;
+const CommercePayerResponseObject = S.String;
 
 export interface CommercePayerResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -2284,7 +2112,7 @@ export interface CommercePayerResponse {
   /** Unix timestamp (in milliseconds) when the payer was last updated. */
   updated_at?: number;
 }
-export const CommercePayerResponse = /*@__PURE__*/ S.suspend(() =>
+const CommercePayerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePayerResponseObject,
     id: S.String,
@@ -2310,7 +2138,7 @@ export interface CommercePerUnitTotalTier2 {
   /** Total charge for this tier */
   total: CommerceMoneyResponse;
 }
-export const CommercePerUnitTotalTier2 = /*@__PURE__*/ S.suspend(() =>
+const CommercePerUnitTotalTier2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.optional(S.NullOr(S.Number)),
     fee_per_block: CommerceMoneyResponse,
@@ -2322,7 +2150,7 @@ export const CommercePerUnitTotalTier2 = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-unit cost breakdown by pricing tier */
 export type CommerceSubscriptionItemSeatsResponseTiersList = Array<CommercePerUnitTotalTier2>;
-export const CommerceSubscriptionItemSeatsResponseTiersList = /*@__PURE__*/ S.Array(
+const CommerceSubscriptionItemSeatsResponseTiersList = /*@__PURE__*/ S.Array(
   CommercePerUnitTotalTier2,
 ) as any as S.Schema<CommerceSubscriptionItemSeatsResponseTiersList>;
 
@@ -2332,7 +2160,7 @@ export interface CommerceSubscriptionItemSeatsResponse {
   /** Per-unit cost breakdown by pricing tier */
   tiers?: CommerceSubscriptionItemSeatsResponseTiersList;
 }
-export const CommerceSubscriptionItemSeatsResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionItemSeatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quantity: S.NullOr(S.Number),
     tiers: S.optional(CommerceSubscriptionItemSeatsResponseTiersList),
@@ -2343,7 +2171,7 @@ export const CommerceSubscriptionItemSeatsResponse = /*@__PURE__*/ S.suspend(() 
 
 /** Computed totals for each pricing tier */
 export type CommercePerUnitTotal2TiersList = Array<CommercePerUnitTotalTier2>;
-export const CommercePerUnitTotal2TiersList =
+const CommercePerUnitTotal2TiersList =
   CommerceSubscriptionItemSeatsResponseTiersList as any as S.Schema<CommercePerUnitTotal2TiersList>;
 
 export interface CommercePerUnitTotal2 {
@@ -2354,7 +2182,7 @@ export interface CommercePerUnitTotal2 {
   /** Computed totals for each pricing tier */
   tiers: CommercePerUnitTotal2TiersList;
 }
-export const CommercePerUnitTotal2 = /*@__PURE__*/ S.suspend(() =>
+const CommercePerUnitTotal2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     block_size: S.Number,
@@ -2363,7 +2191,7 @@ export const CommercePerUnitTotal2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommercePerUnitTotal2" }) as any as S.Schema<CommercePerUnitTotal2>;
 
 export type CommerceTotalsResponse2PerUnitTotalsList = Array<CommercePerUnitTotal2>;
-export const CommerceTotalsResponse2PerUnitTotalsList = /*@__PURE__*/ S.Array(
+const CommerceTotalsResponse2PerUnitTotalsList = /*@__PURE__*/ S.Array(
   CommercePerUnitTotal2,
 ) as any as S.Schema<CommerceTotalsResponse2PerUnitTotalsList>;
 
@@ -2377,7 +2205,7 @@ export interface BillingProrationDiscountDetail {
   /** Percentage of the billing cycle that has passed */
   cycle_passed_percent: number;
 }
-export const BillingProrationDiscountDetail =
+const BillingProrationDiscountDetail =
   CommerceProrationDiscountResponse as any as S.Schema<BillingProrationDiscountDetail>;
 
 export interface BillingDiscountsResponse {
@@ -2386,7 +2214,7 @@ export interface BillingDiscountsResponse {
   /** Total discounts applied */
   total: CommerceMoneyResponse;
 }
-export const BillingDiscountsResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingDiscountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proration: S.NullOr(BillingProrationDiscountDetail),
     total: CommerceMoneyResponse,
@@ -2403,7 +2231,7 @@ export interface CommerceTotalsResponse2 {
   /** Information about the discounts applied to the payment */
   discounts?: BillingDiscountsResponse | null;
 }
-export const CommerceTotalsResponse2 = /*@__PURE__*/ S.suspend(() =>
+const CommerceTotalsResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subtotal: CommerceMoneyResponse,
     base_fee: CommerceMoneyResponse,
@@ -2469,7 +2297,7 @@ export interface CommerceSubscriptionItem {
   /** Totals for this subscription item. */
   totals?: CommerceTotalsResponse2 | null;
 }
-export const CommerceSubscriptionItem = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommerceSubscriptionItemObject,
     id: S.String,
@@ -2506,7 +2334,7 @@ export interface ChangeProductionInstanceDomainRequest {
   /** Whether this is a domain for a secondary app, meaning that any subdomain provided is significant and will be stored as part of the domain. This is useful for supporting multiple apps (one primary and multiple secondaries) on the same root domain (eTLD+1). */
   is_secondary?: boolean;
 }
-export const ChangeProductionInstanceDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeProductionInstanceDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     home_url: S.optional(S.String),
     is_secondary: S.optional(S.Boolean),
@@ -2516,18 +2344,18 @@ export const ChangeProductionInstanceDomainRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ChangeProductionInstanceDomainRequest>;
 
 export interface ChangeProductionInstanceDomainResponse {}
-export const ChangeProductionInstanceDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ChangeProductionInstanceDomainResponse",
-}) as any as S.Schema<ChangeProductionInstanceDomainResponse>;
+const ChangeProductionInstanceDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "ChangeProductionInstanceDomainResponse",
+  },
+) as any as S.Schema<ChangeProductionInstanceDomainResponse>;
 
 /** The actor payload. It needs to include a sub property which should contain the ID of the actor. This whole payload will be also included in the JWT session token. */
 export interface CreateActorTokenRequestActor {
   /** The ID of the actor. */
   sub: string;
 }
-export const CreateActorTokenRequestActor = /*@__PURE__*/ S.suspend(() =>
+const CreateActorTokenRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sub: S.String,
   }),
@@ -2545,7 +2373,7 @@ export interface CreateActorTokenRequest {
   /** The maximum duration that the session which will be created by the generated actor token should last. By default, the duration of a session created via an actor token, lasts 30 minutes. */
   session_max_duration_in_seconds?: number;
 }
-export const CreateActorTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateActorTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     actor: CreateActorTokenRequestActor,
@@ -2555,10 +2383,10 @@ export const CreateActorTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateActorTokenRequest" }) as any as S.Schema<CreateActorTokenRequest>;
 
 export type ActorTokenObject = "actor_token";
-export const ActorTokenObject = S.String;
+const ActorTokenObject = S.String;
 
 export type ActorTokenStatus = "pending" | "accepted" | "revoked";
-export const ActorTokenStatus = S.String;
+const ActorTokenStatus = S.String;
 
 export interface ActorToken {
   object: ActorTokenObject;
@@ -2573,7 +2401,7 @@ export interface ActorToken {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const ActorToken = /*@__PURE__*/ S.suspend(() =>
+const ActorToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: ActorTokenObject,
     id: S.String,
@@ -2588,7 +2416,7 @@ export const ActorToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActorToken" }) as any as S.Schema<ActorToken>;
 
 export type CreateAdminPortalLinkTokenRequestScopesList = Array<string>;
-export const CreateAdminPortalLinkTokenRequestScopesList =
+const CreateAdminPortalLinkTokenRequestScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenRequestScopesList>;
 
 export interface CreateAdminPortalLinkTokenRequest {
@@ -2597,7 +2425,7 @@ export interface CreateAdminPortalLinkTokenRequest {
   scopes?: CreateAdminPortalLinkTokenRequestScopesList;
   seconds_until_expiration?: number;
 }
-export const CreateAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String),
     it_contact_id: S.optional(S.String),
@@ -2609,11 +2437,11 @@ export const CreateAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAdminPortalLinkTokenRequest>;
 
 export type CreateAdminPortalLinkTokenResponseObject = "admin_portal_link_token";
-export const CreateAdminPortalLinkTokenResponseObject = S.String;
+const CreateAdminPortalLinkTokenResponseObject = S.String;
 
 /** Caller-provided scopes for this token. */
 export type CreateAdminPortalLinkTokenResponseScopesList = Array<string>;
-export const CreateAdminPortalLinkTokenResponseScopesList =
+const CreateAdminPortalLinkTokenResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateAdminPortalLinkTokenResponseScopesList>;
 
 export interface CreateAdminPortalLinkTokenResponse {
@@ -2640,7 +2468,7 @@ export interface CreateAdminPortalLinkTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds. */
   updated_at: number;
 }
-export const CreateAdminPortalLinkTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAdminPortalLinkTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CreateAdminPortalLinkTokenResponseObject,
     id: S.String,
@@ -2668,7 +2496,7 @@ export interface CreateAgentTaskRequestOnBehalfOf {
   /** A verified identifier (e.g. email address) belonging to the user. */
   identifier?: string;
 }
-export const CreateAgentTaskRequestOnBehalfOf = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentTaskRequestOnBehalfOf = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.String),
     identifier: S.optional(S.String),
@@ -2679,7 +2507,7 @@ export const CreateAgentTaskRequestOnBehalfOf = /*@__PURE__*/ S.suspend(() =>
 
 /** The permissions granted to the agent task. Must be "*" (all permissions). */
 export type CreateAgentTaskRequestPermissions = "*";
-export const CreateAgentTaskRequestPermissions = S.String;
+const CreateAgentTaskRequestPermissions = S.String;
 
 export interface CreateAgentTaskRequest {
   /** Identifies the user on whose behalf the agent task is created. Exactly one of user_id or identifier must be provided. */
@@ -2695,7 +2523,7 @@ export interface CreateAgentTaskRequest {
   /** The maximum duration that the session which will be created by the generated agent task should last. By default, the duration of a session created via an agent task lasts 30 minutes. */
   session_max_duration_in_seconds?: number;
 }
-export const CreateAgentTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAgentTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     on_behalf_of: CreateAgentTaskRequestOnBehalfOf,
     permissions: CreateAgentTaskRequestPermissions,
@@ -2707,7 +2535,7 @@ export const CreateAgentTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAgentTaskRequest" }) as any as S.Schema<CreateAgentTaskRequest>;
 
 export type AgentTaskObject = "agent_task";
-export const AgentTaskObject = S.String;
+const AgentTaskObject = S.String;
 
 export interface AgentTask {
   object: AgentTaskObject;
@@ -2720,7 +2548,7 @@ export interface AgentTask {
   /** The URL that, when visited, creates a session for the user. Only present in the response to a create request. */
   url?: string;
 }
-export const AgentTask = /*@__PURE__*/ S.suspend(() =>
+const AgentTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: AgentTaskObject,
     agent_id: S.String,
@@ -2736,7 +2564,7 @@ export interface CreateAllowlistIdentifierRequest {
   /** This flag denotes whether the given identifier will receive an invitation to join the application. Note that this only works for email address and phone number identifiers. */
   notify?: boolean;
 }
-export const CreateAllowlistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAllowlistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     notify: S.optional(S.Boolean),
@@ -2747,10 +2575,10 @@ export const CreateAllowlistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type AllowlistIdentifierObject = "allowlist_identifier";
-export const AllowlistIdentifierObject = S.String;
+const AllowlistIdentifierObject = S.String;
 
 export type AllowlistIdentifierIdentifierType = "email_address" | "phone_number" | "web3_wallet";
-export const AllowlistIdentifierIdentifierType = S.String;
+const AllowlistIdentifierIdentifierType = S.String;
 
 export interface AllowlistIdentifier {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -2766,7 +2594,7 @@ export interface AllowlistIdentifier {
   /** Unix timestamp of last update. */
   updated_at?: number;
 }
-export const AllowlistIdentifier = /*@__PURE__*/ S.suspend(() =>
+const AllowlistIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(AllowlistIdentifierObject),
     id: S.optional(S.String),
@@ -2780,7 +2608,7 @@ export const AllowlistIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllowlistIdentifier" }) as any as S.Schema<AllowlistIdentifier>;
 
 export type CreateApiKeyRequestScopesList = Array<string>;
-export const CreateApiKeyRequestScopesList =
+const CreateApiKeyRequestScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyRequestScopesList>;
 
 export interface CreateApiKeyRequest {
@@ -2793,7 +2621,7 @@ export interface CreateApiKeyRequest {
   created_by?: string | null;
   seconds_until_expiration?: number | null;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     name: S.String,
@@ -2807,10 +2635,10 @@ export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateApiKeyRequest" }) as any as S.Schema<CreateApiKeyRequest>;
 
 export type CreateApiKeyResponseObject = "api_key";
-export const CreateApiKeyResponseObject = S.String;
+const CreateApiKeyResponseObject = S.String;
 
 export type CreateApiKeyResponseScopesList = Array<string>;
-export const CreateApiKeyResponseScopesList =
+const CreateApiKeyResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateApiKeyResponseScopesList>;
 
 export interface CreateApiKeyResponse {
@@ -2836,7 +2664,7 @@ export interface CreateApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CreateApiKeyResponseObject,
     id: S.String,
@@ -2860,7 +2688,7 @@ export const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Which billing periods this price supports. Inferred from amounts if omitted. */
 export type CreateBillingPriceRequestSupportedBillingPeriods = "month" | "annual" | "both";
-export const CreateBillingPriceRequestSupportedBillingPeriods = S.String;
+const CreateBillingPriceRequestSupportedBillingPeriods = S.String;
 
 export interface CreateBillingPriceRequest {
   /** The ID of the plan this price belongs to. */
@@ -2876,7 +2704,7 @@ export interface CreateBillingPriceRequest {
   /** Which billing periods this price supports. Inferred from amounts if omitted. */
   supported_billing_periods?: CreateBillingPriceRequestSupportedBillingPeriods | (string & {});
 }
-export const CreateBillingPriceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingPriceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     plan_id: S.String,
     currency: S.optional(S.String),
@@ -2891,11 +2719,11 @@ export const CreateBillingPriceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingPriceResponseObject = "commerce_price";
-export const BillingPriceResponseObject = S.String;
+const BillingPriceResponseObject = S.String;
 
 /** Which billing periods this price supports. */
 export type BillingPriceResponseSupportedBillingPeriods = "month" | "annual" | "both";
-export const BillingPriceResponseSupportedBillingPeriods = S.String;
+const BillingPriceResponseSupportedBillingPeriods = S.String;
 
 export interface BillingPriceResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -2925,7 +2753,7 @@ export interface BillingPriceResponse {
   /** Which billing periods this price supports. */
   supported_billing_periods: BillingPriceResponseSupportedBillingPeriods;
 }
-export const BillingPriceResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingPriceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: BillingPriceResponseObject,
     id: S.String,
@@ -2952,7 +2780,7 @@ export interface CreateBillingPriceTransitionRequest {
   /** The target price ID to transition to. */
   to_price_id: string;
 }
-export const CreateBillingPriceTransitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingPriceTransitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription_item_id: S.String.pipe(T.Label()),
     from_price_id: S.String,
@@ -2970,11 +2798,11 @@ export const CreateBillingPriceTransitionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePriceTransitionResponseObject = "commerce_price_transition";
-export const CommercePriceTransitionResponseObject = S.String;
+const CommercePriceTransitionResponseObject = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionItem2Object = "commerce_subscription_item";
-export const CommerceSubscriptionItem2Object = S.String;
+const CommerceSubscriptionItem2Object = S.String;
 
 /** Current status of the subscription item. */
 export type CommerceSubscriptionItem2Status =
@@ -2984,20 +2812,20 @@ export type CommerceSubscriptionItem2Status =
   | "upcoming"
   | "incomplete"
   | "abandoned";
-export const CommerceSubscriptionItem2Status = S.String;
+const CommerceSubscriptionItem2Status = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePlan2Object = "commerce_plan";
-export const CommercePlan2Object = S.String;
+const CommercePlan2Object = S.String;
 
 /** The types of payers that can use this plan. */
 export type CommercePlan2PayerTypeList = Array<string>;
-export const CommercePlan2PayerTypeList =
+const CommercePlan2PayerTypeList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CommercePlan2PayerTypeList>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type FeatureResponse2Object = "feature";
-export const FeatureResponse2Object = S.String;
+const FeatureResponse2Object = S.String;
 
 export interface FeatureResponse2 {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -3013,7 +2841,7 @@ export interface FeatureResponse2 {
   /** The URL of the feature's avatar image. */
   avatar_url: string;
 }
-export const FeatureResponse2 = /*@__PURE__*/ S.suspend(() =>
+const FeatureResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: FeatureResponse2Object,
     id: S.String,
@@ -3026,7 +2854,7 @@ export const FeatureResponse2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The features included in this plan. */
 export type CommercePlan2FeaturesList = Array<FeatureResponse2>;
-export const CommercePlan2FeaturesList = /*@__PURE__*/ S.Array(
+const CommercePlan2FeaturesList = /*@__PURE__*/ S.Array(
   FeatureResponse2,
 ) as any as S.Schema<CommercePlan2FeaturesList>;
 
@@ -3087,7 +2915,7 @@ export interface CommercePlan2 {
   /** Number of free trial days for this plan. */
   free_trial_days?: number | null;
 }
-export const CommercePlan2 = /*@__PURE__*/ S.suspend(() =>
+const CommercePlan2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePlan2Object,
     id: S.String,
@@ -3123,19 +2951,19 @@ export const CommercePlan2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing period for this subscription. */
 export type CommerceSubscriptionItem2PlanPeriod = "month" | "annual";
-export const CommerceSubscriptionItem2PlanPeriod = S.String;
+const CommerceSubscriptionItem2PlanPeriod = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePaymentSourceResponseObject = "commerce_source";
-export const CommercePaymentSourceResponseObject = S.String;
+const CommercePaymentSourceResponseObject = S.String;
 
 /** The payment method type. */
 export type CommercePaymentSourceResponsePaymentMethod = "card" | "apple_pay" | "google_pay";
-export const CommercePaymentSourceResponsePaymentMethod = S.String;
+const CommercePaymentSourceResponsePaymentMethod = S.String;
 
 /** Status of the payment source. */
 export type CommercePaymentSourceResponseStatus = "active" | "disconnected";
-export const CommercePaymentSourceResponseStatus = S.String;
+const CommercePaymentSourceResponseStatus = S.String;
 
 export interface CommercePaymentSourceResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -3173,7 +3001,7 @@ export interface CommercePaymentSourceResponse {
   /** Whether this payment source can be removed. */
   is_removable?: boolean | null;
 }
-export const CommercePaymentSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CommercePaymentSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePaymentSourceResponseObject,
     id: S.String,
@@ -3199,7 +3027,7 @@ export const CommercePaymentSourceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommercePayerResponse2Object = "commerce_payer";
-export const CommercePayerResponse2Object = S.String;
+const CommercePayerResponse2Object = S.String;
 
 export interface CommercePayerResponse2 {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -3229,7 +3057,7 @@ export interface CommercePayerResponse2 {
   /** Unix timestamp (in milliseconds) when the payer was last updated. */
   updated_at: number;
 }
-export const CommercePayerResponse2 = /*@__PURE__*/ S.suspend(() =>
+const CommercePayerResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePayerResponse2Object,
     id: S.String,
@@ -3301,7 +3129,7 @@ export interface CommerceSubscriptionItem2 {
   /** Unix timestamp (in milliseconds) when the subscription was last updated. */
   updated_at: number;
 }
-export const CommerceSubscriptionItem2 = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionItem2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommerceSubscriptionItem2Object,
     id: S.String,
@@ -3336,14 +3164,14 @@ export const CommerceSubscriptionItem2 = /*@__PURE__*/ S.suspend(() =>
 
 /** When the new price takes effect. */
 export type CommercePriceTransitionDetailsEffectiveMode = "immediate" | "end_of_period";
-export const CommercePriceTransitionDetailsEffectiveMode = S.String;
+const CommercePriceTransitionDetailsEffectiveMode = S.String;
 
 /** The status of the previous subscription item after transition. */
 export type CommercePriceTransitionDetailsPreviousSubscriptionItemStatus =
   | "canceled"
   | "ended"
   | "abandoned";
-export const CommercePriceTransitionDetailsPreviousSubscriptionItemStatus = S.String;
+const CommercePriceTransitionDetailsPreviousSubscriptionItemStatus = S.String;
 
 export interface CommercePriceTransitionDetails {
   previous_plan: CommercePlan2;
@@ -3363,7 +3191,7 @@ export interface CommercePriceTransitionDetails {
   /** The ID of the previous subscription item. */
   previous_subscription_item_id: string;
 }
-export const CommercePriceTransitionDetails = /*@__PURE__*/ S.suspend(() =>
+const CommercePriceTransitionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previous_plan: CommercePlan2,
     previous_price: BillingPriceResponse,
@@ -3385,7 +3213,7 @@ export interface CommercePriceTransitionResponse {
   subscription_item: CommerceSubscriptionItem2;
   transition: CommercePriceTransitionDetails;
 }
-export const CommercePriceTransitionResponse = /*@__PURE__*/ S.suspend(() =>
+const CommercePriceTransitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommercePriceTransitionResponseObject,
     subscription_item: CommerceSubscriptionItem2,
@@ -3399,7 +3227,7 @@ export interface CreateBlocklistIdentifierRequest {
   /** The identifier to be added in the block-list. This can be an email address, a phone number, or a web3 wallet. */
   identifier: string;
 }
-export const CreateBlocklistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlocklistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/blocklist_identifiers", code: 200 })),
@@ -3409,10 +3237,10 @@ export const CreateBlocklistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BlocklistIdentifierObject = "blocklist_identifier";
-export const BlocklistIdentifierObject = S.String;
+const BlocklistIdentifierObject = S.String;
 
 export type BlocklistIdentifierIdentifierType = "email_address" | "phone_number" | "web3_wallet";
-export const BlocklistIdentifierIdentifierType = S.String;
+const BlocklistIdentifierIdentifierType = S.String;
 
 export interface BlocklistIdentifier {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -3427,7 +3255,7 @@ export interface BlocklistIdentifier {
   /** Unix timestamp of last update. */
   updated_at?: number;
 }
-export const BlocklistIdentifier = /*@__PURE__*/ S.suspend(() =>
+const BlocklistIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(BlocklistIdentifierObject),
     id: S.optional(S.String),
@@ -3443,12 +3271,12 @@ export const BlocklistIdentifier = /*@__PURE__*/ S.suspend(() =>
 export type CreateBulkInvitationsRequestBodyItemPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateBulkInvitationsRequestBodyItemPublicMetadataMap =
+const CreateBulkInvitationsRequestBodyItemPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateBulkInvitationsRequestBodyItemPublicMetadataMap>;
 
 /** The slug of the email template to use for the invitation email. */
 export type CreateBulkInvitationsRequestBodyItemTemplateSlug = "invitation" | "waitlist_invitation";
-export const CreateBulkInvitationsRequestBodyItemTemplateSlug = S.String;
+const CreateBulkInvitationsRequestBodyItemTemplateSlug = S.String;
 
 export interface CreateBulkInvitationsRequestBodyItem {
   /** The email address the invitation will be sent to */
@@ -3466,7 +3294,7 @@ export interface CreateBulkInvitationsRequestBodyItem {
   /** The slug of the email template to use for the invitation email. */
   template_slug?: CreateBulkInvitationsRequestBodyItemTemplateSlug | (string & {});
 }
-export const CreateBulkInvitationsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkInvitationsRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.String,
     public_metadata: S.optional(S.NullOr(CreateBulkInvitationsRequestBodyItemPublicMetadataMap)),
@@ -3481,14 +3309,14 @@ export const CreateBulkInvitationsRequestBodyItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateBulkInvitationsRequestBodyItem>;
 
 export type CreateBulkInvitationsRequestBodyList = Array<CreateBulkInvitationsRequestBodyItem>;
-export const CreateBulkInvitationsRequestBodyList = /*@__PURE__*/ S.Array(
+const CreateBulkInvitationsRequestBodyList = /*@__PURE__*/ S.Array(
   CreateBulkInvitationsRequestBodyItem,
 ) as any as S.Schema<CreateBulkInvitationsRequestBodyList>;
 
 export interface CreateBulkInvitationsRequest {
   body?: CreateBulkInvitationsRequestBodyList;
 }
-export const CreateBulkInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateBulkInvitationsRequestBodyList.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/invitations/bulk", code: 200 })),
@@ -3497,14 +3325,14 @@ export const CreateBulkInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBulkInvitationsRequest>;
 
 export type InvitationObject = "invitation";
-export const InvitationObject = S.String;
+const InvitationObject = S.String;
 
 export type InvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const InvitationPublicMetadataMap =
+const InvitationPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<InvitationPublicMetadataMap>;
 
 export type InvitationStatus = "pending" | "accepted" | "revoked" | "expired";
-export const InvitationStatus = S.String;
+const InvitationStatus = S.String;
 
 export interface Invitation {
   object: InvitationObject;
@@ -3521,7 +3349,7 @@ export interface Invitation {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const Invitation = /*@__PURE__*/ S.suspend(() =>
+const Invitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: InvitationObject,
     id: S.String,
@@ -3537,12 +3365,12 @@ export const Invitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 
 export type CreateBulkInvitationsResponseBodyList = Array<Invitation>;
-export const CreateBulkInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateBulkInvitationsResponseBodyList = /*@__PURE__*/ S.Array(
   Invitation,
 ) as any as S.Schema<CreateBulkInvitationsResponseBodyList>;
 
 export type CreateBulkInvitationsResponse = CreateBulkInvitationsResponseBodyList;
-export const CreateBulkInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   CreateBulkInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateBulkInvitationsResponse",
@@ -3554,7 +3382,7 @@ export interface CreateBulkWaitlistEntriesRequestBodyItem {
   /** Optional flag which denotes whether a confirmation email should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-export const CreateBulkWaitlistEntriesRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkWaitlistEntriesRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.String,
     notify: S.optional(S.NullOr(S.Boolean)),
@@ -3565,14 +3393,14 @@ export const CreateBulkWaitlistEntriesRequestBodyItem = /*@__PURE__*/ S.suspend(
 
 export type CreateBulkWaitlistEntriesRequestBodyList =
   Array<CreateBulkWaitlistEntriesRequestBodyItem>;
-export const CreateBulkWaitlistEntriesRequestBodyList = /*@__PURE__*/ S.Array(
+const CreateBulkWaitlistEntriesRequestBodyList = /*@__PURE__*/ S.Array(
   CreateBulkWaitlistEntriesRequestBodyItem,
 ) as any as S.Schema<CreateBulkWaitlistEntriesRequestBodyList>;
 
 export interface CreateBulkWaitlistEntriesRequest {
   body?: CreateBulkWaitlistEntriesRequestBodyList;
 }
-export const CreateBulkWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CreateBulkWaitlistEntriesRequestBodyList.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "/waitlist_entries/bulk", code: 200 })),
@@ -3581,10 +3409,10 @@ export const CreateBulkWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBulkWaitlistEntriesRequest>;
 
 export type WaitlistEntryObject = "waitlist_entry";
-export const WaitlistEntryObject = S.String;
+const WaitlistEntryObject = S.String;
 
 export type WaitlistEntryStatus = "pending" | "invited" | "rejected" | "completed";
-export const WaitlistEntryStatus = S.String;
+const WaitlistEntryStatus = S.String;
 
 export interface WaitlistEntry {
   object: WaitlistEntryObject;
@@ -3599,7 +3427,7 @@ export interface WaitlistEntry {
   updated_at: number;
   invitation?: Invitation | null;
 }
-export const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
+const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: WaitlistEntryObject,
     id: S.String,
@@ -3613,12 +3441,12 @@ export const WaitlistEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WaitlistEntry" }) as any as S.Schema<WaitlistEntry>;
 
 export type CreateBulkWaitlistEntriesResponseBodyList = Array<WaitlistEntry>;
-export const CreateBulkWaitlistEntriesResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateBulkWaitlistEntriesResponseBodyList = /*@__PURE__*/ S.Array(
   WaitlistEntry,
 ) as any as S.Schema<CreateBulkWaitlistEntriesResponseBodyList>;
 
 export type CreateBulkWaitlistEntriesResponse = CreateBulkWaitlistEntriesResponseBodyList;
-export const CreateBulkWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBulkWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   CreateBulkWaitlistEntriesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateBulkWaitlistEntriesResponse",
@@ -3638,7 +3466,7 @@ export interface CreateDirectoryRequestGroupRoleMappingsItem {
   /** The precedence for this mapping. If omitted, precedence is assigned by array order. */
   precedence?: number;
 }
-export const CreateDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_group_id: S.optional(S.String),
     scim_group_id: S.optional(S.String),
@@ -3654,7 +3482,7 @@ export const CreateDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.suspe
 /** Optional directory group to organization role mappings to create with the directory. */
 export type CreateDirectoryRequestGroupRoleMappingsList =
   Array<CreateDirectoryRequestGroupRoleMappingsItem>;
-export const CreateDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ S.Array(
+const CreateDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ S.Array(
   CreateDirectoryRequestGroupRoleMappingsItem,
 ) as any as S.Schema<CreateDirectoryRequestGroupRoleMappingsList>;
 
@@ -3668,7 +3496,7 @@ export interface CreateDirectoryRequest {
   /** Optional directory group to organization role mappings to create with the directory. */
   group_role_mappings?: CreateDirectoryRequestGroupRoleMappingsList;
 }
-export const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String,
     name: S.optional(S.String),
@@ -3679,11 +3507,11 @@ export const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Always "directory". */
 export type DirectoryObject = "directory";
-export const DirectoryObject = S.String;
+const DirectoryObject = S.String;
 
 /** Mapping of user attributes to the directory attribute paths they are extracted from. */
 export type DirectoryAttributeMappingMap = { [key: string]: string | undefined };
-export const DirectoryAttributeMappingMap =
+const DirectoryAttributeMappingMap =
   RoleSetMigrationMappingsMap as any as S.Schema<DirectoryAttributeMappingMap>;
 
 export interface DirectoryCustomAttributesItem {
@@ -3700,7 +3528,7 @@ export interface DirectoryCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const DirectoryCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
+const DirectoryCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     key: S.optional(S.String),
@@ -3715,7 +3543,7 @@ export const DirectoryCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Custom attributes to map from the IdP to the user's profile via directory sync. Requires the custom attributes feature to be enabled for the instance. */
 export type DirectoryCustomAttributesList = Array<DirectoryCustomAttributesItem>;
-export const DirectoryCustomAttributesList = /*@__PURE__*/ S.Array(
+const DirectoryCustomAttributesList = /*@__PURE__*/ S.Array(
   DirectoryCustomAttributesItem,
 ) as any as S.Schema<DirectoryCustomAttributesList>;
 
@@ -3748,7 +3576,7 @@ export interface Directory {
   /** Unix timestamp when the directory was last updated. */
   updated_at: number;
 }
-export const Directory = /*@__PURE__*/ S.suspend(() =>
+const Directory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DirectoryObject,
     id: S.String,
@@ -3778,7 +3606,7 @@ export interface CreateDirectoryGroupRoleMappingRequest {
   /** The precedence for this mapping. Lower values take priority when a user belongs to multiple mapped groups. If omitted, the mapping is appended with the next-highest precedence. */
   precedence?: number;
 }
-export const CreateDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
     directory_group_id: S.optional(S.String),
@@ -3794,7 +3622,7 @@ export const CreateDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(()
 
 /** String representing the object's type. Always "directory_group_role_mapping". */
 export type DirectoryGroupRoleMappingObject = "directory_group_role_mapping";
-export const DirectoryGroupRoleMappingObject = S.String;
+const DirectoryGroupRoleMappingObject = S.String;
 
 /** A mapping from a directory group to an organization role. Members of the group are assigned the role; the lowest-precedence match wins when a user belongs to multiple mapped groups. */
 export interface DirectoryGroupRoleMapping {
@@ -3822,7 +3650,7 @@ export interface DirectoryGroupRoleMapping {
   /** Unix timestamp (milliseconds) of when the mapping was last updated. */
   updated_at: number;
 }
-export const DirectoryGroupRoleMapping = /*@__PURE__*/ S.suspend(() =>
+const DirectoryGroupRoleMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DirectoryGroupRoleMappingObject,
     id: S.String,
@@ -3853,7 +3681,7 @@ export interface CreateEmailAddressRequest {
   /** If set to `true` and the email address is created as the user's new primary, the previous primary email address is notified of the change. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-export const CreateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     email_address: S.String,
@@ -3874,16 +3702,16 @@ export type CreateEnterpriseConnectionRequestProvider =
   | "oidc_custom"
   | "oidc_github_enterprise"
   | "oidc_gitlab";
-export const CreateEnterpriseConnectionRequestProvider = S.String;
+const CreateEnterpriseConnectionRequestProvider = S.String;
 
 /** Domains associated with the enterprise connection (required; at least one). Values are normalized to lowercase. Each domain must be a valid fully qualified domain name. */
 export type CreateEnterpriseConnectionRequestDomainsList = Array<string>;
-export const CreateEnterpriseConnectionRequestDomainsList =
+const CreateEnterpriseConnectionRequestDomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestDomainsList>;
 
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type CreateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-export const CreateEnterpriseConnectionRequestSamlIdpCertificatesList =
+const CreateEnterpriseConnectionRequestSamlIdpCertificatesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateEnterpriseConnectionRequestSamlIdpCertificatesList>;
 
 /** Attribute mapping for SAML attributes */
@@ -3893,7 +3721,7 @@ export interface CreateEnterpriseConnectionRequestSamlAttributeMapping {
   first_name?: string | null;
   last_name?: string | null;
 }
-export const CreateEnterpriseConnectionRequestSamlAttributeMapping = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequestSamlAttributeMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.NullOr(S.String)),
     email_address: S.optional(S.NullOr(S.String)),
@@ -3909,7 +3737,7 @@ export type CreateEnterpriseConnectionRequestSamlLoginHintMode =
   | "email_address"
   | "custom_attribute"
   | "off";
-export const CreateEnterpriseConnectionRequestSamlLoginHintMode = S.String;
+const CreateEnterpriseConnectionRequestSamlLoginHintMode = S.String;
 
 /** Configuration for the login_hint sent to the IdP on SSO sign-in */
 export interface CreateEnterpriseConnectionRequestSamlLoginHint {
@@ -3918,7 +3746,7 @@ export interface CreateEnterpriseConnectionRequestSamlLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-export const CreateEnterpriseConnectionRequestSamlLoginHint = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequestSamlLoginHint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: CreateEnterpriseConnectionRequestSamlLoginHintMode,
     source: S.optional(S.String),
@@ -3949,7 +3777,7 @@ export interface CreateEnterpriseConnectionRequestSaml {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: CreateEnterpriseConnectionRequestSamlLoginHint | null;
 }
-export const CreateEnterpriseConnectionRequestSaml = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequestSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idp_entity_id: S.optional(S.NullOr(S.String)),
     idp_sso_url: S.optional(S.NullOr(S.String)),
@@ -3984,7 +3812,7 @@ export interface CreateEnterpriseConnectionRequestOidc {
   /** Whether PKCE is required (must be true for public clients with no client secret) */
   requires_pkce?: boolean | null;
 }
-export const CreateEnterpriseConnectionRequestOidc = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequestOidc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.NullOr(S.String)),
     client_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -4012,7 +3840,7 @@ export interface CreateEnterpriseConnectionRequestCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const CreateEnterpriseConnectionRequestCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequestCustomAttributesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -4028,7 +3856,7 @@ export const CreateEnterpriseConnectionRequestCustomAttributesItem = /*@__PURE__
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type CreateEnterpriseConnectionRequestCustomAttributesList =
   Array<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-export const CreateEnterpriseConnectionRequestCustomAttributesList = /*@__PURE__*/ S.Array(
+const CreateEnterpriseConnectionRequestCustomAttributesList = /*@__PURE__*/ S.Array(
   CreateEnterpriseConnectionRequestCustomAttributesItem,
 ) as any as S.Schema<CreateEnterpriseConnectionRequestCustomAttributesList>;
 
@@ -4052,7 +3880,7 @@ export interface CreateEnterpriseConnectionRequest {
   /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
   custom_attributes?: CreateEnterpriseConnectionRequestCustomAttributesList;
 }
-export const CreateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     provider: CreateEnterpriseConnectionRequestProvider,
@@ -4069,11 +3897,11 @@ export const CreateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnterpriseConnectionRequest>;
 
 export type EnterpriseConnectionObject = "enterprise_connection";
-export const EnterpriseConnectionObject = S.String;
+const EnterpriseConnectionObject = S.String;
 
 /** Domains associated with the enterprise connection */
 export type EnterpriseConnectionDomainsList = Array<string>;
-export const EnterpriseConnectionDomainsList =
+const EnterpriseConnectionDomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<EnterpriseConnectionDomainsList>;
 
 export interface EnterpriseConnectionCustomAttributesItem {
@@ -4090,13 +3918,10 @@ export interface EnterpriseConnectionCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const EnterpriseConnectionCustomAttributesItem =
-  CreateEnterpriseConnectionRequestCustomAttributesItem as any as S.Schema<EnterpriseConnectionCustomAttributesItem>;
-
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning */
 export type EnterpriseConnectionCustomAttributesList =
   Array<EnterpriseConnectionCustomAttributesItem>;
-export const EnterpriseConnectionCustomAttributesList =
+const EnterpriseConnectionCustomAttributesList =
   CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<EnterpriseConnectionCustomAttributesList>;
 
 export interface EnterpriseConnectionSamlConnectionIdpCertificatesItem {
@@ -4107,7 +3932,7 @@ export interface EnterpriseConnectionSamlConnectionIdpCertificatesItem {
   /** Unix timestamp (milliseconds) of the X.509 NotAfter */
   expires_at: number | null;
 }
-export const EnterpriseConnectionSamlConnectionIdpCertificatesItem = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionSamlConnectionIdpCertificatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificate: S.String,
     issued_at: S.NullOr(S.Number),
@@ -4120,7 +3945,7 @@ export const EnterpriseConnectionSamlConnectionIdpCertificatesItem = /*@__PURE__
 /** Every IdP signing certificate the connection trusts, primary first. A SAML response verifies against any of them. */
 export type EnterpriseConnectionSamlConnectionIdpCertificatesList =
   Array<EnterpriseConnectionSamlConnectionIdpCertificatesItem>;
-export const EnterpriseConnectionSamlConnectionIdpCertificatesList = /*@__PURE__*/ S.Array(
+const EnterpriseConnectionSamlConnectionIdpCertificatesList = /*@__PURE__*/ S.Array(
   EnterpriseConnectionSamlConnectionIdpCertificatesItem,
 ) as any as S.Schema<EnterpriseConnectionSamlConnectionIdpCertificatesList>;
 
@@ -4129,8 +3954,6 @@ export type EnterpriseConnectionSamlConnectionLoginHintMode =
   | "email_address"
   | "custom_attribute"
   | "off";
-export const EnterpriseConnectionSamlConnectionLoginHintMode = S.String;
-
 /** Configuration for the login_hint sent to the IdP on SSO sign-in */
 export interface EnterpriseConnectionSamlConnectionLoginHint {
   /** Controls the login_hint sent to the IdP on SSO sign-in */
@@ -4138,7 +3961,7 @@ export interface EnterpriseConnectionSamlConnectionLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-export const EnterpriseConnectionSamlConnectionLoginHint =
+const EnterpriseConnectionSamlConnectionLoginHint =
   CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<EnterpriseConnectionSamlConnectionLoginHint>;
 
 /** Present when the enterprise connection uses SAML */
@@ -4178,7 +4001,7 @@ export interface EnterpriseConnectionSamlConnection {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: EnterpriseConnectionSamlConnectionLoginHint;
 }
-export const EnterpriseConnectionSamlConnection = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionSamlConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4229,7 +4052,7 @@ export interface EnterpriseConnectionOauthConfig {
   /** Unix timestamp in milliseconds when the config was last updated */
   updated_at?: number;
 }
-export const EnterpriseConnectionOauthConfig = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionOauthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4279,7 +4102,7 @@ export interface EnterpriseConnection {
   /** Unix timestamp in milliseconds when the connection was last updated */
   updated_at: number;
 }
-export const EnterpriseConnection = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: EnterpriseConnectionObject,
     id: S.String,
@@ -4304,7 +4127,7 @@ export interface CreateEnterpriseConnectionTestRunRequest {
   /** The ID of the enterprise connection */
   enterprise_connection_id: string;
 }
-export const CreateEnterpriseConnectionTestRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnterpriseConnectionTestRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -4322,7 +4145,7 @@ export interface EnterpriseConnectionTestRunResponse {
   /** A short-lived URL that can be used to initiate the test run flow */
   url: string;
 }
-export const EnterpriseConnectionTestRunResponse = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -4332,12 +4155,12 @@ export const EnterpriseConnectionTestRunResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata that will be attached to the newly created invitation. The value of this property should be a well-formed JSON object. Once the user accepts the invitation and signs up, these metadata will end up in the user's public metadata. */
 export type CreateInvitationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateInvitationRequestPublicMetadataMap =
+const CreateInvitationRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateInvitationRequestPublicMetadataMap>;
 
 /** The slug of the email template to use for the invitation email. */
 export type CreateInvitationRequestTemplateSlug = "invitation" | "waitlist_invitation";
-export const CreateInvitationRequestTemplateSlug = S.String;
+const CreateInvitationRequestTemplateSlug = S.String;
 
 export interface CreateInvitationRequest {
   /** The email address the invitation will be sent to */
@@ -4355,7 +4178,7 @@ export interface CreateInvitationRequest {
   /** The slug of the email template to use for the invitation email. */
   template_slug?: CreateInvitationRequestTemplateSlug | (string & {});
 }
-export const CreateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.String,
     public_metadata: S.optional(CreateInvitationRequestPublicMetadataMap),
@@ -4383,7 +4206,7 @@ export interface CreateJWTTemplateRequest {
   /** The custom signing private key to use when minting JWTs. Required if `custom_signing_key` is `true`. */
   signing_key?: string | null;
 }
-export const CreateJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     claims: S.Unknown,
@@ -4396,7 +4219,7 @@ export const CreateJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateJWTTemplateRequest" }) as any as S.Schema<CreateJWTTemplateRequest>;
 
 export type JWTTemplateObject = "jwt_template";
-export const JWTTemplateObject = S.String;
+const JWTTemplateObject = S.String;
 
 export interface JWTTemplate {
   object: JWTTemplateObject;
@@ -4412,7 +4235,7 @@ export interface JWTTemplate {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const JWTTemplate = /*@__PURE__*/ S.suspend(() =>
+const JWTTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: JWTTemplateObject,
     id: S.String,
@@ -4428,7 +4251,7 @@ export const JWTTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JWTTemplate" }) as any as S.Schema<JWTTemplate>;
 
 export type CreateM2MTokenRequestTokenFormat = "opaque" | "jwt";
-export const CreateM2MTokenRequestTokenFormat = S.String;
+const CreateM2MTokenRequestTokenFormat = S.String;
 
 export interface CreateM2MTokenRequest {
   token_format?: CreateM2MTokenRequestTokenFormat | (string & {});
@@ -4437,7 +4260,7 @@ export interface CreateM2MTokenRequest {
   /** Enables server-side token reuse for opaque-format tokens. When set, if a non-revoked, non-expired M2M token already exists for this machine with identical `claims` and `scopes` and at least this many seconds of remaining lifetime, that existing token is returned and no new token is minted. Use this when caching tokens in application memory across requests is impractical -- for example, in serverless functions, short-lived job workers, or autoscaling containers that churn faster than the token TTL. Pooling at the server collapses many redundant create calls into reuse of a single live token, which is the recommended pattern for high-volume M2M traffic. Must be strictly less than the effective token lifetime -- that is, `seconds_until_expiration` when provided, or the machine's default TTL otherwise. A value greater than or equal to the lifetime is rejected with a 400, since no freshly-minted token would ever satisfy the requirement. Only applies to opaque-format tokens (`token_format` defaults to `opaque`). JWT-format tokens are stateless and are never deduplicated. */
   min_remaining_ttl_seconds?: number;
 }
-export const CreateM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token_format: S.optional(CreateM2MTokenRequestTokenFormat),
     seconds_until_expiration: S.optional(S.NullOr(S.Number)),
@@ -4447,10 +4270,10 @@ export const CreateM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateM2MTokenRequest" }) as any as S.Schema<CreateM2MTokenRequest>;
 
 export type CreateM2MTokenResponseObject = "machine_to_machine_token";
-export const CreateM2MTokenResponseObject = S.String;
+const CreateM2MTokenResponseObject = S.String;
 
 export type CreateM2MTokenResponseScopesList = Array<string>;
-export const CreateM2MTokenResponseScopesList =
+const CreateM2MTokenResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateM2MTokenResponseScopesList>;
 
 export interface CreateM2MTokenResponse {
@@ -4472,7 +4295,7 @@ export interface CreateM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-export const CreateM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CreateM2MTokenResponseObject,
     id: S.String,
@@ -4492,7 +4315,7 @@ export const CreateM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of machine IDs that this machine will have access to. Maximum of 150 scopes per machine. */
 export type CreateMachineRequestScopedMachinesList = Array<string>;
-export const CreateMachineRequestScopedMachinesList =
+const CreateMachineRequestScopedMachinesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateMachineRequestScopedMachinesList>;
 
 export interface CreateMachineRequest {
@@ -4503,7 +4326,7 @@ export interface CreateMachineRequest {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. Must be at least 1 second. */
   default_token_ttl?: number;
 }
-export const CreateMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scoped_machines: S.optional(CreateMachineRequestScopedMachinesList),
@@ -4512,10 +4335,10 @@ export const CreateMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateMachineRequest" }) as any as S.Schema<CreateMachineRequest>;
 
 export type CreateMachineResponseObject = "machine";
-export const CreateMachineResponseObject = S.String;
+const CreateMachineResponseObject = S.String;
 
 export type MachineWithoutScopedMachinesObject = "machine";
-export const MachineWithoutScopedMachinesObject = S.String;
+const MachineWithoutScopedMachinesObject = S.String;
 
 export interface MachineWithoutScopedMachines {
   object: MachineWithoutScopedMachinesObject;
@@ -4532,7 +4355,7 @@ export interface MachineWithoutScopedMachines {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. */
   default_token_ttl?: number;
 }
-export const MachineWithoutScopedMachines = /*@__PURE__*/ S.suspend(() =>
+const MachineWithoutScopedMachines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: MachineWithoutScopedMachinesObject,
     id: S.String,
@@ -4548,7 +4371,7 @@ export const MachineWithoutScopedMachines = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of machines this machine has access to. */
 export type CreateMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const CreateMachineResponseScopedMachinesList = /*@__PURE__*/ S.Array(
+const CreateMachineResponseScopedMachinesList = /*@__PURE__*/ S.Array(
   MachineWithoutScopedMachines,
 ) as any as S.Schema<CreateMachineResponseScopedMachinesList>;
 
@@ -4571,7 +4394,7 @@ export interface CreateMachineResponse {
   /** The secret key for the machine, only returned upon creation. */
   secret_key: string | Redacted.Redacted<string>;
 }
-export const CreateMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CreateMachineResponseObject,
     id: S.String,
@@ -4591,7 +4414,7 @@ export interface CreateMachineScopeRequest {
   /** The ID of the machine that will be scoped to the current machine */
   to_machine_id: string;
 }
-export const CreateMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
     to_machine_id: S.String,
@@ -4601,7 +4424,7 @@ export const CreateMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMachineScopeRequest>;
 
 export type MachineScopeObject = "machine_scope";
-export const MachineScopeObject = S.String;
+const MachineScopeObject = S.String;
 
 export interface MachineScope {
   object: MachineScopeObject;
@@ -4612,7 +4435,7 @@ export interface MachineScope {
   /** Unix timestamp of creation. */
   created_at: number;
 }
-export const MachineScope = /*@__PURE__*/ S.suspend(() =>
+const MachineScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: MachineScopeObject,
     from_machine_id: S.String,
@@ -4623,7 +4446,7 @@ export const MachineScope = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of redirect URIs of the new OAuth application */
 export type CreateOAuthApplicationRequestRedirectUrisList = Array<string>;
-export const CreateOAuthApplicationRequestRedirectUrisList =
+const CreateOAuthApplicationRequestRedirectUrisList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationRequestRedirectUrisList>;
 
 export interface CreateOAuthApplicationRequest {
@@ -4644,7 +4467,7 @@ export interface CreateOAuthApplicationRequest {
   /** If true, this client is public and you can use the Proof Key of Code Exchange (PKCE) flow. */
   public?: boolean | null;
 }
-export const CreateOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     redirect_uris: S.optional(S.NullOr(CreateOAuthApplicationRequestRedirectUrisList)),
@@ -4660,10 +4483,10 @@ export const CreateOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOAuthApplicationRequest>;
 
 export type CreateOAuthApplicationResponseObject = "oauth_application";
-export const CreateOAuthApplicationResponseObject = S.String;
+const CreateOAuthApplicationResponseObject = S.String;
 
 export type CreateOAuthApplicationResponseRedirectUrisList = Array<string>;
-export const CreateOAuthApplicationResponseRedirectUrisList =
+const CreateOAuthApplicationResponseRedirectUrisList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOAuthApplicationResponseRedirectUrisList>;
 
 export interface CreateOAuthApplicationResponse {
@@ -4696,7 +4519,7 @@ export interface CreateOAuthApplicationResponse {
   /** Empty if public client. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-export const CreateOAuthApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOAuthApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CreateOAuthApplicationResponseObject,
     id: S.String,
@@ -4728,12 +4551,12 @@ export const CreateOAuthApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the organization, accessible only from the Backend API */
 export type CreateOrganizationRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationRequestPrivateMetadataMap =
+const CreateOrganizationRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPrivateMetadataMap>;
 
 /** Metadata saved on the organization, read-only from the Frontend API and fully accessible (read/write) from the Backend API */
 export type CreateOrganizationRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateOrganizationRequestPublicMetadataMap =
+const CreateOrganizationRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationRequestPublicMetadataMap>;
 
 export interface CreateOrganizationRequest {
@@ -4754,7 +4577,7 @@ export interface CreateOrganizationRequest {
   /** The key of the [role set](https://clerk.com/docs/guides/organizations/control-access/role-sets) to assign to this organization. */
   role_set_key?: string | null;
 }
-export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_by: S.optional(S.NullOr(S.String)),
@@ -4779,7 +4602,7 @@ export interface CreateOrganizationDomainRequest {
   /** The status of domain's verification. Defaults to true */
   verified?: boolean | null;
 }
-export const CreateOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -4792,7 +4615,7 @@ export const CreateOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. Always `organization_domain` */
 export type OrganizationDomainObject = "organization_domain";
-export const OrganizationDomainObject = S.String;
+const OrganizationDomainObject = S.String;
 
 /** Mode of enrollment for the domain */
 export type OrganizationDomainEnrollmentMode =
@@ -4800,7 +4623,7 @@ export type OrganizationDomainEnrollmentMode =
   | "automatic_invitation"
   | "automatic_suggestion"
   | "enterprise_sso";
-export const OrganizationDomainEnrollmentMode = S.String;
+const OrganizationDomainEnrollmentMode = S.String;
 
 /** The verification object from an organization domain */
 export interface OrganizationDomainVerification {
@@ -4815,7 +4638,7 @@ export interface OrganizationDomainVerification {
   /** Unix timestamp of when ownership was verified. Only populated on `ownership_verification`; null on `affiliation_verification`. */
   verified_at: number | null;
 }
-export const OrganizationDomainVerification = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomainVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     strategy: S.String,
@@ -4834,7 +4657,7 @@ export interface OrganizationInvitationPublicOrganizationData {
   image_url?: string;
   has_image: boolean;
 }
-export const OrganizationInvitationPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitationPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -4877,7 +4700,7 @@ export interface OrganizationDomain {
   /** Unix timestamp of the last update to the domain */
   updated_at: number;
 }
-export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OrganizationDomainObject,
     id: S.String,
@@ -4900,14 +4723,14 @@ export const OrganizationDomain = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationInvitationRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationRequestPublicMetadataMap =
+const CreateOrganizationInvitationRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationRequestPrivateMetadataMap =
+const CreateOrganizationInvitationRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationRequestPrivateMetadataMap>;
 
 export interface CreateOrganizationInvitationRequest {
@@ -4930,7 +4753,7 @@ export interface CreateOrganizationInvitationRequest {
   /** Optional flag which denotes whether an email invitation should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-export const CreateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     email_address: S.String,
@@ -4950,7 +4773,7 @@ export const CreateOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationInvitationObject = "organization_invitation";
-export const OrganizationInvitationObject = S.String;
+const OrganizationInvitationObject = S.String;
 
 /** An organization inviter's public user data */
 export interface OrganizationInvitationPublicUserData {
@@ -4961,7 +4784,7 @@ export interface OrganizationInvitationPublicUserData {
   has_image: boolean;
   identifier: string;
 }
-export const OrganizationInvitationPublicUserData = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitationPublicUserData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     first_name: S.NullOr(S.String),
@@ -4975,11 +4798,11 @@ export const OrganizationInvitationPublicUserData = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<OrganizationInvitationPublicUserData>;
 
 export type OrganizationInvitationPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationInvitationPublicMetadataMap =
+const OrganizationInvitationPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPublicMetadataMap>;
 
 export type OrganizationInvitationPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const OrganizationInvitationPrivateMetadataMap =
+const OrganizationInvitationPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OrganizationInvitationPrivateMetadataMap>;
 
 /** An organization invitation */
@@ -5004,7 +4827,7 @@ export interface OrganizationInvitation {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OrganizationInvitationObject,
     id: S.String,
@@ -5028,17 +4851,16 @@ export const OrganizationInvitation = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap>;
+const CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap>;
 
 /** Metadata saved on the organization invitation, fully accessible (read/write) from the Backend API but not visible from the Frontend API. When the organization invitation is accepted, the metadata will be transferred to the newly created organization membership. */
 export type CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap =
+const CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap =
   CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyItemPrivateMetadataMap>;
 
 export interface CreateOrganizationInvitationBulkRequestBodyItem {
@@ -5059,7 +4881,7 @@ export interface CreateOrganizationInvitationBulkRequestBodyItem {
   /** Optional flag which denotes whether an email invitation should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-export const CreateOrganizationInvitationBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationInvitationBulkRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.String,
     inviter_user_id: S.optional(S.NullOr(S.String)),
@@ -5080,7 +4902,7 @@ export const CreateOrganizationInvitationBulkRequestBodyItem = /*@__PURE__*/ S.s
 
 export type CreateOrganizationInvitationBulkRequestBodyList =
   Array<CreateOrganizationInvitationBulkRequestBodyItem>;
-export const CreateOrganizationInvitationBulkRequestBodyList = /*@__PURE__*/ S.Array(
+const CreateOrganizationInvitationBulkRequestBodyList = /*@__PURE__*/ S.Array(
   CreateOrganizationInvitationBulkRequestBodyItem,
 ) as any as S.Schema<CreateOrganizationInvitationBulkRequestBodyList>;
 
@@ -5089,7 +4911,7 @@ export interface CreateOrganizationInvitationBulkRequest {
   organization_id: string;
   body: CreateOrganizationInvitationBulkRequestBodyList;
 }
-export const CreateOrganizationInvitationBulkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationInvitationBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     body: CreateOrganizationInvitationBulkRequestBodyList.pipe(T.HttpBody()),
@@ -5101,7 +4923,7 @@ export const CreateOrganizationInvitationBulkRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateOrganizationInvitationBulkRequest>;
 
 export type OrganizationInvitationsDataList = Array<OrganizationInvitation>;
-export const OrganizationInvitationsDataList = /*@__PURE__*/ S.Array(
+const OrganizationInvitationsDataList = /*@__PURE__*/ S.Array(
   OrganizationInvitation,
 ) as any as S.Schema<OrganizationInvitationsDataList>;
 
@@ -5110,7 +4932,7 @@ export interface OrganizationInvitations {
   /** Total number of organization invitations */
   total_count: number;
 }
-export const OrganizationInvitations = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OrganizationInvitationsDataList,
     total_count: S.Number,
@@ -5121,14 +4943,14 @@ export const OrganizationInvitations = /*@__PURE__*/ S.suspend(() =>
 export type CreateOrganizationMembershipRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationMembershipRequestPublicMetadataMap =
+const CreateOrganizationMembershipRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization membership that is only visible to your backend. */
 export type CreateOrganizationMembershipRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateOrganizationMembershipRequestPrivateMetadataMap =
+const CreateOrganizationMembershipRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateOrganizationMembershipRequestPrivateMetadataMap>;
 
 export interface CreateOrganizationMembershipRequest {
@@ -5143,7 +4965,7 @@ export interface CreateOrganizationMembershipRequest {
   /** Metadata saved on the organization membership that is only visible to your backend. */
   private_metadata?: CreateOrganizationMembershipRequestPrivateMetadataMap | null;
 }
-export const CreateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user_id: S.String,
@@ -5165,7 +4987,7 @@ export interface CreateOrganizationPermissionRequest {
   /** A description of the permission. */
   description?: string;
 }
-export const CreateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -5177,7 +4999,7 @@ export const CreateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permission IDs to assign to the role */
 export type CreateOrganizationRoleRequestPermissionsList = Array<string>;
-export const CreateOrganizationRoleRequestPermissionsList =
+const CreateOrganizationRoleRequestPermissionsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateOrganizationRoleRequestPermissionsList>;
 
 export interface CreateOrganizationRoleRequest {
@@ -5192,7 +5014,7 @@ export interface CreateOrganizationRoleRequest {
   /** Whether this role should be included in the initial role set */
   include_in_initial_role_set?: boolean | null;
 }
-export const CreateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -5216,7 +5038,7 @@ export interface CreatePhoneNumberRequest {
   /** Create this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor. */
   reserved_for_second_factor?: boolean | null;
 }
-export const CreatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     phone_number: S.String,
@@ -5230,14 +5052,14 @@ export interface CreateRedirectURLRequest {
   /** The full URL value prefixed with `https://` or a custom scheme e.g. `"https://my-app.com/oauth-callback"` or `"my-app://oauth-callback"` */
   url: string;
 }
-export const CreateRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/redirect_urls", code: 200 })),
 ).annotate({ identifier: "CreateRedirectURLRequest" }) as any as S.Schema<CreateRedirectURLRequest>;
 
 export type RedirectURLObject = "redirect_url";
-export const RedirectURLObject = S.String;
+const RedirectURLObject = S.String;
 
 export interface RedirectURL {
   object: RedirectURLObject;
@@ -5248,7 +5070,7 @@ export interface RedirectURL {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const RedirectURL = /*@__PURE__*/ S.suspend(() =>
+const RedirectURL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RedirectURLObject,
     id: S.String,
@@ -5260,11 +5082,11 @@ export const RedirectURL = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the role set. "initial" role sets are the default for new organizations. Only one role set can be "initial" per instance. */
 export type CreateRoleSetRequestType = "initial" | "custom";
-export const CreateRoleSetRequestType = S.String;
+const CreateRoleSetRequestType = S.String;
 
 /** Array of role keys to include in the role set. Must contain at least one role and no more than 10 roles. */
 export type CreateRoleSetRequestRolesList = Array<string>;
-export const CreateRoleSetRequestRolesList =
+const CreateRoleSetRequestRolesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateRoleSetRequestRolesList>;
 
 export interface CreateRoleSetRequest {
@@ -5283,7 +5105,7 @@ export interface CreateRoleSetRequest {
   /** Array of role keys to include in the role set. Must contain at least one role and no more than 10 roles. */
   roles: CreateRoleSetRequestRolesList;
 }
-export const CreateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.optional(S.String),
@@ -5305,7 +5127,7 @@ export interface CreateSCIMDirectoryRequestGroupRoleMappingsItem {
   /** The precedence for this mapping. If omitted, precedence is assigned by array order. */
   precedence?: number;
 }
-export const CreateSCIMDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateSCIMDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_group_id: S.String,
     scim_group_display_name: S.optional(S.String),
@@ -5319,7 +5141,7 @@ export const CreateSCIMDirectoryRequestGroupRoleMappingsItem = /*@__PURE__*/ S.s
 /** Optional SCIM group to organization role mappings to create with the directory. */
 export type CreateSCIMDirectoryRequestGroupRoleMappingsList =
   Array<CreateSCIMDirectoryRequestGroupRoleMappingsItem>;
-export const CreateSCIMDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ S.Array(
+const CreateSCIMDirectoryRequestGroupRoleMappingsList = /*@__PURE__*/ S.Array(
   CreateSCIMDirectoryRequestGroupRoleMappingsItem,
 ) as any as S.Schema<CreateSCIMDirectoryRequestGroupRoleMappingsList>;
 
@@ -5333,7 +5155,7 @@ export interface CreateSCIMDirectoryRequest {
   /** Optional SCIM group to organization role mappings to create with the directory. */
   group_role_mappings?: CreateSCIMDirectoryRequestGroupRoleMappingsList;
 }
-export const CreateSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String,
     name: S.optional(S.String),
@@ -5346,11 +5168,11 @@ export const CreateSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Always "scim_directory". */
 export type SCIMDirectoryObject = "scim_directory";
-export const SCIMDirectoryObject = S.String;
+const SCIMDirectoryObject = S.String;
 
 /** Mapping of user attributes to the SCIM attribute paths they are extracted from. */
 export type SCIMDirectoryAttributeMappingMap = { [key: string]: string | undefined };
-export const SCIMDirectoryAttributeMappingMap =
+const SCIMDirectoryAttributeMappingMap =
   RoleSetMigrationMappingsMap as any as S.Schema<SCIMDirectoryAttributeMappingMap>;
 
 export interface SCIMDirectoryCustomAttributesItem {
@@ -5367,12 +5189,9 @@ export interface SCIMDirectoryCustomAttributesItem {
   /** When true, the attribute supports multiple values; values from the IdP are written to public_metadata as an array. Defaults to false. */
   multi_valued?: boolean;
 }
-export const SCIMDirectoryCustomAttributesItem =
-  DirectoryCustomAttributesItem as any as S.Schema<SCIMDirectoryCustomAttributesItem>;
-
 /** Custom attributes to map from the IdP to the user's profile via SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type SCIMDirectoryCustomAttributesList = Array<SCIMDirectoryCustomAttributesItem>;
-export const SCIMDirectoryCustomAttributesList =
+const SCIMDirectoryCustomAttributesList =
   DirectoryCustomAttributesList as any as S.Schema<SCIMDirectoryCustomAttributesList>;
 
 /** A directory configuration for provisioning users via SCIM protocol. */
@@ -5404,7 +5223,7 @@ export interface SCIMDirectory {
   /** Unix timestamp when the directory was last updated. */
   updated_at: number;
 }
-export const SCIMDirectory = /*@__PURE__*/ S.suspend(() =>
+const SCIMDirectory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SCIMDirectoryObject,
     id: S.String,
@@ -5432,7 +5251,7 @@ export interface CreateSCIMGroupRoleMappingRequest {
   /** The precedence for this mapping. Lower values take priority when a user belongs to multiple mapped groups. If omitted, the mapping is appended with the next-highest precedence. */
   precedence?: number;
 }
-export const CreateSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
     scim_group_id: S.String,
@@ -5451,7 +5270,7 @@ export const CreateSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Always "scim_group_role_mapping". */
 export type SCIMGroupRoleMappingObject = "scim_group_role_mapping";
-export const SCIMGroupRoleMappingObject = S.String;
+const SCIMGroupRoleMappingObject = S.String;
 
 /** A mapping from a SCIM group to an organization role. Members of the group are assigned the role; the lowest-precedence match wins when a user belongs to multiple mapped groups. */
 export interface SCIMGroupRoleMapping {
@@ -5479,7 +5298,7 @@ export interface SCIMGroupRoleMapping {
   /** Unix timestamp (milliseconds) of when the mapping was last updated. */
   updated_at: number;
 }
-export const SCIMGroupRoleMapping = /*@__PURE__*/ S.suspend(() =>
+const SCIMGroupRoleMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SCIMGroupRoleMappingObject,
     id: S.String,
@@ -5502,7 +5321,7 @@ export interface CreateSessionRequest {
   /** The ID of the organization to set as active for this session */
   active_organization_id?: string;
 }
-export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     active_organization_id: S.optional(S.String),
@@ -5511,7 +5330,7 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type SessionObject = "session";
-export const SessionObject = S.String;
+const SessionObject = S.String;
 
 export type SessionStatus =
   | "active"
@@ -5522,7 +5341,7 @@ export type SessionStatus =
   | "abandoned"
   | "replaced"
   | "pending";
-export const SessionStatus = S.String;
+const SessionStatus = S.String;
 
 export interface SessionActivityResponse {
   object: string;
@@ -5535,7 +5354,7 @@ export interface SessionActivityResponse {
   city?: string;
   country?: string;
 }
-export const SessionActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const SessionActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.String,
@@ -5552,16 +5371,14 @@ export const SessionActivityResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SessionTask {
   key: string;
 }
-export const SessionTask = /*@__PURE__*/ S.suspend(() =>
+const SessionTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
   }),
 ).annotate({ identifier: "SessionTask" }) as any as S.Schema<SessionTask>;
 
 export type SessionTasksList = Array<SessionTask>;
-export const SessionTasksList = /*@__PURE__*/ S.Array(
-  SessionTask,
-) as any as S.Schema<SessionTasksList>;
+const SessionTasksList = /*@__PURE__*/ S.Array(SessionTask) as any as S.Schema<SessionTasksList>;
 
 export interface Session {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -5584,7 +5401,7 @@ export interface Session {
   created_at: number;
   tasks?: SessionTasksList | null;
 }
-export const Session = /*@__PURE__*/ S.suspend(() =>
+const Session = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SessionObject,
     id: S.String,
@@ -5609,7 +5426,7 @@ export interface CreateSessionTokenRequest {
   /** Use this parameter to override the default session token lifetime. */
   expires_in_seconds?: number | null;
 }
-export const CreateSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
     expires_in_seconds: S.optional(S.NullOr(S.Number)),
@@ -5619,13 +5436,13 @@ export const CreateSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSessionTokenRequest>;
 
 export type CreateSessionTokenResponseObject = "token";
-export const CreateSessionTokenResponseObject = S.String;
+const CreateSessionTokenResponseObject = S.String;
 
 export interface CreateSessionTokenResponse {
   object?: CreateSessionTokenResponseObject;
   jwt?: string;
 }
-export const CreateSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(CreateSessionTokenResponseObject),
     jwt: S.optional(S.String),
@@ -5642,7 +5459,7 @@ export interface CreateSessionTokenFromTemplateRequest {
   /** Use this parameter to override the JWT lifetime. */
   expires_in_seconds?: number | null;
 }
-export const CreateSessionTokenFromTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionTokenFromTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
     template_name: S.String.pipe(T.Label()),
@@ -5655,13 +5472,11 @@ export const CreateSessionTokenFromTemplateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateSessionTokenFromTemplateRequest>;
 
 export type CreateSessionTokenFromTemplateResponseObject = "token";
-export const CreateSessionTokenFromTemplateResponseObject = S.String;
-
 export interface CreateSessionTokenFromTemplateResponse {
   object?: CreateSessionTokenFromTemplateResponseObject;
   jwt?: string;
 }
-export const CreateSessionTokenFromTemplateResponse =
+const CreateSessionTokenFromTemplateResponse =
   CreateSessionTokenResponse as any as S.Schema<CreateSessionTokenFromTemplateResponse>;
 
 export interface CreateSignInTokenRequest {
@@ -5672,7 +5487,7 @@ export interface CreateSignInTokenRequest {
   /** Optional parameter to specify the life duration of the sign in token in seconds. By default, the duration is 30 days. */
   expires_in_seconds?: number | null;
 }
-export const CreateSignInTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignInTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     org_id: S.optional(S.NullOr(S.String)),
@@ -5681,10 +5496,10 @@ export const CreateSignInTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSignInTokenRequest" }) as any as S.Schema<CreateSignInTokenRequest>;
 
 export type SignInTokenObject = "sign_in_token";
-export const SignInTokenObject = S.String;
+const SignInTokenObject = S.String;
 
 export type SignInTokenStatus = "pending" | "accepted" | "revoked";
-export const SignInTokenStatus = S.String;
+const SignInTokenStatus = S.String;
 
 export interface SignInToken {
   object: SignInTokenObject;
@@ -5698,7 +5513,7 @@ export interface SignInToken {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const SignInToken = /*@__PURE__*/ S.suspend(() =>
+const SignInToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SignInTokenObject,
     id: S.String,
@@ -5715,7 +5530,7 @@ export interface CreateSSOBypassAllowlistUserRequest {
   /** The ID of the user to allowlist. */
   user_id: string;
 }
-export const CreateSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/sso_bypass_allowlist_users", code: 200 })),
@@ -5724,7 +5539,7 @@ export const CreateSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSSOBypassAllowlistUserRequest>;
 
 export type SSOBypassAllowlistUserObject = "sso_bypass_allowlist_user";
-export const SSOBypassAllowlistUserObject = S.String;
+const SSOBypassAllowlistUserObject = S.String;
 
 /** The allowlisted user's public data. */
 export interface SSOBypassAllowlistPublicUserData {
@@ -5737,7 +5552,7 @@ export interface SSOBypassAllowlistPublicUserData {
   /** Use `image_url` instead. */
   profile_image_url: string | null;
 }
-export const SSOBypassAllowlistPublicUserData = /*@__PURE__*/ S.suspend(() =>
+const SSOBypassAllowlistPublicUserData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.NullOr(S.String),
     last_name: S.NullOr(S.String),
@@ -5762,7 +5577,7 @@ export interface SSOBypassAllowlistUser {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const SSOBypassAllowlistUser = /*@__PURE__*/ S.suspend(() =>
+const SSOBypassAllowlistUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SSOBypassAllowlistUserObject,
     user_id: S.String,
@@ -5773,28 +5588,28 @@ export const SSOBypassAllowlistUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SSOBypassAllowlistUser" }) as any as S.Schema<SSOBypassAllowlistUser>;
 
 export interface CreateSvixAppRequest {}
-export const CreateSvixAppRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSvixAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/webhooks/svix", code: 200 })),
 ).annotate({ identifier: "CreateSvixAppRequest" }) as any as S.Schema<CreateSvixAppRequest>;
 
 export interface SvixURL {
   svix_url: string;
 }
-export const SvixURL = /*@__PURE__*/ S.suspend(() =>
+const SvixURL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     svix_url: S.String,
   }),
 ).annotate({ identifier: "SvixURL" }) as any as S.Schema<SvixURL>;
 
 export interface CreateTestingTokenRequest {}
-export const CreateTestingTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTestingTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/testing_tokens", code: 200 })),
 ).annotate({
   identifier: "CreateTestingTokenRequest",
 }) as any as S.Schema<CreateTestingTokenRequest>;
 
 export type TestingTokenObject = "testing_token";
-export const TestingTokenObject = S.String;
+const TestingTokenObject = S.String;
 
 export interface TestingToken {
   object: TestingTokenObject;
@@ -5803,7 +5618,7 @@ export interface TestingToken {
   /** Unix timestamp of the token's expiration time. */
   expires_at: number;
 }
-export const TestingToken = /*@__PURE__*/ S.suspend(() =>
+const TestingToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: TestingTokenObject,
     token: S.String,
@@ -5813,58 +5628,56 @@ export const TestingToken = /*@__PURE__*/ S.suspend(() =>
 
 /** Email addresses to add to the user. Must be unique across your instance. The first email address will be set as the user's primary email address. Created verified by default; see `email_address_identification_status` to create them reserved. */
 export type CreateUserRequestEmailAddressList = Array<string>;
-export const CreateUserRequestEmailAddressList =
+const CreateUserRequestEmailAddressList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestEmailAddressList>;
 
 export type CreateUserRequestEmailAddressIdentificationStatusItem = "verified" | "reserved";
-export const CreateUserRequestEmailAddressIdentificationStatusItem = S.String;
+const CreateUserRequestEmailAddressIdentificationStatusItem = S.String;
 
 /** Controls the status each email address is created with. Runs parallel to `email_address`: when provided, it must contain exactly one item per email address, applied by position. When omitted or empty, every email address is created `verified`. Set an item to `reserved` to create the corresponding email address reserved instead (unverified but usable for sign-in and locked so no other user can claim it). */
 export type CreateUserRequestEmailAddressIdentificationStatusList = Array<
   CreateUserRequestEmailAddressIdentificationStatusItem | (string & {})
 >;
-export const CreateUserRequestEmailAddressIdentificationStatusList = /*@__PURE__*/ S.Array(
+const CreateUserRequestEmailAddressIdentificationStatusList = /*@__PURE__*/ S.Array(
   CreateUserRequestEmailAddressIdentificationStatusItem,
 ) as any as S.Schema<CreateUserRequestEmailAddressIdentificationStatusList>;
 
 /** Phone numbers to add to the user. Must be unique across your instance. The first phone number will be set as the user's primary phone number. Created verified by default; see `phone_number_identification_status` to create them reserved. */
 export type CreateUserRequestPhoneNumberList = Array<string>;
-export const CreateUserRequestPhoneNumberList =
+const CreateUserRequestPhoneNumberList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestPhoneNumberList>;
 
 export type CreateUserRequestPhoneNumberIdentificationStatusItem = "verified" | "reserved";
-export const CreateUserRequestPhoneNumberIdentificationStatusItem = S.String;
-
 /** Controls the status each phone number is created with. Runs parallel to `phone_number`: when provided, it must contain exactly one item per phone number, applied by position. When omitted or empty, every phone number is created `verified`. Set an item to `reserved` to create the corresponding phone number reserved instead (unverified but usable for sign-in and locked so no other user can claim it). */
 export type CreateUserRequestPhoneNumberIdentificationStatusList = Array<
   CreateUserRequestPhoneNumberIdentificationStatusItem | (string & {})
 >;
-export const CreateUserRequestPhoneNumberIdentificationStatusList =
+const CreateUserRequestPhoneNumberIdentificationStatusList =
   CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<CreateUserRequestPhoneNumberIdentificationStatusList>;
 
 /** Web3 wallets to add to the user. Must be unique across your instance. The first wallet will be set as the user's primary wallet. */
 export type CreateUserRequestWeb3WalletList = Array<string>;
-export const CreateUserRequestWeb3WalletList =
+const CreateUserRequestWeb3WalletList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestWeb3WalletList>;
 
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the newly created user without the need to reset them. You must provide the backup codes in plain format or the corresponding bcrypt digest. */
 export type CreateUserRequestBackupCodesList = Array<string>;
-export const CreateUserRequestBackupCodesList =
+const CreateUserRequestBackupCodesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CreateUserRequestBackupCodesList>;
 
 /** Metadata saved on the user, that is visible to both your Frontend and Backend APIs */
 export type CreateUserRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestPublicMetadataMap =
+const CreateUserRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateUserRequestPublicMetadataMap>;
 
 /** Metadata saved on the user, that is only visible to your Backend API */
 export type CreateUserRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestPrivateMetadataMap =
+const CreateUserRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateUserRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type CreateUserRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const CreateUserRequestUnsafeMetadataMap =
+const CreateUserRequestUnsafeMetadataMap =
   UserPublicMetadataMap as any as S.Schema<CreateUserRequestUnsafeMetadataMap>;
 
 export interface CreateUserRequest {
@@ -5932,7 +5745,7 @@ export interface CreateUserRequest {
   /** When set to `true`, the user is created already locked. Requires the user lockout feature to be enabled on the instance. */
   locked?: boolean | null;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     external_id: S.optional(S.NullOr(S.String)),
     first_name: S.optional(S.NullOr(S.String)),
@@ -5979,7 +5792,7 @@ export interface CreateWaitlistEntryRequest {
   /** Optional flag which denotes whether a confirmation email should be sent to the given email address. Defaults to `true`. */
   notify?: boolean | null;
 }
-export const CreateWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.String,
     notify: S.optional(S.NullOr(S.Boolean)),
@@ -5992,7 +5805,7 @@ export interface DeleteAllowlistIdentifierRequest {
   /** The ID of the identifier to delete from the allow-list */
   identifier_id: string;
 }
-export const DeleteAllowlistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllowlistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/allowlist_identifiers/{identifier_id}", code: 200 })),
@@ -6007,7 +5820,7 @@ export interface DeletedObject {
   deleted: boolean;
   external_id?: string;
 }
-export const DeletedObject = /*@__PURE__*/ S.suspend(() =>
+const DeletedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     id: S.optional(S.String),
@@ -6020,21 +5833,21 @@ export const DeletedObject = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteApiKeyRequest {
   apiKeyID: string;
 }
-export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api_keys/{apiKeyID}", code: 200 })),
 ).annotate({ identifier: "DeleteApiKeyRequest" }) as any as S.Schema<DeleteApiKeyRequest>;
 
 export type DeleteApiKeyResponseObject = "api_key";
-export const DeleteApiKeyResponseObject = S.String;
+const DeleteApiKeyResponseObject = S.String;
 
 export interface DeleteApiKeyResponse {
   id: string;
   object: DeleteApiKeyResponseObject;
   deleted: boolean;
 }
-export const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: DeleteApiKeyResponseObject,
@@ -6046,7 +5859,7 @@ export interface DeleteBackupCodeRequest {
   /** The ID of the user whose backup codes are to be deleted. */
   user_id: string;
 }
-export const DeleteBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/backup_code", code: 200 })),
@@ -6055,7 +5868,7 @@ export const DeleteBackupCodeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBackupCodeResponse {
   user_id?: string;
 }
-export const DeleteBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteBackupCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.optional(S.String),
   }),
@@ -6065,7 +5878,7 @@ export interface DeleteBlocklistIdentifierRequest {
   /** The ID of the identifier to delete from the block-list */
   identifier_id: string;
 }
-export const DeleteBlocklistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBlocklistIdentifierRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/blocklist_identifiers/{identifier_id}", code: 200 })),
@@ -6077,7 +5890,7 @@ export interface DeleteDirectoryRequest {
   /** The ID of the directory to delete */
   directory_id: string;
 }
-export const DeleteDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/directories/{directory_id}", code: 200 })),
@@ -6089,7 +5902,7 @@ export interface DeleteDirectoryGroupRoleMappingRequest {
   /** The ID of the directory group role mapping to delete. */
   mapping_id: string;
 }
-export const DeleteDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
     mapping_id: S.String.pipe(T.Label()),
@@ -6106,7 +5919,7 @@ export const DeleteDirectoryGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(()
 
 /** String representing the object's type. */
 export type DeleteDirectoryGroupRoleMappingResponseObject = "directory_group_role_mapping";
-export const DeleteDirectoryGroupRoleMappingResponseObject = S.String;
+const DeleteDirectoryGroupRoleMappingResponseObject = S.String;
 
 export interface DeleteDirectoryGroupRoleMappingResponse {
   /** String representing the object's type. */
@@ -6116,7 +5929,7 @@ export interface DeleteDirectoryGroupRoleMappingResponse {
   /** Whether the directory group role mapping was successfully deleted. */
   deleted: boolean;
 }
-export const DeleteDirectoryGroupRoleMappingResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDirectoryGroupRoleMappingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DeleteDirectoryGroupRoleMappingResponseObject,
     id: S.String,
@@ -6130,7 +5943,7 @@ export interface DeleteDomainRequest {
   /** The ID of the domain that will be deleted. */
   domain_id: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/domains/{domain_id}", code: 200 })),
@@ -6140,7 +5953,7 @@ export interface DeleteEmailAddressRequest {
   /** The ID of the email address to delete */
   email_address_id: string;
 }
-export const DeleteEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/email_addresses/{email_address_id}", code: 200 })),
@@ -6152,7 +5965,7 @@ export interface DeleteEnterpriseConnectionRequest {
   /** The ID of the enterprise connection to delete */
   enterprise_connection_id: string;
 }
-export const DeleteEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6172,7 +5985,7 @@ export interface DeleteExternalAccountRequest {
   /** The ID of the external account to delete */
   external_account_id: string;
 }
-export const DeleteExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExternalAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     external_account_id: S.String.pipe(T.Label()),
@@ -6191,7 +6004,7 @@ export interface DeleteInvitationRequest {
   /** The ID of the invitation to delete */
   invitation_id: string;
 }
-export const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitation_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/invitations/{invitation_id}", code: 200 })),
@@ -6201,7 +6014,7 @@ export interface DeleteJWTTemplateRequest {
   /** JWT Template ID */
   template_id: string;
 }
-export const DeleteJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/jwt_templates/{template_id}", code: 200 })),
@@ -6211,7 +6024,7 @@ export interface DeleteMachineRequest {
   /** The ID of the machine to delete */
   machine_id: string;
 }
-export const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/machines/{machine_id}", code: 200 })),
@@ -6219,7 +6032,7 @@ export const DeleteMachineRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type DeleteMachineResponseObject = "machine";
-export const DeleteMachineResponseObject = S.String;
+const DeleteMachineResponseObject = S.String;
 
 export interface DeleteMachineResponse {
   /** String representing the object's type. */
@@ -6229,7 +6042,7 @@ export interface DeleteMachineResponse {
   /** Whether the machine was successfully deleted */
   deleted: boolean;
 }
-export const DeleteMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DeleteMachineResponseObject,
     id: S.String,
@@ -6243,7 +6056,7 @@ export interface DeleteMachineScopeRequest {
   /** The ID of the machine that is being accessed */
   other_machine_id: string;
 }
-export const DeleteMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
     other_machine_id: S.String.pipe(T.Label()),
@@ -6260,7 +6073,7 @@ export const DeleteMachineScopeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type DeleteMachineScopeResponseObject = "machine_scope";
-export const DeleteMachineScopeResponseObject = S.String;
+const DeleteMachineScopeResponseObject = S.String;
 
 export interface DeleteMachineScopeResponse {
   /** String representing the object's type. */
@@ -6272,7 +6085,7 @@ export interface DeleteMachineScopeResponse {
   /** Whether the machine scope was successfully deleted */
   deleted: boolean;
 }
-export const DeleteMachineScopeResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteMachineScopeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: DeleteMachineScopeResponseObject,
     from_machine_id: S.String,
@@ -6287,7 +6100,7 @@ export interface DeleteOAuthApplicationRequest {
   /** The ID of the OAuth application to delete */
   oauth_application_id: string;
 }
-export const DeleteOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6301,7 +6114,7 @@ export interface DeleteOrganizationRequest {
   /** The ID of the organization to delete */
   organization_id: string;
 }
-export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{organization_id}", code: 200 })),
@@ -6315,7 +6128,7 @@ export interface DeleteOrganizationDomainRequest {
   /** The ID of the domain */
   domain_id: string;
 }
-export const DeleteOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     domain_id: S.String.pipe(T.Label()),
@@ -6334,7 +6147,7 @@ export interface DeleteOrganizationLogoRequest {
   /** The ID of the organization for which the logo will be deleted. */
   organization_id: string;
 }
-export const DeleteOrganizationLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/organizations/{organization_id}/logo", code: 200 })),
@@ -6348,7 +6161,7 @@ export interface DeleteOrganizationMembershipRequest {
   /** The ID of the user to which this membership belongs */
   user_id: string;
 }
-export const DeleteOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -6367,7 +6180,7 @@ export interface DeleteOrganizationPermissionRequest {
   /** The ID of the permission to delete */
   permission_id: string;
 }
-export const DeleteOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6381,7 +6194,7 @@ export interface DeleteOrganizationRoleRequest {
   /** The ID of the organization role to delete */
   organization_role_id: string;
 }
-export const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_role_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6395,7 +6208,7 @@ export interface DeletePhoneNumberRequest {
   /** The ID of the phone number to delete */
   phone_number_id: string;
 }
-export const DeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
@@ -6405,7 +6218,7 @@ export interface DeleteRedirectURLRequest {
   /** The ID of the redirect URL */
   id: string;
 }
-export const DeleteRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/redirect_urls/{id}", code: 200 })),
@@ -6415,7 +6228,7 @@ export interface DeleteSCIMDirectoryRequest {
   /** The ID of the directory to delete */
   scim_directory_id: string;
 }
-export const DeleteSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/scim_directories/{scim_directory_id}", code: 200 })),
@@ -6429,7 +6242,7 @@ export interface DeleteSCIMGroupRoleMappingRequest {
   /** The ID of the SCIM group role mapping to delete. */
   mapping_id: string;
 }
-export const DeleteSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
     mapping_id: S.String.pipe(T.Label()),
@@ -6446,8 +6259,6 @@ export const DeleteSCIMGroupRoleMappingRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type DeleteSCIMGroupRoleMappingResponseObject = "scim_group_role_mapping";
-export const DeleteSCIMGroupRoleMappingResponseObject = S.String;
-
 export interface DeleteSCIMGroupRoleMappingResponse {
   /** String representing the object's type. */
   object: DeleteSCIMGroupRoleMappingResponseObject;
@@ -6456,14 +6267,14 @@ export interface DeleteSCIMGroupRoleMappingResponse {
   /** Whether the SCIM group role mapping was successfully deleted. */
   deleted: boolean;
 }
-export const DeleteSCIMGroupRoleMappingResponse =
+const DeleteSCIMGroupRoleMappingResponse =
   DeleteDirectoryGroupRoleMappingResponse as any as S.Schema<DeleteSCIMGroupRoleMappingResponse>;
 
 export interface DeleteSSOBypassAllowlistUserRequest {
   /** The ID of the allowlisted user */
   userID: string;
 }
-export const DeleteSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/sso_bypass_allowlist_users/{userID}", code: 200 })),
@@ -6472,12 +6283,12 @@ export const DeleteSSOBypassAllowlistUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSSOBypassAllowlistUserRequest>;
 
 export interface DeleteSvixAppRequest {}
-export const DeleteSvixAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSvixAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/webhooks/svix", code: 200 })),
 ).annotate({ identifier: "DeleteSvixAppRequest" }) as any as S.Schema<DeleteSvixAppRequest>;
 
 export interface DeleteSvixAppResponse {}
-export const DeleteSvixAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSvixAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSvixAppResponse",
 }) as any as S.Schema<DeleteSvixAppResponse>;
 
@@ -6485,7 +6296,7 @@ export interface DeleteTOTPRequest {
   /** The ID of the user whose TOTPs are to be deleted */
   user_id: string;
 }
-export const DeleteTOTPRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTOTPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/totp", code: 200 })),
@@ -6494,13 +6305,13 @@ export const DeleteTOTPRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteTOTPResponse {
   user_id?: string;
 }
-export const DeleteTOTPResponse = DeleteBackupCodeResponse as any as S.Schema<DeleteTOTPResponse>;
+const DeleteTOTPResponse = DeleteBackupCodeResponse as any as S.Schema<DeleteTOTPResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the user to delete */
   user_id: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}", code: 200 })),
@@ -6512,7 +6323,7 @@ export interface DeleteUserPasskeyRequest {
   /** The ID of the passkey identity to be deleted */
   passkey_identification_id: string;
 }
-export const DeleteUserPasskeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserPasskeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     passkey_identification_id: S.String.pipe(T.Label()),
@@ -6529,7 +6340,7 @@ export interface DeleteUserProfileImageRequest {
   /** The ID of the user to delete the profile image for */
   user_id: string;
 }
-export const DeleteUserProfileImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserProfileImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/profile_image", code: 200 })),
@@ -6543,7 +6354,7 @@ export interface DeleteUserWeb3WalletRequest {
   /** The ID of the web3 wallet identity to be deleted */
   web3_wallet_identification_id: string;
 }
-export const DeleteUserWeb3WalletRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserWeb3WalletRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     web3_wallet_identification_id: S.String.pipe(T.Label()),
@@ -6562,7 +6373,7 @@ export interface DeleteWaitlistEntryRequest {
   /** The ID of the waitlist entry to delete */
   waitlist_entry_id: string;
 }
-export const DeleteWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waitlist_entry_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/waitlist_entries/{waitlist_entry_id}", code: 200 })),
@@ -6574,7 +6385,7 @@ export interface DisableMFARequest {
   /** The ID of the user whose MFA methods are to be disabled */
   user_id: string;
 }
-export const DisableMFARequest = /*@__PURE__*/ S.suspend(() =>
+const DisableMFARequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/users/{user_id}/mfa", code: 200 })),
@@ -6583,7 +6394,7 @@ export const DisableMFARequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisableMFAResponse {
   user_id?: string;
 }
-export const DisableMFAResponse = DeleteBackupCodeResponse as any as S.Schema<DisableMFAResponse>;
+const DisableMFAResponse = DeleteBackupCodeResponse as any as S.Schema<DisableMFAResponse>;
 
 export interface ExtendBillingSubscriptionItemFreeTrialRequest {
   /** The ID of the subscription item to extend the free trial for */
@@ -6591,7 +6402,7 @@ export interface ExtendBillingSubscriptionItemFreeTrialRequest {
   /** RFC3339 timestamp to extend the free trial to. Must be in the future and not more than 365 days from now. */
   extend_to: string;
 }
-export const ExtendBillingSubscriptionItemFreeTrialRequest = /*@__PURE__*/ S.suspend(() =>
+const ExtendBillingSubscriptionItemFreeTrialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription_item_id: S.String.pipe(T.Label()),
     extend_to: S.String,
@@ -6607,7 +6418,7 @@ export const ExtendBillingSubscriptionItemFreeTrialRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ExtendBillingSubscriptionItemFreeTrialRequest>;
 
 export interface GenerateSvixAuthURLRequest {}
-export const GenerateSvixAuthURLRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSvixAuthURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/webhooks/svix_url", code: 200 })),
 ).annotate({
   identifier: "GenerateSvixAuthURLRequest",
@@ -6616,17 +6427,17 @@ export const GenerateSvixAuthURLRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiKeyRequest {
   apiKeyID: string;
 }
-export const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api_keys/{apiKeyID}", code: 200 })),
 ).annotate({ identifier: "GetApiKeyRequest" }) as any as S.Schema<GetApiKeyRequest>;
 
 export type GetApiKeyResponseObject = "api_key";
-export const GetApiKeyResponseObject = S.String;
+const GetApiKeyResponseObject = S.String;
 
 export type GetApiKeyResponseScopesList = Array<string>;
-export const GetApiKeyResponseScopesList =
+const GetApiKeyResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeyResponseScopesList>;
 
 export interface GetApiKeyResponse {
@@ -6651,7 +6462,7 @@ export interface GetApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const GetApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: GetApiKeyResponseObject,
     id: S.String,
@@ -6680,7 +6491,7 @@ export interface GetApiKeysRequest {
   offset?: number;
   query?: string;
 }
-export const GetApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String.pipe(T.Query())),
     subject: S.String.pipe(T.Query()),
@@ -6692,10 +6503,10 @@ export const GetApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetApiKeysRequest" }) as any as S.Schema<GetApiKeysRequest>;
 
 export type GetApiKeysResponseDataItemObject = "api_key";
-export const GetApiKeysResponseDataItemObject = S.String;
+const GetApiKeysResponseDataItemObject = S.String;
 
 export type GetApiKeysResponseDataItemScopesList = Array<string>;
-export const GetApiKeysResponseDataItemScopesList =
+const GetApiKeysResponseDataItemScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetApiKeysResponseDataItemScopesList>;
 
 export interface GetApiKeysResponseDataItem {
@@ -6720,7 +6531,7 @@ export interface GetApiKeysResponseDataItem {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const GetApiKeysResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeysResponseDataItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: GetApiKeysResponseDataItemObject,
     id: S.String,
@@ -6744,7 +6555,7 @@ export const GetApiKeysResponseDataItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApiKeysResponseDataItem>;
 
 export type GetApiKeysResponseDataList = Array<GetApiKeysResponseDataItem>;
-export const GetApiKeysResponseDataList = /*@__PURE__*/ S.Array(
+const GetApiKeysResponseDataList = /*@__PURE__*/ S.Array(
   GetApiKeysResponseDataItem,
 ) as any as S.Schema<GetApiKeysResponseDataList>;
 
@@ -6752,7 +6563,7 @@ export interface GetApiKeysResponse {
   data: GetApiKeysResponseDataList;
   total_count: number;
 }
-export const GetApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: GetApiKeysResponseDataList,
     total_count: S.Number,
@@ -6762,7 +6573,7 @@ export const GetApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiKeySecretRequest {
   apiKeyID: string;
 }
-export const GetApiKeySecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeySecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api_keys/{apiKeyID}/secret", code: 200 })),
@@ -6771,7 +6582,7 @@ export const GetApiKeySecretRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiKeySecretResponse {
   secret: string | Redacted.Redacted<string>;
 }
-export const GetApiKeySecretResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeySecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.String.pipe(T.SensitiveValue({})),
   }),
@@ -6787,7 +6598,7 @@ export interface GetBillingPriceListRequest {
   /** Filter prices by plan ID */
   plan_id?: string;
 }
-export const GetBillingPriceListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingPriceListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -6800,7 +6611,7 @@ export const GetBillingPriceListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of prices. */
 export type PaginatedBillingPriceResponseDataList = Array<BillingPriceResponse>;
-export const PaginatedBillingPriceResponseDataList = /*@__PURE__*/ S.Array(
+const PaginatedBillingPriceResponseDataList = /*@__PURE__*/ S.Array(
   BillingPriceResponse,
 ) as any as S.Schema<PaginatedBillingPriceResponseDataList>;
 
@@ -6810,7 +6621,7 @@ export interface PaginatedBillingPriceResponse {
   /** Total number of prices. */
   total_count: number;
 }
-export const PaginatedBillingPriceResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBillingPriceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedBillingPriceResponseDataList,
     total_count: S.Number,
@@ -6823,7 +6634,7 @@ export interface GetBillingStatementRequest {
   /** The ID of the statement to retrieve. */
   statementID: string;
 }
-export const GetBillingStatementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingStatementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statementID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/billing/statements/{statementID}", code: 200 })),
@@ -6833,11 +6644,11 @@ export const GetBillingStatementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingStatementObject = "commerce_statement";
-export const BillingStatementObject = S.String;
+const BillingStatementObject = S.String;
 
 /** The current status of the statement. */
 export type BillingStatementStatus = "open" | "closed";
-export const BillingStatementStatus = S.String;
+const BillingStatementStatus = S.String;
 
 /** Totals for the statement. */
 export interface BillingStatementTotals {
@@ -6850,7 +6661,7 @@ export interface BillingStatementTotals {
   /** The tax total amount for the statement. */
   tax_total: CommerceMoneyResponse;
 }
-export const BillingStatementTotals = /*@__PURE__*/ S.suspend(() =>
+const BillingStatementTotals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grand_total: CommerceMoneyResponse,
     subtotal: CommerceMoneyResponse,
@@ -6861,15 +6672,15 @@ export const BillingStatementTotals = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingStatementGroupsItemObject = "commerce_statement_group";
-export const BillingStatementGroupsItemObject = S.String;
+const BillingStatementGroupsItemObject = S.String;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type BillingPaymentAttemptObject = "commerce_payment";
-export const BillingPaymentAttemptObject = S.String;
+const BillingPaymentAttemptObject = S.String;
 
 /** The current status of the payment attempt. */
 export type BillingPaymentAttemptStatus = "pending" | "paid" | "failed";
-export const BillingPaymentAttemptStatus = S.String;
+const BillingPaymentAttemptStatus = S.String;
 
 export interface BillingPaymentAttempt {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -6919,7 +6730,7 @@ export interface BillingPaymentAttempt {
   /** Unix timestamp (in milliseconds) when the payment attempt was last updated. */
   updated_at: number;
 }
-export const BillingPaymentAttempt = /*@__PURE__*/ S.suspend(() =>
+const BillingPaymentAttempt = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: BillingPaymentAttemptObject,
     id: S.String,
@@ -6949,7 +6760,7 @@ export const BillingPaymentAttempt = /*@__PURE__*/ S.suspend(() =>
 
 /** The payment attempts included in the group */
 export type BillingStatementGroupsItemItemsList = Array<BillingPaymentAttempt>;
-export const BillingStatementGroupsItemItemsList = /*@__PURE__*/ S.Array(
+const BillingStatementGroupsItemItemsList = /*@__PURE__*/ S.Array(
   BillingPaymentAttempt,
 ) as any as S.Schema<BillingStatementGroupsItemItemsList>;
 
@@ -6962,7 +6773,7 @@ export interface BillingStatementGroupsItem {
   /** The payment attempts included in the group */
   items: BillingStatementGroupsItemItemsList;
 }
-export const BillingStatementGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const BillingStatementGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: BillingStatementGroupsItemObject,
     timestamp: S.Number,
@@ -6974,7 +6785,7 @@ export const BillingStatementGroupsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of statement groups. */
 export type BillingStatementGroupsList = Array<BillingStatementGroupsItem>;
-export const BillingStatementGroupsList = /*@__PURE__*/ S.Array(
+const BillingStatementGroupsList = /*@__PURE__*/ S.Array(
   BillingStatementGroupsItem,
 ) as any as S.Schema<BillingStatementGroupsList>;
 
@@ -6996,7 +6807,7 @@ export interface BillingStatement {
   /** Array of statement groups. */
   groups: BillingStatementGroupsList;
 }
-export const BillingStatement = /*@__PURE__*/ S.suspend(() =>
+const BillingStatement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: BillingStatementObject,
     id: S.String,
@@ -7017,7 +6828,7 @@ export interface GetBillingStatementListRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const GetBillingStatementListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingStatementListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7029,7 +6840,7 @@ export const GetBillingStatementListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of billing statements. */
 export type PaginatedBillingStatementResponseDataList = Array<BillingStatement>;
-export const PaginatedBillingStatementResponseDataList = /*@__PURE__*/ S.Array(
+const PaginatedBillingStatementResponseDataList = /*@__PURE__*/ S.Array(
   BillingStatement,
 ) as any as S.Schema<PaginatedBillingStatementResponseDataList>;
 
@@ -7039,7 +6850,7 @@ export interface PaginatedBillingStatementResponse {
   /** Total number of billing statements. */
   total_count: number;
 }
-export const PaginatedBillingStatementResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBillingStatementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedBillingStatementResponseDataList,
     total_count: S.Number,
@@ -7058,7 +6869,7 @@ export interface GetBillingStatementPaymentAttemptsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const GetBillingStatementPaymentAttemptsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingStatementPaymentAttemptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statementID: S.String.pipe(T.Label()),
     paginated: S.optional(S.Boolean.pipe(T.Query())),
@@ -7073,7 +6884,7 @@ export const GetBillingStatementPaymentAttemptsRequest = /*@__PURE__*/ S.suspend
 
 /** Array of billing payment attempts. */
 export type PaginatedBillingPaymentAttemptResponseDataList = Array<BillingPaymentAttempt>;
-export const PaginatedBillingPaymentAttemptResponseDataList =
+const PaginatedBillingPaymentAttemptResponseDataList =
   BillingStatementGroupsItemItemsList as any as S.Schema<PaginatedBillingPaymentAttemptResponseDataList>;
 
 export interface PaginatedBillingPaymentAttemptResponse {
@@ -7082,7 +6893,7 @@ export interface PaginatedBillingPaymentAttemptResponse {
   /** Total number of billing payment attempts. */
   total_count: number;
 }
-export const PaginatedBillingPaymentAttemptResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBillingPaymentAttemptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedBillingPaymentAttemptResponseDataList,
     total_count: S.Number,
@@ -7095,7 +6906,7 @@ export interface GetClientRequest {
   /** Client ID. */
   client_id: string;
 }
-export const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/clients/{client_id}", code: 200 })),
@@ -7103,16 +6914,14 @@ export const GetClientRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ClientObject = "client";
-export const ClientObject = S.String;
+const ClientObject = S.String;
 
 export type ClientSessionIdsList = Array<string>;
-export const ClientSessionIdsList =
+const ClientSessionIdsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ClientSessionIdsList>;
 
 export type ClientSessionsList = Array<Session>;
-export const ClientSessionsList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<ClientSessionsList>;
+const ClientSessionsList = /*@__PURE__*/ S.Array(Session) as any as S.Schema<ClientSessionsList>;
 
 export interface Client {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -7132,7 +6941,7 @@ export interface Client {
   /** Unix timestamp of creation. */
   created_at: number;
 }
-export const Client = /*@__PURE__*/ S.suspend(() =>
+const Client = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: ClientObject,
     id: S.String,
@@ -7148,7 +6957,7 @@ export const Client = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Client" }) as any as S.Schema<Client>;
 
 export type GetCommercePlanListRequestPayerType = "user" | "org";
-export const GetCommercePlanListRequestPayerType = S.String;
+const GetCommercePlanListRequestPayerType = S.String;
 
 export interface GetCommercePlanListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
@@ -7160,7 +6969,7 @@ export interface GetCommercePlanListRequest {
   /** Filter plans by payer type */
   payer_type?: GetCommercePlanListRequestPayerType | (string & {});
 }
-export const GetCommercePlanListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommercePlanListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7173,7 +6982,7 @@ export const GetCommercePlanListRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of plans. */
 export type PaginatedCommercePlanResponseDataList = Array<CommercePlan>;
-export const PaginatedCommercePlanResponseDataList = /*@__PURE__*/ S.Array(
+const PaginatedCommercePlanResponseDataList = /*@__PURE__*/ S.Array(
   CommercePlan,
 ) as any as S.Schema<PaginatedCommercePlanResponseDataList>;
 
@@ -7183,7 +6992,7 @@ export interface PaginatedCommercePlanResponse {
   /** Total number of plans. */
   total_count: number;
 }
-export const PaginatedCommercePlanResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCommercePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedCommercePlanResponseDataList,
     total_count: S.Number,
@@ -7198,10 +7007,10 @@ export type GetCommerceSubscriptionItemListRequestStatus =
   | "past_due"
   | "upcoming"
   | "free_trial";
-export const GetCommerceSubscriptionItemListRequestStatus = S.String;
+const GetCommerceSubscriptionItemListRequestStatus = S.String;
 
 export type GetCommerceSubscriptionItemListRequestPayerType = "user" | "org";
-export const GetCommerceSubscriptionItemListRequestPayerType = S.String;
+const GetCommerceSubscriptionItemListRequestPayerType = S.String;
 
 export interface GetCommerceSubscriptionItemListRequest {
   /** Whether to paginate the results. If true, the results will be paginated. If false, the results will not be paginated. */
@@ -7221,7 +7030,7 @@ export interface GetCommerceSubscriptionItemListRequest {
   /** Search query to filter subscription items */
   query?: string;
 }
-export const GetCommerceSubscriptionItemListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommerceSubscriptionItemListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7238,7 +7047,7 @@ export const GetCommerceSubscriptionItemListRequest = /*@__PURE__*/ S.suspend(()
 
 /** Array of subscription items. */
 export type PaginatedCommerceSubscriptionItemResponseDataList = Array<CommerceSubscriptionItem>;
-export const PaginatedCommerceSubscriptionItemResponseDataList = /*@__PURE__*/ S.Array(
+const PaginatedCommerceSubscriptionItemResponseDataList = /*@__PURE__*/ S.Array(
   CommerceSubscriptionItem,
 ) as any as S.Schema<PaginatedCommerceSubscriptionItemResponseDataList>;
 
@@ -7248,7 +7057,7 @@ export interface PaginatedCommerceSubscriptionItemResponse {
   /** Total number of subscription items. */
   total_count: number;
 }
-export const PaginatedCommerceSubscriptionItemResponse = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCommerceSubscriptionItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PaginatedCommerceSubscriptionItemResponseDataList,
     total_count: S.Number,
@@ -7261,7 +7070,7 @@ export interface GetDirectoryRequest {
   /** The ID of the directory to retrieve */
   directory_id: string;
 }
-export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/directories/{directory_id}", code: 200 })),
@@ -7271,7 +7080,7 @@ export interface GetEmailAddressRequest {
   /** The ID of the email address to retrieve */
   email_address_id: string;
 }
-export const GetEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/email_addresses/{email_address_id}", code: 200 })),
@@ -7281,7 +7090,7 @@ export interface GetEnterpriseConnectionRequest {
   /** The ID of the enterprise connection */
   enterprise_connection_id: string;
 }
-export const GetEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -7292,21 +7101,21 @@ export const GetEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEnterpriseConnectionRequest>;
 
 export interface GetInstanceRequest {}
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance", code: 200 })),
 ).annotate({ identifier: "GetInstanceRequest" }) as any as S.Schema<GetInstanceRequest>;
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type InstanceObject = "instance";
-export const InstanceObject = S.String;
+const InstanceObject = S.String;
 
 export type InstanceAllowedOriginsList = Array<string>;
-export const InstanceAllowedOriginsList =
+const InstanceAllowedOriginsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedOriginsList>;
 
 /** Subdomains of the instance's own domains that may originate requests, when the subdomain allowlist is enabled. Production instances only; always empty on a development instance. */
 export type InstanceAllowedSubdomainsList = Array<string>;
-export const InstanceAllowedSubdomainsList =
+const InstanceAllowedSubdomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceAllowedSubdomainsList>;
 
 export interface Instance {
@@ -7322,7 +7131,7 @@ export interface Instance {
   /** The ID of the Clerk workspace that owns the instance's application. It is null when the application has no owner. */
   workspace_id: string | null;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: InstanceObject,
     id: S.String,
@@ -7335,18 +7144,18 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export interface GetInstanceCommunicationRequest {}
-export const GetInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/communication", code: 200 })),
 ).annotate({
   identifier: "GetInstanceCommunicationRequest",
 }) as any as S.Schema<GetInstanceCommunicationRequest>;
 
 export type InstanceCommunicationObject = "instance_communication";
-export const InstanceCommunicationObject = S.String;
+const InstanceCommunicationObject = S.String;
 
 /** ISO 3166-1 alpha-2 country codes that are blocked for SMS delivery on this instance. Codes that aren't recognized are silently dropped. */
 export type InstanceCommunicationBlockedCountryCodesList = Array<string>;
-export const InstanceCommunicationBlockedCountryCodesList =
+const InstanceCommunicationBlockedCountryCodesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<InstanceCommunicationBlockedCountryCodesList>;
 
 /** Per-instance SMS communication settings, including the SMS country blocklist. */
@@ -7355,7 +7164,7 @@ export interface InstanceCommunication {
   /** ISO 3166-1 alpha-2 country codes that are blocked for SMS delivery on this instance. Codes that aren't recognized are silently dropped. */
   blocked_country_codes: InstanceCommunicationBlockedCountryCodesList;
 }
-export const InstanceCommunication = /*@__PURE__*/ S.suspend(() =>
+const InstanceCommunication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: InstanceCommunicationObject,
     blocked_country_codes: InstanceCommunicationBlockedCountryCodesList,
@@ -7363,7 +7172,7 @@ export const InstanceCommunication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceCommunication" }) as any as S.Schema<InstanceCommunication>;
 
 export interface GetInstanceOAuthApplicationSettingsRequest {}
-export const GetInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/instance/oauth_application_settings", code: 200 }),
   ),
@@ -7373,11 +7182,11 @@ export const GetInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.suspen
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OAuthApplicationSettingsObject = "oauth_application_settings";
-export const OAuthApplicationSettingsObject = S.String;
+const OAuthApplicationSettingsObject = S.String;
 
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Contains built-in keys and custom catalog keys. Null means Clerk-provided defaults. `advertised` does not affect eligibility. An empty input array is stored and returned as null. */
 export type OAuthApplicationSettingsDefaultScopesList = Array<string>;
-export const OAuthApplicationSettingsDefaultScopesList =
+const OAuthApplicationSettingsDefaultScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationSettingsDefaultScopesList>;
 
 export interface OAuthApplicationSettings {
@@ -7400,7 +7209,7 @@ export interface OAuthApplicationSettings {
   /** When true, recorded implicitly allowed CIMD clients are rejected on future client lookups. Explicitly allowed clients remain accepted. This does not revoke previously issued access tokens. */
   client_id_metadata_documents_block_implicitly_allowed_clients: boolean;
 }
-export const OAuthApplicationSettings = /*@__PURE__*/ S.suspend(() =>
+const OAuthApplicationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OAuthApplicationSettingsObject,
     dynamic_oauth_client_registration: S.Boolean,
@@ -7415,7 +7224,7 @@ export const OAuthApplicationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OAuthApplicationSettings" }) as any as S.Schema<OAuthApplicationSettings>;
 
 export interface GetInstanceOrganizationSettingsRequest {}
-export const GetInstanceOrganizationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceOrganizationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/organization_settings", code: 200 })),
 ).annotate({
   identifier: "GetInstanceOrganizationSettingsRequest",
@@ -7423,17 +7232,15 @@ export const GetInstanceOrganizationSettingsRequest = /*@__PURE__*/ S.suspend(()
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationSettingsObject = "organization_settings";
-export const OrganizationSettingsObject = S.String;
+const OrganizationSettingsObject = S.String;
 
 export type OrganizationSettingsDomainsEnrollmentModesItem =
   | "manual_invitation"
   | "automatic_invitation"
   | "automatic_suggestion";
-export const OrganizationSettingsDomainsEnrollmentModesItem = S.String;
-
 export type OrganizationSettingsDomainsEnrollmentModesList =
   Array<OrganizationSettingsDomainsEnrollmentModesItem>;
-export const OrganizationSettingsDomainsEnrollmentModesList =
+const OrganizationSettingsDomainsEnrollmentModesList =
   CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<OrganizationSettingsDomainsEnrollmentModesList>;
 
 export interface OrganizationSettings {
@@ -7458,7 +7265,7 @@ export interface OrganizationSettings {
   /** The role set key that it will be used to create new organizations. */
   initial_role_set_key?: string | null;
 }
-export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OrganizationSettingsObject,
     enabled: S.Boolean,
@@ -7478,14 +7285,14 @@ export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrganizationSettings" }) as any as S.Schema<OrganizationSettings>;
 
 export interface GetInstanceProtectRequest {}
-export const GetInstanceProtectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceProtectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/instance/protect", code: 200 })),
 ).annotate({
   identifier: "GetInstanceProtectRequest",
 }) as any as S.Schema<GetInstanceProtectRequest>;
 
 export type InstanceProtectObject = "instance_protect";
-export const InstanceProtectObject = S.String;
+const InstanceProtectObject = S.String;
 
 export interface InstanceProtect {
   object: InstanceProtectObject;
@@ -7499,7 +7306,7 @@ export interface InstanceProtect {
   /** Whether the instance was created into Protect and so was never subject to the prerequisite checks at all. */
   checks_exempt: boolean;
 }
-export const InstanceProtect = /*@__PURE__*/ S.suspend(() =>
+const InstanceProtect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: InstanceProtectObject,
     rules_enabled: S.Boolean,
@@ -7526,7 +7333,7 @@ export interface GetInterstitialRequest {
   /** Whether to use the domain for the script URL */
   use_domain_for_script?: boolean;
 }
-export const GetInterstitialRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInterstitialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frontendApi: S.optional(S.String.pipe(T.Query())),
     frontend_api: S.optional(S.String.pipe(T.Query())),
@@ -7539,24 +7346,16 @@ export const GetInterstitialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetInterstitialRequest" }) as any as S.Schema<GetInterstitialRequest>;
 
 export interface GetInterstitialResponse {}
-export const GetInterstitialResponse =
-  DeleteSvixAppResponse as any as S.Schema<GetInterstitialResponse>;
+const GetInterstitialResponse = DeleteSvixAppResponse as any as S.Schema<GetInterstitialResponse>;
 
 export interface GetJWKSRequest {}
-export const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/jwks", code: 200 })),
 ).annotate({ identifier: "GetJWKSRequest" }) as any as S.Schema<GetJWKSRequest>;
 
 export type JWKSEd25519PublicKeyKty = "OKP";
-export const JWKSEd25519PublicKeyKty = S.String;
-
 export type JWKSEd25519PublicKeyCrv = "Ed25519";
-export const JWKSEd25519PublicKeyCrv = S.String;
-
 export type JWKSEd25519PublicKeyX5cList = Array<string>;
-export const JWKSEd25519PublicKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEd25519PublicKeyX5cList>;
-
 export interface JWKSEd25519PublicKey {
   kid: string;
   alg: string;
@@ -7569,28 +7368,8 @@ export interface JWKSEd25519PublicKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSEd25519PublicKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSEd25519PublicKeyKty,
-    crv: JWKSEd25519PublicKeyCrv,
-    x: S.String,
-    x5c: S.optional(JWKSEd25519PublicKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSEd25519PublicKey" }) as any as S.Schema<JWKSEd25519PublicKey>;
-
 export type JWKSEcdsaPublicKeyKty = "EC";
-export const JWKSEcdsaPublicKeyKty = S.String;
-
 export type JWKSEcdsaPublicKeyX5cList = Array<string>;
-export const JWKSEcdsaPublicKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEcdsaPublicKeyX5cList>;
-
 export interface JWKSEcdsaPublicKey {
   kid: string;
   alg: string;
@@ -7604,29 +7383,8 @@ export interface JWKSEcdsaPublicKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSEcdsaPublicKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSEcdsaPublicKeyKty,
-    crv: S.String,
-    x: S.String,
-    y: S.String,
-    x5c: S.optional(JWKSEcdsaPublicKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSEcdsaPublicKey" }) as any as S.Schema<JWKSEcdsaPublicKey>;
-
 export type JWKSRsaPublicKeyKty = "RSA";
-export const JWKSRsaPublicKeyKty = S.String;
-
 export type JWKSRsaPublicKeyX5cList = Array<string>;
-export const JWKSRsaPublicKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSRsaPublicKeyX5cList>;
-
 export interface JWKSRsaPublicKey {
   kid: string;
   alg: string;
@@ -7639,31 +7397,9 @@ export interface JWKSRsaPublicKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSRsaPublicKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSRsaPublicKeyKty,
-    n: S.String,
-    e: S.String,
-    x5c: S.optional(JWKSRsaPublicKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSRsaPublicKey" }) as any as S.Schema<JWKSRsaPublicKey>;
-
 export type JWKSEd25519PrivateKeyKty = "OKP";
-export const JWKSEd25519PrivateKeyKty = S.String;
-
 export type JWKSEd25519PrivateKeyCrv = "Ed25519";
-export const JWKSEd25519PrivateKeyCrv = S.String;
-
 export type JWKSEd25519PrivateKeyX5cList = Array<string>;
-export const JWKSEd25519PrivateKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEd25519PrivateKeyX5cList>;
-
 export interface JWKSEd25519PrivateKey {
   kid: string;
   alg: string;
@@ -7677,29 +7413,8 @@ export interface JWKSEd25519PrivateKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSEd25519PrivateKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSEd25519PrivateKeyKty,
-    crv: JWKSEd25519PrivateKeyCrv,
-    x: S.String,
-    d: S.String,
-    x5c: S.optional(JWKSEd25519PrivateKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSEd25519PrivateKey" }) as any as S.Schema<JWKSEd25519PrivateKey>;
-
 export type JWKSEcdsaPrivateKeyKty = "EC";
-export const JWKSEcdsaPrivateKeyKty = S.String;
-
 export type JWKSEcdsaPrivateKeyX5cList = Array<string>;
-export const JWKSEcdsaPrivateKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSEcdsaPrivateKeyX5cList>;
-
 export interface JWKSEcdsaPrivateKey {
   kid: string;
   alg: string;
@@ -7714,30 +7429,8 @@ export interface JWKSEcdsaPrivateKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSEcdsaPrivateKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSEcdsaPrivateKeyKty,
-    crv: S.String,
-    x: S.String,
-    y: S.String,
-    d: S.String,
-    x5c: S.optional(JWKSEcdsaPrivateKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSEcdsaPrivateKey" }) as any as S.Schema<JWKSEcdsaPrivateKey>;
-
 export type JWKSRsaPrivateKeyKty = "RSA";
-export const JWKSRsaPrivateKeyKty = S.String;
-
 export type JWKSRsaPrivateKeyX5cList = Array<string>;
-export const JWKSRsaPrivateKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSRsaPrivateKeyX5cList>;
-
 export interface JWKSRsaPrivateKey {
   kid: string;
   alg: string;
@@ -7756,34 +7449,8 @@ export interface JWKSRsaPrivateKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSRsaPrivateKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSRsaPrivateKeyKty,
-    n: S.String,
-    e: S.String,
-    d: S.String,
-    p: S.String,
-    q: S.String,
-    dp: S.optional(S.String),
-    dq: S.optional(S.String),
-    qi: S.optional(S.String),
-    x5c: S.optional(JWKSRsaPrivateKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSRsaPrivateKey" }) as any as S.Schema<JWKSRsaPrivateKey>;
-
 export type JWKSSymmetricKeyKty = "oct";
-export const JWKSSymmetricKeyKty = S.String;
-
 export type JWKSSymmetricKeyX5cList = Array<string>;
-export const JWKSSymmetricKeyX5cList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<JWKSSymmetricKeyX5cList>;
-
 export interface JWKSSymmetricKey {
   kid: string;
   alg: string;
@@ -7795,20 +7462,6 @@ export interface JWKSSymmetricKey {
   x5t_S256?: string;
   x5u?: string;
 }
-export const JWKSSymmetricKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kid: S.String,
-    alg: S.String,
-    use: S.String,
-    kty: JWKSSymmetricKeyKty,
-    k: S.String,
-    x5c: S.optional(JWKSSymmetricKeyX5cList),
-    x5t: S.optional(S.String),
-    x5t_S256: S.optional(S.String.pipe(T.Body("x5t#S256"))),
-    x5u: S.optional(S.String),
-  }),
-).annotate({ identifier: "JWKSSymmetricKey" }) as any as S.Schema<JWKSSymmetricKey>;
-
 export type JWKSKeysItem =
   | JWKSEd25519PublicKey
   | JWKSEcdsaPublicKey
@@ -7817,15 +7470,15 @@ export type JWKSKeysItem =
   | JWKSEcdsaPrivateKey
   | JWKSRsaPrivateKey
   | JWKSSymmetricKey;
-export const JWKSKeysItem = S.Unknown as any as S.Schema<JWKSKeysItem>;
+const JWKSKeysItem = S.Unknown as any as S.Schema<JWKSKeysItem>;
 
 export type JWKSKeysList = Array<JWKSKeysItem>;
-export const JWKSKeysList = /*@__PURE__*/ S.Array(JWKSKeysItem) as any as S.Schema<JWKSKeysList>;
+const JWKSKeysList = /*@__PURE__*/ S.Array(JWKSKeysItem) as any as S.Schema<JWKSKeysList>;
 
 export interface JWKS {
   keys?: JWKSKeysList;
 }
-export const JWKS = /*@__PURE__*/ S.suspend(() =>
+const JWKS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(JWKSKeysList),
   }),
@@ -7835,7 +7488,7 @@ export interface GetJWTTemplateRequest {
   /** JWT Template ID */
   template_id: string;
 }
-export const GetJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/jwt_templates/{template_id}", code: 200 })),
@@ -7848,7 +7501,7 @@ export interface GetM2MTokensRequest {
   limit?: number;
   offset?: number;
 }
-export const GetM2MTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetM2MTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.String.pipe(T.Query()),
     revoked: S.optional(S.Boolean.pipe(T.Query())),
@@ -7859,10 +7512,10 @@ export const GetM2MTokensRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetM2MTokensRequest" }) as any as S.Schema<GetM2MTokensRequest>;
 
 export type GetM2MTokensResponseM2mTokensItemObject = "machine_to_machine_token";
-export const GetM2MTokensResponseM2mTokensItemObject = S.String;
+const GetM2MTokensResponseM2mTokensItemObject = S.String;
 
 export type GetM2MTokensResponseM2mTokensItemScopesList = Array<string>;
-export const GetM2MTokensResponseM2mTokensItemScopesList =
+const GetM2MTokensResponseM2mTokensItemScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetM2MTokensResponseM2mTokensItemScopesList>;
 
 export interface GetM2MTokensResponseM2mTokensItem {
@@ -7883,7 +7536,7 @@ export interface GetM2MTokensResponseM2mTokensItem {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-export const GetM2MTokensResponseM2mTokensItem = /*@__PURE__*/ S.suspend(() =>
+const GetM2MTokensResponseM2mTokensItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: GetM2MTokensResponseM2mTokensItemObject,
     id: S.String,
@@ -7903,7 +7556,7 @@ export const GetM2MTokensResponseM2mTokensItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetM2MTokensResponseM2mTokensItem>;
 
 export type GetM2MTokensResponseM2mTokensList = Array<GetM2MTokensResponseM2mTokensItem>;
-export const GetM2MTokensResponseM2mTokensList = /*@__PURE__*/ S.Array(
+const GetM2MTokensResponseM2mTokensList = /*@__PURE__*/ S.Array(
   GetM2MTokensResponseM2mTokensItem,
 ) as any as S.Schema<GetM2MTokensResponseM2mTokensList>;
 
@@ -7911,7 +7564,7 @@ export interface GetM2MTokensResponse {
   m2m_tokens: GetM2MTokensResponseM2mTokensList;
   total_count: number;
 }
-export const GetM2MTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const GetM2MTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     m2m_tokens: GetM2MTokensResponseM2mTokensList,
     total_count: S.Number,
@@ -7922,18 +7575,18 @@ export interface GetMachineRequest {
   /** The ID of the machine to retrieve */
   machine_id: string;
 }
-export const GetMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}", code: 200 })),
 ).annotate({ identifier: "GetMachineRequest" }) as any as S.Schema<GetMachineRequest>;
 
 export type GetMachineResponseObject = "machine";
-export const GetMachineResponseObject = S.String;
+const GetMachineResponseObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type GetMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const GetMachineResponseScopedMachinesList =
+const GetMachineResponseScopedMachinesList =
   CreateMachineResponseScopedMachinesList as any as S.Schema<GetMachineResponseScopedMachinesList>;
 
 export interface GetMachineResponse {
@@ -7953,7 +7606,7 @@ export interface GetMachineResponse {
   /** Array of machines this machine has access to. */
   scoped_machines: GetMachineResponseScopedMachinesList;
 }
-export const GetMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: GetMachineResponseObject,
     id: S.String,
@@ -7970,7 +7623,7 @@ export interface GetMachineSecretKeyRequest {
   /** The ID of the machine to retrieve the secret key for */
   machine_id: string;
 }
-export const GetMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/machines/{machine_id}/secret_key", code: 200 })),
@@ -7980,7 +7633,7 @@ export const GetMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type GetMachineSecretKeyResponseObject = "machine_secret_key";
-export const GetMachineSecretKeyResponseObject = S.String;
+const GetMachineSecretKeyResponseObject = S.String;
 
 export interface GetMachineSecretKeyResponse {
   /** String representing the object's type. */
@@ -7988,7 +7641,7 @@ export interface GetMachineSecretKeyResponse {
   /** The secret key for the machine. */
   secret: string | Redacted.Redacted<string>;
 }
-export const GetMachineSecretKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMachineSecretKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: GetMachineSecretKeyResponseObject,
     secret: S.String.pipe(T.SensitiveValue({})),
@@ -8009,7 +7662,7 @@ export interface GetOAuthAccessTokenRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const GetOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     provider: S.String.pipe(T.Label()),
@@ -8024,15 +7677,15 @@ export const GetOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOAuthAccessTokenRequest>;
 
 export type OAuthAccessTokenItemObject = "oauth_access_token";
-export const OAuthAccessTokenItemObject = S.String;
+const OAuthAccessTokenItemObject = S.String;
 
 export type OAuthAccessTokenItemPublicMetadataMap = { [key: string]: unknown | undefined };
-export const OAuthAccessTokenItemPublicMetadataMap =
+const OAuthAccessTokenItemPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<OAuthAccessTokenItemPublicMetadataMap>;
 
 /** The list of scopes that the token is valid for. Only present for OAuth 2.0 tokens. */
 export type OAuthAccessTokenItemScopesList = Array<string>;
-export const OAuthAccessTokenItemScopesList =
+const OAuthAccessTokenItemScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthAccessTokenItemScopesList>;
 
 export interface OAuthAccessTokenItem {
@@ -8056,7 +7709,7 @@ export interface OAuthAccessTokenItem {
   /** The token secret. Only present for OAuth 1.0 tokens. */
   token_secret?: string | Redacted.Redacted<string>;
 }
-export const OAuthAccessTokenItem = /*@__PURE__*/ S.suspend(() =>
+const OAuthAccessTokenItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OAuthAccessTokenItemObject,
     external_account_id: S.String,
@@ -8073,12 +7726,12 @@ export const OAuthAccessTokenItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OAuthAccessTokenItem" }) as any as S.Schema<OAuthAccessTokenItem>;
 
 export type OAuthAccessToken = Array<OAuthAccessTokenItem>;
-export const OAuthAccessToken = /*@__PURE__*/ S.Array(
+const OAuthAccessToken = /*@__PURE__*/ S.Array(
   OAuthAccessTokenItem,
 ) as any as S.Schema<OAuthAccessToken>;
 
 export type GetOAuthAccessTokenResponse = OAuthAccessToken;
-export const GetOAuthAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   OAuthAccessToken.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOAuthAccessTokenResponse",
@@ -8088,7 +7741,7 @@ export interface GetOAuthApplicationRequest {
   /** The ID of the OAuth application */
   oauth_application_id: string;
 }
-export const GetOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/oauth_applications/{oauth_application_id}", code: 200 })),
@@ -8097,10 +7750,10 @@ export const GetOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOAuthApplicationRequest>;
 
 export type OAuthApplicationObject = "oauth_application";
-export const OAuthApplicationObject = S.String;
+const OAuthApplicationObject = S.String;
 
 export type OAuthApplicationRedirectUrisList = Array<string>;
-export const OAuthApplicationRedirectUrisList =
+const OAuthApplicationRedirectUrisList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<OAuthApplicationRedirectUrisList>;
 
 export interface OAuthApplication {
@@ -8131,7 +7784,7 @@ export interface OAuthApplication {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const OAuthApplication = /*@__PURE__*/ S.suspend(() =>
+const OAuthApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OAuthApplicationObject,
     id: S.String,
@@ -8166,7 +7819,7 @@ export interface GetOrganizationRequest {
   /** Flag to denote whether or not to include a member with elevated permissions who is not currently a member of the organization. */
   include_missing_member_with_elevated_permissions?: boolean;
 }
-export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     include_members_count: S.optional(S.Boolean.pipe(T.Query())),
@@ -8178,7 +7831,7 @@ export interface GetOrganizationBillingCreditBalanceRequest {
   /** The ID of the organization whose credit balance to retrieve */
   organization_id: string;
 }
-export const GetOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8194,7 +7847,7 @@ export interface CommerceCreditBalanceResponse {
   /** The current credit balance. Null when the payer has never had credits. */
   balance: CommerceMoneyResponse | null;
 }
-export const CommerceCreditBalanceResponse = /*@__PURE__*/ S.suspend(() =>
+const CommerceCreditBalanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     balance: S.NullOr(CommerceMoneyResponse),
@@ -8207,7 +7860,7 @@ export interface GetOrganizationBillingSubscriptionRequest {
   /** The ID of the organization whose subscription to retrieve */
   organization_id: string;
 }
-export const GetOrganizationBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -8223,7 +7876,7 @@ export const GetOrganizationBillingSubscriptionRequest = /*@__PURE__*/ S.suspend
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CommerceSubscriptionObject = "commerce_subscription";
-export const CommerceSubscriptionObject = S.String;
+const CommerceSubscriptionObject = S.String;
 
 /** The current status of the subscription. */
 export type CommerceSubscriptionStatus =
@@ -8233,16 +7886,16 @@ export type CommerceSubscriptionStatus =
   | "ended"
   | "abandoned"
   | "incomplete";
-export const CommerceSubscriptionStatus = S.String;
+const CommerceSubscriptionStatus = S.String;
 
 /** Array of subscription items in this subscription. */
 export type CommerceSubscriptionSubscriptionItemsList = Array<CommerceSubscriptionItem>;
-export const CommerceSubscriptionSubscriptionItemsList =
+const CommerceSubscriptionSubscriptionItemsList =
   PaginatedCommerceSubscriptionItemResponseDataList as any as S.Schema<CommerceSubscriptionSubscriptionItemsList>;
 
 /** Per-unit total breakdown (for example, seats) for the next payment. */
 export type CommerceSubscriptionNextPaymentPerUnitTotalsList = Array<CommercePerUnitTotal2>;
-export const CommerceSubscriptionNextPaymentPerUnitTotalsList =
+const CommerceSubscriptionNextPaymentPerUnitTotalsList =
   CommerceTotalsResponse2PerUnitTotalsList as any as S.Schema<CommerceSubscriptionNextPaymentPerUnitTotalsList>;
 
 export interface CommerceSubscriptionNextPayment {
@@ -8255,7 +7908,7 @@ export interface CommerceSubscriptionNextPayment {
   /** Breakdown of the recurring amount that will be billed at renewal (base fee + per-unit charges). Tax and credits are not previewed. */
   totals?: CommerceTotalsResponse2 | null;
 }
-export const CommerceSubscriptionNextPayment = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscriptionNextPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.Number,
     amount: CommerceMoneyResponse,
@@ -8292,7 +7945,7 @@ export interface CommerceSubscription {
   /** Whether the payer is eligible for a free trial. */
   eligible_for_free_trial?: boolean;
 }
-export const CommerceSubscription = /*@__PURE__*/ S.suspend(() =>
+const CommerceSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: CommerceSubscriptionObject,
     id: S.String,
@@ -8315,7 +7968,7 @@ export interface GetOrganizationInvitationRequest {
   /** The organization invitation ID. */
   invitation_id: string;
 }
-export const GetOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     invitation_id: S.String.pipe(T.Label()),
@@ -8334,7 +7987,7 @@ export interface GetOrganizationPermissionRequest {
   /** The ID of the permission to retrieve */
   permission_id: string;
 }
-export const GetOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organization_permissions/{permission_id}", code: 200 })),
@@ -8346,7 +7999,7 @@ export interface GetOrganizationRoleRequest {
   /** The ID of the organization role */
   organization_role_id: string;
 }
-export const GetOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_role_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/organization_roles/{organization_role_id}", code: 200 })),
@@ -8358,7 +8011,7 @@ export interface GetPhoneNumberRequest {
   /** The ID of the phone number to retrieve */
   phone_number_id: string;
 }
-export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/phone_numbers/{phone_number_id}", code: 200 })),
@@ -8368,7 +8021,7 @@ export interface GetRedirectURLRequest {
   /** The ID of the redirect URL */
   id: string;
 }
-export const GetRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedirectURLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/redirect_urls/{id}", code: 200 })),
@@ -8380,7 +8033,7 @@ export interface GetReverificationRequest {
   /** The ID of the reverification */
   reverification_id: string;
 }
-export const GetReverificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReverificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
     reverification_id: S.String.pipe(T.Label()),
@@ -8395,14 +8048,14 @@ export const GetReverificationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type ReverificationObject = "reverification";
-export const ReverificationObject = S.String;
+const ReverificationObject = S.String;
 
 /** The level used for the reverification */
 export type ReverificationLevel = "first_factor" | "second_factor" | "multi_factor";
-export const ReverificationLevel = S.String;
+const ReverificationLevel = S.String;
 
 export type ReverificationStatus = "needs_first_factor" | "needs_second_factor" | "complete";
-export const ReverificationStatus = S.String;
+const ReverificationStatus = S.String;
 
 /** A reverification scoped to a session. Returned so a resource server can validate a reverification id received from its client. */
 export interface Reverification {
@@ -8423,7 +8076,7 @@ export interface Reverification {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const Reverification = /*@__PURE__*/ S.suspend(() =>
+const Reverification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: ReverificationObject,
     id: S.String,
@@ -8442,7 +8095,7 @@ export interface GetRoleSetRequest {
   /** The key or ID of the role set */
   role_set_key_or_id: string;
 }
-export const GetRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_set_key_or_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/role_sets/{role_set_key_or_id}", code: 200 })),
@@ -8452,7 +8105,7 @@ export interface GetSCIMDirectoryRequest {
   /** The ID of the directory to retrieve */
   scim_directory_id: string;
 }
-export const GetSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/scim_directories/{scim_directory_id}", code: 200 })),
@@ -8462,7 +8115,7 @@ export interface GetSessionRequest {
   /** The ID of the session */
   session_id: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sessions/{session_id}", code: 200 })),
@@ -8476,7 +8129,7 @@ export type GetSessionListRequestStatus =
   | "removed"
   | "replaced"
   | "revoked";
-export const GetSessionListRequestStatus = S.String;
+const GetSessionListRequestStatus = S.String;
 
 export interface GetSessionListRequest {
   /** List sessions for the given client */
@@ -8492,7 +8145,7 @@ export interface GetSessionListRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -8504,11 +8157,11 @@ export const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSessionListRequest" }) as any as S.Schema<GetSessionListRequest>;
 
 export type GetSessionListResponseBodyList = Array<Session>;
-export const GetSessionListResponseBodyList =
+const GetSessionListResponseBodyList =
   ClientSessionsList as any as S.Schema<GetSessionListResponseBodyList>;
 
 export type GetSessionListResponse = GetSessionListResponseBodyList;
-export const GetSessionListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSessionListResponse = /*@__PURE__*/ S.suspend(() =>
   GetSessionListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetSessionListResponse" }) as any as S.Schema<GetSessionListResponse>;
 
@@ -8516,46 +8169,46 @@ export interface GetSignUpRequest {
   /** The ID of the sign-up to retrieve */
   id: string;
 }
-export const GetSignUpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignUpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sign_ups/{id}", code: 200 })),
 ).annotate({ identifier: "GetSignUpRequest" }) as any as S.Schema<GetSignUpRequest>;
 
 export type SignUpObject = "sign_up_attempt";
-export const SignUpObject = S.String;
+const SignUpObject = S.String;
 
 export type SignUpStatus = "missing_requirements" | "complete" | "abandoned";
-export const SignUpStatus = S.String;
+const SignUpStatus = S.String;
 
 export type SignUpRequiredFieldsList = Array<string>;
-export const SignUpRequiredFieldsList =
+const SignUpRequiredFieldsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpRequiredFieldsList>;
 
 export type SignUpOptionalFieldsList = Array<string>;
-export const SignUpOptionalFieldsList =
+const SignUpOptionalFieldsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpOptionalFieldsList>;
 
 export type SignUpMissingFieldsList = Array<string>;
-export const SignUpMissingFieldsList =
+const SignUpMissingFieldsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpMissingFieldsList>;
 
 export type SignUpUnverifiedFieldsList = Array<string>;
-export const SignUpUnverifiedFieldsList =
+const SignUpUnverifiedFieldsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpUnverifiedFieldsList>;
 
 export type SignUpVerificationNextAction = "needs_prepare" | "needs_attempt" | "";
-export const SignUpVerificationNextAction = S.String;
+const SignUpVerificationNextAction = S.String;
 
 export type SignUpVerificationSupportedStrategiesList = Array<string>;
-export const SignUpVerificationSupportedStrategiesList =
+const SignUpVerificationSupportedStrategiesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<SignUpVerificationSupportedStrategiesList>;
 
 export interface SignUpVerification {
   next_action?: SignUpVerificationNextAction;
   supported_strategies?: SignUpVerificationSupportedStrategiesList;
 }
-export const SignUpVerification = /*@__PURE__*/ S.suspend(() =>
+const SignUpVerification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_action: S.optional(SignUpVerificationNextAction),
     supported_strategies: S.optional(SignUpVerificationSupportedStrategiesList),
@@ -8568,7 +8221,7 @@ export interface SignUpVerifications {
   web3_wallet: SignUpVerification | null;
   external_account: unknown | null;
 }
-export const SignUpVerifications = /*@__PURE__*/ S.suspend(() =>
+const SignUpVerifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.NullOr(SignUpVerification),
     phone_number: S.NullOr(SignUpVerification),
@@ -8578,12 +8231,10 @@ export const SignUpVerifications = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignUpVerifications" }) as any as S.Schema<SignUpVerifications>;
 
 export type SignUpUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const SignUpUnsafeMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<SignUpUnsafeMetadataMap>;
+const SignUpUnsafeMetadataMap = UserPublicMetadataMap as any as S.Schema<SignUpUnsafeMetadataMap>;
 
 export type SignUpPublicMetadataMap = { [key: string]: unknown | undefined };
-export const SignUpPublicMetadataMap =
-  UserPublicMetadataMap as any as S.Schema<SignUpPublicMetadataMap>;
+const SignUpPublicMetadataMap = UserPublicMetadataMap as any as S.Schema<SignUpPublicMetadataMap>;
 
 export interface SignUp {
   object: SignUpObject;
@@ -8617,7 +8268,7 @@ export interface SignUp {
   locale?: string | null;
   external_account?: unknown;
 }
-export const SignUp = /*@__PURE__*/ S.suspend(() =>
+const SignUp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: SignUpObject,
     id: S.String,
@@ -8652,7 +8303,7 @@ export interface GetUserRequest {
   /** The ID of the user to retrieve */
   user_id: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
@@ -8662,7 +8313,7 @@ export interface GetUserBillingCreditBalanceRequest {
   /** The ID of the user whose credit balance to retrieve */
   user_id: string;
 }
-export const GetUserBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserBillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/credits", code: 200 })),
@@ -8674,7 +8325,7 @@ export interface GetUserBillingSubscriptionRequest {
   /** The ID of the user whose subscription to retrieve */
   user_id: string;
 }
-export const GetUserBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/billing/subscription", code: 200 })),
@@ -8683,35 +8334,35 @@ export const GetUserBillingSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserBillingSubscriptionRequest>;
 
 export type GetUserListRequestEmailAddressList = Array<string>;
-export const GetUserListRequestEmailAddressList =
+const GetUserListRequestEmailAddressList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestEmailAddressList>;
 
 export type GetUserListRequestPhoneNumberList = Array<string>;
-export const GetUserListRequestPhoneNumberList =
+const GetUserListRequestPhoneNumberList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestPhoneNumberList>;
 
 export type GetUserListRequestExternalIdList = Array<string>;
-export const GetUserListRequestExternalIdList =
+const GetUserListRequestExternalIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestExternalIdList>;
 
 export type GetUserListRequestUsernameList = Array<string>;
-export const GetUserListRequestUsernameList =
+const GetUserListRequestUsernameList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUsernameList>;
 
 export type GetUserListRequestWeb3WalletList = Array<string>;
-export const GetUserListRequestWeb3WalletList =
+const GetUserListRequestWeb3WalletList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestWeb3WalletList>;
 
 export type GetUserListRequestUserIdList = Array<string>;
-export const GetUserListRequestUserIdList =
+const GetUserListRequestUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestUserIdList>;
 
 export type GetUserListRequestOrganizationIdList = Array<string>;
-export const GetUserListRequestOrganizationIdList =
+const GetUserListRequestOrganizationIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestOrganizationIdList>;
 
 export type GetUserListRequestProviderUserIdList = Array<string>;
-export const GetUserListRequestProviderUserIdList =
+const GetUserListRequestProviderUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUserListRequestProviderUserIdList>;
 
 export interface GetUserListRequest {
@@ -8768,7 +8419,7 @@ export interface GetUserListRequest {
   /** Allows to return users in a particular order. At the moment, you can order the returned users by their `created_at`,`updated_at`,`email_address`,`web3wallet`,`first_name`,`last_name`,`phone_number`,`username`,`last_active_at`,`last_sign_in_at`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want users to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. We only support one `order_by` parameter, and if multiple `order_by` parameters are provided, we will only keep the first one. For example, if you pass `order_by=username&order_by=created_at`, we will consider only the first `order_by` parameter, which is `username`. The `created_at` parameter will be ignored in this case. Only the `created_at` orderings can be combined with `starting_after` cursor pagination; see that parameter. */
   order_by?: string;
 }
-export const GetUserListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(GetUserListRequestEmailAddressList.pipe(T.Query())),
     phone_number: S.optional(GetUserListRequestPhoneNumberList.pipe(T.Query())),
@@ -8800,42 +8451,39 @@ export const GetUserListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserListRequest" }) as any as S.Schema<GetUserListRequest>;
 
 export type GetUserListResponseBodyList = Array<User>;
-export const GetUserListResponseBodyList =
-  BanUserResponseBodyList as any as S.Schema<GetUserListResponseBodyList>;
-
 export type GetUserListResponse = GetUserListResponseBodyList;
-export const GetUserListResponse = BanUserResponse as any as S.Schema<GetUserListResponse>;
+const GetUserListResponse = BanUserResponse as any as S.Schema<GetUserListResponse>;
 
 export type GetUsersCountRequestEmailAddressList = Array<string>;
-export const GetUsersCountRequestEmailAddressList =
+const GetUsersCountRequestEmailAddressList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestEmailAddressList>;
 
 export type GetUsersCountRequestPhoneNumberList = Array<string>;
-export const GetUsersCountRequestPhoneNumberList =
+const GetUsersCountRequestPhoneNumberList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestPhoneNumberList>;
 
 export type GetUsersCountRequestExternalIdList = Array<string>;
-export const GetUsersCountRequestExternalIdList =
+const GetUsersCountRequestExternalIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestExternalIdList>;
 
 export type GetUsersCountRequestUsernameList = Array<string>;
-export const GetUsersCountRequestUsernameList =
+const GetUsersCountRequestUsernameList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUsernameList>;
 
 export type GetUsersCountRequestWeb3WalletList = Array<string>;
-export const GetUsersCountRequestWeb3WalletList =
+const GetUsersCountRequestWeb3WalletList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestWeb3WalletList>;
 
 export type GetUsersCountRequestUserIdList = Array<string>;
-export const GetUsersCountRequestUserIdList =
+const GetUsersCountRequestUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestUserIdList>;
 
 export type GetUsersCountRequestOrganizationIdList = Array<string>;
-export const GetUsersCountRequestOrganizationIdList =
+const GetUsersCountRequestOrganizationIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestOrganizationIdList>;
 
 export type GetUsersCountRequestProviderUserIdList = Array<string>;
-export const GetUsersCountRequestProviderUserIdList =
+const GetUsersCountRequestProviderUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<GetUsersCountRequestProviderUserIdList>;
 
 export interface GetUsersCountRequest {
@@ -8884,7 +8532,7 @@ export interface GetUsersCountRequest {
   /** Counts users with the specified provider user IDs for a specific provider. Must be used in combination with the `provider` parameter. For example, use `provider=oauth_google&provider_user_id=12345` to count users with Google provider user ID 12345. Accepts up to 100 provider user IDs. Any provider user IDs not found are ignored. */
   provider_user_id?: GetUsersCountRequestProviderUserIdList;
 }
-export const GetUsersCountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersCountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(GetUsersCountRequestEmailAddressList.pipe(T.Query())),
     phone_number: S.optional(GetUsersCountRequestPhoneNumberList.pipe(T.Query())),
@@ -8913,14 +8561,14 @@ export const GetUsersCountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type TotalCountObject = "total_count";
-export const TotalCountObject = S.String;
+const TotalCountObject = S.String;
 
 export interface TotalCount {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: TotalCountObject;
   total_count: number;
 }
-export const TotalCount = /*@__PURE__*/ S.suspend(() =>
+const TotalCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: TotalCountObject,
     total_count: S.Number,
@@ -8935,7 +8583,7 @@ export interface InstanceGetOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const InstanceGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const InstanceGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_by: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -8946,7 +8594,7 @@ export const InstanceGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<InstanceGetOrganizationMembershipsRequest>;
 
 export type OrganizationMembershipsDataList = Array<OrganizationMembership>;
-export const OrganizationMembershipsDataList =
+const OrganizationMembershipsDataList =
   UserOrganizationMembershipsList as any as S.Schema<OrganizationMembershipsDataList>;
 
 export interface OrganizationMemberships {
@@ -8954,7 +8602,7 @@ export interface OrganizationMemberships {
   /** Total number of organization memberships */
   total_count: number;
 }
-export const OrganizationMemberships = /*@__PURE__*/ S.suspend(() =>
+const OrganizationMemberships = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OrganizationMembershipsDataList,
     total_count: S.Number,
@@ -8967,7 +8615,7 @@ export interface InviteWaitlistEntryRequest {
   /** Whether an invitation should be created if there is already an existing invitation for this email address, or it's claimed by another user. */
   ignore_existing?: boolean | null;
 }
-export const InviteWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waitlist_entry_id: S.String.pipe(T.Label()),
     ignore_existing: S.optional(S.NullOr(S.Boolean)),
@@ -8987,16 +8635,14 @@ export type ListAllOrganizationDomainsRequestEnrollmentModeItem =
   | "-automatic_invitation"
   | "-automatic_suggestion"
   | "-enterprise_sso";
-export const ListAllOrganizationDomainsRequestEnrollmentModeItem = S.String;
-
 export type ListAllOrganizationDomainsRequestEnrollmentModeList = Array<
   ListAllOrganizationDomainsRequestEnrollmentModeItem | (string & {})
 >;
-export const ListAllOrganizationDomainsRequestEnrollmentModeList =
+const ListAllOrganizationDomainsRequestEnrollmentModeList =
   CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListAllOrganizationDomainsRequestEnrollmentModeList>;
 
 export type ListAllOrganizationDomainsRequestDomainsList = Array<string>;
-export const ListAllOrganizationDomainsRequestDomainsList =
+const ListAllOrganizationDomainsRequestDomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListAllOrganizationDomainsRequestDomainsList>;
 
 export interface ListAllOrganizationDomainsRequest {
@@ -9017,7 +8663,7 @@ export interface ListAllOrganizationDomainsRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
   limit?: number;
 }
-export const ListAllOrganizationDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllOrganizationDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.optional(S.String.pipe(T.Query())),
     verified: S.optional(S.Boolean.pipe(T.Query(), T.StringEncoded())),
@@ -9035,7 +8681,7 @@ export const ListAllOrganizationDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAllOrganizationDomainsRequest>;
 
 export type OrganizationDomainsDataList = Array<OrganizationDomain>;
-export const OrganizationDomainsDataList = /*@__PURE__*/ S.Array(
+const OrganizationDomainsDataList = /*@__PURE__*/ S.Array(
   OrganizationDomain,
 ) as any as S.Schema<OrganizationDomainsDataList>;
 
@@ -9044,7 +8690,7 @@ export interface OrganizationDomains {
   /** Total number of organization domains */
   total_count: number;
 }
-export const OrganizationDomains = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDomains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OrganizationDomainsDataList,
     total_count: S.Number,
@@ -9059,7 +8705,7 @@ export interface ListAllowlistIdentifiersRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListAllowlistIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllowlistIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -9070,26 +8716,26 @@ export const ListAllowlistIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAllowlistIdentifiersRequest>;
 
 export type ListAllowlistIdentifiersResponseBodyList = Array<AllowlistIdentifier>;
-export const ListAllowlistIdentifiersResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAllowlistIdentifiersResponseBodyList = /*@__PURE__*/ S.Array(
   AllowlistIdentifier,
 ) as any as S.Schema<ListAllowlistIdentifiersResponseBodyList>;
 
 export type ListAllowlistIdentifiersResponse = ListAllowlistIdentifiersResponseBodyList;
-export const ListAllowlistIdentifiersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAllowlistIdentifiersResponse = /*@__PURE__*/ S.suspend(() =>
   ListAllowlistIdentifiersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAllowlistIdentifiersResponse",
 }) as any as S.Schema<ListAllowlistIdentifiersResponse>;
 
 export interface ListBlocklistIdentifiersRequest {}
-export const ListBlocklistIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlocklistIdentifiersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/blocklist_identifiers", code: 200 })),
 ).annotate({
   identifier: "ListBlocklistIdentifiersRequest",
 }) as any as S.Schema<ListBlocklistIdentifiersRequest>;
 
 export type BlocklistIdentifiersDataList = Array<BlocklistIdentifier>;
-export const BlocklistIdentifiersDataList = /*@__PURE__*/ S.Array(
+const BlocklistIdentifiersDataList = /*@__PURE__*/ S.Array(
   BlocklistIdentifier,
 ) as any as S.Schema<BlocklistIdentifiersDataList>;
 
@@ -9098,7 +8744,7 @@ export interface BlocklistIdentifiers {
   /** Total number of blocklist identifiers */
   total_count: number;
 }
-export const BlocklistIdentifiers = /*@__PURE__*/ S.suspend(() =>
+const BlocklistIdentifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: BlocklistIdentifiersDataList,
     total_count: S.Number,
@@ -9111,7 +8757,7 @@ export interface ListDirectoriesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -9119,14 +8765,14 @@ export const ListDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDirectoriesRequest" }) as any as S.Schema<ListDirectoriesRequest>;
 
 export type Directories = Array<Directory>;
-export const Directories = /*@__PURE__*/ S.Array(Directory) as any as S.Schema<Directories>;
+const Directories = /*@__PURE__*/ S.Array(Directory) as any as S.Schema<Directories>;
 
 export interface ListDirectoriesResponse {
   data: Directories;
   /** Total number of directories. */
   total_count: number;
 }
-export const ListDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: Directories,
     total_count: S.Number,
@@ -9137,7 +8783,7 @@ export interface ListDirectoryGroupRoleMappingsRequest {
   /** The ID of the directory. */
   directory_id: string;
 }
-export const ListDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -9148,7 +8794,7 @@ export const ListDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListDirectoryGroupRoleMappingsRequest>;
 
 export type DirectoryGroupRoleMappings = Array<DirectoryGroupRoleMapping>;
-export const DirectoryGroupRoleMappings = /*@__PURE__*/ S.Array(
+const DirectoryGroupRoleMappings = /*@__PURE__*/ S.Array(
   DirectoryGroupRoleMapping,
 ) as any as S.Schema<DirectoryGroupRoleMappings>;
 
@@ -9157,7 +8803,7 @@ export interface ListDirectoryGroupRoleMappingsResponse {
   /** Total number of directory group role mappings in the directory. */
   total_count: number;
 }
-export const ListDirectoryGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DirectoryGroupRoleMappings,
     total_count: S.Number,
@@ -9167,19 +8813,19 @@ export const ListDirectoryGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDirectoryGroupRoleMappingsResponse>;
 
 export interface ListDomainsRequest {}
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domains", code: 200 })),
 ).annotate({ identifier: "ListDomainsRequest" }) as any as S.Schema<ListDomainsRequest>;
 
 export type DomainsDataList = Array<Domain>;
-export const DomainsDataList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainsDataList>;
+const DomainsDataList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainsDataList>;
 
 export interface Domains {
   data: DomainsDataList;
   /** Total number of domains */
   total_count: number;
 }
-export const Domains = /*@__PURE__*/ S.suspend(() =>
+const Domains = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: DomainsDataList,
     total_count: S.Number,
@@ -9196,7 +8842,7 @@ export interface ListEnterpriseConnectionsRequest {
   /** Filter by active status. If true, only active connections are returned. If false, only inactive connections are returned. If omitted, all connections are returned. */
   active?: boolean;
 }
-export const ListEnterpriseConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterpriseConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -9208,7 +8854,7 @@ export const ListEnterpriseConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEnterpriseConnectionsRequest>;
 
 export type EnterpriseConnectionsDataList = Array<EnterpriseConnection>;
-export const EnterpriseConnectionsDataList = /*@__PURE__*/ S.Array(
+const EnterpriseConnectionsDataList = /*@__PURE__*/ S.Array(
   EnterpriseConnection,
 ) as any as S.Schema<EnterpriseConnectionsDataList>;
 
@@ -9217,7 +8863,7 @@ export interface EnterpriseConnections {
   /** Total number of enterprise connections */
   total_count: number;
 }
-export const EnterpriseConnections = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnections = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EnterpriseConnectionsDataList,
     total_count: S.Number,
@@ -9225,12 +8871,10 @@ export const EnterpriseConnections = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnterpriseConnections" }) as any as S.Schema<EnterpriseConnections>;
 
 export type ListEnterpriseConnectionTestRunsRequestStatusItem = "pending" | "success" | "failed";
-export const ListEnterpriseConnectionTestRunsRequestStatusItem = S.String;
-
 export type ListEnterpriseConnectionTestRunsRequestStatusList = Array<
   ListEnterpriseConnectionTestRunsRequestStatusItem | (string & {})
 >;
-export const ListEnterpriseConnectionTestRunsRequestStatusList =
+const ListEnterpriseConnectionTestRunsRequestStatusList =
   CreateUserRequestEmailAddressIdentificationStatusList as any as S.Schema<ListEnterpriseConnectionTestRunsRequestStatusList>;
 
 export interface ListEnterpriseConnectionTestRunsRequest {
@@ -9243,7 +8887,7 @@ export interface ListEnterpriseConnectionTestRunsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListEnterpriseConnectionTestRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnterpriseConnectionTestRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String.pipe(T.Label()),
     status: S.optional(ListEnterpriseConnectionTestRunsRequestStatusList.pipe(T.Query())),
@@ -9262,11 +8906,11 @@ export const ListEnterpriseConnectionTestRunsRequest = /*@__PURE__*/ S.suspend((
 
 /** The status of the test run */
 export type EnterpriseConnectionTestRunStatus = "pending" | "success" | "failed";
-export const EnterpriseConnectionTestRunStatus = S.String;
+const EnterpriseConnectionTestRunStatus = S.String;
 
 /** The type of enterprise connection the test run was performed against */
 export type EnterpriseConnectionTestRunConnectionType = "saml" | "oauth";
-export const EnterpriseConnectionTestRunConnectionType = S.String;
+const EnterpriseConnectionTestRunConnectionType = S.String;
 
 /** The user information parsed from the IdP response */
 export interface EnterpriseConnectionTestRunParsedUserInfo {
@@ -9275,7 +8919,7 @@ export interface EnterpriseConnectionTestRunParsedUserInfo {
   last_name?: string;
   user_id?: string;
 }
-export const EnterpriseConnectionTestRunParsedUserInfo = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRunParsedUserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address: S.optional(S.String),
     first_name: S.optional(S.String),
@@ -9292,7 +8936,7 @@ export interface EnterpriseConnectionTestRunLogsItem {
   short_message?: string;
   message: string;
 }
-export const EnterpriseConnectionTestRunLogsItem = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRunLogsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     level: S.String,
     code: S.optional(S.String),
@@ -9305,7 +8949,7 @@ export const EnterpriseConnectionTestRunLogsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Log entries captured during the test run */
 export type EnterpriseConnectionTestRunLogsList = Array<EnterpriseConnectionTestRunLogsItem>;
-export const EnterpriseConnectionTestRunLogsList = /*@__PURE__*/ S.Array(
+const EnterpriseConnectionTestRunLogsList = /*@__PURE__*/ S.Array(
   EnterpriseConnectionTestRunLogsItem,
 ) as any as S.Schema<EnterpriseConnectionTestRunLogsList>;
 
@@ -9315,7 +8959,7 @@ export interface EnterpriseConnectionTestRunSaml {
   saml_response?: string;
   relay_state?: string;
 }
-export const EnterpriseConnectionTestRunSaml = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRunSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     saml_request: S.optional(S.String),
     saml_response: S.optional(S.String),
@@ -9331,7 +8975,7 @@ export interface EnterpriseConnectionTestRunOauth {
   access_token?: string | Redacted.Redacted<string>;
   user_info?: string;
 }
-export const EnterpriseConnectionTestRunOauth = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRunOauth = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id_token: S.optional(S.String),
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -9359,7 +9003,7 @@ export interface EnterpriseConnectionTestRun {
   /** Unix timestamp in milliseconds when the test run was created */
   created_at: number;
 }
-export const EnterpriseConnectionTestRun = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: EnterpriseConnectionTestRunStatus,
@@ -9375,7 +9019,7 @@ export const EnterpriseConnectionTestRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnterpriseConnectionTestRun>;
 
 export type EnterpriseConnectionTestRunsDataList = Array<EnterpriseConnectionTestRun>;
-export const EnterpriseConnectionTestRunsDataList = /*@__PURE__*/ S.Array(
+const EnterpriseConnectionTestRunsDataList = /*@__PURE__*/ S.Array(
   EnterpriseConnectionTestRun,
 ) as any as S.Schema<EnterpriseConnectionTestRunsDataList>;
 
@@ -9384,7 +9028,7 @@ export interface EnterpriseConnectionTestRuns {
   /** Total number of test runs */
   total_count: number;
 }
-export const EnterpriseConnectionTestRuns = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseConnectionTestRuns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: EnterpriseConnectionTestRunsDataList,
     total_count: S.Number,
@@ -9398,7 +9042,7 @@ export type ListInstanceOrganizationInvitationsRequestStatus =
   | "accepted"
   | "revoked"
   | "expired";
-export const ListInstanceOrganizationInvitationsRequestStatus = S.String;
+const ListInstanceOrganizationInvitationsRequestStatus = S.String;
 
 export interface ListInstanceOrganizationInvitationsRequest {
   /** Allows to return organization invitations in a particular order. At the moment, you can order the returned organization invitations either by their `created_at` or `email_address`. In order to specify the direction, you can use the `+/-` symbols prepended in the property to order by. For example, if you want organization invitations to be returned in descending order according to their `created_at` property, you can use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`. */
@@ -9412,7 +9056,7 @@ export interface ListInstanceOrganizationInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListInstanceOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstanceOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_by: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListInstanceOrganizationInvitationsRequestStatus.pipe(T.Query())),
@@ -9426,18 +9070,18 @@ export const ListInstanceOrganizationInvitationsRequest = /*@__PURE__*/ S.suspen
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type OrganizationInvitationWithPublicOrganizationDataObject = "organization_invitation";
-export const OrganizationInvitationWithPublicOrganizationDataObject = S.String;
+const OrganizationInvitationWithPublicOrganizationDataObject = S.String;
 
 export type OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap =
+const OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap =
   CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPublicMetadataMap>;
 
 export type OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap =
+const OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap =
   CreateOrganizationInvitationBulkRequestBodyItemPublicMetadataMap as any as S.Schema<OrganizationInvitationWithPublicOrganizationDataPrivateMetadataMap>;
 
 /** An organization invitation with public organization data populated */
@@ -9463,7 +9107,7 @@ export interface OrganizationInvitationWithPublicOrganizationData {
   updated_at: number;
   public_organization_data?: OrganizationInvitationPublicOrganizationData;
 }
-export const OrganizationInvitationWithPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitationWithPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: OrganizationInvitationWithPublicOrganizationDataObject,
     id: S.String,
@@ -9490,7 +9134,7 @@ export const OrganizationInvitationWithPublicOrganizationData = /*@__PURE__*/ S.
 
 export type OrganizationInvitationsWithPublicOrganizationDataDataList =
   Array<OrganizationInvitationWithPublicOrganizationData>;
-export const OrganizationInvitationsWithPublicOrganizationDataDataList = /*@__PURE__*/ S.Array(
+const OrganizationInvitationsWithPublicOrganizationDataDataList = /*@__PURE__*/ S.Array(
   OrganizationInvitationWithPublicOrganizationData,
 ) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationDataDataList>;
 
@@ -9499,7 +9143,7 @@ export interface OrganizationInvitationsWithPublicOrganizationData {
   /** Total number of organization invitations */
   total_count: number;
 }
-export const OrganizationInvitationsWithPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
+const OrganizationInvitationsWithPublicOrganizationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OrganizationInvitationsWithPublicOrganizationDataDataList,
     total_count: S.Number,
@@ -9509,7 +9153,7 @@ export const OrganizationInvitationsWithPublicOrganizationData = /*@__PURE__*/ S
 }) as any as S.Schema<OrganizationInvitationsWithPublicOrganizationData>;
 
 export type ListInvitationsRequestStatus = "pending" | "accepted" | "revoked" | "expired";
-export const ListInvitationsRequestStatus = S.String;
+const ListInvitationsRequestStatus = S.String;
 
 export interface ListInvitationsRequest {
   /** Filter invitations based on their status */
@@ -9525,7 +9169,7 @@ export interface ListInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ListInvitationsRequestStatus.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -9537,11 +9181,11 @@ export const ListInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitationsRequest" }) as any as S.Schema<ListInvitationsRequest>;
 
 export type ListInvitationsResponseBodyList = Array<Invitation>;
-export const ListInvitationsResponseBodyList =
+const ListInvitationsResponseBodyList =
   CreateBulkInvitationsResponseBodyList as any as S.Schema<ListInvitationsResponseBodyList>;
 
 export type ListInvitationsResponse = ListInvitationsResponseBodyList;
-export const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitationsResponse = /*@__PURE__*/ S.suspend(() =>
   ListInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListInvitationsResponse" }) as any as S.Schema<ListInvitationsResponse>;
 
@@ -9553,7 +9197,7 @@ export interface ListJWTTemplatesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListJWTTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJWTTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -9562,12 +9206,12 @@ export const ListJWTTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJWTTemplatesRequest" }) as any as S.Schema<ListJWTTemplatesRequest>;
 
 export type ListJWTTemplatesResponseBodyList = Array<JWTTemplate>;
-export const ListJWTTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListJWTTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
   JWTTemplate,
 ) as any as S.Schema<ListJWTTemplatesResponseBodyList>;
 
 export type ListJWTTemplatesResponse = ListJWTTemplatesResponseBodyList;
-export const ListJWTTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJWTTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   ListJWTTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListJWTTemplatesResponse" }) as any as S.Schema<ListJWTTemplatesResponse>;
 
@@ -9581,7 +9225,7 @@ export interface ListMachinesRequest {
   /** Allows to return machines in a particular order. You can order the returned machines by their `name` or `created_at`. To specify the direction, use the `+` or `-` symbols prepended to the property to order by. For example, to return machines in descending order by `created_at`, use `-created_at`. If you don't use `+` or `-`, then `+` is implied. Defaults to `-created_at`. */
   order_by?: string;
 }
-export const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -9591,11 +9235,11 @@ export const ListMachinesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMachinesRequest" }) as any as S.Schema<ListMachinesRequest>;
 
 export type MachineObject = "machine";
-export const MachineObject = S.String;
+const MachineObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type MachineScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const MachineScopedMachinesList =
+const MachineScopedMachinesList =
   CreateMachineResponseScopedMachinesList as any as S.Schema<MachineScopedMachinesList>;
 
 export interface Machine {
@@ -9615,7 +9259,7 @@ export interface Machine {
   /** Array of machines this machine has access to. */
   scoped_machines: MachineScopedMachinesList;
 }
-export const Machine = /*@__PURE__*/ S.suspend(() =>
+const Machine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: MachineObject,
     id: S.String,
@@ -9629,7 +9273,7 @@ export const Machine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Machine" }) as any as S.Schema<Machine>;
 
 export type ListMachinesResponseDataList = Array<Machine>;
-export const ListMachinesResponseDataList = /*@__PURE__*/ S.Array(
+const ListMachinesResponseDataList = /*@__PURE__*/ S.Array(
   Machine,
 ) as any as S.Schema<ListMachinesResponseDataList>;
 
@@ -9638,7 +9282,7 @@ export interface ListMachinesResponse {
   /** Total number of machines */
   total_count: number;
 }
-export const ListMachinesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMachinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListMachinesResponseDataList,
     total_count: S.Number,
@@ -9655,7 +9299,7 @@ export interface ListOAuthApplicationsRequest {
   /** Returns OAuth applications with names that match the given query, via case-insensitive partial match. Also returns the OAuth application whose `client_id` is exactly the given query, which is useful for resolving a `client_id` to the OAuth application `id` required by the read, update and delete endpoints. */
   name_query?: string;
 }
-export const ListOAuthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOAuthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -9667,7 +9311,7 @@ export const ListOAuthApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOAuthApplicationsRequest>;
 
 export type OAuthApplicationsDataList = Array<OAuthApplication>;
-export const OAuthApplicationsDataList = /*@__PURE__*/ S.Array(
+const OAuthApplicationsDataList = /*@__PURE__*/ S.Array(
   OAuthApplication,
 ) as any as S.Schema<OAuthApplicationsDataList>;
 
@@ -9676,7 +9320,7 @@ export interface OAuthApplications {
   /** Total number of OAuth applications */
   total_count: number;
 }
-export const OAuthApplications = /*@__PURE__*/ S.suspend(() =>
+const OAuthApplications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OAuthApplicationsDataList,
     total_count: S.Number,
@@ -9695,7 +9339,7 @@ export interface ListOrganizationDomainsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     verified: S.optional(S.String.pipe(T.Query())),
@@ -9712,7 +9356,7 @@ export type ListOrganizationInvitationsRequestStatus =
   | "accepted"
   | "revoked"
   | "expired";
-export const ListOrganizationInvitationsRequestStatus = S.String;
+const ListOrganizationInvitationsRequestStatus = S.String;
 
 export interface ListOrganizationInvitationsRequest {
   /** The organization ID. */
@@ -9728,7 +9372,7 @@ export interface ListOrganizationInvitationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     status: S.optional(ListOrganizationInvitationsRequestStatus.pipe(T.Query())),
@@ -9744,27 +9388,27 @@ export const ListOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationInvitationsRequest>;
 
 export type ListOrganizationMembershipsRequestUserIdList = Array<string>;
-export const ListOrganizationMembershipsRequestUserIdList =
+const ListOrganizationMembershipsRequestUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUserIdList>;
 
 export type ListOrganizationMembershipsRequestEmailAddressList = Array<string>;
-export const ListOrganizationMembershipsRequestEmailAddressList =
+const ListOrganizationMembershipsRequestEmailAddressList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestEmailAddressList>;
 
 export type ListOrganizationMembershipsRequestPhoneNumberList = Array<string>;
-export const ListOrganizationMembershipsRequestPhoneNumberList =
+const ListOrganizationMembershipsRequestPhoneNumberList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestPhoneNumberList>;
 
 export type ListOrganizationMembershipsRequestUsernameList = Array<string>;
-export const ListOrganizationMembershipsRequestUsernameList =
+const ListOrganizationMembershipsRequestUsernameList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestUsernameList>;
 
 export type ListOrganizationMembershipsRequestWeb3WalletList = Array<string>;
-export const ListOrganizationMembershipsRequestWeb3WalletList =
+const ListOrganizationMembershipsRequestWeb3WalletList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestWeb3WalletList>;
 
 export type ListOrganizationMembershipsRequestRoleList = Array<string>;
-export const ListOrganizationMembershipsRequestRoleList =
+const ListOrganizationMembershipsRequestRoleList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationMembershipsRequestRoleList>;
 
 export interface ListOrganizationMembershipsRequest {
@@ -9807,7 +9451,7 @@ export interface ListOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     order_by: S.optional(S.String.pipe(T.Query())),
@@ -9845,7 +9489,7 @@ export interface ListOrganizationPermissionsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     order_by: S.optional(S.String.pipe(T.Query())),
@@ -9857,14 +9501,14 @@ export const ListOrganizationPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationPermissionsRequest>;
 
 export type PermissionsDataList = Array<Permission>;
-export const PermissionsDataList = RolePermissionsList as any as S.Schema<PermissionsDataList>;
+const PermissionsDataList = RolePermissionsList as any as S.Schema<PermissionsDataList>;
 
 export interface Permissions {
   data: PermissionsDataList;
   /** Total number of permissions */
   total_count: number;
 }
-export const Permissions = /*@__PURE__*/ S.suspend(() =>
+const Permissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PermissionsDataList,
     total_count: S.Number,
@@ -9881,7 +9525,7 @@ export interface ListOrganizationRolesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     order_by: S.optional(S.String.pipe(T.Query())),
@@ -9893,14 +9537,14 @@ export const ListOrganizationRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationRolesRequest>;
 
 export type RolesDataList = Array<Role>;
-export const RolesDataList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RolesDataList>;
+const RolesDataList = /*@__PURE__*/ S.Array(Role) as any as S.Schema<RolesDataList>;
 
 export interface Roles {
   data: RolesDataList;
   /** Total number of roles */
   total_count: number;
 }
-export const Roles = /*@__PURE__*/ S.suspend(() =>
+const Roles = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: RolesDataList,
     total_count: S.Number,
@@ -9908,11 +9552,11 @@ export const Roles = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Roles" }) as any as S.Schema<Roles>;
 
 export type ListOrganizationsRequestUserIdList = Array<string>;
-export const ListOrganizationsRequestUserIdList =
+const ListOrganizationsRequestUserIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestUserIdList>;
 
 export type ListOrganizationsRequestOrganizationIdList = Array<string>;
-export const ListOrganizationsRequestOrganizationIdList =
+const ListOrganizationsRequestOrganizationIdList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<ListOrganizationsRequestOrganizationIdList>;
 
 export interface ListOrganizationsRequest {
@@ -9933,7 +9577,7 @@ export interface ListOrganizationsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_members_count: S.optional(S.Boolean.pipe(T.Query())),
     include_missing_member_with_elevated_permissions: S.optional(S.Boolean.pipe(T.Query())),
@@ -9947,7 +9591,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationsDataList = Array<Organization>;
-export const OrganizationsDataList = /*@__PURE__*/ S.Array(
+const OrganizationsDataList = /*@__PURE__*/ S.Array(
   Organization,
 ) as any as S.Schema<OrganizationsDataList>;
 
@@ -9956,7 +9600,7 @@ export interface Organizations {
   /** Total number of organizations */
   total_count: number;
 }
-export const Organizations = /*@__PURE__*/ S.suspend(() =>
+const Organizations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: OrganizationsDataList,
     total_count: S.Number,
@@ -9971,7 +9615,7 @@ export interface ListRedirectURLsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListRedirectURLsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRedirectURLsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paginated: S.optional(S.Boolean.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -9980,12 +9624,12 @@ export const ListRedirectURLsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRedirectURLsRequest" }) as any as S.Schema<ListRedirectURLsRequest>;
 
 export type ListRedirectURLsResponseBodyList = Array<RedirectURL>;
-export const ListRedirectURLsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRedirectURLsResponseBodyList = /*@__PURE__*/ S.Array(
   RedirectURL,
 ) as any as S.Schema<ListRedirectURLsResponseBodyList>;
 
 export type ListRedirectURLsResponse = ListRedirectURLsResponseBodyList;
-export const ListRedirectURLsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRedirectURLsResponse = /*@__PURE__*/ S.suspend(() =>
   ListRedirectURLsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListRedirectURLsResponse" }) as any as S.Schema<ListRedirectURLsResponse>;
 
@@ -9999,7 +9643,7 @@ export interface ListRoleSetsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListRoleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRoleSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     order_by: S.optional(S.String.pipe(T.Query())),
@@ -10009,14 +9653,14 @@ export const ListRoleSetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRoleSetsRequest" }) as any as S.Schema<ListRoleSetsRequest>;
 
 export type RoleSetsDataList = Array<RoleSet>;
-export const RoleSetsDataList = /*@__PURE__*/ S.Array(RoleSet) as any as S.Schema<RoleSetsDataList>;
+const RoleSetsDataList = /*@__PURE__*/ S.Array(RoleSet) as any as S.Schema<RoleSetsDataList>;
 
 export interface RoleSets {
   data: RoleSetsDataList;
   /** Total number of role sets */
   total_count: number;
 }
-export const RoleSets = /*@__PURE__*/ S.suspend(() =>
+const RoleSets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: RoleSetsDataList,
     total_count: S.Number,
@@ -10029,7 +9673,7 @@ export interface ListSCIMDirectoriesRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const ListSCIMDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSCIMDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -10039,16 +9683,14 @@ export const ListSCIMDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSCIMDirectoriesRequest>;
 
 export type SCIMDirectories = Array<SCIMDirectory>;
-export const SCIMDirectories = /*@__PURE__*/ S.Array(
-  SCIMDirectory,
-) as any as S.Schema<SCIMDirectories>;
+const SCIMDirectories = /*@__PURE__*/ S.Array(SCIMDirectory) as any as S.Schema<SCIMDirectories>;
 
 export interface ListSCIMDirectoriesResponse {
   data: SCIMDirectories;
   /** Total number of directories. */
   total_count: number;
 }
-export const ListSCIMDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSCIMDirectoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: SCIMDirectories,
     total_count: S.Number,
@@ -10061,7 +9703,7 @@ export interface ListSCIMGroupRoleMappingsRequest {
   /** The ID of the directory. */
   scim_directory_id: string;
 }
-export const ListSCIMGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSCIMGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10076,7 +9718,7 @@ export const ListSCIMGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSCIMGroupRoleMappingsRequest>;
 
 export type SCIMGroupRoleMappings = Array<SCIMGroupRoleMapping>;
-export const SCIMGroupRoleMappings = /*@__PURE__*/ S.Array(
+const SCIMGroupRoleMappings = /*@__PURE__*/ S.Array(
   SCIMGroupRoleMapping,
 ) as any as S.Schema<SCIMGroupRoleMappings>;
 
@@ -10085,7 +9727,7 @@ export interface ListSCIMGroupRoleMappingsResponse {
   /** Total number of SCIM group role mappings in the directory. */
   total_count: number;
 }
-export const ListSCIMGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSCIMGroupRoleMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: SCIMGroupRoleMappings,
     total_count: S.Number,
@@ -10098,7 +9740,7 @@ export interface ListSSOBypassAllowlistUsersRequest {
   /** Restrict the list to the users this enterprise connection serves. */
   enterprise_connection_id?: string;
 }
-export const ListSSOBypassAllowlistUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSSOBypassAllowlistUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/sso_bypass_allowlist_users", code: 200 })),
@@ -10108,12 +9750,12 @@ export const ListSSOBypassAllowlistUsersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The instance's SSO bypass allowlist, deduplicated by user. */
 export type SSOBypassAllowlistUsers = Array<SSOBypassAllowlistUser>;
-export const SSOBypassAllowlistUsers = /*@__PURE__*/ S.Array(
+const SSOBypassAllowlistUsers = /*@__PURE__*/ S.Array(
   SSOBypassAllowlistUser,
 ) as any as S.Schema<SSOBypassAllowlistUsers>;
 
 export type ListSSOBypassAllowlistUsersResponse = SSOBypassAllowlistUsers;
-export const ListSSOBypassAllowlistUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSSOBypassAllowlistUsersResponse = /*@__PURE__*/ S.suspend(() =>
   SSOBypassAllowlistUsers.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSSOBypassAllowlistUsersResponse",
@@ -10123,7 +9765,7 @@ export interface ListUserBiometricCredentialsRequest {
   /** The ID of the user whose biometric credentials are returned */
   user_id: string;
 }
-export const ListUserBiometricCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserBiometricCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/biometric_credentials", code: 200 })),
@@ -10133,16 +9775,16 @@ export const ListUserBiometricCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type BiometricCredentialObject = "trusted_device";
-export const BiometricCredentialObject = S.String;
+const BiometricCredentialObject = S.String;
 
 export type BiometricCredentialPlatform = "ios" | "android";
-export const BiometricCredentialPlatform = S.String;
+const BiometricCredentialPlatform = S.String;
 
 export type BiometricCredentialAlgorithm = "ES256";
-export const BiometricCredentialAlgorithm = S.String;
+const BiometricCredentialAlgorithm = S.String;
 
 export type BiometricCredentialStatus = "active" | "revoked";
-export const BiometricCredentialStatus = S.String;
+const BiometricCredentialStatus = S.String;
 
 export interface BiometricCredential {
   /** String representing the object's type. */
@@ -10162,7 +9804,7 @@ export interface BiometricCredential {
   /** Unix timestamp of revocation in milliseconds. */
   revoked_at?: number | null;
 }
-export const BiometricCredential = /*@__PURE__*/ S.suspend(() =>
+const BiometricCredential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: BiometricCredentialObject,
     id: S.String,
@@ -10179,7 +9821,7 @@ export const BiometricCredential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BiometricCredential" }) as any as S.Schema<BiometricCredential>;
 
 export type ListUserBiometricCredentialsResponseDataList = Array<BiometricCredential>;
-export const ListUserBiometricCredentialsResponseDataList = /*@__PURE__*/ S.Array(
+const ListUserBiometricCredentialsResponseDataList = /*@__PURE__*/ S.Array(
   BiometricCredential,
 ) as any as S.Schema<ListUserBiometricCredentialsResponseDataList>;
 
@@ -10188,7 +9830,7 @@ export interface ListUserBiometricCredentialsResponse {
   /** Total number of biometric credentials */
   total_count: number;
 }
-export const ListUserBiometricCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserBiometricCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListUserBiometricCredentialsResponseDataList,
     total_count: S.Number,
@@ -10198,7 +9840,7 @@ export const ListUserBiometricCredentialsResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListUserBiometricCredentialsResponse>;
 
 export type ListWaitlistEntriesRequestStatus = "pending" | "invited" | "completed" | "rejected";
-export const ListWaitlistEntriesRequestStatus = S.String;
+const ListWaitlistEntriesRequestStatus = S.String;
 
 export interface ListWaitlistEntriesRequest {
   /** Applies a limit to the number of results returned. Can be used for paginating the results together with `offset`. */
@@ -10212,7 +9854,7 @@ export interface ListWaitlistEntriesRequest {
   /** Specify the order of results. Supported values are: - `created_at` - `email_address` - `invited_at` Use `+` for ascending or `-` for descending order. Defaults to `-created_at`. */
   order_by?: string;
 }
-export const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -10225,7 +9867,7 @@ export const ListWaitlistEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWaitlistEntriesRequest>;
 
 export type ListWaitlistEntriesResponseDataList = Array<WaitlistEntry>;
-export const ListWaitlistEntriesResponseDataList =
+const ListWaitlistEntriesResponseDataList =
   CreateBulkWaitlistEntriesResponseBodyList as any as S.Schema<ListWaitlistEntriesResponseDataList>;
 
 export interface ListWaitlistEntriesResponse {
@@ -10233,7 +9875,7 @@ export interface ListWaitlistEntriesResponse {
   /** Total number of waitlist entries */
   total_count: number;
 }
-export const ListWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWaitlistEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListWaitlistEntriesResponseDataList,
     total_count: S.Number,
@@ -10246,7 +9888,7 @@ export interface LockUserRequest {
   /** The ID of the user to lock */
   user_id: string;
 }
-export const LockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const LockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/lock", code: 200 })),
@@ -10256,14 +9898,14 @@ export const LockUserRequest = /*@__PURE__*/ S.suspend(() =>
 export type MergeOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const MergeOrganizationMetadataRequestPublicMetadataMap =
+const MergeOrganizationMetadataRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization that is only visible to your backend. The new object will be merged with the existing value. */
 export type MergeOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const MergeOrganizationMetadataRequestPrivateMetadataMap =
+const MergeOrganizationMetadataRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<MergeOrganizationMetadataRequestPrivateMetadataMap>;
 
 export interface MergeOrganizationMetadataRequest {
@@ -10274,7 +9916,7 @@ export interface MergeOrganizationMetadataRequest {
   /** Metadata saved on the organization that is only visible to your backend. The new object will be merged with the existing value. */
   private_metadata?: MergeOrganizationMetadataRequestPrivateMetadataMap;
 }
-export const MergeOrganizationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const MergeOrganizationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     public_metadata: S.optional(MergeOrganizationMetadataRequestPublicMetadataMap),
@@ -10288,7 +9930,7 @@ export interface PrepareEmailAddressVerificationRequest {
   /** The ID of the email address to send the verification code to */
   email_address_id: string;
 }
-export const PrepareEmailAddressVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const PrepareEmailAddressVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10318,14 +9960,14 @@ export interface PrepareEmailAddressVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const PrepareEmailAddressVerificationResponse =
+const PrepareEmailAddressVerificationResponse =
   AttemptEmailAddressVerificationResponse as any as S.Schema<PrepareEmailAddressVerificationResponse>;
 
 export interface PreparePhoneNumberVerificationRequest {
   /** The ID of the phone number to send the verification code to */
   phone_number_id: string;
 }
-export const PreparePhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const PreparePhoneNumberVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10355,17 +9997,17 @@ export interface PreparePhoneNumberVerificationResponse {
   /** The channel the code was sent over (phone numbers only). */
   channel?: string | null;
 }
-export const PreparePhoneNumberVerificationResponse =
+const PreparePhoneNumberVerificationResponse =
   AttemptEmailAddressVerificationResponse as any as S.Schema<PreparePhoneNumberVerificationResponse>;
 
 /** The headers of the request. */
 export type RefreshSessionRequestRequestHeadersMap = { [key: string]: unknown | undefined };
-export const RefreshSessionRequestRequestHeadersMap =
+const RefreshSessionRequestRequestHeadersMap =
   UserPublicMetadataMap as any as S.Schema<RefreshSessionRequestRequestHeadersMap>;
 
 /** The format of the response. */
 export type RefreshSessionRequestFormat = "token" | "cookie";
-export const RefreshSessionRequestFormat = S.String;
+const RefreshSessionRequestFormat = S.String;
 
 export interface RefreshSessionRequest {
   /** The ID of the session */
@@ -10383,7 +10025,7 @@ export interface RefreshSessionRequest {
   /** The IP address of the request. */
   request_originating_ip?: string | null;
 }
-export const RefreshSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
     expired_token: S.String,
@@ -10397,48 +10039,27 @@ export const RefreshSessionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type TokenObject = "token";
-export const TokenObject = S.String;
-
 export interface Token {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: TokenObject;
   /** String representing the encoded JSON Web Token (JWT) value. */
   jwt: string;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: TokenObject,
-    jwt: S.String,
-  }),
-).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
-
 /** String representing the object's type. Objects of the same type share the same value. */
 export type CookiesObject = "cookies";
-export const CookiesObject = S.String;
-
 /** Array of cookie directives. */
 export type CookiesCookiesList = Array<string>;
-export const CookiesCookiesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<CookiesCookiesList>;
-
 export interface Cookies {
   /** String representing the object's type. Objects of the same type share the same value. */
   object: CookiesObject;
   /** Array of cookie directives. */
   cookies: CookiesCookiesList;
 }
-export const Cookies = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: CookiesObject,
-    cookies: CookiesCookiesList,
-  }),
-).annotate({ identifier: "Cookies" }) as any as S.Schema<Cookies>;
-
 export type SessionRefresh = Token | Cookies;
-export const SessionRefresh = S.Unknown as any as S.Schema<SessionRefresh>;
+const SessionRefresh = S.Unknown as any as S.Schema<SessionRefresh>;
 
 export type RefreshSessionResponse = SessionRefresh;
-export const RefreshSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const RefreshSessionResponse = /*@__PURE__*/ S.suspend(() =>
   SessionRefresh.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RefreshSessionResponse" }) as any as S.Schema<RefreshSessionResponse>;
 
@@ -10446,7 +10067,7 @@ export interface RejectWaitlistEntryRequest {
   /** The ID of the waitlist entry to reject */
   waitlist_entry_id: string;
 }
-export const RejectWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectWaitlistEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     waitlist_entry_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -10462,7 +10083,7 @@ export interface RemoveBillingSubscriptionItemDiscountRequest {
   /** The ID of the discount to remove */
   discount_id: string;
 }
-export const RemoveBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveBillingSubscriptionItemDiscountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription_item_id: S.String.pipe(T.Label()),
     discount_id: S.String.pipe(T.Label()),
@@ -10483,7 +10104,7 @@ export interface RemovePermissionFromOrganizationRoleRequest {
   /** The ID of the permission to remove */
   permission_id: string;
 }
-export const RemovePermissionFromOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const RemovePermissionFromOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_role_id: S.String.pipe(T.Label()),
     permission_id: S.String.pipe(T.Label()),
@@ -10504,7 +10125,7 @@ export interface RemoveUserPasswordRequest {
   /** Set to `true` to revoke all of the user's active sessions after removing the password. */
   sign_out_of_other_sessions?: boolean;
 }
-export const RemoveUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     sign_out_of_other_sessions: S.optional(S.Boolean),
@@ -10521,7 +10142,7 @@ export interface ReplaceDirectoryGroupRoleMappingsRequestMappingsItem {
   /** The ID of the organization role to assign to members of the group. */
   role_id: string;
 }
-export const ReplaceDirectoryGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDirectoryGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_group_id: S.optional(S.String),
     scim_group_id: S.optional(S.String),
@@ -10534,7 +10155,7 @@ export const ReplaceDirectoryGroupRoleMappingsRequestMappingsItem = /*@__PURE__*
 /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
 export type ReplaceDirectoryGroupRoleMappingsRequestMappingsList =
   Array<ReplaceDirectoryGroupRoleMappingsRequestMappingsItem>;
-export const ReplaceDirectoryGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ S.Array(
+const ReplaceDirectoryGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ S.Array(
   ReplaceDirectoryGroupRoleMappingsRequestMappingsItem,
 ) as any as S.Schema<ReplaceDirectoryGroupRoleMappingsRequestMappingsList>;
 
@@ -10544,7 +10165,7 @@ export interface ReplaceDirectoryGroupRoleMappingsRequest {
   /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
   mappings: ReplaceDirectoryGroupRoleMappingsRequestMappingsList;
 }
-export const ReplaceDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDirectoryGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
     mappings: ReplaceDirectoryGroupRoleMappingsRequestMappingsList,
@@ -10560,21 +10181,21 @@ export interface ReplaceDirectoryGroupRoleMappingsResponse {
   /** Total number of directory group role mappings in the directory. */
   total_count: number;
 }
-export const ReplaceDirectoryGroupRoleMappingsResponse =
+const ReplaceDirectoryGroupRoleMappingsResponse =
   ListDirectoryGroupRoleMappingsResponse as any as S.Schema<ReplaceDirectoryGroupRoleMappingsResponse>;
 
 /** Metadata saved on the organization, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ReplaceOrganizationMetadataRequestPublicMetadataMap =
+const ReplaceOrganizationMetadataRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceOrganizationMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const ReplaceOrganizationMetadataRequestPrivateMetadataMap =
+const ReplaceOrganizationMetadataRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ReplaceOrganizationMetadataRequestPrivateMetadataMap>;
 
 export interface ReplaceOrganizationMetadataRequest {
@@ -10585,7 +10206,7 @@ export interface ReplaceOrganizationMetadataRequest {
   /** Metadata saved on the organization that is only visible to your backend. The existing value will be replaced entirely with the new object. */
   private_metadata?: ReplaceOrganizationMetadataRequestPrivateMetadataMap;
 }
-export const ReplaceOrganizationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceOrganizationMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     public_metadata: S.optional(ReplaceOrganizationMetadataRequestPublicMetadataMap),
@@ -10603,7 +10224,7 @@ export interface ReplaceRoleInRoleSetRequest {
   /** The key of the role to reassign members to */
   to_role_key: string;
 }
-export const ReplaceRoleInRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRoleInRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_set_key_or_id: S.String.pipe(T.Label()),
     role_key: S.String,
@@ -10617,8 +10238,7 @@ export const ReplaceRoleInRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Mappings from source role keys to destination role keys for role reassignment */
 export type ReassignmentMappings = { [key: string]: string | undefined };
-export const ReassignmentMappings =
-  RoleSetMigrationMappingsMap as any as S.Schema<ReassignmentMappings>;
+const ReassignmentMappings = RoleSetMigrationMappingsMap as any as S.Schema<ReassignmentMappings>;
 
 export interface ReplaceRoleSetRequest {
   /** The key or ID of the role set to replace */
@@ -10628,7 +10248,7 @@ export interface ReplaceRoleSetRequest {
   /** Mappings from source role keys to destination role keys. Required if members have roles that need to be reassigned. */
   reassignment_mappings?: ReassignmentMappings;
 }
-export const ReplaceRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_set_key_or_id: S.String.pipe(T.Label()),
     dest_role_set_key: S.String,
@@ -10642,7 +10262,7 @@ export interface ReplaceSCIMGroupRoleMappingsRequestMappingsItem {
   /** The ID of the organization role to assign to members of the SCIM group. */
   role_id: string;
 }
-export const ReplaceSCIMGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSCIMGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_group_id: S.String,
     role_id: S.String,
@@ -10654,7 +10274,7 @@ export const ReplaceSCIMGroupRoleMappingsRequestMappingsItem = /*@__PURE__*/ S.s
 /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
 export type ReplaceSCIMGroupRoleMappingsRequestMappingsList =
   Array<ReplaceSCIMGroupRoleMappingsRequestMappingsItem>;
-export const ReplaceSCIMGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ S.Array(
+const ReplaceSCIMGroupRoleMappingsRequestMappingsList = /*@__PURE__*/ S.Array(
   ReplaceSCIMGroupRoleMappingsRequestMappingsItem,
 ) as any as S.Schema<ReplaceSCIMGroupRoleMappingsRequestMappingsList>;
 
@@ -10664,7 +10284,7 @@ export interface ReplaceSCIMGroupRoleMappingsRequest {
   /** The desired set of mappings. Array order sets precedence (1-indexed). An empty array clears all mappings. */
   mappings: ReplaceSCIMGroupRoleMappingsRequestMappingsList;
 }
-export const ReplaceSCIMGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceSCIMGroupRoleMappingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
     mappings: ReplaceSCIMGroupRoleMappingsRequestMappingsList,
@@ -10684,7 +10304,7 @@ export interface ReplaceSCIMGroupRoleMappingsResponse {
   /** Total number of SCIM group role mappings in the directory. */
   total_count: number;
 }
-export const ReplaceSCIMGroupRoleMappingsResponse =
+const ReplaceSCIMGroupRoleMappingsResponse =
   ListSCIMGroupRoleMappingsResponse as any as S.Schema<ReplaceSCIMGroupRoleMappingsResponse>;
 
 /** Controls the status of the replacement email address. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified email address cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this address. Prefer `reserved` unless you specifically need the address left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
@@ -10692,7 +10312,7 @@ export type ReplaceUserEmailAddressRequestIdentificationStatus =
   | "verified"
   | "reserved"
   | "unverified";
-export const ReplaceUserEmailAddressRequestIdentificationStatus = S.String;
+const ReplaceUserEmailAddressRequestIdentificationStatus = S.String;
 
 export interface ReplaceUserEmailAddressRequest {
   /** The ID of the user whose email address to replace */
@@ -10704,7 +10324,7 @@ export interface ReplaceUserEmailAddressRequest {
   /** If set to `true`, the user's previous primary email address is notified that the primary email address has changed. No notification is sent when the replacement is the user's current primary email address. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-export const ReplaceUserEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceUserEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     email_address: S.String,
@@ -10717,17 +10337,17 @@ export const ReplaceUserEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the user, that is visible to both your frontend and backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestPublicMetadataMap =
+const ReplaceUserMetadataRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the user that is only visible to your backend. The existing value will be replaced entirely with the new object. */
 export type ReplaceUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestPrivateMetadataMap =
+const ReplaceUserMetadataRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The existing value will be replaced entirely with the new object. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type ReplaceUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const ReplaceUserMetadataRequestUnsafeMetadataMap =
+const ReplaceUserMetadataRequestUnsafeMetadataMap =
   UserPublicMetadataMap as any as S.Schema<ReplaceUserMetadataRequestUnsafeMetadataMap>;
 
 export interface ReplaceUserMetadataRequest {
@@ -10740,7 +10360,7 @@ export interface ReplaceUserMetadataRequest {
   /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The existing value will be replaced entirely with the new object. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
   unsafe_metadata?: ReplaceUserMetadataRequestUnsafeMetadataMap;
 }
-export const ReplaceUserMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceUserMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     public_metadata: S.optional(ReplaceUserMetadataRequestPublicMetadataMap),
@@ -10756,7 +10376,7 @@ export type ReplaceUserPhoneNumberRequestIdentificationStatus =
   | "verified"
   | "reserved"
   | "unverified";
-export const ReplaceUserPhoneNumberRequestIdentificationStatus = S.String;
+const ReplaceUserPhoneNumberRequestIdentificationStatus = S.String;
 
 export interface ReplaceUserPhoneNumberRequest {
   /** The ID of the user whose phone number to replace */
@@ -10766,7 +10386,7 @@ export interface ReplaceUserPhoneNumberRequest {
   /** Controls the status of the replacement phone number. Defaults to `verified`. Set to `reserved` to create it reserved (unverified but usable for sign-in and locked so no other user can claim it), or to `unverified` to create it neither usable for sign-in nor locked. **Warning:** `unverified` can lock the user out of their account. An unverified phone number cannot be used to sign in, so if the user has no other verified or reserved identifier, they will be unable to authenticate and unable to verify this number. Prefer `reserved` unless you specifically need the number left unclaimed -- for example so that another user can also hold it until one of them verifies it. */
   identification_status?: ReplaceUserPhoneNumberRequestIdentificationStatus | (string & {});
 }
-export const ReplaceUserPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceUserPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     phone_number: S.String,
@@ -10780,7 +10400,7 @@ export interface RevokeActorTokenRequest {
   /** The ID of the actor token to be revoked. */
   actor_token_id: string;
 }
-export const RevokeActorTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeActorTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actor_token_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/actor_tokens/{actor_token_id}/revoke", code: 200 })),
@@ -10790,7 +10410,7 @@ export interface RevokeAdminPortalLinkTokenRequest {
   adminPortalLinkTokenID: string;
   revocation_reason?: string | null;
 }
-export const RevokeAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adminPortalLinkTokenID: S.String.pipe(T.Label()),
     revocation_reason: S.optional(S.NullOr(S.String)),
@@ -10806,11 +10426,11 @@ export const RevokeAdminPortalLinkTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeAdminPortalLinkTokenRequest>;
 
 export type RevokeAdminPortalLinkTokenResponseObject = "admin_portal_link_token";
-export const RevokeAdminPortalLinkTokenResponseObject = S.String;
+const RevokeAdminPortalLinkTokenResponseObject = S.String;
 
 /** Caller-provided scopes for this token. */
 export type RevokeAdminPortalLinkTokenResponseScopesList = Array<string>;
-export const RevokeAdminPortalLinkTokenResponseScopesList =
+const RevokeAdminPortalLinkTokenResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeAdminPortalLinkTokenResponseScopesList>;
 
 export interface RevokeAdminPortalLinkTokenResponse {
@@ -10835,7 +10455,7 @@ export interface RevokeAdminPortalLinkTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds. */
   updated_at: number;
 }
-export const RevokeAdminPortalLinkTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeAdminPortalLinkTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RevokeAdminPortalLinkTokenResponseObject,
     id: S.String,
@@ -10859,7 +10479,7 @@ export interface RevokeAgentTaskRequest {
   /** The ID of the agent task to be revoked. */
   agent_task_id: string;
 }
-export const RevokeAgentTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAgentTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent_task_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/agents/tasks/{agent_task_id}/revoke", code: 200 })),
@@ -10869,7 +10489,7 @@ export interface RevokeApiKeyRequest {
   apiKeyID: string;
   revocation_reason?: string | null;
 }
-export const RevokeApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyID: S.String.pipe(T.Label()),
     revocation_reason: S.optional(S.NullOr(S.String)),
@@ -10877,10 +10497,10 @@ export const RevokeApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeApiKeyRequest" }) as any as S.Schema<RevokeApiKeyRequest>;
 
 export type RevokeApiKeyResponseObject = "api_key";
-export const RevokeApiKeyResponseObject = S.String;
+const RevokeApiKeyResponseObject = S.String;
 
 export type RevokeApiKeyResponseScopesList = Array<string>;
-export const RevokeApiKeyResponseScopesList =
+const RevokeApiKeyResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeApiKeyResponseScopesList>;
 
 export interface RevokeApiKeyResponse {
@@ -10905,7 +10525,7 @@ export interface RevokeApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const RevokeApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RevokeApiKeyResponseObject,
     id: S.String,
@@ -10930,21 +10550,21 @@ export interface RevokeInvitationRequest {
   /** The ID of the invitation to be revoked */
   invitation_id: string;
 }
-export const RevokeInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitation_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/invitations/{invitation_id}/revoke", code: 200 })),
 ).annotate({ identifier: "RevokeInvitationRequest" }) as any as S.Schema<RevokeInvitationRequest>;
 
 export type RevokeInvitationResponseObject = "invitation";
-export const RevokeInvitationResponseObject = S.String;
+const RevokeInvitationResponseObject = S.String;
 
 export type RevokeInvitationResponsePublicMetadataMap = { [key: string]: unknown | undefined };
-export const RevokeInvitationResponsePublicMetadataMap =
+const RevokeInvitationResponsePublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<RevokeInvitationResponsePublicMetadataMap>;
 
 export type RevokeInvitationResponseStatus = "pending" | "accepted" | "revoked" | "expired";
-export const RevokeInvitationResponseStatus = S.String;
+const RevokeInvitationResponseStatus = S.String;
 
 export interface RevokeInvitationResponse {
   object: RevokeInvitationResponseObject;
@@ -10961,7 +10581,7 @@ export interface RevokeInvitationResponse {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const RevokeInvitationResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeInvitationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RevokeInvitationResponseObject,
     id: S.String,
@@ -10980,7 +10600,7 @@ export interface RevokeM2MTokenRequest {
   m2m_token_id: string;
   revocation_reason?: string | null;
 }
-export const RevokeM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     m2m_token_id: S.String.pipe(T.Label()),
     revocation_reason: S.optional(S.NullOr(S.String)),
@@ -10988,10 +10608,10 @@ export const RevokeM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeM2MTokenRequest" }) as any as S.Schema<RevokeM2MTokenRequest>;
 
 export type RevokeM2MTokenResponseObject = "machine_to_machine_token";
-export const RevokeM2MTokenResponseObject = S.String;
+const RevokeM2MTokenResponseObject = S.String;
 
 export type RevokeM2MTokenResponseScopesList = Array<string>;
-export const RevokeM2MTokenResponseScopesList =
+const RevokeM2MTokenResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RevokeM2MTokenResponseScopesList>;
 
 export interface RevokeM2MTokenResponse {
@@ -11012,7 +10632,7 @@ export interface RevokeM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-export const RevokeM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RevokeM2MTokenResponseObject,
     id: S.String,
@@ -11035,7 +10655,7 @@ export interface RevokeOAuthApplicationTokenRequest {
   /** The opaque OAuth access token or refresh token to revoke. All tokens associated with the same OAuth grant are also revoked. */
   token: string;
 }
-export const RevokeOAuthApplicationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeOAuthApplicationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
     token: S.String,
@@ -11051,7 +10671,7 @@ export const RevokeOAuthApplicationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RevokeOAuthApplicationTokenRequest>;
 
 export interface RevokeOAuthApplicationTokenResponse {}
-export const RevokeOAuthApplicationTokenResponse =
+const RevokeOAuthApplicationTokenResponse =
   ChangeProductionInstanceDomainResponse as any as S.Schema<RevokeOAuthApplicationTokenResponse>;
 
 export interface RevokeOrganizationInvitationRequest {
@@ -11062,7 +10682,7 @@ export interface RevokeOrganizationInvitationRequest {
   /** The ID of the user that revokes the invitation. Must be an administrator in the organization. */
   requesting_user_id?: string | null;
 }
-export const RevokeOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeOrganizationInvitationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     invitation_id: S.String.pipe(T.Label()),
@@ -11082,7 +10702,7 @@ export interface RevokeSessionRequest {
   /** The ID of the session */
   session_id: string;
 }
-export const RevokeSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/sessions/{session_id}/revoke", code: 200 })),
@@ -11092,7 +10712,7 @@ export interface RevokeSignInTokenRequest {
   /** The ID of the sign-in token to be revoked */
   sign_in_token_id: string;
 }
-export const RevokeSignInTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeSignInTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sign_in_token_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/sign_in_tokens/{sign_in_token_id}/revoke", code: 200 })),
@@ -11104,7 +10724,7 @@ export interface RevokeUserBiometricCredentialRequest {
   /** The ID of the biometric credential to revoke */
   biometric_credential_id: string;
 }
-export const RevokeUserBiometricCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeUserBiometricCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     biometric_credential_id: S.String.pipe(T.Label()),
@@ -11123,7 +10743,7 @@ export interface RotateDirectoryAPIKeyRequest {
   /** The ID of the directory whose API key to rotate */
   directory_id: string;
 }
-export const RotateDirectoryAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateDirectoryAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/directories/{directory_id}/rotate_api_key", code: 200 })),
@@ -11137,7 +10757,7 @@ export interface RotateMachineSecretKeyRequest {
   /** The time in seconds that the previous secret key will remain valid after rotation. This ensures a graceful transition period for updating applications with the new secret key. Set to 0 to immediately expire the previous key. Maximum value is 8 hours (28800 seconds). */
   previous_token_ttl: number;
 }
-export const RotateMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
     previous_token_ttl: S.Number,
@@ -11148,22 +10768,20 @@ export const RotateMachineSecretKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. */
 export type RotateMachineSecretKeyResponseObject = "machine_secret_key";
-export const RotateMachineSecretKeyResponseObject = S.String;
-
 export interface RotateMachineSecretKeyResponse {
   /** String representing the object's type. */
   object: RotateMachineSecretKeyResponseObject;
   /** The secret key for the machine. */
   secret: string | Redacted.Redacted<string>;
 }
-export const RotateMachineSecretKeyResponse =
+const RotateMachineSecretKeyResponse =
   GetMachineSecretKeyResponse as any as S.Schema<RotateMachineSecretKeyResponse>;
 
 export interface RotateOAuthApplicationSecretRequest {
   /** The ID of the OAuth application for which to rotate the client secret */
   oauth_application_id: string;
 }
-export const RotateOAuthApplicationSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateOAuthApplicationSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -11178,10 +10796,10 @@ export const RotateOAuthApplicationSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RotateOAuthApplicationSecretRequest>;
 
 export type RotateOAuthApplicationSecretResponseObject = "oauth_application";
-export const RotateOAuthApplicationSecretResponseObject = S.String;
+const RotateOAuthApplicationSecretResponseObject = S.String;
 
 export type RotateOAuthApplicationSecretResponseRedirectUrisList = Array<string>;
-export const RotateOAuthApplicationSecretResponseRedirectUrisList =
+const RotateOAuthApplicationSecretResponseRedirectUrisList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<RotateOAuthApplicationSecretResponseRedirectUrisList>;
 
 export interface RotateOAuthApplicationSecretResponse {
@@ -11214,7 +10832,7 @@ export interface RotateOAuthApplicationSecretResponse {
   /** Empty if public client. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-export const RotateOAuthApplicationSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const RotateOAuthApplicationSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: RotateOAuthApplicationSecretResponseObject,
     id: S.String,
@@ -11248,7 +10866,7 @@ export interface RotateSCIMDirectoryAPIKeyRequest {
   /** The ID of the directory whose API key to rotate */
   scim_directory_id: string;
 }
-export const RotateSCIMDirectoryAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateSCIMDirectoryAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -11267,7 +10885,7 @@ export interface SetUserPasswordCompromisedRequest {
   user_id: string;
   revoke_all_sessions?: boolean | null;
 }
-export const SetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     revoke_all_sessions: S.optional(S.NullOr(S.Boolean)),
@@ -11281,7 +10899,7 @@ export interface SetUserProfileImageRequest {
   user_id: string;
   file?: string;
 }
-export const SetUserProfileImageRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserProfileImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     file: S.optional(S.String),
@@ -11301,7 +10919,7 @@ export interface UnbanUserRequest {
   /** The ID of the user to unban */
   user_id: string;
 }
-export const UnbanUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnbanUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unban", code: 200 })),
@@ -11309,31 +10927,28 @@ export const UnbanUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of user IDs to unban */
 export type UnbanUserRequestUserIdsList = Array<string>;
-export const UnbanUserRequestUserIdsList =
+const UnbanUserRequestUserIdsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UnbanUserRequestUserIdsList>;
 
 export interface UnbanUserRequest2 {
   /** Array of user IDs to unban */
   user_ids: UnbanUserRequestUserIdsList;
 }
-export const UnbanUserRequest2 = /*@__PURE__*/ S.suspend(() =>
+const UnbanUserRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_ids: UnbanUserRequestUserIdsList,
   }).pipe(T.Http({ method: "POST", uri: "/users/unban", code: 200 })),
 ).annotate({ identifier: "UnbanUserRequest2" }) as any as S.Schema<UnbanUserRequest2>;
 
 export type UnbanUserResponseBodyList = Array<User>;
-export const UnbanUserResponseBodyList =
-  BanUserResponseBodyList as any as S.Schema<UnbanUserResponseBodyList>;
-
 export type UnbanUserResponse = UnbanUserResponseBodyList;
-export const UnbanUserResponse = BanUserResponse as any as S.Schema<UnbanUserResponse>;
+const UnbanUserResponse = BanUserResponse as any as S.Schema<UnbanUserResponse>;
 
 export interface UnlockUserRequest {
   /** The ID of the user to unlock */
   user_id: string;
 }
-export const UnlockUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/users/{user_id}/unlock", code: 200 })),
@@ -11343,7 +10958,7 @@ export interface UnsetUserPasswordCompromisedRequest {
   /** The ID of the user to unset the compromised status for */
   user_id: string;
 }
-export const UnsetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
+const UnsetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -11354,7 +10969,7 @@ export const UnsetUserPasswordCompromisedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnsetUserPasswordCompromisedRequest>;
 
 export type UpdateApiKeyRequestScopesList = Array<string>;
-export const UpdateApiKeyRequestScopesList =
+const UpdateApiKeyRequestScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyRequestScopesList>;
 
 export interface UpdateApiKeyRequest {
@@ -11365,7 +10980,7 @@ export interface UpdateApiKeyRequest {
   subject?: string;
   seconds_until_expiration?: number | null;
 }
-export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeyID: S.String.pipe(T.Label()),
     claims: S.optional(S.NullOr(S.Unknown)),
@@ -11377,10 +10992,10 @@ export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateApiKeyRequest" }) as any as S.Schema<UpdateApiKeyRequest>;
 
 export type UpdateApiKeyResponseObject = "api_key";
-export const UpdateApiKeyResponseObject = S.String;
+const UpdateApiKeyResponseObject = S.String;
 
 export type UpdateApiKeyResponseScopesList = Array<string>;
-export const UpdateApiKeyResponseScopesList =
+const UpdateApiKeyResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateApiKeyResponseScopesList>;
 
 export interface UpdateApiKeyResponse {
@@ -11405,7 +11020,7 @@ export interface UpdateApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const UpdateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: UpdateApiKeyResponseObject,
     id: S.String,
@@ -11430,7 +11045,7 @@ export const UpdateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
 export type UpdateDirectoryRequestAttributeMappingMap = {
   [key: string]: string | null | undefined;
 };
-export const UpdateDirectoryRequestAttributeMappingMap = /*@__PURE__*/ S.Record(
+const UpdateDirectoryRequestAttributeMappingMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(S.String),
 ) as any as S.Schema<UpdateDirectoryRequestAttributeMappingMap>;
@@ -11449,7 +11064,7 @@ export interface UpdateDirectoryRequest {
   /** Whether group-to-role mapping is enabled for this directory. */
   group_role_mapping_enabled?: boolean;
 }
-export const UpdateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directory_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11470,7 +11085,7 @@ export interface UpdateDomainRequest {
   /** Whether this is a domain for a secondary app, meaning that any subdomain provided is significant and will be stored as part of the domain. This is useful for supporting multiple apps (one primary and multiple secondaries) on the same root domain (eTLD+1). */
   is_secondary?: boolean | null;
 }
-export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -11489,7 +11104,7 @@ export interface UpdateEmailAddressRequest {
   /** If set to `true` and this update makes the email address the user's new primary, the previous primary email address is notified of the change. By default, no notification is sent. */
   notify_primary_email_address_changed?: boolean | null;
 }
-export const UpdateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email_address_id: S.String.pipe(T.Label()),
     verified: S.optional(S.NullOr(S.Boolean)),
@@ -11502,27 +11117,22 @@ export const UpdateEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Domains associated with the enterprise connection. Values are normalized to lowercase. Empty array means ignored (no change); non-empty array means set domains to the given list (replaces existing). */
 export type UpdateEnterpriseConnectionRequestDomainsList = Array<string>;
-export const UpdateEnterpriseConnectionRequestDomainsList =
+const UpdateEnterpriseConnectionRequestDomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestDomainsList>;
 
 /** The IdP X.509 signing certificates the connection trusts, one per entry, in PEM or bare base64. Replaces the connection's whole certificate set and takes precedence over idp_certificate */
 export type UpdateEnterpriseConnectionRequestSamlIdpCertificatesList = Array<string>;
-export const UpdateEnterpriseConnectionRequestSamlIdpCertificatesList =
+const UpdateEnterpriseConnectionRequestSamlIdpCertificatesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateEnterpriseConnectionRequestSamlIdpCertificatesList>;
 
 /** Attribute mapping for SAML attributes */
 export type UpdateEnterpriseConnectionRequestSamlAttributeMapping =
   CreateEnterpriseConnectionRequestSamlAttributeMapping;
-export const UpdateEnterpriseConnectionRequestSamlAttributeMapping =
-  CreateEnterpriseConnectionRequestSamlAttributeMapping;
-
 /** Controls the login_hint sent to the IdP on SSO sign-in */
 export type UpdateEnterpriseConnectionRequestSamlLoginHintMode =
   | "email_address"
   | "custom_attribute"
   | "off";
-export const UpdateEnterpriseConnectionRequestSamlLoginHintMode = S.String;
-
 /** Configuration for the login_hint sent to the IdP on SSO sign-in */
 export interface UpdateEnterpriseConnectionRequestSamlLoginHint {
   /** Controls the login_hint sent to the IdP on SSO sign-in */
@@ -11530,7 +11140,7 @@ export interface UpdateEnterpriseConnectionRequestSamlLoginHint {
   /** The user public_metadata key whose value is sent as the login_hint when mode is custom_attribute */
   source?: string;
 }
-export const UpdateEnterpriseConnectionRequestSamlLoginHint =
+const UpdateEnterpriseConnectionRequestSamlLoginHint =
   CreateEnterpriseConnectionRequestSamlLoginHint as any as S.Schema<UpdateEnterpriseConnectionRequestSamlLoginHint>;
 
 /** SAML connection-specific properties. Only applied when the enterprise connection uses SAML. Use this to update IdP configuration, attribute mapping, and other SAML-specific settings. */
@@ -11557,7 +11167,7 @@ export interface UpdateEnterpriseConnectionRequestSaml {
   /** Configuration for the login_hint sent to the IdP on SSO sign-in */
   login_hint?: UpdateEnterpriseConnectionRequestSamlLoginHint | null;
 }
-export const UpdateEnterpriseConnectionRequestSaml = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnterpriseConnectionRequestSaml = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     idp_entity_id: S.optional(S.NullOr(S.String)),
@@ -11578,17 +11188,12 @@ export const UpdateEnterpriseConnectionRequestSaml = /*@__PURE__*/ S.suspend(() 
 
 /** OIDC connection-specific properties. Only applied when the enterprise connection uses OIDC (e.g. oidc_custom, oidc_github_enterprise, or oidc_gitlab). */
 export type UpdateEnterpriseConnectionRequestOidc = CreateEnterpriseConnectionRequestOidc;
-export const UpdateEnterpriseConnectionRequestOidc = CreateEnterpriseConnectionRequestOidc;
-
 export type UpdateEnterpriseConnectionRequestCustomAttributesItem =
   CreateEnterpriseConnectionRequestCustomAttributesItem;
-export const UpdateEnterpriseConnectionRequestCustomAttributesItem =
-  CreateEnterpriseConnectionRequestCustomAttributesItem;
-
 /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
 export type UpdateEnterpriseConnectionRequestCustomAttributesList =
   Array<CreateEnterpriseConnectionRequestCustomAttributesItem>;
-export const UpdateEnterpriseConnectionRequestCustomAttributesList =
+const UpdateEnterpriseConnectionRequestCustomAttributesList =
   CreateEnterpriseConnectionRequestCustomAttributesList as any as S.Schema<UpdateEnterpriseConnectionRequestCustomAttributesList>;
 
 export interface UpdateEnterpriseConnectionRequest {
@@ -11615,7 +11220,7 @@ export interface UpdateEnterpriseConnectionRequest {
   /** Custom attributes to map from the IdP to the user's profile via SSO or SCIM provisioning. Requires the custom attributes feature to be enabled for the instance. */
   custom_attributes?: UpdateEnterpriseConnectionRequestCustomAttributesList | null;
 }
-export const UpdateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise_connection_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -11641,12 +11246,12 @@ export const UpdateEnterpriseConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** For browser-like stacks such as browser extensions, Electron, or Capacitor.js (not officially supported), the instance allowed origins need to be updated with the request origin value. For Chrome extensions popup, background, or service worker pages, the origin is chrome-extension://extension_uuid. For Electron apps using `@clerk/electron`, the origins are the custom renderer scheme registered with `createClerkBridge()`, for example `my-app://renderer`, and, during development, the renderer's dev server origin, for example `http://localhost:5173`. For Capacitor, the origin is capacitor://localhost. Send an empty array to remove all allowed origins. A null value leaves the current list unchanged. */
 export type UpdateInstanceRequestAllowedOriginsList = Array<string>;
-export const UpdateInstanceRequestAllowedOriginsList =
+const UpdateInstanceRequestAllowedOriginsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedOriginsList>;
 
 /** Subdomains of the instance's own domains that may originate requests while `subdomain_allowlist_enabled` is true. Each entry is either an exact host (`app.example.com`) or a wildcard anchored on a host beneath one of the instance's domains (`*.preview.example.com`), which covers every host under that anchor but not the anchor itself. Entries are stored folded to lower case with any trailing dot removed, the form the origin check compares against, so entries differing only in those respects are one entry. Entries already stored are not validated again, so a list read back from the instance can always be written again unchanged. Send an empty array to remove all entries. A null value leaves the current list unchanged. Production instances only. */
 export type UpdateInstanceRequestAllowedSubdomainsList = Array<string>;
-export const UpdateInstanceRequestAllowedSubdomainsList =
+const UpdateInstanceRequestAllowedSubdomainsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceRequestAllowedSubdomainsList>;
 
 /** When password is required at the instance level, sets the preferred sign-in strategy surfaced to Clerk components. Has no effect when password is not required. Defaults to `password`. Set to an empty string to clear the override. */
@@ -11654,7 +11259,7 @@ export type UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired =
   | "password"
   | "otp"
   | "";
-export const UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired = S.String;
+const UpdateInstanceRequestPreferredSignInStrategyWhenPasswordRequired = S.String;
 
 export interface UpdateInstanceRequest {
   /** Toggles test mode for this instance, allowing the use of test email addresses and phone numbers. Defaults to true for development instances. */
@@ -11680,7 +11285,7 @@ export interface UpdateInstanceRequest {
     | (string & {})
     | null;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     test_mode: S.optional(S.NullOr(S.Boolean)),
     hibp: S.optional(S.NullOr(S.Boolean)),
@@ -11699,8 +11304,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse =
-  DeleteSvixAppResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = DeleteSvixAppResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateInstanceAuthConfigRequest {
   /** Whether sign up is restricted to email addresses, phone numbers and usernames that are on the allowlist. */
@@ -11712,7 +11316,7 @@ export interface UpdateInstanceAuthConfigRequest {
   /** Toggles test mode for this instance, allowing the use of test email addresses and phone numbers. Defaults to true for development instances. */
   test_mode?: boolean | null;
 }
-export const UpdateInstanceAuthConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceAuthConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restricted_to_allowlist: S.optional(S.NullOr(S.Boolean)),
     from_email_address: S.optional(S.NullOr(S.String)),
@@ -11725,7 +11329,7 @@ export const UpdateInstanceAuthConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type UpdateInstanceAuthConfigResponseObject = "instance_settings";
-export const UpdateInstanceAuthConfigResponseObject = S.String;
+const UpdateInstanceAuthConfigResponseObject = S.String;
 
 export interface UpdateInstanceAuthConfigResponse {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -11737,7 +11341,7 @@ export interface UpdateInstanceAuthConfigResponse {
   /** Deprecated. This setting is retired and no longer affects email delivery; all email is sent through the instance's configured email sending domain. The field is preserved for API compatibility only and will be removed in a future version. */
   enhanced_email_deliverability?: boolean;
 }
-export const UpdateInstanceAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.optional(UpdateInstanceAuthConfigResponseObject),
     id: S.optional(S.String),
@@ -11752,14 +11356,14 @@ export const UpdateInstanceAuthConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
 export type UpdateInstanceCommunicationRequestBlockedCountryCodesList = Array<string>;
-export const UpdateInstanceCommunicationRequestBlockedCountryCodesList =
+const UpdateInstanceCommunicationRequestBlockedCountryCodesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceCommunicationRequestBlockedCountryCodesList>;
 
 export interface UpdateInstanceCommunicationRequest {
   /** ISO 3166-1 alpha-2 country codes to block for SMS delivery. Whole-list replacement. Codes must be uppercase, 2-letter, and unique within the array. */
   blocked_country_codes?: UpdateInstanceCommunicationRequestBlockedCountryCodesList | null;
 }
-export const UpdateInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_country_codes: S.optional(
       S.NullOr(UpdateInstanceCommunicationRequestBlockedCountryCodesList),
@@ -11771,7 +11375,7 @@ export const UpdateInstanceCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Default scopes assigned when a dynamically registered or first-contact CIMD client omits `scope`. Accepts built-in keys and current custom catalog keys. `advertised` does not affect eligibility. Duplicate keys, unknown keys, and `offline_access` are rejected. An empty array or null resets to Clerk-provided defaults. */
 export type UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList = Array<string>;
-export const UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList =
+const UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateInstanceOAuthApplicationSettingsRequestDefaultScopesList>;
 
 export interface UpdateInstanceOAuthApplicationSettingsRequest {
@@ -11792,7 +11396,7 @@ export interface UpdateInstanceOAuthApplicationSettingsRequest {
   /** When true, recorded implicitly allowed CIMD clients are rejected on future client lookups. Explicitly allowed clients remain accepted. This does not revoke previously issued access tokens. */
   client_id_metadata_documents_block_implicitly_allowed_clients?: boolean | null;
 }
-export const UpdateInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dynamic_oauth_client_registration: S.optional(S.NullOr(S.Boolean)),
     default_scopes: S.optional(
@@ -11811,10 +11415,9 @@ export const UpdateInstanceOAuthApplicationSettingsRequest = /*@__PURE__*/ S.sus
 
 /** Specify which enrollment modes to enable for your Organization Domains. Supported modes are 'automatic_invitation' & 'automatic_suggestion'. */
 export type UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList = Array<string>;
-export const UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList>;
+const UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UpdateInstanceOrganizationSettingsRequestDomainsEnrollmentModesList>;
 
 export interface UpdateInstanceOrganizationSettingsRequest {
   enabled?: boolean | null;
@@ -11829,7 +11432,7 @@ export interface UpdateInstanceOrganizationSettingsRequest {
   /** Specify what the default organization role is for the organization domains. */
   domains_default_role_id?: string | null;
 }
-export const UpdateInstanceOrganizationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceOrganizationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     max_allowed_memberships: S.optional(S.NullOr(S.Number)),
@@ -11851,7 +11454,7 @@ export interface UpdateInstanceProtectRequest {
   rules_enabled?: boolean | null;
   specter_enabled?: boolean | null;
 }
-export const UpdateInstanceProtectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceProtectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules_enabled: S.optional(S.NullOr(S.Boolean)),
     specter_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -11867,7 +11470,7 @@ export interface UpdateInstanceRestrictionsRequest {
   block_email_subaddresses?: boolean | null;
   block_disposable_email_domains?: boolean | null;
 }
-export const UpdateInstanceRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowlist: S.optional(S.NullOr(S.Boolean)),
     blocklist: S.optional(S.NullOr(S.Boolean)),
@@ -11881,7 +11484,7 @@ export const UpdateInstanceRestrictionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** String representing the object's type. Objects of the same type share the same value. */
 export type InstanceRestrictionsObject = "instance_restrictions";
-export const InstanceRestrictionsObject = S.String;
+const InstanceRestrictionsObject = S.String;
 
 export interface InstanceRestrictions {
   /** String representing the object's type. Objects of the same type share the same value. */
@@ -11892,7 +11495,7 @@ export interface InstanceRestrictions {
   block_email_subaddresses: boolean;
   block_disposable_email_domains: boolean;
 }
-export const InstanceRestrictions = /*@__PURE__*/ S.suspend(() =>
+const InstanceRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: InstanceRestrictionsObject,
     allowlist: S.Boolean,
@@ -11921,7 +11524,7 @@ export interface UpdateJWTTemplateRequest {
   /** The custom signing private key to use when minting JWTs. Required if `custom_signing_key` is `true`. */
   signing_key?: string | null;
 }
-export const UpdateJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJWTTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -11942,7 +11545,7 @@ export interface UpdateMachineRequest {
   /** The default time-to-live (TTL) in seconds for tokens created by this machine. Must be at least 1 second. */
   default_token_ttl?: number;
 }
-export const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     machine_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -11951,11 +11554,11 @@ export const UpdateMachineRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMachineRequest" }) as any as S.Schema<UpdateMachineRequest>;
 
 export type UpdateMachineResponseObject = "machine";
-export const UpdateMachineResponseObject = S.String;
+const UpdateMachineResponseObject = S.String;
 
 /** Array of machines this machine has access to. */
 export type UpdateMachineResponseScopedMachinesList = Array<MachineWithoutScopedMachines>;
-export const UpdateMachineResponseScopedMachinesList =
+const UpdateMachineResponseScopedMachinesList =
   CreateMachineResponseScopedMachinesList as any as S.Schema<UpdateMachineResponseScopedMachinesList>;
 
 export interface UpdateMachineResponse {
@@ -11975,7 +11578,7 @@ export interface UpdateMachineResponse {
   /** Array of machines this machine has access to. */
   scoped_machines: UpdateMachineResponseScopedMachinesList;
 }
-export const UpdateMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: UpdateMachineResponseObject,
     id: S.String,
@@ -11990,7 +11593,7 @@ export const UpdateMachineResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of redirect URIs of the new OAuth application */
 export type UpdateOAuthApplicationRequestRedirectUrisList = Array<string>;
-export const UpdateOAuthApplicationRequestRedirectUrisList =
+const UpdateOAuthApplicationRequestRedirectUrisList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOAuthApplicationRequestRedirectUrisList>;
 
 export interface UpdateOAuthApplicationRequest {
@@ -12013,7 +11616,7 @@ export interface UpdateOAuthApplicationRequest {
   /** If true, this client is public and you can use the Proof Key of Code Exchange (PKCE) flow. */
   public?: boolean | null;
 }
-export const UpdateOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOAuthApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -12051,7 +11654,7 @@ export interface UpdateOrganizationRequest {
   /** Maps role keys in the organization's current role set to role keys in the new role set. Only applies when `role_set_key` changes the role set. Every role that a member holds and that the new role set does not include must be mapped, otherwise the request fails with a 422. Mapping a role that both role sets include moves its members to the destination role. Memberships are reassigned asynchronously after the response. */
   reassignment_mappings?: ReassignmentMappings | null;
 }
-export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -12077,7 +11680,7 @@ export interface UpdateOrganizationDomainRequest {
   /** The status of the domain's verification */
   verified?: boolean | null;
 }
-export const UpdateOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     domain_id: S.String.pipe(T.Label()),
@@ -12102,7 +11705,7 @@ export interface UpdateOrganizationMembershipRequest {
   /** The new role of the given membership. */
   role: string;
 }
-export const UpdateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -12122,14 +11725,14 @@ export const UpdateOrganizationMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateOrganizationMembershipMetadataRequestPublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMembershipMetadataRequestPublicMetadataMap =
+const UpdateOrganizationMembershipMetadataRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the organization membership that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap =
+const UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap>;
 
 export interface UpdateOrganizationMembershipMetadataRequest {
@@ -12142,7 +11745,7 @@ export interface UpdateOrganizationMembershipMetadataRequest {
   /** Metadata saved on the organization membership that is only visible to your backend. The new object will be merged with the existing value. */
   private_metadata?: UpdateOrganizationMembershipMetadataRequestPrivateMetadataMap;
 }
-export const UpdateOrganizationMembershipMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationMembershipMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     user_id: S.String.pipe(T.Label()),
@@ -12169,7 +11772,7 @@ export interface UpdateOrganizationPermissionRequest {
   /** A description of the permission. */
   description?: string;
 }
-export const UpdateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -12182,7 +11785,7 @@ export const UpdateOrganizationPermissionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of permission IDs to assign to the role. If provided, this will replace the existing permissions. */
 export type UpdateOrganizationRoleRequestPermissionsList = Array<string>;
-export const UpdateOrganizationRoleRequestPermissionsList =
+const UpdateOrganizationRoleRequestPermissionsList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateOrganizationRoleRequestPermissionsList>;
 
 export interface UpdateOrganizationRoleRequest {
@@ -12197,7 +11800,7 @@ export interface UpdateOrganizationRoleRequest {
   /** Array of permission IDs to assign to the role. If provided, this will replace the existing permissions. */
   permissions?: UpdateOrganizationRoleRequestPermissionsList | null;
 }
-export const UpdateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_role_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -12221,7 +11824,7 @@ export interface UpdatePhoneNumberRequest {
   /** Set this phone number as reserved for multi-factor authentication. The phone number must also be verified. If there are no other reserved second factors, the phone number will be set as the default second factor. */
   reserved_for_second_factor?: boolean | null;
 }
-export const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phone_number_id: S.String.pipe(T.Label()),
     verified: S.optional(S.NullOr(S.Boolean)),
@@ -12232,7 +11835,7 @@ export const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Set to "initial" to make this the default role set for new organizations. Only one role set can be "initial" per instance; setting this will change any existing initial role set to "custom". */
 export type UpdateRoleSetRequestType = "initial";
-export const UpdateRoleSetRequestType = S.String;
+const UpdateRoleSetRequestType = S.String;
 
 export interface UpdateRoleSetRequest {
   /** The key or ID of the role set to update */
@@ -12250,7 +11853,7 @@ export interface UpdateRoleSetRequest {
   /** The key of the role to assign to organization creators. Must be an existing role in the role set. */
   creator_role_key?: string | null;
 }
-export const UpdateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_set_key_or_id: S.String.pipe(T.Label()),
     name: S.optional(S.NullOr(S.String)),
@@ -12266,7 +11869,7 @@ export const UpdateRoleSetRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdateSCIMDirectoryRequestAttributeMappingMap = {
   [key: string]: string | null | undefined;
 };
-export const UpdateSCIMDirectoryRequestAttributeMappingMap =
+const UpdateSCIMDirectoryRequestAttributeMappingMap =
   UpdateDirectoryRequestAttributeMappingMap as any as S.Schema<UpdateSCIMDirectoryRequestAttributeMappingMap>;
 
 export interface UpdateSCIMDirectoryRequest {
@@ -12283,7 +11886,7 @@ export interface UpdateSCIMDirectoryRequest {
   /** Whether group-to-role mapping is enabled for this directory. */
   group_role_mapping_enabled?: boolean;
 }
-export const UpdateSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSCIMDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scim_directory_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -12304,7 +11907,7 @@ export interface UpdateSignUpRequest {
   /** If true, the sign-up will be marked as a custom action. */
   custom_action?: boolean | null;
 }
-export const UpdateSignUpRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignUpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     external_id: S.optional(S.NullOr(S.String)),
@@ -12314,7 +11917,7 @@ export const UpdateSignUpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If Backup Codes are configured on the instance, you can provide them to enable it on the specific user without the need to reset them. */
 export type UpdateUserRequestBackupCodesList = Array<string>;
-export const UpdateUserRequestBackupCodesList =
+const UpdateUserRequestBackupCodesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<UpdateUserRequestBackupCodesList>;
 
 export interface UpdateUserRequest {
@@ -12370,7 +11973,7 @@ export interface UpdateUserRequest {
   /** When set to `true`, the user will bypass Device Trust checks during sign-in. */
   bypass_client_trust?: boolean | null;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     external_id: S.optional(S.NullOr(S.String)),
@@ -12403,17 +12006,17 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata saved on the user, that is visible to both your frontend and backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPublicMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestPublicMetadataMap =
+const UpdateUserMetadataRequestPublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPublicMetadataMap>;
 
 /** Metadata saved on the user that is only visible to your backend. The new object will be merged with the existing value. */
 export type UpdateUserMetadataRequestPrivateMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestPrivateMetadataMap =
+const UpdateUserMetadataRequestPrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestPrivateMetadataMap>;
 
 /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
 export type UpdateUserMetadataRequestUnsafeMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateUserMetadataRequestUnsafeMetadataMap =
+const UpdateUserMetadataRequestUnsafeMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UpdateUserMetadataRequestUnsafeMetadataMap>;
 
 export interface UpdateUserMetadataRequest {
@@ -12426,7 +12029,7 @@ export interface UpdateUserMetadataRequest {
   /** Metadata saved on the user, that can be updated from both the Frontend and Backend APIs. The new object will be merged with the existing value. Note: Since this data can be modified from the frontend, it is not guaranteed to be safe. */
   unsafe_metadata?: UpdateUserMetadataRequestUnsafeMetadataMap;
 }
-export const UpdateUserMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     public_metadata: S.optional(UpdateUserMetadataRequestPublicMetadataMap),
@@ -12444,7 +12047,7 @@ export interface UploadOAuthApplicationLogoRequest {
   uploader_user_id?: string;
   file: string;
 }
-export const UploadOAuthApplicationLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadOAuthApplicationLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth_application_id: S.String.pipe(T.Label()),
     uploader_user_id: S.optional(S.String),
@@ -12468,7 +12071,7 @@ export interface UploadOrganizationLogoRequest {
   uploader_user_id?: string;
   file: string;
 }
-export const UploadOrganizationLogoRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadOrganizationLogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     uploader_user_id: S.optional(S.String),
@@ -12486,18 +12089,18 @@ export const UploadOrganizationLogoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UploadOrganizationLogoRequest>;
 
 export type UploadOrganizationLogoResponseObject = "organization";
-export const UploadOrganizationLogoResponseObject = S.String;
+const UploadOrganizationLogoResponseObject = S.String;
 
 export type UploadOrganizationLogoResponsePublicMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UploadOrganizationLogoResponsePublicMetadataMap =
+const UploadOrganizationLogoResponsePublicMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePublicMetadataMap>;
 
 export type UploadOrganizationLogoResponsePrivateMetadataMap = {
   [key: string]: unknown | undefined;
 };
-export const UploadOrganizationLogoResponsePrivateMetadataMap =
+const UploadOrganizationLogoResponsePrivateMetadataMap =
   UserPublicMetadataMap as any as S.Schema<UploadOrganizationLogoResponsePrivateMetadataMap>;
 
 export interface UploadOrganizationLogoResponse {
@@ -12527,7 +12130,7 @@ export interface UploadOrganizationLogoResponse {
   role_set_key?: string | null;
   logo_url?: string;
 }
-export const UploadOrganizationLogoResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadOrganizationLogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: UploadOrganizationLogoResponseObject,
     id: S.String,
@@ -12559,7 +12162,7 @@ export type UsersGetOrganizationInvitationsRequestStatus =
   | "accepted"
   | "revoked"
   | "expired";
-export const UsersGetOrganizationInvitationsRequestStatus = S.String;
+const UsersGetOrganizationInvitationsRequestStatus = S.String;
 
 export interface UsersGetOrganizationInvitationsRequest {
   /** The ID of the user whose organization invitations we want to retrieve */
@@ -12571,7 +12174,7 @@ export interface UsersGetOrganizationInvitationsRequest {
   /** Filter organization invitations based on their status */
   status?: UsersGetOrganizationInvitationsRequestStatus | (string & {});
 }
-export const UsersGetOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersGetOrganizationInvitationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -12590,7 +12193,7 @@ export interface UsersGetOrganizationMembershipsRequest {
   /** Skip the first `offset` results when paginating. Needs to be an integer greater or equal to zero. To be used in conjunction with `limit`. */
   offset?: number;
 }
-export const UsersGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -12603,17 +12206,17 @@ export const UsersGetOrganizationMembershipsRequest = /*@__PURE__*/ S.suspend(()
 export interface VerifyApiKeyRequest {
   secret: string | Redacted.Redacted<string>;
 }
-export const VerifyApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.String.pipe(T.SensitiveValue({})),
   }).pipe(T.Http({ method: "POST", uri: "/api_keys/verify", code: 200 })),
 ).annotate({ identifier: "VerifyApiKeyRequest" }) as any as S.Schema<VerifyApiKeyRequest>;
 
 export type VerifyApiKeyResponseObject = "api_key";
-export const VerifyApiKeyResponseObject = S.String;
+const VerifyApiKeyResponseObject = S.String;
 
 export type VerifyApiKeyResponseScopesList = Array<string>;
-export const VerifyApiKeyResponseScopesList =
+const VerifyApiKeyResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyApiKeyResponseScopesList>;
 
 export interface VerifyApiKeyResponse {
@@ -12638,7 +12241,7 @@ export interface VerifyApiKeyResponse {
   /** The timestamp for when the API key was last updated, in milliseconds */
   updated_at: number;
 }
-export const VerifyApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: VerifyApiKeyResponseObject,
     id: S.String,
@@ -12663,7 +12266,7 @@ export interface VerifyClientRequest {
   /** A JWT that represents the active client. */
   token: string;
 }
-export const VerifyClientRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyClientRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/clients/verify", code: 200 })),
@@ -12675,7 +12278,7 @@ export interface VerifyDomainProxyRequest {
   /** The full URL of the proxy which will forward requests to the Clerk Frontend API for this domain. e.g. https://example.com/__clerk */
   proxy_url?: string;
 }
-export const VerifyDomainProxyRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyDomainProxyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain_id: S.optional(S.String),
     proxy_url: S.optional(S.String),
@@ -12683,7 +12286,7 @@ export const VerifyDomainProxyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyDomainProxyRequest" }) as any as S.Schema<VerifyDomainProxyRequest>;
 
 export type ProxyCheckObject = "proxy_check";
-export const ProxyCheckObject = S.String;
+const ProxyCheckObject = S.String;
 
 export interface ProxyCheck {
   object: ProxyCheckObject;
@@ -12698,7 +12301,7 @@ export interface ProxyCheck {
   /** Unix timestamp of last update. */
   updated_at: number;
 }
-export const ProxyCheck = /*@__PURE__*/ S.suspend(() =>
+const ProxyCheck = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: ProxyCheckObject,
     id: S.String,
@@ -12714,17 +12317,17 @@ export const ProxyCheck = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyM2MTokenRequest {
   token: string;
 }
-export const VerifyM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyM2MTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/m2m_tokens/verify", code: 200 })),
 ).annotate({ identifier: "VerifyM2MTokenRequest" }) as any as S.Schema<VerifyM2MTokenRequest>;
 
 export type VerifyM2MTokenResponseObject = "machine_to_machine_token";
-export const VerifyM2MTokenResponseObject = S.String;
+const VerifyM2MTokenResponseObject = S.String;
 
 export type VerifyM2MTokenResponseScopesList = Array<string>;
-export const VerifyM2MTokenResponseScopesList =
+const VerifyM2MTokenResponseScopesList =
   AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyM2MTokenResponseScopesList>;
 
 export interface VerifyM2MTokenResponse {
@@ -12745,7 +12348,7 @@ export interface VerifyM2MTokenResponse {
   /** The timestamp for when the token was last updated, in milliseconds */
   updated_at: number;
 }
-export const VerifyM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyM2MTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: VerifyM2MTokenResponseObject,
     id: S.String,
@@ -12768,7 +12371,7 @@ export interface VerifyOAuthAccessTokenRequest {
   /** The access token to verify. This is deprecated, use `access_token` instead. */
   secret?: string | Redacted.Redacted<string>;
 }
-export const VerifyOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
     secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -12778,17 +12381,9 @@ export const VerifyOAuthAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerifyOAuthAccessTokenRequest>;
 
 export type VerifyOAuthAccessTokenResponseBodyCase0Object = "clerk_idp_oauth_access_token";
-export const VerifyOAuthAccessTokenResponseBodyCase0Object = S.String;
-
 export type VerifyOAuthAccessTokenResponseBodyCase0ScopesList = Array<string>;
-export const VerifyOAuthAccessTokenResponseBodyCase0ScopesList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0ScopesList>;
-
 /** The audiences of the access token. Omitted when no audience is set. */
 export type VerifyOAuthAccessTokenResponseBodyCase0AudList = Array<string>;
-export const VerifyOAuthAccessTokenResponseBodyCase0AudList =
-  AddRolesToRoleSetRequestRoleKeysList as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0AudList>;
-
 export interface VerifyOAuthAccessTokenResponseBodyCase0 {
   object: VerifyOAuthAccessTokenResponseBodyCase0Object;
   id: string;
@@ -12804,45 +12399,18 @@ export interface VerifyOAuthAccessTokenResponseBodyCase0 {
   created_at: number;
   updated_at: number;
 }
-export const VerifyOAuthAccessTokenResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    object: VerifyOAuthAccessTokenResponseBodyCase0Object,
-    id: S.String,
-    client_id: S.String,
-    subject: S.String,
-    scopes: VerifyOAuthAccessTokenResponseBodyCase0ScopesList,
-    aud: S.optional(VerifyOAuthAccessTokenResponseBodyCase0AudList),
-    revoked: S.Boolean,
-    revocation_reason: S.NullOr(S.String),
-    expired: S.Boolean,
-    expiration: S.NullOr(S.Number),
-    created_at: S.Number,
-    updated_at: S.Number,
-  }),
-).annotate({
-  identifier: "VerifyOAuthAccessTokenResponseBodyCase0",
-}) as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase0>;
-
 export interface VerifyOAuthAccessTokenResponseBodyCase1 {
   /** Indicates that a JWT access token is not active (expired) */
   active: boolean;
 }
-export const VerifyOAuthAccessTokenResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: S.Boolean,
-  }),
-).annotate({
-  identifier: "VerifyOAuthAccessTokenResponseBodyCase1",
-}) as any as S.Schema<VerifyOAuthAccessTokenResponseBodyCase1>;
-
 export type VerifyOAuthAccessTokenResponseBody =
   | VerifyOAuthAccessTokenResponseBodyCase0
   | VerifyOAuthAccessTokenResponseBodyCase1;
-export const VerifyOAuthAccessTokenResponseBody =
+const VerifyOAuthAccessTokenResponseBody =
   S.Unknown as any as S.Schema<VerifyOAuthAccessTokenResponseBody>;
 
 export type VerifyOAuthAccessTokenResponse = VerifyOAuthAccessTokenResponseBody;
-export const VerifyOAuthAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyOAuthAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   VerifyOAuthAccessTokenResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "VerifyOAuthAccessTokenResponse",
@@ -12854,7 +12422,7 @@ export interface VerifyOrganizationDomainOwnershipRequest {
   /** The ID of the domain */
   domain_id: string;
 }
-export const VerifyOrganizationDomainOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyOrganizationDomainOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     domain_id: S.String.pipe(T.Label()),
@@ -12875,7 +12443,7 @@ export interface VerifyPasswordRequest {
   /** The user password to verify */
   password: string | Redacted.Redacted<string>;
 }
-export const VerifyPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -12885,7 +12453,7 @@ export const VerifyPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyPasswordResponse {
   verified?: boolean;
 }
-export const VerifyPasswordResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyPasswordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.optional(S.Boolean),
   }),
@@ -12897,7 +12465,7 @@ export interface VerifyTOTPRequest {
   /** The TOTP or backup code to verify */
   code: string;
 }
-export const VerifyTOTPRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyTOTPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String.pipe(T.Label()),
     code: S.String,
@@ -12905,13 +12473,13 @@ export const VerifyTOTPRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerifyTOTPRequest" }) as any as S.Schema<VerifyTOTPRequest>;
 
 export type VerifyTOTPResponseCodeType = "totp" | "backup_code";
-export const VerifyTOTPResponseCodeType = S.String;
+const VerifyTOTPResponseCodeType = S.String;
 
 export interface VerifyTOTPResponse {
   verified?: boolean;
   code_type?: VerifyTOTPResponseCodeType;
 }
-export const VerifyTOTPResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyTOTPResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verified: S.optional(S.Boolean),
     code_type: S.optional(VerifyTOTPResponseCodeType),

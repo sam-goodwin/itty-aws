@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
 export type TimeMinute = 0 | 30;
-export const TimeMinute = S.Number;
+const TimeMinute = S.Number;
 
 /** The time of day. */
 export interface Time {
@@ -19,7 +19,7 @@ export interface Time {
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
   minute?: TimeMinute | (number & {});
 }
-export const Time = /*@__PURE__*/ S.suspend(() =>
+const Time = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.Number,
     minute: S.optional(TimeMinute),
@@ -35,11 +35,11 @@ export type DayOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
-export const DayOfWeek = S.String;
+const DayOfWeek = S.String;
 
 /** The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence. */
 export type UploadLimitWeeklyRecurrenceDaysList = Array<DayOfWeek | (string & {})>;
-export const UploadLimitWeeklyRecurrenceDaysList = /*@__PURE__*/ S.Array(
+const UploadLimitWeeklyRecurrenceDaysList = /*@__PURE__*/ S.Array(
   DayOfWeek,
 ) as any as S.Schema<UploadLimitWeeklyRecurrenceDaysList>;
 
@@ -54,7 +54,7 @@ export interface UploadLimitWeeklyRecurrence {
   /** The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary. */
   limitInMbps: number;
 }
-export const UploadLimitWeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
+const UploadLimitWeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: Time,
     endTime: Time,
@@ -67,7 +67,7 @@ export const UploadLimitWeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of weekly repeating recurrences of the WAN-link upload limit schedule. */
 export type UploadLimitScheduleWeeklyRecurrencesList = Array<UploadLimitWeeklyRecurrence>;
-export const UploadLimitScheduleWeeklyRecurrencesList = /*@__PURE__*/ S.Array(
+const UploadLimitScheduleWeeklyRecurrencesList = /*@__PURE__*/ S.Array(
   UploadLimitWeeklyRecurrence,
 ) as any as S.Schema<UploadLimitScheduleWeeklyRecurrencesList>;
 
@@ -76,7 +76,7 @@ export interface UploadLimitSchedule {
   /** The set of weekly repeating recurrences of the WAN-link upload limit schedule. */
   weeklyRecurrences?: UploadLimitScheduleWeeklyRecurrencesList;
 }
-export const UploadLimitSchedule = /*@__PURE__*/ S.suspend(() =>
+const UploadLimitSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weeklyRecurrences: S.optional(UploadLimitScheduleWeeklyRecurrencesList),
   }),
@@ -92,7 +92,7 @@ export interface AgentPropertiesInput {
   /** The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time. */
   uploadLimitSchedule?: UploadLimitSchedule;
 }
-export const AgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AgentPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     arcResourceId: S.String,
@@ -112,7 +112,7 @@ export interface AgentsCreateOrUpdateRequest {
   agentName: string;
   properties: AgentPropertiesInput;
 }
-export const AgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -133,11 +133,11 @@ export const AgentsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -154,7 +154,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -173,7 +173,7 @@ export type AgentStatus =
   | "Executing"
   | "RequiresAttention"
   | "Unregistering";
-export const AgentStatus = S.String;
+const AgentStatus = S.String;
 
 export interface AgentPropertiesErrorDetails {
   /** Error code reported by Agent */
@@ -181,7 +181,7 @@ export interface AgentPropertiesErrorDetails {
   /** Expanded description of reported error code */
   message?: string;
 }
-export const AgentPropertiesErrorDetails = /*@__PURE__*/ S.suspend(() =>
+const AgentPropertiesErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -192,7 +192,7 @@ export const AgentPropertiesErrorDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource. */
 export type ProvisioningState = "Succeeded" | "Canceled" | "Failed" | "Deleting";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 export interface AgentProperties {
   /** A description for the Agent. */
@@ -223,7 +223,7 @@ export interface AgentProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const AgentProperties = /*@__PURE__*/ S.suspend(() =>
+const AgentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     agentVersion: S.optional(S.String),
@@ -253,7 +253,7 @@ export interface AgentsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const AgentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AgentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -267,7 +267,7 @@ export const AgentsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of job definitions associated with this connection. */
 export type ConnectionPropertiesInputJobListList = Array<string>;
-export const ConnectionPropertiesInputJobListList = /*@__PURE__*/ S.Array(
+const ConnectionPropertiesInputJobListList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ConnectionPropertiesInputJobListList>;
 
@@ -280,7 +280,7 @@ export interface ConnectionPropertiesInput {
   /** List of job definitions associated with this connection. */
   jobList?: ConnectionPropertiesInputJobListList;
 }
-export const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     privateLinkServiceId: S.String,
@@ -302,7 +302,7 @@ export interface ConnectionsCreateOrUpdateRequest {
   /** Connection properties. */
   properties: ConnectionPropertiesInput;
 }
-export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -323,11 +323,11 @@ export const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The connection status. */
 export type ConnectionStatus = "Approved" | "Rejected" | "Disconnected" | "Pending" | "Stale";
-export const ConnectionStatus = S.String;
+const ConnectionStatus = S.String;
 
 /** List of job definitions associated with this connection. */
 export type ConnectionPropertiesJobListList = Array<string>;
-export const ConnectionPropertiesJobListList =
+const ConnectionPropertiesJobListList =
   ConnectionPropertiesInputJobListList as any as S.Schema<ConnectionPropertiesJobListList>;
 
 /** Properties of the Connection resource. */
@@ -347,7 +347,7 @@ export interface ConnectionProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     connectionStatus: S.optional(ConnectionStatus),
@@ -371,7 +371,7 @@ export interface ConnectionsCreateOrUpdateResponse {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-export const ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -393,7 +393,7 @@ export interface DeleteAgentRequest {
   /** The name of the Agent resource. */
   agentName: string;
 }
-export const DeleteAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -410,7 +410,7 @@ export const DeleteAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAgentRequest" }) as any as S.Schema<DeleteAgentRequest>;
 
 export interface DeleteAgentResponse {}
-export const DeleteAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAgentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAgentResponse",
 }) as any as S.Schema<DeleteAgentResponse>;
 
@@ -424,7 +424,7 @@ export interface DeleteConnectionRequest {
   /** The name of the Connection resource. */
   connectionName: string;
 }
-export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -441,8 +441,7 @@ export const DeleteConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteConnectionRequest" }) as any as S.Schema<DeleteConnectionRequest>;
 
 export interface DeleteConnectionResponse {}
-export const DeleteConnectionResponse =
-  DeleteAgentResponse as any as S.Schema<DeleteConnectionResponse>;
+const DeleteConnectionResponse = DeleteAgentResponse as any as S.Schema<DeleteConnectionResponse>;
 
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. */
@@ -454,7 +453,7 @@ export interface DeleteEndpointRequest {
   /** The name of the Endpoint resource. */
   endpointName: string;
 }
-export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -471,8 +470,7 @@ export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEndpointRequest" }) as any as S.Schema<DeleteEndpointRequest>;
 
 export interface DeleteEndpointResponse {}
-export const DeleteEndpointResponse =
-  DeleteAgentResponse as any as S.Schema<DeleteEndpointResponse>;
+const DeleteEndpointResponse = DeleteAgentResponse as any as S.Schema<DeleteEndpointResponse>;
 
 export interface DeleteJobDefinitionRequest {
   /** The ID of the target subscription. */
@@ -486,7 +484,7 @@ export interface DeleteJobDefinitionRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const DeleteJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -506,7 +504,7 @@ export const DeleteJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteJobDefinitionRequest>;
 
 export interface DeleteJobDefinitionResponse {}
-export const DeleteJobDefinitionResponse =
+const DeleteJobDefinitionResponse =
   DeleteAgentResponse as any as S.Schema<DeleteJobDefinitionResponse>;
 
 export interface DeleteProjectRequest {
@@ -519,7 +517,7 @@ export interface DeleteProjectRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -536,7 +534,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse = DeleteAgentResponse as any as S.Schema<DeleteProjectResponse>;
+const DeleteProjectResponse = DeleteAgentResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteStorageMoverRequest {
   /** The ID of the target subscription. */
@@ -546,7 +544,7 @@ export interface DeleteStorageMoverRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const DeleteStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -564,7 +562,7 @@ export const DeleteStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteStorageMoverRequest>;
 
 export interface DeleteStorageMoverResponse {}
-export const DeleteStorageMoverResponse =
+const DeleteStorageMoverResponse =
   DeleteAgentResponse as any as S.Schema<DeleteStorageMoverResponse>;
 
 /** The Endpoint resource type. */
@@ -576,11 +574,11 @@ export type EndpointType =
   | "AzureMultiCloudConnector"
   | "AzureStorageNfsFileShare"
   | "S3WithHMAC";
-export const EndpointType = S.String;
+const EndpointType = S.String;
 
 /** The type of the endpoint source/target. */
 export type EndpointKind = "Source" | "Target";
-export const EndpointKind = S.String;
+const EndpointKind = S.String;
 
 /** The resource specific properties for the Storage Mover resource. */
 export interface EndpointBasePropertiesInput {
@@ -621,7 +619,7 @@ export interface EndpointBasePropertiesInput {
   /** Description of an `Other` source type (S3WithHMAC). */
   otherSourceTypeDescription?: string;
 }
-export const EndpointBasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const EndpointBasePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: EndpointType,
     description: S.optional(S.String),
@@ -652,16 +650,15 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput =
-  DeleteAgentResponse as any as S.Schema<UserAssignedIdentityInput>;
+const UserAssignedIdentityInput = DeleteAgentResponse as any as S.Schema<UserAssignedIdentityInput>;
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -671,7 +668,7 @@ export interface EndpointsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-export const EndpointsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const EndpointsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
@@ -694,7 +691,7 @@ export interface EndpointsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateRequestIdentity;
 }
-export const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -755,7 +752,7 @@ export interface EndpointBaseProperties {
   /** Description of an `Other` source type (S3WithHMAC). */
   otherSourceTypeDescription?: string;
 }
-export const EndpointBaseProperties = /*@__PURE__*/ S.suspend(() =>
+const EndpointBaseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: EndpointType,
     description: S.optional(S.String),
@@ -786,7 +783,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -795,7 +792,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -809,7 +806,7 @@ export interface EndpointsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-export const EndpointsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const EndpointsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -834,7 +831,7 @@ export interface EndpointsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -857,7 +854,7 @@ export interface GetAgentRequest {
   /** The name of the Agent resource. */
   agentName: string;
 }
-export const GetAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -884,7 +881,7 @@ export interface GetAgentResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const GetAgentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -904,7 +901,7 @@ export interface GetConnectionRequest {
   /** The name of the Connection resource. */
   connectionName: string;
 }
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -932,7 +929,7 @@ export interface GetConnectionResponse {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -952,7 +949,7 @@ export interface GetEndpointRequest {
   /** The name of the Endpoint resource. */
   endpointName: string;
 }
-export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -970,8 +967,6 @@ export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
-export const GetEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
-
 export interface GetEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -986,7 +981,7 @@ export interface GetEndpointResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const GetEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1009,7 +1004,7 @@ export interface GetJobDefinitionRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const GetJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1031,11 +1026,11 @@ export type JobDefinitionPropertiesJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
   | "OnPremToCloudAgentLess";
-export const JobDefinitionPropertiesJobType = S.String;
+const JobDefinitionPropertiesJobType = S.String;
 
 /** Strategy to use for copy. */
 export type CopyMode = "Additive" | "Mirror";
-export const CopyMode = S.String;
+const CopyMode = S.String;
 
 /** The current status of the Job Run in a non-terminal state, if exists. */
 export type JobRunStatus =
@@ -1048,7 +1043,7 @@ export type JobRunStatus =
   | "Failed"
   | "Succeeded"
   | "PausedByBandwidthManagement";
-export const JobRunStatus = S.String;
+const JobRunStatus = S.String;
 
 /** The properties of the cloud source endpoint to migrate. */
 export interface SourceEndpointProperties {
@@ -1059,7 +1054,7 @@ export interface SourceEndpointProperties {
   /** The fully qualified ARM resource ID of the AWS S3 bucket to migrate. */
   awsS3BucketId?: string;
 }
-export const SourceEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const SourceEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     sourceEndpointResourceId: S.optional(S.String),
@@ -1072,7 +1067,7 @@ export interface SourceEndpoint {
   /** The properties of the cloud source endpoint to migrate. */
   properties?: SourceEndpointProperties;
 }
-export const SourceEndpoint = /*@__PURE__*/ S.suspend(() =>
+const SourceEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(SourceEndpointProperties),
   }),
@@ -1089,7 +1084,7 @@ export interface TargetEndpointProperties {
   /** The name of the Azure Storage blob container. */
   azureStorageBlobContainerName?: string;
 }
-export const TargetEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+const TargetEndpointProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     targetEndpointResourceId: S.optional(S.String),
@@ -1103,7 +1098,7 @@ export interface TargetEndpoint {
   /** The properties of the cloud target endpoint to migrate. */
   properties?: TargetEndpointProperties;
 }
-export const TargetEndpoint = /*@__PURE__*/ S.suspend(() =>
+const TargetEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(TargetEndpointProperties),
   }),
@@ -1114,7 +1109,7 @@ export interface SourceTargetMap {
   sourceEndpoint: SourceEndpoint;
   targetEndpoint: TargetEndpoint;
 }
-export const SourceTargetMap = /*@__PURE__*/ S.suspend(() =>
+const SourceTargetMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceEndpoint: SourceEndpoint,
     targetEndpoint: TargetEndpoint,
@@ -1122,7 +1117,7 @@ export const SourceTargetMap = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceTargetMap" }) as any as S.Schema<SourceTargetMap>;
 
 export type JobDefinitionPropertiesSourceTargetMapValueList = Array<SourceTargetMap>;
-export const JobDefinitionPropertiesSourceTargetMapValueList = /*@__PURE__*/ S.Array(
+const JobDefinitionPropertiesSourceTargetMapValueList = /*@__PURE__*/ S.Array(
   SourceTargetMap,
 ) as any as S.Schema<JobDefinitionPropertiesSourceTargetMapValueList>;
 
@@ -1130,7 +1125,7 @@ export const JobDefinitionPropertiesSourceTargetMapValueList = /*@__PURE__*/ S.A
 export interface JobDefinitionPropertiesSourceTargetMap {
   value?: JobDefinitionPropertiesSourceTargetMapValueList;
 }
-export const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(JobDefinitionPropertiesSourceTargetMapValueList),
   }),
@@ -1140,16 +1135,16 @@ export const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ S.suspend(()
 
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesConnectionsList = Array<string>;
-export const JobDefinitionPropertiesConnectionsList =
+const JobDefinitionPropertiesConnectionsList =
   ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
 
 /** Type of schedule -- Monthly, Weekly, or Daily */
 export type Frequency = "Monthly" | "Weekly" | "Daily" | "Onetime" | "None" | "Hourly";
-export const Frequency = S.String;
+const Frequency = S.String;
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
 export type SchedulerTimeMinute = 0 | 30;
-export const SchedulerTimeMinute = S.Number;
+const SchedulerTimeMinute = S.Number;
 
 /** The time of day. */
 export interface SchedulerTime {
@@ -1158,7 +1153,7 @@ export interface SchedulerTime {
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
   minute?: SchedulerTimeMinute | (number & {});
 }
-export const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
+const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hour: S.optional(S.Number),
     minute: S.optional(SchedulerTimeMinute),
@@ -1167,12 +1162,12 @@ export const SchedulerTime = /*@__PURE__*/ S.suspend(() =>
 
 /** Days of the week for weekly schedules */
 export type ScheduleInfoDaysOfWeekList = Array<string>;
-export const ScheduleInfoDaysOfWeekList =
+const ScheduleInfoDaysOfWeekList =
   ConnectionPropertiesInputJobListList as any as S.Schema<ScheduleInfoDaysOfWeekList>;
 
 /** Days of the month for monthly schedules */
 export type ScheduleInfoDaysOfMonthList = Array<number>;
-export const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ S.Array(
+const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScheduleInfoDaysOfMonthList>;
 
@@ -1197,7 +1192,7 @@ export interface ScheduleInfo {
   /** Repeat interval used for sub-daily schedules. */
   repeatInterval?: string;
 }
-export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
+const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: S.optional(Frequency),
     isActive: S.optional(S.Boolean),
@@ -1216,7 +1211,7 @@ export type JobDefinitionPropertiesDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
   | "None";
-export const JobDefinitionPropertiesDataIntegrityValidation = S.String;
+const JobDefinitionPropertiesDataIntegrityValidation = S.String;
 
 /** Job definition properties. */
 export interface JobDefinitionProperties {
@@ -1271,7 +1266,7 @@ export interface JobDefinitionProperties {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-export const JobDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     jobType: S.optional(JobDefinitionPropertiesJobType),
@@ -1313,7 +1308,7 @@ export interface GetJobDefinitionResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const GetJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1337,7 +1332,7 @@ export interface GetJobRunRequest {
   /** The name of the Job Run resource. */
   jobRunName: string;
 }
-export const GetJobRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1357,11 +1352,11 @@ export const GetJobRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of Agent's scanning of source. */
 export type JobRunScanStatus = "NotStarted" | "Scanning" | "Completed";
-export const JobRunScanStatus = S.String;
+const JobRunScanStatus = S.String;
 
 /** Trigger type for the job run. Default is manual. */
 export type JobRunPropertiesTriggerType = "Manual" | "Scheduled";
-export const JobRunPropertiesTriggerType = S.String;
+const JobRunPropertiesTriggerType = S.String;
 
 /** Error type */
 export interface JobRunError {
@@ -1372,7 +1367,7 @@ export interface JobRunError {
   /** Target of the given error entry. */
   target?: string;
 }
-export const JobRunError = /*@__PURE__*/ S.suspend(() =>
+const JobRunError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1389,11 +1384,11 @@ export interface JobRunWarning {
   /** Target of the given error entry. */
   target?: string;
 }
-export const JobRunWarning = JobRunError as any as S.Schema<JobRunWarning>;
+const JobRunWarning = JobRunError as any as S.Schema<JobRunWarning>;
 
 /** Warning details. */
 export type JobRunPropertiesWarningsList = Array<JobRunWarning>;
-export const JobRunPropertiesWarningsList = /*@__PURE__*/ S.Array(
+const JobRunPropertiesWarningsList = /*@__PURE__*/ S.Array(
   JobRunWarning,
 ) as any as S.Schema<JobRunPropertiesWarningsList>;
 
@@ -1462,7 +1457,7 @@ export interface JobRunProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const JobRunProperties = /*@__PURE__*/ S.suspend(() =>
+const JobRunProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(JobRunStatus),
     scanStatus: S.optional(JobRunScanStatus),
@@ -1510,7 +1505,7 @@ export interface GetJobRunResponse {
   /** Job run properties. */
   properties?: JobRunProperties;
 }
-export const GetJobRunResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1530,7 +1525,7 @@ export interface GetProjectRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1553,7 +1548,7 @@ export interface ProjectProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
+const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     provisioningState: S.optional(ProvisioningState),
@@ -1572,7 +1567,7 @@ export interface GetProjectResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1590,7 +1585,7 @@ export interface GetStorageMoverRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const GetStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1607,7 +1602,7 @@ export const GetStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetStorageMoverResponseTagsMap = { [key: string]: string | undefined };
-export const GetStorageMoverResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetStorageMoverResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetStorageMoverResponseTagsMap>;
@@ -1619,7 +1614,7 @@ export interface StorageMoverProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-export const StorageMoverProperties = ProjectProperties as any as S.Schema<StorageMoverProperties>;
+const StorageMoverProperties = ProjectProperties as any as S.Schema<StorageMoverProperties>;
 
 export interface GetStorageMoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1637,7 +1632,7 @@ export interface GetStorageMoverResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const GetStorageMoverResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStorageMoverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1654,15 +1649,13 @@ export type JobDefinitionPropertiesInputJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
   | "OnPremToCloudAgentLess";
-export const JobDefinitionPropertiesInputJobType = S.String;
+const JobDefinitionPropertiesInputJobType = S.String;
 
 /** The list of cloud endpoints to migrate. */
 export type JobDefinitionPropertiesInputSourceTargetMap = UserAssignedIdentityInput;
-export const JobDefinitionPropertiesInputSourceTargetMap = UserAssignedIdentityInput;
-
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesInputConnectionsList = Array<string>;
-export const JobDefinitionPropertiesInputConnectionsList =
+const JobDefinitionPropertiesInputConnectionsList =
   ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesInputConnectionsList>;
 
 /** The checksum validation mode for the job definition. */
@@ -1670,7 +1663,7 @@ export type JobDefinitionPropertiesInputDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
   | "None";
-export const JobDefinitionPropertiesInputDataIntegrityValidation = S.String;
+const JobDefinitionPropertiesInputDataIntegrityValidation = S.String;
 
 /** Job definition properties. */
 export interface JobDefinitionPropertiesInput {
@@ -1711,7 +1704,7 @@ export interface JobDefinitionPropertiesInput {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-export const JobDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     jobType: S.optional(JobDefinitionPropertiesInputJobType),
@@ -1750,7 +1743,7 @@ export interface JobDefinitionsCreateOrUpdateRequest {
   /** Job definition properties. */
   properties: JobDefinitionPropertiesInput;
 }
-export const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1782,7 +1775,7 @@ export interface JobDefinitionsCreateOrUpdateResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const JobDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1806,7 +1799,7 @@ export interface JobDefinitionsReconcileJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const JobDefinitionsReconcileJobRequest = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionsReconcileJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1830,7 +1823,7 @@ export interface JobRunResourceId {
   /** Fully qualified resource id of the Job Run. */
   jobRunResourceId?: string;
 }
-export const JobRunResourceId = /*@__PURE__*/ S.suspend(() =>
+const JobRunResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobRunResourceId: S.optional(S.String),
   }),
@@ -1844,7 +1837,7 @@ export interface ListAgentsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const ListAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1871,13 +1864,11 @@ export interface Agent {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const Agent = GetAgentResponse as any as S.Schema<Agent>;
+const Agent = GetAgentResponse as any as S.Schema<Agent>;
 
 /** The Agent items on this page */
 export type AgentListValueList = Array<Agent>;
-export const AgentListValueList = /*@__PURE__*/ S.Array(
-  Agent,
-) as any as S.Schema<AgentListValueList>;
+const AgentListValueList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentListValueList>;
 
 /** List of Agents. */
 export interface AgentList {
@@ -1886,7 +1877,7 @@ export interface AgentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const AgentList = /*@__PURE__*/ S.suspend(() =>
+const AgentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: AgentListValueList,
     nextLink: S.optional(S.String),
@@ -1901,7 +1892,7 @@ export interface ListConnectionsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1929,11 +1920,11 @@ export interface Connection {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-export const Connection = GetConnectionResponse as any as S.Schema<Connection>;
+const Connection = GetConnectionResponse as any as S.Schema<Connection>;
 
 /** The Connection items on this page */
 export type ConnectionListValueList = Array<Connection>;
-export const ConnectionListValueList = /*@__PURE__*/ S.Array(
+const ConnectionListValueList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListValueList>;
 
@@ -1944,7 +1935,7 @@ export interface ConnectionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectionList = /*@__PURE__*/ S.suspend(() =>
+const ConnectionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectionListValueList,
     nextLink: S.optional(S.String),
@@ -1959,7 +1950,7 @@ export interface ListEndpointsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1976,8 +1967,6 @@ export const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type EndpointIdentity = EndpointsCreateOrUpdateResponseIdentity;
-export const EndpointIdentity = EndpointsCreateOrUpdateResponseIdentity;
-
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface Endpoint {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1993,11 +1982,11 @@ export interface Endpoint {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
+const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
 
 /** The Endpoint items on this page */
 export type EndpointListValueList = Array<Endpoint>;
-export const EndpointListValueList = /*@__PURE__*/ S.Array(
+const EndpointListValueList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<EndpointListValueList>;
 
@@ -2008,7 +1997,7 @@ export interface EndpointList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const EndpointList = /*@__PURE__*/ S.suspend(() =>
+const EndpointList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: EndpointListValueList,
     nextLink: S.optional(S.String),
@@ -2025,7 +2014,7 @@ export interface ListJobDefinitionsRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-export const ListJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2056,11 +2045,11 @@ export interface JobDefinition {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const JobDefinition = GetJobDefinitionResponse as any as S.Schema<JobDefinition>;
+const JobDefinition = GetJobDefinitionResponse as any as S.Schema<JobDefinition>;
 
 /** The JobDefinition items on this page */
 export type JobDefinitionListValueList = Array<JobDefinition>;
-export const JobDefinitionListValueList = /*@__PURE__*/ S.Array(
+const JobDefinitionListValueList = /*@__PURE__*/ S.Array(
   JobDefinition,
 ) as any as S.Schema<JobDefinitionListValueList>;
 
@@ -2071,7 +2060,7 @@ export interface JobDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const JobDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: JobDefinitionListValueList,
     nextLink: S.optional(S.String),
@@ -2090,7 +2079,7 @@ export interface ListJobRunsRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const ListJobRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2120,13 +2109,11 @@ export interface JobRun {
   /** Job run properties. */
   properties?: JobRunProperties;
 }
-export const JobRun = GetJobRunResponse as any as S.Schema<JobRun>;
+const JobRun = GetJobRunResponse as any as S.Schema<JobRun>;
 
 /** The JobRun items on this page */
 export type JobRunListValueList = Array<JobRun>;
-export const JobRunListValueList = /*@__PURE__*/ S.Array(
-  JobRun,
-) as any as S.Schema<JobRunListValueList>;
+const JobRunListValueList = /*@__PURE__*/ S.Array(JobRun) as any as S.Schema<JobRunListValueList>;
 
 /** List of Job Runs. */
 export interface JobRunList {
@@ -2135,7 +2122,7 @@ export interface JobRunList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const JobRunList = /*@__PURE__*/ S.suspend(() =>
+const JobRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: JobRunListValueList,
     nextLink: S.optional(S.String),
@@ -2143,7 +2130,7 @@ export const JobRunList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobRunList" }) as any as S.Schema<JobRunList>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2165,7 +2152,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2176,11 +2163,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2195,7 +2182,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2207,7 +2194,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2217,7 +2204,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2232,7 +2219,7 @@ export interface ListProjectsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2260,11 +2247,11 @@ export interface Project {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const Project = GetProjectResponse as any as S.Schema<Project>;
+const Project = GetProjectResponse as any as S.Schema<Project>;
 
 /** The Project items on this page */
 export type ProjectListValueList = Array<Project>;
-export const ProjectListValueList = /*@__PURE__*/ S.Array(
+const ProjectListValueList = /*@__PURE__*/ S.Array(
   Project,
 ) as any as S.Schema<ProjectListValueList>;
 
@@ -2275,7 +2262,7 @@ export interface ProjectList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ProjectList = /*@__PURE__*/ S.suspend(() =>
+const ProjectList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ProjectListValueList,
     nextLink: S.optional(S.String),
@@ -2286,7 +2273,7 @@ export interface ListStorageMoverBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListStorageMoverBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageMoverBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2303,9 +2290,6 @@ export const ListStorageMoverBySubscriptionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type StorageMoverTagsMap = { [key: string]: string | undefined };
-export const StorageMoverTagsMap =
-  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoverTagsMap>;
-
 /** The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints. */
 export interface StorageMover {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2323,11 +2307,11 @@ export interface StorageMover {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const StorageMover = GetStorageMoverResponse as any as S.Schema<StorageMover>;
+const StorageMover = GetStorageMoverResponse as any as S.Schema<StorageMover>;
 
 /** The StorageMover items on this page */
 export type StorageMoverListValueList = Array<StorageMover>;
-export const StorageMoverListValueList = /*@__PURE__*/ S.Array(
+const StorageMoverListValueList = /*@__PURE__*/ S.Array(
   StorageMover,
 ) as any as S.Schema<StorageMoverListValueList>;
 
@@ -2338,7 +2322,7 @@ export interface StorageMoverList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const StorageMoverList = /*@__PURE__*/ S.suspend(() =>
+const StorageMoverList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: StorageMoverListValueList,
     nextLink: S.optional(S.String),
@@ -2351,7 +2335,7 @@ export interface ListStorageMoversRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListStorageMoversRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStorageMoversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2370,7 +2354,7 @@ export interface ProjectPropertiesInput {
   /** A description for the Project. */
   description?: string;
 }
-export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -2388,7 +2372,7 @@ export interface ProjectsCreateOrUpdateRequest {
   /** Project properties. */
   properties?: ProjectPropertiesInput;
 }
-export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2419,7 +2403,7 @@ export interface ProjectsCreateOrUpdateResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2443,7 +2427,7 @@ export interface StartJobDefinitionJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const StartJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2474,7 +2458,7 @@ export interface StopJobDefinitionJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-export const StopJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StopJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2495,7 +2479,7 @@ export const StopJobDefinitionJobRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const StorageMoversCreateOrUpdateRequestTagsMap =
+const StorageMoversCreateOrUpdateRequestTagsMap =
   GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateRequestTagsMap>;
 
 /** The resource specific properties for the Storage Mover resource. */
@@ -2503,7 +2487,7 @@ export interface StorageMoverPropertiesInput {
   /** A description for the Storage Mover. */
   description?: string;
 }
-export const StorageMoverPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const StorageMoverPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -2525,7 +2509,7 @@ export interface StorageMoversCreateOrUpdateRequest {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverPropertiesInput;
 }
-export const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2547,7 +2531,7 @@ export const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const StorageMoversCreateOrUpdateResponseTagsMap =
+const StorageMoversCreateOrUpdateResponseTagsMap =
   GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateResponseTagsMap>;
 
 export interface StorageMoversCreateOrUpdateResponse {
@@ -2566,7 +2550,7 @@ export interface StorageMoversCreateOrUpdateResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const StorageMoversCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const StorageMoversCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2586,7 +2570,7 @@ export interface AgentUpdateProperties {
   /** The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time. */
   uploadLimitSchedule?: UploadLimitSchedule;
 }
-export const AgentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const AgentUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     uploadLimitSchedule: S.optional(UploadLimitSchedule),
@@ -2604,7 +2588,7 @@ export interface UpdateAgentRequest {
   agentName: string;
   properties?: AgentUpdateProperties;
 }
-export const UpdateAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2632,7 +2616,7 @@ export interface UpdateAgentResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-export const UpdateAgentResponse = GetAgentResponse as any as S.Schema<UpdateAgentResponse>;
+const UpdateAgentResponse = GetAgentResponse as any as S.Schema<UpdateAgentResponse>;
 
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface EndpointBaseUpdateProperties {
@@ -2647,7 +2631,7 @@ export interface EndpointBaseUpdateProperties {
   /** Storage account ARM IDs allowed for cross-tenant transfers (string array). */
   allowedStorageAccounts?: unknown;
 }
-export const EndpointBaseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const EndpointBaseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointType: EndpointType,
     description: S.optional(S.String),
@@ -2661,8 +2645,6 @@ export const EndpointBaseUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateEndpointRequestIdentity = EndpointsCreateOrUpdateRequestIdentity;
-export const UpdateEndpointRequestIdentity = EndpointsCreateOrUpdateRequestIdentity;
-
 export interface UpdateEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2677,7 +2659,7 @@ export interface UpdateEndpointRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateRequestIdentity;
 }
-export const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2697,8 +2679,6 @@ export const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
-export const UpdateEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
-
 export interface UpdateEndpointResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2713,17 +2693,16 @@ export interface UpdateEndpointResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-export const UpdateEndpointResponse =
-  GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
+const UpdateEndpointResponse = GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
 
 /** List of connections associated to this job */
 export type JobDefinitionUpdatePropertiesConnectionsList = Array<string>;
-export const JobDefinitionUpdatePropertiesConnectionsList =
+const JobDefinitionUpdatePropertiesConnectionsList =
   ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionUpdatePropertiesConnectionsList>;
 
 /** The Data integrity validation mode. */
 export type DataIntegrityValidation = "SaveVerifyFileMD5" | "SaveFileMD5" | "None";
-export const DataIntegrityValidation = S.String;
+const DataIntegrityValidation = S.String;
 
 /** Job definition properties. */
 export interface JobDefinitionUpdateProperties {
@@ -2744,7 +2723,7 @@ export interface JobDefinitionUpdateProperties {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-export const JobDefinitionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const JobDefinitionUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     copyMode: S.optional(CopyMode),
@@ -2773,7 +2752,7 @@ export interface UpdateJobDefinitionRequest {
   /** Job definition properties. */
   properties?: JobDefinitionUpdateProperties;
 }
-export const UpdateJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2805,13 +2784,11 @@ export interface UpdateJobDefinitionResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-export const UpdateJobDefinitionResponse =
+const UpdateJobDefinitionResponse =
   JobDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateJobDefinitionResponse>;
 
 /** Project properties. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
-export const ProjectUpdateProperties = ProjectPropertiesInput;
-
 export interface UpdateProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2824,7 +2801,7 @@ export interface UpdateProjectRequest {
   /** Project properties. */
   properties?: ProjectPropertiesInput;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2853,15 +2830,13 @@ export interface UpdateProjectResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-export const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
+const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** The resource specific properties for the Storage Mover resource. */
 export type StorageMoverUpdateProperties = StorageMoverPropertiesInput;
-export const StorageMoverUpdateProperties = StorageMoverPropertiesInput;
-
 /** Resource tags. */
 export type UpdateStorageMoverRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageMoverRequestTagsMap =
+const UpdateStorageMoverRequestTagsMap =
   GetStorageMoverResponseTagsMap as any as S.Schema<UpdateStorageMoverRequestTagsMap>;
 
 export interface UpdateStorageMoverRequest {
@@ -2876,7 +2851,7 @@ export interface UpdateStorageMoverRequest {
   /** Resource tags. */
   tags?: UpdateStorageMoverRequestTagsMap;
 }
-export const UpdateStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2897,9 +2872,6 @@ export const UpdateStorageMoverRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateStorageMoverResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateStorageMoverResponseTagsMap =
-  GetStorageMoverResponseTagsMap as any as S.Schema<UpdateStorageMoverResponseTagsMap>;
-
 export interface UpdateStorageMoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2916,7 +2888,7 @@ export interface UpdateStorageMoverResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-export const UpdateStorageMoverResponse =
+const UpdateStorageMoverResponse =
   StorageMoversCreateOrUpdateResponse as any as S.Schema<UpdateStorageMoverResponse>;
 
 export type AgentsCreateOrUpdateError = AzureOpError;

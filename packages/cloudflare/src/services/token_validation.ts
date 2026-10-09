@@ -64,19 +64,18 @@ export class TokenValidationRuleNotFound
   ) {}
 
 export type RulesBulkCreateRequestBodyItemAction = "log" | "block";
-export const RulesBulkCreateRequestBodyItemAction = S.String;
+const RulesBulkCreateRequestBodyItemAction = S.String;
 
 export type RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList>;
+const RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkCreateRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
-export const RulesBulkCreateRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
       RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(
@@ -90,12 +89,12 @@ export const RulesBulkCreateRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S
 
 export type RulesBulkCreateRequestBodyItemSelectorExcludeList =
   Array<RulesBulkCreateRequestBodyItemSelectorExcludeItem>;
-export const RulesBulkCreateRequestBodyItemSelectorExcludeList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestBodyItemSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestBodyItemSelectorExcludeItem,
 ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorExcludeList>;
 
 export type RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList>;
 
@@ -103,7 +102,7 @@ export interface RulesBulkCreateRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList;
 }
-export const RulesBulkCreateRequestBodyItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateRequestBodyItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList),
   }),
@@ -113,7 +112,7 @@ export const RulesBulkCreateRequestBodyItemSelectorIncludeItem = /*@__PURE__*/ S
 
 export type RulesBulkCreateRequestBodyItemSelectorIncludeList =
   Array<RulesBulkCreateRequestBodyItemSelectorIncludeItem>;
-export const RulesBulkCreateRequestBodyItemSelectorIncludeList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestBodyItemSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestBodyItemSelectorIncludeItem,
 ) as any as S.Schema<RulesBulkCreateRequestBodyItemSelectorIncludeList>;
 
@@ -123,7 +122,7 @@ export interface RulesBulkCreateRequestBodyItemSelector {
   /** Select all matching operations. */
   include?: RulesBulkCreateRequestBodyItemSelectorIncludeList;
 }
-export const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateRequestBodyItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(RulesBulkCreateRequestBodyItemSelectorExcludeList),
     include: S.optional(RulesBulkCreateRequestBodyItemSelectorIncludeList),
@@ -146,7 +145,7 @@ export interface RulesBulkCreateRequestBodyItem {
   /** A human-readable name for the rule. */
   title: string;
 }
-export const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesBulkCreateRequestBodyItemAction,
     description: S.String,
@@ -160,7 +159,7 @@ export const RulesBulkCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateRequestBodyItem>;
 
 export type RulesBulkCreateRequestBodyList = Array<RulesBulkCreateRequestBodyItem>;
-export const RulesBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestBodyItem,
 ) as any as S.Schema<RulesBulkCreateRequestBodyList>;
 
@@ -169,7 +168,7 @@ export interface BulkCreateRulesRequest {
   zoneId: string;
   body: RulesBulkCreateRequestBodyList;
 }
-export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkCreateRequestBodyList.pipe(T.HttpBody()),
@@ -181,17 +180,17 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesRequest" }) as any as S.Schema<BulkCreateRulesRequest>;
 
 export type RulesBulkCreateResultItemAction = "log" | "block";
-export const RulesBulkCreateResultItemAction = S.String;
+const RulesBulkCreateResultItemAction = S.String;
 
 export type RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
+const RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkCreateResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesBulkCreateResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResultItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
       S.NullOr(RulesBulkCreateResultItemSelectorExcludeItemOperationIdsList).pipe(
@@ -205,19 +204,19 @@ export const RulesBulkCreateResultItemSelectorExcludeItem = /*@__PURE__*/ S.susp
 
 export type RulesBulkCreateResultItemSelectorExcludeList =
   Array<RulesBulkCreateResultItemSelectorExcludeItem>;
-export const RulesBulkCreateResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateResultItemSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResultItemSelectorExcludeItem,
 ) as any as S.Schema<RulesBulkCreateResultItemSelectorExcludeList>;
 
 export type RulesBulkCreateResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkCreateResultItemSelectorIncludeItemHostList =
+const RulesBulkCreateResultItemSelectorIncludeItemHostList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeItemHostList>;
 
 export interface RulesBulkCreateResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkCreateResultItemSelectorIncludeItemHostList | null;
 }
-export const RulesBulkCreateResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResultItemSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorIncludeItemHostList)),
   }),
@@ -227,7 +226,7 @@ export const RulesBulkCreateResultItemSelectorIncludeItem = /*@__PURE__*/ S.susp
 
 export type RulesBulkCreateResultItemSelectorIncludeList =
   Array<RulesBulkCreateResultItemSelectorIncludeItem>;
-export const RulesBulkCreateResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateResultItemSelectorIncludeList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResultItemSelectorIncludeItem,
 ) as any as S.Schema<RulesBulkCreateResultItemSelectorIncludeList>;
 
@@ -237,7 +236,7 @@ export interface RulesBulkCreateResultItemSelector {
   /** Select all matching operations. */
   include?: RulesBulkCreateResultItemSelectorIncludeList | null;
 }
-export const RulesBulkCreateResultItemSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResultItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorExcludeList)),
     include: S.optional(S.NullOr(RulesBulkCreateResultItemSelectorIncludeList)),
@@ -264,7 +263,7 @@ export interface RulesBulkCreateResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesBulkCreateResultItemAction,
     description: S.String,
@@ -281,7 +280,7 @@ export const RulesBulkCreateResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateResultItem>;
 
 export type RulesBulkCreateResultList = Array<RulesBulkCreateResultItem>;
-export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResultItem,
 ) as any as S.Schema<RulesBulkCreateResultList>;
 
@@ -291,7 +290,7 @@ export interface BulkCreateRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -299,61 +298,37 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesResponse" }) as any as S.Schema<BulkCreateRulesResponse>;
 
 export type RulesBulkEditRequestBodyItemAction = "log" | "block";
-export const RulesBulkEditRequestBodyItemAction = S.String;
+const RulesBulkEditRequestBodyItemAction = S.String;
 
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldIndex {
   /** Move rule to this position */
   index: number;
 }
-export const RulesBulkEditRequestBodyItemPositionAPIShieldIndex = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.Number,
-  }),
-).annotate({
-  identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldIndex",
-}) as any as S.Schema<RulesBulkEditRequestBodyItemPositionAPIShieldIndex>;
-
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldBefore {
   /** Move rule to before rule with this ID. */
   before?: string;
 }
-export const RulesBulkEditRequestBodyItemPositionAPIShieldBefore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    before: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldBefore",
-}) as any as S.Schema<RulesBulkEditRequestBodyItemPositionAPIShieldBefore>;
-
 export interface RulesBulkEditRequestBodyItemPositionAPIShieldAfter {
   /** Move rule to after rule with this ID. */
   after?: string;
 }
-export const RulesBulkEditRequestBodyItemPositionAPIShieldAfter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    after: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesBulkEditRequestBodyItemPositionAPIShieldAfter",
-}) as any as S.Schema<RulesBulkEditRequestBodyItemPositionAPIShieldAfter>;
-
 export type RulesBulkEditRequestBodyItemPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-export const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.Unknown.pipe(
+const RulesBulkEditRequestBodyItemPosition = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
+const RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList =
   RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList>;
 
 export interface RulesBulkEditRequestBodyItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList;
 }
-export const RulesBulkEditRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkEditRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
       RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList.pipe(T.Body("operation_ids")),
@@ -365,24 +340,18 @@ export const RulesBulkEditRequestBodyItemSelectorExcludeItem = /*@__PURE__*/ S.s
 
 export type RulesBulkEditRequestBodyItemSelectorExcludeList =
   Array<RulesBulkEditRequestBodyItemSelectorExcludeItem>;
-export const RulesBulkEditRequestBodyItemSelectorExcludeList = /*@__PURE__*/ S.Array(
+const RulesBulkEditRequestBodyItemSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesBulkEditRequestBodyItemSelectorExcludeItem,
 ) as any as S.Schema<RulesBulkEditRequestBodyItemSelectorExcludeList>;
 
 export type RulesBulkEditRequestBodyItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkEditRequestBodyItemSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItemHostList>;
-
 export interface RulesBulkEditRequestBodyItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkEditRequestBodyItemSelectorIncludeItemHostList;
 }
-export const RulesBulkEditRequestBodyItemSelectorIncludeItem =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
-
 export type RulesBulkEditRequestBodyItemSelectorIncludeList =
   Array<RulesBulkEditRequestBodyItemSelectorIncludeItem>;
-export const RulesBulkEditRequestBodyItemSelectorIncludeList =
+const RulesBulkEditRequestBodyItemSelectorIncludeList =
   RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesBulkEditRequestBodyItemSelectorIncludeList>;
 
 export interface RulesBulkEditRequestBodyItemSelector {
@@ -391,7 +360,7 @@ export interface RulesBulkEditRequestBodyItemSelector {
   /** Select all matching operations. */
   include?: RulesBulkEditRequestBodyItemSelectorIncludeList;
 }
-export const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkEditRequestBodyItemSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(RulesBulkEditRequestBodyItemSelectorExcludeList),
     include: S.optional(RulesBulkEditRequestBodyItemSelectorIncludeList),
@@ -418,7 +387,7 @@ export interface RulesBulkEditRequestBodyItem {
   /** A human-readable name for the rule. */
   title?: string;
 }
-export const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     action: S.optional(RulesBulkEditRequestBodyItemAction),
@@ -434,7 +403,7 @@ export const RulesBulkEditRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkEditRequestBodyItem>;
 
 export type RulesBulkEditRequestBodyList = Array<RulesBulkEditRequestBodyItem>;
-export const RulesBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
+const RulesBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkEditRequestBodyItem,
 ) as any as S.Schema<RulesBulkEditRequestBodyList>;
 
@@ -443,7 +412,7 @@ export interface BulkPatchRulesRequest {
   zoneId: string;
   body: RulesBulkEditRequestBodyList;
 }
-export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkEditRequestBodyList.pipe(T.HttpBody()),
@@ -455,47 +424,29 @@ export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPatchRulesRequest" }) as any as S.Schema<BulkPatchRulesRequest>;
 
 export type RulesBulkEditResultItemAction = "log" | "block";
-export const RulesBulkEditResultItemAction = S.String;
+const RulesBulkEditResultItemAction = S.String;
 
 export type RulesBulkEditResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesBulkEditResultItemSelectorExcludeItemOperationIdsList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItemOperationIdsList>;
-
 export interface RulesBulkEditResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesBulkEditResultItemSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesBulkEditResultItemSelectorExcludeItem =
-  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesBulkEditResultItemSelectorExcludeItem>;
-
 export type RulesBulkEditResultItemSelectorExcludeList =
   Array<RulesBulkEditResultItemSelectorExcludeItem>;
-export const RulesBulkEditResultItemSelectorExcludeList =
-  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesBulkEditResultItemSelectorExcludeList>;
-
 export type RulesBulkEditResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesBulkEditResultItemSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItemHostList>;
-
 export interface RulesBulkEditResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesBulkEditResultItemSelectorIncludeItemHostList | null;
 }
-export const RulesBulkEditResultItemSelectorIncludeItem =
-  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesBulkEditResultItemSelectorIncludeItem>;
-
 export type RulesBulkEditResultItemSelectorIncludeList =
   Array<RulesBulkEditResultItemSelectorIncludeItem>;
-export const RulesBulkEditResultItemSelectorIncludeList =
-  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesBulkEditResultItemSelectorIncludeList>;
-
 export interface RulesBulkEditResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesBulkEditResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesBulkEditResultItemSelectorIncludeList | null;
 }
-export const RulesBulkEditResultItemSelector =
+const RulesBulkEditResultItemSelector =
   RulesBulkCreateResultItemSelector as any as S.Schema<RulesBulkEditResultItemSelector>;
 
 export interface RulesBulkEditResultItem {
@@ -516,7 +467,7 @@ export interface RulesBulkEditResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesBulkEditResultItemAction,
     description: S.String,
@@ -531,7 +482,7 @@ export const RulesBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesBulkEditResultItem" }) as any as S.Schema<RulesBulkEditResultItem>;
 
 export type RulesBulkEditResultList = Array<RulesBulkEditResultItem>;
-export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
+const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
 
@@ -541,7 +492,7 @@ export interface BulkPatchRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -555,13 +506,7 @@ export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWT
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg:
@@ -576,34 +521,12 @@ export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentia
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg,
-      e: S.String,
-      kid: S.String,
-      kty: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty,
-      n: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA",
-  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
   "EC";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -618,35 +541,12 @@ export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentia
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg,
-      crv: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv,
-      kid: S.String,
-      kty: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty,
-      x: S.String,
-      y: S.String,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256",
-  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
   "EC";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -661,21 +561,12 @@ export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentia
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
-  S.String;
-
 export type ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestKty =
   "oct";
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestKty =
-  S.String;
-
 export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest {
   /** Algorithm */
   alg:
@@ -688,24 +579,12 @@ export interface ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentia
   /** Key Type */
   kty: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestKty;
 }
-export const ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg,
-      k: S.String,
-      kid: S.String,
-      kty: ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequestKty,
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest",
-  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest>;
-
 export type ConfigurationCreateRequestCredentialsKeysItem =
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest;
-export const ConfigurationCreateRequestCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationCreateRequestCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -716,14 +595,14 @@ export const ConfigurationCreateRequestCredentialsKeysItem = /*@__PURE__*/ S.Unk
 
 export type ConfigurationCreateRequestCredentialsKeysList =
   Array<ConfigurationCreateRequestCredentialsKeysItem>;
-export const ConfigurationCreateRequestCredentialsKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationCreateRequestCredentialsKeysList = /*@__PURE__*/ S.Array(
   ConfigurationCreateRequestCredentialsKeysItem,
 ) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysList>;
 
 export interface ConfigurationCreateRequestCredentials {
   keys: ConfigurationCreateRequestCredentialsKeysList;
 }
-export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationCreateRequestCredentialsKeysList,
   }),
@@ -732,11 +611,11 @@ export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ConfigurationCreateRequestCredentials>;
 
 export type ConfigurationCreateRequestTokenSourcesList = Array<string>;
-export const ConfigurationCreateRequestTokenSourcesList =
+const ConfigurationCreateRequestTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
 
 export type ConfigurationCreateRequestTokenType = "JWT";
-export const ConfigurationCreateRequestTokenType = S.String;
+const ConfigurationCreateRequestTokenType = S.String;
 
 export interface CreateConfigurationRequest {
   /** Identifier. */
@@ -748,7 +627,7 @@ export interface CreateConfigurationRequest {
   tokenSources: ConfigurationCreateRequestTokenSourcesList;
   tokenType: ConfigurationCreateRequestTokenType | (string & {});
 }
-export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     credentials: ConfigurationCreateRequestCredentials,
@@ -770,13 +649,7 @@ export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJW
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg;
@@ -789,24 +662,12 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
   "EC";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -821,24 +682,12 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
   "EC";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -853,21 +702,12 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
-  S.String;
-
 export type ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
   "oct";
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
-  S.String;
-
 export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse {
   /** Algorithm */
   alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg;
@@ -876,24 +716,12 @@ export interface ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredenti
   /** Key Type */
   kty: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
-export const ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg,
-      kid: S.String,
-      kty: ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty,
-    }),
-  ).annotate({
-    identifier:
-      "ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse",
-  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
-
 export type ConfigurationCreateResponseCredentialsKeysItem =
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
-export const ConfigurationCreateResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationCreateResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -904,14 +732,14 @@ export const ConfigurationCreateResponseCredentialsKeysItem = /*@__PURE__*/ S.Un
 
 export type ConfigurationCreateResponseCredentialsKeysList =
   Array<ConfigurationCreateResponseCredentialsKeysItem>;
-export const ConfigurationCreateResponseCredentialsKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationCreateResponseCredentialsKeysList = /*@__PURE__*/ S.Array(
   ConfigurationCreateResponseCredentialsKeysItem,
 ) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysList>;
 
 export interface ConfigurationCreateResponseCredentials {
   keys: ConfigurationCreateResponseCredentialsKeysList;
 }
-export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationCreateResponseCredentialsKeysList,
   }),
@@ -920,11 +748,11 @@ export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ConfigurationCreateResponseCredentials>;
 
 export type ConfigurationCreateResponseTokenSourcesList = Array<string>;
-export const ConfigurationCreateResponseTokenSourcesList =
+const ConfigurationCreateResponseTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
 
 export type ConfigurationCreateResponseTokenType = "JWT";
-export const ConfigurationCreateResponseTokenType = S.String;
+const ConfigurationCreateResponseTokenType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateConfigurationResponse {
@@ -938,7 +766,7 @@ export interface CreateConfigurationResponse {
   tokenSources: ConfigurationCreateResponseTokenSourcesList;
   tokenType: ConfigurationCreateResponseTokenType;
 }
-export const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -954,17 +782,17 @@ export const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConfigurationResponse>;
 
 export type RulesCreateRequestAction = "log" | "block";
-export const RulesCreateRequestAction = S.String;
+const RulesCreateRequestAction = S.String;
 
 export type RulesCreateRequestSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesCreateRequestSelectorExcludeItemOperationIdsList =
+const RulesCreateRequestSelectorExcludeItemOperationIdsList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateRequestSelectorExcludeItemOperationIdsList>;
 
 export interface RulesCreateRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesCreateRequestSelectorExcludeItemOperationIdsList;
 }
-export const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
       RulesCreateRequestSelectorExcludeItemOperationIdsList.pipe(T.Body("operation_ids")),
@@ -975,23 +803,17 @@ export const RulesCreateRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RulesCreateRequestSelectorExcludeItem>;
 
 export type RulesCreateRequestSelectorExcludeList = Array<RulesCreateRequestSelectorExcludeItem>;
-export const RulesCreateRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
+const RulesCreateRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesCreateRequestSelectorExcludeItem,
 ) as any as S.Schema<RulesCreateRequestSelectorExcludeList>;
 
 export type RulesCreateRequestSelectorIncludeItemHostList = Array<string>;
-export const RulesCreateRequestSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateRequestSelectorIncludeItemHostList>;
-
 export interface RulesCreateRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesCreateRequestSelectorIncludeItemHostList;
 }
-export const RulesCreateRequestSelectorIncludeItem =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesCreateRequestSelectorIncludeItem>;
-
 export type RulesCreateRequestSelectorIncludeList = Array<RulesCreateRequestSelectorIncludeItem>;
-export const RulesCreateRequestSelectorIncludeList =
+const RulesCreateRequestSelectorIncludeList =
   RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesCreateRequestSelectorIncludeList>;
 
 export interface RulesCreateRequestSelector {
@@ -1000,7 +822,7 @@ export interface RulesCreateRequestSelector {
   /** Select all matching operations. */
   include?: RulesCreateRequestSelectorIncludeList;
 }
-export const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(RulesCreateRequestSelectorExcludeList),
     include: S.optional(RulesCreateRequestSelectorIncludeList),
@@ -1025,7 +847,7 @@ export interface CreateRuleRequest {
   /** A human-readable name for the rule. */
   title: string;
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: RulesCreateRequestAction,
@@ -1040,45 +862,27 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponseAction = "log" | "block";
-export const RulesCreateResponseAction = S.String;
+const RulesCreateResponseAction = S.String;
 
 export type RulesCreateResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesCreateResponseSelectorExcludeItemOperationIdsList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateResponseSelectorExcludeItemOperationIdsList>;
-
 export interface RulesCreateResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesCreateResponseSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesCreateResponseSelectorExcludeItem =
-  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesCreateResponseSelectorExcludeItem>;
-
 export type RulesCreateResponseSelectorExcludeList = Array<RulesCreateResponseSelectorExcludeItem>;
-export const RulesCreateResponseSelectorExcludeList =
-  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesCreateResponseSelectorExcludeList>;
-
 export type RulesCreateResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesCreateResponseSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesCreateResponseSelectorIncludeItemHostList>;
-
 export interface RulesCreateResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesCreateResponseSelectorIncludeItemHostList | null;
 }
-export const RulesCreateResponseSelectorIncludeItem =
-  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesCreateResponseSelectorIncludeItem>;
-
 export type RulesCreateResponseSelectorIncludeList = Array<RulesCreateResponseSelectorIncludeItem>;
-export const RulesCreateResponseSelectorIncludeList =
-  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesCreateResponseSelectorIncludeList>;
-
 export interface RulesCreateResponseSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesCreateResponseSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesCreateResponseSelectorIncludeList | null;
 }
-export const RulesCreateResponseSelector =
+const RulesCreateResponseSelector =
   RulesBulkCreateResultItemSelector as any as S.Schema<RulesCreateResponseSelector>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1100,7 +904,7 @@ export interface CreateRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesCreateResponseAction,
     description: S.String,
@@ -1120,7 +924,7 @@ export interface DeleteConfigurationRequest {
   /** UUID. */
   configId: string;
 }
-export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -1142,7 +946,7 @@ export interface DeleteConfigurationResponse {
   /** UUID. */
   id?: string | null;
 }
-export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1156,7 +960,7 @@ export interface DeleteRuleRequest {
   /** UUID. */
   ruleId: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -1172,7 +976,7 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export type DeleteRuleResponse = unknown;
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteRuleResponse" }) as any as S.Schema<DeleteRuleResponse>;
 
@@ -1183,11 +987,7 @@ export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKe
   | "PS256"
   | "PS384"
   | "PS512";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg = S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty = S.String;
-
 export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg | (string & {});
@@ -1200,23 +1000,11 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   /** RSA modulus */
   n: string;
 }
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty = "EC";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -1231,23 +1019,11 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   /** Y EC coordinate */
   y: string;
 }
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty = "EC";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -1262,21 +1038,12 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   /** Y EC coordinate */
   y: string;
 }
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestAlg =
-  S.String;
-
 export type EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestKty =
   "oct";
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestKty =
-  S.String;
-
 export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest {
   /** Algorithm */
   alg:
@@ -1289,25 +1056,12 @@ export interface EditConfigurationCredentialsRequestKeysItemAPIShieldCredentials
   /** Symmetric key material. Optional for PATCH: omit to preserve existing secret for matching `{alg,kid}`; send a string to rotate. `k: null` is invalid. */
   k?: string;
 }
-export const EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestAlg,
-      kid: S.String,
-      kty: EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequestKty,
-      k: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest",
-  }) as any as S.Schema<EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest>;
-
 export type EditConfigurationCredentialsRequestKeysItem =
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyRSA
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsRequestKeysItemAPIShieldCredentialsJWTKeyOctPatchRequest;
-export const EditConfigurationCredentialsRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const EditConfigurationCredentialsRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1318,7 +1072,7 @@ export const EditConfigurationCredentialsRequestKeysItem = /*@__PURE__*/ S.Unkno
 
 export type EditConfigurationCredentialsRequestKeysList =
   Array<EditConfigurationCredentialsRequestKeysItem>;
-export const EditConfigurationCredentialsRequestKeysList = /*@__PURE__*/ S.Array(
+const EditConfigurationCredentialsRequestKeysList = /*@__PURE__*/ S.Array(
   EditConfigurationCredentialsRequestKeysItem,
 ) as any as S.Schema<EditConfigurationCredentialsRequestKeysList>;
 
@@ -1329,7 +1083,7 @@ export interface EditConfigurationCredentialsRequest {
   configId: string;
   keys: EditConfigurationCredentialsRequestKeysList;
 }
-export const EditConfigurationCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+const EditConfigurationCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -1354,13 +1108,7 @@ export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTK
   | "PS256"
   | "PS384"
   | "PS512";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg;
@@ -1373,23 +1121,11 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   /** RSA modulus */
   n: string;
 }
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty = "EC";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -1404,23 +1140,11 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   /** Y EC coordinate */
   y: string;
 }
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty = "EC";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -1435,21 +1159,12 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   /** Y EC coordinate */
   y: string;
 }
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
-  S.String;
-
 export type EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
   "oct";
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
-  S.String;
-
 export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse {
   /** Algorithm */
   alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg;
@@ -1458,23 +1173,12 @@ export interface EditConfigurationCredentialsResponseKeysItemAPIShieldCredential
   /** Key Type */
   kty: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
-export const EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      alg: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg,
-      kid: S.String,
-      kty: EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty,
-    }),
-  ).annotate({
-    identifier: "EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse",
-  }) as any as S.Schema<EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
-
 export type EditConfigurationCredentialsResponseKeysItem =
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyRSA
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
-export const EditConfigurationCredentialsResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const EditConfigurationCredentialsResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1485,7 +1189,7 @@ export const EditConfigurationCredentialsResponseKeysItem = /*@__PURE__*/ S.Unkn
 
 export type EditConfigurationCredentialsResponseKeysList =
   Array<EditConfigurationCredentialsResponseKeysItem>;
-export const EditConfigurationCredentialsResponseKeysList = /*@__PURE__*/ S.Array(
+const EditConfigurationCredentialsResponseKeysList = /*@__PURE__*/ S.Array(
   EditConfigurationCredentialsResponseKeysItem,
 ) as any as S.Schema<EditConfigurationCredentialsResponseKeysList>;
 
@@ -1493,7 +1197,7 @@ export const EditConfigurationCredentialsResponseKeysList = /*@__PURE__*/ S.Arra
 export interface EditConfigurationCredentialsResponse {
   keys: EditConfigurationCredentialsResponseKeysList;
 }
-export const EditConfigurationCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
+const EditConfigurationCredentialsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: EditConfigurationCredentialsResponseKeysList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1507,7 +1211,7 @@ export interface GetConfigurationRequest {
   /** UUID. */
   configId: string;
 }
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -1529,11 +1233,7 @@ export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKe
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg = S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty = S.String;
-
 export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg;
@@ -1546,23 +1246,11 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty = "EC";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -1577,23 +1265,11 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty = "EC";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -1608,21 +1284,12 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
-  S.String;
-
 export type ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
   "oct";
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
-  S.String;
-
 export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse {
   /** Algorithm */
   alg: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg;
@@ -1631,15 +1298,12 @@ export interface ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentials
   /** Key Type */
   kty: ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
-export const ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  EditConfigurationCredentialsResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
-
 export type ConfigurationGetResponseCredentialsKeysItem =
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationGetResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
-export const ConfigurationGetResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationGetResponseCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1650,14 +1314,14 @@ export const ConfigurationGetResponseCredentialsKeysItem = /*@__PURE__*/ S.Unkno
 
 export type ConfigurationGetResponseCredentialsKeysList =
   Array<ConfigurationGetResponseCredentialsKeysItem>;
-export const ConfigurationGetResponseCredentialsKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationGetResponseCredentialsKeysList = /*@__PURE__*/ S.Array(
   ConfigurationGetResponseCredentialsKeysItem,
 ) as any as S.Schema<ConfigurationGetResponseCredentialsKeysList>;
 
 export interface ConfigurationGetResponseCredentials {
   keys: ConfigurationGetResponseCredentialsKeysList;
 }
-export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationGetResponseCredentialsKeysList,
   }),
@@ -1666,11 +1330,11 @@ export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationGetResponseCredentials>;
 
 export type ConfigurationGetResponseTokenSourcesList = Array<string>;
-export const ConfigurationGetResponseTokenSourcesList =
+const ConfigurationGetResponseTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
 
 export type ConfigurationGetResponseTokenType = "JWT";
-export const ConfigurationGetResponseTokenType = S.String;
+const ConfigurationGetResponseTokenType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetConfigurationResponse {
@@ -1684,7 +1348,7 @@ export interface GetConfigurationResponse {
   tokenSources: ConfigurationGetResponseTokenSourcesList;
   tokenType: ConfigurationGetResponseTokenType;
 }
-export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -1703,7 +1367,7 @@ export interface GetRuleRequest {
   /** UUID. */
   ruleId: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -1719,17 +1383,17 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponseAction = "log" | "block";
-export const RulesGetResponseAction = S.String;
+const RulesGetResponseAction = S.String;
 
 export type RulesGetResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesGetResponseSelectorExcludeItemOperationIdsList =
+const RulesGetResponseSelectorExcludeItemOperationIdsList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesGetResponseSelectorExcludeItemOperationIdsList>;
 
 export interface RulesGetResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesGetResponseSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(
       S.NullOr(RulesGetResponseSelectorExcludeItemOperationIdsList).pipe(T.Body("operation_ids")),
@@ -1740,23 +1404,17 @@ export const RulesGetResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesGetResponseSelectorExcludeItem>;
 
 export type RulesGetResponseSelectorExcludeList = Array<RulesGetResponseSelectorExcludeItem>;
-export const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
+const RulesGetResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
   RulesGetResponseSelectorExcludeItem,
 ) as any as S.Schema<RulesGetResponseSelectorExcludeList>;
 
 export type RulesGetResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesGetResponseSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesGetResponseSelectorIncludeItemHostList>;
-
 export interface RulesGetResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesGetResponseSelectorIncludeItemHostList | null;
 }
-export const RulesGetResponseSelectorIncludeItem =
-  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesGetResponseSelectorIncludeItem>;
-
 export type RulesGetResponseSelectorIncludeList = Array<RulesGetResponseSelectorIncludeItem>;
-export const RulesGetResponseSelectorIncludeList =
+const RulesGetResponseSelectorIncludeList =
   RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesGetResponseSelectorIncludeList>;
 
 export interface RulesGetResponseSelector {
@@ -1765,7 +1423,7 @@ export interface RulesGetResponseSelector {
   /** Select all matching operations. */
   include?: RulesGetResponseSelectorIncludeList | null;
 }
-export const RulesGetResponseSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesGetResponseSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.NullOr(RulesGetResponseSelectorExcludeList)),
     include: S.optional(S.NullOr(RulesGetResponseSelectorIncludeList)),
@@ -1791,7 +1449,7 @@ export interface GetRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesGetResponseAction,
     description: S.String,
@@ -1813,7 +1471,7 @@ export interface ListConfigurationsRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1832,13 +1490,7 @@ export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJW
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSAAlg;
@@ -1851,24 +1503,12 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
   "EC";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -1883,24 +1523,12 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
   "EC";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -1915,21 +1543,12 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
-  S.String;
-
 export type ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
   "oct";
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
-  S.String;
-
 export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse {
   /** Algorithm */
   alg: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg;
@@ -1938,15 +1557,12 @@ export interface ConfigurationListResultItemCredentialsKeysItemAPIShieldCredenti
   /** Key Type */
   kty: ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
-export const ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
-
 export type ConfigurationListResultItemCredentialsKeysItem =
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationListResultItemCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse;
-export const ConfigurationListResultItemCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationListResultItemCredentialsKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -1957,14 +1573,14 @@ export const ConfigurationListResultItemCredentialsKeysItem = /*@__PURE__*/ S.Un
 
 export type ConfigurationListResultItemCredentialsKeysList =
   Array<ConfigurationListResultItemCredentialsKeysItem>;
-export const ConfigurationListResultItemCredentialsKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationListResultItemCredentialsKeysList = /*@__PURE__*/ S.Array(
   ConfigurationListResultItemCredentialsKeysItem,
 ) as any as S.Schema<ConfigurationListResultItemCredentialsKeysList>;
 
 export interface ConfigurationListResultItemCredentials {
   keys: ConfigurationListResultItemCredentialsKeysList;
 }
-export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationListResultItemCredentialsKeysList,
   }),
@@ -1973,11 +1589,11 @@ export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ConfigurationListResultItemCredentials>;
 
 export type ConfigurationListResultItemTokenSourcesList = Array<string>;
-export const ConfigurationListResultItemTokenSourcesList =
+const ConfigurationListResultItemTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
 
 export type ConfigurationListResultItemTokenType = "JWT";
-export const ConfigurationListResultItemTokenType = S.String;
+const ConfigurationListResultItemTokenType = S.String;
 
 export interface ConfigurationListResultItem {
   /** UUID. */
@@ -1990,7 +1606,7 @@ export interface ConfigurationListResultItem {
   tokenSources: ConfigurationListResultItemTokenSourcesList;
   tokenType: ConfigurationListResultItemTokenType;
 }
-export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -2006,7 +1622,7 @@ export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigurationListResultItem>;
 
 export type ConfigurationListResultList = Array<ConfigurationListResultItem>;
-export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
+const ConfigurationListResultList = /*@__PURE__*/ S.Array(
   ConfigurationListResultItem,
 ) as any as S.Schema<ConfigurationListResultList>;
 
@@ -2016,7 +1632,7 @@ export interface ListConfigurationsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ConfigurationListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2026,10 +1642,10 @@ export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConfigurationsResponse>;
 
 export type RulesListRequestAction = "log" | "block";
-export const RulesListRequestAction = S.String;
+const RulesListRequestAction = S.String;
 
 export type RulesListRequestTokenConfigurationList = Array<string>;
-export const RulesListRequestTokenConfigurationList =
+const RulesListRequestTokenConfigurationList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListRequestTokenConfigurationList>;
 
 export interface ListRulesRequest {
@@ -2054,7 +1670,7 @@ export interface ListRulesRequest {
   /** Select rules using any of these token configurations. */
   tokenConfiguration?: RulesListRequestTokenConfigurationList;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -2074,45 +1690,27 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResultItemAction = "log" | "block";
-export const RulesListResultItemAction = S.String;
+const RulesListResultItemAction = S.String;
 
 export type RulesListResultItemSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesListResultItemSelectorExcludeItemOperationIdsList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListResultItemSelectorExcludeItemOperationIdsList>;
-
 export interface RulesListResultItemSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesListResultItemSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesListResultItemSelectorExcludeItem =
-  RulesBulkCreateResultItemSelectorExcludeItem as any as S.Schema<RulesListResultItemSelectorExcludeItem>;
-
 export type RulesListResultItemSelectorExcludeList = Array<RulesListResultItemSelectorExcludeItem>;
-export const RulesListResultItemSelectorExcludeList =
-  RulesBulkCreateResultItemSelectorExcludeList as any as S.Schema<RulesListResultItemSelectorExcludeList>;
-
 export type RulesListResultItemSelectorIncludeItemHostList = Array<string>;
-export const RulesListResultItemSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesListResultItemSelectorIncludeItemHostList>;
-
 export interface RulesListResultItemSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesListResultItemSelectorIncludeItemHostList | null;
 }
-export const RulesListResultItemSelectorIncludeItem =
-  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesListResultItemSelectorIncludeItem>;
-
 export type RulesListResultItemSelectorIncludeList = Array<RulesListResultItemSelectorIncludeItem>;
-export const RulesListResultItemSelectorIncludeList =
-  RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesListResultItemSelectorIncludeList>;
-
 export interface RulesListResultItemSelector {
   /** Ignore operations that were otherwise included by `include`. */
   exclude?: RulesListResultItemSelectorExcludeList | null;
   /** Select all matching operations. */
   include?: RulesListResultItemSelectorIncludeList | null;
 }
-export const RulesListResultItemSelector =
+const RulesListResultItemSelector =
   RulesBulkCreateResultItemSelector as any as S.Schema<RulesListResultItemSelector>;
 
 export interface RulesListResultItem {
@@ -2133,7 +1731,7 @@ export interface RulesListResultItem {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesListResultItemAction,
     description: S.String,
@@ -2148,7 +1746,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesListResultItem" }) as any as S.Schema<RulesListResultItem>;
 
 export type RulesListResultList = Array<RulesListResultItem>;
-export const RulesListResultList = /*@__PURE__*/ S.Array(
+const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
@@ -2158,7 +1756,7 @@ export interface ListRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2166,7 +1764,7 @@ export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesResponse" }) as any as S.Schema<ListRulesResponse>;
 
 export type ConfigurationEditRequestTokenSourcesList = Array<string>;
-export const ConfigurationEditRequestTokenSourcesList =
+const ConfigurationEditRequestTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
 
 export interface PatchConfigurationRequest {
@@ -2178,7 +1776,7 @@ export interface PatchConfigurationRequest {
   title?: string;
   tokenSources?: ConfigurationEditRequestTokenSourcesList;
 }
-export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -2201,7 +1799,7 @@ export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchConfigurationRequest>;
 
 export type ConfigurationEditResponseTokenSourcesList = Array<string>;
-export const ConfigurationEditResponseTokenSourcesList =
+const ConfigurationEditResponseTokenSourcesList =
   RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -2212,7 +1810,7 @@ export interface PatchConfigurationResponse {
   title?: string | null;
   tokenSources?: ConfigurationEditResponseTokenSourcesList | null;
 }
-export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -2226,59 +1824,38 @@ export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchConfigurationResponse>;
 
 export type RulesEditRequestAction = "log" | "block";
-export const RulesEditRequestAction = S.String;
+const RulesEditRequestAction = S.String;
 
 export type RulesEditRequestPositionAPIShieldIndex =
   RulesBulkEditRequestBodyItemPositionAPIShieldIndex;
-export const RulesEditRequestPositionAPIShieldIndex =
-  RulesBulkEditRequestBodyItemPositionAPIShieldIndex;
-
 export type RulesEditRequestPositionAPIShieldBefore =
   RulesBulkEditRequestBodyItemPositionAPIShieldBefore;
-export const RulesEditRequestPositionAPIShieldBefore =
-  RulesBulkEditRequestBodyItemPositionAPIShieldBefore;
-
 export type RulesEditRequestPositionAPIShieldAfter =
   RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-export const RulesEditRequestPositionAPIShieldAfter =
-  RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-
 export type RulesEditRequestPosition =
   | RulesBulkEditRequestBodyItemPositionAPIShieldIndex
   | RulesBulkEditRequestBodyItemPositionAPIShieldBefore
   | RulesBulkEditRequestBodyItemPositionAPIShieldAfter;
-export const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
+const RulesEditRequestPosition = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([["index"], ["before"], ["after"]]),
 );
 
 export type RulesEditRequestSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesEditRequestSelectorExcludeItemOperationIdsList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
-
 export interface RulesEditRequestSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
 }
-export const RulesEditRequestSelectorExcludeItem =
-  RulesCreateRequestSelectorExcludeItem as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
-
 export type RulesEditRequestSelectorExcludeList = Array<RulesEditRequestSelectorExcludeItem>;
-export const RulesEditRequestSelectorExcludeList =
+const RulesEditRequestSelectorExcludeList =
   RulesCreateRequestSelectorExcludeList as any as S.Schema<RulesEditRequestSelectorExcludeList>;
 
 export type RulesEditRequestSelectorIncludeItemHostList = Array<string>;
-export const RulesEditRequestSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
-
 export interface RulesEditRequestSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditRequestSelectorIncludeItemHostList;
 }
-export const RulesEditRequestSelectorIncludeItem =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItem as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
-
 export type RulesEditRequestSelectorIncludeList = Array<RulesEditRequestSelectorIncludeItem>;
-export const RulesEditRequestSelectorIncludeList =
+const RulesEditRequestSelectorIncludeList =
   RulesBulkCreateRequestBodyItemSelectorIncludeList as any as S.Schema<RulesEditRequestSelectorIncludeList>;
 
 export interface RulesEditRequestSelector {
@@ -2287,7 +1864,7 @@ export interface RulesEditRequestSelector {
   /** Select all matching operations. */
   include?: RulesEditRequestSelectorIncludeList;
 }
-export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(RulesEditRequestSelectorExcludeList),
     include: S.optional(RulesEditRequestSelectorIncludeList),
@@ -2314,7 +1891,7 @@ export interface PatchRuleRequest {
   /** A human-readable name for the rule. */
   title?: string;
 }
-export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -2337,36 +1914,24 @@ export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchRuleRequest" }) as any as S.Schema<PatchRuleRequest>;
 
 export type RulesEditResponseAction = "log" | "block";
-export const RulesEditResponseAction = S.String;
+const RulesEditResponseAction = S.String;
 
 export type RulesEditResponseSelectorExcludeItemOperationIdsList = Array<string>;
-export const RulesEditResponseSelectorExcludeItemOperationIdsList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
-
 export interface RulesEditResponseSelectorExcludeItem {
   /** Excluded operation IDs. */
   operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList | null;
 }
-export const RulesEditResponseSelectorExcludeItem =
-  RulesGetResponseSelectorExcludeItem as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
-
 export type RulesEditResponseSelectorExcludeList = Array<RulesEditResponseSelectorExcludeItem>;
-export const RulesEditResponseSelectorExcludeList =
+const RulesEditResponseSelectorExcludeList =
   RulesGetResponseSelectorExcludeList as any as S.Schema<RulesEditResponseSelectorExcludeList>;
 
 export type RulesEditResponseSelectorIncludeItemHostList = Array<string>;
-export const RulesEditResponseSelectorIncludeItemHostList =
-  RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
-
 export interface RulesEditResponseSelectorIncludeItem {
   /** Included hostnames. */
   host?: RulesEditResponseSelectorIncludeItemHostList | null;
 }
-export const RulesEditResponseSelectorIncludeItem =
-  RulesBulkCreateResultItemSelectorIncludeItem as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
-
 export type RulesEditResponseSelectorIncludeList = Array<RulesEditResponseSelectorIncludeItem>;
-export const RulesEditResponseSelectorIncludeList =
+const RulesEditResponseSelectorIncludeList =
   RulesBulkCreateResultItemSelectorIncludeList as any as S.Schema<RulesEditResponseSelectorIncludeList>;
 
 export interface RulesEditResponseSelector {
@@ -2375,7 +1940,7 @@ export interface RulesEditResponseSelector {
   /** Select all matching operations. */
   include?: RulesEditResponseSelectorIncludeList | null;
 }
-export const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
+const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.NullOr(RulesEditResponseSelectorExcludeList)),
     include: S.optional(S.NullOr(RulesEditResponseSelectorIncludeList)),
@@ -2403,7 +1968,7 @@ export interface PatchRuleResponse {
   createdAt?: string | null;
   lastUpdated?: string | null;
 }
-export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesEditResponseAction,
     description: S.String,
@@ -2424,13 +1989,7 @@ export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWT
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg:
@@ -2445,24 +2004,12 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
   "EC";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -2477,24 +2024,12 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
   "EC";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -2509,21 +2044,12 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestAlg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestKty =
   "oct";
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestKty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest {
   /** Algorithm */
   alg:
@@ -2536,15 +2062,12 @@ export interface ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentia
   /** Key Type */
   kty: ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequestKty;
 }
-export const ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyOctRequest as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest>;
-
 export type ConfigurationCredentialsUpdateRequestKeysItem =
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateRequestKeysItemAPIShieldCredentialsJWTKeyOctRequest;
-export const ConfigurationCredentialsUpdateRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationCredentialsUpdateRequestKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -2555,7 +2078,7 @@ export const ConfigurationCredentialsUpdateRequestKeysItem = /*@__PURE__*/ S.Unk
 
 export type ConfigurationCredentialsUpdateRequestKeysList =
   Array<ConfigurationCredentialsUpdateRequestKeysItem>;
-export const ConfigurationCredentialsUpdateRequestKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationCredentialsUpdateRequestKeysList = /*@__PURE__*/ S.Array(
   ConfigurationCredentialsUpdateRequestKeysItem,
 ) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysList>;
 
@@ -2566,7 +2089,7 @@ export interface PutConfigurationCredentialRequest {
   configId: string;
   keys: ConfigurationCredentialsUpdateRequestKeysList;
 }
-export const PutConfigurationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const PutConfigurationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configId: S.String.pipe(T.Label("config_id")),
@@ -2591,13 +2114,7 @@ export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJW
   | "PS256"
   | "PS384"
   | "PS512";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty = "RSA";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAKty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSAAlg;
@@ -2610,24 +2127,12 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   /** RSA modulus */
   n: string;
 }
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyRSA as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA>;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
   "ES256";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
   "P-256";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Crv =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
   "EC";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Kty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256Alg;
@@ -2642,24 +2147,12 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256>;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
   "ES384";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
   "P-384";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Crv =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
   "EC";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Kty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384Alg;
@@ -2674,21 +2167,12 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   /** Y EC coordinate */
   y: string;
 }
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384 =
-  ConfigurationCreateRequestCredentialsKeysItemAPIShieldCredentialsJWTKeyEcEs256 as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384>;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
   | "HS256"
   | "HS384"
   | "HS512";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg =
-  S.String;
-
 export type ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
   "oct";
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty =
-  S.String;
-
 export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse {
   /** Algorithm */
   alg: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseAlg;
@@ -2697,15 +2181,12 @@ export interface ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredenti
   /** Key Type */
   kty: ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponseKty;
 }
-export const ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse =
-  ConfigurationCreateResponseCredentialsKeysItemAPIShieldCredentialsJWTKeyOctResponse as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse>;
-
 export type ConfigurationCredentialsUpdateResponseKeysItem =
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyRSA
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs256
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyEcEs384
   | ConfigurationCredentialsUpdateResponseKeysItemAPIShieldCredentialsJWTKeyOctResponse;
-export const ConfigurationCredentialsUpdateResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
+const ConfigurationCredentialsUpdateResponseKeysItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["alg", "e", "kid", "kty", "n"],
     ["alg", "crv", "kid", "kty", "x", "y"],
@@ -2716,7 +2197,7 @@ export const ConfigurationCredentialsUpdateResponseKeysItem = /*@__PURE__*/ S.Un
 
 export type ConfigurationCredentialsUpdateResponseKeysList =
   Array<ConfigurationCredentialsUpdateResponseKeysItem>;
-export const ConfigurationCredentialsUpdateResponseKeysList = /*@__PURE__*/ S.Array(
+const ConfigurationCredentialsUpdateResponseKeysList = /*@__PURE__*/ S.Array(
   ConfigurationCredentialsUpdateResponseKeysItem,
 ) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysList>;
 
@@ -2724,7 +2205,7 @@ export const ConfigurationCredentialsUpdateResponseKeysList = /*@__PURE__*/ S.Ar
 export interface PutConfigurationCredentialResponse {
   keys: ConfigurationCredentialsUpdateResponseKeysList;
 }
-export const PutConfigurationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const PutConfigurationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: ConfigurationCredentialsUpdateResponseKeysList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),

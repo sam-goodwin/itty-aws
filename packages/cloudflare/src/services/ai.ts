@@ -90,7 +90,7 @@ export interface CreateFinetuneRequest {
   description?: string;
   public?: boolean;
 }
-export const CreateFinetuneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFinetuneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String,
@@ -112,7 +112,7 @@ export interface CreateFinetuneResponse {
   public: boolean;
   description?: string | null;
 }
-export const CreateFinetuneResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFinetuneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -132,7 +132,7 @@ export interface CreateFinetuneAssetRequest {
   /** Name of the file (adapter_config.json or adapter_model.safetensors). */
   fileName: string;
 }
-export const CreateFinetuneAssetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFinetuneAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     finetuneId: S.String.pipe(T.Label("finetune_id")),
@@ -152,7 +152,7 @@ export const CreateFinetuneAssetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFinetuneAssetRequest>;
 
 export interface CreateFinetuneAssetResponse {}
-export const CreateFinetuneAssetResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFinetuneAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "CreateFinetuneAssetResponse",
@@ -164,7 +164,7 @@ export interface GetModelSchemaRequest {
   /** AI model identifier, including its namespace and model name. */
   model: string;
 }
-export const GetModelSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetModelSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String.pipe(T.Query()),
@@ -178,7 +178,7 @@ export interface ModelsSchemaGetResponseInput {
   description: string;
   type: string;
 }
-export const ModelsSchemaGetResponseInput = /*@__PURE__*/ S.suspend(() =>
+const ModelsSchemaGetResponseInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalProperties: S.Boolean,
     description: S.String,
@@ -189,14 +189,12 @@ export const ModelsSchemaGetResponseInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelsSchemaGetResponseInput>;
 
 export type ModelsSchemaGetResponseOutput = ModelsSchemaGetResponseInput;
-export const ModelsSchemaGetResponseOutput = ModelsSchemaGetResponseInput;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetModelSchemaResponse {
   input: ModelsSchemaGetResponseInput;
   output: ModelsSchemaGetResponseInput;
 }
-export const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: ModelsSchemaGetResponseInput,
     output: ModelsSchemaGetResponseInput,
@@ -206,7 +204,7 @@ export const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListAuthorsRequest {
   accountId: string;
 }
-export const ListAuthorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -215,7 +213,7 @@ export const ListAuthorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAuthorsRequest" }) as any as S.Schema<ListAuthorsRequest>;
 
 export type AuthorsListResultList = Array<unknown>;
-export const AuthorsListResultList = /*@__PURE__*/ S.Array(
+const AuthorsListResultList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AuthorsListResultList>;
 
@@ -225,7 +223,7 @@ export interface ListAuthorsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AuthorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -241,7 +239,7 @@ export interface ListFinetunePublicsRequest {
   /** Order By Column Name. */
   orderBy?: string;
 }
-export const ListFinetunePublicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFinetunePublicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -263,7 +261,7 @@ export interface FinetunesPublicListResultItem {
   public: boolean;
   description?: string | null;
 }
-export const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
+const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -278,7 +276,7 @@ export const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FinetunesPublicListResultItem>;
 
 export type FinetunesPublicListResultList = Array<FinetunesPublicListResultItem>;
-export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
+const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
   FinetunesPublicListResultItem,
 ) as any as S.Schema<FinetunesPublicListResultList>;
 
@@ -288,7 +286,7 @@ export interface ListFinetunePublicsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: FinetunesPublicListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -300,7 +298,7 @@ export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListFinetunesRequest {
   accountId: string;
 }
-export const ListFinetunesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFinetunesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -317,7 +315,7 @@ export interface ListFinetunesResponse {
   name: string;
   description?: string | null;
 }
-export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -329,7 +327,7 @@ export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFinetunesResponse" }) as any as S.Schema<ListFinetunesResponse>;
 
 export type ModelsListRequestFormat = "openrouter";
-export const ModelsListRequestFormat = S.String;
+const ModelsListRequestFormat = S.String;
 
 export interface ListModelsRequest {
   accountId: string;
@@ -350,7 +348,7 @@ export interface ListModelsRequest {
   /** Filter by Task Name. */
   task?: string;
 }
-export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     author: S.optional(S.String.pipe(T.Query())),
@@ -369,14 +367,14 @@ export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListModelsResponse {}
-export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListModelsResponse" }) as any as S.Schema<ListModelsResponse>;
 
 export interface ListTasksRequest {
   accountId: string;
 }
-export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -385,62 +383,49 @@ export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTasksRequest" }) as any as S.Schema<ListTasksRequest>;
 
 export type TasksListResultList = Array<unknown>;
-export const TasksListResultList = AuthorsListResultList as any as S.Schema<TasksListResultList>;
-
 export interface ListTasksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: TasksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListTasksResponse = ListAuthorsResponse as any as S.Schema<ListTasksResponse>;
+const ListTasksResponse = ListAuthorsResponse as any as S.Schema<ListTasksResponse>;
 
 export type RunRequestTextTextEmbeddingsCase1List = Array<string>;
-export const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ S.Array(
+const RunRequestTextTextEmbeddingsCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RunRequestTextTextEmbeddingsCase1List>;
 
 export type RunRequestTextTextEmbeddings = string | RunRequestTextTextEmbeddingsCase1List;
-export const RunRequestTextTextEmbeddings = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export type RunRequestTextMultimodalEmbeddingsList = Array<string>;
-export const RunRequestTextMultimodalEmbeddingsList =
-  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestTextMultimodalEmbeddingsList>;
-
 export type RunRequestText =
   | string
   | RunRequestTextTextEmbeddings
   | RunRequestTextMultimodalEmbeddingsList;
-export const RunRequestText = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], [], []]),
-);
+const RunRequestText = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
 
 export type RunRequestImageTextToImageList = Array<number>;
-export const RunRequestImageTextToImageList = /*@__PURE__*/ S.Array(
+const RunRequestImageTextToImageList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<RunRequestImageTextToImageList>;
 
 export type RunRequestImage = string | RunRequestImageTextToImageList;
-export const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
+const RunRequestImage = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export type RunRequestMaskList = Array<number>;
-export const RunRequestMaskList =
-  RunRequestImageTextToImageList as any as S.Schema<RunRequestMaskList>;
+const RunRequestMaskList = RunRequestImageTextToImageList as any as S.Schema<RunRequestMaskList>;
 
 export type RunRequestAudioList = Array<number>;
-export const RunRequestAudioList =
-  RunRequestImageTextToImageList as any as S.Schema<RunRequestAudioList>;
+const RunRequestAudioList = RunRequestImageTextToImageList as any as S.Schema<RunRequestAudioList>;
 
 export type RunRequestResponseFormatType = "json_object" | "json_schema";
-export const RunRequestResponseFormatType = S.String;
+const RunRequestResponseFormatType = S.String;
 
 export interface RunRequestResponseFormat {
   jsonSchema?: unknown;
   type?: RunRequestResponseFormatType | (string & {});
 }
-export const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
+const RunRequestResponseFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonSchema: S.optional(S.Unknown.pipe(T.Body("json_schema"))),
     type: S.optional(RunRequestResponseFormatType),
@@ -453,61 +438,22 @@ export interface RunRequestMessagesTextGenerationItemContentCase1Item {
   /** Type of the content (text) */
   type?: string;
 }
-export const RunRequestMessagesTextGenerationItemContentCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunRequestMessagesTextGenerationItemContentCase1Item",
-}) as any as S.Schema<RunRequestMessagesTextGenerationItemContentCase1Item>;
-
 export type RunRequestMessagesTextGenerationItemContentCase1List =
   Array<RunRequestMessagesTextGenerationItemContentCase1Item>;
-export const RunRequestMessagesTextGenerationItemContentCase1List = /*@__PURE__*/ S.Array(
-  RunRequestMessagesTextGenerationItemContentCase1Item,
-) as any as S.Schema<RunRequestMessagesTextGenerationItemContentCase1List>;
-
 export type RunRequestMessagesTextGenerationItemContent =
   | string
   | RunRequestMessagesTextGenerationItemContentCase1List;
-export const RunRequestMessagesTextGenerationItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export interface RunRequestMessagesTextGenerationItem {
   /** The content of the message as a string. */
   content: RunRequestMessagesTextGenerationItemContent;
   /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
   role: string;
 }
-export const RunRequestMessagesTextGenerationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: RunRequestMessagesTextGenerationItemContent,
-    role: S.String,
-  }),
-).annotate({
-  identifier: "RunRequestMessagesTextGenerationItem",
-}) as any as S.Schema<RunRequestMessagesTextGenerationItem>;
-
 export type RunRequestMessagesTextGenerationList = Array<RunRequestMessagesTextGenerationItem>;
-export const RunRequestMessagesTextGenerationList = /*@__PURE__*/ S.Array(
-  RunRequestMessagesTextGenerationItem,
-) as any as S.Schema<RunRequestMessagesTextGenerationList>;
-
 export interface RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl {
   /** Image URI with data (e.g. data:image/jpeg;base64,/9j/...). */
   url: string;
 }
-export const RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      url: S.String,
-    }),
-  ).annotate({
-    identifier: "RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl",
-  }) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl>;
-
 export interface RunRequestMessagesImageTextToTextItemContentCase1Item {
   /** Type of the content part (e.g. 'text', 'image_url'). */
   type: string;
@@ -516,63 +462,28 @@ export interface RunRequestMessagesImageTextToTextItemContentCase1Item {
   /** Text content (when type is 'text'). */
   text?: string;
 }
-export const RunRequestMessagesImageTextToTextItemContentCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.String,
-    imageUrl: S.optional(
-      RunRequestMessagesImageTextToTextItemContentCase1ItemImageUrl.pipe(T.Body("image_url")),
-    ),
-    text: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RunRequestMessagesImageTextToTextItemContentCase1Item",
-}) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1Item>;
-
 export type RunRequestMessagesImageTextToTextItemContentCase1List =
   Array<RunRequestMessagesImageTextToTextItemContentCase1Item>;
-export const RunRequestMessagesImageTextToTextItemContentCase1List = /*@__PURE__*/ S.Array(
-  RunRequestMessagesImageTextToTextItemContentCase1Item,
-) as any as S.Schema<RunRequestMessagesImageTextToTextItemContentCase1List>;
-
 export type RunRequestMessagesImageTextToTextItemContent =
   | string
   | RunRequestMessagesImageTextToTextItemContentCase1List;
-export const RunRequestMessagesImageTextToTextItemContent = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
-
 export interface RunRequestMessagesImageTextToTextItem {
   /** The content of the message as a string. */
   content: RunRequestMessagesImageTextToTextItemContent;
   /** The role of the message sender (e.g., 'user', 'assistant', 'system', 'tool'). */
   role: string;
 }
-export const RunRequestMessagesImageTextToTextItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: RunRequestMessagesImageTextToTextItemContent,
-    role: S.String,
-  }),
-).annotate({
-  identifier: "RunRequestMessagesImageTextToTextItem",
-}) as any as S.Schema<RunRequestMessagesImageTextToTextItem>;
-
 export type RunRequestMessagesImageTextToTextList = Array<RunRequestMessagesImageTextToTextItem>;
-export const RunRequestMessagesImageTextToTextList = /*@__PURE__*/ S.Array(
-  RunRequestMessagesImageTextToTextItem,
-) as any as S.Schema<RunRequestMessagesImageTextToTextList>;
-
 export type RunRequestMessages =
   | RunRequestMessagesTextGenerationList
   | RunRequestMessagesImageTextToTextList;
-export const RunRequestMessages = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([[], []]),
-);
+const RunRequestMessages = /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
 
 export interface RunRequestFunctionsItem {
   code: string;
   name: string;
 }
-export const RunRequestFunctionsItem = /*@__PURE__*/ S.suspend(() =>
+const RunRequestFunctionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     name: S.String,
@@ -580,7 +491,7 @@ export const RunRequestFunctionsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunRequestFunctionsItem" }) as any as S.Schema<RunRequestFunctionsItem>;
 
 export type RunRequestFunctionsList = Array<RunRequestFunctionsItem>;
-export const RunRequestFunctionsList = /*@__PURE__*/ S.Array(
+const RunRequestFunctionsList = /*@__PURE__*/ S.Array(
   RunRequestFunctionsItem,
 ) as any as S.Schema<RunRequestFunctionsList>;
 
@@ -590,27 +501,10 @@ export interface RunRequestToolsItemCase0ParametersPropertiesValue {
   /** The data type of the parameter. */
   type: string;
 }
-export const RunRequestToolsItemCase0ParametersPropertiesValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "RunRequestToolsItemCase0ParametersPropertiesValue",
-}) as any as S.Schema<RunRequestToolsItemCase0ParametersPropertiesValue>;
-
 export type RunRequestToolsItemCase0ParametersPropertiesMap = {
   [key: string]: RunRequestToolsItemCase0ParametersPropertiesValue | undefined;
 };
-export const RunRequestToolsItemCase0ParametersPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RunRequestToolsItemCase0ParametersPropertiesValue,
-) as any as S.Schema<RunRequestToolsItemCase0ParametersPropertiesMap>;
-
 export type RunRequestToolsItemCase0ParametersRequiredList = Array<string>;
-export const RunRequestToolsItemCase0ParametersRequiredList =
-  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestToolsItemCase0ParametersRequiredList>;
-
 export interface RunRequestToolsItemCase0Parameters {
   /** Definitions of each parameter. */
   properties: RunRequestToolsItemCase0ParametersPropertiesMap;
@@ -619,16 +513,6 @@ export interface RunRequestToolsItemCase0Parameters {
   /** List of required parameter names. */
   required?: RunRequestToolsItemCase0ParametersRequiredList;
 }
-export const RunRequestToolsItemCase0Parameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: RunRequestToolsItemCase0ParametersPropertiesMap,
-    type: S.String,
-    required: S.optional(RunRequestToolsItemCase0ParametersRequiredList),
-  }),
-).annotate({
-  identifier: "RunRequestToolsItemCase0Parameters",
-}) as any as S.Schema<RunRequestToolsItemCase0Parameters>;
-
 export interface RunRequestToolsItemCase0 {
   /** A brief description of what the tool does. */
   description: string;
@@ -637,29 +521,12 @@ export interface RunRequestToolsItemCase0 {
   /** Schema defining the parameters accepted by the tool. */
   parameters: RunRequestToolsItemCase0Parameters;
 }
-export const RunRequestToolsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    name: S.String,
-    parameters: RunRequestToolsItemCase0Parameters,
-  }),
-).annotate({ identifier: "RunRequestToolsItemCase0" }) as any as S.Schema<RunRequestToolsItemCase0>;
-
 export type RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
   RunRequestToolsItemCase0ParametersPropertiesValue;
-export const RunRequestToolsItemFunctionFunctionParametersPropertiesValue =
-  RunRequestToolsItemCase0ParametersPropertiesValue;
-
 export type RunRequestToolsItemFunctionFunctionParametersPropertiesMap = {
   [key: string]: RunRequestToolsItemCase0ParametersPropertiesValue | undefined;
 };
-export const RunRequestToolsItemFunctionFunctionParametersPropertiesMap =
-  RunRequestToolsItemCase0ParametersPropertiesMap as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersPropertiesMap>;
-
 export type RunRequestToolsItemFunctionFunctionParametersRequiredList = Array<string>;
-export const RunRequestToolsItemFunctionFunctionParametersRequiredList =
-  RunRequestTextTextEmbeddingsCase1List as any as S.Schema<RunRequestToolsItemFunctionFunctionParametersRequiredList>;
-
 export interface RunRequestToolsItemFunctionFunctionParameters {
   /** Definitions of each parameter. */
   properties: RunRequestToolsItemFunctionFunctionParametersPropertiesMap;
@@ -668,9 +535,6 @@ export interface RunRequestToolsItemFunctionFunctionParameters {
   /** List of required parameter names. */
   required?: RunRequestToolsItemFunctionFunctionParametersRequiredList;
 }
-export const RunRequestToolsItemFunctionFunctionParameters =
-  RunRequestToolsItemCase0Parameters as any as S.Schema<RunRequestToolsItemFunctionFunctionParameters>;
-
 export interface RunRequestToolsItemFunctionFunction {
   /** A brief description of what the function does. */
   description: string;
@@ -679,33 +543,14 @@ export interface RunRequestToolsItemFunctionFunction {
   /** Schema defining the parameters accepted by the function. */
   parameters: RunRequestToolsItemFunctionFunctionParameters;
 }
-export const RunRequestToolsItemFunctionFunction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    name: S.String,
-    parameters: RunRequestToolsItemFunctionFunctionParameters,
-  }),
-).annotate({
-  identifier: "RunRequestToolsItemFunctionFunction",
-}) as any as S.Schema<RunRequestToolsItemFunctionFunction>;
-
 export interface RunRequestToolsItemFunction {
   /** Details of the function tool. */
   function: RunRequestToolsItemFunctionFunction;
   /** Specifies the type of tool (e.g., 'function'). */
   type: string;
 }
-export const RunRequestToolsItemFunction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    function: RunRequestToolsItemFunctionFunction,
-    type: S.String,
-  }),
-).annotate({
-  identifier: "RunRequestToolsItemFunction",
-}) as any as S.Schema<RunRequestToolsItemFunction>;
-
 export type RunRequestToolsItem = RunRequestToolsItemCase0 | RunRequestToolsItemFunction;
-export const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
+const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["description", "name", "parameters"],
     ["function", "type"],
@@ -713,7 +558,7 @@ export const RunRequestToolsItem = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type RunRequestToolsList = Array<RunRequestToolsItem>;
-export const RunRequestToolsList = /*@__PURE__*/ S.Array(
+const RunRequestToolsList = /*@__PURE__*/ S.Array(
   RunRequestToolsItem,
 ) as any as S.Schema<RunRequestToolsList>;
 
@@ -787,7 +632,7 @@ export interface RunAiRequest {
   /** Whether to ignore the EOS token and continue generating tokens after the EOS token is generated. */
   ignoreEos?: boolean;
 }
-export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     modelName: S.String.pipe(T.Label("model_name")),
@@ -835,55 +680,19 @@ export interface RunResultTextClassificationItem {
   /** Confidence score indicating the likelihood that the text belongs to the specified label */
   score?: number | null;
 }
-export const RunResultTextClassificationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RunResultTextClassificationItem",
-}) as any as S.Schema<RunResultTextClassificationItem>;
-
 export type RunResultTextClassificationList = Array<RunResultTextClassificationItem>;
-export const RunResultTextClassificationList = /*@__PURE__*/ S.Array(
-  RunResultTextClassificationItem,
-) as any as S.Schema<RunResultTextClassificationList>;
-
 export interface RunResultAudio {
   /** The generated audio in MP3 format, base64-encoded */
   audio?: string | null;
 }
-export const RunResultAudio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audio: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RunResultAudio" }) as any as S.Schema<RunResultAudio>;
-
 export type RunResultTextEmbeddingsDataItemList = Array<number>;
-export const RunResultTextEmbeddingsDataItemList =
-  RunRequestImageTextToImageList as any as S.Schema<RunResultTextEmbeddingsDataItemList>;
-
 export type RunResultTextEmbeddingsDataList = Array<RunResultTextEmbeddingsDataItemList>;
-export const RunResultTextEmbeddingsDataList = /*@__PURE__*/ S.Array(
-  RunResultTextEmbeddingsDataItemList,
-) as any as S.Schema<RunResultTextEmbeddingsDataList>;
-
 export type RunResultTextEmbeddingsShapeList = Array<number>;
-export const RunResultTextEmbeddingsShapeList =
-  RunRequestImageTextToImageList as any as S.Schema<RunResultTextEmbeddingsShapeList>;
-
 export interface RunResultTextEmbeddings {
   /** Embeddings of the requested text values */
   data?: RunResultTextEmbeddingsDataList | null;
   shape?: RunResultTextEmbeddingsShapeList | null;
 }
-export const RunResultTextEmbeddings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.NullOr(RunResultTextEmbeddingsDataList)),
-    shape: S.optional(S.NullOr(RunResultTextEmbeddingsShapeList)),
-  }),
-).annotate({ identifier: "RunResultTextEmbeddings" }) as any as S.Schema<RunResultTextEmbeddings>;
-
 export interface RunResultAutomaticSpeechRecognitionWordsItem {
   /** The ending second when the word completes */
   end?: number | null;
@@ -891,22 +700,8 @@ export interface RunResultAutomaticSpeechRecognitionWordsItem {
   start?: number | null;
   word?: string | null;
 }
-export const RunResultAutomaticSpeechRecognitionWordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    end: S.optional(S.NullOr(S.Number)),
-    start: S.optional(S.NullOr(S.Number)),
-    word: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RunResultAutomaticSpeechRecognitionWordsItem",
-}) as any as S.Schema<RunResultAutomaticSpeechRecognitionWordsItem>;
-
 export type RunResultAutomaticSpeechRecognitionWordsList =
   Array<RunResultAutomaticSpeechRecognitionWordsItem>;
-export const RunResultAutomaticSpeechRecognitionWordsList = /*@__PURE__*/ S.Array(
-  RunResultAutomaticSpeechRecognitionWordsItem,
-) as any as S.Schema<RunResultAutomaticSpeechRecognitionWordsList>;
-
 export interface RunResultAutomaticSpeechRecognition {
   /** The transcription */
   text: string;
@@ -914,30 +709,13 @@ export interface RunResultAutomaticSpeechRecognition {
   wordCount?: number | null;
   words?: RunResultAutomaticSpeechRecognitionWordsList | null;
 }
-export const RunResultAutomaticSpeechRecognition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    vtt: S.optional(S.NullOr(S.String)),
-    wordCount: S.optional(S.NullOr(S.Number).pipe(T.Body("word_count"))),
-    words: S.optional(S.NullOr(RunResultAutomaticSpeechRecognitionWordsList)),
-  }),
-).annotate({
-  identifier: "RunResultAutomaticSpeechRecognition",
-}) as any as S.Schema<RunResultAutomaticSpeechRecognition>;
-
 export interface RunResultImageClassificationItem {
   /** The predicted category or class for the input image based on analysis */
   label?: string | null;
   /** A confidence value, between 0 and 1, indicating how certain the model is about the predicted label */
   score?: number | null;
 }
-export const RunResultImageClassificationItem =
-  RunResultTextClassificationItem as any as S.Schema<RunResultImageClassificationItem>;
-
 export type RunResultImageClassificationList = Array<RunResultImageClassificationItem>;
-export const RunResultImageClassificationList =
-  RunResultTextClassificationList as any as S.Schema<RunResultImageClassificationList>;
-
 export interface RunResultObjectDetectionItemBox {
   /** The x-coordinate of the bottom-right corner of the bounding box */
   xmax?: number | null;
@@ -948,17 +726,6 @@ export interface RunResultObjectDetectionItemBox {
   /** The y-coordinate of the top-left corner of the bounding box */
   ymin?: number | null;
 }
-export const RunResultObjectDetectionItemBox = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    xmax: S.optional(S.NullOr(S.Number)),
-    xmin: S.optional(S.NullOr(S.Number)),
-    ymax: S.optional(S.NullOr(S.Number)),
-    ymin: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RunResultObjectDetectionItemBox",
-}) as any as S.Schema<RunResultObjectDetectionItemBox>;
-
 export interface RunResultObjectDetectionItem {
   /** Coordinates defining the bounding box around the detected object */
   box?: RunResultObjectDetectionItemBox | null;
@@ -967,41 +734,14 @@ export interface RunResultObjectDetectionItem {
   /** Confidence score indicating the likelihood that the detection is correct */
   score?: number | null;
 }
-export const RunResultObjectDetectionItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    box: S.optional(S.NullOr(RunResultObjectDetectionItemBox)),
-    label: S.optional(S.NullOr(S.String)),
-    score: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "RunResultObjectDetectionItem",
-}) as any as S.Schema<RunResultObjectDetectionItem>;
-
 export type RunResultObjectDetectionList = Array<RunResultObjectDetectionItem>;
-export const RunResultObjectDetectionList = /*@__PURE__*/ S.Array(
-  RunResultObjectDetectionItem,
-) as any as S.Schema<RunResultObjectDetectionList>;
-
 export interface RunResultCase8ToolCallsItem {
   /** The arguments passed to be passed to the tool call request */
   arguments?: unknown | null;
   /** The name of the tool to be called */
   name?: string | null;
 }
-export const RunResultCase8ToolCallsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arguments: S.optional(S.NullOr(S.Unknown)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "RunResultCase8ToolCallsItem",
-}) as any as S.Schema<RunResultCase8ToolCallsItem>;
-
 export type RunResultCase8ToolCallsList = Array<RunResultCase8ToolCallsItem>;
-export const RunResultCase8ToolCallsList = /*@__PURE__*/ S.Array(
-  RunResultCase8ToolCallsItem,
-) as any as S.Schema<RunResultCase8ToolCallsList>;
-
 export interface RunResultCase8Usage {
   /** Total number of tokens in output */
   completionTokens?: number | null;
@@ -1010,14 +750,6 @@ export interface RunResultCase8Usage {
   /** Total number of input and output tokens */
   totalTokens?: number | null;
 }
-export const RunResultCase8Usage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completionTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("completion_tokens"))),
-    promptTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("prompt_tokens"))),
-    totalTokens: S.optional(S.NullOr(S.Number).pipe(T.Body("total_tokens"))),
-  }),
-).annotate({ identifier: "RunResultCase8Usage" }) as any as S.Schema<RunResultCase8Usage>;
-
 export interface RunResultCase8 {
   /** The generated text response from the model */
   response: string;
@@ -1026,72 +758,26 @@ export interface RunResultCase8 {
   /** Usage statistics for the inference request */
   usage?: RunResultCase8Usage | null;
 }
-export const RunResultCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    response: S.String,
-    toolCalls: S.optional(S.NullOr(RunResultCase8ToolCallsList).pipe(T.Body("tool_calls"))),
-    usage: S.optional(S.NullOr(RunResultCase8Usage)),
-  }),
-).annotate({ identifier: "RunResultCase8" }) as any as S.Schema<RunResultCase8>;
-
 export interface RunResultTranslation {
   /** The translated text in the target language */
   translatedText?: string | null;
 }
-export const RunResultTranslation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    translatedText: S.optional(S.NullOr(S.String).pipe(T.Body("translated_text"))),
-  }),
-).annotate({ identifier: "RunResultTranslation" }) as any as S.Schema<RunResultTranslation>;
-
 export interface RunResultSummarization {
   /** The summarized version of the input text */
   summary?: string | null;
 }
-export const RunResultSummarization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    summary: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RunResultSummarization" }) as any as S.Schema<RunResultSummarization>;
-
 export interface RunResultImageToText {
   description?: string | null;
 }
-export const RunResultImageToText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "RunResultImageToText" }) as any as S.Schema<RunResultImageToText>;
-
 export type RunResultImageTextToText = RunResultImageToText;
-export const RunResultImageTextToText = RunResultImageToText;
-
 export type RunResultMultimodalEmbeddingsDataItemList = Array<number>;
-export const RunResultMultimodalEmbeddingsDataItemList =
-  RunRequestImageTextToImageList as any as S.Schema<RunResultMultimodalEmbeddingsDataItemList>;
-
 export type RunResultMultimodalEmbeddingsDataList =
   Array<RunResultMultimodalEmbeddingsDataItemList>;
-export const RunResultMultimodalEmbeddingsDataList =
-  RunResultTextEmbeddingsDataList as any as S.Schema<RunResultMultimodalEmbeddingsDataList>;
-
 export type RunResultMultimodalEmbeddingsShapeList = Array<number>;
-export const RunResultMultimodalEmbeddingsShapeList =
-  RunRequestImageTextToImageList as any as S.Schema<RunResultMultimodalEmbeddingsShapeList>;
-
 export interface RunResultMultimodalEmbeddings {
   data?: RunResultMultimodalEmbeddingsDataList | null;
   shape?: RunResultMultimodalEmbeddingsShapeList | null;
 }
-export const RunResultMultimodalEmbeddings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.NullOr(RunResultMultimodalEmbeddingsDataList)),
-    shape: S.optional(S.NullOr(RunResultMultimodalEmbeddingsShapeList)),
-  }),
-).annotate({
-  identifier: "RunResultMultimodalEmbeddings",
-}) as any as S.Schema<RunResultMultimodalEmbeddings>;
-
 export type RunResult =
   | string
   | RunResultTextClassificationList
@@ -1106,7 +792,7 @@ export type RunResult =
   | RunResultImageToText
   | RunResultImageToText
   | RunResultMultimodalEmbeddings;
-export const RunResult = /*@__PURE__*/ S.Unknown.pipe(
+const RunResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [],
     [],
@@ -1125,7 +811,7 @@ export const RunResult = /*@__PURE__*/ S.Unknown.pipe(
 );
 
 export type RunAiResponse = RunResult;
-export const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
+const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
   RunResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RunAiResponse" }) as any as S.Schema<RunAiResponse>;
 
@@ -1133,7 +819,7 @@ export interface SupportedToMarkdownRequest {
   /** Cloudflare account ID used for this AI model request. */
   accountId: string;
 }
-export const SupportedToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
+const SupportedToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1149,7 +835,7 @@ export interface ToMarkdownSupportedResultItem {
   extension: string;
   mimeType: string;
 }
-export const ToMarkdownSupportedResultItem = /*@__PURE__*/ S.suspend(() =>
+const ToMarkdownSupportedResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extension: S.String,
     mimeType: S.String,
@@ -1159,7 +845,7 @@ export const ToMarkdownSupportedResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToMarkdownSupportedResultItem>;
 
 export type ToMarkdownSupportedResultList = Array<ToMarkdownSupportedResultItem>;
-export const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
+const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
   ToMarkdownSupportedResultItem,
 ) as any as S.Schema<ToMarkdownSupportedResultList>;
 
@@ -1169,7 +855,7 @@ export interface SupportedToMarkdownResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
+const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ToMarkdownSupportedResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1179,14 +865,14 @@ export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupportedToMarkdownResponse>;
 
 export type ToMarkdownTransformRequestFileFilesList = Array<string>;
-export const ToMarkdownTransformRequestFileFilesList =
+const ToMarkdownTransformRequestFileFilesList =
   RunRequestTextTextEmbeddingsCase1List as any as S.Schema<ToMarkdownTransformRequestFileFilesList>;
 
 export interface ToMarkdownTransformRequestFile {
   /** Files to convert, supplied as multipart file uploads. */
   files: ToMarkdownTransformRequestFileFilesList;
 }
-export const ToMarkdownTransformRequestFile = /*@__PURE__*/ S.suspend(() =>
+const ToMarkdownTransformRequestFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: ToMarkdownTransformRequestFileFilesList,
   }),
@@ -1199,7 +885,7 @@ export interface TransformToMarkdownRequest {
   accountId: string;
   file: ToMarkdownTransformRequestFile;
 }
-export const TransformToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
+const TransformToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     file: ToMarkdownTransformRequestFile,
@@ -1217,7 +903,7 @@ export interface ToMarkdownTransformResultItem {
   name: string;
   tokens: string;
 }
-export const ToMarkdownTransformResultItem = /*@__PURE__*/ S.suspend(() =>
+const ToMarkdownTransformResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
     format: S.String,
@@ -1230,12 +916,12 @@ export const ToMarkdownTransformResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToMarkdownTransformResultItem>;
 
 export type ToMarkdownTransformResultList = Array<ToMarkdownTransformResultItem>;
-export const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
+const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
   ToMarkdownTransformResultItem,
 ) as any as S.Schema<ToMarkdownTransformResultList>;
 
 export type TransformToMarkdownResponse = ToMarkdownTransformResultList;
-export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
+const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   ToMarkdownTransformResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "TransformToMarkdownResponse",
@@ -1437,7 +1123,6 @@ export const transformToMarkdown: API.OperationMethod<
 }));
 
 // Alias of transformToMarkdown (same route, alternate export name upstream).
-export const createAiToMarkdown = transformToMarkdown;
 export type CreateAiToMarkdownRequest = TransformToMarkdownRequest;
 export type CreateAiToMarkdownResponse = TransformToMarkdownResponse;
 export type CreateAiToMarkdownError = TransformToMarkdownError;

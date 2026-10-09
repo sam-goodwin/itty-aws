@@ -66,7 +66,7 @@ export interface BatchDeleteJobsRequest {
   /** Required. The filter string specifies the jobs to be deleted. Supported operator: =, AND The fields eligible for filtering are: * `companyName` (Required) * `requisitionId` (Required) Sample Query: companyName = "projects/api-test-project/companies/123" AND requisitionId = "req-1" */
   filter?: string;
 }
-export const BatchDeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
   }),
@@ -78,7 +78,7 @@ export interface BatchDeleteProjectsJobsRequest {
   /** Request body */
   body?: BatchDeleteJobsRequest;
 }
-export const BatchDeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
@@ -95,22 +95,22 @@ export const BatchDeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type CompleteProjectsScopeEnum = "COMPLETION_SCOPE_UNSPECIFIED" | "TENANT" | "PUBLIC";
-export const CompleteProjectsScopeEnum = S.String;
+const CompleteProjectsScopeEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type CompleteProjectsTypeEnum =
   | "COMPLETION_TYPE_UNSPECIFIED"
   | "JOB_TITLE"
   | "COMPANY_NAME"
   | "COMBINED";
-export const CompleteProjectsTypeEnum = S.String;
+const CompleteProjectsTypeEnum = S.String;
 
 export interface CompleteProjectsRequest {
   /** Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC. */
@@ -130,7 +130,7 @@ export interface CompleteProjectsRequest {
   /** Optional. If provided, restricts completion to specified company. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
   companyName?: string;
 }
-export const CompleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(CompleteProjectsScopeEnum.pipe(T.Query())),
     languageCodes: S.optional(StringList.pipe(T.Query())),
@@ -154,7 +154,7 @@ export type CompletionResultTypeEnum =
   | "JOB_TITLE"
   | "COMPANY_NAME"
   | "COMBINED";
-export const CompletionResultTypeEnum = S.String;
+const CompletionResultTypeEnum = S.String;
 
 /** Output only. Resource that represents completion results. */
 export interface CompletionResult {
@@ -165,7 +165,7 @@ export interface CompletionResult {
   /** The URI of the company image for CompletionType.COMPANY_NAME. */
   imageUri?: string;
 }
-export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
+const CompletionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestion: S.optional(S.String),
     type: S.optional(CompletionResultTypeEnum),
@@ -174,7 +174,7 @@ export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompletionResult" }) as any as S.Schema<CompletionResult>;
 
 export type CompletionResultList = Array<CompletionResult>;
-export const CompletionResultList = /*@__PURE__*/ S.Array(
+const CompletionResultList = /*@__PURE__*/ S.Array(
   CompletionResult,
 ) as any as S.Schema<CompletionResultList>;
 
@@ -183,7 +183,7 @@ export interface ResponseMetadata {
   /** A unique id associated with this call. This id is logged for tracking purposes. */
   requestId?: string;
 }
-export const ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -196,7 +196,7 @@ export interface CompleteQueryResponse {
   /** Additional information for the API invocation, such as the request tracking id. */
   metadata?: ResponseMetadata;
 }
-export const CompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completionResults: S.optional(CompletionResultList),
     metadata: S.optional(ResponseMetadata),
@@ -221,7 +221,7 @@ export type JobEventTypeEnum =
   | "SENT_CV"
   | "INTERVIEW_GRANTED"
   | "NOT_INTERESTED";
-export const JobEventTypeEnum = S.String;
+const JobEventTypeEnum = S.String;
 
 /** An event issued when a job seeker interacts with the application that implements Cloud Talent Solution. */
 export interface JobEvent {
@@ -230,7 +230,7 @@ export interface JobEvent {
   /** Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. */
   jobs?: StringList;
 }
-export const JobEvent = /*@__PURE__*/ S.suspend(() =>
+const JobEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(JobEventTypeEnum),
     jobs: S.optional(StringList),
@@ -238,7 +238,7 @@ export const JobEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobEvent" }) as any as S.Schema<JobEvent>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** An event issued when an end user interacts with the application that implements Cloud Talent Solution. Providing this information improves the quality of search and recommendation for the API clients, enabling the service to perform optimally. The number of events sent must be consistent with other calls, such as job searches, issued to the service by the client. */
 export interface ClientEvent {
@@ -255,7 +255,7 @@ export interface ClientEvent {
   /** Required. A unique ID generated in the API responses. It can be found in ResponseMetadata.request_id. */
   requestId?: string;
 }
-export const ClientEvent = /*@__PURE__*/ S.suspend(() =>
+const ClientEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     parentEventId: S.optional(S.String),
@@ -271,7 +271,7 @@ export interface CreateClientEventRequest {
   /** Required. Events issued when end user interacts with customer's application that uses Cloud Talent Solution. */
   clientEvent?: ClientEvent;
 }
-export const CreateClientEventRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClientEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientEvent: S.optional(ClientEvent),
   }),
@@ -283,7 +283,7 @@ export interface CreateProjectsClientEventsRequest {
   /** Request body */
   body?: CreateClientEventRequest;
 }
-export const CreateProjectsClientEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsClientEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateClientEventRequest.pipe(T.HttpBody())),
@@ -310,7 +310,7 @@ export type LocationLocationTypeEnum =
   | "SUB_LOCALITY_2"
   | "NEIGHBORHOOD"
   | "STREET_ADDRESS";
-export const LocationLocationTypeEnum = S.String;
+const LocationLocationTypeEnum = S.String;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -337,7 +337,7 @@ export interface PostalAddress {
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortingCode: S.optional(S.String),
     administrativeArea: S.optional(S.String),
@@ -360,7 +360,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -378,7 +378,7 @@ export interface Location {
   /** Radius in miles of the job location. This value is derived from the location bounding box in which a circle with the specified radius centered from LatLng covers the area associated with the job location. For example, currently, "Mountain View, CA, USA" has a radius of 6.17 miles. */
   radiusInMiles?: number;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationType: S.optional(LocationLocationTypeEnum),
     postalAddress: S.optional(PostalAddress),
@@ -392,7 +392,7 @@ export interface CompanyDerivedInfo {
   /** A structured headquarters location of the company, resolved from Company.hq_location if provided. */
   headquartersLocation?: Location;
 }
-export const CompanyDerivedInfo = /*@__PURE__*/ S.suspend(() =>
+const CompanyDerivedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     headquartersLocation: S.optional(Location),
   }),
@@ -407,7 +407,7 @@ export type CompanySizeEnum =
   | "BIG"
   | "BIGGER"
   | "GIANT";
-export const CompanySizeEnum = S.String;
+const CompanySizeEnum = S.String;
 
 /** A Company resource represents a company in the service. A company is the entity that owns job postings, that is, the hiring entity responsible for employing applicants for the job position. */
 export interface Company {
@@ -438,7 +438,7 @@ export interface Company {
   /** Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255. */
   externalId?: string;
 }
-export const Company = /*@__PURE__*/ S.suspend(() =>
+const Company = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     keywordSearchableJobCustomAttributes: S.optional(StringList),
@@ -461,7 +461,7 @@ export interface CreateCompanyRequest {
   /** Required. The company to be created. */
   company?: Company;
 }
-export const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     company: S.optional(Company),
   }),
@@ -473,7 +473,7 @@ export interface CreateProjectsCompaniesRequest {
   /** Request body */
   body?: CreateCompanyRequest;
 }
-export const CreateProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateCompanyRequest.pipe(T.HttpBody())),
@@ -493,7 +493,7 @@ export type JobPostingRegionEnum =
   | "ADMINISTRATIVE_AREA"
   | "NATION"
   | "TELECOMMUTE";
-export const JobPostingRegionEnum = S.String;
+const JobPostingRegionEnum = S.String;
 
 export type JobJobBenefitsItemEnum =
   | "JOB_BENEFIT_UNSPECIFIED"
@@ -508,10 +508,10 @@ export type JobJobBenefitsItemEnum =
   | "SICK_DAYS"
   | "VACATION"
   | "VISION";
-export const JobJobBenefitsItemEnum = S.String;
+const JobJobBenefitsItemEnum = S.String;
 
 export type JobJobBenefitsItemEnumList = Array<JobJobBenefitsItemEnum | (string & {})>;
-export const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
+const JobJobBenefitsItemEnumList = /*@__PURE__*/ S.Array(
   JobJobBenefitsItemEnum,
 ) as any as S.Schema<JobJobBenefitsItemEnumList>;
 
@@ -524,7 +524,7 @@ export interface ApplicationInfo {
   /** Optional but at least one of uris, emails or instruction must be specified. Use this URI field to direct an applicant to a website, for example to link to an online application form. The maximum number of allowed characters for each entry is 2,000. */
   uris?: StringList;
 }
-export const ApplicationInfo = /*@__PURE__*/ S.suspend(() =>
+const ApplicationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(StringList),
     instruction: S.optional(S.String),
@@ -541,7 +541,7 @@ export interface CustomAttribute {
   /** Optional. If the `filterable` flag is true, the custom field values may be used for custom attribute filters JobQuery.custom_attribute_filter. If false, these values may not be used for custom attribute filters. Default is false. */
   filterable?: boolean;
 }
-export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
+const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValues: S.optional(StringList),
     longValues: S.optional(StringList),
@@ -550,7 +550,7 @@ export const CustomAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomAttribute" }) as any as S.Schema<CustomAttribute>;
 
 export type CustomAttributeMap = { [key: string]: CustomAttribute | undefined };
-export const CustomAttributeMap = /*@__PURE__*/ S.Record(
+const CustomAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   CustomAttribute,
 ) as any as S.Schema<CustomAttributeMap>;
@@ -559,7 +559,7 @@ export type ProcessingOptionsHtmlSanitizationEnum =
   | "HTML_SANITIZATION_UNSPECIFIED"
   | "HTML_SANITIZATION_DISABLED"
   | "SIMPLE_FORMATTING_ONLY";
-export const ProcessingOptionsHtmlSanitizationEnum = S.String;
+const ProcessingOptionsHtmlSanitizationEnum = S.String;
 
 /** Input only. Options for job processing. */
 export interface ProcessingOptions {
@@ -568,7 +568,7 @@ export interface ProcessingOptions {
   /** Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY. */
   htmlSanitization?: ProcessingOptionsHtmlSanitizationEnum | (string & {});
 }
-export const ProcessingOptions = /*@__PURE__*/ S.suspend(() =>
+const ProcessingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableStreetAddressResolution: S.optional(S.Boolean),
     htmlSanitization: S.optional(ProcessingOptionsHtmlSanitizationEnum),
@@ -587,10 +587,8 @@ export type JobEmploymentTypesItemEnum =
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
   | "OTHER_EMPLOYMENT_TYPE";
-export const JobEmploymentTypesItemEnum = S.String;
-
 export type JobEmploymentTypesItemEnumList = Array<JobEmploymentTypesItemEnum | (string & {})>;
-export const JobEmploymentTypesItemEnumList =
+const JobEmploymentTypesItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<JobEmploymentTypesItemEnumList>;
 
 export type JobDegreeTypesItemEnum =
@@ -603,10 +601,8 @@ export type JobDegreeTypesItemEnum =
   | "BACHELORS_OR_EQUIVALENT"
   | "MASTERS_OR_EQUIVALENT"
   | "DOCTORAL_OR_EQUIVALENT";
-export const JobDegreeTypesItemEnum = S.String;
-
 export type JobDegreeTypesItemEnumList = Array<JobDegreeTypesItemEnum | (string & {})>;
-export const JobDegreeTypesItemEnumList =
+const JobDegreeTypesItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<JobDegreeTypesItemEnumList>;
 
 /** Represents an amount of money with its currency type. */
@@ -618,7 +614,7 @@ export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     currencyCode: S.optional(S.String),
@@ -633,7 +629,7 @@ export interface CompensationRange {
   /** Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation. */
   maxCompensation?: Money;
 }
-export const CompensationRange = /*@__PURE__*/ S.suspend(() =>
+const CompensationRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minCompensation: S.optional(Money),
     maxCompensation: S.optional(Money),
@@ -650,7 +646,7 @@ export type CompensationEntryTypeEnum =
   | "COMMISSIONS"
   | "TIPS"
   | "OTHER_COMPENSATION_TYPE";
-export const CompensationEntryTypeEnum = S.String;
+const CompensationEntryTypeEnum = S.String;
 
 export type CompensationEntryUnitEnum =
   | "COMPENSATION_UNIT_UNSPECIFIED"
@@ -661,7 +657,7 @@ export type CompensationEntryUnitEnum =
   | "YEARLY"
   | "ONE_TIME"
   | "OTHER_COMPENSATION_UNIT";
-export const CompensationEntryUnitEnum = S.String;
+const CompensationEntryUnitEnum = S.String;
 
 /** A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year. */
 export interface CompensationEntry {
@@ -678,7 +674,7 @@ export interface CompensationEntry {
   /** Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus. */
   description?: string;
 }
-export const CompensationEntry = /*@__PURE__*/ S.suspend(() =>
+const CompensationEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CompensationEntryTypeEnum),
     amount: S.optional(Money),
@@ -690,7 +686,7 @@ export const CompensationEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CompensationEntry" }) as any as S.Schema<CompensationEntry>;
 
 export type CompensationEntryList = Array<CompensationEntry>;
-export const CompensationEntryList = /*@__PURE__*/ S.Array(
+const CompensationEntryList = /*@__PURE__*/ S.Array(
   CompensationEntry,
 ) as any as S.Schema<CompensationEntryList>;
 
@@ -703,7 +699,7 @@ export interface CompensationInfo {
   /** Output only. Annualized total compensation range. Computed as all compensation entries' CompensationEntry.compensation times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization. */
   annualizedTotalCompensationRange?: CompensationRange;
 }
-export const CompensationInfo = /*@__PURE__*/ S.suspend(() =>
+const CompensationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annualizedBaseCompensationRange: S.optional(CompensationRange),
     entries: S.optional(CompensationEntryList),
@@ -743,16 +739,14 @@ export type JobDerivedInfoJobCategoriesItemEnum =
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
   | "TRANSPORTATION_AND_LOGISTICS";
-export const JobDerivedInfoJobCategoriesItemEnum = S.String;
-
 export type JobDerivedInfoJobCategoriesItemEnumList = Array<
   JobDerivedInfoJobCategoriesItemEnum | (string & {})
 >;
-export const JobDerivedInfoJobCategoriesItemEnumList =
+const JobDerivedInfoJobCategoriesItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<JobDerivedInfoJobCategoriesItemEnumList>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** Output only. Derived details about the job posting. */
 export interface JobDerivedInfo {
@@ -761,7 +755,7 @@ export interface JobDerivedInfo {
   /** Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order. */
   locations?: LocationList;
 }
-export const JobDerivedInfo = /*@__PURE__*/ S.suspend(() =>
+const JobDerivedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobCategories: S.optional(JobDerivedInfoJobCategoriesItemEnumList),
     locations: S.optional(LocationList),
@@ -773,7 +767,7 @@ export type JobVisibilityEnum =
   | "ACCOUNT_ONLY"
   | "SHARED_WITH_GOOGLE"
   | "SHARED_WITH_PUBLIC";
-export const JobVisibilityEnum = S.String;
+const JobVisibilityEnum = S.String;
 
 export type JobJobLevelEnum =
   | "JOB_LEVEL_UNSPECIFIED"
@@ -782,7 +776,7 @@ export type JobJobLevelEnum =
   | "MANAGER"
   | "DIRECTOR"
   | "EXECUTIVE";
-export const JobJobLevelEnum = S.String;
+const JobJobLevelEnum = S.String;
 
 /** A Job resource represents a job posting (also referred to as a "job listing" or "job requisition"). A job belongs to a Company, which is the hiring entity responsible for the job. */
 export interface Job {
@@ -847,7 +841,7 @@ export interface Job {
   /** Optional but strongly recommended for the best service experience. The expiration timestamp of the job. After this timestamp, the job is marked as expired, and it no longer appears in search results. The expired job can't be deleted or listed by the DeleteJob and ListJobs APIs, but it can be retrieved with the GetJob API or updated with the UpdateJob API. An expired job can be updated and opened again by using a future expiration timestamp. Updating an expired job fails if there is another existing open job with same company_name, language_code and requisition_id. The expired jobs are retained in our system for 90 days. However, the overall expired job count cannot exceed 3 times the maximum of open jobs count over the past week, otherwise jobs with earlier expire time are cleaned first. Expired jobs are no longer accessible after they are cleaned out. Invalid timestamps are ignored, and treated as expire time not provided. Timestamp before the instant request is made is considered valid, the job will be treated as expired immediately. If this value is not provided at the time of job creation or is invalid, the job posting expires after 30 days from the job's creation time. For example, if the job was created on 2017/01/01 13:00AM UTC with an unspecified expiration date, the job expires after 2017/01/31 13:00AM UTC. If this value is not provided on job update, it depends on the field masks set by UpdateJobRequest.update_mask. If the field masks include expiry_time, or the masks are empty meaning that every field is updated, the job posting expires after 30 days from the job's last update time. Otherwise the expiration date isn't updated. */
   postingExpireTime?: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     postingRegion: S.optional(JobPostingRegionEnum),
@@ -887,7 +881,7 @@ export interface CreateJobRequest {
   /** Required. The Job to be created. */
   job?: Job;
 }
-export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(Job),
   }),
@@ -899,7 +893,7 @@ export interface CreateProjectsJobsRequest {
   /** Request body */
   body?: CreateJobRequest;
 }
-export const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateJobRequest.pipe(T.HttpBody())),
@@ -918,7 +912,7 @@ export interface DeleteProjectsCompaniesRequest {
   /** Required. The resource name of the company to be deleted. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
   name: string;
 }
-export const DeleteProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -932,7 +926,7 @@ export interface DeleteProjectsJobsRequest {
   /** Required. The resource name of the job to be deleted. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". */
   name: string;
 }
-export const DeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -946,7 +940,7 @@ export interface GetProjectsCompaniesRequest {
   /** Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". */
   name: string;
 }
-export const GetProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -960,7 +954,7 @@ export interface GetProjectsJobsRequest {
   /** Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". */
   name: string;
 }
-export const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -972,7 +966,7 @@ export interface GetProjectsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -983,15 +977,10 @@ export const GetProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsOperationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -1002,7 +991,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -1023,7 +1012,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     response: S.optional(DocumentMap),
@@ -1043,7 +1032,7 @@ export interface ListProjectsCompaniesRequest {
   /** Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project". */
   parent: string;
 }
-export const ListProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1061,7 +1050,7 @@ export const ListProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsCompaniesRequest>;
 
 export type CompanyList = Array<Company>;
-export const CompanyList = /*@__PURE__*/ S.Array(Company) as any as S.Schema<CompanyList>;
+const CompanyList = /*@__PURE__*/ S.Array(Company) as any as S.Schema<CompanyList>;
 
 /** Output only. The List companies response object. */
 export interface ListCompaniesResponse {
@@ -1072,7 +1061,7 @@ export interface ListCompaniesResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListCompaniesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCompaniesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     companies: S.optional(CompanyList),
     metadata: S.optional(ResponseMetadata),
@@ -1086,7 +1075,7 @@ export type ListProjectsJobsJobViewEnum =
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
   | "JOB_VIEW_FULL";
-export const ListProjectsJobsJobViewEnum = S.String;
+const ListProjectsJobsJobViewEnum = S.String;
 
 export interface ListProjectsJobsRequest {
   /** Optional. The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. */
@@ -1100,7 +1089,7 @@ export interface ListProjectsJobsRequest {
   /** Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. */
   jobView?: ListProjectsJobsJobViewEnum | (string & {});
 }
-export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1117,7 +1106,7 @@ export const ListProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProjectsJobsRequest" }) as any as S.Schema<ListProjectsJobsRequest>;
 
 export type JobList = Array<Job>;
-export const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
+const JobList = /*@__PURE__*/ S.Array(Job) as any as S.Schema<JobList>;
 
 /** Output only. List jobs response. */
 export interface ListJobsResponse {
@@ -1128,7 +1117,7 @@ export interface ListJobsResponse {
   /** A token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobs: S.optional(JobList),
     metadata: S.optional(ResponseMetadata),
@@ -1143,7 +1132,7 @@ export interface UpdateCompanyRequest {
   /** Required. The company resource to replace the current resource in the system. */
   company?: Company;
 }
-export const UpdateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     company: S.optional(Company),
@@ -1156,7 +1145,7 @@ export interface PatchProjectsCompaniesRequest {
   /** Request body */
   body?: UpdateCompanyRequest;
 }
-export const PatchProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsCompaniesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateCompanyRequest.pipe(T.HttpBody())),
@@ -1174,7 +1163,7 @@ export interface UpdateJobRequest {
   /** Optional but strongly recommended to be provided for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. */
   updateMask?: string;
 }
-export const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(Job),
     updateMask: S.optional(S.String),
@@ -1187,7 +1176,7 @@ export interface PatchProjectsJobsRequest {
   /** Request body */
   body?: UpdateJobRequest;
 }
-export const PatchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UpdateJobRequest.pipe(T.HttpBody())),
@@ -1200,14 +1189,14 @@ export type SearchJobsRequestSearchModeEnum =
   | "SEARCH_MODE_UNSPECIFIED"
   | "JOB_SEARCH"
   | "FEATURED_JOB_SEARCH";
-export const SearchJobsRequestSearchModeEnum = S.String;
+const SearchJobsRequestSearchModeEnum = S.String;
 
 export type LocationFilterTelecommutePreferenceEnum =
   | "TELECOMMUTE_PREFERENCE_UNSPECIFIED"
   | "TELECOMMUTE_EXCLUDED"
   | "TELECOMMUTE_ALLOWED"
   | "TELECOMMUTE_JOBS_EXCLUDED";
-export const LocationFilterTelecommutePreferenceEnum = S.String;
+const LocationFilterTelecommutePreferenceEnum = S.String;
 
 /** Input only. Geographic region of the search. */
 export interface LocationFilter {
@@ -1222,7 +1211,7 @@ export interface LocationFilter {
   /** Optional. CLDR region code of the country/region. This field may be used in two ways: 1) If telecommute preference is not set, this field is used address ambiguity of the user-input address. For example, "Liverpool" may refer to "Liverpool, NY, US" or "Liverpool, UK". This region code biases the address resolution toward a specific country or territory. If this field is not set, address resolution is biased toward the United States by default. 2) If telecommute preference is set to TELECOMMUTE_ALLOWED, the telecommute location filter will be limited to the region specified in this field. If this field is not set, the telecommute job locations will not be limited. See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
 }
-export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
+const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distanceInMiles: S.optional(S.Number),
     address: S.optional(S.String),
@@ -1233,7 +1222,7 @@ export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LocationFilter" }) as any as S.Schema<LocationFilter>;
 
 export type LocationFilterList = Array<LocationFilter>;
-export const LocationFilterList = /*@__PURE__*/ S.Array(
+const LocationFilterList = /*@__PURE__*/ S.Array(
   LocationFilter,
 ) as any as S.Schema<LocationFilterList>;
 
@@ -1249,12 +1238,10 @@ export type JobQueryEmploymentTypesItemEnum =
   | "PER_DIEM"
   | "FLY_IN_FLY_OUT"
   | "OTHER_EMPLOYMENT_TYPE";
-export const JobQueryEmploymentTypesItemEnum = S.String;
-
 export type JobQueryEmploymentTypesItemEnumList = Array<
   JobQueryEmploymentTypesItemEnum | (string & {})
 >;
-export const JobQueryEmploymentTypesItemEnumList =
+const JobQueryEmploymentTypesItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<JobQueryEmploymentTypesItemEnumList>;
 
 /** Message representing a period of time between two timestamps. */
@@ -1264,7 +1251,7 @@ export interface TimestampRange {
   /** Begin of the period. */
   startTime?: string;
 }
-export const TimestampRange = /*@__PURE__*/ S.suspend(() =>
+const TimestampRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -1280,12 +1267,10 @@ export type CompensationFilterUnitsItemEnum =
   | "YEARLY"
   | "ONE_TIME"
   | "OTHER_COMPENSATION_UNIT";
-export const CompensationFilterUnitsItemEnum = S.String;
-
 export type CompensationFilterUnitsItemEnumList = Array<
   CompensationFilterUnitsItemEnum | (string & {})
 >;
-export const CompensationFilterUnitsItemEnumList =
+const CompensationFilterUnitsItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<CompensationFilterUnitsItemEnumList>;
 
 export type CompensationFilterTypeEnum =
@@ -1294,7 +1279,7 @@ export type CompensationFilterTypeEnum =
   | "UNIT_AND_AMOUNT"
   | "ANNUALIZED_BASE_AMOUNT"
   | "ANNUALIZED_TOTAL_AMOUNT";
-export const CompensationFilterTypeEnum = S.String;
+const CompensationFilterTypeEnum = S.String;
 
 /** Input only. Filter on job compensation type and amount. */
 export interface CompensationFilter {
@@ -1307,7 +1292,7 @@ export interface CompensationFilter {
   /** Optional. Compensation range. */
   range?: CompensationRange;
 }
-export const CompensationFilter = /*@__PURE__*/ S.suspend(() =>
+const CompensationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(CompensationFilterUnitsItemEnumList),
     includeJobsWithUnspecifiedCompensationRange: S.optional(S.Boolean),
@@ -1348,19 +1333,17 @@ export type JobQueryJobCategoriesItemEnum =
   | "SOCIAL_SERVICES_AND_NON_PROFIT"
   | "SPORTS_FITNESS_AND_RECREATION"
   | "TRANSPORTATION_AND_LOGISTICS";
-export const JobQueryJobCategoriesItemEnum = S.String;
-
 export type JobQueryJobCategoriesItemEnumList = Array<
   JobQueryJobCategoriesItemEnum | (string & {})
 >;
-export const JobQueryJobCategoriesItemEnumList =
+const JobQueryJobCategoriesItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<JobQueryJobCategoriesItemEnumList>;
 
 export type CommuteFilterRoadTrafficEnum =
   | "ROAD_TRAFFIC_UNSPECIFIED"
   | "TRAFFIC_FREE"
   | "BUSY_HOUR";
-export const CommuteFilterRoadTrafficEnum = S.String;
+const CommuteFilterRoadTrafficEnum = S.String;
 
 export type CommuteFilterCommuteMethodEnum =
   | "COMMUTE_METHOD_UNSPECIFIED"
@@ -1368,7 +1351,7 @@ export type CommuteFilterCommuteMethodEnum =
   | "TRANSIT"
   | "WALKING"
   | "CYCLING";
-export const CommuteFilterCommuteMethodEnum = S.String;
+const CommuteFilterCommuteMethodEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -1381,7 +1364,7 @@ export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
   seconds?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -1405,7 +1388,7 @@ export interface CommuteFilter {
   /** Optional. The departure time used to calculate traffic impact, represented as google.type.TimeOfDay in local time zone. Currently traffic model is restricted to hour level resolution. */
   departureTime?: TimeOfDay;
 }
-export const CommuteFilter = /*@__PURE__*/ S.suspend(() =>
+const CommuteFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     travelDuration: S.optional(S.String),
     allowImpreciseAddresses: S.optional(S.Boolean),
@@ -1447,7 +1430,7 @@ export interface JobQuery {
   /** Optional. This filter specifies the locale of jobs to search against, for example, "en-US". If a value isn't specified, the search results can contain jobs in any locale. Language codes should be in BCP-47 format, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At most 10 language code filters are allowed. */
   languageCodes?: StringList;
 }
-export const JobQuery = /*@__PURE__*/ S.suspend(() =>
+const JobQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationFilters: S.optional(LocationFilterList),
     employmentTypes: S.optional(JobQueryEmploymentTypesItemEnumList),
@@ -1471,14 +1454,14 @@ export interface HistogramQuery {
   /** An expression specifies a histogram request against matching resources (for example, jobs) for searches. Expression syntax is a aggregation function call with histogram facets and other options. Available aggregation function calls are: * `count(string_histogram_facet)`: Count the number of matching entity, for each distinct attribute value. * `count(numeric_histogram_facet, list of buckets)`: Count the number of matching entity within each bucket. A maximum of 200 histogram buckets are supported. Data types: * Histogram facet: facet names with format a-zA-Z+. * String: string like "any string with backslash escape for quote(\")." * Number: whole number and floating point number like 10, -1 and -0.01. * List: list of elements with comma(,) separator surrounded by square brackets. For example, [1, 2, 3] and ["one", "two", "three"]. Built-in constants: * MIN (minimum number similar to java Double.MIN_VALUE) * MAX (maximum number similar to java Double.MAX_VALUE) Built-in functions: * bucket(start, end[, label]): bucket built-in function creates a bucket with range of start, end). Note that the end is exclusive. For example, bucket(1, MAX, "positive number") or bucket(1, 10). Job histogram facets: * company_id: histogram by [Job.distributor_company_id. * company_display_name: histogram by Job.company_display_name. * employment_type: histogram by Job.employment_types. For example, "FULL_TIME", "PART_TIME". * company_size (DEPRECATED): histogram by CompanySize, for example, "SMALL", "MEDIUM", "BIG". * publish_time_in_day: histogram by the Job.publish_time in days. Must specify list of numeric buckets in spec. * publish_time_in_month: histogram by the Job.publish_time in months. Must specify list of numeric buckets in spec. * publish_time_in_year: histogram by the Job.publish_time in years. Must specify list of numeric buckets in spec. * degree_type: histogram by the Job.degree_type. For example, "Bachelors", "Masters". * job_level: histogram by the Job.job_level. For example, "Entry Level". * country: histogram by the country code of jobs. For example, "US", "FR". * admin1: histogram by the admin1 code of jobs, which is a global placeholder referring to the state, province, or the particular term a country uses to define the geographic structure below the country level. For example, "CA", "IL". * city: histogram by a combination of the "city name, admin1 code". For example, "Mountain View, CA", "New York, NY". * admin1_country: histogram by a combination of the "admin1 code, country". For example, "CA, US", "IL, US". * city_coordinate: histogram by the city center's GPS coordinates (latitude and longitude). For example, 37.4038522,-122.0987765. Since the coordinates of a city center can change, customers may need to refresh them periodically. * locale: histogram by the Job.language_code. For example, "en-US", "fr-FR". * language: histogram by the language subtag of the Job.language_code. For example, "en", "fr". * category: histogram by the JobCategory. For example, "COMPUTER_AND_IT", "HEALTHCARE". * base_compensation_unit: histogram by the CompensationUnit of base salary. For example, "WEEKLY", "MONTHLY". * base_compensation: histogram by the base salary. Must specify list of numeric buckets to group results by. * annualized_base_compensation: histogram by the base annualized salary. Must specify list of numeric buckets to group results by. * annualized_total_compensation: histogram by the total annualized salary. Must specify list of numeric buckets to group results by. * string_custom_attribute: histogram by string Job.custom_attributes. Values can be accessed via square bracket notations like string_custom_attribute["key1"]. * numeric_custom_attribute: histogram by numeric Job.custom_attributes. Values can be accessed via square bracket notations like numeric_custom_attribute["key1"]. Must specify list of numeric buckets to group results by. Example expressions: * count(admin1) * count(base_compensation, [bucket(1000, 10000), bucket(10000, 100000), bucket(100000, MAX)]) * count(string_custom_attribute["some-string-custom-attribute"]) * count(numeric_custom_attribute["some-numeric-custom-attribute"], [bucket(MIN, 0, "negative"), bucket(0, MAX, "non-negative")]) */
   histogramQuery?: string;
 }
-export const HistogramQuery = /*@__PURE__*/ S.suspend(() =>
+const HistogramQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogramQuery: S.optional(S.String),
   }),
 ).annotate({ identifier: "HistogramQuery" }) as any as S.Schema<HistogramQuery>;
 
 export type HistogramQueryList = Array<HistogramQuery>;
-export const HistogramQueryList = /*@__PURE__*/ S.Array(
+const HistogramQueryList = /*@__PURE__*/ S.Array(
   HistogramQuery,
 ) as any as S.Schema<HistogramQueryList>;
 
@@ -1486,7 +1469,7 @@ export type SearchJobsRequestDiversificationLevelEnum =
   | "DIVERSIFICATION_LEVEL_UNSPECIFIED"
   | "DISABLED"
   | "SIMPLE";
-export const SearchJobsRequestDiversificationLevelEnum = S.String;
+const SearchJobsRequestDiversificationLevelEnum = S.String;
 
 export type CustomRankingInfoImportanceLevelEnum =
   | "IMPORTANCE_LEVEL_UNSPECIFIED"
@@ -1496,7 +1479,7 @@ export type CustomRankingInfoImportanceLevelEnum =
   | "MEDIUM"
   | "HIGH"
   | "EXTREME";
-export const CustomRankingInfoImportanceLevelEnum = S.String;
+const CustomRankingInfoImportanceLevelEnum = S.String;
 
 /** Input only. Custom ranking information for SearchJobsRequest. */
 export interface CustomRankingInfo {
@@ -1505,7 +1488,7 @@ export interface CustomRankingInfo {
   /** Required. Controls over how job documents get ranked on top of existing relevance score (determined by API algorithm). A combination of the ranking expression and relevance score is used to determine job's final ranking position. The syntax for this expression is a subset of Google SQL syntax. Supported operators are: +, -, *, /, where the left and right side of the operator is either a numeric Job.custom_attributes key, integer/double value or an expression that can be evaluated to a number. Parenthesis are supported to adjust calculation precedence. The expression must be < 200 characters in length. The expression is considered invalid for a job if the expression references custom attributes that are not populated on the job or if the expression results in a divide by zero. If an expression is invalid for a job, that job is demoted to the end of the results. Sample ranking expression (year + 25) * 0.25 - (freshness / 0.5) */
   rankingExpression?: string;
 }
-export const CustomRankingInfo = /*@__PURE__*/ S.suspend(() =>
+const CustomRankingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     importanceLevel: S.optional(CustomRankingInfoImportanceLevelEnum),
     rankingExpression: S.optional(S.String),
@@ -1513,7 +1496,7 @@ export const CustomRankingInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomRankingInfo" }) as any as S.Schema<CustomRankingInfo>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Input only. Use this field to specify bucketing option for the histogram search response. */
 export interface NumericBucketingOption {
@@ -1522,7 +1505,7 @@ export interface NumericBucketingOption {
   /** Optional. If set to true, the histogram result includes minimum/maximum value of the numeric field. */
   requiresMinMax?: boolean;
 }
-export const NumericBucketingOption = /*@__PURE__*/ S.suspend(() =>
+const NumericBucketingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketBounds: S.optional(DoubleList),
     requiresMinMax: S.optional(S.Boolean),
@@ -1538,7 +1521,7 @@ export interface CustomAttributeHistogramRequest {
   /** Optional. Specifies buckets used to perform a range histogram on Job's filterable long custom field values, or min/max value requirements. */
   longValueHistogramBucketingOption?: NumericBucketingOption;
 }
-export const CustomAttributeHistogramRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomAttributeHistogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stringValueHistogram: S.optional(S.Boolean),
     key: S.optional(S.String),
@@ -1549,7 +1532,7 @@ export const CustomAttributeHistogramRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomAttributeHistogramRequest>;
 
 export type CustomAttributeHistogramRequestList = Array<CustomAttributeHistogramRequest>;
-export const CustomAttributeHistogramRequestList = /*@__PURE__*/ S.Array(
+const CustomAttributeHistogramRequestList = /*@__PURE__*/ S.Array(
   CustomAttributeHistogramRequest,
 ) as any as S.Schema<CustomAttributeHistogramRequestList>;
 
@@ -1558,7 +1541,7 @@ export type CompensationHistogramRequestTypeEnum =
   | "BASE"
   | "ANNUALIZED_BASE"
   | "ANNUALIZED_TOTAL";
-export const CompensationHistogramRequestTypeEnum = S.String;
+const CompensationHistogramRequestTypeEnum = S.String;
 
 /** Input only. Compensation based histogram request. */
 export interface CompensationHistogramRequest {
@@ -1567,7 +1550,7 @@ export interface CompensationHistogramRequest {
   /** Required. Type of the request, representing which field the histogramming should be performed over. A single request can only specify one histogram of each `CompensationHistogramRequestType`. */
   type?: CompensationHistogramRequestTypeEnum | (string & {});
 }
-export const CompensationHistogramRequest = /*@__PURE__*/ S.suspend(() =>
+const CompensationHistogramRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketingOption: S.optional(NumericBucketingOption),
     type: S.optional(CompensationHistogramRequestTypeEnum),
@@ -1577,7 +1560,7 @@ export const CompensationHistogramRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompensationHistogramRequest>;
 
 export type CompensationHistogramRequestList = Array<CompensationHistogramRequest>;
-export const CompensationHistogramRequestList = /*@__PURE__*/ S.Array(
+const CompensationHistogramRequestList = /*@__PURE__*/ S.Array(
   CompensationHistogramRequest,
 ) as any as S.Schema<CompensationHistogramRequestList>;
 
@@ -1599,12 +1582,10 @@ export type HistogramFacetsSimpleHistogramFacetsItemEnum =
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
   | "BASE_COMPENSATION_UNIT";
-export const HistogramFacetsSimpleHistogramFacetsItemEnum = S.String;
-
 export type HistogramFacetsSimpleHistogramFacetsItemEnumList = Array<
   HistogramFacetsSimpleHistogramFacetsItemEnum | (string & {})
 >;
-export const HistogramFacetsSimpleHistogramFacetsItemEnumList =
+const HistogramFacetsSimpleHistogramFacetsItemEnumList =
   JobJobBenefitsItemEnumList as any as S.Schema<HistogramFacetsSimpleHistogramFacetsItemEnumList>;
 
 /** Input only. Histogram facets to be specified in SearchJobsRequest. */
@@ -1616,7 +1597,7 @@ export interface HistogramFacets {
   /** Optional. Specifies the simple type of histogram facets, for example, `COMPANY_SIZE`, `EMPLOYMENT_TYPE` etc. */
   simpleHistogramFacets?: HistogramFacetsSimpleHistogramFacetsItemEnumList;
 }
-export const HistogramFacets = /*@__PURE__*/ S.suspend(() =>
+const HistogramFacets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customAttributeHistogramFacets: S.optional(CustomAttributeHistogramRequestList),
     compensationHistogramFacets: S.optional(CompensationHistogramRequestList),
@@ -1630,7 +1611,7 @@ export type SearchJobsRequestJobViewEnum =
   | "JOB_VIEW_MINIMAL"
   | "JOB_VIEW_SMALL"
   | "JOB_VIEW_FULL";
-export const SearchJobsRequestJobViewEnum = S.String;
+const SearchJobsRequestJobViewEnum = S.String;
 
 export type DeviceInfoDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
@@ -1640,7 +1621,7 @@ export type DeviceInfoDeviceTypeEnum =
   | "IOS"
   | "BOT"
   | "OTHER";
-export const DeviceInfoDeviceTypeEnum = S.String;
+const DeviceInfoDeviceTypeEnum = S.String;
 
 /** Device information collected from the job seeker, candidate, or other entity conducting the job search. Providing this information improves the quality of the search results across devices. */
 export interface DeviceInfo {
@@ -1649,7 +1630,7 @@ export interface DeviceInfo {
   /** Optional. Type of the device. */
   deviceType?: DeviceInfoDeviceTypeEnum | (string & {});
 }
-export const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
+const DeviceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     deviceType: S.optional(DeviceInfoDeviceTypeEnum),
@@ -1667,7 +1648,7 @@ export interface RequestMetadata {
   /** Required. A unique user identification string, as determined by the client. To have the strongest positive impact on search quality make sure the client-level is unique. Obfuscate this field for privacy concerns before providing it to the service. If this field is not available for some reason, send "UNKNOWN". Note that any improvements to the model for a particular tenant site, rely on this field being set correctly to a unique user_id. The maximum number of allowed characters is 255. */
   userId?: string;
 }
-export const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     sessionId: S.optional(S.String),
@@ -1709,7 +1690,7 @@ export interface SearchJobsRequest {
   /** Required. The meta information collected about the job searcher, used to improve the search quality of the service. The identifiers (such as `user_id`) are provided by users, and must be unique and consistent. */
   requestMetadata?: RequestMetadata;
 }
-export const SearchJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String),
     searchMode: S.optional(SearchJobsRequestSearchModeEnum),
@@ -1735,7 +1716,7 @@ export interface SearchForAlertProjectsJobsRequest {
   /** Request body */
   body?: SearchJobsRequest;
 }
-export const SearchForAlertProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchForAlertProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),
@@ -1757,7 +1738,7 @@ export interface HistogramQueryResult {
   /** A map from the values of the facet associated with distinct values to the number of matching entries with corresponding value. The key format is: * (for string histogram) string values stored in the field. * (for named numeric bucket) name specified in `bucket()` function, like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`. * (for anonymous numeric bucket) range formatted as `-`, for example, `0-1000`, `MIN-0`, and `0-MAX`. */
   histogram?: StringMap;
 }
-export const HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
+const HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogramQuery: S.optional(S.String),
     histogram: S.optional(StringMap),
@@ -1765,7 +1746,7 @@ export const HistogramQueryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistogramQueryResult" }) as any as S.Schema<HistogramQueryResult>;
 
 export type HistogramQueryResultList = Array<HistogramQueryResult>;
-export const HistogramQueryResultList = /*@__PURE__*/ S.Array(
+const HistogramQueryResultList = /*@__PURE__*/ S.Array(
   HistogramQueryResult,
 ) as any as S.Schema<HistogramQueryResultList>;
 
@@ -1776,7 +1757,7 @@ export interface BucketRange {
   /** Starting value of the bucket range. */
   from?: number;
 }
-export const BucketRange = /*@__PURE__*/ S.suspend(() =>
+const BucketRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     to: S.optional(S.Number),
     from: S.optional(S.Number),
@@ -1790,7 +1771,7 @@ export interface BucketizedCount {
   /** Number of jobs whose numeric field value fall into `range`. */
   count?: number;
 }
-export const BucketizedCount = /*@__PURE__*/ S.suspend(() =>
+const BucketizedCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     range: S.optional(BucketRange),
     count: S.optional(S.Number),
@@ -1798,7 +1779,7 @@ export const BucketizedCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BucketizedCount" }) as any as S.Schema<BucketizedCount>;
 
 export type BucketizedCountList = Array<BucketizedCount>;
-export const BucketizedCountList = /*@__PURE__*/ S.Array(
+const BucketizedCountList = /*@__PURE__*/ S.Array(
   BucketizedCount,
 ) as any as S.Schema<BucketizedCountList>;
 
@@ -1811,7 +1792,7 @@ export interface NumericBucketingResult {
   /** Count within each bucket. Its size is the length of NumericBucketingOption.bucket_bounds plus 1. */
   counts?: BucketizedCountList;
 }
-export const NumericBucketingResult = /*@__PURE__*/ S.suspend(() =>
+const NumericBucketingResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minValue: S.optional(S.Number),
     maxValue: S.optional(S.Number),
@@ -1820,7 +1801,7 @@ export const NumericBucketingResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NumericBucketingResult" }) as any as S.Schema<NumericBucketingResult>;
 
 export type IntegerMap = { [key: string]: number | undefined };
-export const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
+const IntegerMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<IntegerMap>;
 
 /** Output only. Custom attribute histogram result. */
 export interface CustomAttributeHistogramResult {
@@ -1831,7 +1812,7 @@ export interface CustomAttributeHistogramResult {
   /** Stores a map from the values of string custom field associated with `key` to the number of jobs with that value in this histogram result. */
   stringValueHistogramResult?: IntegerMap;
 }
-export const CustomAttributeHistogramResult = /*@__PURE__*/ S.suspend(() =>
+const CustomAttributeHistogramResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longValueHistogramResult: S.optional(NumericBucketingResult),
     key: S.optional(S.String),
@@ -1842,7 +1823,7 @@ export const CustomAttributeHistogramResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomAttributeHistogramResult>;
 
 export type CustomAttributeHistogramResultList = Array<CustomAttributeHistogramResult>;
-export const CustomAttributeHistogramResultList = /*@__PURE__*/ S.Array(
+const CustomAttributeHistogramResultList = /*@__PURE__*/ S.Array(
   CustomAttributeHistogramResult,
 ) as any as S.Schema<CustomAttributeHistogramResultList>;
 
@@ -1864,7 +1845,7 @@ export type HistogramResultSearchTypeEnum =
   | "ADMIN_1_COUNTRY"
   | "COMPANY_DISPLAY_NAME"
   | "BASE_COMPENSATION_UNIT";
-export const HistogramResultSearchTypeEnum = S.String;
+const HistogramResultSearchTypeEnum = S.String;
 
 /** Output only. Result of a histogram call. The response contains the histogram map for the search type specified by HistogramResult.field. The response is a map of each filter value to the corresponding count of jobs for that filter. */
 export interface HistogramResult {
@@ -1873,7 +1854,7 @@ export interface HistogramResult {
   /** The Histogram search filters. */
   searchType?: HistogramResultSearchTypeEnum;
 }
-export const HistogramResult = /*@__PURE__*/ S.suspend(() =>
+const HistogramResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(IntegerMap),
     searchType: S.optional(HistogramResultSearchTypeEnum),
@@ -1881,7 +1862,7 @@ export const HistogramResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistogramResult" }) as any as S.Schema<HistogramResult>;
 
 export type HistogramResultList = Array<HistogramResult>;
-export const HistogramResultList = /*@__PURE__*/ S.Array(
+const HistogramResultList = /*@__PURE__*/ S.Array(
   HistogramResult,
 ) as any as S.Schema<HistogramResultList>;
 
@@ -1890,7 +1871,7 @@ export type CompensationHistogramResultTypeEnum =
   | "BASE"
   | "ANNUALIZED_BASE"
   | "ANNUALIZED_TOTAL";
-export const CompensationHistogramResultTypeEnum = S.String;
+const CompensationHistogramResultTypeEnum = S.String;
 
 /** Output only. Compensation based histogram result. */
 export interface CompensationHistogramResult {
@@ -1899,7 +1880,7 @@ export interface CompensationHistogramResult {
   /** Histogram result. */
   result?: NumericBucketingResult;
 }
-export const CompensationHistogramResult = /*@__PURE__*/ S.suspend(() =>
+const CompensationHistogramResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CompensationHistogramResultTypeEnum),
     result: S.optional(NumericBucketingResult),
@@ -1909,7 +1890,7 @@ export const CompensationHistogramResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompensationHistogramResult>;
 
 export type CompensationHistogramResultList = Array<CompensationHistogramResult>;
-export const CompensationHistogramResultList = /*@__PURE__*/ S.Array(
+const CompensationHistogramResultList = /*@__PURE__*/ S.Array(
   CompensationHistogramResult,
 ) as any as S.Schema<CompensationHistogramResultList>;
 
@@ -1922,7 +1903,7 @@ export interface HistogramResults {
   /** Specifies compensation field-based histogram results that match HistogramFacets.compensation_histogram_requests. */
   compensationHistogramResults?: CompensationHistogramResultList;
 }
-export const HistogramResults = /*@__PURE__*/ S.suspend(() =>
+const HistogramResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customAttributeHistogramResults: S.optional(CustomAttributeHistogramResultList),
     simpleHistogramResults: S.optional(HistogramResultList),
@@ -1937,7 +1918,7 @@ export interface SpellingCorrection {
   /** Correction output consisting of the corrected keyword string. */
   correctedText?: string;
 }
-export const SpellingCorrection = /*@__PURE__*/ S.suspend(() =>
+const SpellingCorrection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     corrected: S.optional(S.Boolean),
     correctedText: S.optional(S.String),
@@ -1951,7 +1932,7 @@ export interface CommuteInfo {
   /** The number of seconds required to travel to the job location from the query location. A duration of 0 seconds indicates that the job is not reachable within the requested duration, but was returned as part of an expanded query. */
   travelDuration?: string;
 }
-export const CommuteInfo = /*@__PURE__*/ S.suspend(() =>
+const CommuteInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobLocation: S.optional(Location),
     travelDuration: S.optional(S.String),
@@ -1971,7 +1952,7 @@ export interface MatchingJob {
   /** Commute information which is generated based on specified CommuteFilter. */
   commuteInfo?: CommuteInfo;
 }
-export const MatchingJob = /*@__PURE__*/ S.suspend(() =>
+const MatchingJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchTextSnippet: S.optional(S.String),
     jobSummary: S.optional(S.String),
@@ -1982,9 +1963,7 @@ export const MatchingJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchingJob" }) as any as S.Schema<MatchingJob>;
 
 export type MatchingJobList = Array<MatchingJob>;
-export const MatchingJobList = /*@__PURE__*/ S.Array(
-  MatchingJob,
-) as any as S.Schema<MatchingJobList>;
+const MatchingJobList = /*@__PURE__*/ S.Array(MatchingJob) as any as S.Schema<MatchingJobList>;
 
 /** Output only. Response for SearchJob method. */
 export interface SearchJobsResponse {
@@ -2009,7 +1988,7 @@ export interface SearchJobsResponse {
   /** The Job entities that match the specified SearchJobsRequest. */
   matchingJobs?: MatchingJobList;
 }
-export const SearchJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     histogramQueryResults: S.optional(HistogramQueryResultList),
     nextPageToken: S.optional(S.String),
@@ -2030,7 +2009,7 @@ export interface SearchProjectsJobsRequest {
   /** Request body */
   body?: SearchJobsRequest;
 }
-export const SearchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SearchJobsRequest.pipe(T.HttpBody())),

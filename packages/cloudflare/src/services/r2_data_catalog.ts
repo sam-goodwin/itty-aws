@@ -101,7 +101,7 @@ export interface CreateCredentialRequest {
   /** Provides the Cloudflare API token for accessing R2. */
   token: string;
 }
-export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -118,7 +118,7 @@ export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCredentialRequest" }) as any as S.Schema<CreateCredentialRequest>;
 
 export type CreateCredentialResponse = unknown;
-export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "CreateCredentialResponse" }) as any as S.Schema<CreateCredentialResponse>;
 
@@ -130,7 +130,7 @@ export interface DeleteRequest {
   /** Remove child metadata before deleting the catalog. */
   force?: boolean;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -147,7 +147,7 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
 
 export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
 
@@ -157,7 +157,7 @@ export interface DisableR2DataCatalogRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const DisableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -175,7 +175,7 @@ export const DisableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableR2DataCatalogRequest>;
 
 export interface DisableR2DataCatalogResponse {}
-export const DisableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DisableR2DataCatalogResponse",
@@ -187,7 +187,7 @@ export interface EnableR2DataCatalogRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const EnableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -211,7 +211,7 @@ export interface EnableR2DataCatalogResponse {
   /** Specifies the name of the activated catalog. */
   name: string;
 }
-export const EnableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
+const EnableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -226,7 +226,7 @@ export interface GetMaintenanceConfigRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -244,17 +244,17 @@ export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMaintenanceConfigRequest>;
 
 export type MaintenanceConfigsGetResponseCredentialStatus = "present" | "absent";
-export const MaintenanceConfigsGetResponseCredentialStatus = S.String;
+const MaintenanceConfigsGetResponseCredentialStatus = S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState = "enabled" | "disabled";
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState = S.String;
+const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState = S.String;
 
 export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
+const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
 
 export interface MaintenanceConfigsGetResponseMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
@@ -262,14 +262,13 @@ export interface MaintenanceConfigsGetResponseMaintenanceConfigCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
 }
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
-      targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
-        T.Body("target_size_mb"),
-      ),
-    }),
+const MaintenanceConfigsGetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
+    targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+      T.Body("target_size_mb"),
+    ),
+  }),
 ).annotate({
   identifier: "MaintenanceConfigsGetResponseMaintenanceConfigCompaction",
 }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
@@ -277,7 +276,7 @@ export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction = /*@__PUR
 export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
-export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState = S.String;
+const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState = S.String;
 
 export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
@@ -287,16 +286,16 @@ export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiratio
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
 }
-export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
       minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
       state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
     }),
-  ).annotate({
-    identifier: "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
-  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
+).annotate({
+  identifier: "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
+}) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
 
 export interface MaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures compaction for catalog maintenance. */
@@ -306,7 +305,7 @@ export interface MaintenanceConfigsGetResponseMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
-export const MaintenanceConfigsGetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigsGetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(S.NullOr(MaintenanceConfigsGetResponseMaintenanceConfigCompaction)),
     interval: S.optional(S.NullOr(S.String)),
@@ -327,7 +326,7 @@ export interface GetMaintenanceConfigResponse {
   /** Configures maintenance for the catalog. */
   maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig;
 }
-export const GetMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentialStatus: MaintenanceConfigsGetResponseCredentialStatus.pipe(
       T.Body("credential_status"),
@@ -348,7 +347,7 @@ export interface GetNamespaceTableMaintenanceConfigRequest {
   namespace: string;
   tableName: string;
 }
-export const GetNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -370,15 +369,14 @@ export const GetNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.suspend
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
   | "enabled"
   | "disabled";
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  S.String;
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState = S.String;
 
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
   S.String;
 
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction {
@@ -389,7 +387,7 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigC
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction =
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
@@ -406,7 +404,7 @@ export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompa
 export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
   S.String;
 
 export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
@@ -419,7 +417,7 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigS
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
@@ -438,29 +436,28 @@ export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig 
   interval?: string | null;
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration | null;
 }
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      compaction: S.optional(
-        S.NullOr(NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction),
-      ),
-      interval: S.optional(S.NullOr(S.String)),
-      snapshotExpiration: S.optional(
-        S.NullOr(
-          NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration,
-        ).pipe(T.Body("snapshot_expiration")),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig>;
+const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    compaction: S.optional(
+      S.NullOr(NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction),
+    ),
+    interval: S.optional(S.NullOr(S.String)),
+    snapshotExpiration: S.optional(
+      S.NullOr(
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration,
+      ).pipe(T.Body("snapshot_expiration")),
+    ),
+  }),
+).annotate({
+  identifier: "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
+}) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetNamespaceTableMaintenanceConfigResponse {
   /** Configures maintenance for the table. */
   maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig;
 }
-export const GetNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig.pipe(
       T.Body("maintenance_config"),
@@ -476,7 +473,7 @@ export interface GetR2DataCatalogRequest {
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -488,16 +485,16 @@ export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetR2DataCatalogRequest" }) as any as S.Schema<GetR2DataCatalogRequest>;
 
 export type GetResponseStatus = "active" | "inactive";
-export const GetResponseStatus = S.String;
+const GetResponseStatus = S.String;
 
 export type GetResponseCredentialStatus = "present" | "absent";
-export const GetResponseCredentialStatus = S.String;
+const GetResponseCredentialStatus = S.String;
 
 export type GetResponseMaintenanceConfigCompactionState = "enabled" | "disabled";
-export const GetResponseMaintenanceConfigCompactionState = S.String;
+const GetResponseMaintenanceConfigCompactionState = S.String;
 
 export type GetResponseMaintenanceConfigCompactionTargetSizeMb = "64" | "128" | "256" | "512";
-export const GetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
+const GetResponseMaintenanceConfigCompactionTargetSizeMb = S.String;
 
 export interface GetResponseMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
@@ -505,7 +502,7 @@ export interface GetResponseMaintenanceConfigCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: GetResponseMaintenanceConfigCompactionTargetSizeMb;
 }
-export const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
+const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: GetResponseMaintenanceConfigCompactionState,
     targetSizeMb: GetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(T.Body("target_size_mb")),
@@ -515,7 +512,7 @@ export const GetResponseMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetResponseMaintenanceConfigCompaction>;
 
 export type GetResponseMaintenanceConfigSnapshotExpirationState = "enabled" | "disabled";
-export const GetResponseMaintenanceConfigSnapshotExpirationState = S.String;
+const GetResponseMaintenanceConfigSnapshotExpirationState = S.String;
 
 export interface GetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
@@ -525,7 +522,7 @@ export interface GetResponseMaintenanceConfigSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: GetResponseMaintenanceConfigSnapshotExpirationState;
 }
-export const GetResponseMaintenanceConfigSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
+const GetResponseMaintenanceConfigSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
     minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
@@ -543,7 +540,7 @@ export interface GetResponseMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: GetResponseMaintenanceConfigSnapshotExpiration | null;
 }
-export const GetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
+const GetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(S.NullOr(GetResponseMaintenanceConfigCompaction)),
     interval: S.optional(S.NullOr(S.String)),
@@ -570,7 +567,7 @@ export interface GetR2DataCatalogResponse {
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: GetResponseMaintenanceConfig | null;
 }
-export const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
+const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     bucket: S.String,
@@ -601,7 +598,7 @@ export interface ListNamespacesRequest {
   /** Whether to include namespace UUIDs in the response. Set to true to receive the namespace_uuids array. */
   returnUuids?: boolean;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -622,17 +619,17 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNamespacesRequest" }) as any as S.Schema<ListNamespacesRequest>;
 
 export type NamespacesListResponseNamespacesItemList = Array<string>;
-export const NamespacesListResponseNamespacesItemList = /*@__PURE__*/ S.Array(
+const NamespacesListResponseNamespacesItemList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<NamespacesListResponseNamespacesItemList>;
 
 export type NamespacesListResponseNamespacesList = Array<NamespacesListResponseNamespacesItemList>;
-export const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
+const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
   NamespacesListResponseNamespacesItemList,
 ) as any as S.Schema<NamespacesListResponseNamespacesList>;
 
 export type NamespacesListResponseDetailsItemNamespaceList = Array<string>;
-export const NamespacesListResponseDetailsItemNamespaceList =
+const NamespacesListResponseDetailsItemNamespaceList =
   NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesListResponseDetailsItemNamespaceList>;
 
 export interface NamespacesListResponseDetailsItem {
@@ -645,7 +642,7 @@ export interface NamespacesListResponseDetailsItem {
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
   updatedAt?: string | null;
 }
-export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: NamespacesListResponseDetailsItemNamespaceList,
     namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
@@ -657,12 +654,12 @@ export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NamespacesListResponseDetailsItem>;
 
 export type NamespacesListResponseDetailsList = Array<NamespacesListResponseDetailsItem>;
-export const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
+const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesListResponseDetailsList>;
 
 export type NamespacesListResponseNamespaceUuidsList = Array<string>;
-export const NamespacesListResponseNamespaceUuidsList =
+const NamespacesListResponseNamespaceUuidsList =
   NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -676,7 +673,7 @@ export interface ListNamespacesResponse {
   /** Use this opaque token to fetch the next page of results. A null or absent value indicates the last page. */
   nextPageToken?: string | null;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaces: NamespacesListResponseNamespacesList,
     details: S.optional(S.NullOr(NamespacesListResponseDetailsList)),
@@ -702,7 +699,7 @@ export interface ListNamespaceTablesRequest {
   /** Whether to include table UUIDs in the response. Set to true to receive the table_uuids array. */
   returnUuids?: boolean;
 }
-export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -725,7 +722,7 @@ export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNamespaceTablesRequest>;
 
 export type NamespacesTablesListResponseIdentifiersItemNamespaceList = Array<string>;
-export const NamespacesTablesListResponseIdentifiersItemNamespaceList =
+const NamespacesTablesListResponseIdentifiersItemNamespaceList =
   NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesTablesListResponseIdentifiersItemNamespaceList>;
 
 export interface NamespacesTablesListResponseIdentifiersItem {
@@ -734,7 +731,7 @@ export interface NamespacesTablesListResponseIdentifiersItem {
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList;
 }
-export const NamespacesTablesListResponseIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesTablesListResponseIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList,
@@ -745,21 +742,18 @@ export const NamespacesTablesListResponseIdentifiersItem = /*@__PURE__*/ S.suspe
 
 export type NamespacesTablesListResponseIdentifiersList =
   Array<NamespacesTablesListResponseIdentifiersItem>;
-export const NamespacesTablesListResponseIdentifiersList = /*@__PURE__*/ S.Array(
+const NamespacesTablesListResponseIdentifiersList = /*@__PURE__*/ S.Array(
   NamespacesTablesListResponseIdentifiersItem,
 ) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
 
 export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList = Array<string>;
-export const NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
-  NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifierNamespaceList>;
-
 export interface NamespacesTablesListResponseDetailsItemIdentifier {
   /** Specifies the table name. */
   name: string;
   /** Specifies the hierarchical namespace parts as an array of strings. For example, ["bronze", "analytics"] represents the namespace "bronze.analytics". */
   namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList;
 }
-export const NamespacesTablesListResponseDetailsItemIdentifier =
+const NamespacesTablesListResponseDetailsItemIdentifier =
   NamespacesTablesListResponseIdentifiersItem as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifier>;
 
 export interface NamespacesTablesListResponseDetailsItem {
@@ -776,7 +770,7 @@ export interface NamespacesTablesListResponseDetailsItem {
   /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
   updatedAt?: string | null;
 }
-export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: NamespacesTablesListResponseDetailsItemIdentifier,
     tableUuid: S.String.pipe(T.Body("table_uuid")),
@@ -791,12 +785,12 @@ export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend((
 
 export type NamespacesTablesListResponseDetailsList =
   Array<NamespacesTablesListResponseDetailsItem>;
-export const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
+const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
   NamespacesTablesListResponseDetailsItem,
 ) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
 
 export type NamespacesTablesListResponseTableUuidsList = Array<string>;
-export const NamespacesTablesListResponseTableUuidsList =
+const NamespacesTablesListResponseTableUuidsList =
   NamespacesListResponseNamespacesItemList as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -810,7 +804,7 @@ export interface ListNamespaceTablesResponse {
   /** Contains UUIDs for each table when return_uuids is true. The order corresponds to the identifiers array. */
   tableUuids?: NamespacesTablesListResponseTableUuidsList | null;
 }
-export const ListNamespaceTablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespaceTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifiers: NamespacesTablesListResponseIdentifiersList,
     details: S.optional(S.NullOr(NamespacesTablesListResponseDetailsList)),
@@ -827,7 +821,7 @@ export interface ListR2DataCatalogsRequest {
   /** Use this to identify the account. */
   accountId: string;
 }
-export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -838,20 +832,20 @@ export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListR2DataCatalogsRequest>;
 
 export type ListResponseWarehousesItemStatus = "active" | "inactive";
-export const ListResponseWarehousesItemStatus = S.String;
+const ListResponseWarehousesItemStatus = S.String;
 
 export type ListResponseWarehousesItemCredentialStatus = "present" | "absent";
-export const ListResponseWarehousesItemCredentialStatus = S.String;
+const ListResponseWarehousesItemCredentialStatus = S.String;
 
 export type ListResponseWarehousesItemMaintenanceConfigCompactionState = "enabled" | "disabled";
-export const ListResponseWarehousesItemMaintenanceConfigCompactionState = S.String;
+const ListResponseWarehousesItemMaintenanceConfigCompactionState = S.String;
 
 export type ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
-export const ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb = S.String;
+const ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb = S.String;
 
 export interface ListResponseWarehousesItemMaintenanceConfigCompaction {
   /** Specifies the state of maintenance operations. */
@@ -859,7 +853,7 @@ export interface ListResponseWarehousesItemMaintenanceConfigCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb;
 }
-export const ListResponseWarehousesItemMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
+const ListResponseWarehousesItemMaintenanceConfigCompaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: ListResponseWarehousesItemMaintenanceConfigCompactionState,
     targetSizeMb: ListResponseWarehousesItemMaintenanceConfigCompactionTargetSizeMb.pipe(
@@ -873,8 +867,6 @@ export const ListResponseWarehousesItemMaintenanceConfigCompaction = /*@__PURE__
 export type ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState =
   | "enabled"
   | "disabled";
-export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState = S.String;
-
 export interface ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
   maxSnapshotAge: string;
@@ -883,7 +875,7 @@ export interface ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: ListResponseWarehousesItemMaintenanceConfigSnapshotExpirationState;
 }
-export const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
+const ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration =
   MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration>;
 
 export interface ListResponseWarehousesItemMaintenanceConfig {
@@ -894,7 +886,7 @@ export interface ListResponseWarehousesItemMaintenanceConfig {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: ListResponseWarehousesItemMaintenanceConfigSnapshotExpiration | null;
 }
-export const ListResponseWarehousesItemMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
+const ListResponseWarehousesItemMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(S.NullOr(ListResponseWarehousesItemMaintenanceConfigCompaction)),
     interval: S.optional(S.NullOr(S.String)),
@@ -922,7 +914,7 @@ export interface ListResponseWarehousesItem {
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: ListResponseWarehousesItemMaintenanceConfig | null;
 }
-export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
+const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     bucket: S.String,
@@ -940,7 +932,7 @@ export const ListResponseWarehousesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResponseWarehousesItem>;
 
 export type ListResponseWarehousesList = Array<ListResponseWarehousesItem>;
-export const ListResponseWarehousesList = /*@__PURE__*/ S.Array(
+const ListResponseWarehousesList = /*@__PURE__*/ S.Array(
   ListResponseWarehousesItem,
 ) as any as S.Schema<ListResponseWarehousesList>;
 
@@ -949,7 +941,7 @@ export interface ListR2DataCatalogsResponse {
   /** Lists catalogs in the account. */
   warehouses: ListResponseWarehousesList;
 }
-export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warehouses: ListResponseWarehousesList,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -958,10 +950,10 @@ export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListR2DataCatalogsResponse>;
 
 export type MaintenanceConfigsUpdateRequestCompactionState = "enabled" | "disabled";
-export const MaintenanceConfigsUpdateRequestCompactionState = S.String;
+const MaintenanceConfigsUpdateRequestCompactionState = S.String;
 
 export type MaintenanceConfigsUpdateRequestCompactionTargetSizeMb = "64" | "128" | "256" | "512";
-export const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
+const MaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
 
 export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Specifies the state of maintenance operations. */
@@ -969,7 +961,7 @@ export interface MaintenanceConfigsUpdateRequestCompaction {
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb?: MaintenanceConfigsUpdateRequestCompactionTargetSizeMb | (string & {});
 }
-export const MaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(MaintenanceConfigsUpdateRequestCompactionState),
     targetSizeMb: S.optional(
@@ -981,7 +973,7 @@ export const MaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<MaintenanceConfigsUpdateRequestCompaction>;
 
 export type MaintenanceConfigsUpdateRequestSnapshotExpirationState = "enabled" | "disabled";
-export const MaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
+const MaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
 
 export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
@@ -991,7 +983,7 @@ export interface MaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state?: MaintenanceConfigsUpdateRequestSnapshotExpirationState | (string & {});
 }
-export const MaintenanceConfigsUpdateRequestSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceConfigsUpdateRequestSnapshotExpiration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
     minSnapshotsToKeep: S.optional(S.Number.pipe(T.Body("min_snapshots_to_keep"))),
@@ -1011,7 +1003,7 @@ export interface UpdateMaintenanceConfigRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
-export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -1033,23 +1025,17 @@ export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMaintenanceConfigRequest>;
 
 export type MaintenanceConfigsUpdateResponseCompactionState = "enabled" | "disabled";
-export const MaintenanceConfigsUpdateResponseCompactionState = S.String;
-
 export type MaintenanceConfigsUpdateResponseCompactionTargetSizeMb = "64" | "128" | "256" | "512";
-export const MaintenanceConfigsUpdateResponseCompactionTargetSizeMb = S.String;
-
 export interface MaintenanceConfigsUpdateResponseCompaction {
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsUpdateResponseCompactionState;
   /** Sets the target file size for compaction in megabytes. Defaults to "128". */
   targetSizeMb: MaintenanceConfigsUpdateResponseCompactionTargetSizeMb;
 }
-export const MaintenanceConfigsUpdateResponseCompaction =
+const MaintenanceConfigsUpdateResponseCompaction =
   ListResponseWarehousesItemMaintenanceConfigCompaction as any as S.Schema<MaintenanceConfigsUpdateResponseCompaction>;
 
 export type MaintenanceConfigsUpdateResponseSnapshotExpirationState = "enabled" | "disabled";
-export const MaintenanceConfigsUpdateResponseSnapshotExpirationState = S.String;
-
 export interface MaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. Format: where unit is d (days), h (hours), m (minutes), or s (seconds). Examples: "7d" (7 days), "48h" (48 hours), "2880m" (2,880 minutes). Defaults to "7d". */
   maxSnapshotAge: string;
@@ -1058,7 +1044,7 @@ export interface MaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the state of maintenance operations. */
   state: MaintenanceConfigsUpdateResponseSnapshotExpirationState;
 }
-export const MaintenanceConfigsUpdateResponseSnapshotExpiration =
+const MaintenanceConfigsUpdateResponseSnapshotExpiration =
   GetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<MaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1070,7 +1056,7 @@ export interface UpdateMaintenanceConfigResponse {
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: MaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
-export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(S.NullOr(MaintenanceConfigsUpdateResponseCompaction)),
     interval: S.optional(S.NullOr(S.String)),
@@ -1085,14 +1071,14 @@ export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMaintenanceConfigResponse>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState = "enabled" | "disabled";
-export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState = S.String;
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState = S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
-export const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb = S.String;
 
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
   /** Specifies the state of maintenance operations. */
@@ -1102,16 +1088,15 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestCompaction {
     | NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb
     | (string & {});
 }
-export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState),
-      targetSizeMb: S.optional(
-        NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
-          T.Body("target_size_mb"),
-        ),
+const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState),
+    targetSizeMb: S.optional(
+      NamespacesTablesMaintenanceConfigsUpdateRequestCompactionTargetSizeMb.pipe(
+        T.Body("target_size_mb"),
       ),
-    }),
+    ),
+  }),
 ).annotate({
   identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestCompaction",
 }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestCompaction>;
@@ -1119,7 +1104,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestCompaction = /*@__PU
 export type NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState =
   | "enabled"
   | "disabled";
-export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
+const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState = S.String;
 
 export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration {
   /** Updates the maximum age for snapshots optionally. */
@@ -1129,16 +1114,16 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirati
   /** Specifies the state of maintenance operations. */
   state?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState | (string & {});
 }
-export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
+const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       maxSnapshotAge: S.optional(S.String.pipe(T.Body("max_snapshot_age"))),
       minSnapshotsToKeep: S.optional(S.Number.pipe(T.Body("min_snapshots_to_keep"))),
       state: S.optional(NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpirationState),
     }),
-  ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration>;
+).annotate({
+  identifier: "NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration",
+}) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration>;
 
 export interface UpdateNamespaceTableMaintenanceConfigRequest {
   /** Use this to identify the account. */
@@ -1152,7 +1137,7 @@ export interface UpdateNamespaceTableMaintenanceConfigRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
-export const UpdateNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -1180,14 +1165,14 @@ export const UpdateNamespaceTableMaintenanceConfigRequest = /*@__PURE__*/ S.susp
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
   | "disabled";
-export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState = S.String;
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState = S.String;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb =
   | "64"
   | "128"
   | "256"
   | "512";
-export const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb = S.String;
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb = S.String;
 
 export interface NamespacesTablesMaintenanceConfigsUpdateResponseCompaction {
   /** Specifies the state of maintenance operations. */
@@ -1197,15 +1182,14 @@ export interface NamespacesTablesMaintenanceConfigsUpdateResponseCompaction {
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
-export const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState,
-      targetSizeMb: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb.pipe(
-        T.Body("target_size_mb"),
-      ),
-      nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
-    }),
+const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState,
+    targetSizeMb: NamespacesTablesMaintenanceConfigsUpdateResponseCompactionTargetSizeMb.pipe(
+      T.Body("target_size_mb"),
+    ),
+    nextEligibleAt: S.optional(S.NullOr(S.String).pipe(T.Body("next_eligible_at"))),
+  }),
 ).annotate({
   identifier: "NamespacesTablesMaintenanceConfigsUpdateResponseCompaction",
 }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseCompaction>;
@@ -1213,8 +1197,6 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseCompaction = /*@__P
 export type NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState =
   | "enabled"
   | "disabled";
-export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirationState = S.String;
-
 export interface NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration {
   /** Specifies the maximum age for snapshots. */
   maxSnapshotAge: string;
@@ -1225,7 +1207,7 @@ export interface NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpirat
   /** Earliest time when the scheduler can claim this operation. Null when disabled. */
   nextEligibleAt?: string | null;
 }
-export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration =
+const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration =
   NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1236,7 +1218,7 @@ export interface UpdateNamespaceTableMaintenanceConfigResponse {
   interval?: string | null;
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration | null;
 }
-export const UpdateNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceTableMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(S.NullOr(NamespacesTablesMaintenanceConfigsUpdateResponseCompaction)),
     interval: S.optional(S.NullOr(S.String)),

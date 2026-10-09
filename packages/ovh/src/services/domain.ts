@@ -11,7 +11,7 @@ export type { OvhOpError, OvhOpContext };
 
 /** Type of claim notice */
 export type DomainApproveTypeEnum = "accept" | "reject";
-export const DomainApproveTypeEnum = S.String;
+const DomainApproveTypeEnum = S.String;
 
 export interface ApproveDomainOutgoingTransferRequest {
   /** Service name */
@@ -21,7 +21,7 @@ export interface ApproveDomainOutgoingTransferRequest {
   /** Token given by email to validate identity */
   ident?: string;
 }
-export const ApproveDomainOutgoingTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveDomainOutgoingTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     approveType: S.optional(DomainApproveTypeEnum),
@@ -34,9 +34,7 @@ export const ApproveDomainOutgoingTransferRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ApproveDomainOutgoingTransferRequest>;
 
 export interface ApproveDomainOutgoingTransferResponse {}
-export const ApproveDomainOutgoingTransferResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ApproveDomainOutgoingTransferResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApproveDomainOutgoingTransferResponse",
 }) as any as S.Schema<ApproveDomainOutgoingTransferResponse>;
 
@@ -46,7 +44,7 @@ export interface CancelDomainTaskRequest {
   /** Id */
   id: number;
 }
-export const CancelDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -54,7 +52,7 @@ export const CancelDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelDomainTaskRequest" }) as any as S.Schema<CancelDomainTaskRequest>;
 
 export interface CancelDomainTaskResponse {}
-export const CancelDomainTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelDomainTaskResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelDomainTaskResponse",
 }) as any as S.Schema<CancelDomainTaskResponse>;
 
@@ -64,7 +62,7 @@ export interface CancelDomainZoneTaskRequest {
   /** Id */
   id: number;
 }
-export const CancelDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -74,7 +72,7 @@ export const CancelDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelDomainZoneTaskRequest>;
 
 export interface CancelDomainZoneTaskResponse {}
-export const CancelDomainZoneTaskResponse =
+const CancelDomainZoneTaskResponse =
   CancelDomainTaskResponse as any as S.Schema<CancelDomainZoneTaskResponse>;
 
 export interface ChangePasswordDynDnsLoginRequest {
@@ -85,7 +83,7 @@ export interface ChangePasswordDynDnsLoginRequest {
   /** New password of the DynHost login */
   password: string | Redacted.Redacted<string>;
 }
-export const ChangePasswordDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangePasswordDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -102,12 +100,12 @@ export const ChangePasswordDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangePasswordDynDnsLoginRequest>;
 
 export interface ChangePasswordDynDnsLoginResponse {}
-export const ChangePasswordDynDnsLoginResponse =
+const ChangePasswordDynDnsLoginResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<ChangePasswordDynDnsLoginResponse>;
 
 /** An action to execute on a domain name */
 export type DomainActionEnum = "create" | "trade" | "transfer" | "update";
-export const DomainActionEnum = S.String;
+const DomainActionEnum = S.String;
 
 /** Countries a nichandle can choose */
 export type NichandleCountryEnum =
@@ -365,7 +363,7 @@ export type NichandleCountryEnum =
   | "ZA"
   | "ZM"
   | "ZW";
-export const NichandleCountryEnum = S.String;
+const NichandleCountryEnum = S.String;
 
 /** Languages a nichandle can choose */
 export type NichandleLanguageEnum =
@@ -388,7 +386,7 @@ export type NichandleLanguageEnum =
   | "nl_NL"
   | "pl_PL"
   | "pt_PT";
-export const NichandleLanguageEnum = S.String;
+const NichandleLanguageEnum = S.String;
 
 /** Legal forms a nichandle can be registered as */
 export type NichandleLegalFormEnum =
@@ -398,15 +396,15 @@ export type NichandleLegalFormEnum =
   | "individual"
   | "other"
   | "personalcorporation";
-export const NichandleLegalFormEnum = S.String;
+const NichandleLegalFormEnum = S.String;
 
 /** All phone type a person can choose */
 export type NichandlePhoneTypeEnum = "landline" | "mobile";
-export const NichandlePhoneTypeEnum = S.String;
+const NichandlePhoneTypeEnum = S.String;
 
 /** All genders a person can choose */
 export type NichandleGenderEnum = "female" | "male";
-export const NichandleGenderEnum = S.String;
+const NichandleGenderEnum = S.String;
 
 /** Details about your OVH identifier */
 export interface NichandleNichandleInput {
@@ -462,7 +460,7 @@ export interface NichandleNichandleInput {
   /** Zipcode */
   zip?: string | null;
 }
-export const NichandleNichandleInput = /*@__PURE__*/ S.suspend(() =>
+const NichandleNichandleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(S.NullOr(S.String)),
     area: S.optional(S.NullOr(S.String)),
@@ -500,7 +498,7 @@ export interface DomainConfigurationRulesRuleExtraData {
   /** The auth info code for the domain */
   authInfo?: string | null;
 }
-export const DomainConfigurationRulesRuleExtraData = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationRulesRuleExtraData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptCondition: S.optional(S.NullOr(S.Boolean)),
     authInfo: S.optional(S.NullOr(S.String)),
@@ -528,7 +526,7 @@ export interface DomainContactAddress {
   /** Zip code */
   zip?: string | null;
 }
-export const DomainContactAddress = /*@__PURE__*/ S.suspend(() =>
+const DomainContactAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     country: S.optional(S.NullOr(NichandleCountryEnum)),
@@ -623,7 +621,7 @@ export interface DomainContactInput {
   /** Website */
   website?: string | null;
 }
-export const DomainContactInput = /*@__PURE__*/ S.suspend(() =>
+const DomainContactInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accreditationCountry: S.optional(S.NullOr(NichandleCountryEnum)),
     accreditationId: S.optional(S.NullOr(S.String)),
@@ -682,7 +680,7 @@ export interface CheckDomainConfigurationRuleRequest {
   /** The tech contact data */
   techAccount?: NichandleNichandleInput | null;
 }
-export const CheckDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DomainActionEnum.pipe(T.Query()),
     domain: S.String.pipe(T.Query()),
@@ -696,7 +694,7 @@ export const CheckDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckDomainConfigurationRuleRequest>;
 
 export interface CheckDomainConfigurationRuleResponse {}
-export const CheckDomainConfigurationRuleResponse =
+const CheckDomainConfigurationRuleResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<CheckDomainConfigurationRuleResponse>;
 
 /** All future uses you can provide for a service termination */
@@ -706,7 +704,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -724,7 +722,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmDomainZoneTerminationRequest {
   /** Zone name */
@@ -742,7 +740,7 @@ export interface ConfirmDomainZoneTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmDomainZoneTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDomainZoneTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -757,7 +755,7 @@ export const ConfirmDomainZoneTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmDomainZoneTerminationRequest>;
 
 export type ConfirmDomainZoneTerminationResponse = string;
-export const ConfirmDomainZoneTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmDomainZoneTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmDomainZoneTerminationResponse",
@@ -844,7 +842,7 @@ export interface CreateContactRequest {
   /** Website */
   website?: string | null;
 }
-export const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accreditationCountry: S.optional(S.NullOr(NichandleCountryEnum)),
     accreditationId: S.optional(S.NullOr(S.String)),
@@ -973,7 +971,7 @@ export interface DomainContact {
   /** Website */
   website?: string | null;
 }
-export const DomainContact = /*@__PURE__*/ S.suspend(() =>
+const DomainContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accreditationCountry: S.optional(S.NullOr(NichandleCountryEnum)),
     accreditationId: S.optional(S.NullOr(S.String)),
@@ -1029,7 +1027,7 @@ export interface CreateDomainChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -1041,12 +1039,12 @@ export const CreateDomainChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainChangeContactRequest>;
 
 export type CreateDomainChangeContactResponseBodyList = Array<number>;
-export const CreateDomainChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateDomainChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateDomainChangeContactResponseBodyList>;
 
 export type CreateDomainChangeContactResponse = CreateDomainChangeContactResponseBodyList;
-export const CreateDomainChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateDomainChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateDomainChangeContactResponse",
@@ -1056,7 +1054,7 @@ export interface CreateDomainDataSmdRequest {
   /** SMD file content in base64 */
   data: string;
 }
-export const CreateDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/domain/data/smd", code: 200 })),
@@ -1071,7 +1069,7 @@ export interface DomainDataSmdSmdLabel {
   /** Trademark associated to the protected label */
   trademark?: string;
 }
-export const DomainDataSmdSmdLabel = /*@__PURE__*/ S.suspend(() =>
+const DomainDataSmdSmdLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     trademark: S.optional(S.String),
@@ -1080,7 +1078,7 @@ export const DomainDataSmdSmdLabel = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the labels that are protect with that SMD file */
 export type DomainDataSmdSmdProtectedLabelsList = Array<DomainDataSmdSmdLabel>;
-export const DomainDataSmdSmdProtectedLabelsList = /*@__PURE__*/ S.Array(
+const DomainDataSmdSmdProtectedLabelsList = /*@__PURE__*/ S.Array(
   DomainDataSmdSmdLabel,
 ) as any as S.Schema<DomainDataSmdSmdProtectedLabelsList>;
 
@@ -1099,7 +1097,7 @@ export interface DomainDataSmdSmd {
   /** TMCH Internal identifier */
   smdId?: string;
 }
-export const DomainDataSmdSmd = /*@__PURE__*/ S.suspend(() =>
+const DomainDataSmdSmd = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     id: S.optional(S.String),
@@ -1112,11 +1110,11 @@ export const DomainDataSmdSmd = /*@__PURE__*/ S.suspend(() =>
 
 /** DNSSEC Algorithm 3: DSA 5: RSASHA1 6: DSA-NSEC3-SHA1 7: RSASHA1-NSEC3-SHA1 8: RSASHA256 10: RSASHA512 12: ECC-GOST 13: ECDSAP256SHA256 14: ECDSAP384SHA384 15: ED25519 16: ED448 */
 export type DnssecKeyAlgorithmEnum = 3 | 5 | 6 | 7 | 8 | 10 | 12 | 13 | 14 | 15 | 16;
-export const DnssecKeyAlgorithmEnum = S.Number;
+const DnssecKeyAlgorithmEnum = S.Number;
 
 /** DNSSEC Key Flag Type: 256=ZSK (Zone Signing Key), 257=KSK (Key Signing Key) */
 export type DnssecKeyFlagEnum = 256 | 257;
-export const DnssecKeyFlagEnum = S.Number;
+const DnssecKeyFlagEnum = S.Number;
 
 /** Domain's DNSSEC Key */
 export interface DnssecKeyInput {
@@ -1129,7 +1127,7 @@ export interface DnssecKeyInput {
   /** Tag of the DNSSEC key */
   tag?: number;
 }
-export const DnssecKeyInput = /*@__PURE__*/ S.suspend(() =>
+const DnssecKeyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.optional(DnssecKeyAlgorithmEnum),
     flags: S.optional(DnssecKeyFlagEnum),
@@ -1140,7 +1138,7 @@ export const DnssecKeyInput = /*@__PURE__*/ S.suspend(() =>
 
 /** New Keys */
 export type CreateDomainDsRecordRequestKeysList = Array<DnssecKeyInput>;
-export const CreateDomainDsRecordRequestKeysList = /*@__PURE__*/ S.Array(
+const CreateDomainDsRecordRequestKeysList = /*@__PURE__*/ S.Array(
   DnssecKeyInput,
 ) as any as S.Schema<CreateDomainDsRecordRequestKeysList>;
 
@@ -1150,7 +1148,7 @@ export interface CreateDomainDsRecordRequest {
   /** New Keys */
   keys: CreateDomainDsRecordRequestKeysList;
 }
-export const CreateDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     keys: CreateDomainDsRecordRequestKeysList,
@@ -1167,11 +1165,11 @@ export type DomainOperationStatusEnum =
   | "error"
   | "problem"
   | "todo";
-export const DomainOperationStatusEnum = S.String;
+const DomainOperationStatusEnum = S.String;
 
 /** Operation type */
 export type DomainOperationTypeEnum = "alldom" | "domain";
-export const DomainOperationTypeEnum = S.String;
+const DomainOperationTypeEnum = S.String;
 
 /** Tasks associated to domain */
 export interface DomainTask {
@@ -1202,7 +1200,7 @@ export interface DomainTask {
   /** type of the task */
   type?: DomainOperationTypeEnum;
 }
-export const DomainTask = /*@__PURE__*/ S.suspend(() =>
+const DomainTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAccelerate: S.optional(S.Boolean),
     canCancel: S.optional(S.Boolean),
@@ -1222,7 +1220,7 @@ export const DomainTask = /*@__PURE__*/ S.suspend(() =>
 
 /** IP addresses of the glue record */
 export type CreateDomainGlueRecordRequestIpsList = Array<string>;
-export const CreateDomainGlueRecordRequestIpsList = /*@__PURE__*/ S.Array(
+const CreateDomainGlueRecordRequestIpsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDomainGlueRecordRequestIpsList>;
 
@@ -1234,7 +1232,7 @@ export interface CreateDomainGlueRecordRequest {
   /** IP addresses of the glue record */
   ips: CreateDomainGlueRecordRequestIpsList;
 }
-export const CreateDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     host: S.String,
@@ -1251,7 +1249,7 @@ export interface DomainNameServerNameServerInput {
   /** IP address */
   ip?: string | null;
 }
-export const DomainNameServerNameServerInput = /*@__PURE__*/ S.suspend(() =>
+const DomainNameServerNameServerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     ip: S.optional(S.NullOr(S.String)),
@@ -1262,7 +1260,7 @@ export const DomainNameServerNameServerInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Name servers to create */
 export type CreateDomainNameServerRequestNameServerList = Array<DomainNameServerNameServerInput>;
-export const CreateDomainNameServerRequestNameServerList = /*@__PURE__*/ S.Array(
+const CreateDomainNameServerRequestNameServerList = /*@__PURE__*/ S.Array(
   DomainNameServerNameServerInput,
 ) as any as S.Schema<CreateDomainNameServerRequestNameServerList>;
 
@@ -1272,7 +1270,7 @@ export interface CreateDomainNameServerRequest {
   /** Name servers to create */
   nameServer: CreateDomainNameServerRequestNameServerList;
 }
-export const CreateDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     nameServer: CreateDomainNameServerRequestNameServerList,
@@ -1286,7 +1284,7 @@ export interface DomainOrderContactOwner {
   /** Numeric identifier of the OVH contact resource (e.g. obtained from /me/contact). Distinct from a NIC handle such as xxxxx-ovh. */
   id?: number | null;
 }
-export const DomainOrderContactOwner = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderContactOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
   }),
@@ -1301,7 +1299,7 @@ export interface DomainOrderContacts {
   /** Technical contact, given as an OVH NIC handle (e.g. xxxxx-ovh). Defaults to the admin contact if omitted. */
   tech?: string | null;
 }
-export const DomainOrderContacts = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.NullOr(S.String)),
     owner: S.optional(S.NullOr(DomainOrderContactOwner)),
@@ -1311,7 +1309,7 @@ export const DomainOrderContacts = /*@__PURE__*/ S.suspend(() =>
 
 /** List of DNS servers (hostnames) to set on the domain. Optional: if omitted, OVHcloud's recommended DNS servers for the domain are used. */
 export type CreateDomainOrderRequestDnsList = Array<string>;
-export const CreateDomainOrderRequestDnsList =
+const CreateDomainOrderRequestDnsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<CreateDomainOrderRequestDnsList>;
 
 /** Currency code */
@@ -1331,7 +1329,7 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-export const OrderCurrencyCodeEnum = S.String;
+const OrderCurrencyCodeEnum = S.String;
 
 /** Minimal price payload sent by the client to acknowledge the price seen, before placing the actual order */
 export interface DomainOrderPriceAcknowledge {
@@ -1340,7 +1338,7 @@ export interface DomainOrderPriceAcknowledge {
   /** The effective price acknowledged by the client */
   value: number;
 }
-export const DomainOrderPriceAcknowledge = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderPriceAcknowledge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: OrderCurrencyCodeEnum,
     value: S.Number,
@@ -1351,7 +1349,7 @@ export const DomainOrderPriceAcknowledge = /*@__PURE__*/ S.suspend(() =>
 
 /** Promotion codes to apply. Optional. */
 export type CreateDomainOrderRequestPromoCodesList = Array<string>;
-export const CreateDomainOrderRequestPromoCodesList =
+const CreateDomainOrderRequestPromoCodesList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<CreateDomainOrderRequestPromoCodesList>;
 
 /** DNS zone options for a domain order */
@@ -1363,7 +1361,7 @@ export interface DomainOrderZoneOptions {
   /** Enable DNSSEC on the DNS zone. Applied only when a new zone is created (create=true and no existing zone); ignored otherwise. */
   dnssec?: boolean | null;
 }
-export const DomainOrderZoneOptions = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderZoneOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     anycast: S.optional(S.NullOr(S.Boolean)),
     create: S.optional(S.NullOr(S.Boolean)),
@@ -1391,7 +1389,7 @@ export interface CreateDomainOrderRequest {
   /** DNS zone options */
   zone?: DomainOrderZoneOptions | null;
 }
-export const CreateDomainOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dryRun: S.optional(S.Boolean.pipe(T.Query())),
     contacts: S.optional(S.NullOr(DomainOrderContacts)),
@@ -1412,7 +1410,7 @@ export interface DomainOrderContract {
   /** URL to the contract terms document (PDF) */
   url?: string;
 }
-export const DomainOrderContract = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderContract = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     url: S.optional(S.String),
@@ -1421,13 +1419,13 @@ export const DomainOrderContract = /*@__PURE__*/ S.suspend(() =>
 
 /** Legal contracts (terms, as PDFs) the customer subscribes to with this order */
 export type DomainOrderOrderResponseContractsList = Array<DomainOrderContract>;
-export const DomainOrderOrderResponseContractsList = /*@__PURE__*/ S.Array(
+const DomainOrderOrderResponseContractsList = /*@__PURE__*/ S.Array(
   DomainOrderContract,
 ) as any as S.Schema<DomainOrderOrderResponseContractsList>;
 
 /** DNS servers set on the domain */
 export type DomainOrderOrderResponseDnsList = Array<string>;
-export const DomainOrderOrderResponseDnsList =
+const DomainOrderOrderResponseDnsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainOrderOrderResponseDnsList>;
 
 /** Price with its currency and textual representation as returned by domain/order */
@@ -1439,7 +1437,7 @@ export interface DomainOrderPrice {
   /** The effective price as a number, e.g. 6.08 */
   value?: number;
 }
-export const DomainOrderPrice = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(OrderCurrencyCodeEnum),
     text: S.optional(S.String),
@@ -1460,7 +1458,7 @@ export interface DomainOrderPricing {
   /** Tax amount on the final price */
   tax?: DomainOrderPrice;
 }
-export const DomainOrderPricing = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderPricing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basePriceWithoutTax: S.optional(DomainOrderPrice),
     discount: S.optional(DomainOrderPrice),
@@ -1491,7 +1489,7 @@ export interface DomainOrderOrderResponse {
   /** DNS zone options applied to the order */
   zone?: DomainOrderZoneOptions | null;
 }
-export const DomainOrderOrderResponse = /*@__PURE__*/ S.suspend(() =>
+const DomainOrderOrderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contacts: S.optional(S.NullOr(DomainOrderContacts)),
     contracts: S.optional(S.NullOr(DomainOrderOrderResponseContractsList)),
@@ -1511,7 +1509,7 @@ export interface CreateDomainTaskAccelerateRequest {
   /** Id */
   id: number;
 }
-export const CreateDomainTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1521,7 +1519,7 @@ export const CreateDomainTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainTaskAccelerateRequest>;
 
 export interface CreateDomainTaskAccelerateResponse {}
-export const CreateDomainTaskAccelerateResponse =
+const CreateDomainTaskAccelerateResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<CreateDomainTaskAccelerateResponse>;
 
 export interface CreateDomainTaskRelaunchRequest {
@@ -1530,7 +1528,7 @@ export interface CreateDomainTaskRelaunchRequest {
   /** Id */
   id: number;
 }
-export const CreateDomainTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1540,7 +1538,7 @@ export const CreateDomainTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainTaskRelaunchRequest>;
 
 export interface CreateDomainTaskRelaunchResponse {}
-export const CreateDomainTaskRelaunchResponse =
+const CreateDomainTaskRelaunchResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<CreateDomainTaskRelaunchResponse>;
 
 export interface CreateDomainUkOutgoingTransferRequest {
@@ -1549,7 +1547,7 @@ export interface CreateDomainUkOutgoingTransferRequest {
   /** Registrar tag */
   tag: string;
 }
-export const CreateDomainUkOutgoingTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainUkOutgoingTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     tag: S.String,
@@ -1568,7 +1566,7 @@ export interface CreateDomainZoneChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateDomainZoneChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainZoneChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -1580,11 +1578,8 @@ export const CreateDomainZoneChangeContactRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateDomainZoneChangeContactRequest>;
 
 export type CreateDomainZoneChangeContactResponseBodyList = Array<number>;
-export const CreateDomainZoneChangeContactResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<CreateDomainZoneChangeContactResponseBodyList>;
-
 export type CreateDomainZoneChangeContactResponse = CreateDomainZoneChangeContactResponseBodyList;
-export const CreateDomainZoneChangeContactResponse =
+const CreateDomainZoneChangeContactResponse =
   CreateDomainChangeContactResponse as any as S.Schema<CreateDomainZoneChangeContactResponse>;
 
 export interface CreateDomainZoneTaskAccelerateRequest {
@@ -1593,7 +1588,7 @@ export interface CreateDomainZoneTaskAccelerateRequest {
   /** Id */
   id: number;
 }
-export const CreateDomainZoneTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainZoneTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1605,7 +1600,7 @@ export const CreateDomainZoneTaskAccelerateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateDomainZoneTaskAccelerateRequest>;
 
 export interface CreateDomainZoneTaskAccelerateResponse {}
-export const CreateDomainZoneTaskAccelerateResponse =
+const CreateDomainZoneTaskAccelerateResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<CreateDomainZoneTaskAccelerateResponse>;
 
 export interface CreateDomainZoneTaskRelaunchRequest {
@@ -1614,7 +1609,7 @@ export interface CreateDomainZoneTaskRelaunchRequest {
   /** Id */
   id: number;
 }
-export const CreateDomainZoneTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainZoneTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1624,7 +1619,7 @@ export const CreateDomainZoneTaskRelaunchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainZoneTaskRelaunchRequest>;
 
 export interface CreateDomainZoneTaskRelaunchResponse {}
-export const CreateDomainZoneTaskRelaunchResponse =
+const CreateDomainZoneTaskRelaunchResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<CreateDomainZoneTaskRelaunchResponse>;
 
 export interface CreateDynDnsLoginRequest {
@@ -1637,7 +1632,7 @@ export interface CreateDynDnsLoginRequest {
   /** Subdomain that the login will be allowed to update (use * to allow all) */
   subDomain: string;
 }
-export const CreateDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     loginSuffix: S.String,
@@ -1655,7 +1650,7 @@ export interface DomainZoneDynHostLogin {
   /** Login zone */
   zone?: string;
 }
-export const DomainZoneDynHostLogin = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneDynHostLogin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.String),
     subDomain: S.optional(S.String),
@@ -1671,7 +1666,7 @@ export interface CreateDynDnsRecordRequest {
   /** Record sub-domain */
   subDomain?: string | null;
 }
-export const CreateDynDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDynDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     ip: S.optional(S.String),
@@ -1694,7 +1689,7 @@ export interface DomainZoneDynHostRecord {
   /** Record zone */
   zone?: string;
 }
-export const DomainZoneDynHostRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneDynHostRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     ip: S.optional(S.String),
@@ -1726,7 +1721,7 @@ export type DomainZoneRecordTypeEnum =
   | "SVCB"
   | "TLSA"
   | "TXT";
-export const DomainZoneRecordTypeEnum = S.String;
+const DomainZoneRecordTypeEnum = S.String;
 
 export interface CreateRecordRequest {
   /** Zone name */
@@ -1739,7 +1734,7 @@ export interface CreateRecordRequest {
   /** TTL of the record */
   ttl?: number;
 }
-export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     fieldType: DomainZoneRecordTypeEnum,
@@ -1763,7 +1758,7 @@ export interface DomainZoneRecord {
   /** Resource record zone */
   zone?: string;
 }
-export const DomainZoneRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldType: S.optional(DomainZoneRecordTypeEnum),
     id: S.optional(S.Number),
@@ -1776,7 +1771,7 @@ export const DomainZoneRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirection type: - visible -> Redirection by http code 302 - visiblePermanent -> Redirection by http code 301 - invisible -> Redirection by html frame */
 export type DomainZoneRedirectionTypeEnum = "invisible" | "visible" | "visiblePermanent";
-export const DomainZoneRedirectionTypeEnum = S.String;
+const DomainZoneRedirectionTypeEnum = S.String;
 
 export interface CreateRedirectionRequest {
   /** Zone name */
@@ -1793,7 +1788,7 @@ export interface CreateRedirectionRequest {
   title?: string | null;
   type: DomainZoneRedirectionTypeEnum | (string & {});
 }
-export const CreateRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -1823,7 +1818,7 @@ export interface DomainZoneRedirection {
   /** Redirection zone */
   zone?: string;
 }
-export const DomainZoneRedirection = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneRedirection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     id: S.optional(S.Number),
@@ -1840,7 +1835,7 @@ export interface DeleteDomainDataSmdRequest {
   /** Smd ID */
   smdId: string;
 }
-export const DeleteDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smdId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/domain/data/smd/{smdId}", code: 200 })),
@@ -1849,7 +1844,7 @@ export const DeleteDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDomainDataSmdRequest>;
 
 export interface DeleteDomainDataSmdResponse {}
-export const DeleteDomainDataSmdResponse =
+const DeleteDomainDataSmdResponse =
   CancelDomainTaskResponse as any as S.Schema<DeleteDomainDataSmdResponse>;
 
 export interface DeleteDomainGlueRecordRequest {
@@ -1858,7 +1853,7 @@ export interface DeleteDomainGlueRecordRequest {
   /** Host */
   host: string;
 }
-export const DeleteDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     host: S.String.pipe(T.Label()),
@@ -1873,7 +1868,7 @@ export interface DeleteDomainNameServerRequest {
   /** Id */
   id: number;
 }
-export const DeleteDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1884,7 +1879,7 @@ export const DeleteDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All options a domain can have */
 export type DeleteDomainOptionRequestOption = "dnsAnycast";
-export const DeleteDomainOptionRequestOption = S.String;
+const DeleteDomainOptionRequestOption = S.String;
 
 export interface DeleteDomainOptionRequest {
   /** Service name */
@@ -1892,7 +1887,7 @@ export interface DeleteDomainOptionRequest {
   /** Option */
   option: DeleteDomainOptionRequestOption | (string & {});
 }
-export const DeleteDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     option: DeleteDomainOptionRequestOption.pipe(T.Label()),
@@ -1902,7 +1897,7 @@ export const DeleteDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDomainOptionRequest>;
 
 export interface DeleteDomainOptionResponse {}
-export const DeleteDomainOptionResponse =
+const DeleteDomainOptionResponse =
   CancelDomainTaskResponse as any as S.Schema<DeleteDomainOptionResponse>;
 
 export interface DeleteDynHostLoginRequest {
@@ -1911,7 +1906,7 @@ export interface DeleteDynHostLoginRequest {
   /** Login */
   login: string;
 }
-export const DeleteDynHostLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDynHostLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -1923,7 +1918,7 @@ export const DeleteDynHostLoginRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynHostLoginRequest>;
 
 export interface DeleteDynHostLoginResponse {}
-export const DeleteDynHostLoginResponse =
+const DeleteDynHostLoginResponse =
   CancelDomainTaskResponse as any as S.Schema<DeleteDynHostLoginResponse>;
 
 export interface DeleteDynHostRecordRequest {
@@ -1932,7 +1927,7 @@ export interface DeleteDynHostRecordRequest {
   /** Id */
   id: number;
 }
-export const DeleteDynHostRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDynHostRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1944,7 +1939,7 @@ export const DeleteDynHostRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDynHostRecordRequest>;
 
 export interface DeleteDynHostRecordResponse {}
-export const DeleteDynHostRecordResponse =
+const DeleteDynHostRecordResponse =
   CancelDomainTaskResponse as any as S.Schema<DeleteDynHostRecordResponse>;
 
 export interface DeleteRecordRequest {
@@ -1953,7 +1948,7 @@ export interface DeleteRecordRequest {
   /** Id */
   id: number;
 }
-export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1961,8 +1956,7 @@ export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRecordRequest" }) as any as S.Schema<DeleteRecordRequest>;
 
 export interface DeleteRecordResponse {}
-export const DeleteRecordResponse =
-  CancelDomainTaskResponse as any as S.Schema<DeleteRecordResponse>;
+const DeleteRecordResponse = CancelDomainTaskResponse as any as S.Schema<DeleteRecordResponse>;
 
 export interface DeleteRedirectionRequest {
   /** Zone name */
@@ -1970,7 +1964,7 @@ export interface DeleteRedirectionRequest {
   /** Id */
   id: number;
 }
-export const DeleteRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1978,22 +1972,21 @@ export const DeleteRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRedirectionRequest" }) as any as S.Schema<DeleteRedirectionRequest>;
 
 export interface DeleteRedirectionResponse {}
-export const DeleteRedirectionResponse =
+const DeleteRedirectionResponse =
   CancelDomainTaskResponse as any as S.Schema<DeleteRedirectionResponse>;
 
 export interface DisableDNSSECRequest {
   /** Zone name */
   zoneName: string;
 }
-export const DisableDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
 ).annotate({ identifier: "DisableDNSSECRequest" }) as any as S.Schema<DisableDNSSECRequest>;
 
 export interface DisableDNSSECResponse {}
-export const DisableDNSSECResponse =
-  CancelDomainTaskResponse as any as S.Schema<DisableDNSSECResponse>;
+const DisableDNSSECResponse = CancelDomainTaskResponse as any as S.Schema<DisableDNSSECResponse>;
 
 /** DNS server type */
 export type DomainNameServerNameServerTypeEnum =
@@ -2006,11 +1999,11 @@ export type DomainNameServerNameServerTypeEnum =
   | "hosting"
   | "mixed"
   | "parking";
-export const DomainNameServerNameServerTypeEnum = S.String;
+const DomainNameServerNameServerTypeEnum = S.String;
 
 /** Domain lock status */
 export type DomainLockStatusEnum = "locked" | "locking" | "unavailable" | "unlocked" | "unlocking";
-export const DomainLockStatusEnum = S.String;
+const DomainLockStatusEnum = S.String;
 
 export interface EditDomainRequest {
   /** Service name */
@@ -2020,7 +2013,7 @@ export interface EditDomainRequest {
   /** Current transfer lock status of the domain name */
   transferLockStatus?: DomainLockStatusEnum | (string & {});
 }
-export const EditDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const EditDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     nameServerType: S.optional(DomainNameServerNameServerTypeEnum),
@@ -2033,7 +2026,7 @@ export interface DomainContactSummary {
   /** Unique contact identifier (contact data can be edited via /me/contact/<ID>) */
   id?: string;
 }
-export const DomainContactSummary = /*@__PURE__*/ S.suspend(() =>
+const DomainContactSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2041,7 +2034,7 @@ export const DomainContactSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Domain dnssec state */
 export type DomainDnssecStateEnum = "disabled" | "enabled" | "not_supported";
-export const DomainDnssecStateEnum = S.String;
+const DomainDnssecStateEnum = S.String;
 
 /** Name server configuration */
 export interface DomainNameServerNameServer {
@@ -2056,7 +2049,7 @@ export interface DomainNameServerNameServer {
   /** Type of the name server */
   nameServerType?: DomainNameServerNameServerTypeEnum;
 }
-export const DomainNameServerNameServer = /*@__PURE__*/ S.suspend(() =>
+const DomainNameServerNameServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     ipv4: S.optional(S.NullOr(S.String)),
@@ -2070,17 +2063,17 @@ export const DomainNameServerNameServer = /*@__PURE__*/ S.suspend(() =>
 
 /** Name servers list */
 export type DomainDomainServiceNameServersList = Array<DomainNameServerNameServer>;
-export const DomainDomainServiceNameServersList = /*@__PURE__*/ S.Array(
+const DomainDomainServiceNameServersList = /*@__PURE__*/ S.Array(
   DomainNameServerNameServer,
 ) as any as S.Schema<DomainDomainServiceNameServersList>;
 
 /** Offer */
 export type DomainOfferEnum = "diamond" | "gold" | "platinum";
-export const DomainOfferEnum = S.String;
+const DomainOfferEnum = S.String;
 
 /** Parent service type enum */
 export type DomainParentServiceTypeEnum = "/allDom";
-export const DomainParentServiceTypeEnum = S.String;
+const DomainParentServiceTypeEnum = S.String;
 
 /** Parent service */
 export interface DomainParentService {
@@ -2089,7 +2082,7 @@ export interface DomainParentService {
   /** Type of the parent service */
   type?: DomainParentServiceTypeEnum;
 }
-export const DomainParentService = /*@__PURE__*/ S.suspend(() =>
+const DomainParentService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(DomainParentServiceTypeEnum),
@@ -2103,7 +2096,7 @@ export type DomainRenewalStateEnum =
   | "cancellation_requested"
   | "manual_renew"
   | "unpaid";
-export const DomainRenewalStateEnum = S.String;
+const DomainRenewalStateEnum = S.String;
 
 /** Domain name current state */
 export type DomainDomainStateEnum =
@@ -2121,11 +2114,11 @@ export type DomainDomainStateEnum =
   | "registry_suspended"
   | "restorable"
   | "technical_suspended";
-export const DomainDomainStateEnum = S.String;
+const DomainDomainStateEnum = S.String;
 
 /** Domain suspension state */
 export type DomainSuspensionStateEnum = "not_suspended" | "suspended";
-export const DomainSuspensionStateEnum = S.String;
+const DomainSuspensionStateEnum = S.String;
 
 /** General information about a domain name service */
 export interface DomainDomainService {
@@ -2178,7 +2171,7 @@ export interface DomainDomainService {
   /** Owner (registrant) contact ID (contact data can be edited via /me/contact/<ID>) */
   whoisOwner?: string;
 }
-export const DomainDomainService = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: S.optional(DomainContactSummary),
     contactBilling: S.optional(DomainContactSummary),
@@ -2215,7 +2208,7 @@ export interface EditDynDnsLoginRequest {
   /** Login sub-domain */
   subDomain?: string;
 }
-export const EditDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const EditDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -2226,7 +2219,7 @@ export const EditDynDnsLoginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditDynDnsLoginRequest" }) as any as S.Schema<EditDynDnsLoginRequest>;
 
 export interface EditDynDnsLoginResponse {}
-export const EditDynDnsLoginResponse =
+const EditDynDnsLoginResponse =
   CancelDomainTaskResponse as any as S.Schema<EditDynDnsLoginResponse>;
 
 export interface EditDynDnsRecordRequest {
@@ -2239,7 +2232,7 @@ export interface EditDynDnsRecordRequest {
   /** Record sub-domain */
   subDomain?: string | null;
 }
-export const EditDynDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const EditDynDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2249,7 +2242,7 @@ export const EditDynDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditDynDnsRecordRequest" }) as any as S.Schema<EditDynDnsRecordRequest>;
 
 export interface EditDynDnsRecordResponse {}
-export const EditDynDnsRecordResponse =
+const EditDynDnsRecordResponse =
   CancelDomainTaskResponse as any as S.Schema<EditDynDnsRecordResponse>;
 
 export interface EditRecordRequest {
@@ -2264,7 +2257,7 @@ export interface EditRecordRequest {
   /** TTL of the record */
   ttl?: number | null;
 }
-export const EditRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2275,7 +2268,7 @@ export const EditRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRecordRequest" }) as any as S.Schema<EditRecordRequest>;
 
 export interface EditRecordResponse {}
-export const EditRecordResponse = CancelDomainTaskResponse as any as S.Schema<EditRecordResponse>;
+const EditRecordResponse = CancelDomainTaskResponse as any as S.Schema<EditRecordResponse>;
 
 export interface EditRedirectionRequest {
   /** Zone name */
@@ -2292,7 +2285,7 @@ export interface EditRedirectionRequest {
   title?: string | null;
   type?: DomainZoneRedirectionTypeEnum | (string & {});
 }
-export const EditRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2305,45 +2298,44 @@ export const EditRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EditRedirectionRequest" }) as any as S.Schema<EditRedirectionRequest>;
 
 export interface EditRedirectionResponse {}
-export const EditRedirectionResponse =
+const EditRedirectionResponse =
   CancelDomainTaskResponse as any as S.Schema<EditRedirectionResponse>;
 
 export interface EnableDNSSECRequest {
   /** Zone name */
   zoneName: string;
 }
-export const EnableDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
 ).annotate({ identifier: "EnableDNSSECRequest" }) as any as S.Schema<EnableDNSSECRequest>;
 
 export interface EnableDNSSECResponse {}
-export const EnableDNSSECResponse =
-  CancelDomainTaskResponse as any as S.Schema<EnableDNSSECResponse>;
+const EnableDNSSECResponse = CancelDomainTaskResponse as any as S.Schema<EnableDNSSECResponse>;
 
 export interface GetContactRequest {
   /** Contact ID */
   contactId: number;
 }
-export const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/contact/{contactId}", code: 200 })),
 ).annotate({ identifier: "GetContactRequest" }) as any as S.Schema<GetContactRequest>;
 
 export interface GetContactsRequest {}
-export const GetContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/contact", code: 200 })),
 ).annotate({ identifier: "GetContactsRequest" }) as any as S.Schema<GetContactsRequest>;
 
 export type GetContactsResponseBodyList = Array<DomainContact>;
-export const GetContactsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetContactsResponseBodyList = /*@__PURE__*/ S.Array(
   DomainContact,
 ) as any as S.Schema<GetContactsResponseBodyList>;
 
 export type GetContactsResponse = GetContactsResponseBodyList;
-export const GetContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetContactsResponse = /*@__PURE__*/ S.suspend(() =>
   GetContactsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetContactsResponse" }) as any as S.Schema<GetContactsResponse>;
 
@@ -2351,7 +2343,7 @@ export interface GetDNSSECStatusRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetDNSSECStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDNSSECStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/dnssec", code: 200 })),
@@ -2363,14 +2355,14 @@ export type DomainDnssecStatusEnum =
   | "disabled"
   | "enableInProgress"
   | "enabled";
-export const DomainDnssecStatusEnum = S.String;
+const DomainDnssecStatusEnum = S.String;
 
 /** DNS zone DNSSEC */
 export interface DomainZoneDnssec {
   /** DNSSEC Status */
   status?: DomainDnssecStatusEnum;
 }
-export const DomainZoneDnssec = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneDnssec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(DomainDnssecStatusEnum),
   }),
@@ -2380,7 +2372,7 @@ export interface GetDomainRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}", code: 200 })),
@@ -2388,11 +2380,11 @@ export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource state */
 export type IamResourceMetadataStateEnum = "EXPIRED" | "IN_CREATION" | "OK" | "SUSPENDED";
-export const IamResourceMetadataStateEnum = S.String;
+const IamResourceMetadataStateEnum = S.String;
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -2410,7 +2402,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -2422,7 +2414,7 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Name servers list */
 export type DomainDomainServiceWithIAMNameServersList = Array<DomainNameServerNameServer>;
-export const DomainDomainServiceWithIAMNameServersList =
+const DomainDomainServiceWithIAMNameServersList =
   DomainDomainServiceNameServersList as any as S.Schema<DomainDomainServiceWithIAMNameServersList>;
 
 /** General information about a domain name service */
@@ -2478,7 +2470,7 @@ export interface DomainDomainServiceWithIAM {
   /** Owner (registrant) contact ID (contact data can be edited via /me/contact/<ID>) */
   whoisOwner?: string;
 }
-export const DomainDomainServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const DomainDomainServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactAdmin: S.optional(DomainContactSummary),
     contactBilling: S.optional(DomainContactSummary),
@@ -2514,21 +2506,21 @@ export interface GetDomainAuthInfoRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDomainAuthInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainAuthInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/authInfo", code: 200 })),
 ).annotate({ identifier: "GetDomainAuthInfoRequest" }) as any as S.Schema<GetDomainAuthInfoRequest>;
 
 export type GetDomainAuthInfoResponse = string;
-export const GetDomainAuthInfoResponse =
+const GetDomainAuthInfoResponse =
   ConfirmDomainZoneTerminationResponse as any as S.Schema<GetDomainAuthInfoResponse>;
 
 export interface GetDomainConfigurationDataRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDomainConfigurationDataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainConfigurationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/configurations/data", code: 200 })),
@@ -2545,11 +2537,11 @@ export type DomainIsForEnum =
   | "other_purpose"
   | "redirect_page"
   | "transactional_website";
-export const DomainIsForEnum = S.String;
+const DomainIsForEnum = S.String;
 
 /** Purposes of the domain */
 export type DomainConfigurationsCustomFieldsIsForList = Array<DomainIsForEnum>;
-export const DomainConfigurationsCustomFieldsIsForList = /*@__PURE__*/ S.Array(
+const DomainConfigurationsCustomFieldsIsForList = /*@__PURE__*/ S.Array(
   DomainIsForEnum,
 ) as any as S.Schema<DomainConfigurationsCustomFieldsIsForList>;
 
@@ -2568,7 +2560,7 @@ export interface DomainConfigurationsCustomFields {
   /** Represented company */
   represent?: string | null;
 }
-export const DomainConfigurationsCustomFields = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationsCustomFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.NullOr(S.String)),
     authInfo: S.optional(S.NullOr(S.String)),
@@ -2587,7 +2579,7 @@ export interface GetDomainConfigurationRuleRequest {
   /** The domain to get the configuration rule for */
   domain: string;
 }
-export const GetDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: DomainActionEnum.pipe(T.Query()),
     domain: S.String.pipe(T.Query()),
@@ -2598,7 +2590,7 @@ export const GetDomainConfigurationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An "and" operator on multiple rules */
 export type DomainConfigurationRulesRuleAndList = Array<DomainConfigurationRulesRule>;
-export const DomainConfigurationRulesRuleAndList = /*@__PURE__*/ S.Array(
+const DomainConfigurationRulesRuleAndList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => DomainConfigurationRulesRule),
 ) as any as S.Schema<DomainConfigurationRulesRuleAndList>;
 
@@ -2614,12 +2606,10 @@ export type DomainConfigurationRulesContextEnum =
   | "trade"
   | "transfer"
   | "update";
-export const DomainConfigurationRulesContextEnum = S.String;
-
 /** The context on which the constraint applies */
 export type DomainConfigurationRulesConstraintContextsList =
   Array<DomainConfigurationRulesContextEnum>;
-export const DomainConfigurationRulesConstraintContextsList =
+const DomainConfigurationRulesConstraintContextsList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<DomainConfigurationRulesConstraintContextsList>;
 
 /** Operator use in configuration rule to check content of a field */
@@ -2641,11 +2631,11 @@ export type DomainConfigurationRulesOperatorEnum =
   | "readonly"
   | "required"
   | "shouldbetrue";
-export const DomainConfigurationRulesOperatorEnum = S.String;
+const DomainConfigurationRulesOperatorEnum = S.String;
 
 /** The values to match against */
 export type DomainConfigurationRulesConstraintValuesList = Array<string>;
-export const DomainConfigurationRulesConstraintValuesList =
+const DomainConfigurationRulesConstraintValuesList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainConfigurationRulesConstraintValuesList>;
 
 /** A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different */
@@ -2661,7 +2651,7 @@ export interface DomainConfigurationRulesConstraint {
   /** The values to match against */
   values?: DomainConfigurationRulesConstraintValuesList | null;
 }
-export const DomainConfigurationRulesConstraint = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationRulesConstraint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: S.optional(S.NullOr(S.suspend(() => DomainConfigurationRulesRule))),
     contexts: S.optional(S.NullOr(DomainConfigurationRulesConstraintContextsList)),
@@ -2675,18 +2665,18 @@ export const DomainConfigurationRulesConstraint = /*@__PURE__*/ S.suspend(() =>
 
 /** The constraints of the rule */
 export type DomainConfigurationRulesRuleConstraintsList = Array<DomainConfigurationRulesConstraint>;
-export const DomainConfigurationRulesRuleConstraintsList = /*@__PURE__*/ S.Array(
+const DomainConfigurationRulesRuleConstraintsList = /*@__PURE__*/ S.Array(
   DomainConfigurationRulesConstraint,
 ) as any as S.Schema<DomainConfigurationRulesRuleConstraintsList>;
 
 /** The context on which the rule applies */
 export type DomainConfigurationRulesRuleContextsList = Array<DomainConfigurationRulesContextEnum>;
-export const DomainConfigurationRulesRuleContextsList =
+const DomainConfigurationRulesRuleContextsList =
   DomainConfigurationRulesConstraintContextsList as any as S.Schema<DomainConfigurationRulesRuleContextsList>;
 
 /** An "or" operator on multiple rules */
 export type DomainConfigurationRulesRuleOrList = Array<DomainConfigurationRulesRule>;
-export const DomainConfigurationRulesRuleOrList =
+const DomainConfigurationRulesRuleOrList =
   DomainConfigurationRulesRuleAndList as any as S.Schema<DomainConfigurationRulesRuleOrList>;
 
 /** Type of rule configuration */
@@ -2700,7 +2690,7 @@ export type DomainConfigurationRulesTypeEnum =
   | "string"
   | "string[]"
   | "text";
-export const DomainConfigurationRulesTypeEnum = S.String;
+const DomainConfigurationRulesTypeEnum = S.String;
 
 /** A configuration rule defines validation to launch when executing an action on a domain (create, trade...). Depending on the extension, the rule may be different */
 export interface DomainConfigurationRulesRule {
@@ -2725,7 +2715,7 @@ export interface DomainConfigurationRulesRule {
   /** The type of the object the rule applies on */
   type?: DomainConfigurationRulesTypeEnum | null;
 }
-export const DomainConfigurationRulesRule = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationRulesRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     and: S.optional(S.NullOr(DomainConfigurationRulesRuleAndList)),
     conditions: S.optional(S.NullOr(DomainConfigurationRulesRule)),
@@ -2746,7 +2736,7 @@ export interface GetDomainDataClaimNoticeRequest {
   /** Domain name */
   domain: string;
 }
-export const GetDomainDataClaimNoticeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDataClaimNoticeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/data/claimNotice", code: 200 })),
@@ -2761,7 +2751,7 @@ export interface DomainDataClaimNoticeClassification {
   /** Code of the classification */
   number?: string;
 }
-export const DomainDataClaimNoticeClassification = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeClassification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     number: S.optional(S.String),
@@ -2773,13 +2763,13 @@ export const DomainDataClaimNoticeClassification = /*@__PURE__*/ S.suspend(() =>
 /** Classifications where trademark claim notice apply */
 export type DomainDataClaimNoticeClaimNoticeDecisionClassificationsList =
   Array<DomainDataClaimNoticeClassification>;
-export const DomainDataClaimNoticeClaimNoticeDecisionClassificationsList = /*@__PURE__*/ S.Array(
+const DomainDataClaimNoticeClaimNoticeDecisionClassificationsList = /*@__PURE__*/ S.Array(
   DomainDataClaimNoticeClassification,
 ) as any as S.Schema<DomainDataClaimNoticeClaimNoticeDecisionClassificationsList>;
 
 /** Regions where court decision apply */
 export type DomainDataClaimNoticeCourtDecisionRegionsList = Array<string>;
-export const DomainDataClaimNoticeCourtDecisionRegionsList =
+const DomainDataClaimNoticeCourtDecisionRegionsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainDataClaimNoticeCourtDecisionRegionsList>;
 
 /** Definition of a court decision */
@@ -2793,7 +2783,7 @@ export interface DomainDataClaimNoticeCourtDecision {
   /** Regions where court decision apply */
   regions?: DomainDataClaimNoticeCourtDecisionRegionsList;
 }
-export const DomainDataClaimNoticeCourtDecision = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeCourtDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countryCode: S.optional(S.String),
     courtName: S.optional(S.String),
@@ -2807,13 +2797,13 @@ export const DomainDataClaimNoticeCourtDecision = /*@__PURE__*/ S.suspend(() =>
 /** Array of court decisions related to claim notice */
 export type DomainDataClaimNoticeClaimNoticeDecisionCourtDecisionsList =
   Array<DomainDataClaimNoticeCourtDecision>;
-export const DomainDataClaimNoticeClaimNoticeDecisionCourtDecisionsList = /*@__PURE__*/ S.Array(
+const DomainDataClaimNoticeClaimNoticeDecisionCourtDecisionsList = /*@__PURE__*/ S.Array(
   DomainDataClaimNoticeCourtDecision,
 ) as any as S.Schema<DomainDataClaimNoticeClaimNoticeDecisionCourtDecisionsList>;
 
 /** Array of street name */
 export type DomainDataClaimNoticeAddressStreetsList = Array<string>;
-export const DomainDataClaimNoticeAddressStreetsList =
+const DomainDataClaimNoticeAddressStreetsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainDataClaimNoticeAddressStreetsList>;
 
 /** Address for a claim notice holder */
@@ -2837,7 +2827,7 @@ export interface DomainDataClaimNoticeAddress {
   /** Phone number extension */
   voiceExtension?: string | null;
 }
-export const DomainDataClaimNoticeAddress = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     countryCode: S.optional(S.NullOr(NichandleCountryEnum)),
@@ -2868,7 +2858,7 @@ export interface DomainDataClaimNoticeContact {
   /** Type of contact */
   type?: string | null;
 }
-export const DomainDataClaimNoticeContact = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeContact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(DomainDataClaimNoticeAddress),
     email: S.optional(S.NullOr(S.String)),
@@ -2884,14 +2874,14 @@ export const DomainDataClaimNoticeContact = /*@__PURE__*/ S.suspend(() =>
 /** Trademark contacts */
 export type DomainDataClaimNoticeClaimNoticeDecisionTrademarkContactsList =
   Array<DomainDataClaimNoticeContact>;
-export const DomainDataClaimNoticeClaimNoticeDecisionTrademarkContactsList = /*@__PURE__*/ S.Array(
+const DomainDataClaimNoticeClaimNoticeDecisionTrademarkContactsList = /*@__PURE__*/ S.Array(
   DomainDataClaimNoticeContact,
 ) as any as S.Schema<DomainDataClaimNoticeClaimNoticeDecisionTrademarkContactsList>;
 
 /** Trademark holders */
 export type DomainDataClaimNoticeClaimNoticeDecisionTrademarkHoldersList =
   Array<DomainDataClaimNoticeContact>;
-export const DomainDataClaimNoticeClaimNoticeDecisionTrademarkHoldersList =
+const DomainDataClaimNoticeClaimNoticeDecisionTrademarkHoldersList =
   DomainDataClaimNoticeClaimNoticeDecisionTrademarkContactsList as any as S.Schema<DomainDataClaimNoticeClaimNoticeDecisionTrademarkHoldersList>;
 
 /** Definition of a UDRP procedure */
@@ -2901,7 +2891,7 @@ export interface DomainDataClaimNoticeUDRP {
   /** UDRP Provider */
   udrpProvider?: string;
 }
-export const DomainDataClaimNoticeUDRP = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeUDRP = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caseNumber: S.optional(S.String),
     udrpProvider: S.optional(S.String),
@@ -2913,7 +2903,7 @@ export const DomainDataClaimNoticeUDRP = /*@__PURE__*/ S.suspend(() =>
 /** Trademark UDRP information */
 export type DomainDataClaimNoticeClaimNoticeDecisionTrademarkUDRPList =
   Array<DomainDataClaimNoticeUDRP>;
-export const DomainDataClaimNoticeClaimNoticeDecisionTrademarkUDRPList = /*@__PURE__*/ S.Array(
+const DomainDataClaimNoticeClaimNoticeDecisionTrademarkUDRPList = /*@__PURE__*/ S.Array(
   DomainDataClaimNoticeUDRP,
 ) as any as S.Schema<DomainDataClaimNoticeClaimNoticeDecisionTrademarkUDRPList>;
 
@@ -2938,7 +2928,7 @@ export interface DomainDataClaimNoticeClaimNoticeDecision {
   /** Trademark UDRP information */
   trademarkUDRP?: DomainDataClaimNoticeClaimNoticeDecisionTrademarkUDRPList;
 }
-export const DomainDataClaimNoticeClaimNoticeDecision = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeClaimNoticeDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     classifications: S.optional(DomainDataClaimNoticeClaimNoticeDecisionClassificationsList),
     courtDecisions: S.optional(DomainDataClaimNoticeClaimNoticeDecisionCourtDecisionsList),
@@ -2957,13 +2947,13 @@ export const DomainDataClaimNoticeClaimNoticeDecision = /*@__PURE__*/ S.suspend(
 /** Array of claim notice for the domain */
 export type DomainDataClaimNoticeClaimNoticeClaimsList =
   Array<DomainDataClaimNoticeClaimNoticeDecision>;
-export const DomainDataClaimNoticeClaimNoticeClaimsList = /*@__PURE__*/ S.Array(
+const DomainDataClaimNoticeClaimNoticeClaimsList = /*@__PURE__*/ S.Array(
   DomainDataClaimNoticeClaimNoticeDecision,
 ) as any as S.Schema<DomainDataClaimNoticeClaimNoticeClaimsList>;
 
 /** Type of claim notice */
 export type DomainDataClaimNoticeClaimNoticeTypeEnum = "TRADEMARK" | "UK";
-export const DomainDataClaimNoticeClaimNoticeTypeEnum = S.String;
+const DomainDataClaimNoticeClaimNoticeTypeEnum = S.String;
 
 /** Definition of claim notices applying to a domain name */
 export interface DomainDataClaimNoticeClaimNotice {
@@ -2980,7 +2970,7 @@ export interface DomainDataClaimNoticeClaimNotice {
   /** Type of claim notice */
   type?: DomainDataClaimNoticeClaimNoticeTypeEnum | null;
 }
-export const DomainDataClaimNoticeClaimNotice = /*@__PURE__*/ S.suspend(() =>
+const DomainDataClaimNoticeClaimNotice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     claims: S.optional(S.NullOr(DomainDataClaimNoticeClaimNoticeClaimsList)),
     endingDate: S.optional(S.String),
@@ -2997,7 +2987,7 @@ export interface GetDomainDataSmdRequest {
   /** Smd ID */
   smdId: string;
 }
-export const GetDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smdId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/data/smd/{smdId}", code: 200 })),
@@ -3009,7 +2999,7 @@ export interface GetDomainDsRecordRequest {
   /** Id */
   id: number;
 }
-export const GetDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3024,7 +3014,7 @@ export type DnssecKeyStatusEnum =
   | "removed"
   | "retired"
   | "revoked";
-export const DnssecKeyStatusEnum = S.String;
+const DnssecKeyStatusEnum = S.String;
 
 /** Domain's DNSSEC Key */
 export interface DnssecKey {
@@ -3041,7 +3031,7 @@ export interface DnssecKey {
   /** Tag of the DNSSEC key */
   tag?: number;
 }
-export const DnssecKey = /*@__PURE__*/ S.suspend(() =>
+const DnssecKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     algorithm: S.optional(DnssecKeyAlgorithmEnum),
     flags: S.optional(DnssecKeyFlagEnum),
@@ -3056,7 +3046,7 @@ export interface GetDomainExtensionRequest {
   /** Name */
   name: string;
 }
-export const GetDomainExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/{name}", code: 200 })),
@@ -3069,7 +3059,7 @@ export interface DomainExtensionsExtension {
   /** The extension name */
   name?: string;
 }
-export const DomainExtensionsExtension = /*@__PURE__*/ S.suspend(() =>
+const DomainExtensionsExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -3081,7 +3071,7 @@ export interface GetDomainExtensionRegistryConfigurationsRequest {
   /** Name */
   name: string;
 }
-export const GetDomainExtensionRegistryConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainExtensionRegistryConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3100,20 +3090,19 @@ export interface DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration 
   /** The minimum required number of DNS */
   minNumber?: number | null;
 }
-export const DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isDNSSECSupported: S.optional(S.Boolean),
-      maxNumber: S.optional(S.NullOr(S.Number)),
-      minNumber: S.optional(S.NullOr(S.Number)),
-    }),
-  ).annotate({
-    identifier: "DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration",
-  }) as any as S.Schema<DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration>;
+const DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isDNSSECSupported: S.optional(S.Boolean),
+    maxNumber: S.optional(S.NullOr(S.Number)),
+    minNumber: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration",
+}) as any as S.Schema<DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration>;
 
 /** The type of an extension (country-code TLD or generic TLD) */
 export type DomainExtensionsRegistryConfigurationsExtensionTypeEnum = "cctld" | "gtld";
-export const DomainExtensionsRegistryConfigurationsExtensionTypeEnum = S.String;
+const DomainExtensionsRegistryConfigurationsExtensionTypeEnum = S.String;
 
 /** The registry configurations applied to the domain name label */
 export interface DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfiguration {
@@ -3124,7 +3113,7 @@ export interface DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfig
   /** The minimum length allowed for a domain name (without the extension) */
   minLength?: number | null;
 }
-export const DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       isIDNSupported: S.optional(S.Boolean),
@@ -3144,21 +3133,21 @@ export interface DomainExtensionsRegistryConfigurationsDomainRegistryConfigurati
   /** The registry configurations applied to the domain name label */
   label?: DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfiguration;
 }
-export const DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
+const DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       extension_type: S.optional(DomainExtensionsRegistryConfigurationsExtensionTypeEnum),
       isPremiumSupported: S.optional(S.Boolean),
       label: S.optional(DomainExtensionsRegistryConfigurationsLabelDomainRegistryConfiguration),
     }),
-  ).annotate({
-    identifier: "DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration",
-  }) as any as S.Schema<DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration>;
+).annotate({
+  identifier: "DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration",
+}) as any as S.Schema<DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration>;
 
 /** The number of months allowed for a domain creation */
 export type DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   Array<number>;
-export const DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
+const DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList>;
@@ -3168,7 +3157,7 @@ export interface DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryCo
   /** The number of months allowed for a domain creation */
   allowedPeriodsInMonths?: DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList | null;
 }
-export const DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedPeriodsInMonths: S.optional(
@@ -3190,7 +3179,7 @@ export interface DomainExtensionsRegistryConfigurationsOrderLifecycleRegistryCon
   /** The minimum number of months a domain can be ordered for */
   minMonths?: number | null;
 }
-export const DomainExtensionsRegistryConfigurationsOrderLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsOrderLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       active: S.optional(S.Boolean),
@@ -3204,7 +3193,7 @@ export const DomainExtensionsRegistryConfigurationsOrderLifecycleRegistryConfigu
 /** The number of months allowed for a domain renewal */
 export type DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   Array<number>;
-export const DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
+const DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList as any as S.Schema<DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfigurationAllowedPeriodsInMonthsList>;
 
 /** The registry configurations applied when renewing a domain name */
@@ -3214,7 +3203,7 @@ export interface DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryCon
   /** The number of calendar days between the expiration date and the redemption period when a renew can be executed. During this period, the domain has expired and is suspended. It's the number of days before real deletion. The customer can still renew. */
   gracePeriodInDays?: number | null;
 }
-export const DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsRenewLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedPeriodsInMonths: S.optional(
@@ -3233,7 +3222,7 @@ export interface DomainExtensionsRegistryConfigurationsRestoreLifecycleRegistryC
   /** The number of calendar days in which the customer still can restore their domain after expiration. During this period, the domain has been deleted. The customer can still restore it until these days are over. Then the domain is returned to public, if not restored. */
   gracePeriodInDays?: number | null;
 }
-export const DomainExtensionsRegistryConfigurationsRestoreLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsRestoreLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       gracePeriodInDays: S.optional(S.NullOr(S.Number)),
@@ -3245,7 +3234,7 @@ export const DomainExtensionsRegistryConfigurationsRestoreLifecycleRegistryConfi
 /** The number of months allowed for a domain transfer */
 export type DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   Array<number>;
-export const DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
+const DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfigurationAllowedPeriodsInMonthsList =
   DomainExtensionsRegistryConfigurationsCreateLifecycleRegistryConfigurationAllowedPeriodsInMonthsList as any as S.Schema<DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfigurationAllowedPeriodsInMonthsList>;
 
 /** The registry configurations applied when transfering a domain name */
@@ -3255,7 +3244,7 @@ export interface DomainExtensionsRegistryConfigurationsTransferLifecycleRegistry
   /** Whether the transfer includes a renewal of the domain name, and therefore updates its expiration date */
   includeRenew?: boolean;
 }
-export const DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       allowedPeriodsInMonths: S.optional(
@@ -3282,7 +3271,7 @@ export interface DomainExtensionsRegistryConfigurationsLifecycleRegistryConfigur
   /** The registry configurations applied when transfering a domain name */
   transfer?: DomainExtensionsRegistryConfigurationsTransferLifecycleRegistryConfiguration;
 }
-export const DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration =
+const DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       create: S.optional(
@@ -3310,13 +3299,12 @@ export interface DomainExtensionsRegistryConfigurationsRegistryConfigurations {
   /** Configurations on the lifecycle of a domain for the given extension */
   lifecycle?: DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration;
 }
-export const DomainExtensionsRegistryConfigurationsRegistryConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dns: S.optional(DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration),
-      domain: S.optional(DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration),
-      lifecycle: S.optional(DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration),
-    }),
+const DomainExtensionsRegistryConfigurationsRegistryConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dns: S.optional(DomainExtensionsRegistryConfigurationsDNSRegistryConfiguration),
+    domain: S.optional(DomainExtensionsRegistryConfigurationsDomainRegistryConfiguration),
+    lifecycle: S.optional(DomainExtensionsRegistryConfigurationsLifecycleRegistryConfiguration),
+  }),
 ).annotate({
   identifier: "DomainExtensionsRegistryConfigurationsRegistryConfigurations",
 }) as any as S.Schema<DomainExtensionsRegistryConfigurationsRegistryConfigurations>;
@@ -3327,7 +3315,7 @@ export interface GetDomainGlueRecordRequest {
   /** Host */
   host: string;
 }
-export const GetDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     host: S.String.pipe(T.Label()),
@@ -3338,7 +3326,7 @@ export const GetDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP address */
 export type DomainGlueRecordGlueRecordIpsList = Array<string>;
-export const DomainGlueRecordGlueRecordIpsList =
+const DomainGlueRecordGlueRecordIpsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainGlueRecordGlueRecordIpsList>;
 
 /** Glue record */
@@ -3348,7 +3336,7 @@ export interface DomainGlueRecordGlueRecord {
   /** IP address */
   ips: DomainGlueRecordGlueRecordIpsList;
 }
-export const DomainGlueRecordGlueRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainGlueRecordGlueRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     ips: DomainGlueRecordGlueRecordIpsList,
@@ -3363,7 +3351,7 @@ export interface GetDomainNameServerRequest {
   /** Id */
   id: number;
 }
-export const GetDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3385,7 +3373,7 @@ export interface DomainNameServerFullNameServer {
   /** toDelete flag of the name server */
   toDelete?: boolean;
 }
-export const DomainNameServerFullNameServer = /*@__PURE__*/ S.suspend(() =>
+const DomainNameServerFullNameServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     id: S.optional(S.Number),
@@ -3403,7 +3391,7 @@ export interface GetDomainNameServerStatusRequest {
   /** Id */
   id: number;
 }
-export const GetDomainNameServerStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNameServerStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3416,7 +3404,7 @@ export const GetDomainNameServerStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS server state */
 export type DomainNameServerNameServerStateEnum = "ko" | "ok";
-export const DomainNameServerNameServerStateEnum = S.String;
+const DomainNameServerNameServerStateEnum = S.String;
 
 /** DNS server status */
 export interface DomainNameServerNameServerStatus {
@@ -3427,7 +3415,7 @@ export interface DomainNameServerNameServerStatus {
   /** Date from which the DNS server is used by the domain */
   usedSince?: string | null;
 }
-export const DomainNameServerNameServerStatus = /*@__PURE__*/ S.suspend(() =>
+const DomainNameServerNameServerStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(DomainNameServerNameServerStateEnum),
     type: S.optional(DomainNameServerNameServerTypeEnum),
@@ -3439,7 +3427,7 @@ export const DomainNameServerNameServerStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** All options a domain can have */
 export type GetDomainOptionRequestOption = "dnsAnycast";
-export const GetDomainOptionRequestOption = S.String;
+const GetDomainOptionRequestOption = S.String;
 
 export interface GetDomainOptionRequest {
   /** Service name */
@@ -3447,7 +3435,7 @@ export interface GetDomainOptionRequest {
   /** Option */
   option: GetDomainOptionRequestOption | (string & {});
 }
-export const GetDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     option: GetDomainOptionRequestOption.pipe(T.Label()),
@@ -3456,11 +3444,11 @@ export const GetDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All options a domain can have */
 export type DomainDomainOptionEnum = "dnsAnycast";
-export const DomainDomainOptionEnum = S.String;
+const DomainDomainOptionEnum = S.String;
 
 /** All states a domain Option can be in */
 export type DomainDomainOptionStateEnum = "released" | "subscribed";
-export const DomainDomainOptionStateEnum = S.String;
+const DomainDomainOptionStateEnum = S.String;
 
 /** Information about the options of a domain */
 export interface DomainOption {
@@ -3471,7 +3459,7 @@ export interface DomainOption {
   /** The state of the option */
   state?: DomainDomainOptionStateEnum;
 }
-export const DomainOption = /*@__PURE__*/ S.suspend(() =>
+const DomainOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     option: S.optional(DomainDomainOptionEnum),
@@ -3483,7 +3471,7 @@ export interface GetDomainOptionsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDomainOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/options", code: 200 })),
@@ -3494,7 +3482,7 @@ export interface DomainServiceOption {
   /** Service name of the option */
   serviceName?: string;
 }
-export const DomainServiceOption = /*@__PURE__*/ S.suspend(() =>
+const DomainServiceOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
   }),
@@ -3509,7 +3497,7 @@ export interface DomainServiceOptions {
   /** DNS zone option */
   zone?: DomainServiceOption | null;
 }
-export const DomainServiceOptions = /*@__PURE__*/ S.suspend(() =>
+const DomainServiceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hosting: S.optional(S.NullOr(DomainServiceOption)),
     offer: S.optional(S.NullOr(DomainServiceOption)),
@@ -3519,18 +3507,18 @@ export const DomainServiceOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   CancelDomainTaskResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type GetDomainsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const GetDomainsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const GetDomainsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<GetDomainsRequestIamTagsValueList>;
 
 export type GetDomainsRequestIamTagsMap = {
   [key: string]: GetDomainsRequestIamTagsValueList | undefined;
 };
-export const GetDomainsRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const GetDomainsRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   GetDomainsRequestIamTagsValueList,
 ) as any as S.Schema<GetDomainsRequestIamTagsMap>;
@@ -3541,7 +3529,7 @@ export interface GetDomainsRequest {
   /** Filter domain names by owner ID */
   whoisOwner?: string;
 }
-export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(GetDomainsRequestIamTagsMap.pipe(T.Query())),
     whoisOwner: S.optional(S.String.pipe(T.Query())),
@@ -3549,11 +3537,11 @@ export const GetDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDomainsRequest" }) as any as S.Schema<GetDomainsRequest>;
 
 export type GetDomainsResponseBodyList = Array<string>;
-export const GetDomainsResponseBodyList =
+const GetDomainsResponseBodyList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<GetDomainsResponseBodyList>;
 
 export type GetDomainsResponse = GetDomainsResponseBodyList;
-export const GetDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   GetDomainsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDomainsResponse" }) as any as S.Schema<GetDomainsResponse>;
 
@@ -3561,7 +3549,7 @@ export interface GetDomainServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/serviceInfos", code: 200 })),
@@ -3571,7 +3559,7 @@ export const GetDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateDomainChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -3587,7 +3575,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -3606,7 +3594,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -3616,7 +3604,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -3637,7 +3625,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -3661,7 +3649,7 @@ export interface GetDomainTaskRequest {
   /** Id */
   id: number;
 }
-export const GetDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3672,7 +3660,7 @@ export interface GetDomainZoneCapabilitiesRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetDomainZoneCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/capabilities", code: 200 })),
@@ -3685,7 +3673,7 @@ export interface DomainZoneCapabilities {
   /** True if dynHost available for this zone */
   dynHost?: boolean;
 }
-export const DomainZoneCapabilities = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dynHost: S.optional(S.Boolean),
   }),
@@ -3695,7 +3683,7 @@ export interface GetDomainZoneExportRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetDomainZoneExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/export", code: 200 })),
@@ -3704,7 +3692,7 @@ export const GetDomainZoneExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDomainZoneExportRequest>;
 
 export type GetDomainZoneExportResponse = string;
-export const GetDomainZoneExportResponse =
+const GetDomainZoneExportResponse =
   ConfirmDomainZoneTerminationResponse as any as S.Schema<GetDomainZoneExportResponse>;
 
 export interface GetDomainZoneHistoryRequest {
@@ -3713,7 +3701,7 @@ export interface GetDomainZoneHistoryRequest {
   /** Creation date */
   creationDate: string;
 }
-export const GetDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     creationDate: S.String.pipe(T.Label()),
@@ -3731,7 +3719,7 @@ export interface DomainZoneZoneRestorePoint {
   /** The URL of the saved zone at this date */
   zoneFileUrl?: string;
 }
-export const DomainZoneZoneRestorePoint = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneZoneRestorePoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     zoneFileUrl: S.optional(S.String),
@@ -3746,7 +3734,7 @@ export interface GetDomainZoneOptionRequest {
   /** Name */
   name: string;
 }
-export const GetDomainZoneOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3760,7 +3748,7 @@ export interface DomainZoneOption {
   /** The option name */
   name?: string;
 }
-export const DomainZoneOption = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -3772,7 +3760,7 @@ export interface GetDomainZoneOptionServiceInfosRequest {
   /** The option name */
   name: string;
 }
-export const GetDomainZoneOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3787,7 +3775,7 @@ export interface GetDomainZoneServiceInfosRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetDomainZoneServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/serviceInfos", code: 200 })),
@@ -3799,7 +3787,7 @@ export interface GetDomainZoneSoaRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetDomainZoneSoaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneSoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/soa", code: 200 })),
@@ -3822,7 +3810,7 @@ export interface DomainZoneSoa {
   /** Time To Live in seconds */
   ttl?: number;
 }
-export const DomainZoneSoa = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneSoa = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     expire: S.optional(S.Number),
@@ -3840,7 +3828,7 @@ export interface GetDomainZoneTaskRequest {
   /** Id */
   id: number;
 }
-export const GetDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3863,11 +3851,11 @@ export type DomainTaskFunctionEnum =
   | "ZoneImport"
   | "ZoneRefresh"
   | "ZoneRestore";
-export const DomainTaskFunctionEnum = S.String;
+const DomainTaskFunctionEnum = S.String;
 
 /** All statuses from a dns task */
 export type DomainTaskStatusEnum = "cancelled" | "doing" | "done" | "error" | "problem" | "todo";
-export const DomainTaskStatusEnum = S.String;
+const DomainTaskStatusEnum = S.String;
 
 /** DNS zone task */
 export interface DomainZoneTask {
@@ -3894,7 +3882,7 @@ export interface DomainZoneTask {
   /** Todo date of the task */
   todoDate?: string;
 }
-export const DomainZoneTask = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAccelerate: S.optional(S.Boolean),
     canCancel: S.optional(S.Boolean),
@@ -3916,7 +3904,7 @@ export interface GetDynHostLoginRequest {
   /** Login */
   login: string;
 }
-export const GetDynHostLoginRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDynHostLoginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     login: S.String.pipe(T.Label()),
@@ -3933,7 +3921,7 @@ export interface GetDynHostLoginsRequest {
   /** Filter the value of subDomain property (ilike) */
   subDomain?: string;
 }
-export const GetDynHostLoginsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDynHostLoginsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     login: S.optional(S.String.pipe(T.Query())),
@@ -3942,12 +3930,8 @@ export const GetDynHostLoginsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDynHostLoginsRequest" }) as any as S.Schema<GetDynHostLoginsRequest>;
 
 export type GetDynHostLoginsResponseBodyList = Array<string>;
-export const GetDynHostLoginsResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<GetDynHostLoginsResponseBodyList>;
-
 export type GetDynHostLoginsResponse = GetDynHostLoginsResponseBodyList;
-export const GetDynHostLoginsResponse =
-  GetDomainsResponse as any as S.Schema<GetDynHostLoginsResponse>;
+const GetDynHostLoginsResponse = GetDomainsResponse as any as S.Schema<GetDynHostLoginsResponse>;
 
 export interface GetDynHostRecordRequest {
   /** Zone name */
@@ -3955,7 +3939,7 @@ export interface GetDynHostRecordRequest {
   /** Id */
   id: number;
 }
-export const GetDynHostRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDynHostRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3968,7 +3952,7 @@ export interface GetDynHostRecordsRequest {
   /** Filter the value of subDomain property (ilike) */
   subDomain?: string;
 }
-export const GetDynHostRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDynHostRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     subDomain: S.optional(S.String.pipe(T.Query())),
@@ -3976,11 +3960,8 @@ export const GetDynHostRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDynHostRecordsRequest" }) as any as S.Schema<GetDynHostRecordsRequest>;
 
 export type GetDynHostRecordsResponseBodyList = Array<number>;
-export const GetDynHostRecordsResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<GetDynHostRecordsResponseBodyList>;
-
 export type GetDynHostRecordsResponse = GetDynHostRecordsResponseBodyList;
-export const GetDynHostRecordsResponse =
+const GetDynHostRecordsResponse =
   CreateDomainChangeContactResponse as any as S.Schema<GetDynHostRecordsResponse>;
 
 export interface GetRecordRequest {
@@ -3989,7 +3970,7 @@ export interface GetRecordRequest {
   /** Id */
   id: number;
 }
-export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4004,7 +3985,7 @@ export interface GetRecordsRequest {
   /** Filter the value of subDomain property (ilike) */
   subDomain?: string;
 }
-export const GetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     fieldType: S.optional(DomainZoneRecordTypeEnum.pipe(T.Query())),
@@ -4013,11 +3994,11 @@ export const GetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRecordsRequest" }) as any as S.Schema<GetRecordsRequest>;
 
 export type GetRecordsResponseBodyList = Array<number>;
-export const GetRecordsResponseBodyList =
+const GetRecordsResponseBodyList =
   CreateDomainChangeContactResponseBodyList as any as S.Schema<GetRecordsResponseBodyList>;
 
 export type GetRecordsResponse = GetRecordsResponseBodyList;
-export const GetRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   GetRecordsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetRecordsResponse" }) as any as S.Schema<GetRecordsResponse>;
 
@@ -4027,7 +4008,7 @@ export interface GetRedirectionRequest {
   /** Id */
   id: number;
 }
-export const GetRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedirectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4040,7 +4021,7 @@ export interface GetRedirectionsRequest {
   /** Filter the value of subDomain property */
   subDomain?: string;
 }
-export const GetRedirectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRedirectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     subDomain: S.optional(S.String.pipe(T.Query())),
@@ -4048,18 +4029,14 @@ export const GetRedirectionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRedirectionsRequest" }) as any as S.Schema<GetRedirectionsRequest>;
 
 export type GetRedirectionsResponseBodyList = Array<number>;
-export const GetRedirectionsResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<GetRedirectionsResponseBodyList>;
-
 export type GetRedirectionsResponse = GetRedirectionsResponseBodyList;
-export const GetRedirectionsResponse =
-  GetRecordsResponse as any as S.Schema<GetRedirectionsResponse>;
+const GetRedirectionsResponse = GetRecordsResponse as any as S.Schema<GetRedirectionsResponse>;
 
 export interface GetZoneRequest {
   /** Zone name */
   zoneName: string;
 }
-export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}", code: 200 })),
@@ -4067,7 +4044,7 @@ export const GetZoneRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Name servers that host the DNS zone */
 export type DomainZoneWithIAMNameServersList = Array<string>;
-export const DomainZoneWithIAMNameServersList =
+const DomainZoneWithIAMNameServersList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainZoneWithIAMNameServersList>;
 
 /** DNS zone */
@@ -4087,7 +4064,7 @@ export interface DomainZoneWithIAM {
   /** Name servers that host the DNS zone */
   nameServers?: DomainZoneWithIAMNameServersList;
 }
-export const DomainZoneWithIAM = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnssecActivated: S.optional(S.Boolean),
     dnssecSupported: S.optional(S.Boolean),
@@ -4100,31 +4077,25 @@ export const DomainZoneWithIAM = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainZoneWithIAM" }) as any as S.Schema<DomainZoneWithIAM>;
 
 export type GetZonesRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const GetZonesRequestIamTagsValueList =
-  GetDomainsRequestIamTagsValueList as any as S.Schema<GetZonesRequestIamTagsValueList>;
-
 export type GetZonesRequestIamTagsMap = {
   [key: string]: GetZonesRequestIamTagsValueList | undefined;
 };
-export const GetZonesRequestIamTagsMap =
+const GetZonesRequestIamTagsMap =
   GetDomainsRequestIamTagsMap as any as S.Schema<GetZonesRequestIamTagsMap>;
 
 export interface GetZonesRequest {
   /** Filter resources on IAM tags */
   iamTags?: GetZonesRequestIamTagsMap;
 }
-export const GetZonesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZonesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(GetZonesRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone", code: 200 })),
 ).annotate({ identifier: "GetZonesRequest" }) as any as S.Schema<GetZonesRequest>;
 
 export type GetZonesResponseBodyList = Array<string>;
-export const GetZonesResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<GetZonesResponseBodyList>;
-
 export type GetZonesResponse = GetZonesResponseBodyList;
-export const GetZonesResponse = GetDomainsResponse as any as S.Schema<GetZonesResponse>;
+const GetZonesResponse = GetDomainsResponse as any as S.Schema<GetZonesResponse>;
 
 export interface ImportDomainZoneRequest {
   /** Zone name */
@@ -4132,7 +4103,7 @@ export interface ImportDomainZoneRequest {
   /** Zone file that will be imported */
   zoneFile: string;
 }
-export const ImportDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     zoneFile: S.String,
@@ -4143,7 +4114,7 @@ export interface ListDomainConfigurationObfuscatedEmailsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4159,11 +4130,11 @@ export const ListDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.su
 
 /** The possible statuses of an email obfuscation */
 export type DomainConfigurationsObfuscationStatusEnum = "done" | "todo";
-export const DomainConfigurationsObfuscationStatusEnum = S.String;
+const DomainConfigurationsObfuscationStatusEnum = S.String;
 
 /** The possible types of contacts associated to a domain name */
 export type DomainConfigurationsContactTypeEnum = "admin" | "all" | "billing" | "owner" | "tech";
-export const DomainConfigurationsContactTypeEnum = S.String;
+const DomainConfigurationsContactTypeEnum = S.String;
 
 /** Configuration of the email obfuscations for contacts related to a domain name */
 export interface DomainConfigurationsObfuscatedEmail {
@@ -4174,7 +4145,7 @@ export interface DomainConfigurationsObfuscatedEmail {
   /** Obfuscated email address */
   value?: string;
 }
-export const DomainConfigurationsObfuscatedEmail = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationsObfuscatedEmail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.NullOr(DomainConfigurationsObfuscationStatusEnum)),
     type: S.optional(DomainConfigurationsContactTypeEnum),
@@ -4186,13 +4157,13 @@ export const DomainConfigurationsObfuscatedEmail = /*@__PURE__*/ S.suspend(() =>
 
 export type ListDomainConfigurationObfuscatedEmailsResponseBodyList =
   Array<DomainConfigurationsObfuscatedEmail>;
-export const ListDomainConfigurationObfuscatedEmailsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainConfigurationObfuscatedEmailsResponseBodyList = /*@__PURE__*/ S.Array(
   DomainConfigurationsObfuscatedEmail,
 ) as any as S.Schema<ListDomainConfigurationObfuscatedEmailsResponseBodyList>;
 
 export type ListDomainConfigurationObfuscatedEmailsResponse =
   ListDomainConfigurationObfuscatedEmailsResponseBodyList;
-export const ListDomainConfigurationObfuscatedEmailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainConfigurationObfuscatedEmailsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainConfigurationObfuscatedEmailsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainConfigurationObfuscatedEmailsResponse",
@@ -4202,7 +4173,7 @@ export interface ListDomainConfigurationOptinRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainConfigurationOptinRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainConfigurationOptinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/configurations/optin", code: 200 })),
@@ -4222,11 +4193,9 @@ export type DomainOptinFieldsEnum =
   | "phone"
   | "province"
   | "zip";
-export const DomainOptinFieldsEnum = S.String;
-
 /** Fields to display publicly on the Whois */
 export type DomainConfigurationsOptinFieldsList = Array<DomainOptinFieldsEnum | (string & {})>;
-export const DomainConfigurationsOptinFieldsList =
+const DomainConfigurationsOptinFieldsList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<DomainConfigurationsOptinFieldsList>;
 
 /** Configuration of the optin fields for contacts related to a domain name */
@@ -4236,7 +4205,7 @@ export interface DomainConfigurationsOptin {
   /** Type of the contact associated to the optin configuration */
   type?: DomainConfigurationsContactTypeEnum | (string & {});
 }
-export const DomainConfigurationsOptin = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationsOptin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(DomainConfigurationsOptinFieldsList),
     type: S.optional(DomainConfigurationsContactTypeEnum),
@@ -4246,29 +4215,29 @@ export const DomainConfigurationsOptin = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DomainConfigurationsOptin>;
 
 export type ListDomainConfigurationOptinResponseBodyList = Array<DomainConfigurationsOptin>;
-export const ListDomainConfigurationOptinResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainConfigurationOptinResponseBodyList = /*@__PURE__*/ S.Array(
   DomainConfigurationsOptin,
 ) as any as S.Schema<ListDomainConfigurationOptinResponseBodyList>;
 
 export type ListDomainConfigurationOptinResponse = ListDomainConfigurationOptinResponseBodyList;
-export const ListDomainConfigurationOptinResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainConfigurationOptinResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainConfigurationOptinResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainConfigurationOptinResponse",
 }) as any as S.Schema<ListDomainConfigurationOptinResponse>;
 
 export interface ListDomainDataSmdRequest {}
-export const ListDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/domain/data/smd", code: 200 })),
 ).annotate({ identifier: "ListDomainDataSmdRequest" }) as any as S.Schema<ListDomainDataSmdRequest>;
 
 export type ListDomainDataSmdResponseBodyList = Array<DomainDataSmdSmd>;
-export const ListDomainDataSmdResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainDataSmdResponseBodyList = /*@__PURE__*/ S.Array(
   DomainDataSmdSmd,
 ) as any as S.Schema<ListDomainDataSmdResponseBodyList>;
 
 export type ListDomainDataSmdResponse = ListDomainDataSmdResponseBodyList;
-export const ListDomainDataSmdResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainDataSmdResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainDataSmdResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainDataSmdResponse",
@@ -4282,7 +4251,7 @@ export interface ListDomainDsRecordRequest {
   /** Filter the value of status property (=) */
   status?: DnssecKeyStatusEnum | (string & {});
 }
-export const ListDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     flags: S.optional(DnssecKeyFlagEnum.pipe(T.Query())),
@@ -4293,28 +4262,23 @@ export const ListDomainDsRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainDsRecordRequest>;
 
 export type ListDomainDsRecordResponseBodyList = Array<number>;
-export const ListDomainDsRecordResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<ListDomainDsRecordResponseBodyList>;
-
 export type ListDomainDsRecordResponse = ListDomainDsRecordResponseBodyList;
-export const ListDomainDsRecordResponse =
+const ListDomainDsRecordResponse =
   CreateDomainChangeContactResponse as any as S.Schema<ListDomainDsRecordResponse>;
 
 /** Type of extension category */
 export type DomainExtensionsCategoryTypeEnum = "geolocalization" | "thematic";
-export const DomainExtensionsCategoryTypeEnum = S.String;
-
 export type ListDomainExtensionByCategoryRequestCategoryTypeList = Array<
   DomainExtensionsCategoryTypeEnum | (string & {})
 >;
-export const ListDomainExtensionByCategoryRequestCategoryTypeList =
+const ListDomainExtensionByCategoryRequestCategoryTypeList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainExtensionByCategoryRequestCategoryTypeList>;
 
 export interface ListDomainExtensionByCategoryRequest {
   /** Filter by category types */
   categoryType?: ListDomainExtensionByCategoryRequestCategoryTypeList;
 }
-export const ListDomainExtensionByCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionByCategoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categoryType: S.optional(ListDomainExtensionByCategoryRequestCategoryTypeList.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/byCategory", code: 200 })),
@@ -4324,7 +4288,7 @@ export const ListDomainExtensionByCategoryRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of extensions */
 export type DomainExtensionsCategoryNameWithExtensionsExtensionsList = Array<string>;
-export const DomainExtensionsCategoryNameWithExtensionsExtensionsList =
+const DomainExtensionsCategoryNameWithExtensionsExtensionsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainExtensionsCategoryNameWithExtensionsExtensionsList>;
 
 /** Result of extensions by category request */
@@ -4334,7 +4298,7 @@ export interface DomainExtensionsCategoryNameWithExtensions {
   /** Name of the category */
   name?: string;
 }
-export const DomainExtensionsCategoryNameWithExtensions = /*@__PURE__*/ S.suspend(() =>
+const DomainExtensionsCategoryNameWithExtensions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(DomainExtensionsCategoryNameWithExtensionsExtensionsList),
     name: S.optional(S.String),
@@ -4346,14 +4310,14 @@ export const DomainExtensionsCategoryNameWithExtensions = /*@__PURE__*/ S.suspen
 /** Geolocalizations groups extensions by geographical place, like 'europe' */
 export type DomainExtensionsExtensionsByCategoryGeolocalizationList =
   Array<DomainExtensionsCategoryNameWithExtensions>;
-export const DomainExtensionsExtensionsByCategoryGeolocalizationList = /*@__PURE__*/ S.Array(
+const DomainExtensionsExtensionsByCategoryGeolocalizationList = /*@__PURE__*/ S.Array(
   DomainExtensionsCategoryNameWithExtensions,
 ) as any as S.Schema<DomainExtensionsExtensionsByCategoryGeolocalizationList>;
 
 /** Thematics groups extensions by a thematic like 'gastronomy' for '.pizza' */
 export type DomainExtensionsExtensionsByCategoryThematicList =
   Array<DomainExtensionsCategoryNameWithExtensions>;
-export const DomainExtensionsExtensionsByCategoryThematicList =
+const DomainExtensionsExtensionsByCategoryThematicList =
   DomainExtensionsExtensionsByCategoryGeolocalizationList as any as S.Schema<DomainExtensionsExtensionsByCategoryThematicList>;
 
 /** Result of extensions by category request */
@@ -4363,7 +4327,7 @@ export interface DomainExtensionsExtensionsByCategory {
   /** Thematics groups extensions by a thematic like 'gastronomy' for '.pizza' */
   thematic?: DomainExtensionsExtensionsByCategoryThematicList | null;
 }
-export const DomainExtensionsExtensionsByCategory = /*@__PURE__*/ S.suspend(() =>
+const DomainExtensionsExtensionsByCategory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geolocalization: S.optional(S.NullOr(DomainExtensionsExtensionsByCategoryGeolocalizationList)),
     thematic: S.optional(S.NullOr(DomainExtensionsExtensionsByCategoryThematicList)),
@@ -4390,13 +4354,13 @@ export type NichandleOvhSubsidiaryEnum =
   | "PT"
   | "SN"
   | "TN";
-export const NichandleOvhSubsidiaryEnum = S.String;
+const NichandleOvhSubsidiaryEnum = S.String;
 
 export interface ListDomainExtensionHighlightedRequest {
   /** OVHcloud subsidiary targeted. Highlighted extensions are different from one subsidiary to another. Default to FR. */
   ovhSubsidiary?: NichandleOvhSubsidiaryEnum | (string & {});
 }
-export const ListDomainExtensionHighlightedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionHighlightedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhSubsidiary: S.optional(NichandleOvhSubsidiaryEnum.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/highlighted", code: 200 })),
@@ -4405,11 +4369,11 @@ export const ListDomainExtensionHighlightedRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListDomainExtensionHighlightedRequest>;
 
 export type ListDomainExtensionHighlightedResponseBodyList = Array<string>;
-export const ListDomainExtensionHighlightedResponseBodyList =
+const ListDomainExtensionHighlightedResponseBodyList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<ListDomainExtensionHighlightedResponseBodyList>;
 
 export type ListDomainExtensionHighlightedResponse = ListDomainExtensionHighlightedResponseBodyList;
-export const ListDomainExtensionHighlightedResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionHighlightedResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainExtensionHighlightedResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainExtensionHighlightedResponse",
@@ -4419,7 +4383,7 @@ export interface ListDomainExtensionPricingAttributesRequest {
   /** OVHcloud subsidiary targeted. Attributes may be different from one subsidiary to another. Default to FR. */
   ovhSubsidiary?: NichandleOvhSubsidiaryEnum | (string & {});
 }
-export const ListDomainExtensionPricingAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionPricingAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ovhSubsidiary: S.optional(NichandleOvhSubsidiaryEnum.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/domain/extensions/pricingAttributes", code: 200 })),
@@ -4436,7 +4400,7 @@ export interface DomainExtensionsExtensionsPricingAttributes {
   /** Parameter is true when the extension price has dropped recently and we want to highlight this fact */
   priceDrop?: boolean;
 }
-export const DomainExtensionsExtensionsPricingAttributes = /*@__PURE__*/ S.suspend(() =>
+const DomainExtensionsExtensionsPricingAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     brandNew: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -4448,13 +4412,13 @@ export const DomainExtensionsExtensionsPricingAttributes = /*@__PURE__*/ S.suspe
 
 export type ListDomainExtensionPricingAttributesResponseBodyList =
   Array<DomainExtensionsExtensionsPricingAttributes>;
-export const ListDomainExtensionPricingAttributesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainExtensionPricingAttributesResponseBodyList = /*@__PURE__*/ S.Array(
   DomainExtensionsExtensionsPricingAttributes,
 ) as any as S.Schema<ListDomainExtensionPricingAttributesResponseBodyList>;
 
 export type ListDomainExtensionPricingAttributesResponse =
   ListDomainExtensionPricingAttributesResponseBodyList;
-export const ListDomainExtensionPricingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionPricingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainExtensionPricingAttributesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainExtensionPricingAttributesResponse",
@@ -4462,7 +4426,7 @@ export const ListDomainExtensionPricingAttributesResponse = /*@__PURE__*/ S.susp
 
 /** Type used to change the order of extensions results */
 export type DomainExtensionsOrderByTypeEnum = "alphabetical" | "trending";
-export const DomainExtensionsOrderByTypeEnum = S.String;
+const DomainExtensionsOrderByTypeEnum = S.String;
 
 export interface ListDomainExtensionsRequest {
   /** Filter only extensions related to this list of geolocalization places (comma separated). Default to empty. */
@@ -4474,7 +4438,7 @@ export interface ListDomainExtensionsRequest {
   /** Filter only extensions related to this list of thematics (comma separated). Default to empty. */
   thematics?: string;
 }
-export const ListDomainExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geolocalizations: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(DomainExtensionsOrderByTypeEnum.pipe(T.Query())),
@@ -4486,11 +4450,8 @@ export const ListDomainExtensionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainExtensionsRequest>;
 
 export type ListDomainExtensionsResponseBodyList = Array<string>;
-export const ListDomainExtensionsResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<ListDomainExtensionsResponseBodyList>;
-
 export type ListDomainExtensionsResponse = ListDomainExtensionsResponseBodyList;
-export const ListDomainExtensionsResponse =
+const ListDomainExtensionsResponse =
   ListDomainExtensionHighlightedResponse as any as S.Schema<ListDomainExtensionsResponse>;
 
 export interface ListDomainGlueRecordRequest {
@@ -4499,7 +4460,7 @@ export interface ListDomainGlueRecordRequest {
   /** Filter the value of host property */
   host?: string;
 }
-export const ListDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     host: S.optional(S.String.pipe(T.Query())),
@@ -4509,18 +4470,15 @@ export const ListDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainGlueRecordRequest>;
 
 export type ListDomainGlueRecordResponseBodyList = Array<string>;
-export const ListDomainGlueRecordResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<ListDomainGlueRecordResponseBodyList>;
-
 export type ListDomainGlueRecordResponse = ListDomainGlueRecordResponseBodyList;
-export const ListDomainGlueRecordResponse =
+const ListDomainGlueRecordResponse =
   ListDomainExtensionHighlightedResponse as any as S.Schema<ListDomainGlueRecordResponse>;
 
 export interface ListDomainNameServerRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/nameServer", code: 200 })),
@@ -4529,29 +4487,26 @@ export const ListDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainNameServerRequest>;
 
 export type ListDomainNameServerResponseBodyList = Array<number>;
-export const ListDomainNameServerResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<ListDomainNameServerResponseBodyList>;
-
 export type ListDomainNameServerResponse = ListDomainNameServerResponseBodyList;
-export const ListDomainNameServerResponse =
+const ListDomainNameServerResponse =
   CreateDomainChangeContactResponse as any as S.Schema<ListDomainNameServerResponse>;
 
 export interface ListDomainOptionRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/option", code: 200 })),
 ).annotate({ identifier: "ListDomainOptionRequest" }) as any as S.Schema<ListDomainOptionRequest>;
 
 export type ListDomainOptionResponseBodyList = Array<DomainDomainOptionEnum>;
-export const ListDomainOptionResponseBodyList =
+const ListDomainOptionResponseBodyList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainOptionResponseBodyList>;
 
 export type ListDomainOptionResponse = ListDomainOptionResponseBodyList;
-export const ListDomainOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainOptionResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainOptionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDomainOptionResponse" }) as any as S.Schema<ListDomainOptionResponse>;
 
@@ -4559,7 +4514,7 @@ export interface ListDomainRuleEmailsObfuscationRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainRuleEmailsObfuscationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRuleEmailsObfuscationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -4571,12 +4526,12 @@ export const ListDomainRuleEmailsObfuscationRequest = /*@__PURE__*/ S.suspend(()
 
 export type ListDomainRuleEmailsObfuscationResponseBodyList =
   Array<DomainConfigurationsContactTypeEnum>;
-export const ListDomainRuleEmailsObfuscationResponseBodyList =
+const ListDomainRuleEmailsObfuscationResponseBodyList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<ListDomainRuleEmailsObfuscationResponseBodyList>;
 
 export type ListDomainRuleEmailsObfuscationResponse =
   ListDomainRuleEmailsObfuscationResponseBodyList;
-export const ListDomainRuleEmailsObfuscationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRuleEmailsObfuscationResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainRuleEmailsObfuscationResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainRuleEmailsObfuscationResponse",
@@ -4586,7 +4541,7 @@ export interface ListDomainRuleOptinRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainRuleOptinRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRuleOptinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/rules/optin", code: 200 })),
@@ -4596,7 +4551,7 @@ export const ListDomainRuleOptinRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields to display publicly on the Whois */
 export type DomainRulesOptinFieldsList = Array<DomainOptinFieldsEnum>;
-export const DomainRulesOptinFieldsList =
+const DomainRulesOptinFieldsList =
   DomainConfigurationsOptinFieldsList as any as S.Schema<DomainRulesOptinFieldsList>;
 
 /** Representation of the optin rule */
@@ -4606,7 +4561,7 @@ export interface DomainRulesOptin {
   /** Type of the contact associated to the optin rule */
   type?: DomainConfigurationsContactTypeEnum;
 }
-export const DomainRulesOptin = /*@__PURE__*/ S.suspend(() =>
+const DomainRulesOptin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(DomainRulesOptinFieldsList),
     type: S.optional(DomainConfigurationsContactTypeEnum),
@@ -4614,12 +4569,12 @@ export const DomainRulesOptin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainRulesOptin" }) as any as S.Schema<DomainRulesOptin>;
 
 export type ListDomainRuleOptinResponseBodyList = Array<DomainRulesOptin>;
-export const ListDomainRuleOptinResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainRuleOptinResponseBodyList = /*@__PURE__*/ S.Array(
   DomainRulesOptin,
 ) as any as S.Schema<ListDomainRuleOptinResponseBodyList>;
 
 export type ListDomainRuleOptinResponse = ListDomainRuleOptinResponseBodyList;
-export const ListDomainRuleOptinResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainRuleOptinResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainRuleOptinResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainRuleOptinResponse",
@@ -4635,7 +4590,7 @@ export interface ListDomainTaskRequest {
   /** Filter the value of type property (=) */
   type?: DomainOperationTypeEnum | (string & {});
 }
-export const ListDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(S.String.pipe(T.Query())),
@@ -4645,17 +4600,14 @@ export const ListDomainTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDomainTaskRequest" }) as any as S.Schema<ListDomainTaskRequest>;
 
 export type ListDomainTaskResponseBodyList = Array<number>;
-export const ListDomainTaskResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<ListDomainTaskResponseBodyList>;
-
 export type ListDomainTaskResponse = ListDomainTaskResponseBodyList;
-export const ListDomainTaskResponse = GetRecordsResponse as any as S.Schema<ListDomainTaskResponse>;
+const ListDomainTaskResponse = GetRecordsResponse as any as S.Schema<ListDomainTaskResponse>;
 
 export interface ListDomainUkRegistrarsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListDomainUkRegistrarsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainUkRegistrarsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/{serviceName}/ukRegistrars", code: 200 })),
@@ -4670,7 +4622,7 @@ export interface DomainUkRegistrar {
   /** Registrar tag */
   tag: string;
 }
-export const DomainUkRegistrar = /*@__PURE__*/ S.suspend(() =>
+const DomainUkRegistrar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     tag: S.String,
@@ -4678,12 +4630,12 @@ export const DomainUkRegistrar = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainUkRegistrar" }) as any as S.Schema<DomainUkRegistrar>;
 
 export type ListDomainUkRegistrarsResponseBodyList = Array<DomainUkRegistrar>;
-export const ListDomainUkRegistrarsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDomainUkRegistrarsResponseBodyList = /*@__PURE__*/ S.Array(
   DomainUkRegistrar,
 ) as any as S.Schema<ListDomainUkRegistrarsResponseBodyList>;
 
 export type ListDomainUkRegistrarsResponse = ListDomainUkRegistrarsResponseBodyList;
-export const ListDomainUkRegistrarsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainUkRegistrarsResponse = /*@__PURE__*/ S.suspend(() =>
   ListDomainUkRegistrarsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListDomainUkRegistrarsResponse",
@@ -4697,7 +4649,7 @@ export interface ListDomainZoneHistoryRequest {
   /** Filter using the value of creationDate property (<=) */
   creationDate_to?: string;
 }
-export const ListDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     creationDate_from: S.optional(S.String.pipe(T.Query("creationDate.from"))),
@@ -4708,18 +4660,15 @@ export const ListDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainZoneHistoryRequest>;
 
 export type ListDomainZoneHistoryResponseBodyList = Array<string>;
-export const ListDomainZoneHistoryResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<ListDomainZoneHistoryResponseBodyList>;
-
 export type ListDomainZoneHistoryResponse = ListDomainZoneHistoryResponseBodyList;
-export const ListDomainZoneHistoryResponse =
+const ListDomainZoneHistoryResponse =
   ListDomainExtensionHighlightedResponse as any as S.Schema<ListDomainZoneHistoryResponse>;
 
 export interface ListDomainZoneOptionRequest {
   /** Zone name */
   zoneName: string;
 }
-export const ListDomainZoneOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainZoneOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/option", code: 200 })),
@@ -4728,18 +4677,15 @@ export const ListDomainZoneOptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainZoneOptionRequest>;
 
 export type ListDomainZoneOptionResponseBodyList = Array<string>;
-export const ListDomainZoneOptionResponseBodyList =
-  CreateDomainGlueRecordRequestIpsList as any as S.Schema<ListDomainZoneOptionResponseBodyList>;
-
 export type ListDomainZoneOptionResponse = ListDomainZoneOptionResponseBodyList;
-export const ListDomainZoneOptionResponse =
+const ListDomainZoneOptionResponse =
   ListDomainExtensionHighlightedResponse as any as S.Schema<ListDomainZoneOptionResponse>;
 
 export interface ListDomainZoneStatusRequest {
   /** Zone name */
   zoneName: string;
 }
-export const ListDomainZoneStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainZoneStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domain/zone/{zoneName}/status", code: 200 })),
@@ -4749,12 +4695,12 @@ export const ListDomainZoneStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Error list if any */
 export type DomainZoneStatusErrorsList = Array<string>;
-export const DomainZoneStatusErrorsList =
+const DomainZoneStatusErrorsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainZoneStatusErrorsList>;
 
 /** Warning list if any */
 export type DomainZoneStatusWarningsList = Array<string>;
-export const DomainZoneStatusWarningsList =
+const DomainZoneStatusWarningsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<DomainZoneStatusWarningsList>;
 
 /** DNS zone status */
@@ -4766,7 +4712,7 @@ export interface DomainZoneStatus {
   /** Warning list if any */
   warnings?: DomainZoneStatusWarningsList | null;
 }
-export const DomainZoneStatus = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(S.NullOr(DomainZoneStatusErrorsList)),
     isDeployed: S.optional(S.Boolean),
@@ -4780,7 +4726,7 @@ export interface ListDomainZoneTaskRequest {
   function?: DomainTaskFunctionEnum | (string & {});
   status?: DomainTaskStatusEnum | (string & {});
 }
-export const ListDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     function: S.optional(DomainTaskFunctionEnum.pipe(T.Query())),
@@ -4791,16 +4737,13 @@ export const ListDomainZoneTaskRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainZoneTaskRequest>;
 
 export type ListDomainZoneTaskResponseBodyList = Array<number>;
-export const ListDomainZoneTaskResponseBodyList =
-  CreateDomainChangeContactResponseBodyList as any as S.Schema<ListDomainZoneTaskResponseBodyList>;
-
 export type ListDomainZoneTaskResponse = ListDomainZoneTaskResponseBodyList;
-export const ListDomainZoneTaskResponse =
+const ListDomainZoneTaskResponse =
   CreateDomainChangeContactResponse as any as S.Schema<ListDomainZoneTaskResponse>;
 
 /** Purposes of the domain */
 export type DomainConfigurationsCustomFieldsInputIsForList = Array<DomainIsForEnum | (string & {})>;
-export const DomainConfigurationsCustomFieldsInputIsForList =
+const DomainConfigurationsCustomFieldsInputIsForList =
   DomainConfigurationsCustomFieldsIsForList as any as S.Schema<DomainConfigurationsCustomFieldsInputIsForList>;
 
 /** Representation of the domain custom fields */
@@ -4816,7 +4759,7 @@ export interface DomainConfigurationsCustomFieldsInput {
   /** Represented company */
   represent?: string | null;
 }
-export const DomainConfigurationsCustomFieldsInput = /*@__PURE__*/ S.suspend(() =>
+const DomainConfigurationsCustomFieldsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audience: S.optional(S.NullOr(S.String)),
     isFor: S.optional(S.NullOr(DomainConfigurationsCustomFieldsInputIsForList)),
@@ -4834,7 +4777,7 @@ export interface PutDomainConfigurationDataRequest {
   /** New domain custom fields */
   customFields?: DomainConfigurationsCustomFieldsInput;
 }
-export const PutDomainConfigurationDataRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainConfigurationDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     customFields: S.optional(DomainConfigurationsCustomFieldsInput),
@@ -4847,7 +4790,7 @@ export const PutDomainConfigurationDataRequest = /*@__PURE__*/ S.suspend(() =>
 export type PutDomainConfigurationObfuscatedEmailsRequestContactsList = Array<
   DomainConfigurationsContactTypeEnum | (string & {})
 >;
-export const PutDomainConfigurationObfuscatedEmailsRequestContactsList =
+const PutDomainConfigurationObfuscatedEmailsRequestContactsList =
   ListDomainRuleEmailsObfuscationResponseBodyList as any as S.Schema<PutDomainConfigurationObfuscatedEmailsRequestContactsList>;
 
 export interface PutDomainConfigurationObfuscatedEmailsRequest {
@@ -4856,7 +4799,7 @@ export interface PutDomainConfigurationObfuscatedEmailsRequest {
   /** Type of the contacts to request email obfuscation for */
   contacts: PutDomainConfigurationObfuscatedEmailsRequestContactsList;
 }
-export const PutDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contacts: PutDomainConfigurationObfuscatedEmailsRequestContactsList,
@@ -4873,17 +4816,14 @@ export const PutDomainConfigurationObfuscatedEmailsRequest = /*@__PURE__*/ S.sus
 
 export type PutDomainConfigurationObfuscatedEmailsResponseBodyList =
   Array<DomainConfigurationsObfuscatedEmail>;
-export const PutDomainConfigurationObfuscatedEmailsResponseBodyList =
-  ListDomainConfigurationObfuscatedEmailsResponseBodyList as any as S.Schema<PutDomainConfigurationObfuscatedEmailsResponseBodyList>;
-
 export type PutDomainConfigurationObfuscatedEmailsResponse =
   PutDomainConfigurationObfuscatedEmailsResponseBodyList;
-export const PutDomainConfigurationObfuscatedEmailsResponse =
+const PutDomainConfigurationObfuscatedEmailsResponse =
   ListDomainConfigurationObfuscatedEmailsResponse as any as S.Schema<PutDomainConfigurationObfuscatedEmailsResponse>;
 
 /** New optin configuration */
 export type PutDomainConfigurationOptinRequestOptinList = Array<DomainConfigurationsOptin>;
-export const PutDomainConfigurationOptinRequestOptinList =
+const PutDomainConfigurationOptinRequestOptinList =
   ListDomainConfigurationOptinResponseBodyList as any as S.Schema<PutDomainConfigurationOptinRequestOptinList>;
 
 export interface PutDomainConfigurationOptinRequest {
@@ -4892,7 +4832,7 @@ export interface PutDomainConfigurationOptinRequest {
   /** New optin configuration */
   optin?: PutDomainConfigurationOptinRequestOptinList;
 }
-export const PutDomainConfigurationOptinRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainConfigurationOptinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     optin: S.optional(PutDomainConfigurationOptinRequestOptinList),
@@ -4902,11 +4842,8 @@ export const PutDomainConfigurationOptinRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDomainConfigurationOptinRequest>;
 
 export type PutDomainConfigurationOptinResponseBodyList = Array<DomainConfigurationsOptin>;
-export const PutDomainConfigurationOptinResponseBodyList =
-  ListDomainConfigurationOptinResponseBodyList as any as S.Schema<PutDomainConfigurationOptinResponseBodyList>;
-
 export type PutDomainConfigurationOptinResponse = PutDomainConfigurationOptinResponseBodyList;
-export const PutDomainConfigurationOptinResponse =
+const PutDomainConfigurationOptinResponse =
   ListDomainConfigurationOptinResponse as any as S.Schema<PutDomainConfigurationOptinResponse>;
 
 export interface PutDomainDataSmdRequest {
@@ -4915,7 +4852,7 @@ export interface PutDomainDataSmdRequest {
   /** SMD file content in base64 */
   data: string;
 }
-export const PutDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainDataSmdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     smdId: S.String.pipe(T.Label()),
     data: S.String,
@@ -4928,7 +4865,7 @@ export interface PutDomainServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4938,7 +4875,7 @@ export const PutDomainServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDomainServiceInfosRequest>;
 
 export interface PutDomainServiceInfosResponse {}
-export const PutDomainServiceInfosResponse =
+const PutDomainServiceInfosResponse =
   CancelDomainTaskResponse as any as S.Schema<PutDomainServiceInfosResponse>;
 
 export interface PutDomainZoneOptionServiceInfosRequest {
@@ -4949,7 +4886,7 @@ export interface PutDomainZoneOptionServiceInfosRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-export const PutDomainZoneOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainZoneOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -4962,7 +4899,7 @@ export const PutDomainZoneOptionServiceInfosRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PutDomainZoneOptionServiceInfosRequest>;
 
 export interface PutDomainZoneOptionServiceInfosResponse {}
-export const PutDomainZoneOptionServiceInfosResponse =
+const PutDomainZoneOptionServiceInfosResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<PutDomainZoneOptionServiceInfosResponse>;
 
 export interface PutDomainZoneServiceInfosRequest {
@@ -4971,7 +4908,7 @@ export interface PutDomainZoneServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutDomainZoneServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainZoneServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -4981,7 +4918,7 @@ export const PutDomainZoneServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutDomainZoneServiceInfosRequest>;
 
 export interface PutDomainZoneServiceInfosResponse {}
-export const PutDomainZoneServiceInfosResponse =
+const PutDomainZoneServiceInfosResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<PutDomainZoneServiceInfosResponse>;
 
 export interface PutDomainZoneSoaRequest {
@@ -5002,7 +4939,7 @@ export interface PutDomainZoneSoaRequest {
   /** Time To Live in seconds */
   ttl?: number;
 }
-export const PutDomainZoneSoaRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDomainZoneSoaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     email: S.optional(S.String),
@@ -5016,14 +4953,14 @@ export const PutDomainZoneSoaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutDomainZoneSoaRequest" }) as any as S.Schema<PutDomainZoneSoaRequest>;
 
 export interface PutDomainZoneSoaResponse {}
-export const PutDomainZoneSoaResponse =
+const PutDomainZoneSoaResponse =
   CancelDomainTaskResponse as any as S.Schema<PutDomainZoneSoaResponse>;
 
 /** Type of the contacts to refresh email obfuscation for */
 export type RefreshDomainConfigurationsObfuscatedEmailRequestContactsList = Array<
   DomainConfigurationsContactTypeEnum | (string & {})
 >;
-export const RefreshDomainConfigurationsObfuscatedEmailRequestContactsList =
+const RefreshDomainConfigurationsObfuscatedEmailRequestContactsList =
   ListDomainRuleEmailsObfuscationResponseBodyList as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailRequestContactsList>;
 
 export interface RefreshDomainConfigurationsObfuscatedEmailRequest {
@@ -5032,7 +4969,7 @@ export interface RefreshDomainConfigurationsObfuscatedEmailRequest {
   /** Type of the contacts to refresh email obfuscation for */
   contacts: RefreshDomainConfigurationsObfuscatedEmailRequestContactsList;
 }
-export const RefreshDomainConfigurationsObfuscatedEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshDomainConfigurationsObfuscatedEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contacts: RefreshDomainConfigurationsObfuscatedEmailRequestContactsList,
@@ -5048,25 +4985,25 @@ export const RefreshDomainConfigurationsObfuscatedEmailRequest = /*@__PURE__*/ S
 }) as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailRequest>;
 
 export interface RefreshDomainConfigurationsObfuscatedEmailResponse {}
-export const RefreshDomainConfigurationsObfuscatedEmailResponse =
+const RefreshDomainConfigurationsObfuscatedEmailResponse =
   ApproveDomainOutgoingTransferResponse as any as S.Schema<RefreshDomainConfigurationsObfuscatedEmailResponse>;
 
 export interface RefreshZoneRequest {
   /** Zone name */
   zoneName: string;
 }
-export const RefreshZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/refresh", code: 200 })),
 ).annotate({ identifier: "RefreshZoneRequest" }) as any as S.Schema<RefreshZoneRequest>;
 
 export interface RefreshZoneResponse {}
-export const RefreshZoneResponse = CancelDomainTaskResponse as any as S.Schema<RefreshZoneResponse>;
+const RefreshZoneResponse = CancelDomainTaskResponse as any as S.Schema<RefreshZoneResponse>;
 
 /** Resource record name */
 export type DomainZoneResettableNamedResolutionFieldTypeEnum = "A" | "MX";
-export const DomainZoneResettableNamedResolutionFieldTypeEnum = S.String;
+const DomainZoneResettableNamedResolutionFieldTypeEnum = S.String;
 
 /** Record associated to domain zone reset */
 export interface DomainZoneResetRecord {
@@ -5075,7 +5012,7 @@ export interface DomainZoneResetRecord {
   /** Target associated to domain zone reset */
   target?: string;
 }
-export const DomainZoneResetRecord = /*@__PURE__*/ S.suspend(() =>
+const DomainZoneResetRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldType: S.optional(DomainZoneResettableNamedResolutionFieldTypeEnum),
     target: S.optional(S.String),
@@ -5084,7 +5021,7 @@ export const DomainZoneResetRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** Records that will be set after reset */
 export type ResetDomainZoneRequestDnsRecordsList = Array<DomainZoneResetRecord>;
-export const ResetDomainZoneRequestDnsRecordsList = /*@__PURE__*/ S.Array(
+const ResetDomainZoneRequestDnsRecordsList = /*@__PURE__*/ S.Array(
   DomainZoneResetRecord,
 ) as any as S.Schema<ResetDomainZoneRequestDnsRecordsList>;
 
@@ -5096,7 +5033,7 @@ export interface ResetDomainZoneRequest {
   /** Create only mandatory records */
   minimized?: boolean;
 }
-export const ResetDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     DnsRecords: S.optional(ResetDomainZoneRequestDnsRecordsList),
@@ -5105,7 +5042,7 @@ export const ResetDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetDomainZoneRequest" }) as any as S.Schema<ResetDomainZoneRequest>;
 
 export interface ResetDomainZoneResponse {}
-export const ResetDomainZoneResponse =
+const ResetDomainZoneResponse =
   CancelDomainTaskResponse as any as S.Schema<ResetDomainZoneResponse>;
 
 export interface RestoreDomainZoneHistoryRequest {
@@ -5114,7 +5051,7 @@ export interface RestoreDomainZoneHistoryRequest {
   /** Creation date */
   creationDate: string;
 }
-export const RestoreDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreDomainZoneHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
     creationDate: S.String.pipe(T.Label()),
@@ -5133,7 +5070,7 @@ export interface TerminateDomainZoneRequest {
   /** Zone name */
   zoneName: string;
 }
-export const TerminateDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/domain/zone/{zoneName}/terminate", code: 200 })),
@@ -5142,7 +5079,7 @@ export const TerminateDomainZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateDomainZoneRequest>;
 
 export type TerminateDomainZoneResponse = string;
-export const TerminateDomainZoneResponse =
+const TerminateDomainZoneResponse =
   ConfirmDomainZoneTerminationResponse as any as S.Schema<TerminateDomainZoneResponse>;
 
 export interface UpdateContactRequest {
@@ -5228,7 +5165,7 @@ export interface UpdateContactRequest {
   /** Website */
   website?: string | null;
 }
-export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.Number.pipe(T.Label()),
     accreditationCountry: S.optional(S.NullOr(NichandleCountryEnum)),
@@ -5276,7 +5213,7 @@ export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** IP address */
 export type UpdateDomainGlueRecordRequestIpsList = Array<string>;
-export const UpdateDomainGlueRecordRequestIpsList =
+const UpdateDomainGlueRecordRequestIpsList =
   CreateDomainGlueRecordRequestIpsList as any as S.Schema<UpdateDomainGlueRecordRequestIpsList>;
 
 export interface UpdateDomainGlueRecordRequest {
@@ -5287,7 +5224,7 @@ export interface UpdateDomainGlueRecordRequest {
   /** IP address */
   ips: UpdateDomainGlueRecordRequestIpsList;
 }
-export const UpdateDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     host: S.String.pipe(T.Label()),
@@ -5301,7 +5238,7 @@ export const UpdateDomainGlueRecordRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Name servers to update */
 export type UpdateDomainNameServerRequestNameServersList = Array<DomainNameServerNameServerInput>;
-export const UpdateDomainNameServerRequestNameServersList =
+const UpdateDomainNameServerRequestNameServersList =
   CreateDomainNameServerRequestNameServerList as any as S.Schema<UpdateDomainNameServerRequestNameServersList>;
 
 export interface UpdateDomainNameServerRequest {
@@ -5310,7 +5247,7 @@ export interface UpdateDomainNameServerRequest {
   /** Name servers to update */
   nameServers: UpdateDomainNameServerRequestNameServersList;
 }
-export const UpdateDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainNameServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     nameServers: UpdateDomainNameServerRequestNameServersList,

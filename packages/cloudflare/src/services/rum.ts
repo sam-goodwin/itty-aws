@@ -83,12 +83,12 @@ export class SiteNotFound
   ) {}
 
 export type RulesBulkCreateRequestDeleteRulesList = Array<string>;
-export const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestDeleteRulesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesBulkCreateRequestDeleteRulesList>;
 
 export type RulesBulkCreateRequestRulesItemPathsList = Array<string>;
-export const RulesBulkCreateRequestRulesItemPathsList =
+const RulesBulkCreateRequestRulesItemPathsList =
   RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateRequestRulesItemPathsList>;
 
 export interface RulesBulkCreateRequestRulesItem {
@@ -99,7 +99,7 @@ export interface RulesBulkCreateRequestRulesItem {
   isPaused?: boolean;
   paths?: RulesBulkCreateRequestRulesItemPathsList;
 }
-export const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     host: S.optional(S.String),
@@ -112,7 +112,7 @@ export const RulesBulkCreateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateRequestRulesItem>;
 
 export type RulesBulkCreateRequestRulesList = Array<RulesBulkCreateRequestRulesItem>;
-export const RulesBulkCreateRequestRulesList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestRulesItem,
 ) as any as S.Schema<RulesBulkCreateRequestRulesList>;
 
@@ -126,7 +126,7 @@ export interface BulkCreateRulesRequest {
   /** A list of rules to create or update. */
   rules?: RulesBulkCreateRequestRulesList;
 }
-export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
@@ -144,7 +144,7 @@ export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesRequest" }) as any as S.Schema<BulkCreateRulesRequest>;
 
 export type RulesBulkCreateResponseRulesItemPathsList = Array<string>;
-export const RulesBulkCreateResponseRulesItemPathsList =
+const RulesBulkCreateResponseRulesItemPathsList =
   RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesBulkCreateResponseRulesItemPathsList>;
 
 export interface RulesBulkCreateResponseRulesItem {
@@ -161,7 +161,7 @@ export interface RulesBulkCreateResponseRulesItem {
   paths?: RulesBulkCreateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -176,7 +176,7 @@ export const RulesBulkCreateResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesBulkCreateResponseRulesItem>;
 
 export type RulesBulkCreateResponseRulesList = Array<RulesBulkCreateResponseRulesItem>;
-export const RulesBulkCreateResponseRulesList = /*@__PURE__*/ S.Array(
+const RulesBulkCreateResponseRulesList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResponseRulesItem,
 ) as any as S.Schema<RulesBulkCreateResponseRulesList>;
 
@@ -189,7 +189,7 @@ export interface RulesBulkCreateResponseRuleset {
   /** The zone identifier. */
   zoneTag?: string | null;
 }
-export const RulesBulkCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
+const RulesBulkCreateResponseRuleset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
@@ -206,7 +206,7 @@ export interface BulkCreateRulesResponse {
   rules?: RulesBulkCreateResponseRulesList | null;
   ruleset?: RulesBulkCreateResponseRuleset | null;
 }
-export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(S.NullOr(RulesBulkCreateResponseRulesList)),
     ruleset: S.optional(S.NullOr(RulesBulkCreateResponseRuleset)),
@@ -214,7 +214,7 @@ export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkCreateRulesResponse" }) as any as S.Schema<BulkCreateRulesResponse>;
 
 export type RulesCreateRequestPathsList = Array<string>;
-export const RulesCreateRequestPathsList =
+const RulesCreateRequestPathsList =
   RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateRequestPathsList>;
 
 export interface CreateRuleRequest {
@@ -229,7 +229,7 @@ export interface CreateRuleRequest {
   isPaused?: boolean;
   paths?: RulesCreateRequestPathsList;
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
@@ -245,7 +245,7 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponsePathsList = Array<string>;
-export const RulesCreateResponsePathsList =
+const RulesCreateResponsePathsList =
   RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesCreateResponsePathsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -263,7 +263,7 @@ export interface CreateRuleResponse {
   paths?: RulesCreateResponsePathsList | null;
   priority?: number | null;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -285,7 +285,7 @@ export interface CreateSiteInfoRequest {
   /** The zone identifier. */
   zoneTag?: string;
 }
-export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     autoInstall: S.optional(S.Boolean.pipe(T.Body("auto_install"))),
@@ -297,9 +297,6 @@ export const CreateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateSiteInfoRequest" }) as any as S.Schema<CreateSiteInfoRequest>;
 
 export type SiteInfoCreateResponseRulesItemPathsList = Array<string>;
-export const SiteInfoCreateResponseRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoCreateResponseRulesItemPathsList>;
-
 export interface SiteInfoCreateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -314,16 +311,11 @@ export interface SiteInfoCreateResponseRulesItem {
   paths?: SiteInfoCreateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoCreateResponseRulesItem =
-  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoCreateResponseRulesItem>;
-
 export type SiteInfoCreateResponseRulesList = Array<SiteInfoCreateResponseRulesItem>;
-export const SiteInfoCreateResponseRulesList =
+const SiteInfoCreateResponseRulesList =
   RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoCreateResponseRulesList>;
 
 export type SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoCreateResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -341,7 +333,7 @@ export interface CreateSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
@@ -362,7 +354,7 @@ export interface DeleteRuleRequest {
   /** The Web Analytics rule identifier. */
   ruleId: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
@@ -383,7 +375,7 @@ export interface DeleteRuleResponse {
   /** The Web Analytics rule identifier. */
   id?: string | null;
 }
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -395,7 +387,7 @@ export interface DeleteSiteInfoRequest {
   /** Identifier. */
   siteId: string;
 }
-export const DeleteSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -415,7 +407,7 @@ export interface DeleteSiteInfoResponse {
   /** The Web Analytics site identifier. */
   siteTag?: string | null;
 }
-export const DeleteSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSiteInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     siteTag: S.optional(S.NullOr(S.String).pipe(T.Body("site_tag"))),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -427,7 +419,7 @@ export interface GetSiteInfoRequest {
   /** Identifier. */
   siteId: string;
 }
-export const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -439,9 +431,6 @@ export const GetSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSiteInfoRequest" }) as any as S.Schema<GetSiteInfoRequest>;
 
 export type SiteInfoGetResponseRulesItemPathsList = Array<string>;
-export const SiteInfoGetResponseRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoGetResponseRulesItemPathsList>;
-
 export interface SiteInfoGetResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -456,16 +445,8 @@ export interface SiteInfoGetResponseRulesItem {
   paths?: SiteInfoGetResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoGetResponseRulesItem =
-  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoGetResponseRulesItem>;
-
 export type SiteInfoGetResponseRulesList = Array<SiteInfoGetResponseRulesItem>;
-export const SiteInfoGetResponseRulesList =
-  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoGetResponseRulesList>;
-
 export type SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoGetResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -483,7 +464,7 @@ export interface GetSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const GetSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<GetSiteInfoResponse>;
+const GetSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<GetSiteInfoResponse>;
 
 export interface ListRulesRequest {
   /** Identifier. */
@@ -491,7 +472,7 @@ export interface ListRulesRequest {
   /** The Web Analytics ruleset identifier. */
   rulesetId: string;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
@@ -503,9 +484,6 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResponseRulesItemPathsList = Array<string>;
-export const RulesListResponseRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesListResponseRulesItemPathsList>;
-
 export interface RulesListResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -520,26 +498,18 @@ export interface RulesListResponseRulesItem {
   paths?: RulesListResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const RulesListResponseRulesItem =
-  RulesBulkCreateResponseRulesItem as any as S.Schema<RulesListResponseRulesItem>;
-
 export type RulesListResponseRulesList = Array<RulesListResponseRulesItem>;
-export const RulesListResponseRulesList =
-  RulesBulkCreateResponseRulesList as any as S.Schema<RulesListResponseRulesList>;
-
 export type RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
-export const RulesListResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListRulesResponse {
   /** A list of rules. */
   rules?: RulesListResponseRulesList | null;
   ruleset?: RulesBulkCreateResponseRuleset | null;
 }
-export const ListRulesResponse = BulkCreateRulesResponse as any as S.Schema<ListRulesResponse>;
+const ListRulesResponse = BulkCreateRulesResponse as any as S.Schema<ListRulesResponse>;
 
 export type SiteInfoListRequestOrderBy = "host" | "created";
-export const SiteInfoListRequestOrderBy = S.String;
+const SiteInfoListRequestOrderBy = S.String;
 
 export interface ListSiteInfosRequest {
   /** Identifier. */
@@ -551,7 +521,7 @@ export interface ListSiteInfosRequest {
   /** Number of items to return per page of results. */
   perPage?: number;
 }
-export const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     orderBy: S.optional(SiteInfoListRequestOrderBy.pipe(T.Query("order_by"))),
@@ -563,9 +533,6 @@ export const ListSiteInfosRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteInfosRequest" }) as any as S.Schema<ListSiteInfosRequest>;
 
 export type SiteInfoListResultItemRulesItemPathsList = Array<string>;
-export const SiteInfoListResultItemRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoListResultItemRulesItemPathsList>;
-
 export interface SiteInfoListResultItemRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -580,16 +547,11 @@ export interface SiteInfoListResultItemRulesItem {
   paths?: SiteInfoListResultItemRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoListResultItemRulesItem =
-  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoListResultItemRulesItem>;
-
 export type SiteInfoListResultItemRulesList = Array<SiteInfoListResultItemRulesItem>;
-export const SiteInfoListResultItemRulesList =
+const SiteInfoListResultItemRulesList =
   RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoListResultItemRulesList>;
 
 export type SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoListResultItemRuleset = RulesBulkCreateResponseRuleset;
-
 export interface SiteInfoListResultItem {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
   autoInstall?: boolean | null;
@@ -606,7 +568,7 @@ export interface SiteInfoListResultItem {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
+const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoInstall: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_install"))),
     created: S.optional(S.NullOr(S.String)),
@@ -620,7 +582,7 @@ export const SiteInfoListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SiteInfoListResultItem" }) as any as S.Schema<SiteInfoListResultItem>;
 
 export type SiteInfoListResultList = Array<SiteInfoListResultItem>;
-export const SiteInfoListResultList = /*@__PURE__*/ S.Array(
+const SiteInfoListResultList = /*@__PURE__*/ S.Array(
   SiteInfoListResultItem,
 ) as any as S.Schema<SiteInfoListResultList>;
 
@@ -630,7 +592,7 @@ export interface ListSiteInfosResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: SiteInfoListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -638,7 +600,7 @@ export const ListSiteInfosResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSiteInfosResponse" }) as any as S.Schema<ListSiteInfosResponse>;
 
 export type RulesUpdateRequestPathsList = Array<string>;
-export const RulesUpdateRequestPathsList =
+const RulesUpdateRequestPathsList =
   RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesUpdateRequestPathsList>;
 
 export interface UpdateRuleRequest {
@@ -655,7 +617,7 @@ export interface UpdateRuleRequest {
   isPaused?: boolean;
   paths?: RulesUpdateRequestPathsList;
 }
-export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     rulesetId: S.String.pipe(T.Label("ruleset_id")),
@@ -676,9 +638,6 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResponsePathsList = Array<string>;
-export const RulesUpdateResponsePathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<RulesUpdateResponsePathsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
   /** The Web Analytics rule identifier. */
@@ -694,7 +653,7 @@ export interface UpdateRuleResponse {
   paths?: RulesUpdateResponsePathsList | null;
   priority?: number | null;
 }
-export const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
+const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
 
 export interface UpdateSiteInfoRequest {
   /** Identifier. */
@@ -712,7 +671,7 @@ export interface UpdateSiteInfoRequest {
   /** The zone identifier. */
   zoneTag?: string;
 }
-export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -729,9 +688,6 @@ export const UpdateSiteInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateSiteInfoRequest" }) as any as S.Schema<UpdateSiteInfoRequest>;
 
 export type SiteInfoUpdateResponseRulesItemPathsList = Array<string>;
-export const SiteInfoUpdateResponseRulesItemPathsList =
-  RulesBulkCreateRequestDeleteRulesList as any as S.Schema<SiteInfoUpdateResponseRulesItemPathsList>;
-
 export interface SiteInfoUpdateResponseRulesItem {
   /** The Web Analytics rule identifier. */
   id?: string | null;
@@ -746,16 +702,8 @@ export interface SiteInfoUpdateResponseRulesItem {
   paths?: SiteInfoUpdateResponseRulesItemPathsList | null;
   priority?: number | null;
 }
-export const SiteInfoUpdateResponseRulesItem =
-  RulesBulkCreateResponseRulesItem as any as S.Schema<SiteInfoUpdateResponseRulesItem>;
-
 export type SiteInfoUpdateResponseRulesList = Array<SiteInfoUpdateResponseRulesItem>;
-export const SiteInfoUpdateResponseRulesList =
-  RulesBulkCreateResponseRulesList as any as S.Schema<SiteInfoUpdateResponseRulesList>;
-
 export type SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
-export const SiteInfoUpdateResponseRuleset = RulesBulkCreateResponseRuleset;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSiteInfoResponse {
   /** If enabled, the JavaScript snippet is automatically injected for orange-clouded sites. */
@@ -773,8 +721,7 @@ export interface UpdateSiteInfoResponse {
   /** The hostname the site measures (gray-clouded sites). */
   host?: string | null;
 }
-export const UpdateSiteInfoResponse =
-  CreateSiteInfoResponse as any as S.Schema<UpdateSiteInfoResponse>;
+const UpdateSiteInfoResponse = CreateSiteInfoResponse as any as S.Schema<UpdateSiteInfoResponse>;
 
 export type BulkCreateRulesError = CloudflareOpError;
 /** Modifies one or more rules in a Web Analytics ruleset with a single request. */

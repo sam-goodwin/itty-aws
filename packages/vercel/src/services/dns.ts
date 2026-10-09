@@ -65,7 +65,7 @@ export type CreateRecordRequestType =
   | "SRV"
   | "TXT"
   | "NS";
-export const CreateRecordRequestType = S.String;
+const CreateRecordRequestType = S.String;
 
 export interface CreateRecordRequest {
   /** The domain used to create the DNS record. */
@@ -77,7 +77,7 @@ export interface CreateRecordRequest {
   /** The type of record, it could be one of the valid DNS records. */
   type: CreateRecordRequestType | (string & {});
 }
-export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -90,34 +90,17 @@ export interface CreateRecordResponseBodyCase0 {
   uid?: string;
   updated: number;
 }
-export const CreateRecordResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.optional(S.String),
-    updated: S.Number,
-  }),
-).annotate({
-  identifier: "CreateRecordResponseBodyCase0",
-}) as any as S.Schema<CreateRecordResponseBodyCase0>;
-
 export interface CreateRecordResponseBodyCase1 {
   /** The id of the newly created DNS record */
   uid: string;
 }
-export const CreateRecordResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.String,
-  }),
-).annotate({
-  identifier: "CreateRecordResponseBodyCase1",
-}) as any as S.Schema<CreateRecordResponseBodyCase1>;
-
 export type CreateRecordResponseBody =
   | CreateRecordResponseBodyCase0
   | CreateRecordResponseBodyCase1;
-export const CreateRecordResponseBody = S.Unknown as any as S.Schema<CreateRecordResponseBody>;
+const CreateRecordResponseBody = S.Unknown as any as S.Schema<CreateRecordResponseBody>;
 
 export type CreateRecordResponse = CreateRecordResponseBody;
-export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
   CreateRecordResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "CreateRecordResponse" }) as any as S.Schema<CreateRecordResponse>;
 
@@ -125,7 +108,7 @@ export interface GetDomainsRecordRequest {
   /** The unique ID of the DNS record */
   recordId: string;
 }
-export const GetDomainsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/domains/records/{recordId}", code: 200 })),
@@ -142,7 +125,7 @@ export type GetDomainsRecordResponseRecordType =
   | "NS"
   | "SRV"
   | "TXT";
-export const GetDomainsRecordResponseRecordType = S.String;
+const GetDomainsRecordResponseRecordType = S.String;
 
 export type GetDomainsRecordResponseType =
   | "A"
@@ -155,7 +138,7 @@ export type GetDomainsRecordResponseType =
   | "NS"
   | "SRV"
   | "TXT";
-export const GetDomainsRecordResponseType = S.String;
+const GetDomainsRecordResponseType = S.String;
 
 export interface GetDomainsRecordResponse {
   comment?: string;
@@ -169,7 +152,7 @@ export interface GetDomainsRecordResponse {
   type: GetDomainsRecordResponseType;
   value: string;
 }
-export const GetDomainsRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDomainsRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     createdAt: S.optional(S.NullOr(S.Number)),
@@ -197,7 +180,7 @@ export interface GetRecordsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     limit: S.optional(S.String.pipe(T.Query())),
@@ -219,8 +202,6 @@ export type GetRecordsResponseBodyCase1RecordsItemType =
   | "NS"
   | "SRV"
   | "TXT";
-export const GetRecordsResponseBodyCase1RecordsItemType = S.String;
-
 export interface GetRecordsResponseBodyCase1RecordsItem {
   comment?: string;
   created: number | null;
@@ -237,43 +218,10 @@ export interface GetRecordsResponseBodyCase1RecordsItem {
   updatedAt: number | null;
   value: string;
 }
-export const GetRecordsResponseBodyCase1RecordsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    comment: S.optional(S.String),
-    created: S.NullOr(S.Number),
-    createdAt: S.NullOr(S.Number),
-    creator: S.String,
-    id: S.String,
-    mxPriority: S.optional(S.Number),
-    name: S.String,
-    priority: S.optional(S.Number),
-    slug: S.String,
-    ttl: S.optional(S.Number),
-    type: GetRecordsResponseBodyCase1RecordsItemType,
-    updated: S.NullOr(S.Number),
-    updatedAt: S.NullOr(S.Number),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "GetRecordsResponseBodyCase1RecordsItem",
-}) as any as S.Schema<GetRecordsResponseBodyCase1RecordsItem>;
-
 export type GetRecordsResponseBodyCase1RecordsList = Array<GetRecordsResponseBodyCase1RecordsItem>;
-export const GetRecordsResponseBodyCase1RecordsList = /*@__PURE__*/ S.Array(
-  GetRecordsResponseBodyCase1RecordsItem,
-) as any as S.Schema<GetRecordsResponseBodyCase1RecordsList>;
-
 export interface GetRecordsResponseBodyCase1 {
   records: GetRecordsResponseBodyCase1RecordsList;
 }
-export const GetRecordsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    records: GetRecordsResponseBodyCase1RecordsList,
-  }),
-).annotate({
-  identifier: "GetRecordsResponseBodyCase1",
-}) as any as S.Schema<GetRecordsResponseBodyCase1>;
-
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -283,14 +231,6 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-export const Pagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.NullOr(S.Number),
-    prev: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "Pagination" }) as any as S.Schema<Pagination>;
-
 export type GetRecordsResponseBodyCase2RecordsItemType =
   | "A"
   | "AAAA"
@@ -302,8 +242,6 @@ export type GetRecordsResponseBodyCase2RecordsItemType =
   | "NS"
   | "SRV"
   | "TXT";
-export const GetRecordsResponseBodyCase2RecordsItemType = S.String;
-
 export interface GetRecordsResponseBodyCase2RecordsItem {
   comment?: string;
   created: number | null;
@@ -320,35 +258,20 @@ export interface GetRecordsResponseBodyCase2RecordsItem {
   updatedAt: number | null;
   value: string;
 }
-export const GetRecordsResponseBodyCase2RecordsItem =
-  GetRecordsResponseBodyCase1RecordsItem as any as S.Schema<GetRecordsResponseBodyCase2RecordsItem>;
-
 export type GetRecordsResponseBodyCase2RecordsList = Array<GetRecordsResponseBodyCase2RecordsItem>;
-export const GetRecordsResponseBodyCase2RecordsList =
-  GetRecordsResponseBodyCase1RecordsList as any as S.Schema<GetRecordsResponseBodyCase2RecordsList>;
-
 /** Successful response retrieving a list of paginated DNS records. */
 export interface GetRecordsResponseBodyCase2 {
   pagination: Pagination;
   records: GetRecordsResponseBodyCase2RecordsList;
 }
-export const GetRecordsResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pagination: Pagination,
-    records: GetRecordsResponseBodyCase2RecordsList,
-  }),
-).annotate({
-  identifier: "GetRecordsResponseBodyCase2",
-}) as any as S.Schema<GetRecordsResponseBodyCase2>;
-
 export type GetRecordsResponseBody =
   | string
   | GetRecordsResponseBodyCase1
   | GetRecordsResponseBodyCase2;
-export const GetRecordsResponseBody = S.Unknown as any as S.Schema<GetRecordsResponseBody>;
+const GetRecordsResponseBody = S.Unknown as any as S.Schema<GetRecordsResponseBody>;
 
 export type GetRecordsResponse = GetRecordsResponseBody;
-export const GetRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   GetRecordsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetRecordsResponse" }) as any as S.Schema<GetRecordsResponse>;
 
@@ -360,7 +283,7 @@ export interface RemoveRecordRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const RemoveRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     recordId: S.String.pipe(T.Label()),
@@ -370,7 +293,7 @@ export const RemoveRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RemoveRecordRequest" }) as any as S.Schema<RemoveRecordRequest>;
 
 export type RemoveRecordResponse = unknown;
-export const RemoveRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const RemoveRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "RemoveRecordResponse" }) as any as S.Schema<RemoveRecordResponse>;
 
@@ -378,7 +301,7 @@ export interface ReplaceDomainsByDomainRecordsRequest {
   /** The domain name */
   domain: string;
 }
-export const ReplaceDomainsByDomainRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDomainsByDomainRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/domains/{domain}/records", code: 200 })),
@@ -387,14 +310,14 @@ export const ReplaceDomainsByDomainRecordsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ReplaceDomainsByDomainRecordsRequest>;
 
 export type ReplaceDomainsByDomainRecordsResponseRecordIdsList = Array<string>;
-export const ReplaceDomainsByDomainRecordsResponseRecordIdsList = /*@__PURE__*/ S.Array(
+const ReplaceDomainsByDomainRecordsResponseRecordIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReplaceDomainsByDomainRecordsResponseRecordIdsList>;
 
 export interface ReplaceDomainsByDomainRecordsResponse {
   recordIds: ReplaceDomainsByDomainRecordsResponseRecordIdsList;
 }
-export const ReplaceDomainsByDomainRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDomainsByDomainRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordIds: ReplaceDomainsByDomainRecordsResponseRecordIdsList,
   }),
@@ -414,7 +337,7 @@ export type UpdateRecordRequestType =
   | "SRV"
   | "TXT"
   | "NS";
-export const UpdateRecordRequestType = S.String;
+const UpdateRecordRequestType = S.String;
 
 export interface UpdateRecordRequestSrv {
   target: string | null;
@@ -422,7 +345,7 @@ export interface UpdateRecordRequestSrv {
   port: number | null;
   priority: number | null;
 }
-export const UpdateRecordRequestSrv = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordRequestSrv = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.NullOr(S.String),
     weight: S.NullOr(S.Number),
@@ -436,7 +359,7 @@ export interface UpdateRecordRequestHttps {
   target: string | null;
   params?: string | null;
 }
-export const UpdateRecordRequestHttps = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordRequestHttps = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priority: S.NullOr(S.Number),
     target: S.NullOr(S.String),
@@ -466,7 +389,7 @@ export interface UpdateRecordRequest {
   /** A comment to add context on what this DNS record is for */
   comment?: string;
 }
-export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordId: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -493,11 +416,7 @@ export type UpdateRecordResponseRecordType =
   | "NS"
   | "SRV"
   | "TXT";
-export const UpdateRecordResponseRecordType = S.String;
-
 export type UpdateRecordResponseType = "record" | "record-sys";
-export const UpdateRecordResponseType = S.String;
-
 export interface UpdateRecordResponse {
   comment?: string;
   createdAt?: number | null;
@@ -510,8 +429,7 @@ export interface UpdateRecordResponse {
   type: UpdateRecordResponseType;
   value: string;
 }
-export const UpdateRecordResponse =
-  GetDomainsRecordResponse as any as S.Schema<UpdateRecordResponse>;
+const UpdateRecordResponse = GetDomainsRecordResponse as any as S.Schema<UpdateRecordResponse>;
 
 export type CreateRecordError =
   | BadRequest

@@ -92,7 +92,7 @@ export interface AccountRulesListForAccountRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const AccountRulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     enabled: S.optional(S.String.pipe(T.Query())),
@@ -106,10 +106,10 @@ export const AccountRulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountRulesListForAccountRequest>;
 
 export type AccountRulesListResultItemActionsItemType = "drop" | "forward" | "worker";
-export const AccountRulesListResultItemActionsItemType = S.String;
+const AccountRulesListResultItemActionsItemType = S.String;
 
 export type AccountRulesListResultItemActionsItemValueList = Array<string>;
-export const AccountRulesListResultItemActionsItemValueList = /*@__PURE__*/ S.Array(
+const AccountRulesListResultItemActionsItemValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRulesListResultItemActionsItemValueList>;
 
@@ -119,7 +119,7 @@ export interface AccountRulesListResultItemActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: AccountRulesListResultItemActionsItemValueList | null;
 }
-export const AccountRulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AccountRulesListResultItemActionsItemType,
     value: S.optional(S.NullOr(AccountRulesListResultItemActionsItemValueList)),
@@ -129,15 +129,15 @@ export const AccountRulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<AccountRulesListResultItemActionsItem>;
 
 export type AccountRulesListResultItemActionsList = Array<AccountRulesListResultItemActionsItem>;
-export const AccountRulesListResultItemActionsList = /*@__PURE__*/ S.Array(
+const AccountRulesListResultItemActionsList = /*@__PURE__*/ S.Array(
   AccountRulesListResultItemActionsItem,
 ) as any as S.Schema<AccountRulesListResultItemActionsList>;
 
 export type AccountRulesListResultItemMatchersItemType = "all" | "literal";
-export const AccountRulesListResultItemMatchersItemType = S.String;
+const AccountRulesListResultItemMatchersItemType = S.String;
 
 export type AccountRulesListResultItemMatchersItemField = "to";
-export const AccountRulesListResultItemMatchersItemField = S.String;
+const AccountRulesListResultItemMatchersItemField = S.String;
 
 export interface AccountRulesListResultItemMatchersItem {
   /** Type of matcher. */
@@ -147,7 +147,7 @@ export interface AccountRulesListResultItemMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const AccountRulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: AccountRulesListResultItemMatchersItemType,
     field: S.optional(S.NullOr(AccountRulesListResultItemMatchersItemField)),
@@ -158,12 +158,12 @@ export const AccountRulesListResultItemMatchersItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AccountRulesListResultItemMatchersItem>;
 
 export type AccountRulesListResultItemMatchersList = Array<AccountRulesListResultItemMatchersItem>;
-export const AccountRulesListResultItemMatchersList = /*@__PURE__*/ S.Array(
+const AccountRulesListResultItemMatchersList = /*@__PURE__*/ S.Array(
   AccountRulesListResultItemMatchersItem,
 ) as any as S.Schema<AccountRulesListResultItemMatchersList>;
 
 export type AccountRulesListResultItemSource = "api" | "wrangler";
-export const AccountRulesListResultItemSource = S.String;
+const AccountRulesListResultItemSource = S.String;
 
 export interface AccountRulesListResultItemZone {
   /** Zone name. */
@@ -171,7 +171,7 @@ export interface AccountRulesListResultItemZone {
   /** Zone tag. */
   tag?: string | null;
 }
-export const AccountRulesListResultItemZone = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListResultItemZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     tag: S.optional(S.NullOr(S.String)),
@@ -200,7 +200,7 @@ export interface AccountRulesListResultItem {
   /** Zone information for the routing rule. */
   zone?: AccountRulesListResultItemZone | null;
 }
-export const AccountRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(AccountRulesListResultItemActionsList)),
@@ -217,12 +217,12 @@ export const AccountRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountRulesListResultItem>;
 
 export type AccountRulesListResultList = Array<AccountRulesListResultItem>;
-export const AccountRulesListResultList = /*@__PURE__*/ S.Array(
+const AccountRulesListResultList = /*@__PURE__*/ S.Array(
   AccountRulesListResultItem,
 ) as any as S.Schema<AccountRulesListResultList>;
 
 export type AccountRulesListResponse = AccountRulesListResultList;
-export const AccountRulesListResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListResponse = /*@__PURE__*/ S.suspend(() =>
   AccountRulesListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "AccountRulesListResponse" }) as any as S.Schema<AccountRulesListResponse>;
 
@@ -236,7 +236,7 @@ export interface AccountRulesListForZoneRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const AccountRulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountRulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.String.pipe(T.Query())),
@@ -255,7 +255,7 @@ export interface CreateAddressRequest {
   /** The contact email address of the user. */
   email: string;
 }
-export const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     email: S.String,
@@ -281,7 +281,7 @@ export interface CreateAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAddressResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -298,7 +298,7 @@ export interface CreateDnsRequest {
   /** Domain of your zone. */
   name?: string;
 }
-export const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
@@ -313,7 +313,7 @@ export type DnsCreateResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const DnsCreateResponseStatus = S.String;
+const DnsCreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDnsResponse {
@@ -336,7 +336,7 @@ export interface CreateDnsResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
@@ -351,10 +351,10 @@ export const CreateDnsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDnsResponse" }) as any as S.Schema<CreateDnsResponse>;
 
 export type RulesCreateRequestActionsItemType = "drop" | "forward" | "worker";
-export const RulesCreateRequestActionsItemType = S.String;
+const RulesCreateRequestActionsItemType = S.String;
 
 export type RulesCreateRequestActionsItemValueList = Array<string>;
-export const RulesCreateRequestActionsItemValueList =
+const RulesCreateRequestActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateRequestActionsItemValueList>;
 
 export interface RulesCreateRequestActionsItem {
@@ -363,7 +363,7 @@ export interface RulesCreateRequestActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCreateRequestActionsItemValueList;
 }
-export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestActionsItemType,
     value: S.optional(RulesCreateRequestActionsItemValueList),
@@ -373,15 +373,15 @@ export const RulesCreateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequestActionsItem>;
 
 export type RulesCreateRequestActionsList = Array<RulesCreateRequestActionsItem>;
-export const RulesCreateRequestActionsList = /*@__PURE__*/ S.Array(
+const RulesCreateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCreateRequestActionsItem,
 ) as any as S.Schema<RulesCreateRequestActionsList>;
 
 export type RulesCreateRequestMatchersItemType = "all" | "literal";
-export const RulesCreateRequestMatchersItemType = S.String;
+const RulesCreateRequestMatchersItemType = S.String;
 
 export type RulesCreateRequestMatchersItemField = "to";
-export const RulesCreateRequestMatchersItemField = S.String;
+const RulesCreateRequestMatchersItemField = S.String;
 
 export interface RulesCreateRequestMatchersItem {
   /** Type of matcher. */
@@ -391,7 +391,7 @@ export interface RulesCreateRequestMatchersItem {
   /** Value for matcher. */
   value?: string;
 }
-export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateRequestMatchersItemType,
     field: S.optional(RulesCreateRequestMatchersItemField),
@@ -402,12 +402,12 @@ export const RulesCreateRequestMatchersItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateRequestMatchersItem>;
 
 export type RulesCreateRequestMatchersList = Array<RulesCreateRequestMatchersItem>;
-export const RulesCreateRequestMatchersList = /*@__PURE__*/ S.Array(
+const RulesCreateRequestMatchersList = /*@__PURE__*/ S.Array(
   RulesCreateRequestMatchersItem,
 ) as any as S.Schema<RulesCreateRequestMatchersList>;
 
 export type RulesCreateRequestSource = "api" | "wrangler";
-export const RulesCreateRequestSource = S.String;
+const RulesCreateRequestSource = S.String;
 
 export interface CreateRuleRequest {
   /** Identifier. */
@@ -427,7 +427,7 @@ export interface CreateRuleRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCreateRequestSource | (string & {});
 }
-export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCreateRequestActionsList,
@@ -443,10 +443,10 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRuleRequest" }) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesCreateResponseActionsItemType = S.String;
+const RulesCreateResponseActionsItemType = S.String;
 
 export type RulesCreateResponseActionsItemValueList = Array<string>;
-export const RulesCreateResponseActionsItemValueList =
+const RulesCreateResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCreateResponseActionsItemValueList>;
 
 export interface RulesCreateResponseActionsItem {
@@ -455,7 +455,7 @@ export interface RulesCreateResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCreateResponseActionsItemValueList | null;
 }
-export const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCreateResponseActionsItemType,
     value: S.optional(S.NullOr(RulesCreateResponseActionsItemValueList)),
@@ -465,16 +465,12 @@ export const RulesCreateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateResponseActionsItem>;
 
 export type RulesCreateResponseActionsList = Array<RulesCreateResponseActionsItem>;
-export const RulesCreateResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesCreateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCreateResponseActionsItem,
 ) as any as S.Schema<RulesCreateResponseActionsList>;
 
 export type RulesCreateResponseMatchersItemType = "all" | "literal";
-export const RulesCreateResponseMatchersItemType = S.String;
-
 export type RulesCreateResponseMatchersItemField = "to";
-export const RulesCreateResponseMatchersItemField = S.String;
-
 export interface RulesCreateResponseMatchersItem {
   /** Type of matcher. */
   type: RulesCreateResponseMatchersItemType;
@@ -483,15 +479,12 @@ export interface RulesCreateResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesCreateResponseMatchersItem =
-  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesCreateResponseMatchersItem>;
-
 export type RulesCreateResponseMatchersList = Array<RulesCreateResponseMatchersItem>;
-export const RulesCreateResponseMatchersList =
+const RulesCreateResponseMatchersList =
   AccountRulesListResultItemMatchersList as any as S.Schema<RulesCreateResponseMatchersList>;
 
 export type RulesCreateResponseSource = "api" | "wrangler";
-export const RulesCreateResponseSource = S.String;
+const RulesCreateResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
@@ -512,7 +505,7 @@ export interface CreateRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesCreateResponseActionsList)),
@@ -531,7 +524,7 @@ export interface DeleteAddressRequest {
   /** Destination address identifier. */
   destinationAddressIdentifier: string;
 }
-export const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationAddressIdentifier: S.String.pipe(T.Label("destination_address_identifier")),
@@ -561,14 +554,13 @@ export interface DeleteAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const DeleteAddressResponse =
-  CreateAddressResponse as any as S.Schema<DeleteAddressResponse>;
+const DeleteAddressResponse = CreateAddressResponse as any as S.Schema<DeleteAddressResponse>;
 
 export interface DeleteDnsRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -582,8 +574,6 @@ export type DnsDeleteResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const DnsDeleteResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DnsDeleteResponse {
   /** Email Routing settings identifier. */
@@ -605,7 +595,7 @@ export interface DnsDeleteResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const DnsDeleteResponse = CreateDnsResponse as any as S.Schema<DnsDeleteResponse>;
+const DnsDeleteResponse = CreateDnsResponse as any as S.Schema<DnsDeleteResponse>;
 
 export interface DeleteRuleRequest {
   /** Identifier. */
@@ -613,7 +603,7 @@ export interface DeleteRuleRequest {
   /** Routing rule identifier. */
   ruleIdentifier: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
@@ -629,10 +619,10 @@ export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export type RulesDeleteResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesDeleteResponseActionsItemType = S.String;
+const RulesDeleteResponseActionsItemType = S.String;
 
 export type RulesDeleteResponseActionsItemValueList = Array<string>;
-export const RulesDeleteResponseActionsItemValueList =
+const RulesDeleteResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesDeleteResponseActionsItemValueList>;
 
 export interface RulesDeleteResponseActionsItem {
@@ -641,7 +631,7 @@ export interface RulesDeleteResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesDeleteResponseActionsItemValueList | null;
 }
-export const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesDeleteResponseActionsItemType,
     value: S.optional(S.NullOr(RulesDeleteResponseActionsItemValueList)),
@@ -651,16 +641,12 @@ export const RulesDeleteResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesDeleteResponseActionsItem>;
 
 export type RulesDeleteResponseActionsList = Array<RulesDeleteResponseActionsItem>;
-export const RulesDeleteResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesDeleteResponseActionsList = /*@__PURE__*/ S.Array(
   RulesDeleteResponseActionsItem,
 ) as any as S.Schema<RulesDeleteResponseActionsList>;
 
 export type RulesDeleteResponseMatchersItemType = "all" | "literal";
-export const RulesDeleteResponseMatchersItemType = S.String;
-
 export type RulesDeleteResponseMatchersItemField = "to";
-export const RulesDeleteResponseMatchersItemField = S.String;
-
 export interface RulesDeleteResponseMatchersItem {
   /** Type of matcher. */
   type: RulesDeleteResponseMatchersItemType;
@@ -669,15 +655,12 @@ export interface RulesDeleteResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesDeleteResponseMatchersItem =
-  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesDeleteResponseMatchersItem>;
-
 export type RulesDeleteResponseMatchersList = Array<RulesDeleteResponseMatchersItem>;
-export const RulesDeleteResponseMatchersList =
+const RulesDeleteResponseMatchersList =
   AccountRulesListResultItemMatchersList as any as S.Schema<RulesDeleteResponseMatchersList>;
 
 export type RulesDeleteResponseSource = "api" | "wrangler";
-export const RulesDeleteResponseSource = S.String;
+const RulesDeleteResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
@@ -698,7 +681,7 @@ export interface DeleteRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesDeleteResponseActionsList)),
@@ -715,7 +698,7 @@ export interface DisableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -731,7 +714,7 @@ export type DisableResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const DisableResponseStatus = S.String;
+const DisableResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DisableEmailRoutingResponse {
@@ -754,7 +737,7 @@ export interface DisableEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableEmailRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     enabled: S.Boolean,
@@ -780,7 +763,7 @@ export interface EditRequest {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean;
 }
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
+const EditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -797,8 +780,6 @@ export type EditResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const EditResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditResponse {
   /** Email Routing settings identifier. */
@@ -820,10 +801,10 @@ export interface EditResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const EditResponse = CreateDnsResponse as any as S.Schema<EditResponse>;
+const EditResponse = CreateDnsResponse as any as S.Schema<EditResponse>;
 
 export type EditAddressRequestStatus = "unverified" | "verified";
-export const EditAddressRequestStatus = S.String;
+const EditAddressRequestStatus = S.String;
 
 export interface EditAddressRequest {
   /** Identifier. */
@@ -833,7 +814,7 @@ export interface EditAddressRequest {
   /** Destination address status. Non-admin callers may only set verified addresses back to unverified; setting to verified requires admin privileges. */
   status: EditAddressRequestStatus | (string & {});
 }
-export const EditAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const EditAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationAddressIdentifier: S.String.pipe(T.Label("destination_address_identifier")),
@@ -864,13 +845,13 @@ export interface EditAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const EditAddressResponse = CreateAddressResponse as any as S.Schema<EditAddressResponse>;
+const EditAddressResponse = CreateAddressResponse as any as S.Schema<EditAddressResponse>;
 
 export interface EnableEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -886,8 +867,6 @@ export type EnableResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const EnableResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EnableEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -909,7 +888,7 @@ export interface EnableEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const EnableEmailRoutingResponse =
+const EnableEmailRoutingResponse =
   DisableEmailRoutingResponse as any as S.Schema<EnableEmailRoutingResponse>;
 
 export interface GetAddressRequest {
@@ -918,7 +897,7 @@ export interface GetAddressRequest {
   /** Destination address identifier. */
   destinationAddressIdentifier: string;
 }
-export const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationAddressIdentifier: S.String.pipe(T.Label("destination_address_identifier")),
@@ -948,7 +927,7 @@ export interface GetAddressResponse {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
+const GetAddressResponse = CreateAddressResponse as any as S.Schema<GetAddressResponse>;
 
 export interface GetDnsRequest {
   /** Identifier. */
@@ -956,7 +935,7 @@ export interface GetDnsRequest {
   /** Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter. */
   subdomain?: string;
 }
-export const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     subdomain: S.optional(S.String.pipe(T.Query())),
@@ -984,7 +963,7 @@ export type DnsGetResultItemType =
   | "SVCB"
   | "TLSA"
   | "URI";
-export const DnsGetResultItemType = S.String;
+const DnsGetResultItemType = S.String;
 
 export interface DnsGetResultItem {
   /** DNS record content. */
@@ -998,7 +977,7 @@ export interface DnsGetResultItem {
   /** DNS record type. */
   type?: DnsGetResultItemType | null;
 }
-export const DnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const DnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -1009,12 +988,12 @@ export const DnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DnsGetResultItem" }) as any as S.Schema<DnsGetResultItem>;
 
 export type DnsGetResultList = Array<DnsGetResultItem>;
-export const DnsGetResultList = /*@__PURE__*/ S.Array(
+const DnsGetResultList = /*@__PURE__*/ S.Array(
   DnsGetResultItem,
 ) as any as S.Schema<DnsGetResultList>;
 
 export type GetDnsResponse = DnsGetResultList;
-export const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDnsResponse = /*@__PURE__*/ S.suspend(() =>
   DnsGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDnsResponse" }) as any as S.Schema<GetDnsResponse>;
 
@@ -1022,7 +1001,7 @@ export interface GetEmailRoutingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEmailRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1036,8 +1015,6 @@ export type GetResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const GetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEmailRoutingResponse {
   /** Email Routing settings identifier. */
@@ -1059,8 +1036,7 @@ export interface GetEmailRoutingResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const GetEmailRoutingResponse =
-  CreateDnsResponse as any as S.Schema<GetEmailRoutingResponse>;
+const GetEmailRoutingResponse = CreateDnsResponse as any as S.Schema<GetEmailRoutingResponse>;
 
 export interface GetRuleRequest {
   /** Identifier. */
@@ -1068,7 +1044,7 @@ export interface GetRuleRequest {
   /** Routing rule identifier. */
   ruleIdentifier: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
@@ -1084,10 +1060,10 @@ export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesGetResponseActionsItemType = S.String;
+const RulesGetResponseActionsItemType = S.String;
 
 export type RulesGetResponseActionsItemValueList = Array<string>;
-export const RulesGetResponseActionsItemValueList =
+const RulesGetResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesGetResponseActionsItemValueList>;
 
 export interface RulesGetResponseActionsItem {
@@ -1096,7 +1072,7 @@ export interface RulesGetResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesGetResponseActionsItemValueList | null;
 }
-export const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesGetResponseActionsItemType,
     value: S.optional(S.NullOr(RulesGetResponseActionsItemValueList)),
@@ -1106,16 +1082,12 @@ export const RulesGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesGetResponseActionsItem>;
 
 export type RulesGetResponseActionsList = Array<RulesGetResponseActionsItem>;
-export const RulesGetResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesGetResponseActionsItem,
 ) as any as S.Schema<RulesGetResponseActionsList>;
 
 export type RulesGetResponseMatchersItemType = "all" | "literal";
-export const RulesGetResponseMatchersItemType = S.String;
-
 export type RulesGetResponseMatchersItemField = "to";
-export const RulesGetResponseMatchersItemField = S.String;
-
 export interface RulesGetResponseMatchersItem {
   /** Type of matcher. */
   type: RulesGetResponseMatchersItemType;
@@ -1124,15 +1096,12 @@ export interface RulesGetResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesGetResponseMatchersItem =
-  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesGetResponseMatchersItem>;
-
 export type RulesGetResponseMatchersList = Array<RulesGetResponseMatchersItem>;
-export const RulesGetResponseMatchersList =
+const RulesGetResponseMatchersList =
   AccountRulesListResultItemMatchersList as any as S.Schema<RulesGetResponseMatchersList>;
 
 export type RulesGetResponseSource = "api" | "wrangler";
-export const RulesGetResponseSource = S.String;
+const RulesGetResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleResponse {
@@ -1153,7 +1122,7 @@ export interface GetRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesGetResponseActionsList)),
@@ -1170,7 +1139,7 @@ export interface GetRuleCatchAllRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1181,10 +1150,10 @@ export const GetRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleCatchAllRequest" }) as any as S.Schema<GetRuleCatchAllRequest>;
 
 export type RulesCatchAllsGetResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesCatchAllsGetResponseActionsItemType = S.String;
+const RulesCatchAllsGetResponseActionsItemType = S.String;
 
 export type RulesCatchAllsGetResponseActionsItemValueList = Array<string>;
-export const RulesCatchAllsGetResponseActionsItemValueList =
+const RulesCatchAllsGetResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsGetResponseActionsItemValueList>;
 
 export interface RulesCatchAllsGetResponseActionsItem {
@@ -1193,7 +1162,7 @@ export interface RulesCatchAllsGetResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsGetResponseActionsItemValueList | null;
 }
-export const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCatchAllsGetResponseActionsItemType,
     value: S.optional(S.NullOr(RulesCatchAllsGetResponseActionsItemValueList)),
@@ -1203,18 +1172,18 @@ export const RulesCatchAllsGetResponseActionsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RulesCatchAllsGetResponseActionsItem>;
 
 export type RulesCatchAllsGetResponseActionsList = Array<RulesCatchAllsGetResponseActionsItem>;
-export const RulesCatchAllsGetResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesCatchAllsGetResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseActionsList>;
 
 export type RulesCatchAllsGetResponseMatchersItemType = "all";
-export const RulesCatchAllsGetResponseMatchersItemType = S.String;
+const RulesCatchAllsGetResponseMatchersItemType = S.String;
 
 export interface RulesCatchAllsGetResponseMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsGetResponseMatchersItemType;
 }
-export const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCatchAllsGetResponseMatchersItemType,
   }),
@@ -1223,12 +1192,12 @@ export const RulesCatchAllsGetResponseMatchersItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RulesCatchAllsGetResponseMatchersItem>;
 
 export type RulesCatchAllsGetResponseMatchersList = Array<RulesCatchAllsGetResponseMatchersItem>;
-export const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ S.Array(
+const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ S.Array(
   RulesCatchAllsGetResponseMatchersItem,
 ) as any as S.Schema<RulesCatchAllsGetResponseMatchersList>;
 
 export type RulesCatchAllsGetResponseSource = "api" | "wrangler";
-export const RulesCatchAllsGetResponseSource = S.String;
+const RulesCatchAllsGetResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRuleCatchAllResponse {
@@ -1247,7 +1216,7 @@ export interface GetRuleCatchAllResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesCatchAllsGetResponseActionsList)),
@@ -1260,7 +1229,7 @@ export const GetRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetRuleCatchAllResponse" }) as any as S.Schema<GetRuleCatchAllResponse>;
 
 export type AddressesListRequestDirection = "asc" | "desc";
-export const AddressesListRequestDirection = S.String;
+const AddressesListRequestDirection = S.String;
 
 export interface ListAddressesRequest {
   /** Identifier. */
@@ -1274,7 +1243,7 @@ export interface ListAddressesRequest {
   /** Filter by verified destination addresses. */
   verified?: string;
 }
-export const ListAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAddressesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(AddressesListRequestDirection.pipe(T.Query())),
@@ -1302,7 +1271,7 @@ export interface AddressesListResultItem {
   /** The date and time the destination address has been verified. Null means not verified yet. */
   verified?: string | null;
 }
-export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     created: S.optional(S.NullOr(S.String)),
@@ -1314,7 +1283,7 @@ export const AddressesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddressesListResultItem" }) as any as S.Schema<AddressesListResultItem>;
 
 export type AddressesListResultList = Array<AddressesListResultItem>;
-export const AddressesListResultList = /*@__PURE__*/ S.Array(
+const AddressesListResultList = /*@__PURE__*/ S.Array(
   AddressesListResultItem,
 ) as any as S.Schema<AddressesListResultList>;
 
@@ -1324,7 +1293,7 @@ export interface ListAddressesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: AddressesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1339,7 +1308,7 @@ export interface ListRulesRequest {
   /** Filter by enabled routing rules. */
   enabled?: boolean;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1351,7 +1320,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRulesRequest" }) as any as S.Schema<ListRulesRequest>;
 
 export type ListRulesResponseResultList = Array<GetRuleResponse>;
-export const ListRulesResponseResultList = /*@__PURE__*/ S.Array(
+const ListRulesResponseResultList = /*@__PURE__*/ S.Array(
   GetRuleResponse,
 ) as any as S.Schema<ListRulesResponseResultList>;
 
@@ -1361,7 +1330,7 @@ export interface ListRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListRulesResponseResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1374,7 +1343,7 @@ export interface PatchDnsRequest {
   /** Domain of your zone. */
   name?: string;
 }
-export const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
@@ -1389,8 +1358,6 @@ export type DnsEditResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const DnsEditResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDnsResponse {
   /** Email Routing settings identifier. */
@@ -1412,13 +1379,13 @@ export interface PatchDnsResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const PatchDnsResponse = CreateDnsResponse as any as S.Schema<PatchDnsResponse>;
+const PatchDnsResponse = CreateDnsResponse as any as S.Schema<PatchDnsResponse>;
 
 export type RulesCatchAllsUpdateRequestActionsItemType = "drop" | "forward" | "worker";
-export const RulesCatchAllsUpdateRequestActionsItemType = S.String;
+const RulesCatchAllsUpdateRequestActionsItemType = S.String;
 
 export type RulesCatchAllsUpdateRequestActionsItemValueList = Array<string>;
-export const RulesCatchAllsUpdateRequestActionsItemValueList =
+const RulesCatchAllsUpdateRequestActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateRequestActionsItemValueList>;
 
 export interface RulesCatchAllsUpdateRequestActionsItem {
@@ -1427,7 +1394,7 @@ export interface RulesCatchAllsUpdateRequestActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsUpdateRequestActionsItemValueList;
 }
-export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCatchAllsUpdateRequestActionsItemType,
     value: S.optional(RulesCatchAllsUpdateRequestActionsItemValueList),
@@ -1437,27 +1404,22 @@ export const RulesCatchAllsUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RulesCatchAllsUpdateRequestActionsItem>;
 
 export type RulesCatchAllsUpdateRequestActionsList = Array<RulesCatchAllsUpdateRequestActionsItem>;
-export const RulesCatchAllsUpdateRequestActionsList = /*@__PURE__*/ S.Array(
+const RulesCatchAllsUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateRequestActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestActionsList>;
 
 export type RulesCatchAllsUpdateRequestMatchersItemType = "all";
-export const RulesCatchAllsUpdateRequestMatchersItemType = S.String;
-
 export interface RulesCatchAllsUpdateRequestMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsUpdateRequestMatchersItemType | (string & {});
 }
-export const RulesCatchAllsUpdateRequestMatchersItem =
-  RulesCatchAllsGetResponseMatchersItem as any as S.Schema<RulesCatchAllsUpdateRequestMatchersItem>;
-
 export type RulesCatchAllsUpdateRequestMatchersList =
   Array<RulesCatchAllsUpdateRequestMatchersItem>;
-export const RulesCatchAllsUpdateRequestMatchersList =
+const RulesCatchAllsUpdateRequestMatchersList =
   RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
 
 export type RulesCatchAllsUpdateRequestSource = "api" | "wrangler";
-export const RulesCatchAllsUpdateRequestSource = S.String;
+const RulesCatchAllsUpdateRequestSource = S.String;
 
 export interface PutRuleCatchAllRequest {
   /** Identifier. */
@@ -1475,7 +1437,7 @@ export interface PutRuleCatchAllRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesCatchAllsUpdateRequestSource | (string & {});
 }
-export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: RulesCatchAllsUpdateRequestActionsList,
@@ -1492,10 +1454,10 @@ export const PutRuleCatchAllRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutRuleCatchAllRequest" }) as any as S.Schema<PutRuleCatchAllRequest>;
 
 export type RulesCatchAllsUpdateResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesCatchAllsUpdateResponseActionsItemType = S.String;
+const RulesCatchAllsUpdateResponseActionsItemType = S.String;
 
 export type RulesCatchAllsUpdateResponseActionsItemValueList = Array<string>;
-export const RulesCatchAllsUpdateResponseActionsItemValueList =
+const RulesCatchAllsUpdateResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesCatchAllsUpdateResponseActionsItemValueList>;
 
 export interface RulesCatchAllsUpdateResponseActionsItem {
@@ -1504,7 +1466,7 @@ export interface RulesCatchAllsUpdateResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesCatchAllsUpdateResponseActionsItemValueList | null;
 }
-export const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesCatchAllsUpdateResponseActionsItemType,
     value: S.optional(S.NullOr(RulesCatchAllsUpdateResponseActionsItemValueList)),
@@ -1515,27 +1477,22 @@ export const RulesCatchAllsUpdateResponseActionsItem = /*@__PURE__*/ S.suspend((
 
 export type RulesCatchAllsUpdateResponseActionsList =
   Array<RulesCatchAllsUpdateResponseActionsItem>;
-export const RulesCatchAllsUpdateResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesCatchAllsUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesCatchAllsUpdateResponseActionsItem,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseActionsList>;
 
 export type RulesCatchAllsUpdateResponseMatchersItemType = "all";
-export const RulesCatchAllsUpdateResponseMatchersItemType = S.String;
-
 export interface RulesCatchAllsUpdateResponseMatchersItem {
   /** Type of matcher. Default is 'all'. */
   type: RulesCatchAllsUpdateResponseMatchersItemType;
 }
-export const RulesCatchAllsUpdateResponseMatchersItem =
-  RulesCatchAllsGetResponseMatchersItem as any as S.Schema<RulesCatchAllsUpdateResponseMatchersItem>;
-
 export type RulesCatchAllsUpdateResponseMatchersList =
   Array<RulesCatchAllsUpdateResponseMatchersItem>;
-export const RulesCatchAllsUpdateResponseMatchersList =
+const RulesCatchAllsUpdateResponseMatchersList =
   RulesCatchAllsGetResponseMatchersList as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
 
 export type RulesCatchAllsUpdateResponseSource = "api" | "wrangler";
-export const RulesCatchAllsUpdateResponseSource = S.String;
+const RulesCatchAllsUpdateResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutRuleCatchAllResponse {
@@ -1554,7 +1511,7 @@ export interface PutRuleCatchAllResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
+const PutRuleCatchAllResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesCatchAllsUpdateResponseActionsList)),
@@ -1576,7 +1533,7 @@ export interface RulesListForAccountRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const RulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const RulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     enabled: S.optional(S.String.pipe(T.Query())),
@@ -1590,10 +1547,10 @@ export const RulesListForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesListForAccountRequest>;
 
 export type RulesListResultItemActionsItemType = "drop" | "forward" | "worker";
-export const RulesListResultItemActionsItemType = S.String;
+const RulesListResultItemActionsItemType = S.String;
 
 export type RulesListResultItemActionsItemValueList = Array<string>;
-export const RulesListResultItemActionsItemValueList =
+const RulesListResultItemActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesListResultItemActionsItemValueList>;
 
 export interface RulesListResultItemActionsItem {
@@ -1602,7 +1559,7 @@ export interface RulesListResultItemActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesListResultItemActionsItemValueList | null;
 }
-export const RulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesListResultItemActionsItemType,
     value: S.optional(S.NullOr(RulesListResultItemActionsItemValueList)),
@@ -1612,16 +1569,12 @@ export const RulesListResultItemActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesListResultItemActionsItem>;
 
 export type RulesListResultItemActionsList = Array<RulesListResultItemActionsItem>;
-export const RulesListResultItemActionsList = /*@__PURE__*/ S.Array(
+const RulesListResultItemActionsList = /*@__PURE__*/ S.Array(
   RulesListResultItemActionsItem,
 ) as any as S.Schema<RulesListResultItemActionsList>;
 
 export type RulesListResultItemMatchersItemType = "all" | "literal";
-export const RulesListResultItemMatchersItemType = S.String;
-
 export type RulesListResultItemMatchersItemField = "to";
-export const RulesListResultItemMatchersItemField = S.String;
-
 export interface RulesListResultItemMatchersItem {
   /** Type of matcher. */
   type: RulesListResultItemMatchersItemType;
@@ -1630,19 +1583,14 @@ export interface RulesListResultItemMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesListResultItemMatchersItem =
-  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesListResultItemMatchersItem>;
-
 export type RulesListResultItemMatchersList = Array<RulesListResultItemMatchersItem>;
-export const RulesListResultItemMatchersList =
+const RulesListResultItemMatchersList =
   AccountRulesListResultItemMatchersList as any as S.Schema<RulesListResultItemMatchersList>;
 
 export type RulesListResultItemSource = "api" | "wrangler";
-export const RulesListResultItemSource = S.String;
+const RulesListResultItemSource = S.String;
 
 export type RulesListResultItemZone = AccountRulesListResultItemZone;
-export const RulesListResultItemZone = AccountRulesListResultItemZone;
-
 export interface RulesListResultItem {
   /** Routing rule identifier. */
   id?: string | null;
@@ -1663,7 +1611,7 @@ export interface RulesListResultItem {
   /** Zone information for the routing rule. */
   zone?: AccountRulesListResultItemZone | null;
 }
-export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesListResultItemActionsList)),
@@ -1678,12 +1626,12 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesListResultItem" }) as any as S.Schema<RulesListResultItem>;
 
 export type RulesListResultList = Array<RulesListResultItem>;
-export const RulesListResultList = /*@__PURE__*/ S.Array(
+const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
 export type RulesListResponse = RulesListResultList;
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
+const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
   RulesListResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "RulesListResponse" }) as any as S.Schema<RulesListResponse>;
 
@@ -1697,7 +1645,7 @@ export interface RulesListForZoneRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const RulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const RulesListForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.String.pipe(T.Query())),
@@ -1714,7 +1662,7 @@ export interface UnlockRequest {
   /** Domain of your zone. */
   name?: string;
 }
-export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.optional(S.String),
@@ -1729,8 +1677,6 @@ export type UnlockResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const UnlockResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UnlockResponse {
   /** Email Routing settings identifier. */
@@ -1752,7 +1698,7 @@ export interface UnlockResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const UnlockResponse = CreateDnsResponse as any as S.Schema<UnlockResponse>;
+const UnlockResponse = CreateDnsResponse as any as S.Schema<UnlockResponse>;
 
 export interface UpdateRequest {
   /** Identifier. */
@@ -1764,7 +1710,7 @@ export interface UpdateRequest {
   /** Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules. */
   supportSubaddress?: boolean;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -1781,8 +1727,6 @@ export type UpdateResponseStatus =
   | "misconfigured"
   | "misconfigured/locked"
   | "unlocked";
-export const UpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   /** Email Routing settings identifier. */
@@ -1804,13 +1748,13 @@ export interface UpdateResponse {
   /** Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier) */
   tag?: string | null;
 }
-export const UpdateResponse = CreateDnsResponse as any as S.Schema<UpdateResponse>;
+const UpdateResponse = CreateDnsResponse as any as S.Schema<UpdateResponse>;
 
 export type RulesUpdateRequestActionsItemType = "drop" | "forward" | "worker";
-export const RulesUpdateRequestActionsItemType = S.String;
+const RulesUpdateRequestActionsItemType = S.String;
 
 export type RulesUpdateRequestActionsItemValueList = Array<string>;
-export const RulesUpdateRequestActionsItemValueList =
+const RulesUpdateRequestActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateRequestActionsItemValueList>;
 
 export interface RulesUpdateRequestActionsItem {
@@ -1819,7 +1763,7 @@ export interface RulesUpdateRequestActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesUpdateRequestActionsItemValueList;
 }
-export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateRequestActionsItemType,
     value: S.optional(RulesUpdateRequestActionsItemValueList),
@@ -1829,16 +1773,12 @@ export const RulesUpdateRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequestActionsItem>;
 
 export type RulesUpdateRequestActionsList = Array<RulesUpdateRequestActionsItem>;
-export const RulesUpdateRequestActionsList = /*@__PURE__*/ S.Array(
+const RulesUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestActionsItem,
 ) as any as S.Schema<RulesUpdateRequestActionsList>;
 
 export type RulesUpdateRequestMatchersItemType = "all" | "literal";
-export const RulesUpdateRequestMatchersItemType = S.String;
-
 export type RulesUpdateRequestMatchersItemField = "to";
-export const RulesUpdateRequestMatchersItemField = S.String;
-
 export interface RulesUpdateRequestMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateRequestMatchersItemType | (string & {});
@@ -1847,15 +1787,12 @@ export interface RulesUpdateRequestMatchersItem {
   /** Value for matcher. */
   value?: string;
 }
-export const RulesUpdateRequestMatchersItem =
-  RulesCreateRequestMatchersItem as any as S.Schema<RulesUpdateRequestMatchersItem>;
-
 export type RulesUpdateRequestMatchersList = Array<RulesUpdateRequestMatchersItem>;
-export const RulesUpdateRequestMatchersList =
+const RulesUpdateRequestMatchersList =
   RulesCreateRequestMatchersList as any as S.Schema<RulesUpdateRequestMatchersList>;
 
 export type RulesUpdateRequestSource = "api" | "wrangler";
-export const RulesUpdateRequestSource = S.String;
+const RulesUpdateRequestSource = S.String;
 
 export interface UpdateRuleRequest {
   /** Identifier. */
@@ -1877,7 +1814,7 @@ export interface UpdateRuleRequest {
   /** Who manages the rule. `api` covers dashboard, generic API, and Terraform; `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults to `api` when omitted on write. */
   source?: RulesUpdateRequestSource | (string & {});
 }
-export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleIdentifier: S.String.pipe(T.Label("rule_identifier")),
@@ -1900,10 +1837,10 @@ export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRuleRequest" }) as any as S.Schema<UpdateRuleRequest>;
 
 export type RulesUpdateResponseActionsItemType = "drop" | "forward" | "worker";
-export const RulesUpdateResponseActionsItemType = S.String;
+const RulesUpdateResponseActionsItemType = S.String;
 
 export type RulesUpdateResponseActionsItemValueList = Array<string>;
-export const RulesUpdateResponseActionsItemValueList =
+const RulesUpdateResponseActionsItemValueList =
   AccountRulesListResultItemActionsItemValueList as any as S.Schema<RulesUpdateResponseActionsItemValueList>;
 
 export interface RulesUpdateResponseActionsItem {
@@ -1912,7 +1849,7 @@ export interface RulesUpdateResponseActionsItem {
   /** List of values for the action. Currently limited to a single value. */
   value?: RulesUpdateResponseActionsItemValueList | null;
 }
-export const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: RulesUpdateResponseActionsItemType,
     value: S.optional(S.NullOr(RulesUpdateResponseActionsItemValueList)),
@@ -1922,16 +1859,12 @@ export const RulesUpdateResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateResponseActionsItem>;
 
 export type RulesUpdateResponseActionsList = Array<RulesUpdateResponseActionsItem>;
-export const RulesUpdateResponseActionsList = /*@__PURE__*/ S.Array(
+const RulesUpdateResponseActionsList = /*@__PURE__*/ S.Array(
   RulesUpdateResponseActionsItem,
 ) as any as S.Schema<RulesUpdateResponseActionsList>;
 
 export type RulesUpdateResponseMatchersItemType = "all" | "literal";
-export const RulesUpdateResponseMatchersItemType = S.String;
-
 export type RulesUpdateResponseMatchersItemField = "to";
-export const RulesUpdateResponseMatchersItemField = S.String;
-
 export interface RulesUpdateResponseMatchersItem {
   /** Type of matcher. */
   type: RulesUpdateResponseMatchersItemType;
@@ -1940,15 +1873,12 @@ export interface RulesUpdateResponseMatchersItem {
   /** Value for matcher. */
   value?: string | null;
 }
-export const RulesUpdateResponseMatchersItem =
-  AccountRulesListResultItemMatchersItem as any as S.Schema<RulesUpdateResponseMatchersItem>;
-
 export type RulesUpdateResponseMatchersList = Array<RulesUpdateResponseMatchersItem>;
-export const RulesUpdateResponseMatchersList =
+const RulesUpdateResponseMatchersList =
   AccountRulesListResultItemMatchersList as any as S.Schema<RulesUpdateResponseMatchersList>;
 
 export type RulesUpdateResponseSource = "api" | "wrangler";
-export const RulesUpdateResponseSource = S.String;
+const RulesUpdateResponseSource = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRuleResponse {
@@ -1969,7 +1899,7 @@ export interface UpdateRuleResponse {
   /** Routing rule tag. (Deprecated, replaced by routing rule identifier) */
   tag?: string | null;
 }
-export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     actions: S.optional(S.NullOr(RulesUpdateResponseActionsList)),

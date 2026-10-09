@@ -57,7 +57,7 @@ export interface GetSmartRoutingRequest {
   /** Specifies the zone associated with the API call. */
   zoneId: string;
 }
-export const GetSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -66,7 +66,7 @@ export const GetSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSmartRoutingRequest" }) as any as S.Schema<GetSmartRoutingRequest>;
 
 export type SmartRoutingGetResponseValue = "on" | "off";
-export const SmartRoutingGetResponseValue = S.String;
+const SmartRoutingGetResponseValue = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSmartRoutingResponse {
@@ -79,7 +79,7 @@ export interface GetSmartRoutingResponse {
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
-export const GetSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
@@ -92,7 +92,7 @@ export interface GetTieredCachingRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -101,10 +101,10 @@ export const GetTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTieredCachingRequest" }) as any as S.Schema<GetTieredCachingRequest>;
 
 export type TieredCachingGetResponseId = "tiered_caching";
-export const TieredCachingGetResponseId = S.String;
+const TieredCachingGetResponseId = S.String;
 
 export type TieredCachingGetResponseValue = "on" | "off";
-export const TieredCachingGetResponseValue = S.String;
+const TieredCachingGetResponseValue = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTieredCachingResponse {
@@ -117,7 +117,7 @@ export interface GetTieredCachingResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingGetResponseId,
     editable: S.Boolean,
@@ -127,7 +127,7 @@ export const GetTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTieredCachingResponse" }) as any as S.Schema<GetTieredCachingResponse>;
 
 export type SmartRoutingEditRequestValue = "on" | "off";
-export const SmartRoutingEditRequestValue = S.String;
+const SmartRoutingEditRequestValue = S.String;
 
 export interface PatchSmartRoutingRequest {
   /** Specifies the zone associated with the API call. */
@@ -135,7 +135,7 @@ export interface PatchSmartRoutingRequest {
   /** Specifies the enablement value of Argo Smart Routing. */
   value: SmartRoutingEditRequestValue | (string & {});
 }
-export const PatchSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: SmartRoutingEditRequestValue,
@@ -145,7 +145,7 @@ export const PatchSmartRoutingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSmartRoutingRequest" }) as any as S.Schema<PatchSmartRoutingRequest>;
 
 export type SmartRoutingEditResponseValue = "on" | "off";
-export const SmartRoutingEditResponseValue = S.String;
+const SmartRoutingEditResponseValue = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSmartRoutingResponse {
@@ -158,7 +158,7 @@ export interface PatchSmartRoutingResponse {
   /** Specifies the time when the setting was last modified. */
   modifiedOn?: string | null;
 }
-export const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     editable: S.Boolean,
@@ -170,7 +170,7 @@ export const PatchSmartRoutingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchSmartRoutingResponse>;
 
 export type TieredCachingEditRequestValue = "on" | "off";
-export const TieredCachingEditRequestValue = S.String;
+const TieredCachingEditRequestValue = S.String;
 
 export interface PatchTieredCachingRequest {
   /** Identifier. */
@@ -178,7 +178,7 @@ export interface PatchTieredCachingRequest {
   /** Enables Tiered Caching. */
   value: TieredCachingEditRequestValue | (string & {});
 }
-export const PatchTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: TieredCachingEditRequestValue,
@@ -190,10 +190,10 @@ export const PatchTieredCachingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchTieredCachingRequest>;
 
 export type TieredCachingEditResponseId = "tiered_caching";
-export const TieredCachingEditResponseId = S.String;
+const TieredCachingEditResponseId = S.String;
 
 export type TieredCachingEditResponseValue = "on" | "off";
-export const TieredCachingEditResponseValue = S.String;
+const TieredCachingEditResponseValue = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchTieredCachingResponse {
@@ -206,7 +206,7 @@ export interface PatchTieredCachingResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-export const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchTieredCachingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: TieredCachingEditResponseId,
     editable: S.Boolean,

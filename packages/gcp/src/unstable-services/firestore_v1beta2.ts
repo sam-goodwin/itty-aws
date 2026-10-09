@@ -66,24 +66,24 @@ export type GoogleFirestoreAdminV1beta2IndexStateEnum =
   | "CREATING"
   | "READY"
   | "NEEDS_REPAIR";
-export const GoogleFirestoreAdminV1beta2IndexStateEnum = S.String;
+const GoogleFirestoreAdminV1beta2IndexStateEnum = S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexQueryScopeEnum =
   | "QUERY_SCOPE_UNSPECIFIED"
   | "COLLECTION"
   | "COLLECTION_GROUP";
-export const GoogleFirestoreAdminV1beta2IndexQueryScopeEnum = S.String;
+const GoogleFirestoreAdminV1beta2IndexQueryScopeEnum = S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
   | "DESCENDING";
-export const GoogleFirestoreAdminV1beta2IndexFieldOrderEnum = S.String;
+const GoogleFirestoreAdminV1beta2IndexFieldOrderEnum = S.String;
 
 export type GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum =
   | "ARRAY_CONFIG_UNSPECIFIED"
   | "CONTAINS";
-export const GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum = S.String;
+const GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum = S.String;
 
 /** A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed. */
 export interface GoogleFirestoreAdminV1beta2IndexField {
@@ -94,7 +94,7 @@ export interface GoogleFirestoreAdminV1beta2IndexField {
   /** Can be __name__. For single field indexes, this must match the name of the field or may be omitted. */
   fieldPath?: string;
 }
-export const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(GoogleFirestoreAdminV1beta2IndexFieldOrderEnum),
     arrayConfig: S.optional(GoogleFirestoreAdminV1beta2IndexFieldArrayConfigEnum),
@@ -106,7 +106,7 @@ export const GoogleFirestoreAdminV1beta2IndexField = /*@__PURE__*/ S.suspend(() 
 
 export type GoogleFirestoreAdminV1beta2IndexFieldList =
   Array<GoogleFirestoreAdminV1beta2IndexField>;
-export const GoogleFirestoreAdminV1beta2IndexFieldList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1beta2IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexFieldList>;
 
@@ -121,7 +121,7 @@ export interface GoogleFirestoreAdminV1beta2Index {
   /** The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field. */
   fields?: GoogleFirestoreAdminV1beta2IndexFieldList;
 }
-export const GoogleFirestoreAdminV1beta2Index = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(GoogleFirestoreAdminV1beta2IndexStateEnum),
     name: S.optional(S.String),
@@ -138,7 +138,7 @@ export interface CreateProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta2Index;
 }
-export const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta2Index.pipe(T.HttpBody())),
@@ -154,15 +154,10 @@ export const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__
 }) as any as S.Schema<CreateProjectsDatabasesCollectionGroupsIndexesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -173,7 +168,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -194,7 +189,7 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -210,7 +205,7 @@ export interface DeleteProjectsDatabasesCollectionGroupsIndexesRequest {
   /** A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -226,12 +221,12 @@ export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The request for FirestoreAdmin.ExportDocuments. */
 export interface GoogleFirestoreAdminV1beta2ExportDocumentsRequest {
@@ -240,7 +235,7 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsRequest {
   /** The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. */
   outputUriPrefix?: string;
 }
-export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     outputUriPrefix: S.optional(S.String),
@@ -255,7 +250,7 @@ export interface ExportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta2ExportDocumentsRequest;
 }
-export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta2ExportDocumentsRequest.pipe(T.HttpBody())),
@@ -274,7 +269,7 @@ export interface GetProjectsDatabasesCollectionGroupsFieldsRequest {
   /** A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -285,7 +280,7 @@ export const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<GetProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2IndexList = Array<GoogleFirestoreAdminV1beta2Index>;
-export const GoogleFirestoreAdminV1beta2IndexList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1beta2IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2IndexList>;
 
@@ -300,7 +295,7 @@ export interface GoogleFirestoreAdminV1beta2IndexConfig {
   /** Output only When true, the `Field`'s index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field`, at which point `uses_ancestor_config` will be `true` and `reverting` will be `false`. */
   reverting?: boolean;
 }
-export const GoogleFirestoreAdminV1beta2IndexConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2IndexConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexes: S.optional(GoogleFirestoreAdminV1beta2IndexList),
     ancestorField: S.optional(S.String),
@@ -318,7 +313,7 @@ export interface GoogleFirestoreAdminV1beta2Field {
   /** The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes. */
   indexConfig?: GoogleFirestoreAdminV1beta2IndexConfig;
 }
-export const GoogleFirestoreAdminV1beta2Field = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     indexConfig: S.optional(GoogleFirestoreAdminV1beta2IndexConfig),
@@ -331,7 +326,7 @@ export interface GetProjectsDatabasesCollectionGroupsIndexesRequest {
   /** A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -348,7 +343,7 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsRequest {
   /** Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix. */
   inputUriPrefix?: string;
 }
-export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     inputUriPrefix: S.optional(S.String),
@@ -363,7 +358,7 @@ export interface ImportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta2ImportDocumentsRequest;
 }
-export const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1beta2ImportDocumentsRequest.pipe(T.HttpBody())),
@@ -388,7 +383,7 @@ export interface ListProjectsDatabasesCollectionGroupsFieldsRequest {
   /** The number of results to return. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -406,7 +401,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1beta2FieldList = Array<GoogleFirestoreAdminV1beta2Field>;
-export const GoogleFirestoreAdminV1beta2FieldList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1beta2FieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1beta2Field,
 ) as any as S.Schema<GoogleFirestoreAdminV1beta2FieldList>;
 
@@ -417,7 +412,7 @@ export interface GoogleFirestoreAdminV1beta2ListFieldsResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
-export const GoogleFirestoreAdminV1beta2ListFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2ListFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleFirestoreAdminV1beta2FieldList),
     nextPageToken: S.optional(S.String),
@@ -436,7 +431,7 @@ export interface ListProjectsDatabasesCollectionGroupsIndexesRequest {
   /** The filter to apply to list results. */
   filter?: string;
 }
-export const ListProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -460,7 +455,7 @@ export interface GoogleFirestoreAdminV1beta2ListIndexesResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
-export const GoogleFirestoreAdminV1beta2ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1beta2ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexes: S.optional(GoogleFirestoreAdminV1beta2IndexList),
     nextPageToken: S.optional(S.String),
@@ -477,7 +472,7 @@ export interface PatchProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1beta2Field;
 }
-export const PatchProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

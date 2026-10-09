@@ -11,14 +11,14 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateMonitorRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMonitorRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateMonitorRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateMonitorRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorPropertiesInputMonitoringStatus = "Enabled" | "Disabled";
-export const MonitorPropertiesInputMonitoringStatus = S.String;
+const MonitorPropertiesInputMonitoringStatus = S.String;
 
 /** Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well. */
 export interface DatadogOrganizationProperties {
@@ -43,7 +43,7 @@ export interface DatadogOrganizationProperties {
   /** The configuration which describes the state of resource collection. This collects configuration information for all resources in a subscription. */
   resourceCollection?: boolean;
 }
-export const DatadogOrganizationProperties = /*@__PURE__*/ S.suspend(() =>
+const DatadogOrganizationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     id: S.optional(S.String),
@@ -69,7 +69,7 @@ export interface UserInfo {
   /** Phone number of the user used by Datadog for contacting them if needed */
   phoneNumber?: string;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+const UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     emailAddress: S.optional(S.String),
@@ -86,7 +86,7 @@ export interface MonitorPropertiesInput {
   /** Includes name, email and optionally, phone number. User Information can't be null. */
   userInfo?: UserInfo;
 }
-export const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringStatus: S.optional(MonitorPropertiesInputMonitoringStatus),
     datadogOrganizationProperties: S.optional(DatadogOrganizationProperties),
@@ -98,7 +98,7 @@ export interface ResourceSku {
   /** Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'. */
   name: string;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -106,13 +106,13 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
 export type ManagedIdentityTypes = "SystemAssigned" | "UserAssigned";
-export const ManagedIdentityTypes = S.String;
+const ManagedIdentityTypes = S.String;
 
 export interface IdentityPropertiesInput {
   /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
   type?: ManagedIdentityTypes | (string & {});
 }
-export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagedIdentityTypes),
   }),
@@ -134,7 +134,7 @@ export interface CreateMonitorRequest {
   sku?: ResourceSku;
   identity?: IdentityPropertiesInput;
 }
-export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -156,11 +156,11 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -177,7 +177,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -190,7 +190,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMonitorResponseTagsMap =
+const CreateMonitorResponseTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<CreateMonitorResponseTagsMap>;
 
 export type ProvisioningState =
@@ -203,11 +203,11 @@ export type ProvisioningState =
   | "Canceled"
   | "Deleted"
   | "NotSpecified";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorPropertiesMonitoringStatus = "Enabled" | "Disabled";
-export const MonitorPropertiesMonitoringStatus = S.String;
+const MonitorPropertiesMonitoringStatus = S.String;
 
 /** Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state. */
 export type MarketplaceSubscriptionStatus =
@@ -215,10 +215,10 @@ export type MarketplaceSubscriptionStatus =
   | "Active"
   | "Suspended"
   | "Unsubscribed";
-export const MarketplaceSubscriptionStatus = S.String;
+const MarketplaceSubscriptionStatus = S.String;
 
 export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
-export const LiftrResourceCategories = S.String;
+const LiftrResourceCategories = S.String;
 
 /** Properties specific to the monitor resource. */
 export interface MonitorProperties {
@@ -235,7 +235,7 @@ export interface MonitorProperties {
   /** The priority of the resource. */
   liftrResourcePreference?: number;
 }
-export const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     monitoringStatus: S.optional(MonitorPropertiesMonitoringStatus),
@@ -255,7 +255,7 @@ export interface IdentityProperties {
   /** Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'. */
   type?: ManagedIdentityTypes;
 }
-export const IdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const IdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -281,7 +281,7 @@ export interface CreateMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -303,7 +303,7 @@ export interface DeleteMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -319,7 +319,7 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMonitorRequest" }) as any as S.Schema<DeleteMonitorRequest>;
 
 export interface DeleteMonitorResponse {}
-export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteMonitorResponse",
 }) as any as S.Schema<DeleteMonitorResponse>;
 
@@ -333,7 +333,7 @@ export interface DeleteMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -352,9 +352,7 @@ export const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoredSubscriptionRequest>;
 
 export interface DeleteMonitoredSubscriptionResponse {}
-export const DeleteMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteMonitoredSubscriptionResponse",
 }) as any as S.Schema<DeleteMonitoredSubscriptionResponse>;
 
@@ -366,7 +364,7 @@ export interface GetBillingInfoRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const GetBillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -394,7 +392,7 @@ export interface MarketplaceSaaSInfo {
   /** Flag specifying if the Marketplace status is subscribed or not. */
   subscribed?: boolean;
 }
-export const MarketplaceSaaSInfo = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSaaSInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplaceSubscriptionId: S.optional(S.String),
     marketplaceName: S.optional(S.String),
@@ -413,7 +411,7 @@ export interface PartnerBillingEntity {
   /** Link to the datadog organization page */
   partnerEntityUri?: string;
 }
-export const PartnerBillingEntity = /*@__PURE__*/ S.suspend(() =>
+const PartnerBillingEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -428,7 +426,7 @@ export interface BillingInfoResponse {
   /** Partner Billing Entity details: Organization Info */
   partnerBillingEntity?: PartnerBillingEntity;
 }
-export const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplaceSaasInfo: S.optional(MarketplaceSaaSInfo),
     partnerBillingEntity: S.optional(PartnerBillingEntity),
@@ -441,7 +439,7 @@ export interface GetCreationSupportedRequest {
   /** Datadog Organization Id */
   datadogOrganizationId: string;
 }
-export const GetCreationSupportedRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreationSupportedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     datadogOrganizationId: S.String.pipe(T.Query()),
@@ -464,7 +462,7 @@ export interface CreateResourceSupportedProperties {
   /** Indicates if selected subscription supports Datadog resource creation, if not it is already being monitored for the selected organization via multi subscription feature. */
   creationSupported?: boolean;
 }
-export const CreateResourceSupportedProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceSupportedProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     creationSupported: S.optional(S.Boolean),
@@ -478,7 +476,7 @@ export interface CreateResourceSupportedResponse {
   /** Represents the properties of the resource. */
   properties?: CreateResourceSupportedProperties;
 }
-export const CreateResourceSupportedResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceSupportedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(CreateResourceSupportedProperties),
   }),
@@ -494,7 +492,7 @@ export interface GetMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -511,9 +509,6 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const GetMonitorResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<GetMonitorResponseTagsMap>;
-
 export interface GetMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -532,7 +527,7 @@ export interface GetMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
+const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
 
 export interface GetMonitorDefaultKeyRequest {
   /** The ID of the target subscription. */
@@ -542,7 +537,7 @@ export interface GetMonitorDefaultKeyRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const GetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -569,7 +564,7 @@ export interface DatadogApiKey {
   /** The time of creation of the API key. */
   created?: string;
 }
-export const DatadogApiKey = /*@__PURE__*/ S.suspend(() =>
+const DatadogApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     name: S.optional(S.String),
@@ -588,7 +583,7 @@ export interface GetMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -608,15 +603,15 @@ export const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation for the patch on the resource. */
 export type Operation = "AddBegin" | "AddComplete" | "DeleteBegin" | "DeleteComplete" | "Active";
-export const Operation = S.String;
+const Operation = S.String;
 
 /** The state of monitoring. */
 export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
-export const Status = S.String;
+const Status = S.String;
 
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
 export type TagAction = "Include" | "Exclude";
-export const TagAction = S.String;
+const TagAction = S.String;
 
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
 export interface FilteringTag {
@@ -627,7 +622,7 @@ export interface FilteringTag {
   /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
   action?: TagAction | (string & {});
 }
-export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
+const FilteringTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -637,7 +632,7 @@ export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type LogRulesFilteringTagsList = Array<FilteringTag>;
-export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
+const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<LogRulesFilteringTagsList>;
 
@@ -652,7 +647,7 @@ export interface LogRules {
   /** List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: LogRulesFilteringTagsList;
 }
-export const LogRules = /*@__PURE__*/ S.suspend(() =>
+const LogRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendAadLogs: S.optional(S.Boolean),
     sendSubscriptionLogs: S.optional(S.Boolean),
@@ -663,7 +658,7 @@ export const LogRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type MetricRulesFilteringTagsList = Array<FilteringTag>;
-export const MetricRulesFilteringTagsList =
+const MetricRulesFilteringTagsList =
   LogRulesFilteringTagsList as any as S.Schema<MetricRulesFilteringTagsList>;
 
 /** Set of rules for sending metrics for the Monitor resource. */
@@ -671,7 +666,7 @@ export interface MetricRules {
   /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: MetricRulesFilteringTagsList;
 }
-export const MetricRules = /*@__PURE__*/ S.suspend(() =>
+const MetricRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filteringTags: S.optional(MetricRulesFilteringTagsList),
   }),
@@ -679,7 +674,7 @@ export const MetricRules = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type AgentRulesFilteringTagsList = Array<FilteringTag>;
-export const AgentRulesFilteringTagsList =
+const AgentRulesFilteringTagsList =
   LogRulesFilteringTagsList as any as S.Schema<AgentRulesFilteringTagsList>;
 
 /** Set of rules for managing agents for the Monitor resource. */
@@ -689,7 +684,7 @@ export interface AgentRules {
   /** List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: AgentRulesFilteringTagsList;
 }
-export const AgentRules = /*@__PURE__*/ S.suspend(() =>
+const AgentRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableAgentMonitoring: S.optional(S.Boolean),
     filteringTags: S.optional(AgentRulesFilteringTagsList),
@@ -710,7 +705,7 @@ export interface MonitoringTagRulesProperties {
   /** Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent. */
   customMetrics?: boolean;
 }
-export const MonitoringTagRulesProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitoringTagRulesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     logRules: S.optional(LogRules),
@@ -734,7 +729,7 @@ export interface MonitoredSubscription {
   /** Definition of the properties for a TagRules resource. */
   tagRules?: MonitoringTagRulesProperties;
 }
-export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     status: S.optional(Status),
@@ -745,7 +740,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList = Array<MonitoredSubscription>;
-export const SubscriptionListMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
+const SubscriptionListMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
   MonitoredSubscription,
 ) as any as S.Schema<SubscriptionListMonitoredSubscriptionListList>;
 
@@ -756,7 +751,7 @@ export interface SubscriptionList {
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListMonitoredSubscriptionListList;
 }
-export const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(Operation),
     monitoredSubscriptionList: S.optional(SubscriptionListMonitoredSubscriptionListList),
@@ -775,7 +770,7 @@ export interface GetMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const GetMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -797,7 +792,7 @@ export interface GetSingleSignOnConfigurationRequest {
   /** Configuration name */
   configurationName: string;
 }
-export const GetSingleSignOnConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSingleSignOnConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -817,7 +812,7 @@ export const GetSingleSignOnConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Various states of the SSO resource */
 export type SingleSignOnStates = "Initial" | "Enable" | "Disable" | "Existing";
-export const SingleSignOnStates = S.String;
+const SingleSignOnStates = S.String;
 
 export interface DatadogSingleSignOnProperties {
   provisioningState?: ProvisioningState;
@@ -828,7 +823,7 @@ export interface DatadogSingleSignOnProperties {
   /** The login URL specific to this Datadog Organization. */
   singleSignOnUrl?: string;
 }
-export const DatadogSingleSignOnProperties = /*@__PURE__*/ S.suspend(() =>
+const DatadogSingleSignOnProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     singleSignOnState: S.optional(SingleSignOnStates),
@@ -850,7 +845,7 @@ export interface GetSingleSignOnConfigurationResponse {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
-export const GetSingleSignOnConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSingleSignOnConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -872,7 +867,7 @@ export interface GetTagRuleRequest {
   /** Rule set name */
   ruleSetName: string;
 }
-export const GetTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -900,7 +895,7 @@ export interface GetTagRuleResponse {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
-export const GetTagRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -916,7 +911,7 @@ export interface ListCreationSupportedRequest {
   /** Datadog Organization Id */
   datadogOrganizationId: string;
 }
-export const ListCreationSupportedRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCreationSupportedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     datadogOrganizationId: S.String.pipe(T.Query()),
@@ -934,7 +929,7 @@ export const ListCreationSupportedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The CreateResourceSupportedResponse items on this page */
 export type CreateResourceSupportedResponseListValueList = Array<CreateResourceSupportedResponse>;
-export const CreateResourceSupportedResponseListValueList = /*@__PURE__*/ S.Array(
+const CreateResourceSupportedResponseListValueList = /*@__PURE__*/ S.Array(
   CreateResourceSupportedResponse,
 ) as any as S.Schema<CreateResourceSupportedResponseListValueList>;
 
@@ -945,7 +940,7 @@ export interface CreateResourceSupportedResponseList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CreateResourceSupportedResponseList = /*@__PURE__*/ S.suspend(() =>
+const CreateResourceSupportedResponseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CreateResourceSupportedResponseListValueList,
     nextLink: S.optional(S.String),
@@ -958,7 +953,7 @@ export interface ListMarketplaceAgreementsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplaceAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -992,7 +987,7 @@ export interface DatadogAgreementProperties {
   /** If any version of the terms have been accepted, otherwise false. */
   accepted?: boolean;
 }
-export const DatadogAgreementProperties = /*@__PURE__*/ S.suspend(() =>
+const DatadogAgreementProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisher: S.optional(S.String),
     product: S.optional(S.String),
@@ -1013,7 +1008,7 @@ export type DatadogAgreementResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DatadogAgreementResourceSystemDataCreatedByType = S.String;
+const DatadogAgreementResourceSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type DatadogAgreementResourceSystemDataLastModifiedByType =
@@ -1021,7 +1016,7 @@ export type DatadogAgreementResourceSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const DatadogAgreementResourceSystemDataLastModifiedByType = S.String;
+const DatadogAgreementResourceSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DatadogAgreementResourceSystemData {
@@ -1038,7 +1033,7 @@ export interface DatadogAgreementResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const DatadogAgreementResourceSystemData = /*@__PURE__*/ S.suspend(() =>
+const DatadogAgreementResourceSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(DatadogAgreementResourceSystemDataCreatedByType),
@@ -1063,7 +1058,7 @@ export interface DatadogAgreementResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: DatadogAgreementResourceSystemData;
 }
-export const DatadogAgreementResource = /*@__PURE__*/ S.suspend(() =>
+const DatadogAgreementResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1075,7 +1070,7 @@ export const DatadogAgreementResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogAgreementResource items on this page */
 export type DatadogAgreementResourceListResponseValueList = Array<DatadogAgreementResource>;
-export const DatadogAgreementResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const DatadogAgreementResourceListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogAgreementResource,
 ) as any as S.Schema<DatadogAgreementResourceListResponseValueList>;
 
@@ -1086,7 +1081,7 @@ export interface DatadogAgreementResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatadogAgreementResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatadogAgreementResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatadogAgreementResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1103,7 +1098,7 @@ export interface ListMonitorApiKeysRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitorApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1122,7 +1117,7 @@ export const ListMonitorApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogApiKey items on this page */
 export type DatadogApiKeyListResponseValueList = Array<DatadogApiKey>;
-export const DatadogApiKeyListResponseValueList = /*@__PURE__*/ S.Array(
+const DatadogApiKeyListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogApiKey,
 ) as any as S.Schema<DatadogApiKeyListResponseValueList>;
 
@@ -1133,7 +1128,7 @@ export interface DatadogApiKeyListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatadogApiKeyListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatadogApiKeyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatadogApiKeyListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1148,7 +1143,7 @@ export interface ListMonitorByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1166,9 +1161,6 @@ export const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type DatadogMonitorResourceTagsMap = { [key: string]: string | undefined };
-export const DatadogMonitorResourceTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<DatadogMonitorResourceTagsMap>;
-
 /** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
 export interface DatadogMonitorResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1188,12 +1180,11 @@ export interface DatadogMonitorResource {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const DatadogMonitorResource =
-  CreateMonitorResponse as any as S.Schema<DatadogMonitorResource>;
+const DatadogMonitorResource = CreateMonitorResponse as any as S.Schema<DatadogMonitorResource>;
 
 /** The DatadogMonitorResource items on this page */
 export type DatadogMonitorResourceListResponseValueList = Array<DatadogMonitorResource>;
-export const DatadogMonitorResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const DatadogMonitorResourceListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogMonitorResource,
 ) as any as S.Schema<DatadogMonitorResourceListResponseValueList>;
 
@@ -1204,7 +1195,7 @@ export interface DatadogMonitorResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatadogMonitorResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatadogMonitorResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatadogMonitorResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1221,7 +1212,7 @@ export interface ListMonitoredSubscriptionsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1251,12 +1242,12 @@ export interface MonitoredSubscriptionProperties {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const MonitoredSubscriptionProperties =
+const MonitoredSubscriptionProperties =
   GetMonitoredSubscriptionResponse as any as S.Schema<MonitoredSubscriptionProperties>;
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList = Array<MonitoredSubscriptionProperties>;
-export const MonitoredSubscriptionPropertiesListValueList = /*@__PURE__*/ S.Array(
+const MonitoredSubscriptionPropertiesListValueList = /*@__PURE__*/ S.Array(
   MonitoredSubscriptionProperties,
 ) as any as S.Schema<MonitoredSubscriptionPropertiesListValueList>;
 
@@ -1267,7 +1258,7 @@ export interface MonitoredSubscriptionPropertiesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoredSubscriptionPropertiesList = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscriptionPropertiesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoredSubscriptionPropertiesListValueList,
     nextLink: S.optional(S.String),
@@ -1284,7 +1275,7 @@ export interface ListMonitorHostsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitorHostsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorHostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1301,13 +1292,13 @@ export const ListMonitorHostsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The aliases for the host installed via the Datadog agent. */
 export type DatadogHostAliasesList = Array<string>;
-export const DatadogHostAliasesList = /*@__PURE__*/ S.Array(
+const DatadogHostAliasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DatadogHostAliasesList>;
 
 /** The Datadog integrations reporting metrics for the host. */
 export type DatadogHostAppsList = Array<string>;
-export const DatadogHostAppsList = DatadogHostAliasesList as any as S.Schema<DatadogHostAppsList>;
+const DatadogHostAppsList = DatadogHostAliasesList as any as S.Schema<DatadogHostAppsList>;
 
 export interface DatadogInstallMethod {
   /** The tool. */
@@ -1317,7 +1308,7 @@ export interface DatadogInstallMethod {
   /** The installer version. */
   installerVersion?: string;
 }
-export const DatadogInstallMethod = /*@__PURE__*/ S.suspend(() =>
+const DatadogInstallMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(S.String),
     toolVersion: S.optional(S.String),
@@ -1329,7 +1320,7 @@ export interface DatadogLogsAgent {
   /** The transport. */
   transport?: string;
 }
-export const DatadogLogsAgent = /*@__PURE__*/ S.suspend(() =>
+const DatadogLogsAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transport: S.optional(S.String),
   }),
@@ -1341,7 +1332,7 @@ export interface DatadogHostMetadata {
   installMethod?: DatadogInstallMethod;
   logsAgent?: DatadogLogsAgent;
 }
-export const DatadogHostMetadata = /*@__PURE__*/ S.suspend(() =>
+const DatadogHostMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentVersion: S.optional(S.String),
     installMethod: S.optional(DatadogInstallMethod),
@@ -1358,7 +1349,7 @@ export interface DatadogHost {
   apps?: DatadogHostAppsList;
   meta?: DatadogHostMetadata;
 }
-export const DatadogHost = /*@__PURE__*/ S.suspend(() =>
+const DatadogHost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     aliases: S.optional(DatadogHostAliasesList),
@@ -1369,7 +1360,7 @@ export const DatadogHost = /*@__PURE__*/ S.suspend(() =>
 
 /** The DatadogHost items on this page */
 export type DatadogHostListResponseValueList = Array<DatadogHost>;
-export const DatadogHostListResponseValueList = /*@__PURE__*/ S.Array(
+const DatadogHostListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogHost,
 ) as any as S.Schema<DatadogHostListResponseValueList>;
 
@@ -1380,7 +1371,7 @@ export interface DatadogHostListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatadogHostListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatadogHostListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatadogHostListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1395,7 +1386,7 @@ export interface ListMonitorLinkedResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitorLinkedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorLinkedResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1419,7 +1410,7 @@ export interface LinkedResource {
   /** The location of the linked resource. */
   location?: string;
 }
-export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
+const LinkedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -1428,7 +1419,7 @@ export const LinkedResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The LinkedResource items on this page */
 export type LinkedResourceListResponseValueList = Array<LinkedResource>;
-export const LinkedResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const LinkedResourceListResponseValueList = /*@__PURE__*/ S.Array(
   LinkedResource,
 ) as any as S.Schema<LinkedResourceListResponseValueList>;
 
@@ -1439,7 +1430,7 @@ export interface LinkedResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const LinkedResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const LinkedResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: LinkedResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1456,7 +1447,7 @@ export interface ListMonitorMonitoredResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitorMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1486,7 +1477,7 @@ export interface MonitoredResource {
   /** Reason for why the resource is sending logs (or why it is not sending). */
   reasonForLogsStatus?: string;
 }
-export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     sendingMetrics: S.optional(S.Boolean),
@@ -1498,7 +1489,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredResource items on this page */
 export type MonitoredResourceListResponseValueList = Array<MonitoredResource>;
-export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
 
@@ -1509,7 +1500,7 @@ export interface MonitoredResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoredResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoredResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1522,7 +1513,7 @@ export interface ListMonitorsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1536,7 +1527,7 @@ export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMonitorsRequest" }) as any as S.Schema<ListMonitorsRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1558,7 +1549,7 @@ export interface OperationDisplay {
   /** Description of the operation, e.g., 'Write monitors'. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1576,7 +1567,7 @@ export interface OperationResult {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -1586,7 +1577,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationListResultValueList = Array<OperationResult>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1597,7 +1588,7 @@ export interface OperationListResult {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -1612,7 +1603,7 @@ export interface ListSingleSignOnConfigurationsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListSingleSignOnConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSingleSignOnConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1641,12 +1632,12 @@ export interface DatadogSingleSignOnResource {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
-export const DatadogSingleSignOnResource =
+const DatadogSingleSignOnResource =
   GetSingleSignOnConfigurationResponse as any as S.Schema<DatadogSingleSignOnResource>;
 
 /** The DatadogSingleSignOnResource items on this page */
 export type DatadogSingleSignOnResourceListResponseValueList = Array<DatadogSingleSignOnResource>;
-export const DatadogSingleSignOnResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const DatadogSingleSignOnResourceListResponseValueList = /*@__PURE__*/ S.Array(
   DatadogSingleSignOnResource,
 ) as any as S.Schema<DatadogSingleSignOnResourceListResponseValueList>;
 
@@ -1657,7 +1648,7 @@ export interface DatadogSingleSignOnResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DatadogSingleSignOnResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const DatadogSingleSignOnResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DatadogSingleSignOnResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1674,7 +1665,7 @@ export interface ListTagRulesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListTagRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1702,11 +1693,11 @@ export interface MonitoringTagRules {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
-export const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
+const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
 export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
-export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
+const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;
 
@@ -1717,7 +1708,7 @@ export interface MonitoringTagRulesListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoringTagRulesListResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitoringTagRulesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoringTagRulesListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1732,7 +1723,7 @@ export interface MarketplaceAgreementsCreateOrUpdateRequest {
   /** Represents the properties of the resource. */
   properties?: DatadogAgreementProperties;
 }
-export const MarketplaceAgreementsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceAgreementsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     properties: S.optional(DatadogAgreementProperties),
@@ -1761,7 +1752,7 @@ export interface OrganizationsResubscribeRequest {
   /** Newly selected Azure resource group in which the new Marketplace subscription will be created for Resubscribe */
   resourceGroup?: string;
 }
-export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1783,7 +1774,7 @@ export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type OrganizationsResubscribeResponseTagsMap = { [key: string]: string | undefined };
-export const OrganizationsResubscribeResponseTagsMap =
+const OrganizationsResubscribeResponseTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<OrganizationsResubscribeResponseTagsMap>;
 
 export interface OrganizationsResubscribeResponse {
@@ -1804,7 +1795,7 @@ export interface OrganizationsResubscribeResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1828,7 +1819,7 @@ export interface RefreshMonitorSetPasswordLinkRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const RefreshMonitorSetPasswordLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshMonitorSetPasswordLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1848,7 +1839,7 @@ export const RefreshMonitorSetPasswordLinkRequest = /*@__PURE__*/ S.suspend(() =
 export interface DatadogSetPasswordLink {
   setPasswordLink?: string | Redacted.Redacted<string>;
 }
-export const DatadogSetPasswordLink = /*@__PURE__*/ S.suspend(() =>
+const DatadogSetPasswordLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setPasswordLink: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -1870,7 +1861,7 @@ export interface SetMonitorDefaultKeyRequest {
   /** The time of creation of the API key. */
   created?: string;
 }
-export const SetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1892,7 +1883,7 @@ export const SetMonitorDefaultKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetMonitorDefaultKeyRequest>;
 
 export interface SetMonitorDefaultKeyResponse {}
-export const SetMonitorDefaultKeyResponse =
+const SetMonitorDefaultKeyResponse =
   DeleteMonitorResponse as any as S.Schema<SetMonitorDefaultKeyResponse>;
 
 export interface DatadogSingleSignOnPropertiesInput {
@@ -1901,7 +1892,7 @@ export interface DatadogSingleSignOnPropertiesInput {
   /** The Id of the Enterprise App used for Single sign-on. */
   enterpriseAppId?: string;
 }
-export const DatadogSingleSignOnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DatadogSingleSignOnPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     singleSignOnState: S.optional(SingleSignOnStates),
     enterpriseAppId: S.optional(S.String),
@@ -1921,7 +1912,7 @@ export interface SingleSignOnConfigurationsCreateOrUpdateRequest {
   configurationName: string;
   properties?: DatadogSingleSignOnPropertiesInput;
 }
-export const SingleSignOnConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SingleSignOnConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1951,7 +1942,7 @@ export interface SingleSignOnConfigurationsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties?: DatadogSingleSignOnProperties;
 }
-export const SingleSignOnConfigurationsCreateOrUpdateResponse =
+const SingleSignOnConfigurationsCreateOrUpdateResponse =
   GetSingleSignOnConfigurationResponse as any as S.Schema<SingleSignOnConfigurationsCreateOrUpdateResponse>;
 
 /** Definition of the properties for a TagRules resource. */
@@ -1967,7 +1958,7 @@ export interface MonitoringTagRulesPropertiesInput {
   /** Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent. */
   customMetrics?: boolean;
 }
-export const MonitoringTagRulesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MonitoringTagRulesPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logRules: S.optional(LogRules),
     metricRules: S.optional(MetricRules),
@@ -1991,7 +1982,7 @@ export interface TagRulesCreateOrUpdateRequest {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesPropertiesInput;
 }
-export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2022,7 +2013,7 @@ export interface TagRulesCreateOrUpdateResponse {
   /** Definition of the properties for a TagRules resource. */
   properties?: MonitoringTagRulesProperties;
 }
-export const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2036,7 +2027,7 @@ export const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitorUpdatePropertiesMonitoringStatus = "Enabled" | "Disabled";
-export const MonitorUpdatePropertiesMonitoringStatus = S.String;
+const MonitorUpdatePropertiesMonitoringStatus = S.String;
 
 /** The set of properties that can be update in a PATCH request to a monitor resource. */
 export interface MonitorUpdateProperties {
@@ -2047,7 +2038,7 @@ export interface MonitorUpdateProperties {
   /** The new resource collection value of the monitor resource. This collects configuration information for all resources in a subscription. */
   resourceCollection?: boolean;
 }
-export const MonitorUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitorUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringStatus: S.optional(MonitorUpdatePropertiesMonitoringStatus),
     cspm: S.optional(S.Boolean),
@@ -2057,7 +2048,7 @@ export const MonitorUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The new tags of the monitor resource. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorRequestTagsMap =
+const UpdateMonitorRequestTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorRequestTagsMap>;
 
 export interface UpdateMonitorRequest {
@@ -2073,7 +2064,7 @@ export interface UpdateMonitorRequest {
   tags?: UpdateMonitorRequestTagsMap;
   sku?: ResourceSku;
 }
-export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2093,9 +2084,6 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorResponseTagsMap>;
-
 export interface UpdateMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2114,8 +2102,7 @@ export interface UpdateMonitorResponse {
   sku?: ResourceSku;
   identity?: IdentityProperties;
 }
-export const UpdateMonitorResponse =
-  CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
+const UpdateMonitorResponse = CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
 
 /** The list of subscriptions and it's monitoring status by current Datadog monitor. */
 export interface MonitoredSubscriptionInput {
@@ -2128,7 +2115,7 @@ export interface MonitoredSubscriptionInput {
   /** Definition of the properties for a TagRules resource. */
   tagRules?: MonitoringTagRulesPropertiesInput;
 }
-export const MonitoredSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     status: S.optional(Status),
@@ -2141,7 +2128,7 @@ export const MonitoredSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListInputMonitoredSubscriptionListList = Array<MonitoredSubscriptionInput>;
-export const SubscriptionListInputMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
+const SubscriptionListInputMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
   MonitoredSubscriptionInput,
 ) as any as S.Schema<SubscriptionListInputMonitoredSubscriptionListList>;
 
@@ -2152,7 +2139,7 @@ export interface SubscriptionListInput {
   /** List of subscriptions and the state of the monitoring. */
   monitoredSubscriptionList?: SubscriptionListInputMonitoredSubscriptionListList;
 }
-export const SubscriptionListInput = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionListInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(Operation),
     monitoredSubscriptionList: S.optional(SubscriptionListInputMonitoredSubscriptionListList),
@@ -2171,7 +2158,7 @@ export interface UpdateMonitoredSubscriptionRequest {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionListInput;
 }
-export const UpdateMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2202,7 +2189,7 @@ export interface UpdateMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionResponse =
+const UpdateMonitoredSubscriptionResponse =
   GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionResponse>;
 
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
@@ -2217,7 +2204,7 @@ export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionListInput;
 }
-export const UpdateMonitoredSubscriptionsCreateorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitoredSubscriptionsCreateorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2248,7 +2235,7 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   /** The request to update subscriptions needed to be monitored by the Datadog monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionsCreateorResponse =
+const UpdateMonitoredSubscriptionsCreateorResponse =
   GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>;
 
 export type CreateMonitorError = AzureOpError;

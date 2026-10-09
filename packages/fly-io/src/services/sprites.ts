@@ -21,7 +21,7 @@ export interface AuthorizeOAuthConnectionRequest {
   /** Optional state value. If omitted, Sprites generates one that ties the callback to the organization. */
   state?: string;
 }
-export const AuthorizeOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String.pipe(T.Label()),
     scopes: S.optional(S.String.pipe(T.Query())),
@@ -40,7 +40,7 @@ export interface OAuthAuthorizeResponse {
   /** State value that must be sent back to the callback. */
   state: string;
 }
-export const OAuthAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
+const OAuthAuthorizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorize_url: S.String,
     state: S.String,
@@ -55,7 +55,7 @@ export interface ChangeFileModeRequest {
   recursive: boolean;
   workingDir: string;
 }
-export const ChangeFileModeRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeFileModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     asRoot: S.Boolean,
@@ -70,7 +70,7 @@ export interface ChmodResult {
   mode: string;
   path: string;
 }
-export const ChmodResult = /*@__PURE__*/ S.suspend(() =>
+const ChmodResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.String,
     path: S.String,
@@ -78,7 +78,7 @@ export const ChmodResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChmodResult" }) as any as S.Schema<ChmodResult>;
 
 export type ChmodResponseAffectedList = Array<ChmodResult>;
-export const ChmodResponseAffectedList = /*@__PURE__*/ S.Array(
+const ChmodResponseAffectedList = /*@__PURE__*/ S.Array(
   ChmodResult,
 ) as any as S.Schema<ChmodResponseAffectedList>;
 
@@ -86,7 +86,7 @@ export interface ChmodResponse {
   affected: ChmodResponseAffectedList;
   count: number;
 }
-export const ChmodResponse = /*@__PURE__*/ S.suspend(() =>
+const ChmodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected: ChmodResponseAffectedList,
     count: S.Number,
@@ -102,7 +102,7 @@ export interface ChangeFileOwnerRequest {
   uid: unknown;
   workingDir: string;
 }
-export const ChangeFileOwnerRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeFileOwnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     asRoot: S.Boolean,
@@ -119,7 +119,7 @@ export interface ChownResult {
   path: string;
   uid: number;
 }
-export const ChownResult = /*@__PURE__*/ S.suspend(() =>
+const ChownResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gid: S.Number,
     path: S.String,
@@ -128,7 +128,7 @@ export const ChownResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChownResult" }) as any as S.Schema<ChownResult>;
 
 export type ChownResponseAffectedList = Array<ChownResult>;
-export const ChownResponseAffectedList = /*@__PURE__*/ S.Array(
+const ChownResponseAffectedList = /*@__PURE__*/ S.Array(
   ChownResult,
 ) as any as S.Schema<ChownResponseAffectedList>;
 
@@ -136,7 +136,7 @@ export interface ChownResponse {
   affected: ChownResponseAffectedList;
   count: number;
 }
-export const ChownResponse = /*@__PURE__*/ S.suspend(() =>
+const ChownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected: ChownResponseAffectedList,
     count: S.Number,
@@ -152,7 +152,7 @@ export interface CopyFileRequest {
   source: string;
   workingDir: string;
 }
-export const CopyFileRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     asRoot: S.Boolean,
@@ -168,7 +168,7 @@ export interface CopyResult {
   dest: string;
   source: string;
 }
-export const CopyResult = /*@__PURE__*/ S.suspend(() =>
+const CopyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dest: S.String,
     source: S.String,
@@ -176,7 +176,7 @@ export const CopyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyResult" }) as any as S.Schema<CopyResult>;
 
 export type CopyResponseCopiedList = Array<CopyResult>;
-export const CopyResponseCopiedList = /*@__PURE__*/ S.Array(
+const CopyResponseCopiedList = /*@__PURE__*/ S.Array(
   CopyResult,
 ) as any as S.Schema<CopyResponseCopiedList>;
 
@@ -185,7 +185,7 @@ export interface CopyResponse {
   count: number;
   totalBytes: number;
 }
-export const CopyResponse = /*@__PURE__*/ S.suspend(() =>
+const CopyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     copied: CopyResponseCopiedList,
     count: S.Number,
@@ -197,7 +197,7 @@ export interface CreateCheckpointRequest {
   name: string;
   comment?: string;
 }
-export const CreateCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -205,24 +205,24 @@ export const CreateCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateCheckpointRequest" }) as any as S.Schema<CreateCheckpointRequest>;
 
 export interface CreateCheckpointResponse {}
-export const CreateCheckpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateCheckpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateCheckpointResponse",
 }) as any as S.Schema<CreateCheckpointResponse>;
 
 /** Provider API paths the connector may call. Supports exact paths and trailing `*` prefix wildcards. */
 export type AccessPolicyAllowedEndpointsList = Array<string>;
-export const AccessPolicyAllowedEndpointsList = /*@__PURE__*/ S.Array(
+const AccessPolicyAllowedEndpointsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccessPolicyAllowedEndpointsList>;
 
 /** Provider API paths the connector may not call. Block rules are checked before allow rules. */
 export type AccessPolicyBlockedEndpointsList = Array<string>;
-export const AccessPolicyBlockedEndpointsList =
+const AccessPolicyBlockedEndpointsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicyBlockedEndpointsList>;
 
 /** Labels the calling sprite must have. All listed labels are required. */
 export type AccessPolicySpriteLabelsList = Array<string>;
-export const AccessPolicySpriteLabelsList =
+const AccessPolicySpriteLabelsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<AccessPolicySpriteLabelsList>;
 
 /** Connector access policy */
@@ -238,7 +238,7 @@ export interface AccessPolicy {
   /** Labels the calling sprite must have. All listed labels are required. */
   sprite_labels?: AccessPolicySpriteLabelsList;
 }
-export const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
+const AccessPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allow_all: S.optional(S.Boolean),
     allowed_endpoints: S.optional(AccessPolicyAllowedEndpointsList),
@@ -258,7 +258,7 @@ export interface CreateOAuthApiKeyConnectionRequest {
   /** API-key provider. */
   provider: string;
 }
-export const CreateOAuthApiKeyConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOAuthApiKeyConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_policy: S.optional(AccessPolicy),
     api_key: S.String.pipe(T.SensitiveValue({})),
@@ -271,11 +271,11 @@ export const CreateOAuthApiKeyConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** How the connector was created. */
 export type ConnectionConnectionType = "oauth" | "api_key" | "provisioned" | "internal";
-export const ConnectionConnectionType = S.String;
+const ConnectionConnectionType = S.String;
 
 /** Provider notes about this connection, derived from its saved settings. Each has a nullable `title` and a `body`; backticks mark inline code. */
 export type ConnectionNotesList = Array<unknown>;
-export const ConnectionNotesList = /*@__PURE__*/ S.Array(
+const ConnectionNotesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConnectionNotesList>;
 
@@ -310,7 +310,7 @@ export interface Connection {
   /** Sprites user ID that created or owns the connector. */
   user_id?: string;
 }
-export const Connection = /*@__PURE__*/ S.suspend(() =>
+const Connection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_policy: S.optional(AccessPolicy),
     connection_type: S.optional(ConnectionConnectionType),
@@ -334,7 +334,7 @@ export interface ConnectionResponse {
   /** Sanitized connector. Secrets and encrypted token fields are never returned. */
   connection: Connection;
 }
-export const ConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connection: Connection,
   }),
@@ -348,7 +348,7 @@ export interface CreateOrganizationTokenRequest {
   /** Optional Sprites invite code */
   invite_code?: string;
 }
-export const CreateOrganizationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -362,7 +362,7 @@ export interface CreateOrganizationTokenResponse {
   /** Sprites bearer token. Send as Authorization: Bearer on subsequent sprite ops. */
   token: string | Redacted.Redacted<string>;
 }
-export const CreateOrganizationTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.SensitiveValue({})),
   }),
@@ -372,14 +372,14 @@ export const CreateOrganizationTokenResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Authentication type (default: sprite) */
 export type UrlSettingsRequestAuth = "sprite" | "public";
-export const UrlSettingsRequestAuth = S.String;
+const UrlSettingsRequestAuth = S.String;
 
 /** URL settings request */
 export interface UrlSettingsRequest {
   /** Authentication type (default: sprite) */
   auth?: UrlSettingsRequestAuth | (string & {});
 }
-export const UrlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UrlSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth: S.optional(UrlSettingsRequestAuth),
   }),
@@ -391,7 +391,7 @@ export interface CreateSpriteRequest {
   /** URL access configuration */
   url_settings?: UrlSettingsRequest;
 }
-export const CreateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     url_settings: S.optional(UrlSettingsRequest),
@@ -400,20 +400,20 @@ export const CreateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels assigned to the sprite. Omitted when empty. */
 export type SpriteResponseLabelsList = Array<string>;
-export const SpriteResponseLabelsList =
+const SpriteResponseLabelsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<SpriteResponseLabelsList>;
 
 /** Runtime status */
 export type SpriteResponseStatus = "cold" | "warm" | "running";
-export const SpriteResponseStatus = S.String;
+const SpriteResponseStatus = S.String;
 
 /** Authentication type */
 export type UrlSettingsAuth = "sprite" | "public";
-export const UrlSettingsAuth = S.String;
+const UrlSettingsAuth = S.String;
 
 /** Who may access a sprite-authenticated URL. */
 export type UrlSettingsPrivateAccess = "admins" | "organization";
-export const UrlSettingsPrivateAccess = S.String;
+const UrlSettingsPrivateAccess = S.String;
 
 /** URL access settings */
 export interface UrlSettings {
@@ -422,7 +422,7 @@ export interface UrlSettings {
   /** Who may access a sprite-authenticated URL. */
   private_access?: UrlSettingsPrivateAccess;
 }
-export const UrlSettings = /*@__PURE__*/ S.suspend(() =>
+const UrlSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth: UrlSettingsAuth,
     private_access: S.optional(UrlSettingsPrivateAccess),
@@ -458,7 +458,7 @@ export interface SpriteResponse {
   /** Version configured for or currently running on the sprite. */
   version?: string | null;
 }
-export const SpriteResponse = /*@__PURE__*/ S.suspend(() =>
+const SpriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     environment_version: S.optional(S.NullOr(S.String)),
@@ -483,7 +483,7 @@ export interface DeleteFileRequest {
   recursive: boolean;
   workingDir: string;
 }
-export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     asRoot: S.Boolean,
@@ -494,14 +494,14 @@ export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteFileRequest" }) as any as S.Schema<DeleteFileRequest>;
 
 export type DeleteResponseDeletedList = Array<string>;
-export const DeleteResponseDeletedList =
+const DeleteResponseDeletedList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<DeleteResponseDeletedList>;
 
 export interface DeleteResponse {
   count: number;
   deleted: DeleteResponseDeletedList;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     deleted: DeleteResponseDeletedList,
@@ -511,7 +511,7 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteOAuthConnectionRequest {
   id: string;
 }
-export const DeleteOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/oauth/connections/{id}", code: 200 })),
@@ -520,13 +520,13 @@ export const DeleteOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteOAuthConnectionRequest>;
 
 export interface DeleteOAuthConnectionResponse {}
-export const DeleteOAuthConnectionResponse =
+const DeleteOAuthConnectionResponse =
   CreateCheckpointResponse as any as S.Schema<DeleteOAuthConnectionResponse>;
 
 export interface DeletePrivilegesPolicyRequest {
   name: string;
 }
-export const DeletePrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/sprites/{name}/policy/privileges", code: 200 })),
@@ -535,13 +535,13 @@ export const DeletePrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivilegesPolicyRequest>;
 
 export interface DeletePrivilegesPolicyResponse {}
-export const DeletePrivilegesPolicyResponse =
+const DeletePrivilegesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<DeletePrivilegesPolicyResponse>;
 
 export interface DeleteResourcesPolicyRequest {
   name: string;
 }
-export const DeleteResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/sprites/{name}/policy/resources", code: 200 })),
@@ -550,21 +550,20 @@ export const DeleteResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcesPolicyRequest>;
 
 export interface DeleteResourcesPolicyResponse {}
-export const DeleteResourcesPolicyResponse =
+const DeleteResourcesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<DeleteResourcesPolicyResponse>;
 
 export interface DeleteSpriteRequest {
   name: string;
 }
-export const DeleteSpriteRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/sprites/{name}", code: 200 })),
 ).annotate({ identifier: "DeleteSpriteRequest" }) as any as S.Schema<DeleteSpriteRequest>;
 
 export interface DeleteSpriteResponse {}
-export const DeleteSpriteResponse =
-  CreateCheckpointResponse as any as S.Schema<DeleteSpriteResponse>;
+const DeleteSpriteResponse = CreateCheckpointResponse as any as S.Schema<DeleteSpriteResponse>;
 
 export interface ExecCommandRequest {
   name: string;
@@ -580,7 +579,7 @@ export interface ExecCommandRequest {
   dir?: string;
   body?: Uint8Array | string;
 }
-export const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     cmd: S.String.pipe(T.Query()),
@@ -600,13 +599,13 @@ export const ExecCommandRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecCommandRequest" }) as any as S.Schema<ExecCommandRequest>;
 
 export interface ExecCommandResponse {}
-export const ExecCommandResponse = CreateCheckpointResponse as any as S.Schema<ExecCommandResponse>;
+const ExecCommandResponse = CreateCheckpointResponse as any as S.Schema<ExecCommandResponse>;
 
 export interface GetCheckpointRequest {
   name: string;
   checkpoint_id: string;
 }
-export const GetCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     checkpoint_id: S.String.pipe(T.Label()),
@@ -625,7 +624,7 @@ export interface CheckpointInfo {
   /** Parent checkpoint ID */
   source_id?: string;
 }
-export const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
+const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     create_time: S.String,
@@ -638,7 +637,7 @@ export const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
 export interface GetNetworkPolicyRequest {
   name: string;
 }
-export const GetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/policy/network", code: 200 })),
@@ -652,7 +651,7 @@ export interface NetworkPolicyRule {
   /** Include rules from preset */
   include?: string;
 }
-export const NetworkPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const NetworkPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     domain: S.optional(S.String),
@@ -662,7 +661,7 @@ export const NetworkPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of network policy rules */
 export type NetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
-export const NetworkPolicyRequestRulesList = /*@__PURE__*/ S.Array(
+const NetworkPolicyRequestRulesList = /*@__PURE__*/ S.Array(
   NetworkPolicyRule,
 ) as any as S.Schema<NetworkPolicyRequestRulesList>;
 
@@ -670,7 +669,7 @@ export interface NetworkPolicyRequest {
   /** List of network policy rules */
   rules: NetworkPolicyRequestRulesList;
 }
-export const NetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const NetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: NetworkPolicyRequestRulesList,
   }),
@@ -679,7 +678,7 @@ export const NetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOAuthConnectionRequest {
   id: string;
 }
-export const GetOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/oauth/connections/{id}", code: 200 })),
@@ -690,7 +689,7 @@ export const GetOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetPrivilegesPolicyRequest {
   name: string;
 }
-export const GetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/policy/privileges", code: 200 })),
@@ -699,13 +698,13 @@ export const GetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPrivilegesPolicyRequest>;
 
 export interface GetPrivilegesPolicyResponse {}
-export const GetPrivilegesPolicyResponse =
+const GetPrivilegesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<GetPrivilegesPolicyResponse>;
 
 export interface GetResourcesPolicyRequest {
   name: string;
 }
-export const GetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/policy/resources", code: 200 })),
@@ -714,14 +713,14 @@ export const GetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourcesPolicyRequest>;
 
 export interface GetResourcesPolicyResponse {}
-export const GetResourcesPolicyResponse =
+const GetResourcesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<GetResourcesPolicyResponse>;
 
 export interface GetServiceRequest {
   name: string;
   service_name: string;
 }
-export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -730,12 +729,12 @@ export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Command arguments */
 export type ServiceResponseArgsList = Array<string>;
-export const ServiceResponseArgsList =
+const ServiceResponseArgsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseArgsList>;
 
 /** Service dependencies */
 export type ServiceResponseNeedsList = Array<string>;
-export const ServiceResponseNeedsList =
+const ServiceResponseNeedsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<ServiceResponseNeedsList>;
 
 export interface ServiceState {
@@ -750,7 +749,7 @@ export interface ServiceState {
   /** `stopped`, `starting`, `running`, `stopping`, or `failed` */
   status: string;
 }
-export const ServiceState = /*@__PURE__*/ S.suspend(() =>
+const ServiceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(S.String),
     name: S.String,
@@ -774,7 +773,7 @@ export interface ServiceResponse {
   /** Current runtime state */
   state?: ServiceState | null;
 }
-export const ServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: ServiceResponseArgsList,
     cmd: S.String,
@@ -793,7 +792,7 @@ export interface GetServiceLogsRequest {
   /** Time to follow new logs (default: `0`, no follow) */
   duration?: number;
 }
-export const GetServiceLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -805,13 +804,12 @@ export const GetServiceLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetServiceLogsRequest" }) as any as S.Schema<GetServiceLogsRequest>;
 
 export interface GetServiceLogsResponse {}
-export const GetServiceLogsResponse =
-  CreateCheckpointResponse as any as S.Schema<GetServiceLogsResponse>;
+const GetServiceLogsResponse = CreateCheckpointResponse as any as S.Schema<GetServiceLogsResponse>;
 
 export interface GetSpriteRequest {
   name: string;
 }
-export const GetSpriteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}", code: 200 })),
@@ -825,7 +823,7 @@ export interface KillExecSessionRequest {
   /** Timeout waiting for process to exit (default: `10s`) */
   timeout?: number;
 }
-export const KillExecSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const KillExecSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Label()),
@@ -835,25 +833,25 @@ export const KillExecSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KillExecSessionRequest" }) as any as S.Schema<KillExecSessionRequest>;
 
 export interface KillExecSessionResponse {}
-export const KillExecSessionResponse =
+const KillExecSessionResponse =
   CreateCheckpointResponse as any as S.Schema<KillExecSessionResponse>;
 
 export interface ListCheckpointsRequest {
   name: string;
 }
-export const ListCheckpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCheckpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/checkpoints", code: 200 })),
 ).annotate({ identifier: "ListCheckpointsRequest" }) as any as S.Schema<ListCheckpointsRequest>;
 
 export type ListCheckpointsResponseBodyList = Array<CheckpointInfo>;
-export const ListCheckpointsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCheckpointsResponseBodyList = /*@__PURE__*/ S.Array(
   CheckpointInfo,
 ) as any as S.Schema<ListCheckpointsResponseBodyList>;
 
 export type ListCheckpointsResponse = ListCheckpointsResponseBodyList;
-export const ListCheckpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCheckpointsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCheckpointsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCheckpointsResponse" }) as any as S.Schema<ListCheckpointsResponse>;
 
@@ -864,7 +862,7 @@ export interface ListDirectoryRequest {
   /** Working directory for resolving relative paths */
   workingDir: string;
 }
-export const ListDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
@@ -881,7 +879,7 @@ export interface Entry {
   size: number;
   type: string;
 }
-export const Entry = /*@__PURE__*/ S.suspend(() =>
+const Entry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDir: S.Boolean,
     modTime: S.String,
@@ -894,7 +892,7 @@ export const Entry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entry" }) as any as S.Schema<Entry>;
 
 export type ListResponseEntriesList = Array<Entry>;
-export const ListResponseEntriesList = /*@__PURE__*/ S.Array(
+const ListResponseEntriesList = /*@__PURE__*/ S.Array(
   Entry,
 ) as any as S.Schema<ListResponseEntriesList>;
 
@@ -903,7 +901,7 @@ export interface ListResponse {
   entries: ListResponseEntriesList;
   path: string;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     entries: ListResponseEntriesList,
@@ -914,21 +912,21 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListExecSessionsRequest {
   name: string;
 }
-export const ListExecSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExecSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/exec", code: 200 })),
 ).annotate({ identifier: "ListExecSessionsRequest" }) as any as S.Schema<ListExecSessionsRequest>;
 
 export interface ListExecSessionsResponse {}
-export const ListExecSessionsResponse =
+const ListExecSessionsResponse =
   CreateCheckpointResponse as any as S.Schema<ListExecSessionsResponse>;
 
 export interface ListOAuthConnectionsRequest {
   /** Optional provider filter. */
   provider?: string;
 }
-export const ListOAuthConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOAuthConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/oauth/connections", code: 200 })),
@@ -938,7 +936,7 @@ export const ListOAuthConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Connectors configured for the organization. */
 export type ConnectionListResponseConnectionsList = Array<Connection>;
-export const ConnectionListResponseConnectionsList = /*@__PURE__*/ S.Array(
+const ConnectionListResponseConnectionsList = /*@__PURE__*/ S.Array(
   Connection,
 ) as any as S.Schema<ConnectionListResponseConnectionsList>;
 
@@ -947,7 +945,7 @@ export interface ConnectionListResponse {
   /** Connectors configured for the organization. */
   connections: ConnectionListResponseConnectionsList;
 }
-export const ConnectionListResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectionListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connections: ConnectionListResponseConnectionsList,
   }),
@@ -956,19 +954,19 @@ export const ConnectionListResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListServicesRequest {
   name: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/sprites/{name}/services", code: 200 })),
 ).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
 
 export type ListServicesResponseBodyList = Array<ServiceResponse>;
-export const ListServicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListServicesResponseBodyList = /*@__PURE__*/ S.Array(
   ServiceResponse,
 ) as any as S.Schema<ListServicesResponseBodyList>;
 
 export type ListServicesResponse = ListServicesResponseBodyList;
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListServicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListServicesResponse" }) as any as S.Schema<ListServicesResponse>;
 
@@ -980,7 +978,7 @@ export interface ListSpritesRequest {
   /** Token from previous response for pagination */
   continuation_token?: string;
 }
-export const ListSpritesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String.pipe(T.Query())),
     max_results: S.optional(S.Number.pipe(T.Query())),
@@ -990,7 +988,7 @@ export const ListSpritesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of sprite resources */
 export type SpriteListResponseSpritesList = Array<SpriteResponse>;
-export const SpriteListResponseSpritesList = /*@__PURE__*/ S.Array(
+const SpriteListResponseSpritesList = /*@__PURE__*/ S.Array(
   SpriteResponse,
 ) as any as S.Schema<SpriteListResponseSpritesList>;
 
@@ -1015,7 +1013,7 @@ export interface SpriteListResponse {
   /** Organization-wide warm sprite limit. */
   warm_limit?: number;
 }
-export const SpriteListResponse = /*@__PURE__*/ S.suspend(() =>
+const SpriteListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cold: S.Number,
     has_more: S.Boolean,
@@ -1040,7 +1038,7 @@ export interface OauthConnectionCallbackRequest {
   /** State value from the authorize response. */
   state?: string;
 }
-export const OauthConnectionCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const OauthConnectionCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String.pipe(T.Label()),
     access_policy: S.optional(AccessPolicy),
@@ -1057,7 +1055,7 @@ export interface PatchOAuthConnectionRequest {
   /** Replacement access policy. */
   access_policy: AccessPolicy;
 }
-export const PatchOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     access_policy: AccessPolicy,
@@ -1070,7 +1068,7 @@ export interface ProvisionOAuthConnectionRequest {
   /** Provider to provision. */
   provider: string;
 }
-export const ProvisionOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/oauth/connections/provision", code: 200 })),
@@ -1080,12 +1078,12 @@ export const ProvisionOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Command arguments */
 export type PutServiceRequestArgsList = Array<string>;
-export const PutServiceRequestArgsList =
+const PutServiceRequestArgsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestArgsList>;
 
 /** Service dependencies (started first) */
 export type PutServiceRequestNeedsList = Array<string>;
-export const PutServiceRequestNeedsList =
+const PutServiceRequestNeedsList =
   AccessPolicyAllowedEndpointsList as any as S.Schema<PutServiceRequestNeedsList>;
 
 export interface PutServiceRequest {
@@ -1106,7 +1104,7 @@ export interface PutServiceRequest {
   /** Service dependencies (started first) */
   needs: PutServiceRequestNeedsList;
 }
-export const PutServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const PutServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -1127,7 +1125,7 @@ export interface ReadFileRequest {
   /** Working directory for resolving relative paths */
   workingDir: string;
 }
-export const ReadFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
@@ -1136,7 +1134,7 @@ export const ReadFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReadFileRequest" }) as any as S.Schema<ReadFileRequest>;
 
 export interface ReadFileResponse {}
-export const ReadFileResponse = CreateCheckpointResponse as any as S.Schema<ReadFileResponse>;
+const ReadFileResponse = CreateCheckpointResponse as any as S.Schema<ReadFileResponse>;
 
 export interface RenameFileRequest {
   name: string;
@@ -1145,7 +1143,7 @@ export interface RenameFileRequest {
   source: string;
   workingDir: string;
 }
-export const RenameFileRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     asRoot: S.Boolean,
@@ -1159,7 +1157,7 @@ export interface RenameResponse {
   dest: string;
   source: string;
 }
-export const RenameResponse = CopyResult as any as S.Schema<RenameResponse>;
+const RenameResponse = CopyResult as any as S.Schema<RenameResponse>;
 
 export interface RestartServiceRequest {
   name: string;
@@ -1167,7 +1165,7 @@ export interface RestartServiceRequest {
   /** Time to monitor logs after starting (default: `5s`) */
   duration?: number;
 }
-export const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -1178,14 +1176,13 @@ export const RestartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestartServiceRequest" }) as any as S.Schema<RestartServiceRequest>;
 
 export interface RestartServiceResponse {}
-export const RestartServiceResponse =
-  CreateCheckpointResponse as any as S.Schema<RestartServiceResponse>;
+const RestartServiceResponse = CreateCheckpointResponse as any as S.Schema<RestartServiceResponse>;
 
 export interface RestoreCheckpointRequest {
   name: string;
   checkpoint_id: string;
 }
-export const RestoreCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     checkpoint_id: S.String.pipe(T.Label()),
@@ -1199,12 +1196,12 @@ export const RestoreCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RestoreCheckpointRequest" }) as any as S.Schema<RestoreCheckpointRequest>;
 
 export interface RestoreCheckpointResponse {}
-export const RestoreCheckpointResponse =
+const RestoreCheckpointResponse =
   CreateCheckpointResponse as any as S.Schema<RestoreCheckpointResponse>;
 
 /** List of network policy rules */
 export type SetNetworkPolicyRequestRulesList = Array<NetworkPolicyRule>;
-export const SetNetworkPolicyRequestRulesList =
+const SetNetworkPolicyRequestRulesList =
   NetworkPolicyRequestRulesList as any as S.Schema<SetNetworkPolicyRequestRulesList>;
 
 export interface SetNetworkPolicyRequest {
@@ -1212,7 +1209,7 @@ export interface SetNetworkPolicyRequest {
   /** List of network policy rules */
   rules: SetNetworkPolicyRequestRulesList;
 }
-export const SetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     rules: SetNetworkPolicyRequestRulesList,
@@ -1220,13 +1217,13 @@ export const SetNetworkPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetNetworkPolicyRequest" }) as any as S.Schema<SetNetworkPolicyRequest>;
 
 export interface SetNetworkPolicyResponse {}
-export const SetNetworkPolicyResponse =
+const SetNetworkPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<SetNetworkPolicyResponse>;
 
 export interface SetPrivilegesPolicyRequest {
   name: string;
 }
-export const SetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/sprites/{name}/policy/privileges", code: 200 })),
@@ -1235,13 +1232,13 @@ export const SetPrivilegesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetPrivilegesPolicyRequest>;
 
 export interface SetPrivilegesPolicyResponse {}
-export const SetPrivilegesPolicyResponse =
+const SetPrivilegesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<SetPrivilegesPolicyResponse>;
 
 export interface SetResourcesPolicyRequest {
   name: string;
 }
-export const SetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/sprites/{name}/policy/resources", code: 200 })),
@@ -1250,7 +1247,7 @@ export const SetResourcesPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetResourcesPolicyRequest>;
 
 export interface SetResourcesPolicyResponse {}
-export const SetResourcesPolicyResponse =
+const SetResourcesPolicyResponse =
   CreateCheckpointResponse as any as S.Schema<SetResourcesPolicyResponse>;
 
 export interface StartServiceRequest {
@@ -1259,7 +1256,7 @@ export interface StartServiceRequest {
   /** Time to monitor logs after starting (default: `5s`) */
   duration?: number;
 }
-export const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -1270,8 +1267,7 @@ export const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StartServiceRequest" }) as any as S.Schema<StartServiceRequest>;
 
 export interface StartServiceResponse {}
-export const StartServiceResponse =
-  CreateCheckpointResponse as any as S.Schema<StartServiceResponse>;
+const StartServiceResponse = CreateCheckpointResponse as any as S.Schema<StartServiceResponse>;
 
 export interface StopServiceRequest {
   name: string;
@@ -1279,7 +1275,7 @@ export interface StopServiceRequest {
   /** Timeout waiting for service to stop (default: `10s`) */
   timeout?: number;
 }
-export const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     service_name: S.String.pipe(T.Label()),
@@ -1290,14 +1286,14 @@ export const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopServiceRequest" }) as any as S.Schema<StopServiceRequest>;
 
 export interface StopServiceResponse {}
-export const StopServiceResponse = CreateCheckpointResponse as any as S.Schema<StopServiceResponse>;
+const StopServiceResponse = CreateCheckpointResponse as any as S.Schema<StopServiceResponse>;
 
 export interface UpdateOAuthConnectionRequest {
   id: string;
   /** Replacement access policy. */
   access_policy: AccessPolicy;
 }
-export const UpdateOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOAuthConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     access_policy: AccessPolicy,
@@ -1311,7 +1307,7 @@ export interface UpdateSpriteRequest {
   /** URL access configuration to update */
   url_settings: UrlSettingsRequest;
 }
-export const UpdateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSpriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     url_settings: UrlSettingsRequest,
@@ -1330,7 +1326,7 @@ export interface WriteFileRequest {
   mkdir?: boolean;
   body: Uint8Array | string;
 }
-export const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     path: S.String.pipe(T.Query()),
@@ -1353,7 +1349,7 @@ export interface WriteResponse {
   path: string;
   size: number;
 }
-export const WriteResponse = /*@__PURE__*/ S.suspend(() =>
+const WriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.String,
     path: S.String,

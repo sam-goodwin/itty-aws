@@ -15,7 +15,7 @@ export interface CheckB2CTenantNameAvailabilityRequest {
   name: string;
   countryCode: string;
 }
-export const CheckB2CTenantNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckB2CTenantNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -34,7 +34,7 @@ export const CheckB2CTenantNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Describes the reason for the 'nameAvailable' value. */
 export type NameAvailabilityReason = "AlreadyExists" | "Invalid";
-export const NameAvailabilityReason = S.String;
+const NameAvailabilityReason = S.String;
 
 /** Response of the CheckNameAvailability operation. */
 export interface NameAvailabilityResponse {
@@ -44,7 +44,7 @@ export interface NameAvailabilityResponse {
   nameAvailable?: boolean;
   reason?: NameAvailabilityReason;
 }
-export const NameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const NameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     nameAvailable: S.optional(S.Boolean),
@@ -58,7 +58,7 @@ export interface CreateTenantProperties {
   displayName?: string;
   countryCode?: string;
 }
-export const CreateTenantProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateTenantProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     countryCode: S.optional(S.String),
@@ -68,7 +68,7 @@ export const CreateTenantProperties = /*@__PURE__*/ S.suspend(() =>
 export interface CreateB2CTenantRequestProperties {
   createTenantProperties?: CreateTenantProperties;
 }
-export const CreateB2CTenantRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateB2CTenantRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTenantProperties: S.optional(CreateTenantProperties),
   }),
@@ -78,11 +78,11 @@ export const CreateB2CTenantRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the SKU for the tenant. */
 export type B2CResourceSKUName = "Standard" | "PremiumP1" | "PremiumP2";
-export const B2CResourceSKUName = S.String;
+const B2CResourceSKUName = S.String;
 
 /** The tier of the tenant. */
 export type B2CResourceSKUTier = "A0";
-export const B2CResourceSKUTier = S.String;
+const B2CResourceSKUTier = S.String;
 
 /** SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling). */
 export interface B2CResourceSKU {
@@ -91,7 +91,7 @@ export interface B2CResourceSKU {
   /** The tier of the tenant. */
   tier?: B2CResourceSKUTier | (string & {});
 }
-export const B2CResourceSKU = /*@__PURE__*/ S.suspend(() =>
+const B2CResourceSKU = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(B2CResourceSKUName),
     tier: S.optional(B2CResourceSKUTier),
@@ -100,7 +100,7 @@ export const B2CResourceSKU = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type CreateB2CTenantRequestTagsMap = { [key: string]: string | undefined };
-export const CreateB2CTenantRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateB2CTenantRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateB2CTenantRequestTagsMap>;
@@ -119,7 +119,7 @@ export interface CreateB2CTenantRequest {
   /** Resource Tags */
   tags?: CreateB2CTenantRequestTagsMap;
 }
-export const CreateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -140,11 +140,11 @@ export const CreateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the B2C tenant resource. */
 export type B2CTenantResourceType = "Microsoft.AzureActiveDirectory/b2cDirectories";
-export const B2CTenantResourceType = S.String;
+const B2CTenantResourceType = S.String;
 
 /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
 export type B2CTenantResourcePropertiesBillingConfigBillingType = "MAU" | "Auths";
-export const B2CTenantResourcePropertiesBillingConfigBillingType = S.String;
+const B2CTenantResourcePropertiesBillingConfigBillingType = S.String;
 
 /** The billing configuration for the tenant. */
 export interface B2CTenantResourcePropertiesBillingConfig {
@@ -153,7 +153,7 @@ export interface B2CTenantResourcePropertiesBillingConfig {
   /** The data from which the billing type took effect */
   effectiveStartDateUtc?: string;
 }
-export const B2CTenantResourcePropertiesBillingConfig = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourcePropertiesBillingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingType: S.optional(B2CTenantResourcePropertiesBillingConfigBillingType),
     effectiveStartDateUtc: S.optional(S.String),
@@ -169,7 +169,7 @@ export interface B2CTenantResourceProperties {
   /** An identifier of the Azure AD B2C tenant. */
   tenantId?: string;
 }
-export const B2CTenantResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingConfig: S.optional(B2CTenantResourcePropertiesBillingConfig),
     tenantId: S.optional(S.String),
@@ -180,7 +180,7 @@ export const B2CTenantResourceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type B2CTenantResourceTagsMap = { [key: string]: string | undefined };
-export const B2CTenantResourceTagsMap =
+const B2CTenantResourceTagsMap =
   CreateB2CTenantRequestTagsMap as any as S.Schema<B2CTenantResourceTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -189,7 +189,7 @@ export type B2CTenantResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const B2CTenantResourceSystemDataCreatedByType = S.String;
+const B2CTenantResourceSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type B2CTenantResourceSystemDataLastModifiedByType =
@@ -197,7 +197,7 @@ export type B2CTenantResourceSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const B2CTenantResourceSystemDataLastModifiedByType = S.String;
+const B2CTenantResourceSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface B2CTenantResourceSystemData {
@@ -214,7 +214,7 @@ export interface B2CTenantResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const B2CTenantResourceSystemData = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourceSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(B2CTenantResourceSystemDataCreatedByType),
@@ -244,7 +244,7 @@ export interface B2CTenantResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: B2CTenantResourceSystemData;
 }
-export const B2CTenantResource = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(B2CTenantResourceType),
     sku: B2CResourceSKU,
@@ -259,7 +259,7 @@ export const B2CTenantResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateGuestUsageRequestTagsMap = { [key: string]: string | undefined };
-export const CreateGuestUsageRequestTagsMap =
+const CreateGuestUsageRequestTagsMap =
   CreateB2CTenantRequestTagsMap as any as S.Schema<CreateGuestUsageRequestTagsMap>;
 
 /** Guest Usages Resource Properties */
@@ -267,7 +267,7 @@ export interface GuestUsagesResourceProperties {
   /** An identifier for the tenant for which the resource is being created */
   tenantId?: string;
 }
-export const GuestUsagesResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const GuestUsagesResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
   }),
@@ -289,7 +289,7 @@ export interface CreateGuestUsageRequest {
   /** The Guest Usages Resource Properties */
   properties?: GuestUsagesResourceProperties;
 }
-export const CreateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -309,7 +309,7 @@ export const CreateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type GuestUsagesResourceTagsMap = { [key: string]: string | undefined };
-export const GuestUsagesResourceTagsMap =
+const GuestUsagesResourceTagsMap =
   CreateB2CTenantRequestTagsMap as any as S.Schema<GuestUsagesResourceTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -318,16 +318,12 @@ export type GuestUsagesResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GuestUsagesResourceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GuestUsagesResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GuestUsagesResourceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GuestUsagesResourceSystemData {
   /** The identity that created the resource. */
@@ -343,7 +339,7 @@ export interface GuestUsagesResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GuestUsagesResourceSystemData =
+const GuestUsagesResourceSystemData =
   B2CTenantResourceSystemData as any as S.Schema<GuestUsagesResourceSystemData>;
 
 /** Guest Usages Resource */
@@ -363,7 +359,7 @@ export interface GuestUsagesResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GuestUsagesResourceSystemData;
 }
-export const GuestUsagesResource = /*@__PURE__*/ S.suspend(() =>
+const GuestUsagesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -383,7 +379,7 @@ export interface DeleteB2CTenantRequest {
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
 }
-export const DeleteB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -399,7 +395,7 @@ export const DeleteB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteB2CTenantRequest" }) as any as S.Schema<DeleteB2CTenantRequest>;
 
 export interface DeleteB2CTenantResponse {}
-export const DeleteB2CTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteB2CTenantResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteB2CTenantResponse",
 }) as any as S.Schema<DeleteB2CTenantResponse>;
 
@@ -411,7 +407,7 @@ export interface DeleteGuestUsageRequest {
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
 }
-export const DeleteGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -427,7 +423,7 @@ export const DeleteGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGuestUsageRequest" }) as any as S.Schema<DeleteGuestUsageRequest>;
 
 export interface DeleteGuestUsageResponse {}
-export const DeleteGuestUsageResponse =
+const DeleteGuestUsageResponse =
   DeleteB2CTenantResponse as any as S.Schema<DeleteGuestUsageResponse>;
 
 export interface GetB2CTenantRequest {
@@ -438,7 +434,7 @@ export interface GetB2CTenantRequest {
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
 }
-export const GetB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -461,7 +457,7 @@ export interface GetGuestUsageRequest {
   /** The initial domain name of the Azure AD B2C tenant. */
   resourceName: string;
 }
-export const GetGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -482,7 +478,7 @@ export interface ListB2CTenantByResourceGroupRequest {
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-export const ListB2CTenantByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListB2CTenantByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -500,7 +496,7 @@ export const ListB2CTenantByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Azure AD B2C tenant resources */
 export type B2CTenantResourceListValueList = Array<B2CTenantResource>;
-export const B2CTenantResourceListValueList = /*@__PURE__*/ S.Array(
+const B2CTenantResourceListValueList = /*@__PURE__*/ S.Array(
   B2CTenantResource,
 ) as any as S.Schema<B2CTenantResourceListValueList>;
 
@@ -509,7 +505,7 @@ export interface B2CTenantResourceList {
   /** List of Azure AD B2C tenant resources */
   value?: B2CTenantResourceListValueList;
 }
-export const B2CTenantResourceList = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(B2CTenantResourceListValueList),
   }),
@@ -519,7 +515,7 @@ export interface ListB2CTenantBySubscriptionRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListB2CTenantBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListB2CTenantBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -540,7 +536,7 @@ export interface ListGuestUsageByResourceGroupRequest {
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-export const ListGuestUsageByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGuestUsageByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -558,7 +554,7 @@ export const ListGuestUsageByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =
 
 /** List of guest usages resources */
 export type GuestUsagesResourceListValueList = Array<GuestUsagesResource>;
-export const GuestUsagesResourceListValueList = /*@__PURE__*/ S.Array(
+const GuestUsagesResourceListValueList = /*@__PURE__*/ S.Array(
   GuestUsagesResource,
 ) as any as S.Schema<GuestUsagesResourceListValueList>;
 
@@ -567,7 +563,7 @@ export interface GuestUsagesResourceList {
   /** List of guest usages resources */
   value?: GuestUsagesResourceListValueList;
 }
-export const GuestUsagesResourceList = /*@__PURE__*/ S.suspend(() =>
+const GuestUsagesResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GuestUsagesResourceListValueList),
   }),
@@ -577,7 +573,7 @@ export interface ListGuestUsageBySubscriptionRequest {
   /** Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListGuestUsageBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGuestUsageBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -593,7 +589,7 @@ export const ListGuestUsageBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGuestUsageBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -615,7 +611,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -635,7 +631,7 @@ export interface OperationDetail {
   /** Origin of the operation */
   origin?: string;
 }
-export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
+const OperationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -646,7 +642,7 @@ export const OperationDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Collection of available operation details */
 export type AvailableOperationsValueList = Array<OperationDetail>;
-export const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
+const AvailableOperationsValueList = /*@__PURE__*/ S.Array(
   OperationDetail,
 ) as any as S.Schema<AvailableOperationsValueList>;
 
@@ -657,7 +653,7 @@ export interface AvailableOperations {
   /** URL client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
   nextLink?: string;
 }
-export const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
+const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AvailableOperationsValueList),
     nextLink: S.optional(S.String),
@@ -666,14 +662,14 @@ export const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
 export type B2CTenantResourcePropertiesInputBillingConfigBillingType = "MAU" | "Auths";
-export const B2CTenantResourcePropertiesInputBillingConfigBillingType = S.String;
+const B2CTenantResourcePropertiesInputBillingConfigBillingType = S.String;
 
 /** The billing configuration for the tenant. */
 export interface B2CTenantResourcePropertiesInputBillingConfig {
   /** The type of billing. Will be MAU for all new customers. If 'Auths', it can be updated to 'MAU'. Cannot be changed if value is 'MAU'. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cbilling). */
   billingType?: B2CTenantResourcePropertiesInputBillingConfigBillingType | (string & {});
 }
-export const B2CTenantResourcePropertiesInputBillingConfig = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourcePropertiesInputBillingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingType: S.optional(B2CTenantResourcePropertiesInputBillingConfigBillingType),
   }),
@@ -688,7 +684,7 @@ export interface B2CTenantResourcePropertiesInput {
   /** An identifier of the Azure AD B2C tenant. */
   tenantId?: string;
 }
-export const B2CTenantResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const B2CTenantResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingConfig: S.optional(B2CTenantResourcePropertiesInputBillingConfig),
     tenantId: S.optional(S.String),
@@ -699,7 +695,7 @@ export const B2CTenantResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource Tags */
 export type UpdateB2CTenantRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateB2CTenantRequestTagsMap =
+const UpdateB2CTenantRequestTagsMap =
   CreateB2CTenantRequestTagsMap as any as S.Schema<UpdateB2CTenantRequestTagsMap>;
 
 export interface UpdateB2CTenantRequest {
@@ -715,7 +711,7 @@ export interface UpdateB2CTenantRequest {
   /** Resource Tags */
   tags?: UpdateB2CTenantRequestTagsMap;
 }
-export const UpdateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -735,7 +731,7 @@ export const UpdateB2CTenantRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Key-value pairs of additional resource provisioning properties. */
 export type UpdateGuestUsageRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGuestUsageRequestTagsMap =
+const UpdateGuestUsageRequestTagsMap =
   CreateB2CTenantRequestTagsMap as any as S.Schema<UpdateGuestUsageRequestTagsMap>;
 
 export interface UpdateGuestUsageRequest {
@@ -748,7 +744,7 @@ export interface UpdateGuestUsageRequest {
   /** Key-value pairs of additional resource provisioning properties. */
   tags?: UpdateGuestUsageRequestTagsMap;
 }
-export const UpdateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGuestUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),

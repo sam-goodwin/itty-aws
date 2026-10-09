@@ -12,7 +12,7 @@ export interface GetPlatformAlertRequest {
   project_id: string;
   id: string;
 }
-export const GetPlatformAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlatformAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -23,18 +23,18 @@ export const GetPlatformAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `logs` - Logs */
 export type PlatformAlertConfigurationSourceKindEnum = "logs";
-export const PlatformAlertConfigurationSourceKindEnum = S.String;
+const PlatformAlertConfigurationSourceKindEnum = S.String;
 
 /** Source-specific query settings. The shape depends on source_kind. */
 export type PlatformAlertConfigurationSourceConfigMap = { [key: string]: unknown | undefined };
-export const PlatformAlertConfigurationSourceConfigMap = /*@__PURE__*/ S.Record(
+const PlatformAlertConfigurationSourceConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<PlatformAlertConfigurationSourceConfigMap>;
 
 /** * `day` - Day * `week` - Week * `month` - Month */
 export type CalendarUnitEnum = "day" | "week" | "month";
-export const CalendarUnitEnum = S.String;
+const CalendarUnitEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
@@ -42,7 +42,7 @@ export interface AlertScheduleRestrictionWindow {
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -53,7 +53,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
+const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
 
@@ -61,7 +61,7 @@ export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
   }),
@@ -74,7 +74,7 @@ export type BillingAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-export const BillingAlertConfigurationStateEnum = S.String;
+const BillingAlertConfigurationStateEnum = S.String;
 
 export interface PlatformAlert {
   /** Unique identifier of this alert instance. */
@@ -90,7 +90,7 @@ export interface PlatformAlert {
   /** Time until which notifications are snoozed. Null when not snoozed. */
   snooze_until: string | null;
 }
-export const PlatformAlert = /*@__PURE__*/ S.suspend(() =>
+const PlatformAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     grouping_key: S.String,
@@ -103,7 +103,7 @@ export const PlatformAlert = /*@__PURE__*/ S.suspend(() =>
 
 /** Runtime state for each result group of this configuration. */
 export type PlatformAlertConfigurationAlertsList = Array<PlatformAlert>;
-export const PlatformAlertConfigurationAlertsList = /*@__PURE__*/ S.Array(
+const PlatformAlertConfigurationAlertsList = /*@__PURE__*/ S.Array(
   PlatformAlert,
 ) as any as S.Schema<PlatformAlertConfigurationAlertsList>;
 
@@ -151,7 +151,7 @@ export interface PlatformAlertConfiguration {
   /** Runtime state for each result group of this configuration. */
   alerts: PlatformAlertConfigurationAlertsList;
 }
-export const PlatformAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
+const PlatformAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -187,7 +187,7 @@ export interface ListPlatformAlertsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListPlatformAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -198,7 +198,7 @@ export const ListPlatformAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlatformAlertsRequest>;
 
 export type PaginatedPlatformAlertConfigurationListResultsList = Array<PlatformAlertConfiguration>;
-export const PaginatedPlatformAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedPlatformAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
   PlatformAlertConfiguration,
 ) as any as S.Schema<PaginatedPlatformAlertConfigurationListResultsList>;
 
@@ -208,7 +208,7 @@ export interface PaginatedPlatformAlertConfigurationList {
   previous?: string | null;
   results: PaginatedPlatformAlertConfigurationListResultsList;
 }
-export const PaginatedPlatformAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedPlatformAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

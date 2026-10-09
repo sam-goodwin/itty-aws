@@ -65,7 +65,7 @@ export interface ApproveRollingReleaseStageRequest {
   /** The id of the canary deployment to approve for the next stage */
   canaryDeploymentId: string;
 }
-export const ApproveRollingReleaseStageRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveRollingReleaseStageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -98,16 +98,15 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseActiveStage {
   /** The percentage of traffic to serve to the canary deployment (0-100) */
   targetPercentage: number;
 }
-export const ApproveRollingReleaseStageResponseRollingReleaseActiveStage = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      duration: S.NullOr(S.Number),
-      index: S.Number,
-      isFinalStage: S.Boolean,
-      linearShift: S.optional(S.Boolean),
-      requireApproval: S.Boolean,
-      targetPercentage: S.Number,
-    }),
+const ApproveRollingReleaseStageResponseRollingReleaseActiveStage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.NullOr(S.Number),
+    index: S.Number,
+    isFinalStage: S.Boolean,
+    linearShift: S.optional(S.Boolean),
+    requireApproval: S.Boolean,
+    targetPercentage: S.Number,
+  }),
 ).annotate({
   identifier: "ApproveRollingReleaseStageResponseRollingReleaseActiveStage",
 }) as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
@@ -116,7 +115,7 @@ export const ApproveRollingReleaseStageResponseRollingReleaseActiveStage = /*@__
 export type ApproveRollingReleaseStageResponseRollingReleaseAdvancementType =
   | "automatic"
   | "manual-approval";
-export const ApproveRollingReleaseStageResponseRollingReleaseAdvancementType = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseAdvancementType = S.String;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentReadyState =
@@ -127,7 +126,7 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentRead
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentReadyState = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource =
@@ -141,13 +140,13 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSour
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentSource = S.String;
 
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget =
   | "production"
   | "staging";
-export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymentTarget = S.String;
 
 /** The canary deployment being rolled out */
 export interface ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment {
@@ -167,8 +166,8 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseCanaryDeploymen
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment =
-  /*@__PURE__*/ S.suspend(() =>
+const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       createdAt: S.Number,
       id: S.String,
@@ -181,9 +180,9 @@ export const ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment =
       ),
       url: S.String,
     }),
-  ).annotate({
-    identifier: "ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment",
-  }) as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment>;
+).annotate({
+  identifier: "ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment",
+}) as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment>;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentReadyState =
@@ -194,8 +193,6 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentRea
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentReadyState = S.String;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
@@ -208,14 +205,10 @@ export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSou
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentSource = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentTarget =
   | "production"
   | "staging";
-export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeploymentTarget = S.String;
-
 /** The current deployment receiving production traffic */
 export interface ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment {
   /** A number containing the date when the deployment was created in milliseconds */
@@ -234,25 +227,19 @@ export interface ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployme
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment =
+const ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment =
   ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type ApproveRollingReleaseStageResponseRollingReleaseNextStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const ApproveRollingReleaseStageResponseRollingReleaseNextStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type ApproveRollingReleaseStageResponseRollingReleaseStagesItem =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const ApproveRollingReleaseStageResponseRollingReleaseStagesItem =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type ApproveRollingReleaseStageResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const ApproveRollingReleaseStageResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
+const ApproveRollingReleaseStageResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage,
 ) as any as S.Schema<ApproveRollingReleaseStageResponseRollingReleaseStagesList>;
 
@@ -261,11 +248,11 @@ export type ApproveRollingReleaseStageResponseRollingReleaseState =
   | "ABORTED"
   | "ACTIVE"
   | "COMPLETE";
-export const ApproveRollingReleaseStageResponseRollingReleaseState = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseState = S.String;
 
 /** When set to `PAUSED`, the rollout is frozen at the current percentage until continued. */
 export type ApproveRollingReleaseStageResponseRollingReleaseSubstate = "PAUSED";
-export const ApproveRollingReleaseStageResponseRollingReleaseSubstate = S.String;
+const ApproveRollingReleaseStageResponseRollingReleaseSubstate = S.String;
 
 /** Rolling release information including configuration and document details, or null if no rolling release exists */
 export interface ApproveRollingReleaseStageResponseRollingRelease {
@@ -294,7 +281,7 @@ export interface ApproveRollingReleaseStageResponseRollingRelease {
   /** Unix timestamp in milliseconds when the rolling release was last updated */
   updatedAt: number;
 }
-export const ApproveRollingReleaseStageResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
+const ApproveRollingReleaseStageResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeStage: S.NullOr(ApproveRollingReleaseStageResponseRollingReleaseActiveStage),
     advancementType: ApproveRollingReleaseStageResponseRollingReleaseAdvancementType,
@@ -317,7 +304,7 @@ export interface ApproveRollingReleaseStageResponse {
   /** Rolling release information including configuration and document details, or null if no rolling release exists */
   rollingRelease: ApproveRollingReleaseStageResponseRollingRelease | null;
 }
-export const ApproveRollingReleaseStageResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveRollingReleaseStageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(ApproveRollingReleaseStageResponseRollingRelease),
   }),
@@ -335,7 +322,7 @@ export interface CompleteRollingReleaseRequest {
   /** The ID of the canary deployment to complete */
   canaryDeploymentId: string;
 }
-export const CompleteRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -351,14 +338,11 @@ export const CompleteRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 /** The currently active stage, null if the rollout is aborted */
 export type CompleteRollingReleaseResponseRollingReleaseActiveStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const CompleteRollingReleaseResponseRollingReleaseActiveStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** The advancement type of the rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseAdvancementType =
   | "automatic"
   | "manual-approval";
-export const CompleteRollingReleaseResponseRollingReleaseAdvancementType = S.String;
+const CompleteRollingReleaseResponseRollingReleaseAdvancementType = S.String;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState =
@@ -369,7 +353,7 @@ export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadySta
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
+const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
@@ -383,13 +367,13 @@ export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource = S.String;
+const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource = S.String;
 
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget =
   | "production"
   | "staging";
-export const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget = S.String;
+const CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget = S.String;
 
 /** The canary deployment being rolled out */
 export interface CompleteRollingReleaseResponseRollingReleaseCanaryDeployment {
@@ -409,20 +393,19 @@ export interface CompleteRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const CompleteRollingReleaseResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource),
-      target: S.optional(
-        S.NullOr(CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget),
-      ),
-      url: S.String,
-    }),
+const CompleteRollingReleaseResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.Number,
+    id: S.String,
+    name: S.String,
+    readyState: CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState,
+    readyStateAt: S.optional(S.Number),
+    source: S.optional(CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentSource),
+    target: S.optional(
+      S.NullOr(CompleteRollingReleaseResponseRollingReleaseCanaryDeploymentTarget),
+    ),
+    url: S.String,
+  }),
 ).annotate({
   identifier: "CompleteRollingReleaseResponseRollingReleaseCanaryDeployment",
 }) as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseCanaryDeployment>;
@@ -436,8 +419,6 @@ export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadySt
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
@@ -450,14 +431,10 @@ export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource 
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentSource = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget =
   | "production"
   | "staging";
-export const CompleteRollingReleaseResponseRollingReleaseCurrentDeploymentTarget = S.String;
-
 /** The current deployment receiving production traffic */
 export interface CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A number containing the date when the deployment was created in milliseconds */
@@ -476,34 +453,28 @@ export interface CompleteRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const CompleteRollingReleaseResponseRollingReleaseCurrentDeployment =
+const CompleteRollingReleaseResponseRollingReleaseCurrentDeployment =
   ApproveRollingReleaseStageResponseRollingReleaseCanaryDeployment as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type CompleteRollingReleaseResponseRollingReleaseNextStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const CompleteRollingReleaseResponseRollingReleaseNextStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseStagesItem =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const CompleteRollingReleaseResponseRollingReleaseStagesItem =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const CompleteRollingReleaseResponseRollingReleaseStagesList =
+const CompleteRollingReleaseResponseRollingReleaseStagesList =
   ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<CompleteRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type CompleteRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
-export const CompleteRollingReleaseResponseRollingReleaseState = S.String;
+const CompleteRollingReleaseResponseRollingReleaseState = S.String;
 
 /** When set to `PAUSED`, the rollout is frozen at the current percentage until continued. */
 export type CompleteRollingReleaseResponseRollingReleaseSubstate = "PAUSED";
-export const CompleteRollingReleaseResponseRollingReleaseSubstate = S.String;
+const CompleteRollingReleaseResponseRollingReleaseSubstate = S.String;
 
 /** Rolling release information including configuration and document details, or null if no rolling release exists */
 export interface CompleteRollingReleaseResponseRollingRelease {
@@ -532,7 +503,7 @@ export interface CompleteRollingReleaseResponseRollingRelease {
   /** Unix timestamp in milliseconds when the rolling release was last updated */
   updatedAt: number;
 }
-export const CompleteRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
+const CompleteRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeStage: S.NullOr(ApproveRollingReleaseStageResponseRollingReleaseActiveStage),
     advancementType: CompleteRollingReleaseResponseRollingReleaseAdvancementType,
@@ -555,7 +526,7 @@ export interface CompleteRollingReleaseResponse {
   /** Rolling release information including configuration and document details, or null if no rolling release exists */
   rollingRelease: CompleteRollingReleaseResponseRollingRelease | null;
 }
-export const CompleteRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(CompleteRollingReleaseResponseRollingRelease),
   }),
@@ -571,7 +542,7 @@ export interface DeleteRollingReleaseConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const DeleteRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -586,7 +557,7 @@ export const DeleteRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRollingReleaseConfigResponse {
   rollingRelease: unknown | null;
 }
-export const DeleteRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(S.Unknown),
   }),
@@ -596,7 +567,7 @@ export const DeleteRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Filter by rolling release state */
 export type GetRollingReleaseRequestState = "ACTIVE" | "COMPLETE" | "ABORTED";
-export const GetRollingReleaseRequestState = S.String;
+const GetRollingReleaseRequestState = S.String;
 
 export interface GetRollingReleaseRequest {
   /** Project ID or project name (URL-encoded) */
@@ -608,7 +579,7 @@ export interface GetRollingReleaseRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     state: S.optional(GetRollingReleaseRequestState.pipe(T.Query())),
@@ -620,14 +591,11 @@ export const GetRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 /** The currently active stage, null if the rollout is aborted */
 export type GetRollingReleaseResponseRollingReleaseActiveStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const GetRollingReleaseResponseRollingReleaseActiveStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** The advancement type of the rolling release */
 export type GetRollingReleaseResponseRollingReleaseAdvancementType =
   | "automatic"
   | "manual-approval";
-export const GetRollingReleaseResponseRollingReleaseAdvancementType = S.String;
+const GetRollingReleaseResponseRollingReleaseAdvancementType = S.String;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState =
@@ -638,7 +606,7 @@ export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
+const GetRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
 
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
@@ -652,13 +620,13 @@ export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource = S.String;
+const GetRollingReleaseResponseRollingReleaseCanaryDeploymentSource = S.String;
 
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type GetRollingReleaseResponseRollingReleaseCanaryDeploymentTarget =
   | "production"
   | "staging";
-export const GetRollingReleaseResponseRollingReleaseCanaryDeploymentTarget = S.String;
+const GetRollingReleaseResponseRollingReleaseCanaryDeploymentTarget = S.String;
 
 /** The canary deployment being rolled out */
 export interface GetRollingReleaseResponseRollingReleaseCanaryDeployment {
@@ -678,7 +646,7 @@ export interface GetRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const GetRollingReleaseResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseResponseRollingReleaseCanaryDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.Number,
     id: S.String,
@@ -702,7 +670,7 @@ export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState =
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
+const GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
 
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
@@ -716,13 +684,13 @@ export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource = S.String;
+const GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource = S.String;
 
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget =
   | "production"
   | "staging";
-export const GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget = S.String;
+const GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget = S.String;
 
 /** The current deployment receiving production traffic */
 export interface GetRollingReleaseResponseRollingReleaseCurrentDeployment {
@@ -742,18 +710,17 @@ export interface GetRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const GetRollingReleaseResponseRollingReleaseCurrentDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.Number,
-      id: S.String,
-      name: S.String,
-      readyState: GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState,
-      readyStateAt: S.optional(S.Number),
-      source: S.optional(GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource),
-      target: S.optional(S.NullOr(GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget)),
-      url: S.String,
-    }),
+const GetRollingReleaseResponseRollingReleaseCurrentDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.Number,
+    id: S.String,
+    name: S.String,
+    readyState: GetRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState,
+    readyStateAt: S.optional(S.Number),
+    source: S.optional(GetRollingReleaseResponseRollingReleaseCurrentDeploymentSource),
+    target: S.optional(S.NullOr(GetRollingReleaseResponseRollingReleaseCurrentDeploymentTarget)),
+    url: S.String,
+  }),
 ).annotate({
   identifier: "GetRollingReleaseResponseRollingReleaseCurrentDeployment",
 }) as any as S.Schema<GetRollingReleaseResponseRollingReleaseCurrentDeployment>;
@@ -761,28 +728,22 @@ export const GetRollingReleaseResponseRollingReleaseCurrentDeployment = /*@__PUR
 /** The next stage to be activated, null if not in ACTIVE state */
 export type GetRollingReleaseResponseRollingReleaseNextStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const GetRollingReleaseResponseRollingReleaseNextStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type GetRollingReleaseResponseRollingReleaseStagesItem =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const GetRollingReleaseResponseRollingReleaseStagesItem =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type GetRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const GetRollingReleaseResponseRollingReleaseStagesList =
+const GetRollingReleaseResponseRollingReleaseStagesList =
   ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<GetRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type GetRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
-export const GetRollingReleaseResponseRollingReleaseState = S.String;
+const GetRollingReleaseResponseRollingReleaseState = S.String;
 
 /** When set to `PAUSED`, the rollout is frozen at the current percentage until continued. */
 export type GetRollingReleaseResponseRollingReleaseSubstate = "PAUSED";
-export const GetRollingReleaseResponseRollingReleaseSubstate = S.String;
+const GetRollingReleaseResponseRollingReleaseSubstate = S.String;
 
 /** Rolling release information including configuration and document details, or null if no rolling release exists */
 export interface GetRollingReleaseResponseRollingRelease {
@@ -811,7 +772,7 @@ export interface GetRollingReleaseResponseRollingRelease {
   /** Unix timestamp in milliseconds when the rolling release was last updated */
   updatedAt: number;
 }
-export const GetRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeStage: S.NullOr(ApproveRollingReleaseStageResponseRollingReleaseActiveStage),
     advancementType: GetRollingReleaseResponseRollingReleaseAdvancementType,
@@ -834,7 +795,7 @@ export interface GetRollingReleaseResponse {
   /** Rolling release information including configuration and document details, or null if no rolling release exists */
   rollingRelease: GetRollingReleaseResponseRollingRelease | null;
 }
-export const GetRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(GetRollingReleaseResponseRollingRelease),
   }),
@@ -850,7 +811,7 @@ export interface GetRollingReleaseBillingStatusRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRollingReleaseBillingStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseBillingStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -863,104 +824,48 @@ export const GetRollingReleaseBillingStatusRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetRollingReleaseBillingStatusRequest>;
 
 export type GetRollingReleaseBillingStatusResponseBodyCase0AvailableSlots = 0;
-export const GetRollingReleaseBillingStatusResponseBodyCase0AvailableSlots = S.Number;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase0Reason = "plan_not_supported";
-export const GetRollingReleaseBillingStatusResponseBodyCase0Reason = S.String;
-
 export interface GetRollingReleaseBillingStatusResponseBodyCase0 {
   availableSlots: GetRollingReleaseBillingStatusResponseBodyCase0AvailableSlots;
   message: string;
   reason: GetRollingReleaseBillingStatusResponseBodyCase0Reason;
 }
-export const GetRollingReleaseBillingStatusResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableSlots: GetRollingReleaseBillingStatusResponseBodyCase0AvailableSlots,
-    message: S.String,
-    reason: GetRollingReleaseBillingStatusResponseBodyCase0Reason,
-  }),
-).annotate({
-  identifier: "GetRollingReleaseBillingStatusResponseBodyCase0",
-}) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase0>;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase1AvailableSlots = "unlimited";
-export const GetRollingReleaseBillingStatusResponseBodyCase1AvailableSlots = S.String;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase1Reason = "unlimited_slots";
-export const GetRollingReleaseBillingStatusResponseBodyCase1Reason = S.String;
-
 export interface GetRollingReleaseBillingStatusResponseBodyCase1 {
   availableSlots: GetRollingReleaseBillingStatusResponseBodyCase1AvailableSlots;
   message: string;
   reason: GetRollingReleaseBillingStatusResponseBodyCase1Reason;
 }
-export const GetRollingReleaseBillingStatusResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableSlots: GetRollingReleaseBillingStatusResponseBodyCase1AvailableSlots,
-    message: S.String,
-    reason: GetRollingReleaseBillingStatusResponseBodyCase1Reason,
-  }),
-).annotate({
-  identifier: "GetRollingReleaseBillingStatusResponseBodyCase1",
-}) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase1>;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase2AvailableSlots = 0;
-export const GetRollingReleaseBillingStatusResponseBodyCase2AvailableSlots = S.Number;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList = Array<string>;
-export const GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList>;
+const GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList>;
 
 export type GetRollingReleaseBillingStatusResponseBodyCase2Reason = "no_available_slots";
-export const GetRollingReleaseBillingStatusResponseBodyCase2Reason = S.String;
-
 export interface GetRollingReleaseBillingStatusResponseBodyCase2 {
   availableSlots: GetRollingReleaseBillingStatusResponseBodyCase2AvailableSlots;
   enabledProjects: GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList;
   message: string;
   reason: GetRollingReleaseBillingStatusResponseBodyCase2Reason;
 }
-export const GetRollingReleaseBillingStatusResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableSlots: GetRollingReleaseBillingStatusResponseBodyCase2AvailableSlots,
-    enabledProjects: GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList,
-    message: S.String,
-    reason: GetRollingReleaseBillingStatusResponseBodyCase2Reason,
-  }),
-).annotate({
-  identifier: "GetRollingReleaseBillingStatusResponseBodyCase2",
-}) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase2>;
-
 export type GetRollingReleaseBillingStatusResponseBodyCase3Reason = "available_slots";
-export const GetRollingReleaseBillingStatusResponseBodyCase3Reason = S.String;
-
 export interface GetRollingReleaseBillingStatusResponseBodyCase3 {
   availableSlots: number;
   message: string;
   reason: GetRollingReleaseBillingStatusResponseBodyCase3Reason;
 }
-export const GetRollingReleaseBillingStatusResponseBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availableSlots: S.Number,
-    message: S.String,
-    reason: GetRollingReleaseBillingStatusResponseBodyCase3Reason,
-  }),
-).annotate({
-  identifier: "GetRollingReleaseBillingStatusResponseBodyCase3",
-}) as any as S.Schema<GetRollingReleaseBillingStatusResponseBodyCase3>;
-
 export type GetRollingReleaseBillingStatusResponseBody =
   | GetRollingReleaseBillingStatusResponseBodyCase0
   | GetRollingReleaseBillingStatusResponseBodyCase1
   | GetRollingReleaseBillingStatusResponseBodyCase2
   | GetRollingReleaseBillingStatusResponseBodyCase3;
-export const GetRollingReleaseBillingStatusResponseBody =
+const GetRollingReleaseBillingStatusResponseBody =
   S.Unknown as any as S.Schema<GetRollingReleaseBillingStatusResponseBody>;
 
 export type GetRollingReleaseBillingStatusResponse = GetRollingReleaseBillingStatusResponseBody;
-export const GetRollingReleaseBillingStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseBillingStatusResponse = /*@__PURE__*/ S.suspend(() =>
   GetRollingReleaseBillingStatusResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetRollingReleaseBillingStatusResponse",
@@ -974,7 +879,7 @@ export interface GetRollingReleaseConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const GetRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -988,25 +893,25 @@ export const GetRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** What to do when the gate trips: pause the rollout, or roll it back. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateAction = "pause" | "rollback";
-export const GetRollingReleaseConfigResponseRollingReleaseGateAction = S.String;
+const GetRollingReleaseConfigResponseRollingReleaseGateAction = S.String;
 
 /** Request paths to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
   Array<string>;
-export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
+const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList =
   GetRollingReleaseBillingStatusResponseBodyCase2EnabledProjectsList as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList>;
 
 /** Response status codes to ignore entirely -- dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   Array<number>;
-export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
+const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList>;
 
 /** The metric this check evaluates. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType = "error-rate-5xx";
-export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType = S.String;
+const GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType = S.String;
 
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export interface GetRollingReleaseConfigResponseRollingReleaseGateChecksItem {
@@ -1021,19 +926,18 @@ export interface GetRollingReleaseConfigResponseRollingReleaseGateChecksItem {
   /** The metric this check evaluates. */
   type: GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType;
 }
-export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      excludePaths: S.optional(
-        GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList,
-      ),
-      excludeStatusCodes: S.optional(
-        GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList,
-      ),
-      ingestWatermarkSeconds: S.optional(S.Number),
-      minSampleSize: S.optional(S.Number),
-      type: GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType,
-    }),
+const GetRollingReleaseConfigResponseRollingReleaseGateChecksItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    excludePaths: S.optional(
+      GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludePathsList,
+    ),
+    excludeStatusCodes: S.optional(
+      GetRollingReleaseConfigResponseRollingReleaseGateChecksItemExcludeStatusCodesList,
+    ),
+    ingestWatermarkSeconds: S.optional(S.Number),
+    minSampleSize: S.optional(S.Number),
+    type: GetRollingReleaseConfigResponseRollingReleaseGateChecksItemType,
+  }),
 ).annotate({
   identifier: "GetRollingReleaseConfigResponseRollingReleaseGateChecksItem",
 }) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksItem>;
@@ -1041,7 +945,7 @@ export const GetRollingReleaseConfigResponseRollingReleaseGateChecksItem = /*@__
 /** The checks to evaluate. An empty array means nothing is evaluated. */
 export type GetRollingReleaseConfigResponseRollingReleaseGateChecksList =
   Array<GetRollingReleaseConfigResponseRollingReleaseGateChecksItem>;
-export const GetRollingReleaseConfigResponseRollingReleaseGateChecksList = /*@__PURE__*/ S.Array(
+const GetRollingReleaseConfigResponseRollingReleaseGateChecksList = /*@__PURE__*/ S.Array(
   GetRollingReleaseConfigResponseRollingReleaseGateChecksItem,
 ) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseGateChecksList>;
 
@@ -1060,7 +964,7 @@ export interface GetRollingReleaseConfigResponseRollingReleaseGate {
   /** How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted. */
   windowSize?: number;
 }
-export const GetRollingReleaseConfigResponseRollingReleaseGate = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseConfigResponseRollingReleaseGate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetRollingReleaseConfigResponseRollingReleaseGateAction,
     checks: GetRollingReleaseConfigResponseRollingReleaseGateChecksList,
@@ -1084,7 +988,7 @@ export interface GetRollingReleaseConfigResponseRollingReleaseStagesItem {
   /** The percentage of traffic to serve to the canary deployment (0-100) */
   targetPercentage: number;
 }
-export const GetRollingReleaseConfigResponseRollingReleaseStagesItem = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseConfigResponseRollingReleaseStagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     duration: S.optional(S.Number),
     linearShift: S.optional(S.Boolean),
@@ -1098,7 +1002,7 @@ export const GetRollingReleaseConfigResponseRollingReleaseStagesItem = /*@__PURE
 /** An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100. */
 export type GetRollingReleaseConfigResponseRollingReleaseStagesList =
   Array<GetRollingReleaseConfigResponseRollingReleaseStagesItem>;
-export const GetRollingReleaseConfigResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
+const GetRollingReleaseConfigResponseRollingReleaseStagesList = /*@__PURE__*/ S.Array(
   GetRollingReleaseConfigResponseRollingReleaseStagesItem,
 ) as any as S.Schema<GetRollingReleaseConfigResponseRollingReleaseStagesList>;
 
@@ -1113,7 +1017,7 @@ export interface GetRollingReleaseConfigResponseRollingRelease {
   /** The environment that the release targets, currently only supports production. Adding in case we want to configure with alias groups or custom environments. */
   target: string;
 }
-export const GetRollingReleaseConfigResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseConfigResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canaryResponseHeader: S.optional(S.Boolean),
     gate: S.optional(GetRollingReleaseConfigResponseRollingReleaseGate),
@@ -1128,7 +1032,7 @@ export interface GetRollingReleaseConfigResponse {
   /** Project-level rolling release configuration that defines how deployments should be gradually rolled out */
   rollingRelease: GetRollingReleaseConfigResponseRollingRelease | null;
 }
-export const GetRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(GetRollingReleaseConfigResponseRollingRelease),
   }),
@@ -1146,7 +1050,7 @@ export interface StartRollingReleaseRequest {
   /** The ID of the canary deployment to start the rolling release for */
   canaryDeploymentId: string;
 }
-export const StartRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+const StartRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1162,14 +1066,11 @@ export const StartRollingReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 /** The currently active stage, null if the rollout is aborted */
 export type StartRollingReleaseResponseRollingReleaseActiveStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const StartRollingReleaseResponseRollingReleaseActiveStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** The advancement type of the rolling release */
 export type StartRollingReleaseResponseRollingReleaseAdvancementType =
   | "automatic"
   | "manual-approval";
-export const StartRollingReleaseResponseRollingReleaseAdvancementType = S.String;
+const StartRollingReleaseResponseRollingReleaseAdvancementType = S.String;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
 export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState =
@@ -1180,8 +1081,6 @@ export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState 
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const StartRollingReleaseResponseRollingReleaseCanaryDeploymentReadyState = S.String;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "api-trigger-git-deploy"
@@ -1194,14 +1093,10 @@ export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const StartRollingReleaseResponseRollingReleaseCanaryDeploymentSource = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type StartRollingReleaseResponseRollingReleaseCanaryDeploymentTarget =
   | "production"
   | "staging";
-export const StartRollingReleaseResponseRollingReleaseCanaryDeploymentTarget = S.String;
-
 /** The canary deployment being rolled out */
 export interface StartRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** A number containing the date when the deployment was created in milliseconds */
@@ -1220,7 +1115,7 @@ export interface StartRollingReleaseResponseRollingReleaseCanaryDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const StartRollingReleaseResponseRollingReleaseCanaryDeployment =
+const StartRollingReleaseResponseRollingReleaseCanaryDeployment =
   GetRollingReleaseResponseRollingReleaseCurrentDeployment as any as S.Schema<StartRollingReleaseResponseRollingReleaseCanaryDeployment>;
 
 /** The state of the deployment depending on the process of deploying, or if it is ready or in an error state */
@@ -1232,8 +1127,6 @@ export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState
   | "INITIALIZING"
   | "QUEUED"
   | "READY";
-export const StartRollingReleaseResponseRollingReleaseCurrentDeploymentReadyState = S.String;
-
 /** Where was the deployment created from. Best-effort guess for metrics only -- not authoritative; do not gate behavior on it. */
 export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "api-trigger-git-deploy"
@@ -1246,14 +1139,10 @@ export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource =
   | "import/repo"
   | "redeploy"
   | "v0-web";
-export const StartRollingReleaseResponseRollingReleaseCurrentDeploymentSource = S.String;
-
 /** If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment. */
 export type StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget =
   | "production"
   | "staging";
-export const StartRollingReleaseResponseRollingReleaseCurrentDeploymentTarget = S.String;
-
 /** The current deployment receiving production traffic */
 export interface StartRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A number containing the date when the deployment was created in milliseconds */
@@ -1272,34 +1161,28 @@ export interface StartRollingReleaseResponseRollingReleaseCurrentDeployment {
   /** A string with the unique URL of the deployment */
   url: string;
 }
-export const StartRollingReleaseResponseRollingReleaseCurrentDeployment =
+const StartRollingReleaseResponseRollingReleaseCurrentDeployment =
   CompleteRollingReleaseResponseRollingReleaseCanaryDeployment as any as S.Schema<StartRollingReleaseResponseRollingReleaseCurrentDeployment>;
 
 /** The next stage to be activated, null if not in ACTIVE state */
 export type StartRollingReleaseResponseRollingReleaseNextStage =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const StartRollingReleaseResponseRollingReleaseNextStage =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type StartRollingReleaseResponseRollingReleaseStagesItem =
   ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-export const StartRollingReleaseResponseRollingReleaseStagesItem =
-  ApproveRollingReleaseStageResponseRollingReleaseActiveStage;
-
 /** All stages configured for this rolling release */
 export type StartRollingReleaseResponseRollingReleaseStagesList =
   Array<ApproveRollingReleaseStageResponseRollingReleaseActiveStage>;
-export const StartRollingReleaseResponseRollingReleaseStagesList =
+const StartRollingReleaseResponseRollingReleaseStagesList =
   ApproveRollingReleaseStageResponseRollingReleaseStagesList as any as S.Schema<StartRollingReleaseResponseRollingReleaseStagesList>;
 
 /** The current state of the rolling release */
 export type StartRollingReleaseResponseRollingReleaseState = "ABORTED" | "ACTIVE" | "COMPLETE";
-export const StartRollingReleaseResponseRollingReleaseState = S.String;
+const StartRollingReleaseResponseRollingReleaseState = S.String;
 
 /** When set to `PAUSED`, the rollout is frozen at the current percentage until continued. */
 export type StartRollingReleaseResponseRollingReleaseSubstate = "PAUSED";
-export const StartRollingReleaseResponseRollingReleaseSubstate = S.String;
+const StartRollingReleaseResponseRollingReleaseSubstate = S.String;
 
 /** Rolling release information including configuration and document details, or null if no rolling release exists */
 export interface StartRollingReleaseResponseRollingRelease {
@@ -1328,7 +1211,7 @@ export interface StartRollingReleaseResponseRollingRelease {
   /** Unix timestamp in milliseconds when the rolling release was last updated */
   updatedAt: number;
 }
-export const StartRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
+const StartRollingReleaseResponseRollingRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeStage: S.NullOr(ApproveRollingReleaseStageResponseRollingReleaseActiveStage),
     advancementType: StartRollingReleaseResponseRollingReleaseAdvancementType,
@@ -1351,7 +1234,7 @@ export interface StartRollingReleaseResponse {
   /** Rolling release information including configuration and document details, or null if no rolling release exists */
   rollingRelease: StartRollingReleaseResponseRollingRelease | null;
 }
-export const StartRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
+const StartRollingReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollingRelease: S.NullOr(StartRollingReleaseResponseRollingRelease),
   }),
@@ -1367,7 +1250,7 @@ export interface UpdateRollingReleaseConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const UpdateRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idOrName: S.String.pipe(T.Label()),
     teamId: S.optional(S.String.pipe(T.Query())),
@@ -1382,55 +1265,25 @@ export const UpdateRollingReleaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateRollingReleaseConfigResponseBodyCase0 {
   rollingRelease: unknown | null;
 }
-export const UpdateRollingReleaseConfigResponseBodyCase0 =
-  DeleteRollingReleaseConfigResponse as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase0>;
-
 /** A stage object configured for a rolling release once a new deployment is triggered the first stage will be read in the proxy for first time visitors, and if a RNG < targetPercentage then it will serve the new deployment. Upon approval the next stage will be read, etc. */
 export type UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesItem =
   GetRollingReleaseConfigResponseRollingReleaseStagesItem;
-export const UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesItem =
-  GetRollingReleaseConfigResponseRollingReleaseStagesItem;
-
 export type UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesList =
   Array<GetRollingReleaseConfigResponseRollingReleaseStagesItem>;
-export const UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesList =
-  /*@__PURE__*/ S.Array(
-    GetRollingReleaseConfigResponseRollingReleaseStagesItem,
-  ) as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesList>;
-
 export interface UpdateRollingReleaseConfigResponseBodyCase1RollingRelease {
   stages?: UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesList | null;
 }
-export const UpdateRollingReleaseConfigResponseBodyCase1RollingRelease = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      stages: S.optional(
-        S.NullOr(UpdateRollingReleaseConfigResponseBodyCase1RollingReleaseStagesList),
-      ),
-    }),
-).annotate({
-  identifier: "UpdateRollingReleaseConfigResponseBodyCase1RollingRelease",
-}) as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase1RollingRelease>;
-
 export interface UpdateRollingReleaseConfigResponseBodyCase1 {
   rollingRelease: UpdateRollingReleaseConfigResponseBodyCase1RollingRelease | null;
 }
-export const UpdateRollingReleaseConfigResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollingRelease: S.NullOr(UpdateRollingReleaseConfigResponseBodyCase1RollingRelease),
-  }),
-).annotate({
-  identifier: "UpdateRollingReleaseConfigResponseBodyCase1",
-}) as any as S.Schema<UpdateRollingReleaseConfigResponseBodyCase1>;
-
 export type UpdateRollingReleaseConfigResponseBody =
   | UpdateRollingReleaseConfigResponseBodyCase0
   | UpdateRollingReleaseConfigResponseBodyCase1;
-export const UpdateRollingReleaseConfigResponseBody =
+const UpdateRollingReleaseConfigResponseBody =
   S.Unknown as any as S.Schema<UpdateRollingReleaseConfigResponseBody>;
 
 export type UpdateRollingReleaseConfigResponse = UpdateRollingReleaseConfigResponseBody;
-export const UpdateRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRollingReleaseConfigResponse = /*@__PURE__*/ S.suspend(() =>
   UpdateRollingReleaseConfigResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateRollingReleaseConfigResponse",

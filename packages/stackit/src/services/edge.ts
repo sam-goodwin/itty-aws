@@ -48,7 +48,7 @@ export interface CreateInstanceRequest {
   /** Service Plan configures the size of the Instance. */
   planId: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -77,7 +77,7 @@ export interface IpAllowListEntry {
   /** The unique identifier for the ipAllowListEntry entry. This value is immutable, used to identify entries for updates, and cannot be changed after creation. */
   uuid: string;
 }
-export const IpAllowListEntry = /*@__PURE__*/ S.suspend(() =>
+const IpAllowListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     description: S.optional(S.String),
@@ -88,7 +88,7 @@ export const IpAllowListEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpAllowListEntry" }) as any as S.Schema<IpAllowListEntry>;
 
 export type AclIpAllowListList = Array<IpAllowListEntry>;
-export const AclIpAllowListList = /*@__PURE__*/ S.Array(
+const AclIpAllowListList = /*@__PURE__*/ S.Array(
   IpAllowListEntry,
 ) as any as S.Schema<AclIpAllowListList>;
 
@@ -96,7 +96,7 @@ export const AclIpAllowListList = /*@__PURE__*/ S.Array(
 export interface Acl {
   ipAllowList?: AclIpAllowListList;
 }
-export const Acl = /*@__PURE__*/ S.suspend(() =>
+const Acl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipAllowList: S.optional(AclIpAllowListList),
   }),
@@ -104,7 +104,7 @@ export const Acl = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of the instance. */
 export type InstanceStatus = "error" | "reconciling" | "active" | "deleting";
-export const InstanceStatus = S.String;
+const InstanceStatus = S.String;
 
 export interface Instance {
   acl?: Acl;
@@ -123,7 +123,7 @@ export interface Instance {
   /** The current status of the instance. */
   status: InstanceStatus;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: S.optional(Acl),
     created: S.String,
@@ -144,7 +144,7 @@ export interface DeleteInstanceRequest {
   /** The full ID of the instance, <display_name>-<project_hash>. */
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -160,7 +160,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteInstanceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteInstanceResponse",
 }) as any as S.Schema<DeleteInstanceResponse>;
 
@@ -172,7 +172,7 @@ export interface DeleteInstanceByNameRequest {
   /** The instance display name. */
   displayName: string;
 }
-export const DeleteInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -190,7 +190,7 @@ export const DeleteInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteInstanceByNameRequest>;
 
 export interface DeleteInstanceByNameResponse {}
-export const DeleteInstanceByNameResponse =
+const DeleteInstanceByNameResponse =
   DeleteInstanceResponse as any as S.Schema<DeleteInstanceByNameResponse>;
 
 export interface GetInstanceRequest {
@@ -201,7 +201,7 @@ export interface GetInstanceRequest {
   /** The full ID of the instance, <display_name>-<project_hash>. */
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -224,7 +224,7 @@ export interface GetInstanceByNameRequest {
   /** The instance display name. */
   displayName: string;
 }
-export const GetInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -249,7 +249,7 @@ export interface GetKubeconfigByInstanceIdRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
-export const GetKubeconfigByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKubeconfigByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -269,15 +269,12 @@ export const GetKubeconfigByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The kubeconfig for the instance. */
 export type KubeconfigRaw = { [key: string]: unknown | undefined };
-export const KubeconfigRaw = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<KubeconfigRaw>;
+const KubeconfigRaw = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<KubeconfigRaw>;
 
 export interface Kubeconfig {
   kubeconfig: KubeconfigRaw;
 }
-export const Kubeconfig = /*@__PURE__*/ S.suspend(() =>
+const Kubeconfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kubeconfig: KubeconfigRaw,
   }),
@@ -293,7 +290,7 @@ export interface GetKubeconfigByInstanceNameRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
-export const GetKubeconfigByInstanceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKubeconfigByInstanceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -321,7 +318,7 @@ export interface GetTokenByInstanceIdRequest {
   /** Expiration of the token in seconds */
   expirationSeconds?: number;
 }
-export const GetTokenByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -342,7 +339,7 @@ export const GetTokenByInstanceIdRequest = /*@__PURE__*/ S.suspend(() =>
 export interface Token {
   token: string;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
+const Token = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }),
@@ -358,7 +355,7 @@ export interface GetTokenByInstanceNameRequest {
   /** Expiration of the included token in seconds */
   expirationSeconds?: number;
 }
-export const GetTokenByInstanceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTokenByInstanceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -380,7 +377,7 @@ export interface ListCompatibleKubernetesReleasesRequest {
   /** The name of the Talos release. */
   talosVersion: string;
 }
-export const ListCompatibleKubernetesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCompatibleKubernetesReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     talosVersion: S.String.pipe(T.Query()),
   }).pipe(
@@ -397,7 +394,7 @@ export const ListCompatibleKubernetesReleasesRequest = /*@__PURE__*/ S.suspend((
 
 /** Array of Kubernetes version strings. */
 export type KubernetesReleaseListK8sReleasesList = Array<string>;
-export const KubernetesReleaseListK8sReleasesList = /*@__PURE__*/ S.Array(
+const KubernetesReleaseListK8sReleasesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KubernetesReleaseListK8sReleasesList>;
 
@@ -406,7 +403,7 @@ export interface KubernetesReleaseList {
   /** Array of Kubernetes version strings. */
   k8s_releases: KubernetesReleaseListK8sReleasesList;
 }
-export const KubernetesReleaseList = /*@__PURE__*/ S.suspend(() =>
+const KubernetesReleaseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     k8s_releases: KubernetesReleaseListK8sReleasesList,
   }),
@@ -418,7 +415,7 @@ export interface ListInstancesRequest {
   /** The STACKIT region the instance is part of. */
   regionId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -433,14 +430,14 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 
 export type InstanceListInstancesList = Array<Instance>;
-export const InstanceListInstancesList = /*@__PURE__*/ S.Array(
+const InstanceListInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<InstanceListInstancesList>;
 
 export interface InstanceList {
   instances: InstanceListInstancesList;
 }
-export const InstanceList = /*@__PURE__*/ S.suspend(() =>
+const InstanceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: InstanceListInstancesList,
   }),
@@ -450,7 +447,7 @@ export interface ListPlansProjectRequest {
   /** The STACKIT portal project UUID the plan is part of. */
   projectId: string;
 }
-export const ListPlansProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlansProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -475,7 +472,7 @@ export interface Plan {
   /** Service Plan Name */
   name?: string;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     id: S.optional(S.String),
@@ -486,14 +483,14 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Plan" }) as any as S.Schema<Plan>;
 
 export type PlanListValidPlansList = Array<Plan>;
-export const PlanListValidPlansList = /*@__PURE__*/ S.Array(
+const PlanListValidPlansList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<PlanListValidPlansList>;
 
 export interface PlanList {
   validPlans?: PlanListValidPlansList;
 }
-export const PlanList = /*@__PURE__*/ S.suspend(() =>
+const PlanList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validPlans: S.optional(PlanListValidPlansList),
   }),
@@ -511,7 +508,7 @@ export interface UpdateInstanceRequest {
   /** Service Plan configures the size of the Instance. */
   planId?: string;
 }
-export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -529,8 +526,7 @@ export const UpdateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateInstanceRequest" }) as any as S.Schema<UpdateInstanceRequest>;
 
 export interface UpdateInstanceResponse {}
-export const UpdateInstanceResponse =
-  DeleteInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
+const UpdateInstanceResponse = DeleteInstanceResponse as any as S.Schema<UpdateInstanceResponse>;
 
 export interface UpdateInstanceByNameRequest {
   /** The STACKIT portal project UUID the instance is part of. */
@@ -544,7 +540,7 @@ export interface UpdateInstanceByNameRequest {
   /** Service Plan configures the size of the Instance. */
   planId?: string;
 }
-export const UpdateInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     regionId: S.String.pipe(T.Label()),
@@ -564,7 +560,7 @@ export const UpdateInstanceByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateInstanceByNameRequest>;
 
 export interface UpdateInstanceByNameResponse {}
-export const UpdateInstanceByNameResponse =
+const UpdateInstanceByNameResponse =
   DeleteInstanceResponse as any as S.Schema<UpdateInstanceByNameResponse>;
 
 export type CreateInstanceError = BadRequest | Conflict | StackitOpError;

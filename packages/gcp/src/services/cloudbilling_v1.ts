@@ -65,7 +65,7 @@ export interface CancelTaskRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const CancelTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String),
   }),
@@ -77,7 +77,7 @@ export interface CancelTasksRequest {
   /** Request body */
   body?: CancelTaskRequest;
 }
-export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelTaskRequest.pipe(T.HttpBody())),
@@ -91,13 +91,10 @@ export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelTasksRequest" }) as any as S.Schema<CancelTasksRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type StringList_ = Array<string>;
-export const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
+const StringList_ = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList_>;
 
 /** FilePart represents the different ways files can be provided. If files are small, directly feeding the bytes is supported via file_with_bytes. If the file is large, the agent should read the content as appropriate directly from the file_with_uri source. */
 export interface FilePart {
@@ -106,7 +103,7 @@ export interface FilePart {
   name?: string;
   fileWithBytes?: string;
 }
-export const FilePart = /*@__PURE__*/ S.suspend(() =>
+const FilePart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     fileWithUri: S.optional(S.String),
@@ -119,7 +116,7 @@ export const FilePart = /*@__PURE__*/ S.suspend(() =>
 export interface DataPart {
   data?: DocumentMap;
 }
-export const DataPart = /*@__PURE__*/ S.suspend(() =>
+const DataPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
   }),
@@ -133,7 +130,7 @@ export interface Part {
   metadata?: DocumentMap;
   data?: DataPart;
 }
-export const Part = /*@__PURE__*/ S.suspend(() =>
+const Part = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     file: S.optional(FilePart),
@@ -143,10 +140,10 @@ export const Part = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 
 export type PartList = Array<Part>;
-export const PartList = /*@__PURE__*/ S.Array(Part) as any as S.Schema<PartList>;
+const PartList = /*@__PURE__*/ S.Array(Part) as any as S.Schema<PartList>;
 
 export type MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
-export const MessageRoleEnum = S.String;
+const MessageRoleEnum = S.String;
 
 /** Message is one unit of communication between client and server. It is associated with a context and optionally a task. Since the server is responsible for the context definition, it must always provide a context_id in its messages. The client can optionally provide the context_id if it knows the context to associate the message to. Similarly for task_id, except the server decides if a task is created and whether to include the task_id. */
 export interface Message {
@@ -165,7 +162,7 @@ export interface Message {
   /** The unique identifier (e.g. UUID)of the message. This is required and created by the message creator. */
   messageId?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     extensions: S.optional(StringList_),
@@ -178,7 +175,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 export type TaskStatusStateEnum =
   | "TASK_STATE_UNSPECIFIED"
@@ -190,7 +187,7 @@ export type TaskStatusStateEnum =
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
   | "TASK_STATE_AUTH_REQUIRED";
-export const TaskStatusStateEnum = S.String;
+const TaskStatusStateEnum = S.String;
 
 /** A container for the status of a task */
 export interface TaskStatus {
@@ -201,7 +198,7 @@ export interface TaskStatus {
   /** The current state of this task */
   state?: TaskStatusStateEnum;
 }
-export const TaskStatus = /*@__PURE__*/ S.suspend(() =>
+const TaskStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     timestamp: S.optional(S.String),
@@ -224,7 +221,7 @@ export interface Artifact {
   /** Unique identifier (e.g. UUID) for the artifact. It must be at least unique within a task. */
   artifactId?: string;
 }
-export const Artifact = /*@__PURE__*/ S.suspend(() =>
+const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(StringList_),
     metadata: S.optional(DocumentMap),
@@ -236,7 +233,7 @@ export const Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 
 export type ArtifactList = Array<Artifact>;
-export const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
+const ArtifactList = /*@__PURE__*/ S.Array(Artifact) as any as S.Schema<ArtifactList>;
 
 /** Task is the core unit of action for A2A. It has a current status and when results are created for the task they are stored in the artifact. If there are multiple turns for a task, these are stored in history. */
 export interface Task {
@@ -253,7 +250,7 @@ export interface Task {
   /** A set of output artifacts for a Task. */
   artifacts?: ArtifactList;
 }
-export const Task = /*@__PURE__*/ S.suspend(() =>
+const Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     history: S.optional(MessageList),
@@ -279,7 +276,7 @@ export interface BillingAccount {
   /** The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console. */
   displayName?: string;
 }
-export const BillingAccount = /*@__PURE__*/ S.suspend(() =>
+const BillingAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     name: S.optional(S.String),
@@ -296,7 +293,7 @@ export interface CreateBillingAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const CreateBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String.pipe(T.Query())),
     body: S.optional(BillingAccount.pipe(T.HttpBody())),
@@ -317,7 +314,7 @@ export interface CreateBillingAccountsSubAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BillingAccount.pipe(T.HttpBody())),
@@ -338,7 +335,7 @@ export interface CreateOrganizationsBillingAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const CreateOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BillingAccount.pipe(T.HttpBody())),
@@ -360,7 +357,7 @@ export interface AuthenticationInfo {
   /** Optional credentials */
   credentials?: string;
 }
-export const AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemes: S.optional(StringList_),
     credentials: S.optional(S.String),
@@ -378,7 +375,7 @@ export interface PushNotificationConfig {
   /** A unique identifier (e.g. UUID) for this push notification. */
   id?: string;
 }
-export const PushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const PushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     authentication: S.optional(AuthenticationInfo),
@@ -393,7 +390,7 @@ export interface TaskPushNotificationConfig {
   /** The push notification configuration details. */
   pushNotificationConfig?: PushNotificationConfig;
 }
-export const TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     pushNotificationConfig: S.optional(PushNotificationConfig),
@@ -412,7 +409,7 @@ export interface CreateTasksPushNotificationConfigsRequest {
   /** Request body */
   body?: TaskPushNotificationConfig;
 }
-export const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -435,7 +432,7 @@ export interface DeleteTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),
@@ -452,7 +449,7 @@ export const DeleteTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -460,7 +457,7 @@ export interface GetBillingAccountsRequest {
   /** Required. The resource name of the billing account to retrieve. For example, `billingAccounts/012345-567890-ABCDEF`. */
   name: string;
 }
-export const GetBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -474,7 +471,7 @@ export interface GetBillingInfoProjectsRequest {
   /** Required. The resource name of the project for which billing information is retrieved. For example, `projects/tokyo-rain-123`. */
   name: string;
 }
-export const GetBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -499,7 +496,7 @@ export interface ProjectBillingInfo {
   /** Output only. The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This is a convenience field so that you don't need to parse the `name` field to obtain a project ID. */
   projectId?: string;
 }
-export const ProjectBillingInfo = /*@__PURE__*/ S.suspend(() =>
+const ProjectBillingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingEnabled: S.optional(S.Boolean),
     billingAccountName: S.optional(S.String),
@@ -512,7 +509,7 @@ export interface GetCardV1Request {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const GetCardV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetCardV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -527,7 +524,7 @@ export interface AgentProvider {
   /** The providers organization name Example: "Google" */
   organization?: string;
 }
-export const AgentProvider = /*@__PURE__*/ S.suspend(() =>
+const AgentProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     organization: S.optional(S.String),
@@ -543,7 +540,7 @@ export interface AgentInterface {
   /** The url this interface is found at. */
   url?: string;
 }
-export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
+const AgentInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transport: S.optional(S.String),
     tenant: S.optional(S.String),
@@ -552,7 +549,7 @@ export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentInterface" }) as any as S.Schema<AgentInterface>;
 
 export type AgentInterfaceList = Array<AgentInterface>;
-export const AgentInterfaceList = /*@__PURE__*/ S.Array(
+const AgentInterfaceList = /*@__PURE__*/ S.Array(
   AgentInterface,
 ) as any as S.Schema<AgentInterfaceList>;
 
@@ -567,7 +564,7 @@ export interface AgentExtension {
   /** Optional configuration for the extension. */
   params?: DocumentMap;
 }
-export const AgentExtension = /*@__PURE__*/ S.suspend(() =>
+const AgentExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     required: S.optional(S.Boolean),
@@ -577,7 +574,7 @@ export const AgentExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentExtension" }) as any as S.Schema<AgentExtension>;
 
 export type AgentExtensionList = Array<AgentExtension>;
-export const AgentExtensionList = /*@__PURE__*/ S.Array(
+const AgentExtensionList = /*@__PURE__*/ S.Array(
   AgentExtension,
 ) as any as S.Schema<AgentExtensionList>;
 
@@ -590,7 +587,7 @@ export interface AgentCapabilities {
   /** If the agent can send push notifications to the clients webhook */
   pushNotifications?: boolean;
 }
-export const AgentCapabilities = /*@__PURE__*/ S.suspend(() =>
+const AgentCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(AgentExtensionList),
     streaming: S.optional(S.Boolean),
@@ -602,14 +599,14 @@ export const AgentCapabilities = /*@__PURE__*/ S.suspend(() =>
 export interface StringList {
   list?: StringList_;
 }
-export const StringList = /*@__PURE__*/ S.suspend(() =>
+const StringList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list: S.optional(StringList_),
   }),
 ).annotate({ identifier: "StringList" }) as any as S.Schema<StringList>;
 
 export type StringListMap = { [key: string]: StringList | undefined };
-export const StringListMap = /*@__PURE__*/ S.Record(
+const StringListMap = /*@__PURE__*/ S.Record(
   S.String,
   StringList,
 ) as any as S.Schema<StringListMap>;
@@ -617,14 +614,14 @@ export const StringListMap = /*@__PURE__*/ S.Record(
 export interface Security {
   schemes?: StringListMap;
 }
-export const Security = /*@__PURE__*/ S.suspend(() =>
+const Security = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemes: S.optional(StringListMap),
   }),
 ).annotate({ identifier: "Security" }) as any as S.Schema<Security>;
 
 export type SecurityList = Array<Security>;
-export const SecurityList = /*@__PURE__*/ S.Array(Security) as any as S.Schema<SecurityList>;
+const SecurityList = /*@__PURE__*/ S.Array(Security) as any as S.Schema<SecurityList>;
 
 /** AgentSkill represents a unit of action/solution that the agent can perform. One can think of this as a type of highly reliable solution that an agent can be tasked to provide. Agents have the autonomy to choose how and when to use specific skills, but clients should have confidence that if the skill is defined that unit of action can be reliably performed. */
 export interface AgentSkill {
@@ -645,7 +642,7 @@ export interface AgentSkill {
   /** A human (or llm) readable description of the skill details and behaviors. */
   description?: string;
 }
-export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
+const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputModes: S.optional(StringList_),
     examples: S.optional(StringList_),
@@ -659,7 +656,7 @@ export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentSkill" }) as any as S.Schema<AgentSkill>;
 
 export type AgentSkillList = Array<AgentSkill>;
-export const AgentSkillList = /*@__PURE__*/ S.Array(AgentSkill) as any as S.Schema<AgentSkillList>;
+const AgentSkillList = /*@__PURE__*/ S.Array(AgentSkill) as any as S.Schema<AgentSkillList>;
 
 export interface HTTPAuthSecurityScheme {
   /** Description of this security scheme. */
@@ -669,7 +666,7 @@ export interface HTTPAuthSecurityScheme {
   /** The name of the HTTP Authentication scheme to be used in the Authorization header as defined in RFC7235. The values used SHOULD be registered in the IANA Authentication Scheme registry. The value is case-insensitive, as defined in RFC7235. */
   scheme?: string;
 }
-export const HTTPAuthSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const HTTPAuthSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     bearerFormat: S.optional(S.String),
@@ -678,7 +675,7 @@ export const HTTPAuthSecurityScheme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HTTPAuthSecurityScheme" }) as any as S.Schema<HTTPAuthSecurityScheme>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface ClientCredentialsOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
@@ -688,7 +685,7 @@ export interface ClientCredentialsOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
-export const ClientCredentialsOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const ClientCredentialsOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refreshUrl: S.optional(S.String),
     scopes: S.optional(StringMap),
@@ -708,7 +705,7 @@ export interface AuthorizationCodeOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
-export const AuthorizationCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationUrl: S.optional(S.String),
     refreshUrl: S.optional(S.String),
@@ -727,7 +724,7 @@ export interface PasswordOAuthFlow {
   /** The token URL to be used for this flow. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   tokenUrl?: string;
 }
-export const PasswordOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const PasswordOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopes: S.optional(StringMap),
     refreshUrl: S.optional(S.String),
@@ -743,7 +740,7 @@ export interface ImplicitOAuthFlow {
   /** The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty. */
   scopes?: StringMap;
 }
-export const ImplicitOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const ImplicitOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationUrl: S.optional(S.String),
     refreshUrl: S.optional(S.String),
@@ -757,7 +754,7 @@ export interface OAuthFlows {
   password?: PasswordOAuthFlow;
   implicit?: ImplicitOAuthFlow;
 }
-export const OAuthFlows = /*@__PURE__*/ S.suspend(() =>
+const OAuthFlows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCredentials: S.optional(ClientCredentialsOAuthFlow),
     authorizationCode: S.optional(AuthorizationCodeOAuthFlow),
@@ -774,7 +771,7 @@ export interface OAuth2SecurityScheme {
   /** Description of this security scheme. */
   description?: string;
 }
-export const OAuth2SecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const OAuth2SecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2MetadataUrl: S.optional(S.String),
     flows: S.optional(OAuthFlows),
@@ -786,7 +783,7 @@ export interface MutualTlsSecurityScheme {
   /** Description of this security scheme. */
   description?: string;
 }
-export const MutualTlsSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const MutualTlsSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -798,7 +795,7 @@ export interface OpenIdConnectSecurityScheme {
   /** Well-known URL to discover the [[OpenID-Connect-Discovery]] provider metadata. */
   openIdConnectUrl?: string;
 }
-export const OpenIdConnectSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const OpenIdConnectSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     openIdConnectUrl: S.optional(S.String),
@@ -815,7 +812,7 @@ export interface APIKeySecurityScheme {
   /** Name of the header, query or cookie parameter to be used. */
   name?: string;
 }
-export const APIKeySecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const APIKeySecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     description: S.optional(S.String),
@@ -830,7 +827,7 @@ export interface SecurityScheme {
   openIdConnectSecurityScheme?: OpenIdConnectSecurityScheme;
   apiKeySecurityScheme?: APIKeySecurityScheme;
 }
-export const SecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const SecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     httpAuthSecurityScheme: S.optional(HTTPAuthSecurityScheme),
     oauth2SecurityScheme: S.optional(OAuth2SecurityScheme),
@@ -841,7 +838,7 @@ export const SecurityScheme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityScheme" }) as any as S.Schema<SecurityScheme>;
 
 export type SecuritySchemeMap = { [key: string]: SecurityScheme | undefined };
-export const SecuritySchemeMap = /*@__PURE__*/ S.Record(
+const SecuritySchemeMap = /*@__PURE__*/ S.Record(
   S.String,
   SecurityScheme,
 ) as any as S.Schema<SecuritySchemeMap>;
@@ -855,7 +852,7 @@ export interface AgentCardSignature {
   /** Required. The computed signature, base64url-encoded. Required. */
   signature?: string;
 }
-export const AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
+const AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(DocumentMap),
     protected: S.optional(S.String),
@@ -864,7 +861,7 @@ export const AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentCardSignature" }) as any as S.Schema<AgentCardSignature>;
 
 export type AgentCardSignatureList = Array<AgentCardSignature>;
-export const AgentCardSignatureList = /*@__PURE__*/ S.Array(
+const AgentCardSignatureList = /*@__PURE__*/ S.Array(
   AgentCardSignature,
 ) as any as S.Schema<AgentCardSignatureList>;
 
@@ -907,7 +904,7 @@ export interface AgentCard {
   /** A url to provide additional documentation about the agent. */
   documentationUrl?: string;
 }
-export const AgentCard = /*@__PURE__*/ S.suspend(() =>
+const AgentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(AgentProvider),
     defaultOutputModes: S.optional(StringList_),
@@ -936,7 +933,7 @@ export interface GetIamPolicyBillingAccountsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -962,7 +959,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     expression: S.optional(S.String),
@@ -980,7 +977,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList_),
@@ -989,14 +986,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -1005,7 +1002,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList_),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -1013,7 +1010,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -1024,7 +1021,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -1032,9 +1029,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1047,7 +1042,7 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     bindings: S.optional(BindingList),
@@ -1064,7 +1059,7 @@ export interface GetTasksRequest {
   /** The number of most recent messages from the task's history to retrieve. */
   historyLength?: number;
 }
-export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1080,7 +1075,7 @@ export interface GetTasksPushNotificationConfigsRequest {
   /** The resource name of the config to retrieve. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
   name: string;
 }
-export const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1101,7 +1096,7 @@ export interface ListBillingAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent?: string;
 }
-export const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1119,7 +1114,7 @@ export const ListBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsRequest>;
 
 export type BillingAccountList = Array<BillingAccount>;
-export const BillingAccountList = /*@__PURE__*/ S.Array(
+const BillingAccountList = /*@__PURE__*/ S.Array(
   BillingAccount,
 ) as any as S.Schema<BillingAccountList>;
 
@@ -1130,7 +1125,7 @@ export interface ListBillingAccountsResponse {
   /** A list of billing accounts. */
   billingAccounts?: BillingAccountList;
 }
-export const ListBillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     billingAccounts: S.optional(BillingAccountList),
@@ -1147,7 +1142,7 @@ export interface ListBillingAccountsProjectsRequest {
   /** A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous `ListProjectBillingInfo` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
-export const ListBillingAccountsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1164,7 +1159,7 @@ export const ListBillingAccountsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsProjectsRequest>;
 
 export type ProjectBillingInfoList = Array<ProjectBillingInfo>;
-export const ProjectBillingInfoList = /*@__PURE__*/ S.Array(
+const ProjectBillingInfoList = /*@__PURE__*/ S.Array(
   ProjectBillingInfo,
 ) as any as S.Schema<ProjectBillingInfoList>;
 
@@ -1175,7 +1170,7 @@ export interface ListProjectBillingInfoResponse {
   /** A list of `ProjectBillingInfo` resources representing the projects associated with the billing account. */
   projectBillingInfo?: ProjectBillingInfoList;
 }
-export const ListProjectBillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectBillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     projectBillingInfo: S.optional(ProjectBillingInfoList),
@@ -1194,7 +1189,7 @@ export interface ListBillingAccountsSubAccountsRequest {
   /** Options for how to filter the returned billing accounts. This only supports filtering for [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing account. (for example, `master_billing_account=billingAccounts/012345-678901-ABCDEF`). Boolean algebra and other fields are not currently supported. */
   filter?: string;
 }
-export const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSubAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1221,7 +1216,7 @@ export interface ListOrganizationsBillingAccountsRequest {
   /** Optional. The parent resource to list billing accounts from. Format: - `organizations/{organization_id}`, for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` */
   parent: string;
 }
-export const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1244,7 +1239,7 @@ export interface ListServicesRequest {
   /** A token identifying a page of results to return. This should be a `next_page_token` value returned from a previous `ListServices` call. If unspecified, the first page of results is returned. */
   pageToken?: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1264,7 +1259,7 @@ export interface Service {
   /** The identifier for the service. Example: "6F81-5844-456A" */
   serviceId?: string;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     businessEntityName: S.optional(S.String),
@@ -1274,7 +1269,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Response message for `ListServices`. */
 export interface ListServicesResponse {
@@ -1283,7 +1278,7 @@ export interface ListServicesResponse {
   /** A list of services. */
   services?: ServiceList;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     services: S.optional(ServiceList),
@@ -1304,7 +1299,7 @@ export interface ListServicesSkusRequest {
   /** Requested page size. Defaults to 5000. */
   pageSize?: number;
 }
-export const ListServicesSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     endTime: S.optional(S.String.pipe(T.Query())),
@@ -1330,7 +1325,7 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nanos: S.optional(S.Number),
     units: S.optional(S.String),
@@ -1345,7 +1340,7 @@ export interface TierRate {
   /** The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost $10. */
   unitPrice?: Money;
 }
-export const TierRate = /*@__PURE__*/ S.suspend(() =>
+const TierRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startUsageAmount: S.optional(S.Number),
     unitPrice: S.optional(Money),
@@ -1353,7 +1348,7 @@ export const TierRate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TierRate" }) as any as S.Schema<TierRate>;
 
 export type TierRateList = Array<TierRate>;
-export const TierRateList = /*@__PURE__*/ S.Array(TierRate) as any as S.Schema<TierRateList>;
+const TierRateList = /*@__PURE__*/ S.Array(TierRate) as any as S.Schema<TierRateList>;
 
 /** Expresses a mathematical pricing formula. For Example:- `usage_unit: GBy` `tiered_rates:` `[start_usage_amount: 20, unit_price: $10]` `[start_usage_amount: 100, unit_price: $5]` The above expresses a pricing formula where the first 20GB is free, the next 80GB is priced at $10 per GB followed by $5 per GB for additional usage. */
 export interface PricingExpression {
@@ -1372,7 +1367,7 @@ export interface PricingExpression {
   /** The base unit for the SKU which is the unit used in usage exports. Example: "By" */
   baseUnit?: string;
 }
-export const PricingExpression = /*@__PURE__*/ S.suspend(() =>
+const PricingExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usageUnit: S.optional(S.String),
     tieredRates: S.optional(TierRateList),
@@ -1388,13 +1383,13 @@ export type AggregationInfoAggregationLevelEnum =
   | "AGGREGATION_LEVEL_UNSPECIFIED"
   | "ACCOUNT"
   | "PROJECT";
-export const AggregationInfoAggregationLevelEnum = S.String;
+const AggregationInfoAggregationLevelEnum = S.String;
 
 export type AggregationInfoAggregationIntervalEnum =
   | "AGGREGATION_INTERVAL_UNSPECIFIED"
   | "DAILY"
   | "MONTHLY";
-export const AggregationInfoAggregationIntervalEnum = S.String;
+const AggregationInfoAggregationIntervalEnum = S.String;
 
 /** Represents the aggregation level and interval for pricing of a single SKU. */
 export interface AggregationInfo {
@@ -1403,7 +1398,7 @@ export interface AggregationInfo {
   aggregationCount?: number;
   aggregationInterval?: AggregationInfoAggregationIntervalEnum;
 }
-export const AggregationInfo = /*@__PURE__*/ S.suspend(() =>
+const AggregationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationLevel: S.optional(AggregationInfoAggregationLevelEnum),
     aggregationCount: S.optional(S.Number),
@@ -1424,7 +1419,7 @@ export interface PricingInfo {
   /** The timestamp from which this pricing was effective within the requested time range. This is guaranteed to be greater than or equal to the start_time field in the request and less than the end_time field in the request. If a time range was not specified in the request this field will be equivalent to a time within the last 12 hours, indicating the latest pricing info. */
   effectiveTime?: string;
 }
-export const PricingInfo = /*@__PURE__*/ S.suspend(() =>
+const PricingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricingExpression: S.optional(PricingExpression),
     currencyConversionRate: S.optional(S.Number),
@@ -1435,12 +1430,10 @@ export const PricingInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PricingInfo" }) as any as S.Schema<PricingInfo>;
 
 export type PricingInfoList = Array<PricingInfo>;
-export const PricingInfoList = /*@__PURE__*/ S.Array(
-  PricingInfo,
-) as any as S.Schema<PricingInfoList>;
+const PricingInfoList = /*@__PURE__*/ S.Array(PricingInfo) as any as S.Schema<PricingInfoList>;
 
 export type GeoTaxonomyTypeEnum = "TYPE_UNSPECIFIED" | "GLOBAL" | "REGIONAL" | "MULTI_REGIONAL";
-export const GeoTaxonomyTypeEnum = S.String;
+const GeoTaxonomyTypeEnum = S.String;
 
 /** Encapsulates the geographic taxonomy data for a sku. */
 export interface GeoTaxonomy {
@@ -1449,7 +1442,7 @@ export interface GeoTaxonomy {
   /** The list of regions associated with a sku. Empty for Global skus, which are associated with all Google Cloud regions. */
   regions?: StringList_;
 }
-export const GeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
+const GeoTaxonomy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GeoTaxonomyTypeEnum),
     regions: S.optional(StringList_),
@@ -1467,7 +1460,7 @@ export interface Category {
   /** Represents how the SKU is consumed. Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr" etc. */
   usageType?: string;
 }
-export const Category = /*@__PURE__*/ S.suspend(() =>
+const Category = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceDisplayName: S.optional(S.String),
     resourceGroup: S.optional(S.String),
@@ -1495,7 +1488,7 @@ export interface Sku {
   /** The category hierarchy of this SKU, purely for organizational purpose. */
   category?: Category;
 }
-export const Sku = /*@__PURE__*/ S.suspend(() =>
+const Sku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -1509,7 +1502,7 @@ export const Sku = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 export type SkuList = Array<Sku>;
-export const SkuList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuList>;
+const SkuList = /*@__PURE__*/ S.Array(Sku) as any as S.Schema<SkuList>;
 
 /** Response message for `ListSkus`. */
 export interface ListSkusResponse {
@@ -1518,7 +1511,7 @@ export interface ListSkusResponse {
   /** A token to retrieve the next page of results. To retrieve the next page, call `ListSkus` again with the `page_token` field set to this value. This field is empty if there are no more results to retrieve. */
   nextPageToken?: string;
 }
-export const ListSkusResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSkusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skus: S.optional(SkuList),
     nextPageToken: S.optional(S.String),
@@ -1535,7 +1528,7 @@ export interface ListTasksPushNotificationConfigsRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1553,7 +1546,7 @@ export const ListTasksPushNotificationConfigsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListTasksPushNotificationConfigsRequest>;
 
 export type TaskPushNotificationConfigList = Array<TaskPushNotificationConfig>;
-export const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
+const TaskPushNotificationConfigList = /*@__PURE__*/ S.Array(
   TaskPushNotificationConfig,
 ) as any as S.Schema<TaskPushNotificationConfigList>;
 
@@ -1563,7 +1556,7 @@ export interface ListTaskPushNotificationConfigResponse {
   /** The list of push notification configurations. */
   configs?: TaskPushNotificationConfigList;
 }
-export const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTaskPushNotificationConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     configs: S.optional(TaskPushNotificationConfigList),
@@ -1577,7 +1570,7 @@ export interface MoveBillingAccountRequest {
   /** Required. The resource name of the Organization to move the billing account under. Must be of the form `organizations/{organization_id}`. */
   destinationParent?: string;
 }
-export const MoveBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationParent: S.optional(S.String),
   }),
@@ -1591,7 +1584,7 @@ export interface MoveBillingAccountsRequest {
   /** Request body */
   body?: MoveBillingAccountRequest;
 }
-export const MoveBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MoveBillingAccountRequest.pipe(T.HttpBody())),
@@ -1612,7 +1605,7 @@ export interface MoveOrganizationsBillingAccountsRequest {
   /** Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. */
   name: string;
 }
-export const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveOrganizationsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationParent: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1635,7 +1628,7 @@ export interface PatchBillingAccountsRequest {
   /** Request body */
   body?: BillingAccount;
 }
-export const PatchBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1658,7 +1651,7 @@ export interface SendMessageConfiguration {
   /** If true, the message will be blocking until the task is completed. If false, the message will be non-blocking and the task will be returned immediately. It is the caller's responsibility to check for any task updates. */
   blocking?: boolean;
 }
-export const SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historyLength: S.optional(S.Number),
     acceptedOutputModes: S.optional(StringList_),
@@ -1678,7 +1671,7 @@ export interface SendMessageRequest {
   /** Configuration for the send request. */
   configuration?: SendMessageConfiguration;
 }
-export const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     tenant: S.optional(S.String),
@@ -1691,7 +1684,7 @@ export interface SendMessageRequest_ {
   /** Request body */
   body?: SendMessageRequest;
 }
-export const SendMessageRequest_ = /*@__PURE__*/ S.suspend(() =>
+const SendMessageRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1708,7 +1701,7 @@ export interface SendMessageResponse {
   message?: Message;
   task?: Task;
 }
-export const SendMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const SendMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     task: S.optional(Task),
@@ -1722,7 +1715,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -1735,7 +1728,7 @@ export interface SetIamPolicyBillingAccountsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1754,7 +1747,7 @@ export interface StreamMessageRequest {
   /** Request body */
   body?: SendMessageRequest;
 }
-export const StreamMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SendMessageRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1781,7 +1774,7 @@ export interface TaskArtifactUpdateEvent {
   /** Whether this represents the last part of an artifact */
   lastChunk?: boolean;
 }
-export const TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextId: S.optional(S.String),
     artifact: S.optional(Artifact),
@@ -1805,7 +1798,7 @@ export interface TaskStatusUpdateEvent {
   /** The id of the task that is changed */
   taskId?: string;
 }
-export const TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     final: S.optional(S.Boolean),
     status: S.optional(TaskStatus),
@@ -1822,7 +1815,7 @@ export interface StreamResponse {
   artifactUpdate?: TaskArtifactUpdateEvent;
   statusUpdate?: TaskStatusUpdateEvent;
 }
-export const StreamResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     task: S.optional(Task),
@@ -1837,7 +1830,7 @@ export interface SubscribeTasksRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
-export const SubscribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscribeTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     tenant: S.optional(S.String.pipe(T.Query())),
@@ -1855,7 +1848,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList_;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList_),
   }),
@@ -1869,7 +1862,7 @@ export interface TestIamPermissionsBillingAccountsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1889,7 +1882,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList_;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateBillingInfoProjectsRequest {
@@ -1898,7 +1891,7 @@ export interface UpdateBillingInfoProjectsRequest {
   /** Request body */
   body?: ProjectBillingInfo;
 }
-export const UpdateBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBillingInfoProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ProjectBillingInfo.pipe(T.HttpBody())),

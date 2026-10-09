@@ -43,7 +43,7 @@ export interface CreateWarehouseSavedQueriesAncestorRequest {
   /** How many hops to walk, so 1 gives the immediate neighbours. Omit to walk the whole cone. */
   level?: number | null;
 }
-export const CreateWarehouseSavedQueriesAncestorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesAncestorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -61,7 +61,7 @@ export const CreateWarehouseSavedQueriesAncestorRequest = /*@__PURE__*/ S.suspen
 
 /** Ids of the saved queries and warehouse tables this query reads from, directly or through other queries, and the names of the PostHog tables among them. */
 export type SavedQueryAncestorsAncestorsList = Array<string>;
-export const SavedQueryAncestorsAncestorsList = /*@__PURE__*/ S.Array(
+const SavedQueryAncestorsAncestorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SavedQueryAncestorsAncestorsList>;
 
@@ -69,7 +69,7 @@ export interface SavedQueryAncestors {
   /** Ids of the saved queries and warehouse tables this query reads from, directly or through other queries, and the names of the PostHog tables among them. */
   ancestors: SavedQueryAncestorsAncestorsList;
 }
-export const SavedQueryAncestors = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryAncestors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ancestors: SavedQueryAncestorsAncestorsList,
   }),
@@ -77,10 +77,9 @@ export const SavedQueryAncestors = /*@__PURE__*/ S.suspend(() =>
 
 /** Output columns that identify a row. Must include every GROUP BY column. */
 export type CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList = Array<string>;
-export const CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList>;
+const CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateWarehouseSavedQueriesCheckIncrementalRequestUniqueKeyList>;
 
 export interface CreateWarehouseSavedQueriesCheckIncrementalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -94,7 +93,7 @@ export interface CreateWarehouseSavedQueriesCheckIncrementalRequest {
   /** How far back before the watermark to re-read each run, to pick up late-arriving data. */
   lookback_seconds?: number;
 }
-export const CreateWarehouseSavedQueriesCheckIncrementalRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesCheckIncrementalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String,
@@ -116,29 +115,29 @@ export const CreateWarehouseSavedQueriesCheckIncrementalRequest = /*@__PURE__*/ 
 
 /** Output columns that could be used as the incremental key. Excludes aggregates, columns whose type cannot serve as an advancing watermark (strings, booleans, arrays), and for a union only includes columns every branch produces. */
 export type IncrementalEligibilityKeyCandidatesList = Array<string>;
-export const IncrementalEligibilityKeyCandidatesList =
+const IncrementalEligibilityKeyCandidatesList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityKeyCandidatesList>;
 
 /** Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key. */
 export type IncrementalEligibilityUniqueKeyCandidatesList = Array<string>;
-export const IncrementalEligibilityUniqueKeyCandidatesList =
+const IncrementalEligibilityUniqueKeyCandidatesList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityUniqueKeyCandidatesList>;
 
 /** Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine. */
 export type IncrementalEligibilityKeyCandidateTypesMap = { [key: string]: string | undefined };
-export const IncrementalEligibilityKeyCandidateTypesMap = /*@__PURE__*/ S.Record(
+const IncrementalEligibilityKeyCandidateTypesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IncrementalEligibilityKeyCandidateTypesMap>;
 
 /** Reasons this query cannot be incremental. Each names the construct responsible. */
 export type IncrementalEligibilityBlockersList = Array<string>;
-export const IncrementalEligibilityBlockersList =
+const IncrementalEligibilityBlockersList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityBlockersList>;
 
 /** Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh. */
 export type IncrementalEligibilityWarningsList = Array<string>;
-export const IncrementalEligibilityWarningsList =
+const IncrementalEligibilityWarningsList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalEligibilityWarningsList>;
 
 /** Whether a query can be materialized incrementally, and what stands in the way. */
@@ -156,7 +155,7 @@ export interface IncrementalEligibility {
   /** Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh. */
   warnings: IncrementalEligibilityWarningsList;
 }
-export const IncrementalEligibility = /*@__PURE__*/ S.suspend(() =>
+const IncrementalEligibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eligible: S.Boolean,
     key_candidates: IncrementalEligibilityKeyCandidatesList,
@@ -175,7 +174,7 @@ export interface CreateWarehouseSavedQueriesDescendantRequest {
   /** How many hops to walk, so 1 gives the immediate neighbours. Omit to walk the whole cone. */
   level?: number | null;
 }
-export const CreateWarehouseSavedQueriesDescendantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesDescendantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -193,14 +192,14 @@ export const CreateWarehouseSavedQueriesDescendantRequest = /*@__PURE__*/ S.susp
 
 /** Ids of the saved queries that read from this query, directly or through other queries. */
 export type SavedQueryDescendantsDescendantsList = Array<string>;
-export const SavedQueryDescendantsDescendantsList =
+const SavedQueryDescendantsDescendantsList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<SavedQueryDescendantsDescendantsList>;
 
 export interface SavedQueryDescendants {
   /** Ids of the saved queries that read from this query, directly or through other queries. */
   descendants: SavedQueryDescendantsDescendantsList;
 }
-export const SavedQueryDescendants = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryDescendants = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     descendants: SavedQueryDescendantsDescendantsList,
   }),
@@ -216,7 +215,7 @@ export type MaterializeSyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-export const MaterializeSyncFrequencyEnum = S.String;
+const MaterializeSyncFrequencyEnum = S.String;
 
 export interface CreateWarehouseSavedQueriesMaterializeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -226,7 +225,7 @@ export interface CreateWarehouseSavedQueriesMaterializeRequest {
   /** How often to refresh the materialized table, defaulting to daily. Rejected with a 400 when it falls outside what the query's lineage allows: no more often than its sources deliver new data, and no less often than a downstream view or endpoint needs. * `15min` - 15min * `30min` - 30min * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day * `30day` - 30day */
   sync_frequency?: MaterializeSyncFrequencyEnum | (string & {});
 }
-export const CreateWarehouseSavedQueriesMaterializeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesMaterializeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -243,33 +242,32 @@ export const CreateWarehouseSavedQueriesMaterializeRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeRequest>;
 
 export interface CreateWarehouseSavedQueriesMaterializeResponse {}
-export const CreateWarehouseSavedQueriesMaterializeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesMaterializeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateWarehouseSavedQueriesMaterializeResponse",
 }) as any as S.Schema<CreateWarehouseSavedQueriesMaterializeResponse>;
 
 export type CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind = "HogQLQuery";
-export const CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind = S.String;
+const CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind = S.String;
 
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface CreateWarehouseSavedQueriesRevertMaterializationRequestQuery {
   kind?: CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind | (string & {});
   query: string;
 }
-export const CreateWarehouseSavedQueriesRevertMaterializationRequestQuery = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      kind: S.optional(CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind),
-      query: S.String,
-    }),
+const CreateWarehouseSavedQueriesRevertMaterializationRequestQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: S.optional(CreateWarehouseSavedQueriesRevertMaterializationRequestQueryKind),
+    query: S.String,
+  }),
 ).annotate({
   identifier: "CreateWarehouseSavedQueriesRevertMaterializationRequestQuery",
 }) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequestQuery>;
 
 /** Output columns that identify a row, used to match recomputed rows against stored ones. Must include every GROUP BY column. These columns can never be null. */
 export type IncrementalConfigUniqueKeyList = Array<string>;
-export const IncrementalConfigUniqueKeyList =
+const IncrementalConfigUniqueKeyList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<IncrementalConfigUniqueKeyList>;
 
 /** How a view updates its materialized table in place rather than rebuilding it. */
@@ -283,7 +281,7 @@ export interface IncrementalConfig {
   /** How far back before the last run's high point to re-read, so late-arriving data is picked up. Only applies when the incremental key is a date or time. */
   lookback_seconds?: number;
 }
-export const IncrementalConfig = /*@__PURE__*/ S.suspend(() =>
+const IncrementalConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     incremental_key: S.String,
@@ -303,7 +301,7 @@ export type SavedQuerySyncFrequencyEnum =
   | "24hour"
   | "7day"
   | "30day";
-export const SavedQuerySyncFrequencyEnum = S.String;
+const SavedQuerySyncFrequencyEnum = S.String;
 
 export interface CreateWarehouseSavedQueriesRevertMaterializationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -331,7 +329,7 @@ export interface CreateWarehouseSavedQueriesRevertMaterializationRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-export const CreateWarehouseSavedQueriesRevertMaterializationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesRevertMaterializationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -357,14 +355,14 @@ export const CreateWarehouseSavedQueriesRevertMaterializationRequest = /*@__PURE
 }) as any as S.Schema<CreateWarehouseSavedQueriesRevertMaterializationRequest>;
 
 export type DataWarehouseSavedQueryOutputQueryKind = "HogQLQuery";
-export const DataWarehouseSavedQueryOutputQueryKind = S.String;
+const DataWarehouseSavedQueryOutputQueryKind = S.String;
 
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface DataWarehouseSavedQueryOutputQuery {
   kind?: DataWarehouseSavedQueryOutputQueryKind;
   query: string;
 }
-export const DataWarehouseSavedQueryOutputQuery = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseSavedQueryOutputQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(DataWarehouseSavedQueryOutputQueryKind),
     query: S.String,
@@ -375,7 +373,7 @@ export const DataWarehouseSavedQueryOutputQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** * `incremental` - incremental * `full_refresh` - full_refresh */
 export type LastRunModeEnum = "incremental" | "full_refresh";
-export const LastRunModeEnum = S.String;
+const LastRunModeEnum = S.String;
 
 /** Read-only progress written by the materialization run. */
 export interface IncrementalState {
@@ -388,7 +386,7 @@ export interface IncrementalState {
   /** Whether the last run updated the table or rebuilt it. * `incremental` - incremental * `full_refresh` - full_refresh */
   last_run_mode?: LastRunModeEnum | null;
 }
-export const IncrementalState = /*@__PURE__*/ S.suspend(() =>
+const IncrementalState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     watermark: S.optional(S.NullOr(S.String)),
     definition_fingerprint: S.optional(S.NullOr(S.String)),
@@ -398,7 +396,7 @@ export const IncrementalState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IncrementalState" }) as any as S.Schema<IncrementalState>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -414,14 +412,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -434,7 +427,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -450,11 +443,11 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `tiered` - tiered * `managed_viewset` - managed_viewset * `no_node` - no_node */
 export type FrequencyModeEnum = "tiered" | "managed_viewset" | "no_node";
-export const FrequencyModeEnum = S.String;
+const FrequencyModeEnum = S.String;
 
 /** * `source` - source * `consumer` - consumer */
 export type SyncFrequencyBlockedByEnum = "source" | "consumer";
-export const SyncFrequencyBlockedByEnum = S.String;
+const SyncFrequencyBlockedByEnum = S.String;
 
 /** The node holding a cadence back, named so a refusal points at something a person can open. */
 export interface SyncFrequencyBlocker {
@@ -463,7 +456,7 @@ export interface SyncFrequencyBlocker {
   /** Node name, as it appears in the data modeling graph. */
   name: string;
 }
-export const SyncFrequencyBlocker = /*@__PURE__*/ S.suspend(() =>
+const SyncFrequencyBlocker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -480,7 +473,7 @@ export interface SyncFrequencyOption {
   /** The source or consumer named in `blocked_by`. Null when allowed, and also when the blocker sits outside the caller's access grants, where `blocked_by` still gives the direction. */
   blocker: SyncFrequencyBlocker | null;
 }
-export const SyncFrequencyOption = /*@__PURE__*/ S.suspend(() =>
+const SyncFrequencyOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cadence: MaterializeSyncFrequencyEnum,
     allowed: S.Boolean,
@@ -491,7 +484,7 @@ export const SyncFrequencyOption = /*@__PURE__*/ S.suspend(() =>
 
 /** Every cadence a picker may show, coarsest-last, each marked allowed or blocked with its cause. Empty outside 'tiered' mode. */
 export type SyncFrequencyBoundsOptionsList = Array<SyncFrequencyOption>;
-export const SyncFrequencyBoundsOptionsList = /*@__PURE__*/ S.Array(
+const SyncFrequencyBoundsOptionsList = /*@__PURE__*/ S.Array(
   SyncFrequencyOption,
 ) as any as S.Schema<SyncFrequencyBoundsOptionsList>;
 
@@ -501,7 +494,7 @@ export interface SyncFrequencyBound {
   /** Node that set this bound. Null when nothing identifiable set it, and also when it sits outside the caller's access grants: the bound still applies, it just goes unnamed. */
   blocker: SyncFrequencyBlocker | null;
 }
-export const SyncFrequencyBound = /*@__PURE__*/ S.suspend(() =>
+const SyncFrequencyBound = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     blocker: S.NullOr(SyncFrequencyBlocker),
@@ -510,7 +503,7 @@ export const SyncFrequencyBound = /*@__PURE__*/ S.suspend(() =>
 
 /** Upstream sources with no sync schedule, so the floor is a guess: these arrive when someone runs them, and refreshing more often than they really sync will serve stale data. Only sources the caller may read are listed. */
 export type SyncFrequencyBoundsBestEffortSourcesList = Array<SyncFrequencyBlocker>;
-export const SyncFrequencyBoundsBestEffortSourcesList = /*@__PURE__*/ S.Array(
+const SyncFrequencyBoundsBestEffortSourcesList = /*@__PURE__*/ S.Array(
   SyncFrequencyBlocker,
 ) as any as S.Schema<SyncFrequencyBoundsBestEffortSourcesList>;
 
@@ -528,7 +521,7 @@ export interface SyncFrequencyBounds {
   /** True when at least one such source sits outside the caller's access grants, so the list above is incomplete and the caveat still applies. */
   best_effort_sources_withheld: boolean;
 }
-export const SyncFrequencyBounds = /*@__PURE__*/ S.suspend(() =>
+const SyncFrequencyBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency_mode: FrequencyModeEnum,
     options: SyncFrequencyBoundsOptionsList,
@@ -540,12 +533,12 @@ export const SyncFrequencyBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncFrequencyBounds" }) as any as S.Schema<SyncFrequencyBounds>;
 
 export type DataWarehouseSavedQueryOutputColumnsItemMap = { [key: string]: unknown | undefined };
-export const DataWarehouseSavedQueryOutputColumnsItemMap =
+const DataWarehouseSavedQueryOutputColumnsItemMap =
   UserBasicHedgehogConfigMap as any as S.Schema<DataWarehouseSavedQueryOutputColumnsItemMap>;
 
 export type DataWarehouseSavedQueryOutputColumnsList =
   Array<DataWarehouseSavedQueryOutputColumnsItemMap>;
-export const DataWarehouseSavedQueryOutputColumnsList = /*@__PURE__*/ S.Array(
+const DataWarehouseSavedQueryOutputColumnsList = /*@__PURE__*/ S.Array(
   DataWarehouseSavedQueryOutputColumnsItemMap,
 ) as any as S.Schema<DataWarehouseSavedQueryOutputColumnsList>;
 
@@ -557,11 +550,11 @@ export type DataWarehouseSavedQueryStatusEnum =
   | "Failed"
   | "Running"
   | "Skipped";
-export const DataWarehouseSavedQueryStatusEnum = S.String;
+const DataWarehouseSavedQueryStatusEnum = S.String;
 
 /** * `data_warehouse` - Data Warehouse * `endpoint` - Endpoint * `managed_viewset` - Managed Viewset */
 export type DataWarehouseSavedQueryOriginEnum = "data_warehouse" | "endpoint" | "managed_viewset";
-export const DataWarehouseSavedQueryOriginEnum = S.String;
+const DataWarehouseSavedQueryOriginEnum = S.String;
 
 export interface SavedQuerySuspension {
   /** When materialization was suspended. */
@@ -571,7 +564,7 @@ export interface SavedQuerySuspension {
   /** Materialization job that tripped suspension. */
   job_id: string;
 }
-export const SavedQuerySuspension = /*@__PURE__*/ S.suspend(() =>
+const SavedQuerySuspension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     at: S.String,
     reason: S.String,
@@ -583,7 +576,7 @@ export const SavedQuerySuspension = /*@__PURE__*/ S.suspend(() =>
 export type DataWarehouseSavedQueryOutputSuspendedMap = {
   [key: string]: SavedQuerySuspension | undefined;
 };
-export const DataWarehouseSavedQueryOutputSuspendedMap = /*@__PURE__*/ S.Record(
+const DataWarehouseSavedQueryOutputSuspendedMap = /*@__PURE__*/ S.Record(
   S.String,
   SavedQuerySuspension,
 ) as any as S.Schema<DataWarehouseSavedQueryOutputSuspendedMap>;
@@ -634,7 +627,7 @@ export interface DataWarehouseSavedQueryOutput {
   /** Engines this query's materialization is suspended for after repeated failures. Suspended engines are skipped by scheduled runs until the query is resumed. */
   suspended?: DataWarehouseSavedQueryOutputSuspendedMap;
 }
-export const DataWarehouseSavedQueryOutput = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseSavedQueryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -676,7 +669,7 @@ export interface CreateWarehouseSavedQueriesRunRequest {
   /** Rebuild the whole table instead of updating it incrementally. Has no effect on a view that is not incremental. This is how you reprocess history after changing what the query means without changing its text, or after upstream data was corrected. */
   full_refresh?: boolean;
 }
-export const CreateWarehouseSavedQueriesRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueriesRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -693,18 +686,16 @@ export const CreateWarehouseSavedQueriesRunRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateWarehouseSavedQueriesRunRequest>;
 
 export interface CreateWarehouseSavedQueriesRunResponse {}
-export const CreateWarehouseSavedQueriesRunResponse =
+const CreateWarehouseSavedQueriesRunResponse =
   CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<CreateWarehouseSavedQueriesRunResponse>;
 
 export type CreateWarehouseSavedQueryRequestQueryKind = "HogQLQuery";
-export const CreateWarehouseSavedQueryRequestQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface CreateWarehouseSavedQueryRequestQuery {
   kind?: CreateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-export const CreateWarehouseSavedQueryRequestQuery =
+const CreateWarehouseSavedQueryRequestQuery =
   DataWarehouseSavedQueryOutputQuery as any as S.Schema<CreateWarehouseSavedQueryRequestQuery>;
 
 export interface CreateWarehouseSavedQueryRequest {
@@ -731,7 +722,7 @@ export interface CreateWarehouseSavedQueryRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-export const CreateWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -761,7 +752,7 @@ export interface GetWarehouseSavedQueriesActivityRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const GetWarehouseSavedQueriesActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseSavedQueriesActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -782,7 +773,7 @@ export interface GetWarehouseSavedQueriesDependencyRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const GetWarehouseSavedQueriesDependencyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseSavedQueriesDependencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -803,7 +794,7 @@ export interface SavedQueryDependencies {
   /** How many queries read from this query directly. */
   downstream_count: number;
 }
-export const SavedQueryDependencies = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryDependencies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upstream_count: S.Number,
     downstream_count: S.Number,
@@ -816,7 +807,7 @@ export interface GetWarehouseSavedQueriesRunHistoryRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const GetWarehouseSavedQueriesRunHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseSavedQueriesRunHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -837,7 +828,7 @@ export interface GetWarehouseSavedQueryRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const GetWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -862,7 +853,7 @@ export interface ListWarehouseSavedQueriesRequest {
   /** A search term. */
   search?: string;
 }
-export const ListWarehouseSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWarehouseSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     include_columns: S.optional(S.Boolean.pipe(T.Query())),
@@ -880,12 +871,9 @@ export const ListWarehouseSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWarehouseSavedQueriesRequest>;
 
 export type DataWarehouseSavedQueryMinimalColumnsItemMap = { [key: string]: unknown | undefined };
-export const DataWarehouseSavedQueryMinimalColumnsItemMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsItemMap>;
-
 export type DataWarehouseSavedQueryMinimalColumnsList =
   Array<DataWarehouseSavedQueryMinimalColumnsItemMap>;
-export const DataWarehouseSavedQueryMinimalColumnsList =
+const DataWarehouseSavedQueryMinimalColumnsList =
   DataWarehouseSavedQueryOutputColumnsList as any as S.Schema<DataWarehouseSavedQueryMinimalColumnsList>;
 
 /** Lightweight serializer for list views - excludes large query field to reduce memory usage. */
@@ -917,7 +905,7 @@ export interface DataWarehouseSavedQueryMinimal {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const DataWarehouseSavedQueryMinimal = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseSavedQueryMinimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     deleted: S.optional(S.NullOr(S.Boolean)),
@@ -946,7 +934,7 @@ export const DataWarehouseSavedQueryMinimal = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedDataWarehouseSavedQueryMinimalListResultsList =
   Array<DataWarehouseSavedQueryMinimal>;
-export const PaginatedDataWarehouseSavedQueryMinimalListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataWarehouseSavedQueryMinimalListResultsList = /*@__PURE__*/ S.Array(
   DataWarehouseSavedQueryMinimal,
 ) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalListResultsList>;
 
@@ -956,7 +944,7 @@ export interface PaginatedDataWarehouseSavedQueryMinimalList {
   previous?: string | null;
   results?: PaginatedDataWarehouseSavedQueryMinimalListResultsList;
 }
-export const PaginatedDataWarehouseSavedQueryMinimalList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataWarehouseSavedQueryMinimalList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -968,14 +956,12 @@ export const PaginatedDataWarehouseSavedQueryMinimalList = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PaginatedDataWarehouseSavedQueryMinimalList>;
 
 export type UpdateWarehouseSavedQueriesPartialRequestQueryKind = "HogQLQuery";
-export const UpdateWarehouseSavedQueriesPartialRequestQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface UpdateWarehouseSavedQueriesPartialRequestQuery {
   kind?: UpdateWarehouseSavedQueriesPartialRequestQueryKind | (string & {});
   query: string;
 }
-export const UpdateWarehouseSavedQueriesPartialRequestQuery =
+const UpdateWarehouseSavedQueriesPartialRequestQuery =
   DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequestQuery>;
 
 export interface UpdateWarehouseSavedQueriesPartialRequest {
@@ -1004,7 +990,7 @@ export interface UpdateWarehouseSavedQueriesPartialRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-export const UpdateWarehouseSavedQueriesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseSavedQueriesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1030,14 +1016,12 @@ export const UpdateWarehouseSavedQueriesPartialRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<UpdateWarehouseSavedQueriesPartialRequest>;
 
 export type UpdateWarehouseSavedQueryRequestQueryKind = "HogQLQuery";
-export const UpdateWarehouseSavedQueryRequestQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface UpdateWarehouseSavedQueryRequestQuery {
   kind?: UpdateWarehouseSavedQueryRequestQueryKind | (string & {});
   query: string;
 }
-export const UpdateWarehouseSavedQueryRequestQuery =
+const UpdateWarehouseSavedQueryRequestQuery =
   DataWarehouseSavedQueryOutputQuery as any as S.Schema<UpdateWarehouseSavedQueryRequestQuery>;
 
 export interface UpdateWarehouseSavedQueryRequest {
@@ -1066,7 +1050,7 @@ export interface UpdateWarehouseSavedQueryRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-export const UpdateWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1092,14 +1076,12 @@ export const UpdateWarehouseSavedQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateWarehouseSavedQueryRequest>;
 
 export type WarehouseSavedQueriesCancelCreateRequestQueryKind = "HogQLQuery";
-export const WarehouseSavedQueriesCancelCreateRequestQueryKind = S.String;
-
 /** HogQL query definition as a JSON object with a "query" key containing the SQL string and a "kind" key (always "HogQLQuery"). Format the SQL string multi-line with indentation and inline `--` comments for non-obvious logic -- the SQL editor renders it verbatim, so avoid minified single-line SQL. Example: {"kind": "HogQLQuery", "query": "SELECT\n event,\n count() AS cnt\nFROM events\nGROUP BY event\nLIMIT 100"} */
 export interface WarehouseSavedQueriesCancelCreateRequestQuery {
   kind?: WarehouseSavedQueriesCancelCreateRequestQueryKind | (string & {});
   query: string;
 }
-export const WarehouseSavedQueriesCancelCreateRequestQuery =
+const WarehouseSavedQueriesCancelCreateRequestQuery =
   DataWarehouseSavedQueryOutputQuery as any as S.Schema<WarehouseSavedQueriesCancelCreateRequestQuery>;
 
 export interface WarehouseSavedQueriesCancelCreateRequest {
@@ -1128,7 +1110,7 @@ export interface WarehouseSavedQueriesCancelCreateRequest {
   /** Whether this view is for testing only and will auto-expire. */
   is_test?: boolean;
 }
-export const WarehouseSavedQueriesCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueriesCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1159,7 +1141,7 @@ export interface WarehouseSavedQueriesDestroyRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const WarehouseSavedQueriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1175,7 +1157,7 @@ export const WarehouseSavedQueriesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WarehouseSavedQueriesDestroyRequest>;
 
 export interface WarehouseSavedQueriesDestroyResponse {}
-export const WarehouseSavedQueriesDestroyResponse =
+const WarehouseSavedQueriesDestroyResponse =
   CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesDestroyResponse>;
 
 export interface WarehouseSavedQueriesResumeCreateRequest {
@@ -1184,7 +1166,7 @@ export interface WarehouseSavedQueriesResumeCreateRequest {
   /** A UUID string identifying this data warehouse saved query. */
   id: string;
 }
-export const WarehouseSavedQueriesResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueriesResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1203,7 +1185,7 @@ export interface SavedQueryResume {
   /** False when the query's materialization was not suspended. */
   resumed: boolean;
 }
-export const SavedQueryResume = /*@__PURE__*/ S.suspend(() =>
+const SavedQueryResume = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resumed: S.Boolean,
   }),
@@ -1211,7 +1193,7 @@ export const SavedQueryResume = /*@__PURE__*/ S.suspend(() =>
 
 /** Ids of the saved queries to resume. An id is ignored when it is not in this project, has been deleted, or you cannot edit it. */
 export type WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList = Array<string>;
-export const WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList =
+const WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList =
   SavedQueryAncestorsAncestorsList as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList>;
 
 export interface WarehouseSavedQueriesResumeSchedulesCreateRequest {
@@ -1220,7 +1202,7 @@ export interface WarehouseSavedQueriesResumeSchedulesCreateRequest {
   /** Ids of the saved queries to resume. An id is ignored when it is not in this project, has been deleted, or you cannot edit it. */
   view_ids: WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList;
 }
-export const WarehouseSavedQueriesResumeSchedulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WarehouseSavedQueriesResumeSchedulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     view_ids: WarehouseSavedQueriesResumeSchedulesCreateRequestViewIdsList,
@@ -1236,7 +1218,7 @@ export const WarehouseSavedQueriesResumeSchedulesCreateRequest = /*@__PURE__*/ S
 }) as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateRequest>;
 
 export interface WarehouseSavedQueriesResumeSchedulesCreateResponse {}
-export const WarehouseSavedQueriesResumeSchedulesCreateResponse =
+const WarehouseSavedQueriesResumeSchedulesCreateResponse =
   CreateWarehouseSavedQueriesMaterializeResponse as any as S.Schema<WarehouseSavedQueriesResumeSchedulesCreateResponse>;
 
 export type CreateWarehouseSavedQueriesAncestorError =

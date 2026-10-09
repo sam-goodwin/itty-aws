@@ -219,8 +219,6 @@ export class VectorizeIndexNotFound
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretTextType =
   "secret_text";
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -229,29 +227,13 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSe
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretTextType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyFormat =
-  S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyType =
   "secret_key";
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -261,18 +243,10 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretK
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem =
-  S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList =
   Array<
     DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem | (string & {})
   >;
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -291,39 +265,23 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSe
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyType,
-      usages: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList,
-      keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText
   | DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey;
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases(
-      [
-        ["name", "text", "type"],
-        ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-      ],
-      { key: "type", values: ["secret_text", "secret_key"] },
-    ),
-  );
+const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases(
+    [
+      ["name", "text", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+    ],
+    { key: "type", values: ["secret_text", "secret_key"] },
+  ),
+);
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = {
   [key: string]: DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue | undefined;
 };
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap>;
@@ -331,11 +289,10 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsMap = /*@__
 export type DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = {
   [key: string]: unknown | undefined;
 };
-export const DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap>;
+const DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap>;
 
 export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Identifier. */
@@ -349,7 +306,7 @@ export interface BulkUpdateDispatchNamespaceScriptSecretsRequest {
   /** Optional version tags to apply to the new script version. */
   versionTags?: DispatchNamespacesScriptsSecretsBulkUpdateRequestVersionTagsMap;
 }
-export const BulkUpdateDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -372,8 +329,6 @@ export const BulkUpdateDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<BulkUpdateDispatchNamespaceScriptSecretsRequest>;
 
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -382,19 +337,12 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -404,13 +352,8 @@ export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsages
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -427,25 +370,10 @@ export interface DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey 
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      algorithm: S.Unknown,
-      format: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyFormat,
-      name: S.String,
-      type: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyType,
-      usages: DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKeyUsagesList,
-      keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-      keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey",
-  }) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey>;
-
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultValue =
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretText
   | DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey;
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSecretsBulkUpdateResultValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
@@ -458,14 +386,14 @@ export const DispatchNamespacesScriptsSecretsBulkUpdateResultValue = /*@__PURE__
 export type DispatchNamespacesScriptsSecretsBulkUpdateResultMap = {
   [key: string]: DispatchNamespacesScriptsSecretsBulkUpdateResultValue | undefined;
 };
-export const DispatchNamespacesScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsSecretsBulkUpdateResultMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsSecretsBulkUpdateResultValue,
 ) as any as S.Schema<DispatchNamespacesScriptsSecretsBulkUpdateResultMap>;
 
 export type BulkUpdateDispatchNamespaceScriptSecretsResponse =
   DispatchNamespacesScriptsSecretsBulkUpdateResultMap;
-export const BulkUpdateDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   DispatchNamespacesScriptsSecretsBulkUpdateResultMap.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -480,7 +408,7 @@ export interface CreateDispatchNamespaceRequest {
   /** The name of the dispatch namespace. */
   name?: string;
 }
-export const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
@@ -516,7 +444,7 @@ export interface CreateDispatchNamespaceResponse {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-export const CreateDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -537,20 +465,19 @@ export interface DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue 
   /** The size of the file in bytes. */
   size: number;
 }
-export const DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hash: S.String,
-      size: S.Number,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue",
-  }) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue>;
+const DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hash: S.String,
+    size: S.Number,
+  }),
+).annotate({
+  identifier: "DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue",
+}) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue>;
 
 export type DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap = {
   [key: string]: DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue | undefined;
 };
-export const DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsAssetUploadCreateRequestManifestValue,
 ) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap>;
@@ -565,7 +492,7 @@ export interface CreateDispatchNamespaceScriptAssetUploadRequest {
   /** A manifest ([path]: {hash, size}) map of files to upload. As an example, `/blog/hello-world.html` would be a valid path key. */
   manifest: DispatchNamespacesScriptsAssetUploadCreateRequestManifestMap;
 }
-export const CreateDispatchNamespaceScriptAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDispatchNamespaceScriptAssetUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -585,14 +512,13 @@ export const CreateDispatchNamespaceScriptAssetUploadRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<CreateDispatchNamespaceScriptAssetUploadRequest>;
 
 export type DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList = Array<string>;
-export const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList>;
+const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList>;
 
 export type DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList =
   Array<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList>;
-export const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList,
 ) as any as S.Schema<DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList>;
 
@@ -603,7 +529,7 @@ export interface CreateDispatchNamespaceScriptAssetUploadResponse {
   /** A JWT to use as authentication for uploading assets. */
   jwt?: string | null;
 }
-export const CreateDispatchNamespaceScriptAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDispatchNamespaceScriptAssetUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buckets: S.optional(S.NullOr(DispatchNamespacesScriptsAssetUploadCreateResponseBucketsList)),
     jwt: S.optional(S.NullOr(S.String)),
@@ -618,7 +544,7 @@ export interface DeleteDispatchNamespaceRequest {
   /** Name of the Workers for Platforms dispatch namespace. */
   dispatchNamespace: string;
 }
-export const DeleteDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -636,7 +562,7 @@ export const DeleteDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDispatchNamespaceRequest>;
 
 export type DeleteDispatchNamespaceResponse = unknown;
-export const DeleteDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteDispatchNamespaceResponse",
@@ -652,7 +578,7 @@ export interface DeleteDispatchNamespaceScriptRequest {
   /** If true, delete the script even when other Workers still reference it. Service bindings in those Workers may be left broken. Durable Object namespaces implemented by the deleted script are deleted even if other Workers reference them. */
   force?: boolean;
 }
-export const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -672,7 +598,7 @@ export const DeleteDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteDispatchNamespaceScriptRequest>;
 
 export type DeleteDispatchNamespaceScriptResponse = unknown;
-export const DeleteDispatchNamespaceScriptResponse =
+const DeleteDispatchNamespaceScriptResponse =
   DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptResponse>;
 
 export interface DeleteDispatchNamespaceScriptSecretRequest {
@@ -687,7 +613,7 @@ export interface DeleteDispatchNamespaceScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
-export const DeleteDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -708,7 +634,7 @@ export const DeleteDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteDispatchNamespaceScriptSecretRequest>;
 
 export type DeleteDispatchNamespaceScriptSecretResponse = unknown;
-export const DeleteDispatchNamespaceScriptSecretResponse =
+const DeleteDispatchNamespaceScriptSecretResponse =
   DeleteDispatchNamespaceResponse as any as S.Schema<DeleteDispatchNamespaceScriptSecretResponse>;
 
 export interface DeleteDispatchNamespaceScriptTagRequest {
@@ -722,7 +648,7 @@ export interface DeleteDispatchNamespaceScriptTagRequest {
   tag: string;
   apiVersion?: string;
 }
-export const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -743,13 +669,13 @@ export const DeleteDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<DeleteDispatchNamespaceScriptTagRequest>;
 
 export type DispatchNamespacesScriptsTagsDeleteResultMap = { [key: string]: string | undefined };
-export const DispatchNamespacesScriptsTagsDeleteResultMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsTagsDeleteResultMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DispatchNamespacesScriptsTagsDeleteResultMap>;
 
 export type DeleteDispatchNamespaceScriptTagResponse = DispatchNamespacesScriptsTagsDeleteResultMap;
-export const DeleteDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(() =>
   DispatchNamespacesScriptsTagsDeleteResultMap.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -764,7 +690,7 @@ export interface GetDispatchNamespaceRequest {
   /** Name of the Workers for Platforms dispatch namespace. */
   dispatchNamespace: string;
 }
-export const GetDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -800,7 +726,7 @@ export interface GetDispatchNamespaceResponse {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-export const GetDispatchNamespaceResponse =
+const GetDispatchNamespaceResponse =
   CreateDispatchNamespaceResponse as any as S.Schema<GetDispatchNamespaceResponse>;
 
 export interface GetDispatchNamespaceScriptRequest {
@@ -811,7 +737,7 @@ export interface GetDispatchNamespaceScriptRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const GetDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -835,7 +761,7 @@ export interface DispatchNamespacesScriptsGetResponseScriptCacheOptions {
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptCacheOptions = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsGetResponseScriptCacheOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     crossVersionCache: S.optional(S.NullOr(S.Boolean).pipe(T.Body("cross_version_cache"))),
@@ -845,28 +771,15 @@ export const DispatchNamespacesScriptsGetResponseScriptCacheOptions = /*@__PURE_
 }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCacheOptions>;
 
 export type DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
+const DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache {
   /** Whether caching is enabled for this entrypoint. */
   enabled: boolean;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType;
@@ -875,37 +788,13 @@ export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerState | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorker = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerType,
-      cache: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      ),
-      state: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerState),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptExportsValueWorker",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorker>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportStorage;
@@ -916,61 +805,20 @@ export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDu
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportState | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportState,
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -979,29 +827,10 @@ export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDu
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      renamedTo: S.String.pipe(T.Body("renamed_to")),
-      state:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportState,
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportState;
@@ -1010,35 +839,13 @@ export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDu
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportState,
-      transferredTo: S.String.pipe(T.Body("transferred_to")),
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExportType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -1051,22 +858,6 @@ export interface DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDu
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsGetResponseScriptExportsValue =
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorker
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExport
@@ -1074,7 +865,7 @@ export type DispatchNamespacesScriptsGetResponseScriptExportsValue =
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsGetResponseScriptExportsValue = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsGetResponseScriptExportsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
@@ -1088,18 +879,18 @@ export const DispatchNamespacesScriptsGetResponseScriptExportsValue = /*@__PURE_
 export type DispatchNamespacesScriptsGetResponseScriptExportsMap = {
   [key: string]: DispatchNamespacesScriptsGetResponseScriptExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsGetResponseScriptExportsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsGetResponseScriptExportsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsGetResponseScriptExportsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptExportsMap>;
 
 export type DispatchNamespacesScriptsGetResponseScriptHandlersList = Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptHandlersList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsGetResponseScriptHandlersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptHandlersList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList = Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
+const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
@@ -1108,21 +899,20 @@ export interface DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem {
   /** The name of the export. */
   name?: string | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      handlers: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList),
-      ),
-      name: S.optional(S.NullOr(S.String)),
-    }),
+const DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    handlers: S.optional(
+      S.NullOr(DispatchNamespacesScriptsGetResponseScriptNamedHandlersItemHandlersList),
+    ),
+    name: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem",
 }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem>;
 
 export type DispatchNamespacesScriptsGetResponseScriptNamedHandlersList =
   Array<DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem>;
-export const DispatchNamespacesScriptsGetResponseScriptNamedHandlersList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsGetResponseScriptNamedHandlersList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem,
 ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptNamedHandlersList>;
 
@@ -1130,18 +920,17 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityIssues =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityIssues",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityIssues>;
+const DispatchNamespacesScriptsGetResponseScriptObservabilityIssues = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityIssues",
+}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityIssues>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
+const DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
@@ -1156,31 +945,29 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
+const DispatchNamespacesScriptsGetResponseScriptObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+    destinations: S.optional(
+      S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityLogsDestinationsList),
+    ),
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    persist: S.optional(S.NullOr(S.Boolean)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityLogs",
 }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityLogs>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy =
-  S.String;
+const DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy = S.String;
 
 export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
@@ -1194,24 +981,23 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptObservabilityTraces =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList),
+const DispatchNamespacesScriptsGetResponseScriptObservabilityTraces = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinations: S.optional(
+      S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTracesDestinationsList),
+    ),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    persist: S.optional(S.NullOr(S.Boolean)),
+    propagationPolicy: S.optional(
+      S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy).pipe(
+        T.Body("propagation_policy"),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-      propagationPolicy: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsGetResponseScriptObservabilityTracesPropagationPolicy,
-        ).pipe(T.Body("propagation_policy")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityTraces",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTraces>;
+    ),
+  }),
+).annotate({
+  identifier: "DispatchNamespacesScriptsGetResponseScriptObservabilityTraces",
+}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptObservability {
   /** Whether observability is enabled for the Worker. */
@@ -1227,7 +1013,7 @@ export interface DispatchNamespacesScriptsGetResponseScriptObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsGetResponseScriptObservabilityTraces | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptObservability = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsGetResponseScriptObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
@@ -1241,14 +1027,10 @@ export const DispatchNamespacesScriptsGetResponseScriptObservability = /*@__PURE
 }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptObservability>;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode = "smart";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode;
@@ -1257,23 +1039,10 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase0 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase0Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase0Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase0",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase0>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
@@ -1282,23 +1051,10 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase1 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase1Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase1",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase1>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -1307,23 +1063,10 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase2 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase2Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase2",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase2>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -1332,26 +1075,11 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase3 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase3Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase3",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase3>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode;
@@ -1362,27 +1090,11 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase4 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase4Mode,
-      region: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase4Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase4",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase4>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -1393,27 +1105,11 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase5 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase5Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase5Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase5",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase5>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode = S.String;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -1424,80 +1120,29 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase6 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase6Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase6Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase6",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase6>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion {
   /** Cloud region in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      region: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname {
   /** HTTP hostname for targeted placement. */
   hostname: string;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname>;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost {
   /** TCP host:port for targeted placement. */
   host: string;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost",
-  }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList =
   Array<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status = S.String;
-
 export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode;
@@ -1508,18 +1153,6 @@ export interface DispatchNamespacesScriptsGetResponseScriptPlacementCase7 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptPlacementCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsGetResponseScriptPlacementCase7Mode,
-      target: DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetList,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptPlacementCase7Status)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsGetResponseScriptPlacementCase7",
-}) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptPlacementCase7>;
-
 export type DispatchNamespacesScriptsGetResponseScriptPlacement =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase0
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase1
@@ -1529,7 +1162,7 @@ export type DispatchNamespacesScriptsGetResponseScriptPlacement =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase5
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase6
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7;
-export const DispatchNamespacesScriptsGetResponseScriptPlacement = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsGetResponseScriptPlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
@@ -1543,16 +1176,16 @@ export const DispatchNamespacesScriptsGetResponseScriptPlacement = /*@__PURE__*/
 );
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementMode = "smart" | "targeted";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementMode = S.String;
+const DispatchNamespacesScriptsGetResponseScriptPlacementMode = S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptPlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsGetResponseScriptPlacementStatus = S.String;
+const DispatchNamespacesScriptsGetResponseScriptPlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsGetResponseScriptTagsList = Array<string>;
-export const DispatchNamespacesScriptsGetResponseScriptTagsList =
+const DispatchNamespacesScriptsGetResponseScriptTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTagsList>;
 
 export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
@@ -1563,20 +1196,19 @@ export interface DispatchNamespacesScriptsGetResponseScriptTailConsumersItem {
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string | null;
 }
-export const DispatchNamespacesScriptsGetResponseScriptTailConsumersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      service: S.String,
-      environment: S.optional(S.NullOr(S.String)),
-      namespace: S.optional(S.NullOr(S.String)),
-    }),
+const DispatchNamespacesScriptsGetResponseScriptTailConsumersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    service: S.String,
+    environment: S.optional(S.NullOr(S.String)),
+    namespace: S.optional(S.NullOr(S.String)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsGetResponseScriptTailConsumersItem",
 }) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
 
 export type DispatchNamespacesScriptsGetResponseScriptTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsGetResponseScriptTailConsumersList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsGetResponseScriptTailConsumersList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
 ) as any as S.Schema<DispatchNamespacesScriptsGetResponseScriptTailConsumersList>;
 
@@ -1584,7 +1216,7 @@ export type DispatchNamespacesScriptsGetResponseScriptUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const DispatchNamespacesScriptsGetResponseScriptUsageModel = S.String;
+const DispatchNamespacesScriptsGetResponseScriptUsageModel = S.String;
 
 export interface DispatchNamespacesScriptsGetResponseScript {
   /** The name used to identify the script. */
@@ -1634,7 +1266,7 @@ export interface DispatchNamespacesScriptsGetResponseScript {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsGetResponseScriptUsageModel | null;
 }
-export const DispatchNamespacesScriptsGetResponseScript = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsGetResponseScript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cacheOptions: S.optional(
@@ -1700,7 +1332,7 @@ export interface GetDispatchNamespaceScriptResponse {
   modifiedOn?: string | null;
   script?: DispatchNamespacesScriptsGetResponseScript | null;
 }
-export const GetDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
     dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
@@ -1719,7 +1351,7 @@ export interface GetDispatchNamespaceScriptBindingRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -1738,26 +1370,13 @@ export const GetDispatchNamespaceScriptBindingRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetDispatchNamespaceScriptBindingRequest>;
 
 export type DispatchNamespacesScriptsBindingsGetResultItemAIType = "ai";
-export const DispatchNamespacesScriptsBindingsGetResultItemAIType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAIType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAI = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemAIType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemAI",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAI>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemAISearchType = "ai_search";
-export const DispatchNamespacesScriptsBindingsGetResultItemAISearchType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemAISearch {
   /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
   instanceName: string;
@@ -1768,21 +1387,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemAISearch {
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAISearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.String.pipe(T.Body("instance_name")),
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemAISearchType,
-    namespace: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemAISearch",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAISearch>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType =
   "ai_search_namespace";
-export const DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -1791,20 +1397,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemMessagingType = "messaging";
-export const DispatchNamespacesScriptsBindingsGetResultItemMessagingType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemMessaging {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -1813,19 +1406,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemMessaging {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemMessagingType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemMessaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemMessagingType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemMessaging",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMessaging>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType = "analytics_engine";
-export const DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine {
   /** The name of the dataset to bind to. */
   dataset: string;
@@ -1834,20 +1415,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataset: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngineType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemArtifactsType = "artifacts";
-export const DispatchNamespacesScriptsBindingsGetResultItemArtifactsType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemArtifacts {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -1856,36 +1424,21 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemArtifacts {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemArtifactsType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemArtifacts =
-  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemArtifacts>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemAssetsType = "assets";
-export const DispatchNamespacesScriptsBindingsGetResultItemAssetsType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemAssetsType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemAssets =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemAssets>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemBrowserType = "browser";
-export const DispatchNamespacesScriptsBindingsGetResultItemBrowserType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemBrowserType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemBrowser =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemBrowser>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemD1Type = "d1";
-export const DispatchNamespacesScriptsBindingsGetResultItemD1Type = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemD1 {
   /** Identifier of the D1 database to bind to. */
   databaseId: string;
@@ -1896,20 +1449,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemD1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.String.pipe(T.Body("database_id")),
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemD1Type,
-    id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemD1",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemD1>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemDataBlobType = "data_blob";
-export const DispatchNamespacesScriptsBindingsGetResultItemDataBlobType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDataBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -1918,40 +1458,14 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDataBlob {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemDataBlobType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDataBlob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    part: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemDataBlobType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemDataBlob",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDataBlob>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType =
   "dispatch_namespace";
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem {
   /** Name of the parameter. */
   name: string;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
   entrypoint?: string | null;
@@ -1960,37 +1474,12 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace
   /** Name of the outbound worker. */
   service?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
-      service: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
   params?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
   worker?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList),
-      ),
-      worker: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2001,24 +1490,8 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace
   /** Outbound worker. */
   outbound?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceType,
-      outbound: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutbound),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespace>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType =
   "durable_object_namespace";
-export const DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2035,24 +1508,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemDurableObjectName
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespaceType,
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.NullOr(S.String).pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.NullOr(S.String)),
-      namespaceId: S.optional(S.NullOr(S.String).pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType = "hyperdrive";
-export const DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
   id: string;
@@ -2061,20 +1517,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemHyperdrive {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemHyperdrive = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemHyperdriveType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemHyperdrive",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemHyperdrive>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemInheritType = "inherit";
-export const DispatchNamespacesScriptsBindingsGetResultItemInheritType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemInherit {
   /** The name of the inherited binding. */
   name: string;
@@ -2085,32 +1528,14 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemInherit {
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemInherit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemInheritType,
-    oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-    versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemInherit",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemInherit>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemImagesType = "images";
-export const DispatchNamespacesScriptsBindingsGetResultItemImagesType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemImagesType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemImages =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemImages>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemJsonType = "json";
-export const DispatchNamespacesScriptsBindingsGetResultItemJsonType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemJson {
   /** JSON data to use. */
   json: unknown;
@@ -2119,19 +1544,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemJson {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemJsonType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemJson = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json: S.Unknown,
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemJsonType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemJson",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemJson>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType = "kv_namespace";
-export const DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemKVNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2140,32 +1553,14 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemKVNamespace {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemKVNamespace = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: DispatchNamespacesScriptsBindingsGetResultItemKVNamespaceType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemKVNamespace",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemKVNamespace>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemMediaType = "media";
-export const DispatchNamespacesScriptsBindingsGetResultItemMediaType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemMediaType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemMedia =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMedia>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType = "mtls_certificate";
-export const DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate {
   /** Identifier of the certificate to bind to. */
   certificateId: string;
@@ -2174,20 +1569,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      certificateId: S.String.pipe(T.Body("certificate_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificateType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemPlainTextType = "plain_text";
-export const DispatchNamespacesScriptsBindingsGetResultItemPlainTextType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemPlainText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2196,19 +1578,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemPlainText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemPlainTextType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemPlainText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    text: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemPlainTextType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemPlainText",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemPlainText>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemPipelinesType = "pipelines";
-export const DispatchNamespacesScriptsBindingsGetResultItemPipelinesType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemPipelines {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2217,19 +1587,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemPipelines {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemPipelinesType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemPipelines = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    pipeline: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemPipelinesType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemPipelines",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemPipelines>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemK2Type = "k2";
-export const DispatchNamespacesScriptsBindingsGetResultItemK2Type = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemK2 {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2238,19 +1596,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemK2 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemK2Type;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemK2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    stream: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemK2Type,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemK2",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemK2>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemQueueType = "queue";
-export const DispatchNamespacesScriptsBindingsGetResultItemQueueType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemQueue {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2259,16 +1605,6 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemQueue {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemQueueType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemQueue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    queueName: S.String.pipe(T.Body("queue_name")),
-    type: DispatchNamespacesScriptsBindingsGetResultItemQueueType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemQueue",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemQueue>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple {
   /** The limit (requests per period). */
   limit: number;
@@ -2277,20 +1613,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple {
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
   mitigationTimeout?: number | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      limit: S.Number,
-      period: S.Number,
-      mitigationTimeout: S.optional(S.NullOr(S.Number).pipe(T.Body("mitigation_timeout"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemRatelimitType = "ratelimit";
-export const DispatchNamespacesScriptsBindingsGetResultItemRatelimitType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemRatelimit {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2301,27 +1624,12 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemRatelimit {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemRatelimitType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemRatelimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    simple: DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple,
-    type: DispatchNamespacesScriptsBindingsGetResultItemRatelimitType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemRatelimit",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemRatelimit>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemR2BucketType = "r2_bucket";
-export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketType = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
   | "fedramp-high"
   | "us";
-export const DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemR2Bucket {
   /** R2 bucket to bind to. */
   bucketName: string;
@@ -2332,22 +1640,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemR2Bucket {
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketName: S.String.pipe(T.Body("bucket_name")),
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemR2BucketType,
-    jurisdiction: S.optional(
-      S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemR2BucketJurisdiction),
-    ),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemR2Bucket",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemR2Bucket>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2356,30 +1649,11 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemSecretTextType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretText = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      text: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemSecretTextType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemSecretText",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretText>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailType = "send_email";
-export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailType = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2392,29 +1666,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSendEmail {
   /** Destination address for the email. */
   destinationAddress?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemSendEmail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemSendEmailType,
-    allowedDestinationAddresses: S.optional(
-      S.NullOr(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedDestinationAddressesList,
-      ).pipe(T.Body("allowed_destination_addresses")),
-    ),
-    allowedSenderAddresses: S.optional(
-      S.NullOr(
-        DispatchNamespacesScriptsBindingsGetResultItemSendEmailAllowedSenderAddressesList,
-      ).pipe(T.Body("allowed_sender_addresses")),
-    ),
-    destinationAddress: S.optional(S.NullOr(S.String).pipe(T.Body("destination_address"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemSendEmail",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSendEmail>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemServiceType = "service";
-export const DispatchNamespacesScriptsBindingsGetResultItemServiceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2427,21 +1679,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemService {
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    service: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemServiceType,
-    entrypoint: S.optional(S.NullOr(S.String)),
-    environment: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemService",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemService>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemTextBlobType = "text_blob";
-export const DispatchNamespacesScriptsBindingsGetResultItemTextBlobType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemTextBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2450,12 +1688,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemTextBlob {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemTextBlobType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemTextBlob =
-  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemTextBlob>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemVectorizeType = "vectorize";
-export const DispatchNamespacesScriptsBindingsGetResultItemVectorizeType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemVectorize {
   /** Name of the Vectorize index to bind to. */
   indexName: string;
@@ -2464,39 +1697,15 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemVectorize {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemVectorizeType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemVectorize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    indexName: S.String.pipe(T.Body("index_name")),
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemVectorizeType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemVectorize",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVectorize>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType = "version_metadata";
-export const DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemVersionMetadataType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType =
   "secrets_store_secret";
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2507,21 +1716,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecre
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret",
-  }) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemFlagshipType = "flagship";
-export const DispatchNamespacesScriptsBindingsGetResultItemFlagshipType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
   appId: string;
@@ -2530,26 +1725,12 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemFlagship {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemFlagshipType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemFlagship = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.Body("app_id")),
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemFlagshipType,
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemFlagship",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemFlagship>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -2559,13 +1740,8 @@ export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -2582,23 +1758,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyFormat,
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyType,
-    usages: DispatchNamespacesScriptsBindingsGetResultItemSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemSecretKey",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemSecretKey>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemWorkflowType = "workflow";
-export const DispatchNamespacesScriptsBindingsGetResultItemWorkflowType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2611,21 +1771,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemWorkflow {
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemWorkflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    type: DispatchNamespacesScriptsBindingsGetResultItemWorkflowType,
-    workflowName: S.String.pipe(T.Body("workflow_name")),
-    className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-    scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemWorkflow",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemWorkflow>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType = "wasm_module";
-export const DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemWasmModule {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2634,20 +1780,7 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemWasmModule {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemWasmModule = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemWasmModuleType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemWasmModule",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemWasmModule>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType = "vpc_service";
-export const DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemVPCService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2656,24 +1789,9 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemVPCService {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemVPCService = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      type: DispatchNamespacesScriptsBindingsGetResultItemVPCServiceType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemVPCService",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVPCService>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType = "vpc_network";
-export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType = S.String;
-
 export type DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkIdentity =
   "runtime-email-alpha";
-export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkIdentity = S.String;
-
 export interface DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2686,21 +1804,6 @@ export interface DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork {
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-export const DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkType,
-      identity: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemVPCNetworkIdentity),
-      ),
-      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork",
-}) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork>;
-
 export type DispatchNamespacesScriptsBindingsGetResultItem =
   | DispatchNamespacesScriptsBindingsGetResultItemAI
   | DispatchNamespacesScriptsBindingsGetResultItemAISearch
@@ -2740,7 +1843,7 @@ export type DispatchNamespacesScriptsBindingsGetResultItem =
   | DispatchNamespacesScriptsBindingsGetResultItemWasmModule
   | DispatchNamespacesScriptsBindingsGetResultItemVPCService
   | DispatchNamespacesScriptsBindingsGetResultItemVPCNetwork;
-export const DispatchNamespacesScriptsBindingsGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsBindingsGetResultItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
@@ -2844,7 +1947,7 @@ export const DispatchNamespacesScriptsBindingsGetResultItem = /*@__PURE__*/ S.Un
 
 export type DispatchNamespacesScriptsBindingsGetResultList =
   Array<DispatchNamespacesScriptsBindingsGetResultItem>;
-export const DispatchNamespacesScriptsBindingsGetResultList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsBindingsGetResultList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsBindingsGetResultItem,
 ) as any as S.Schema<DispatchNamespacesScriptsBindingsGetResultList>;
 
@@ -2854,7 +1957,7 @@ export interface GetDispatchNamespaceScriptBindingResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetDispatchNamespaceScriptBindingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptBindingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DispatchNamespacesScriptsBindingsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -2871,7 +1974,7 @@ export interface GetDispatchNamespaceScriptContentRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const GetDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -2890,7 +1993,7 @@ export const GetDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetDispatchNamespaceScriptContentRequest>;
 
 export interface GetDispatchNamespaceScriptContentResponse {}
-export const GetDispatchNamespaceScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "GetDispatchNamespaceScriptContentResponse",
@@ -2908,7 +2011,7 @@ export interface GetDispatchNamespaceScriptSecretRequest {
   /** Flag that indicates whether the secret name is URL encoded. */
   urlEncoded?: boolean;
 }
-export const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -2929,8 +2032,6 @@ export const GetDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetDispatchNamespaceScriptSecretRequest>;
 
 export type DispatchNamespacesScriptsSecretsGetResultSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSecretsGetResultSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSecretsGetResultSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -2939,19 +2040,12 @@ export interface DispatchNamespacesScriptsSecretsGetResultSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsGetResultSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsGetResultSecretText =
-  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretText>;
-
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSecretsGetResultSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -2961,11 +2055,11 @@ export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem = S.String;
+const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem = S.String;
 
 export type DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesItem,
 ) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList>;
 
@@ -2985,24 +2079,10 @@ export interface DispatchNamespacesScriptsSecretsGetResultSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsGetResultSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: DispatchNamespacesScriptsSecretsGetResultSecretKeyFormat,
-    name: S.String,
-    type: DispatchNamespacesScriptsSecretsGetResultSecretKeyType,
-    usages: DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList,
-    keyBase64: S.optional(S.NullOr(S.String).pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.NullOr(S.Unknown).pipe(T.Body("key_jwk"))),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSecretsGetResultSecretKey",
-}) as any as S.Schema<DispatchNamespacesScriptsSecretsGetResultSecretKey>;
-
 export type DispatchNamespacesScriptsSecretsGetResult =
   | DispatchNamespacesScriptsSecretsGetResultSecretText
   | DispatchNamespacesScriptsSecretsGetResultSecretKey;
-export const DispatchNamespacesScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
@@ -3013,7 +2093,7 @@ export const DispatchNamespacesScriptsSecretsGetResult = /*@__PURE__*/ S.Unknown
 );
 
 export type GetDispatchNamespaceScriptSecretResponse = DispatchNamespacesScriptsSecretsGetResult;
-export const GetDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
   DispatchNamespacesScriptsSecretsGetResult.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -3030,7 +2110,7 @@ export interface GetDispatchNamespaceScriptSettingRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -3049,27 +2129,13 @@ export const GetDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetDispatchNamespaceScriptSettingRequest>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType = "ai";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAIType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType = "ai_search";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch {
   /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
   instanceName: string;
@@ -3080,23 +2146,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearc
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String.pipe(T.Body("instance_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchType,
-      namespace: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3105,12 +2156,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearc
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType = "messaging";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3119,13 +2165,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagi
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessagingType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMessaging>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine {
   /** The name of the dataset to bind to. */
   dataset: string;
@@ -3134,12 +2175,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyti
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngineType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine =
-  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAnalyticsEngine>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType = "artifacts";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3148,36 +2184,21 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifac
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifactsType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemArtifacts>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType = "assets";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssetsType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemAssets>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType = "browser";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowserType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemBrowser>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type = "d1";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 {
   /** Identifier of the D1 database to bind to. */
   databaseId: string;
@@ -3188,21 +2209,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      databaseId: S.String.pipe(T.Body("database_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1Type,
-      id: S.optional(S.NullOr(S.String)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType = "data_blob";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3211,59 +2218,20 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlo
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      part: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlobType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsItem =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundWorker =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
   params?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
   worker?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutboundParamsList,
-        ),
-      ),
-      worker: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3274,25 +2242,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatc
   /** Outbound worker. */
   outbound?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceType,
-      outbound: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespaceOutbound),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDispatchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType =
   "durable_object_namespace";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3309,12 +2260,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurable
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemDurableObjectNamespace>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType = "hyperdrive";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
   id: string;
@@ -3323,20 +2269,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdr
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdriveType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType = "inherit";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit {
   /** The name of the inherited binding. */
   name: string;
@@ -3347,33 +2280,14 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemInheritType,
-      oldName: S.optional(S.NullOr(S.String).pipe(T.Body("old_name"))),
-      versionId: S.optional(S.NullOr(S.String).pipe(T.Body("version_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType = "images";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemImagesType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemImages>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType = "json";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson {
   /** JSON data to use. */
   json: unknown;
@@ -3382,21 +2296,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      json: S.Unknown,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemJsonType,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemJson>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType =
   "kv_namespace";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3405,33 +2306,15 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNames
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespaceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType = "media";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMediaType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMedia>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate {
   /** Identifier of the certificate to bind to. */
   certificateId: string;
@@ -3440,12 +2323,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCer
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificateType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate =
-  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemMTLSCertificate>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType = "plain_text";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3454,12 +2332,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTe
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainTextType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPlainText>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType = "pipelines";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3468,20 +2341,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelin
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      pipeline: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelinesType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2Type = "k2";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2 {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3490,20 +2350,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2Type;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      stream: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2Type,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType = "queue";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3512,25 +2359,9 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      queueName: S.String.pipe(T.Body("queue_name")),
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueueType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple =
   DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitSimple =
-  DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType = "ratelimit";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3541,29 +2372,12 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelim
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      simple: DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimitType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType = "r2_bucket";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
   | "fedramp-high"
   | "us";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket {
   /** R2 bucket to bind to. */
   bucketName: string;
@@ -3574,23 +2388,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucke
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucketName: S.String.pipe(T.Body("bucket_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketType,
-      jurisdiction: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2BucketJurisdiction),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3599,22 +2397,11 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretT
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretTextType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretText>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType = "send_email";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3627,30 +2414,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEma
   /** Destination address for the email. */
   destinationAddress?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailType,
-      allowedDestinationAddresses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedDestinationAddressesList,
-        ).pipe(T.Body("allowed_destination_addresses")),
-      ),
-      allowedSenderAddresses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmailAllowedSenderAddressesList,
-        ).pipe(T.Body("allowed_sender_addresses")),
-      ),
-      destinationAddress: S.optional(S.NullOr(S.String).pipe(T.Body("destination_address"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSendEmail>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType = "service";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3663,22 +2427,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemService
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      service: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemServiceType,
-      entrypoint: S.optional(S.NullOr(S.String)),
-      environment: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemService>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType = "text_blob";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3687,12 +2436,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlo
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlobType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemTextBlob>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType = "vectorize";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize {
   /** Name of the Vectorize index to bind to. */
   indexName: string;
@@ -3701,35 +2445,16 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectori
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      indexName: S.String.pipe(T.Body("index_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorizeType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType =
   "version_metadata";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadataType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVersionMetadata>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3740,12 +2465,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecrets
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecretType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret =
-  DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretsStoreSecret>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType = "flagship";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
   appId: string;
@@ -3754,27 +2474,12 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshi
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.Body("app_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagshipType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -3784,13 +2489,8 @@ export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsa
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -3807,12 +2507,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretK
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey =
-  DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemSecretKey>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType = "workflow";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3825,22 +2520,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflo
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflowType,
-      workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.NullOr(S.String).pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.NullOr(S.String).pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType = "wasm_module";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3849,12 +2529,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmMod
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModuleType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType = "vpc_service";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3863,24 +2538,9 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServ
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      serviceId: S.String.pipe(T.Body("service_id")),
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCServiceType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType = "vpc_network";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkIdentity =
   "runtime-email-alpha";
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkIdentity = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -3893,21 +2553,6 @@ export interface DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetw
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkType,
-      identity: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetworkIdentity),
-      ),
-      networkId: S.optional(S.NullOr(S.String).pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.NullOr(S.String).pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch
@@ -3947,135 +2592,124 @@ export type DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases(
+const DispatchNamespacesScriptsSettingsGetResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases(
+    [
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "namespace", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
       [
-        ["name", "type"],
-        ["instanceName", "name", "type", "namespace"],
-        ["name", "namespace", "type"],
-        ["name", "namespace", "type"],
-        ["dataset", "name", "type"],
-        ["name", "namespace", "type"],
-        ["name", "type"],
-        ["name", "type"],
-        ["databaseId", "name", "type", "id"],
-        ["name", "part", "type"],
-        ["name", "namespace", "type", "outbound"],
-        [
-          "name",
-          "type",
-          "className",
-          "dispatchNamespace",
-          "environment",
-          "namespaceId",
-          "scriptName",
-        ],
-        ["id", "name", "type"],
-        ["name", "type", "oldName", "versionId"],
-        ["name", "type"],
-        ["json", "name", "type"],
-        ["name", "namespaceId", "type"],
-        ["name", "type"],
-        ["certificateId", "name", "type"],
-        ["name", "text", "type"],
-        ["name", "pipeline", "type"],
-        ["name", "stream", "type"],
-        ["name", "queueName", "type"],
-        ["name", "namespaceId", "simple", "type"],
-        ["bucketName", "name", "type", "jurisdiction"],
-        ["name", "text", "type"],
-        [
-          "name",
-          "type",
-          "allowedDestinationAddresses",
-          "allowedSenderAddresses",
-          "destinationAddress",
-        ],
-        ["name", "service", "type", "entrypoint", "environment"],
-        ["name", "part", "type"],
-        ["indexName", "name", "type"],
-        ["name", "type"],
-        ["name", "secretName", "storeId", "type"],
-        ["appId", "name", "type"],
-        ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-        ["name", "type", "workflowName", "className", "scriptName"],
-        ["name", "part", "type"],
-        ["name", "serviceId", "type"],
-        ["name", "type", "identity", "networkId", "tunnelId"],
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
       ],
-      {
-        key: "type",
-        values: [
-          "ai",
-          "ai_search",
-          "ai_search_namespace",
-          "messaging",
-          "analytics_engine",
-          "artifacts",
-          "assets",
-          "browser",
-          "d1",
-          "data_blob",
-          "dispatch_namespace",
-          "durable_object_namespace",
-          "hyperdrive",
-          "inherit",
-          "images",
-          "json",
-          "kv_namespace",
-          "media",
-          "mtls_certificate",
-          "plain_text",
-          "pipelines",
-          "k2",
-          "queue",
-          "ratelimit",
-          "r2_bucket",
-          "secret_text",
-          "send_email",
-          "service",
-          "text_blob",
-          "vectorize",
-          "version_metadata",
-          "secrets_store_secret",
-          "flagship",
-          "secret_key",
-          "workflow",
-          "wasm_module",
-          "vpc_service",
-          "vpc_network",
-        ],
-      },
-    ),
-  );
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "stream", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "identity", "networkId", "tunnelId"],
+    ],
+    {
+      key: "type",
+      values: [
+        "ai",
+        "ai_search",
+        "ai_search_namespace",
+        "messaging",
+        "analytics_engine",
+        "artifacts",
+        "assets",
+        "browser",
+        "d1",
+        "data_blob",
+        "dispatch_namespace",
+        "durable_object_namespace",
+        "hyperdrive",
+        "inherit",
+        "images",
+        "json",
+        "kv_namespace",
+        "media",
+        "mtls_certificate",
+        "plain_text",
+        "pipelines",
+        "k2",
+        "queue",
+        "ratelimit",
+        "r2_bucket",
+        "secret_text",
+        "send_email",
+        "service",
+        "text_blob",
+        "vectorize",
+        "version_metadata",
+        "secrets_store_secret",
+        "flagship",
+        "secret_key",
+        "workflow",
+        "wasm_module",
+        "vpc_service",
+        "vpc_network",
+      ],
+    },
+  ),
+);
 
 export type DispatchNamespacesScriptsSettingsGetResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseBindingsItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseBindingsList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsSettingsGetResponseBindingsList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsSettingsGetResponseBindingsItem,
 ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-export const DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
-  DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-
 export type DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
+const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerCache =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType;
@@ -4084,37 +2718,13 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker 
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerState | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerType,
-      cache: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      ),
-      state: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkerState),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportStorage;
@@ -4125,53 +2735,20 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportState | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -4180,19 +2757,10 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportState;
@@ -4201,25 +2769,13 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -4232,9 +2788,6 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkers
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport
@@ -4242,34 +2795,33 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsValue =
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["type", "cache", "state"],
-      ["storage", "type", "container", "state"],
-      ["state", "type"],
-      ["renamedTo", "state", "type"],
-      ["state", "transferredTo", "type"],
-      ["state", "storage", "transferFrom", "type", "container"],
-    ]),
-  );
+const DispatchNamespacesScriptsSettingsGetResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    ["type", "cache", "state"],
+    ["storage", "type", "container", "state"],
+    ["state", "type"],
+    ["renamedTo", "state", "type"],
+    ["state", "transferredTo", "type"],
+    ["state", "storage", "transferFrom", "type", "container"],
+  ]),
+);
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsGetResponseExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsSettingsGetResponseExportsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsSettingsGetResponseExportsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsSettingsGetResponseExportsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsMap>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario =
@@ -4306,12 +2858,11 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInf
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario =
-  S.String;
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemScenario = S.String;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem {
@@ -4326,7 +2877,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -4345,14 +2896,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationIn
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationInfoList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRemovableEntriesList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem {
@@ -4361,7 +2912,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The new class name (`renamed_to`). */
   to: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       from: S.String,
@@ -4373,7 +2924,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRe
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList>;
@@ -4384,7 +2935,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The source script the namespace will be transferred from. */
   from: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -4397,14 +2948,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTr
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase =
   "committed";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItemPhase =
   S.String;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem {
@@ -4415,7 +2966,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The destination script that now owns the namespace. */
   to: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -4428,14 +2979,14 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTr
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
@@ -4472,7 +3023,7 @@ export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWar
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItemScenario =
   S.String;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem {
@@ -4485,7 +3036,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -4500,7 +3051,7 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWa
 
 export type DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList =
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList>;
@@ -4525,8 +3076,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseExportsReconciliati
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       created: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationCreatedList,
       deleted: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationDeletedList,
@@ -4544,9 +3095,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation =
       updated: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationUpdatedList,
       warnings: DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList,
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliation>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
   /** The amount of CPU time this Worker can use in milliseconds. */
@@ -4554,7 +3105,7 @@ export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuMs: S.optional(S.NullOr(S.Number).pipe(T.Body("cpu_ms"))),
     subrequests: S.optional(S.NullOr(S.Number)),
@@ -4565,65 +3116,23 @@ export const DispatchNamespacesScriptsSettingsGetResponseLimits = /*@__PURE__*/ 
 
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string | null;
   to?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      from: S.optional(S.NullOr(S.String)),
-      to: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem {
   from?: string | null;
   fromScript?: string | null;
   to?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      from: S.optional(S.NullOr(S.String)),
-      fromScript: S.optional(S.NullOr(S.String).pipe(T.Body("from_script"))),
-      to: S.optional(S.NullOr(S.String)),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList | null;
@@ -4640,76 +3149,20 @@ export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleSte
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList | null;
@@ -4722,47 +3175,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMu
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList,
-        ).pipe(T.Body("deleted_classes")),
-      ),
-      newClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList,
-        ).pipe(T.Body("new_classes")),
-      ),
-      newSqliteClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList,
-        ).pipe(T.Body("new_sqlite_classes")),
-      ),
-      renamedClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList,
-        ).pipe(T.Body("renamed_classes")),
-      ),
-      transferredClasses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList,
-        ).pipe(T.Body("transferred_classes")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
   newTag?: string | null;
@@ -4771,26 +3185,10 @@ export interface DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMu
   /** Migrations to apply in order. */
   steps?: DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newTag: S.optional(S.NullOr(S.String).pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.NullOr(S.String).pipe(T.Body("old_tag"))),
-      steps: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations>;
-
 export type DispatchNamespacesScriptsSettingsGetResponseMigrations =
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations;
-export const DispatchNamespacesScriptsSettingsGetResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSettingsGetResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
@@ -4807,12 +3205,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseMigrations = /*@__PURE_
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityIssues =
-  DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
+const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
@@ -4827,31 +3222,29 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList),
-      ),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs>;
+const DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
+    destinations: S.optional(
+      S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogsDestinationsList),
+    ),
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    persist: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy =
-  S.String;
+const DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy = S.String;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
@@ -4865,8 +3258,8 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesPropagationPolicy | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       destinations: S.optional(
         S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityTracesDestinationsList),
@@ -4880,9 +3273,9 @@ export const DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces =
         ).pipe(T.Body("propagation_policy")),
       ),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
   /** Whether observability is enabled for the Worker. */
@@ -4898,172 +3291,74 @@ export interface DispatchNamespacesScriptsSettingsGetResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces | null;
 }
-export const DispatchNamespacesScriptsSettingsGetResponseObservability = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
-      logs: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs)),
-      redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-      traces: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces)),
-    }),
+const DispatchNamespacesScriptsSettingsGetResponseObservability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
+    logs: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs)),
+    redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
+    traces: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseObservabilityTraces)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsSettingsGetResponseObservability",
 }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseObservability>;
 
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode = "smart";
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementMode = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementModeMode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementMode",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementMode>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementRegion {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementRegion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementRegion",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementRegion>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementHost {
   /** TCP host and port for targeted placement. */
   host: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementHost = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementHost",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementHost>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode;
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase4Mode,
-      region: S.String,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementCase4",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase4>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase5Mode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementCase5",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase5>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase6Mode,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementCase6",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase6>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode = S.String;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemRegion =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemRegion =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHost =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItemHost =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList>;
-
 export interface DispatchNamespacesScriptsSettingsGetResponsePlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode;
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList;
 }
-export const DispatchNamespacesScriptsSettingsGetResponsePlacementCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsGetResponsePlacementCase7Mode,
-      target: DispatchNamespacesScriptsSettingsGetResponsePlacementCase7TargetList,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsGetResponsePlacementCase7",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponsePlacementCase7>;
-
 export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
   | DispatchNamespacesScriptsSettingsGetResponsePlacementMode
   | DispatchNamespacesScriptsSettingsGetResponsePlacementRegion
@@ -5073,7 +3368,7 @@ export type DispatchNamespacesScriptsSettingsGetResponsePlacement =
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase5
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsGetResponsePlacementCase7;
-export const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
@@ -5087,24 +3382,21 @@ export const DispatchNamespacesScriptsSettingsGetResponsePlacement = /*@__PURE__
 );
 
 export type DispatchNamespacesScriptsSettingsGetResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsGetResponseTagsList =
+const DispatchNamespacesScriptsSettingsGetResponseTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTagsList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersItem =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-
 export type DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
+const DispatchNamespacesScriptsSettingsGetResponseTailConsumersList =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsGetResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const DispatchNamespacesScriptsSettingsGetResponseUsageModel = S.String;
+const DispatchNamespacesScriptsSettingsGetResponseUsageModel = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDispatchNamespaceScriptSettingResponse {
@@ -5137,7 +3429,7 @@ export interface GetDispatchNamespaceScriptSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsGetResponseUsageModel | null;
 }
-export const GetDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsGetResponseBindingsList)),
     cacheOptions: S.optional(
@@ -5180,7 +3472,7 @@ export interface ListDispatchNamespacesRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ListDispatchNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -5214,7 +3506,7 @@ export interface DispatchNamespacesListResultItem {
   /** Whether the Workers in the namespace are executed in a "trusted" manner. When a Worker is trusted, it has access to the shared caches for the zone in the Cache API, and has access to the `request.cf` object on incoming Requests. When a Worker is untrusted, caches are not shared across the zone, and `request.cf` is undefined. By default, Workers in a namespace are "untrusted". */
   trustedWorkers?: boolean | null;
 }
-export const DispatchNamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.NullOr(S.String).pipe(T.Body("created_by"))),
     createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
@@ -5230,7 +3522,7 @@ export const DispatchNamespacesListResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DispatchNamespacesListResultItem>;
 
 export type DispatchNamespacesListResultList = Array<DispatchNamespacesListResultItem>;
-export const DispatchNamespacesListResultList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesListResultList = /*@__PURE__*/ S.Array(
   DispatchNamespacesListResultItem,
 ) as any as S.Schema<DispatchNamespacesListResultList>;
 
@@ -5240,7 +3532,7 @@ export interface ListDispatchNamespacesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDispatchNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5257,7 +3549,7 @@ export interface ListDispatchNamespaceScriptSecretsRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const ListDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -5276,8 +3568,6 @@ export const ListDispatchNamespaceScriptSecretsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListDispatchNamespaceScriptSecretsRequest>;
 
 export type DispatchNamespacesScriptsSecretsListResultItemSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSecretsListResultItemSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSecretsListResultItemSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5286,19 +3576,12 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsListResultItemSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsListResultItemSecretText =
-  DispatchNamespacesScriptsBindingsGetResultItemSecretText as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretText>;
-
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -5308,13 +3591,8 @@ export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -5331,13 +3609,10 @@ export interface DispatchNamespacesScriptsSecretsListResultItemSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsListResultItemSecretKey =
-  DispatchNamespacesScriptsBindingsGetResultItemSecretKey as any as S.Schema<DispatchNamespacesScriptsSecretsListResultItemSecretKey>;
-
 export type DispatchNamespacesScriptsSecretsListResultItem =
   | DispatchNamespacesScriptsSecretsListResultItemSecretText
   | DispatchNamespacesScriptsSecretsListResultItemSecretKey;
-export const DispatchNamespacesScriptsSecretsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSecretsListResultItem = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
@@ -5349,7 +3624,7 @@ export const DispatchNamespacesScriptsSecretsListResultItem = /*@__PURE__*/ S.Un
 
 export type DispatchNamespacesScriptsSecretsListResultList =
   Array<DispatchNamespacesScriptsSecretsListResultItem>;
-export const DispatchNamespacesScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsSecretsListResultList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsSecretsListResultItem,
 ) as any as S.Schema<DispatchNamespacesScriptsSecretsListResultList>;
 
@@ -5359,7 +3634,7 @@ export interface ListDispatchNamespaceScriptSecretsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespaceScriptSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DispatchNamespacesScriptsSecretsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5376,7 +3651,7 @@ export interface ListDispatchNamespaceScriptTagsRequest {
   /** Name of the script. */
   scriptName: string;
 }
-export const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -5395,7 +3670,7 @@ export const ListDispatchNamespaceScriptTagsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDispatchNamespaceScriptTagsRequest>;
 
 export type DispatchNamespacesScriptsTagsListResultList = Array<string>;
-export const DispatchNamespacesScriptsTagsListResultList =
+const DispatchNamespacesScriptsTagsListResultList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsListResultList>;
 
 export interface ListDispatchNamespaceScriptTagsResponse {
@@ -5404,7 +3679,7 @@ export interface ListDispatchNamespaceScriptTagsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DispatchNamespacesScriptsTagsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -5414,22 +3689,14 @@ export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListDispatchNamespaceScriptTagsResponse>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType = "ai";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAIType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchType =
   "ai_search";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearch {
   /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
   instanceName: string;
@@ -5440,23 +3707,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      instanceName: S.String.pipe(T.Body("instance_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchType,
-      namespace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearch",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearch>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5465,14 +3717,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType =
   "messaging";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5481,14 +3727,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessagingType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMessaging>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType =
   "analytics_engine";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine {
   /** The name of the dataset to bind to. */
   dataset: string;
@@ -5497,14 +3737,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngineType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine =
-  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAnalyticsEngine>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType =
   "artifacts";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5513,36 +3747,21 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifactsType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemArtifacts>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType = "assets";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssetsType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAssets>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType = "browser";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowserType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemBrowser>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1Type = "d1";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1 {
   /** Identifier of the D1 database to bind to. */
   databaseId: string;
@@ -5553,23 +3772,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** This property has been renamed to `database_id`. */
   id?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databaseId: S.String.pipe(T.Body("database_id")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1Type,
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemD1>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlobType =
   "data_blob";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlobType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5578,24 +3782,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlobType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDataBlob>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsItem =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsItem =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker {
   /** Entrypoint to invoke on the outbound worker. */
   entrypoint?: string;
@@ -5604,39 +3796,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Name of the outbound worker. */
   service?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
   params?: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList;
   /** Outbound worker. */
   worker?: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundParamsList,
-      ),
-      worker: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutboundWorker,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5647,25 +3812,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Outbound worker. */
   outbound?: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceType,
-      outbound: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespaceOutbound,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDispatchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespaceType =
   "durable_object_namespace";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5682,27 +3830,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespaceType,
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      dispatchNamespace: S.optional(S.String.pipe(T.Body("dispatch_namespace"))),
-      environment: S.optional(S.String),
-      namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemDurableObjectNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdriveType =
   "hyperdrive";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdriveType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
   id: string;
@@ -5711,12 +3840,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdriveType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemHyperdrive>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType = "inherit";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInherit {
   /** The name of the inherited binding. */
   name: string;
@@ -5727,33 +3851,14 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInherit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInheritType,
-      oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-      versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInherit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemInherit>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType = "images";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImagesType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemImages>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType = "json";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson {
   /** JSON data to use. */
   json: unknown;
@@ -5762,22 +3867,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      json: S.Unknown,
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJsonType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespaceType =
   "kv_namespace";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5786,26 +3877,15 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemKVNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType = "media";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMediaType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMedia>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType =
   "mtls_certificate";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate {
   /** Identifier of the certificate to bind to. */
   certificateId: string;
@@ -5814,14 +3894,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificateType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate =
-  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemMTLSCertificate>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType =
   "plain_text";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5830,14 +3904,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainTextType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPlainText>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType =
   "pipelines";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5846,12 +3914,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelinesType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemPipelines>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type = "k2";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2 {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5860,20 +3923,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      stream: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2Type,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemK2>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueueType = "queue";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueueType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5882,9 +3932,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueueType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemQueue>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple {
   /** The limit (requests per period). */
   limit: number;
@@ -5893,22 +3940,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Duration in seconds to apply the mitigation action after the rate limit is exceeded. Valid values are 0 (disabled), 10, or multiples of 60 up to 86400. Must be greater than or equal to the period when non-zero. */
   mitigationTimeout?: number;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      limit: S.Number,
-      period: S.Number,
-      mitigationTimeout: S.optional(S.Number.pipe(T.Body("mitigation_timeout"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitType =
   "ratelimit";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimit {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5919,31 +3952,13 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimit =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespaceId: S.String.pipe(T.Body("namespace_id")),
-      simple: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitSimple,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimitType,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimit",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemRatelimit>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketType =
   "r2_bucket";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
   | "fedramp-high"
   | "us";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketJurisdiction =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2Bucket {
   /** R2 bucket to bind to. */
   bucketName: string;
@@ -5956,25 +3971,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
     | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketJurisdiction
     | (string & {});
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2Bucket =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      bucketName: S.String.pipe(T.Body("bucket_name")),
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketType,
-      jurisdiction: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2BucketJurisdiction,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2Bucket",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemR2Bucket>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretTextType =
   "secret_text";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretTextType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -5983,24 +3981,12 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretTextType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretText>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailType =
   "send_email";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6013,30 +3999,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Destination address for the email. */
   destinationAddress?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailType,
-      allowedDestinationAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedDestinationAddressesList.pipe(
-          T.Body("allowed_destination_addresses"),
-        ),
-      ),
-      allowedSenderAddresses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmailAllowedSenderAddressesList.pipe(
-          T.Body("allowed_sender_addresses"),
-        ),
-      ),
-      destinationAddress: S.optional(S.String.pipe(T.Body("destination_address"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmail",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSendEmail>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemServiceType = "service";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemServiceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6049,24 +4012,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Optional environment if the Worker utilizes one. */
   environment?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemService =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      service: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemServiceType,
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemService",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemService>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlobType =
   "text_blob";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlobType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6075,14 +4022,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlobType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemTextBlob>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType =
   "vectorize";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize {
   /** Name of the Vectorize index to bind to. */
   indexName: string;
@@ -6091,28 +4032,16 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorizeType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVectorize>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType =
   "version_metadata";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadataType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVersionMetadata>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecretType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6123,24 +4052,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecretType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecret =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      secretName: S.String.pipe(T.Body("secret_name")),
-      storeId: S.String.pipe(T.Body("store_id")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecretType,
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecret",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretsStoreSecret>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagshipType =
   "flagship";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagshipType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
   appId: string;
@@ -6149,22 +4062,13 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagshipType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemFlagship>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyFormat =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyType =
   "secret_key";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -6174,17 +4078,11 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecr
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesItem =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList =
   Array<
     | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesItem
     | (string & {})
   >;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -6203,14 +4101,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemSecretKey>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflowType =
   "workflow";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflowType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6223,24 +4115,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflow =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflowType,
-      workflowName: S.String.pipe(T.Body("workflow_name")),
-      className: S.optional(S.String.pipe(T.Body("class_name"))),
-      scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflow",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWorkflow>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModuleType =
   "wasm_module";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModuleType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6249,14 +4125,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModuleType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType =
   "vpc_service";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6265,19 +4135,10 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCServiceType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkType =
   "vpc_network";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkIdentity =
   "runtime-email-alpha";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkIdentity =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -6292,21 +4153,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsIte
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkType,
-      identity: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetworkIdentity,
-      ),
-      networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-      tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAI
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemAISearch
@@ -6346,7 +4192,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemVPCNetwork;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases(
       [
@@ -6451,10 +4297,9 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem =
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList>;
+const DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList = /*@__PURE__*/ S.Array(
+  DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItem,
+) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions {
   /** Whether caching is enabled for this Worker. */
@@ -6462,32 +4307,25 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOption
   /** Whether cached responses are shared across Worker version uploads. This is independent of `enabled`. It can stay true while caching is off, so the preference survives turning caching off and back on. */
   crossVersionCache?: boolean;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       enabled: S.Boolean,
       crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCacheOptions>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerCache =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType;
@@ -6498,35 +4336,13 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
     | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerState
     | (string & {});
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerType,
-      cache: S.optional(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      state: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkerState,
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorker",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorker>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage:
@@ -6541,51 +4357,20 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
     | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportState
     | (string & {});
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.String),
-      state: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExportState,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -6594,19 +4379,10 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportState;
@@ -6615,25 +4391,13 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -6648,22 +4412,6 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValu
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportState,
-      storage:
-        DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportStorage,
-      transferFrom: S.String.pipe(T.Body("transfer_from")),
-      type: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExportType,
-      container: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorker
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExport
@@ -6671,7 +4419,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
   /*@__PURE__*/ S.Unknown.pipe(
     /*@__PURE__*/ T.UnionCases([
       ["type", "cache", "state"],
@@ -6686,20 +4434,19 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue =
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap>;
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  DispatchNamespacesScriptsSettingsEditRequestSettingsExportsValue,
+) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsMap>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
@@ -6736,12 +4483,12 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcili
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemScenario =
   S.String;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem {
@@ -6758,7 +4505,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItemReferencingScriptsList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -6778,39 +4525,33 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationInfoList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRemovableEntriesList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationRenamedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferPendingList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
   "committed";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItemPhase =
   S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem {
@@ -6823,7 +4564,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** The destination script that now owns the namespace. */
   to: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -6838,14 +4579,14 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationTransferredList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
@@ -6882,7 +4623,7 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcili
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItemScenario =
   S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem {
@@ -6897,7 +4638,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -6913,7 +4654,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconcil
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList>;
@@ -6938,7 +4679,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReco
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationWarningsList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliation =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       created: DispatchNamespacesScriptsSettingsEditRequestSettingsExportsReconciliationCreatedList,
@@ -6969,77 +4710,34 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsLimits {
   /** The number of subrequests this Worker can make per request. */
   subrequests?: number;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsLimits = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
-      subrequests: S.optional(S.Number),
-    }),
+const DispatchNamespacesScriptsSettingsEditRequestSettingsLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
+    subrequests: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsLimits",
 }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsLimits>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem {
   from?: string;
   to?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      from: S.optional(S.String),
-      to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem {
   from?: string;
   fromScript?: string;
   to?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      from: S.optional(S.String),
-      fromScript: S.optional(S.String.pipe(T.Body("from_script"))),
-      to: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList;
@@ -7056,76 +4754,20 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsS
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList;
@@ -7138,47 +4780,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsW
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList.pipe(
-          T.Body("deleted_classes"),
-        ),
-      ),
-      newClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList.pipe(
-          T.Body("new_classes"),
-        ),
-      ),
-      newSqliteClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList.pipe(
-          T.Body("new_sqlite_classes"),
-        ),
-      ),
-      renamedClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList.pipe(
-          T.Body("renamed_classes"),
-        ),
-      ),
-      transferredClasses: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList.pipe(
-          T.Body("transferred_classes"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
   newTag?: string;
@@ -7187,44 +4790,29 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsW
   /** Migrations to apply in order. */
   steps?: DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-      oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-      steps: S.optional(
-        DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrationsStepsList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsWorkersMultipleStepMigrations;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      [
-        "deletedClasses",
-        "newClasses",
-        "newSqliteClasses",
-        "newTag",
-        "oldTag",
-        "renamedClasses",
-        "transferredClasses",
-      ],
-      ["newTag", "oldTag", "steps"],
-    ]),
-  );
+const DispatchNamespacesScriptsSettingsEditRequestSettingsMigrations = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    [
+      "deletedClasses",
+      "newClasses",
+      "newSqliteClasses",
+      "newTag",
+      "oldTag",
+      "renamedClasses",
+      "transferredClasses",
+    ],
+    ["newTag", "oldTag", "steps"],
+  ]),
+);
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues {
   /** Whether real-time Issues are enabled for the Worker. */
   enabled?: boolean;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIssues =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.optional(S.Boolean),
@@ -7235,7 +4823,7 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityIs
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogsDestinationsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs {
@@ -7250,7 +4838,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLogs =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
@@ -7267,13 +4855,13 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityLo
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy =
   S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces {
@@ -7290,7 +4878,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
     | DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTracesPropagationPolicy
     | (string & {});
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       destinations: S.optional(
@@ -7323,8 +4911,8 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsObservabili
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservability =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsEditRequestSettingsObservability = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       enabled: S.Boolean,
       headSamplingRate: S.optional(S.Number.pipe(T.Body("head_sampling_rate"))),
@@ -7333,146 +4921,61 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsObservability =
       redactQueryString: S.optional(S.Boolean.pipe(T.Body("redact_query_string"))),
       traces: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsObservabilityTraces),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsObservability",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservability>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsObservability",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsObservability>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementModeMode = "smart";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementModeMode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementModeMode;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementModeMode,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementRegion =
   DispatchNamespacesScriptsSettingsGetResponsePlacementRegion;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementRegion =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementRegion;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementHost =
   DispatchNamespacesScriptsSettingsGetResponsePlacementHost;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementHost =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementHost;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4Mode;
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4Mode,
-      region: S.String,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase4>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hostname: S.String,
-      mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5Mode,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      host: S.String,
-      mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6Mode,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7Mode = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemRegion =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemRegion =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemHost =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItemHost =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList>;
-
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7Mode;
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7Mode,
-      target: DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7TargetList,
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7>;
-
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementMode
   | DispatchNamespacesScriptsSettingsGetResponsePlacementRegion
@@ -7482,22 +4985,21 @@ export type DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase5
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase6
   | DispatchNamespacesScriptsSettingsEditRequestSettingsPlacementCase7;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["mode"],
-      ["region"],
-      ["hostname"],
-      ["host"],
-      ["mode", "region"],
-      ["hostname", "mode"],
-      ["host", "mode"],
-      ["mode", "target"],
-    ]),
-  );
+const DispatchNamespacesScriptsSettingsEditRequestSettingsPlacement = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    ["mode"],
+    ["region"],
+    ["hostname"],
+    ["host"],
+    ["mode", "region"],
+    ["hostname", "mode"],
+    ["host", "mode"],
+    ["mode", "target"],
+  ]),
+);
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTagsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem {
@@ -7508,7 +5010,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsume
   /** Optional dispatch namespace the script belongs to. */
   namespace?: string;
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem =
+const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service: S.String,
@@ -7521,16 +5023,15 @@ export const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersIt
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem>;
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList>;
+const DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList = /*@__PURE__*/ S.Array(
+  DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersItem,
+) as any as S.Schema<DispatchNamespacesScriptsSettingsEditRequestSettingsTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel = S.String;
+const DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel = S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditRequestSettings {
   /** List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings. */
@@ -7562,7 +5063,7 @@ export interface DispatchNamespacesScriptsSettingsEditRequestSettings {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsEditRequestSettingsUsageModel | (string & {});
 }
-export const DispatchNamespacesScriptsSettingsEditRequestSettings = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsEditRequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsList),
     cacheOptions: S.optional(
@@ -7611,7 +5112,7 @@ export interface PatchDispatchNamespaceScriptSettingRequest {
   /** Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts. */
   settings?: DispatchNamespacesScriptsSettingsEditRequestSettings;
 }
-export const PatchDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -7631,20 +5132,13 @@ export const PatchDispatchNamespaceScriptSettingRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<PatchDispatchNamespaceScriptSettingRequest>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType = "ai";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAIType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemAI as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType = "ai_search";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch {
   /** The user-chosen instance name. Must exist at deploy time. The worker can search, chat, update, and manage items/jobs on this instance. */
   instanceName: string;
@@ -7655,14 +5149,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISear
   /** The namespace the instance belongs to. Defaults to "default" if omitted. Customers who don't use namespaces can simply omit this field. */
   namespace?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemAISearch as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType =
   "ai_search_namespace";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7671,12 +5159,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISear
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType = "messaging";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7685,14 +5168,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessag
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessagingType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMessaging>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType =
   "analytics_engine";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine {
   /** The name of the dataset to bind to. */
   dataset: string;
@@ -7701,12 +5178,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyt
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngineType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine =
-  DispatchNamespacesScriptsBindingsGetResultItemAnalyticsEngine as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAnalyticsEngine>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType = "artifacts";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7715,36 +5187,21 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifa
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifactsType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts =
-  DispatchNamespacesScriptsBindingsGetResultItemAISearchNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemArtifacts>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType = "assets";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssetsType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemAssets>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType = "browser";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowserType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemBrowser>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type = "d1";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 {
   /** Identifier of the D1 database to bind to. */
   databaseId: string;
@@ -7755,12 +5212,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 {
   /** This property has been renamed to `database_id`. */
   id?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1 =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemD1 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemD1>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType = "data_blob";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7769,52 +5221,20 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBl
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlobType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDataBlob>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType =
   "dispatch_namespace";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsItem =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
   Array<DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker =
   DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundWorker =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound {
   /** Pass information from the Dispatch Worker to the Outbound Worker through the parameters. */
   params?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList | null;
   /** Outbound worker. */
   worker?: DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      params: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutboundParamsList,
-        ),
-      ),
-      worker: S.optional(
-        S.NullOr(DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundWorker),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7825,27 +5245,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispat
   /** Outbound worker. */
   outbound?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceType,
-      outbound: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespaceOutbound,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDispatchNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType =
   "durable_object_namespace";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespaceType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7862,12 +5263,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurabl
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemDurableObjectNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemDurableObjectNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType = "hyperdrive";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
   id: string;
@@ -7876,12 +5272,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperd
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdriveType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemHyperdrive as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemHyperdrive>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType = "inherit";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheritType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit {
   /** The name of the inherited binding. */
   name: string;
@@ -7892,24 +5283,14 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemInheri
   /** Identifier for the version to inherit the binding from, which can be the version ID or the literal "latest" to inherit from the latest version. Defaults to inheriting the binding from the latest version. */
   versionId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemInherit as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemInherit>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType = "images";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemImagesType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemImages>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType = "json";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson {
   /** JSON data to use. */
   json: unknown;
@@ -7918,13 +5299,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemJsonType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsBindingsItemJson as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemJson>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType =
   "kv_namespace";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7933,26 +5309,15 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVName
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespaceType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemKVNamespace as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemKVNamespace>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType = "media";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMediaType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMedia>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType =
   "mtls_certificate";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate {
   /** Identifier of the certificate to bind to. */
   certificateId: string;
@@ -7961,12 +5326,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCe
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificateType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate =
-  DispatchNamespacesScriptsBindingsGetResultItemMTLSCertificate as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemMTLSCertificate>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType = "plain_text";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7975,12 +5335,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainT
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainTextType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPlainText>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType = "pipelines";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -7989,12 +5344,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipeli
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelinesType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemPipelines as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemPipelines>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type = "k2";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8003,12 +5353,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2Type;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2 =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemK2 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemK2>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType = "queue";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8017,17 +5362,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue 
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueueType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemQueue as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemQueue>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple =
   DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitSimple =
-  DispatchNamespacesScriptsBindingsGetResultItemRatelimitSimple;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType = "ratelimit";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8038,20 +5375,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemRateli
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimitType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemRatelimit as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemRatelimit>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType = "r2_bucket";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
   | "eu"
   | "fedramp"
   | "fedramp-high"
   | "us";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket {
   /** R2 bucket to bind to. */
   bucketName: string;
@@ -8062,12 +5391,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Buck
   /** The [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) of the R2 bucket. */
   jurisdiction?: DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2BucketJurisdiction | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemR2Bucket as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemR2Bucket>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8076,22 +5400,11 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretTextType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretText as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretText>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType = "send_email";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8104,30 +5417,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEm
   /** Destination address for the email. */
   destinationAddress?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailType,
-      allowedDestinationAddresses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedDestinationAddressesList,
-        ).pipe(T.Body("allowed_destination_addresses")),
-      ),
-      allowedSenderAddresses: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmailAllowedSenderAddressesList,
-        ).pipe(T.Body("allowed_sender_addresses")),
-      ),
-      destinationAddress: S.optional(S.NullOr(S.String).pipe(T.Body("destination_address"))),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSendEmail>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType = "service";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemServiceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8140,12 +5430,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemServic
   /** Optional environment if the Worker utilizes one. */
   environment?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemService =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemService as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemService>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType = "text_blob";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8154,12 +5439,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBl
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlobType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemTextBlob>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType = "vectorize";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize {
   /** Name of the Vectorize index to bind to. */
   indexName: string;
@@ -8168,28 +5448,16 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVector
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorizeType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVectorize as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVectorize>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType =
   "version_metadata";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata {
   /** A JavaScript variable name for the binding. */
   name: string;
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadataType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata =
-  DispatchNamespacesScriptsBindingsGetResultItemVersionMetadata as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVersionMetadata>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType =
   "secrets_store_secret";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8200,12 +5468,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecretType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret =
-  DispatchNamespacesScriptsBindingsGetResultItemSecretsStoreSecret as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretsStoreSecret>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType = "flagship";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
   appId: string;
@@ -8214,19 +5477,12 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagsh
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagshipType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemFlagship as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemFlagship>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -8236,14 +5492,8 @@ export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUs
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -8260,12 +5510,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecret
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey =
-  DispatchNamespacesScriptsSecretsBulkUpdateResultValueSecretKey as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemSecretKey>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType = "workflow";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflowType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8278,12 +5523,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkfl
   /** Script name that contains the Workflow. If not provided, defaults to this script name. */
   scriptName?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemWorkflow as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWorkflow>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType = "wasm_module";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8292,12 +5532,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmMo
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModuleType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemDataBlob as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType = "vpc_service";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8306,16 +5541,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCSer
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCServiceType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCService as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType = "vpc_network";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkIdentity =
   "runtime-email-alpha";
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetworkIdentity = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -8328,9 +5556,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNet
   /** UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id. */
   tunnelId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork =
-  DispatchNamespacesScriptsSettingsGetResponseBindingsItemVPCNetwork as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAI
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemAISearch
@@ -8370,135 +5595,124 @@ export type DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemWasmModule
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCService
   | DispatchNamespacesScriptsSettingsEditResponseBindingsItemVPCNetwork;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsItem =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases(
+const DispatchNamespacesScriptsSettingsEditResponseBindingsItem = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases(
+    [
+      ["name", "type"],
+      ["instanceName", "name", "type", "namespace"],
+      ["name", "namespace", "type"],
+      ["name", "namespace", "type"],
+      ["dataset", "name", "type"],
+      ["name", "namespace", "type"],
+      ["name", "type"],
+      ["name", "type"],
+      ["databaseId", "name", "type", "id"],
+      ["name", "part", "type"],
+      ["name", "namespace", "type", "outbound"],
       [
-        ["name", "type"],
-        ["instanceName", "name", "type", "namespace"],
-        ["name", "namespace", "type"],
-        ["name", "namespace", "type"],
-        ["dataset", "name", "type"],
-        ["name", "namespace", "type"],
-        ["name", "type"],
-        ["name", "type"],
-        ["databaseId", "name", "type", "id"],
-        ["name", "part", "type"],
-        ["name", "namespace", "type", "outbound"],
-        [
-          "name",
-          "type",
-          "className",
-          "dispatchNamespace",
-          "environment",
-          "namespaceId",
-          "scriptName",
-        ],
-        ["id", "name", "type"],
-        ["name", "type", "oldName", "versionId"],
-        ["name", "type"],
-        ["json", "name", "type"],
-        ["name", "namespaceId", "type"],
-        ["name", "type"],
-        ["certificateId", "name", "type"],
-        ["name", "text", "type"],
-        ["name", "pipeline", "type"],
-        ["name", "stream", "type"],
-        ["name", "queueName", "type"],
-        ["name", "namespaceId", "simple", "type"],
-        ["bucketName", "name", "type", "jurisdiction"],
-        ["name", "text", "type"],
-        [
-          "name",
-          "type",
-          "allowedDestinationAddresses",
-          "allowedSenderAddresses",
-          "destinationAddress",
-        ],
-        ["name", "service", "type", "entrypoint", "environment"],
-        ["name", "part", "type"],
-        ["indexName", "name", "type"],
-        ["name", "type"],
-        ["name", "secretName", "storeId", "type"],
-        ["appId", "name", "type"],
-        ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
-        ["name", "type", "workflowName", "className", "scriptName"],
-        ["name", "part", "type"],
-        ["name", "serviceId", "type"],
-        ["name", "type", "identity", "networkId", "tunnelId"],
+        "name",
+        "type",
+        "className",
+        "dispatchNamespace",
+        "environment",
+        "namespaceId",
+        "scriptName",
       ],
-      {
-        key: "type",
-        values: [
-          "ai",
-          "ai_search",
-          "ai_search_namespace",
-          "messaging",
-          "analytics_engine",
-          "artifacts",
-          "assets",
-          "browser",
-          "d1",
-          "data_blob",
-          "dispatch_namespace",
-          "durable_object_namespace",
-          "hyperdrive",
-          "inherit",
-          "images",
-          "json",
-          "kv_namespace",
-          "media",
-          "mtls_certificate",
-          "plain_text",
-          "pipelines",
-          "k2",
-          "queue",
-          "ratelimit",
-          "r2_bucket",
-          "secret_text",
-          "send_email",
-          "service",
-          "text_blob",
-          "vectorize",
-          "version_metadata",
-          "secrets_store_secret",
-          "flagship",
-          "secret_key",
-          "workflow",
-          "wasm_module",
-          "vpc_service",
-          "vpc_network",
-        ],
-      },
-    ),
-  );
+      ["id", "name", "type"],
+      ["name", "type", "oldName", "versionId"],
+      ["name", "type"],
+      ["json", "name", "type"],
+      ["name", "namespaceId", "type"],
+      ["name", "type"],
+      ["certificateId", "name", "type"],
+      ["name", "text", "type"],
+      ["name", "pipeline", "type"],
+      ["name", "stream", "type"],
+      ["name", "queueName", "type"],
+      ["name", "namespaceId", "simple", "type"],
+      ["bucketName", "name", "type", "jurisdiction"],
+      ["name", "text", "type"],
+      [
+        "name",
+        "type",
+        "allowedDestinationAddresses",
+        "allowedSenderAddresses",
+        "destinationAddress",
+      ],
+      ["name", "service", "type", "entrypoint", "environment"],
+      ["name", "part", "type"],
+      ["indexName", "name", "type"],
+      ["name", "type"],
+      ["name", "secretName", "storeId", "type"],
+      ["appId", "name", "type"],
+      ["algorithm", "format", "name", "type", "usages", "keyBase64", "keyJwk"],
+      ["name", "type", "workflowName", "className", "scriptName"],
+      ["name", "part", "type"],
+      ["name", "serviceId", "type"],
+      ["name", "type", "identity", "networkId", "tunnelId"],
+    ],
+    {
+      key: "type",
+      values: [
+        "ai",
+        "ai_search",
+        "ai_search_namespace",
+        "messaging",
+        "analytics_engine",
+        "artifacts",
+        "assets",
+        "browser",
+        "d1",
+        "data_blob",
+        "dispatch_namespace",
+        "durable_object_namespace",
+        "hyperdrive",
+        "inherit",
+        "images",
+        "json",
+        "kv_namespace",
+        "media",
+        "mtls_certificate",
+        "plain_text",
+        "pipelines",
+        "k2",
+        "queue",
+        "ratelimit",
+        "r2_bucket",
+        "secret_text",
+        "send_email",
+        "service",
+        "text_blob",
+        "vectorize",
+        "version_metadata",
+        "secrets_store_secret",
+        "flagship",
+        "secret_key",
+        "workflow",
+        "wasm_module",
+        "vpc_service",
+        "vpc_network",
+      ],
+    },
+  ),
+);
 
 export type DispatchNamespacesScriptsSettingsEditResponseBindingsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseBindingsItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseBindingsList = /*@__PURE__*/ S.Array(
+const DispatchNamespacesScriptsSettingsEditResponseBindingsList = /*@__PURE__*/ S.Array(
   DispatchNamespacesScriptsSettingsEditResponseBindingsItem,
 ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-export const DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
-  DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-
 export type DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
+const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerCache =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerType;
@@ -8507,25 +5721,13 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkerState | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker =
-  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportStorage;
@@ -8536,38 +5738,20 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExportState | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport =
-  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -8576,19 +5760,10 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportState;
@@ -8597,25 +5772,13 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -8628,9 +5791,6 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorker
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExport
@@ -8638,34 +5798,33 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsValue =
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsSettingsEditResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["type", "cache", "state"],
-      ["storage", "type", "container", "state"],
-      ["state", "type"],
-      ["renamedTo", "state", "type"],
-      ["state", "transferredTo", "type"],
-      ["state", "storage", "transferFrom", "type", "container"],
-    ]),
-  );
+const DispatchNamespacesScriptsSettingsEditResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    ["type", "cache", "state"],
+    ["storage", "type", "container", "state"],
+    ["state", "type"],
+    ["renamedTo", "state", "type"],
+    ["state", "transferredTo", "type"],
+    ["state", "storage", "transferFrom", "type", "container"],
+  ]),
+);
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsSettingsEditResponseExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsSettingsEditResponseExportsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsSettingsEditResponseExportsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsSettingsEditResponseExportsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsMap>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario =
@@ -8702,12 +5861,11 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationIn
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario =
-  S.String;
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemScenario = S.String;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem {
@@ -8722,7 +5880,7 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** Other Workers in the account that still bind to the affected class. Advisory: while non-empty the tombstone is not yet safe to remove -- redeploy these Workers with bindings re-pointed first. */
   referencingScripts?: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItemReferencingScriptsList | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       class: S.String,
@@ -8741,41 +5899,32 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationI
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList =
   /*@__PURE__*/ S.Array(
     DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationInfoList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRemovableEntriesList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationRenamedList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationRenamedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingItem =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
   Array<DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferPendingList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferPendingList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItemPhase =
   "committed";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItemPhase =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem {
   /** The source class name that was transferred. */
   class: string;
@@ -8784,17 +5933,14 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** The destination script that now owns the namespace. */
   to: string;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationTransferredList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationTransferredList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItemScenario =
@@ -8831,9 +5977,6 @@ export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWa
   | "stale_tombstone"
   | "transfer_receive_already_applied"
   | "transfer_receive_cleanup_complete";
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItemScenario =
-  S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem {
   /** The class name the warning is about. */
   class: string;
@@ -8844,12 +5987,9 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** The provisioned namespace the warning relates to, when applicable. */
   namespaceId?: string | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem =
-  DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList =
   DispatchNamespacesScriptsSettingsGetResponseExportsReconciliationWarningsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation {
@@ -8872,8 +6012,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseExportsReconciliat
   /** Non-blocking warnings. See `exports_reconciliation_warning`. */
   warnings: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       created: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationCreatedList,
       deleted: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationDeletedList,
@@ -8892,50 +6032,26 @@ export const DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation 
       updated: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationUpdatedList,
       warnings: DispatchNamespacesScriptsSettingsEditResponseExportsReconciliationWarningsList,
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsReconciliation>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseLimits =
   DispatchNamespacesScriptsSettingsGetResponseLimits;
-export const DispatchNamespacesScriptsSettingsEditResponseLimits =
-  DispatchNamespacesScriptsSettingsGetResponseLimits;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationNewSqliteClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationRenamedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationDeletedClassesList | null;
@@ -8952,44 +6068,20 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleSt
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigrationTransferredClassesList | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigration as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemNewSqliteClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationRenamedClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemRenamedClassesList>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
   DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsSingleStepMigrationTransferredClassesList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem {
   /** A list of classes to delete Durable Object namespaces from. */
   deletedClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemDeletedClassesList | null;
@@ -9002,14 +6094,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersM
   /** A list of transfers for Durable Object namespaces from a different Worker and class to a class defined in this Worker. */
   transferredClasses?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItemTransferredClassesList | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsItem as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
   Array<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrationsStepsList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations {
   /** Tag to set as the latest migration tag. */
   newTag?: string | null;
@@ -9018,13 +6104,10 @@ export interface DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersM
   /** Migrations to apply in order. */
   steps?: DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrationsStepsList | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations =
-  DispatchNamespacesScriptsSettingsGetResponseMigrationsWorkersMultipleStepMigrations as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations>;
-
 export type DispatchNamespacesScriptsSettingsEditResponseMigrations =
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsSingleStepMigration
   | DispatchNamespacesScriptsSettingsEditResponseMigrationsWorkersMultipleStepMigrations;
-export const DispatchNamespacesScriptsSettingsEditResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSettingsEditResponseMigrations = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
@@ -9041,14 +6124,8 @@ export const DispatchNamespacesScriptsSettingsEditResponseMigrations = /*@__PURE
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityIssues =
-  DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -9061,19 +6138,18 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs 
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
+const DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs =
   DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy =
-  S.String;
+const DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy = S.String;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
@@ -9087,8 +6163,8 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservabilityTrace
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesPropagationPolicy | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       destinations: S.optional(
         S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityTracesDestinationsList),
@@ -9102,9 +6178,9 @@ export const DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces =
         ).pipe(T.Body("propagation_policy")),
       ),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces",
-  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces",
+}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
   /** Whether observability is enabled for the Worker. */
@@ -9120,131 +6196,70 @@ export interface DispatchNamespacesScriptsSettingsEditResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces | null;
 }
-export const DispatchNamespacesScriptsSettingsEditResponseObservability = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
-      logs: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs)),
-      redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-      traces: S.optional(
-        S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces),
-      ),
-    }),
+const DispatchNamespacesScriptsSettingsEditResponseObservability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
+    logs: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityLogs)),
+    redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
+    traces: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseObservabilityTraces)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsSettingsEditResponseObservability",
 }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseObservability>;
 
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode = "smart";
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementMode {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementModeMode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementMode =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementMode as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementMode>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementRegion =
   DispatchNamespacesScriptsSettingsGetResponsePlacementRegion;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementRegion =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementRegion;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementHost =
   DispatchNamespacesScriptsSettingsGetResponsePlacementHost;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementHost =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementHost;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase4Mode;
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase4 =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementCase4 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase4>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase5Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase5 =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementCase5 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase5>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode = S.String;
-
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase6Mode;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase6 =
-  DispatchNamespacesScriptsSettingsGetResponsePlacementCase6 as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase6>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode = S.String;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemRegion =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemRegion =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHost =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItemHost =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList>;
-
 export interface DispatchNamespacesScriptsSettingsEditResponsePlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode;
   /** Array of placement targets (currently limited to single target). */
   target: DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList;
 }
-export const DispatchNamespacesScriptsSettingsEditResponsePlacementCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsSettingsEditResponsePlacementCase7Mode,
-      target: DispatchNamespacesScriptsSettingsEditResponsePlacementCase7TargetList,
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsSettingsEditResponsePlacementCase7",
-}) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponsePlacementCase7>;
-
 export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
   | DispatchNamespacesScriptsSettingsEditResponsePlacementMode
   | DispatchNamespacesScriptsSettingsGetResponsePlacementRegion
@@ -9254,7 +6269,7 @@ export type DispatchNamespacesScriptsSettingsEditResponsePlacement =
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase5
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase6
   | DispatchNamespacesScriptsSettingsEditResponsePlacementCase7;
-export const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
@@ -9268,24 +6283,21 @@ export const DispatchNamespacesScriptsSettingsEditResponsePlacement = /*@__PURE_
 );
 
 export type DispatchNamespacesScriptsSettingsEditResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsSettingsEditResponseTagsList =
+const DispatchNamespacesScriptsSettingsEditResponseTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTagsList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersItem =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-
 export type DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
+const DispatchNamespacesScriptsSettingsEditResponseTailConsumersList =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsSettingsEditResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const DispatchNamespacesScriptsSettingsEditResponseUsageModel = S.String;
+const DispatchNamespacesScriptsSettingsEditResponseUsageModel = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchDispatchNamespaceScriptSettingResponse {
@@ -9318,7 +6330,7 @@ export interface PatchDispatchNamespaceScriptSettingResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsSettingsEditResponseUsageModel | null;
 }
-export const PatchDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
+const PatchDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(S.NullOr(DispatchNamespacesScriptsSettingsEditResponseBindingsList)),
     cacheOptions: S.optional(
@@ -9358,7 +6370,7 @@ export const PatchDispatchNamespaceScriptSettingResponse = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<PatchDispatchNamespaceScriptSettingResponse>;
 
 export type DispatchNamespacesScriptsUpdateRequestBindingsInherit = "strict";
-export const DispatchNamespacesScriptsUpdateRequestBindingsInherit = S.String;
+const DispatchNamespacesScriptsUpdateRequestBindingsInherit = S.String;
 
 export interface PutDispatchNamespaceScriptMetadataAnnotations {
   workersMessage?: string;
@@ -9366,7 +6378,7 @@ export interface PutDispatchNamespaceScriptMetadataAnnotations {
   /** Alias to point at this version (e.g. for gradual deployments). */
   workersAlias?: string;
 }
-export const PutDispatchNamespaceScriptMetadataAnnotations = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadataAnnotations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workersMessage: S.optional(S.String.pipe(T.Body("workers/message"))),
     workersTag: S.optional(S.String.pipe(T.Body("workers/tag"))),
@@ -9381,22 +6393,22 @@ export type PutDispatchNamespaceScriptAssetsConfigHtmlHandling =
   | "force-trailing-slash"
   | "drop-trailing-slash"
   | "none";
-export const PutDispatchNamespaceScriptAssetsConfigHtmlHandling = S.String;
+const PutDispatchNamespaceScriptAssetsConfigHtmlHandling = S.String;
 
 export type PutDispatchNamespaceScriptAssetsConfigNotFoundHandling =
   | "none"
   | "404-page"
   | "single-page-application";
-export const PutDispatchNamespaceScriptAssetsConfigNotFoundHandling = S.String;
+const PutDispatchNamespaceScriptAssetsConfigNotFoundHandling = S.String;
 
 export type PutDispatchNamespaceScriptMetadataStringList = Array<string>;
-export const PutDispatchNamespaceScriptMetadataStringList =
+const PutDispatchNamespaceScriptMetadataStringList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStringList>;
 
 export type PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst =
   | PutDispatchNamespaceScriptMetadataStringList
   | boolean;
-export const PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
+const PutDispatchNamespaceScriptAssetsConfigRunWorkerFirst = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([[], []]),
 );
 
@@ -9408,7 +6420,7 @@ export interface PutDispatchNamespaceScriptAssetsConfig {
   headers?: string;
   redirects?: string;
 }
-export const PutDispatchNamespaceScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptAssetsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     htmlHandling: S.optional(
       PutDispatchNamespaceScriptAssetsConfigHtmlHandling.pipe(T.Body("html_handling")),
@@ -9431,7 +6443,7 @@ export interface PutDispatchNamespaceScriptMetadataAssets {
   config?: PutDispatchNamespaceScriptAssetsConfig;
   jwt?: string;
 }
-export const PutDispatchNamespaceScriptMetadataAssets = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadataAssets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(PutDispatchNamespaceScriptAssetsConfig),
     jwt: S.optional(S.String),
@@ -9441,180 +6453,75 @@ export const PutDispatchNamespaceScriptMetadataAssets = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDispatchNamespaceScriptMetadataAssets>;
 
 export type PutDispatchNamespaceScriptBindingAiType = "ai";
-export const PutDispatchNamespaceScriptBindingAiType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingAi {
   name: string;
   type: PutDispatchNamespaceScriptBindingAiType;
 }
-export const PutDispatchNamespaceScriptBindingAi =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingAi>;
-
 export type PutDispatchNamespaceScriptBindingAiSearchType = "ai_search";
-export const PutDispatchNamespaceScriptBindingAiSearchType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingAiSearch {
   instanceName: string;
   name: string;
   namespace?: string;
   type: PutDispatchNamespaceScriptBindingAiSearchType;
 }
-export const PutDispatchNamespaceScriptBindingAiSearch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instanceName: S.String.pipe(T.Body("instance_name")),
-    name: S.String,
-    namespace: S.optional(S.String),
-    type: PutDispatchNamespaceScriptBindingAiSearchType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingAiSearch",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingAiSearch>;
-
 export type PutDispatchNamespaceScriptBindingAiSearchNamespaceType = "ai_search_namespace";
-export const PutDispatchNamespaceScriptBindingAiSearchNamespaceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingAiSearchNamespace {
   name: string;
   namespace: string;
   type: PutDispatchNamespaceScriptBindingAiSearchNamespaceType;
 }
-export const PutDispatchNamespaceScriptBindingAiSearchNamespace =
-  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<PutDispatchNamespaceScriptBindingAiSearchNamespace>;
-
 export type PutDispatchNamespaceScriptBindingAnalyticsEngineType = "analytics_engine";
-export const PutDispatchNamespaceScriptBindingAnalyticsEngineType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingAnalyticsEngine {
   dataset: string;
   name: string;
   type: PutDispatchNamespaceScriptBindingAnalyticsEngineType;
 }
-export const PutDispatchNamespaceScriptBindingAnalyticsEngine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset: S.String,
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingAnalyticsEngineType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingAnalyticsEngine",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingAnalyticsEngine>;
-
 export type PutDispatchNamespaceScriptBindingAssetsType = "assets";
-export const PutDispatchNamespaceScriptBindingAssetsType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingAssets {
   name: string;
   type: PutDispatchNamespaceScriptBindingAssetsType;
 }
-export const PutDispatchNamespaceScriptBindingAssets =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingAssets>;
-
 export type PutDispatchNamespaceScriptBindingBrowserType = "browser";
-export const PutDispatchNamespaceScriptBindingBrowserType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingBrowser {
   name: string;
   type: PutDispatchNamespaceScriptBindingBrowserType;
 }
-export const PutDispatchNamespaceScriptBindingBrowser =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingBrowser>;
-
 export type PutDispatchNamespaceScriptBindingD1Type = "d1";
-export const PutDispatchNamespaceScriptBindingD1Type = S.String;
-
 export interface PutDispatchNamespaceScriptBindingD1 {
   databaseId: string;
   name: string;
   id?: string;
   type: PutDispatchNamespaceScriptBindingD1Type;
 }
-export const PutDispatchNamespaceScriptBindingD1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    databaseId: S.String.pipe(T.Body("database_id")),
-    name: S.String,
-    id: S.optional(S.String),
-    type: PutDispatchNamespaceScriptBindingD1Type,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingD1",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingD1>;
-
 export type PutDispatchNamespaceScriptBindingDataBlobType = "data_blob";
-export const PutDispatchNamespaceScriptBindingDataBlobType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingDataBlob {
   name: string;
   part: string;
   type: PutDispatchNamespaceScriptBindingDataBlobType;
 }
-export const PutDispatchNamespaceScriptBindingDataBlob =
-  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingDataBlob>;
-
 export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam {
   name: string;
 }
-export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsItem as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam>;
-
 export type PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList =
   Array<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParam>;
-export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList =
-  DispatchNamespacesScriptsBindingsGetResultItemDispatchNamespaceOutboundParamsList as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList>;
-
 export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker {
   entrypoint?: string;
   environment?: string;
   service?: string;
 }
-export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entrypoint: S.optional(S.String),
-      environment: S.optional(S.String),
-      service: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker",
-  }) as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker>;
-
 export interface PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound {
   params?: PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList;
   worker?: PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker;
 }
-export const PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      params: S.optional(PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundParamsList),
-      worker: S.optional(PutDispatchNamespaceScriptBindingDispatchNamespaceOutboundWorker),
-    }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound>;
-
 export type PutDispatchNamespaceScriptBindingDispatchNamespaceType = "dispatch_namespace";
-export const PutDispatchNamespaceScriptBindingDispatchNamespaceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingDispatchNamespace {
   name: string;
   namespace: string;
   outbound?: PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound;
   type: PutDispatchNamespaceScriptBindingDispatchNamespaceType;
 }
-export const PutDispatchNamespaceScriptBindingDispatchNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespace: S.String,
-    outbound: S.optional(PutDispatchNamespaceScriptBindingDispatchNamespaceOutbound),
-    type: PutDispatchNamespaceScriptBindingDispatchNamespaceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingDispatchNamespace",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingDispatchNamespace>;
-
 export type PutDispatchNamespaceScriptBindingDurableObjectNamespaceType =
   "durable_object_namespace";
-export const PutDispatchNamespaceScriptBindingDurableObjectNamespaceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingDurableObjectNamespace {
   name: string;
   className: string;
@@ -9624,233 +6531,95 @@ export interface PutDispatchNamespaceScriptBindingDurableObjectNamespace {
   scriptName?: string;
   type: PutDispatchNamespaceScriptBindingDurableObjectNamespaceType;
 }
-export const PutDispatchNamespaceScriptBindingDurableObjectNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    className: S.String.pipe(T.Body("class_name")),
-    dispatchNamespace: S.optional(S.String.pipe(T.Body("dispatch_namespace"))),
-    environment: S.optional(S.String),
-    namespaceId: S.optional(S.String.pipe(T.Body("namespace_id"))),
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    type: PutDispatchNamespaceScriptBindingDurableObjectNamespaceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingDurableObjectNamespace",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingDurableObjectNamespace>;
-
 export type PutDispatchNamespaceScriptBindingHyperdriveType = "hyperdrive";
-export const PutDispatchNamespaceScriptBindingHyperdriveType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingHyperdrive {
   id: string;
   name: string;
   type: PutDispatchNamespaceScriptBindingHyperdriveType;
 }
-export const PutDispatchNamespaceScriptBindingHyperdrive = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingHyperdriveType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingHyperdrive",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingHyperdrive>;
-
 export type PutDispatchNamespaceScriptBindingInheritType = "inherit";
-export const PutDispatchNamespaceScriptBindingInheritType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingInherit {
   name: string;
   oldName?: string;
   versionId?: string;
   type: PutDispatchNamespaceScriptBindingInheritType;
 }
-export const PutDispatchNamespaceScriptBindingInherit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    oldName: S.optional(S.String.pipe(T.Body("old_name"))),
-    versionId: S.optional(S.String.pipe(T.Body("version_id"))),
-    type: PutDispatchNamespaceScriptBindingInheritType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingInherit",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingInherit>;
-
 export type PutDispatchNamespaceScriptBindingImagesType = "images";
-export const PutDispatchNamespaceScriptBindingImagesType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingImages {
   name: string;
   type: PutDispatchNamespaceScriptBindingImagesType;
 }
-export const PutDispatchNamespaceScriptBindingImages =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingImages>;
-
 export type PutDispatchNamespaceScriptBindingJsonType = "json";
-export const PutDispatchNamespaceScriptBindingJsonType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingJson {
   json: unknown;
   name: string;
   type: PutDispatchNamespaceScriptBindingJsonType;
 }
-export const PutDispatchNamespaceScriptBindingJson =
-  DispatchNamespacesScriptsBindingsGetResultItemJson as any as S.Schema<PutDispatchNamespaceScriptBindingJson>;
-
 export type PutDispatchNamespaceScriptBindingKvNamespaceType = "kv_namespace";
-export const PutDispatchNamespaceScriptBindingKvNamespaceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingKvNamespace {
   name: string;
   namespaceId: string;
   type: PutDispatchNamespaceScriptBindingKvNamespaceType;
 }
-export const PutDispatchNamespaceScriptBindingKvNamespace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    type: PutDispatchNamespaceScriptBindingKvNamespaceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingKvNamespace",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingKvNamespace>;
-
 export type PutDispatchNamespaceScriptBindingMediaType = "media";
-export const PutDispatchNamespaceScriptBindingMediaType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingMedia {
   name: string;
   type: PutDispatchNamespaceScriptBindingMediaType;
 }
-export const PutDispatchNamespaceScriptBindingMedia =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingMedia>;
-
 export type PutDispatchNamespaceScriptBindingMtlsCertificateType = "mtls_certificate";
-export const PutDispatchNamespaceScriptBindingMtlsCertificateType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingMtlsCertificate {
   certificateId: string;
   name: string;
   type: PutDispatchNamespaceScriptBindingMtlsCertificateType;
 }
-export const PutDispatchNamespaceScriptBindingMtlsCertificate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateId: S.String.pipe(T.Body("certificate_id")),
-    name: S.String,
-    type: PutDispatchNamespaceScriptBindingMtlsCertificateType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingMtlsCertificate",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingMtlsCertificate>;
-
 export type PutDispatchNamespaceScriptBindingPlainTextType = "plain_text";
-export const PutDispatchNamespaceScriptBindingPlainTextType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingPlainText {
   name: string;
   text: string;
   type: PutDispatchNamespaceScriptBindingPlainTextType;
 }
-export const PutDispatchNamespaceScriptBindingPlainText =
-  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<PutDispatchNamespaceScriptBindingPlainText>;
-
 export type PutDispatchNamespaceScriptBindingPipelinesType = "pipelines";
-export const PutDispatchNamespaceScriptBindingPipelinesType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingPipelines {
   name: string;
   pipeline: string;
   type: PutDispatchNamespaceScriptBindingPipelinesType;
 }
-export const PutDispatchNamespaceScriptBindingPipelines =
-  DispatchNamespacesScriptsBindingsGetResultItemPipelines as any as S.Schema<PutDispatchNamespaceScriptBindingPipelines>;
-
 export type PutDispatchNamespaceScriptBindingQueueType = "queue";
-export const PutDispatchNamespaceScriptBindingQueueType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingQueue {
   name: string;
   queueName: string;
   type: PutDispatchNamespaceScriptBindingQueueType;
 }
-export const PutDispatchNamespaceScriptBindingQueue =
-  DispatchNamespacesScriptsBindingsGetResultItemQueue as any as S.Schema<PutDispatchNamespaceScriptBindingQueue>;
-
 export interface PutDispatchNamespaceScriptBindingRatelimitSimple {
   limit: number;
   period: number;
   mitigationTimeout?: number;
 }
-export const PutDispatchNamespaceScriptBindingRatelimitSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    limit: S.Number,
-    period: S.Number,
-    mitigationTimeout: S.optional(S.Number.pipe(T.Body("mitigation_timeout"))),
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingRatelimitSimple",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingRatelimitSimple>;
-
 export type PutDispatchNamespaceScriptBindingRatelimitType = "ratelimit";
-export const PutDispatchNamespaceScriptBindingRatelimitType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingRatelimit {
   name: string;
   namespaceId: string;
   simple: PutDispatchNamespaceScriptBindingRatelimitSimple;
   type: PutDispatchNamespaceScriptBindingRatelimitType;
 }
-export const PutDispatchNamespaceScriptBindingRatelimit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    namespaceId: S.String.pipe(T.Body("namespace_id")),
-    simple: PutDispatchNamespaceScriptBindingRatelimitSimple,
-    type: PutDispatchNamespaceScriptBindingRatelimitType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingRatelimit",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingRatelimit>;
-
 export type PutDispatchNamespaceScriptBindingR2BucketJurisdiction =
   | "eu"
   | "fedramp"
   | "fedramp-high";
-export const PutDispatchNamespaceScriptBindingR2BucketJurisdiction = S.String;
-
 export type PutDispatchNamespaceScriptBindingR2BucketType = "r2_bucket";
-export const PutDispatchNamespaceScriptBindingR2BucketType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingR2Bucket {
   bucketName: string;
   name: string;
   jurisdiction?: PutDispatchNamespaceScriptBindingR2BucketJurisdiction | (string & {});
   type: PutDispatchNamespaceScriptBindingR2BucketType;
 }
-export const PutDispatchNamespaceScriptBindingR2Bucket = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucketName: S.String.pipe(T.Body("bucket_name")),
-    name: S.String,
-    jurisdiction: S.optional(PutDispatchNamespaceScriptBindingR2BucketJurisdiction),
-    type: PutDispatchNamespaceScriptBindingR2BucketType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingR2Bucket",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingR2Bucket>;
-
 export type PutDispatchNamespaceScriptBindingSecretTextType = "secret_text";
-export const PutDispatchNamespaceScriptBindingSecretTextType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingSecretText {
   name: string;
   text: string;
   type: PutDispatchNamespaceScriptBindingSecretTextType;
 }
-export const PutDispatchNamespaceScriptBindingSecretText =
-  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<PutDispatchNamespaceScriptBindingSecretText>;
-
 export type PutDispatchNamespaceScriptBindingSendEmailType = "send_email";
-export const PutDispatchNamespaceScriptBindingSendEmailType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingSendEmail {
   name: string;
   allowedDestinationAddresses?: PutDispatchNamespaceScriptMetadataStringList;
@@ -9858,25 +6627,7 @@ export interface PutDispatchNamespaceScriptBindingSendEmail {
   destinationAddress?: string;
   type: PutDispatchNamespaceScriptBindingSendEmailType;
 }
-export const PutDispatchNamespaceScriptBindingSendEmail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    allowedDestinationAddresses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("allowed_destination_addresses")),
-    ),
-    allowedSenderAddresses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("allowed_sender_addresses")),
-    ),
-    destinationAddress: S.optional(S.String.pipe(T.Body("destination_address"))),
-    type: PutDispatchNamespaceScriptBindingSendEmailType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingSendEmail",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingSendEmail>;
-
 export type PutDispatchNamespaceScriptBindingServiceType = "service";
-export const PutDispatchNamespaceScriptBindingServiceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingService {
   name: string;
   service: string;
@@ -9884,84 +6635,37 @@ export interface PutDispatchNamespaceScriptBindingService {
   environment?: string;
   type: PutDispatchNamespaceScriptBindingServiceType;
 }
-export const PutDispatchNamespaceScriptBindingService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    service: S.String,
-    entrypoint: S.optional(S.String),
-    environment: S.optional(S.String),
-    type: PutDispatchNamespaceScriptBindingServiceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingService",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingService>;
-
 export type PutDispatchNamespaceScriptBindingTextBlobType = "text_blob";
-export const PutDispatchNamespaceScriptBindingTextBlobType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingTextBlob {
   name: string;
   part: string;
   type: PutDispatchNamespaceScriptBindingTextBlobType;
 }
-export const PutDispatchNamespaceScriptBindingTextBlob =
-  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingTextBlob>;
-
 export type PutDispatchNamespaceScriptBindingVectorizeType = "vectorize";
-export const PutDispatchNamespaceScriptBindingVectorizeType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingVectorize {
   indexName: string;
   name: string;
   type: PutDispatchNamespaceScriptBindingVectorizeType;
 }
-export const PutDispatchNamespaceScriptBindingVectorize =
-  DispatchNamespacesScriptsBindingsGetResultItemVectorize as any as S.Schema<PutDispatchNamespaceScriptBindingVectorize>;
-
 export type PutDispatchNamespaceScriptBindingVersionMetadataType = "version_metadata";
-export const PutDispatchNamespaceScriptBindingVersionMetadataType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingVersionMetadata {
   name: string;
   type: PutDispatchNamespaceScriptBindingVersionMetadataType;
 }
-export const PutDispatchNamespaceScriptBindingVersionMetadata =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingVersionMetadata>;
-
 export type PutDispatchNamespaceScriptBindingSecretsStoreSecretType = "secrets_store_secret";
-export const PutDispatchNamespaceScriptBindingSecretsStoreSecretType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingSecretsStoreSecret {
   name: string;
   secretName: string;
   storeId: string;
   type: PutDispatchNamespaceScriptBindingSecretsStoreSecretType;
 }
-export const PutDispatchNamespaceScriptBindingSecretsStoreSecret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    secretName: S.String.pipe(T.Body("secret_name")),
-    storeId: S.String.pipe(T.Body("store_id")),
-    type: PutDispatchNamespaceScriptBindingSecretsStoreSecretType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingSecretsStoreSecret",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingSecretsStoreSecret>;
-
 export type PutDispatchNamespaceScriptBindingFlagshipType = "flagship";
-export const PutDispatchNamespaceScriptBindingFlagshipType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingFlagship {
   appId: string;
   name: string;
   type: PutDispatchNamespaceScriptBindingFlagshipType;
 }
-export const PutDispatchNamespaceScriptBindingFlagship =
-  DispatchNamespacesScriptsBindingsGetResultItemFlagship as any as S.Schema<PutDispatchNamespaceScriptBindingFlagship>;
-
 export type PutDispatchNamespaceScriptBindingSecretKeyFormat = "raw" | "pkcs8" | "spki" | "jwk";
-export const PutDispatchNamespaceScriptBindingSecretKeyFormat = S.String;
-
 export type PutDispatchNamespaceScriptBindingSecretKeyUsage =
   | "encrypt"
   | "decrypt"
@@ -9971,17 +6675,10 @@ export type PutDispatchNamespaceScriptBindingSecretKeyUsage =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const PutDispatchNamespaceScriptBindingSecretKeyUsage = S.String;
-
 export type PutDispatchNamespaceScriptBindingSecretKeyUsagesList = Array<
   PutDispatchNamespaceScriptBindingSecretKeyUsage | (string & {})
 >;
-export const PutDispatchNamespaceScriptBindingSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList as any as S.Schema<PutDispatchNamespaceScriptBindingSecretKeyUsagesList>;
-
 export type PutDispatchNamespaceScriptBindingSecretKeyType = "secret_key";
-export const PutDispatchNamespaceScriptBindingSecretKeyType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingSecretKey {
   algorithm: unknown;
   format: PutDispatchNamespaceScriptBindingSecretKeyFormat | (string & {});
@@ -9991,23 +6688,7 @@ export interface PutDispatchNamespaceScriptBindingSecretKey {
   keyJwk?: unknown;
   type: PutDispatchNamespaceScriptBindingSecretKeyType;
 }
-export const PutDispatchNamespaceScriptBindingSecretKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.Unknown,
-    format: PutDispatchNamespaceScriptBindingSecretKeyFormat,
-    name: S.String,
-    usages: PutDispatchNamespaceScriptBindingSecretKeyUsagesList,
-    keyBase64: S.optional(S.String.pipe(T.Body("key_base64"))),
-    keyJwk: S.optional(S.Unknown.pipe(T.Body("key_jwk"))),
-    type: PutDispatchNamespaceScriptBindingSecretKeyType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingSecretKey",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingSecretKey>;
-
 export type PutDispatchNamespaceScriptBindingWorkflowType = "workflow";
-export const PutDispatchNamespaceScriptBindingWorkflowType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingWorkflow {
   name: string;
   workflowName: string;
@@ -10015,110 +6696,48 @@ export interface PutDispatchNamespaceScriptBindingWorkflow {
   scriptName?: string;
   type: PutDispatchNamespaceScriptBindingWorkflowType;
 }
-export const PutDispatchNamespaceScriptBindingWorkflow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    workflowName: S.String.pipe(T.Body("workflow_name")),
-    className: S.String.pipe(T.Body("class_name")),
-    scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-    type: PutDispatchNamespaceScriptBindingWorkflowType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingWorkflow",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingWorkflow>;
-
 export type PutDispatchNamespaceScriptBindingWasmModuleType = "wasm_module";
-export const PutDispatchNamespaceScriptBindingWasmModuleType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingWasmModule {
   name: string;
   part: string;
   type: PutDispatchNamespaceScriptBindingWasmModuleType;
 }
-export const PutDispatchNamespaceScriptBindingWasmModule =
-  DispatchNamespacesScriptsBindingsGetResultItemDataBlob as any as S.Schema<PutDispatchNamespaceScriptBindingWasmModule>;
-
 export type PutDispatchNamespaceScriptBindingVpcServiceType = "vpc_service";
-export const PutDispatchNamespaceScriptBindingVpcServiceType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingVpcService {
   name: string;
   serviceId: string;
   type: PutDispatchNamespaceScriptBindingVpcServiceType;
 }
-export const PutDispatchNamespaceScriptBindingVpcService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    serviceId: S.String.pipe(T.Body("service_id")),
-    type: PutDispatchNamespaceScriptBindingVpcServiceType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingVpcService",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingVpcService>;
-
 export type PutDispatchNamespaceScriptBindingVpcNetworkType = "vpc_network";
-export const PutDispatchNamespaceScriptBindingVpcNetworkType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingVpcNetwork {
   name: string;
   networkId?: string;
   tunnelId?: string;
   type: PutDispatchNamespaceScriptBindingVpcNetworkType;
 }
-export const PutDispatchNamespaceScriptBindingVpcNetwork = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    networkId: S.optional(S.String.pipe(T.Body("network_id"))),
-    tunnelId: S.optional(S.String.pipe(T.Body("tunnel_id"))),
-    type: PutDispatchNamespaceScriptBindingVpcNetworkType,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptBindingVpcNetwork",
-}) as any as S.Schema<PutDispatchNamespaceScriptBindingVpcNetwork>;
-
 export type PutDispatchNamespaceScriptBindingWorkerLoaderType = "worker_loader";
-export const PutDispatchNamespaceScriptBindingWorkerLoaderType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingWorkerLoader {
   name: string;
   type: PutDispatchNamespaceScriptBindingWorkerLoaderType;
 }
-export const PutDispatchNamespaceScriptBindingWorkerLoader =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingWorkerLoader>;
-
 export type PutDispatchNamespaceScriptBindingArtifactsType = "artifacts";
-export const PutDispatchNamespaceScriptBindingArtifactsType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingArtifacts {
   name: string;
   namespace: string;
   type: PutDispatchNamespaceScriptBindingArtifactsType;
 }
-export const PutDispatchNamespaceScriptBindingArtifacts =
-  DispatchNamespacesScriptsBindingsGetResultItemMessaging as any as S.Schema<PutDispatchNamespaceScriptBindingArtifacts>;
-
 export type PutDispatchNamespaceScriptBindingStreamType = "stream";
-export const PutDispatchNamespaceScriptBindingStreamType = S.String;
-
 export interface PutDispatchNamespaceScriptBindingStream {
   name: string;
   type: PutDispatchNamespaceScriptBindingStreamType;
 }
-export const PutDispatchNamespaceScriptBindingStream =
-  DispatchNamespacesScriptsBindingsGetResultItemAI as any as S.Schema<PutDispatchNamespaceScriptBindingStream>;
-
 export type PutDispatchNamespaceScriptBindingK2Type = "k2";
-export const PutDispatchNamespaceScriptBindingK2Type = S.String;
-
 export interface PutDispatchNamespaceScriptBindingK2 {
   name: string;
   /** ID of a K2 stream owned by the account deploying the Worker (32 lowercase hex characters). */
   stream: string;
   type: PutDispatchNamespaceScriptBindingK2Type;
 }
-export const PutDispatchNamespaceScriptBindingK2 =
-  DispatchNamespacesScriptsBindingsGetResultItemK2 as any as S.Schema<PutDispatchNamespaceScriptBindingK2>;
-
 export type PutDispatchNamespaceScriptBinding =
   | PutDispatchNamespaceScriptBindingAi
   | PutDispatchNamespaceScriptBindingAiSearch
@@ -10159,7 +6778,7 @@ export type PutDispatchNamespaceScriptBinding =
   | PutDispatchNamespaceScriptBindingArtifacts
   | PutDispatchNamespaceScriptBindingStream
   | PutDispatchNamespaceScriptBindingK2;
-export const PutDispatchNamespaceScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
+const PutDispatchNamespaceScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "type"],
@@ -10265,12 +6884,12 @@ export const PutDispatchNamespaceScriptBinding = /*@__PURE__*/ S.Unknown.pipe(
 
 export type PutDispatchNamespaceScriptMetadataBindingsList =
   Array<PutDispatchNamespaceScriptBinding>;
-export const PutDispatchNamespaceScriptMetadataBindingsList = /*@__PURE__*/ S.Array(
+const PutDispatchNamespaceScriptMetadataBindingsList = /*@__PURE__*/ S.Array(
   PutDispatchNamespaceScriptBinding,
 ) as any as S.Schema<PutDispatchNamespaceScriptMetadataBindingsList>;
 
 export type ContainerImageMap = { [key: string]: string | undefined };
-export const ContainerImageMap =
+const ContainerImageMap =
   DispatchNamespacesScriptsTagsDeleteResultMap as any as S.Schema<ContainerImageMap>;
 
 export interface PutDispatchNamespaceScriptContainer {
@@ -10278,7 +6897,7 @@ export interface PutDispatchNamespaceScriptContainer {
   name?: string;
   images?: ContainerImageMap;
 }
-export const PutDispatchNamespaceScriptContainer = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptContainer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     className: S.String.pipe(T.Body("class_name")),
     name: S.optional(S.String),
@@ -10290,7 +6909,7 @@ export const PutDispatchNamespaceScriptContainer = /*@__PURE__*/ S.suspend(() =>
 
 export type PutDispatchNamespaceScriptMetadataContainersList =
   Array<PutDispatchNamespaceScriptContainer>;
-export const PutDispatchNamespaceScriptMetadataContainersList = /*@__PURE__*/ S.Array(
+const PutDispatchNamespaceScriptMetadataContainersList = /*@__PURE__*/ S.Array(
   PutDispatchNamespaceScriptContainer,
 ) as any as S.Schema<PutDispatchNamespaceScriptMetadataContainersList>;
 
@@ -10298,7 +6917,7 @@ export interface PutDispatchNamespaceScriptMetadataLimits {
   cpuMs?: number;
   subrequests?: number;
 }
-export const PutDispatchNamespaceScriptMetadataLimits = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadataLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuMs: S.optional(S.Number.pipe(T.Body("cpu_ms"))),
     subrequests: S.optional(S.Number),
@@ -10309,26 +6928,12 @@ export const PutDispatchNamespaceScriptMetadataLimits = /*@__PURE__*/ S.suspend(
 
 export type PutDispatchNamespaceScriptMigrationRenamedClass =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
-export const PutDispatchNamespaceScriptMigrationRenamedClass =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem;
-
 export type PutDispatchNamespaceScriptMigrationRenamedClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem>;
-export const PutDispatchNamespaceScriptMigrationRenamedClassesList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationRenamedClassesItem,
-) as any as S.Schema<PutDispatchNamespaceScriptMigrationRenamedClassesList>;
-
 export type PutDispatchNamespaceScriptMigrationTransferredClass =
   DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem;
-export const PutDispatchNamespaceScriptMigrationTransferredClass =
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem;
-
 export type PutDispatchNamespaceScriptMigrationTransferredClassesList =
   Array<DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem>;
-export const PutDispatchNamespaceScriptMigrationTransferredClassesList = /*@__PURE__*/ S.Array(
-  DispatchNamespacesScriptsSettingsEditRequestSettingsMigrationsSingleStepMigrationTransferredClassesItem,
-) as any as S.Schema<PutDispatchNamespaceScriptMigrationTransferredClassesList>;
-
 export interface PutDispatchNamespaceScriptSingleStepMigration {
   deletedClasses?: PutDispatchNamespaceScriptMetadataStringList;
   newClasses?: PutDispatchNamespaceScriptMetadataStringList;
@@ -10338,30 +6943,6 @@ export interface PutDispatchNamespaceScriptSingleStepMigration {
   renamedClasses?: PutDispatchNamespaceScriptMigrationRenamedClassesList;
   transferredClasses?: PutDispatchNamespaceScriptMigrationTransferredClassesList;
 }
-export const PutDispatchNamespaceScriptSingleStepMigration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("deleted_classes")),
-    ),
-    newClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("new_classes")),
-    ),
-    newSqliteClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("new_sqlite_classes")),
-    ),
-    newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-    oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-    renamedClasses: S.optional(
-      PutDispatchNamespaceScriptMigrationRenamedClassesList.pipe(T.Body("renamed_classes")),
-    ),
-    transferredClasses: S.optional(
-      PutDispatchNamespaceScriptMigrationTransferredClassesList.pipe(T.Body("transferred_classes")),
-    ),
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptSingleStepMigration",
-}) as any as S.Schema<PutDispatchNamespaceScriptSingleStepMigration>;
-
 export interface PutDispatchNamespaceScriptMigrationStep {
   deletedClasses?: PutDispatchNamespaceScriptMetadataStringList;
   newClasses?: PutDispatchNamespaceScriptMetadataStringList;
@@ -10369,53 +6950,17 @@ export interface PutDispatchNamespaceScriptMigrationStep {
   renamedClasses?: PutDispatchNamespaceScriptMigrationRenamedClassesList;
   transferredClasses?: PutDispatchNamespaceScriptMigrationTransferredClassesList;
 }
-export const PutDispatchNamespaceScriptMigrationStep = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deletedClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("deleted_classes")),
-    ),
-    newClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("new_classes")),
-    ),
-    newSqliteClasses: S.optional(
-      PutDispatchNamespaceScriptMetadataStringList.pipe(T.Body("new_sqlite_classes")),
-    ),
-    renamedClasses: S.optional(
-      PutDispatchNamespaceScriptMigrationRenamedClassesList.pipe(T.Body("renamed_classes")),
-    ),
-    transferredClasses: S.optional(
-      PutDispatchNamespaceScriptMigrationTransferredClassesList.pipe(T.Body("transferred_classes")),
-    ),
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptMigrationStep",
-}) as any as S.Schema<PutDispatchNamespaceScriptMigrationStep>;
-
 export type PutDispatchNamespaceScriptMigrationStepsList =
   Array<PutDispatchNamespaceScriptMigrationStep>;
-export const PutDispatchNamespaceScriptMigrationStepsList = /*@__PURE__*/ S.Array(
-  PutDispatchNamespaceScriptMigrationStep,
-) as any as S.Schema<PutDispatchNamespaceScriptMigrationStepsList>;
-
 export interface PutDispatchNamespaceScriptMultipleStepMigrations {
   newTag?: string;
   oldTag?: string;
   steps?: PutDispatchNamespaceScriptMigrationStepsList;
 }
-export const PutDispatchNamespaceScriptMultipleStepMigrations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newTag: S.optional(S.String.pipe(T.Body("new_tag"))),
-    oldTag: S.optional(S.String.pipe(T.Body("old_tag"))),
-    steps: S.optional(PutDispatchNamespaceScriptMigrationStepsList),
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptMultipleStepMigrations",
-}) as any as S.Schema<PutDispatchNamespaceScriptMultipleStepMigrations>;
-
 export type PutDispatchNamespaceScriptMetadataMigrations =
   | PutDispatchNamespaceScriptSingleStepMigration
   | PutDispatchNamespaceScriptMultipleStepMigrations;
-export const PutDispatchNamespaceScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
+const PutDispatchNamespaceScriptMetadataMigrations = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     [
       "deletedClasses",
@@ -10437,7 +6982,7 @@ export interface PutDispatchNamespaceScriptObservabilityLogs {
   headSamplingRate?: number | null;
   persist?: boolean;
 }
-export const PutDispatchNamespaceScriptObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptObservabilityLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     invocationLogs: S.Boolean.pipe(T.Body("invocation_logs")),
@@ -10452,7 +6997,7 @@ export const PutDispatchNamespaceScriptObservabilityLogs = /*@__PURE__*/ S.suspe
 export type PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy = S.String;
+const PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy = S.String;
 
 export interface PutDispatchNamespaceScriptObservabilityTraces {
   destinations?: PutDispatchNamespaceScriptMetadataStringList;
@@ -10463,7 +7008,7 @@ export interface PutDispatchNamespaceScriptObservabilityTraces {
     | PutDispatchNamespaceScriptObservabilityTracesPropagationPolicy
     | (string & {});
 }
-export const PutDispatchNamespaceScriptObservabilityTraces = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptObservabilityTraces = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinations: S.optional(PutDispatchNamespaceScriptMetadataStringList),
     enabled: S.optional(S.Boolean),
@@ -10483,7 +7028,7 @@ export interface PutDispatchNamespaceScriptObservabilityIssues {
   /** Whether Workers Issues error monitoring is enabled. */
   enabled: boolean;
 }
-export const PutDispatchNamespaceScriptObservabilityIssues = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptObservabilityIssues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
@@ -10498,7 +7043,7 @@ export interface PutDispatchNamespaceScriptMetadataObservability {
   traces?: PutDispatchNamespaceScriptObservabilityTraces | null;
   issues?: PutDispatchNamespaceScriptObservabilityIssues;
 }
-export const PutDispatchNamespaceScriptMetadataObservability = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadataObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
@@ -10511,135 +7056,46 @@ export const PutDispatchNamespaceScriptMetadataObservability = /*@__PURE__*/ S.s
 }) as any as S.Schema<PutDispatchNamespaceScriptMetadataObservability>;
 
 export type PutDispatchNamespaceScriptPlacementSmartMode = "smart";
-export const PutDispatchNamespaceScriptPlacementSmartMode = S.String;
-
 export interface PutDispatchNamespaceScriptPlacementSmart {
   mode: PutDispatchNamespaceScriptPlacementSmartMode;
 }
-export const PutDispatchNamespaceScriptPlacementSmart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: PutDispatchNamespaceScriptPlacementSmartMode,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementSmart",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementSmart>;
-
 export interface PutDispatchNamespaceScriptPlacementRegion {
   region: string;
 }
-export const PutDispatchNamespaceScriptPlacementRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementRegion",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementRegion>;
-
 export interface PutDispatchNamespaceScriptPlacementHostname {
   hostname: string;
 }
-export const PutDispatchNamespaceScriptPlacementHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementHostname",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementHostname>;
-
 export interface PutDispatchNamespaceScriptPlacementHost {
   host: string;
 }
-export const PutDispatchNamespaceScriptPlacementHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementHost",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementHost>;
-
 export type PutDispatchNamespaceScriptPlacementTargetedMode = "targeted";
-export const PutDispatchNamespaceScriptPlacementTargetedMode = S.String;
-
 export interface PutDispatchNamespaceScriptPlacementTargetedRegion {
   mode: PutDispatchNamespaceScriptPlacementTargetedMode;
   region: string;
 }
-export const PutDispatchNamespaceScriptPlacementTargetedRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: PutDispatchNamespaceScriptPlacementTargetedMode,
-    region: S.String,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementTargetedRegion",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementTargetedRegion>;
-
 export interface PutDispatchNamespaceScriptPlacementTargetedHostname {
   hostname: string;
   mode: PutDispatchNamespaceScriptPlacementTargetedMode;
 }
-export const PutDispatchNamespaceScriptPlacementTargetedHostname = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: PutDispatchNamespaceScriptPlacementTargetedMode,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementTargetedHostname",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementTargetedHostname>;
-
 export interface PutDispatchNamespaceScriptPlacementTargetedHost {
   host: string;
   mode: PutDispatchNamespaceScriptPlacementTargetedMode;
 }
-export const PutDispatchNamespaceScriptPlacementTargetedHost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: PutDispatchNamespaceScriptPlacementTargetedMode,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementTargetedHost",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementTargetedHost>;
-
 export type PutDispatchNamespaceScriptPlacementTargetRegion =
   PutDispatchNamespaceScriptPlacementRegion;
-export const PutDispatchNamespaceScriptPlacementTargetRegion =
-  PutDispatchNamespaceScriptPlacementRegion;
-
 export type PutDispatchNamespaceScriptPlacementTargetHostname =
   PutDispatchNamespaceScriptPlacementHostname;
-export const PutDispatchNamespaceScriptPlacementTargetHostname =
-  PutDispatchNamespaceScriptPlacementHostname;
-
 export type PutDispatchNamespaceScriptPlacementTargetHost = PutDispatchNamespaceScriptPlacementHost;
-export const PutDispatchNamespaceScriptPlacementTargetHost =
-  PutDispatchNamespaceScriptPlacementHost;
-
 export type PutDispatchNamespaceScriptPlacementTarget =
   | PutDispatchNamespaceScriptPlacementRegion
   | PutDispatchNamespaceScriptPlacementHostname
   | PutDispatchNamespaceScriptPlacementHost;
-export const PutDispatchNamespaceScriptPlacementTarget = /*@__PURE__*/ S.Unknown.pipe(
-  /*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]),
-);
-
 export type PutDispatchNamespaceScriptPlacementTargetsList =
   Array<PutDispatchNamespaceScriptPlacementTarget>;
-export const PutDispatchNamespaceScriptPlacementTargetsList = /*@__PURE__*/ S.Array(
-  PutDispatchNamespaceScriptPlacementTarget,
-) as any as S.Schema<PutDispatchNamespaceScriptPlacementTargetsList>;
-
 export interface PutDispatchNamespaceScriptPlacementTargetedList {
   mode: PutDispatchNamespaceScriptPlacementTargetedMode;
   target: PutDispatchNamespaceScriptPlacementTargetsList;
 }
-export const PutDispatchNamespaceScriptPlacementTargetedList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: PutDispatchNamespaceScriptPlacementTargetedMode,
-    target: PutDispatchNamespaceScriptPlacementTargetsList,
-  }),
-).annotate({
-  identifier: "PutDispatchNamespaceScriptPlacementTargetedList",
-}) as any as S.Schema<PutDispatchNamespaceScriptPlacementTargetedList>;
-
 export type PutDispatchNamespaceScriptMetadataPlacement =
   | PutDispatchNamespaceScriptPlacementSmart
   | PutDispatchNamespaceScriptPlacementRegion
@@ -10649,7 +7105,7 @@ export type PutDispatchNamespaceScriptMetadataPlacement =
   | PutDispatchNamespaceScriptPlacementTargetedHostname
   | PutDispatchNamespaceScriptPlacementTargetedHost
   | PutDispatchNamespaceScriptPlacementTargetedList;
-export const PutDispatchNamespaceScriptMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
+const PutDispatchNamespaceScriptMetadataPlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode"],
     ["region"],
@@ -10667,7 +7123,7 @@ export interface PutDispatchNamespaceScriptTailConsumer {
   environment?: string;
   namespace?: string;
 }
-export const PutDispatchNamespaceScriptTailConsumer = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptTailConsumer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.String,
     environment: S.optional(S.String),
@@ -10679,18 +7135,18 @@ export const PutDispatchNamespaceScriptTailConsumer = /*@__PURE__*/ S.suspend(()
 
 export type PutDispatchNamespaceScriptMetadataTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
-export const PutDispatchNamespaceScriptMetadataTailConsumersList = /*@__PURE__*/ S.Array(
+const PutDispatchNamespaceScriptMetadataTailConsumersList = /*@__PURE__*/ S.Array(
   PutDispatchNamespaceScriptTailConsumer,
 ) as any as S.Schema<PutDispatchNamespaceScriptMetadataTailConsumersList>;
 
 export type PutDispatchNamespaceScriptMetadataUsageModel = "standard" | "bundled" | "unbound";
-export const PutDispatchNamespaceScriptMetadataUsageModel = S.String;
+const PutDispatchNamespaceScriptMetadataUsageModel = S.String;
 
 export interface PutDispatchNamespaceScriptMetadataCache {
   enabled?: boolean;
   crossVersionCache?: boolean;
 }
-export const PutDispatchNamespaceScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadataCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     crossVersionCache: S.optional(S.Boolean.pipe(T.Body("cross_version_cache"))),
@@ -10701,7 +7157,7 @@ export const PutDispatchNamespaceScriptMetadataCache = /*@__PURE__*/ S.suspend((
 
 export type PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
   Array<PutDispatchNamespaceScriptTailConsumer>;
-export const PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
+const PutDispatchNamespaceScriptMetadataStreamingTailConsumersList =
   PutDispatchNamespaceScriptMetadataTailConsumersList as any as S.Schema<PutDispatchNamespaceScriptMetadataStreamingTailConsumersList>;
 
 export interface PutDispatchNamespaceScriptMetadata {
@@ -10726,7 +7182,7 @@ export interface PutDispatchNamespaceScriptMetadata {
   cacheOptions?: PutDispatchNamespaceScriptMetadataCache;
   streamingTailConsumers?: PutDispatchNamespaceScriptMetadataStreamingTailConsumersList | null;
 }
-export const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(PutDispatchNamespaceScriptMetadataAnnotations),
     assets: S.optional(PutDispatchNamespaceScriptMetadataAssets),
@@ -10778,7 +7234,7 @@ export interface PutDispatchNamespaceScriptRequest {
   /** Module / asset file parts, appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
-export const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -10907,24 +7363,14 @@ export const PutDispatchNamespaceScriptRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DispatchNamespacesScriptsUpdateResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-export const DispatchNamespacesScriptsUpdateResponseCacheOptions =
-  DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-
 export type DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList =
+const DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkerCache =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType;
@@ -10933,35 +7379,13 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorker {
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsUpdateResponseExportsValueWorkerState | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorker = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkerType,
-      cache: S.optional(
-        S.NullOr(DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache),
-      ),
-      state: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponseExportsValueWorkerState)),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponseExportsValueWorker",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorker>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage;
@@ -10972,51 +7396,20 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportState | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportStorage,
-      type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportType,
-      container: S.optional(S.NullOr(S.String)),
-      state: S.optional(
-        S.NullOr(
-          DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExportState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExport",
-  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -11025,19 +7418,10 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportState;
@@ -11046,25 +7430,13 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -11077,9 +7449,6 @@ export interface DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurab
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsUpdateResponseExportsValue =
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorker
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExport
@@ -11087,7 +7456,7 @@ export type DispatchNamespacesScriptsUpdateResponseExportsValue =
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["type", "cache", "state"],
     ["storage", "type", "container", "state"],
@@ -11101,43 +7470,31 @@ export const DispatchNamespacesScriptsUpdateResponseExportsValue = /*@__PURE__*/
 export type DispatchNamespacesScriptsUpdateResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsUpdateResponseExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsUpdateResponseExportsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseExportsMap>;
 
 export type DispatchNamespacesScriptsUpdateResponseHandlersList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseHandlersList =
+const DispatchNamespacesScriptsUpdateResponseHandlersList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseHandlersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList>;
-
 export interface DispatchNamespacesScriptsUpdateResponseNamedHandlersItem {
   /** The names of handlers exported as part of the named export. */
   handlers?: DispatchNamespacesScriptsUpdateResponseNamedHandlersItemHandlersList | null;
   /** The name of the export. */
   name?: string | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseNamedHandlersItem =
-  DispatchNamespacesScriptsGetResponseScriptNamedHandlersItem as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
-
 export type DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
   Array<DispatchNamespacesScriptsUpdateResponseNamedHandlersItem>;
-export const DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
+const DispatchNamespacesScriptsUpdateResponseNamedHandlersList =
   DispatchNamespacesScriptsGetResponseScriptNamedHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseNamedHandlersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-export const DispatchNamespacesScriptsUpdateResponseObservabilityIssues =
-  DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-
 export type DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -11150,18 +7507,18 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityLogs {
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
+const DispatchNamespacesScriptsUpdateResponseObservabilityLogs =
   DispatchNamespacesScriptsGetResponseScriptObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy = S.String;
+const DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy = S.String;
 
 export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
@@ -11175,21 +7532,20 @@ export interface DispatchNamespacesScriptsUpdateResponseObservabilityTraces {
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      destinations: S.optional(
-        S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList),
+const DispatchNamespacesScriptsUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinations: S.optional(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTracesDestinationsList),
+    ),
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    persist: S.optional(S.NullOr(S.Boolean)),
+    propagationPolicy: S.optional(
+      S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy).pipe(
+        T.Body("propagation_policy"),
       ),
-      enabled: S.optional(S.NullOr(S.Boolean)),
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      persist: S.optional(S.NullOr(S.Boolean)),
-      propagationPolicy: S.optional(
-        S.NullOr(DispatchNamespacesScriptsUpdateResponseObservabilityTracesPropagationPolicy).pipe(
-          T.Body("propagation_policy"),
-        ),
-      ),
-    }),
+    ),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsUpdateResponseObservabilityTraces",
 }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservabilityTraces>;
@@ -11208,7 +7564,7 @@ export interface DispatchNamespacesScriptsUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsUpdateResponseObservabilityTraces | null;
 }
-export const DispatchNamespacesScriptsUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
@@ -11222,14 +7578,10 @@ export const DispatchNamespacesScriptsUpdateResponseObservability = /*@__PURE__*
 }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseObservability>;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode = "smart";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase0Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode;
@@ -11238,22 +7590,10 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase0 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase0Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DispatchNamespacesScriptsUpdateResponsePlacementCase0Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase0Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase0",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase0>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase1Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
@@ -11262,22 +7602,10 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase1 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase1Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase1Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase1",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase1>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase2Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -11286,22 +7614,10 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase2 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase2Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase2Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase2",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase2>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase3Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -11310,25 +7626,11 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase3 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase3Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase3Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase3",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase3>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase4Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode;
@@ -11339,26 +7641,11 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase4 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase4Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DispatchNamespacesScriptsUpdateResponsePlacementCase4Mode,
-    region: S.String,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase4Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase4",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase4>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase5Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -11369,26 +7656,11 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase5 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase5Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostname: S.String,
-    mode: DispatchNamespacesScriptsUpdateResponsePlacementCase5Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase5Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase5",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase5>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase6Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -11399,55 +7671,23 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase6 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase6Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.String,
-    mode: DispatchNamespacesScriptsUpdateResponsePlacementCase6Mode,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase6Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase6",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase6>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode = S.String;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemRegion =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemRegion =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItemHost =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7Status = S.String;
-
 export interface DispatchNamespacesScriptsUpdateResponsePlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode;
@@ -11458,17 +7698,6 @@ export interface DispatchNamespacesScriptsUpdateResponsePlacementCase7 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsUpdateResponsePlacementCase7Status | null;
 }
-export const DispatchNamespacesScriptsUpdateResponsePlacementCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DispatchNamespacesScriptsUpdateResponsePlacementCase7Mode,
-    target: DispatchNamespacesScriptsUpdateResponsePlacementCase7TargetList,
-    lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-    status: S.optional(S.NullOr(DispatchNamespacesScriptsUpdateResponsePlacementCase7Status)),
-  }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsUpdateResponsePlacementCase7",
-}) as any as S.Schema<DispatchNamespacesScriptsUpdateResponsePlacementCase7>;
-
 export type DispatchNamespacesScriptsUpdateResponsePlacement =
   | DispatchNamespacesScriptsUpdateResponsePlacementCase0
   | DispatchNamespacesScriptsUpdateResponsePlacementCase1
@@ -11478,7 +7707,7 @@ export type DispatchNamespacesScriptsUpdateResponsePlacement =
   | DispatchNamespacesScriptsUpdateResponsePlacementCase5
   | DispatchNamespacesScriptsUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsUpdateResponsePlacementCase7;
-export const DispatchNamespacesScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
@@ -11492,30 +7721,27 @@ export const DispatchNamespacesScriptsUpdateResponsePlacement = /*@__PURE__*/ S.
 );
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementMode = "smart" | "targeted";
-export const DispatchNamespacesScriptsUpdateResponsePlacementMode = S.String;
+const DispatchNamespacesScriptsUpdateResponsePlacementMode = S.String;
 
 export type DispatchNamespacesScriptsUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsUpdateResponsePlacementStatus = S.String;
+const DispatchNamespacesScriptsUpdateResponsePlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsUpdateResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsUpdateResponseTagsList =
+const DispatchNamespacesScriptsUpdateResponseTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTagsList>;
 
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-export const DispatchNamespacesScriptsUpdateResponseTailConsumersItem =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-
 export type DispatchNamespacesScriptsUpdateResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
+const DispatchNamespacesScriptsUpdateResponseTailConsumersList =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersList as any as S.Schema<DispatchNamespacesScriptsUpdateResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsUpdateResponseUsageModel = "standard" | "bundled" | "unbound";
-export const DispatchNamespacesScriptsUpdateResponseUsageModel = S.String;
+const DispatchNamespacesScriptsUpdateResponseUsageModel = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptResponse {
@@ -11567,7 +7793,7 @@ export interface PutDispatchNamespaceScriptResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsUpdateResponseUsageModel | null;
 }
-export const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startupTimeMs: S.Number.pipe(T.Body("startup_time_ms")),
     id: S.optional(S.NullOr(S.String)),
@@ -11629,7 +7855,7 @@ export interface DispatchNamespacesScriptsContentUpdateRequestMetadata {
   /** Name of the part in the multipart request that contains the main module (e.g. the file exporting a `fetch` handler). Indicates a `module syntax` Worker. */
   mainModule?: string;
 }
-export const DispatchNamespacesScriptsContentUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsContentUpdateRequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bodyPart: S.optional(S.String.pipe(T.Body("body_part"))),
     mainModule: S.optional(S.String.pipe(T.Body("main_module"))),
@@ -11639,7 +7865,7 @@ export const DispatchNamespacesScriptsContentUpdateRequestMetadata = /*@__PURE__
 }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestMetadata>;
 
 export type DispatchNamespacesScriptsContentUpdateRequestFilesList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateRequestFilesList =
+const DispatchNamespacesScriptsContentUpdateRequestFilesList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateRequestFilesList>;
 
 export interface PutDispatchNamespaceScriptContentRequest {
@@ -11656,7 +7882,7 @@ export interface PutDispatchNamespaceScriptContentRequest {
   cfworkerbodypart?: string;
   cfworkermainmodulepart?: string;
 }
-export const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -11680,24 +7906,14 @@ export const PutDispatchNamespaceScriptContentRequest = /*@__PURE__*/ S.suspend(
 
 export type DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
   DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-export const DispatchNamespacesScriptsContentUpdateResponseCacheOptions =
-  DispatchNamespacesScriptsGetResponseScriptCacheOptions;
-
 export type DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
+const DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseCompatibilityFlagsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType = "worker";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerCache =
   DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerCache =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkerCache;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerState = "created";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerState = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker {
   /** Marks this entry as a Worker entrypoint export. */
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerType;
@@ -11706,25 +7922,13 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkerState | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker =
-  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorker as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportType =
   "durable-object";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportType =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState =
   "created";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState =
-  S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport {
   /** Durable Object storage backend. `sqlite` is the recommended (and only) backend for new namespaces. `legacy-kv` is accepted only for a class whose namespace already exists as KV-backed; the `exports` flow never provisions a new `legacy-kv` namespace. */
   storage: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportStorage;
@@ -11735,38 +7939,20 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   /** Live export. May be omitted; defaults to `created`. */
   state?: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExportState | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport =
-  DispatchNamespacesScriptsSettingsGetResponseExportsValueWorkersDurableObjectExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
   "deleted";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport {
   /** Tombstone that deletes the namespace. */
   state: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportState;
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExportType;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectDeletedExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectDeletedExport>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
   "renamed";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType =
   "durable-object";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport {
   /** The destination class name. Must differ from the source class (the map key) and must be declared as a live (`created`) entry in the same `exports` map. Write-only: never present in GET responses. */
   renamedTo: string;
@@ -11775,19 +7961,10 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExportType;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectRenamedExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
   "transferred";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType =
   "durable-object";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport {
   /** Tombstone that transfers the namespace to another script. */
   state: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportState;
@@ -11796,25 +7973,13 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   /** Marks this entry as a Durable Object export. */
   type: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExportType;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectTransferredExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
   "expecting-transfer";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
   | "sqlite"
   | "legacy-kv";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportStorage =
-  S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
   "durable-object";
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportType =
-  S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport {
   /** Target side of a two-phase transfer. */
   state: DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExportState;
@@ -11827,9 +7992,6 @@ export interface DispatchNamespacesScriptsContentUpdateResponseExportsValueWorke
   /** Name of the container (declared in the upload's `metadata.containers`) that backs this Durable Object once the transfer settles. Valid only on live entries. */
   container?: string | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport =
-  DispatchNamespacesScriptsGetResponseScriptExportsValueWorkersDurableObjectExpectingTransferExport as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport>;
-
 export type DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorker
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExport
@@ -11837,33 +7999,32 @@ export type DispatchNamespacesScriptsContentUpdateResponseExportsValue =
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectRenamedExport
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectTransferredExport
   | DispatchNamespacesScriptsContentUpdateResponseExportsValueWorkersDurableObjectExpectingTransferExport;
-export const DispatchNamespacesScriptsContentUpdateResponseExportsValue =
-  /*@__PURE__*/ S.Unknown.pipe(
-    /*@__PURE__*/ T.UnionCases([
-      ["type", "cache", "state"],
-      ["storage", "type", "container", "state"],
-      ["state", "type"],
-      ["renamedTo", "state", "type"],
-      ["state", "transferredTo", "type"],
-      ["state", "storage", "transferFrom", "type", "container"],
-    ]),
-  );
+const DispatchNamespacesScriptsContentUpdateResponseExportsValue = /*@__PURE__*/ S.Unknown.pipe(
+  /*@__PURE__*/ T.UnionCases([
+    ["type", "cache", "state"],
+    ["storage", "type", "container", "state"],
+    ["state", "type"],
+    ["renamedTo", "state", "type"],
+    ["state", "transferredTo", "type"],
+    ["state", "storage", "transferFrom", "type", "container"],
+  ]),
+);
 
 export type DispatchNamespacesScriptsContentUpdateResponseExportsMap = {
   [key: string]: DispatchNamespacesScriptsContentUpdateResponseExportsValue | undefined;
 };
-export const DispatchNamespacesScriptsContentUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
+const DispatchNamespacesScriptsContentUpdateResponseExportsMap = /*@__PURE__*/ S.Record(
   S.String,
   DispatchNamespacesScriptsContentUpdateResponseExportsValue,
 ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseExportsMap>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseHandlersList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseHandlersList =
+const DispatchNamespacesScriptsContentUpdateResponseHandlersList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseHandlersList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
   Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
+const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList>;
 
 export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem {
@@ -11872,35 +8033,28 @@ export interface DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem
   /** The name of the export. */
   name?: string | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       handlers: S.optional(
         S.NullOr(DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItemHandlersList),
       ),
       name: S.optional(S.NullOr(S.String)),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem",
+}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList =
   Array<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem>;
-export const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList>;
+const DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList = /*@__PURE__*/ S.Array(
+  DispatchNamespacesScriptsContentUpdateResponseNamedHandlersItem,
+) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseNamedHandlersList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityIssues =
   DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityIssues =
-  DispatchNamespacesScriptsGetResponseScriptObservabilityIssues;
-
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList =
-  DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogsDestinationsList>;
-
 export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs {
   /** Whether logs are enabled for the Worker. */
   enabled: boolean;
@@ -11913,19 +8067,18 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs
   /** Whether log persistence is enabled for the Worker. */
   persist?: boolean | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
+const DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs =
   DispatchNamespacesScriptsSettingsGetResponseObservabilityLogs as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
   Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
+const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList =
   DispatchNamespacesScriptsAssetUploadCreateResponseBucketsItemList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
   | "authenticated"
   | "accept";
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy =
-  S.String;
+const DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy = S.String;
 
 export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces {
   /** A list of destinations where traces will be exported to. */
@@ -11939,8 +8092,8 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservabilityTrac
   /** Controls how inbound trace context (traceparent/tracestate) headers on incoming requests are handled. "authenticated" honors inbound trace context only when accompanied by a valid trace auth token. "accept" unconditionally accepts inbound trace context. Requires the trace propagation feature to be enabled. Returns null when the trace propagation feature is not enabled for the account. */
   propagationPolicy?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesPropagationPolicy | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces =
-  /*@__PURE__*/ S.suspend(() =>
+const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       destinations: S.optional(
         S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityTracesDestinationsList),
@@ -11954,9 +8107,9 @@ export const DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces =
         ).pipe(T.Body("propagation_policy")),
       ),
     }),
-  ).annotate({
-    identifier: "DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces",
-  }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces>;
+).annotate({
+  identifier: "DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces",
+}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces>;
 
 export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
   /** Whether observability is enabled for the Worker. */
@@ -11972,31 +8125,24 @@ export interface DispatchNamespacesScriptsContentUpdateResponseObservability {
   /** Trace settings for the Worker. */
   traces?: DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponseObservability = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
-      issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
-      logs: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs)),
-      redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
-      traces: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces),
-      ),
-    }),
+const DispatchNamespacesScriptsContentUpdateResponseObservability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    headSamplingRate: S.optional(S.NullOr(S.Number).pipe(T.Body("head_sampling_rate"))),
+    issues: S.optional(S.NullOr(DispatchNamespacesScriptsGetResponseScriptObservabilityIssues)),
+    logs: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityLogs)),
+    redactQueryString: S.optional(S.NullOr(S.Boolean).pipe(T.Body("redact_query_string"))),
+    traces: S.optional(S.NullOr(DispatchNamespacesScriptsContentUpdateResponseObservabilityTraces)),
+  }),
 ).annotate({
   identifier: "DispatchNamespacesScriptsContentUpdateResponseObservability",
 }) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseObservability>;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode = "smart";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 {
   /** Enables [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode;
@@ -12005,25 +8151,10 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase0Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase0",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase0>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
@@ -12032,25 +8163,10 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      region: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase1Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase1",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase1>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -12059,25 +8175,10 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase2 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase2Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase2",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase2>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -12086,28 +8187,11 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase3 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase3Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase3",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase3>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode = "targeted";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode;
@@ -12118,29 +8202,11 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase4 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Mode,
-      region: S.String,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase4Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase4",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase4>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode = "targeted";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 {
   /** HTTP hostname for targeted placement. */
   hostname: string;
@@ -12151,29 +8217,11 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase5 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hostname: S.String,
-      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase5Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase5",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase5>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode = "targeted";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 {
   /** TCP host and port for targeted placement. */
   host: string;
@@ -12184,58 +8232,23 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase6 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.String,
-      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Mode,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase6Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase6",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase6>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode = "targeted";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode = S.String;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemRegion =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemRegion =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHostname =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHostname =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHost =
   DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItemHost =
-  DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemRegion
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHostname
   | DispatchNamespacesScriptsGetResponseScriptPlacementCase7TargetItemHost;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem =
-  /*@__PURE__*/ S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["region"], ["hostname"], ["host"]]));
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList =
   Array<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem>;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status = S.String;
-
 export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 {
   /** Targeted placement mode. */
   mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode;
@@ -12246,20 +8259,6 @@ export interface DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 {
   /** Status of [Smart Placement](https://developers.cloudflare.com/workers/configuration/smart-placement). */
   status?: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status | null;
 }
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementCase7 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      mode: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Mode,
-      target: DispatchNamespacesScriptsContentUpdateResponsePlacementCase7TargetList,
-      lastAnalyzedAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_analyzed_at"))),
-      status: S.optional(
-        S.NullOr(DispatchNamespacesScriptsContentUpdateResponsePlacementCase7Status),
-      ),
-    }),
-).annotate({
-  identifier: "DispatchNamespacesScriptsContentUpdateResponsePlacementCase7",
-}) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponsePlacementCase7>;
-
 export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase0
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase1
@@ -12269,7 +8268,7 @@ export type DispatchNamespacesScriptsContentUpdateResponsePlacement =
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase5
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase6
   | DispatchNamespacesScriptsContentUpdateResponsePlacementCase7;
-export const DispatchNamespacesScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsContentUpdateResponsePlacement = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases([
     ["mode", "lastAnalyzedAt", "status"],
     ["region", "lastAnalyzedAt", "status"],
@@ -12283,35 +8282,31 @@ export const DispatchNamespacesScriptsContentUpdateResponsePlacement = /*@__PURE
 );
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementMode = "smart" | "targeted";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementMode = S.String;
+const DispatchNamespacesScriptsContentUpdateResponsePlacementMode = S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponsePlacementStatus =
   | "SUCCESS"
   | "UNSUPPORTED_APPLICATION"
   | "INSUFFICIENT_INVOCATIONS";
-export const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus = S.String;
+const DispatchNamespacesScriptsContentUpdateResponsePlacementStatus = S.String;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTagsList = Array<string>;
-export const DispatchNamespacesScriptsContentUpdateResponseTagsList =
+const DispatchNamespacesScriptsContentUpdateResponseTagsList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTagsList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
   DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersItem =
-  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem;
-
 export type DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
   Array<DispatchNamespacesScriptsGetResponseScriptTailConsumersItem>;
-export const DispatchNamespacesScriptsContentUpdateResponseTailConsumersList =
-  /*@__PURE__*/ S.Array(
-    DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
-  ) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTailConsumersList>;
+const DispatchNamespacesScriptsContentUpdateResponseTailConsumersList = /*@__PURE__*/ S.Array(
+  DispatchNamespacesScriptsGetResponseScriptTailConsumersItem,
+) as any as S.Schema<DispatchNamespacesScriptsContentUpdateResponseTailConsumersList>;
 
 export type DispatchNamespacesScriptsContentUpdateResponseUsageModel =
   | "standard"
   | "bundled"
   | "unbound";
-export const DispatchNamespacesScriptsContentUpdateResponseUsageModel = S.String;
+const DispatchNamespacesScriptsContentUpdateResponseUsageModel = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutDispatchNamespaceScriptContentResponse {
@@ -12362,7 +8357,7 @@ export interface PutDispatchNamespaceScriptContentResponse {
   /** Usage model for the Worker invocations. */
   usageModel?: DispatchNamespacesScriptsContentUpdateResponseUsageModel | null;
 }
-export const PutDispatchNamespaceScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     cacheOptions: S.optional(
@@ -12423,10 +8418,10 @@ export const PutDispatchNamespaceScriptContentResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutDispatchNamespaceScriptContentResponse>;
 
 export type DispatchNamespacesScriptsSecretsUpdateRequestType = "secret_text" | "secret_key";
-export const DispatchNamespacesScriptsSecretsUpdateRequestType = S.String;
+const DispatchNamespacesScriptsSecretsUpdateRequestType = S.String;
 
 export type DispatchNamespacesScriptsSecretsUpdateRequestFormat = "raw" | "pkcs8" | "spki" | "jwk";
-export const DispatchNamespacesScriptsSecretsUpdateRequestFormat = S.String;
+const DispatchNamespacesScriptsSecretsUpdateRequestFormat = S.String;
 
 export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   | "encrypt"
@@ -12437,12 +8432,10 @@ export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateRequestUsagesList = Array<
   DispatchNamespacesScriptsSecretsUpdateRequestUsagesItem | (string & {})
 >;
-export const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
+const DispatchNamespacesScriptsSecretsUpdateRequestUsagesList =
   DispatchNamespacesScriptsSecretsGetResultSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateRequestUsagesList>;
 
 export interface PutDispatchNamespaceScriptSecretRequest {
@@ -12469,7 +8462,7 @@ export interface PutDispatchNamespaceScriptSecretRequest {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown;
 }
-export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -12496,8 +8489,6 @@ export const PutDispatchNamespaceScriptSecretRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretRequest>;
 
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretTextType = "secret_text";
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretTextType = S.String;
-
 export interface DispatchNamespacesScriptsSecretsUpdateResultSecretText {
   /** A JavaScript variable name for the binding. */
   name: string;
@@ -12506,19 +8497,12 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretText {
   /** The kind of resource that the binding provides. */
   type: DispatchNamespacesScriptsSecretsUpdateResultSecretTextType;
 }
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretText =
-  DispatchNamespacesScriptsBindingsGetResultItemPlainText as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretText>;
-
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat =
   | "raw"
   | "pkcs8"
   | "spki"
   | "jwk";
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyFormat = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType = "secret_key";
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyType = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem =
   | "encrypt"
   | "decrypt"
@@ -12528,13 +8512,8 @@ export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem =
   | "deriveBits"
   | "wrapKey"
   | "unwrapKey";
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem = S.String;
-
 export type DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList =
   Array<DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesItem>;
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList =
-  DispatchNamespacesScriptsSecretsBulkUpdateRequestSecretsValueSecretKeyUsagesList as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKeyUsagesList>;
-
 export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
   algorithm: unknown;
@@ -12551,13 +8530,10 @@ export interface DispatchNamespacesScriptsSecretsUpdateResultSecretKey {
   /** Key data in [JSON Web Key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#json_web_key) format. Required if `format` is "jwk". */
   keyJwk?: unknown | null;
 }
-export const DispatchNamespacesScriptsSecretsUpdateResultSecretKey =
-  DispatchNamespacesScriptsBindingsGetResultItemSecretKey as any as S.Schema<DispatchNamespacesScriptsSecretsUpdateResultSecretKey>;
-
 export type DispatchNamespacesScriptsSecretsUpdateResult =
   | DispatchNamespacesScriptsSecretsUpdateResultSecretText
   | DispatchNamespacesScriptsSecretsUpdateResultSecretKey;
-export const DispatchNamespacesScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
+const DispatchNamespacesScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unknown.pipe(
   /*@__PURE__*/ T.UnionCases(
     [
       ["name", "text", "type"],
@@ -12568,7 +8544,7 @@ export const DispatchNamespacesScriptsSecretsUpdateResult = /*@__PURE__*/ S.Unkn
 );
 
 export type PutDispatchNamespaceScriptSecretResponse = DispatchNamespacesScriptsSecretsUpdateResult;
-export const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(() =>
   DispatchNamespacesScriptsSecretsUpdateResult.pipe(
     T.EnvelopePayloadRoot(),
     T.KeyDictionary(KEY_DICTIONARY),
@@ -12578,7 +8554,7 @@ export const PutDispatchNamespaceScriptSecretResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PutDispatchNamespaceScriptSecretResponse>;
 
 export type DispatchNamespacesScriptsTagsUpdateRequestBodyList = Array<string>;
-export const DispatchNamespacesScriptsTagsUpdateRequestBodyList =
+const DispatchNamespacesScriptsTagsUpdateRequestBodyList =
   DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsUpdateRequestBodyList>;
 
 export interface PutDispatchNamespaceScriptTagRequest {
@@ -12591,7 +8567,7 @@ export interface PutDispatchNamespaceScriptTagRequest {
   /** Tags associated with the Worker. */
   body: DispatchNamespacesScriptsTagsUpdateRequestBodyList;
 }
-export const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =>
+const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dispatchNamespace: S.String.pipe(T.Label("dispatch_namespace")),
@@ -12611,16 +8587,13 @@ export const PutDispatchNamespaceScriptTagRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PutDispatchNamespaceScriptTagRequest>;
 
 export type DispatchNamespacesScriptsTagsUpdateResultList = Array<string>;
-export const DispatchNamespacesScriptsTagsUpdateResultList =
-  DispatchNamespacesScriptsGetResponseScriptHandlersList as any as S.Schema<DispatchNamespacesScriptsTagsUpdateResultList>;
-
 export interface PutDispatchNamespaceScriptTagResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DispatchNamespacesScriptsTagsUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutDispatchNamespaceScriptTagResponse =
+const PutDispatchNamespaceScriptTagResponse =
   ListDispatchNamespaceScriptTagsResponse as any as S.Schema<PutDispatchNamespaceScriptTagResponse>;
 
 export type BulkUpdateDispatchNamespaceScriptSecretsError = CloudflareOpError;

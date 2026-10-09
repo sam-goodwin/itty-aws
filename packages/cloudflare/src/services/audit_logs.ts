@@ -24,7 +24,7 @@ export interface ListRequestAction {
   /** Filters by the action type. */
   type?: string;
 }
-export const ListRequestAction = /*@__PURE__*/ S.suspend(() =>
+const ListRequestAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -36,7 +36,7 @@ export interface ListRequestActor {
   /** Filters by the IP address of the request that made the change by specific IP address or valid CIDR Range. */
   ip?: string;
 }
-export const ListRequestActor = /*@__PURE__*/ S.suspend(() =>
+const ListRequestActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     ip: S.optional(S.String),
@@ -44,13 +44,13 @@ export const ListRequestActor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRequestActor" }) as any as S.Schema<ListRequestActor>;
 
 export type ListRequestDirection = "desc" | "asc";
-export const ListRequestDirection = S.String;
+const ListRequestDirection = S.String;
 
 export interface ListRequestZone {
   /** Filters by the name of the zone associated to the change. */
   name?: string;
 }
-export const ListRequestZone = /*@__PURE__*/ S.suspend(() =>
+const ListRequestZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -79,7 +79,7 @@ export interface ListAuditLogsRequest {
   since?: string;
   zone?: ListRequestZone;
 }
-export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -104,7 +104,7 @@ export interface ListResultItemAction {
   /** A short string that describes the action that was performed. */
   type?: string | null;
 }
-export const ListResultItemAction = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.NullOr(S.Boolean)),
     type: S.optional(S.NullOr(S.String)),
@@ -112,7 +112,7 @@ export const ListResultItemAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItemAction" }) as any as S.Schema<ListResultItemAction>;
 
 export type ListResultItemActorType = "user" | "admin" | "Cloudflare";
-export const ListResultItemActorType = S.String;
+const ListResultItemActorType = S.String;
 
 export interface ListResultItemActor {
   /** The ID of the actor that performed the action. If a user performed the action, this will be their User ID. */
@@ -124,7 +124,7 @@ export interface ListResultItemActor {
   /** The type of actor, whether a User, Cloudflare Admin, or an Automated System. */
   type?: ListResultItemActorType | null;
 }
-export const ListResultItemActor = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemActor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -137,7 +137,7 @@ export interface ListResultItemOwner {
   /** Identifier */
   id?: string | null;
 }
-export const ListResultItemOwner = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }),
@@ -149,7 +149,7 @@ export interface ListResultItemResource {
   /** A short string that describes the resource that was affected by the action. */
   type?: string | null;
 }
-export const ListResultItemResource = /*@__PURE__*/ S.suspend(() =>
+const ListResultItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     type: S.optional(S.NullOr(S.String)),
@@ -174,7 +174,7 @@ export interface ListResultItem {
   /** A UTC RFC3339 timestamp that specifies when the action being logged occured. */
   when?: string | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     action: S.optional(S.NullOr(ListResultItemAction)),
@@ -190,9 +190,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListAuditLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -200,7 +198,7 @@ export interface ListAuditLogsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),

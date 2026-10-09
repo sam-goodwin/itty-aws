@@ -46,7 +46,7 @@ export type BatchExportBackfillStatusEnum =
   | "TimedOut"
   | "Running"
   | "Starting";
-export const BatchExportBackfillStatusEnum = S.String;
+const BatchExportBackfillStatusEnum = S.String;
 
 export interface BatchExportsBackfillsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -71,7 +71,7 @@ export interface BatchExportsBackfillsCancelCreateRequest {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
-export const BatchExportsBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -96,7 +96,7 @@ export const BatchExportsBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchExportsBackfillsCancelCreateRequest>;
 
 export interface BatchExportsBackfillsCancelCreateResponse {}
-export const BatchExportsBackfillsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsBackfillsCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "BatchExportsBackfillsCancelCreateResponse",
@@ -108,7 +108,7 @@ export interface BatchExportsDestroyRequest {
   /** A UUID string identifying this batch export. */
   id: string;
 }
-export const BatchExportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -120,7 +120,7 @@ export const BatchExportsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsDestroyRequest>;
 
 export interface BatchExportsDestroyResponse {}
-export const BatchExportsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const BatchExportsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "BatchExportsDestroyResponse",
 }) as any as S.Schema<BatchExportsDestroyResponse>;
 
@@ -136,7 +136,7 @@ export type BatchExportRunStatusEnum =
   | "TimedOut"
   | "Running"
   | "Starting";
-export const BatchExportRunStatusEnum = S.String;
+const BatchExportRunStatusEnum = S.String;
 
 export interface BatchExportsRunsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -169,7 +169,7 @@ export interface BatchExportsRunsCancelCreateRequest {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
-export const BatchExportsRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -198,7 +198,7 @@ export const BatchExportsRunsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsRunsCancelCreateRequest>;
 
 export interface BatchExportsRunsCancelCreateResponse {}
-export const BatchExportsRunsCancelCreateResponse =
+const BatchExportsRunsCancelCreateResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsCancelCreateResponse>;
 
 export interface BatchExportsRunsRetryCreateRequest {
@@ -232,7 +232,7 @@ export interface BatchExportsRunsRetryCreateRequest {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
-export const BatchExportsRunsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsRunsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -261,7 +261,7 @@ export const BatchExportsRunsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsRunsRetryCreateRequest>;
 
 export interface BatchExportsRunsRetryCreateResponse {}
-export const BatchExportsRunsRetryCreateResponse =
+const BatchExportsRunsRetryCreateResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsRunsRetryCreateResponse>;
 
 export interface BatchExportsUnpauseCreateRequest {
@@ -272,7 +272,7 @@ export interface BatchExportsUnpauseCreateRequest {
   /** Whether to backfill the runs that the batch export missed while it was paused. */
   backfill?: boolean;
 }
-export const BatchExportsUnpauseCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchExportsUnpauseCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -289,17 +289,15 @@ export const BatchExportsUnpauseCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchExportsUnpauseCreateRequest>;
 
 export interface BatchExportsUnpauseCreateResponse {}
-export const BatchExportsUnpauseCreateResponse =
+const BatchExportsUnpauseCreateResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<BatchExportsUnpauseCreateResponse>;
 
 /** * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportModelEnum = "events" | "persons" | "sessions" | "hogql";
-export const BatchExportModelEnum = S.String;
+const BatchExportModelEnum = S.String;
 
 /** * `Databricks` - Databricks */
 export type DatabricksDestinationRequestTypeEnum = "Databricks";
-export const DatabricksDestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for a Databricks batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors `DatabricksBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface DatabricksDestinationConfig {
   /** Databricks SQL warehouse HTTP path. */
@@ -315,19 +313,6 @@ export interface DatabricksDestinationConfig {
   /** Whether to let Databricks evolve the destination table schema automatically. */
   use_automatic_schema_evolution?: boolean;
 }
-export const DatabricksDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    http_path: S.String,
-    catalog: S.String,
-    schema: S.String,
-    table_name: S.String,
-    use_variant_type: S.optional(S.Boolean),
-    use_automatic_schema_evolution: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DatabricksDestinationConfig",
-}) as any as S.Schema<DatabricksDestinationConfig>;
-
 /** Request shape for creating or updating a Databricks batch-export destination. */
 export interface DatabricksDestinationRequest {
   type: DatabricksDestinationRequestTypeEnum;
@@ -335,28 +320,12 @@ export interface DatabricksDestinationRequest {
   integration_id: number;
   config: DatabricksDestinationConfig;
 }
-export const DatabricksDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DatabricksDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: DatabricksDestinationConfig,
-  }),
-).annotate({
-  identifier: "DatabricksDestinationRequest",
-}) as any as S.Schema<DatabricksDestinationRequest>;
-
 /** * `AzureBlob` - AzureBlob */
 export type AzureBlobDestinationRequestTypeEnum = "AzureBlob";
-export const AzureBlobDestinationRequestTypeEnum = S.String;
-
 /** * `brotli` - brotli * `gzip` - gzip * `lz4` - lz4 * `snappy` - snappy * `zstd` - zstd */
 export type CompressionEnum = "brotli" | "gzip" | "lz4" | "snappy" | "zstd";
-export const CompressionEnum = S.String;
-
 /** * `Parquet` - Parquet * `JSONLines` - JSONLines */
 export type FileFormatEnum = "Parquet" | "JSONLines";
-export const FileFormatEnum = S.String;
-
 /** Typed configuration for an Azure Blob Storage batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors `AzureBlobBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface AzureBlobDestinationConfig {
   /** Azure Blob Storage container name. */
@@ -372,19 +341,6 @@ export interface AzureBlobDestinationConfig {
   /** Whether Parquet files keep the compression codec in their extension, for example '.parquet.zst' rather than '.parquet'. Parquet records its codec inside the file, so new exports leave it out. An export that already wrote Parquet files before this setting existed keeps it, so that pipelines matching on the old names do not break. Has no effect on JSON Lines, which always carries the codec in its extension. */
   legacy_parquet_extension?: boolean;
 }
-export const AzureBlobDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    container_name: S.String,
-    prefix: S.optional(S.String),
-    compression: S.optional(S.NullOr(CompressionEnum)),
-    file_format: S.optional(FileFormatEnum),
-    max_file_size_mb: S.optional(S.NullOr(S.Number)),
-    legacy_parquet_extension: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "AzureBlobDestinationConfig",
-}) as any as S.Schema<AzureBlobDestinationConfig>;
-
 /** Request shape for creating or updating an Azure Blob Storage batch-export destination. */
 export interface AzureBlobDestinationRequest {
   type: AzureBlobDestinationRequestTypeEnum;
@@ -392,20 +348,8 @@ export interface AzureBlobDestinationRequest {
   integration_id: number;
   config: AzureBlobDestinationConfig;
 }
-export const AzureBlobDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AzureBlobDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: AzureBlobDestinationConfig,
-  }),
-).annotate({
-  identifier: "AzureBlobDestinationRequest",
-}) as any as S.Schema<AzureBlobDestinationRequest>;
-
 /** * `BigQuery` - BigQuery */
 export type BigQueryDestinationRequestTypeEnum = "BigQuery";
-export const BigQueryDestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for a BigQuery batch-export destination. Credentials live in the linked Integration, not in this config. Mirrors the non-credential fields of `BigQueryBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface BigQueryDestinationConfig {
   /** BigQuery dataset ID to write to. */
@@ -415,16 +359,6 @@ export interface BigQueryDestinationConfig {
   /** Whether to export 'properties', 'set', and 'set_once' fields as the BigQuery JSON type rather than STRING. Cannot be changed after the export is created. */
   use_json_type?: boolean;
 }
-export const BigQueryDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataset_id: S.String,
-    table_id: S.optional(S.String),
-    use_json_type: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BigQueryDestinationConfig",
-}) as any as S.Schema<BigQueryDestinationConfig>;
-
 /** Request shape for creating or updating a BigQuery batch-export destination. */
 export interface BigQueryDestinationRequest {
   type: BigQueryDestinationRequestTypeEnum;
@@ -432,20 +366,8 @@ export interface BigQueryDestinationRequest {
   integration_id: number;
   config: BigQueryDestinationConfig;
 }
-export const BigQueryDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: BigQueryDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: BigQueryDestinationConfig,
-  }),
-).annotate({
-  identifier: "BigQueryDestinationRequest",
-}) as any as S.Schema<BigQueryDestinationRequest>;
-
 /** * `Postgres` - Postgres */
 export type PostgresDestinationRequestTypeEnum = "Postgres";
-export const PostgresDestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for a PostgreSQL batch-export destination. Connection credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `PostgresBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface PostgresDestinationConfig {
   /** PostgreSQL database name to connect to. */
@@ -457,17 +379,6 @@ export interface PostgresDestinationConfig {
   /** Legacy SSL option for direct credential configuration. Ignored when using a PostgreSQL integration. */
   has_self_signed_cert?: boolean;
 }
-export const PostgresDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    schema: S.optional(S.String),
-    table_name: S.optional(S.String),
-    has_self_signed_cert: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "PostgresDestinationConfig",
-}) as any as S.Schema<PostgresDestinationConfig>;
-
 /** Request shape for creating or updating a PostgreSQL batch-export destination. */
 export interface PostgresDestinationRequest {
   type: PostgresDestinationRequestTypeEnum;
@@ -475,20 +386,8 @@ export interface PostgresDestinationRequest {
   integration_id: number;
   config: PostgresDestinationConfig;
 }
-export const PostgresDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: PostgresDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: PostgresDestinationConfig,
-  }),
-).annotate({
-  identifier: "PostgresDestinationRequest",
-}) as any as S.Schema<PostgresDestinationRequest>;
-
 /** * `AwsS3` - AwsS3 */
 export type AwsS3DestinationRequestTypeEnum = "AwsS3";
-export const AwsS3DestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for an AWS S3 batch-export destination. AWS credentials live in the linked aws-s3 Integration. Mirrors the non-credential fields of `AwsS3BatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface AwsS3DestinationConfig {
   /** Name of the destination bucket. */
@@ -510,20 +409,6 @@ export interface AwsS3DestinationConfig {
   /** KMS key ID to use when encryption is 'aws:kms'. */
   kms_key_id?: string | null;
 }
-export const AwsS3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_name: S.String,
-    region: S.String,
-    prefix: S.String,
-    compression: S.optional(S.NullOr(CompressionEnum)),
-    file_format: S.optional(FileFormatEnum),
-    max_file_size_mb: S.optional(S.NullOr(S.Number)),
-    legacy_parquet_extension: S.optional(S.Boolean),
-    encryption: S.optional(S.NullOr(S.String)),
-    kms_key_id: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({ identifier: "AwsS3DestinationConfig" }) as any as S.Schema<AwsS3DestinationConfig>;
-
 /** Request shape for creating or updating an AWS S3 batch-export destination. */
 export interface AwsS3DestinationRequest {
   type: AwsS3DestinationRequestTypeEnum;
@@ -531,18 +416,8 @@ export interface AwsS3DestinationRequest {
   integration_id: number;
   config: AwsS3DestinationConfig;
 }
-export const AwsS3DestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AwsS3DestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: AwsS3DestinationConfig,
-  }),
-).annotate({ identifier: "AwsS3DestinationRequest" }) as any as S.Schema<AwsS3DestinationRequest>;
-
 /** * `S3Compatible` - S3Compatible */
 export type S3CompatibleDestinationRequestTypeEnum = "S3Compatible";
-export const S3CompatibleDestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for an S3-compatible batch-export destination (Cloudflare R2, DigitalOcean Spaces, etc.). Credentials and the provider `endpoint_url` live in the linked s3-compatible Integration. Mirrors the non-credential fields of `S3CompatibleBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface S3CompatibleDestinationConfig {
   /** Name of the destination bucket. */
@@ -562,21 +437,6 @@ export interface S3CompatibleDestinationConfig {
   /** Use virtual-hosted-style addressing rather than path-style. */
   use_virtual_style_addressing?: boolean;
 }
-export const S3CompatibleDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bucket_name: S.String,
-    region: S.String,
-    prefix: S.String,
-    compression: S.optional(S.NullOr(CompressionEnum)),
-    file_format: S.optional(FileFormatEnum),
-    max_file_size_mb: S.optional(S.NullOr(S.Number)),
-    legacy_parquet_extension: S.optional(S.Boolean),
-    use_virtual_style_addressing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "S3CompatibleDestinationConfig",
-}) as any as S.Schema<S3CompatibleDestinationConfig>;
-
 /** Request shape for creating or updating an S3-compatible batch-export destination. */
 export interface S3CompatibleDestinationRequest {
   type: S3CompatibleDestinationRequestTypeEnum;
@@ -584,20 +444,8 @@ export interface S3CompatibleDestinationRequest {
   integration_id: number;
   config: S3CompatibleDestinationConfig;
 }
-export const S3CompatibleDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S3CompatibleDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: S3CompatibleDestinationConfig,
-  }),
-).annotate({
-  identifier: "S3CompatibleDestinationRequest",
-}) as any as S.Schema<S3CompatibleDestinationRequest>;
-
 /** * `Snowflake` - Snowflake */
 export type SnowflakeDestinationRequestTypeEnum = "Snowflake";
-export const SnowflakeDestinationRequestTypeEnum = S.String;
-
 /** Typed configuration for a Snowflake batch-export destination. Account, user, authentication type and credentials live in the linked Integration, never here. Mirrors the non-credential fields of `SnowflakeBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface SnowflakeDestinationConfig {
   /** Snowflake database to write to. */
@@ -611,18 +459,6 @@ export interface SnowflakeDestinationConfig {
   /** Optional Snowflake role to assume for the session. */
   role?: string | null;
 }
-export const SnowflakeDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    warehouse: S.String,
-    schema: S.String,
-    table_name: S.optional(S.String),
-    role: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SnowflakeDestinationConfig",
-}) as any as S.Schema<SnowflakeDestinationConfig>;
-
 /** Request shape for creating or updating a Snowflake batch-export destination. */
 export interface SnowflakeDestinationRequest {
   type: SnowflakeDestinationRequestTypeEnum;
@@ -630,57 +466,24 @@ export interface SnowflakeDestinationRequest {
   integration_id: number;
   config: SnowflakeDestinationConfig;
 }
-export const SnowflakeDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SnowflakeDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: SnowflakeDestinationConfig,
-  }),
-).annotate({
-  identifier: "SnowflakeDestinationRequest",
-}) as any as S.Schema<SnowflakeDestinationRequest>;
-
 /** * `Redshift` - Redshift */
 export type RedshiftDestinationRequestTypeEnum = "Redshift";
-export const RedshiftDestinationRequestTypeEnum = S.String;
-
 /** * `varchar` - varchar * `super` - super */
 export type PropertiesDataTypeEnum = "varchar" | "super";
-export const PropertiesDataTypeEnum = S.String;
-
 /** * `INSERT` - INSERT * `COPY` - COPY */
 export type RedshiftExportModeEnum = "INSERT" | "COPY";
-export const RedshiftExportModeEnum = S.String;
-
 export interface RedshiftCopyInputsAuthorizationCase2 {
   aws_access_key_id: string;
   aws_secret_access_key: string;
 }
-export const RedshiftCopyInputsAuthorizationCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    aws_access_key_id: S.String,
-    aws_secret_access_key: S.String,
-  }),
-).annotate({
-  identifier: "RedshiftCopyInputsAuthorizationCase2",
-}) as any as S.Schema<RedshiftCopyInputsAuthorizationCase2>;
-
 /** Authorization for Redshift to read staged files during COPY: the ARN of an IAM role attached to the cluster, inline AWS credentials, or the id of an aws-s3-kind Integration. */
 export type RedshiftCopyInputsAuthorization =
   | number
   | string
   | RedshiftCopyInputsAuthorizationCase2;
-export const RedshiftCopyInputsAuthorization =
-  S.Unknown as any as S.Schema<RedshiftCopyInputsAuthorization>;
-
 export type RedshiftCopyInputsBucketCredentialsCase1 = RedshiftCopyInputsAuthorizationCase2;
-export const RedshiftCopyInputsBucketCredentialsCase1 = RedshiftCopyInputsAuthorizationCase2;
-
 /** Credentials used to stage files in the S3 bucket: inline AWS credentials or the id of an aws-s3-kind Integration. */
 export type RedshiftCopyInputsBucketCredentials = number | RedshiftCopyInputsAuthorizationCase2;
-export const RedshiftCopyInputsBucketCredentials =
-  S.Unknown as any as S.Schema<RedshiftCopyInputsBucketCredentials>;
-
 /** S3 staging configuration for a Redshift batch export running in COPY mode. */
 export interface RedshiftCopyInputs {
   /** S3 bucket where files are staged before the Redshift COPY. */
@@ -694,16 +497,6 @@ export interface RedshiftCopyInputs {
   /** Credentials used to stage files in the S3 bucket: inline AWS credentials or the id of an aws-s3-kind Integration. */
   bucket_credentials: RedshiftCopyInputsBucketCredentials;
 }
-export const RedshiftCopyInputs = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3_bucket: S.String,
-    region_name: S.String,
-    s3_key_prefix: S.String,
-    authorization: RedshiftCopyInputsAuthorization,
-    bucket_credentials: RedshiftCopyInputsBucketCredentials,
-  }),
-).annotate({ identifier: "RedshiftCopyInputs" }) as any as S.Schema<RedshiftCopyInputs>;
-
 /** Typed configuration for a Redshift batch-export destination. Connection credentials may live in a linked Integration (when one is provided) or inline in this config (legacy). Mirrors the non-credential fields of `RedshiftBatchExportInputs` in `products/batch_exports/backend/service.py`. */
 export interface RedshiftDestinationConfig {
   /** Redshift database name to connect to. */
@@ -723,21 +516,6 @@ export interface RedshiftDestinationConfig {
   /** S3 staging configuration, required when mode is 'COPY'. */
   copy_inputs?: RedshiftCopyInputs;
 }
-export const RedshiftDestinationConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    database: S.String,
-    host: S.optional(S.String),
-    schema: S.optional(S.String),
-    table_name: S.optional(S.String),
-    port: S.optional(S.Number),
-    properties_data_type: S.optional(PropertiesDataTypeEnum),
-    mode: S.optional(RedshiftExportModeEnum),
-    copy_inputs: S.optional(RedshiftCopyInputs),
-  }),
-).annotate({
-  identifier: "RedshiftDestinationConfig",
-}) as any as S.Schema<RedshiftDestinationConfig>;
-
 /** Request shape for creating or updating a Redshift batch-export destination. */
 export interface RedshiftDestinationRequest {
   type: RedshiftDestinationRequestTypeEnum;
@@ -745,16 +523,6 @@ export interface RedshiftDestinationRequest {
   integration_id: number;
   config: RedshiftDestinationConfig;
 }
-export const RedshiftDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: RedshiftDestinationRequestTypeEnum,
-    integration_id: S.Number,
-    config: RedshiftDestinationConfig,
-  }),
-).annotate({
-  identifier: "RedshiftDestinationRequest",
-}) as any as S.Schema<RedshiftDestinationRequest>;
-
 export type BatchExportDestinationRequest =
   | DatabricksDestinationRequest
   | AzureBlobDestinationRequest
@@ -764,8 +532,7 @@ export type BatchExportDestinationRequest =
   | S3CompatibleDestinationRequest
   | SnowflakeDestinationRequest
   | RedshiftDestinationRequest;
-export const BatchExportDestinationRequest =
-  S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
+const BatchExportDestinationRequest = S.Unknown as any as S.Schema<BatchExportDestinationRequest>;
 
 /** * `hour` - hour * `day` - day * `week` - week * `every 5 minutes` - every 5 minutes * `every 15 minutes` - every 15 minutes */
 export type BatchExportIntervalEnum =
@@ -774,16 +541,16 @@ export type BatchExportIntervalEnum =
   | "week"
   | "every 5 minutes"
   | "every 15 minutes";
-export const BatchExportIntervalEnum = S.String;
+const BatchExportIntervalEnum = S.String;
 
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
   | "uniq_page_screen_autocaptures";
-export const BounceRatePageViewMode = S.String;
+const BounceRatePageViewMode = S.String;
 
 export type FilterLogicalOperator = "AND" | "OR";
-export const FilterLogicalOperator = S.String;
+const FilterLogicalOperator = S.String;
 
 export type CustomBotField =
   | "$raw_user_agent"
@@ -800,10 +567,10 @@ export type CustomBotField =
   | "$geoip_country_code"
   | "$referrer"
   | "$referring_domain";
-export const CustomBotField = S.String;
+const CustomBotField = S.String;
 
 export type CustomBotMatcher = "contains" | "regex" | "exact" | "cidr";
-export const CustomBotMatcher = S.String;
+const CustomBotMatcher = S.String;
 
 export interface CustomBotCondition {
   id: string;
@@ -813,7 +580,7 @@ export interface CustomBotCondition {
   /** Matched against the property named by `key`. */
   pattern: string;
 }
-export const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
+const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     key: CustomBotField,
@@ -823,7 +590,7 @@ export const CustomBotCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomBotCondition" }) as any as S.Schema<CustomBotCondition>;
 
 export type CustomBotRuleItemsList = Array<CustomBotCondition>;
-export const CustomBotRuleItemsList = /*@__PURE__*/ S.Array(
+const CustomBotRuleItemsList = /*@__PURE__*/ S.Array(
   CustomBotCondition,
 ) as any as S.Schema<CustomBotRuleItemsList>;
 
@@ -837,7 +604,7 @@ export interface CustomBotRule {
   /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
   name: string;
 }
-export const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
+const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.NullOr(S.String)),
     combiner: FilterLogicalOperator,
@@ -848,7 +615,7 @@ export const CustomBotRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomBotRule" }) as any as S.Schema<CustomBotRule>;
 
 export type HogQLQueryModifiersCustomBotDefinitionsList = Array<CustomBotRule>;
-export const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ S.Array(
   CustomBotRule,
 ) as any as S.Schema<HogQLQueryModifiersCustomBotDefinitionsList>;
 
@@ -860,7 +627,7 @@ export type CustomChannelField =
   | "url"
   | "pathname"
   | "hostname";
-export const CustomChannelField = S.String;
+const CustomChannelField = S.String;
 
 export type CustomChannelOperator =
   | "exact"
@@ -871,16 +638,15 @@ export type CustomChannelOperator =
   | "not_icontains"
   | "regex"
   | "not_regex";
-export const CustomChannelOperator = S.String;
+const CustomChannelOperator = S.String;
 
 export type CustomChannelConditionValueCase1List = Array<string>;
-export const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
+const CustomChannelConditionValueCase1List = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CustomChannelConditionValueCase1List>;
 
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
-export const CustomChannelConditionValue =
-  S.Unknown as any as S.Schema<CustomChannelConditionValue>;
+const CustomChannelConditionValue = S.Unknown as any as S.Schema<CustomChannelConditionValue>;
 
 export interface CustomChannelCondition {
   id?: string;
@@ -888,7 +654,7 @@ export interface CustomChannelCondition {
   op?: CustomChannelOperator | (string & {});
   value?: CustomChannelConditionValue | null;
 }
-export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
+const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     key: S.optional(CustomChannelField),
@@ -898,7 +664,7 @@ export const CustomChannelCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomChannelCondition" }) as any as S.Schema<CustomChannelCondition>;
 
 export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
-export const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
+const CustomChannelRuleItemsList = /*@__PURE__*/ S.Array(
   CustomChannelCondition,
 ) as any as S.Schema<CustomChannelRuleItemsList>;
 
@@ -908,7 +674,7 @@ export interface CustomChannelRule {
   id?: string;
   items?: CustomChannelRuleItemsList;
 }
-export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
+const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_type: S.optional(S.String),
     combiner: S.optional(FilterLogicalOperator),
@@ -918,7 +684,7 @@ export const CustomChannelRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomChannelRule" }) as any as S.Schema<CustomChannelRule>;
 
 export type HogQLQueryModifiersCustomChannelTypeRulesList = Array<CustomChannelRule>;
-export const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ S.Array(
   CustomChannelRule,
 ) as any as S.Schema<HogQLQueryModifiersCustomChannelTypeRulesList>;
 
@@ -928,7 +694,7 @@ export interface DataWarehouseEventsModifier {
   table_name?: string;
   timestamp_field?: string;
 }
-export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
+const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distinct_id_field: S.optional(S.String),
     id_field: S.optional(S.String),
@@ -941,29 +707,29 @@ export const DataWarehouseEventsModifier = /*@__PURE__*/ S.suspend(() =>
 
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
   Array<DataWarehouseEventsModifier>;
-export const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ S.Array(
+const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ S.Array(
   DataWarehouseEventsModifier,
 ) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
 
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-export const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
+const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
   CustomChannelConditionValueCase1List as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
 
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
-export const InCohortVia = S.String;
+const InCohortVia = S.String;
 
 export type InlineCohortCalculation = "off" | "auto" | "always";
-export const InlineCohortCalculation = S.String;
+const InlineCohortCalculation = S.String;
 
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
   | "disabled";
-export const MaterializationMode = S.String;
+const MaterializationMode = S.String;
 
 export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
-export const MaterializedColumnsOptimizationMode = S.String;
+const MaterializedColumnsOptimizationMode = S.String;
 
 export type ParserMode =
   | "cpp_only"
@@ -973,29 +739,29 @@ export type ParserMode =
   | "rust_only"
   | "rust_py_only"
   | "rust_py_with_cpp_shadow";
-export const ParserMode = S.String;
+const ParserMode = S.String;
 
 export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
-export const PersonsArgMaxVersion = S.String;
+const PersonsArgMaxVersion = S.String;
 
 export type PersonsJoinMode = "inner" | "left";
-export const PersonsJoinMode = S.String;
+const PersonsJoinMode = S.String;
 
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
   | "person_id_override_properties_joined";
-export const PersonsOnEventsMode = S.String;
+const PersonsOnEventsMode = S.String;
 
 export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
-export const PropertyGroupsMode = S.String;
+const PropertyGroupsMode = S.String;
 
 export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
-export const SessionTableVersion = S.String;
+const SessionTableVersion = S.String;
 
 export type SessionsV2JoinMode = "string" | "uuid";
-export const SessionsV2JoinMode = S.String;
+const SessionsV2JoinMode = S.String;
 
 export interface HogQLQueryModifiers {
   bounceRateDurationSeconds?: number | null;
@@ -1047,7 +813,7 @@ export interface HogQLQueryModifiers {
   /** Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session's first pageview. Resolved server-side; not intended to be set by clients. */
   webAnalyticsFirstPageviewFilters?: boolean | null;
 }
-export const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
+const HogQLQueryModifiers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
     bounceRatePageViewMode: S.optional(S.NullOr(BounceRatePageViewMode)),
@@ -1119,7 +885,7 @@ export interface CreateBatchExportRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
-export const CreateBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -1137,11 +903,9 @@ export const CreateBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBatchExportRequest" }) as any as S.Schema<CreateBatchExportRequest>;
 
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type BatchExportOutputModel = BatchExportModelEnum | BlankEnum;
-export const BatchExportOutputModel = S.Unknown as any as S.Schema<BatchExportOutputModel>;
+const BatchExportOutputModel = S.Unknown as any as S.Schema<BatchExportOutputModel>;
 
 /** * `AwsS3` - Aws S3 * `S3Compatible` - S3 Compatible * `Snowflake` - Snowflake * `Postgres` - Postgres * `Redshift` - Redshift * `BigQuery` - Bigquery * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `Workflows` - Workflows * `HTTP` - Http * `NoOp` - Noop * `FileDownload` - File Download */
 export type BatchExportDestinationTypeEnum =
@@ -1157,7 +921,7 @@ export type BatchExportDestinationTypeEnum =
   | "HTTP"
   | "NoOp"
   | "FileDownload";
-export const BatchExportDestinationTypeEnum = S.String;
+const BatchExportDestinationTypeEnum = S.String;
 
 export type BatchExportDestinationConfig =
   | DatabricksDestinationConfig
@@ -1168,8 +932,7 @@ export type BatchExportDestinationConfig =
   | S3CompatibleDestinationConfig
   | SnowflakeDestinationConfig
   | RedshiftDestinationConfig;
-export const BatchExportDestinationConfig =
-  S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
+const BatchExportDestinationConfig = S.Unknown as any as S.Schema<BatchExportDestinationConfig>;
 
 /** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
 export interface BatchExportDestinationOutput {
@@ -1180,7 +943,7 @@ export interface BatchExportDestinationOutput {
   /** The integration for this destination. */
   integration?: number | null;
 }
-export const BatchExportDestinationOutput = /*@__PURE__*/ S.suspend(() =>
+const BatchExportDestinationOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BatchExportDestinationTypeEnum),
     config: S.optional(BatchExportDestinationConfig),
@@ -1224,7 +987,7 @@ export interface BatchExportRun {
   /** The backfill this run belongs to. */
   backfill?: string | null;
 }
-export const BatchExportRun = /*@__PURE__*/ S.suspend(() =>
+const BatchExportRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     data_interval_end: S.optional(S.String),
@@ -1247,7 +1010,7 @@ export const BatchExportRun = /*@__PURE__*/ S.suspend(() =>
 
 /** The 10 most recent runs of this batch export, ordered newest first. */
 export type BatchExportOutputLatestRunsList = Array<BatchExportRun>;
-export const BatchExportOutputLatestRunsList = /*@__PURE__*/ S.Array(
+const BatchExportOutputLatestRunsList = /*@__PURE__*/ S.Array(
   BatchExportRun,
 ) as any as S.Schema<BatchExportOutputLatestRunsList>;
 
@@ -1849,7 +1612,7 @@ export type TimezoneEnum =
   | "W-SU"
   | "WET"
   | "Zulu";
-export const TimezoneEnum = S.String;
+const TimezoneEnum = S.String;
 
 /** Serializer for a BatchExport model. */
 export interface BatchExportOutput {
@@ -1892,7 +1655,7 @@ export interface BatchExportOutput {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
-export const BatchExportOutput = /*@__PURE__*/ S.suspend(() =>
+const BatchExportOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     team_id: S.optional(S.Number),
@@ -1938,7 +1701,7 @@ export interface CreateBatchExportsBackfillRequest {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
-export const CreateBatchExportsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchExportsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -1966,7 +1729,7 @@ export interface BatchExportBackfillProgress {
   finished_runs?: number | null;
   progress?: number | null;
 }
-export const BatchExportBackfillProgress = /*@__PURE__*/ S.suspend(() =>
+const BatchExportBackfillProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_runs: S.optional(S.NullOr(S.Number)),
     finished_runs: S.optional(S.NullOr(S.Number)),
@@ -2000,7 +1763,7 @@ export interface BatchExportBackfill {
   /** The BatchExport this backfill belongs to. */
   batch_export?: string;
 }
-export const BatchExportBackfill = /*@__PURE__*/ S.suspend(() =>
+const BatchExportBackfill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     progress: S.optional(S.NullOr(BatchExportBackfillProgress)),
@@ -2023,7 +1786,7 @@ export interface CreateBatchExportsPauseRequest {
   /** A UUID string identifying this batch export. */
   id: string;
 }
-export const CreateBatchExportsPauseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchExportsPauseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2039,13 +1802,13 @@ export const CreateBatchExportsPauseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBatchExportsPauseRequest>;
 
 export interface CreateBatchExportsPauseResponse {}
-export const CreateBatchExportsPauseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "CreateBatchExportsPauseResponse" },
-) as any as S.Schema<CreateBatchExportsPauseResponse>;
+const CreateBatchExportsPauseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "CreateBatchExportsPauseResponse",
+}) as any as S.Schema<CreateBatchExportsPauseResponse>;
 
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type CreateBatchExportsRunTestStepRequestModel = BatchExportModelEnum | BlankEnum;
-export const CreateBatchExportsRunTestStepRequestModel =
+const CreateBatchExportsRunTestStepRequestModel =
   S.Unknown as any as S.Schema<CreateBatchExportsRunTestStepRequestModel>;
 
 /** Serializer for an BatchExportDestination model. The `config` field is polymorphic and typed only for destinations that keep credentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres, AwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape but without a typed OpenAPI schema. Secret fields are stripped from `config` on read. */
@@ -2059,7 +1822,7 @@ export interface BatchExportDestination {
   /** ID of a team-scoped Integration providing credentials, for destinations that authenticate through one. Required for all of them. */
   integration_id?: number | null;
 }
-export const BatchExportDestination = /*@__PURE__*/ S.suspend(() =>
+const BatchExportDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(BatchExportDestinationTypeEnum),
     config: S.optional(BatchExportDestinationConfig),
@@ -2101,7 +1864,7 @@ export interface CreateBatchExportsRunTestStepRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
-export const CreateBatchExportsRunTestStepRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchExportsRunTestStepRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2131,12 +1894,12 @@ export const CreateBatchExportsRunTestStepRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateBatchExportsRunTestStepRequest>;
 
 export interface CreateBatchExportsRunTestStepResponse {}
-export const CreateBatchExportsRunTestStepResponse =
+const CreateBatchExportsRunTestStepResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepResponse>;
 
 /** Which model this BatchExport is exporting. * `events` - Events * `persons` - Persons * `sessions` - Sessions * `hogql` - Hogql */
 export type CreateBatchExportsRunTestStepNewRequestModel = BatchExportModelEnum | BlankEnum;
-export const CreateBatchExportsRunTestStepNewRequestModel =
+const CreateBatchExportsRunTestStepNewRequestModel =
   S.Unknown as any as S.Schema<CreateBatchExportsRunTestStepNewRequestModel>;
 
 export interface CreateBatchExportsRunTestStepNewRequest {
@@ -2170,7 +1933,7 @@ export interface CreateBatchExportsRunTestStepNewRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. Only valid when interval is 'day' or 'week'. */
   offset_hour?: number | null;
 }
-export const CreateBatchExportsRunTestStepNewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBatchExportsRunTestStepNewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -2199,7 +1962,7 @@ export const CreateBatchExportsRunTestStepNewRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateBatchExportsRunTestStepNewRequest>;
 
 export interface CreateBatchExportsRunTestStepNewResponse {}
-export const CreateBatchExportsRunTestStepNewResponse =
+const CreateBatchExportsRunTestStepNewResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<CreateBatchExportsRunTestStepNewResponse>;
 
 export interface FileDownloadBatchExportsCancelCreateRequest {
@@ -2208,7 +1971,7 @@ export interface FileDownloadBatchExportsCancelCreateRequest {
   /** A UUID string identifying this batch export run. */
   id: string;
 }
-export const FileDownloadBatchExportsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2224,12 +1987,12 @@ export const FileDownloadBatchExportsCancelCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<FileDownloadBatchExportsCancelCreateRequest>;
 
 export interface FileDownloadBatchExportsCancelCreateResponse {}
-export const FileDownloadBatchExportsCancelCreateResponse =
+const FileDownloadBatchExportsCancelCreateResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCancelCreateResponse>;
 
 /** * `hogql` - hogql */
 export type FileDownloadHogQLModelEnum = "hogql";
-export const FileDownloadHogQLModelEnum = S.String;
+const FileDownloadHogQLModelEnum = S.String;
 
 export interface FileDownloadBatchExportsCountRowsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2245,7 +2008,7 @@ export interface FileDownloadBatchExportsCountRowsCreateRequest {
   /** End of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_end}. A supplied end must not be in the future or precede a supplied start. Bounds replace HogQL placeholders; they do not add filters to the query. */
   data_interval_end?: string;
 }
-export const FileDownloadBatchExportsCountRowsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsCountRowsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     model: FileDownloadHogQLModelEnum,
@@ -2269,7 +2032,7 @@ export interface FileDownloadCountRowsResponse {
   /** Number of rows the query returns with the supplied interval bounds. Data arriving between counting and exporting can change the result. */
   count: number;
 }
-export const FileDownloadCountRowsResponse = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadCountRowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
@@ -2286,28 +2049,10 @@ export interface FileDownloadDestinationFileConfig {
   /** Split the download into files of about this size in MiB. A file can go a little over. Set it to null or 0 to write a single file of any size. */
   max_size_mb?: number | null;
 }
-export const FileDownloadDestinationFileConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    format: S.optional(FileFormatEnum),
-    compression: S.optional(S.NullOr(CompressionEnum)),
-    max_size_mb: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "FileDownloadDestinationFileConfig",
-}) as any as S.Schema<FileDownloadDestinationFileConfig>;
-
 /** * `events` - events */
 export type FileDownloadEventsRequestModelEnum = "events";
-export const FileDownloadEventsRequestModelEnum = S.String;
-
 export type FileDownloadEventsRequestIncludeList = Array<string>;
-export const FileDownloadEventsRequestIncludeList =
-  CustomChannelConditionValueCase1List as any as S.Schema<FileDownloadEventsRequestIncludeList>;
-
 export type FileDownloadEventsRequestExcludeList = Array<string>;
-export const FileDownloadEventsRequestExcludeList =
-  CustomChannelConditionValueCase1List as any as S.Schema<FileDownloadEventsRequestExcludeList>;
-
 /** Typed configuration for the events model. */
 export interface FileDownloadEventsRequest {
   file: FileDownloadDestinationFileConfig;
@@ -2317,23 +2062,8 @@ export interface FileDownloadEventsRequest {
   data_interval_start: string;
   data_interval_end: string;
 }
-export const FileDownloadEventsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: FileDownloadDestinationFileConfig,
-    model: FileDownloadEventsRequestModelEnum,
-    include: S.optional(FileDownloadEventsRequestIncludeList),
-    exclude: S.optional(FileDownloadEventsRequestExcludeList),
-    data_interval_start: S.String,
-    data_interval_end: S.String,
-  }),
-).annotate({
-  identifier: "FileDownloadEventsRequest",
-}) as any as S.Schema<FileDownloadEventsRequest>;
-
 /** * `persons` - persons */
 export type FileDownloadPersonsRequestModelEnum = "persons";
-export const FileDownloadPersonsRequestModelEnum = S.String;
-
 /** Typed configuration for the persons model. */
 export interface FileDownloadPersonsRequest {
   file: FileDownloadDestinationFileConfig;
@@ -2341,21 +2071,8 @@ export interface FileDownloadPersonsRequest {
   data_interval_start: string;
   data_interval_end: string;
 }
-export const FileDownloadPersonsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: FileDownloadDestinationFileConfig,
-    model: FileDownloadPersonsRequestModelEnum,
-    data_interval_start: S.String,
-    data_interval_end: S.String,
-  }),
-).annotate({
-  identifier: "FileDownloadPersonsRequest",
-}) as any as S.Schema<FileDownloadPersonsRequest>;
-
 /** * `sessions` - sessions */
 export type FileDownloadSessionsRequestModelEnum = "sessions";
-export const FileDownloadSessionsRequestModelEnum = S.String;
-
 /** Typed configuration for the sessions model. */
 export interface FileDownloadSessionsRequest {
   file: FileDownloadDestinationFileConfig;
@@ -2363,9 +2080,6 @@ export interface FileDownloadSessionsRequest {
   data_interval_start: string;
   data_interval_end: string;
 }
-export const FileDownloadSessionsRequest =
-  FileDownloadPersonsRequest as any as S.Schema<FileDownloadSessionsRequest>;
-
 /** Typed configuration for the hogql model. */
 export interface FileDownloadHogQLRequest {
   file: FileDownloadDestinationFileConfig;
@@ -2379,30 +2093,19 @@ export interface FileDownloadHogQLRequest {
   /** End of the export interval. Required for the events, persons, and sessions models. For HogQL, required only when the query references {data_interval_end}. A supplied end must not be in the future or precede a supplied start. Bounds replace HogQL placeholders; they do not add filters to the query. */
   data_interval_end?: string;
 }
-export const FileDownloadHogQLRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    file: FileDownloadDestinationFileConfig,
-    model: FileDownloadHogQLModelEnum,
-    hogql_query: S.String,
-    hogql_modifiers: S.optional(HogQLQueryModifiers),
-    data_interval_start: S.optional(S.String),
-    data_interval_end: S.optional(S.String),
-  }),
-).annotate({ identifier: "FileDownloadHogQLRequest" }) as any as S.Schema<FileDownloadHogQLRequest>;
-
 export type CreateFileDownloadRequest =
   | FileDownloadEventsRequest
   | FileDownloadPersonsRequest
   | FileDownloadSessionsRequest
   | FileDownloadHogQLRequest;
-export const CreateFileDownloadRequest = S.Unknown as any as S.Schema<CreateFileDownloadRequest>;
+const CreateFileDownloadRequest = S.Unknown as any as S.Schema<CreateFileDownloadRequest>;
 
 export interface FileDownloadBatchExportsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   body?: CreateFileDownloadRequest;
 }
-export const FileDownloadBatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     body: S.optional(CreateFileDownloadRequest.pipe(T.HttpBody())),
@@ -2418,7 +2121,7 @@ export const FileDownloadBatchExportsCreateRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<FileDownloadBatchExportsCreateRequest>;
 
 export interface FileDownloadBatchExportsCreateResponse {}
-export const FileDownloadBatchExportsCreateResponse =
+const FileDownloadBatchExportsCreateResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsCreateResponse>;
 
 export interface FileDownloadBatchExportsDownloadRetrieveRequest {
@@ -2427,7 +2130,7 @@ export interface FileDownloadBatchExportsDownloadRetrieveRequest {
   /** A UUID string identifying this batch export run. */
   id: string;
 }
-export const FileDownloadBatchExportsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsDownloadRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2443,7 +2146,7 @@ export const FileDownloadBatchExportsDownloadRetrieveRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveRequest>;
 
 export interface FileDownloadBatchExportsDownloadRetrieveResponse {}
-export const FileDownloadBatchExportsDownloadRetrieveResponse =
+const FileDownloadBatchExportsDownloadRetrieveResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsDownloadRetrieveResponse>;
 
 export interface FileDownloadBatchExportsListRequest {
@@ -2454,7 +2157,7 @@ export interface FileDownloadBatchExportsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const FileDownloadBatchExportsListRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2477,7 +2180,7 @@ export interface ListOutput {
   /** Current status of the file download batch export run. * `Cancelled` - Cancelled * `Completed` - Completed * `ContinuedAsNew` - Continued As New * `Failed` - Failed * `FailedRetryable` - Failed Retryable * `FailedBilling` - Failed Billing * `Terminated` - Terminated * `TimedOut` - Timedout * `Running` - Running * `Starting` - Starting */
   status: BatchExportRunStatusEnum;
 }
-export const ListOutput = /*@__PURE__*/ S.suspend(() =>
+const ListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: BatchExportRunStatusEnum,
@@ -2485,7 +2188,7 @@ export const ListOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOutput" }) as any as S.Schema<ListOutput>;
 
 export type PaginatedListOutputListResultsList = Array<ListOutput>;
-export const PaginatedListOutputListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedListOutputListResultsList = /*@__PURE__*/ S.Array(
   ListOutput,
 ) as any as S.Schema<PaginatedListOutputListResultsList>;
 
@@ -2495,7 +2198,7 @@ export interface PaginatedListOutputList {
   previous?: string | null;
   results: PaginatedListOutputListResultsList;
 }
-export const PaginatedListOutputList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedListOutputList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2522,7 +2225,7 @@ export interface FileDownloadBatchExportsLogsRetrieveRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
-export const FileDownloadBatchExportsLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2544,7 +2247,7 @@ export const FileDownloadBatchExportsLogsRetrieveRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<FileDownloadBatchExportsLogsRetrieveRequest>;
 
 export interface FileDownloadBatchExportsLogsRetrieveResponse {}
-export const FileDownloadBatchExportsLogsRetrieveResponse =
+const FileDownloadBatchExportsLogsRetrieveResponse =
   BatchExportsBackfillsCancelCreateResponse as any as S.Schema<FileDownloadBatchExportsLogsRetrieveResponse>;
 
 export interface FileDownloadBatchExportsRetrieveRequest {
@@ -2553,7 +2256,7 @@ export interface FileDownloadBatchExportsRetrieveRequest {
   /** A UUID string identifying this batch export run. */
   id: string;
 }
-export const FileDownloadBatchExportsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2570,26 +2273,13 @@ export const FileDownloadBatchExportsRetrieveRequest = /*@__PURE__*/ S.suspend((
 
 /** * `Starting` - Starting * `Running` - Running * `Cancelled` - Cancelled */
 export type RetrieveBasicOutputStatusEnum = "Starting" | "Running" | "Cancelled";
-export const RetrieveBasicOutputStatusEnum = S.String;
-
 /** Typed output for view set `retrieve` with any of the statuses without extra output. */
 export interface RetrieveBasicOutput {
   status: RetrieveBasicOutputStatusEnum;
 }
-export const RetrieveBasicOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: RetrieveBasicOutputStatusEnum,
-  }),
-).annotate({ identifier: "RetrieveBasicOutput" }) as any as S.Schema<RetrieveBasicOutput>;
-
 /** * `Completed` - Completed */
 export type RetrieveCompletedOutputStatusEnum = "Completed";
-export const RetrieveCompletedOutputStatusEnum = S.String;
-
 export type RetrieveCompletedOutputFilesList = Array<string>;
-export const RetrieveCompletedOutputFilesList =
-  CustomChannelConditionValueCase1List as any as S.Schema<RetrieveCompletedOutputFilesList>;
-
 /** Typed output for view set `retrieve` with completed status. */
 export interface RetrieveCompletedOutput {
   status: RetrieveCompletedOutputStatusEnum;
@@ -2597,14 +2287,6 @@ export interface RetrieveCompletedOutput {
   /** Number of rows this run exported. */
   records_completed: number | null;
 }
-export const RetrieveCompletedOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: RetrieveCompletedOutputStatusEnum,
-    files: RetrieveCompletedOutputFilesList,
-    records_completed: S.NullOr(S.Number),
-  }),
-).annotate({ identifier: "RetrieveCompletedOutput" }) as any as S.Schema<RetrieveCompletedOutput>;
-
 /** * `Failed` - Failed * `FailedRetryable` - FailedRetryable * `FailedBilling` - FailedBilling * `Terminated` - Terminated * `TimedOut` - TimedOut */
 export type RetrieveFailedOutputStatusEnum =
   | "Failed"
@@ -2612,29 +2294,19 @@ export type RetrieveFailedOutputStatusEnum =
   | "FailedBilling"
   | "Terminated"
   | "TimedOut";
-export const RetrieveFailedOutputStatusEnum = S.String;
-
 /** Typed output for view set `retrieve` with any of the failed statuses. */
 export interface RetrieveFailedOutput {
   status: RetrieveFailedOutputStatusEnum;
   error: string;
 }
-export const RetrieveFailedOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: RetrieveFailedOutputStatusEnum,
-    error: S.String,
-  }),
-).annotate({ identifier: "RetrieveFailedOutput" }) as any as S.Schema<RetrieveFailedOutput>;
-
 export type RetrieveFileDownloadResponse =
   | RetrieveBasicOutput
   | RetrieveCompletedOutput
   | RetrieveFailedOutput;
-export const RetrieveFileDownloadResponse =
-  S.Unknown as any as S.Schema<RetrieveFileDownloadResponse>;
+const RetrieveFileDownloadResponse = S.Unknown as any as S.Schema<RetrieveFileDownloadResponse>;
 
 export type FileDownloadBatchExportsRetrieveResponse = RetrieveFileDownloadResponse;
-export const FileDownloadBatchExportsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+const FileDownloadBatchExportsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   RetrieveFileDownloadResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "FileDownloadBatchExportsRetrieveResponse",
@@ -2646,7 +2318,7 @@ export interface GetBatchExportRequest {
   /** A UUID string identifying this batch export. */
   id: string;
 }
-export const GetBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2662,7 +2334,7 @@ export interface GetBatchExportsBackfillRequest {
   /** A UUID string identifying this batch export backfill. */
   id: string;
 }
-export const GetBatchExportsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportsBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -2696,7 +2368,7 @@ export interface GetBatchExportsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
-export const GetBatchExportsLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportsLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2718,7 +2390,7 @@ export const GetBatchExportsLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsLogRequest>;
 
 export interface GetBatchExportsLogResponse {}
-export const GetBatchExportsLogResponse =
+const GetBatchExportsLogResponse =
   BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsLogResponse>;
 
 export interface GetBatchExportsRunRequest {
@@ -2728,7 +2400,7 @@ export interface GetBatchExportsRunRequest {
   /** A UUID string identifying this batch export run. */
   id: string;
 }
-export const GetBatchExportsRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportsRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -2763,7 +2435,7 @@ export interface GetBatchExportsRunsLogRequest {
   /** Case-insensitive substring search across log messages. */
   search?: string;
 }
-export const GetBatchExportsRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportsRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -2786,14 +2458,14 @@ export const GetBatchExportsRunsLogRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsRunsLogRequest>;
 
 export interface GetBatchExportsRunsLogResponse {}
-export const GetBatchExportsRunsLogResponse =
+const GetBatchExportsRunsLogResponse =
   BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsRunsLogResponse>;
 
 export interface GetBatchExportsTestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetBatchExportsTestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchExportsTestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2804,7 +2476,7 @@ export const GetBatchExportsTestRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBatchExportsTestRequest>;
 
 export interface GetBatchExportsTestResponse {}
-export const GetBatchExportsTestResponse =
+const GetBatchExportsTestResponse =
   BatchExportsDestroyResponse as any as S.Schema<GetBatchExportsTestResponse>;
 
 export interface ListBatchExportsRequest {
@@ -2815,7 +2487,7 @@ export interface ListBatchExportsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListBatchExportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBatchExportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2824,7 +2496,7 @@ export const ListBatchExportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBatchExportsRequest" }) as any as S.Schema<ListBatchExportsRequest>;
 
 export type PaginatedBatchExportListOutputResultsList = Array<BatchExportOutput>;
-export const PaginatedBatchExportListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedBatchExportListOutputResultsList = /*@__PURE__*/ S.Array(
   BatchExportOutput,
 ) as any as S.Schema<PaginatedBatchExportListOutputResultsList>;
 
@@ -2834,7 +2506,7 @@ export interface PaginatedBatchExportListOutput {
   previous?: string | null;
   results?: PaginatedBatchExportListOutputResultsList;
 }
-export const PaginatedBatchExportListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBatchExportListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2854,7 +2526,7 @@ export interface ListBatchExportsBackfillsRequest {
   /** Which field to use when ordering the results. */
   ordering?: string;
 }
-export const ListBatchExportsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBatchExportsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -2872,7 +2544,7 @@ export const ListBatchExportsBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBatchExportsBackfillsRequest>;
 
 export type PaginatedBatchExportBackfillListResultsList = Array<BatchExportBackfill>;
-export const PaginatedBatchExportBackfillListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedBatchExportBackfillListResultsList = /*@__PURE__*/ S.Array(
   BatchExportBackfill,
 ) as any as S.Schema<PaginatedBatchExportBackfillListResultsList>;
 
@@ -2881,7 +2553,7 @@ export interface PaginatedBatchExportBackfillList {
   previous?: string | null;
   results?: PaginatedBatchExportBackfillListResultsList;
 }
-export const PaginatedBatchExportBackfillList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBatchExportBackfillList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
@@ -2903,12 +2575,12 @@ export type ListBatchExportsRunsRequestStatusItem =
   | "TimedOut"
   | "Running"
   | "Starting";
-export const ListBatchExportsRunsRequestStatusItem = S.String;
+const ListBatchExportsRunsRequestStatusItem = S.String;
 
 export type ListBatchExportsRunsRequestStatusList = Array<
   ListBatchExportsRunsRequestStatusItem | (string & {})
 >;
-export const ListBatchExportsRunsRequestStatusList = /*@__PURE__*/ S.Array(
+const ListBatchExportsRunsRequestStatusList = /*@__PURE__*/ S.Array(
   ListBatchExportsRunsRequestStatusItem,
 ) as any as S.Schema<ListBatchExportsRunsRequestStatusList>;
 
@@ -2931,7 +2603,7 @@ export interface ListBatchExportsRunsRequest {
   /** Only return runs in these statuses. Repeat the parameter to pass more than one status. */
   status?: ListBatchExportsRunsRequestStatusList;
 }
-export const ListBatchExportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBatchExportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     batch_export_id: S.String.pipe(T.Label()),
@@ -2954,7 +2626,7 @@ export const ListBatchExportsRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBatchExportsRunsRequest>;
 
 export type PaginatedBatchExportRunListResultsList = Array<BatchExportRun>;
-export const PaginatedBatchExportRunListResultsList =
+const PaginatedBatchExportRunListResultsList =
   BatchExportOutputLatestRunsList as any as S.Schema<PaginatedBatchExportRunListResultsList>;
 
 export interface PaginatedBatchExportRunList {
@@ -2962,7 +2634,7 @@ export interface PaginatedBatchExportRunList {
   previous?: string | null;
   results?: PaginatedBatchExportRunListResultsList;
 }
-export const PaginatedBatchExportRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedBatchExportRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
@@ -3000,7 +2672,7 @@ export interface UpdateBatchExportRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
-export const UpdateBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBatchExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3048,7 +2720,7 @@ export interface UpdateBatchExportsPartialRequest {
   /** Hour-of-day offset (0-23) for daily and weekly intervals. */
   offset_hour?: number | null;
 }
-export const UpdateBatchExportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBatchExportsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

@@ -28,7 +28,7 @@ export class NotFound
   ) {}
 
 export type CreateCommandRequestParametersMap = { [key: string]: string | undefined };
-export const CreateCommandRequestParametersMap = /*@__PURE__*/ S.Record(
+const CreateCommandRequestParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateCommandRequestParametersMap>;
@@ -43,7 +43,7 @@ export interface CreateCommandRequest {
   commandTemplateName: string;
   parameters?: CreateCommandRequestParametersMap;
 }
-export const CreateCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -63,7 +63,7 @@ export const CreateCommandRequest = /*@__PURE__*/ S.suspend(() =>
 export interface NewCommandResponse {
   id?: number;
 }
-export const NewCommandResponse = /*@__PURE__*/ S.suspend(() =>
+const NewCommandResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
   }),
@@ -79,7 +79,7 @@ export interface GetCommandRequest {
   /** ID of the command */
   commandId: string;
 }
-export const GetCommandRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommandRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -96,7 +96,7 @@ export const GetCommandRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCommandRequest" }) as any as S.Schema<GetCommandRequest>;
 
 export type CommandDetailsStatus = "pending" | "running" | "completed" | "failed";
-export const CommandDetailsStatus = S.String;
+const CommandDetailsStatus = S.String;
 
 export interface CommandDetails {
   commandTemplateName?: string;
@@ -109,7 +109,7 @@ export interface CommandDetails {
   startedAt?: string;
   status?: CommandDetailsStatus;
 }
-export const CommandDetails = /*@__PURE__*/ S.suspend(() =>
+const CommandDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commandTemplateName: S.optional(S.String),
     commandTemplateTitle: S.optional(S.String),
@@ -133,7 +133,7 @@ export interface GetCommandTemplateRequest {
   /** Name of the template */
   commandTemplateName: string;
 }
-export const GetCommandTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCommandTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -152,7 +152,7 @@ export const GetCommandTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCommandTemplateRequest>;
 
 export type CommandTemplateSchemaOsTypeList = Array<string>;
-export const CommandTemplateSchemaOsTypeList = /*@__PURE__*/ S.Array(
+const CommandTemplateSchemaOsTypeList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CommandTemplateSchemaOsTypeList>;
 
@@ -165,7 +165,7 @@ export interface Field {
   title?: string;
   type?: string;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.String),
     description: S.optional(S.String),
@@ -178,7 +178,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type PropertiesRequiredList = Array<string>;
-export const PropertiesRequiredList =
+const PropertiesRequiredList =
   CommandTemplateSchemaOsTypeList as any as S.Schema<PropertiesRequiredList>;
 
 export interface Properties {
@@ -189,7 +189,7 @@ export interface Properties {
   required?: PropertiesRequiredList;
   type?: string;
 }
-export const Properties = /*@__PURE__*/ S.suspend(() =>
+const Properties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConfirmPassword: S.optional(Field),
     Password: S.optional(Field),
@@ -203,7 +203,7 @@ export const Properties = /*@__PURE__*/ S.suspend(() =>
 export interface ParametersSchema {
   properties?: Properties;
 }
-export const ParametersSchema = /*@__PURE__*/ S.suspend(() =>
+const ParametersSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(Properties),
   }),
@@ -216,7 +216,7 @@ export interface CommandTemplateSchema {
   parametersSchema?: ParametersSchema;
   title?: string;
 }
-export const CommandTemplateSchema = /*@__PURE__*/ S.suspend(() =>
+const CommandTemplateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -234,7 +234,7 @@ export interface ListCommandsRequest {
   /** Server ID of the machine */
   serverId: string;
 }
-export const ListCommandsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommandsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -250,7 +250,7 @@ export const ListCommandsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCommandsRequest" }) as any as S.Schema<ListCommandsRequest>;
 
 export type CommandsStatus = "pending" | "running" | "completed" | "failed";
-export const CommandsStatus = S.String;
+const CommandsStatus = S.String;
 
 export interface Commands {
   commandTemplateName?: string;
@@ -260,7 +260,7 @@ export interface Commands {
   startedAt?: string;
   status?: CommandsStatus;
 }
-export const Commands = /*@__PURE__*/ S.suspend(() =>
+const Commands = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commandTemplateName: S.optional(S.String),
     commandTemplateTitle: S.optional(S.String),
@@ -272,14 +272,14 @@ export const Commands = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Commands" }) as any as S.Schema<Commands>;
 
 export type GetCommandsResponseItemsList = Array<Commands>;
-export const GetCommandsResponseItemsList = /*@__PURE__*/ S.Array(
+const GetCommandsResponseItemsList = /*@__PURE__*/ S.Array(
   Commands,
 ) as any as S.Schema<GetCommandsResponseItemsList>;
 
 export interface GetCommandsResponse {
   items?: GetCommandsResponseItemsList;
 }
-export const GetCommandsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCommandsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(GetCommandsResponseItemsList),
   }),
@@ -289,7 +289,7 @@ export interface ListCommandTemplatesRequest {
   /** The type of the Operating System (windows or linux). If not provided will return data for all OS types. */
   osType?: string;
 }
-export const ListCommandTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommandTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     osType: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -305,7 +305,7 @@ export const ListCommandTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommandTemplatesRequest>;
 
 export type CommandTemplateOsTypeList = Array<string>;
-export const CommandTemplateOsTypeList =
+const CommandTemplateOsTypeList =
   CommandTemplateSchemaOsTypeList as any as S.Schema<CommandTemplateOsTypeList>;
 
 export interface CommandTemplate {
@@ -313,7 +313,7 @@ export interface CommandTemplate {
   osType?: CommandTemplateOsTypeList;
   title?: string;
 }
-export const CommandTemplate = /*@__PURE__*/ S.suspend(() =>
+const CommandTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     osType: S.optional(CommandTemplateOsTypeList),
@@ -322,14 +322,14 @@ export const CommandTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommandTemplate" }) as any as S.Schema<CommandTemplate>;
 
 export type CommandTemplateResponseItemsList = Array<CommandTemplate>;
-export const CommandTemplateResponseItemsList = /*@__PURE__*/ S.Array(
+const CommandTemplateResponseItemsList = /*@__PURE__*/ S.Array(
   CommandTemplate,
 ) as any as S.Schema<CommandTemplateResponseItemsList>;
 
 export interface CommandTemplateResponse {
   items?: CommandTemplateResponseItemsList;
 }
-export const CommandTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const CommandTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(CommandTemplateResponseItemsList),
   }),

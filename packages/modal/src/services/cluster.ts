@@ -11,14 +11,14 @@ export type { ModalOpError, ModalOpContext };
 export interface GetClusterRequest {
   clusterId?: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClusterGet", code: 200 })),
 ).annotate({ identifier: "GetClusterRequest" }) as any as S.Schema<GetClusterRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ClusterStats {
   appId?: string;
@@ -26,7 +26,7 @@ export interface ClusterStats {
   clusterId?: string;
   startedAt?: number;
 }
-export const ClusterStats = /*@__PURE__*/ S.suspend(() =>
+const ClusterStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     taskIds: S.optional(StringList),
@@ -38,7 +38,7 @@ export const ClusterStats = /*@__PURE__*/ S.suspend(() =>
 export interface GetClusterResponse {
   cluster?: ClusterStats;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cluster: S.optional(ClusterStats),
   }),
@@ -47,21 +47,19 @@ export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListClusterRequest {
   environmentName?: string;
 }
-export const ListClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ClusterList", code: 200 })),
 ).annotate({ identifier: "ListClusterRequest" }) as any as S.Schema<ListClusterRequest>;
 
 export type ClusterStatsList = Array<ClusterStats>;
-export const ClusterStatsList = /*@__PURE__*/ S.Array(
-  ClusterStats,
-) as any as S.Schema<ClusterStatsList>;
+const ClusterStatsList = /*@__PURE__*/ S.Array(ClusterStats) as any as S.Schema<ClusterStatsList>;
 
 export interface ListClusterResponse {
   clusters?: ClusterStatsList;
 }
-export const ListClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusters: S.optional(ClusterStatsList),
   }),

@@ -39,7 +39,7 @@ export class NotFound
 export interface VolumeAutomationInput {
   kind: string;
 }
-export const VolumeAutomationInput = /*@__PURE__*/ S.suspend(() =>
+const VolumeAutomationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.String,
   }),
@@ -49,7 +49,7 @@ export interface AutomationScheduleTrigger {
   /** An rrule (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates */
   rrule: string;
 }
-export const AutomationScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
+const AutomationScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rrule: S.String,
   }),
@@ -60,7 +60,7 @@ export const AutomationScheduleTrigger = /*@__PURE__*/ S.suspend(() =>
 export interface AutomationTriggers {
   schedule?: AutomationScheduleTrigger | null;
 }
-export const AutomationTriggers = /*@__PURE__*/ S.suspend(() =>
+const AutomationTriggers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(S.NullOr(AutomationScheduleTrigger)),
   }),
@@ -77,7 +77,7 @@ export interface CreateVolumeAutomationRequest {
   templateId: string;
   triggers?: AutomationTriggers | null;
 }
-export const CreateVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -99,13 +99,11 @@ export const CreateVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVolumeAutomationRequest>;
 
 export type VolumeOutputStepResult = VolumeAutomationInput;
-export const VolumeOutputStepResult = VolumeAutomationInput;
-
 export interface VolumeOutputStep {
   name: string;
   result?: VolumeAutomationInput;
 }
-export const VolumeOutputStep = /*@__PURE__*/ S.suspend(() =>
+const VolumeOutputStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     result: S.optional(VolumeAutomationInput),
@@ -113,14 +111,14 @@ export const VolumeOutputStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeOutputStep" }) as any as S.Schema<VolumeOutputStep>;
 
 export type VolumeOutputStepsList = Array<VolumeOutputStep>;
-export const VolumeOutputStepsList = /*@__PURE__*/ S.Array(
+const VolumeOutputStepsList = /*@__PURE__*/ S.Array(
   VolumeOutputStep,
 ) as any as S.Schema<VolumeOutputStepsList>;
 
 export interface VolumeOutput {
   steps?: VolumeOutputStepsList;
 }
-export const VolumeOutput = /*@__PURE__*/ S.suspend(() =>
+const VolumeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(VolumeOutputStepsList),
   }),
@@ -137,7 +135,7 @@ export interface VolumeAutomation {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-export const VolumeAutomation = /*@__PURE__*/ S.suspend(() =>
+const VolumeAutomation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -159,7 +157,7 @@ export interface CreateVolumeExecutionRequest {
   /** automation Id */
   automationId: string;
 }
-export const CreateVolumeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -186,7 +184,7 @@ export interface VolumeExecutionAutomation {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-export const VolumeExecutionAutomation = /*@__PURE__*/ S.suspend(() =>
+const VolumeExecutionAutomation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -202,7 +200,7 @@ export const VolumeExecutionAutomation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeExecutionAutomation>;
 
 export type VolumeExecutionOutputStepStatus = "PENDING" | "RUNNING" | "FAILED" | "SUCCESSFUL";
-export const VolumeExecutionOutputStepStatus = S.String;
+const VolumeExecutionOutputStepStatus = S.String;
 
 export interface VolumeExecutionOutputStep {
   message?: string;
@@ -210,7 +208,7 @@ export interface VolumeExecutionOutputStep {
   result?: VolumeAutomationInput;
   status: VolumeExecutionOutputStepStatus;
 }
-export const VolumeExecutionOutputStep = /*@__PURE__*/ S.suspend(() =>
+const VolumeExecutionOutputStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     name: S.String,
@@ -222,14 +220,14 @@ export const VolumeExecutionOutputStep = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeExecutionOutputStep>;
 
 export type VolumeExecutionOutputStepsList = Array<VolumeExecutionOutputStep>;
-export const VolumeExecutionOutputStepsList = /*@__PURE__*/ S.Array(
+const VolumeExecutionOutputStepsList = /*@__PURE__*/ S.Array(
   VolumeExecutionOutputStep,
 ) as any as S.Schema<VolumeExecutionOutputStepsList>;
 
 export interface VolumeExecutionOutput {
   steps?: VolumeExecutionOutputStepsList;
 }
-export const VolumeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+const VolumeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: S.optional(VolumeExecutionOutputStepsList),
   }),
@@ -239,7 +237,7 @@ export interface VolumeExecutionDetails {
   config: VolumeExecutionAutomation;
   output?: VolumeExecutionOutput;
 }
-export const VolumeExecutionDetails = /*@__PURE__*/ S.suspend(() =>
+const VolumeExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: VolumeExecutionAutomation,
     output: S.optional(VolumeExecutionOutput),
@@ -252,7 +250,7 @@ export type VolumeExecutionResponseStatus =
   | "COMPLETED"
   | "FAILED"
   | "TERMINATED";
-export const VolumeExecutionResponseStatus = S.String;
+const VolumeExecutionResponseStatus = S.String;
 
 export interface VolumeExecutionResponse {
   automation?: VolumeExecutionDetails;
@@ -261,7 +259,7 @@ export interface VolumeExecutionResponse {
   id: string;
   status: VolumeExecutionResponseStatus;
 }
-export const VolumeExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const VolumeExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automation: S.optional(VolumeExecutionDetails),
     createTime: S.String,
@@ -279,7 +277,7 @@ export interface DeleteVolumeAutomationRequest {
   /** automation Id */
   automationId: string;
 }
-export const DeleteVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -297,7 +295,7 @@ export const DeleteVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVolumeAutomationRequest>;
 
 export interface DeleteVolumeAutomationResponse {}
-export const DeleteVolumeAutomationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVolumeAutomationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVolumeAutomationResponse",
 }) as any as S.Schema<DeleteVolumeAutomationResponse>;
 
@@ -309,7 +307,7 @@ export interface GetVolumeAutomationRequest {
   /** automation Id */
   automationId: string;
 }
-export const GetVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -336,7 +334,7 @@ export interface GetVolumeExecutionRequest {
   /** execution Id */
   executionId: string;
 }
-export const GetVolumeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -362,7 +360,7 @@ export interface GetVolumeTemplateRequest {
   /** templateId Id */
   templateId: string;
 }
-export const GetVolumeTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -378,12 +376,12 @@ export const GetVolumeTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetVolumeTemplateRequest" }) as any as S.Schema<GetVolumeTemplateRequest>;
 
 export type VolumeTemplateAutomationInputKind = "VolumeRecoveryPointManagement";
-export const VolumeTemplateAutomationInputKind = S.String;
+const VolumeTemplateAutomationInputKind = S.String;
 
 export interface VolumeTemplateAutomationInput {
   kind: VolumeTemplateAutomationInputKind;
 }
-export const VolumeTemplateAutomationInput = /*@__PURE__*/ S.suspend(() =>
+const VolumeTemplateAutomationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: VolumeTemplateAutomationInputKind,
   }),
@@ -399,7 +397,7 @@ export interface GetVolumeTemplateResponse {
   name: string;
   output?: VolumeOutput;
 }
-export const GetVolumeTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.String,
@@ -422,7 +420,7 @@ export interface ListVolumeAutomationsRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListVolumeAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeAutomationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -449,7 +447,7 @@ export interface ListAutomationsItem {
   triggers?: AutomationTriggers | null;
   updateTime: string;
 }
-export const ListAutomationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.optional(S.String),
@@ -462,7 +460,7 @@ export const ListAutomationsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAutomationsItem" }) as any as S.Schema<ListAutomationsItem>;
 
 export type ListAutomationsResponseItemsList = Array<ListAutomationsItem>;
-export const ListAutomationsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListAutomationsResponseItemsList = /*@__PURE__*/ S.Array(
   ListAutomationsItem,
 ) as any as S.Schema<ListAutomationsResponseItemsList>;
 
@@ -471,7 +469,7 @@ export interface ListAutomationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAutomationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutomationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListAutomationsResponseItemsList,
     nextPageToken: S.optional(S.String),
@@ -490,7 +488,7 @@ export interface ListVolumeExecutionsRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListVolumeExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -515,7 +513,7 @@ export type ListExecutionsItemStatus =
   | "COMPLETED"
   | "FAILED"
   | "TERMINATED";
-export const ListExecutionsItemStatus = S.String;
+const ListExecutionsItemStatus = S.String;
 
 export interface ListExecutionsItem {
   createTime: string;
@@ -523,7 +521,7 @@ export interface ListExecutionsItem {
   id: string;
   status: ListExecutionsItemStatus;
 }
-export const ListExecutionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     endTime: S.optional(S.String),
@@ -533,7 +531,7 @@ export const ListExecutionsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExecutionsItem" }) as any as S.Schema<ListExecutionsItem>;
 
 export type ListExecutionsResponseItemsList = Array<ListExecutionsItem>;
-export const ListExecutionsResponseItemsList = /*@__PURE__*/ S.Array(
+const ListExecutionsResponseItemsList = /*@__PURE__*/ S.Array(
   ListExecutionsItem,
 ) as any as S.Schema<ListExecutionsResponseItemsList>;
 
@@ -542,7 +540,7 @@ export interface ListExecutionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListExecutionsResponseItemsList,
     nextPageToken: S.optional(S.String),
@@ -559,7 +557,7 @@ export interface ListVolumeTemplatesRequest {
   /** A page token, received from a previous list call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListVolumeTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumeTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -583,7 +581,7 @@ export interface Template {
   id: string;
   name: string;
 }
-export const Template = /*@__PURE__*/ S.suspend(() =>
+const Template = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.String,
     description: S.String,
@@ -593,7 +591,7 @@ export const Template = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Template" }) as any as S.Schema<Template>;
 
 export type ListTemplatesResponseItemsList = Array<Template>;
-export const ListTemplatesResponseItemsList = /*@__PURE__*/ S.Array(
+const ListTemplatesResponseItemsList = /*@__PURE__*/ S.Array(
   Template,
 ) as any as S.Schema<ListTemplatesResponseItemsList>;
 
@@ -602,7 +600,7 @@ export interface ListTemplatesResponse {
   /** A token that can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: ListTemplatesResponseItemsList,
     nextPageToken: S.optional(S.String),
@@ -623,7 +621,7 @@ export interface PartialUpdateVolumeAutomationRequest {
   name?: string | null;
   triggers?: AutomationTriggers | null;
 }
-export const PartialUpdateVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
+const PartialUpdateVolumeAutomationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),

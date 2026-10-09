@@ -41,7 +41,7 @@ export interface CreateProxyRecordRequest {
   /** The custom domain to proxy through, e.g. 'e.example.com'. Must be a valid subdomain you control. */
   domain?: string;
 }
-export const CreateProxyRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProxyRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     domain: S.optional(S.String),
@@ -63,7 +63,7 @@ export type ProxyRecordStatusEnum =
   | "erroring"
   | "deleting"
   | "timed_out";
-export const ProxyRecordStatusEnum = S.String;
+const ProxyRecordStatusEnum = S.String;
 
 export interface ProxyRecord {
   /** Unique identifier for the proxy record. */
@@ -87,7 +87,7 @@ export interface ProxyRecord {
   /** ID of the user who created this proxy record. */
   created_by?: number;
 }
-export const ProxyRecord = /*@__PURE__*/ S.suspend(() =>
+const ProxyRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     domain: S.optional(S.String),
@@ -108,7 +108,7 @@ export interface CreateProxyRecordsDiagnoseRequest {
   /** A UUID string identifying this proxy record. */
   id: string;
 }
-export const CreateProxyRecordsDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProxyRecordsDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -125,7 +125,7 @@ export const CreateProxyRecordsDiagnoseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `healthy` - healthy * `warn` - warn * `fail` - fail */
 export type DiagnosticReportSummaryStatusEnum = "healthy" | "warn" | "fail";
-export const DiagnosticReportSummaryStatusEnum = S.String;
+const DiagnosticReportSummaryStatusEnum = S.String;
 
 export interface DiagnosticReportSummary {
   /** Overall outcome: healthy if the proxy is serving requests, warn for non-blocking issues, fail otherwise. * `healthy` - healthy * `warn` - warn * `fail` - fail */
@@ -135,7 +135,7 @@ export interface DiagnosticReportSummary {
   /** One-sentence next action the customer should take. Null when nothing's wrong. */
   next_action: string | null;
 }
-export const DiagnosticReportSummary = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: DiagnosticReportSummaryStatusEnum,
     primary_issue: S.NullOr(S.String),
@@ -145,11 +145,11 @@ export const DiagnosticReportSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `passed` - passed * `warned` - warned * `failed` - failed * `skipped` - skipped */
 export type DiagnosticCheckResultStatusEnum = "passed" | "warned" | "failed" | "skipped";
-export const DiagnosticCheckResultStatusEnum = S.String;
+const DiagnosticCheckResultStatusEnum = S.String;
 
 /** * `dns` - dns * `config` - config * `wait` - wait * `retry` - retry */
 export type DiagnosticRemediationTypeEnum = "dns" | "config" | "wait" | "retry";
-export const DiagnosticRemediationTypeEnum = S.String;
+const DiagnosticRemediationTypeEnum = S.String;
 
 export interface DiagnosticDnsRecord {
   /** DNS record name (the hostname the record is set on). */
@@ -159,7 +159,7 @@ export interface DiagnosticDnsRecord {
   /** DNS record value to set. */
   value: string;
 }
-export const DiagnosticDnsRecord = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticDnsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -169,7 +169,7 @@ export const DiagnosticDnsRecord = /*@__PURE__*/ S.suspend(() =>
 
 /** DNS records the customer should add (empty when remediation is not DNS-based). */
 export type DiagnosticRemediationRecordsList = Array<DiagnosticDnsRecord>;
-export const DiagnosticRemediationRecordsList = /*@__PURE__*/ S.Array(
+const DiagnosticRemediationRecordsList = /*@__PURE__*/ S.Array(
   DiagnosticDnsRecord,
 ) as any as S.Schema<DiagnosticRemediationRecordsList>;
 
@@ -181,7 +181,7 @@ export interface DiagnosticRemediation {
   /** DNS records the customer should add (empty when remediation is not DNS-based). */
   records: DiagnosticRemediationRecordsList;
 }
-export const DiagnosticRemediation = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticRemediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DiagnosticRemediationTypeEnum,
     summary: S.String,
@@ -201,7 +201,7 @@ export interface DiagnosticCheckResult {
   /** Concrete remediation steps when the check failed; null when there's nothing actionable. */
   remediation?: DiagnosticRemediation | null;
 }
-export const DiagnosticCheckResult = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticCheckResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -213,7 +213,7 @@ export const DiagnosticCheckResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-check results in execution order. */
 export type DiagnosticReportChecksList = Array<DiagnosticCheckResult>;
-export const DiagnosticReportChecksList = /*@__PURE__*/ S.Array(
+const DiagnosticReportChecksList = /*@__PURE__*/ S.Array(
   DiagnosticCheckResult,
 ) as any as S.Schema<DiagnosticReportChecksList>;
 
@@ -225,7 +225,7 @@ export interface DiagnosticReport {
   /** Per-check results in execution order. */
   checks: DiagnosticReportChecksList;
 }
-export const DiagnosticReport = /*@__PURE__*/ S.suspend(() =>
+const DiagnosticReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ran_at: S.String,
     summary: DiagnosticReportSummary,
@@ -239,7 +239,7 @@ export interface GetProxyRecordRequest {
   /** A UUID string identifying this proxy record. */
   id: string;
 }
-export const GetProxyRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProxyRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -256,7 +256,7 @@ export interface ListProxyRecordsRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
 }
-export const ListProxyRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProxyRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -269,7 +269,7 @@ export const ListProxyRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListProxyRecordsRequest" }) as any as S.Schema<ListProxyRecordsRequest>;
 
 export type ProxyRecordListResponseResultsList = Array<ProxyRecord>;
-export const ProxyRecordListResponseResultsList = /*@__PURE__*/ S.Array(
+const ProxyRecordListResponseResultsList = /*@__PURE__*/ S.Array(
   ProxyRecord,
 ) as any as S.Schema<ProxyRecordListResponseResultsList>;
 
@@ -278,7 +278,7 @@ export interface ProxyRecordListResponse {
   /** Maximum number of proxy records allowed for this organization's current plan. */
   max_proxy_records?: number;
 }
-export const ProxyRecordListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProxyRecordListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(ProxyRecordListResponseResultsList),
     max_proxy_records: S.optional(S.Number),
@@ -291,7 +291,7 @@ export interface ProxyRecordsDestroyRequest {
   /** A UUID string identifying this proxy record. */
   id: string;
 }
-export const ProxyRecordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ProxyRecordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -307,7 +307,7 @@ export const ProxyRecordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProxyRecordsDestroyRequest>;
 
 export interface ProxyRecordsDestroyResponse {}
-export const ProxyRecordsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ProxyRecordsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ProxyRecordsDestroyResponse",
 }) as any as S.Schema<ProxyRecordsDestroyResponse>;
 
@@ -317,7 +317,7 @@ export interface ProxyRecordsRetryCreateRequest {
   /** A UUID string identifying this proxy record. */
   id: string;
 }
-export const ProxyRecordsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProxyRecordsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -340,7 +340,7 @@ export interface UpdateProxyRecordsPartialRequest {
   /** HTTPS URL that requests to the proxy domain root redirect to, or null to disable the redirect. The URL must use the same registrable domain as the managed proxy. */
   root_redirect_url?: string;
 }
-export const UpdateProxyRecordsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProxyRecordsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

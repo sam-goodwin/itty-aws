@@ -44,14 +44,14 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -59,7 +59,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -79,7 +79,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -96,7 +96,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -115,7 +115,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -131,7 +131,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -168,7 +168,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -205,7 +205,7 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidateSpec {
   /** strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved. */
   strategy: string;
 }
-export const IoK8sApiCoordinationV1alpha2LeaseCandidateSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1alpha2LeaseCandidateSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     binaryVersion: S.String,
     emulationVersion: S.optional(S.String),
@@ -238,25 +238,24 @@ export interface CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
-export const CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
-        code: 200,
-      }),
-    ),
+const CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<CreateCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
@@ -272,7 +271,7 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidate {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
-export const IoK8sApiCoordinationV1alpha2LeaseCandidate = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1alpha2LeaseCandidate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -298,7 +297,7 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateSpec {
   /** strategy is the strategy that coordinated leader election will use for picking the leader. If multiple candidates for the same Lease return different strategies, the strategy provided by the candidate with the latest BinaryVersion will be used. If there is still conflict, this is a user error and coordinated leader election will not operate the Lease until resolved. */
   strategy: string;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidateSpec =
+const IoK8sApiCoordinationV1beta1LeaseCandidateSpec =
   IoK8sApiCoordinationV1alpha2LeaseCandidateSpec as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateSpec>;
 
 export interface CreateCoordinationV1beta1NamespacedLeaseCandidateRequest {
@@ -321,25 +320,24 @@ export interface CreateCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
-export const CreateCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
-        code: 200,
-      }),
-    ),
+const CreateCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "CreateCoordinationV1beta1NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<CreateCoordinationV1beta1NamespacedLeaseCandidateRequest>;
@@ -355,7 +353,7 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidate {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidate =
+const IoK8sApiCoordinationV1beta1LeaseCandidate =
   IoK8sApiCoordinationV1alpha2LeaseCandidate as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidate>;
 
 /** LeaseSpec is a specification of a Lease. */
@@ -375,7 +373,7 @@ export interface IoK8sApiCoordinationV1LeaseSpec {
   /** strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled. */
   strategy?: string;
 }
-export const IoK8sApiCoordinationV1LeaseSpec = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1LeaseSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acquireTime: S.optional(S.String),
     holderIdentity: S.optional(S.String),
@@ -409,7 +407,7 @@ export interface CreateCoordinationV1NamespacedLeaseRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
-export const CreateCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -442,7 +440,7 @@ export interface IoK8sApiCoordinationV1Lease {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
-export const IoK8sApiCoordinationV1Lease = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1Lease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -460,7 +458,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -509,8 +507,8 @@ export interface DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateReq
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -538,9 +536,9 @@ export const DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest",
-  }) as any as S.Schema<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest>;
+).annotate({
+  identifier: "DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest",
+}) as any as S.Schema<DeleteCoordinationV1alpha2CollectionNamespacedLeaseCandidateRequest>;
 
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
@@ -551,7 +549,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -564,7 +562,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -583,7 +581,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -601,7 +599,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -622,7 +620,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -653,7 +651,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -692,27 +690,26 @@ export interface DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<DeleteCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
@@ -757,8 +754,8 @@ export interface DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequ
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -786,9 +783,9 @@ export const DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest",
-  }) as any as S.Schema<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest>;
+).annotate({
+  identifier: "DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest",
+}) as any as S.Schema<DeleteCoordinationV1beta1CollectionNamespacedLeaseCandidateRequest>;
 
 export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -814,27 +811,26 @@ export interface DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<DeleteCoordinationV1beta1NamespacedLeaseCandidateRequest>;
@@ -879,7 +875,7 @@ export interface DeleteCoordinationV1CollectionNamespacedLeaseRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1CollectionNamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoordinationV1CollectionNamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -935,7 +931,7 @@ export interface DeleteCoordinationV1NamespacedLeaseRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -960,7 +956,7 @@ export const DeleteCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<DeleteCoordinationV1NamespacedLeaseRequest>;
 
 export interface GetCoordinationAPIGroupRequest {}
-export const GetCoordinationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoordinationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetCoordinationAPIGroupRequest",
@@ -973,7 +969,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -989,7 +985,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1001,15 +997,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1028,7 +1023,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1044,7 +1039,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetCoordinationV1alpha2APIResourcesRequest {}
-export const GetCoordinationV1alpha2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoordinationV1alpha2APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1alpha2/", code: 200 }),
   ),
@@ -1054,17 +1049,17 @@ export const GetCoordinationV1alpha2APIResourcesRequest = /*@__PURE__*/ S.suspen
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1090,7 +1085,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1110,7 +1105,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1125,7 +1120,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -1137,14 +1132,14 @@ export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.sus
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
 
 export interface GetCoordinationV1APIResourcesRequest {}
-export const GetCoordinationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoordinationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1/", code: 200 })),
 ).annotate({
   identifier: "GetCoordinationV1APIResourcesRequest",
 }) as any as S.Schema<GetCoordinationV1APIResourcesRequest>;
 
 export interface GetCoordinationV1beta1APIResourcesRequest {}
-export const GetCoordinationV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCoordinationV1beta1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/coordination.k8s.io/v1beta1/", code: 200 }),
   ),
@@ -1178,36 +1173,35 @@ export interface ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/coordination.k8s.io/v1alpha2/leasecandidates",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest",
-  }) as any as S.Schema<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest>;
+const ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/coordination.k8s.io/v1alpha2/leasecandidates",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest",
+}) as any as S.Schema<ListCoordinationV1alpha2LeaseCandidateForAllNamespacesRequest>;
 
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList =
   Array<IoK8sApiCoordinationV1alpha2LeaseCandidate>;
-export const IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoordinationV1alpha2LeaseCandidate,
 ) as any as S.Schema<IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList>;
 
@@ -1222,7 +1216,7 @@ export interface IoK8sApiCoordinationV1alpha2LeaseCandidateList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiCoordinationV1alpha2LeaseCandidateList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1alpha2LeaseCandidateList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList,
@@ -1261,7 +1255,7 @@ export interface ListCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1313,28 +1307,27 @@ export interface ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/coordination.k8s.io/v1beta1/leasecandidates",
-        code: 200,
-      }),
-    ),
+const ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/coordination.k8s.io/v1beta1/leasecandidates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest",
 }) as any as S.Schema<ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest>;
@@ -1342,9 +1335,6 @@ export const ListCoordinationV1beta1LeaseCandidateForAllNamespacesRequest = /*@_
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList =
   Array<IoK8sApiCoordinationV1beta1LeaseCandidate>;
-export const IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList =
-  IoK8sApiCoordinationV1alpha2LeaseCandidateListItemsList as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateListItemsList>;
-
 /** LeaseCandidateList is a list of Lease objects. */
 export interface IoK8sApiCoordinationV1beta1LeaseCandidateList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1356,7 +1346,7 @@ export interface IoK8sApiCoordinationV1beta1LeaseCandidateList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiCoordinationV1beta1LeaseCandidateList =
+const IoK8sApiCoordinationV1beta1LeaseCandidateList =
   IoK8sApiCoordinationV1alpha2LeaseCandidateList as any as S.Schema<IoK8sApiCoordinationV1beta1LeaseCandidateList>;
 
 export interface ListCoordinationV1beta1NamespacedLeaseCandidateRequest {
@@ -1387,7 +1377,7 @@ export interface ListCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1439,7 +1429,7 @@ export interface ListCoordinationV1LeaseForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1LeaseForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoordinationV1LeaseForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1460,7 +1450,7 @@ export const ListCoordinationV1LeaseForAllNamespacesRequest = /*@__PURE__*/ S.su
 
 /** items is a list of schema objects. */
 export type IoK8sApiCoordinationV1LeaseListItemsList = Array<IoK8sApiCoordinationV1Lease>;
-export const IoK8sApiCoordinationV1LeaseListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiCoordinationV1LeaseListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiCoordinationV1Lease,
 ) as any as S.Schema<IoK8sApiCoordinationV1LeaseListItemsList>;
 
@@ -1475,7 +1465,7 @@ export interface IoK8sApiCoordinationV1LeaseList {
   /** Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiCoordinationV1LeaseList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiCoordinationV1LeaseList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiCoordinationV1LeaseListItemsList,
@@ -1514,7 +1504,7 @@ export interface ListCoordinationV1NamespacedLeaseRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1556,23 +1546,22 @@ export interface PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<PatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
@@ -1593,7 +1582,7 @@ export interface PatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1629,7 +1618,7 @@ export interface PatchCoordinationV1NamespacedLeaseRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1657,7 +1646,7 @@ export interface ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1681,7 +1670,7 @@ export interface ReadCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1705,7 +1694,7 @@ export interface ReadCoordinationV1NamespacedLeaseRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1743,26 +1732,25 @@ export interface ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec;
 }
-export const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiCoordinationV1alpha2LeaseCandidateSpec,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/coordination.k8s.io/v1alpha2/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<ReplaceCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
@@ -1789,26 +1777,25 @@ export interface ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec;
 }
-export const ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldManager: S.optional(S.String.pipe(T.Query())),
-      fieldValidation: S.optional(S.String.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-      spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldManager: S.optional(S.String.pipe(T.Query())),
+    fieldValidation: S.optional(S.String.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
+    spec: IoK8sApiCoordinationV1beta1LeaseCandidateSpec,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<ReplaceCoordinationV1beta1NamespacedLeaseCandidateRequest>;
@@ -1835,7 +1822,7 @@ export interface ReplaceCoordinationV1NamespacedLeaseRequest {
   /** spec contains the specification of the Lease. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   spec?: IoK8sApiCoordinationV1LeaseSpec;
 }
-export const ReplaceCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1884,8 +1871,8 @@ export interface WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequ
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -1906,9 +1893,9 @@ export const WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest 
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest",
-  }) as any as S.Schema<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest>;
+).annotate({
+  identifier: "WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest",
+}) as any as S.Schema<WatchCoordinationV1alpha2LeaseCandidateListForAllNamespacesRequest>;
 
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
@@ -1916,7 +1903,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -1955,30 +1942,29 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      name: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates/{name}",
-        code: 200,
-      }),
-    ),
+const WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    name: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates/{name}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest",
 }) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateRequest>;
@@ -2011,29 +1997,28 @@ export interface WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates",
-        code: 200,
-      }),
-    ),
+const WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/coordination.k8s.io/v1alpha2/watch/namespaces/{namespace}/leasecandidates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest",
 }) as any as S.Schema<WatchCoordinationV1alpha2NamespacedLeaseCandidateListRequest>;
@@ -2064,8 +2049,8 @@ export interface WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesReque
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
       continue: S.optional(S.String.pipe(T.Query())),
@@ -2086,9 +2071,9 @@ export const WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest",
-  }) as any as S.Schema<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest>;
+).annotate({
+  identifier: "WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest",
+}) as any as S.Schema<WatchCoordinationV1beta1LeaseCandidateListForAllNamespacesRequest>;
 
 export interface WatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -2120,7 +2105,7 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1beta1NamespacedLeaseCandidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2175,29 +2160,28 @@ export interface WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates",
-        code: 200,
-      }),
-    ),
+const WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leasecandidates",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest",
 }) as any as S.Schema<WatchCoordinationV1beta1NamespacedLeaseCandidateListRequest>;
@@ -2228,7 +2212,7 @@ export interface WatchCoordinationV1LeaseListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1LeaseListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1LeaseListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2277,7 +2261,7 @@ export interface WatchCoordinationV1NamespacedLeaseRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1NamespacedLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2332,7 +2316,7 @@ export interface WatchCoordinationV1NamespacedLeaseListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchCoordinationV1NamespacedLeaseListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchCoordinationV1NamespacedLeaseListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),

@@ -12,20 +12,20 @@ export interface ListEmojiRequest {
   /** Include a list of categories for Unicode emoji and the emoji in each category */
   include_categories?: boolean;
 }
-export const ListEmojiRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEmojiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_categories: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/emoji.list", code: 200 })),
 ).annotate({ identifier: "ListEmojiRequest" }) as any as S.Schema<ListEmojiRequest>;
 
 export type ListEmojiResponseEmojiMap = { [key: string]: unknown | undefined };
-export const ListEmojiResponseEmojiMap = /*@__PURE__*/ S.Record(
+const ListEmojiResponseEmojiMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ListEmojiResponseEmojiMap>;
 
 export type ListEmojiResponseCategoriesItemEmojiNamesList = Array<string>;
-export const ListEmojiResponseCategoriesItemEmojiNamesList = /*@__PURE__*/ S.Array(
+const ListEmojiResponseCategoriesItemEmojiNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListEmojiResponseCategoriesItemEmojiNamesList>;
 
@@ -33,7 +33,7 @@ export interface ListEmojiResponseCategoriesItem {
   name?: string;
   emoji_names?: ListEmojiResponseCategoriesItemEmojiNamesList;
 }
-export const ListEmojiResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
+const ListEmojiResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     emoji_names: S.optional(ListEmojiResponseCategoriesItemEmojiNamesList),
@@ -43,7 +43,7 @@ export const ListEmojiResponseCategoriesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEmojiResponseCategoriesItem>;
 
 export type ListEmojiResponseCategoriesList = Array<ListEmojiResponseCategoriesItem>;
-export const ListEmojiResponseCategoriesList = /*@__PURE__*/ S.Array(
+const ListEmojiResponseCategoriesList = /*@__PURE__*/ S.Array(
   ListEmojiResponseCategoriesItem,
 ) as any as S.Schema<ListEmojiResponseCategoriesList>;
 
@@ -55,7 +55,7 @@ export interface ListEmojiResponse {
   categories_version?: string;
   categories?: ListEmojiResponseCategoriesList;
 }
-export const ListEmojiResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEmojiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     cache_ts: S.optional(S.String),

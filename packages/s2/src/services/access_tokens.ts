@@ -15,25 +15,13 @@ export interface ResourceSetCase0 {
   /** Match only the resource with this exact name. Use an empty string to match no resources. */
   exact: string;
 }
-export const ResourceSetCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exact: S.String,
-  }),
-).annotate({ identifier: "ResourceSetCase0" }) as any as S.Schema<ResourceSetCase0>;
-
 /** Match all resources that start with this prefix. Use an empty string to match all resource. */
 export interface ResourceSetCase1 {
   /** Match all resources that start with this prefix. Use an empty string to match all resource. */
   prefix: string;
 }
-export const ResourceSetCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefix: S.String,
-  }),
-).annotate({ identifier: "ResourceSetCase1" }) as any as S.Schema<ResourceSetCase1>;
-
 export type ResourceSet = ResourceSetCase0 | ResourceSetCase1;
-export const ResourceSet = /*@__PURE__*/ S.Unknown as any as S.Schema<ResourceSet>;
+const ResourceSet = /*@__PURE__*/ S.Unknown as any as S.Schema<ResourceSet>;
 
 export interface ReadWritePermissions {
   /** Read permission. */
@@ -41,7 +29,7 @@ export interface ReadWritePermissions {
   /** Write permission. */
   write?: boolean;
 }
-export const ReadWritePermissions = /*@__PURE__*/ S.suspend(() =>
+const ReadWritePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     read: S.optional(S.Boolean),
     write: S.optional(S.Boolean),
@@ -53,7 +41,7 @@ export interface PermittedOperationGroups {
   basin?: ReadWritePermissions | null;
   stream?: ReadWritePermissions | null;
 }
-export const PermittedOperationGroups = /*@__PURE__*/ S.suspend(() =>
+const PermittedOperationGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.NullOr(ReadWritePermissions)),
     basin: S.optional(S.NullOr(ReadWritePermissions)),
@@ -86,11 +74,11 @@ export type Operation =
   | "list-locations"
   | "get-default-location"
   | "set-default-location";
-export const Operation = S.String;
+const Operation = S.String;
 
 /** Operations allowed for the token. A union of allowed operations and groups is used as an effective set of allowed operations. */
 export type AccessTokenScopeOpsList = Array<Operation | (string & {})>;
-export const AccessTokenScopeOpsList = /*@__PURE__*/ S.Array(
+const AccessTokenScopeOpsList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<AccessTokenScopeOpsList>;
 
@@ -102,7 +90,7 @@ export interface AccessTokenScope {
   ops?: AccessTokenScopeOpsList | null;
   streams?: ResourceSet | null;
 }
-export const AccessTokenScope = /*@__PURE__*/ S.suspend(() =>
+const AccessTokenScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_tokens: S.optional(S.NullOr(ResourceSet)),
     basins: S.optional(S.NullOr(ResourceSet)),
@@ -122,7 +110,7 @@ export interface IssueAccessTokenRequest {
   /** Access token scope. */
   scope: AccessTokenScope;
 }
-export const IssueAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const IssueAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_prefix_streams: S.optional(S.Boolean),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -135,7 +123,7 @@ export interface IssueAccessTokenResponse {
   /** Created access token. */
   access_token: string | Redacted.Redacted<string>;
 }
-export const IssueAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const IssueAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_token: S.String.pipe(T.SensitiveValue({})),
   }),
@@ -149,7 +137,7 @@ export interface ListAccessTokensRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-export const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccessTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -167,7 +155,7 @@ export interface AccessTokenInfo {
   /** Access token scope. */
   scope: AccessTokenScope;
 }
-export const AccessTokenInfo = /*@__PURE__*/ S.suspend(() =>
+const AccessTokenInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_prefix_streams: S.Boolean,
     expires_at: S.optional(S.NullOr(S.String)),
@@ -178,7 +166,7 @@ export const AccessTokenInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching access tokens. */
 export type ListAccessTokensResponseAccessTokensList = Array<AccessTokenInfo>;
-export const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ S.Array(
+const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ S.Array(
   AccessTokenInfo,
 ) as any as S.Schema<ListAccessTokensResponseAccessTokensList>;
 
@@ -188,7 +176,7 @@ export interface ListAccessTokensResponse {
   /** Indicates that there are more access tokens that match the criteria. */
   has_more: boolean;
 }
-export const ListAccessTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccessTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_tokens: ListAccessTokensResponseAccessTokensList,
     has_more: S.Boolean,
@@ -199,14 +187,14 @@ export interface RevokeAccessTokenRequest {
   /** Access token ID. */
   id: string;
 }
-export const RevokeAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/access-tokens/{id}", code: 200 })),
 ).annotate({ identifier: "RevokeAccessTokenRequest" }) as any as S.Schema<RevokeAccessTokenRequest>;
 
 export interface RevokeAccessTokenResponse {}
-export const RevokeAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RevokeAccessTokenResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RevokeAccessTokenResponse",
 }) as any as S.Schema<RevokeAccessTokenResponse>;
 

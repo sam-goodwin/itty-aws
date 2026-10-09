@@ -44,10 +44,10 @@ export class PeerWrongTarget
   ) {}
 
 export type KvDeleteOperation = "delete";
-export const KvDeleteOperation = S.String;
+const KvDeleteOperation = S.String;
 
 export type Strings = Array<string>;
-export const Strings = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Strings>;
+const Strings = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Strings>;
 
 export interface DeleteKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -71,7 +71,7 @@ export interface DeleteKvInput {
   op: KvDeleteOperation | (string & {});
   keys: Strings;
 }
-export const DeleteKvInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteKvInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -90,7 +90,7 @@ export const DeleteKvInput = /*@__PURE__*/ S.suspend(() =>
 export interface OkResult {
   ok: boolean;
 }
-export const OkResult = /*@__PURE__*/ S.suspend(() =>
+const OkResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -100,7 +100,7 @@ export const OkResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteKvOutput {
   result: OkResult;
 }
-export const DeleteKvOutput = /*@__PURE__*/ S.suspend(() =>
+const DeleteKvOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: OkResult,
   }),
@@ -110,7 +110,7 @@ export interface D1ExecPayload {
   sql: string;
   rows?: boolean;
 }
-export const D1ExecPayload = /*@__PURE__*/ S.suspend(() =>
+const D1ExecPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
     rows: S.optional(S.Boolean),
@@ -138,7 +138,7 @@ export interface ExecD1Input {
   peer_signature: string;
   exec: D1ExecPayload;
 }
-export const ExecD1Input = /*@__PURE__*/ S.suspend(() =>
+const ExecD1Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -154,10 +154,10 @@ export const ExecD1Input = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecD1Input" }) as any as S.Schema<ExecD1Input>;
 
 export type JsonValues = Array<unknown>;
-export const JsonValues = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<JsonValues>;
+const JsonValues = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<JsonValues>;
 
 export type Rows = Array<JsonValues>;
-export const Rows = /*@__PURE__*/ S.Array(JsonValues) as any as S.Schema<Rows>;
+const Rows = /*@__PURE__*/ S.Array(JsonValues) as any as S.Schema<Rows>;
 
 /** Native SQL engine result; row values and engine metadata retain their JSON types. */
 export interface D1ResultSet {
@@ -165,7 +165,7 @@ export interface D1ResultSet {
   rows?: Rows;
   meta?: unknown;
 }
-export const D1ResultSet = /*@__PURE__*/ S.suspend(() =>
+const D1ResultSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     columns: S.optional(Strings),
     rows: S.optional(Rows),
@@ -174,7 +174,7 @@ export const D1ResultSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "D1ResultSet" }) as any as S.Schema<D1ResultSet>;
 
 export type D1ResultSets = Array<D1ResultSet>;
-export const D1ResultSets = /*@__PURE__*/ S.Array(D1ResultSet) as any as S.Schema<D1ResultSets>;
+const D1ResultSets = /*@__PURE__*/ S.Array(D1ResultSet) as any as S.Schema<D1ResultSets>;
 
 /** Duration is in milliseconds. Result sets are present only when exec.rows is true. */
 export interface ExecD1Result {
@@ -182,7 +182,7 @@ export interface ExecD1Result {
   duration: number;
   results?: D1ResultSets;
 }
-export const ExecD1Result = /*@__PURE__*/ S.suspend(() =>
+const ExecD1Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     duration: S.Number,
@@ -194,7 +194,7 @@ export const ExecD1Result = /*@__PURE__*/ S.suspend(() =>
 export interface ExecD1Output {
   result: ExecD1Result;
 }
-export const ExecD1Output = /*@__PURE__*/ S.suspend(() =>
+const ExecD1Output = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ExecD1Result,
   }),
@@ -205,7 +205,7 @@ export interface D1Statement {
   params?: JsonValues;
   first?: boolean;
 }
-export const D1Statement = /*@__PURE__*/ S.suspend(() =>
+const D1Statement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sql: S.String,
     params: S.optional(JsonValues),
@@ -214,9 +214,7 @@ export const D1Statement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "D1Statement" }) as any as S.Schema<D1Statement>;
 
 export type D1StatementList = Array<D1Statement>;
-export const D1StatementList = /*@__PURE__*/ S.Array(
-  D1Statement,
-) as any as S.Schema<D1StatementList>;
+const D1StatementList = /*@__PURE__*/ S.Array(D1Statement) as any as S.Schema<D1StatementList>;
 
 export interface ExecuteD1StatementsInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -239,7 +237,7 @@ export interface ExecuteD1StatementsInput {
   peer_signature: string;
   statements: D1StatementList;
 }
-export const ExecuteD1StatementsInput = /*@__PURE__*/ S.suspend(() =>
+const ExecuteD1StatementsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -258,7 +256,7 @@ export const ExecuteD1StatementsInput = /*@__PURE__*/ S.suspend(() =>
 export interface ExecuteD1StatementsOutput {
   result: D1ResultSets;
 }
-export const ExecuteD1StatementsOutput = /*@__PURE__*/ S.suspend(() =>
+const ExecuteD1StatementsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: D1ResultSets,
   }),
@@ -267,7 +265,7 @@ export const ExecuteD1StatementsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteD1StatementsOutput>;
 
 export type KvGetOperation = "get";
-export const KvGetOperation = S.String;
+const KvGetOperation = S.String;
 
 export interface GetKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -291,7 +289,7 @@ export interface GetKvInput {
   op: KvGetOperation | (string & {});
   key: string;
 }
-export const GetKvInput = /*@__PURE__*/ S.suspend(() =>
+const GetKvInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -319,7 +317,7 @@ export interface GetKvResult {
   /** Expiration in Unix milliseconds; may be null. */
   expiration?: number | null;
 }
-export const GetKvResult = /*@__PURE__*/ S.suspend(() =>
+const GetKvResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.Boolean,
     value: S.optional(S.Unknown),
@@ -334,14 +332,14 @@ export const GetKvResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetKvOutput {
   result: GetKvResult;
 }
-export const GetKvOutput = /*@__PURE__*/ S.suspend(() =>
+const GetKvOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetKvResult,
   }),
 ).annotate({ identifier: "GetKvOutput" }) as any as S.Schema<GetKvOutput>;
 
 export type GetKvInfoOperation = "info";
-export const GetKvInfoOperation = S.String;
+const GetKvInfoOperation = S.String;
 
 export interface GetKvInfoInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -364,7 +362,7 @@ export interface GetKvInfoInput {
   peer_signature: string;
   op: GetKvInfoOperation | (string & {});
 }
-export const GetKvInfoInput = /*@__PURE__*/ S.suspend(() =>
+const GetKvInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -384,7 +382,7 @@ export interface GetKvInfoResult {
   bytes: number;
   stored: number;
 }
-export const GetKvInfoResult = /*@__PURE__*/ S.suspend(() =>
+const GetKvInfoResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     live: S.Number,
     bytes: S.Number,
@@ -396,14 +394,14 @@ export const GetKvInfoResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetKvInfoOutput {
   result: GetKvInfoResult;
 }
-export const GetKvInfoOutput = /*@__PURE__*/ S.suspend(() =>
+const GetKvInfoOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetKvInfoResult,
   }),
 ).annotate({ identifier: "GetKvInfoOutput" }) as any as S.Schema<GetKvInfoOutput>;
 
 export type GetQueueInfoOperation = "info";
-export const GetQueueInfoOperation = S.String;
+const GetQueueInfoOperation = S.String;
 
 export interface GetQueueInfoInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -426,7 +424,7 @@ export interface GetQueueInfoInput {
   peer_signature: string;
   op: GetQueueInfoOperation | (string & {});
 }
-export const GetQueueInfoInput = /*@__PURE__*/ S.suspend(() =>
+const GetQueueInfoInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -449,7 +447,7 @@ export interface GetQueueInfoResult {
   stored: number;
   paused: boolean;
 }
-export const GetQueueInfoResult = /*@__PURE__*/ S.suspend(() =>
+const GetQueueInfoResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backlog_count: S.Number.pipe(T.Body("backlogCount")),
     backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
@@ -463,14 +461,14 @@ export const GetQueueInfoResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetQueueInfoOutput {
   result: GetQueueInfoResult;
 }
-export const GetQueueInfoOutput = /*@__PURE__*/ S.suspend(() =>
+const GetQueueInfoOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: GetQueueInfoResult,
   }),
 ).annotate({ identifier: "GetQueueInfoOutput" }) as any as S.Schema<GetQueueInfoOutput>;
 
 export type KvListOperation = "list";
-export const KvListOperation = S.String;
+const KvListOperation = S.String;
 
 export interface ListKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -497,7 +495,7 @@ export interface ListKvInput {
   /** Exclusive last key name from the previous page, not a binding cursor. */
   after?: string;
 }
-export const ListKvInput = /*@__PURE__*/ S.suspend(() =>
+const ListKvInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -522,7 +520,7 @@ export interface KvKey {
   /** Unix milliseconds; may be null. */
   expiration?: number | null;
 }
-export const KvKey = /*@__PURE__*/ S.suspend(() =>
+const KvKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     metadata: S.optional(S.NullOr(S.String)),
@@ -531,13 +529,13 @@ export const KvKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KvKey" }) as any as S.Schema<KvKey>;
 
 export type KvKeys = Array<KvKey>;
-export const KvKeys = /*@__PURE__*/ S.Array(KvKey) as any as S.Schema<KvKeys>;
+const KvKeys = /*@__PURE__*/ S.Array(KvKey) as any as S.Schema<KvKeys>;
 
 export interface ListKvResult {
   keys: KvKeys;
   complete: boolean;
 }
-export const ListKvResult = /*@__PURE__*/ S.suspend(() =>
+const ListKvResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: KvKeys,
     complete: S.Boolean,
@@ -548,7 +546,7 @@ export const ListKvResult = /*@__PURE__*/ S.suspend(() =>
 export interface ListKvOutput {
   result: ListKvResult;
 }
-export const ListKvOutput = /*@__PURE__*/ S.suspend(() =>
+const ListKvOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListKvResult,
   }),
@@ -560,7 +558,7 @@ export interface D1Migration {
   /** Defaults to d1_migrations when omitted or empty. */
   table?: string;
 }
-export const D1Migration = /*@__PURE__*/ S.suspend(() =>
+const D1Migration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sql: S.String,
@@ -589,7 +587,7 @@ export interface MigrateD1Input {
   peer_signature: string;
   migrate: D1Migration;
 }
-export const MigrateD1Input = /*@__PURE__*/ S.suspend(() =>
+const MigrateD1Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -608,14 +606,14 @@ export const MigrateD1Input = /*@__PURE__*/ S.suspend(() =>
 export interface MigrateD1Output {
   result: unknown;
 }
-export const MigrateD1Output = /*@__PURE__*/ S.suspend(() =>
+const MigrateD1Output = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.Unknown,
   }),
 ).annotate({ identifier: "MigrateD1Output" }) as any as S.Schema<MigrateD1Output>;
 
 export type QueuePauseOperation = "pause";
-export const QueuePauseOperation = S.String;
+const QueuePauseOperation = S.String;
 
 export interface PauseQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -638,7 +636,7 @@ export interface PauseQueueInput {
   peer_signature: string;
   op: QueuePauseOperation | (string & {});
 }
-export const PauseQueueInput = /*@__PURE__*/ S.suspend(() =>
+const PauseQueueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -660,7 +658,7 @@ export interface QueuePausedResult {
   oldest_message_timestamp?: number | null;
   paused: boolean;
 }
-export const QueuePausedResult = /*@__PURE__*/ S.suspend(() =>
+const QueuePausedResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backlog_count: S.Number.pipe(T.Body("backlogCount")),
     backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
@@ -673,14 +671,14 @@ export const QueuePausedResult = /*@__PURE__*/ S.suspend(() =>
 export interface PauseQueueOutput {
   result: QueuePausedResult;
 }
-export const PauseQueueOutput = /*@__PURE__*/ S.suspend(() =>
+const PauseQueueOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: QueuePausedResult,
   }),
 ).annotate({ identifier: "PauseQueueOutput" }) as any as S.Schema<PauseQueueOutput>;
 
 export type PeekQueueOperation = "peek";
-export const PeekQueueOperation = S.String;
+const PeekQueueOperation = S.String;
 
 export interface PeekQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -705,7 +703,7 @@ export interface PeekQueueInput {
   /** Defaults to 10; valid values are 1 through 100. */
   limit?: number;
 }
-export const PeekQueueInput = /*@__PURE__*/ S.suspend(() =>
+const PeekQueueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -738,7 +736,7 @@ export interface QueueMessage {
   /** May be null. */
   dead_letter_source?: string | null;
 }
-export const QueueMessage = /*@__PURE__*/ S.suspend(() =>
+const QueueMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     body_base64: S.String.pipe(T.Body("bodyBase64")),
@@ -755,12 +753,12 @@ export const QueueMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueueMessage" }) as any as S.Schema<QueueMessage>;
 
 export type QueueMessages = Array<QueueMessage>;
-export const QueueMessages = /*@__PURE__*/ S.Array(QueueMessage) as any as S.Schema<QueueMessages>;
+const QueueMessages = /*@__PURE__*/ S.Array(QueueMessage) as any as S.Schema<QueueMessages>;
 
 export interface PeekQueueResult {
   messages: QueueMessages;
 }
-export const PeekQueueResult = /*@__PURE__*/ S.suspend(() =>
+const PeekQueueResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: QueueMessages,
   }),
@@ -770,14 +768,14 @@ export const PeekQueueResult = /*@__PURE__*/ S.suspend(() =>
 export interface PeekQueueOutput {
   result: PeekQueueResult;
 }
-export const PeekQueueOutput = /*@__PURE__*/ S.suspend(() =>
+const PeekQueueOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PeekQueueResult,
   }),
 ).annotate({ identifier: "PeekQueueOutput" }) as any as S.Schema<PeekQueueOutput>;
 
 export type QueuePurgeOperation = "purge";
-export const QueuePurgeOperation = S.String;
+const QueuePurgeOperation = S.String;
 
 export interface PurgeQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -800,7 +798,7 @@ export interface PurgeQueueInput {
   peer_signature: string;
   op: QueuePurgeOperation | (string & {});
 }
-export const PurgeQueueInput = /*@__PURE__*/ S.suspend(() =>
+const PurgeQueueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -821,7 +819,7 @@ export interface QueueMetrics {
   /** Unix milliseconds; null when no message exists. */
   oldest_message_timestamp?: number | null;
 }
-export const QueueMetrics = /*@__PURE__*/ S.suspend(() =>
+const QueueMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backlog_count: S.Number.pipe(T.Body("backlogCount")),
     backlog_bytes: S.Number.pipe(T.Body("backlogBytes")),
@@ -834,7 +832,7 @@ export interface PurgeQueueResult {
   leased: number;
   metrics: QueueMetrics;
 }
-export const PurgeQueueResult = /*@__PURE__*/ S.suspend(() =>
+const PurgeQueueResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Number,
     leased: S.Number,
@@ -846,17 +844,17 @@ export const PurgeQueueResult = /*@__PURE__*/ S.suspend(() =>
 export interface PurgeQueueOutput {
   result: PurgeQueueResult;
 }
-export const PurgeQueueOutput = /*@__PURE__*/ S.suspend(() =>
+const PurgeQueueOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: PurgeQueueResult,
   }),
 ).annotate({ identifier: "PurgeQueueOutput" }) as any as S.Schema<PurgeQueueOutput>;
 
 export type KvPutOperation = "put";
-export const KvPutOperation = S.String;
+const KvPutOperation = S.String;
 
 export type Bytes = Array<number>;
-export const Bytes = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<Bytes>;
+const Bytes = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<Bytes>;
 
 export interface PutKvInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -889,7 +887,7 @@ export interface PutKvInput {
   expiration_ttl?: number;
   value: Bytes;
 }
-export const PutKvInput = /*@__PURE__*/ S.suspend(() =>
+const PutKvInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -914,10 +912,10 @@ export const PutKvInput = /*@__PURE__*/ S.suspend(() =>
 export interface PutKvOutput {
   result: OkResult;
 }
-export const PutKvOutput = DeleteKvOutput as any as S.Schema<PutKvOutput>;
+const PutKvOutput = DeleteKvOutput as any as S.Schema<PutKvOutput>;
 
 export type PutKvBase64Operation = "put-base64";
-export const PutKvBase64Operation = S.String;
+const PutKvBase64Operation = S.String;
 
 export interface PutKvBase64Input {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -950,7 +948,7 @@ export interface PutKvBase64Input {
   expiration_ttl?: number;
   value: string;
 }
-export const PutKvBase64Input = /*@__PURE__*/ S.suspend(() =>
+const PutKvBase64Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -975,10 +973,10 @@ export const PutKvBase64Input = /*@__PURE__*/ S.suspend(() =>
 export interface PutKvBase64Output {
   result: OkResult;
 }
-export const PutKvBase64Output = DeleteKvOutput as any as S.Schema<PutKvBase64Output>;
+const PutKvBase64Output = DeleteKvOutput as any as S.Schema<PutKvBase64Output>;
 
 export type RedriveQueueOperation = "redrive";
-export const RedriveQueueOperation = S.String;
+const RedriveQueueOperation = S.String;
 
 export interface RedriveQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -1003,7 +1001,7 @@ export interface RedriveQueueInput {
   /** Defaults to 100; valid values are 1 through 100. */
   limit?: number;
 }
-export const RedriveQueueInput = /*@__PURE__*/ S.suspend(() =>
+const RedriveQueueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -1023,7 +1021,7 @@ export interface RedriveQueueResult {
   redriven: number;
   metrics: QueueMetrics;
 }
-export const RedriveQueueResult = /*@__PURE__*/ S.suspend(() =>
+const RedriveQueueResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redriven: S.Number,
     metrics: QueueMetrics,
@@ -1034,14 +1032,14 @@ export const RedriveQueueResult = /*@__PURE__*/ S.suspend(() =>
 export interface RedriveQueueOutput {
   result: RedriveQueueResult;
 }
-export const RedriveQueueOutput = /*@__PURE__*/ S.suspend(() =>
+const RedriveQueueOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RedriveQueueResult,
   }),
 ).annotate({ identifier: "RedriveQueueOutput" }) as any as S.Schema<RedriveQueueOutput>;
 
 export type QueueResumeOperation = "resume";
-export const QueueResumeOperation = S.String;
+const QueueResumeOperation = S.String;
 
 export interface ResumeQueueInput {
   /** Reserved-class cell scope derived by Celld, not a database, namespace or queue display name. */
@@ -1064,7 +1062,7 @@ export interface ResumeQueueInput {
   peer_signature: string;
   op: QueueResumeOperation | (string & {});
 }
-export const ResumeQueueInput = /*@__PURE__*/ S.suspend(() =>
+const ResumeQueueInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label(), T.LabelEncoding({ preserve: ":$" })),
     name: S.optional(S.String.pipe(T.Query())),
@@ -1083,7 +1081,7 @@ export const ResumeQueueInput = /*@__PURE__*/ S.suspend(() =>
 export interface ResumeQueueOutput {
   result: QueuePausedResult;
 }
-export const ResumeQueueOutput = PauseQueueOutput as any as S.Schema<ResumeQueueOutput>;
+const ResumeQueueOutput = PauseQueueOutput as any as S.Schema<ResumeQueueOutput>;
 
 export type DeleteKvError =
   | PeerIncompatibleVersion

@@ -68,7 +68,7 @@ export interface OffsetPosition {
   /** Offset distance from top side of an asset or a window. */
   top?: number;
 }
-export const OffsetPosition = /*@__PURE__*/ S.suspend(() =>
+const OffsetPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     left: S.optional(S.Number),
     top: S.optional(S.Number),
@@ -88,7 +88,7 @@ export interface Size {
   /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
   width?: number;
 }
-export const Size = /*@__PURE__*/ S.suspend(() =>
+const Size = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iab: S.optional(S.Boolean),
     id: S.optional(S.String),
@@ -99,7 +99,7 @@ export const Size = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Size" }) as any as S.Schema<Size>;
 
 export type PopupWindowPropertiesPositionTypeEnum = "CENTER" | "COORDINATES";
-export const PopupWindowPropertiesPositionTypeEnum = S.String;
+const PopupWindowPropertiesPositionTypeEnum = S.String;
 
 /** Popup Window Properties. */
 export interface PopupWindowProperties {
@@ -122,7 +122,7 @@ export interface PopupWindowProperties {
   /** Popup window position either centered or at specific coordinate. */
   positionType?: PopupWindowPropertiesPositionTypeEnum | (string & {});
 }
-export const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
+const PopupWindowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showToolBar: S.optional(S.Boolean),
     offset: S.optional(OffsetPosition),
@@ -140,14 +140,14 @@ export type CreativeCustomEventAdvertiserCustomEventTypeEnum =
   | "ADVERTISER_EVENT_TIMER"
   | "ADVERTISER_EVENT_EXIT"
   | "ADVERTISER_EVENT_COUNTER";
-export const CreativeCustomEventAdvertiserCustomEventTypeEnum = S.String;
+const CreativeCustomEventAdvertiserCustomEventTypeEnum = S.String;
 
 export type CreativeCustomEventArtworkTypeEnum =
   | "ARTWORK_TYPE_FLASH"
   | "ARTWORK_TYPE_HTML5"
   | "ARTWORK_TYPE_MIXED"
   | "ARTWORK_TYPE_IMAGE";
-export const CreativeCustomEventArtworkTypeEnum = S.String;
+const CreativeCustomEventArtworkTypeEnum = S.String;
 
 /** Click-through URL */
 export interface CreativeClickThroughUrl {
@@ -158,7 +158,7 @@ export interface CreativeClickThroughUrl {
   /** Custom click-through URL. Applicable if the landingPageId field is left unset. */
   customClickThroughUrl?: string;
 }
-export const CreativeClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
+const CreativeClickThroughUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computedClickThroughUrl: S.optional(S.String),
     landingPageId: S.optional(S.String),
@@ -172,7 +172,7 @@ export type CreativeCustomEventTargetTypeEnum =
   | "TARGET_SELF"
   | "TARGET_PARENT"
   | "TARGET_POPUP";
-export const CreativeCustomEventTargetTypeEnum = S.String;
+const CreativeCustomEventTargetTypeEnum = S.String;
 
 /** Creative Custom Event. */
 export interface CreativeCustomEvent {
@@ -197,7 +197,7 @@ export interface CreativeCustomEvent {
   /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
   advertiserCustomEventId?: string;
 }
-export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
+const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserCustomEventName: S.optional(S.String),
     artworkLabel: S.optional(S.String),
@@ -213,7 +213,7 @@ export const CreativeCustomEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreativeCustomEvent" }) as any as S.Schema<CreativeCustomEvent>;
 
 export type CreativeCustomEventList = Array<CreativeCustomEvent>;
-export const CreativeCustomEventList = /*@__PURE__*/ S.Array(
+const CreativeCustomEventList = /*@__PURE__*/ S.Array(
   CreativeCustomEvent,
 ) as any as S.Schema<CreativeCustomEventList>;
 
@@ -222,7 +222,7 @@ export type DimensionValueMatchTypeEnum =
   | "BEGINS_WITH"
   | "CONTAINS"
   | "WILDCARD_EXPRESSION";
-export const DimensionValueMatchTypeEnum = S.String;
+const DimensionValueMatchTypeEnum = S.String;
 
 /** Represents a DimensionValue resource. */
 export interface DimensionValue {
@@ -239,7 +239,7 @@ export interface DimensionValue {
   /** The eTag of this response for caching purposes. */
   etag?: string;
 }
-export const DimensionValue = /*@__PURE__*/ S.suspend(() =>
+const DimensionValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchType: S.optional(DimensionValueMatchTypeEnum),
     kind: S.optional(S.String),
@@ -277,12 +277,12 @@ export type CreativeAssetMetadataWarnedValidationRulesItemEnum =
   | "SVG_INVALID"
   | "CLICK_TAG_IN_RICH_MEDIA"
   | "MISSING_ENABLER_REFERENCE";
-export const CreativeAssetMetadataWarnedValidationRulesItemEnum = S.String;
+const CreativeAssetMetadataWarnedValidationRulesItemEnum = S.String;
 
 export type CreativeAssetMetadataWarnedValidationRulesItemEnumList = Array<
   CreativeAssetMetadataWarnedValidationRulesItemEnum | (string & {})
 >;
-export const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ S.Array(
+const CreativeAssetMetadataWarnedValidationRulesItemEnumList = /*@__PURE__*/ S.Array(
   CreativeAssetMetadataWarnedValidationRulesItemEnum,
 ) as any as S.Schema<CreativeAssetMetadataWarnedValidationRulesItemEnumList>;
 
@@ -295,7 +295,7 @@ export interface ClickTag {
   /** Parameter value for the specified click tag. This field contains a click-through url. */
   clickThroughUrl?: CreativeClickThroughUrl;
 }
-export const ClickTag = /*@__PURE__*/ S.suspend(() =>
+const ClickTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventName: S.optional(S.String),
     name: S.optional(S.String),
@@ -304,7 +304,7 @@ export const ClickTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClickTag" }) as any as S.Schema<ClickTag>;
 
 export type ClickTagList = Array<ClickTag>;
-export const ClickTagList = /*@__PURE__*/ S.Array(ClickTag) as any as S.Schema<ClickTagList>;
+const ClickTagList = /*@__PURE__*/ S.Array(ClickTag) as any as S.Schema<ClickTagList>;
 
 export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "CSS_FONT_FACE"
@@ -373,16 +373,14 @@ export type CreativeAssetMetadataDetectedFeaturesItemEnum =
   | "WEBGL"
   | "SVG_FILTERS"
   | "SVG_FE_IMAGE";
-export const CreativeAssetMetadataDetectedFeaturesItemEnum = S.String;
-
 export type CreativeAssetMetadataDetectedFeaturesItemEnumList = Array<
   CreativeAssetMetadataDetectedFeaturesItemEnum | (string & {})
 >;
-export const CreativeAssetMetadataDetectedFeaturesItemEnumList =
+const CreativeAssetMetadataDetectedFeaturesItemEnumList =
   CreativeAssetMetadataWarnedValidationRulesItemEnumList as any as S.Schema<CreativeAssetMetadataDetectedFeaturesItemEnumList>;
 
 export type CreativeAssetIdTypeEnum = "IMAGE" | "FLASH" | "VIDEO" | "HTML" | "HTML_IMAGE" | "AUDIO";
-export const CreativeAssetIdTypeEnum = S.String;
+const CreativeAssetIdTypeEnum = S.String;
 
 /** Creative Asset ID. */
 export interface CreativeAssetId {
@@ -391,7 +389,7 @@ export interface CreativeAssetId {
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
   name?: string;
 }
-export const CreativeAssetId = /*@__PURE__*/ S.suspend(() =>
+const CreativeAssetId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CreativeAssetIdTypeEnum),
     name: S.optional(S.String),
@@ -423,7 +421,7 @@ export interface CreativeAssetMetadata {
   /** List of timer events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
   timerCustomEvents?: CreativeCustomEventList;
 }
-export const CreativeAssetMetadata = /*@__PURE__*/ S.suspend(() =>
+const CreativeAssetMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     counterCustomEvents: S.optional(CreativeCustomEventList),
     kind: S.optional(S.String),
@@ -447,7 +445,7 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: CreativeAssetMetadata;
 }
-export const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advertiserId: S.String.pipe(T.Label()),
     profileId: S.String.pipe(T.Label()),

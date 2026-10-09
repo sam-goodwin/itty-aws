@@ -13,7 +13,7 @@ export interface CountActivityExecutionsRequest {
   /** Visibility query, see https://docs.temporal.io/list-filter for the syntax. */
   query?: string;
 }
-export const CountActivityExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountActivityExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     query: S.optional(S.String.pipe(T.Query())),
@@ -25,7 +25,7 @@ export const CountActivityExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CountActivityExecutionsRequest>;
 
 export type CountActivityExecutionsResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountActivityExecutionsResponseAggregationGroupGroupValuesList = /*@__PURE__*/ S.Array(
+const CountActivityExecutionsResponseAggregationGroupGroupValuesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CountActivityExecutionsResponseAggregationGroupGroupValuesList>;
 
@@ -33,7 +33,7 @@ export interface CountActivityExecutionsResponseAggregationGroup {
   groupValues?: CountActivityExecutionsResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountActivityExecutionsResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
+const CountActivityExecutionsResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(CountActivityExecutionsResponseAggregationGroupGroupValuesList),
     count: S.optional(S.String),
@@ -45,7 +45,7 @@ export const CountActivityExecutionsResponseAggregationGroup = /*@__PURE__*/ S.s
 /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountActivityExecutionsResponseGroupsList =
   Array<CountActivityExecutionsResponseAggregationGroup>;
-export const CountActivityExecutionsResponseGroupsList = /*@__PURE__*/ S.Array(
+const CountActivityExecutionsResponseGroupsList = /*@__PURE__*/ S.Array(
   CountActivityExecutionsResponseAggregationGroup,
 ) as any as S.Schema<CountActivityExecutionsResponseGroupsList>;
 
@@ -55,7 +55,7 @@ export interface CountActivityExecutionsResponse {
   /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
   groups?: CountActivityExecutionsResponseGroupsList;
 }
-export const CountActivityExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CountActivityExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     groups: S.optional(CountActivityExecutionsResponseGroupsList),
@@ -69,7 +69,7 @@ export interface CountNexusOperationExecutionsRequest {
   /** Visibility query, see https://docs.temporal.io/list-filter for the syntax. See also ListNexusOperationExecutionsRequest for search attributes available for Nexus operations. */
   query?: string;
 }
-export const CountNexusOperationExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountNexusOperationExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     query: S.optional(S.String.pipe(T.Query())),
@@ -85,16 +85,15 @@ export const CountNexusOperationExecutionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CountNexusOperationExecutionsRequest>;
 
 export type CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList>;
+const CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList>;
 
 export interface CountNexusOperationExecutionsResponseAggregationGroup {
   groupValues?: CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountNexusOperationExecutionsResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
+const CountNexusOperationExecutionsResponseAggregationGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupValues: S.optional(CountNexusOperationExecutionsResponseAggregationGroupGroupValuesList),
     count: S.optional(S.String),
@@ -106,7 +105,7 @@ export const CountNexusOperationExecutionsResponseAggregationGroup = /*@__PURE__
 /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountNexusOperationExecutionsResponseGroupsList =
   Array<CountNexusOperationExecutionsResponseAggregationGroup>;
-export const CountNexusOperationExecutionsResponseGroupsList = /*@__PURE__*/ S.Array(
+const CountNexusOperationExecutionsResponseGroupsList = /*@__PURE__*/ S.Array(
   CountNexusOperationExecutionsResponseAggregationGroup,
 ) as any as S.Schema<CountNexusOperationExecutionsResponseGroupsList>;
 
@@ -116,7 +115,7 @@ export interface CountNexusOperationExecutionsResponse {
   /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
   groups?: CountNexusOperationExecutionsResponseGroupsList;
 }
-export const CountNexusOperationExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CountNexusOperationExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     groups: S.optional(CountNexusOperationExecutionsResponseGroupsList),
@@ -130,7 +129,7 @@ export interface CountSchedulesRequest {
   /** Visibility query, see https://docs.temporal.io/list-filter for the syntax. */
   query?: string;
 }
-export const CountSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CountSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     query: S.optional(S.String.pipe(T.Query())),
@@ -140,19 +139,13 @@ export const CountSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountSchedulesRequest" }) as any as S.Schema<CountSchedulesRequest>;
 
 export type CountSchedulesResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountSchedulesResponseAggregationGroupGroupValuesList =
-  CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<CountSchedulesResponseAggregationGroupGroupValuesList>;
-
 export interface CountSchedulesResponseAggregationGroup {
   groupValues?: CountSchedulesResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountSchedulesResponseAggregationGroup =
-  CountActivityExecutionsResponseAggregationGroup as any as S.Schema<CountSchedulesResponseAggregationGroup>;
-
 /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountSchedulesResponseGroupsList = Array<CountSchedulesResponseAggregationGroup>;
-export const CountSchedulesResponseGroupsList =
+const CountSchedulesResponseGroupsList =
   CountActivityExecutionsResponseGroupsList as any as S.Schema<CountSchedulesResponseGroupsList>;
 
 export interface CountSchedulesResponse {
@@ -161,7 +154,7 @@ export interface CountSchedulesResponse {
   /** Contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
   groups?: CountSchedulesResponseGroupsList;
 }
-export const CountSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const CountSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     groups: S.optional(CountSchedulesResponseGroupsList),
@@ -172,7 +165,7 @@ export interface CountWorkflowExecutionsRequest {
   namespace: string;
   query?: string;
 }
-export const CountWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     query: S.optional(S.String.pipe(T.Query())),
@@ -184,29 +177,20 @@ export const CountWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CountWorkflowExecutionsRequest>;
 
 export type CountWorkflowExecutionsResponseAggregationGroupGroupValuesList = Array<unknown>;
-export const CountWorkflowExecutionsResponseAggregationGroupGroupValuesList =
-  CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroupGroupValuesList>;
-
 export interface CountWorkflowExecutionsResponseAggregationGroup {
   groupValues?: CountWorkflowExecutionsResponseAggregationGroupGroupValuesList;
   count?: string;
 }
-export const CountWorkflowExecutionsResponseAggregationGroup =
-  CountActivityExecutionsResponseAggregationGroup as any as S.Schema<CountWorkflowExecutionsResponseAggregationGroup>;
-
 /** `groups` contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
 export type CountWorkflowExecutionsResponseGroupsList =
   Array<CountWorkflowExecutionsResponseAggregationGroup>;
-export const CountWorkflowExecutionsResponseGroupsList =
-  CountActivityExecutionsResponseGroupsList as any as S.Schema<CountWorkflowExecutionsResponseGroupsList>;
-
 export interface CountWorkflowExecutionsResponse {
   /** If `query` is not grouping by any field, the count is an approximate number of workflows that matches the query. If `query` is grouping by a field, the count is simply the sum of the counts of the groups returned in the response. This number can be smaller than the total number of workflows matching the query. */
   count?: string;
   /** `groups` contains the groups if the request is grouping by a field. The list might not be complete, and the counts of each group is approximate. */
   groups?: CountWorkflowExecutionsResponseGroupsList;
 }
-export const CountWorkflowExecutionsResponse =
+const CountWorkflowExecutionsResponse =
   CountActivityExecutionsResponse as any as S.Schema<CountWorkflowExecutionsResponse>;
 
 /** Target a worker polling on a Nexus task queue in a specific namespace. */
@@ -216,7 +200,7 @@ export interface EndpointTargetWorker {
   /** Nexus task queue to route requests to. */
   taskQueue?: string;
 }
-export const EndpointTargetWorker = /*@__PURE__*/ S.suspend(() =>
+const EndpointTargetWorker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     taskQueue: S.optional(S.String),
@@ -228,7 +212,7 @@ export interface EndpointTargetExternal {
   /** URL to call. */
   url?: string;
 }
-export const EndpointTargetExternal = /*@__PURE__*/ S.suspend(() =>
+const EndpointTargetExternal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -239,7 +223,7 @@ export interface EndpointTarget {
   worker?: EndpointTargetWorker;
   external?: EndpointTargetExternal;
 }
-export const EndpointTarget = /*@__PURE__*/ S.suspend(() =>
+const EndpointTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     worker: S.optional(EndpointTargetWorker),
     external: S.optional(EndpointTargetExternal),
@@ -255,7 +239,7 @@ export interface EndpointSpec {
   /** Target to route requests to. */
   target?: EndpointTarget;
 }
-export const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
+const EndpointSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.Unknown),
@@ -267,7 +251,7 @@ export interface CreateNexusEndpointRequest {
   /** Endpoint definition to create. */
   spec?: EndpointSpec;
 }
-export const CreateNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(EndpointSpec),
   }).pipe(T.Http({ method: "POST", uri: "/api/v1/nexus/endpoints", code: 200 })),
@@ -290,7 +274,7 @@ export interface Endpoint {
   /** Server exposed URL prefix for invocation of operations on this endpoint. This doesn't include the protocol, hostname or port as the server does not know how it should be accessed publicly. The URL is stable in the face of endpoint renames. */
   urlPrefix?: string;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -305,7 +289,7 @@ export interface CreateNexusEndpointResponse {
   /** Data post acceptance. Can be used to issue additional updates to this record. */
   endpoint?: Endpoint;
 }
-export const CreateNexusEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNexusEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(Endpoint),
   }),
@@ -322,7 +306,7 @@ export interface Range {
   /** Step (optional, default 1). */
   step?: number;
 }
-export const Range = /*@__PURE__*/ S.suspend(() =>
+const Range = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.Number),
     end: S.optional(S.Number),
@@ -332,38 +316,38 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
 
 /** Match seconds (0-59) */
 export type StructuredCalendarSpecSecondList = Array<Range>;
-export const StructuredCalendarSpecSecondList = /*@__PURE__*/ S.Array(
+const StructuredCalendarSpecSecondList = /*@__PURE__*/ S.Array(
   Range,
 ) as any as S.Schema<StructuredCalendarSpecSecondList>;
 
 /** Match minutes (0-59) */
 export type StructuredCalendarSpecMinuteList = Array<Range>;
-export const StructuredCalendarSpecMinuteList =
+const StructuredCalendarSpecMinuteList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecMinuteList>;
 
 /** Match hours (0-23) */
 export type StructuredCalendarSpecHourList = Array<Range>;
-export const StructuredCalendarSpecHourList =
+const StructuredCalendarSpecHourList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecHourList>;
 
 /** Match days of the month (1-31) (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: standard name of field --) */
 export type StructuredCalendarSpecDayOfMonthList = Array<Range>;
-export const StructuredCalendarSpecDayOfMonthList =
+const StructuredCalendarSpecDayOfMonthList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecDayOfMonthList>;
 
 /** Match months (1-12) */
 export type StructuredCalendarSpecMonthList = Array<Range>;
-export const StructuredCalendarSpecMonthList =
+const StructuredCalendarSpecMonthList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecMonthList>;
 
 /** Match years. */
 export type StructuredCalendarSpecYearList = Array<Range>;
-export const StructuredCalendarSpecYearList =
+const StructuredCalendarSpecYearList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecYearList>;
 
 /** Match days of the week (0-6; 0 is Sunday). */
 export type StructuredCalendarSpecDayOfWeekList = Array<Range>;
-export const StructuredCalendarSpecDayOfWeekList =
+const StructuredCalendarSpecDayOfWeekList =
   StructuredCalendarSpecSecondList as any as S.Schema<StructuredCalendarSpecDayOfWeekList>;
 
 /** StructuredCalendarSpec describes an event specification relative to the calendar, in a form that's easy to work with programmatically. Each field can be one or more ranges. A timestamp matches if at least one range of each field matches the corresponding fields of the timestamp, except for year: if year is missing, that means all years match. For all fields besides year, at least one Range must be present to match anything. Relative expressions such as "last day of the month" or "third Monday" are not currently representable; callers must enumerate the concrete days they require. */
@@ -385,7 +369,7 @@ export interface StructuredCalendarSpec {
   /** Free-form comment describing the intention of this spec. */
   comment?: string;
 }
-export const StructuredCalendarSpec = /*@__PURE__*/ S.suspend(() =>
+const StructuredCalendarSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     second: S.optional(StructuredCalendarSpecSecondList),
     minute: S.optional(StructuredCalendarSpecMinuteList),
@@ -400,13 +384,13 @@ export const StructuredCalendarSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Calendar-based specifications of times. */
 export type ScheduleSpecStructuredCalendarList = Array<StructuredCalendarSpec>;
-export const ScheduleSpecStructuredCalendarList = /*@__PURE__*/ S.Array(
+const ScheduleSpecStructuredCalendarList = /*@__PURE__*/ S.Array(
   StructuredCalendarSpec,
 ) as any as S.Schema<ScheduleSpecStructuredCalendarList>;
 
 /** cron_string holds a traditional cron specification as a string. It accepts 5, 6, or 7 fields, separated by spaces, and interprets them the same way as CalendarSpec. 5 fields: minute, hour, day_of_month, month, day_of_week 6 fields: minute, hour, day_of_month, month, day_of_week, year 7 fields: second, minute, hour, day_of_month, month, day_of_week, year If year is not given, it defaults to *. If second is not given, it defaults to 0. Shorthands @yearly, @monthly, @weekly, @daily, and @hourly are also accepted instead of the 5-7 time fields. Optionally, the string can be preceded by CRON_TZ=<timezone name> or TZ=<timezone name>, which will get copied to timezone_name. (There must not also be a timezone_name present.) Optionally "#" followed by a comment can appear at the end of the string. Note that the special case that some cron implementations have for treating day_of_month and day_of_week as "or" instead of "and" when both are set is not implemented. @every <interval>[/<phase>] is accepted and gets compiled into an IntervalSpec instead. <interval> and <phase> should be a decimal integer with a unit suffix s, m, h, or d. */
 export type ScheduleSpecCronStringList = Array<string>;
-export const ScheduleSpecCronStringList = /*@__PURE__*/ S.Array(
+const ScheduleSpecCronStringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ScheduleSpecCronStringList>;
 
@@ -429,7 +413,7 @@ export interface CalendarSpec {
   /** Free-form comment describing the intention of this spec. */
   comment?: string;
 }
-export const CalendarSpec = /*@__PURE__*/ S.suspend(() =>
+const CalendarSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     second: S.optional(S.String),
     minute: S.optional(S.String),
@@ -444,7 +428,7 @@ export const CalendarSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Calendar-based specifications of times. */
 export type ScheduleSpecCalendarList = Array<CalendarSpec>;
-export const ScheduleSpecCalendarList = /*@__PURE__*/ S.Array(
+const ScheduleSpecCalendarList = /*@__PURE__*/ S.Array(
   CalendarSpec,
 ) as any as S.Schema<ScheduleSpecCalendarList>;
 
@@ -453,7 +437,7 @@ export interface IntervalSpec {
   interval?: string;
   phase?: string;
 }
-export const IntervalSpec = /*@__PURE__*/ S.suspend(() =>
+const IntervalSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interval: S.optional(S.String),
     phase: S.optional(S.String),
@@ -462,17 +446,17 @@ export const IntervalSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** Interval-based specifications of times. */
 export type ScheduleSpecIntervalList = Array<IntervalSpec>;
-export const ScheduleSpecIntervalList = /*@__PURE__*/ S.Array(
+const ScheduleSpecIntervalList = /*@__PURE__*/ S.Array(
   IntervalSpec,
 ) as any as S.Schema<ScheduleSpecIntervalList>;
 
 /** Any timestamps matching any of exclude_* will be skipped. Deprecated. Use exclude_structured_calendar. */
 export type ScheduleSpecExcludeCalendarList = Array<CalendarSpec>;
-export const ScheduleSpecExcludeCalendarList =
+const ScheduleSpecExcludeCalendarList =
   ScheduleSpecCalendarList as any as S.Schema<ScheduleSpecExcludeCalendarList>;
 
 export type ScheduleSpecExcludeStructuredCalendarList = Array<StructuredCalendarSpec>;
-export const ScheduleSpecExcludeStructuredCalendarList =
+const ScheduleSpecExcludeStructuredCalendarList =
   ScheduleSpecStructuredCalendarList as any as S.Schema<ScheduleSpecExcludeStructuredCalendarList>;
 
 /** ScheduleSpec is a complete description of a set of absolute timestamps (possibly infinite) that an action should occur at. The meaning of a ScheduleSpec depends only on its contents and never changes, except that the definition of a time zone can change over time (most commonly, when daylight saving time policy changes for an area). To create a totally self-contained ScheduleSpec, use UTC or include timezone_data. For input, you can provide zero or more of: structured_calendar, calendar, cron_string, interval, and exclude_structured_calendar, and all of them will be used (the schedule will take action at the union of all of their times, minus the ones that match exclude_structured_calendar). On input, calendar and cron_string fields will be compiled into structured_calendar (and maybe interval and timezone_name), so if you Describe a schedule, you'll see only structured_calendar, interval, etc. If a spec has no matching times after the current time, then the schedule will be subject to automatic deletion (after several days). */
@@ -498,7 +482,7 @@ export interface ScheduleSpec {
   timezoneName?: string;
   timezoneData?: string;
 }
-export const ScheduleSpec = /*@__PURE__*/ S.suspend(() =>
+const ScheduleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredCalendar: S.optional(ScheduleSpecStructuredCalendarList),
     cronString: S.optional(ScheduleSpecCronStringList),
@@ -518,7 +502,7 @@ export const ScheduleSpec = /*@__PURE__*/ S.suspend(() =>
 export interface WorkflowType {
   name?: string;
 }
-export const WorkflowType = /*@__PURE__*/ S.suspend(() =>
+const WorkflowType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -530,7 +514,7 @@ export type TaskQueueKind =
   | "TASK_QUEUE_KIND_NORMAL"
   | "TASK_QUEUE_KIND_STICKY"
   | "TASK_QUEUE_KIND_WORKER_COMMANDS";
-export const TaskQueueKind = S.String;
+const TaskQueueKind = S.String;
 
 /** See https://docs.temporal.io/docs/concepts/task-queues/ */
 export interface TaskQueue {
@@ -540,7 +524,7 @@ export interface TaskQueue {
   /** Iff kind == TASK_QUEUE_KIND_STICKY, then this field contains the name of the normal task queue that the sticky worker is running on. */
   normalName?: string;
 }
-export const TaskQueue = /*@__PURE__*/ S.suspend(() =>
+const TaskQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     kind: S.optional(TaskQueueKind),
@@ -549,14 +533,14 @@ export const TaskQueue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskQueue" }) as any as S.Schema<TaskQueue>;
 
 export type PayloadsPayloadsList = Array<unknown>;
-export const PayloadsPayloadsList =
+const PayloadsPayloadsList =
   CountActivityExecutionsResponseAggregationGroupGroupValuesList as any as S.Schema<PayloadsPayloadsList>;
 
 /** See `Payload` */
 export interface Payloads {
   payloads?: PayloadsPayloadsList;
 }
-export const Payloads = /*@__PURE__*/ S.suspend(() =>
+const Payloads = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payloads: S.optional(PayloadsPayloadsList),
   }),
@@ -569,11 +553,11 @@ export type NewWorkflowExecutionInfoWorkflowIdReusePolicy =
   | "WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE"
   | "WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING";
-export const NewWorkflowExecutionInfoWorkflowIdReusePolicy = S.String;
+const NewWorkflowExecutionInfoWorkflowIdReusePolicy = S.String;
 
 /** Non-Retryable errors types. Will stop retrying if the error type matches this list. Note that this is not a substring match, the error *type* (not message) must match exactly. */
 export type RetryPolicyNonRetryableErrorTypesList = Array<string>;
-export const RetryPolicyNonRetryableErrorTypesList =
+const RetryPolicyNonRetryableErrorTypesList =
   ScheduleSpecCronStringList as any as S.Schema<RetryPolicyNonRetryableErrorTypesList>;
 
 /** How retries ought to be handled, usable by both workflows and activities */
@@ -589,7 +573,7 @@ export interface RetryPolicy {
   /** Non-Retryable errors types. Will stop retrying if the error type matches this list. Note that this is not a substring match, the error *type* (not message) must match exactly. */
   nonRetryableErrorTypes?: RetryPolicyNonRetryableErrorTypesList;
 }
-export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialInterval: S.optional(S.String),
     backoffCoefficient: S.optional(S.Number),
@@ -600,43 +584,38 @@ export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
 
 export type MemoFieldsMap = { [key: string]: unknown | undefined };
-export const MemoFieldsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MemoFieldsMap>;
+const MemoFieldsMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<MemoFieldsMap>;
 
 /** A user-defined set of *unindexed* fields that are exposed when listing/searching workflows */
 export interface Memo {
   fields?: MemoFieldsMap;
 }
-export const Memo = /*@__PURE__*/ S.suspend(() =>
+const Memo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(MemoFieldsMap),
   }),
 ).annotate({ identifier: "Memo" }) as any as S.Schema<Memo>;
 
 export type SearchAttributesIndexedFieldsMap = { [key: string]: unknown | undefined };
-export const SearchAttributesIndexedFieldsMap =
+const SearchAttributesIndexedFieldsMap =
   MemoFieldsMap as any as S.Schema<SearchAttributesIndexedFieldsMap>;
 
 /** A user-defined set of *indexed* fields that are used/exposed when listing/searching workflows. The payload is not serialized in a user-defined way. */
 export interface SearchAttributes {
   indexedFields?: SearchAttributesIndexedFieldsMap;
 }
-export const SearchAttributes = /*@__PURE__*/ S.suspend(() =>
+const SearchAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexedFields: S.optional(SearchAttributesIndexedFieldsMap),
   }),
 ).annotate({ identifier: "SearchAttributes" }) as any as S.Schema<SearchAttributes>;
 
 export type HeaderFieldsMap = { [key: string]: unknown | undefined };
-export const HeaderFieldsMap = MemoFieldsMap as any as S.Schema<HeaderFieldsMap>;
-
 /** Contains metadata that can be attached to a variety of requests, like starting a workflow, and can be propagated between, for example, workflows and activities. */
 export interface Header {
   fields?: HeaderFieldsMap;
 }
-export const Header = Memo as any as S.Schema<Header>;
+const Header = Memo as any as S.Schema<Header>;
 
 /** Information a user can set, often for use by user interfaces. */
 export interface UserMetadata {
@@ -645,7 +624,7 @@ export interface UserMetadata {
   /** Long-form text that provides details. This payload should be a "json/plain"-encoded payload that is a single JSON string for use in user interfaces. User interface formatting may apply to this text in common use. The payload data section is limited to 20000 bytes by default. */
   details?: unknown;
 }
-export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
+const UserMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.Unknown),
     details: S.optional(S.Unknown),
@@ -656,7 +635,7 @@ export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
 export type VersioningOverridePinnedOverrideBehavior =
   | "PINNED_OVERRIDE_BEHAVIOR_UNSPECIFIED"
   | "PINNED_OVERRIDE_BEHAVIOR_PINNED";
-export const VersioningOverridePinnedOverrideBehavior = S.String;
+const VersioningOverridePinnedOverrideBehavior = S.String;
 
 /** A Worker Deployment Version (Version, for short) represents a version of workers within a Worker Deployment. (see documentation of WorkerDeploymentVersionInfo) Version records are created in Temporal server automatically when their first poller arrives to the server. Experimental. Worker Deployment Versions are experimental and might significantly change in the future. */
 export interface WorkerDeploymentVersion {
@@ -665,7 +644,7 @@ export interface WorkerDeploymentVersion {
   /** Identifies the Worker Deployment this Version is part of. */
   deploymentName?: string;
 }
-export const WorkerDeploymentVersion = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildId: S.optional(S.String),
     deploymentName: S.optional(S.String),
@@ -678,7 +657,7 @@ export interface VersioningOverridePinnedOverride {
   /** Specifies the Worker Deployment Version to pin this workflow to. Required if the target workflow is not already pinned to a version. If omitted and the target workflow is already pinned, the effective pinned version will be the existing pinned version. If omitted and the target workflow is not pinned, the override request will be rejected with a PreconditionFailed error. */
   version?: WorkerDeploymentVersion;
 }
-export const VersioningOverridePinnedOverride = /*@__PURE__*/ S.suspend(() =>
+const VersioningOverridePinnedOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behavior: S.optional(VersioningOverridePinnedOverrideBehavior),
     version: S.optional(WorkerDeploymentVersion),
@@ -692,7 +671,7 @@ export type VersioningOverrideBehavior =
   | "VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "VERSIONING_BEHAVIOR_PINNED"
   | "VERSIONING_BEHAVIOR_AUTO_UPGRADE";
-export const VersioningOverrideBehavior = S.String;
+const VersioningOverrideBehavior = S.String;
 
 /** `Deployment` identifies a deployment of Temporal workers. The combination of deployment series name + build ID serves as the identifier. User can use `WorkerDeploymentOptions` in their worker programs to specify these values. Deprecated. */
 export interface Deployment {
@@ -701,7 +680,7 @@ export interface Deployment {
   /** Build ID changes with each version of the worker when the worker program code and/or config changes. */
   buildId?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seriesName: S.optional(S.String),
     buildId: S.optional(S.String),
@@ -721,7 +700,7 @@ export interface VersioningOverride {
   /** Required if behavior is `PINNED`. Must be absent if behavior is not `PINNED`. Identifies the worker deployment version to pin the workflow to, in the format "<deployment_name>.<build_id>". Deprecated. Use `override.pinned.version`. */
   pinnedVersion?: string;
 }
-export const VersioningOverride = /*@__PURE__*/ S.suspend(() =>
+const VersioningOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinned: S.optional(VersioningOverridePinnedOverride),
     autoUpgrade: S.optional(S.Boolean),
@@ -740,7 +719,7 @@ export interface Priority {
   /** Fairness weight for a task can come from multiple sources for flexibility. From highest to lowest precedence: 1. Weights for a small set of keys can be overridden in task queue configuration with an API. 2. It can be attached to the workflow/activity in this field. 3. The default weight of 1.0 will be used. Weight values are clamped to the range [0.001, 1000]. */
   fairnessWeight?: number;
 }
-export const Priority = /*@__PURE__*/ S.suspend(() =>
+const Priority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     priorityKey: S.optional(S.Number),
     fairnessKey: S.optional(S.String),
@@ -777,7 +756,7 @@ export interface NewWorkflowExecutionInfo {
   /** Priority metadata */
   priority?: Priority;
 }
-export const NewWorkflowExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const NewWorkflowExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.optional(S.String),
     workflowType: S.optional(WorkflowType),
@@ -802,7 +781,7 @@ export interface ScheduleAction {
   /** All fields of NewWorkflowExecutionInfo are valid except for: - workflow_id_reuse_policy - cron_schedule The workflow id of the started workflow may not match this exactly, it may have a timestamp appended for uniqueness. */
   startWorkflow?: NewWorkflowExecutionInfo;
 }
-export const ScheduleAction = /*@__PURE__*/ S.suspend(() =>
+const ScheduleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startWorkflow: S.optional(NewWorkflowExecutionInfo),
   }),
@@ -817,7 +796,7 @@ export type SchedulePoliciesOverlapPolicy =
   | "SCHEDULE_OVERLAP_POLICY_CANCEL_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_TERMINATE_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_ALLOW_ALL";
-export const SchedulePoliciesOverlapPolicy = S.String;
+const SchedulePoliciesOverlapPolicy = S.String;
 
 export interface SchedulePolicies {
   /** Policy for overlaps. Note that this can be changed after a schedule has taken some actions, and some changes might produce unintuitive results. In general, the later policy overrides the earlier policy. */
@@ -829,7 +808,7 @@ export interface SchedulePolicies {
   /** If true, and the action would start a workflow, a timestamp will not be appended to the scheduled workflow id. */
   keepOriginalWorkflowId?: boolean;
 }
-export const SchedulePolicies = /*@__PURE__*/ S.suspend(() =>
+const SchedulePolicies = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overlapPolicy: S.optional(SchedulePoliciesOverlapPolicy),
     catchupWindow: S.optional(S.String),
@@ -847,7 +826,7 @@ export interface ScheduleState {
   limitedActions?: boolean;
   remainingActions?: string;
 }
-export const ScheduleState = /*@__PURE__*/ S.suspend(() =>
+const ScheduleState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notes: S.optional(S.String),
     paused: S.optional(S.Boolean),
@@ -862,7 +841,7 @@ export interface Schedule {
   policies?: SchedulePolicies;
   state?: ScheduleState;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(ScheduleSpec),
     action: S.optional(ScheduleAction),
@@ -880,7 +859,7 @@ export type TriggerImmediatelyRequestOverlapPolicy =
   | "SCHEDULE_OVERLAP_POLICY_CANCEL_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_TERMINATE_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_ALLOW_ALL";
-export const TriggerImmediatelyRequestOverlapPolicy = S.String;
+const TriggerImmediatelyRequestOverlapPolicy = S.String;
 
 export interface TriggerImmediatelyRequest {
   /** If set, override overlap policy for this one request. */
@@ -888,7 +867,7 @@ export interface TriggerImmediatelyRequest {
   /** Timestamp used for the identity of the target workflow. If not set the default value is the current time. */
   scheduledTime?: string;
 }
-export const TriggerImmediatelyRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerImmediatelyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     overlapPolicy: S.optional(TriggerImmediatelyRequestOverlapPolicy),
     scheduledTime: S.optional(S.String),
@@ -906,7 +885,7 @@ export type BackfillRequestOverlapPolicy =
   | "SCHEDULE_OVERLAP_POLICY_CANCEL_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_TERMINATE_OTHER"
   | "SCHEDULE_OVERLAP_POLICY_ALLOW_ALL";
-export const BackfillRequestOverlapPolicy = S.String;
+const BackfillRequestOverlapPolicy = S.String;
 
 export interface BackfillRequest {
   /** Time range to evaluate schedule in. Currently, this time range is exclusive on start_time and inclusive on end_time. (This is admittedly counterintuitive and it may change in the future, so to be safe, use a start time strictly before a scheduled time.) Also note that an action nominally scheduled in the interval but with jitter that pushes it after end_time will not be included. */
@@ -915,7 +894,7 @@ export interface BackfillRequest {
   /** If set, override overlap policy for this request. */
   overlapPolicy?: BackfillRequestOverlapPolicy | (string & {});
 }
-export const BackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const BackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -925,7 +904,7 @@ export const BackfillRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** If set, runs though the specified time period(s) and takes actions as if that time passed by right now, all at once. The overlap policy can be overridden for the scope of the backfill. */
 export type SchedulePatchBackfillRequestList = Array<BackfillRequest>;
-export const SchedulePatchBackfillRequestList = /*@__PURE__*/ S.Array(
+const SchedulePatchBackfillRequestList = /*@__PURE__*/ S.Array(
   BackfillRequest,
 ) as any as S.Schema<SchedulePatchBackfillRequestList>;
 
@@ -938,7 +917,7 @@ export interface SchedulePatch {
   pause?: string;
   unpause?: string;
 }
-export const SchedulePatch = /*@__PURE__*/ S.suspend(() =>
+const SchedulePatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerImmediately: S.optional(TriggerImmediatelyRequest),
     backfillRequest: S.optional(SchedulePatchBackfillRequestList),
@@ -964,7 +943,7 @@ export interface CreateScheduleRequest {
   memo?: Memo;
   searchAttributes?: SearchAttributes;
 }
-export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -986,7 +965,7 @@ export const CreateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateScheduleResponse {
   conflictToken?: string;
 }
-export const CreateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
   }),
@@ -1001,7 +980,7 @@ export interface CreateWorkerDeploymentRequest {
   /** A unique identifier for this create request for idempotence. Typically UUIDv4. */
   requestId?: string;
 }
-export const CreateWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -1022,7 +1001,7 @@ export interface CreateWorkerDeploymentResponse {
   /** This value is returned so that it can be optionally passed to APIs that write to the WorkerDeployment state to ensure that the state did not change between this API call and a future write. */
   conflictToken?: string;
 }
-export const CreateWorkerDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkerDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
   }),
@@ -1035,13 +1014,13 @@ export type ComputeConfigScalingGroupTaskQueueTypesItem =
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const ComputeConfigScalingGroupTaskQueueTypesItem = S.String;
+const ComputeConfigScalingGroupTaskQueueTypesItem = S.String;
 
 /** Optional. The set of task queue types this scaling group serves. If not provided, this scaling group serves all not otherwise defined task types. */
 export type ComputeConfigScalingGroupTaskQueueTypesList = Array<
   ComputeConfigScalingGroupTaskQueueTypesItem | (string & {})
 >;
-export const ComputeConfigScalingGroupTaskQueueTypesList = /*@__PURE__*/ S.Array(
+const ComputeConfigScalingGroupTaskQueueTypesList = /*@__PURE__*/ S.Array(
   ComputeConfigScalingGroupTaskQueueTypesItem,
 ) as any as S.Schema<ComputeConfigScalingGroupTaskQueueTypesList>;
 
@@ -1054,7 +1033,7 @@ export interface ComputeProvider {
   /** Optional. If the compute provider is a Nexus service, this should point there. */
   nexusEndpoint?: string;
 }
-export const ComputeProvider = /*@__PURE__*/ S.suspend(() =>
+const ComputeProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     details: S.optional(S.Unknown),
@@ -1069,7 +1048,7 @@ export interface ComputeScaler {
   /** Contains scaler-specific instructions and configuration. For server-implemented scalers, use the SDK's default data converter to ensure the server can understand it. For remote-implemented scalers, you might use your own data converters according to what the remote endpoints understand. */
   details?: unknown;
 }
-export const ComputeScaler = /*@__PURE__*/ S.suspend(() =>
+const ComputeScaler = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     details: S.optional(S.Unknown),
@@ -1084,7 +1063,7 @@ export interface ComputeConfigScalingGroup {
   /** Informs a worker lifecycle controller *when* and *how often* to perform certain worker lifecycle actions like starting a serverless worker. */
   scaler?: ComputeScaler;
 }
-export const ComputeConfigScalingGroup = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfigScalingGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueueTypes: S.optional(ComputeConfigScalingGroupTaskQueueTypesList),
     provider: S.optional(ComputeProvider),
@@ -1098,7 +1077,7 @@ export const ComputeConfigScalingGroup = /*@__PURE__*/ S.suspend(() =>
 export type ComputeConfigScalingGroupsMap = {
   [key: string]: ComputeConfigScalingGroup | undefined;
 };
-export const ComputeConfigScalingGroupsMap = /*@__PURE__*/ S.Record(
+const ComputeConfigScalingGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
   ComputeConfigScalingGroup,
 ) as any as S.Schema<ComputeConfigScalingGroupsMap>;
@@ -1108,7 +1087,7 @@ export interface ComputeConfig {
   /** Each scaling group describes a compute config for a specific subset of the worker deployment version: covering a specific set of task types and/or regions. Having different configurations for different task types, allows independent tuning of activity and workflow task processing (for example). The key of the map is the ID of the scaling group used to reference it in subsequent update calls. */
   scalingGroups?: ComputeConfigScalingGroupsMap;
 }
-export const ComputeConfig = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scalingGroups: S.optional(ComputeConfigScalingGroupsMap),
   }),
@@ -1126,7 +1105,7 @@ export interface CreateWorkerDeploymentVersionRequest {
   /** A unique identifier for this create request for idempotence. Typically UUIDv4. If a second request with the same ID is recieved, it is considered a successful no-op. Retrying with a different request ID for the same deployment name + build ID is an error. */
   requestId?: string;
 }
-export const CreateWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -1146,7 +1125,7 @@ export const CreateWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateWorkerDeploymentVersionRequest>;
 
 export type CreateWorkerDeploymentVersionResponse2 = unknown;
-export const CreateWorkerDeploymentVersionResponse2 = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkerDeploymentVersionResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateWorkerDeploymentVersionResponse2",
@@ -1157,7 +1136,7 @@ export interface WorkflowRuleSpecActivityStartingTrigger {
   /** Activity predicate is a SQL-like string filter parameter. It is used to match against workflow data. The following activity attributes are supported as part of the predicate: - ActivityType: An Activity Type is the mapping of a name to an Activity Definition.. - ActivityId: The ID of the activity. - ActivityAttempt: The number attempts of the activity. - BackoffInterval: The current amount of time between scheduled attempts of the activity. - ActivityStatus: The status of the activity. Can be one of "Scheduled", "Started", "Paused". - TaskQueue: The name of the task queue the workflow specified that the activity should run on. Activity predicate support the following operators: * =, !=, >, >=, <, <= * AND, OR, () * BETWEEN ... AND STARTS_WITH */
   predicate?: string;
 }
-export const WorkflowRuleSpecActivityStartingTrigger = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRuleSpecActivityStartingTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     predicate: S.optional(S.String),
   }),
@@ -1168,7 +1147,7 @@ export const WorkflowRuleSpecActivityStartingTrigger = /*@__PURE__*/ S.suspend((
 export interface WorkflowRuleAction {
   activityPause?: unknown;
 }
-export const WorkflowRuleAction = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRuleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityPause: S.optional(S.Unknown),
   }),
@@ -1176,7 +1155,7 @@ export const WorkflowRuleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** WorkflowRuleAction to be taken when the rule is triggered and predicate is matched. */
 export type WorkflowRuleSpecActionsList = Array<WorkflowRuleAction>;
-export const WorkflowRuleSpecActionsList = /*@__PURE__*/ S.Array(
+const WorkflowRuleSpecActionsList = /*@__PURE__*/ S.Array(
   WorkflowRuleAction,
 ) as any as S.Schema<WorkflowRuleSpecActionsList>;
 
@@ -1191,7 +1170,7 @@ export interface WorkflowRuleSpec {
   /** Expiration time of the rule. After this time, the rule will be deleted. Can be empty if the rule should never expire. */
   expirationTime?: string;
 }
-export const WorkflowRuleSpec = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRuleSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     activityStart: S.optional(WorkflowRuleSpecActivityStartingTrigger),
@@ -1214,7 +1193,7 @@ export interface CreateWorkflowRuleRequest {
   /** Rule description.Will be stored with the rule. */
   description?: string;
 }
-export const CreateWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     spec: S.optional(WorkflowRuleSpec),
@@ -1240,7 +1219,7 @@ export interface WorkflowRule {
   /** Rule description. */
   description?: string;
 }
-export const WorkflowRule = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     spec: S.optional(WorkflowRuleSpec),
@@ -1255,7 +1234,7 @@ export interface CreateWorkflowRuleResponse {
   /** Batch Job ID if force-scan flag was provided. Otherwise empty. */
   jobId?: string;
 }
-export const CreateWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(WorkflowRule),
     jobId: S.optional(S.String),
@@ -1270,7 +1249,7 @@ export interface DeleteNexusEndpointRequest {
   /** Data version for this endpoint. Must match current version. */
   version?: string;
 }
-export const DeleteNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     version: S.optional(S.String.pipe(T.Query())),
@@ -1280,7 +1259,7 @@ export const DeleteNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteNexusEndpointRequest>;
 
 export type DeleteNexusEndpointResponse2 = unknown;
-export const DeleteNexusEndpointResponse2 =
+const DeleteNexusEndpointResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteNexusEndpointResponse2>;
 
 export interface DeleteScheduleRequest {
@@ -1291,7 +1270,7 @@ export interface DeleteScheduleRequest {
   /** The identity of the client who initiated this request. */
   identity?: string;
 }
-export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -1306,7 +1285,7 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export type DeleteScheduleResponse2 = unknown;
-export const DeleteScheduleResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduleResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteScheduleResponse2" }) as any as S.Schema<DeleteScheduleResponse2>;
 
@@ -1316,7 +1295,7 @@ export interface DeleteWorkerDeploymentRequest {
   /** Optional. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const DeleteWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -1333,7 +1312,7 @@ export const DeleteWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkerDeploymentRequest>;
 
 export type DeleteWorkerDeploymentResponse2 = unknown;
-export const DeleteWorkerDeploymentResponse2 =
+const DeleteWorkerDeploymentResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkerDeploymentResponse2>;
 
 export interface DeleteWorkerDeploymentVersionRequest {
@@ -1351,7 +1330,7 @@ export interface DeleteWorkerDeploymentVersionRequest {
   /** Optional. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const DeleteWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -1375,7 +1354,7 @@ export const DeleteWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteWorkerDeploymentVersionRequest>;
 
 export type DeleteWorkerDeploymentVersionResponse2 = unknown;
-export const DeleteWorkerDeploymentVersionResponse2 =
+const DeleteWorkerDeploymentVersionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkerDeploymentVersionResponse2>;
 
 export interface DeleteWorkflowRuleRequest {
@@ -1383,7 +1362,7 @@ export interface DeleteWorkflowRuleRequest {
   /** ID of the rule to delete. Unique within the namespace. */
   ruleId: string;
 }
-export const DeleteWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
@@ -1399,7 +1378,7 @@ export const DeleteWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteWorkflowRuleRequest>;
 
 export type DeleteWorkflowRuleResponse2 = unknown;
-export const DeleteWorkflowRuleResponse2 =
+const DeleteWorkflowRuleResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<DeleteWorkflowRuleResponse2>;
 
 export interface DescribeActivityExecutionRequest {
@@ -1414,7 +1393,7 @@ export interface DescribeActivityExecutionRequest {
   /** Token from a previous DescribeActivityExecutionResponse. If present, long-poll until activity state changes from the state encoded in this token. If absent, return current state immediately. If present, run_id must also be present. Note that activity state may change multiple times between requests, therefore it is not guaranteed that a client making a sequence of long-poll requests will see a complete sequence of state changes. */
   longPollToken?: string;
 }
-export const DescribeActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -1435,8 +1414,6 @@ export const DescribeActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents the identifier used by a activity author to define the activity. Typically, the name of a function. This is sometimes referred to as the activity's "name" */
 export type ActivityType = WorkflowType;
-export const ActivityType = WorkflowType;
-
 /** A general status for this activity, indicates whether it is currently running or in one of the terminal statuses. */
 export type ActivityExecutionInfoStatus =
   | "ACTIVITY_EXECUTION_STATUS_UNSPECIFIED"
@@ -1446,7 +1423,7 @@ export type ActivityExecutionInfoStatus =
   | "ACTIVITY_EXECUTION_STATUS_CANCELED"
   | "ACTIVITY_EXECUTION_STATUS_TERMINATED"
   | "ACTIVITY_EXECUTION_STATUS_TIMED_OUT";
-export const ActivityExecutionInfoStatus = S.String;
+const ActivityExecutionInfoStatus = S.String;
 
 /** More detailed breakdown of ACTIVITY_EXECUTION_STATUS_RUNNING. */
 export type ActivityExecutionInfoRunState =
@@ -1456,12 +1433,12 @@ export type ActivityExecutionInfoRunState =
   | "PENDING_ACTIVITY_STATE_CANCEL_REQUESTED"
   | "PENDING_ACTIVITY_STATE_PAUSED"
   | "PENDING_ACTIVITY_STATE_PAUSE_REQUESTED";
-export const ActivityExecutionInfoRunState = S.String;
+const ActivityExecutionInfoRunState = S.String;
 
 export type ApplicationFailureInfoCategory =
   | "APPLICATION_ERROR_CATEGORY_UNSPECIFIED"
   | "APPLICATION_ERROR_CATEGORY_BENIGN";
-export const ApplicationFailureInfoCategory = S.String;
+const ApplicationFailureInfoCategory = S.String;
 
 export interface ApplicationFailureInfo {
   type?: string;
@@ -1471,7 +1448,7 @@ export interface ApplicationFailureInfo {
   nextRetryDelay?: string;
   category?: ApplicationFailureInfoCategory | (string & {});
 }
-export const ApplicationFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const ApplicationFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     nonRetryable: S.optional(S.Boolean),
@@ -1487,13 +1464,13 @@ export type TimeoutFailureInfoTimeoutType =
   | "TIMEOUT_TYPE_SCHEDULE_TO_START"
   | "TIMEOUT_TYPE_SCHEDULE_TO_CLOSE"
   | "TIMEOUT_TYPE_HEARTBEAT";
-export const TimeoutFailureInfoTimeoutType = S.String;
+const TimeoutFailureInfoTimeoutType = S.String;
 
 export interface TimeoutFailureInfo {
   timeoutType?: TimeoutFailureInfoTimeoutType | (string & {});
   lastHeartbeatDetails?: Payloads;
 }
-export const TimeoutFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const TimeoutFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeoutType: S.optional(TimeoutFailureInfoTimeoutType),
     lastHeartbeatDetails: S.optional(Payloads),
@@ -1505,7 +1482,7 @@ export interface CanceledFailureInfo {
   /** The identity of the worker or client that requested the cancellation. */
   identity?: string;
 }
-export const CanceledFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const CanceledFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(Payloads),
     identity: S.optional(S.String),
@@ -1516,7 +1493,7 @@ export interface TerminatedFailureInfo {
   /** The identity of the worker or client that requested the termination. */
   identity?: string;
 }
-export const TerminatedFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const TerminatedFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
   }),
@@ -1525,7 +1502,7 @@ export const TerminatedFailureInfo = /*@__PURE__*/ S.suspend(() =>
 export interface ServerFailureInfo {
   nonRetryable?: boolean;
 }
-export const ServerFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const ServerFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonRetryable: S.optional(S.Boolean),
   }),
@@ -1534,7 +1511,7 @@ export const ServerFailureInfo = /*@__PURE__*/ S.suspend(() =>
 export interface ResetWorkflowFailureInfo {
   lastHeartbeatDetails?: Payloads;
 }
-export const ResetWorkflowFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const ResetWorkflowFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastHeartbeatDetails: S.optional(Payloads),
   }),
@@ -1549,7 +1526,7 @@ export type ActivityFailureInfoRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ActivityFailureInfoRetryState = S.String;
+const ActivityFailureInfoRetryState = S.String;
 
 export interface ActivityFailureInfo {
   scheduledEventId?: string;
@@ -1559,7 +1536,7 @@ export interface ActivityFailureInfo {
   activityId?: string;
   retryState?: ActivityFailureInfoRetryState | (string & {});
 }
-export const ActivityFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -1575,7 +1552,7 @@ export interface WorkflowExecution {
   workflowId?: string;
   runId?: string;
 }
-export const WorkflowExecution = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -1591,7 +1568,7 @@ export type ChildWorkflowExecutionFailureInfoRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ChildWorkflowExecutionFailureInfoRetryState = S.String;
+const ChildWorkflowExecutionFailureInfoRetryState = S.String;
 
 export interface ChildWorkflowExecutionFailureInfo {
   namespace?: string;
@@ -1601,7 +1578,7 @@ export interface ChildWorkflowExecutionFailureInfo {
   startedEventId?: string;
   retryState?: ChildWorkflowExecutionFailureInfoRetryState | (string & {});
 }
-export const ChildWorkflowExecutionFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     workflowExecution: S.optional(WorkflowExecution),
@@ -1629,7 +1606,7 @@ export interface NexusOperationFailureInfo {
   /** Operation token - may be empty if the operation completed synchronously. */
   operationToken?: string;
 }
-export const NexusOperationFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     endpoint: S.optional(S.String),
@@ -1647,7 +1624,7 @@ export type NexusHandlerFailureInfoRetryBehavior =
   | "NEXUS_HANDLER_ERROR_RETRY_BEHAVIOR_UNSPECIFIED"
   | "NEXUS_HANDLER_ERROR_RETRY_BEHAVIOR_RETRYABLE"
   | "NEXUS_HANDLER_ERROR_RETRY_BEHAVIOR_NON_RETRYABLE";
-export const NexusHandlerFailureInfoRetryBehavior = S.String;
+const NexusHandlerFailureInfoRetryBehavior = S.String;
 
 export interface NexusHandlerFailureInfo {
   /** The Nexus error type as defined in the spec: https://github.com/nexus-rpc/api/blob/main/SPEC.md#predefined-handler-errors. */
@@ -1655,7 +1632,7 @@ export interface NexusHandlerFailureInfo {
   /** Retry behavior, defaults to the retry behavior of the error type as defined in the spec. */
   retryBehavior?: NexusHandlerFailureInfoRetryBehavior | (string & {});
 }
-export const NexusHandlerFailureInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusHandlerFailureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     retryBehavior: S.optional(NexusHandlerFailureInfoRetryBehavior),
@@ -1681,7 +1658,7 @@ export interface Failure {
   nexusOperationExecutionFailureInfo?: NexusOperationFailureInfo;
   nexusHandlerFailureInfo?: NexusHandlerFailureInfo;
 }
-export const Failure = /*@__PURE__*/ S.suspend(() =>
+const Failure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     source: S.optional(S.String),
@@ -1763,14 +1740,14 @@ export type WorkflowEventEventReferenceEventType =
   | "EVENT_TYPE_WORKFLOW_EXECUTION_PAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_UNPAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_TIME_SKIPPING_TRANSITIONED";
-export const WorkflowEventEventReferenceEventType = S.String;
+const WorkflowEventEventReferenceEventType = S.String;
 
 /** EventReference is a direct reference to a history event through the event ID. */
 export interface WorkflowEventEventReference {
   eventId?: string;
   eventType?: WorkflowEventEventReferenceEventType | (string & {});
 }
-export const WorkflowEventEventReference = /*@__PURE__*/ S.suspend(() =>
+const WorkflowEventEventReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     eventType: S.optional(WorkflowEventEventReferenceEventType),
@@ -1841,14 +1818,14 @@ export type WorkflowEventRequestIdReferenceEventType =
   | "EVENT_TYPE_WORKFLOW_EXECUTION_PAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_UNPAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_TIME_SKIPPING_TRANSITIONED";
-export const WorkflowEventRequestIdReferenceEventType = S.String;
+const WorkflowEventRequestIdReferenceEventType = S.String;
 
 /** RequestIdReference is a indirect reference to a history event through the request ID. */
 export interface WorkflowEventRequestIdReference {
   requestId?: string;
   eventType?: WorkflowEventRequestIdReferenceEventType | (string & {});
 }
-export const WorkflowEventRequestIdReference = /*@__PURE__*/ S.suspend(() =>
+const WorkflowEventRequestIdReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
     eventType: S.optional(WorkflowEventRequestIdReferenceEventType),
@@ -1864,7 +1841,7 @@ export interface LinkWorkflowEvent {
   eventRef?: WorkflowEventEventReference;
   requestIdRef?: WorkflowEventRequestIdReference;
 }
-export const LinkWorkflowEvent = /*@__PURE__*/ S.suspend(() =>
+const LinkWorkflowEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     workflowId: S.optional(S.String),
@@ -1878,7 +1855,7 @@ export const LinkWorkflowEvent = /*@__PURE__*/ S.suspend(() =>
 export interface LinkBatchJob {
   jobId?: string;
 }
-export const LinkBatchJob = /*@__PURE__*/ S.suspend(() =>
+const LinkBatchJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
   }),
@@ -1890,7 +1867,7 @@ export interface LinkActivity {
   activityId?: string;
   runId?: string;
 }
-export const LinkActivity = /*@__PURE__*/ S.suspend(() =>
+const LinkActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     activityId: S.optional(S.String),
@@ -1904,7 +1881,7 @@ export interface LinkNexusOperation {
   operationId?: string;
   runId?: string;
 }
-export const LinkNexusOperation = /*@__PURE__*/ S.suspend(() =>
+const LinkNexusOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     operationId: S.optional(S.String),
@@ -1919,7 +1896,7 @@ export interface Link {
   activity?: LinkActivity;
   nexusOperation?: LinkNexusOperation;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowEvent: S.optional(LinkWorkflowEvent),
     batchJob: S.optional(LinkBatchJob),
@@ -1930,7 +1907,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 
 /** Links to related entities, such as the entity that started this activity. */
 export type ActivityExecutionInfoLinksList = Array<Link>;
-export const ActivityExecutionInfoLinksList = /*@__PURE__*/ S.Array(
+const ActivityExecutionInfoLinksList = /*@__PURE__*/ S.Array(
   Link,
 ) as any as S.Schema<ActivityExecutionInfoLinksList>;
 
@@ -2000,7 +1977,7 @@ export interface ActivityExecutionInfo {
   /** Total number of heartbeats recorded across all attempts of this activity, including retries. */
   totalHeartbeatCount?: string;
 }
-export const ActivityExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -2046,7 +2023,7 @@ export interface ActivityExecutionOutcome {
   /** The failure if the activity completed unsuccessfully. */
   failure?: Failure;
 }
-export const ActivityExecutionOutcome = /*@__PURE__*/ S.suspend(() =>
+const ActivityExecutionOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Payloads),
     failure: S.optional(Failure),
@@ -2055,7 +2032,7 @@ export const ActivityExecutionOutcome = /*@__PURE__*/ S.suspend(() =>
 
 /** Header to attach to callback request. */
 export type CallbackNexusHeaderMap = { [key: string]: string | undefined };
-export const CallbackNexusHeaderMap = /*@__PURE__*/ S.Record(
+const CallbackNexusHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CallbackNexusHeaderMap>;
@@ -2066,7 +2043,7 @@ export interface CallbackNexus {
   /** Header to attach to callback request. */
   header?: CallbackNexusHeaderMap;
 }
-export const CallbackNexus = /*@__PURE__*/ S.suspend(() =>
+const CallbackNexus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     header: S.optional(CallbackNexusHeaderMap),
@@ -2078,7 +2055,7 @@ export interface CallbackInternal {
   /** Opaque internal data. */
   data?: string;
 }
-export const CallbackInternal = /*@__PURE__*/ S.suspend(() =>
+const CallbackInternal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
   }),
@@ -2086,7 +2063,7 @@ export const CallbackInternal = /*@__PURE__*/ S.suspend(() =>
 
 /** Links associated with the callback. It can be used to link to underlying resources of the callback. */
 export type CallbackLinksList = Array<Link>;
-export const CallbackLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<CallbackLinksList>;
+const CallbackLinksList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<CallbackLinksList>;
 
 /** Callback to attach to various events in the system, e.g. workflow run completion. */
 export interface Callback {
@@ -2095,7 +2072,7 @@ export interface Callback {
   /** Links associated with the callback. It can be used to link to underlying resources of the callback. */
   links?: CallbackLinksList;
 }
-export const Callback = /*@__PURE__*/ S.suspend(() =>
+const Callback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nexus: S.optional(CallbackNexus),
     internal: S.optional(CallbackInternal),
@@ -2112,7 +2089,7 @@ export type CallbackInfoState =
   | "CALLBACK_STATE_FAILED"
   | "CALLBACK_STATE_SUCCEEDED"
   | "CALLBACK_STATE_BLOCKED";
-export const CallbackInfoState = S.String;
+const CallbackInfoState = S.String;
 
 /** Common callback information. Specific CallbackInfo messages should embed this and may include additional fields. */
 export interface CallbackInfo {
@@ -2133,7 +2110,7 @@ export interface CallbackInfo {
   /** If the state is BLOCKED, blocked reason provides additional information. */
   blockedReason?: string;
 }
-export const CallbackInfo = /*@__PURE__*/ S.suspend(() =>
+const CallbackInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     callback: S.optional(Callback),
     registrationTime: S.optional(S.String),
@@ -2148,7 +2125,7 @@ export const CallbackInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Callbacks attached to this activity execution and their current state. */
 export type DescribeActivityExecutionResponseCallbacksList = Array<CallbackInfo>;
-export const DescribeActivityExecutionResponseCallbacksList = /*@__PURE__*/ S.Array(
+const DescribeActivityExecutionResponseCallbacksList = /*@__PURE__*/ S.Array(
   CallbackInfo,
 ) as any as S.Schema<DescribeActivityExecutionResponseCallbacksList>;
 
@@ -2166,7 +2143,7 @@ export interface DescribeActivityExecutionResponse {
   /** Callbacks attached to this activity execution and their current state. */
   callbacks?: DescribeActivityExecutionResponseCallbacksList;
 }
-export const DescribeActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     info: S.optional(ActivityExecutionInfo),
@@ -2185,7 +2162,7 @@ export interface DescribeBatchOperationRequest {
   /** Batch job id */
   jobId: string;
 }
-export const DescribeBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -2212,7 +2189,7 @@ export type DescribeBatchOperationResponseOperationType =
   | "BATCH_OPERATION_TYPE_UNPAUSE_ACTIVITY"
   | "BATCH_OPERATION_TYPE_UPDATE_ACTIVITY_OPTIONS"
   | "BATCH_OPERATION_TYPE_RESET_ACTIVITY";
-export const DescribeBatchOperationResponseOperationType = S.String;
+const DescribeBatchOperationResponseOperationType = S.String;
 
 /** Batch operation state */
 export type DescribeBatchOperationResponseState =
@@ -2220,7 +2197,7 @@ export type DescribeBatchOperationResponseState =
   | "BATCH_OPERATION_STATE_RUNNING"
   | "BATCH_OPERATION_STATE_COMPLETED"
   | "BATCH_OPERATION_STATE_FAILED";
-export const DescribeBatchOperationResponseState = S.String;
+const DescribeBatchOperationResponseState = S.String;
 
 export interface DescribeBatchOperationResponse {
   /** Batch operation type */
@@ -2244,7 +2221,7 @@ export interface DescribeBatchOperationResponse {
   /** Reason indicates the reason to stop a operation */
   reason?: string;
 }
-export const DescribeBatchOperationResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeBatchOperationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationType: S.optional(DescribeBatchOperationResponseOperationType),
     jobId: S.optional(S.String),
@@ -2270,7 +2247,7 @@ export interface DescribeDeploymentRequest {
   /** Build ID changes with each version of the worker when the worker program code and/or config changes. */
   deployment_buildId?: string;
 }
-export const DescribeDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_series_name: S.String.pipe(T.Label()),
@@ -2293,7 +2270,7 @@ export type DeploymentInfoTaskQueueInfoType =
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const DeploymentInfoTaskQueueInfoType = S.String;
+const DeploymentInfoTaskQueueInfoType = S.String;
 
 export interface DeploymentInfoTaskQueueInfo {
   name?: string;
@@ -2301,7 +2278,7 @@ export interface DeploymentInfoTaskQueueInfo {
   /** When server saw the first poller for this task queue in this deployment. */
   firstPollerTime?: string;
 }
-export const DeploymentInfoTaskQueueInfo = /*@__PURE__*/ S.suspend(() =>
+const DeploymentInfoTaskQueueInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(DeploymentInfoTaskQueueInfoType),
@@ -2312,14 +2289,13 @@ export const DeploymentInfoTaskQueueInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentInfoTaskQueueInfo>;
 
 export type DeploymentInfoTaskQueueInfosList = Array<DeploymentInfoTaskQueueInfo>;
-export const DeploymentInfoTaskQueueInfosList = /*@__PURE__*/ S.Array(
+const DeploymentInfoTaskQueueInfosList = /*@__PURE__*/ S.Array(
   DeploymentInfoTaskQueueInfo,
 ) as any as S.Schema<DeploymentInfoTaskQueueInfosList>;
 
 /** A user-defined set of key-values. Can be updated as part of write operations to the deployment, such as `SetCurrentDeployment`. */
 export type DeploymentInfoMetadataMap = { [key: string]: unknown | undefined };
-export const DeploymentInfoMetadataMap =
-  MemoFieldsMap as any as S.Schema<DeploymentInfoMetadataMap>;
+const DeploymentInfoMetadataMap = MemoFieldsMap as any as S.Schema<DeploymentInfoMetadataMap>;
 
 /** `DeploymentInfo` holds information about a deployment. Deployment information is tracked automatically by server as soon as the first poll from that deployment reaches the server. There can be multiple task queue workers in a single deployment which are listed in this message. Deprecated. */
 export interface DeploymentInfo {
@@ -2331,7 +2307,7 @@ export interface DeploymentInfo {
   /** If this deployment is the current deployment of its deployment series. */
   isCurrent?: boolean;
 }
-export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
+const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: S.optional(Deployment),
     createTime: S.optional(S.String),
@@ -2345,7 +2321,7 @@ export const DeploymentInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDeploymentResponse {
   deploymentInfo?: DeploymentInfo;
 }
-export const DescribeDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentInfo: S.optional(DeploymentInfo),
   }),
@@ -2359,7 +2335,7 @@ export interface DescribeNamespaceRequest {
   /** If true, the server may serve the response from an eventually-consistent source instead of reading through to persistence. Defaults to false, which preserves read-after-write consistency. SDKs should set this when fetching namespace capabilities on worker/client startup. */
   weakConsistency?: boolean;
 }
-export const DescribeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     id: S.optional(S.String.pipe(T.Query())),
@@ -2372,11 +2348,11 @@ export type NamespaceInfoState =
   | "NAMESPACE_STATE_REGISTERED"
   | "NAMESPACE_STATE_DEPRECATED"
   | "NAMESPACE_STATE_DELETED";
-export const NamespaceInfoState = S.String;
+const NamespaceInfoState = S.String;
 
 /** A key-value map for any customized purpose. */
 export type NamespaceInfoDataMap = { [key: string]: string | undefined };
-export const NamespaceInfoDataMap = CallbackNexusHeaderMap as any as S.Schema<NamespaceInfoDataMap>;
+const NamespaceInfoDataMap = CallbackNexusHeaderMap as any as S.Schema<NamespaceInfoDataMap>;
 
 /** Namespace capability details. Should contain what features are enabled in a namespace. */
 export interface NamespaceInfoCapabilities {
@@ -2401,7 +2377,7 @@ export interface NamespaceInfoCapabilities {
   /** True if the namespace supports worker commands (server-to-worker communication via control queues). */
   workerCommands?: boolean;
 }
-export const NamespaceInfoCapabilities = /*@__PURE__*/ S.suspend(() =>
+const NamespaceInfoCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eagerWorkflowStart: S.optional(S.Boolean),
     syncUpdate: S.optional(S.Boolean),
@@ -2424,7 +2400,7 @@ export interface NamespaceInfoLimits {
   /** Maximum total memo size in bytes per workflow execution. */
   memoSizeLimitError?: string;
 }
-export const NamespaceInfoLimits = /*@__PURE__*/ S.suspend(() =>
+const NamespaceInfoLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobSizeLimitError: S.optional(S.String),
     memoSizeLimitError: S.optional(S.String),
@@ -2446,7 +2422,7 @@ export interface NamespaceInfo {
   /** Whether scheduled workflows are supported on this namespace. This is only needed temporarily while the feature is experimental, so we can give it a high tag. */
   supportsSchedules?: boolean;
 }
-export const NamespaceInfo = /*@__PURE__*/ S.suspend(() =>
+const NamespaceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     state: S.optional(NamespaceInfoState),
@@ -2465,7 +2441,7 @@ export interface BadBinaryInfo {
   operator?: string;
   createTime?: string;
 }
-export const BadBinaryInfo = /*@__PURE__*/ S.suspend(() =>
+const BadBinaryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     operator: S.optional(S.String),
@@ -2474,7 +2450,7 @@ export const BadBinaryInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BadBinaryInfo" }) as any as S.Schema<BadBinaryInfo>;
 
 export type BadBinariesBinariesMap = { [key: string]: BadBinaryInfo | undefined };
-export const BadBinariesBinariesMap = /*@__PURE__*/ S.Record(
+const BadBinariesBinariesMap = /*@__PURE__*/ S.Record(
   S.String,
   BadBinaryInfo,
 ) as any as S.Schema<BadBinariesBinariesMap>;
@@ -2482,7 +2458,7 @@ export const BadBinariesBinariesMap = /*@__PURE__*/ S.Record(
 export interface BadBinaries {
   binaries?: BadBinariesBinariesMap;
 }
-export const BadBinaries = /*@__PURE__*/ S.suspend(() =>
+const BadBinaries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     binaries: S.optional(BadBinariesBinariesMap),
   }),
@@ -2493,18 +2469,18 @@ export type NamespaceConfigHistoryArchivalState =
   | "ARCHIVAL_STATE_UNSPECIFIED"
   | "ARCHIVAL_STATE_DISABLED"
   | "ARCHIVAL_STATE_ENABLED";
-export const NamespaceConfigHistoryArchivalState = S.String;
+const NamespaceConfigHistoryArchivalState = S.String;
 
 /** If unspecified (ARCHIVAL_STATE_UNSPECIFIED) then default server configuration is used. */
 export type NamespaceConfigVisibilityArchivalState =
   | "ARCHIVAL_STATE_UNSPECIFIED"
   | "ARCHIVAL_STATE_DISABLED"
   | "ARCHIVAL_STATE_ENABLED";
-export const NamespaceConfigVisibilityArchivalState = S.String;
+const NamespaceConfigVisibilityArchivalState = S.String;
 
 /** Map from field name to alias. */
 export type NamespaceConfigCustomSearchAttributeAliasesMap = { [key: string]: string | undefined };
-export const NamespaceConfigCustomSearchAttributeAliasesMap =
+const NamespaceConfigCustomSearchAttributeAliasesMap =
   CallbackNexusHeaderMap as any as S.Schema<NamespaceConfigCustomSearchAttributeAliasesMap>;
 
 export interface NamespaceConfig {
@@ -2519,7 +2495,7 @@ export interface NamespaceConfig {
   /** Map from field name to alias. */
   customSearchAttributeAliases?: NamespaceConfigCustomSearchAttributeAliasesMap;
 }
-export const NamespaceConfig = /*@__PURE__*/ S.suspend(() =>
+const NamespaceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowExecutionRetentionTtl: S.optional(S.String),
     badBinaries: S.optional(BadBinaries),
@@ -2534,14 +2510,14 @@ export const NamespaceConfig = /*@__PURE__*/ S.suspend(() =>
 export interface ClusterReplicationConfig {
   clusterName?: string;
 }
-export const ClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
+const ClusterReplicationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.optional(S.String),
   }),
 ).annotate({ identifier: "ClusterReplicationConfig" }) as any as S.Schema<ClusterReplicationConfig>;
 
 export type NamespaceReplicationConfigClustersList = Array<ClusterReplicationConfig>;
-export const NamespaceReplicationConfigClustersList = /*@__PURE__*/ S.Array(
+const NamespaceReplicationConfigClustersList = /*@__PURE__*/ S.Array(
   ClusterReplicationConfig,
 ) as any as S.Schema<NamespaceReplicationConfigClustersList>;
 
@@ -2549,14 +2525,14 @@ export type NamespaceReplicationConfigState =
   | "REPLICATION_STATE_UNSPECIFIED"
   | "REPLICATION_STATE_NORMAL"
   | "REPLICATION_STATE_HANDOVER";
-export const NamespaceReplicationConfigState = S.String;
+const NamespaceReplicationConfigState = S.String;
 
 export interface NamespaceReplicationConfig {
   activeClusterName?: string;
   clusters?: NamespaceReplicationConfigClustersList;
   state?: NamespaceReplicationConfigState | (string & {});
 }
-export const NamespaceReplicationConfig = /*@__PURE__*/ S.suspend(() =>
+const NamespaceReplicationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeClusterName: S.optional(S.String),
     clusters: S.optional(NamespaceReplicationConfigClustersList),
@@ -2572,7 +2548,7 @@ export interface FailoverStatus {
   failoverTime?: string;
   failoverVersion?: string;
 }
-export const FailoverStatus = /*@__PURE__*/ S.suspend(() =>
+const FailoverStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failoverTime: S.optional(S.String),
     failoverVersion: S.optional(S.String),
@@ -2581,7 +2557,7 @@ export const FailoverStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Contains the historical state of failover_versions for the cluster, truncated to contain only the last N states to ensure that the list does not grow unbounded. */
 export type DescribeNamespaceResponseFailoverHistoryList = Array<FailoverStatus>;
-export const DescribeNamespaceResponseFailoverHistoryList = /*@__PURE__*/ S.Array(
+const DescribeNamespaceResponseFailoverHistoryList = /*@__PURE__*/ S.Array(
   FailoverStatus,
 ) as any as S.Schema<DescribeNamespaceResponseFailoverHistoryList>;
 
@@ -2594,7 +2570,7 @@ export interface DescribeNamespaceResponse {
   /** Contains the historical state of failover_versions for the cluster, truncated to contain only the last N states to ensure that the list does not grow unbounded. */
   failoverHistory?: DescribeNamespaceResponseFailoverHistoryList;
 }
-export const DescribeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaceInfo: S.optional(NamespaceInfo),
     config: S.optional(NamespaceConfig),
@@ -2619,7 +2595,7 @@ export interface DescribeNexusOperationExecutionRequest {
   /** Token from a previous DescribeNexusOperationExecutionResponse. If present, this RPC will long-poll until operation state changes from the state encoded in this token. If absent, return current state immediately. If present, run_id must also be present. Note that operation state may change multiple times between requests, therefore it is not guaranteed that a client making a sequence of long-poll requests will see a complete sequence of state changes. */
   longPollToken?: string;
 }
-export const DescribeNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -2647,7 +2623,7 @@ export type NexusOperationExecutionInfoStatus =
   | "NEXUS_OPERATION_EXECUTION_STATUS_CANCELED"
   | "NEXUS_OPERATION_EXECUTION_STATUS_TERMINATED"
   | "NEXUS_OPERATION_EXECUTION_STATUS_TIMED_OUT";
-export const NexusOperationExecutionInfoStatus = S.String;
+const NexusOperationExecutionInfoStatus = S.String;
 
 /** More detailed breakdown of NEXUS_OPERATION_EXECUTION_STATUS_RUNNING. */
 export type NexusOperationExecutionInfoState =
@@ -2656,7 +2632,7 @@ export type NexusOperationExecutionInfoState =
   | "PENDING_NEXUS_OPERATION_STATE_BACKING_OFF"
   | "PENDING_NEXUS_OPERATION_STATE_STARTED"
   | "PENDING_NEXUS_OPERATION_STATE_BLOCKED";
-export const NexusOperationExecutionInfoState = S.String;
+const NexusOperationExecutionInfoState = S.String;
 
 export type NexusOperationExecutionCancellationInfoState =
   | "NEXUS_OPERATION_CANCELLATION_STATE_UNSPECIFIED"
@@ -2666,7 +2642,7 @@ export type NexusOperationExecutionCancellationInfoState =
   | "NEXUS_OPERATION_CANCELLATION_STATE_FAILED"
   | "NEXUS_OPERATION_CANCELLATION_STATE_TIMED_OUT"
   | "NEXUS_OPERATION_CANCELLATION_STATE_BLOCKED";
-export const NexusOperationExecutionCancellationInfoState = S.String;
+const NexusOperationExecutionCancellationInfoState = S.String;
 
 /** NexusOperationExecutionCancellationInfo contains the state of a Nexus operation cancellation. */
 export interface NexusOperationExecutionCancellationInfo {
@@ -2686,7 +2662,7 @@ export interface NexusOperationExecutionCancellationInfo {
   /** A reason that may be specified in the CancelNexusOperationRequest. */
   reason?: string;
 }
-export const NexusOperationExecutionCancellationInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationExecutionCancellationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedTime: S.optional(S.String),
     state: S.optional(NexusOperationExecutionCancellationInfoState),
@@ -2703,12 +2679,12 @@ export const NexusOperationExecutionCancellationInfo = /*@__PURE__*/ S.suspend((
 
 /** Header for context propagation and tracing purposes. */
 export type NexusOperationExecutionInfoNexusHeaderMap = { [key: string]: string | undefined };
-export const NexusOperationExecutionInfoNexusHeaderMap =
+const NexusOperationExecutionInfoNexusHeaderMap =
   CallbackNexusHeaderMap as any as S.Schema<NexusOperationExecutionInfoNexusHeaderMap>;
 
 /** Links attached by the handler of this operation on start or completion. */
 export type NexusOperationExecutionInfoLinksList = Array<Link>;
-export const NexusOperationExecutionInfoLinksList =
+const NexusOperationExecutionInfoLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<NexusOperationExecutionInfoLinksList>;
 
 /** Full current state of a standalone Nexus operation, as of the time of the request. */
@@ -2767,7 +2743,7 @@ export interface NexusOperationExecutionInfo {
   /** The identity of the client who started this operation. */
   identity?: string;
 }
-export const NexusOperationExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -2816,7 +2792,7 @@ export interface DescribeNexusOperationExecutionResponse {
   /** Token for follow-on long-poll requests. Absent only if the operation is complete. */
   longPollToken?: string;
 }
-export const DescribeNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     info: S.optional(NexusOperationExecutionInfo),
@@ -2835,7 +2811,7 @@ export interface DescribeScheduleRequest {
   /** The id of the schedule to describe. */
   scheduleId: string;
 }
-export const DescribeScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -2850,7 +2826,7 @@ export const DescribeScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Currently-running workflows started by this schedule. (There might be more than one if the overlap policy allows overlaps.) Note that the run_ids in here are the original execution run ids as started by the schedule. If the workflows retried, did continue-as-new, or were reset, they might still be running but with a different run_id. */
 export type ScheduleInfoRunningWorkflowsList = Array<WorkflowExecution>;
-export const ScheduleInfoRunningWorkflowsList = /*@__PURE__*/ S.Array(
+const ScheduleInfoRunningWorkflowsList = /*@__PURE__*/ S.Array(
   WorkflowExecution,
 ) as any as S.Schema<ScheduleInfoRunningWorkflowsList>;
 
@@ -2865,7 +2841,7 @@ export type ScheduleActionResultStartWorkflowStatus =
   | "WORKFLOW_EXECUTION_STATUS_CONTINUED_AS_NEW"
   | "WORKFLOW_EXECUTION_STATUS_TIMED_OUT"
   | "WORKFLOW_EXECUTION_STATUS_PAUSED";
-export const ScheduleActionResultStartWorkflowStatus = S.String;
+const ScheduleActionResultStartWorkflowStatus = S.String;
 
 export interface ScheduleActionResult {
   /** Time that the action was taken (according to the schedule, including jitter). */
@@ -2877,7 +2853,7 @@ export interface ScheduleActionResult {
   /** If the action was start_workflow, this field will reflect an eventually-consistent view of the started workflow's status. */
   startWorkflowStatus?: ScheduleActionResultStartWorkflowStatus;
 }
-export const ScheduleActionResult = /*@__PURE__*/ S.suspend(() =>
+const ScheduleActionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleTime: S.optional(S.String),
     actualTime: S.optional(S.String),
@@ -2888,13 +2864,13 @@ export const ScheduleActionResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Most recent ten actual action times (including manual triggers). */
 export type ScheduleInfoRecentActionsList = Array<ScheduleActionResult>;
-export const ScheduleInfoRecentActionsList = /*@__PURE__*/ S.Array(
+const ScheduleInfoRecentActionsList = /*@__PURE__*/ S.Array(
   ScheduleActionResult,
 ) as any as S.Schema<ScheduleInfoRecentActionsList>;
 
 /** Next ten scheduled action times. */
 export type ScheduleInfoFutureActionTimesList = Array<string>;
-export const ScheduleInfoFutureActionTimesList =
+const ScheduleInfoFutureActionTimesList =
   ScheduleSpecCronStringList as any as S.Schema<ScheduleInfoFutureActionTimesList>;
 
 export interface ScheduleInfo {
@@ -2920,7 +2896,7 @@ export interface ScheduleInfo {
   /** Deprecated. */
   invalidScheduleError?: string;
 }
-export const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
+const ScheduleInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionCount: S.optional(S.String),
     missedCatchupWindow: S.optional(S.String),
@@ -2947,7 +2923,7 @@ export interface DescribeScheduleResponse {
   /** This value can be passed back to UpdateSchedule to ensure that the schedule was not modified between a Describe and an Update, which could lead to lost updates and other confusion. */
   conflictToken?: string;
 }
-export const DescribeScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(Schedule),
     info: S.optional(ScheduleInfo),
@@ -2962,22 +2938,22 @@ export type DescribeTaskQueueRequestTaskQueueKind =
   | "TASK_QUEUE_KIND_NORMAL"
   | "TASK_QUEUE_KIND_STICKY"
   | "TASK_QUEUE_KIND_WORKER_COMMANDS";
-export const DescribeTaskQueueRequestTaskQueueKind = S.String;
+const DescribeTaskQueueRequestTaskQueueKind = S.String;
 
 export type DescribeTaskQueueRequestTaskQueueType =
   | "TASK_QUEUE_TYPE_UNSPECIFIED"
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const DescribeTaskQueueRequestTaskQueueType = S.String;
+const DescribeTaskQueueRequestTaskQueueType = S.String;
 
 export type DescribeTaskQueueRequestApiMode =
   | "DESCRIBE_TASK_QUEUE_MODE_UNSPECIFIED"
   | "DESCRIBE_TASK_QUEUE_MODE_ENHANCED";
-export const DescribeTaskQueueRequestApiMode = S.String;
+const DescribeTaskQueueRequestApiMode = S.String;
 
 export type DescribeTaskQueueRequestVersionsBuildIdsList = Array<string>;
-export const DescribeTaskQueueRequestVersionsBuildIdsList =
+const DescribeTaskQueueRequestVersionsBuildIdsList =
   ScheduleSpecCronStringList as any as S.Schema<DescribeTaskQueueRequestVersionsBuildIdsList>;
 
 export type DescribeTaskQueueRequestTaskQueueTypesItem =
@@ -2985,12 +2961,10 @@ export type DescribeTaskQueueRequestTaskQueueTypesItem =
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const DescribeTaskQueueRequestTaskQueueTypesItem = S.String;
-
 export type DescribeTaskQueueRequestTaskQueueTypesList = Array<
   DescribeTaskQueueRequestTaskQueueTypesItem | (string & {})
 >;
-export const DescribeTaskQueueRequestTaskQueueTypesList =
+const DescribeTaskQueueRequestTaskQueueTypesList =
   ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<DescribeTaskQueueRequestTaskQueueTypesList>;
 
 export interface DescribeTaskQueueRequest {
@@ -3024,7 +2998,7 @@ export interface DescribeTaskQueueRequest {
   /** Deprecated (as part of the ENHANCED mode deprecation). Report task reachability for the requested versions and all task types (task reachability is not reported per task type). */
   reportTaskReachability?: boolean;
 }
-export const DescribeTaskQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeTaskQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     task_queue_name: S.String.pipe(T.Label()),
@@ -3064,7 +3038,7 @@ export interface WorkerVersionCapabilities {
   /** Must be sent if user has set a deployment series name (versioning-3). */
   deploymentSeriesName?: string;
 }
-export const WorkerVersionCapabilities = /*@__PURE__*/ S.suspend(() =>
+const WorkerVersionCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildId: S.optional(S.String),
     useVersioning: S.optional(S.Boolean),
@@ -3079,7 +3053,7 @@ export type WorkerDeploymentOptionsWorkerVersioningMode =
   | "WORKER_VERSIONING_MODE_UNSPECIFIED"
   | "WORKER_VERSIONING_MODE_UNVERSIONED"
   | "WORKER_VERSIONING_MODE_VERSIONED";
-export const WorkerDeploymentOptionsWorkerVersioningMode = S.String;
+const WorkerDeploymentOptionsWorkerVersioningMode = S.String;
 
 /** Worker Deployment options set in SDK that need to be sent to server in every poll. */
 export interface WorkerDeploymentOptions {
@@ -3090,7 +3064,7 @@ export interface WorkerDeploymentOptions {
   /** Required. Versioning Mode for this worker. Must be the same for all workers with the same `deployment_name` and `build_id` combination, across all Task Queues. When `worker_versioning_mode==VERSIONED`, the worker will be part of a Deployment Version. */
   workerVersioningMode?: WorkerDeploymentOptionsWorkerVersioningMode | (string & {});
 }
-export const WorkerDeploymentOptions = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     buildId: S.optional(S.String),
@@ -3107,7 +3081,7 @@ export interface PollerInfo {
   /** Worker deployment options that SDK sent to server. */
   deploymentOptions?: WorkerDeploymentOptions;
 }
-export const PollerInfo = /*@__PURE__*/ S.suspend(() =>
+const PollerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastAccessTime: S.optional(S.String),
     identity: S.optional(S.String),
@@ -3118,7 +3092,7 @@ export const PollerInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PollerInfo" }) as any as S.Schema<PollerInfo>;
 
 export type DescribeTaskQueueResponsePollersList = Array<PollerInfo>;
-export const DescribeTaskQueueResponsePollersList = /*@__PURE__*/ S.Array(
+const DescribeTaskQueueResponsePollersList = /*@__PURE__*/ S.Array(
   PollerInfo,
 ) as any as S.Schema<DescribeTaskQueueResponsePollersList>;
 
@@ -3133,7 +3107,7 @@ export interface TaskQueueStats {
   /** The approximate tasks per second dispatched from the task queue, averaging the last 30 seconds. These includes tasks whether or not they were added to/dispatched from the backlog or they were dispatched immediately without going to the backlog (sync-matched). The difference between `tasks_add_rate` and `tasks_dispatch_rate` is a reliable metric for the rate at which backlog grows/shrinks. Note: the actual tasks delivered to the workers may significantly be higher than the numbers reported by tasks_dispatch_rate, because: - Tasks can be sent to workers without going to the task queue. This is called Eager dispatch. Eager dispatch is enable for activities by default in the latest SDKs. - Tasks going to Sticky queue are not accounted for. Note that, typically, only the first workflow task of each workflow goes to a normal queue, and the rest workflow tasks go to the Sticky queue associated with a specific worker instance. */
   tasksDispatchRate?: number;
 }
-export const TaskQueueStats = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approximateBacklogCount: S.optional(S.String),
     approximateBacklogAge: S.optional(S.String),
@@ -3146,7 +3120,7 @@ export const TaskQueueStats = /*@__PURE__*/ S.suspend(() =>
 export type DescribeTaskQueueResponseStatsByPriorityKeyMap = {
   [key: string]: TaskQueueStats | undefined;
 };
-export const DescribeTaskQueueResponseStatsByPriorityKeyMap = /*@__PURE__*/ S.Record(
+const DescribeTaskQueueResponseStatsByPriorityKeyMap = /*@__PURE__*/ S.Record(
   S.String,
   TaskQueueStats,
 ) as any as S.Schema<DescribeTaskQueueResponseStatsByPriorityKeyMap>;
@@ -3165,7 +3139,7 @@ export interface TaskQueueVersioningInfo {
   /** Last time versioning information of this Task Queue changed. */
   updateTime?: string;
 }
-export const TaskQueueVersioningInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueVersioningInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentDeploymentVersion: S.optional(WorkerDeploymentVersion),
     currentVersion: S.optional(S.String),
@@ -3180,7 +3154,7 @@ export interface RateLimit {
   /** Zero is a valid rate limit. */
   requestsPerSecond?: number;
 }
-export const RateLimit = /*@__PURE__*/ S.suspend(() =>
+const RateLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestsPerSecond: S.optional(S.Number),
   }),
@@ -3194,7 +3168,7 @@ export interface ConfigMetadata {
   /** Time of the last update. */
   updateTime?: string;
 }
-export const ConfigMetadata = /*@__PURE__*/ S.suspend(() =>
+const ConfigMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     updateIdentity: S.optional(S.String),
@@ -3206,7 +3180,7 @@ export interface RateLimitConfig {
   rateLimit?: RateLimit;
   metadata?: ConfigMetadata;
 }
-export const RateLimitConfig = /*@__PURE__*/ S.suspend(() =>
+const RateLimitConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rateLimit: S.optional(RateLimit),
     metadata: S.optional(ConfigMetadata),
@@ -3215,7 +3189,7 @@ export const RateLimitConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** If set, overrides the fairness weights for the corresponding fairness keys. */
 export type TaskQueueConfigFairnessWeightOverridesMap = { [key: string]: number | undefined };
-export const TaskQueueConfigFairnessWeightOverridesMap = /*@__PURE__*/ S.Record(
+const TaskQueueConfigFairnessWeightOverridesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<TaskQueueConfigFairnessWeightOverridesMap>;
@@ -3228,7 +3202,7 @@ export interface TaskQueueConfig {
   /** If set, overrides the fairness weights for the corresponding fairness keys. */
   fairnessWeightOverrides?: TaskQueueConfigFairnessWeightOverridesMap;
 }
-export const TaskQueueConfig = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueRateLimit: S.optional(RateLimitConfig),
     fairnessKeysRateLimitDefault: S.optional(RateLimitConfig),
@@ -3242,7 +3216,7 @@ export type DescribeTaskQueueResponseEffectiveRateLimitRateLimitSource =
   | "RATE_LIMIT_SOURCE_API"
   | "RATE_LIMIT_SOURCE_WORKER"
   | "RATE_LIMIT_SOURCE_SYSTEM";
-export const DescribeTaskQueueResponseEffectiveRateLimitRateLimitSource = S.String;
+const DescribeTaskQueueResponseEffectiveRateLimitRateLimitSource = S.String;
 
 export interface DescribeTaskQueueResponseEffectiveRateLimit {
   /** The effective rate limit for the task queue. */
@@ -3250,7 +3224,7 @@ export interface DescribeTaskQueueResponseEffectiveRateLimit {
   /** Source of the RateLimit Configuration,which can be one of the following values: - SOURCE_API: The rate limit that is set via the TaskQueueConfig api. - SOURCE_WORKER: The rate limit is the value set using the workerOptions in TaskQueueActivitiesPerSecond. - SOURCE_SYSTEM: The rate limit is the default value set by the system */
   rateLimitSource?: DescribeTaskQueueResponseEffectiveRateLimitRateLimitSource;
 }
-export const DescribeTaskQueueResponseEffectiveRateLimit = /*@__PURE__*/ S.suspend(() =>
+const DescribeTaskQueueResponseEffectiveRateLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestsPerSecond: S.optional(S.Number),
     rateLimitSource: S.optional(DescribeTaskQueueResponseEffectiveRateLimitRateLimitSource),
@@ -3263,7 +3237,7 @@ export interface TaskIdBlock {
   startId?: string;
   endId?: string;
 }
-export const TaskIdBlock = /*@__PURE__*/ S.suspend(() =>
+const TaskIdBlock = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startId: S.optional(S.String),
     endId: S.optional(S.String),
@@ -3278,7 +3252,7 @@ export interface TaskQueueStatus {
   ratePerSecond?: number;
   taskIdBlock?: TaskIdBlock;
 }
-export const TaskQueueStatus = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backlogCountHint: S.optional(S.String),
     readLevel: S.optional(S.String),
@@ -3290,7 +3264,7 @@ export const TaskQueueStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Unversioned workers (with `useVersioning=false`) are reported in unversioned result even if they set a Build ID. */
 export type TaskQueueTypeInfoPollersList = Array<PollerInfo>;
-export const TaskQueueTypeInfoPollersList =
+const TaskQueueTypeInfoPollersList =
   DescribeTaskQueueResponsePollersList as any as S.Schema<TaskQueueTypeInfoPollersList>;
 
 export interface TaskQueueTypeInfo {
@@ -3298,7 +3272,7 @@ export interface TaskQueueTypeInfo {
   pollers?: TaskQueueTypeInfoPollersList;
   stats?: TaskQueueStats;
 }
-export const TaskQueueTypeInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueTypeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pollers: S.optional(TaskQueueTypeInfoPollersList),
     stats: S.optional(TaskQueueStats),
@@ -3307,7 +3281,7 @@ export const TaskQueueTypeInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Task Queue info per Task Type. Key is the numerical value of the temporal.api.enums.v1.TaskQueueType enum. */
 export type TaskQueueVersionInfoTypesInfoMap = { [key: string]: TaskQueueTypeInfo | undefined };
-export const TaskQueueVersionInfoTypesInfoMap = /*@__PURE__*/ S.Record(
+const TaskQueueVersionInfoTypesInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   TaskQueueTypeInfo,
 ) as any as S.Schema<TaskQueueVersionInfoTypesInfoMap>;
@@ -3318,7 +3292,7 @@ export type TaskQueueVersionInfoTaskReachability =
   | "BUILD_ID_TASK_REACHABILITY_REACHABLE"
   | "BUILD_ID_TASK_REACHABILITY_CLOSED_WORKFLOWS_ONLY"
   | "BUILD_ID_TASK_REACHABILITY_UNREACHABLE";
-export const TaskQueueVersionInfoTaskReachability = S.String;
+const TaskQueueVersionInfoTaskReachability = S.String;
 
 export interface TaskQueueVersionInfo {
   /** Task Queue info per Task Type. Key is the numerical value of the temporal.api.enums.v1.TaskQueueType enum. */
@@ -3326,7 +3300,7 @@ export interface TaskQueueVersionInfo {
   /** Task Reachability is eventually consistent; there may be a delay until it converges to the most accurate value but it is designed in a way to take the more conservative side until it converges. For example REACHABLE is more conservative than CLOSED_WORKFLOWS_ONLY. Note: future activities who inherit their workflow's Build ID but not its Task Queue will not be accounted for reachability as server cannot know if they'll happen as they do not use assignment rules of their Task Queue. Same goes for Child Workflows or Continue-As-New Workflows who inherit the parent/previous workflow's Build ID but not its Task Queue. In those cases, make sure to query reachability for the parent/previous workflow's Task Queue as well. */
   taskReachability?: TaskQueueVersionInfoTaskReachability;
 }
-export const TaskQueueVersionInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typesInfo: S.optional(TaskQueueVersionInfoTypesInfoMap),
     taskReachability: S.optional(TaskQueueVersionInfoTaskReachability),
@@ -3337,7 +3311,7 @@ export const TaskQueueVersionInfo = /*@__PURE__*/ S.suspend(() =>
 export type DescribeTaskQueueResponseVersionsInfoMap = {
   [key: string]: TaskQueueVersionInfo | undefined;
 };
-export const DescribeTaskQueueResponseVersionsInfoMap = /*@__PURE__*/ S.Record(
+const DescribeTaskQueueResponseVersionsInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   TaskQueueVersionInfo,
 ) as any as S.Schema<DescribeTaskQueueResponseVersionsInfoMap>;
@@ -3358,7 +3332,7 @@ export interface DescribeTaskQueueResponse {
   /** Deprecated. Only returned in ENHANCED mode. This map contains Task Queue information for each Build ID. Empty string as key value means unversioned. */
   versionsInfo?: DescribeTaskQueueResponseVersionsInfoMap;
 }
-export const DescribeTaskQueueResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeTaskQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pollers: S.optional(DescribeTaskQueueResponsePollersList),
     stats: S.optional(TaskQueueStats),
@@ -3379,7 +3353,7 @@ export interface DescribeWorkerRequest {
   /** Worker instance key to describe. */
   workerInstanceKey: string;
 }
-export const DescribeWorkerRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workerInstanceKey: S.String.pipe(T.Label()),
@@ -3405,7 +3379,7 @@ export interface WorkerHostInfo {
   /** System used memory as a float in the range [0.0, 1.0] where 1.0 is defined as all available memory on the host is used. */
   currentHostMemUsage?: number;
 }
-export const WorkerHostInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerHostInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     workerGroupingKey: S.optional(S.String),
@@ -3421,7 +3395,7 @@ export type WorkerHeartbeatStatus =
   | "WORKER_STATUS_RUNNING"
   | "WORKER_STATUS_SHUTTING_DOWN"
   | "WORKER_STATUS_SHUTDOWN";
-export const WorkerHeartbeatStatus = S.String;
+const WorkerHeartbeatStatus = S.String;
 
 export interface WorkerSlotsInfo {
   /** Number of slots available for the worker to specific tasks. May be -1 if the upper bound is not known. */
@@ -3439,7 +3413,7 @@ export interface WorkerSlotsInfo {
   /** Number of failed tasks processed since the last heartbeat from the worker. */
   lastIntervalFailureTasks?: number;
 }
-export const WorkerSlotsInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerSlotsInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentAvailableSlots: S.optional(S.Number),
     currentUsedSlots: S.optional(S.Number),
@@ -3458,7 +3432,7 @@ export interface WorkerPollerInfo {
   /** Set true if the number of concurrent pollers is auto-scaled */
   isAutoscaling?: boolean;
 }
-export const WorkerPollerInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerPollerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentPollers: S.optional(S.Number),
     lastSuccessfulPollTime: S.optional(S.String),
@@ -3472,7 +3446,7 @@ export interface PluginInfo {
   /** The version of the plugin, may be empty. */
   version?: string;
 }
-export const PluginInfo = /*@__PURE__*/ S.suspend(() =>
+const PluginInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -3481,7 +3455,7 @@ export const PluginInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Plugins currently in use by this SDK. */
 export type WorkerHeartbeatPluginsList = Array<PluginInfo>;
-export const WorkerHeartbeatPluginsList = /*@__PURE__*/ S.Array(
+const WorkerHeartbeatPluginsList = /*@__PURE__*/ S.Array(
   PluginInfo,
 ) as any as S.Schema<WorkerHeartbeatPluginsList>;
 
@@ -3489,7 +3463,7 @@ export interface StorageDriverInfo {
   /** The type of the driver, required. */
   type?: string;
 }
-export const StorageDriverInfo = /*@__PURE__*/ S.suspend(() =>
+const StorageDriverInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -3497,7 +3471,7 @@ export const StorageDriverInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Storage drivers in use by this SDK. */
 export type WorkerHeartbeatDriversList = Array<StorageDriverInfo>;
-export const WorkerHeartbeatDriversList = /*@__PURE__*/ S.Array(
+const WorkerHeartbeatDriversList = /*@__PURE__*/ S.Array(
   StorageDriverInfo,
 ) as any as S.Schema<WorkerHeartbeatDriversList>;
 
@@ -3541,7 +3515,7 @@ export interface WorkerHeartbeat {
   /** Storage drivers in use by this SDK. */
   drivers?: WorkerHeartbeatDriversList;
 }
-export const WorkerHeartbeat = /*@__PURE__*/ S.suspend(() =>
+const WorkerHeartbeat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerInstanceKey: S.optional(S.String),
     workerIdentity: S.optional(S.String),
@@ -3574,7 +3548,7 @@ export const WorkerHeartbeat = /*@__PURE__*/ S.suspend(() =>
 export interface WorkerInfo {
   workerHeartbeat?: WorkerHeartbeat;
 }
-export const WorkerInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerHeartbeat: S.optional(WorkerHeartbeat),
   }),
@@ -3583,7 +3557,7 @@ export const WorkerInfo = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeWorkerResponse {
   workerInfo?: WorkerInfo;
 }
-export const DescribeWorkerResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerInfo: S.optional(WorkerInfo),
   }),
@@ -3593,7 +3567,7 @@ export interface DescribeWorkerDeploymentRequest {
   namespace: string;
   deploymentName: string;
 }
-export const DescribeWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -3617,21 +3591,21 @@ export type WorkerDeploymentInfoWorkerDeploymentVersionSummaryStatus =
   | "WORKER_DEPLOYMENT_VERSION_STATUS_DRAINING"
   | "WORKER_DEPLOYMENT_VERSION_STATUS_DRAINED"
   | "WORKER_DEPLOYMENT_VERSION_STATUS_CREATED";
-export const WorkerDeploymentInfoWorkerDeploymentVersionSummaryStatus = S.String;
+const WorkerDeploymentInfoWorkerDeploymentVersionSummaryStatus = S.String;
 
 /** Deprecated. Use `drainage_info` instead. */
 export type WorkerDeploymentInfoWorkerDeploymentVersionSummaryDrainageStatus =
   | "VERSION_DRAINAGE_STATUS_UNSPECIFIED"
   | "VERSION_DRAINAGE_STATUS_DRAINING"
   | "VERSION_DRAINAGE_STATUS_DRAINED";
-export const WorkerDeploymentInfoWorkerDeploymentVersionSummaryDrainageStatus = S.String;
+const WorkerDeploymentInfoWorkerDeploymentVersionSummaryDrainageStatus = S.String;
 
 /** Set to DRAINING when the version first stops accepting new executions (is no longer current or ramping). Set to DRAINED when no more open pinned workflows exist on this version. */
 export type VersionDrainageInfoStatus =
   | "VERSION_DRAINAGE_STATUS_UNSPECIFIED"
   | "VERSION_DRAINAGE_STATUS_DRAINING"
   | "VERSION_DRAINAGE_STATUS_DRAINED";
-export const VersionDrainageInfoStatus = S.String;
+const VersionDrainageInfoStatus = S.String;
 
 /** Information about workflow drainage to help the user determine when it is safe to decommission a Version. Not present while version is current or ramping. */
 export interface VersionDrainageInfo {
@@ -3642,7 +3616,7 @@ export interface VersionDrainageInfo {
   /** Last time the system checked for drainage of this version. */
   lastCheckedTime?: string;
 }
-export const VersionDrainageInfo = /*@__PURE__*/ S.suspend(() =>
+const VersionDrainageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(VersionDrainageInfoStatus),
     lastChangedTime: S.optional(S.String),
@@ -3655,18 +3629,16 @@ export type ComputeConfigScalingGroupSummaryTaskQueueTypesItem =
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const ComputeConfigScalingGroupSummaryTaskQueueTypesItem = S.String;
-
 export type ComputeConfigScalingGroupSummaryTaskQueueTypesList =
   Array<ComputeConfigScalingGroupSummaryTaskQueueTypesItem>;
-export const ComputeConfigScalingGroupSummaryTaskQueueTypesList =
+const ComputeConfigScalingGroupSummaryTaskQueueTypesList =
   ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ComputeConfigScalingGroupSummaryTaskQueueTypesList>;
 
 export interface ComputeConfigScalingGroupSummary {
   taskQueueTypes?: ComputeConfigScalingGroupSummaryTaskQueueTypesList;
   providerType?: string;
 }
-export const ComputeConfigScalingGroupSummary = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfigScalingGroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueueTypes: S.optional(ComputeConfigScalingGroupSummaryTaskQueueTypesList),
     providerType: S.optional(S.String),
@@ -3678,7 +3650,7 @@ export const ComputeConfigScalingGroupSummary = /*@__PURE__*/ S.suspend(() =>
 export type ComputeConfigSummaryScalingGroupsMap = {
   [key: string]: ComputeConfigScalingGroupSummary | undefined;
 };
-export const ComputeConfigSummaryScalingGroupsMap = /*@__PURE__*/ S.Record(
+const ComputeConfigSummaryScalingGroupsMap = /*@__PURE__*/ S.Record(
   S.String,
   ComputeConfigScalingGroupSummary,
 ) as any as S.Schema<ComputeConfigSummaryScalingGroupsMap>;
@@ -3687,7 +3659,7 @@ export const ComputeConfigSummaryScalingGroupsMap = /*@__PURE__*/ S.Record(
 export interface ComputeConfigSummary {
   scalingGroups?: ComputeConfigSummaryScalingGroupsMap;
 }
-export const ComputeConfigSummary = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfigSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scalingGroups: S.optional(ComputeConfigSummaryScalingGroupsMap),
   }),
@@ -3719,7 +3691,7 @@ export interface WorkerDeploymentInfoWorkerDeploymentVersionSummary {
   lastDeactivationTime?: string;
   computeConfig?: ComputeConfigSummary;
 }
-export const WorkerDeploymentInfoWorkerDeploymentVersionSummary = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentInfoWorkerDeploymentVersionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     status: S.optional(WorkerDeploymentInfoWorkerDeploymentVersionSummaryStatus),
@@ -3742,7 +3714,7 @@ export const WorkerDeploymentInfoWorkerDeploymentVersionSummary = /*@__PURE__*/ 
 /** Deployment Versions that are currently tracked in this Deployment. A DeploymentVersion will be cleaned up automatically if all the following conditions meet: - It does not receive new executions (is not current or ramping) - It has no active pollers (see WorkerDeploymentVersionInfo.pollers_status) - It is drained (see WorkerDeploymentVersionInfo.drainage_status) */
 export type WorkerDeploymentInfoVersionSummariesList =
   Array<WorkerDeploymentInfoWorkerDeploymentVersionSummary>;
-export const WorkerDeploymentInfoVersionSummariesList = /*@__PURE__*/ S.Array(
+const WorkerDeploymentInfoVersionSummariesList = /*@__PURE__*/ S.Array(
   WorkerDeploymentInfoWorkerDeploymentVersionSummary,
 ) as any as S.Schema<WorkerDeploymentInfoVersionSummariesList>;
 
@@ -3766,7 +3738,7 @@ export interface RoutingConfig {
   /** Monotonically increasing value which is incremented on every mutation to any field of this message to achieve eventual consistency between task queues and their partitions. */
   revisionNumber?: string;
 }
-export const RoutingConfig = /*@__PURE__*/ S.suspend(() =>
+const RoutingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentDeploymentVersion: S.optional(WorkerDeploymentVersion),
     currentVersion: S.optional(S.String),
@@ -3785,7 +3757,7 @@ export type WorkerDeploymentInfoRoutingConfigUpdateState =
   | "ROUTING_CONFIG_UPDATE_STATE_UNSPECIFIED"
   | "ROUTING_CONFIG_UPDATE_STATE_IN_PROGRESS"
   | "ROUTING_CONFIG_UPDATE_STATE_COMPLETED";
-export const WorkerDeploymentInfoRoutingConfigUpdateState = S.String;
+const WorkerDeploymentInfoRoutingConfigUpdateState = S.String;
 
 /** A Worker Deployment (Deployment, for short) represents all workers serving a shared set of Task Queues. Typically, a Deployment represents one service or application. A Deployment contains multiple Deployment Versions, each representing a different version of workers. (see documentation of WorkerDeploymentVersionInfo) Deployment records are created in Temporal server automatically when their first poller arrives to the server. */
 export interface WorkerDeploymentInfo {
@@ -3802,7 +3774,7 @@ export interface WorkerDeploymentInfo {
   /** Indicates whether the routing_config has been fully propagated to all relevant task queues and their partitions. */
   routingConfigUpdateState?: WorkerDeploymentInfoRoutingConfigUpdateState;
 }
-export const WorkerDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     versionSummaries: S.optional(WorkerDeploymentInfoVersionSummariesList),
@@ -3819,7 +3791,7 @@ export interface DescribeWorkerDeploymentResponse {
   conflictToken?: string;
   workerDeploymentInfo?: WorkerDeploymentInfo;
 }
-export const DescribeWorkerDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
     workerDeploymentInfo: S.optional(WorkerDeploymentInfo),
@@ -3841,7 +3813,7 @@ export interface DescribeWorkerDeploymentVersionRequest {
   /** Report stats for task queues which have been polled by this version. */
   reportTaskQueueStats?: boolean;
 }
-export const DescribeWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerDeploymentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -3872,20 +3844,20 @@ export type WorkerDeploymentVersionInfoStatus =
   | "WORKER_DEPLOYMENT_VERSION_STATUS_DRAINING"
   | "WORKER_DEPLOYMENT_VERSION_STATUS_DRAINED"
   | "WORKER_DEPLOYMENT_VERSION_STATUS_CREATED";
-export const WorkerDeploymentVersionInfoStatus = S.String;
+const WorkerDeploymentVersionInfoStatus = S.String;
 
 export type WorkerDeploymentVersionInfoVersionTaskQueueInfoType =
   | "TASK_QUEUE_TYPE_UNSPECIFIED"
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const WorkerDeploymentVersionInfoVersionTaskQueueInfoType = S.String;
+const WorkerDeploymentVersionInfoVersionTaskQueueInfoType = S.String;
 
 export interface WorkerDeploymentVersionInfoVersionTaskQueueInfo {
   name?: string;
   type?: WorkerDeploymentVersionInfoVersionTaskQueueInfoType;
 }
-export const WorkerDeploymentVersionInfoVersionTaskQueueInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentVersionInfoVersionTaskQueueInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(WorkerDeploymentVersionInfoVersionTaskQueueInfoType),
@@ -3897,20 +3869,19 @@ export const WorkerDeploymentVersionInfoVersionTaskQueueInfo = /*@__PURE__*/ S.s
 /** All the Task Queues that have ever polled from this Deployment version. Deprecated. Use `version_task_queues` in DescribeWorkerDeploymentVersionResponse instead. */
 export type WorkerDeploymentVersionInfoTaskQueueInfosList =
   Array<WorkerDeploymentVersionInfoVersionTaskQueueInfo>;
-export const WorkerDeploymentVersionInfoTaskQueueInfosList = /*@__PURE__*/ S.Array(
+const WorkerDeploymentVersionInfoTaskQueueInfosList = /*@__PURE__*/ S.Array(
   WorkerDeploymentVersionInfoVersionTaskQueueInfo,
 ) as any as S.Schema<WorkerDeploymentVersionInfoTaskQueueInfosList>;
 
 /** Arbitrary key-values. */
 export type VersionMetadataEntriesMap = { [key: string]: unknown | undefined };
-export const VersionMetadataEntriesMap =
-  MemoFieldsMap as any as S.Schema<VersionMetadataEntriesMap>;
+const VersionMetadataEntriesMap = MemoFieldsMap as any as S.Schema<VersionMetadataEntriesMap>;
 
 export interface VersionMetadata {
   /** Arbitrary key-values. */
   entries?: VersionMetadataEntriesMap;
 }
-export const VersionMetadata = /*@__PURE__*/ S.suspend(() =>
+const VersionMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entries: S.optional(VersionMetadataEntriesMap),
   }),
@@ -3952,7 +3923,7 @@ export interface WorkerDeploymentVersionInfo {
   /** Identity of the last client who modified the configuration of this Version. As of now, this field only covers changes through the following APIs: - `CreateWorkerDeploymentVersion` - `UpdateWorkerDeploymentVersionComputeConfig` - `UpdateWorkerDeploymentVersionMetadata` */
   lastModifierIdentity?: string;
 }
-export const WorkerDeploymentVersionInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerDeploymentVersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     status: S.optional(WorkerDeploymentVersionInfoStatus),
@@ -3981,13 +3952,13 @@ export type DescribeWorkerDeploymentVersionResponseVersionTaskQueueType =
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const DescribeWorkerDeploymentVersionResponseVersionTaskQueueType = S.String;
+const DescribeWorkerDeploymentVersionResponseVersionTaskQueueType = S.String;
 
 /** Task queue stats breakdown by priority key. Only contains actively used priority keys. Only set if `report_task_queue_stats` is set to true in the request. (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: "by" is used to clarify the key. --) */
 export type DescribeWorkerDeploymentVersionResponseVersionTaskQueueStatsByPriorityKeyMap = {
   [key: string]: TaskQueueStats | undefined;
 };
-export const DescribeWorkerDeploymentVersionResponseVersionTaskQueueStatsByPriorityKeyMap =
+const DescribeWorkerDeploymentVersionResponseVersionTaskQueueStatsByPriorityKeyMap =
   /*@__PURE__*/ S.Record(
     S.String,
     TaskQueueStats,
@@ -4001,7 +3972,7 @@ export interface DescribeWorkerDeploymentVersionResponseVersionTaskQueue {
   /** Task queue stats breakdown by priority key. Only contains actively used priority keys. Only set if `report_task_queue_stats` is set to true in the request. (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: "by" is used to clarify the key. --) */
   statsByPriorityKey?: DescribeWorkerDeploymentVersionResponseVersionTaskQueueStatsByPriorityKeyMap;
 }
-export const DescribeWorkerDeploymentVersionResponseVersionTaskQueue = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerDeploymentVersionResponseVersionTaskQueue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(DescribeWorkerDeploymentVersionResponseVersionTaskQueueType),
@@ -4017,7 +3988,7 @@ export const DescribeWorkerDeploymentVersionResponseVersionTaskQueue = /*@__PURE
 /** All the Task Queues that have ever polled from this Deployment version. */
 export type DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList =
   Array<DescribeWorkerDeploymentVersionResponseVersionTaskQueue>;
-export const DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList = /*@__PURE__*/ S.Array(
+const DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList = /*@__PURE__*/ S.Array(
   DescribeWorkerDeploymentVersionResponseVersionTaskQueue,
 ) as any as S.Schema<DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList>;
 
@@ -4026,7 +3997,7 @@ export interface DescribeWorkerDeploymentVersionResponse {
   /** All the Task Queues that have ever polled from this Deployment version. */
   versionTaskQueues?: DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList;
 }
-export const DescribeWorkerDeploymentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkerDeploymentVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerDeploymentVersionInfo: S.optional(WorkerDeploymentVersionInfo),
     versionTaskQueues: S.optional(DescribeWorkerDeploymentVersionResponseVersionTaskQueuesList),
@@ -4041,7 +4012,7 @@ export interface DescribeWorkflowExecutionRequest {
   execution_workflowId?: string;
   execution_runId?: string;
 }
-export const DescribeWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution_workflow_id: S.String.pipe(T.Label()),
@@ -4066,7 +4037,7 @@ export interface WorkflowExecutionConfig {
   /** User metadata provided on start workflow. */
   userMetadata?: UserMetadata;
 }
-export const WorkflowExecutionConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueue: S.optional(TaskQueue),
     workflowExecutionTimeout: S.optional(S.String),
@@ -4086,7 +4057,7 @@ export type WorkflowExecutionInfoStatus =
   | "WORKFLOW_EXECUTION_STATUS_CONTINUED_AS_NEW"
   | "WORKFLOW_EXECUTION_STATUS_TIMED_OUT"
   | "WORKFLOW_EXECUTION_STATUS_PAUSED";
-export const WorkflowExecutionInfoStatus = S.String;
+const WorkflowExecutionInfoStatus = S.String;
 
 /** ResetPointInfo records the workflow event id that is the first one processed by a given build id or binary checksum. A new reset point will be created if either build id or binary checksum changes (although in general only one or the other will be used at a time). */
 export interface ResetPointInfo {
@@ -4104,7 +4075,7 @@ export interface ResetPointInfo {
   /** false if the reset point has pending childWFs/reqCancels/signalExternals. */
   resettable?: boolean;
 }
-export const ResetPointInfo = /*@__PURE__*/ S.suspend(() =>
+const ResetPointInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildId: S.optional(S.String),
     binaryChecksum: S.optional(S.String),
@@ -4117,14 +4088,14 @@ export const ResetPointInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetPointInfo" }) as any as S.Schema<ResetPointInfo>;
 
 export type ResetPointsPointsList = Array<ResetPointInfo>;
-export const ResetPointsPointsList = /*@__PURE__*/ S.Array(
+const ResetPointsPointsList = /*@__PURE__*/ S.Array(
   ResetPointInfo,
 ) as any as S.Schema<ResetPointsPointsList>;
 
 export interface ResetPoints {
   points?: ResetPointsPointsList;
 }
-export const ResetPoints = /*@__PURE__*/ S.suspend(() =>
+const ResetPoints = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     points: S.optional(ResetPointsPointsList),
   }),
@@ -4137,7 +4108,7 @@ export interface WorkerVersionStamp {
   /** If set, the worker is opting in to worker versioning. Otherwise, this is used only as a marker for workflow reset points and the BuildIDs search attribute. */
   useVersioning?: boolean;
 }
-export const WorkerVersionStamp = /*@__PURE__*/ S.suspend(() =>
+const WorkerVersionStamp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildId: S.optional(S.String),
     useVersioning: S.optional(S.Boolean),
@@ -4149,14 +4120,14 @@ export type WorkflowExecutionVersioningInfoBehavior =
   | "VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "VERSIONING_BEHAVIOR_PINNED"
   | "VERSIONING_BEHAVIOR_AUTO_UPGRADE";
-export const WorkflowExecutionVersioningInfoBehavior = S.String;
+const WorkflowExecutionVersioningInfoBehavior = S.String;
 
 /** Holds information about ongoing transition of a workflow execution from one deployment to another. Deprecated. Use DeploymentVersionTransition. */
 export interface DeploymentTransition {
   /** The target deployment of the transition. Null means a so-far-versioned workflow is transitioning to unversioned workers. */
   deployment?: Deployment;
 }
-export const DeploymentTransition = /*@__PURE__*/ S.suspend(() =>
+const DeploymentTransition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: S.optional(Deployment),
   }),
@@ -4169,7 +4140,7 @@ export interface DeploymentVersionTransition {
   /** The target Version of the transition. If nil, a so-far-versioned workflow is transitioning to unversioned workers. */
   deploymentVersion?: WorkerDeploymentVersion;
 }
-export const DeploymentVersionTransition = /*@__PURE__*/ S.suspend(() =>
+const DeploymentVersionTransition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     deploymentVersion: S.optional(WorkerDeploymentVersion),
@@ -4183,7 +4154,7 @@ export type WorkflowExecutionVersioningInfoContinueAsNewInitialVersioningBehavio
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_AUTO_UPGRADE"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_USE_RAMPING_VERSION";
-export const WorkflowExecutionVersioningInfoContinueAsNewInitialVersioningBehavior = S.String;
+const WorkflowExecutionVersioningInfoContinueAsNewInitialVersioningBehavior = S.String;
 
 /** Holds all the information about worker versioning for a particular workflow execution. Experimental. Versioning info is experimental and might change in the future. */
 export interface WorkflowExecutionVersioningInfo {
@@ -4206,7 +4177,7 @@ export interface WorkflowExecutionVersioningInfo {
   /** Experimental. If this workflow is the result of a continue-as-new, this field is set to the initial_versioning_behavior specified in that command. Only used for the initial task of this run and the initial task of any retries of this run. Not passed to children or to future continue-as-new. Note: In the first release of Upgrade-on-CaN, when the only ContinueAsNewVersioningBehavior was AutoUpgrade, a non-empty InheritedAutoUpgradeInfo meant that the workflow should start as AutoUpgrade. So for compatibility with ContinueAsNew history commands generated during that time, know that an UNSPECIFIED value here is equivalent to ContinueAsNewVersioningBehaviorAutoUpgrade if the behavior of the workflow is AutoUpgrade. */
   continueAsNewInitialVersioningBehavior?: WorkflowExecutionVersioningInfoContinueAsNewInitialVersioningBehavior;
 }
-export const WorkflowExecutionVersioningInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionVersioningInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     behavior: S.optional(WorkflowExecutionVersioningInfoBehavior),
     deployment: S.optional(Deployment),
@@ -4264,7 +4235,7 @@ export interface WorkflowExecutionInfo {
   /** Count of external payloads referenced in workflow history. */
   externalPayloadCount?: string;
 }
-export const WorkflowExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     execution: S.optional(WorkflowExecution),
     type: S.optional(WorkflowType),
@@ -4302,7 +4273,7 @@ export type PendingActivityInfoState =
   | "PENDING_ACTIVITY_STATE_CANCEL_REQUESTED"
   | "PENDING_ACTIVITY_STATE_PAUSED"
   | "PENDING_ACTIVITY_STATE_PAUSE_REQUESTED";
-export const PendingActivityInfoState = S.String;
+const PendingActivityInfoState = S.String;
 
 export interface PauseInfoManual {
   /** The identity of the actor that paused the activity. */
@@ -4310,7 +4281,7 @@ export interface PauseInfoManual {
   /** Reason for pausing the activity. */
   reason?: string;
 }
-export const PauseInfoManual = /*@__PURE__*/ S.suspend(() =>
+const PauseInfoManual = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     reason: S.optional(S.String),
@@ -4325,7 +4296,7 @@ export interface PauseInfoRule {
   /** Reason why rule was created. Populated from rule description. */
   reason?: string;
 }
-export const PauseInfoRule = /*@__PURE__*/ S.suspend(() =>
+const PauseInfoRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleId: S.optional(S.String),
     identity: S.optional(S.String),
@@ -4341,7 +4312,7 @@ export interface PendingActivityInfoPauseInfo {
   /** activity was paused by the rule */
   rule?: PauseInfoRule;
 }
-export const PendingActivityInfoPauseInfo = /*@__PURE__*/ S.suspend(() =>
+const PendingActivityInfoPauseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pauseTime: S.optional(S.String),
     manual: S.optional(PauseInfoManual),
@@ -4366,7 +4337,7 @@ export interface ActivityOptions {
   /** Priority metadata. If this message is not present, or any fields are not present, they inherit the values from the workflow. */
   priority?: Priority;
 }
-export const ActivityOptions = /*@__PURE__*/ S.suspend(() =>
+const ActivityOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueue: S.optional(TaskQueue),
     scheduleToCloseTimeout: S.optional(S.String),
@@ -4415,7 +4386,7 @@ export interface PendingActivityInfo {
   /** Current activity options. May be different from the one used to start the activity. */
   activityOptions?: ActivityOptions;
 }
-export const PendingActivityInfo = /*@__PURE__*/ S.suspend(() =>
+const PendingActivityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.optional(S.String),
     activityType: S.optional(WorkflowType),
@@ -4445,7 +4416,7 @@ export const PendingActivityInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingActivityInfo" }) as any as S.Schema<PendingActivityInfo>;
 
 export type DescribeWorkflowExecutionResponsePendingActivitiesList = Array<PendingActivityInfo>;
-export const DescribeWorkflowExecutionResponsePendingActivitiesList = /*@__PURE__*/ S.Array(
+const DescribeWorkflowExecutionResponsePendingActivitiesList = /*@__PURE__*/ S.Array(
   PendingActivityInfo,
 ) as any as S.Schema<DescribeWorkflowExecutionResponsePendingActivitiesList>;
 
@@ -4455,7 +4426,7 @@ export type PendingChildExecutionInfoParentClosePolicy =
   | "PARENT_CLOSE_POLICY_TERMINATE"
   | "PARENT_CLOSE_POLICY_ABANDON"
   | "PARENT_CLOSE_POLICY_REQUEST_CANCEL";
-export const PendingChildExecutionInfoParentClosePolicy = S.String;
+const PendingChildExecutionInfoParentClosePolicy = S.String;
 
 export interface PendingChildExecutionInfo {
   workflowId?: string;
@@ -4465,7 +4436,7 @@ export interface PendingChildExecutionInfo {
   /** Default: PARENT_CLOSE_POLICY_TERMINATE. */
   parentClosePolicy?: PendingChildExecutionInfoParentClosePolicy;
 }
-export const PendingChildExecutionInfo = /*@__PURE__*/ S.suspend(() =>
+const PendingChildExecutionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -4478,7 +4449,7 @@ export const PendingChildExecutionInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PendingChildExecutionInfo>;
 
 export type DescribeWorkflowExecutionResponsePendingChildrenList = Array<PendingChildExecutionInfo>;
-export const DescribeWorkflowExecutionResponsePendingChildrenList = /*@__PURE__*/ S.Array(
+const DescribeWorkflowExecutionResponsePendingChildrenList = /*@__PURE__*/ S.Array(
   PendingChildExecutionInfo,
 ) as any as S.Schema<DescribeWorkflowExecutionResponsePendingChildrenList>;
 
@@ -4486,7 +4457,7 @@ export type PendingWorkflowTaskInfoState =
   | "PENDING_WORKFLOW_TASK_STATE_UNSPECIFIED"
   | "PENDING_WORKFLOW_TASK_STATE_SCHEDULED"
   | "PENDING_WORKFLOW_TASK_STATE_STARTED";
-export const PendingWorkflowTaskInfoState = S.String;
+const PendingWorkflowTaskInfoState = S.String;
 
 export interface PendingWorkflowTaskInfo {
   state?: PendingWorkflowTaskInfoState;
@@ -4496,7 +4467,7 @@ export interface PendingWorkflowTaskInfo {
   startedTime?: string;
   attempt?: number;
 }
-export const PendingWorkflowTaskInfo = /*@__PURE__*/ S.suspend(() =>
+const PendingWorkflowTaskInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(PendingWorkflowTaskInfoState),
     scheduledTime: S.optional(S.String),
@@ -4507,7 +4478,7 @@ export const PendingWorkflowTaskInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PendingWorkflowTaskInfo" }) as any as S.Schema<PendingWorkflowTaskInfo>;
 
 export type DescribeWorkflowExecutionResponseCallbacksList = Array<CallbackInfo>;
-export const DescribeWorkflowExecutionResponseCallbacksList =
+const DescribeWorkflowExecutionResponseCallbacksList =
   DescribeActivityExecutionResponseCallbacksList as any as S.Schema<DescribeWorkflowExecutionResponseCallbacksList>;
 
 export type PendingNexusOperationInfoState =
@@ -4516,7 +4487,7 @@ export type PendingNexusOperationInfoState =
   | "PENDING_NEXUS_OPERATION_STATE_BACKING_OFF"
   | "PENDING_NEXUS_OPERATION_STATE_STARTED"
   | "PENDING_NEXUS_OPERATION_STATE_BLOCKED";
-export const PendingNexusOperationInfoState = S.String;
+const PendingNexusOperationInfoState = S.String;
 
 export type NexusOperationCancellationInfoState =
   | "NEXUS_OPERATION_CANCELLATION_STATE_UNSPECIFIED"
@@ -4526,7 +4497,7 @@ export type NexusOperationCancellationInfoState =
   | "NEXUS_OPERATION_CANCELLATION_STATE_FAILED"
   | "NEXUS_OPERATION_CANCELLATION_STATE_TIMED_OUT"
   | "NEXUS_OPERATION_CANCELLATION_STATE_BLOCKED";
-export const NexusOperationCancellationInfoState = S.String;
+const NexusOperationCancellationInfoState = S.String;
 
 /** NexusOperationCancellationInfo contains the state of a nexus operation cancellation. */
 export interface NexusOperationCancellationInfo {
@@ -4544,7 +4515,7 @@ export interface NexusOperationCancellationInfo {
   /** If the state is BLOCKED, blocked reason provides additional information. */
   blockedReason?: string;
 }
-export const NexusOperationCancellationInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationCancellationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedTime: S.optional(S.String),
     state: S.optional(NexusOperationCancellationInfoState),
@@ -4593,7 +4564,7 @@ export interface PendingNexusOperationInfo {
   /** Start-to-close timeout for this operation. (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: "to" is used to indicate interval. --) */
   startToCloseTimeout?: string;
 }
-export const PendingNexusOperationInfo = /*@__PURE__*/ S.suspend(() =>
+const PendingNexusOperationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     service: S.optional(S.String),
@@ -4619,7 +4590,7 @@ export const PendingNexusOperationInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type DescribeWorkflowExecutionResponsePendingNexusOperationsList =
   Array<PendingNexusOperationInfo>;
-export const DescribeWorkflowExecutionResponsePendingNexusOperationsList = /*@__PURE__*/ S.Array(
+const DescribeWorkflowExecutionResponsePendingNexusOperationsList = /*@__PURE__*/ S.Array(
   PendingNexusOperationInfo,
 ) as any as S.Schema<DescribeWorkflowExecutionResponsePendingNexusOperationsList>;
 
@@ -4686,7 +4657,7 @@ export type RequestIdInfoEventType =
   | "EVENT_TYPE_WORKFLOW_EXECUTION_PAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_UNPAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_TIME_SKIPPING_TRANSITIONED";
-export const RequestIdInfoEventType = S.String;
+const RequestIdInfoEventType = S.String;
 
 /** RequestIdInfo contains details of a request ID. */
 export interface RequestIdInfo {
@@ -4697,7 +4668,7 @@ export interface RequestIdInfo {
   /** Indicate if the request is still buffered. If so, the event ID is not known and its value will be an invalid event ID. */
   buffered?: boolean;
 }
-export const RequestIdInfo = /*@__PURE__*/ S.suspend(() =>
+const RequestIdInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventType: S.optional(RequestIdInfoEventType),
     eventId: S.optional(S.String),
@@ -4709,7 +4680,7 @@ export const RequestIdInfo = /*@__PURE__*/ S.suspend(() =>
 export type WorkflowExecutionExtendedInfoRequestIdInfosMap = {
   [key: string]: RequestIdInfo | undefined;
 };
-export const WorkflowExecutionExtendedInfoRequestIdInfosMap = /*@__PURE__*/ S.Record(
+const WorkflowExecutionExtendedInfoRequestIdInfosMap = /*@__PURE__*/ S.Record(
   S.String,
   RequestIdInfo,
 ) as any as S.Schema<WorkflowExecutionExtendedInfoRequestIdInfosMap>;
@@ -4723,7 +4694,7 @@ export interface WorkflowExecutionPauseInfo {
   /** The reason for pausing the workflow execution. */
   reason?: string;
 }
-export const WorkflowExecutionPauseInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionPauseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     pausedTime: S.optional(S.String),
@@ -4752,7 +4723,7 @@ export interface WorkflowExecutionExtendedInfo {
   /** Information about the workflow execution pause operation. */
   pauseInfo?: WorkflowExecutionPauseInfo;
 }
-export const WorkflowExecutionExtendedInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionExtendedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionExpirationTime: S.optional(S.String),
     runExpirationTime: S.optional(S.String),
@@ -4777,7 +4748,7 @@ export interface DescribeWorkflowExecutionResponse {
   pendingNexusOperations?: DescribeWorkflowExecutionResponsePendingNexusOperationsList;
   workflowExtendedInfo?: WorkflowExecutionExtendedInfo;
 }
-export const DescribeWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionConfig: S.optional(WorkflowExecutionConfig),
     workflowExecutionInfo: S.optional(WorkflowExecutionInfo),
@@ -4797,7 +4768,7 @@ export interface DescribeWorkflowRuleRequest {
   /** User-specified ID of the rule to read. Unique within the namespace. */
   ruleId: string;
 }
-export const DescribeWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     ruleId: S.String.pipe(T.Label()),
@@ -4816,7 +4787,7 @@ export interface DescribeWorkflowRuleResponse {
   /** The rule that was read. */
   rule?: WorkflowRule;
 }
-export const DescribeWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(WorkflowRule),
   }),
@@ -4829,7 +4800,7 @@ export interface WorkerSelector {
   /** Worker instance key to which the command should be sent. */
   workerInstanceKey?: string;
 }
-export const WorkerSelector = /*@__PURE__*/ S.suspend(() =>
+const WorkerSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerInstanceKey: S.optional(S.String),
   }),
@@ -4847,7 +4818,7 @@ export interface FetchWorkerConfigRequest {
   /** Resource ID for routing. Contains the worker grouping key. */
   resourceId?: string;
 }
-export const FetchWorkerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchWorkerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     identity: S.optional(S.String),
@@ -4866,7 +4837,7 @@ export const FetchWorkerConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface WorkerConfigSimplePollerBehavior {
   maxPollers?: number;
 }
-export const WorkerConfigSimplePollerBehavior = /*@__PURE__*/ S.suspend(() =>
+const WorkerConfigSimplePollerBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxPollers: S.optional(S.Number),
   }),
@@ -4882,7 +4853,7 @@ export interface WorkerConfigAutoscalingPollerBehavior {
   /** This many polls will be attempted initially before scaling kicks in. Must be between `minimum` and `maximum`. */
   initialPollers?: number;
 }
-export const WorkerConfigAutoscalingPollerBehavior = /*@__PURE__*/ S.suspend(() =>
+const WorkerConfigAutoscalingPollerBehavior = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minPollers: S.optional(S.Number),
     maxPollers: S.optional(S.Number),
@@ -4897,7 +4868,7 @@ export interface WorkerConfig {
   simplePollerBehavior?: WorkerConfigSimplePollerBehavior;
   autoscalingPollerBehavior?: WorkerConfigAutoscalingPollerBehavior;
 }
-export const WorkerConfig = /*@__PURE__*/ S.suspend(() =>
+const WorkerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowCacheSize: S.optional(S.Number),
     simplePollerBehavior: S.optional(WorkerConfigSimplePollerBehavior),
@@ -4909,7 +4880,7 @@ export interface FetchWorkerConfigResponse {
   /** The worker configuration. */
   workerConfig?: WorkerConfig;
 }
-export const FetchWorkerConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchWorkerConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerConfig: S.optional(WorkerConfig),
   }),
@@ -4918,13 +4889,13 @@ export const FetchWorkerConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FetchWorkerConfigResponse>;
 
 export interface GetClusterInfoRequest {}
-export const GetClusterInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/cluster-info", code: 200 })),
 ).annotate({ identifier: "GetClusterInfoRequest" }) as any as S.Schema<GetClusterInfoRequest>;
 
 /** Key is client name i.e "temporal-go", "temporal-java", or "temporal-cli". Value is ranges of supported versions of this client i.e ">1.1.1 <=1.4.0 || ^5.0.0". */
 export type GetClusterInfoResponseSupportedClientsMap = { [key: string]: string | undefined };
-export const GetClusterInfoResponseSupportedClientsMap =
+const GetClusterInfoResponseSupportedClientsMap =
   CallbackNexusHeaderMap as any as S.Schema<GetClusterInfoResponseSupportedClientsMap>;
 
 /** ReleaseInfo contains information about specific version of temporal. */
@@ -4933,7 +4904,7 @@ export interface ReleaseInfo {
   releaseTime?: string;
   notes?: string;
 }
-export const ReleaseInfo = /*@__PURE__*/ S.suspend(() =>
+const ReleaseInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     releaseTime: S.optional(S.String),
@@ -4946,14 +4917,14 @@ export type AlertSeverity =
   | "SEVERITY_HIGH"
   | "SEVERITY_MEDIUM"
   | "SEVERITY_LOW";
-export const AlertSeverity = S.String;
+const AlertSeverity = S.String;
 
 /** Alert contains notification and severity. */
 export interface Alert {
   message?: string;
   severity?: AlertSeverity;
 }
-export const Alert = /*@__PURE__*/ S.suspend(() =>
+const Alert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(AlertSeverity),
@@ -4961,7 +4932,7 @@ export const Alert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Alert" }) as any as S.Schema<Alert>;
 
 export type VersionInfoAlertsList = Array<Alert>;
-export const VersionInfoAlertsList = /*@__PURE__*/ S.Array(
+const VersionInfoAlertsList = /*@__PURE__*/ S.Array(
   Alert,
 ) as any as S.Schema<VersionInfoAlertsList>;
 
@@ -4973,7 +4944,7 @@ export interface VersionInfo {
   alerts?: VersionInfoAlertsList;
   lastUpdateTime?: string;
 }
-export const VersionInfo = /*@__PURE__*/ S.suspend(() =>
+const VersionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current: S.optional(ReleaseInfo),
     recommended: S.optional(ReleaseInfo),
@@ -4997,7 +4968,7 @@ export interface GetClusterInfoResponse {
   initialFailoverVersion?: string;
   failoverVersionIncrement?: string;
 }
-export const GetClusterInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedClients: S.optional(GetClusterInfoResponseSupportedClientsMap),
     serverVersion: S.optional(S.String),
@@ -5016,7 +4987,7 @@ export interface GetCurrentDeploymentRequest {
   namespace: string;
   seriesName: string;
 }
-export const GetCurrentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     seriesName: S.String.pipe(T.Label()),
@@ -5035,7 +5006,7 @@ export const GetCurrentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetCurrentDeploymentResponse {
   currentDeploymentInfo?: DeploymentInfo;
 }
-export const GetCurrentDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentDeploymentInfo: S.optional(DeploymentInfo),
   }),
@@ -5052,7 +5023,7 @@ export interface GetDeploymentReachabilityRequest {
   /** Build ID changes with each version of the worker when the worker program code and/or config changes. */
   deployment_buildId?: string;
 }
-export const GetDeploymentReachabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentReachabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_series_name: S.String.pipe(T.Label()),
@@ -5075,7 +5046,7 @@ export type GetDeploymentReachabilityResponseReachability =
   | "DEPLOYMENT_REACHABILITY_REACHABLE"
   | "DEPLOYMENT_REACHABILITY_CLOSED_WORKFLOWS_ONLY"
   | "DEPLOYMENT_REACHABILITY_UNREACHABLE";
-export const GetDeploymentReachabilityResponseReachability = S.String;
+const GetDeploymentReachabilityResponseReachability = S.String;
 
 /** [cleanup-wv-pre-release] Pre-release deployment APIs, clean up later */
 export interface GetDeploymentReachabilityResponse {
@@ -5084,7 +5055,7 @@ export interface GetDeploymentReachabilityResponse {
   /** Reachability level might come from server cache. This timestamp specifies when the value was actually calculated. */
   lastUpdateTime?: string;
 }
-export const GetDeploymentReachabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentReachabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentInfo: S.optional(DeploymentInfo),
     reachability: S.optional(GetDeploymentReachabilityResponseReachability),
@@ -5098,7 +5069,7 @@ export interface GetNexusEndpointRequest {
   /** Server-generated unique endpoint ID. */
   id: string;
 }
-export const GetNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/v1/nexus/endpoints/{id}", code: 200 })),
@@ -5107,14 +5078,14 @@ export const GetNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetNexusEndpointResponse {
   endpoint?: Endpoint;
 }
-export const GetNexusEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNexusEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(Endpoint),
   }),
 ).annotate({ identifier: "GetNexusEndpointResponse" }) as any as S.Schema<GetNexusEndpointResponse>;
 
 export interface GetSystemInfoRequest {}
-export const GetSystemInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSystemInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/v1/system-info", code: 200 })),
 ).annotate({ identifier: "GetSystemInfoRequest" }) as any as S.Schema<GetSystemInfoRequest>;
 
@@ -5145,7 +5116,7 @@ export interface GetSystemInfoResponseCapabilities {
   /** True if the server supports server-scaled deployments. This flag is dependent both on server version and for server-scaled deployments to be enabled via server configuration. */
   serverScaledDeployments?: boolean;
 }
-export const GetSystemInfoResponseCapabilities = /*@__PURE__*/ S.suspend(() =>
+const GetSystemInfoResponseCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalAndQueryHeader: S.optional(S.Boolean),
     internalErrorDifferentiation: S.optional(S.Boolean),
@@ -5170,7 +5141,7 @@ export interface GetSystemInfoResponse {
   /** All capabilities the system supports. */
   capabilities?: GetSystemInfoResponseCapabilities;
 }
-export const GetSystemInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSystemInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serverVersion: S.optional(S.String),
     capabilities: S.optional(GetSystemInfoResponseCapabilities),
@@ -5184,7 +5155,7 @@ export interface GetWorkerBuildIdCompatibilityRequest {
   /** Limits how many compatible sets will be returned. Specify 1 to only return the current default major version set. 0 returns all sets. */
   maxSets?: number;
 }
-export const GetWorkerBuildIdCompatibilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerBuildIdCompatibilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskQueue: S.String.pipe(T.Label()),
@@ -5202,7 +5173,7 @@ export const GetWorkerBuildIdCompatibilityRequest = /*@__PURE__*/ S.suspend(() =
 
 /** All the compatible versions, unordered, except for the last element, which is considered the set "default". */
 export type CompatibleVersionSetBuildIdsList = Array<string>;
-export const CompatibleVersionSetBuildIdsList =
+const CompatibleVersionSetBuildIdsList =
   ScheduleSpecCronStringList as any as S.Schema<CompatibleVersionSetBuildIdsList>;
 
 /** Used by the worker versioning APIs, represents an unordered set of one or more versions which are considered to be compatible with each other. Currently the versions are always worker build IDs. */
@@ -5210,7 +5181,7 @@ export interface CompatibleVersionSet {
   /** All the compatible versions, unordered, except for the last element, which is considered the set "default". */
   buildIds?: CompatibleVersionSetBuildIdsList;
 }
-export const CompatibleVersionSet = /*@__PURE__*/ S.suspend(() =>
+const CompatibleVersionSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildIds: S.optional(CompatibleVersionSetBuildIdsList),
   }),
@@ -5218,7 +5189,7 @@ export const CompatibleVersionSet = /*@__PURE__*/ S.suspend(() =>
 
 /** Major version sets, in order from oldest to newest. The last element of the list will always be the current default major version. IE: New workflows will target the most recent version in that version set. There may be fewer sets returned than exist, if the request chose to limit this response. */
 export type GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList = Array<CompatibleVersionSet>;
-export const GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList = /*@__PURE__*/ S.Array(
+const GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList = /*@__PURE__*/ S.Array(
   CompatibleVersionSet,
 ) as any as S.Schema<GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList>;
 
@@ -5227,7 +5198,7 @@ export interface GetWorkerBuildIdCompatibilityResponse {
   /** Major version sets, in order from oldest to newest. The last element of the list will always be the current default major version. IE: New workflows will target the most recent version in that version set. There may be fewer sets returned than exist, if the request chose to limit this response. */
   majorVersionSets?: GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList;
 }
-export const GetWorkerBuildIdCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerBuildIdCompatibilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     majorVersionSets: S.optional(GetWorkerBuildIdCompatibilityResponseMajorVersionSetsList),
   }),
@@ -5236,11 +5207,11 @@ export const GetWorkerBuildIdCompatibilityResponse = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetWorkerBuildIdCompatibilityResponse>;
 
 export type GetWorkerTaskReachabilityRequestBuildIdsList = Array<string>;
-export const GetWorkerTaskReachabilityRequestBuildIdsList =
+const GetWorkerTaskReachabilityRequestBuildIdsList =
   ScheduleSpecCronStringList as any as S.Schema<GetWorkerTaskReachabilityRequestBuildIdsList>;
 
 export type GetWorkerTaskReachabilityRequestTaskQueuesList = Array<string>;
-export const GetWorkerTaskReachabilityRequestTaskQueuesList =
+const GetWorkerTaskReachabilityRequestTaskQueuesList =
   ScheduleSpecCronStringList as any as S.Schema<GetWorkerTaskReachabilityRequestTaskQueuesList>;
 
 export type GetWorkerTaskReachabilityRequestReachability =
@@ -5249,7 +5220,7 @@ export type GetWorkerTaskReachabilityRequestReachability =
   | "TASK_REACHABILITY_EXISTING_WORKFLOWS"
   | "TASK_REACHABILITY_OPEN_WORKFLOWS"
   | "TASK_REACHABILITY_CLOSED_WORKFLOWS";
-export const GetWorkerTaskReachabilityRequestReachability = S.String;
+const GetWorkerTaskReachabilityRequestReachability = S.String;
 
 export interface GetWorkerTaskReachabilityRequest {
   namespace: string;
@@ -5260,7 +5231,7 @@ export interface GetWorkerTaskReachabilityRequest {
   /** Type of reachability to query for. `TASK_REACHABILITY_NEW_WORKFLOWS` is always returned in the response. Use `TASK_REACHABILITY_EXISTING_WORKFLOWS` if your application needs to respond to queries on closed workflows. Otherwise, use `TASK_REACHABILITY_OPEN_WORKFLOWS`. Default is `TASK_REACHABILITY_EXISTING_WORKFLOWS` if left unspecified. See the TaskReachability docstring for information about each enum variant. */
   reachability?: GetWorkerTaskReachabilityRequestReachability | (string & {});
 }
-export const GetWorkerTaskReachabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerTaskReachabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     buildIds: S.optional(GetWorkerTaskReachabilityRequestBuildIdsList.pipe(T.Query())),
@@ -5283,11 +5254,9 @@ export type TaskQueueReachabilityReachabilityItem =
   | "TASK_REACHABILITY_EXISTING_WORKFLOWS"
   | "TASK_REACHABILITY_OPEN_WORKFLOWS"
   | "TASK_REACHABILITY_CLOSED_WORKFLOWS";
-export const TaskQueueReachabilityReachabilityItem = S.String;
-
 /** Task reachability for a worker in a single task queue. See the TaskReachability docstring for information about each enum variant. If reachability is empty, this worker is considered unreachable in this task queue. */
 export type TaskQueueReachabilityReachabilityList = Array<TaskQueueReachabilityReachabilityItem>;
-export const TaskQueueReachabilityReachabilityList =
+const TaskQueueReachabilityReachabilityList =
   ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<TaskQueueReachabilityReachabilityList>;
 
 /** Reachability of tasks for a worker on a single task queue. */
@@ -5296,7 +5265,7 @@ export interface TaskQueueReachability {
   /** Task reachability for a worker in a single task queue. See the TaskReachability docstring for information about each enum variant. If reachability is empty, this worker is considered unreachable in this task queue. */
   reachability?: TaskQueueReachabilityReachabilityList;
 }
-export const TaskQueueReachability = /*@__PURE__*/ S.suspend(() =>
+const TaskQueueReachability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueue: S.optional(S.String),
     reachability: S.optional(TaskQueueReachabilityReachabilityList),
@@ -5305,7 +5274,7 @@ export const TaskQueueReachability = /*@__PURE__*/ S.suspend(() =>
 
 /** Reachability per task queue. */
 export type BuildIdReachabilityTaskQueueReachabilityList = Array<TaskQueueReachability>;
-export const BuildIdReachabilityTaskQueueReachabilityList = /*@__PURE__*/ S.Array(
+const BuildIdReachabilityTaskQueueReachabilityList = /*@__PURE__*/ S.Array(
   TaskQueueReachability,
 ) as any as S.Schema<BuildIdReachabilityTaskQueueReachabilityList>;
 
@@ -5316,7 +5285,7 @@ export interface BuildIdReachability {
   /** Reachability per task queue. */
   taskQueueReachability?: BuildIdReachabilityTaskQueueReachabilityList;
 }
-export const BuildIdReachability = /*@__PURE__*/ S.suspend(() =>
+const BuildIdReachability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildId: S.optional(S.String),
     taskQueueReachability: S.optional(BuildIdReachabilityTaskQueueReachabilityList),
@@ -5325,7 +5294,7 @@ export const BuildIdReachability = /*@__PURE__*/ S.suspend(() =>
 
 /** Task reachability, broken down by build id and then task queue. When requesting a large number of task queues or all task queues associated with the given build ids in a namespace, all task queues will be listed in the response but some of them may not contain reachability information due to a server enforced limit. When reaching the limit, task queues that reachability information could not be retrieved for will be marked with a single TASK_REACHABILITY_UNSPECIFIED entry. The caller may issue another call to get the reachability for those task queues. Open source users can adjust this limit by setting the server's dynamic config value for `limit.reachabilityTaskQueueScan` with the caveat that this call can strain the visibility store. */
 export type GetWorkerTaskReachabilityResponseBuildIdReachabilityList = Array<BuildIdReachability>;
-export const GetWorkerTaskReachabilityResponseBuildIdReachabilityList = /*@__PURE__*/ S.Array(
+const GetWorkerTaskReachabilityResponseBuildIdReachabilityList = /*@__PURE__*/ S.Array(
   BuildIdReachability,
 ) as any as S.Schema<GetWorkerTaskReachabilityResponseBuildIdReachabilityList>;
 
@@ -5334,7 +5303,7 @@ export interface GetWorkerTaskReachabilityResponse {
   /** Task reachability, broken down by build id and then task queue. When requesting a large number of task queues or all task queues associated with the given build ids in a namespace, all task queues will be listed in the response but some of them may not contain reachability information due to a server enforced limit. When reaching the limit, task queues that reachability information could not be retrieved for will be marked with a single TASK_REACHABILITY_UNSPECIFIED entry. The caller may issue another call to get the reachability for those task queues. Open source users can adjust this limit by setting the server's dynamic config value for `limit.reachabilityTaskQueueScan` with the caveat that this call can strain the visibility store. */
   buildIdReachability?: GetWorkerTaskReachabilityResponseBuildIdReachabilityList;
 }
-export const GetWorkerTaskReachabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerTaskReachabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildIdReachability: S.optional(GetWorkerTaskReachabilityResponseBuildIdReachabilityList),
   }),
@@ -5346,7 +5315,7 @@ export interface GetWorkerVersioningRulesRequest {
   namespace: string;
   taskQueue: string;
 }
-export const GetWorkerVersioningRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerVersioningRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskQueue: S.String.pipe(T.Label()),
@@ -5365,7 +5334,7 @@ export interface RampByPercentage {
   /** Acceptable range is [0,100). */
   rampPercentage?: number;
 }
-export const RampByPercentage = /*@__PURE__*/ S.suspend(() =>
+const RampByPercentage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rampPercentage: S.optional(S.Number),
   }),
@@ -5377,7 +5346,7 @@ export interface BuildIdAssignmentRule {
   /** This ramp is useful for gradual Blue/Green deployments (and similar) where you want to send a certain portion of the traffic to the target Build ID. */
   percentageRamp?: RampByPercentage;
 }
-export const BuildIdAssignmentRule = /*@__PURE__*/ S.suspend(() =>
+const BuildIdAssignmentRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetBuildId: S.optional(S.String),
     percentageRamp: S.optional(RampByPercentage),
@@ -5388,7 +5357,7 @@ export interface TimestampedBuildIdAssignmentRule {
   rule?: BuildIdAssignmentRule;
   createTime?: string;
 }
-export const TimestampedBuildIdAssignmentRule = /*@__PURE__*/ S.suspend(() =>
+const TimestampedBuildIdAssignmentRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(BuildIdAssignmentRule),
     createTime: S.optional(S.String),
@@ -5399,7 +5368,7 @@ export const TimestampedBuildIdAssignmentRule = /*@__PURE__*/ S.suspend(() =>
 
 export type GetWorkerVersioningRulesResponseAssignmentRulesList =
   Array<TimestampedBuildIdAssignmentRule>;
-export const GetWorkerVersioningRulesResponseAssignmentRulesList = /*@__PURE__*/ S.Array(
+const GetWorkerVersioningRulesResponseAssignmentRulesList = /*@__PURE__*/ S.Array(
   TimestampedBuildIdAssignmentRule,
 ) as any as S.Schema<GetWorkerVersioningRulesResponseAssignmentRulesList>;
 
@@ -5409,7 +5378,7 @@ export interface CompatibleBuildIdRedirectRule {
   /** Target Build ID must be compatible with the Source Build ID; that is it must be able to process event histories made by the Source Build ID by using [Patching](https://docs.temporal.io/workflows#patching) or other means. */
   targetBuildId?: string;
 }
-export const CompatibleBuildIdRedirectRule = /*@__PURE__*/ S.suspend(() =>
+const CompatibleBuildIdRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceBuildId: S.optional(S.String),
     targetBuildId: S.optional(S.String),
@@ -5422,7 +5391,7 @@ export interface TimestampedCompatibleBuildIdRedirectRule {
   rule?: CompatibleBuildIdRedirectRule;
   createTime?: string;
 }
-export const TimestampedCompatibleBuildIdRedirectRule = /*@__PURE__*/ S.suspend(() =>
+const TimestampedCompatibleBuildIdRedirectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: S.optional(CompatibleBuildIdRedirectRule),
     createTime: S.optional(S.String),
@@ -5433,7 +5402,7 @@ export const TimestampedCompatibleBuildIdRedirectRule = /*@__PURE__*/ S.suspend(
 
 export type GetWorkerVersioningRulesResponseCompatibleRedirectRulesList =
   Array<TimestampedCompatibleBuildIdRedirectRule>;
-export const GetWorkerVersioningRulesResponseCompatibleRedirectRulesList = /*@__PURE__*/ S.Array(
+const GetWorkerVersioningRulesResponseCompatibleRedirectRulesList = /*@__PURE__*/ S.Array(
   TimestampedCompatibleBuildIdRedirectRule,
 ) as any as S.Schema<GetWorkerVersioningRulesResponseCompatibleRedirectRulesList>;
 
@@ -5444,7 +5413,7 @@ export interface GetWorkerVersioningRulesResponse {
   /** This value can be passed back to UpdateWorkerVersioningRulesRequest to ensure that the rules were not modified between this List and the Update, which could lead to lost updates and other confusion. */
   conflictToken?: string;
 }
-export const GetWorkerVersioningRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkerVersioningRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignmentRules: S.optional(GetWorkerVersioningRulesResponseAssignmentRulesList),
     compatibleRedirectRules: S.optional(
@@ -5460,7 +5429,7 @@ export type GetWorkflowExecutionHistoryRequestHistoryEventFilterType =
   | "HISTORY_EVENT_FILTER_TYPE_UNSPECIFIED"
   | "HISTORY_EVENT_FILTER_TYPE_ALL_EVENT"
   | "HISTORY_EVENT_FILTER_TYPE_CLOSE_EVENT";
-export const GetWorkflowExecutionHistoryRequestHistoryEventFilterType = S.String;
+const GetWorkflowExecutionHistoryRequestHistoryEventFilterType = S.String;
 
 export interface GetWorkflowExecutionHistoryRequest {
   namespace: string;
@@ -5476,7 +5445,7 @@ export interface GetWorkflowExecutionHistoryRequest {
   historyEventFilterType?: GetWorkflowExecutionHistoryRequestHistoryEventFilterType | (string & {});
   skipArchival?: boolean;
 }
-export const GetWorkflowExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution_workflow_id: S.String.pipe(T.Label()),
@@ -5562,11 +5531,11 @@ export type HistoryEventEventType =
   | "EVENT_TYPE_WORKFLOW_EXECUTION_PAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_UNPAUSED"
   | "EVENT_TYPE_WORKFLOW_EXECUTION_TIME_SKIPPING_TRANSITIONED";
-export const HistoryEventEventType = S.String;
+const HistoryEventEventType = S.String;
 
 /** Links to related entities, such as the entity that started this event's workflow. */
 export type HistoryEventLinksList = Array<Link>;
-export const HistoryEventLinksList =
+const HistoryEventLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<HistoryEventLinksList>;
 
 /** Principal is an authenticated caller identity computed by the server from trusted authentication context. */
@@ -5576,7 +5545,7 @@ export interface Principal {
   /** Identifier within that category (e.g., sub JWT claim, email address). */
   name?: string;
 }
-export const Principal = /*@__PURE__*/ S.suspend(() =>
+const Principal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     name: S.optional(S.String),
@@ -5588,11 +5557,11 @@ export type WorkflowExecutionStartedEventAttributesInitiator =
   | "CONTINUE_AS_NEW_INITIATOR_WORKFLOW"
   | "CONTINUE_AS_NEW_INITIATOR_RETRY"
   | "CONTINUE_AS_NEW_INITIATOR_CRON_SCHEDULE";
-export const WorkflowExecutionStartedEventAttributesInitiator = S.String;
+const WorkflowExecutionStartedEventAttributesInitiator = S.String;
 
 /** Completion callbacks attached when this workflow was started. */
 export type WorkflowExecutionStartedEventAttributesCompletionCallbacksList = Array<Callback>;
-export const WorkflowExecutionStartedEventAttributesCompletionCallbacksList = /*@__PURE__*/ S.Array(
+const WorkflowExecutionStartedEventAttributesCompletionCallbacksList = /*@__PURE__*/ S.Array(
   Callback,
 ) as any as S.Schema<WorkflowExecutionStartedEventAttributesCompletionCallbacksList>;
 
@@ -5601,7 +5570,7 @@ export type InheritedAutoUpgradeInfoContinueAsNewInitialVersioningBehavior =
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_AUTO_UPGRADE"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_USE_RAMPING_VERSION";
-export const InheritedAutoUpgradeInfoContinueAsNewInitialVersioningBehavior = S.String;
+const InheritedAutoUpgradeInfoContinueAsNewInitialVersioningBehavior = S.String;
 
 /** Used as part of WorkflowExecutionStartedEventAttributes to pass down the AutoUpgrade behavior and source deployment version to a workflow execution whose parent/previous workflow has an AutoUpgrade behavior. Also used for Upgrade-on-CaN behaviors AutoUpgrade and UseRampingVersion. */
 export interface InheritedAutoUpgradeInfo {
@@ -5612,7 +5581,7 @@ export interface InheritedAutoUpgradeInfo {
   /** Experimental. If this workflow is the result of a continue-as-new, this field is set to the initial_versioning_behavior specified in that command. Only used for the initial task of this run and the initial task of any retries of this run. Not passed to children or to future continue-as-new. Note: In the first release of Upgrade-on-CaN, when the only ContinueAsNewVersioningBehavior was AutoUpgrade, a non-empty InheritedAutoUpgradeInfo meant that the workflow should start as AutoUpgrade. So for compatibility with history events generated during that time, know that an UNSPECIFIED value here is equivalent to AutoUpgrade value if the InheritedAutoUpgradeInfo is non-empty. */
   continueAsNewInitialVersioningBehavior?: InheritedAutoUpgradeInfoContinueAsNewInitialVersioningBehavior;
 }
-export const InheritedAutoUpgradeInfo = /*@__PURE__*/ S.suspend(() =>
+const InheritedAutoUpgradeInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDeploymentVersion: S.optional(WorkerDeploymentVersion),
     sourceDeploymentRevisionNumber: S.optional(S.String),
@@ -5628,7 +5597,7 @@ export interface DeclinedTargetVersionUpgrade {
   /** Revision number of the task queue routing config at the time the target was declined. If an incoming target's revision is <= this value, it is not newer and is not used for deciding whether or not to suppress the upgrade signal. */
   revisionNumber?: string;
 }
-export const DeclinedTargetVersionUpgrade = /*@__PURE__*/ S.suspend(() =>
+const DeclinedTargetVersionUpgrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentVersion: S.optional(WorkerDeploymentVersion),
     revisionNumber: S.optional(S.String),
@@ -5646,7 +5615,7 @@ export interface TimeSkippingConfig {
   /** Maximum elapsed time since time skipping was enabled. This includes both skipped time and real time elapsing. */
   maxElapsedDuration?: string;
 }
-export const TimeSkippingConfig = /*@__PURE__*/ S.suspend(() =>
+const TimeSkippingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     maxSkippedDuration: S.optional(S.String),
@@ -5728,7 +5697,7 @@ export interface WorkflowExecutionStartedEventAttributes {
   /** The time skipped by the previous execution that started this workflow. It can happen in cases of child workflows and continue-as-new workflows. */
   initialSkippedDuration?: string;
 }
-export const WorkflowExecutionStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowType: S.optional(WorkflowType),
     parentWorkflowNamespace: S.optional(S.String),
@@ -5784,7 +5753,7 @@ export interface WorkflowExecutionCompletedEventAttributes {
   /** If another run is started by cron, this contains the new run id. */
   newExecutionRunId?: string;
 }
-export const WorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Payloads),
     workflowTaskCompletedEventId: S.optional(S.String),
@@ -5803,7 +5772,7 @@ export type WorkflowExecutionFailedEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const WorkflowExecutionFailedEventAttributesRetryState = S.String;
+const WorkflowExecutionFailedEventAttributesRetryState = S.String;
 
 export interface WorkflowExecutionFailedEventAttributes {
   /** Serialized result of workflow failure (ex: An exception thrown, or error returned) */
@@ -5814,7 +5783,7 @@ export interface WorkflowExecutionFailedEventAttributes {
   /** If another run is started by cron or retry, this contains the new run id. */
   newExecutionRunId?: string;
 }
-export const WorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failure: S.optional(Failure),
     retryState: S.optional(WorkflowExecutionFailedEventAttributesRetryState),
@@ -5834,14 +5803,14 @@ export type WorkflowExecutionTimedOutEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const WorkflowExecutionTimedOutEventAttributesRetryState = S.String;
+const WorkflowExecutionTimedOutEventAttributesRetryState = S.String;
 
 export interface WorkflowExecutionTimedOutEventAttributes {
   retryState?: WorkflowExecutionTimedOutEventAttributesRetryState;
   /** If another run is started by cron or retry, this contains the new run id. */
   newExecutionRunId?: string;
 }
-export const WorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryState: S.optional(WorkflowExecutionTimedOutEventAttributesRetryState),
     newExecutionRunId: S.optional(S.String),
@@ -5858,7 +5827,7 @@ export interface WorkflowTaskScheduledEventAttributes {
   /** Starting at 1, how many attempts there have been to complete this task */
   attempt?: number;
 }
-export const WorkflowTaskScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskQueue: S.optional(TaskQueue),
     startToCloseTimeout: S.optional(S.String),
@@ -5873,15 +5842,14 @@ export type WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem =
   | "SUGGEST_CONTINUE_AS_NEW_REASON_HISTORY_SIZE_TOO_LARGE"
   | "SUGGEST_CONTINUE_AS_NEW_REASON_TOO_MANY_HISTORY_EVENTS"
   | "SUGGEST_CONTINUE_AS_NEW_REASON_TOO_MANY_UPDATES";
-export const WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem = S.String;
+const WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem = S.String;
 
 /** The reason(s) that suggest_continue_as_new is true, if it is. Unset if suggest_continue_as_new is false. */
 export type WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsList =
   Array<WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem>;
-export const WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsList =
-  /*@__PURE__*/ S.Array(
-    WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem,
-  ) as any as S.Schema<WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsList>;
+const WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsList = /*@__PURE__*/ S.Array(
+  WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsItem,
+) as any as S.Schema<WorkflowTaskStartedEventAttributesSuggestContinueAsNewReasonsList>;
 
 export interface WorkflowTaskStartedEventAttributes {
   /** The id of the `WORKFLOW_TASK_SCHEDULED` event this task corresponds to */
@@ -5903,7 +5871,7 @@ export interface WorkflowTaskStartedEventAttributes {
   /** Used by server internally to properly reapply build ID redirects to an execution when rebuilding it from events. Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   buildIdRedirectCounter?: string;
 }
-export const WorkflowTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     identity: S.optional(S.String),
@@ -5923,13 +5891,13 @@ export const WorkflowTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** Internal flags used by the core SDK. SDKs using flags must comply with the following behavior: During replay: * If a flag is not recognized (value is too high or not defined), it must fail the workflow task. * If a flag is recognized, it is stored in a set of used flags for the run. Code checks for that flag during and after this WFT are allowed to assume that the flag is present. * If a code check for a flag does not find the flag in the set of used flags, it must take the branch corresponding to the absence of that flag. During non-replay execution of new WFTs: * The SDK is free to use all flags it knows about. It must record any newly-used (IE: not previously recorded) flags when completing the WFT. SDKs which are too old to even know about this field at all are considered to produce undefined behavior if they replay workflows which used this mechanism. (-- api-linter: core::0141::forbidden-types=disabled aip.dev/not-precedent: These really shouldn't have negative values. --) */
 export type WorkflowTaskCompletedMetadataCoreUsedFlagsList = Array<number>;
-export const WorkflowTaskCompletedMetadataCoreUsedFlagsList = /*@__PURE__*/ S.Array(
+const WorkflowTaskCompletedMetadataCoreUsedFlagsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<WorkflowTaskCompletedMetadataCoreUsedFlagsList>;
 
 /** Flags used by the SDK lang. No attempt is made to distinguish between different SDK languages here as processing a workflow with a different language than the one which authored it is already undefined behavior. See `core_used_patches` for more. (-- api-linter: core::0141::forbidden-types=disabled aip.dev/not-precedent: These really shouldn't have negative values. --) */
 export type WorkflowTaskCompletedMetadataLangUsedFlagsList = Array<number>;
-export const WorkflowTaskCompletedMetadataLangUsedFlagsList =
+const WorkflowTaskCompletedMetadataLangUsedFlagsList =
   WorkflowTaskCompletedMetadataCoreUsedFlagsList as any as S.Schema<WorkflowTaskCompletedMetadataLangUsedFlagsList>;
 
 export interface WorkflowTaskCompletedMetadata {
@@ -5942,7 +5910,7 @@ export interface WorkflowTaskCompletedMetadata {
   /** Version of the SDK that processed the task. This is usually something like "1.20.0" and is usually the same as client-version gRPC header. This should only be set if its value changed since the last time recorded on the workflow (or be set on the first task). */
   sdkVersion?: string;
 }
-export const WorkflowTaskCompletedMetadata = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskCompletedMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coreUsedFlags: S.optional(WorkflowTaskCompletedMetadataCoreUsedFlagsList),
     langUsedFlags: S.optional(WorkflowTaskCompletedMetadataLangUsedFlagsList),
@@ -5958,7 +5926,7 @@ export interface MeteringMetadata {
   /** Count of local activities which have begun an execution attempt during this workflow task, and whose first attempt occurred in some previous task. This is used for metering purposes, and does not affect workflow state. (-- api-linter: core::0141::forbidden-types=disabled aip.dev/not-precedent: Negative values make no sense to represent. --) */
   nonfirstLocalActivityExecutionAttempts?: number;
 }
-export const MeteringMetadata = /*@__PURE__*/ S.suspend(() =>
+const MeteringMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nonfirstLocalActivityExecutionAttempts: S.optional(S.Number),
   }),
@@ -5969,7 +5937,7 @@ export type WorkflowTaskCompletedEventAttributesVersioningBehavior =
   | "VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "VERSIONING_BEHAVIOR_PINNED"
   | "VERSIONING_BEHAVIOR_AUTO_UPGRADE";
-export const WorkflowTaskCompletedEventAttributesVersioningBehavior = S.String;
+const WorkflowTaskCompletedEventAttributesVersioningBehavior = S.String;
 
 export interface WorkflowTaskCompletedEventAttributes {
   /** The id of the `WORKFLOW_TASK_SCHEDULED` event this task corresponds to */
@@ -5997,7 +5965,7 @@ export interface WorkflowTaskCompletedEventAttributes {
   /** The Worker Deployment Version that completed this task. Must be set if `versioning_behavior` is set. This value updates workflow execution's `versioning_info.deployment_version`. */
   deploymentVersion?: WorkerDeploymentVersion;
 }
-export const WorkflowTaskCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -6022,7 +5990,7 @@ export type WorkflowTaskTimedOutEventAttributesTimeoutType =
   | "TIMEOUT_TYPE_SCHEDULE_TO_START"
   | "TIMEOUT_TYPE_SCHEDULE_TO_CLOSE"
   | "TIMEOUT_TYPE_HEARTBEAT";
-export const WorkflowTaskTimedOutEventAttributesTimeoutType = S.String;
+const WorkflowTaskTimedOutEventAttributesTimeoutType = S.String;
 
 export interface WorkflowTaskTimedOutEventAttributes {
   /** The id of the `WORKFLOW_TASK_SCHEDULED` event this task corresponds to */
@@ -6031,7 +5999,7 @@ export interface WorkflowTaskTimedOutEventAttributes {
   startedEventId?: string;
   timeoutType?: WorkflowTaskTimedOutEventAttributesTimeoutType;
 }
-export const WorkflowTaskTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -6080,7 +6048,7 @@ export type WorkflowTaskFailedEventAttributesCause =
   | "WORKFLOW_TASK_FAILED_CAUSE_FEATURE_DISABLED"
   | "WORKFLOW_TASK_FAILED_CAUSE_GRPC_MESSAGE_TOO_LARGE"
   | "WORKFLOW_TASK_FAILED_CAUSE_PAYLOADS_TOO_LARGE";
-export const WorkflowTaskFailedEventAttributesCause = S.String;
+const WorkflowTaskFailedEventAttributesCause = S.String;
 
 export interface WorkflowTaskFailedEventAttributes {
   /** The id of the `WORKFLOW_TASK_SCHEDULED` event this task corresponds to */
@@ -6103,7 +6071,7 @@ export interface WorkflowTaskFailedEventAttributes {
   /** Version info of the worker who processed this workflow task. If present, the `build_id` field within is also used as `binary_checksum`, which may be omitted in that case (it may also be populated to preserve compatibility). Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   workerVersion?: WorkerVersionStamp;
 }
-export const WorkflowTaskFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowTaskFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -6144,7 +6112,7 @@ export interface ActivityTaskScheduledEventAttributes {
   /** Priority metadata. If this message is not present, or any fields are not present, they inherit the values from the workflow. */
   priority?: Priority;
 }
-export const ActivityTaskScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.optional(S.String),
     activityType: S.optional(WorkflowType),
@@ -6180,7 +6148,7 @@ export interface ActivityTaskStartedEventAttributes {
   /** Used by server internally to properly reapply build ID redirects to an execution when rebuilding it from events. Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   buildIdRedirectCounter?: string;
 }
-export const ActivityTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     identity: S.optional(S.String),
@@ -6206,7 +6174,7 @@ export interface ActivityTaskCompletedEventAttributes {
   /** Version info of the worker who processed this workflow task. Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   workerVersion?: WorkerVersionStamp;
 }
-export const ActivityTaskCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Payloads),
     scheduledEventId: S.optional(S.String),
@@ -6227,7 +6195,7 @@ export type ActivityTaskFailedEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ActivityTaskFailedEventAttributesRetryState = S.String;
+const ActivityTaskFailedEventAttributesRetryState = S.String;
 
 export interface ActivityTaskFailedEventAttributes {
   /** Failure details */
@@ -6242,7 +6210,7 @@ export interface ActivityTaskFailedEventAttributes {
   /** Version info of the worker who processed this workflow task. Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   workerVersion?: WorkerVersionStamp;
 }
-export const ActivityTaskFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failure: S.optional(Failure),
     scheduledEventId: S.optional(S.String),
@@ -6264,7 +6232,7 @@ export type ActivityTaskTimedOutEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ActivityTaskTimedOutEventAttributesRetryState = S.String;
+const ActivityTaskTimedOutEventAttributesRetryState = S.String;
 
 export interface ActivityTaskTimedOutEventAttributes {
   /** If this activity had failed, was retried, and then timed out, that failure is stored as the `cause` in here. */
@@ -6275,7 +6243,7 @@ export interface ActivityTaskTimedOutEventAttributes {
   startedEventId?: string;
   retryState?: ActivityTaskTimedOutEventAttributesRetryState;
 }
-export const ActivityTaskTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failure: S.optional(Failure),
     scheduledEventId: S.optional(S.String),
@@ -6294,7 +6262,7 @@ export interface TimerStartedEventAttributes {
   /** The `WORKFLOW_TASK_COMPLETED` event which this command was reported with */
   workflowTaskCompletedEventId?: string;
 }
-export const TimerStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const TimerStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timerId: S.optional(S.String),
     startToFireTimeout: S.optional(S.String),
@@ -6310,7 +6278,7 @@ export interface TimerFiredEventAttributes {
   /** The id of the `TIMER_STARTED` event itself */
   startedEventId?: string;
 }
-export const TimerFiredEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const TimerFiredEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timerId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -6325,7 +6293,7 @@ export interface ActivityTaskCancelRequestedEventAttributes {
   /** The `WORKFLOW_TASK_COMPLETED` event which this command was reported with */
   workflowTaskCompletedEventId?: string;
 }
-export const ActivityTaskCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     workflowTaskCompletedEventId: S.optional(S.String),
@@ -6348,7 +6316,7 @@ export interface ActivityTaskCanceledEventAttributes {
   /** Version info of the worker who processed this workflow task. Deprecated. This field should be cleaned up when versioning-2 API is removed. [cleanup-experimental-wv] */
   workerVersion?: WorkerVersionStamp;
 }
-export const ActivityTaskCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityTaskCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(Payloads),
     latestCancelRequestedEventId: S.optional(S.String),
@@ -6371,7 +6339,7 @@ export interface TimerCanceledEventAttributes {
   /** The id of the worker who requested this cancel */
   identity?: string;
 }
-export const TimerCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const TimerCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timerId: S.optional(S.String),
     startedEventId: S.optional(S.String),
@@ -6384,7 +6352,7 @@ export const TimerCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
 
 /** Serialized information recorded in the marker */
 export type MarkerRecordedEventAttributesDetailsMap = { [key: string]: Payloads | undefined };
-export const MarkerRecordedEventAttributesDetailsMap = /*@__PURE__*/ S.Record(
+const MarkerRecordedEventAttributesDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   Payloads,
 ) as any as S.Schema<MarkerRecordedEventAttributesDetailsMap>;
@@ -6400,7 +6368,7 @@ export interface MarkerRecordedEventAttributes {
   /** Some uses of markers, like a local activity, could "fail". If they did that is recorded here. */
   failure?: Failure;
 }
-export const MarkerRecordedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const MarkerRecordedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     markerName: S.optional(S.String),
     details: S.optional(MarkerRecordedEventAttributesDetailsMap),
@@ -6428,7 +6396,7 @@ export interface WorkflowExecutionSignaledEventAttributes {
   /** The request ID of the Signal request, used by the server to attach this to the correct Event ID when generating link. */
   requestId?: string;
 }
-export const WorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalName: S.optional(S.String),
     input: S.optional(Payloads),
@@ -6449,7 +6417,7 @@ export interface WorkflowExecutionTerminatedEventAttributes {
   /** id of the client who requested termination */
   identity?: string;
 }
-export const WorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     details: S.optional(Payloads),
@@ -6468,7 +6436,7 @@ export interface WorkflowExecutionCancelRequestedEventAttributes {
   /** id of the worker or client who requested this cancel */
   identity?: string;
 }
-export const WorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cause: S.optional(S.String),
     externalInitiatedEventId: S.optional(S.String),
@@ -6484,7 +6452,7 @@ export interface WorkflowExecutionCanceledEventAttributes {
   workflowTaskCompletedEventId?: string;
   details?: Payloads;
 }
-export const WorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowTaskCompletedEventId: S.optional(S.String),
     details: S.optional(Payloads),
@@ -6507,26 +6475,25 @@ export interface RequestCancelExternalWorkflowExecutionInitiatedEventAttributes 
   /** Reason for requesting the cancellation */
   reason?: string;
 }
-export const RequestCancelExternalWorkflowExecutionInitiatedEventAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      workflowTaskCompletedEventId: S.optional(S.String),
-      namespace: S.optional(S.String),
-      namespaceId: S.optional(S.String),
-      workflowExecution: S.optional(WorkflowExecution),
-      control: S.optional(S.String),
-      childWorkflowOnly: S.optional(S.Boolean),
-      reason: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes",
-  }) as any as S.Schema<RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>;
+const RequestCancelExternalWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowTaskCompletedEventId: S.optional(S.String),
+    namespace: S.optional(S.String),
+    namespaceId: S.optional(S.String),
+    workflowExecution: S.optional(WorkflowExecution),
+    control: S.optional(S.String),
+    childWorkflowOnly: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RequestCancelExternalWorkflowExecutionInitiatedEventAttributes",
+}) as any as S.Schema<RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>;
 
 export type RequestCancelExternalWorkflowExecutionFailedEventAttributesCause =
   | "CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED"
   | "CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND"
   | "CANCEL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_NAMESPACE_NOT_FOUND";
-export const RequestCancelExternalWorkflowExecutionFailedEventAttributesCause = S.String;
+const RequestCancelExternalWorkflowExecutionFailedEventAttributesCause = S.String;
 
 export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   cause?: RequestCancelExternalWorkflowExecutionFailedEventAttributesCause;
@@ -6541,17 +6508,16 @@ export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   /** Deprecated. */
   control?: string;
 }
-export const RequestCancelExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cause: S.optional(RequestCancelExternalWorkflowExecutionFailedEventAttributesCause),
-      workflowTaskCompletedEventId: S.optional(S.String),
-      namespace: S.optional(S.String),
-      namespaceId: S.optional(S.String),
-      workflowExecution: S.optional(WorkflowExecution),
-      initiatedEventId: S.optional(S.String),
-      control: S.optional(S.String),
-    }),
+const RequestCancelExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cause: S.optional(RequestCancelExternalWorkflowExecutionFailedEventAttributesCause),
+    workflowTaskCompletedEventId: S.optional(S.String),
+    namespace: S.optional(S.String),
+    namespaceId: S.optional(S.String),
+    workflowExecution: S.optional(WorkflowExecution),
+    initiatedEventId: S.optional(S.String),
+    control: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "RequestCancelExternalWorkflowExecutionFailedEventAttributes",
 }) as any as S.Schema<RequestCancelExternalWorkflowExecutionFailedEventAttributes>;
@@ -6564,7 +6530,7 @@ export interface ExternalWorkflowExecutionCancelRequestedEventAttributes {
   namespaceId?: string;
   workflowExecution?: WorkflowExecution;
 }
-export const ExternalWorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ExternalWorkflowExecutionCancelRequestedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initiatedEventId: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -6580,14 +6546,14 @@ export type WorkflowExecutionContinuedAsNewEventAttributesInitiator =
   | "CONTINUE_AS_NEW_INITIATOR_WORKFLOW"
   | "CONTINUE_AS_NEW_INITIATOR_RETRY"
   | "CONTINUE_AS_NEW_INITIATOR_CRON_SCHEDULE";
-export const WorkflowExecutionContinuedAsNewEventAttributesInitiator = S.String;
+const WorkflowExecutionContinuedAsNewEventAttributesInitiator = S.String;
 
 /** Experimental. Optionally decide the versioning behavior that the first task of the new run should use. For example, choose to AutoUpgrade on continue-as-new instead of inheriting the pinned version of the previous run. */
 export type WorkflowExecutionContinuedAsNewEventAttributesInitialVersioningBehavior =
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_UNSPECIFIED"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_AUTO_UPGRADE"
   | "CONTINUE_AS_NEW_VERSIONING_BEHAVIOR_USE_RAMPING_VERSION";
-export const WorkflowExecutionContinuedAsNewEventAttributesInitialVersioningBehavior = S.String;
+const WorkflowExecutionContinuedAsNewEventAttributesInitialVersioningBehavior = S.String;
 
 export interface WorkflowExecutionContinuedAsNewEventAttributes {
   /** The run ID of the new workflow started by this continue-as-new */
@@ -6616,7 +6582,7 @@ export interface WorkflowExecutionContinuedAsNewEventAttributes {
   /** Experimental. Optionally decide the versioning behavior that the first task of the new run should use. For example, choose to AutoUpgrade on continue-as-new instead of inheriting the pinned version of the previous run. */
   initialVersioningBehavior?: WorkflowExecutionContinuedAsNewEventAttributesInitialVersioningBehavior;
 }
-export const WorkflowExecutionContinuedAsNewEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionContinuedAsNewEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newExecutionRunId: S.optional(S.String),
     workflowType: S.optional(WorkflowType),
@@ -6647,7 +6613,7 @@ export type StartChildWorkflowExecutionInitiatedEventAttributesParentClosePolicy
   | "PARENT_CLOSE_POLICY_TERMINATE"
   | "PARENT_CLOSE_POLICY_ABANDON"
   | "PARENT_CLOSE_POLICY_REQUEST_CANCEL";
-export const StartChildWorkflowExecutionInitiatedEventAttributesParentClosePolicy = S.String;
+const StartChildWorkflowExecutionInitiatedEventAttributesParentClosePolicy = S.String;
 
 /** Default: WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE. */
 export type StartChildWorkflowExecutionInitiatedEventAttributesWorkflowIdReusePolicy =
@@ -6656,7 +6622,7 @@ export type StartChildWorkflowExecutionInitiatedEventAttributesWorkflowIdReusePo
   | "WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE"
   | "WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING";
-export const StartChildWorkflowExecutionInitiatedEventAttributesWorkflowIdReusePolicy = S.String;
+const StartChildWorkflowExecutionInitiatedEventAttributesWorkflowIdReusePolicy = S.String;
 
 export interface StartChildWorkflowExecutionInitiatedEventAttributes {
   /** Namespace of the child workflow. SDKs and UI tools should use `namespace` field but server must use `namespace_id` only. */
@@ -6695,7 +6661,7 @@ export interface StartChildWorkflowExecutionInitiatedEventAttributes {
   /** Propagate the duration skipped to the child workflow. */
   initialSkippedDuration?: string;
 }
-export const StartChildWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const StartChildWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -6732,7 +6698,7 @@ export type StartChildWorkflowExecutionFailedEventAttributesCause =
   | "START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_UNSPECIFIED"
   | "START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_WORKFLOW_ALREADY_EXISTS"
   | "START_CHILD_WORKFLOW_EXECUTION_FAILED_CAUSE_NAMESPACE_NOT_FOUND";
-export const StartChildWorkflowExecutionFailedEventAttributesCause = S.String;
+const StartChildWorkflowExecutionFailedEventAttributesCause = S.String;
 
 export interface StartChildWorkflowExecutionFailedEventAttributes {
   /** Namespace of the child workflow. SDKs and UI tools should use `namespace` field but server must use `namespace_id` only. */
@@ -6748,7 +6714,7 @@ export interface StartChildWorkflowExecutionFailedEventAttributes {
   /** The `WORKFLOW_TASK_COMPLETED` event which this command was reported with */
   workflowTaskCompletedEventId?: string;
 }
-export const StartChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const StartChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -6773,7 +6739,7 @@ export interface ChildWorkflowExecutionStartedEventAttributes {
   workflowType?: WorkflowType;
   header?: Header;
 }
-export const ChildWorkflowExecutionStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -6798,7 +6764,7 @@ export interface ChildWorkflowExecutionCompletedEventAttributes {
   /** Id of the `CHILD_WORKFLOW_EXECUTION_STARTED` event which this event corresponds to */
   startedEventId?: string;
 }
-export const ChildWorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Payloads),
     namespace: S.optional(S.String),
@@ -6821,7 +6787,7 @@ export type ChildWorkflowExecutionFailedEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ChildWorkflowExecutionFailedEventAttributesRetryState = S.String;
+const ChildWorkflowExecutionFailedEventAttributesRetryState = S.String;
 
 export interface ChildWorkflowExecutionFailedEventAttributes {
   failure?: Failure;
@@ -6836,7 +6802,7 @@ export interface ChildWorkflowExecutionFailedEventAttributes {
   startedEventId?: string;
   retryState?: ChildWorkflowExecutionFailedEventAttributesRetryState;
 }
-export const ChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failure: S.optional(Failure),
     namespace: S.optional(S.String),
@@ -6863,7 +6829,7 @@ export interface ChildWorkflowExecutionCanceledEventAttributes {
   /** Id of the `CHILD_WORKFLOW_EXECUTION_STARTED` event which this event corresponds to */
   startedEventId?: string;
 }
-export const ChildWorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionCanceledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(Payloads),
     namespace: S.optional(S.String),
@@ -6886,7 +6852,7 @@ export type ChildWorkflowExecutionTimedOutEventAttributesRetryState =
   | "RETRY_STATE_RETRY_POLICY_NOT_SET"
   | "RETRY_STATE_INTERNAL_SERVER_ERROR"
   | "RETRY_STATE_CANCEL_REQUESTED";
-export const ChildWorkflowExecutionTimedOutEventAttributesRetryState = S.String;
+const ChildWorkflowExecutionTimedOutEventAttributesRetryState = S.String;
 
 export interface ChildWorkflowExecutionTimedOutEventAttributes {
   /** Namespace of the child workflow. SDKs and UI tools should use `namespace` field but server must use `namespace_id` only. */
@@ -6900,7 +6866,7 @@ export interface ChildWorkflowExecutionTimedOutEventAttributes {
   startedEventId?: string;
   retryState?: ChildWorkflowExecutionTimedOutEventAttributesRetryState;
 }
-export const ChildWorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -6925,7 +6891,7 @@ export interface ChildWorkflowExecutionTerminatedEventAttributes {
   /** Id of the `CHILD_WORKFLOW_EXECUTION_STARTED` event which this event corresponds to */
   startedEventId?: string;
 }
-export const ChildWorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ChildWorkflowExecutionTerminatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -6955,7 +6921,7 @@ export interface SignalExternalWorkflowExecutionInitiatedEventAttributes {
   childWorkflowOnly?: boolean;
   header?: Header;
 }
-export const SignalExternalWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const SignalExternalWorkflowExecutionInitiatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowTaskCompletedEventId: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -6976,7 +6942,7 @@ export type SignalExternalWorkflowExecutionFailedEventAttributesCause =
   | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_EXTERNAL_WORKFLOW_EXECUTION_NOT_FOUND"
   | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_NAMESPACE_NOT_FOUND"
   | "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_FAILED_CAUSE_SIGNAL_COUNT_LIMIT_EXCEEDED";
-export const SignalExternalWorkflowExecutionFailedEventAttributesCause = S.String;
+const SignalExternalWorkflowExecutionFailedEventAttributesCause = S.String;
 
 export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   cause?: SignalExternalWorkflowExecutionFailedEventAttributesCause;
@@ -6990,7 +6956,7 @@ export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   /** Deprecated. */
   control?: string;
 }
-export const SignalExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const SignalExternalWorkflowExecutionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cause: S.optional(SignalExternalWorkflowExecutionFailedEventAttributesCause),
     workflowTaskCompletedEventId: S.optional(S.String),
@@ -7014,7 +6980,7 @@ export interface ExternalWorkflowExecutionSignaledEventAttributes {
   /** Deprecated. */
   control?: string;
 }
-export const ExternalWorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ExternalWorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initiatedEventId: S.optional(S.String),
     namespace: S.optional(S.String),
@@ -7031,7 +6997,7 @@ export interface UpsertWorkflowSearchAttributesEventAttributes {
   workflowTaskCompletedEventId?: string;
   searchAttributes?: SearchAttributes;
 }
-export const UpsertWorkflowSearchAttributesEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const UpsertWorkflowSearchAttributesEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowTaskCompletedEventId: S.optional(S.String),
     searchAttributes: S.optional(SearchAttributes),
@@ -7047,7 +7013,7 @@ export interface Meta {
   /** A string identifying the agent that requested this Update. */
   identity?: string;
 }
-export const Meta = /*@__PURE__*/ S.suspend(() =>
+const Meta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateId: S.optional(S.String),
     identity: S.optional(S.String),
@@ -7062,7 +7028,7 @@ export interface Input {
   /** The arguments to pass to the named Update handler. */
   args?: Payloads;
 }
-export const Input = /*@__PURE__*/ S.suspend(() =>
+const Input = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     header: S.optional(Header),
     name: S.optional(S.String),
@@ -7075,7 +7041,7 @@ export interface Request {
   meta?: Meta;
   input?: Input;
 }
-export const Request = /*@__PURE__*/ S.suspend(() =>
+const Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(Meta),
     input: S.optional(Input),
@@ -7092,7 +7058,7 @@ export interface WorkflowExecutionUpdateAcceptedEventAttributes {
   /** The message payload of the original request message that initiated this update. */
   acceptedRequest?: Request;
 }
-export const WorkflowExecutionUpdateAcceptedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionUpdateAcceptedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolInstanceId: S.optional(S.String),
     acceptedRequestMessageId: S.optional(S.String),
@@ -7115,7 +7081,7 @@ export interface WorkflowExecutionUpdateRejectedEventAttributes {
   /** The cause of rejection. */
   failure?: Failure;
 }
-export const WorkflowExecutionUpdateRejectedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionUpdateRejectedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolInstanceId: S.optional(S.String),
     rejectedRequestMessageId: S.optional(S.String),
@@ -7132,7 +7098,7 @@ export interface Outcome {
   success?: Payloads;
   failure?: Failure;
 }
-export const Outcome = /*@__PURE__*/ S.suspend(() =>
+const Outcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(Payloads),
     failure: S.optional(Failure),
@@ -7147,7 +7113,7 @@ export interface WorkflowExecutionUpdateCompletedEventAttributes {
   /** The outcome of executing the workflow update function. */
   outcome?: Outcome;
 }
-export const WorkflowExecutionUpdateCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionUpdateCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meta: S.optional(Meta),
     acceptedEventId: S.optional(S.String),
@@ -7170,7 +7136,7 @@ export interface WorkflowPropertiesModifiedExternallyEventAttributes {
   /** Not used. */
   upsertedMemo?: Memo;
 }
-export const WorkflowPropertiesModifiedExternallyEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowPropertiesModifiedExternallyEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newTaskQueue: S.optional(S.String),
     newWorkflowTaskTimeout: S.optional(S.String),
@@ -7188,7 +7154,7 @@ export interface ActivityPropertiesModifiedExternallyEventAttributes {
   /** If set, update the retry policy of the activity, replacing it with the specified one. The number of attempts at the activity is preserved. */
   newRetryPolicy?: RetryPolicy;
 }
-export const ActivityPropertiesModifiedExternallyEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const ActivityPropertiesModifiedExternallyEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     newRetryPolicy: S.optional(RetryPolicy),
@@ -7203,7 +7169,7 @@ export interface WorkflowPropertiesModifiedEventAttributes {
   /** If set, update the workflow memo with the provided values. The values will be merged with the existing memo. If the user wants to delete values, a default/empty Payload should be used as the value for the key being deleted. */
   upsertedMemo?: Memo;
 }
-export const WorkflowPropertiesModifiedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowPropertiesModifiedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowTaskCompletedEventId: S.optional(S.String),
     upsertedMemo: S.optional(Memo),
@@ -7216,7 +7182,7 @@ export const WorkflowPropertiesModifiedEventAttributes = /*@__PURE__*/ S.suspend
 export type WorkflowExecutionUpdateAdmittedEventAttributesOrigin =
   | "UPDATE_ADMITTED_EVENT_ORIGIN_UNSPECIFIED"
   | "UPDATE_ADMITTED_EVENT_ORIGIN_REAPPLY";
-export const WorkflowExecutionUpdateAdmittedEventAttributesOrigin = S.String;
+const WorkflowExecutionUpdateAdmittedEventAttributesOrigin = S.String;
 
 export interface WorkflowExecutionUpdateAdmittedEventAttributes {
   /** The update request associated with this event. */
@@ -7224,7 +7190,7 @@ export interface WorkflowExecutionUpdateAdmittedEventAttributes {
   /** An explanation of why this event was written to history. */
   origin?: WorkflowExecutionUpdateAdmittedEventAttributesOrigin;
 }
-export const WorkflowExecutionUpdateAdmittedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionUpdateAdmittedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request: S.optional(Request),
     origin: S.optional(WorkflowExecutionUpdateAdmittedEventAttributesOrigin),
@@ -7237,7 +7203,7 @@ export const WorkflowExecutionUpdateAdmittedEventAttributes = /*@__PURE__*/ S.su
 export type NexusOperationScheduledEventAttributesNexusHeaderMap = {
   [key: string]: string | undefined;
 };
-export const NexusOperationScheduledEventAttributesNexusHeaderMap =
+const NexusOperationScheduledEventAttributesNexusHeaderMap =
   CallbackNexusHeaderMap as any as S.Schema<NexusOperationScheduledEventAttributesNexusHeaderMap>;
 
 /** Event marking that an operation was scheduled by a workflow via the ScheduleNexusOperation command. */
@@ -7265,7 +7231,7 @@ export interface NexusOperationScheduledEventAttributes {
   /** Start-to-close timeout for this operation. See ScheduleNexusOperationCommandAttributes.start_to_close_timeout for details. (-- api-linter: core::0140::prepositions=disabled aip.dev/not-precedent: "to" is used to indicate interval. --) */
   startToCloseTimeout?: string;
 }
-export const NexusOperationScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationScheduledEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     service: S.optional(S.String),
@@ -7294,7 +7260,7 @@ export interface NexusOperationStartedEventAttributes {
   /** The operation token returned by the Nexus handler in the response to the StartOperation request. This token is used when canceling the operation. */
   operationToken?: string;
 }
-export const NexusOperationStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationStartedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     operationId: S.optional(S.String),
@@ -7314,7 +7280,7 @@ export interface NexusOperationCompletedEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     result: S.optional(S.Unknown),
@@ -7333,7 +7299,7 @@ export interface NexusOperationFailedEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledEventId: S.optional(S.String),
     failure: S.optional(Failure),
@@ -7352,7 +7318,7 @@ export interface NexusOperationCanceledEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationCanceledEventAttributes =
+const NexusOperationCanceledEventAttributes =
   NexusOperationFailedEventAttributes as any as S.Schema<NexusOperationCanceledEventAttributes>;
 
 /** Nexus operation timed out. */
@@ -7364,7 +7330,7 @@ export interface NexusOperationTimedOutEventAttributes {
   /** The request ID allocated at schedule time. */
   requestId?: string;
 }
-export const NexusOperationTimedOutEventAttributes =
+const NexusOperationTimedOutEventAttributes =
   NexusOperationFailedEventAttributes as any as S.Schema<NexusOperationTimedOutEventAttributes>;
 
 export interface NexusOperationCancelRequestedEventAttributes {
@@ -7373,13 +7339,13 @@ export interface NexusOperationCancelRequestedEventAttributes {
   /** The `WORKFLOW_TASK_COMPLETED` event that the corresponding RequestCancelNexusOperation command was reported with. */
   workflowTaskCompletedEventId?: string;
 }
-export const NexusOperationCancelRequestedEventAttributes =
+const NexusOperationCancelRequestedEventAttributes =
   ActivityTaskCancelRequestedEventAttributes as any as S.Schema<NexusOperationCancelRequestedEventAttributes>;
 
 /** Completion callbacks attached to the running workflow execution. */
 export type WorkflowExecutionOptionsUpdatedEventAttributesAttachedCompletionCallbacksList =
   Array<Callback>;
-export const WorkflowExecutionOptionsUpdatedEventAttributesAttachedCompletionCallbacksList =
+const WorkflowExecutionOptionsUpdatedEventAttributesAttachedCompletionCallbacksList =
   /*@__PURE__*/ S.Array(
     Callback,
   ) as any as S.Schema<WorkflowExecutionOptionsUpdatedEventAttributesAttachedCompletionCallbacksList>;
@@ -7400,7 +7366,7 @@ export interface WorkflowExecutionOptionsUpdatedEventAttributes {
   /** If set, the time-skipping configuration was changed. Contains the full updated configuration. */
   timeSkippingConfig?: TimeSkippingConfig;
 }
-export const WorkflowExecutionOptionsUpdatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionOptionsUpdatedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versioningOverride: S.optional(VersioningOverride),
     unsetVersioningOverride: S.optional(S.Boolean),
@@ -7424,7 +7390,7 @@ export interface NexusOperationCancelRequestCompletedEventAttributes {
   /** The id of the `NEXUS_OPERATION_SCHEDULED` event this cancel request corresponds to. */
   scheduledEventId?: string;
 }
-export const NexusOperationCancelRequestCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationCancelRequestCompletedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedEventId: S.optional(S.String),
     workflowTaskCompletedEventId: S.optional(S.String),
@@ -7444,7 +7410,7 @@ export interface NexusOperationCancelRequestFailedEventAttributes {
   /** The id of the `NEXUS_OPERATION_SCHEDULED` event this cancel request corresponds to. */
   scheduledEventId?: string;
 }
-export const NexusOperationCancelRequestFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationCancelRequestFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedEventId: S.optional(S.String),
     workflowTaskCompletedEventId: S.optional(S.String),
@@ -7464,7 +7430,7 @@ export interface WorkflowExecutionPausedEventAttributes {
   /** The request ID of the request that paused the workflow execution. */
   requestId?: string;
 }
-export const WorkflowExecutionPausedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionPausedEventAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     reason: S.optional(S.String),
@@ -7483,7 +7449,7 @@ export interface WorkflowExecutionUnpausedEventAttributes {
   /** The request ID of the request that unpaused the workflow execution. */
   requestId?: string;
 }
-export const WorkflowExecutionUnpausedEventAttributes =
+const WorkflowExecutionUnpausedEventAttributes =
   WorkflowExecutionPausedEventAttributes as any as S.Schema<WorkflowExecutionUnpausedEventAttributes>;
 
 /** Attributes for an event indicating that time skipping state changed for a workflow execution, either time was advanced or time skipping was disabled automatically due to a bound being reached. The worker_may_ignore field in HistoryEvent should always be set true for this event. */
@@ -7495,13 +7461,12 @@ export interface WorkflowExecutionTimeSkippingTransitionedEventAttributes {
   /** The wall-clock time when the time-skipping state changed event was generated. */
   wallClockTime?: string;
 }
-export const WorkflowExecutionTimeSkippingTransitionedEventAttributes = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetTime: S.optional(S.String),
-      disabledAfterBound: S.optional(S.Boolean),
-      wallClockTime: S.optional(S.String),
-    }),
+const WorkflowExecutionTimeSkippingTransitionedEventAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetTime: S.optional(S.String),
+    disabledAfterBound: S.optional(S.Boolean),
+    wallClockTime: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "WorkflowExecutionTimeSkippingTransitionedEventAttributes",
 }) as any as S.Schema<WorkflowExecutionTimeSkippingTransitionedEventAttributes>;
@@ -7585,7 +7550,7 @@ export interface HistoryEvent {
   workflowExecutionUnpausedEventAttributes?: WorkflowExecutionUnpausedEventAttributes;
   workflowExecutionTimeSkippingTransitionedEventAttributes?: WorkflowExecutionTimeSkippingTransitionedEventAttributes;
 }
-export const HistoryEvent = /*@__PURE__*/ S.suspend(() =>
+const HistoryEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventId: S.optional(S.String),
     eventTime: S.optional(S.String),
@@ -7724,14 +7689,12 @@ export const HistoryEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HistoryEvent" }) as any as S.Schema<HistoryEvent>;
 
 export type HistoryEventsList = Array<HistoryEvent>;
-export const HistoryEventsList = /*@__PURE__*/ S.Array(
-  HistoryEvent,
-) as any as S.Schema<HistoryEventsList>;
+const HistoryEventsList = /*@__PURE__*/ S.Array(HistoryEvent) as any as S.Schema<HistoryEventsList>;
 
 export interface History {
   events?: HistoryEventsList;
 }
-export const History = /*@__PURE__*/ S.suspend(() =>
+const History = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(HistoryEventsList),
   }),
@@ -7741,13 +7704,13 @@ export type DataBlobEncodingType =
   | "ENCODING_TYPE_UNSPECIFIED"
   | "ENCODING_TYPE_PROTO3"
   | "ENCODING_TYPE_JSON";
-export const DataBlobEncodingType = S.String;
+const DataBlobEncodingType = S.String;
 
 export interface DataBlob {
   encodingType?: DataBlobEncodingType;
   data?: string;
 }
-export const DataBlob = /*@__PURE__*/ S.suspend(() =>
+const DataBlob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encodingType: S.optional(DataBlobEncodingType),
     data: S.optional(S.String),
@@ -7756,7 +7719,7 @@ export const DataBlob = /*@__PURE__*/ S.suspend(() =>
 
 /** Raw history is an alternate representation of history that may be returned if configured on the frontend. This is not supported by all SDKs. Either this or `history` will be set. */
 export type GetWorkflowExecutionHistoryResponseRawHistoryList = Array<DataBlob>;
-export const GetWorkflowExecutionHistoryResponseRawHistoryList = /*@__PURE__*/ S.Array(
+const GetWorkflowExecutionHistoryResponseRawHistoryList = /*@__PURE__*/ S.Array(
   DataBlob,
 ) as any as S.Schema<GetWorkflowExecutionHistoryResponseRawHistoryList>;
 
@@ -7768,7 +7731,7 @@ export interface GetWorkflowExecutionHistoryResponse {
   nextPageToken?: string;
   archived?: boolean;
 }
-export const GetWorkflowExecutionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowExecutionHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     history: S.optional(History),
     rawHistory: S.optional(GetWorkflowExecutionHistoryResponseRawHistoryList),
@@ -7787,7 +7750,7 @@ export interface GetWorkflowExecutionHistoryReverseRequest {
   maximumPageSize?: number;
   nextPageToken?: string;
 }
-export const GetWorkflowExecutionHistoryReverseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowExecutionHistoryReverseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution_workflow_id: S.String.pipe(T.Label()),
@@ -7811,7 +7774,7 @@ export interface GetWorkflowExecutionHistoryReverseResponse {
   /** Will be set if there are more history events than were included in this response */
   nextPageToken?: string;
 }
-export const GetWorkflowExecutionHistoryReverseResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowExecutionHistoryReverseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     history: S.optional(History),
     nextPageToken: S.optional(S.String),
@@ -7829,7 +7792,7 @@ export interface ListActivityExecutionsRequest {
   /** Visibility query, see https://docs.temporal.io/list-filter for the syntax. */
   query?: string;
 }
-export const ListActivityExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListActivityExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7849,7 +7812,7 @@ export type ActivityExecutionListInfoStatus =
   | "ACTIVITY_EXECUTION_STATUS_CANCELED"
   | "ACTIVITY_EXECUTION_STATUS_TERMINATED"
   | "ACTIVITY_EXECUTION_STATUS_TIMED_OUT";
-export const ActivityExecutionListInfoStatus = S.String;
+const ActivityExecutionListInfoStatus = S.String;
 
 /** Limited activity information returned in the list response. When adding fields here, ensure that it is also present in ActivityExecutionInfo (note that it may already be present in ActivityExecutionInfo but not at the top-level). */
 export interface ActivityExecutionListInfo {
@@ -7876,7 +7839,7 @@ export interface ActivityExecutionListInfo {
   /** The difference between close time and scheduled time. This field is only populated if the activity is closed. */
   executionDuration?: string;
 }
-export const ActivityExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
+const ActivityExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -7895,7 +7858,7 @@ export const ActivityExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityExecutionListInfo>;
 
 export type ListActivityExecutionsResponseExecutionsList = Array<ActivityExecutionListInfo>;
-export const ListActivityExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
+const ListActivityExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
   ActivityExecutionListInfo,
 ) as any as S.Schema<ListActivityExecutionsResponseExecutionsList>;
 
@@ -7904,7 +7867,7 @@ export interface ListActivityExecutionsResponse {
   /** Token to use to fetch the next page. If empty, there is no next page. */
   nextPageToken?: string;
 }
-export const ListActivityExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListActivityExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executions: S.optional(ListActivityExecutionsResponseExecutionsList),
     nextPageToken: S.optional(S.String),
@@ -7919,7 +7882,7 @@ export interface ListArchivedWorkflowExecutionsRequest {
   nextPageToken?: string;
   query?: string;
 }
-export const ListArchivedWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListArchivedWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7933,7 +7896,7 @@ export const ListArchivedWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListArchivedWorkflowExecutionsRequest>;
 
 export type ListArchivedWorkflowExecutionsResponseExecutionsList = Array<WorkflowExecutionInfo>;
-export const ListArchivedWorkflowExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
+const ListArchivedWorkflowExecutionsResponseExecutionsList = /*@__PURE__*/ S.Array(
   WorkflowExecutionInfo,
 ) as any as S.Schema<ListArchivedWorkflowExecutionsResponseExecutionsList>;
 
@@ -7941,7 +7904,7 @@ export interface ListArchivedWorkflowExecutionsResponse {
   executions?: ListArchivedWorkflowExecutionsResponseExecutionsList;
   nextPageToken?: string;
 }
-export const ListArchivedWorkflowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListArchivedWorkflowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executions: S.optional(ListArchivedWorkflowExecutionsResponseExecutionsList),
     nextPageToken: S.optional(S.String),
@@ -7958,7 +7921,7 @@ export interface ListBatchOperationsRequest {
   /** Next page token */
   nextPageToken?: string;
 }
-export const ListBatchOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBatchOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -7976,7 +7939,7 @@ export type BatchOperationInfoState =
   | "BATCH_OPERATION_STATE_RUNNING"
   | "BATCH_OPERATION_STATE_COMPLETED"
   | "BATCH_OPERATION_STATE_FAILED";
-export const BatchOperationInfoState = S.String;
+const BatchOperationInfoState = S.String;
 
 export interface BatchOperationInfo {
   /** Batch job ID */
@@ -7988,7 +7951,7 @@ export interface BatchOperationInfo {
   /** Batch operation close time */
   closeTime?: string;
 }
-export const BatchOperationInfo = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
     state: S.optional(BatchOperationInfoState),
@@ -7999,7 +7962,7 @@ export const BatchOperationInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** BatchOperationInfo contains the basic info about batch operation */
 export type ListBatchOperationsResponseOperationInfoList = Array<BatchOperationInfo>;
-export const ListBatchOperationsResponseOperationInfoList = /*@__PURE__*/ S.Array(
+const ListBatchOperationsResponseOperationInfoList = /*@__PURE__*/ S.Array(
   BatchOperationInfo,
 ) as any as S.Schema<ListBatchOperationsResponseOperationInfoList>;
 
@@ -8008,7 +7971,7 @@ export interface ListBatchOperationsResponse {
   operationInfo?: ListBatchOperationsResponseOperationInfoList;
   nextPageToken?: string;
 }
-export const ListBatchOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBatchOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationInfo: S.optional(ListBatchOperationsResponseOperationInfoList),
     nextPageToken: S.optional(S.String),
@@ -8024,7 +7987,7 @@ export interface ListDeploymentsRequest {
   /** Optional. Use to filter based on exact series name match. */
   seriesName?: string;
 }
-export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8040,7 +8003,7 @@ export interface DeploymentListInfo {
   /** If this deployment is the current deployment of its deployment series. */
   isCurrent?: boolean;
 }
-export const DeploymentListInfo = /*@__PURE__*/ S.suspend(() =>
+const DeploymentListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployment: S.optional(Deployment),
     createTime: S.optional(S.String),
@@ -8049,7 +8012,7 @@ export const DeploymentListInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeploymentListInfo" }) as any as S.Schema<DeploymentListInfo>;
 
 export type ListDeploymentsResponseDeploymentsList = Array<DeploymentListInfo>;
-export const ListDeploymentsResponseDeploymentsList = /*@__PURE__*/ S.Array(
+const ListDeploymentsResponseDeploymentsList = /*@__PURE__*/ S.Array(
   DeploymentListInfo,
 ) as any as S.Schema<ListDeploymentsResponseDeploymentsList>;
 
@@ -8058,7 +8021,7 @@ export interface ListDeploymentsResponse {
   nextPageToken?: string;
   deployments?: ListDeploymentsResponseDeploymentsList;
 }
-export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     deployments: S.optional(ListDeploymentsResponseDeploymentsList),
@@ -8071,7 +8034,7 @@ export interface ListNamespacesRequest {
   /** By default namespaces in NAMESPACE_STATE_DELETED state are not included. Setting include_deleted to true will include deleted namespaces. Note: Namespace is in NAMESPACE_STATE_DELETED state when it was deleted from the system but associated data is not deleted yet. */
   namespaceFilter_includeDeleted?: boolean;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     nextPageToken: S.optional(S.String.pipe(T.Query())),
@@ -8082,7 +8045,7 @@ export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNamespacesRequest" }) as any as S.Schema<ListNamespacesRequest>;
 
 export type ListNamespacesResponseNamespacesList = Array<DescribeNamespaceResponse>;
-export const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
+const ListNamespacesResponseNamespacesList = /*@__PURE__*/ S.Array(
   DescribeNamespaceResponse,
 ) as any as S.Schema<ListNamespacesResponseNamespacesList>;
 
@@ -8090,7 +8053,7 @@ export interface ListNamespacesResponse {
   namespaces?: ListNamespacesResponseNamespacesList;
   nextPageToken?: string;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaces: S.optional(ListNamespacesResponseNamespacesList),
     nextPageToken: S.optional(S.String),
@@ -8104,7 +8067,7 @@ export interface ListNexusEndpointsRequest {
   /** Name of the incoming endpoint to filter on - optional. Specifying this will result in zero or one results. (-- api-linter: core::203::field-behavior-required=disabled aip.dev/not-precedent: Not following linter rules. --) */
   name?: string;
 }
-export const ListNexusEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNexusEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     nextPageToken: S.optional(S.String.pipe(T.Query())),
@@ -8115,7 +8078,7 @@ export const ListNexusEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNexusEndpointsRequest>;
 
 export type ListNexusEndpointsResponseEndpointsList = Array<Endpoint>;
-export const ListNexusEndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
+const ListNexusEndpointsResponseEndpointsList = /*@__PURE__*/ S.Array(
   Endpoint,
 ) as any as S.Schema<ListNexusEndpointsResponseEndpointsList>;
 
@@ -8124,7 +8087,7 @@ export interface ListNexusEndpointsResponse {
   nextPageToken?: string;
   endpoints?: ListNexusEndpointsResponseEndpointsList;
 }
-export const ListNexusEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNexusEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     endpoints: S.optional(ListNexusEndpointsResponseEndpointsList),
@@ -8142,7 +8105,7 @@ export interface ListNexusOperationExecutionsRequest {
   /** Visibility query, see https://docs.temporal.io/list-filter for the syntax. Search attributes that are avaialble for Nexus operations include: - OperationId - RunId - Endpoint - Service - Operation - RequestId - StartTime - ExecutionTime - CloseTime - ExecutionStatus - ExecutionDuration - StateTransitionCount */
   query?: string;
 }
-export const ListNexusOperationExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNexusOperationExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8164,7 +8127,7 @@ export type NexusOperationExecutionListInfoStatus =
   | "NEXUS_OPERATION_EXECUTION_STATUS_CANCELED"
   | "NEXUS_OPERATION_EXECUTION_STATUS_TERMINATED"
   | "NEXUS_OPERATION_EXECUTION_STATUS_TIMED_OUT";
-export const NexusOperationExecutionListInfoStatus = S.String;
+const NexusOperationExecutionListInfoStatus = S.String;
 
 /** Limited Nexus operation information returned in the list response. When adding fields here, ensure that it is also present in NexusOperationExecutionInfo (note that it may already be present in NexusOperationExecutionInfo but not at the top-level). */
 export interface NexusOperationExecutionListInfo {
@@ -8191,7 +8154,7 @@ export interface NexusOperationExecutionListInfo {
   /** The difference between close time and scheduled time. This field is only populated if the operation is closed. */
   executionDuration?: string;
 }
-export const NexusOperationExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
+const NexusOperationExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     runId: S.optional(S.String),
@@ -8211,7 +8174,7 @@ export const NexusOperationExecutionListInfo = /*@__PURE__*/ S.suspend(() =>
 
 export type ListNexusOperationExecutionsResponseOperationsList =
   Array<NexusOperationExecutionListInfo>;
-export const ListNexusOperationExecutionsResponseOperationsList = /*@__PURE__*/ S.Array(
+const ListNexusOperationExecutionsResponseOperationsList = /*@__PURE__*/ S.Array(
   NexusOperationExecutionListInfo,
 ) as any as S.Schema<ListNexusOperationExecutionsResponseOperationsList>;
 
@@ -8220,7 +8183,7 @@ export interface ListNexusOperationExecutionsResponse {
   /** Token to use to fetch the next page. If empty, there is no next page. */
   nextPageToken?: string;
 }
-export const ListNexusOperationExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNexusOperationExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(ListNexusOperationExecutionsResponseOperationsList),
     nextPageToken: S.optional(S.String),
@@ -8238,7 +8201,7 @@ export interface ListScheduleMatchingTimesRequest {
   startTime?: string;
   endTime?: string;
 }
-export const ListScheduleMatchingTimesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduleMatchingTimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -8256,13 +8219,13 @@ export const ListScheduleMatchingTimesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListScheduleMatchingTimesRequest>;
 
 export type ListScheduleMatchingTimesResponseStartTimeList = Array<string>;
-export const ListScheduleMatchingTimesResponseStartTimeList =
+const ListScheduleMatchingTimesResponseStartTimeList =
   ScheduleSpecCronStringList as any as S.Schema<ListScheduleMatchingTimesResponseStartTimeList>;
 
 export interface ListScheduleMatchingTimesResponse {
   startTime?: ListScheduleMatchingTimesResponseStartTimeList;
 }
-export const ListScheduleMatchingTimesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScheduleMatchingTimesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(ListScheduleMatchingTimesResponseStartTimeList),
   }),
@@ -8280,7 +8243,7 @@ export interface ListSchedulesRequest {
   /** Query to filter schedules. */
   query?: string;
 }
-export const ListSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     maximumPageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8291,11 +8254,11 @@ export const ListSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** From info (maybe fewer entries): */
 export type ScheduleListInfoRecentActionsList = Array<ScheduleActionResult>;
-export const ScheduleListInfoRecentActionsList =
+const ScheduleListInfoRecentActionsList =
   ScheduleInfoRecentActionsList as any as S.Schema<ScheduleListInfoRecentActionsList>;
 
 export type ScheduleListInfoFutureActionTimesList = Array<string>;
-export const ScheduleListInfoFutureActionTimesList =
+const ScheduleListInfoFutureActionTimesList =
   ScheduleSpecCronStringList as any as S.Schema<ScheduleListInfoFutureActionTimesList>;
 
 /** ScheduleListInfo is an abbreviated set of values from Schedule and ScheduleInfo that's returned in ListSchedules. */
@@ -8311,7 +8274,7 @@ export interface ScheduleListInfo {
   recentActions?: ScheduleListInfoRecentActionsList;
   futureActionTimes?: ScheduleListInfoFutureActionTimesList;
 }
-export const ScheduleListInfo = /*@__PURE__*/ S.suspend(() =>
+const ScheduleListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(ScheduleSpec),
     workflowType: S.optional(WorkflowType),
@@ -8329,7 +8292,7 @@ export interface ScheduleListEntry {
   searchAttributes?: SearchAttributes;
   info?: ScheduleListInfo;
 }
-export const ScheduleListEntry = /*@__PURE__*/ S.suspend(() =>
+const ScheduleListEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleId: S.optional(S.String),
     memo: S.optional(Memo),
@@ -8339,7 +8302,7 @@ export const ScheduleListEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleListEntry" }) as any as S.Schema<ScheduleListEntry>;
 
 export type ListSchedulesResponseSchedulesList = Array<ScheduleListEntry>;
-export const ListSchedulesResponseSchedulesList = /*@__PURE__*/ S.Array(
+const ListSchedulesResponseSchedulesList = /*@__PURE__*/ S.Array(
   ScheduleListEntry,
 ) as any as S.Schema<ListSchedulesResponseSchedulesList>;
 
@@ -8347,7 +8310,7 @@ export interface ListSchedulesResponse {
   schedules?: ListSchedulesResponseSchedulesList;
   nextPageToken?: string;
 }
-export const ListSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedules: S.optional(ListSchedulesResponseSchedulesList),
     nextPageToken: S.optional(S.String),
@@ -8357,7 +8320,7 @@ export const ListSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListSearchAttributesRequest {
   namespace: string;
 }
-export const ListSearchAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSearchAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
   }).pipe(
@@ -8376,13 +8339,13 @@ export type ListSearchAttributesResponseCustomAttributesValue =
   | "INDEXED_VALUE_TYPE_BOOL"
   | "INDEXED_VALUE_TYPE_DATETIME"
   | "INDEXED_VALUE_TYPE_KEYWORD_LIST";
-export const ListSearchAttributesResponseCustomAttributesValue = S.String;
+const ListSearchAttributesResponseCustomAttributesValue = S.String;
 
 /** Mapping between custom (user-registered) search attribute name to its IndexedValueType. */
 export type ListSearchAttributesResponseCustomAttributesMap = {
   [key: string]: ListSearchAttributesResponseCustomAttributesValue | undefined;
 };
-export const ListSearchAttributesResponseCustomAttributesMap = /*@__PURE__*/ S.Record(
+const ListSearchAttributesResponseCustomAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   ListSearchAttributesResponseCustomAttributesValue,
 ) as any as S.Schema<ListSearchAttributesResponseCustomAttributesMap>;
@@ -8396,18 +8359,16 @@ export type ListSearchAttributesResponseSystemAttributesValue =
   | "INDEXED_VALUE_TYPE_BOOL"
   | "INDEXED_VALUE_TYPE_DATETIME"
   | "INDEXED_VALUE_TYPE_KEYWORD_LIST";
-export const ListSearchAttributesResponseSystemAttributesValue = S.String;
-
 /** Mapping between system (predefined) search attribute name to its IndexedValueType. */
 export type ListSearchAttributesResponseSystemAttributesMap = {
   [key: string]: ListSearchAttributesResponseSystemAttributesValue | undefined;
 };
-export const ListSearchAttributesResponseSystemAttributesMap =
+const ListSearchAttributesResponseSystemAttributesMap =
   ListSearchAttributesResponseCustomAttributesMap as any as S.Schema<ListSearchAttributesResponseSystemAttributesMap>;
 
 /** Mapping from the attribute name to the visibility storage native type. */
 export type ListSearchAttributesResponseStorageSchemaMap = { [key: string]: string | undefined };
-export const ListSearchAttributesResponseStorageSchemaMap =
+const ListSearchAttributesResponseStorageSchemaMap =
   CallbackNexusHeaderMap as any as S.Schema<ListSearchAttributesResponseStorageSchemaMap>;
 
 export interface ListSearchAttributesResponse {
@@ -8418,7 +8379,7 @@ export interface ListSearchAttributesResponse {
   /** Mapping from the attribute name to the visibility storage native type. */
   storageSchema?: ListSearchAttributesResponseStorageSchemaMap;
 }
-export const ListSearchAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSearchAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customAttributes: S.optional(ListSearchAttributesResponseCustomAttributesMap),
     systemAttributes: S.optional(ListSearchAttributesResponseSystemAttributesMap),
@@ -8433,7 +8394,7 @@ export interface ListWorkerDeploymentsRequest {
   pageSize?: number;
   nextPageToken?: string;
 }
-export const ListWorkerDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkerDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8457,7 +8418,7 @@ export interface ListWorkerDeploymentsResponseWorkerDeploymentSummary {
   /** Summary of the ramping version of the Worker Deployment. */
   rampingVersionSummary?: WorkerDeploymentInfoWorkerDeploymentVersionSummary;
 }
-export const ListWorkerDeploymentsResponseWorkerDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
+const ListWorkerDeploymentsResponseWorkerDeploymentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -8473,7 +8434,7 @@ export const ListWorkerDeploymentsResponseWorkerDeploymentSummary = /*@__PURE__*
 /** The list of worker deployments. */
 export type ListWorkerDeploymentsResponseWorkerDeploymentsList =
   Array<ListWorkerDeploymentsResponseWorkerDeploymentSummary>;
-export const ListWorkerDeploymentsResponseWorkerDeploymentsList = /*@__PURE__*/ S.Array(
+const ListWorkerDeploymentsResponseWorkerDeploymentsList = /*@__PURE__*/ S.Array(
   ListWorkerDeploymentsResponseWorkerDeploymentSummary,
 ) as any as S.Schema<ListWorkerDeploymentsResponseWorkerDeploymentsList>;
 
@@ -8482,7 +8443,7 @@ export interface ListWorkerDeploymentsResponse {
   /** The list of worker deployments. */
   workerDeployments?: ListWorkerDeploymentsResponseWorkerDeploymentsList;
 }
-export const ListWorkerDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkerDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     workerDeployments: S.optional(ListWorkerDeploymentsResponseWorkerDeploymentsList),
@@ -8500,7 +8461,7 @@ export interface ListWorkersRequest {
   /** When true, the response will include system workers that are created implicitly by the server and not by the user. By default, system workers are excluded. */
   includeSystemWorkers?: boolean;
 }
-export const ListWorkersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8512,7 +8473,7 @@ export const ListWorkersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated: Use workers instead. This field returns full WorkerInfo which includes expensive runtime metrics. We will stop populating this field in the future. */
 export type ListWorkersResponseWorkersInfoList = Array<WorkerInfo>;
-export const ListWorkersResponseWorkersInfoList = /*@__PURE__*/ S.Array(
+const ListWorkersResponseWorkersInfoList = /*@__PURE__*/ S.Array(
   WorkerInfo,
 ) as any as S.Schema<ListWorkersResponseWorkersInfoList>;
 
@@ -8522,16 +8483,16 @@ export type WorkerListInfoStatus =
   | "WORKER_STATUS_RUNNING"
   | "WORKER_STATUS_SHUTTING_DOWN"
   | "WORKER_STATUS_SHUTDOWN";
-export const WorkerListInfoStatus = S.String;
+const WorkerListInfoStatus = S.String;
 
 /** Plugins currently in use by this SDK. */
 export type WorkerListInfoPluginsList = Array<PluginInfo>;
-export const WorkerListInfoPluginsList =
+const WorkerListInfoPluginsList =
   WorkerHeartbeatPluginsList as any as S.Schema<WorkerListInfoPluginsList>;
 
 /** Storage drivers in use by this SDK. */
 export type WorkerListInfoDriversList = Array<StorageDriverInfo>;
-export const WorkerListInfoDriversList =
+const WorkerListInfoDriversList =
   WorkerHeartbeatDriversList as any as S.Schema<WorkerListInfoDriversList>;
 
 /** Limited worker information returned in the list response. When adding fields here, ensure that it is also added to WorkerInfo (as it carries the full worker information). */
@@ -8560,7 +8521,7 @@ export interface WorkerListInfo {
   /** Storage drivers in use by this SDK. */
   drivers?: WorkerListInfoDriversList;
 }
-export const WorkerListInfo = /*@__PURE__*/ S.suspend(() =>
+const WorkerListInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workerInstanceKey: S.optional(S.String),
     workerIdentity: S.optional(S.String),
@@ -8580,7 +8541,7 @@ export const WorkerListInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Limited worker information. */
 export type ListWorkersResponseWorkersList = Array<WorkerListInfo>;
-export const ListWorkersResponseWorkersList = /*@__PURE__*/ S.Array(
+const ListWorkersResponseWorkersList = /*@__PURE__*/ S.Array(
   WorkerListInfo,
 ) as any as S.Schema<ListWorkersResponseWorkersList>;
 
@@ -8592,7 +8553,7 @@ export interface ListWorkersResponse {
   /** Next page token */
   nextPageToken?: string;
 }
-export const ListWorkersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workersInfo: S.optional(ListWorkersResponseWorkersInfoList),
     workers: S.optional(ListWorkersResponseWorkersList),
@@ -8606,7 +8567,7 @@ export interface ListWorkflowExecutionsRequest {
   nextPageToken?: string;
   query?: string;
 }
-export const ListWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8618,21 +8579,18 @@ export const ListWorkflowExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkflowExecutionsRequest>;
 
 export type ListWorkflowExecutionsResponseExecutionsList = Array<WorkflowExecutionInfo>;
-export const ListWorkflowExecutionsResponseExecutionsList =
-  ListArchivedWorkflowExecutionsResponseExecutionsList as any as S.Schema<ListWorkflowExecutionsResponseExecutionsList>;
-
 export interface ListWorkflowExecutionsResponse {
   executions?: ListWorkflowExecutionsResponseExecutionsList;
   nextPageToken?: string;
 }
-export const ListWorkflowExecutionsResponse =
+const ListWorkflowExecutionsResponse =
   ListArchivedWorkflowExecutionsResponse as any as S.Schema<ListWorkflowExecutionsResponse>;
 
 export interface ListWorkflowRulesRequest {
   namespace: string;
   nextPageToken?: string;
 }
-export const ListWorkflowRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     nextPageToken: S.optional(S.String.pipe(T.Query())),
@@ -8642,7 +8600,7 @@ export const ListWorkflowRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListWorkflowRulesRequest" }) as any as S.Schema<ListWorkflowRulesRequest>;
 
 export type ListWorkflowRulesResponseRulesList = Array<WorkflowRule>;
-export const ListWorkflowRulesResponseRulesList = /*@__PURE__*/ S.Array(
+const ListWorkflowRulesResponseRulesList = /*@__PURE__*/ S.Array(
   WorkflowRule,
 ) as any as S.Schema<ListWorkflowRulesResponseRulesList>;
 
@@ -8650,7 +8608,7 @@ export interface ListWorkflowRulesResponse {
   rules?: ListWorkflowRulesResponseRulesList;
   nextPageToken?: string;
 }
-export const ListWorkflowRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(ListWorkflowRulesResponseRulesList),
     nextPageToken: S.optional(S.String),
@@ -8670,7 +8628,7 @@ export interface PatchScheduleRequest {
   /** A unique identifier for this update request for idempotence. Typically UUIDv4. */
   requestId?: string;
 }
-export const PatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -8687,8 +8645,7 @@ export const PatchScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchScheduleRequest" }) as any as S.Schema<PatchScheduleRequest>;
 
 export type PatchScheduleResponse2 = unknown;
-export const PatchScheduleResponse2 =
-  DeleteScheduleResponse2 as any as S.Schema<PatchScheduleResponse2>;
+const PatchScheduleResponse2 = DeleteScheduleResponse2 as any as S.Schema<PatchScheduleResponse2>;
 
 export interface PauseActivityRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -8706,7 +8663,7 @@ export interface PauseActivityRequest {
   /** Used to de-dupe pause requests. */
   requestId?: string;
 }
-export const PauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution: S.optional(WorkflowExecution),
@@ -8725,8 +8682,7 @@ export const PauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PauseActivityRequest" }) as any as S.Schema<PauseActivityRequest>;
 
 export type PauseActivityResponse2 = unknown;
-export const PauseActivityResponse2 =
-  DeleteScheduleResponse2 as any as S.Schema<PauseActivityResponse2>;
+const PauseActivityResponse2 = DeleteScheduleResponse2 as any as S.Schema<PauseActivityResponse2>;
 
 export interface PauseActivityExecutionRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -8746,7 +8702,7 @@ export interface PauseActivityExecutionRequest {
   /** Used to de-dupe pause requests. */
   requestId?: string;
 }
-export const PauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -8768,7 +8724,7 @@ export const PauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseActivityExecutionRequest>;
 
 export type PauseActivityExecutionResponse2 = unknown;
-export const PauseActivityExecutionResponse2 =
+const PauseActivityExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<PauseActivityExecutionResponse2>;
 
 export interface PauseWorkflowExecutionRequest {
@@ -8785,7 +8741,7 @@ export interface PauseWorkflowExecutionRequest {
   /** A unique identifier for this pause request for idempotence. Typically UUIDv4. */
   requestId?: string;
 }
-export const PauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflowId: S.String.pipe(T.Label()),
@@ -8805,7 +8761,7 @@ export const PauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PauseWorkflowExecutionRequest>;
 
 export type PauseWorkflowExecutionResponse2 = unknown;
-export const PauseWorkflowExecutionResponse2 =
+const PauseWorkflowExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<PauseWorkflowExecutionResponse2>;
 
 export interface PollActivityExecutionRequest {
@@ -8814,7 +8770,7 @@ export interface PollActivityExecutionRequest {
   /** Activity run ID. If empty the request targets the latest run. */
   runId?: string;
 }
-export const PollActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const PollActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -8835,7 +8791,7 @@ export interface PollActivityExecutionResponse {
   runId?: string;
   outcome?: ActivityExecutionOutcome;
 }
-export const PollActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const PollActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     outcome: S.optional(ActivityExecutionOutcome),
@@ -8848,7 +8804,7 @@ export type PollNexusOperationExecutionRequestWaitStage =
   | "NEXUS_OPERATION_WAIT_STAGE_UNSPECIFIED"
   | "NEXUS_OPERATION_WAIT_STAGE_STARTED"
   | "NEXUS_OPERATION_WAIT_STAGE_CLOSED";
-export const PollNexusOperationExecutionRequestWaitStage = S.String;
+const PollNexusOperationExecutionRequestWaitStage = S.String;
 
 export interface PollNexusOperationExecutionRequest {
   namespace: string;
@@ -8858,7 +8814,7 @@ export interface PollNexusOperationExecutionRequest {
   /** Stage to wait for. The operation may be in a more advanced stage when the poll is unblocked. */
   waitStage?: PollNexusOperationExecutionRequestWaitStage | (string & {});
 }
-export const PollNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const PollNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -8880,7 +8836,7 @@ export type PollNexusOperationExecutionResponseWaitStage =
   | "NEXUS_OPERATION_WAIT_STAGE_UNSPECIFIED"
   | "NEXUS_OPERATION_WAIT_STAGE_STARTED"
   | "NEXUS_OPERATION_WAIT_STAGE_CLOSED";
-export const PollNexusOperationExecutionResponseWaitStage = S.String;
+const PollNexusOperationExecutionResponseWaitStage = S.String;
 
 export interface PollNexusOperationExecutionResponse {
   /** The run ID of the operation, useful when run_id was not specified in the request. */
@@ -8894,7 +8850,7 @@ export interface PollNexusOperationExecutionResponse {
   /** The failure if the operation completed unsuccessfully. */
   failure?: Failure;
 }
-export const PollNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const PollNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     waitStage: S.optional(PollNexusOperationExecutionResponseWaitStage),
@@ -8915,7 +8871,7 @@ export interface WorkflowQuery {
   /** Headers that were passed by the caller of the query and copied by temporal server into the workflow task. */
   header?: Header;
 }
-export const WorkflowQuery = /*@__PURE__*/ S.suspend(() =>
+const WorkflowQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryType: S.optional(S.String),
     queryArgs: S.optional(Payloads),
@@ -8929,7 +8885,7 @@ export type QueryWorkflowRequestQueryRejectCondition =
   | "QUERY_REJECT_CONDITION_NONE"
   | "QUERY_REJECT_CONDITION_NOT_OPEN"
   | "QUERY_REJECT_CONDITION_NOT_COMPLETED_CLEANLY";
-export const QueryWorkflowRequestQueryRejectCondition = S.String;
+const QueryWorkflowRequestQueryRejectCondition = S.String;
 
 export interface QueryWorkflowRequest {
   namespace: string;
@@ -8940,7 +8896,7 @@ export interface QueryWorkflowRequest {
   /** QueryRejectCondition can used to reject the query if workflow state does not satisfy condition. Default: QUERY_REJECT_CONDITION_NONE. */
   queryRejectCondition?: QueryWorkflowRequestQueryRejectCondition | (string & {});
 }
-export const QueryWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution_workflow_id: S.String.pipe(T.Label()),
@@ -8967,12 +8923,12 @@ export type QueryRejectedStatus =
   | "WORKFLOW_EXECUTION_STATUS_CONTINUED_AS_NEW"
   | "WORKFLOW_EXECUTION_STATUS_TIMED_OUT"
   | "WORKFLOW_EXECUTION_STATUS_PAUSED";
-export const QueryRejectedStatus = S.String;
+const QueryRejectedStatus = S.String;
 
 export interface QueryRejected {
   status?: QueryRejectedStatus;
 }
-export const QueryRejected = /*@__PURE__*/ S.suspend(() =>
+const QueryRejected = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(QueryRejectedStatus),
   }),
@@ -8982,7 +8938,7 @@ export interface QueryWorkflowResponse {
   queryResult?: Payloads;
   queryRejected?: QueryRejected;
 }
-export const QueryWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryResult: S.optional(Payloads),
     queryRejected: S.optional(QueryRejected),
@@ -9000,7 +8956,7 @@ export interface RecordActivityTaskHeartbeatRequest {
   /** Resource ID for routing. Contains the workflow ID or activity ID for standalone activities. */
   resourceId?: string;
 }
-export const RecordActivityTaskHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const RecordActivityTaskHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskToken: S.optional(S.String),
@@ -9022,7 +8978,7 @@ export interface RecordActivityTaskHeartbeatResponse {
   /** Will be set to true if the activity was reset. Applies only to the current run. */
   activityReset?: boolean;
 }
-export const RecordActivityTaskHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
+const RecordActivityTaskHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelRequested: S.optional(S.Boolean),
     activityPaused: S.optional(S.Boolean),
@@ -9048,7 +9004,7 @@ export interface RecordActivityTaskHeartbeatByIdRequest {
   /** Resource ID for routing. Contains "workflow:workflow_id" or "activity:activity_id" for standalone activities. */
   resourceId?: string;
 }
-export const RecordActivityTaskHeartbeatByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const RecordActivityTaskHeartbeatByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9076,11 +9032,11 @@ export interface RecordActivityTaskHeartbeatByIdResponse {
   /** Will be set to true if the activity was reset. Applies only to the current run. */
   activityReset?: boolean;
 }
-export const RecordActivityTaskHeartbeatByIdResponse =
+const RecordActivityTaskHeartbeatByIdResponse =
   RecordActivityTaskHeartbeatResponse as any as S.Schema<RecordActivityTaskHeartbeatByIdResponse>;
 
 export type RecordWorkerHeartbeatRequestWorkerHeartbeatList = Array<WorkerHeartbeat>;
-export const RecordWorkerHeartbeatRequestWorkerHeartbeatList = /*@__PURE__*/ S.Array(
+const RecordWorkerHeartbeatRequestWorkerHeartbeatList = /*@__PURE__*/ S.Array(
   WorkerHeartbeat,
 ) as any as S.Schema<RecordWorkerHeartbeatRequestWorkerHeartbeatList>;
 
@@ -9093,7 +9049,7 @@ export interface RecordWorkerHeartbeatRequest {
   /** Resource ID for routing. Contains the worker grouping key. */
   resourceId?: string;
 }
-export const RecordWorkerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const RecordWorkerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     identity: S.optional(S.String),
@@ -9107,16 +9063,16 @@ export const RecordWorkerHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordWorkerHeartbeatRequest>;
 
 export type RecordWorkerHeartbeatResponse2 = unknown;
-export const RecordWorkerHeartbeatResponse2 =
+const RecordWorkerHeartbeatResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RecordWorkerHeartbeatResponse2>;
 
 export type RegisterNamespaceRequestClustersList = Array<ClusterReplicationConfig>;
-export const RegisterNamespaceRequestClustersList =
+const RegisterNamespaceRequestClustersList =
   NamespaceReplicationConfigClustersList as any as S.Schema<RegisterNamespaceRequestClustersList>;
 
 /** A key-value map for any customized purpose. */
 export type RegisterNamespaceRequestDataMap = { [key: string]: string | undefined };
-export const RegisterNamespaceRequestDataMap =
+const RegisterNamespaceRequestDataMap =
   CallbackNexusHeaderMap as any as S.Schema<RegisterNamespaceRequestDataMap>;
 
 /** If unspecified (ARCHIVAL_STATE_UNSPECIFIED) then default server configuration is used. */
@@ -9124,14 +9080,14 @@ export type RegisterNamespaceRequestHistoryArchivalState =
   | "ARCHIVAL_STATE_UNSPECIFIED"
   | "ARCHIVAL_STATE_DISABLED"
   | "ARCHIVAL_STATE_ENABLED";
-export const RegisterNamespaceRequestHistoryArchivalState = S.String;
+const RegisterNamespaceRequestHistoryArchivalState = S.String;
 
 /** If unspecified (ARCHIVAL_STATE_UNSPECIFIED) then default server configuration is used. */
 export type RegisterNamespaceRequestVisibilityArchivalState =
   | "ARCHIVAL_STATE_UNSPECIFIED"
   | "ARCHIVAL_STATE_DISABLED"
   | "ARCHIVAL_STATE_ENABLED";
-export const RegisterNamespaceRequestVisibilityArchivalState = S.String;
+const RegisterNamespaceRequestVisibilityArchivalState = S.String;
 
 export interface RegisterNamespaceRequest {
   namespace?: string;
@@ -9151,7 +9107,7 @@ export interface RegisterNamespaceRequest {
   visibilityArchivalState?: RegisterNamespaceRequestVisibilityArchivalState | (string & {});
   visibilityArchivalUri?: string;
 }
-export const RegisterNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.optional(S.String),
     description: S.optional(S.String),
@@ -9170,7 +9126,7 @@ export const RegisterNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisterNamespaceRequest" }) as any as S.Schema<RegisterNamespaceRequest>;
 
 export type RegisterNamespaceResponse2 = unknown;
-export const RegisterNamespaceResponse2 =
+const RegisterNamespaceResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RegisterNamespaceResponse2>;
 
 export interface RequestCancelActivityExecutionRequest {
@@ -9185,7 +9141,7 @@ export interface RequestCancelActivityExecutionRequest {
   /** Reason for requesting the cancellation, recorded and available via the PollActivityExecution API. Not propagated to a worker if an activity attempt is currently running. */
   reason?: string;
 }
-export const RequestCancelActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestCancelActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9205,7 +9161,7 @@ export const RequestCancelActivityExecutionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RequestCancelActivityExecutionRequest>;
 
 export type RequestCancelActivityExecutionResponse2 = unknown;
-export const RequestCancelActivityExecutionResponse2 =
+const RequestCancelActivityExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelActivityExecutionResponse2>;
 
 export interface RequestCancelNexusOperationExecutionRequest {
@@ -9220,7 +9176,7 @@ export interface RequestCancelNexusOperationExecutionRequest {
   /** Reason for requesting the cancellation, recorded and available via the DescribeNexusOperationExecution API. */
   reason?: string;
 }
-export const RequestCancelNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestCancelNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -9240,12 +9196,12 @@ export const RequestCancelNexusOperationExecutionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RequestCancelNexusOperationExecutionRequest>;
 
 export type RequestCancelNexusOperationExecutionResponse2 = unknown;
-export const RequestCancelNexusOperationExecutionResponse2 =
+const RequestCancelNexusOperationExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelNexusOperationExecutionResponse2>;
 
 /** Links to be associated with the WorkflowExecutionCanceled event. */
 export type RequestCancelWorkflowExecutionRequestLinksList = Array<Link>;
-export const RequestCancelWorkflowExecutionRequestLinksList =
+const RequestCancelWorkflowExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<RequestCancelWorkflowExecutionRequestLinksList>;
 
 export interface RequestCancelWorkflowExecutionRequest {
@@ -9263,7 +9219,7 @@ export interface RequestCancelWorkflowExecutionRequest {
   /** Links to be associated with the WorkflowExecutionCanceled event. */
   links?: RequestCancelWorkflowExecutionRequestLinksList;
 }
-export const RequestCancelWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestCancelWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -9285,7 +9241,7 @@ export const RequestCancelWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RequestCancelWorkflowExecutionRequest>;
 
 export type RequestCancelWorkflowExecutionResponse2 = unknown;
-export const RequestCancelWorkflowExecutionResponse2 =
+const RequestCancelWorkflowExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RequestCancelWorkflowExecutionResponse2>;
 
 export interface ResetActivityRequest {
@@ -9310,7 +9266,7 @@ export interface ResetActivityRequest {
   /** If set, the activity options will be restored to the defaults. Default options are then options activity was created with. They are part of the first schedule event. */
   restoreOriginalOptions?: boolean;
 }
-export const ResetActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution: S.optional(WorkflowExecution),
@@ -9332,8 +9288,7 @@ export const ResetActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResetActivityRequest" }) as any as S.Schema<ResetActivityRequest>;
 
 export type ResetActivityResponse2 = unknown;
-export const ResetActivityResponse2 =
-  DeleteScheduleResponse2 as any as S.Schema<ResetActivityResponse2>;
+const ResetActivityResponse2 = DeleteScheduleResponse2 as any as S.Schema<ResetActivityResponse2>;
 
 export interface ResetActivityExecutionRequest {
   /** Namespace of the workflow which scheduled this activity. */
@@ -9357,7 +9312,7 @@ export interface ResetActivityExecutionRequest {
   /** Resource ID for routing. Contains "workflow:{workflow_id}" for workflow activities or "activity:{activity_id}" for standalone activities. */
   resourceId?: string;
 }
-export const ResetActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9381,7 +9336,7 @@ export const ResetActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetActivityExecutionRequest>;
 
 export type ResetActivityExecutionResponse2 = unknown;
-export const ResetActivityExecutionResponse2 =
+const ResetActivityExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<ResetActivityExecutionResponse2>;
 
 /** Deprecated. Use `options`. Default: RESET_REAPPLY_TYPE_SIGNAL */
@@ -9390,7 +9345,7 @@ export type ResetWorkflowExecutionRequestResetReapplyType =
   | "RESET_REAPPLY_TYPE_SIGNAL"
   | "RESET_REAPPLY_TYPE_NONE"
   | "RESET_REAPPLY_TYPE_ALL_ELIGIBLE";
-export const ResetWorkflowExecutionRequestResetReapplyType = S.String;
+const ResetWorkflowExecutionRequestResetReapplyType = S.String;
 
 export type ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem =
   | "RESET_REAPPLY_EXCLUDE_TYPE_UNSPECIFIED"
@@ -9398,18 +9353,16 @@ export type ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem =
   | "RESET_REAPPLY_EXCLUDE_TYPE_UPDATE"
   | "RESET_REAPPLY_EXCLUDE_TYPE_NEXUS"
   | "RESET_REAPPLY_EXCLUDE_TYPE_CANCEL_REQUEST";
-export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem = S.String;
-
 /** Event types not to be reapplied */
 export type ResetWorkflowExecutionRequestResetReapplyExcludeTypesList = Array<
   ResetWorkflowExecutionRequestResetReapplyExcludeTypesItem | (string & {})
 >;
-export const ResetWorkflowExecutionRequestResetReapplyExcludeTypesList =
+const ResetWorkflowExecutionRequestResetReapplyExcludeTypesList =
   ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ResetWorkflowExecutionRequestResetReapplyExcludeTypesList>;
 
 /** Links to be associated with the WorkflowExecutionSignaled event. */
 export type PostResetOperationSignalWorkflowLinksList = Array<Link>;
-export const PostResetOperationSignalWorkflowLinksList =
+const PostResetOperationSignalWorkflowLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<PostResetOperationSignalWorkflowLinksList>;
 
 /** SignalWorkflow represents sending a signal after a workflow reset. Keep the parameter in sync with temporal.api.workflowservice.v1.SignalWorkflowExecutionRequest. */
@@ -9423,7 +9376,7 @@ export interface PostResetOperationSignalWorkflow {
   /** Links to be associated with the WorkflowExecutionSignaled event. */
   links?: PostResetOperationSignalWorkflowLinksList;
 }
-export const PostResetOperationSignalWorkflow = /*@__PURE__*/ S.suspend(() =>
+const PostResetOperationSignalWorkflow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalName: S.optional(S.String),
     input: S.optional(Payloads),
@@ -9442,7 +9395,7 @@ export interface WorkflowExecutionOptions {
   /** Time-skipping configuration for this workflow execution. If not set, the time-skipping configuration is not updated by this request; the existing configuration is preserved. */
   timeSkippingConfig?: TimeSkippingConfig;
 }
-export const WorkflowExecutionOptions = /*@__PURE__*/ S.suspend(() =>
+const WorkflowExecutionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versioningOverride: S.optional(VersioningOverride),
     priority: S.optional(Priority),
@@ -9457,7 +9410,7 @@ export interface PostResetOperationUpdateWorkflowOptions {
   /** Controls which fields from `workflow_execution_options` will be applied. To unset a field, set it to null and use the update mask to indicate that it should be mutated. */
   updateMask?: string;
 }
-export const PostResetOperationUpdateWorkflowOptions = /*@__PURE__*/ S.suspend(() =>
+const PostResetOperationUpdateWorkflowOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowExecutionOptions: S.optional(WorkflowExecutionOptions),
     updateMask: S.optional(S.String),
@@ -9471,7 +9424,7 @@ export interface PostResetOperation {
   signalWorkflow?: PostResetOperationSignalWorkflow;
   updateWorkflowOptions?: PostResetOperationUpdateWorkflowOptions;
 }
-export const PostResetOperation = /*@__PURE__*/ S.suspend(() =>
+const PostResetOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signalWorkflow: S.optional(PostResetOperationSignalWorkflow),
     updateWorkflowOptions: S.optional(PostResetOperationUpdateWorkflowOptions),
@@ -9480,7 +9433,7 @@ export const PostResetOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** Operations to perform after the workflow has been reset. These operations will be applied to the *new* run of the workflow execution in the order they are provided. All operations are applied to the workflow before the first new workflow task is generated */
 export type ResetWorkflowExecutionRequestPostResetOperationsList = Array<PostResetOperation>;
-export const ResetWorkflowExecutionRequestPostResetOperationsList = /*@__PURE__*/ S.Array(
+const ResetWorkflowExecutionRequestPostResetOperationsList = /*@__PURE__*/ S.Array(
   PostResetOperation,
 ) as any as S.Schema<ResetWorkflowExecutionRequestPostResetOperationsList>;
 
@@ -9503,7 +9456,7 @@ export interface ResetWorkflowExecutionRequest {
   /** The identity of the worker/client */
   identity?: string;
 }
-export const ResetWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -9529,7 +9482,7 @@ export const ResetWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ResetWorkflowExecutionResponse {
   runId?: string;
 }
-export const ResetWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const ResetWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
   }),
@@ -9554,7 +9507,7 @@ export interface RespondActivityTaskCanceledRequest {
   /** Worker deployment options that user has set in the worker. */
   deploymentOptions?: WorkerDeploymentOptions;
 }
-export const RespondActivityTaskCanceledRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskCanceledRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskToken: S.optional(S.String),
@@ -9576,7 +9529,7 @@ export const RespondActivityTaskCanceledRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RespondActivityTaskCanceledRequest>;
 
 export type RespondActivityTaskCanceledResponse2 = unknown;
-export const RespondActivityTaskCanceledResponse2 =
+const RespondActivityTaskCanceledResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCanceledResponse2>;
 
 export interface RespondActivityTaskCanceledByIdRequest {
@@ -9597,7 +9550,7 @@ export interface RespondActivityTaskCanceledByIdRequest {
   /** Resource ID for routing. Contains "workflow:workflow_id" or "activity:activity_id" for standalone activities. */
   resourceId?: string;
 }
-export const RespondActivityTaskCanceledByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskCanceledByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9619,7 +9572,7 @@ export const RespondActivityTaskCanceledByIdRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RespondActivityTaskCanceledByIdRequest>;
 
 export type RespondActivityTaskCanceledByIdResponse2 = unknown;
-export const RespondActivityTaskCanceledByIdResponse2 =
+const RespondActivityTaskCanceledByIdResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCanceledByIdResponse2>;
 
 export interface RespondActivityTaskCompletedRequest {
@@ -9639,7 +9592,7 @@ export interface RespondActivityTaskCompletedRequest {
   /** Worker deployment options that user has set in the worker. */
   deploymentOptions?: WorkerDeploymentOptions;
 }
-export const RespondActivityTaskCompletedRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskCompletedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskToken: S.optional(S.String),
@@ -9657,7 +9610,7 @@ export const RespondActivityTaskCompletedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RespondActivityTaskCompletedRequest>;
 
 export type RespondActivityTaskCompletedResponse2 = unknown;
-export const RespondActivityTaskCompletedResponse2 =
+const RespondActivityTaskCompletedResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCompletedResponse2>;
 
 export interface RespondActivityTaskCompletedByIdRequest {
@@ -9676,7 +9629,7 @@ export interface RespondActivityTaskCompletedByIdRequest {
   /** Resource ID for routing. Contains "workflow:workflow_id" or "activity:activity_id" for standalone activities. */
   resourceId?: string;
 }
-export const RespondActivityTaskCompletedByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskCompletedByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9697,7 +9650,7 @@ export const RespondActivityTaskCompletedByIdRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<RespondActivityTaskCompletedByIdRequest>;
 
 export type RespondActivityTaskCompletedByIdResponse2 = unknown;
-export const RespondActivityTaskCompletedByIdResponse2 =
+const RespondActivityTaskCompletedByIdResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<RespondActivityTaskCompletedByIdResponse2>;
 
 export interface RespondActivityTaskFailedRequest {
@@ -9719,7 +9672,7 @@ export interface RespondActivityTaskFailedRequest {
   /** Worker deployment options that user has set in the worker. */
   deploymentOptions?: WorkerDeploymentOptions;
 }
-export const RespondActivityTaskFailedRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskFailedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskToken: S.optional(S.String),
@@ -9739,7 +9692,7 @@ export const RespondActivityTaskFailedRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
 export type RespondActivityTaskFailedResponseFailuresList = Array<Failure>;
-export const RespondActivityTaskFailedResponseFailuresList = /*@__PURE__*/ S.Array(
+const RespondActivityTaskFailedResponseFailuresList = /*@__PURE__*/ S.Array(
   Failure,
 ) as any as S.Schema<RespondActivityTaskFailedResponseFailuresList>;
 
@@ -9747,7 +9700,7 @@ export interface RespondActivityTaskFailedResponse {
   /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
   failures?: RespondActivityTaskFailedResponseFailuresList;
 }
-export const RespondActivityTaskFailedResponse = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskFailedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failures: S.optional(RespondActivityTaskFailedResponseFailuresList),
   }),
@@ -9773,7 +9726,7 @@ export interface RespondActivityTaskFailedByIdRequest {
   /** Resource ID for routing. Contains "workflow:workflow_id" or "activity:activity_id" for standalone activities. */
   resourceId?: string;
 }
-export const RespondActivityTaskFailedByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const RespondActivityTaskFailedByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -9796,23 +9749,20 @@ export const RespondActivityTaskFailedByIdRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
 export type RespondActivityTaskFailedByIdResponseFailuresList = Array<Failure>;
-export const RespondActivityTaskFailedByIdResponseFailuresList =
-  RespondActivityTaskFailedResponseFailuresList as any as S.Schema<RespondActivityTaskFailedByIdResponseFailuresList>;
-
 export interface RespondActivityTaskFailedByIdResponse {
   /** Server validation failures could include last_heartbeat_details payload is too large, request failure is too large */
   failures?: RespondActivityTaskFailedByIdResponseFailuresList;
 }
-export const RespondActivityTaskFailedByIdResponse =
+const RespondActivityTaskFailedByIdResponse =
   RespondActivityTaskFailedResponse as any as S.Schema<RespondActivityTaskFailedByIdResponse>;
 
 export type UpdateDeploymentMetadataUpsertEntriesMap = { [key: string]: unknown | undefined };
-export const UpdateDeploymentMetadataUpsertEntriesMap =
+const UpdateDeploymentMetadataUpsertEntriesMap =
   MemoFieldsMap as any as S.Schema<UpdateDeploymentMetadataUpsertEntriesMap>;
 
 /** List of keys to remove from the metadata. */
 export type UpdateDeploymentMetadataRemoveEntriesList = Array<string>;
-export const UpdateDeploymentMetadataRemoveEntriesList =
+const UpdateDeploymentMetadataRemoveEntriesList =
   ScheduleSpecCronStringList as any as S.Schema<UpdateDeploymentMetadataRemoveEntriesList>;
 
 /** Used as part of Deployment write APIs to update metadata attached to a deployment. Deprecated. */
@@ -9821,7 +9771,7 @@ export interface UpdateDeploymentMetadata {
   /** List of keys to remove from the metadata. */
   removeEntries?: UpdateDeploymentMetadataRemoveEntriesList;
 }
-export const UpdateDeploymentMetadata = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeploymentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upsertEntries: S.optional(UpdateDeploymentMetadataUpsertEntriesMap),
     removeEntries: S.optional(UpdateDeploymentMetadataRemoveEntriesList),
@@ -9837,7 +9787,7 @@ export interface SetCurrentDeploymentRequest {
   /** Optional. Use to add or remove user-defined metadata entries. Metadata entries are exposed when describing a deployment. It is a good place for information such as operator name, links to internal deployment pipelines, etc. */
   updateMetadata?: UpdateDeploymentMetadata;
 }
-export const SetCurrentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCurrentDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_series_name: S.String.pipe(T.Label()),
@@ -9861,7 +9811,7 @@ export interface SetCurrentDeploymentResponse {
   /** Info of the deployment that was current before executing this operation. */
   previousDeploymentInfo?: DeploymentInfo;
 }
-export const SetCurrentDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const SetCurrentDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentDeploymentInfo: S.optional(DeploymentInfo),
     previousDeploymentInfo: S.optional(DeploymentInfo),
@@ -9886,7 +9836,7 @@ export interface SetWorkerDeploymentCurrentVersionRequest {
   /** Optional. By default this request will be rejected if no pollers have been seen for the proposed Current Version, in order to protect users from routing tasks to pollers that do not exist, leading to possible timeouts. Pass `true` here to bypass this protection. */
   allowNoPollers?: boolean;
 }
-export const SetWorkerDeploymentCurrentVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentCurrentVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -9915,7 +9865,7 @@ export interface SetWorkerDeploymentCurrentVersionResponse {
   /** The version that was current before executing this operation. Deprecated in favor of idempotency of the API. Use `DescribeWorkerDeployment` to get the Current version info before calling this API. By passing the `conflict_token` got from the `DescribeWorkerDeployment` call to this API you can ensure there is no interfering changes between the two calls. */
   previousDeploymentVersion?: WorkerDeploymentVersion;
 }
-export const SetWorkerDeploymentCurrentVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentCurrentVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
     previousVersion: S.optional(S.String),
@@ -9937,7 +9887,7 @@ export interface SetWorkerDeploymentManagerRequest {
   /** Required. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const SetWorkerDeploymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -9962,7 +9912,7 @@ export interface SetWorkerDeploymentManagerResponse {
   /** What the `manager_identity` field was before this change. Deprecated in favor of idempotency of the API. Use `DescribeWorkerDeployment` to get the manager identity before calling this API. By passing the `conflict_token` got from the `DescribeWorkerDeployment` call to this API you can ensure there is no interfering changes between the two calls. */
   previousManagerIdentity?: string;
 }
-export const SetWorkerDeploymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
     previousManagerIdentity: S.optional(S.String),
@@ -9989,7 +9939,7 @@ export interface SetWorkerDeploymentRampingVersionRequest {
   /** Optional. By default this request will be rejected if no pollers have been seen for the proposed Current Version, in order to protect users from routing tasks to pollers that do not exist, leading to possible timeouts. Pass `true` here to bypass this protection. */
   allowNoPollers?: boolean;
 }
-export const SetWorkerDeploymentRampingVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentRampingVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deploymentName: S.String.pipe(T.Label()),
@@ -10021,7 +9971,7 @@ export interface SetWorkerDeploymentRampingVersionResponse {
   /** The ramping version percentage before executing this operation. Deprecated in favor of idempotency of the API. Use `DescribeWorkerDeployment` to get the Ramping version info before calling this API. By passing the `conflict_token` got from the `DescribeWorkerDeployment` call to this API you can ensure there is no interfering changes between the two calls. */
   previousPercentage?: number;
 }
-export const SetWorkerDeploymentRampingVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const SetWorkerDeploymentRampingVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictToken: S.optional(S.String),
     previousVersion: S.optional(S.String),
@@ -10039,7 +9989,7 @@ export type SignalWithStartWorkflowExecutionRequestWorkflowIdReusePolicy =
   | "WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE"
   | "WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING";
-export const SignalWithStartWorkflowExecutionRequestWorkflowIdReusePolicy = S.String;
+const SignalWithStartWorkflowExecutionRequestWorkflowIdReusePolicy = S.String;
 
 /** Defines how to resolve a workflow id conflict with a *running* workflow. The default policy is WORKFLOW_ID_CONFLICT_POLICY_USE_EXISTING. Note that WORKFLOW_ID_CONFLICT_POLICY_FAIL is an invalid option. See `workflow_id_reuse_policy` for handling a workflow id duplication with a *closed* workflow. */
 export type SignalWithStartWorkflowExecutionRequestWorkflowIdConflictPolicy =
@@ -10047,11 +9997,11 @@ export type SignalWithStartWorkflowExecutionRequestWorkflowIdConflictPolicy =
   | "WORKFLOW_ID_CONFLICT_POLICY_FAIL"
   | "WORKFLOW_ID_CONFLICT_POLICY_USE_EXISTING"
   | "WORKFLOW_ID_CONFLICT_POLICY_TERMINATE_EXISTING";
-export const SignalWithStartWorkflowExecutionRequestWorkflowIdConflictPolicy = S.String;
+const SignalWithStartWorkflowExecutionRequestWorkflowIdConflictPolicy = S.String;
 
 /** Links to be associated with the WorkflowExecutionStarted and WorkflowExecutionSignaled events. */
 export type SignalWithStartWorkflowExecutionRequestLinksList = Array<Link>;
-export const SignalWithStartWorkflowExecutionRequestLinksList =
+const SignalWithStartWorkflowExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<SignalWithStartWorkflowExecutionRequestLinksList>;
 
 export interface SignalWithStartWorkflowExecutionRequest {
@@ -10106,7 +10056,7 @@ export interface SignalWithStartWorkflowExecutionRequest {
   /** Time-skipping configuration. If not set, time skipping is disabled. */
   timeSkippingConfig?: TimeSkippingConfig;
 }
-export const SignalWithStartWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalWithStartWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflowId: S.String.pipe(T.Label()),
@@ -10155,7 +10105,7 @@ export interface SignalWithStartWorkflowExecutionResponse {
   /** Link to be associated with the WorkflowExecutionSignaled event. Added on the response to propagate the backlink. Available from Temporal server 1.31 and up. */
   signalLink?: Link;
 }
-export const SignalWithStartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalWithStartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     started: S.optional(S.Boolean),
@@ -10167,7 +10117,7 @@ export const SignalWithStartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(
 
 /** Links to be associated with the WorkflowExecutionSignaled event. */
 export type SignalWorkflowExecutionRequestLinksList = Array<Link>;
-export const SignalWorkflowExecutionRequestLinksList =
+const SignalWorkflowExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<SignalWorkflowExecutionRequestLinksList>;
 
 export interface SignalWorkflowExecutionRequest {
@@ -10189,7 +10139,7 @@ export interface SignalWorkflowExecutionRequest {
   /** Links to be associated with the WorkflowExecutionSignaled event. */
   links?: SignalWorkflowExecutionRequestLinksList;
 }
-export const SignalWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const SignalWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -10216,7 +10166,7 @@ export interface SignalWorkflowExecutionResponse {
   /** Link to be associated with the WorkflowExecutionSignaled event. Added on the response to propagate the backlink. Available from Temporal server 1.31 and up. */
   link?: Link;
 }
-export const SignalWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const SignalWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(Link),
   }),
@@ -10230,23 +10180,23 @@ export type StartActivityExecutionRequestIdReusePolicy =
   | "ACTIVITY_ID_REUSE_POLICY_ALLOW_DUPLICATE"
   | "ACTIVITY_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "ACTIVITY_ID_REUSE_POLICY_REJECT_DUPLICATE";
-export const StartActivityExecutionRequestIdReusePolicy = S.String;
+const StartActivityExecutionRequestIdReusePolicy = S.String;
 
 /** Defines how to resolve an activity id conflict with a *running* activity. The default policy is ACTIVITY_ID_CONFLICT_POLICY_FAIL. */
 export type StartActivityExecutionRequestIdConflictPolicy =
   | "ACTIVITY_ID_CONFLICT_POLICY_UNSPECIFIED"
   | "ACTIVITY_ID_CONFLICT_POLICY_FAIL"
   | "ACTIVITY_ID_CONFLICT_POLICY_USE_EXISTING";
-export const StartActivityExecutionRequestIdConflictPolicy = S.String;
+const StartActivityExecutionRequestIdConflictPolicy = S.String;
 
 /** Callbacks to be called by the server when this activity reaches a terminal state. Callback addresses must be whitelisted in the server's dynamic configuration. */
 export type StartActivityExecutionRequestCompletionCallbacksList = Array<Callback>;
-export const StartActivityExecutionRequestCompletionCallbacksList =
+const StartActivityExecutionRequestCompletionCallbacksList =
   WorkflowExecutionStartedEventAttributesCompletionCallbacksList as any as S.Schema<StartActivityExecutionRequestCompletionCallbacksList>;
 
 /** Links to be associated with the activity. Callbacks may also have associated links; links already included with a callback should not be duplicated here. */
 export type StartActivityExecutionRequestLinksList = Array<Link>;
-export const StartActivityExecutionRequestLinksList =
+const StartActivityExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<StartActivityExecutionRequestLinksList>;
 
 /** When starting an execution with a conflict policy that uses an existing execution and there is already an existing running execution, OnConflictOptions defines actions to be taken on the existing running execution. */
@@ -10258,7 +10208,7 @@ export interface OnConflictOptions {
   /** Attaches the links to the running execution. */
   attachLinks?: boolean;
 }
-export const OnConflictOptions = /*@__PURE__*/ S.suspend(() =>
+const OnConflictOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachRequestId: S.optional(S.Boolean),
     attachCompletionCallbacks: S.optional(S.Boolean),
@@ -10311,7 +10261,7 @@ export interface StartActivityExecutionRequest {
   /** Time to wait before dispatching the first activity task. This delay is not applied to retry attempts. */
   startDelay?: string;
 }
-export const StartActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -10354,7 +10304,7 @@ export interface StartActivityExecutionResponse {
   /** Link to the started activity. */
   link?: Link;
 }
-export const StartActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     started: S.optional(S.Boolean),
@@ -10366,7 +10316,7 @@ export const StartActivityExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Executions to apply the batch operation This field and `visibility_query` are mutually exclusive */
 export type StartBatchOperationRequestExecutionsList = Array<WorkflowExecution>;
-export const StartBatchOperationRequestExecutionsList =
+const StartBatchOperationRequestExecutionsList =
   ScheduleInfoRunningWorkflowsList as any as S.Schema<StartBatchOperationRequestExecutionsList>;
 
 /** BatchOperationTermination sends terminate requests to batch workflows. Keep the parameter in sync with temporal.api.workflowservice.v1.TerminateWorkflowExecutionRequest. Ignore first_execution_run_id because this is used for single workflow operation. */
@@ -10376,7 +10326,7 @@ export interface BatchOperationTermination {
   /** The identity of the worker/client */
   identity?: string;
 }
-export const BatchOperationTermination = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationTermination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(Payloads),
     identity: S.optional(S.String),
@@ -10396,7 +10346,7 @@ export interface BatchOperationSignal {
   /** The identity of the worker/client */
   identity?: string;
 }
-export const BatchOperationSignal = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signal: S.optional(S.String),
     input: S.optional(Payloads),
@@ -10410,7 +10360,7 @@ export interface BatchOperationCancellation {
   /** The identity of the worker/client */
   identity?: string;
 }
-export const BatchOperationCancellation = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationCancellation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
   }),
@@ -10420,15 +10370,13 @@ export const BatchOperationCancellation = /*@__PURE__*/ S.suspend(() =>
 
 /** BatchOperationDeletion sends deletion requests to batch workflows. Keep the parameter in sync with temporal.api.workflowservice.v1.DeleteWorkflowExecutionRequest. */
 export type BatchOperationDeletion = BatchOperationCancellation;
-export const BatchOperationDeletion = BatchOperationCancellation;
-
 /** Deprecated. Use `options`. Default: RESET_REAPPLY_TYPE_SIGNAL */
 export type ResetOptionsResetReapplyType =
   | "RESET_REAPPLY_TYPE_UNSPECIFIED"
   | "RESET_REAPPLY_TYPE_SIGNAL"
   | "RESET_REAPPLY_TYPE_NONE"
   | "RESET_REAPPLY_TYPE_ALL_ELIGIBLE";
-export const ResetOptionsResetReapplyType = S.String;
+const ResetOptionsResetReapplyType = S.String;
 
 export type ResetOptionsResetReapplyExcludeTypesItem =
   | "RESET_REAPPLY_EXCLUDE_TYPE_UNSPECIFIED"
@@ -10436,13 +10384,11 @@ export type ResetOptionsResetReapplyExcludeTypesItem =
   | "RESET_REAPPLY_EXCLUDE_TYPE_UPDATE"
   | "RESET_REAPPLY_EXCLUDE_TYPE_NEXUS"
   | "RESET_REAPPLY_EXCLUDE_TYPE_CANCEL_REQUEST";
-export const ResetOptionsResetReapplyExcludeTypesItem = S.String;
-
 /** Event types not to be reapplied */
 export type ResetOptionsResetReapplyExcludeTypesList = Array<
   ResetOptionsResetReapplyExcludeTypesItem | (string & {})
 >;
-export const ResetOptionsResetReapplyExcludeTypesList =
+const ResetOptionsResetReapplyExcludeTypesList =
   ComputeConfigScalingGroupTaskQueueTypesList as any as S.Schema<ResetOptionsResetReapplyExcludeTypesList>;
 
 /** Describes where and how to reset a workflow, used for batch reset currently and may be used for single-workflow reset later. */
@@ -10458,7 +10404,7 @@ export interface ResetOptions {
   /** Event types not to be reapplied */
   resetReapplyExcludeTypes?: ResetOptionsResetReapplyExcludeTypesList;
 }
-export const ResetOptions = /*@__PURE__*/ S.suspend(() =>
+const ResetOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowTaskId: S.optional(S.String),
     buildId: S.optional(S.String),
@@ -10473,7 +10419,7 @@ export type BatchOperationResetResetType =
   | "RESET_TYPE_UNSPECIFIED"
   | "RESET_TYPE_FIRST_WORKFLOW_TASK"
   | "RESET_TYPE_LAST_WORKFLOW_TASK";
-export const BatchOperationResetResetType = S.String;
+const BatchOperationResetResetType = S.String;
 
 /** Deprecated. Use `options`. */
 export type BatchOperationResetResetReapplyType =
@@ -10481,11 +10427,11 @@ export type BatchOperationResetResetReapplyType =
   | "RESET_REAPPLY_TYPE_SIGNAL"
   | "RESET_REAPPLY_TYPE_NONE"
   | "RESET_REAPPLY_TYPE_ALL_ELIGIBLE";
-export const BatchOperationResetResetReapplyType = S.String;
+const BatchOperationResetResetReapplyType = S.String;
 
 /** Operations to perform after the workflow has been reset. These operations will be applied to the *new* run of the workflow execution in the order they are provided. All operations are applied to the workflow before the first new workflow task is generated */
 export type BatchOperationResetPostResetOperationsList = Array<PostResetOperation>;
-export const BatchOperationResetPostResetOperationsList =
+const BatchOperationResetPostResetOperationsList =
   ResetWorkflowExecutionRequestPostResetOperationsList as any as S.Schema<BatchOperationResetPostResetOperationsList>;
 
 /** BatchOperationReset sends reset requests to batch workflows. Keep the parameter in sync with temporal.api.workflowservice.v1.ResetWorkflowExecutionRequest. */
@@ -10501,7 +10447,7 @@ export interface BatchOperationReset {
   /** Operations to perform after the workflow has been reset. These operations will be applied to the *new* run of the workflow execution in the order they are provided. All operations are applied to the workflow before the first new workflow task is generated */
   postResetOperations?: BatchOperationResetPostResetOperationsList;
 }
-export const BatchOperationReset = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationReset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     options: S.optional(ResetOptions),
@@ -10520,7 +10466,7 @@ export interface BatchOperationUpdateWorkflowExecutionOptions {
   /** Controls which fields from `workflow_execution_options` will be applied. To unset a field, set it to null and use the update mask to indicate that it should be mutated. */
   updateMask?: string;
 }
-export const BatchOperationUpdateWorkflowExecutionOptions = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationUpdateWorkflowExecutionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     workflowExecutionOptions: S.optional(WorkflowExecutionOptions),
@@ -10543,7 +10489,7 @@ export interface BatchOperationUnpauseActivities {
   /** If set, the activity will start at a random time within the specified jitter duration, introducing variability to the start time. */
   jitter?: string;
 }
-export const BatchOperationUnpauseActivities = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationUnpauseActivities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     type: S.optional(S.String),
@@ -10573,7 +10519,7 @@ export interface BatchOperationResetActivities {
   /** If set, the activity options will be restored to the defaults. Default options are then options activity was created with. They are part of the first ActivityTaskScheduled event. */
   restoreOriginalOptions?: boolean;
 }
-export const BatchOperationResetActivities = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationResetActivities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     type: S.optional(S.String),
@@ -10601,7 +10547,7 @@ export interface BatchOperationUpdateActivityOptions {
   /** If set, the activity options will be restored to the default. Default options are then options activity was created with. They are part of the first ActivityTaskScheduled event. This flag cannot be combined with any other option; if you supply restore_original together with other options, the request will be rejected. */
   restoreOriginal?: boolean;
 }
-export const BatchOperationUpdateActivityOptions = /*@__PURE__*/ S.suspend(() =>
+const BatchOperationUpdateActivityOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identity: S.optional(S.String),
     type: S.optional(S.String),
@@ -10637,7 +10583,7 @@ export interface StartBatchOperationRequest {
   resetActivitiesOperation?: BatchOperationResetActivities;
   updateActivityOptionsOperation?: BatchOperationUpdateActivityOptions;
 }
-export const StartBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const StartBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -10666,7 +10612,7 @@ export const StartBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartBatchOperationRequest>;
 
 export type StartBatchOperationResponse2 = unknown;
-export const StartBatchOperationResponse2 =
+const StartBatchOperationResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<StartBatchOperationResponse2>;
 
 /** Defines whether to allow re-using the operation id from a previously *closed* operation. The default policy is NEXUS_OPERATION_ID_REUSE_POLICY_ALLOW_DUPLICATE. */
@@ -10675,20 +10621,20 @@ export type StartNexusOperationExecutionRequestIdReusePolicy =
   | "NEXUS_OPERATION_ID_REUSE_POLICY_ALLOW_DUPLICATE"
   | "NEXUS_OPERATION_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "NEXUS_OPERATION_ID_REUSE_POLICY_REJECT_DUPLICATE";
-export const StartNexusOperationExecutionRequestIdReusePolicy = S.String;
+const StartNexusOperationExecutionRequestIdReusePolicy = S.String;
 
 /** Defines how to resolve an operation id conflict with a *running* operation. The default policy is NEXUS_OPERATION_ID_CONFLICT_POLICY_FAIL. */
 export type StartNexusOperationExecutionRequestIdConflictPolicy =
   | "NEXUS_OPERATION_ID_CONFLICT_POLICY_UNSPECIFIED"
   | "NEXUS_OPERATION_ID_CONFLICT_POLICY_FAIL"
   | "NEXUS_OPERATION_ID_CONFLICT_POLICY_USE_EXISTING";
-export const StartNexusOperationExecutionRequestIdConflictPolicy = S.String;
+const StartNexusOperationExecutionRequestIdConflictPolicy = S.String;
 
 /** Header to attach to the Nexus request. Users are responsible for encrypting sensitive data in this header as it is stored in workflow history and transmitted to external services as-is. This is useful for propagating tracing information. Note these headers are not the same as Temporal headers on internal activities and child workflows, these are transmitted to Nexus operations that may be external and are not traditional payloads. */
 export type StartNexusOperationExecutionRequestNexusHeaderMap = {
   [key: string]: string | undefined;
 };
-export const StartNexusOperationExecutionRequestNexusHeaderMap =
+const StartNexusOperationExecutionRequestNexusHeaderMap =
   CallbackNexusHeaderMap as any as S.Schema<StartNexusOperationExecutionRequestNexusHeaderMap>;
 
 export interface StartNexusOperationExecutionRequest {
@@ -10724,7 +10670,7 @@ export interface StartNexusOperationExecutionRequest {
   /** Metadata for use by user interfaces to display the fixed as-of-start summary and details of the operation. */
   userMetadata?: UserMetadata;
 }
-export const StartNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -10759,7 +10705,7 @@ export interface StartNexusOperationExecutionResponse {
   /** If true, a new operation was started. */
   started?: boolean;
 }
-export const StartNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartNexusOperationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     started: S.optional(S.Boolean),
@@ -10775,7 +10721,7 @@ export type StartWorkflowExecutionRequestWorkflowIdReusePolicy =
   | "WORKFLOW_ID_REUSE_POLICY_ALLOW_DUPLICATE_FAILED_ONLY"
   | "WORKFLOW_ID_REUSE_POLICY_REJECT_DUPLICATE"
   | "WORKFLOW_ID_REUSE_POLICY_TERMINATE_IF_RUNNING";
-export const StartWorkflowExecutionRequestWorkflowIdReusePolicy = S.String;
+const StartWorkflowExecutionRequestWorkflowIdReusePolicy = S.String;
 
 /** Defines how to resolve a workflow id conflict with a *running* workflow. The default policy is WORKFLOW_ID_CONFLICT_POLICY_FAIL. See `workflow_id_reuse_policy` for handling a workflow id duplication with a *closed* workflow. */
 export type StartWorkflowExecutionRequestWorkflowIdConflictPolicy =
@@ -10783,16 +10729,16 @@ export type StartWorkflowExecutionRequestWorkflowIdConflictPolicy =
   | "WORKFLOW_ID_CONFLICT_POLICY_FAIL"
   | "WORKFLOW_ID_CONFLICT_POLICY_USE_EXISTING"
   | "WORKFLOW_ID_CONFLICT_POLICY_TERMINATE_EXISTING";
-export const StartWorkflowExecutionRequestWorkflowIdConflictPolicy = S.String;
+const StartWorkflowExecutionRequestWorkflowIdConflictPolicy = S.String;
 
 /** Callbacks to be called by the server when this workflow reaches a terminal state. If the workflow continues-as-new, these callbacks will be carried over to the new execution. Callback addresses must be whitelisted in the server's dynamic configuration. */
 export type StartWorkflowExecutionRequestCompletionCallbacksList = Array<Callback>;
-export const StartWorkflowExecutionRequestCompletionCallbacksList =
+const StartWorkflowExecutionRequestCompletionCallbacksList =
   WorkflowExecutionStartedEventAttributesCompletionCallbacksList as any as S.Schema<StartWorkflowExecutionRequestCompletionCallbacksList>;
 
 /** Links to be associated with the workflow. */
 export type StartWorkflowExecutionRequestLinksList = Array<Link>;
-export const StartWorkflowExecutionRequestLinksList =
+const StartWorkflowExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<StartWorkflowExecutionRequestLinksList>;
 
 export interface StartWorkflowExecutionRequest {
@@ -10847,7 +10793,7 @@ export interface StartWorkflowExecutionRequest {
   /** Time-skipping configuration. If not set, time skipping is disabled. */
   timeSkippingConfig?: TimeSkippingConfig;
 }
-export const StartWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflowId: S.String.pipe(T.Label()),
@@ -10900,11 +10846,11 @@ export type StartWorkflowExecutionResponseStatus =
   | "WORKFLOW_EXECUTION_STATUS_CONTINUED_AS_NEW"
   | "WORKFLOW_EXECUTION_STATUS_TIMED_OUT"
   | "WORKFLOW_EXECUTION_STATUS_PAUSED";
-export const StartWorkflowExecutionResponseStatus = S.String;
+const StartWorkflowExecutionResponseStatus = S.String;
 
 /** Queries that should be executed after applying the history in this task. Responses should be attached to `RespondWorkflowTaskCompletedRequest::query_results` */
 export type PollWorkflowTaskQueueResponseQueriesMap = { [key: string]: WorkflowQuery | undefined };
-export const PollWorkflowTaskQueueResponseQueriesMap = /*@__PURE__*/ S.Record(
+const PollWorkflowTaskQueueResponseQueriesMap = /*@__PURE__*/ S.Record(
   S.String,
   WorkflowQuery,
 ) as any as S.Schema<PollWorkflowTaskQueueResponseQueriesMap>;
@@ -10914,7 +10860,7 @@ export interface GoogleProtobufAny {
   /** The type of the serialized message. */
   _type?: string;
 }
-export const GoogleProtobufAny = /*@__PURE__*/ S.suspend(() =>
+const GoogleProtobufAny = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _type: S.optional(S.String.pipe(T.Body("@type"))),
   }),
@@ -10931,7 +10877,7 @@ export interface Message {
   /** The opaque data carried by this message. The protocol type can be extracted from the package name of the message carried inside the Any. */
   body?: GoogleProtobufAny;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     protocolInstanceId: S.optional(S.String),
@@ -10943,7 +10889,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 
 /** Protocol messages piggybacking on a WFT as a transport */
 export type PollWorkflowTaskQueueResponseMessagesList = Array<Message>;
-export const PollWorkflowTaskQueueResponseMessagesList = /*@__PURE__*/ S.Array(
+const PollWorkflowTaskQueueResponseMessagesList = /*@__PURE__*/ S.Array(
   Message,
 ) as any as S.Schema<PollWorkflowTaskQueueResponseMessagesList>;
 
@@ -10952,7 +10898,7 @@ export interface PollerScalingDecision {
   /** How many poll requests to suggest should be added or removed, if any. As of now, server only scales up or down by 1. However, SDKs should allow for other values (while staying within defined min/max). The SDK is free to ignore this suggestion, EX: making more polls would not make sense because all slots are already occupied. */
   pollRequestDeltaSuggestion?: number;
 }
-export const PollerScalingDecision = /*@__PURE__*/ S.suspend(() =>
+const PollerScalingDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pollRequestDeltaSuggestion: S.optional(S.Number),
   }),
@@ -10962,7 +10908,7 @@ export interface PollerGroupInfo {
   id?: string;
   weight?: number;
 }
-export const PollerGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const PollerGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     weight: S.optional(S.Number),
@@ -10971,7 +10917,7 @@ export const PollerGroupInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The weighted list of poller groups IDs that client should use for future polls to this task queue. Client is expected to: 1. Maintain minimum number of pollers no less than the number of groups. 2. Try to assign the next poll to a group without any pending polls, 3. If every group has some pending polls, assign the next poll to a group randomly according to the weights. */
 export type PollWorkflowTaskQueueResponsePollerGroupInfosList = Array<PollerGroupInfo>;
-export const PollWorkflowTaskQueueResponsePollerGroupInfosList = /*@__PURE__*/ S.Array(
+const PollWorkflowTaskQueueResponsePollerGroupInfosList = /*@__PURE__*/ S.Array(
   PollerGroupInfo,
 ) as any as S.Schema<PollWorkflowTaskQueueResponsePollerGroupInfosList>;
 
@@ -11011,7 +10957,7 @@ export interface PollWorkflowTaskQueueResponse {
   /** The weighted list of poller groups IDs that client should use for future polls to this task queue. Client is expected to: 1. Maintain minimum number of pollers no less than the number of groups. 2. Try to assign the next poll to a group without any pending polls, 3. If every group has some pending polls, assign the next poll to a group randomly according to the weights. */
   pollerGroupInfos?: PollWorkflowTaskQueueResponsePollerGroupInfosList;
 }
-export const PollWorkflowTaskQueueResponse = /*@__PURE__*/ S.suspend(() =>
+const PollWorkflowTaskQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskToken: S.optional(S.String),
     workflowExecution: S.optional(WorkflowExecution),
@@ -11048,7 +10994,7 @@ export interface StartWorkflowExecutionResponse {
   /** Link to the workflow event. */
   link?: Link;
 }
-export const StartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runId: S.optional(S.String),
     started: S.optional(S.Boolean),
@@ -11070,7 +11016,7 @@ export interface StopBatchOperationRequest {
   /** Identity of the operator */
   identity?: string;
 }
-export const StopBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const StopBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     jobId: S.String.pipe(T.Label()),
@@ -11088,7 +11034,7 @@ export const StopBatchOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopBatchOperationRequest>;
 
 export type StopBatchOperationResponse2 = unknown;
-export const StopBatchOperationResponse2 =
+const StopBatchOperationResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<StopBatchOperationResponse2>;
 
 export interface TerminateActivityExecutionRequest {
@@ -11103,7 +11049,7 @@ export interface TerminateActivityExecutionRequest {
   /** Reason for requesting the termination, recorded in in the activity's result failure outcome. */
   reason?: string;
 }
-export const TerminateActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -11123,7 +11069,7 @@ export const TerminateActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateActivityExecutionRequest>;
 
 export type TerminateActivityExecutionResponse2 = unknown;
-export const TerminateActivityExecutionResponse2 =
+const TerminateActivityExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateActivityExecutionResponse2>;
 
 export interface TerminateNexusOperationExecutionRequest {
@@ -11138,7 +11084,7 @@ export interface TerminateNexusOperationExecutionRequest {
   /** Reason for requesting the termination, recorded in the operation's result failure outcome. */
   reason?: string;
 }
-export const TerminateNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     operationId: S.String.pipe(T.Label()),
@@ -11158,12 +11104,12 @@ export const TerminateNexusOperationExecutionRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<TerminateNexusOperationExecutionRequest>;
 
 export type TerminateNexusOperationExecutionResponse2 = unknown;
-export const TerminateNexusOperationExecutionResponse2 =
+const TerminateNexusOperationExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateNexusOperationExecutionResponse2>;
 
 /** Links to be associated with the WorkflowExecutionTerminated event. */
 export type TerminateWorkflowExecutionRequestLinksList = Array<Link>;
-export const TerminateWorkflowExecutionRequestLinksList =
+const TerminateWorkflowExecutionRequestLinksList =
   ActivityExecutionInfoLinksList as any as S.Schema<TerminateWorkflowExecutionRequestLinksList>;
 
 export interface TerminateWorkflowExecutionRequest {
@@ -11180,7 +11126,7 @@ export interface TerminateWorkflowExecutionRequest {
   /** Links to be associated with the WorkflowExecutionTerminated event. */
   links?: TerminateWorkflowExecutionRequestLinksList;
 }
-export const TerminateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -11202,7 +11148,7 @@ export const TerminateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TerminateWorkflowExecutionRequest>;
 
 export type TerminateWorkflowExecutionResponse2 = unknown;
-export const TerminateWorkflowExecutionResponse2 =
+const TerminateWorkflowExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<TerminateWorkflowExecutionResponse2>;
 
 export interface TriggerWorkflowRuleRequest {
@@ -11216,7 +11162,7 @@ export interface TriggerWorkflowRuleRequest {
   /** The identity of the client who initiated this request */
   identity?: string;
 }
-export const TriggerWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerWorkflowRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution_workflow_id: S.String.pipe(T.Label()),
@@ -11239,7 +11185,7 @@ export interface TriggerWorkflowRuleResponse {
   /** True is the rule was applied, based on the rule conditions (predicate/visibility_query). */
   applied?: boolean;
 }
-export const TriggerWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerWorkflowRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applied: S.optional(S.Boolean),
   }),
@@ -11267,7 +11213,7 @@ export interface UnpauseActivityRequest {
   /** If set, the activity will start at a random time within the specified jitter duration. */
   jitter?: string;
 }
-export const UnpauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution: S.optional(WorkflowExecution),
@@ -11288,7 +11234,7 @@ export const UnpauseActivityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnpauseActivityRequest" }) as any as S.Schema<UnpauseActivityRequest>;
 
 export type UnpauseActivityResponse2 = unknown;
-export const UnpauseActivityResponse2 =
+const UnpauseActivityResponse2 =
   DeleteScheduleResponse2 as any as S.Schema<UnpauseActivityResponse2>;
 
 export interface UnpauseActivityExecutionRequest {
@@ -11313,7 +11259,7 @@ export interface UnpauseActivityExecutionRequest {
   /** Resource ID for routing. Contains "workflow:{workflow_id}" for workflow activities or "activity:{activity_id}" for standalone activities. */
   resourceId?: string;
 }
-export const UnpauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -11337,7 +11283,7 @@ export const UnpauseActivityExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnpauseActivityExecutionRequest>;
 
 export type UnpauseActivityExecutionResponse2 = unknown;
-export const UnpauseActivityExecutionResponse2 =
+const UnpauseActivityExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UnpauseActivityExecutionResponse2>;
 
 export interface UnpauseWorkflowExecutionRequest {
@@ -11354,7 +11300,7 @@ export interface UnpauseWorkflowExecutionRequest {
   /** A unique identifier for this unpause request for idempotence. Typically UUIDv4. */
   requestId?: string;
 }
-export const UnpauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const UnpauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflowId: S.String.pipe(T.Label()),
@@ -11374,7 +11320,7 @@ export const UnpauseWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnpauseWorkflowExecutionRequest>;
 
 export type UnpauseWorkflowExecutionResponse2 = unknown;
-export const UnpauseWorkflowExecutionResponse2 =
+const UnpauseWorkflowExecutionResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UnpauseWorkflowExecutionResponse2>;
 
 export interface UpdateActivityExecutionOptionsRequest {
@@ -11397,7 +11343,7 @@ export interface UpdateActivityExecutionOptionsRequest {
   /** Resource ID for routing. Contains "workflow:{workflow_id}" for workflow activities or "activity:{activity_id}" for standalone activities. */
   resourceId?: string;
 }
-export const UpdateActivityExecutionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateActivityExecutionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     activityId: S.String.pipe(T.Label()),
@@ -11423,7 +11369,7 @@ export interface UpdateActivityExecutionOptionsResponse {
   /** Activity options after an update */
   activityOptions?: ActivityOptions;
 }
-export const UpdateActivityExecutionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateActivityExecutionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityOptions: S.optional(ActivityOptions),
   }),
@@ -11451,7 +11397,7 @@ export interface UpdateActivityOptionsRequest {
   /** If set, the activity options will be restored to the default. Default options are then options activity was created with. They are part of the first schedule event. This flag cannot be combined with any other option; if you supply restore_original together with other options, the request will be rejected. */
   restoreOriginal?: boolean;
 }
-export const UpdateActivityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateActivityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     execution: S.optional(WorkflowExecution),
@@ -11478,12 +11424,12 @@ export interface UpdateActivityOptionsResponse {
   /** Activity options after an update */
   activityOptions?: ActivityOptions;
 }
-export const UpdateActivityOptionsResponse =
+const UpdateActivityOptionsResponse =
   UpdateActivityExecutionOptionsResponse as any as S.Schema<UpdateActivityOptionsResponse>;
 
 /** A key-value map for any customized purpose. If data already exists on the namespace, this will merge with the existing key values. */
 export type UpdateNamespaceInfoDataMap = { [key: string]: string | undefined };
-export const UpdateNamespaceInfoDataMap =
+const UpdateNamespaceInfoDataMap =
   CallbackNexusHeaderMap as any as S.Schema<UpdateNamespaceInfoDataMap>;
 
 /** New namespace state, server will reject if transition is not allowed. Allowed transitions are: Registered -> [ Deleted | Deprecated | Handover ] Handover -> [ Registered ] Default is NAMESPACE_STATE_UNSPECIFIED which is do not change state. */
@@ -11492,7 +11438,7 @@ export type UpdateNamespaceInfoState =
   | "NAMESPACE_STATE_REGISTERED"
   | "NAMESPACE_STATE_DEPRECATED"
   | "NAMESPACE_STATE_DELETED";
-export const UpdateNamespaceInfoState = S.String;
+const UpdateNamespaceInfoState = S.String;
 
 export interface UpdateNamespaceInfo {
   description?: string;
@@ -11502,7 +11448,7 @@ export interface UpdateNamespaceInfo {
   /** New namespace state, server will reject if transition is not allowed. Allowed transitions are: Registered -> [ Deleted | Deprecated | Handover ] Handover -> [ Registered ] Default is NAMESPACE_STATE_UNSPECIFIED which is do not change state. */
   state?: UpdateNamespaceInfoState | (string & {});
 }
-export const UpdateNamespaceInfo = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     ownerEmail: S.optional(S.String),
@@ -11521,7 +11467,7 @@ export interface UpdateNamespaceRequest {
   /** promote local namespace to global namespace. Ignored if namespace is already global namespace. */
   promoteNamespace?: boolean;
 }
-export const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     updateInfo: S.optional(UpdateNamespaceInfo),
@@ -11540,7 +11486,7 @@ export interface UpdateNamespaceResponse {
   failoverVersion?: string;
   isGlobalNamespace?: boolean;
 }
-export const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespaceInfo: S.optional(NamespaceInfo),
     config: S.optional(NamespaceConfig),
@@ -11557,7 +11503,7 @@ export interface UpdateNexusEndpointRequest {
   version?: string;
   spec?: EndpointSpec;
 }
-export const UpdateNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNexusEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     version: S.optional(S.String),
@@ -11571,7 +11517,7 @@ export interface UpdateNexusEndpointResponse {
   /** Data post acceptance. Can be used to issue additional updates to this record. */
   endpoint?: Endpoint;
 }
-export const UpdateNexusEndpointResponse =
+const UpdateNexusEndpointResponse =
   CreateNexusEndpointResponse as any as S.Schema<UpdateNexusEndpointResponse>;
 
 export interface UpdateScheduleRequest {
@@ -11592,7 +11538,7 @@ export interface UpdateScheduleRequest {
   /** Schedule memo to replace. If set, replaces the entire memo. Do not set this field if you do not want to update the memo. A non-null empty object will clear the memo. */
   memo?: Memo;
 }
-export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     scheduleId: S.String.pipe(T.Label()),
@@ -11612,15 +11558,14 @@ export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateScheduleRequest" }) as any as S.Schema<UpdateScheduleRequest>;
 
 export type UpdateScheduleResponse2 = unknown;
-export const UpdateScheduleResponse2 =
-  DeleteScheduleResponse2 as any as S.Schema<UpdateScheduleResponse2>;
+const UpdateScheduleResponse2 = DeleteScheduleResponse2 as any as S.Schema<UpdateScheduleResponse2>;
 
 export type UpdateTaskQueueConfigRequestTaskQueueType =
   | "TASK_QUEUE_TYPE_UNSPECIFIED"
   | "TASK_QUEUE_TYPE_WORKFLOW"
   | "TASK_QUEUE_TYPE_ACTIVITY"
   | "TASK_QUEUE_TYPE_NEXUS";
-export const UpdateTaskQueueConfigRequestTaskQueueType = S.String;
+const UpdateTaskQueueConfigRequestTaskQueueType = S.String;
 
 export interface UpdateTaskQueueConfigRequestRateLimitUpdate {
   /** Rate Limit to be updated */
@@ -11628,7 +11573,7 @@ export interface UpdateTaskQueueConfigRequestRateLimitUpdate {
   /** Reason for why the rate limit was set. */
   reason?: string;
 }
-export const UpdateTaskQueueConfigRequestRateLimitUpdate = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskQueueConfigRequestRateLimitUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rateLimit: S.optional(RateLimit),
     reason: S.optional(S.String),
@@ -11641,12 +11586,12 @@ export const UpdateTaskQueueConfigRequestRateLimitUpdate = /*@__PURE__*/ S.suspe
 export type UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap = {
   [key: string]: number | undefined;
 };
-export const UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap =
+const UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap =
   TaskQueueConfigFairnessWeightOverridesMap as any as S.Schema<UpdateTaskQueueConfigRequestSetFairnessWeightOverridesMap>;
 
 /** If set, removes any existing fairness weight overrides for each specified fairness key. Fairness weights for corresponding keys fall back to the values set during task creation (if any), or to the default weight of 1.0. */
 export type UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList = Array<string>;
-export const UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList =
+const UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList =
   ScheduleSpecCronStringList as any as S.Schema<UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList>;
 
 export interface UpdateTaskQueueConfigRequest {
@@ -11664,7 +11609,7 @@ export interface UpdateTaskQueueConfigRequest {
   /** If set, removes any existing fairness weight overrides for each specified fairness key. Fairness weights for corresponding keys fall back to the values set during task creation (if any), or to the default weight of 1.0. */
   unsetFairnessWeightOverrides?: UpdateTaskQueueConfigRequestUnsetFairnessWeightOverridesList;
 }
-export const UpdateTaskQueueConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskQueueConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     taskQueue: S.String.pipe(T.Label()),
@@ -11692,7 +11637,7 @@ export const UpdateTaskQueueConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTaskQueueConfigResponse {
   config?: TaskQueueConfig;
 }
-export const UpdateTaskQueueConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateTaskQueueConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(TaskQueueConfig),
   }),
@@ -11716,7 +11661,7 @@ export interface UpdateWorkerConfigRequest {
   /** Resource ID for routing. Contains the worker grouping key. */
   resourceId?: string;
 }
-export const UpdateWorkerConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkerConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     identity: S.optional(S.String),
@@ -11740,7 +11685,7 @@ export interface UpdateWorkerConfigResponse {
   /** The worker configuration. Will be returned if the command was sent to a single worker. */
   workerConfig?: WorkerConfig;
 }
-export const UpdateWorkerConfigResponse =
+const UpdateWorkerConfigResponse =
   FetchWorkerConfigResponse as any as S.Schema<UpdateWorkerConfigResponse>;
 
 export interface ComputeConfigScalingGroupUpdate {
@@ -11748,7 +11693,7 @@ export interface ComputeConfigScalingGroupUpdate {
   /** Controls which fields from `scaling_group` will be applied. Semantics: - Mask is ignored for new scaling groups (only applicable when scaling group already exists). - Empty mask for an existing scaling group is no-op: no change. - Non-empty mask for an existing scaling group will update/unset only to the fields mentioned in the mask. - Accepted paths: "task_queue_types", "provider", "provider.type", "provider.details", "provider.nexus_endpoint", "scaler", "scaler.type", "scaler.details" */
   updateMask?: string;
 }
-export const ComputeConfigScalingGroupUpdate = /*@__PURE__*/ S.suspend(() =>
+const ComputeConfigScalingGroupUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scalingGroup: S.optional(ComputeConfigScalingGroup),
     updateMask: S.optional(S.String),
@@ -11761,7 +11706,7 @@ export const ComputeConfigScalingGroupUpdate = /*@__PURE__*/ S.suspend(() =>
 export type UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap = {
   [key: string]: ComputeConfigScalingGroupUpdate | undefined;
 };
-export const UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap =
+const UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     ComputeConfigScalingGroupUpdate,
@@ -11770,7 +11715,7 @@ export const UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScali
 /** Optional. Contains the compute config scaling groups to remove from the Worker Deployment. */
 export type UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
   Array<string>;
-export const UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
+const UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList>;
@@ -11790,7 +11735,7 @@ export interface UpdateWorkerDeploymentVersionComputeConfigRequest {
   /** A unique identifier for this create request for idempotence. Typically UUIDv4. If a second request with the same ID is recieved, it is considered a successful no-op. Retrying with a different request ID for the same deployment name + build ID is an error. */
   requestId?: string;
 }
-export const UpdateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -11816,18 +11761,18 @@ export const UpdateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S
 }) as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigRequest>;
 
 export type UpdateWorkerDeploymentVersionComputeConfigResponse2 = unknown;
-export const UpdateWorkerDeploymentVersionComputeConfigResponse2 =
+const UpdateWorkerDeploymentVersionComputeConfigResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<UpdateWorkerDeploymentVersionComputeConfigResponse2>;
 
 export type UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap = {
   [key: string]: unknown | undefined;
 };
-export const UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap =
+const UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap =
   MemoFieldsMap as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestUpsertEntriesMap>;
 
 /** List of keys to remove from the metadata. */
 export type UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList = Array<string>;
-export const UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList =
+const UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList =
   ScheduleSpecCronStringList as any as S.Schema<UpdateWorkerDeploymentVersionMetadataRequestRemoveEntriesList>;
 
 export interface UpdateWorkerDeploymentVersionMetadataRequest {
@@ -11844,7 +11789,7 @@ export interface UpdateWorkerDeploymentVersionMetadataRequest {
   /** Optional. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const UpdateWorkerDeploymentVersionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkerDeploymentVersionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -11869,7 +11814,7 @@ export interface UpdateWorkerDeploymentVersionMetadataResponse {
   /** Full metadata after performing the update. */
   metadata?: VersionMetadata;
 }
-export const UpdateWorkerDeploymentVersionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkerDeploymentVersionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(VersionMetadata),
   }),
@@ -11883,14 +11828,14 @@ export type WaitPolicyLifecycleStage =
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ADMITTED"
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ACCEPTED"
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_COMPLETED";
-export const WaitPolicyLifecycleStage = S.String;
+const WaitPolicyLifecycleStage = S.String;
 
 /** Specifies client's intent to wait for Update results. */
 export interface WaitPolicy {
   /** Indicates the Update lifecycle stage that the Update must reach before API call is returned. NOTE: This field works together with API call timeout which is limited by server timeout (maximum wait time). If server timeout is expired before user specified timeout, API call returns even if specified stage is not reached. */
   lifecycleStage?: WaitPolicyLifecycleStage | (string & {});
 }
-export const WaitPolicy = /*@__PURE__*/ S.suspend(() =>
+const WaitPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycleStage: S.optional(WaitPolicyLifecycleStage),
   }),
@@ -11910,7 +11855,7 @@ export interface UpdateWorkflowExecutionRequest {
   /** The request information that will be delivered all the way down to the Workflow Execution. */
   request?: Request;
 }
-export const UpdateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -11935,7 +11880,7 @@ export interface UpdateRef {
   workflowExecution?: WorkflowExecution;
   updateId?: string;
 }
-export const UpdateRef = /*@__PURE__*/ S.suspend(() =>
+const UpdateRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowExecution: S.optional(WorkflowExecution),
     updateId: S.optional(S.String),
@@ -11948,7 +11893,7 @@ export type UpdateWorkflowExecutionResponseStage =
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ADMITTED"
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ACCEPTED"
   | "UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_COMPLETED";
-export const UpdateWorkflowExecutionResponseStage = S.String;
+const UpdateWorkflowExecutionResponseStage = S.String;
 
 export interface UpdateWorkflowExecutionResponse {
   /** Enough information for subsequent poll calls if needed. Never null. */
@@ -11958,7 +11903,7 @@ export interface UpdateWorkflowExecutionResponse {
   /** The most advanced lifecycle stage that the Update is known to have reached, where lifecycle stages are ordered UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_UNSPECIFIED < UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ADMITTED < UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_ACCEPTED < UPDATE_WORKFLOW_EXECUTION_LIFECYCLE_STAGE_COMPLETED. UNSPECIFIED will be returned if and only if the server's maximum wait time was reached before the Update reached the stage specified in the request WaitPolicy, and before the context deadline expired; clients may may then retry the call as needed. */
   stage?: UpdateWorkflowExecutionResponseStage;
 }
-export const UpdateWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowExecutionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateRef: S.optional(UpdateRef),
     outcome: S.optional(Outcome),
@@ -11981,7 +11926,7 @@ export interface UpdateWorkflowExecutionOptionsRequest {
   /** Optional. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const UpdateWorkflowExecutionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowExecutionOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     workflow_execution_workflow_id: S.String.pipe(T.Label()),
@@ -12004,7 +11949,7 @@ export interface UpdateWorkflowExecutionOptionsResponse {
   /** Workflow Execution options after update. */
   workflowExecutionOptions?: WorkflowExecutionOptions;
 }
-export const UpdateWorkflowExecutionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowExecutionOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowExecutionOptions: S.optional(WorkflowExecutionOptions),
   }),
@@ -12016,13 +11961,13 @@ export const UpdateWorkflowExecutionOptionsResponse = /*@__PURE__*/ S.suspend(()
 export type ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap = {
   [key: string]: ComputeConfigScalingGroupUpdate | undefined;
 };
-export const ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap =
+const ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap =
   UpdateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestComputeConfigScalingGroupsMap>;
 
 /** Optional. Contains the compute config scaling groups to remove from the Worker Deployment. */
 export type ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
   Array<string>;
-export const ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
+const ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList =
   UpdateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequestRemoveComputeConfigScalingGroupsList>;
 
 export interface ValidateWorkerDeploymentVersionComputeConfigRequest {
@@ -12038,7 +11983,7 @@ export interface ValidateWorkerDeploymentVersionComputeConfigRequest {
   /** Optional. The identity of the client who initiated this request. */
   identity?: string;
 }
-export const ValidateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     deployment_version_deployment_name: S.String.pipe(T.Label()),
@@ -12063,7 +12008,7 @@ export const ValidateWorkerDeploymentVersionComputeConfigRequest = /*@__PURE__*/
 }) as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigRequest>;
 
 export type ValidateWorkerDeploymentVersionComputeConfigResponse2 = unknown;
-export const ValidateWorkerDeploymentVersionComputeConfigResponse2 =
+const ValidateWorkerDeploymentVersionComputeConfigResponse2 =
   CreateWorkerDeploymentVersionResponse2 as any as S.Schema<ValidateWorkerDeploymentVersionComputeConfigResponse2>;
 
 export type CountActivityExecutionsError = TemporalOpError;

@@ -66,7 +66,7 @@ export interface ApproveApprovalRequestMessage {
   /** The expiration time of this approval. */
   expireTime?: string;
 }
-export const ApproveApprovalRequestMessage = /*@__PURE__*/ S.suspend(() =>
+const ApproveApprovalRequestMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
   }),
@@ -80,7 +80,7 @@ export interface ApproveFoldersApprovalRequestsRequest {
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-export const ApproveFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
@@ -102,7 +102,7 @@ export interface DismissDecision {
   /** This field will be true if the ApprovalRequest was implicitly dismissed due to inaction by the access approval approvers (the request is not acted on by the approvers before the exiration time). */
   implicit?: boolean;
 }
-export const DismissDecision = /*@__PURE__*/ S.suspend(() =>
+const DismissDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dismissTime: S.optional(S.String),
     implicit: S.optional(S.Boolean),
@@ -117,7 +117,7 @@ export type AccessReasonTypeEnum =
   | "THIRD_PARTY_DATA_REQUEST"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
   | "CLOUD_INITIATED_ACCESS";
-export const AccessReasonTypeEnum = S.String;
+const AccessReasonTypeEnum = S.String;
 
 export interface AccessReason {
   /** More detail about certain reason types. See comments for each type above. */
@@ -125,7 +125,7 @@ export interface AccessReason {
   /** Type of access reason. */
   type?: AccessReasonTypeEnum;
 }
-export const AccessReason = /*@__PURE__*/ S.suspend(() =>
+const AccessReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detail: S.optional(S.String),
     type: S.optional(AccessReasonTypeEnum),
@@ -139,7 +139,7 @@ export interface AccessLocations {
   /** Physical location of the Google administrator at the time of the access. A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location */
   principalPhysicalLocationCountry?: string;
 }
-export const AccessLocations = /*@__PURE__*/ S.suspend(() =>
+const AccessLocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalOfficeCountry: S.optional(S.String),
     principalPhysicalLocationCountry: S.optional(S.String),
@@ -197,7 +197,7 @@ export type SignatureInfoGoogleKeyAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-export const SignatureInfoGoogleKeyAlgorithmEnum = S.String;
+const SignatureInfoGoogleKeyAlgorithmEnum = S.String;
 
 /** Information about the digital signature of the resource. */
 export interface SignatureInfo {
@@ -212,7 +212,7 @@ export interface SignatureInfo {
   /** The resource name of the customer CryptoKeyVersion used for signing. */
   customerKmsKeyVersion?: string;
 }
-export const SignatureInfo = /*@__PURE__*/ S.suspend(() =>
+const SignatureInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleKeyAlgorithm: S.optional(SignatureInfoGoogleKeyAlgorithmEnum),
     googlePublicKeyPem: S.optional(S.String),
@@ -237,7 +237,7 @@ export interface ApproveDecision {
   /** True when the request has been approved by the customer's defined policy. */
   policyApproved?: boolean;
 }
-export const ApproveDecision = /*@__PURE__*/ S.suspend(() =>
+const ApproveDecision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approveTime: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -253,7 +253,7 @@ export interface AugmentedInfo {
   /** For command-line tools, the full command-line exactly as entered by the actor without adding any additional characters (such as quotation marks). */
   command?: string;
 }
-export const AugmentedInfo = /*@__PURE__*/ S.suspend(() =>
+const AugmentedInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     command: S.optional(S.String),
   }),
@@ -264,7 +264,7 @@ export interface ResourceProperties {
   /** Whether an approval will exclude the descendants of the resource being requested. */
   excludesDescendants?: boolean;
 }
-export const ResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludesDescendants: S.optional(S.Boolean),
   }),
@@ -295,7 +295,7 @@ export interface ApprovalRequest {
   /** The requested access duration. */
   requestedDuration?: string;
 }
-export const ApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const ApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dismiss: S.optional(DismissDecision),
     requestedReason: S.optional(AccessReason),
@@ -317,7 +317,7 @@ export interface ApproveOrganizationsApprovalRequestsRequest {
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-export const ApproveOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
@@ -338,7 +338,7 @@ export interface ApproveProjectsApprovalRequestsRequest {
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-export const ApproveProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
@@ -357,7 +357,7 @@ export interface DeleteAccessApprovalSettingsFoldersRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-export const DeleteAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -373,7 +373,7 @@ export const DeleteAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspen
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -381,7 +381,7 @@ export interface DeleteAccessApprovalSettingsOrganizationsRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-export const DeleteAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -399,7 +399,7 @@ export interface DeleteAccessApprovalSettingsProjectsRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-export const DeleteAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -415,8 +415,7 @@ export const DeleteAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspe
 
 /** Request to dismiss an approval request. */
 export interface DismissApprovalRequestMessage {}
-export const DismissApprovalRequestMessage =
-  Empty as any as S.Schema<DismissApprovalRequestMessage>;
+const DismissApprovalRequestMessage = Empty as any as S.Schema<DismissApprovalRequestMessage>;
 
 export interface DismissFoldersApprovalRequestsRequest {
   /** Name of the ApprovalRequest to dismiss. */
@@ -424,7 +423,7 @@ export interface DismissFoldersApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const DismissFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -445,7 +444,7 @@ export interface DismissOrganizationsApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const DismissOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -466,7 +465,7 @@ export interface DismissProjectsApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const DismissProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const DismissProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -485,7 +484,7 @@ export interface GetAccessApprovalSettingsFoldersRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-export const GetAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -496,10 +495,10 @@ export const GetAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<GetAccessApprovalSettingsFoldersRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type EnrolledServiceEnrollmentLevelEnum = "ENROLLMENT_LEVEL_UNSPECIFIED" | "BLOCK_ALL";
-export const EnrolledServiceEnrollmentLevelEnum = S.String;
+const EnrolledServiceEnrollmentLevelEnum = S.String;
 
 /** Represents the enrollment of a cloud resource into a specific service. */
 export interface EnrolledService {
@@ -508,7 +507,7 @@ export interface EnrolledService {
   /** The enrollment level of the service. */
   enrollmentLevel?: EnrolledServiceEnrollmentLevelEnum | (string & {});
 }
-export const EnrolledService = /*@__PURE__*/ S.suspend(() =>
+const EnrolledService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudProduct: S.optional(S.String),
     enrollmentLevel: S.optional(EnrolledServiceEnrollmentLevelEnum),
@@ -516,7 +515,7 @@ export const EnrolledService = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnrolledService" }) as any as S.Schema<EnrolledService>;
 
 export type EnrolledServiceList = Array<EnrolledService>;
-export const EnrolledServiceList = /*@__PURE__*/ S.Array(
+const EnrolledServiceList = /*@__PURE__*/ S.Array(
   EnrolledService,
 ) as any as S.Schema<EnrolledServiceList>;
 
@@ -525,7 +524,7 @@ export type AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   | "ORGANIZATION"
   | "FOLDER"
   | "PROJECT";
-export const AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum = S.String;
+const AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum = S.String;
 
 export type CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
   | "JUSTIFICATION_BASED_APPROVAL_POLICY_UNSPECIFIED"
@@ -533,7 +532,7 @@ export type CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
   | "JUSTIFICATION_BASED_APPROVAL_ENABLED_EXTERNAL_JUSTIFICATIONS"
   | "JUSTIFICATION_BASED_APPROVAL_NOT_ENABLED"
   | "JUSTIFICATION_BASED_APPROVAL_INHERITED";
-export const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum = S.String;
+const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum = S.String;
 
 /** Represents all the policies that can be set for Customer Approval. */
 export interface CustomerApprovalApprovalPolicy {
@@ -542,7 +541,7 @@ export interface CustomerApprovalApprovalPolicy {
     | CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum
     | (string & {});
 }
-export const CustomerApprovalApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
+const CustomerApprovalApprovalPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     justificationBasedApprovalPolicy: S.optional(
       CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum,
@@ -587,7 +586,7 @@ export interface AccessApprovalSettings {
   /** Optional. Policy configuration for Access Approval that sets the operating mode. The available policies are Transparency, Streamlined Support, and Approval Required. */
   approvalPolicy?: CustomerApprovalApprovalPolicy;
 }
-export const AccessApprovalSettings = /*@__PURE__*/ S.suspend(() =>
+const AccessApprovalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferNoBroadApprovalRequests: S.optional(S.Boolean),
     notificationEmails: S.optional(StringList),
@@ -613,7 +612,7 @@ export interface GetAccessApprovalSettingsOrganizationsRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-export const GetAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -627,7 +626,7 @@ export interface GetAccessApprovalSettingsProjectsRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-export const GetAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -641,7 +640,7 @@ export interface GetFoldersApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-export const GetFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -655,7 +654,7 @@ export interface GetOrganizationsApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-export const GetOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -669,7 +668,7 @@ export interface GetProjectsApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-export const GetProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -683,7 +682,7 @@ export interface GetServiceAccountFoldersRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-export const GetServiceAccountFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -700,7 +699,7 @@ export interface AccessApprovalServiceAccount {
   /** Email address of the service account. */
   accountEmail?: string;
 }
-export const AccessApprovalServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const AccessApprovalServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     accountEmail: S.optional(S.String),
@@ -713,7 +712,7 @@ export interface GetServiceAccountOrganizationsRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-export const GetServiceAccountOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -727,7 +726,7 @@ export interface GetServiceAccountProjectsRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-export const GetServiceAccountProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -739,15 +738,13 @@ export const GetServiceAccountProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request to invalidate an existing approval. */
 export type InvalidateApprovalRequestMessage = DismissApprovalRequestMessage;
-export const InvalidateApprovalRequestMessage = DismissApprovalRequestMessage;
-
 export interface InvalidateFoldersApprovalRequestsRequest {
   /** Name of the ApprovalRequest to invalidate. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const InvalidateFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -768,7 +765,7 @@ export interface InvalidateOrganizationsApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const InvalidateOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -789,7 +786,7 @@ export interface InvalidateProjectsApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-export const InvalidateProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const InvalidateProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
@@ -814,7 +811,7 @@ export interface ListFoldersApprovalRequestsRequest {
   /** Requested page size. */
   pageSize?: number;
 }
-export const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -832,7 +829,7 @@ export const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFoldersApprovalRequestsRequest>;
 
 export type ApprovalRequestList = Array<ApprovalRequest>;
-export const ApprovalRequestList = /*@__PURE__*/ S.Array(
+const ApprovalRequestList = /*@__PURE__*/ S.Array(
   ApprovalRequest,
 ) as any as S.Schema<ApprovalRequestList>;
 
@@ -843,7 +840,7 @@ export interface ListApprovalRequestsResponse {
   /** Approval request details. */
   approvalRequests?: ApprovalRequestList;
 }
-export const ListApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApprovalRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     approvalRequests: S.optional(ApprovalRequestList),
@@ -862,7 +859,7 @@ export interface ListOrganizationsApprovalRequestsRequest {
   /** Requested page size. */
   pageSize?: number;
 }
-export const ListOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -889,7 +886,7 @@ export interface ListProjectsApprovalRequestsRequest {
   /** The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". */
   parent: string;
 }
-export const ListProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsApprovalRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -914,7 +911,7 @@ export interface UpdateAccessApprovalSettingsFoldersRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-export const UpdateAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -938,7 +935,7 @@ export interface UpdateAccessApprovalSettingsOrganizationsRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-export const UpdateAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -962,7 +959,7 @@ export interface UpdateAccessApprovalSettingsProjectsRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-export const UpdateAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

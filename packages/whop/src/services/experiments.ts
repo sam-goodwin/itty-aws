@@ -46,7 +46,7 @@ export interface ActivateExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ActivateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -59,17 +59,17 @@ export const ActivateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Randomization unit -- `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
 export type ExperimentBucketBy = "user" | "account" | "anonymous";
-export const ExperimentBucketBy = S.String;
+const ExperimentBucketBy = S.String;
 
 export type ExperimentResourceReferenceObject = "app" | "app_build" | "product" | "plan";
-export const ExperimentResourceReferenceObject = S.String;
+const ExperimentResourceReferenceObject = S.String;
 
 export interface ExperimentResourceReference {
   /** Referenced resource tag, belonging to the experiment owner. */
   id: string;
   object: ExperimentResourceReferenceObject | (string & {});
 }
-export const ExperimentResourceReference = /*@__PURE__*/ S.suspend(() =>
+const ExperimentResourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     object: ExperimentResourceReferenceObject,
@@ -81,7 +81,7 @@ export const ExperimentResourceReference = /*@__PURE__*/ S.suspend(() =>
 export interface ExperimentControl {
   related_resource?: ExperimentResourceReference | null;
 }
-export const ExperimentControl = /*@__PURE__*/ S.suspend(() =>
+const ExperimentControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
   }),
@@ -89,7 +89,7 @@ export const ExperimentControl = /*@__PURE__*/ S.suspend(() =>
 
 /** Lifecycle state. `draft` -- not yet live; `active` -- currently running; `paused` -- traffic paused; `ended` -- concluded. */
 export type ExperimentStatus = "draft" | "active" | "paused" | "ended";
-export const ExperimentStatus = S.String;
+const ExperimentStatus = S.String;
 
 /** Comparison to apply. */
 export type ExperimentTargetingRulesItemConditionsItemOperator =
@@ -101,11 +101,11 @@ export type ExperimentTargetingRulesItemConditionsItemOperator =
   | "gte"
   | "lt"
   | "lte";
-export const ExperimentTargetingRulesItemConditionsItemOperator = S.String;
+const ExperimentTargetingRulesItemConditionsItemOperator = S.String;
 
 /** What the condition matches on: the user ID, the account ID, or a named user property. */
 export type ExperimentTargetingRulesItemConditionsItemType = "user_id" | "account_id" | "property";
-export const ExperimentTargetingRulesItemConditionsItemType = S.String;
+const ExperimentTargetingRulesItemConditionsItemType = S.String;
 
 export interface ExperimentTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Present when `type` is `property`. */
@@ -117,7 +117,7 @@ export interface ExperimentTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. */
   value: unknown;
 }
-export const ExperimentTargetingRulesItemConditionsItem = /*@__PURE__*/ S.suspend(() =>
+const ExperimentTargetingRulesItemConditionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.NullOr(S.String)),
     operator: ExperimentTargetingRulesItemConditionsItemOperator,
@@ -131,13 +131,13 @@ export const ExperimentTargetingRulesItemConditionsItem = /*@__PURE__*/ S.suspen
 /** Conditions within this rule, all of which must match. */
 export type ExperimentTargetingRulesItemConditionsList =
   Array<ExperimentTargetingRulesItemConditionsItem>;
-export const ExperimentTargetingRulesItemConditionsList = /*@__PURE__*/ S.Array(
+const ExperimentTargetingRulesItemConditionsList = /*@__PURE__*/ S.Array(
   ExperimentTargetingRulesItemConditionsItem,
 ) as any as S.Schema<ExperimentTargetingRulesItemConditionsList>;
 
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
 export type ExperimentTargetingRulesItemType = "include" | "exclude";
-export const ExperimentTargetingRulesItemType = S.String;
+const ExperimentTargetingRulesItemType = S.String;
 
 export interface ExperimentTargetingRulesItem {
   /** Conditions within this rule, all of which must match. */
@@ -145,7 +145,7 @@ export interface ExperimentTargetingRulesItem {
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
   type?: ExperimentTargetingRulesItemType;
 }
-export const ExperimentTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
+const ExperimentTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditions: ExperimentTargetingRulesItemConditionsList,
     type: S.optional(ExperimentTargetingRulesItemType),
@@ -156,18 +156,18 @@ export const ExperimentTargetingRulesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules gating who is in the experiment at all. Conditions within a rule are AND-ed, rules are OR-ed, and `exclude` rules always win. Empty means everyone qualifies. */
 export type ExperimentTargetingRulesList = Array<ExperimentTargetingRulesItem>;
-export const ExperimentTargetingRulesList = /*@__PURE__*/ S.Array(
+const ExperimentTargetingRulesList = /*@__PURE__*/ S.Array(
   ExperimentTargetingRulesItem,
 ) as any as S.Schema<ExperimentTargetingRulesList>;
 
 export type ExperimentVariantsItemRangesItemList = Array<number>;
-export const ExperimentVariantsItemRangesItemList = /*@__PURE__*/ S.Array(
+const ExperimentVariantsItemRangesItemList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ExperimentVariantsItemRangesItemList>;
 
 /** Granted bucket ranges (1% units, end-exclusive) recording this arm's allocation history. Server-managed; ranges are only ever appended, which is what keeps assignments permanent. */
 export type ExperimentVariantsItemRangesList = Array<ExperimentVariantsItemRangesItemList>;
-export const ExperimentVariantsItemRangesList = /*@__PURE__*/ S.Array(
+const ExperimentVariantsItemRangesList = /*@__PURE__*/ S.Array(
   ExperimentVariantsItemRangesItemList,
 ) as any as S.Schema<ExperimentVariantsItemRangesList>;
 
@@ -180,7 +180,7 @@ export interface ExperimentVariantsItem {
   /** Percentage of all users assigned to this treatment, 1-100. All weights together sum to at most 100; the remainder is control. */
   weight: number;
 }
-export const ExperimentVariantsItem = /*@__PURE__*/ S.suspend(() =>
+const ExperimentVariantsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ranges: S.optional(ExperimentVariantsItemRangesList),
@@ -191,7 +191,7 @@ export const ExperimentVariantsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Treatment arms. Users outside every arm's allocation form the implicit `control` group. Weights only ever grow and arms are never removed, so a user moves from control into a treatment at most once. */
 export type ExperimentVariantsList = Array<ExperimentVariantsItem>;
-export const ExperimentVariantsList = /*@__PURE__*/ S.Array(
+const ExperimentVariantsList = /*@__PURE__*/ S.Array(
   ExperimentVariantsItem,
 ) as any as S.Schema<ExperimentVariantsList>;
 
@@ -236,7 +236,7 @@ export interface Experiment {
   /** The treatment that won, set when the experiment was ended. Once set, every evaluation returns this arm to every caller regardless of targeting or allocation, and no further exposures are recorded. `null` means control won -- an ended experiment with no winning arm evaluates to `control` for everyone. Always `null` for feature flags, which simply evaluate to disabled once ended. */
   winning_arm?: string | null;
 }
-export const Experiment = /*@__PURE__*/ S.suspend(() =>
+const Experiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     assignment_seed: S.String,
@@ -264,11 +264,9 @@ export const Experiment = /*@__PURE__*/ S.suspend(() =>
 
 /** Randomization unit, and the only identity the assignment is keyed on -- evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
 export type CreateExperimentRequestBucketBy = "user" | "account" | "anonymous";
-export const CreateExperimentRequestBucketBy = S.String;
+const CreateExperimentRequestBucketBy = S.String;
 
 export type CreateExperimentRequestControl = ExperimentControl;
-export const CreateExperimentRequestControl = ExperimentControl;
-
 /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type CreateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "any"
@@ -279,15 +277,11 @@ export type CreateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "gte"
   | "lt"
   | "lte";
-export const CreateExperimentRequestTargetingRulesItemConditionsItemOperator = S.String;
-
 /** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
 export type CreateExperimentRequestTargetingRulesItemConditionsItemType =
   | "user_id"
   | "account_id"
   | "property";
-export const CreateExperimentRequestTargetingRulesItemConditionsItemType = S.String;
-
 export interface CreateExperimentRequestTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Required when `type` is `property`. */
   field?: string | null;
@@ -298,32 +292,21 @@ export interface CreateExperimentRequestTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
 }
-export const CreateExperimentRequestTargetingRulesItemConditionsItem =
-  ExperimentTargetingRulesItemConditionsItem as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsItem>;
-
 /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
 export type CreateExperimentRequestTargetingRulesItemConditionsList =
   Array<CreateExperimentRequestTargetingRulesItemConditionsItem>;
-export const CreateExperimentRequestTargetingRulesItemConditionsList =
-  ExperimentTargetingRulesItemConditionsList as any as S.Schema<CreateExperimentRequestTargetingRulesItemConditionsList>;
-
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type CreateExperimentRequestTargetingRulesItemType = "include" | "exclude";
-export const CreateExperimentRequestTargetingRulesItemType = S.String;
-
 export interface CreateExperimentRequestTargetingRulesItem {
   /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
   conditions: CreateExperimentRequestTargetingRulesItemConditionsList;
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: CreateExperimentRequestTargetingRulesItemType | (string & {});
 }
-export const CreateExperimentRequestTargetingRulesItem =
-  ExperimentTargetingRulesItem as any as S.Schema<CreateExperimentRequestTargetingRulesItem>;
-
 /** Rules that determine which subjects qualify for the experiment. */
 export type CreateExperimentRequestTargetingRulesList =
   Array<CreateExperimentRequestTargetingRulesItem>;
-export const CreateExperimentRequestTargetingRulesList =
+const CreateExperimentRequestTargetingRulesList =
   ExperimentTargetingRulesList as any as S.Schema<CreateExperimentRequestTargetingRulesList>;
 
 export interface CreateExperimentRequestVariantsItem {
@@ -333,7 +316,7 @@ export interface CreateExperimentRequestVariantsItem {
   /** Percentage of all subjects assigned to this treatment. The remainder is control. */
   weight: number;
 }
-export const CreateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
@@ -345,7 +328,7 @@ export const CreateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Treatment arms to create. Users outside every arm form the implicit `control` group. Required unless `feature_flag_only` is `true`. */
 export type CreateExperimentRequestVariantsList = Array<CreateExperimentRequestVariantsItem>;
-export const CreateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
+const CreateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
   CreateExperimentRequestVariantsItem,
 ) as any as S.Schema<CreateExperimentRequestVariantsList>;
 
@@ -371,7 +354,7 @@ export interface CreateExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     bucket_by: S.optional(CreateExperimentRequestBucketBy),
@@ -399,7 +382,7 @@ export interface EndExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const EndExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const EndExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -414,7 +397,7 @@ export interface EvaluateExperimentExposuresRequestSubject {
   anonymous_id?: string;
   user_id?: string;
 }
-export const EvaluateExperimentExposuresRequestSubject = /*@__PURE__*/ S.suspend(() =>
+const EvaluateExperimentExposuresRequestSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     anonymous_id: S.optional(S.String),
@@ -438,7 +421,7 @@ export interface EvaluateExperimentExposuresRequest {
   /** Set false to evaluate without recording an exposure. Omitted records it. */
   log_exposure?: boolean;
 }
-export const EvaluateExperimentExposuresRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateExperimentExposuresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: S.optional(EvaluateExperimentExposuresRequestSubject.pipe(T.Query())),
     related_resource: S.optional(ExperimentResourceReference.pipe(T.Query())),
@@ -463,38 +446,16 @@ export interface ExperimentExposure {
   /** Treatment name, control, or null for an inactive flag or excluded subject. */
   variant: string | null;
 }
-export const ExperimentExposure = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configuration_revision: S.optional(S.Number),
-    enabled: S.Boolean,
-    experiment_id: S.optional(S.String),
-    flag_key: S.optional(S.String),
-    related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
-    variant: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "ExperimentExposure" }) as any as S.Schema<ExperimentExposure>;
-
 export type ExperimentExposureBatchExposuresMap = { [key: string]: ExperimentExposure | undefined };
-export const ExperimentExposureBatchExposuresMap = /*@__PURE__*/ S.Record(
-  S.String,
-  ExperimentExposure,
-) as any as S.Schema<ExperimentExposureBatchExposuresMap>;
-
 export interface ExperimentExposureBatch {
   exposures: ExperimentExposureBatchExposuresMap;
 }
-export const ExperimentExposureBatch = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exposures: ExperimentExposureBatchExposuresMap,
-  }),
-).annotate({ identifier: "ExperimentExposureBatch" }) as any as S.Schema<ExperimentExposureBatch>;
-
 export type EvaluateExperimentExposuresResponseBody = ExperimentExposure | ExperimentExposureBatch;
-export const EvaluateExperimentExposuresResponseBody =
+const EvaluateExperimentExposuresResponseBody =
   S.Unknown as any as S.Schema<EvaluateExperimentExposuresResponseBody>;
 
 export type EvaluateExperimentExposuresResponse = EvaluateExperimentExposuresResponseBody;
-export const EvaluateExperimentExposuresResponse = /*@__PURE__*/ S.suspend(() =>
+const EvaluateExperimentExposuresResponse = /*@__PURE__*/ S.suspend(() =>
   EvaluateExperimentExposuresResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "EvaluateExperimentExposuresResponse",
@@ -506,7 +467,7 @@ export interface GetExperimentRequest {
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
 }
-export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -514,13 +475,13 @@ export const GetExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetExperimentRequest" }) as any as S.Schema<GetExperimentRequest>;
 
 export type ListExperimentsRequestStatus = "draft" | "active" | "paused" | "ended";
-export const ListExperimentsRequestStatus = S.String;
+const ListExperimentsRequestStatus = S.String;
 
 export type ListExperimentsRequestOrder = "created_at" | "flag_key";
-export const ListExperimentsRequestOrder = S.String;
+const ListExperimentsRequestOrder = S.String;
 
 export type ListExperimentsRequestDirection = "asc" | "desc";
-export const ListExperimentsRequestDirection = S.String;
+const ListExperimentsRequestDirection = S.String;
 
 export interface ListExperimentsRequest {
   /** Owning account ID. Omit or pass internal for Whop internal experiments; internal access is required. */
@@ -542,7 +503,7 @@ export interface ListExperimentsRequest {
   /** Sort direction. */
   direction?: ListExperimentsRequestDirection | (string & {});
 }
-export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     related_resource: S.optional(ExperimentResourceReference.pipe(T.Query())),
@@ -557,7 +518,7 @@ export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExperimentsRequest" }) as any as S.Schema<ListExperimentsRequest>;
 
 export type ListExperimentsResponseDataList = Array<Experiment>;
-export const ListExperimentsResponseDataList = /*@__PURE__*/ S.Array(
+const ListExperimentsResponseDataList = /*@__PURE__*/ S.Array(
   Experiment,
 ) as any as S.Schema<ListExperimentsResponseDataList>;
 
@@ -567,7 +528,7 @@ export interface ListExperimentsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListExperimentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -582,7 +543,7 @@ export interface ListExperimentsResponse {
   data: ListExperimentsResponseDataList;
   page_info: ListExperimentsResponsePageInfo;
 }
-export const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExperimentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListExperimentsResponseDataList,
     page_info: ListExperimentsResponsePageInfo,
@@ -597,7 +558,7 @@ export interface PauseExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const PauseExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -606,8 +567,6 @@ export const PauseExperimentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PauseExperimentRequest" }) as any as S.Schema<PauseExperimentRequest>;
 
 export type UpdateExperimentRequestControl = ExperimentControl;
-export const UpdateExperimentRequestControl = ExperimentControl;
-
 /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type UpdateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "any"
@@ -618,15 +577,11 @@ export type UpdateExperimentRequestTargetingRulesItemConditionsItemOperator =
   | "gte"
   | "lt"
   | "lte";
-export const UpdateExperimentRequestTargetingRulesItemConditionsItemOperator = S.String;
-
 /** `user_id` -- match on subject user ID; `account_id` -- match on account ID (prefixed `biz_`); `property` -- match on a named user property (requires `field`). */
 export type UpdateExperimentRequestTargetingRulesItemConditionsItemType =
   | "user_id"
   | "account_id"
   | "property";
-export const UpdateExperimentRequestTargetingRulesItemConditionsItemType = S.String;
-
 export interface UpdateExperimentRequestTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Required when `type` is `property`. */
   field?: string | null;
@@ -637,32 +592,21 @@ export interface UpdateExperimentRequestTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. Pass an array for `any`/`none`, a scalar for the others. */
   value: unknown;
 }
-export const UpdateExperimentRequestTargetingRulesItemConditionsItem =
-  ExperimentTargetingRulesItemConditionsItem as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsItem>;
-
 /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
 export type UpdateExperimentRequestTargetingRulesItemConditionsList =
   Array<UpdateExperimentRequestTargetingRulesItemConditionsItem>;
-export const UpdateExperimentRequestTargetingRulesItemConditionsList =
-  ExperimentTargetingRulesItemConditionsList as any as S.Schema<UpdateExperimentRequestTargetingRulesItemConditionsList>;
-
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
 export type UpdateExperimentRequestTargetingRulesItemType = "include" | "exclude";
-export const UpdateExperimentRequestTargetingRulesItemType = S.String;
-
 export interface UpdateExperimentRequestTargetingRulesItem {
   /** Conditions within this rule. Must be non-empty. All conditions must be satisfied for the rule to match (AND logic). Rules are OR-ed together. */
   conditions: UpdateExperimentRequestTargetingRulesItemConditionsList;
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. Defaults to `include`. */
   type?: UpdateExperimentRequestTargetingRulesItemType | (string & {});
 }
-export const UpdateExperimentRequestTargetingRulesItem =
-  ExperimentTargetingRulesItem as any as S.Schema<UpdateExperimentRequestTargetingRulesItem>;
-
 /** Replace the targeting rules with this set. Omit to leave unchanged. */
 export type UpdateExperimentRequestTargetingRulesList =
   Array<UpdateExperimentRequestTargetingRulesItem>;
-export const UpdateExperimentRequestTargetingRulesList =
+const UpdateExperimentRequestTargetingRulesList =
   ExperimentTargetingRulesList as any as S.Schema<UpdateExperimentRequestTargetingRulesList>;
 
 export interface UpdateExperimentRequestVariantsItem {
@@ -672,7 +616,7 @@ export interface UpdateExperimentRequestVariantsItem {
   /** Percentage assigned to treatment; allocation may only grow. */
   weight?: number;
 }
-export const UpdateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
@@ -684,7 +628,7 @@ export const UpdateExperimentRequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Grow treatment allocation. Pass every existing treatment with an equal-or-higher weight; append new names to add arms. Weights never decrease and arms are never removed. Omit to leave unchanged. */
 export type UpdateExperimentRequestVariantsList = Array<UpdateExperimentRequestVariantsItem>;
-export const UpdateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
+const UpdateExperimentRequestVariantsList = /*@__PURE__*/ S.Array(
   UpdateExperimentRequestVariantsItem,
 ) as any as S.Schema<UpdateExperimentRequestVariantsList>;
 
@@ -702,7 +646,7 @@ export interface UpdateExperimentRequest {
   /** Grow treatment allocation. Pass every existing treatment with an equal-or-higher weight; append new names to add arms. Weights never decrease and arms are never removed. Omit to leave unchanged. */
   variants?: UpdateExperimentRequestVariantsList;
 }
-export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     account_id: S.optional(S.String.pipe(T.Query())),

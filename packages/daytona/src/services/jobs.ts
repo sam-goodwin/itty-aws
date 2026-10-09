@@ -12,7 +12,7 @@ export interface GetJobRequest {
   /** ID of the job */
   jobId: string;
 }
-export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/jobs/{jobId}", code: 200 })),
@@ -36,18 +36,18 @@ export type JobType =
   | "SNAPSHOT_SANDBOX"
   | "FORK_SANDBOX"
   | "PAUSE_SANDBOX";
-export const JobType = S.String;
+const JobType = S.String;
 
 export type JobStatus = "PENDING" | "IN_PROGRESS" | "COMPLETED" | "FAILED";
-export const JobStatus = S.String;
+const JobStatus = S.String;
 
 /** The type of resource this job operates on */
 export type JobResourceType = "SANDBOX" | "SNAPSHOT" | "BACKUP";
-export const JobResourceType = S.String;
+const JobResourceType = S.String;
 
 /** OpenTelemetry trace context for distributed tracing (W3C Trace Context format) */
 export type JobTraceContextMap = { [key: string]: unknown | undefined };
-export const JobTraceContextMap = /*@__PURE__*/ S.Record(
+const JobTraceContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<JobTraceContextMap>;
@@ -74,7 +74,7 @@ export interface Job {
   /** The last update timestamp of the job */
   updatedAt?: string;
 }
-export const Job = /*@__PURE__*/ S.suspend(() =>
+const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: JobType,
@@ -99,7 +99,7 @@ export interface ListJobsRequest {
   /** Number of jobs to skip for pagination (default: 0) */
   offset?: number;
 }
-export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -109,7 +109,7 @@ export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListJobsRequest" }) as any as S.Schema<ListJobsRequest>;
 
 export type PaginatedJobsItemsList = Array<Job>;
-export const PaginatedJobsItemsList = /*@__PURE__*/ S.Array(
+const PaginatedJobsItemsList = /*@__PURE__*/ S.Array(
   Job,
 ) as any as S.Schema<PaginatedJobsItemsList>;
 
@@ -119,7 +119,7 @@ export interface PaginatedJobs {
   page: number;
   totalPages: number;
 }
-export const PaginatedJobs = /*@__PURE__*/ S.suspend(() =>
+const PaginatedJobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: PaginatedJobsItemsList,
     total: S.Number,
@@ -134,7 +134,7 @@ export interface PollJobsRequest {
   /** Maximum number of jobs to return (default: 10, max: 100) */
   limit?: number;
 }
-export const PollJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const PollJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeout: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -143,14 +143,14 @@ export const PollJobsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of jobs */
 export type PollJobsResponseJobsList = Array<Job>;
-export const PollJobsResponseJobsList =
+const PollJobsResponseJobsList =
   PaginatedJobsItemsList as any as S.Schema<PollJobsResponseJobsList>;
 
 export interface PollJobsResponse {
   /** List of jobs */
   jobs: PollJobsResponseJobsList;
 }
-export const PollJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const PollJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobs: PollJobsResponseJobsList,
   }),
@@ -166,7 +166,7 @@ export interface UpdateJobStatusRequest {
   /** Result metadata for the job */
   resultMetadata?: string;
 }
-export const UpdateJobStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Label()),
     status: JobStatus,

@@ -22,7 +22,7 @@ const KEY_DICTIONARY: Record<string, string | ReadonlyArray<string>> = {
 };
 
 export type BulkDeleteRequestIdList = Array<string>;
-export const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
+const BulkDeleteRequestIdList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BulkDeleteRequestIdList>;
 
@@ -31,7 +31,7 @@ export interface BulkDeleteFiltersRequest {
   zoneId: string;
   id: BulkDeleteRequestIdList;
 }
-export const BulkDeleteFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: BulkDeleteRequestIdList.pipe(T.Query()),
@@ -44,19 +44,19 @@ export interface BulkDeleteResultItem {
   /** The unique identifier of the filter. */
   id?: string | null;
 }
-export const BulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({ identifier: "BulkDeleteResultItem" }) as any as S.Schema<BulkDeleteResultItem>;
 
 export type BulkDeleteResultList = Array<BulkDeleteResultItem>;
-export const BulkDeleteResultList = /*@__PURE__*/ S.Array(
+const BulkDeleteResultList = /*@__PURE__*/ S.Array(
   BulkDeleteResultItem,
 ) as any as S.Schema<BulkDeleteResultList>;
 
 export type BulkDeleteFiltersResponse = BulkDeleteResultList;
-export const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   BulkDeleteResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "BulkDeleteFiltersResponse",
@@ -74,7 +74,7 @@ export interface BulkUpdateRequestBodyItem {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
-export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -87,7 +87,7 @@ export const BulkUpdateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BulkUpdateRequestBodyItem>;
 
 export type BulkUpdateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
-export const BulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
+const BulkUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   BulkUpdateRequestBodyItem,
 ) as any as S.Schema<BulkUpdateRequestBodyList>;
 
@@ -96,7 +96,7 @@ export interface BulkPutFiltersRequest {
   zoneId: string;
   body: BulkUpdateRequestBodyList;
 }
-export const BulkPutFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkPutFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: BulkUpdateRequestBodyList.pipe(T.HttpBody()),
@@ -117,7 +117,7 @@ export interface BulkUpdateResultItem {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-export const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -128,7 +128,7 @@ export const BulkUpdateResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkUpdateResultItem" }) as any as S.Schema<BulkUpdateResultItem>;
 
 export type BulkUpdateResultList = Array<BulkUpdateResultItem>;
-export const BulkUpdateResultList = /*@__PURE__*/ S.Array(
+const BulkUpdateResultList = /*@__PURE__*/ S.Array(
   BulkUpdateResultItem,
 ) as any as S.Schema<BulkUpdateResultList>;
 
@@ -138,7 +138,7 @@ export interface BulkPutFiltersResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: BulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -146,18 +146,15 @@ export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BulkPutFiltersResponse" }) as any as S.Schema<BulkPutFiltersResponse>;
 
 export type CreateRequestBodyItem = BulkUpdateRequestBodyItem;
-export const CreateRequestBodyItem = BulkUpdateRequestBodyItem;
-
 export type CreateRequestBodyList = Array<BulkUpdateRequestBodyItem>;
-export const CreateRequestBodyList =
-  BulkUpdateRequestBodyList as any as S.Schema<CreateRequestBodyList>;
+const CreateRequestBodyList = BulkUpdateRequestBodyList as any as S.Schema<CreateRequestBodyList>;
 
 export interface CreateFilterRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: CreateRequestBodyList;
 }
-export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: CreateRequestBodyList.pipe(T.HttpBody()),
@@ -167,18 +164,14 @@ export const CreateFilterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFilterRequest" }) as any as S.Schema<CreateFilterRequest>;
 
 export type CreateResultItem = BulkUpdateResultItem;
-export const CreateResultItem = BulkUpdateResultItem;
-
 export type CreateResultList = Array<BulkUpdateResultItem>;
-export const CreateResultList = BulkUpdateResultList as any as S.Schema<CreateResultList>;
-
 export interface CreateFilterResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: CreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const CreateFilterResponse = BulkPutFiltersResponse as any as S.Schema<CreateFilterResponse>;
+const CreateFilterResponse = BulkPutFiltersResponse as any as S.Schema<CreateFilterResponse>;
 
 export interface DeleteFilterRequest {
   /** Defines an identifier. */
@@ -186,7 +179,7 @@ export interface DeleteFilterRequest {
   /** The unique identifier of the filter. */
   filterId: string;
 }
-export const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
@@ -200,7 +193,7 @@ export interface DeleteFilterResponse {
   /** The unique identifier of the filter. */
   id: string;
 }
-export const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -212,7 +205,7 @@ export interface GetFilterRequest {
   /** The unique identifier of the filter. */
   filterId: string;
 }
-export const GetFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
@@ -234,7 +227,7 @@ export interface GetFilterResponse {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-export const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -262,7 +255,7 @@ export interface ListFiltersRequest {
   /** The filter ref (a short reference tag) to search for. Must be an exact match. */
   ref?: string;
 }
-export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -278,18 +271,14 @@ export const ListFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFiltersRequest" }) as any as S.Schema<ListFiltersRequest>;
 
 export type ListResultItem = BulkUpdateResultItem;
-export const ListResultItem = BulkUpdateResultItem;
-
 export type ListResultList = Array<BulkUpdateResultItem>;
-export const ListResultList = BulkUpdateResultList as any as S.Schema<ListResultList>;
-
 export interface ListFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListFiltersResponse = BulkPutFiltersResponse as any as S.Schema<ListFiltersResponse>;
+const ListFiltersResponse = BulkPutFiltersResponse as any as S.Schema<ListFiltersResponse>;
 
 export interface UpdateFilterRequest {
   /** Defines an identifier. */
@@ -305,7 +294,7 @@ export interface UpdateFilterRequest {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string;
 }
-export const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     filterId: S.String.pipe(T.Label("filter_id")),
@@ -331,7 +320,7 @@ export interface UpdateFilterResponse {
   /** A short reference tag. Allows you to select related filters. */
   ref?: string | null;
 }
-export const UpdateFilterResponse = GetFilterResponse as any as S.Schema<UpdateFilterResponse>;
+const UpdateFilterResponse = GetFilterResponse as any as S.Schema<UpdateFilterResponse>;
 
 export type BulkDeleteFiltersError = CloudflareOpError;
 /** Deletes one or more existing filters. */

@@ -19,7 +19,7 @@ export interface CheckLocationNameAvailabilityRequest {
   /** The resource type */
   type?: string;
 }
-export const CheckLocationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckLocationNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -46,7 +46,7 @@ export interface NameAvailabilityCheckResult {
   /** The related message. */
   message?: string;
 }
-export const NameAvailabilityCheckResult = /*@__PURE__*/ S.suspend(() =>
+const NameAvailabilityCheckResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -58,7 +58,7 @@ export const NameAvailabilityCheckResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags for the application. */
 export type CreateApplicationRequestTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateApplicationRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateApplicationRequestTagsMap>;
@@ -70,7 +70,7 @@ export interface AutoscaleCapacity {
   /** The maximum instance count of the cluster */
   maxInstanceCount?: number;
 }
-export const AutoscaleCapacity = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minInstanceCount: S.optional(S.Number),
     maxInstanceCount: S.optional(S.Number),
@@ -85,11 +85,11 @@ export type AutoscaleScheduleDaysItem =
   | "Friday"
   | "Saturday"
   | "Sunday";
-export const AutoscaleScheduleDaysItem = S.String;
+const AutoscaleScheduleDaysItem = S.String;
 
 /** Days of the week for a schedule-based autoscale rule */
 export type AutoscaleScheduleDaysList = Array<AutoscaleScheduleDaysItem | (string & {})>;
-export const AutoscaleScheduleDaysList = /*@__PURE__*/ S.Array(
+const AutoscaleScheduleDaysList = /*@__PURE__*/ S.Array(
   AutoscaleScheduleDaysItem,
 ) as any as S.Schema<AutoscaleScheduleDaysList>;
 
@@ -102,7 +102,7 @@ export interface AutoscaleTimeAndCapacity {
   /** The maximum instance count of the cluster */
   maxInstanceCount?: number;
 }
-export const AutoscaleTimeAndCapacity = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleTimeAndCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.String),
     minInstanceCount: S.optional(S.Number),
@@ -117,7 +117,7 @@ export interface AutoscaleSchedule {
   /** Time and capacity for a schedule-based autoscale rule */
   timeAndCapacity?: AutoscaleTimeAndCapacity;
 }
-export const AutoscaleSchedule = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: S.optional(AutoscaleScheduleDaysList),
     timeAndCapacity: S.optional(AutoscaleTimeAndCapacity),
@@ -126,7 +126,7 @@ export const AutoscaleSchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of schedule-based autoscale rules */
 export type AutoscaleRecurrenceScheduleList = Array<AutoscaleSchedule>;
-export const AutoscaleRecurrenceScheduleList = /*@__PURE__*/ S.Array(
+const AutoscaleRecurrenceScheduleList = /*@__PURE__*/ S.Array(
   AutoscaleSchedule,
 ) as any as S.Schema<AutoscaleRecurrenceScheduleList>;
 
@@ -137,7 +137,7 @@ export interface AutoscaleRecurrence {
   /** Array of schedule-based autoscale rules */
   schedule?: AutoscaleRecurrenceScheduleList;
 }
-export const AutoscaleRecurrence = /*@__PURE__*/ S.suspend(() =>
+const AutoscaleRecurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
     schedule: S.optional(AutoscaleRecurrenceScheduleList),
@@ -151,7 +151,7 @@ export interface Autoscale {
   /** Parameters for schedule-based autoscale */
   recurrence?: AutoscaleRecurrence;
 }
-export const Autoscale = /*@__PURE__*/ S.suspend(() =>
+const Autoscale = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capacity: S.optional(AutoscaleCapacity),
     recurrence: S.optional(AutoscaleRecurrence),
@@ -163,7 +163,7 @@ export interface HardwareProfile {
   /** The size of the VM */
   vmSize?: string;
 }
-export const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
+const HardwareProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSize: S.optional(S.String),
   }),
@@ -174,7 +174,7 @@ export interface SshPublicKey {
   /** The certificate for SSH. */
   certificateData?: string;
 }
-export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
+const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateData: S.optional(S.String),
   }),
@@ -182,7 +182,7 @@ export const SshPublicKey = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of SSH public keys. */
 export type SshProfilePublicKeysList = Array<SshPublicKey>;
-export const SshProfilePublicKeysList = /*@__PURE__*/ S.Array(
+const SshProfilePublicKeysList = /*@__PURE__*/ S.Array(
   SshPublicKey,
 ) as any as S.Schema<SshProfilePublicKeysList>;
 
@@ -191,7 +191,7 @@ export interface SshProfile {
   /** The list of SSH public keys. */
   publicKeys?: SshProfilePublicKeysList;
 }
-export const SshProfile = /*@__PURE__*/ S.suspend(() =>
+const SshProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeys: S.optional(SshProfilePublicKeysList),
   }),
@@ -206,7 +206,7 @@ export interface LinuxOperatingSystemProfile {
   /** The SSH profile. */
   sshProfile?: SshProfile;
 }
-export const LinuxOperatingSystemProfile = /*@__PURE__*/ S.suspend(() =>
+const LinuxOperatingSystemProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -221,7 +221,7 @@ export interface OsProfile {
   /** The Linux OS profile. */
   linuxOperatingSystemProfile?: LinuxOperatingSystemProfile;
 }
-export const OsProfile = /*@__PURE__*/ S.suspend(() =>
+const OsProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linuxOperatingSystemProfile: S.optional(LinuxOperatingSystemProfile),
   }),
@@ -234,7 +234,7 @@ export interface VirtualNetworkProfile {
   /** The name of the subnet. */
   subnet?: string;
 }
-export const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     subnet: S.optional(S.String),
@@ -246,7 +246,7 @@ export interface DataDisksGroupsInput {
   /** The number of disks per node. */
   disksPerNode?: number;
 }
-export const DataDisksGroupsInput = /*@__PURE__*/ S.suspend(() =>
+const DataDisksGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disksPerNode: S.optional(S.Number),
   }),
@@ -254,7 +254,7 @@ export const DataDisksGroupsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The data disks groups for the role. */
 export type RoleInputDataDisksGroupsList = Array<DataDisksGroupsInput>;
-export const RoleInputDataDisksGroupsList = /*@__PURE__*/ S.Array(
+const RoleInputDataDisksGroupsList = /*@__PURE__*/ S.Array(
   DataDisksGroupsInput,
 ) as any as S.Schema<RoleInputDataDisksGroupsList>;
 
@@ -267,7 +267,7 @@ export interface RoleInputScriptActionsItem {
   /** The parameters for the script provided. */
   parameters: string;
 }
-export const RoleInputScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
+const RoleInputScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uri: S.String,
@@ -279,7 +279,7 @@ export const RoleInputScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of script actions on the role. */
 export type RoleInputScriptActionsList = Array<RoleInputScriptActionsItem>;
-export const RoleInputScriptActionsList = /*@__PURE__*/ S.Array(
+const RoleInputScriptActionsList = /*@__PURE__*/ S.Array(
   RoleInputScriptActionsItem,
 ) as any as S.Schema<RoleInputScriptActionsList>;
 
@@ -308,7 +308,7 @@ export interface RoleInput {
   /** Indicates whether encrypt the data disks. */
   encryptDataDisks?: boolean;
 }
-export const RoleInput = /*@__PURE__*/ S.suspend(() =>
+const RoleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     minInstanceCount: S.optional(S.Number),
@@ -326,7 +326,7 @@ export const RoleInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles in the cluster. */
 export type ApplicationPropertiesInputComputeProfileRolesList = Array<RoleInput>;
-export const ApplicationPropertiesInputComputeProfileRolesList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputComputeProfileRolesList = /*@__PURE__*/ S.Array(
   RoleInput,
 ) as any as S.Schema<ApplicationPropertiesInputComputeProfileRolesList>;
 
@@ -335,7 +335,7 @@ export interface ApplicationPropertiesInputComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ApplicationPropertiesInputComputeProfileRolesList;
 }
-export const ApplicationPropertiesInputComputeProfile = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInputComputeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ApplicationPropertiesInputComputeProfileRolesList),
   }),
@@ -345,7 +345,7 @@ export const ApplicationPropertiesInputComputeProfile = /*@__PURE__*/ S.suspend(
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputInstallScriptActionsItemRolesList = Array<string>;
-export const ApplicationPropertiesInputInstallScriptActionsItemRolesList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputInstallScriptActionsItemRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ApplicationPropertiesInputInstallScriptActionsItemRolesList>;
 
@@ -360,7 +360,7 @@ export interface ApplicationPropertiesInputInstallScriptActionsItem {
   /** The list of roles where script will be executed. */
   roles: ApplicationPropertiesInputInstallScriptActionsItemRolesList;
 }
-export const ApplicationPropertiesInputInstallScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInputInstallScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uri: S.String,
@@ -374,15 +374,12 @@ export const ApplicationPropertiesInputInstallScriptActionsItem = /*@__PURE__*/ 
 /** The list of install script actions. */
 export type ApplicationPropertiesInputInstallScriptActionsList =
   Array<ApplicationPropertiesInputInstallScriptActionsItem>;
-export const ApplicationPropertiesInputInstallScriptActionsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputInstallScriptActionsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesInputInstallScriptActionsItem,
 ) as any as S.Schema<ApplicationPropertiesInputInstallScriptActionsList>;
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInputUninstallScriptActionsItemRolesList = Array<string>;
-export const ApplicationPropertiesInputUninstallScriptActionsItemRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationPropertiesInputUninstallScriptActionsItemRolesList>;
-
 /** Describes a script action on a running cluster. */
 export interface ApplicationPropertiesInputUninstallScriptActionsItem {
   /** The name of the script action. */
@@ -394,18 +391,15 @@ export interface ApplicationPropertiesInputUninstallScriptActionsItem {
   /** The list of roles where script will be executed. */
   roles: ApplicationPropertiesInputUninstallScriptActionsItemRolesList;
 }
-export const ApplicationPropertiesInputUninstallScriptActionsItem =
-  ApplicationPropertiesInputInstallScriptActionsItem as any as S.Schema<ApplicationPropertiesInputUninstallScriptActionsItem>;
-
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesInputUninstallScriptActionsList =
   Array<ApplicationPropertiesInputUninstallScriptActionsItem>;
-export const ApplicationPropertiesInputUninstallScriptActionsList =
+const ApplicationPropertiesInputUninstallScriptActionsList =
   ApplicationPropertiesInputInstallScriptActionsList as any as S.Schema<ApplicationPropertiesInputUninstallScriptActionsList>;
 
 /** The list of access modes for the application. */
 export type ApplicationGetHttpsEndpointInputAccessModesList = Array<string>;
-export const ApplicationGetHttpsEndpointInputAccessModesList =
+const ApplicationGetHttpsEndpointInputAccessModesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationGetHttpsEndpointInputAccessModesList>;
 
 /** Gets the application HTTP endpoints. */
@@ -421,7 +415,7 @@ export interface ApplicationGetHttpsEndpointInput {
   /** The value indicates whether to disable GatewayAuth. */
   disableGatewayAuth?: boolean;
 }
-export const ApplicationGetHttpsEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const ApplicationGetHttpsEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessModes: S.optional(ApplicationGetHttpsEndpointInputAccessModesList),
     destinationPort: S.optional(S.Number),
@@ -435,7 +429,7 @@ export const ApplicationGetHttpsEndpointInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesInputHttpsEndpointsList = Array<ApplicationGetHttpsEndpointInput>;
-export const ApplicationPropertiesInputHttpsEndpointsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputHttpsEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetHttpsEndpointInput,
 ) as any as S.Schema<ApplicationPropertiesInputHttpsEndpointsList>;
 
@@ -450,7 +444,7 @@ export interface ApplicationGetEndpoint {
   /** The private ip address of the endpoint. */
   privateIPAddress?: string;
 }
-export const ApplicationGetEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ApplicationGetEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     destinationPort: S.optional(S.Number),
@@ -461,7 +455,7 @@ export const ApplicationGetEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesInputSshEndpointsList = Array<ApplicationGetEndpoint>;
-export const ApplicationPropertiesInputSshEndpointsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputSshEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetEndpoint,
 ) as any as S.Schema<ApplicationPropertiesInputSshEndpointsList>;
 
@@ -472,7 +466,7 @@ export interface ApplicationPropertiesInputErrorsItem {
   /** The error message. */
   message?: string;
 }
-export const ApplicationPropertiesInputErrorsItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInputErrorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -483,20 +477,20 @@ export const ApplicationPropertiesInputErrorsItem = /*@__PURE__*/ S.suspend(() =
 
 /** The list of errors. */
 export type ApplicationPropertiesInputErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-export const ApplicationPropertiesInputErrorsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputErrorsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesInputErrorsItem,
 ) as any as S.Schema<ApplicationPropertiesInputErrorsList>;
 
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesInputPrivateIPAllocationMethod = "dynamic" | "static";
-export const IPConfigurationPropertiesInputPrivateIPAllocationMethod = S.String;
+const IPConfigurationPropertiesInputPrivateIPAllocationMethod = S.String;
 
 /** The azure resource id. */
 export interface ResourceId {
   /** The azure resource id. */
   id?: string;
 }
-export const ResourceId = /*@__PURE__*/ S.suspend(() =>
+const ResourceId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -515,7 +509,7 @@ export interface IPConfigurationPropertiesInput {
   /** The subnet resource id. */
   subnet?: ResourceId;
 }
-export const IPConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary: S.optional(S.Boolean),
     privateIPAddress: S.optional(S.String),
@@ -533,7 +527,7 @@ export interface IPConfigurationInput {
   /** The private link ip configuration properties. */
   properties?: IPConfigurationPropertiesInput;
 }
-export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: S.optional(IPConfigurationPropertiesInput),
@@ -543,7 +537,7 @@ export const IPConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesInputIpConfigurationsList =
   Array<IPConfigurationInput>;
-export const PrivateLinkConfigurationPropertiesInputIpConfigurationsList = /*@__PURE__*/ S.Array(
+const PrivateLinkConfigurationPropertiesInputIpConfigurationsList = /*@__PURE__*/ S.Array(
   IPConfigurationInput,
 ) as any as S.Schema<PrivateLinkConfigurationPropertiesInputIpConfigurationsList>;
 
@@ -554,7 +548,7 @@ export interface PrivateLinkConfigurationPropertiesInput {
   /** The IP configurations for the private link service. */
   ipConfigurations: PrivateLinkConfigurationPropertiesInputIpConfigurationsList;
 }
-export const PrivateLinkConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConfigurationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String,
     ipConfigurations: PrivateLinkConfigurationPropertiesInputIpConfigurationsList,
@@ -570,7 +564,7 @@ export interface ApplicationPropertiesInputPrivateLinkConfigurationsItem {
   /** The private link configuration properties. */
   properties: PrivateLinkConfigurationPropertiesInput;
 }
-export const ApplicationPropertiesInputPrivateLinkConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInputPrivateLinkConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     properties: PrivateLinkConfigurationPropertiesInput,
@@ -582,7 +576,7 @@ export const ApplicationPropertiesInputPrivateLinkConfigurationsItem = /*@__PURE
 /** The private link configurations. */
 export type ApplicationPropertiesInputPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
-export const ApplicationPropertiesInputPrivateLinkConfigurationsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInputPrivateLinkConfigurationsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesInputPrivateLinkConfigurationsItem,
 ) as any as S.Schema<ApplicationPropertiesInputPrivateLinkConfigurationsList>;
 
@@ -605,7 +599,7 @@ export interface ApplicationPropertiesInput {
   /** The private link configurations. */
   privateLinkConfigurations?: ApplicationPropertiesInputPrivateLinkConfigurationsList;
 }
-export const ApplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeProfile: S.optional(ApplicationPropertiesInputComputeProfile),
     installScriptActions: S.optional(ApplicationPropertiesInputInstallScriptActionsList),
@@ -636,7 +630,7 @@ export interface CreateApplicationRequest {
   /** The properties of the application. */
   properties?: ApplicationPropertiesInput;
 }
-export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -657,7 +651,7 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags for the application. */
 export type CreateApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const CreateApplicationResponseTagsMap =
+const CreateApplicationResponseTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<CreateApplicationResponseTagsMap>;
 
 /** The data disks groups for the role. */
@@ -669,7 +663,7 @@ export interface DataDisksGroups {
   /** ReadOnly. The DiskSize in GB. Do not set this value. */
   diskSizeGB?: number;
 }
-export const DataDisksGroups = /*@__PURE__*/ S.suspend(() =>
+const DataDisksGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disksPerNode: S.optional(S.Number),
     storageAccountType: S.optional(S.String),
@@ -679,18 +673,15 @@ export const DataDisksGroups = /*@__PURE__*/ S.suspend(() =>
 
 /** The data disks groups for the role. */
 export type RoleDataDisksGroupsList = Array<DataDisksGroups>;
-export const RoleDataDisksGroupsList = /*@__PURE__*/ S.Array(
+const RoleDataDisksGroupsList = /*@__PURE__*/ S.Array(
   DataDisksGroups,
 ) as any as S.Schema<RoleDataDisksGroupsList>;
 
 /** Describes a script action on role on the cluster. */
 export type RoleScriptActionsItem = RoleInputScriptActionsItem;
-export const RoleScriptActionsItem = RoleInputScriptActionsItem;
-
 /** The list of script actions on the role. */
 export type RoleScriptActionsList = Array<RoleInputScriptActionsItem>;
-export const RoleScriptActionsList =
-  RoleInputScriptActionsList as any as S.Schema<RoleScriptActionsList>;
+const RoleScriptActionsList = RoleInputScriptActionsList as any as S.Schema<RoleScriptActionsList>;
 
 /** Describes a role on the cluster. */
 export interface Role {
@@ -717,7 +708,7 @@ export interface Role {
   /** Indicates whether encrypt the data disks. */
   encryptDataDisks?: boolean;
 }
-export const Role = /*@__PURE__*/ S.suspend(() =>
+const Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     minInstanceCount: S.optional(S.Number),
@@ -735,7 +726,7 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles in the cluster. */
 export type ApplicationPropertiesComputeProfileRolesList = Array<Role>;
-export const ApplicationPropertiesComputeProfileRolesList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesComputeProfileRolesList = /*@__PURE__*/ S.Array(
   Role,
 ) as any as S.Schema<ApplicationPropertiesComputeProfileRolesList>;
 
@@ -744,7 +735,7 @@ export interface ApplicationPropertiesComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ApplicationPropertiesComputeProfileRolesList;
 }
-export const ApplicationPropertiesComputeProfile = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesComputeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ApplicationPropertiesComputeProfileRolesList),
   }),
@@ -754,7 +745,7 @@ export const ApplicationPropertiesComputeProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesInstallScriptActionsItemRolesList = Array<string>;
-export const ApplicationPropertiesInstallScriptActionsItemRolesList =
+const ApplicationPropertiesInstallScriptActionsItemRolesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationPropertiesInstallScriptActionsItemRolesList>;
 
 /** Describes a script action on a running cluster. */
@@ -770,7 +761,7 @@ export interface ApplicationPropertiesInstallScriptActionsItem {
   /** The application name of the script action, if any. */
   applicationName?: string;
 }
-export const ApplicationPropertiesInstallScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesInstallScriptActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uri: S.String,
@@ -785,15 +776,12 @@ export const ApplicationPropertiesInstallScriptActionsItem = /*@__PURE__*/ S.sus
 /** The list of install script actions. */
 export type ApplicationPropertiesInstallScriptActionsList =
   Array<ApplicationPropertiesInstallScriptActionsItem>;
-export const ApplicationPropertiesInstallScriptActionsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesInstallScriptActionsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesInstallScriptActionsItem,
 ) as any as S.Schema<ApplicationPropertiesInstallScriptActionsList>;
 
 /** The list of roles where script will be executed. */
 export type ApplicationPropertiesUninstallScriptActionsItemRolesList = Array<string>;
-export const ApplicationPropertiesUninstallScriptActionsItemRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationPropertiesUninstallScriptActionsItemRolesList>;
-
 /** Describes a script action on a running cluster. */
 export interface ApplicationPropertiesUninstallScriptActionsItem {
   /** The name of the script action. */
@@ -807,18 +795,15 @@ export interface ApplicationPropertiesUninstallScriptActionsItem {
   /** The application name of the script action, if any. */
   applicationName?: string;
 }
-export const ApplicationPropertiesUninstallScriptActionsItem =
-  ApplicationPropertiesInstallScriptActionsItem as any as S.Schema<ApplicationPropertiesUninstallScriptActionsItem>;
-
 /** The list of uninstall script actions. */
 export type ApplicationPropertiesUninstallScriptActionsList =
   Array<ApplicationPropertiesUninstallScriptActionsItem>;
-export const ApplicationPropertiesUninstallScriptActionsList =
+const ApplicationPropertiesUninstallScriptActionsList =
   ApplicationPropertiesInstallScriptActionsList as any as S.Schema<ApplicationPropertiesUninstallScriptActionsList>;
 
 /** The list of access modes for the application. */
 export type ApplicationGetHttpsEndpointAccessModesList = Array<string>;
-export const ApplicationGetHttpsEndpointAccessModesList =
+const ApplicationGetHttpsEndpointAccessModesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ApplicationGetHttpsEndpointAccessModesList>;
 
 /** Gets the application HTTP endpoints. */
@@ -838,7 +823,7 @@ export interface ApplicationGetHttpsEndpoint {
   /** The value indicates whether to disable GatewayAuth. */
   disableGatewayAuth?: boolean;
 }
-export const ApplicationGetHttpsEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ApplicationGetHttpsEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessModes: S.optional(ApplicationGetHttpsEndpointAccessModesList),
     location: S.optional(S.String),
@@ -854,22 +839,20 @@ export const ApplicationGetHttpsEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of application HTTPS endpoints. */
 export type ApplicationPropertiesHttpsEndpointsList = Array<ApplicationGetHttpsEndpoint>;
-export const ApplicationPropertiesHttpsEndpointsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesHttpsEndpointsList = /*@__PURE__*/ S.Array(
   ApplicationGetHttpsEndpoint,
 ) as any as S.Schema<ApplicationPropertiesHttpsEndpointsList>;
 
 /** The list of application SSH endpoints. */
 export type ApplicationPropertiesSshEndpointsList = Array<ApplicationGetEndpoint>;
-export const ApplicationPropertiesSshEndpointsList =
+const ApplicationPropertiesSshEndpointsList =
   ApplicationPropertiesInputSshEndpointsList as any as S.Schema<ApplicationPropertiesSshEndpointsList>;
 
 /** The error message associated with the cluster creation. */
 export type ApplicationPropertiesErrorsItem = ApplicationPropertiesInputErrorsItem;
-export const ApplicationPropertiesErrorsItem = ApplicationPropertiesInputErrorsItem;
-
 /** The list of errors. */
 export type ApplicationPropertiesErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-export const ApplicationPropertiesErrorsList =
+const ApplicationPropertiesErrorsList =
   ApplicationPropertiesInputErrorsList as any as S.Schema<ApplicationPropertiesErrorsList>;
 
 /** The private link configuration provisioning state, which only appears in the response. */
@@ -879,7 +862,7 @@ export type PrivateLinkConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-export const PrivateLinkConfigurationPropertiesProvisioningState = S.String;
+const PrivateLinkConfigurationPropertiesProvisioningState = S.String;
 
 /** The private link configuration provisioning state, which only appears in the response. */
 export type IPConfigurationPropertiesProvisioningState =
@@ -888,11 +871,11 @@ export type IPConfigurationPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-export const IPConfigurationPropertiesProvisioningState = S.String;
+const IPConfigurationPropertiesProvisioningState = S.String;
 
 /** The method that private IP address is allocated. */
 export type IPConfigurationPropertiesPrivateIPAllocationMethod = "dynamic" | "static";
-export const IPConfigurationPropertiesPrivateIPAllocationMethod = S.String;
+const IPConfigurationPropertiesPrivateIPAllocationMethod = S.String;
 
 /** The private link ip configuration properties. */
 export interface IPConfigurationProperties {
@@ -907,7 +890,7 @@ export interface IPConfigurationProperties {
   /** The subnet resource id. */
   subnet?: ResourceId;
 }
-export const IPConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const IPConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(IPConfigurationPropertiesProvisioningState),
     primary: S.optional(S.Boolean),
@@ -930,7 +913,7 @@ export interface IPConfiguration {
   /** The private link ip configuration properties. */
   properties?: IPConfigurationProperties;
 }
-export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
+const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.String,
@@ -941,7 +924,7 @@ export const IPConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The IP configurations for the private link service. */
 export type PrivateLinkConfigurationPropertiesIpConfigurationsList = Array<IPConfiguration>;
-export const PrivateLinkConfigurationPropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
+const PrivateLinkConfigurationPropertiesIpConfigurationsList = /*@__PURE__*/ S.Array(
   IPConfiguration,
 ) as any as S.Schema<PrivateLinkConfigurationPropertiesIpConfigurationsList>;
 
@@ -954,7 +937,7 @@ export interface PrivateLinkConfigurationProperties {
   /** The IP configurations for the private link service. */
   ipConfigurations: PrivateLinkConfigurationPropertiesIpConfigurationsList;
 }
-export const PrivateLinkConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkConfigurationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String,
     provisioningState: S.optional(PrivateLinkConfigurationPropertiesProvisioningState),
@@ -975,7 +958,7 @@ export interface ApplicationPropertiesPrivateLinkConfigurationsItem {
   /** The private link configuration properties. */
   properties: PrivateLinkConfigurationProperties;
 }
-export const ApplicationPropertiesPrivateLinkConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
+const ApplicationPropertiesPrivateLinkConfigurationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.String,
@@ -989,7 +972,7 @@ export const ApplicationPropertiesPrivateLinkConfigurationsItem = /*@__PURE__*/ 
 /** The private link configurations. */
 export type ApplicationPropertiesPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
-export const ApplicationPropertiesPrivateLinkConfigurationsList = /*@__PURE__*/ S.Array(
+const ApplicationPropertiesPrivateLinkConfigurationsList = /*@__PURE__*/ S.Array(
   ApplicationPropertiesPrivateLinkConfigurationsItem,
 ) as any as S.Schema<ApplicationPropertiesPrivateLinkConfigurationsList>;
 
@@ -1020,7 +1003,7 @@ export interface ApplicationProperties {
   /** The private link configurations. */
   privateLinkConfigurations?: ApplicationPropertiesPrivateLinkConfigurationsList;
 }
-export const ApplicationProperties = /*@__PURE__*/ S.suspend(() =>
+const ApplicationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     computeProfile: S.optional(ApplicationPropertiesComputeProfile),
     installScriptActions: S.optional(ApplicationPropertiesInstallScriptActionsList),
@@ -1043,7 +1026,7 @@ export type CreateApplicationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateApplicationResponseSystemDataCreatedByType = S.String;
+const CreateApplicationResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type CreateApplicationResponseSystemDataLastModifiedByType =
@@ -1051,7 +1034,7 @@ export type CreateApplicationResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateApplicationResponseSystemDataLastModifiedByType = S.String;
+const CreateApplicationResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateApplicationResponseSystemData {
@@ -1068,7 +1051,7 @@ export interface CreateApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateApplicationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(CreateApplicationResponseSystemDataCreatedByType),
@@ -1097,7 +1080,7 @@ export interface CreateApplicationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreateApplicationResponseSystemData;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1113,25 +1096,25 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type CreateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const CreateClusterRequestTagsMap =
+const CreateClusterRequestTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<CreateClusterRequestTagsMap>;
 
 /** The availability zones. */
 export type CreateClusterRequestZonesList = Array<string>;
-export const CreateClusterRequestZonesList =
+const CreateClusterRequestZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CreateClusterRequestZonesList>;
 
 /** The type of operating system. */
 export type ClusterCreatePropertiesInputOsType = "Windows" | "Linux";
-export const ClusterCreatePropertiesInputOsType = S.String;
+const ClusterCreatePropertiesInputOsType = S.String;
 
 /** The cluster tier. */
 export type ClusterCreatePropertiesInputTier = "Standard" | "Premium";
-export const ClusterCreatePropertiesInputTier = S.String;
+const ClusterCreatePropertiesInputTier = S.String;
 
 /** The versions of different services in the cluster. */
 export type ClusterDefinitionComponentVersionMap = { [key: string]: string | undefined };
-export const ClusterDefinitionComponentVersionMap =
+const ClusterDefinitionComponentVersionMap =
   CreateApplicationRequestTagsMap as any as S.Schema<ClusterDefinitionComponentVersionMap>;
 
 /** The cluster definition. */
@@ -1145,7 +1128,7 @@ export interface ClusterDefinition {
   /** The cluster configurations. */
   configurations?: unknown;
 }
-export const ClusterDefinition = /*@__PURE__*/ S.suspend(() =>
+const ClusterDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blueprint: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1161,7 +1144,7 @@ export interface ClientGroupInfo {
   /** The AAD security group id. */
   groupId?: string;
 }
-export const ClientGroupInfo = /*@__PURE__*/ S.suspend(() =>
+const ClientGroupInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupName: S.optional(S.String),
     groupId: S.optional(S.String),
@@ -1170,7 +1153,7 @@ export const ClientGroupInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The configurations that need to be overriden. */
 export type KafkaRestPropertiesConfigurationOverrideMap = { [key: string]: string | undefined };
-export const KafkaRestPropertiesConfigurationOverrideMap =
+const KafkaRestPropertiesConfigurationOverrideMap =
   CreateApplicationRequestTagsMap as any as S.Schema<KafkaRestPropertiesConfigurationOverrideMap>;
 
 /** The kafka rest proxy configuration which contains AAD security group information. */
@@ -1180,7 +1163,7 @@ export interface KafkaRestProperties {
   /** The configurations that need to be overriden. */
   configurationOverride?: KafkaRestPropertiesConfigurationOverrideMap;
 }
-export const KafkaRestProperties = /*@__PURE__*/ S.suspend(() =>
+const KafkaRestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientGroupInfo: S.optional(ClientGroupInfo),
     configurationOverride: S.optional(KafkaRestPropertiesConfigurationOverrideMap),
@@ -1189,16 +1172,16 @@ export const KafkaRestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The directory type. */
 export type SecurityProfileDirectoryType = "ActiveDirectory";
-export const SecurityProfileDirectoryType = S.String;
+const SecurityProfileDirectoryType = S.String;
 
 /** The LDAPS protocol URLs to communicate with the Active Directory. */
 export type SecurityProfileLdapsUrlsList = Array<string>;
-export const SecurityProfileLdapsUrlsList =
+const SecurityProfileLdapsUrlsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<SecurityProfileLdapsUrlsList>;
 
 /** Optional. The Distinguished Names for cluster user groups */
 export type SecurityProfileClusterUsersGroupDNsList = Array<string>;
-export const SecurityProfileClusterUsersGroupDNsList =
+const SecurityProfileClusterUsersGroupDNsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<SecurityProfileClusterUsersGroupDNsList>;
 
 /** The security profile which contains Ssh public key for the HDInsight cluster. */
@@ -1222,7 +1205,7 @@ export interface SecurityProfile {
   /** User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS. */
   msiResourceId?: string;
 }
-export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     directoryType: S.optional(SecurityProfileDirectoryType),
     domain: S.optional(S.String),
@@ -1238,7 +1221,7 @@ export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles in the cluster. */
 export type ComputeProfileInputRolesList = Array<RoleInput>;
-export const ComputeProfileInputRolesList =
+const ComputeProfileInputRolesList =
   ApplicationPropertiesInputComputeProfileRolesList as any as S.Schema<ComputeProfileInputRolesList>;
 
 /** Describes the compute profile. */
@@ -1246,7 +1229,7 @@ export interface ComputeProfileInput {
   /** The list of roles in the cluster. */
   roles?: ComputeProfileInputRolesList;
 }
-export const ComputeProfileInput = /*@__PURE__*/ S.suspend(() =>
+const ComputeProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ComputeProfileInputRolesList),
   }),
@@ -1273,7 +1256,7 @@ export interface StorageAccount {
   /** The file share name. */
   fileshare?: string;
 }
-export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
+const StorageAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDefault: S.optional(S.Boolean),
@@ -1289,7 +1272,7 @@ export const StorageAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of storage accounts in the cluster. */
 export type StorageProfileStorageaccountsList = Array<StorageAccount>;
-export const StorageProfileStorageaccountsList = /*@__PURE__*/ S.Array(
+const StorageProfileStorageaccountsList = /*@__PURE__*/ S.Array(
   StorageAccount,
 ) as any as S.Schema<StorageProfileStorageaccountsList>;
 
@@ -1298,7 +1281,7 @@ export interface StorageProfile {
   /** The list of storage accounts in the cluster. */
   storageaccounts?: StorageProfileStorageaccountsList;
 }
-export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
+const StorageProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageaccounts: S.optional(StorageProfileStorageaccountsList),
   }),
@@ -1306,7 +1289,7 @@ export const StorageProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Algorithm identifier for encryption, default RSA-OAEP. */
 export type DiskEncryptionPropertiesEncryptionAlgorithm = "RSA-OAEP" | "RSA-OAEP-256" | "RSA1_5";
-export const DiskEncryptionPropertiesEncryptionAlgorithm = S.String;
+const DiskEncryptionPropertiesEncryptionAlgorithm = S.String;
 
 /** The disk encryption properties */
 export interface DiskEncryptionProperties {
@@ -1323,7 +1306,7 @@ export interface DiskEncryptionProperties {
   /** Indicates whether or not resource disk encryption is enabled. */
   encryptionAtHost?: boolean;
 }
-export const DiskEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
+const DiskEncryptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vaultUri: S.optional(S.String),
     keyName: S.optional(S.String),
@@ -1339,7 +1322,7 @@ export interface EncryptionInTransitProperties {
   /** Indicates whether or not inter cluster node communication is encrypted in transit. */
   isEncryptionInTransitEnabled?: boolean;
 }
-export const EncryptionInTransitProperties = /*@__PURE__*/ S.suspend(() =>
+const EncryptionInTransitProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEncryptionInTransitEnabled: S.optional(S.Boolean),
   }),
@@ -1349,11 +1332,11 @@ export const EncryptionInTransitProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The direction for the resource provider connection. */
 export type NetworkPropertiesResourceProviderConnection = "Inbound" | "Outbound";
-export const NetworkPropertiesResourceProviderConnection = S.String;
+const NetworkPropertiesResourceProviderConnection = S.String;
 
 /** Indicates whether or not private link is enabled. */
 export type NetworkPropertiesPrivateLink = "Disabled" | "Enabled";
-export const NetworkPropertiesPrivateLink = S.String;
+const NetworkPropertiesPrivateLink = S.String;
 
 /** The network properties. */
 export interface NetworkProperties {
@@ -1362,7 +1345,7 @@ export interface NetworkProperties {
   /** Indicates whether or not private link is enabled. */
   privateLink?: NetworkPropertiesPrivateLink | (string & {});
 }
-export const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
+const NetworkProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceProviderConnection: S.optional(NetworkPropertiesResourceProviderConnection),
     privateLink: S.optional(NetworkPropertiesPrivateLink),
@@ -1376,7 +1359,7 @@ export interface ComputeIsolationProperties {
   /** The host sku. */
   hostSku?: string;
 }
-export const ComputeIsolationProperties = /*@__PURE__*/ S.suspend(() =>
+const ComputeIsolationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableComputeIsolation: S.optional(S.Boolean),
     hostSku: S.optional(S.String),
@@ -1387,13 +1370,10 @@ export const ComputeIsolationProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link configuration. */
 export type PrivateLinkConfigurationInput = ApplicationPropertiesInputPrivateLinkConfigurationsItem;
-export const PrivateLinkConfigurationInput =
-  ApplicationPropertiesInputPrivateLinkConfigurationsItem;
-
 /** The private link configurations. */
 export type ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesInputPrivateLinkConfigurationsItem>;
-export const ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
+const ClusterCreatePropertiesInputPrivateLinkConfigurationsList =
   ApplicationPropertiesInputPrivateLinkConfigurationsList as any as S.Schema<ClusterCreatePropertiesInputPrivateLinkConfigurationsList>;
 
 /** The cluster create parameters. */
@@ -1427,7 +1407,7 @@ export interface ClusterCreatePropertiesInput {
   /** The private link configurations. */
   privateLinkConfigurations?: ClusterCreatePropertiesInputPrivateLinkConfigurationsList;
 }
-export const ClusterCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterCreatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterVersion: S.optional(S.String),
     osType: S.optional(ClusterCreatePropertiesInputOsType),
@@ -1456,14 +1436,14 @@ export type ClusterIdentityInputType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ClusterIdentityInputType = S.String;
+const ClusterIdentityInputType = S.String;
 
 /** The User Assigned Identity */
 export interface UserAssignedIdentityInput {
   /** The tenant id of user assigned identity. */
   tenantId?: string;
 }
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
   }),
@@ -1475,7 +1455,7 @@ export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
 export type ClusterIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const ClusterIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ClusterIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<ClusterIdentityInputUserAssignedIdentitiesMap>;
@@ -1487,7 +1467,7 @@ export interface ClusterIdentityInput {
   /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ClusterIdentityInputUserAssignedIdentitiesMap;
 }
-export const ClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
+const ClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ClusterIdentityInputType),
     userAssignedIdentities: S.optional(ClusterIdentityInputUserAssignedIdentitiesMap),
@@ -1512,7 +1492,7 @@ export interface CreateClusterRequest {
   /** The identity of the cluster, if configured. */
   identity?: ClusterIdentityInput;
 }
-export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1534,25 +1514,25 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const CreateClusterResponseTagsMap =
+const CreateClusterResponseTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<CreateClusterResponseTagsMap>;
 
 /** The availability zones. */
 export type CreateClusterResponseZonesList = Array<string>;
-export const CreateClusterResponseZonesList =
+const CreateClusterResponseZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CreateClusterResponseZonesList>;
 
 /** The type of operating system. */
 export type ClusterGetPropertiesOsType = "Windows" | "Linux";
-export const ClusterGetPropertiesOsType = S.String;
+const ClusterGetPropertiesOsType = S.String;
 
 /** The cluster tier. */
 export type ClusterGetPropertiesTier = "Standard" | "Premium";
-export const ClusterGetPropertiesTier = S.String;
+const ClusterGetPropertiesTier = S.String;
 
 /** The list of roles in the cluster. */
 export type ComputeProfileRolesList = Array<Role>;
-export const ComputeProfileRolesList =
+const ComputeProfileRolesList =
   ApplicationPropertiesComputeProfileRolesList as any as S.Schema<ComputeProfileRolesList>;
 
 /** Describes the compute profile. */
@@ -1560,7 +1540,7 @@ export interface ComputeProfile {
   /** The list of roles in the cluster. */
   roles?: ComputeProfileRolesList;
 }
-export const ComputeProfile = /*@__PURE__*/ S.suspend(() =>
+const ComputeProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ComputeProfileRolesList),
   }),
@@ -1573,14 +1553,14 @@ export type ClusterGetPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-export const ClusterGetPropertiesProvisioningState = S.String;
+const ClusterGetPropertiesProvisioningState = S.String;
 
 /** The quota properties for the cluster. */
 export interface QuotaInfo {
   /** The cores used by the cluster. */
   coresUsed?: number;
 }
-export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
+const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coresUsed: S.optional(S.Number),
   }),
@@ -1588,11 +1568,9 @@ export const QuotaInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error message associated with the cluster creation. */
 export type Errors = ApplicationPropertiesInputErrorsItem;
-export const Errors = ApplicationPropertiesInputErrorsItem;
-
 /** The list of errors. */
 export type ClusterGetPropertiesErrorsList = Array<ApplicationPropertiesInputErrorsItem>;
-export const ClusterGetPropertiesErrorsList =
+const ClusterGetPropertiesErrorsList =
   ApplicationPropertiesInputErrorsList as any as S.Schema<ClusterGetPropertiesErrorsList>;
 
 /** The connectivity properties */
@@ -1608,7 +1586,7 @@ export interface ConnectivityEndpoint {
   /** The private ip address of the endpoint. */
   privateIPAddress?: string;
 }
-export const ConnectivityEndpoint = /*@__PURE__*/ S.suspend(() =>
+const ConnectivityEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     protocol: S.optional(S.String),
@@ -1620,7 +1598,7 @@ export const ConnectivityEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of connectivity endpoints. */
 export type ClusterGetPropertiesConnectivityEndpointsList = Array<ConnectivityEndpoint>;
-export const ClusterGetPropertiesConnectivityEndpointsList = /*@__PURE__*/ S.Array(
+const ClusterGetPropertiesConnectivityEndpointsList = /*@__PURE__*/ S.Array(
   ConnectivityEndpoint,
 ) as any as S.Schema<ClusterGetPropertiesConnectivityEndpointsList>;
 
@@ -1631,7 +1609,7 @@ export interface ExcludedServicesConfig {
   /** The list of excluded services. */
   excludedServicesList?: string;
 }
-export const ExcludedServicesConfig = /*@__PURE__*/ S.suspend(() =>
+const ExcludedServicesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excludedServicesConfigId: S.optional(S.String),
     excludedServicesList: S.optional(S.String),
@@ -1640,12 +1618,10 @@ export const ExcludedServicesConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link configuration. */
 export type PrivateLinkConfiguration = ApplicationPropertiesPrivateLinkConfigurationsItem;
-export const PrivateLinkConfiguration = ApplicationPropertiesPrivateLinkConfigurationsItem;
-
 /** The private link configurations. */
 export type ClusterGetPropertiesPrivateLinkConfigurationsList =
   Array<ApplicationPropertiesPrivateLinkConfigurationsItem>;
-export const ClusterGetPropertiesPrivateLinkConfigurationsList =
+const ClusterGetPropertiesPrivateLinkConfigurationsList =
   ApplicationPropertiesPrivateLinkConfigurationsList as any as S.Schema<ClusterGetPropertiesPrivateLinkConfigurationsList>;
 
 /** The private endpoint. */
@@ -1653,7 +1629,7 @@ export interface PrivateEndpoint {
   /** The private endpoint id. */
   id?: string;
 }
-export const PrivateEndpoint = ResourceId as any as S.Schema<PrivateEndpoint>;
+const PrivateEndpoint = ResourceId as any as S.Schema<PrivateEndpoint>;
 
 /** The concrete private link service connection. */
 export type PrivateLinkServiceConnectionStateStatus =
@@ -1661,7 +1637,7 @@ export type PrivateLinkServiceConnectionStateStatus =
   | "Rejected"
   | "Pending"
   | "Removed";
-export const PrivateLinkServiceConnectionStateStatus = S.String;
+const PrivateLinkServiceConnectionStateStatus = S.String;
 
 /** The private link service connection state. */
 export interface PrivateLinkServiceConnectionState {
@@ -1672,7 +1648,7 @@ export interface PrivateLinkServiceConnectionState {
   /** Whether there is further actions. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: PrivateLinkServiceConnectionStateStatus,
     description: S.optional(S.String),
@@ -1690,7 +1666,7 @@ export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Deleting";
-export const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
+const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
 
 /** The private endpoint connection properties. */
 export interface PrivateEndpointConnectionProperties {
@@ -1703,7 +1679,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state, which only appears in the response. */
   provisioningState?: PrivateEndpointConnectionPropertiesProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(PrivateEndpoint),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -1720,7 +1696,7 @@ export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedB
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType = S.String;
+const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
@@ -1728,8 +1704,7 @@ export type ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModi
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType =
-  S.String;
+const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData {
@@ -1746,20 +1721,19 @@ export interface ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdBy: S.optional(S.String),
-      createdByType: S.optional(
-        ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType,
-      ),
-      createdAt: S.optional(S.String),
-      lastModifiedBy: S.optional(S.String),
-      lastModifiedByType: S.optional(
-        ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType,
-      ),
-      lastModifiedAt: S.optional(S.String),
-    }),
+const ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(
+      ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataCreatedByType,
+    ),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      ClusterGetPropertiesPrivateEndpointConnectionsItemSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData",
 }) as any as S.Schema<ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData>;
@@ -1777,7 +1751,7 @@ export interface ClusterGetPropertiesPrivateEndpointConnectionsItem {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData;
 }
-export const ClusterGetPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+const ClusterGetPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1792,7 +1766,7 @@ export const ClusterGetPropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ 
 /** The list of private endpoint connections. */
 export type ClusterGetPropertiesPrivateEndpointConnectionsList =
   Array<ClusterGetPropertiesPrivateEndpointConnectionsItem>;
-export const ClusterGetPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const ClusterGetPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   ClusterGetPropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<ClusterGetPropertiesPrivateEndpointConnectionsList>;
 
@@ -1847,7 +1821,7 @@ export interface ClusterGetProperties {
   /** The list of private endpoint connections. */
   privateEndpointConnections?: ClusterGetPropertiesPrivateEndpointConnectionsList;
 }
-export const ClusterGetProperties = /*@__PURE__*/ S.suspend(() =>
+const ClusterGetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterVersion: S.optional(S.String),
     clusterHdpVersion: S.optional(S.String),
@@ -1882,7 +1856,7 @@ export type ClusterIdentityType =
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-export const ClusterIdentityType = S.String;
+const ClusterIdentityType = S.String;
 
 /** The User Assigned Identity */
 export interface UserAssignedIdentity {
@@ -1893,7 +1867,7 @@ export interface UserAssignedIdentity {
   /** The tenant id of user assigned identity. */
   tenantId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1905,7 +1879,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 export type ClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-export const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentity,
 ) as any as S.Schema<ClusterIdentityUserAssignedIdentitiesMap>;
@@ -1921,7 +1895,7 @@ export interface ClusterIdentity {
   /** The list of user identities associated with the cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ClusterIdentityUserAssignedIdentitiesMap;
 }
-export const ClusterIdentity = /*@__PURE__*/ S.suspend(() =>
+const ClusterIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -1936,16 +1910,12 @@ export type CreateClusterResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateClusterResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type CreateClusterResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const CreateClusterResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface CreateClusterResponseSystemData {
   /** The identity that created the resource. */
@@ -1961,7 +1931,7 @@ export interface CreateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const CreateClusterResponseSystemData =
+const CreateClusterResponseSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<CreateClusterResponseSystemData>;
 
 export interface CreateClusterResponse {
@@ -1986,7 +1956,7 @@ export interface CreateClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CreateClusterResponseSystemData;
 }
-export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2015,7 +1985,7 @@ export interface CreateExtensionRequest {
   /** The certificate for the cluster monitoring extensions. */
   primaryKey?: string;
 }
-export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2034,7 +2004,7 @@ export const CreateExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateExtensionRequest" }) as any as S.Schema<CreateExtensionRequest>;
 
 export interface CreateExtensionResponse {}
-export const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateExtensionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateExtensionResponse",
 }) as any as S.Schema<CreateExtensionResponse>;
 
@@ -2048,7 +2018,7 @@ export interface DeleteApplicationRequest {
   /** The constant value for the application name. */
   applicationName: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2065,7 +2035,7 @@ export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteApplicationRequest" }) as any as S.Schema<DeleteApplicationRequest>;
 
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse =
+const DeleteApplicationResponse =
   CreateExtensionResponse as any as S.Schema<DeleteApplicationResponse>;
 
 export interface DeleteClusterRequest {
@@ -2076,7 +2046,7 @@ export interface DeleteClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2092,8 +2062,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteClusterRequest" }) as any as S.Schema<DeleteClusterRequest>;
 
 export interface DeleteClusterResponse {}
-export const DeleteClusterResponse =
-  CreateExtensionResponse as any as S.Schema<DeleteClusterResponse>;
+const DeleteClusterResponse = CreateExtensionResponse as any as S.Schema<DeleteClusterResponse>;
 
 export interface DeleteExtensionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2105,7 +2074,7 @@ export interface DeleteExtensionRequest {
   /** The name of the cluster extension. */
   extensionName: string;
 }
-export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2122,8 +2091,7 @@ export const DeleteExtensionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteExtensionRequest" }) as any as S.Schema<DeleteExtensionRequest>;
 
 export interface DeleteExtensionResponse {}
-export const DeleteExtensionResponse =
-  CreateExtensionResponse as any as S.Schema<DeleteExtensionResponse>;
+const DeleteExtensionResponse = CreateExtensionResponse as any as S.Schema<DeleteExtensionResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -2135,7 +2103,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2154,7 +2122,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -2170,7 +2138,7 @@ export interface DeleteScriptActionRequest {
   /** The name of the script. */
   scriptName: string;
 }
-export const DeleteScriptActionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScriptActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2189,7 +2157,7 @@ export const DeleteScriptActionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteScriptActionRequest>;
 
 export interface DeleteScriptActionResponse {}
-export const DeleteScriptActionResponse =
+const DeleteScriptActionResponse =
   CreateExtensionResponse as any as S.Schema<DeleteScriptActionResponse>;
 
 export interface DisableExtensionAzureMonitorRequest {
@@ -2200,7 +2168,7 @@ export interface DisableExtensionAzureMonitorRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DisableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2218,7 +2186,7 @@ export const DisableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableExtensionAzureMonitorRequest>;
 
 export interface DisableExtensionAzureMonitorResponse {}
-export const DisableExtensionAzureMonitorResponse =
+const DisableExtensionAzureMonitorResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<DisableExtensionAzureMonitorResponse>;
 
 export interface DisableExtensionMonitoringRequest {
@@ -2229,7 +2197,7 @@ export interface DisableExtensionMonitoringRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const DisableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2247,14 +2215,14 @@ export const DisableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableExtensionMonitoringRequest>;
 
 export interface DisableExtensionMonitoringResponse {}
-export const DisableExtensionMonitoringResponse =
+const DisableExtensionMonitoringResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<DisableExtensionMonitoringResponse>;
 
 /** The global configurations of selected configurations. */
 export type AzureMonitorSelectedConfigurationsGlobalConfigurationsMap = {
   [key: string]: string | undefined;
 };
-export const AzureMonitorSelectedConfigurationsGlobalConfigurationsMap =
+const AzureMonitorSelectedConfigurationsGlobalConfigurationsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<AzureMonitorSelectedConfigurationsGlobalConfigurationsMap>;
 
 /** The table configuration for the Log Analytics integration. */
@@ -2262,7 +2230,7 @@ export interface AzureMonitorTableConfiguration {
   /** The name. */
   name?: string;
 }
-export const AzureMonitorTableConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorTableConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -2272,7 +2240,7 @@ export const AzureMonitorTableConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** The table list. */
 export type AzureMonitorSelectedConfigurationsTableListList = Array<AzureMonitorTableConfiguration>;
-export const AzureMonitorSelectedConfigurationsTableListList = /*@__PURE__*/ S.Array(
+const AzureMonitorSelectedConfigurationsTableListList = /*@__PURE__*/ S.Array(
   AzureMonitorTableConfiguration,
 ) as any as S.Schema<AzureMonitorSelectedConfigurationsTableListList>;
 
@@ -2285,7 +2253,7 @@ export interface AzureMonitorSelectedConfigurations {
   /** The table list. */
   tableList?: AzureMonitorSelectedConfigurationsTableListList;
 }
-export const AzureMonitorSelectedConfigurations = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorSelectedConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationVersion: S.optional(S.String),
     globalConfigurations: S.optional(AzureMonitorSelectedConfigurationsGlobalConfigurationsMap),
@@ -2309,7 +2277,7 @@ export interface EnableExtensionAzureMonitorRequest {
   /** The selected configurations. */
   selectedConfigurations?: AzureMonitorSelectedConfigurations;
 }
-export const EnableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2330,7 +2298,7 @@ export const EnableExtensionAzureMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableExtensionAzureMonitorRequest>;
 
 export interface EnableExtensionAzureMonitorResponse {}
-export const EnableExtensionAzureMonitorResponse =
+const EnableExtensionAzureMonitorResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<EnableExtensionAzureMonitorResponse>;
 
 export interface EnableExtensionMonitoringRequest {
@@ -2345,7 +2313,7 @@ export interface EnableExtensionMonitoringRequest {
   /** The cluster monitor workspace key. */
   primaryKey?: string;
 }
-export const EnableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2365,12 +2333,12 @@ export const EnableExtensionMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableExtensionMonitoringRequest>;
 
 export interface EnableExtensionMonitoringResponse {}
-export const EnableExtensionMonitoringResponse =
+const EnableExtensionMonitoringResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<EnableExtensionMonitoringResponse>;
 
 /** The list of roles where script will be executed. */
 export type RuntimeScriptActionInputRolesList = Array<string>;
-export const RuntimeScriptActionInputRolesList =
+const RuntimeScriptActionInputRolesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RuntimeScriptActionInputRolesList>;
 
 /** Describes a script action on a running cluster. */
@@ -2384,7 +2352,7 @@ export interface RuntimeScriptActionInput {
   /** The list of roles where script will be executed. */
   roles: RuntimeScriptActionInputRolesList;
 }
-export const RuntimeScriptActionInput = /*@__PURE__*/ S.suspend(() =>
+const RuntimeScriptActionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uri: S.String,
@@ -2395,7 +2363,7 @@ export const RuntimeScriptActionInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of run time script actions. */
 export type ExecuteClusterScriptActionsRequestScriptActionsList = Array<RuntimeScriptActionInput>;
-export const ExecuteClusterScriptActionsRequestScriptActionsList = /*@__PURE__*/ S.Array(
+const ExecuteClusterScriptActionsRequestScriptActionsList = /*@__PURE__*/ S.Array(
   RuntimeScriptActionInput,
 ) as any as S.Schema<ExecuteClusterScriptActionsRequestScriptActionsList>;
 
@@ -2411,7 +2379,7 @@ export interface ExecuteClusterScriptActionsRequest {
   /** Gets or sets if the scripts needs to be persisted. */
   persistOnSuccess: boolean;
 }
-export const ExecuteClusterScriptActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteClusterScriptActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2431,7 +2399,7 @@ export const ExecuteClusterScriptActionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteClusterScriptActionsRequest>;
 
 export interface ExecuteClusterScriptActionsResponse {}
-export const ExecuteClusterScriptActionsResponse =
+const ExecuteClusterScriptActionsResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<ExecuteClusterScriptActionsResponse>;
 
 export interface GetApplicationRequest {
@@ -2444,7 +2412,7 @@ export interface GetApplicationRequest {
   /** The constant value for the application name. */
   applicationName: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2462,7 +2430,7 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags for the application. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-export const GetApplicationResponseTagsMap =
+const GetApplicationResponseTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<GetApplicationResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -2471,16 +2439,12 @@ export type GetApplicationResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplicationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetApplicationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetApplicationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetApplicationResponseSystemData {
   /** The identity that created the resource. */
@@ -2496,7 +2460,7 @@ export interface GetApplicationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetApplicationResponseSystemData =
+const GetApplicationResponseSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<GetApplicationResponseSystemData>;
 
 export interface GetApplicationResponse {
@@ -2515,7 +2479,7 @@ export interface GetApplicationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetApplicationResponseSystemData;
 }
-export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2539,7 +2503,7 @@ export interface GetApplicationAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetApplicationAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2563,7 +2527,7 @@ export type GetApplicationAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-export const GetApplicationAzureAsyncOperationStatusResponseStatus = S.String;
+const GetApplicationAzureAsyncOperationStatusResponseStatus = S.String;
 
 export interface GetApplicationAzureAsyncOperationStatusResponse {
   /** The async operation state. */
@@ -2571,7 +2535,7 @@ export interface GetApplicationAzureAsyncOperationStatusResponse {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetApplicationAzureAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApplicationAzureAsyncOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GetApplicationAzureAsyncOperationStatusResponseStatus),
     error: S.optional(ApplicationPropertiesInputErrorsItem),
@@ -2588,7 +2552,7 @@ export interface GetClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2605,12 +2569,12 @@ export const GetClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-export const GetClusterResponseTagsMap =
+const GetClusterResponseTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
 
 /** The availability zones. */
 export type GetClusterResponseZonesList = Array<string>;
-export const GetClusterResponseZonesList =
+const GetClusterResponseZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetClusterResponseZonesList>;
 
 /** The type of identity that created the resource. */
@@ -2619,16 +2583,12 @@ export type GetClusterResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClusterResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetClusterResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetClusterResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetClusterResponseSystemData {
   /** The identity that created the resource. */
@@ -2644,7 +2604,7 @@ export interface GetClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetClusterResponseSystemData =
+const GetClusterResponseSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<GetClusterResponseSystemData>;
 
 export interface GetClusterResponse {
@@ -2669,7 +2629,7 @@ export interface GetClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetClusterResponseSystemData;
 }
-export const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const GetClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2694,7 +2654,7 @@ export interface GetClusterAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetClusterAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2714,7 +2674,7 @@ export const GetClusterAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspen
 
 /** The async operation state. */
 export type AsyncOperationResultStatus = "InProgress" | "Succeeded" | "Failed";
-export const AsyncOperationResultStatus = S.String;
+const AsyncOperationResultStatus = S.String;
 
 /** The azure async operation response. */
 export interface AsyncOperationResult {
@@ -2723,7 +2683,7 @@ export interface AsyncOperationResult {
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const AsyncOperationResult = /*@__PURE__*/ S.suspend(() =>
+const AsyncOperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(AsyncOperationResultStatus),
     error: S.optional(ApplicationPropertiesInputErrorsItem),
@@ -2738,7 +2698,7 @@ export interface GetClusterGatewaySettingsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetClusterGatewaySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClusterGatewaySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2764,7 +2724,7 @@ export interface GatewaySettings {
   /** The gateway settings user password. */
   restAuthCredential_password?: string | Redacted.Redacted<string>;
 }
-export const GatewaySettings = /*@__PURE__*/ S.suspend(() =>
+const GatewaySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restAuthCredential_isEnabled: S.optional(S.String.pipe(T.Body("restAuthCredential.isEnabled"))),
     restAuthCredential_username: S.optional(S.String.pipe(T.Body("restAuthCredential.username"))),
@@ -2784,7 +2744,7 @@ export interface GetConfigurationRequest {
   /** The name of the cluster configuration. */
   configurationName: string;
 }
-export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2802,11 +2762,11 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The configuration object for the specified configuration for the specified cluster. */
 export type ClusterConfiguration = { [key: string]: string | undefined };
-export const ClusterConfiguration =
+const ClusterConfiguration =
   CreateApplicationRequestTagsMap as any as S.Schema<ClusterConfiguration>;
 
 export type GetConfigurationResponse = ClusterConfiguration;
-export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   ClusterConfiguration.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetConfigurationResponse" }) as any as S.Schema<GetConfigurationResponse>;
 
@@ -2820,7 +2780,7 @@ export interface GetExtensionRequest {
   /** The name of the cluster extension. */
   extensionName: string;
 }
-export const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2843,7 +2803,7 @@ export interface ClusterMonitoringResponse {
   /** The workspace ID of the monitor on the HDInsight cluster. */
   workspaceId?: string;
 }
-export const ClusterMonitoringResponse = /*@__PURE__*/ S.suspend(() =>
+const ClusterMonitoringResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterMonitoringEnabled: S.optional(S.Boolean),
     workspaceId: S.optional(S.String),
@@ -2864,7 +2824,7 @@ export interface GetExtensionAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetExtensionAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2888,15 +2848,13 @@ export type GetExtensionAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-export const GetExtensionAzureAsyncOperationStatusResponseStatus = S.String;
-
 export interface GetExtensionAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: GetExtensionAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetExtensionAzureAsyncOperationStatusResponse =
+const GetExtensionAzureAsyncOperationStatusResponse =
   GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetExtensionAzureAsyncOperationStatusResponse>;
 
 export interface GetExtensionAzureMonitorStatusRequest {
@@ -2907,7 +2865,7 @@ export interface GetExtensionAzureMonitorStatusRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetExtensionAzureMonitorStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionAzureMonitorStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2933,7 +2891,7 @@ export interface AzureMonitorResponse {
   /** The selected configurations. */
   selectedConfigurations?: AzureMonitorSelectedConfigurations;
 }
-export const AzureMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const AzureMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterMonitoringEnabled: S.optional(S.Boolean),
     workspaceId: S.optional(S.String),
@@ -2949,7 +2907,7 @@ export interface GetExtensionMonitoringStatusRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const GetExtensionMonitoringStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtensionMonitoringStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2974,7 +2932,7 @@ export interface GetLocationAzureAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetLocationAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationAzureAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2996,15 +2954,13 @@ export type GetLocationAzureAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-export const GetLocationAzureAsyncOperationStatusResponseStatus = S.String;
-
 export interface GetLocationAzureAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: GetLocationAzureAsyncOperationStatusResponseStatus;
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetLocationAzureAsyncOperationStatusResponse =
+const GetLocationAzureAsyncOperationStatusResponse =
   GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetLocationAzureAsyncOperationStatusResponse>;
 
 export interface GetLocationCapabilitiesRequest {
@@ -3013,7 +2969,7 @@ export interface GetLocationCapabilitiesRequest {
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-export const GetLocationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3031,7 +2987,7 @@ export const GetLocationCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The component version property. */
 export type VersionSpecComponentVersionsMap = { [key: string]: string | undefined };
-export const VersionSpecComponentVersionsMap =
+const VersionSpecComponentVersionsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<VersionSpecComponentVersionsMap>;
 
 /** The version properties. */
@@ -3045,7 +3001,7 @@ export interface VersionSpec {
   /** The component version property. */
   componentVersions?: VersionSpecComponentVersionsMap;
 }
-export const VersionSpec = /*@__PURE__*/ S.suspend(() =>
+const VersionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     friendlyName: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -3056,7 +3012,7 @@ export const VersionSpec = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of version capabilities. */
 export type VersionsCapabilityAvailableList = Array<VersionSpec>;
-export const VersionsCapabilityAvailableList = /*@__PURE__*/ S.Array(
+const VersionsCapabilityAvailableList = /*@__PURE__*/ S.Array(
   VersionSpec,
 ) as any as S.Schema<VersionsCapabilityAvailableList>;
 
@@ -3065,7 +3021,7 @@ export interface VersionsCapability {
   /** The list of version capabilities. */
   available?: VersionsCapabilityAvailableList;
 }
-export const VersionsCapability = /*@__PURE__*/ S.suspend(() =>
+const VersionsCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(VersionsCapabilityAvailableList),
   }),
@@ -3073,14 +3029,14 @@ export const VersionsCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The version capability. */
 export type CapabilitiesResultVersionsMap = { [key: string]: VersionsCapability | undefined };
-export const CapabilitiesResultVersionsMap = /*@__PURE__*/ S.Record(
+const CapabilitiesResultVersionsMap = /*@__PURE__*/ S.Record(
   S.String,
   VersionsCapability,
 ) as any as S.Schema<CapabilitiesResultVersionsMap>;
 
 /** The list of region capabilities. */
 export type RegionsCapabilityAvailableList = Array<string>;
-export const RegionsCapabilityAvailableList =
+const RegionsCapabilityAvailableList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RegionsCapabilityAvailableList>;
 
 /** The regions capability. */
@@ -3088,7 +3044,7 @@ export interface RegionsCapability {
   /** The list of region capabilities. */
   available?: RegionsCapabilityAvailableList;
 }
-export const RegionsCapability = /*@__PURE__*/ S.suspend(() =>
+const RegionsCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.optional(RegionsCapabilityAvailableList),
   }),
@@ -3096,14 +3052,14 @@ export const RegionsCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The virtual machine size compatibility features. */
 export type CapabilitiesResultRegionsMap = { [key: string]: RegionsCapability | undefined };
-export const CapabilitiesResultRegionsMap = /*@__PURE__*/ S.Record(
+const CapabilitiesResultRegionsMap = /*@__PURE__*/ S.Record(
   S.String,
   RegionsCapability,
 ) as any as S.Schema<CapabilitiesResultRegionsMap>;
 
 /** The capability features. */
 export type CapabilitiesResultFeaturesList = Array<string>;
-export const CapabilitiesResultFeaturesList =
+const CapabilitiesResultFeaturesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<CapabilitiesResultFeaturesList>;
 
 /** The regional quota capacity. */
@@ -3115,7 +3071,7 @@ export interface RegionalQuotaCapability {
   /** The number of cores available in the region. */
   coresAvailable?: number;
 }
-export const RegionalQuotaCapability = /*@__PURE__*/ S.suspend(() =>
+const RegionalQuotaCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionName: S.optional(S.String),
     coresUsed: S.optional(S.Number),
@@ -3125,7 +3081,7 @@ export const RegionalQuotaCapability = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of region quota capabilities. */
 export type QuotaCapabilityRegionalQuotasList = Array<RegionalQuotaCapability>;
-export const QuotaCapabilityRegionalQuotasList = /*@__PURE__*/ S.Array(
+const QuotaCapabilityRegionalQuotasList = /*@__PURE__*/ S.Array(
   RegionalQuotaCapability,
 ) as any as S.Schema<QuotaCapabilityRegionalQuotasList>;
 
@@ -3138,7 +3094,7 @@ export interface QuotaCapability {
   /** The list of region quota capabilities. */
   regionalQuotas?: QuotaCapabilityRegionalQuotasList;
 }
-export const QuotaCapability = /*@__PURE__*/ S.suspend(() =>
+const QuotaCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coresUsed: S.optional(S.Number),
     maxCoresAllowed: S.optional(S.Number),
@@ -3157,7 +3113,7 @@ export interface CapabilitiesResult {
   /** The quota capability. */
   quota?: QuotaCapability;
 }
-export const CapabilitiesResult = /*@__PURE__*/ S.suspend(() =>
+const CapabilitiesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: S.optional(CapabilitiesResultVersionsMap),
     regions: S.optional(CapabilitiesResultRegionsMap),
@@ -3176,7 +3132,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3200,7 +3156,7 @@ export type GetPrivateEndpointConnectionResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPrivateEndpointConnectionResponseSystemDataCreatedByType = S.String;
+const GetPrivateEndpointConnectionResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType =
@@ -3208,7 +3164,7 @@ export type GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType = S.String;
+const GetPrivateEndpointConnectionResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPrivateEndpointConnectionResponseSystemData {
@@ -3225,7 +3181,7 @@ export interface GetPrivateEndpointConnectionResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateEndpointConnectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetPrivateEndpointConnectionResponseSystemDataCreatedByType),
@@ -3252,7 +3208,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPrivateEndpointConnectionResponseSystemData;
 }
-export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3274,7 +3230,7 @@ export interface GetPrivateLinkResourceRequest {
   /** The name of the private link resource. */
   privateLinkResourceName: string;
 }
-export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3294,12 +3250,12 @@ export const GetPrivateLinkResourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredMembersList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
+const GetPrivateLinkResourceResponsePropertiesRequiredMembersList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredMembersList>;
 
 /** The private link resource Private link DNS zone name. */
 export type GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList = Array<string>;
-export const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
+const GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -3311,7 +3267,7 @@ export interface GetPrivateLinkResourceResponseProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: GetPrivateLinkResourceResponsePropertiesRequiredZoneNamesList;
 }
-export const GetPrivateLinkResourceResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(GetPrivateLinkResourceResponsePropertiesRequiredMembersList),
@@ -3327,16 +3283,12 @@ export type GetPrivateLinkResourceResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPrivateLinkResourceResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetPrivateLinkResourceResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetPrivateLinkResourceResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetPrivateLinkResourceResponseSystemData {
   /** The identity that created the resource. */
@@ -3352,7 +3304,7 @@ export interface GetPrivateLinkResourceResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetPrivateLinkResourceResponseSystemData =
+const GetPrivateLinkResourceResponseSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<GetPrivateLinkResourceResponseSystemData>;
 
 export interface GetPrivateLinkResourceResponse {
@@ -3367,7 +3319,7 @@ export interface GetPrivateLinkResourceResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetPrivateLinkResourceResponseSystemData;
 }
-export const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateLinkResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3389,7 +3341,7 @@ export interface GetScriptActionExecutionAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetScriptActionExecutionAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptActionExecutionAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3412,15 +3364,13 @@ export type GetScriptActionExecutionAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-export const GetScriptActionExecutionAsyncOperationStatusResponseStatus = S.String;
-
 export interface GetScriptActionExecutionAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: GetScriptActionExecutionAsyncOperationStatusResponseStatus;
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetScriptActionExecutionAsyncOperationStatusResponse =
+const GetScriptActionExecutionAsyncOperationStatusResponse =
   GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetScriptActionExecutionAsyncOperationStatusResponse>;
 
 export interface GetScriptActionExecutionDetailRequest {
@@ -3433,7 +3383,7 @@ export interface GetScriptActionExecutionDetailRequest {
   /** The script execution Id */
   scriptExecutionId: string;
 }
-export const GetScriptActionExecutionDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScriptActionExecutionDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3453,7 +3403,7 @@ export const GetScriptActionExecutionDetailRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The list of roles where script will be executed. */
 export type GetScriptActionExecutionDetailResponseRolesList = Array<string>;
-export const GetScriptActionExecutionDetailResponseRolesList =
+const GetScriptActionExecutionDetailResponseRolesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<GetScriptActionExecutionDetailResponseRolesList>;
 
 /** The execution summary of a script action. */
@@ -3463,7 +3413,7 @@ export interface ScriptActionExecutionSummary {
   /** The instance count for a given script action execution status. */
   instanceCount?: number;
 }
-export const ScriptActionExecutionSummary = /*@__PURE__*/ S.suspend(() =>
+const ScriptActionExecutionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     instanceCount: S.optional(S.Number),
@@ -3475,7 +3425,7 @@ export const ScriptActionExecutionSummary = /*@__PURE__*/ S.suspend(() =>
 /** The summary of script action execution result. */
 export type GetScriptActionExecutionDetailResponseExecutionSummaryList =
   Array<ScriptActionExecutionSummary>;
-export const GetScriptActionExecutionDetailResponseExecutionSummaryList = /*@__PURE__*/ S.Array(
+const GetScriptActionExecutionDetailResponseExecutionSummaryList = /*@__PURE__*/ S.Array(
   ScriptActionExecutionSummary,
 ) as any as S.Schema<GetScriptActionExecutionDetailResponseExecutionSummaryList>;
 
@@ -3505,7 +3455,7 @@ export interface GetScriptActionExecutionDetailResponse {
   /** The script action execution debug information. */
   debugInformation?: string;
 }
-export const GetScriptActionExecutionDetailResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScriptActionExecutionDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     uri: S.String,
@@ -3534,7 +3484,7 @@ export interface GetVirtualMachineAsyncOperationStatusRequest {
   /** The long running operation id. */
   operationId: string;
 }
-export const GetVirtualMachineAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineAsyncOperationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3557,15 +3507,13 @@ export type GetVirtualMachineAsyncOperationStatusResponseStatus =
   | "InProgress"
   | "Succeeded"
   | "Failed";
-export const GetVirtualMachineAsyncOperationStatusResponseStatus = S.String;
-
 export interface GetVirtualMachineAsyncOperationStatusResponse {
   /** The async operation state. */
   status?: GetVirtualMachineAsyncOperationStatusResponseStatus;
   /** The operation error information. */
   error?: ApplicationPropertiesInputErrorsItem;
 }
-export const GetVirtualMachineAsyncOperationStatusResponse =
+const GetVirtualMachineAsyncOperationStatusResponse =
   GetApplicationAzureAsyncOperationStatusResponse as any as S.Schema<GetVirtualMachineAsyncOperationStatusResponse>;
 
 export interface ListApplicationByClusterRequest {
@@ -3576,7 +3524,7 @@ export interface ListApplicationByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListApplicationByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApplicationByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3595,12 +3543,11 @@ export const ListApplicationByClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tags for the application. */
 export type ApplicationTagsMap = { [key: string]: string | undefined };
-export const ApplicationTagsMap =
-  CreateApplicationRequestTagsMap as any as S.Schema<ApplicationTagsMap>;
+const ApplicationTagsMap = CreateApplicationRequestTagsMap as any as S.Schema<ApplicationTagsMap>;
 
 /** The type of identity that created the resource. */
 export type ApplicationSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ApplicationSystemDataCreatedByType = S.String;
+const ApplicationSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ApplicationSystemDataLastModifiedByType =
@@ -3608,7 +3555,7 @@ export type ApplicationSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ApplicationSystemDataLastModifiedByType = S.String;
+const ApplicationSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplicationSystemData {
@@ -3625,7 +3572,7 @@ export interface ApplicationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ApplicationSystemData = /*@__PURE__*/ S.suspend(() =>
+const ApplicationSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ApplicationSystemDataCreatedByType),
@@ -3653,7 +3600,7 @@ export interface Application {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ApplicationSystemData;
 }
-export const Application = /*@__PURE__*/ S.suspend(() =>
+const Application = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3667,7 +3614,7 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of HDInsight applications installed on HDInsight cluster. */
 export type ApplicationListResultValueList = Array<Application>;
-export const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
+const ApplicationListResultValueList = /*@__PURE__*/ S.Array(
   Application,
 ) as any as S.Schema<ApplicationListResultValueList>;
 
@@ -3678,7 +3625,7 @@ export interface ApplicationListResult {
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const ApplicationListResult = /*@__PURE__*/ S.suspend(() =>
+const ApplicationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ApplicationListResultValueList),
     nextLink: S.optional(S.String),
@@ -3691,7 +3638,7 @@ export interface ListClusterByResourceGroupRequest {
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3709,25 +3656,21 @@ export const ListClusterByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
-export const ClusterTagsMap = CreateApplicationRequestTagsMap as any as S.Schema<ClusterTagsMap>;
+const ClusterTagsMap = CreateApplicationRequestTagsMap as any as S.Schema<ClusterTagsMap>;
 
 /** The availability zones. */
 export type ClusterZonesList = Array<string>;
-export const ClusterZonesList =
+const ClusterZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ClusterZonesList>;
 
 /** The type of identity that created the resource. */
 export type ClusterSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ClusterSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ClusterSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ClusterSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ClusterSystemData {
   /** The identity that created the resource. */
@@ -3743,7 +3686,7 @@ export interface ClusterSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ClusterSystemData = ApplicationSystemData as any as S.Schema<ClusterSystemData>;
+const ClusterSystemData = ApplicationSystemData as any as S.Schema<ClusterSystemData>;
 
 /** The HDInsight cluster. */
 export interface Cluster {
@@ -3768,7 +3711,7 @@ export interface Cluster {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: ClusterSystemData;
 }
-export const Cluster = /*@__PURE__*/ S.suspend(() =>
+const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3785,7 +3728,7 @@ export const Cluster = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of Clusters. */
 export type ClusterListResultValueList = Array<Cluster>;
-export const ClusterListResultValueList = /*@__PURE__*/ S.Array(
+const ClusterListResultValueList = /*@__PURE__*/ S.Array(
   Cluster,
 ) as any as S.Schema<ClusterListResultValueList>;
 
@@ -3796,7 +3739,7 @@ export interface ClusterListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ClusterListResultValueList),
     nextLink: S.optional(S.String),
@@ -3807,7 +3750,7 @@ export interface ListClustersRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-export const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClustersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -3828,7 +3771,7 @@ export interface ListConfigurationsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3849,7 +3792,7 @@ export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ClusterConfigurationsConfigurationsMap = {
   [key: string]: ClusterConfiguration | undefined;
 };
-export const ClusterConfigurationsConfigurationsMap = /*@__PURE__*/ S.Record(
+const ClusterConfigurationsConfigurationsMap = /*@__PURE__*/ S.Record(
   S.String,
   ClusterConfiguration,
 ) as any as S.Schema<ClusterConfigurationsConfigurationsMap>;
@@ -3859,7 +3802,7 @@ export interface ClusterConfigurations {
   /** The configuration object for the specified configuration for the specified cluster. */
   configurations?: ClusterConfigurationsConfigurationsMap;
 }
-export const ClusterConfigurations = /*@__PURE__*/ S.suspend(() =>
+const ClusterConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurations: S.optional(ClusterConfigurationsConfigurationsMap),
   }),
@@ -3871,7 +3814,7 @@ export interface ListLocationBillingSpecsRequest {
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-export const ListLocationBillingSpecsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationBillingSpecsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -3889,49 +3832,47 @@ export const ListLocationBillingSpecsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The virtual machine sizes to include or exclude. */
 export type BillingResponseListResultVmSizesList = Array<string>;
-export const BillingResponseListResultVmSizesList =
+const BillingResponseListResultVmSizesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<BillingResponseListResultVmSizesList>;
 
 /** The vm sizes which enable encryption at host. */
 export type BillingResponseListResultVmSizesWithEncryptionAtHostList = Array<string>;
-export const BillingResponseListResultVmSizesWithEncryptionAtHostList =
+const BillingResponseListResultVmSizesWithEncryptionAtHostList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<BillingResponseListResultVmSizesWithEncryptionAtHostList>;
 
 /** The filtering mode. Effectively this can enabling or disabling the VM sizes in a particular set. */
 export type VmSizeCompatibilityFilterV2FilterMode = "Exclude" | "Include" | "Recommend" | "Default";
-export const VmSizeCompatibilityFilterV2FilterMode = S.String;
+const VmSizeCompatibilityFilterV2FilterMode = S.String;
 
 /** The list of regions under the effect of the filter. */
 export type VmSizeCompatibilityFilterV2RegionsList = Array<string>;
-export const VmSizeCompatibilityFilterV2RegionsList =
+const VmSizeCompatibilityFilterV2RegionsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2RegionsList>;
 
 /** The list of cluster flavors under the effect of the filter. */
 export type VmSizeCompatibilityFilterV2ClusterFlavorsList = Array<string>;
-export const VmSizeCompatibilityFilterV2ClusterFlavorsList =
+const VmSizeCompatibilityFilterV2ClusterFlavorsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2ClusterFlavorsList>;
 
 /** The list of node types affected by the filter. */
 export type VmSizeCompatibilityFilterV2NodeTypesList = Array<string>;
-export const VmSizeCompatibilityFilterV2NodeTypesList =
+const VmSizeCompatibilityFilterV2NodeTypesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2NodeTypesList>;
 
 /** The list of cluster versions affected in Major.Minor format. */
 export type VmSizeCompatibilityFilterV2ClusterVersionsList = Array<string>;
-export const VmSizeCompatibilityFilterV2ClusterVersionsList =
+const VmSizeCompatibilityFilterV2ClusterVersionsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2ClusterVersionsList>;
 
 export type VmSizeCompatibilityFilterV2OsTypeItem = "Windows" | "Linux";
-export const VmSizeCompatibilityFilterV2OsTypeItem = S.String;
-
 /** The OSType affected, Windows or Linux. */
 export type VmSizeCompatibilityFilterV2OsTypeList = Array<VmSizeCompatibilityFilterV2OsTypeItem>;
-export const VmSizeCompatibilityFilterV2OsTypeList =
+const VmSizeCompatibilityFilterV2OsTypeList =
   AutoscaleScheduleDaysList as any as S.Schema<VmSizeCompatibilityFilterV2OsTypeList>;
 
 /** The list of virtual machine sizes to include or exclude. */
 export type VmSizeCompatibilityFilterV2VmSizesList = Array<string>;
-export const VmSizeCompatibilityFilterV2VmSizesList =
+const VmSizeCompatibilityFilterV2VmSizesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<VmSizeCompatibilityFilterV2VmSizesList>;
 
 /** This class represent a single filter object that defines a multidimensional set. The dimensions of this set are Regions, ClusterFlavors, NodeTypes and ClusterVersions. The constraint should be defined based on the following: FilterMode (Exclude vs Include), VMSizes (the vm sizes in affect of exclusion/inclusion) and the ordering of the Filters. Later filters override previous settings if conflicted. */
@@ -3955,7 +3896,7 @@ export interface VmSizeCompatibilityFilterV2 {
   /** Whether support compute isolation. 'true' means only for ComputeIsolationEnabled, 'false' means only for regular cluster. */
   computeIsolationSupported?: string;
 }
-export const VmSizeCompatibilityFilterV2 = /*@__PURE__*/ S.suspend(() =>
+const VmSizeCompatibilityFilterV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterMode: S.optional(VmSizeCompatibilityFilterV2FilterMode),
     regions: S.optional(VmSizeCompatibilityFilterV2RegionsList),
@@ -3973,7 +3914,7 @@ export const VmSizeCompatibilityFilterV2 = /*@__PURE__*/ S.suspend(() =>
 
 /** The virtual machine filtering mode. Effectively this can enabling or disabling the virtual machine sizes in a particular set. */
 export type BillingResponseListResultVmSizeFiltersList = Array<VmSizeCompatibilityFilterV2>;
-export const BillingResponseListResultVmSizeFiltersList = /*@__PURE__*/ S.Array(
+const BillingResponseListResultVmSizeFiltersList = /*@__PURE__*/ S.Array(
   VmSizeCompatibilityFilterV2,
 ) as any as S.Schema<BillingResponseListResultVmSizeFiltersList>;
 
@@ -4000,7 +3941,7 @@ export interface VmSizeProperty {
   /** The web worker resource disk size whose unit is MB of the vm size. */
   webWorkerResourceDiskSizeInMb?: number;
 }
-export const VmSizeProperty = /*@__PURE__*/ S.suspend(() =>
+const VmSizeProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     cores: S.optional(S.Number),
@@ -4017,7 +3958,7 @@ export const VmSizeProperty = /*@__PURE__*/ S.suspend(() =>
 
 /** The vm size properties. */
 export type BillingResponseListResultVmSizePropertiesList = Array<VmSizeProperty>;
-export const BillingResponseListResultVmSizePropertiesList = /*@__PURE__*/ S.Array(
+const BillingResponseListResultVmSizePropertiesList = /*@__PURE__*/ S.Array(
   VmSizeProperty,
 ) as any as S.Schema<BillingResponseListResultVmSizePropertiesList>;
 
@@ -4030,7 +3971,7 @@ export interface BillingMeters {
   /** The unit of meter, VMHours or CoreHours. */
   unit?: string;
 }
-export const BillingMeters = /*@__PURE__*/ S.suspend(() =>
+const BillingMeters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meterParameter: S.optional(S.String),
     meter: S.optional(S.String),
@@ -4040,13 +3981,13 @@ export const BillingMeters = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing meter information. */
 export type BillingResourcesBillingMetersList = Array<BillingMeters>;
-export const BillingResourcesBillingMetersList = /*@__PURE__*/ S.Array(
+const BillingResourcesBillingMetersList = /*@__PURE__*/ S.Array(
   BillingMeters,
 ) as any as S.Schema<BillingResourcesBillingMetersList>;
 
 /** The managed disk billing tier, Standard or Premium. */
 export type DiskBillingMetersTier = "Standard" | "Premium";
-export const DiskBillingMetersTier = S.String;
+const DiskBillingMetersTier = S.String;
 
 /** The disk billing meters. */
 export interface DiskBillingMeters {
@@ -4057,7 +3998,7 @@ export interface DiskBillingMeters {
   /** The managed disk billing tier, Standard or Premium. */
   tier?: DiskBillingMetersTier;
 }
-export const DiskBillingMeters = /*@__PURE__*/ S.suspend(() =>
+const DiskBillingMeters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     diskRpMeter: S.optional(S.String),
     sku: S.optional(S.String),
@@ -4067,7 +4008,7 @@ export const DiskBillingMeters = /*@__PURE__*/ S.suspend(() =>
 
 /** The managed disk billing information. */
 export type BillingResourcesDiskBillingMetersList = Array<DiskBillingMeters>;
-export const BillingResourcesDiskBillingMetersList = /*@__PURE__*/ S.Array(
+const BillingResourcesDiskBillingMetersList = /*@__PURE__*/ S.Array(
   DiskBillingMeters,
 ) as any as S.Schema<BillingResourcesDiskBillingMetersList>;
 
@@ -4080,7 +4021,7 @@ export interface BillingResources {
   /** The managed disk billing information. */
   diskBillingMeters?: BillingResourcesDiskBillingMetersList;
 }
-export const BillingResources = /*@__PURE__*/ S.suspend(() =>
+const BillingResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(S.String),
     billingMeters: S.optional(BillingResourcesBillingMetersList),
@@ -4090,7 +4031,7 @@ export const BillingResources = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing and managed disk billing resources for a region. */
 export type BillingResponseListResultBillingResourcesList = Array<BillingResources>;
-export const BillingResponseListResultBillingResourcesList = /*@__PURE__*/ S.Array(
+const BillingResponseListResultBillingResourcesList = /*@__PURE__*/ S.Array(
   BillingResources,
 ) as any as S.Schema<BillingResponseListResultBillingResourcesList>;
 
@@ -4107,7 +4048,7 @@ export interface BillingResponseListResult {
   /** The billing and managed disk billing resources for a region. */
   billingResources?: BillingResponseListResultBillingResourcesList;
 }
-export const BillingResponseListResult = /*@__PURE__*/ S.suspend(() =>
+const BillingResponseListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmSizes: S.optional(BillingResponseListResultVmSizesList),
     vmSizesWithEncryptionAtHost: S.optional(
@@ -4127,7 +4068,7 @@ export interface ListLocationUsagesRequest {
   /** The Azure location (region) for which to make the request. */
   location: string;
 }
-export const ListLocationUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationUsagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -4150,7 +4091,7 @@ export interface LocalizedName {
   /** The localized name of the used resource. */
   localizedValue?: string;
 }
-export const LocalizedName = /*@__PURE__*/ S.suspend(() =>
+const LocalizedName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     localizedValue: S.optional(S.String),
@@ -4168,7 +4109,7 @@ export interface Usage {
   /** The details about the localizable name of the used resource. */
   name?: LocalizedName;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     currentValue: S.optional(S.Number),
@@ -4179,7 +4120,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of usages. */
 export type UsagesListResultValueList = Array<Usage>;
-export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
+const UsagesListResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<UsagesListResultValueList>;
 
@@ -4188,14 +4129,14 @@ export interface UsagesListResult {
   /** The list of usages. */
   value?: UsagesListResultValueList;
 }
-export const UsagesListResult = /*@__PURE__*/ S.suspend(() =>
+const UsagesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsagesListResultValueList),
   }),
 ).annotate({ identifier: "UsagesListResult" }) as any as S.Schema<UsagesListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -4217,7 +4158,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -4228,12 +4169,12 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The supported aggregation types of the metric specification. */
 export type MetricSpecificationsSupportedAggregationTypesList = Array<string>;
-export const MetricSpecificationsSupportedAggregationTypesList =
+const MetricSpecificationsSupportedAggregationTypesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<MetricSpecificationsSupportedAggregationTypesList>;
 
 /** The supported time grain types of the metric specification. */
 export type MetricSpecificationsSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationsSupportedTimeGrainTypesList =
+const MetricSpecificationsSupportedTimeGrainTypesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<MetricSpecificationsSupportedTimeGrainTypesList>;
 
 /** The definition of Dimension. */
@@ -4247,7 +4188,7 @@ export interface Dimension {
   /** The flag indicates whether the metric will be exported for shoebox or not. */
   toBeExportedForShoebox?: boolean;
 }
-export const Dimension = /*@__PURE__*/ S.suspend(() =>
+const Dimension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4258,7 +4199,7 @@ export const Dimension = /*@__PURE__*/ S.suspend(() =>
 
 /** The dimensions of the metric specification. */
 export type MetricSpecificationsDimensionsList = Array<Dimension>;
-export const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
+const MetricSpecificationsDimensionsList = /*@__PURE__*/ S.Array(
   Dimension,
 ) as any as S.Schema<MetricSpecificationsDimensionsList>;
 
@@ -4299,7 +4240,7 @@ export interface MetricSpecifications {
   /** The dimensions of the metric specification. */
   dimensions?: MetricSpecificationsDimensionsList;
 }
-export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
+const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4323,7 +4264,7 @@ export const MetricSpecifications = /*@__PURE__*/ S.suspend(() =>
 
 /** The metric specifications. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecifications>;
-export const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
+const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ S.Array(
   MetricSpecifications,
 ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
 
@@ -4332,7 +4273,7 @@ export interface ServiceSpecification {
   /** The metric specifications. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
   }),
@@ -4343,7 +4284,7 @@ export interface OperationProperties {
   /** The specification of the service. */
   serviceSpecification?: ServiceSpecification;
 }
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+const OperationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceSpecification: S.optional(ServiceSpecification),
   }),
@@ -4358,7 +4299,7 @@ export interface Operation {
   /** The operation properties. */
   properties?: OperationProperties;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -4368,7 +4309,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of HDInsight operations supported by the HDInsight resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -4379,7 +4320,7 @@ export interface OperationListResult {
   /** The URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -4394,7 +4335,7 @@ export interface ListPrivateEndpointConnectionByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListPrivateEndpointConnectionByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4417,16 +4358,12 @@ export type PrivateEndpointConnectionSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionSystemData {
   /** The identity that created the resource. */
@@ -4442,7 +4379,7 @@ export interface PrivateEndpointConnectionSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionSystemData =
+const PrivateEndpointConnectionSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<PrivateEndpointConnectionSystemData>;
 
 /** The private endpoint connection. */
@@ -4458,7 +4395,7 @@ export interface PrivateEndpointConnection {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionSystemData;
 }
-export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4472,7 +4409,7 @@ export const PrivateEndpointConnection = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-export const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ S.Array(
   PrivateEndpointConnection,
 ) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
 
@@ -4483,7 +4420,7 @@ export interface PrivateEndpointConnectionListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateEndpointConnectionListResultValueList),
     nextLink: S.optional(S.String),
@@ -4500,7 +4437,7 @@ export interface ListPrivateLinkResourceByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4519,14 +4456,8 @@ export const ListPrivateLinkResourceByClusterRequest = /*@__PURE__*/ S.suspend((
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -4536,7 +4467,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties =
+const PrivateLinkResourceProperties =
   GetPrivateLinkResourceResponseProperties as any as S.Schema<PrivateLinkResourceProperties>;
 
 /** The type of identity that created the resource. */
@@ -4545,16 +4476,12 @@ export type PrivateLinkResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateLinkResourceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PrivateLinkResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateLinkResourceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateLinkResourceSystemData {
   /** The identity that created the resource. */
@@ -4570,7 +4497,7 @@ export interface PrivateLinkResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateLinkResourceSystemData =
+const PrivateLinkResourceSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<PrivateLinkResourceSystemData>;
 
 /** A private link resource */
@@ -4586,7 +4513,7 @@ export interface PrivateLinkResource {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateLinkResourceSystemData;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4598,7 +4525,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -4607,7 +4534,7 @@ export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PrivateLinkResourceListResultValueList),
   }),
@@ -4623,7 +4550,7 @@ export interface ListScriptActionByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListScriptActionByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptActionByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4642,14 +4569,8 @@ export const ListScriptActionByClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of roles where script will be executed. */
 export type ScriptActionsListValueItemRolesList = Array<string>;
-export const ScriptActionsListValueItemRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ScriptActionsListValueItemRolesList>;
-
 /** The summary of script action execution result. */
 export type ScriptActionsListValueItemExecutionSummaryList = Array<ScriptActionExecutionSummary>;
-export const ScriptActionsListValueItemExecutionSummaryList =
-  GetScriptActionExecutionDetailResponseExecutionSummaryList as any as S.Schema<ScriptActionsListValueItemExecutionSummaryList>;
-
 /** The execution details of a script action. */
 export interface ScriptActionsListValueItem {
   /** The name of the script action. */
@@ -4677,12 +4598,12 @@ export interface ScriptActionsListValueItem {
   /** The script action execution debug information. */
   debugInformation?: string;
 }
-export const ScriptActionsListValueItem =
+const ScriptActionsListValueItem =
   GetScriptActionExecutionDetailResponse as any as S.Schema<ScriptActionsListValueItem>;
 
 /** The list of persisted script action details for the cluster. */
 export type ScriptActionsListValueList = Array<ScriptActionsListValueItem>;
-export const ScriptActionsListValueList = /*@__PURE__*/ S.Array(
+const ScriptActionsListValueList = /*@__PURE__*/ S.Array(
   ScriptActionsListValueItem,
 ) as any as S.Schema<ScriptActionsListValueList>;
 
@@ -4693,7 +4614,7 @@ export interface ScriptActionsList {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ScriptActionsList = /*@__PURE__*/ S.suspend(() =>
+const ScriptActionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ScriptActionsListValueList),
     nextLink: S.optional(S.String),
@@ -4708,7 +4629,7 @@ export interface ListScriptExecutionHistoryByClusterRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListScriptExecutionHistoryByClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScriptExecutionHistoryByClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4727,15 +4648,9 @@ export const ListScriptExecutionHistoryByClusterRequest = /*@__PURE__*/ S.suspen
 
 /** The list of roles where script will be executed. */
 export type ScriptActionExecutionHistoryListValueItemRolesList = Array<string>;
-export const ScriptActionExecutionHistoryListValueItemRolesList =
-  ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ScriptActionExecutionHistoryListValueItemRolesList>;
-
 /** The summary of script action execution result. */
 export type ScriptActionExecutionHistoryListValueItemExecutionSummaryList =
   Array<ScriptActionExecutionSummary>;
-export const ScriptActionExecutionHistoryListValueItemExecutionSummaryList =
-  GetScriptActionExecutionDetailResponseExecutionSummaryList as any as S.Schema<ScriptActionExecutionHistoryListValueItemExecutionSummaryList>;
-
 /** The execution details of a script action. */
 export interface ScriptActionExecutionHistoryListValueItem {
   /** The name of the script action. */
@@ -4763,13 +4678,10 @@ export interface ScriptActionExecutionHistoryListValueItem {
   /** The script action execution debug information. */
   debugInformation?: string;
 }
-export const ScriptActionExecutionHistoryListValueItem =
-  GetScriptActionExecutionDetailResponse as any as S.Schema<ScriptActionExecutionHistoryListValueItem>;
-
 /** The list of persisted script action details for the cluster. */
 export type ScriptActionExecutionHistoryListValueList =
   Array<ScriptActionExecutionHistoryListValueItem>;
-export const ScriptActionExecutionHistoryListValueList =
+const ScriptActionExecutionHistoryListValueList =
   ScriptActionsListValueList as any as S.Schema<ScriptActionExecutionHistoryListValueList>;
 
 /** The list script execution history response. */
@@ -4779,7 +4691,7 @@ export interface ScriptActionExecutionHistoryList {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ScriptActionExecutionHistoryList = /*@__PURE__*/ S.suspend(() =>
+const ScriptActionExecutionHistoryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ScriptActionExecutionHistoryListValueList),
     nextLink: S.optional(S.String),
@@ -4796,7 +4708,7 @@ export interface ListVirtualMachineHostsRequest {
   /** The name of the cluster. */
   clusterName: string;
 }
-export const ListVirtualMachineHostsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineHostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4822,7 +4734,7 @@ export interface HostInfo {
   /** The effective disk encryption key URL used by the host */
   effectiveDiskEncryptionKeyUrl?: string;
 }
-export const HostInfo = /*@__PURE__*/ S.suspend(() =>
+const HostInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fqdn: S.optional(S.String),
@@ -4832,12 +4744,10 @@ export const HostInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Result of the request to list cluster hosts */
 export type HostInfoListResult = Array<HostInfo>;
-export const HostInfoListResult = /*@__PURE__*/ S.Array(
-  HostInfo,
-) as any as S.Schema<HostInfoListResult>;
+const HostInfoListResult = /*@__PURE__*/ S.Array(HostInfo) as any as S.Schema<HostInfoListResult>;
 
 export type ListVirtualMachineHostsResponse = HostInfoListResult;
-export const ListVirtualMachineHostsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineHostsResponse = /*@__PURE__*/ S.suspend(() =>
   HostInfoListResult.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVirtualMachineHostsResponse",
@@ -4847,12 +4757,12 @@ export const ListVirtualMachineHostsResponse = /*@__PURE__*/ S.suspend(() =>
 export type LocationsValidateClusterCreateRequestRequestTagsMap = {
   [key: string]: string | undefined;
 };
-export const LocationsValidateClusterCreateRequestRequestTagsMap =
+const LocationsValidateClusterCreateRequestRequestTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<LocationsValidateClusterCreateRequestRequestTagsMap>;
 
 /** The availability zones. */
 export type LocationsValidateClusterCreateRequestRequestZonesList = Array<string>;
-export const LocationsValidateClusterCreateRequestRequestZonesList =
+const LocationsValidateClusterCreateRequestRequestZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<LocationsValidateClusterCreateRequestRequestZonesList>;
 
 export interface LocationsValidateClusterCreateRequestRequest {
@@ -4877,7 +4787,7 @@ export interface LocationsValidateClusterCreateRequestRequest {
   /** This indicates whether fetch Aadds resource or not. */
   fetchAaddsResource?: boolean;
 }
-export const LocationsValidateClusterCreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const LocationsValidateClusterCreateRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -4903,7 +4813,7 @@ export const LocationsValidateClusterCreateRequestRequest = /*@__PURE__*/ S.susp
 
 /** The message arguments */
 export type ValidationErrorInfoMessageArgumentsList = Array<string>;
-export const ValidationErrorInfoMessageArgumentsList =
+const ValidationErrorInfoMessageArgumentsList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<ValidationErrorInfoMessageArgumentsList>;
 
 /** The validation error information. */
@@ -4917,7 +4827,7 @@ export interface ValidationErrorInfo {
   /** The message arguments */
   messageArguments?: ValidationErrorInfoMessageArgumentsList;
 }
-export const ValidationErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const ValidationErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -4928,13 +4838,13 @@ export const ValidationErrorInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The validation errors. */
 export type ClusterCreateValidationResultValidationErrorsList = Array<ValidationErrorInfo>;
-export const ClusterCreateValidationResultValidationErrorsList = /*@__PURE__*/ S.Array(
+const ClusterCreateValidationResultValidationErrorsList = /*@__PURE__*/ S.Array(
   ValidationErrorInfo,
 ) as any as S.Schema<ClusterCreateValidationResultValidationErrorsList>;
 
 /** The validation warnings. */
 export type ClusterCreateValidationResultValidationWarningsList = Array<ValidationErrorInfo>;
-export const ClusterCreateValidationResultValidationWarningsList =
+const ClusterCreateValidationResultValidationWarningsList =
   ClusterCreateValidationResultValidationErrorsList as any as S.Schema<ClusterCreateValidationResultValidationWarningsList>;
 
 /** The Azure active directory domain service resource details. */
@@ -4954,7 +4864,7 @@ export interface AaddsResourceDetails {
   /** The tenant id of azure active directory domain service . */
   tenantId?: string;
 }
-export const AaddsResourceDetails = /*@__PURE__*/ S.suspend(() =>
+const AaddsResourceDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     initialSyncComplete: S.optional(S.Boolean),
@@ -4968,7 +4878,7 @@ export const AaddsResourceDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** The Azure active directory domain service resource details. */
 export type ClusterCreateValidationResultAaddsResourcesDetailsList = Array<AaddsResourceDetails>;
-export const ClusterCreateValidationResultAaddsResourcesDetailsList = /*@__PURE__*/ S.Array(
+const ClusterCreateValidationResultAaddsResourcesDetailsList = /*@__PURE__*/ S.Array(
   AaddsResourceDetails,
 ) as any as S.Schema<ClusterCreateValidationResultAaddsResourcesDetailsList>;
 
@@ -4983,7 +4893,7 @@ export interface ClusterCreateValidationResult {
   /** The Azure active directory domain service resource details. */
   aaddsResourcesDetails?: ClusterCreateValidationResultAaddsResourcesDetailsList;
 }
-export const ClusterCreateValidationResult = /*@__PURE__*/ S.suspend(() =>
+const ClusterCreateValidationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validationErrors: S.optional(ClusterCreateValidationResultValidationErrorsList),
     validationWarnings: S.optional(ClusterCreateValidationResultValidationWarningsList),
@@ -4999,7 +4909,7 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** The private link service connection state. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
   }),
@@ -5019,7 +4929,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The private endpoint connection properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5044,17 +4954,12 @@ export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByT
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemDataLastModifiedByType =
-  S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface PrivateEndpointConnectionsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -5070,9 +4975,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponseSystemData =
-  ClusterGetPropertiesPrivateEndpointConnectionsItemSystemData as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponseSystemData>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -5085,7 +4987,7 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: PrivateEndpointConnectionsCreateOrUpdateResponseSystemData;
 }
-export const PrivateEndpointConnectionsCreateOrUpdateResponse =
+const PrivateEndpointConnectionsCreateOrUpdateResponse =
   ClusterGetPropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
 
 export interface PromoteScriptExecutionHistoryRequest {
@@ -5098,7 +5000,7 @@ export interface PromoteScriptExecutionHistoryRequest {
   /** The script execution Id */
   scriptExecutionId: string;
 }
-export const PromoteScriptExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const PromoteScriptExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5117,11 +5019,11 @@ export const PromoteScriptExecutionHistoryRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PromoteScriptExecutionHistoryRequest>;
 
 export interface PromoteScriptExecutionHistoryResponse {}
-export const PromoteScriptExecutionHistoryResponse =
+const PromoteScriptExecutionHistoryResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<PromoteScriptExecutionHistoryResponse>;
 
 export type ResizeClusterRequestRoleName = "workernode";
-export const ResizeClusterRequestRoleName = S.String;
+const ResizeClusterRequestRoleName = S.String;
 
 export interface ResizeClusterRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5135,7 +5037,7 @@ export interface ResizeClusterRequest {
   /** The target instance count for the operation. */
   targetInstanceCount?: number;
 }
-export const ResizeClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const ResizeClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5153,12 +5055,11 @@ export const ResizeClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeClusterRequest" }) as any as S.Schema<ResizeClusterRequest>;
 
 export interface ResizeClusterResponse {}
-export const ResizeClusterResponse =
-  CreateExtensionResponse as any as S.Schema<ResizeClusterResponse>;
+const ResizeClusterResponse = CreateExtensionResponse as any as S.Schema<ResizeClusterResponse>;
 
 /** The list of hosts which need to be restarted. */
 export type RestartHostsParameters = Array<string>;
-export const RestartHostsParameters =
+const RestartHostsParameters =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<RestartHostsParameters>;
 
 export interface RestartVirtualMachineHostsRequest {
@@ -5170,7 +5071,7 @@ export interface RestartVirtualMachineHostsRequest {
   clusterName: string;
   body: RestartHostsParameters;
 }
-export const RestartVirtualMachineHostsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartVirtualMachineHostsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5189,7 +5090,7 @@ export const RestartVirtualMachineHostsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestartVirtualMachineHostsRequest>;
 
 export interface RestartVirtualMachineHostsResponse {}
-export const RestartVirtualMachineHostsResponse =
+const RestartVirtualMachineHostsResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<RestartVirtualMachineHostsResponse>;
 
 export interface RotateClusterDiskEncryptionKeyRequest {
@@ -5206,7 +5107,7 @@ export interface RotateClusterDiskEncryptionKeyRequest {
   /** Specific key version that is used for enabling disk encryption. */
   keyVersion?: string;
 }
-export const RotateClusterDiskEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const RotateClusterDiskEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5227,12 +5128,12 @@ export const RotateClusterDiskEncryptionKeyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RotateClusterDiskEncryptionKeyRequest>;
 
 export interface RotateClusterDiskEncryptionKeyResponse {}
-export const RotateClusterDiskEncryptionKeyResponse =
+const RotateClusterDiskEncryptionKeyResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<RotateClusterDiskEncryptionKeyResponse>;
 
 /** The resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterRequestTagsMap =
+const UpdateClusterRequestTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
 
 export interface UpdateClusterRequest {
@@ -5245,7 +5146,7 @@ export interface UpdateClusterRequest {
   /** The resource tags. */
   tags?: UpdateClusterRequestTagsMap | null;
 }
-export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5263,12 +5164,12 @@ export const UpdateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateClusterResponseTagsMap =
+const UpdateClusterResponseTagsMap =
   CreateApplicationRequestTagsMap as any as S.Schema<UpdateClusterResponseTagsMap>;
 
 /** The availability zones. */
 export type UpdateClusterResponseZonesList = Array<string>;
-export const UpdateClusterResponseZonesList =
+const UpdateClusterResponseZonesList =
   ApplicationPropertiesInputInstallScriptActionsItemRolesList as any as S.Schema<UpdateClusterResponseZonesList>;
 
 /** The type of identity that created the resource. */
@@ -5277,16 +5178,12 @@ export type UpdateClusterResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateClusterResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateClusterResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateClusterResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateClusterResponseSystemData {
   /** The identity that created the resource. */
@@ -5302,7 +5199,7 @@ export interface UpdateClusterResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateClusterResponseSystemData =
+const UpdateClusterResponseSystemData =
   CreateApplicationResponseSystemData as any as S.Schema<UpdateClusterResponseSystemData>;
 
 export interface UpdateClusterResponse {
@@ -5327,7 +5224,7 @@ export interface UpdateClusterResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateClusterResponseSystemData;
 }
-export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -5343,7 +5240,7 @@ export const UpdateClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateClusterResponse" }) as any as S.Schema<UpdateClusterResponse>;
 
 export type UpdateClusterAutoScaleConfigurationRequestRoleName = "workernode";
-export const UpdateClusterAutoScaleConfigurationRequestRoleName = S.String;
+const UpdateClusterAutoScaleConfigurationRequestRoleName = S.String;
 
 export interface UpdateClusterAutoScaleConfigurationRequest {
   /** The subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
@@ -5357,7 +5254,7 @@ export interface UpdateClusterAutoScaleConfigurationRequest {
   /** The autoscale configuration. */
   autoscale?: Autoscale;
 }
-export const UpdateClusterAutoScaleConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterAutoScaleConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5377,7 +5274,7 @@ export const UpdateClusterAutoScaleConfigurationRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateClusterAutoScaleConfigurationRequest>;
 
 export interface UpdateClusterAutoScaleConfigurationResponse {}
-export const UpdateClusterAutoScaleConfigurationResponse =
+const UpdateClusterAutoScaleConfigurationResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterAutoScaleConfigurationResponse>;
 
 export interface UpdateClusterGatewaySettingsRequest {
@@ -5394,7 +5291,7 @@ export interface UpdateClusterGatewaySettingsRequest {
   /** The gateway settings user password. */
   restAuthCredential_password?: string | Redacted.Redacted<string>;
 }
-export const UpdateClusterGatewaySettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterGatewaySettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5419,7 +5316,7 @@ export const UpdateClusterGatewaySettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateClusterGatewaySettingsRequest>;
 
 export interface UpdateClusterGatewaySettingsResponse {}
-export const UpdateClusterGatewaySettingsResponse =
+const UpdateClusterGatewaySettingsResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterGatewaySettingsResponse>;
 
 export interface UpdateClusterIdentityCertificateRequest {
@@ -5436,7 +5333,7 @@ export interface UpdateClusterIdentityCertificateRequest {
   /** The password of the certificate. */
   certificatePassword?: string | Redacted.Redacted<string>;
 }
-export const UpdateClusterIdentityCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateClusterIdentityCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -5457,7 +5354,7 @@ export const UpdateClusterIdentityCertificateRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<UpdateClusterIdentityCertificateRequest>;
 
 export interface UpdateClusterIdentityCertificateResponse {}
-export const UpdateClusterIdentityCertificateResponse =
+const UpdateClusterIdentityCertificateResponse =
   DeletePrivateEndpointConnectionResponse as any as S.Schema<UpdateClusterIdentityCertificateResponse>;
 
 export type CheckLocationNameAvailabilityError = AzureOpError;

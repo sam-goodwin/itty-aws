@@ -46,7 +46,7 @@ export class NotFound
 
 /** Column keys to include. Empty means all columns for the resource. */
 export type CreateExportRequestColumnsList = Array<string>;
-export const CreateExportRequestColumnsList = /*@__PURE__*/ S.Array(
+const CreateExportRequestColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateExportRequestColumnsList>;
 
@@ -88,7 +88,7 @@ export type CreateExportRequestResource =
   | "invoices"
   | "cancelation_reasons"
   | "child_companies";
-export const CreateExportRequestResource = S.String;
+const CreateExportRequestResource = S.String;
 
 export interface CreateExportRequest {
   /** The account to export from, prefixed `biz_`. Defaults to the credential's account. */
@@ -104,7 +104,7 @@ export interface CreateExportRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     columns: S.optional(CreateExportRequestColumnsList),
@@ -155,11 +155,11 @@ export type ExportResource =
   | "child_companies"
   | "ledger_lines"
   | "withdrawal_lines";
-export const ExportResource = S.String;
+const ExportResource = S.String;
 
 /** `pending` or `processing` while the file is generated, `completed` when the download is ready, `failed` if it errored, `expired` once the file has been deleted. */
 export type ExportStatus = "pending" | "processing" | "completed" | "failed" | "expired";
-export const ExportStatus = S.String;
+const ExportStatus = S.String;
 
 export interface Export {
   /** When the export was requested, as an ISO 8601 timestamp. */
@@ -179,7 +179,7 @@ export interface Export {
   /** When the export last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const Export = /*@__PURE__*/ S.suspend(() =>
+const Export = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     download_url: S.NullOr(S.String),
@@ -196,7 +196,7 @@ export interface GetExportRequest {
   /** The export ID, prefixed `exprt_`. */
   id: string;
 }
-export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/exports/{id}", code: 200 })),
@@ -241,7 +241,7 @@ export type ListExportsRequestResource =
   | "child_companies"
   | "ledger_lines"
   | "withdrawal_lines";
-export const ListExportsRequestResource = S.String;
+const ListExportsRequestResource = S.String;
 
 export type ListExportsRequestStatus =
   | "pending"
@@ -249,13 +249,13 @@ export type ListExportsRequestStatus =
   | "completed"
   | "failed"
   | "expired";
-export const ListExportsRequestStatus = S.String;
+const ListExportsRequestStatus = S.String;
 
 export type ListExportsRequestOrder = "created_at";
-export const ListExportsRequestOrder = S.String;
+const ListExportsRequestOrder = S.String;
 
 export type ListExportsRequestDirection = "asc" | "desc";
-export const ListExportsRequestDirection = S.String;
+const ListExportsRequestDirection = S.String;
 
 export interface ListExportsRequest {
   /** The account to list exports for, prefixed `biz_`. Defaults to the credential's account. */
@@ -273,7 +273,7 @@ export interface ListExportsRequest {
   /** The sort direction. */
   direction?: ListExportsRequestDirection | (string & {});
 }
-export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     resource: S.optional(ListExportsRequestResource.pipe(T.Query())),
@@ -286,7 +286,7 @@ export const ListExportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListExportsRequest" }) as any as S.Schema<ListExportsRequest>;
 
 export type ListExportsResponseDataList = Array<Export>;
-export const ListExportsResponseDataList = /*@__PURE__*/ S.Array(
+const ListExportsResponseDataList = /*@__PURE__*/ S.Array(
   Export,
 ) as any as S.Schema<ListExportsResponseDataList>;
 
@@ -296,7 +296,7 @@ export interface ListExportsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListExportsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListExportsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -311,7 +311,7 @@ export interface ListExportsResponse {
   data: ListExportsResponseDataList;
   page_info: ListExportsResponsePageInfo;
 }
-export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListExportsResponseDataList,
     page_info: ListExportsResponsePageInfo,

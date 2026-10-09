@@ -275,11 +275,11 @@ export type RoleSessionNameType = string;
 export interface PolicyDescriptorType {
   arn?: string;
 }
-export const PolicyDescriptorType = /*@__PURE__*/ S.suspend(() =>
+const PolicyDescriptorType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.optional(S.String) }),
 ).annotate({ identifier: "PolicyDescriptorType" }) as any as S.Schema<PolicyDescriptorType>;
 export type PolicyDescriptorListType = PolicyDescriptorType[];
-export const PolicyDescriptorListType = /*@__PURE__*/ S.Array(PolicyDescriptorType);
+const PolicyDescriptorListType = /*@__PURE__*/ S.Array(PolicyDescriptorType);
 export type UnrestrictedSessionPolicyDocumentType = string;
 export type RoleDurationSecondsType = number;
 export type TagKeyType = string;
@@ -288,13 +288,13 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+const Tag = /*@__PURE__*/ S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
+  identifier: "Tag",
+}) as any as S.Schema<Tag>;
 export type TagListType = Tag[];
-export const TagListType = /*@__PURE__*/ S.Array(Tag);
+const TagListType = /*@__PURE__*/ S.Array(Tag);
 export type TagKeyListType = string[];
-export const TagKeyListType = /*@__PURE__*/ S.Array(S.String);
+const TagKeyListType = /*@__PURE__*/ S.Array(S.String);
 export type ExternalIdType = string;
 export type SerialNumberType = string;
 export type TokenCodeType = string;
@@ -304,11 +304,11 @@ export interface ProvidedContext {
   ProviderArn?: string;
   ContextAssertion?: string;
 }
-export const ProvidedContext = /*@__PURE__*/ S.suspend(() =>
+const ProvidedContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProviderArn: S.optional(S.String), ContextAssertion: S.optional(S.String) }),
 ).annotate({ identifier: "ProvidedContext" }) as any as S.Schema<ProvidedContext>;
 export type ProvidedContextsListType = ProvidedContext[];
-export const ProvidedContextsListType = /*@__PURE__*/ S.Array(ProvidedContext);
+const ProvidedContextsListType = /*@__PURE__*/ S.Array(ProvidedContext);
 export type MinimumSessionTokenSizeType = number;
 export interface AssumeRoleRequest {
   RoleArn: string;
@@ -325,7 +325,7 @@ export interface AssumeRoleRequest {
   ProvidedContexts?: ProvidedContext[];
   MinimumSessionTokenSize?: number;
 }
-export const AssumeRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoleArn: S.String,
     RoleSessionName: S.String,
@@ -351,7 +351,7 @@ export interface Credentials {
   SessionToken: string;
   Expiration: Date;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessKeyId: S.String,
     SecretAccessKey: SensitiveString,
@@ -364,7 +364,7 @@ export interface AssumedRoleUser {
   AssumedRoleId: string;
   Arn: string;
 }
-export const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
+const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AssumedRoleId: S.String, Arn: S.String }),
 ).annotate({ identifier: "AssumedRoleUser" }) as any as S.Schema<AssumedRoleUser>;
 export type NonNegativeIntegerType = number;
@@ -378,7 +378,7 @@ export interface AssumeRoleResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const AssumeRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     AssumedRoleUser: S.optional(AssumedRoleUser),
@@ -399,7 +399,7 @@ export interface AssumeRoleWithSAMLRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-export const AssumeRoleWithSAMLRequest = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleWithSAMLRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoleArn: S.String,
     PrincipalArn: S.String,
@@ -430,7 +430,7 @@ export interface AssumeRoleWithSAMLResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const AssumeRoleWithSAMLResponse = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleWithSAMLResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     AssumedRoleUser: S.optional(AssumedRoleUser),
@@ -459,7 +459,7 @@ export interface AssumeRoleWithWebIdentityRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-export const AssumeRoleWithWebIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleWithWebIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoleArn: S.String,
     RoleSessionName: S.String,
@@ -485,7 +485,7 @@ export interface AssumeRoleWithWebIdentityResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const AssumeRoleWithWebIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleWithWebIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     SubjectFromWebIdentityToken: S.optional(S.String),
@@ -508,7 +508,7 @@ export interface AssumeRootRequest {
   DurationSeconds?: number;
   MinimumSessionTokenSize?: number;
 }
-export const AssumeRootRequest = /*@__PURE__*/ S.suspend(() =>
+const AssumeRootRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TargetPrincipal: S.String,
     TaskPolicyArn: PolicyDescriptorType,
@@ -522,7 +522,7 @@ export interface AssumeRootResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const AssumeRootResponse = /*@__PURE__*/ S.suspend(() =>
+const AssumeRootResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     SourceIdentity: S.optional(S.String),
@@ -534,7 +534,7 @@ export type EncodedMessageType = string;
 export interface DecodeAuthorizationMessageRequest {
   EncodedMessage: string;
 }
-export const DecodeAuthorizationMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const DecodeAuthorizationMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EncodedMessage: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -545,7 +545,7 @@ export type DecodedMessageType = string;
 export interface DecodeAuthorizationMessageResponse {
   DecodedMessage?: string;
 }
-export const DecodeAuthorizationMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const DecodeAuthorizationMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DecodedMessage: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "DecodeAuthorizationMessageResponse",
@@ -553,7 +553,7 @@ export const DecodeAuthorizationMessageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccessKeyInfoRequest {
   AccessKeyId: string;
 }
-export const GetAccessKeyInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessKeyInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccessKeyId: S.String }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -562,11 +562,11 @@ export type AccountType = string;
 export interface GetAccessKeyInfoResponse {
   Account?: string;
 }
-export const GetAccessKeyInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccessKeyInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Account: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "GetAccessKeyInfoResponse" }) as any as S.Schema<GetAccessKeyInfoResponse>;
 export interface GetCallerIdentityRequest {}
-export const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCallerIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "GetCallerIdentityRequest" }) as any as S.Schema<GetCallerIdentityRequest>;
 export type UserIdType = string;
@@ -575,7 +575,7 @@ export interface GetCallerIdentityResponse {
   Account?: string;
   Arn?: string;
 }
-export const GetCallerIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCallerIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.optional(S.String),
     Account: S.optional(S.String),
@@ -588,7 +588,7 @@ export type TradeInTokenType = string | redacted.Redacted<string>;
 export interface GetDelegatedAccessTokenRequest {
   TradeInToken: string | redacted.Redacted<string>;
 }
-export const GetDelegatedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDelegatedAccessTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TradeInToken: SensitiveString }).pipe(
     T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -600,7 +600,7 @@ export interface GetDelegatedAccessTokenResponse {
   PackedPolicySize?: number;
   AssumedPrincipal?: string;
 }
-export const GetDelegatedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDelegatedAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     PackedPolicySize: S.optional(S.Number),
@@ -619,7 +619,7 @@ export interface GetFederationTokenRequest {
   Tags?: Tag[];
   MinimumSessionTokenSize?: number;
 }
-export const GetFederationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFederationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Policy: S.optional(S.String),
@@ -636,7 +636,7 @@ export interface FederatedUser {
   FederatedUserId: string;
   Arn: string;
 }
-export const FederatedUser = /*@__PURE__*/ S.suspend(() =>
+const FederatedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FederatedUserId: S.String, Arn: S.String }),
 ).annotate({ identifier: "FederatedUser" }) as any as S.Schema<FederatedUser>;
 export interface GetFederationTokenResponse {
@@ -646,7 +646,7 @@ export interface GetFederationTokenResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const GetFederationTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFederationTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     FederatedUser: S.optional(FederatedUser),
@@ -663,7 +663,7 @@ export interface GetSessionTokenRequest {
   TokenCode?: string;
   MinimumSessionTokenSize?: number;
 }
-export const GetSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DurationSeconds: S.optional(S.Number),
     SerialNumber: S.optional(S.String),
@@ -676,7 +676,7 @@ export interface GetSessionTokenResponse {
   SessionTokenUtilization?: number;
   SessionTokenSize?: number;
 }
-export const GetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Credentials: S.optional(Credentials),
     SessionTokenUtilization: S.optional(S.Number),
@@ -685,7 +685,7 @@ export const GetSessionTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSessionTokenResponse" }) as any as S.Schema<GetSessionTokenResponse>;
 export type WebIdentityTokenAudienceStringType = string;
 export type WebIdentityTokenAudienceListType = string[];
-export const WebIdentityTokenAudienceListType = /*@__PURE__*/ S.Array(S.String);
+const WebIdentityTokenAudienceListType = /*@__PURE__*/ S.Array(S.String);
 export type WebIdentityTokenDurationSecondsType = number;
 export type JwtAlgorithmType = string;
 export interface GetWebIdentityTokenRequest {
@@ -694,7 +694,7 @@ export interface GetWebIdentityTokenRequest {
   SigningAlgorithm: string;
   Tags?: Tag[];
 }
-export const GetWebIdentityTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebIdentityTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Audience: WebIdentityTokenAudienceListType,
     DurationSeconds: S.optional(S.Number),
@@ -709,7 +709,7 @@ export interface GetWebIdentityTokenResponse {
   WebIdentityToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
-export const GetWebIdentityTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebIdentityTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     WebIdentityToken: S.optional(SensitiveString),
     Expiration: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),

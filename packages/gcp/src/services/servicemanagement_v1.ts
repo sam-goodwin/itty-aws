@@ -110,7 +110,7 @@ export interface ManagedService {
   /** The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements. */
   serviceName?: string;
 }
-export const ManagedService = /*@__PURE__*/ S.suspend(() =>
+const ManagedService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producerProjectId: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -121,7 +121,7 @@ export interface CreateServicesRequest {
   /** Request body */
   body?: ManagedService;
 }
-export const CreateServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ManagedService.pipe(T.HttpBody())),
   }).pipe(
@@ -134,15 +134,10 @@ export const CreateServicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateServicesRequest" }) as any as S.Schema<CreateServicesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -153,7 +148,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -174,7 +169,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     response: S.optional(DocumentMap),
@@ -185,22 +180,21 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
   | "FOLDER";
-export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = Array<
   MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum | (string & {})
 >;
-export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  /*@__PURE__*/ S.Array(
-    MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
-  ) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = /*@__PURE__*/ S.Array(
+  MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
+) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
 
 export type MetricDescriptorMetadataLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
@@ -211,7 +205,7 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MetricDescriptorMetadataLaunchStageEnum = S.String;
+const MetricDescriptorMetadataLaunchStageEnum = S.String;
 
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
@@ -224,7 +218,7 @@ export interface MetricDescriptorMetadata {
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
   ingestDelay?: string;
 }
-export const MetricDescriptorMetadata = /*@__PURE__*/ S.suspend(() =>
+const MetricDescriptorMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeSeriesResourceHierarchyLevel: S.optional(
       MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList,
@@ -244,10 +238,10 @@ export type MetricDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MetricDescriptorLaunchStageEnum = S.String;
+const MetricDescriptorLaunchStageEnum = S.String;
 
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
-export const LabelDescriptorValueTypeEnum = S.String;
+const LabelDescriptorValueTypeEnum = S.String;
 
 /** A description of a label. */
 export interface LabelDescriptor {
@@ -258,7 +252,7 @@ export interface LabelDescriptor {
   /** A human-readable description for the label. */
   description?: string;
 }
-export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
+const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     valueType: S.optional(LabelDescriptorValueTypeEnum),
@@ -267,7 +261,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelDescriptor" }) as any as S.Schema<LabelDescriptor>;
 
 export type LabelDescriptorList = Array<LabelDescriptor>;
-export const LabelDescriptorList = /*@__PURE__*/ S.Array(
+const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
 
@@ -279,14 +273,14 @@ export type MetricDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-export const MetricDescriptorValueTypeEnum = S.String;
+const MetricDescriptorValueTypeEnum = S.String;
 
 export type MetricDescriptorMetricKindEnum =
   | "METRIC_KIND_UNSPECIFIED"
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-export const MetricDescriptorMetricKindEnum = S.String;
+const MetricDescriptorMetricKindEnum = S.String;
 
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
@@ -313,7 +307,7 @@ export interface MetricDescriptor {
   /** A detailed description of the metric, which can be used in documentation. */
   description?: string;
 }
-export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
+const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoredResourceTypes: S.optional(StringList),
     metadata: S.optional(MetricDescriptorMetadata),
@@ -330,7 +324,7 @@ export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricDescriptor" }) as any as S.Schema<MetricDescriptor>;
 
 export type MetricDescriptorList = Array<MetricDescriptor>;
-export const MetricDescriptorList = /*@__PURE__*/ S.Array(
+const MetricDescriptorList = /*@__PURE__*/ S.Array(
   MetricDescriptor,
 ) as any as S.Schema<MetricDescriptorList>;
 
@@ -341,7 +335,7 @@ export interface Option {
   /** The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, `"map_entry"`. For custom options, it should be the fully-qualified name. For example, `"google.api.http"`. */
   name?: string;
 }
-export const Option = /*@__PURE__*/ S.suspend(() =>
+const Option = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -349,7 +343,7 @@ export const Option = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Option" }) as any as S.Schema<Option>;
 
 export type OptionList = Array<Option>;
-export const OptionList = /*@__PURE__*/ S.Array(Option) as any as S.Schema<OptionList>;
+const OptionList = /*@__PURE__*/ S.Array(Option) as any as S.Schema<OptionList>;
 
 /** Enum value definition. New usages of this message as an alternative to EnumValueDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface EnumValue {
@@ -360,7 +354,7 @@ export interface EnumValue {
   /** Protocol buffer options. */
   options?: OptionList;
 }
-export const EnumValue = /*@__PURE__*/ S.suspend(() =>
+const EnumValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     number: S.optional(S.Number),
@@ -369,17 +363,17 @@ export const EnumValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnumValue" }) as any as S.Schema<EnumValue>;
 
 export type EnumValueList = Array<EnumValue>;
-export const EnumValueList = /*@__PURE__*/ S.Array(EnumValue) as any as S.Schema<EnumValueList>;
+const EnumValueList = /*@__PURE__*/ S.Array(EnumValue) as any as S.Schema<EnumValueList>;
 
 export type EnumSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-export const EnumSyntaxEnum = S.String;
+const EnumSyntaxEnum = S.String;
 
 /** `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined. */
 export interface SourceContext {
   /** The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`. */
   fileName?: string;
 }
-export const SourceContext = /*@__PURE__*/ S.suspend(() =>
+const SourceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.optional(S.String),
   }),
@@ -400,7 +394,7 @@ export interface Enum {
   /** The source edition string, only valid when syntax is SYNTAX_EDITIONS. */
   edition?: string;
 }
-export const Enum = /*@__PURE__*/ S.suspend(() =>
+const Enum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     enumvalue: S.optional(EnumValueList),
@@ -412,7 +406,7 @@ export const Enum = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Enum" }) as any as S.Schema<Enum>;
 
 export type EnumList = Array<Enum>;
-export const EnumList = /*@__PURE__*/ S.Array(Enum) as any as S.Schema<EnumList>;
+const EnumList = /*@__PURE__*/ S.Array(Enum) as any as S.Schema<EnumList>;
 
 /** Usage configuration rules for the service. */
 export interface UsageRule {
@@ -423,7 +417,7 @@ export interface UsageRule {
   /** If true, the selected method should skip service control and the control plane features, such as quota and billing, will not be available. This flag is used by Google Cloud Endpoints to bypass checks for internal methods, such as service health check methods. */
   skipServiceControl?: boolean;
 }
-export const UsageRule = /*@__PURE__*/ S.suspend(() =>
+const UsageRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(S.String),
     allowUnregisteredCalls: S.optional(S.Boolean),
@@ -432,7 +426,7 @@ export const UsageRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UsageRule" }) as any as S.Schema<UsageRule>;
 
 export type UsageRuleList = Array<UsageRule>;
-export const UsageRuleList = /*@__PURE__*/ S.Array(UsageRule) as any as S.Schema<UsageRuleList>;
+const UsageRuleList = /*@__PURE__*/ S.Array(UsageRule) as any as S.Schema<UsageRuleList>;
 
 /** Configuration controlling usage of a service. */
 export interface Usage {
@@ -443,7 +437,7 @@ export interface Usage {
   /** The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview. */
   producerNotificationChannel?: string;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requirements: S.optional(StringList),
     rules: S.optional(UsageRuleList),
@@ -458,7 +452,7 @@ export interface LoggingDestination {
   /** Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/". */
   logs?: StringList;
 }
-export const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
+const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoredResource: S.optional(S.String),
     logs: S.optional(StringList),
@@ -466,7 +460,7 @@ export const LoggingDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingDestination" }) as any as S.Schema<LoggingDestination>;
 
 export type LoggingDestinationList = Array<LoggingDestination>;
-export const LoggingDestinationList = /*@__PURE__*/ S.Array(
+const LoggingDestinationList = /*@__PURE__*/ S.Array(
   LoggingDestination,
 ) as any as S.Schema<LoggingDestinationList>;
 
@@ -477,7 +471,7 @@ export interface Logging {
   /** Logging configurations for sending logs to the producer project. There can be multiple producer destinations, each one must have a different monitored resource type. A log can be used in at most one producer destination. */
   producerDestinations?: LoggingDestinationList;
 }
-export const Logging = /*@__PURE__*/ S.suspend(() =>
+const Logging = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerDestinations: S.optional(LoggingDestinationList),
     producerDestinations: S.optional(LoggingDestinationList),
@@ -491,7 +485,7 @@ export interface CustomErrorRule {
   /** Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload. */
   isErrorType?: boolean;
 }
-export const CustomErrorRule = /*@__PURE__*/ S.suspend(() =>
+const CustomErrorRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(S.String),
     isErrorType: S.optional(S.Boolean),
@@ -499,7 +493,7 @@ export const CustomErrorRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomErrorRule" }) as any as S.Schema<CustomErrorRule>;
 
 export type CustomErrorRuleList = Array<CustomErrorRule>;
-export const CustomErrorRuleList = /*@__PURE__*/ S.Array(
+const CustomErrorRuleList = /*@__PURE__*/ S.Array(
   CustomErrorRule,
 ) as any as S.Schema<CustomErrorRuleList>;
 
@@ -510,7 +504,7 @@ export interface CustomError {
   /** The list of custom error rules that apply to individual API messages. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: CustomErrorRuleList;
 }
-export const CustomError = /*@__PURE__*/ S.suspend(() =>
+const CustomError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     types: S.optional(StringList),
     rules: S.optional(CustomErrorRuleList),
@@ -524,7 +518,7 @@ export interface SelectiveGapicGeneration {
   /** Setting this to true indicates to the client generators that methods that would be excluded from the generation should instead be generated in a way that indicates these methods should not be consumed by end users. How this is expressed is up to individual language implementations to decide. Some examples may be: added annotations, obfuscated identifiers, or other language idiomatic patterns. */
   generateOmittedAsInternal?: boolean;
 }
-export const SelectiveGapicGeneration = /*@__PURE__*/ S.suspend(() =>
+const SelectiveGapicGeneration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methods: S.optional(StringList),
     generateOmittedAsInternal: S.optional(S.Boolean),
@@ -535,12 +529,12 @@ export type CommonLanguageSettingsDestinationsItemEnum =
   | "CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"
   | "GITHUB"
   | "PACKAGE_MANAGER";
-export const CommonLanguageSettingsDestinationsItemEnum = S.String;
+const CommonLanguageSettingsDestinationsItemEnum = S.String;
 
 export type CommonLanguageSettingsDestinationsItemEnumList = Array<
   CommonLanguageSettingsDestinationsItemEnum | (string & {})
 >;
-export const CommonLanguageSettingsDestinationsItemEnumList = /*@__PURE__*/ S.Array(
+const CommonLanguageSettingsDestinationsItemEnumList = /*@__PURE__*/ S.Array(
   CommonLanguageSettingsDestinationsItemEnum,
 ) as any as S.Schema<CommonLanguageSettingsDestinationsItemEnumList>;
 
@@ -553,7 +547,7 @@ export interface CommonLanguageSettings {
   /** Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest */
   referenceDocsUri?: string;
 }
-export const CommonLanguageSettings = /*@__PURE__*/ S.suspend(() =>
+const CommonLanguageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selectiveGapicGeneration: S.optional(SelectiveGapicGeneration),
     destinations: S.optional(CommonLanguageSettingsDestinationsItemEnumList),
@@ -568,7 +562,7 @@ export interface PhpSettings {
   /** Some settings. */
   common?: CommonLanguageSettings;
 }
-export const PhpSettings = /*@__PURE__*/ S.suspend(() =>
+const PhpSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     libraryPackage: S.optional(S.String),
     common: S.optional(CommonLanguageSettings),
@@ -576,7 +570,7 @@ export const PhpSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhpSettings" }) as any as S.Schema<PhpSettings>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Settings for Dotnet client libraries. */
 export interface DotnetSettings {
@@ -593,7 +587,7 @@ export interface DotnetSettings {
   /** Method signatures (in the form "service.method(signature)") which are provided separately, so shouldn't be generated. Snippets *calling* these methods are still generated, however. */
   handwrittenSignatures?: StringList;
 }
-export const DotnetSettings = /*@__PURE__*/ S.suspend(() =>
+const DotnetSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renamedResources: S.optional(StringMap),
     renamedServices: S.optional(StringMap),
@@ -609,7 +603,7 @@ export interface RubySettings {
   /** Some settings. */
   common?: CommonLanguageSettings;
 }
-export const RubySettings = /*@__PURE__*/ S.suspend(() =>
+const RubySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     common: S.optional(CommonLanguageSettings),
   }),
@@ -617,8 +611,6 @@ export const RubySettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Settings for Node client libraries. */
 export type NodeSettings = RubySettings;
-export const NodeSettings = RubySettings;
-
 /** Settings for Go client libraries. */
 export interface GoSettings {
   /** Some settings. */
@@ -626,7 +618,7 @@ export interface GoSettings {
   /** Map of service names to renamed services. Keys are the package relative service names and values are the name to be used for the service client and call options. Example: publishing: go_settings: renamed_services: Publisher: TopicAdmin */
   renamedServices?: StringMap;
 }
-export const GoSettings = /*@__PURE__*/ S.suspend(() =>
+const GoSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     common: S.optional(CommonLanguageSettings),
     renamedServices: S.optional(StringMap),
@@ -642,12 +634,10 @@ export type ClientLibrarySettingsLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const ClientLibrarySettingsLaunchStageEnum = S.String;
+const ClientLibrarySettingsLaunchStageEnum = S.String;
 
 /** Settings for C++ client libraries. */
 export type CppSettings = RubySettings;
-export const CppSettings = RubySettings;
-
 /** Experimental features to be included during client library generation. These fields will be deprecated once the feature graduates and is enabled by default. */
 export interface ExperimentalFeatures {
   /** Enables generation of asynchronous REST clients if `rest` transport is enabled. By default, asynchronous REST clients will not be generated. This feature will be enabled by default 1 month after launching the feature in preview packages. */
@@ -657,7 +647,7 @@ export interface ExperimentalFeatures {
   /** Disables generation of an unversioned Python package for this client library. This means that the module names will need to be versioned in import statements. For example `import google.cloud.library_v2` instead of `import google.cloud.library`. */
   unversionedPackageDisabled?: boolean;
 }
-export const ExperimentalFeatures = /*@__PURE__*/ S.suspend(() =>
+const ExperimentalFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     restAsyncIoEnabled: S.optional(S.Boolean),
     protobufPythonicTypesEnabled: S.optional(S.Boolean),
@@ -672,7 +662,7 @@ export interface PythonSettings {
   /** Experimental features to be included during client library generation. */
   experimentalFeatures?: ExperimentalFeatures;
 }
-export const PythonSettings = /*@__PURE__*/ S.suspend(() =>
+const PythonSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     common: S.optional(CommonLanguageSettings),
     experimentalFeatures: S.optional(ExperimentalFeatures),
@@ -688,7 +678,7 @@ export interface JavaSettings {
   /** The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: library_settings: java_settings: library_package: com.google.cloud.pubsub.v1 */
   libraryPackage?: string;
 }
-export const JavaSettings = /*@__PURE__*/ S.suspend(() =>
+const JavaSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceClassNames: S.optional(StringMap),
     common: S.optional(CommonLanguageSettings),
@@ -721,7 +711,7 @@ export interface ClientLibrarySettings {
   /** Settings for legacy Java features, supported in the Service YAML. */
   javaSettings?: JavaSettings;
 }
-export const ClientLibrarySettings = /*@__PURE__*/ S.suspend(() =>
+const ClientLibrarySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     phpSettings: S.optional(PhpSettings),
@@ -738,7 +728,7 @@ export const ClientLibrarySettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientLibrarySettings" }) as any as S.Schema<ClientLibrarySettings>;
 
 export type ClientLibrarySettingsList = Array<ClientLibrarySettings>;
-export const ClientLibrarySettingsList = /*@__PURE__*/ S.Array(
+const ClientLibrarySettingsList = /*@__PURE__*/ S.Array(
   ClientLibrarySettings,
 ) as any as S.Schema<ClientLibrarySettingsList>;
 
@@ -752,14 +742,14 @@ export type PublishingOrganizationEnum =
   | "GEO"
   | "GENERATIVE_AI"
   | "HEALTH";
-export const PublishingOrganizationEnum = S.String;
+const PublishingOrganizationEnum = S.String;
 
 export type BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum =
   | "UNSET_BEHAVIOR"
   | "THROW_EXCEPTION"
   | "BLOCK"
   | "IGNORE";
-export const BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum = S.String;
+const BatchingSettingsProtoFlowControlLimitExceededBehaviorEnum = S.String;
 
 /** `BatchingSettingsProto` specifies a set of batching thresholds, each of which acts as a trigger to send a batch of messages as a request. At least one threshold must be positive nonzero. */
 export interface BatchingSettingsProto {
@@ -782,7 +772,7 @@ export interface BatchingSettingsProto {
   /** The maximum size of the request that could be accepted by server. */
   requestByteLimit?: number;
 }
-export const BatchingSettingsProto = /*@__PURE__*/ S.suspend(() =>
+const BatchingSettingsProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flowControlElementLimit: S.optional(S.Number),
     requestByteThreshold: S.optional(S.String),
@@ -806,7 +796,7 @@ export interface BatchingDescriptorProto {
   /** A list of the fields in the request message. Two requests will be batched together only if the values of every field specified in `request_discriminator_fields` is equal between the two requests. */
   discriminatorFields?: StringList;
 }
-export const BatchingDescriptorProto = /*@__PURE__*/ S.suspend(() =>
+const BatchingDescriptorProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchedField: S.optional(S.String),
     subresponseField: S.optional(S.String),
@@ -821,7 +811,7 @@ export interface BatchingConfigProto {
   /** The request and response fields used in batching. */
   batchDescriptor?: BatchingDescriptorProto;
 }
-export const BatchingConfigProto = /*@__PURE__*/ S.suspend(() =>
+const BatchingConfigProto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thresholds: S.optional(BatchingSettingsProto),
     batchDescriptor: S.optional(BatchingDescriptorProto),
@@ -839,7 +829,7 @@ export interface LongRunning {
   /** Maximum time between two subsequent poll requests. Default value: 45 seconds. */
   maxPollDelay?: string;
 }
-export const LongRunning = /*@__PURE__*/ S.suspend(() =>
+const LongRunning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     initialPollDelay: S.optional(S.String),
     totalPollTimeout: S.optional(S.String),
@@ -859,7 +849,7 @@ export interface MethodSettings {
   /** List of top-level fields of the request message, that should be automatically populated by the client libraries based on their (google.api.field_info).format. Currently supported format: UUID4. Example of a YAML configuration: publishing: method_settings: - selector: google.example.v1.ExampleService.CreateExample auto_populated_fields: - request_id */
   autoPopulatedFields?: StringList;
 }
-export const MethodSettings = /*@__PURE__*/ S.suspend(() =>
+const MethodSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(S.String),
     batching: S.optional(BatchingConfigProto),
@@ -869,7 +859,7 @@ export const MethodSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodSettings" }) as any as S.Schema<MethodSettings>;
 
 export type MethodSettingsList = Array<MethodSettings>;
-export const MethodSettingsList = /*@__PURE__*/ S.Array(
+const MethodSettingsList = /*@__PURE__*/ S.Array(
   MethodSettings,
 ) as any as S.Schema<MethodSettingsList>;
 
@@ -898,7 +888,7 @@ export interface Publishing {
   /** Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview */
   documentationUri?: string;
 }
-export const Publishing = /*@__PURE__*/ S.suspend(() =>
+const Publishing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiShortName: S.optional(S.String),
     librarySettings: S.optional(ClientLibrarySettingsList),
@@ -921,7 +911,7 @@ export interface MonitoringDestination {
   /** The monitored resource type. The type must be defined in Service.monitored_resources section. */
   monitoredResource?: string;
 }
-export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
+const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: S.optional(StringList),
     monitoredResource: S.optional(S.String),
@@ -929,7 +919,7 @@ export const MonitoringDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonitoringDestination" }) as any as S.Schema<MonitoringDestination>;
 
 export type MonitoringDestinationList = Array<MonitoringDestination>;
-export const MonitoringDestinationList = /*@__PURE__*/ S.Array(
+const MonitoringDestinationList = /*@__PURE__*/ S.Array(
   MonitoringDestination,
 ) as any as S.Schema<MonitoringDestinationList>;
 
@@ -940,7 +930,7 @@ export interface Monitoring {
   /** Monitoring configurations for sending metrics to the producer project. There can be multiple producer destinations. A monitored resource type may appear in multiple monitoring destinations if different aggregations are needed for different sets of metrics associated with that monitored resource type. A monitored resource and metric pair may only be used once in the Monitoring configuration. */
   producerDestinations?: MonitoringDestinationList;
 }
-export const Monitoring = /*@__PURE__*/ S.suspend(() =>
+const Monitoring = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerDestinations: S.optional(MonitoringDestinationList),
     producerDestinations: S.optional(MonitoringDestinationList),
@@ -948,10 +938,10 @@ export const Monitoring = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Monitoring" }) as any as S.Schema<Monitoring>;
 
 export type ApiSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-export const ApiSyntaxEnum = S.String;
+const ApiSyntaxEnum = S.String;
 
 export type MethodSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-export const MethodSyntaxEnum = S.String;
+const MethodSyntaxEnum = S.String;
 
 /** Method represents a method of an API interface. New usages of this message as an alternative to MethodDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Method {
@@ -972,7 +962,7 @@ export interface Method {
   /** The simple name of this method. */
   name?: string;
 }
-export const Method = /*@__PURE__*/ S.suspend(() =>
+const Method = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestStreaming: S.optional(S.Boolean),
     responseStreaming: S.optional(S.Boolean),
@@ -986,7 +976,7 @@ export const Method = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Method" }) as any as S.Schema<Method>;
 
 export type MethodList = Array<Method>;
-export const MethodList = /*@__PURE__*/ S.Array(Method) as any as S.Schema<MethodList>;
+const MethodList = /*@__PURE__*/ S.Array(Method) as any as S.Schema<MethodList>;
 
 /** Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... } */
 export interface Mixin {
@@ -995,7 +985,7 @@ export interface Mixin {
   /** The fully qualified name of the interface which is included. */
   name?: string;
 }
-export const Mixin = /*@__PURE__*/ S.suspend(() =>
+const Mixin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root: S.optional(S.String),
     name: S.optional(S.String),
@@ -1003,7 +993,7 @@ export const Mixin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mixin" }) as any as S.Schema<Mixin>;
 
 export type MixinList = Array<Mixin>;
-export const MixinList = /*@__PURE__*/ S.Array(Mixin) as any as S.Schema<MixinList>;
+const MixinList = /*@__PURE__*/ S.Array(Mixin) as any as S.Schema<MixinList>;
 
 /** Api is a light-weight descriptor for an API Interface. Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword in a .proto file, but they are different from API Services, which represent a concrete implementation of an interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to as "APIs" in other contexts, such as the name of this message itself. See https://cloud.google.com/apis/design/glossary for detailed terminology. New usages of this message as an alternative to ServiceDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Api {
@@ -1024,7 +1014,7 @@ export interface Api {
   /** Included interfaces. See Mixin. */
   mixins?: MixinList;
 }
-export const Api = /*@__PURE__*/ S.suspend(() =>
+const Api = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edition: S.optional(S.String),
     name: S.optional(S.String),
@@ -1038,14 +1028,14 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Api" }) as any as S.Schema<Api>;
 
 export type ApiList = Array<Api>;
-export const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
+const ApiList = /*@__PURE__*/ S.Array(Api) as any as S.Schema<ApiList>;
 
 /** Source information used to create a Service Config */
 export interface SourceInfo {
   /** All files used during config generation. */
   sourceFiles?: DocumentMapList;
 }
-export const SourceInfo = /*@__PURE__*/ S.suspend(() =>
+const SourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceFiles: S.optional(DocumentMapList),
   }),
@@ -1060,7 +1050,7 @@ export interface Page {
   /** The Markdown content of the page. You can use ```(== include {path} ==)``` to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page. */
   content?: string;
 }
-export const Page = /*@__PURE__*/ S.suspend(() =>
+const Page = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     subpages: S.optional(S.suspend(() => PageList)),
@@ -1069,7 +1059,7 @@ export const Page = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Page" }) as any as S.Schema<Page>;
 
 export type PageList = Array<Page>;
-export const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
+const PageList = /*@__PURE__*/ S.Array(Page) as any as S.Schema<PageList>;
 
 /** A documentation rule provides information about individual API elements. */
 export interface DocumentationRule {
@@ -1082,7 +1072,7 @@ export interface DocumentationRule {
   /** The selector is a comma-separated list of patterns for any element such as a method, a field, an enum value. Each pattern is a qualified name of the element which may end in "*", indicating a wildcard. Wildcards are only allowed at the end and for a whole component of the qualified name, i.e. "foo.*" is ok, but not "foo.b*" or "foo.*.bar". A wildcard will match one or more components. To specify a default for all applicable elements, the whole pattern "*" is used. */
   selector?: string;
 }
-export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
+const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deprecationDescription: S.optional(S.String),
     description: S.optional(S.String),
@@ -1092,7 +1082,7 @@ export const DocumentationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DocumentationRule" }) as any as S.Schema<DocumentationRule>;
 
 export type DocumentationRuleList = Array<DocumentationRule>;
-export const DocumentationRuleList = /*@__PURE__*/ S.Array(
+const DocumentationRuleList = /*@__PURE__*/ S.Array(
   DocumentationRule,
 ) as any as S.Schema<DocumentationRuleList>;
 
@@ -1115,7 +1105,7 @@ export interface Documentation {
   /** Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to. */
   serviceRootUrl?: string;
 }
-export const Documentation = /*@__PURE__*/ S.suspend(() =>
+const Documentation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pages: S.optional(PageList),
     rules: S.optional(DocumentationRuleList),
@@ -1129,7 +1119,7 @@ export const Documentation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Documentation" }) as any as S.Schema<Documentation>;
 
 export type TypeSyntaxEnum = "SYNTAX_PROTO2" | "SYNTAX_PROTO3" | "SYNTAX_EDITIONS";
-export const TypeSyntaxEnum = S.String;
+const TypeSyntaxEnum = S.String;
 
 export type FieldKindEnum =
   | "TYPE_UNKNOWN"
@@ -1151,14 +1141,14 @@ export type FieldKindEnum =
   | "TYPE_SFIXED64"
   | "TYPE_SINT32"
   | "TYPE_SINT64";
-export const FieldKindEnum = S.String;
+const FieldKindEnum = S.String;
 
 export type FieldCardinalityEnum =
   | "CARDINALITY_UNKNOWN"
   | "CARDINALITY_OPTIONAL"
   | "CARDINALITY_REQUIRED"
   | "CARDINALITY_REPEATED";
-export const FieldCardinalityEnum = S.String;
+const FieldCardinalityEnum = S.String;
 
 /** A single field of a message type. New usages of this message as an alternative to FieldDescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Field {
@@ -1183,7 +1173,7 @@ export interface Field {
   /** The field number. */
   number?: number;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packed: S.optional(S.Boolean),
     typeUrl: S.optional(S.String),
@@ -1199,7 +1189,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = Array<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
+const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
 
 /** A protocol buffer message type. New usages of this message as an alternative to DescriptorProto are strongly discouraged. This message does not reliability preserve all information necessary to model the schema and preserve semantics. Instead make use of FileDescriptorSet which preserves the necessary information. */
 export interface Type {
@@ -1218,7 +1208,7 @@ export interface Type {
   /** The list of fields. */
   fields?: FieldList;
 }
-export const Type = /*@__PURE__*/ S.suspend(() =>
+const Type = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     oneofs: S.optional(StringList),
@@ -1231,14 +1221,14 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 export type TypeList = Array<Type>;
-export const TypeList = /*@__PURE__*/ S.Array(Type) as any as S.Schema<TypeList>;
+const TypeList = /*@__PURE__*/ S.Array(Type) as any as S.Schema<TypeList>;
 
 /** OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions. */
 export interface OAuthRequirements {
   /** The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read */
   canonicalScopes?: string;
 }
-export const OAuthRequirements = /*@__PURE__*/ S.suspend(() =>
+const OAuthRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canonicalScopes: S.optional(S.String),
   }),
@@ -1251,7 +1241,7 @@ export interface AuthRequirement {
   /** id from authentication provider. Example: provider_id: bookstore_auth */
   providerId?: string;
 }
-export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
+const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audiences: S.optional(S.String),
     providerId: S.optional(S.String),
@@ -1259,7 +1249,7 @@ export const AuthRequirement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthRequirement" }) as any as S.Schema<AuthRequirement>;
 
 export type AuthRequirementList = Array<AuthRequirement>;
-export const AuthRequirementList = /*@__PURE__*/ S.Array(
+const AuthRequirementList = /*@__PURE__*/ S.Array(
   AuthRequirement,
 ) as any as S.Schema<AuthRequirementList>;
 
@@ -1274,7 +1264,7 @@ export interface AuthenticationRule {
   /** If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests. */
   allowWithoutCredential?: boolean;
 }
-export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth: S.optional(OAuthRequirements),
     selector: S.optional(S.String),
@@ -1284,7 +1274,7 @@ export const AuthenticationRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthenticationRule" }) as any as S.Schema<AuthenticationRule>;
 
 export type AuthenticationRuleList = Array<AuthenticationRule>;
-export const AuthenticationRuleList = /*@__PURE__*/ S.Array(
+const AuthenticationRuleList = /*@__PURE__*/ S.Array(
   AuthenticationRule,
 ) as any as S.Schema<AuthenticationRuleList>;
 
@@ -1299,7 +1289,7 @@ export interface JwtLocation {
   /** The value prefix. The value format is "value_prefix{token}" Only applies to "in" header type. Must be empty for "in" query type. If not empty, the header value has to match (case sensitive) this prefix. If not matched, JWT will not be extracted. If matched, JWT will be extracted after the prefix is removed. For example, for "Authorization: Bearer {JWT}", value_prefix="Bearer " with a space at the end. */
   valuePrefix?: string;
 }
-export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
+const JwtLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     header: S.optional(S.String),
@@ -1309,9 +1299,7 @@ export const JwtLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JwtLocation" }) as any as S.Schema<JwtLocation>;
 
 export type JwtLocationList = Array<JwtLocation>;
-export const JwtLocationList = /*@__PURE__*/ S.Array(
-  JwtLocation,
-) as any as S.Schema<JwtLocationList>;
+const JwtLocationList = /*@__PURE__*/ S.Array(JwtLocation) as any as S.Schema<JwtLocationList>;
 
 /** Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32). */
 export interface AuthProvider {
@@ -1328,7 +1316,7 @@ export interface AuthProvider {
   /** Defines the locations to extract the JWT. For now it is only used by the Cloud Endpoints to store the OpenAPI extension [x-google-jwt-locations] (https://cloud.google.com/endpoints/docs/openapi/openapi-extensions#x-google-jwt-locations) JWT locations can be one of HTTP headers, URL query parameters or cookies. The rule is that the first match wins. If not specified, default to use following 3 locations: 1) Authorization: Bearer 2) x-goog-iap-jwt-assertion 3) access_token query parameter Default locations can be specified as followings: jwt_locations: - header: Authorization value_prefix: "Bearer " - header: x-goog-iap-jwt-assertion - query: access_token */
   jwtLocations?: JwtLocationList;
 }
-export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
+const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audiences: S.optional(S.String),
     jwksUri: S.optional(S.String),
@@ -1340,9 +1328,7 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 
 export type AuthProviderList = Array<AuthProvider>;
-export const AuthProviderList = /*@__PURE__*/ S.Array(
-  AuthProvider,
-) as any as S.Schema<AuthProviderList>;
+const AuthProviderList = /*@__PURE__*/ S.Array(AuthProvider) as any as S.Schema<AuthProviderList>;
 
 /** `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read */
 export interface Authentication {
@@ -1351,7 +1337,7 @@ export interface Authentication {
   /** Defines a set of authentication providers that a service supports. */
   providers?: AuthProviderList;
 }
-export const Authentication = /*@__PURE__*/ S.suspend(() =>
+const Authentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(AuthenticationRuleList),
     providers: S.optional(AuthProviderList),
@@ -1367,7 +1353,7 @@ export interface SystemParameter {
   /** Define the HTTP header name to use for the parameter. It is case insensitive. */
   httpHeader?: string;
 }
-export const SystemParameter = /*@__PURE__*/ S.suspend(() =>
+const SystemParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     urlQueryParameter: S.optional(S.String),
@@ -1376,7 +1362,7 @@ export const SystemParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemParameter" }) as any as S.Schema<SystemParameter>;
 
 export type SystemParameterList = Array<SystemParameter>;
-export const SystemParameterList = /*@__PURE__*/ S.Array(
+const SystemParameterList = /*@__PURE__*/ S.Array(
   SystemParameter,
 ) as any as S.Schema<SystemParameterList>;
 
@@ -1387,7 +1373,7 @@ export interface SystemParameterRule {
   /** Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details. */
   selector?: string;
 }
-export const SystemParameterRule = /*@__PURE__*/ S.suspend(() =>
+const SystemParameterRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parameters: S.optional(SystemParameterList),
     selector: S.optional(S.String),
@@ -1395,7 +1381,7 @@ export const SystemParameterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SystemParameterRule" }) as any as S.Schema<SystemParameterRule>;
 
 export type SystemParameterRuleList = Array<SystemParameterRule>;
-export const SystemParameterRuleList = /*@__PURE__*/ S.Array(
+const SystemParameterRuleList = /*@__PURE__*/ S.Array(
   SystemParameterRule,
 ) as any as S.Schema<SystemParameterRuleList>;
 
@@ -1404,7 +1390,7 @@ export interface SystemParameters {
   /** Define system parameters. The parameters defined here will override the default parameters implemented by the system. If this field is missing from the service config, default system parameters will be used. Default system parameters and names is implementation-dependent. Example: define api key for all methods system_parameters rules: - selector: "*" parameters: - name: api_key url_query_parameter: api_key Example: define 2 api key names for a specific method. system_parameters rules: - selector: "/ListShelves" parameters: - name: api_key http_header: Api-Key1 - name: api_key http_header: Api-Key2 **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: SystemParameterRuleList;
 }
-export const SystemParameters = /*@__PURE__*/ S.suspend(() =>
+const SystemParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(SystemParameterRuleList),
   }),
@@ -1417,7 +1403,7 @@ export interface CustomHttpPattern {
   /** The path matched by this custom verb. */
   path?: string;
 }
-export const CustomHttpPattern = /*@__PURE__*/ S.suspend(() =>
+const CustomHttpPattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     path: S.optional(S.String),
@@ -1447,7 +1433,7 @@ export interface HttpRule {
   /** Maps to HTTP PUT. Used for replacing a resource. */
   put?: string;
 }
-export const HttpRule = /*@__PURE__*/ S.suspend(() =>
+const HttpRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     post: S.optional(S.String),
     patch: S.optional(S.String),
@@ -1463,7 +1449,7 @@ export const HttpRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HttpRule" }) as any as S.Schema<HttpRule>;
 
 export type HttpRuleList = Array<HttpRule>;
-export const HttpRuleList = /*@__PURE__*/ S.Array(HttpRule) as any as S.Schema<HttpRuleList>;
+const HttpRuleList = /*@__PURE__*/ S.Array(HttpRule) as any as S.Schema<HttpRuleList>;
 
 /** Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods. */
 export interface Http {
@@ -1472,7 +1458,7 @@ export interface Http {
   /** When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches. */
   fullyDecodeReservedExpansion?: boolean;
 }
-export const Http = /*@__PURE__*/ S.suspend(() =>
+const Http = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(HttpRuleList),
     fullyDecodeReservedExpansion: S.optional(S.Boolean),
@@ -1480,7 +1466,7 @@ export const Http = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Http" }) as any as S.Schema<Http>;
 
 export type BackendRuleMap = { [key: string]: BackendRule | undefined };
-export const BackendRuleMap = /*@__PURE__*/ S.Record(
+const BackendRuleMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => BackendRule),
 ) as any as S.Schema<BackendRuleMap>;
@@ -1489,7 +1475,7 @@ export type BackendRulePathTranslationEnum =
   | "PATH_TRANSLATION_UNSPECIFIED"
   | "CONSTANT_ADDRESS"
   | "APPEND_PATH_TO_ADDRESS";
-export const BackendRulePathTranslationEnum = S.String;
+const BackendRulePathTranslationEnum = S.String;
 
 /** A backend rule provides configuration for an individual API element. */
 export interface BackendRule {
@@ -1516,7 +1502,7 @@ export interface BackendRule {
   /** The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment. */
   deadline?: number;
 }
-export const BackendRule = /*@__PURE__*/ S.suspend(() =>
+const BackendRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minDeadline: S.optional(S.Number),
     jwtAudience: S.optional(S.String),
@@ -1533,16 +1519,14 @@ export const BackendRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BackendRule" }) as any as S.Schema<BackendRule>;
 
 export type BackendRuleList = Array<BackendRule>;
-export const BackendRuleList = /*@__PURE__*/ S.Array(
-  BackendRule,
-) as any as S.Schema<BackendRuleList>;
+const BackendRuleList = /*@__PURE__*/ S.Array(BackendRule) as any as S.Schema<BackendRuleList>;
 
 /** `Backend` defines the backend configuration for a service. */
 export interface Backend {
   /** A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: BackendRuleList;
 }
-export const Backend = /*@__PURE__*/ S.suspend(() =>
+const Backend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(BackendRuleList),
   }),
@@ -1561,7 +1545,7 @@ export interface ContextRule {
   /** A list of full type names of requested contexts, only the requested context will be made available to the backend. */
   requested?: StringList;
 }
-export const ContextRule = /*@__PURE__*/ S.suspend(() =>
+const ContextRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedResponseExtensions: S.optional(StringList),
     selector: S.optional(S.String),
@@ -1572,16 +1556,14 @@ export const ContextRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContextRule" }) as any as S.Schema<ContextRule>;
 
 export type ContextRuleList = Array<ContextRule>;
-export const ContextRuleList = /*@__PURE__*/ S.Array(
-  ContextRule,
-) as any as S.Schema<ContextRuleList>;
+const ContextRuleList = /*@__PURE__*/ S.Array(ContextRule) as any as S.Schema<ContextRuleList>;
 
 /** `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using "x-goog-ext--bin" and "x-goog-ext--jspb" format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here. */
 export interface Context {
   /** A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order. */
   rules?: ContextRuleList;
 }
-export const Context = /*@__PURE__*/ S.suspend(() =>
+const Context = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(ContextRuleList),
   }),
@@ -1594,7 +1576,7 @@ export interface BillingDestination {
   /** Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section. */
   metrics?: StringList;
 }
-export const BillingDestination = /*@__PURE__*/ S.suspend(() =>
+const BillingDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoredResource: S.optional(S.String),
     metrics: S.optional(StringList),
@@ -1602,7 +1584,7 @@ export const BillingDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingDestination" }) as any as S.Schema<BillingDestination>;
 
 export type BillingDestinationList = Array<BillingDestination>;
-export const BillingDestinationList = /*@__PURE__*/ S.Array(
+const BillingDestinationList = /*@__PURE__*/ S.Array(
   BillingDestination,
 ) as any as S.Schema<BillingDestinationList>;
 
@@ -1611,7 +1593,7 @@ export interface Billing {
   /** Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination. */
   consumerDestinations?: BillingDestinationList;
 }
-export const Billing = /*@__PURE__*/ S.suspend(() =>
+const Billing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consumerDestinations: S.optional(BillingDestinationList),
   }),
@@ -1626,7 +1608,7 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MonitoredResourceDescriptorLaunchStageEnum = S.String;
+const MonitoredResourceDescriptorLaunchStageEnum = S.String;
 
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
@@ -1643,7 +1625,7 @@ export interface MonitoredResourceDescriptor {
   /** Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`. */
   displayName?: string;
 }
-export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     launchStage: S.optional(MonitoredResourceDescriptorLaunchStageEnum),
     name: S.optional(S.String),
@@ -1657,7 +1639,7 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
-export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
+const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
 
@@ -1672,7 +1654,7 @@ export interface LogDescriptor {
   /** The name of the log. It must be less than 512 characters long and can include the following characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and punctuation characters including slash, underscore, hyphen, period [/_-.]. */
   name?: string;
 }
-export const LogDescriptor = /*@__PURE__*/ S.suspend(() =>
+const LogDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     labels: S.optional(LabelDescriptorList),
@@ -1682,7 +1664,7 @@ export const LogDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogDescriptor" }) as any as S.Schema<LogDescriptor>;
 
 export type LogDescriptorList = Array<LogDescriptor>;
-export const LogDescriptorList = /*@__PURE__*/ S.Array(
+const LogDescriptorList = /*@__PURE__*/ S.Array(
   LogDescriptor,
 ) as any as S.Schema<LogDescriptorList>;
 
@@ -1697,7 +1679,7 @@ export interface Endpoint {
   /** Aliases for this endpoint, these will be served by the same UrlMap as the parent endpoint, and will be provisioned in the GCP stack for the Regional Endpoints. */
   aliases?: StringList;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
     name: S.optional(S.String),
@@ -1707,7 +1689,7 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 
 export type EndpointList = Array<Endpoint>;
-export const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
+const EndpointList = /*@__PURE__*/ S.Array(Endpoint) as any as S.Schema<EndpointList>;
 
 /** Rule-based configuration for an aspect. */
 export interface AspectRule {
@@ -1716,7 +1698,7 @@ export interface AspectRule {
   /** Required. Rules of the configuration. The underlying schema should be defined by Aspect owners as protobuf message under `google/api/configaspects/proto`. */
   config?: DocumentMap;
 }
-export const AspectRule = /*@__PURE__*/ S.suspend(() =>
+const AspectRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(S.String),
     config: S.optional(DocumentMap),
@@ -1724,7 +1706,7 @@ export const AspectRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AspectRule" }) as any as S.Schema<AspectRule>;
 
 export type AspectRuleList = Array<AspectRule>;
-export const AspectRuleList = /*@__PURE__*/ S.Array(AspectRule) as any as S.Schema<AspectRuleList>;
+const AspectRuleList = /*@__PURE__*/ S.Array(AspectRule) as any as S.Schema<AspectRuleList>;
 
 /** Aspect represents Generic aspect. It is used to configure an aspect without making direct changes to service.proto */
 export interface Aspect {
@@ -1735,7 +1717,7 @@ export interface Aspect {
   /** The type of this aspect configuration. */
   kind?: string;
 }
-export const Aspect = /*@__PURE__*/ S.suspend(() =>
+const Aspect = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spec: S.optional(DocumentMap),
     rules: S.optional(AspectRuleList),
@@ -1744,7 +1726,7 @@ export const Aspect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Aspect" }) as any as S.Schema<Aspect>;
 
 export type AspectList = Array<Aspect>;
-export const AspectList = /*@__PURE__*/ S.Array(Aspect) as any as S.Schema<AspectList>;
+const AspectList = /*@__PURE__*/ S.Array(Aspect) as any as S.Schema<AspectList>;
 
 /** Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate API request and response message fields with applicable policies. One field may have multiple applicable policies that must all be satisfied before a request can be processed. This policy annotation is used to generate the overall policy that will be used for automatic runtime policy enforcement and documentation generation. */
 export interface FieldPolicy {
@@ -1755,7 +1737,7 @@ export interface FieldPolicy {
   /** Specifies the resource type for the resource referred to by the field. */
   resourceType?: string;
 }
-export const FieldPolicy = /*@__PURE__*/ S.suspend(() =>
+const FieldPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePermission: S.optional(S.String),
     selector: S.optional(S.String),
@@ -1764,9 +1746,7 @@ export const FieldPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldPolicy" }) as any as S.Schema<FieldPolicy>;
 
 export type FieldPolicyList = Array<FieldPolicy>;
-export const FieldPolicyList = /*@__PURE__*/ S.Array(
-  FieldPolicy,
-) as any as S.Schema<FieldPolicyList>;
+const FieldPolicyList = /*@__PURE__*/ S.Array(FieldPolicy) as any as S.Schema<FieldPolicyList>;
 
 /** Defines policies applying to an RPC method. */
 export interface MethodPolicy {
@@ -1775,7 +1755,7 @@ export interface MethodPolicy {
   /** Policies that are applicable to the request message. */
   requestPolicies?: FieldPolicyList;
 }
-export const MethodPolicy = /*@__PURE__*/ S.suspend(() =>
+const MethodPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.optional(S.String),
     requestPolicies: S.optional(FieldPolicyList),
@@ -1783,9 +1763,7 @@ export const MethodPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodPolicy" }) as any as S.Schema<MethodPolicy>;
 
 export type MethodPolicyList = Array<MethodPolicy>;
-export const MethodPolicyList = /*@__PURE__*/ S.Array(
-  MethodPolicy,
-) as any as S.Schema<MethodPolicyList>;
+const MethodPolicyList = /*@__PURE__*/ S.Array(MethodPolicy) as any as S.Schema<MethodPolicyList>;
 
 /** Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com */
 export interface Control {
@@ -1794,7 +1772,7 @@ export interface Control {
   /** The service controller environment to use. If empty, no control plane features (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com. */
   environment?: string;
 }
-export const Control = /*@__PURE__*/ S.suspend(() =>
+const Control = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     methodPolicies: S.optional(MethodPolicyList),
     environment: S.optional(S.String),
@@ -1805,7 +1783,7 @@ export type QuotaLimitTrafficSourceEnum =
   | "TRAFFIC_SOURCE_UNSPECIFIED"
   | "TRAFFIC_SOURCE_NONAGENTIC"
   | "TRAFFIC_SOURCE_AGENTIC";
-export const QuotaLimitTrafficSourceEnum = S.String;
+const QuotaLimitTrafficSourceEnum = S.String;
 
 /** `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`. */
 export interface QuotaLimit {
@@ -1832,7 +1810,7 @@ export interface QuotaLimit {
   /** The name of the metric this quota limit applies to. The quota limits with the same metric will be checked together during runtime. The metric must be defined within the service config. */
   metric?: string;
 }
-export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
+const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringMap),
     unit: S.optional(S.String),
@@ -1849,7 +1827,7 @@ export const QuotaLimit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaLimit" }) as any as S.Schema<QuotaLimit>;
 
 export type QuotaLimitList = Array<QuotaLimit>;
-export const QuotaLimitList = /*@__PURE__*/ S.Array(QuotaLimit) as any as S.Schema<QuotaLimitList>;
+const QuotaLimitList = /*@__PURE__*/ S.Array(QuotaLimit) as any as S.Schema<QuotaLimitList>;
 
 /** Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call. */
 export interface MetricRule {
@@ -1862,7 +1840,7 @@ export interface MetricRule {
   /** Optional. Metrics to update when the selected methods are called, and the associated cost applied to each metric, iff the source of the call is an agent. The key of the map is the metric name, and the values are the amount increased for the metric against which the quota limits are defined. The value must not be negative. */
   agenticMetricCosts?: StringMap;
 }
-export const MetricRule = /*@__PURE__*/ S.suspend(() =>
+const MetricRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricCosts: S.optional(StringMap),
     selector: S.optional(S.String),
@@ -1872,7 +1850,7 @@ export const MetricRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricRule" }) as any as S.Schema<MetricRule>;
 
 export type MetricRuleList = Array<MetricRule>;
-export const MetricRuleList = /*@__PURE__*/ S.Array(MetricRule) as any as S.Schema<MetricRuleList>;
+const MetricRuleList = /*@__PURE__*/ S.Array(MetricRule) as any as S.Schema<MetricRuleList>;
 
 /** Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 (The metric rules bind all methods to the read_calls metric, except for the UpdateBook and DeleteBook methods. These two methods are mapped to the write_calls metric, with the UpdateBook method consuming at twice rate as the DeleteBook method.) metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64 */
 export interface Quota {
@@ -1881,7 +1859,7 @@ export interface Quota {
   /** List of MetricRule definitions, each one mapping a selected method to one or more metrics. */
   metricRules?: MetricRuleList;
 }
-export const Quota = /*@__PURE__*/ S.suspend(() =>
+const Quota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limits: S.optional(QuotaLimitList),
     metricRules: S.optional(MetricRuleList),
@@ -1949,7 +1927,7 @@ export interface Service {
   /** Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`. */
   configVersion?: number;
 }
-export const Service = /*@__PURE__*/ S.suspend(() =>
+const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: S.optional(MetricDescriptorList),
     enums: S.optional(EnumList),
@@ -1989,7 +1967,7 @@ export interface CreateServicesConfigsRequest {
   /** Request body */
   body?: Service;
 }
-export const CreateServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(Service.pipe(T.HttpBody())),
@@ -2005,14 +1983,14 @@ export const CreateServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServicesConfigsRequest>;
 
 export type DoubleMap = { [key: string]: number | undefined };
-export const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
+const DoubleMap = /*@__PURE__*/ S.Record(S.String, S.Number) as any as S.Schema<DoubleMap>;
 
 /** Strategy that specifies how clients of Google Service Controller want to send traffic to use different config versions. This is generally used by API proxy to split traffic based on your configured percentage for each config version. One example of how to gradually rollout a new service configuration using this strategy: Day 1 Rollout { id: "example.googleapis.com/rollout_20160206" traffic_percent_strategy { percentages: { "example.googleapis.com/20160201": 70.00 "example.googleapis.com/20160206": 30.00 } } } Day 2 Rollout { id: "example.googleapis.com/rollout_20160207" traffic_percent_strategy: { percentages: { "example.googleapis.com/20160206": 100.00 } } } */
 export interface TrafficPercentStrategy {
   /** Maps service configuration IDs to their corresponding traffic percentage. Key is the service configuration ID, Value is the traffic percentage which must be greater than 0.0 and the sum must equal to 100.0. */
   percentages?: DoubleMap;
 }
-export const TrafficPercentStrategy = /*@__PURE__*/ S.suspend(() =>
+const TrafficPercentStrategy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentages: S.optional(DoubleMap),
   }),
@@ -2020,7 +1998,7 @@ export const TrafficPercentStrategy = /*@__PURE__*/ S.suspend(() =>
 
 /** Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service. */
 export interface DeleteServiceStrategy {}
-export const DeleteServiceStrategy = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteServiceStrategy = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteServiceStrategy",
 }) as any as S.Schema<DeleteServiceStrategy>;
 
@@ -2032,7 +2010,7 @@ export type RolloutStatusEnum =
   | "FAILED"
   | "PENDING"
   | "FAILED_ROLLED_BACK";
-export const RolloutStatusEnum = S.String;
+const RolloutStatusEnum = S.String;
 
 /** A rollout resource that defines how service configuration versions are pushed to control plane systems. Typically, you create a new version of the service config, and then create a Rollout to push the service config. */
 export interface Rollout {
@@ -2051,7 +2029,7 @@ export interface Rollout {
   /** The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly. */
   status?: RolloutStatusEnum | (string & {});
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -2069,7 +2047,7 @@ export interface CreateServicesRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const CreateServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(Rollout.pipe(T.HttpBody())),
@@ -2088,7 +2066,7 @@ export interface DeleteServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
-export const DeleteServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2107,7 +2085,7 @@ export interface GenerateConfigReportRequest {
   /** Optional. Service configuration against which the comparison will be done. For this version of API, the supported types are google.api.servicemanagement.v1.ConfigRef, google.api.servicemanagement.v1.ConfigSource, and google.api.Service */
   oldConfig?: DocumentMap;
 }
-export const GenerateConfigReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateConfigReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newConfig: S.optional(DocumentMap),
     oldConfig: S.optional(DocumentMap),
@@ -2120,7 +2098,7 @@ export interface GenerateConfigReportServicesRequest {
   /** Request body */
   body?: GenerateConfigReportRequest;
 }
-export const GenerateConfigReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateConfigReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GenerateConfigReportRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2135,7 +2113,7 @@ export const GenerateConfigReportServicesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateConfigReportServicesRequest>;
 
 export type DiagnosticKindEnum = "WARNING" | "ERROR";
-export const DiagnosticKindEnum = S.String;
+const DiagnosticKindEnum = S.String;
 
 /** Represents a diagnostic message (error or warning) */
 export interface Diagnostic {
@@ -2146,7 +2124,7 @@ export interface Diagnostic {
   /** The kind of diagnostic information provided. */
   kind?: DiagnosticKindEnum;
 }
-export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
+const Diagnostic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     location: S.optional(S.String),
@@ -2155,28 +2133,28 @@ export const Diagnostic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Diagnostic" }) as any as S.Schema<Diagnostic>;
 
 export type DiagnosticList = Array<Diagnostic>;
-export const DiagnosticList = /*@__PURE__*/ S.Array(Diagnostic) as any as S.Schema<DiagnosticList>;
+const DiagnosticList = /*@__PURE__*/ S.Array(Diagnostic) as any as S.Schema<DiagnosticList>;
 
 /** Generated advice about this change, used for providing more information about how a change will affect the existing service. */
 export interface Advice {
   /** Useful description for why this advice was applied and what actions should be taken to mitigate any implied risks. */
   description?: string;
 }
-export const Advice = /*@__PURE__*/ S.suspend(() =>
+const Advice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
 ).annotate({ identifier: "Advice" }) as any as S.Schema<Advice>;
 
 export type AdviceList = Array<Advice>;
-export const AdviceList = /*@__PURE__*/ S.Array(Advice) as any as S.Schema<AdviceList>;
+const AdviceList = /*@__PURE__*/ S.Array(Advice) as any as S.Schema<AdviceList>;
 
 export type ConfigChangeChangeTypeEnum =
   | "CHANGE_TYPE_UNSPECIFIED"
   | "ADDED"
   | "REMOVED"
   | "MODIFIED";
-export const ConfigChangeChangeTypeEnum = S.String;
+const ConfigChangeChangeTypeEnum = S.String;
 
 /** Output generated from semantically comparing two versions of a service configuration. Includes detailed information about a field that have changed with applicable advice about potential consequences for the change, such as backwards-incompatibility. */
 export interface ConfigChange {
@@ -2191,7 +2169,7 @@ export interface ConfigChange {
   /** Object hierarchy path to the change, with levels separated by a '.' character. For repeated fields, an applicable unique identifier field is used for the index (usually selector, name, or id). For maps, the term 'key' is used. If the field has no unique identifier, the numeric index is used. Examples: - visibility.rules[selector=="google.LibraryService.ListBooks"].restriction - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value - logging.producer_destinations[0] */
   element?: string;
 }
-export const ConfigChange = /*@__PURE__*/ S.suspend(() =>
+const ConfigChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advices: S.optional(AdviceList),
     changeType: S.optional(ConfigChangeChangeTypeEnum),
@@ -2202,25 +2180,21 @@ export const ConfigChange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigChange" }) as any as S.Schema<ConfigChange>;
 
 export type ConfigChangeList = Array<ConfigChange>;
-export const ConfigChangeList = /*@__PURE__*/ S.Array(
-  ConfigChange,
-) as any as S.Schema<ConfigChangeList>;
+const ConfigChangeList = /*@__PURE__*/ S.Array(ConfigChange) as any as S.Schema<ConfigChangeList>;
 
 /** Change report associated with a particular service configuration. It contains a list of ConfigChanges based on the comparison between two service configurations. */
 export interface ChangeReport {
   /** List of changes between two service configurations. The changes will be alphabetically sorted based on the identifier of each change. A ConfigChange identifier is a dot separated path to the configuration. Example: visibility.rules[selector='LibraryService.CreateBook'].restriction */
   configChanges?: ConfigChangeList;
 }
-export const ChangeReport = /*@__PURE__*/ S.suspend(() =>
+const ChangeReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configChanges: S.optional(ConfigChangeList),
   }),
 ).annotate({ identifier: "ChangeReport" }) as any as S.Schema<ChangeReport>;
 
 export type ChangeReportList = Array<ChangeReport>;
-export const ChangeReportList = /*@__PURE__*/ S.Array(
-  ChangeReport,
-) as any as S.Schema<ChangeReportList>;
+const ChangeReportList = /*@__PURE__*/ S.Array(ChangeReport) as any as S.Schema<ChangeReportList>;
 
 /** Response message for GenerateConfigReport method. */
 export interface GenerateConfigReportResponse {
@@ -2233,7 +2207,7 @@ export interface GenerateConfigReportResponse {
   /** list of ChangeReport, each corresponding to comparison between two service configurations. */
   changeReports?: ChangeReportList;
 }
-export const GenerateConfigReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateConfigReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.optional(S.String),
     id: S.optional(S.String),
@@ -2245,7 +2219,7 @@ export const GenerateConfigReportResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateConfigReportResponse>;
 
 export type GetConfigServicesViewEnum = "BASIC" | "FULL";
-export const GetConfigServicesViewEnum = S.String;
+const GetConfigServicesViewEnum = S.String;
 
 export interface GetConfigServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
@@ -2255,7 +2229,7 @@ export interface GetConfigServicesRequest {
   /** Specifies which parts of the Service Config should be returned in the response. */
   view?: GetConfigServicesViewEnum | (string & {});
 }
-export const GetConfigServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     configId: S.optional(S.String.pipe(T.Query())),
@@ -2274,7 +2248,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -2285,7 +2259,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -2297,7 +2271,7 @@ export interface GetIamPolicyServicesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2317,7 +2291,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -2326,7 +2300,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -2334,7 +2308,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -2345,7 +2319,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -2353,9 +2327,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -2368,7 +2340,7 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     title: S.optional(S.String),
@@ -2386,7 +2358,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -2395,7 +2367,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2408,7 +2380,7 @@ export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     auditConfigs: S.optional(AuditConfigList),
@@ -2423,7 +2395,7 @@ export interface GetIamPolicyServicesConsumersRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2442,7 +2414,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2458,7 +2430,7 @@ export interface GetServicesRequest {
   /** Required. The name of the service. See the `ServiceManager` overview for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
-export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2471,7 +2443,7 @@ export const GetServicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetServicesRequest" }) as any as S.Schema<GetServicesRequest>;
 
 export type GetServicesConfigsViewEnum = "BASIC" | "FULL";
-export const GetServicesConfigsViewEnum = S.String;
+const GetServicesConfigsViewEnum = S.String;
 
 export interface GetServicesConfigsRequest {
   /** Required. The id of the service configuration resource. This field must be specified for the server to return all fields, including `SourceInfo`. */
@@ -2481,7 +2453,7 @@ export interface GetServicesConfigsRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
-export const GetServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.Label()),
     view: S.optional(GetServicesConfigsViewEnum.pipe(T.Query())),
@@ -2503,7 +2475,7 @@ export interface GetServicesRolloutsRequest {
   /** Required. The id of the rollout resource. */
   rolloutId: string;
 }
-export const GetServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     rolloutId: S.String.pipe(T.Label()),
@@ -2530,7 +2502,7 @@ export interface ListOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2547,7 +2519,7 @@ export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOperationsRequest" }) as any as S.Schema<ListOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -2558,7 +2530,7 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -2576,7 +2548,7 @@ export interface ListServicesRequest {
   /** Token identifying which result to start with; returned by a previous list call. */
   pageToken?: string;
 }
-export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     producerProjectId: S.optional(S.String.pipe(T.Query())),
     consumerId: S.optional(S.String.pipe(T.Query())),
@@ -2592,7 +2564,7 @@ export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListServicesRequest" }) as any as S.Schema<ListServicesRequest>;
 
 export type ManagedServiceList = Array<ManagedService>;
-export const ManagedServiceList = /*@__PURE__*/ S.Array(
+const ManagedServiceList = /*@__PURE__*/ S.Array(
   ManagedService,
 ) as any as S.Schema<ManagedServiceList>;
 
@@ -2603,7 +2575,7 @@ export interface ListServicesResponse {
   /** Token that can be passed to `ListServices` to resume a paginated query. */
   nextPageToken?: string;
 }
-export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     services: S.optional(ManagedServiceList),
     nextPageToken: S.optional(S.String),
@@ -2618,7 +2590,7 @@ export interface ListServicesConfigsRequest {
   /** The max number of items to include in the response list. Page size is 50 if not specified. Maximum value is 100. */
   pageSize?: number;
 }
-export const ListServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     serviceName: S.String.pipe(T.Label()),
@@ -2635,7 +2607,7 @@ export const ListServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServicesConfigsRequest>;
 
 export type ServiceList = Array<Service>;
-export const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
+const ServiceList = /*@__PURE__*/ S.Array(Service) as any as S.Schema<ServiceList>;
 
 /** Response message for ListServiceConfigs method. */
 export interface ListServiceConfigsResponse {
@@ -2644,7 +2616,7 @@ export interface ListServiceConfigsResponse {
   /** The token of the next page of results. */
   nextPageToken?: string;
 }
-export const ListServiceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceConfigs: S.optional(ServiceList),
     nextPageToken: S.optional(S.String),
@@ -2663,7 +2635,7 @@ export interface ListServicesRolloutsRequest {
   /** The token of the page to retrieve. */
   pageToken?: string;
 }
-export const ListServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2681,7 +2653,7 @@ export const ListServicesRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServicesRolloutsRequest>;
 
 export type RolloutList = Array<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** Response message for ListServiceRollouts method. */
 export interface ListServiceRolloutsResponse {
@@ -2690,7 +2662,7 @@ export interface ListServiceRolloutsResponse {
   /** The token of the next page of results. */
   nextPageToken?: string;
 }
-export const ListServiceRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListServiceRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rollouts: S.optional(RolloutList),
     nextPageToken: S.optional(S.String),
@@ -2706,7 +2678,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -2719,7 +2691,7 @@ export interface SetIamPolicyServicesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2740,7 +2712,7 @@ export interface SetIamPolicyServicesConsumersRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2762,7 +2734,7 @@ export type ConfigFileFileTypeEnum =
   | "OPEN_API_YAML"
   | "FILE_DESCRIPTOR_SET_PROTO"
   | "PROTO_FILE";
-export const ConfigFileFileTypeEnum = S.String;
+const ConfigFileFileTypeEnum = S.String;
 
 /** Generic specification of a source configuration file */
 export interface ConfigFile {
@@ -2773,7 +2745,7 @@ export interface ConfigFile {
   /** The type of configuration file this represents. */
   fileType?: ConfigFileFileTypeEnum | (string & {});
 }
-export const ConfigFile = /*@__PURE__*/ S.suspend(() =>
+const ConfigFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileContents: S.optional(S.String),
     filePath: S.optional(S.String),
@@ -2782,7 +2754,7 @@ export const ConfigFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigFile" }) as any as S.Schema<ConfigFile>;
 
 export type ConfigFileList = Array<ConfigFile>;
-export const ConfigFileList = /*@__PURE__*/ S.Array(ConfigFile) as any as S.Schema<ConfigFileList>;
+const ConfigFileList = /*@__PURE__*/ S.Array(ConfigFile) as any as S.Schema<ConfigFileList>;
 
 /** Represents a source file which is used to generate the service configuration defined by `google.api.Service`. */
 export interface ConfigSource {
@@ -2791,7 +2763,7 @@ export interface ConfigSource {
   /** Set of source configuration files that are used to generate a service configuration (`google.api.Service`). */
   files?: ConfigFileList;
 }
-export const ConfigSource = /*@__PURE__*/ S.suspend(() =>
+const ConfigSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     files: S.optional(ConfigFileList),
@@ -2805,7 +2777,7 @@ export interface SubmitConfigSourceRequest {
   /** Optional. If set, this will result in the generation of a `google.api.Service` configuration based on the `ConfigSource` provided, but the generated config and the sources will NOT be persisted. */
   validateOnly?: boolean;
 }
-export const SubmitConfigSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitConfigSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configSource: S.optional(ConfigSource),
     validateOnly: S.optional(S.Boolean),
@@ -2820,7 +2792,7 @@ export interface SubmitServicesConfigsRequest {
   /** Request body */
   body?: SubmitConfigSourceRequest;
 }
-export const SubmitServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const SubmitServicesConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     body: S.optional(SubmitConfigSourceRequest.pipe(T.HttpBody())),
@@ -2840,7 +2812,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2854,7 +2826,7 @@ export interface TestIamPermissionsServicesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2874,7 +2846,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsServicesConsumersRequest {
@@ -2883,7 +2855,7 @@ export interface TestIamPermissionsServicesConsumersRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsServicesConsumersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -2902,7 +2874,7 @@ export interface UndeleteServicesRequest {
   /** Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. */
   serviceName: string;
 }
-export const UndeleteServicesRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteServicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(

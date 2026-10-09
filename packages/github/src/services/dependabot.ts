@@ -69,7 +69,7 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -86,24 +86,22 @@ export const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
 
 export interface AddSelectedRepoToOrgSecretResponse {}
-export const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AddSelectedRepoToOrgSecretResponse",
 }) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
 
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
-export const CreateOrUpdateOrgSecretRequestVisibility = S.String;
+const CreateOrUpdateOrgSecretRequestVisibility = S.String;
 
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem = number | string;
-export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem =
+const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem =
   S.Unknown as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
   Array<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem>;
-export const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
+const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
   CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsItem,
 ) as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
 
@@ -121,7 +119,7 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -137,7 +135,7 @@ export const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
 
 export type CreateOrUpdateOrgSecretResponse = unknown;
-export const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateOrUpdateOrgSecretResponse",
@@ -155,7 +153,7 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id?: string;
 }
-export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -174,7 +172,7 @@ export const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
 
 export type CreateOrUpdateRepoSecretResponse = unknown;
-export const CreateOrUpdateRepoSecretResponse =
+const CreateOrUpdateRepoSecretResponse =
   CreateOrUpdateOrgSecretResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
 
 export interface DeleteOrgSecretRequest {
@@ -183,7 +181,7 @@ export interface DeleteOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -193,7 +191,7 @@ export const DeleteOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOrgSecretRequest" }) as any as S.Schema<DeleteOrgSecretRequest>;
 
 export interface DeleteOrgSecretResponse {}
-export const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteOrgSecretResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteOrgSecretResponse",
 }) as any as S.Schema<DeleteOrgSecretResponse>;
 
@@ -205,7 +203,7 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -220,7 +218,7 @@ export const DeleteRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRepoSecretRequest" }) as any as S.Schema<DeleteRepoSecretRequest>;
 
 export interface DeleteRepoSecretResponse {}
-export const DeleteRepoSecretResponse =
+const DeleteRepoSecretResponse =
   DeleteOrgSecretResponse as any as S.Schema<DeleteRepoSecretResponse>;
 
 export interface GetAlertRequest {
@@ -231,7 +229,7 @@ export interface GetAlertRequest {
   /** The number that identifies a Dependabot alert in its repository. You can find this at the end of the URL for a Dependabot alert within GitHub, or in `number` fields in the response from the `GET /repos/{owner}/{repo}/dependabot/alerts` operation. */
   alert_number: number;
 }
-export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -247,7 +245,7 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the Dependabot alert. */
 export type DependabotAlertState = "auto_dismissed" | "dismissed" | "fixed" | "open";
-export const DependabotAlertState = S.String;
+const DependabotAlertState = S.String;
 
 /** Details for the vulnerable package. */
 export interface DependabotAlertPackage {
@@ -256,7 +254,7 @@ export interface DependabotAlertPackage {
   /** The unique package name within its ecosystem. */
   name: string;
 }
-export const DependabotAlertPackage = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ecosystem: S.String,
     name: S.String,
@@ -265,7 +263,7 @@ export const DependabotAlertPackage = /*@__PURE__*/ S.suspend(() =>
 
 /** The execution scope of the vulnerable dependency. */
 export type DependabotAlertDependencyScope = "development" | "runtime";
-export const DependabotAlertDependencyScope = S.String;
+const DependabotAlertDependencyScope = S.String;
 
 /** The vulnerable dependency's relationship to your project. > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems. */
 export type DependabotAlertDependencyRelationship =
@@ -273,7 +271,7 @@ export type DependabotAlertDependencyRelationship =
   | "direct"
   | "transitive"
   | "inconclusive";
-export const DependabotAlertDependencyRelationship = S.String;
+const DependabotAlertDependencyRelationship = S.String;
 
 /** Details for the vulnerable dependency. */
 export interface DependabotAlertDependency {
@@ -285,7 +283,7 @@ export interface DependabotAlertDependency {
   /** The vulnerable dependency's relationship to your project. > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems. */
   relationship?: DependabotAlertDependencyRelationship | null;
 }
-export const DependabotAlertDependency = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: S.optional(DependabotAlertPackage),
     manifest_path: S.optional(S.String),
@@ -298,14 +296,14 @@ export const DependabotAlertDependency = /*@__PURE__*/ S.suspend(() =>
 
 /** The severity of the vulnerability. */
 export type DependabotAlertSecurityVulnerabilitySeverity = "low" | "medium" | "high" | "critical";
-export const DependabotAlertSecurityVulnerabilitySeverity = S.String;
+const DependabotAlertSecurityVulnerabilitySeverity = S.String;
 
 /** Details pertaining to the package version that patches this vulnerability. */
 export interface DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   /** The package version that patches this vulnerability. */
   identifier: string;
 }
-export const DependabotAlertSecurityVulnerabilityFirstPatchedVersion = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityVulnerabilityFirstPatchedVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
   }),
@@ -323,7 +321,7 @@ export interface DependabotAlertSecurityVulnerability {
   /** Details pertaining to the package version that patches this vulnerability. */
   first_patched_version: DependabotAlertSecurityVulnerabilityFirstPatchedVersion | null;
 }
-export const DependabotAlertSecurityVulnerability = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityVulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package: DependabotAlertPackage,
     severity: DependabotAlertSecurityVulnerabilitySeverity,
@@ -337,17 +335,17 @@ export const DependabotAlertSecurityVulnerability = /*@__PURE__*/ S.suspend(() =
 /** Vulnerable version range information for the advisory. */
 export type DependabotAlertSecurityAdvisoryVulnerabilitiesList =
   Array<DependabotAlertSecurityVulnerability>;
-export const DependabotAlertSecurityAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const DependabotAlertSecurityAdvisoryVulnerabilitiesList = /*@__PURE__*/ S.Array(
   DependabotAlertSecurityVulnerability,
 ) as any as S.Schema<DependabotAlertSecurityAdvisoryVulnerabilitiesList>;
 
 /** The severity of the advisory. */
 export type DependabotAlertSecurityAdvisorySeverity = "low" | "medium" | "high" | "critical";
-export const DependabotAlertSecurityAdvisorySeverity = S.String;
+const DependabotAlertSecurityAdvisorySeverity = S.String;
 
 /** The classification of the advisory. */
 export type DependabotAlertSecurityAdvisoryClassification = "general" | "malware";
-export const DependabotAlertSecurityAdvisoryClassification = S.String;
+const DependabotAlertSecurityAdvisoryClassification = S.String;
 
 /** Details for the advisory pertaining to the Common Vulnerability Scoring System. */
 export interface DependabotAlertSecurityAdvisoryCvss {
@@ -356,7 +354,7 @@ export interface DependabotAlertSecurityAdvisoryCvss {
   /** The full CVSS vector string for the advisory. */
   vector_string: string | null;
 }
-export const DependabotAlertSecurityAdvisoryCvss = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityAdvisoryCvss = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.Number,
     vector_string: S.NullOr(S.String),
@@ -371,7 +369,7 @@ export interface CvssSeveritiesCvssV3 {
   /** The CVSS 3 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV3 = /*@__PURE__*/ S.suspend(() =>
+const CvssSeveritiesCvssV3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vector_string: S.NullOr(S.String),
     score: S.NullOr(S.Number),
@@ -384,13 +382,13 @@ export interface CvssSeveritiesCvssV4 {
   /** The CVSS 4 score. */
   score: number | null;
 }
-export const CvssSeveritiesCvssV4 = CvssSeveritiesCvssV3 as any as S.Schema<CvssSeveritiesCvssV4>;
+const CvssSeveritiesCvssV4 = CvssSeveritiesCvssV3 as any as S.Schema<CvssSeveritiesCvssV4>;
 
 export interface CvssSeverities {
   cvss_v3?: CvssSeveritiesCvssV3 | null;
   cvss_v4?: CvssSeveritiesCvssV4 | null;
 }
-export const CvssSeverities = /*@__PURE__*/ S.suspend(() =>
+const CvssSeverities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cvss_v3: S.optional(S.NullOr(CvssSeveritiesCvssV3)),
     cvss_v4: S.optional(S.NullOr(CvssSeveritiesCvssV4)),
@@ -402,7 +400,7 @@ export interface SecurityAdvisoryEpss {
   percentage?: number;
   percentile?: number;
 }
-export const SecurityAdvisoryEpss = /*@__PURE__*/ S.suspend(() =>
+const SecurityAdvisoryEpss = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentage: S.optional(S.Number),
     percentile: S.optional(S.Number),
@@ -416,7 +414,7 @@ export interface DependabotAlertSecurityAdvisoryCwesItem {
   /** The short, plain text name of the CWE. */
   name: string;
 }
-export const DependabotAlertSecurityAdvisoryCwesItem = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityAdvisoryCwesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cwe_id: S.String,
     name: S.String,
@@ -428,13 +426,13 @@ export const DependabotAlertSecurityAdvisoryCwesItem = /*@__PURE__*/ S.suspend((
 /** Details for the advisory pertaining to Common Weakness Enumeration. */
 export type DependabotAlertSecurityAdvisoryCwesList =
   Array<DependabotAlertSecurityAdvisoryCwesItem>;
-export const DependabotAlertSecurityAdvisoryCwesList = /*@__PURE__*/ S.Array(
+const DependabotAlertSecurityAdvisoryCwesList = /*@__PURE__*/ S.Array(
   DependabotAlertSecurityAdvisoryCwesItem,
 ) as any as S.Schema<DependabotAlertSecurityAdvisoryCwesList>;
 
 /** The type of advisory identifier. */
 export type DependabotAlertSecurityAdvisoryIdentifiersItemType = "CVE" | "GHSA";
-export const DependabotAlertSecurityAdvisoryIdentifiersItemType = S.String;
+const DependabotAlertSecurityAdvisoryIdentifiersItemType = S.String;
 
 /** An advisory identifier. */
 export interface DependabotAlertSecurityAdvisoryIdentifiersItem {
@@ -443,7 +441,7 @@ export interface DependabotAlertSecurityAdvisoryIdentifiersItem {
   /** The value of the advisory identifer. */
   value: string;
 }
-export const DependabotAlertSecurityAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityAdvisoryIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DependabotAlertSecurityAdvisoryIdentifiersItemType,
     value: S.String,
@@ -455,7 +453,7 @@ export const DependabotAlertSecurityAdvisoryIdentifiersItem = /*@__PURE__*/ S.su
 /** Values that identify this advisory among security information sources. */
 export type DependabotAlertSecurityAdvisoryIdentifiersList =
   Array<DependabotAlertSecurityAdvisoryIdentifiersItem>;
-export const DependabotAlertSecurityAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
+const DependabotAlertSecurityAdvisoryIdentifiersList = /*@__PURE__*/ S.Array(
   DependabotAlertSecurityAdvisoryIdentifiersItem,
 ) as any as S.Schema<DependabotAlertSecurityAdvisoryIdentifiersList>;
 
@@ -464,7 +462,7 @@ export interface DependabotAlertSecurityAdvisoryReferencesItem {
   /** The URL of the reference. */
   url: string;
 }
-export const DependabotAlertSecurityAdvisoryReferencesItem = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityAdvisoryReferencesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -475,7 +473,7 @@ export const DependabotAlertSecurityAdvisoryReferencesItem = /*@__PURE__*/ S.sus
 /** Links to additional advisory information. */
 export type DependabotAlertSecurityAdvisoryReferencesList =
   Array<DependabotAlertSecurityAdvisoryReferencesItem>;
-export const DependabotAlertSecurityAdvisoryReferencesList = /*@__PURE__*/ S.Array(
+const DependabotAlertSecurityAdvisoryReferencesList = /*@__PURE__*/ S.Array(
   DependabotAlertSecurityAdvisoryReferencesItem,
 ) as any as S.Schema<DependabotAlertSecurityAdvisoryReferencesList>;
 
@@ -512,7 +510,7 @@ export interface DependabotAlertSecurityAdvisory {
   /** The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
   withdrawn_at: string | null;
 }
-export const DependabotAlertSecurityAdvisory = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertSecurityAdvisory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ghsa_id: S.String,
     cve_id: S.NullOr(S.String),
@@ -560,7 +558,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -594,7 +592,7 @@ export type DependabotAlertDismissedReason =
   | "no_bandwidth"
   | "not_used"
   | "tolerable_risk";
-export const DependabotAlertDismissedReason = S.String;
+const DependabotAlertDismissedReason = S.String;
 
 /** The current status of the dismissal request. */
 export type DependabotAlertDismissalRequestSimpleStatus =
@@ -602,7 +600,7 @@ export type DependabotAlertDismissalRequestSimpleStatus =
   | "approved"
   | "rejected"
   | "cancelled";
-export const DependabotAlertDismissalRequestSimpleStatus = S.String;
+const DependabotAlertDismissalRequestSimpleStatus = S.String;
 
 /** The user who requested the dismissal. */
 export interface DependabotAlertDismissalRequestSimpleRequester {
@@ -611,7 +609,7 @@ export interface DependabotAlertDismissalRequestSimpleRequester {
   /** The login name of the user. */
   login?: string;
 }
-export const DependabotAlertDismissalRequestSimpleRequester = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertDismissalRequestSimpleRequester = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     login: S.optional(S.String),
@@ -633,7 +631,7 @@ export interface DependabotAlertDismissalRequestSimple {
   /** The API URL to get more information about this dismissal request. */
   url?: string;
 }
-export const DependabotAlertDismissalRequestSimple = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertDismissalRequestSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     status: S.optional(DependabotAlertDismissalRequestSimpleStatus),
@@ -647,11 +645,9 @@ export const DependabotAlertDismissalRequestSimple = /*@__PURE__*/ S.suspend(() 
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 /** The users assigned to this alert. */
 export type DependabotAlertAssigneesList = Array<NullableSimpleUser>;
-export const DependabotAlertAssigneesList = /*@__PURE__*/ S.Array(
+const DependabotAlertAssigneesList = /*@__PURE__*/ S.Array(
   NullableSimpleUser,
 ) as any as S.Schema<DependabotAlertAssigneesList>;
 
@@ -680,7 +676,7 @@ export interface DependabotAlert {
   /** The users assigned to this alert. */
   assignees?: DependabotAlertAssigneesList;
 }
-export const DependabotAlert = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     state: DependabotAlertState,
@@ -706,7 +702,7 @@ export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/dependabot/secrets/public-key", code: 200 })),
@@ -719,7 +715,7 @@ export interface DependabotPublicKey {
   /** The Base64 encoded public key. */
   key: string;
 }
-export const DependabotPublicKey = /*@__PURE__*/ S.suspend(() =>
+const DependabotPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key_id: S.String,
     key: S.String,
@@ -732,7 +728,7 @@ export interface GetOrgSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -743,7 +739,7 @@ export const GetOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Visibility of a secret */
 export type OrganizationDependabotSecretVisibility = "all" | "private" | "selected";
-export const OrganizationDependabotSecretVisibility = S.String;
+const OrganizationDependabotSecretVisibility = S.String;
 
 /** Secrets for GitHub Dependabot for an organization. */
 export interface OrganizationDependabotSecret {
@@ -755,7 +751,7 @@ export interface OrganizationDependabotSecret {
   visibility: OrganizationDependabotSecretVisibility;
   selected_repositories_url?: string;
 }
-export const OrganizationDependabotSecret = /*@__PURE__*/ S.suspend(() =>
+const OrganizationDependabotSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -773,7 +769,7 @@ export interface GetRepoPublicKeyRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -794,7 +790,7 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-export const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -815,7 +811,7 @@ export interface DependabotSecret {
   created_at: string;
   updated_at: string;
 }
-export const DependabotSecret = /*@__PURE__*/ S.suspend(() =>
+const DependabotSecret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     created_at: S.String,
@@ -824,27 +820,21 @@ export const DependabotSecret = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DependabotSecret" }) as any as S.Schema<DependabotSecret>;
 
 export type ListAlertsForEnterpriseRequestHasCase1Item = "patch";
-export const ListAlertsForEnterpriseRequestHasCase1Item = S.String;
-
 export type ListAlertsForEnterpriseRequestHasCase1List = Array<
   ListAlertsForEnterpriseRequestHasCase1Item | (string & {})
 >;
-export const ListAlertsForEnterpriseRequestHasCase1List = /*@__PURE__*/ S.Array(
-  ListAlertsForEnterpriseRequestHasCase1Item,
-) as any as S.Schema<ListAlertsForEnterpriseRequestHasCase1List>;
-
 export type ListAlertsForEnterpriseRequestHas = string | ListAlertsForEnterpriseRequestHasCase1List;
-export const ListAlertsForEnterpriseRequestHas =
+const ListAlertsForEnterpriseRequestHas =
   S.Unknown as any as S.Schema<ListAlertsForEnterpriseRequestHas>;
 
 export type ListAlertsForEnterpriseRequestScope = "development" | "runtime";
-export const ListAlertsForEnterpriseRequestScope = S.String;
+const ListAlertsForEnterpriseRequestScope = S.String;
 
 export type ListAlertsForEnterpriseRequestSort = "created" | "updated" | "epss_percentage";
-export const ListAlertsForEnterpriseRequestSort = S.String;
+const ListAlertsForEnterpriseRequestSort = S.String;
 
 export type ListAlertsForEnterpriseRequestDirection = "asc" | "desc";
-export const ListAlertsForEnterpriseRequestDirection = S.String;
+const ListAlertsForEnterpriseRequestDirection = S.String;
 
 export interface ListAlertsForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -880,7 +870,7 @@ export interface ListAlertsForEnterpriseRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListAlertsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     classification: S.optional(S.String.pipe(T.Query())),
@@ -905,20 +895,16 @@ export const ListAlertsForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of the Dependabot alert. */
 export type DependabotAlertWithRepositoryState = "auto_dismissed" | "dismissed" | "fixed" | "open";
-export const DependabotAlertWithRepositoryState = S.String;
+const DependabotAlertWithRepositoryState = S.String;
 
 /** The execution scope of the vulnerable dependency. */
 export type DependabotAlertWithRepositoryDependencyScope = "development" | "runtime";
-export const DependabotAlertWithRepositoryDependencyScope = S.String;
-
 /** The vulnerable dependency's relationship to your project. > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems. */
 export type DependabotAlertWithRepositoryDependencyRelationship =
   | "unknown"
   | "direct"
   | "transitive"
   | "inconclusive";
-export const DependabotAlertWithRepositoryDependencyRelationship = S.String;
-
 /** Details for the vulnerable dependency. */
 export interface DependabotAlertWithRepositoryDependency {
   package?: DependabotAlertPackage;
@@ -929,7 +915,7 @@ export interface DependabotAlertWithRepositoryDependency {
   /** The vulnerable dependency's relationship to your project. > [!NOTE] > We are rolling out support for dependency relationship across ecosystems. This value will be "unknown" for all dependencies in unsupported ecosystems. */
   relationship?: DependabotAlertWithRepositoryDependencyRelationship | null;
 }
-export const DependabotAlertWithRepositoryDependency =
+const DependabotAlertWithRepositoryDependency =
   DependabotAlertDependency as any as S.Schema<DependabotAlertWithRepositoryDependency>;
 
 /** The reason that the alert was dismissed. */
@@ -939,11 +925,11 @@ export type DependabotAlertWithRepositoryDismissedReason =
   | "no_bandwidth"
   | "not_used"
   | "tolerable_risk";
-export const DependabotAlertWithRepositoryDismissedReason = S.String;
+const DependabotAlertWithRepositoryDismissedReason = S.String;
 
 /** The users assigned to this alert. */
 export type DependabotAlertWithRepositoryAssigneesList = Array<NullableSimpleUser>;
-export const DependabotAlertWithRepositoryAssigneesList =
+const DependabotAlertWithRepositoryAssigneesList =
   DependabotAlertAssigneesList as any as S.Schema<DependabotAlertWithRepositoryAssigneesList>;
 
 /** A GitHub repository. */
@@ -1040,7 +1026,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1117,7 +1103,7 @@ export interface DependabotAlertWithRepository {
   assignees?: DependabotAlertWithRepositoryAssigneesList;
   repository: SimpleRepository;
 }
-export const DependabotAlertWithRepository = /*@__PURE__*/ S.suspend(() =>
+const DependabotAlertWithRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     state: DependabotAlertWithRepositoryState,
@@ -1143,37 +1129,32 @@ export const DependabotAlertWithRepository = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DependabotAlertWithRepository>;
 
 export type ListAlertsForEnterpriseResponseBodyList = Array<DependabotAlertWithRepository>;
-export const ListAlertsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForEnterpriseResponseBodyList = /*@__PURE__*/ S.Array(
   DependabotAlertWithRepository,
 ) as any as S.Schema<ListAlertsForEnterpriseResponseBodyList>;
 
 export type ListAlertsForEnterpriseResponse = ListAlertsForEnterpriseResponseBodyList;
-export const ListAlertsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForEnterpriseResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForEnterpriseResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAlertsForEnterpriseResponse",
 }) as any as S.Schema<ListAlertsForEnterpriseResponse>;
 
 export type ListAlertsForOrgRequestHasCase1Item = "patch" | "deployment";
-export const ListAlertsForOrgRequestHasCase1Item = S.String;
-
 export type ListAlertsForOrgRequestHasCase1List = Array<
   ListAlertsForOrgRequestHasCase1Item | (string & {})
 >;
-export const ListAlertsForOrgRequestHasCase1List =
-  ListAlertsForEnterpriseRequestHasCase1List as any as S.Schema<ListAlertsForOrgRequestHasCase1List>;
-
 export type ListAlertsForOrgRequestHas = string | ListAlertsForOrgRequestHasCase1List;
-export const ListAlertsForOrgRequestHas = S.Unknown as any as S.Schema<ListAlertsForOrgRequestHas>;
+const ListAlertsForOrgRequestHas = S.Unknown as any as S.Schema<ListAlertsForOrgRequestHas>;
 
 export type ListAlertsForOrgRequestScope = "development" | "runtime";
-export const ListAlertsForOrgRequestScope = S.String;
+const ListAlertsForOrgRequestScope = S.String;
 
 export type ListAlertsForOrgRequestSort = "created" | "updated" | "epss_percentage";
-export const ListAlertsForOrgRequestSort = S.String;
+const ListAlertsForOrgRequestSort = S.String;
 
 export type ListAlertsForOrgRequestDirection = "asc" | "desc";
-export const ListAlertsForOrgRequestDirection = S.String;
+const ListAlertsForOrgRequestDirection = S.String;
 
 export interface ListAlertsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1215,7 +1196,7 @@ export interface ListAlertsForOrgRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     classification: S.optional(S.String.pipe(T.Query())),
@@ -1240,35 +1221,29 @@ export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsForOrgRequest" }) as any as S.Schema<ListAlertsForOrgRequest>;
 
 export type ListAlertsForOrgResponseBodyList = Array<DependabotAlertWithRepository>;
-export const ListAlertsForOrgResponseBodyList =
+const ListAlertsForOrgResponseBodyList =
   ListAlertsForEnterpriseResponseBodyList as any as S.Schema<ListAlertsForOrgResponseBodyList>;
 
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
-export const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAlertsForOrgResponse" }) as any as S.Schema<ListAlertsForOrgResponse>;
 
 export type ListAlertsForRepoRequestHasCase1Item = "patch";
-export const ListAlertsForRepoRequestHasCase1Item = S.String;
-
 export type ListAlertsForRepoRequestHasCase1List = Array<
   ListAlertsForRepoRequestHasCase1Item | (string & {})
 >;
-export const ListAlertsForRepoRequestHasCase1List =
-  ListAlertsForEnterpriseRequestHasCase1List as any as S.Schema<ListAlertsForRepoRequestHasCase1List>;
-
 export type ListAlertsForRepoRequestHas = string | ListAlertsForRepoRequestHasCase1List;
-export const ListAlertsForRepoRequestHas =
-  S.Unknown as any as S.Schema<ListAlertsForRepoRequestHas>;
+const ListAlertsForRepoRequestHas = S.Unknown as any as S.Schema<ListAlertsForRepoRequestHas>;
 
 export type ListAlertsForRepoRequestScope = "development" | "runtime";
-export const ListAlertsForRepoRequestScope = S.String;
+const ListAlertsForRepoRequestScope = S.String;
 
 export type ListAlertsForRepoRequestSort = "created" | "updated" | "epss_percentage";
-export const ListAlertsForRepoRequestSort = S.String;
+const ListAlertsForRepoRequestSort = S.String;
 
 export type ListAlertsForRepoRequestDirection = "asc" | "desc";
-export const ListAlertsForRepoRequestDirection = S.String;
+const ListAlertsForRepoRequestDirection = S.String;
 
 export interface ListAlertsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -1308,7 +1283,7 @@ export interface ListAlertsForRepoRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1332,12 +1307,12 @@ export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsForRepoRequest" }) as any as S.Schema<ListAlertsForRepoRequest>;
 
 export type ListAlertsForRepoResponseBodyList = Array<DependabotAlert>;
-export const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   DependabotAlert,
 ) as any as S.Schema<ListAlertsForRepoResponseBodyList>;
 
 export type ListAlertsForRepoResponse = ListAlertsForRepoResponseBodyList;
-export const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAlertsForRepoResponse",
@@ -1351,7 +1326,7 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1360,7 +1335,7 @@ export const ListOrgSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrgSecretsRequest" }) as any as S.Schema<ListOrgSecretsRequest>;
 
 export type ListOrgSecretsResponseSecretsList = Array<OrganizationDependabotSecret>;
-export const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   OrganizationDependabotSecret,
 ) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
 
@@ -1368,7 +1343,7 @@ export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
-export const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrgSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListOrgSecretsResponseSecretsList,
@@ -1385,7 +1360,7 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1395,7 +1370,7 @@ export const ListRepoSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoSecretsRequest" }) as any as S.Schema<ListRepoSecretsRequest>;
 
 export type ListRepoSecretsResponseSecretsList = Array<DependabotSecret>;
-export const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
+const ListRepoSecretsResponseSecretsList = /*@__PURE__*/ S.Array(
   DependabotSecret,
 ) as any as S.Schema<ListRepoSecretsResponseSecretsList>;
 
@@ -1403,7 +1378,7 @@ export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
-export const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepoSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     secrets: ListRepoSecretsResponseSecretsList,
@@ -1420,7 +1395,7 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1438,13 +1413,13 @@ export const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListSelectedReposForOrgSecretRequest>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
+const MinimalRepositoryTopicsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -1453,7 +1428,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -1473,7 +1448,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1490,7 +1465,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -1501,13 +1476,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -1516,98 +1491,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -1617,7 +1576,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -1632,16 +1591,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -1663,7 +1621,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -1686,7 +1644,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -1787,7 +1745,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1883,7 +1841,7 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepository" }) as any as S.Schema<MinimalRepository>;
 
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
-export const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
+const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
 
@@ -1891,7 +1849,7 @@ export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
-export const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_count: S.Number,
     repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
@@ -1907,7 +1865,7 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -1924,7 +1882,7 @@ export const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
 
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-export const RemoveSelectedRepoFromOrgSecretResponse =
+const RemoveSelectedRepoFromOrgSecretResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
 
 export interface RepositoryAccessForEnterpriseRequest {
@@ -1935,7 +1893,7 @@ export interface RepositoryAccessForEnterpriseRequest {
   /** Number of results per page. */
   per_page?: number;
 }
-export const RepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1953,15 +1911,13 @@ export const RepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The default repository access level for Dependabot updates. */
 export type DependabotRepositoryAccessDetailsDefaultLevel = "public" | "internal";
-export const DependabotRepositoryAccessDetailsDefaultLevel = S.String;
+const DependabotRepositoryAccessDetailsDefaultLevel = S.String;
 
 /** A GitHub repository. */
 export type NullableSimpleRepository = SimpleRepository;
-export const NullableSimpleRepository = SimpleRepository;
-
 export type DependabotRepositoryAccessDetailsAccessibleRepositoriesList =
   Array<SimpleRepository | null>;
-export const DependabotRepositoryAccessDetailsAccessibleRepositoriesList = /*@__PURE__*/ S.Array(
+const DependabotRepositoryAccessDetailsAccessibleRepositoriesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(SimpleRepository),
 ) as any as S.Schema<DependabotRepositoryAccessDetailsAccessibleRepositoriesList>;
 
@@ -1971,7 +1927,7 @@ export interface DependabotRepositoryAccessDetails {
   default_level?: DependabotRepositoryAccessDetailsDefaultLevel | null;
   accessible_repositories?: DependabotRepositoryAccessDetailsAccessibleRepositoriesList;
 }
-export const DependabotRepositoryAccessDetails = /*@__PURE__*/ S.suspend(() =>
+const DependabotRepositoryAccessDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_level: S.optional(S.NullOr(DependabotRepositoryAccessDetailsDefaultLevel)),
     accessible_repositories: S.optional(
@@ -1990,7 +1946,7 @@ export interface RepositoryAccessForOrgRequest {
   /** Number of results per page. */
   per_page?: number;
 }
-export const RepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2002,7 +1958,7 @@ export const RepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The default repository access level for Dependabot updates. */
 export type SetRepositoryAccessDefaultLevelRequestDefaultLevel = "public" | "internal";
-export const SetRepositoryAccessDefaultLevelRequestDefaultLevel = S.String;
+const SetRepositoryAccessDefaultLevelRequestDefaultLevel = S.String;
 
 export interface SetRepositoryAccessDefaultLevelRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2010,7 +1966,7 @@ export interface SetRepositoryAccessDefaultLevelRequest {
   /** The default repository access level for Dependabot updates. */
   default_level: SetRepositoryAccessDefaultLevelRequestDefaultLevel | (string & {});
 }
-export const SetRepositoryAccessDefaultLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const SetRepositoryAccessDefaultLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     default_level: SetRepositoryAccessDefaultLevelRequestDefaultLevel,
@@ -2026,12 +1982,12 @@ export const SetRepositoryAccessDefaultLevelRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<SetRepositoryAccessDefaultLevelRequest>;
 
 export interface SetRepositoryAccessDefaultLevelResponse {}
-export const SetRepositoryAccessDefaultLevelResponse =
+const SetRepositoryAccessDefaultLevelResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetRepositoryAccessDefaultLevelResponse>;
 
 /** The default repository access level for Dependabot updates. */
 export type SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel = "public" | "internal";
-export const SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel = S.String;
+const SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel = S.String;
 
 export interface SetRepositoryAccessDefaultLevelForEnterpriseRequest {
   /** The slug version of the enterprise name. */
@@ -2039,7 +1995,7 @@ export interface SetRepositoryAccessDefaultLevelForEnterpriseRequest {
   /** The default repository access level for Dependabot updates. */
   default_level: SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel | (string & {});
 }
-export const SetRepositoryAccessDefaultLevelForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const SetRepositoryAccessDefaultLevelForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     default_level: SetRepositoryAccessDefaultLevelForEnterpriseRequestDefaultLevel,
@@ -2055,12 +2011,12 @@ export const SetRepositoryAccessDefaultLevelForEnterpriseRequest = /*@__PURE__*/
 }) as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseRequest>;
 
 export interface SetRepositoryAccessDefaultLevelForEnterpriseResponse {}
-export const SetRepositoryAccessDefaultLevelForEnterpriseResponse =
+const SetRepositoryAccessDefaultLevelForEnterpriseResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetRepositoryAccessDefaultLevelForEnterpriseResponse>;
 
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-export const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
+const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
 
@@ -2072,7 +2028,7 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
-export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     secret_name: S.String.pipe(T.Label()),
@@ -2089,12 +2045,12 @@ export const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
 
 export interface SetSelectedReposForOrgSecretResponse {}
-export const SetSelectedReposForOrgSecretResponse =
+const SetSelectedReposForOrgSecretResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
 
 /** The state of the Dependabot alert. A `dismissed_reason` must be provided when setting the state to `dismissed`. */
 export type UpdateAlertRequestState = "dismissed" | "open";
-export const UpdateAlertRequestState = S.String;
+const UpdateAlertRequestState = S.String;
 
 /** **Required when `state` is `dismissed`.** A reason for dismissing the alert. */
 export type UpdateAlertRequestDismissedReason =
@@ -2103,11 +2059,11 @@ export type UpdateAlertRequestDismissedReason =
   | "no_bandwidth"
   | "not_used"
   | "tolerable_risk";
-export const UpdateAlertRequestDismissedReason = S.String;
+const UpdateAlertRequestDismissedReason = S.String;
 
 /** Usernames to assign to this Dependabot Alert. Pass one or more user logins to _replace_ the set of assignees on this alert. Send an empty array (`[]`) to clear all assignees from the alert. To assign an AI agent, include the bot login (for example, `copilot-swe-agent[bot]`). */
 export type UpdateAlertRequestAssigneesList = Array<string>;
-export const UpdateAlertRequestAssigneesList =
+const UpdateAlertRequestAssigneesList =
   MinimalRepositoryTopicsList as any as S.Schema<UpdateAlertRequestAssigneesList>;
 
 /** Parameters for AI agent assignment. Only used when an agent bot login is included in `assignees`. Ignored when no agent is being assigned. */
@@ -2119,7 +2075,7 @@ export interface UpdateAlertRequestAgentAssignment {
   /** The model to use for the agent. */
   model?: string;
 }
-export const UpdateAlertRequestAgentAssignment = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRequestAgentAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     custom_instructions: S.optional(S.String),
     custom_agent: S.optional(S.String),
@@ -2147,7 +2103,7 @@ export interface UpdateAlertRequest {
   /** Parameters for AI agent assignment. Only used when an agent bot login is included in `assignees`. Ignored when no agent is being assigned. */
   agent_assignment?: UpdateAlertRequestAgentAssignment;
 }
-export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2168,14 +2124,13 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of repository IDs to add. */
 export type UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList = Array<number>;
-export const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList>;
+const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList>;
 
 /** List of repository IDs to remove. */
 export type UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList = Array<number>;
-export const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList =
+const UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList =
   UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToAddList as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList>;
 
 export interface UpdateRepositoryAccessForEnterpriseRequest {
@@ -2186,7 +2141,7 @@ export interface UpdateRepositoryAccessForEnterpriseRequest {
   /** List of repository IDs to remove. */
   repository_ids_to_remove?: UpdateRepositoryAccessForEnterpriseRequestRepositoryIdsToRemoveList;
 }
-export const UpdateRepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     repository_ids_to_add: S.optional(
@@ -2207,17 +2162,17 @@ export const UpdateRepositoryAccessForEnterpriseRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<UpdateRepositoryAccessForEnterpriseRequest>;
 
 export interface UpdateRepositoryAccessForEnterpriseResponse {}
-export const UpdateRepositoryAccessForEnterpriseResponse =
+const UpdateRepositoryAccessForEnterpriseResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<UpdateRepositoryAccessForEnterpriseResponse>;
 
 /** List of repository IDs to add. */
 export type UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList = Array<number>;
-export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList =
+const UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList =
   SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList>;
 
 /** List of repository IDs to remove. */
 export type UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList = Array<number>;
-export const UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList =
+const UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList =
   SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList as any as S.Schema<UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList>;
 
 export interface UpdateRepositoryAccessForOrgRequest {
@@ -2228,7 +2183,7 @@ export interface UpdateRepositoryAccessForOrgRequest {
   /** List of repository IDs to remove. */
   repository_ids_to_remove?: UpdateRepositoryAccessForOrgRequestRepositoryIdsToRemoveList;
 }
-export const UpdateRepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     repository_ids_to_add: S.optional(UpdateRepositoryAccessForOrgRequestRepositoryIdsToAddList),
@@ -2241,7 +2196,7 @@ export const UpdateRepositoryAccessForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRepositoryAccessForOrgRequest>;
 
 export interface UpdateRepositoryAccessForOrgResponse {}
-export const UpdateRepositoryAccessForOrgResponse =
+const UpdateRepositoryAccessForOrgResponse =
   AddSelectedRepoToOrgSecretResponse as any as S.Schema<UpdateRepositoryAccessForOrgResponse>;
 
 export type AddSelectedRepoToOrgSecretError = Conflict | GithubOpError;

@@ -65,7 +65,7 @@ export interface CommitAutofixRequest {
   /** Commit message to be used. */
   message?: string;
 }
-export const CommitAutofixRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitAutofixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -87,7 +87,7 @@ export interface CodeScanningAutofixCommitsResponse {
   /** SHA of commit with autofix. */
   sha?: string;
 }
-export const CodeScanningAutofixCommitsResponse = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAutofixCommitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target_ref: S.optional(S.String),
     sha: S.optional(S.String),
@@ -104,7 +104,7 @@ export interface CreateAutofixRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
-export const CreateAutofixRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutofixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -120,14 +120,14 @@ export const CreateAutofixRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of an autofix. */
 export type CodeScanningAutofixStatus = "pending" | "error" | "success" | "outdated";
-export const CodeScanningAutofixStatus = S.String;
+const CodeScanningAutofixStatus = S.String;
 
 export interface CodeScanningAutofix {
   status: CodeScanningAutofixStatus;
   description: string | null;
   started_at: string;
 }
-export const CodeScanningAutofix = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAutofix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: CodeScanningAutofixStatus,
     description: S.NullOr(S.String),
@@ -147,22 +147,22 @@ export type CodeScanningVariantAnalysisLanguage =
   | "ruby"
   | "rust"
   | "swift";
-export const CodeScanningVariantAnalysisLanguage = S.String;
+const CodeScanningVariantAnalysisLanguage = S.String;
 
 /** List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoriesList = Array<string>;
-export const CreateVariantAnalysisRequestRepositoriesList = /*@__PURE__*/ S.Array(
+const CreateVariantAnalysisRequestRepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateVariantAnalysisRequestRepositoriesList>;
 
 /** List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryListsList = Array<string>;
-export const CreateVariantAnalysisRequestRepositoryListsList =
+const CreateVariantAnalysisRequestRepositoryListsList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryListsList>;
 
 /** List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
 export type CreateVariantAnalysisRequestRepositoryOwnersList = Array<string>;
-export const CreateVariantAnalysisRequestRepositoryOwnersList =
+const CreateVariantAnalysisRequestRepositoryOwnersList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CreateVariantAnalysisRequestRepositoryOwnersList>;
 
 export interface CreateVariantAnalysisRequest {
@@ -180,7 +180,7 @@ export interface CreateVariantAnalysisRequest {
   /** List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required. */
   repository_owners?: CreateVariantAnalysisRequestRepositoryOwnersList;
 }
-export const CreateVariantAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVariantAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -225,7 +225,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -346,7 +346,7 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-export const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
+const SimpleRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -402,14 +402,14 @@ export type CodeScanningVariantAnalysisStatus =
   | "succeeded"
   | "failed"
   | "cancelled";
-export const CodeScanningVariantAnalysisStatus = S.String;
+const CodeScanningVariantAnalysisStatus = S.String;
 
 /** The reason for a failure of the variant analysis. This is only available if the variant analysis has failed. */
 export type CodeScanningVariantAnalysisFailureReason =
   | "no_repos_queried"
   | "actions_workflow_run_failed"
   | "internal_error";
-export const CodeScanningVariantAnalysisFailureReason = S.String;
+const CodeScanningVariantAnalysisFailureReason = S.String;
 
 /** Repository Identifier */
 export interface CodeScanningVariantAnalysisRepository {
@@ -424,7 +424,7 @@ export interface CodeScanningVariantAnalysisRepository {
   stargazers_count: number;
   updated_at: string | null;
 }
-export const CodeScanningVariantAnalysisRepository = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysisRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -445,7 +445,7 @@ export type CodeScanningVariantAnalysisStatus2 =
   | "failed"
   | "canceled"
   | "timed_out";
-export const CodeScanningVariantAnalysisStatus2 = S.String;
+const CodeScanningVariantAnalysisStatus2 = S.String;
 
 export interface CodeScanningVariantAnalysisScannedRepositoriesItem {
   repository: CodeScanningVariantAnalysisRepository;
@@ -457,7 +457,7 @@ export interface CodeScanningVariantAnalysisScannedRepositoriesItem {
   /** The reason of the failure of this repo task. This is only available if the repository task has failed. */
   failure_message?: string;
 }
-export const CodeScanningVariantAnalysisScannedRepositoriesItem = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysisScannedRepositoriesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: CodeScanningVariantAnalysisRepository,
     analysis_status: CodeScanningVariantAnalysisStatus2,
@@ -471,14 +471,14 @@ export const CodeScanningVariantAnalysisScannedRepositoriesItem = /*@__PURE__*/ 
 
 export type CodeScanningVariantAnalysisScannedRepositoriesList =
   Array<CodeScanningVariantAnalysisScannedRepositoriesItem>;
-export const CodeScanningVariantAnalysisScannedRepositoriesList = /*@__PURE__*/ S.Array(
+const CodeScanningVariantAnalysisScannedRepositoriesList = /*@__PURE__*/ S.Array(
   CodeScanningVariantAnalysisScannedRepositoriesItem,
 ) as any as S.Schema<CodeScanningVariantAnalysisScannedRepositoriesList>;
 
 /** A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it. */
 export type CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList =
   Array<CodeScanningVariantAnalysisRepository>;
-export const CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList = /*@__PURE__*/ S.Array(
+const CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList = /*@__PURE__*/ S.Array(
   CodeScanningVariantAnalysisRepository,
 ) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList>;
 
@@ -488,7 +488,7 @@ export interface CodeScanningVariantAnalysisSkippedRepoGroup {
   /** A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it. */
   repositories: CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList;
 }
-export const CodeScanningVariantAnalysisSkippedRepoGroup = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysisSkippedRepoGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_count: S.Number,
     repositories: CodeScanningVariantAnalysisSkippedRepoGroupRepositoriesList,
@@ -500,7 +500,7 @@ export const CodeScanningVariantAnalysisSkippedRepoGroup = /*@__PURE__*/ S.suspe
 /** A list of full repository names that were skipped. This list may not include all repositories that were skipped. */
 export type CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList =
   Array<string>;
-export const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList =
+const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList>;
@@ -511,13 +511,12 @@ export interface CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos {
   /** A list of full repository names that were skipped. This list may not include all repositories that were skipped. */
   repository_full_names: CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList;
 }
-export const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      repository_count: S.Number,
-      repository_full_names:
-        CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList,
-    }),
+const CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    repository_count: S.Number,
+    repository_full_names:
+      CodeScanningVariantAnalysisSkippedRepositoriesNotFoundReposRepositoryFullNamesList,
+  }),
 ).annotate({
   identifier: "CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos",
 }) as any as S.Schema<CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos>;
@@ -529,7 +528,7 @@ export interface CodeScanningVariantAnalysisSkippedRepositories {
   no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup;
   over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup;
 }
-export const CodeScanningVariantAnalysisSkippedRepositories = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysisSkippedRepositories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup,
     not_found_repos: CodeScanningVariantAnalysisSkippedRepositoriesNotFoundRepos,
@@ -564,7 +563,7 @@ export interface CodeScanningVariantAnalysis {
   /** Information about repositories that were skipped from processing. This information is only available to the user that initiated the variant analysis. */
   skipped_repositories?: CodeScanningVariantAnalysisSkippedRepositories;
 }
-export const CodeScanningVariantAnalysis = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     controller_repo: SimpleRepository,
@@ -594,7 +593,7 @@ export interface DeleteAnalysisRequest {
   /** Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final analysis in a set without setting this parameter to `true`, you'll get a 400 response with the message: `Analysis is last of its type and deletion may result in the loss of historical alert data. Please specify confirm_delete.` */
   confirm_delete?: string;
 }
-export const DeleteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -616,7 +615,7 @@ export interface CodeScanningAnalysisDeletion {
   /** Next deletable analysis in chain, with last analysis deletion confirmation */
   confirm_delete_url: string | null;
 }
-export const CodeScanningAnalysisDeletion = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAnalysisDeletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_analysis_url: S.NullOr(S.String),
     confirm_delete_url: S.NullOr(S.String),
@@ -633,7 +632,7 @@ export interface DeleteCodeqlDatabaseRequest {
   /** The language of the CodeQL database. */
   language: string;
 }
-export const DeleteCodeqlDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCodeqlDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -650,7 +649,7 @@ export const DeleteCodeqlDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCodeqlDatabaseRequest>;
 
 export interface DeleteCodeqlDatabaseResponse {}
-export const DeleteCodeqlDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteCodeqlDatabaseResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCodeqlDatabaseResponse",
 }) as any as S.Schema<DeleteCodeqlDatabaseResponse>;
 
@@ -660,7 +659,7 @@ export interface GetAiScanEnablementRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -671,14 +670,14 @@ export const GetAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether AI Scan is enabled for the repository. */
 export type CodeScanningAiScanEnablementPrScan = "enabled" | "disabled";
-export const CodeScanningAiScanEnablementPrScan = S.String;
+const CodeScanningAiScanEnablementPrScan = S.String;
 
 /** AI Scan enablement for a repository. */
 export interface CodeScanningAiScanEnablement {
   /** Whether AI Scan is enabled for the repository. */
   pr_scan: CodeScanningAiScanEnablementPrScan;
 }
-export const CodeScanningAiScanEnablement = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAiScanEnablement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pr_scan: CodeScanningAiScanEnablementPrScan,
   }),
@@ -690,7 +689,7 @@ export interface GetAiScanEnablementForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/code-scanning/ai-scan", code: 200 })),
@@ -700,14 +699,12 @@ export const GetAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out. */
 export type CodeScanningAiScanOrgSettingsPrScan = "enabled" | "disabled";
-export const CodeScanningAiScanOrgSettingsPrScan = S.String;
-
 /** The AI Scan organization setting */
 export interface CodeScanningAiScanOrgSettings {
   /** Whether AI Scan on pull requests is enabled for the organization. The organization setting respects enterprise policy, and repositories inherit it: when disabled, repositories cannot enable AI Scan; when enabled, repositories can still opt out. */
   pr_scan: CodeScanningAiScanOrgSettingsPrScan;
 }
-export const CodeScanningAiScanOrgSettings =
+const CodeScanningAiScanOrgSettings =
   CodeScanningAiScanEnablement as any as S.Schema<CodeScanningAiScanOrgSettings>;
 
 export interface GetAlertRequest {
@@ -718,7 +715,7 @@ export interface GetAlertRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
-export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -734,31 +731,29 @@ export const GetAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of a code scanning alert. */
 export type CodeScanningAlertState = "open" | "dismissed" | "fixed";
-export const CodeScanningAlertState = S.String;
+const CodeScanningAlertState = S.String;
 
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 /** **Required when the state is dismissed.** The reason for dismissing or closing the alert. */
 export type CodeScanningAlertDismissedReason =
   | "false positive"
   | "won't fix"
   | "used in tests"
   | "mitigated";
-export const CodeScanningAlertDismissedReason = S.String;
+const CodeScanningAlertDismissedReason = S.String;
 
 /** The severity of the alert. */
 export type CodeScanningAlertRuleSeverity = "none" | "note" | "warning" | "error";
-export const CodeScanningAlertRuleSeverity = S.String;
+const CodeScanningAlertRuleSeverity = S.String;
 
 /** The security severity of the alert. */
 export type CodeScanningAlertRuleSecuritySeverityLevel = "low" | "medium" | "high" | "critical";
-export const CodeScanningAlertRuleSecuritySeverityLevel = S.String;
+const CodeScanningAlertRuleSecuritySeverityLevel = S.String;
 
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleTagsList = Array<string>;
-export const CodeScanningAlertRuleTagsList =
+const CodeScanningAlertRuleTagsList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleTagsList>;
 
 export interface CodeScanningAlertRule {
@@ -781,7 +776,7 @@ export interface CodeScanningAlertRule {
   /** A link to the documentation for the rule used to detect the alert. */
   help_uri?: string | null;
 }
-export const CodeScanningAlertRule = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -800,7 +795,7 @@ export interface CodeScanningAnalysisTool {
   version?: string | null;
   guid?: string | null;
 }
-export const CodeScanningAnalysisTool = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAnalysisTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.NullOr(S.String)),
@@ -813,7 +808,7 @@ export interface CodeScanningAlertInstanceMessage {
   /** The message text as GitHub-flavored Markdown, with placeholder links for related locations replaced by links to the relevant code. Only populated when related locations are available for the alert instance. */
   markdown?: string;
 }
-export const CodeScanningAlertInstanceMessage = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertInstanceMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     markdown: S.optional(S.String),
@@ -830,7 +825,7 @@ export interface CodeScanningAlertLocation {
   start_column?: number;
   end_column?: number;
 }
-export const CodeScanningAlertLocation = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(S.String),
     start_line: S.optional(S.Number),
@@ -844,12 +839,12 @@ export const CodeScanningAlertLocation = /*@__PURE__*/ S.suspend(() =>
 
 /** A classification of the file. For example to identify it as generated. */
 export type CodeScanningAlertClassification = "source" | "generated" | "test" | "library";
-export const CodeScanningAlertClassification = S.String;
+const CodeScanningAlertClassification = S.String;
 
 /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
 export type CodeScanningAlertInstanceClassificationsList =
   Array<CodeScanningAlertClassification | null>;
-export const CodeScanningAlertInstanceClassificationsList = /*@__PURE__*/ S.Array(
+const CodeScanningAlertInstanceClassificationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.NullOr(CodeScanningAlertClassification),
 ) as any as S.Schema<CodeScanningAlertInstanceClassificationsList>;
 
@@ -866,7 +861,7 @@ export interface CodeScanningAlertInstance {
   /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
   classifications?: CodeScanningAlertInstanceClassificationsList;
 }
-export const CodeScanningAlertInstance = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.optional(S.String),
     analysis_key: S.optional(S.String),
@@ -884,7 +879,7 @@ export const CodeScanningAlertInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeScanningAlertInstance>;
 
 export type CodeScanningAlertAssigneesList = Array<SimpleUser>;
-export const CodeScanningAlertAssigneesList = /*@__PURE__*/ S.Array(
+const CodeScanningAlertAssigneesList = /*@__PURE__*/ S.Array(
   SimpleUser,
 ) as any as S.Schema<CodeScanningAlertAssigneesList>;
 
@@ -899,7 +894,7 @@ export interface PullRequestSimpleLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: SimpleUser | null;
 }
-export const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -915,13 +910,13 @@ export const PullRequestSimpleLabelsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PullRequestSimpleLabelsItem>;
 
 export type PullRequestSimpleLabelsList = Array<PullRequestSimpleLabelsItem>;
-export const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
+const PullRequestSimpleLabelsList = /*@__PURE__*/ S.Array(
   PullRequestSimpleLabelsItem,
 ) as any as S.Schema<PullRequestSimpleLabelsList>;
 
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
+const NullableMilestoneState = S.String;
 
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
@@ -945,7 +940,7 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
+const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     html_url: S.String,
@@ -967,11 +962,11 @@ export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
 
 export type PullRequestSimpleAssigneesList = Array<SimpleUser>;
-export const PullRequestSimpleAssigneesList =
+const PullRequestSimpleAssigneesList =
   CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleAssigneesList>;
 
 export type PullRequestSimpleRequestedReviewersList = Array<SimpleUser>;
-export const PullRequestSimpleRequestedReviewersList =
+const PullRequestSimpleRequestedReviewersList =
   CodeScanningAlertAssigneesList as any as S.Schema<PullRequestSimpleRequestedReviewersList>;
 
 export interface TeamPermissions {
@@ -981,7 +976,7 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
+const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pull: S.Boolean,
     triage: S.Boolean,
@@ -993,15 +988,15 @@ export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
 
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
+const TeamType = S.String;
 
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
+const TeamAccessSource = S.String;
 
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
+const NullableTeamSimpleType = S.String;
 
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
@@ -1033,7 +1028,7 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1079,7 +1074,7 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
+const Team = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1103,7 +1098,7 @@ export const Team = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
 
 export type PullRequestSimpleRequestedTeamsList = Array<Team>;
-export const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ S.Array(
+const PullRequestSimpleRequestedTeamsList = /*@__PURE__*/ S.Array(
   Team,
 ) as any as S.Schema<PullRequestSimpleRequestedTeamsList>;
 
@@ -1116,7 +1111,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1134,7 +1129,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -1145,35 +1140,35 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
+const RepositoryTopicsList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -1314,7 +1309,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1424,7 +1419,7 @@ export interface PullRequestSimpleHead {
   sha: string;
   user: SimpleUser | null;
 }
-export const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.String,
     ref: S.String,
@@ -1435,13 +1430,11 @@ export const PullRequestSimpleHead = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullRequestSimpleHead" }) as any as S.Schema<PullRequestSimpleHead>;
 
 export type PullRequestSimpleBase = PullRequestSimpleHead;
-export const PullRequestSimpleBase = PullRequestSimpleHead;
-
 /** Hypermedia Link */
 export interface Link {
   href: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
   }),
@@ -1457,7 +1450,7 @@ export interface PullRequestSimpleLinks {
   review_comment: Link;
   self: Link;
 }
-export const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimpleLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comments: Link,
     commits: Link,
@@ -1480,11 +1473,11 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
+const AuthorAssociation = S.String;
 
 /** The merge method to use. */
 export type AutoMergeMergeMethod = "merge" | "squash" | "rebase";
-export const AutoMergeMergeMethod = S.String;
+const AutoMergeMergeMethod = S.String;
 
 /** The status of auto merging a pull request. */
 export interface AutoMerge {
@@ -1496,7 +1489,7 @@ export interface AutoMerge {
   /** Commit message for the merge commit. */
   commit_message: string;
 }
-export const AutoMerge = /*@__PURE__*/ S.suspend(() =>
+const AutoMerge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled_by: SimpleUser,
     merge_method: AutoMergeMergeMethod,
@@ -1511,7 +1504,7 @@ export interface PullRequestStackBase {
   /** The base SHA of the stack this pull request belongs to. */
   sha: string;
 }
-export const PullRequestStackBase = /*@__PURE__*/ S.suspend(() =>
+const PullRequestStackBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
     sha: S.String,
@@ -1530,7 +1523,7 @@ export interface PullRequestStack {
   /** The number of the stack that this pull request belongs to. */
   number?: number;
 }
-export const PullRequestStack = /*@__PURE__*/ S.suspend(() =>
+const PullRequestStack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base: PullRequestStackBase,
     size: S.optional(S.Number),
@@ -1581,7 +1574,7 @@ export interface PullRequestSimple {
   /** Indicates whether or not the pull request is a draft. */
   draft?: boolean;
 }
-export const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
+const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     id: S.Number,
@@ -1625,7 +1618,7 @@ export const PullRequestSimple = /*@__PURE__*/ S.suspend(() =>
 
 /** Pull requests linked to this alert. */
 export type CodeScanningAlertLinkedPullRequestsList = Array<PullRequestSimple>;
-export const CodeScanningAlertLinkedPullRequestsList = /*@__PURE__*/ S.Array(
+const CodeScanningAlertLinkedPullRequestsList = /*@__PURE__*/ S.Array(
   PullRequestSimple,
 ) as any as S.Schema<CodeScanningAlertLinkedPullRequestsList>;
 
@@ -1650,7 +1643,7 @@ export interface CodeScanningAlert {
   /** Pull requests linked to this alert. */
   linked_pull_requests?: CodeScanningAlertLinkedPullRequestsList;
 }
-export const CodeScanningAlert = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     created_at: S.String,
@@ -1681,7 +1674,7 @@ export interface GetAnalysisRequest {
   /** The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses` operation. */
   analysis_id: number;
 }
-export const GetAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1716,7 +1709,7 @@ export interface CodeScanningAnalysis {
   /** Warning generated when processing the analysis */
   warning: string;
 }
-export const CodeScanningAnalysis = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
     commit_sha: S.String,
@@ -1744,7 +1737,7 @@ export interface GetAutofixRequest {
   /** The number that identifies an alert. You can find this at the end of the URL for a code scanning alert within GitHub, and in the `number` field in the response from the `GET /repos/{owner}/{repo}/code-scanning/alerts` operation. */
   alert_number: number;
 }
-export const GetAutofixRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutofixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1766,7 +1759,7 @@ export interface GetCodeqlDatabaseRequest {
   /** The language of the CodeQL database. */
   language: string;
 }
-export const GetCodeqlDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodeqlDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1802,7 +1795,7 @@ export interface CodeScanningCodeqlDatabase {
   /** The commit SHA of the repository at the time the CodeQL database was created. */
   commit_oid?: string | null;
 }
-export const CodeScanningCodeqlDatabase = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningCodeqlDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1825,7 +1818,7 @@ export interface GetDefaultSetupRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1836,7 +1829,7 @@ export const GetDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Code scanning default setup has been configured or not. */
 export type CodeScanningDefaultSetupState = "configured" | "not-configured";
-export const CodeScanningDefaultSetupState = S.String;
+const CodeScanningDefaultSetupState = S.String;
 
 export type CodeScanningDefaultSetupLanguagesItem =
   | "actions"
@@ -1850,29 +1843,29 @@ export type CodeScanningDefaultSetupLanguagesItem =
   | "ruby"
   | "typescript"
   | "swift";
-export const CodeScanningDefaultSetupLanguagesItem = S.String;
+const CodeScanningDefaultSetupLanguagesItem = S.String;
 
 /** Languages to be analyzed. */
 export type CodeScanningDefaultSetupLanguagesList = Array<CodeScanningDefaultSetupLanguagesItem>;
-export const CodeScanningDefaultSetupLanguagesList = /*@__PURE__*/ S.Array(
+const CodeScanningDefaultSetupLanguagesList = /*@__PURE__*/ S.Array(
   CodeScanningDefaultSetupLanguagesItem,
 ) as any as S.Schema<CodeScanningDefaultSetupLanguagesList>;
 
 /** Runner type to be used. */
 export type CodeScanningDefaultSetupRunnerType = "standard" | "labeled";
-export const CodeScanningDefaultSetupRunnerType = S.String;
+const CodeScanningDefaultSetupRunnerType = S.String;
 
 /** CodeQL query suite to be used. */
 export type CodeScanningDefaultSetupQuerySuite = "default" | "extended";
-export const CodeScanningDefaultSetupQuerySuite = S.String;
+const CodeScanningDefaultSetupQuerySuite = S.String;
 
 /** Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input. */
 export type CodeScanningDefaultSetupThreatModel = "remote" | "remote_and_local";
-export const CodeScanningDefaultSetupThreatModel = S.String;
+const CodeScanningDefaultSetupThreatModel = S.String;
 
 /** The frequency of the periodic analysis. */
 export type CodeScanningDefaultSetupSchedule = "weekly";
-export const CodeScanningDefaultSetupSchedule = S.String;
+const CodeScanningDefaultSetupSchedule = S.String;
 
 /** Configuration for code scanning default setup. */
 export interface CodeScanningDefaultSetup {
@@ -1893,7 +1886,7 @@ export interface CodeScanningDefaultSetup {
   /** The frequency of the periodic analysis. */
   schedule?: CodeScanningDefaultSetupSchedule | null;
 }
-export const CodeScanningDefaultSetup = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningDefaultSetup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(CodeScanningDefaultSetupState),
     languages: S.optional(CodeScanningDefaultSetupLanguagesList),
@@ -1914,7 +1907,7 @@ export interface GetSarifRequest {
   /** The SARIF ID obtained after uploading. */
   sarif_id: string;
 }
-export const GetSarifRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSarifRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1930,11 +1923,11 @@ export const GetSarifRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed. */
 export type CodeScanningSarifsStatusProcessingStatus = "pending" | "complete" | "failed";
-export const CodeScanningSarifsStatusProcessingStatus = S.String;
+const CodeScanningSarifsStatusProcessingStatus = S.String;
 
 /** Any errors that ocurred during processing of the delivery. */
 export type CodeScanningSarifsStatusErrorsList = Array<string>;
-export const CodeScanningSarifsStatusErrorsList =
+const CodeScanningSarifsStatusErrorsList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningSarifsStatusErrorsList>;
 
 export interface CodeScanningSarifsStatus {
@@ -1945,7 +1938,7 @@ export interface CodeScanningSarifsStatus {
   /** Any errors that ocurred during processing of the delivery. */
   errors?: CodeScanningSarifsStatusErrorsList | null;
 }
-export const CodeScanningSarifsStatus = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningSarifsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processing_status: S.optional(CodeScanningSarifsStatusProcessingStatus),
     analyses_url: S.optional(S.NullOr(S.String)),
@@ -1961,7 +1954,7 @@ export interface GetVariantAnalysisRequest {
   /** The unique identifier of the variant analysis. */
   codeql_variant_analysis_id: number;
 }
-export const GetVariantAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVariantAnalysisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1989,7 +1982,7 @@ export interface GetVariantAnalysisRepoTaskRequest {
   /** The name of the variant analysis repository. */
   repo_name: string;
 }
-export const GetVariantAnalysisRepoTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVariantAnalysisRepoTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2023,7 +2016,7 @@ export interface CodeScanningVariantAnalysisRepoTask {
   /** The URL of the artifact. This is only available for successful analyses. */
   artifact_url?: string;
 }
-export const CodeScanningVariantAnalysisRepoTask = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningVariantAnalysisRepoTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: SimpleRepository,
     analysis_status: CodeScanningVariantAnalysisStatus2,
@@ -2054,7 +2047,7 @@ export interface ListAlertInstancesRequest {
   /** The number of the pull request for the results you want to list. */
   pr?: number;
 }
-export const ListAlertInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2076,12 +2069,12 @@ export const ListAlertInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** State of a code scanning alert instance. */
 export type CodeScanningAlertInstanceState = "open" | "fixed";
-export const CodeScanningAlertInstanceState = S.String;
+const CodeScanningAlertInstanceState = S.String;
 
 export interface CodeScanningAlertInstanceListMessage {
   text?: string;
 }
-export const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
   }),
@@ -2092,7 +2085,7 @@ export const CodeScanningAlertInstanceListMessage = /*@__PURE__*/ S.suspend(() =
 /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
 export type CodeScanningAlertInstanceListClassificationsList =
   Array<CodeScanningAlertClassification | null>;
-export const CodeScanningAlertInstanceListClassificationsList =
+const CodeScanningAlertInstanceListClassificationsList =
   CodeScanningAlertInstanceClassificationsList as any as S.Schema<CodeScanningAlertInstanceListClassificationsList>;
 
 export interface CodeScanningAlertInstanceList {
@@ -2108,7 +2101,7 @@ export interface CodeScanningAlertInstanceList {
   /** Classifications that have been applied to the file that triggered the alert. For example identifying it as documentation, or a generated file. */
   classifications?: CodeScanningAlertInstanceListClassificationsList;
 }
-export const CodeScanningAlertInstanceList = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertInstanceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.optional(S.String),
     analysis_key: S.optional(S.String),
@@ -2126,26 +2119,26 @@ export const CodeScanningAlertInstanceList = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeScanningAlertInstanceList>;
 
 export type ListAlertInstancesResponseBodyList = Array<CodeScanningAlertInstanceList>;
-export const ListAlertInstancesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertInstancesResponseBodyList = /*@__PURE__*/ S.Array(
   CodeScanningAlertInstanceList,
 ) as any as S.Schema<ListAlertInstancesResponseBodyList>;
 
 export type ListAlertInstancesResponse = ListAlertInstancesResponseBodyList;
-export const ListAlertInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertInstancesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAlertInstancesResponse",
 }) as any as S.Schema<ListAlertInstancesResponse>;
 
 export type ListAlertsForOrgRequestDirection = "asc" | "desc";
-export const ListAlertsForOrgRequestDirection = S.String;
+const ListAlertsForOrgRequestDirection = S.String;
 
 /** State of a code scanning alert. */
 export type CodeScanningAlertStateQuery = "open" | "closed" | "dismissed" | "fixed";
-export const CodeScanningAlertStateQuery = S.String;
+const CodeScanningAlertStateQuery = S.String;
 
 export type ListAlertsForOrgRequestSort = "created" | "updated";
-export const ListAlertsForOrgRequestSort = S.String;
+const ListAlertsForOrgRequestSort = S.String;
 
 /** Severity of a code scanning alert. */
 export type CodeScanningAlertSeverity =
@@ -2156,7 +2149,7 @@ export type CodeScanningAlertSeverity =
   | "warning"
   | "note"
   | "error";
-export const CodeScanningAlertSeverity = S.String;
+const CodeScanningAlertSeverity = S.String;
 
 export interface ListAlertsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2184,7 +2177,7 @@ export interface ListAlertsForOrgRequest {
   /** Filter alerts by assignees. Provide a comma-separated list of user handles (e.g., `octocat` or `octocat,hubot`). Use `*` to list alerts with at least one assignee or `none` to list alerts with no assignees. */
   assignees?: string;
 }
-export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     tool_name: S.optional(S.String.pipe(T.Query())),
@@ -2203,7 +2196,7 @@ export const ListAlertsForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The severity of the alert. */
 export type CodeScanningAlertRuleSummarySeverity = "none" | "note" | "warning" | "error";
-export const CodeScanningAlertRuleSummarySeverity = S.String;
+const CodeScanningAlertRuleSummarySeverity = S.String;
 
 /** The security severity of the alert. */
 export type CodeScanningAlertRuleSummarySecuritySeverityLevel =
@@ -2211,11 +2204,11 @@ export type CodeScanningAlertRuleSummarySecuritySeverityLevel =
   | "medium"
   | "high"
   | "critical";
-export const CodeScanningAlertRuleSummarySecuritySeverityLevel = S.String;
+const CodeScanningAlertRuleSummarySecuritySeverityLevel = S.String;
 
 /** A set of tags applicable for the rule. */
 export type CodeScanningAlertRuleSummaryTagsList = Array<string>;
-export const CodeScanningAlertRuleSummaryTagsList =
+const CodeScanningAlertRuleSummaryTagsList =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertRuleSummaryTagsList>;
 
 export interface CodeScanningAlertRuleSummary {
@@ -2238,7 +2231,7 @@ export interface CodeScanningAlertRuleSummary {
   /** A link to the documentation for the rule used to detect the alert. */
   help_uri?: string | null;
 }
-export const CodeScanningAlertRuleSummary = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertRuleSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.String),
@@ -2257,7 +2250,7 @@ export const CodeScanningAlertRuleSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeScanningAlertRuleSummary>;
 
 export type CodeScanningOrganizationAlertItemsAssigneesList = Array<SimpleUser>;
-export const CodeScanningOrganizationAlertItemsAssigneesList =
+const CodeScanningOrganizationAlertItemsAssigneesList =
   CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningOrganizationAlertItemsAssigneesList>;
 
 export interface CodeScanningOrganizationAlertItems {
@@ -2280,7 +2273,7 @@ export interface CodeScanningOrganizationAlertItems {
   dismissal_approved_by?: SimpleUser | null;
   assignees?: CodeScanningOrganizationAlertItemsAssigneesList;
 }
-export const CodeScanningOrganizationAlertItems = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningOrganizationAlertItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     created_at: S.String,
@@ -2306,20 +2299,20 @@ export const CodeScanningOrganizationAlertItems = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CodeScanningOrganizationAlertItems>;
 
 export type ListAlertsForOrgResponseBodyList = Array<CodeScanningOrganizationAlertItems>;
-export const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ S.Array(
   CodeScanningOrganizationAlertItems,
 ) as any as S.Schema<ListAlertsForOrgResponseBodyList>;
 
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
-export const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForOrgResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListAlertsForOrgResponse" }) as any as S.Schema<ListAlertsForOrgResponse>;
 
 export type ListAlertsForRepoRequestDirection = "asc" | "desc";
-export const ListAlertsForRepoRequestDirection = S.String;
+const ListAlertsForRepoRequestDirection = S.String;
 
 export type ListAlertsForRepoRequestSort = "created" | "updated";
-export const ListAlertsForRepoRequestSort = S.String;
+const ListAlertsForRepoRequestSort = S.String;
 
 export interface ListAlertsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2353,7 +2346,7 @@ export interface ListAlertsForRepoRequest {
   /** Filter alerts by assignees. Provide a comma-separated list of user handles (e.g., `octocat` or `octocat,hubot`). Use `*` to list alerts with at least one assignee or `none` to list alerts with no assignees. */
   assignees?: string;
 }
-export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2374,7 +2367,7 @@ export const ListAlertsForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAlertsForRepoRequest" }) as any as S.Schema<ListAlertsForRepoRequest>;
 
 export type CodeScanningAlertItemsAssigneesList = Array<SimpleUser>;
-export const CodeScanningAlertItemsAssigneesList =
+const CodeScanningAlertItemsAssigneesList =
   CodeScanningAlertAssigneesList as any as S.Schema<CodeScanningAlertItemsAssigneesList>;
 
 export interface CodeScanningAlertItems {
@@ -2396,7 +2389,7 @@ export interface CodeScanningAlertItems {
   dismissal_approved_by?: SimpleUser | null;
   assignees?: CodeScanningAlertItemsAssigneesList;
 }
-export const CodeScanningAlertItems = /*@__PURE__*/ S.suspend(() =>
+const CodeScanningAlertItems = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number: S.Number,
     created_at: S.String,
@@ -2419,12 +2412,12 @@ export const CodeScanningAlertItems = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CodeScanningAlertItems" }) as any as S.Schema<CodeScanningAlertItems>;
 
 export type ListAlertsForRepoResponseBodyList = Array<CodeScanningAlertItems>;
-export const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   CodeScanningAlertItems,
 ) as any as S.Schema<ListAlertsForRepoResponseBodyList>;
 
 export type ListAlertsForRepoResponse = ListAlertsForRepoResponseBodyList;
-export const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAlertsForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListAlertsForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAlertsForRepoResponse",
@@ -2436,7 +2429,7 @@ export interface ListCodeqlDatabasesRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const ListCodeqlDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeqlDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2452,22 +2445,22 @@ export const ListCodeqlDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCodeqlDatabasesRequest>;
 
 export type ListCodeqlDatabasesResponseBodyList = Array<CodeScanningCodeqlDatabase>;
-export const ListCodeqlDatabasesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCodeqlDatabasesResponseBodyList = /*@__PURE__*/ S.Array(
   CodeScanningCodeqlDatabase,
 ) as any as S.Schema<ListCodeqlDatabasesResponseBodyList>;
 
 export type ListCodeqlDatabasesResponse = ListCodeqlDatabasesResponseBodyList;
-export const ListCodeqlDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCodeqlDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   ListCodeqlDatabasesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListCodeqlDatabasesResponse",
 }) as any as S.Schema<ListCodeqlDatabasesResponse>;
 
 export type ListRecentAnalysesRequestDirection = "asc" | "desc";
-export const ListRecentAnalysesRequestDirection = S.String;
+const ListRecentAnalysesRequestDirection = S.String;
 
 export type ListRecentAnalysesRequestSort = "created";
-export const ListRecentAnalysesRequestSort = S.String;
+const ListRecentAnalysesRequestSort = S.String;
 
 export interface ListRecentAnalysesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2493,7 +2486,7 @@ export interface ListRecentAnalysesRequest {
   /** The property by which to sort the results. */
   sort?: ListRecentAnalysesRequestSort | (string & {});
 }
-export const ListRecentAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecentAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2514,12 +2507,12 @@ export const ListRecentAnalysesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRecentAnalysesRequest>;
 
 export type ListRecentAnalysesResponseBodyList = Array<CodeScanningAnalysis>;
-export const ListRecentAnalysesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRecentAnalysesResponseBodyList = /*@__PURE__*/ S.Array(
   CodeScanningAnalysis,
 ) as any as S.Schema<ListRecentAnalysesResponseBodyList>;
 
 export type ListRecentAnalysesResponse = ListRecentAnalysesResponseBodyList;
-export const ListRecentAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecentAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
   ListRecentAnalysesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListRecentAnalysesResponse",
@@ -2527,7 +2520,7 @@ export const ListRecentAnalysesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether to enable or disable AI Scan for the repository. */
 export type UpdateAiScanEnablementRequestPrScan = "enabled" | "disabled";
-export const UpdateAiScanEnablementRequestPrScan = S.String;
+const UpdateAiScanEnablementRequestPrScan = S.String;
 
 export interface UpdateAiScanEnablementRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -2537,7 +2530,7 @@ export interface UpdateAiScanEnablementRequest {
   /** Whether to enable or disable AI Scan for the repository. */
   pr_scan?: UpdateAiScanEnablementRequestPrScan | (string & {});
 }
-export const UpdateAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2551,7 +2544,7 @@ export const UpdateAiScanEnablementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out. */
 export type UpdateAiScanEnablementForOrgRequestPrScan = "enabled" | "disabled";
-export const UpdateAiScanEnablementForOrgRequestPrScan = S.String;
+const UpdateAiScanEnablementForOrgRequestPrScan = S.String;
 
 export interface UpdateAiScanEnablementForOrgRequest {
   /** The organization name. The name is not case sensitive. */
@@ -2559,7 +2552,7 @@ export interface UpdateAiScanEnablementForOrgRequest {
   /** Whether AI Scan is enabled for the organization. Organization respects enterprise policy. Disabled organizations prevent repositories from enabling AI Scan. Enabled organizations enable AI Scan for their repositories, but individual repositories can opt out. */
   pr_scan?: UpdateAiScanEnablementForOrgRequestPrScan | (string & {});
 }
-export const UpdateAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     pr_scan: S.optional(UpdateAiScanEnablementForOrgRequestPrScan),
@@ -2570,11 +2563,11 @@ export const UpdateAiScanEnablementForOrgRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`. */
 export type CodeScanningAlertSetState = "open" | "dismissed";
-export const CodeScanningAlertSetState = S.String;
+const CodeScanningAlertSetState = S.String;
 
 /** The list of users to assign to the code scanning alert. An empty array unassigns all previous assignees from the alert. */
 export type CodeScanningAlertAssignees = Array<string>;
-export const CodeScanningAlertAssignees =
+const CodeScanningAlertAssignees =
   CreateVariantAnalysisRequestRepositoriesList as any as S.Schema<CodeScanningAlertAssignees>;
 
 export interface UpdateAlertRequest {
@@ -2590,7 +2583,7 @@ export interface UpdateAlertRequest {
   create_request?: boolean;
   assignees?: CodeScanningAlertAssignees;
 }
-export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2611,19 +2604,19 @@ export const UpdateAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The desired state of code scanning default setup. */
 export type UpdateDefaultSetupRequestState = "configured" | "not-configured";
-export const UpdateDefaultSetupRequestState = S.String;
+const UpdateDefaultSetupRequestState = S.String;
 
 /** Runner type to be used. */
 export type UpdateDefaultSetupRequestRunnerType = "standard" | "labeled";
-export const UpdateDefaultSetupRequestRunnerType = S.String;
+const UpdateDefaultSetupRequestRunnerType = S.String;
 
 /** CodeQL query suite to be used. */
 export type UpdateDefaultSetupRequestQuerySuite = "default" | "extended";
-export const UpdateDefaultSetupRequestQuerySuite = S.String;
+const UpdateDefaultSetupRequestQuerySuite = S.String;
 
 /** Threat model to be used for code scanning analysis. Use `remote` to analyze only network sources and `remote_and_local` to include local sources like filesystem access, command-line arguments, database reads, environment variable and standard input. */
 export type UpdateDefaultSetupRequestThreatModel = "remote" | "remote_and_local";
-export const UpdateDefaultSetupRequestThreatModel = S.String;
+const UpdateDefaultSetupRequestThreatModel = S.String;
 
 export type UpdateDefaultSetupRequestLanguagesItem =
   | "actions"
@@ -2635,13 +2628,11 @@ export type UpdateDefaultSetupRequestLanguagesItem =
   | "python"
   | "ruby"
   | "swift";
-export const UpdateDefaultSetupRequestLanguagesItem = S.String;
-
 /** CodeQL languages to be analyzed. */
 export type UpdateDefaultSetupRequestLanguagesList = Array<
   UpdateDefaultSetupRequestLanguagesItem | (string & {})
 >;
-export const UpdateDefaultSetupRequestLanguagesList =
+const UpdateDefaultSetupRequestLanguagesList =
   CodeScanningDefaultSetupLanguagesList as any as S.Schema<UpdateDefaultSetupRequestLanguagesList>;
 
 export interface UpdateDefaultSetupRequest {
@@ -2662,7 +2653,7 @@ export interface UpdateDefaultSetupRequest {
   /** CodeQL languages to be analyzed. */
   languages?: UpdateDefaultSetupRequestLanguagesList;
 }
-export const UpdateDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2684,7 +2675,7 @@ export const UpdateDefaultSetupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDefaultSetupRequest>;
 
 export type UpdateDefaultSetupResponse = unknown;
-export const UpdateDefaultSetupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDefaultSetupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "UpdateDefaultSetupResponse",
@@ -2707,7 +2698,7 @@ export interface UploadSarifRequest {
   /** Whether the SARIF file will be validated according to the code scanning specifications. This parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning. */
   validate?: boolean;
 }
-export const UploadSarifRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadSarifRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2722,8 +2713,7 @@ export const UploadSarifRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadSarifRequest" }) as any as S.Schema<UploadSarifRequest>;
 
 export interface UploadSarifResponse {}
-export const UploadSarifResponse =
-  DeleteCodeqlDatabaseResponse as any as S.Schema<UploadSarifResponse>;
+const UploadSarifResponse = DeleteCodeqlDatabaseResponse as any as S.Schema<UploadSarifResponse>;
 
 export type CommitAutofixError =
   | BadRequest

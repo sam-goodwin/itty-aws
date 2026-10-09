@@ -9,7 +9,7 @@ export type { GithubOpError, GithubOpContext };
 
 /** The rendering mode. */
 export type RenderRequestMode = "markdown" | "gfm";
-export const RenderRequestMode = S.String;
+const RenderRequestMode = S.String;
 
 export interface RenderRequest {
   /** The Markdown text to render in HTML. */
@@ -19,7 +19,7 @@ export interface RenderRequest {
   /** The repository context to use when creating references in `gfm` mode. For example, setting `context` to `octo-org/octo-repo` will change the text `#42` into an HTML link to issue 42 in the `octo-org/octo-repo` repository. */
   context?: string;
 }
-export const RenderRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     mode: S.optional(RenderRequestMode),
@@ -28,17 +28,17 @@ export const RenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderRequest" }) as any as S.Schema<RenderRequest>;
 
 export interface RenderResponse {}
-export const RenderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RenderResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RenderResponse",
 }) as any as S.Schema<RenderResponse>;
 
 export interface RenderRawRequest {}
-export const RenderRawRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderRawRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/markdown/raw", code: 200 })),
 ).annotate({ identifier: "RenderRawRequest" }) as any as S.Schema<RenderRawRequest>;
 
 export interface RenderRawResponse {}
-export const RenderRawResponse = RenderResponse as any as S.Schema<RenderRawResponse>;
+const RenderRawResponse = RenderResponse as any as S.Schema<RenderRawResponse>;
 
 export type RenderError = GithubOpError;
 /** Render a Markdown document Depending on what is rendered in the Markdown, you may need to provide additional token scopes for labels, such as `issues:read` or `pull_requests:read`. */

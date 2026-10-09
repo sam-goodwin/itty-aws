@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type MemberRoleEnum = "ROLE_UNSPECIFIED" | "COHOST";
-export const MemberRoleEnum = S.String;
+const MemberRoleEnum = S.String;
 
 /** Users who are configured to have a role in the space. These users can join the space without knocking. */
 export interface Member {
@@ -73,7 +73,7 @@ export interface Member {
   /** The meeting role assigned to the member. */
   role?: MemberRoleEnum | (string & {});
 }
-export const Member = /*@__PURE__*/ S.suspend(() =>
+const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -88,7 +88,7 @@ export interface UpdateMemberRequest {
   /** Optional. Field mask used to specify the fields to be updated in the member. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. In case of BatchUpdate, it must be absent or the same as the update_mask in BatchUpdateMembersRequest when UpdateMemberRequest is built as a child request of BatchUpdateMembersRequest. */
   updateMask?: string;
 }
-export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: S.optional(Member),
     updateMask: S.optional(S.String),
@@ -96,7 +96,7 @@ export const UpdateMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateMemberRequest" }) as any as S.Schema<UpdateMemberRequest>;
 
 export type UpdateMemberRequestList = Array<UpdateMemberRequest>;
-export const UpdateMemberRequestList = /*@__PURE__*/ S.Array(
+const UpdateMemberRequestList = /*@__PURE__*/ S.Array(
   UpdateMemberRequest,
 ) as any as S.Schema<UpdateMemberRequestList>;
 
@@ -107,7 +107,7 @@ export interface BatchUpdateMembersRequest {
   /** Required. The request message specifying the resources to update. A maximum of 500 members can be modified in a batch. */
   requests?: UpdateMemberRequestList;
 }
-export const BatchUpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     requests: S.optional(UpdateMemberRequestList),
@@ -122,7 +122,7 @@ export interface BatchUpdateSpacesMembersRequest {
   /** Request body */
   body?: BatchUpdateMembersRequest;
 }
-export const BatchUpdateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchUpdateMembersRequest.pipe(T.HttpBody())),
@@ -138,14 +138,14 @@ export const BatchUpdateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateSpacesMembersRequest>;
 
 export type MemberList = Array<Member>;
-export const MemberList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MemberList>;
+const MemberList = /*@__PURE__*/ S.Array(Member) as any as S.Schema<MemberList>;
 
 /** Response of batch update members. */
 export interface BatchUpdateMembersResponse {
   /** Members updated. */
   members?: MemberList;
 }
-export const BatchUpdateMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchUpdateMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(MemberList),
   }),
@@ -158,40 +158,40 @@ export type SpaceConfigAccessTypeEnum =
   | "OPEN"
   | "TRUSTED"
   | "RESTRICTED";
-export const SpaceConfigAccessTypeEnum = S.String;
+const SpaceConfigAccessTypeEnum = S.String;
 
 export type SpaceConfigModerationEnum = "MODERATION_UNSPECIFIED" | "OFF" | "ON";
-export const SpaceConfigModerationEnum = S.String;
+const SpaceConfigModerationEnum = S.String;
 
 export type SpaceConfigEntryPointAccessEnum =
   | "ENTRY_POINT_ACCESS_UNSPECIFIED"
   | "ALL"
   | "CREATOR_APP_ONLY";
-export const SpaceConfigEntryPointAccessEnum = S.String;
+const SpaceConfigEntryPointAccessEnum = S.String;
 
 export type ModerationRestrictionsChatRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
-export const ModerationRestrictionsChatRestrictionEnum = S.String;
+const ModerationRestrictionsChatRestrictionEnum = S.String;
 
 export type ModerationRestrictionsDefaultJoinAsViewerTypeEnum =
   | "DEFAULT_JOIN_AS_VIEWER_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
-export const ModerationRestrictionsDefaultJoinAsViewerTypeEnum = S.String;
+const ModerationRestrictionsDefaultJoinAsViewerTypeEnum = S.String;
 
 export type ModerationRestrictionsPresentRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
-export const ModerationRestrictionsPresentRestrictionEnum = S.String;
+const ModerationRestrictionsPresentRestrictionEnum = S.String;
 
 export type ModerationRestrictionsReactionRestrictionEnum =
   | "RESTRICTION_TYPE_UNSPECIFIED"
   | "HOSTS_ONLY"
   | "NO_RESTRICTION";
-export const ModerationRestrictionsReactionRestrictionEnum = S.String;
+const ModerationRestrictionsReactionRestrictionEnum = S.String;
 
 /** Defines restrictions for features when the meeting is moderated. */
 export interface ModerationRestrictions {
@@ -204,7 +204,7 @@ export interface ModerationRestrictions {
   /** Defines who has permission to send reactions in the meeting space. */
   reactionRestriction?: ModerationRestrictionsReactionRestrictionEnum | (string & {});
 }
-export const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
+const ModerationRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chatRestriction: S.optional(ModerationRestrictionsChatRestrictionEnum),
     defaultJoinAsViewerType: S.optional(ModerationRestrictionsDefaultJoinAsViewerTypeEnum),
@@ -217,20 +217,20 @@ export type SpaceConfigAttendanceReportGenerationTypeEnum =
   | "ATTENDANCE_REPORT_GENERATION_TYPE_UNSPECIFIED"
   | "GENERATE_REPORT"
   | "DO_NOT_GENERATE";
-export const SpaceConfigAttendanceReportGenerationTypeEnum = S.String;
+const SpaceConfigAttendanceReportGenerationTypeEnum = S.String;
 
 export type RecordingConfigAutoRecordingGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
-export const RecordingConfigAutoRecordingGenerationEnum = S.String;
+const RecordingConfigAutoRecordingGenerationEnum = S.String;
 
 /** Configuration related to recording in a meeting space. */
 export interface RecordingConfig {
   /** Defines whether a meeting space is automatically recorded when someone with the privilege to record joins the meeting. */
   autoRecordingGeneration?: RecordingConfigAutoRecordingGenerationEnum | (string & {});
 }
-export const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
+const RecordingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRecordingGeneration: S.optional(RecordingConfigAutoRecordingGenerationEnum),
   }),
@@ -240,14 +240,14 @@ export type SmartNotesConfigAutoSmartNotesGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
-export const SmartNotesConfigAutoSmartNotesGenerationEnum = S.String;
+const SmartNotesConfigAutoSmartNotesGenerationEnum = S.String;
 
 /** Configuration related to smart notes in a meeting space. For more information about smart notes, see ["Take notes for me" in Google Meet](https://support.google.com/meet/answer/14754931). */
 export interface SmartNotesConfig {
   /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
   autoSmartNotesGeneration?: SmartNotesConfigAutoSmartNotesGenerationEnum | (string & {});
 }
-export const SmartNotesConfig = /*@__PURE__*/ S.suspend(() =>
+const SmartNotesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoSmartNotesGeneration: S.optional(SmartNotesConfigAutoSmartNotesGenerationEnum),
   }),
@@ -257,14 +257,14 @@ export type TranscriptionConfigAutoTranscriptionGenerationEnum =
   | "AUTO_GENERATION_TYPE_UNSPECIFIED"
   | "ON"
   | "OFF";
-export const TranscriptionConfigAutoTranscriptionGenerationEnum = S.String;
+const TranscriptionConfigAutoTranscriptionGenerationEnum = S.String;
 
 /** Configuration related to transcription in a meeting space. */
 export interface TranscriptionConfig {
   /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
   autoTranscriptionGeneration?: TranscriptionConfigAutoTranscriptionGenerationEnum | (string & {});
 }
-export const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
+const TranscriptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoTranscriptionGeneration: S.optional(TranscriptionConfigAutoTranscriptionGenerationEnum),
   }),
@@ -279,7 +279,7 @@ export interface ArtifactConfig {
   /** Configuration for auto-transcript. */
   transcriptionConfig?: TranscriptionConfig;
 }
-export const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
+const ArtifactConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordingConfig: S.optional(RecordingConfig),
     smartNotesConfig: S.optional(SmartNotesConfig),
@@ -302,7 +302,7 @@ export interface SpaceConfig {
   /** Configuration pertaining to the auto-generated artifacts that the meeting supports. */
   artifactConfig?: ArtifactConfig;
 }
-export const SpaceConfig = /*@__PURE__*/ S.suspend(() =>
+const SpaceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessType: S.optional(SpaceConfigAccessTypeEnum),
     moderation: S.optional(SpaceConfigModerationEnum),
@@ -318,7 +318,7 @@ export interface ActiveConference {
   /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
   conferenceRecord?: string;
 }
-export const ActiveConference = /*@__PURE__*/ S.suspend(() =>
+const ActiveConference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conferenceRecord: S.optional(S.String),
   }),
@@ -331,7 +331,7 @@ export interface GatewaySipAccess {
   /** The Session Initiation Protocol (SIP) URI the conference can be reached through. The string is in one of these formats: * "sip:USER_ID@GATEWAY_ADDRESS" * "sips:USER_ID@GATEWAY_ADDRESS" where USER_ID is the 13-digit universal pin (with the future option to support using a Meet meeting code as well), and GATEWAY_ADDRESS is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
   uri?: string;
 }
-export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
+const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sipAccessCode: S.optional(S.String),
     uri: S.optional(S.String),
@@ -339,7 +339,7 @@ export const GatewaySipAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GatewaySipAccess" }) as any as S.Schema<GatewaySipAccess>;
 
 export type GatewaySipAccessList = Array<GatewaySipAccess>;
-export const GatewaySipAccessList = /*@__PURE__*/ S.Array(
+const GatewaySipAccessList = /*@__PURE__*/ S.Array(
   GatewaySipAccess,
 ) as any as S.Schema<GatewaySipAccessList>;
 
@@ -354,7 +354,7 @@ export interface PhoneAccess {
   /** The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n RegionCode utility. Example: "SE" for Sweden. */
   regionCode?: string;
 }
-export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
+const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     pin: S.optional(S.String),
@@ -364,9 +364,7 @@ export const PhoneAccess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PhoneAccess" }) as any as S.Schema<PhoneAccess>;
 
 export type PhoneAccessList = Array<PhoneAccess>;
-export const PhoneAccessList = /*@__PURE__*/ S.Array(
-  PhoneAccess,
-) as any as S.Schema<PhoneAccessList>;
+const PhoneAccessList = /*@__PURE__*/ S.Array(PhoneAccess) as any as S.Schema<PhoneAccessList>;
 
 /** Virtual place where conferences are held. Only one active conference can be held in one space at any given time. */
 export interface Space {
@@ -385,7 +383,7 @@ export interface Space {
   /** Output only. All regional phone access methods for this meeting space. Can be empty. */
   phoneAccess?: PhoneAccessList;
 }
-export const Space = /*@__PURE__*/ S.suspend(() =>
+const Space = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(SpaceConfig),
     activeConference: S.optional(ActiveConference),
@@ -401,7 +399,7 @@ export interface CreateSpacesRequest {
   /** Request body */
   body?: Space;
 }
-export const CreateSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Space.pipe(T.HttpBody())),
   }).pipe(T.Http({ method: "POST", uri: "v2/spaces", baseUrl: "https://meet.googleapis.com/" })),
@@ -413,7 +411,7 @@ export interface CreateSpacesMembersRequest {
   /** Request body */
   body?: Member;
 }
-export const CreateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Member.pipe(T.HttpBody())),
@@ -432,7 +430,7 @@ export interface DeleteSpacesMembersRequest {
   /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
-export const DeleteSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -442,13 +440,13 @@ export const DeleteSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
 /** Request to end an ongoing conference of a space. */
 export interface EndActiveConferenceRequest {}
-export const EndActiveConferenceRequest = Empty as any as S.Schema<EndActiveConferenceRequest>;
+const EndActiveConferenceRequest = Empty as any as S.Schema<EndActiveConferenceRequest>;
 
 export interface EndActiveConferenceSpacesRequest {
   /** Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
@@ -456,7 +454,7 @@ export interface EndActiveConferenceSpacesRequest {
   /** Request body */
   body?: EndActiveConferenceRequest;
 }
-export const EndActiveConferenceSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const EndActiveConferenceSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EndActiveConferenceRequest.pipe(T.HttpBody())),
@@ -475,7 +473,7 @@ export interface GetConferenceRecordsRequest {
   /** Required. Resource name of the conference. */
   name: string;
 }
-export const GetConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -496,7 +494,7 @@ export interface ConferenceRecord {
   /** Output only. Timestamp when the conference started. Always set. */
   startTime?: string;
 }
-export const ConferenceRecord = /*@__PURE__*/ S.suspend(() =>
+const ConferenceRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     space: S.optional(S.String),
@@ -510,7 +508,7 @@ export interface GetConferenceRecordsParticipantsRequest {
   /** Required. Resource name of the participant. */
   name: string;
 }
-export const GetConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -525,7 +523,7 @@ export interface SignedinUser {
   /** Output only. For a personal device, it's the user's first name and last name. For a robot account, it's the administrator-specified device name. For example, "Altostrat Room". */
   displayName?: string;
 }
-export const SignedinUser = /*@__PURE__*/ S.suspend(() =>
+const SignedinUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -537,7 +535,7 @@ export interface PhoneUser {
   /** Output only. Partially redacted user's phone number when calling. */
   displayName?: string;
 }
-export const PhoneUser = /*@__PURE__*/ S.suspend(() =>
+const PhoneUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
   }),
@@ -548,7 +546,7 @@ export interface AnonymousUser {
   /** Output only. User provided name when they join a conference anonymously. */
   displayName?: string;
 }
-export const AnonymousUser = PhoneUser as any as S.Schema<AnonymousUser>;
+const AnonymousUser = PhoneUser as any as S.Schema<AnonymousUser>;
 
 /** User who attended or is attending a conference. */
 export interface Participant {
@@ -565,7 +563,7 @@ export interface Participant {
   /** Output only. Time when the participant left the meeting for the last time. This can be null if it's an active meeting. */
   latestEndTime?: string;
 }
-export const Participant = /*@__PURE__*/ S.suspend(() =>
+const Participant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     earliestStartTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -580,11 +578,10 @@ export interface GetConferenceRecordsParticipantsParticipantSessionsRequest {
   /** Required. Resource name of the participant. */
   name: string;
 }
-export const GetConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
+const GetConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
 ).annotate({
   identifier: "GetConferenceRecordsParticipantsParticipantSessionsRequest",
 }) as any as S.Schema<GetConferenceRecordsParticipantsParticipantSessionsRequest>;
@@ -598,7 +595,7 @@ export interface ParticipantSession {
   /** Output only. Timestamp when the user session starts. */
   startTime?: string;
 }
-export const ParticipantSession = /*@__PURE__*/ S.suspend(() =>
+const ParticipantSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -610,7 +607,7 @@ export interface GetConferenceRecordsRecordingsRequest {
   /** Required. Resource name of the recording. */
   name: string;
 }
-export const GetConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -625,7 +622,7 @@ export interface DriveDestination {
   /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
   file?: string;
 }
-export const DriveDestination = /*@__PURE__*/ S.suspend(() =>
+const DriveDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportUri: S.optional(S.String),
     file: S.optional(S.String),
@@ -633,7 +630,7 @@ export const DriveDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DriveDestination" }) as any as S.Schema<DriveDestination>;
 
 export type RecordingStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
-export const RecordingStateEnum = S.String;
+const RecordingStateEnum = S.String;
 
 /** Metadata about a recording created during a conference. */
 export interface Recording {
@@ -648,7 +645,7 @@ export interface Recording {
   /** Output only. Timestamp when the recording started. */
   startTime?: string;
 }
-export const Recording = /*@__PURE__*/ S.suspend(() =>
+const Recording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     driveDestination: S.optional(DriveDestination),
@@ -662,7 +659,7 @@ export interface GetConferenceRecordsSmartNotesRequest {
   /** Required. Resource name of the smart note. Format: conferenceRecords/{conference_record}/smartNotes/{smart_note} */
   name: string;
 }
-export const GetConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -671,7 +668,7 @@ export const GetConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetConferenceRecordsSmartNotesRequest>;
 
 export type SmartNoteStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
-export const SmartNoteStateEnum = S.String;
+const SmartNoteStateEnum = S.String;
 
 /** Google Docs location where the transcript file is saved. */
 export interface DocsDestination {
@@ -680,7 +677,7 @@ export interface DocsDestination {
   /** Output only. URI for the Google Docs transcript file. Use `https://docs.google.com/document/d/{$DocumentId}/view` to browse the transcript in the browser. */
   exportUri?: string;
 }
-export const DocsDestination = /*@__PURE__*/ S.suspend(() =>
+const DocsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     document: S.optional(S.String),
     exportUri: S.optional(S.String),
@@ -700,7 +697,7 @@ export interface SmartNote {
   /** Output only. Timestamp when the smart notes started. */
   startTime?: string;
 }
-export const SmartNote = /*@__PURE__*/ S.suspend(() =>
+const SmartNote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     state: S.optional(SmartNoteStateEnum),
@@ -714,7 +711,7 @@ export interface GetConferenceRecordsTranscriptsRequest {
   /** Required. Resource name of the transcript. */
   name: string;
 }
-export const GetConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -723,7 +720,7 @@ export const GetConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GetConferenceRecordsTranscriptsRequest>;
 
 export type TranscriptStateEnum = "STATE_UNSPECIFIED" | "STARTED" | "ENDED" | "FILE_GENERATED";
-export const TranscriptStateEnum = S.String;
+const TranscriptStateEnum = S.String;
 
 /** Metadata for a transcript generated from a conference. It refers to the ASR (Automatic Speech Recognition) result of user's speech during the conference. */
 export interface Transcript {
@@ -738,7 +735,7 @@ export interface Transcript {
   /** Output only. Current state. */
   state?: TranscriptStateEnum;
 }
-export const Transcript = /*@__PURE__*/ S.suspend(() =>
+const Transcript = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -752,7 +749,7 @@ export interface GetConferenceRecordsTranscriptsEntriesRequest {
   /** Required. Resource name of the `TranscriptEntry`. */
   name: string;
 }
-export const GetConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -775,7 +772,7 @@ export interface TranscriptEntry {
   /** Output only. Timestamp when the transcript entry started. */
   startTime?: string;
 }
-export const TranscriptEntry = /*@__PURE__*/ S.suspend(() =>
+const TranscriptEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     participant: S.optional(S.String),
     languageCode: S.optional(S.String),
@@ -790,7 +787,7 @@ export interface GetSpacesRequest {
   /** Required. Resource name of the space. Format: `spaces/{space}` or `spaces/{meetingCode}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. `{meetingCode}` is an alias for the space. It's a typeable, unique character string and is non-case sensitive. For example, `abc-mnop-xyz`. The maximum length is 128 characters. A `meetingCode` shouldn't be stored long term as it can become dissociated from a meeting space and can be reused for different meeting spaces in the future. Generally, a `meetingCode` expires 365 days after last use. For more information, see [Learn about meeting codes in Google Meet](https://support.google.com/meet/answer/10710509). For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
   name: string;
 }
-export const GetSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -800,7 +797,7 @@ export interface GetSpacesMembersRequest {
   /** Required. Format: "spaces/{space}/members/{member}" */
   name: string;
 }
-export const GetSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://meet.googleapis.com/" })),
@@ -814,7 +811,7 @@ export interface ListConferenceRecordsRequest {
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `end_time` For example, consider the following filters: * `space.name = "spaces/NAME"` * `space.meeting_code = "abc-mnop-xyz"` * `start_time>="2024-01-01T00:00:00.000Z" AND start_time<="2024-01-02T00:00:00.000Z"` * `end_time IS NULL` */
   filter?: string;
 }
-export const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -827,7 +824,7 @@ export const ListConferenceRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConferenceRecordsRequest>;
 
 export type ConferenceRecordList = Array<ConferenceRecord>;
-export const ConferenceRecordList = /*@__PURE__*/ S.Array(
+const ConferenceRecordList = /*@__PURE__*/ S.Array(
   ConferenceRecord,
 ) as any as S.Schema<ConferenceRecordList>;
 
@@ -838,7 +835,7 @@ export interface ListConferenceRecordsResponse {
   /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
   nextPageToken?: string;
 }
-export const ListConferenceRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conferenceRecords: S.optional(ConferenceRecordList),
     nextPageToken: S.optional(S.String),
@@ -857,7 +854,7 @@ export interface ListConferenceRecordsParticipantsRequest {
   /** Required. Format: `conferenceRecords/{conference_record}` */
   parent: string;
 }
-export const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -875,9 +872,7 @@ export const ListConferenceRecordsParticipantsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListConferenceRecordsParticipantsRequest>;
 
 export type ParticipantList = Array<Participant>;
-export const ParticipantList = /*@__PURE__*/ S.Array(
-  Participant,
-) as any as S.Schema<ParticipantList>;
+const ParticipantList = /*@__PURE__*/ S.Array(Participant) as any as S.Schema<ParticipantList>;
 
 /** Response of ListParticipants method. */
 export interface ListParticipantsResponse {
@@ -888,7 +883,7 @@ export interface ListParticipantsResponse {
   /** Total, exact number of `participants`. By default, this field isn't included in the response. Set the field mask in [SystemParameterContext](https://cloud.google.com/apis/docs/system-parameters) to receive this field in the response. */
   totalSize?: number;
 }
-export const ListParticipantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListParticipantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     participants: S.optional(ParticipantList),
@@ -906,26 +901,25 @@ export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
   /** Optional. User specified filtering condition in [EBNF format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the filterable fields: * `start_time` * `end_time` For example, `end_time IS NULL` returns active participant sessions in the conference record. */
   filter?: string;
 }
-export const ListConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v2/{+parent}/participantSessions",
-        baseUrl: "https://meet.googleapis.com/",
-      }),
-    ),
+const ListConferenceRecordsParticipantsParticipantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v2/{+parent}/participantSessions",
+      baseUrl: "https://meet.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListConferenceRecordsParticipantsParticipantSessionsRequest",
 }) as any as S.Schema<ListConferenceRecordsParticipantsParticipantSessionsRequest>;
 
 export type ParticipantSessionList = Array<ParticipantSession>;
-export const ParticipantSessionList = /*@__PURE__*/ S.Array(
+const ParticipantSessionList = /*@__PURE__*/ S.Array(
   ParticipantSession,
 ) as any as S.Schema<ParticipantSessionList>;
 
@@ -936,7 +930,7 @@ export interface ListParticipantSessionsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
   nextPageToken?: string;
 }
-export const ListParticipantSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListParticipantSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     participantSessions: S.optional(ParticipantSessionList),
     nextPageToken: S.optional(S.String),
@@ -953,7 +947,7 @@ export interface ListConferenceRecordsRecordingsRequest {
   /** Maximum number of recordings to return. The service might return fewer than this value. If unspecified, at most 10 recordings are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
 }
-export const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -970,7 +964,7 @@ export const ListConferenceRecordsRecordingsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListConferenceRecordsRecordingsRequest>;
 
 export type RecordingList = Array<Recording>;
-export const RecordingList = /*@__PURE__*/ S.Array(Recording) as any as S.Schema<RecordingList>;
+const RecordingList = /*@__PURE__*/ S.Array(Recording) as any as S.Schema<RecordingList>;
 
 /** Response for ListRecordings method. */
 export interface ListRecordingsResponse {
@@ -979,7 +973,7 @@ export interface ListRecordingsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the recordings. Unset if all recordings are returned. */
   nextPageToken?: string;
 }
-export const ListRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordings: S.optional(RecordingList),
     nextPageToken: S.optional(S.String),
@@ -994,7 +988,7 @@ export interface ListConferenceRecordsSmartNotesRequest {
   /** Optional. Maximum number of smart notes to return. The service might return fewer than this value. If unspecified, at most 10 smart notes are returned. The maximum value is 100; values above 100 are coerced to 100. Maximum might change in the future. */
   pageSize?: number;
 }
-export const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1011,7 +1005,7 @@ export const ListConferenceRecordsSmartNotesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListConferenceRecordsSmartNotesRequest>;
 
 export type SmartNoteList = Array<SmartNote>;
-export const SmartNoteList = /*@__PURE__*/ S.Array(SmartNote) as any as S.Schema<SmartNoteList>;
+const SmartNoteList = /*@__PURE__*/ S.Array(SmartNote) as any as S.Schema<SmartNoteList>;
 
 /** Response for ListSmartNotes method. */
 export interface ListSmartNotesResponse {
@@ -1020,7 +1014,7 @@ export interface ListSmartNotesResponse {
   /** List of smart notes in one page. */
   smartNotes?: SmartNoteList;
 }
-export const ListSmartNotesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSmartNotesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     smartNotes: S.optional(SmartNoteList),
@@ -1035,7 +1029,7 @@ export interface ListConferenceRecordsTranscriptsRequest {
   /** Page token returned from previous List Call. */
   pageToken?: string;
 }
-export const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1052,7 +1046,7 @@ export const ListConferenceRecordsTranscriptsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<ListConferenceRecordsTranscriptsRequest>;
 
 export type TranscriptList = Array<Transcript>;
-export const TranscriptList = /*@__PURE__*/ S.Array(Transcript) as any as S.Schema<TranscriptList>;
+const TranscriptList = /*@__PURE__*/ S.Array(Transcript) as any as S.Schema<TranscriptList>;
 
 /** Response for ListTranscripts method. */
 export interface ListTranscriptsResponse {
@@ -1061,7 +1055,7 @@ export interface ListTranscriptsResponse {
   /** List of transcripts in one page. */
   transcripts?: TranscriptList;
 }
-export const ListTranscriptsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTranscriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     transcripts: S.optional(TranscriptList),
@@ -1076,7 +1070,7 @@ export interface ListConferenceRecordsTranscriptsEntriesRequest {
   /** Required. Format: `conferenceRecords/{conference_record}/transcripts/{transcript}` */
   parent: string;
 }
-export const ListConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1089,7 +1083,7 @@ export const ListConferenceRecordsTranscriptsEntriesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListConferenceRecordsTranscriptsEntriesRequest>;
 
 export type TranscriptEntryList = Array<TranscriptEntry>;
-export const TranscriptEntryList = /*@__PURE__*/ S.Array(
+const TranscriptEntryList = /*@__PURE__*/ S.Array(
   TranscriptEntry,
 ) as any as S.Schema<TranscriptEntryList>;
 
@@ -1100,7 +1094,7 @@ export interface ListTranscriptEntriesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
   nextPageToken?: string;
 }
-export const ListTranscriptEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTranscriptEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transcriptEntries: S.optional(TranscriptEntryList),
     nextPageToken: S.optional(S.String),
@@ -1117,7 +1111,7 @@ export interface ListSpacesMembersRequest {
   /** Required. Format: spaces/{space} */
   parent: string;
 }
-export const ListSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1134,7 +1128,7 @@ export interface ListMembersResponse {
   /** Token to be circulated back for further list call if current list doesn't include all the members. Unset if all members are returned. */
   nextPageToken?: string;
 }
-export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(MemberList),
     nextPageToken: S.optional(S.String),
@@ -1149,7 +1143,7 @@ export interface PatchSpacesRequest {
   /** Request body */
   body?: Space;
 }
-export const PatchSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1165,7 +1159,7 @@ export interface PatchSpacesMembersRequest {
   /** Request body */
   body?: Member;
 }
-export const PatchSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSpacesMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

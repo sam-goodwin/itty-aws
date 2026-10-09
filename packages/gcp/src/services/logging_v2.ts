@@ -63,7 +63,7 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelBillingAccountsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -90,7 +90,7 @@ export const CancelBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.s
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface CancelFoldersLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
@@ -98,7 +98,7 @@ export interface CancelFoldersLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -119,7 +119,7 @@ export interface CancelLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -140,7 +140,7 @@ export interface CancelOrganizationsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -161,7 +161,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -185,7 +185,7 @@ export interface CopyLogEntriesRequest {
   /** Required. Log bucket from which to copy log entries.For example:"projects/my-project/locations/global/buckets/my-source-bucket" */
   name?: string;
 }
-export const CopyLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     destination: S.optional(S.String),
@@ -197,7 +197,7 @@ export interface CopyEntriesRequest {
   /** Request body */
   body?: CopyLogEntriesRequest;
 }
-export const CopyEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(CopyLogEntriesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -206,15 +206,10 @@ export const CopyEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyEntriesRequest" }) as any as S.Schema<CopyEntriesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -225,7 +220,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -246,7 +241,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -267,7 +262,7 @@ export interface CmekSettings {
   /** Output only. The resource name of the CMEK settings. */
   name?: string;
 }
-export const CmekSettings = /*@__PURE__*/ S.suspend(() =>
+const CmekSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.optional(S.String),
     kmsKeyName: S.optional(S.String),
@@ -280,7 +275,7 @@ export type IndexConfigTypeEnum =
   | "INDEX_TYPE_UNSPECIFIED"
   | "INDEX_TYPE_STRING"
   | "INDEX_TYPE_INTEGER";
-export const IndexConfigTypeEnum = S.String;
+const IndexConfigTypeEnum = S.String;
 
 /** Configuration for an indexed field. */
 export interface IndexConfig {
@@ -291,7 +286,7 @@ export interface IndexConfig {
   /** Required. The type of data in this index. */
   type?: IndexConfigTypeEnum | (string & {});
 }
-export const IndexConfig = /*@__PURE__*/ S.suspend(() =>
+const IndexConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     fieldPath: S.optional(S.String),
@@ -300,12 +295,10 @@ export const IndexConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexConfig" }) as any as S.Schema<IndexConfig>;
 
 export type IndexConfigList = Array<IndexConfig>;
-export const IndexConfigList = /*@__PURE__*/ S.Array(
-  IndexConfig,
-) as any as S.Schema<IndexConfigList>;
+const IndexConfigList = /*@__PURE__*/ S.Array(IndexConfig) as any as S.Schema<IndexConfigList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type LogBucketLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
@@ -314,7 +307,7 @@ export type LogBucketLifecycleStateEnum =
   | "UPDATING"
   | "CREATING"
   | "FAILED";
-export const LogBucketLifecycleStateEnum = S.String;
+const LogBucketLifecycleStateEnum = S.String;
 
 /** Describes a repository in which log entries are stored. */
 export interface LogBucket {
@@ -341,7 +334,7 @@ export interface LogBucket {
   /** Output only. The bucket lifecycle state. */
   lifecycleState?: LogBucketLifecycleStateEnum | (string & {});
 }
-export const LogBucket = /*@__PURE__*/ S.suspend(() =>
+const LogBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -365,7 +358,7 @@ export interface CreateAsyncBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -389,7 +382,7 @@ export interface CreateAsyncFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -413,7 +406,7 @@ export interface CreateAsyncLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateAsyncLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAsyncLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -437,7 +430,7 @@ export interface CreateAsyncOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -461,7 +454,7 @@ export interface CreateAsyncProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -492,7 +485,7 @@ export interface LogExclusion {
   /** Optional. A description of this exclusion. */
   description?: string;
 }
-export const LogExclusion = /*@__PURE__*/ S.suspend(() =>
+const LogExclusion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     filter: S.optional(S.String),
@@ -509,7 +502,7 @@ export interface CreateBillingAccountsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const CreateBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogExclusion.pipe(T.HttpBody())),
@@ -532,7 +525,7 @@ export interface CreateBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -553,7 +546,7 @@ export interface BigQueryDataset {
   /** Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID" */
   datasetId?: string;
 }
-export const BigQueryDataset = /*@__PURE__*/ S.suspend(() =>
+const BigQueryDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
   }),
@@ -566,7 +559,7 @@ export type LinkLifecycleStateEnum =
   | "UPDATING"
   | "CREATING"
   | "FAILED";
-export const LinkLifecycleStateEnum = S.String;
+const LinkLifecycleStateEnum = S.String;
 
 /** Describes a link connected to an analytics enabled bucket. */
 export interface Link {
@@ -581,7 +574,7 @@ export interface Link {
   /** Output only. The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the link name) must only have alphanumeric characters and underscores within it. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" For example:`projects/my-project/locations/global/buckets/my-bucket/links/my_link */
   name?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDataset: S.optional(BigQueryDataset),
     createTime: S.optional(S.String),
@@ -599,7 +592,7 @@ export interface CreateBillingAccountsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -628,7 +621,7 @@ export interface LogView {
   /** Output only. The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view */
   name?: string;
 }
-export const LogView = /*@__PURE__*/ S.suspend(() =>
+const LogView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -646,7 +639,7 @@ export interface CreateBillingAccountsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const CreateBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -667,16 +660,14 @@ export interface SummaryField {
   /** Optional. The field from the LogEntry to include in the summary line, for example resource.type or jsonPayload.name. */
   field?: string;
 }
-export const SummaryField = /*@__PURE__*/ S.suspend(() =>
+const SummaryField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
   }),
 ).annotate({ identifier: "SummaryField" }) as any as S.Schema<SummaryField>;
 
 export type SummaryFieldList = Array<SummaryField>;
-export const SummaryFieldList = /*@__PURE__*/ S.Array(
-  SummaryField,
-) as any as S.Schema<SummaryFieldList>;
+const SummaryFieldList = /*@__PURE__*/ S.Array(SummaryField) as any as S.Schema<SummaryFieldList>;
 
 /** Describes a Cloud Logging query that can be run in Logs Explorer UI or via the logging API.In addition to the query itself, additional information may be stored to capture the display configuration and other UI state used in association with analysis of query results. */
 export interface LoggingQuery {
@@ -689,7 +680,7 @@ export interface LoggingQuery {
   /** Characters will be counted from the end of the string. */
   summaryFieldEnd?: number;
 }
-export const LoggingQuery = /*@__PURE__*/ S.suspend(() =>
+const LoggingQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaryFieldStart: S.optional(S.Number),
     summaryFields: S.optional(SummaryFieldList),
@@ -699,10 +690,10 @@ export const LoggingQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoggingQuery" }) as any as S.Schema<LoggingQuery>;
 
 export type SavedQueryVisibilityEnum = "VISIBILITY_UNSPECIFIED" | "PRIVATE" | "SHARED";
-export const SavedQueryVisibilityEnum = S.String;
+const SavedQueryVisibilityEnum = S.String;
 
 export type VirtualFieldVirtualFieldTypeEnum = "VIRTUAL_FIELD_TYPE_UNSPECIFIED" | "COALESCE";
-export const VirtualFieldVirtualFieldTypeEnum = S.String;
+const VirtualFieldVirtualFieldTypeEnum = S.String;
 
 /** A virtual field is a field that is not physically present in the underlying data schema, but is created through specific operations within the query builder model based on other fields in the schema. */
 export interface VirtualField {
@@ -711,7 +702,7 @@ export interface VirtualField {
   /** Required. The type of the virtual field. */
   virtualFieldType?: VirtualFieldVirtualFieldTypeEnum | (string & {});
 }
-export const VirtualField = /*@__PURE__*/ S.suspend(() =>
+const VirtualField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     underlyingFieldSources: S.optional(S.suspend(() => FieldSourceList)),
     virtualFieldType: S.optional(VirtualFieldVirtualFieldTypeEnum),
@@ -719,7 +710,7 @@ export const VirtualField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VirtualField" }) as any as S.Schema<VirtualField>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** Defines the aggregation function to apply to this field. This message is used only when operation is set to AGGREGATE. */
 export interface FunctionApplication {
@@ -728,7 +719,7 @@ export interface FunctionApplication {
   /** Optional. Parameters to be applied to the aggregation. Aggregations that support or require parameters are listed above. */
   parameters?: DocumentList;
 }
-export const FunctionApplication = /*@__PURE__*/ S.suspend(() =>
+const FunctionApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     parameters: S.optional(DocumentList),
@@ -740,7 +731,7 @@ export type ProjectedFieldOperationEnum =
   | "NO_SETTING"
   | "GROUP_BY"
   | "AGGREGATE";
-export const ProjectedFieldOperationEnum = S.String;
+const ProjectedFieldOperationEnum = S.String;
 
 /** Represents a field selected in the query, analogous to an item in a SQL SELECT clause. It specifies the source field and optionally applies transformations like aggregation, casting, regex extraction, or assigns an alias. Use ProjectedField when you need more than just the raw source field name (for which you might use FieldSource directly in QueryBuilderConfig's field_sources list if no transformations or specific operation type are needed).A ProjectedField can represent either a field present in the data schema (specified via the field property) or a virtual field that is computed from other fields (specified via the virtual_field property). */
 export interface ProjectedField {
@@ -761,7 +752,7 @@ export interface ProjectedField {
   /** Specifies the role of this field (direct selection, grouping, or aggregation). */
   operation?: ProjectedFieldOperationEnum | (string & {});
 }
-export const ProjectedField = /*@__PURE__*/ S.suspend(() =>
+const ProjectedField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualField: S.optional(VirtualField),
     truncationGranularity: S.optional(S.String),
@@ -789,7 +780,7 @@ export interface FieldSource {
   /** Whether the field is a JSON field, or has a parent that is a JSON field. This value is used to determine JSON extractions in generated SQL queries. Note that this is_json flag may be true when the column_type is not JSON if the parent is a JSON field. Ex: - A json_payload.message field might have is_json=true, since the 'json_payload' parent is of type JSON, and columnType='STRING' if the 'message' field is of type STRING. */
   isJson?: boolean;
 }
-export const FieldSource = /*@__PURE__*/ S.suspend(() =>
+const FieldSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     parentPath: S.optional(S.String),
@@ -801,15 +792,13 @@ export const FieldSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldSource" }) as any as S.Schema<FieldSource>;
 
 export type FieldSourceList = Array<FieldSource>;
-export const FieldSourceList = /*@__PURE__*/ S.Array(
-  FieldSource,
-) as any as S.Schema<FieldSourceList>;
+const FieldSourceList = /*@__PURE__*/ S.Array(FieldSource) as any as S.Schema<FieldSourceList>;
 
 export type FilterPredicateOperatorTypeEnum = "OPERATOR_TYPE_UNSPECIFIED" | "AND" | "OR" | "LEAF";
-export const FilterPredicateOperatorTypeEnum = S.String;
+const FilterPredicateOperatorTypeEnum = S.String;
 
 export type FilterPredicateList = Array<FilterPredicate>;
-export const FilterPredicateList = /*@__PURE__*/ S.Array(
+const FilterPredicateList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => FilterPredicate),
 ) as any as S.Schema<FilterPredicateList>;
 
@@ -824,7 +813,7 @@ export type FilterExpressionComparatorEnum =
   | "IS_NULL"
   | "IN"
   | "LIKE";
-export const FilterExpressionComparatorEnum = S.String;
+const FilterExpressionComparatorEnum = S.String;
 
 /** This is a leaf of the FilterPredicate. Ex: { field: json_payload.message.error_code, filter_value: {numeric_value: 400}, comparator: EQUAL_TO} The field will be schema field that is selected using the . annotation to display the drill down value. The value will be the user inputted text that the filter is comparing against. */
 export interface FilterExpression {
@@ -839,7 +828,7 @@ export interface FilterExpression {
   /** The field. This will be the field that is set as the Right Hand Side of the filter. */
   fieldSourceValue?: FieldSource;
 }
-export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
+const FilterExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     literalValue: S.optional(S.Unknown),
     isNegation: S.optional(S.Boolean),
@@ -858,7 +847,7 @@ export interface FilterPredicate {
   /** The leaves of the filter predicate. This equates to the last leaves of the filter predicate associated with an operator. */
   leafPredicate?: FilterExpression;
 }
-export const FilterPredicate = /*@__PURE__*/ S.suspend(() =>
+const FilterPredicate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatorType: S.optional(FilterPredicateOperatorTypeEnum),
     childPredicates: S.optional(FilterPredicateList),
@@ -871,7 +860,7 @@ export type SortOrderParameterSortOrderDirectionEnum =
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
   | "SORT_ORDER_DESCENDING";
-export const SortOrderParameterSortOrderDirectionEnum = S.String;
+const SortOrderParameterSortOrderDirectionEnum = S.String;
 
 /** A sort order for a query based on a column. */
 export interface SortOrderParameter {
@@ -880,7 +869,7 @@ export interface SortOrderParameter {
   /** The field to sort on. Can be one of the FieldSource types: field name, alias ref, variable ref, or a literal value. */
   fieldSource?: FieldSource;
 }
-export const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
+const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortOrderDirection: S.optional(SortOrderParameterSortOrderDirectionEnum),
     fieldSource: S.optional(FieldSource),
@@ -888,7 +877,7 @@ export const SortOrderParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SortOrderParameter" }) as any as S.Schema<SortOrderParameter>;
 
 export type SortOrderParameterList = Array<SortOrderParameter>;
-export const SortOrderParameterList = /*@__PURE__*/ S.Array(
+const SortOrderParameterList = /*@__PURE__*/ S.Array(
   SortOrderParameter,
 ) as any as S.Schema<SortOrderParameterList>;
 
@@ -907,7 +896,7 @@ export interface QueryBuilderConfig {
   /** The plain text search to use for the query. There is no support for multiple search terms. This uses the SEARCH functionality in BigQuery. For example, a search_term = 'ERROR' would result in the following SQL:SELECT * FROM resource WHERE SEARCH(resource, 'ERROR') LIMIT 100 */
   searchTerm?: string;
 }
-export const QueryBuilderConfig = /*@__PURE__*/ S.suspend(() =>
+const QueryBuilderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.String),
     fieldSources: S.optional(FieldSourceList),
@@ -925,7 +914,7 @@ export interface OpsAnalyticsQuery {
   /** Optional. A query builder configuration used in Log Analytics.If both query_builder and sql_query_text fields are set, then the sql_query_text will be used, if its non-empty. At least one of the two fields must be set. */
   queryBuilder?: QueryBuilderConfig;
 }
-export const OpsAnalyticsQuery = /*@__PURE__*/ S.suspend(() =>
+const OpsAnalyticsQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sqlQueryText: S.optional(S.String),
     queryBuilder: S.optional(QueryBuilderConfig),
@@ -951,7 +940,7 @@ export interface SavedQuery {
   /** Output only. Resource name of the saved query.In the format: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported locations, see Supported Regions (https://docs.cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will generate an alphanumeric ID. */
   name?: string;
 }
-export const SavedQuery = /*@__PURE__*/ S.suspend(() =>
+const SavedQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loggingQuery: S.optional(LoggingQuery),
     displayName: S.optional(S.String),
@@ -972,7 +961,7 @@ export interface CreateBillingAccountsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const CreateBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedQueryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -989,12 +978,10 @@ export const CreateBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S
 }) as any as S.Schema<CreateBillingAccountsLocationsSavedQueriesRequest>;
 
 export type LogSinkOutputVersionFormatEnum = "VERSION_FORMAT_UNSPECIFIED" | "V2" | "V1";
-export const LogSinkOutputVersionFormatEnum = S.String;
+const LogSinkOutputVersionFormatEnum = S.String;
 
 export type LogExclusionList = Array<LogExclusion>;
-export const LogExclusionList = /*@__PURE__*/ S.Array(
-  LogExclusion,
-) as any as S.Schema<LogExclusionList>;
+const LogExclusionList = /*@__PURE__*/ S.Array(LogExclusion) as any as S.Schema<LogExclusionList>;
 
 /** Options that change functionality of a sink exporting data to BigQuery. */
 export interface BigQueryOptions {
@@ -1003,7 +990,7 @@ export interface BigQueryOptions {
   /** Output only. True if new timestamp column based partitioning is in use, false if legacy ingress-time partitioning is in use.All new sinks will have this field set true and will use timestamp column based partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks using partitioned tables will have this field set to false. */
   usesTimestampColumnPartitioning?: boolean;
 }
-export const BigQueryOptions = /*@__PURE__*/ S.suspend(() =>
+const BigQueryOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usePartitionedTables: S.optional(S.Boolean),
     usesTimestampColumnPartitioning: S.optional(S.Boolean),
@@ -1041,7 +1028,7 @@ export interface LogSink {
   /** Optional. A description of this sink.The maximum length of the description is 8000 characters. */
   description?: string;
 }
-export const LogSink = /*@__PURE__*/ S.suspend(() =>
+const LogSink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputVersionFormat: S.optional(LogSinkOutputVersionFormatEnum),
     createTime: S.optional(S.String),
@@ -1070,7 +1057,7 @@ export interface CreateBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const CreateBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1093,7 +1080,7 @@ export interface CreateExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const CreateExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogExclusion.pipe(T.HttpBody())),
@@ -1112,7 +1099,7 @@ export interface CreateFoldersExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const CreateFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogExclusion.pipe(T.HttpBody())),
@@ -1135,7 +1122,7 @@ export interface CreateFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -1159,7 +1146,7 @@ export interface CreateFoldersLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1183,7 +1170,7 @@ export interface CreateFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const CreateFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     viewId: S.optional(S.String.pipe(T.Query())),
@@ -1212,7 +1199,7 @@ export interface LogScope {
   /** Output only. The creation timestamp of the log scope. */
   createTime?: string;
 }
-export const LogScope = /*@__PURE__*/ S.suspend(() =>
+const LogScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1230,7 +1217,7 @@ export interface CreateFoldersLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const CreateFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logScopeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1254,7 +1241,7 @@ export interface CreateFoldersLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const CreateFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedQueryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1280,7 +1267,7 @@ export interface CreateFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const CreateFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
@@ -1305,7 +1292,7 @@ export interface CreateLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -1329,7 +1316,7 @@ export interface CreateLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1353,7 +1340,7 @@ export interface CreateLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const CreateLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1375,7 +1362,7 @@ export interface CreateOrganizationsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const CreateOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogExclusion.pipe(T.HttpBody())),
@@ -1398,7 +1385,7 @@ export interface CreateOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -1422,7 +1409,7 @@ export interface CreateOrganizationsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1446,7 +1433,7 @@ export interface CreateOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const CreateOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     viewId: S.optional(S.String.pipe(T.Query())),
@@ -1470,7 +1457,7 @@ export interface CreateOrganizationsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const CreateOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logScopeId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1494,7 +1481,7 @@ export interface CreateOrganizationsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const CreateOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     savedQueryId: S.optional(S.String.pipe(T.Query())),
@@ -1520,7 +1507,7 @@ export interface CreateOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const CreateOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1543,7 +1530,7 @@ export interface CreateProjectsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const CreateProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogExclusion.pipe(T.HttpBody())),
@@ -1566,7 +1553,7 @@ export interface CreateProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     bucketId: S.optional(S.String.pipe(T.Query())),
@@ -1590,7 +1577,7 @@ export interface CreateProjectsLocationsBucketsLinksRequest {
   /** Request body */
   body?: Link;
 }
-export const CreateProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     linkId: S.optional(S.String.pipe(T.Query())),
@@ -1614,7 +1601,7 @@ export interface CreateProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const CreateProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     viewId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1638,7 +1625,7 @@ export interface CreateProjectsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const CreateProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     logScopeId: S.optional(S.String.pipe(T.Query())),
@@ -1662,7 +1649,7 @@ export interface CreateProjectsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const CreateProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     savedQueryId: S.optional(S.String.pipe(T.Query())),
@@ -1679,13 +1666,13 @@ export const CreateProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateProjectsLocationsSavedQueriesRequest>;
 
 export type LogMetricVersionEnum = "V2" | "V1";
-export const LogMetricVersionEnum = S.String;
+const LogMetricVersionEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type LabelDescriptorValueTypeEnum = "STRING" | "BOOL" | "INT64";
-export const LabelDescriptorValueTypeEnum = S.String;
+const LabelDescriptorValueTypeEnum = S.String;
 
 /** A description of a label. */
 export interface LabelDescriptor {
@@ -1696,7 +1683,7 @@ export interface LabelDescriptor {
   /** A human-readable description for the label. */
   description?: string;
 }
-export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
+const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valueType: S.optional(LabelDescriptorValueTypeEnum),
     key: S.optional(S.String),
@@ -1705,7 +1692,7 @@ export const LabelDescriptor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabelDescriptor" }) as any as S.Schema<LabelDescriptor>;
 
 export type LabelDescriptorList = Array<LabelDescriptor>;
-export const LabelDescriptorList = /*@__PURE__*/ S.Array(
+const LabelDescriptorList = /*@__PURE__*/ S.Array(
   LabelDescriptor,
 ) as any as S.Schema<LabelDescriptorList>;
 
@@ -1717,7 +1704,7 @@ export type MetricDescriptorValueTypeEnum =
   | "STRING"
   | "DISTRIBUTION"
   | "MONEY";
-export const MetricDescriptorValueTypeEnum = S.String;
+const MetricDescriptorValueTypeEnum = S.String;
 
 export type MetricDescriptorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
@@ -1728,7 +1715,7 @@ export type MetricDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MetricDescriptorLaunchStageEnum = S.String;
+const MetricDescriptorLaunchStageEnum = S.String;
 
 export type MetricDescriptorMetadataLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
@@ -1739,22 +1726,21 @@ export type MetricDescriptorMetadataLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MetricDescriptorMetadataLaunchStageEnum = S.String;
+const MetricDescriptorMetadataLaunchStageEnum = S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum =
   | "TIME_SERIES_RESOURCE_HIERARCHY_LEVEL_UNSPECIFIED"
   | "PROJECT"
   | "ORGANIZATION"
   | "FOLDER";
-export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum = S.String;
 
 export type MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = Array<
   MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum | (string & {})
 >;
-export const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList =
-  /*@__PURE__*/ S.Array(
-    MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
-  ) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
+const MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList = /*@__PURE__*/ S.Array(
+  MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnum,
+) as any as S.Schema<MetricDescriptorMetadataTimeSeriesResourceHierarchyLevelItemEnumList>;
 
 /** Additional annotations that can be used to guide the usage of a metric. */
 export interface MetricDescriptorMetadata {
@@ -1767,7 +1753,7 @@ export interface MetricDescriptorMetadata {
   /** The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors. */
   ingestDelay?: string;
 }
-export const MetricDescriptorMetadata = /*@__PURE__*/ S.suspend(() =>
+const MetricDescriptorMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     samplePeriod: S.optional(S.String),
     launchStage: S.optional(MetricDescriptorMetadataLaunchStageEnum),
@@ -1783,7 +1769,7 @@ export type MetricDescriptorMetricKindEnum =
   | "GAUGE"
   | "DELTA"
   | "CUMULATIVE";
-export const MetricDescriptorMetricKindEnum = S.String;
+const MetricDescriptorMetricKindEnum = S.String;
 
 /** Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. */
 export interface MetricDescriptor {
@@ -1810,7 +1796,7 @@ export interface MetricDescriptor {
   /** The resource name of the metric descriptor. */
   name?: string;
 }
-export const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
+const MetricDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(LabelDescriptorList),
     unit: S.optional(S.String),
@@ -1835,7 +1821,7 @@ export interface Exponential {
   /** Must be greater than 0. */
   numFiniteBuckets?: number;
 }
-export const Exponential = /*@__PURE__*/ S.suspend(() =>
+const Exponential = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     growthFactor: S.optional(S.Number),
     scale: S.optional(S.Number),
@@ -1844,14 +1830,14 @@ export const Exponential = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Exponential" }) as any as S.Schema<Exponential>;
 
 export type DoubleList = Array<number>;
-export const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
+const DoubleList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<DoubleList>;
 
 /** Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): boundsi Lower bound (1 <= i < N); boundsi - 1The bounds field must contain at least one element. If bounds has only one element, then there are no finite buckets, and that single element is the common boundary of the overflow and underflow buckets. */
 export interface Explicit {
   /** The values must be monotonically increasing. */
   bounds?: DoubleList;
 }
-export const Explicit = /*@__PURE__*/ S.suspend(() =>
+const Explicit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bounds: S.optional(DoubleList),
   }),
@@ -1866,7 +1852,7 @@ export interface Linear {
   /** Must be greater than 0. */
   numFiniteBuckets?: number;
 }
-export const Linear = /*@__PURE__*/ S.suspend(() =>
+const Linear = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number),
     width: S.optional(S.Number),
@@ -1883,7 +1869,7 @@ export interface BucketOptions {
   /** The linear bucket. */
   linearBuckets?: Linear;
 }
-export const BucketOptions = /*@__PURE__*/ S.suspend(() =>
+const BucketOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exponentialBuckets: S.optional(Exponential),
     explicitBuckets: S.optional(Explicit),
@@ -1920,7 +1906,7 @@ export interface LogMetric {
   /** Output only. The creation timestamp of the metric.This field may not be present for older metrics. */
   createTime?: string;
 }
-export const LogMetric = /*@__PURE__*/ S.suspend(() =>
+const LogMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     disabled: S.optional(S.Boolean),
@@ -1944,7 +1930,7 @@ export interface CreateProjectsMetricsRequest {
   /** Request body */
   body?: LogMetric;
 }
-export const CreateProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(LogMetric.pipe(T.HttpBody())),
@@ -1969,7 +1955,7 @@ export interface CreateProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const CreateProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1996,7 +1982,7 @@ export interface CreateSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const CreateSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
@@ -2015,7 +2001,7 @@ export interface DeleteBillingAccountsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const DeleteBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2029,7 +2015,7 @@ export interface DeleteBillingAccountsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const DeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2043,7 +2029,7 @@ export interface DeleteBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const DeleteBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2057,7 +2043,7 @@ export interface DeleteBillingAccountsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const DeleteBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2071,7 +2057,7 @@ export interface DeleteBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const DeleteBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2085,7 +2071,7 @@ export interface DeleteBillingAccountsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-export const DeleteBillingAccountsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2099,7 +2085,7 @@ export interface DeleteBillingAccountsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const DeleteBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2113,7 +2099,7 @@ export interface DeleteExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const DeleteExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2125,7 +2111,7 @@ export interface DeleteFoldersExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const DeleteFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2139,7 +2125,7 @@ export interface DeleteFoldersLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const DeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2153,7 +2139,7 @@ export interface DeleteFoldersLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const DeleteFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2167,7 +2153,7 @@ export interface DeleteFoldersLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const DeleteFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2181,7 +2167,7 @@ export interface DeleteFoldersLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const DeleteFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2195,7 +2181,7 @@ export interface DeleteFoldersLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const DeleteFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2209,7 +2195,7 @@ export interface DeleteFoldersLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-export const DeleteFoldersLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2221,7 +2207,7 @@ export interface DeleteFoldersSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const DeleteFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2235,7 +2221,7 @@ export interface DeleteLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const DeleteLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2249,7 +2235,7 @@ export interface DeleteLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const DeleteLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2263,7 +2249,7 @@ export interface DeleteLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const DeleteLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2277,7 +2263,7 @@ export interface DeleteLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-export const DeleteLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2289,7 +2275,7 @@ export interface DeleteOrganizationsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const DeleteOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2303,7 +2289,7 @@ export interface DeleteOrganizationsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const DeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2317,7 +2303,7 @@ export interface DeleteOrganizationsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const DeleteOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2331,7 +2317,7 @@ export interface DeleteOrganizationsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const DeleteOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2345,7 +2331,7 @@ export interface DeleteOrganizationsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const DeleteOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2359,7 +2345,7 @@ export interface DeleteOrganizationsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const DeleteOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2373,7 +2359,7 @@ export interface DeleteOrganizationsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-export const DeleteOrganizationsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2387,7 +2373,7 @@ export interface DeleteOrganizationsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const DeleteOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2401,7 +2387,7 @@ export interface DeleteProjectsExclusionsRequest {
   /** Required. The resource name of an existing exclusion to delete: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const DeleteProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2415,7 +2401,7 @@ export interface DeleteProjectsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const DeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2429,7 +2415,7 @@ export interface DeleteProjectsLocationsBucketsLinksRequest {
   /** Required. The full resource name of the link to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const DeleteProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2443,7 +2429,7 @@ export interface DeleteProjectsLocationsBucketsViewsRequest {
   /** Required. The full resource name of the view to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const DeleteProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2457,7 +2443,7 @@ export interface DeleteProjectsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope to delete: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const DeleteProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2471,7 +2457,7 @@ export interface DeleteProjectsLocationsSavedQueriesRequest {
   /** Required. The full resource name of the saved query to delete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const DeleteProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2485,7 +2471,7 @@ export interface DeleteProjectsLogsRequest {
   /** Required. The resource name of the log to delete: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example, "projects/my-project-id/logs/syslog", "organizations/123/logs/cloudaudit.googleapis.com%2Factivity".For more information about log names, see LogEntry. */
   logName: string;
 }
-export const DeleteProjectsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2499,7 +2485,7 @@ export interface DeleteProjectsMetricsRequest {
   /** Required. The resource name of the metric to delete: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" */
   metricName: string;
 }
-export const DeleteProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2517,7 +2503,7 @@ export interface DeleteProjectsSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const DeleteProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2531,7 +2517,7 @@ export interface DeleteSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const DeleteSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2543,7 +2529,7 @@ export interface GetBillingAccountsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const GetBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2555,7 +2541,7 @@ export interface GetBillingAccountsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2576,7 +2562,7 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2590,7 +2576,7 @@ export interface GetBillingAccountsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const GetBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2602,7 +2588,7 @@ export interface GetBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const GetBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2614,7 +2600,7 @@ export interface GetBillingAccountsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const GetBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2626,7 +2612,7 @@ export interface GetBillingAccountsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2638,7 +2624,7 @@ export interface GetBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const GetBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2650,7 +2636,7 @@ export interface GetBillingAccountsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const GetBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2664,7 +2650,7 @@ export interface GetCmekSettingsBillingAccountsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-export const GetCmekSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2682,7 +2668,7 @@ export interface GetCmekSettingsFoldersRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-export const GetCmekSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2700,7 +2686,7 @@ export interface GetCmekSettingsOrganizationsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-export const GetCmekSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2718,7 +2704,7 @@ export interface GetCmekSettingsProjectsRequest {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-export const GetCmekSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCmekSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2736,7 +2722,7 @@ export interface GetCmekSettingsV2Request {
   /** Required. The resource for which to retrieve CMEK settings. "projects/[PROJECT_ID]/cmekSettings" "organizations/[ORGANIZATION_ID]/cmekSettings" "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings" "folders/[FOLDER_ID]/cmekSettings" For example:"organizations/12345/cmekSettings"Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization. */
   name: string;
 }
-export const GetCmekSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetCmekSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2752,7 +2738,7 @@ export interface GetExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const GetExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2762,7 +2748,7 @@ export interface GetFoldersExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const GetFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2774,7 +2760,7 @@ export interface GetFoldersLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2786,7 +2772,7 @@ export interface GetFoldersLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const GetFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2798,7 +2784,7 @@ export interface GetFoldersLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const GetFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2810,7 +2796,7 @@ export interface GetFoldersLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const GetFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2822,7 +2808,7 @@ export interface GetFoldersLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const GetFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2834,7 +2820,7 @@ export interface GetFoldersLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2846,7 +2832,7 @@ export interface GetFoldersLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const GetFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -2858,7 +2844,7 @@ export interface GetFoldersSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const GetFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2871,7 +2857,7 @@ export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -2882,7 +2868,7 @@ export interface GetIamPolicyRequest {
   /** OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy. */
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -2894,7 +2880,7 @@ export interface GetIamPolicyFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2920,7 +2906,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     expression: S.optional(S.String),
@@ -2938,7 +2924,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a Google service account. For example, my-other-app@appspot.gserviceaccount.com. serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]: An identifier for a Kubernetes service account (https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, my-project.svc.id.goog[my-namespace/my-kubernetes-sa]. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com. principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workforce identity pool. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}: All workforce identities in a group. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All workforce identities with a specific attribute value. principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*: All identities in a workforce identity pool. principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}: A single identity in a workload identity pool. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}: A workload identity pool group. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}: All identities in a workload identity pool with a certain attribute. principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*: All identities in a workload identity pool. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}: Deleted single identity in a workforce identity pool. For example, deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -2947,7 +2933,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members, or principals, to a single role. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example: { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -2958,7 +2944,7 @@ export interface Policy {
   /** Associates a list of members, or principals, with a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one principal.The bindings in a Policy can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the bindings grant 50 different roles to user:alice@example.com, and not to any other principal, then you can add another 1,450 principals to the bindings in the Policy. */
   bindings?: BindingList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
     etag: S.optional(S.String),
@@ -2972,7 +2958,7 @@ export interface GetIamPolicyLocationsBucketsViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -2993,7 +2979,7 @@ export interface GetIamPolicyOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3014,7 +3000,7 @@ export interface GetIamPolicyProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -3033,7 +3019,7 @@ export interface GetLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3043,7 +3029,7 @@ export interface GetLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const GetLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3055,7 +3041,7 @@ export interface GetLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const GetLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3067,7 +3053,7 @@ export interface GetLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const GetLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3079,7 +3065,7 @@ export interface GetLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3091,7 +3077,7 @@ export interface GetOrganizationsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const GetOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3103,7 +3089,7 @@ export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3115,7 +3101,7 @@ export interface GetOrganizationsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const GetOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3127,7 +3113,7 @@ export interface GetOrganizationsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const GetOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3139,7 +3125,7 @@ export interface GetOrganizationsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const GetOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3151,7 +3137,7 @@ export interface GetOrganizationsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const GetOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3163,7 +3149,7 @@ export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3175,7 +3161,7 @@ export interface GetOrganizationsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const GetOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3187,7 +3173,7 @@ export interface GetOrganizationsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const GetOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3201,7 +3187,7 @@ export interface GetProjectsExclusionsRequest {
   /** Required. The resource name of an existing exclusion: "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" For example:"projects/my-project/exclusions/my-exclusion" */
   name: string;
 }
-export const GetProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3213,7 +3199,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3225,7 +3211,7 @@ export interface GetProjectsLocationsBucketsRequest {
   /** Required. The resource name of the bucket: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
 }
-export const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3237,7 +3223,7 @@ export interface GetProjectsLocationsBucketsLinksRequest {
   /** Required. The resource name of the link: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]" */
   name: string;
 }
-export const GetProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3249,7 +3235,7 @@ export interface GetProjectsLocationsBucketsViewsRequest {
   /** Required. The resource name of the policy: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket/views/my-view" */
   name: string;
 }
-export const GetProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3261,7 +3247,7 @@ export interface GetProjectsLocationsLogScopesRequest {
   /** Required. The resource name of the log scope: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/logScopes/my-log-scope" */
   name: string;
 }
-export const GetProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3273,7 +3259,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3285,7 +3271,7 @@ export interface GetProjectsLocationsSavedQueriesRequest {
   /** Required. The resource name of the saved query. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example: "projects/my-project/locations/global/savedQueries/my-saved-query" */
   name: string;
 }
-export const GetProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v2/{+name}", baseUrl: "https://logging.googleapis.com/" })),
@@ -3297,7 +3283,7 @@ export interface GetProjectsMetricsRequest {
   /** Required. The resource name of the desired metric: "projects/[PROJECT_ID]/metrics/[METRIC_ID]" */
   metricName: string;
 }
-export const GetProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3311,7 +3297,7 @@ export interface GetProjectsSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const GetProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3323,7 +3309,7 @@ export interface GetSettingsBillingAccountsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-export const GetSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3338,7 +3324,7 @@ export const GetSettingsBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSettingsBillingAccountsRequest>;
 
 export type DefaultSinkConfigModeEnum = "FILTER_WRITE_MODE_UNSPECIFIED" | "APPEND" | "OVERWRITE";
-export const DefaultSinkConfigModeEnum = S.String;
+const DefaultSinkConfigModeEnum = S.String;
 
 /** Describes the custom _Default sink configuration that is used to override the built-in _Default sink configuration in newly created resource containers, such as projects or folders. */
 export interface DefaultSinkConfig {
@@ -3349,7 +3335,7 @@ export interface DefaultSinkConfig {
   /** Required. Determines the behavior to apply to the built-in _Default sink inclusion filter.Exclusions are always appended, as built-in _Default sinks have no exclusions. */
   mode?: DefaultSinkConfigModeEnum | (string & {});
 }
-export const DefaultSinkConfig = /*@__PURE__*/ S.suspend(() =>
+const DefaultSinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     exclusions: S.optional(LogExclusionList),
@@ -3374,7 +3360,7 @@ export interface Settings {
   /** Output only. The service account for the given resource container, such as project or folder. Log sinks use this service account as their writer_identity if no custom service account is provided in the request when calling the create sink method. */
   loggingServiceAccountId?: string;
 }
-export const Settings = /*@__PURE__*/ S.suspend(() =>
+const Settings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageLocation: S.optional(S.String),
     kmsServiceAccountId: S.optional(S.String),
@@ -3390,7 +3376,7 @@ export interface GetSettingsFoldersRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-export const GetSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3408,7 +3394,7 @@ export interface GetSettingsOrganizationsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-export const GetSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3426,7 +3412,7 @@ export interface GetSettingsProjectsRequest {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-export const GetSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3444,7 +3430,7 @@ export interface GetSettingsV2Request {
   /** Required. The resource for which to retrieve settings. "projects/[PROJECT_ID]/settings" "organizations/[ORGANIZATION_ID]/settings" "billingAccounts/[BILLING_ACCOUNT_ID]/settings" "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts. */
   name: string;
 }
-export const GetSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3460,7 +3446,7 @@ export interface GetSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" For example:"projects/my-project/sinks/my-sink" */
   sinkName: string;
 }
-export const GetSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
   }).pipe(
@@ -3476,7 +3462,7 @@ export interface ListBillingAccountsExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
 }
-export const ListBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3499,7 +3485,7 @@ export interface ListExclusionsResponse {
   /** A list of exclusions. */
   exclusions?: LogExclusionList;
 }
-export const ListExclusionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExclusionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     exclusions: S.optional(LogExclusionList),
@@ -3518,7 +3504,7 @@ export interface ListBillingAccountsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3537,7 +3523,7 @@ export const ListBillingAccountsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3546,7 +3532,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -3561,7 +3547,7 @@ export interface ListBillingAccountsLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
 }
-export const ListBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3578,7 +3564,7 @@ export const ListBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListBillingAccountsLocationsBucketsRequest>;
 
 export type LogBucketList = Array<LogBucket>;
-export const LogBucketList = /*@__PURE__*/ S.Array(LogBucket) as any as S.Schema<LogBucketList>;
+const LogBucketList = /*@__PURE__*/ S.Array(LogBucket) as any as S.Schema<LogBucketList>;
 
 /** The response from ListBuckets. */
 export interface ListBucketsResponse {
@@ -3587,7 +3573,7 @@ export interface ListBucketsResponse {
   /** A list of buckets. */
   buckets?: LogBucketList;
 }
-export const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBucketsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     buckets: S.optional(LogBucketList),
@@ -3602,7 +3588,7 @@ export interface ListBillingAccountsLocationsBucketsLinksRequest {
   /** Required. The parent resource whose links are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
 }
-export const ListBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3619,7 +3605,7 @@ export const ListBillingAccountsLocationsBucketsLinksRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListBillingAccountsLocationsBucketsLinksRequest>;
 
 export type LinkList = Array<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
 
 /** The response from ListLinks. */
 export interface ListLinksResponse {
@@ -3628,7 +3614,7 @@ export interface ListLinksResponse {
   /** A list of links. */
   links?: LinkList;
 }
-export const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     links: S.optional(LinkList),
@@ -3643,7 +3629,7 @@ export interface ListBillingAccountsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3660,7 +3646,7 @@ export const ListBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListBillingAccountsLocationsBucketsViewsRequest>;
 
 export type LogViewList = Array<LogView>;
-export const LogViewList = /*@__PURE__*/ S.Array(LogView) as any as S.Schema<LogViewList>;
+const LogViewList = /*@__PURE__*/ S.Array(LogView) as any as S.Schema<LogViewList>;
 
 /** The response from ListViews. */
 export interface ListViewsResponse {
@@ -3669,7 +3655,7 @@ export interface ListViewsResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-export const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     views: S.optional(LogViewList),
     nextPageToken: S.optional(S.String),
@@ -3686,7 +3672,7 @@ export interface ListBillingAccountsLocationsBucketsViewsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-export const ListBillingAccountsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3706,7 +3692,7 @@ export interface ListLogsResponse {
   /** A list of log names. For example, "projects/my-project/logs/syslog" or "organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity". */
   logNames?: StringList;
 }
-export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     logNames: S.optional(StringList),
@@ -3725,7 +3711,7 @@ export interface ListBillingAccountsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3744,7 +3730,7 @@ export const ListBillingAccountsLocationsOperationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListBillingAccountsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -3755,7 +3741,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -3773,7 +3759,7 @@ export interface ListBillingAccountsLocationsRecentQueriesRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListBillingAccountsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3801,7 +3787,7 @@ export interface RecentQuery {
   /** Output only. The timestamp when this query was last run. */
   lastRunTime?: string;
 }
-export const RecentQuery = /*@__PURE__*/ S.suspend(() =>
+const RecentQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
     name: S.optional(S.String),
@@ -3811,9 +3797,7 @@ export const RecentQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecentQuery" }) as any as S.Schema<RecentQuery>;
 
 export type RecentQueryList = Array<RecentQuery>;
-export const RecentQueryList = /*@__PURE__*/ S.Array(
-  RecentQuery,
-) as any as S.Schema<RecentQueryList>;
+const RecentQueryList = /*@__PURE__*/ S.Array(RecentQuery) as any as S.Schema<RecentQueryList>;
 
 /** The response from ListRecentQueries. */
 export interface ListRecentQueriesResponse {
@@ -3824,7 +3808,7 @@ export interface ListRecentQueriesResponse {
   /** The unreachable resources. Each resource can be either 1) a saved query if a specific query is unreachable or 2) a location if a specific location is unreachable. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/recentQueries/[QUERY_ID]" "projects/[PROJECT_ID]/locations/[LOCATION_ID]" For example:"projects/my-project/locations/global/recentQueries/12345678" "projects/my-project/locations/global"If there are unreachable resources, the response will first return pages that contain recent queries, and then return pages that contain the unreachable resources. */
   unreachable?: StringList;
 }
-export const ListRecentQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecentQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recentQueries: S.optional(RecentQueryList),
     nextPageToken: S.optional(S.String),
@@ -3844,7 +3828,7 @@ export interface ListBillingAccountsLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-export const ListBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3862,7 +3846,7 @@ export const ListBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListBillingAccountsLocationsSavedQueriesRequest>;
 
 export type SavedQueryList = Array<SavedQuery>;
-export const SavedQueryList = /*@__PURE__*/ S.Array(SavedQuery) as any as S.Schema<SavedQueryList>;
+const SavedQueryList = /*@__PURE__*/ S.Array(SavedQuery) as any as S.Schema<SavedQueryList>;
 
 /** The response from ListSavedQueries. */
 export interface ListSavedQueriesResponse {
@@ -3873,7 +3857,7 @@ export interface ListSavedQueriesResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-export const ListSavedQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSavedQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     savedQueries: S.optional(SavedQueryList),
     unreachable: S.optional(StringList),
@@ -3891,7 +3875,7 @@ export interface ListBillingAccountsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-export const ListBillingAccountsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3914,7 +3898,7 @@ export interface ListBillingAccountsSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3932,7 +3916,7 @@ export const ListBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBillingAccountsSinksRequest>;
 
 export type LogSinkList = Array<LogSink>;
-export const LogSinkList = /*@__PURE__*/ S.Array(LogSink) as any as S.Schema<LogSinkList>;
+const LogSinkList = /*@__PURE__*/ S.Array(LogSink) as any as S.Schema<LogSinkList>;
 
 /** Result returned from ListSinks. */
 export interface ListSinksResponse {
@@ -3941,7 +3925,7 @@ export interface ListSinksResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-export const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinks: S.optional(LogSinkList),
     nextPageToken: S.optional(S.String),
@@ -3963,7 +3947,7 @@ export interface ListLogEntriesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. page_token must be the value of next_page_token from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number),
     projectIds: S.optional(StringList),
@@ -3978,7 +3962,7 @@ export interface ListEntriesRequest {
   /** Request body */
   body?: ListLogEntriesRequest;
 }
-export const ListEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ListLogEntriesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -3996,7 +3980,7 @@ export type LogEntrySeverityEnum =
   | "CRITICAL"
   | "ALERT"
   | "EMERGENCY";
-export const LogEntrySeverityEnum = S.String;
+const LogEntrySeverityEnum = S.String;
 
 /** Additional information used to correlate multiple log entries. Used when a single LogEntry would exceed the Google Cloud Logging size limit and is split across multiple log entries. */
 export interface LogSplit {
@@ -4007,7 +3991,7 @@ export interface LogSplit {
   /** A globally unique identifier for all log entries in a sequence of split log entries. All log entries with the same |LogSplit.uid| are assumed to be part of the same sequence of split log entries. */
   uid?: string;
 }
-export const LogSplit = /*@__PURE__*/ S.suspend(() =>
+const LogSplit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.optional(S.Number),
     totalSplits: S.optional(S.Number),
@@ -4026,7 +4010,7 @@ export interface LogEntryOperation {
   /** Optional. An arbitrary producer identifier. The combination of id and producer must be globally unique. Examples for producer: "MyDivision.MyBigCompany.com", "github.com/MyProject/MyApplication". */
   producer?: string;
 }
-export const LogEntryOperation = /*@__PURE__*/ S.suspend(() =>
+const LogEntryOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     last: S.optional(S.Boolean),
@@ -4040,14 +4024,14 @@ export interface LogErrorGroup {
   /** The id is a unique identifier for a particular error group; it is the last part of the error group resource name: /project/[PROJECT_ID]/errors/[ERROR_GROUP_ID]. Example: COShysOX0r_51QE.This field can be used to search for log entries belonging to a specific error group in Logs Explorer (e.g., error_groups.id = "ID") or Observability Analytics.The id is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see Google Cloud Privacy Notice (https://cloud.google.com/terms/cloud-privacy-notice). */
   id?: string;
 }
-export const LogErrorGroup = /*@__PURE__*/ S.suspend(() =>
+const LogErrorGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({ identifier: "LogErrorGroup" }) as any as S.Schema<LogErrorGroup>;
 
 export type LogErrorGroupList = Array<LogErrorGroup>;
-export const LogErrorGroupList = /*@__PURE__*/ S.Array(
+const LogErrorGroupList = /*@__PURE__*/ S.Array(
   LogErrorGroup,
 ) as any as S.Schema<LogErrorGroupList>;
 
@@ -4060,7 +4044,7 @@ export interface LogEntrySourceLocation {
   /** Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name. */
   file?: string;
 }
-export const LogEntrySourceLocation = /*@__PURE__*/ S.suspend(() =>
+const LogEntrySourceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.optional(S.String),
     function: S.optional(S.String),
@@ -4101,7 +4085,7 @@ export interface HttpRequest {
   /** The request processing latency on the server, from the time the request was received until the response was sent. For WebSocket connections, this field refers to the entire time duration of the connection. */
   latency?: string;
 }
-export const HttpRequest = /*@__PURE__*/ S.suspend(() =>
+const HttpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cacheHit: S.optional(S.Boolean),
     requestUrl: S.optional(S.String),
@@ -4128,7 +4112,7 @@ export interface MonitoredResource {
   /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
   labels?: StringMap;
 }
-export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -4144,7 +4128,7 @@ export interface AppHubApplication {
   /** Resource container that owns the application. Example: "projects/management_project" */
   container?: string;
 }
-export const AppHubApplication = /*@__PURE__*/ S.suspend(() =>
+const AppHubApplication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     location: S.optional(S.String),
@@ -4161,7 +4145,7 @@ export interface AppHubService {
   /** Service environment type Example: "DEV" */
   environmentType?: string;
 }
-export const AppHubService = /*@__PURE__*/ S.suspend(() =>
+const AppHubService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     criticalityType: S.optional(S.String),
     id: S.optional(S.String),
@@ -4178,7 +4162,7 @@ export interface AppHubWorkload {
   /** Workload criticality type Example: "CRITICAL" */
   criticalityType?: string;
 }
-export const AppHubWorkload = /*@__PURE__*/ S.suspend(() =>
+const AppHubWorkload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     environmentType: S.optional(S.String),
@@ -4195,7 +4179,7 @@ export interface AppHub {
   /** Metadata associated with the workload. */
   workload?: AppHubWorkload;
 }
-export const AppHub = /*@__PURE__*/ S.suspend(() =>
+const AppHub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     application: S.optional(AppHubApplication),
     service: S.optional(AppHubService),
@@ -4210,7 +4194,7 @@ export interface MonitoredResourceMetadata {
   /** Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } */
   systemLabels?: DocumentMap;
 }
-export const MonitoredResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userLabels: S.optional(StringMap),
     systemLabels: S.optional(DocumentMap),
@@ -4268,7 +4252,7 @@ export interface LogEntry {
   /** Optional. The time the event described by the log entry occurred. This time is used to compute the log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in the fractional seconds might be omitted when the timestamp is displayed. */
   timestamp?: string;
 }
-export const LogEntry = /*@__PURE__*/ S.suspend(() =>
+const LogEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: S.optional(LogEntrySeverityEnum),
     split: S.optional(LogSplit),
@@ -4297,7 +4281,7 @@ export const LogEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogEntry" }) as any as S.Schema<LogEntry>;
 
 export type LogEntryList = Array<LogEntry>;
-export const LogEntryList = /*@__PURE__*/ S.Array(LogEntry) as any as S.Schema<LogEntryList>;
+const LogEntryList = /*@__PURE__*/ S.Array(LogEntry) as any as S.Schema<LogEntryList>;
 
 /** Result returned from ListLogEntries. */
 export interface ListLogEntriesResponse {
@@ -4306,7 +4290,7 @@ export interface ListLogEntriesResponse {
   /** A list of log entries. If entries is empty, nextPageToken may still be returned, indicating that more entries may exist. See nextPageToken for more information. */
   entries?: LogEntryList;
 }
-export const ListLogEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     entries: S.optional(LogEntryList),
@@ -4321,7 +4305,7 @@ export interface ListExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4343,7 +4327,7 @@ export interface ListFoldersExclusionsRequest {
   /** Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" */
   parent: string;
 }
-export const ListFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4371,7 +4355,7 @@ export interface ListFoldersLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4397,7 +4381,7 @@ export interface ListFoldersLocationsBucketsRequest {
   /** Required. The parent resource whose buckets are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all buckets. */
   parent: string;
 }
-export const ListFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4421,7 +4405,7 @@ export interface ListFoldersLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-export const ListFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4445,7 +4429,7 @@ export interface ListFoldersLocationsBucketsViewsRequest {
   /** Required. The bucket whose views are to be listed: "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" */
   parent: string;
 }
-export const ListFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4471,7 +4455,7 @@ export interface ListFoldersLocationsBucketsViewsLogsRequest {
   /** Optional. List of resource names to list logs for: projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID] folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]To support legacy queries, it could also be: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID]The resource name in the parent field is added to this list. */
   resourceNames?: StringList;
 }
-export const ListFoldersLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4492,7 +4476,7 @@ export interface ListFoldersLocationsLogScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4509,7 +4493,7 @@ export const ListFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListFoldersLocationsLogScopesRequest>;
 
 export type LogScopeList = Array<LogScope>;
-export const LogScopeList = /*@__PURE__*/ S.Array(LogScope) as any as S.Schema<LogScopeList>;
+const LogScopeList = /*@__PURE__*/ S.Array(LogScope) as any as S.Schema<LogScopeList>;
 
 /** The response from ListLogScopes. Every project has a _Default log scope that cannot be modified or deleted. */
 export interface ListLogScopesResponse {
@@ -4518,7 +4502,7 @@ export interface ListLogScopesResponse {
   /** If there might be more results than appear in this response, then nextPageToken is included. To get the next set of results, call the same method again using the value of nextPageToken as pageToken. */
   nextPageToken?: string;
 }
-export const ListLogScopesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logScopes: S.optional(LogScopeList),
     nextPageToken: S.optional(S.String),
@@ -4537,7 +4521,7 @@ export interface ListFoldersLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-export const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4565,7 +4549,7 @@ export interface ListFoldersLocationsRecentQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The only valid value for this field is one of the two allowable type function calls, which are the following: type("Logging") type("OpsAnalytics") */
   filter?: string;
 }
-export const ListFoldersLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4592,7 +4576,7 @@ export interface ListFoldersLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-export const ListFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4619,7 +4603,7 @@ export interface ListFoldersLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
 }
-export const ListFoldersLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceNames: S.optional(StringList.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4640,7 +4624,7 @@ export interface ListFoldersSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4667,7 +4651,7 @@ export interface ListLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -4691,7 +4675,7 @@ export interface ListLocationsBucketsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4715,7 +4699,7 @@ export interface ListLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-export const ListLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4739,7 +4723,7 @@ export interface ListLocationsBucketsViewsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4767,7 +4751,7 @@ export interface ListLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-export const ListLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4795,7 +4779,7 @@ export interface ListLogsRequest {
   /** Required. The resource name to list logs for: projects/[PROJECT_ID] organizations/[ORGANIZATION_ID] billingAccounts/[BILLING_ACCOUNT_ID] folders/[FOLDER_ID] */
   parent: string;
 }
-export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceNames: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4812,7 +4796,7 @@ export interface ListMonitoredResourceDescriptorsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListMonitoredResourceDescriptorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredResourceDescriptorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4836,7 +4820,7 @@ export type MonitoredResourceDescriptorLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-export const MonitoredResourceDescriptorLaunchStageEnum = S.String;
+const MonitoredResourceDescriptorLaunchStageEnum = S.String;
 
 /** An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of "gce_instance" and specifies the use of the labels "instance_id" and "zone" to identify particular VM instances.Different APIs can support different monitored resource types. APIs generally provide a list method that returns the monitored resource descriptors used by the API. */
 export interface MonitoredResourceDescriptor {
@@ -4853,7 +4837,7 @@ export interface MonitoredResourceDescriptor {
   /** Optional. The resource name of the monitored resource descriptor: "projects/{project_id}/monitoredResourceDescriptors/{type}" where {type} is the value of the type field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format "monitoredResourceDescriptors/{type}". */
   name?: string;
 }
-export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(LabelDescriptorList),
     type: S.optional(S.String),
@@ -4867,7 +4851,7 @@ export const MonitoredResourceDescriptor = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonitoredResourceDescriptor>;
 
 export type MonitoredResourceDescriptorList = Array<MonitoredResourceDescriptor>;
-export const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
+const MonitoredResourceDescriptorList = /*@__PURE__*/ S.Array(
   MonitoredResourceDescriptor,
 ) as any as S.Schema<MonitoredResourceDescriptorList>;
 
@@ -4878,7 +4862,7 @@ export interface ListMonitoredResourceDescriptorsResponse {
   /** A list of resource descriptors. */
   resourceDescriptors?: MonitoredResourceDescriptorList;
 }
-export const ListMonitoredResourceDescriptorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredResourceDescriptorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     resourceDescriptors: S.optional(MonitoredResourceDescriptorList),
@@ -4895,7 +4879,7 @@ export interface ListOrganizationsExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4923,7 +4907,7 @@ export interface ListOrganizationsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -4949,7 +4933,7 @@ export interface ListOrganizationsLocationsBucketsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4973,7 +4957,7 @@ export interface ListOrganizationsLocationsBucketsLinksRequest {
   /** Optional. The maximum number of results to return from this request. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4997,7 +4981,7 @@ export interface ListOrganizationsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5023,7 +5007,7 @@ export interface ListOrganizationsLocationsBucketsViewsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListOrganizationsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     resourceNames: S.optional(StringList.pipe(T.Query())),
@@ -5044,7 +5028,7 @@ export interface ListOrganizationsLocationsLogScopesRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5072,7 +5056,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5100,7 +5084,7 @@ export interface ListOrganizationsLocationsRecentQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:projects/my-project/locations/us-central1Note: The location portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all recent queries. */
   parent: string;
 }
-export const ListOrganizationsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5127,7 +5111,7 @@ export interface ListOrganizationsLocationsSavedQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example: "projects/my-project/locations/us-central1" Note: The locations portion of the resource must be specified. To get a list of all saved queries, a wildcard character - can be used for LOCATION_ID, for example: "projects/my-project/locations/-" */
   parent: string;
 }
-export const ListOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5154,7 +5138,7 @@ export interface ListOrganizationsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5177,7 +5161,7 @@ export interface ListOrganizationsSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5202,7 +5186,7 @@ export interface ListProjectsExclusionsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5230,7 +5214,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5256,7 +5240,7 @@ export interface ListProjectsLocationsBucketsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5280,7 +5264,7 @@ export interface ListProjectsLocationsBucketsLinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. */
   pageToken?: string;
 }
-export const ListProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5304,7 +5288,7 @@ export interface ListProjectsLocationsBucketsViewsRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5330,7 +5314,7 @@ export interface ListProjectsLocationsBucketsViewsLogsRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBucketsViewsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5351,7 +5335,7 @@ export interface ListProjectsLocationsLogScopesRequest {
   /** Optional. The maximum number of results to return from this request.Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5379,7 +5363,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5407,7 +5391,7 @@ export interface ListProjectsLocationsRecentQueriesRequest {
   /** Required. The resource to which the listed queries belong. "projects/[PROJECT_ID]/locations/[LOCATION_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]" For example:projects/my-project/locations/us-central1Note: The location portion of the resource must be specified, but supplying the character - in place of LOCATION_ID will return all recent queries. */
   parent: string;
 }
-export const ListProjectsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRecentQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5434,7 +5418,7 @@ export interface ListProjectsLocationsSavedQueriesRequest {
   /** Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or SHARED) of the saved queries to list. If provided, the filter must contain either the type function or a visibility token, or both. If both are chosen, they can be placed in any order, but they must be joined by the AND operator or the empty character.The two supported type function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are: visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility = SHARED */
   filter?: string;
 }
-export const ListProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5461,7 +5445,7 @@ export interface ListProjectsLogsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     resourceNames: S.optional(StringList.pipe(T.Query())),
@@ -5480,7 +5464,7 @@ export interface ListProjectsMetricsRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. pageToken must be the value of nextPageToken from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
 }
-export const ListProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -5497,7 +5481,7 @@ export const ListProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsMetricsRequest>;
 
 export type LogMetricList = Array<LogMetric>;
-export const LogMetricList = /*@__PURE__*/ S.Array(LogMetric) as any as S.Schema<LogMetricList>;
+const LogMetricList = /*@__PURE__*/ S.Array(LogMetric) as any as S.Schema<LogMetricList>;
 
 /** Result returned from ListLogMetrics. */
 export interface ListLogMetricsResponse {
@@ -5506,7 +5490,7 @@ export interface ListLogMetricsResponse {
   /** A list of logs-based metrics. */
   metrics?: LogMetricList;
 }
-export const ListLogMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLogMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     metrics: S.optional(LogMetricList),
@@ -5523,7 +5507,7 @@ export interface ListProjectsSinksRequest {
   /** Optional. A filter expression to constrain the sinks returned. Today, this only supports the following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR: Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied. */
   filter?: string;
 }
-export const ListProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -5548,7 +5532,7 @@ export interface ListSinksRequest {
   /** Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of nextPageToken in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const ListSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5571,7 +5555,7 @@ export interface PatchBillingAccountsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const PatchBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5591,7 +5575,7 @@ export interface PatchBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const PatchBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5611,7 +5595,7 @@ export interface PatchBillingAccountsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const PatchBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5631,7 +5615,7 @@ export interface PatchBillingAccountsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const PatchBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5655,7 +5639,7 @@ export interface PatchBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const PatchBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
     uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
@@ -5677,7 +5661,7 @@ export interface PatchExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const PatchExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5695,7 +5679,7 @@ export interface PatchFoldersExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const PatchFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5715,7 +5699,7 @@ export interface PatchFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const PatchFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5735,7 +5719,7 @@ export interface PatchFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const PatchFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5755,7 +5739,7 @@ export interface PatchFoldersLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const PatchFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5775,7 +5759,7 @@ export interface PatchFoldersLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const PatchFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5799,7 +5783,7 @@ export interface PatchFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const PatchFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sinkName: S.String.pipe(T.Label()),
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
@@ -5819,7 +5803,7 @@ export interface PatchLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const PatchLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5839,7 +5823,7 @@ export interface PatchLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const PatchLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5859,7 +5843,7 @@ export interface PatchOrganizationsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const PatchOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5879,7 +5863,7 @@ export interface PatchOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const PatchOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5899,7 +5883,7 @@ export interface PatchOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const PatchOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5919,7 +5903,7 @@ export interface PatchOrganizationsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const PatchOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5939,7 +5923,7 @@ export interface PatchOrganizationsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const PatchOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5963,7 +5947,7 @@ export interface PatchOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const PatchOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5985,7 +5969,7 @@ export interface PatchProjectsExclusionsRequest {
   /** Request body */
   body?: LogExclusion;
 }
-export const PatchProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6005,7 +5989,7 @@ export interface PatchProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6025,7 +6009,7 @@ export interface PatchProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: LogView;
 }
-export const PatchProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6045,7 +6029,7 @@ export interface PatchProjectsLocationsLogScopesRequest {
   /** Request body */
   body?: LogScope;
 }
-export const PatchProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsLogScopesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6065,7 +6049,7 @@ export interface PatchProjectsLocationsSavedQueriesRequest {
   /** Request body */
   body?: SavedQuery;
 }
-export const PatchProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6089,7 +6073,7 @@ export interface PatchProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const PatchProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
     sinkName: S.String.pipe(T.Label()),
@@ -6110,7 +6094,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag" */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -6123,7 +6107,7 @@ export interface SetIamPolicyFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6144,7 +6128,7 @@ export interface SetIamPolicyLocationsBucketsViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6165,7 +6149,7 @@ export interface SetIamPolicyOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6186,7 +6170,7 @@ export interface SetIamPolicyProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6210,7 +6194,7 @@ export interface TailLogEntriesRequest {
   /** Optional. A filter that chooses which log entries to return. For more information, see Logging query language (https://docs.cloud.google.com/logging/docs/view/logging-query-language).Only log entries that match the filter are returned. An empty filter matches all log entries in the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names will cause the filter to return no results. The maximum length of a filter is 20,000 characters. */
   filter?: string;
 }
-export const TailLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const TailLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceNames: S.optional(StringList),
     bufferWindow: S.optional(S.String),
@@ -6222,7 +6206,7 @@ export interface TailEntriesRequest {
   /** Request body */
   body?: TailLogEntriesRequest;
 }
-export const TailEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const TailEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(TailLogEntriesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6231,7 +6215,7 @@ export const TailEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TailEntriesRequest" }) as any as S.Schema<TailEntriesRequest>;
 
 export type SuppressionInfoReasonEnum = "REASON_UNSPECIFIED" | "RATE_LIMIT" | "NOT_CONSUMED";
-export const SuppressionInfoReasonEnum = S.String;
+const SuppressionInfoReasonEnum = S.String;
 
 /** Information about entries that were omitted from the session. */
 export interface SuppressionInfo {
@@ -6240,7 +6224,7 @@ export interface SuppressionInfo {
   /** A lower bound on the count of entries omitted due to reason. */
   suppressedCount?: number;
 }
-export const SuppressionInfo = /*@__PURE__*/ S.suspend(() =>
+const SuppressionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(SuppressionInfoReasonEnum),
     suppressedCount: S.optional(S.Number),
@@ -6248,7 +6232,7 @@ export const SuppressionInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SuppressionInfo" }) as any as S.Schema<SuppressionInfo>;
 
 export type SuppressionInfoList = Array<SuppressionInfo>;
-export const SuppressionInfoList = /*@__PURE__*/ S.Array(
+const SuppressionInfoList = /*@__PURE__*/ S.Array(
   SuppressionInfo,
 ) as any as S.Schema<SuppressionInfoList>;
 
@@ -6259,7 +6243,7 @@ export interface TailLogEntriesResponse {
   /** A list of log entries. Each response in the stream will order entries with increasing values of LogEntry.timestamp. Ordering is not guaranteed between separate responses. */
   entries?: LogEntryList;
 }
-export const TailLogEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const TailLogEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suppressionInfo: S.optional(SuppressionInfoList),
     entries: S.optional(LogEntryList),
@@ -6271,7 +6255,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -6285,7 +6269,7 @@ export interface TestIamPermissionsFoldersLocationsBucketsViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsFoldersLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6305,7 +6289,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsLocationsBucketsViewsRequest {
@@ -6314,7 +6298,7 @@ export interface TestIamPermissionsLocationsBucketsViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6335,18 +6319,17 @@ export interface TestIamPermissionsOrganizationsLocationsBucketsViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+resource}:testIamPermissions",
-        baseUrl: "https://logging.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsOrganizationsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v2/{+resource}:testIamPermissions",
+      baseUrl: "https://logging.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsOrganizationsLocationsBucketsViewsRequest",
 }) as any as S.Schema<TestIamPermissionsOrganizationsLocationsBucketsViewsRequest>;
@@ -6357,7 +6340,7 @@ export interface TestIamPermissionsProjectsLocationsBucketsViewsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsBucketsViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6374,15 +6357,13 @@ export const TestIamPermissionsProjectsLocationsBucketsViewsRequest = /*@__PURE_
 
 /** The parameters to UndeleteBucket. */
 export type UndeleteBucketRequest = CancelOperationRequest;
-export const UndeleteBucketRequest = CancelOperationRequest;
-
 export interface UndeleteBillingAccountsLocationsBucketsRequest {
   /** Required. The full resource name of the bucket to undelete. "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" For example:"projects/my-project/locations/global/buckets/my-bucket" */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -6403,7 +6384,7 @@ export interface UndeleteFoldersLocationsBucketsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -6424,7 +6405,7 @@ export interface UndeleteLocationsBucketsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -6445,7 +6426,7 @@ export interface UndeleteOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -6466,7 +6447,7 @@ export interface UndeleteProjectsLocationsBucketsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const UndeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -6489,7 +6470,7 @@ export interface UpdateAsyncBillingAccountsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const UpdateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAsyncBillingAccountsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6513,7 +6494,7 @@ export interface UpdateAsyncFoldersLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const UpdateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAsyncFoldersLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6537,7 +6518,7 @@ export interface UpdateAsyncLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const UpdateAsyncLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAsyncLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6561,7 +6542,7 @@ export interface UpdateAsyncOrganizationsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const UpdateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAsyncOrganizationsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6585,7 +6566,7 @@ export interface UpdateAsyncProjectsLocationsBucketsRequest {
   /** Request body */
   body?: LogBucket;
 }
-export const UpdateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAsyncProjectsLocationsBucketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6613,7 +6594,7 @@ export interface UpdateBillingAccountsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const UpdateBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBillingAccountsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6635,7 +6616,7 @@ export interface UpdateCmekSettingsOrganizationsRequest {
   /** Request body */
   body?: CmekSettings;
 }
-export const UpdateCmekSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCmekSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6659,7 +6640,7 @@ export interface UpdateCmekSettingsV2Request {
   /** Request body */
   body?: CmekSettings;
 }
-export const UpdateCmekSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateCmekSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6687,7 +6668,7 @@ export interface UpdateFoldersSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const UpdateFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFoldersSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
@@ -6713,7 +6694,7 @@ export interface UpdateOrganizationsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const UpdateOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueWriterIdentity: S.optional(S.Boolean.pipe(T.Query())),
     sinkName: S.String.pipe(T.Label()),
@@ -6733,7 +6714,7 @@ export interface UpdateProjectsMetricsRequest {
   /** Request body */
   body?: LogMetric;
 }
-export const UpdateProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricName: S.String.pipe(T.Label()),
     body: S.optional(LogMetric.pipe(T.HttpBody())),
@@ -6756,7 +6737,7 @@ export interface UpdateProjectsSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const UpdateProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     customWriterIdentity: S.optional(S.String.pipe(T.Query())),
@@ -6778,7 +6759,7 @@ export interface UpdateSettingsFoldersRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsFoldersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6802,7 +6783,7 @@ export interface UpdateSettingsOrganizationsRequest {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6826,7 +6807,7 @@ export interface UpdateSettingsV2Request {
   /** Request body */
   body?: Settings;
 }
-export const UpdateSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateSettingsV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -6852,7 +6833,7 @@ export interface UpdateSinksRequest {
   /** Request body */
   body?: LogSink;
 }
-export const UpdateSinksRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     sinkName: S.String.pipe(T.Label()),
@@ -6879,7 +6860,7 @@ export interface WriteLogEntriesRequest {
   /** Optional. A default log resource name that is assigned to all log entries in entries that do not specify a value for log_name: projects/[PROJECT_ID]/logs/[LOG_ID] organizations/[ORGANIZATION_ID]/logs/[LOG_ID] billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID] folders/[FOLDER_ID]/logs/[LOG_ID][LOG_ID] must be URL-encoded. For example: "projects/my-project-id/logs/syslog" "organizations/123/logs/cloudaudit.googleapis.com%2Factivity" The permission logging.logEntries.create is needed on each project, organization, billing account, or folder that is receiving new log entries, whether the resource is specified in logName or in an individual log entry.Only platform services can write logs to billing accounts. */
   logName?: string;
 }
-export const WriteLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteLogEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(MonitoredResource),
     dryRun: S.optional(S.Boolean),
@@ -6894,7 +6875,7 @@ export interface WriteEntriesRequest {
   /** Request body */
   body?: WriteLogEntriesRequest;
 }
-export const WriteEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteEntriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(WriteLogEntriesRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -6904,8 +6885,7 @@ export const WriteEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Result returned from WriteLogEntries. */
 export interface WriteLogEntriesResponse {}
-export const WriteLogEntriesResponse =
-  CancelOperationRequest as any as S.Schema<WriteLogEntriesResponse>;
+const WriteLogEntriesResponse = CancelOperationRequest as any as S.Schema<WriteLogEntriesResponse>;
 
 export type CancelBillingAccountsLocationsOperationsError =
   | NotFound

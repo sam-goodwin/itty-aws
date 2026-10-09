@@ -16,7 +16,7 @@ export interface CheckCodeSigningAccountNameAvailabilityRequest {
   /** Artifact signing account name. */
   name: string;
 }
-export const CheckCodeSigningAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckCodeSigningAccountNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     type: S.String,
@@ -35,7 +35,7 @@ export const CheckCodeSigningAccountNameAvailabilityRequest = /*@__PURE__*/ S.su
 
 /** The reason that an artifact signing account name could not be used. The Reason element is only returned if nameAvailable is false. */
 export type NameUnavailabilityReason = "AccountNameInvalid" | "AlreadyExists";
-export const NameUnavailabilityReason = S.String;
+const NameUnavailabilityReason = S.String;
 
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
@@ -46,7 +46,7 @@ export interface CheckNameAvailabilityResult {
   /** An error message explaining the Reason value in more detail. */
   message?: string;
 }
-export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(NameUnavailabilityReason),
@@ -63,7 +63,7 @@ export type ProfileType =
   | "PrivateTrustCIPolicy"
   | "VBSEnclave"
   | "PublicTrustTest";
-export const ProfileType = S.String;
+const ProfileType = S.String;
 
 /** Properties of the certificate profile. */
 export interface CertificateProfilePropertiesInput {
@@ -82,7 +82,7 @@ export interface CertificateProfilePropertiesInput {
   /** Identity validation id used for the certificate subject name. */
   identityValidationId: string;
 }
-export const CertificateProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CertificateProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileType: ProfileType,
     includeStreetAddress: S.optional(S.Boolean),
@@ -108,7 +108,7 @@ export interface CreateCertificateProfileRequest {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfilePropertiesInput;
 }
-export const CreateCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -129,11 +129,11 @@ export const CreateCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -150,7 +150,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -169,19 +169,19 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Status of the certificate profiles. */
 export type CertificateProfileStatus = "Active" | "Disabled" | "Suspended";
-export const CertificateProfileStatus = S.String;
+const CertificateProfileStatus = S.String;
 
 /** Status of the certificate */
 export type CertificateStatus = "Active" | "Expired" | "Revoked";
-export const CertificateStatus = S.String;
+const CertificateStatus = S.String;
 
 /** Revocation status of the certificate. */
 export type RevocationStatus = "Succeeded" | "InProgress" | "Failed";
-export const RevocationStatus = S.String;
+const RevocationStatus = S.String;
 
 /** Revocation details of the certificate. */
 export interface Revocation {
@@ -198,7 +198,7 @@ export interface Revocation {
   /** Reason for the revocation failure. */
   failureReason?: string;
 }
-export const Revocation = /*@__PURE__*/ S.suspend(() =>
+const Revocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedAt: S.optional(S.String),
     effectiveAt: S.optional(S.String),
@@ -228,7 +228,7 @@ export interface Certificate {
   /** Revocations history of a certificate. */
   revocation?: Revocation;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serialNumber: S.optional(S.String),
     enhancedKeyUsage: S.optional(S.String),
@@ -243,7 +243,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 
 /** List of renewed certificates. */
 export type CertificateProfilePropertiesCertificatesList = Array<Certificate>;
-export const CertificateProfilePropertiesCertificatesList = /*@__PURE__*/ S.Array(
+const CertificateProfilePropertiesCertificatesList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<CertificateProfilePropertiesCertificatesList>;
 
@@ -270,7 +270,7 @@ export interface CertificateProfileProperties {
   /** List of renewed certificates. */
   certificates?: CertificateProfilePropertiesCertificatesList;
 }
-export const CertificateProfileProperties = /*@__PURE__*/ S.suspend(() =>
+const CertificateProfileProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileType: ProfileType,
     includeStreetAddress: S.optional(S.Boolean),
@@ -299,7 +299,7 @@ export interface CreateCertificateProfileResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-export const CreateCertificateProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -313,21 +313,21 @@ export const CreateCertificateProfileResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
-export const CreateCodeSigningAccountRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateCodeSigningAccountRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateCodeSigningAccountRequestTagsMap>;
 
 /** Name of the sku. */
 export type SkuName = "Basic" | "Premium";
-export const SkuName = S.String;
+const SkuName = S.String;
 
 /** SKU of the artifact signing account. */
 export interface AccountSku {
   /** Name of the SKU. */
   name: SkuName | (string & {});
 }
-export const AccountSku = /*@__PURE__*/ S.suspend(() =>
+const AccountSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SkuName,
   }),
@@ -338,7 +338,7 @@ export interface CodeSigningAccountPropertiesInput {
   /** SKU of the artifact signing account. */
   sku?: AccountSku;
 }
-export const CodeSigningAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningAccountPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(AccountSku),
   }),
@@ -360,7 +360,7 @@ export interface CreateCodeSigningAccountRequest {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountPropertiesInput;
 }
-export const CreateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -382,7 +382,7 @@ export const CreateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const CreateCodeSigningAccountResponseTagsMap =
+const CreateCodeSigningAccountResponseTagsMap =
   CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CreateCodeSigningAccountResponseTagsMap>;
 
 /** Properties of the artifact signing account. */
@@ -394,7 +394,7 @@ export interface CodeSigningAccountProperties {
   /** Status of the current operation on artifact signing account. */
   provisioningState?: ProvisioningState;
 }
-export const CodeSigningAccountProperties = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningAccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountUri: S.optional(S.String),
     sku: S.optional(AccountSku),
@@ -420,7 +420,7 @@ export interface CreateCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const CreateCodeSigningAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCodeSigningAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -444,7 +444,7 @@ export interface DeleteCertificateProfileRequest {
   /** Certificate profile name. */
   profileName: string;
 }
-export const DeleteCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -463,9 +463,7 @@ export const DeleteCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCertificateProfileRequest>;
 
 export interface DeleteCertificateProfileResponse {}
-export const DeleteCertificateProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeleteCertificateProfileResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteCertificateProfileResponse",
 }) as any as S.Schema<DeleteCertificateProfileResponse>;
 
@@ -477,7 +475,7 @@ export interface DeleteCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-export const DeleteCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -495,7 +493,7 @@ export const DeleteCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCodeSigningAccountRequest>;
 
 export interface DeleteCodeSigningAccountResponse {}
-export const DeleteCodeSigningAccountResponse =
+const DeleteCodeSigningAccountResponse =
   DeleteCertificateProfileResponse as any as S.Schema<DeleteCodeSigningAccountResponse>;
 
 export interface GetCertificateProfileRequest {
@@ -508,7 +506,7 @@ export interface GetCertificateProfileRequest {
   /** Certificate profile name. */
   profileName: string;
 }
-export const GetCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -538,7 +536,7 @@ export interface GetCertificateProfileResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-export const GetCertificateProfileResponse =
+const GetCertificateProfileResponse =
   CreateCertificateProfileResponse as any as S.Schema<GetCertificateProfileResponse>;
 
 export interface GetCodeSigningAccountRequest {
@@ -549,7 +547,7 @@ export interface GetCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-export const GetCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -568,9 +566,6 @@ export const GetCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetCodeSigningAccountResponseTagsMap =
-  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<GetCodeSigningAccountResponseTagsMap>;
-
 export interface GetCodeSigningAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -587,7 +582,7 @@ export interface GetCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const GetCodeSigningAccountResponse =
+const GetCodeSigningAccountResponse =
   CreateCodeSigningAccountResponse as any as S.Schema<GetCodeSigningAccountResponse>;
 
 export interface ListCertificateProfileByCodeSigningAccountRequest {
@@ -598,7 +593,7 @@ export interface ListCertificateProfileByCodeSigningAccountRequest {
   /** Artifact Signing account name. */
   accountName: string;
 }
-export const ListCertificateProfileByCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificateProfileByCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -628,7 +623,7 @@ export interface CertificateProfile {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProfileProperties;
 }
-export const CertificateProfile = /*@__PURE__*/ S.suspend(() =>
+const CertificateProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -640,7 +635,7 @@ export const CertificateProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The CertificateProfile items on this page */
 export type CertificateProfileListResultValueList = Array<CertificateProfile>;
-export const CertificateProfileListResultValueList = /*@__PURE__*/ S.Array(
+const CertificateProfileListResultValueList = /*@__PURE__*/ S.Array(
   CertificateProfile,
 ) as any as S.Schema<CertificateProfileListResultValueList>;
 
@@ -651,7 +646,7 @@ export interface CertificateProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CertificateProfileListResult = /*@__PURE__*/ S.suspend(() =>
+const CertificateProfileListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CertificateProfileListResultValueList,
     nextLink: S.optional(S.String),
@@ -666,7 +661,7 @@ export interface ListCodeSigningAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListCodeSigningAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeSigningAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -684,7 +679,7 @@ export const ListCodeSigningAccountByResourceGroupRequest = /*@__PURE__*/ S.susp
 
 /** Resource tags. */
 export type CodeSigningAccountTagsMap = { [key: string]: string | undefined };
-export const CodeSigningAccountTagsMap =
+const CodeSigningAccountTagsMap =
   CreateCodeSigningAccountRequestTagsMap as any as S.Schema<CodeSigningAccountTagsMap>;
 
 /** Artifact signing account resource. */
@@ -704,7 +699,7 @@ export interface CodeSigningAccount {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const CodeSigningAccount = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -718,7 +713,7 @@ export const CodeSigningAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The CodeSigningAccount items on this page */
 export type CodeSigningAccountListResultValueList = Array<CodeSigningAccount>;
-export const CodeSigningAccountListResultValueList = /*@__PURE__*/ S.Array(
+const CodeSigningAccountListResultValueList = /*@__PURE__*/ S.Array(
   CodeSigningAccount,
 ) as any as S.Schema<CodeSigningAccountListResultValueList>;
 
@@ -729,7 +724,7 @@ export interface CodeSigningAccountListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const CodeSigningAccountListResult = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningAccountListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: CodeSigningAccountListResultValueList,
     nextLink: S.optional(S.String),
@@ -742,7 +737,7 @@ export interface ListCodeSigningAccountBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListCodeSigningAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCodeSigningAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -758,7 +753,7 @@ export const ListCodeSigningAccountBySubscriptionRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListCodeSigningAccountBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -780,7 +775,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -791,11 +786,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -810,7 +805,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -822,7 +817,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -832,7 +827,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -859,7 +854,7 @@ export interface RevokeCertificateProfileCertificateRequest {
   /** Remarks for the revocation. */
   remarks?: string;
 }
-export const RevokeCertificateProfileCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCertificateProfileCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -883,12 +878,12 @@ export const RevokeCertificateProfileCertificateRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RevokeCertificateProfileCertificateRequest>;
 
 export interface RevokeCertificateProfileCertificateResponse {}
-export const RevokeCertificateProfileCertificateResponse =
+const RevokeCertificateProfileCertificateResponse =
   DeleteCertificateProfileResponse as any as S.Schema<RevokeCertificateProfileCertificateResponse>;
 
 /** Resource tags. */
 export type UpdateCodeSigningAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateCodeSigningAccountRequestTagsMap =
+const UpdateCodeSigningAccountRequestTagsMap =
   CreateCodeSigningAccountRequestTagsMap as any as S.Schema<UpdateCodeSigningAccountRequestTagsMap>;
 
 /** SKU of the artifact signing account. */
@@ -896,7 +891,7 @@ export interface AccountSkuPatch {
   /** Name of the SKU. */
   name?: SkuName | (string & {});
 }
-export const AccountSkuPatch = /*@__PURE__*/ S.suspend(() =>
+const AccountSkuPatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(SkuName),
   }),
@@ -907,7 +902,7 @@ export interface CodeSigningAccountPatchProperties {
   /** SKU of the artifact signing account. */
   sku?: AccountSkuPatch;
 }
-export const CodeSigningAccountPatchProperties = /*@__PURE__*/ S.suspend(() =>
+const CodeSigningAccountPatchProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: S.optional(AccountSkuPatch),
   }),
@@ -927,7 +922,7 @@ export interface UpdateCodeSigningAccountRequest {
   /** Properties of the artifact signing account. */
   properties?: CodeSigningAccountPatchProperties;
 }
-export const UpdateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -948,9 +943,6 @@ export const UpdateCodeSigningAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateCodeSigningAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateCodeSigningAccountResponseTagsMap =
-  CreateCodeSigningAccountRequestTagsMap as any as S.Schema<UpdateCodeSigningAccountResponseTagsMap>;
-
 export interface UpdateCodeSigningAccountResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -967,7 +959,7 @@ export interface UpdateCodeSigningAccountResponse {
   /** The resource-specific properties for this resource. */
   properties?: CodeSigningAccountProperties;
 }
-export const UpdateCodeSigningAccountResponse =
+const UpdateCodeSigningAccountResponse =
   CreateCodeSigningAccountResponse as any as S.Schema<UpdateCodeSigningAccountResponse>;
 
 export type CheckCodeSigningAccountNameAvailabilityError = AzureOpError;

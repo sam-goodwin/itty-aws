@@ -53,7 +53,7 @@ export interface ActivateHostingWordPressPluginV1Request {
   /** Slug of the installed plugin to activate. */
   plugin: string;
 }
-export const ActivateHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
+const ActivateHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -72,7 +72,7 @@ export const ActivateHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend((
 export interface CommonSuccessEmptyResource {
   message?: string;
 }
-export const CommonSuccessEmptyResource = /*@__PURE__*/ S.suspend(() =>
+const CommonSuccessEmptyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -87,7 +87,7 @@ export interface ActivateHostingWordPressThemeV1Request {
   /** Slug of the installed theme to activate. */
   theme: string;
 }
-export const ActivateHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
+const ActivateHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -109,7 +109,7 @@ export interface ActivateVPSFirewallV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const ActivateVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
+const ActivateVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     virtualMachineId: S.Number.pipe(T.Label()),
@@ -126,7 +126,7 @@ export const ActivateVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Action state */
 export type VPSV1ActionActionResourceState = "success" | "error" | "delayed" | "sent" | "created";
-export const VPSV1ActionActionResourceState = S.String;
+const VPSV1ActionActionResourceState = S.String;
 
 export interface VPSV1ActionActionResource {
   /** Action ID */
@@ -138,7 +138,7 @@ export interface VPSV1ActionActionResource {
   created_at?: string;
   updated_at?: string;
 }
-export const VPSV1ActionActionResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1ActionActionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -156,7 +156,7 @@ export interface AgencyHostingBuildWebsiteNodeJSAssetsV1Request {
   /** Directory, relative to the website document root, where the uploaded site archive currently lives. Most commonly this is simply `public_html`. */
   archive_path: string;
 }
-export const AgencyHostingBuildWebsiteNodeJSAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingBuildWebsiteNodeJSAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     archive_path: S.String,
@@ -179,7 +179,7 @@ export interface AgencyHostingChangeWebsiteDomainV1Request {
   /** New domain to assign to the website. Set to null to revert to the temporary domain. */
   domain: string | null;
 }
-export const AgencyHostingChangeWebsiteDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingChangeWebsiteDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     from_domain: S.String.pipe(T.Label()),
@@ -201,7 +201,7 @@ export interface AgencyHostingChangeWordPressVersionV1Request {
   /** Target WordPress core version to install. Must be one of the available versions. */
   version: string;
 }
-export const AgencyHostingChangeWordPressVersionV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingChangeWordPressVersionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     version: S.String,
@@ -220,7 +220,7 @@ export interface AgencyHostingGenerateUploadURLV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const AgencyHostingGenerateUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingGenerateUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -242,7 +242,7 @@ export interface AgencyHostingV1FilesUploadUrlResource {
   /** Authentication token to pass as the `X-Auth-Rest` header in TUS upload requests */
   rest_auth_key: string;
 }
-export const AgencyHostingV1FilesUploadUrlResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1FilesUploadUrlResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     auth_key: S.String,
@@ -258,7 +258,7 @@ export interface AgencyHostingImportWebsiteFromArchiveV1Request {
   /** Archive filename (e.g., archive.zip). The file must already be uploaded to the website's .h5g/ directory. */
   archive_name: string;
 }
-export const AgencyHostingImportWebsiteFromArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingImportWebsiteFromArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     archive_name: S.String,
@@ -279,7 +279,7 @@ export interface AgencyHostingLinkDomainToWebsiteV1Request {
   /** Fully qualified domain name to link to the website */
   domain: string;
 }
-export const AgencyHostingLinkDomainToWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingLinkDomainToWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String,
@@ -300,7 +300,7 @@ export interface AgencyHostingReinstallWebsiteSSLV1Request {
   /** Domain name */
   domain: string;
 }
-export const AgencyHostingReinstallWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingReinstallWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -323,7 +323,7 @@ export interface AssignReachAContactToATagV1Request {
   /** Contact uuid parameter */
   contactUuid: string;
 }
-export const AssignReachAContactToATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const AssignReachAContactToATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -341,7 +341,7 @@ export const AssignReachAContactToATagV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** How the tag came about. `custom` covers the tags you create yourself, `form` covers the ones Reach creates for its forms. */
 export type ReachV1ContactsTagsTagResourceType = "form" | "custom";
-export const ReachV1ContactsTagsTagResourceType = S.String;
+const ReachV1ContactsTagsTagResourceType = S.String;
 
 export interface ReachV1ContactsTagsTagResource {
   uuid?: string;
@@ -350,7 +350,7 @@ export interface ReachV1ContactsTagsTagResource {
   value?: string;
   created_at?: string;
 }
-export const ReachV1ContactsTagsTagResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsTagsTagResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     type: S.optional(ReachV1ContactsTagsTagResourceType),
@@ -363,7 +363,7 @@ export const ReachV1ContactsTagsTagResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Contacts to apply the change to. Required unless all_contacts is true. */
 export type AssignReachContactsToATagV1RequestContactUuidsList = Array<string>;
-export const AssignReachContactsToATagV1RequestContactUuidsList = /*@__PURE__*/ S.Array(
+const AssignReachContactsToATagV1RequestContactUuidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AssignReachContactsToATagV1RequestContactUuidsList>;
 
@@ -377,7 +377,7 @@ export interface AssignReachContactsToATagV1Request {
   /** Apply to every contact in the profile */
   all_contacts?: boolean;
 }
-export const AssignReachContactsToATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const AssignReachContactsToATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -396,7 +396,7 @@ export const AssignReachContactsToATagV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Public Key IDs to attach */
 export type AttachVPSPublicKeyV1RequestIdsList = Array<number>;
-export const AttachVPSPublicKeyV1RequestIdsList = /*@__PURE__*/ S.Array(
+const AttachVPSPublicKeyV1RequestIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AttachVPSPublicKeyV1RequestIdsList>;
 
@@ -406,7 +406,7 @@ export interface AttachVPSPublicKeyV1Request {
   /** Public Key IDs to attach */
   ids: AttachVPSPublicKeyV1RequestIdsList;
 }
-export const AttachVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
+const AttachVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     ids: AttachVPSPublicKeyV1RequestIdsList,
@@ -418,7 +418,7 @@ export const AttachVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AttachVPSPublicKeyV1Request>;
 
 export type BillingGetCatalogItemListV1RequestCategory = "DOMAIN" | "VPS" | "EMAIL" | "HOSTING";
-export const BillingGetCatalogItemListV1RequestCategory = S.String;
+const BillingGetCatalogItemListV1RequestCategory = S.String;
 
 export interface BillingGetCatalogItemListV1Request {
   /** Filter catalog items by category */
@@ -426,7 +426,7 @@ export interface BillingGetCatalogItemListV1Request {
   /** Filter catalog items by name. Use `*` for wildcard search, e.g. `.COM*` to find .com domain */
   name?: string;
 }
-export const BillingGetCatalogItemListV1Request = /*@__PURE__*/ S.suspend(() =>
+const BillingGetCatalogItemListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(BillingGetCatalogItemListV1RequestCategory.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -442,7 +442,7 @@ export type BillingV1CatalogCatalogItemPriceResourcePeriodUnit =
   | "month"
   | "year"
   | "none";
-export const BillingV1CatalogCatalogItemPriceResourcePeriodUnit = S.String;
+const BillingV1CatalogCatalogItemPriceResourcePeriodUnit = S.String;
 
 export interface BillingV1CatalogCatalogItemPriceResource {
   /** Price item ID */
@@ -460,7 +460,7 @@ export interface BillingV1CatalogCatalogItemPriceResource {
   /** Period unit */
   period_unit?: BillingV1CatalogCatalogItemPriceResourcePeriodUnit;
 }
-export const BillingV1CatalogCatalogItemPriceResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1CatalogCatalogItemPriceResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -477,7 +477,7 @@ export const BillingV1CatalogCatalogItemPriceResource = /*@__PURE__*/ S.suspend(
 /** Array of [`Billing.V1.Catalog.CatalogItemPriceResource`](#model/billingv1catalogcatalogitempriceresource) */
 export type BillingV1CatalogCatalogItemPriceCollection =
   Array<BillingV1CatalogCatalogItemPriceResource>;
-export const BillingV1CatalogCatalogItemPriceCollection = /*@__PURE__*/ S.Array(
+const BillingV1CatalogCatalogItemPriceCollection = /*@__PURE__*/ S.Array(
   BillingV1CatalogCatalogItemPriceResource,
 ) as any as S.Schema<BillingV1CatalogCatalogItemPriceCollection>;
 
@@ -490,7 +490,7 @@ export interface BillingV1CatalogCatalogItemResource {
   metadata?: unknown | null;
   prices?: BillingV1CatalogCatalogItemPriceCollection;
 }
-export const BillingV1CatalogCatalogItemResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1CatalogCatalogItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -504,19 +504,19 @@ export const BillingV1CatalogCatalogItemResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Billing.V1.Catalog.CatalogItemResource`](#model/billingv1catalogcatalogitemresource) */
 export type BillingV1CatalogCatalogItemCollection = Array<BillingV1CatalogCatalogItemResource>;
-export const BillingV1CatalogCatalogItemCollection = /*@__PURE__*/ S.Array(
+const BillingV1CatalogCatalogItemCollection = /*@__PURE__*/ S.Array(
   BillingV1CatalogCatalogItemResource,
 ) as any as S.Schema<BillingV1CatalogCatalogItemCollection>;
 
 export type BillingGetCatalogItemListV1Response = BillingV1CatalogCatalogItemCollection;
-export const BillingGetCatalogItemListV1Response = /*@__PURE__*/ S.suspend(() =>
+const BillingGetCatalogItemListV1Response = /*@__PURE__*/ S.suspend(() =>
   BillingV1CatalogCatalogItemCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "BillingGetCatalogItemListV1Response",
 }) as any as S.Schema<BillingGetCatalogItemListV1Response>;
 
 export interface BillingGetPaymentMethodListV1Request {}
-export const BillingGetPaymentMethodListV1Request = /*@__PURE__*/ S.suspend(() =>
+const BillingGetPaymentMethodListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/v1/payment-methods", code: 200 })),
 ).annotate({
   identifier: "BillingGetPaymentMethodListV1Request",
@@ -535,7 +535,7 @@ export interface BillingV1PaymentMethodPaymentMethodResource {
   expires_at?: string;
   suspended_at?: string | null;
 }
-export const BillingV1PaymentMethodPaymentMethodResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1PaymentMethodPaymentMethodResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -555,19 +555,19 @@ export const BillingV1PaymentMethodPaymentMethodResource = /*@__PURE__*/ S.suspe
 /** Array of [`Billing.V1.PaymentMethod.PaymentMethodResource`](#model/billingv1paymentmethodpaymentmethodresource) */
 export type BillingV1PaymentMethodPaymentMethodCollection =
   Array<BillingV1PaymentMethodPaymentMethodResource>;
-export const BillingV1PaymentMethodPaymentMethodCollection = /*@__PURE__*/ S.Array(
+const BillingV1PaymentMethodPaymentMethodCollection = /*@__PURE__*/ S.Array(
   BillingV1PaymentMethodPaymentMethodResource,
 ) as any as S.Schema<BillingV1PaymentMethodPaymentMethodCollection>;
 
 export type BillingGetPaymentMethodListV1Response = BillingV1PaymentMethodPaymentMethodCollection;
-export const BillingGetPaymentMethodListV1Response = /*@__PURE__*/ S.suspend(() =>
+const BillingGetPaymentMethodListV1Response = /*@__PURE__*/ S.suspend(() =>
   BillingV1PaymentMethodPaymentMethodCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "BillingGetPaymentMethodListV1Response",
 }) as any as S.Schema<BillingGetPaymentMethodListV1Response>;
 
 export interface BillingGetSubscriptionListV1Request {}
-export const BillingGetSubscriptionListV1Request = /*@__PURE__*/ S.suspend(() =>
+const BillingGetSubscriptionListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/billing/v1/subscriptions", code: 200 })),
 ).annotate({
   identifier: "BillingGetSubscriptionListV1Request",
@@ -581,7 +581,7 @@ export type BillingV1SubscriptionSubscriptionResourceStatus =
   | "transferred"
   | "in_trial"
   | "future";
-export const BillingV1SubscriptionSubscriptionResourceStatus = S.String;
+const BillingV1SubscriptionSubscriptionResourceStatus = S.String;
 
 export interface BillingV1SubscriptionSubscriptionResource {
   /** Subscription ID */
@@ -600,7 +600,7 @@ export interface BillingV1SubscriptionSubscriptionResource {
   expires_at?: string | null;
   next_billing_at?: string | null;
 }
-export const BillingV1SubscriptionSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1SubscriptionSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -622,12 +622,12 @@ export const BillingV1SubscriptionSubscriptionResource = /*@__PURE__*/ S.suspend
 /** Array of [`Billing.V1.Subscription.SubscriptionResource`](#model/billingv1subscriptionsubscriptionresource) */
 export type BillingV1SubscriptionSubscriptionCollection =
   Array<BillingV1SubscriptionSubscriptionResource>;
-export const BillingV1SubscriptionSubscriptionCollection = /*@__PURE__*/ S.Array(
+const BillingV1SubscriptionSubscriptionCollection = /*@__PURE__*/ S.Array(
   BillingV1SubscriptionSubscriptionResource,
 ) as any as S.Schema<BillingV1SubscriptionSubscriptionCollection>;
 
 export type BillingGetSubscriptionListV1Response = BillingV1SubscriptionSubscriptionCollection;
-export const BillingGetSubscriptionListV1Response = /*@__PURE__*/ S.suspend(() =>
+const BillingGetSubscriptionListV1Response = /*@__PURE__*/ S.suspend(() =>
   BillingV1SubscriptionSubscriptionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "BillingGetSubscriptionListV1Response",
@@ -637,7 +637,7 @@ export interface CancelDomainPendingIRTPVerificationV1Request {
   /** Domain name */
   domain: string;
 }
-export const CancelDomainPendingIRTPVerificationV1Request = /*@__PURE__*/ S.suspend(() =>
+const CancelDomainPendingIRTPVerificationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/irtp/{domain}", code: 200 })),
@@ -653,7 +653,7 @@ export interface CancelEcommerceAnOrderV1Request {
   /** Whether to email the customer about the cancellation. Defaults to true. */
   notify_customer?: boolean;
 }
-export const CancelEcommerceAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
+const CancelEcommerceAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     order_id: S.String.pipe(T.Label()),
@@ -691,7 +691,7 @@ export interface EcommerceV1OrderOrderResource {
   /** ISO timestamp of when the order was created. */
   created_at?: string;
 }
-export const EcommerceV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     display_id: S.optional(S.Number),
@@ -711,7 +711,7 @@ export const EcommerceV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
 export interface EcommerceV1OrderOrderResponseResource {
   data?: EcommerceV1OrderOrderResource;
 }
-export const EcommerceV1OrderOrderResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1OrderOrderResource),
   }),
@@ -721,7 +721,7 @@ export const EcommerceV1OrderOrderResponseResource = /*@__PURE__*/ S.suspend(() 
 
 /** TLDs list */
 export type CheckDomainDomainAvailabilityV1RequestTldsList = Array<string>;
-export const CheckDomainDomainAvailabilityV1RequestTldsList =
+const CheckDomainDomainAvailabilityV1RequestTldsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CheckDomainDomainAvailabilityV1RequestTldsList>;
 
 export interface CheckDomainDomainAvailabilityV1Request {
@@ -732,7 +732,7 @@ export interface CheckDomainDomainAvailabilityV1Request {
   /** Should response include alternatives */
   with_alternatives?: boolean;
 }
-export const CheckDomainDomainAvailabilityV1Request = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainDomainAvailabilityV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     tlds: CheckDomainDomainAvailabilityV1RequestTldsList,
@@ -752,7 +752,7 @@ export interface DomainsV1AvailabilityAvailabilityResource {
   /** Special rules and/or restrictions applied for registering TLD */
   restriction?: string | null;
 }
-export const DomainsV1AvailabilityAvailabilityResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1AvailabilityAvailabilityResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.NullOr(S.String)),
     is_available: S.optional(S.Boolean),
@@ -766,12 +766,12 @@ export const DomainsV1AvailabilityAvailabilityResource = /*@__PURE__*/ S.suspend
 /** Array of [`Domains.V1.Availability.AvailabilityResource`](#model/domainsv1availabilityavailabilityresource) */
 export type DomainsV1AvailabilityAvailabilityCollection =
   Array<DomainsV1AvailabilityAvailabilityResource>;
-export const DomainsV1AvailabilityAvailabilityCollection = /*@__PURE__*/ S.Array(
+const DomainsV1AvailabilityAvailabilityCollection = /*@__PURE__*/ S.Array(
   DomainsV1AvailabilityAvailabilityResource,
 ) as any as S.Schema<DomainsV1AvailabilityAvailabilityCollection>;
 
 export type CheckDomainDomainAvailabilityV1Response = DomainsV1AvailabilityAvailabilityCollection;
-export const CheckDomainDomainAvailabilityV1Response = /*@__PURE__*/ S.suspend(() =>
+const CheckDomainDomainAvailabilityV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1AvailabilityAvailabilityCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CheckDomainDomainAvailabilityV1Response",
@@ -781,7 +781,7 @@ export interface CheckHostingIfWooCommerceIsInstalledV1Request {
   /** Filter by domain name (case-insensitive substring match) */
   domain?: string;
 }
-export const CheckHostingIfWooCommerceIsInstalledV1Request = /*@__PURE__*/ S.suspend(() =>
+const CheckHostingIfWooCommerceIsInstalledV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -799,7 +799,7 @@ export interface WordPressV1PluginsWoocommerceInstalledResource {
   /** Whether WooCommerce is installed on any WordPress installation of the domain */
   is_installed?: boolean;
 }
-export const WordPressV1PluginsWoocommerceInstalledResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsWoocommerceInstalledResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_installed: S.optional(S.Boolean),
   }),
@@ -809,10 +809,9 @@ export const WordPressV1PluginsWoocommerceInstalledResource = /*@__PURE__*/ S.su
 
 /** WordPress installation (software) identifiers to validate. */
 export type CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList = Array<string>;
-export const CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList>;
+const CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList>;
 
 export interface CheckHostingIfWordPressInstallationsAreValidV1Request {
   username: string;
@@ -821,7 +820,7 @@ export interface CheckHostingIfWordPressInstallationsAreValidV1Request {
   /** Force fresh validation without cache. Preferable for troubleshooting purposes. */
   force?: boolean;
 }
-export const CheckHostingIfWordPressInstallationsAreValidV1Request = /*@__PURE__*/ S.suspend(() =>
+const CheckHostingIfWordPressInstallationsAreValidV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software_ids: CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList,
@@ -843,7 +842,7 @@ export interface WordPressV1InstallationsCheckIsValidResultResource {
   /** Whether the WordPress installation is valid and working correctly */
   is_valid?: boolean;
 }
-export const WordPressV1InstallationsCheckIsValidResultResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1InstallationsCheckIsValidResultResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     software_id: S.optional(S.String),
     is_valid: S.optional(S.Boolean),
@@ -855,13 +854,13 @@ export const WordPressV1InstallationsCheckIsValidResultResource = /*@__PURE__*/ 
 /** Array of [`WordPress.V1.Installations.CheckIsValidResultResource`](#model/wordpressv1installationscheckisvalidresultresource) */
 export type WordPressV1InstallationsCheckIsValidResultCollection =
   Array<WordPressV1InstallationsCheckIsValidResultResource>;
-export const WordPressV1InstallationsCheckIsValidResultCollection = /*@__PURE__*/ S.Array(
+const WordPressV1InstallationsCheckIsValidResultCollection = /*@__PURE__*/ S.Array(
   WordPressV1InstallationsCheckIsValidResultResource,
 ) as any as S.Schema<WordPressV1InstallationsCheckIsValidResultCollection>;
 
 export type CheckHostingIfWordPressInstallationsAreValidV1Response =
   WordPressV1InstallationsCheckIsValidResultCollection;
-export const CheckHostingIfWordPressInstallationsAreValidV1Response = /*@__PURE__*/ S.suspend(() =>
+const CheckHostingIfWordPressInstallationsAreValidV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1InstallationsCheckIsValidResultCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CheckHostingIfWordPressInstallationsAreValidV1Response",
@@ -878,7 +877,7 @@ export interface ClaimDomainFreeDomainTransferV1RequestDomainContacts {
   /** Technical contact WHOIS record ID */
   tech_id?: number;
 }
-export const ClaimDomainFreeDomainTransferV1RequestDomainContacts = /*@__PURE__*/ S.suspend(() =>
+const ClaimDomainFreeDomainTransferV1RequestDomainContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner_id: S.optional(S.Number),
     admin_id: S.optional(S.Number),
@@ -899,7 +898,7 @@ export interface ClaimDomainFreeDomainTransferV1Request {
   /** Keep the existing nameservers of the domain */
   should_keep_ns?: boolean;
 }
-export const ClaimDomainFreeDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
+const ClaimDomainFreeDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     auth_code: S.String,
@@ -920,7 +919,7 @@ export interface DomainsV1TransferTransferResource {
   /** When the transfer completed */
   completed_at?: string | null;
 }
-export const DomainsV1TransferTransferResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1TransferTransferResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(S.String),
@@ -934,9 +933,6 @@ export const DomainsV1TransferTransferResource = /*@__PURE__*/ S.suspend(() =>
 /** Domain contact information */
 export type ClaimDomainFreeDomainV1RequestDomainContacts =
   ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-export const ClaimDomainFreeDomainV1RequestDomainContacts =
-  ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-
 export interface ClaimDomainFreeDomainV1Request {
   /** Domain name */
   domain: string;
@@ -945,7 +941,7 @@ export interface ClaimDomainFreeDomainV1Request {
   /** Additional registration data, possible values depends on TLD */
   additional_details?: unknown;
 }
-export const ClaimDomainFreeDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const ClaimDomainFreeDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     domain_contacts: S.optional(ClaimDomainFreeDomainTransferV1RequestDomainContacts),
@@ -965,7 +961,7 @@ export type DomainsV1PortfolioClaimResourceStatus =
   | "deleted"
   | "suspended"
   | "failed";
-export const DomainsV1PortfolioClaimResourceStatus = S.String;
+const DomainsV1PortfolioClaimResourceStatus = S.String;
 
 export interface DomainsV1PortfolioClaimResource {
   /** Domain name */
@@ -974,7 +970,7 @@ export interface DomainsV1PortfolioClaimResource {
   status?: DomainsV1PortfolioClaimResourceStatus | null;
   created_at?: string | null;
 }
-export const DomainsV1PortfolioClaimResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1PortfolioClaimResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(DomainsV1PortfolioClaimResourceStatus)),
@@ -988,7 +984,7 @@ export interface ClearAgencyHostingWebsiteCacheV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ClearAgencyHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
+const ClearAgencyHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1007,7 +1003,7 @@ export interface ClearHostingNodeJsRuntimeLogsV1Request {
   /** Domain name */
   domain: string;
 }
-export const ClearHostingNodeJsRuntimeLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ClearHostingNodeJsRuntimeLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1029,7 +1025,7 @@ export interface ClearHostingWebsiteCacheV1Request {
   /** Directory of the website installation to clear, relative to the website root. Defaults to the website root. */
   directory?: string;
 }
-export const ClearHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
+const ClearHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1049,7 +1045,7 @@ export interface CloneHorizonWebsiteV1Request {
   /** The website ID */
   websiteId: string;
 }
-export const CloneHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const CloneHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websiteId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1065,7 +1061,7 @@ export interface HorizonsV1WebsitesCreatedWebsiteResource {
   /** The website ID */
   website_id: string;
 }
-export const HorizonsV1WebsitesCreatedWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+const HorizonsV1WebsitesCreatedWebsiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_url: S.String,
     website_id: S.String,
@@ -1077,9 +1073,6 @@ export const HorizonsV1WebsitesCreatedWebsiteResource = /*@__PURE__*/ S.suspend(
 /** Domain contact information */
 export type CompleteDomainDomainSetupV1RequestDomainContacts =
   ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-export const CompleteDomainDomainSetupV1RequestDomainContacts =
-  ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-
 export interface CompleteDomainDomainSetupV1Request {
   /** Domain name */
   domain: string;
@@ -1088,7 +1081,7 @@ export interface CompleteDomainDomainSetupV1Request {
   /** Additional registration data, possible values depends on TLD */
   additional_details?: unknown;
 }
-export const CompleteDomainDomainSetupV1Request = /*@__PURE__*/ S.suspend(() =>
+const CompleteDomainDomainSetupV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     domain_contacts: S.optional(ClaimDomainFreeDomainTransferV1RequestDomainContacts),
@@ -1102,7 +1095,7 @@ export interface CreateAgencyHostingANewWebsiteV1RequestSettingsPhp {
   /** PHP version */
   version: string;
 }
-export const CreateAgencyHostingANewWebsiteV1RequestSettingsPhp = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingANewWebsiteV1RequestSettingsPhp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
   }),
@@ -1114,7 +1107,7 @@ export const CreateAgencyHostingANewWebsiteV1RequestSettingsPhp = /*@__PURE__*/ 
 export interface CreateAgencyHostingANewWebsiteV1RequestSettings {
   php: CreateAgencyHostingANewWebsiteV1RequestSettingsPhp;
 }
-export const CreateAgencyHostingANewWebsiteV1RequestSettings = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingANewWebsiteV1RequestSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     php: CreateAgencyHostingANewWebsiteV1RequestSettingsPhp,
   }),
@@ -1124,14 +1117,14 @@ export const CreateAgencyHostingANewWebsiteV1RequestSettings = /*@__PURE__*/ S.s
 
 /** Website type */
 export type CreateAgencyHostingANewWebsiteV1RequestType = "node-static";
-export const CreateAgencyHostingANewWebsiteV1RequestType = S.String;
+const CreateAgencyHostingANewWebsiteV1RequestType = S.String;
 
 export interface CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin {
   user: string;
   password: string | Redacted.Redacted<string>;
   email: string;
 }
-export const CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String,
     password: S.String.pipe(T.SensitiveValue({})),
@@ -1147,7 +1140,7 @@ export interface CreateAgencyHostingANewWebsiteV1RequestWordpress {
   title: string;
   admin: CreateAgencyHostingANewWebsiteV1RequestWordpressAdmin;
 }
-export const CreateAgencyHostingANewWebsiteV1RequestWordpress = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingANewWebsiteV1RequestWordpress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     language: S.String,
     title: S.String,
@@ -1173,7 +1166,7 @@ export interface CreateAgencyHostingANewWebsiteV1Request {
   /** WordPress installation options */
   wordpress?: CreateAgencyHostingANewWebsiteV1RequestWordpress;
 }
-export const CreateAgencyHostingANewWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingANewWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Label()),
     datacenter_code: S.String,
@@ -1197,7 +1190,7 @@ export interface AgencyHostingV1SetupsWebsiteSetupResource {
   /** UUID tracking the asynchronous website setup process */
   setup_uuid?: string;
 }
-export const AgencyHostingV1SetupsWebsiteSetupResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1SetupsWebsiteSetupResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setup_uuid: S.optional(S.String),
   }),
@@ -1213,7 +1206,7 @@ export interface CreateAgencyHostingWebsiteCronJobV1Request {
   /** Command to run on the schedule. Must not contain pipe (|) or redirection (<, >) characters. */
   command: string;
 }
-export const CreateAgencyHostingWebsiteCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingWebsiteCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     time: S.String,
@@ -1239,7 +1232,7 @@ export interface AgencyHostingV1WebsitesCronJobsCronJobResource {
   /** Cron job creation timestamp. */
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesCronJobsCronJobResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesCronJobsCronJobResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     time: S.optional(S.String),
@@ -1262,7 +1255,7 @@ export interface CreateAgencyHostingWebsiteDatabaseUserV1Request {
   /** Host the user connects from (IPv4, IPv6, % wildcard, or localhost). Defaults to localhost. */
   host?: string | null;
 }
-export const CreateAgencyHostingWebsiteDatabaseUserV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingWebsiteDatabaseUserV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -1288,7 +1281,7 @@ export interface AgencyHostingV1WebsitesDatabasesDatabaseUserResource {
   /** Database user creation date in ISO 8601 format. */
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesDatabasesDatabaseUserResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesDatabasesDatabaseUserResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     host: S.optional(S.String),
@@ -1308,7 +1301,7 @@ export interface CreateAgencyHostingWebsiteDatabaseV1Request {
   /** Password for the database user (requires mixed case, letters, and numbers). */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateAgencyHostingWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateAgencyHostingWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     database_name: S.String,
@@ -1328,7 +1321,7 @@ export const CreateAgencyHostingWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspe
 /** Non-system users that can access the database. */
 export type AgencyHostingV1WebsitesDatabasesDatabaseResourceUsersList =
   Array<AgencyHostingV1WebsitesDatabasesDatabaseUserResource>;
-export const AgencyHostingV1WebsitesDatabasesDatabaseResourceUsersList = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesDatabasesDatabaseResourceUsersList = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesDatabasesDatabaseUserResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseResourceUsersList>;
 
@@ -1340,7 +1333,7 @@ export interface AgencyHostingV1WebsitesDatabasesDatabaseResource {
   /** Non-system users that can access the database. */
   users?: AgencyHostingV1WebsitesDatabasesDatabaseResourceUsersList;
 }
-export const AgencyHostingV1WebsitesDatabasesDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesDatabasesDatabaseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -1356,7 +1349,7 @@ export interface CreateBillingPurchaseOrderV1RequestItemsItem {
   /** Quantity to purchase */
   quantity?: number;
 }
-export const CreateBillingPurchaseOrderV1RequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingPurchaseOrderV1RequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_id: S.String,
     quantity: S.optional(S.Number),
@@ -1368,13 +1361,13 @@ export const CreateBillingPurchaseOrderV1RequestItemsItem = /*@__PURE__*/ S.susp
 /** Catalog price items to purchase */
 export type CreateBillingPurchaseOrderV1RequestItemsList =
   Array<CreateBillingPurchaseOrderV1RequestItemsItem>;
-export const CreateBillingPurchaseOrderV1RequestItemsList = /*@__PURE__*/ S.Array(
+const CreateBillingPurchaseOrderV1RequestItemsList = /*@__PURE__*/ S.Array(
   CreateBillingPurchaseOrderV1RequestItemsItem,
 ) as any as S.Schema<CreateBillingPurchaseOrderV1RequestItemsList>;
 
 /** Discount coupon codes */
 export type CreateBillingPurchaseOrderV1RequestCouponsList = Array<unknown>;
-export const CreateBillingPurchaseOrderV1RequestCouponsList = /*@__PURE__*/ S.Array(
+const CreateBillingPurchaseOrderV1RequestCouponsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateBillingPurchaseOrderV1RequestCouponsList>;
 
@@ -1386,7 +1379,7 @@ export interface CreateBillingPurchaseOrderV1Request {
   /** Discount coupon codes */
   coupons?: CreateBillingPurchaseOrderV1RequestCouponsList;
 }
-export const CreateBillingPurchaseOrderV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingPurchaseOrderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payment_method_id: S.optional(S.Number),
     items: CreateBillingPurchaseOrderV1RequestItemsList,
@@ -1406,7 +1399,7 @@ export type BillingV1OrderOrderResourceStatus =
   | "awaiting_payment"
   | "payment_initiated"
   | "fraud_refund";
-export const BillingV1OrderOrderResourceStatus = S.String;
+const BillingV1OrderOrderResourceStatus = S.String;
 
 export interface BillingV1OrderOrderBillingAddressResource {
   first_name?: string;
@@ -1421,7 +1414,7 @@ export interface BillingV1OrderOrderBillingAddressResource {
   phone?: string | null;
   email?: string;
 }
-export const BillingV1OrderOrderBillingAddressResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1OrderOrderBillingAddressResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first_name: S.optional(S.String),
     last_name: S.optional(S.String),
@@ -1455,7 +1448,7 @@ export interface BillingV1OrderOrderResource {
   created_at?: string;
   updated_at?: string;
 }
-export const BillingV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     subscription_id: S.optional(S.String),
@@ -1473,7 +1466,7 @@ export const BillingV1OrderOrderResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirect type */
 export type CreateDomainDomainForwardingV1RequestRedirectType = "301" | "302";
-export const CreateDomainDomainForwardingV1RequestRedirectType = S.String;
+const CreateDomainDomainForwardingV1RequestRedirectType = S.String;
 
 export interface CreateDomainDomainForwardingV1Request {
   /** Domain name */
@@ -1483,7 +1476,7 @@ export interface CreateDomainDomainForwardingV1Request {
   /** URL to forward domain to */
   redirect_url: string;
 }
-export const CreateDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     redirect_type: CreateDomainDomainForwardingV1RequestRedirectType,
@@ -1495,7 +1488,7 @@ export const CreateDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() 
 
 /** Redirect type */
 export type DomainsV1ForwardingForwardingResourceRedirectType = "301" | "302";
-export const DomainsV1ForwardingForwardingResourceRedirectType = S.String;
+const DomainsV1ForwardingForwardingResourceRedirectType = S.String;
 
 export interface DomainsV1ForwardingForwardingResource {
   /** Domain name */
@@ -1507,7 +1500,7 @@ export interface DomainsV1ForwardingForwardingResource {
   created_at?: string;
   updated_at?: string | null;
 }
-export const DomainsV1ForwardingForwardingResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1ForwardingForwardingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.NullOr(S.String)),
     redirect_type: S.optional(DomainsV1ForwardingForwardingResourceRedirectType),
@@ -1521,7 +1514,7 @@ export const DomainsV1ForwardingForwardingResource = /*@__PURE__*/ S.suspend(() 
 
 /** Legal entity type */
 export type CreateDomainWHOISProfileV1RequestEntityType = "individual" | "organization";
-export const CreateDomainWHOISProfileV1RequestEntityType = S.String;
+const CreateDomainWHOISProfileV1RequestEntityType = S.String;
 
 export interface CreateDomainWHOISProfileV1Request {
   /** TLD of the domain (without leading dot) */
@@ -1535,7 +1528,7 @@ export interface CreateDomainWHOISProfileV1Request {
   /** WHOIS details */
   whois_details: unknown;
 }
-export const CreateDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.String,
     country: S.String,
@@ -1549,7 +1542,7 @@ export const CreateDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** WHOIS profile entity type */
 export type DomainsV1WHOISProfileResourceEntityType = "individual" | "organization";
-export const DomainsV1WHOISProfileResourceEntityType = S.String;
+const DomainsV1WHOISProfileResourceEntityType = S.String;
 
 export interface DomainsV1WHOISProfileResource {
   /** WHOIS Profile ID */
@@ -1569,7 +1562,7 @@ export interface DomainsV1WHOISProfileResource {
   created_at?: string;
   updated_at?: string;
 }
-export const DomainsV1WHOISProfileResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1WHOISProfileResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     tld: S.optional(S.String),
@@ -1587,11 +1580,11 @@ export const DomainsV1WHOISProfileResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The discount type. */
 export type CreateEcommerceADiscountV1RequestType = "percentage" | "fixed" | "free_shipping";
-export const CreateEcommerceADiscountV1RequestType = S.String;
+const CreateEcommerceADiscountV1RequestType = S.String;
 
 /** Whether the discount applies to the cart total or to each eligible item. */
 export type CreateEcommerceADiscountV1RequestAllocation = "total" | "item";
-export const CreateEcommerceADiscountV1RequestAllocation = S.String;
+const CreateEcommerceADiscountV1RequestAllocation = S.String;
 
 export interface CreateEcommerceADiscountV1Request {
   /** The ID of the store to create the discount for. */
@@ -1617,7 +1610,7 @@ export interface CreateEcommerceADiscountV1Request {
   /** IANA time zone used to interpret starts_at and ends_at. */
   time_zone?: string;
 }
-export const CreateEcommerceADiscountV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceADiscountV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     code: S.String,
@@ -1639,11 +1632,11 @@ export const CreateEcommerceADiscountV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** The discount type, or null. */
 export type EcommerceV1DiscountDiscountResourceType = "percentage" | "fixed" | "free_shipping";
-export const EcommerceV1DiscountDiscountResourceType = S.String;
+const EcommerceV1DiscountDiscountResourceType = S.String;
 
 /** Whether the discount applies to the cart total or to each item, or null. */
 export type EcommerceV1DiscountDiscountResourceAllocation = "total" | "item";
-export const EcommerceV1DiscountDiscountResourceAllocation = S.String;
+const EcommerceV1DiscountDiscountResourceAllocation = S.String;
 
 export interface EcommerceV1DiscountDiscountResource {
   /** The discount ID, required by every other discount endpoint. */
@@ -1669,7 +1662,7 @@ export interface EcommerceV1DiscountDiscountResource {
   /** Number of times the discount has been redeemed. */
   usage_count?: number;
 }
-export const EcommerceV1DiscountDiscountResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1DiscountDiscountResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     code: S.optional(S.String),
@@ -1690,7 +1683,7 @@ export const EcommerceV1DiscountDiscountResource = /*@__PURE__*/ S.suspend(() =>
 export interface EcommerceV1DiscountDiscountResponseResource {
   data?: EcommerceV1DiscountDiscountResource;
 }
-export const EcommerceV1DiscountDiscountResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1DiscountDiscountResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1DiscountDiscountResource),
   }),
@@ -1704,7 +1697,7 @@ export interface CreateEcommerceAProductVariantV1RequestOptionsItem {
   /** Option value for this variant, e.g. M. */
   value: string;
 }
-export const CreateEcommerceAProductVariantV1RequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceAProductVariantV1RequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -1716,7 +1709,7 @@ export const CreateEcommerceAProductVariantV1RequestOptionsItem = /*@__PURE__*/ 
 /** Option name/value pairs that distinguish this variant, e.g. [{name: Size, value: M}]. Options missing from the product are created; provide a value for every option the product already has. */
 export type CreateEcommerceAProductVariantV1RequestOptionsList =
   Array<CreateEcommerceAProductVariantV1RequestOptionsItem>;
-export const CreateEcommerceAProductVariantV1RequestOptionsList = /*@__PURE__*/ S.Array(
+const CreateEcommerceAProductVariantV1RequestOptionsList = /*@__PURE__*/ S.Array(
   CreateEcommerceAProductVariantV1RequestOptionsItem,
 ) as any as S.Schema<CreateEcommerceAProductVariantV1RequestOptionsList>;
 
@@ -1728,7 +1721,7 @@ export interface CreateEcommerceAProductVariantV1RequestPricesItem {
   /** ISO 4217 currency code. Defaults to the store's default currency when omitted. */
   currency?: string;
 }
-export const CreateEcommerceAProductVariantV1RequestPricesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceAProductVariantV1RequestPricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.Number,
     sale_amount: S.optional(S.Number),
@@ -1741,7 +1734,7 @@ export const CreateEcommerceAProductVariantV1RequestPricesItem = /*@__PURE__*/ S
 /** Prices per currency. Amounts are integers in the smallest currency unit. A free item is amount: 0. */
 export type CreateEcommerceAProductVariantV1RequestPricesList =
   Array<CreateEcommerceAProductVariantV1RequestPricesItem>;
-export const CreateEcommerceAProductVariantV1RequestPricesList = /*@__PURE__*/ S.Array(
+const CreateEcommerceAProductVariantV1RequestPricesList = /*@__PURE__*/ S.Array(
   CreateEcommerceAProductVariantV1RequestPricesItem,
 ) as any as S.Schema<CreateEcommerceAProductVariantV1RequestPricesList>;
 
@@ -1763,7 +1756,7 @@ export interface CreateEcommerceAProductVariantV1Request {
   /** Whether stock is tracked for this variant. Defaults to false. */
   manage_inventory?: boolean;
 }
-export const CreateEcommerceAProductVariantV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceAProductVariantV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -1790,7 +1783,7 @@ export interface EcommerceV1VariantVariantResourceOptionsItem {
   /** Option value, e.g. M. */
   value?: string;
 }
-export const EcommerceV1VariantVariantResourceOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantResourceOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     value: S.optional(S.String),
@@ -1802,7 +1795,7 @@ export const EcommerceV1VariantVariantResourceOptionsItem = /*@__PURE__*/ S.susp
 /** The variant's option values. */
 export type EcommerceV1VariantVariantResourceOptionsList =
   Array<EcommerceV1VariantVariantResourceOptionsItem>;
-export const EcommerceV1VariantVariantResourceOptionsList = /*@__PURE__*/ S.Array(
+const EcommerceV1VariantVariantResourceOptionsList = /*@__PURE__*/ S.Array(
   EcommerceV1VariantVariantResourceOptionsItem,
 ) as any as S.Schema<EcommerceV1VariantVariantResourceOptionsList>;
 
@@ -1814,7 +1807,7 @@ export interface EcommerceV1VariantVariantResourcePricesItem {
   /** The price currency code. */
   currency_code?: string;
 }
-export const EcommerceV1VariantVariantResourcePricesItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantResourcePricesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     sale_amount: S.optional(S.NullOr(S.Number)),
@@ -1827,7 +1820,7 @@ export const EcommerceV1VariantVariantResourcePricesItem = /*@__PURE__*/ S.suspe
 /** Prices per currency, in the smallest currency unit. */
 export type EcommerceV1VariantVariantResourcePricesList =
   Array<EcommerceV1VariantVariantResourcePricesItem>;
-export const EcommerceV1VariantVariantResourcePricesList = /*@__PURE__*/ S.Array(
+const EcommerceV1VariantVariantResourcePricesList = /*@__PURE__*/ S.Array(
   EcommerceV1VariantVariantResourcePricesItem,
 ) as any as S.Schema<EcommerceV1VariantVariantResourcePricesList>;
 
@@ -1847,7 +1840,7 @@ export interface EcommerceV1VariantVariantResource {
   /** Whether stock is tracked for this variant. */
   manage_inventory?: boolean;
 }
-export const EcommerceV1VariantVariantResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
@@ -1864,7 +1857,7 @@ export const EcommerceV1VariantVariantResource = /*@__PURE__*/ S.suspend(() =>
 export interface EcommerceV1VariantVariantResponseResource {
   data?: EcommerceV1VariantVariantResource;
 }
-export const EcommerceV1VariantVariantResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1VariantVariantResource),
   }),
@@ -1874,7 +1867,7 @@ export const EcommerceV1VariantVariantResponseResource = /*@__PURE__*/ S.suspend
 
 /** Sales channel type. "custom" is a headless channel: it requires a name and takes an optional public url. "quick-link" is a one-page store whose handle is auto-generated; it supports neither name nor url. */
 export type CreateEcommerceASalesChannelV1RequestType = "custom" | "quick-link";
-export const CreateEcommerceASalesChannelV1RequestType = S.String;
+const CreateEcommerceASalesChannelV1RequestType = S.String;
 
 export interface CreateEcommerceASalesChannelV1Request {
   /** The ID of the store to create the sales channel for. */
@@ -1886,7 +1879,7 @@ export interface CreateEcommerceASalesChannelV1Request {
   /** Optional public url for the channel. Custom channels only; not supported for quick-link. */
   url?: string | null;
 }
-export const CreateEcommerceASalesChannelV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceASalesChannelV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     type: CreateEcommerceASalesChannelV1RequestType,
@@ -1911,7 +1904,7 @@ export type EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannelType 
   | "custom"
   | "quick-link"
   | "wordpress";
-export const EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannelType = S.String;
+const EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannelType = S.String;
 
 export interface EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel {
   /** Sales channel ID */
@@ -1929,8 +1922,8 @@ export interface EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel
   /** Public address where the custom sales channel lives. */
   domain?: string | null;
 }
-export const EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel =
-  /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.optional(S.String),
       type: S.optional(EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannelType),
@@ -1940,14 +1933,14 @@ export const EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel =
       name: S.optional(S.NullOr(S.String)),
       domain: S.optional(S.NullOr(S.String)),
     }),
-  ).annotate({
-    identifier: "EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel",
-  }) as any as S.Schema<EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel>;
+).annotate({
+  identifier: "EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel",
+}) as any as S.Schema<EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel>;
 
 export interface EcommerceV1SalesChannelSalesChannelCreationResource {
   sales_channel?: EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel;
 }
-export const EcommerceV1SalesChannelSalesChannelCreationResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1SalesChannelSalesChannelCreationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sales_channel: S.optional(EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel),
   }),
@@ -1969,7 +1962,7 @@ export interface CreateEcommerceDigitalProductV1Request {
   /** Optional external download link delivered to the customer after purchase. */
   download_url?: string | null;
 }
-export const CreateEcommerceDigitalProductV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceDigitalProductV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -1990,7 +1983,7 @@ export const CreateEcommerceDigitalProductV1Request = /*@__PURE__*/ S.suspend(()
 
 /** Product type. */
 export type EcommerceV1ProductProductCreationResourceProductType = "physical" | "digital";
-export const EcommerceV1ProductProductCreationResourceProductType = S.String;
+const EcommerceV1ProductProductCreationResourceProductType = S.String;
 
 export interface EcommerceV1ProductProductCreationResourceProduct {
   /** Product ID. */
@@ -2006,7 +1999,7 @@ export interface EcommerceV1ProductProductCreationResourceProduct {
   /** Currency the product is priced in (ISO 4217, lowercase). */
   currency_code?: string;
 }
-export const EcommerceV1ProductProductCreationResourceProduct = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductCreationResourceProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -2024,7 +2017,7 @@ export interface EcommerceV1ProductProductCreationResource {
   /** Admin UI deep-link to manage the product. */
   admin_url?: string;
 }
-export const EcommerceV1ProductProductCreationResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductCreationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     product: S.optional(EcommerceV1ProductProductCreationResourceProduct),
     admin_url: S.optional(S.String),
@@ -2045,7 +2038,7 @@ export interface CreateEcommercePhysicalProductV1Request {
   /** ISO 4217 currency code. Defaults to the store's default currency when omitted. */
   currency?: string | null;
 }
-export const CreateEcommercePhysicalProductV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommercePhysicalProductV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -2065,7 +2058,7 @@ export const CreateEcommercePhysicalProductV1Request = /*@__PURE__*/ S.suspend((
 
 /** Sales channel type. Only "custom" channels can be created via the API. */
 export type CreateEcommerceStoreV1RequestSalesChannelType = "custom";
-export const CreateEcommerceStoreV1RequestSalesChannelType = S.String;
+const CreateEcommerceStoreV1RequestSalesChannelType = S.String;
 
 export interface CreateEcommerceStoreV1RequestSalesChannel {
   /** Sales channel type. Only "custom" channels can be created via the API. */
@@ -2073,7 +2066,7 @@ export interface CreateEcommerceStoreV1RequestSalesChannel {
   /** External identifier for the sales channel. */
   external_id?: string | null;
 }
-export const CreateEcommerceStoreV1RequestSalesChannel = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceStoreV1RequestSalesChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CreateEcommerceStoreV1RequestSalesChannelType),
     external_id: S.optional(S.NullOr(S.String)),
@@ -2092,7 +2085,7 @@ export interface CreateEcommerceStoreV1Request {
   language?: string;
   sales_channel?: CreateEcommerceStoreV1RequestSalesChannel;
 }
-export const CreateEcommerceStoreV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateEcommerceStoreV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     country_code: S.optional(S.String),
@@ -2119,7 +2112,7 @@ export interface EcommerceV1StoreStoreCreationResourceStore {
   /** Default currency code (ISO 4217), in lowercase. */
   default_currency_code?: string;
 }
-export const EcommerceV1StoreStoreCreationResourceStore = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreCreationResourceStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -2140,7 +2133,7 @@ export type EcommerceV1StoreStoreCreationResourceSalesChannelType =
   | "custom"
   | "quick-link"
   | "wordpress";
-export const EcommerceV1StoreStoreCreationResourceSalesChannelType = S.String;
+const EcommerceV1StoreStoreCreationResourceSalesChannelType = S.String;
 
 export interface EcommerceV1StoreStoreCreationResourceSalesChannel {
   /** Sales channel ID */
@@ -2150,7 +2143,7 @@ export interface EcommerceV1StoreStoreCreationResourceSalesChannel {
   /** External identifier for the sales channel */
   external_id?: string | null;
 }
-export const EcommerceV1StoreStoreCreationResourceSalesChannel = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreCreationResourceSalesChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(EcommerceV1StoreStoreCreationResourceSalesChannelType),
@@ -2164,7 +2157,7 @@ export interface EcommerceV1StoreStoreCreationResource {
   store?: EcommerceV1StoreStoreCreationResourceStore;
   sales_channel?: EcommerceV1StoreStoreCreationResourceSalesChannel;
 }
-export const EcommerceV1StoreStoreCreationResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreCreationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store: S.optional(EcommerceV1StoreStoreCreationResourceStore),
     sales_channel: S.optional(EcommerceV1StoreStoreCreationResourceSalesChannel),
@@ -2174,14 +2167,14 @@ export const EcommerceV1StoreStoreCreationResource = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<EcommerceV1StoreStoreCreationResource>;
 
 export type CreateHorizonWebsiteV1RequestMessageItemType = "text";
-export const CreateHorizonWebsiteV1RequestMessageItemType = S.String;
+const CreateHorizonWebsiteV1RequestMessageItemType = S.String;
 
 export interface CreateHorizonWebsiteV1RequestMessageItem {
   type: CreateHorizonWebsiteV1RequestMessageItemType | (string & {});
   /** Detailed project specification. Include purpose, key features, user flows, data models, and design preferences. The specification should be detailed and comprehensive, covering all aspects of the project. */
   text: string;
 }
-export const CreateHorizonWebsiteV1RequestMessageItem = /*@__PURE__*/ S.suspend(() =>
+const CreateHorizonWebsiteV1RequestMessageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateHorizonWebsiteV1RequestMessageItemType,
     text: S.String,
@@ -2192,14 +2185,14 @@ export const CreateHorizonWebsiteV1RequestMessageItem = /*@__PURE__*/ S.suspend(
 
 export type CreateHorizonWebsiteV1RequestMessageList =
   Array<CreateHorizonWebsiteV1RequestMessageItem>;
-export const CreateHorizonWebsiteV1RequestMessageList = /*@__PURE__*/ S.Array(
+const CreateHorizonWebsiteV1RequestMessageList = /*@__PURE__*/ S.Array(
   CreateHorizonWebsiteV1RequestMessageItem,
 ) as any as S.Schema<CreateHorizonWebsiteV1RequestMessageList>;
 
 export interface CreateHorizonWebsiteV1Request {
   message: CreateHorizonWebsiteV1RequestMessageList;
 }
-export const CreateHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: CreateHorizonWebsiteV1RequestMessageList,
   }).pipe(T.Http({ method: "POST", uri: "/api/horizons/v1/websites", code: 200 })),
@@ -2214,7 +2207,7 @@ export interface CreateHostingAccountCronJobV1Request {
   /** Command to execute on the schedule. */
   command: string;
 }
-export const CreateHostingAccountCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingAccountCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     time: S.String,
@@ -2236,7 +2229,7 @@ export interface HostingV1CronJobsCronJobResource {
   /** Command executed on the schedule. */
   command?: string;
 }
-export const HostingV1CronJobsCronJobResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1CronJobsCronJobResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     username: S.optional(S.String),
@@ -2258,7 +2251,7 @@ export interface CreateHostingAccountDatabaseV1Request {
   /** Website domain assigned to the database. */
   website_domain: string;
 }
-export const CreateHostingAccountDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingAccountDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String,
@@ -2279,7 +2272,7 @@ export interface CreateHostingDatabaseRemoteConnectionV1Request {
   /** Remote host to allow: an IPv4/IPv6 address, or "%" for any host. */
   ip: string;
 }
-export const CreateHostingDatabaseRemoteConnectionV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingDatabaseRemoteConnectionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2300,7 +2293,7 @@ export interface CreateHostingLoginLinksV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const CreateHostingLoginLinksV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingLoginLinksV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -2323,7 +2316,7 @@ export interface WordPressV1LoginLoginLinksResource {
   /** Default WordPress admin URL used when auto-login is unavailable */
   default?: string | null;
 }
-export const WordPressV1LoginLoginLinksResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1LoginLoginLinksResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.optional(S.NullOr(S.String)),
     fallback: S.optional(S.NullOr(S.String)),
@@ -2340,7 +2333,7 @@ export interface CreateHostingWebsiteParkedDomainV1Request {
   /** Domain name or IP address to park on the selected website */
   parked_domain: string;
 }
-export const CreateHostingWebsiteParkedDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebsiteParkedDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2365,7 +2358,7 @@ export interface CreateHostingWebsiteRedirectV1Request {
   /** Destination URL or IP address */
   to: string;
 }
-export const CreateHostingWebsiteRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebsiteRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2388,7 +2381,7 @@ export interface HostingV1RedirectsRedirectResource {
   /** Destination URL */
   to?: string;
 }
-export const HostingV1RedirectsRedirectResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1RedirectsRedirectResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     to: S.optional(S.String),
@@ -2408,7 +2401,7 @@ export interface CreateHostingWebsiteSubdomainV1Request {
   /** Use the website public directory as the subdomain root directory */
   is_using_public_directory?: boolean;
 }
-export const CreateHostingWebsiteSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebsiteSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -2434,7 +2427,7 @@ export interface CreateHostingWebsiteV1Request {
   /** Datacenter code. This parameter is required when creating the first website on a new hosting plan. */
   datacenter_code?: string | null;
 }
-export const CreateHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     order_id: S.Number,
@@ -2450,7 +2443,7 @@ export interface CreateMailAliasV1Request {
   /** Local part of the alias address (the part before the @). The domain is taken from the mailbox. Case-insensitive and stored lowercase; must start and end with a letter or digit; single dots, underscores and hyphens are allowed in between. */
   local_part: string;
 }
-export const CreateMailAliasV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailAliasV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
     local_part: S.String,
@@ -2462,7 +2455,7 @@ export interface MailV1AliasesAliasMailboxResource {
   id?: string;
   address?: string;
 }
-export const MailV1AliasesAliasMailboxResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1AliasesAliasMailboxResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -2482,7 +2475,7 @@ export interface MailV1AliasesAliasResource {
   created_at?: string | null;
   updated_at?: string;
 }
-export const MailV1AliasesAliasResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1AliasesAliasResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -2497,7 +2490,7 @@ export const MailV1AliasesAliasResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Required when `has_all_mailboxes` is false. Mailbox resource IDs of this order. */
 export type CreateMailAPITokenV1RequestScopeMailboxIdsList = Array<string>;
-export const CreateMailAPITokenV1RequestScopeMailboxIdsList =
+const CreateMailAPITokenV1RequestScopeMailboxIdsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateMailAPITokenV1RequestScopeMailboxIdsList>;
 
 /** Mailbox scope this token can access */
@@ -2507,7 +2500,7 @@ export interface CreateMailAPITokenV1RequestScope {
   /** Required when `has_all_mailboxes` is false. Mailbox resource IDs of this order. */
   mailbox_ids?: CreateMailAPITokenV1RequestScopeMailboxIdsList;
 }
-export const CreateMailAPITokenV1RequestScope = /*@__PURE__*/ S.suspend(() =>
+const CreateMailAPITokenV1RequestScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_all_mailboxes: S.Boolean,
     mailbox_ids: S.optional(CreateMailAPITokenV1RequestScopeMailboxIdsList),
@@ -2524,7 +2517,7 @@ export interface CreateMailAPITokenV1Request {
   /** Mailbox scope this token can access */
   scope: CreateMailAPITokenV1RequestScope;
 }
-export const CreateMailAPITokenV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailAPITokenV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     name: S.String,
@@ -2535,12 +2528,10 @@ export const CreateMailAPITokenV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMailAPITokenV1Request>;
 
 export type MailV1ApiTokensApiTokenMailboxResource = MailV1AliasesAliasMailboxResource;
-export const MailV1ApiTokensApiTokenMailboxResource = MailV1AliasesAliasMailboxResource;
-
 /** Mailboxes this token grants access to. Empty when `has_all_mailboxes` is true. */
 export type MailV1ApiTokensApiTokenScopeResourceMailboxesList =
   Array<MailV1AliasesAliasMailboxResource>;
-export const MailV1ApiTokensApiTokenScopeResourceMailboxesList = /*@__PURE__*/ S.Array(
+const MailV1ApiTokensApiTokenScopeResourceMailboxesList = /*@__PURE__*/ S.Array(
   MailV1AliasesAliasMailboxResource,
 ) as any as S.Schema<MailV1ApiTokensApiTokenScopeResourceMailboxesList>;
 
@@ -2550,7 +2541,7 @@ export interface MailV1ApiTokensApiTokenScopeResource {
   /** Mailboxes this token grants access to. Empty when `has_all_mailboxes` is true. */
   mailboxes?: MailV1ApiTokensApiTokenScopeResourceMailboxesList;
 }
-export const MailV1ApiTokensApiTokenScopeResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1ApiTokensApiTokenScopeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_all_mailboxes: S.optional(S.Boolean),
     mailboxes: S.optional(MailV1ApiTokensApiTokenScopeResourceMailboxesList),
@@ -2560,7 +2551,7 @@ export const MailV1ApiTokensApiTokenScopeResource = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<MailV1ApiTokensApiTokenScopeResource>;
 
 export type MailV1ApiTokensApiTokenCreatedResourceType = "api_token" | "oauth";
-export const MailV1ApiTokensApiTokenCreatedResourceType = S.String;
+const MailV1ApiTokensApiTokenCreatedResourceType = S.String;
 
 export interface MailV1ApiTokensApiTokenCreatedResource {
   /** Unique API token identifier */
@@ -2573,7 +2564,7 @@ export interface MailV1ApiTokensApiTokenCreatedResource {
   created_at?: string;
   type?: MailV1ApiTokensApiTokenCreatedResourceType;
 }
-export const MailV1ApiTokensApiTokenCreatedResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1ApiTokensApiTokenCreatedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     token: S.optional(S.String),
@@ -2600,7 +2591,7 @@ export interface CreateMailAutoreplyV1Request {
   /** When the autoreply stops. Omit for an indefinite autoreply. */
   ends_at?: string | null;
 }
-export const CreateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
     subject: S.String,
@@ -2616,8 +2607,6 @@ export const CreateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMailAutoreplyV1Request>;
 
 export type MailV1AutorepliesAutoreplyMailboxResource = MailV1AliasesAliasMailboxResource;
-export const MailV1AutorepliesAutoreplyMailboxResource = MailV1AliasesAliasMailboxResource;
-
 export interface MailV1AutorepliesAutoreplyResource {
   /** Unique autoreply identifier */
   id?: string;
@@ -2635,7 +2624,7 @@ export interface MailV1AutorepliesAutoreplyResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1AutorepliesAutoreplyResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1AutorepliesAutoreplyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mailbox: S.optional(MailV1AliasesAliasMailboxResource),
@@ -2655,7 +2644,7 @@ export interface CreateMailCatchAllV1Request {
   /** Mailbox resource ID */
   mailboxId: string;
 }
-export const CreateMailCatchAllV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailCatchAllV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2666,8 +2655,6 @@ export const CreateMailCatchAllV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMailCatchAllV1Request>;
 
 export type MailV1CatchallsCatchallMailboxResource = MailV1AliasesAliasMailboxResource;
-export const MailV1CatchallsCatchallMailboxResource = MailV1AliasesAliasMailboxResource;
-
 export interface MailV1CatchallsCatchallResource {
   /** Unique catch-all identifier */
   id?: string;
@@ -2681,7 +2668,7 @@ export interface MailV1CatchallsCatchallResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1CatchallsCatchallResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1CatchallsCatchallResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mailbox: S.optional(MailV1AliasesAliasMailboxResource),
@@ -2703,7 +2690,7 @@ export interface CreateMailForwarderV1Request {
   /** Whether to keep a copy of forwarded messages in the mailbox. Defaults to false. */
   is_keep_copy_enabled?: boolean;
 }
-export const CreateMailForwarderV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailForwarderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
     destination: S.String,
@@ -2716,8 +2703,6 @@ export const CreateMailForwarderV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMailForwarderV1Request>;
 
 export type MailV1ForwardersForwarderMailboxResource = MailV1AliasesAliasMailboxResource;
-export const MailV1ForwardersForwarderMailboxResource = MailV1AliasesAliasMailboxResource;
-
 export interface MailV1ForwardersForwarderResource {
   /** Unique forwarder identifier */
   id?: string;
@@ -2733,7 +2718,7 @@ export interface MailV1ForwardersForwarderResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1ForwardersForwarderResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1ForwardersForwarderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mailbox: S.optional(MailV1AliasesAliasMailboxResource),
@@ -2756,7 +2741,7 @@ export interface CreateMailMailboxV1Request {
   /** Mailbox password. Minimum 8 characters with uppercase, lowercase, number and special character. */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateMailMailboxV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailMailboxV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     local_part: S.String,
@@ -2768,7 +2753,7 @@ export const CreateMailMailboxV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Mailbox status */
 export type MailV1MailboxesMailboxResourceStatus = "active" | "suspended";
-export const MailV1MailboxesMailboxResourceStatus = S.String;
+const MailV1MailboxesMailboxResourceStatus = S.String;
 
 export interface MailV1MailboxesMailboxProtocolsResource {
   is_imap_enabled?: boolean;
@@ -2776,7 +2761,7 @@ export interface MailV1MailboxesMailboxProtocolsResource {
   is_smtp_in_enabled?: boolean;
   is_smtp_out_enabled?: boolean;
 }
-export const MailV1MailboxesMailboxProtocolsResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1MailboxesMailboxProtocolsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_imap_enabled: S.optional(S.Boolean),
     is_pop3_enabled: S.optional(S.Boolean),
@@ -2795,7 +2780,7 @@ export interface MailV1MailboxesMailboxCountsResource {
   /** Number of attached auto-replies */
   autoreplies?: number;
 }
-export const MailV1MailboxesMailboxCountsResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1MailboxesMailboxCountsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwarders: S.optional(S.Number),
     aliases: S.optional(S.Number),
@@ -2816,7 +2801,7 @@ export interface MailV1MailboxesMailboxUsageResource {
   /** When the usage numbers were last synced; null if never synced */
   synced_at?: string | null;
 }
-export const MailV1MailboxesMailboxUsageResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1MailboxesMailboxUsageResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storage_used: S.optional(S.Number),
     storage_quota: S.optional(S.Number),
@@ -2845,7 +2830,7 @@ export interface MailV1MailboxesMailboxResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1MailboxesMailboxResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1MailboxesMailboxResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -2863,19 +2848,19 @@ export const MailV1MailboxesMailboxResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MailV1MailboxesMailboxResource>;
 
 export type CreateMailWebhookV1RequestEventsItem = "message.received";
-export const CreateMailWebhookV1RequestEventsItem = S.String;
+const CreateMailWebhookV1RequestEventsItem = S.String;
 
 /** Events that trigger this webhook */
 export type CreateMailWebhookV1RequestEventsList = Array<
   CreateMailWebhookV1RequestEventsItem | (string & {})
 >;
-export const CreateMailWebhookV1RequestEventsList = /*@__PURE__*/ S.Array(
+const CreateMailWebhookV1RequestEventsList = /*@__PURE__*/ S.Array(
   CreateMailWebhookV1RequestEventsItem,
 ) as any as S.Schema<CreateMailWebhookV1RequestEventsList>;
 
 /** Initial status of the webhook */
 export type CreateMailWebhookV1RequestStatus = "active" | "disabled" | "paused";
-export const CreateMailWebhookV1RequestStatus = S.String;
+const CreateMailWebhookV1RequestStatus = S.String;
 
 export interface CreateMailWebhookV1Request {
   /** Mailbox resource ID */
@@ -2891,7 +2876,7 @@ export interface CreateMailWebhookV1Request {
   /** Publicly reachable URL that receives the webhook POST requests */
   url: string;
 }
-export const CreateMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
     name: S.String,
@@ -2910,21 +2895,19 @@ export interface MailV1WebhooksWebhookMailboxResource {
   id?: string;
   address?: string;
 }
-export const MailV1WebhooksWebhookMailboxResource =
+const MailV1WebhooksWebhookMailboxResource =
   MailV1AliasesAliasMailboxResource as any as S.Schema<MailV1WebhooksWebhookMailboxResource>;
 
 export type MailV1WebhooksWebhookCreatedResourceEventsItem = "message.received";
-export const MailV1WebhooksWebhookCreatedResourceEventsItem = S.String;
-
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookCreatedResourceEventsList =
   Array<MailV1WebhooksWebhookCreatedResourceEventsItem>;
-export const MailV1WebhooksWebhookCreatedResourceEventsList =
+const MailV1WebhooksWebhookCreatedResourceEventsList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookCreatedResourceEventsList>;
 
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookCreatedResourceStatus = "active" | "disabled" | "paused";
-export const MailV1WebhooksWebhookCreatedResourceStatus = S.String;
+const MailV1WebhooksWebhookCreatedResourceStatus = S.String;
 
 export interface MailV1WebhooksWebhookCreatedResource {
   /** Unique webhook identifier */
@@ -2945,7 +2928,7 @@ export interface MailV1WebhooksWebhookCreatedResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1WebhooksWebhookCreatedResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1WebhooksWebhookCreatedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mailbox: S.optional(MailV1WebhooksWebhookMailboxResource),
@@ -2969,11 +2952,11 @@ export type CreateReachAContactFieldV1RequestType =
   | "date"
   | "single_choice"
   | "multi_choice";
-export const CreateReachAContactFieldV1RequestType = S.String;
+const CreateReachAContactFieldV1RequestType = S.String;
 
 /** Required for single_choice and multi_choice, ignored for the scalar types. Labels must be unique regardless of casing. */
 export type CreateReachAContactFieldV1RequestOptionsList = Array<string>;
-export const CreateReachAContactFieldV1RequestOptionsList =
+const CreateReachAContactFieldV1RequestOptionsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateReachAContactFieldV1RequestOptionsList>;
 
 export interface CreateReachAContactFieldV1Request {
@@ -2985,7 +2968,7 @@ export interface CreateReachAContactFieldV1Request {
   /** Required for single_choice and multi_choice, ignored for the scalar types. Labels must be unique regardless of casing. */
   options?: CreateReachAContactFieldV1RequestOptionsList;
 }
-export const CreateReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     type: CreateReachAContactFieldV1RequestType,
@@ -3008,14 +2991,14 @@ export type ReachV1ContactsFieldsContactFieldResourceType =
   | "date"
   | "single_choice"
   | "multi_choice";
-export const ReachV1ContactsFieldsContactFieldResourceType = S.String;
+const ReachV1ContactsFieldsContactFieldResourceType = S.String;
 
 export interface ReachV1ContactsFieldsContactFieldOptionResource {
   uuid?: string;
   label?: string;
   sort_order?: number;
 }
-export const ReachV1ContactsFieldsContactFieldOptionResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsFieldsContactFieldOptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     label: S.optional(S.String),
@@ -3028,7 +3011,7 @@ export const ReachV1ContactsFieldsContactFieldOptionResource = /*@__PURE__*/ S.s
 /** Available choices. Always empty for the scalar field types. */
 export type ReachV1ContactsFieldsContactFieldResourceOptionsList =
   Array<ReachV1ContactsFieldsContactFieldOptionResource>;
-export const ReachV1ContactsFieldsContactFieldResourceOptionsList = /*@__PURE__*/ S.Array(
+const ReachV1ContactsFieldsContactFieldResourceOptionsList = /*@__PURE__*/ S.Array(
   ReachV1ContactsFieldsContactFieldOptionResource,
 ) as any as S.Schema<ReachV1ContactsFieldsContactFieldResourceOptionsList>;
 
@@ -3042,7 +3025,7 @@ export interface ReachV1ContactsFieldsContactFieldResource {
   options?: ReachV1ContactsFieldsContactFieldResourceOptionsList;
   created_at?: string;
 }
-export const ReachV1ContactsFieldsContactFieldResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsFieldsContactFieldResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     type: S.optional(ReachV1ContactsFieldsContactFieldResourceType),
@@ -3062,7 +3045,7 @@ export interface CreateReachADraftCampaignV1RequestMetadata {
   /** Where the campaign was created from. */
   source?: string;
 }
-export const CreateReachADraftCampaignV1RequestMetadata = /*@__PURE__*/ S.suspend(() =>
+const CreateReachADraftCampaignV1RequestMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preheader: S.optional(S.String),
     source: S.optional(S.String),
@@ -3087,7 +3070,7 @@ export interface CreateReachADraftCampaignV1Request {
   /** Extra campaign fields. Any key outside the listed ones is rejected. */
   metadata?: CreateReachADraftCampaignV1RequestMetadata | null;
 }
-export const CreateReachADraftCampaignV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateReachADraftCampaignV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     sender_name: S.String,
@@ -3110,19 +3093,19 @@ export type ReachV1CampaignsCreatedCampaignResourceStatus =
   | "sending"
   | "publish"
   | "failed";
-export const ReachV1CampaignsCreatedCampaignResourceStatus = S.String;
+const ReachV1CampaignsCreatedCampaignResourceStatus = S.String;
 
 export type ReachV1CampaignsCreatedCampaignResourceType =
   | "campaign"
   | "automation"
   | "double_opt_in";
-export const ReachV1CampaignsCreatedCampaignResourceType = S.String;
+const ReachV1CampaignsCreatedCampaignResourceType = S.String;
 
 /** The stored extra fields, including the ones Reach sets itself. */
 export type ReachV1CampaignsCreatedCampaignResourceMetadataMap = {
   [key: string]: string | undefined;
 };
-export const ReachV1CampaignsCreatedCampaignResourceMetadataMap = /*@__PURE__*/ S.Record(
+const ReachV1CampaignsCreatedCampaignResourceMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ReachV1CampaignsCreatedCampaignResourceMetadataMap>;
@@ -3145,7 +3128,7 @@ export interface ReachV1CampaignsCreatedCampaignResource {
   created_at?: string | null;
   updated_at?: string | null;
 }
-export const ReachV1CampaignsCreatedCampaignResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCreatedCampaignResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     title: S.optional(S.String),
@@ -3172,7 +3155,7 @@ export interface CreateReachAnEmailTemplateV1Request {
   /** Name the template is listed under. Not shown to the recipients. */
   title?: string | null;
 }
-export const CreateReachAnEmailTemplateV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateReachAnEmailTemplateV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     template_content: S.String,
@@ -3192,7 +3175,7 @@ export interface ReachV1TemplatesTemplateResource {
   created_at?: string | null;
   updated_at?: string | null;
 }
-export const ReachV1TemplatesTemplateResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1TemplatesTemplateResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.NullOr(S.String)),
     title: S.optional(S.NullOr(S.String)),
@@ -3230,7 +3213,7 @@ export type CreateReachAProfileSegmentV1RequestConditionsItemOperator =
   | "not_clicked"
   | "unsubscribed"
   | "not_unsubscribed";
-export const CreateReachAProfileSegmentV1RequestConditionsItemOperator = S.String;
+const CreateReachAProfileSegmentV1RequestConditionsItemOperator = S.String;
 
 export interface CreateReachAProfileSegmentV1RequestConditionsItem {
   /** A built-in contact attribute, or `cf:{fieldUuid}` to target a custom contact field. Custom fields are addressed by field UUID; their slug is not accepted. Built-in attributes: `email`, `note`, `domain`, `source`, `opt_in_method`, `subscription_status`, `subscribed_at`, `unsubscribed_at`, `created_at`, `tag`, `campaigns`, `processed`, `opened`, `clicked`, `delivered`, `bounced`, `soft_bounced`, `dropped`. Which operators are accepted depends on the attribute. */
@@ -3239,7 +3222,7 @@ export interface CreateReachAProfileSegmentV1RequestConditionsItem {
   /** Always a string, including for numeric and date comparisons */
   value: string;
 }
-export const CreateReachAProfileSegmentV1RequestConditionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateReachAProfileSegmentV1RequestConditionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attribute: S.String,
     operator: CreateReachAProfileSegmentV1RequestConditionsItemOperator,
@@ -3252,13 +3235,13 @@ export const CreateReachAProfileSegmentV1RequestConditionsItem = /*@__PURE__*/ S
 /** Conditions a contact must satisfy to fall into the segment */
 export type CreateReachAProfileSegmentV1RequestConditionsList =
   Array<CreateReachAProfileSegmentV1RequestConditionsItem>;
-export const CreateReachAProfileSegmentV1RequestConditionsList = /*@__PURE__*/ S.Array(
+const CreateReachAProfileSegmentV1RequestConditionsList = /*@__PURE__*/ S.Array(
   CreateReachAProfileSegmentV1RequestConditionsItem,
 ) as any as S.Schema<CreateReachAProfileSegmentV1RequestConditionsList>;
 
 /** How to combine multiple conditions */
 export type CreateReachAProfileSegmentV1RequestLogic = "AND" | "OR";
-export const CreateReachAProfileSegmentV1RequestLogic = S.String;
+const CreateReachAProfileSegmentV1RequestLogic = S.String;
 
 export interface CreateReachAProfileSegmentV1Request {
   /** Profile uuid parameter */
@@ -3269,7 +3252,7 @@ export interface CreateReachAProfileSegmentV1Request {
   /** How to combine multiple conditions */
   logic: CreateReachAProfileSegmentV1RequestLogic | (string & {});
 }
-export const CreateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     name: S.String,
@@ -3287,7 +3270,7 @@ export const CreateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateReachAProfileSegmentV1Request>;
 
 export type ReachV1ContactsSegmentsSegmentResourceQueryList = Array<unknown>;
-export const ReachV1ContactsSegmentsSegmentResourceQueryList =
+const ReachV1ContactsSegmentsSegmentResourceQueryList =
   CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<ReachV1ContactsSegmentsSegmentResourceQueryList>;
 
 export interface ReachV1ContactsSegmentsSegmentResource {
@@ -3297,7 +3280,7 @@ export interface ReachV1ContactsSegmentsSegmentResource {
   created_at?: string;
   updated_at?: string;
 }
-export const ReachV1ContactsSegmentsSegmentResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.String),
@@ -3311,7 +3294,7 @@ export const ReachV1ContactsSegmentsSegmentResource = /*@__PURE__*/ S.suspend(()
 
 /** Existing tags to attach to the created contact */
 export type CreateReachNewContactsV1RequestTagUuidsList = Array<string>;
-export const CreateReachNewContactsV1RequestTagUuidsList =
+const CreateReachNewContactsV1RequestTagUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<CreateReachNewContactsV1RequestTagUuidsList>;
 
 export interface CreateReachNewContactsV1Request {
@@ -3326,7 +3309,7 @@ export interface CreateReachNewContactsV1Request {
   /** Existing tags to attach to the created contact */
   tag_uuids?: CreateReachNewContactsV1RequestTagUuidsList;
 }
-export const CreateReachNewContactsV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateReachNewContactsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     email: S.String,
@@ -3356,10 +3339,10 @@ export type CreateVPSFirewallRuleV1RequestProtocol =
   | "HTTPS"
   | "MySQL"
   | "PostgreSQL";
-export const CreateVPSFirewallRuleV1RequestProtocol = S.String;
+const CreateVPSFirewallRuleV1RequestProtocol = S.String;
 
 export type CreateVPSFirewallRuleV1RequestSource = "any" | "custom";
-export const CreateVPSFirewallRuleV1RequestSource = S.String;
+const CreateVPSFirewallRuleV1RequestSource = S.String;
 
 export interface CreateVPSFirewallRuleV1Request {
   /** Firewall ID */
@@ -3371,7 +3354,7 @@ export interface CreateVPSFirewallRuleV1Request {
   /** IP range, CIDR, single IP or `any` */
   source_detail: string;
 }
-export const CreateVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     protocol: CreateVPSFirewallRuleV1RequestProtocol,
@@ -3385,7 +3368,7 @@ export const CreateVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Firewall rule action */
 export type VPSV1FirewallFirewallRuleResourceAction = "accept" | "drop";
-export const VPSV1FirewallFirewallRuleResourceAction = S.String;
+const VPSV1FirewallFirewallRuleResourceAction = S.String;
 
 /** Firewall rule protocol */
 export type VPSV1FirewallFirewallRuleResourceProtocol =
@@ -3402,7 +3385,7 @@ export type VPSV1FirewallFirewallRuleResourceProtocol =
   | "HTTPS"
   | "MySQL"
   | "PostgreSQL";
-export const VPSV1FirewallFirewallRuleResourceProtocol = S.String;
+const VPSV1FirewallFirewallRuleResourceProtocol = S.String;
 
 export interface VPSV1FirewallFirewallRuleResource {
   /** Firewall rule ID */
@@ -3418,7 +3401,7 @@ export interface VPSV1FirewallFirewallRuleResource {
   /** Firewall rule source detail. Can be `any` or IP address, CIDR or range */
   source_detail?: string;
 }
-export const VPSV1FirewallFirewallRuleResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1FirewallFirewallRuleResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     action: S.optional(VPSV1FirewallFirewallRuleResourceAction),
@@ -3434,7 +3417,7 @@ export const VPSV1FirewallFirewallRuleResource = /*@__PURE__*/ S.suspend(() =>
 export interface CreateVPSNewFirewallV1Request {
   name: string;
 }
-export const CreateVPSNewFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSNewFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/firewall", code: 200 })),
@@ -3444,7 +3427,7 @@ export const CreateVPSNewFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.Firewall.FirewallRuleResource`](#model/vpsv1firewallfirewallruleresource) */
 export type VPSV1FirewallFirewallRuleCollection = Array<VPSV1FirewallFirewallRuleResource>;
-export const VPSV1FirewallFirewallRuleCollection = /*@__PURE__*/ S.Array(
+const VPSV1FirewallFirewallRuleCollection = /*@__PURE__*/ S.Array(
   VPSV1FirewallFirewallRuleResource,
 ) as any as S.Schema<VPSV1FirewallFirewallRuleCollection>;
 
@@ -3459,7 +3442,7 @@ export interface VPSV1FirewallFirewallResource {
   created_at?: string;
   updated_at?: string;
 }
-export const VPSV1FirewallFirewallResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1FirewallFirewallResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -3482,7 +3465,7 @@ export interface CreateVPSNewProjectV1Request {
   /** Project environment variables */
   environment?: string | null;
 }
-export const CreateVPSNewProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSNewProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     project_name: S.String,
@@ -3507,7 +3490,7 @@ export interface CreateVPSPTRRecordV1Request {
   /** Pointer record domain */
   domain: string;
 }
-export const CreateVPSPTRRecordV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSPTRRecordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     ipAddressId: S.Number.pipe(T.Label()),
@@ -3527,7 +3510,7 @@ export interface CreateVPSPublicKeyV1Request {
   name: string;
   key: string;
 }
-export const CreateVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     key: S.String,
@@ -3544,7 +3527,7 @@ export interface VPSV1PublicKeyPublicKeyResource {
   /** Public key content */
   key?: string;
 }
-export const VPSV1PublicKeyPublicKeyResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1PublicKeyPublicKeyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -3558,7 +3541,7 @@ export interface CreateVPSSnapshotV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const CreateVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -3579,7 +3562,7 @@ export interface DeactivateHostingWordPressPluginV1Request {
   /** Slug of the installed plugin to deactivate. */
   plugin: string;
 }
-export const DeactivateHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeactivateHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -3601,7 +3584,7 @@ export interface DeactivateVPSFirewallV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const DeactivateVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeactivateVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     virtualMachineId: S.Number.pipe(T.Label()),
@@ -3622,7 +3605,7 @@ export interface DeleteAgencyHostingWebsiteCronJobV1Request {
   /** Unique identifier of the cron job as returned by the list cron jobs endpoint. */
   uuid: string;
 }
-export const DeleteAgencyHostingWebsiteCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgencyHostingWebsiteCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     uuid: S.String.pipe(T.Label()),
@@ -3645,7 +3628,7 @@ export interface DeleteAgencyHostingWebsiteDatabaseUserV1Request {
   /** Database username as returned by the list databases endpoint. */
   database_user_name: string;
 }
-export const DeleteAgencyHostingWebsiteDatabaseUserV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgencyHostingWebsiteDatabaseUserV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -3667,7 +3650,7 @@ export interface DeleteAgencyHostingWebsiteDatabaseV1Request {
   /** Full database name as returned by the list databases endpoint. */
   database_name: string;
 }
-export const DeleteAgencyHostingWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgencyHostingWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     database_name: S.String.pipe(T.Label()),
@@ -3686,7 +3669,7 @@ export interface DeleteAgencyHostingWebsiteV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const DeleteAgencyHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteAgencyHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3700,7 +3683,7 @@ export interface DeleteBillingPaymentMethodV1Request {
   /** Payment method ID */
   paymentMethodId: number;
 }
-export const DeleteBillingPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -3726,7 +3709,7 @@ export type DeleteDNSDNSRecordsV1RequestFiltersItemType =
   | "SOA"
   | "SRV"
   | "CAA";
-export const DeleteDNSDNSRecordsV1RequestFiltersItemType = S.String;
+const DeleteDNSDNSRecordsV1RequestFiltersItemType = S.String;
 
 export interface DeleteDNSDNSRecordsV1RequestFiltersItem {
   /** Name of the record */
@@ -3734,7 +3717,7 @@ export interface DeleteDNSDNSRecordsV1RequestFiltersItem {
   /** Type of the record */
   type: DeleteDNSDNSRecordsV1RequestFiltersItemType | (string & {});
 }
-export const DeleteDNSDNSRecordsV1RequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
+const DeleteDNSDNSRecordsV1RequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: DeleteDNSDNSRecordsV1RequestFiltersItemType,
@@ -3746,7 +3729,7 @@ export const DeleteDNSDNSRecordsV1RequestFiltersItem = /*@__PURE__*/ S.suspend((
 /** Filter records for deletion */
 export type DeleteDNSDNSRecordsV1RequestFiltersList =
   Array<DeleteDNSDNSRecordsV1RequestFiltersItem>;
-export const DeleteDNSDNSRecordsV1RequestFiltersList = /*@__PURE__*/ S.Array(
+const DeleteDNSDNSRecordsV1RequestFiltersList = /*@__PURE__*/ S.Array(
   DeleteDNSDNSRecordsV1RequestFiltersItem,
 ) as any as S.Schema<DeleteDNSDNSRecordsV1RequestFiltersList>;
 
@@ -3756,7 +3739,7 @@ export interface DeleteDNSDNSRecordsV1Request {
   /** Filter records for deletion */
   filters: DeleteDNSDNSRecordsV1RequestFiltersList;
 }
-export const DeleteDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     filters: DeleteDNSDNSRecordsV1RequestFiltersList,
@@ -3769,7 +3752,7 @@ export interface DeleteDomainDomainForwardingV1Request {
   /** Domain name */
   domain: string;
 }
-export const DeleteDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/forwarding/{domain}", code: 200 })),
@@ -3781,7 +3764,7 @@ export interface DeleteDomainWHOISProfileV1Request {
   /** WHOIS ID */
   whoisId: number;
 }
-export const DeleteDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoisId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/whois/{whoisId}", code: 200 })),
@@ -3795,7 +3778,7 @@ export interface DeleteEcommerceAProductV1Request {
   /** The ID of the product to delete. */
   product_id: string;
 }
-export const DeleteEcommerceAProductV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteEcommerceAProductV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -3818,7 +3801,7 @@ export interface EcommerceV1ProductProductDeletedResourceData {
   /** True when the product was archived instead of deleted (a subscription product with active subscribers). */
   is_archived?: boolean;
 }
-export const EcommerceV1ProductProductDeletedResourceData = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductDeletedResourceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     is_deleted: S.optional(S.Boolean),
@@ -3831,7 +3814,7 @@ export const EcommerceV1ProductProductDeletedResourceData = /*@__PURE__*/ S.susp
 export interface EcommerceV1ProductProductDeletedResource {
   data?: EcommerceV1ProductProductDeletedResourceData;
 }
-export const EcommerceV1ProductProductDeletedResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductDeletedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1ProductProductDeletedResourceData),
   }),
@@ -3847,7 +3830,7 @@ export interface DeleteEcommerceAProductVariantV1Request {
   /** The ID of the variant to delete. */
   variant_id: string;
 }
-export const DeleteEcommerceAProductVariantV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteEcommerceAProductVariantV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -3869,7 +3852,7 @@ export interface EcommerceV1VariantVariantDeletedResourceData {
   /** True when the variant was deleted. */
   is_deleted?: boolean;
 }
-export const EcommerceV1VariantVariantDeletedResourceData = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantDeletedResourceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     is_deleted: S.optional(S.Boolean),
@@ -3881,7 +3864,7 @@ export const EcommerceV1VariantVariantDeletedResourceData = /*@__PURE__*/ S.susp
 export interface EcommerceV1VariantVariantDeletedResource {
   data?: EcommerceV1VariantVariantDeletedResourceData;
 }
-export const EcommerceV1VariantVariantDeletedResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantDeletedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1VariantVariantDeletedResourceData),
   }),
@@ -3893,7 +3876,7 @@ export interface DeleteEcommerceStoreV1Request {
   /** The ID of the store to delete. */
   store_id: string;
 }
-export const DeleteEcommerceStoreV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteEcommerceStoreV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/ecommerce/v1/stores/{store_id}", code: 200 })),
@@ -3907,7 +3890,7 @@ export interface EcommerceV1StoreStoreDeleteResource {
   /** Always true when the store was soft-deleted. */
   is_deleted?: boolean;
 }
-export const EcommerceV1StoreStoreDeleteResource =
+const EcommerceV1StoreStoreDeleteResource =
   EcommerceV1VariantVariantDeletedResourceData as any as S.Schema<EcommerceV1StoreStoreDeleteResource>;
 
 export interface DeleteHostingAccountCronJobV1Request {
@@ -3915,7 +3898,7 @@ export interface DeleteHostingAccountCronJobV1Request {
   /** Unique identifier of the cron job as returned by the list cron jobs endpoint. */
   uid: string;
 }
-export const DeleteHostingAccountCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingAccountCronJobV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     uid: S.String.pipe(T.Label()),
@@ -3935,7 +3918,7 @@ export interface DeleteHostingAccountDatabaseV1Request {
   /** Full database name as returned by the list databases endpoint. */
   name: string;
 }
-export const DeleteHostingAccountDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingAccountDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3957,7 +3940,7 @@ export interface DeleteHostingDatabaseRemoteConnectionV1Request {
   /** Remote host to revoke: the IPv4/IPv6 address, or "%", exactly as returned by the list remote connections endpoint. */
   ip: string;
 }
-export const DeleteHostingDatabaseRemoteConnectionV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingDatabaseRemoteConnectionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -3978,7 +3961,7 @@ export interface DeleteHostingGitAutoDeploymentSettingsV1Request {
   /** Domain name */
   domain: string;
 }
-export const DeleteHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -3999,7 +3982,7 @@ export interface DeleteHostingWebsiteParkedDomainV1Request {
   domain: string;
   parkedDomain: string;
 }
-export const DeleteHostingWebsiteParkedDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebsiteParkedDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4022,7 +4005,7 @@ export interface DeleteHostingWebsiteRedirectV1Request {
   /** Source URL returned by the list redirects endpoint. */
   from: string;
 }
-export const DeleteHostingWebsiteRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebsiteRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4044,7 +4027,7 @@ export interface DeleteHostingWebsiteSubdomainV1Request {
   domain: string;
   subdomain: string;
 }
-export const DeleteHostingWebsiteSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebsiteSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4064,7 +4047,7 @@ export interface DeleteHostingWebsiteV1Request {
   /** Domain name */
   domain: string;
 }
-export const DeleteHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/hosting/v1/websites/{domain}", code: 200 })),
@@ -4081,7 +4064,7 @@ export interface DeleteHostingWordPressInstallationV1Request {
   /** Delete the installation database. */
   delete_database?: boolean;
 }
-export const DeleteHostingWordPressInstallationV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingWordPressInstallationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -4102,7 +4085,7 @@ export interface DeleteMailAliasV1Request {
   /** Alias resource ID */
   aliasId: string;
 }
-export const DeleteMailAliasV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailAliasV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/aliases/{aliasId}", code: 200 })),
@@ -4112,7 +4095,7 @@ export interface DeleteMailAutoreplyV1Request {
   /** Autoreply resource ID */
   autoreplyId: string;
 }
-export const DeleteMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoreplyId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/autoreplies/{autoreplyId}", code: 200 })),
@@ -4124,7 +4107,7 @@ export interface DeleteMailCatchAllV1Request {
   /** Catch-all resource ID */
   catchallId: string;
 }
-export const DeleteMailCatchAllV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailCatchAllV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catchallId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/catchalls/{catchallId}", code: 200 })),
@@ -4136,7 +4119,7 @@ export interface DeleteMailForwarderV1Request {
   /** Forwarder resource ID */
   forwarderId: string;
 }
-export const DeleteMailForwarderV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailForwarderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwarderId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/forwarders/{forwarderId}", code: 200 })),
@@ -4148,7 +4131,7 @@ export interface DeleteMailMailboxV1Request {
   /** Mailbox resource ID */
   mailboxId: string;
 }
-export const DeleteMailMailboxV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailMailboxV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/mailboxes/{mailboxId}", code: 200 })),
@@ -4160,7 +4143,7 @@ export interface DeleteMailWebhookV1Request {
   /** Webhook ID (returned when the webhook was created) */
   webhookId: string;
 }
-export const DeleteMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
@@ -4174,7 +4157,7 @@ export interface DeleteReachAContactFieldV1Request {
   /** Contact field uuid parameter */
   fieldUuid: string;
 }
-export const DeleteReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     fieldUuid: S.String.pipe(T.Label()),
@@ -4195,7 +4178,7 @@ export interface DeleteReachAProfileContactV1Request {
   /** Contact uuid parameter */
   contactUuid: string;
 }
-export const DeleteReachAProfileContactV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteReachAProfileContactV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     contactUuid: S.String.pipe(T.Label()),
@@ -4216,7 +4199,7 @@ export interface DeleteReachAProfileSegmentV1Request {
   /** Segment uuid parameter */
   segmentUuid: string;
 }
-export const DeleteReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     segmentUuid: S.String.pipe(T.Label()),
@@ -4237,7 +4220,7 @@ export interface DeleteReachATagV1Request {
   /** Tag uuid parameter */
   tagUuid: string;
 }
-export const DeleteReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -4256,7 +4239,7 @@ export interface DeleteReachFormV1Request {
   /** Form uuid parameter */
   formUuid: string;
 }
-export const DeleteReachFormV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteReachFormV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     formUuid: S.String.pipe(T.Label()),
@@ -4275,7 +4258,7 @@ export interface DeleteVPSFirewallRuleV1Request {
   /** Firewall Rule ID */
   ruleId: number;
 }
-export const DeleteVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     ruleId: S.Number.pipe(T.Label()),
@@ -4294,7 +4277,7 @@ export interface DeleteVPSFirewallV1Request {
   /** Firewall ID */
   firewallId: number;
 }
-export const DeleteVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSFirewallV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/vps/v1/firewall/{firewallId}", code: 200 })),
@@ -4308,7 +4291,7 @@ export interface DeleteVPSProjectV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const DeleteVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -4329,7 +4312,7 @@ export interface DeleteVPSPTRRecordV1Request {
   /** IP Address ID */
   ipAddressId: number;
 }
-export const DeleteVPSPTRRecordV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSPTRRecordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     ipAddressId: S.Number.pipe(T.Label()),
@@ -4348,7 +4331,7 @@ export interface DeleteVPSPublicKeyV1Request {
   /** Public Key ID */
   publicKeyId: number;
 }
-export const DeleteVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicKeyId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/vps/v1/public-keys/{publicKeyId}", code: 200 })),
@@ -4360,7 +4343,7 @@ export interface DeleteVPSSnapshotV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const DeleteVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeleteVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -4385,7 +4368,7 @@ export interface DeployHostingWebsiteGitRepositoryV1Request {
   /** Directory under the website document root, exactly as `List website Git repositories` returns it for an existing repository. Empty, null or omitted means the document root. */
   directory?: string | null;
 }
-export const DeployHostingWebsiteGitRepositoryV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingWebsiteGitRepositoryV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4410,7 +4393,7 @@ export interface HostingV1GitGitDeployOutputResource {
   /** Log of the deployment steps, and the Git or composer error when `is_success` is false */
   output: string;
 }
-export const HostingV1GitGitDeployOutputResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitDeployOutputResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_success: S.Boolean,
     output: S.String,
@@ -4428,7 +4411,7 @@ export interface DeployHostingWordPressPluginV1Request {
   /** Relative path to the plugin directory from wp-content/plugins */
   plugin_path: string;
 }
-export const DeployHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4456,7 +4439,7 @@ export interface DeployHostingWordPressThemeV1Request {
   /** Whether to activate the theme after deployment */
   is_activated?: boolean | null;
 }
-export const DeployHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
+const DeployHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -4478,7 +4461,7 @@ export interface DisableBillingAutoRenewalV1Request {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DisableBillingAutoRenewalV1Request = /*@__PURE__*/ S.suspend(() =>
+const DisableBillingAutoRenewalV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -4496,7 +4479,7 @@ export interface DisableDomainDomainLockV1Request {
   /** Domain name */
   domain: string;
 }
-export const DisableDomainDomainLockV1Request = /*@__PURE__*/ S.suspend(() =>
+const DisableDomainDomainLockV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -4510,7 +4493,7 @@ export interface DisableDomainPrivacyProtectionV1Request {
   /** Domain name */
   domain: string;
 }
-export const DisableDomainPrivacyProtectionV1Request = /*@__PURE__*/ S.suspend(() =>
+const DisableDomainPrivacyProtectionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -4528,7 +4511,7 @@ export interface DNSGetDNSSnapshotListV1Request {
   /** Domain name */
   domain: string;
 }
-export const DNSGetDNSSnapshotListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DNSGetDNSSnapshotListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/dns/v1/snapshots/{domain}", code: 200 })),
@@ -4543,7 +4526,7 @@ export interface DNSV1SnapshotSnapshotResource {
   reason?: string;
   created_at?: string;
 }
-export const DNSV1SnapshotSnapshotResource = /*@__PURE__*/ S.suspend(() =>
+const DNSV1SnapshotSnapshotResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     reason: S.optional(S.String),
@@ -4555,12 +4538,12 @@ export const DNSV1SnapshotSnapshotResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`DNS.V1.Snapshot.SnapshotResource`](#model/dnsv1snapshotsnapshotresource) */
 export type DNSV1SnapshotSnapshotCollection = Array<DNSV1SnapshotSnapshotResource>;
-export const DNSV1SnapshotSnapshotCollection = /*@__PURE__*/ S.Array(
+const DNSV1SnapshotSnapshotCollection = /*@__PURE__*/ S.Array(
   DNSV1SnapshotSnapshotResource,
 ) as any as S.Schema<DNSV1SnapshotSnapshotCollection>;
 
 export type DNSGetDNSSnapshotListV1Response = DNSV1SnapshotSnapshotCollection;
-export const DNSGetDNSSnapshotListV1Response = /*@__PURE__*/ S.suspend(() =>
+const DNSGetDNSSnapshotListV1Response = /*@__PURE__*/ S.suspend(() =>
   DNSV1SnapshotSnapshotCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DNSGetDNSSnapshotListV1Response",
@@ -4577,7 +4560,7 @@ export interface DomainsAcceptIncomingDomainMoveV1RequestDomainContacts {
   /** Technical contact WHOIS record ID */
   tech_id: number;
 }
-export const DomainsAcceptIncomingDomainMoveV1RequestDomainContacts = /*@__PURE__*/ S.suspend(() =>
+const DomainsAcceptIncomingDomainMoveV1RequestDomainContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner_id: S.Number,
     admin_id: S.Number,
@@ -4594,7 +4577,7 @@ export interface DomainsAcceptIncomingDomainMoveV1Request {
   /** WHOIS profiles of the accepting account. Only the contact types required by the TLD are applied, but all four IDs must be provided. */
   domain_contacts: DomainsAcceptIncomingDomainMoveV1RequestDomainContacts;
 }
-export const DomainsAcceptIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsAcceptIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     domain_contacts: DomainsAcceptIncomingDomainMoveV1RequestDomainContacts,
@@ -4607,7 +4590,7 @@ export interface DomainsCancelOutgoingDomainMoveV1Request {
   /** Domain name */
   domain: string;
 }
-export const DomainsCancelOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsCancelOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/move/outgoing/{domain}", code: 200 })),
@@ -4620,13 +4603,11 @@ export type DomainsChangeWHOISProfileForDomainV1RequestChangeForItem =
   | "admin"
   | "billing"
   | "tech";
-export const DomainsChangeWHOISProfileForDomainV1RequestChangeForItem = S.String;
-
 /** Contact roles to repoint to the new WHOIS profile */
 export type DomainsChangeWHOISProfileForDomainV1RequestChangeForList = Array<
   DomainsChangeWHOISProfileForDomainV1RequestChangeForItem | (string & {})
 >;
-export const DomainsChangeWHOISProfileForDomainV1RequestChangeForList =
+const DomainsChangeWHOISProfileForDomainV1RequestChangeForList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<DomainsChangeWHOISProfileForDomainV1RequestChangeForList>;
 
 export interface DomainsChangeWHOISProfileForDomainV1Request {
@@ -4637,7 +4618,7 @@ export interface DomainsChangeWHOISProfileForDomainV1Request {
   /** Contact roles to repoint to the new WHOIS profile */
   change_for: DomainsChangeWHOISProfileForDomainV1RequestChangeForList;
 }
-export const DomainsChangeWHOISProfileForDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsChangeWHOISProfileForDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     new_whois_id: S.Number,
     domain: S.String,
@@ -4648,7 +4629,7 @@ export const DomainsChangeWHOISProfileForDomainV1Request = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<DomainsChangeWHOISProfileForDomainV1Request>;
 
 export interface DomainsGetDomainListV1Request {}
-export const DomainsGetDomainListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetDomainListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/portfolio", code: 200 })),
 ).annotate({
   identifier: "DomainsGetDomainListV1Request",
@@ -4659,7 +4640,7 @@ export type DomainsV1DomainDomainResourceType =
   | "free_domain"
   | "domain_transfer"
   | "free_domain_transfer";
-export const DomainsV1DomainDomainResourceType = S.String;
+const DomainsV1DomainDomainResourceType = S.String;
 
 export type DomainsV1DomainDomainResourceStatus =
   | "active"
@@ -4670,7 +4651,7 @@ export type DomainsV1DomainDomainResourceStatus =
   | "deleted"
   | "suspended"
   | "failed";
-export const DomainsV1DomainDomainResourceStatus = S.String;
+const DomainsV1DomainDomainResourceStatus = S.String;
 
 export interface DomainsV1DomainDomainResource {
   /** Domain ID */
@@ -4682,7 +4663,7 @@ export interface DomainsV1DomainDomainResource {
   created_at?: string;
   expires_at?: string | null;
 }
-export const DomainsV1DomainDomainResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1DomainDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     domain: S.optional(S.NullOr(S.String)),
@@ -4697,19 +4678,19 @@ export const DomainsV1DomainDomainResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Domains.V1.Domain.DomainResource`](#model/domainsv1domaindomainresource) */
 export type DomainsV1DomainDomainCollection = Array<DomainsV1DomainDomainResource>;
-export const DomainsV1DomainDomainCollection = /*@__PURE__*/ S.Array(
+const DomainsV1DomainDomainCollection = /*@__PURE__*/ S.Array(
   DomainsV1DomainDomainResource,
 ) as any as S.Schema<DomainsV1DomainDomainCollection>;
 
 export type DomainsGetDomainListV1Response = DomainsV1DomainDomainCollection;
-export const DomainsGetDomainListV1Response = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetDomainListV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1DomainDomainCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DomainsGetDomainListV1Response",
 }) as any as S.Schema<DomainsGetDomainListV1Response>;
 
 export interface DomainsGetIncomingDomainMoveListV1Request {}
-export const DomainsGetIncomingDomainMoveListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetIncomingDomainMoveListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/move/incoming", code: 200 })),
 ).annotate({
   identifier: "DomainsGetIncomingDomainMoveListV1Request",
@@ -4717,7 +4698,7 @@ export const DomainsGetIncomingDomainMoveListV1Request = /*@__PURE__*/ S.suspend
 
 /** Status of the move */
 export type DomainsV1MoveMoveResourceStatus = "initiated" | "activating" | "completed";
-export const DomainsV1MoveMoveResourceStatus = S.String;
+const DomainsV1MoveMoveResourceStatus = S.String;
 
 export interface DomainsV1MoveMoveResource {
   /** Domain name */
@@ -4727,7 +4708,7 @@ export interface DomainsV1MoveMoveResource {
   created_at?: string;
   updated_at?: string;
 }
-export const DomainsV1MoveMoveResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1MoveMoveResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(DomainsV1MoveMoveResourceStatus),
@@ -4740,12 +4721,12 @@ export const DomainsV1MoveMoveResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Domains.V1.Move.MoveResource`](#model/domainsv1movemoveresource) */
 export type DomainsV1MoveMoveCollection = Array<DomainsV1MoveMoveResource>;
-export const DomainsV1MoveMoveCollection = /*@__PURE__*/ S.Array(
+const DomainsV1MoveMoveCollection = /*@__PURE__*/ S.Array(
   DomainsV1MoveMoveResource,
 ) as any as S.Schema<DomainsV1MoveMoveCollection>;
 
 export type DomainsGetIncomingDomainMoveListV1Response = DomainsV1MoveMoveCollection;
-export const DomainsGetIncomingDomainMoveListV1Response = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetIncomingDomainMoveListV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1MoveMoveCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DomainsGetIncomingDomainMoveListV1Response",
@@ -4757,7 +4738,7 @@ export interface DomainsGetIncomingDomainMoveV1Request {
   /** Re-check the move against the registry before responding. Only has an effect while the move is in the `activating` status. */
   force_sync?: boolean;
 }
-export const DomainsGetIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     force_sync: S.optional(S.Boolean.pipe(T.Query())),
@@ -4767,21 +4748,21 @@ export const DomainsGetIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DomainsGetIncomingDomainMoveV1Request>;
 
 export interface DomainsGetOutgoingDomainMoveListV1Request {}
-export const DomainsGetOutgoingDomainMoveListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetOutgoingDomainMoveListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/move/outgoing", code: 200 })),
 ).annotate({
   identifier: "DomainsGetOutgoingDomainMoveListV1Request",
 }) as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Request>;
 
 export type DomainsGetOutgoingDomainMoveListV1Response = DomainsV1MoveMoveCollection;
-export const DomainsGetOutgoingDomainMoveListV1Response =
+const DomainsGetOutgoingDomainMoveListV1Response =
   DomainsGetIncomingDomainMoveListV1Response as any as S.Schema<DomainsGetOutgoingDomainMoveListV1Response>;
 
 export interface DomainsGetOutgoingDomainMoveV1Request {
   /** Domain name */
   domain: string;
 }
-export const DomainsGetOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/move/outgoing/{domain}", code: 200 })),
@@ -4790,7 +4771,7 @@ export const DomainsGetOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<DomainsGetOutgoingDomainMoveV1Request>;
 
 export interface DomainsGetTransferListV1Request {}
-export const DomainsGetTransferListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetTransferListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/transfers", code: 200 })),
 ).annotate({
   identifier: "DomainsGetTransferListV1Request",
@@ -4798,12 +4779,12 @@ export const DomainsGetTransferListV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Domains.V1.Transfer.TransferResource`](#model/domainsv1transfertransferresource) */
 export type DomainsV1TransferTransferCollection = Array<DomainsV1TransferTransferResource>;
-export const DomainsV1TransferTransferCollection = /*@__PURE__*/ S.Array(
+const DomainsV1TransferTransferCollection = /*@__PURE__*/ S.Array(
   DomainsV1TransferTransferResource,
 ) as any as S.Schema<DomainsV1TransferTransferCollection>;
 
 export type DomainsGetTransferListV1Response = DomainsV1TransferTransferCollection;
-export const DomainsGetTransferListV1Response = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetTransferListV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1TransferTransferCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DomainsGetTransferListV1Response",
@@ -4813,7 +4794,7 @@ export interface DomainsGetWHOISProfileListV1Request {
   /** Filter by TLD (without leading dot) */
   tld?: string;
 }
-export const DomainsGetWHOISProfileListV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetWHOISProfileListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tld: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/whois", code: 200 })),
@@ -4823,12 +4804,12 @@ export const DomainsGetWHOISProfileListV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Domains.V1.WHOIS.ProfileResource`](#model/domainsv1whoisprofileresource) */
 export type DomainsV1WHOISProfileCollection = Array<DomainsV1WHOISProfileResource>;
-export const DomainsV1WHOISProfileCollection = /*@__PURE__*/ S.Array(
+const DomainsV1WHOISProfileCollection = /*@__PURE__*/ S.Array(
   DomainsV1WHOISProfileResource,
 ) as any as S.Schema<DomainsV1WHOISProfileCollection>;
 
 export type DomainsGetWHOISProfileListV1Response = DomainsV1WHOISProfileCollection;
-export const DomainsGetWHOISProfileListV1Response = /*@__PURE__*/ S.suspend(() =>
+const DomainsGetWHOISProfileListV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1WHOISProfileCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DomainsGetWHOISProfileListV1Response",
@@ -4837,12 +4818,9 @@ export const DomainsGetWHOISProfileListV1Response = /*@__PURE__*/ S.suspend(() =
 /** Domain contact information */
 export type DomainsPurchaseNewDomainV1RequestDomainContacts =
   ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-export const DomainsPurchaseNewDomainV1RequestDomainContacts =
-  ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-
 /** Discount coupon codes */
 export type DomainsPurchaseNewDomainV1RequestCouponsList = Array<unknown>;
-export const DomainsPurchaseNewDomainV1RequestCouponsList =
+const DomainsPurchaseNewDomainV1RequestCouponsList =
   CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<DomainsPurchaseNewDomainV1RequestCouponsList>;
 
 export interface DomainsPurchaseNewDomainV1Request {
@@ -4859,7 +4837,7 @@ export interface DomainsPurchaseNewDomainV1Request {
   /** Discount coupon codes */
   coupons?: DomainsPurchaseNewDomainV1RequestCouponsList;
 }
-export const DomainsPurchaseNewDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsPurchaseNewDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     item_id: S.String,
@@ -4876,7 +4854,7 @@ export interface DomainsRejectIncomingDomainMoveV1Request {
   /** Domain name */
   domain: string;
 }
-export const DomainsRejectIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsRejectIncomingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/move/incoming/{domain}", code: 200 })),
@@ -4890,7 +4868,7 @@ export interface DomainsStartOutgoingDomainMoveV1Request {
   /** Email address of the Hostinger account receiving the domain */
   new_customer_email: string;
 }
-export const DomainsStartOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsStartOutgoingDomainMoveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     new_customer_email: S.String,
@@ -4905,7 +4883,7 @@ export interface DomainsSuggestDomainNamesFromADescriptionV1Request {
   /** Amount of domain names to suggest */
   limit: number;
 }
-export const DomainsSuggestDomainNamesFromADescriptionV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsSuggestDomainNamesFromADescriptionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.String,
     limit: S.Number,
@@ -4922,12 +4900,12 @@ export const DomainsSuggestDomainNamesFromADescriptionV1Request = /*@__PURE__*/ 
 
 /** Suggested domain names */
 export type DomainsV1AvailabilityAlternativeCollection = Array<string>;
-export const DomainsV1AvailabilityAlternativeCollection =
+const DomainsV1AvailabilityAlternativeCollection =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1AvailabilityAlternativeCollection>;
 
 export type DomainsSuggestDomainNamesFromADescriptionV1Response =
   DomainsV1AvailabilityAlternativeCollection;
-export const DomainsSuggestDomainNamesFromADescriptionV1Response = /*@__PURE__*/ S.suspend(() =>
+const DomainsSuggestDomainNamesFromADescriptionV1Response = /*@__PURE__*/ S.suspend(() =>
   DomainsV1AvailabilityAlternativeCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DomainsSuggestDomainNamesFromADescriptionV1Response",
@@ -4939,7 +4917,7 @@ export interface DomainsSuggestDomainNamesFromADomainV1Request {
   /** Amount of domain names to suggest */
   limit: number;
 }
-export const DomainsSuggestDomainNamesFromADomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsSuggestDomainNamesFromADomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     limit: S.Number,
@@ -4956,14 +4934,14 @@ export const DomainsSuggestDomainNamesFromADomainV1Request = /*@__PURE__*/ S.sus
 
 export type DomainsSuggestDomainNamesFromADomainV1Response =
   DomainsV1AvailabilityAlternativeCollection;
-export const DomainsSuggestDomainNamesFromADomainV1Response =
+const DomainsSuggestDomainNamesFromADomainV1Response =
   DomainsSuggestDomainNamesFromADescriptionV1Response as any as S.Schema<DomainsSuggestDomainNamesFromADomainV1Response>;
 
 export interface DomainsUnsetDefaultWHOISProfileV1Request {
   /** WHOIS ID */
   whoisId: number;
 }
-export const DomainsUnsetDefaultWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
+const DomainsUnsetDefaultWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoisId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/domains/v1/whois/default/{whoisId}", code: 200 })),
@@ -4977,7 +4955,7 @@ export interface EcommerceCreateAPaymentProviderConnectLinkV1Request {
   /** The ID of the payment gateway to connect, e.g. stripe. */
   provider_id: string;
 }
-export const EcommerceCreateAPaymentProviderConnectLinkV1Request = /*@__PURE__*/ S.suspend(() =>
+const EcommerceCreateAPaymentProviderConnectLinkV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     provider_id: S.String.pipe(T.Label()),
@@ -4998,24 +4976,23 @@ export interface EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceDat
   /** A deep-link into the store admin for the provider. */
   admin_url?: string;
 }
-export const EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData =
-  /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       url: S.optional(S.String),
       admin_url: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData",
-  }) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData>;
+).annotate({
+  identifier: "EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData",
+}) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData>;
 
 export interface EcommerceV1PaymentProviderPaymentProviderConnectLinkResource {
   data?: EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData;
 }
-export const EcommerceV1PaymentProviderPaymentProviderConnectLinkResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData),
-    }),
+const EcommerceV1PaymentProviderPaymentProviderConnectLinkResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(EcommerceV1PaymentProviderPaymentProviderConnectLinkResourceData),
+  }),
 ).annotate({
   identifier: "EcommerceV1PaymentProviderPaymentProviderConnectLinkResource",
 }) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderConnectLinkResource>;
@@ -5026,7 +5003,7 @@ export interface EcommerceCreateAProductImageUploadURLV1Request {
   /** The ID of the product the image will be attached to. */
   product_id: string;
 }
-export const EcommerceCreateAProductImageUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
+const EcommerceCreateAProductImageUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -5045,7 +5022,7 @@ export const EcommerceCreateAProductImageUploadURLV1Request = /*@__PURE__*/ S.su
 export type EcommerceV1ProductProductImageUploadUrlResourceFieldsMap = {
   [key: string]: string | undefined;
 };
-export const EcommerceV1ProductProductImageUploadUrlResourceFieldsMap =
+const EcommerceV1ProductProductImageUploadUrlResourceFieldsMap =
   ReachV1CampaignsCreatedCampaignResourceMetadataMap as any as S.Schema<EcommerceV1ProductProductImageUploadUrlResourceFieldsMap>;
 
 export interface EcommerceV1ProductProductImageUploadUrlResource {
@@ -5058,7 +5035,7 @@ export interface EcommerceV1ProductProductImageUploadUrlResource {
   /** Maximum accepted upload size in bytes. */
   max_bytes?: number;
 }
-export const EcommerceV1ProductProductImageUploadUrlResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductImageUploadUrlResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upload_url: S.optional(S.String),
     fields: S.optional(EcommerceV1ProductProductImageUploadUrlResourceFieldsMap),
@@ -5075,7 +5052,7 @@ export interface EcommerceFulfilAnOrderV1RequestItemsItem {
   /** Quantity of the line item to fulfil. */
   quantity: number;
 }
-export const EcommerceFulfilAnOrderV1RequestItemsItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceFulfilAnOrderV1RequestItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line_item_id: S.String,
     quantity: S.Number,
@@ -5087,7 +5064,7 @@ export const EcommerceFulfilAnOrderV1RequestItemsItem = /*@__PURE__*/ S.suspend(
 /** Line items to fulfil. Omit to fulfil every remaining unfulfilled item. */
 export type EcommerceFulfilAnOrderV1RequestItemsList =
   Array<EcommerceFulfilAnOrderV1RequestItemsItem>;
-export const EcommerceFulfilAnOrderV1RequestItemsList = /*@__PURE__*/ S.Array(
+const EcommerceFulfilAnOrderV1RequestItemsList = /*@__PURE__*/ S.Array(
   EcommerceFulfilAnOrderV1RequestItemsItem,
 ) as any as S.Schema<EcommerceFulfilAnOrderV1RequestItemsList>;
 
@@ -5105,7 +5082,7 @@ export interface EcommerceFulfilAnOrderV1Request {
   /** Whether to email the customer about the fulfilment. Defaults to true. */
   notify_customer?: boolean;
 }
-export const EcommerceFulfilAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
+const EcommerceFulfilAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     order_id: S.String.pipe(T.Label()),
@@ -5136,7 +5113,7 @@ export interface EcommerceUploadAndAttachAProductImageV1Request {
   /** When true, the image becomes the product's thumbnail (primary image). When omitted, it becomes the thumbnail only if the product does not have one yet. */
   is_thumbnail?: boolean | null;
 }
-export const EcommerceUploadAndAttachAProductImageV1Request = /*@__PURE__*/ S.suspend(() =>
+const EcommerceUploadAndAttachAProductImageV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -5160,7 +5137,7 @@ export interface EcommerceV1ProductProductImageUploadResource {
   /** Whether the image was set as the product's thumbnail (primary image). */
   is_thumbnail?: boolean;
 }
-export const EcommerceV1ProductProductImageUploadResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductImageUploadResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     is_thumbnail: S.optional(S.Boolean),
@@ -5170,18 +5147,13 @@ export const EcommerceV1ProductProductImageUploadResource = /*@__PURE__*/ S.susp
 }) as any as S.Schema<EcommerceV1ProductProductImageUploadResource>;
 
 export type EditHorizonWebsiteV1RequestMessageItemType = "text";
-export const EditHorizonWebsiteV1RequestMessageItemType = S.String;
-
 export interface EditHorizonWebsiteV1RequestMessageItem {
   type: EditHorizonWebsiteV1RequestMessageItemType | (string & {});
   /** Detailed description of the changes to apply to the website. Include which sections, features, content or design should change and how. The specification should be detailed and comprehensive, covering all requested changes. */
   text: string;
 }
-export const EditHorizonWebsiteV1RequestMessageItem =
-  CreateHorizonWebsiteV1RequestMessageItem as any as S.Schema<EditHorizonWebsiteV1RequestMessageItem>;
-
 export type EditHorizonWebsiteV1RequestMessageList = Array<EditHorizonWebsiteV1RequestMessageItem>;
-export const EditHorizonWebsiteV1RequestMessageList =
+const EditHorizonWebsiteV1RequestMessageList =
   CreateHorizonWebsiteV1RequestMessageList as any as S.Schema<EditHorizonWebsiteV1RequestMessageList>;
 
 export interface EditHorizonWebsiteV1Request {
@@ -5189,7 +5161,7 @@ export interface EditHorizonWebsiteV1Request {
   websiteId: string;
   message: EditHorizonWebsiteV1RequestMessageList;
 }
-export const EditHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const EditHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websiteId: S.String.pipe(T.Label()),
     message: EditHorizonWebsiteV1RequestMessageList,
@@ -5204,7 +5176,7 @@ export interface EnableBillingAutoRenewalV1Request {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const EnableBillingAutoRenewalV1Request = /*@__PURE__*/ S.suspend(() =>
+const EnableBillingAutoRenewalV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -5222,7 +5194,7 @@ export interface EnableDomainDomainLockV1Request {
   /** Domain name */
   domain: string;
 }
-export const EnableDomainDomainLockV1Request = /*@__PURE__*/ S.suspend(() =>
+const EnableDomainDomainLockV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -5236,7 +5208,7 @@ export interface EnableDomainPrivacyProtectionV1Request {
   /** Domain name */
   domain: string;
 }
-export const EnableDomainPrivacyProtectionV1Request = /*@__PURE__*/ S.suspend(() =>
+const EnableDomainPrivacyProtectionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -5256,7 +5228,7 @@ export interface EnableEcommerceManualPaymentMethodV1Request {
   /** Optional display name shown to customers at checkout. */
   title?: string | null;
 }
-export const EnableEcommerceManualPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
+const EnableEcommerceManualPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     title: S.optional(S.NullOr(S.String)),
@@ -5281,7 +5253,7 @@ export interface EcommerceV1PaymentManualPaymentResourcePaymentMethod {
   /** Display name shown to customers at checkout. */
   title?: string;
 }
-export const EcommerceV1PaymentManualPaymentResourcePaymentMethod = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1PaymentManualPaymentResourcePaymentMethod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     provider_id: S.optional(S.String),
@@ -5297,7 +5269,7 @@ export interface EcommerceV1PaymentManualPaymentResource {
   /** Admin UI deep-link to manage payment settings. */
   admin_url?: string;
 }
-export const EcommerceV1PaymentManualPaymentResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1PaymentManualPaymentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payment_method: S.optional(EcommerceV1PaymentManualPaymentResourcePaymentMethod),
     admin_url: S.optional(S.String),
@@ -5307,7 +5279,7 @@ export const EcommerceV1PaymentManualPaymentResource = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<EcommerceV1PaymentManualPaymentResource>;
 
 export interface GenerateHostingAFreeSubdomainV1Request {}
-export const GenerateHostingAFreeSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const GenerateHostingAFreeSubdomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/api/hosting/v1/domains/free-subdomains", code: 200 }),
   ),
@@ -5319,7 +5291,7 @@ export interface HostingV1DomainsFreeSubdomainResource {
   /** Generated free subdomain */
   domain?: string;
 }
-export const HostingV1DomainsFreeSubdomainResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DomainsFreeSubdomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
   }),
@@ -5330,7 +5302,7 @@ export const HostingV1DomainsFreeSubdomainResource = /*@__PURE__*/ S.suspend(() 
 export interface GenerateHostingGitSSHKeyV1Request {
   username: string;
 }
-export const GenerateHostingGitSSHKeyV1Request = /*@__PURE__*/ S.suspend(() =>
+const GenerateHostingGitSSHKeyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(
@@ -5345,7 +5317,7 @@ export interface HostingV1GitGitSshKeyResource {
   /** Public key to add as a deploy key on the Git host. Null when the account has no key yet. */
   public_key: string | null;
 }
-export const HostingV1GitGitSshKeyResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitSshKeyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     public_key: S.NullOr(S.String),
   }),
@@ -5357,7 +5329,7 @@ export interface GetAgencyHostingWebsiteDetailsV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const GetAgencyHostingWebsiteDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAgencyHostingWebsiteDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -5369,15 +5341,15 @@ export const GetAgencyHostingWebsiteDetailsV1Request = /*@__PURE__*/ S.suspend((
 
 /** Website state */
 export type AgencyHostingV1WebsitesWebsiteResourceState = "active" | "suspended";
-export const AgencyHostingV1WebsitesWebsiteResourceState = S.String;
+const AgencyHostingV1WebsitesWebsiteResourceState = S.String;
 
 export type AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList = Array<string>;
-export const AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList =
+const AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<AgencyHostingV1WebsitesWebsiteDomainDetailsResourceNameserversList>;
 
 /** SSL cert names */
 export type AgencyHostingV1WebsitesSslCertResourceNamesList = Array<string>;
-export const AgencyHostingV1WebsitesSslCertResourceNamesList =
+const AgencyHostingV1WebsitesSslCertResourceNamesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<AgencyHostingV1WebsitesSslCertResourceNamesList>;
 
 export interface AgencyHostingV1WebsitesSslCertResource {
@@ -5386,7 +5358,7 @@ export interface AgencyHostingV1WebsitesSslCertResource {
   expires_at?: string;
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesSslCertResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesSslCertResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(AgencyHostingV1WebsitesSslCertResourceNamesList),
     expires_at: S.optional(S.String),
@@ -5402,7 +5374,7 @@ export interface AgencyHostingV1WebsitesCustomSslCertResource {
   expires_at?: string | null;
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesCustomSslCertResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesCustomSslCertResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_expired: S.optional(S.Boolean),
     expires_at: S.optional(S.NullOr(S.String)),
@@ -5424,7 +5396,7 @@ export interface AgencyHostingV1WebsitesWebsiteDomainDetailsResource {
   ssl_cert?: AgencyHostingV1WebsitesSslCertResource | null;
   custom_ssl_cert?: AgencyHostingV1WebsitesCustomSslCertResource | null;
 }
-export const AgencyHostingV1WebsitesWebsiteDomainDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteDomainDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     parent_fqdn: S.optional(S.NullOr(S.String)),
@@ -5441,7 +5413,7 @@ export const AgencyHostingV1WebsitesWebsiteDomainDetailsResource = /*@__PURE__*/
 /** Array of [`AgencyHosting.V1.Websites.WebsiteDomainDetailsResource`](#model/agencyhostingv1websiteswebsitedomaindetailsresource) */
 export type AgencyHostingV1WebsitesWebsiteDomainDetailsCollection =
   Array<AgencyHostingV1WebsitesWebsiteDomainDetailsResource>;
-export const AgencyHostingV1WebsitesWebsiteDomainDetailsCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesWebsiteDomainDetailsCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesWebsiteDomainDetailsResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesWebsiteDomainDetailsCollection>;
 
@@ -5451,7 +5423,7 @@ export interface AgencyHostingV1WebsitesWebsitePreviewDomainResource {
   /** Creation date */
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesWebsitePreviewDomainResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsitePreviewDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -5466,7 +5438,7 @@ export interface AgencyHostingV1WebsitesWebsitePhpSettingsResource {
   /** Number of PHP workers */
   workers?: number;
 }
-export const AgencyHostingV1WebsitesWebsitePhpSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsitePhpSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     workers: S.optional(S.Number),
@@ -5479,7 +5451,7 @@ export interface AgencyHostingV1WebsitesWebsiteSettingsResource {
   /** PHP settings */
   php?: AgencyHostingV1WebsitesWebsitePhpSettingsResource | null;
 }
-export const AgencyHostingV1WebsitesWebsiteSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     php: S.optional(S.NullOr(AgencyHostingV1WebsitesWebsitePhpSettingsResource)),
   }),
@@ -5499,7 +5471,7 @@ export interface AgencyHostingV1WebsitesWordPressInstallResource {
   /** Creation date */
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesWordPressInstallResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWordPressInstallResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     title: S.optional(S.String),
@@ -5523,7 +5495,7 @@ export interface AgencyHostingV1WebsitesWebsiteSshDetailsResource {
   /** Is SSH password access enabled */
   is_password_enabled?: boolean;
 }
-export const AgencyHostingV1WebsitesWebsiteSshDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteSshDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     host: S.optional(S.String),
@@ -5545,7 +5517,7 @@ export interface AgencyHostingV1WebsitesWebsiteSftpDetailsResource {
   /** Is SFTP access enabled */
   is_enabled?: boolean;
 }
-export const AgencyHostingV1WebsitesWebsiteSftpDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteSftpDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     host: S.optional(S.String),
@@ -5562,7 +5534,7 @@ export interface AgencyHostingV1WebsitesWebsiteRemoteAccessResource {
   ssh?: AgencyHostingV1WebsitesWebsiteSshDetailsResource;
   sftp?: AgencyHostingV1WebsitesWebsiteSftpDetailsResource;
 }
-export const AgencyHostingV1WebsitesWebsiteRemoteAccessResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteRemoteAccessResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     ssh: S.optional(AgencyHostingV1WebsitesWebsiteSshDetailsResource),
@@ -5578,7 +5550,7 @@ export interface AgencyHostingV1WebsitesWebsiteServerResource {
   /** Country code */
   country_code?: string;
 }
-export const AgencyHostingV1WebsitesWebsiteServerResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteServerResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     country_code: S.optional(S.String),
@@ -5608,19 +5580,18 @@ export interface AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters {
   /** Is CDN available */
   is_cdn_available?: boolean;
 }
-export const AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disk_quota_bytes: S.optional(S.Number),
-      inode_quota: S.optional(S.Number),
-      cpu_cores: S.optional(S.Number),
-      memory_quota_bytes: S.optional(S.Number),
-      disk_iops_quota: S.optional(S.Number),
-      process_quota: S.optional(S.Number),
-      website_quota: S.optional(S.Number),
-      max_databases_per_website: S.optional(S.Number),
-      is_cdn_available: S.optional(S.Boolean),
-    }),
+const AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    disk_quota_bytes: S.optional(S.Number),
+    inode_quota: S.optional(S.Number),
+    cpu_cores: S.optional(S.Number),
+    memory_quota_bytes: S.optional(S.Number),
+    disk_iops_quota: S.optional(S.Number),
+    process_quota: S.optional(S.Number),
+    website_quota: S.optional(S.Number),
+    max_databases_per_website: S.optional(S.Number),
+    is_cdn_available: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters",
 }) as any as S.Schema<AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters>;
@@ -5631,7 +5602,7 @@ export interface AgencyHostingV1WebsitesWebsiteOrderPlanResource {
   /** Plan parameters */
   parameters?: AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters;
 }
-export const AgencyHostingV1WebsitesWebsiteOrderPlanResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteOrderPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     parameters: S.optional(AgencyHostingV1WebsitesWebsiteOrderPlanResourceParameters),
@@ -5648,7 +5619,7 @@ export interface AgencyHostingV1WebsitesWebsiteOrderResource {
   created_at?: string;
   plan?: AgencyHostingV1WebsitesWebsiteOrderPlanResource;
 }
-export const AgencyHostingV1WebsitesWebsiteOrderResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     status: S.optional(S.NullOr(S.String)),
@@ -5665,7 +5636,7 @@ export interface AgencyHostingV1WebsitesWebsiteUserResource {
   /** User state */
   state?: string;
 }
-export const AgencyHostingV1WebsitesWebsiteUserResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteUserResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     state: S.optional(S.String),
@@ -5678,7 +5649,7 @@ export interface AgencyHostingV1WebsitesWebsiteStagingRootResource {
   /** UID of the website this is a staging environment of */
   uid?: string;
 }
-export const AgencyHostingV1WebsitesWebsiteStagingRootResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteStagingRootResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
   }),
@@ -5710,7 +5681,7 @@ export interface AgencyHostingV1WebsitesWebsiteResource {
   user?: AgencyHostingV1WebsitesWebsiteUserResource;
   staging_root?: AgencyHostingV1WebsitesWebsiteStagingRootResource | null;
 }
-export const AgencyHostingV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     ipv4: S.optional(S.String),
@@ -5739,7 +5710,7 @@ export interface GetAgencyHostingWebsiteSetupStatusV1Request {
   /** Website setup UUID */
   setup_uuid: string;
 }
-export const GetAgencyHostingWebsiteSetupStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAgencyHostingWebsiteSetupStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Label()),
     setup_uuid: S.String.pipe(T.Label()),
@@ -5756,7 +5727,7 @@ export const GetAgencyHostingWebsiteSetupStatusV1Request = /*@__PURE__*/ S.suspe
 
 /** Website setup status */
 export type AgencyHostingV1SetupsWebsiteSetupStatusResourceStatus = "running" | "completed";
-export const AgencyHostingV1SetupsWebsiteSetupStatusResourceStatus = S.String;
+const AgencyHostingV1SetupsWebsiteSetupStatusResourceStatus = S.String;
 
 export interface AgencyHostingV1SetupsWebsiteSetupStatusResource {
   /** UID of the website created by the setup, available once provisioning completes */
@@ -5764,7 +5735,7 @@ export interface AgencyHostingV1SetupsWebsiteSetupStatusResource {
   /** Website setup status */
   status?: AgencyHostingV1SetupsWebsiteSetupStatusResourceStatus;
 }
-export const AgencyHostingV1SetupsWebsiteSetupStatusResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1SetupsWebsiteSetupStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.optional(S.NullOr(S.String)),
     status: S.optional(AgencyHostingV1SetupsWebsiteSetupStatusResourceStatus),
@@ -5779,7 +5750,7 @@ export interface GetAgencyHostingWebsiteSSLStatusV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetAgencyHostingWebsiteSSLStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAgencyHostingWebsiteSSLStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -5801,7 +5772,7 @@ export type AgencyHostingV1SslSslStatusResourceStatus =
   | "failed"
   | "active"
   | "expired";
-export const AgencyHostingV1SslSslStatusResourceStatus = S.String;
+const AgencyHostingV1SslSslStatusResourceStatus = S.String;
 
 export interface AgencyHostingV1SslSslStatusResource {
   /** `installing` while a certificate setup is running or retrying, `active` when a valid certificate is in place (uploaded, platform-issued, or a lifetime certificate bought for the domain), `failed` when the last setup gave up and no valid certificate is in place, `expired` when the certificate has run out, `not_installed` when the domain has no certificate and no setup process. */
@@ -5811,7 +5782,7 @@ export interface AgencyHostingV1SslSslStatusResource {
   /** End of the validity period of the certificate in place; null when there is none or the uploaded certificate carries no expiry. */
   expires_at: string | null;
 }
-export const AgencyHostingV1SslSslStatusResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1SslSslStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: AgencyHostingV1SslSslStatusResourceStatus,
     is_custom: S.Boolean,
@@ -5825,7 +5796,7 @@ export interface GetAgencyHostingWordPressSettingsV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const GetAgencyHostingWordPressSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetAgencyHostingWordPressSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -5849,7 +5820,7 @@ export interface AgencyHostingV1WordPressSettingsResource {
   /** Whether WordPress maintenance mode is currently enabled. */
   is_maintenance_mode_enabled?: boolean;
 }
-export const AgencyHostingV1WordPressSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WordPressSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     core_version: S.optional(S.NullOr(S.String)),
     is_lite_speed_cache_enabled: S.optional(S.Boolean),
@@ -5864,7 +5835,7 @@ export interface GetDNSDNSRecordsV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/dns/v1/zones/{domain}", code: 200 })),
@@ -5878,7 +5849,7 @@ export interface DNSV1ZoneNameRecordResource {
   /** Flag to mark name record as disabled */
   is_disabled?: boolean;
 }
-export const DNSV1ZoneNameRecordResource = /*@__PURE__*/ S.suspend(() =>
+const DNSV1ZoneNameRecordResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     is_disabled: S.optional(S.Boolean),
@@ -5889,7 +5860,7 @@ export const DNSV1ZoneNameRecordResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`DNS.V1.Zone.NameRecordResource`](#model/dnsv1zonenamerecordresource) */
 export type DNSV1ZoneNameRecordCollection = Array<DNSV1ZoneNameRecordResource>;
-export const DNSV1ZoneNameRecordCollection = /*@__PURE__*/ S.Array(
+const DNSV1ZoneNameRecordCollection = /*@__PURE__*/ S.Array(
   DNSV1ZoneNameRecordResource,
 ) as any as S.Schema<DNSV1ZoneNameRecordCollection>;
 
@@ -5905,7 +5876,7 @@ export type DNSV1ZoneRecordResourceType =
   | "SOA"
   | "SRV"
   | "CAA";
-export const DNSV1ZoneRecordResourceType = S.String;
+const DNSV1ZoneRecordResourceType = S.String;
 
 export interface DNSV1ZoneRecordResource {
   /** Name of the record (use `@` for wildcard name) */
@@ -5916,7 +5887,7 @@ export interface DNSV1ZoneRecordResource {
   /** Type of the record */
   type?: DNSV1ZoneRecordResourceType;
 }
-export const DNSV1ZoneRecordResource = /*@__PURE__*/ S.suspend(() =>
+const DNSV1ZoneRecordResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     records: S.optional(DNSV1ZoneNameRecordCollection),
@@ -5927,12 +5898,12 @@ export const DNSV1ZoneRecordResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`DNS.V1.Zone.RecordResource`](#model/dnsv1zonerecordresource) */
 export type DNSV1ZoneRecordCollection = Array<DNSV1ZoneRecordResource>;
-export const DNSV1ZoneRecordCollection = /*@__PURE__*/ S.Array(
+const DNSV1ZoneRecordCollection = /*@__PURE__*/ S.Array(
   DNSV1ZoneRecordResource,
 ) as any as S.Schema<DNSV1ZoneRecordCollection>;
 
 export type GetDNSDNSRecordsV1Response = DNSV1ZoneRecordCollection;
-export const GetDNSDNSRecordsV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetDNSDNSRecordsV1Response = /*@__PURE__*/ S.suspend(() =>
   DNSV1ZoneRecordCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDNSDNSRecordsV1Response",
@@ -5944,7 +5915,7 @@ export interface GetDNSDNSSnapshotV1Request {
   /** Snapshot ID */
   snapshotId: number;
 }
-export const GetDNSDNSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDNSDNSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     snapshotId: S.Number.pipe(T.Label()),
@@ -5961,7 +5932,7 @@ export interface DNSV1SnapshotSnapshotWithContentResource {
   snapshot?: DNSV1ZoneRecordCollection;
   created_at?: string;
 }
-export const DNSV1SnapshotSnapshotWithContentResource = /*@__PURE__*/ S.suspend(() =>
+const DNSV1SnapshotSnapshotWithContentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     reason: S.optional(S.String),
@@ -5976,7 +5947,7 @@ export interface GetDomainDomainAuthorizationCodeV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainDomainAuthorizationCodeV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDomainAuthorizationCodeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(
@@ -5990,7 +5961,7 @@ export interface DomainsV1PortfolioAuthCodeAuthCodeResource {
   /** Domain authorization code used to transfer the domain to another registrar. */
   auth_code?: string | null;
 }
-export const DomainsV1PortfolioAuthCodeAuthCodeResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1PortfolioAuthCodeAuthCodeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_code: S.optional(S.NullOr(S.String)),
   }),
@@ -6002,7 +5973,7 @@ export interface GetDomainDomainDetailsV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainDomainDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDomainDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/portfolio/{domain}", code: 200 })),
@@ -6020,7 +5991,7 @@ export type DomainsV1DomainDomainExtendedResourceStatus =
   | "deleted"
   | "suspended"
   | "failed";
-export const DomainsV1DomainDomainExtendedResourceStatus = S.String;
+const DomainsV1DomainDomainExtendedResourceStatus = S.String;
 
 /** Name servers */
 export interface DomainsV1DomainDomainExtendedResourceNameServers {
@@ -6029,7 +6000,7 @@ export interface DomainsV1DomainDomainExtendedResourceNameServers {
   /** Name server 2 */
   ns2?: string;
 }
-export const DomainsV1DomainDomainExtendedResourceNameServers = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1DomainDomainExtendedResourceNameServers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ns1: S.optional(S.String),
     ns2: S.optional(S.String),
@@ -6039,13 +6010,13 @@ export const DomainsV1DomainDomainExtendedResourceNameServers = /*@__PURE__*/ S.
 }) as any as S.Schema<DomainsV1DomainDomainExtendedResourceNameServers>;
 
 export type DomainsV1DomainDomainExtendedResourceChildNameServersItemList = Array<string>;
-export const DomainsV1DomainDomainExtendedResourceChildNameServersItemList =
+const DomainsV1DomainDomainExtendedResourceChildNameServersItemList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1DomainDomainExtendedResourceChildNameServersItemList>;
 
 /** Child name servers */
 export type DomainsV1DomainDomainExtendedResourceChildNameServersList =
   Array<DomainsV1DomainDomainExtendedResourceChildNameServersItemList>;
-export const DomainsV1DomainDomainExtendedResourceChildNameServersList = /*@__PURE__*/ S.Array(
+const DomainsV1DomainDomainExtendedResourceChildNameServersList = /*@__PURE__*/ S.Array(
   DomainsV1DomainDomainExtendedResourceChildNameServersItemList,
 ) as any as S.Schema<DomainsV1DomainDomainExtendedResourceChildNameServersList>;
 
@@ -6060,7 +6031,7 @@ export interface DomainsV1DomainDomainExtendedResourceDomainContacts {
   /** Technician WHOIS profile ID */
   tech_id?: number;
 }
-export const DomainsV1DomainDomainExtendedResourceDomainContacts = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1DomainDomainExtendedResourceDomainContacts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin_id: S.optional(S.Number),
     owner_id: S.optional(S.Number),
@@ -6097,7 +6068,7 @@ export interface DomainsV1DomainDomainExtendedResource {
   registered_at?: string | null;
   expires_at?: string | null;
 }
-export const DomainsV1DomainDomainExtendedResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1DomainDomainExtendedResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(DomainsV1DomainDomainExtendedResourceStatus),
@@ -6125,7 +6096,7 @@ export interface GetDomainDomainForwardingV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/forwarding/{domain}", code: 200 })),
@@ -6137,7 +6108,7 @@ export interface GetDomainDomainRenewalInformationV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainDomainRenewalInformationV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainDomainRenewalInformationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/portfolio/{domain}/renewal", code: 200 })),
@@ -6153,7 +6124,7 @@ export interface DomainsV1PortfolioRenewalRenewalInformationResource {
   /** Domain expiration date */
   expires_at?: string;
 }
-export const DomainsV1PortfolioRenewalRenewalInformationResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1PortfolioRenewalRenewalInformationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(S.String),
@@ -6167,7 +6138,7 @@ export interface GetDomainPendingIRTPVerificationV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainPendingIRTPVerificationV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainPendingIRTPVerificationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/irtp/{domain}", code: 200 })),
@@ -6177,7 +6148,7 @@ export const GetDomainPendingIRTPVerificationV1Request = /*@__PURE__*/ S.suspend
 
 /** IRTP verification status */
 export type DomainsV1IRTPVerificationResourceStatus = "pending" | "completed" | "canceled";
-export const DomainsV1IRTPVerificationResourceStatus = S.String;
+const DomainsV1IRTPVerificationResourceStatus = S.String;
 
 export interface DomainsV1IRTPVerificationResource {
   /** Domain name */
@@ -6195,7 +6166,7 @@ export interface DomainsV1IRTPVerificationResource {
   /** When the verification auto-cancels if unconfirmed */
   expires_at?: string;
 }
-export const DomainsV1IRTPVerificationResource = /*@__PURE__*/ S.suspend(() =>
+const DomainsV1IRTPVerificationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     status: S.optional(DomainsV1IRTPVerificationResourceStatus),
@@ -6213,7 +6184,7 @@ export interface GetDomainTransferV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/transfers/{domain}", code: 200 })),
@@ -6225,7 +6196,7 @@ export interface GetDomainWHOISProfileUsageV1Request {
   /** WHOIS ID */
   whoisId: number;
 }
-export const GetDomainWHOISProfileUsageV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainWHOISProfileUsageV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoisId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/whois/{whoisId}/usage", code: 200 })),
@@ -6235,18 +6206,15 @@ export const GetDomainWHOISProfileUsageV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of domains */
 export type DomainsV1WHOISProfileUsageResource = Array<string>;
-export const DomainsV1WHOISProfileUsageResource =
-  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<DomainsV1WHOISProfileUsageResource>;
-
 export type GetDomainWHOISProfileUsageV1Response = DomainsV1WHOISProfileUsageResource;
-export const GetDomainWHOISProfileUsageV1Response =
+const GetDomainWHOISProfileUsageV1Response =
   DomainsSuggestDomainNamesFromADescriptionV1Response as any as S.Schema<GetDomainWHOISProfileUsageV1Response>;
 
 export interface GetDomainWHOISProfileV1Request {
   /** WHOIS ID */
   whoisId: number;
 }
-export const GetDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetDomainWHOISProfileV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoisId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/domains/v1/whois/{whoisId}", code: 200 })),
@@ -6260,7 +6228,7 @@ export interface GetEcommerceAnOrderV1Request {
   /** The ID of the order to retrieve. */
   order_id: string;
 }
-export const GetEcommerceAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetEcommerceAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     order_id: S.String.pipe(T.Label()),
@@ -6287,7 +6255,7 @@ export interface EcommerceV1OrderOrderDetailResourceShippingAddress {
   country_code?: string | null;
   phone?: string | null;
 }
-export const EcommerceV1OrderOrderDetailResourceShippingAddress = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResourceShippingAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     company: S.optional(S.NullOr(S.String)),
@@ -6306,9 +6274,6 @@ export const EcommerceV1OrderOrderDetailResourceShippingAddress = /*@__PURE__*/ 
 /** The billing address, or null. */
 export type EcommerceV1OrderOrderDetailResourceBillingAddress =
   EcommerceV1OrderOrderDetailResourceShippingAddress;
-export const EcommerceV1OrderOrderDetailResourceBillingAddress =
-  EcommerceV1OrderOrderDetailResourceShippingAddress;
-
 export interface EcommerceV1OrderOrderDetailResourceItemsItem {
   /** The line item ID, required by the fulfil endpoint. */
   id?: string;
@@ -6329,7 +6294,7 @@ export interface EcommerceV1OrderOrderDetailResourceItemsItem {
   /** Line total in the smallest currency unit. */
   total?: number;
 }
-export const EcommerceV1OrderOrderDetailResourceItemsItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResourceItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -6348,7 +6313,7 @@ export const EcommerceV1OrderOrderDetailResourceItemsItem = /*@__PURE__*/ S.susp
 /** The order line items. */
 export type EcommerceV1OrderOrderDetailResourceItemsList =
   Array<EcommerceV1OrderOrderDetailResourceItemsItem>;
-export const EcommerceV1OrderOrderDetailResourceItemsList = /*@__PURE__*/ S.Array(
+const EcommerceV1OrderOrderDetailResourceItemsList = /*@__PURE__*/ S.Array(
   EcommerceV1OrderOrderDetailResourceItemsItem,
 ) as any as S.Schema<EcommerceV1OrderOrderDetailResourceItemsList>;
 
@@ -6358,23 +6323,22 @@ export interface EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem
   /** Public tracking URL, when available. */
   url?: string | null;
 }
-export const EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem =
-  /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       tracking_number: S.optional(S.String),
       url: S.optional(S.NullOr(S.String)),
     }),
-  ).annotate({
-    identifier: "EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem",
-  }) as any as S.Schema<EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem>;
+).annotate({
+  identifier: "EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem",
+}) as any as S.Schema<EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem>;
 
 /** Tracking numbers attached to the fulfilment. */
 export type EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList =
   Array<EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem>;
-export const EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList =
-  /*@__PURE__*/ S.Array(
-    EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem,
-  ) as any as S.Schema<EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList>;
+const EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList = /*@__PURE__*/ S.Array(
+  EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingItem,
+) as any as S.Schema<EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList>;
 
 export interface EcommerceV1OrderOrderDetailResourceFulfillmentsItem {
   /** The fulfilment ID. */
@@ -6388,7 +6352,7 @@ export interface EcommerceV1OrderOrderDetailResourceFulfillmentsItem {
   /** Tracking numbers attached to the fulfilment. */
   tracking?: EcommerceV1OrderOrderDetailResourceFulfillmentsItemTrackingList;
 }
-export const EcommerceV1OrderOrderDetailResourceFulfillmentsItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResourceFulfillmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     created_at: S.optional(S.String),
@@ -6403,7 +6367,7 @@ export const EcommerceV1OrderOrderDetailResourceFulfillmentsItem = /*@__PURE__*/
 /** The order fulfilments with tracking. */
 export type EcommerceV1OrderOrderDetailResourceFulfillmentsList =
   Array<EcommerceV1OrderOrderDetailResourceFulfillmentsItem>;
-export const EcommerceV1OrderOrderDetailResourceFulfillmentsList = /*@__PURE__*/ S.Array(
+const EcommerceV1OrderOrderDetailResourceFulfillmentsList = /*@__PURE__*/ S.Array(
   EcommerceV1OrderOrderDetailResourceFulfillmentsItem,
 ) as any as S.Schema<EcommerceV1OrderOrderDetailResourceFulfillmentsList>;
 
@@ -6451,7 +6415,7 @@ export interface EcommerceV1OrderOrderDetailResource {
   /** The order fulfilments with tracking. */
   fulfillments?: EcommerceV1OrderOrderDetailResourceFulfillmentsList;
 }
-export const EcommerceV1OrderOrderDetailResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     display_id: S.optional(S.Number),
@@ -6482,7 +6446,7 @@ export const EcommerceV1OrderOrderDetailResource = /*@__PURE__*/ S.suspend(() =>
 export interface EcommerceV1OrderOrderDetailResponseResource {
   data?: EcommerceV1OrderOrderDetailResource;
 }
-export const EcommerceV1OrderOrderDetailResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1OrderOrderDetailResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1OrderOrderDetailResource),
   }),
@@ -6491,7 +6455,7 @@ export const EcommerceV1OrderOrderDetailResponseResource = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<EcommerceV1OrderOrderDetailResponseResource>;
 
 export interface GetEcommerceCustomStorefrontSetupInstructionsV1Request {}
-export const GetEcommerceCustomStorefrontSetupInstructionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetEcommerceCustomStorefrontSetupInstructionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -6507,11 +6471,10 @@ export interface EcommerceV1MiscellaneousCustomStorefrontInstructionsResource {
   /** Markdown setup instructions for connecting a custom sales channel to your store. */
   instructions?: string;
 }
-export const EcommerceV1MiscellaneousCustomStorefrontInstructionsResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      instructions: S.optional(S.String),
-    }),
+const EcommerceV1MiscellaneousCustomStorefrontInstructionsResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instructions: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "EcommerceV1MiscellaneousCustomStorefrontInstructionsResource",
 }) as any as S.Schema<EcommerceV1MiscellaneousCustomStorefrontInstructionsResource>;
@@ -6520,7 +6483,7 @@ export interface GetEcommerceStoreMetadataV1Request {
   /** The ID of the store to read metadata for. */
   store_id: string;
 }
-export const GetEcommerceStoreMetadataV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetEcommerceStoreMetadataV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -6542,19 +6505,18 @@ export interface EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency {
   template?: string | null;
   min_amount?: number | null;
 }
-export const EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.optional(S.String),
-      symbol: S.optional(S.String),
-      symbol_native: S.optional(S.String),
-      name: S.optional(S.String),
-      name_plural: S.optional(S.String),
-      decimal_digits: S.optional(S.Number),
-      rounding: S.optional(S.Number),
-      template: S.optional(S.NullOr(S.String)),
-      min_amount: S.optional(S.NullOr(S.Number)),
-    }),
+const EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    symbol: S.optional(S.String),
+    symbol_native: S.optional(S.String),
+    name: S.optional(S.String),
+    name_plural: S.optional(S.String),
+    decimal_digits: S.optional(S.Number),
+    rounding: S.optional(S.Number),
+    template: S.optional(S.NullOr(S.String)),
+    min_amount: S.optional(S.NullOr(S.Number)),
+  }),
 ).annotate({
   identifier: "EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency",
 }) as any as S.Schema<EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency>;
@@ -6569,7 +6531,7 @@ export interface EcommerceV1StoreStoreMetadataResourceMetadata {
   /** The store's default currency, or null when unset. */
   default_currency?: EcommerceV1StoreStoreMetadataResourceMetadataDefaultCurrency | null;
 }
-export const EcommerceV1StoreStoreMetadataResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreMetadataResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     has_payment_methods: S.optional(S.Boolean),
     has_shipping: S.optional(S.Boolean),
@@ -6585,7 +6547,7 @@ export const EcommerceV1StoreStoreMetadataResourceMetadata = /*@__PURE__*/ S.sus
 export interface EcommerceV1StoreStoreMetadataResource {
   metadata?: EcommerceV1StoreStoreMetadataResourceMetadata;
 }
-export const EcommerceV1StoreStoreMetadataResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreMetadataResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(EcommerceV1StoreStoreMetadataResourceMetadata),
   }),
@@ -6597,7 +6559,7 @@ export interface GetEcommerceStoresV1Request {
   /** Page number */
   page?: number;
 }
-export const GetEcommerceStoresV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetEcommerceStoresV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/ecommerce/v1/stores", code: 200 })),
@@ -6619,7 +6581,7 @@ export interface EcommerceV1StoreStoreResource {
   /** Company name */
   company_name?: string | null;
 }
-export const EcommerceV1StoreStoreResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1StoreStoreResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -6634,7 +6596,7 @@ export const EcommerceV1StoreStoreResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Ecommerce.V1.Store.StoreResource`](#model/ecommercev1storestoreresource) */
 export type EcommerceV1StoreStoreCollection = Array<EcommerceV1StoreStoreResource>;
-export const EcommerceV1StoreStoreCollection = /*@__PURE__*/ S.Array(
+const EcommerceV1StoreStoreCollection = /*@__PURE__*/ S.Array(
   EcommerceV1StoreStoreResource,
 ) as any as S.Schema<EcommerceV1StoreStoreCollection>;
 
@@ -6643,7 +6605,7 @@ export interface CommonSchemaPaginationMetaSchema {
   per_page?: number;
   total?: number;
 }
-export const CommonSchemaPaginationMetaSchema = /*@__PURE__*/ S.suspend(() =>
+const CommonSchemaPaginationMetaSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_page: S.optional(S.Number),
     per_page: S.optional(S.Number),
@@ -6657,7 +6619,7 @@ export interface GetEcommerceStoresV1Response {
   data?: EcommerceV1StoreStoreCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetEcommerceStoresV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetEcommerceStoresV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1StoreStoreCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -6670,7 +6632,7 @@ export interface GetHorizonWebsiteV1Request {
   /** The website ID */
   websiteId: string;
 }
-export const GetHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websiteId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/horizons/v1/websites/{websiteId}", code: 200 })),
@@ -6682,7 +6644,7 @@ export interface HorizonsV1WebsitesWebsiteUrlResource {
   /** The website URL for the user to access their website in Hostinger Horizons interface */
   website_url: string;
 }
-export const HorizonsV1WebsitesWebsiteUrlResource = /*@__PURE__*/ S.suspend(() =>
+const HorizonsV1WebsitesWebsiteUrlResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_url: S.String,
   }),
@@ -6691,7 +6653,7 @@ export const HorizonsV1WebsitesWebsiteUrlResource = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<HorizonsV1WebsitesWebsiteUrlResource>;
 
 export type GetHostingAIOptionStatusV1RequestOption = "llmstxt" | "web2agent";
-export const GetHostingAIOptionStatusV1RequestOption = S.String;
+const GetHostingAIOptionStatusV1RequestOption = S.String;
 
 export interface GetHostingAIOptionStatusV1Request {
   username: string;
@@ -6700,7 +6662,7 @@ export interface GetHostingAIOptionStatusV1Request {
   /** Filter the status by a single AI option. */
   option?: GetHostingAIOptionStatusV1RequestOption | (string & {});
 }
-export const GetHostingAIOptionStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingAIOptionStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -6722,7 +6684,7 @@ export interface WordPressV1HostingerPluginsAiOptionStatusResource {
   /** Whether the Web2Agent AI option is enabled. Present when the option is requested or when no specific option filter is provided. */
   is_web2agent_enabled?: boolean | null;
 }
-export const WordPressV1HostingerPluginsAiOptionStatusResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1HostingerPluginsAiOptionStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_llmstxt_enabled: S.optional(S.NullOr(S.Boolean)),
     is_web2agent_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -6736,7 +6698,7 @@ export interface GetHostingCronJobOutputV1Request {
   /** Unique identifier of the cron job as returned by the list cron jobs endpoint. */
   uid: string;
 }
-export const GetHostingCronJobOutputV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingCronJobOutputV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     uid: S.String.pipe(T.Label()),
@@ -6755,7 +6717,7 @@ export interface HostingV1CronJobsCronJobOutputResource {
   /** Output captured from the last cron job execution. Empty when the cron job has not run yet. */
   output: string;
 }
-export const HostingV1CronJobsCronJobOutputResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1CronJobsCronJobOutputResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output: S.String,
   }),
@@ -6768,7 +6730,7 @@ export interface GetHostingGitAutoDeploymentSettingsV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -6798,7 +6760,7 @@ export interface HostingV1GitGitAutoDeploymentSettingsResource {
   /** Subdirectory under the website document root the repository deploys into. Empty means the document root. */
   directory: string | null;
 }
-export const HostingV1GitGitAutoDeploymentSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitAutoDeploymentSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installation_uuid: S.NullOr(S.String),
     is_enabled: S.NullOr(S.Boolean),
@@ -6814,7 +6776,7 @@ export const HostingV1GitGitAutoDeploymentSettingsResource = /*@__PURE__*/ S.sus
 export interface GetHostingGitSSHPublicKeyV1Request {
   username: string;
 }
-export const GetHostingGitSSHPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingGitSSHPublicKeyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(
@@ -6829,7 +6791,7 @@ export interface GetHostingInstallationJWTTokenV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const GetHostingInstallationJWTTokenV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingInstallationJWTTokenV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -6854,7 +6816,7 @@ export interface WordPressV1InstallationsJwtTokenResource {
   /** MCP (Model Context Protocol) endpoint URL for the WordPress installation, or null when not provided */
   mcp_url?: string | null;
 }
-export const WordPressV1InstallationsJwtTokenResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1InstallationsJwtTokenResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
     expires_in: S.optional(S.Number),
@@ -6870,7 +6832,7 @@ export interface GetHostingLiteSpeedCacheStatusV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const GetHostingLiteSpeedCacheStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingLiteSpeedCacheStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -6891,7 +6853,7 @@ export interface WordPressV1LitespeedLitespeedCacheStatusResource {
   /** Whether the LiteSpeed Cache plugin is active on the WordPress installation */
   is_active?: boolean;
 }
-export const WordPressV1LitespeedLitespeedCacheStatusResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1LitespeedLitespeedCacheStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_installed: S.optional(S.Boolean),
     is_active: S.optional(S.Boolean),
@@ -6905,7 +6867,7 @@ export interface GetHostingMaintenanceStatusV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const GetHostingMaintenanceStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingMaintenanceStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -6922,13 +6884,13 @@ export const GetHostingMaintenanceStatusV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** Current maintenance mode status for the WordPress installation */
 export type WordPressV1MaintenanceMaintenanceStatusResourceStatus = "enabled" | "disabled";
-export const WordPressV1MaintenanceMaintenanceStatusResourceStatus = S.String;
+const WordPressV1MaintenanceMaintenanceStatusResourceStatus = S.String;
 
 export interface WordPressV1MaintenanceMaintenanceStatusResource {
   /** Current maintenance mode status for the WordPress installation */
   status?: WordPressV1MaintenanceMaintenanceStatusResourceStatus;
 }
-export const WordPressV1MaintenanceMaintenanceStatusResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1MaintenanceMaintenanceStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(WordPressV1MaintenanceMaintenanceStatusResourceStatus),
   }),
@@ -6941,7 +6903,7 @@ export interface GetHostingMemcachedObjectCacheStatusV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const GetHostingMemcachedObjectCacheStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingMemcachedObjectCacheStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -6958,13 +6920,11 @@ export const GetHostingMemcachedObjectCacheStatusV1Request = /*@__PURE__*/ S.sus
 
 /** Current Memcached object cache status for the WordPress installation */
 export type WordPressV1MemcachedMemcachedStatusResourceStatus = "active" | "inactive";
-export const WordPressV1MemcachedMemcachedStatusResourceStatus = S.String;
-
 export interface WordPressV1MemcachedMemcachedStatusResource {
   /** Current Memcached object cache status for the WordPress installation */
   status?: WordPressV1MemcachedMemcachedStatusResourceStatus;
 }
-export const WordPressV1MemcachedMemcachedStatusResource =
+const WordPressV1MemcachedMemcachedStatusResource =
   WordPressV1MaintenanceMaintenanceStatusResource as any as S.Schema<WordPressV1MemcachedMemcachedStatusResource>;
 
 export interface GetHostingNodeJsBuildDetailsV1Request {
@@ -6974,7 +6934,7 @@ export interface GetHostingNodeJsBuildDetailsV1Request {
   /** Build UUID */
   uuid: string;
 }
-export const GetHostingNodeJsBuildDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingNodeJsBuildDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -6992,7 +6952,7 @@ export const GetHostingNodeJsBuildDetailsV1Request = /*@__PURE__*/ S.suspend(() 
 
 /** Build state */
 export type HostingV1NodeJsBuildResourceState = "pending" | "running" | "completed" | "failed";
-export const HostingV1NodeJsBuildResourceState = S.String;
+const HostingV1NodeJsBuildResourceState = S.String;
 
 /** Node.js application type */
 export type HostingV1NodeJsBuildOptionsResourceAppType =
@@ -7015,15 +6975,15 @@ export type HostingV1NodeJsBuildOptionsResourceAppType =
   | "react-router"
   | "nitro"
   | "other";
-export const HostingV1NodeJsBuildOptionsResourceAppType = S.String;
+const HostingV1NodeJsBuildOptionsResourceAppType = S.String;
 
 /** Package manager */
 export type HostingV1NodeJsBuildOptionsResourcePackageManager = "npm" | "yarn" | "pnpm";
-export const HostingV1NodeJsBuildOptionsResourcePackageManager = S.String;
+const HostingV1NodeJsBuildOptionsResourcePackageManager = S.String;
 
 /** Source type for the build */
 export type HostingV1NodeJsBuildOptionsResourceSourceType = "archive" | "git";
-export const HostingV1NodeJsBuildOptionsResourceSourceType = S.String;
+const HostingV1NodeJsBuildOptionsResourceSourceType = S.String;
 
 export interface HostingV1GitGitCommitAuthorResource {
   /** Author name as recorded in the commit */
@@ -7031,7 +6991,7 @@ export interface HostingV1GitGitCommitAuthorResource {
   /** Avatar URL of the author on the Git provider */
   avatar_url: string | null;
 }
-export const HostingV1GitGitCommitAuthorResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitCommitAuthorResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     avatar_url: S.NullOr(S.String),
@@ -7047,7 +7007,7 @@ export interface HostingV1GitGitCommitResource {
   message: string;
   author: HostingV1GitGitCommitAuthorResource;
 }
-export const HostingV1GitGitCommitResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitCommitResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String,
     message: S.String,
@@ -7072,7 +7032,7 @@ export interface HostingV1NodeJsSourceOptionsResource {
   /** Commit that was built (present if source_type is "git"). Null until the clone step has resolved the branch head. */
   commit: HostingV1GitGitCommitResource | null;
 }
-export const HostingV1NodeJsSourceOptionsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsSourceOptionsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_path: S.optional(S.NullOr(S.String)),
     owner: S.NullOr(S.String),
@@ -7105,7 +7065,7 @@ export interface HostingV1NodeJsBuildOptionsResource {
   /** Source options, varies based on sourceType */
   source_options: HostingV1NodeJsSourceOptionsResource | null;
 }
-export const HostingV1NodeJsBuildOptionsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsBuildOptionsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_version: S.Number,
     app_type: S.NullOr(HostingV1NodeJsBuildOptionsResourceAppType),
@@ -7133,7 +7093,7 @@ export interface HostingV1NodeJsBuildResource {
   /** Last update timestamp */
   updated_at?: string;
 }
-export const HostingV1NodeJsBuildResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsBuildResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     state: S.optional(HostingV1NodeJsBuildResourceState),
@@ -7154,7 +7114,7 @@ export interface GetHostingNodeJSBuildLogsV1Request {
   /** Line from which to start retrieving logs */
   from_line?: number;
 }
-export const GetHostingNodeJSBuildLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingNodeJSBuildLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7177,7 +7137,7 @@ export interface HostingV1NodeJsBuildLogsResource {
   /** Number of log lines returned */
   lines: number;
 }
-export const HostingV1NodeJsBuildLogsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsBuildLogsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.NullOr(S.String),
     lines: S.Number,
@@ -7191,7 +7151,7 @@ export interface GetHostingNodeJsBuildSettingsV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7227,11 +7187,11 @@ export type HostingV1NodeJsStoredBuildSettingsResourceAppType =
   | "react-router"
   | "nitro"
   | "other";
-export const HostingV1NodeJsStoredBuildSettingsResourceAppType = S.String;
+const HostingV1NodeJsStoredBuildSettingsResourceAppType = S.String;
 
 /** Package manager used to install dependencies */
 export type HostingV1NodeJsStoredBuildSettingsResourcePackageManager = "npm" | "yarn" | "pnpm";
-export const HostingV1NodeJsStoredBuildSettingsResourcePackageManager = S.String;
+const HostingV1NodeJsStoredBuildSettingsResourcePackageManager = S.String;
 
 export interface HostingV1NodeJsStoredBuildSettingsResource {
   /** Node.js major version used to build and run the application */
@@ -7249,7 +7209,7 @@ export interface HostingV1NodeJsStoredBuildSettingsResource {
   /** Package manager used to install dependencies */
   package_manager: HostingV1NodeJsStoredBuildSettingsResourcePackageManager | null;
 }
-export const HostingV1NodeJsStoredBuildSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsStoredBuildSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_version: S.Number,
     app_type: S.NullOr(HostingV1NodeJsStoredBuildSettingsResourceAppType),
@@ -7264,7 +7224,7 @@ export const HostingV1NodeJsStoredBuildSettingsResource = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<HostingV1NodeJsStoredBuildSettingsResource>;
 
 export type GetHostingNodeJsRuntimeLogsV1RequestPeriod = "1h" | "1d" | "1w" | "1m";
-export const GetHostingNodeJsRuntimeLogsV1RequestPeriod = S.String;
+const GetHostingNodeJsRuntimeLogsV1RequestPeriod = S.String;
 
 export type GetHostingNodeJsRuntimeLogsV1RequestLevelsItem =
   | "LOG"
@@ -7273,12 +7233,10 @@ export type GetHostingNodeJsRuntimeLogsV1RequestLevelsItem =
   | "INFO"
   | "DEBUG"
   | "TRACE";
-export const GetHostingNodeJsRuntimeLogsV1RequestLevelsItem = S.String;
-
 export type GetHostingNodeJsRuntimeLogsV1RequestLevelsList = Array<
   GetHostingNodeJsRuntimeLogsV1RequestLevelsItem | (string & {})
 >;
-export const GetHostingNodeJsRuntimeLogsV1RequestLevelsList =
+const GetHostingNodeJsRuntimeLogsV1RequestLevelsList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<GetHostingNodeJsRuntimeLogsV1RequestLevelsList>;
 
 export interface GetHostingNodeJsRuntimeLogsV1Request {
@@ -7294,7 +7252,7 @@ export interface GetHostingNodeJsRuntimeLogsV1Request {
   /** Return only entries with these log levels, sent as a comma-separated list, e.g. ERROR,WARN. Matching runs on the raw log line, so entries written with numeric levels (for example by pino) are excluded while this filter is set. */
   levels?: GetHostingNodeJsRuntimeLogsV1RequestLevelsList;
 }
-export const GetHostingNodeJsRuntimeLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingNodeJsRuntimeLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7321,7 +7279,7 @@ export interface HostingV1NodeJsLogEntryResource {
   /** Log message */
   message: string;
 }
-export const HostingV1NodeJsLogEntryResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsLogEntryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.String,
     level: S.String,
@@ -7333,7 +7291,7 @@ export const HostingV1NodeJsLogEntryResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.NodeJs.LogEntryResource`](#model/hostingv1nodejslogentryresource) */
 export type HostingV1NodeJsLogEntryCollection = Array<HostingV1NodeJsLogEntryResource>;
-export const HostingV1NodeJsLogEntryCollection = /*@__PURE__*/ S.Array(
+const HostingV1NodeJsLogEntryCollection = /*@__PURE__*/ S.Array(
   HostingV1NodeJsLogEntryResource,
 ) as any as S.Schema<HostingV1NodeJsLogEntryCollection>;
 
@@ -7346,7 +7304,7 @@ export interface HostingV1NodeJsRuntimeLogsResource {
   /** Time of the last completed build; entries before it belong to the previous deployment. null when no build has completed yet. */
   last_deployed_at: string | null;
 }
-export const HostingV1NodeJsRuntimeLogsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsRuntimeLogsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: HostingV1NodeJsLogEntryCollection,
     started_at: S.NullOr(S.String),
@@ -7362,7 +7320,7 @@ export interface GetHostingPHPDetailsV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetHostingPHPDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPHPDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7383,7 +7341,7 @@ export interface HostingV1PhpPhpVersionsResource {
   /** Key-value pairs of unsupported versions */
   unsupported?: unknown;
 }
-export const HostingV1PhpPhpVersionsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1PhpPhpVersionsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supported: S.optional(S.Unknown),
     unsupported: S.optional(S.Unknown),
@@ -7406,7 +7364,7 @@ export interface HostingV1PhpPhpOptionResource {
   /** Maximum value allowed by the account hosting plan, when applicable */
   max?: string | null;
 }
-export const HostingV1PhpPhpOptionResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1PhpPhpOptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     value: S.optional(S.String),
@@ -7423,19 +7381,16 @@ export const HostingV1PhpPhpOptionResource = /*@__PURE__*/ S.suspend(() =>
 export type HostingV1PhpPhpDetailsResourceOptionsMap = {
   [key: string]: HostingV1PhpPhpOptionResource | undefined;
 };
-export const HostingV1PhpPhpDetailsResourceOptionsMap = /*@__PURE__*/ S.Record(
+const HostingV1PhpPhpDetailsResourceOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
   HostingV1PhpPhpOptionResource,
 ) as any as S.Schema<HostingV1PhpPhpDetailsResourceOptionsMap>;
 
 export type HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList = Array<string>;
-export const HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList =
-  AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList>;
-
 /** Groups of extensions that conflict with each other */
 export type HostingV1PhpPhpDetailsResourceConflictingExtensionsList =
   Array<HostingV1PhpPhpDetailsResourceConflictingExtensionsItemList>;
-export const HostingV1PhpPhpDetailsResourceConflictingExtensionsList =
+const HostingV1PhpPhpDetailsResourceConflictingExtensionsList =
   DomainsV1DomainDomainExtendedResourceChildNameServersList as any as S.Schema<HostingV1PhpPhpDetailsResourceConflictingExtensionsList>;
 
 export interface HostingV1PhpPhpDetailsResource {
@@ -7451,7 +7406,7 @@ export interface HostingV1PhpPhpDetailsResource {
   /** Groups of extensions that conflict with each other */
   conflicting_extensions?: HostingV1PhpPhpDetailsResourceConflictingExtensionsList;
 }
-export const HostingV1PhpPhpDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1PhpPhpDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     php_version: S.optional(S.String),
     php_version_full: S.optional(S.String),
@@ -7469,7 +7424,7 @@ export interface GetHostingPHPInfoV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetHostingPHPInfoV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPHPInfoV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7488,7 +7443,7 @@ export interface HostingV1PhpPhpInfoResource {
   /** HTML string containing the full phpinfo page */
   info?: string;
 }
-export const HostingV1PhpPhpInfoResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1PhpPhpInfoResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(S.String),
   }),
@@ -7501,7 +7456,7 @@ export interface GetHostingPhpMyAdminLinkV1Request {
   /** Full database name as returned by the list databases endpoint. */
   name: string;
 }
-export const GetHostingPhpMyAdminLinkV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPhpMyAdminLinkV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -7520,7 +7475,7 @@ export interface HostingV1DatabasesPhpMyAdminLinkResource {
   /** Direct sign-on URL to phpMyAdmin for the specified database. */
   link: string;
 }
-export const HostingV1DatabasesPhpMyAdminLinkResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DatabasesPhpMyAdminLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.String,
   }),
@@ -7533,7 +7488,7 @@ export interface GetHostingSSLStatusV1Request {
   /** Domain name */
   domain: string;
 }
-export const GetHostingSSLStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingSSLStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7556,7 +7511,7 @@ export type HostingV1SslSslStatusResourceStatus =
   | "active"
   | "expired"
   | "failed";
-export const HostingV1SslSslStatusResourceStatus = S.String;
+const HostingV1SslSslStatusResourceStatus = S.String;
 
 /** Provider of the assigned certificate, or of the last recorded installation when none is assigned. `custom` means an uploaded certificate. Null when no certificate is assigned and no installation is recorded, which is also the case for free subdomains on the platform-managed certificate. */
 export type HostingV1SslSslStatusResourceProvider =
@@ -7565,7 +7520,7 @@ export type HostingV1SslSslStatusResourceProvider =
   | "zerossl"
   | "googlessl"
   | "hssl";
-export const HostingV1SslSslStatusResourceProvider = S.String;
+const HostingV1SslSslStatusResourceProvider = S.String;
 
 export interface HostingV1SslSslStatusResource {
   /** Current certificate status */
@@ -7581,7 +7536,7 @@ export interface HostingV1SslSslStatusResource {
   /** Last installation error, when it is one of the known displayable messages */
   last_error: string | null;
 }
-export const HostingV1SslSslStatusResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1SslSslStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: HostingV1SslSslStatusResourceStatus,
     provider: S.NullOr(HostingV1SslSslStatusResourceProvider),
@@ -7605,7 +7560,7 @@ export interface GetHostingWebsiteFileContentV1Request {
   /** Max number of lines to return. */
   max_lines?: number;
 }
-export const GetHostingWebsiteFileContentV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWebsiteFileContentV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -7635,7 +7590,7 @@ export interface HostingV1FilesFileContentResource {
   /** Total file size in bytes. */
   size_bytes: number;
 }
-export const HostingV1FilesFileContentResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1FilesFileContentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     content: S.String,
@@ -7652,7 +7607,7 @@ export interface GetHostingWordPressCoreVersionV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const GetHostingWordPressCoreVersionV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetHostingWordPressCoreVersionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -7679,7 +7634,7 @@ export interface WordPressV1CommonVulnerabilityResource {
   /** Link to the vulnerability advisory */
   direct_url?: string;
 }
-export const WordPressV1CommonVulnerabilityResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1CommonVulnerabilityResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -7694,7 +7649,7 @@ export const WordPressV1CommonVulnerabilityResource = /*@__PURE__*/ S.suspend(()
 /** Known vulnerabilities affecting the installed core version */
 export type WordPressV1InstallationsVersionResourceVulnerabilitiesList =
   Array<WordPressV1CommonVulnerabilityResource>;
-export const WordPressV1InstallationsVersionResourceVulnerabilitiesList = /*@__PURE__*/ S.Array(
+const WordPressV1InstallationsVersionResourceVulnerabilitiesList = /*@__PURE__*/ S.Array(
   WordPressV1CommonVulnerabilityResource,
 ) as any as S.Schema<WordPressV1InstallationsVersionResourceVulnerabilitiesList>;
 
@@ -7704,7 +7659,7 @@ export interface WordPressV1InstallationsVersionResource {
   /** Known vulnerabilities affecting the installed core version */
   vulnerabilities?: WordPressV1InstallationsVersionResourceVulnerabilitiesList;
 }
-export const WordPressV1InstallationsVersionResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1InstallationsVersionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     vulnerabilities: S.optional(WordPressV1InstallationsVersionResourceVulnerabilitiesList),
@@ -7717,7 +7672,7 @@ export interface GetMailOrderPlanV1Request {
   /** Order resource ID */
   orderId: string;
 }
-export const GetMailOrderPlanV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetMailOrderPlanV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/mail/v1/orders/{orderId}/plan", code: 200 })),
@@ -7739,7 +7694,7 @@ export interface MailV1OrdersPlanDomainResource {
   /** Whether POP3 access is available */
   is_pop3_enabled?: boolean;
 }
-export const MailV1OrdersPlanDomainResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersPlanDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailbox_quota: S.optional(S.Number),
     forwarder_quota: S.optional(S.Number),
@@ -7772,7 +7727,7 @@ export interface MailV1OrdersPlanMailboxResource {
   /** Outbound message rate limit as `messages/seconds` */
   rate_limit_outbound?: string;
 }
-export const MailV1OrdersPlanMailboxResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersPlanMailboxResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storage_quota: S.optional(S.Number),
     messages_quota: S.optional(S.Number),
@@ -7796,7 +7751,7 @@ export interface MailV1OrdersPlanResource {
   domain?: MailV1OrdersPlanDomainResource;
   mailbox?: MailV1OrdersPlanMailboxResource;
 }
-export const MailV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -7809,24 +7764,22 @@ export interface GetMailWebhookV1Request {
   /** Webhook ID (returned when the webhook was created) */
   webhookId: string;
 }
-export const GetMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/mail/v1/webhooks/{webhookId}", code: 200 })),
 ).annotate({ identifier: "GetMailWebhookV1Request" }) as any as S.Schema<GetMailWebhookV1Request>;
 
 export type MailV1WebhooksWebhookResourceEventsItem = "message.received";
-export const MailV1WebhooksWebhookResourceEventsItem = S.String;
-
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookResourceEventsList =
   Array<MailV1WebhooksWebhookResourceEventsItem>;
-export const MailV1WebhooksWebhookResourceEventsList =
+const MailV1WebhooksWebhookResourceEventsList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookResourceEventsList>;
 
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookResourceStatus = "active" | "disabled" | "paused";
-export const MailV1WebhooksWebhookResourceStatus = S.String;
+const MailV1WebhooksWebhookResourceStatus = S.String;
 
 export interface MailV1WebhooksWebhookResource {
   /** Unique webhook identifier */
@@ -7845,7 +7798,7 @@ export interface MailV1WebhooksWebhookResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1WebhooksWebhookResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1WebhooksWebhookResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mailbox: S.optional(MailV1WebhooksWebhookMailboxResource),
@@ -7867,7 +7820,7 @@ export interface GetReachAutomationDetailsV1Request {
   /** Automation uuid parameter */
   automationUuid: string;
 }
-export const GetReachAutomationDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachAutomationDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     automationUuid: S.String.pipe(T.Label()),
@@ -7884,7 +7837,7 @@ export const GetReachAutomationDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** There is no `completed` status. Use `events.completed` to see how many contacts finished. */
 export type ReachV1AutomationsAutomationResourceStatus = "active" | "paused" | "draft";
-export const ReachV1AutomationsAutomationResourceStatus = S.String;
+const ReachV1AutomationsAutomationResourceStatus = S.String;
 
 /** What kind of workflow this is. `custom` automations are the ones built from scratch. */
 export type ReachV1AutomationsAutomationResourceType =
@@ -7900,7 +7853,7 @@ export type ReachV1AutomationsAutomationResourceType =
   | "re_engagement_non_clickers"
   | "form_submitted"
   | "custom";
-export const ReachV1AutomationsAutomationResourceType = S.String;
+const ReachV1AutomationsAutomationResourceType = S.String;
 
 /** Counts of contacts moving through the automation. These are not email engagement metrics. Automations expose no sent, open or click counters - use the campaign statistics endpoint for those. */
 export interface ReachV1AutomationsAutomationEventsResource {
@@ -7913,7 +7866,7 @@ export interface ReachV1AutomationsAutomationEventsResource {
   /** Contacts whose journey through the automation errored and stopped. */
   failed?: number;
 }
-export const ReachV1AutomationsAutomationEventsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1AutomationsAutomationEventsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     started: S.optional(S.Number),
     in_progress: S.optional(S.Number),
@@ -7937,7 +7890,7 @@ export interface ReachV1AutomationsAutomationResource {
   created_at?: string | null;
   updated_at?: string | null;
 }
-export const ReachV1AutomationsAutomationResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1AutomationsAutomationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.String),
@@ -7958,7 +7911,7 @@ export interface GetReachCampaignDetailsV1Request {
   /** Campaign uuid parameter */
   campaignUuid: string;
 }
-export const GetReachCampaignDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachCampaignDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     campaignUuid: S.String.pipe(T.Label()),
@@ -7980,13 +7933,13 @@ export type ReachV1CampaignsCampaignDetailsResourceStatus =
   | "sending"
   | "publish"
   | "failed";
-export const ReachV1CampaignsCampaignDetailsResourceStatus = S.String;
+const ReachV1CampaignsCampaignDetailsResourceStatus = S.String;
 
 export type ReachV1CampaignsCampaignDetailsResourceType =
   | "campaign"
   | "automation"
   | "double_opt_in";
-export const ReachV1CampaignsCampaignDetailsResourceType = S.String;
+const ReachV1CampaignsCampaignDetailsResourceType = S.String;
 
 /** Delivery progress. While the campaign is `sending`, `total_sent` climbs towards the estimate. */
 export interface ReachV1CampaignsCampaignDeliveryResource {
@@ -7997,7 +7950,7 @@ export interface ReachV1CampaignsCampaignDeliveryResource {
   /** Contacts currently targeted by this campaign. */
   subscribers_count?: number;
 }
-export const ReachV1CampaignsCampaignDeliveryResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCampaignDeliveryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_sent: S.optional(S.Number),
     estimated_total_recipients: S.optional(S.NullOr(S.Number)),
@@ -8009,7 +7962,7 @@ export const ReachV1CampaignsCampaignDeliveryResource = /*@__PURE__*/ S.suspend(
 
 /** Segments this campaign targets. Empty when it targets all contacts. */
 export type ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList = Array<string>;
-export const ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList =
+const ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachV1CampaignsCampaignDetailsResourceSegmentUuidsList>;
 
 export interface ReachV1CampaignsCampaignDetailsResource {
@@ -8037,7 +7990,7 @@ export interface ReachV1CampaignsCampaignDetailsResource {
   sent_at?: string | null;
   scheduled_at?: string | null;
 }
-export const ReachV1CampaignsCampaignDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCampaignDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     title: S.optional(S.String),
@@ -8067,7 +8020,7 @@ export interface GetReachCampaignPerformanceV1Request {
   /** Campaign uuid parameter */
   campaignUuid: string;
 }
-export const GetReachCampaignPerformanceV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachCampaignPerformanceV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     campaignUuid: S.String.pipe(T.Label()),
@@ -8109,7 +8062,7 @@ export interface ReachV1CampaignsCampaignStatisticsResource {
   unsubscribe_rate?: number;
   has_bounced_contacts?: boolean;
 }
-export const ReachV1CampaignsCampaignStatisticsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCampaignStatisticsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_sent: S.optional(S.Number),
     estimated_total_recipients: S.optional(S.NullOr(S.Number)),
@@ -8135,7 +8088,7 @@ export interface GetReachConnectedSendingDomainV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const GetReachConnectedSendingDomainV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachConnectedSendingDomainV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -8151,7 +8104,7 @@ export type ReachV1ProfilesDomainsSendingDomainResourceStatus =
   | "inactive"
   | "pending"
   | "blocked";
-export const ReachV1ProfilesDomainsSendingDomainResourceStatus = S.String;
+const ReachV1ProfilesDomainsSendingDomainResourceStatus = S.String;
 
 /** A sender address on the connected domain that is no longer allowed to send. */
 export interface ReachV1ProfilesDomainsSuspendedSenderEmailResource {
@@ -8160,7 +8113,7 @@ export interface ReachV1ProfilesDomainsSuspendedSenderEmailResource {
   email_local_part?: string;
   suspended_at?: string;
 }
-export const ReachV1ProfilesDomainsSuspendedSenderEmailResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsSuspendedSenderEmailResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     email_local_part: S.optional(S.String),
@@ -8173,10 +8126,9 @@ export const ReachV1ProfilesDomainsSuspendedSenderEmailResource = /*@__PURE__*/ 
 /** Sender addresses on this domain that have been suspended. A campaign using one of them will not go out even while the domain itself is active. */
 export type ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList =
   Array<ReachV1ProfilesDomainsSuspendedSenderEmailResource>;
-export const ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList =
-  /*@__PURE__*/ S.Array(
-    ReachV1ProfilesDomainsSuspendedSenderEmailResource,
-  ) as any as S.Schema<ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList>;
+const ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList = /*@__PURE__*/ S.Array(
+  ReachV1ProfilesDomainsSuspendedSenderEmailResource,
+) as any as S.Schema<ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList>;
 
 /** The sending domain connected to the profile. When no domain is connected every field is `null` and `suspended_sender_emails` is empty, so the shape stays the same whether or not the profile is set up for sending. */
 export interface ReachV1ProfilesDomainsSendingDomainResource {
@@ -8191,7 +8143,7 @@ export interface ReachV1ProfilesDomainsSendingDomainResource {
   /** Sender addresses on this domain that have been suspended. A campaign using one of them will not go out even while the domain itself is active. */
   suspended_sender_emails?: ReachV1ProfilesDomainsSendingDomainResourceSuspendedSenderEmailsList;
 }
-export const ReachV1ProfilesDomainsSendingDomainResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsSendingDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.NullOr(S.String)),
     status: S.optional(S.NullOr(ReachV1ProfilesDomainsSendingDomainResourceStatus)),
@@ -8211,7 +8163,7 @@ export interface GetReachContactDetailsV1Request {
   /** Contact uuid parameter */
   contactUuid: string;
 }
-export const GetReachContactDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachContactDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     contactUuid: S.String.pipe(T.Label()),
@@ -8231,7 +8183,7 @@ export type ReachV1ContactsContactDetailsResourceSubscriptionStatus =
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const ReachV1ContactsContactDetailsResourceSubscriptionStatus = S.String;
+const ReachV1ContactsContactDetailsResourceSubscriptionStatus = S.String;
 
 export type ReachV1ContactsContactDetailsResourceSource =
   | "sync"
@@ -8241,10 +8193,10 @@ export type ReachV1ContactsContactDetailsResourceSource =
   | "form"
   | "checkout"
   | "horizons";
-export const ReachV1ContactsContactDetailsResourceSource = S.String;
+const ReachV1ContactsContactDetailsResourceSource = S.String;
 
 export type ReachV1ContactsContactDetailsResourceTagsList = Array<ReachV1ContactsTagsTagResource>;
-export const ReachV1ContactsContactDetailsResourceTagsList = /*@__PURE__*/ S.Array(
+const ReachV1ContactsContactDetailsResourceTagsList = /*@__PURE__*/ S.Array(
   ReachV1ContactsTagsTagResource,
 ) as any as S.Schema<ReachV1ContactsContactDetailsResourceTagsList>;
 
@@ -8254,17 +8206,17 @@ export type ReachV1ContactsFieldsContactFieldValueResourceType =
   | "date"
   | "single_choice"
   | "multi_choice";
-export const ReachV1ContactsFieldsContactFieldValueResourceType = S.String;
+const ReachV1ContactsFieldsContactFieldValueResourceType = S.String;
 
 /** Chosen options for the choice field types, empty for the scalar types */
 export type ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList = Array<string>;
-export const ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList =
+const ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceSelectedOptionUuidsList>;
 
 /** Every option the field offers, not only the selected ones */
 export type ReachV1ContactsFieldsContactFieldValueResourceOptionsList =
   Array<ReachV1ContactsFieldsContactFieldOptionResource>;
-export const ReachV1ContactsFieldsContactFieldValueResourceOptionsList =
+const ReachV1ContactsFieldsContactFieldValueResourceOptionsList =
   ReachV1ContactsFieldsContactFieldResourceOptionsList as any as S.Schema<ReachV1ContactsFieldsContactFieldValueResourceOptionsList>;
 
 /** A custom contact field together with the value held by one contact */
@@ -8280,7 +8232,7 @@ export interface ReachV1ContactsFieldsContactFieldValueResource {
   /** Every option the field offers, not only the selected ones */
   options?: ReachV1ContactsFieldsContactFieldValueResourceOptionsList;
 }
-export const ReachV1ContactsFieldsContactFieldValueResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsFieldsContactFieldValueResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     type: S.optional(ReachV1ContactsFieldsContactFieldValueResourceType),
@@ -8299,7 +8251,7 @@ export const ReachV1ContactsFieldsContactFieldValueResource = /*@__PURE__*/ S.su
 /** Custom field values held by this contact */
 export type ReachV1ContactsContactDetailsResourceFieldsList =
   Array<ReachV1ContactsFieldsContactFieldValueResource>;
-export const ReachV1ContactsContactDetailsResourceFieldsList = /*@__PURE__*/ S.Array(
+const ReachV1ContactsContactDetailsResourceFieldsList = /*@__PURE__*/ S.Array(
   ReachV1ContactsFieldsContactFieldValueResource,
 ) as any as S.Schema<ReachV1ContactsContactDetailsResourceFieldsList>;
 
@@ -8320,7 +8272,7 @@ export interface ReachV1ContactsContactDetailsResource {
   /** Custom field values held by this contact */
   fields?: ReachV1ContactsContactDetailsResourceFieldsList;
 }
-export const ReachV1ContactsContactDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsContactDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     email: S.optional(S.String),
@@ -8347,7 +8299,7 @@ export interface GetReachFormDetailsV1Request {
   /** Form uuid parameter */
   formUuid: string;
 }
-export const GetReachFormDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachFormDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     formUuid: S.String.pipe(T.Label()),
@@ -8364,10 +8316,10 @@ export const GetReachFormDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** A `paused` form keeps its template online but stops accepting submissions. */
 export type ReachV1FormsFormDetailsResourceStatus = "active" | "paused" | "draft";
-export const ReachV1FormsFormDetailsResourceStatus = S.String;
+const ReachV1FormsFormDetailsResourceStatus = S.String;
 
 export type ReachV1FormsFormDetailsResourceType = "form";
-export const ReachV1FormsFormDetailsResourceType = S.String;
+const ReachV1FormsFormDetailsResourceType = S.String;
 
 /** The rendered form template. There is no ready-made embed snippet - either serve the HTML behind `url` or build your own embed around the form uuid. All fields stay null until the template has been generated. */
 export interface ReachV1FormsFormTemplateDetailsResource {
@@ -8377,7 +8329,7 @@ export interface ReachV1FormsFormTemplateDetailsResource {
   /** Publicly reachable URL of the template HTML. */
   url?: string | null;
 }
-export const ReachV1FormsFormTemplateDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1FormsFormTemplateDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.NullOr(S.String)),
     path: S.optional(S.NullOr(S.String)),
@@ -8389,7 +8341,7 @@ export const ReachV1FormsFormTemplateDetailsResource = /*@__PURE__*/ S.suspend((
 
 /** How the tag came about. `custom` covers the tags you create yourself, `import` the ones added by contact imports, and `form` and `system` the ones Reach creates on its own. Every form gets a `form:{name}` tag when it is created. */
 export type ReachV1FormsFormTagResourceType = "form" | "custom" | "import" | "system";
-export const ReachV1FormsFormTagResourceType = S.String;
+const ReachV1FormsFormTagResourceType = S.String;
 
 /** A tag applied to every contact this form captures. */
 export interface ReachV1FormsFormTagResource {
@@ -8398,7 +8350,7 @@ export interface ReachV1FormsFormTagResource {
   /** How the tag came about. `custom` covers the tags you create yourself, `import` the ones added by contact imports, and `form` and `system` the ones Reach creates on its own. Every form gets a `form:{name}` tag when it is created. */
   type?: ReachV1FormsFormTagResourceType;
 }
-export const ReachV1FormsFormTagResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1FormsFormTagResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     value: S.optional(S.String),
@@ -8410,7 +8362,7 @@ export const ReachV1FormsFormTagResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Tags applied to every contact this form captures. */
 export type ReachV1FormsFormDetailsResourceTagsList = Array<ReachV1FormsFormTagResource>;
-export const ReachV1FormsFormDetailsResourceTagsList = /*@__PURE__*/ S.Array(
+const ReachV1FormsFormDetailsResourceTagsList = /*@__PURE__*/ S.Array(
   ReachV1FormsFormTagResource,
 ) as any as S.Schema<ReachV1FormsFormDetailsResourceTagsList>;
 
@@ -8426,7 +8378,7 @@ export interface ReachV1FormsFormDetailsResource {
   created_at?: string;
   updated_at?: string | null;
 }
-export const ReachV1FormsFormDetailsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1FormsFormDetailsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.String),
@@ -8445,7 +8397,7 @@ export interface GetReachProfileDomainDNSStatusV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const GetReachProfileDomainDNSStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachProfileDomainDNSStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -8463,7 +8415,7 @@ export interface ReachV1ProfilesDomainsDnsRecordStatusActualItem {
   type?: string;
   value?: string;
 }
-export const ReachV1ProfilesDomainsDnsRecordStatusActualItem = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsDnsRecordStatusActualItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     value: S.optional(S.String),
@@ -8474,7 +8426,7 @@ export const ReachV1ProfilesDomainsDnsRecordStatusActualItem = /*@__PURE__*/ S.s
 
 export type ReachV1ProfilesDomainsDnsRecordStatusActualList =
   Array<ReachV1ProfilesDomainsDnsRecordStatusActualItem>;
-export const ReachV1ProfilesDomainsDnsRecordStatusActualList = /*@__PURE__*/ S.Array(
+const ReachV1ProfilesDomainsDnsRecordStatusActualList = /*@__PURE__*/ S.Array(
   ReachV1ProfilesDomainsDnsRecordStatusActualItem,
 ) as any as S.Schema<ReachV1ProfilesDomainsDnsRecordStatusActualList>;
 
@@ -8483,7 +8435,7 @@ export interface ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem {
   type?: string;
   value?: string;
 }
-export const ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -8495,7 +8447,7 @@ export const ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem = /*@__PURE__*/ 
 
 export type ReachV1ProfilesDomainsDnsRecordStatusSuggestedList =
   Array<ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem>;
-export const ReachV1ProfilesDomainsDnsRecordStatusSuggestedList = /*@__PURE__*/ S.Array(
+const ReachV1ProfilesDomainsDnsRecordStatusSuggestedList = /*@__PURE__*/ S.Array(
   ReachV1ProfilesDomainsDnsRecordStatusSuggestedItem,
 ) as any as S.Schema<ReachV1ProfilesDomainsDnsRecordStatusSuggestedList>;
 
@@ -8504,7 +8456,7 @@ export interface ReachV1ProfilesDomainsDnsRecordStatus {
   suggested?: ReachV1ProfilesDomainsDnsRecordStatusSuggestedList;
   is_valid?: boolean;
 }
-export const ReachV1ProfilesDomainsDnsRecordStatus = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsDnsRecordStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actual: S.optional(ReachV1ProfilesDomainsDnsRecordStatusActualList),
     suggested: S.optional(ReachV1ProfilesDomainsDnsRecordStatusSuggestedList),
@@ -8521,7 +8473,7 @@ export interface ReachV1ProfilesDomainsDnsStatusResource {
   dkim?: ReachV1ProfilesDomainsDnsRecordStatus;
   dmarc?: ReachV1ProfilesDomainsDnsRecordStatus;
 }
-export const ReachV1ProfilesDomainsDnsStatusResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesDomainsDnsStatusResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     mx: S.optional(ReachV1ProfilesDomainsDnsRecordStatus),
@@ -8539,7 +8491,7 @@ export interface GetReachProfileSegmentDetailsV1Request {
   /** Segment uuid parameter */
   segmentUuid: string;
 }
-export const GetReachProfileSegmentDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachProfileSegmentDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     segmentUuid: S.String.pipe(T.Label()),
@@ -8558,7 +8510,7 @@ export interface GetReachRemainingPlanLimitsV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const GetReachRemainingPlanLimitsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetReachRemainingPlanLimitsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/reach/v1/profiles/{profileUuid}/limits", code: 200 })),
@@ -8575,7 +8527,7 @@ export interface ReachV1ProfilesPlanLimitUsageResource {
   /** Headroom left. Floors at 0, so it never reports a negative overage. */
   remaining?: number;
 }
-export const ReachV1ProfilesPlanLimitUsageResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesPlanLimitUsageResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     used: S.optional(S.Number),
@@ -8595,7 +8547,7 @@ export interface ReachV1ProfilesPlanLimitsResource {
   /** End of the current period, that is the last moment of the calendar month. */
   period_end?: string;
 }
-export const ReachV1ProfilesPlanLimitsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesPlanLimitsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(ReachV1ProfilesPlanLimitUsageResource),
     recipients: S.optional(ReachV1ProfilesPlanLimitUsageResource),
@@ -8609,14 +8561,14 @@ export const ReachV1ProfilesPlanLimitsResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of domains for which to get verification details for. */
 export type GetV2DomainVerificationsDIRECTRequestDomainsList = Array<string>;
-export const GetV2DomainVerificationsDIRECTRequestDomainsList =
+const GetV2DomainVerificationsDIRECTRequestDomainsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<GetV2DomainVerificationsDIRECTRequestDomainsList>;
 
 export interface GetV2DomainVerificationsDIRECTRequest {
   /** The list of domains for which to get verification details for. */
   domains: GetV2DomainVerificationsDIRECTRequestDomainsList;
 }
-export const GetV2DomainVerificationsDIRECTRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV2DomainVerificationsDIRECTRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: GetV2DomainVerificationsDIRECTRequestDomainsList,
   }).pipe(T.Http({ method: "GET", uri: "/api/v2/direct/verifications/active", code: 200 })),
@@ -8627,7 +8579,7 @@ export const GetV2DomainVerificationsDIRECTRequest = /*@__PURE__*/ S.suspend(() 
 /** Verification records */
 export type DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList =
   Array<string>;
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPERecordsList>;
 
 /** Verification type ("NAMESERVERS" or "TXT"). Only verification types that exist for this domain will be present. */
@@ -8641,7 +8593,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Datetime when verification expires */
   verification_expiration?: string;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       records: S.optional(
@@ -8661,7 +8613,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Verification type ("NAMESERVERS" or "TXT"). Only verification types that exist for this domain will be present. */
   VERIFICATION_TYPE?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLDVERIFICATIONTYPE;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VERIFICATION_TYPE: S.optional(
@@ -8678,7 +8630,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Domain name (example). Contains verification types as properties. */
   DOMAIN_TLD?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDINGDOMAINTLD;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDING =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataPENDING =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       DOMAIN_TLD: S.optional(
@@ -8694,7 +8646,7 @@ export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDat
 /** Verification records */
 export type DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList =
   Array<string>;
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList>;
 
 /** Verification type (e.g., "NAMESERVERS", "TXT"). Only verification types that exist for this domain will be present. */
@@ -8702,7 +8654,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Verification records */
   records?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPERecordsList;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       records: S.optional(
@@ -8719,7 +8671,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Verification type (e.g., "NAMESERVERS", "TXT"). Only verification types that exist for this domain will be present. */
   VERIFICATION_TYPE?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLDVERIFICATIONTYPE;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       VERIFICATION_TYPE: S.optional(
@@ -8736,7 +8688,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Domain name (example). Contains verification types as properties. */
   DOMAIN_TLD?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIEDDOMAINTLD;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       DOMAIN_TLD: S.optional(
@@ -8756,7 +8708,7 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** Verified verifications grouped by domain. Keys are domain names (e.g., "byte.tld"). This property will not be returned if no verified verifications are found. */
   VERIFIED?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionDataVERIFIED;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData =
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       PENDING: S.optional(
@@ -8775,14 +8727,14 @@ export interface DomainAccessVerifierV2VerificationsActiveVerificationsCollectio
   /** List of active verifications by status. If no verifications are found, this will return an empty array. */
   data?: DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData;
 }
-export const DomainAccessVerifierV2VerificationsActiveVerificationsCollection =
-  /*@__PURE__*/ S.suspend(() =>
+const DomainAccessVerifierV2VerificationsActiveVerificationsCollection = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       data: S.optional(DomainAccessVerifierV2VerificationsActiveVerificationsCollectionData),
     }),
-  ).annotate({
-    identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollection",
-  }) as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollection>;
+).annotate({
+  identifier: "DomainAccessVerifierV2VerificationsActiveVerificationsCollection",
+}) as any as S.Schema<DomainAccessVerifierV2VerificationsActiveVerificationsCollection>;
 
 export interface GetVPSActionDetailsV1Request {
   /** Virtual Machine ID */
@@ -8790,7 +8742,7 @@ export interface GetVPSActionDetailsV1Request {
   /** Action ID */
   actionId: number;
 }
-export const GetVPSActionDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSActionDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     actionId: S.Number.pipe(T.Label()),
@@ -8811,7 +8763,7 @@ export interface GetVPSActionsV1Request {
   /** Page number */
   page?: number;
 }
-export const GetVPSActionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSActionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -8826,7 +8778,7 @@ export const GetVPSActionsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.Action.ActionResource`](#model/vpsv1actionactionresource) */
 export type VPSV1ActionActionCollection = Array<VPSV1ActionActionResource>;
-export const VPSV1ActionActionCollection = /*@__PURE__*/ S.Array(
+const VPSV1ActionActionCollection = /*@__PURE__*/ S.Array(
   VPSV1ActionActionResource,
 ) as any as S.Schema<VPSV1ActionActionCollection>;
 
@@ -8834,7 +8786,7 @@ export interface GetVPSActionsV1Response {
   data?: VPSV1ActionActionCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetVPSActionsV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSActionsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VPSV1ActionActionCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -8847,7 +8799,7 @@ export interface GetVPSAttachedPublicKeysV1Request {
   /** Page number */
   page?: number;
 }
-export const GetVPSAttachedPublicKeysV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSAttachedPublicKeysV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -8864,7 +8816,7 @@ export const GetVPSAttachedPublicKeysV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.PublicKey.PublicKeyResource`](#model/vpsv1publickeypublickeyresource) */
 export type VPSV1PublicKeyPublicKeyCollection = Array<VPSV1PublicKeyPublicKeyResource>;
-export const VPSV1PublicKeyPublicKeyCollection = /*@__PURE__*/ S.Array(
+const VPSV1PublicKeyPublicKeyCollection = /*@__PURE__*/ S.Array(
   VPSV1PublicKeyPublicKeyResource,
 ) as any as S.Schema<VPSV1PublicKeyPublicKeyCollection>;
 
@@ -8872,7 +8824,7 @@ export interface GetVPSAttachedPublicKeysV1Response {
   data?: VPSV1PublicKeyPublicKeyCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetVPSAttachedPublicKeysV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSAttachedPublicKeysV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VPSV1PublicKeyPublicKeyCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -8887,7 +8839,7 @@ export interface GetVPSBackupsV1Request {
   /** Page number */
   page?: number;
 }
-export const GetVPSBackupsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSBackupsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -8911,7 +8863,7 @@ export interface VPSV1BackupBackupResource {
   location?: string;
   created_at?: string;
 }
-export const VPSV1BackupBackupResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1BackupBackupResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     size: S.optional(S.Number),
@@ -8925,7 +8877,7 @@ export const VPSV1BackupBackupResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.Backup.BackupResource`](#model/vpsv1backupbackupresource) */
 export type VPSV1BackupBackupCollection = Array<VPSV1BackupBackupResource>;
-export const VPSV1BackupBackupCollection = /*@__PURE__*/ S.Array(
+const VPSV1BackupBackupCollection = /*@__PURE__*/ S.Array(
   VPSV1BackupBackupResource,
 ) as any as S.Schema<VPSV1BackupBackupCollection>;
 
@@ -8933,7 +8885,7 @@ export interface GetVPSBackupsV1Response {
   data?: VPSV1BackupBackupCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetVPSBackupsV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSBackupsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VPSV1BackupBackupCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -8944,7 +8896,7 @@ export interface GetVPSFirewallDetailsV1Request {
   /** Firewall ID */
   firewallId: number;
 }
-export const GetVPSFirewallDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSFirewallDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/firewall/{firewallId}", code: 200 })),
@@ -8958,7 +8910,7 @@ export interface GetVPSMetricsV1Request {
   date_from: string;
   date_to: string;
 }
-export const GetVPSMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     date_from: S.String.pipe(T.Query()),
@@ -8978,7 +8930,7 @@ export interface VPSV1MetricsMetricsResource {
   /** Object, containing UNIX timestamps as a key and measurement as a value. */
   usage?: unknown;
 }
-export const VPSV1MetricsMetricsResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1MetricsMetricsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     usage: S.optional(S.Unknown),
@@ -9001,7 +8953,7 @@ export interface VPSV1MetricsMetricsCollection {
   /** Uptime in milliseconds */
   uptime?: VPSV1MetricsMetricsResource | null;
 }
-export const VPSV1MetricsMetricsCollection = /*@__PURE__*/ S.suspend(() =>
+const VPSV1MetricsMetricsCollection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu_usage: S.optional(S.NullOr(VPSV1MetricsMetricsResource)),
     ram_usage: S.optional(S.NullOr(VPSV1MetricsMetricsResource)),
@@ -9020,7 +8972,7 @@ export interface GetVPSProjectContainersV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const GetVPSProjectContainersV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSProjectContainersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -9044,11 +8996,11 @@ export type VPSV1DockerManagerContainerResourceState =
   | "paused"
   | "dead"
   | "stopping";
-export const VPSV1DockerManagerContainerResourceState = S.String;
+const VPSV1DockerManagerContainerResourceState = S.String;
 
 /** Container health status */
 export type VPSV1DockerManagerContainerResourceHealth = "starting" | "healthy" | "unhealthy" | "";
-export const VPSV1DockerManagerContainerResourceHealth = S.String;
+const VPSV1DockerManagerContainerResourceHealth = S.String;
 
 /** Port mapping type - published (accessible from host), exposed (only internal), or range variants */
 export type VPSV1DockerManagerContainerPortResourceType =
@@ -9056,11 +9008,11 @@ export type VPSV1DockerManagerContainerPortResourceType =
   | "published_range"
   | "exposed"
   | "exposed_range";
-export const VPSV1DockerManagerContainerPortResourceType = S.String;
+const VPSV1DockerManagerContainerPortResourceType = S.String;
 
 /** Network protocol used for communication */
 export type VPSV1DockerManagerContainerPortResourceProtocol = "tcp" | "udp";
-export const VPSV1DockerManagerContainerPortResourceProtocol = S.String;
+const VPSV1DockerManagerContainerPortResourceProtocol = S.String;
 
 export interface VPSV1DockerManagerContainerPortResource {
   /** Port mapping type - published (accessible from host), exposed (only internal), or range variants */
@@ -9082,7 +9034,7 @@ export interface VPSV1DockerManagerContainerPortResource {
   /** Ending port number in container port range (null for single ports) */
   container_port_end?: number | null;
 }
-export const VPSV1DockerManagerContainerPortResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerContainerPortResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(VPSV1DockerManagerContainerPortResourceType),
     protocol: S.optional(VPSV1DockerManagerContainerPortResourceProtocol),
@@ -9101,7 +9053,7 @@ export const VPSV1DockerManagerContainerPortResource = /*@__PURE__*/ S.suspend((
 /** Array of [`VPS.V1.DockerManager.ContainerPortResource`](#model/vpsv1dockermanagercontainerportresource) */
 export type VPSV1DockerManagerContainerPortCollection =
   Array<VPSV1DockerManagerContainerPortResource>;
-export const VPSV1DockerManagerContainerPortCollection = /*@__PURE__*/ S.Array(
+const VPSV1DockerManagerContainerPortCollection = /*@__PURE__*/ S.Array(
   VPSV1DockerManagerContainerPortResource,
 ) as any as S.Schema<VPSV1DockerManagerContainerPortCollection>;
 
@@ -9119,7 +9071,7 @@ export interface VPSV1DockerManagerContainerStatsResource {
   /** Outbound network traffic in bytes */
   net_out?: number;
 }
-export const VPSV1DockerManagerContainerStatsResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerContainerStatsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu_percentage: S.optional(S.Number),
     memory_percentage: S.optional(S.Number),
@@ -9151,7 +9103,7 @@ export interface VPSV1DockerManagerContainerResource {
   /** Real-time resource usage statistics (only available for running containers) */
   stats?: VPSV1DockerManagerContainerStatsResource | null;
 }
-export const VPSV1DockerManagerContainerResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerContainerResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9169,12 +9121,12 @@ export const VPSV1DockerManagerContainerResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.DockerManager.ContainerResource`](#model/vpsv1dockermanagercontainerresource) */
 export type VPSV1DockerManagerContainerCollection = Array<VPSV1DockerManagerContainerResource>;
-export const VPSV1DockerManagerContainerCollection = /*@__PURE__*/ S.Array(
+const VPSV1DockerManagerContainerCollection = /*@__PURE__*/ S.Array(
   VPSV1DockerManagerContainerResource,
 ) as any as S.Schema<VPSV1DockerManagerContainerCollection>;
 
 export type GetVPSProjectContainersV1Response = VPSV1DockerManagerContainerCollection;
-export const GetVPSProjectContainersV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSProjectContainersV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1DockerManagerContainerCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetVPSProjectContainersV1Response",
@@ -9186,7 +9138,7 @@ export interface GetVPSProjectContentsV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const GetVPSProjectContentsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSProjectContentsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -9207,7 +9159,7 @@ export interface VPSV1DockerManagerContentResource {
   /** Project environment variables */
   environment?: string | null;
 }
-export const VPSV1DockerManagerContentResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerContentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.String),
     environment: S.optional(S.NullOr(S.String)),
@@ -9222,7 +9174,7 @@ export interface GetVPSProjectLogsV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const GetVPSProjectLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSProjectLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -9243,7 +9195,7 @@ export interface VPSV1DockerManagerLogEntryResource {
   /** Raw log message content as output by the application inside the container */
   line?: string;
 }
-export const VPSV1DockerManagerLogEntryResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerLogEntryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     line: S.optional(S.String),
@@ -9254,7 +9206,7 @@ export const VPSV1DockerManagerLogEntryResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.DockerManager.LogEntryResource`](#model/vpsv1dockermanagerlogentryresource) */
 export type VPSV1DockerManagerLogEntryCollection = Array<VPSV1DockerManagerLogEntryResource>;
-export const VPSV1DockerManagerLogEntryCollection = /*@__PURE__*/ S.Array(
+const VPSV1DockerManagerLogEntryCollection = /*@__PURE__*/ S.Array(
   VPSV1DockerManagerLogEntryResource,
 ) as any as S.Schema<VPSV1DockerManagerLogEntryCollection>;
 
@@ -9263,7 +9215,7 @@ export interface VPSV1DockerManagerLogsResource {
   service?: string;
   entries?: VPSV1DockerManagerLogEntryCollection;
 }
-export const VPSV1DockerManagerLogsResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerLogsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     entries: S.optional(VPSV1DockerManagerLogEntryCollection),
@@ -9274,12 +9226,12 @@ export const VPSV1DockerManagerLogsResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.DockerManager.LogsResource`](#model/vpsv1dockermanagerlogsresource) */
 export type VPSV1DockerManagerLogsCollection = Array<VPSV1DockerManagerLogsResource>;
-export const VPSV1DockerManagerLogsCollection = /*@__PURE__*/ S.Array(
+const VPSV1DockerManagerLogsCollection = /*@__PURE__*/ S.Array(
   VPSV1DockerManagerLogsResource,
 ) as any as S.Schema<VPSV1DockerManagerLogsCollection>;
 
 export type GetVPSProjectLogsV1Response = VPSV1DockerManagerLogsCollection;
-export const GetVPSProjectLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSProjectLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1DockerManagerLogsCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetVPSProjectLogsV1Response",
@@ -9289,7 +9241,7 @@ export interface GetVPSPublicKeysV1Request {
   /** Page number */
   page?: number;
 }
-export const GetVPSPublicKeysV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSPublicKeysV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/public-keys", code: 200 })),
@@ -9301,14 +9253,14 @@ export interface GetVPSPublicKeysV1Response {
   data?: VPSV1PublicKeyPublicKeyCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const GetVPSPublicKeysV1Response =
+const GetVPSPublicKeysV1Response =
   GetVPSAttachedPublicKeysV1Response as any as S.Schema<GetVPSPublicKeysV1Response>;
 
 export interface GetVPSScanMetricsV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const GetVPSScanMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSScanMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -9334,7 +9286,7 @@ export interface VPSV1MalwareMetricsResource {
   scan_started_at?: string;
   scan_ended_at?: string | null;
 }
-export const VPSV1MalwareMetricsResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1MalwareMetricsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     records: S.optional(S.Number),
     malicious: S.optional(S.Number),
@@ -9351,7 +9303,7 @@ export interface GetVPSSnapshotV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const GetVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -9371,7 +9323,7 @@ export interface VPSV1SnapshotSnapshotResource {
   created_at?: string;
   expires_at?: string;
 }
-export const VPSV1SnapshotSnapshotResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1SnapshotSnapshotResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     restore_time: S.optional(S.Number),
@@ -9386,7 +9338,7 @@ export interface GetVPSTemplateDetailsV1Request {
   /** Template ID */
   templateId: number;
 }
-export const GetVPSTemplateDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSTemplateDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templateId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/templates/{templateId}", code: 200 })),
@@ -9404,7 +9356,7 @@ export interface VPSV1TemplateTemplateResource {
   /** Link to official OS documentation */
   documentation?: string | null;
 }
-export const VPSV1TemplateTemplateResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1TemplateTemplateResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -9416,18 +9368,18 @@ export const VPSV1TemplateTemplateResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VPSV1TemplateTemplateResource>;
 
 export interface GetVPSTemplatesV1Request {}
-export const GetVPSTemplatesV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSTemplatesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/templates", code: 200 })),
 ).annotate({ identifier: "GetVPSTemplatesV1Request" }) as any as S.Schema<GetVPSTemplatesV1Request>;
 
 /** Array of [`VPS.V1.Template.TemplateResource`](#model/vpsv1templatetemplateresource) */
 export type VPSV1TemplateTemplateCollection = Array<VPSV1TemplateTemplateResource>;
-export const VPSV1TemplateTemplateCollection = /*@__PURE__*/ S.Array(
+const VPSV1TemplateTemplateCollection = /*@__PURE__*/ S.Array(
   VPSV1TemplateTemplateResource,
 ) as any as S.Schema<VPSV1TemplateTemplateCollection>;
 
 export type GetVPSTemplatesV1Response = VPSV1TemplateTemplateCollection;
-export const GetVPSTemplatesV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSTemplatesV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1TemplateTemplateCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetVPSTemplatesV1Response",
@@ -9437,7 +9389,7 @@ export interface GetVPSVirtualMachineDetailsV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const GetVPSVirtualMachineDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSVirtualMachineDetailsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -9464,10 +9416,10 @@ export type VPSV1VirtualMachineVirtualMachineResourceState =
   | "restoring"
   | "recovery"
   | "stopping_recovery";
-export const VPSV1VirtualMachineVirtualMachineResourceState = S.String;
+const VPSV1VirtualMachineVirtualMachineResourceState = S.String;
 
 export type VPSV1VirtualMachineVirtualMachineResourceActionsLock = "unlocked" | "locked";
-export const VPSV1VirtualMachineVirtualMachineResourceActionsLock = S.String;
+const VPSV1VirtualMachineVirtualMachineResourceActionsLock = S.String;
 
 export interface VPSV1IPAddressIPAddressResource {
   /** IP address ID */
@@ -9477,7 +9429,7 @@ export interface VPSV1IPAddressIPAddressResource {
   /** IP address PTR record */
   ptr?: string | null;
 }
-export const VPSV1IPAddressIPAddressResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1IPAddressIPAddressResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     address: S.optional(S.String),
@@ -9489,7 +9441,7 @@ export const VPSV1IPAddressIPAddressResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.IPAddress.IPAddressResource`](#model/vpsv1ipaddressipaddressresource) */
 export type VPSV1IPAddressIPAddressCollection = Array<VPSV1IPAddressIPAddressResource>;
-export const VPSV1IPAddressIPAddressCollection = /*@__PURE__*/ S.Array(
+const VPSV1IPAddressIPAddressCollection = /*@__PURE__*/ S.Array(
   VPSV1IPAddressIPAddressResource,
 ) as any as S.Schema<VPSV1IPAddressIPAddressCollection>;
 
@@ -9527,7 +9479,7 @@ export interface VPSV1VirtualMachineVirtualMachineResource {
   template?: VPSV1TemplateTemplateResource | null;
   created_at?: string;
 }
-export const VPSV1VirtualMachineVirtualMachineResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1VirtualMachineVirtualMachineResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     firewall_group_id: S.optional(S.NullOr(S.Number)),
@@ -9553,7 +9505,7 @@ export const VPSV1VirtualMachineVirtualMachineResource = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<VPSV1VirtualMachineVirtualMachineResource>;
 
 export interface GetVPSVirtualMachinesV1Request {}
-export const GetVPSVirtualMachinesV1Request = /*@__PURE__*/ S.suspend(() =>
+const GetVPSVirtualMachinesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/virtual-machines", code: 200 })),
 ).annotate({
   identifier: "GetVPSVirtualMachinesV1Request",
@@ -9562,19 +9514,19 @@ export const GetVPSVirtualMachinesV1Request = /*@__PURE__*/ S.suspend(() =>
 /** Array of [`VPS.V1.VirtualMachine.VirtualMachineResource`](#model/vpsv1virtualmachinevirtualmachineresource) */
 export type VPSV1VirtualMachineVirtualMachineCollection =
   Array<VPSV1VirtualMachineVirtualMachineResource>;
-export const VPSV1VirtualMachineVirtualMachineCollection = /*@__PURE__*/ S.Array(
+const VPSV1VirtualMachineVirtualMachineCollection = /*@__PURE__*/ S.Array(
   VPSV1VirtualMachineVirtualMachineResource,
 ) as any as S.Schema<VPSV1VirtualMachineVirtualMachineCollection>;
 
 export type GetVPSVirtualMachinesV1Response = VPSV1VirtualMachineVirtualMachineCollection;
-export const GetVPSVirtualMachinesV1Response = /*@__PURE__*/ S.suspend(() =>
+const GetVPSVirtualMachinesV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1VirtualMachineVirtualMachineCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetVPSVirtualMachinesV1Response",
 }) as any as S.Schema<GetVPSVirtualMachinesV1Response>;
 
 export interface HorizonsGetWebsiteListV1Request {}
-export const HorizonsGetWebsiteListV1Request = /*@__PURE__*/ S.suspend(() =>
+const HorizonsGetWebsiteListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/horizons/v1/websites", code: 200 })),
 ).annotate({
   identifier: "HorizonsGetWebsiteListV1Request",
@@ -9586,7 +9538,7 @@ export type HorizonsV1WebsitesWebsiteResourceStatus =
   | "suspended"
   | "deleting"
   | "deleted";
-export const HorizonsV1WebsitesWebsiteResourceStatus = S.String;
+const HorizonsV1WebsitesWebsiteResourceStatus = S.String;
 
 export interface HorizonsV1WebsitesWebsiteResource {
   /** The website ID */
@@ -9602,7 +9554,7 @@ export interface HorizonsV1WebsitesWebsiteResource {
   /** The website URL for the user to access their website in Hostinger Horizons interface */
   website_url: string;
 }
-export const HorizonsV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+const HorizonsV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_id: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -9617,12 +9569,12 @@ export const HorizonsV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Horizons.V1.Websites.WebsiteResource`](#model/horizonsv1websiteswebsiteresource) */
 export type HorizonsV1WebsitesWebsiteCollection = Array<HorizonsV1WebsitesWebsiteResource>;
-export const HorizonsV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
+const HorizonsV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
   HorizonsV1WebsitesWebsiteResource,
 ) as any as S.Schema<HorizonsV1WebsitesWebsiteCollection>;
 
 export type HorizonsGetWebsiteListV1Response = HorizonsV1WebsitesWebsiteCollection;
-export const HorizonsGetWebsiteListV1Response = /*@__PURE__*/ S.suspend(() =>
+const HorizonsGetWebsiteListV1Response = /*@__PURE__*/ S.suspend(() =>
   HorizonsV1WebsitesWebsiteCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "HorizonsGetWebsiteListV1Response",
@@ -9635,7 +9587,7 @@ export interface HostingAnalyseFailedNodeJsBuildV1Request {
   /** Build UUID */
   uuid: string;
 }
-export const HostingAnalyseFailedNodeJsBuildV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingAnalyseFailedNodeJsBuildV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -9657,7 +9609,7 @@ export interface HostingV1NodeJsBuildAnalysisResource {
   /** Suggested fix for the build failure. null when no analysis could be produced. */
   solution: string | null;
 }
-export const HostingV1NodeJsBuildAnalysisResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsBuildAnalysisResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analysis: S.NullOr(S.String),
     solution: S.NullOr(S.String),
@@ -9673,7 +9625,7 @@ export interface HostingChangeDatabasePasswordV1Request {
   /** New database user password. */
   password: string | Redacted.Redacted<string>;
 }
-export const HostingChangeDatabasePasswordV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingChangeDatabasePasswordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9696,7 +9648,7 @@ export interface HostingDeployStaticSiteArchiveV1Request {
   /** Relative path to the archive file from website root directory */
   archive_path: string;
 }
-export const HostingDeployStaticSiteArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingDeployStaticSiteArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -9715,7 +9667,7 @@ export const HostingDeployStaticSiteArchiveV1Request = /*@__PURE__*/ S.suspend((
 export interface HostingDetectWordPressInstallationsV1Request {
   username: string;
 }
-export const HostingDetectWordPressInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingDetectWordPressInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(
@@ -9735,7 +9687,7 @@ export interface HostingGenerateUploadURLV1Request {
   /** Website domain */
   domain: string;
 }
-export const HostingGenerateUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingGenerateUploadURLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     domain: S.String,
@@ -9752,7 +9704,7 @@ export interface HostingV1FilesUploadUrlResource {
   /** Authentication token to pass as the `X-Auth-Rest` header in TUS upload requests */
   rest_auth_key: string;
 }
-export const HostingV1FilesUploadUrlResource =
+const HostingV1FilesUploadUrlResource =
   AgencyHostingV1FilesUploadUrlResource as any as S.Schema<HostingV1FilesUploadUrlResource>;
 
 export interface HostingGetNodeJsBuildSettingsFromArchiveV1Request {
@@ -9762,7 +9714,7 @@ export interface HostingGetNodeJsBuildSettingsFromArchiveV1Request {
   /** The path to the archive file relative to the document root of the vhost */
   archive_path: string;
 }
-export const HostingGetNodeJsBuildSettingsFromArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingGetNodeJsBuildSettingsFromArchiveV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -9799,15 +9751,15 @@ export type HostingV1NodeJsBuildSettingsResourceAppType =
   | "react-router"
   | "nitro"
   | "other";
-export const HostingV1NodeJsBuildSettingsResourceAppType = S.String;
+const HostingV1NodeJsBuildSettingsResourceAppType = S.String;
 
 /** Package manager */
 export type HostingV1NodeJsBuildSettingsResourcePackageManager = "npm" | "yarn" | "pnpm";
-export const HostingV1NodeJsBuildSettingsResourcePackageManager = S.String;
+const HostingV1NodeJsBuildSettingsResourcePackageManager = S.String;
 
 /** The scripts configured in the package.json file */
 export type HostingV1NodeJsBuildSettingsResourceAvailableScriptsList = Array<string>;
-export const HostingV1NodeJsBuildSettingsResourceAvailableScriptsList =
+const HostingV1NodeJsBuildSettingsResourceAvailableScriptsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1NodeJsBuildSettingsResourceAvailableScriptsList>;
 
 export interface HostingV1NodeJsBuildSettingsResource {
@@ -9828,7 +9780,7 @@ export interface HostingV1NodeJsBuildSettingsResource {
   /** The scripts configured in the package.json file */
   available_scripts: HostingV1NodeJsBuildSettingsResourceAvailableScriptsList;
 }
-export const HostingV1NodeJsBuildSettingsResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsBuildSettingsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app_type: S.NullOr(HostingV1NodeJsBuildSettingsResourceAppType),
     node_version: S.NullOr(S.Number),
@@ -9848,12 +9800,10 @@ export type HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem =
   | "directory"
   | "symlink"
   | "other";
-export const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem = S.String;
-
 export type HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList = Array<
   HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesItem | (string & {})
 >;
-export const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList =
+const HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList>;
 
 export interface HostingListWebsiteFilesAndDirectoriesV1Request {
@@ -9871,7 +9821,7 @@ export interface HostingListWebsiteFilesAndDirectoriesV1Request {
   /** Filter by entry type, e.g. file,directory. Omit for all types. */
   file_types?: HostingListWebsiteFilesAndDirectoriesV1RequestFileTypesList;
 }
-export const HostingListWebsiteFilesAndDirectoriesV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingListWebsiteFilesAndDirectoriesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -9895,7 +9845,7 @@ export const HostingListWebsiteFilesAndDirectoriesV1Request = /*@__PURE__*/ S.su
 
 /** Entry type. */
 export type HostingV1FilesFilesResourceItemsItemType = "file" | "directory" | "symlink" | "other";
-export const HostingV1FilesFilesResourceItemsItemType = S.String;
+const HostingV1FilesFilesResourceItemsItemType = S.String;
 
 export interface HostingV1FilesFilesResourceItemsItem {
   /** Entry name. */
@@ -9907,7 +9857,7 @@ export interface HostingV1FilesFilesResourceItemsItem {
   /** Entry size in bytes. Null for directories, symlinks, and other non-file entries. */
   size_bytes: number | null;
 }
-export const HostingV1FilesFilesResourceItemsItem = /*@__PURE__*/ S.suspend(() =>
+const HostingV1FilesFilesResourceItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     path: S.String,
@@ -9920,7 +9870,7 @@ export const HostingV1FilesFilesResourceItemsItem = /*@__PURE__*/ S.suspend(() =
 
 /** Entries found in the listed directory. */
 export type HostingV1FilesFilesResourceItemsList = Array<HostingV1FilesFilesResourceItemsItem>;
-export const HostingV1FilesFilesResourceItemsList = /*@__PURE__*/ S.Array(
+const HostingV1FilesFilesResourceItemsList = /*@__PURE__*/ S.Array(
   HostingV1FilesFilesResourceItemsItem,
 ) as any as S.Schema<HostingV1FilesFilesResourceItemsList>;
 
@@ -9936,7 +9886,7 @@ export interface HostingV1FilesFilesResource {
   /** Number of entries skipped before this page. */
   offset: number;
 }
-export const HostingV1FilesFilesResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1FilesFilesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     items: HostingV1FilesFilesResourceItemsList,
@@ -9953,7 +9903,7 @@ export interface HostingRepairDatabaseV1Request {
   /** Full database name as returned by the list databases endpoint. */
   name: string;
 }
-export const HostingRepairDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingRepairDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -9977,7 +9927,7 @@ export interface HostingSetupWebsiteDatabaseV1Request {
   /** Optional database user. Generated when omitted. Letters, digits and underscores; must not start with an underscore. Up to 14 characters without the account username prefix (`u123456789_`), which is added automatically when missing. With the prefix the full user is 12 to 25 characters. */
   user?: string;
 }
-export const HostingSetupWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
+const HostingSetupWebsiteDatabaseV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -10004,7 +9954,7 @@ export interface HostingV1DatabasesWebsiteDatabaseConnectionResource {
   /** MySQL port as written into DB_PORT */
   port: number;
 }
-export const HostingV1DatabasesWebsiteDatabaseConnectionResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DatabasesWebsiteDatabaseConnectionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     user: S.String,
@@ -10017,7 +9967,7 @@ export const HostingV1DatabasesWebsiteDatabaseConnectionResource = /*@__PURE__*/
 
 /** Names of the environment variables written for this database. Values are never returned. */
 export type HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList = Array<string>;
-export const HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList =
+const HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList>;
 
 export interface HostingV1DatabasesWebsiteDatabaseResource {
@@ -10025,7 +9975,7 @@ export interface HostingV1DatabasesWebsiteDatabaseResource {
   /** Names of the environment variables written for this database. Values are never returned. */
   env_var_keys: HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList;
 }
-export const HostingV1DatabasesWebsiteDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DatabasesWebsiteDatabaseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: HostingV1DatabasesWebsiteDatabaseConnectionResource,
     env_var_keys: HostingV1DatabasesWebsiteDatabaseResourceEnvVarKeysList,
@@ -10043,7 +9993,7 @@ export interface ImportHostingWordPressWebsiteV1Request {
   /** Path to the database SQL file (relative to website root) */
   sql_path: string;
 }
-export const ImportHostingWordPressWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const ImportHostingWordPressWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -10066,7 +10016,7 @@ export interface InstallAgencyHostingWebsiteSSLV1Request {
   /** Domain name */
   domain: string;
 }
-export const InstallAgencyHostingWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallAgencyHostingWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -10086,7 +10036,7 @@ export interface InstallHostingSSLV1Request {
   /** Domain name */
   domain: string;
 }
-export const InstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -10103,7 +10053,7 @@ export const InstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Plugin slugs to install. Use GET /api/hosting/v1/wordpress/plugins to discover available slugs. */
 export type InstallHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const InstallHostingWordPressPluginsV1RequestPluginsList =
+const InstallHostingWordPressPluginsV1RequestPluginsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<InstallHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface InstallHostingWordPressPluginsV1Request {
@@ -10113,7 +10063,7 @@ export interface InstallHostingWordPressPluginsV1Request {
   /** Plugin slugs to install. Use GET /api/hosting/v1/wordpress/plugins to discover available slugs. */
   plugins: InstallHostingWordPressPluginsV1RequestPluginsList;
 }
-export const InstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -10137,7 +10087,7 @@ export type InstallHostingWordPressThemeV1RequestFont =
   | "creative"
   | "dynamic"
   | "default";
-export const InstallHostingWordPressThemeV1RequestFont = S.String;
+const InstallHostingWordPressThemeV1RequestFont = S.String;
 
 export interface InstallHostingWordPressThemeV1Request {
   username: string;
@@ -10152,7 +10102,7 @@ export interface InstallHostingWordPressThemeV1Request {
   /** Font identifier. Only applied when the theme is a Hostinger theme; the default is used when omitted. */
   font?: InstallHostingWordPressThemeV1RequestFont | (string & {}) | null;
 }
-export const InstallHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -10173,7 +10123,7 @@ export const InstallHostingWordPressThemeV1Request = /*@__PURE__*/ S.suspend(() 
 
 /** WordPress core auto-update policy */
 export type InstallHostingWordPressV1RequestAutoUpdates = "all" | "none" | "minor";
-export const InstallHostingWordPressV1RequestAutoUpdates = S.String;
+const InstallHostingWordPressV1RequestAutoUpdates = S.String;
 
 /** WordPress admin credentials */
 export interface InstallHostingWordPressV1RequestCredentials {
@@ -10182,7 +10132,7 @@ export interface InstallHostingWordPressV1RequestCredentials {
   login: string;
   password: string | Redacted.Redacted<string>;
 }
-export const InstallHostingWordPressV1RequestCredentials = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingWordPressV1RequestCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     login: S.String,
@@ -10199,7 +10149,7 @@ export interface InstallHostingWordPressV1RequestDatabase {
   /** Password for a new database. Random when omitted or null. Ignored when the named database already exists. */
   password?: string | Redacted.Redacted<string> | null;
 }
-export const InstallHostingWordPressV1RequestDatabase = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingWordPressV1RequestDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -10229,7 +10179,7 @@ export interface InstallHostingWordPressV1Request {
   /** Optional. If the named database already exists on the account, it is used for this WordPress install. Otherwise a new database is created with this name, or with a generated name when database is omitted or null. A new database gets a random database user and counts toward the plan's database limit. */
   database?: InstallHostingWordPressV1RequestDatabase | null;
 }
-export const InstallHostingWordPressV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallHostingWordPressV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String,
@@ -10256,7 +10206,7 @@ export interface InstallVPSMonarxV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const InstallVPSMonarxV1Request = /*@__PURE__*/ S.suspend(() =>
+const InstallVPSMonarxV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -10275,7 +10225,7 @@ export type ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDa
   | 7
   | 14
   | 30;
-export const ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDays = S.Number;
+const ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDays = S.Number;
 
 export interface ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request {
   /** Agency Plan order ID */
@@ -10285,20 +10235,19 @@ export interface ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request {
     | ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDays
     | (number & {});
 }
-export const ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      order_id: S.Number.pipe(T.Label()),
-      time_frame_days: S.optional(
-        ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDays.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/agency-hosting/v1/orders/{order_id}/disk-usage-metrics",
-        code: 200,
-      }),
+const ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    order_id: S.Number.pipe(T.Label()),
+    time_frame_days: S.optional(
+      ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1RequestTimeFrameDays.pipe(T.Query()),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/agency-hosting/v1/orders/{order_id}/disk-usage-metrics",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request",
 }) as any as S.Schema<ListAgencyHostingAgencyPlanOrderDiskUsageMetricsV1Request>;
@@ -10309,7 +10258,7 @@ export interface AgencyHostingV1OrdersDiskUsageMetricsLimitsResource {
   /** Inodes quota */
   inodes?: number;
 }
-export const AgencyHostingV1OrdersDiskUsageMetricsLimitsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersDiskUsageMetricsLimitsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disk_bytes: S.optional(S.Number),
     inodes: S.optional(S.Number),
@@ -10326,7 +10275,7 @@ export interface AgencyHostingV1OrdersDiskUsageMetricsMetricResource {
   /** Unix timestamp of the sample */
   timestamp?: number;
 }
-export const AgencyHostingV1OrdersDiskUsageMetricsMetricResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersDiskUsageMetricsMetricResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disk_bytes: S.optional(S.Number),
     inodes: S.optional(S.Number),
@@ -10339,7 +10288,7 @@ export const AgencyHostingV1OrdersDiskUsageMetricsMetricResource = /*@__PURE__*/
 /** Array of [`AgencyHosting.V1.Orders.DiskUsageMetrics.MetricResource`](#model/agencyhostingv1ordersdiskusagemetricsmetricresource) */
 export type AgencyHostingV1OrdersDiskUsageMetricsMetricCollection =
   Array<AgencyHostingV1OrdersDiskUsageMetricsMetricResource>;
-export const AgencyHostingV1OrdersDiskUsageMetricsMetricCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1OrdersDiskUsageMetricsMetricCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1OrdersDiskUsageMetricsMetricResource,
 ) as any as S.Schema<AgencyHostingV1OrdersDiskUsageMetricsMetricCollection>;
 
@@ -10347,7 +10296,7 @@ export interface AgencyHostingV1OrdersDiskUsageMetricsMetricsResource {
   limits?: AgencyHostingV1OrdersDiskUsageMetricsLimitsResource;
   metrics?: AgencyHostingV1OrdersDiskUsageMetricsMetricCollection;
 }
-export const AgencyHostingV1OrdersDiskUsageMetricsMetricsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersDiskUsageMetricsMetricsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limits: S.optional(AgencyHostingV1OrdersDiskUsageMetricsLimitsResource),
     metrics: S.optional(AgencyHostingV1OrdersDiskUsageMetricsMetricCollection),
@@ -10357,7 +10306,7 @@ export const AgencyHostingV1OrdersDiskUsageMetricsMetricsResource = /*@__PURE__*
 }) as any as S.Schema<AgencyHostingV1OrdersDiskUsageMetricsMetricsResource>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList = Array<number>;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList =
+const ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList =
   AttachVPSPublicKeyV1RequestIdsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestOrderIdsList>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem =
@@ -10366,12 +10315,10 @@ export type ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem =
   | "suspended"
   | "deleting"
   | "deleted";
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem = S.String;
-
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList = Array<
   ListAgencyHostingAgencyPlanWebsitesV1RequestStatesItem | (string & {})
 >;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList =
+const ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestStatesList>;
 
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem =
@@ -10380,12 +10327,10 @@ export type ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem =
   | "horizons"
   | "nodejs"
   | "other";
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem = S.String;
-
 export type ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList = Array<
   ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesItem | (string & {})
 >;
-export const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList =
+const ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListAgencyHostingAgencyPlanWebsitesV1RequestWebsiteTypesList>;
 
 export interface ListAgencyHostingAgencyPlanWebsitesV1Request {
@@ -10402,7 +10347,7 @@ export interface ListAgencyHostingAgencyPlanWebsitesV1Request {
   /** Filter by domain name (case-insensitive substring match) */
   domain?: string;
 }
-export const ListAgencyHostingAgencyPlanWebsitesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAgencyPlanWebsitesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -10419,7 +10364,7 @@ export const ListAgencyHostingAgencyPlanWebsitesV1Request = /*@__PURE__*/ S.susp
 
 /** Website platform */
 export type AgencyHostingV1WebsitesWebsiteListItemResourcePlatform = "h5g" | "builder" | "u4s";
-export const AgencyHostingV1WebsitesWebsiteListItemResourcePlatform = S.String;
+const AgencyHostingV1WebsitesWebsiteListItemResourcePlatform = S.String;
 
 /** Website plan details */
 export interface AgencyHostingV1WebsitesPlanResource {
@@ -10427,7 +10372,7 @@ export interface AgencyHostingV1WebsitesPlanResource {
   display_name?: string;
   has_cdn?: boolean;
 }
-export const AgencyHostingV1WebsitesPlanResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display_name: S.optional(S.String),
@@ -10445,22 +10390,12 @@ export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceType =
   | "nodejs"
   | "u4s"
   | "other";
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceType = S.String;
-
 /** Website state */
 export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceState = "active" | "suspended";
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceState = S.String;
-
 /** Website domains */
 export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList = Array<unknown>;
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList =
-  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList>;
-
 /** Ongoing website processes */
 export type AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList = Array<unknown>;
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList =
-  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList>;
-
 export interface AgencyHostingV1WebsitesH5gWebsiteDetailsResource {
   /** Website UID */
   uid?: string;
@@ -10490,27 +10425,6 @@ export interface AgencyHostingV1WebsitesH5gWebsiteDetailsResource {
   /** Horizons UUID (only for horizons websites) */
   horizons_uuid?: string | null;
 }
-export const AgencyHostingV1WebsitesH5gWebsiteDetailsResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uid: S.optional(S.String),
-    ipv4: S.optional(S.String),
-    flavor: S.optional(S.String),
-    type: S.optional(AgencyHostingV1WebsitesH5gWebsiteDetailsResourceType),
-    username: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    state: S.optional(AgencyHostingV1WebsitesH5gWebsiteDetailsResourceState),
-    created_at: S.optional(S.String),
-    settings: S.optional(S.Unknown),
-    wordpress: S.optional(S.NullOr(S.Unknown)),
-    domains: S.optional(AgencyHostingV1WebsitesH5gWebsiteDetailsResourceDomainsList),
-    preview_domain: S.optional(S.NullOr(S.Unknown)),
-    processes: S.optional(AgencyHostingV1WebsitesH5gWebsiteDetailsResourceProcessesList),
-    horizons_uuid: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "AgencyHostingV1WebsitesH5gWebsiteDetailsResource",
-}) as any as S.Schema<AgencyHostingV1WebsitesH5gWebsiteDetailsResource>;
-
 export interface AgencyHostingV1WebsitesBuilderWebsiteDetailsResource {
   /** Builder ID */
   id?: string | null;
@@ -10522,27 +10436,10 @@ export interface AgencyHostingV1WebsitesBuilderWebsiteDetailsResource {
   username?: string;
   created_at?: string;
 }
-export const AgencyHostingV1WebsitesBuilderWebsiteDetailsResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    vhost: S.optional(S.String),
-    type: S.optional(S.String),
-    username: S.optional(S.String),
-    created_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgencyHostingV1WebsitesBuilderWebsiteDetailsResource",
-}) as any as S.Schema<AgencyHostingV1WebsitesBuilderWebsiteDetailsResource>;
-
 /** Detected website type */
 export type AgencyHostingV1WebsitesU4sWebsiteDetailsResourceType = "u4s" | "horizons";
-export const AgencyHostingV1WebsitesU4sWebsiteDetailsResourceType = S.String;
-
 /** Application domains */
 export type AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList = Array<unknown>;
-export const AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList =
-  CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList>;
-
 export interface AgencyHostingV1WebsitesU4sWebsiteDetailsResource {
   /** Application UUID */
   uuid?: string;
@@ -10563,28 +10460,12 @@ export interface AgencyHostingV1WebsitesU4sWebsiteDetailsResource {
   /** Preview domain */
   preview_domain?: unknown | null;
 }
-export const AgencyHostingV1WebsitesU4sWebsiteDetailsResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uuid: S.optional(S.String),
-    title: S.optional(S.String),
-    port: S.optional(S.Number),
-    type: S.optional(AgencyHostingV1WebsitesU4sWebsiteDetailsResourceType),
-    runtime: S.optional(S.String),
-    state: S.optional(S.String),
-    domains: S.optional(AgencyHostingV1WebsitesU4sWebsiteDetailsResourceDomainsList),
-    horizons_uuid: S.optional(S.NullOr(S.String)),
-    preview_domain: S.optional(S.NullOr(S.Unknown)),
-  }),
-).annotate({
-  identifier: "AgencyHostingV1WebsitesU4sWebsiteDetailsResource",
-}) as any as S.Schema<AgencyHostingV1WebsitesU4sWebsiteDetailsResource>;
-
 /** Platform-specific website details. Shape depends on `platform`. */
 export type AgencyHostingV1WebsitesWebsiteListItemResourceDetails =
   | AgencyHostingV1WebsitesH5gWebsiteDetailsResource
   | AgencyHostingV1WebsitesBuilderWebsiteDetailsResource
   | AgencyHostingV1WebsitesU4sWebsiteDetailsResource;
-export const AgencyHostingV1WebsitesWebsiteListItemResourceDetails =
+const AgencyHostingV1WebsitesWebsiteListItemResourceDetails =
   S.Unknown as any as S.Schema<AgencyHostingV1WebsitesWebsiteListItemResourceDetails>;
 
 /** Website item. The `details` shape differs per platform -- see the `platform` field. */
@@ -10603,7 +10484,7 @@ export interface AgencyHostingV1WebsitesWebsiteListItemResource {
   /** Reason for suspension, only populated for payment related suspensions */
   suspension_reason: string | null;
 }
-export const AgencyHostingV1WebsitesWebsiteListItemResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteListItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     client_id: S.Number,
@@ -10622,7 +10503,7 @@ export const AgencyHostingV1WebsitesWebsiteListItemResource = /*@__PURE__*/ S.su
 /** Array of [`AgencyHosting.V1.Websites.WebsiteListItemResource`](#model/agencyhostingv1websiteswebsitelistitemresource) */
 export type AgencyHostingV1WebsitesWebsiteCollection =
   Array<AgencyHostingV1WebsitesWebsiteListItemResource>;
-export const AgencyHostingV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesWebsiteListItemResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesWebsiteCollection>;
 
@@ -10630,7 +10511,7 @@ export interface ListAgencyHostingAgencyPlanWebsitesV1Response {
   data?: AgencyHostingV1WebsitesWebsiteCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListAgencyHostingAgencyPlanWebsitesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAgencyPlanWebsitesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AgencyHostingV1WebsitesWebsiteCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -10643,7 +10524,7 @@ export interface ListAgencyHostingAvailableDatacentersV1Request {
   /** Agency Plan order ID */
   order_id: number;
 }
-export const ListAgencyHostingAvailableDatacentersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAvailableDatacentersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -10663,7 +10544,7 @@ export interface AgencyHostingV1DatacentersCoordinatesResource {
   /** Longitude coordinate */
   longitude?: number;
 }
-export const AgencyHostingV1DatacentersCoordinatesResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1DatacentersCoordinatesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -10683,7 +10564,7 @@ export interface AgencyHostingV1DatacentersDatacenterResource {
   /** URL you can ping to measure round-trip latency to this datacenter. Compare the measured latency across datacenters to identify the nearest one (lowest ping) for your website. Null when no online server is currently available to measure against. */
   pinger_url: string | null;
 }
-export const AgencyHostingV1DatacentersDatacenterResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1DatacentersDatacenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     code: S.String,
@@ -10698,13 +10579,13 @@ export const AgencyHostingV1DatacentersDatacenterResource = /*@__PURE__*/ S.susp
 /** Array of [`AgencyHosting.V1.Datacenters.DatacenterResource`](#model/agencyhostingv1datacentersdatacenterresource) */
 export type AgencyHostingV1DatacentersDatacenterCollection =
   Array<AgencyHostingV1DatacentersDatacenterResource>;
-export const AgencyHostingV1DatacentersDatacenterCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1DatacentersDatacenterCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1DatacentersDatacenterResource,
 ) as any as S.Schema<AgencyHostingV1DatacentersDatacenterCollection>;
 
 export type ListAgencyHostingAvailableDatacentersV1Response =
   AgencyHostingV1DatacentersDatacenterCollection;
-export const ListAgencyHostingAvailableDatacentersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAvailableDatacentersV1Response = /*@__PURE__*/ S.suspend(() =>
   AgencyHostingV1DatacentersDatacenterCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingAvailableDatacentersV1Response",
@@ -10714,17 +10595,16 @@ export interface ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request {
   /** Agency Plan order ID */
   order_id: number;
 }
-export const ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      order_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/agency-hosting/v1/orders/{order_id}/websites/php-settings/versions",
-        code: 200,
-      }),
-    ),
+const ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    order_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/agency-hosting/v1/orders/{order_id}/websites/php-settings/versions",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request",
 }) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAnOrderV1Request>;
@@ -10733,7 +10613,7 @@ export interface AgencyHostingV1PhpVersionResource {
   /** PHP version available for the website. */
   version?: string;
 }
-export const AgencyHostingV1PhpVersionResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1PhpVersionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
@@ -10743,14 +10623,14 @@ export const AgencyHostingV1PhpVersionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`AgencyHosting.V1.Php.VersionResource`](#model/agencyhostingv1phpversionresource) */
 export type AgencyHostingV1PhpVersionCollection = Array<AgencyHostingV1PhpVersionResource>;
-export const AgencyHostingV1PhpVersionCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1PhpVersionCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1PhpVersionResource,
 ) as any as S.Schema<AgencyHostingV1PhpVersionCollection>;
 
 export type ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response =
   AgencyHostingV1PhpVersionCollection;
-export const ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response = /*@__PURE__*/ S.suspend(
-  () => AgencyHostingV1PhpVersionCollection.pipe(T.RawResponseRoot()),
+const ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response = /*@__PURE__*/ S.suspend(() =>
+  AgencyHostingV1PhpVersionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response",
 }) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response>;
@@ -10759,31 +10639,30 @@ export interface ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      website_uid: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/agency-hosting/v1/websites/{website_uid}/php-settings/versions",
-        code: 200,
-      }),
-    ),
+const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    website_uid: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/agency-hosting/v1/websites/{website_uid}/php-settings/versions",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request",
 }) as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Request>;
 
 export type ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response =
   AgencyHostingV1PhpVersionCollection;
-export const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response =
+const ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response =
   ListAgencyHostingAvailablePHPVersionsForAnOrderV1Response as any as S.Schema<ListAgencyHostingAvailablePHPVersionsForAWebsiteV1Response>;
 
 export interface ListAgencyHostingAvailableWordPressVersionsV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ListAgencyHostingAvailableWordPressVersionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAvailableWordPressVersionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -10801,25 +10680,22 @@ export interface AgencyHostingV1WordPressVersionResource {
   /** WordPress core version. */
   version?: string;
 }
-export const AgencyHostingV1WordPressVersionResource =
-  AgencyHostingV1PhpVersionResource as any as S.Schema<AgencyHostingV1WordPressVersionResource>;
-
 /** Array of [`AgencyHosting.V1.WordPress.VersionResource`](#model/agencyhostingv1wordpressversionresource) */
 export type AgencyHostingV1WordPressVersionCollection =
   Array<AgencyHostingV1WordPressVersionResource>;
-export const AgencyHostingV1WordPressVersionCollection =
+const AgencyHostingV1WordPressVersionCollection =
   AgencyHostingV1PhpVersionCollection as any as S.Schema<AgencyHostingV1WordPressVersionCollection>;
 
 export type ListAgencyHostingAvailableWordPressVersionsV1Response =
   AgencyHostingV1WordPressVersionCollection;
-export const ListAgencyHostingAvailableWordPressVersionsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingAvailableWordPressVersionsV1Response = /*@__PURE__*/ S.suspend(() =>
   AgencyHostingV1WordPressVersionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingAvailableWordPressVersionsV1Response",
 }) as any as S.Schema<ListAgencyHostingAvailableWordPressVersionsV1Response>;
 
 export type ListAgencyHostingDomainsV1RequestWebsiteUuidsList = Array<string>;
-export const ListAgencyHostingDomainsV1RequestWebsiteUuidsList =
+const ListAgencyHostingDomainsV1RequestWebsiteUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ListAgencyHostingDomainsV1RequestWebsiteUuidsList>;
 
 export interface ListAgencyHostingDomainsV1Request {
@@ -10830,7 +10706,7 @@ export interface ListAgencyHostingDomainsV1Request {
   /** Filter by website UIDs */
   website_uuids?: ListAgencyHostingDomainsV1RequestWebsiteUuidsList;
 }
-export const ListAgencyHostingDomainsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingDomainsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -10848,7 +10724,7 @@ export interface AgencyHostingV1DomainsDomainResource {
   /** Creation date */
   created_at?: string;
 }
-export const AgencyHostingV1DomainsDomainResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1DomainsDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fqdn: S.optional(S.String),
     website_uid: S.optional(S.String),
@@ -10860,7 +10736,7 @@ export const AgencyHostingV1DomainsDomainResource = /*@__PURE__*/ S.suspend(() =
 
 /** Array of [`AgencyHosting.V1.Domains.DomainResource`](#model/agencyhostingv1domainsdomainresource) */
 export type AgencyHostingV1DomainsDomainCollection = Array<AgencyHostingV1DomainsDomainResource>;
-export const AgencyHostingV1DomainsDomainCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1DomainsDomainCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1DomainsDomainResource,
 ) as any as S.Schema<AgencyHostingV1DomainsDomainCollection>;
 
@@ -10868,7 +10744,7 @@ export interface ListAgencyHostingDomainsV1Response {
   data?: AgencyHostingV1DomainsDomainCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListAgencyHostingDomainsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingDomainsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AgencyHostingV1DomainsDomainCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -10883,7 +10759,7 @@ export type ListAgencyHostingOrderResourceUsageMetricsV1RequestTimeFrameHours =
   | 168
   | 336
   | 720;
-export const ListAgencyHostingOrderResourceUsageMetricsV1RequestTimeFrameHours = S.Number;
+const ListAgencyHostingOrderResourceUsageMetricsV1RequestTimeFrameHours = S.Number;
 
 export interface ListAgencyHostingOrderResourceUsageMetricsV1Request {
   /** Agency Plan order ID */
@@ -10893,7 +10769,7 @@ export interface ListAgencyHostingOrderResourceUsageMetricsV1Request {
     | ListAgencyHostingOrderResourceUsageMetricsV1RequestTimeFrameHours
     | (number & {});
 }
-export const ListAgencyHostingOrderResourceUsageMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingOrderResourceUsageMetricsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Label()),
     time_frame_hours: S.optional(
@@ -10918,7 +10794,7 @@ export interface AgencyHostingV1OrdersResourceUsageMetricsLimitsResource {
   /** Process usage quota */
   processes?: number;
 }
-export const AgencyHostingV1OrdersResourceUsageMetricsLimitsResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersResourceUsageMetricsLimitsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memory_bytes: S.optional(S.Number),
     cpu_percent: S.optional(S.Number),
@@ -10938,7 +10814,7 @@ export interface AgencyHostingV1OrdersResourceUsageMetricsMetricResource {
   /** Unix timestamp of the sample */
   timestamp?: number;
 }
-export const AgencyHostingV1OrdersResourceUsageMetricsMetricResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersResourceUsageMetricsMetricResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu_percent: S.optional(S.Number),
     memory_bytes: S.optional(S.Number),
@@ -10952,13 +10828,13 @@ export const AgencyHostingV1OrdersResourceUsageMetricsMetricResource = /*@__PURE
 /** Array of [`AgencyHosting.V1.Orders.ResourceUsageMetrics.MetricResource`](#model/agencyhostingv1ordersresourceusagemetricsmetricresource) */
 export type AgencyHostingV1OrdersResourceUsageMetricsMetricCollection =
   Array<AgencyHostingV1OrdersResourceUsageMetricsMetricResource>;
-export const AgencyHostingV1OrdersResourceUsageMetricsMetricCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1OrdersResourceUsageMetricsMetricCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1OrdersResourceUsageMetricsMetricResource,
 ) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsMetricCollection>;
 
 /** Domains associated with the website */
 export type AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList = Array<string>;
-export const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList =
+const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList>;
 
 export interface AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource {
@@ -10968,13 +10844,12 @@ export interface AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource {
   domains?: AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList;
   metrics?: AgencyHostingV1OrdersResourceUsageMetricsMetricCollection;
 }
-export const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uid: S.optional(S.String),
-      domains: S.optional(AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList),
-      metrics: S.optional(AgencyHostingV1OrdersResourceUsageMetricsMetricCollection),
-    }),
+const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uid: S.optional(S.String),
+    domains: S.optional(AgencyHostingV1OrdersResourceUsageMetricsWebsiteResourceDomainsList),
+    metrics: S.optional(AgencyHostingV1OrdersResourceUsageMetricsMetricCollection),
+  }),
 ).annotate({
   identifier: "AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource",
 }) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource>;
@@ -10982,7 +10857,7 @@ export const AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource = /*@__PUR
 /** Array of [`AgencyHosting.V1.Orders.ResourceUsageMetrics.WebsiteResource`](#model/agencyhostingv1ordersresourceusagemetricswebsiteresource) */
 export type AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection =
   Array<AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource>;
-export const AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1OrdersResourceUsageMetricsWebsiteResource,
 ) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection>;
 
@@ -10991,13 +10866,12 @@ export interface AgencyHostingV1OrdersResourceUsageMetricsMetricsResource {
   metrics?: AgencyHostingV1OrdersResourceUsageMetricsMetricCollection;
   websites?: AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection;
 }
-export const AgencyHostingV1OrdersResourceUsageMetricsMetricsResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      limits: S.optional(AgencyHostingV1OrdersResourceUsageMetricsLimitsResource),
-      metrics: S.optional(AgencyHostingV1OrdersResourceUsageMetricsMetricCollection),
-      websites: S.optional(AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection),
-    }),
+const AgencyHostingV1OrdersResourceUsageMetricsMetricsResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    limits: S.optional(AgencyHostingV1OrdersResourceUsageMetricsLimitsResource),
+    metrics: S.optional(AgencyHostingV1OrdersResourceUsageMetricsMetricCollection),
+    websites: S.optional(AgencyHostingV1OrdersResourceUsageMetricsWebsiteCollection),
+  }),
 ).annotate({
   identifier: "AgencyHostingV1OrdersResourceUsageMetricsMetricsResource",
 }) as any as S.Schema<AgencyHostingV1OrdersResourceUsageMetricsMetricsResource>;
@@ -11008,7 +10882,7 @@ export interface ListAgencyHostingOrdersV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListAgencyHostingOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -11023,7 +10897,7 @@ export interface AgencyHostingV1OrdersPlanResource {
   /** Plan key */
   key?: string | null;
 }
-export const AgencyHostingV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     key: S.optional(S.NullOr(S.String)),
@@ -11038,7 +10912,7 @@ export interface AgencyHostingV1OrdersDatacenterResource {
   /** Datacenter country */
   country?: string;
 }
-export const AgencyHostingV1OrdersDatacenterResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersDatacenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     country: S.optional(S.String),
@@ -11060,7 +10934,7 @@ export interface AgencyHostingV1OrdersOrderResource {
   /** Order creation date */
   created_at?: string;
 }
-export const AgencyHostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     client_id: S.optional(S.Number),
@@ -11075,7 +10949,7 @@ export const AgencyHostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`AgencyHosting.V1.Orders.OrderResource`](#model/agencyhostingv1ordersorderresource) */
 export type AgencyHostingV1OrdersOrderCollection = Array<AgencyHostingV1OrdersOrderResource>;
-export const AgencyHostingV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1OrdersOrderResource,
 ) as any as S.Schema<AgencyHostingV1OrdersOrderCollection>;
 
@@ -11083,7 +10957,7 @@ export interface ListAgencyHostingOrdersV1Response {
   data?: AgencyHostingV1OrdersOrderCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListAgencyHostingOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AgencyHostingV1OrdersOrderCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11096,7 +10970,7 @@ export interface ListAgencyHostingPHPExtensionsForAWebsiteV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ListAgencyHostingPHPExtensionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingPHPExtensionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -11112,7 +10986,7 @@ export const ListAgencyHostingPHPExtensionsForAWebsiteV1Request = /*@__PURE__*/ 
 
 /** Whether the extension is currently enabled. Extensions in the "built-in" state are compiled into PHP and cannot be turned off. */
 export type AgencyHostingV1PhpExtensionResourceState = "enabled" | "disabled" | "built-in";
-export const AgencyHostingV1PhpExtensionResourceState = S.String;
+const AgencyHostingV1PhpExtensionResourceState = S.String;
 
 export interface AgencyHostingV1PhpExtensionResource {
   /** PHP extension name. */
@@ -11122,7 +10996,7 @@ export interface AgencyHostingV1PhpExtensionResource {
   /** Whether the extension is currently enabled. Extensions in the "built-in" state are compiled into PHP and cannot be turned off. */
   state?: AgencyHostingV1PhpExtensionResourceState;
 }
-export const AgencyHostingV1PhpExtensionResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1PhpExtensionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -11134,13 +11008,13 @@ export const AgencyHostingV1PhpExtensionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`AgencyHosting.V1.Php.ExtensionResource`](#model/agencyhostingv1phpextensionresource) */
 export type AgencyHostingV1PhpExtensionCollection = Array<AgencyHostingV1PhpExtensionResource>;
-export const AgencyHostingV1PhpExtensionCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1PhpExtensionCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1PhpExtensionResource,
 ) as any as S.Schema<AgencyHostingV1PhpExtensionCollection>;
 
 export type ListAgencyHostingPHPExtensionsForAWebsiteV1Response =
   AgencyHostingV1PhpExtensionCollection;
-export const ListAgencyHostingPHPExtensionsForAWebsiteV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingPHPExtensionsForAWebsiteV1Response = /*@__PURE__*/ S.suspend(() =>
   AgencyHostingV1PhpExtensionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingPHPExtensionsForAWebsiteV1Response",
@@ -11150,7 +11024,7 @@ export interface ListAgencyHostingPHPOptionsForAWebsiteV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ListAgencyHostingPHPOptionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingPHPOptionsForAWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -11166,12 +11040,12 @@ export const ListAgencyHostingPHPOptionsForAWebsiteV1Request = /*@__PURE__*/ S.s
 
 /** Values this option accepts. Null when the option accepts any value of its type. */
 export type AgencyHostingV1PhpOptionResourceAllowedValuesList = Array<string>;
-export const AgencyHostingV1PhpOptionResourceAllowedValuesList =
+const AgencyHostingV1PhpOptionResourceAllowedValuesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<AgencyHostingV1PhpOptionResourceAllowedValuesList>;
 
 /** Whether the option takes a single value or a list of values. */
 export type AgencyHostingV1PhpOptionResourceType = "value" | "list";
-export const AgencyHostingV1PhpOptionResourceType = S.String;
+const AgencyHostingV1PhpOptionResourceType = S.String;
 
 export interface AgencyHostingV1PhpOptionResource {
   /** php.ini directive name. */
@@ -11187,7 +11061,7 @@ export interface AgencyHostingV1PhpOptionResource {
   /** Whether the option takes a single value or a list of values. */
   type?: AgencyHostingV1PhpOptionResourceType;
 }
-export const AgencyHostingV1PhpOptionResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1PhpOptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -11202,12 +11076,12 @@ export const AgencyHostingV1PhpOptionResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`AgencyHosting.V1.Php.OptionResource`](#model/agencyhostingv1phpoptionresource) */
 export type AgencyHostingV1PhpOptionCollection = Array<AgencyHostingV1PhpOptionResource>;
-export const AgencyHostingV1PhpOptionCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1PhpOptionCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1PhpOptionResource,
 ) as any as S.Schema<AgencyHostingV1PhpOptionCollection>;
 
 export type ListAgencyHostingPHPOptionsForAWebsiteV1Response = AgencyHostingV1PhpOptionCollection;
-export const ListAgencyHostingPHPOptionsForAWebsiteV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingPHPOptionsForAWebsiteV1Response = /*@__PURE__*/ S.suspend(() =>
   AgencyHostingV1PhpOptionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingPHPOptionsForAWebsiteV1Response",
@@ -11221,7 +11095,7 @@ export interface ListAgencyHostingWebsiteCronJobsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListAgencyHostingWebsiteCronJobsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteCronJobsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -11240,7 +11114,7 @@ export const ListAgencyHostingWebsiteCronJobsV1Request = /*@__PURE__*/ S.suspend
 /** Array of [`AgencyHosting.V1.Websites.CronJobs.CronJobResource`](#model/agencyhostingv1websitescronjobscronjobresource) */
 export type AgencyHostingV1WebsitesCronJobsCronJobCollection =
   Array<AgencyHostingV1WebsitesCronJobsCronJobResource>;
-export const AgencyHostingV1WebsitesCronJobsCronJobCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesCronJobsCronJobCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesCronJobsCronJobResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesCronJobsCronJobCollection>;
 
@@ -11248,7 +11122,7 @@ export interface ListAgencyHostingWebsiteCronJobsV1Response {
   data?: AgencyHostingV1WebsitesCronJobsCronJobCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListAgencyHostingWebsiteCronJobsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteCronJobsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AgencyHostingV1WebsitesCronJobsCronJobCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11265,7 +11139,7 @@ export interface ListAgencyHostingWebsiteDatabasesV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListAgencyHostingWebsiteDatabasesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteDatabasesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -11284,7 +11158,7 @@ export const ListAgencyHostingWebsiteDatabasesV1Request = /*@__PURE__*/ S.suspen
 /** Array of [`AgencyHosting.V1.Websites.Databases.DatabaseResource`](#model/agencyhostingv1websitesdatabasesdatabaseresource) */
 export type AgencyHostingV1WebsitesDatabasesDatabaseCollection =
   Array<AgencyHostingV1WebsitesDatabasesDatabaseResource>;
-export const AgencyHostingV1WebsitesDatabasesDatabaseCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesDatabasesDatabaseCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesDatabasesDatabaseResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesDatabasesDatabaseCollection>;
 
@@ -11292,7 +11166,7 @@ export interface ListAgencyHostingWebsiteDatabasesV1Response {
   data?: AgencyHostingV1WebsitesDatabasesDatabaseCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListAgencyHostingWebsiteDatabasesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteDatabasesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(AgencyHostingV1WebsitesDatabasesDatabaseCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11305,7 +11179,7 @@ export interface ListAgencyHostingWebsiteProcessesV1Request {
   /** Agency Plan website UID */
   website_uid: string;
 }
-export const ListAgencyHostingWebsiteProcessesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteProcessesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -11324,7 +11198,7 @@ export type AgencyHostingV1WebsitesWebsiteProcessResourceStatus =
   | "running"
   | "completed"
   | "failed";
-export const AgencyHostingV1WebsitesWebsiteProcessResourceStatus = S.String;
+const AgencyHostingV1WebsitesWebsiteProcessResourceStatus = S.String;
 
 export interface AgencyHostingV1WebsitesWebsiteProcessResource {
   /** Process ID */
@@ -11334,7 +11208,7 @@ export interface AgencyHostingV1WebsitesWebsiteProcessResource {
   /** Process status */
   status?: AgencyHostingV1WebsitesWebsiteProcessResourceStatus;
 }
-export const AgencyHostingV1WebsitesWebsiteProcessResource = /*@__PURE__*/ S.suspend(() =>
+const AgencyHostingV1WebsitesWebsiteProcessResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: S.optional(S.String),
@@ -11347,13 +11221,13 @@ export const AgencyHostingV1WebsitesWebsiteProcessResource = /*@__PURE__*/ S.sus
 /** Array of [`AgencyHosting.V1.Websites.WebsiteProcessResource`](#model/agencyhostingv1websiteswebsiteprocessresource) */
 export type AgencyHostingV1WebsitesWebsiteProcessCollection =
   Array<AgencyHostingV1WebsitesWebsiteProcessResource>;
-export const AgencyHostingV1WebsitesWebsiteProcessCollection = /*@__PURE__*/ S.Array(
+const AgencyHostingV1WebsitesWebsiteProcessCollection = /*@__PURE__*/ S.Array(
   AgencyHostingV1WebsitesWebsiteProcessResource,
 ) as any as S.Schema<AgencyHostingV1WebsitesWebsiteProcessCollection>;
 
 export type ListAgencyHostingWebsiteProcessesV1Response =
   AgencyHostingV1WebsitesWebsiteProcessCollection;
-export const ListAgencyHostingWebsiteProcessesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListAgencyHostingWebsiteProcessesV1Response = /*@__PURE__*/ S.suspend(() =>
   AgencyHostingV1WebsitesWebsiteProcessCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAgencyHostingWebsiteProcessesV1Response",
@@ -11369,7 +11243,7 @@ export interface ListEcommerceDiscountsV1Request {
   /** Page number */
   page?: number;
 }
-export const ListEcommerceDiscountsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceDiscountsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -11384,7 +11258,7 @@ export const ListEcommerceDiscountsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Ecommerce.V1.Discount.DiscountResource`](#model/ecommercev1discountdiscountresource) */
 export type EcommerceV1DiscountDiscountCollection = Array<EcommerceV1DiscountDiscountResource>;
-export const EcommerceV1DiscountDiscountCollection = /*@__PURE__*/ S.Array(
+const EcommerceV1DiscountDiscountCollection = /*@__PURE__*/ S.Array(
   EcommerceV1DiscountDiscountResource,
 ) as any as S.Schema<EcommerceV1DiscountDiscountCollection>;
 
@@ -11392,7 +11266,7 @@ export interface ListEcommerceDiscountsV1Response {
   data?: EcommerceV1DiscountDiscountCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListEcommerceDiscountsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceDiscountsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1DiscountDiscountCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11402,7 +11276,7 @@ export const ListEcommerceDiscountsV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEcommerceDiscountsV1Response>;
 
 export type ListEcommerceProductsV1RequestProductIdsList = Array<string>;
-export const ListEcommerceProductsV1RequestProductIdsList =
+const ListEcommerceProductsV1RequestProductIdsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ListEcommerceProductsV1RequestProductIdsList>;
 
 export type ListEcommerceProductsV1RequestStatusItem =
@@ -11411,21 +11285,17 @@ export type ListEcommerceProductsV1RequestStatusItem =
   | "published"
   | "rejected"
   | "archived";
-export const ListEcommerceProductsV1RequestStatusItem = S.String;
-
 export type ListEcommerceProductsV1RequestStatusList = Array<
   ListEcommerceProductsV1RequestStatusItem | (string & {})
 >;
-export const ListEcommerceProductsV1RequestStatusList =
+const ListEcommerceProductsV1RequestStatusList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceProductsV1RequestStatusList>;
 
 export type ListEcommerceProductsV1RequestIncludeItem = "variants" | "media";
-export const ListEcommerceProductsV1RequestIncludeItem = S.String;
-
 export type ListEcommerceProductsV1RequestIncludeList = Array<
   ListEcommerceProductsV1RequestIncludeItem | (string & {})
 >;
-export const ListEcommerceProductsV1RequestIncludeList =
+const ListEcommerceProductsV1RequestIncludeList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceProductsV1RequestIncludeList>;
 
 export interface ListEcommerceProductsV1Request {
@@ -11442,7 +11312,7 @@ export interface ListEcommerceProductsV1Request {
   /** Page number */
   page?: number;
 }
-export const ListEcommerceProductsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceProductsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_ids: S.optional(ListEcommerceProductsV1RequestProductIdsList.pipe(T.Query())),
@@ -11464,7 +11334,7 @@ export type EcommerceV1ProductProductResourceStatus =
   | "published"
   | "rejected"
   | "archived";
-export const EcommerceV1ProductProductResourceStatus = S.String;
+const EcommerceV1ProductProductResourceStatus = S.String;
 
 /** Effective price bounds across the product's variants. */
 export interface EcommerceV1ProductProductResourcePriceRange {
@@ -11475,7 +11345,7 @@ export interface EcommerceV1ProductProductResourcePriceRange {
   /** The store currency the range is expressed in. */
   currency_code?: string;
 }
-export const EcommerceV1ProductProductResourcePriceRange = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductResourcePriceRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.optional(S.NullOr(S.Number)),
     max: S.optional(S.NullOr(S.Number)),
@@ -11491,12 +11361,11 @@ export interface EcommerceV1ProductProductResourceVariantsItemOptionsItem {
   /** Option value, e.g. L. */
   value?: string;
 }
-export const EcommerceV1ProductProductResourceVariantsItemOptionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.NullOr(S.String)),
-      value: S.optional(S.String),
-    }),
+const EcommerceV1ProductProductResourceVariantsItemOptionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "EcommerceV1ProductProductResourceVariantsItemOptionsItem",
 }) as any as S.Schema<EcommerceV1ProductProductResourceVariantsItemOptionsItem>;
@@ -11504,19 +11373,16 @@ export const EcommerceV1ProductProductResourceVariantsItemOptionsItem = /*@__PUR
 /** The variant's option values. */
 export type EcommerceV1ProductProductResourceVariantsItemOptionsList =
   Array<EcommerceV1ProductProductResourceVariantsItemOptionsItem>;
-export const EcommerceV1ProductProductResourceVariantsItemOptionsList = /*@__PURE__*/ S.Array(
+const EcommerceV1ProductProductResourceVariantsItemOptionsList = /*@__PURE__*/ S.Array(
   EcommerceV1ProductProductResourceVariantsItemOptionsItem,
 ) as any as S.Schema<EcommerceV1ProductProductResourceVariantsItemOptionsList>;
 
 export type EcommerceV1ProductProductResourceVariantsItemPricesItem =
   EcommerceV1VariantVariantResourcePricesItem;
-export const EcommerceV1ProductProductResourceVariantsItemPricesItem =
-  EcommerceV1VariantVariantResourcePricesItem;
-
 /** Prices per currency, in the smallest currency unit. */
 export type EcommerceV1ProductProductResourceVariantsItemPricesList =
   Array<EcommerceV1VariantVariantResourcePricesItem>;
-export const EcommerceV1ProductProductResourceVariantsItemPricesList =
+const EcommerceV1ProductProductResourceVariantsItemPricesList =
   EcommerceV1VariantVariantResourcePricesList as any as S.Schema<EcommerceV1ProductProductResourceVariantsItemPricesList>;
 
 export interface EcommerceV1ProductProductResourceVariantsItem {
@@ -11535,7 +11401,7 @@ export interface EcommerceV1ProductProductResourceVariantsItem {
   /** Whether stock is tracked for this variant. */
   manage_inventory?: boolean;
 }
-export const EcommerceV1ProductProductResourceVariantsItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductResourceVariantsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.NullOr(S.String)),
@@ -11552,7 +11418,7 @@ export const EcommerceV1ProductProductResourceVariantsItem = /*@__PURE__*/ S.sus
 /** Present (non-null) only when include=variants is set; null otherwise. */
 export type EcommerceV1ProductProductResourceVariantsList =
   Array<EcommerceV1ProductProductResourceVariantsItem>;
-export const EcommerceV1ProductProductResourceVariantsList = /*@__PURE__*/ S.Array(
+const EcommerceV1ProductProductResourceVariantsList = /*@__PURE__*/ S.Array(
   EcommerceV1ProductProductResourceVariantsItem,
 ) as any as S.Schema<EcommerceV1ProductProductResourceVariantsList>;
 
@@ -11564,7 +11430,7 @@ export interface EcommerceV1ProductProductResourceMediaItem {
   /** Whether this media is the product's thumbnail. */
   is_thumbnail?: boolean;
 }
-export const EcommerceV1ProductProductResourceMediaItem = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductResourceMediaItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     type: S.optional(S.String),
@@ -11577,7 +11443,7 @@ export const EcommerceV1ProductProductResourceMediaItem = /*@__PURE__*/ S.suspen
 /** Present (non-null) only when include=media is set; null otherwise. */
 export type EcommerceV1ProductProductResourceMediaList =
   Array<EcommerceV1ProductProductResourceMediaItem>;
-export const EcommerceV1ProductProductResourceMediaList = /*@__PURE__*/ S.Array(
+const EcommerceV1ProductProductResourceMediaList = /*@__PURE__*/ S.Array(
   EcommerceV1ProductProductResourceMediaItem,
 ) as any as S.Schema<EcommerceV1ProductProductResourceMediaList>;
 
@@ -11601,7 +11467,7 @@ export interface EcommerceV1ProductProductResource {
   /** Present (non-null) only when include=media is set; null otherwise. */
   media?: EcommerceV1ProductProductResourceMediaList | null;
 }
-export const EcommerceV1ProductProductResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -11619,7 +11485,7 @@ export const EcommerceV1ProductProductResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Ecommerce.V1.Product.ProductResource`](#model/ecommercev1productproductresource) */
 export type EcommerceV1ProductProductCollection = Array<EcommerceV1ProductProductResource>;
-export const EcommerceV1ProductProductCollection = /*@__PURE__*/ S.Array(
+const EcommerceV1ProductProductCollection = /*@__PURE__*/ S.Array(
   EcommerceV1ProductProductResource,
 ) as any as S.Schema<EcommerceV1ProductProductCollection>;
 
@@ -11627,7 +11493,7 @@ export interface ListEcommerceProductsV1Response {
   data?: EcommerceV1ProductProductCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListEcommerceProductsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceProductsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1ProductProductCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11644,7 +11510,7 @@ export interface ListEcommerceProductVariantsV1Request {
   /** Page number */
   page?: number;
 }
-export const ListEcommerceProductVariantsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceProductVariantsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -11662,7 +11528,7 @@ export const ListEcommerceProductVariantsV1Request = /*@__PURE__*/ S.suspend(() 
 
 /** Array of [`Ecommerce.V1.Variant.VariantResource`](#model/ecommercev1variantvariantresource) */
 export type EcommerceV1VariantVariantCollection = Array<EcommerceV1VariantVariantResource>;
-export const EcommerceV1VariantVariantCollection = /*@__PURE__*/ S.Array(
+const EcommerceV1VariantVariantCollection = /*@__PURE__*/ S.Array(
   EcommerceV1VariantVariantResource,
 ) as any as S.Schema<EcommerceV1VariantVariantCollection>;
 
@@ -11670,7 +11536,7 @@ export interface ListEcommerceProductVariantsV1Response {
   data?: EcommerceV1VariantVariantCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListEcommerceProductVariantsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceProductVariantsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1VariantVariantCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11683,7 +11549,7 @@ export interface ListEcommerceSalesChannelsV1Request {
   /** The ID of the store to list sales channels for. */
   store_id: string;
 }
-export const ListEcommerceSalesChannelsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceSalesChannelsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -11701,8 +11567,6 @@ export type EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItemType
   | "custom"
   | "quick-link"
   | "wordpress";
-export const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItemType = S.String;
-
 export interface EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem {
   /** Sales channel ID */
   id?: string;
@@ -11719,22 +11583,21 @@ export interface EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsIte
   /** Public address where the sales channel lives. */
   domain?: string | null;
 }
-export const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem =
+const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem =
   EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem>;
 
 /** The store's active sales channels. */
 export type EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList =
   Array<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem>;
-export const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList =
-  /*@__PURE__*/ S.Array(
-    EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem,
-  ) as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList>;
+const EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList = /*@__PURE__*/ S.Array(
+  EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsItem,
+) as any as S.Schema<EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList>;
 
 export interface EcommerceV1SalesChannelSalesChannelListResource {
   /** The store's active sales channels. */
   sales_channels?: EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList;
 }
-export const EcommerceV1SalesChannelSalesChannelListResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1SalesChannelSalesChannelListResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sales_channels: S.optional(EcommerceV1SalesChannelSalesChannelListResourceSalesChannelsList),
   }),
@@ -11748,12 +11611,10 @@ export type ListEcommerceStoreOrdersV1RequestStatusItem =
   | "archived"
   | "canceled"
   | "requires_action";
-export const ListEcommerceStoreOrdersV1RequestStatusItem = S.String;
-
 export type ListEcommerceStoreOrdersV1RequestStatusList = Array<
   ListEcommerceStoreOrdersV1RequestStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestStatusList =
+const ListEcommerceStoreOrdersV1RequestStatusList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestStatusList>;
 
 export type ListEcommerceStoreOrdersV1RequestPaymentStatusItem =
@@ -11765,12 +11626,10 @@ export type ListEcommerceStoreOrdersV1RequestPaymentStatusItem =
   | "canceled"
   | "requires_action"
   | "not_required";
-export const ListEcommerceStoreOrdersV1RequestPaymentStatusItem = S.String;
-
 export type ListEcommerceStoreOrdersV1RequestPaymentStatusList = Array<
   ListEcommerceStoreOrdersV1RequestPaymentStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestPaymentStatusList =
+const ListEcommerceStoreOrdersV1RequestPaymentStatusList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestPaymentStatusList>;
 
 export type ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem =
@@ -11783,12 +11642,10 @@ export type ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem =
   | "returned"
   | "canceled"
   | "requires_action";
-export const ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem = S.String;
-
 export type ListEcommerceStoreOrdersV1RequestFulfillmentStatusList = Array<
   ListEcommerceStoreOrdersV1RequestFulfillmentStatusItem | (string & {})
 >;
-export const ListEcommerceStoreOrdersV1RequestFulfillmentStatusList =
+const ListEcommerceStoreOrdersV1RequestFulfillmentStatusList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListEcommerceStoreOrdersV1RequestFulfillmentStatusList>;
 
 export interface ListEcommerceStoreOrdersV1Request {
@@ -11813,7 +11670,7 @@ export interface ListEcommerceStoreOrdersV1Request {
   /** Page number */
   page?: number;
 }
-export const ListEcommerceStoreOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceStoreOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     status: S.optional(ListEcommerceStoreOrdersV1RequestStatusList.pipe(T.Query())),
@@ -11834,7 +11691,7 @@ export const ListEcommerceStoreOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Ecommerce.V1.Order.OrderResource`](#model/ecommercev1orderorderresource) */
 export type EcommerceV1OrderOrderCollection = Array<EcommerceV1OrderOrderResource>;
-export const EcommerceV1OrderOrderCollection = /*@__PURE__*/ S.Array(
+const EcommerceV1OrderOrderCollection = /*@__PURE__*/ S.Array(
   EcommerceV1OrderOrderResource,
 ) as any as S.Schema<EcommerceV1OrderOrderCollection>;
 
@@ -11842,7 +11699,7 @@ export interface ListEcommerceStoreOrdersV1Response {
   data?: EcommerceV1OrderOrderCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListEcommerceStoreOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceStoreOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1OrderOrderCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -11857,7 +11714,7 @@ export interface ListEcommerceStorePaymentProvidersV1Request {
   /** Include gateways that do not support the store currency in the available list. */
   include_currency_unsupported?: boolean;
 }
-export const ListEcommerceStorePaymentProvidersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListEcommerceStorePaymentProvidersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     include_currency_unsupported: S.optional(S.Boolean.pipe(T.Query())),
@@ -11878,8 +11735,7 @@ export type EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedIt
   | "pending"
   | "new"
   | "invalid";
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItemStatus =
-  S.String;
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItemStatus = S.String;
 
 export interface EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem {
   /** The store payment provider row ID. */
@@ -11895,7 +11751,7 @@ export interface EcommerceV1PaymentProviderPaymentProviderListResourceDataConnec
   /** Whether the provider shows at checkout. */
   shows_at_checkout?: boolean;
 }
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem =
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -11914,7 +11770,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedI
 /** Payment providers already connected to the store. */
 export type EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList =
   Array<EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem>;
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList =
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList =
   /*@__PURE__*/ S.Array(
     EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedItem,
   ) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList>;
@@ -11922,7 +11778,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedL
 /** Currencies the gateway supports; present only when the store currency is unsupported. */
 export type EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList =
   Array<string>;
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList =
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList>;
 
 export interface EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem {
@@ -11937,7 +11793,7 @@ export interface EcommerceV1PaymentProviderPaymentProviderListResourceDataAvaila
   /** Currencies the gateway supports; present only when the store currency is unsupported. */
   supported_currencies?: EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItemSupportedCurrenciesList;
 }
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem =
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -11955,7 +11811,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableI
 /** Payment gateways available to install for the store. */
 export type EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList =
   Array<EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem>;
-export const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList =
+const EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList =
   /*@__PURE__*/ S.Array(
     EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableItem,
   ) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList>;
@@ -11966,12 +11822,11 @@ export interface EcommerceV1PaymentProviderPaymentProviderListResourceData {
   /** Payment gateways available to install for the store. */
   available?: EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList;
 }
-export const EcommerceV1PaymentProviderPaymentProviderListResourceData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      connected: S.optional(EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList),
-      available: S.optional(EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList),
-    }),
+const EcommerceV1PaymentProviderPaymentProviderListResourceData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connected: S.optional(EcommerceV1PaymentProviderPaymentProviderListResourceDataConnectedList),
+    available: S.optional(EcommerceV1PaymentProviderPaymentProviderListResourceDataAvailableList),
+  }),
 ).annotate({
   identifier: "EcommerceV1PaymentProviderPaymentProviderListResourceData",
 }) as any as S.Schema<EcommerceV1PaymentProviderPaymentProviderListResourceData>;
@@ -11979,7 +11834,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResourceData = /*@__PU
 export interface EcommerceV1PaymentProviderPaymentProviderListResource {
   data?: EcommerceV1PaymentProviderPaymentProviderListResourceData;
 }
-export const EcommerceV1PaymentProviderPaymentProviderListResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1PaymentProviderPaymentProviderListResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1PaymentProviderPaymentProviderListResourceData),
   }),
@@ -11990,7 +11845,7 @@ export const EcommerceV1PaymentProviderPaymentProviderListResource = /*@__PURE__
 export interface ListHostingAccountCronJobsV1Request {
   username: string;
 }
-export const ListHostingAccountCronJobsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAccountCronJobsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
   }).pipe(
@@ -12002,12 +11857,12 @@ export const ListHostingAccountCronJobsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.CronJobs.CronJobResource`](#model/hostingv1cronjobscronjobresource) */
 export type HostingV1CronJobsCronJobCollection = Array<HostingV1CronJobsCronJobResource>;
-export const HostingV1CronJobsCronJobCollection = /*@__PURE__*/ S.Array(
+const HostingV1CronJobsCronJobCollection = /*@__PURE__*/ S.Array(
   HostingV1CronJobsCronJobResource,
 ) as any as S.Schema<HostingV1CronJobsCronJobCollection>;
 
 export type ListHostingAccountCronJobsV1Response = HostingV1CronJobsCronJobCollection;
-export const ListHostingAccountCronJobsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAccountCronJobsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1CronJobsCronJobCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingAccountCronJobsV1Response",
@@ -12026,7 +11881,7 @@ export interface ListHostingAccountDatabasesV1Request {
   /** Search databases by name, user, or creation date. */
   search?: string;
 }
-export const ListHostingAccountDatabasesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAccountDatabasesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -12063,7 +11918,7 @@ export interface HostingV1DatabasesDatabaseResource {
   /** MySQL port for remote connections. Always 3306. */
   port?: number;
 }
-export const HostingV1DatabasesDatabaseResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DatabasesDatabaseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     user: S.optional(S.String),
@@ -12082,7 +11937,7 @@ export const HostingV1DatabasesDatabaseResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Databases.DatabaseResource`](#model/hostingv1databasesdatabaseresource) */
 export type HostingV1DatabasesDatabaseCollection = Array<HostingV1DatabasesDatabaseResource>;
-export const HostingV1DatabasesDatabaseCollection = /*@__PURE__*/ S.Array(
+const HostingV1DatabasesDatabaseCollection = /*@__PURE__*/ S.Array(
   HostingV1DatabasesDatabaseResource,
 ) as any as S.Schema<HostingV1DatabasesDatabaseCollection>;
 
@@ -12090,7 +11945,7 @@ export interface ListHostingAccountDatabasesV1Response {
   data?: HostingV1DatabasesDatabaseCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListHostingAccountDatabasesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAccountDatabasesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HostingV1DatabasesDatabaseCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -12103,7 +11958,7 @@ export interface ListHostingAvailableDatacentersV1Request {
   /** Order ID */
   order_id: number;
 }
-export const ListHostingAvailableDatacentersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableDatacentersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.Number.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/datacenters", code: 200 })),
@@ -12112,8 +11967,6 @@ export const ListHostingAvailableDatacentersV1Request = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListHostingAvailableDatacentersV1Request>;
 
 export type HostingV1DatacenterCoordinatesResource = AgencyHostingV1DatacentersCoordinatesResource;
-export const HostingV1DatacenterCoordinatesResource = AgencyHostingV1DatacentersCoordinatesResource;
-
 export interface HostingV1DatacenterDatacenterResource {
   /** Data center title */
   title?: string;
@@ -12121,7 +11974,7 @@ export interface HostingV1DatacenterDatacenterResource {
   code?: string;
   coordinates?: AgencyHostingV1DatacentersCoordinatesResource;
 }
-export const HostingV1DatacenterDatacenterResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DatacenterDatacenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     code: S.optional(S.String),
@@ -12133,12 +11986,12 @@ export const HostingV1DatacenterDatacenterResource = /*@__PURE__*/ S.suspend(() 
 
 /** Array of [`Hosting.V1.Datacenter.DatacenterResource`](#model/hostingv1datacenterdatacenterresource) */
 export type HostingV1DatacenterDatacenterCollection = Array<HostingV1DatacenterDatacenterResource>;
-export const HostingV1DatacenterDatacenterCollection = /*@__PURE__*/ S.Array(
+const HostingV1DatacenterDatacenterCollection = /*@__PURE__*/ S.Array(
   HostingV1DatacenterDatacenterResource,
 ) as any as S.Schema<HostingV1DatacenterDatacenterCollection>;
 
 export type ListHostingAvailableDatacentersV1Response = HostingV1DatacenterDatacenterCollection;
-export const ListHostingAvailableDatacentersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableDatacentersV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1DatacenterDatacenterCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingAvailableDatacentersV1Response",
@@ -12149,7 +12002,7 @@ export interface ListHostingAvailableWordPressCoreUpdatesV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const ListHostingAvailableWordPressCoreUpdatesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableWordPressCoreUpdatesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -12166,7 +12019,7 @@ export const ListHostingAvailableWordPressCoreUpdatesV1Request = /*@__PURE__*/ S
 
 /** Update type */
 export type WordPressV1InstallationsUpdateResourceType = "major" | "minor";
-export const WordPressV1InstallationsUpdateResourceType = S.String;
+const WordPressV1InstallationsUpdateResourceType = S.String;
 
 export interface WordPressV1InstallationsUpdateResource {
   /** Available WordPress core version */
@@ -12176,7 +12029,7 @@ export interface WordPressV1InstallationsUpdateResource {
   /** Download URL for the update package */
   url?: string;
 }
-export const WordPressV1InstallationsUpdateResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1InstallationsUpdateResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     type: S.optional(WordPressV1InstallationsUpdateResourceType),
@@ -12189,13 +12042,13 @@ export const WordPressV1InstallationsUpdateResource = /*@__PURE__*/ S.suspend(()
 /** Array of [`WordPress.V1.Installations.UpdateResource`](#model/wordpressv1installationsupdateresource) */
 export type WordPressV1InstallationsUpdateCollection =
   Array<WordPressV1InstallationsUpdateResource>;
-export const WordPressV1InstallationsUpdateCollection = /*@__PURE__*/ S.Array(
+const WordPressV1InstallationsUpdateCollection = /*@__PURE__*/ S.Array(
   WordPressV1InstallationsUpdateResource,
 ) as any as S.Schema<WordPressV1InstallationsUpdateCollection>;
 
 export type ListHostingAvailableWordPressCoreUpdatesV1Response =
   WordPressV1InstallationsUpdateCollection;
-export const ListHostingAvailableWordPressCoreUpdatesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableWordPressCoreUpdatesV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1InstallationsUpdateCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingAvailableWordPressCoreUpdatesV1Response",
@@ -12206,7 +12059,7 @@ export interface ListHostingAvailableWordPressPluginsV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const ListHostingAvailableWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -12243,7 +12096,7 @@ export interface WordPressV1PluginsAvailablePluginResource {
   /** Whether a hosting plan upgrade is required to use the plugin */
   is_plan_upgrade_needed?: boolean;
 }
-export const WordPressV1PluginsAvailablePluginResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsAvailablePluginResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     title: S.optional(S.String),
@@ -12263,13 +12116,13 @@ export const WordPressV1PluginsAvailablePluginResource = /*@__PURE__*/ S.suspend
 /** Array of [`WordPress.V1.Plugins.AvailablePluginResource`](#model/wordpressv1pluginsavailablepluginresource) */
 export type WordPressV1PluginsAvailablePluginCollection =
   Array<WordPressV1PluginsAvailablePluginResource>;
-export const WordPressV1PluginsAvailablePluginCollection = /*@__PURE__*/ S.Array(
+const WordPressV1PluginsAvailablePluginCollection = /*@__PURE__*/ S.Array(
   WordPressV1PluginsAvailablePluginResource,
 ) as any as S.Schema<WordPressV1PluginsAvailablePluginCollection>;
 
 export type ListHostingAvailableWordPressPluginsV1Response =
   WordPressV1PluginsAvailablePluginCollection;
-export const ListHostingAvailableWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingAvailableWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1PluginsAvailablePluginCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingAvailableWordPressPluginsV1Response",
@@ -12280,7 +12133,7 @@ export interface ListHostingDatabaseRemoteConnectionsV1Request {
   /** Filter remote connections by the domain the database is assigned to. Rules for databases not assigned to any domain are always included. */
   domain?: string;
 }
-export const ListHostingDatabaseRemoteConnectionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingDatabaseRemoteConnectionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.optional(S.String.pipe(T.Query())),
@@ -12303,13 +12156,12 @@ export interface HostingV1DatabasesRemoteConnectionsRemoteConnectionResource {
   /** Allowed remote host: an IPv4/IPv6 address, or "%" for any host. */
   ip?: string;
 }
-export const HostingV1DatabasesRemoteConnectionsRemoteConnectionResource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      database_name: S.optional(S.String),
-      database_user: S.optional(S.String),
-      ip: S.optional(S.String),
-    }),
+const HostingV1DatabasesRemoteConnectionsRemoteConnectionResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    database_name: S.optional(S.String),
+    database_user: S.optional(S.String),
+    ip: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "HostingV1DatabasesRemoteConnectionsRemoteConnectionResource",
 }) as any as S.Schema<HostingV1DatabasesRemoteConnectionsRemoteConnectionResource>;
@@ -12317,13 +12169,13 @@ export const HostingV1DatabasesRemoteConnectionsRemoteConnectionResource = /*@__
 /** Array of [`Hosting.V1.Databases.RemoteConnections.RemoteConnectionResource`](#model/hostingv1databasesremoteconnectionsremoteconnectionresource) */
 export type HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection =
   Array<HostingV1DatabasesRemoteConnectionsRemoteConnectionResource>;
-export const HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection = /*@__PURE__*/ S.Array(
+const HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection = /*@__PURE__*/ S.Array(
   HostingV1DatabasesRemoteConnectionsRemoteConnectionResource,
 ) as any as S.Schema<HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection>;
 
 export type ListHostingDatabaseRemoteConnectionsV1Response =
   HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection;
-export const ListHostingDatabaseRemoteConnectionsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingDatabaseRemoteConnectionsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1DatabasesRemoteConnectionsRemoteConnectionCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingDatabaseRemoteConnectionsV1Response",
@@ -12333,7 +12185,7 @@ export interface ListHostingGitInstallationRepositoriesV1Request {
   /** Git installation UUID from the List Git installations endpoint */
   uuid: string;
 }
-export const ListHostingGitInstallationRepositoriesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingGitInstallationRepositoriesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -12365,7 +12217,7 @@ export interface HostingV1GitGitRepositoryResource {
   /** Default branch of the repository */
   default_branch: string;
 }
-export const HostingV1GitGitRepositoryResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitRepositoryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -12382,22 +12234,22 @@ export const HostingV1GitGitRepositoryResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Git.GitRepositoryResource`](#model/hostingv1gitgitrepositoryresource) */
 export type HostingV1GitGitRepositoryCollection = Array<HostingV1GitGitRepositoryResource>;
-export const HostingV1GitGitRepositoryCollection = /*@__PURE__*/ S.Array(
+const HostingV1GitGitRepositoryCollection = /*@__PURE__*/ S.Array(
   HostingV1GitGitRepositoryResource,
 ) as any as S.Schema<HostingV1GitGitRepositoryCollection>;
 
 export type ListHostingGitInstallationRepositoriesV1Response = HostingV1GitGitRepositoryCollection;
-export const ListHostingGitInstallationRepositoriesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingGitInstallationRepositoriesV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1GitGitRepositoryCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingGitInstallationRepositoriesV1Response",
 }) as any as S.Schema<ListHostingGitInstallationRepositoriesV1Response>;
 
 export type ListHostingGitInstallationsV1RequestProvider = "github" | "gitlab" | "bitbucket";
-export const ListHostingGitInstallationsV1RequestProvider = S.String;
+const ListHostingGitInstallationsV1RequestProvider = S.String;
 
 export type ListHostingGitInstallationsV1RequestStatus = "pending" | "active" | "suspended";
-export const ListHostingGitInstallationsV1RequestStatus = S.String;
+const ListHostingGitInstallationsV1RequestStatus = S.String;
 
 export interface ListHostingGitInstallationsV1Request {
   /** Filter by Git provider */
@@ -12405,7 +12257,7 @@ export interface ListHostingGitInstallationsV1Request {
   /** Filter by installation status */
   status?: ListHostingGitInstallationsV1RequestStatus | (string & {});
 }
-export const ListHostingGitInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingGitInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(ListHostingGitInstallationsV1RequestProvider.pipe(T.Query())),
     status: S.optional(ListHostingGitInstallationsV1RequestStatus.pipe(T.Query())),
@@ -12416,15 +12268,15 @@ export const ListHostingGitInstallationsV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** Git provider the account belongs to */
 export type HostingV1GitGitInstallationResourceProvider = "github" | "gitlab" | "bitbucket";
-export const HostingV1GitGitInstallationResourceProvider = S.String;
+const HostingV1GitGitInstallationResourceProvider = S.String;
 
 /** Whether the connected account is a user or an organization */
 export type HostingV1GitGitInstallationResourceAccountType = "User" | "Organization";
-export const HostingV1GitGitInstallationResourceAccountType = S.String;
+const HostingV1GitGitInstallationResourceAccountType = S.String;
 
 /** Installation status. Only active installations are listed unless the status filter says otherwise. */
 export type HostingV1GitGitInstallationResourceStatus = "pending" | "active" | "suspended";
-export const HostingV1GitGitInstallationResourceStatus = S.String;
+const HostingV1GitGitInstallationResourceStatus = S.String;
 
 export interface HostingV1GitGitInstallationResource {
   /** Installation identifier. Use it as the path parameter of List Git installation repositories. */
@@ -12446,7 +12298,7 @@ export interface HostingV1GitGitInstallationResource {
   /** True when the GitHub user account has a stored OAuth token whose refresh token is still valid, false when the token is missing or its refresh token expired. Null for organization accounts and for providers other than GitHub. */
   has_oauth: boolean | null;
 }
-export const HostingV1GitGitInstallationResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitGitInstallationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     provider: HostingV1GitGitInstallationResourceProvider,
@@ -12464,19 +12316,19 @@ export const HostingV1GitGitInstallationResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Git.GitInstallationResource`](#model/hostingv1gitgitinstallationresource) */
 export type HostingV1GitGitInstallationCollection = Array<HostingV1GitGitInstallationResource>;
-export const HostingV1GitGitInstallationCollection = /*@__PURE__*/ S.Array(
+const HostingV1GitGitInstallationCollection = /*@__PURE__*/ S.Array(
   HostingV1GitGitInstallationResource,
 ) as any as S.Schema<HostingV1GitGitInstallationCollection>;
 
 export type ListHostingGitInstallationsV1Response = HostingV1GitGitInstallationCollection;
-export const ListHostingGitInstallationsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingGitInstallationsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1GitGitInstallationCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingGitInstallationsV1Response",
 }) as any as S.Schema<ListHostingGitInstallationsV1Response>;
 
 export type ListHostingInstalledWordPressPluginsV1RequestCategory = "cache";
-export const ListHostingInstalledWordPressPluginsV1RequestCategory = S.String;
+const ListHostingInstalledWordPressPluginsV1RequestCategory = S.String;
 
 export interface ListHostingInstalledWordPressPluginsV1Request {
   username: string;
@@ -12485,7 +12337,7 @@ export interface ListHostingInstalledWordPressPluginsV1Request {
   /** Filter installed plugins by category. */
   category?: ListHostingInstalledWordPressPluginsV1RequestCategory | (string & {});
 }
-export const ListHostingInstalledWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingInstalledWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -12503,12 +12355,12 @@ export const ListHostingInstalledWordPressPluginsV1Request = /*@__PURE__*/ S.sus
 
 /** Whether the plugin is active or inactive */
 export type WordPressV1PluginsInstalledPluginResourceStatus = "active" | "inactive";
-export const WordPressV1PluginsInstalledPluginResourceStatus = S.String;
+const WordPressV1PluginsInstalledPluginResourceStatus = S.String;
 
 /** Known vulnerabilities affecting the installed version */
 export type WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList =
   Array<WordPressV1CommonVulnerabilityResource>;
-export const WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList =
+const WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList =
   WordPressV1InstallationsVersionResourceVulnerabilitiesList as any as S.Schema<WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList>;
 
 export interface WordPressV1PluginsInstalledPluginResource {
@@ -12525,7 +12377,7 @@ export interface WordPressV1PluginsInstalledPluginResource {
   /** Known vulnerabilities affecting the installed version */
   vulnerabilities?: WordPressV1PluginsInstalledPluginResourceVulnerabilitiesList;
 }
-export const WordPressV1PluginsInstalledPluginResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsInstalledPluginResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -12541,13 +12393,13 @@ export const WordPressV1PluginsInstalledPluginResource = /*@__PURE__*/ S.suspend
 /** Array of [`WordPress.V1.Plugins.InstalledPluginResource`](#model/wordpressv1pluginsinstalledpluginresource) */
 export type WordPressV1PluginsInstalledPluginCollection =
   Array<WordPressV1PluginsInstalledPluginResource>;
-export const WordPressV1PluginsInstalledPluginCollection = /*@__PURE__*/ S.Array(
+const WordPressV1PluginsInstalledPluginCollection = /*@__PURE__*/ S.Array(
   WordPressV1PluginsInstalledPluginResource,
 ) as any as S.Schema<WordPressV1PluginsInstalledPluginCollection>;
 
 export type ListHostingInstalledWordPressPluginsV1Response =
   WordPressV1PluginsInstalledPluginCollection;
-export const ListHostingInstalledWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingInstalledWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1PluginsInstalledPluginCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingInstalledWordPressPluginsV1Response",
@@ -12558,7 +12410,7 @@ export interface ListHostingInstalledWordPressThemesV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const ListHostingInstalledWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingInstalledWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -12575,12 +12427,12 @@ export const ListHostingInstalledWordPressThemesV1Request = /*@__PURE__*/ S.susp
 
 /** Whether the theme is active or inactive */
 export type WordPressV1ThemesInstalledThemeResourceStatus = "active" | "inactive";
-export const WordPressV1ThemesInstalledThemeResourceStatus = S.String;
+const WordPressV1ThemesInstalledThemeResourceStatus = S.String;
 
 /** Known vulnerabilities affecting the installed version */
 export type WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList =
   Array<WordPressV1CommonVulnerabilityResource>;
-export const WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList =
+const WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList =
   WordPressV1InstallationsVersionResourceVulnerabilitiesList as any as S.Schema<WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList>;
 
 export interface WordPressV1ThemesInstalledThemeResource {
@@ -12597,7 +12449,7 @@ export interface WordPressV1ThemesInstalledThemeResource {
   /** Known vulnerabilities affecting the installed version */
   vulnerabilities?: WordPressV1ThemesInstalledThemeResourceVulnerabilitiesList;
 }
-export const WordPressV1ThemesInstalledThemeResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1ThemesInstalledThemeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -12613,13 +12465,13 @@ export const WordPressV1ThemesInstalledThemeResource = /*@__PURE__*/ S.suspend((
 /** Array of [`WordPress.V1.Themes.InstalledThemeResource`](#model/wordpressv1themesinstalledthemeresource) */
 export type WordPressV1ThemesInstalledThemeCollection =
   Array<WordPressV1ThemesInstalledThemeResource>;
-export const WordPressV1ThemesInstalledThemeCollection = /*@__PURE__*/ S.Array(
+const WordPressV1ThemesInstalledThemeCollection = /*@__PURE__*/ S.Array(
   WordPressV1ThemesInstalledThemeResource,
 ) as any as S.Schema<WordPressV1ThemesInstalledThemeCollection>;
 
 export type ListHostingInstalledWordPressThemesV1Response =
   WordPressV1ThemesInstalledThemeCollection;
-export const ListHostingInstalledWordPressThemesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingInstalledWordPressThemesV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1ThemesInstalledThemeCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingInstalledWordPressThemesV1Response",
@@ -12630,12 +12482,10 @@ export type ListHostingNodeJSBuildsV1RequestStatesItem =
   | "running"
   | "completed"
   | "failed";
-export const ListHostingNodeJSBuildsV1RequestStatesItem = S.String;
-
 export type ListHostingNodeJSBuildsV1RequestStatesList = Array<
   ListHostingNodeJSBuildsV1RequestStatesItem | (string & {})
 >;
-export const ListHostingNodeJSBuildsV1RequestStatesList =
+const ListHostingNodeJSBuildsV1RequestStatesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingNodeJSBuildsV1RequestStatesList>;
 
 export interface ListHostingNodeJSBuildsV1Request {
@@ -12649,7 +12499,7 @@ export interface ListHostingNodeJSBuildsV1Request {
   /** Build states to filter by */
   states?: ListHostingNodeJSBuildsV1RequestStatesList;
 }
-export const ListHostingNodeJSBuildsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJSBuildsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -12669,7 +12519,7 @@ export const ListHostingNodeJSBuildsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.NodeJs.BuildResource`](#model/hostingv1nodejsbuildresource) */
 export type HostingV1NodeJsBuildCollection = Array<HostingV1NodeJsBuildResource>;
-export const HostingV1NodeJsBuildCollection = /*@__PURE__*/ S.Array(
+const HostingV1NodeJsBuildCollection = /*@__PURE__*/ S.Array(
   HostingV1NodeJsBuildResource,
 ) as any as S.Schema<HostingV1NodeJsBuildCollection>;
 
@@ -12677,7 +12527,7 @@ export interface ListHostingNodeJSBuildsV1Response {
   data?: HostingV1NodeJsBuildCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListHostingNodeJSBuildsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJSBuildsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HostingV1NodeJsBuildCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -12691,7 +12541,7 @@ export interface ListHostingNodeJsEnvironmentVariablesV1Request {
   /** Domain name */
   domain: string;
 }
-export const ListHostingNodeJsEnvironmentVariablesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJsEnvironmentVariablesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -12712,7 +12562,7 @@ export interface HostingV1NodeJsEnvVarResource {
   /** Always the literal string ********. Real values cannot be read back through this API. */
   value?: string;
 }
-export const HostingV1NodeJsEnvVarResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsEnvVarResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(S.String),
@@ -12723,12 +12573,12 @@ export const HostingV1NodeJsEnvVarResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.NodeJs.EnvVarResource`](#model/hostingv1nodejsenvvarresource) */
 export type HostingV1NodeJsEnvVarCollection = Array<HostingV1NodeJsEnvVarResource>;
-export const HostingV1NodeJsEnvVarCollection = /*@__PURE__*/ S.Array(
+const HostingV1NodeJsEnvVarCollection = /*@__PURE__*/ S.Array(
   HostingV1NodeJsEnvVarResource,
 ) as any as S.Schema<HostingV1NodeJsEnvVarCollection>;
 
 export type ListHostingNodeJsEnvironmentVariablesV1Response = HostingV1NodeJsEnvVarCollection;
-export const ListHostingNodeJsEnvironmentVariablesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJsEnvironmentVariablesV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1NodeJsEnvVarCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingNodeJsEnvironmentVariablesV1Response",
@@ -12740,12 +12590,10 @@ export type ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem =
   | "high"
   | "critical"
   | "unknown";
-export const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem = S.String;
-
 export type ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList = Array<
   ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesItem | (string & {})
 >;
-export const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList =
+const ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList>;
 
 export interface ListHostingNodeJsVulnerabilitiesV1Request {
@@ -12755,7 +12603,7 @@ export interface ListHostingNodeJsVulnerabilitiesV1Request {
   /** Severities to filter by */
   severities?: ListHostingNodeJsVulnerabilitiesV1RequestSeveritiesList;
 }
-export const ListHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -12778,7 +12626,7 @@ export type HostingV1NodeJsVulnerabilityResourceSeverity =
   | "high"
   | "critical"
   | "unknown";
-export const HostingV1NodeJsVulnerabilityResourceSeverity = S.String;
+const HostingV1NodeJsVulnerabilityResourceSeverity = S.String;
 
 export interface HostingV1NodeJsVulnerabilityResource {
   /** Name of the affected npm package */
@@ -12812,7 +12660,7 @@ export interface HostingV1NodeJsVulnerabilityResource {
   /** Whether this vulnerability is included in a currently open patch pull request */
   is_patching_in_progress?: boolean;
 }
-export const HostingV1NodeJsVulnerabilityResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsVulnerabilityResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     package_name: S.optional(S.String),
     installed_version: S.optional(S.String),
@@ -12836,12 +12684,12 @@ export const HostingV1NodeJsVulnerabilityResource = /*@__PURE__*/ S.suspend(() =
 
 /** Array of [`Hosting.V1.NodeJs.VulnerabilityResource`](#model/hostingv1nodejsvulnerabilityresource) */
 export type HostingV1NodeJsVulnerabilityCollection = Array<HostingV1NodeJsVulnerabilityResource>;
-export const HostingV1NodeJsVulnerabilityCollection = /*@__PURE__*/ S.Array(
+const HostingV1NodeJsVulnerabilityCollection = /*@__PURE__*/ S.Array(
   HostingV1NodeJsVulnerabilityResource,
 ) as any as S.Schema<HostingV1NodeJsVulnerabilityCollection>;
 
 export type ListHostingNodeJsVulnerabilitiesV1Response = HostingV1NodeJsVulnerabilityCollection;
-export const ListHostingNodeJsVulnerabilitiesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingNodeJsVulnerabilitiesV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1NodeJsVulnerabilityCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingNodeJsVulnerabilitiesV1Response",
@@ -12852,16 +12700,14 @@ export type ListHostingOrdersV1RequestStatusesItem =
   | "deleting"
   | "deleted"
   | "suspended";
-export const ListHostingOrdersV1RequestStatusesItem = S.String;
-
 export type ListHostingOrdersV1RequestStatusesList = Array<
   ListHostingOrdersV1RequestStatusesItem | (string & {})
 >;
-export const ListHostingOrdersV1RequestStatusesList =
+const ListHostingOrdersV1RequestStatusesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingOrdersV1RequestStatusesList>;
 
 export type ListHostingOrdersV1RequestOrderIdsList = Array<number>;
-export const ListHostingOrdersV1RequestOrderIdsList =
+const ListHostingOrdersV1RequestOrderIdsList =
   AttachVPSPublicKeyV1RequestIdsList as any as S.Schema<ListHostingOrdersV1RequestOrderIdsList>;
 
 export interface ListHostingOrdersV1Request {
@@ -12874,7 +12720,7 @@ export interface ListHostingOrdersV1Request {
   /** Filter by specific order IDs */
   order_ids?: ListHostingOrdersV1RequestOrderIdsList;
 }
-export const ListHostingOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -12889,7 +12735,7 @@ export interface HostingV1OrdersPlanResource {
   /** Plan name */
   name?: string;
 }
-export const HostingV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1OrdersPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -12910,7 +12756,7 @@ export interface HostingV1OrdersOrderResource {
   /** Order status */
   status?: string;
 }
-export const HostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     client_id: S.optional(S.Number),
@@ -12925,7 +12771,7 @@ export const HostingV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Orders.OrderResource`](#model/hostingv1ordersorderresource) */
 export type HostingV1OrdersOrderCollection = Array<HostingV1OrdersOrderResource>;
-export const HostingV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
+const HostingV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
   HostingV1OrdersOrderResource,
 ) as any as S.Schema<HostingV1OrdersOrderCollection>;
 
@@ -12933,7 +12779,7 @@ export interface ListHostingOrdersV1Response {
   data?: HostingV1OrdersOrderCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListHostingOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HostingV1OrdersOrderCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -12946,7 +12792,7 @@ export interface ListHostingSuggestedWordPressPluginsV1Request {
   /** Optionally scope suggestions to a specific order. */
   order_id?: number;
 }
-export const ListHostingSuggestedWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingSuggestedWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/wordpress/plugins/suggested", code: 200 })),
@@ -12963,7 +12809,7 @@ export type WordPressV1PluginsSuggestedPluginGroupResourceWebsiteType =
   | "affiliate-marketing"
   | "other"
   | "default";
-export const WordPressV1PluginsSuggestedPluginGroupResourceWebsiteType = S.String;
+const WordPressV1PluginsSuggestedPluginGroupResourceWebsiteType = S.String;
 
 export interface WordPressV1PluginsSuggestedPluginResource {
   /** Plugin slug used when installing the plugin */
@@ -12989,7 +12835,7 @@ export interface WordPressV1PluginsSuggestedPluginResource {
   /** Whether a hosting plan upgrade is required to use the plugin */
   is_plan_upgrade_needed?: boolean;
 }
-export const WordPressV1PluginsSuggestedPluginResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsSuggestedPluginResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     title: S.optional(S.String),
@@ -13010,7 +12856,7 @@ export const WordPressV1PluginsSuggestedPluginResource = /*@__PURE__*/ S.suspend
 /** Plugins suggested for the website type */
 export type WordPressV1PluginsSuggestedPluginGroupResourcePluginsList =
   Array<WordPressV1PluginsSuggestedPluginResource>;
-export const WordPressV1PluginsSuggestedPluginGroupResourcePluginsList = /*@__PURE__*/ S.Array(
+const WordPressV1PluginsSuggestedPluginGroupResourcePluginsList = /*@__PURE__*/ S.Array(
   WordPressV1PluginsSuggestedPluginResource,
 ) as any as S.Schema<WordPressV1PluginsSuggestedPluginGroupResourcePluginsList>;
 
@@ -13020,7 +12866,7 @@ export interface WordPressV1PluginsSuggestedPluginGroupResource {
   /** Plugins suggested for the website type */
   plugins?: WordPressV1PluginsSuggestedPluginGroupResourcePluginsList;
 }
-export const WordPressV1PluginsSuggestedPluginGroupResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsSuggestedPluginGroupResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_type: S.optional(WordPressV1PluginsSuggestedPluginGroupResourceWebsiteType),
     plugins: S.optional(WordPressV1PluginsSuggestedPluginGroupResourcePluginsList),
@@ -13032,13 +12878,13 @@ export const WordPressV1PluginsSuggestedPluginGroupResource = /*@__PURE__*/ S.su
 /** Array of [`WordPress.V1.Plugins.SuggestedPluginGroupResource`](#model/wordpressv1pluginssuggestedplugingroupresource) */
 export type WordPressV1PluginsSuggestedPluginGroupCollection =
   Array<WordPressV1PluginsSuggestedPluginGroupResource>;
-export const WordPressV1PluginsSuggestedPluginGroupCollection = /*@__PURE__*/ S.Array(
+const WordPressV1PluginsSuggestedPluginGroupCollection = /*@__PURE__*/ S.Array(
   WordPressV1PluginsSuggestedPluginGroupResource,
 ) as any as S.Schema<WordPressV1PluginsSuggestedPluginGroupCollection>;
 
 export type ListHostingSuggestedWordPressPluginsV1Response =
   WordPressV1PluginsSuggestedPluginGroupCollection;
-export const ListHostingSuggestedWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingSuggestedWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1PluginsSuggestedPluginGroupCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingSuggestedWordPressPluginsV1Response",
@@ -13049,7 +12895,7 @@ export interface ListHostingWebsiteGitRepositoriesV1Request {
   /** Domain name */
   domain: string;
 }
-export const ListHostingWebsiteGitRepositoriesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteGitRepositoriesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -13075,7 +12921,7 @@ export interface HostingV1GitWebsiteGitRepositoryWebhookResource {
   /** Git host guide for adding a webhook. Null when the host is not detected. */
   tutorial_url: string | null;
 }
-export const HostingV1GitWebsiteGitRepositoryWebhookResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitWebsiteGitRepositoryWebhookResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     provider: S.NullOr(S.String),
@@ -13096,7 +12942,7 @@ export interface HostingV1GitWebsiteGitRepositoryResource {
   directory: string;
   webhook: HostingV1GitWebsiteGitRepositoryWebhookResource;
 }
-export const HostingV1GitWebsiteGitRepositoryResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1GitWebsiteGitRepositoryResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_url: S.String,
     branch: S.String,
@@ -13110,13 +12956,13 @@ export const HostingV1GitWebsiteGitRepositoryResource = /*@__PURE__*/ S.suspend(
 /** Array of [`Hosting.V1.Git.WebsiteGitRepositoryResource`](#model/hostingv1gitwebsitegitrepositoryresource) */
 export type HostingV1GitWebsiteGitRepositoryCollection =
   Array<HostingV1GitWebsiteGitRepositoryResource>;
-export const HostingV1GitWebsiteGitRepositoryCollection = /*@__PURE__*/ S.Array(
+const HostingV1GitWebsiteGitRepositoryCollection = /*@__PURE__*/ S.Array(
   HostingV1GitWebsiteGitRepositoryResource,
 ) as any as S.Schema<HostingV1GitWebsiteGitRepositoryCollection>;
 
 export type ListHostingWebsiteGitRepositoriesV1Response =
   HostingV1GitWebsiteGitRepositoryCollection;
-export const ListHostingWebsiteGitRepositoriesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteGitRepositoriesV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1GitWebsiteGitRepositoryCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebsiteGitRepositoriesV1Response",
@@ -13127,7 +12973,7 @@ export interface ListHostingWebsiteParkedDomainsV1Request {
   /** Domain name */
   domain: string;
 }
-export const ListHostingWebsiteParkedDomainsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteParkedDomainsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -13144,7 +12990,7 @@ export const ListHostingWebsiteParkedDomainsV1Request = /*@__PURE__*/ S.suspend(
 
 /** Whether the parked value is a domain name or an IP address (IPv4 or IPv6) */
 export type HostingV1DomainsParkedDomainResourceType = "domain" | "ip";
-export const HostingV1DomainsParkedDomainResourceType = S.String;
+const HostingV1DomainsParkedDomainResourceType = S.String;
 
 export interface HostingV1DomainsParkedDomainResource {
   /** Website username */
@@ -13158,7 +13004,7 @@ export interface HostingV1DomainsParkedDomainResource {
   /** Whether the parked value is a domain name or an IP address (IPv4 or IPv6) */
   type?: HostingV1DomainsParkedDomainResourceType;
 }
-export const HostingV1DomainsParkedDomainResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DomainsParkedDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     domain: S.optional(S.String),
@@ -13172,12 +13018,12 @@ export const HostingV1DomainsParkedDomainResource = /*@__PURE__*/ S.suspend(() =
 
 /** Array of [`Hosting.V1.Domains.ParkedDomainResource`](#model/hostingv1domainsparkeddomainresource) */
 export type HostingV1DomainsParkedDomainCollection = Array<HostingV1DomainsParkedDomainResource>;
-export const HostingV1DomainsParkedDomainCollection = /*@__PURE__*/ S.Array(
+const HostingV1DomainsParkedDomainCollection = /*@__PURE__*/ S.Array(
   HostingV1DomainsParkedDomainResource,
 ) as any as S.Schema<HostingV1DomainsParkedDomainCollection>;
 
 export type ListHostingWebsiteParkedDomainsV1Response = HostingV1DomainsParkedDomainCollection;
-export const ListHostingWebsiteParkedDomainsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteParkedDomainsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1DomainsParkedDomainCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebsiteParkedDomainsV1Response",
@@ -13192,7 +13038,7 @@ export interface ListHostingWebsiteRedirectsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListHostingWebsiteRedirectsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteRedirectsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -13211,7 +13057,7 @@ export const ListHostingWebsiteRedirectsV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** Array of [`Hosting.V1.Redirects.RedirectResource`](#model/hostingv1redirectsredirectresource) */
 export type HostingV1RedirectsRedirectCollection = Array<HostingV1RedirectsRedirectResource>;
-export const HostingV1RedirectsRedirectCollection = /*@__PURE__*/ S.Array(
+const HostingV1RedirectsRedirectCollection = /*@__PURE__*/ S.Array(
   HostingV1RedirectsRedirectResource,
 ) as any as S.Schema<HostingV1RedirectsRedirectCollection>;
 
@@ -13219,7 +13065,7 @@ export interface ListHostingWebsiteRedirectsV1Response {
   data?: HostingV1RedirectsRedirectCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListHostingWebsiteRedirectsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteRedirectsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HostingV1RedirectsRedirectCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13232,7 +13078,7 @@ export interface ListHostingWebsiteSetupsV1Request {
   /** Filter by domain name (exact match) */
   domain?: string;
 }
-export const ListHostingWebsiteSetupsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteSetupsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/onboardings", code: 200 })),
@@ -13242,7 +13088,7 @@ export const ListHostingWebsiteSetupsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** `running` while the website is still being set up, `completed` once the setup has finished, `failed` when it stopped before finishing or has not reported progress for over an hour. */
 export type HostingV1OnboardingsOnboardingResourceStatus = "running" | "completed" | "failed";
-export const HostingV1OnboardingsOnboardingResourceStatus = S.String;
+const HostingV1OnboardingsOnboardingResourceStatus = S.String;
 
 export interface HostingV1OnboardingsOnboardingResource {
   /** Domain of the website being set up. */
@@ -13256,7 +13102,7 @@ export interface HostingV1OnboardingsOnboardingResource {
   /** When the setup last reported progress. */
   updated_at: string;
 }
-export const HostingV1OnboardingsOnboardingResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1OnboardingsOnboardingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     username: S.String,
@@ -13271,12 +13117,12 @@ export const HostingV1OnboardingsOnboardingResource = /*@__PURE__*/ S.suspend(()
 /** Array of [`Hosting.V1.Onboardings.OnboardingResource`](#model/hostingv1onboardingsonboardingresource) */
 export type HostingV1OnboardingsOnboardingCollection =
   Array<HostingV1OnboardingsOnboardingResource>;
-export const HostingV1OnboardingsOnboardingCollection = /*@__PURE__*/ S.Array(
+const HostingV1OnboardingsOnboardingCollection = /*@__PURE__*/ S.Array(
   HostingV1OnboardingsOnboardingResource,
 ) as any as S.Schema<HostingV1OnboardingsOnboardingCollection>;
 
 export type ListHostingWebsiteSetupsV1Response = HostingV1OnboardingsOnboardingCollection;
-export const ListHostingWebsiteSetupsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteSetupsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1OnboardingsOnboardingCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebsiteSetupsV1Response",
@@ -13287,7 +13133,7 @@ export interface ListHostingWebsiteSubdomainsV1Request {
   /** Domain name */
   domain: string;
 }
-export const ListHostingWebsiteSubdomainsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteSubdomainsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -13314,7 +13160,7 @@ export interface HostingV1DomainsSubdomainResource {
   /** Subdomain prefix */
   subdomain?: string;
 }
-export const HostingV1DomainsSubdomainResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DomainsSubdomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     domain: S.optional(S.String),
@@ -13328,12 +13174,12 @@ export const HostingV1DomainsSubdomainResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Domains.SubdomainResource`](#model/hostingv1domainssubdomainresource) */
 export type HostingV1DomainsSubdomainCollection = Array<HostingV1DomainsSubdomainResource>;
-export const HostingV1DomainsSubdomainCollection = /*@__PURE__*/ S.Array(
+const HostingV1DomainsSubdomainCollection = /*@__PURE__*/ S.Array(
   HostingV1DomainsSubdomainResource,
 ) as any as S.Schema<HostingV1DomainsSubdomainCollection>;
 
 export type ListHostingWebsiteSubdomainsV1Response = HostingV1DomainsSubdomainCollection;
-export const ListHostingWebsiteSubdomainsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsiteSubdomainsV1Response = /*@__PURE__*/ S.suspend(() =>
   HostingV1DomainsSubdomainCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWebsiteSubdomainsV1Response",
@@ -13345,12 +13191,10 @@ export type ListHostingWebsitesV1RequestWebsiteTypesItem =
   | "horizons"
   | "nodejs"
   | "other";
-export const ListHostingWebsitesV1RequestWebsiteTypesItem = S.String;
-
 export type ListHostingWebsitesV1RequestWebsiteTypesList = Array<
   ListHostingWebsitesV1RequestWebsiteTypesItem | (string & {})
 >;
-export const ListHostingWebsitesV1RequestWebsiteTypesList =
+const ListHostingWebsitesV1RequestWebsiteTypesList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<ListHostingWebsitesV1RequestWebsiteTypesList>;
 
 export interface ListHostingWebsitesV1Request {
@@ -13369,7 +13213,7 @@ export interface ListHostingWebsitesV1Request {
   /** Filter by detected website type, e.g. wordpress,nodejs. Accepts a comma-separated list. */
   website_types?: ListHostingWebsitesV1RequestWebsiteTypesList;
 }
-export const ListHostingWebsitesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsitesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -13385,7 +13229,7 @@ export const ListHostingWebsitesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Virtual host type. Only present for CloudLinux websites. */
 export type HostingV1WebsitesWebsiteResourceVhostType = "main" | "addon" | "parked" | "subdomain";
-export const HostingV1WebsitesWebsiteResourceVhostType = S.String;
+const HostingV1WebsitesWebsiteResourceVhostType = S.String;
 
 /** Type of website detected on the underlying platform. */
 export type HostingV1WebsitesWebsiteResourceWebsiteType =
@@ -13394,7 +13238,7 @@ export type HostingV1WebsitesWebsiteResourceWebsiteType =
   | "horizons"
   | "nodejs"
   | "other";
-export const HostingV1WebsitesWebsiteResourceWebsiteType = S.String;
+const HostingV1WebsitesWebsiteResourceWebsiteType = S.String;
 
 export interface HostingV1WebsitesWebsiteResource {
   /** Website domain. Null for U4S websites with no domain attached. */
@@ -13420,7 +13264,7 @@ export interface HostingV1WebsitesWebsiteResource {
   /** Horizons UUID. Only present for horizons websites. */
   horizons_uuid?: string | null;
 }
-export const HostingV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.NullOr(S.String)),
     vhost_type: S.optional(S.NullOr(HostingV1WebsitesWebsiteResourceVhostType)),
@@ -13440,7 +13284,7 @@ export const HostingV1WebsitesWebsiteResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Hosting.V1.Websites.WebsiteResource`](#model/hostingv1websiteswebsiteresource) */
 export type HostingV1WebsitesWebsiteCollection = Array<HostingV1WebsitesWebsiteResource>;
-export const HostingV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
+const HostingV1WebsitesWebsiteCollection = /*@__PURE__*/ S.Array(
   HostingV1WebsitesWebsiteResource,
 ) as any as S.Schema<HostingV1WebsitesWebsiteCollection>;
 
@@ -13448,7 +13292,7 @@ export interface ListHostingWebsitesV1Response {
   data?: HostingV1WebsitesWebsiteCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListHostingWebsitesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWebsitesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(HostingV1WebsitesWebsiteCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13458,7 +13302,7 @@ export const ListHostingWebsitesV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingWebsitesV1Response>;
 
 export type ListHostingWordPressInstallationsV1RequestOwnership = "owned" | "managed" | "all";
-export const ListHostingWordPressInstallationsV1RequestOwnership = S.String;
+const ListHostingWordPressInstallationsV1RequestOwnership = S.String;
 
 export interface ListHostingWordPressInstallationsV1Request {
   /** Filter by specific username */
@@ -13468,7 +13312,7 @@ export interface ListHostingWordPressInstallationsV1Request {
   /** Filter by ownership type. Defaults to "owned". Use "all" to include both owned and managed installations. */
   ownership?: ListHostingWordPressInstallationsV1RequestOwnership | (string & {});
 }
-export const ListHostingWordPressInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWordPressInstallationsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String.pipe(T.Query())),
     domain: S.optional(S.String.pipe(T.Query())),
@@ -13504,7 +13348,7 @@ export interface WordPressV1InstallationsWordPressInstallationResource {
   /** Installation creation timestamp */
   created_at?: string;
 }
-export const WordPressV1InstallationsWordPressInstallationResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1InstallationsWordPressInstallationResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     username: S.optional(S.String),
@@ -13526,13 +13370,13 @@ export const WordPressV1InstallationsWordPressInstallationResource = /*@__PURE__
 /** Array of [`WordPress.V1.Installations.WordPressInstallationResource`](#model/wordpressv1installationswordpressinstallationresource) */
 export type WordPressV1InstallationsWordPressInstallationCollection =
   Array<WordPressV1InstallationsWordPressInstallationResource>;
-export const WordPressV1InstallationsWordPressInstallationCollection = /*@__PURE__*/ S.Array(
+const WordPressV1InstallationsWordPressInstallationCollection = /*@__PURE__*/ S.Array(
   WordPressV1InstallationsWordPressInstallationResource,
 ) as any as S.Schema<WordPressV1InstallationsWordPressInstallationCollection>;
 
 export type ListHostingWordPressInstallationsV1Response =
   WordPressV1InstallationsWordPressInstallationCollection;
-export const ListHostingWordPressInstallationsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWordPressInstallationsV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1InstallationsWordPressInstallationCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWordPressInstallationsV1Response",
@@ -13544,7 +13388,7 @@ export interface ListHostingWordPressThemesV1Request {
   /** Search term to match against theme names. */
   search?: string;
 }
-export const ListHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
@@ -13571,7 +13415,7 @@ export interface WordPressV1ThemesThemeResource {
   /** Whether a hosting plan upgrade is required to use the theme */
   is_plan_upgrade_needed?: boolean;
 }
-export const WordPressV1ThemesThemeResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1ThemesThemeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     title: S.optional(S.String),
@@ -13588,22 +13432,22 @@ export const WordPressV1ThemesThemeResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`WordPress.V1.Themes.ThemeResource`](#model/wordpressv1themesthemeresource) */
 export type WordPressV1ThemesThemeCollection = Array<WordPressV1ThemesThemeResource>;
-export const WordPressV1ThemesThemeCollection = /*@__PURE__*/ S.Array(
+const WordPressV1ThemesThemeCollection = /*@__PURE__*/ S.Array(
   WordPressV1ThemesThemeResource,
 ) as any as S.Schema<WordPressV1ThemesThemeCollection>;
 
 export type ListHostingWordPressThemesV1Response = WordPressV1ThemesThemeCollection;
-export const ListHostingWordPressThemesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListHostingWordPressThemesV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1ThemesThemeCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingWordPressThemesV1Response",
 }) as any as S.Schema<ListHostingWordPressThemesV1Response>;
 
 export type ListMailAccessLogsV1RequestStatus = "Successful" | "Failed";
-export const ListMailAccessLogsV1RequestStatus = S.String;
+const ListMailAccessLogsV1RequestStatus = S.String;
 
 export type ListMailAccessLogsV1RequestProtocol = "imap" | "pop3" | "smtp";
-export const ListMailAccessLogsV1RequestProtocol = S.String;
+const ListMailAccessLogsV1RequestProtocol = S.String;
 
 export interface ListMailAccessLogsV1Request {
   /** Order resource ID */
@@ -13627,7 +13471,7 @@ export interface ListMailAccessLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailAccessLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailAccessLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -13667,7 +13511,7 @@ export interface MailV1LogsAccessAccessLogResource {
   /** True when the session deleted, expunged or trashed messages */
   is_important?: boolean;
 }
-export const MailV1LogsAccessAccessLogResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1LogsAccessAccessLogResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     domain: S.optional(S.String),
@@ -13694,7 +13538,7 @@ export const MailV1LogsAccessAccessLogResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Logs.Access.AccessLogResource`](#model/mailv1logsaccessaccesslogresource) */
 export type MailV1LogsAccessAccessLogCollection = Array<MailV1LogsAccessAccessLogResource>;
-export const MailV1LogsAccessAccessLogCollection = /*@__PURE__*/ S.Array(
+const MailV1LogsAccessAccessLogCollection = /*@__PURE__*/ S.Array(
   MailV1LogsAccessAccessLogResource,
 ) as any as S.Schema<MailV1LogsAccessAccessLogCollection>;
 
@@ -13702,7 +13546,7 @@ export interface ListMailAccessLogsV1Response {
   data?: MailV1LogsAccessAccessLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailAccessLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailAccessLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1LogsAccessAccessLogCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13712,7 +13556,7 @@ export const ListMailAccessLogsV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailAccessLogsV1Response>;
 
 export type ListMailActionLogsV1RequestStatus = "Successful" | "Failed";
-export const ListMailActionLogsV1RequestStatus = S.String;
+const ListMailActionLogsV1RequestStatus = S.String;
 
 export interface ListMailActionLogsV1Request {
   /** Order resource ID */
@@ -13732,7 +13576,7 @@ export interface ListMailActionLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailActionLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailActionLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -13748,7 +13592,7 @@ export const ListMailActionLogsV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailActionLogsV1Request>;
 
 export type MailV1LogsActionActionLogResourceResponseStatus = "OK" | "Fail";
-export const MailV1LogsActionActionLogResourceResponseStatus = S.String;
+const MailV1LogsActionActionLogResourceResponseStatus = S.String;
 
 export interface MailV1LogsActionActionLogResource {
   action?: string;
@@ -13761,7 +13605,7 @@ export interface MailV1LogsActionActionLogResource {
   action_context?: string;
   response_status?: MailV1LogsActionActionLogResourceResponseStatus;
 }
-export const MailV1LogsActionActionLogResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1LogsActionActionLogResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     extra: S.optional(S.NullOr(S.Unknown)),
@@ -13777,7 +13621,7 @@ export const MailV1LogsActionActionLogResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Logs.Action.ActionLogResource`](#model/mailv1logsactionactionlogresource) */
 export type MailV1LogsActionActionLogCollection = Array<MailV1LogsActionActionLogResource>;
-export const MailV1LogsActionActionLogCollection = /*@__PURE__*/ S.Array(
+const MailV1LogsActionActionLogCollection = /*@__PURE__*/ S.Array(
   MailV1LogsActionActionLogResource,
 ) as any as S.Schema<MailV1LogsActionActionLogCollection>;
 
@@ -13785,7 +13629,7 @@ export interface ListMailActionLogsV1Response {
   data?: MailV1LogsActionActionLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailActionLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailActionLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1LogsActionActionLogCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13802,7 +13646,7 @@ export interface ListMailAliasesV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailAliasesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailAliasesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13812,7 +13656,7 @@ export const ListMailAliasesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Aliases.AliasResource`](#model/mailv1aliasesaliasresource) */
 export type MailV1AliasesAliasCollection = Array<MailV1AliasesAliasResource>;
-export const MailV1AliasesAliasCollection = /*@__PURE__*/ S.Array(
+const MailV1AliasesAliasCollection = /*@__PURE__*/ S.Array(
   MailV1AliasesAliasResource,
 ) as any as S.Schema<MailV1AliasesAliasCollection>;
 
@@ -13820,7 +13664,7 @@ export interface ListMailAliasesV1Response {
   data?: MailV1AliasesAliasCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailAliasesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailAliasesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1AliasesAliasCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13837,7 +13681,7 @@ export interface ListMailAPITokensV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailAPITokensV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailAPITokensV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order_id: S.optional(S.String.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13848,7 +13692,7 @@ export const ListMailAPITokensV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailAPITokensV1Request>;
 
 export type MailV1ApiTokensApiTokenResourceType = "api_token" | "oauth";
-export const MailV1ApiTokensApiTokenResourceType = S.String;
+const MailV1ApiTokensApiTokenResourceType = S.String;
 
 export interface MailV1ApiTokensApiTokenResource {
   /** Unique API token identifier */
@@ -13863,7 +13707,7 @@ export interface MailV1ApiTokensApiTokenResource {
   last_used_at?: string | null;
   type?: MailV1ApiTokensApiTokenResourceType;
 }
-export const MailV1ApiTokensApiTokenResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1ApiTokensApiTokenResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     order_id: S.optional(S.NullOr(S.String)),
@@ -13879,7 +13723,7 @@ export const MailV1ApiTokensApiTokenResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.ApiTokens.ApiTokenResource`](#model/mailv1apitokensapitokenresource) */
 export type MailV1ApiTokensApiTokenCollection = Array<MailV1ApiTokensApiTokenResource>;
-export const MailV1ApiTokensApiTokenCollection = /*@__PURE__*/ S.Array(
+const MailV1ApiTokensApiTokenCollection = /*@__PURE__*/ S.Array(
   MailV1ApiTokensApiTokenResource,
 ) as any as S.Schema<MailV1ApiTokensApiTokenCollection>;
 
@@ -13887,7 +13731,7 @@ export interface ListMailAPITokensV1Response {
   data?: MailV1ApiTokensApiTokenCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailAPITokensV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailAPITokensV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1ApiTokensApiTokenCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13904,7 +13748,7 @@ export interface ListMailAutorepliesV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailAutorepliesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailAutorepliesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13916,7 +13760,7 @@ export const ListMailAutorepliesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Autoreplies.AutoreplyResource`](#model/mailv1autorepliesautoreplyresource) */
 export type MailV1AutorepliesAutoreplyCollection = Array<MailV1AutorepliesAutoreplyResource>;
-export const MailV1AutorepliesAutoreplyCollection = /*@__PURE__*/ S.Array(
+const MailV1AutorepliesAutoreplyCollection = /*@__PURE__*/ S.Array(
   MailV1AutorepliesAutoreplyResource,
 ) as any as S.Schema<MailV1AutorepliesAutoreplyCollection>;
 
@@ -13924,7 +13768,7 @@ export interface ListMailAutorepliesV1Response {
   data?: MailV1AutorepliesAutoreplyCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailAutorepliesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailAutorepliesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1AutorepliesAutoreplyCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13941,7 +13785,7 @@ export interface ListMailCatchAllsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailCatchAllsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailCatchAllsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13953,7 +13797,7 @@ export const ListMailCatchAllsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Catchalls.CatchallResource`](#model/mailv1catchallscatchallresource) */
 export type MailV1CatchallsCatchallCollection = Array<MailV1CatchallsCatchallResource>;
-export const MailV1CatchallsCatchallCollection = /*@__PURE__*/ S.Array(
+const MailV1CatchallsCatchallCollection = /*@__PURE__*/ S.Array(
   MailV1CatchallsCatchallResource,
 ) as any as S.Schema<MailV1CatchallsCatchallCollection>;
 
@@ -13961,7 +13805,7 @@ export interface ListMailCatchAllsV1Response {
   data?: MailV1CatchallsCatchallCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailCatchAllsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailCatchAllsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1CatchallsCatchallCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -13978,7 +13822,7 @@ export interface ListMailForwardersV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailForwardersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailForwardersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -13990,7 +13834,7 @@ export const ListMailForwardersV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Forwarders.ForwarderResource`](#model/mailv1forwardersforwarderresource) */
 export type MailV1ForwardersForwarderCollection = Array<MailV1ForwardersForwarderResource>;
-export const MailV1ForwardersForwarderCollection = /*@__PURE__*/ S.Array(
+const MailV1ForwardersForwarderCollection = /*@__PURE__*/ S.Array(
   MailV1ForwardersForwarderResource,
 ) as any as S.Schema<MailV1ForwardersForwarderCollection>;
 
@@ -13998,7 +13842,7 @@ export interface ListMailForwardersV1Response {
   data?: MailV1ForwardersForwarderCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailForwardersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailForwardersV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1ForwardersForwarderCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14008,7 +13852,7 @@ export const ListMailForwardersV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailForwardersV1Response>;
 
 export type ListMailInboundLogsV1RequestStatus = "Successful" | "Failed";
-export const ListMailInboundLogsV1RequestStatus = S.String;
+const ListMailInboundLogsV1RequestStatus = S.String;
 
 export interface ListMailInboundLogsV1Request {
   /** Order resource ID */
@@ -14032,7 +13876,7 @@ export interface ListMailInboundLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailInboundLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailInboundLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -14058,7 +13902,7 @@ export interface MailV1LogsCommonDeliveryLogRelayEventResource {
   response?: string;
   time?: string;
 }
-export const MailV1LogsCommonDeliveryLogRelayEventResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1LogsCommonDeliveryLogRelayEventResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address_to: S.optional(S.String),
     relay: S.optional(S.String),
@@ -14074,7 +13918,7 @@ export const MailV1LogsCommonDeliveryLogRelayEventResource = /*@__PURE__*/ S.sus
 
 export type MailV1LogsCommonDeliveryLogResourceRelayEventsList =
   Array<MailV1LogsCommonDeliveryLogRelayEventResource>;
-export const MailV1LogsCommonDeliveryLogResourceRelayEventsList = /*@__PURE__*/ S.Array(
+const MailV1LogsCommonDeliveryLogResourceRelayEventsList = /*@__PURE__*/ S.Array(
   MailV1LogsCommonDeliveryLogRelayEventResource,
 ) as any as S.Schema<MailV1LogsCommonDeliveryLogResourceRelayEventsList>;
 
@@ -14090,7 +13934,7 @@ export interface MailV1LogsCommonDeliveryLogResource {
   status?: string;
   is_spam?: boolean;
 }
-export const MailV1LogsCommonDeliveryLogResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1LogsCommonDeliveryLogResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     rcpt: S.optional(S.String),
@@ -14109,7 +13953,7 @@ export const MailV1LogsCommonDeliveryLogResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Logs.Common.DeliveryLogResource`](#model/mailv1logscommondeliverylogresource) */
 export type MailV1LogsCommonDeliveryLogCollection = Array<MailV1LogsCommonDeliveryLogResource>;
-export const MailV1LogsCommonDeliveryLogCollection = /*@__PURE__*/ S.Array(
+const MailV1LogsCommonDeliveryLogCollection = /*@__PURE__*/ S.Array(
   MailV1LogsCommonDeliveryLogResource,
 ) as any as S.Schema<MailV1LogsCommonDeliveryLogCollection>;
 
@@ -14117,7 +13961,7 @@ export interface ListMailInboundLogsV1Response {
   data?: MailV1LogsCommonDeliveryLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailInboundLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailInboundLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1LogsCommonDeliveryLogCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14134,7 +13978,7 @@ export type ListMailMailboxActionLogsV1RequestEvent =
   | "MailboxCreate"
   | "MailboxDelete"
   | "MailboxRename";
-export const ListMailMailboxActionLogsV1RequestEvent = S.String;
+const ListMailMailboxActionLogsV1RequestEvent = S.String;
 
 export interface ListMailMailboxActionLogsV1Request {
   /** Order resource ID */
@@ -14154,7 +13998,7 @@ export interface ListMailMailboxActionLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailMailboxActionLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailMailboxActionLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     email: S.String.pipe(T.Query()),
@@ -14179,7 +14023,7 @@ export type MailV1LogsMailboxActionsMailboxActionLogResourceEvent =
   | "MailboxCreate"
   | "MailboxDelete"
   | "MailboxRename";
-export const MailV1LogsMailboxActionsMailboxActionLogResourceEvent = S.String;
+const MailV1LogsMailboxActionsMailboxActionLogResourceEvent = S.String;
 
 export interface MailV1LogsMailboxActionsMailboxActionLogResource {
   folder?: string;
@@ -14191,7 +14035,7 @@ export interface MailV1LogsMailboxActionsMailboxActionLogResource {
   hostname?: string;
   timestamp?: string;
 }
-export const MailV1LogsMailboxActionsMailboxActionLogResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1LogsMailboxActionsMailboxActionLogResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder: S.optional(S.String),
     time: S.optional(S.Number),
@@ -14207,7 +14051,7 @@ export const MailV1LogsMailboxActionsMailboxActionLogResource = /*@__PURE__*/ S.
 /** Array of [`Mail.V1.Logs.MailboxActions.MailboxActionLogResource`](#model/mailv1logsmailboxactionsmailboxactionlogresource) */
 export type MailV1LogsMailboxActionsMailboxActionLogCollection =
   Array<MailV1LogsMailboxActionsMailboxActionLogResource>;
-export const MailV1LogsMailboxActionsMailboxActionLogCollection = /*@__PURE__*/ S.Array(
+const MailV1LogsMailboxActionsMailboxActionLogCollection = /*@__PURE__*/ S.Array(
   MailV1LogsMailboxActionsMailboxActionLogResource,
 ) as any as S.Schema<MailV1LogsMailboxActionsMailboxActionLogCollection>;
 
@@ -14215,7 +14059,7 @@ export interface ListMailMailboxActionLogsV1Response {
   data?: MailV1LogsMailboxActionsMailboxActionLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailMailboxActionLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailMailboxActionLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1LogsMailboxActionsMailboxActionLogCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14225,7 +14069,7 @@ export const ListMailMailboxActionLogsV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailMailboxActionLogsV1Response>;
 
 export type ListMailMailboxesV1RequestSort = "address" | "-address";
-export const ListMailMailboxesV1RequestSort = S.String;
+const ListMailMailboxesV1RequestSort = S.String;
 
 export interface ListMailMailboxesV1Request {
   /** Order resource ID */
@@ -14239,7 +14083,7 @@ export interface ListMailMailboxesV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailMailboxesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailMailboxesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     search: S.optional(S.String.pipe(T.Query())),
@@ -14253,7 +14097,7 @@ export const ListMailMailboxesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Mailboxes.MailboxResource`](#model/mailv1mailboxesmailboxresource) */
 export type MailV1MailboxesMailboxCollection = Array<MailV1MailboxesMailboxResource>;
-export const MailV1MailboxesMailboxCollection = /*@__PURE__*/ S.Array(
+const MailV1MailboxesMailboxCollection = /*@__PURE__*/ S.Array(
   MailV1MailboxesMailboxResource,
 ) as any as S.Schema<MailV1MailboxesMailboxCollection>;
 
@@ -14261,7 +14105,7 @@ export interface ListMailMailboxesV1Response {
   data?: MailV1MailboxesMailboxCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailMailboxesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailMailboxesV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1MailboxesMailboxCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14271,14 +14115,14 @@ export const ListMailMailboxesV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMailMailboxesV1Response>;
 
 export type ListMailOrdersV1RequestStatus = "pending_setup" | "active" | "suspended";
-export const ListMailOrdersV1RequestStatus = S.String;
+const ListMailOrdersV1RequestStatus = S.String;
 
 export type ListMailOrdersV1RequestSort =
   | "created_at"
   | "-created_at"
   | "expires_at"
   | "-expires_at";
-export const ListMailOrdersV1RequestSort = S.String;
+const ListMailOrdersV1RequestSort = S.String;
 
 export interface ListMailOrdersV1Request {
   /** Filter orders by domain name (exact match) */
@@ -14294,7 +14138,7 @@ export interface ListMailOrdersV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String.pipe(T.Query())),
     status: S.optional(ListMailOrdersV1RequestStatus.pipe(T.Query())),
@@ -14307,7 +14151,7 @@ export const ListMailOrdersV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Order status */
 export type MailV1OrdersOrderResourceStatus = "pending_setup" | "active" | "suspended";
-export const MailV1OrdersOrderResourceStatus = S.String;
+const MailV1OrdersOrderResourceStatus = S.String;
 
 export interface MailV1OrdersOrderDomainResource {
   /** Domain resource ID */
@@ -14315,7 +14159,7 @@ export interface MailV1OrdersOrderDomainResource {
   /** Domain name */
   name?: string;
 }
-export const MailV1OrdersOrderDomainResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersOrderDomainResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -14330,7 +14174,7 @@ export interface MailV1OrdersOrderPlanResource {
   /** Plan title */
   title?: string;
 }
-export const MailV1OrdersOrderPlanResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersOrderPlanResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     title: S.optional(S.String),
@@ -14357,7 +14201,7 @@ export interface MailV1OrdersOrderResource {
   created_at?: string;
   expires_at?: string | null;
 }
-export const MailV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(MailV1OrdersOrderResourceStatus),
@@ -14375,7 +14219,7 @@ export const MailV1OrdersOrderResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Orders.OrderResource`](#model/mailv1ordersorderresource) */
 export type MailV1OrdersOrderCollection = Array<MailV1OrdersOrderResource>;
-export const MailV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
+const MailV1OrdersOrderCollection = /*@__PURE__*/ S.Array(
   MailV1OrdersOrderResource,
 ) as any as S.Schema<MailV1OrdersOrderCollection>;
 
@@ -14383,7 +14227,7 @@ export interface ListMailOrdersV1Response {
   data?: MailV1OrdersOrderCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1OrdersOrderCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14391,7 +14235,7 @@ export const ListMailOrdersV1Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListMailOrdersV1Response" }) as any as S.Schema<ListMailOrdersV1Response>;
 
 export type ListMailOutboundLogsV1RequestStatus = "Successful" | "Failed";
-export const ListMailOutboundLogsV1RequestStatus = S.String;
+const ListMailOutboundLogsV1RequestStatus = S.String;
 
 export interface ListMailOutboundLogsV1Request {
   /** Order resource ID */
@@ -14415,7 +14259,7 @@ export interface ListMailOutboundLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailOutboundLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailOutboundLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     account: S.optional(S.String.pipe(T.Query())),
@@ -14436,7 +14280,7 @@ export interface ListMailOutboundLogsV1Response {
   data?: MailV1LogsCommonDeliveryLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailOutboundLogsV1Response =
+const ListMailOutboundLogsV1Response =
   ListMailInboundLogsV1Response as any as S.Schema<ListMailOutboundLogsV1Response>;
 
 export interface ListMailWebhookDeliveryLogsV1Request {
@@ -14449,7 +14293,7 @@ export interface ListMailWebhookDeliveryLogsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailWebhookDeliveryLogsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailWebhookDeliveryLogsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     mailbox_id: S.optional(S.String.pipe(T.Query())),
@@ -14481,7 +14325,7 @@ export interface MailV1WebhooksWebhookDeliveryLogResource {
   /** Maximum number of delivery attempts allowed */
   max_retry_count?: number;
 }
-export const MailV1WebhooksWebhookDeliveryLogResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1WebhooksWebhookDeliveryLogResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     mailbox_address: S.optional(S.String),
@@ -14498,7 +14342,7 @@ export const MailV1WebhooksWebhookDeliveryLogResource = /*@__PURE__*/ S.suspend(
 /** Array of [`Mail.V1.Webhooks.WebhookDeliveryLogResource`](#model/mailv1webhookswebhookdeliverylogresource) */
 export type MailV1WebhooksWebhookDeliveryLogCollection =
   Array<MailV1WebhooksWebhookDeliveryLogResource>;
-export const MailV1WebhooksWebhookDeliveryLogCollection = /*@__PURE__*/ S.Array(
+const MailV1WebhooksWebhookDeliveryLogCollection = /*@__PURE__*/ S.Array(
   MailV1WebhooksWebhookDeliveryLogResource,
 ) as any as S.Schema<MailV1WebhooksWebhookDeliveryLogCollection>;
 
@@ -14506,7 +14350,7 @@ export interface ListMailWebhookDeliveryLogsV1Response {
   data?: MailV1WebhooksWebhookDeliveryLogCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailWebhookDeliveryLogsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailWebhookDeliveryLogsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1WebhooksWebhookDeliveryLogCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14516,7 +14360,7 @@ export const ListMailWebhookDeliveryLogsV1Response = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListMailWebhookDeliveryLogsV1Response>;
 
 export type ListMailWebhooksV1RequestStatus = "active" | "disabled" | "paused";
-export const ListMailWebhooksV1RequestStatus = S.String;
+const ListMailWebhooksV1RequestStatus = S.String;
 
 export interface ListMailWebhooksV1Request {
   /** Order resource ID */
@@ -14530,7 +14374,7 @@ export interface ListMailWebhooksV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListMailWebhooksV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListMailWebhooksV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderId: S.String.pipe(T.Label()),
     mailbox_id: S.optional(S.String.pipe(T.Query())),
@@ -14544,7 +14388,7 @@ export const ListMailWebhooksV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Mail.V1.Webhooks.WebhookResource`](#model/mailv1webhookswebhookresource) */
 export type MailV1WebhooksWebhookCollection = Array<MailV1WebhooksWebhookResource>;
-export const MailV1WebhooksWebhookCollection = /*@__PURE__*/ S.Array(
+const MailV1WebhooksWebhookCollection = /*@__PURE__*/ S.Array(
   MailV1WebhooksWebhookResource,
 ) as any as S.Schema<MailV1WebhooksWebhookCollection>;
 
@@ -14552,7 +14396,7 @@ export interface ListMailWebhooksV1Response {
   data?: MailV1WebhooksWebhookCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListMailWebhooksV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListMailWebhooksV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MailV1WebhooksWebhookCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14567,7 +14411,7 @@ export interface ListReachAutomationStepsV1Request {
   /** Automation uuid parameter */
   automationUuid: string;
 }
-export const ListReachAutomationStepsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachAutomationStepsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     automationUuid: S.String.pipe(T.Label()),
@@ -14587,7 +14431,7 @@ export type ReachV1AutomationsStepsAutomationStepResourceType =
   | "trigger"
   | "action"
   | "conditional";
-export const ReachV1AutomationsStepsAutomationStepResourceType = S.String;
+const ReachV1AutomationsStepsAutomationStepResourceType = S.String;
 
 /** The concrete trigger, action, decision or delay this step performs. */
 export type ReachV1AutomationsStepsAutomationStepResourceValue =
@@ -14600,7 +14444,7 @@ export type ReachV1AutomationsStepsAutomationStepResourceValue =
   | "send_campaign"
   | "decision"
   | "delay";
-export const ReachV1AutomationsStepsAutomationStepResourceValue = S.String;
+const ReachV1AutomationsStepsAutomationStepResourceValue = S.String;
 
 export interface ReachV1AutomationsStepsAutomationStepResource {
   uuid?: string;
@@ -14615,7 +14459,7 @@ export interface ReachV1AutomationsStepsAutomationStepResource {
   /** Step configuration. The shape depends on the value, and is empty for steps that take none. */
   config?: unknown | null;
 }
-export const ReachV1AutomationsStepsAutomationStepResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1AutomationsStepsAutomationStepResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     parent_uuid: S.optional(S.NullOr(S.String)),
@@ -14631,22 +14475,22 @@ export const ReachV1AutomationsStepsAutomationStepResource = /*@__PURE__*/ S.sus
 /** Array of [`Reach.V1.Automations.Steps.AutomationStepResource`](#model/reachv1automationsstepsautomationstepresource) */
 export type ReachV1AutomationsStepsAutomationStepCollection =
   Array<ReachV1AutomationsStepsAutomationStepResource>;
-export const ReachV1AutomationsStepsAutomationStepCollection = /*@__PURE__*/ S.Array(
+const ReachV1AutomationsStepsAutomationStepCollection = /*@__PURE__*/ S.Array(
   ReachV1AutomationsStepsAutomationStepResource,
 ) as any as S.Schema<ReachV1AutomationsStepsAutomationStepCollection>;
 
 export type ListReachAutomationStepsV1Response = ReachV1AutomationsStepsAutomationStepCollection;
-export const ListReachAutomationStepsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachAutomationStepsV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1AutomationsStepsAutomationStepCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachAutomationStepsV1Response",
 }) as any as S.Schema<ListReachAutomationStepsV1Response>;
 
 export type ListReachAutomationsV1RequestStatus = "active" | "paused" | "draft";
-export const ListReachAutomationsV1RequestStatus = S.String;
+const ListReachAutomationsV1RequestStatus = S.String;
 
 export type ListReachAutomationsV1RequestSortDirection = "asc" | "desc";
-export const ListReachAutomationsV1RequestSortDirection = S.String;
+const ListReachAutomationsV1RequestSortDirection = S.String;
 
 export interface ListReachAutomationsV1Request {
   /** Profile uuid parameter */
@@ -14660,7 +14504,7 @@ export interface ListReachAutomationsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachAutomationsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachAutomationsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     status: S.optional(ListReachAutomationsV1RequestStatus.pipe(T.Query())),
@@ -14676,7 +14520,7 @@ export const ListReachAutomationsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Automations.AutomationResource`](#model/reachv1automationsautomationresource) */
 export type ReachV1AutomationsAutomationCollection = Array<ReachV1AutomationsAutomationResource>;
-export const ReachV1AutomationsAutomationCollection = /*@__PURE__*/ S.Array(
+const ReachV1AutomationsAutomationCollection = /*@__PURE__*/ S.Array(
   ReachV1AutomationsAutomationResource,
 ) as any as S.Schema<ReachV1AutomationsAutomationCollection>;
 
@@ -14684,7 +14528,7 @@ export interface ListReachAutomationsV1Response {
   data?: ReachV1AutomationsAutomationCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachAutomationsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachAutomationsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1AutomationsAutomationCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14699,13 +14543,13 @@ export type ListReachCampaignsV1RequestStatus =
   | "sending"
   | "publish"
   | "failed";
-export const ListReachCampaignsV1RequestStatus = S.String;
+const ListReachCampaignsV1RequestStatus = S.String;
 
 export type ListReachCampaignsV1RequestType = "campaign" | "automation" | "double_opt_in";
-export const ListReachCampaignsV1RequestType = S.String;
+const ListReachCampaignsV1RequestType = S.String;
 
 export type ListReachCampaignsV1RequestSortDirection = "asc" | "desc";
-export const ListReachCampaignsV1RequestSortDirection = S.String;
+const ListReachCampaignsV1RequestSortDirection = S.String;
 
 export interface ListReachCampaignsV1Request {
   /** Profile uuid parameter */
@@ -14721,7 +14565,7 @@ export interface ListReachCampaignsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachCampaignsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachCampaignsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     status: S.optional(ListReachCampaignsV1RequestStatus.pipe(T.Query())),
@@ -14743,10 +14587,10 @@ export type ReachV1CampaignsCampaignResourceStatus =
   | "sending"
   | "publish"
   | "failed";
-export const ReachV1CampaignsCampaignResourceStatus = S.String;
+const ReachV1CampaignsCampaignResourceStatus = S.String;
 
 export type ReachV1CampaignsCampaignResourceType = "campaign" | "automation" | "double_opt_in";
-export const ReachV1CampaignsCampaignResourceType = S.String;
+const ReachV1CampaignsCampaignResourceType = S.String;
 
 /** Headline engagement rates. The statistics endpoint carries the full breakdown. */
 export interface ReachV1CampaignsCampaignSummaryStatisticsResource {
@@ -14759,7 +14603,7 @@ export interface ReachV1CampaignsCampaignSummaryStatisticsResource {
   /** Percentage of the contacts who opened that went on to click. */
   click_to_open_rate?: number;
 }
-export const ReachV1CampaignsCampaignSummaryStatisticsResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCampaignSummaryStatisticsResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_sent: S.optional(S.Number),
     open_rate: S.optional(S.Number),
@@ -14787,7 +14631,7 @@ export interface ReachV1CampaignsCampaignResource {
   scheduled_at?: string | null;
   statistics?: ReachV1CampaignsCampaignSummaryStatisticsResource;
 }
-export const ReachV1CampaignsCampaignResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1CampaignsCampaignResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     title: S.optional(S.String),
@@ -14809,7 +14653,7 @@ export const ReachV1CampaignsCampaignResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Campaigns.CampaignResource`](#model/reachv1campaignscampaignresource) */
 export type ReachV1CampaignsCampaignCollection = Array<ReachV1CampaignsCampaignResource>;
-export const ReachV1CampaignsCampaignCollection = /*@__PURE__*/ S.Array(
+const ReachV1CampaignsCampaignCollection = /*@__PURE__*/ S.Array(
   ReachV1CampaignsCampaignResource,
 ) as any as S.Schema<ReachV1CampaignsCampaignCollection>;
 
@@ -14817,7 +14661,7 @@ export interface ListReachCampaignsV1Response {
   data?: ReachV1CampaignsCampaignCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachCampaignsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachCampaignsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1CampaignsCampaignCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14830,7 +14674,7 @@ export interface ListReachContactFieldsV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const ListReachContactFieldsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachContactFieldsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -14847,12 +14691,12 @@ export const ListReachContactFieldsV1Request = /*@__PURE__*/ S.suspend(() =>
 /** Array of [`Reach.V1.Contacts.Fields.ContactFieldResource`](#model/reachv1contactsfieldscontactfieldresource) */
 export type ReachV1ContactsFieldsContactFieldCollection =
   Array<ReachV1ContactsFieldsContactFieldResource>;
-export const ReachV1ContactsFieldsContactFieldCollection = /*@__PURE__*/ S.Array(
+const ReachV1ContactsFieldsContactFieldCollection = /*@__PURE__*/ S.Array(
   ReachV1ContactsFieldsContactFieldResource,
 ) as any as S.Schema<ReachV1ContactsFieldsContactFieldCollection>;
 
 export type ListReachContactFieldsV1Response = ReachV1ContactsFieldsContactFieldCollection;
-export const ListReachContactFieldsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachContactFieldsV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1ContactsFieldsContactFieldCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachContactFieldsV1Response",
@@ -14862,7 +14706,7 @@ export interface ListReachEmailTemplatesV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const ListReachEmailTemplatesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachEmailTemplatesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -14874,12 +14718,12 @@ export const ListReachEmailTemplatesV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Templates.TemplateResource`](#model/reachv1templatestemplateresource) */
 export type ReachV1TemplatesTemplateCollection = Array<ReachV1TemplatesTemplateResource>;
-export const ReachV1TemplatesTemplateCollection = /*@__PURE__*/ S.Array(
+const ReachV1TemplatesTemplateCollection = /*@__PURE__*/ S.Array(
   ReachV1TemplatesTemplateResource,
 ) as any as S.Schema<ReachV1TemplatesTemplateCollection>;
 
 export type ListReachEmailTemplatesV1Response = ReachV1TemplatesTemplateCollection;
-export const ListReachEmailTemplatesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachEmailTemplatesV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1TemplatesTemplateCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachEmailTemplatesV1Response",
@@ -14893,7 +14737,7 @@ export interface ListReachFormsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachFormsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachFormsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -14903,10 +14747,10 @@ export const ListReachFormsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** A `paused` form keeps its template online but stops accepting submissions. */
 export type ReachV1FormsFormResourceStatus = "active" | "paused" | "draft";
-export const ReachV1FormsFormResourceStatus = S.String;
+const ReachV1FormsFormResourceStatus = S.String;
 
 export type ReachV1FormsFormResourceType = "form";
-export const ReachV1FormsFormResourceType = S.String;
+const ReachV1FormsFormResourceType = S.String;
 
 /** The rendered form template. Both fields stay null until the template has been generated. */
 export interface ReachV1FormsFormTemplateResource {
@@ -14914,7 +14758,7 @@ export interface ReachV1FormsFormTemplateResource {
   /** Storage path of the template HTML, relative to the storage directory of this profile. Get the form details to receive a directly usable URL instead. */
   path?: string | null;
 }
-export const ReachV1FormsFormTemplateResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1FormsFormTemplateResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.NullOr(S.String)),
     path: S.optional(S.NullOr(S.String)),
@@ -14933,7 +14777,7 @@ export interface ReachV1FormsFormResource {
   created_at?: string;
   updated_at?: string | null;
 }
-export const ReachV1FormsFormResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1FormsFormResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.String),
@@ -14947,7 +14791,7 @@ export const ReachV1FormsFormResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Forms.FormResource`](#model/reachv1formsformresource) */
 export type ReachV1FormsFormCollection = Array<ReachV1FormsFormResource>;
-export const ReachV1FormsFormCollection = /*@__PURE__*/ S.Array(
+const ReachV1FormsFormCollection = /*@__PURE__*/ S.Array(
   ReachV1FormsFormResource,
 ) as any as S.Schema<ReachV1FormsFormCollection>;
 
@@ -14955,7 +14799,7 @@ export interface ListReachFormsV1Response {
   data?: ReachV1FormsFormCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachFormsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachFormsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1FormsFormCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -14966,7 +14810,7 @@ export interface ListReachPlanFeatureAccessV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const ListReachPlanFeatureAccessV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachPlanFeatureAccessV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -14984,7 +14828,7 @@ export type ReachV1ProfilesFeaturesPlanFeatureResourceFeature =
   | "RemoveSignature"
   | "Collaborators"
   | "HtmlCodeEditor";
-export const ReachV1ProfilesFeaturesPlanFeatureResourceFeature = S.String;
+const ReachV1ProfilesFeaturesPlanFeatureResourceFeature = S.String;
 
 /** Whether a single plan feature can be used on the profile. */
 export interface ReachV1ProfilesFeaturesPlanFeatureResource {
@@ -14994,7 +14838,7 @@ export interface ReachV1ProfilesFeaturesPlanFeatureResource {
   /** Whether the feature sits outside the base plan and needs an upgrade. */
   is_locked?: boolean;
 }
-export const ReachV1ProfilesFeaturesPlanFeatureResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesFeaturesPlanFeatureResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feature: S.optional(ReachV1ProfilesFeaturesPlanFeatureResourceFeature),
     is_available: S.optional(S.Boolean),
@@ -15007,12 +14851,12 @@ export const ReachV1ProfilesFeaturesPlanFeatureResource = /*@__PURE__*/ S.suspen
 /** Array of [`Reach.V1.Profiles.Features.PlanFeatureResource`](#model/reachv1profilesfeaturesplanfeatureresource) */
 export type ReachV1ProfilesFeaturesPlanFeatureCollection =
   Array<ReachV1ProfilesFeaturesPlanFeatureResource>;
-export const ReachV1ProfilesFeaturesPlanFeatureCollection = /*@__PURE__*/ S.Array(
+const ReachV1ProfilesFeaturesPlanFeatureCollection = /*@__PURE__*/ S.Array(
   ReachV1ProfilesFeaturesPlanFeatureResource,
 ) as any as S.Schema<ReachV1ProfilesFeaturesPlanFeatureCollection>;
 
 export type ListReachPlanFeatureAccessV1Response = ReachV1ProfilesFeaturesPlanFeatureCollection;
-export const ListReachPlanFeatureAccessV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachPlanFeatureAccessV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1ProfilesFeaturesPlanFeatureCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachPlanFeatureAccessV1Response",
@@ -15023,7 +14867,7 @@ export type ListReachProfileContactsV1RequestSubscriptionStatus =
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const ListReachProfileContactsV1RequestSubscriptionStatus = S.String;
+const ListReachProfileContactsV1RequestSubscriptionStatus = S.String;
 
 export interface ListReachProfileContactsV1Request {
   /** Profile uuid parameter */
@@ -15039,7 +14883,7 @@ export interface ListReachProfileContactsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachProfileContactsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileContactsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     subscription_status: S.optional(
@@ -15061,7 +14905,7 @@ export type ReachV1ContactsProfileContactResourceSubscriptionStatus =
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const ReachV1ContactsProfileContactResourceSubscriptionStatus = S.String;
+const ReachV1ContactsProfileContactResourceSubscriptionStatus = S.String;
 
 export type ReachV1ContactsProfileContactResourceSource =
   | "sync"
@@ -15071,7 +14915,7 @@ export type ReachV1ContactsProfileContactResourceSource =
   | "form"
   | "checkout"
   | "horizons";
-export const ReachV1ContactsProfileContactResourceSource = S.String;
+const ReachV1ContactsProfileContactResourceSource = S.String;
 
 export interface ReachV1ContactsProfileContactResource {
   uuid?: string;
@@ -15085,7 +14929,7 @@ export interface ReachV1ContactsProfileContactResource {
   source?: ReachV1ContactsProfileContactResourceSource | null;
   note?: string | null;
 }
-export const ReachV1ContactsProfileContactResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsProfileContactResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -15104,7 +14948,7 @@ export const ReachV1ContactsProfileContactResource = /*@__PURE__*/ S.suspend(() 
 
 /** Array of [`Reach.V1.Contacts.ProfileContactResource`](#model/reachv1contactsprofilecontactresource) */
 export type ReachV1ContactsProfileContactCollection = Array<ReachV1ContactsProfileContactResource>;
-export const ReachV1ContactsProfileContactCollection = /*@__PURE__*/ S.Array(
+const ReachV1ContactsProfileContactCollection = /*@__PURE__*/ S.Array(
   ReachV1ContactsProfileContactResource,
 ) as any as S.Schema<ReachV1ContactsProfileContactCollection>;
 
@@ -15112,7 +14956,7 @@ export interface ListReachProfileContactsV1Response {
   data?: ReachV1ContactsProfileContactCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachProfileContactsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileContactsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1ContactsProfileContactCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -15131,7 +14975,7 @@ export interface ListReachProfileSegmentContactsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachProfileSegmentContactsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileSegmentContactsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     segmentUuid: S.String.pipe(T.Label()),
@@ -15153,7 +14997,7 @@ export type ReachV1ContactsSegmentsSegmentationContactResourceSubscriptionStatus
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const ReachV1ContactsSegmentsSegmentationContactResourceSubscriptionStatus = S.String;
+const ReachV1ContactsSegmentsSegmentationContactResourceSubscriptionStatus = S.String;
 
 export type ReachV1ContactsSegmentsSegmentationContactResourceSource =
   | "sync"
@@ -15163,7 +15007,7 @@ export type ReachV1ContactsSegmentsSegmentationContactResourceSource =
   | "form"
   | "checkout"
   | "horizons";
-export const ReachV1ContactsSegmentsSegmentationContactResourceSource = S.String;
+const ReachV1ContactsSegmentsSegmentationContactResourceSource = S.String;
 
 export interface ReachV1ContactsSegmentsSegmentationContactResource {
   uuid?: string;
@@ -15175,7 +15019,7 @@ export interface ReachV1ContactsSegmentsSegmentationContactResource {
   source?: ReachV1ContactsSegmentsSegmentationContactResourceSource | null;
   note?: string | null;
 }
-export const ReachV1ContactsSegmentsSegmentationContactResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentationContactResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -15195,7 +15039,7 @@ export const ReachV1ContactsSegmentsSegmentationContactResource = /*@__PURE__*/ 
 /** Array of [`Reach.V1.Contacts.Segments.SegmentationContactResource`](#model/reachv1contactssegmentssegmentationcontactresource) */
 export type ReachV1ContactsSegmentsSegmentationContactCollection =
   Array<ReachV1ContactsSegmentsSegmentationContactResource>;
-export const ReachV1ContactsSegmentsSegmentationContactCollection = /*@__PURE__*/ S.Array(
+const ReachV1ContactsSegmentsSegmentationContactCollection = /*@__PURE__*/ S.Array(
   ReachV1ContactsSegmentsSegmentationContactResource,
 ) as any as S.Schema<ReachV1ContactsSegmentsSegmentationContactCollection>;
 
@@ -15203,7 +15047,7 @@ export interface ListReachProfileSegmentContactsV1Response {
   data?: ReachV1ContactsSegmentsSegmentationContactCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachProfileSegmentContactsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileSegmentContactsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1ContactsSegmentsSegmentationContactCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -15213,7 +15057,7 @@ export const ListReachProfileSegmentContactsV1Response = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListReachProfileSegmentContactsV1Response>;
 
 export type ListReachProfileSegmentsV1RequestCountType = "all" | "subscribed";
-export const ListReachProfileSegmentsV1RequestCountType = S.String;
+const ListReachProfileSegmentsV1RequestCountType = S.String;
 
 export interface ListReachProfileSegmentsV1Request {
   /** Profile uuid parameter */
@@ -15225,7 +15069,7 @@ export interface ListReachProfileSegmentsV1Request {
   /** Number of items per page */
   per_page?: number;
 }
-export const ListReachProfileSegmentsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileSegmentsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     count_type: S.optional(ListReachProfileSegmentsV1RequestCountType.pipe(T.Query())),
@@ -15250,7 +15094,7 @@ export interface ReachV1ContactsSegmentsSegmentListItemResource {
   created_at?: string;
   updated_at?: string;
 }
-export const ReachV1ContactsSegmentsSegmentListItemResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentListItemResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.String),
@@ -15265,7 +15109,7 @@ export const ReachV1ContactsSegmentsSegmentListItemResource = /*@__PURE__*/ S.su
 /** Array of [`Reach.V1.Contacts.Segments.SegmentListItemResource`](#model/reachv1contactssegmentssegmentlistitemresource) */
 export type ReachV1ContactsSegmentsSegmentListItemCollection =
   Array<ReachV1ContactsSegmentsSegmentListItemResource>;
-export const ReachV1ContactsSegmentsSegmentListItemCollection = /*@__PURE__*/ S.Array(
+const ReachV1ContactsSegmentsSegmentListItemCollection = /*@__PURE__*/ S.Array(
   ReachV1ContactsSegmentsSegmentListItemResource,
 ) as any as S.Schema<ReachV1ContactsSegmentsSegmentListItemCollection>;
 
@@ -15273,7 +15117,7 @@ export interface ListReachProfileSegmentsV1Response {
   data?: ReachV1ContactsSegmentsSegmentListItemCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const ListReachProfileSegmentsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileSegmentsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(ReachV1ContactsSegmentsSegmentListItemCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -15283,7 +15127,7 @@ export const ListReachProfileSegmentsV1Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReachProfileSegmentsV1Response>;
 
 export interface ListReachProfilesV1Request {}
-export const ListReachProfilesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfilesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/reach/v1/profiles", code: 200 })),
 ).annotate({
   identifier: "ListReachProfilesV1Request",
@@ -15295,7 +15139,7 @@ export interface ReachV1ProfilesProfileResourceLimits {
   emails_monthly_limit?: number;
   ai_messages_additional?: number;
 }
-export const ReachV1ProfilesProfileResourceLimits = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesProfileResourceLimits = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ai_messages_limit: S.optional(S.Number),
     subscribers_limit: S.optional(S.Number),
@@ -15312,7 +15156,7 @@ export interface ReachV1ProfilesProfileResourceProfilesItem {
   created_at?: string;
   updated_at?: string;
 }
-export const ReachV1ProfilesProfileResourceProfilesItem = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesProfileResourceProfilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     domain: S.optional(S.String),
@@ -15325,7 +15169,7 @@ export const ReachV1ProfilesProfileResourceProfilesItem = /*@__PURE__*/ S.suspen
 
 export type ReachV1ProfilesProfileResourceProfilesList =
   Array<ReachV1ProfilesProfileResourceProfilesItem>;
-export const ReachV1ProfilesProfileResourceProfilesList = /*@__PURE__*/ S.Array(
+const ReachV1ProfilesProfileResourceProfilesList = /*@__PURE__*/ S.Array(
   ReachV1ProfilesProfileResourceProfilesItem,
 ) as any as S.Schema<ReachV1ProfilesProfileResourceProfilesList>;
 
@@ -15337,7 +15181,7 @@ export interface ReachV1ProfilesProfileResource {
   status?: string;
   profiles?: ReachV1ProfilesProfileResourceProfilesList;
 }
-export const ReachV1ProfilesProfileResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ProfilesProfileResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limits: S.optional(ReachV1ProfilesProfileResourceLimits),
     is_trial: S.optional(S.Boolean),
@@ -15352,12 +15196,12 @@ export const ReachV1ProfilesProfileResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Profiles.ProfileResource`](#model/reachv1profilesprofileresource) */
 export type ReachV1ProfilesProfileCollection = Array<ReachV1ProfilesProfileResource>;
-export const ReachV1ProfilesProfileCollection = /*@__PURE__*/ S.Array(
+const ReachV1ProfilesProfileCollection = /*@__PURE__*/ S.Array(
   ReachV1ProfilesProfileResource,
 ) as any as S.Schema<ReachV1ProfilesProfileCollection>;
 
 export type ListReachProfilesV1Response = ReachV1ProfilesProfileCollection;
-export const ListReachProfilesV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfilesV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1ProfilesProfileCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachProfilesV1Response",
@@ -15367,7 +15211,7 @@ export interface ListReachProfileTagsV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const ListReachProfileTagsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileTagsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/reach/v1/profiles/{profileUuid}/tags", code: 200 })),
@@ -15377,11 +15221,11 @@ export const ListReachProfileTagsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`Reach.V1.Contacts.Tags.TagResource`](#model/reachv1contactstagstagresource) */
 export type ReachV1ContactsTagsTagCollection = Array<ReachV1ContactsTagsTagResource>;
-export const ReachV1ContactsTagsTagCollection =
+const ReachV1ContactsTagsTagCollection =
   ReachV1ContactsContactDetailsResourceTagsList as any as S.Schema<ReachV1ContactsTagsTagCollection>;
 
 export type ListReachProfileTagsV1Response = ReachV1ContactsTagsTagCollection;
-export const ListReachProfileTagsV1Response = /*@__PURE__*/ S.suspend(() =>
+const ListReachProfileTagsV1Response = /*@__PURE__*/ S.suspend(() =>
   ReachV1ContactsTagsTagCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReachProfileTagsV1Response",
@@ -15391,7 +15235,7 @@ export interface ListReachSegmentFilterAttributesV1Request {
   /** Profile uuid parameter */
   profileUuid: string;
 }
-export const ListReachSegmentFilterAttributesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ListReachSegmentFilterAttributesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
   }).pipe(
@@ -15415,7 +15259,7 @@ export type ReachV1ContactsSegmentsSegmentFilterAttributeResourceType =
   | "opt_in_method"
   | "contact_field_values"
   | "contact_field_selections";
-export const ReachV1ContactsSegmentsSegmentFilterAttributeResourceType = S.String;
+const ReachV1ContactsSegmentsSegmentFilterAttributeResourceType = S.String;
 
 /** Value to send as the condition `operator`. */
 export type ReachV1ContactsSegmentsSegmentFilterOperatorResourceOperator =
@@ -15445,7 +15289,7 @@ export type ReachV1ContactsSegmentsSegmentFilterOperatorResourceOperator =
   | "not_clicked"
   | "unsubscribed"
   | "not_unsubscribed";
-export const ReachV1ContactsSegmentsSegmentFilterOperatorResourceOperator = S.String;
+const ReachV1ContactsSegmentsSegmentFilterOperatorResourceOperator = S.String;
 
 /** Shape of the value this operator expects, useful for rendering an input. */
 export type ReachV1ContactsSegmentsSegmentFilterOperatorResourceInputType =
@@ -15453,17 +15297,16 @@ export type ReachV1ContactsSegmentsSegmentFilterOperatorResourceInputType =
   | "number"
   | "date"
   | "select";
-export const ReachV1ContactsSegmentsSegmentFilterOperatorResourceInputType = S.String;
+const ReachV1ContactsSegmentsSegmentFilterOperatorResourceInputType = S.String;
 
 /** The values this operator accepts, keyed by the value to send. Only present when the operator is constrained to a fixed set, such as a tag or campaign picker. */
 export type ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap = {
   [key: string]: string | undefined;
 };
-export const ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap>;
+const ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap>;
 
 /** One operator an attribute accepts, and the value format it expects. */
 export interface ReachV1ContactsSegmentsSegmentFilterOperatorResource {
@@ -15477,7 +15320,7 @@ export interface ReachV1ContactsSegmentsSegmentFilterOperatorResource {
   /** The values this operator accepts, keyed by the value to send. Only present when the operator is constrained to a fixed set, such as a tag or campaign picker. */
   enum_values?: ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap;
 }
-export const ReachV1ContactsSegmentsSegmentFilterOperatorResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentFilterOperatorResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operator: S.optional(ReachV1ContactsSegmentsSegmentFilterOperatorResourceOperator),
     description: S.optional(S.String),
@@ -15493,11 +15336,10 @@ export const ReachV1ContactsSegmentsSegmentFilterOperatorResource = /*@__PURE__*
 export type ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap = {
   [key: string]: ReachV1ContactsSegmentsSegmentFilterOperatorResource | undefined;
 };
-export const ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ReachV1ContactsSegmentsSegmentFilterOperatorResource,
-  ) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap>;
+const ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ReachV1ContactsSegmentsSegmentFilterOperatorResource,
+) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap>;
 
 /** One attribute a segment condition can filter on. */
 export interface ReachV1ContactsSegmentsSegmentFilterAttributeResource {
@@ -15509,7 +15351,7 @@ export interface ReachV1ContactsSegmentsSegmentFilterAttributeResource {
   /** Operators this attribute accepts, keyed by operator name. */
   operators?: ReachV1ContactsSegmentsSegmentFilterAttributeResourceOperatorsMap;
 }
-export const ReachV1ContactsSegmentsSegmentFilterAttributeResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentFilterAttributeResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ReachV1ContactsSegmentsSegmentFilterAttributeResourceType),
@@ -15524,17 +15366,16 @@ export const ReachV1ContactsSegmentsSegmentFilterAttributeResource = /*@__PURE__
 export type ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap = {
   [key: string]: ReachV1ContactsSegmentsSegmentFilterAttributeResource | undefined;
 };
-export const ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    ReachV1ContactsSegmentsSegmentFilterAttributeResource,
-  ) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap>;
+const ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ReachV1ContactsSegmentsSegmentFilterAttributeResource,
+) as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap>;
 
 /** The values accepted by `logic` when a segment combines several conditions. */
 export type ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap = {
   [key: string]: string | undefined;
 };
-export const ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap =
+const ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap =
   ReachV1ContactsSegmentsSegmentFilterOperatorResourceEnumValuesMap as any as S.Schema<ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap>;
 
 /** The vocabulary a segment condition can be built from, for one profile. */
@@ -15544,7 +15385,7 @@ export interface ReachV1ContactsSegmentsSegmentFilterAttributesResource {
   /** The values accepted by `logic` when a segment combines several conditions. */
   logic_operators?: ReachV1ContactsSegmentsSegmentFilterAttributesResourceLogicOperatorsMap;
 }
-export const ReachV1ContactsSegmentsSegmentFilterAttributesResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentFilterAttributesResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(ReachV1ContactsSegmentsSegmentFilterAttributesResourceAttributesMap),
     logic_operators: S.optional(
@@ -15561,7 +15402,7 @@ export interface MailChangeMailboxPasswordV1Request {
   /** New mailbox password. Minimum 8 characters with uppercase, lowercase, number and special character; must not be a commonly used password. */
   password: string | Redacted.Redacted<string>;
 }
-export const MailChangeMailboxPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
+const MailChangeMailboxPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mailboxId: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -15578,7 +15419,7 @@ export interface MailUpdateForwarderKeepCopySettingV1Request {
   /** Whether to keep a copy of forwarded messages in the mailbox */
   is_keep_copy_enabled: boolean;
 }
-export const MailUpdateForwarderKeepCopySettingV1Request = /*@__PURE__*/ S.suspend(() =>
+const MailUpdateForwarderKeepCopySettingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwarderId: S.String.pipe(T.Label()),
     is_keep_copy_enabled: S.Boolean,
@@ -15591,7 +15432,7 @@ export const MailUpdateForwarderKeepCopySettingV1Request = /*@__PURE__*/ S.suspe
 
 /** List of vulnerability IDs to patch, as returned by the list vulnerabilities endpoint. */
 export type PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList = Array<string>;
-export const PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList =
+const PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList>;
 
 export interface PatchHostingNodeJsVulnerabilitiesV1Request {
@@ -15601,7 +15442,7 @@ export interface PatchHostingNodeJsVulnerabilitiesV1Request {
   /** List of vulnerability IDs to patch, as returned by the list vulnerabilities endpoint. */
   vulnerability_ids: PatchHostingNodeJsVulnerabilitiesV1RequestVulnerabilityIdsList;
 }
-export const PatchHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspend(() =>
+const PatchHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -15619,7 +15460,7 @@ export const PatchHostingNodeJsVulnerabilitiesV1Request = /*@__PURE__*/ S.suspen
 
 /** List of vulnerability IDs that were patched in the pull request */
 export type HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList = Array<string>;
-export const HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList =
+const HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList>;
 
 export interface HostingV1NodeJsPatchResultResource {
@@ -15632,7 +15473,7 @@ export interface HostingV1NodeJsPatchResultResource {
   /** List of vulnerability IDs that were patched in the pull request */
   patched_vulnerability_ids?: HostingV1NodeJsPatchResultResourcePatchedVulnerabilityIdsList;
 }
-export const HostingV1NodeJsPatchResultResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1NodeJsPatchResultResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pr_url: S.optional(S.String),
     pr_number: S.optional(S.Number),
@@ -15672,7 +15513,7 @@ export type PreviewReachContactsMatchingConditionsV1RequestConditionsItemOperato
   | "not_clicked"
   | "unsubscribed"
   | "not_unsubscribed";
-export const PreviewReachContactsMatchingConditionsV1RequestConditionsItemOperator = S.String;
+const PreviewReachContactsMatchingConditionsV1RequestConditionsItemOperator = S.String;
 
 export interface PreviewReachContactsMatchingConditionsV1RequestConditionsItem {
   /** A built-in contact attribute, or `cf:{fieldUuid}` to target a custom contact field. Which operators are accepted depends on the attribute, so read the segment filter attributes endpoint for the authoritative list. */
@@ -15681,27 +15522,26 @@ export interface PreviewReachContactsMatchingConditionsV1RequestConditionsItem {
   /** Always a string, including for numeric and date comparisons */
   value: string;
 }
-export const PreviewReachContactsMatchingConditionsV1RequestConditionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attribute: S.String,
-      operator: PreviewReachContactsMatchingConditionsV1RequestConditionsItemOperator,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "PreviewReachContactsMatchingConditionsV1RequestConditionsItem",
-  }) as any as S.Schema<PreviewReachContactsMatchingConditionsV1RequestConditionsItem>;
+const PreviewReachContactsMatchingConditionsV1RequestConditionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attribute: S.String,
+    operator: PreviewReachContactsMatchingConditionsV1RequestConditionsItemOperator,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "PreviewReachContactsMatchingConditionsV1RequestConditionsItem",
+}) as any as S.Schema<PreviewReachContactsMatchingConditionsV1RequestConditionsItem>;
 
 /** Conditions a contact must satisfy to appear in the preview */
 export type PreviewReachContactsMatchingConditionsV1RequestConditionsList =
   Array<PreviewReachContactsMatchingConditionsV1RequestConditionsItem>;
-export const PreviewReachContactsMatchingConditionsV1RequestConditionsList = /*@__PURE__*/ S.Array(
+const PreviewReachContactsMatchingConditionsV1RequestConditionsList = /*@__PURE__*/ S.Array(
   PreviewReachContactsMatchingConditionsV1RequestConditionsItem,
 ) as any as S.Schema<PreviewReachContactsMatchingConditionsV1RequestConditionsList>;
 
 /** How to combine multiple conditions */
 export type PreviewReachContactsMatchingConditionsV1RequestLogic = "AND" | "OR";
-export const PreviewReachContactsMatchingConditionsV1RequestLogic = S.String;
+const PreviewReachContactsMatchingConditionsV1RequestLogic = S.String;
 
 export type PreviewReachContactsMatchingConditionsV1RequestSortBy =
   | "email"
@@ -15709,10 +15549,10 @@ export type PreviewReachContactsMatchingConditionsV1RequestSortBy =
   | "surname"
   | "phone"
   | "subscription_status";
-export const PreviewReachContactsMatchingConditionsV1RequestSortBy = S.String;
+const PreviewReachContactsMatchingConditionsV1RequestSortBy = S.String;
 
 export type PreviewReachContactsMatchingConditionsV1RequestSortDirection = "asc" | "desc";
-export const PreviewReachContactsMatchingConditionsV1RequestSortDirection = S.String;
+const PreviewReachContactsMatchingConditionsV1RequestSortDirection = S.String;
 
 export interface PreviewReachContactsMatchingConditionsV1Request {
   /** Profile uuid parameter */
@@ -15730,7 +15570,7 @@ export interface PreviewReachContactsMatchingConditionsV1Request {
   sort_by?: PreviewReachContactsMatchingConditionsV1RequestSortBy | (string & {});
   sort_direction?: PreviewReachContactsMatchingConditionsV1RequestSortDirection | (string & {});
 }
-export const PreviewReachContactsMatchingConditionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const PreviewReachContactsMatchingConditionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     conditions: PreviewReachContactsMatchingConditionsV1RequestConditionsList,
@@ -15755,14 +15595,14 @@ export interface PreviewReachContactsMatchingConditionsV1Response {
   data?: ReachV1ContactsProfileContactCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const PreviewReachContactsMatchingConditionsV1Response =
+const PreviewReachContactsMatchingConditionsV1Response =
   ListReachProfileContactsV1Response as any as S.Schema<PreviewReachContactsMatchingConditionsV1Response>;
 
 export interface PublishHorizonWebsiteV1Request {
   /** The website ID */
   websiteId: string;
 }
-export const PublishHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const PublishHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     websiteId: S.String.pipe(T.Label()),
   }).pipe(
@@ -15774,7 +15614,7 @@ export const PublishHorizonWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Always `publishing` - the build runs asynchronously after this response */
 export type HorizonsV1WebsitesPublishedWebsiteResourceStatus = "publishing";
-export const HorizonsV1WebsitesPublishedWebsiteResourceStatus = S.String;
+const HorizonsV1WebsitesPublishedWebsiteResourceStatus = S.String;
 
 export interface HorizonsV1WebsitesPublishedWebsiteResource {
   /** Always `publishing` - the build runs asynchronously after this response */
@@ -15786,7 +15626,7 @@ export interface HorizonsV1WebsitesPublishedWebsiteResource {
   /** The website ID */
   website_id: string;
 }
-export const HorizonsV1WebsitesPublishedWebsiteResource = /*@__PURE__*/ S.suspend(() =>
+const HorizonsV1WebsitesPublishedWebsiteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: HorizonsV1WebsitesPublishedWebsiteResourceStatus,
     published_url: S.String,
@@ -15802,7 +15642,7 @@ export interface PurgeHostingLiteSpeedCacheV1Request {
   /** WordPress installation (software) identifier */
   software: string;
 }
-export const PurgeHostingLiteSpeedCacheV1Request = /*@__PURE__*/ S.suspend(() =>
+const PurgeHostingLiteSpeedCacheV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -15823,7 +15663,7 @@ export interface ReachCountProfileSegmentContactsV1Request {
   /** Segment uuid parameter */
   segmentUuid: string;
 }
-export const ReachCountProfileSegmentContactsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReachCountProfileSegmentContactsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     segmentUuid: S.String.pipe(T.Label()),
@@ -15842,7 +15682,7 @@ export interface ReachV1ContactsSegmentsSegmentContactsCountResource {
   /** Contacts currently matching the segment conditions */
   count?: number;
 }
-export const ReachV1ContactsSegmentsSegmentContactsCountResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsSegmentsSegmentContactsCountResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -15857,7 +15697,7 @@ export interface ReachCreateContactsInBulkV1RequestContactsItem {
   /** Phone number in E.164 format (leading "+" then 7-15 digits) */
   phone?: string | null;
 }
-export const ReachCreateContactsInBulkV1RequestContactsItem = /*@__PURE__*/ S.suspend(() =>
+const ReachCreateContactsInBulkV1RequestContactsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     name: S.optional(S.NullOr(S.String)),
@@ -15870,13 +15710,13 @@ export const ReachCreateContactsInBulkV1RequestContactsItem = /*@__PURE__*/ S.su
 
 export type ReachCreateContactsInBulkV1RequestContactsList =
   Array<ReachCreateContactsInBulkV1RequestContactsItem>;
-export const ReachCreateContactsInBulkV1RequestContactsList = /*@__PURE__*/ S.Array(
+const ReachCreateContactsInBulkV1RequestContactsList = /*@__PURE__*/ S.Array(
   ReachCreateContactsInBulkV1RequestContactsItem,
 ) as any as S.Schema<ReachCreateContactsInBulkV1RequestContactsList>;
 
 /** Existing tags to attach to every created contact */
 export type ReachCreateContactsInBulkV1RequestTagUuidsList = Array<string>;
-export const ReachCreateContactsInBulkV1RequestTagUuidsList =
+const ReachCreateContactsInBulkV1RequestTagUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachCreateContactsInBulkV1RequestTagUuidsList>;
 
 export interface ReachCreateContactsInBulkV1Request {
@@ -15888,7 +15728,7 @@ export interface ReachCreateContactsInBulkV1Request {
   /** Note applied to every created contact */
   note?: string | null;
 }
-export const ReachCreateContactsInBulkV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReachCreateContactsInBulkV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     contacts: ReachCreateContactsInBulkV1RequestContactsList,
@@ -15906,7 +15746,7 @@ export const ReachCreateContactsInBulkV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReachCreateContactsInBulkV1Request>;
 
 export type ReachCreateOrFindTagsV1RequestNamesList = Array<string>;
-export const ReachCreateOrFindTagsV1RequestNamesList =
+const ReachCreateOrFindTagsV1RequestNamesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ReachCreateOrFindTagsV1RequestNamesList>;
 
 export interface ReachCreateOrFindTagsV1Request {
@@ -15914,7 +15754,7 @@ export interface ReachCreateOrFindTagsV1Request {
   profileUuid: string;
   names: ReachCreateOrFindTagsV1RequestNamesList;
 }
-export const ReachCreateOrFindTagsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReachCreateOrFindTagsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     names: ReachCreateOrFindTagsV1RequestNamesList,
@@ -15924,7 +15764,7 @@ export const ReachCreateOrFindTagsV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReachCreateOrFindTagsV1Request>;
 
 export type ReachCreateOrFindTagsV1Response = ReachV1ContactsTagsTagCollection;
-export const ReachCreateOrFindTagsV1Response =
+const ReachCreateOrFindTagsV1Response =
   ListReachProfileTagsV1Response as any as S.Schema<ReachCreateOrFindTagsV1Response>;
 
 export interface RecreateVPSVirtualMachineV1Request {
@@ -15939,7 +15779,7 @@ export interface RecreateVPSVirtualMachineV1Request {
   /** Post-install script to execute after virtual machine was recreated */
   post_install_script_id?: number;
 }
-export const RecreateVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const RecreateVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     template_id: S.Number,
@@ -15961,7 +15801,7 @@ export interface RegenerateMailWebhookSecretV1Request {
   /** Webhook ID (returned when the webhook was created) */
   webhookId: string;
 }
-export const RegenerateMailWebhookSecretV1Request = /*@__PURE__*/ S.suspend(() =>
+const RegenerateMailWebhookSecretV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(
@@ -15976,18 +15816,11 @@ export const RegenerateMailWebhookSecretV1Request = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<RegenerateMailWebhookSecretV1Request>;
 
 export type MailV1WebhooksWebhookSecretResourceEventsItem = "message.received";
-export const MailV1WebhooksWebhookSecretResourceEventsItem = S.String;
-
 /** Events that trigger this webhook */
 export type MailV1WebhooksWebhookSecretResourceEventsList =
   Array<MailV1WebhooksWebhookSecretResourceEventsItem>;
-export const MailV1WebhooksWebhookSecretResourceEventsList =
-  CreateMailWebhookV1RequestEventsList as any as S.Schema<MailV1WebhooksWebhookSecretResourceEventsList>;
-
 /** Current status of the webhook */
 export type MailV1WebhooksWebhookSecretResourceStatus = "active" | "disabled" | "paused";
-export const MailV1WebhooksWebhookSecretResourceStatus = S.String;
-
 export interface MailV1WebhooksWebhookSecretResource {
   /** Unique webhook identifier */
   id?: string;
@@ -16007,7 +15840,7 @@ export interface MailV1WebhooksWebhookSecretResource {
   created_at?: string;
   updated_at?: string;
 }
-export const MailV1WebhooksWebhookSecretResource =
+const MailV1WebhooksWebhookSecretResource =
   MailV1WebhooksWebhookCreatedResource as any as S.Schema<MailV1WebhooksWebhookSecretResource>;
 
 export interface RemoveReachAContactFromATagV1Request {
@@ -16018,7 +15851,7 @@ export interface RemoveReachAContactFromATagV1Request {
   /** Contact uuid parameter */
   contactUuid: string;
 }
-export const RemoveReachAContactFromATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const RemoveReachAContactFromATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -16036,7 +15869,7 @@ export const RemoveReachAContactFromATagV1Request = /*@__PURE__*/ S.suspend(() =
 
 /** Contacts to apply the change to. Required unless all_contacts is true. */
 export type RemoveReachContactsFromATagV1RequestContactUuidsList = Array<string>;
-export const RemoveReachContactsFromATagV1RequestContactUuidsList =
+const RemoveReachContactsFromATagV1RequestContactUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<RemoveReachContactsFromATagV1RequestContactUuidsList>;
 
 export interface RemoveReachContactsFromATagV1Request {
@@ -16049,7 +15882,7 @@ export interface RemoveReachContactsFromATagV1Request {
   /** Apply to every contact in the profile */
   all_contacts?: boolean;
 }
-export const RemoveReachContactsFromATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const RemoveReachContactsFromATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -16074,7 +15907,7 @@ export interface RenameReachATagV1Request {
   /** New tag name */
   value: string;
 }
-export const RenameReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
+const RenameReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     tagUuid: S.String.pipe(T.Label()),
@@ -16090,7 +15923,7 @@ export const RenameReachATagV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Discount coupon codes */
 export type RenewBillingSubscriptionV1RequestCouponsList = Array<unknown>;
-export const RenewBillingSubscriptionV1RequestCouponsList =
+const RenewBillingSubscriptionV1RequestCouponsList =
   CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<RenewBillingSubscriptionV1RequestCouponsList>;
 
 export interface RenewBillingSubscriptionV1Request {
@@ -16101,7 +15934,7 @@ export interface RenewBillingSubscriptionV1Request {
   /** Discount coupon codes */
   coupons?: RenewBillingSubscriptionV1RequestCouponsList;
 }
-export const RenewBillingSubscriptionV1Request = /*@__PURE__*/ S.suspend(() =>
+const RenewBillingSubscriptionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     payment_method_id: S.optional(S.Number),
@@ -16119,7 +15952,7 @@ export const RenewBillingSubscriptionV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Extension names, exactly as returned by the extensions endpoint. */
 export type ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList = Array<string>;
-export const ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList =
+const ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList =
   CheckHostingIfWordPressInstallationsAreValidV1RequestSoftwareIdsList as any as S.Schema<ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList>;
 
 export interface ReplaceAgencyHostingWebsitePHPExtensionsV1Request {
@@ -16128,7 +15961,7 @@ export interface ReplaceAgencyHostingWebsitePHPExtensionsV1Request {
   /** Extension names, exactly as returned by the extensions endpoint. */
   extensions: ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList;
 }
-export const ReplaceAgencyHostingWebsitePHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAgencyHostingWebsitePHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     extensions: ReplaceAgencyHostingWebsitePHPExtensionsV1RequestExtensionsList,
@@ -16149,12 +15982,11 @@ export interface ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem {
   /** Value to apply. */
   value: string;
 }
-export const ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
+const ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+  }),
 ).annotate({
   identifier: "ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem",
 }) as any as S.Schema<ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem>;
@@ -16162,7 +15994,7 @@ export const ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem = /*@__PU
 /** Option names and values. Each name must be one of the options returned by the options endpoint, and each value must satisfy that option's allowed_values when it declares them. */
 export type ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList =
   Array<ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem>;
-export const ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList = /*@__PURE__*/ S.Array(
+const ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList = /*@__PURE__*/ S.Array(
   ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsItem,
 ) as any as S.Schema<ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList>;
 
@@ -16172,7 +16004,7 @@ export interface ReplaceAgencyHostingWebsitePHPOptionsV1Request {
   /** Option names and values. Each name must be one of the options returned by the options endpoint, and each value must satisfy that option's allowed_values when it declares them. */
   options: ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList;
 }
-export const ReplaceAgencyHostingWebsitePHPOptionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReplaceAgencyHostingWebsitePHPOptionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     options: ReplaceAgencyHostingWebsitePHPOptionsV1RequestOptionsList,
@@ -16193,12 +16025,11 @@ export interface ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem {
   /** Environment variable value. */
   value: string;
 }
-export const ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.String,
-      value: S.String,
-    }),
+const ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    value: S.String,
+  }),
 ).annotate({
   identifier: "ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem",
 }) as any as S.Schema<ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem>;
@@ -16206,7 +16037,7 @@ export const ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem = /*@_
 /** Environment variables to set. This is the full desired set: any variable not in this list is deleted, and an empty array deletes every variable. */
 export type ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsList =
   Array<ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem>;
-export const ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsList = /*@__PURE__*/ S.Array(
+const ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsList = /*@__PURE__*/ S.Array(
   ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsItem,
 ) as any as S.Schema<ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsList>;
 
@@ -16217,7 +16048,7 @@ export interface ReplaceHostingNodeJsEnvironmentVariablesV1Request {
   /** Environment variables to set. This is the full desired set: any variable not in this list is deleted, and an empty array deletes every variable. */
   env_vars: ReplaceHostingNodeJsEnvironmentVariablesV1RequestEnvVarsList;
 }
-export const ReplaceHostingNodeJsEnvironmentVariablesV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReplaceHostingNodeJsEnvironmentVariablesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -16247,10 +16078,10 @@ export type VPSV1FirewallRulesStoreRequestProtocol =
   | "HTTPS"
   | "MySQL"
   | "PostgreSQL";
-export const VPSV1FirewallRulesStoreRequestProtocol = S.String;
+const VPSV1FirewallRulesStoreRequestProtocol = S.String;
 
 export type VPSV1FirewallRulesStoreRequestSource = "any" | "custom";
-export const VPSV1FirewallRulesStoreRequestSource = S.String;
+const VPSV1FirewallRulesStoreRequestSource = S.String;
 
 export interface VPSV1FirewallRulesStoreRequest {
   protocol: VPSV1FirewallRulesStoreRequestProtocol | (string & {});
@@ -16260,7 +16091,7 @@ export interface VPSV1FirewallRulesStoreRequest {
   /** IP range, CIDR, single IP or `any` */
   source_detail: string;
 }
-export const VPSV1FirewallRulesStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const VPSV1FirewallRulesStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocol: VPSV1FirewallRulesStoreRequestProtocol,
     port: S.String,
@@ -16274,7 +16105,7 @@ export const VPSV1FirewallRulesStoreRequest = /*@__PURE__*/ S.suspend(() =>
 /** The complete set of firewall rules that atomically replaces all existing rules in the group */
 export type ReplaceVPSAllFirewallRulesInGroupV1RequestRulesList =
   Array<VPSV1FirewallRulesStoreRequest>;
-export const ReplaceVPSAllFirewallRulesInGroupV1RequestRulesList = /*@__PURE__*/ S.Array(
+const ReplaceVPSAllFirewallRulesInGroupV1RequestRulesList = /*@__PURE__*/ S.Array(
   VPSV1FirewallRulesStoreRequest,
 ) as any as S.Schema<ReplaceVPSAllFirewallRulesInGroupV1RequestRulesList>;
 
@@ -16286,7 +16117,7 @@ export interface ReplaceVPSAllFirewallRulesInGroupV1Request {
   /** Synchronize the firewall group to all its virtual machines after replacing the rules */
   sync?: boolean;
 }
-export const ReplaceVPSAllFirewallRulesInGroupV1Request = /*@__PURE__*/ S.suspend(() =>
+const ReplaceVPSAllFirewallRulesInGroupV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     rules: ReplaceVPSAllFirewallRulesInGroupV1RequestRulesList,
@@ -16300,7 +16131,7 @@ export interface ResendMailCatchAllConfirmationV1Request {
   /** Catch-all resource ID */
   catchallId: string;
 }
-export const ResendMailCatchAllConfirmationV1Request = /*@__PURE__*/ S.suspend(() =>
+const ResendMailCatchAllConfirmationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     catchallId: S.String.pipe(T.Label()),
   }).pipe(
@@ -16318,7 +16149,7 @@ export interface ResendMailForwarderConfirmationV1Request {
   /** Forwarder resource ID */
   forwarderId: string;
 }
-export const ResendMailForwarderConfirmationV1Request = /*@__PURE__*/ S.suspend(() =>
+const ResendMailForwarderConfirmationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     forwarderId: S.String.pipe(T.Label()),
   }).pipe(
@@ -16334,7 +16165,7 @@ export const ResendMailForwarderConfirmationV1Request = /*@__PURE__*/ S.suspend(
 
 /** Specifies which record types to not reset */
 export type ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList = Array<string>;
-export const ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList =
+const ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList>;
 
 export interface ResetDNSDNSRecordsV1Request {
@@ -16347,7 +16178,7 @@ export interface ResetDNSDNSRecordsV1Request {
   /** Specifies which record types to not reset */
   whitelisted_record_types?: ResetDNSDNSRecordsV1RequestWhitelistedRecordTypesList;
 }
-export const ResetDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ResetDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     sync: S.optional(S.Boolean),
@@ -16363,7 +16194,7 @@ export interface ResetHostingPHPExtensionsV1Request {
   /** Domain name */
   domain: string;
 }
-export const ResetHostingPHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ResetHostingPHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -16382,7 +16213,7 @@ export interface ResetVPSHostnameV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const ResetVPSHostnameV1Request = /*@__PURE__*/ S.suspend(() =>
+const ResetVPSHostnameV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -16401,7 +16232,7 @@ export interface RestartHostingNodeJsApplicationV1Request {
   /** Domain name */
   domain: string;
 }
-export const RestartHostingNodeJsApplicationV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestartHostingNodeJsApplicationV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -16422,7 +16253,7 @@ export interface RestartVPSProjectV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const RestartVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestartVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -16441,7 +16272,7 @@ export interface RestartVPSVirtualMachineV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const RestartVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestartVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -16461,7 +16292,7 @@ export interface RestoreDNSDNSSnapshotV1Request {
   /** Snapshot ID */
   snapshotId: number;
 }
-export const RestoreDNSDNSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestoreDNSDNSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     snapshotId: S.Number.pipe(T.Label()),
@@ -16482,7 +16313,7 @@ export interface RestoreVPSBackupV1Request {
   /** Backup ID */
   backupId: number;
 }
-export const RestoreVPSBackupV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestoreVPSBackupV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     backupId: S.Number.pipe(T.Label()),
@@ -16501,7 +16332,7 @@ export interface RestoreVPSSnapshotV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const RestoreVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
+const RestoreVPSSnapshotV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -16519,7 +16350,7 @@ export interface RevokeMailAPITokenV1Request {
   /** API token ID (returned when the token was created) */
   tokenId: string;
 }
-export const RevokeMailAPITokenV1Request = /*@__PURE__*/ S.suspend(() =>
+const RevokeMailAPITokenV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/api/mail/v1/api-tokens/{tokenId}", code: 200 })),
@@ -16531,7 +16362,7 @@ export interface SearchHostingWordPressPluginsV1Request {
   /** Search term to match against plugin names. Minimum 3 characters. */
   search: string;
 }
-export const SearchHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const SearchHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     search: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/api/hosting/v1/wordpress/plugins", code: 200 })),
@@ -16544,7 +16375,7 @@ export interface WordPressV1PluginsPluginResourceIcons {
   _1x?: string;
   _2x?: string;
 }
-export const WordPressV1PluginsPluginResourceIcons = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsPluginResourceIcons = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _1x: S.optional(S.String.pipe(T.Body("1x"))),
     _2x: S.optional(S.String.pipe(T.Body("2x"))),
@@ -16563,7 +16394,7 @@ export interface WordPressV1PluginsPluginResource {
   /** Short plugin description */
   description?: string;
 }
-export const WordPressV1PluginsPluginResource = /*@__PURE__*/ S.suspend(() =>
+const WordPressV1PluginsPluginResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     title: S.optional(S.String),
@@ -16576,12 +16407,12 @@ export const WordPressV1PluginsPluginResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`WordPress.V1.Plugins.PluginResource`](#model/wordpressv1pluginspluginresource) */
 export type WordPressV1PluginsPluginCollection = Array<WordPressV1PluginsPluginResource>;
-export const WordPressV1PluginsPluginCollection = /*@__PURE__*/ S.Array(
+const WordPressV1PluginsPluginCollection = /*@__PURE__*/ S.Array(
   WordPressV1PluginsPluginResource,
 ) as any as S.Schema<WordPressV1PluginsPluginCollection>;
 
 export type SearchHostingWordPressPluginsV1Response = WordPressV1PluginsPluginCollection;
-export const SearchHostingWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
+const SearchHostingWordPressPluginsV1Response = /*@__PURE__*/ S.suspend(() =>
   WordPressV1PluginsPluginCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SearchHostingWordPressPluginsV1Response",
@@ -16591,7 +16422,7 @@ export interface SetBillingDefaultPaymentMethodV1Request {
   /** Payment method ID */
   paymentMethodId: number;
 }
-export const SetBillingDefaultPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetBillingDefaultPaymentMethodV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paymentMethodId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -16605,7 +16436,7 @@ export interface SetDomainWHOISProfileAsDefaultV1Request {
   /** WHOIS ID */
   whoisId: number;
 }
-export const SetDomainWHOISProfileAsDefaultV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetDomainWHOISProfileAsDefaultV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     whoisId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/api/domains/v1/whois/default/{whoisId}", code: 200 })),
@@ -16619,7 +16450,7 @@ export interface SetEcommerceStoreShippingV1Request {
   /** Flat shipping rate in the smallest currency unit (e.g. cents). Use 0 for free shipping. */
   price: number;
 }
-export const SetEcommerceStoreShippingV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetEcommerceStoreShippingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     price: S.Number,
@@ -16638,7 +16469,7 @@ export interface EcommerceV1ShippingShippingResourceShippingOption {
   /** Currency code the rate is charged in (ISO 4217, lowercase). */
   currency_code?: string;
 }
-export const EcommerceV1ShippingShippingResourceShippingOption = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ShippingShippingResourceShippingOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     amount: S.optional(S.Number),
@@ -16653,7 +16484,7 @@ export interface EcommerceV1ShippingShippingResource {
   /** Admin UI deep-link to manage shipping settings. */
   admin_url?: string;
 }
-export const EcommerceV1ShippingShippingResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ShippingShippingResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shipping_option: S.optional(EcommerceV1ShippingShippingResourceShippingOption),
     admin_url: S.optional(S.String),
@@ -16664,7 +16495,7 @@ export const EcommerceV1ShippingShippingResource = /*@__PURE__*/ S.suspend(() =>
 
 /** AI option name */
 export type SetHostingAIOptionStatusV1RequestOption = "llmstxt" | "web2agent";
-export const SetHostingAIOptionStatusV1RequestOption = S.String;
+const SetHostingAIOptionStatusV1RequestOption = S.String;
 
 export interface SetHostingAIOptionStatusV1Request {
   username: string;
@@ -16675,7 +16506,7 @@ export interface SetHostingAIOptionStatusV1Request {
   /** Enable (true) or disable (false) the AI option. */
   enable: boolean;
 }
-export const SetHostingAIOptionStatusV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetHostingAIOptionStatusV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -16697,7 +16528,7 @@ export interface SetVPSHostnameV1Request {
   virtualMachineId: number;
   hostname: string;
 }
-export const SetVPSHostnameV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetVPSHostnameV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     hostname: S.String,
@@ -16717,7 +16548,7 @@ export interface SetVPSNameserversV1Request {
   ns2?: string | null;
   ns3?: string | null;
 }
-export const SetVPSNameserversV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetVPSNameserversV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     ns1: S.String,
@@ -16740,7 +16571,7 @@ export interface SetVPSPanelPasswordV1Request {
   /** Panel password for the virtual machine */
   password: string | Redacted.Redacted<string>;
 }
-export const SetVPSPanelPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetVPSPanelPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -16761,7 +16592,7 @@ export interface SetVPSRootPasswordV1Request {
   /** Root password for the virtual machine */
   password: string | Redacted.Redacted<string>;
 }
-export const SetVPSRootPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
+const SetVPSRootPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -16779,9 +16610,6 @@ export const SetVPSRootPasswordV1Request = /*@__PURE__*/ S.suspend(() =>
 /** Domain contact information */
 export type StartDomainDomainTransferV1RequestDomainContacts =
   ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-export const StartDomainDomainTransferV1RequestDomainContacts =
-  ClaimDomainFreeDomainTransferV1RequestDomainContacts;
-
 export interface StartDomainDomainTransferV1Request {
   /** Domain name */
   domain: string;
@@ -16792,7 +16620,7 @@ export interface StartDomainDomainTransferV1Request {
   /** Keep the existing nameservers of the domain */
   should_keep_ns?: boolean;
 }
-export const StartDomainDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
+const StartDomainDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
     auth_code: S.String,
@@ -16805,7 +16633,7 @@ export const StartDomainDomainTransferV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Node.js version */
 export type StartHostingNodeJsBuildV1RequestNodeVersion = 18 | 20 | 22 | 24;
-export const StartHostingNodeJsBuildV1RequestNodeVersion = S.Number;
+const StartHostingNodeJsBuildV1RequestNodeVersion = S.Number;
 
 /** Node.js application type */
 export type StartHostingNodeJsBuildV1RequestAppType =
@@ -16828,15 +16656,15 @@ export type StartHostingNodeJsBuildV1RequestAppType =
   | "react-router"
   | "nitro"
   | "other";
-export const StartHostingNodeJsBuildV1RequestAppType = S.String;
+const StartHostingNodeJsBuildV1RequestAppType = S.String;
 
 /** Package manager */
 export type StartHostingNodeJsBuildV1RequestPackageManager = "npm" | "yarn" | "pnpm";
-export const StartHostingNodeJsBuildV1RequestPackageManager = S.String;
+const StartHostingNodeJsBuildV1RequestPackageManager = S.String;
 
 /** Where the files come from: `archive` (an uploaded archive on the website) or `git` (a branch of a repository reachable through a Git installation). */
 export type StartHostingNodeJsBuildV1RequestSourceType = "archive" | "git";
-export const StartHostingNodeJsBuildV1RequestSourceType = S.String;
+const StartHostingNodeJsBuildV1RequestSourceType = S.String;
 
 /** Source-specific options. For `archive` send `archive_path`. For `git` send `owner`, `repository`, `branch` and `installation_uuid`, taken from `List Git installations` and `List Git installation repositories`. */
 export interface StartHostingNodeJsBuildV1RequestSourceOptions {
@@ -16851,7 +16679,7 @@ export interface StartHostingNodeJsBuildV1RequestSourceOptions {
   /** Git installation used to access the repository (required if source is "git") */
   installation_uuid?: string;
 }
-export const StartHostingNodeJsBuildV1RequestSourceOptions = /*@__PURE__*/ S.suspend(() =>
+const StartHostingNodeJsBuildV1RequestSourceOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     archive_path: S.optional(S.String),
     owner: S.optional(S.String),
@@ -16886,7 +16714,7 @@ export interface StartHostingNodeJsBuildV1Request {
   /** Source-specific options. For `archive` send `archive_path`. For `git` send `owner`, `repository`, `branch` and `installation_uuid`, taken from `List Git installations` and `List Git installation repositories`. */
   source_options: StartHostingNodeJsBuildV1RequestSourceOptions | null;
 }
-export const StartHostingNodeJsBuildV1Request = /*@__PURE__*/ S.suspend(() =>
+const StartHostingNodeJsBuildV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -16916,7 +16744,7 @@ export interface StartVPSProjectV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const StartVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const StartVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -16935,7 +16763,7 @@ export interface StartVPSRecoveryModeV1Request {
   /** Temporary root password for recovery mode */
   root_password: string | Redacted.Redacted<string>;
 }
-export const StartVPSRecoveryModeV1Request = /*@__PURE__*/ S.suspend(() =>
+const StartVPSRecoveryModeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     root_password: S.String.pipe(T.SensitiveValue({})),
@@ -16954,7 +16782,7 @@ export interface StartVPSVirtualMachineV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const StartVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const StartVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -16974,7 +16802,7 @@ export interface StopVPSProjectV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const StopVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const StopVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -16991,7 +16819,7 @@ export interface StopVPSRecoveryModeV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const StopVPSRecoveryModeV1Request = /*@__PURE__*/ S.suspend(() =>
+const StopVPSRecoveryModeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -17009,7 +16837,7 @@ export interface StopVPSVirtualMachineV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const StopVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const StopVPSVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -17027,7 +16855,7 @@ export interface SyncVPSFirewallToAllAssignedVMsV1Request {
   /** Firewall ID */
   firewallId: number;
 }
-export const SyncVPSFirewallToAllAssignedVMsV1Request = /*@__PURE__*/ S.suspend(() =>
+const SyncVPSFirewallToAllAssignedVMsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/vps/v1/firewall/{firewallId}/sync", code: 200 })),
@@ -17039,7 +16867,7 @@ export interface TestMailWebhookV1Request {
   /** Webhook ID (returned when the webhook was created) */
   webhookId: string;
 }
-export const TestMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
+const TestMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/api/mail/v1/webhooks/{webhookId}/test", code: 200 })),
@@ -17053,7 +16881,7 @@ export interface MailV1WebhooksWebhookTestResultResource {
   /** Error message returned by the webhook endpoint in case of failure */
   error?: string | null;
 }
-export const MailV1WebhooksWebhookTestResultResource = /*@__PURE__*/ S.suspend(() =>
+const MailV1WebhooksWebhookTestResultResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     http_status: S.optional(S.Number),
     is_successful: S.optional(S.Boolean),
@@ -17070,7 +16898,7 @@ export interface ToggleHostingCachelessModeV1Request {
   /** Turn development (cacheless) mode on (true) or off (false) for the website. */
   enabled: boolean;
 }
-export const ToggleHostingCachelessModeV1Request = /*@__PURE__*/ S.suspend(() =>
+const ToggleHostingCachelessModeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17093,7 +16921,7 @@ export interface ToggleHostingHTTPSRedirectV1Request {
   /** Turn the HTTP to HTTPS redirect on (true) or off (false) for the website. */
   is_enabled: boolean;
 }
-export const ToggleHostingHTTPSRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
+const ToggleHostingHTTPSRedirectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17116,7 +16944,7 @@ export interface ToggleHostingMaintenanceModeV1Request {
   /** Enable (true) or disable (false) maintenance mode for the WordPress installation. */
   enabled: boolean;
 }
-export const ToggleHostingMaintenanceModeV1Request = /*@__PURE__*/ S.suspend(() =>
+const ToggleHostingMaintenanceModeV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17139,7 +16967,7 @@ export interface ToggleHostingMemcachedObjectCacheV1Request {
   /** Activate (true) or deactivate (false) the Memcached object cache for the WordPress installation. */
   enabled: boolean;
 }
-export const ToggleHostingMemcachedObjectCacheV1Request = /*@__PURE__*/ S.suspend(() =>
+const ToggleHostingMemcachedObjectCacheV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17162,7 +16990,7 @@ export interface ToggleHostingWebsiteCacheV1Request {
   /** Turn server-side caching on (true) or off (false) for the website. */
   enabled: boolean;
 }
-export const ToggleHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
+const ToggleHostingWebsiteCacheV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17184,7 +17012,7 @@ export interface UninstallAgencyHostingWebsiteSSLV1Request {
   /** Domain name */
   domain: string;
 }
-export const UninstallAgencyHostingWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
+const UninstallAgencyHostingWebsiteSSLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17204,7 +17032,7 @@ export interface UninstallHostingSSLV1Request {
   /** Domain name */
   domain: string;
 }
-export const UninstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
+const UninstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17221,7 +17049,7 @@ export const UninstallHostingSSLV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of the installed plugins to uninstall. */
 export type UninstallHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const UninstallHostingWordPressPluginsV1RequestPluginsList =
+const UninstallHostingWordPressPluginsV1RequestPluginsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UninstallHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface UninstallHostingWordPressPluginsV1Request {
@@ -17231,7 +17059,7 @@ export interface UninstallHostingWordPressPluginsV1Request {
   /** Slugs of the installed plugins to uninstall. */
   plugins: UninstallHostingWordPressPluginsV1RequestPluginsList;
 }
-export const UninstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UninstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17249,7 +17077,7 @@ export const UninstallHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend
 
 /** Slugs of the installed themes to uninstall. */
 export type UninstallHostingWordPressThemesV1RequestThemesList = Array<string>;
-export const UninstallHostingWordPressThemesV1RequestThemesList =
+const UninstallHostingWordPressThemesV1RequestThemesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UninstallHostingWordPressThemesV1RequestThemesList>;
 
 export interface UninstallHostingWordPressThemesV1Request {
@@ -17259,7 +17087,7 @@ export interface UninstallHostingWordPressThemesV1Request {
   /** Slugs of the installed themes to uninstall. */
   themes: UninstallHostingWordPressThemesV1RequestThemesList;
 }
-export const UninstallHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
+const UninstallHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17279,7 +17107,7 @@ export interface UninstallVPSMonarxV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const UninstallVPSMonarxV1Request = /*@__PURE__*/ S.suspend(() =>
+const UninstallVPSMonarxV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -17299,7 +17127,7 @@ export interface UnlinkAgencyHostingDomainFromWebsiteV1Request {
   /** Domain name */
   domain: string;
 }
-export const UnlinkAgencyHostingDomainFromWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
+const UnlinkAgencyHostingDomainFromWebsiteV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17320,7 +17148,7 @@ export interface UpdateAgencyHostingWebsitePHPVersionV1Request {
   /** PHP version to switch the website to, as major.minor. Must be one of the versions returned by the available versions endpoint. */
   version: string;
 }
-export const UpdateAgencyHostingWebsitePHPVersionV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgencyHostingWebsitePHPVersionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_uid: S.String.pipe(T.Label()),
     version: S.String,
@@ -17339,7 +17167,7 @@ export interface UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem {
   /** Content of the name record */
   content: string;
 }
-export const UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.String,
   }),
@@ -17350,7 +17178,7 @@ export const UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem = /*@__PURE__*/ S.s
 /** Records assigned to the name */
 export type UpdateDNSDNSRecordsV1RequestZoneItemRecordsList =
   Array<UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem>;
-export const UpdateDNSDNSRecordsV1RequestZoneItemRecordsList = /*@__PURE__*/ S.Array(
+const UpdateDNSDNSRecordsV1RequestZoneItemRecordsList = /*@__PURE__*/ S.Array(
   UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem,
 ) as any as S.Schema<UpdateDNSDNSRecordsV1RequestZoneItemRecordsList>;
 
@@ -17366,7 +17194,7 @@ export type UpdateDNSDNSRecordsV1RequestZoneItemType =
   | "SOA"
   | "SRV"
   | "CAA";
-export const UpdateDNSDNSRecordsV1RequestZoneItemType = S.String;
+const UpdateDNSDNSRecordsV1RequestZoneItemType = S.String;
 
 export interface UpdateDNSDNSRecordsV1RequestZoneItem {
   /** Name of the record (use `@` for wildcard name) */
@@ -17378,7 +17206,7 @@ export interface UpdateDNSDNSRecordsV1RequestZoneItem {
   /** Type of the record */
   type: UpdateDNSDNSRecordsV1RequestZoneItemType | (string & {});
 }
-export const UpdateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     records: UpdateDNSDNSRecordsV1RequestZoneItemRecordsList,
@@ -17390,7 +17218,7 @@ export const UpdateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<UpdateDNSDNSRecordsV1RequestZoneItem>;
 
 export type UpdateDNSDNSRecordsV1RequestZoneList = Array<UpdateDNSDNSRecordsV1RequestZoneItem>;
-export const UpdateDNSDNSRecordsV1RequestZoneList = /*@__PURE__*/ S.Array(
+const UpdateDNSDNSRecordsV1RequestZoneList = /*@__PURE__*/ S.Array(
   UpdateDNSDNSRecordsV1RequestZoneItem,
 ) as any as S.Schema<UpdateDNSDNSRecordsV1RequestZoneList>;
 
@@ -17401,7 +17229,7 @@ export interface UpdateDNSDNSRecordsV1Request {
   overwrite?: boolean;
   zone: UpdateDNSDNSRecordsV1RequestZoneList;
 }
-export const UpdateDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     overwrite: S.optional(S.Boolean),
@@ -17413,7 +17241,7 @@ export const UpdateDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Redirect type */
 export type UpdateDomainDomainForwardingV1RequestRedirectType = "301" | "302";
-export const UpdateDomainDomainForwardingV1RequestRedirectType = S.String;
+const UpdateDomainDomainForwardingV1RequestRedirectType = S.String;
 
 export interface UpdateDomainDomainForwardingV1Request {
   /** Domain name */
@@ -17423,7 +17251,7 @@ export interface UpdateDomainDomainForwardingV1Request {
   /** URL to forward domain to */
   redirect_url: string;
 }
-export const UpdateDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainDomainForwardingV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     redirect_type: UpdateDomainDomainForwardingV1RequestRedirectType,
@@ -17445,7 +17273,7 @@ export interface UpdateDomainDomainNameserversV1Request {
   /** Fourth name server */
   ns4?: string;
 }
-export const UpdateDomainDomainNameserversV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainDomainNameserversV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     ns1: S.String,
@@ -17461,7 +17289,7 @@ export const UpdateDomainDomainNameserversV1Request = /*@__PURE__*/ S.suspend(()
 
 /** Set "published" to make the product buyable, "draft" to hide it, or "archived" to retire it. */
 export type UpdateEcommerceAProductV1RequestStatus = "draft" | "published" | "archived";
-export const UpdateEcommerceAProductV1RequestStatus = S.String;
+const UpdateEcommerceAProductV1RequestStatus = S.String;
 
 export interface UpdateEcommerceAProductV1Request {
   /** The ID of the store that owns the product. */
@@ -17475,7 +17303,7 @@ export interface UpdateEcommerceAProductV1Request {
   /** Set "published" to make the product buyable, "draft" to hide it, or "archived" to retire it. */
   status?: UpdateEcommerceAProductV1RequestStatus | (string & {});
 }
-export const UpdateEcommerceAProductV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateEcommerceAProductV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -17496,7 +17324,7 @@ export const UpdateEcommerceAProductV1Request = /*@__PURE__*/ S.suspend(() =>
 export interface EcommerceV1ProductProductResponseResource {
   data?: EcommerceV1ProductProductResource;
 }
-export const EcommerceV1ProductProductResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1ProductProductResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1ProductProductResource),
   }),
@@ -17512,7 +17340,7 @@ export interface UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPrice
   /** ISO 4217 currency code. Defaults to the store's default currency. */
   currency?: string;
 }
-export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem =
+const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       amount: S.Number,
@@ -17526,10 +17354,9 @@ export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesIte
 /** The full list of prices for the variant, replacing the existing ones. A free item is amount: 0. */
 export type UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList =
   Array<UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem>;
-export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList =
-  /*@__PURE__*/ S.Array(
-    UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem,
-  ) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList>;
+const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList = /*@__PURE__*/ S.Array(
+  UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesItem,
+) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList>;
 
 export interface UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem {
   /** The id of the variant to update. */
@@ -17543,15 +17370,14 @@ export interface UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem {
   /** The full list of prices for the variant, replacing the existing ones. A free item is amount: 0. */
   prices?: UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList;
 }
-export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      variant_id: S.String,
-      title: S.optional(S.String),
-      inventory_quantity: S.optional(S.Number),
-      manage_inventory: S.optional(S.Boolean),
-      prices: S.optional(UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList),
-    }),
+const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    variant_id: S.String,
+    title: S.optional(S.String),
+    inventory_quantity: S.optional(S.Number),
+    manage_inventory: S.optional(S.Boolean),
+    prices: S.optional(UpdateEcommerceProductVariantsInBatchV1RequestVariantsItemPricesList),
+  }),
 ).annotate({
   identifier: "UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem",
 }) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem>;
@@ -17559,7 +17385,7 @@ export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem = /*@__P
 /** Variants to update in place by id, up to 100. Variants omitted from the list are left untouched. */
 export type UpdateEcommerceProductVariantsInBatchV1RequestVariantsList =
   Array<UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem>;
-export const UpdateEcommerceProductVariantsInBatchV1RequestVariantsList = /*@__PURE__*/ S.Array(
+const UpdateEcommerceProductVariantsInBatchV1RequestVariantsList = /*@__PURE__*/ S.Array(
   UpdateEcommerceProductVariantsInBatchV1RequestVariantsItem,
 ) as any as S.Schema<UpdateEcommerceProductVariantsInBatchV1RequestVariantsList>;
 
@@ -17571,7 +17397,7 @@ export interface UpdateEcommerceProductVariantsInBatchV1Request {
   /** Variants to update in place by id, up to 100. Variants omitted from the list are left untouched. */
   variants: UpdateEcommerceProductVariantsInBatchV1RequestVariantsList;
 }
-export const UpdateEcommerceProductVariantsInBatchV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateEcommerceProductVariantsInBatchV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     product_id: S.String.pipe(T.Label()),
@@ -17590,14 +17416,14 @@ export const UpdateEcommerceProductVariantsInBatchV1Request = /*@__PURE__*/ S.su
 /** The variants. */
 export type EcommerceV1VariantVariantListResponseResourceDataList =
   Array<EcommerceV1VariantVariantResource>;
-export const EcommerceV1VariantVariantListResponseResourceDataList =
+const EcommerceV1VariantVariantListResponseResourceDataList =
   EcommerceV1VariantVariantCollection as any as S.Schema<EcommerceV1VariantVariantListResponseResourceDataList>;
 
 export interface EcommerceV1VariantVariantListResponseResource {
   /** The variants. */
   data?: EcommerceV1VariantVariantListResponseResourceDataList;
 }
-export const EcommerceV1VariantVariantListResponseResource = /*@__PURE__*/ S.suspend(() =>
+const EcommerceV1VariantVariantListResponseResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(EcommerceV1VariantVariantListResponseResourceDataList),
   }),
@@ -17615,7 +17441,7 @@ export interface UpdateEcommerceSalesChannelV1Request {
   /** Public address where the custom sales channel lives. Pass null to clear it. */
   url?: string | null;
 }
-export const UpdateEcommerceSalesChannelV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateEcommerceSalesChannelV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.String.pipe(T.Label()),
     sales_channel_id: S.String.pipe(T.Label()),
@@ -17640,8 +17466,6 @@ export type EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannelType =
   | "custom"
   | "quick-link"
   | "wordpress";
-export const EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannelType = S.String;
-
 export interface EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel {
   /** Sales channel ID */
   id?: string;
@@ -17658,13 +17482,10 @@ export interface EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel {
   /** Public address where the custom sales channel lives. */
   domain?: string | null;
 }
-export const EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel =
-  EcommerceV1SalesChannelSalesChannelCreationResourceSalesChannel as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel>;
-
 export interface EcommerceV1SalesChannelSalesChannelUpdateResource {
   sales_channel?: EcommerceV1SalesChannelSalesChannelUpdateResourceSalesChannel;
 }
-export const EcommerceV1SalesChannelSalesChannelUpdateResource =
+const EcommerceV1SalesChannelSalesChannelUpdateResource =
   EcommerceV1SalesChannelSalesChannelCreationResource as any as S.Schema<EcommerceV1SalesChannelSalesChannelUpdateResource>;
 
 export interface UpdateHostingGitAutoDeploymentSettingsV1Request {
@@ -17684,7 +17505,7 @@ export interface UpdateHostingGitAutoDeploymentSettingsV1Request {
   /** Whether pushes to the branch deploy automatically */
   is_enabled?: boolean;
 }
-export const UpdateHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingGitAutoDeploymentSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17712,7 +17533,7 @@ export type UpdateHostingHostingerWordPressPluginV1RequestSlug =
   | "hostinger-affiliate-plugin"
   | "hostinger-easy-onboarding"
   | "hostinger-reach";
-export const UpdateHostingHostingerWordPressPluginV1RequestSlug = S.String;
+const UpdateHostingHostingerWordPressPluginV1RequestSlug = S.String;
 
 export interface UpdateHostingHostingerWordPressPluginV1Request {
   username: string;
@@ -17721,7 +17542,7 @@ export interface UpdateHostingHostingerWordPressPluginV1Request {
   /** Slug of the Hostinger plugin to update to its latest version. */
   slug: UpdateHostingHostingerWordPressPluginV1RequestSlug | (string & {});
 }
-export const UpdateHostingHostingerWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingHostingerWordPressPluginV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17739,7 +17560,7 @@ export const UpdateHostingHostingerWordPressPluginV1Request = /*@__PURE__*/ S.su
 
 /** Node.js major version */
 export type UpdateHostingNodeJsBuildSettingsV1RequestNodeVersion = 18 | 20 | 22 | 24;
-export const UpdateHostingNodeJsBuildSettingsV1RequestNodeVersion = S.Number;
+const UpdateHostingNodeJsBuildSettingsV1RequestNodeVersion = S.Number;
 
 /** Node.js application framework. Set it explicitly when auto-detection picked the wrong one. */
 export type UpdateHostingNodeJsBuildSettingsV1RequestAppType =
@@ -17762,11 +17583,11 @@ export type UpdateHostingNodeJsBuildSettingsV1RequestAppType =
   | "react-router"
   | "nitro"
   | "other";
-export const UpdateHostingNodeJsBuildSettingsV1RequestAppType = S.String;
+const UpdateHostingNodeJsBuildSettingsV1RequestAppType = S.String;
 
 /** Package manager used to install dependencies */
 export type UpdateHostingNodeJsBuildSettingsV1RequestPackageManager = "npm" | "yarn" | "pnpm";
-export const UpdateHostingNodeJsBuildSettingsV1RequestPackageManager = S.String;
+const UpdateHostingNodeJsBuildSettingsV1RequestPackageManager = S.String;
 
 export interface UpdateHostingNodeJsBuildSettingsV1Request {
   username: string;
@@ -17787,7 +17608,7 @@ export interface UpdateHostingNodeJsBuildSettingsV1Request {
   /** Package manager used to install dependencies */
   package_manager?: UpdateHostingNodeJsBuildSettingsV1RequestPackageManager | (string & {}) | null;
 }
-export const UpdateHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17811,12 +17632,12 @@ export const UpdateHostingNodeJsBuildSettingsV1Request = /*@__PURE__*/ S.suspend
 
 /** PHP extensions to enable. */
 export type UpdateHostingPHPExtensionsV1RequestEnableList = Array<string>;
-export const UpdateHostingPHPExtensionsV1RequestEnableList =
+const UpdateHostingPHPExtensionsV1RequestEnableList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingPHPExtensionsV1RequestEnableList>;
 
 /** PHP extensions to disable. */
 export type UpdateHostingPHPExtensionsV1RequestDisableList = Array<string>;
-export const UpdateHostingPHPExtensionsV1RequestDisableList =
+const UpdateHostingPHPExtensionsV1RequestDisableList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingPHPExtensionsV1RequestDisableList>;
 
 export interface UpdateHostingPHPExtensionsV1Request {
@@ -17828,7 +17649,7 @@ export interface UpdateHostingPHPExtensionsV1Request {
   /** PHP extensions to disable. */
   disable?: UpdateHostingPHPExtensionsV1RequestDisableList;
 }
-export const UpdateHostingPHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingPHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17846,14 +17667,14 @@ export const UpdateHostingPHPExtensionsV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateHostingPHPExtensionsV1Request>;
 
 export type UpdateHostingPHPOptionsV1RequestOptionsValue = string | number;
-export const UpdateHostingPHPOptionsV1RequestOptionsValue =
+const UpdateHostingPHPOptionsV1RequestOptionsValue =
   S.Unknown as any as S.Schema<UpdateHostingPHPOptionsV1RequestOptionsValue>;
 
 /** Map of PHP options to update, keyed by option name. Only include options you want to change. */
 export type UpdateHostingPHPOptionsV1RequestOptionsMap = {
   [key: string]: UpdateHostingPHPOptionsV1RequestOptionsValue | undefined;
 };
-export const UpdateHostingPHPOptionsV1RequestOptionsMap = /*@__PURE__*/ S.Record(
+const UpdateHostingPHPOptionsV1RequestOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
   UpdateHostingPHPOptionsV1RequestOptionsValue,
 ) as any as S.Schema<UpdateHostingPHPOptionsV1RequestOptionsMap>;
@@ -17865,7 +17686,7 @@ export interface UpdateHostingPHPOptionsV1Request {
   /** Map of PHP options to update, keyed by option name. Only include options you want to change. */
   options: UpdateHostingPHPOptionsV1RequestOptionsMap;
 }
-export const UpdateHostingPHPOptionsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingPHPOptionsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17888,7 +17709,7 @@ export interface UpdateHostingPHPVersionV1Request {
   /** PHP version to switch the website to. */
   version: string;
 }
-export const UpdateHostingPHPVersionV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingPHPVersionV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -17913,7 +17734,7 @@ export interface UpdateHostingWordPressCoreV1Request {
   /** Update to a specific WordPress core version. */
   version?: string | null;
 }
-export const UpdateHostingWordPressCoreV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingWordPressCoreV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17932,7 +17753,7 @@ export const UpdateHostingWordPressCoreV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Slugs of the installed plugins to update to their latest version. */
 export type UpdateHostingWordPressPluginsV1RequestPluginsList = Array<string>;
-export const UpdateHostingWordPressPluginsV1RequestPluginsList =
+const UpdateHostingWordPressPluginsV1RequestPluginsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingWordPressPluginsV1RequestPluginsList>;
 
 export interface UpdateHostingWordPressPluginsV1Request {
@@ -17942,7 +17763,7 @@ export interface UpdateHostingWordPressPluginsV1Request {
   /** Slugs of the installed plugins to update to their latest version. */
   plugins: UpdateHostingWordPressPluginsV1RequestPluginsList;
 }
-export const UpdateHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -17960,7 +17781,7 @@ export const UpdateHostingWordPressPluginsV1Request = /*@__PURE__*/ S.suspend(()
 
 /** Slugs of the installed themes to update to their latest version. */
 export type UpdateHostingWordPressThemesV1RequestThemesList = Array<string>;
-export const UpdateHostingWordPressThemesV1RequestThemesList =
+const UpdateHostingWordPressThemesV1RequestThemesList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateHostingWordPressThemesV1RequestThemesList>;
 
 export interface UpdateHostingWordPressThemesV1Request {
@@ -17970,7 +17791,7 @@ export interface UpdateHostingWordPressThemesV1Request {
   /** Slugs of the installed themes to update to their latest version. */
   themes: UpdateHostingWordPressThemesV1RequestThemesList;
 }
-export const UpdateHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingWordPressThemesV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     software: S.String.pipe(T.Label()),
@@ -18000,7 +17821,7 @@ export interface UpdateMailAutoreplyV1Request {
   /** When the autoreply stops. Omit for an indefinite autoreply. */
   ends_at?: string | null;
 }
-export const UpdateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoreplyId: S.String.pipe(T.Label()),
     subject: S.String,
@@ -18014,18 +17835,16 @@ export const UpdateMailAutoreplyV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateMailAutoreplyV1Request>;
 
 export type UpdateMailWebhookV1RequestEventsItem = "message.received";
-export const UpdateMailWebhookV1RequestEventsItem = S.String;
-
 /** Replaces the full list of subscribed events */
 export type UpdateMailWebhookV1RequestEventsList = Array<
   UpdateMailWebhookV1RequestEventsItem | (string & {})
 >;
-export const UpdateMailWebhookV1RequestEventsList =
+const UpdateMailWebhookV1RequestEventsList =
   CreateMailWebhookV1RequestEventsList as any as S.Schema<UpdateMailWebhookV1RequestEventsList>;
 
 /** New status for the webhook */
 export type UpdateMailWebhookV1RequestStatus = "active" | "disabled" | "paused";
-export const UpdateMailWebhookV1RequestStatus = S.String;
+const UpdateMailWebhookV1RequestStatus = S.String;
 
 export interface UpdateMailWebhookV1Request {
   /** Webhook ID (returned when the webhook was created) */
@@ -18041,7 +17860,7 @@ export interface UpdateMailWebhookV1Request {
   /** New URL to deliver events to */
   url?: string;
 }
-export const UpdateMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateMailWebhookV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhookId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -18058,7 +17877,7 @@ export interface UpdateReachAContactFieldV1RequestOptionsItem {
   uuid?: string | null;
   label: string;
 }
-export const UpdateReachAContactFieldV1RequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateReachAContactFieldV1RequestOptionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.NullOr(S.String)),
     label: S.String,
@@ -18070,7 +17889,7 @@ export const UpdateReachAContactFieldV1RequestOptionsItem = /*@__PURE__*/ S.susp
 /** Replaces the option set when provided. Entries carrying a uuid are kept and relabelled, entries without one are created, and any existing option missing from the list is deleted along with the values contacts hold for it. */
 export type UpdateReachAContactFieldV1RequestOptionsList =
   Array<UpdateReachAContactFieldV1RequestOptionsItem>;
-export const UpdateReachAContactFieldV1RequestOptionsList = /*@__PURE__*/ S.Array(
+const UpdateReachAContactFieldV1RequestOptionsList = /*@__PURE__*/ S.Array(
   UpdateReachAContactFieldV1RequestOptionsItem,
 ) as any as S.Schema<UpdateReachAContactFieldV1RequestOptionsList>;
 
@@ -18083,7 +17902,7 @@ export interface UpdateReachAContactFieldV1Request {
   /** Replaces the option set when provided. Entries carrying a uuid are kept and relabelled, entries without one are created, and any existing option missing from the list is deleted along with the values contacts hold for it. */
   options?: UpdateReachAContactFieldV1RequestOptionsList | null;
 }
-export const UpdateReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateReachAContactFieldV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     fieldUuid: S.String.pipe(T.Label()),
@@ -18105,11 +17924,11 @@ export type UpdateReachAContactV1RequestSubscriptionStatus =
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const UpdateReachAContactV1RequestSubscriptionStatus = S.String;
+const UpdateReachAContactV1RequestSubscriptionStatus = S.String;
 
 /** For the choice field types */
 export type UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList = Array<string>;
-export const UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList =
+const UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList =
   AssignReachContactsToATagV1RequestContactUuidsList as any as S.Schema<UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList>;
 
 export interface UpdateReachAContactV1RequestFieldsItem {
@@ -18119,7 +17938,7 @@ export interface UpdateReachAContactV1RequestFieldsItem {
   /** For the choice field types */
   selected_option_uuids?: UpdateReachAContactV1RequestFieldsItemSelectedOptionUuidsList;
 }
-export const UpdateReachAContactV1RequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateReachAContactV1RequestFieldsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String,
     value: S.optional(S.NullOr(S.String)),
@@ -18133,7 +17952,7 @@ export const UpdateReachAContactV1RequestFieldsItem = /*@__PURE__*/ S.suspend(()
 
 /** Set custom field values. Omit to leave untouched, send an empty array to clear them all. */
 export type UpdateReachAContactV1RequestFieldsList = Array<UpdateReachAContactV1RequestFieldsItem>;
-export const UpdateReachAContactV1RequestFieldsList = /*@__PURE__*/ S.Array(
+const UpdateReachAContactV1RequestFieldsList = /*@__PURE__*/ S.Array(
   UpdateReachAContactV1RequestFieldsItem,
 ) as any as S.Schema<UpdateReachAContactV1RequestFieldsList>;
 
@@ -18152,7 +17971,7 @@ export interface UpdateReachAContactV1Request {
   /** Set custom field values. Omit to leave untouched, send an empty array to clear them all. */
   fields?: UpdateReachAContactV1RequestFieldsList;
 }
-export const UpdateReachAContactV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateReachAContactV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     contactUuid: S.String.pipe(T.Label()),
@@ -18179,7 +17998,7 @@ export type ReachV1ContactsProfileContactUpdateResourceSubscriptionStatus =
   | "unsubscribed"
   | "confirmed"
   | "pending";
-export const ReachV1ContactsProfileContactUpdateResourceSubscriptionStatus = S.String;
+const ReachV1ContactsProfileContactUpdateResourceSubscriptionStatus = S.String;
 
 export interface ReachV1ContactsProfileContactUpdateResource {
   uuid?: string;
@@ -18191,7 +18010,7 @@ export interface ReachV1ContactsProfileContactUpdateResource {
   subscribed_at?: string | null;
   unsubscribed_at?: string | null;
 }
-export const ReachV1ContactsProfileContactUpdateResource = /*@__PURE__*/ S.suspend(() =>
+const ReachV1ContactsProfileContactUpdateResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
     name: S.optional(S.NullOr(S.String)),
@@ -18233,8 +18052,6 @@ export type UpdateReachAProfileSegmentV1RequestConditionsItemOperator =
   | "not_clicked"
   | "unsubscribed"
   | "not_unsubscribed";
-export const UpdateReachAProfileSegmentV1RequestConditionsItemOperator = S.String;
-
 export interface UpdateReachAProfileSegmentV1RequestConditionsItem {
   /** A built-in contact attribute, or `cf:{fieldUuid}` to target a custom contact field. Custom fields are addressed by field UUID; their slug is not accepted. Built-in attributes: `email`, `note`, `domain`, `source`, `opt_in_method`, `subscription_status`, `subscribed_at`, `unsubscribed_at`, `created_at`, `tag`, `campaigns`, `processed`, `opened`, `clicked`, `delivered`, `bounced`, `soft_bounced`, `dropped`. Which operators are accepted depends on the attribute. */
   attribute: string;
@@ -18242,18 +18059,15 @@ export interface UpdateReachAProfileSegmentV1RequestConditionsItem {
   /** Always a string, including for numeric and date comparisons */
   value: string;
 }
-export const UpdateReachAProfileSegmentV1RequestConditionsItem =
-  CreateReachAProfileSegmentV1RequestConditionsItem as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsItem>;
-
 /** Replaces the existing conditions entirely. Omit to keep the current ones. */
 export type UpdateReachAProfileSegmentV1RequestConditionsList =
   Array<UpdateReachAProfileSegmentV1RequestConditionsItem>;
-export const UpdateReachAProfileSegmentV1RequestConditionsList =
+const UpdateReachAProfileSegmentV1RequestConditionsList =
   CreateReachAProfileSegmentV1RequestConditionsList as any as S.Schema<UpdateReachAProfileSegmentV1RequestConditionsList>;
 
 /** How to combine multiple conditions. Required when conditions are given. */
 export type UpdateReachAProfileSegmentV1RequestLogic = "AND" | "OR";
-export const UpdateReachAProfileSegmentV1RequestLogic = S.String;
+const UpdateReachAProfileSegmentV1RequestLogic = S.String;
 
 export interface UpdateReachAProfileSegmentV1Request {
   /** Profile uuid parameter */
@@ -18266,7 +18080,7 @@ export interface UpdateReachAProfileSegmentV1Request {
   /** How to combine multiple conditions. Required when conditions are given. */
   logic?: UpdateReachAProfileSegmentV1RequestLogic | (string & {});
 }
-export const UpdateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateReachAProfileSegmentV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileUuid: S.String.pipe(T.Label()),
     segmentUuid: S.String.pipe(T.Label()),
@@ -18298,10 +18112,10 @@ export type UpdateVPSFirewallRuleV1RequestProtocol =
   | "HTTPS"
   | "MySQL"
   | "PostgreSQL";
-export const UpdateVPSFirewallRuleV1RequestProtocol = S.String;
+const UpdateVPSFirewallRuleV1RequestProtocol = S.String;
 
 export type UpdateVPSFirewallRuleV1RequestSource = "any" | "custom";
-export const UpdateVPSFirewallRuleV1RequestSource = S.String;
+const UpdateVPSFirewallRuleV1RequestSource = S.String;
 
 export interface UpdateVPSFirewallRuleV1Request {
   /** Firewall ID */
@@ -18315,7 +18129,7 @@ export interface UpdateVPSFirewallRuleV1Request {
   /** IP range, CIDR, single IP or `any` */
   source_detail: string;
 }
-export const UpdateVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateVPSFirewallRuleV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewallId: S.Number.pipe(T.Label()),
     ruleId: S.Number.pipe(T.Label()),
@@ -18336,7 +18150,7 @@ export interface UpdateVPSProjectV1Request {
   /** Docker Compose project name using alphanumeric characters, dashes, and underscores only */
   projectName: string;
 }
-export const UpdateVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
+const UpdateVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
@@ -18353,13 +18167,10 @@ export const UpdateVPSProjectV1Request = /*@__PURE__*/ S.suspend(() =>
 
 export type ValidateDNSDNSRecordsV1RequestZoneItemRecordsItem =
   UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem;
-export const ValidateDNSDNSRecordsV1RequestZoneItemRecordsItem =
-  UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem;
-
 /** Records assigned to the name */
 export type ValidateDNSDNSRecordsV1RequestZoneItemRecordsList =
   Array<UpdateDNSDNSRecordsV1RequestZoneItemRecordsItem>;
-export const ValidateDNSDNSRecordsV1RequestZoneItemRecordsList =
+const ValidateDNSDNSRecordsV1RequestZoneItemRecordsList =
   UpdateDNSDNSRecordsV1RequestZoneItemRecordsList as any as S.Schema<ValidateDNSDNSRecordsV1RequestZoneItemRecordsList>;
 
 /** Type of the record */
@@ -18374,7 +18185,7 @@ export type ValidateDNSDNSRecordsV1RequestZoneItemType =
   | "SOA"
   | "SRV"
   | "CAA";
-export const ValidateDNSDNSRecordsV1RequestZoneItemType = S.String;
+const ValidateDNSDNSRecordsV1RequestZoneItemType = S.String;
 
 export interface ValidateDNSDNSRecordsV1RequestZoneItem {
   /** Name of the record (use `@` for wildcard name) */
@@ -18386,7 +18197,7 @@ export interface ValidateDNSDNSRecordsV1RequestZoneItem {
   /** Type of the record */
   type: ValidateDNSDNSRecordsV1RequestZoneItemType | (string & {});
 }
-export const ValidateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(() =>
+const ValidateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     records: ValidateDNSDNSRecordsV1RequestZoneItemRecordsList,
@@ -18398,7 +18209,7 @@ export const ValidateDNSDNSRecordsV1RequestZoneItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ValidateDNSDNSRecordsV1RequestZoneItem>;
 
 export type ValidateDNSDNSRecordsV1RequestZoneList = Array<ValidateDNSDNSRecordsV1RequestZoneItem>;
-export const ValidateDNSDNSRecordsV1RequestZoneList = /*@__PURE__*/ S.Array(
+const ValidateDNSDNSRecordsV1RequestZoneList = /*@__PURE__*/ S.Array(
   ValidateDNSDNSRecordsV1RequestZoneItem,
 ) as any as S.Schema<ValidateDNSDNSRecordsV1RequestZoneList>;
 
@@ -18409,7 +18220,7 @@ export interface ValidateDNSDNSRecordsV1Request {
   overwrite?: boolean;
   zone: ValidateDNSDNSRecordsV1RequestZoneList;
 }
-export const ValidateDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ValidateDNSDNSRecordsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String.pipe(T.Label()),
     overwrite: S.optional(S.Boolean),
@@ -18423,7 +18234,7 @@ export interface VerifyHostingDomainOwnershipV1Request {
   /** Domain to verify ownership for */
   domain: string;
 }
-export const VerifyHostingDomainOwnershipV1Request = /*@__PURE__*/ S.suspend(() =>
+const VerifyHostingDomainOwnershipV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/api/hosting/v1/domains/verify-ownership", code: 200 })),
@@ -18439,7 +18250,7 @@ export interface HostingV1DomainsDomainAccessResource {
   /** TXT record for verification */
   txt_to_verify?: string;
 }
-export const HostingV1DomainsDomainAccessResource = /*@__PURE__*/ S.suspend(() =>
+const HostingV1DomainsDomainAccessResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     is_accessible: S.optional(S.Boolean),
@@ -18455,7 +18266,7 @@ export interface VPSCreatePostInstallScriptV1Request {
   /** Content of the script */
   content: string;
 }
-export const VPSCreatePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSCreatePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     content: S.String,
@@ -18474,7 +18285,7 @@ export interface VPSV1PostInstallScriptPostInstallScriptResource {
   created_at?: string;
   updated_at?: string;
 }
-export const VPSV1PostInstallScriptPostInstallScriptResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1PostInstallScriptPostInstallScriptResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -18490,7 +18301,7 @@ export interface VPSDeletePostInstallScriptV1Request {
   /** Post-install script ID */
   postInstallScriptId: number;
 }
-export const VPSDeletePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSDeletePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postInstallScriptId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -18505,7 +18316,7 @@ export const VPSDeletePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VPSDeletePostInstallScriptV1Request>;
 
 export interface VPSGetDataCenterListV1Request {}
-export const VPSGetDataCenterListV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSGetDataCenterListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/data-centers", code: 200 })),
 ).annotate({
   identifier: "VPSGetDataCenterListV1Request",
@@ -18523,7 +18334,7 @@ export interface VPSV1DataCenterDataCenterResource {
   /** Data center location continent */
   continent?: string | null;
 }
-export const VPSV1DataCenterDataCenterResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DataCenterDataCenterResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.NullOr(S.String)),
@@ -18537,12 +18348,12 @@ export const VPSV1DataCenterDataCenterResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.DataCenter.DataCenterResource`](#model/vpsv1datacenterdatacenterresource) */
 export type VPSV1DataCenterDataCenterCollection = Array<VPSV1DataCenterDataCenterResource>;
-export const VPSV1DataCenterDataCenterCollection = /*@__PURE__*/ S.Array(
+const VPSV1DataCenterDataCenterCollection = /*@__PURE__*/ S.Array(
   VPSV1DataCenterDataCenterResource,
 ) as any as S.Schema<VPSV1DataCenterDataCenterCollection>;
 
 export type VPSGetDataCenterListV1Response = VPSV1DataCenterDataCenterCollection;
-export const VPSGetDataCenterListV1Response = /*@__PURE__*/ S.suspend(() =>
+const VPSGetDataCenterListV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1DataCenterDataCenterCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "VPSGetDataCenterListV1Response",
@@ -18552,7 +18363,7 @@ export interface VPSGetFirewallListV1Request {
   /** Page number */
   page?: number;
 }
-export const VPSGetFirewallListV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSGetFirewallListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/firewall", code: 200 })),
@@ -18562,7 +18373,7 @@ export const VPSGetFirewallListV1Request = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.Firewall.FirewallResource`](#model/vpsv1firewallfirewallresource) */
 export type VPSV1FirewallFirewallCollection = Array<VPSV1FirewallFirewallResource>;
-export const VPSV1FirewallFirewallCollection = /*@__PURE__*/ S.Array(
+const VPSV1FirewallFirewallCollection = /*@__PURE__*/ S.Array(
   VPSV1FirewallFirewallResource,
 ) as any as S.Schema<VPSV1FirewallFirewallCollection>;
 
@@ -18570,7 +18381,7 @@ export interface VPSGetFirewallListV1Response {
   data?: VPSV1FirewallFirewallCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const VPSGetFirewallListV1Response = /*@__PURE__*/ S.suspend(() =>
+const VPSGetFirewallListV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VPSV1FirewallFirewallCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -18583,7 +18394,7 @@ export interface VPSGetPostInstallScriptsV1Request {
   /** Page number */
   page?: number;
 }
-export const VPSGetPostInstallScriptsV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSGetPostInstallScriptsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/vps/v1/post-install-scripts", code: 200 })),
@@ -18594,7 +18405,7 @@ export const VPSGetPostInstallScriptsV1Request = /*@__PURE__*/ S.suspend(() =>
 /** Array of [`VPS.V1.PostInstallScript.PostInstallScriptResource`](#model/vpsv1postinstallscriptpostinstallscriptresource) */
 export type VPSV1PostInstallScriptPostInstallScriptCollection =
   Array<VPSV1PostInstallScriptPostInstallScriptResource>;
-export const VPSV1PostInstallScriptPostInstallScriptCollection = /*@__PURE__*/ S.Array(
+const VPSV1PostInstallScriptPostInstallScriptCollection = /*@__PURE__*/ S.Array(
   VPSV1PostInstallScriptPostInstallScriptResource,
 ) as any as S.Schema<VPSV1PostInstallScriptPostInstallScriptCollection>;
 
@@ -18602,7 +18413,7 @@ export interface VPSGetPostInstallScriptsV1Response {
   data?: VPSV1PostInstallScriptPostInstallScriptCollection;
   meta?: CommonSchemaPaginationMetaSchema;
 }
-export const VPSGetPostInstallScriptsV1Response = /*@__PURE__*/ S.suspend(() =>
+const VPSGetPostInstallScriptsV1Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(VPSV1PostInstallScriptPostInstallScriptCollection),
     meta: S.optional(CommonSchemaPaginationMetaSchema),
@@ -18615,7 +18426,7 @@ export interface VPSGetPostInstallScriptV1Request {
   /** Post-install script ID */
   postInstallScriptId: number;
 }
-export const VPSGetPostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSGetPostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postInstallScriptId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -18633,7 +18444,7 @@ export interface VPSGetProjectListV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
 }
-export const VPSGetProjectListV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSGetProjectListV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
   }).pipe(
@@ -18654,7 +18465,7 @@ export type VPSV1DockerManagerProjectResourceState =
   | "created"
   | "mixed"
   | "unknown";
-export const VPSV1DockerManagerProjectResourceState = S.String;
+const VPSV1DockerManagerProjectResourceState = S.String;
 
 export interface VPSV1DockerManagerProjectResource {
   /** Docker Compose project name (derived from directory name or compose file) */
@@ -18667,7 +18478,7 @@ export interface VPSV1DockerManagerProjectResource {
   path?: string;
   containers?: VPSV1DockerManagerContainerCollection;
 }
-export const VPSV1DockerManagerProjectResource = /*@__PURE__*/ S.suspend(() =>
+const VPSV1DockerManagerProjectResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(S.String),
@@ -18681,12 +18492,12 @@ export const VPSV1DockerManagerProjectResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of [`VPS.V1.DockerManager.ProjectResource`](#model/vpsv1dockermanagerprojectresource) */
 export type VPSV1DockerManagerProjectCollection = Array<VPSV1DockerManagerProjectResource>;
-export const VPSV1DockerManagerProjectCollection = /*@__PURE__*/ S.Array(
+const VPSV1DockerManagerProjectCollection = /*@__PURE__*/ S.Array(
   VPSV1DockerManagerProjectResource,
 ) as any as S.Schema<VPSV1DockerManagerProjectCollection>;
 
 export type VPSGetProjectListV1Response = VPSV1DockerManagerProjectCollection;
-export const VPSGetProjectListV1Response = /*@__PURE__*/ S.suspend(() =>
+const VPSGetProjectListV1Response = /*@__PURE__*/ S.suspend(() =>
   VPSV1DockerManagerProjectCollection.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "VPSGetProjectListV1Response",
@@ -18699,7 +18510,7 @@ export interface VPSV1VirtualMachineSetupRequestPublicKey {
   /** Contents of the SSH key */
   key?: string;
 }
-export const VPSV1VirtualMachineSetupRequestPublicKey = /*@__PURE__*/ S.suspend(() =>
+const VPSV1VirtualMachineSetupRequestPublicKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     key: S.optional(S.String),
@@ -18730,7 +18541,7 @@ export interface VPSV1VirtualMachineSetupRequest {
   /** Use SSH key */
   public_key?: VPSV1VirtualMachineSetupRequestPublicKey;
 }
-export const VPSV1VirtualMachineSetupRequest = /*@__PURE__*/ S.suspend(() =>
+const VPSV1VirtualMachineSetupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_id: S.Number,
     data_center_id: S.Number,
@@ -18749,7 +18560,7 @@ export const VPSV1VirtualMachineSetupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Discount coupon codes */
 export type VPSPurchaseNewVirtualMachineV1RequestCouponsList = Array<unknown>;
-export const VPSPurchaseNewVirtualMachineV1RequestCouponsList =
+const VPSPurchaseNewVirtualMachineV1RequestCouponsList =
   CreateBillingPurchaseOrderV1RequestCouponsList as any as S.Schema<VPSPurchaseNewVirtualMachineV1RequestCouponsList>;
 
 export interface VPSPurchaseNewVirtualMachineV1Request {
@@ -18761,7 +18572,7 @@ export interface VPSPurchaseNewVirtualMachineV1Request {
   /** Discount coupon codes */
   coupons?: VPSPurchaseNewVirtualMachineV1RequestCouponsList;
 }
-export const VPSPurchaseNewVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSPurchaseNewVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_id: S.String,
     payment_method_id: S.optional(S.Number),
@@ -18776,7 +18587,7 @@ export interface BillingV1OrderVirtualMachineOrderResource {
   order?: BillingV1OrderOrderResource;
   virtual_machine?: VPSV1VirtualMachineVirtualMachineResource;
 }
-export const BillingV1OrderVirtualMachineOrderResource = /*@__PURE__*/ S.suspend(() =>
+const BillingV1OrderVirtualMachineOrderResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(BillingV1OrderOrderResource),
     virtual_machine: S.optional(VPSV1VirtualMachineVirtualMachineResource),
@@ -18788,9 +18599,6 @@ export const BillingV1OrderVirtualMachineOrderResource = /*@__PURE__*/ S.suspend
 /** Use SSH key */
 export type VPSSetupPurchasedVirtualMachineV1RequestPublicKey =
   VPSV1VirtualMachineSetupRequestPublicKey;
-export const VPSSetupPurchasedVirtualMachineV1RequestPublicKey =
-  VPSV1VirtualMachineSetupRequestPublicKey;
-
 export interface VPSSetupPurchasedVirtualMachineV1Request {
   /** Virtual Machine ID */
   virtualMachineId: number;
@@ -18815,7 +18623,7 @@ export interface VPSSetupPurchasedVirtualMachineV1Request {
   /** Use SSH key */
   public_key?: VPSV1VirtualMachineSetupRequestPublicKey;
 }
-export const VPSSetupPurchasedVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSSetupPurchasedVirtualMachineV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualMachineId: S.Number.pipe(T.Label()),
     template_id: S.Number,
@@ -18847,7 +18655,7 @@ export interface VPSUpdatePostInstallScriptV1Request {
   /** Content of the script */
   content: string;
 }
-export const VPSUpdatePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
+const VPSUpdatePostInstallScriptV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postInstallScriptId: S.Number.pipe(T.Label()),
     name: S.String,

@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request for the Acknowledge method. */
 export interface AcknowledgeRequest {
@@ -71,7 +71,7 @@ export interface AcknowledgeRequest {
   /** The acknowledgment ID for the message being acknowledged. This was returned by the Pub/Sub system in the Pull response. */
   ackId?: StringList;
 }
-export const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(S.String),
     ackId: S.optional(StringList),
@@ -82,7 +82,7 @@ export interface AcknowledgeSubscriptionsRequest {
   /** Request body */
   body?: AcknowledgeRequest;
 }
-export const AcknowledgeSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(AcknowledgeRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -98,7 +98,7 @@ export const AcknowledgeSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An empty message that you can re-use to avoid defining duplicated empty messages in your project. A typical example is to use it as argument or the return value of a service API. For instance: service Foo { rpc Bar (proto2.Empty) returns (proto2.Empty) { }; }; BEGIN GOOGLE-INTERNAL The difference between this one and net/rpc/empty-message.proto is that 1) The generated message here is in proto2 C++ API. 2) The proto2.Empty has minimum dependencies (no message_set or net/rpc dependencies) END GOOGLE-INTERNAL */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -107,7 +107,7 @@ export interface PushConfig {
   /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
   pushEndpoint?: string;
 }
-export const PushConfig = /*@__PURE__*/ S.suspend(() =>
+const PushConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pushEndpoint: S.optional(S.String),
   }),
@@ -124,7 +124,7 @@ export interface Subscription {
   /** For either push or pull delivery, the value is the maximum time after a subscriber receives a message before the subscriber should acknowledge or Nack the message. If the Ack deadline for a message passes without an Ack or a Nack, the Pub/Sub system will eventually redeliver the message. If a subscriber acknowledges after the deadline, the Pub/Sub system may accept the Ack, but it is possible that the message has been already delivered again. Multiple Acks to the message are allowed and will succeed. For push delivery, this value is used to set the request timeout for the call to the push endpoint. For pull delivery, this value is used as the initial value for the Ack deadline. It may be overridden for each message using its corresponding ack_id with ModifyAckDeadline. While a message is outstanding (i.e. it has been delivered to a pull subscriber and the subscriber has not yet Acked or Nacked), the Pub/Sub system will not deliver that message to another pull subscriber (on a best-effort basis). */
   ackDeadlineSeconds?: number;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(S.String),
     pushConfig: S.optional(PushConfig),
@@ -137,7 +137,7 @@ export interface CreateSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Subscription.pipe(T.HttpBody())),
   }).pipe(
@@ -156,7 +156,7 @@ export interface Topic {
   /** Name of the topic. */
   name?: string;
 }
-export const Topic = /*@__PURE__*/ S.suspend(() =>
+const Topic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -166,7 +166,7 @@ export interface CreateTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-export const CreateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Topic.pipe(T.HttpBody())),
   }).pipe(
@@ -178,7 +178,7 @@ export interface DeleteSubscriptionsRequest {
   /** The subscription to delete. */
   subscription: string;
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
   }).pipe(
@@ -196,7 +196,7 @@ export interface DeleteTopicsRequest {
   /** Name of the topic to delete. */
   topic: string;
 }
-export const DeleteTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.Label()),
   }).pipe(
@@ -212,7 +212,7 @@ export interface GetSubscriptionsRequest {
   /** The name of the subscription to get. */
   subscription: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.String.pipe(T.Label()),
   }).pipe(
@@ -228,7 +228,7 @@ export interface GetTopicsRequest {
   /** The name of the topic to get. */
   topic: string;
 }
-export const GetTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.String.pipe(T.Label()),
   }).pipe(
@@ -248,7 +248,7 @@ export interface ListSubscriptionsRequest {
   /** The value obtained in the last ListSubscriptionsResponse for continuation. */
   pageToken?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -263,9 +263,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** Response for the ListSubscriptions method. */
 export interface ListSubscriptionsResponse {
@@ -274,7 +272,7 @@ export interface ListSubscriptionsResponse {
   /** If not empty, indicates that there are more subscriptions that match the request and this value should be passed to the next ListSubscriptionsRequest to continue. */
   nextPageToken?: string;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscription: S.optional(SubscriptionList),
     nextPageToken: S.optional(S.String),
@@ -291,7 +289,7 @@ export interface ListTopicsRequest {
   /** Maximum number of topics to return. */
   maxResults?: number;
 }
-export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     query: S.optional(S.String.pipe(T.Query())),
@@ -302,7 +300,7 @@ export const ListTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTopicsRequest" }) as any as S.Schema<ListTopicsRequest>;
 
 export type TopicList = Array<Topic>;
-export const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
+const TopicList = /*@__PURE__*/ S.Array(Topic) as any as S.Schema<TopicList>;
 
 /** Response for the ListTopics method. */
 export interface ListTopicsResponse {
@@ -311,7 +309,7 @@ export interface ListTopicsResponse {
   /** If not empty, indicates that there are more topics that match the request, and this value should be passed to the next ListTopicsRequest to continue. */
   nextPageToken?: string;
 }
-export const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic: S.optional(TopicList),
     nextPageToken: S.optional(S.String),
@@ -329,7 +327,7 @@ export interface ModifyAckDeadlineRequest {
   /** List of acknowledgment IDs. Either this field or ack_id should be populated, not both. */
   ackIds?: StringList;
 }
-export const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAckDeadlineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackDeadlineSeconds: S.optional(S.Number),
     ackId: S.optional(S.String),
@@ -342,7 +340,7 @@ export interface ModifyAckDeadlineSubscriptionsRequest {
   /** Request body */
   body?: ModifyAckDeadlineRequest;
 }
-export const ModifyAckDeadlineSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyAckDeadlineSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ModifyAckDeadlineRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -363,7 +361,7 @@ export interface ModifyPushConfigRequest {
   /** The name of the subscription. */
   subscription?: string;
 }
-export const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPushConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pushConfig: S.optional(PushConfig),
     subscription: S.optional(S.String),
@@ -374,7 +372,7 @@ export interface ModifyPushConfigSubscriptionsRequest {
   /** Request body */
   body?: ModifyPushConfigRequest;
 }
-export const ModifyPushConfigSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ModifyPushConfigSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ModifyPushConfigRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -397,7 +395,7 @@ export interface Label {
   /** An integer value. */
   numValue?: string;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
+const Label = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     strValue: S.optional(S.String),
@@ -406,7 +404,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 
 export type LabelList = Array<Label>;
-export const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
+const LabelList = /*@__PURE__*/ S.Array(Label) as any as S.Schema<LabelList>;
 
 /** A message data and its labels. */
 export interface PubsubMessage {
@@ -419,7 +417,7 @@ export interface PubsubMessage {
   /** ID of this message assigned by the server at publication time. Guaranteed to be unique within the topic. This value may be read by a subscriber that receives a PubsubMessage via a Pull call or a push delivery. It must not be populated by a publisher in a Publish call. */
   messageId?: string;
 }
-export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
+const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     label: S.optional(LabelList),
@@ -429,7 +427,7 @@ export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PubsubMessage" }) as any as S.Schema<PubsubMessage>;
 
 export type PubsubMessageList = Array<PubsubMessage>;
-export const PubsubMessageList = /*@__PURE__*/ S.Array(
+const PubsubMessageList = /*@__PURE__*/ S.Array(
   PubsubMessage,
 ) as any as S.Schema<PubsubMessageList>;
 
@@ -440,7 +438,7 @@ export interface PublishBatchRequest {
   /** The messages in the request will be published on this topic. */
   topic?: string;
 }
-export const PublishBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(PubsubMessageList),
     topic: S.optional(S.String),
@@ -451,7 +449,7 @@ export interface PublishBatchTopicsRequest {
   /** Request body */
   body?: PublishBatchRequest;
 }
-export const PublishBatchTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishBatchTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(PublishBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -470,7 +468,7 @@ export interface PublishBatchResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: StringList;
 }
-export const PublishBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageIds: S.optional(StringList),
   }),
@@ -483,7 +481,7 @@ export interface PublishRequest {
   /** The message in the request will be published on this topic. */
   topic?: string;
 }
-export const PublishRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(PubsubMessage),
     topic: S.optional(S.String),
@@ -494,7 +492,7 @@ export interface PublishTopicsRequest {
   /** Request body */
   body?: PublishRequest;
 }
-export const PublishTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(PublishRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -515,7 +513,7 @@ export interface PullBatchRequest {
   /** The subscription from which messages should be pulled. */
   subscription?: string;
 }
-export const PullBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const PullBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxEvents: S.optional(S.Number),
     returnImmediately: S.optional(S.Boolean),
@@ -527,7 +525,7 @@ export interface PullBatchSubscriptionsRequest {
   /** Request body */
   body?: PullBatchRequest;
 }
-export const PullBatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PullBatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(PullBatchRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -552,7 +550,7 @@ export interface PubsubEvent {
   /** Indicates that this subscription has been deleted. (Note that pull subscribers will always receive NOT_FOUND in response in their pull request on the subscription, rather than seeing this boolean.) */
   deleted?: boolean;
 }
-export const PubsubEvent = /*@__PURE__*/ S.suspend(() =>
+const PubsubEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     truncated: S.optional(S.Boolean),
     message: S.optional(PubsubMessage),
@@ -568,7 +566,7 @@ export interface PullResponse {
   /** A pubsub message or truncation event. */
   pubsubEvent?: PubsubEvent;
 }
-export const PullResponse = /*@__PURE__*/ S.suspend(() =>
+const PullResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ackId: S.optional(S.String),
     pubsubEvent: S.optional(PubsubEvent),
@@ -576,16 +574,14 @@ export const PullResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PullResponse" }) as any as S.Schema<PullResponse>;
 
 export type PullResponseList = Array<PullResponse>;
-export const PullResponseList = /*@__PURE__*/ S.Array(
-  PullResponse,
-) as any as S.Schema<PullResponseList>;
+const PullResponseList = /*@__PURE__*/ S.Array(PullResponse) as any as S.Schema<PullResponseList>;
 
 /** Response for the PullBatch method. */
 export interface PullBatchResponse {
   /** Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog. */
   pullResponses?: PullResponseList;
 }
-export const PullBatchResponse = /*@__PURE__*/ S.suspend(() =>
+const PullBatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pullResponses: S.optional(PullResponseList),
   }),
@@ -598,7 +594,7 @@ export interface PullRequest {
   /** The subscription from which a message should be pulled. */
   subscription?: string;
 }
-export const PullRequest = /*@__PURE__*/ S.suspend(() =>
+const PullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnImmediately: S.optional(S.Boolean),
     subscription: S.optional(S.String),
@@ -609,7 +605,7 @@ export interface PullSubscriptionsRequest {
   /** Request body */
   body?: PullRequest;
 }
-export const PullSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PullSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(PullRequest.pipe(T.HttpBody())),
   }).pipe(

@@ -49,7 +49,7 @@ export interface GetNotificationRequest {
   /** A notification `id` from List Notifications, or the id delivered with a push/websocket event. */
   id: string;
 }
-export const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/notifications/{id}", code: 200 })),
@@ -65,7 +65,7 @@ export interface NotificationAccount {
   /** Account display name. */
   title: string;
 }
-export const NotificationAccount = /*@__PURE__*/ S.suspend(() =>
+const NotificationAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     logo_url: S.NullOr(S.String),
@@ -80,7 +80,7 @@ export interface NotificationExperienceApp {
   /** App ID, prefixed `app_`. */
   id: string;
 }
-export const NotificationExperienceApp = /*@__PURE__*/ S.suspend(() =>
+const NotificationExperienceApp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icon_url: S.String,
     id: S.String,
@@ -97,7 +97,7 @@ export interface NotificationExperience {
   /** Display name of the experience. */
   name: string | null;
 }
-export const NotificationExperience = /*@__PURE__*/ S.suspend(() =>
+const NotificationExperience = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.NullOr(NotificationExperienceApp),
     id: S.String,
@@ -113,7 +113,7 @@ export interface NotificationSender {
   /** Public username. */
   username: string;
 }
-export const NotificationSender = /*@__PURE__*/ S.suspend(() =>
+const NotificationSender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -123,7 +123,7 @@ export const NotificationSender = /*@__PURE__*/ S.suspend(() =>
 
 /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
 export type NotificationTopicSummaryTopicType = "account" | "user" | "account_team";
-export const NotificationTopicSummaryTopicType = S.String;
+const NotificationTopicSummaryTopicType = S.String;
 
 export interface NotificationTopicSummary {
   /** Whether notifications for this topic are enabled by default when the user has not set a preference. */
@@ -135,7 +135,7 @@ export interface NotificationTopicSummary {
   /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
   topic_type: NotificationTopicSummaryTopicType;
 }
-export const NotificationTopicSummary = /*@__PURE__*/ S.suspend(() =>
+const NotificationTopicSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_preference_value: S.Boolean,
     id: S.String,
@@ -172,7 +172,7 @@ export interface Notification {
   /** Topic category the notification belongs to, used for grouping and preference management. `null` when uncategorized. */
   topic: NotificationTopicSummary | null;
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(NotificationAccount),
     attachment_url: S.String,
@@ -191,7 +191,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 
 export type ListNotificationBadgesRequestExperienceIdsList = Array<string>;
-export const ListNotificationBadgesRequestExperienceIdsList = /*@__PURE__*/ S.Array(
+const ListNotificationBadgesRequestExperienceIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListNotificationBadgesRequestExperienceIdsList>;
 
@@ -201,7 +201,7 @@ export interface ListNotificationBadgesRequest {
   /** The client's last fetched-at ISO 8601 timestamp, used to partially refresh badges after a websocket message. */
   last_fetched_at?: string;
 }
-export const ListNotificationBadgesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationBadgesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experience_ids: S.optional(ListNotificationBadgesRequestExperienceIdsList.pipe(T.Query())),
     last_fetched_at: S.optional(S.String.pipe(T.Query())),
@@ -222,7 +222,7 @@ export interface NotificationBadge {
   /** When the caller last viewed the experience, as an ISO 8601 timestamp. `null` when never viewed. */
   last_viewed_at: string | null;
 }
-export const NotificationBadge = /*@__PURE__*/ S.suspend(() =>
+const NotificationBadge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     experience_id: S.String,
@@ -233,14 +233,14 @@ export const NotificationBadge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationBadge" }) as any as S.Schema<NotificationBadge>;
 
 export type ListNotificationBadgesResponseDataList = Array<NotificationBadge>;
-export const ListNotificationBadgesResponseDataList = /*@__PURE__*/ S.Array(
+const ListNotificationBadgesResponseDataList = /*@__PURE__*/ S.Array(
   NotificationBadge,
 ) as any as S.Schema<ListNotificationBadgesResponseDataList>;
 
 export interface ListNotificationBadgesResponse {
   data: ListNotificationBadgesResponseDataList;
 }
-export const ListNotificationBadgesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationBadgesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListNotificationBadgesResponseDataList,
   }),
@@ -262,7 +262,7 @@ export interface ListNotificationsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unread: S.optional(S.Boolean.pipe(T.Query())),
     experience_id: S.optional(S.String.pipe(T.Query())),
@@ -274,7 +274,7 @@ export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListNotificationsRequest" }) as any as S.Schema<ListNotificationsRequest>;
 
 export type ListNotificationsResponseDataList = Array<Notification>;
-export const ListNotificationsResponseDataList = /*@__PURE__*/ S.Array(
+const ListNotificationsResponseDataList = /*@__PURE__*/ S.Array(
   Notification,
 ) as any as S.Schema<ListNotificationsResponseDataList>;
 
@@ -284,7 +284,7 @@ export interface ListNotificationsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListNotificationsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -299,7 +299,7 @@ export interface ListNotificationsResponse {
   data: ListNotificationsResponseDataList;
   page_info: ListNotificationsResponsePageInfo;
 }
-export const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListNotificationsResponseDataList,
     page_info: ListNotificationsResponsePageInfo,
@@ -309,7 +309,7 @@ export const ListNotificationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNotificationsResponse>;
 
 export type ListNotificationTopicsRequestTopicType = "user" | "account_team";
-export const ListNotificationTopicsRequestTopicType = S.String;
+const ListNotificationTopicsRequestTopicType = S.String;
 
 export interface ListNotificationTopicsRequest {
   /** Only return topics of this scope: `user` (member notifications) or `account_team` (team notifications). */
@@ -319,7 +319,7 @@ export interface ListNotificationTopicsRequest {
   /** Return results after this cursor. Use `page_info.end_cursor` from the previous response to fetch the next page. */
   after?: string;
 }
-export const ListNotificationTopicsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationTopicsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topic_type: S.optional(ListNotificationTopicsRequestTopicType.pipe(T.Query())),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -331,7 +331,7 @@ export const ListNotificationTopicsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
 export type NotificationTopicTopicType = "account" | "user" | "account_team";
-export const NotificationTopicTopicType = S.String;
+const NotificationTopicTopicType = S.String;
 
 export interface NotificationTopic {
   /** Whether notifications for this topic are enabled by default when the user has not set a preference. */
@@ -349,7 +349,7 @@ export interface NotificationTopic {
   /** Scope of the topic: whether it applies to an account, a user, or an account's team. */
   topic_type: NotificationTopicTopicType;
 }
-export const NotificationTopic = /*@__PURE__*/ S.suspend(() =>
+const NotificationTopic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_preference_value: S.Boolean,
     description: S.NullOr(S.String),
@@ -362,18 +362,16 @@ export const NotificationTopic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationTopic" }) as any as S.Schema<NotificationTopic>;
 
 export type ListNotificationTopicsResponseDataList = Array<NotificationTopic>;
-export const ListNotificationTopicsResponseDataList = /*@__PURE__*/ S.Array(
+const ListNotificationTopicsResponseDataList = /*@__PURE__*/ S.Array(
   NotificationTopic,
 ) as any as S.Schema<ListNotificationTopicsResponseDataList>;
 
 export type ListNotificationTopicsResponsePageInfo = ListNotificationsResponsePageInfo;
-export const ListNotificationTopicsResponsePageInfo = ListNotificationsResponsePageInfo;
-
 export interface ListNotificationTopicsResponse {
   data: ListNotificationTopicsResponseDataList;
   page_info: ListNotificationsResponsePageInfo;
 }
-export const ListNotificationTopicsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationTopicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListNotificationTopicsResponseDataList,
     page_info: ListNotificationsResponsePageInfo,
@@ -390,7 +388,7 @@ export interface ReadMarkNotificationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ReadMarkNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadMarkNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Boolean),
     experience_id: S.optional(S.String),
@@ -401,18 +399,15 @@ export const ReadMarkNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadMarkNotificationRequest>;
 
 export type ReadMarkNotificationResponseDataList = Array<NotificationBadge>;
-export const ReadMarkNotificationResponseDataList =
-  ListNotificationBadgesResponseDataList as any as S.Schema<ReadMarkNotificationResponseDataList>;
-
 export interface ReadMarkNotificationResponse {
   data: ReadMarkNotificationResponseDataList;
 }
-export const ReadMarkNotificationResponse =
+const ReadMarkNotificationResponse =
   ListNotificationBadgesResponse as any as S.Schema<ReadMarkNotificationResponse>;
 
 /** Optional `user_` tags narrowing the audience. When provided, only these users are notified (as a mention), provided they are in the targeted experience or account. */
 export type SendNotificationRequestUserIdsList = Array<string>;
-export const SendNotificationRequestUserIdsList =
+const SendNotificationRequestUserIdsList =
   ListNotificationBadgesRequestExperienceIdsList as any as S.Schema<SendNotificationRequestUserIdsList>;
 
 export interface SendNotificationRequest {
@@ -435,7 +430,7 @@ export interface SendNotificationRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const SendNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const SendNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     content: S.String,
@@ -452,7 +447,7 @@ export const SendNotificationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SendNotificationResponse {
   success: boolean;
 }
-export const SendNotificationResponse = /*@__PURE__*/ S.suspend(() =>
+const SendNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),

@@ -63,7 +63,7 @@ export class NotFound
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -71,7 +71,7 @@ export interface GenerateChallengeRequest {
   /** Request body */
   body?: Empty;
 }
-export const GenerateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(Empty.pipe(T.HttpBody())),
   }).pipe(
@@ -88,7 +88,7 @@ export interface Challenge {
   /** Generated challenge, the bytes representation of SignedData. */
   challenge?: string;
 }
-export const Challenge = /*@__PURE__*/ S.suspend(() =>
+const Challenge = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     challenge: S.optional(S.String),
   }),
@@ -101,7 +101,7 @@ export interface VerifyChallengeResponseRequest {
   /** Required. The generated response to the challenge, the bytes representation of SignedData. */
   challengeResponse?: string;
 }
-export const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeResponseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedIdentity: S.optional(S.String),
     challengeResponse: S.optional(S.String),
@@ -114,7 +114,7 @@ export interface VerifyChallengeRequest {
   /** Request body */
   body?: VerifyChallengeResponseRequest;
 }
-export const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(VerifyChallengeResponseRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -134,34 +134,34 @@ export type VerifyChallengeResponseResultProfileKeyTrustLevelEnum =
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
   | "CHROME_OS_NO_KEY";
-export const VerifyChallengeResponseResultProfileKeyTrustLevelEnum = S.String;
+const VerifyChallengeResponseResultProfileKeyTrustLevelEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type DeviceSignalsOsFirewallEnum =
   | "OS_FIREWALL_UNSPECIFIED"
   | "OS_FIREWALL_UNKNOWN"
   | "OS_FIREWALL_DISABLED"
   | "OS_FIREWALL_ENABLED";
-export const DeviceSignalsOsFirewallEnum = S.String;
+const DeviceSignalsOsFirewallEnum = S.String;
 
 export type DeviceSignalsSafeBrowsingProtectionLevelEnum =
   | "SAFE_BROWSING_PROTECTION_LEVEL_UNSPECIFIED"
   | "INACTIVE"
   | "STANDARD"
   | "ENHANCED";
-export const DeviceSignalsSafeBrowsingProtectionLevelEnum = S.String;
+const DeviceSignalsSafeBrowsingProtectionLevelEnum = S.String;
 
 export type AntivirusStateEnum = "STATE_UNSPECIFIED" | "MISSING" | "DISABLED" | "ENABLED";
-export const AntivirusStateEnum = S.String;
+const AntivirusStateEnum = S.String;
 
 /** Antivirus information on a device. */
 export interface Antivirus {
   /** Output only. The state of the antivirus on the device. Introduced in Chrome M136. */
   state?: AntivirusStateEnum;
 }
-export const Antivirus = /*@__PURE__*/ S.suspend(() =>
+const Antivirus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(AntivirusStateEnum),
   }),
@@ -171,7 +171,7 @@ export type DeviceSignalsTriggerEnum =
   | "TRIGGER_UNSPECIFIED"
   | "TRIGGER_BROWSER_NAVIGATION"
   | "TRIGGER_LOGIN_SCREEN";
-export const DeviceSignalsTriggerEnum = S.String;
+const DeviceSignalsTriggerEnum = S.String;
 
 export type DeviceSignalsOperatingSystemEnum =
   | "OPERATING_SYSTEM_UNSPECIFIED"
@@ -180,7 +180,7 @@ export type DeviceSignalsOperatingSystemEnum =
   | "WINDOWS"
   | "MAC_OS_X"
   | "LINUX";
-export const DeviceSignalsOperatingSystemEnum = S.String;
+const DeviceSignalsOperatingSystemEnum = S.String;
 
 /** Properties of the CrowdStrike agent installed on a device. */
 export interface CrowdStrikeAgent {
@@ -189,7 +189,7 @@ export interface CrowdStrikeAgent {
   /** Output only. The Customer ID to which the agent belongs to. */
   customerId?: string;
 }
-export const CrowdStrikeAgent = /*@__PURE__*/ S.suspend(() =>
+const CrowdStrikeAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.optional(S.String),
     customerId: S.optional(S.String),
@@ -200,28 +200,28 @@ export type DeviceSignalsRealtimeUrlCheckModeEnum =
   | "REALTIME_URL_CHECK_MODE_UNSPECIFIED"
   | "REALTIME_URL_CHECK_MODE_DISABLED"
   | "REALTIME_URL_CHECK_MODE_ENABLED_MAIN_FRAME";
-export const DeviceSignalsRealtimeUrlCheckModeEnum = S.String;
+const DeviceSignalsRealtimeUrlCheckModeEnum = S.String;
 
 export type DeviceSignalsSecureBootModeEnum =
   | "SECURE_BOOT_MODE_UNSPECIFIED"
   | "SECURE_BOOT_MODE_UNKNOWN"
   | "SECURE_BOOT_MODE_DISABLED"
   | "SECURE_BOOT_MODE_ENABLED";
-export const DeviceSignalsSecureBootModeEnum = S.String;
+const DeviceSignalsSecureBootModeEnum = S.String;
 
 export type DeviceSignalsScreenLockSecuredEnum =
   | "SCREEN_LOCK_SECURED_UNSPECIFIED"
   | "SCREEN_LOCK_SECURED_UNKNOWN"
   | "SCREEN_LOCK_SECURED_DISABLED"
   | "SCREEN_LOCK_SECURED_ENABLED";
-export const DeviceSignalsScreenLockSecuredEnum = S.String;
+const DeviceSignalsScreenLockSecuredEnum = S.String;
 
 export type DeviceSignalsDiskEncryptionEnum =
   | "DISK_ENCRYPTION_UNSPECIFIED"
   | "DISK_ENCRYPTION_UNKNOWN"
   | "DISK_ENCRYPTION_DISABLED"
   | "DISK_ENCRYPTION_ENCRYPTED";
-export const DeviceSignalsDiskEncryptionEnum = S.String;
+const DeviceSignalsDiskEncryptionEnum = S.String;
 
 export type DeviceSignalsPasswordProtectionWarningTriggerEnum =
   | "PASSWORD_PROTECTION_WARNING_TRIGGER_UNSPECIFIED"
@@ -229,7 +229,7 @@ export type DeviceSignalsPasswordProtectionWarningTriggerEnum =
   | "PASSWORD_PROTECTION_OFF"
   | "PASSWORD_REUSE"
   | "PHISHING_REUSE";
-export const DeviceSignalsPasswordProtectionWarningTriggerEnum = S.String;
+const DeviceSignalsPasswordProtectionWarningTriggerEnum = S.String;
 
 /** The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms. */
 export interface DeviceSignals {
@@ -300,7 +300,7 @@ export interface DeviceSignals {
   /** Output only. The current version of the Operating System. On Windows and linux, the value will also include the security patch information. */
   osVersion?: string;
 }
-export const DeviceSignals = /*@__PURE__*/ S.suspend(() =>
+const DeviceSignals = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profileAffiliationIds: S.optional(StringList),
     allowScreenLock: S.optional(S.Boolean),
@@ -346,7 +346,7 @@ export type VerifyChallengeResponseResultKeyTrustLevelEnum =
   | "CHROME_BROWSER_OS_KEY"
   | "CHROME_BROWSER_NO_KEY"
   | "CHROME_OS_NO_KEY";
-export const VerifyChallengeResponseResultKeyTrustLevelEnum = S.String;
+const VerifyChallengeResponseResultKeyTrustLevelEnum = S.String;
 
 /** Result message for VerifiedAccess.VerifyChallengeResponse. The response returned when successful for Managed profiles on Unmanaged browsers will NOT have devicePermanentId, keyTrustLevel, virtualDeviceId and customerId fields. Managed profiles will INSTEAD have the profileCustomerId, virtualProfileId, profilePermanentId and profileKeyTrustLevel fields. */
 export interface VerifyChallengeResponseResult {
@@ -377,7 +377,7 @@ export interface VerifyChallengeResponseResult {
   /** Output only. Device attested key trust level. */
   keyTrustLevel?: VerifyChallengeResponseResultKeyTrustLevelEnum;
 }
-export const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
+const VerifyChallengeResponseResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     virtualProfileId: S.optional(S.String),
     profileCustomerId: S.optional(S.String),

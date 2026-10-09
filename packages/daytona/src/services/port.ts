@@ -9,19 +9,17 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface GetPortsRequest {}
-export const GetPortsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPortsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/port", code: 200 })),
 ).annotate({ identifier: "GetPortsRequest" }) as any as S.Schema<GetPortsRequest>;
 
 export type PortListPortsList = Array<number>;
-export const PortListPortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<PortListPortsList>;
+const PortListPortsList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<PortListPortsList>;
 
 export interface PortList {
   ports?: PortListPortsList;
 }
-export const PortList = /*@__PURE__*/ S.suspend(() =>
+const PortList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ports: S.optional(PortListPortsList),
   }),
@@ -31,7 +29,7 @@ export interface IsPortInUseRequest {
   /** Port number (3000-9999) */
   port: number;
 }
-export const IsPortInUseRequest = /*@__PURE__*/ S.suspend(() =>
+const IsPortInUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/port/{port}/in-use", code: 200 })),
@@ -40,7 +38,7 @@ export const IsPortInUseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface IsPortInUseResponse {
   isInUse?: boolean;
 }
-export const IsPortInUseResponse = /*@__PURE__*/ S.suspend(() =>
+const IsPortInUseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isInUse: S.optional(S.Boolean),
   }),

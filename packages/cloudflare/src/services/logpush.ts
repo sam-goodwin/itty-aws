@@ -78,7 +78,7 @@ export interface CreateEdgeRequest {
   /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
   sample?: number;
 }
-export const CreateEdgeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEdgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     fields: S.optional(S.String),
@@ -102,7 +102,7 @@ export interface CreateEdgeResponse {
   /** Unique session id of the job. */
   sessionId?: string | null;
 }
-export const CreateEdgeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
     fields: S.optional(S.NullOr(S.String)),
@@ -150,21 +150,21 @@ export type JobsCreateRequestDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const JobsCreateRequestDataset = S.String;
+const JobsCreateRequestDataset = S.String;
 
 export type JobsCreateRequestFrequency = "high" | "low";
-export const JobsCreateRequestFrequency = S.String;
+const JobsCreateRequestFrequency = S.String;
 
 export type JobsCreateRequestKind = "" | "edge";
-export const JobsCreateRequestKind = S.String;
+const JobsCreateRequestKind = S.String;
 
 export type JobsCreateRequestOutputOptionsFieldNamesList = Array<string>;
-export const JobsCreateRequestOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
+const JobsCreateRequestOutputOptionsFieldNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<JobsCreateRequestOutputOptionsFieldNamesList>;
 
 export type JobsCreateRequestOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsCreateRequestOutputOptionsOutputType = S.String;
+const JobsCreateRequestOutputOptionsOutputType = S.String;
 
 export type JobsCreateRequestOutputOptionsTimestampFormat =
   | "unixnano"
@@ -172,7 +172,7 @@ export type JobsCreateRequestOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsCreateRequestOutputOptionsTimestampFormat = S.String;
+const JobsCreateRequestOutputOptionsTimestampFormat = S.String;
 
 export interface JobsCreateRequestOutputOptions {
   /** String to be prepended before each batch. */
@@ -202,7 +202,7 @@ export interface JobsCreateRequestOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean;
 }
-export const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsCreateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
@@ -258,7 +258,7 @@ export interface CreateJobForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-export const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -320,20 +320,20 @@ export type JobsCreateResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const JobsCreateResponseDataset = S.String;
+const JobsCreateResponseDataset = S.String;
 
 export type JobsCreateResponseFrequency = "high" | "low";
-export const JobsCreateResponseFrequency = S.String;
+const JobsCreateResponseFrequency = S.String;
 
 export type JobsCreateResponseKind = "" | "edge";
-export const JobsCreateResponseKind = S.String;
+const JobsCreateResponseKind = S.String;
 
 export type JobsCreateResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsCreateResponseOutputOptionsFieldNamesList =
+const JobsCreateResponseOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsCreateResponseOutputOptionsFieldNamesList>;
 
 export type JobsCreateResponseOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsCreateResponseOutputOptionsOutputType = S.String;
+const JobsCreateResponseOutputOptionsOutputType = S.String;
 
 export type JobsCreateResponseOutputOptionsTimestampFormat =
   | "unixnano"
@@ -341,7 +341,7 @@ export type JobsCreateResponseOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsCreateResponseOutputOptionsTimestampFormat = S.String;
+const JobsCreateResponseOutputOptionsTimestampFormat = S.String;
 
 export interface JobsCreateResponseOutputOptions {
   /** String to be prepended before each batch. */
@@ -371,7 +371,7 @@ export interface JobsCreateResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-export const JobsCreateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsCreateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
@@ -432,7 +432,7 @@ export interface CreateJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsCreateResponseOutputOptions | null;
 }
-export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     dataset: S.optional(S.NullOr(JobsCreateResponseDataset)),
@@ -489,7 +489,7 @@ export interface CreateJobForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-export const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -517,7 +517,7 @@ export interface CreateOwnershipForAccountRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const CreateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -534,7 +534,7 @@ export interface CreateOwnershipResponse {
   message?: string | null;
   valid?: boolean | null;
 }
-export const CreateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.NullOr(S.String)),
     message: S.optional(S.NullOr(S.String)),
@@ -548,7 +548,7 @@ export interface CreateOwnershipForZoneRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const CreateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -569,7 +569,7 @@ export interface CreateTransformerRequest {
   /** Optional customer-provided description. */
   description?: string;
 }
-export const CreateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     code: S.String,
@@ -581,7 +581,7 @@ export const CreateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTransformerRequest" }) as any as S.Schema<CreateTransformerRequest>;
 
 export type CreateTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
-export const CreateTransformerResponseAssociatedJobsItemObjectType = S.String;
+const CreateTransformerResponseAssociatedJobsItemObjectType = S.String;
 
 export interface CreateTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
@@ -593,7 +593,7 @@ export interface CreateTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: CreateTransformerResponseAssociatedJobsItemObjectType | null;
 }
-export const CreateTransformerResponseAssociatedJobsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateTransformerResponseAssociatedJobsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     name: S.optional(S.NullOr(S.String)),
@@ -608,7 +608,7 @@ export const CreateTransformerResponseAssociatedJobsItem = /*@__PURE__*/ S.suspe
 
 export type CreateTransformerResponseAssociatedJobsList =
   Array<CreateTransformerResponseAssociatedJobsItem>;
-export const CreateTransformerResponseAssociatedJobsList = /*@__PURE__*/ S.Array(
+const CreateTransformerResponseAssociatedJobsList = /*@__PURE__*/ S.Array(
   CreateTransformerResponseAssociatedJobsItem,
 ) as any as S.Schema<CreateTransformerResponseAssociatedJobsList>;
 
@@ -629,7 +629,7 @@ export interface CreateTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-export const CreateTransformerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTransformerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     associatedJobs: S.optional(
@@ -651,7 +651,7 @@ export interface DeleteJobForAccountRequest {
   /** Unique id of the job. */
   jobId: number;
 }
-export const DeleteJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -669,7 +669,7 @@ export interface DeleteJobResponse {
   /** Unique id of the job. */
   id?: number | null;
 }
-export const DeleteJobResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -681,7 +681,7 @@ export interface DeleteJobForZoneRequest {
   /** Unique id of the job. */
   jobId: number;
 }
-export const DeleteJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -696,7 +696,7 @@ export interface DeleteTransformerRequest {
   /** The transformer ID. */
   transformerId: number;
 }
-export const DeleteTransformerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     transformerId: S.Number.pipe(T.Label("transformer_id")),
@@ -716,7 +716,7 @@ export interface DeleteTransformerResponse {
   /** The deleted transformer's ID. */
   id?: number | null;
 }
-export const DeleteTransformerResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteTransformerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -730,7 +730,7 @@ export interface DestinationExistsValidateForAccountRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const DestinationExistsValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DestinationExistsValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -751,7 +751,7 @@ export const DestinationExistsValidateForAccountRequest = /*@__PURE__*/ S.suspen
 export interface DestinationExistsValidateResponse {
   exists?: boolean | null;
 }
-export const DestinationExistsValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const DestinationExistsValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -765,7 +765,7 @@ export interface DestinationExistsValidateForZoneRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const DestinationExistsValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DestinationExistsValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -788,7 +788,7 @@ export interface DestinationValidateForAccountRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const DestinationValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DestinationValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -810,7 +810,7 @@ export interface DestinationValidateResponse {
   message?: string | null;
   valid?: boolean | null;
 }
-export const DestinationValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const DestinationValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.NullOr(S.String)),
     valid: S.optional(S.NullOr(S.Boolean)),
@@ -825,7 +825,7 @@ export interface DestinationValidateForZoneRequest {
   /** Uniquely identifies a resource (such as an s3 bucket) where data. will be pushed. Additional configuration parameters supported by the destination may be included. */
   destinationConf: string;
 }
-export const DestinationValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const DestinationValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -876,7 +876,7 @@ export type DatasetsFieldsGetRequestDatasetId =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const DatasetsFieldsGetRequestDatasetId = S.String;
+const DatasetsFieldsGetRequestDatasetId = S.String;
 
 export interface GetDatasetFieldForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -884,7 +884,7 @@ export interface GetDatasetFieldForAccountRequest {
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
-export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
@@ -902,13 +902,13 @@ export const GetDatasetFieldForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDatasetFieldForAccountRequest>;
 
 export type DatasetsFieldsGetResultMap = { [key: string]: string | undefined };
-export const DatasetsFieldsGetResultMap = /*@__PURE__*/ S.Record(
+const DatasetsFieldsGetResultMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DatasetsFieldsGetResultMap>;
 
 export type GetDatasetFieldResponse = DatasetsFieldsGetResultMap;
-export const GetDatasetFieldResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetFieldResponse = /*@__PURE__*/ S.suspend(() =>
   DatasetsFieldsGetResultMap.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetDatasetFieldResponse" }) as any as S.Schema<GetDatasetFieldResponse>;
 
@@ -918,7 +918,7 @@ export interface GetDatasetFieldForZoneRequest {
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsFieldsGetRequestDatasetId | (string & {});
 }
-export const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetFieldForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: DatasetsFieldsGetRequestDatasetId.pipe(T.Label("dataset_id")),
@@ -973,7 +973,7 @@ export type DatasetsJobsGetRequestDatasetId =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const DatasetsJobsGetRequestDatasetId = S.String;
+const DatasetsJobsGetRequestDatasetId = S.String;
 
 export interface GetDatasetJobForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
@@ -981,7 +981,7 @@ export interface GetDatasetJobForAccountRequest {
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
-export const GetDatasetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
@@ -1036,20 +1036,20 @@ export type DatasetsJobsGetResultItemDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const DatasetsJobsGetResultItemDataset = S.String;
+const DatasetsJobsGetResultItemDataset = S.String;
 
 export type DatasetsJobsGetResultItemFrequency = "high" | "low";
-export const DatasetsJobsGetResultItemFrequency = S.String;
+const DatasetsJobsGetResultItemFrequency = S.String;
 
 export type DatasetsJobsGetResultItemKind = "" | "edge";
-export const DatasetsJobsGetResultItemKind = S.String;
+const DatasetsJobsGetResultItemKind = S.String;
 
 export type DatasetsJobsGetResultItemOutputOptionsFieldNamesList = Array<string>;
-export const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
+const DatasetsJobsGetResultItemOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<DatasetsJobsGetResultItemOutputOptionsFieldNamesList>;
 
 export type DatasetsJobsGetResultItemOutputOptionsOutputType = "ndjson" | "csv";
-export const DatasetsJobsGetResultItemOutputOptionsOutputType = S.String;
+const DatasetsJobsGetResultItemOutputOptionsOutputType = S.String;
 
 export type DatasetsJobsGetResultItemOutputOptionsTimestampFormat =
   | "unixnano"
@@ -1057,7 +1057,7 @@ export type DatasetsJobsGetResultItemOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const DatasetsJobsGetResultItemOutputOptionsTimestampFormat = S.String;
+const DatasetsJobsGetResultItemOutputOptionsTimestampFormat = S.String;
 
 export interface DatasetsJobsGetResultItemOutputOptions {
   /** String to be prepended before each batch. */
@@ -1087,7 +1087,7 @@ export interface DatasetsJobsGetResultItemOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-export const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const DatasetsJobsGetResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
@@ -1149,7 +1149,7 @@ export interface DatasetsJobsGetResultItem {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: DatasetsJobsGetResultItemOutputOptions | null;
 }
-export const DatasetsJobsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const DatasetsJobsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     dataset: S.optional(S.NullOr(DatasetsJobsGetResultItemDataset)),
@@ -1177,7 +1177,7 @@ export const DatasetsJobsGetResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasetsJobsGetResultItem>;
 
 export type DatasetsJobsGetResultList = Array<DatasetsJobsGetResultItem>;
-export const DatasetsJobsGetResultList = /*@__PURE__*/ S.Array(
+const DatasetsJobsGetResultList = /*@__PURE__*/ S.Array(
   DatasetsJobsGetResultItem,
 ) as any as S.Schema<DatasetsJobsGetResultList>;
 
@@ -1187,7 +1187,7 @@ export interface GetDatasetJobResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetDatasetJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: DatasetsJobsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1200,7 +1200,7 @@ export interface GetDatasetJobForZoneRequest {
   /** Name of the dataset. A list of supported datasets can be found on the [Developer Docs](https://developers.cloudflare.com/logs/reference/log-fields/). */
   datasetId: DatasetsJobsGetRequestDatasetId | (string & {});
 }
-export const GetDatasetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDatasetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     datasetId: DatasetsJobsGetRequestDatasetId.pipe(T.Label("dataset_id")),
@@ -1221,7 +1221,7 @@ export interface GetEdgeRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetEdgeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1241,7 +1241,7 @@ export interface EdgeGetResultItem {
   /** Unique session id of the job. */
   sessionId?: string | null;
 }
-export const EdgeGetResultItem = /*@__PURE__*/ S.suspend(() =>
+const EdgeGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationConf: S.optional(S.NullOr(S.String).pipe(T.Body("destination_conf"))),
     fields: S.optional(S.NullOr(S.String)),
@@ -1252,7 +1252,7 @@ export const EdgeGetResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeGetResultItem" }) as any as S.Schema<EdgeGetResultItem>;
 
 export type EdgeGetResultList = Array<EdgeGetResultItem>;
-export const EdgeGetResultList = /*@__PURE__*/ S.Array(
+const EdgeGetResultList = /*@__PURE__*/ S.Array(
   EdgeGetResultItem,
 ) as any as S.Schema<EdgeGetResultList>;
 
@@ -1262,7 +1262,7 @@ export interface GetEdgeResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const GetEdgeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: EdgeGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1275,7 +1275,7 @@ export interface GetJobForAccountRequest {
   /** Unique id of the job. */
   jobId: number;
 }
-export const GetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -1322,20 +1322,20 @@ export type JobsGetResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const JobsGetResponseDataset = S.String;
+const JobsGetResponseDataset = S.String;
 
 export type JobsGetResponseFrequency = "high" | "low";
-export const JobsGetResponseFrequency = S.String;
+const JobsGetResponseFrequency = S.String;
 
 export type JobsGetResponseKind = "" | "edge";
-export const JobsGetResponseKind = S.String;
+const JobsGetResponseKind = S.String;
 
 export type JobsGetResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsGetResponseOutputOptionsFieldNamesList =
+const JobsGetResponseOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsGetResponseOutputOptionsFieldNamesList>;
 
 export type JobsGetResponseOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsGetResponseOutputOptionsOutputType = S.String;
+const JobsGetResponseOutputOptionsOutputType = S.String;
 
 export type JobsGetResponseOutputOptionsTimestampFormat =
   | "unixnano"
@@ -1343,7 +1343,7 @@ export type JobsGetResponseOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsGetResponseOutputOptionsTimestampFormat = S.String;
+const JobsGetResponseOutputOptionsTimestampFormat = S.String;
 
 export interface JobsGetResponseOutputOptions {
   /** String to be prepended before each batch. */
@@ -1373,7 +1373,7 @@ export interface JobsGetResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-export const JobsGetResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsGetResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
@@ -1434,7 +1434,7 @@ export interface GetJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsGetResponseOutputOptions | null;
 }
-export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     dataset: S.optional(S.NullOr(JobsGetResponseDataset)),
@@ -1465,7 +1465,7 @@ export interface GetJobForZoneRequest {
   /** Unique id of the job. */
   jobId: number;
 }
-export const GetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -1480,7 +1480,7 @@ export interface GetTransformerRequest {
   /** The transformer ID. */
   transformerId: number;
 }
-export const GetTransformerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     transformerId: S.Number.pipe(T.Label("transformer_id")),
@@ -1496,8 +1496,6 @@ export const GetTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTransformerRequest" }) as any as S.Schema<GetTransformerRequest>;
 
 export type GetTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
-export const GetTransformerResponseAssociatedJobsItemObjectType = S.String;
-
 export interface GetTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
   id?: number | null;
@@ -1508,12 +1506,9 @@ export interface GetTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: GetTransformerResponseAssociatedJobsItemObjectType | null;
 }
-export const GetTransformerResponseAssociatedJobsItem =
-  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<GetTransformerResponseAssociatedJobsItem>;
-
 export type GetTransformerResponseAssociatedJobsList =
   Array<GetTransformerResponseAssociatedJobsItem>;
-export const GetTransformerResponseAssociatedJobsList =
+const GetTransformerResponseAssociatedJobsList =
   CreateTransformerResponseAssociatedJobsList as any as S.Schema<GetTransformerResponseAssociatedJobsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1533,7 +1528,7 @@ export interface GetTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-export const GetTransformerResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransformerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     associatedJobs: S.optional(
@@ -1555,7 +1550,7 @@ export interface GetTransformersContentRequest {
   /** Specific version ID to retrieve. When omitted, the latest version is returned. */
   versionId?: number;
 }
-export const GetTransformersContentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTransformersContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     transformerId: S.Number.pipe(T.Label("transformer_id")),
@@ -1578,7 +1573,7 @@ export interface GetTransformersContentResponse {
   /** The SQL query content. */
   content?: string | null;
 }
-export const GetTransformersContentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTransformersContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(S.String)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1590,7 +1585,7 @@ export interface ListJobsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
 }
-export const ListJobsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1638,20 +1633,20 @@ export type JobsListResultItemDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const JobsListResultItemDataset = S.String;
+const JobsListResultItemDataset = S.String;
 
 export type JobsListResultItemFrequency = "high" | "low";
-export const JobsListResultItemFrequency = S.String;
+const JobsListResultItemFrequency = S.String;
 
 export type JobsListResultItemKind = "" | "edge";
-export const JobsListResultItemKind = S.String;
+const JobsListResultItemKind = S.String;
 
 export type JobsListResultItemOutputOptionsFieldNamesList = Array<string>;
-export const JobsListResultItemOutputOptionsFieldNamesList =
+const JobsListResultItemOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsListResultItemOutputOptionsFieldNamesList>;
 
 export type JobsListResultItemOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsListResultItemOutputOptionsOutputType = S.String;
+const JobsListResultItemOutputOptionsOutputType = S.String;
 
 export type JobsListResultItemOutputOptionsTimestampFormat =
   | "unixnano"
@@ -1659,7 +1654,7 @@ export type JobsListResultItemOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsListResultItemOutputOptionsTimestampFormat = S.String;
+const JobsListResultItemOutputOptionsTimestampFormat = S.String;
 
 export interface JobsListResultItemOutputOptions {
   /** String to be prepended before each batch. */
@@ -1689,7 +1684,7 @@ export interface JobsListResultItemOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-export const JobsListResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsListResultItemOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
@@ -1749,7 +1744,7 @@ export interface JobsListResultItem {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsListResultItemOutputOptions | null;
 }
-export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
+const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     dataset: S.optional(S.NullOr(JobsListResultItemDataset)),
@@ -1775,7 +1770,7 @@ export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobsListResultItem" }) as any as S.Schema<JobsListResultItem>;
 
 export type JobsListResultList = Array<JobsListResultItem>;
-export const JobsListResultList = /*@__PURE__*/ S.Array(
+const JobsListResultList = /*@__PURE__*/ S.Array(
   JobsListResultItem,
 ) as any as S.Schema<JobsListResultList>;
 
@@ -1785,7 +1780,7 @@ export interface ListJobsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: JobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -1796,7 +1791,7 @@ export interface ListJobsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
 }
-export const ListJobsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ListJobsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -1808,7 +1803,7 @@ export interface ListTransformersRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ListTransformersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   })
@@ -1817,8 +1812,6 @@ export const ListTransformersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTransformersRequest" }) as any as S.Schema<ListTransformersRequest>;
 
 export type ListTransformersResultItemAssociatedJobsItemObjectType = "zone" | "account";
-export const ListTransformersResultItemAssociatedJobsItemObjectType = S.String;
-
 export interface ListTransformersResultItemAssociatedJobsItem {
   /** The logpush job ID. */
   id?: number | null;
@@ -1829,12 +1822,9 @@ export interface ListTransformersResultItemAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: ListTransformersResultItemAssociatedJobsItemObjectType | null;
 }
-export const ListTransformersResultItemAssociatedJobsItem =
-  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<ListTransformersResultItemAssociatedJobsItem>;
-
 export type ListTransformersResultItemAssociatedJobsList =
   Array<ListTransformersResultItemAssociatedJobsItem>;
-export const ListTransformersResultItemAssociatedJobsList =
+const ListTransformersResultItemAssociatedJobsList =
   CreateTransformerResponseAssociatedJobsList as any as S.Schema<ListTransformersResultItemAssociatedJobsList>;
 
 export interface ListTransformersResultItem {
@@ -1853,7 +1843,7 @@ export interface ListTransformersResultItem {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-export const ListTransformersResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     associatedJobs: S.optional(
@@ -1870,12 +1860,12 @@ export const ListTransformersResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTransformersResultItem>;
 
 export type ListTransformersResultList = Array<ListTransformersResultItem>;
-export const ListTransformersResultList = /*@__PURE__*/ S.Array(
+const ListTransformersResultList = /*@__PURE__*/ S.Array(
   ListTransformersResultItem,
 ) as any as S.Schema<ListTransformersResultList>;
 
 export type ListTransformersResponse = ListTransformersResultList;
-export const ListTransformersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersResponse = /*@__PURE__*/ S.suspend(() =>
   ListTransformersResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "ListTransformersResponse" }) as any as S.Schema<ListTransformersResponse>;
 
@@ -1887,7 +1877,7 @@ export interface ListTransformersVersionsRequest {
   /** Maximum number of versions to return. */
   limit?: number;
 }
-export const ListTransformersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     transformerId: S.Number.pipe(T.Label("transformer_id")),
@@ -1913,7 +1903,7 @@ export interface ListTransformersVersionsResultItem {
   /** Sequential version number. */
   version?: number | null;
 }
-export const ListTransformersVersionsResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersVersionsResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     createdAt: S.optional(S.NullOr(S.String).pipe(T.Body("created_at"))),
@@ -1924,12 +1914,12 @@ export const ListTransformersVersionsResultItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTransformersVersionsResultItem>;
 
 export type ListTransformersVersionsResultList = Array<ListTransformersVersionsResultItem>;
-export const ListTransformersVersionsResultList = /*@__PURE__*/ S.Array(
+const ListTransformersVersionsResultList = /*@__PURE__*/ S.Array(
   ListTransformersVersionsResultItem,
 ) as any as S.Schema<ListTransformersVersionsResultList>;
 
 export type ListTransformersVersionsResponse = ListTransformersVersionsResultList;
-export const ListTransformersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransformersVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListTransformersVersionsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "ListTransformersVersionsResponse",
@@ -1941,7 +1931,7 @@ export interface OriginValidateForAccountRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions: string;
 }
-export const OriginValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const OriginValidateForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     logpullOptions: S.String.pipe(T.Body("logpull_options")),
@@ -1959,7 +1949,7 @@ export interface OriginValidateResponse {
   message?: string | null;
   valid?: boolean | null;
 }
-export const OriginValidateResponse = /*@__PURE__*/ S.suspend(() =>
+const OriginValidateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.NullOr(S.String)),
     valid: S.optional(S.NullOr(S.Boolean)),
@@ -1972,7 +1962,7 @@ export interface OriginValidateForZoneRequest {
   /** This field is deprecated. Use `output_options` instead. Configuration string. It specifies things like requested fields and timestamp formats. If migrating from the logpull api, copy the url (full url or just the query string) of your call here, and logpush will keep on making this call for you, setting start and end times appropriately. */
   logpullOptions: string;
 }
-export const OriginValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const OriginValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     logpullOptions: S.String.pipe(T.Body("logpull_options")),
@@ -1984,7 +1974,7 @@ export const OriginValidateForZoneRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OriginValidateForZoneRequest>;
 
 export type PreviewTransformerRequestInputMap = { [key: string]: unknown | undefined };
-export const PreviewTransformerRequestInputMap = /*@__PURE__*/ S.Record(
+const PreviewTransformerRequestInputMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<PreviewTransformerRequestInputMap>;
@@ -1997,7 +1987,7 @@ export interface PreviewTransformerRequest {
   /** The SQL transformer query. Maximum 32 KB. The query must contain a FROM clause referencing a valid logpush dataset. */
   sql: string;
 }
-export const PreviewTransformerRequest = /*@__PURE__*/ S.suspend(() =>
+const PreviewTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     input: PreviewTransformerRequestInputMap,
@@ -2016,33 +2006,33 @@ export const PreviewTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreviewTransformerRequest>;
 
 export type PreviewTransformerResultItemMap = { [key: string]: unknown | undefined };
-export const PreviewTransformerResultItemMap =
+const PreviewTransformerResultItemMap =
   PreviewTransformerRequestInputMap as any as S.Schema<PreviewTransformerResultItemMap>;
 
 export type PreviewTransformerResultList = Array<PreviewTransformerResultItemMap>;
-export const PreviewTransformerResultList = /*@__PURE__*/ S.Array(
+const PreviewTransformerResultList = /*@__PURE__*/ S.Array(
   PreviewTransformerResultItemMap,
 ) as any as S.Schema<PreviewTransformerResultList>;
 
 export type PreviewTransformerResponse = PreviewTransformerResultList;
-export const PreviewTransformerResponse = /*@__PURE__*/ S.suspend(() =>
+const PreviewTransformerResponse = /*@__PURE__*/ S.suspend(() =>
   PreviewTransformerResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "PreviewTransformerResponse",
 }) as any as S.Schema<PreviewTransformerResponse>;
 
 export type JobsUpdateRequestFrequency = "high" | "low";
-export const JobsUpdateRequestFrequency = S.String;
+const JobsUpdateRequestFrequency = S.String;
 
 export type JobsUpdateRequestKind = "" | "edge";
-export const JobsUpdateRequestKind = S.String;
+const JobsUpdateRequestKind = S.String;
 
 export type JobsUpdateRequestOutputOptionsFieldNamesList = Array<string>;
-export const JobsUpdateRequestOutputOptionsFieldNamesList =
+const JobsUpdateRequestOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateRequestOutputOptionsFieldNamesList>;
 
 export type JobsUpdateRequestOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsUpdateRequestOutputOptionsOutputType = S.String;
+const JobsUpdateRequestOutputOptionsOutputType = S.String;
 
 export type JobsUpdateRequestOutputOptionsTimestampFormat =
   | "unixnano"
@@ -2050,7 +2040,7 @@ export type JobsUpdateRequestOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsUpdateRequestOutputOptionsTimestampFormat = S.String;
+const JobsUpdateRequestOutputOptionsTimestampFormat = S.String;
 
 export interface JobsUpdateRequestOutputOptions {
   /** String to be prepended before each batch. */
@@ -2080,7 +2070,7 @@ export interface JobsUpdateRequestOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean;
 }
-export const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsUpdateRequestOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.String.pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.String.pipe(T.Body("batch_suffix"))),
@@ -2136,7 +2126,7 @@ export interface UpdateJobForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-export const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -2198,20 +2188,20 @@ export type JobsUpdateResponseDataset =
   | "workers_trace_events"
   | "zaraz_events"
   | "zero_trust_network_sessions";
-export const JobsUpdateResponseDataset = S.String;
+const JobsUpdateResponseDataset = S.String;
 
 export type JobsUpdateResponseFrequency = "high" | "low";
-export const JobsUpdateResponseFrequency = S.String;
+const JobsUpdateResponseFrequency = S.String;
 
 export type JobsUpdateResponseKind = "" | "edge";
-export const JobsUpdateResponseKind = S.String;
+const JobsUpdateResponseKind = S.String;
 
 export type JobsUpdateResponseOutputOptionsFieldNamesList = Array<string>;
-export const JobsUpdateResponseOutputOptionsFieldNamesList =
+const JobsUpdateResponseOutputOptionsFieldNamesList =
   JobsCreateRequestOutputOptionsFieldNamesList as any as S.Schema<JobsUpdateResponseOutputOptionsFieldNamesList>;
 
 export type JobsUpdateResponseOutputOptionsOutputType = "ndjson" | "csv";
-export const JobsUpdateResponseOutputOptionsOutputType = S.String;
+const JobsUpdateResponseOutputOptionsOutputType = S.String;
 
 export type JobsUpdateResponseOutputOptionsTimestampFormat =
   | "unixnano"
@@ -2219,7 +2209,7 @@ export type JobsUpdateResponseOutputOptionsTimestampFormat =
   | "rfc3339"
   | "rfc3339ms"
   | "rfc3339ns";
-export const JobsUpdateResponseOutputOptionsTimestampFormat = S.String;
+const JobsUpdateResponseOutputOptionsTimestampFormat = S.String;
 
 export interface JobsUpdateResponseOutputOptions {
   /** String to be prepended before each batch. */
@@ -2249,7 +2239,7 @@ export interface JobsUpdateResponseOutputOptions {
   /** If set to true, will cause all occurrences of `${` in the generated files to be replaced with `x{`. */
   "cve-2021-44228"?: boolean | null;
 }
-export const JobsUpdateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
+const JobsUpdateResponseOutputOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batchPrefix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_prefix"))),
     batchSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("batch_suffix"))),
@@ -2310,7 +2300,7 @@ export interface UpdateJobResponse {
   /** The structured replacement for `logpull_options`. When including this field, the `logpull_option` field will be ignored. */
   outputOptions?: JobsUpdateResponseOutputOptions | null;
 }
-export const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.Number)),
     dataset: S.optional(S.NullOr(JobsUpdateResponseDataset)),
@@ -2367,7 +2357,7 @@ export interface UpdateJobForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge?: string;
 }
-export const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateJobForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     jobId: S.Number.pipe(T.Label("job_id")),
@@ -2401,7 +2391,7 @@ export interface UpdateTransformerRequest {
   /** Optional customer-provided description. */
   description?: string;
 }
-export const UpdateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     transformerId: S.Number.pipe(T.Label("transformer_id")),
@@ -2420,8 +2410,6 @@ export const UpdateTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTransformerRequest" }) as any as S.Schema<UpdateTransformerRequest>;
 
 export type UpdateTransformerResponseAssociatedJobsItemObjectType = "zone" | "account";
-export const UpdateTransformerResponseAssociatedJobsItemObjectType = S.String;
-
 export interface UpdateTransformerResponseAssociatedJobsItem {
   /** The logpush job ID. */
   id?: number | null;
@@ -2432,14 +2420,8 @@ export interface UpdateTransformerResponseAssociatedJobsItem {
   /** Whether the job is zone-scoped or account-scoped. */
   objectType?: UpdateTransformerResponseAssociatedJobsItemObjectType | null;
 }
-export const UpdateTransformerResponseAssociatedJobsItem =
-  CreateTransformerResponseAssociatedJobsItem as any as S.Schema<UpdateTransformerResponseAssociatedJobsItem>;
-
 export type UpdateTransformerResponseAssociatedJobsList =
   Array<UpdateTransformerResponseAssociatedJobsItem>;
-export const UpdateTransformerResponseAssociatedJobsList =
-  CreateTransformerResponseAssociatedJobsList as any as S.Schema<UpdateTransformerResponseAssociatedJobsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTransformerResponse {
   /** The transformer ID. */
@@ -2457,7 +2439,7 @@ export interface UpdateTransformerResponse {
   /** When the transformer was last modified (RFC 3339). */
   updatedAt?: string | null;
 }
-export const UpdateTransformerResponse =
+const UpdateTransformerResponse =
   CreateTransformerResponse as any as S.Schema<UpdateTransformerResponse>;
 
 export interface ValidateOwnershipForAccountRequest {
@@ -2468,7 +2450,7 @@ export interface ValidateOwnershipForAccountRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
-export const ValidateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),
@@ -2490,7 +2472,7 @@ export const ValidateOwnershipForAccountRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ValidateOwnershipResponse {
   valid?: boolean | null;
 }
-export const ValidateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidateOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     valid: S.optional(S.NullOr(S.Boolean)),
   }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2506,7 +2488,7 @@ export interface ValidateOwnershipForZoneRequest {
   /** Ownership challenge token to prove destination ownership. */
   ownershipChallenge: string;
 }
-export const ValidateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateOwnershipForZoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     destinationConf: S.String.pipe(T.Body("destination_conf")),

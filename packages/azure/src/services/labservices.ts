@@ -17,7 +17,7 @@ export interface DeleteLabRequest {
   /** The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs. */
   labName: string;
 }
-export const DeleteLabRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -33,7 +33,7 @@ export const DeleteLabRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLabRequest" }) as any as S.Schema<DeleteLabRequest>;
 
 export interface DeleteLabResponse {}
-export const DeleteLabResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteLabResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteLabResponse",
 }) as any as S.Schema<DeleteLabResponse>;
 
@@ -45,7 +45,7 @@ export interface DeleteLabPlanRequest {
   /** The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI. */
   labPlanName: string;
 }
-export const DeleteLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,7 +61,7 @@ export const DeleteLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLabPlanRequest" }) as any as S.Schema<DeleteLabPlanRequest>;
 
 export interface DeleteLabPlanResponse {}
-export const DeleteLabPlanResponse = DeleteLabResponse as any as S.Schema<DeleteLabPlanResponse>;
+const DeleteLabPlanResponse = DeleteLabResponse as any as S.Schema<DeleteLabPlanResponse>;
 
 export interface DeleteScheduleRequest {
   /** The ID of the target subscription. */
@@ -73,7 +73,7 @@ export interface DeleteScheduleRequest {
   /** The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs. */
   scheduleName: string;
 }
-export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -90,7 +90,7 @@ export const DeleteScheduleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteScheduleRequest" }) as any as S.Schema<DeleteScheduleRequest>;
 
 export interface DeleteScheduleResponse {}
-export const DeleteScheduleResponse = DeleteLabResponse as any as S.Schema<DeleteScheduleResponse>;
+const DeleteScheduleResponse = DeleteLabResponse as any as S.Schema<DeleteScheduleResponse>;
 
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
@@ -102,7 +102,7 @@ export interface DeleteUserRequest {
   /** The name of the user that uniquely identifies it within containing lab. Used in resource URIs. */
   userName: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -119,7 +119,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse = DeleteLabResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = DeleteLabResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetImageRequest {
   /** The ID of the target subscription. */
@@ -131,7 +131,7 @@ export interface GetImageRequest {
   /** The image name. */
   imageName: string;
 }
-export const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -153,7 +153,7 @@ export type GetImageResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetImageResponseSystemDataCreatedByType = S.String;
+const GetImageResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetImageResponseSystemDataLastModifiedByType =
@@ -161,7 +161,7 @@ export type GetImageResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetImageResponseSystemDataLastModifiedByType = S.String;
+const GetImageResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetImageResponseSystemData {
@@ -178,7 +178,7 @@ export interface GetImageResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetImageResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetImageResponseSystemDataCreatedByType),
@@ -193,7 +193,7 @@ export const GetImageResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type ImagePropertiesEnabledState = "Enabled" | "Disabled";
-export const ImagePropertiesEnabledState = S.String;
+const ImagePropertiesEnabledState = S.String;
 
 /** Resource provisioning state. */
 export type ImagePropertiesProvisioningState =
@@ -203,25 +203,25 @@ export type ImagePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const ImagePropertiesProvisioningState = S.String;
+const ImagePropertiesProvisioningState = S.String;
 
 /** The operating system type. */
 export type ImagePropertiesOsType = "Windows" | "Linux";
-export const ImagePropertiesOsType = S.String;
+const ImagePropertiesOsType = S.String;
 
 /** Property enabled state. */
 export type ImagePropertiesTermsStatus = "Enabled" | "Disabled";
-export const ImagePropertiesTermsStatus = S.String;
+const ImagePropertiesTermsStatus = S.String;
 
 /** The available regions of the image in the shared gallery. */
 export type ImagePropertiesAvailableRegionsList = Array<string>;
-export const ImagePropertiesAvailableRegionsList = /*@__PURE__*/ S.Array(
+const ImagePropertiesAvailableRegionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ImagePropertiesAvailableRegionsList>;
 
 /** The operating system state. */
 export type ImagePropertiesOsState = "Generalized" | "Specialized";
-export const ImagePropertiesOsState = S.String;
+const ImagePropertiesOsState = S.String;
 
 /** Properties of an image resource. */
 export interface ImageProperties {
@@ -258,7 +258,7 @@ export interface ImageProperties {
   /** The operating system state. */
   osState?: ImagePropertiesOsState;
 }
-export const ImageProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: ImagePropertiesEnabledState,
     provisioningState: S.optional(ImagePropertiesProvisioningState),
@@ -291,7 +291,7 @@ export interface GetImageResponse {
   /** Image resource properties */
   properties: ImageProperties;
 }
-export const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -309,7 +309,7 @@ export interface GetLabRequest {
   /** The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs. */
   labName: string;
 }
-export const GetLabRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -326,7 +326,7 @@ export const GetLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLabResponseTagsMap = { [key: string]: string | undefined };
-export const GetLabResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetLabResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetLabResponseTagsMap>;
@@ -337,7 +337,7 @@ export type GetLabResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetLabResponseSystemDataCreatedByType = S.String;
+const GetLabResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type GetLabResponseSystemDataLastModifiedByType =
@@ -345,7 +345,7 @@ export type GetLabResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetLabResponseSystemDataLastModifiedByType = S.String;
+const GetLabResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetLabResponseSystemData {
@@ -362,7 +362,7 @@ export interface GetLabResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetLabResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const GetLabResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(GetLabResponseSystemDataCreatedByType),
@@ -375,11 +375,11 @@ export const GetLabResponseSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type EnableState = "Enabled" | "Disabled";
-export const EnableState = S.String;
+const EnableState = S.String;
 
 /** Defines whether to shut down VM on idle and the criteria for idle detection. */
 export type ShutdownOnIdleMode = "None" | "UserAbsence" | "LowUsage";
-export const ShutdownOnIdleMode = S.String;
+const ShutdownOnIdleMode = S.String;
 
 /** Profile for how to handle shutting down virtual machines. */
 export interface LabPropertiesAutoShutdownProfile {
@@ -396,7 +396,7 @@ export interface LabPropertiesAutoShutdownProfile {
   /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
   idleDelay?: string;
 }
-export const LabPropertiesAutoShutdownProfile = /*@__PURE__*/ S.suspend(() =>
+const LabPropertiesAutoShutdownProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shutdownOnDisconnect: S.optional(EnableState),
     shutdownWhenNotConnected: S.optional(EnableState),
@@ -411,7 +411,7 @@ export const LabPropertiesAutoShutdownProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** A connection type for access labs and VMs (Public, Private or None). */
 export type ConnectionType = "Public" | "Private" | "None";
-export const ConnectionType = S.String;
+const ConnectionType = S.String;
 
 /** Connection profile for how users connect to lab virtual machines. */
 export interface LabPropertiesConnectionProfile {
@@ -424,7 +424,7 @@ export interface LabPropertiesConnectionProfile {
   /** The enabled access level for Client Access over RDP. */
   clientRdpAccess?: ConnectionType;
 }
-export const LabPropertiesConnectionProfile = /*@__PURE__*/ S.suspend(() =>
+const LabPropertiesConnectionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webSshAccess: S.optional(ConnectionType),
     webRdpAccess: S.optional(ConnectionType),
@@ -437,7 +437,7 @@ export const LabPropertiesConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates what lab virtual machines are created from. */
 export type VirtualMachineProfileCreateOption = "Image" | "TemplateVM";
-export const VirtualMachineProfileCreateOption = S.String;
+const VirtualMachineProfileCreateOption = S.String;
 
 /** Image reference information. Used in the virtual machine profile. */
 export interface ImageReference {
@@ -454,7 +454,7 @@ export interface ImageReference {
   /** The actual version of the image after use. */
   exactVersion?: string;
 }
-export const ImageReference = /*@__PURE__*/ S.suspend(() =>
+const ImageReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     offer: S.optional(S.String),
@@ -467,11 +467,11 @@ export const ImageReference = /*@__PURE__*/ S.suspend(() =>
 
 /** The operating system type. */
 export type VirtualMachineProfileOsType = "Windows" | "Linux";
-export const VirtualMachineProfileOsType = S.String;
+const VirtualMachineProfileOsType = S.String;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type VirtualMachineProfileSkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const VirtualMachineProfileSkuTier = S.String;
+const VirtualMachineProfileSkuTier = S.String;
 
 /** The resource model definition representing SKU */
 export interface VirtualMachineProfileSku {
@@ -486,7 +486,7 @@ export interface VirtualMachineProfileSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const VirtualMachineProfileSku = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProfileSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(VirtualMachineProfileSkuTier),
@@ -498,14 +498,14 @@ export const VirtualMachineProfileSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type VirtualMachineAdditionalCapabilitiesInstallGpuDrivers = "Enabled" | "Disabled";
-export const VirtualMachineAdditionalCapabilitiesInstallGpuDrivers = S.String;
+const VirtualMachineAdditionalCapabilitiesInstallGpuDrivers = S.String;
 
 /** The additional capabilities for a lab VM. */
 export interface VirtualMachineAdditionalCapabilities {
   /** Property enabled state. */
   installGpuDrivers?: VirtualMachineAdditionalCapabilitiesInstallGpuDrivers | (string & {});
 }
-export const VirtualMachineAdditionalCapabilities = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineAdditionalCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     installGpuDrivers: S.optional(VirtualMachineAdditionalCapabilitiesInstallGpuDrivers),
   }),
@@ -515,7 +515,7 @@ export const VirtualMachineAdditionalCapabilities = /*@__PURE__*/ S.suspend(() =
 
 /** Property enabled state. */
 export type VirtualMachineProfileUseSharedPassword = "Enabled" | "Disabled";
-export const VirtualMachineProfileUseSharedPassword = S.String;
+const VirtualMachineProfileUseSharedPassword = S.String;
 
 /** Credentials for a user on a lab VM. */
 export interface Credentials {
@@ -524,7 +524,7 @@ export interface Credentials {
   /** The password for the user. This is required for the TemplateVM createOption. */
   password?: string | Redacted.Redacted<string>;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String,
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -552,7 +552,7 @@ export interface VirtualMachineProfile {
   /** Credentials for the non-admin user on the VM, if one exists. */
   nonAdminUser?: Credentials;
 }
-export const VirtualMachineProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createOption: VirtualMachineProfileCreateOption,
     imageReference: ImageReference,
@@ -568,7 +568,7 @@ export const VirtualMachineProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type SecurityProfileOpenAccess = "Enabled" | "Disabled";
-export const SecurityProfileOpenAccess = S.String;
+const SecurityProfileOpenAccess = S.String;
 
 /** The lab security profile. */
 export interface SecurityProfile {
@@ -577,7 +577,7 @@ export interface SecurityProfile {
   /** Property enabled state. */
   openAccess?: SecurityProfileOpenAccess;
 }
-export const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrationCode: S.optional(S.String),
     openAccess: S.optional(SecurityProfileOpenAccess),
@@ -597,7 +597,7 @@ export interface RosterProfile {
   /** The uri of the names and roles service endpoint on the lms for the class attached to this lab. */
   ltiRosterEndpoint?: string;
 }
-export const RosterProfile = /*@__PURE__*/ S.suspend(() =>
+const RosterProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeDirectoryGroupId: S.optional(S.String),
     ltiContextId: S.optional(S.String),
@@ -615,7 +615,7 @@ export type LabPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const LabPropertiesProvisioningState = S.String;
+const LabPropertiesProvisioningState = S.String;
 
 /** Profile for how to handle networking for Labs. */
 export interface LabNetworkProfile {
@@ -626,7 +626,7 @@ export interface LabNetworkProfile {
   /** A URL. */
   publicIpId?: string;
 }
-export const LabNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const LabNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.optional(S.String),
     loadBalancerId: S.optional(S.String),
@@ -636,7 +636,7 @@ export const LabNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The state of a virtual machine. */
 export type LabState = "Draft" | "Publishing" | "Scaling" | "Syncing" | "Published";
-export const LabState = S.String;
+const LabState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export interface LabPropertiesResourceOperationError {
@@ -649,7 +649,7 @@ export interface LabPropertiesResourceOperationError {
   /** The operation action that failed */
   action?: string;
 }
-export const LabPropertiesResourceOperationError = /*@__PURE__*/ S.suspend(() =>
+const LabPropertiesResourceOperationError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.String),
     code: S.optional(S.String),
@@ -687,7 +687,7 @@ export interface LabProperties {
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: LabPropertiesResourceOperationError;
 }
-export const LabProperties = /*@__PURE__*/ S.suspend(() =>
+const LabProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoShutdownProfile: LabPropertiesAutoShutdownProfile,
     connectionProfile: LabPropertiesConnectionProfile,
@@ -720,7 +720,7 @@ export interface GetLabResponse {
   /** Lab resource properties */
   properties: LabProperties;
 }
-export const GetLabResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLabResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -740,7 +740,7 @@ export interface GetLabPlanRequest {
   /** The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI. */
   labPlanName: string;
 }
-export const GetLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -757,7 +757,7 @@ export const GetLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLabPlanResponseTagsMap = { [key: string]: string | undefined };
-export const GetLabPlanResponseTagsMap =
+const GetLabPlanResponseTagsMap =
   GetLabResponseTagsMap as any as S.Schema<GetLabPlanResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -766,16 +766,12 @@ export type GetLabPlanResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetLabPlanResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetLabPlanResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetLabPlanResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetLabPlanResponseSystemData {
   /** The identity that created the resource. */
@@ -791,7 +787,7 @@ export interface GetLabPlanResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetLabPlanResponseSystemData =
+const GetLabPlanResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<GetLabPlanResponseSystemData>;
 
 /** Connection profile for how users connect to lab virtual machines. */
@@ -805,7 +801,7 @@ export interface LabPlanPropertiesDefaultConnectionProfile {
   /** The enabled access level for Client Access over RDP. */
   clientRdpAccess?: ConnectionType | (string & {});
 }
-export const LabPlanPropertiesDefaultConnectionProfile =
+const LabPlanPropertiesDefaultConnectionProfile =
   LabPropertiesConnectionProfile as any as S.Schema<LabPlanPropertiesDefaultConnectionProfile>;
 
 /** Profile for how to handle shutting down virtual machines. */
@@ -823,7 +819,7 @@ export interface LabPlanPropertiesDefaultAutoShutdownProfile {
   /** The amount of time a VM will idle before it is shutdown if this behavior is enabled. */
   idleDelay?: string;
 }
-export const LabPlanPropertiesDefaultAutoShutdownProfile =
+const LabPlanPropertiesDefaultAutoShutdownProfile =
   LabPropertiesAutoShutdownProfile as any as S.Schema<LabPlanPropertiesDefaultAutoShutdownProfile>;
 
 /** Profile for how to handle networking for Lab Plans. */
@@ -831,7 +827,7 @@ export interface LabPlanNetworkProfile {
   /** A URL. */
   subnetId?: string;
 }
-export const LabPlanNetworkProfile = /*@__PURE__*/ S.suspend(() =>
+const LabPlanNetworkProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subnetId: S.optional(S.String),
   }),
@@ -839,7 +835,7 @@ export const LabPlanNetworkProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
 export type LabPlanPropertiesAllowedRegionsList = Array<string>;
-export const LabPlanPropertiesAllowedRegionsList =
+const LabPlanPropertiesAllowedRegionsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<LabPlanPropertiesAllowedRegionsList>;
 
 /** Support contact information and instructions. */
@@ -853,7 +849,7 @@ export interface SupportInfo {
   /** Support instructions. */
   instructions?: string;
 }
-export const SupportInfo = /*@__PURE__*/ S.suspend(() =>
+const SupportInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     email: S.optional(S.String),
@@ -870,12 +866,10 @@ export type LabPlanPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const LabPlanPropertiesProvisioningState = S.String;
+const LabPlanPropertiesProvisioningState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type LabPlanPropertiesResourceOperationError = LabPropertiesResourceOperationError;
-export const LabPlanPropertiesResourceOperationError = LabPropertiesResourceOperationError;
-
 /** Lab plan resource properties */
 export interface LabPlanProperties {
   /** Connection profile for how users connect to lab virtual machines. */
@@ -897,7 +891,7 @@ export interface LabPlanProperties {
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: LabPropertiesResourceOperationError;
 }
-export const LabPlanProperties = /*@__PURE__*/ S.suspend(() =>
+const LabPlanProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultConnectionProfile: S.optional(LabPlanPropertiesDefaultConnectionProfile),
     defaultAutoShutdownProfile: S.optional(LabPlanPropertiesDefaultAutoShutdownProfile),
@@ -913,7 +907,7 @@ export const LabPlanProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type GetLabPlanResponseIdentityType = "SystemAssigned";
-export const GetLabPlanResponseIdentityType = S.String;
+const GetLabPlanResponseIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface GetLabPlanResponseIdentity {
@@ -924,7 +918,7 @@ export interface GetLabPlanResponseIdentity {
   /** The identity type. */
   type?: GetLabPlanResponseIdentityType;
 }
-export const GetLabPlanResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const GetLabPlanResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -952,7 +946,7 @@ export interface GetLabPlanResponse {
   /** Identity for the resource. */
   identity?: GetLabPlanResponseIdentity;
 }
-export const GetLabPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const GetLabPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -971,7 +965,7 @@ export interface GetOperationResultRequest {
   /** The operation result ID / name. */
   operationResultId: string;
 }
-export const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     operationResultId: S.String.pipe(T.Label()),
@@ -994,11 +988,11 @@ export type OperationResultStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const OperationResultStatus = S.String;
+const OperationResultStatus = S.String;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -1009,7 +1003,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -1018,7 +1012,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -1035,7 +1029,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1047,13 +1041,13 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The error details. */
 export type OperationResultErrorDetailsList = Array<ErrorDetail>;
-export const OperationResultErrorDetailsList = /*@__PURE__*/ S.Array(
+const OperationResultErrorDetailsList = /*@__PURE__*/ S.Array(
   ErrorDetail,
 ) as any as S.Schema<OperationResultErrorDetailsList>;
 
 /** The error additional info. */
 export type OperationResultErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const OperationResultErrorAdditionalInfoList =
+const OperationResultErrorAdditionalInfoList =
   ErrorDetailAdditionalInfoList as any as S.Schema<OperationResultErrorAdditionalInfoList>;
 
 /** The error detail. */
@@ -1069,7 +1063,7 @@ export interface OperationResultError {
   /** The error additional info. */
   additionalInfo?: OperationResultErrorAdditionalInfoList;
 }
-export const OperationResultError = /*@__PURE__*/ S.suspend(() =>
+const OperationResultError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -1096,7 +1090,7 @@ export interface OperationResult {
   /** The error detail. */
   error?: OperationResultError;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1118,7 +1112,7 @@ export interface GetScheduleRequest {
   /** The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs. */
   scheduleName: string;
 }
-export const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1140,16 +1134,12 @@ export type GetScheduleResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetScheduleResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetScheduleResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetScheduleResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetScheduleResponseSystemData {
   /** The identity that created the resource. */
@@ -1165,12 +1155,12 @@ export interface GetScheduleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetScheduleResponseSystemData =
+const GetScheduleResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<GetScheduleResponseSystemData>;
 
 /** Schedule recurrence frequencies. */
 export type RecurrenceFrequency = "Daily" | "Weekly";
-export const RecurrenceFrequency = S.String;
+const RecurrenceFrequency = S.String;
 
 /** Days of the week. */
 export type WeekDay =
@@ -1181,11 +1171,11 @@ export type WeekDay =
   | "Thursday"
   | "Friday"
   | "Saturday";
-export const WeekDay = S.String;
+const WeekDay = S.String;
 
 /** The week days the schedule runs. Used for when the Frequency is set to Weekly. */
 export type RecurrencePatternWeekDaysList = Array<WeekDay | (string & {})>;
-export const RecurrencePatternWeekDaysList = /*@__PURE__*/ S.Array(
+const RecurrencePatternWeekDaysList = /*@__PURE__*/ S.Array(
   WeekDay,
 ) as any as S.Schema<RecurrencePatternWeekDaysList>;
 
@@ -1200,7 +1190,7 @@ export interface RecurrencePattern {
   /** When the recurrence will expire. This date is inclusive. */
   expirationDate: string;
 }
-export const RecurrencePattern = /*@__PURE__*/ S.suspend(() =>
+const RecurrencePattern = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequency: RecurrenceFrequency,
     weekDays: S.optional(RecurrencePatternWeekDaysList),
@@ -1217,12 +1207,10 @@ export type SchedulePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const SchedulePropertiesProvisioningState = S.String;
+const SchedulePropertiesProvisioningState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type SchedulePropertiesResourceOperationError = LabPropertiesResourceOperationError;
-export const SchedulePropertiesResourceOperationError = LabPropertiesResourceOperationError;
-
 /** Schedule resource properties */
 export interface ScheduleProperties {
   /** When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead. */
@@ -1240,7 +1228,7 @@ export interface ScheduleProperties {
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: LabPropertiesResourceOperationError;
 }
-export const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startAt: S.optional(S.String),
     stopAt: S.String,
@@ -1264,7 +1252,7 @@ export interface GetScheduleResponse {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetScheduleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1284,7 +1272,7 @@ export interface GetUserRequest {
   /** The name of the user that uniquely identifies it within containing lab. Used in resource URIs. */
   userName: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1306,16 +1294,12 @@ export type GetUserResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetUserResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetUserResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetUserResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetUserResponseSystemData {
   /** The identity that created the resource. */
@@ -1331,7 +1315,7 @@ export interface GetUserResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetUserResponseSystemData =
+const GetUserResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<GetUserResponseSystemData>;
 
 /** Resource provisioning state. */
@@ -1342,19 +1326,17 @@ export type UserPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const UserPropertiesProvisioningState = S.String;
+const UserPropertiesProvisioningState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type UserPropertiesResourceOperationError = LabPropertiesResourceOperationError;
-export const UserPropertiesResourceOperationError = LabPropertiesResourceOperationError;
-
 /** The user lab registration state. */
 export type RegistrationState = "NotRegistered" | "Registered";
-export const RegistrationState = S.String;
+const RegistrationState = S.String;
 
 /** The lab user invitation state. */
 export type InvitationState = "NotSent" | "Sending" | "Sent" | "Failed";
-export const InvitationState = S.String;
+const InvitationState = S.String;
 
 /** User resource properties */
 export interface UserProperties {
@@ -1377,7 +1359,7 @@ export interface UserProperties {
   /** How long the user has used their virtual machines in this lab. */
   totalUsage?: string;
 }
-export const UserProperties = /*@__PURE__*/ S.suspend(() =>
+const UserProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalUsageQuota: S.optional(S.String),
     provisioningState: S.optional(UserPropertiesProvisioningState),
@@ -1403,7 +1385,7 @@ export interface GetUserResponse {
   /** User resource properties */
   properties: UserProperties;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1423,7 +1405,7 @@ export interface GetVirtualMachineRequest {
   /** The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs. */
   virtualMachineName: string;
 }
-export const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1445,16 +1427,12 @@ export type GetVirtualMachineResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetVirtualMachineResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetVirtualMachineResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetVirtualMachineResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetVirtualMachineResponseSystemData {
   /** The identity that created the resource. */
@@ -1470,7 +1448,7 @@ export interface GetVirtualMachineResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetVirtualMachineResponseSystemData =
+const GetVirtualMachineResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<GetVirtualMachineResponseSystemData>;
 
 /** Resource provisioning state. */
@@ -1481,7 +1459,7 @@ export type VirtualMachinePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const VirtualMachinePropertiesProvisioningState = S.String;
+const VirtualMachinePropertiesProvisioningState = S.String;
 
 /** The state of a virtual machine. */
 export type VirtualMachineState =
@@ -1492,12 +1470,10 @@ export type VirtualMachineState =
   | "ResettingPassword"
   | "Reimaging"
   | "Redeploying";
-export const VirtualMachineState = S.String;
+const VirtualMachineState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type VirtualMachinePropertiesResourceOperationError = LabPropertiesResourceOperationError;
-export const VirtualMachinePropertiesResourceOperationError = LabPropertiesResourceOperationError;
-
 /** The connection information for the virtual machine */
 export interface VirtualMachineConnectionProfile {
   /** The private IP address of the virtual machine. */
@@ -1515,7 +1491,7 @@ export interface VirtualMachineConnectionProfile {
   /** The username used to log on to the virtual machine as non-admin, if one exists. */
   nonAdminUsername?: string;
 }
-export const VirtualMachineConnectionProfile = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineConnectionProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateIpAddress: S.optional(S.String),
     sshAuthority: S.optional(S.String),
@@ -1531,7 +1507,7 @@ export const VirtualMachineConnectionProfile = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of the lab virtual machine. */
 export type VirtualMachineType = "User" | "Template";
-export const VirtualMachineType = S.String;
+const VirtualMachineType = S.String;
 
 /** Virtual machine resource properties */
 export interface VirtualMachineProperties {
@@ -1548,7 +1524,7 @@ export interface VirtualMachineProperties {
   /** The type of this VM resource */
   vmType?: VirtualMachineType;
 }
-export const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(VirtualMachinePropertiesProvisioningState),
     state: S.optional(VirtualMachineState),
@@ -1571,7 +1547,7 @@ export interface GetVirtualMachineResponse {
   /** Virtual machine resource properties */
   properties: VirtualMachineProperties;
 }
-export const GetVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1585,7 +1561,7 @@ export const GetVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type ImagePropertiesInputEnabledState = "Enabled" | "Disabled";
-export const ImagePropertiesInputEnabledState = S.String;
+const ImagePropertiesInputEnabledState = S.String;
 
 /** Resource provisioning state. */
 export type ImagePropertiesInputProvisioningState =
@@ -1595,24 +1571,24 @@ export type ImagePropertiesInputProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const ImagePropertiesInputProvisioningState = S.String;
+const ImagePropertiesInputProvisioningState = S.String;
 
 /** The operating system type. */
 export type ImagePropertiesInputOsType = "Windows" | "Linux";
-export const ImagePropertiesInputOsType = S.String;
+const ImagePropertiesInputOsType = S.String;
 
 /** Property enabled state. */
 export type ImagePropertiesInputTermsStatus = "Enabled" | "Disabled";
-export const ImagePropertiesInputTermsStatus = S.String;
+const ImagePropertiesInputTermsStatus = S.String;
 
 /** The available regions of the image in the shared gallery. */
 export type ImagePropertiesInputAvailableRegionsList = Array<string>;
-export const ImagePropertiesInputAvailableRegionsList =
+const ImagePropertiesInputAvailableRegionsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<ImagePropertiesInputAvailableRegionsList>;
 
 /** The operating system state. */
 export type ImagePropertiesInputOsState = "Generalized" | "Specialized";
-export const ImagePropertiesInputOsState = S.String;
+const ImagePropertiesInputOsState = S.String;
 
 /** Properties of an image resource. */
 export interface ImagePropertiesInput {
@@ -1631,7 +1607,7 @@ export interface ImagePropertiesInput {
   /** The operating system state. */
   osState?: ImagePropertiesInputOsState | (string & {});
 }
-export const ImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ImagePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: ImagePropertiesInputEnabledState,
     provisioningState: S.optional(ImagePropertiesInputProvisioningState),
@@ -1655,7 +1631,7 @@ export interface ImagesCreateOrUpdateRequest {
   /** Image resource properties */
   properties: ImagePropertiesInput;
 }
-export const ImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ImagesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1680,16 +1656,12 @@ export type ImagesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ImagesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ImagesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ImagesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ImagesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1705,7 +1677,7 @@ export interface ImagesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ImagesCreateOrUpdateResponseSystemData =
+const ImagesCreateOrUpdateResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<ImagesCreateOrUpdateResponseSystemData>;
 
 export interface ImagesCreateOrUpdateResponse {
@@ -1720,7 +1692,7 @@ export interface ImagesCreateOrUpdateResponse {
   /** Image resource properties */
   properties: ImageProperties;
 }
-export const ImagesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ImagesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1744,7 +1716,7 @@ export interface InviteUserRequest {
   /** Custom text for the invite email. */
   text?: string;
 }
-export const InviteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const InviteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1762,23 +1734,23 @@ export const InviteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InviteUserRequest" }) as any as S.Schema<InviteUserRequest>;
 
 export interface InviteUserResponse {}
-export const InviteUserResponse = DeleteLabResponse as any as S.Schema<InviteUserResponse>;
+const InviteUserResponse = DeleteLabResponse as any as S.Schema<InviteUserResponse>;
 
 /** Resource tags. */
 export type LabPlansCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LabPlansCreateOrUpdateRequestTagsMap =
+const LabPlansCreateOrUpdateRequestTagsMap =
   GetLabResponseTagsMap as any as S.Schema<LabPlansCreateOrUpdateRequestTagsMap>;
 
 /** The identity type. */
 export type LabPlansCreateOrUpdateRequestIdentityType = "SystemAssigned";
-export const LabPlansCreateOrUpdateRequestIdentityType = S.String;
+const LabPlansCreateOrUpdateRequestIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface LabPlansCreateOrUpdateRequestIdentity {
   /** The identity type. */
   type?: LabPlansCreateOrUpdateRequestIdentityType | (string & {});
 }
-export const LabPlansCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const LabPlansCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(LabPlansCreateOrUpdateRequestIdentityType),
   }),
@@ -1802,7 +1774,7 @@ export interface LabPlansCreateOrUpdateRequest {
   /** Identity for the resource. */
   identity?: LabPlansCreateOrUpdateRequestIdentity;
 }
-export const LabPlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LabPlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1825,7 +1797,7 @@ export const LabPlansCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabPlansCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LabPlansCreateOrUpdateResponseTagsMap =
+const LabPlansCreateOrUpdateResponseTagsMap =
   GetLabResponseTagsMap as any as S.Schema<LabPlansCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -1834,16 +1806,12 @@ export type LabPlansCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const LabPlansCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type LabPlansCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const LabPlansCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface LabPlansCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -1859,13 +1827,11 @@ export interface LabPlansCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabPlansCreateOrUpdateResponseSystemData =
+const LabPlansCreateOrUpdateResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<LabPlansCreateOrUpdateResponseSystemData>;
 
 /** The identity type. */
 export type LabPlansCreateOrUpdateResponseIdentityType = "SystemAssigned";
-export const LabPlansCreateOrUpdateResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface LabPlansCreateOrUpdateResponseIdentity {
   /** The principal ID of resource identity. */
@@ -1875,7 +1841,7 @@ export interface LabPlansCreateOrUpdateResponseIdentity {
   /** The identity type. */
   type?: LabPlansCreateOrUpdateResponseIdentityType;
 }
-export const LabPlansCreateOrUpdateResponseIdentity =
+const LabPlansCreateOrUpdateResponseIdentity =
   GetLabPlanResponseIdentity as any as S.Schema<LabPlansCreateOrUpdateResponseIdentity>;
 
 export interface LabPlansCreateOrUpdateResponse {
@@ -1896,7 +1862,7 @@ export interface LabPlansCreateOrUpdateResponse {
   /** Identity for the resource. */
   identity?: LabPlansCreateOrUpdateResponseIdentity;
 }
-export const LabPlansCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LabPlansCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1923,7 +1889,7 @@ export interface LabPlansSaveImageRequest {
   /** A URL. */
   labVirtualMachineId?: string;
 }
-export const LabPlansSaveImageRequest = /*@__PURE__*/ S.suspend(() =>
+const LabPlansSaveImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1941,25 +1907,20 @@ export const LabPlansSaveImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LabPlansSaveImageRequest" }) as any as S.Schema<LabPlansSaveImageRequest>;
 
 export interface LabPlansSaveImageResponse {}
-export const LabPlansSaveImageResponse =
-  DeleteLabResponse as any as S.Schema<LabPlansSaveImageResponse>;
+const LabPlansSaveImageResponse = DeleteLabResponse as any as S.Schema<LabPlansSaveImageResponse>;
 
 /** Resource tags. */
 export type LabsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateRequestTagsMap =
+const LabsCreateOrUpdateRequestTagsMap =
   GetLabResponseTagsMap as any as S.Schema<LabsCreateOrUpdateRequestTagsMap>;
 
 /** Profile for how to handle shutting down virtual machines. */
 export type LabPropertiesInputAutoShutdownProfile = LabPlanPropertiesDefaultAutoShutdownProfile;
-export const LabPropertiesInputAutoShutdownProfile = LabPlanPropertiesDefaultAutoShutdownProfile;
-
 /** Connection profile for how users connect to lab virtual machines. */
 export type LabPropertiesInputConnectionProfile = LabPlanPropertiesDefaultConnectionProfile;
-export const LabPropertiesInputConnectionProfile = LabPlanPropertiesDefaultConnectionProfile;
-
 /** Indicates what lab virtual machines are created from. */
 export type VirtualMachineProfileInputCreateOption = "Image" | "TemplateVM";
-export const VirtualMachineProfileInputCreateOption = S.String;
+const VirtualMachineProfileInputCreateOption = S.String;
 
 /** Image reference information. Used in the virtual machine profile. */
 export interface ImageReferenceInput {
@@ -1974,7 +1935,7 @@ export interface ImageReferenceInput {
   /** The image version specified on creation. */
   version?: string;
 }
-export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
+const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     offer: S.optional(S.String),
@@ -1986,11 +1947,11 @@ export const ImageReferenceInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The operating system type. */
 export type VirtualMachineProfileInputOsType = "Windows" | "Linux";
-export const VirtualMachineProfileInputOsType = S.String;
+const VirtualMachineProfileInputOsType = S.String;
 
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type VirtualMachineProfileInputSkuTier = "Free" | "Basic" | "Standard" | "Premium";
-export const VirtualMachineProfileInputSkuTier = S.String;
+const VirtualMachineProfileInputSkuTier = S.String;
 
 /** The resource model definition representing SKU */
 export interface VirtualMachineProfileInputSku {
@@ -2005,7 +1966,7 @@ export interface VirtualMachineProfileInputSku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-export const VirtualMachineProfileInputSku = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProfileInputSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     tier: S.optional(VirtualMachineProfileInputSkuTier),
@@ -2019,7 +1980,7 @@ export const VirtualMachineProfileInputSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type VirtualMachineProfileInputUseSharedPassword = "Enabled" | "Disabled";
-export const VirtualMachineProfileInputUseSharedPassword = S.String;
+const VirtualMachineProfileInputUseSharedPassword = S.String;
 
 /** The base virtual machine configuration for a lab. */
 export interface VirtualMachineProfileInput {
@@ -2042,7 +2003,7 @@ export interface VirtualMachineProfileInput {
   /** Credentials for the non-admin user on the VM, if one exists. */
   nonAdminUser?: Credentials;
 }
-export const VirtualMachineProfileInput = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachineProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createOption: VirtualMachineProfileInputCreateOption,
     imageReference: ImageReferenceInput,
@@ -2060,14 +2021,14 @@ export const VirtualMachineProfileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Property enabled state. */
 export type SecurityProfileInputOpenAccess = "Enabled" | "Disabled";
-export const SecurityProfileInputOpenAccess = S.String;
+const SecurityProfileInputOpenAccess = S.String;
 
 /** The lab security profile. */
 export interface SecurityProfileInput {
   /** Property enabled state. */
   openAccess?: SecurityProfileInputOpenAccess | (string & {});
 }
-export const SecurityProfileInput = /*@__PURE__*/ S.suspend(() =>
+const SecurityProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openAccess: S.optional(SecurityProfileInputOpenAccess),
   }),
@@ -2081,12 +2042,10 @@ export type LabPropertiesInputProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const LabPropertiesInputProvisioningState = S.String;
+const LabPropertiesInputProvisioningState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type LabPropertiesInputResourceOperationError = LabPropertiesResourceOperationError;
-export const LabPropertiesInputResourceOperationError = LabPropertiesResourceOperationError;
-
 /** Properties of a lab resource. */
 export interface LabPropertiesInput {
   /** Profile for how to handle shutting down virtual machines. */
@@ -2112,7 +2071,7 @@ export interface LabPropertiesInput {
   /** Error details of the latest operation failure on this resource */
   resourceOperationError?: LabPropertiesResourceOperationError;
 }
-export const LabPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LabPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoShutdownProfile: LabPlanPropertiesDefaultAutoShutdownProfile,
     connectionProfile: LabPlanPropertiesDefaultConnectionProfile,
@@ -2142,7 +2101,7 @@ export interface LabsCreateOrUpdateRequest {
   /** Lab resource properties */
   properties: LabPropertiesInput;
 }
-export const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2164,7 +2123,7 @@ export const LabsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const LabsCreateOrUpdateResponseTagsMap =
+const LabsCreateOrUpdateResponseTagsMap =
   GetLabResponseTagsMap as any as S.Schema<LabsCreateOrUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -2173,16 +2132,12 @@ export type LabsCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const LabsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type LabsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const LabsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface LabsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -2198,7 +2153,7 @@ export interface LabsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabsCreateOrUpdateResponseSystemData =
+const LabsCreateOrUpdateResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<LabsCreateOrUpdateResponseSystemData>;
 
 export interface LabsCreateOrUpdateResponse {
@@ -2217,7 +2172,7 @@ export interface LabsCreateOrUpdateResponse {
   /** Lab resource properties */
   properties: LabProperties;
 }
-export const LabsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const LabsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2241,7 +2196,7 @@ export interface ListImageByLabPlanRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListImageByLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ListImageByLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2261,12 +2216,8 @@ export const ListImageByLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ImageSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ImageSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ImageSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ImageSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ImageSystemData {
   /** The identity that created the resource. */
@@ -2282,7 +2233,7 @@ export interface ImageSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ImageSystemData = GetLabResponseSystemData as any as S.Schema<ImageSystemData>;
+const ImageSystemData = GetLabResponseSystemData as any as S.Schema<ImageSystemData>;
 
 /** Lab services virtual machine image */
 export interface Image {
@@ -2297,7 +2248,7 @@ export interface Image {
   /** Image resource properties */
   properties: ImageProperties;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2309,9 +2260,7 @@ export const Image = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of virtual machine images. */
 export type PagedImagesValueList = Array<Image>;
-export const PagedImagesValueList = /*@__PURE__*/ S.Array(
-  Image,
-) as any as S.Schema<PagedImagesValueList>;
+const PagedImagesValueList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<PagedImagesValueList>;
 
 /** Paged list of Lab services virtual machine images. */
 export interface PagedImages {
@@ -2320,7 +2269,7 @@ export interface PagedImages {
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
-export const PagedImages = /*@__PURE__*/ S.suspend(() =>
+const PagedImages = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedImagesValueList),
     nextLink: S.optional(S.String),
@@ -2333,7 +2282,7 @@ export interface ListLabByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListLabByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2351,16 +2300,12 @@ export const ListLabByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabTagsMap = { [key: string]: string | undefined };
-export const LabTagsMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<LabTagsMap>;
+const LabTagsMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<LabTagsMap>;
 
 /** The type of identity that created the resource. */
 export type LabSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const LabSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type LabSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const LabSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface LabSystemData {
   /** The identity that created the resource. */
@@ -2376,7 +2321,7 @@ export interface LabSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabSystemData = GetLabResponseSystemData as any as S.Schema<LabSystemData>;
+const LabSystemData = GetLabResponseSystemData as any as S.Schema<LabSystemData>;
 
 /** The lab resource. */
 export interface Lab {
@@ -2395,7 +2340,7 @@ export interface Lab {
   /** Lab resource properties */
   properties: LabProperties;
 }
-export const Lab = /*@__PURE__*/ S.suspend(() =>
+const Lab = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2409,7 +2354,7 @@ export const Lab = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of lab results. */
 export type PagedLabsValueList = Array<Lab>;
-export const PagedLabsValueList = /*@__PURE__*/ S.Array(Lab) as any as S.Schema<PagedLabsValueList>;
+const PagedLabsValueList = /*@__PURE__*/ S.Array(Lab) as any as S.Schema<PagedLabsValueList>;
 
 /** Paged list of labs. */
 export interface PagedLabs {
@@ -2418,7 +2363,7 @@ export interface PagedLabs {
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
-export const PagedLabs = /*@__PURE__*/ S.suspend(() =>
+const PagedLabs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedLabsValueList),
     nextLink: S.optional(S.String),
@@ -2431,7 +2376,7 @@ export interface ListLabBySubscriptionRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListLabBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2453,7 +2398,7 @@ export interface ListLabPlanByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListLabPlanByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabPlanByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2471,20 +2416,16 @@ export const ListLabPlanByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type LabPlanTagsMap = { [key: string]: string | undefined };
-export const LabPlanTagsMap = GetLabResponseTagsMap as any as S.Schema<LabPlanTagsMap>;
+const LabPlanTagsMap = GetLabResponseTagsMap as any as S.Schema<LabPlanTagsMap>;
 
 /** The type of identity that created the resource. */
 export type LabPlanSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const LabPlanSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type LabPlanSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const LabPlanSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface LabPlanSystemData {
   /** The identity that created the resource. */
@@ -2500,11 +2441,11 @@ export interface LabPlanSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const LabPlanSystemData = GetLabResponseSystemData as any as S.Schema<LabPlanSystemData>;
+const LabPlanSystemData = GetLabResponseSystemData as any as S.Schema<LabPlanSystemData>;
 
 /** The identity type. */
 export type LabPlanIdentityType = "SystemAssigned";
-export const LabPlanIdentityType = S.String;
+const LabPlanIdentityType = S.String;
 
 /** Identity for the resource. */
 export interface LabPlanIdentity {
@@ -2515,7 +2456,7 @@ export interface LabPlanIdentity {
   /** The identity type. */
   type?: LabPlanIdentityType;
 }
-export const LabPlanIdentity = /*@__PURE__*/ S.suspend(() =>
+const LabPlanIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -2542,7 +2483,7 @@ export interface LabPlan {
   /** Identity for the resource. */
   identity?: LabPlanIdentity;
 }
-export const LabPlan = /*@__PURE__*/ S.suspend(() =>
+const LabPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2557,7 +2498,7 @@ export const LabPlan = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of lab plans. */
 export type PagedLabPlansValueList = Array<LabPlan>;
-export const PagedLabPlansValueList = /*@__PURE__*/ S.Array(
+const PagedLabPlansValueList = /*@__PURE__*/ S.Array(
   LabPlan,
 ) as any as S.Schema<PagedLabPlansValueList>;
 
@@ -2568,7 +2509,7 @@ export interface PagedLabPlans {
   /** The link to get the next page of lab plan results. */
   nextLink?: string;
 }
-export const PagedLabPlans = /*@__PURE__*/ S.suspend(() =>
+const PagedLabPlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedLabPlansValueList),
     nextLink: S.optional(S.String),
@@ -2581,7 +2522,7 @@ export interface ListLabPlanBySubscriptionRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListLabPlanBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLabPlanBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2598,7 +2539,7 @@ export const ListLabPlanBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLabPlanBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2620,7 +2561,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2631,11 +2572,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -2650,7 +2591,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2662,7 +2603,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -2672,7 +2613,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -2689,7 +2630,7 @@ export interface ListScheduleByLabRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListScheduleByLabRequest = /*@__PURE__*/ S.suspend(() =>
+const ListScheduleByLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2707,16 +2648,12 @@ export const ListScheduleByLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type ScheduleSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const ScheduleSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ScheduleSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ScheduleSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ScheduleSystemData {
   /** The identity that created the resource. */
@@ -2732,7 +2669,7 @@ export interface ScheduleSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ScheduleSystemData = GetLabResponseSystemData as any as S.Schema<ScheduleSystemData>;
+const ScheduleSystemData = GetLabResponseSystemData as any as S.Schema<ScheduleSystemData>;
 
 /** Schedule for automatically turning virtual machines in a lab on and off at specified times. */
 export interface Schedule {
@@ -2747,7 +2684,7 @@ export interface Schedule {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2759,7 +2696,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of schedule results. */
 export type PagedSchedulesValueList = Array<Schedule>;
-export const PagedSchedulesValueList = /*@__PURE__*/ S.Array(
+const PagedSchedulesValueList = /*@__PURE__*/ S.Array(
   Schedule,
 ) as any as S.Schema<PagedSchedulesValueList>;
 
@@ -2770,7 +2707,7 @@ export interface PagedSchedules {
   /** The link to get the next page of schedule results. */
   nextLink?: string;
 }
-export const PagedSchedules = /*@__PURE__*/ S.suspend(() =>
+const PagedSchedules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedSchedulesValueList),
     nextLink: S.optional(S.String),
@@ -2783,7 +2720,7 @@ export interface ListSkusRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2799,11 +2736,11 @@ export const ListSkusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tier of the SKU. */
 export type LabServicesSkuTier = "Standard" | "Premium";
-export const LabServicesSkuTier = S.String;
+const LabServicesSkuTier = S.String;
 
 /** The localized name of the resource. */
 export type LabServicesSkuCapacityScaleType = "None" | "Manual" | "Automatic";
-export const LabServicesSkuCapacityScaleType = S.String;
+const LabServicesSkuCapacityScaleType = S.String;
 
 /** The scale out/in options of the SKU. */
 export interface LabServicesSkuCapacity {
@@ -2816,7 +2753,7 @@ export interface LabServicesSkuCapacity {
   /** The localized name of the resource. */
   scaleType?: LabServicesSkuCapacityScaleType;
 }
-export const LabServicesSkuCapacity = /*@__PURE__*/ S.suspend(() =>
+const LabServicesSkuCapacity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Number),
     minimum: S.optional(S.Number),
@@ -2832,7 +2769,7 @@ export interface LabServicesSkuCapabilities {
   /** The value of the capability for a SKU. */
   value?: string;
 }
-export const LabServicesSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+const LabServicesSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -2843,13 +2780,13 @@ export const LabServicesSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** The capabilities of the SKU. */
 export type LabServicesSkuCapabilitiesList = Array<LabServicesSkuCapabilities>;
-export const LabServicesSkuCapabilitiesList = /*@__PURE__*/ S.Array(
+const LabServicesSkuCapabilitiesList = /*@__PURE__*/ S.Array(
   LabServicesSkuCapabilities,
 ) as any as S.Schema<LabServicesSkuCapabilitiesList>;
 
 /** List of locations that are available for a size. */
 export type LabServicesSkuLocationsList = Array<string>;
-export const LabServicesSkuLocationsList =
+const LabServicesSkuLocationsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<LabServicesSkuLocationsList>;
 
 /** The array of costs of a lab services SKU. */
@@ -2861,7 +2798,7 @@ export interface LabServicesSkuCost {
   /** The extended unit. */
   extendedUnit?: string;
 }
-export const LabServicesSkuCost = /*@__PURE__*/ S.suspend(() =>
+const LabServicesSkuCost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meterId: S.optional(S.String),
     quantity: S.optional(S.Number),
@@ -2871,22 +2808,22 @@ export const LabServicesSkuCost = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata for retrieving price info of a lab services SKUs. */
 export type LabServicesSkuCostsList = Array<LabServicesSkuCost>;
-export const LabServicesSkuCostsList = /*@__PURE__*/ S.Array(
+const LabServicesSkuCostsList = /*@__PURE__*/ S.Array(
   LabServicesSkuCost,
 ) as any as S.Schema<LabServicesSkuCostsList>;
 
 /** The type of restriction. */
 export type LabServicesSkuRestrictionsType = "Location";
-export const LabServicesSkuRestrictionsType = S.String;
+const LabServicesSkuRestrictionsType = S.String;
 
 /** The values of the restriction. */
 export type LabServicesSkuRestrictionsValuesList = Array<string>;
-export const LabServicesSkuRestrictionsValuesList =
+const LabServicesSkuRestrictionsValuesList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<LabServicesSkuRestrictionsValuesList>;
 
 /** The reason for the restriction. */
 export type LabServicesSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
-export const LabServicesSkuRestrictionsReasonCode = S.String;
+const LabServicesSkuRestrictionsReasonCode = S.String;
 
 /** The restriction details. */
 export interface LabServicesSkuRestrictions {
@@ -2897,7 +2834,7 @@ export interface LabServicesSkuRestrictions {
   /** The reason for the restriction. */
   reasonCode?: LabServicesSkuRestrictionsReasonCode;
 }
-export const LabServicesSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
+const LabServicesSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(LabServicesSkuRestrictionsType),
     values: S.optional(LabServicesSkuRestrictionsValuesList),
@@ -2909,7 +2846,7 @@ export const LabServicesSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
 
 /** Restrictions of a lab services SKUs. */
 export type LabServicesSkuRestrictionsList = Array<LabServicesSkuRestrictions>;
-export const LabServicesSkuRestrictionsList = /*@__PURE__*/ S.Array(
+const LabServicesSkuRestrictionsList = /*@__PURE__*/ S.Array(
   LabServicesSkuRestrictions,
 ) as any as S.Schema<LabServicesSkuRestrictionsList>;
 
@@ -2935,7 +2872,7 @@ export interface LabServicesSku {
   /** Restrictions of a lab services SKUs. */
   restrictions?: LabServicesSkuRestrictionsList;
 }
-export const LabServicesSku = /*@__PURE__*/ S.suspend(() =>
+const LabServicesSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceType: S.optional(S.String),
     name: S.optional(S.String),
@@ -2952,7 +2889,7 @@ export const LabServicesSku = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of sku results. */
 export type PagedLabServicesSkusValueList = Array<LabServicesSku>;
-export const PagedLabServicesSkusValueList = /*@__PURE__*/ S.Array(
+const PagedLabServicesSkusValueList = /*@__PURE__*/ S.Array(
   LabServicesSku,
 ) as any as S.Schema<PagedLabServicesSkusValueList>;
 
@@ -2963,7 +2900,7 @@ export interface PagedLabServicesSkus {
   /** The link to get the next page of sku results. */
   nextLink?: string;
 }
-export const PagedLabServicesSkus = /*@__PURE__*/ S.suspend(() =>
+const PagedLabServicesSkus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedLabServicesSkusValueList),
     nextLink: S.optional(S.String),
@@ -2978,7 +2915,7 @@ export interface ListUsageByLocationRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -2997,11 +2934,11 @@ export const ListUsageByLocationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The unit details. */
 export type UsageUnit = "Count";
-export const UsageUnit = S.String;
+const UsageUnit = S.String;
 
 /** The instances of the resource. */
 export type UsageNameSkuInstancesList = Array<string>;
-export const UsageNameSkuInstancesList =
+const UsageNameSkuInstancesList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<UsageNameSkuInstancesList>;
 
 /** The Usage Names. */
@@ -3013,7 +2950,7 @@ export interface UsageName {
   /** The name of the resource. */
   value?: string;
 }
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
+const UsageName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localizedValue: S.optional(S.String),
     skuInstances: S.optional(UsageNameSkuInstancesList),
@@ -3034,7 +2971,7 @@ export interface Usage {
   /** The fully qualified arm resource id. */
   id?: string;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentValue: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -3046,7 +2983,7 @@ export const Usage = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of Usages. */
 export type ListUsagesResultValueList = Array<Usage>;
-export const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
+const ListUsagesResultValueList = /*@__PURE__*/ S.Array(
   Usage,
 ) as any as S.Schema<ListUsagesResultValueList>;
 
@@ -3057,7 +2994,7 @@ export interface ListUsagesResult {
   /** The link to get the next page of Usage result. */
   nextLink?: string;
 }
-export const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
+const ListUsagesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListUsagesResultValueList),
     nextLink: S.optional(S.String),
@@ -3074,7 +3011,7 @@ export interface ListUserByLabRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListUserByLabRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserByLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3092,12 +3029,8 @@ export const ListUserByLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type UserSystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const UserSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UserSystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const UserSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UserSystemData {
   /** The identity that created the resource. */
@@ -3113,7 +3046,7 @@ export interface UserSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UserSystemData = GetLabResponseSystemData as any as S.Schema<UserSystemData>;
+const UserSystemData = GetLabResponseSystemData as any as S.Schema<UserSystemData>;
 
 /** User of a lab that can register for and use virtual machines within the lab. */
 export interface User {
@@ -3128,7 +3061,7 @@ export interface User {
   /** User resource properties */
   properties: UserProperties;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3140,9 +3073,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of user results. */
 export type PagedUsersValueList = Array<User>;
-export const PagedUsersValueList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<PagedUsersValueList>;
+const PagedUsersValueList = /*@__PURE__*/ S.Array(User) as any as S.Schema<PagedUsersValueList>;
 
 /** Paged list of users. */
 export interface PagedUsers {
@@ -3151,7 +3082,7 @@ export interface PagedUsers {
   /** The link to get the next page of image results. */
   nextLink?: string;
 }
-export const PagedUsers = /*@__PURE__*/ S.suspend(() =>
+const PagedUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedUsersValueList),
     nextLink: S.optional(S.String),
@@ -3168,7 +3099,7 @@ export interface ListVirtualMachineByLabRequest {
   /** The filter to apply to the operation. */
   _filter?: string;
 }
-export const ListVirtualMachineByLabRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVirtualMachineByLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3192,16 +3123,12 @@ export type VirtualMachineSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const VirtualMachineSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type VirtualMachineSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const VirtualMachineSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface VirtualMachineSystemData {
   /** The identity that created the resource. */
@@ -3217,7 +3144,7 @@ export interface VirtualMachineSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const VirtualMachineSystemData =
+const VirtualMachineSystemData =
   GetLabResponseSystemData as any as S.Schema<VirtualMachineSystemData>;
 
 /** A lab virtual machine resource. */
@@ -3233,7 +3160,7 @@ export interface VirtualMachine {
   /** Virtual machine resource properties */
   properties: VirtualMachineProperties;
 }
-export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3245,7 +3172,7 @@ export const VirtualMachine = /*@__PURE__*/ S.suspend(() =>
 
 /** The array page of virtual machine results. */
 export type PagedVirtualMachinesValueList = Array<VirtualMachine>;
-export const PagedVirtualMachinesValueList = /*@__PURE__*/ S.Array(
+const PagedVirtualMachinesValueList = /*@__PURE__*/ S.Array(
   VirtualMachine,
 ) as any as S.Schema<PagedVirtualMachinesValueList>;
 
@@ -3256,7 +3183,7 @@ export interface PagedVirtualMachines {
   /** The link to get the next page of virtual machine results. */
   nextLink?: string;
 }
-export const PagedVirtualMachines = /*@__PURE__*/ S.suspend(() =>
+const PagedVirtualMachines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(PagedVirtualMachinesValueList),
     nextLink: S.optional(S.String),
@@ -3271,7 +3198,7 @@ export interface PublishLabRequest {
   /** The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs. */
   labName: string;
 }
-export const PublishLabRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3287,7 +3214,7 @@ export const PublishLabRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PublishLabRequest" }) as any as S.Schema<PublishLabRequest>;
 
 export interface PublishLabResponse {}
-export const PublishLabResponse = DeleteLabResponse as any as S.Schema<PublishLabResponse>;
+const PublishLabResponse = DeleteLabResponse as any as S.Schema<PublishLabResponse>;
 
 export interface RedeployVirtualMachineRequest {
   /** The ID of the target subscription. */
@@ -3299,7 +3226,7 @@ export interface RedeployVirtualMachineRequest {
   /** The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs. */
   virtualMachineName: string;
 }
-export const RedeployVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const RedeployVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3318,7 +3245,7 @@ export const RedeployVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedeployVirtualMachineRequest>;
 
 export interface RedeployVirtualMachineResponse {}
-export const RedeployVirtualMachineResponse =
+const RedeployVirtualMachineResponse =
   DeleteLabResponse as any as S.Schema<RedeployVirtualMachineResponse>;
 
 export interface ResetVirtualMachinePasswordRequest {
@@ -3335,7 +3262,7 @@ export interface ResetVirtualMachinePasswordRequest {
   /** The password */
   password: string | Redacted.Redacted<string>;
 }
-export const ResetVirtualMachinePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetVirtualMachinePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3356,9 +3283,7 @@ export const ResetVirtualMachinePasswordRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetVirtualMachinePasswordRequest>;
 
 export interface ResetVirtualMachinePasswordResponse {}
-export const ResetVirtualMachinePasswordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ResetVirtualMachinePasswordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ResetVirtualMachinePasswordResponse",
 }) as any as S.Schema<ResetVirtualMachinePasswordResponse>;
 
@@ -3374,7 +3299,7 @@ export interface SchedulesCreateOrUpdateRequest {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SchedulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3399,16 +3324,12 @@ export type SchedulesCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SchedulesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SchedulesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SchedulesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SchedulesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -3424,7 +3345,7 @@ export interface SchedulesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SchedulesCreateOrUpdateResponseSystemData =
+const SchedulesCreateOrUpdateResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<SchedulesCreateOrUpdateResponseSystemData>;
 
 export interface SchedulesCreateOrUpdateResponse {
@@ -3439,7 +3360,7 @@ export interface SchedulesCreateOrUpdateResponse {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const SchedulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3461,7 +3382,7 @@ export interface StartVirtualMachineRequest {
   /** The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs. */
   virtualMachineName: string;
 }
-export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3480,7 +3401,7 @@ export const StartVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartVirtualMachineRequest>;
 
 export interface StartVirtualMachineResponse {}
-export const StartVirtualMachineResponse =
+const StartVirtualMachineResponse =
   DeleteLabResponse as any as S.Schema<StartVirtualMachineResponse>;
 
 export interface StopVirtualMachineRequest {
@@ -3493,7 +3414,7 @@ export interface StopVirtualMachineRequest {
   /** The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs. */
   virtualMachineName: string;
 }
-export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
+const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3512,8 +3433,7 @@ export const StopVirtualMachineRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopVirtualMachineRequest>;
 
 export interface StopVirtualMachineResponse {}
-export const StopVirtualMachineResponse =
-  DeleteLabResponse as any as S.Schema<StopVirtualMachineResponse>;
+const StopVirtualMachineResponse = DeleteLabResponse as any as S.Schema<StopVirtualMachineResponse>;
 
 export interface SyncLabGroupRequest {
   /** The ID of the target subscription. */
@@ -3523,7 +3443,7 @@ export interface SyncLabGroupRequest {
   /** The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs. */
   labName: string;
 }
-export const SyncLabGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const SyncLabGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3539,18 +3459,18 @@ export const SyncLabGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncLabGroupRequest" }) as any as S.Schema<SyncLabGroupRequest>;
 
 export interface SyncLabGroupResponse {}
-export const SyncLabGroupResponse = DeleteLabResponse as any as S.Schema<SyncLabGroupResponse>;
+const SyncLabGroupResponse = DeleteLabResponse as any as S.Schema<SyncLabGroupResponse>;
 
 /** Property enabled state. */
 export type ImageUpdatePropertiesEnabledState = "Enabled" | "Disabled";
-export const ImageUpdatePropertiesEnabledState = S.String;
+const ImageUpdatePropertiesEnabledState = S.String;
 
 /** Properties of an image resource update */
 export interface ImageUpdateProperties {
   /** Property enabled state. */
   enabledState?: ImageUpdatePropertiesEnabledState | (string & {});
 }
-export const ImageUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ImageUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledState: S.optional(ImageUpdatePropertiesEnabledState),
   }),
@@ -3568,7 +3488,7 @@ export interface UpdateImageRequest {
   /** Image resource properties */
   properties?: ImageUpdateProperties;
 }
-export const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3591,16 +3511,12 @@ export type UpdateImageResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateImageResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateImageResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateImageResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateImageResponseSystemData {
   /** The identity that created the resource. */
@@ -3616,9 +3532,6 @@ export interface UpdateImageResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateImageResponseSystemData =
-  GetImageResponseSystemData as any as S.Schema<UpdateImageResponseSystemData>;
-
 export interface UpdateImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3631,23 +3544,18 @@ export interface UpdateImageResponse {
   /** Image resource properties */
   properties: ImageProperties;
 }
-export const UpdateImageResponse = GetImageResponse as any as S.Schema<UpdateImageResponse>;
+const UpdateImageResponse = GetImageResponse as any as S.Schema<UpdateImageResponse>;
 
 /** Resource tags. */
 export type UpdateLabRequestTagsList = Array<string>;
-export const UpdateLabRequestTagsList =
+const UpdateLabRequestTagsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<UpdateLabRequestTagsList>;
 
 /** Profile for how to handle shutting down virtual machines. */
 export type LabUpdatePropertiesInputAutoShutdownProfile =
   LabPlanPropertiesDefaultAutoShutdownProfile;
-export const LabUpdatePropertiesInputAutoShutdownProfile =
-  LabPlanPropertiesDefaultAutoShutdownProfile;
-
 /** Connection profile for how users connect to lab virtual machines. */
 export type LabUpdatePropertiesInputConnectionProfile = LabPlanPropertiesDefaultConnectionProfile;
-export const LabUpdatePropertiesInputConnectionProfile = LabPlanPropertiesDefaultConnectionProfile;
-
 /** Properties of a lab resource used for updates. */
 export interface LabUpdatePropertiesInput {
   /** Profile for how to handle shutting down virtual machines. */
@@ -3667,7 +3575,7 @@ export interface LabUpdatePropertiesInput {
   /** The description of the lab. */
   description?: string;
 }
-export const LabUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LabUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoShutdownProfile: S.optional(LabPlanPropertiesDefaultAutoShutdownProfile),
     connectionProfile: S.optional(LabPlanPropertiesDefaultConnectionProfile),
@@ -3692,7 +3600,7 @@ export interface UpdateLabRequest {
   /** Lab resource properties */
   properties?: LabUpdatePropertiesInput;
 }
-export const UpdateLabRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLabRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3711,8 +3619,7 @@ export const UpdateLabRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLabResponseTagsMap =
-  GetLabResponseTagsMap as any as S.Schema<UpdateLabResponseTagsMap>;
+const UpdateLabResponseTagsMap = GetLabResponseTagsMap as any as S.Schema<UpdateLabResponseTagsMap>;
 
 /** The type of identity that created the resource. */
 export type UpdateLabResponseSystemDataCreatedByType =
@@ -3720,16 +3627,12 @@ export type UpdateLabResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateLabResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateLabResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateLabResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateLabResponseSystemData {
   /** The identity that created the resource. */
@@ -3745,7 +3648,7 @@ export interface UpdateLabResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateLabResponseSystemData =
+const UpdateLabResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<UpdateLabResponseSystemData>;
 
 export interface UpdateLabResponse {
@@ -3764,7 +3667,7 @@ export interface UpdateLabResponse {
   /** Lab resource properties */
   properties: LabProperties;
 }
-export const UpdateLabResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLabResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3778,24 +3681,18 @@ export const UpdateLabResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabPlanRequestTagsList = Array<string>;
-export const UpdateLabPlanRequestTagsList =
+const UpdateLabPlanRequestTagsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<UpdateLabPlanRequestTagsList>;
 
 /** Connection profile for how users connect to lab virtual machines. */
 export type LabPlanUpdatePropertiesDefaultConnectionProfile =
   LabPlanPropertiesDefaultConnectionProfile;
-export const LabPlanUpdatePropertiesDefaultConnectionProfile =
-  LabPlanPropertiesDefaultConnectionProfile;
-
 /** Profile for how to handle shutting down virtual machines. */
 export type LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
   LabPlanPropertiesDefaultAutoShutdownProfile;
-export const LabPlanUpdatePropertiesDefaultAutoShutdownProfile =
-  LabPlanPropertiesDefaultAutoShutdownProfile;
-
 /** The allowed regions for the lab creator to use when creating labs using this lab plan. */
 export type LabPlanUpdatePropertiesAllowedRegionsList = Array<string>;
-export const LabPlanUpdatePropertiesAllowedRegionsList =
+const LabPlanUpdatePropertiesAllowedRegionsList =
   ImagePropertiesAvailableRegionsList as any as S.Schema<LabPlanUpdatePropertiesAllowedRegionsList>;
 
 /** Lab plan resource properties for updates */
@@ -3815,7 +3712,7 @@ export interface LabPlanUpdateProperties {
   /** A URL. */
   linkedLmsInstance?: string;
 }
-export const LabPlanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const LabPlanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultConnectionProfile: S.optional(LabPlanPropertiesDefaultConnectionProfile),
     defaultAutoShutdownProfile: S.optional(LabPlanPropertiesDefaultAutoShutdownProfile),
@@ -3829,14 +3726,12 @@ export const LabPlanUpdateProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The identity type. */
 export type UpdateLabPlanRequestIdentityType = "SystemAssigned";
-export const UpdateLabPlanRequestIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface UpdateLabPlanRequestIdentity {
   /** The identity type. */
   type?: UpdateLabPlanRequestIdentityType | (string & {});
 }
-export const UpdateLabPlanRequestIdentity =
+const UpdateLabPlanRequestIdentity =
   LabPlansCreateOrUpdateRequestIdentity as any as S.Schema<UpdateLabPlanRequestIdentity>;
 
 export interface UpdateLabPlanRequest {
@@ -3853,7 +3748,7 @@ export interface UpdateLabPlanRequest {
   /** Identity for the resource. */
   identity?: UpdateLabPlanRequestIdentity;
 }
-export const UpdateLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3873,7 +3768,7 @@ export const UpdateLabPlanRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLabPlanResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLabPlanResponseTagsMap =
+const UpdateLabPlanResponseTagsMap =
   GetLabResponseTagsMap as any as S.Schema<UpdateLabPlanResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -3882,16 +3777,12 @@ export type UpdateLabPlanResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateLabPlanResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateLabPlanResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateLabPlanResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateLabPlanResponseSystemData {
   /** The identity that created the resource. */
@@ -3907,13 +3798,11 @@ export interface UpdateLabPlanResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateLabPlanResponseSystemData =
+const UpdateLabPlanResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<UpdateLabPlanResponseSystemData>;
 
 /** The identity type. */
 export type UpdateLabPlanResponseIdentityType = "SystemAssigned";
-export const UpdateLabPlanResponseIdentityType = S.String;
-
 /** Identity for the resource. */
 export interface UpdateLabPlanResponseIdentity {
   /** The principal ID of resource identity. */
@@ -3923,7 +3812,7 @@ export interface UpdateLabPlanResponseIdentity {
   /** The identity type. */
   type?: UpdateLabPlanResponseIdentityType;
 }
-export const UpdateLabPlanResponseIdentity =
+const UpdateLabPlanResponseIdentity =
   GetLabPlanResponseIdentity as any as S.Schema<UpdateLabPlanResponseIdentity>;
 
 export interface UpdateLabPlanResponse {
@@ -3944,7 +3833,7 @@ export interface UpdateLabPlanResponse {
   /** Identity for the resource. */
   identity?: UpdateLabPlanResponseIdentity;
 }
-export const UpdateLabPlanResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateLabPlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3970,7 +3859,7 @@ export interface ScheduleUpdateProperties {
   /** Notes for this schedule. */
   notes?: string;
 }
-export const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const ScheduleUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startAt: S.optional(S.String),
     stopAt: S.optional(S.String),
@@ -3992,7 +3881,7 @@ export interface UpdateScheduleRequest {
   /** Schedule resource properties */
   properties?: ScheduleUpdateProperties;
 }
-export const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateScheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4015,16 +3904,12 @@ export type UpdateScheduleResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateScheduleResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateScheduleResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateScheduleResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateScheduleResponseSystemData {
   /** The identity that created the resource. */
@@ -4040,9 +3925,6 @@ export interface UpdateScheduleResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateScheduleResponseSystemData =
-  GetImageResponseSystemData as any as S.Schema<UpdateScheduleResponseSystemData>;
-
 export interface UpdateScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4055,15 +3937,14 @@ export interface UpdateScheduleResponse {
   /** Schedule resource properties */
   properties: ScheduleProperties;
 }
-export const UpdateScheduleResponse =
-  GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
+const UpdateScheduleResponse = GetScheduleResponse as any as S.Schema<UpdateScheduleResponse>;
 
 /** User resource properties used for updates. */
 export interface UserUpdateProperties {
   /** The amount of usage quota time the user gets in addition to the lab usage quota. */
   additionalUsageQuota?: string;
 }
-export const UserUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+const UserUpdateProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalUsageQuota: S.optional(S.String),
   }),
@@ -4081,7 +3962,7 @@ export interface UpdateUserRequest {
   /** User resource properties */
   properties?: UserUpdateProperties;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4104,16 +3985,12 @@ export type UpdateUserResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateUserResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateUserResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateUserResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateUserResponseSystemData {
   /** The identity that created the resource. */
@@ -4129,9 +4006,6 @@ export interface UpdateUserResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateUserResponseSystemData =
-  GetImageResponseSystemData as any as S.Schema<UpdateUserResponseSystemData>;
-
 export interface UpdateUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4144,7 +4018,7 @@ export interface UpdateUserResponse {
   /** User resource properties */
   properties: UserProperties;
 }
-export const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
+const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
 
 /** Resource provisioning state. */
 export type UserPropertiesInputProvisioningState =
@@ -4154,12 +4028,10 @@ export type UserPropertiesInputProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Locked";
-export const UserPropertiesInputProvisioningState = S.String;
+const UserPropertiesInputProvisioningState = S.String;
 
 /** Error details of the latest operation failure on this resource */
 export type UserPropertiesInputResourceOperationError = LabPropertiesResourceOperationError;
-export const UserPropertiesInputResourceOperationError = LabPropertiesResourceOperationError;
-
 /** User resource properties */
 export interface UserPropertiesInput {
   /** The amount of usage quota time the user gets in addition to the lab usage quota. */
@@ -4171,7 +4043,7 @@ export interface UserPropertiesInput {
   /** An email address. */
   email: string;
 }
-export const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const UserPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalUsageQuota: S.optional(S.String),
     provisioningState: S.optional(UserPropertiesInputProvisioningState),
@@ -4192,7 +4064,7 @@ export interface UsersCreateOrUpdateRequest {
   /** User resource properties */
   properties: UserPropertiesInput;
 }
-export const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const UsersCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4217,16 +4089,12 @@ export type UsersCreateOrUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UsersCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UsersCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UsersCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UsersCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -4242,7 +4110,7 @@ export interface UsersCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UsersCreateOrUpdateResponseSystemData =
+const UsersCreateOrUpdateResponseSystemData =
   GetImageResponseSystemData as any as S.Schema<UsersCreateOrUpdateResponseSystemData>;
 
 export interface UsersCreateOrUpdateResponse {
@@ -4257,7 +4125,7 @@ export interface UsersCreateOrUpdateResponse {
   /** User resource properties */
   properties: UserProperties;
 }
-export const UsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const UsersCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4279,7 +4147,7 @@ export interface VirtualMachinesReimageRequest {
   /** The ID of the virtual machine that uniquely identifies it within the containing lab. Used in resource URIs. */
   virtualMachineName: string;
 }
-export const VirtualMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
+const VirtualMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4298,7 +4166,7 @@ export const VirtualMachinesReimageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VirtualMachinesReimageRequest>;
 
 export interface VirtualMachinesReimageResponse {}
-export const VirtualMachinesReimageResponse =
+const VirtualMachinesReimageResponse =
   DeleteLabResponse as any as S.Schema<VirtualMachinesReimageResponse>;
 
 export type DeleteLabError = AzureOpError;

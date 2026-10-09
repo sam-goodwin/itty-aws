@@ -17,7 +17,7 @@ export interface ListTeamsRequest {
   /** Whether to return icon paths for each workspace. An icon path represents a URI pointing to the image signifying the workspace. */
   include_icon?: boolean;
 }
-export const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     cursor: S.optional(S.String),
@@ -38,7 +38,7 @@ export interface ListTeamsResponseTeamsItemIcon {
   image_230?: string;
   image_default?: boolean;
 }
-export const ListTeamsResponseTeamsItemIcon = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsResponseTeamsItemIcon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image_34: S.optional(S.String),
     image_44: S.optional(S.String),
@@ -61,7 +61,7 @@ export interface ListTeamsResponseTeamsItem {
   /** Paths to icons */
   icon?: ListTeamsResponseTeamsItemIcon;
 }
-export const ListTeamsResponseTeamsItem = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsResponseTeamsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.String,
@@ -72,7 +72,7 @@ export const ListTeamsResponseTeamsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTeamsResponseTeamsItem>;
 
 export type ListTeamsResponseTeamsList = Array<ListTeamsResponseTeamsItem>;
-export const ListTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
+const ListTeamsResponseTeamsList = /*@__PURE__*/ S.Array(
   ListTeamsResponseTeamsItem,
 ) as any as S.Schema<ListTeamsResponseTeamsList>;
 
@@ -81,7 +81,7 @@ export interface ListTeamsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ListTeamsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -96,7 +96,7 @@ export interface ListTeamsResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListTeamsResponseResponseMetadata;
 }
-export const ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     teams: ListTeamsResponseTeamsList,
@@ -108,7 +108,7 @@ export interface RevokeAuthRequest {
   /** Setting this parameter to `1` triggers a _testing mode_ where the specified token will not actually be revoked. */
   test?: boolean;
 }
-export const RevokeAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     test: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/auth.revoke", code: 200 })),
@@ -119,7 +119,7 @@ export interface RevokeAuthResponse {
   ok: boolean;
   revoked: boolean;
 }
-export const RevokeAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const RevokeAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     revoked: S.Boolean,
@@ -127,7 +127,7 @@ export const RevokeAuthResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RevokeAuthResponse" }) as any as S.Schema<RevokeAuthResponse>;
 
 export interface TestAuthRequest {}
-export const TestAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const TestAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/auth.test", code: 200 })),
 ).annotate({ identifier: "TestAuthRequest" }) as any as S.Schema<TestAuthRequest>;
 
@@ -146,7 +146,7 @@ export interface TestAuthResponse {
   is_enterprise_install?: boolean;
   expires_in?: number | null;
 }
-export const TestAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const TestAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     user_id: S.optional(S.String),

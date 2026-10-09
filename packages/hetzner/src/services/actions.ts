@@ -12,7 +12,7 @@ export interface GetActionRequest {
   /** ID of the Action. */
   id: number;
 }
-export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/actions/{id}", code: 200 })),
@@ -20,7 +20,7 @@ export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetActionResponseActionStatus = "running" | "success" | "error";
-export const GetActionResponseActionStatus = S.String;
+const GetActionResponseActionStatus = S.String;
 
 export interface GetActionResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -28,7 +28,7 @@ export interface GetActionResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const GetActionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const GetActionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -39,7 +39,7 @@ export const GetActionResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =
 
 /** Resources the Action relates to. */
 export type GetActionResponseActionResourcesList = Array<GetActionResponseActionResourcesItem>;
-export const GetActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const GetActionResponseActionResourcesList = /*@__PURE__*/ S.Array(
   GetActionResponseActionResourcesItem,
 ) as any as S.Schema<GetActionResponseActionResourcesList>;
 
@@ -50,7 +50,7 @@ export interface GetActionResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const GetActionResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const GetActionResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -77,7 +77,7 @@ export interface GetActionResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetActionResponseActionError | null;
 }
-export const GetActionResponseAction = /*@__PURE__*/ S.suspend(() =>
+const GetActionResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -93,14 +93,14 @@ export const GetActionResponseAction = /*@__PURE__*/ S.suspend(() =>
 export interface GetActionResponse {
   action: GetActionResponseAction;
 }
-export const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: GetActionResponseAction,
   }),
 ).annotate({ identifier: "GetActionResponse" }) as any as S.Schema<GetActionResponse>;
 
 export type GetActionsRequestIdList = Array<number>;
-export const GetActionsRequestIdList = /*@__PURE__*/ S.Array(
+const GetActionsRequestIdList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<GetActionsRequestIdList>;
 
@@ -108,7 +108,7 @@ export interface GetActionsRequest {
   /** Filter the actions by ID. May be used multiple times. The response will only contain actions matching the specified IDs. */
   id: GetActionsRequestIdList;
 }
-export const GetActionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetActionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GetActionsRequestIdList.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/actions", code: 200 })),
@@ -116,21 +116,17 @@ export const GetActionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Status of the Action. */
 export type GetActionsResponseActionsItemStatus = "running" | "success" | "error";
-export const GetActionsResponseActionsItemStatus = S.String;
+const GetActionsResponseActionsItemStatus = S.String;
 
 export type GetActionsResponseActionsItemResourcesItem = GetActionResponseActionResourcesItem;
-export const GetActionsResponseActionsItemResourcesItem = GetActionResponseActionResourcesItem;
-
 /** Resources the Action relates to. */
 export type GetActionsResponseActionsItemResourcesList =
   Array<GetActionResponseActionResourcesItem>;
-export const GetActionsResponseActionsItemResourcesList =
+const GetActionsResponseActionsItemResourcesList =
   GetActionResponseActionResourcesList as any as S.Schema<GetActionsResponseActionsItemResourcesList>;
 
 /** Error message for the Action if an error occurred, otherwise null. */
 export type GetActionsResponseActionsItemError = GetActionResponseActionError;
-export const GetActionsResponseActionsItemError = GetActionResponseActionError;
-
 export interface GetActionsResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -149,7 +145,7 @@ export interface GetActionsResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: GetActionResponseActionError | null;
 }
-export const GetActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+const GetActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -165,14 +161,14 @@ export const GetActionsResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetActionsResponseActionsItem>;
 
 export type GetActionsResponseActionsList = Array<GetActionsResponseActionsItem>;
-export const GetActionsResponseActionsList = /*@__PURE__*/ S.Array(
+const GetActionsResponseActionsList = /*@__PURE__*/ S.Array(
   GetActionsResponseActionsItem,
 ) as any as S.Schema<GetActionsResponseActionsList>;
 
 export interface GetActionsResponse {
   actions: GetActionsResponseActionsList;
 }
-export const GetActionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetActionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: GetActionsResponseActionsList,
   }),

@@ -55,7 +55,7 @@ export class UnprocessableEntity
 
 /** List of team names within the organization to which to grant access to GitHub Copilot. */
 export type AddCopilotSeatsForTeamsRequestSelectedTeamsList = Array<string>;
-export const AddCopilotSeatsForTeamsRequestSelectedTeamsList = /*@__PURE__*/ S.Array(
+const AddCopilotSeatsForTeamsRequestSelectedTeamsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddCopilotSeatsForTeamsRequestSelectedTeamsList>;
 
@@ -65,7 +65,7 @@ export interface AddCopilotSeatsForTeamsRequest {
   /** List of team names within the organization to which to grant access to GitHub Copilot. */
   selected_teams: AddCopilotSeatsForTeamsRequestSelectedTeamsList;
 }
-export const AddCopilotSeatsForTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCopilotSeatsForTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_teams: AddCopilotSeatsForTeamsRequestSelectedTeamsList,
@@ -77,7 +77,7 @@ export const AddCopilotSeatsForTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddCopilotSeatsForTeamsResponse {
   seats_created: number;
 }
-export const AddCopilotSeatsForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const AddCopilotSeatsForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seats_created: S.Number,
   }),
@@ -87,7 +87,7 @@ export const AddCopilotSeatsForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The usernames of the organization members to be granted access to GitHub Copilot. */
 export type AddCopilotSeatsForUsersRequestSelectedUsernamesList = Array<string>;
-export const AddCopilotSeatsForUsersRequestSelectedUsernamesList =
+const AddCopilotSeatsForUsersRequestSelectedUsernamesList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<AddCopilotSeatsForUsersRequestSelectedUsernamesList>;
 
 export interface AddCopilotSeatsForUsersRequest {
@@ -96,7 +96,7 @@ export interface AddCopilotSeatsForUsersRequest {
   /** The usernames of the organization members to be granted access to GitHub Copilot. */
   selected_usernames: AddCopilotSeatsForUsersRequestSelectedUsernamesList;
 }
-export const AddCopilotSeatsForUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const AddCopilotSeatsForUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_usernames: AddCopilotSeatsForUsersRequestSelectedUsernamesList,
@@ -108,20 +108,19 @@ export const AddCopilotSeatsForUsersRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AddCopilotSeatsForUsersResponse {
   seats_created: number;
 }
-export const AddCopilotSeatsForUsersResponse =
+const AddCopilotSeatsForUsersResponse =
   AddCopilotSeatsForTeamsResponse as any as S.Schema<AddCopilotSeatsForUsersResponse>;
 
 /** List of organization logins within the enterprise to enable Copilot cloud agent for. */
 export type AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList = Array<string>;
-export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList>;
+const AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList>;
 
 /** The values of the custom property to match. */
 export type AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   Array<string>;
-export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
+const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
 
 export interface AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem {
@@ -130,7 +129,7 @@ export interface AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPrope
   /** The values of the custom property to match. */
   values: AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList;
 }
-export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem =
+const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       property_name: S.String,
@@ -143,7 +142,7 @@ export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertie
 /** List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy. */
 export type AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
   Array<AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem>;
-export const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
+const AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
   /*@__PURE__*/ S.Array(
     AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesItem,
   ) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesList>;
@@ -156,7 +155,7 @@ export interface AddOrganizationsToEnterpriseCodingAgentPolicyRequest {
   /** List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy. */
   custom_properties?: AddOrganizationsToEnterpriseCodingAgentPolicyRequestCustomPropertiesList;
 }
-export const AddOrganizationsToEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrganizationsToEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     organizations: S.optional(
@@ -177,7 +176,7 @@ export const AddOrganizationsToEnterpriseCodingAgentPolicyRequest = /*@__PURE__*
 }) as any as S.Schema<AddOrganizationsToEnterpriseCodingAgentPolicyRequest>;
 
 export interface AddOrganizationsToEnterpriseCodingAgentPolicyResponse {}
-export const AddOrganizationsToEnterpriseCodingAgentPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const AddOrganizationsToEnterpriseCodingAgentPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AddOrganizationsToEnterpriseCodingAgentPolicyResponse",
@@ -185,7 +184,7 @@ export const AddOrganizationsToEnterpriseCodingAgentPolicyResponse = /*@__PURE__
 
 /** The names of teams from which to revoke access to GitHub Copilot. */
 export type CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList = Array<string>;
-export const CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList =
+const CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList>;
 
 export interface CancelCopilotSeatAssignmentForTeamsRequest {
@@ -194,7 +193,7 @@ export interface CancelCopilotSeatAssignmentForTeamsRequest {
   /** The names of teams from which to revoke access to GitHub Copilot. */
   selected_teams: CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList;
 }
-export const CancelCopilotSeatAssignmentForTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCopilotSeatAssignmentForTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_teams: CancelCopilotSeatAssignmentForTeamsRequestSelectedTeamsList,
@@ -208,7 +207,7 @@ export const CancelCopilotSeatAssignmentForTeamsRequest = /*@__PURE__*/ S.suspen
 export interface CancelCopilotSeatAssignmentForTeamsResponse {
   seats_cancelled: number;
 }
-export const CancelCopilotSeatAssignmentForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelCopilotSeatAssignmentForTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seats_cancelled: S.Number,
   }),
@@ -218,7 +217,7 @@ export const CancelCopilotSeatAssignmentForTeamsResponse = /*@__PURE__*/ S.suspe
 
 /** The usernames of the organization members for which to revoke access to GitHub Copilot. */
 export type CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList = Array<string>;
-export const CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList =
+const CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList =
   AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList>;
 
 export interface CancelCopilotSeatAssignmentForUsersRequest {
@@ -227,7 +226,7 @@ export interface CancelCopilotSeatAssignmentForUsersRequest {
   /** The usernames of the organization members for which to revoke access to GitHub Copilot. */
   selected_usernames: CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList;
 }
-export const CancelCopilotSeatAssignmentForUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelCopilotSeatAssignmentForUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     selected_usernames: CancelCopilotSeatAssignmentForUsersRequestSelectedUsernamesList,
@@ -241,14 +240,14 @@ export const CancelCopilotSeatAssignmentForUsersRequest = /*@__PURE__*/ S.suspen
 export interface CancelCopilotSeatAssignmentForUsersResponse {
   seats_cancelled: number;
 }
-export const CancelCopilotSeatAssignmentForUsersResponse =
+const CancelCopilotSeatAssignmentForUsersResponse =
   CancelCopilotSeatAssignmentForTeamsResponse as any as S.Schema<CancelCopilotSeatAssignmentForUsersResponse>;
 
 export interface CopilotContentExclusionForOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const CopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot/content_exclusion", code: 200 })),
@@ -257,21 +256,21 @@ export const CopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CopilotContentExclusionForOrganizationRequest>;
 
 export type CopilotOrganizationContentExclusionDetailsValueList = Array<string>;
-export const CopilotOrganizationContentExclusionDetailsValueList =
+const CopilotOrganizationContentExclusionDetailsValueList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotOrganizationContentExclusionDetailsValueList>;
 
 /** List all Copilot Content Exclusion rules for an organization. */
 export type CopilotOrganizationContentExclusionDetails = {
   [key: string]: CopilotOrganizationContentExclusionDetailsValueList | undefined;
 };
-export const CopilotOrganizationContentExclusionDetails = /*@__PURE__*/ S.Record(
+const CopilotOrganizationContentExclusionDetails = /*@__PURE__*/ S.Record(
   S.String,
   CopilotOrganizationContentExclusionDetailsValueList,
 ) as any as S.Schema<CopilotOrganizationContentExclusionDetails>;
 
 export type CopilotContentExclusionForOrganizationResponse =
   CopilotOrganizationContentExclusionDetails;
-export const CopilotContentExclusionForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const CopilotContentExclusionForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   CopilotOrganizationContentExclusionDetails.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CopilotContentExclusionForOrganizationResponse",
@@ -283,7 +282,7 @@ export interface CopilotEnterpriseOneDayUsageMetricsRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotEnterpriseOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotEnterpriseOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -300,7 +299,7 @@ export const CopilotEnterpriseOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspen
 
 /** The URLs to download the Copilot usage metrics report for the enterprise/organization for the specified day. */
 export type CopilotUsageMetrics1DayReportDownloadLinksList = Array<string>;
-export const CopilotUsageMetrics1DayReportDownloadLinksList =
+const CopilotUsageMetrics1DayReportDownloadLinksList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotUsageMetrics1DayReportDownloadLinksList>;
 
 /** Links to download the Copilot usage metrics report for an enterprise/organization for a specific day. */
@@ -310,7 +309,7 @@ export interface CopilotUsageMetrics1DayReport {
   /** The day of the report in `YYYY-MM-DD` format. */
   report_day: string;
 }
-export const CopilotUsageMetrics1DayReport = /*@__PURE__*/ S.suspend(() =>
+const CopilotUsageMetrics1DayReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     download_links: CopilotUsageMetrics1DayReportDownloadLinksList,
     report_day: S.String,
@@ -325,7 +324,7 @@ export interface CopilotEnterpriseReposOneDayReportRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotEnterpriseReposOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotEnterpriseReposOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -344,7 +343,7 @@ export interface CopilotEnterpriseUsageMetricsRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
-export const CopilotEnterpriseUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotEnterpriseUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
   }).pipe(
@@ -360,7 +359,7 @@ export const CopilotEnterpriseUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The URLs to download the latest Copilot usage metrics report for the enterprise/organization. */
 export type CopilotUsageMetrics28DayReportDownloadLinksList = Array<string>;
-export const CopilotUsageMetrics28DayReportDownloadLinksList =
+const CopilotUsageMetrics28DayReportDownloadLinksList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<CopilotUsageMetrics28DayReportDownloadLinksList>;
 
 /** Links to download the latest Copilot usage metrics report for an enterprise/organization. */
@@ -372,7 +371,7 @@ export interface CopilotUsageMetrics28DayReport {
   /** The end date of the report period in `YYYY-MM-DD` format. */
   report_end_day: string;
 }
-export const CopilotUsageMetrics28DayReport = /*@__PURE__*/ S.suspend(() =>
+const CopilotUsageMetrics28DayReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     download_links: CopilotUsageMetrics28DayReportDownloadLinksList,
     report_start_day: S.String,
@@ -388,7 +387,7 @@ export interface CopilotEnterpriseUserTeamsOneDayReportRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotEnterpriseUserTeamsOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotEnterpriseUserTeamsOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -409,7 +408,7 @@ export interface CopilotOrganizationOneDayUsageMetricsRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotOrganizationOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -430,7 +429,7 @@ export interface CopilotOrganizationReposOneDayReportRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotOrganizationReposOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationReposOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -445,7 +444,7 @@ export interface CopilotOrganizationUsageMetricsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const CopilotOrganizationUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -465,7 +464,7 @@ export interface CopilotOrganizationUsersOneDayUsageMetricsRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotOrganizationUsersOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationUsersOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -480,7 +479,7 @@ export interface CopilotOrganizationUsersUsageMetricsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const CopilotOrganizationUsersUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationUsersUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -500,7 +499,7 @@ export interface CopilotOrganizationUserTeamsOneDayReportRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotOrganizationUserTeamsOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationUserTeamsOneDayReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -521,7 +520,7 @@ export interface CopilotUsersOneDayUsageMetricsRequest {
   /** The day to request data for, in `YYYY-MM-DD` format. */
   day: string;
 }
-export const CopilotUsersOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotUsersOneDayUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     day: S.String.pipe(T.Query()),
@@ -540,7 +539,7 @@ export interface CopilotUsersUsageMetricsRequest {
   /** The slug version of the enterprise name. */
   enterprise: string;
 }
-export const CopilotUsersUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const CopilotUsersUsageMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
   }).pipe(
@@ -560,25 +559,24 @@ export interface DisableCopilotCodingAgentForRepositoryInOrganizationRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const DisableCopilotCodingAgentForRepositoryInOrganizationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      repository_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}",
-        code: 200,
-      }),
-    ),
+const DisableCopilotCodingAgentForRepositoryInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    repository_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DisableCopilotCodingAgentForRepositoryInOrganizationRequest",
 }) as any as S.Schema<DisableCopilotCodingAgentForRepositoryInOrganizationRequest>;
 
 export interface DisableCopilotCodingAgentForRepositoryInOrganizationResponse {}
-export const DisableCopilotCodingAgentForRepositoryInOrganizationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
+const DisableCopilotCodingAgentForRepositoryInOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DisableCopilotCodingAgentForRepositoryInOrganizationResponse",
 }) as any as S.Schema<DisableCopilotCodingAgentForRepositoryInOrganizationResponse>;
@@ -589,24 +587,23 @@ export interface EnableCopilotCodingAgentForRepositoryInOrganizationRequest {
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-export const EnableCopilotCodingAgentForRepositoryInOrganizationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      org: S.String.pipe(T.Label()),
-      repository_id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}",
-        code: 200,
-      }),
-    ),
+const EnableCopilotCodingAgentForRepositoryInOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    org: S.String.pipe(T.Label()),
+    repository_id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "EnableCopilotCodingAgentForRepositoryInOrganizationRequest",
 }) as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationRequest>;
 
 export interface EnableCopilotCodingAgentForRepositoryInOrganizationResponse {}
-export const EnableCopilotCodingAgentForRepositoryInOrganizationResponse =
+const EnableCopilotCodingAgentForRepositoryInOrganizationResponse =
   DisableCopilotCodingAgentForRepositoryInOrganizationResponse as any as S.Schema<EnableCopilotCodingAgentForRepositoryInOrganizationResponse>;
 
 export interface GetCopilotCloudAgentConfigurationRequest {
@@ -615,7 +612,7 @@ export interface GetCopilotCloudAgentConfigurationRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetCopilotCloudAgentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotCloudAgentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -634,7 +631,7 @@ export const GetCopilotCloudAgentConfigurationRequest = /*@__PURE__*/ S.suspend(
 export type GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap = {
   [key: string]: unknown | undefined;
 };
-export const GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap = /*@__PURE__*/ S.Record(
+const GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap>;
@@ -650,7 +647,7 @@ export interface GetCopilotCloudAgentConfigurationResponseEnabledTools {
   /** Whether the dependency vulnerability checks tool is enabled for the Copilot cloud agent. */
   dependency_vulnerability_checks: boolean;
 }
-export const GetCopilotCloudAgentConfigurationResponseEnabledTools = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotCloudAgentConfigurationResponseEnabledTools = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codeql: S.Boolean,
     copilot_code_review: S.Boolean,
@@ -663,7 +660,7 @@ export const GetCopilotCloudAgentConfigurationResponseEnabledTools = /*@__PURE__
 
 /** A list of custom allowlist entries, as hosts or URLs, that the firewall will allow the Copilot cloud agent to access. */
 export type GetCopilotCloudAgentConfigurationResponseCustomAllowlistList = Array<string>;
-export const GetCopilotCloudAgentConfigurationResponseCustomAllowlistList =
+const GetCopilotCloudAgentConfigurationResponseCustomAllowlistList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<GetCopilotCloudAgentConfigurationResponseCustomAllowlistList>;
 
 export interface GetCopilotCloudAgentConfigurationResponse {
@@ -684,7 +681,7 @@ export interface GetCopilotCloudAgentConfigurationResponse {
   /** Whether write access is required for automation triggers. When true, automations will only run if the user triggering the event has write access to the repository. When false, users can create automations that listen for events triggered by users without write access. */
   require_write_access_for_automation_triggers: boolean;
 }
-export const GetCopilotCloudAgentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotCloudAgentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mcp_configuration: S.NullOr(GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap),
     enabled_tools: GetCopilotCloudAgentConfigurationResponseEnabledTools,
@@ -703,7 +700,7 @@ export interface GetCopilotCodingAgentPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(
@@ -718,7 +715,7 @@ export type GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositor
   | "all"
   | "selected"
   | "none";
-export const GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositories = S.String;
+const GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositories = S.String;
 
 export interface GetCopilotCodingAgentPermissionsOrganizationResponse {
   /** The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`. */
@@ -726,7 +723,7 @@ export interface GetCopilotCodingAgentPermissionsOrganizationResponse {
   /** The URL for the selected repositories endpoint. Only present when `enabled_repositories` is `selected`. */
   selected_repositories_url?: string;
 }
-export const GetCopilotCodingAgentPermissionsOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotCodingAgentPermissionsOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled_repositories: GetCopilotCodingAgentPermissionsOrganizationResponseEnabledRepositories,
     selected_repositories_url: S.optional(S.String),
@@ -739,7 +736,7 @@ export interface GetCopilotOrganizationDetailsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-export const GetCopilotOrganizationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotOrganizationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/copilot/billing", code: 200 })),
@@ -762,7 +759,7 @@ export interface CopilotOrganizationSeatBreakdown {
   /** The number of seats that have not used Copilot during the current billing cycle. */
   inactive_this_cycle?: number;
 }
-export const CopilotOrganizationSeatBreakdown = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationSeatBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
     added_this_cycle: S.optional(S.Number),
@@ -777,19 +774,19 @@ export const CopilotOrganizationSeatBreakdown = /*@__PURE__*/ S.suspend(() =>
 
 /** The organization policy for allowing or blocking suggestions matching public code (duplication detection filter). */
 export type CopilotOrganizationDetailsPublicCodeSuggestions = "allow" | "block" | "unconfigured";
-export const CopilotOrganizationDetailsPublicCodeSuggestions = S.String;
+const CopilotOrganizationDetailsPublicCodeSuggestions = S.String;
 
 /** The organization policy for allowing or disallowing Copilot Chat in the IDE. */
 export type CopilotOrganizationDetailsIdeChat = "enabled" | "disabled" | "unconfigured";
-export const CopilotOrganizationDetailsIdeChat = S.String;
+const CopilotOrganizationDetailsIdeChat = S.String;
 
 /** The organization policy for allowing or disallowing Copilot features on GitHub.com. */
 export type CopilotOrganizationDetailsPlatformChat = "enabled" | "disabled" | "unconfigured";
-export const CopilotOrganizationDetailsPlatformChat = S.String;
+const CopilotOrganizationDetailsPlatformChat = S.String;
 
 /** The organization policy for allowing or disallowing Copilot CLI. */
 export type CopilotOrganizationDetailsCli = "enabled" | "disabled" | "unconfigured";
-export const CopilotOrganizationDetailsCli = S.String;
+const CopilotOrganizationDetailsCli = S.String;
 
 /** The mode of assigning new seats. */
 export type CopilotOrganizationDetailsSeatManagementSetting =
@@ -797,11 +794,11 @@ export type CopilotOrganizationDetailsSeatManagementSetting =
   | "assign_selected"
   | "disabled"
   | "unconfigured";
-export const CopilotOrganizationDetailsSeatManagementSetting = S.String;
+const CopilotOrganizationDetailsSeatManagementSetting = S.String;
 
 /** The Copilot plan of the organization, or the parent enterprise, when applicable. */
 export type CopilotOrganizationDetailsPlanType = "business" | "enterprise";
-export const CopilotOrganizationDetailsPlanType = S.String;
+const CopilotOrganizationDetailsPlanType = S.String;
 
 /** Information about the seat breakdown and policies set for an organization with a Copilot Business or Copilot Enterprise subscription. */
 export interface CopilotOrganizationDetails {
@@ -819,7 +816,7 @@ export interface CopilotOrganizationDetails {
   /** The Copilot plan of the organization, or the parent enterprise, when applicable. */
   plan_type?: CopilotOrganizationDetailsPlanType;
 }
-export const CopilotOrganizationDetails = /*@__PURE__*/ S.suspend(() =>
+const CopilotOrganizationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seat_breakdown: CopilotOrganizationSeatBreakdown,
     public_code_suggestions: CopilotOrganizationDetailsPublicCodeSuggestions,
@@ -839,7 +836,7 @@ export interface GetCopilotSeatDetailsForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
 }
-export const GetCopilotSeatDetailsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCopilotSeatDetailsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     username: S.String.pipe(T.Label()),
@@ -873,7 +870,7 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
+const NullableSimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -915,7 +912,7 @@ export interface NullableOrganizationSimple {
   avatar_url: string;
   description: string | null;
 }
-export const NullableOrganizationSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableOrganizationSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     login: S.String,
     id: S.Number,
@@ -941,28 +938,12 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-export const TeamPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pull: S.Boolean,
-    triage: S.Boolean,
-    push: S.Boolean,
-    maintain: S.Boolean,
-    admin: S.Boolean,
-  }),
-).annotate({ identifier: "TeamPermissions" }) as any as S.Schema<TeamPermissions>;
-
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-export const TeamType = S.String;
-
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-export const TeamAccessSource = S.String;
-
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-export const NullableTeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -993,27 +974,6 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-export const NullableTeamSimple = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    members_url: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    permission: S.String,
-    privacy: S.optional(S.String),
-    notification_setting: S.optional(S.String),
-    html_url: S.String,
-    repositories_url: S.String,
-    slug: S.String,
-    ldap_dn: S.optional(S.String),
-    type: NullableTeamSimpleType,
-    organization_id: S.optional(S.Number),
-    enterprise_id: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NullableTeamSimple" }) as any as S.Schema<NullableTeamSimple>;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -1039,33 +999,8 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-export const Team = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    description: S.NullOr(S.String),
-    privacy: S.optional(S.String),
-    notification_setting: S.optional(S.String),
-    permission: S.String,
-    permissions: S.optional(TeamPermissions),
-    url: S.String,
-    html_url: S.String,
-    members_url: S.String,
-    repositories_url: S.String,
-    type: TeamType,
-    access_source: S.optional(TeamAccessSource),
-    organization_id: S.optional(S.Number),
-    enterprise_id: S.optional(S.Number),
-    parent: S.NullOr(NullableTeamSimple),
-  }),
-).annotate({ identifier: "Team" }) as any as S.Schema<Team>;
-
 /** Whether team members will receive notifications when the team is mentioned. */
 export type EnterpriseTeamNotificationSetting = "notifications_enabled" | "notifications_disabled";
-export const EnterpriseTeamNotificationSetting = S.String;
-
 /** Group of enterprise owners and/or members */
 export interface EnterpriseTeam {
   id: number;
@@ -1086,33 +1021,14 @@ export interface EnterpriseTeam {
   /** Whether team members will receive notifications when the team is mentioned. */
   notification_setting?: EnterpriseTeamNotificationSetting;
 }
-export const EnterpriseTeam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    description: S.optional(S.String),
-    slug: S.String,
-    url: S.String,
-    sync_to_organizations: S.optional(S.String),
-    organization_selection_type: S.optional(S.String),
-    group_id: S.NullOr(S.String),
-    group_name: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    members_url: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    notification_setting: S.optional(EnterpriseTeamNotificationSetting),
-  }),
-).annotate({ identifier: "EnterpriseTeam" }) as any as S.Schema<EnterpriseTeam>;
-
 /** The team through which the assignee is granted access to GitHub Copilot, if applicable. */
 export type CopilotSeatDetailsAssigningTeam = Team | EnterpriseTeam;
-export const CopilotSeatDetailsAssigningTeam =
+const CopilotSeatDetailsAssigningTeam =
   S.Unknown as any as S.Schema<CopilotSeatDetailsAssigningTeam>;
 
 /** The Copilot plan of the organization, or the parent enterprise, when applicable. */
 export type CopilotSeatDetailsPlanType = "business" | "enterprise" | "unknown";
-export const CopilotSeatDetailsPlanType = S.String;
+const CopilotSeatDetailsPlanType = S.String;
 
 /** Information about a Copilot Business seat assignment for a user, team, or organization. */
 export interface CopilotSeatDetails {
@@ -1135,7 +1051,7 @@ export interface CopilotSeatDetails {
   /** The Copilot plan of the organization, or the parent enterprise, when applicable. */
   plan_type?: CopilotSeatDetailsPlanType;
 }
-export const CopilotSeatDetails = /*@__PURE__*/ S.suspend(() =>
+const CopilotSeatDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignee: S.optional(S.NullOr(NullableSimpleUser)),
     organization: S.optional(S.NullOr(NullableOrganizationSimple)),
@@ -1158,8 +1074,8 @@ export interface ListCopilotCodingAgentSelectedRepositoriesForOrganizationReques
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
       per_page: S.optional(S.Number.pipe(T.Query())),
@@ -1171,21 +1087,19 @@ export const ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
-  }) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>;
+).annotate({
+  identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
+}) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>;
 
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
-export const SimpleUser = NullableSimpleUser;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   AddCopilotSeatsForTeamsRequestSelectedTeamsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -1194,7 +1108,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -1214,7 +1128,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1231,7 +1145,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -1242,13 +1156,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -1257,98 +1171,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -1358,7 +1256,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -1373,16 +1271,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -1404,7 +1301,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -1427,7 +1324,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap =
+const MinimalRepositoryCustomPropertiesMap =
   GetCopilotCloudAgentConfigurationResponseMcpConfigurationMap as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
 
 /** Minimal Repository */
@@ -1526,7 +1423,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1623,7 +1520,7 @@ export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
 
 export type ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList =
   Array<MinimalRepository>;
-export const ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList =
+const ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList =
   /*@__PURE__*/ S.Array(
     MinimalRepository,
   ) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList>;
@@ -1632,16 +1529,16 @@ export interface ListCopilotCodingAgentSelectedRepositoriesForOrganizationRespon
   total_count: number;
   repositories: ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList;
 }
-export const ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       total_count: S.Number,
       repositories:
         ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponseRepositoriesList,
     }),
-  ).annotate({
-    identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
-  }) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>;
+).annotate({
+  identifier: "ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
+}) as any as S.Schema<ListCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>;
 
 export interface ListCopilotSeatsRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1651,7 +1548,7 @@ export interface ListCopilotSeatsRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListCopilotSeatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCopilotSeatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1660,7 +1557,7 @@ export const ListCopilotSeatsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCopilotSeatsRequest" }) as any as S.Schema<ListCopilotSeatsRequest>;
 
 export type ListCopilotSeatsResponseSeatsList = Array<CopilotSeatDetails>;
-export const ListCopilotSeatsResponseSeatsList = /*@__PURE__*/ S.Array(
+const ListCopilotSeatsResponseSeatsList = /*@__PURE__*/ S.Array(
   CopilotSeatDetails,
 ) as any as S.Schema<ListCopilotSeatsResponseSeatsList>;
 
@@ -1669,7 +1566,7 @@ export interface ListCopilotSeatsResponse {
   total_seats?: number;
   seats?: ListCopilotSeatsResponseSeatsList;
 }
-export const ListCopilotSeatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCopilotSeatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_seats: S.optional(S.Number),
     seats: S.optional(ListCopilotSeatsResponseSeatsList),
@@ -1679,13 +1576,13 @@ export const ListCopilotSeatsResponse = /*@__PURE__*/ S.suspend(() =>
 /** List of organization logins within the enterprise to disable Copilot cloud agent for. */
 export type RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList =
   Array<string>;
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList =
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList =
   AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList>;
 
 /** The values of the custom property to match. */
 export type RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   Array<string>;
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList =
   AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList>;
 
 export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem {
@@ -1694,7 +1591,7 @@ export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustom
   /** The values of the custom property to match. */
   values: RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItemValuesList;
 }
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem =
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       property_name: S.String,
@@ -1708,7 +1605,7 @@ export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomProp
 /** List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy. */
 export type RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
   Array<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem>;
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList =
   /*@__PURE__*/ S.Array(
     RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesItem,
   ) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList>;
@@ -1721,29 +1618,28 @@ export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest {
   /** List of custom property filters to match organizations. Organizations matching any of the specified property name/value pairs will be included. This is a one-time operation, setting the property on an organization in the future will not automatically update its coding agent policy. */
   custom_properties?: RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList;
 }
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enterprise: S.String.pipe(T.Label()),
-      organizations: S.optional(
-        RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList,
-      ),
-      custom_properties: S.optional(
-        RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/enterprises/{enterprise}/copilot/policies/coding_agent/organizations",
-        code: 200,
-      }),
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enterprise: S.String.pipe(T.Label()),
+    organizations: S.optional(
+      RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestOrganizationsList,
     ),
+    custom_properties: S.optional(
+      RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequestCustomPropertiesList,
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/enterprises/{enterprise}/copilot/policies/coding_agent/organizations",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest",
 }) as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyRequest>;
 
 export interface RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse {}
-export const RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse =
+const RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse =
   DisableCopilotCodingAgentForRepositoryInOrganizationResponse as any as S.Schema<RemoveOrganizationsFromEnterpriseCodingAgentPolicyResponse>;
 
 /** The policy for which repositories can use Copilot cloud agent. Can be one of `all`, `selected`, or `none`. */
@@ -1751,7 +1647,7 @@ export type SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositori
   | "all"
   | "selected"
   | "none";
-export const SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories = S.String;
+const SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories = S.String;
 
 export interface SetCopilotCodingAgentPermissionsOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
@@ -1761,7 +1657,7 @@ export interface SetCopilotCodingAgentPermissionsOrganizationRequest {
     | SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories
     | (string & {});
 }
-export const SetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     enabled_repositories: SetCopilotCodingAgentPermissionsOrganizationRequestEnabledRepositories,
@@ -1773,13 +1669,13 @@ export const SetCopilotCodingAgentPermissionsOrganizationRequest = /*@__PURE__*/
 }) as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationRequest>;
 
 export interface SetCopilotCodingAgentPermissionsOrganizationResponse {}
-export const SetCopilotCodingAgentPermissionsOrganizationResponse =
+const SetCopilotCodingAgentPermissionsOrganizationResponse =
   AddOrganizationsToEnterpriseCodingAgentPolicyResponse as any as S.Schema<SetCopilotCodingAgentPermissionsOrganizationResponse>;
 
 /** List of repository IDs to enable for Copilot cloud agent. */
 export type SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList =
   Array<number>;
-export const SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList =
+const SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList =
   /*@__PURE__*/ S.Array(
     S.Number,
   ) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList>;
@@ -1790,8 +1686,8 @@ export interface SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest
   /** List of repository IDs to enable for Copilot cloud agent. */
   selected_repository_ids: SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequestSelectedRepositoryIdsList;
 }
-export const SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       org: S.String.pipe(T.Label()),
       selected_repository_ids:
@@ -1803,68 +1699,44 @@ export const SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
-  }) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>;
+).annotate({
+  identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest",
+}) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationRequest>;
 
 export interface SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse {}
-export const SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
-  }) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>;
+const SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse",
+}) as any as S.Schema<SetCopilotCodingAgentSelectedRepositoriesForOrganizationResponse>;
 
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList =
   Array<string>;
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList =
-  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList>;
-
 export interface SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1 {
   ifAnyMatch: SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList;
 }
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ifAnyMatch: SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1IfAnyMatchList,
-    }),
-  ).annotate({
-    identifier: "SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1",
-  }) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1>;
-
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList =
   Array<string>;
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList =
-  AddOrganizationsToEnterpriseCodingAgentPolicyRequestOrganizationsList as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList>;
-
 export interface SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2 {
   ifNoneMatch: SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList;
 }
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ifNoneMatch:
-        SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2IfNoneMatchList,
-    }),
-  ).annotate({
-    identifier: "SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2",
-  }) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2>;
-
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueItem =
   | string
   | SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase1
   | SetCopilotContentExclusionForOrganizationRequestBodyValueItemCase2;
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueItem =
+const SetCopilotContentExclusionForOrganizationRequestBodyValueItem =
   S.Unknown as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueItem>;
 
 export type SetCopilotContentExclusionForOrganizationRequestBodyValueList =
   Array<SetCopilotContentExclusionForOrganizationRequestBodyValueItem>;
-export const SetCopilotContentExclusionForOrganizationRequestBodyValueList = /*@__PURE__*/ S.Array(
+const SetCopilotContentExclusionForOrganizationRequestBodyValueList = /*@__PURE__*/ S.Array(
   SetCopilotContentExclusionForOrganizationRequestBodyValueItem,
 ) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyValueList>;
 
 export type SetCopilotContentExclusionForOrganizationRequestBodyMap = {
   [key: string]: SetCopilotContentExclusionForOrganizationRequestBodyValueList | undefined;
 };
-export const SetCopilotContentExclusionForOrganizationRequestBodyMap = /*@__PURE__*/ S.Record(
+const SetCopilotContentExclusionForOrganizationRequestBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   SetCopilotContentExclusionForOrganizationRequestBodyValueList,
 ) as any as S.Schema<SetCopilotContentExclusionForOrganizationRequestBodyMap>;
@@ -1874,7 +1746,7 @@ export interface SetCopilotContentExclusionForOrganizationRequest {
   org: string;
   body: SetCopilotContentExclusionForOrganizationRequestBodyMap;
 }
-export const SetCopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     body: SetCopilotContentExclusionForOrganizationRequestBodyMap.pipe(T.HttpBody()),
@@ -1886,7 +1758,7 @@ export const SetCopilotContentExclusionForOrganizationRequest = /*@__PURE__*/ S.
 export interface SetCopilotContentExclusionForOrganizationResponse {
   message?: string;
 }
-export const SetCopilotContentExclusionForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+const SetCopilotContentExclusionForOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -1900,7 +1772,7 @@ export type SetEnterpriseCodingAgentPolicyRequestPolicyState =
   | "disabled_for_all_orgs"
   | "enabled_for_selected_orgs"
   | "configured_by_org_admins";
-export const SetEnterpriseCodingAgentPolicyRequestPolicyState = S.String;
+const SetEnterpriseCodingAgentPolicyRequestPolicyState = S.String;
 
 export interface SetEnterpriseCodingAgentPolicyRequest {
   /** The slug version of the enterprise name. */
@@ -1908,7 +1780,7 @@ export interface SetEnterpriseCodingAgentPolicyRequest {
   /** The policy state for Copilot cloud agent in the enterprise. Can be one of `enabled_for_all_orgs`, `disabled_for_all_orgs`, `enabled_for_selected_orgs`, or `configured_by_org_admins`. */
   policy_state: SetEnterpriseCodingAgentPolicyRequestPolicyState | (string & {});
 }
-export const SetEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enterprise: S.String.pipe(T.Label()),
     policy_state: SetEnterpriseCodingAgentPolicyRequestPolicyState,
@@ -1924,7 +1796,7 @@ export const SetEnterpriseCodingAgentPolicyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<SetEnterpriseCodingAgentPolicyRequest>;
 
 export interface SetEnterpriseCodingAgentPolicyResponse {}
-export const SetEnterpriseCodingAgentPolicyResponse =
+const SetEnterpriseCodingAgentPolicyResponse =
   AddOrganizationsToEnterpriseCodingAgentPolicyResponse as any as S.Schema<SetEnterpriseCodingAgentPolicyResponse>;
 
 export type AddCopilotSeatsForTeamsError =

@@ -125,7 +125,7 @@ export type Uuid = string;
 export interface CancelContactRequest {
   contactId: string;
 }
-export const CancelContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contactId: S.String.pipe(T.HttpLabel("contactId")) }).pipe(
     T.all(T.Http({ method: "DELETE", uri: "/contact/{contactId}" }), svc, auth, proto, ver, rules),
   ),
@@ -135,37 +135,35 @@ export interface ContactIdResponse {
   contactId?: string;
   versionId?: number;
 }
-export const ContactIdResponse = /*@__PURE__*/ S.suspend(() =>
+const ContactIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contactId: S.optional(S.String), versionId: S.optional(S.Number) }),
 ).annotate({ identifier: "ContactIdResponse" }) as any as S.Schema<ContactIdResponse>;
 export type SafeName = string;
 export type FrequencyUnits = "GHz" | "MHz" | "kHz" | (string & {});
-export const FrequencyUnits = S.String;
+const FrequencyUnits = S.String;
 
 export interface Frequency {
   value: number;
   units: FrequencyUnits;
 }
-export const Frequency = /*@__PURE__*/ S.suspend(() =>
+const Frequency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, units: FrequencyUnits }),
 ).annotate({ identifier: "Frequency" }) as any as S.Schema<Frequency>;
 export type BandwidthUnits = "GHz" | "MHz" | "kHz" | (string & {});
-export const BandwidthUnits = S.String;
-
 export interface FrequencyBandwidth {
   value: number;
   units: BandwidthUnits;
 }
-export const FrequencyBandwidth = Frequency as any as S.Schema<FrequencyBandwidth>;
+const FrequencyBandwidth = Frequency as any as S.Schema<FrequencyBandwidth>;
 export type Polarization = "RIGHT_HAND" | "LEFT_HAND" | "NONE" | (string & {});
-export const Polarization = S.String;
+const Polarization = S.String;
 
 export interface SpectrumConfig {
   centerFrequency: Frequency;
   bandwidth: FrequencyBandwidth;
   polarization?: Polarization;
 }
-export const SpectrumConfig = /*@__PURE__*/ S.suspend(() =>
+const SpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     centerFrequency: Frequency,
     bandwidth: FrequencyBandwidth,
@@ -175,42 +173,42 @@ export const SpectrumConfig = /*@__PURE__*/ S.suspend(() =>
 export interface AntennaDownlinkConfig {
   spectrumConfig: SpectrumConfig;
 }
-export const AntennaDownlinkConfig = /*@__PURE__*/ S.suspend(() =>
+const AntennaDownlinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spectrumConfig: SpectrumConfig }),
 ).annotate({ identifier: "AntennaDownlinkConfig" }) as any as S.Schema<AntennaDownlinkConfig>;
 export type Criticality = "REQUIRED" | "PREFERRED" | "REMOVED" | (string & {});
-export const Criticality = S.String;
+const Criticality = S.String;
 
 export interface TrackingConfig {
   autotrack: Criticality;
 }
-export const TrackingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autotrack: Criticality }),
-).annotate({ identifier: "TrackingConfig" }) as any as S.Schema<TrackingConfig>;
+const TrackingConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ autotrack: Criticality })).annotate(
+  { identifier: "TrackingConfig" },
+) as any as S.Schema<TrackingConfig>;
 export interface DataflowEndpointConfig {
   dataflowEndpointName: string;
   dataflowEndpointRegion?: string;
 }
-export const DataflowEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const DataflowEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataflowEndpointName: S.String, dataflowEndpointRegion: S.optional(S.String) }),
 ).annotate({ identifier: "DataflowEndpointConfig" }) as any as S.Schema<DataflowEndpointConfig>;
 export type JsonString = string;
 export interface DemodulationConfig {
   unvalidatedJSON: string;
 }
-export const DemodulationConfig = /*@__PURE__*/ S.suspend(() =>
+const DemodulationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ unvalidatedJSON: S.String }),
 ).annotate({ identifier: "DemodulationConfig" }) as any as S.Schema<DemodulationConfig>;
 export interface DecodeConfig {
   unvalidatedJSON: string;
 }
-export const DecodeConfig = DemodulationConfig as any as S.Schema<DecodeConfig>;
+const DecodeConfig = DemodulationConfig as any as S.Schema<DecodeConfig>;
 export interface AntennaDownlinkDemodDecodeConfig {
   spectrumConfig: SpectrumConfig;
   demodulationConfig: DemodulationConfig;
   decodeConfig: DecodeConfig;
 }
-export const AntennaDownlinkDemodDecodeConfig = /*@__PURE__*/ S.suspend(() =>
+const AntennaDownlinkDemodDecodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spectrumConfig: SpectrumConfig,
     demodulationConfig: DemodulationConfig,
@@ -223,23 +221,21 @@ export interface UplinkSpectrumConfig {
   centerFrequency: Frequency;
   polarization?: Polarization;
 }
-export const UplinkSpectrumConfig = /*@__PURE__*/ S.suspend(() =>
+const UplinkSpectrumConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ centerFrequency: Frequency, polarization: S.optional(Polarization) }),
 ).annotate({ identifier: "UplinkSpectrumConfig" }) as any as S.Schema<UplinkSpectrumConfig>;
 export type EirpUnits = "dBW" | (string & {});
-export const EirpUnits = S.String;
-
 export interface Eirp {
   value: number;
   units: EirpUnits;
 }
-export const Eirp = Frequency as any as S.Schema<Eirp>;
+const Eirp = Frequency as any as S.Schema<Eirp>;
 export interface AntennaUplinkConfig {
   transmitDisabled?: boolean;
   spectrumConfig: UplinkSpectrumConfig;
   targetEirp: Eirp;
 }
-export const AntennaUplinkConfig = /*@__PURE__*/ S.suspend(() =>
+const AntennaUplinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transmitDisabled: S.optional(S.Boolean),
     spectrumConfig: UplinkSpectrumConfig,
@@ -251,7 +247,7 @@ export interface UplinkEchoConfig {
   enabled: boolean;
   antennaUplinkConfigArn: string;
 }
-export const UplinkEchoConfig = /*@__PURE__*/ S.suspend(() =>
+const UplinkEchoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ enabled: S.Boolean, antennaUplinkConfigArn: S.String }),
 ).annotate({ identifier: "UplinkEchoConfig" }) as any as S.Schema<UplinkEchoConfig>;
 export type BucketArn = string;
@@ -262,29 +258,29 @@ export interface S3RecordingConfig {
   roleArn: string;
   prefix?: string;
 }
-export const S3RecordingConfig = /*@__PURE__*/ S.suspend(() =>
+const S3RecordingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketArn: S.String, roleArn: S.String, prefix: S.optional(S.String) }),
 ).annotate({ identifier: "S3RecordingConfig" }) as any as S.Schema<S3RecordingConfig>;
 export type TelemetrySinkType = "KINESIS_DATA_STREAM" | (string & {});
-export const TelemetrySinkType = S.String;
+const TelemetrySinkType = S.String;
 
 export type KinesisDataStreamArn = string;
 export interface KinesisDataStreamData {
   kinesisRoleArn: string;
   kinesisDataStreamArn: string;
 }
-export const KinesisDataStreamData = /*@__PURE__*/ S.suspend(() =>
+const KinesisDataStreamData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kinesisRoleArn: S.String, kinesisDataStreamArn: S.String }),
 ).annotate({ identifier: "KinesisDataStreamData" }) as any as S.Schema<KinesisDataStreamData>;
 export type TelemetrySinkData = { kinesisDataStreamData: KinesisDataStreamData };
-export const TelemetrySinkData = /*@__PURE__*/ S.Union([
+const TelemetrySinkData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ kinesisDataStreamData: KinesisDataStreamData }),
 ]);
 export interface TelemetrySinkConfig {
   telemetrySinkType: TelemetrySinkType;
   telemetrySinkData: TelemetrySinkData;
 }
-export const TelemetrySinkConfig = /*@__PURE__*/ S.suspend(() =>
+const TelemetrySinkConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ telemetrySinkType: TelemetrySinkType, telemetrySinkData: TelemetrySinkData }),
 ).annotate({ identifier: "TelemetrySinkConfig" }) as any as S.Schema<TelemetrySinkConfig>;
 export type ConfigTypeData =
@@ -368,7 +364,7 @@ export type ConfigTypeData =
       s3RecordingConfig?: never;
       telemetrySinkConfig: TelemetrySinkConfig;
     };
-export const ConfigTypeData = /*@__PURE__*/ S.Union([
+const ConfigTypeData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ antennaDownlinkConfig: AntennaDownlinkConfig }),
   /*@__PURE__*/ S.Struct({ trackingConfig: TrackingConfig }),
   /*@__PURE__*/ S.Struct({ dataflowEndpointConfig: DataflowEndpointConfig }),
@@ -379,13 +375,13 @@ export const ConfigTypeData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ telemetrySinkConfig: TelemetrySinkConfig }),
 ]);
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateConfigRequest {
   name: string;
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, configData: ConfigTypeData, tags: S.optional(TagsMap) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/config" }), svc, auth, proto, ver, rules),
   ),
@@ -400,14 +396,14 @@ export type ConfigCapabilityType =
   | "s3-recording"
   | "telemetry-sink"
   | (string & {});
-export const ConfigCapabilityType = S.String;
+const ConfigCapabilityType = S.String;
 
 export interface ConfigIdResponse {
   configId?: string;
   configType?: ConfigCapabilityType;
   configArn?: string;
 }
-export const ConfigIdResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.optional(S.String),
     configType: S.optional(ConfigCapabilityType),
@@ -415,22 +411,22 @@ export const ConfigIdResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConfigIdResponse" }) as any as S.Schema<ConfigIdResponse>;
 export type SubnetList = string[];
-export const SubnetList = /*@__PURE__*/ S.Array(S.String);
+const SubnetList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
-export const SecurityGroupIdList = SubnetList as any as S.Schema<SecurityGroupIdList>;
+const SecurityGroupIdList = SubnetList as any as S.Schema<SecurityGroupIdList>;
 export interface SecurityDetails {
   subnetIds: string[];
   securityGroupIds: string[];
   roleArn: string;
 }
-export const SecurityDetails = /*@__PURE__*/ S.suspend(() =>
+const SecurityDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ subnetIds: SubnetList, securityGroupIds: SecurityGroupIdList, roleArn: S.String }),
 ).annotate({ identifier: "SecurityDetails" }) as any as S.Schema<SecurityDetails>;
 export interface SocketAddress {
   name: string;
   port: number;
 }
-export const SocketAddress = /*@__PURE__*/ S.suspend(() =>
+const SocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, port: S.Number }),
 ).annotate({ identifier: "SocketAddress" }) as any as S.Schema<SocketAddress>;
 export type EndpointStatus =
@@ -440,7 +436,7 @@ export type EndpointStatus =
   | "deleting"
   | "failed"
   | (string & {});
-export const EndpointStatus = S.String;
+const EndpointStatus = S.String;
 
 export interface DataflowEndpoint {
   name?: string;
@@ -448,7 +444,7 @@ export interface DataflowEndpoint {
   status?: EndpointStatus;
   mtu?: number;
 }
-export const DataflowEndpoint = /*@__PURE__*/ S.suspend(() =>
+const DataflowEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     address: S.optional(SocketAddress),
@@ -460,7 +456,7 @@ export interface ConnectionDetails {
   socketAddress: SocketAddress;
   mtu?: number;
 }
-export const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const ConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ socketAddress: SocketAddress, mtu: S.optional(S.Number) }),
 ).annotate({ identifier: "ConnectionDetails" }) as any as S.Schema<ConnectionDetails>;
 export type IpV4Address = string;
@@ -468,28 +464,28 @@ export interface IntegerRange {
   minimum: number;
   maximum: number;
 }
-export const IntegerRange = /*@__PURE__*/ S.suspend(() =>
+const IntegerRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimum: S.Number, maximum: S.Number }),
 ).annotate({ identifier: "IntegerRange" }) as any as S.Schema<IntegerRange>;
 export interface RangedSocketAddress {
   name: string;
   portRange: IntegerRange;
 }
-export const RangedSocketAddress = /*@__PURE__*/ S.suspend(() =>
+const RangedSocketAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, portRange: IntegerRange }),
 ).annotate({ identifier: "RangedSocketAddress" }) as any as S.Schema<RangedSocketAddress>;
 export interface RangedConnectionDetails {
   socketAddress: RangedSocketAddress;
   mtu?: number;
 }
-export const RangedConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const RangedConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ socketAddress: RangedSocketAddress, mtu: S.optional(S.Number) }),
 ).annotate({ identifier: "RangedConnectionDetails" }) as any as S.Schema<RangedConnectionDetails>;
 export type AgentStatus = "SUCCESS" | "FAILED" | "ACTIVE" | "INACTIVE" | (string & {});
-export const AgentStatus = S.String;
+const AgentStatus = S.String;
 
 export type AuditResults = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const AuditResults = S.String;
+const AuditResults = S.String;
 
 export interface AwsGroundStationAgentEndpoint {
   name: string;
@@ -498,7 +494,7 @@ export interface AwsGroundStationAgentEndpoint {
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
-export const AwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
+const AwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     egressAddress: ConnectionDetails,
@@ -513,14 +509,14 @@ export interface UplinkConnectionDetails {
   ingressAddressAndPort: ConnectionDetails;
   agentIpAndPortAddress: RangedConnectionDetails;
 }
-export const UplinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const UplinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingressAddressAndPort: ConnectionDetails,
     agentIpAndPortAddress: RangedConnectionDetails,
   }),
 ).annotate({ identifier: "UplinkConnectionDetails" }) as any as S.Schema<UplinkConnectionDetails>;
 export type UplinkDataflowDetails = { agentConnectionDetails: UplinkConnectionDetails };
-export const UplinkDataflowDetails = /*@__PURE__*/ S.Union([
+const UplinkDataflowDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ agentConnectionDetails: UplinkConnectionDetails }),
 ]);
 export interface UplinkAwsGroundStationAgentEndpointDetails {
@@ -529,7 +525,7 @@ export interface UplinkAwsGroundStationAgentEndpointDetails {
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
-export const UplinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+const UplinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dataflowDetails: UplinkDataflowDetails,
@@ -543,7 +539,7 @@ export interface DownlinkConnectionDetails {
   agentIpAndPortAddress: RangedConnectionDetails;
   egressAddressAndPort: ConnectionDetails;
 }
-export const DownlinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
+const DownlinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentIpAndPortAddress: RangedConnectionDetails,
     egressAddressAndPort: ConnectionDetails,
@@ -552,7 +548,7 @@ export const DownlinkConnectionDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "DownlinkConnectionDetails",
 }) as any as S.Schema<DownlinkConnectionDetails>;
 export type DownlinkDataflowDetails = { agentConnectionDetails: DownlinkConnectionDetails };
-export const DownlinkDataflowDetails = /*@__PURE__*/ S.Union([
+const DownlinkDataflowDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ agentConnectionDetails: DownlinkConnectionDetails }),
 ]);
 export interface DownlinkAwsGroundStationAgentEndpointDetails {
@@ -561,7 +557,7 @@ export interface DownlinkAwsGroundStationAgentEndpointDetails {
   agentStatus?: AgentStatus;
   auditResults?: AuditResults;
 }
-export const DownlinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ S.suspend(() =>
+const DownlinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dataflowDetails: DownlinkDataflowDetails,
@@ -572,7 +568,7 @@ export const DownlinkAwsGroundStationAgentEndpointDetails = /*@__PURE__*/ S.susp
   identifier: "DownlinkAwsGroundStationAgentEndpointDetails",
 }) as any as S.Schema<DownlinkAwsGroundStationAgentEndpointDetails>;
 export type CapabilityHealth = "HEALTHY" | "UNHEALTHY" | (string & {});
-export const CapabilityHealth = S.String;
+const CapabilityHealth = S.String;
 
 export type CapabilityHealthReason =
   | "NO_REGISTERED_AGENT"
@@ -583,10 +579,10 @@ export type CapabilityHealthReason =
   | "DATAPLANE_FAILURE"
   | "HEALTHY"
   | (string & {});
-export const CapabilityHealthReason = S.String;
+const CapabilityHealthReason = S.String;
 
 export type CapabilityHealthReasonList = CapabilityHealthReason[];
-export const CapabilityHealthReasonList = /*@__PURE__*/ S.Array(CapabilityHealthReason);
+const CapabilityHealthReasonList = /*@__PURE__*/ S.Array(CapabilityHealthReason);
 export interface EndpointDetails {
   securityDetails?: SecurityDetails;
   endpoint?: DataflowEndpoint;
@@ -596,7 +592,7 @@ export interface EndpointDetails {
   healthStatus?: CapabilityHealth;
   healthReasons?: CapabilityHealthReason[];
 }
-export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
+const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     securityDetails: S.optional(SecurityDetails),
     endpoint: S.optional(DataflowEndpoint),
@@ -608,7 +604,7 @@ export const EndpointDetails = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EndpointDetails" }) as any as S.Schema<EndpointDetails>;
 export type EndpointDetailsList = EndpointDetails[];
-export const EndpointDetailsList = /*@__PURE__*/ S.Array(EndpointDetails);
+const EndpointDetailsList = /*@__PURE__*/ S.Array(EndpointDetails);
 export type DataflowEndpointGroupDurationInSeconds = number;
 export interface CreateDataflowEndpointGroupRequest {
   endpointDetails: EndpointDetails[];
@@ -616,7 +612,7 @@ export interface CreateDataflowEndpointGroupRequest {
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
 }
-export const CreateDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointDetails: EndpointDetailsList,
     tags: S.optional(TagsMap),
@@ -631,7 +627,7 @@ export const CreateDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DataflowEndpointGroupIdResponse {
   dataflowEndpointGroupId?: string;
 }
-export const DataflowEndpointGroupIdResponse = /*@__PURE__*/ S.suspend(() =>
+const DataflowEndpointGroupIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataflowEndpointGroupId: S.optional(S.String) }),
 ).annotate({
   identifier: "DataflowEndpointGroupIdResponse",
@@ -640,7 +636,7 @@ export interface UplinkAwsGroundStationAgentEndpoint {
   name: string;
   dataflowDetails: UplinkDataflowDetails;
 }
-export const UplinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
+const UplinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, dataflowDetails: UplinkDataflowDetails }),
 ).annotate({
   identifier: "UplinkAwsGroundStationAgentEndpoint",
@@ -649,7 +645,7 @@ export interface DownlinkAwsGroundStationAgentEndpoint {
   name: string;
   dataflowDetails: DownlinkDataflowDetails;
 }
-export const DownlinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
+const DownlinkAwsGroundStationAgentEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, dataflowDetails: DownlinkDataflowDetails }),
 ).annotate({
   identifier: "DownlinkAwsGroundStationAgentEndpoint",
@@ -663,7 +659,7 @@ export type CreateEndpointDetails =
       uplinkAwsGroundStationAgentEndpoint?: never;
       downlinkAwsGroundStationAgentEndpoint: DownlinkAwsGroundStationAgentEndpoint;
     };
-export const CreateEndpointDetails = /*@__PURE__*/ S.Union([
+const CreateEndpointDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({
     uplinkAwsGroundStationAgentEndpoint: UplinkAwsGroundStationAgentEndpoint,
   }),
@@ -672,14 +668,14 @@ export const CreateEndpointDetails = /*@__PURE__*/ S.Union([
   }),
 ]);
 export type CreateEndpointDetailsList = CreateEndpointDetails[];
-export const CreateEndpointDetailsList = /*@__PURE__*/ S.Array(CreateEndpointDetails);
+const CreateEndpointDetailsList = /*@__PURE__*/ S.Array(CreateEndpointDetails);
 export interface CreateDataflowEndpointGroupV2Request {
   endpoints: CreateEndpointDetails[];
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDataflowEndpointGroupV2Request = /*@__PURE__*/ S.suspend(() =>
+const CreateDataflowEndpointGroupV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoints: CreateEndpointDetailsList,
     contactPrePassDurationSeconds: S.optional(S.Number),
@@ -701,7 +697,7 @@ export const CreateDataflowEndpointGroupV2Request = /*@__PURE__*/ S.suspend(() =
 export interface CreateDataflowEndpointGroupV2Response {
   dataflowEndpointGroupId?: string;
 }
-export const CreateDataflowEndpointGroupV2Response =
+const CreateDataflowEndpointGroupV2Response =
   DataflowEndpointGroupIdResponse as any as S.Schema<CreateDataflowEndpointGroupV2Response>;
 export type CustomerEphemerisPriority = number;
 export type KeyArn = string;
@@ -713,7 +709,7 @@ export interface S3Object {
   key?: string;
   version?: string;
 }
-export const S3Object = /*@__PURE__*/ S.suspend(() =>
+const S3Object = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.optional(S.String),
     key: S.optional(S.String),
@@ -726,7 +722,7 @@ export interface TimeRange {
   startTime: Date;
   endTime: Date;
 }
-export const TimeRange = /*@__PURE__*/ S.suspend(() =>
+const TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -737,16 +733,16 @@ export interface TLEData {
   tleLine2: string;
   validTimeRange: TimeRange;
 }
-export const TLEData = /*@__PURE__*/ S.suspend(() =>
+const TLEData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tleLine1: S.String, tleLine2: S.String, validTimeRange: TimeRange }),
 ).annotate({ identifier: "TLEData" }) as any as S.Schema<TLEData>;
 export type TLEDataList = TLEData[];
-export const TLEDataList = /*@__PURE__*/ S.Array(TLEData);
+const TLEDataList = /*@__PURE__*/ S.Array(TLEData);
 export interface TLEEphemeris {
   s3Object?: S3Object;
   tleData?: TLEData[];
 }
-export const TLEEphemeris = /*@__PURE__*/ S.suspend(() =>
+const TLEEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Object: S.optional(S3Object), tleData: S.optional(TLEDataList) }),
 ).annotate({ identifier: "TLEEphemeris" }) as any as S.Schema<TLEEphemeris>;
 export type UnboundedString = string;
@@ -754,18 +750,18 @@ export interface OEMEphemeris {
   s3Object?: S3Object;
   oemData?: string;
 }
-export const OEMEphemeris = /*@__PURE__*/ S.suspend(() =>
+const OEMEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3Object: S.optional(S3Object), oemData: S.optional(S.String) }),
 ).annotate({ identifier: "OEMEphemeris" }) as any as S.Schema<OEMEphemeris>;
 export type GroundStationName = string;
 export type AngleUnits = "DEGREE_ANGLE" | "RADIAN" | (string & {});
-export const AngleUnits = S.String;
+const AngleUnits = S.String;
 
 export interface ISO8601TimeRange {
   startTime: Date;
   endTime: Date;
 }
-export const ISO8601TimeRange = /*@__PURE__*/ S.suspend(() =>
+const ISO8601TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -776,17 +772,17 @@ export interface TimeAzEl {
   az: number;
   el: number;
 }
-export const TimeAzEl = /*@__PURE__*/ S.suspend(() =>
+const TimeAzEl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dt: S.Number, az: S.Number, el: S.Number }),
 ).annotate({ identifier: "TimeAzEl" }) as any as S.Schema<TimeAzEl>;
 export type TimeAzElList = TimeAzEl[];
-export const TimeAzElList = /*@__PURE__*/ S.Array(TimeAzEl);
+const TimeAzElList = /*@__PURE__*/ S.Array(TimeAzEl);
 export interface AzElSegment {
   referenceEpoch: Date;
   validTimeRange: ISO8601TimeRange;
   azElList: TimeAzEl[];
 }
-export const AzElSegment = /*@__PURE__*/ S.suspend(() =>
+const AzElSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceEpoch: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     validTimeRange: ISO8601TimeRange,
@@ -794,18 +790,18 @@ export const AzElSegment = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AzElSegment" }) as any as S.Schema<AzElSegment>;
 export type AzElSegmentList = AzElSegment[];
-export const AzElSegmentList = /*@__PURE__*/ S.Array(AzElSegment);
+const AzElSegmentList = /*@__PURE__*/ S.Array(AzElSegment);
 export interface AzElSegments {
   angleUnit: AngleUnits;
   azElSegmentList: AzElSegment[];
 }
-export const AzElSegments = /*@__PURE__*/ S.suspend(() =>
+const AzElSegments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ angleUnit: AngleUnits, azElSegmentList: AzElSegmentList }),
 ).annotate({ identifier: "AzElSegments" }) as any as S.Schema<AzElSegments>;
 export type AzElSegmentsData =
   | { s3Object: S3Object; azElData?: never }
   | { s3Object?: never; azElData: AzElSegments };
-export const AzElSegmentsData = /*@__PURE__*/ S.Union([
+const AzElSegmentsData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ s3Object: S3Object }),
   /*@__PURE__*/ S.Struct({ azElData: AzElSegments }),
 ]);
@@ -813,14 +809,14 @@ export interface AzElEphemeris {
   groundStation: string;
   data: AzElSegmentsData;
 }
-export const AzElEphemeris = /*@__PURE__*/ S.suspend(() =>
+const AzElEphemeris = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groundStation: S.String, data: AzElSegmentsData }),
 ).annotate({ identifier: "AzElEphemeris" }) as any as S.Schema<AzElEphemeris>;
 export type EphemerisData =
   | { tle: TLEEphemeris; oem?: never; azEl?: never }
   | { tle?: never; oem: OEMEphemeris; azEl?: never }
   | { tle?: never; oem?: never; azEl: AzElEphemeris };
-export const EphemerisData = /*@__PURE__*/ S.Union([
+const EphemerisData = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ tle: TLEEphemeris }),
   /*@__PURE__*/ S.Struct({ oem: OEMEphemeris }),
   /*@__PURE__*/ S.Struct({ azEl: AzElEphemeris }),
@@ -835,7 +831,7 @@ export interface CreateEphemerisRequest {
   ephemeris?: EphemerisData;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -850,22 +846,22 @@ export const CreateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EphemerisIdResponse {
   ephemerisId?: string;
 }
-export const EphemerisIdResponse = /*@__PURE__*/ S.suspend(() =>
+const EphemerisIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.optional(S.String) }),
 ).annotate({ identifier: "EphemerisIdResponse" }) as any as S.Schema<EphemerisIdResponse>;
 export type DurationInSeconds = number;
 export type PositiveDurationInSeconds = number;
 export type DataflowEdge = string[];
-export const DataflowEdge = SubnetList as any as S.Schema<DataflowEdge>;
+const DataflowEdge = SubnetList as any as S.Schema<DataflowEdge>;
 export type DataflowEdgeList = string[][];
-export const DataflowEdgeList = /*@__PURE__*/ S.Array(DataflowEdge);
+const DataflowEdgeList = /*@__PURE__*/ S.Array(DataflowEdge);
 export type KeyAliasArn = string;
 export type KeyAliasName = string;
 export type KmsKey =
   | { kmsKeyArn: string; kmsAliasArn?: never; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn: string; kmsAliasName?: never }
   | { kmsKeyArn?: never; kmsAliasArn?: never; kmsAliasName: string };
-export const KmsKey = /*@__PURE__*/ S.Union([
+const KmsKey = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ kmsKeyArn: S.String }),
   /*@__PURE__*/ S.Struct({ kmsAliasArn: S.String }),
   /*@__PURE__*/ S.Struct({ kmsAliasName: S.String }),
@@ -882,7 +878,7 @@ export interface CreateMissionProfileRequest {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
-export const CreateMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     contactPrePassDurationSeconds: S.optional(S.Number),
@@ -901,14 +897,14 @@ export const CreateMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface MissionProfileIdResponse {
   missionProfileId?: string;
 }
-export const MissionProfileIdResponse = /*@__PURE__*/ S.suspend(() =>
+const MissionProfileIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ missionProfileId: S.optional(S.String) }),
 ).annotate({ identifier: "MissionProfileIdResponse" }) as any as S.Schema<MissionProfileIdResponse>;
 export interface DeleteConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
-export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
@@ -926,7 +922,7 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
-export const DeleteDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataflowEndpointGroupId: S.String.pipe(T.HttpLabel("dataflowEndpointGroupId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/dataflowEndpointGroup/{dataflowEndpointGroupId}" }),
@@ -943,7 +939,7 @@ export const DeleteDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEphemerisRequest {
   ephemerisId: string;
 }
-export const DeleteEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/ephemeris/{ephemerisId}" }),
@@ -958,7 +954,7 @@ export const DeleteEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMissionProfileRequest {
   missionProfileId: string;
 }
-export const DeleteMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/missionprofile/{missionProfileId}" }),
@@ -975,7 +971,7 @@ export const DeleteMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeContactRequest {
   contactId: string;
 }
-export const DescribeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contactId: S.String.pipe(T.HttpLabel("contactId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/contact/{contactId}" }), svc, auth, proto, ver, rules),
   ),
@@ -997,19 +993,19 @@ export type ContactStatus =
   | "CANCELLING"
   | "AWS_FAILED"
   | (string & {});
-export const ContactStatus = S.String;
+const ContactStatus = S.String;
 
 export interface Elevation {
   value: number;
   unit: AngleUnits;
 }
-export const Elevation = /*@__PURE__*/ S.suspend(() =>
+const Elevation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.Number, unit: AngleUnits }),
 ).annotate({ identifier: "Elevation" }) as any as S.Schema<Elevation>;
 export interface AntennaDemodDecodeDetails {
   outputNode?: string;
 }
-export const AntennaDemodDecodeDetails = /*@__PURE__*/ S.suspend(() =>
+const AntennaDemodDecodeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ outputNode: S.optional(S.String) }),
 ).annotate({
   identifier: "AntennaDemodDecodeDetails",
@@ -1018,7 +1014,7 @@ export interface S3RecordingDetails {
   bucketArn?: string;
   keyTemplate?: string;
 }
-export const S3RecordingDetails = /*@__PURE__*/ S.suspend(() =>
+const S3RecordingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketArn: S.optional(S.String), keyTemplate: S.optional(S.String) }),
 ).annotate({ identifier: "S3RecordingDetails" }) as any as S.Schema<S3RecordingDetails>;
 export type ConfigDetails =
@@ -1037,7 +1033,7 @@ export type ConfigDetails =
       antennaDemodDecodeDetails?: never;
       s3RecordingDetails: S3RecordingDetails;
     };
-export const ConfigDetails = /*@__PURE__*/ S.Union([
+const ConfigDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ endpointDetails: EndpointDetails }),
   /*@__PURE__*/ S.Struct({ antennaDemodDecodeDetails: AntennaDemodDecodeDetails }),
   /*@__PURE__*/ S.Struct({ s3RecordingDetails: S3RecordingDetails }),
@@ -1048,7 +1044,7 @@ export interface Source {
   configDetails?: ConfigDetails;
   dataflowSourceRegion?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configType: S.optional(ConfigCapabilityType),
     configId: S.optional(S.String),
@@ -1062,7 +1058,7 @@ export interface Destination {
   configDetails?: ConfigDetails;
   dataflowDestinationRegion?: string;
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configType: S.optional(ConfigCapabilityType),
     configId: S.optional(S.String),
@@ -1075,7 +1071,7 @@ export interface DataflowDetail {
   destination?: Destination;
   errorMessage?: string;
 }
-export const DataflowDetail = /*@__PURE__*/ S.suspend(() =>
+const DataflowDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(Source),
     destination: S.optional(Destination),
@@ -1083,28 +1079,28 @@ export const DataflowDetail = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataflowDetail" }) as any as S.Schema<DataflowDetail>;
 export type DataflowList = DataflowDetail[];
-export const DataflowList = /*@__PURE__*/ S.Array(DataflowDetail);
+const DataflowList = /*@__PURE__*/ S.Array(DataflowDetail);
 export interface AzElProgramTrackSettings {
   ephemerisId: string;
 }
-export const AzElProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
+const AzElProgramTrackSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.String }),
 ).annotate({ identifier: "AzElProgramTrackSettings" }) as any as S.Schema<AzElProgramTrackSettings>;
 export interface OemProgramTrackSettings {
   ephemerisId: string;
 }
-export const OemProgramTrackSettings =
+const OemProgramTrackSettings =
   AzElProgramTrackSettings as any as S.Schema<OemProgramTrackSettings>;
 export interface TleProgramTrackSettings {
   ephemerisId: string;
 }
-export const TleProgramTrackSettings =
+const TleProgramTrackSettings =
   AzElProgramTrackSettings as any as S.Schema<TleProgramTrackSettings>;
 export type ProgramTrackSettings =
   | { azEl: AzElProgramTrackSettings; oem?: never; tle?: never }
   | { azEl?: never; oem: OemProgramTrackSettings; tle?: never }
   | { azEl?: never; oem?: never; tle: TleProgramTrackSettings };
-export const ProgramTrackSettings = /*@__PURE__*/ S.Union([
+const ProgramTrackSettings = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ azEl: AzElProgramTrackSettings }),
   /*@__PURE__*/ S.Struct({ oem: OemProgramTrackSettings }),
   /*@__PURE__*/ S.Struct({ tle: TleProgramTrackSettings }),
@@ -1112,17 +1108,17 @@ export const ProgramTrackSettings = /*@__PURE__*/ S.Union([
 export interface TrackingOverrides {
   programTrackSettings?: ProgramTrackSettings;
 }
-export const TrackingOverrides = /*@__PURE__*/ S.suspend(() =>
+const TrackingOverrides = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ programTrackSettings: S.optional(ProgramTrackSettings) }),
 ).annotate({ identifier: "TrackingOverrides" }) as any as S.Schema<TrackingOverrides>;
 export type EphemerisType = "TLE" | "OEM" | "AZ_EL" | "SERVICE_MANAGED" | (string & {});
-export const EphemerisType = S.String;
+const EphemerisType = S.String;
 
 export interface EphemerisResponseData {
   ephemerisId?: string;
   ephemerisType: EphemerisType;
 }
-export const EphemerisResponseData = /*@__PURE__*/ S.suspend(() =>
+const EphemerisResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.optional(S.String), ephemerisType: EphemerisType }),
 ).annotate({ identifier: "EphemerisResponseData" }) as any as S.Schema<EphemerisResponseData>;
 export type VersionStatus =
@@ -1131,7 +1127,7 @@ export type VersionStatus =
   | "SUPERSEDED"
   | "FAILED_TO_UPDATE"
   | (string & {});
-export const VersionStatus = S.String;
+const VersionStatus = S.String;
 
 export type VersionFailureReasonCode =
   | "INTERNAL_ERROR"
@@ -1147,10 +1143,8 @@ export type VersionFailureReasonCode =
   | "AZEL_EPHEMERIS_INVALID_STATUS"
   | "AZEL_EPHEMERIS_TIME_RANGE_INVALID"
   | (string & {});
-export const VersionFailureReasonCode = S.String;
-
 export type VersionFailureReasonCodes = VersionFailureReasonCode[];
-export const VersionFailureReasonCodes =
+const VersionFailureReasonCodes =
   CapabilityHealthReasonList as any as S.Schema<VersionFailureReasonCodes>;
 export interface ContactVersion {
   versionId?: number;
@@ -1162,7 +1156,7 @@ export interface ContactVersion {
   failureCodes?: VersionFailureReasonCode[];
   failureMessage?: string;
 }
-export const ContactVersion = /*@__PURE__*/ S.suspend(() =>
+const ContactVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionId: S.optional(S.Number),
     created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1195,7 +1189,7 @@ export interface DescribeContactResponse {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
-export const DescribeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeContactResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -1222,7 +1216,7 @@ export interface DescribeContactVersionRequest {
   contactId: string;
   versionId: number;
 }
-export const DescribeContactVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeContactVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.HttpLabel("contactId")),
     versionId: S.Number.pipe(T.HttpLabel("versionId")),
@@ -1260,7 +1254,7 @@ export interface DescribeContactVersionResponse {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
-export const DescribeContactVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeContactVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -1288,7 +1282,7 @@ export const DescribeContactVersionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeEphemerisRequest {
   ephemerisId: string;
 }
-export const DescribeEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/ephemeris/{ephemerisId}" }), svc, auth, proto, ver, rules),
   ),
@@ -1301,21 +1295,21 @@ export type EphemerisStatus =
   | "DISABLED"
   | "EXPIRED"
   | (string & {});
-export const EphemerisStatus = S.String;
+const EphemerisStatus = S.String;
 
 export type EphemerisPriority = number;
 export interface EphemerisDescription {
   sourceS3Object?: S3Object;
   ephemerisData?: string;
 }
-export const EphemerisDescription = /*@__PURE__*/ S.suspend(() =>
+const EphemerisDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceS3Object: S.optional(S3Object), ephemerisData: S.optional(S.String) }),
 ).annotate({ identifier: "EphemerisDescription" }) as any as S.Schema<EphemerisDescription>;
 export type EphemerisTypeDescription =
   | { tle: EphemerisDescription; oem?: never; azEl?: never }
   | { tle?: never; oem: EphemerisDescription; azEl?: never }
   | { tle?: never; oem?: never; azEl: EphemerisDescription };
-export const EphemerisTypeDescription = /*@__PURE__*/ S.Union([
+const EphemerisTypeDescription = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ tle: EphemerisDescription }),
   /*@__PURE__*/ S.Struct({ oem: EphemerisDescription }),
   /*@__PURE__*/ S.Struct({ azEl: EphemerisDescription }),
@@ -1327,7 +1321,7 @@ export type EphemerisInvalidReason =
   | "KMS_KEY_INVALID"
   | "VALIDATION_ERROR"
   | (string & {});
-export const EphemerisInvalidReason = S.String;
+const EphemerisInvalidReason = S.String;
 
 export type EphemerisErrorCode =
   | "INTERNAL_ERROR"
@@ -1369,18 +1363,18 @@ export type EphemerisErrorCode =
   | "AZ_EL_SEGMENT_END_TIME_TOO_LATE"
   | "AZ_EL_TOTAL_DURATION_EXCEEDED"
   | (string & {});
-export const EphemerisErrorCode = S.String;
+const EphemerisErrorCode = S.String;
 
 export type ErrorString = string;
 export interface EphemerisErrorReason {
   errorCode: EphemerisErrorCode;
   errorMessage: string;
 }
-export const EphemerisErrorReason = /*@__PURE__*/ S.suspend(() =>
+const EphemerisErrorReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ errorCode: EphemerisErrorCode, errorMessage: S.String }),
 ).annotate({ identifier: "EphemerisErrorReason" }) as any as S.Schema<EphemerisErrorReason>;
 export type EphemerisErrorReasonList = EphemerisErrorReason[];
-export const EphemerisErrorReasonList = /*@__PURE__*/ S.Array(EphemerisErrorReason);
+const EphemerisErrorReasonList = /*@__PURE__*/ S.Array(EphemerisErrorReason);
 export interface DescribeEphemerisResponse {
   ephemerisId?: string;
   satelliteId?: string;
@@ -1394,7 +1388,7 @@ export interface DescribeEphemerisResponse {
   invalidReason?: EphemerisInvalidReason;
   errorReasons?: EphemerisErrorReason[];
 }
-export const DescribeEphemerisResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeEphemerisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ephemerisId: S.optional(S.String),
     satelliteId: S.optional(S.String),
@@ -1414,7 +1408,7 @@ export const DescribeEphemerisResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetAgentConfigurationRequest {
   agentId: string;
 }
-export const GetAgentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.String.pipe(T.HttpLabel("agentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/agent/{agentId}/configuration" }),
@@ -1432,7 +1426,7 @@ export interface GetAgentConfigurationResponse {
   agentId?: string;
   taskingDocument?: string;
 }
-export const GetAgentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAgentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.optional(S.String), taskingDocument: S.optional(S.String) }),
 ).annotate({
   identifier: "GetAgentConfigurationResponse",
@@ -1441,7 +1435,7 @@ export interface GetAgentTaskResponseUrlRequest {
   agentId: string;
   taskId: string;
 }
-export const GetAgentTaskResponseUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAgentTaskResponseUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.String.pipe(T.HttpLabel("agentId")),
     taskId: S.String.pipe(T.HttpLabel("taskId")),
@@ -1463,7 +1457,7 @@ export interface GetAgentTaskResponseUrlResponse {
   taskId: string;
   presignedLogUrl: string;
 }
-export const GetAgentTaskResponseUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAgentTaskResponseUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.String, taskId: S.String, presignedLogUrl: S.String }),
 ).annotate({
   identifier: "GetAgentTaskResponseUrlResponse",
@@ -1472,7 +1466,7 @@ export interface GetConfigRequest {
   configId: string;
   configType: ConfigCapabilityType;
 }
-export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     configType: ConfigCapabilityType.pipe(T.HttpLabel("configType")),
@@ -1495,7 +1489,7 @@ export interface GetConfigResponse {
   configData: ConfigTypeData;
   tags?: { [key: string]: string | undefined };
 }
-export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String,
     configArn: S.String,
@@ -1508,7 +1502,7 @@ export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataflowEndpointGroupRequest {
   dataflowEndpointGroupId: string;
 }
-export const GetDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataflowEndpointGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataflowEndpointGroupId: S.String.pipe(T.HttpLabel("dataflowEndpointGroupId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/dataflowEndpointGroup/{dataflowEndpointGroupId}" }),
@@ -1531,7 +1525,7 @@ export interface GetDataflowEndpointGroupResponse {
   contactPrePassDurationSeconds?: number;
   contactPostPassDurationSeconds?: number;
 }
-export const GetDataflowEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataflowEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataflowEndpointGroupId: S.optional(S.String),
     dataflowEndpointGroupArn: S.optional(S.String),
@@ -1549,7 +1543,7 @@ export interface GetMinuteUsageRequest {
   month: number;
   year: number;
 }
-export const GetMinuteUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMinuteUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ month: S.Number, year: S.Number }).pipe(
     T.all(T.Http({ method: "POST", uri: "/minute-usage" }), svc, auth, proto, ver, rules),
   ),
@@ -1561,7 +1555,7 @@ export interface GetMinuteUsageResponse {
   totalScheduledMinutes?: number;
   estimatedMinutesRemaining?: number;
 }
-export const GetMinuteUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMinuteUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isReservedMinutesCustomer: S.optional(S.Boolean),
     totalReservedMinuteAllocation: S.optional(S.Number),
@@ -1573,7 +1567,7 @@ export const GetMinuteUsageResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetMissionProfileRequest {
   missionProfileId: string;
 }
-export const GetMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/missionprofile/{missionProfileId}" }),
@@ -1601,7 +1595,7 @@ export interface GetMissionProfileResponse {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
-export const GetMissionProfileResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMissionProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missionProfileId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -1623,16 +1617,16 @@ export const GetMissionProfileResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSatelliteRequest {
   satelliteId: string;
 }
-export const GetSatelliteRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSatelliteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ satelliteId: S.String.pipe(T.HttpLabel("satelliteId")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/satellite/{satelliteId}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetSatelliteRequest" }) as any as S.Schema<GetSatelliteRequest>;
 export type NoradSatelliteID = number;
 export type GroundStationIdList = string[];
-export const GroundStationIdList = SubnetList as any as S.Schema<GroundStationIdList>;
+const GroundStationIdList = SubnetList as any as S.Schema<GroundStationIdList>;
 export type EphemerisSource = "CUSTOMER_PROVIDED" | "SPACE_TRACK" | (string & {});
-export const EphemerisSource = S.String;
+const EphemerisSource = S.String;
 
 export interface EphemerisMetaData {
   source: EphemerisSource;
@@ -1640,7 +1634,7 @@ export interface EphemerisMetaData {
   epoch?: Date;
   name?: string;
 }
-export const EphemerisMetaData = /*@__PURE__*/ S.suspend(() =>
+const EphemerisMetaData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: EphemerisSource,
     ephemerisId: S.optional(S.String),
@@ -1655,7 +1649,7 @@ export interface GetSatelliteResponse {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
-export const GetSatelliteResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSatelliteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String),
     satelliteArn: S.optional(S.String),
@@ -1671,7 +1665,7 @@ export interface ListAntennasRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListAntennasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAntennasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1693,23 +1687,23 @@ export interface AntennaListItem {
   antennaName: string;
   region: string;
 }
-export const AntennaListItem = /*@__PURE__*/ S.suspend(() =>
+const AntennaListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groundStationName: S.String, antennaName: S.String, region: S.String }),
 ).annotate({ identifier: "AntennaListItem" }) as any as S.Schema<AntennaListItem>;
 export type AntennaList = AntennaListItem[];
-export const AntennaList = /*@__PURE__*/ S.Array(AntennaListItem);
+const AntennaList = /*@__PURE__*/ S.Array(AntennaListItem);
 export interface ListAntennasResponse {
   antennaList: AntennaListItem[];
   nextToken?: string;
 }
-export const ListAntennasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAntennasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ antennaList: AntennaList, nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListAntennasResponse" }) as any as S.Schema<ListAntennasResponse>;
 export interface ListConfigsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1721,7 +1715,7 @@ export interface ConfigListItem {
   configArn?: string;
   name?: string;
 }
-export const ConfigListItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.optional(S.String),
     configType: S.optional(ConfigCapabilityType),
@@ -1730,24 +1724,24 @@ export const ConfigListItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ConfigListItem" }) as any as S.Schema<ConfigListItem>;
 export type ConfigList = ConfigListItem[];
-export const ConfigList = /*@__PURE__*/ S.Array(ConfigListItem);
+const ConfigList = /*@__PURE__*/ S.Array(ConfigListItem);
 export interface ListConfigsResponse {
   nextToken?: string;
   configList?: ConfigListItem[];
 }
-export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), configList: S.optional(ConfigList) }),
 ).annotate({ identifier: "ListConfigsResponse" }) as any as S.Schema<ListConfigsResponse>;
 export type StatusList = ContactStatus[];
-export const StatusList = CapabilityHealthReasonList as any as S.Schema<StatusList>;
+const StatusList = CapabilityHealthReasonList as any as S.Schema<StatusList>;
 export interface AzElEphemerisFilter {
   id: string;
 }
-export const AzElEphemerisFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }),
-).annotate({ identifier: "AzElEphemerisFilter" }) as any as S.Schema<AzElEphemerisFilter>;
+const AzElEphemerisFilter = /*@__PURE__*/ S.suspend(() => S.Struct({ id: S.String })).annotate({
+  identifier: "AzElEphemerisFilter",
+}) as any as S.Schema<AzElEphemerisFilter>;
 export type EphemerisFilter = { azEl: AzElEphemerisFilter };
-export const EphemerisFilter = /*@__PURE__*/ S.Union([
+const EphemerisFilter = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ azEl: AzElEphemerisFilter }),
 ]);
 export interface ListContactsRequest {
@@ -1761,7 +1755,7 @@ export interface ListContactsRequest {
   missionProfileArn?: string;
   ephemeris?: EphemerisFilter;
 }
-export const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number),
     nextToken: S.optional(S.String),
@@ -1793,7 +1787,7 @@ export interface ContactData {
   ephemeris?: EphemerisResponseData;
   version?: ContactVersion;
 }
-export const ContactData = /*@__PURE__*/ S.suspend(() =>
+const ContactData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -1815,12 +1809,12 @@ export const ContactData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactData" }) as any as S.Schema<ContactData>;
 export type ContactList = ContactData[];
-export const ContactList = /*@__PURE__*/ S.Array(ContactData);
+const ContactList = /*@__PURE__*/ S.Array(ContactData);
 export interface ListContactsResponse {
   nextToken?: string;
   contactList?: ContactData[];
 }
-export const ListContactsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), contactList: S.optional(ContactList) }),
 ).annotate({ identifier: "ListContactsResponse" }) as any as S.Schema<ListContactsResponse>;
 export interface ListContactVersionsRequest {
@@ -1828,7 +1822,7 @@ export interface ListContactVersionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListContactVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListContactVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.HttpLabel("contactId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1847,12 +1841,12 @@ export const ListContactVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListContactVersionsRequest",
 }) as any as S.Schema<ListContactVersionsRequest>;
 export type ContactVersionsList = ContactVersion[];
-export const ContactVersionsList = /*@__PURE__*/ S.Array(ContactVersion);
+const ContactVersionsList = /*@__PURE__*/ S.Array(ContactVersion);
 export interface ListContactVersionsResponse {
   nextToken?: string;
   contactVersionsList?: ContactVersion[];
 }
-export const ListContactVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListContactVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     contactVersionsList: S.optional(ContactVersionsList),
@@ -1864,7 +1858,7 @@ export interface ListDataflowEndpointGroupsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDataflowEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataflowEndpointGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1878,19 +1872,19 @@ export interface DataflowEndpointListItem {
   dataflowEndpointGroupId?: string;
   dataflowEndpointGroupArn?: string;
 }
-export const DataflowEndpointListItem = /*@__PURE__*/ S.suspend(() =>
+const DataflowEndpointListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataflowEndpointGroupId: S.optional(S.String),
     dataflowEndpointGroupArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DataflowEndpointListItem" }) as any as S.Schema<DataflowEndpointListItem>;
 export type DataflowEndpointGroupList = DataflowEndpointListItem[];
-export const DataflowEndpointGroupList = /*@__PURE__*/ S.Array(DataflowEndpointListItem);
+const DataflowEndpointGroupList = /*@__PURE__*/ S.Array(DataflowEndpointListItem);
 export interface ListDataflowEndpointGroupsResponse {
   nextToken?: string;
   dataflowEndpointGroupList?: DataflowEndpointListItem[];
 }
-export const ListDataflowEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataflowEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     dataflowEndpointGroupList: S.optional(DataflowEndpointGroupList),
@@ -1899,8 +1893,7 @@ export const ListDataflowEndpointGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListDataflowEndpointGroupsResponse",
 }) as any as S.Schema<ListDataflowEndpointGroupsResponse>;
 export type EphemerisStatusList = EphemerisStatus[];
-export const EphemerisStatusList =
-  CapabilityHealthReasonList as any as S.Schema<EphemerisStatusList>;
+const EphemerisStatusList = CapabilityHealthReasonList as any as S.Schema<EphemerisStatusList>;
 export interface ListEphemeridesRequest {
   satelliteId?: string;
   ephemerisType?: EphemerisType;
@@ -1910,7 +1903,7 @@ export interface ListEphemeridesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListEphemeridesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEphemeridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String),
     ephemerisType: S.optional(EphemerisType),
@@ -1931,7 +1924,7 @@ export interface EphemerisItem {
   name?: string;
   sourceS3Object?: S3Object;
 }
-export const EphemerisItem = /*@__PURE__*/ S.suspend(() =>
+const EphemerisItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ephemerisId: S.optional(S.String),
     ephemerisType: S.optional(EphemerisType),
@@ -1944,19 +1937,19 @@ export const EphemerisItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "EphemerisItem" }) as any as S.Schema<EphemerisItem>;
 export type EphemeridesList = EphemerisItem[];
-export const EphemeridesList = /*@__PURE__*/ S.Array(EphemerisItem);
+const EphemeridesList = /*@__PURE__*/ S.Array(EphemerisItem);
 export interface ListEphemeridesResponse {
   nextToken?: string;
   ephemerides?: EphemerisItem[];
 }
-export const ListEphemeridesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEphemeridesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), ephemerides: S.optional(EphemeridesList) }),
 ).annotate({ identifier: "ListEphemeridesResponse" }) as any as S.Schema<ListEphemeridesResponse>;
 export type ReservationType = "MAINTENANCE" | "CONTACT" | (string & {});
-export const ReservationType = S.String;
+const ReservationType = S.String;
 
 export type ReservationTypeFilterList = ReservationType[];
-export const ReservationTypeFilterList =
+const ReservationTypeFilterList =
   CapabilityHealthReasonList as any as S.Schema<ReservationTypeFilterList>;
 export interface ListGroundStationReservationsRequest {
   groundStationId: string;
@@ -1966,7 +1959,7 @@ export interface ListGroundStationReservationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListGroundStationReservationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationReservationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationId: S.String.pipe(T.HttpLabel("groundStationId")),
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(T.HttpQuery("startTime")),
@@ -1988,12 +1981,12 @@ export const ListGroundStationReservationsRequest = /*@__PURE__*/ S.suspend(() =
   identifier: "ListGroundStationReservationsRequest",
 }) as any as S.Schema<ListGroundStationReservationsRequest>;
 export type MaintenanceType = "PLANNED" | "UNPLANNED" | (string & {});
-export const MaintenanceType = S.String;
+const MaintenanceType = S.String;
 
 export interface MaintenanceReservationDetails {
   maintenanceType: MaintenanceType;
 }
-export const MaintenanceReservationDetails = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceReservationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ maintenanceType: MaintenanceType }),
 ).annotate({
   identifier: "MaintenanceReservationDetails",
@@ -2001,7 +1994,7 @@ export const MaintenanceReservationDetails = /*@__PURE__*/ S.suspend(() =>
 export interface ContactReservationDetails {
   contactId?: string;
 }
-export const ContactReservationDetails = /*@__PURE__*/ S.suspend(() =>
+const ContactReservationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ contactId: S.optional(S.String) }),
 ).annotate({
   identifier: "ContactReservationDetails",
@@ -2009,7 +2002,7 @@ export const ContactReservationDetails = /*@__PURE__*/ S.suspend(() =>
 export type ReservationDetails =
   | { maintenance: MaintenanceReservationDetails; contact?: never }
   | { maintenance?: never; contact: ContactReservationDetails };
-export const ReservationDetails = /*@__PURE__*/ S.Union([
+const ReservationDetails = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ maintenance: MaintenanceReservationDetails }),
   /*@__PURE__*/ S.Struct({ contact: ContactReservationDetails }),
 ]);
@@ -2021,7 +2014,7 @@ export interface GroundStationReservationListItem {
   endTime: Date;
   reservationDetails: ReservationDetails;
 }
-export const GroundStationReservationListItem = /*@__PURE__*/ S.suspend(() =>
+const GroundStationReservationListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationType: ReservationType,
     groundStationId: S.String,
@@ -2034,12 +2027,12 @@ export const GroundStationReservationListItem = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroundStationReservationListItem",
 }) as any as S.Schema<GroundStationReservationListItem>;
 export type GroundStationReservationList = GroundStationReservationListItem[];
-export const GroundStationReservationList = /*@__PURE__*/ S.Array(GroundStationReservationListItem);
+const GroundStationReservationList = /*@__PURE__*/ S.Array(GroundStationReservationListItem);
 export interface ListGroundStationReservationsResponse {
   reservationList: GroundStationReservationListItem[];
   nextToken?: string;
 }
-export const ListGroundStationReservationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationReservationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reservationList: GroundStationReservationList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListGroundStationReservationsResponse",
@@ -2049,7 +2042,7 @@ export interface ListGroundStationsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListGroundStationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satelliteId: S.optional(S.String).pipe(T.HttpQuery("satelliteId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2063,7 +2056,7 @@ export interface GroundStationData {
   groundStationName?: string;
   region?: string;
 }
-export const GroundStationData = /*@__PURE__*/ S.suspend(() =>
+const GroundStationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundStationId: S.optional(S.String),
     groundStationName: S.optional(S.String),
@@ -2071,12 +2064,12 @@ export const GroundStationData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroundStationData" }) as any as S.Schema<GroundStationData>;
 export type GroundStationList = GroundStationData[];
-export const GroundStationList = /*@__PURE__*/ S.Array(GroundStationData);
+const GroundStationList = /*@__PURE__*/ S.Array(GroundStationData);
 export interface ListGroundStationsResponse {
   nextToken?: string;
   groundStationList?: GroundStationData[];
 }
-export const ListGroundStationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroundStationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), groundStationList: S.optional(GroundStationList) }),
 ).annotate({
   identifier: "ListGroundStationsResponse",
@@ -2085,7 +2078,7 @@ export interface ListMissionProfilesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListMissionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMissionProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2099,7 +2092,7 @@ export interface MissionProfileListItem {
   region?: string;
   name?: string;
 }
-export const MissionProfileListItem = /*@__PURE__*/ S.suspend(() =>
+const MissionProfileListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missionProfileId: S.optional(S.String),
     missionProfileArn: S.optional(S.String),
@@ -2108,12 +2101,12 @@ export const MissionProfileListItem = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MissionProfileListItem" }) as any as S.Schema<MissionProfileListItem>;
 export type MissionProfileList = MissionProfileListItem[];
-export const MissionProfileList = /*@__PURE__*/ S.Array(MissionProfileListItem);
+const MissionProfileList = /*@__PURE__*/ S.Array(MissionProfileListItem);
 export interface ListMissionProfilesResponse {
   nextToken?: string;
   missionProfileList?: MissionProfileListItem[];
 }
-export const ListMissionProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMissionProfilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), missionProfileList: S.optional(MissionProfileList) }),
 ).annotate({
   identifier: "ListMissionProfilesResponse",
@@ -2122,7 +2115,7 @@ export interface ListSatellitesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSatellitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSatellitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2135,21 +2128,21 @@ export interface SatelliteListItem {
   groundStations?: string[];
   currentEphemeris?: EphemerisMetaData;
 }
-export const SatelliteListItem = GetSatelliteResponse as any as S.Schema<SatelliteListItem>;
+const SatelliteListItem = GetSatelliteResponse as any as S.Schema<SatelliteListItem>;
 export type SatelliteList = SatelliteListItem[];
-export const SatelliteList = /*@__PURE__*/ S.Array(SatelliteListItem);
+const SatelliteList = /*@__PURE__*/ S.Array(SatelliteListItem);
 export interface ListSatellitesResponse {
   nextToken?: string;
   satellites?: SatelliteListItem[];
 }
-export const ListSatellitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSatellitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), satellites: S.optional(SatelliteList) }),
 ).annotate({ identifier: "ListSatellitesResponse" }) as any as S.Schema<ListSatellitesResponse>;
 export type AnyArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -2159,22 +2152,22 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type IpAddressList = string[];
-export const IpAddressList = SubnetList as any as S.Schema<IpAddressList>;
+const IpAddressList = SubnetList as any as S.Schema<IpAddressList>;
 export type CapabilityArn = string;
 export type CapabilityArnList = string[];
-export const CapabilityArnList = SubnetList as any as S.Schema<CapabilityArnList>;
+const CapabilityArnList = SubnetList as any as S.Schema<CapabilityArnList>;
 export interface DiscoveryData {
   publicIpAddresses: string[];
   privateIpAddresses: string[];
   capabilityArns: string[];
 }
-export const DiscoveryData = /*@__PURE__*/ S.suspend(() =>
+const DiscoveryData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicIpAddresses: IpAddressList,
     privateIpAddresses: IpAddressList,
@@ -2185,19 +2178,19 @@ export type VersionString = string;
 export type InstanceId = string;
 export type InstanceType = string;
 export type AgentCpuCoresList = number[];
-export const AgentCpuCoresList = /*@__PURE__*/ S.Array(S.Number);
+const AgentCpuCoresList = /*@__PURE__*/ S.Array(S.Number);
 export type ComponentTypeString = string;
 export type VersionStringList = string[];
-export const VersionStringList = SubnetList as any as S.Schema<VersionStringList>;
+const VersionStringList = SubnetList as any as S.Schema<VersionStringList>;
 export interface ComponentVersion {
   componentType: string;
   versions: string[];
 }
-export const ComponentVersion = /*@__PURE__*/ S.suspend(() =>
+const ComponentVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ componentType: S.String, versions: VersionStringList }),
 ).annotate({ identifier: "ComponentVersion" }) as any as S.Schema<ComponentVersion>;
 export type ComponentVersionList = ComponentVersion[];
-export const ComponentVersionList = /*@__PURE__*/ S.Array(ComponentVersion);
+const ComponentVersionList = /*@__PURE__*/ S.Array(ComponentVersion);
 export interface AgentDetails {
   agentVersion: string;
   instanceId: string;
@@ -2206,7 +2199,7 @@ export interface AgentDetails {
   agentCpuCores?: number[];
   componentVersions: ComponentVersion[];
 }
-export const AgentDetails = /*@__PURE__*/ S.suspend(() =>
+const AgentDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentVersion: S.String,
     instanceId: S.String,
@@ -2221,7 +2214,7 @@ export interface RegisterAgentRequest {
   agentDetails: AgentDetails;
   tags?: { [key: string]: string | undefined };
 }
-export const RegisterAgentRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterAgentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discoveryData: DiscoveryData,
     agentDetails: AgentDetails,
@@ -2231,7 +2224,7 @@ export const RegisterAgentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterAgentResponse {
   agentId?: string;
 }
-export const RegisterAgentResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterAgentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.optional(S.String) }),
 ).annotate({ identifier: "RegisterAgentResponse" }) as any as S.Schema<RegisterAgentResponse>;
 export interface ReserveContactRequest {
@@ -2243,7 +2236,7 @@ export interface ReserveContactRequest {
   tags?: { [key: string]: string | undefined };
   trackingOverrides?: TrackingOverrides;
 }
-export const ReserveContactRequest = /*@__PURE__*/ S.suspend(() =>
+const ReserveContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missionProfileArn: S.String,
     satelliteArn: S.optional(S.String),
@@ -2258,22 +2251,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = SubnetList as any as S.Schema<TagKeys>;
+const TagKeys = SubnetList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -2282,17 +2275,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type SignatureMap = { [key: string]: boolean | undefined };
-export const SignatureMap = /*@__PURE__*/ S.Record(
-  S.String,
-  /*@__PURE__*/ S.Boolean.pipe(S.optional),
-);
+const SignatureMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.Boolean.pipe(S.optional));
 export interface AggregateStatus {
   status: AgentStatus;
   signatureMap?: { [key: string]: boolean | undefined };
 }
-export const AggregateStatus = /*@__PURE__*/ S.suspend(() =>
+const AggregateStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: AgentStatus, signatureMap: S.optional(SignatureMap) }),
 ).annotate({ identifier: "AggregateStatus" }) as any as S.Schema<AggregateStatus>;
 export interface ComponentStatusData {
@@ -2304,7 +2294,7 @@ export interface ComponentStatusData {
   packetsDropped?: number;
   dataflowId: string;
 }
-export const ComponentStatusData = /*@__PURE__*/ S.suspend(() =>
+const ComponentStatusData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentType: S.String,
     capabilityArn: S.String,
@@ -2316,14 +2306,14 @@ export const ComponentStatusData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComponentStatusData" }) as any as S.Schema<ComponentStatusData>;
 export type ComponentStatusList = ComponentStatusData[];
-export const ComponentStatusList = /*@__PURE__*/ S.Array(ComponentStatusData);
+const ComponentStatusList = /*@__PURE__*/ S.Array(ComponentStatusData);
 export interface UpdateAgentStatusRequest {
   agentId: string;
   taskId: string;
   aggregateStatus: AggregateStatus;
   componentStatuses: ComponentStatusData[];
 }
-export const UpdateAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.String.pipe(T.HttpLabel("agentId")),
     taskId: S.String,
@@ -2334,7 +2324,7 @@ export const UpdateAgentStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAgentStatusResponse {
   agentId: string;
 }
-export const UpdateAgentStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAgentStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ agentId: S.String }),
 ).annotate({
   identifier: "UpdateAgentStatusResponse",
@@ -2345,7 +2335,7 @@ export interface UpdateConfigRequest {
   configType: ConfigCapabilityType;
   configData: ConfigTypeData;
 }
-export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configId: S.String.pipe(T.HttpLabel("configId")),
     name: S.String,
@@ -2369,7 +2359,7 @@ export interface UpdateContactRequest {
   trackingOverrides?: TrackingOverrides;
   satelliteArn?: string;
 }
-export const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactId: S.String.pipe(T.HttpLabel("contactId")),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -2390,14 +2380,14 @@ export interface UpdateContactResponse {
   contactId?: string;
   versionId?: number;
 }
-export const UpdateContactResponse = ContactIdResponse as any as S.Schema<UpdateContactResponse>;
+const UpdateContactResponse = ContactIdResponse as any as S.Schema<UpdateContactResponse>;
 export interface UpdateEphemerisRequest {
   ephemerisId: string;
   enabled: boolean;
   name?: string;
   priority?: number;
 }
-export const UpdateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEphemerisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ephemerisId: S.String.pipe(T.HttpLabel("ephemerisId")),
     enabled: S.Boolean,
@@ -2419,7 +2409,7 @@ export interface UpdateMissionProfileRequest {
   streamsKmsKey?: KmsKey;
   streamsKmsRole?: string;
 }
-export const UpdateMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMissionProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missionProfileId: S.String.pipe(T.HttpLabel("missionProfileId")),
     name: S.optional(S.String),

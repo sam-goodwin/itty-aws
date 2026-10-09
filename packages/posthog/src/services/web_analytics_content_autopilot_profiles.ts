@@ -9,20 +9,19 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList = Array<string>;
-export const CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList = /*@__PURE__*/ S.Array(
+const CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList>;
 
 /** Same-origin URL path prefixes allowed for research. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList = Array<string>;
-export const CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList>;
+const CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList>;
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList = Array<string>;
-export const CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList =
+const CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList =
   CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<CreateWebAnalyticsContentAutopilotProfileRequestBrandRulesList>;
 
 export interface CreateWebAnalyticsContentAutopilotProfileRequest {
@@ -41,7 +40,7 @@ export interface CreateWebAnalyticsContentAutopilotProfileRequest {
   /** Whether to use connected Google Search Console data. */
   search_console_enabled?: boolean;
 }
-export const CreateWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -63,17 +62,17 @@ export const CreateWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.
 
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type ContentAutopilotSiteProfileSourceUrlsList = Array<string>;
-export const ContentAutopilotSiteProfileSourceUrlsList =
+const ContentAutopilotSiteProfileSourceUrlsList =
   CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileSourceUrlsList>;
 
 /** Same-origin URL path prefixes allowed for research. */
 export type ContentAutopilotSiteProfileContentBoundariesList = Array<string>;
-export const ContentAutopilotSiteProfileContentBoundariesList =
+const ContentAutopilotSiteProfileContentBoundariesList =
   CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileContentBoundariesList>;
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type ContentAutopilotSiteProfileBrandRulesList = Array<string>;
-export const ContentAutopilotSiteProfileBrandRulesList =
+const ContentAutopilotSiteProfileBrandRulesList =
   CreateWebAnalyticsContentAutopilotProfileRequestSourceUrlsList as any as S.Schema<ContentAutopilotSiteProfileBrandRulesList>;
 
 export interface ContentAutopilotSiteProfile {
@@ -93,7 +92,7 @@ export interface ContentAutopilotSiteProfile {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotSiteProfile = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotSiteProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -115,7 +114,7 @@ export interface GetWebAnalyticsContentAutopilotProfileRequest {
   /** A UUID string identifying this content autopilot site profile. */
   id: string;
 }
-export const GetWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAnalyticsContentAutopilotProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -138,7 +137,7 @@ export interface ListWebAnalyticsContentAutopilotProfilesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListWebAnalyticsContentAutopilotProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsContentAutopilotProfilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -156,7 +155,7 @@ export const ListWebAnalyticsContentAutopilotProfilesRequest = /*@__PURE__*/ S.s
 
 export type PaginatedContentAutopilotSiteProfileListResultsList =
   Array<ContentAutopilotSiteProfile>;
-export const PaginatedContentAutopilotSiteProfileListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedContentAutopilotSiteProfileListResultsList = /*@__PURE__*/ S.Array(
   ContentAutopilotSiteProfile,
 ) as any as S.Schema<PaginatedContentAutopilotSiteProfileListResultsList>;
 
@@ -166,7 +165,7 @@ export interface PaginatedContentAutopilotSiteProfileList {
   previous?: string | null;
   results: PaginatedContentAutopilotSiteProfileListResultsList;
 }
-export const PaginatedContentAutopilotSiteProfileList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedContentAutopilotSiteProfileList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -179,18 +178,18 @@ export const PaginatedContentAutopilotSiteProfileList = /*@__PURE__*/ S.suspend(
 
 /** Public sitemap and factual source URLs used to build the site profile. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList = Array<string>;
-export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList =
+const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList =
   CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList>;
 
 /** Same-origin URL path prefixes allowed for research. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
   Array<string>;
-export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
+const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList =
   CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList>;
 
 /** Brand, terminology, and editorial rules applied to every proposal. */
 export type UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList = Array<string>;
-export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList =
+const UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList =
   CreateWebAnalyticsContentAutopilotProfileRequestContentBoundariesList as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList>;
 
 export interface UpdateWebAnalyticsContentAutopilotProfilesPartialRequest {
@@ -211,30 +210,25 @@ export interface UpdateWebAnalyticsContentAutopilotProfilesPartialRequest {
   /** Whether to use connected Google Search Console data. */
   search_console_enabled?: boolean;
 }
-export const UpdateWebAnalyticsContentAutopilotProfilesPartialRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      domain: S.optional(S.String),
-      source_urls: S.optional(
-        UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList,
-      ),
-      content_boundaries: S.optional(
-        UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList,
-      ),
-      brand_rules: S.optional(
-        UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList,
-      ),
-      search_console_enabled: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/web_analytics_content_autopilot_profiles/{id}/",
-        code: 200,
-      }),
+const UpdateWebAnalyticsContentAutopilotProfilesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    domain: S.optional(S.String),
+    source_urls: S.optional(UpdateWebAnalyticsContentAutopilotProfilesPartialRequestSourceUrlsList),
+    content_boundaries: S.optional(
+      UpdateWebAnalyticsContentAutopilotProfilesPartialRequestContentBoundariesList,
     ),
+    brand_rules: S.optional(UpdateWebAnalyticsContentAutopilotProfilesPartialRequestBrandRulesList),
+    search_console_enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/web_analytics_content_autopilot_profiles/{id}/",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "UpdateWebAnalyticsContentAutopilotProfilesPartialRequest",
 }) as any as S.Schema<UpdateWebAnalyticsContentAutopilotProfilesPartialRequest>;
@@ -245,7 +239,7 @@ export interface WebAnalyticsContentAutopilotProfilesDestroyRequest {
   /** A UUID string identifying this content autopilot site profile. */
   id: string;
 }
-export const WebAnalyticsContentAutopilotProfilesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsContentAutopilotProfilesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -261,7 +255,7 @@ export const WebAnalyticsContentAutopilotProfilesDestroyRequest = /*@__PURE__*/ 
 }) as any as S.Schema<WebAnalyticsContentAutopilotProfilesDestroyRequest>;
 
 export interface WebAnalyticsContentAutopilotProfilesDestroyResponse {}
-export const WebAnalyticsContentAutopilotProfilesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const WebAnalyticsContentAutopilotProfilesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "WebAnalyticsContentAutopilotProfilesDestroyResponse",

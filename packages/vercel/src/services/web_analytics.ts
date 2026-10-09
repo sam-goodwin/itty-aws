@@ -66,27 +66,22 @@ export type AggregateEventsRequestByItemCase0 =
   | "eventName"
   | "flags"
   | "eventData";
-export const AggregateEventsRequestByItemCase0 = S.String;
-
 export type AggregateEventsRequestByItem = AggregateEventsRequestByItemCase0 | unknown;
-export const AggregateEventsRequestByItem =
-  S.Unknown as any as S.Schema<AggregateEventsRequestByItem>;
+const AggregateEventsRequestByItem = S.Unknown as any as S.Schema<AggregateEventsRequestByItem>;
 
 /** Up to two dimensions used to break down results. At most one time granularity is allowed: hour, day, week, month, year. Other dimensions: country, deviceType, environment, requestPath, referrerHostname, osName, browserName, route, utmSource, utmMedium, utmCampaign, utmContent, utmTerm, eventName. JSON dimensions: flags, eventData. Used bare, they break down results by key, for example flags returns one group per flag name. With a key, they break down results by that key's value, for example eventData/plan. Wrap keys containing characters other than letters, digits, and underscores in single quotes, for example flags/'my-flag'. */
 export type AggregateEventsRequestByList = Array<AggregateEventsRequestByItem>;
-export const AggregateEventsRequestByList = /*@__PURE__*/ S.Array(
+const AggregateEventsRequestByList = /*@__PURE__*/ S.Array(
   AggregateEventsRequestByItem,
 ) as any as S.Schema<AggregateEventsRequestByList>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type AggregateEventsRequestSince = number | string;
-export const AggregateEventsRequestSince =
-  S.Unknown as any as S.Schema<AggregateEventsRequestSince>;
+const AggregateEventsRequestSince = S.Unknown as any as S.Schema<AggregateEventsRequestSince>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type AggregateEventsRequestUntil = number | string;
-export const AggregateEventsRequestUntil =
-  S.Unknown as any as S.Schema<AggregateEventsRequestUntil>;
+const AggregateEventsRequestUntil = S.Unknown as any as S.Schema<AggregateEventsRequestUntil>;
 
 export interface AggregateEventsRequest {
   /** The project identifier or the project name */
@@ -106,7 +101,7 @@ export interface AggregateEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const AggregateEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregateEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     by: AggregateEventsRequestByList.pipe(T.Query()),
@@ -142,39 +137,7 @@ export interface AggregateEventsResponseDataCase0Item {
   visitorId?: string;
   timestamp: string;
 }
-export const AggregateEventsResponseDataCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserName: S.optional(S.String),
-    country: S.optional(S.String),
-    deviceType: S.optional(S.String),
-    environment: S.optional(S.String),
-    eventData: S.optional(S.String),
-    eventName: S.optional(S.String),
-    flags: S.optional(S.String),
-    osName: S.optional(S.String),
-    projectId: S.optional(S.String),
-    projectName: S.optional(S.String),
-    referrerHostname: S.optional(S.String),
-    requestHostname: S.optional(S.String),
-    requestPath: S.optional(S.String),
-    route: S.optional(S.String),
-    utmCampaign: S.optional(S.String),
-    utmContent: S.optional(S.String),
-    utmMedium: S.optional(S.String),
-    utmSource: S.optional(S.String),
-    utmTerm: S.optional(S.String),
-    visitorId: S.optional(S.String),
-    timestamp: S.String,
-  }),
-).annotate({
-  identifier: "AggregateEventsResponseDataCase0Item",
-}) as any as S.Schema<AggregateEventsResponseDataCase0Item>;
-
 export type AggregateEventsResponseDataCase0List = Array<AggregateEventsResponseDataCase0Item>;
-export const AggregateEventsResponseDataCase0List = /*@__PURE__*/ S.Array(
-  AggregateEventsResponseDataCase0Item,
-) as any as S.Schema<AggregateEventsResponseDataCase0List>;
-
 export interface AggregateEventsResponseDataCase1Item {
   browserName: string;
   country: string;
@@ -197,43 +160,11 @@ export interface AggregateEventsResponseDataCase1Item {
   utmTerm: string;
   visitorId: string;
 }
-export const AggregateEventsResponseDataCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserName: S.String,
-    country: S.String,
-    deviceType: S.String,
-    environment: S.String,
-    eventData: S.String,
-    eventName: S.String,
-    flags: S.String,
-    osName: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    referrerHostname: S.String,
-    requestHostname: S.String,
-    requestPath: S.String,
-    route: S.String,
-    utmCampaign: S.String,
-    utmContent: S.String,
-    utmMedium: S.String,
-    utmSource: S.String,
-    utmTerm: S.String,
-    visitorId: S.String,
-  }),
-).annotate({
-  identifier: "AggregateEventsResponseDataCase1Item",
-}) as any as S.Schema<AggregateEventsResponseDataCase1Item>;
-
 export type AggregateEventsResponseDataCase1List = Array<AggregateEventsResponseDataCase1Item>;
-export const AggregateEventsResponseDataCase1List = /*@__PURE__*/ S.Array(
-  AggregateEventsResponseDataCase1Item,
-) as any as S.Schema<AggregateEventsResponseDataCase1List>;
-
 export type AggregateEventsResponseData =
   | AggregateEventsResponseDataCase0List
   | AggregateEventsResponseDataCase1List;
-export const AggregateEventsResponseData =
-  S.Unknown as any as S.Schema<AggregateEventsResponseData>;
+const AggregateEventsResponseData = S.Unknown as any as S.Schema<AggregateEventsResponseData>;
 
 export type AggregateEventsResponseQueryGroupByItemCase1 =
   | "browserName"
@@ -252,17 +183,15 @@ export type AggregateEventsResponseQueryGroupByItemCase1 =
   | "utmMedium"
   | "utmSource"
   | "utmTerm";
-export const AggregateEventsResponseQueryGroupByItemCase1 = S.String;
-
 export type AggregateEventsResponseQueryGroupByItem =
   | string
   | AggregateEventsResponseQueryGroupByItemCase1;
-export const AggregateEventsResponseQueryGroupByItem =
+const AggregateEventsResponseQueryGroupByItem =
   S.Unknown as any as S.Schema<AggregateEventsResponseQueryGroupByItem>;
 
 export type AggregateEventsResponseQueryGroupByList =
   Array<AggregateEventsResponseQueryGroupByItem>;
-export const AggregateEventsResponseQueryGroupByList = /*@__PURE__*/ S.Array(
+const AggregateEventsResponseQueryGroupByList = /*@__PURE__*/ S.Array(
   AggregateEventsResponseQueryGroupByItem,
 ) as any as S.Schema<AggregateEventsResponseQueryGroupByList>;
 
@@ -273,7 +202,7 @@ export interface AggregateEventsResponseQuery {
   since: string;
   until: string;
 }
-export const AggregateEventsResponseQuery = /*@__PURE__*/ S.suspend(() =>
+const AggregateEventsResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     groupBy: S.optional(AggregateEventsResponseQueryGroupByList),
@@ -290,7 +219,7 @@ export interface AggregateEventsResponse {
   query: AggregateEventsResponseQuery;
   version: number;
 }
-export const AggregateEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregateEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AggregateEventsResponseData,
     query: AggregateEventsResponseQuery,
@@ -318,27 +247,23 @@ export type AggregatePageviewsRequestByItemCase0 =
   | "utmContent"
   | "utmTerm"
   | "flags";
-export const AggregatePageviewsRequestByItemCase0 = S.String;
-
 export type AggregatePageviewsRequestByItem = AggregatePageviewsRequestByItemCase0 | unknown;
-export const AggregatePageviewsRequestByItem =
+const AggregatePageviewsRequestByItem =
   S.Unknown as any as S.Schema<AggregatePageviewsRequestByItem>;
 
 /** Up to two dimensions used to break down results. At most one time granularity is allowed: hour, day, week, month, year. Other dimensions: country, deviceType, environment, requestPath, referrerHostname, osName, browserName, route, utmSource, utmMedium, utmCampaign, utmContent, utmTerm. JSON dimensions: flags. Used bare, it breaks down results by key, for example flags returns one group per flag name. With a key, it breaks down results by that key's value, for example flags/beta_banner. Wrap keys containing characters other than letters, digits, and underscores in single quotes, for example flags/'my-flag'. */
 export type AggregatePageviewsRequestByList = Array<AggregatePageviewsRequestByItem>;
-export const AggregatePageviewsRequestByList = /*@__PURE__*/ S.Array(
+const AggregatePageviewsRequestByList = /*@__PURE__*/ S.Array(
   AggregatePageviewsRequestByItem,
 ) as any as S.Schema<AggregatePageviewsRequestByList>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type AggregatePageviewsRequestSince = number | string;
-export const AggregatePageviewsRequestSince =
-  S.Unknown as any as S.Schema<AggregatePageviewsRequestSince>;
+const AggregatePageviewsRequestSince = S.Unknown as any as S.Schema<AggregatePageviewsRequestSince>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type AggregatePageviewsRequestUntil = number | string;
-export const AggregatePageviewsRequestUntil =
-  S.Unknown as any as S.Schema<AggregatePageviewsRequestUntil>;
+const AggregatePageviewsRequestUntil = S.Unknown as any as S.Schema<AggregatePageviewsRequestUntil>;
 
 export interface AggregatePageviewsRequest {
   /** The project identifier or the project name */
@@ -358,7 +283,7 @@ export interface AggregatePageviewsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const AggregatePageviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const AggregatePageviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     by: AggregatePageviewsRequestByList.pipe(T.Query()),
@@ -394,38 +319,8 @@ export interface AggregatePageviewsResponseDataCase0Item {
   visitorId?: string;
   timestamp: string;
 }
-export const AggregatePageviewsResponseDataCase0Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserName: S.optional(S.String),
-    country: S.optional(S.String),
-    deviceType: S.optional(S.String),
-    environment: S.optional(S.String),
-    flags: S.optional(S.String),
-    osName: S.optional(S.String),
-    projectId: S.optional(S.String),
-    projectName: S.optional(S.String),
-    referrerHostname: S.optional(S.String),
-    requestHostname: S.optional(S.String),
-    requestPath: S.optional(S.String),
-    route: S.optional(S.String),
-    utmCampaign: S.optional(S.String),
-    utmContent: S.optional(S.String),
-    utmMedium: S.optional(S.String),
-    utmSource: S.optional(S.String),
-    utmTerm: S.optional(S.String),
-    visitorId: S.optional(S.String),
-    timestamp: S.String,
-  }),
-).annotate({
-  identifier: "AggregatePageviewsResponseDataCase0Item",
-}) as any as S.Schema<AggregatePageviewsResponseDataCase0Item>;
-
 export type AggregatePageviewsResponseDataCase0List =
   Array<AggregatePageviewsResponseDataCase0Item>;
-export const AggregatePageviewsResponseDataCase0List = /*@__PURE__*/ S.Array(
-  AggregatePageviewsResponseDataCase0Item,
-) as any as S.Schema<AggregatePageviewsResponseDataCase0List>;
-
 export interface AggregatePageviewsResponseDataCase1Item {
   browserName: string;
   country: string;
@@ -446,42 +341,12 @@ export interface AggregatePageviewsResponseDataCase1Item {
   utmTerm: string;
   visitorId: string;
 }
-export const AggregatePageviewsResponseDataCase1Item = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserName: S.String,
-    country: S.String,
-    deviceType: S.String,
-    environment: S.String,
-    flags: S.String,
-    osName: S.String,
-    projectId: S.String,
-    projectName: S.String,
-    referrerHostname: S.String,
-    requestHostname: S.String,
-    requestPath: S.String,
-    route: S.String,
-    utmCampaign: S.String,
-    utmContent: S.String,
-    utmMedium: S.String,
-    utmSource: S.String,
-    utmTerm: S.String,
-    visitorId: S.String,
-  }),
-).annotate({
-  identifier: "AggregatePageviewsResponseDataCase1Item",
-}) as any as S.Schema<AggregatePageviewsResponseDataCase1Item>;
-
 export type AggregatePageviewsResponseDataCase1List =
   Array<AggregatePageviewsResponseDataCase1Item>;
-export const AggregatePageviewsResponseDataCase1List = /*@__PURE__*/ S.Array(
-  AggregatePageviewsResponseDataCase1Item,
-) as any as S.Schema<AggregatePageviewsResponseDataCase1List>;
-
 export type AggregatePageviewsResponseData =
   | AggregatePageviewsResponseDataCase0List
   | AggregatePageviewsResponseDataCase1List;
-export const AggregatePageviewsResponseData =
-  S.Unknown as any as S.Schema<AggregatePageviewsResponseData>;
+const AggregatePageviewsResponseData = S.Unknown as any as S.Schema<AggregatePageviewsResponseData>;
 
 export type AggregatePageviewsResponseQueryGroupByItemCase1 =
   | "browserName"
@@ -498,17 +363,15 @@ export type AggregatePageviewsResponseQueryGroupByItemCase1 =
   | "utmMedium"
   | "utmSource"
   | "utmTerm";
-export const AggregatePageviewsResponseQueryGroupByItemCase1 = S.String;
-
 export type AggregatePageviewsResponseQueryGroupByItem =
   | string
   | AggregatePageviewsResponseQueryGroupByItemCase1;
-export const AggregatePageviewsResponseQueryGroupByItem =
+const AggregatePageviewsResponseQueryGroupByItem =
   S.Unknown as any as S.Schema<AggregatePageviewsResponseQueryGroupByItem>;
 
 export type AggregatePageviewsResponseQueryGroupByList =
   Array<AggregatePageviewsResponseQueryGroupByItem>;
-export const AggregatePageviewsResponseQueryGroupByList = /*@__PURE__*/ S.Array(
+const AggregatePageviewsResponseQueryGroupByList = /*@__PURE__*/ S.Array(
   AggregatePageviewsResponseQueryGroupByItem,
 ) as any as S.Schema<AggregatePageviewsResponseQueryGroupByList>;
 
@@ -519,7 +382,7 @@ export interface AggregatePageviewsResponseQuery {
   since: string;
   until: string;
 }
-export const AggregatePageviewsResponseQuery = /*@__PURE__*/ S.suspend(() =>
+const AggregatePageviewsResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     groupBy: S.optional(AggregatePageviewsResponseQueryGroupByList),
@@ -536,7 +399,7 @@ export interface AggregatePageviewsResponse {
   query: AggregatePageviewsResponseQuery;
   version: number;
 }
-export const AggregatePageviewsResponse = /*@__PURE__*/ S.suspend(() =>
+const AggregatePageviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AggregatePageviewsResponseData,
     query: AggregatePageviewsResponseQuery,
@@ -548,11 +411,11 @@ export const AggregatePageviewsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type CountEventsRequestSince = number | string;
-export const CountEventsRequestSince = S.Unknown as any as S.Schema<CountEventsRequestSince>;
+const CountEventsRequestSince = S.Unknown as any as S.Schema<CountEventsRequestSince>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type CountEventsRequestUntil = number | string;
-export const CountEventsRequestUntil = S.Unknown as any as S.Schema<CountEventsRequestUntil>;
+const CountEventsRequestUntil = S.Unknown as any as S.Schema<CountEventsRequestUntil>;
 
 export interface CountEventsRequest {
   /** The project identifier or the project name */
@@ -568,7 +431,7 @@ export interface CountEventsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const CountEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     since: S.optional(CountEventsRequestSince.pipe(T.Query())),
@@ -580,32 +443,21 @@ export const CountEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountEventsRequest" }) as any as S.Schema<CountEventsRequest>;
 
 export type CountEventsResponseDataCase0 = AggregateEventsResponseDataCase1Item;
-export const CountEventsResponseDataCase0 = AggregateEventsResponseDataCase1Item;
-
 export interface CountEventsResponseDataCase1 {
   count: number;
   visitors: number;
 }
-export const CountEventsResponseDataCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    visitors: S.Number,
-  }),
-).annotate({
-  identifier: "CountEventsResponseDataCase1",
-}) as any as S.Schema<CountEventsResponseDataCase1>;
-
 export type CountEventsResponseData =
   | AggregateEventsResponseDataCase1Item
   | CountEventsResponseDataCase1;
-export const CountEventsResponseData = S.Unknown as any as S.Schema<CountEventsResponseData>;
+const CountEventsResponseData = S.Unknown as any as S.Schema<CountEventsResponseData>;
 
 export interface CountEventsResponseQuery {
   filter?: string;
   since: string;
   until: string;
 }
-export const CountEventsResponseQuery = /*@__PURE__*/ S.suspend(() =>
+const CountEventsResponseQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     since: S.String,
@@ -618,7 +470,7 @@ export interface CountEventsResponse {
   query: CountEventsResponseQuery;
   version: number;
 }
-export const CountEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const CountEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CountEventsResponseData,
     query: CountEventsResponseQuery,
@@ -628,11 +480,11 @@ export const CountEventsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data from (including) this date and time. Will be adjusted according to the desired time granularity. */
 export type CountPageviewsRequestSince = number | string;
-export const CountPageviewsRequestSince = S.Unknown as any as S.Schema<CountPageviewsRequestSince>;
+const CountPageviewsRequestSince = S.Unknown as any as S.Schema<CountPageviewsRequestSince>;
 
 /** Timestamp in milliseconds, or a valid Date string. Selects data until (including) this date. Will be adjusted according to the desired time granularity. */
 export type CountPageviewsRequestUntil = number | string;
-export const CountPageviewsRequestUntil = S.Unknown as any as S.Schema<CountPageviewsRequestUntil>;
+const CountPageviewsRequestUntil = S.Unknown as any as S.Schema<CountPageviewsRequestUntil>;
 
 export interface CountPageviewsRequest {
   /** The project identifier or the project name */
@@ -648,7 +500,7 @@ export interface CountPageviewsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-export const CountPageviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const CountPageviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     since: S.optional(CountPageviewsRequestSince.pipe(T.Query())),
@@ -660,35 +512,22 @@ export const CountPageviewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CountPageviewsRequest" }) as any as S.Schema<CountPageviewsRequest>;
 
 export type CountPageviewsResponseDataCase0 = AggregatePageviewsResponseDataCase1Item;
-export const CountPageviewsResponseDataCase0 = AggregatePageviewsResponseDataCase1Item;
-
 export interface CountPageviewsResponseDataCase1 {
   pageviews: number;
   visitors: number;
 }
-export const CountPageviewsResponseDataCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pageviews: S.Number,
-    visitors: S.Number,
-  }),
-).annotate({
-  identifier: "CountPageviewsResponseDataCase1",
-}) as any as S.Schema<CountPageviewsResponseDataCase1>;
-
 export type CountPageviewsResponseData =
   | AggregatePageviewsResponseDataCase1Item
   | CountPageviewsResponseDataCase1;
-export const CountPageviewsResponseData = S.Unknown as any as S.Schema<CountPageviewsResponseData>;
+const CountPageviewsResponseData = S.Unknown as any as S.Schema<CountPageviewsResponseData>;
 
 export type CountPageviewsResponseQuery = CountEventsResponseQuery;
-export const CountPageviewsResponseQuery = CountEventsResponseQuery;
-
 export interface CountPageviewsResponse {
   data: CountPageviewsResponseData;
   query: CountEventsResponseQuery;
   version: number;
 }
-export const CountPageviewsResponse = /*@__PURE__*/ S.suspend(() =>
+const CountPageviewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: CountPageviewsResponseData,
     query: CountEventsResponseQuery,
@@ -700,7 +539,7 @@ export interface CreateSpeedInsightsToggleRequest {
   projectId: string;
   value: boolean;
 }
-export const CreateSpeedInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpeedInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     value: S.Boolean,
@@ -712,7 +551,7 @@ export const CreateSpeedInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSpeedInsightsToggleResponse {
   value: boolean;
 }
-export const CreateSpeedInsightsToggleResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSpeedInsightsToggleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.Boolean,
   }),
@@ -724,7 +563,7 @@ export interface CreateWebInsightsToggleRequest {
   projectId: string;
   value: boolean;
 }
-export const CreateWebInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Query()),
     value: S.Boolean,
@@ -736,7 +575,7 @@ export const CreateWebInsightsToggleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateWebInsightsToggleResponse {
   value: boolean;
 }
-export const CreateWebInsightsToggleResponse =
+const CreateWebInsightsToggleResponse =
   CreateSpeedInsightsToggleResponse as any as S.Schema<CreateWebInsightsToggleResponse>;
 
 export type AggregateEventsError =

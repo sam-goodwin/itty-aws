@@ -11,7 +11,7 @@ export type { SlackOpError, SlackOpContext };
 
 /** Initial item data. */
 export type CreateItemRequestInitialFieldsList = Array<unknown>;
-export const CreateItemRequestInitialFieldsList = /*@__PURE__*/ S.Array(
+const CreateItemRequestInitialFieldsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateItemRequestInitialFieldsList>;
 
@@ -25,7 +25,7 @@ export interface CreateItemRequest {
   /** Initial item data. */
   initial_fields?: CreateItemRequestInitialFieldsList;
 }
-export const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     duplicated_item_id: S.optional(S.String),
@@ -39,7 +39,7 @@ export interface CreateItemResponse {
   ok: boolean;
   item: unknown;
 }
-export const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     item: S.Unknown,
@@ -48,12 +48,12 @@ export const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** A rich text description of the List. */
 export type CreateSlackListRequestDescriptionBlocksList = Array<unknown>;
-export const CreateSlackListRequestDescriptionBlocksList =
+const CreateSlackListRequestDescriptionBlocksList =
   CreateItemRequestInitialFieldsList as any as S.Schema<CreateSlackListRequestDescriptionBlocksList>;
 
 /** Column definition for the List. */
 export type CreateSlackListRequestSchemaList = Array<unknown>;
-export const CreateSlackListRequestSchemaList =
+const CreateSlackListRequestSchemaList =
   CreateItemRequestInitialFieldsList as any as S.Schema<CreateSlackListRequestSchemaList>;
 
 export interface CreateSlackListRequest {
@@ -70,7 +70,7 @@ export interface CreateSlackListRequest {
   /** Boolean indicating whether the List should be used to track todo tasks. */
   todo_mode?: boolean;
 }
-export const CreateSlackListRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSlackListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description_blocks: S.optional(CreateSlackListRequestDescriptionBlocksList),
@@ -89,7 +89,7 @@ export interface CreateSlackListResponse {
   /** The metadata of the List created. */
   list_metadata?: unknown;
 }
-export const CreateSlackListResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSlackListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     list_id: S.String,
@@ -99,13 +99,13 @@ export const CreateSlackListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channels you wish to update access for. Can only be used if `user_ids` is not provided. */
 export type DeleteAccessRequestChannelIdsList = Array<string>;
-export const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ S.Array(
+const DeleteAccessRequestChannelIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteAccessRequestChannelIdsList>;
 
 /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
 export type DeleteAccessRequestUserIdsList = Array<string>;
-export const DeleteAccessRequestUserIdsList =
+const DeleteAccessRequestUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessRequestUserIdsList>;
 
 export interface DeleteAccessRequest {
@@ -116,7 +116,7 @@ export interface DeleteAccessRequest {
   /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
   user_ids?: DeleteAccessRequestUserIdsList;
 }
-export const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     channel_ids: S.optional(DeleteAccessRequestChannelIdsList),
@@ -126,12 +126,12 @@ export const DeleteAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The channel IDs that could not be updated. */
 export type DeleteAccessResponseFailedToUpdateChannelIdsList = Array<string>;
-export const DeleteAccessResponseFailedToUpdateChannelIdsList =
+const DeleteAccessResponseFailedToUpdateChannelIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateChannelIdsList>;
 
 /** The user IDs that could not be updated. */
 export type DeleteAccessResponseFailedToUpdateUserIdsList = Array<string>;
-export const DeleteAccessResponseFailedToUpdateUserIdsList =
+const DeleteAccessResponseFailedToUpdateUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteAccessResponseFailedToUpdateUserIdsList>;
 
 export interface DeleteAccessResponse {
@@ -142,7 +142,7 @@ export interface DeleteAccessResponse {
   /** The user IDs that could not be updated. */
   failed_to_update_user_ids?: DeleteAccessResponseFailedToUpdateUserIdsList;
 }
-export const DeleteAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     failed_to_update_channel_ids: S.optional(DeleteAccessResponseFailedToUpdateChannelIdsList),
@@ -156,7 +156,7 @@ export interface DeleteItemRequest {
   /** ID of item to delete. */
   id: string;
 }
-export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     id: S.String,
@@ -166,7 +166,7 @@ export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteItemResponse {
   ok: boolean;
 }
-export const DeleteItemResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
   }),
@@ -174,7 +174,7 @@ export const DeleteItemResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** IDs of items to delete. */
 export type DeleteMultipleRequestIdsList = Array<string>;
-export const DeleteMultipleRequestIdsList =
+const DeleteMultipleRequestIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<DeleteMultipleRequestIdsList>;
 
 export interface DeleteMultipleRequest {
@@ -183,7 +183,7 @@ export interface DeleteMultipleRequest {
   /** IDs of items to delete. */
   ids: DeleteMultipleRequestIdsList;
 }
-export const DeleteMultipleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMultipleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     ids: DeleteMultipleRequestIdsList,
@@ -193,7 +193,7 @@ export const DeleteMultipleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteMultipleResponse {
   ok: boolean;
 }
-export const DeleteMultipleResponse = DeleteItemResponse as any as S.Schema<DeleteMultipleResponse>;
+const DeleteMultipleResponse = DeleteItemResponse as any as S.Schema<DeleteMultipleResponse>;
 
 export interface DownloadGetRequest {
   /** ID of the List to export. */
@@ -207,7 +207,7 @@ export interface DownloadGetRequest {
   /** Must match the `include_attachments` passed to `slackLists.download.start`. The returned `download_url` carries this through so the served export matches what was generated. Only applies when `format` is `json`. */
   include_attachments?: boolean;
 }
-export const DownloadGetRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     job_id: S.String,
@@ -225,7 +225,7 @@ export interface DownloadGetResponse {
   /** The URL at which to download the CSV. */
   download_url?: string;
 }
-export const DownloadGetResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     status: S.Unknown,
@@ -244,7 +244,7 @@ export interface DownloadStartRequest {
   /** Include file attachment metadata and access paths in the export. Only applies when `format` is `json`. */
   include_attachments?: boolean;
 }
-export const DownloadStartRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadStartRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     include_archived: S.optional(S.Boolean),
@@ -260,7 +260,7 @@ export interface DownloadStartResponse {
   /** The ID of the recently started job to export the List. */
   job_id: number;
 }
-export const DownloadStartResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     job_id: S.Number,
@@ -275,7 +275,7 @@ export interface ItemsInfoRequest {
   /** Set to `true` to include `is_subscribed` data for the returned List row. */
   include_is_subscribed?: boolean;
 }
-export const ItemsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ItemsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     id: S.String,
@@ -284,7 +284,7 @@ export const ItemsInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemsInfoRequest" }) as any as S.Schema<ItemsInfoRequest>;
 
 export type ItemsInfoResponseSubtasksList = Array<unknown>;
-export const ItemsInfoResponseSubtasksList =
+const ItemsInfoResponseSubtasksList =
   CreateItemRequestInitialFieldsList as any as S.Schema<ItemsInfoResponseSubtasksList>;
 
 export interface ItemsInfoResponse {
@@ -295,7 +295,7 @@ export interface ItemsInfoResponse {
   parent_task?: unknown;
   subtasks?: ItemsInfoResponseSubtasksList;
 }
-export const ItemsInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ItemsInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     list: S.Unknown,
@@ -317,7 +317,7 @@ export interface ListItemsRequest {
   /** Set to `true` to also return the parent `list` object, including its title, column schema, and total row count. Defaults to `false` to keep the response small. */
   include_list?: boolean;
 }
-export const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     limit: S.optional(S.Number),
@@ -328,7 +328,7 @@ export const ListItemsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListItemsRequest" }) as any as S.Schema<ListItemsRequest>;
 
 export type ListItemsResponseItemsList = Array<unknown>;
-export const ListItemsResponseItemsList =
+const ListItemsResponseItemsList =
   CreateItemRequestInitialFieldsList as any as S.Schema<ListItemsResponseItemsList>;
 
 /** Pagination metadata. An empty `next_cursor` means the last page. */
@@ -336,7 +336,7 @@ export interface ListItemsResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-export const ListItemsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListItemsResponseResponseMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next_cursor: S.optional(S.String),
   }),
@@ -353,7 +353,7 @@ export interface ListItemsResponse {
   /** The parent list. Only returned when `include_list` is `true`. `list_limits` carries `row_count` and no other key: the number of items matching this request's `archived` value, counting Slack-suggested items that `items` itself does not return, so it can exceed the number of items you can page through. Sharing and access fields (`channels`, `groups`, `ims`, `access`) are omitted; call `files.info` if you need those or the full set of list limits. */
   list?: unknown;
 }
-export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     items: ListItemsResponseItemsList,
@@ -364,12 +364,12 @@ export const ListItemsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of channels you wish to update access for. Can only be used if `user_ids` is not provided. */
 export type SetAccessRequestChannelIdsList = Array<string>;
-export const SetAccessRequestChannelIdsList =
+const SetAccessRequestChannelIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestChannelIdsList>;
 
 /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
 export type SetAccessRequestUserIdsList = Array<string>;
-export const SetAccessRequestUserIdsList =
+const SetAccessRequestUserIdsList =
   DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessRequestUserIdsList>;
 
 export interface SetAccessRequest {
@@ -382,7 +382,7 @@ export interface SetAccessRequest {
   /** List of users you wish to update access for. Can only be used if `channel_ids` is not provided. */
   user_ids?: SetAccessRequestUserIdsList;
 }
-export const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     access_level: S.String,
@@ -393,14 +393,8 @@ export const SetAccessRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The channel IDs that could not be updated. */
 export type SetAccessResponseFailedToUpdateChannelIdsList = Array<string>;
-export const SetAccessResponseFailedToUpdateChannelIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessResponseFailedToUpdateChannelIdsList>;
-
 /** The user IDs that could not be updated. */
 export type SetAccessResponseFailedToUpdateUserIdsList = Array<string>;
-export const SetAccessResponseFailedToUpdateUserIdsList =
-  DeleteAccessRequestChannelIdsList as any as S.Schema<SetAccessResponseFailedToUpdateUserIdsList>;
-
 export interface SetAccessResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -409,11 +403,11 @@ export interface SetAccessResponse {
   /** The user IDs that could not be updated. */
   failed_to_update_user_ids?: SetAccessResponseFailedToUpdateUserIdsList;
 }
-export const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
+const SetAccessResponse = DeleteAccessResponse as any as S.Schema<SetAccessResponse>;
 
 /** Cells to update. */
 export type UpdateItemRequestCellsList = Array<unknown>;
-export const UpdateItemRequestCellsList =
+const UpdateItemRequestCellsList =
   CreateItemRequestInitialFieldsList as any as S.Schema<UpdateItemRequestCellsList>;
 
 export interface UpdateItemRequest {
@@ -422,7 +416,7 @@ export interface UpdateItemRequest {
   /** Cells to update. */
   cells: UpdateItemRequestCellsList;
 }
-export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list_id: S.String,
     cells: UpdateItemRequestCellsList,
@@ -433,11 +427,11 @@ export interface UpdateItemResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UpdateItemResponse = DeleteItemResponse as any as S.Schema<UpdateItemResponse>;
+const UpdateItemResponse = DeleteItemResponse as any as S.Schema<UpdateItemResponse>;
 
 /** A rich text description of the List. */
 export type UpdateSlackListRequestDescriptionBlocksList = Array<unknown>;
-export const UpdateSlackListRequestDescriptionBlocksList =
+const UpdateSlackListRequestDescriptionBlocksList =
   CreateItemRequestInitialFieldsList as any as S.Schema<UpdateSlackListRequestDescriptionBlocksList>;
 
 export interface UpdateSlackListRequest {
@@ -450,7 +444,7 @@ export interface UpdateSlackListRequest {
   /** Boolean indicating whether the List should be in todo mode. */
   todo_mode?: boolean;
 }
-export const UpdateSlackListRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSlackListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.optional(S.String),
@@ -463,8 +457,7 @@ export interface UpdateSlackListResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-export const UpdateSlackListResponse =
-  DeleteItemResponse as any as S.Schema<UpdateSlackListResponse>;
+const UpdateSlackListResponse = DeleteItemResponse as any as S.Schema<UpdateSlackListResponse>;
 
 export type CreateItemError = SlackOpError;
 /** Add a new item to an existing List. Required scopes -- bot: `lists:write`; user: `lists:write` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `list_not_found` -- The List was not found. - `over_row_maximum` -- Cannot create more items over the maximum. - `team_not_found` -- The team cannot be found. - `user_not_found` -- The user cannot be found. - `duplicated_item_not_found` -- The item to duplicate cannot be found. - `invalid_option_id` -- Option ID provided does not match column definition. - `invalid_args` -- The provided arguments are invalid. - `uneditable_column` -- Initial values provided for an uneditable column. - `invalid_input_type` -- The field value type does not match the column type. - `invalid_column_id` -- The column ID provided does not exist in the List. - `over_cell_fields_limit` -- Too many values provided for a single field. - `file_not_found` -- The attachment file could not be found. - `invalid_vote_value` -- Invalid value provided for a vote column. See https://docs.slack.dev/reference/methods/slackLists.items.create */

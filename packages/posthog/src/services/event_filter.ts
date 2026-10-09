@@ -9,7 +9,7 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `disabled` - Disabled * `dry_run` - Dry Run * `live` - Live */
 export type EventFilterModeEnum = "disabled" | "dry_run" | "live";
-export const EventFilterModeEnum = S.String;
+const EventFilterModeEnum = S.String;
 
 export interface CreateEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -20,7 +20,7 @@ export interface CreateEventFilterRequest {
   /** Test events to validate the filter. Each: {"event_name": "...", "distinct_id": "...", "expected_result": "drop"|"ingest"} */
   test_cases?: unknown;
 }
-export const CreateEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     mode: S.optional(EventFilterModeEnum),
@@ -39,7 +39,7 @@ export interface EventFilterConfig {
   created_at?: string;
   updated_at?: string;
 }
-export const EventFilterConfig = /*@__PURE__*/ S.suspend(() =>
+const EventFilterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     mode: S.optional(EventFilterModeEnum),
@@ -54,7 +54,7 @@ export interface GetEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/event_filter/", code: 200 })),
@@ -64,7 +64,7 @@ export interface GetEventFilterMetricsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventFilterMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventFilterMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -75,12 +75,12 @@ export const GetEventFilterMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventFilterMetricsRequest>;
 
 export type AppMetricsResponseLabelsList = Array<string>;
-export const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
+const AppMetricsResponseLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AppMetricsResponseLabelsList>;
 
 export type AppMetricSeriesValuesList = Array<number>;
-export const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
+const AppMetricSeriesValuesList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<AppMetricSeriesValuesList>;
 
@@ -88,7 +88,7 @@ export interface AppMetricSeries {
   name?: string;
   values?: AppMetricSeriesValuesList;
 }
-export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
+const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     values: S.optional(AppMetricSeriesValuesList),
@@ -96,7 +96,7 @@ export const AppMetricSeries = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppMetricSeries" }) as any as S.Schema<AppMetricSeries>;
 
 export type AppMetricsResponseSeriesList = Array<AppMetricSeries>;
-export const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
+const AppMetricsResponseSeriesList = /*@__PURE__*/ S.Array(
   AppMetricSeries,
 ) as any as S.Schema<AppMetricsResponseSeriesList>;
 
@@ -104,7 +104,7 @@ export interface AppMetricsResponse {
   labels?: AppMetricsResponseLabelsList;
   series?: AppMetricsResponseSeriesList;
 }
-export const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppMetricsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(AppMetricsResponseLabelsList),
     series: S.optional(AppMetricsResponseSeriesList),
@@ -115,7 +115,7 @@ export interface GetEventFilterMetricsTotalRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventFilterMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventFilterMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -130,7 +130,7 @@ export const GetEventFilterMetricsTotalRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventFilterMetricsTotalRequest>;
 
 export type AppMetricsTotalsResponseTotalsMap = { [key: string]: number | undefined };
-export const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
+const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<AppMetricsTotalsResponseTotalsMap>;
@@ -138,7 +138,7 @@ export const AppMetricsTotalsResponseTotalsMap = /*@__PURE__*/ S.Record(
 export interface AppMetricsTotalsResponse {
   totals?: AppMetricsTotalsResponseTotalsMap;
 }
-export const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
+const AppMetricsTotalsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totals: S.optional(AppMetricsTotalsResponseTotalsMap),
   }),

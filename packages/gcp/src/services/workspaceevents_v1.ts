@@ -79,14 +79,14 @@ export class WorkspaceEventsScopeInsufficient
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The endpoint where the subscription delivers events. */
 export interface NotificationEndpoint {
   /** Immutable. The Pub/Sub topic that receives events for the subscription. Format: `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you create this subscription. Note: The Google Workspace Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/ordering) for the benefit of sequential events. If the Cloud Pub/Sub topic has a [message storage policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions) configured to exclude the nearest Google Cloud region, publishing events with ordering keys will fail. When the topic receives events, the events are encoded as Pub/Sub messages. For details, see the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md). */
   pubsubTopic?: string;
 }
-export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
+const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
   }),
@@ -99,7 +99,7 @@ export interface PayloadOptions {
   /** Optional. Whether the event payload includes data about the resource that changed. For example, for an event where a Google Chat message was created, whether the payload contains data about the [`Message`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages) resource. If false, the event payload only includes the name of the changed resource. */
   includeResource?: boolean;
 }
-export const PayloadOptions = /*@__PURE__*/ S.suspend(() =>
+const PayloadOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldMask: S.optional(S.String),
     includeResource: S.optional(S.Boolean),
@@ -117,17 +117,17 @@ export type SubscriptionSuspensionReasonEnum =
   | "ENDPOINT_NOT_FOUND"
   | "ENDPOINT_RESOURCE_EXHAUSTED"
   | "OTHER";
-export const SubscriptionSuspensionReasonEnum = S.String;
+const SubscriptionSuspensionReasonEnum = S.String;
 
 export type SubscriptionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "SUSPENDED" | "DELETED";
-export const SubscriptionStateEnum = S.String;
+const SubscriptionStateEnum = S.String;
 
 /** Additional supported options for serving Drive events. */
 export interface DriveOptions {
   /** Optional. Immutable. For subscriptions to Google Drive events, whether to receive events about Drive files that are children of the target folder or shared drive. This field must be `true` for subscriptions on shared drives. * If `false`, the subscription only receives events about changes to the folder or shared drive that's specified as the `targetResource`. * If `true`, the `mimeType` field of the `file` resource must be set to `application/vnd.google-apps.folder`. For details, see [Google Drive event types](https://developers.google.com/workspace/events/guides/events-drive#event-types). */
   includeDescendants?: boolean;
 }
-export const DriveOptions = /*@__PURE__*/ S.suspend(() =>
+const DriveOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeDescendants: S.optional(S.Boolean),
   }),
@@ -172,7 +172,7 @@ export interface Subscription {
   /** Output only. The service account that was used to authorize the creation of the subscription. This service account must be owned by the same Google Cloud project where you created this subscription. Format: `projects/{project_id}/serviceAccounts/{service_account_id}` */
   serviceAccountAuthority?: string;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expireTime: S.optional(S.String),
     eventTypes: S.optional(StringList),
@@ -201,7 +201,7 @@ export interface CreateSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     body: S.optional(Subscription.pipe(T.HttpBody())),
@@ -217,15 +217,10 @@ export const CreateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSubscriptionsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -236,7 +231,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -257,7 +252,7 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     error: S.optional(Status),
@@ -277,7 +272,7 @@ export interface DeleteSubscriptionsRequest {
   /** Optional. Etag of the subscription. If present, it must match with the server's etag. Otherwise, request fails with the status `ABORTED`. */
   etag?: string;
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     allowMissing: S.optional(S.Boolean.pipe(T.Query())),
@@ -298,7 +293,7 @@ export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -314,7 +309,7 @@ export interface GetSubscriptionsRequest {
   /** Required. Resource name of the subscription. Format: `subscriptions/{subscription}` */
   name: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -334,7 +329,7 @@ export interface ListSubscriptionsRequest {
   /** Optional. A page token, received from a previous list subscriptions call. Provide this parameter to retrieve the subsequent page. When paginating, the filter value should match the call that provided the page token. Passing a different value might lead to unexpected results. */
   pageToken?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -349,9 +344,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** The response message for SubscriptionsService.ListSubscriptions. */
 export interface ListSubscriptionsResponse {
@@ -360,7 +353,7 @@ export interface ListSubscriptionsResponse {
   /** List of subscriptions. */
   subscriptions?: SubscriptionList;
 }
-export const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     subscriptions: S.optional(SubscriptionList),
@@ -379,7 +372,7 @@ export interface PatchSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -398,7 +391,7 @@ export const PatchSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for SubscriptionsService.ReactivateSubscription. */
 export interface ReactivateSubscriptionRequest {}
-export const ReactivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ReactivateSubscriptionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ReactivateSubscriptionRequest",
 }) as any as S.Schema<ReactivateSubscriptionRequest>;
 
@@ -408,7 +401,7 @@ export interface ReactivateSubscriptionsRequest {
   /** Request body */
   body?: ReactivateSubscriptionRequest;
 }
-export const ReactivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ReactivateSubscriptionRequest.pipe(T.HttpBody())),

@@ -51,7 +51,7 @@ export interface CreateDmMemberRequest {
   /** The unique identifier of the user to add to the DM channel. For example, 'user_xxxxx'. */
   user_id: string;
 }
-export const CreateDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     user_id: S.String,
@@ -60,11 +60,11 @@ export const CreateDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The notification preferences for a DMs feed member */
 export type DmsFeedMemberNotificationPreferences = "all" | "mentions" | "none";
-export const DmsFeedMemberNotificationPreferences = S.String;
+const DmsFeedMemberNotificationPreferences = S.String;
 
 /** The statuses of a DMs feed member */
 export type DmsFeedMemberStatuses = "requested" | "accepted" | "hidden" | "closed" | "archived";
-export const DmsFeedMemberStatuses = S.String;
+const DmsFeedMemberStatuses = S.String;
 
 /** A user's membership record in a messaging channel, including notification preferences and read state. */
 export interface DmMember {
@@ -81,7 +81,7 @@ export interface DmMember {
   /** The unique identifier of the user who holds this channel membership. */
   user_id: string;
 }
-export const DmMember = /*@__PURE__*/ S.suspend(() =>
+const DmMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     id: S.String,
@@ -96,14 +96,14 @@ export interface DeleteDmMemberRequest {
   /** The unique identifier of the DM channel member to remove. */
   id: string;
 }
-export const DeleteDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/dm_members/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteDmMemberRequest" }) as any as S.Schema<DeleteDmMemberRequest>;
 
 export type DeleteDmMemberResponse = boolean;
-export const DeleteDmMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDmMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteDmMemberResponse" }) as any as S.Schema<DeleteDmMemberResponse>;
 
@@ -111,7 +111,7 @@ export interface GetDmMemberRequest {
   /** The unique identifier of the DM channel member to retrieve. */
   id: string;
 }
-export const GetDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dm_members/{id}", code: 200 })),
@@ -124,7 +124,7 @@ export interface ListDmMemberRequest {
   last?: number;
   channel_id: string;
 }
-export const ListDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -147,7 +147,7 @@ export interface DmMemberListItem {
   /** The unique identifier of the user who holds this channel membership. */
   user_id: string;
 }
-export const DmMemberListItem = /*@__PURE__*/ S.suspend(() =>
+const DmMemberListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel_id: S.String,
     id: S.String,
@@ -159,7 +159,7 @@ export const DmMemberListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListDmMemberResponseDataList = Array<DmMemberListItem>;
-export const ListDmMemberResponseDataList = /*@__PURE__*/ S.Array(
+const ListDmMemberResponseDataList = /*@__PURE__*/ S.Array(
   DmMemberListItem,
 ) as any as S.Schema<ListDmMemberResponseDataList>;
 
@@ -174,7 +174,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -189,7 +189,7 @@ export interface ListDmMemberResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListDmMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDmMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListDmMemberResponseDataList,
     page_info: PageInfo,
@@ -204,7 +204,7 @@ export interface UpdateDmMemberRequest {
   /** The membership status for this member in the DM channel. */
   status?: DmsFeedMemberStatuses | (string & {}) | null;
 }
-export const UpdateDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDmMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     notification_preference: S.optional(S.NullOr(DmsFeedMemberNotificationPreferences)),

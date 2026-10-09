@@ -12,7 +12,7 @@ export type { NotionOpError, NotionOpContext };
 export interface GetPluginDirectoryRequest {
   id: string;
 }
-export const GetPluginDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPluginDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/ai/plugins/{id}", code: 200 })),
@@ -27,7 +27,7 @@ export interface GetPluginDirectoryResponse {
   /** Temporary signed URL for downloading the plugin directory as a gzipped tar archive. */
   url: string;
 }
-export const GetPluginDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPluginDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     version_id: S.String,
@@ -40,7 +40,7 @@ export const GetPluginDirectoryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetSkillDirectoryRequest {
   id: string;
 }
-export const GetSkillDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSkillDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/ai/skills/{id}", code: 200 })),
@@ -54,14 +54,14 @@ export interface GetSkillDirectoryResponse {
   /** Temporary signed URL for downloading the skill directory archive. */
   url: string;
 }
-export const GetSkillDirectoryResponse =
+const GetSkillDirectoryResponse =
   GetPluginDirectoryResponse as any as S.Schema<GetSkillDirectoryResponse>;
 
 export interface ListPluginsRequest {
   page_size?: number;
   start_cursor?: string;
 }
-export const ListPluginsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPluginsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page_size: S.optional(S.Number.pipe(T.Query())),
     start_cursor: S.optional(S.String.pipe(T.Query())),
@@ -75,7 +75,7 @@ export interface ListPluginsResponseResultsItem {
   /** Opaque version identifier for the plugin. Compare this value for equality to determine whether the plugin has changed. */
   version_id: string;
 }
-export const ListPluginsResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+const ListPluginsResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -87,7 +87,7 @@ export const ListPluginsResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPluginsResponseResultsItem>;
 
 export type ListPluginsResponseResultsList = Array<ListPluginsResponseResultsItem>;
-export const ListPluginsResponseResultsList = /*@__PURE__*/ S.Array(
+const ListPluginsResponseResultsList = /*@__PURE__*/ S.Array(
   ListPluginsResponseResultsItem,
 ) as any as S.Schema<ListPluginsResponseResultsList>;
 
@@ -100,7 +100,7 @@ export interface ListPluginsResponse {
   /** Always `plugin` */
   type: string;
 }
-export const ListPluginsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPluginsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.String,
     results: ListPluginsResponseResultsList,

@@ -13,14 +13,14 @@ export interface AbortVpsSnapshotRequest {
   /** Service name */
   serviceName: string;
 }
-export const AbortVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const AbortVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/abortSnapshot", code: 200 })),
 ).annotate({ identifier: "AbortVpsSnapshotRequest" }) as any as S.Schema<AbortVpsSnapshotRequest>;
 
 export interface AbortVpsSnapshotResponse {}
-export const AbortVpsSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AbortVpsSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AbortVpsSnapshotResponse",
 }) as any as S.Schema<AbortVpsSnapshotResponse>;
 
@@ -31,7 +31,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -49,7 +49,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmVpsTerminationRequest {
   /** Service name */
@@ -63,7 +63,7 @@ export interface ConfirmVpsTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmVpsTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmVpsTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -76,7 +76,7 @@ export const ConfirmVpsTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfirmVpsTerminationRequest>;
 
 export type ConfirmVpsTerminationResponse = string;
-export const ConfirmVpsTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmVpsTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmVpsTerminationResponse",
@@ -88,7 +88,7 @@ export interface CreateVpsAutomatedBackupRescheduleRequest {
   /** Time (e.g., 15:04:05) */
   schedule: string;
 }
-export const CreateVpsAutomatedBackupRescheduleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsAutomatedBackupRescheduleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     schedule: S.String,
@@ -109,7 +109,7 @@ export type VpsTaskStateEnum =
   | "paused"
   | "todo"
   | "waitingAck";
-export const VpsTaskStateEnum = S.String;
+const VpsTaskStateEnum = S.String;
 
 /** All type a VPS task can be */
 export type VpsTaskTypeEnum =
@@ -137,7 +137,7 @@ export type VpsTaskTypeEnum =
   | "startVm"
   | "stopVm"
   | "upgradeVm";
-export const VpsTaskTypeEnum = S.String;
+const VpsTaskTypeEnum = S.String;
 
 /** Operation on a VPS Virtual Machine */
 export interface VpsTask {
@@ -147,7 +147,7 @@ export interface VpsTask {
   state?: VpsTaskStateEnum;
   type?: VpsTaskTypeEnum;
 }
-export const VpsTask = /*@__PURE__*/ S.suspend(() =>
+const VpsTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     id: S.optional(S.Number),
@@ -169,7 +169,7 @@ export interface CreateVpsBackupftpAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs: boolean;
 }
-export const CreateVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     cifs: S.Boolean,
@@ -224,7 +224,7 @@ export type DedicatedTaskFunctionEnum =
   | "testIPMIping"
   | "virtualMacAdd"
   | "virtualMacDelete";
-export const DedicatedTaskFunctionEnum = S.String;
+const DedicatedTaskFunctionEnum = S.String;
 
 /** different task status */
 export type DedicatedTaskStatusEnum =
@@ -235,14 +235,14 @@ export type DedicatedTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-export const DedicatedTaskStatusEnum = S.String;
+const DedicatedTaskStatusEnum = S.String;
 
 /** complexType.SafeKeyValueCanBeNull_string */
 export interface ComplexTypeSafeKeyValueCanBeNullString {
   key?: string | null;
   value?: string;
 }
-export const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.NullOr(S.String)),
     value: S.optional(S.String),
@@ -253,7 +253,7 @@ export const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ S.suspend(()
 
 /** Task result tags output */
 export type DedicatedServerTaskTagsList = Array<ComplexTypeSafeKeyValueCanBeNullString>;
-export const DedicatedServerTaskTagsList = /*@__PURE__*/ S.Array(
+const DedicatedServerTaskTagsList = /*@__PURE__*/ S.Array(
   ComplexTypeSafeKeyValueCanBeNullString,
 ) as any as S.Schema<DedicatedServerTaskTagsList>;
 
@@ -284,7 +284,7 @@ export interface DedicatedServerTask {
   /** Reference of the thread on the support tool */
   ticketReference?: string | null;
 }
-export const DedicatedServerTask = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -305,7 +305,7 @@ export interface CreateVpsBackupftpPasswordRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateVpsBackupftpPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsBackupftpPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/backupftp/password", code: 200 })),
@@ -323,7 +323,7 @@ export interface CreateVpsChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateVpsChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -335,12 +335,12 @@ export const CreateVpsChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpsChangeContactRequest>;
 
 export type CreateVpsChangeContactResponseBodyList = Array<number>;
-export const CreateVpsChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateVpsChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateVpsChangeContactResponseBodyList>;
 
 export type CreateVpsChangeContactResponse = CreateVpsChangeContactResponseBodyList;
-export const CreateVpsChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateVpsChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateVpsChangeContactResponse",
@@ -352,7 +352,7 @@ export interface CreateVpsMigration2018Request {
   /** Choosen plan for migration */
   newPlan: string;
 }
-export const CreateVpsMigration2018Request = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsMigration2018Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     newPlan: S.String,
@@ -363,7 +363,7 @@ export const CreateVpsMigration2018Request = /*@__PURE__*/ S.suspend(() =>
 
 /** All supported VNC protocols by VPS */
 export type VpsVncProtocolEnum = "VNC" | "VNCOverWebSocket";
-export const VpsVncProtocolEnum = S.String;
+const VpsVncProtocolEnum = S.String;
 
 export interface CreateVpsOpenConsoleAccessRequest {
   /** Service name */
@@ -371,7 +371,7 @@ export interface CreateVpsOpenConsoleAccessRequest {
   /** All supported VNC protocols by VPS */
   protocol?: VpsVncProtocolEnum | (string & {});
 }
-export const CreateVpsOpenConsoleAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsOpenConsoleAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     protocol: S.optional(VpsVncProtocolEnum),
@@ -386,7 +386,7 @@ export interface VpsVnc {
   password?: string | Redacted.Redacted<string>;
   port?: number;
 }
-export const VpsVnc = /*@__PURE__*/ S.suspend(() =>
+const VpsVnc = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -396,12 +396,12 @@ export const VpsVnc = /*@__PURE__*/ S.suspend(() =>
 
 /** Id of the vps.Software type fetched in /template/{id}/software */
 export type CreateVpsReinstallRequestSoftwareIdList = Array<number>;
-export const CreateVpsReinstallRequestSoftwareIdList =
+const CreateVpsReinstallRequestSoftwareIdList =
   CreateVpsChangeContactResponseBodyList as any as S.Schema<CreateVpsReinstallRequestSoftwareIdList>;
 
 /** SSH key names to pre-install on your VPS (name from /me/sshKey) */
 export type CreateVpsReinstallRequestSshKeyList = Array<string>;
-export const CreateVpsReinstallRequestSshKeyList = /*@__PURE__*/ S.Array(
+const CreateVpsReinstallRequestSshKeyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateVpsReinstallRequestSshKeyList>;
 
@@ -421,7 +421,7 @@ export interface CreateVpsReinstallRequest {
   /** Id of the vps.Template fetched in /templates list */
   templateId: number;
 }
-export const CreateVpsReinstallRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsReinstallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     doNotSendPassword: S.optional(S.Boolean),
@@ -443,7 +443,7 @@ export interface CreateVpsSecondaryDnsDomainRequest {
   /** IPv4 address (e.g., 192.0.2.0) */
   ip?: string;
 }
-export const CreateVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String,
@@ -454,9 +454,7 @@ export const CreateVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpsSecondaryDnsDomainRequest>;
 
 export interface CreateVpsSecondaryDnsDomainResponse {}
-export const CreateVpsSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const CreateVpsSecondaryDnsDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateVpsSecondaryDnsDomainResponse",
 }) as any as S.Schema<CreateVpsSecondaryDnsDomainResponse>;
 
@@ -466,7 +464,7 @@ export interface CreateVpsSnapshotRequest {
   /** A textual description for your snapshot */
   description?: string;
 }
-export const CreateVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -477,7 +475,7 @@ export interface CreateVpsSnapshotRevertRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateVpsSnapshotRevertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVpsSnapshotRevertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/snapshot/revert", code: 200 })),
@@ -491,7 +489,7 @@ export interface DeleteVpsBackupftpAccessRequest {
   /** Ip block */
   ipBlock: string;
 }
-export const DeleteVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -508,7 +506,7 @@ export interface DeleteVpsIpsRequest {
   /** Ip address */
   ipAddress: string;
 }
-export const DeleteVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipAddress: S.String.pipe(T.Label()),
@@ -516,8 +514,7 @@ export const DeleteVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVpsIpsRequest" }) as any as S.Schema<DeleteVpsIpsRequest>;
 
 export interface DeleteVpsIpsResponse {}
-export const DeleteVpsIpsResponse =
-  AbortVpsSnapshotResponse as any as S.Schema<DeleteVpsIpsResponse>;
+const DeleteVpsIpsResponse = AbortVpsSnapshotResponse as any as S.Schema<DeleteVpsIpsResponse>;
 
 export interface DeleteVpsSecondaryDnsDomainRequest {
   /** Service name */
@@ -525,7 +522,7 @@ export interface DeleteVpsSecondaryDnsDomainRequest {
   /** Domain */
   domain: string;
 }
-export const DeleteVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -537,14 +534,14 @@ export const DeleteVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVpsSecondaryDnsDomainRequest>;
 
 export interface DeleteVpsSecondaryDnsDomainResponse {}
-export const DeleteVpsSecondaryDnsDomainResponse =
+const DeleteVpsSecondaryDnsDomainResponse =
   CreateVpsSecondaryDnsDomainResponse as any as S.Schema<DeleteVpsSecondaryDnsDomainResponse>;
 
 export interface DeleteVpsSnapshotRequest {
   /** Service name */
   serviceName: string;
 }
-export const DeleteVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/vps/{serviceName}/snapshot", code: 200 })),
@@ -554,7 +551,7 @@ export interface DeleteVpsVeeamRestoredBackupRequest {
   /** Service name */
   serviceName: string;
 }
-export const DeleteVpsVeeamRestoredBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVpsVeeamRestoredBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/vps/{serviceName}/veeam/restoredBackup", code: 200 })),
@@ -568,7 +565,7 @@ export interface DetachVpsAutomatedBackupBackupRequest {
   /** restorePoint fetched in /vps/{serviceName}/automatedBackup/attachedBackup */
   restorePoint: string;
 }
-export const DetachVpsAutomatedBackupBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const DetachVpsAutomatedBackupBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     restorePoint: S.String,
@@ -583,7 +580,7 @@ export interface GetVpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}", code: 200 })),
@@ -591,7 +588,7 @@ export const GetVpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -607,7 +604,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -618,7 +615,7 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** All values keymap can be in */
 export type VpsVpsKeymapEnum = "fr" | "us";
-export const VpsVpsKeymapEnum = S.String;
+const VpsVpsKeymapEnum = S.String;
 
 /** All options a VPS can have */
 export type VpsVpsOptionEnum =
@@ -630,15 +627,15 @@ export type VpsVpsOptionEnum =
   | "snapshot"
   | "veeam"
   | "windows";
-export const VpsVpsOptionEnum = S.String;
+const VpsVpsOptionEnum = S.String;
 
 export type VpsModelAvailableOptionsList = Array<VpsVpsOptionEnum>;
-export const VpsModelAvailableOptionsList = /*@__PURE__*/ S.Array(
+const VpsModelAvailableOptionsList = /*@__PURE__*/ S.Array(
   VpsVpsOptionEnum,
 ) as any as S.Schema<VpsModelAvailableOptionsList>;
 
 export type VpsModelDatacenterList = Array<string>;
-export const VpsModelDatacenterList =
+const VpsModelDatacenterList =
   CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsModelDatacenterList>;
 
 /** All versions that VPS can have */
@@ -652,7 +649,7 @@ export type VpsVpsVersionEnum =
   | "2018v1"
   | "2018v2"
   | "2019v1";
-export const VpsVpsVersionEnum = S.String;
+const VpsVpsVersionEnum = S.String;
 
 /** A structure describing characteristics of a VPS model */
 export interface VpsModel {
@@ -667,7 +664,7 @@ export interface VpsModel {
   /** All versions that VPS can have */
   version?: VpsVpsVersionEnum;
 }
-export const VpsModel = /*@__PURE__*/ S.suspend(() =>
+const VpsModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableOptions: S.optional(VpsModelAvailableOptionsList),
     datacenter: S.optional(VpsModelDatacenterList),
@@ -683,12 +680,12 @@ export const VpsModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Ip blocks for OVH monitoring servers */
 export type VpsVPSWithIAMMonitoringIpBlocksList = Array<string>;
-export const VpsVPSWithIAMMonitoringIpBlocksList =
+const VpsVPSWithIAMMonitoringIpBlocksList =
   CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsVPSWithIAMMonitoringIpBlocksList>;
 
 /** All values a VPS netboot mode can be in */
 export type VpsVpsNetbootEnum = "local" | "rescue";
-export const VpsVpsNetbootEnum = S.String;
+const VpsVpsNetbootEnum = S.String;
 
 /** All offers a VPS can have */
 export type VpsVpsOfferEnum =
@@ -699,7 +696,7 @@ export type VpsVpsOfferEnum =
   | "game-classic"
   | "lowlat"
   | "ssd";
-export const VpsVpsOfferEnum = S.String;
+const VpsVpsOfferEnum = S.String;
 
 /** All states a VPS can be in */
 export type VpsVpsStateEnum =
@@ -712,11 +709,11 @@ export type VpsVpsStateEnum =
   | "stopped"
   | "stopping"
   | "upgrading";
-export const VpsVpsStateEnum = S.String;
+const VpsVpsStateEnum = S.String;
 
 /** Enum values for zone type */
 export type VpsZoneTypeEnum = "localzone" | "region";
-export const VpsZoneTypeEnum = S.String;
+const VpsZoneTypeEnum = S.String;
 
 /** VPS Virtual Machine */
 export interface VpsVPSWithIAM {
@@ -741,7 +738,7 @@ export interface VpsVPSWithIAM {
   zone?: string;
   zoneType?: VpsZoneTypeEnum;
 }
-export const VpsVPSWithIAM = /*@__PURE__*/ S.suspend(() =>
+const VpsVPSWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cluster: S.optional(S.String),
     displayName: S.optional(S.NullOr(S.String)),
@@ -765,7 +762,7 @@ export interface GetVpsAutomatedBackupRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/automatedBackup", code: 200 })),
@@ -775,7 +772,7 @@ export const GetVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available AutomatedBackup states */
 export type VpsBackupStateEnum = "disabled" | "enabled";
-export const VpsBackupStateEnum = S.String;
+const VpsBackupStateEnum = S.String;
 
 /** Backup your VPS */
 export interface VpsAutomatedBackup {
@@ -784,7 +781,7 @@ export interface VpsAutomatedBackup {
   /** Backup state */
   state?: VpsBackupStateEnum;
 }
-export const VpsAutomatedBackup = /*@__PURE__*/ S.suspend(() =>
+const VpsAutomatedBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(S.NullOr(S.String)),
     state: S.optional(VpsBackupStateEnum),
@@ -795,7 +792,7 @@ export interface GetVpsBackupftpRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsBackupftpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsBackupftpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/backupftp", code: 200 })),
@@ -806,7 +803,7 @@ export interface ComplexTypeUnitAndValueLong {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -828,7 +825,7 @@ export interface VpsBackupFtp {
   /** The disk space currently used on your backup FTP */
   usage?: ComplexTypeUnitAndValueLong | null;
 }
-export const VpsBackupFtp = /*@__PURE__*/ S.suspend(() =>
+const VpsBackupFtp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ftpBackupName: S.optional(S.String),
     quota: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
@@ -844,7 +841,7 @@ export interface GetVpsBackupftpAccessRequest {
   /** Ip block */
   ipBlock: string;
 }
-export const GetVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -870,7 +867,7 @@ export interface DedicatedServerBackupFtpAcl {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-export const DedicatedServerBackupFtpAcl = /*@__PURE__*/ S.suspend(() =>
+const DedicatedServerBackupFtpAcl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cifs: S.optional(S.Boolean),
     ftp: S.optional(S.Boolean),
@@ -887,14 +884,14 @@ export interface GetVpsConsoleUrlRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsConsoleUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsConsoleUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/getConsoleUrl", code: 200 })),
 ).annotate({ identifier: "GetVpsConsoleUrlRequest" }) as any as S.Schema<GetVpsConsoleUrlRequest>;
 
 export type GetVpsConsoleUrlResponse = string;
-export const GetVpsConsoleUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVpsConsoleUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetVpsConsoleUrlResponse" }) as any as S.Schema<GetVpsConsoleUrlResponse>;
 
@@ -902,7 +899,7 @@ export interface GetVpsDatacenterRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/datacenter", code: 200 })),
@@ -1170,7 +1167,7 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
-export const CoreTypesCountryEnum = S.String;
+const CoreTypesCountryEnum = S.String;
 
 /** Information about a datacenter of a VPS Virtual Machine */
 export interface VpsDatacenter {
@@ -1181,7 +1178,7 @@ export interface VpsDatacenter {
   /** Datacenter name */
   name?: string;
 }
-export const VpsDatacenter = /*@__PURE__*/ S.suspend(() =>
+const VpsDatacenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(CoreTypesCountryEnum),
     longName: S.optional(S.String),
@@ -1195,7 +1192,7 @@ export interface GetVpsDiskRequest {
   /** Id */
   id: number;
 }
-export const GetVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1204,11 +1201,11 @@ export const GetVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible states the disk can be in */
 export type VpsDiskStateEnum = "connected" | "disconnected" | "pending";
-export const VpsDiskStateEnum = S.String;
+const VpsDiskStateEnum = S.String;
 
 /** Possible type a disk can be in */
 export type VpsDiskTypeEnum = "additional" | "primary";
-export const VpsDiskTypeEnum = S.String;
+const VpsDiskTypeEnum = S.String;
 
 /** Information about a disk of a VPS Virtual Machine */
 export interface VpsDisk {
@@ -1224,7 +1221,7 @@ export interface VpsDisk {
   state?: VpsDiskStateEnum;
   type?: VpsDiskTypeEnum;
 }
-export const VpsDisk = /*@__PURE__*/ S.suspend(() =>
+const VpsDisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bandwidthLimit: S.optional(S.Number),
     id: S.optional(S.Number),
@@ -1239,7 +1236,7 @@ export const VpsDisk = /*@__PURE__*/ S.suspend(() =>
 
 /** Available types for the Disk monitoring and use */
 export type VpsDiskStatisticTypeEnum = "max" | "used";
-export const VpsDiskStatisticTypeEnum = S.String;
+const VpsDiskStatisticTypeEnum = S.String;
 
 export interface GetVpsDiskUseRequest {
   /** Service name */
@@ -1249,7 +1246,7 @@ export interface GetVpsDiskUseRequest {
   /** The type of statistic to be fetched */
   type: VpsDiskStatisticTypeEnum | (string & {});
 }
-export const GetVpsDiskUseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsDiskUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1262,14 +1259,14 @@ export interface ComplexTypeUnitAndValueDouble {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueDouble =
+const ComplexTypeUnitAndValueDouble =
   ComplexTypeUnitAndValueLong as any as S.Schema<ComplexTypeUnitAndValueDouble>;
 
 export interface GetVpsDistributionRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsDistributionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsDistributionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/distribution", code: 200 })),
@@ -1278,12 +1275,12 @@ export const GetVpsDistributionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetVpsDistributionRequest>;
 
 export type VpsTemplateAvailableLanguageList = Array<string>;
-export const VpsTemplateAvailableLanguageList =
+const VpsTemplateAvailableLanguageList =
   CreateVpsReinstallRequestSshKeyList as any as S.Schema<VpsTemplateAvailableLanguageList>;
 
 /** Bitness of a VPS template */
 export type VpsTemplateBitFormatEnum = 32 | 64;
-export const VpsTemplateBitFormatEnum = S.Number;
+const VpsTemplateBitFormatEnum = S.Number;
 
 /** Installation template for a VPS Virtual Machine */
 export interface VpsTemplate {
@@ -1294,7 +1291,7 @@ export interface VpsTemplate {
   locale?: string;
   name?: string;
 }
-export const VpsTemplate = /*@__PURE__*/ S.suspend(() =>
+const VpsTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableLanguage: S.optional(VpsTemplateAvailableLanguageList),
     bitFormat: S.optional(VpsTemplateBitFormatEnum),
@@ -1311,7 +1308,7 @@ export interface GetVpsDistributionSoftwareRequest {
   /** Software ID */
   softwareId: number;
 }
-export const GetVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     softwareId: S.Number.pipe(T.Label()),
@@ -1328,11 +1325,11 @@ export const GetVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available Status for a vps Software */
 export type VpsSoftwareStatusEnum = "deprecated" | "stable" | "testing";
-export const VpsSoftwareStatusEnum = S.String;
+const VpsSoftwareStatusEnum = S.String;
 
 /** Available Type for a vps Software */
 export type VpsSoftwareTypeEnum = "database" | "environment" | "webserver";
-export const VpsSoftwareTypeEnum = S.String;
+const VpsSoftwareTypeEnum = S.String;
 
 /** Available softwares on a Template */
 export interface VpsSoftware {
@@ -1341,7 +1338,7 @@ export interface VpsSoftware {
   status?: VpsSoftwareStatusEnum;
   type?: VpsSoftwareTypeEnum;
 }
-export const VpsSoftware = /*@__PURE__*/ S.suspend(() =>
+const VpsSoftware = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1356,7 +1353,7 @@ export interface GetVpsImageAvailableRequest {
   /** Id */
   id: string;
 }
-export const GetVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1370,7 +1367,7 @@ export interface VpsImage {
   id?: string;
   name?: string;
 }
-export const VpsImage = /*@__PURE__*/ S.suspend(() =>
+const VpsImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1381,7 +1378,7 @@ export interface GetVpsImageCurrentRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsImageCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsImageCurrentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/images/current", code: 200 })),
@@ -1395,7 +1392,7 @@ export interface GetVpsIpsRequest {
   /** Ip address */
   ipAddress: string;
 }
-export const GetVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipAddress: S.String.pipe(T.Label()),
@@ -1423,15 +1420,15 @@ export type VpsIpGeolocationEnum =
   | "sg"
   | "uk"
   | "us";
-export const VpsIpGeolocationEnum = S.String;
+const VpsIpGeolocationEnum = S.String;
 
 /** Ip types on a VPS */
 export type VpsIpTypeEnum = "additional" | "primary";
-export const VpsIpTypeEnum = S.String;
+const VpsIpTypeEnum = S.String;
 
 /** Ip versions */
 export type CoreTypesIpVersionEnum = "v4" | "v6";
-export const CoreTypesIpVersionEnum = S.String;
+const CoreTypesIpVersionEnum = S.String;
 
 /** Information about an IP address for a VPS Virtual Machine */
 export interface VpsIp {
@@ -1444,7 +1441,7 @@ export interface VpsIp {
   type?: VpsIpTypeEnum;
   version?: CoreTypesIpVersionEnum;
 }
-export const VpsIp = /*@__PURE__*/ S.suspend(() =>
+const VpsIp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gateway: S.optional(S.NullOr(S.String)),
     geolocation: S.optional(VpsIpGeolocationEnum),
@@ -1466,7 +1463,7 @@ export type GetVpsOptionRequestOption =
   | "snapshot"
   | "veeam"
   | "windows";
-export const GetVpsOptionRequestOption = S.String;
+const GetVpsOptionRequestOption = S.String;
 
 export interface GetVpsOptionRequest {
   /** Service name */
@@ -1474,7 +1471,7 @@ export interface GetVpsOptionRequest {
   /** Option */
   option: GetVpsOptionRequestOption | (string & {});
 }
-export const GetVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     option: GetVpsOptionRequestOption.pipe(T.Label()),
@@ -1483,7 +1480,7 @@ export const GetVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All states a VPS Option can be in */
 export type VpsVpsOptionStateEnum = "released" | "subscribed";
-export const VpsVpsOptionStateEnum = S.String;
+const VpsVpsOptionStateEnum = S.String;
 
 /** Information about the options of a VPS Virtual Machine */
 export interface VpsOption {
@@ -1492,7 +1489,7 @@ export interface VpsOption {
   /** The state of the option */
   state?: VpsVpsOptionStateEnum;
 }
-export const VpsOption = /*@__PURE__*/ S.suspend(() =>
+const VpsOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     option: S.optional(VpsVpsOptionEnum),
     state: S.optional(VpsVpsOptionStateEnum),
@@ -1505,7 +1502,7 @@ export interface GetVpsSecondaryDnsDomainRequest {
   /** Domain */
   domain: string;
 }
-export const GetVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1526,7 +1523,7 @@ export interface SecondaryDnsSecondaryDNS {
   /** IPv4 address (e.g., 192.0.2.0) */
   ipMaster?: string;
 }
-export const SecondaryDnsSecondaryDNS = /*@__PURE__*/ S.suspend(() =>
+const SecondaryDnsSecondaryDNS = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     dns: S.optional(S.String),
@@ -1541,7 +1538,7 @@ export interface GetVpsSecondaryDnsDomainDnsServerRequest {
   /** Domain */
   domain: string;
 }
-export const GetVpsSecondaryDnsDomainDnsServerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsSecondaryDnsDomainDnsServerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -1564,7 +1561,7 @@ export interface SecondaryDnsSecondaryDNSNameServer {
   ip?: string;
   ipv6?: string | null;
 }
-export const SecondaryDnsSecondaryDNSNameServer = /*@__PURE__*/ S.suspend(() =>
+const SecondaryDnsSecondaryDNSNameServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.optional(S.String),
     ip: S.optional(S.String),
@@ -1578,7 +1575,7 @@ export interface GetVpsSecondaryDnsNameServerAvailableRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsSecondaryDnsNameServerAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsSecondaryDnsNameServerAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1592,7 +1589,7 @@ export interface GetVpsServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/serviceInfos", code: 200 })),
@@ -1602,7 +1599,7 @@ export const GetVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateVpsChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -1618,7 +1615,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -1637,7 +1634,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -1647,7 +1644,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -1668,7 +1665,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -1690,7 +1687,7 @@ export interface GetVpsSnapshotRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/snapshot", code: 200 })),
@@ -1703,7 +1700,7 @@ export interface VpsSnapshot {
   id?: string;
   region?: string | null;
 }
-export const VpsSnapshot = /*@__PURE__*/ S.suspend(() =>
+const VpsSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     description: S.optional(S.String),
@@ -1716,7 +1713,7 @@ export interface GetVpsSnapshotDownloadRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsSnapshotDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsSnapshotDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/snapshot/download", code: 200 })),
@@ -1731,7 +1728,7 @@ export interface VpsDownloadSnapshotURL {
   /** URL to download the snapshot */
   url?: string;
 }
-export const VpsDownloadSnapshotURL = /*@__PURE__*/ S.suspend(() =>
+const VpsDownloadSnapshotURL = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     size: S.optional(S.Number),
     url: S.optional(S.String),
@@ -1742,7 +1739,7 @@ export interface GetVpsStatusRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/status", code: 200 })),
@@ -1750,7 +1747,7 @@ export const GetVpsStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible states of a service (ping, port) */
 export type VpsIpServiceStatusStateEnum = "down" | "up";
-export const VpsIpServiceStatusStateEnum = S.String;
+const VpsIpServiceStatusStateEnum = S.String;
 
 /** Port and state of a service on an IP */
 export interface VpsIpServiceStatusService {
@@ -1758,7 +1755,7 @@ export interface VpsIpServiceStatusService {
   /** Possible states of a service (ping, port) */
   state?: VpsIpServiceStatusStateEnum;
 }
-export const VpsIpServiceStatusService = /*@__PURE__*/ S.suspend(() =>
+const VpsIpServiceStatusService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     state: S.optional(VpsIpServiceStatusStateEnum),
@@ -1783,7 +1780,7 @@ export interface VpsIpServiceStatus {
   ssh?: VpsIpServiceStatusService;
   tools?: VpsIpServiceStatusStateEnum | null;
 }
-export const VpsIpServiceStatus = /*@__PURE__*/ S.suspend(() =>
+const VpsIpServiceStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dns: S.optional(VpsIpServiceStatusService),
     http: S.optional(VpsIpServiceStatusService),
@@ -1801,7 +1798,7 @@ export interface GetVpsTaskRequest {
   /** Id */
   id: number;
 }
-export const GetVpsTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1814,7 +1811,7 @@ export interface GetVpsTemplateRequest {
   /** Id */
   id: number;
 }
-export const GetVpsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1829,7 +1826,7 @@ export interface GetVpsTemplateSoftwareRequest {
   /** Software ID */
   softwareId: number;
 }
-export const GetVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1849,7 +1846,7 @@ export interface GetVpsVeeamRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsVeeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsVeeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/veeam", code: 200 })),
@@ -1860,7 +1857,7 @@ export interface VpsVeeam {
   /** Backup state */
   backup?: boolean;
 }
-export const VpsVeeam = /*@__PURE__*/ S.suspend(() =>
+const VpsVeeam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(S.Boolean),
   }),
@@ -1870,7 +1867,7 @@ export interface GetVpsVeeamRestoredBackupRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsVeeamRestoredBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsVeeamRestoredBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/veeam/restoredBackup", code: 200 })),
@@ -1885,7 +1882,7 @@ export interface VpsVeeamInfos {
   /** SMB URL of the backup */
   smb?: string;
 }
-export const VpsVeeamInfos = /*@__PURE__*/ S.suspend(() =>
+const VpsVeeamInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nfs: S.optional(S.String),
     smb: S.optional(S.String),
@@ -1894,7 +1891,7 @@ export const VpsVeeamInfos = /*@__PURE__*/ S.suspend(() =>
 
 /** A structure describing a Veeam restored backup's state */
 export type VpsVeeamStateEnum = "mounted" | "restoring" | "unmounted" | "unmounting";
-export const VpsVeeamStateEnum = S.String;
+const VpsVeeamStateEnum = S.String;
 
 /** Currently restored backup */
 export interface VpsVeeamRestoredBackup {
@@ -1905,7 +1902,7 @@ export interface VpsVeeamRestoredBackup {
   /** The restored backup state */
   state?: VpsVeeamStateEnum;
 }
-export const VpsVeeamRestoredBackup = /*@__PURE__*/ S.suspend(() =>
+const VpsVeeamRestoredBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessInfos: S.optional(VpsVeeamInfos),
     restorePointId: S.optional(S.Number),
@@ -1919,7 +1916,7 @@ export interface GetVpsVeeamRestorePointRequest {
   /** Id */
   id: number;
 }
-export const GetVpsVeeamRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsVeeamRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1935,7 +1932,7 @@ export interface VpsVeeamRestorePoint {
   /** The restore point's id */
   id?: number;
 }
-export const VpsVeeamRestorePoint = /*@__PURE__*/ S.suspend(() =>
+const VpsVeeamRestorePoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationTime: S.optional(S.String),
     id: S.optional(S.Number),
@@ -1946,7 +1943,7 @@ export interface GetVpsVersionRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetVpsVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVpsVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/version", code: 200 })),
@@ -1956,7 +1953,7 @@ export const GetVpsVersionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface VpsVpsBillingVersion {
   version?: number;
 }
-export const VpsVpsBillingVersion = /*@__PURE__*/ S.suspend(() =>
+const VpsVpsBillingVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.Number),
   }),
@@ -1964,18 +1961,18 @@ export const VpsVpsBillingVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput =
+const IamResourceTagFilterInput =
   AbortVpsSnapshotResponse as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListVpsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListVpsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListVpsRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListVpsRequestIamTagsValueList>;
 
 export type ListVpsRequestIamTagsMap = {
   [key: string]: ListVpsRequestIamTagsValueList | undefined;
 };
-export const ListVpsRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListVpsRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListVpsRequestIamTagsValueList,
 ) as any as S.Schema<ListVpsRequestIamTagsMap>;
@@ -1984,18 +1981,18 @@ export interface ListVpsRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListVpsRequestIamTagsMap;
 }
-export const ListVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListVpsRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/vps", code: 200 })),
 ).annotate({ identifier: "ListVpsRequest" }) as any as S.Schema<ListVpsRequest>;
 
 export type ListVpsResponseBodyList = Array<string>;
-export const ListVpsResponseBodyList =
+const ListVpsResponseBodyList =
   CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsResponseBodyList>;
 
 export type ListVpsResponse = ListVpsResponseBodyList;
-export const ListVpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVpsResponse" }) as any as S.Schema<ListVpsResponse>;
 
@@ -2003,7 +2000,7 @@ export interface ListVpsAutomatedBackupAttachedBackupRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsAutomatedBackupAttachedBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAutomatedBackupAttachedBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2022,7 +2019,7 @@ export interface VpsAutomatedBackupAttachedInfos {
   /** SMB URL of the backup */
   smb?: string | null;
 }
-export const VpsAutomatedBackupAttachedInfos = /*@__PURE__*/ S.suspend(() =>
+const VpsAutomatedBackupAttachedInfos = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalDisk: S.optional(S.NullOr(S.String)),
     nfs: S.optional(S.NullOr(S.String)),
@@ -2038,7 +2035,7 @@ export interface VpsAutomatedBackupAttached {
   access?: VpsAutomatedBackupAttachedInfos;
   restorePoint?: string;
 }
-export const VpsAutomatedBackupAttached = /*@__PURE__*/ S.suspend(() =>
+const VpsAutomatedBackupAttached = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(VpsAutomatedBackupAttachedInfos),
     restorePoint: S.optional(S.String),
@@ -2049,13 +2046,13 @@ export const VpsAutomatedBackupAttached = /*@__PURE__*/ S.suspend(() =>
 
 export type ListVpsAutomatedBackupAttachedBackupResponseBodyList =
   Array<VpsAutomatedBackupAttached>;
-export const ListVpsAutomatedBackupAttachedBackupResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVpsAutomatedBackupAttachedBackupResponseBodyList = /*@__PURE__*/ S.Array(
   VpsAutomatedBackupAttached,
 ) as any as S.Schema<ListVpsAutomatedBackupAttachedBackupResponseBodyList>;
 
 export type ListVpsAutomatedBackupAttachedBackupResponse =
   ListVpsAutomatedBackupAttachedBackupResponseBodyList;
-export const ListVpsAutomatedBackupAttachedBackupResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAutomatedBackupAttachedBackupResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsAutomatedBackupAttachedBackupResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVpsAutomatedBackupAttachedBackupResponse",
@@ -2063,7 +2060,7 @@ export const ListVpsAutomatedBackupAttachedBackupResponse = /*@__PURE__*/ S.susp
 
 /** Available restore state */
 export type VpsRestoreStateEnum = "available" | "restored" | "restoring";
-export const VpsRestoreStateEnum = S.String;
+const VpsRestoreStateEnum = S.String;
 
 export interface ListVpsAutomatedBackupRestorePointsRequest {
   /** Service name */
@@ -2071,7 +2068,7 @@ export interface ListVpsAutomatedBackupRestorePointsRequest {
   /** The state of the restore point */
   state: VpsRestoreStateEnum | (string & {});
 }
-export const ListVpsAutomatedBackupRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAutomatedBackupRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     state: VpsRestoreStateEnum.pipe(T.Query()),
@@ -2083,12 +2080,12 @@ export const ListVpsAutomatedBackupRestorePointsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListVpsAutomatedBackupRestorePointsRequest>;
 
 export type ListVpsAutomatedBackupRestorePointsResponseBodyList = Array<string>;
-export const ListVpsAutomatedBackupRestorePointsResponseBodyList =
+const ListVpsAutomatedBackupRestorePointsResponseBodyList =
   CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsAutomatedBackupRestorePointsResponseBodyList>;
 
 export type ListVpsAutomatedBackupRestorePointsResponse =
   ListVpsAutomatedBackupRestorePointsResponseBodyList;
-export const ListVpsAutomatedBackupRestorePointsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAutomatedBackupRestorePointsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsAutomatedBackupRestorePointsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVpsAutomatedBackupRestorePointsResponse",
@@ -2098,7 +2095,7 @@ export interface ListVpsAvailableUpgradeRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsAvailableUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAvailableUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/availableUpgrade", code: 200 })),
@@ -2107,12 +2104,12 @@ export const ListVpsAvailableUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsAvailableUpgradeRequest>;
 
 export type ListVpsAvailableUpgradeResponseBodyList = Array<VpsModel>;
-export const ListVpsAvailableUpgradeResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVpsAvailableUpgradeResponseBodyList = /*@__PURE__*/ S.Array(
   VpsModel,
 ) as any as S.Schema<ListVpsAvailableUpgradeResponseBodyList>;
 
 export type ListVpsAvailableUpgradeResponse = ListVpsAvailableUpgradeResponseBodyList;
-export const ListVpsAvailableUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsAvailableUpgradeResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsAvailableUpgradeResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVpsAvailableUpgradeResponse",
@@ -2122,7 +2119,7 @@ export interface ListVpsBackupftpAccessRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/backupftp/access", code: 200 })),
@@ -2131,18 +2128,15 @@ export const ListVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsBackupftpAccessRequest>;
 
 export type ListVpsBackupftpAccessResponseBodyList = Array<string>;
-export const ListVpsBackupftpAccessResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsBackupftpAccessResponseBodyList>;
-
 export type ListVpsBackupftpAccessResponse = ListVpsBackupftpAccessResponseBodyList;
-export const ListVpsBackupftpAccessResponse =
+const ListVpsBackupftpAccessResponse =
   ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsBackupftpAccessResponse>;
 
 export interface ListVpsBackupftpAuthorizableBlocksRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsBackupftpAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsBackupftpAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2153,12 +2147,9 @@ export const ListVpsBackupftpAuthorizableBlocksRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListVpsBackupftpAuthorizableBlocksRequest>;
 
 export type ListVpsBackupftpAuthorizableBlocksResponseBodyList = Array<string>;
-export const ListVpsBackupftpAuthorizableBlocksResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponseBodyList>;
-
 export type ListVpsBackupftpAuthorizableBlocksResponse =
   ListVpsBackupftpAuthorizableBlocksResponseBodyList;
-export const ListVpsBackupftpAuthorizableBlocksResponse =
+const ListVpsBackupftpAuthorizableBlocksResponse =
   ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsBackupftpAuthorizableBlocksResponse>;
 
 /** Countries a nichandle can choose */
@@ -2417,24 +2408,21 @@ export type NichandleCountryEnum =
   | "ZA"
   | "ZM"
   | "ZW";
-export const NichandleCountryEnum = S.String;
+const NichandleCountryEnum = S.String;
 
 export interface ListVpsDatacenterRequest {
   /** Country targeted */
   country?: NichandleCountryEnum | (string & {});
 }
-export const ListVpsDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country: S.optional(NichandleCountryEnum.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/vps/datacenter", code: 200 })),
 ).annotate({ identifier: "ListVpsDatacenterRequest" }) as any as S.Schema<ListVpsDatacenterRequest>;
 
 export type ListVpsDatacenterResponseBodyList = Array<string>;
-export const ListVpsDatacenterResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsDatacenterResponseBodyList>;
-
 export type ListVpsDatacenterResponse = ListVpsDatacenterResponseBodyList;
-export const ListVpsDatacenterResponse =
+const ListVpsDatacenterResponse =
   ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsDatacenterResponse>;
 
 /** Available periods for the VPS monitoring */
@@ -2444,7 +2432,7 @@ export type VpsVpsMonitoringPeriodEnum =
   | "lastweek"
   | "lastyear"
   | "today";
-export const VpsVpsMonitoringPeriodEnum = S.String;
+const VpsVpsMonitoringPeriodEnum = S.String;
 
 export interface ListVpsDiskMonitoringRequest {
   /** Service name */
@@ -2456,7 +2444,7 @@ export interface ListVpsDiskMonitoringRequest {
   /** The type of statistic to be fetched */
   type: VpsDiskStatisticTypeEnum | (string & {});
 }
-export const ListVpsDiskMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsDiskMonitoringRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2472,7 +2460,7 @@ export interface VpsVpsTimestampValue {
   timestamp?: number;
   value?: number | null;
 }
-export const VpsVpsTimestampValue = /*@__PURE__*/ S.suspend(() =>
+const VpsVpsTimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timestamp: S.optional(S.Number),
     value: S.optional(S.NullOr(S.Number)),
@@ -2480,7 +2468,7 @@ export const VpsVpsTimestampValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpsVpsTimestampValue" }) as any as S.Schema<VpsVpsTimestampValue>;
 
 export type ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList = Array<VpsVpsTimestampValue>;
-export const ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList = /*@__PURE__*/ S.Array(
+const ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList = /*@__PURE__*/ S.Array(
   VpsVpsTimestampValue,
 ) as any as S.Schema<ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList>;
 
@@ -2489,7 +2477,7 @@ export interface ComplexTypeUnitAndValuesVpsVpsTimestampValue {
   unit?: string;
   values?: ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList;
 }
-export const ComplexTypeUnitAndValuesVpsVpsTimestampValue = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValuesVpsVpsTimestampValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     values: S.optional(ComplexTypeUnitAndValuesVpsVpsTimestampValueValuesList),
@@ -2502,18 +2490,18 @@ export interface ListVpsDisksRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsDisksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsDisksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/disks", code: 200 })),
 ).annotate({ identifier: "ListVpsDisksRequest" }) as any as S.Schema<ListVpsDisksRequest>;
 
 export type ListVpsDisksResponseBodyList = Array<number>;
-export const ListVpsDisksResponseBodyList =
+const ListVpsDisksResponseBodyList =
   CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsDisksResponseBodyList>;
 
 export type ListVpsDisksResponse = ListVpsDisksResponseBodyList;
-export const ListVpsDisksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsDisksResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsDisksResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVpsDisksResponse" }) as any as S.Schema<ListVpsDisksResponse>;
 
@@ -2521,7 +2509,7 @@ export interface ListVpsDistributionSoftwareRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/distribution/software", code: 200 })),
@@ -2530,18 +2518,15 @@ export const ListVpsDistributionSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsDistributionSoftwareRequest>;
 
 export type ListVpsDistributionSoftwareResponseBodyList = Array<number>;
-export const ListVpsDistributionSoftwareResponseBodyList =
-  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsDistributionSoftwareResponseBodyList>;
-
 export type ListVpsDistributionSoftwareResponse = ListVpsDistributionSoftwareResponseBodyList;
-export const ListVpsDistributionSoftwareResponse =
+const ListVpsDistributionSoftwareResponse =
   CreateVpsChangeContactResponse as any as S.Schema<ListVpsDistributionSoftwareResponse>;
 
 export interface ListVpsImageAvailableRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/images/available", code: 200 })),
@@ -2550,18 +2535,15 @@ export const ListVpsImageAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsImageAvailableRequest>;
 
 export type ListVpsImageAvailableResponseBodyList = Array<string>;
-export const ListVpsImageAvailableResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsImageAvailableResponseBodyList>;
-
 export type ListVpsImageAvailableResponse = ListVpsImageAvailableResponseBodyList;
-export const ListVpsImageAvailableResponse =
+const ListVpsImageAvailableResponse =
   ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsImageAvailableResponse>;
 
 export interface ListVpsIpCountryAvailableRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/ipCountryAvailable", code: 200 })),
@@ -2570,11 +2552,11 @@ export const ListVpsIpCountryAvailableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsIpCountryAvailableRequest>;
 
 export type ListVpsIpCountryAvailableResponseBodyList = Array<VpsIpGeolocationEnum>;
-export const ListVpsIpCountryAvailableResponseBodyList =
+const ListVpsIpCountryAvailableResponseBodyList =
   VpsModelAvailableOptionsList as any as S.Schema<ListVpsIpCountryAvailableResponseBodyList>;
 
 export type ListVpsIpCountryAvailableResponse = ListVpsIpCountryAvailableResponseBodyList;
-export const ListVpsIpCountryAvailableResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsIpCountryAvailableResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsIpCountryAvailableResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVpsIpCountryAvailableResponse",
@@ -2584,24 +2566,21 @@ export interface ListVpsIpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/ips", code: 200 })),
 ).annotate({ identifier: "ListVpsIpsRequest" }) as any as S.Schema<ListVpsIpsRequest>;
 
 export type ListVpsIpsResponseBodyList = Array<string>;
-export const ListVpsIpsResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsIpsResponseBodyList>;
-
 export type ListVpsIpsResponse = ListVpsIpsResponseBodyList;
-export const ListVpsIpsResponse = ListVpsResponse as any as S.Schema<ListVpsIpsResponse>;
+const ListVpsIpsResponse = ListVpsResponse as any as S.Schema<ListVpsIpsResponse>;
 
 export interface ListVpsMigration2018Request {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsMigration2018Request = /*@__PURE__*/ S.suspend(() =>
+const ListVpsMigration2018Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/migration2018", code: 200 })),
@@ -2619,7 +2598,7 @@ export type VpsMigrationDatacenterEnum =
   | "SYD"
   | "UK"
   | "WAW";
-export const VpsMigrationDatacenterEnum = S.String;
+const VpsMigrationDatacenterEnum = S.String;
 
 /** Mapping between a VPS 2016 option code and a VPS 2020 option code */
 export interface VpsMigrationOptionOptionMapping2016 {
@@ -2630,7 +2609,7 @@ export interface VpsMigrationOptionOptionMapping2016 {
   /** VPS option product */
   product?: string;
 }
-export const VpsMigrationOptionOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
+const VpsMigrationOptionOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentPlan: S.optional(S.String),
     newPlan: S.optional(S.String),
@@ -2642,7 +2621,7 @@ export const VpsMigrationOptionOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of VPS options of option from VPS 2016 to VPS 2020 */
 export type VpsMigrationOptionMapping2016OptionsList = Array<VpsMigrationOptionOptionMapping2016>;
-export const VpsMigrationOptionMapping2016OptionsList = /*@__PURE__*/ S.Array(
+const VpsMigrationOptionMapping2016OptionsList = /*@__PURE__*/ S.Array(
   VpsMigrationOptionOptionMapping2016,
 ) as any as S.Schema<VpsMigrationOptionMapping2016OptionsList>;
 
@@ -2657,7 +2636,7 @@ export interface VpsMigrationOptionMapping2016 {
   /** VPS option product */
   product?: string;
 }
-export const VpsMigrationOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
+const VpsMigrationOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentPlan: S.optional(S.String),
     newPlan: S.optional(S.String),
@@ -2670,7 +2649,7 @@ export const VpsMigrationOptionMapping2016 = /*@__PURE__*/ S.suspend(() =>
 
 /** Mapping of VPS options from VPS 2016 to VPS 2020 */
 export type VpsMigrationVPS2018to2020PlanOptionsList = Array<VpsMigrationOptionMapping2016>;
-export const VpsMigrationVPS2018to2020PlanOptionsList = /*@__PURE__*/ S.Array(
+const VpsMigrationVPS2018to2020PlanOptionsList = /*@__PURE__*/ S.Array(
   VpsMigrationOptionMapping2016,
 ) as any as S.Schema<VpsMigrationVPS2018to2020PlanOptionsList>;
 
@@ -2685,7 +2664,7 @@ export interface VpsMigrationVPS2018to2020Plan {
   /** VPS product */
   product?: string;
 }
-export const VpsMigrationVPS2018to2020Plan = /*@__PURE__*/ S.suspend(() =>
+const VpsMigrationVPS2018to2020Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentPlan: S.optional(S.String),
     newPlan: S.optional(S.String),
@@ -2698,7 +2677,7 @@ export const VpsMigrationVPS2018to2020Plan = /*@__PURE__*/ S.suspend(() =>
 
 /** List of available plans to migrate */
 export type VpsMigrationVPS2018to2020PlansList = Array<VpsMigrationVPS2018to2020Plan>;
-export const VpsMigrationVPS2018to2020PlansList = /*@__PURE__*/ S.Array(
+const VpsMigrationVPS2018to2020PlansList = /*@__PURE__*/ S.Array(
   VpsMigrationVPS2018to2020Plan,
 ) as any as S.Schema<VpsMigrationVPS2018to2020PlansList>;
 
@@ -2709,7 +2688,7 @@ export type VpsMigrationStatusEnum =
   | "ongoing"
   | "planned"
   | "toPlan";
-export const VpsMigrationStatusEnum = S.String;
+const VpsMigrationStatusEnum = S.String;
 
 /** A structure describing a migration from VPS 2016/2018 to VPS 2020 */
 export interface VpsMigrationVPS2018to2020 {
@@ -2722,7 +2701,7 @@ export interface VpsMigrationVPS2018to2020 {
   /** All status a migration task can be in */
   status?: VpsMigrationStatusEnum;
 }
-export const VpsMigrationVPS2018to2020 = /*@__PURE__*/ S.suspend(() =>
+const VpsMigrationVPS2018to2020 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.optional(VpsMigrationDatacenterEnum),
     date: S.optional(S.NullOr(S.String)),
@@ -2737,18 +2716,18 @@ export interface ListVpsModelsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/models", code: 200 })),
 ).annotate({ identifier: "ListVpsModelsRequest" }) as any as S.Schema<ListVpsModelsRequest>;
 
 export type ListVpsModelsResponseBodyList = Array<VpsModel>;
-export const ListVpsModelsResponseBodyList =
+const ListVpsModelsResponseBodyList =
   ListVpsAvailableUpgradeResponseBodyList as any as S.Schema<ListVpsModelsResponseBodyList>;
 
 export type ListVpsModelsResponse = ListVpsModelsResponseBodyList;
-export const ListVpsModelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsModelsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsModelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVpsModelsResponse" }) as any as S.Schema<ListVpsModelsResponse>;
 
@@ -2756,18 +2735,18 @@ export interface ListVpsOptionRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/option", code: 200 })),
 ).annotate({ identifier: "ListVpsOptionRequest" }) as any as S.Schema<ListVpsOptionRequest>;
 
 export type ListVpsOptionResponseBodyList = Array<VpsVpsOptionEnum>;
-export const ListVpsOptionResponseBodyList =
+const ListVpsOptionResponseBodyList =
   VpsModelAvailableOptionsList as any as S.Schema<ListVpsOptionResponseBodyList>;
 
 export type ListVpsOptionResponse = ListVpsOptionResponseBodyList;
-export const ListVpsOptionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVpsOptionResponse = /*@__PURE__*/ S.suspend(() =>
   ListVpsOptionResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVpsOptionResponse" }) as any as S.Schema<ListVpsOptionResponse>;
 
@@ -2789,7 +2768,7 @@ export type NichandleOvhSubsidiaryEnum =
   | "PT"
   | "SN"
   | "TN";
-export const NichandleOvhSubsidiaryEnum = S.String;
+const NichandleOvhSubsidiaryEnum = S.String;
 
 export interface ListVpsOrderRuleDatacenterRequest {
   /** VPS OS selection in order api */
@@ -2799,7 +2778,7 @@ export interface ListVpsOrderRuleDatacenterRequest {
   /** VPS plan code from order api */
   planCode: string;
 }
-export const ListVpsOrderRuleDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsOrderRuleDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     os: S.optional(S.String.pipe(T.Query())),
     ovhSubsidiary: NichandleOvhSubsidiaryEnum.pipe(T.Query()),
@@ -2811,14 +2790,14 @@ export const ListVpsOrderRuleDatacenterRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for datacenter status */
 export type VpsOrderRuleDatacenterStatusEnum = "available" | "out-of-stock";
-export const VpsOrderRuleDatacenterStatusEnum = S.String;
+const VpsOrderRuleDatacenterStatusEnum = S.String;
 
 /** Datacenter rules */
 export interface VpsOrderRuleDatacenter {
   datacenter?: string;
   status?: VpsOrderRuleDatacenterStatusEnum;
 }
-export const VpsOrderRuleDatacenter = /*@__PURE__*/ S.suspend(() =>
+const VpsOrderRuleDatacenter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.optional(S.String),
     status: S.optional(VpsOrderRuleDatacenterStatusEnum),
@@ -2826,7 +2805,7 @@ export const VpsOrderRuleDatacenter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpsOrderRuleDatacenter" }) as any as S.Schema<VpsOrderRuleDatacenter>;
 
 export type VpsOrderRuleDatacentersDatacentersList = Array<VpsOrderRuleDatacenter>;
-export const VpsOrderRuleDatacentersDatacentersList = /*@__PURE__*/ S.Array(
+const VpsOrderRuleDatacentersDatacentersList = /*@__PURE__*/ S.Array(
   VpsOrderRuleDatacenter,
 ) as any as S.Schema<VpsOrderRuleDatacentersDatacentersList>;
 
@@ -2834,7 +2813,7 @@ export const VpsOrderRuleDatacentersDatacentersList = /*@__PURE__*/ S.Array(
 export interface VpsOrderRuleDatacenters {
   datacenters?: VpsOrderRuleDatacentersDatacentersList;
 }
-export const VpsOrderRuleDatacenters = /*@__PURE__*/ S.suspend(() =>
+const VpsOrderRuleDatacenters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenters: S.optional(VpsOrderRuleDatacentersDatacentersList),
   }),
@@ -2846,7 +2825,7 @@ export interface ListVpsOrderRuleOsChoicesRequest {
   /** VPS OS selection in order api */
   os: string;
 }
-export const ListVpsOrderRuleOsChoicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsOrderRuleOsChoicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.String.pipe(T.Query()),
     os: S.String.pipe(T.Query()),
@@ -2857,14 +2836,14 @@ export const ListVpsOrderRuleOsChoicesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Possible values for OS choice status */
 export type VpsOrderRuleOSChoiceStatusEnum = "available" | "checked-by-default" | "unavailable";
-export const VpsOrderRuleOSChoiceStatusEnum = S.String;
+const VpsOrderRuleOSChoiceStatusEnum = S.String;
 
 /** OS choice rules */
 export interface VpsOrderRuleOSChoice {
   name?: string;
   status?: VpsOrderRuleOSChoiceStatusEnum;
 }
-export const VpsOrderRuleOSChoice = /*@__PURE__*/ S.suspend(() =>
+const VpsOrderRuleOSChoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(VpsOrderRuleOSChoiceStatusEnum),
@@ -2872,7 +2851,7 @@ export const VpsOrderRuleOSChoice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpsOrderRuleOSChoice" }) as any as S.Schema<VpsOrderRuleOSChoice>;
 
 export type VpsOrderRuleOSChoicesChoicesList = Array<VpsOrderRuleOSChoice>;
-export const VpsOrderRuleOSChoicesChoicesList = /*@__PURE__*/ S.Array(
+const VpsOrderRuleOSChoicesChoicesList = /*@__PURE__*/ S.Array(
   VpsOrderRuleOSChoice,
 ) as any as S.Schema<VpsOrderRuleOSChoicesChoicesList>;
 
@@ -2880,7 +2859,7 @@ export const VpsOrderRuleOSChoicesChoicesList = /*@__PURE__*/ S.Array(
 export interface VpsOrderRuleOSChoices {
   choices?: VpsOrderRuleOSChoicesChoicesList;
 }
-export const VpsOrderRuleOSChoices = /*@__PURE__*/ S.suspend(() =>
+const VpsOrderRuleOSChoices = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choices: S.optional(VpsOrderRuleOSChoicesChoicesList),
   }),
@@ -2890,7 +2869,7 @@ export interface ListVpsSecondaryDnsDomainsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/secondaryDnsDomains", code: 200 })),
@@ -2899,11 +2878,8 @@ export const ListVpsSecondaryDnsDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsSecondaryDnsDomainsRequest>;
 
 export type ListVpsSecondaryDnsDomainsResponseBodyList = Array<string>;
-export const ListVpsSecondaryDnsDomainsResponseBodyList =
-  CreateVpsReinstallRequestSshKeyList as any as S.Schema<ListVpsSecondaryDnsDomainsResponseBodyList>;
-
 export type ListVpsSecondaryDnsDomainsResponse = ListVpsSecondaryDnsDomainsResponseBodyList;
-export const ListVpsSecondaryDnsDomainsResponse =
+const ListVpsSecondaryDnsDomainsResponse =
   ListVpsAutomatedBackupRestorePointsResponse as any as S.Schema<ListVpsSecondaryDnsDomainsResponse>;
 
 export interface ListVpsTasksRequest {
@@ -2914,7 +2890,7 @@ export interface ListVpsTasksRequest {
   /** Filter the value of type property (=) */
   type?: VpsTaskTypeEnum | (string & {});
 }
-export const ListVpsTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     state: S.optional(VpsTaskStateEnum.pipe(T.Query())),
@@ -2923,29 +2899,22 @@ export const ListVpsTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVpsTasksRequest" }) as any as S.Schema<ListVpsTasksRequest>;
 
 export type ListVpsTasksResponseBodyList = Array<number>;
-export const ListVpsTasksResponseBodyList =
-  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTasksResponseBodyList>;
-
 export type ListVpsTasksResponse = ListVpsTasksResponseBodyList;
-export const ListVpsTasksResponse = ListVpsDisksResponse as any as S.Schema<ListVpsTasksResponse>;
+const ListVpsTasksResponse = ListVpsDisksResponse as any as S.Schema<ListVpsTasksResponse>;
 
 export interface ListVpsTemplatesRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListVpsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/vps/{serviceName}/templates", code: 200 })),
 ).annotate({ identifier: "ListVpsTemplatesRequest" }) as any as S.Schema<ListVpsTemplatesRequest>;
 
 export type ListVpsTemplatesResponseBodyList = Array<number>;
-export const ListVpsTemplatesResponseBodyList =
-  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTemplatesResponseBodyList>;
-
 export type ListVpsTemplatesResponse = ListVpsTemplatesResponseBodyList;
-export const ListVpsTemplatesResponse =
-  ListVpsDisksResponse as any as S.Schema<ListVpsTemplatesResponse>;
+const ListVpsTemplatesResponse = ListVpsDisksResponse as any as S.Schema<ListVpsTemplatesResponse>;
 
 export interface ListVpsTemplateSoftwareRequest {
   /** Service name */
@@ -2953,7 +2922,7 @@ export interface ListVpsTemplateSoftwareRequest {
   /** Id */
   id: number;
 }
-export const ListVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -2963,11 +2932,8 @@ export const ListVpsTemplateSoftwareRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsTemplateSoftwareRequest>;
 
 export type ListVpsTemplateSoftwareResponseBodyList = Array<number>;
-export const ListVpsTemplateSoftwareResponseBodyList =
-  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsTemplateSoftwareResponseBodyList>;
-
 export type ListVpsTemplateSoftwareResponse = ListVpsTemplateSoftwareResponseBodyList;
-export const ListVpsTemplateSoftwareResponse =
+const ListVpsTemplateSoftwareResponse =
   CreateVpsChangeContactResponse as any as S.Schema<ListVpsTemplateSoftwareResponse>;
 
 export interface ListVpsVeeamRestorePointsRequest {
@@ -2976,7 +2942,7 @@ export interface ListVpsVeeamRestorePointsRequest {
   /** Filter the value of creationTime property (like) */
   creationTime?: string;
 }
-export const ListVpsVeeamRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVpsVeeamRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     creationTime: S.optional(S.String.pipe(T.Query())),
@@ -2986,11 +2952,8 @@ export const ListVpsVeeamRestorePointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVpsVeeamRestorePointsRequest>;
 
 export type ListVpsVeeamRestorePointsResponseBodyList = Array<number>;
-export const ListVpsVeeamRestorePointsResponseBodyList =
-  CreateVpsChangeContactResponseBodyList as any as S.Schema<ListVpsVeeamRestorePointsResponseBodyList>;
-
 export type ListVpsVeeamRestorePointsResponse = ListVpsVeeamRestorePointsResponseBodyList;
-export const ListVpsVeeamRestorePointsResponse =
+const ListVpsVeeamRestorePointsResponse =
   CreateVpsChangeContactResponse as any as S.Schema<ListVpsVeeamRestorePointsResponse>;
 
 export interface PutVpsRequest {
@@ -3004,7 +2967,7 @@ export interface PutVpsRequest {
   netbootMode?: VpsVpsNetbootEnum | (string & {});
   slaMonitoring?: boolean | null;
 }
-export const PutVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.NullOr(S.String)),
@@ -3015,7 +2978,7 @@ export const PutVpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsRequest" }) as any as S.Schema<PutVpsRequest>;
 
 export interface PutVpsResponse {}
-export const PutVpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsResponse>;
+const PutVpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsResponse>;
 
 export interface PutVpsBackupftpAccessRequest {
   /** Service name */
@@ -3029,7 +2992,7 @@ export interface PutVpsBackupftpAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-export const PutVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipBlock: S.String.pipe(T.Label()),
@@ -3044,7 +3007,7 @@ export const PutVpsBackupftpAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsBackupftpAccessRequest>;
 
 export interface PutVpsBackupftpAccessResponse {}
-export const PutVpsBackupftpAccessResponse =
+const PutVpsBackupftpAccessResponse =
   AbortVpsSnapshotResponse as any as S.Schema<PutVpsBackupftpAccessResponse>;
 
 export interface PutVpsDiskRequest {
@@ -3057,7 +3020,7 @@ export interface PutVpsDiskRequest {
   /** The monitoring state of this disk */
   monitoring?: boolean | null;
 }
-export const PutVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3067,7 +3030,7 @@ export const PutVpsDiskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsDiskRequest" }) as any as S.Schema<PutVpsDiskRequest>;
 
 export interface PutVpsDiskResponse {}
-export const PutVpsDiskResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsDiskResponse>;
+const PutVpsDiskResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsDiskResponse>;
 
 export interface PutVpsIpsRequest {
   /** Service name */
@@ -3076,7 +3039,7 @@ export interface PutVpsIpsRequest {
   ipAddress: string;
   reverse?: string | null;
 }
-export const PutVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ipAddress: S.String.pipe(T.Label()),
@@ -3085,7 +3048,7 @@ export const PutVpsIpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsIpsRequest" }) as any as S.Schema<PutVpsIpsRequest>;
 
 export interface PutVpsIpsResponse {}
-export const PutVpsIpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsIpsResponse>;
+const PutVpsIpsResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsIpsResponse>;
 
 export interface PutVpsSecondaryDnsDomainRequest {
   /** Service name */
@@ -3095,7 +3058,7 @@ export interface PutVpsSecondaryDnsDomainRequest {
   /** IPv4 address (e.g., 192.0.2.0) */
   ipMaster?: string;
 }
-export const PutVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     domain: S.String.pipe(T.Label()),
@@ -3108,7 +3071,7 @@ export const PutVpsSecondaryDnsDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsSecondaryDnsDomainRequest>;
 
 export interface PutVpsSecondaryDnsDomainResponse {}
-export const PutVpsSecondaryDnsDomainResponse =
+const PutVpsSecondaryDnsDomainResponse =
   CreateVpsSecondaryDnsDomainResponse as any as S.Schema<PutVpsSecondaryDnsDomainResponse>;
 
 export interface PutVpsServiceInfosRequest {
@@ -3117,7 +3080,7 @@ export interface PutVpsServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -3127,7 +3090,7 @@ export const PutVpsServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutVpsServiceInfosRequest>;
 
 export interface PutVpsServiceInfosResponse {}
-export const PutVpsServiceInfosResponse =
+const PutVpsServiceInfosResponse =
   AbortVpsSnapshotResponse as any as S.Schema<PutVpsServiceInfosResponse>;
 
 export interface PutVpsSnapshotRequest {
@@ -3135,7 +3098,7 @@ export interface PutVpsSnapshotRequest {
   serviceName: string;
   description?: string;
 }
-export const PutVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const PutVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     description: S.optional(S.String),
@@ -3143,14 +3106,13 @@ export const PutVpsSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutVpsSnapshotRequest" }) as any as S.Schema<PutVpsSnapshotRequest>;
 
 export interface PutVpsSnapshotResponse {}
-export const PutVpsSnapshotResponse =
-  AbortVpsSnapshotResponse as any as S.Schema<PutVpsSnapshotResponse>;
+const PutVpsSnapshotResponse = AbortVpsSnapshotResponse as any as S.Schema<PutVpsSnapshotResponse>;
 
 export interface RebootVpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const RebootVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const RebootVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/reboot", code: 200 })),
@@ -3170,7 +3132,7 @@ export interface RebuildVpsRequest {
   /** SSH key name to pre-install on your VPS (name from /me/sshKey) */
   sshKey?: string;
 }
-export const RebuildVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const RebuildVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     doNotSendPassword: S.optional(S.Boolean),
@@ -3183,7 +3145,7 @@ export const RebuildVpsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Available restore types */
 export type VpsRestoreTypeEnum = "file" | "full";
-export const VpsRestoreTypeEnum = S.String;
+const VpsRestoreTypeEnum = S.String;
 
 export interface RestoreVpsAutomatedBackupRequest {
   /** Service name */
@@ -3195,7 +3157,7 @@ export interface RestoreVpsAutomatedBackupRequest {
   /** Available restore types */
   type: VpsRestoreTypeEnum | (string & {});
 }
-export const RestoreVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     changePassword: S.optional(S.Boolean),
@@ -3208,7 +3170,7 @@ export const RestoreVpsAutomatedBackupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A structure describing a Veeam backup's export options */
 export type VpsVeeamExportTypeEnum = "nfs" | "smb";
-export const VpsVeeamExportTypeEnum = S.String;
+const VpsVeeamExportTypeEnum = S.String;
 
 export interface RestoreVpsVeeamRestorePointRequest {
   /** Service name */
@@ -3222,7 +3184,7 @@ export interface RestoreVpsVeeamRestorePointRequest {
   /** Replace your current VPS by the restorePoint */
   full: boolean;
 }
-export const RestoreVpsVeeamRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreVpsVeeamRestorePointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -3244,7 +3206,7 @@ export interface SetVpsPasswordRequest {
   /** Service name */
   serviceName: string;
 }
-export const SetVpsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const SetVpsPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/setPassword", code: 200 })),
@@ -3254,7 +3216,7 @@ export interface StartVpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const StartVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/start", code: 200 })),
@@ -3264,7 +3226,7 @@ export interface StopVpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const StopVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const StopVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/stop", code: 200 })),
@@ -3274,15 +3236,14 @@ export interface TerminateVpsRequest {
   /** Service name */
   serviceName: string;
 }
-export const TerminateVpsRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateVpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/vps/{serviceName}/terminate", code: 200 })),
 ).annotate({ identifier: "TerminateVpsRequest" }) as any as S.Schema<TerminateVpsRequest>;
 
 export type TerminateVpsResponse = string;
-export const TerminateVpsResponse =
-  GetVpsConsoleUrlResponse as any as S.Schema<TerminateVpsResponse>;
+const TerminateVpsResponse = GetVpsConsoleUrlResponse as any as S.Schema<TerminateVpsResponse>;
 
 export type AbortVpsSnapshotError = OvhOpError;
 /** Abort ongoing snapshot or autobackup */

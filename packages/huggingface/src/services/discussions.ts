@@ -12,10 +12,10 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export type ChangeStatusRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const ChangeStatusRequestRepoType = S.String;
+const ChangeStatusRequestRepoType = S.String;
 
 export type ChangeStatusRequestStatus = "open" | "closed";
-export const ChangeStatusRequestStatus = S.String;
+const ChangeStatusRequestStatus = S.String;
 
 export interface ChangeStatusRequest {
   repoType: ChangeStatusRequestRepoType | (string & {});
@@ -25,7 +25,7 @@ export interface ChangeStatusRequest {
   status: ChangeStatusRequestStatus | (string & {});
   comment?: string;
 }
-export const ChangeStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: ChangeStatusRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -47,41 +47,17 @@ export interface ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData {
   colorFrom: string;
   colorTo: string;
 }
-export const ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      emoji: S.String,
-      colorFrom: S.String,
-      colorTo: S.String,
-    }),
-).annotate({
-  identifier: "ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData",
-}) as any as S.Schema<ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData>;
-
 export interface ChangeStatusResponseNewStatusAuthorCase0OauthApp {
   imageUrl?: string;
   imageData?: ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
   url?: string;
   name: string;
 }
-export const ChangeStatusResponseNewStatusAuthorCase0OauthApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageUrl: S.optional(S.String),
-    imageData: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData),
-    url: S.optional(S.String),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ChangeStatusResponseNewStatusAuthorCase0OauthApp",
-}) as any as S.Schema<ChangeStatusResponseNewStatusAuthorCase0OauthApp>;
-
 export type ChangeStatusResponseNewStatusAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ChangeStatusResponseNewStatusAuthorCase0Plan = S.String;
-
 export interface ChangeStatusResponseNewStatusAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -100,53 +76,21 @@ export interface ChangeStatusResponseNewStatusAuthorCase0 {
   plan?: ChangeStatusResponseNewStatusAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ChangeStatusResponseNewStatusAuthorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOwner: S.optional(S.Boolean),
-    isOrgMember: S.optional(S.Boolean),
-    isBlockedByMe: S.optional(S.Boolean),
-    oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    plan: S.optional(ChangeStatusResponseNewStatusAuthorCase0Plan),
-    isUserFollowing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ChangeStatusResponseNewStatusAuthorCase0",
-}) as any as S.Schema<ChangeStatusResponseNewStatusAuthorCase0>;
-
 export type ChangeStatusResponseNewStatusAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ChangeStatusResponseNewStatusAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ChangeStatusResponseNewStatusAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ChangeStatusResponseNewStatusAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -160,24 +104,6 @@ export interface ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg {
   userRole?: ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    type: S.String,
-    isHf: S.Boolean,
-    isFollowing: S.optional(S.Boolean),
-    plan: S.optional(ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgPlan),
-    details: S.optional(S.String),
-    hasPrivateMembersList: S.optional(S.Boolean),
-    userRole: S.optional(ChangeStatusResponseNewStatusAuthorCase1PrimaryOrgUserRole),
-    numUsers: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg",
-}) as any as S.Schema<ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg>;
-
 export interface ChangeStatusResponseNewStatusAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -197,43 +123,20 @@ export interface ChangeStatusResponseNewStatusAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg;
 }
-export const ChangeStatusResponseNewStatusAuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOwner: S.optional(S.Boolean),
-    isOrgMember: S.optional(S.Boolean),
-    isBlockedByMe: S.optional(S.Boolean),
-    oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "ChangeStatusResponseNewStatusAuthorCase1",
-}) as any as S.Schema<ChangeStatusResponseNewStatusAuthorCase1>;
-
 export type ChangeStatusResponseNewStatusAuthor =
   | ChangeStatusResponseNewStatusAuthorCase0
   | ChangeStatusResponseNewStatusAuthorCase1;
-export const ChangeStatusResponseNewStatusAuthor =
+const ChangeStatusResponseNewStatusAuthor =
   S.Unknown as any as S.Schema<ChangeStatusResponseNewStatusAuthor>;
 
 export type ChangeStatusResponseNewStatusDataStatus = "draft" | "open" | "closed" | "merged";
-export const ChangeStatusResponseNewStatusDataStatus = S.String;
+const ChangeStatusResponseNewStatusDataStatus = S.String;
 
 export interface ChangeStatusResponseNewStatusData {
   status: ChangeStatusResponseNewStatusDataStatus;
   reason?: string;
 }
-export const ChangeStatusResponseNewStatusData = /*@__PURE__*/ S.suspend(() =>
+const ChangeStatusResponseNewStatusData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ChangeStatusResponseNewStatusDataStatus,
     reason: S.optional(S.String),
@@ -249,7 +152,7 @@ export interface ChangeStatusResponseNewStatus {
   type: string;
   data: ChangeStatusResponseNewStatusData;
 }
-export const ChangeStatusResponseNewStatus = /*@__PURE__*/ S.suspend(() =>
+const ChangeStatusResponseNewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -264,14 +167,14 @@ export const ChangeStatusResponseNewStatus = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeStatusResponse {
   newStatus: ChangeStatusResponseNewStatus;
 }
-export const ChangeStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newStatus: ChangeStatusResponseNewStatus,
   }),
 ).annotate({ identifier: "ChangeStatusResponse" }) as any as S.Schema<ChangeStatusResponse>;
 
 export type ChangeTitleRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const ChangeTitleRequestRepoType = S.String;
+const ChangeTitleRequestRepoType = S.String;
 
 export interface ChangeTitleRequest {
   repoType: ChangeTitleRequestRepoType | (string & {});
@@ -280,7 +183,7 @@ export interface ChangeTitleRequest {
   num: string;
   title: string;
 }
-export const ChangeTitleRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeTitleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: ChangeTitleRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -298,21 +201,13 @@ export const ChangeTitleRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ChangeTitleResponseNewTitleAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ChangeTitleResponseNewTitleAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ChangeTitleResponseNewTitleAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ChangeTitleResponseNewTitleAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ChangeTitleResponseNewTitleAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ChangeTitleResponseNewTitleAuthorCase0Plan = S.String;
-
 export interface ChangeTitleResponseNewTitleAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -331,34 +226,21 @@ export interface ChangeTitleResponseNewTitleAuthorCase0 {
   plan?: ChangeTitleResponseNewTitleAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ChangeTitleResponseNewTitleAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<ChangeTitleResponseNewTitleAuthorCase0>;
-
 export type ChangeTitleResponseNewTitleAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ChangeTitleResponseNewTitleAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ChangeTitleResponseNewTitleAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ChangeTitleResponseNewTitleAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ChangeTitleResponseNewTitleAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ChangeTitleResponseNewTitleAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ChangeTitleResponseNewTitleAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ChangeTitleResponseNewTitleAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ChangeTitleResponseNewTitleAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -372,9 +254,6 @@ export interface ChangeTitleResponseNewTitleAuthorCase1PrimaryOrg {
   userRole?: ChangeTitleResponseNewTitleAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ChangeTitleResponseNewTitleAuthorCase1PrimaryOrg =
-  ChangeStatusResponseNewStatusAuthorCase1PrimaryOrg as any as S.Schema<ChangeTitleResponseNewTitleAuthorCase1PrimaryOrg>;
-
 export interface ChangeTitleResponseNewTitleAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -394,20 +273,17 @@ export interface ChangeTitleResponseNewTitleAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ChangeTitleResponseNewTitleAuthorCase1PrimaryOrg;
 }
-export const ChangeTitleResponseNewTitleAuthorCase1 =
-  ChangeStatusResponseNewStatusAuthorCase1 as any as S.Schema<ChangeTitleResponseNewTitleAuthorCase1>;
-
 export type ChangeTitleResponseNewTitleAuthor =
   | ChangeTitleResponseNewTitleAuthorCase0
   | ChangeTitleResponseNewTitleAuthorCase1;
-export const ChangeTitleResponseNewTitleAuthor =
+const ChangeTitleResponseNewTitleAuthor =
   S.Unknown as any as S.Schema<ChangeTitleResponseNewTitleAuthor>;
 
 export interface ChangeTitleResponseNewTitleData {
   from: string;
   to: string;
 }
-export const ChangeTitleResponseNewTitleData = /*@__PURE__*/ S.suspend(() =>
+const ChangeTitleResponseNewTitleData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.String,
     to: S.String,
@@ -423,7 +299,7 @@ export interface ChangeTitleResponseNewTitle {
   type: string;
   data: ChangeTitleResponseNewTitleData;
 }
-export const ChangeTitleResponseNewTitle = /*@__PURE__*/ S.suspend(() =>
+const ChangeTitleResponseNewTitle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -438,7 +314,7 @@ export const ChangeTitleResponseNewTitle = /*@__PURE__*/ S.suspend(() =>
 export interface ChangeTitleResponse {
   newTitle: ChangeTitleResponseNewTitle;
 }
-export const ChangeTitleResponse = /*@__PURE__*/ S.suspend(() =>
+const ChangeTitleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newTitle: ChangeTitleResponseNewTitle,
   }),
@@ -448,7 +324,7 @@ export interface CreateBlogCommentRequest {
   slug: string;
   comment: string;
 }
-export const CreateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     comment: S.String,
@@ -457,21 +333,13 @@ export const CreateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateBlogCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateBlogCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface CreateBlogCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -490,34 +358,21 @@ export interface CreateBlogCommentResponseNewMessageAuthorCase0 {
   plan?: CreateBlogCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateBlogCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<CreateBlogCommentResponseNewMessageAuthorCase0>;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateBlogCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -531,25 +386,6 @@ export interface CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole),
-      numUsers: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg",
-}) as any as S.Schema<CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface CreateBlogCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -569,33 +405,10 @@ export interface CreateBlogCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const CreateBlogCommentResponseNewMessageAuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOwner: S.optional(S.Boolean),
-    isOrgMember: S.optional(S.Boolean),
-    isBlockedByMe: S.optional(S.Boolean),
-    oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "CreateBlogCommentResponseNewMessageAuthorCase1",
-}) as any as S.Schema<CreateBlogCommentResponseNewMessageAuthorCase1>;
-
 export type CreateBlogCommentResponseNewMessageAuthor =
   | CreateBlogCommentResponseNewMessageAuthorCase0
   | CreateBlogCommentResponseNewMessageAuthorCase1;
-export const CreateBlogCommentResponseNewMessageAuthor =
+const CreateBlogCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<CreateBlogCommentResponseNewMessageAuthor>;
 
 export type CreateBlogCommentResponseNewMessageDataHiddenReason =
@@ -605,15 +418,13 @@ export type CreateBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const CreateBlogCommentResponseNewMessageDataHiddenReason = S.String;
+const CreateBlogCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type CreateBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -628,40 +439,17 @@ export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: CreateBlogCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(CreateBlogCommentResponseNewMessageDataLatestAuthorCase0Plan),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "CreateBlogCommentResponseNewMessageDataLatestAuthorCase0",
-}) as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -675,27 +463,6 @@ export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase1Primary
   userRole?: CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(
-        CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole,
-      ),
-      numUsers: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg",
-  }) as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -711,30 +478,10 @@ export interface CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg),
-    }),
-).annotate({
-  identifier: "CreateBlogCommentResponseNewMessageDataLatestAuthorCase1",
-}) as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type CreateBlogCommentResponseNewMessageDataLatestAuthor =
   | CreateBlogCommentResponseNewMessageDataLatestAuthorCase0
   | CreateBlogCommentResponseNewMessageDataLatestAuthorCase1;
-export const CreateBlogCommentResponseNewMessageDataLatestAuthor =
+const CreateBlogCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatestAuthor>;
 
 export interface CreateBlogCommentResponseNewMessageDataLatest {
@@ -743,7 +490,7 @@ export interface CreateBlogCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: CreateBlogCommentResponseNewMessageDataLatestAuthor;
 }
-export const CreateBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -755,12 +502,12 @@ export const CreateBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateBlogCommentResponseNewMessageDataLatest>;
 
 export type CreateBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreateBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
+const CreateBlogCommentResponseNewMessageDataEditorsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorsList>;
 
 export type CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+const CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
@@ -776,10 +523,10 @@ export type CreateBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const CreateBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const CreateBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreateBlogCommentResponseNewMessageDataReactionsItemUsersList =
+const CreateBlogCommentResponseNewMessageDataReactionsItemUsersList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateBlogCommentResponseNewMessageDataReactionsItem {
@@ -787,7 +534,7 @@ export interface CreateBlogCommentResponseNewMessageDataReactionsItem {
   users: CreateBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const CreateBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: CreateBlogCommentResponseNewMessageDataReactionsItemReaction,
     users: CreateBlogCommentResponseNewMessageDataReactionsItemUsersList,
@@ -799,7 +546,7 @@ export const CreateBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*
 
 export type CreateBlogCommentResponseNewMessageDataReactionsList =
   Array<CreateBlogCommentResponseNewMessageDataReactionsItem>;
-export const CreateBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const CreateBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   CreateBlogCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<CreateBlogCommentResponseNewMessageDataReactionsList>;
 
@@ -807,12 +554,11 @@ export interface CreateBlogCommentResponseNewMessageDataIdentifiedLanguage {
   language: string;
   probability: number;
 }
-export const CreateBlogCommentResponseNewMessageDataIdentifiedLanguage = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      language: S.String,
-      probability: S.Number,
-    }),
+const CreateBlogCommentResponseNewMessageDataIdentifiedLanguage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    language: S.String,
+    probability: S.Number,
+  }),
 ).annotate({
   identifier: "CreateBlogCommentResponseNewMessageDataIdentifiedLanguage",
 }) as any as S.Schema<CreateBlogCommentResponseNewMessageDataIdentifiedLanguage>;
@@ -832,7 +578,7 @@ export interface CreateBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const CreateBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -859,7 +605,7 @@ export interface CreateBlogCommentResponseNewMessage {
   type: string;
   data: CreateBlogCommentResponseNewMessageData;
 }
-export const CreateBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -874,7 +620,7 @@ export const CreateBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBlogCommentResponse {
   newMessage: CreateBlogCommentResponseNewMessage;
 }
-export const CreateBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: CreateBlogCommentResponseNewMessage,
   }),
@@ -887,7 +633,7 @@ export interface CreateCommunityBlogCommentRequest {
   slug: string;
   comment: string;
 }
-export const CreateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -899,21 +645,13 @@ export const CreateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -932,34 +670,21 @@ export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase0 {
   plan?: CreateCommunityBlogCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageAuthorCase0>;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -973,9 +698,6 @@ export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryO
   userRole?: CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -995,33 +717,10 @@ export interface CreateCommunityBlogCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const CreateCommunityBlogCommentResponseNewMessageAuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOwner: S.optional(S.Boolean),
-    isOrgMember: S.optional(S.Boolean),
-    isBlockedByMe: S.optional(S.Boolean),
-    oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(CreateCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "CreateCommunityBlogCommentResponseNewMessageAuthorCase1",
-}) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageAuthorCase1>;
-
 export type CreateCommunityBlogCommentResponseNewMessageAuthor =
   | CreateCommunityBlogCommentResponseNewMessageAuthorCase0
   | CreateCommunityBlogCommentResponseNewMessageAuthorCase1;
-export const CreateCommunityBlogCommentResponseNewMessageAuthor =
+const CreateCommunityBlogCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageAuthor>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataHiddenReason =
@@ -1031,15 +730,13 @@ export type CreateCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const CreateCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
+const CreateCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1054,42 +751,17 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCas
   plan?: CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0",
-  }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -1103,29 +775,6 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCas
   userRole?: CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(
-        CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan,
-      ),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(
-        CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole,
-      ),
-      numUsers: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg",
-  }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1141,32 +790,10 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCas
   isUserFollowing?: boolean;
   primaryOrg?: CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(
-        CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg,
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1",
-  }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   | CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0
   | CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1;
-export const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor =
+const CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor>;
 
 export interface CreateCommunityBlogCommentResponseNewMessageDataLatest {
@@ -1175,7 +802,7 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: CreateCommunityBlogCommentResponseNewMessageDataLatestAuthor;
 }
-export const CreateCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -1187,14 +814,13 @@ export const CreateCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE_
 }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataLatest>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreateCommunityBlogCommentResponseNewMessageDataEditorsList =
+const CreateCommunityBlogCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorsList>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
+const CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83d\udd25"
@@ -1209,10 +835,10 @@ export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReactio
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateCommunityBlogCommentResponseNewMessageDataReactionsItem {
@@ -1220,28 +846,24 @@ export interface CreateCommunityBlogCommentResponseNewMessageDataReactionsItem {
   users: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const CreateCommunityBlogCommentResponseNewMessageDataReactionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reaction: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
-      users: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "CreateCommunityBlogCommentResponseNewMessageDataReactionsItem",
-  }) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reaction: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
+    users: CreateCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
+    count: S.Number,
+  }),
+).annotate({
+  identifier: "CreateCommunityBlogCommentResponseNewMessageDataReactionsItem",
+}) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsItem>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataReactionsList =
   Array<CreateCommunityBlogCommentResponseNewMessageDataReactionsItem>;
-export const CreateCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const CreateCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   CreateCommunityBlogCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<CreateCommunityBlogCommentResponseNewMessageDataReactionsList>;
 
 export type CreateCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const CreateCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface CreateCommunityBlogCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -1257,7 +879,7 @@ export interface CreateCommunityBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const CreateCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -1284,7 +906,7 @@ export interface CreateCommunityBlogCommentResponseNewMessage {
   type: string;
   data: CreateCommunityBlogCommentResponseNewMessageData;
 }
-export const CreateCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1299,7 +921,7 @@ export const CreateCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.susp
 export interface CreateCommunityBlogCommentResponse {
   newMessage: CreateCommunityBlogCommentResponseNewMessage;
 }
-export const CreateCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: CreateCommunityBlogCommentResponseNewMessage,
   }),
@@ -1308,7 +930,7 @@ export const CreateCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCommunityBlogCommentResponse>;
 
 export type CreateDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const CreateDiscussionRequestRepoType = S.String;
+const CreateDiscussionRequestRepoType = S.String;
 
 export interface CreateDiscussionRequest {
   repoType: CreateDiscussionRequestRepoType | (string & {});
@@ -1318,7 +940,7 @@ export interface CreateDiscussionRequest {
   description: string;
   pullRequest?: boolean;
 }
-export const CreateDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: CreateDiscussionRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -1335,7 +957,7 @@ export interface CreateDiscussionResponseReferences {
   base: string;
   mergeCommitId?: string;
 }
-export const CreateDiscussionResponseReferences = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionResponseReferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base: S.String,
     mergeCommitId: S.optional(S.String),
@@ -1350,7 +972,7 @@ export interface CreateDiscussionResponse {
   pullRequest: boolean;
   references?: CreateDiscussionResponseReferences;
 }
-export const CreateDiscussionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     num: S.Number,
@@ -1360,7 +982,7 @@ export const CreateDiscussionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateDiscussionResponse" }) as any as S.Schema<CreateDiscussionResponse>;
 
 export type CreateDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const CreateDiscussionCommentRequestRepoType = S.String;
+const CreateDiscussionCommentRequestRepoType = S.String;
 
 export interface CreateDiscussionCommentRequest {
   repoType: CreateDiscussionCommentRequestRepoType | (string & {});
@@ -1369,7 +991,7 @@ export interface CreateDiscussionCommentRequest {
   num: string;
   comment: string;
 }
-export const CreateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: CreateDiscussionCommentRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -1389,21 +1011,13 @@ export const CreateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDiscussionCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateDiscussionCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateDiscussionCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateDiscussionCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface CreateDiscussionCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -1422,34 +1036,21 @@ export interface CreateDiscussionCommentResponseNewMessageAuthorCase0 {
   plan?: CreateDiscussionCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateDiscussionCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<CreateDiscussionCommentResponseNewMessageAuthorCase0>;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -1463,25 +1064,6 @@ export interface CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg 
   userRole?: CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgPlan),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole),
-      numUsers: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg",
-  }) as any as S.Schema<CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface CreateDiscussionCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -1501,33 +1083,10 @@ export interface CreateDiscussionCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const CreateDiscussionCommentResponseNewMessageAuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isOwner: S.optional(S.Boolean),
-    isOrgMember: S.optional(S.Boolean),
-    isBlockedByMe: S.optional(S.Boolean),
-    oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(CreateDiscussionCommentResponseNewMessageAuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "CreateDiscussionCommentResponseNewMessageAuthorCase1",
-}) as any as S.Schema<CreateDiscussionCommentResponseNewMessageAuthorCase1>;
-
 export type CreateDiscussionCommentResponseNewMessageAuthor =
   | CreateDiscussionCommentResponseNewMessageAuthorCase0
   | CreateDiscussionCommentResponseNewMessageAuthorCase1;
-export const CreateDiscussionCommentResponseNewMessageAuthor =
+const CreateDiscussionCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<CreateDiscussionCommentResponseNewMessageAuthor>;
 
 export type CreateDiscussionCommentResponseNewMessageDataHiddenReason =
@@ -1537,15 +1096,13 @@ export type CreateDiscussionCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const CreateDiscussionCommentResponseNewMessageDataHiddenReason = S.String;
+const CreateDiscussionCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1560,26 +1117,17 @@ export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0 
   plan?: CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -1593,9 +1141,6 @@ export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1P
   userRole?: CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1611,13 +1156,10 @@ export interface CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1 
   isUserFollowing?: boolean;
   primaryOrg?: CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type CreateDiscussionCommentResponseNewMessageDataLatestAuthor =
   | CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase0
   | CreateDiscussionCommentResponseNewMessageDataLatestAuthorCase1;
-export const CreateDiscussionCommentResponseNewMessageDataLatestAuthor =
+const CreateDiscussionCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatestAuthor>;
 
 export interface CreateDiscussionCommentResponseNewMessageDataLatest {
@@ -1626,7 +1168,7 @@ export interface CreateDiscussionCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: CreateDiscussionCommentResponseNewMessageDataLatestAuthor;
 }
-export const CreateDiscussionCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -1638,11 +1180,11 @@ export const CreateDiscussionCommentResponseNewMessageDataLatest = /*@__PURE__*/
 }) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataLatest>;
 
 export type CreateDiscussionCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreateDiscussionCommentResponseNewMessageDataEditorsList =
+const CreateDiscussionCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList =
+const CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
@@ -1658,10 +1200,10 @@ export type CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList =
+const CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreateDiscussionCommentResponseNewMessageDataReactionsItem {
@@ -1669,28 +1211,24 @@ export interface CreateDiscussionCommentResponseNewMessageDataReactionsItem {
   users: CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const CreateDiscussionCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      reaction: CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction,
-      users: CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList,
-      count: S.Number,
-    }),
+const CreateDiscussionCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reaction: CreateDiscussionCommentResponseNewMessageDataReactionsItemReaction,
+    users: CreateDiscussionCommentResponseNewMessageDataReactionsItemUsersList,
+    count: S.Number,
+  }),
 ).annotate({
   identifier: "CreateDiscussionCommentResponseNewMessageDataReactionsItem",
 }) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsItem>;
 
 export type CreateDiscussionCommentResponseNewMessageDataReactionsList =
   Array<CreateDiscussionCommentResponseNewMessageDataReactionsItem>;
-export const CreateDiscussionCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const CreateDiscussionCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   CreateDiscussionCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<CreateDiscussionCommentResponseNewMessageDataReactionsList>;
 
 export type CreateDiscussionCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const CreateDiscussionCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface CreateDiscussionCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -1706,7 +1244,7 @@ export interface CreateDiscussionCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const CreateDiscussionCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -1733,7 +1271,7 @@ export interface CreateDiscussionCommentResponseNewMessage {
   type: string;
   data: CreateDiscussionCommentResponseNewMessageData;
 }
-export const CreateDiscussionCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -1748,7 +1286,7 @@ export const CreateDiscussionCommentResponseNewMessage = /*@__PURE__*/ S.suspend
 export interface CreateDiscussionCommentResponse {
   newMessage: CreateDiscussionCommentResponseNewMessage;
 }
-export const CreateDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: CreateDiscussionCommentResponseNewMessage,
   }),
@@ -1760,7 +1298,7 @@ export interface CreatePaperCommentRequest {
   paperId: string;
   comment: string;
 }
-export const CreatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paperId: S.String.pipe(T.Label()),
     comment: S.String,
@@ -1771,21 +1309,13 @@ export const CreatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreatePaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreatePaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreatePaperCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePaperCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface CreatePaperCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -1804,34 +1334,21 @@ export interface CreatePaperCommentResponseNewMessageAuthorCase0 {
   plan?: CreatePaperCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreatePaperCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<CreatePaperCommentResponseNewMessageAuthorCase0>;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreatePaperCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreatePaperCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -1845,9 +1362,6 @@ export interface CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface CreatePaperCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -1867,13 +1381,10 @@ export interface CreatePaperCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreatePaperCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const CreatePaperCommentResponseNewMessageAuthorCase1 =
-  CreateBlogCommentResponseNewMessageAuthorCase1 as any as S.Schema<CreatePaperCommentResponseNewMessageAuthorCase1>;
-
 export type CreatePaperCommentResponseNewMessageAuthor =
   | CreatePaperCommentResponseNewMessageAuthorCase0
   | CreatePaperCommentResponseNewMessageAuthorCase1;
-export const CreatePaperCommentResponseNewMessageAuthor =
+const CreatePaperCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<CreatePaperCommentResponseNewMessageAuthor>;
 
 export type CreatePaperCommentResponseNewMessageDataHiddenReason =
@@ -1883,15 +1394,13 @@ export type CreatePaperCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const CreatePaperCommentResponseNewMessageDataHiddenReason = S.String;
+const CreatePaperCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type CreatePaperCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1906,24 +1415,17 @@ export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: CreatePaperCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -1937,9 +1439,6 @@ export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase1Primar
   userRole?: CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -1955,13 +1454,10 @@ export interface CreatePaperCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreatePaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const CreatePaperCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type CreatePaperCommentResponseNewMessageDataLatestAuthor =
   | CreatePaperCommentResponseNewMessageDataLatestAuthorCase0
   | CreatePaperCommentResponseNewMessageDataLatestAuthorCase1;
-export const CreatePaperCommentResponseNewMessageDataLatestAuthor =
+const CreatePaperCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatestAuthor>;
 
 export interface CreatePaperCommentResponseNewMessageDataLatest {
@@ -1970,7 +1466,7 @@ export interface CreatePaperCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: CreatePaperCommentResponseNewMessageDataLatestAuthor;
 }
-export const CreatePaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -1982,11 +1478,11 @@ export const CreatePaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<CreatePaperCommentResponseNewMessageDataLatest>;
 
 export type CreatePaperCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataEditorsList =
+const CreatePaperCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorsList>;
 
 export type CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+const CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
@@ -2002,10 +1498,10 @@ export type CreatePaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const CreatePaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const CreatePaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreatePaperCommentResponseNewMessageDataReactionsItemUsersList =
+const CreatePaperCommentResponseNewMessageDataReactionsItemUsersList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreatePaperCommentResponseNewMessageDataReactionsItem {
@@ -2013,7 +1509,7 @@ export interface CreatePaperCommentResponseNewMessageDataReactionsItem {
   users: CreatePaperCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const CreatePaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: CreatePaperCommentResponseNewMessageDataReactionsItemReaction,
     users: CreatePaperCommentResponseNewMessageDataReactionsItemUsersList,
@@ -2025,15 +1521,12 @@ export const CreatePaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__
 
 export type CreatePaperCommentResponseNewMessageDataReactionsList =
   Array<CreatePaperCommentResponseNewMessageDataReactionsItem>;
-export const CreatePaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const CreatePaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   CreatePaperCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<CreatePaperCommentResponseNewMessageDataReactionsList>;
 
 export type CreatePaperCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const CreatePaperCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface CreatePaperCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -2049,7 +1542,7 @@ export interface CreatePaperCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const CreatePaperCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -2076,7 +1569,7 @@ export interface CreatePaperCommentResponseNewMessage {
   type: string;
   data: CreatePaperCommentResponseNewMessageData;
 }
-export const CreatePaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2091,7 +1584,7 @@ export const CreatePaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =
 export interface CreatePaperCommentResponse {
   newMessage: CreatePaperCommentResponseNewMessage;
 }
-export const CreatePaperCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePaperCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: CreatePaperCommentResponseNewMessage,
   }),
@@ -2104,7 +1597,7 @@ export interface CreatePostCommentRequest {
   postSlug: string;
   comment: string;
 }
-export const CreatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -2114,21 +1607,13 @@ export const CreatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreatePostCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreatePostCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreatePostCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreatePostCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreatePostCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePostCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface CreatePostCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -2147,34 +1632,21 @@ export interface CreatePostCommentResponseNewMessageAuthorCase0 {
   plan?: CreatePostCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreatePostCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<CreatePostCommentResponseNewMessageAuthorCase0>;
-
 export type CreatePostCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const CreatePostCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type CreatePostCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const CreatePostCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -2188,9 +1660,6 @@ export interface CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface CreatePostCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -2210,13 +1679,10 @@ export interface CreatePostCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreatePostCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const CreatePostCommentResponseNewMessageAuthorCase1 =
-  CreateBlogCommentResponseNewMessageAuthorCase1 as any as S.Schema<CreatePostCommentResponseNewMessageAuthorCase1>;
-
 export type CreatePostCommentResponseNewMessageAuthor =
   | CreatePostCommentResponseNewMessageAuthorCase0
   | CreatePostCommentResponseNewMessageAuthorCase1;
-export const CreatePostCommentResponseNewMessageAuthor =
+const CreatePostCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<CreatePostCommentResponseNewMessageAuthor>;
 
 export type CreatePostCommentResponseNewMessageDataHiddenReason =
@@ -2226,15 +1692,13 @@ export type CreatePostCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const CreatePostCommentResponseNewMessageDataHiddenReason = S.String;
+const CreatePostCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type CreatePostCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2249,24 +1713,17 @@ export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: CreatePostCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<CreatePostCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -2280,9 +1737,6 @@ export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase1Primary
   userRole?: CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2298,13 +1752,10 @@ export interface CreatePostCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: CreatePostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const CreatePostCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<CreatePostCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type CreatePostCommentResponseNewMessageDataLatestAuthor =
   | CreatePostCommentResponseNewMessageDataLatestAuthorCase0
   | CreatePostCommentResponseNewMessageDataLatestAuthorCase1;
-export const CreatePostCommentResponseNewMessageDataLatestAuthor =
+const CreatePostCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<CreatePostCommentResponseNewMessageDataLatestAuthor>;
 
 export interface CreatePostCommentResponseNewMessageDataLatest {
@@ -2313,7 +1764,7 @@ export interface CreatePostCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: CreatePostCommentResponseNewMessageDataLatestAuthor;
 }
-export const CreatePostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -2325,11 +1776,11 @@ export const CreatePostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreatePostCommentResponseNewMessageDataLatest>;
 
 export type CreatePostCommentResponseNewMessageDataEditorsList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataEditorsList =
+const CreatePostCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorsList>;
 
 export type CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList =
+const CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
@@ -2345,10 +1796,10 @@ export type CreatePostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const CreatePostCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const CreatePostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type CreatePostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const CreatePostCommentResponseNewMessageDataReactionsItemUsersList =
+const CreatePostCommentResponseNewMessageDataReactionsItemUsersList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface CreatePostCommentResponseNewMessageDataReactionsItem {
@@ -2356,7 +1807,7 @@ export interface CreatePostCommentResponseNewMessageDataReactionsItem {
   users: CreatePostCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const CreatePostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: CreatePostCommentResponseNewMessageDataReactionsItemReaction,
     users: CreatePostCommentResponseNewMessageDataReactionsItemUsersList,
@@ -2368,15 +1819,12 @@ export const CreatePostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*
 
 export type CreatePostCommentResponseNewMessageDataReactionsList =
   Array<CreatePostCommentResponseNewMessageDataReactionsItem>;
-export const CreatePostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const CreatePostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   CreatePostCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<CreatePostCommentResponseNewMessageDataReactionsList>;
 
 export type CreatePostCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const CreatePostCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface CreatePostCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -2392,7 +1840,7 @@ export interface CreatePostCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const CreatePostCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -2419,7 +1867,7 @@ export interface CreatePostCommentResponseNewMessage {
   type: string;
   data: CreatePostCommentResponseNewMessageData;
 }
-export const CreatePostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -2434,7 +1882,7 @@ export const CreatePostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
 export interface CreatePostCommentResponse {
   newMessage: CreatePostCommentResponseNewMessage;
 }
-export const CreatePostCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePostCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: CreatePostCommentResponseNewMessage,
   }),
@@ -2443,7 +1891,7 @@ export const CreatePostCommentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePostCommentResponse>;
 
 export type DeleteDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const DeleteDiscussionRequestRepoType = S.String;
+const DeleteDiscussionRequestRepoType = S.String;
 
 export interface DeleteDiscussionRequest {
   repoType: DeleteDiscussionRequestRepoType | (string & {});
@@ -2451,7 +1899,7 @@ export interface DeleteDiscussionRequest {
   repo: string;
   num: string;
 }
-export const DeleteDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: DeleteDiscussionRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -2467,7 +1915,7 @@ export const DeleteDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDiscussionRequest" }) as any as S.Schema<DeleteDiscussionRequest>;
 
 export interface DeleteDiscussionResponse {}
-export const DeleteDiscussionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDiscussionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDiscussionResponse",
 }) as any as S.Schema<DeleteDiscussionResponse>;
 
@@ -2475,7 +1923,7 @@ export interface DeletePostRequest {
   username: string;
   postSlug: string;
 }
-export const DeletePostRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -2483,10 +1931,10 @@ export const DeletePostRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePostRequest" }) as any as S.Schema<DeletePostRequest>;
 
 export interface DeletePostResponse {}
-export const DeletePostResponse = DeleteDiscussionResponse as any as S.Schema<DeletePostResponse>;
+const DeletePostResponse = DeleteDiscussionResponse as any as S.Schema<DeletePostResponse>;
 
 export type DeletePrRefRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const DeletePrRefRequestRepoType = S.String;
+const DeletePrRefRequestRepoType = S.String;
 
 export interface DeletePrRefRequest {
   repoType: DeletePrRefRequestRepoType | (string & {});
@@ -2494,7 +1942,7 @@ export interface DeletePrRefRequest {
   repo: string;
   num: string;
 }
-export const DeletePrRefRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: DeletePrRefRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -2510,10 +1958,10 @@ export const DeletePrRefRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletePrRefRequest" }) as any as S.Schema<DeletePrRefRequest>;
 
 export interface DeletePrRefResponse {}
-export const DeletePrRefResponse = DeleteDiscussionResponse as any as S.Schema<DeletePrRefResponse>;
+const DeletePrRefResponse = DeleteDiscussionResponse as any as S.Schema<DeletePrRefResponse>;
 
 export type GetDiscussionDetailsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const GetDiscussionDetailsRequestRepoType = S.String;
+const GetDiscussionDetailsRequestRepoType = S.String;
 
 export interface GetDiscussionDetailsRequest {
   repoType: GetDiscussionDetailsRequestRepoType | (string & {});
@@ -2521,7 +1969,7 @@ export interface GetDiscussionDetailsRequest {
   repo: string;
   num: string;
 }
-export const GetDiscussionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDiscussionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: GetDiscussionDetailsRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -2543,8 +1991,6 @@ export type GetDiscussionDetailsResponseBodyCase0AuthorCase0Plan =
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0AuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2559,39 +2005,17 @@ export interface GetDiscussionDetailsResponseBodyCase0AuthorCase0 {
   plan?: GetDiscussionDetailsResponseBodyCase0AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    plan: S.optional(GetDiscussionDetailsResponseBodyCase0AuthorCase0Plan),
-    isUserFollowing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0AuthorCase0",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrgPlan = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -2605,9 +2029,6 @@ export interface GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg {
   userRole?: GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0AuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2623,38 +2044,14 @@ export interface GetDiscussionDetailsResponseBodyCase0AuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0AuthorCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(GetDiscussionDetailsResponseBodyCase0AuthorCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0AuthorCase1",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0Author =
   | GetDiscussionDetailsResponseBodyCase0AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0Author>;
-
 export type GetDiscussionDetailsResponseBodyCase0OrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0OrgPlan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0Org {
   avatarUrl: string;
   email?: string;
@@ -2667,31 +2064,14 @@ export interface GetDiscussionDetailsResponseBodyCase0Org {
   hasPrivateMembersList?: boolean;
   requiresSSO?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0Org = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatarUrl: S.String,
-    email: S.optional(S.String),
-    fullname: S.String,
-    name: S.String,
-    type: S.String,
-    isHf: S.Boolean,
-    plan: S.optional(GetDiscussionDetailsResponseBodyCase0OrgPlan),
-    details: S.optional(S.String),
-    hasPrivateMembersList: S.optional(S.Boolean),
-    requiresSSO: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0Org",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0Org>;
-
 export type RepoIdType = "dataset" | "model" | "space" | "bucket" | "kernel" | "container";
-export const RepoIdType = S.String;
+const RepoIdType = S.String;
 
 export interface RepoId {
   name: string;
   type: RepoIdType;
 }
-export const RepoId = /*@__PURE__*/ S.suspend(() =>
+const RepoId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: RepoIdType,
@@ -2699,25 +2079,15 @@ export const RepoId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepoId" }) as any as S.Schema<RepoId>;
 
 export type GetDiscussionDetailsResponseBodyCase0Status = "draft" | "open" | "closed" | "merged";
-export const GetDiscussionDetailsResponseBodyCase0Status = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -2736,56 +2106,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isOwner: S.optional(S.Boolean),
-      isOrgMember: S.optional(S.Boolean),
-      isBlockedByMe: S.optional(S.Boolean),
-      oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0Plan),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -2799,9 +2134,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -2821,38 +2153,9 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isOwner: S.optional(S.Boolean),
-      isOrgMember: S.optional(S.Boolean),
-      isBlockedByMe: S.optional(S.Boolean),
-      oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1PrimaryOrg,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0Author>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -2860,16 +2163,11 @@ export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataHiddenReason
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataHiddenReason = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0Plan =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2884,44 +2182,17 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestA
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0Plan,
-      ),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -2935,30 +2206,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestA
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      type: S.String,
-      isHf: S.Boolean,
-      isFollowing: S.optional(S.Boolean),
-      plan: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgPlan,
-      ),
-      details: S.optional(S.String),
-      hasPrivateMembersList: S.optional(S.Boolean),
-      userRole: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole,
-      ),
-      numUsers: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -2974,61 +2221,18 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestA
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg,
-      ),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthor =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthor =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthor>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthor;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      raw: S.String,
-      html: S.String,
-      updatedAt: S.String,
-      author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthor),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList = Array<string>;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList =
   Array<string>;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -3042,42 +2246,17 @@ export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsIte
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList =
   Array<string>;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem {
   reaction: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction;
   users: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList;
   count: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reaction: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemReaction,
-      users: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItemUsersList,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsList =
   Array<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem>;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsList =
-  /*@__PURE__*/ S.Array(
-    GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsItem,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsList>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data {
   edited: boolean;
   hidden: boolean;
@@ -3093,30 +2272,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      edited: S.Boolean,
-      hidden: S.Boolean,
-      hiddenBy: S.optional(S.String),
-      hiddenReason: S.optional(
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataHiddenReason,
-      ),
-      latest: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatest,
-      numEdits: S.Number,
-      editors: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorsList,
-      editorAvatarUrls:
-        GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataEditorAvatarUrlsList,
-      reactions: GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataReactionsList,
-      identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
-      relatedEventId: S.optional(S.String),
-      isReport: S.optional(S.Boolean),
-      parentCommentId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0 {
   id: string;
   createdAt: string;
@@ -3124,35 +2279,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase0 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase0Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase0Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase0",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3171,36 +2306,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3214,9 +2334,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3236,36 +2353,18 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase1AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1Author>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase1DataStatus =
   | "draft"
   | "open"
   | "closed"
   | "merged";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1DataStatus = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data {
   status: GetDiscussionDetailsResponseBodyCase0EventsItemCase1DataStatus;
   reason?: string;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: GetDiscussionDetailsResponseBodyCase0EventsItemCase1DataStatus,
-      reason: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1 {
   id: string;
   createdAt: string;
@@ -3273,35 +2372,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase1 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase1Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase1",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3320,36 +2399,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3363,9 +2427,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3385,29 +2446,13 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase2Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase2AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data {
   subject: string;
   oid: string;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subject: S.String,
-      oid: S.String,
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2 {
   id: string;
   createdAt: string;
@@ -3415,35 +2460,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase2 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase2Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase2",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase2>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3462,36 +2487,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3505,9 +2515,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3527,20 +2534,11 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase3AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase3Author>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase3Data =
   ChangeTitleResponseNewTitleData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3Data =
-  ChangeTitleResponseNewTitleData;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3 {
   id: string;
   createdAt: string;
@@ -3548,35 +2546,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase3 {
   type: string;
   data: ChangeTitleResponseNewTitleData;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase3Author),
-    type: S.String,
-    data: ChangeTitleResponseNewTitleData,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase3",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase3>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3595,36 +2573,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3638,9 +2601,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3660,27 +2620,12 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase4Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase4AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data {
   pinned: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pinned: S.Boolean,
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4 {
   id: string;
   createdAt: string;
@@ -3688,35 +2633,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase4 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase4Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase4",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase4>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3735,36 +2660,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3778,9 +2688,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3800,27 +2707,12 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase5Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase5AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data {
   locked: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      locked: S.Boolean,
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5 {
   id: string;
   createdAt: string;
@@ -3828,35 +2720,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase5 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase5Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase5",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase5>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3875,36 +2747,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -3918,9 +2775,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -3940,27 +2794,12 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase6Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase6AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data {
   report: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      report: S.Boolean,
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6 {
   id: string;
   createdAt: string;
@@ -3968,35 +2807,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase6 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase6Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase6",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase6>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4015,36 +2834,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4058,9 +2862,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4080,15 +2881,9 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase7Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase7AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase7Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7 {
   id: string;
   createdAt: string;
@@ -4096,35 +2891,15 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase7 {
   type: string;
   data: unknown;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase7Author),
-    type: S.String,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase7",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase7>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4143,36 +2918,21 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4186,9 +2946,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4208,29 +2965,13 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItemCase8Author =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase8AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data {
   hiddenCommits: number;
   headOid: string;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hiddenCommits: S.Number,
-      headOid: S.String,
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8 {
   id: string;
   createdAt: string;
@@ -4238,18 +2979,6 @@ export interface GetDiscussionDetailsResponseBodyCase0EventsItemCase8 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data;
 }
-export const GetDiscussionDetailsResponseBodyCase0EventsItemCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0EventsItemCase8Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0EventsItemCase8",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItemCase8>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsItem =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase0
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase1
@@ -4260,22 +2989,13 @@ export type GetDiscussionDetailsResponseBodyCase0EventsItem =
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase6
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase7
   | GetDiscussionDetailsResponseBodyCase0EventsItemCase8;
-export const GetDiscussionDetailsResponseBodyCase0EventsItem =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsItem>;
-
 export type GetDiscussionDetailsResponseBodyCase0EventsList =
   Array<GetDiscussionDetailsResponseBodyCase0EventsItem>;
-export const GetDiscussionDetailsResponseBodyCase0EventsList = /*@__PURE__*/ S.Array(
-  GetDiscussionDetailsResponseBodyCase0EventsItem,
-) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0EventsList>;
-
 export type GetDiscussionDetailsResponseBodyCase0Collection =
   | "discussions"
   | "paper_discussions"
   | "social_posts"
   | "community_blogs";
-export const GetDiscussionDetailsResponseBodyCase0Collection = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase0 {
   diffUrl?: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -4294,35 +3014,11 @@ export interface GetDiscussionDetailsResponseBodyCase0 {
   isPullRequest: boolean;
   isReport: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diffUrl: S.optional(S.String),
-    _id: S.String,
-    num: S.optional(S.Number),
-    author: S.optional(GetDiscussionDetailsResponseBodyCase0Author),
-    org: S.optional(GetDiscussionDetailsResponseBodyCase0Org),
-    repo: S.optional(RepoId),
-    title: S.String,
-    createdAt: S.optional(S.String),
-    status: GetDiscussionDetailsResponseBodyCase0Status,
-    events: GetDiscussionDetailsResponseBodyCase0EventsList,
-    pinned: S.Boolean,
-    locked: S.Boolean,
-    collection: GetDiscussionDetailsResponseBodyCase0Collection,
-    isPullRequest: S.Boolean,
-    isReport: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase0",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1AuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -4337,24 +3033,17 @@ export interface GetDiscussionDetailsResponseBodyCase1AuthorCase0 {
   plan?: GetDiscussionDetailsResponseBodyCase1AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrgPlan = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4368,9 +3057,6 @@ export interface GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrg {
   userRole?: GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1AuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -4386,22 +3072,14 @@ export interface GetDiscussionDetailsResponseBodyCase1AuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1Author =
   | GetDiscussionDetailsResponseBodyCase1AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1OrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1OrgPlan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1Org {
   avatarUrl: string;
   email?: string;
@@ -4414,29 +3092,16 @@ export interface GetDiscussionDetailsResponseBodyCase1Org {
   hasPrivateMembersList?: boolean;
   requiresSSO?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1Org =
-  GetDiscussionDetailsResponseBodyCase0Org as any as S.Schema<GetDiscussionDetailsResponseBodyCase1Org>;
-
 export type GetDiscussionDetailsResponseBodyCase1Status = "draft" | "open" | "closed" | "merged";
-export const GetDiscussionDetailsResponseBodyCase1Status = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4455,36 +3120,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4498,9 +3148,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4520,15 +3167,9 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase0AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataHiddenReason =
   | "Spam"
   | "Abuse"
@@ -4536,16 +3177,11 @@ export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataHiddenReason
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataHiddenReason = S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0Plan =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -4560,26 +3196,17 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestA
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4593,9 +3220,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestA
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrg =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -4611,42 +3235,18 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestA
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0DataLatestAuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthor =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthor =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthor>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest {
   raw: string;
   html: string;
   updatedAt: string;
   author?: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthor;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      raw: S.String,
-      html: S.String,
-      updatedAt: S.String,
-      author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatestAuthor),
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList = Array<string>;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList =
   Array<string>;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction =
   | "\ud83d\udd25"
   | "\ud83d\ude80"
@@ -4660,42 +3260,17 @@ export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsIte
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList =
   Array<string>;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem {
   reaction: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction;
   users: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList;
   count: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reaction: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemReaction,
-      users: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItemUsersList,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem",
-  }) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsList =
   Array<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem>;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsList =
-  /*@__PURE__*/ S.Array(
-    GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsItem,
-  ) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsList>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data {
   edited: boolean;
   hidden: boolean;
@@ -4711,30 +3286,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      edited: S.Boolean,
-      hidden: S.Boolean,
-      hiddenBy: S.optional(S.String),
-      hiddenReason: S.optional(
-        GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataHiddenReason,
-      ),
-      latest: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataLatest,
-      numEdits: S.Number,
-      editors: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorsList,
-      editorAvatarUrls:
-        GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataEditorAvatarUrlsList,
-      reactions: GetDiscussionDetailsResponseBodyCase1EventsItemCase0DataReactionsList,
-      identifiedLanguage: S.optional(CreateBlogCommentResponseNewMessageDataIdentifiedLanguage),
-      relatedEventId: S.optional(S.String),
-      isReport: S.optional(S.Boolean),
-      parentCommentId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0 {
   id: string;
   createdAt: string;
@@ -4742,35 +3293,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase0 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase0Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase1EventsItemCase0Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase0",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4789,36 +3320,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4832,9 +3348,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4854,29 +3367,18 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase1AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase1DataStatus =
   | "draft"
   | "open"
   | "closed"
   | "merged";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1DataStatus = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1Data {
   status: GetDiscussionDetailsResponseBodyCase1EventsItemCase1DataStatus;
   reason?: string;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase1Data as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1Data>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1 {
   id: string;
   createdAt: string;
@@ -4884,35 +3386,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase1 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase1EventsItemCase1Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase1Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase1EventsItemCase1Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase1",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4931,36 +3413,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -4974,9 +3441,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -4996,20 +3460,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase2AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase2Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase2Data =
   GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2 {
   id: string;
   createdAt: string;
@@ -5017,35 +3472,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase2 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase2Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase2Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase2",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase2>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5064,36 +3499,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5107,9 +3527,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5129,20 +3546,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase3AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase3Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase3Data =
   ChangeTitleResponseNewTitleData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3Data =
-  ChangeTitleResponseNewTitleData;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3 {
   id: string;
   createdAt: string;
@@ -5150,35 +3558,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase3 {
   type: string;
   data: ChangeTitleResponseNewTitleData;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase3Author),
-    type: S.String,
-    data: ChangeTitleResponseNewTitleData,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase3",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase3>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5197,36 +3585,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5240,9 +3613,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5262,20 +3632,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase4AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase4Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase4Data =
   GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4 {
   id: string;
   createdAt: string;
@@ -5283,35 +3644,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase4 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase4Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase4Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase4",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase4>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5330,36 +3671,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5373,9 +3699,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5395,20 +3718,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase5AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase5Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase5Data =
   GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5 {
   id: string;
   createdAt: string;
@@ -5416,35 +3730,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase5 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase5Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase5Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase5",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase5>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5463,36 +3757,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5506,9 +3785,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5528,20 +3804,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase6AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase6Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase6Data =
   GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6 {
   id: string;
   createdAt: string;
@@ -5549,35 +3816,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase6 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase6Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase6Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase6",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase6>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5596,36 +3843,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5639,9 +3871,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5661,15 +3890,9 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase7Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase7AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase7Author>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7 {
   id: string;
   createdAt: string;
@@ -5677,35 +3900,15 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase7 {
   type: string;
   data: unknown;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase7 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase7Author),
-    type: S.String,
-    data: S.Unknown,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase7",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase7>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0Plan = S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5724,36 +3927,21 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0
   plan?: GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase0 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -5767,9 +3955,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1
   userRole?: GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrg>;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -5789,20 +3974,11 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1
   isUserFollowing?: boolean;
   primaryOrg?: GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1PrimaryOrg;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase0AuthorCase1 as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8Author =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase8AuthorCase1;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8Author =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase8Author>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItemCase8Data =
   GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data;
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8Data =
-  GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data;
-
 export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8 {
   id: string;
   createdAt: string;
@@ -5810,18 +3986,6 @@ export interface GetDiscussionDetailsResponseBodyCase1EventsItemCase8 {
   type: string;
   data: GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data;
 }
-export const GetDiscussionDetailsResponseBodyCase1EventsItemCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String,
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1EventsItemCase8Author),
-    type: S.String,
-    data: GetDiscussionDetailsResponseBodyCase0EventsItemCase8Data,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1EventsItemCase8",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItemCase8>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsItem =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase0
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase1
@@ -5832,26 +3996,13 @@ export type GetDiscussionDetailsResponseBodyCase1EventsItem =
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase6
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase7
   | GetDiscussionDetailsResponseBodyCase1EventsItemCase8;
-export const GetDiscussionDetailsResponseBodyCase1EventsItem =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsItem>;
-
 export type GetDiscussionDetailsResponseBodyCase1EventsList =
   Array<GetDiscussionDetailsResponseBodyCase1EventsItem>;
-export const GetDiscussionDetailsResponseBodyCase1EventsList = /*@__PURE__*/ S.Array(
-  GetDiscussionDetailsResponseBodyCase1EventsItem,
-) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1EventsList>;
-
 export type GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List = Array<string>;
-export const GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List =
-  CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List>;
-
 /** The list of files with conflicts. `true` means there are conflicts but we cannot list them. */
 export type GetDiscussionDetailsResponseBodyCase1FilesWithConflicts =
   | GetDiscussionDetailsResponseBodyCase1FilesWithConflictsCase0List
   | boolean;
-export const GetDiscussionDetailsResponseBodyCase1FilesWithConflicts =
-  S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBodyCase1FilesWithConflicts>;
-
 export interface GetDiscussionDetailsResponseBodyCase1Changes {
   base: string;
   mergeCommitId?: string;
@@ -5860,17 +4011,6 @@ export interface GetDiscussionDetailsResponseBodyCase1Changes {
   /** Whether the PR ref has been deleted (to free up storage). */
   refDeleted?: boolean;
 }
-export const GetDiscussionDetailsResponseBodyCase1Changes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    base: S.String,
-    mergeCommitId: S.optional(S.String),
-    headCommitId: S.optional(S.String),
-    refDeleted: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1Changes",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1Changes>;
-
 export interface GetDiscussionDetailsResponseBodyCase1 {
   diffUrl?: string;
   /** A hex string of 24 characters representing an ObjectId. */
@@ -5891,37 +4031,14 @@ export interface GetDiscussionDetailsResponseBodyCase1 {
   filesWithConflicts: GetDiscussionDetailsResponseBodyCase1FilesWithConflicts;
   changes: GetDiscussionDetailsResponseBodyCase1Changes;
 }
-export const GetDiscussionDetailsResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    diffUrl: S.optional(S.String),
-    _id: S.String,
-    num: S.optional(S.Number),
-    author: S.optional(GetDiscussionDetailsResponseBodyCase1Author),
-    org: S.optional(GetDiscussionDetailsResponseBodyCase1Org),
-    repo: S.optional(RepoId),
-    title: S.String,
-    createdAt: S.optional(S.String),
-    status: GetDiscussionDetailsResponseBodyCase1Status,
-    events: GetDiscussionDetailsResponseBodyCase1EventsList,
-    pinned: S.Boolean,
-    locked: S.Boolean,
-    collection: S.String,
-    isPullRequest: S.Boolean,
-    filesWithConflicts: GetDiscussionDetailsResponseBodyCase1FilesWithConflicts,
-    changes: GetDiscussionDetailsResponseBodyCase1Changes,
-  }),
-).annotate({
-  identifier: "GetDiscussionDetailsResponseBodyCase1",
-}) as any as S.Schema<GetDiscussionDetailsResponseBodyCase1>;
-
 export type GetDiscussionDetailsResponseBody =
   | GetDiscussionDetailsResponseBodyCase0
   | GetDiscussionDetailsResponseBodyCase1;
-export const GetDiscussionDetailsResponseBody =
+const GetDiscussionDetailsResponseBody =
   S.Unknown as any as S.Schema<GetDiscussionDetailsResponseBody>;
 
 export type GetDiscussionDetailsResponse = GetDiscussionDetailsResponseBody;
-export const GetDiscussionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDiscussionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   GetDiscussionDetailsResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetDiscussionDetailsResponse",
@@ -5934,14 +4051,14 @@ export type HideBlogCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const HideBlogCommentRequestReason = S.String;
+const HideBlogCommentRequestReason = S.String;
 
 export interface HideBlogCommentRequest {
   slug: string;
   commentId: string;
   reason?: HideBlogCommentRequestReason | (string & {});
 }
-export const HideBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const HideBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -5950,7 +4067,7 @@ export const HideBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HideBlogCommentRequest" }) as any as S.Schema<HideBlogCommentRequest>;
 
 export interface HideBlogCommentResponse {}
-export const HideBlogCommentResponse =
+const HideBlogCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<HideBlogCommentResponse>;
 
 export type HideCommunityBlogCommentRequestReason =
@@ -5960,7 +4077,7 @@ export type HideCommunityBlogCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const HideCommunityBlogCommentRequestReason = S.String;
+const HideCommunityBlogCommentRequestReason = S.String;
 
 export interface HideCommunityBlogCommentRequest {
   namespace: string;
@@ -5968,7 +4085,7 @@ export interface HideCommunityBlogCommentRequest {
   commentId: string;
   reason?: HideCommunityBlogCommentRequestReason | (string & {});
 }
-export const HideCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const HideCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -5986,14 +4103,12 @@ export const HideCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HideCommunityBlogCommentRequest>;
 
 export interface HideCommunityBlogCommentResponse {}
-export const HideCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const HideCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "HideCommunityBlogCommentResponse",
 }) as any as S.Schema<HideCommunityBlogCommentResponse>;
 
 export type HideDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const HideDiscussionCommentRequestRepoType = S.String;
+const HideDiscussionCommentRequestRepoType = S.String;
 
 export type HideDiscussionCommentRequestReason =
   | "Spam"
@@ -6002,7 +4117,7 @@ export type HideDiscussionCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const HideDiscussionCommentRequestReason = S.String;
+const HideDiscussionCommentRequestReason = S.String;
 
 export interface HideDiscussionCommentRequest {
   repoType: HideDiscussionCommentRequestRepoType | (string & {});
@@ -6012,7 +4127,7 @@ export interface HideDiscussionCommentRequest {
   commentId: string;
   reason?: HideDiscussionCommentRequestReason | (string & {});
 }
-export const HideDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const HideDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: HideDiscussionCommentRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6032,7 +4147,7 @@ export const HideDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HideDiscussionCommentRequest>;
 
 export interface HideDiscussionCommentResponse {}
-export const HideDiscussionCommentResponse =
+const HideDiscussionCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<HideDiscussionCommentResponse>;
 
 export type HidePaperCommentRequestReason =
@@ -6042,14 +4157,14 @@ export type HidePaperCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const HidePaperCommentRequestReason = S.String;
+const HidePaperCommentRequestReason = S.String;
 
 export interface HidePaperCommentRequest {
   paperId: string;
   commentId: string;
   reason?: HidePaperCommentRequestReason | (string & {});
 }
-export const HidePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const HidePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paperId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -6060,7 +4175,7 @@ export const HidePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HidePaperCommentRequest" }) as any as S.Schema<HidePaperCommentRequest>;
 
 export interface HidePaperCommentResponse {}
-export const HidePaperCommentResponse =
+const HidePaperCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<HidePaperCommentResponse>;
 
 export type HidePostCommentRequestReason =
@@ -6070,7 +4185,7 @@ export type HidePostCommentRequestReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const HidePostCommentRequestReason = S.String;
+const HidePostCommentRequestReason = S.String;
 
 export interface HidePostCommentRequest {
   username: string;
@@ -6078,7 +4193,7 @@ export interface HidePostCommentRequest {
   commentId: string;
   reason?: HidePostCommentRequestReason | (string & {});
 }
-export const HidePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const HidePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -6094,20 +4209,20 @@ export const HidePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HidePostCommentRequest" }) as any as S.Schema<HidePostCommentRequest>;
 
 export interface HidePostCommentResponse {}
-export const HidePostCommentResponse =
+const HidePostCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<HidePostCommentResponse>;
 
 export type ListDiscussionsRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const ListDiscussionsRequestRepoType = S.String;
+const ListDiscussionsRequestRepoType = S.String;
 
 export type ListDiscussionsRequestType = "all" | "discussion" | "pull_request";
-export const ListDiscussionsRequestType = S.String;
+const ListDiscussionsRequestType = S.String;
 
 export type ListDiscussionsRequestStatus = "all" | "open" | "closed";
-export const ListDiscussionsRequestStatus = S.String;
+const ListDiscussionsRequestStatus = S.String;
 
 export type ListDiscussionsRequestSort = "recently-created" | "trending" | "reactions";
-export const ListDiscussionsRequestSort = S.String;
+const ListDiscussionsRequestSort = S.String;
 
 export interface ListDiscussionsRequest {
   repoType: ListDiscussionsRequestRepoType | (string & {});
@@ -6120,7 +4235,7 @@ export interface ListDiscussionsRequest {
   search?: string;
   sort?: ListDiscussionsRequestSort | (string & {});
 }
-export const ListDiscussionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDiscussionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: ListDiscussionsRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6141,8 +4256,6 @@ export type ListDiscussionsResponseDiscussionsItemAuthorCase0Plan =
   | "enterprise"
   | "plus"
   | "academia";
-export const ListDiscussionsResponseDiscussionsItemAuthorCase0Plan = S.String;
-
 export interface ListDiscussionsResponseDiscussionsItemAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -6157,24 +4270,17 @@ export interface ListDiscussionsResponseDiscussionsItemAuthorCase0 {
   plan?: ListDiscussionsResponseDiscussionsItemAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ListDiscussionsResponseDiscussionsItemAuthorCase0 =
-  GetDiscussionDetailsResponseBodyCase0AuthorCase0 as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthorCase0>;
-
 export type ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -6188,9 +4294,6 @@ export interface ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrg {
   userRole?: ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrg>;
-
 export interface ListDiscussionsResponseDiscussionsItemAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -6206,13 +4309,10 @@ export interface ListDiscussionsResponseDiscussionsItemAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ListDiscussionsResponseDiscussionsItemAuthorCase1PrimaryOrg;
 }
-export const ListDiscussionsResponseDiscussionsItemAuthorCase1 =
-  GetDiscussionDetailsResponseBodyCase0AuthorCase1 as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthorCase1>;
-
 export type ListDiscussionsResponseDiscussionsItemAuthor =
   | ListDiscussionsResponseDiscussionsItemAuthorCase0
   | ListDiscussionsResponseDiscussionsItemAuthorCase1;
-export const ListDiscussionsResponseDiscussionsItemAuthor =
+const ListDiscussionsResponseDiscussionsItemAuthor =
   S.Unknown as any as S.Schema<ListDiscussionsResponseDiscussionsItemAuthor>;
 
 export type ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction =
@@ -6228,13 +4328,13 @@ export type ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction = S.String;
+const ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction = S.String;
 
 export interface ListDiscussionsResponseDiscussionsItemTopReactionsItem {
   reaction: ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction;
   count: number;
 }
-export const ListDiscussionsResponseDiscussionsItemTopReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListDiscussionsResponseDiscussionsItemTopReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: ListDiscussionsResponseDiscussionsItemTopReactionsItemReaction,
     count: S.Number,
@@ -6245,15 +4345,15 @@ export const ListDiscussionsResponseDiscussionsItemTopReactionsItem = /*@__PURE_
 
 export type ListDiscussionsResponseDiscussionsItemTopReactionsList =
   Array<ListDiscussionsResponseDiscussionsItemTopReactionsItem>;
-export const ListDiscussionsResponseDiscussionsItemTopReactionsList = /*@__PURE__*/ S.Array(
+const ListDiscussionsResponseDiscussionsItemTopReactionsList = /*@__PURE__*/ S.Array(
   ListDiscussionsResponseDiscussionsItemTopReactionsItem,
 ) as any as S.Schema<ListDiscussionsResponseDiscussionsItemTopReactionsList>;
 
 export type ListDiscussionsResponseDiscussionsItemStatus = "draft" | "open" | "closed" | "merged";
-export const ListDiscussionsResponseDiscussionsItemStatus = S.String;
+const ListDiscussionsResponseDiscussionsItemStatus = S.String;
 
 export type ListDiscussionsResponseDiscussionsItemRepoOwnerType = "org" | "user";
-export const ListDiscussionsResponseDiscussionsItemRepoOwnerType = S.String;
+const ListDiscussionsResponseDiscussionsItemRepoOwnerType = S.String;
 
 export interface ListDiscussionsResponseDiscussionsItemRepoOwner {
   name: string;
@@ -6261,7 +4361,7 @@ export interface ListDiscussionsResponseDiscussionsItemRepoOwner {
   isParticipating: boolean;
   isDiscussionAuthor: boolean;
 }
-export const ListDiscussionsResponseDiscussionsItemRepoOwner = /*@__PURE__*/ S.suspend(() =>
+const ListDiscussionsResponseDiscussionsItemRepoOwner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: ListDiscussionsResponseDiscussionsItemRepoOwnerType,
@@ -6286,7 +4386,7 @@ export interface ListDiscussionsResponseDiscussionsItem {
   pinned: boolean;
   repoOwner?: ListDiscussionsResponseDiscussionsItemRepoOwner;
 }
-export const ListDiscussionsResponseDiscussionsItem = /*@__PURE__*/ S.suspend(() =>
+const ListDiscussionsResponseDiscussionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     num: S.Number,
     author: S.optional(ListDiscussionsResponseDiscussionsItemAuthor),
@@ -6306,7 +4406,7 @@ export const ListDiscussionsResponseDiscussionsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListDiscussionsResponseDiscussionsItem>;
 
 export type ListDiscussionsResponseDiscussionsList = Array<ListDiscussionsResponseDiscussionsItem>;
-export const ListDiscussionsResponseDiscussionsList = /*@__PURE__*/ S.Array(
+const ListDiscussionsResponseDiscussionsList = /*@__PURE__*/ S.Array(
   ListDiscussionsResponseDiscussionsItem,
 ) as any as S.Schema<ListDiscussionsResponseDiscussionsList>;
 
@@ -6317,7 +4417,7 @@ export interface ListDiscussionsResponse {
   /** Number of closed discussions on the first page */
   numClosedDiscussions?: number;
 }
-export const ListDiscussionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDiscussionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     discussions: ListDiscussionsResponseDiscussionsList,
     count: S.Number,
@@ -6327,7 +4427,7 @@ export const ListDiscussionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListDiscussionsResponse" }) as any as S.Schema<ListDiscussionsResponse>;
 
 export type MergePullRequestRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const MergePullRequestRequestRepoType = S.String;
+const MergePullRequestRequestRepoType = S.String;
 
 export interface MergePullRequestRequest {
   repoType: MergePullRequestRequestRepoType | (string & {});
@@ -6336,7 +4436,7 @@ export interface MergePullRequestRequest {
   num: string;
   comment?: string;
 }
-export const MergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const MergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: MergePullRequestRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6353,11 +4453,11 @@ export const MergePullRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MergePullRequestRequest" }) as any as S.Schema<MergePullRequestRequest>;
 
 export interface MergePullRequestResponse {}
-export const MergePullRequestResponse =
+const MergePullRequestResponse =
   DeleteDiscussionResponse as any as S.Schema<MergePullRequestResponse>;
 
 export type PinDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const PinDiscussionRequestRepoType = S.String;
+const PinDiscussionRequestRepoType = S.String;
 
 export interface PinDiscussionRequest {
   repoType: PinDiscussionRequestRepoType | (string & {});
@@ -6366,7 +4466,7 @@ export interface PinDiscussionRequest {
   num: string;
   pinned: boolean;
 }
-export const PinDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
+const PinDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: PinDiscussionRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6383,11 +4483,10 @@ export const PinDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PinDiscussionRequest" }) as any as S.Schema<PinDiscussionRequest>;
 
 export interface PinDiscussionResponse {}
-export const PinDiscussionResponse =
-  DeleteDiscussionResponse as any as S.Schema<PinDiscussionResponse>;
+const PinDiscussionResponse = DeleteDiscussionResponse as any as S.Schema<PinDiscussionResponse>;
 
 export type PrStorageEstimateRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const PrStorageEstimateRequestRepoType = S.String;
+const PrStorageEstimateRequestRepoType = S.String;
 
 export interface PrStorageEstimateRequest {
   repoType: PrStorageEstimateRequestRepoType | (string & {});
@@ -6395,7 +4494,7 @@ export interface PrStorageEstimateRequest {
   repo: string;
   num: string;
 }
-export const PrStorageEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrStorageEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: PrStorageEstimateRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6416,7 +4515,7 @@ export interface PrStorageEstimateResponse {
   /** Whether the ref has already been deleted */
   refDeleted: boolean;
 }
-export const PrStorageEstimateResponse = /*@__PURE__*/ S.suspend(() =>
+const PrStorageEstimateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedStorage: S.Number,
     refDeleted: S.Boolean,
@@ -6438,10 +4537,10 @@ export type ReactToBlogCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReactToBlogCommentRequestReaction = S.String;
+const ReactToBlogCommentRequestReaction = S.String;
 
 export type ReactToBlogCommentRequestAction = "add" | "remove";
-export const ReactToBlogCommentRequestAction = S.String;
+const ReactToBlogCommentRequestAction = S.String;
 
 export interface ReactToBlogCommentRequest {
   slug: string;
@@ -6449,7 +4548,7 @@ export interface ReactToBlogCommentRequest {
   reaction: ReactToBlogCommentRequestReaction | (string & {});
   action: ReactToBlogCommentRequestAction | (string & {});
 }
-export const ReactToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -6463,7 +4562,7 @@ export const ReactToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToBlogCommentRequest>;
 
 export interface ReactToBlogCommentResponse {}
-export const ReactToBlogCommentResponse =
+const ReactToBlogCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<ReactToBlogCommentResponse>;
 
 export type ReactToCommunityBlogCommentRequestReaction =
@@ -6479,10 +4578,10 @@ export type ReactToCommunityBlogCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReactToCommunityBlogCommentRequestReaction = S.String;
+const ReactToCommunityBlogCommentRequestReaction = S.String;
 
 export type ReactToCommunityBlogCommentRequestAction = "add" | "remove";
-export const ReactToCommunityBlogCommentRequestAction = S.String;
+const ReactToCommunityBlogCommentRequestAction = S.String;
 
 export interface ReactToCommunityBlogCommentRequest {
   namespace: string;
@@ -6491,7 +4590,7 @@ export interface ReactToCommunityBlogCommentRequest {
   reaction: ReactToCommunityBlogCommentRequestReaction | (string & {});
   action: ReactToCommunityBlogCommentRequestAction | (string & {});
 }
-export const ReactToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -6510,11 +4609,11 @@ export const ReactToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToCommunityBlogCommentRequest>;
 
 export interface ReactToCommunityBlogCommentResponse {}
-export const ReactToCommunityBlogCommentResponse =
+const ReactToCommunityBlogCommentResponse =
   HideCommunityBlogCommentResponse as any as S.Schema<ReactToCommunityBlogCommentResponse>;
 
 export type ReactToDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const ReactToDiscussionCommentRequestRepoType = S.String;
+const ReactToDiscussionCommentRequestRepoType = S.String;
 
 export type ReactToDiscussionCommentRequestReaction =
   | "\ud83d\udd25"
@@ -6529,10 +4628,10 @@ export type ReactToDiscussionCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReactToDiscussionCommentRequestReaction = S.String;
+const ReactToDiscussionCommentRequestReaction = S.String;
 
 export type ReactToDiscussionCommentRequestAction = "add" | "remove";
-export const ReactToDiscussionCommentRequestAction = S.String;
+const ReactToDiscussionCommentRequestAction = S.String;
 
 export interface ReactToDiscussionCommentRequest {
   repoType: ReactToDiscussionCommentRequestRepoType | (string & {});
@@ -6543,7 +4642,7 @@ export interface ReactToDiscussionCommentRequest {
   reaction: ReactToDiscussionCommentRequestReaction | (string & {});
   action: ReactToDiscussionCommentRequestAction | (string & {});
 }
-export const ReactToDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactToDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: ReactToDiscussionCommentRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -6564,7 +4663,7 @@ export const ReactToDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToDiscussionCommentRequest>;
 
 export interface ReactToDiscussionCommentResponse {}
-export const ReactToDiscussionCommentResponse =
+const ReactToDiscussionCommentResponse =
   HideCommunityBlogCommentResponse as any as S.Schema<ReactToDiscussionCommentResponse>;
 
 export type ReactToPaperCommentRequestReaction =
@@ -6580,10 +4679,10 @@ export type ReactToPaperCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReactToPaperCommentRequestReaction = S.String;
+const ReactToPaperCommentRequestReaction = S.String;
 
 export type ReactToPaperCommentRequestAction = "add" | "remove";
-export const ReactToPaperCommentRequestAction = S.String;
+const ReactToPaperCommentRequestAction = S.String;
 
 export interface ReactToPaperCommentRequest {
   paperId: string;
@@ -6591,7 +4690,7 @@ export interface ReactToPaperCommentRequest {
   reaction: ReactToPaperCommentRequestReaction | (string & {});
   action: ReactToPaperCommentRequestAction | (string & {});
 }
-export const ReactToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paperId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -6609,7 +4708,7 @@ export const ReactToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToPaperCommentRequest>;
 
 export interface ReactToPaperCommentResponse {}
-export const ReactToPaperCommentResponse =
+const ReactToPaperCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<ReactToPaperCommentResponse>;
 
 export type ReactToPostCommentRequestReaction =
@@ -6625,10 +4724,10 @@ export type ReactToPostCommentRequestReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReactToPostCommentRequestReaction = S.String;
+const ReactToPostCommentRequestReaction = S.String;
 
 export type ReactToPostCommentRequestAction = "add" | "remove";
-export const ReactToPostCommentRequestAction = S.String;
+const ReactToPostCommentRequestAction = S.String;
 
 export interface ReactToPostCommentRequest {
   username: string;
@@ -6637,7 +4736,7 @@ export interface ReactToPostCommentRequest {
   reaction: ReactToPostCommentRequestReaction | (string & {});
   action: ReactToPostCommentRequestAction | (string & {});
 }
-export const ReactToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReactToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -6656,7 +4755,7 @@ export const ReactToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReactToPostCommentRequest>;
 
 export interface ReactToPostCommentResponse {}
-export const ReactToPostCommentResponse =
+const ReactToPostCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<ReactToPostCommentResponse>;
 
 export interface ReplyToBlogCommentRequest {
@@ -6664,7 +4763,7 @@ export interface ReplyToBlogCommentRequest {
   commentId: string;
   comment: string;
 }
-export const ReplyToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -6676,21 +4775,13 @@ export const ReplyToBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplyToBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToBlogCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToBlogCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface ReplyToBlogCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -6709,34 +4800,21 @@ export interface ReplyToBlogCommentResponseNewMessageAuthorCase0 {
   plan?: ReplyToBlogCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToBlogCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<ReplyToBlogCommentResponseNewMessageAuthorCase0>;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -6750,9 +4828,6 @@ export interface ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface ReplyToBlogCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -6772,13 +4847,10 @@ export interface ReplyToBlogCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToBlogCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const ReplyToBlogCommentResponseNewMessageAuthorCase1 =
-  CreateBlogCommentResponseNewMessageAuthorCase1 as any as S.Schema<ReplyToBlogCommentResponseNewMessageAuthorCase1>;
-
 export type ReplyToBlogCommentResponseNewMessageAuthor =
   | ReplyToBlogCommentResponseNewMessageAuthorCase0
   | ReplyToBlogCommentResponseNewMessageAuthorCase1;
-export const ReplyToBlogCommentResponseNewMessageAuthor =
+const ReplyToBlogCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<ReplyToBlogCommentResponseNewMessageAuthor>;
 
 export type ReplyToBlogCommentResponseNewMessageDataHiddenReason =
@@ -6788,15 +4860,13 @@ export type ReplyToBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const ReplyToBlogCommentResponseNewMessageDataHiddenReason = S.String;
+const ReplyToBlogCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -6811,24 +4881,17 @@ export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -6842,9 +4905,6 @@ export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1Primar
   userRole?: ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -6860,13 +4920,10 @@ export interface ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type ReplyToBlogCommentResponseNewMessageDataLatestAuthor =
   | ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToBlogCommentResponseNewMessageDataLatestAuthorCase1;
-export const ReplyToBlogCommentResponseNewMessageDataLatestAuthor =
+const ReplyToBlogCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatestAuthor>;
 
 export interface ReplyToBlogCommentResponseNewMessageDataLatest {
@@ -6875,7 +4932,7 @@ export interface ReplyToBlogCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: ReplyToBlogCommentResponseNewMessageDataLatestAuthor;
 }
-export const ReplyToBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -6887,11 +4944,11 @@ export const ReplyToBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataLatest>;
 
 export type ReplyToBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataEditorsList =
+const ReplyToBlogCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+const ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
@@ -6907,10 +4964,10 @@ export type ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList =
+const ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToBlogCommentResponseNewMessageDataReactionsItem {
@@ -6918,7 +4975,7 @@ export interface ReplyToBlogCommentResponseNewMessageDataReactionsItem {
   users: ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const ReplyToBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: ReplyToBlogCommentResponseNewMessageDataReactionsItemReaction,
     users: ReplyToBlogCommentResponseNewMessageDataReactionsItemUsersList,
@@ -6930,15 +4987,12 @@ export const ReplyToBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__
 
 export type ReplyToBlogCommentResponseNewMessageDataReactionsList =
   Array<ReplyToBlogCommentResponseNewMessageDataReactionsItem>;
-export const ReplyToBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const ReplyToBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   ReplyToBlogCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<ReplyToBlogCommentResponseNewMessageDataReactionsList>;
 
 export type ReplyToBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const ReplyToBlogCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface ReplyToBlogCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -6954,7 +5008,7 @@ export interface ReplyToBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const ReplyToBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -6981,7 +5035,7 @@ export interface ReplyToBlogCommentResponseNewMessage {
   type: string;
   data: ReplyToBlogCommentResponseNewMessageData;
 }
-export const ReplyToBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -6996,7 +5050,7 @@ export const ReplyToBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =
 export interface ReplyToBlogCommentResponse {
   newMessage: ReplyToBlogCommentResponseNewMessage;
 }
-export const ReplyToBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplyToBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: ReplyToBlogCommentResponseNewMessage,
   }),
@@ -7010,7 +5064,7 @@ export interface ReplyToCommunityBlogCommentRequest {
   commentId: string;
   comment: string;
 }
-export const ReplyToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -7029,21 +5083,13 @@ export const ReplyToCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7062,54 +5108,21 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0 {
   plan?: ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isOwner: S.optional(S.Boolean),
-      isOrgMember: S.optional(S.Boolean),
-      isBlockedByMe: S.optional(S.Boolean),
-      oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      plan: S.optional(ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0Plan),
-      isUserFollowing: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0",
-}) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0>;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7123,9 +5136,6 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1Primary
   userRole?: ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7145,34 +5155,10 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1 = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isOwner: S.optional(S.Boolean),
-      isOrgMember: S.optional(S.Boolean),
-      isBlockedByMe: S.optional(S.Boolean),
-      oauthApp: S.optional(ChangeStatusResponseNewStatusAuthorCase0OauthApp),
-      _id: S.String,
-      avatarUrl: S.String,
-      fullname: S.String,
-      name: S.String,
-      isHf: S.Boolean,
-      isHfAdmin: S.Boolean,
-      isMod: S.Boolean,
-      followerCount: S.optional(S.Number),
-      type: S.String,
-      isPro: S.Boolean,
-      isUserFollowing: S.optional(S.Boolean),
-      primaryOrg: S.optional(ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1PrimaryOrg),
-    }),
-).annotate({
-  identifier: "ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1",
-}) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1>;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageAuthor =
   | ReplyToCommunityBlogCommentResponseNewMessageAuthorCase0
   | ReplyToCommunityBlogCommentResponseNewMessageAuthorCase1;
-export const ReplyToCommunityBlogCommentResponseNewMessageAuthor =
+const ReplyToCommunityBlogCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageAuthor>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason =
@@ -7182,15 +5168,13 @@ export type ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
+const ReplyToCommunityBlogCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7205,26 +5189,17 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCa
   plan?: ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
-  S.String;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7238,9 +5213,6 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCa
   userRole?: ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7256,13 +5228,10 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCa
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   | ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthorCase1;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor =
+const ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor>;
 
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatest {
@@ -7271,7 +5240,7 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: ReplyToCommunityBlogCommentResponseNewMessageDataLatestAuthor;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -7283,11 +5252,11 @@ export const ReplyToCommunityBlogCommentResponseNewMessageDataLatest = /*@__PURE
 }) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataLatest>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList =
+const ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
+const ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction =
@@ -7303,10 +5272,10 @@ export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReacti
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem {
@@ -7314,28 +5283,24 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem 
   users: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reaction: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
-      users: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
-      count: S.Number,
-    }),
-  ).annotate({
-    identifier: "ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem",
-  }) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem>;
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reaction: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemReaction,
+    users: ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItemUsersList,
+    count: S.Number,
+  }),
+).annotate({
+  identifier: "ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem",
+}) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList =
   Array<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem>;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   ReplyToCommunityBlogCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<ReplyToCommunityBlogCommentResponseNewMessageDataReactionsList>;
 
 export type ReplyToCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const ReplyToCommunityBlogCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface ReplyToCommunityBlogCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -7351,7 +5316,7 @@ export interface ReplyToCommunityBlogCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const ReplyToCommunityBlogCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -7378,7 +5343,7 @@ export interface ReplyToCommunityBlogCommentResponseNewMessage {
   type: string;
   data: ReplyToCommunityBlogCommentResponseNewMessageData;
 }
-export const ReplyToCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const ReplyToCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -7393,7 +5358,7 @@ export const ReplyToCommunityBlogCommentResponseNewMessage = /*@__PURE__*/ S.sus
 export interface ReplyToCommunityBlogCommentResponse {
   newMessage: ReplyToCommunityBlogCommentResponseNewMessage;
 }
-export const ReplyToCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplyToCommunityBlogCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: ReplyToCommunityBlogCommentResponseNewMessage,
   }),
@@ -7406,7 +5371,7 @@ export interface ReplyToPaperCommentRequest {
   commentId: string;
   comment: string;
 }
-export const ReplyToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paperId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -7420,21 +5385,13 @@ export const ReplyToPaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplyToPaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToPaperCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToPaperCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPaperCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface ReplyToPaperCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7453,34 +5410,21 @@ export interface ReplyToPaperCommentResponseNewMessageAuthorCase0 {
   plan?: ReplyToPaperCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToPaperCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<ReplyToPaperCommentResponseNewMessageAuthorCase0>;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7494,9 +5438,6 @@ export interface ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface ReplyToPaperCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7516,13 +5457,10 @@ export interface ReplyToPaperCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToPaperCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const ReplyToPaperCommentResponseNewMessageAuthorCase1 =
-  CreateBlogCommentResponseNewMessageAuthorCase1 as any as S.Schema<ReplyToPaperCommentResponseNewMessageAuthorCase1>;
-
 export type ReplyToPaperCommentResponseNewMessageAuthor =
   | ReplyToPaperCommentResponseNewMessageAuthorCase0
   | ReplyToPaperCommentResponseNewMessageAuthorCase1;
-export const ReplyToPaperCommentResponseNewMessageAuthor =
+const ReplyToPaperCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<ReplyToPaperCommentResponseNewMessageAuthor>;
 
 export type ReplyToPaperCommentResponseNewMessageDataHiddenReason =
@@ -7532,15 +5470,13 @@ export type ReplyToPaperCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const ReplyToPaperCommentResponseNewMessageDataHiddenReason = S.String;
+const ReplyToPaperCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7555,25 +5491,17 @@ export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
-  S.String;
-
 export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7587,9 +5515,6 @@ export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1Prima
   userRole?: ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7605,13 +5530,10 @@ export interface ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type ReplyToPaperCommentResponseNewMessageDataLatestAuthor =
   | ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToPaperCommentResponseNewMessageDataLatestAuthorCase1;
-export const ReplyToPaperCommentResponseNewMessageDataLatestAuthor =
+const ReplyToPaperCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatestAuthor>;
 
 export interface ReplyToPaperCommentResponseNewMessageDataLatest {
@@ -7620,7 +5542,7 @@ export interface ReplyToPaperCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: ReplyToPaperCommentResponseNewMessageDataLatestAuthor;
 }
-export const ReplyToPaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -7632,11 +5554,11 @@ export const ReplyToPaperCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataLatest>;
 
 export type ReplyToPaperCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToPaperCommentResponseNewMessageDataEditorsList =
+const ReplyToPaperCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList =
+const ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
@@ -7652,10 +5574,10 @@ export type ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList =
+const ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList =
   CreateCommunityBlogCommentResponseNewMessageDataEditorAvatarUrlsList as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToPaperCommentResponseNewMessageDataReactionsItem {
@@ -7663,7 +5585,7 @@ export interface ReplyToPaperCommentResponseNewMessageDataReactionsItem {
   users: ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const ReplyToPaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: ReplyToPaperCommentResponseNewMessageDataReactionsItemReaction,
     users: ReplyToPaperCommentResponseNewMessageDataReactionsItemUsersList,
@@ -7675,15 +5597,12 @@ export const ReplyToPaperCommentResponseNewMessageDataReactionsItem = /*@__PURE_
 
 export type ReplyToPaperCommentResponseNewMessageDataReactionsList =
   Array<ReplyToPaperCommentResponseNewMessageDataReactionsItem>;
-export const ReplyToPaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const ReplyToPaperCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   ReplyToPaperCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<ReplyToPaperCommentResponseNewMessageDataReactionsList>;
 
 export type ReplyToPaperCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const ReplyToPaperCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface ReplyToPaperCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -7699,7 +5618,7 @@ export interface ReplyToPaperCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const ReplyToPaperCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -7726,7 +5645,7 @@ export interface ReplyToPaperCommentResponseNewMessage {
   type: string;
   data: ReplyToPaperCommentResponseNewMessageData;
 }
-export const ReplyToPaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -7741,7 +5660,7 @@ export const ReplyToPaperCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() 
 export interface ReplyToPaperCommentResponse {
   newMessage: ReplyToPaperCommentResponseNewMessage;
 }
-export const ReplyToPaperCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPaperCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: ReplyToPaperCommentResponseNewMessage,
   }),
@@ -7755,7 +5674,7 @@ export interface ReplyToPostCommentRequest {
   commentId: string;
   comment: string;
 }
-export const ReplyToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -7774,21 +5693,13 @@ export const ReplyToPostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplyToPostCommentResponseNewMessageAuthorCase0OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToPostCommentResponseNewMessageAuthorCase0OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase0OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToPostCommentResponseNewMessageAuthorCase0OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPostCommentResponseNewMessageAuthorCase0Plan = S.String;
-
 export interface ReplyToPostCommentResponseNewMessageAuthorCase0 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7807,34 +5718,21 @@ export interface ReplyToPostCommentResponseNewMessageAuthorCase0 {
   plan?: ReplyToPostCommentResponseNewMessageAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToPostCommentResponseNewMessageAuthorCase0 =
-  ChangeStatusResponseNewStatusAuthorCase0 as any as S.Schema<ReplyToPostCommentResponseNewMessageAuthorCase0>;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase1OauthAppImageData =
   ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-export const ReplyToPostCommentResponseNewMessageAuthorCase1OauthAppImageData =
-  ChangeStatusResponseNewStatusAuthorCase0OauthAppImageData;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase1OauthApp =
   ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-export const ReplyToPostCommentResponseNewMessageAuthorCase1OauthApp =
-  ChangeStatusResponseNewStatusAuthorCase0OauthApp;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7848,9 +5746,6 @@ export interface ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrg {
   userRole?: ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageAuthorCase1PrimaryOrg as any as S.Schema<ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrg>;
-
 export interface ReplyToPostCommentResponseNewMessageAuthorCase1 {
   isOwner?: boolean;
   isOrgMember?: boolean;
@@ -7870,13 +5765,10 @@ export interface ReplyToPostCommentResponseNewMessageAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToPostCommentResponseNewMessageAuthorCase1PrimaryOrg;
 }
-export const ReplyToPostCommentResponseNewMessageAuthorCase1 =
-  CreateBlogCommentResponseNewMessageAuthorCase1 as any as S.Schema<ReplyToPostCommentResponseNewMessageAuthorCase1>;
-
 export type ReplyToPostCommentResponseNewMessageAuthor =
   | ReplyToPostCommentResponseNewMessageAuthorCase0
   | ReplyToPostCommentResponseNewMessageAuthorCase1;
-export const ReplyToPostCommentResponseNewMessageAuthor =
+const ReplyToPostCommentResponseNewMessageAuthor =
   S.Unknown as any as S.Schema<ReplyToPostCommentResponseNewMessageAuthor>;
 
 export type ReplyToPostCommentResponseNewMessageDataHiddenReason =
@@ -7886,15 +5778,13 @@ export type ReplyToPostCommentResponseNewMessageDataHiddenReason =
   | "Resolved"
   | "Off-Topic"
   | "Low Quality";
-export const ReplyToPostCommentResponseNewMessageDataHiddenReason = S.String;
+const ReplyToPostCommentResponseNewMessageDataHiddenReason = S.String;
 
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0Plan = S.String;
-
 export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7909,24 +5799,17 @@ export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0 {
   plan?: ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0Plan;
   isUserFollowing?: boolean;
 }
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase0 as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0>;
-
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgPlan = S.String;
-
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole = S.String;
-
 export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -7940,9 +5823,6 @@ export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1Primar
   userRole?: ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg>;
-
 export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -7958,13 +5838,10 @@ export interface ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1PrimaryOrg;
 }
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1 =
-  CreateBlogCommentResponseNewMessageDataLatestAuthorCase1 as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1>;
-
 export type ReplyToPostCommentResponseNewMessageDataLatestAuthor =
   | ReplyToPostCommentResponseNewMessageDataLatestAuthorCase0
   | ReplyToPostCommentResponseNewMessageDataLatestAuthorCase1;
-export const ReplyToPostCommentResponseNewMessageDataLatestAuthor =
+const ReplyToPostCommentResponseNewMessageDataLatestAuthor =
   S.Unknown as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatestAuthor>;
 
 export interface ReplyToPostCommentResponseNewMessageDataLatest {
@@ -7973,7 +5850,7 @@ export interface ReplyToPostCommentResponseNewMessageDataLatest {
   updatedAt: string;
   author?: ReplyToPostCommentResponseNewMessageDataLatestAuthor;
 }
-export const ReplyToPostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.String,
     html: S.String,
@@ -7985,11 +5862,11 @@ export const ReplyToPostCommentResponseNewMessageDataLatest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataLatest>;
 
 export type ReplyToPostCommentResponseNewMessageDataEditorsList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataEditorsList =
+const ReplyToPostCommentResponseNewMessageDataEditorsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList =
+const ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataEditorAvatarUrlsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
@@ -8005,10 +5882,10 @@ export type ReplyToPostCommentResponseNewMessageDataReactionsItemReaction =
   | "\ud83e\udd1d"
   | "\ud83d\ude14"
   | "\ud83e\udd2f";
-export const ReplyToPostCommentResponseNewMessageDataReactionsItemReaction = S.String;
+const ReplyToPostCommentResponseNewMessageDataReactionsItemReaction = S.String;
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList = Array<string>;
-export const ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList =
+const ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList =
   CreateBlogCommentResponseNewMessageDataEditorsList as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList>;
 
 export interface ReplyToPostCommentResponseNewMessageDataReactionsItem {
@@ -8016,7 +5893,7 @@ export interface ReplyToPostCommentResponseNewMessageDataReactionsItem {
   users: ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList;
   count: number;
 }
-export const ReplyToPostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentResponseNewMessageDataReactionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reaction: ReplyToPostCommentResponseNewMessageDataReactionsItemReaction,
     users: ReplyToPostCommentResponseNewMessageDataReactionsItemUsersList,
@@ -8028,15 +5905,12 @@ export const ReplyToPostCommentResponseNewMessageDataReactionsItem = /*@__PURE__
 
 export type ReplyToPostCommentResponseNewMessageDataReactionsList =
   Array<ReplyToPostCommentResponseNewMessageDataReactionsItem>;
-export const ReplyToPostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
+const ReplyToPostCommentResponseNewMessageDataReactionsList = /*@__PURE__*/ S.Array(
   ReplyToPostCommentResponseNewMessageDataReactionsItem,
 ) as any as S.Schema<ReplyToPostCommentResponseNewMessageDataReactionsList>;
 
 export type ReplyToPostCommentResponseNewMessageDataIdentifiedLanguage =
   CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-export const ReplyToPostCommentResponseNewMessageDataIdentifiedLanguage =
-  CreateBlogCommentResponseNewMessageDataIdentifiedLanguage;
-
 export interface ReplyToPostCommentResponseNewMessageData {
   edited: boolean;
   hidden: boolean;
@@ -8052,7 +5926,7 @@ export interface ReplyToPostCommentResponseNewMessageData {
   isReport?: boolean;
   parentCommentId?: string;
 }
-export const ReplyToPostCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentResponseNewMessageData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     edited: S.Boolean,
     hidden: S.Boolean,
@@ -8079,7 +5953,7 @@ export interface ReplyToPostCommentResponseNewMessage {
   type: string;
   data: ReplyToPostCommentResponseNewMessageData;
 }
-export const ReplyToPostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String,
@@ -8094,7 +5968,7 @@ export const ReplyToPostCommentResponseNewMessage = /*@__PURE__*/ S.suspend(() =
 export interface ReplyToPostCommentResponse {
   newMessage: ReplyToPostCommentResponseNewMessage;
 }
-export const ReplyToPostCommentResponse = /*@__PURE__*/ S.suspend(() =>
+const ReplyToPostCommentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newMessage: ReplyToPostCommentResponseNewMessage,
   }),
@@ -8103,10 +5977,10 @@ export const ReplyToPostCommentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplyToPostCommentResponse>;
 
 export type ToggleIgnoreDiscussionRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const ToggleIgnoreDiscussionRequestRepoType = S.String;
+const ToggleIgnoreDiscussionRequestRepoType = S.String;
 
 export type ToggleIgnoreDiscussionRequestAction = "add" | "remove";
-export const ToggleIgnoreDiscussionRequestAction = S.String;
+const ToggleIgnoreDiscussionRequestAction = S.String;
 
 export interface ToggleIgnoreDiscussionRequest {
   repoType: ToggleIgnoreDiscussionRequestRepoType | (string & {});
@@ -8115,7 +5989,7 @@ export interface ToggleIgnoreDiscussionRequest {
   num: string;
   action: ToggleIgnoreDiscussionRequestAction | (string & {});
 }
-export const ToggleIgnoreDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
+const ToggleIgnoreDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: ToggleIgnoreDiscussionRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -8134,7 +6008,7 @@ export const ToggleIgnoreDiscussionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ToggleIgnoreDiscussionRequest>;
 
 export interface ToggleIgnoreDiscussionResponse {}
-export const ToggleIgnoreDiscussionResponse =
+const ToggleIgnoreDiscussionResponse =
   DeleteDiscussionResponse as any as S.Schema<ToggleIgnoreDiscussionResponse>;
 
 export interface UpdateBlogCommentRequest {
@@ -8142,7 +6016,7 @@ export interface UpdateBlogCommentRequest {
   commentId: string;
   content: string;
 }
-export const UpdateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -8151,7 +6025,7 @@ export const UpdateBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateBlogCommentRequest" }) as any as S.Schema<UpdateBlogCommentRequest>;
 
 export interface UpdateBlogCommentResponse {}
-export const UpdateBlogCommentResponse =
+const UpdateBlogCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<UpdateBlogCommentResponse>;
 
 export interface UpdateCommunityBlogCommentRequest {
@@ -8160,7 +6034,7 @@ export interface UpdateCommunityBlogCommentRequest {
   commentId: string;
   content: string;
 }
-export const UpdateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -8178,11 +6052,11 @@ export const UpdateCommunityBlogCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCommunityBlogCommentRequest>;
 
 export interface UpdateCommunityBlogCommentResponse {}
-export const UpdateCommunityBlogCommentResponse =
+const UpdateCommunityBlogCommentResponse =
   HideCommunityBlogCommentResponse as any as S.Schema<UpdateCommunityBlogCommentResponse>;
 
 export type UpdateDiscussionCommentRequestRepoType = "models" | "spaces" | "datasets" | "kernels";
-export const UpdateDiscussionCommentRequestRepoType = S.String;
+const UpdateDiscussionCommentRequestRepoType = S.String;
 
 export interface UpdateDiscussionCommentRequest {
   repoType: UpdateDiscussionCommentRequestRepoType | (string & {});
@@ -8192,7 +6066,7 @@ export interface UpdateDiscussionCommentRequest {
   commentId: string;
   content: string;
 }
-export const UpdateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repoType: UpdateDiscussionCommentRequestRepoType.pipe(T.Label()),
     namespace: S.String.pipe(T.Label()),
@@ -8212,16 +6086,16 @@ export const UpdateDiscussionCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDiscussionCommentRequest>;
 
 export interface UpdateDiscussionCommentResponse {}
-export const UpdateDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "UpdateDiscussionCommentResponse" },
-) as any as S.Schema<UpdateDiscussionCommentResponse>;
+const UpdateDiscussionCommentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "UpdateDiscussionCommentResponse",
+}) as any as S.Schema<UpdateDiscussionCommentResponse>;
 
 export interface UpdatePaperCommentRequest {
   paperId: string;
   commentId: string;
   content: string;
 }
-export const UpdatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paperId: S.String.pipe(T.Label()),
     commentId: S.String.pipe(T.Label()),
@@ -8234,7 +6108,7 @@ export const UpdatePaperCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePaperCommentRequest>;
 
 export interface UpdatePaperCommentResponse {}
-export const UpdatePaperCommentResponse =
+const UpdatePaperCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<UpdatePaperCommentResponse>;
 
 export interface UpdatePostCommentRequest {
@@ -8243,7 +6117,7 @@ export interface UpdatePostCommentRequest {
   commentId: string;
   content: string;
 }
-export const UpdatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     postSlug: S.String.pipe(T.Label()),
@@ -8259,7 +6133,7 @@ export const UpdatePostCommentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePostCommentRequest" }) as any as S.Schema<UpdatePostCommentRequest>;
 
 export interface UpdatePostCommentResponse {}
-export const UpdatePostCommentResponse =
+const UpdatePostCommentResponse =
   DeleteDiscussionResponse as any as S.Schema<UpdatePostCommentResponse>;
 
 export type ChangeStatusError = HuggingFaceOpError;

@@ -66,7 +66,7 @@ export interface CompleteVerificationRequest {
   /** Required. PIN code received by the merchant to complete the verification. */
   pin?: string;
 }
-export const CompleteVerificationRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteVerificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pin: S.optional(S.String),
   }),
@@ -80,7 +80,7 @@ export interface CompleteLocationsVerificationsRequest {
   /** Request body */
   body?: CompleteVerificationRequest;
 }
-export const CompleteLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CompleteVerificationRequest.pipe(T.HttpBody())),
@@ -103,10 +103,10 @@ export type VerificationMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-export const VerificationMethodEnum = S.String;
+const VerificationMethodEnum = S.String;
 
 export type VerificationStateEnum = "STATE_UNSPECIFIED" | "PENDING" | "COMPLETED" | "FAILED";
-export const VerificationStateEnum = S.String;
+const VerificationStateEnum = S.String;
 
 /** A verification represents a verification attempt on a location. */
 export interface Verification {
@@ -121,7 +121,7 @@ export interface Verification {
   /** The state of the verification. */
   state?: VerificationStateEnum;
 }
-export const Verification = /*@__PURE__*/ S.suspend(() =>
+const Verification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     method: S.optional(VerificationMethodEnum),
     name: S.optional(S.String),
@@ -136,7 +136,7 @@ export interface CompleteVerificationResponse {
   /** The completed verification. */
   verification?: Verification;
 }
-export const CompleteVerificationResponse = /*@__PURE__*/ S.suspend(() =>
+const CompleteVerificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verification: S.optional(Verification),
   }),
@@ -145,7 +145,7 @@ export const CompleteVerificationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompleteVerificationResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -172,7 +172,7 @@ export interface PostalAddress {
   /** Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland. */
   regionCode?: string;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postalCode: S.optional(S.String),
     revision: S.optional(S.Number),
@@ -193,7 +193,7 @@ export interface ServiceBusinessContext {
   /** The verification address of the location. It is used to either enable more verification options or send a postcard. */
   address?: PostalAddress;
 }
-export const ServiceBusinessContext = /*@__PURE__*/ S.suspend(() =>
+const ServiceBusinessContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(PostalAddress),
   }),
@@ -206,7 +206,7 @@ export interface FetchVerificationOptionsRequest {
   /** Optional. Extra context information for the verification of service businesses. Can only be applied to the locations whose business type is CUSTOMER_LOCATION_ONLY. Specifying an accurate address could enable more options. INVALID_ARGUMENT will be thrown if it is set for other business types of locations. */
   context?: ServiceBusinessContext;
 }
-export const FetchVerificationOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchVerificationOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     context: S.optional(ServiceBusinessContext),
@@ -221,7 +221,7 @@ export interface FetchVerificationOptionsLocationsRequest {
   /** Request body */
   body?: FetchVerificationOptionsRequest;
 }
-export const FetchVerificationOptionsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchVerificationOptionsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.String.pipe(T.Label()),
     body: S.optional(FetchVerificationOptionsRequest.pipe(T.HttpBody())),
@@ -244,7 +244,7 @@ export type VerificationOptionVerificationMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-export const VerificationOptionVerificationMethodEnum = S.String;
+const VerificationOptionVerificationMethodEnum = S.String;
 
 /** Display data for verifications through postcard. */
 export interface AddressVerificationData {
@@ -255,7 +255,7 @@ export interface AddressVerificationData {
   /** Merchant's business name. */
   business?: string;
 }
-export const AddressVerificationData = /*@__PURE__*/ S.suspend(() =>
+const AddressVerificationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(PostalAddress),
     expectedDeliveryDaysRegion: S.optional(S.Number),
@@ -272,7 +272,7 @@ export interface EmailVerificationData {
   /** User name in the email address. e.g. "foo" in foo@gmail.com */
   user?: string;
 }
-export const EmailVerificationData = /*@__PURE__*/ S.suspend(() =>
+const EmailVerificationData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isUserNameEditable: S.optional(S.Boolean),
     domain: S.optional(S.String),
@@ -293,7 +293,7 @@ export interface VerificationOption {
   /** Set only if the method is EMAIL. */
   emailData?: EmailVerificationData;
 }
-export const VerificationOption = /*@__PURE__*/ S.suspend(() =>
+const VerificationOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     announcement: S.optional(S.String),
     verificationMethod: S.optional(VerificationOptionVerificationMethodEnum),
@@ -304,7 +304,7 @@ export const VerificationOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VerificationOption" }) as any as S.Schema<VerificationOption>;
 
 export type VerificationOptionList = Array<VerificationOption>;
-export const VerificationOptionList = /*@__PURE__*/ S.Array(
+const VerificationOptionList = /*@__PURE__*/ S.Array(
   VerificationOption,
 ) as any as S.Schema<VerificationOptionList>;
 
@@ -313,7 +313,7 @@ export interface FetchVerificationOptionsResponse {
   /** The available verification options. */
   options?: VerificationOptionList;
 }
-export const FetchVerificationOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchVerificationOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(VerificationOptionList),
   }),
@@ -326,7 +326,7 @@ export interface GenerateInstantVerificationTokenRequest {
   /** The location identifier associated with an unverified listing. This is the location id generated at the time that the listing was originally created. It is the final portion of a location resource name as generated by the Google My Business API. Note: the caller must be an owner or manager of this listing in order to generate a verification token. See the [location resource](/my-business/reference/rest/v4/accounts.locations) documentation for more information. */
   locationId?: string;
 }
-export const GenerateInstantVerificationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateInstantVerificationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
   }),
@@ -338,7 +338,7 @@ export interface GenerateVerificationTokensRequest {
   /** Request body */
   body?: GenerateInstantVerificationTokenRequest;
 }
-export const GenerateVerificationTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateVerificationTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(GenerateInstantVerificationTokenRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -356,7 +356,7 @@ export type GenerateInstantVerificationTokenResponseResultEnum =
   | "RESULT_UNSPECIFIED"
   | "SUCCEEDED"
   | "FAILED";
-export const GenerateInstantVerificationTokenResponseResultEnum = S.String;
+const GenerateInstantVerificationTokenResponseResultEnum = S.String;
 
 /** Response message for Verifications.GenerateInstantVerificationToken. */
 export interface GenerateInstantVerificationTokenResponse {
@@ -365,7 +365,7 @@ export interface GenerateInstantVerificationTokenResponse {
   /** The generated instant verification token. */
   instantVerificationToken?: string;
 }
-export const GenerateInstantVerificationTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateInstantVerificationTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenerateInstantVerificationTokenResponseResultEnum),
     instantVerificationToken: S.optional(S.String),
@@ -378,7 +378,7 @@ export interface GetVoiceOfMerchantStateLocationsRequest {
   /** Required. Resource name of the location. */
   name: string;
 }
-export const GetVoiceOfMerchantStateLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVoiceOfMerchantStateLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -394,26 +394,24 @@ export const GetVoiceOfMerchantStateLocationsRequest = /*@__PURE__*/ S.suspend((
 
 /** Indicates that the location duplicates another location that is in good standing. */
 export interface ResolveOwnershipConflict {}
-export const ResolveOwnershipConflict = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ResolveOwnershipConflict = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ResolveOwnershipConflict",
 }) as any as S.Schema<ResolveOwnershipConflict>;
 
 /** Indicates that the location will gain voice of merchant after passing review. */
 export type WaitForVoiceOfMerchant = ResolveOwnershipConflict;
-export const WaitForVoiceOfMerchant = ResolveOwnershipConflict;
-
 export type ComplyWithGuidelinesRecommendationReasonEnum =
   | "RECOMMENDATION_REASON_UNSPECIFIED"
   | "BUSINESS_LOCATION_SUSPENDED"
   | "BUSINESS_LOCATION_DISABLED";
-export const ComplyWithGuidelinesRecommendationReasonEnum = S.String;
+const ComplyWithGuidelinesRecommendationReasonEnum = S.String;
 
 /** Indicates that the location fails to comply with our [guidelines](https://support.google.com/business/answer/3038177). */
 export interface ComplyWithGuidelines {
   /** The reason why the location is being recommended to comply with guidelines. */
   recommendationReason?: ComplyWithGuidelinesRecommendationReasonEnum;
 }
-export const ComplyWithGuidelines = /*@__PURE__*/ S.suspend(() =>
+const ComplyWithGuidelines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendationReason: S.optional(ComplyWithGuidelinesRecommendationReasonEnum),
   }),
@@ -424,7 +422,7 @@ export interface Verify {
   /** Indicates whether a verification process has already started, and can be completed by the location. */
   hasPendingVerification?: boolean;
 }
-export const Verify = /*@__PURE__*/ S.suspend(() =>
+const Verify = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasPendingVerification: S.optional(S.Boolean),
   }),
@@ -445,7 +443,7 @@ export interface VoiceOfMerchantState {
   /** Start or continue the verification process. */
   verify?: Verify;
 }
-export const VoiceOfMerchantState = /*@__PURE__*/ S.suspend(() =>
+const VoiceOfMerchantState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolveOwnershipConflict: S.optional(ResolveOwnershipConflict),
     hasBusinessAuthority: S.optional(S.Boolean),
@@ -464,7 +462,7 @@ export interface ListLocationsVerificationsRequest {
   /** Required. Resource name of the location that verification requests belong to. */
   parent: string;
 }
-export const ListLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -481,9 +479,7 @@ export const ListLocationsVerificationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLocationsVerificationsRequest>;
 
 export type VerificationList = Array<Verification>;
-export const VerificationList = /*@__PURE__*/ S.Array(
-  Verification,
-) as any as S.Schema<VerificationList>;
+const VerificationList = /*@__PURE__*/ S.Array(Verification) as any as S.Schema<VerificationList>;
 
 /** Response message for Verifications.ListVerifications. */
 export interface ListVerificationsResponse {
@@ -492,7 +488,7 @@ export interface ListVerificationsResponse {
   /** If the number of verifications exceeded the requested page size, this field will be populated with a token to fetch the next page of verification on a subsequent call. If there are no more attributes, this field will not be present in the response. */
   nextPageToken?: string;
 }
-export const ListVerificationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVerificationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verifications: S.optional(VerificationList),
     nextPageToken: S.optional(S.String),
@@ -506,7 +502,7 @@ export interface VerificationToken {
   /** The token string. */
   tokenString?: string;
 }
-export const VerificationToken = /*@__PURE__*/ S.suspend(() =>
+const VerificationToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenString: S.optional(S.String),
   }),
@@ -520,7 +516,7 @@ export type VerifyLocationRequestMethodEnum =
   | "SMS"
   | "AUTO"
   | "TRUSTED_PARTNER";
-export const VerifyLocationRequestMethodEnum = S.String;
+const VerifyLocationRequestMethodEnum = S.String;
 
 /** Request message for Verifications.VerifyLocation. */
 export interface VerifyLocationRequest {
@@ -541,7 +537,7 @@ export interface VerifyLocationRequest {
   /** Optional. The input for EMAIL method. Email address where the PIN should be sent to. An email address is accepted only if it is one of the addresses provided by FetchVerificationOptions. If the EmailVerificationData has is_user_name_editable set to true, the client may specify a different user name (local-part) but must match the domain name. */
   emailAddress?: string;
 }
-export const VerifyLocationRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String),
     token: S.optional(VerificationToken),
@@ -560,7 +556,7 @@ export interface VerifyLocationsRequest {
   /** Request body */
   body?: VerifyLocationRequest;
 }
-export const VerifyLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const VerifyLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(VerifyLocationRequest.pipe(T.HttpBody())),
@@ -578,7 +574,7 @@ export interface VerifyLocationResponse {
   /** The created verification request. */
   verification?: Verification;
 }
-export const VerifyLocationResponse = /*@__PURE__*/ S.suspend(() =>
+const VerifyLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verification: S.optional(Verification),
   }),

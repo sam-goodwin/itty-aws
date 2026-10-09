@@ -11,14 +11,14 @@ export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreatePlacementGroupRequestLabelsMap = { [key: string]: string | undefined };
-export const CreatePlacementGroupRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreatePlacementGroupRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreatePlacementGroupRequestLabelsMap>;
 
 /** Define the Placement Group Type. */
 export type CreatePlacementGroupRequestType = "spread";
-export const CreatePlacementGroupRequestType = S.String;
+const CreatePlacementGroupRequestType = S.String;
 
 export interface CreatePlacementGroupRequest {
   /** Name of the Placement Group. */
@@ -28,7 +28,7 @@ export interface CreatePlacementGroupRequest {
   /** Define the Placement Group Type. */
   type: CreatePlacementGroupRequestType | (string & {});
 }
-export const CreatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     labels: S.optional(CreatePlacementGroupRequestLabelsMap),
@@ -42,16 +42,16 @@ export const CreatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type CreatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const CreatePlacementGroupResponsePlacementGroupLabelsMap =
+const CreatePlacementGroupResponsePlacementGroupLabelsMap =
   CreatePlacementGroupRequestLabelsMap as any as S.Schema<CreatePlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type CreatePlacementGroupResponsePlacementGroupType = "spread";
-export const CreatePlacementGroupResponsePlacementGroupType = S.String;
+const CreatePlacementGroupResponsePlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type CreatePlacementGroupResponsePlacementGroupServersList = Array<number>;
-export const CreatePlacementGroupResponsePlacementGroupServersList = /*@__PURE__*/ S.Array(
+const CreatePlacementGroupResponsePlacementGroupServersList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreatePlacementGroupResponsePlacementGroupServersList>;
 
@@ -69,7 +69,7 @@ export interface CreatePlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: CreatePlacementGroupResponsePlacementGroupServersList;
 }
-export const CreatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -84,7 +84,7 @@ export const CreatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspen
 
 /** Status of the Action. */
 export type CreatePlacementGroupResponseActionStatus = "running" | "success" | "error";
-export const CreatePlacementGroupResponseActionStatus = S.String;
+const CreatePlacementGroupResponseActionStatus = S.String;
 
 export interface CreatePlacementGroupResponseActionResourcesItem {
   /** ID of the Resource. */
@@ -92,7 +92,7 @@ export interface CreatePlacementGroupResponseActionResourcesItem {
   /** Type of the Resource. */
   type: string;
 }
-export const CreatePlacementGroupResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupResponseActionResourcesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     type: S.String,
@@ -104,7 +104,7 @@ export const CreatePlacementGroupResponseActionResourcesItem = /*@__PURE__*/ S.s
 /** Resources the Action relates to. */
 export type CreatePlacementGroupResponseActionResourcesList =
   Array<CreatePlacementGroupResponseActionResourcesItem>;
-export const CreatePlacementGroupResponseActionResourcesList = /*@__PURE__*/ S.Array(
+const CreatePlacementGroupResponseActionResourcesList = /*@__PURE__*/ S.Array(
   CreatePlacementGroupResponseActionResourcesItem,
 ) as any as S.Schema<CreatePlacementGroupResponseActionResourcesList>;
 
@@ -115,7 +115,7 @@ export interface CreatePlacementGroupResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-export const CreatePlacementGroupResponseActionError = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupResponseActionError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -142,7 +142,7 @@ export interface CreatePlacementGroupResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreatePlacementGroupResponseActionError | null;
 }
-export const CreatePlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupResponseAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     command: S.String,
@@ -161,7 +161,7 @@ export interface CreatePlacementGroupResponse {
   placement_group: CreatePlacementGroupResponsePlacementGroup;
   action?: CreatePlacementGroupResponseAction | null;
 }
-export const CreatePlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placement_group: CreatePlacementGroupResponsePlacementGroup,
     action: S.optional(S.NullOr(CreatePlacementGroupResponseAction)),
@@ -174,7 +174,7 @@ export interface DeletePlacementGroupRequest {
   /** ID of the Placement Group. */
   id: number;
 }
-export const DeletePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/placement_groups/{id}", code: 200 })),
@@ -183,7 +183,7 @@ export const DeletePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePlacementGroupRequest>;
 
 export interface DeletePlacementGroupResponse {}
-export const DeletePlacementGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePlacementGroupResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePlacementGroupResponse",
 }) as any as S.Schema<DeletePlacementGroupResponse>;
 
@@ -191,7 +191,7 @@ export interface GetPlacementGroupRequest {
   /** ID of the Placement Group. */
   id: number;
 }
-export const GetPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/placement_groups/{id}", code: 200 })),
@@ -201,16 +201,16 @@ export const GetPlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type GetPlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const GetPlacementGroupResponsePlacementGroupLabelsMap =
+const GetPlacementGroupResponsePlacementGroupLabelsMap =
   CreatePlacementGroupRequestLabelsMap as any as S.Schema<GetPlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupType = "spread";
-export const GetPlacementGroupResponsePlacementGroupType = S.String;
+const GetPlacementGroupResponsePlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type GetPlacementGroupResponsePlacementGroupServersList = Array<number>;
-export const GetPlacementGroupResponsePlacementGroupServersList =
+const GetPlacementGroupResponsePlacementGroupServersList =
   CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<GetPlacementGroupResponsePlacementGroupServersList>;
 
 export interface GetPlacementGroupResponsePlacementGroup {
@@ -227,7 +227,7 @@ export interface GetPlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: GetPlacementGroupResponsePlacementGroupServersList;
 }
-export const GetPlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -243,7 +243,7 @@ export const GetPlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend((
 export interface GetPlacementGroupResponse {
   placement_group: GetPlacementGroupResponsePlacementGroup;
 }
-export const GetPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placement_group: GetPlacementGroupResponsePlacementGroup,
   }),
@@ -261,23 +261,21 @@ export type ListPlacementGroupsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-export const ListPlacementGroupsRequestSortItem = S.String;
+const ListPlacementGroupsRequestSortItem = S.String;
 
 export type ListPlacementGroupsRequestSortList = Array<
   ListPlacementGroupsRequestSortItem | (string & {})
 >;
-export const ListPlacementGroupsRequestSortList = /*@__PURE__*/ S.Array(
+const ListPlacementGroupsRequestSortList = /*@__PURE__*/ S.Array(
   ListPlacementGroupsRequestSortItem,
 ) as any as S.Schema<ListPlacementGroupsRequestSortList>;
 
 /** Type of Placement Group. */
 export type ListPlacementGroupsRequestTypeItem = "spread";
-export const ListPlacementGroupsRequestTypeItem = S.String;
-
 export type ListPlacementGroupsRequestTypeList = Array<
   ListPlacementGroupsRequestTypeItem | (string & {})
 >;
-export const ListPlacementGroupsRequestTypeList =
+const ListPlacementGroupsRequestTypeList =
   ListPlacementGroupsRequestSortList as any as S.Schema<ListPlacementGroupsRequestTypeList>;
 
 export interface ListPlacementGroupsRequest {
@@ -294,7 +292,7 @@ export interface ListPlacementGroupsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-export const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sort: S.optional(ListPlacementGroupsRequestSortList.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
@@ -311,16 +309,16 @@ export const ListPlacementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListPlacementGroupsResponsePlacementGroupsItemLabelsMap = {
   [key: string]: string | undefined;
 };
-export const ListPlacementGroupsResponsePlacementGroupsItemLabelsMap =
+const ListPlacementGroupsResponsePlacementGroupsItemLabelsMap =
   CreatePlacementGroupRequestLabelsMap as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemLabelsMap>;
 
 /** Type of Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemType = "spread";
-export const ListPlacementGroupsResponsePlacementGroupsItemType = S.String;
+const ListPlacementGroupsResponsePlacementGroupsItemType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type ListPlacementGroupsResponsePlacementGroupsItemServersList = Array<number>;
-export const ListPlacementGroupsResponsePlacementGroupsItemServersList =
+const ListPlacementGroupsResponsePlacementGroupsItemServersList =
   CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsItemServersList>;
 
 export interface ListPlacementGroupsResponsePlacementGroupsItem {
@@ -337,7 +335,7 @@ export interface ListPlacementGroupsResponsePlacementGroupsItem {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: ListPlacementGroupsResponsePlacementGroupsItemServersList;
 }
-export const ListPlacementGroupsResponsePlacementGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementGroupsResponsePlacementGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -352,7 +350,7 @@ export const ListPlacementGroupsResponsePlacementGroupsItem = /*@__PURE__*/ S.su
 
 export type ListPlacementGroupsResponsePlacementGroupsList =
   Array<ListPlacementGroupsResponsePlacementGroupsItem>;
-export const ListPlacementGroupsResponsePlacementGroupsList = /*@__PURE__*/ S.Array(
+const ListPlacementGroupsResponsePlacementGroupsList = /*@__PURE__*/ S.Array(
   ListPlacementGroupsResponsePlacementGroupsItem,
 ) as any as S.Schema<ListPlacementGroupsResponsePlacementGroupsList>;
 
@@ -371,7 +369,7 @@ export interface ListPlacementGroupsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-export const ListPlacementGroupsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementGroupsResponseMetaPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.Number,
     per_page: S.Number,
@@ -388,7 +386,7 @@ export interface ListPlacementGroupsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListPlacementGroupsResponseMetaPagination;
 }
-export const ListPlacementGroupsResponseMeta = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementGroupsResponseMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pagination: ListPlacementGroupsResponseMetaPagination,
   }),
@@ -400,7 +398,7 @@ export interface ListPlacementGroupsResponse {
   placement_groups: ListPlacementGroupsResponsePlacementGroupsList;
   meta: ListPlacementGroupsResponseMeta;
 }
-export const ListPlacementGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlacementGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placement_groups: ListPlacementGroupsResponsePlacementGroupsList,
     meta: ListPlacementGroupsResponseMeta,
@@ -411,7 +409,7 @@ export const ListPlacementGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdatePlacementGroupRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdatePlacementGroupRequestLabelsMap =
+const UpdatePlacementGroupRequestLabelsMap =
   CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupRequestLabelsMap>;
 
 export interface UpdatePlacementGroupRequest {
@@ -422,7 +420,7 @@ export interface UpdatePlacementGroupRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdatePlacementGroupRequestLabelsMap;
 }
-export const UpdatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -436,16 +434,16 @@ export const UpdatePlacementGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export type UpdatePlacementGroupResponsePlacementGroupLabelsMap = {
   [key: string]: string | undefined;
 };
-export const UpdatePlacementGroupResponsePlacementGroupLabelsMap =
+const UpdatePlacementGroupResponsePlacementGroupLabelsMap =
   CreatePlacementGroupRequestLabelsMap as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupLabelsMap>;
 
 /** Type of Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupType = "spread";
-export const UpdatePlacementGroupResponsePlacementGroupType = S.String;
+const UpdatePlacementGroupResponsePlacementGroupType = S.String;
 
 /** Array of IDs of Servers that are part of this Placement Group. */
 export type UpdatePlacementGroupResponsePlacementGroupServersList = Array<number>;
-export const UpdatePlacementGroupResponsePlacementGroupServersList =
+const UpdatePlacementGroupResponsePlacementGroupServersList =
   CreatePlacementGroupResponsePlacementGroupServersList as any as S.Schema<UpdatePlacementGroupResponsePlacementGroupServersList>;
 
 export interface UpdatePlacementGroupResponsePlacementGroup {
@@ -462,7 +460,7 @@ export interface UpdatePlacementGroupResponsePlacementGroup {
   /** Array of IDs of Servers that are part of this Placement Group. */
   servers: UpdatePlacementGroupResponsePlacementGroupServersList;
 }
-export const UpdatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -478,7 +476,7 @@ export const UpdatePlacementGroupResponsePlacementGroup = /*@__PURE__*/ S.suspen
 export interface UpdatePlacementGroupResponse {
   placement_group: UpdatePlacementGroupResponsePlacementGroup;
 }
-export const UpdatePlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdatePlacementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placement_group: UpdatePlacementGroupResponsePlacementGroup,
   }),

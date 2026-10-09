@@ -16,7 +16,7 @@ export interface DeleteGraphQueryRequest {
   /** The name of the Graph Query resource. */
   resourceName: string;
 }
-export const DeleteGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -32,7 +32,7 @@ export const DeleteGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteGraphQueryRequest" }) as any as S.Schema<DeleteGraphQueryRequest>;
 
 export interface DeleteGraphQueryResponse {}
-export const DeleteGraphQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteGraphQueryResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteGraphQueryResponse",
 }) as any as S.Schema<DeleteGraphQueryResponse>;
 
@@ -44,7 +44,7 @@ export interface GetGraphQueryRequest {
   /** The name of the Graph Query resource. */
   resourceName: string;
 }
-export const GetGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -61,11 +61,11 @@ export const GetGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -82,7 +82,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -95,7 +95,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Enum indicating a type of graph query. */
 export type ResultKind = "basic";
-export const ResultKind = S.String;
+const ResultKind = S.String;
 
 /** Properties that contain a graph query. */
 export interface GraphQueryProperties {
@@ -108,7 +108,7 @@ export interface GraphQueryProperties {
   /** Enum indicating a type of graph query. */
   resultKind?: ResultKind;
 }
-export const GraphQueryProperties = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeModified: S.optional(S.String),
     description: S.optional(S.String),
@@ -119,7 +119,7 @@ export const GraphQueryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetGraphQueryResponseTagsMap = { [key: string]: string | undefined };
-export const GetGraphQueryResponseTagsMap = /*@__PURE__*/ S.Record(
+const GetGraphQueryResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GetGraphQueryResponseTagsMap>;
@@ -142,7 +142,7 @@ export interface GetGraphQueryResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const GetGraphQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGraphQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -162,7 +162,7 @@ export interface GraphQueryPropertiesInput {
   /** KQL query that will be graph. */
   query: string;
 }
-export const GraphQueryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     query: S.String,
@@ -173,7 +173,7 @@ export const GraphQueryPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const GraphQueryCreateOrUpdateRequestTagsMap =
+const GraphQueryCreateOrUpdateRequestTagsMap =
   GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateRequestTagsMap>;
 
 export interface GraphQueryCreateOrUpdateRequest {
@@ -192,7 +192,7 @@ export interface GraphQueryCreateOrUpdateRequest {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -215,7 +215,7 @@ export const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const GraphQueryCreateOrUpdateResponseTagsMap =
+const GraphQueryCreateOrUpdateResponseTagsMap =
   GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateResponseTagsMap>;
 
 export interface GraphQueryCreateOrUpdateResponse {
@@ -236,7 +236,7 @@ export interface GraphQueryCreateOrUpdateResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const GraphQueryCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -257,7 +257,7 @@ export interface ListGraphQueryRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -273,9 +273,6 @@ export const ListGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GraphQueryResourceTagsMap = { [key: string]: string | undefined };
-export const GraphQueryResourceTagsMap =
-  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryResourceTagsMap>;
-
 /** Graph Query entity definition. */
 export interface GraphQueryResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -295,11 +292,11 @@ export interface GraphQueryResource {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const GraphQueryResource = GetGraphQueryResponse as any as S.Schema<GraphQueryResource>;
+const GraphQueryResource = GetGraphQueryResponse as any as S.Schema<GraphQueryResource>;
 
 /** The GraphQueryResource items on this page */
 export type GraphQueryListResultValueList = Array<GraphQueryResource>;
-export const GraphQueryListResultValueList = /*@__PURE__*/ S.Array(
+const GraphQueryListResultValueList = /*@__PURE__*/ S.Array(
   GraphQueryResource,
 ) as any as S.Schema<GraphQueryListResultValueList>;
 
@@ -310,7 +307,7 @@ export interface GraphQueryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GraphQueryListResult = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GraphQueryListResultValueList,
     nextLink: S.optional(S.String),
@@ -321,7 +318,7 @@ export interface ListGraphQueryBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListGraphQueryBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGraphQueryBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -337,7 +334,7 @@ export const ListGraphQueryBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGraphQueryBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -359,7 +356,7 @@ export interface OperationDisplay {
   /** Description for the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -377,7 +374,7 @@ export interface Operation {
   /** The origin of operations. */
   origin?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -387,7 +384,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -398,7 +395,7 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -407,18 +404,18 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Azure subscriptions against which to execute the query. */
 export type ResourcesRequestSubscriptionsList = Array<string>;
-export const ResourcesRequestSubscriptionsList = /*@__PURE__*/ S.Array(
+const ResourcesRequestSubscriptionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesRequestSubscriptionsList>;
 
 /** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
 export type ResourcesRequestManagementGroupsList = Array<string>;
-export const ResourcesRequestManagementGroupsList =
+const ResourcesRequestManagementGroupsList =
   ResourcesRequestSubscriptionsList as any as S.Schema<ResourcesRequestManagementGroupsList>;
 
 /** Defines in which format query result returned. */
 export type QueryRequestOptionsResultFormat = "table" | "objectArray";
-export const QueryRequestOptionsResultFormat = S.String;
+const QueryRequestOptionsResultFormat = S.String;
 
 /** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
 export type QueryRequestOptionsAuthorizationScopeFilter =
@@ -426,7 +423,7 @@ export type QueryRequestOptionsAuthorizationScopeFilter =
   | "AtScopeAndAbove"
   | "AtScopeExact"
   | "AtScopeAboveAndBelow";
-export const QueryRequestOptionsAuthorizationScopeFilter = S.String;
+const QueryRequestOptionsAuthorizationScopeFilter = S.String;
 
 /** The options for query evaluation */
 export interface QueryRequestOptions {
@@ -443,7 +440,7 @@ export interface QueryRequestOptions {
   /** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
   authorizationScopeFilter?: QueryRequestOptionsAuthorizationScopeFilter | (string & {});
 }
-export const QueryRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const QueryRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
     _top: S.optional(S.Number.pipe(T.Body("$top"))),
@@ -456,7 +453,7 @@ export const QueryRequestOptions = /*@__PURE__*/ S.suspend(() =>
 
 /** The sorting order by the selected column (count by default). */
 export type FacetRequestOptionsSortOrder = "asc" | "desc";
-export const FacetRequestOptionsSortOrder = S.String;
+const FacetRequestOptionsSortOrder = S.String;
 
 /** The options for facet evaluation */
 export interface FacetRequestOptions {
@@ -469,7 +466,7 @@ export interface FacetRequestOptions {
   /** The maximum number of facet rows that should be returned. */
   _top?: number;
 }
-export const FacetRequestOptions = /*@__PURE__*/ S.suspend(() =>
+const FacetRequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sortBy: S.optional(S.String),
     sortOrder: S.optional(FacetRequestOptionsSortOrder),
@@ -485,7 +482,7 @@ export interface FacetRequest {
   /** The options for facet evaluation */
   options?: FacetRequestOptions;
 }
-export const FacetRequest = /*@__PURE__*/ S.suspend(() =>
+const FacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     options: S.optional(FacetRequestOptions),
@@ -494,7 +491,7 @@ export const FacetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of facet requests to be computed against the query result. */
 export type ResourcesRequestFacetsList = Array<FacetRequest>;
-export const ResourcesRequestFacetsList = /*@__PURE__*/ S.Array(
+const ResourcesRequestFacetsList = /*@__PURE__*/ S.Array(
   FacetRequest,
 ) as any as S.Schema<ResourcesRequestFacetsList>;
 
@@ -510,7 +507,7 @@ export interface ResourcesRequest {
   /** An array of facet requests to be computed against the query result. */
   facets?: ResourcesRequestFacetsList;
 }
-export const ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptions: S.optional(ResourcesRequestSubscriptionsList),
     managementGroups: S.optional(ResourcesRequestManagementGroupsList),
@@ -529,7 +526,7 @@ export const ResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates whether the query results are truncated. */
 export type ResultTruncated = "true" | "false";
-export const ResultTruncated = S.String;
+const ResultTruncated = S.String;
 
 /** A facet containing additional statistics on the response of a query. Can be either FacetResult or FacetError. */
 export interface Facet {
@@ -538,7 +535,7 @@ export interface Facet {
   /** Result type */
   resultType: string;
 }
-export const Facet = /*@__PURE__*/ S.suspend(() =>
+const Facet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.String,
     resultType: S.String,
@@ -547,7 +544,7 @@ export const Facet = /*@__PURE__*/ S.suspend(() =>
 
 /** Query facets. */
 export type QueryResponseFacetsList = Array<Facet>;
-export const QueryResponseFacetsList = /*@__PURE__*/ S.Array(
+const QueryResponseFacetsList = /*@__PURE__*/ S.Array(
   Facet,
 ) as any as S.Schema<QueryResponseFacetsList>;
 
@@ -566,7 +563,7 @@ export interface QueryResponse {
   /** Query facets. */
   facets?: QueryResponseFacetsList;
 }
-export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalRecords: S.Number,
     count: S.Number,
@@ -579,7 +576,7 @@ export const QueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags */
 export type UpdateGraphQueryRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateGraphQueryRequestTagsMap =
+const UpdateGraphQueryRequestTagsMap =
   GetGraphQueryResponseTagsMap as any as S.Schema<UpdateGraphQueryRequestTagsMap>;
 
 /** Properties that contain a workbook for PATCH operation. */
@@ -589,7 +586,7 @@ export interface GraphQueryPropertiesUpdateParameters {
   /** KQL query that will be graph. */
   query?: string;
 }
-export const GraphQueryPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+const GraphQueryPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     query: S.optional(S.String),
@@ -612,7 +609,7 @@ export interface UpdateGraphQueryRequest {
   /** Metadata describing a graph query for an Azure resource. */
   properties?: GraphQueryPropertiesUpdateParameters;
 }
-export const UpdateGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -632,9 +629,6 @@ export const UpdateGraphQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateGraphQueryResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateGraphQueryResponseTagsMap =
-  GetGraphQueryResponseTagsMap as any as S.Schema<UpdateGraphQueryResponseTagsMap>;
-
 export interface UpdateGraphQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -653,8 +647,7 @@ export interface UpdateGraphQueryResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-export const UpdateGraphQueryResponse =
-  GetGraphQueryResponse as any as S.Schema<UpdateGraphQueryResponse>;
+const UpdateGraphQueryResponse = GetGraphQueryResponse as any as S.Schema<UpdateGraphQueryResponse>;
 
 export type DeleteGraphQueryError = AzureOpError;
 /** Delete a graph query. */

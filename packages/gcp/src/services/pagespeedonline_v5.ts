@@ -43,17 +43,17 @@ export type RunpagespeedPagespeedapiCategoryEnum =
   | "PWA"
   | "SEO"
   | "AGENTIC_BROWSING";
-export const RunpagespeedPagespeedapiCategoryEnum = S.String;
+const RunpagespeedPagespeedapiCategoryEnum = S.String;
 
 export type RunpagespeedPagespeedapiCategoryEnumList = Array<
   RunpagespeedPagespeedapiCategoryEnum | (string & {})
 >;
-export const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
+const RunpagespeedPagespeedapiCategoryEnumList = /*@__PURE__*/ S.Array(
   RunpagespeedPagespeedapiCategoryEnum,
 ) as any as S.Schema<RunpagespeedPagespeedapiCategoryEnumList>;
 
 export type RunpagespeedPagespeedapiStrategyEnum = "STRATEGY_UNSPECIFIED" | "DESKTOP" | "MOBILE";
-export const RunpagespeedPagespeedapiStrategyEnum = S.String;
+const RunpagespeedPagespeedapiStrategyEnum = S.String;
 
 export interface RunpagespeedPagespeedapiRequest {
   /** The captcha token passed when filling out a captcha. */
@@ -71,7 +71,7 @@ export interface RunpagespeedPagespeedapiRequest {
   /** Campaign source for analytics. */
   utm_source?: string;
 }
-export const RunpagespeedPagespeedapiRequest = /*@__PURE__*/ S.suspend(() =>
+const RunpagespeedPagespeedapiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     captchaToken: S.optional(S.String.pipe(T.Query())),
     url: S.String.pipe(T.Query()),
@@ -98,7 +98,7 @@ export interface PagespeedVersion {
   /** The major version number of PageSpeed used to generate these results. */
   major?: string;
 }
-export const PagespeedVersion = /*@__PURE__*/ S.suspend(() =>
+const PagespeedVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minor: S.optional(S.String),
     major: S.optional(S.String),
@@ -110,14 +110,14 @@ export interface Timing {
   /** The total duration of Lighthouse's run. */
   total?: number;
 }
-export const Timing = /*@__PURE__*/ S.suspend(() =>
+const Timing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Timing" }) as any as S.Schema<Timing>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A light reference to an audit by id, used to group and weight audits in a given category. */
 export interface AuditRefs {
@@ -132,7 +132,7 @@ export interface AuditRefs {
   /** The weight this audit's score has on the overall category score. */
   weight?: number;
 }
-export const AuditRefs = /*@__PURE__*/ S.suspend(() =>
+const AuditRefs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(S.String),
     acronym: S.optional(S.String),
@@ -143,13 +143,13 @@ export const AuditRefs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditRefs" }) as any as S.Schema<AuditRefs>;
 
 export type AuditRefsList = Array<AuditRefs>;
-export const AuditRefsList = /*@__PURE__*/ S.Array(AuditRefs) as any as S.Schema<AuditRefsList>;
+const AuditRefsList = /*@__PURE__*/ S.Array(AuditRefs) as any as S.Schema<AuditRefsList>;
 
 export type LighthouseCategoryV5CategoryScoreDisplayModeEnum =
   | "CATEGORY_SCORE_DISPLAY_MODE_UNSPECIFIED"
   | "GAUGE"
   | "FRACTION";
-export const LighthouseCategoryV5CategoryScoreDisplayModeEnum = S.String;
+const LighthouseCategoryV5CategoryScoreDisplayModeEnum = S.String;
 
 /** A Lighthouse category. */
 export interface LighthouseCategoryV5 {
@@ -168,7 +168,7 @@ export interface LighthouseCategoryV5 {
   /** The human-friendly name of the category. */
   title?: string;
 }
-export const LighthouseCategoryV5 = /*@__PURE__*/ S.suspend(() =>
+const LighthouseCategoryV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditRefs: S.optional(AuditRefsList),
     categoryScoreDisplayMode: S.optional(LighthouseCategoryV5CategoryScoreDisplayModeEnum),
@@ -195,7 +195,7 @@ export interface Categories {
   /** The Progressive-Web-App (PWA) category, containing all pwa related audits. This is deprecated in Lighthouse's 12.0 release. */
   pwa?: LighthouseCategoryV5;
 }
-export const Categories = /*@__PURE__*/ S.suspend(() =>
+const Categories = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "best-practices": S.optional(LighthouseCategoryV5),
     "agentic-browsing": S.optional(LighthouseCategoryV5),
@@ -207,10 +207,7 @@ export const Categories = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Categories" }) as any as S.Schema<Categories>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** The metric savings of the audit. */
 export interface MetricSavings {
@@ -225,7 +222,7 @@ export interface MetricSavings {
   /** Optional. Optional numeric value representing the audit's savings for the CLS metric. */
   CLS?: number;
 }
-export const MetricSavings = /*@__PURE__*/ S.suspend(() =>
+const MetricSavings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     LCP: S.optional(S.Number),
     FCP: S.optional(S.Number),
@@ -264,7 +261,7 @@ export interface LighthouseAuditResultV5 {
   /** An error message from a thrown error inside the audit. */
   errorMessage?: string;
 }
-export const LighthouseAuditResultV5 = /*@__PURE__*/ S.suspend(() =>
+const LighthouseAuditResultV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayValue: S.optional(S.String),
     warnings: S.optional(S.Unknown),
@@ -283,13 +280,13 @@ export const LighthouseAuditResultV5 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LighthouseAuditResultV5" }) as any as S.Schema<LighthouseAuditResultV5>;
 
 export type LighthouseAuditResultV5Map = { [key: string]: LighthouseAuditResultV5 | undefined };
-export const LighthouseAuditResultV5Map = /*@__PURE__*/ S.Record(
+const LighthouseAuditResultV5Map = /*@__PURE__*/ S.Record(
   S.String,
   LighthouseAuditResultV5,
 ) as any as S.Schema<LighthouseAuditResultV5Map>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message containing Stack Pack information. */
 export interface StackPack {
@@ -302,7 +299,7 @@ export interface StackPack {
   /** The stack pack id. */
   id?: string;
 }
-export const StackPack = /*@__PURE__*/ S.suspend(() =>
+const StackPack = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     descriptions: S.optional(StringMap),
@@ -312,7 +309,7 @@ export const StackPack = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StackPack" }) as any as S.Schema<StackPack>;
 
 export type StackPackList = Array<StackPack>;
-export const StackPackList = /*@__PURE__*/ S.Array(StackPack) as any as S.Schema<StackPackList>;
+const StackPackList = /*@__PURE__*/ S.Array(StackPack) as any as S.Schema<StackPackList>;
 
 /** Message containing environment configuration for a Lighthouse run. */
 export interface Environment {
@@ -325,7 +322,7 @@ export interface Environment {
   /** The version of libraries with which these results were generated. Ex: axe-core. */
   credits?: StringMap;
 }
-export const Environment = /*@__PURE__*/ S.suspend(() =>
+const Environment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     benchmarkIndex: S.optional(S.Number),
     networkUserAgent: S.optional(S.String),
@@ -341,7 +338,7 @@ export interface CategoryGroupV5 {
   /** The description of what the category is grouping */
   description?: string;
 }
-export const CategoryGroupV5 = /*@__PURE__*/ S.suspend(() =>
+const CategoryGroupV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     description: S.optional(S.String),
@@ -349,13 +346,13 @@ export const CategoryGroupV5 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CategoryGroupV5" }) as any as S.Schema<CategoryGroupV5>;
 
 export type CategoryGroupV5Map = { [key: string]: CategoryGroupV5 | undefined };
-export const CategoryGroupV5Map = /*@__PURE__*/ S.Record(
+const CategoryGroupV5Map = /*@__PURE__*/ S.Record(
   S.String,
   CategoryGroupV5,
 ) as any as S.Schema<CategoryGroupV5Map>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 /** Message containing an Entity. */
 export interface LhrEntity {
@@ -372,7 +369,7 @@ export interface LhrEntity {
   /** Required. A list of URL origin strings that belong to this entity. */
   origins?: StringList;
 }
-export const LhrEntity = /*@__PURE__*/ S.suspend(() =>
+const LhrEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isFirstParty: S.optional(S.Boolean),
     category: S.optional(S.String),
@@ -384,7 +381,7 @@ export const LhrEntity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LhrEntity" }) as any as S.Schema<LhrEntity>;
 
 export type LhrEntityList = Array<LhrEntity>;
-export const LhrEntityList = /*@__PURE__*/ S.Array(LhrEntity) as any as S.Schema<LhrEntityList>;
+const LhrEntityList = /*@__PURE__*/ S.Array(LhrEntity) as any as S.Schema<LhrEntityList>;
 
 /** Message containing the configuration settings for the Lighthouse run. */
 export interface ConfigSettings {
@@ -399,7 +396,7 @@ export interface ConfigSettings {
   /** The form factor the emulation should use. This field is deprecated, form_factor should be used instead. */
   emulatedFormFactor?: string;
 }
-export const ConfigSettings = /*@__PURE__*/ S.suspend(() =>
+const ConfigSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locale: S.optional(S.String),
     formFactor: S.optional(S.String),
@@ -508,7 +505,7 @@ export interface RendererFormattedStrings {
   /** Text link pointing to the Lighthouse scoring calculator. This link immediately follows a sentence stating the performance score is calculated from the perf metrics. */
   calculatorLink?: string;
 }
-export const RendererFormattedStrings = /*@__PURE__*/ S.suspend(() =>
+const RendererFormattedStrings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     crcInitialNavigation: S.optional(S.String),
     toplevelWarningsMessage: S.optional(S.String),
@@ -566,7 +563,7 @@ export interface I18n {
   /** Internationalized strings that are formatted to the locale in configSettings. */
   rendererFormattedStrings?: RendererFormattedStrings;
 }
-export const I18n = /*@__PURE__*/ S.suspend(() =>
+const I18n = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rendererFormattedStrings: S.optional(RendererFormattedStrings),
   }),
@@ -579,7 +576,7 @@ export interface RuntimeError {
   /** The enumerated Lighthouse Error code. */
   code?: string;
 }
-export const RuntimeError = /*@__PURE__*/ S.suspend(() =>
+const RuntimeError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.String),
@@ -627,7 +624,7 @@ export interface LighthouseResultV5 {
   /** URL displayed on the page after Lighthouse finishes. */
   finalDisplayedUrl?: string;
 }
-export const LighthouseResultV5 = /*@__PURE__*/ S.suspend(() =>
+const LighthouseResultV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timing: S.optional(Timing),
     categories: S.optional(Categories),
@@ -660,7 +657,7 @@ export interface Bucket {
   /** Lower bound for a bucket's range. */
   min?: number;
 }
-export const Bucket = /*@__PURE__*/ S.suspend(() =>
+const Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proportion: S.optional(S.Number),
     max: S.optional(S.Number),
@@ -669,7 +666,7 @@ export const Bucket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Bucket" }) as any as S.Schema<Bucket>;
 
 export type BucketList = Array<Bucket>;
-export const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
+const BucketList = /*@__PURE__*/ S.Array(Bucket) as any as S.Schema<BucketList>;
 
 /** A CrUX metric object for a single metric and form factor. */
 export interface UserPageLoadMetricV5 {
@@ -686,7 +683,7 @@ export interface UserPageLoadMetricV5 {
   /** Identifies the form factor of the metric being collected. */
   formFactor?: string;
 }
-export const UserPageLoadMetricV5 = /*@__PURE__*/ S.suspend(() =>
+const UserPageLoadMetricV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distributions: S.optional(BucketList),
     median: S.optional(S.Number),
@@ -698,7 +695,7 @@ export const UserPageLoadMetricV5 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserPageLoadMetricV5" }) as any as S.Schema<UserPageLoadMetricV5>;
 
 export type UserPageLoadMetricV5Map = { [key: string]: UserPageLoadMetricV5 | undefined };
-export const UserPageLoadMetricV5Map = /*@__PURE__*/ S.Record(
+const UserPageLoadMetricV5Map = /*@__PURE__*/ S.Record(
   S.String,
   UserPageLoadMetricV5,
 ) as any as S.Schema<UserPageLoadMetricV5Map>;
@@ -716,7 +713,7 @@ export interface PagespeedApiLoadingExperienceV5 {
   /** The map of . */
   metrics?: UserPageLoadMetricV5Map;
 }
-export const PagespeedApiLoadingExperienceV5 = /*@__PURE__*/ S.suspend(() =>
+const PagespeedApiLoadingExperienceV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin_fallback: S.optional(S.Boolean),
     initial_url: S.optional(S.String),
@@ -747,7 +744,7 @@ export interface PagespeedApiPagespeedResponseV5 {
   /** Metrics of end users' page loading experience. */
   loadingExperience?: PagespeedApiLoadingExperienceV5;
 }
-export const PagespeedApiPagespeedResponseV5 = /*@__PURE__*/ S.suspend(() =>
+const PagespeedApiPagespeedResponseV5 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(PagespeedVersion),
     analysisUTCTimestamp: S.optional(S.String),

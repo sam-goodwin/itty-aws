@@ -15,7 +15,7 @@ export interface ClickRequest {
   x?: number;
   y?: number;
 }
-export const ClickRequest = /*@__PURE__*/ S.suspend(() =>
+const ClickRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     button: S.optional(S.String),
     double: S.optional(S.Boolean),
@@ -28,7 +28,7 @@ export interface MouseClickResponse {
   x?: number;
   y?: number;
 }
-export const MouseClickResponse = /*@__PURE__*/ S.suspend(() =>
+const MouseClickResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -39,14 +39,14 @@ export interface DeleteRecordingRequest {
   /** Recording ID */
   id: string;
 }
-export const DeleteRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/computeruse/recordings/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteRecordingRequest" }) as any as S.Schema<DeleteRecordingRequest>;
 
 export interface DeleteRecordingResponse {}
-export const DeleteRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRecordingResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRecordingResponse",
 }) as any as S.Schema<DeleteRecordingResponse>;
 
@@ -54,14 +54,14 @@ export interface DownloadRecordingRequest {
   /** Recording ID */
   id: string;
 }
-export const DownloadRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/recordings/{id}/download", code: 200 })),
 ).annotate({ identifier: "DownloadRecordingRequest" }) as any as S.Schema<DownloadRecordingRequest>;
 
 export type DownloadRecordingResponse = unknown;
-export const DownloadRecordingResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DownloadRecordingResponse",
@@ -74,7 +74,7 @@ export interface DragRequest {
   startX?: number;
   startY?: number;
 }
-export const DragRequest = /*@__PURE__*/ S.suspend(() =>
+const DragRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     button: S.optional(S.String),
     endX: S.optional(S.Number),
@@ -88,10 +88,10 @@ export interface MouseDragResponse {
   x?: number;
   y?: number;
 }
-export const MouseDragResponse = MouseClickResponse as any as S.Schema<MouseDragResponse>;
+const MouseDragResponse = MouseClickResponse as any as S.Schema<MouseDragResponse>;
 
 export type FindAccessibilityNodesRequestStatesList = Array<string>;
-export const FindAccessibilityNodesRequestStatesList = /*@__PURE__*/ S.Array(
+const FindAccessibilityNodesRequestStatesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FindAccessibilityNodesRequestStatesList>;
 
@@ -105,7 +105,7 @@ export interface FindAccessibilityNodesRequest {
   scope?: string;
   states?: FindAccessibilityNodesRequestStatesList;
 }
-export const FindAccessibilityNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const FindAccessibilityNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     name: S.optional(S.String),
@@ -120,7 +120,7 @@ export const FindAccessibilityNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FindAccessibilityNodesRequest>;
 
 export type ComputeruseAccessibilityNodeActionsList = Array<string>;
-export const ComputeruseAccessibilityNodeActionsList =
+const ComputeruseAccessibilityNodeActionsList =
   FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeActionsList>;
 
 export interface AccessibilityBounds {
@@ -129,7 +129,7 @@ export interface AccessibilityBounds {
   x?: number;
   y?: number;
 }
-export const AccessibilityBounds = /*@__PURE__*/ S.suspend(() =>
+const AccessibilityBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     width: S.optional(S.Number),
@@ -139,12 +139,12 @@ export const AccessibilityBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccessibilityBounds" }) as any as S.Schema<AccessibilityBounds>;
 
 export type ComputeruseAccessibilityNodeChildrenList = Array<ComputeruseAccessibilityNode>;
-export const ComputeruseAccessibilityNodeChildrenList = /*@__PURE__*/ S.Array(
+const ComputeruseAccessibilityNodeChildrenList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ComputeruseAccessibilityNode),
 ) as any as S.Schema<ComputeruseAccessibilityNodeChildrenList>;
 
 export type ComputeruseAccessibilityNodeStatesList = Array<string>;
-export const ComputeruseAccessibilityNodeStatesList =
+const ComputeruseAccessibilityNodeStatesList =
   FindAccessibilityNodesRequestStatesList as any as S.Schema<ComputeruseAccessibilityNodeStatesList>;
 
 export interface ComputeruseAccessibilityNode {
@@ -157,7 +157,7 @@ export interface ComputeruseAccessibilityNode {
   role?: string;
   states?: ComputeruseAccessibilityNodeStatesList;
 }
-export const ComputeruseAccessibilityNode = /*@__PURE__*/ S.suspend(() =>
+const ComputeruseAccessibilityNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(ComputeruseAccessibilityNodeActionsList),
     bounds: S.optional(AccessibilityBounds),
@@ -173,7 +173,7 @@ export const ComputeruseAccessibilityNode = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputeruseAccessibilityNode>;
 
 export type AccessibilityNodesResponseMatchesList = Array<ComputeruseAccessibilityNode>;
-export const AccessibilityNodesResponseMatchesList = /*@__PURE__*/ S.Array(
+const AccessibilityNodesResponseMatchesList = /*@__PURE__*/ S.Array(
   ComputeruseAccessibilityNode,
 ) as any as S.Schema<AccessibilityNodesResponseMatchesList>;
 
@@ -181,7 +181,7 @@ export interface AccessibilityNodesResponse {
   matches?: AccessibilityNodesResponseMatchesList;
   truncated?: boolean;
 }
-export const AccessibilityNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessibilityNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: S.optional(AccessibilityNodesResponseMatchesList),
     truncated: S.optional(S.Boolean),
@@ -193,7 +193,7 @@ export const AccessibilityNodesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FocusAccessibilityNodeRequest {
   id: string;
 }
-export const FocusAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const FocusAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/computeruse/a11y/node/focus", code: 200 })),
@@ -202,7 +202,7 @@ export const FocusAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FocusAccessibilityNodeRequest>;
 
 export type FocusAccessibilityNodeResponse = unknown;
-export const FocusAccessibilityNodeResponse =
+const FocusAccessibilityNodeResponse =
   DownloadRecordingResponse as any as S.Schema<FocusAccessibilityNodeResponse>;
 
 export interface GetAccessibilityTreeRequest {
@@ -213,7 +213,7 @@ export interface GetAccessibilityTreeRequest {
   /** Max tree depth (-1 unbounded, 0 root only; default -1) */
   maxDepth?: number;
 }
-export const GetAccessibilityTreeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessibilityTreeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.String.pipe(T.Query())),
     pid: S.optional(S.Number.pipe(T.Query())),
@@ -227,7 +227,7 @@ export interface AccessibilityTreeResponse {
   root?: ComputeruseAccessibilityNode;
   truncated?: boolean;
 }
-export const AccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
+const AccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     root: S.optional(ComputeruseAccessibilityNode),
     truncated: S.optional(S.Boolean),
@@ -237,7 +237,7 @@ export const AccessibilityTreeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessibilityTreeResponse>;
 
 export interface GetComputerUseStatusRequest {}
-export const GetComputerUseStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComputerUseStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/process-status", code: 200 })),
 ).annotate({
   identifier: "GetComputerUseStatusRequest",
@@ -246,7 +246,7 @@ export const GetComputerUseStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ComputerUseStatusResponse {
   status?: string;
 }
-export const ComputerUseStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ComputerUseStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -255,14 +255,14 @@ export const ComputerUseStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComputerUseStatusResponse>;
 
 export interface GetComputerUseSystemStatusRequest {}
-export const GetComputerUseSystemStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComputerUseSystemStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/status", code: 200 })),
 ).annotate({
   identifier: "GetComputerUseSystemStatusRequest",
 }) as any as S.Schema<GetComputerUseSystemStatusRequest>;
 
 export interface GetDisplayInfoRequest {}
-export const GetDisplayInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDisplayInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/display/info", code: 200 })),
 ).annotate({ identifier: "GetDisplayInfoRequest" }) as any as S.Schema<GetDisplayInfoRequest>;
 
@@ -274,7 +274,7 @@ export interface DisplayInfo {
   x?: number;
   y?: number;
 }
-export const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
+const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     id: S.optional(S.Number),
@@ -286,21 +286,21 @@ export const DisplayInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisplayInfo" }) as any as S.Schema<DisplayInfo>;
 
 export type DisplayInfoResponseDisplaysList = Array<DisplayInfo>;
-export const DisplayInfoResponseDisplaysList = /*@__PURE__*/ S.Array(
+const DisplayInfoResponseDisplaysList = /*@__PURE__*/ S.Array(
   DisplayInfo,
 ) as any as S.Schema<DisplayInfoResponseDisplaysList>;
 
 export interface DisplayInfoResponse {
   displays?: DisplayInfoResponseDisplaysList;
 }
-export const DisplayInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const DisplayInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displays: S.optional(DisplayInfoResponseDisplaysList),
   }),
 ).annotate({ identifier: "DisplayInfoResponse" }) as any as S.Schema<DisplayInfoResponse>;
 
 export interface GetMousePositionRequest {}
-export const GetMousePositionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMousePositionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/mouse/position", code: 200 })),
 ).annotate({ identifier: "GetMousePositionRequest" }) as any as S.Schema<GetMousePositionRequest>;
 
@@ -308,13 +308,13 @@ export interface MousePositionResponse {
   x?: number;
   y?: number;
 }
-export const MousePositionResponse = MouseClickResponse as any as S.Schema<MousePositionResponse>;
+const MousePositionResponse = MouseClickResponse as any as S.Schema<MousePositionResponse>;
 
 export interface GetProcessErrorsRequest {
   /** Process name to get errors for */
   processName: string;
 }
-export const GetProcessErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProcessErrorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/process/{processName}/errors", code: 200 })),
@@ -324,7 +324,7 @@ export interface ProcessErrorsResponse {
   errors?: string;
   processName?: string;
 }
-export const ProcessErrorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ProcessErrorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errors: S.optional(S.String),
     processName: S.optional(S.String),
@@ -335,7 +335,7 @@ export interface GetProcessLogsRequest {
   /** Process name to get logs for */
   processName: string;
 }
-export const GetProcessLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProcessLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/process/{processName}/logs", code: 200 })),
@@ -345,7 +345,7 @@ export interface ProcessLogsResponse {
   logs?: string;
   processName?: string;
 }
-export const ProcessLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ProcessLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logs: S.optional(S.String),
     processName: S.optional(S.String),
@@ -356,7 +356,7 @@ export interface GetProcessStatusRequest {
   /** Process name to check */
   processName: string;
 }
-export const GetProcessStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProcessStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/process/{processName}/status", code: 200 })),
@@ -366,7 +366,7 @@ export interface ProcessStatusResponse {
   processName?: string;
   running?: boolean;
 }
-export const ProcessStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const ProcessStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processName: S.optional(S.String),
     running: S.optional(S.Boolean),
@@ -377,7 +377,7 @@ export interface GetRecordingRequest {
   /** Recording ID */
   id: string;
 }
-export const GetRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/recordings/{id}", code: 200 })),
@@ -393,7 +393,7 @@ export interface Recording {
   startTime: string;
   status: string;
 }
-export const Recording = /*@__PURE__*/ S.suspend(() =>
+const Recording = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     durationSeconds: S.optional(S.Number),
     endTime: S.optional(S.String),
@@ -407,7 +407,7 @@ export const Recording = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recording" }) as any as S.Schema<Recording>;
 
 export interface GetWindowsRequest {}
-export const GetWindowsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWindowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/display/windows", code: 200 })),
 ).annotate({ identifier: "GetWindowsRequest" }) as any as S.Schema<GetWindowsRequest>;
 
@@ -420,7 +420,7 @@ export interface WindowInfo {
   x?: number;
   y?: number;
 }
-export const WindowInfo = /*@__PURE__*/ S.suspend(() =>
+const WindowInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     height: S.optional(S.Number),
     id: S.optional(S.Number),
@@ -433,14 +433,14 @@ export const WindowInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WindowInfo" }) as any as S.Schema<WindowInfo>;
 
 export type WindowsResponseWindowsList = Array<WindowInfo>;
-export const WindowsResponseWindowsList = /*@__PURE__*/ S.Array(
+const WindowsResponseWindowsList = /*@__PURE__*/ S.Array(
   WindowInfo,
 ) as any as S.Schema<WindowsResponseWindowsList>;
 
 export interface WindowsResponse {
   windows?: WindowsResponseWindowsList;
 }
-export const WindowsResponse = /*@__PURE__*/ S.suspend(() =>
+const WindowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     windows: S.optional(WindowsResponseWindowsList),
   }),
@@ -450,7 +450,7 @@ export interface InvokeAccessibilityNodeRequest {
   action?: string;
   id: string;
 }
-export const InvokeAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     id: S.String,
@@ -460,23 +460,23 @@ export const InvokeAccessibilityNodeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokeAccessibilityNodeRequest>;
 
 export type InvokeAccessibilityNodeResponse = unknown;
-export const InvokeAccessibilityNodeResponse =
+const InvokeAccessibilityNodeResponse =
   DownloadRecordingResponse as any as S.Schema<InvokeAccessibilityNodeResponse>;
 
 export interface ListRecordingsRequest {}
-export const ListRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/computeruse/recordings", code: 200 })),
 ).annotate({ identifier: "ListRecordingsRequest" }) as any as S.Schema<ListRecordingsRequest>;
 
 export type ListRecordingsResponseRecordingsList = Array<Recording>;
-export const ListRecordingsResponseRecordingsList = /*@__PURE__*/ S.Array(
+const ListRecordingsResponseRecordingsList = /*@__PURE__*/ S.Array(
   Recording,
 ) as any as S.Schema<ListRecordingsResponseRecordingsList>;
 
 export interface ListRecordingsResponse {
   recordings: ListRecordingsResponseRecordingsList;
 }
-export const ListRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordings: ListRecordingsResponseRecordingsList,
   }),
@@ -486,7 +486,7 @@ export interface MoveMouseRequest {
   x?: number;
   y?: number;
 }
-export const MoveMouseRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveMouseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.optional(S.Number),
     y: S.optional(S.Number),
@@ -497,20 +497,20 @@ export interface PressHotkeyRequest {
   /** e.g., "ctrl+c", "cmd+v" */
   keys?: string;
 }
-export const PressHotkeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PressHotkeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/computeruse/keyboard/hotkey", code: 200 })),
 ).annotate({ identifier: "PressHotkeyRequest" }) as any as S.Schema<PressHotkeyRequest>;
 
 export type PressHotkeyResponse = unknown;
-export const PressHotkeyResponse = /*@__PURE__*/ S.suspend(() =>
+const PressHotkeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "PressHotkeyResponse" }) as any as S.Schema<PressHotkeyResponse>;
 
 /** ctrl, alt, shift, cmd */
 export type PressKeyRequestModifiersList = Array<string>;
-export const PressKeyRequestModifiersList =
+const PressKeyRequestModifiersList =
   FindAccessibilityNodesRequestStatesList as any as S.Schema<PressKeyRequestModifiersList>;
 
 export interface PressKeyRequest {
@@ -518,7 +518,7 @@ export interface PressKeyRequest {
   /** ctrl, alt, shift, cmd */
   modifiers?: PressKeyRequestModifiersList;
 }
-export const PressKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PressKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     modifiers: S.optional(PressKeyRequestModifiersList),
@@ -526,13 +526,13 @@ export const PressKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PressKeyRequest" }) as any as S.Schema<PressKeyRequest>;
 
 export type PressKeyResponse = unknown;
-export const PressKeyResponse = PressHotkeyResponse as any as S.Schema<PressKeyResponse>;
+const PressKeyResponse = PressHotkeyResponse as any as S.Schema<PressKeyResponse>;
 
 export interface RestartProcessRequest {
   /** Process name to restart */
   processName: string;
 }
-export const RestartProcessRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartProcessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     processName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/computeruse/process/{processName}/restart", code: 200 })),
@@ -542,7 +542,7 @@ export interface ProcessRestartResponse {
   message?: string;
   processName?: string;
 }
-export const ProcessRestartResponse = /*@__PURE__*/ S.suspend(() =>
+const ProcessRestartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     processName: S.optional(S.String),
@@ -556,7 +556,7 @@ export interface ScrollRequest {
   x?: number;
   y?: number;
 }
-export const ScrollRequest = /*@__PURE__*/ S.suspend(() =>
+const ScrollRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     direction: S.optional(S.String),
@@ -568,7 +568,7 @@ export const ScrollRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ScrollResponse {
   success?: boolean;
 }
-export const ScrollResponse = /*@__PURE__*/ S.suspend(() =>
+const ScrollResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
@@ -578,7 +578,7 @@ export interface SetAccessibilityNodeValueRequest {
   id: string;
   value?: string;
 }
-export const SetAccessibilityNodeValueRequest = /*@__PURE__*/ S.suspend(() =>
+const SetAccessibilityNodeValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     value: S.optional(S.String),
@@ -588,11 +588,11 @@ export const SetAccessibilityNodeValueRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetAccessibilityNodeValueRequest>;
 
 export type SetAccessibilityNodeValueResponse = unknown;
-export const SetAccessibilityNodeValueResponse =
+const SetAccessibilityNodeValueResponse =
   DownloadRecordingResponse as any as S.Schema<SetAccessibilityNodeValueResponse>;
 
 export interface StartComputerUseRequest {}
-export const StartComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
+const StartComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/computeruse/start", code: 200 })),
 ).annotate({ identifier: "StartComputerUseRequest" }) as any as S.Schema<StartComputerUseRequest>;
 
@@ -602,7 +602,7 @@ export interface ProcessStatus {
   priority?: number;
   running?: boolean;
 }
-export const ProcessStatus = /*@__PURE__*/ S.suspend(() =>
+const ProcessStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoRestart: S.optional(S.Boolean),
     pid: S.optional(S.Number),
@@ -612,7 +612,7 @@ export const ProcessStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProcessStatus" }) as any as S.Schema<ProcessStatus>;
 
 export type ComputerUseStartResponseStatusMap = { [key: string]: ProcessStatus | undefined };
-export const ComputerUseStartResponseStatusMap = /*@__PURE__*/ S.Record(
+const ComputerUseStartResponseStatusMap = /*@__PURE__*/ S.Record(
   S.String,
   ProcessStatus,
 ) as any as S.Schema<ComputerUseStartResponseStatusMap>;
@@ -621,7 +621,7 @@ export interface ComputerUseStartResponse {
   message?: string;
   status?: ComputerUseStartResponseStatusMap;
 }
-export const ComputerUseStartResponse = /*@__PURE__*/ S.suspend(() =>
+const ComputerUseStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     status: S.optional(ComputerUseStartResponseStatusMap),
@@ -631,32 +631,29 @@ export const ComputerUseStartResponse = /*@__PURE__*/ S.suspend(() =>
 export interface StartRecordingRequest {
   label?: string;
 }
-export const StartRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const StartRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/computeruse/recordings/start", code: 200 })),
 ).annotate({ identifier: "StartRecordingRequest" }) as any as S.Schema<StartRecordingRequest>;
 
 export interface StopComputerUseRequest {}
-export const StopComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
+const StopComputerUseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/computeruse/stop", code: 200 })),
 ).annotate({ identifier: "StopComputerUseRequest" }) as any as S.Schema<StopComputerUseRequest>;
 
 export type ComputerUseStopResponseStatusMap = { [key: string]: ProcessStatus | undefined };
-export const ComputerUseStopResponseStatusMap =
-  ComputerUseStartResponseStatusMap as any as S.Schema<ComputerUseStopResponseStatusMap>;
-
 export interface ComputerUseStopResponse {
   message?: string;
   status?: ComputerUseStopResponseStatusMap;
 }
-export const ComputerUseStopResponse =
+const ComputerUseStopResponse =
   ComputerUseStartResponse as any as S.Schema<ComputerUseStopResponse>;
 
 export interface StopRecordingRequest {
   id: string;
 }
-export const StopRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+const StopRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/computeruse/recordings/stop", code: 200 })),
@@ -680,7 +677,7 @@ export interface TakeCompressedRegionScreenshotRequest {
   /** Scale factor (0.1-1.0) */
   scale?: number;
 }
-export const TakeCompressedRegionScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const TakeCompressedRegionScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number.pipe(T.Query()),
     y: S.Number.pipe(T.Query()),
@@ -699,14 +696,14 @@ export interface Position {
   x?: number;
   y?: number;
 }
-export const Position = MouseClickResponse as any as S.Schema<Position>;
+const Position = MouseClickResponse as any as S.Schema<Position>;
 
 export interface ScreenshotResponse {
   cursorPosition?: Position;
   screenshot?: string;
   sizeBytes?: number;
 }
-export const ScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
+const ScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursorPosition: S.optional(Position),
     screenshot: S.optional(S.String),
@@ -724,7 +721,7 @@ export interface TakeCompressedScreenshotRequest {
   /** Scale factor (0.1-1.0) */
   scale?: number;
 }
-export const TakeCompressedScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const TakeCompressedScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showCursor: S.optional(S.Boolean.pipe(T.Query())),
     format: S.optional(S.String.pipe(T.Query())),
@@ -747,7 +744,7 @@ export interface TakeRegionScreenshotRequest {
   /** Whether to show cursor in screenshot */
   showCursor?: boolean;
 }
-export const TakeRegionScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const TakeRegionScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     x: S.Number.pipe(T.Query()),
     y: S.Number.pipe(T.Query()),
@@ -763,7 +760,7 @@ export interface TakeScreenshotRequest {
   /** Whether to show cursor in screenshot */
   showCursor?: boolean;
 }
-export const TakeScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+const TakeScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showCursor: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/computeruse/screenshot", code: 200 })),
@@ -774,7 +771,7 @@ export interface TypeTextRequest {
   delay?: number;
   text?: string;
 }
-export const TypeTextRequest = /*@__PURE__*/ S.suspend(() =>
+const TypeTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delay: S.optional(S.Number),
     text: S.optional(S.String),
@@ -782,7 +779,7 @@ export const TypeTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TypeTextRequest" }) as any as S.Schema<TypeTextRequest>;
 
 export type TypeTextResponse = unknown;
-export const TypeTextResponse = PressHotkeyResponse as any as S.Schema<TypeTextResponse>;
+const TypeTextResponse = PressHotkeyResponse as any as S.Schema<TypeTextResponse>;
 
 export type ClickError = DaytonaOpError;
 /** Click mouse button Click the mouse button at the specified coordinates */

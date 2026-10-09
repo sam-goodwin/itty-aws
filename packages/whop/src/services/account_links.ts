@@ -46,7 +46,7 @@ export class UnprocessableEntity
 
 /** The different use cases for generating an account link. */
 export type AccountLinkUseCases = "account_onboarding" | "payouts_portal";
-export const AccountLinkUseCases = S.String;
+const AccountLinkUseCases = S.String;
 
 export interface CreateAccountLinkRequest {
   /** The unique identifier of the company to generate the link for, starting with 'biz_'. Must be a sub-merchant of the API key's company. */
@@ -58,7 +58,7 @@ export interface CreateAccountLinkRequest {
   /** The purpose of the account link, such as hosted payouts portal or hosted KYC onboarding. */
   use_case: AccountLinkUseCases | (string & {});
 }
-export const CreateAccountLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     refresh_url: S.String,
@@ -74,7 +74,7 @@ export interface AccountLink {
   /** The temporary URL to redirect the user to for account access. Expires at the time specified by expires_at. */
   url: string;
 }
-export const AccountLink = /*@__PURE__*/ S.suspend(() =>
+const AccountLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expires_at: S.String,
     url: S.String,

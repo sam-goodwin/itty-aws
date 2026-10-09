@@ -37,7 +37,7 @@ export class NotFound
 
 /** Library to add this image to. Omit to upload without joining a library (as dashboard text cards and notebooks do). */
 export type CreateUploadedMediaRequestPurpose = "email" | "canvas";
-export const CreateUploadedMediaRequestPurpose = S.String;
+const CreateUploadedMediaRequestPurpose = S.String;
 
 export interface CreateUploadedMediaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -47,7 +47,7 @@ export interface CreateUploadedMediaRequest {
   /** Library to add this image to. Omit to upload without joining a library (as dashboard text cards and notebooks do). */
   purpose?: CreateUploadedMediaRequestPurpose | (string & {});
 }
-export const CreateUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     image: S.String,
@@ -65,20 +65,20 @@ export const CreateUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUploadedMediaRequest>;
 
 export type CreateUploadedMediaResponseBodyMap = { [key: string]: unknown | undefined };
-export const CreateUploadedMediaResponseBodyMap = /*@__PURE__*/ S.Record(
+const CreateUploadedMediaResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateUploadedMediaResponseBodyMap>;
 
 export type CreateUploadedMediaResponse = CreateUploadedMediaResponseBodyMap;
-export const CreateUploadedMediaResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateUploadedMediaResponse = /*@__PURE__*/ S.suspend(() =>
   CreateUploadedMediaResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateUploadedMediaResponse",
 }) as any as S.Schema<CreateUploadedMediaResponse>;
 
 export type ListUploadedMediaRequestPurpose = "canvas" | "email";
-export const ListUploadedMediaRequestPurpose = S.String;
+const ListUploadedMediaRequestPurpose = S.String;
 
 export interface ListUploadedMediaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -90,7 +90,7 @@ export interface ListUploadedMediaRequest {
   /** The library to list. */
   purpose: ListUploadedMediaRequestPurpose | (string & {});
 }
-export const ListUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -110,7 +110,7 @@ export interface UploadedMedia2 {
   url: string;
   created_at: string;
 }
-export const UploadedMedia2 = /*@__PURE__*/ S.suspend(() =>
+const UploadedMedia2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -123,7 +123,7 @@ export const UploadedMedia2 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadedMedia2" }) as any as S.Schema<UploadedMedia2>;
 
 export type PaginatedUploadedMediaListResultsList = Array<UploadedMedia2>;
-export const PaginatedUploadedMediaListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedUploadedMediaListResultsList = /*@__PURE__*/ S.Array(
   UploadedMedia2,
 ) as any as S.Schema<PaginatedUploadedMediaListResultsList>;
 
@@ -133,7 +133,7 @@ export interface PaginatedUploadedMediaList {
   previous?: string | null;
   results: PaginatedUploadedMediaListResultsList;
 }
-export const PaginatedUploadedMediaList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedUploadedMediaList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -150,7 +150,7 @@ export interface UploadedMediaCompleteUploadCreateRequest {
   /** A UUID string identifying this uploaded media. */
   id: string;
 }
-export const UploadedMediaCompleteUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadedMediaCompleteUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -173,7 +173,7 @@ export interface UploadedMediaStartUploadCreateRequest {
   /** Library to add this image to once uploaded, e.g. 'email'. */
   purpose: string;
 }
-export const UploadedMediaStartUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadedMediaStartUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -191,7 +191,7 @@ export const UploadedMediaStartUploadCreateRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Extra form fields to send alongside the file in the same POST. */
 export type UploadedMediaUploadStartedFormFieldsMap = { [key: string]: string | undefined };
-export const UploadedMediaUploadStartedFormFieldsMap = /*@__PURE__*/ S.Record(
+const UploadedMediaUploadStartedFormFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<UploadedMediaUploadStartedFormFieldsMap>;
@@ -206,7 +206,7 @@ export interface UploadedMediaUploadStarted {
   /** Seconds before upload_url expires. */
   expires_in: number;
 }
-export const UploadedMediaUploadStarted = /*@__PURE__*/ S.suspend(() =>
+const UploadedMediaUploadStarted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     upload_url: S.String,

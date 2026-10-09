@@ -50,7 +50,7 @@ export interface GetReviewHogReviewRequest {
   /** A UUID string identifying this review report. */
   id: string;
 }
-export const GetReviewHogReviewRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReviewHogReviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -74,7 +74,7 @@ export type ReviewStageEnum =
   | "deduplicating"
   | "validating"
   | "finalizing";
-export const ReviewStageEnum = S.String;
+const ReviewStageEnum = S.String;
 
 export interface ReviewProgress {
   /** How far the in-flight review turn has come: fetching the diff, chunking, picking each chunk's perspectives, reviewing chunks, merging overlapping findings, validating them, or finalizing (building and publishing the review). * `fetching` - fetching * `chunking` - chunking * `selecting` - selecting * `reviewing` - reviewing * `deduplicating` - deduplicating * `validating` - validating * `finalizing` - finalizing */
@@ -84,7 +84,7 @@ export interface ReviewProgress {
   /** Work units the stage expects in total; null when unknown. */
   total: number | null;
 }
-export const ReviewProgress = /*@__PURE__*/ S.suspend(() =>
+const ReviewProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     review_stage: ReviewStageEnum,
     done: S.NullOr(S.Number),
@@ -94,7 +94,7 @@ export const ReviewProgress = /*@__PURE__*/ S.suspend(() =>
 
 /** * `resolving` - resolving * `stopped` - stopped */
 export type ResolutionStatusEnum = "resolving" | "stopped";
-export const ResolutionStatusEnum = S.String;
+const ResolutionStatusEnum = S.String;
 
 export interface ReviewResolutionStatus {
   /** Where the run stands: `resolving` while threads are being settled, `stopped` when the run died partway (went quiet with no closing summary). * `resolving` - resolving * `stopped` - stopped */
@@ -108,7 +108,7 @@ export interface ReviewResolutionStatus {
   /** Settled threads left for the author: judged worth doing but not safe to fix unattended. */
   needs_attention: number;
 }
-export const ReviewResolutionStatus = /*@__PURE__*/ S.suspend(() =>
+const ReviewResolutionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolution_status: ResolutionStatusEnum,
     done: S.Number,
@@ -120,23 +120,23 @@ export const ReviewResolutionStatus = /*@__PURE__*/ S.suspend(() =>
 
 /** Every enabled perspective the selector chose from, in pass order. */
 export type ReviewPerspectiveSelectionRosterList = Array<string>;
-export const ReviewPerspectiveSelectionRosterList = /*@__PURE__*/ S.Array(
+const ReviewPerspectiveSelectionRosterList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ReviewPerspectiveSelectionRosterList>;
 
 /** The chunk's files, from the turn's chunk set. */
 export type ReviewSelectionChunkFilesList = Array<string>;
-export const ReviewSelectionChunkFilesList =
+const ReviewSelectionChunkFilesList =
   ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkFilesList>;
 
 /** Perspectives the selector ran on this chunk, in pass order. */
 export type ReviewSelectionChunkPerspectivesList = Array<string>;
-export const ReviewSelectionChunkPerspectivesList =
+const ReviewSelectionChunkPerspectivesList =
   ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkPerspectivesList>;
 
 /** Roster perspectives the selector skipped on this chunk, in pass order. */
 export type ReviewSelectionChunkSkippedList = Array<string>;
-export const ReviewSelectionChunkSkippedList =
+const ReviewSelectionChunkSkippedList =
   ReviewPerspectiveSelectionRosterList as any as S.Schema<ReviewSelectionChunkSkippedList>;
 
 export interface ReviewSelectionChunk {
@@ -153,7 +153,7 @@ export interface ReviewSelectionChunk {
   /** The selector's one-line reasoning for this chunk's picks. */
   reason: string;
 }
-export const ReviewSelectionChunk = /*@__PURE__*/ S.suspend(() =>
+const ReviewSelectionChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunk_id: S.Number,
     chunk_type: S.NullOr(S.String),
@@ -166,7 +166,7 @@ export const ReviewSelectionChunk = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-chunk picks with reasons, in chunk order. */
 export type ReviewPerspectiveSelectionChunksList = Array<ReviewSelectionChunk>;
-export const ReviewPerspectiveSelectionChunksList = /*@__PURE__*/ S.Array(
+const ReviewPerspectiveSelectionChunksList = /*@__PURE__*/ S.Array(
   ReviewSelectionChunk,
 ) as any as S.Schema<ReviewPerspectiveSelectionChunksList>;
 
@@ -176,7 +176,7 @@ export interface ReviewPerspectiveSelection {
   /** Per-chunk picks with reasons, in chunk order. */
   chunks: ReviewPerspectiveSelectionChunksList;
 }
-export const ReviewPerspectiveSelection = /*@__PURE__*/ S.suspend(() =>
+const ReviewPerspectiveSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roster: ReviewPerspectiveSelectionRosterList,
     chunks: ReviewPerspectiveSelectionChunksList,
@@ -187,7 +187,7 @@ export const ReviewPerspectiveSelection = /*@__PURE__*/ S.suspend(() =>
 
 /** * `must_fix` - must_fix * `should_fix` - should_fix * `consider` - consider */
 export type ReviewIssuePriorityEnum = "must_fix" | "should_fix" | "consider";
-export const ReviewIssuePriorityEnum = S.String;
+const ReviewIssuePriorityEnum = S.String;
 
 export interface ReviewFindingLineRange {
   /** First affected line. */
@@ -195,7 +195,7 @@ export interface ReviewFindingLineRange {
   /** Last affected line; null for a single line. */
   end: number | null;
 }
-export const ReviewFindingLineRange = /*@__PURE__*/ S.suspend(() =>
+const ReviewFindingLineRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.Number,
     end: S.NullOr(S.Number),
@@ -204,7 +204,7 @@ export const ReviewFindingLineRange = /*@__PURE__*/ S.suspend(() =>
 
 /** Affected line ranges within the file. */
 export type ReviewFindingLinesList = Array<ReviewFindingLineRange>;
-export const ReviewFindingLinesList = /*@__PURE__*/ S.Array(
+const ReviewFindingLinesList = /*@__PURE__*/ S.Array(
   ReviewFindingLineRange,
 ) as any as S.Schema<ReviewFindingLinesList>;
 
@@ -219,7 +219,7 @@ export type ValidatorCategoryEnum =
   | "testing"
   | "accessibility"
   | "compatibility";
-export const ValidatorCategoryEnum = S.String;
+const ValidatorCategoryEnum = S.String;
 
 export interface ReviewFinding {
   /** One-line summary of the finding. */
@@ -243,7 +243,7 @@ export interface ReviewFinding {
   /** The validator's argumentation for keeping or dismissing the finding. */
   validator_note: string;
 }
-export const ReviewFinding = /*@__PURE__*/ S.suspend(() =>
+const ReviewFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     file: S.String,
@@ -260,13 +260,13 @@ export const ReviewFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** The latest turn's validated findings, most urgent first. */
 export type ReviewDetailFindingsList = Array<ReviewFinding>;
-export const ReviewDetailFindingsList = /*@__PURE__*/ S.Array(
+const ReviewDetailFindingsList = /*@__PURE__*/ S.Array(
   ReviewFinding,
 ) as any as S.Schema<ReviewDetailFindingsList>;
 
 /** The latest turn's findings the validator dismissed, with its reasoning. */
 export type ReviewDetailDismissedFindingsList = Array<ReviewFinding>;
-export const ReviewDetailDismissedFindingsList =
+const ReviewDetailDismissedFindingsList =
   ReviewDetailFindingsList as any as S.Schema<ReviewDetailDismissedFindingsList>;
 
 export interface ReviewDetail {
@@ -335,7 +335,7 @@ export interface ReviewDetail {
   /** The latest turn's findings the validator dismissed, with its reasoning. */
   dismissed_findings: ReviewDetailDismissedFindingsList;
 }
-export const ReviewDetail = /*@__PURE__*/ S.suspend(() =>
+const ReviewDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     repository: S.String,
@@ -373,7 +373,7 @@ export const ReviewDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewDetail" }) as any as S.Schema<ReviewDetail>;
 
 export type GetReviewHogReviewsPerspectiveStatRequestScope = "mine" | "everyone";
-export const GetReviewHogReviewsPerspectiveStatRequestScope = S.String;
+const GetReviewHogReviewsPerspectiveStatRequestScope = S.String;
 
 export interface GetReviewHogReviewsPerspectiveStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -381,7 +381,7 @@ export interface GetReviewHogReviewsPerspectiveStatRequest {
   /** Whose reviews to aggregate: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project. * `mine` - mine * `everyone` - everyone */
   scope?: GetReviewHogReviewsPerspectiveStatRequestScope | (string & {});
 }
-export const GetReviewHogReviewsPerspectiveStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReviewHogReviewsPerspectiveStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scope: S.optional(GetReviewHogReviewsPerspectiveStatRequestScope.pipe(T.Query())),
@@ -406,7 +406,7 @@ export interface ReviewPerspectiveStatItem {
   /** Of those, findings the validator dismissed. */
   dismissed: number;
 }
-export const ReviewPerspectiveStatItem = /*@__PURE__*/ S.suspend(() =>
+const ReviewPerspectiveStatItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     raised: S.Number,
@@ -419,7 +419,7 @@ export const ReviewPerspectiveStatItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-skill effectiveness across those reviews, most kept findings first. */
 export type ReviewPerspectiveStatsPerspectivesList = Array<ReviewPerspectiveStatItem>;
-export const ReviewPerspectiveStatsPerspectivesList = /*@__PURE__*/ S.Array(
+const ReviewPerspectiveStatsPerspectivesList = /*@__PURE__*/ S.Array(
   ReviewPerspectiveStatItem,
 ) as any as S.Schema<ReviewPerspectiveStatsPerspectivesList>;
 
@@ -429,7 +429,7 @@ export interface ReviewPerspectiveStats {
   /** Per-skill effectiveness across those reviews, most kept findings first. */
   perspectives: ReviewPerspectiveStatsPerspectivesList;
 }
-export const ReviewPerspectiveStats = /*@__PURE__*/ S.suspend(() =>
+const ReviewPerspectiveStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_count: S.Number,
     perspectives: ReviewPerspectiveStatsPerspectivesList,
@@ -440,7 +440,7 @@ export interface ListReviewHogBlindSpotsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListReviewHogBlindSpotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogBlindSpotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -460,7 +460,7 @@ export interface ReviewBlindSpotsConfig {
   /** The blind-spots skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewBlindSpotsConfig = /*@__PURE__*/ S.suspend(() =>
+const ReviewBlindSpotsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     active: S.Boolean,
@@ -470,12 +470,12 @@ export const ReviewBlindSpotsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewBlindSpotsConfig" }) as any as S.Schema<ReviewBlindSpotsConfig>;
 
 export type ListReviewHogBlindSpotsResponseBodyList = Array<ReviewBlindSpotsConfig>;
-export const ListReviewHogBlindSpotsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReviewHogBlindSpotsResponseBodyList = /*@__PURE__*/ S.Array(
   ReviewBlindSpotsConfig,
 ) as any as S.Schema<ListReviewHogBlindSpotsResponseBodyList>;
 
 export type ListReviewHogBlindSpotsResponse = ListReviewHogBlindSpotsResponseBodyList;
-export const ListReviewHogBlindSpotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogBlindSpotsResponse = /*@__PURE__*/ S.suspend(() =>
   ListReviewHogBlindSpotsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReviewHogBlindSpotsResponse",
@@ -485,7 +485,7 @@ export interface ListReviewHogPerspectivesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListReviewHogPerspectivesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogPerspectivesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -509,7 +509,7 @@ export interface ReviewPerspectiveConfig {
   /** The perspective skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewPerspectiveConfig = /*@__PURE__*/ S.suspend(() =>
+const ReviewPerspectiveConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skill_name: S.String,
     enabled: S.Boolean,
@@ -519,12 +519,12 @@ export const ReviewPerspectiveConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReviewPerspectiveConfig" }) as any as S.Schema<ReviewPerspectiveConfig>;
 
 export type ListReviewHogPerspectivesResponseBodyList = Array<ReviewPerspectiveConfig>;
-export const ListReviewHogPerspectivesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReviewHogPerspectivesResponseBodyList = /*@__PURE__*/ S.Array(
   ReviewPerspectiveConfig,
 ) as any as S.Schema<ListReviewHogPerspectivesResponseBodyList>;
 
 export type ListReviewHogPerspectivesResponse = ListReviewHogPerspectivesResponseBodyList;
-export const ListReviewHogPerspectivesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogPerspectivesResponse = /*@__PURE__*/ S.suspend(() =>
   ListReviewHogPerspectivesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReviewHogPerspectivesResponse",
@@ -534,7 +534,7 @@ export interface ListReviewHogResolutionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListReviewHogResolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogResolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -554,19 +554,15 @@ export interface ReviewResolutionConfig {
   /** The resolution skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewResolutionConfig =
-  ReviewBlindSpotsConfig as any as S.Schema<ReviewResolutionConfig>;
+const ReviewResolutionConfig = ReviewBlindSpotsConfig as any as S.Schema<ReviewResolutionConfig>;
 
 export type ListReviewHogResolutionResponseBodyList = Array<ReviewResolutionConfig>;
-export const ListReviewHogResolutionResponseBodyList =
-  ListReviewHogBlindSpotsResponseBodyList as any as S.Schema<ListReviewHogResolutionResponseBodyList>;
-
 export type ListReviewHogResolutionResponse = ListReviewHogResolutionResponseBodyList;
-export const ListReviewHogResolutionResponse =
+const ListReviewHogResolutionResponse =
   ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogResolutionResponse>;
 
 export type ListReviewHogReviewsRequestScope = "mine" | "everyone";
-export const ListReviewHogReviewsRequestScope = S.String;
+const ListReviewHogReviewsRequestScope = S.String;
 
 export interface ListReviewHogReviewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -576,7 +572,7 @@ export interface ListReviewHogReviewsRequest {
   /** Whose reviews to list: `mine` (the default) for reviews the requesting user ran plus reviews of pull requests they authored (matched via their linked GitHub login), `everyone` for every review on this project. * `mine` - mine * `everyone` - everyone */
   scope?: ListReviewHogReviewsRequestScope | (string & {});
 }
-export const ListReviewHogReviewsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogReviewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -642,7 +638,7 @@ export interface ReviewRecentReview {
   /** Raw issues the blind-spot sweep added in the latest turn, before dedupe; null if unknown. */
   blind_spot_issue_count: number | null;
 }
-export const ReviewRecentReview = /*@__PURE__*/ S.suspend(() =>
+const ReviewRecentReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     repository: S.String,
@@ -675,7 +671,7 @@ export const ReviewRecentReview = /*@__PURE__*/ S.suspend(() =>
 
 /** The scoped reviews: in-progress runs first, then completed newest first. */
 export type ReviewRecentReviewsPageResultsList = Array<ReviewRecentReview>;
-export const ReviewRecentReviewsPageResultsList = /*@__PURE__*/ S.Array(
+const ReviewRecentReviewsPageResultsList = /*@__PURE__*/ S.Array(
   ReviewRecentReview,
 ) as any as S.Schema<ReviewRecentReviewsPageResultsList>;
 
@@ -685,7 +681,7 @@ export interface ReviewRecentReviewsPage {
   /** Whether reviews exist beyond this page -- drives the list's "Show more" button. */
   has_more: boolean;
 }
-export const ReviewRecentReviewsPage = /*@__PURE__*/ S.suspend(() =>
+const ReviewRecentReviewsPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ReviewRecentReviewsPageResultsList,
     has_more: S.Boolean,
@@ -696,7 +692,7 @@ export interface ListReviewHogValidatorsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListReviewHogValidatorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReviewHogValidatorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -716,20 +712,16 @@ export interface ReviewValidatorConfig {
   /** The validator skill's SKILL.md body, for the read-only skill viewer. */
   body: string;
 }
-export const ReviewValidatorConfig =
-  ReviewBlindSpotsConfig as any as S.Schema<ReviewValidatorConfig>;
+const ReviewValidatorConfig = ReviewBlindSpotsConfig as any as S.Schema<ReviewValidatorConfig>;
 
 export type ListReviewHogValidatorsResponseBodyList = Array<ReviewValidatorConfig>;
-export const ListReviewHogValidatorsResponseBodyList =
-  ListReviewHogBlindSpotsResponseBodyList as any as S.Schema<ListReviewHogValidatorsResponseBodyList>;
-
 export type ListReviewHogValidatorsResponse = ListReviewHogValidatorsResponseBodyList;
-export const ListReviewHogValidatorsResponse =
+const ListReviewHogValidatorsResponse =
   ListReviewHogBlindSpotsResponse as any as S.Schema<ListReviewHogValidatorsResponse>;
 
 /** * `review` - review * `review_only` - review_only * `resolve_only` - resolve_only * `flash` - flash */
 export type ReviewTriggerRequestRunModeEnum = "review" | "review_only" | "resolve_only" | "flash";
-export const ReviewTriggerRequestRunModeEnum = S.String;
+const ReviewTriggerRequestRunModeEnum = S.String;
 
 export interface ReviewHogReviewsTriggerCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -739,7 +731,7 @@ export interface ReviewHogReviewsTriggerCreateRequest {
   /** What to run on the pull request. 'review' (default) reviews it and, when the requesting user's resolve_comments setting is on, chains the resolution stage; 'review_only' reviews without resolving regardless of that setting; 'resolve_only' skips the review and only runs the resolution stage on the PR's existing unresolved review threads; 'flash' uses a lower-cost model for the review passes and validation, and never resolves comments. * `review` - review * `review_only` - review_only * `resolve_only` - resolve_only * `flash` - flash */
   run_mode?: ReviewTriggerRequestRunModeEnum | (string & {});
 }
-export const ReviewHogReviewsTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ReviewHogReviewsTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pr_url: S.String,
@@ -761,7 +753,7 @@ export interface ReviewTriggerResponse {
   /** Run lifecycle marker: 'started' when the review was queued, 'already_reviewed' when the pull request's current commit already has a published review in the requested mode, 'joined_running_review' when a review was already in flight and the request joined its queue. A requested Full review waits for an active Flash review. */
   status: string;
 }
-export const ReviewTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+const ReviewTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflow_id: S.String,
     status: S.String,
@@ -775,7 +767,7 @@ export interface UpdateReviewHogBlindSpotsPartialRequest {
   /** Set true to make this the single blind-spots skill that runs on the user's PR reviews. Only true is accepted -- the blind-spot check is single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
-export const UpdateReviewHogBlindSpotsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReviewHogBlindSpotsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_name: S.String.pipe(T.Label()),
@@ -798,7 +790,7 @@ export interface UpdateReviewHogPerspectivesPartialRequest {
   /** Set true to run this perspective on the user's PR reviews, false to stop running it. */
   enabled?: boolean;
 }
-export const UpdateReviewHogPerspectivesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReviewHogPerspectivesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_name: S.String.pipe(T.Label()),
@@ -821,7 +813,7 @@ export interface UpdateReviewHogResolutionPartialRequest {
   /** Set true to make these the single resolution criteria applied on the user's PRs. Only true is accepted -- resolution criteria are single-active, so you switch by selecting a different skill, not by deactivating the current one. */
   active?: boolean;
 }
-export const UpdateReviewHogResolutionPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReviewHogResolutionPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_name: S.String.pipe(T.Label()),
@@ -844,7 +836,7 @@ export interface UpdateReviewHogValidatorsPartialRequest {
   /** Set true to make this the single validator that runs on the user's PR reviews. Only true is accepted -- validators are single-active, so you switch by selecting a different one, not by deactivating the current one. */
   active?: boolean;
 }
-export const UpdateReviewHogValidatorsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateReviewHogValidatorsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     skill_name: S.String.pipe(T.Label()),

@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The Deployment. */
 export interface SasPortalDeployment {
@@ -75,7 +75,7 @@ export interface SasPortalDeployment {
   /** User ID used by the devices belonging to this deployment. Each deployment should be associated with one unique user ID. */
   sasUserIds?: StringList;
 }
-export const SasPortalDeployment = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     frns: S.optional(StringList),
@@ -90,7 +90,7 @@ export interface CreateCustomersDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const CreateCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
@@ -110,7 +110,7 @@ export type SasPortalDeviceStateEnum =
   | "RESERVED"
   | "REGISTERED"
   | "DEREGISTERED";
-export const SasPortalDeviceStateEnum = S.String;
+const SasPortalDeviceStateEnum = S.String;
 
 /** Frequency range from `low_frequency` to `high_frequency`. */
 export interface SasPortalFrequencyRange {
@@ -119,7 +119,7 @@ export interface SasPortalFrequencyRange {
   /** The highest frequency of the frequency range in MHz. */
   highFrequencyMhz?: number;
 }
-export const SasPortalFrequencyRange = /*@__PURE__*/ S.suspend(() =>
+const SasPortalFrequencyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lowFrequencyMhz: S.optional(S.Number),
     highFrequencyMhz: S.optional(S.Number),
@@ -133,7 +133,7 @@ export interface SasPortalChannelWithScore {
   /** The channel score, normalized to be in the range [0,100]. */
   score?: number;
 }
-export const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
+const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequencyRange: S.optional(SasPortalFrequencyRange),
     score: S.optional(S.Number),
@@ -143,12 +143,12 @@ export const SasPortalChannelWithScore = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SasPortalChannelWithScore>;
 
 export type SasPortalChannelWithScoreList = Array<SasPortalChannelWithScore>;
-export const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(
+const SasPortalChannelWithScoreList = /*@__PURE__*/ S.Array(
   SasPortalChannelWithScore,
 ) as any as S.Schema<SasPortalChannelWithScoreList>;
 
 export type SasPortalNrqzValidationStateEnum = "STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
-export const SasPortalNrqzValidationStateEnum = S.String;
+const SasPortalNrqzValidationStateEnum = S.String;
 
 /** Information about National Radio Quiet Zone validation. */
 export interface SasPortalNrqzValidation {
@@ -163,7 +163,7 @@ export interface SasPortalNrqzValidation {
   /** Device longitude that's associated with the validation. */
   longitude?: number;
 }
-export const SasPortalNrqzValidation = /*@__PURE__*/ S.suspend(() =>
+const SasPortalNrqzValidation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     caseId: S.optional(S.String),
@@ -186,7 +186,7 @@ export interface SasPortalDeviceMetadata {
   /** Output only. Set to `true` if a CPI has validated that they have coordinated with the National Quiet Zone office. */
   nrqzValidated?: boolean;
 }
-export const SasPortalDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commonChannelGroup: S.optional(S.String),
     interferenceCoordinationGroup: S.optional(S.String),
@@ -200,12 +200,12 @@ export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnum =
   | "MEASUREMENT_CAPABILITY_UNSPECIFIED"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITH_GRANT"
   | "MEASUREMENT_CAPABILITY_RECEIVED_POWER_WITHOUT_GRANT";
-export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum = S.String;
+const SasPortalDeviceConfigMeasurementCapabilitiesItemEnum = S.String;
 
 export type SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = Array<
   SasPortalDeviceConfigMeasurementCapabilitiesItemEnum | (string & {})
 >;
-export const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
+const SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList = /*@__PURE__*/ S.Array(
   SasPortalDeviceConfigMeasurementCapabilitiesItemEnum,
 ) as any as S.Schema<SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList>;
 
@@ -220,7 +220,7 @@ export type SasPortalDeviceAirInterfaceRadioTechnologyEnum =
   | "REDLINE"
   | "TARANA_WIRELESS"
   | "FAROS";
-export const SasPortalDeviceAirInterfaceRadioTechnologyEnum = S.String;
+const SasPortalDeviceAirInterfaceRadioTechnologyEnum = S.String;
 
 /** Information about the device's air interface. */
 export interface SasPortalDeviceAirInterface {
@@ -229,7 +229,7 @@ export interface SasPortalDeviceAirInterface {
   /** Optional. This field is related to the `radioTechnology` and provides the air interface specification that the CBSD is compliant with at the time of registration. */
   supportedSpec?: string;
 }
-export const SasPortalDeviceAirInterface = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeviceAirInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     radioTechnology: S.optional(SasPortalDeviceAirInterfaceRadioTechnologyEnum),
     supportedSpec: S.optional(S.String),
@@ -242,7 +242,7 @@ export type SasPortalInstallationParamsHeightTypeEnum =
   | "HEIGHT_TYPE_UNSPECIFIED"
   | "HEIGHT_TYPE_AGL"
   | "HEIGHT_TYPE_AMSL";
-export const SasPortalInstallationParamsHeightTypeEnum = S.String;
+const SasPortalInstallationParamsHeightTypeEnum = S.String;
 
 /** Information about the device installation parameters. */
 export interface SasPortalInstallationParams {
@@ -275,7 +275,7 @@ export interface SasPortalInstallationParams {
   /** If an external antenna is used, the antenna model is optionally provided in this field. The string has a maximum length of 128 octets. */
   antennaModel?: string;
 }
-export const SasPortalInstallationParams = /*@__PURE__*/ S.suspend(() =>
+const SasPortalInstallationParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     horizontalAccuracy: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -309,7 +309,7 @@ export interface SasPortalDeviceModel {
   /** The firmware version of the device. */
   firmwareVersion?: string;
 }
-export const SasPortalDeviceModel = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeviceModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vendor: S.optional(S.String),
     name: S.optional(S.String),
@@ -323,10 +323,10 @@ export type SasPortalDeviceConfigCategoryEnum =
   | "DEVICE_CATEGORY_UNSPECIFIED"
   | "DEVICE_CATEGORY_A"
   | "DEVICE_CATEGORY_B";
-export const SasPortalDeviceConfigCategoryEnum = S.String;
+const SasPortalDeviceConfigCategoryEnum = S.String;
 
 export type SasPortalDeviceConfigStateEnum = "DEVICE_CONFIG_STATE_UNSPECIFIED" | "DRAFT" | "FINAL";
-export const SasPortalDeviceConfigStateEnum = S.String;
+const SasPortalDeviceConfigStateEnum = S.String;
 
 /** Information about the device configuration. */
 export interface SasPortalDeviceConfig {
@@ -351,7 +351,7 @@ export interface SasPortalDeviceConfig {
   /** State of the configuration. */
   state?: SasPortalDeviceConfigStateEnum | (string & {});
 }
-export const SasPortalDeviceConfig = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeviceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     measurementCapabilities: S.optional(SasPortalDeviceConfigMeasurementCapabilitiesItemEnumList),
     airInterface: S.optional(SasPortalDeviceAirInterface),
@@ -370,7 +370,7 @@ export type SasPortalDeviceGrantChannelTypeEnum =
   | "CHANNEL_TYPE_UNSPECIFIED"
   | "CHANNEL_TYPE_GAA"
   | "CHANNEL_TYPE_PAL";
-export const SasPortalDeviceGrantChannelTypeEnum = S.String;
+const SasPortalDeviceGrantChannelTypeEnum = S.String;
 
 /** An entry in a DPA's move list. */
 export interface SasPortalDpaMoveList {
@@ -379,7 +379,7 @@ export interface SasPortalDpaMoveList {
   /** The ID of the DPA. */
   dpaId?: string;
 }
-export const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequencyRange: S.optional(SasPortalFrequencyRange),
     dpaId: S.optional(S.String),
@@ -387,7 +387,7 @@ export const SasPortalDpaMoveList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SasPortalDpaMoveList" }) as any as S.Schema<SasPortalDpaMoveList>;
 
 export type SasPortalDpaMoveListList = Array<SasPortalDpaMoveList>;
-export const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(
+const SasPortalDpaMoveListList = /*@__PURE__*/ S.Array(
   SasPortalDpaMoveList,
 ) as any as S.Schema<SasPortalDpaMoveListList>;
 
@@ -398,7 +398,7 @@ export type SasPortalDeviceGrantStateEnum =
   | "GRANT_STATE_SUSPENDED"
   | "GRANT_STATE_AUTHORIZED"
   | "GRANT_STATE_EXPIRED";
-export const SasPortalDeviceGrantStateEnum = S.String;
+const SasPortalDeviceGrantStateEnum = S.String;
 
 /** Device grant. It is an authorization provided by the Spectrum Access System to a device to transmit using specified operating parameters after a successful heartbeat by the device. */
 export interface SasPortalDeviceGrant {
@@ -421,7 +421,7 @@ export interface SasPortalDeviceGrant {
   /** State of the grant. */
   state?: SasPortalDeviceGrantStateEnum | (string & {});
 }
-export const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frequencyRange: S.optional(SasPortalFrequencyRange),
     suspensionReason: S.optional(StringList),
@@ -436,12 +436,12 @@ export const SasPortalDeviceGrant = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SasPortalDeviceGrant" }) as any as S.Schema<SasPortalDeviceGrant>;
 
 export type SasPortalDeviceGrantList = Array<SasPortalDeviceGrant>;
-export const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
+const SasPortalDeviceGrantList = /*@__PURE__*/ S.Array(
   SasPortalDeviceGrant,
 ) as any as S.Schema<SasPortalDeviceGrantList>;
 
 export type SasPortalFrequencyRangeList = Array<SasPortalFrequencyRange>;
-export const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(
+const SasPortalFrequencyRangeList = /*@__PURE__*/ S.Array(
   SasPortalFrequencyRange,
 ) as any as S.Schema<SasPortalFrequencyRangeList>;
 
@@ -469,7 +469,7 @@ export interface SasPortalDevice {
   /** The FCC identifier of the device. Refer to https://www.fcc.gov/oet/ea/fccid for FccID format. Accept underscores and periods because some test-SAS customers use them. */
   fccId?: string;
 }
-export const SasPortalDevice = /*@__PURE__*/ S.suspend(() =>
+const SasPortalDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serialNumber: S.optional(S.String),
     state: S.optional(SasPortalDeviceStateEnum),
@@ -491,7 +491,7 @@ export interface CreateCustomersDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -512,7 +512,7 @@ export interface CreateCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -536,7 +536,7 @@ export interface SasPortalNode {
   /** The node's display name. */
   displayName?: string;
 }
-export const SasPortalNode = /*@__PURE__*/ S.suspend(() =>
+const SasPortalNode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sasUserIds: S.optional(StringList),
     name: S.optional(S.String),
@@ -550,7 +550,7 @@ export interface CreateCustomersNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const CreateCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalNode.pipe(T.HttpBody())),
@@ -571,7 +571,7 @@ export interface CreateCustomersNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const CreateCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
@@ -592,7 +592,7 @@ export interface CreateCustomersNodesDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -613,7 +613,7 @@ export interface CreateCustomersNodesNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const CreateCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalNode.pipe(T.HttpBody())),
@@ -634,7 +634,7 @@ export interface CreateNodesDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -655,7 +655,7 @@ export interface CreateNodesDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -676,7 +676,7 @@ export interface CreateNodesNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const CreateNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalNode.pipe(T.HttpBody())),
@@ -695,7 +695,7 @@ export interface CreateNodesNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const CreateNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDeployment.pipe(T.HttpBody())),
@@ -716,7 +716,7 @@ export interface CreateNodesNodesDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const CreateNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalDevice.pipe(T.HttpBody())),
@@ -737,7 +737,7 @@ export interface CreateNodesNodesNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const CreateNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalNode.pipe(T.HttpBody())),
@@ -759,7 +759,7 @@ export interface SasPortalCreateSignedDeviceRequest {
   /** Required. Unique installer id (CPI ID) from the Certified Professional Installers database. */
   installerId?: string;
 }
-export const SasPortalCreateSignedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalCreateSignedDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encodedDevice: S.optional(S.String),
     installerId: S.optional(S.String),
@@ -774,7 +774,7 @@ export interface CreateSignedCustomersDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -795,7 +795,7 @@ export interface CreateSignedCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -816,7 +816,7 @@ export interface CreateSignedCustomersNodesDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -837,7 +837,7 @@ export interface CreateSignedNodesDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -858,7 +858,7 @@ export interface CreateSignedNodesDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -879,7 +879,7 @@ export interface CreateSignedNodesNodesDevicesRequest {
   /** Request body */
   body?: SasPortalCreateSignedDeviceRequest;
 }
-export const CreateSignedNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSignedNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(SasPortalCreateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -898,7 +898,7 @@ export interface DeleteCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
-export const DeleteCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -914,7 +914,7 @@ export const DeleteCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface SasPortalEmpty {}
-export const SasPortalEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const SasPortalEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SasPortalEmpty",
 }) as any as S.Schema<SasPortalEmpty>;
 
@@ -922,7 +922,7 @@ export interface DeleteCustomersDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const DeleteCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -940,7 +940,7 @@ export interface DeleteCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
-export const DeleteCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -958,7 +958,7 @@ export interface DeleteDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const DeleteDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -976,7 +976,7 @@ export interface DeleteNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
-export const DeleteNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -994,7 +994,7 @@ export interface DeleteNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const DeleteNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1012,7 +1012,7 @@ export interface DeleteNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
-export const DeleteNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1026,14 +1026,14 @@ export const DeleteNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Request for GenerateSecret. */
 export interface SasPortalGenerateSecretRequest {}
-export const SasPortalGenerateSecretRequest =
+const SasPortalGenerateSecretRequest =
   SasPortalEmpty as any as S.Schema<SasPortalGenerateSecretRequest>;
 
 export interface GenerateSecretInstallerRequest {
   /** Request body */
   body?: SasPortalGenerateSecretRequest;
 }
-export const GenerateSecretInstallerRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateSecretInstallerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalGenerateSecretRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1052,7 +1052,7 @@ export interface SasPortalGenerateSecretResponse {
   /** The secret generated by the string and used by ValidateInstaller. */
   secret?: string;
 }
-export const SasPortalGenerateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalGenerateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.optional(S.String),
   }),
@@ -1064,7 +1064,7 @@ export interface GetCustomersRequest {
   /** Required. The name of the customer. */
   name: string;
 }
-export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1085,7 +1085,7 @@ export interface SasPortalCustomer {
   /** User IDs used by the devices belonging to this customer. */
   sasUserIds?: StringList;
 }
-export const SasPortalCustomer = /*@__PURE__*/ S.suspend(() =>
+const SasPortalCustomer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1097,7 +1097,7 @@ export interface GetCustomersDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
-export const GetCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1115,7 +1115,7 @@ export interface GetCustomersDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const GetCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1133,7 +1133,7 @@ export interface GetCustomersNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
-export const GetCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1149,7 +1149,7 @@ export interface GetDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
-export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1165,7 +1165,7 @@ export interface GetDeploymentsDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const GetDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1183,7 +1183,7 @@ export interface GetNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
-export const GetNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1199,7 +1199,7 @@ export interface GetNodesDeploymentsRequest {
   /** Required. The name of the deployment. */
   name: string;
 }
-export const GetNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1217,7 +1217,7 @@ export interface GetNodesDevicesRequest {
   /** Required. The name of the device. */
   name: string;
 }
-export const GetNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1233,7 +1233,7 @@ export interface GetNodesNodesRequest {
   /** Required. The name of the node. */
   name: string;
 }
-export const GetNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1250,7 +1250,7 @@ export interface SasPortalGetPolicyRequest {
   /** Required. The resource for which the policy is being requested. */
   resource?: string;
 }
-export const SasPortalGetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalGetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
   }),
@@ -1262,7 +1262,7 @@ export interface GetPoliciesRequest {
   /** Request body */
   body?: SasPortalGetPolicyRequest;
 }
-export const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalGetPolicyRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1281,7 +1281,7 @@ export interface SasPortalAssignment {
   /** Required. Role that is assigned to `members`. */
   role?: string;
 }
-export const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
+const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -1289,7 +1289,7 @@ export const SasPortalAssignment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SasPortalAssignment" }) as any as S.Schema<SasPortalAssignment>;
 
 export type SasPortalAssignmentList = Array<SasPortalAssignment>;
-export const SasPortalAssignmentList = /*@__PURE__*/ S.Array(
+const SasPortalAssignmentList = /*@__PURE__*/ S.Array(
   SasPortalAssignment,
 ) as any as S.Schema<SasPortalAssignmentList>;
 
@@ -1300,7 +1300,7 @@ export interface SasPortalPolicy {
   /** List of assignments */
   assignments?: SasPortalAssignmentList;
 }
-export const SasPortalPolicy = /*@__PURE__*/ S.suspend(() =>
+const SasPortalPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     assignments: S.optional(SasPortalAssignmentList),
@@ -1313,7 +1313,7 @@ export interface ListCustomersRequest {
   /** The maximum number of customers to return in the response. */
   pageSize?: number;
 }
-export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1327,7 +1327,7 @@ export const ListCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCustomersRequest" }) as any as S.Schema<ListCustomersRequest>;
 
 export type SasPortalCustomerList = Array<SasPortalCustomer>;
-export const SasPortalCustomerList = /*@__PURE__*/ S.Array(
+const SasPortalCustomerList = /*@__PURE__*/ S.Array(
   SasPortalCustomer,
 ) as any as S.Schema<SasPortalCustomerList>;
 
@@ -1338,7 +1338,7 @@ export interface SasPortalListCustomersResponse {
   /** The list of customers that match the request. */
   customers?: SasPortalCustomerList;
 }
-export const SasPortalListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListCustomersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     customers: S.optional(SasPortalCustomerList),
@@ -1357,7 +1357,7 @@ export interface ListCustomersDeploymentsRequest {
   /** The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. */
   filter?: string;
 }
-export const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1375,7 +1375,7 @@ export const ListCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersDeploymentsRequest>;
 
 export type SasPortalDeploymentList = Array<SasPortalDeployment>;
-export const SasPortalDeploymentList = /*@__PURE__*/ S.Array(
+const SasPortalDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalDeployment,
 ) as any as S.Schema<SasPortalDeploymentList>;
 
@@ -1386,7 +1386,7 @@ export interface SasPortalListDeploymentsResponse {
   /** The deployments that match the request. */
   deployments?: SasPortalDeploymentList;
 }
-export const SasPortalListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     deployments: S.optional(SasPortalDeploymentList),
@@ -1405,7 +1405,7 @@ export interface ListCustomersDeploymentsDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
 }
-export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1423,7 +1423,7 @@ export const ListCustomersDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListCustomersDeploymentsDevicesRequest>;
 
 export type SasPortalDeviceList = Array<SasPortalDevice>;
-export const SasPortalDeviceList = /*@__PURE__*/ S.Array(
+const SasPortalDeviceList = /*@__PURE__*/ S.Array(
   SasPortalDevice,
 ) as any as S.Schema<SasPortalDeviceList>;
 
@@ -1434,7 +1434,7 @@ export interface SasPortalListDevicesResponse {
   /** A pagination token returned from a previous call to ListDevices that indicates from where listing should continue. If the field is missing or empty, it means there is no more devices. */
   nextPageToken?: string;
 }
-export const SasPortalListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(SasPortalDeviceList),
     nextPageToken: S.optional(S.String),
@@ -1453,7 +1453,7 @@ export interface ListCustomersDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
 }
-export const ListCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1480,7 +1480,7 @@ export interface ListCustomersNodesRequest {
   /** Required. The parent resource name, for example, "nodes/1". */
   parent: string;
 }
-export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1498,7 +1498,7 @@ export const ListCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersNodesRequest>;
 
 export type SasPortalNodeList = Array<SasPortalNode>;
-export const SasPortalNodeList = /*@__PURE__*/ S.Array(
+const SasPortalNodeList = /*@__PURE__*/ S.Array(
   SasPortalNode,
 ) as any as S.Schema<SasPortalNodeList>;
 
@@ -1509,7 +1509,7 @@ export interface SasPortalListNodesResponse {
   /** A pagination token returned from a previous call to ListNodes that indicates from where listing should continue. If the field is missing or empty, it means there is no more nodes. */
   nextPageToken?: string;
 }
-export const SasPortalListNodesResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListNodesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nodes: S.optional(SasPortalNodeList),
     nextPageToken: S.optional(S.String),
@@ -1528,7 +1528,7 @@ export interface ListCustomersNodesDeploymentsRequest {
   /** The maximum number of deployments to return in the response. */
   pageSize?: number;
 }
-export const ListCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1555,7 +1555,7 @@ export interface ListCustomersNodesDevicesRequest {
   /** The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. */
   pageSize?: number;
 }
-export const ListCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1582,7 +1582,7 @@ export interface ListCustomersNodesNodesRequest {
   /** A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1600,7 +1600,7 @@ export const ListCustomersNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomersNodesNodesRequest>;
 
 export interface ListGcpProjectDeploymentsCustomersRequest {}
-export const ListGcpProjectDeploymentsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGcpProjectDeploymentsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1619,7 +1619,7 @@ export interface SasPortalGcpProjectDeployment {
   /** Deployment associated with the GCP project. */
   deployment?: SasPortalDeployment;
 }
-export const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
+const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasEnabledAnalytics: S.optional(S.Boolean),
     deployment: S.optional(SasPortalDeployment),
@@ -1629,7 +1629,7 @@ export const SasPortalGcpProjectDeployment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SasPortalGcpProjectDeployment>;
 
 export type SasPortalGcpProjectDeploymentList = Array<SasPortalGcpProjectDeployment>;
-export const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(
+const SasPortalGcpProjectDeploymentList = /*@__PURE__*/ S.Array(
   SasPortalGcpProjectDeployment,
 ) as any as S.Schema<SasPortalGcpProjectDeploymentList>;
 
@@ -1638,7 +1638,7 @@ export interface SasPortalListGcpProjectDeploymentsResponse {
   /** Optional. Deployments associated with the GCP project */
   deployments?: SasPortalGcpProjectDeploymentList;
 }
-export const SasPortalListGcpProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListGcpProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: S.optional(SasPortalGcpProjectDeploymentList),
   }),
@@ -1647,7 +1647,7 @@ export const SasPortalListGcpProjectDeploymentsResponse = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<SasPortalListGcpProjectDeploymentsResponse>;
 
 export interface ListLegacyOrganizationsCustomersRequest {}
-export const ListLegacyOrganizationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLegacyOrganizationsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1666,7 +1666,7 @@ export interface SasPortalOrganization {
   /** Name of organization */
   displayName?: string;
 }
-export const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
+const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1674,7 +1674,7 @@ export const SasPortalOrganization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SasPortalOrganization" }) as any as S.Schema<SasPortalOrganization>;
 
 export type SasPortalOrganizationList = Array<SasPortalOrganization>;
-export const SasPortalOrganizationList = /*@__PURE__*/ S.Array(
+const SasPortalOrganizationList = /*@__PURE__*/ S.Array(
   SasPortalOrganization,
 ) as any as S.Schema<SasPortalOrganizationList>;
 
@@ -1683,7 +1683,7 @@ export interface SasPortalListLegacyOrganizationsResponse {
   /** Optional. Legacy SAS organizations. */
   organizations?: SasPortalOrganizationList;
 }
-export const SasPortalListLegacyOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalListLegacyOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizations: S.optional(SasPortalOrganizationList),
   }),
@@ -1701,7 +1701,7 @@ export interface ListNodesDeploymentsRequest {
   /** A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1728,7 +1728,7 @@ export interface ListNodesDeploymentsDevicesRequest {
   /** A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. */
   pageToken?: string;
 }
-export const ListNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1755,7 +1755,7 @@ export interface ListNodesDevicesRequest {
   /** Required. The name of the parent resource. */
   parent: string;
 }
-export const ListNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1780,7 +1780,7 @@ export interface ListNodesNodesRequest {
   /** The maximum number of nodes to return in the response. */
   pageSize?: number;
 }
-export const ListNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1805,7 +1805,7 @@ export interface ListNodesNodesDeploymentsRequest {
   /** Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. */
   parent: string;
 }
-export const ListNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1832,7 +1832,7 @@ export interface ListNodesNodesDevicesRequest {
   /** The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. */
   filter?: string;
 }
-export const ListNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1859,7 +1859,7 @@ export interface ListNodesNodesNodesRequest {
   /** Required. The parent resource name, for example, "nodes/1". */
   parent: string;
 }
-export const ListNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNodesNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1881,7 +1881,7 @@ export interface SasPortalMigrateOrganizationRequest {
   /** Required. Id of the SAS organization to be migrated. */
   organizationId?: string;
 }
-export const SasPortalMigrateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalMigrateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.optional(S.String),
   }),
@@ -1893,7 +1893,7 @@ export interface MigrateOrganizationCustomersRequest {
   /** Request body */
   body?: SasPortalMigrateOrganizationRequest;
 }
-export const MigrateOrganizationCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrateOrganizationCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalMigrateOrganizationRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -1908,15 +1908,10 @@ export const MigrateOrganizationCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateOrganizationCustomersRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface SasPortalStatus {
@@ -1927,7 +1922,7 @@ export interface SasPortalStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const SasPortalStatus = /*@__PURE__*/ S.suspend(() =>
+const SasPortalStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -1948,7 +1943,7 @@ export interface SasPortalOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const SasPortalOperation = /*@__PURE__*/ S.suspend(() =>
+const SasPortalOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -1963,7 +1958,7 @@ export interface SasPortalMoveDeploymentRequest {
   /** Required. The name of the new parent resource node or customer to reparent the deployment under. */
   destination?: string;
 }
-export const SasPortalMoveDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalMoveDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.String),
   }),
@@ -1977,7 +1972,7 @@ export interface MoveCustomersDeploymentsRequest {
   /** Request body */
   body?: SasPortalMoveDeploymentRequest;
 }
-export const MoveCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
@@ -1997,7 +1992,7 @@ export interface SasPortalMoveDeviceRequest {
   /** Required. The name of the new parent resource node or customer to reparent the device under. */
   destination?: string;
 }
-export const SasPortalMoveDeviceRequest =
+const SasPortalMoveDeviceRequest =
   SasPortalMoveDeploymentRequest as any as S.Schema<SasPortalMoveDeviceRequest>;
 
 export interface MoveCustomersDevicesRequest {
@@ -2006,7 +2001,7 @@ export interface MoveCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
-export const MoveCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
@@ -2026,7 +2021,7 @@ export interface SasPortalMoveNodeRequest {
   /** Required. The name of the new parent resource node or customer to reparent the node under. */
   destination?: string;
 }
-export const SasPortalMoveNodeRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalMoveNodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(S.String),
   }),
@@ -2038,7 +2033,7 @@ export interface MoveCustomersNodesRequest {
   /** Request body */
   body?: SasPortalMoveNodeRequest;
 }
-export const MoveCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
@@ -2059,7 +2054,7 @@ export interface MoveDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
-export const MoveDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
@@ -2080,7 +2075,7 @@ export interface MoveNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalMoveDeploymentRequest;
 }
-export const MoveNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveDeploymentRequest.pipe(T.HttpBody())),
@@ -2101,7 +2096,7 @@ export interface MoveNodesDevicesRequest {
   /** Request body */
   body?: SasPortalMoveDeviceRequest;
 }
-export const MoveNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveDeviceRequest.pipe(T.HttpBody())),
@@ -2120,7 +2115,7 @@ export interface MoveNodesNodesRequest {
   /** Request body */
   body?: SasPortalMoveNodeRequest;
 }
-export const MoveNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const MoveNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalMoveNodeRequest.pipe(T.HttpBody())),
@@ -2141,7 +2136,7 @@ export interface PatchCustomersRequest {
   /** Request body */
   body?: SasPortalCustomer;
 }
-export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2163,7 +2158,7 @@ export interface PatchCustomersDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const PatchCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2187,7 +2182,7 @@ export interface PatchCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const PatchCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2211,7 +2206,7 @@ export interface PatchCustomersNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const PatchCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2235,7 +2230,7 @@ export interface PatchDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const PatchDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2259,7 +2254,7 @@ export interface PatchNodesDeploymentsRequest {
   /** Request body */
   body?: SasPortalDeployment;
 }
-export const PatchNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNodesDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2283,7 +2278,7 @@ export interface PatchNodesDevicesRequest {
   /** Request body */
   body?: SasPortalDevice;
 }
-export const PatchNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -2305,7 +2300,7 @@ export interface PatchNodesNodesRequest {
   /** Request body */
   body?: SasPortalNode;
 }
-export const PatchNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchNodesNodesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2328,7 +2323,7 @@ export interface SasPortalProvisionDeploymentRequest {
   /** Optional. If this field is set then a new deployment will be created under the organization specified by this id. */
   organizationId?: string;
 }
-export const SasPortalProvisionDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalProvisionDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newDeploymentDisplayName: S.optional(S.String),
     newOrganizationDisplayName: S.optional(S.String),
@@ -2342,7 +2337,7 @@ export interface ProvisionDeploymentCustomersRequest {
   /** Request body */
   body?: SasPortalProvisionDeploymentRequest;
 }
-export const ProvisionDeploymentCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const ProvisionDeploymentCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalProvisionDeploymentRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2361,7 +2356,7 @@ export interface SasPortalProvisionDeploymentResponse {
   /** Optional. Optional error message if the provisioning request is not successful. */
   errorMessage?: string;
 }
-export const SasPortalProvisionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalProvisionDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
   }),
@@ -2378,7 +2373,7 @@ export interface SasPortalSetPolicyRequest {
   /** Required. The resource for which the policy is being specified. This policy replaces any existing policy. */
   resource?: string;
 }
-export const SasPortalSetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalSetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableNotification: S.optional(S.Boolean),
     policy: S.optional(SasPortalPolicy),
@@ -2392,7 +2387,7 @@ export interface SetPoliciesRequest {
   /** Request body */
   body?: SasPortalSetPolicyRequest;
 }
-export const SetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalSetPolicyRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2409,7 +2404,7 @@ export interface SasPortalSetupSasAnalyticsRequest {
   /** Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional */
   userId?: string;
 }
-export const SasPortalSetupSasAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalSetupSasAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
   }),
@@ -2421,7 +2416,7 @@ export interface SetupSasAnalyticsCustomersRequest {
   /** Request body */
   body?: SasPortalSetupSasAnalyticsRequest;
 }
-export const SetupSasAnalyticsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const SetupSasAnalyticsCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalSetupSasAnalyticsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2440,7 +2435,7 @@ export interface SasPortalSignDeviceRequest {
   /** Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set. */
   device?: SasPortalDevice;
 }
-export const SasPortalSignDeviceRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalSignDeviceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device: S.optional(SasPortalDevice),
   }),
@@ -2454,7 +2449,7 @@ export interface SignDeviceCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
-export const SignDeviceCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SignDeviceCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
@@ -2475,7 +2470,7 @@ export interface SignDeviceDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
-export const SignDeviceDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SignDeviceDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
@@ -2496,7 +2491,7 @@ export interface SignDeviceNodesDevicesRequest {
   /** Request body */
   body?: SasPortalSignDeviceRequest;
 }
-export const SignDeviceNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SignDeviceNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalSignDeviceRequest.pipe(T.HttpBody())),
@@ -2518,7 +2513,7 @@ export interface SasPortalTestPermissionsRequest {
   /** The set of permissions to check for the `resource`. */
   permissions?: StringList;
 }
-export const SasPortalTestPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalTestPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     permissions: S.optional(StringList),
@@ -2531,7 +2526,7 @@ export interface TestPoliciesRequest {
   /** Request body */
   body?: SasPortalTestPermissionsRequest;
 }
-export const TestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalTestPermissionsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2548,7 +2543,7 @@ export interface SasPortalTestPermissionsResponse {
   /** A set of permissions that the caller is allowed. */
   permissions?: StringList;
 }
-export const SasPortalTestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const SasPortalTestPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -2563,7 +2558,7 @@ export interface SasPortalUpdateSignedDeviceRequest {
   /** Required. Unique installer ID (CPI ID) from the Certified Professional Installers database. */
   installerId?: string;
 }
-export const SasPortalUpdateSignedDeviceRequest =
+const SasPortalUpdateSignedDeviceRequest =
   SasPortalCreateSignedDeviceRequest as any as S.Schema<SasPortalUpdateSignedDeviceRequest>;
 
 export interface UpdateSignedCustomersDevicesRequest {
@@ -2572,7 +2567,7 @@ export interface UpdateSignedCustomersDevicesRequest {
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
-export const UpdateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignedCustomersDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -2593,7 +2588,7 @@ export interface UpdateSignedDeploymentsDevicesRequest {
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
-export const UpdateSignedDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignedDeploymentsDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -2614,7 +2609,7 @@ export interface UpdateSignedNodesDevicesRequest {
   /** Request body */
   body?: SasPortalUpdateSignedDeviceRequest;
 }
-export const UpdateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignedNodesDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SasPortalUpdateSignedDeviceRequest.pipe(T.HttpBody())),
@@ -2638,7 +2633,7 @@ export interface SasPortalValidateInstallerRequest {
   /** Required. JSON Web Token signed using a CPI private key. Payload must include a "secret" claim whose value is the secret. */
   encodedSecret?: string;
 }
-export const SasPortalValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
+const SasPortalValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.optional(S.String),
     installerId: S.optional(S.String),
@@ -2652,7 +2647,7 @@ export interface ValidateInstallerRequest {
   /** Request body */
   body?: SasPortalValidateInstallerRequest;
 }
-export const ValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
+const ValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(SasPortalValidateInstallerRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -2666,9 +2661,7 @@ export const ValidateInstallerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for ValidateInstaller. */
 export interface SasPortalValidateInstallerResponse {}
-export const SasPortalValidateInstallerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SasPortalValidateInstallerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SasPortalValidateInstallerResponse",
 }) as any as S.Schema<SasPortalValidateInstallerResponse>;
 

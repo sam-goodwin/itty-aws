@@ -63,7 +63,7 @@ export class NotFound
 
 /** A request to determine whether the user has valid credentials. This method is used to limit the number of OAuth popups in the user interface. The user id is inferred from the API call context. If the data source has the Google+ authorization type, this method returns false, as it cannot be determined whether the credentials are already valid merely based on the user id. */
 export interface CheckValidCredsRequest {}
-export const CheckValidCredsRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CheckValidCredsRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CheckValidCredsRequest",
 }) as any as S.Schema<CheckValidCredsRequest>;
 
@@ -73,7 +73,7 @@ export interface CheckValidCredsProjectsDataSourcesRequest {
   /** Request body */
   body?: CheckValidCredsRequest;
 }
-export const CheckValidCredsProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckValidCredsProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
@@ -93,7 +93,7 @@ export interface CheckValidCredsResponse {
   /** If set to `true`, the credentials exist and are valid. */
   hasValidCreds?: boolean;
 }
-export const CheckValidCredsResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckValidCredsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hasValidCreds: S.optional(S.Boolean),
   }),
@@ -105,7 +105,7 @@ export interface CheckValidCredsProjectsLocationsDataSourcesRequest {
   /** Request body */
   body?: CheckValidCredsRequest;
 }
-export const CheckValidCredsProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckValidCredsProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CheckValidCredsRequest.pipe(T.HttpBody())),
@@ -125,7 +125,7 @@ export interface EncryptionConfiguration {
   /** The name of the KMS key used for encrypting BigQuery data. */
   kmsKeyName?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -140,7 +140,7 @@ export interface ScheduleOptions {
   /** If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored. */
   disableAutoScheduling?: boolean;
 }
-export const ScheduleOptions = /*@__PURE__*/ S.suspend(() =>
+const ScheduleOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -149,15 +149,10 @@ export const ScheduleOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScheduleOptions" }) as any as S.Schema<ScheduleOptions>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -168,7 +163,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
@@ -181,21 +176,21 @@ export interface EmailPreferences {
   /** If true, email notifications will be sent on transfer run failures. */
   enableFailureEmail?: boolean;
 }
-export const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
+const EmailPreferences = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableFailureEmail: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "EmailPreferences" }) as any as S.Schema<EmailPreferences>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Configuration for data source parameters. */
 export interface ParameterConfig {
   /** Optional. The list of parameters that are stored in Secret Manager. The value of a parameter included in this list will be interpreted as a Secret Manager key version resource name instead of a raw value. The raw value will be retrieved from Secret Manager upon execution. */
   secretManagerManagedParams?: StringList;
 }
-export const ParameterConfig = /*@__PURE__*/ S.suspend(() =>
+const ParameterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretManagerManagedParams: S.optional(StringList),
   }),
@@ -206,7 +201,7 @@ export interface DataplexConfiguration {
   /** Required. The Dataplex Universal Catalog entry group for importing the metadata. entry_group has the format of `projects/{project_id}/locations/{region}/entryGroups/{entry_group_id}`. */
   entryGroup?: string;
 }
-export const DataplexConfiguration = /*@__PURE__*/ S.suspend(() =>
+const DataplexConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryGroup: S.optional(S.String),
   }),
@@ -217,7 +212,7 @@ export interface MetadataDestination {
   /** The Dataplex Universal Catalog configuration. */
   dataplexConfiguration?: DataplexConfiguration;
 }
-export const MetadataDestination = /*@__PURE__*/ S.suspend(() =>
+const MetadataDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataplexConfiguration: S.optional(DataplexConfiguration),
   }),
@@ -230,18 +225,16 @@ export type TransferConfigStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED";
-export const TransferConfigStateEnum = S.String;
+const TransferConfigStateEnum = S.String;
 
 export type TransferConfigManagedTableTypeEnum =
   | "MANAGED_TABLE_TYPE_UNSPECIFIED"
   | "NATIVE"
   | "BIGLAKE";
-export const TransferConfigManagedTableTypeEnum = S.String;
+const TransferConfigManagedTableTypeEnum = S.String;
 
 /** Options customizing manual transfers schedule. */
 export type ManualSchedule = CheckValidCredsRequest;
-export const ManualSchedule = CheckValidCredsRequest;
-
 /** Options customizing the time based transfer schedule. Options are migrated from the original ScheduleOptions message. */
 export interface TimeBasedSchedule {
   /** Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source. */
@@ -251,7 +244,7 @@ export interface TimeBasedSchedule {
   /** Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time. The end time can be changed at any moment. */
   endTime?: string;
 }
-export const TimeBasedSchedule = /*@__PURE__*/ S.suspend(() =>
+const TimeBasedSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -264,7 +257,7 @@ export interface EventDrivenSchedule {
   /** Pub/Sub subscription name used to receive events. Only Google Cloud Storage data source support this option. Format: projects/{project}/subscriptions/{subscription} */
   pubsubSubscription?: string;
 }
-export const EventDrivenSchedule = /*@__PURE__*/ S.suspend(() =>
+const EventDrivenSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubSubscription: S.optional(S.String),
   }),
@@ -279,7 +272,7 @@ export interface ScheduleOptionsV2 {
   /** Event driven transfer schedule options. If set, the transfer will be scheduled upon events arrial. */
   eventDrivenSchedule?: EventDrivenSchedule;
 }
-export const ScheduleOptionsV2 = /*@__PURE__*/ S.suspend(() =>
+const ScheduleOptionsV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manualSchedule: S.optional(CheckValidCredsRequest),
     timeBasedSchedule: S.optional(TimeBasedSchedule),
@@ -292,7 +285,7 @@ export interface UserInfo {
   /** E-mail address of the user. */
   email?: string;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+const UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
   }),
@@ -347,7 +340,7 @@ export interface TransferConfig {
   /** Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source. */
   schedule?: string;
 }
-export const TransferConfig = /*@__PURE__*/ S.suspend(() =>
+const TransferConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationPubsubTopic: S.optional(S.String),
     encryptionConfiguration: S.optional(EncryptionConfiguration),
@@ -387,7 +380,7 @@ export interface CreateProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const CreateProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     serviceAccountName: S.optional(S.String.pipe(T.Query())),
@@ -417,7 +410,7 @@ export interface CreateProjectsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const CreateProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionInfo: S.optional(S.String.pipe(T.Query())),
     serviceAccountName: S.optional(S.String.pipe(T.Query())),
@@ -439,7 +432,7 @@ export interface DeleteProjectsLocationsTransferConfigsRequest {
   /** Required. The name of the resource to delete. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -455,13 +448,13 @@ export const DeleteProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.sus
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CheckValidCredsRequest as any as S.Schema<Empty>;
+const Empty = CheckValidCredsRequest as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const DeleteProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -479,7 +472,7 @@ export interface DeleteProjectsTransferConfigsRequest {
   /** Required. The name of the resource to delete. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const DeleteProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -497,7 +490,7 @@ export interface DeleteProjectsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -516,7 +509,7 @@ export interface EnrollDataSourcesRequest {
   /** Data sources that are enrolled. It is required to provide at least one data source id. */
   dataSourceIds?: StringList;
 }
-export const EnrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceIds: S.optional(StringList),
   }),
@@ -528,7 +521,7 @@ export interface EnrollDataSourcesProjectsRequest {
   /** Request body */
   body?: EnrollDataSourcesRequest;
 }
-export const EnrollDataSourcesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollDataSourcesProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
@@ -549,7 +542,7 @@ export interface EnrollDataSourcesProjectsLocationsRequest {
   /** Request body */
   body?: EnrollDataSourcesRequest;
 }
-export const EnrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(EnrollDataSourcesRequest.pipe(T.HttpBody())),
@@ -568,7 +561,7 @@ export interface GetProjectsDataSourcesRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
   name: string;
 }
-export const GetProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -583,20 +576,20 @@ export const GetProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsDataSourcesRequest>;
 
 export type DataSourceTransferTypeEnum = "TRANSFER_TYPE_UNSPECIFIED" | "BATCH" | "STREAMING";
-export const DataSourceTransferTypeEnum = S.String;
+const DataSourceTransferTypeEnum = S.String;
 
 export type DataSourceAuthorizationTypeEnum =
   | "AUTHORIZATION_TYPE_UNSPECIFIED"
   | "AUTHORIZATION_CODE"
   | "GOOGLE_PLUS_AUTHORIZATION_CODE"
   | "FIRST_PARTY_OAUTH";
-export const DataSourceAuthorizationTypeEnum = S.String;
+const DataSourceAuthorizationTypeEnum = S.String;
 
 export type DataSourceDataRefreshTypeEnum =
   | "DATA_REFRESH_TYPE_UNSPECIFIED"
   | "SLIDING_WINDOW"
   | "CUSTOM_SLIDING_WINDOW";
-export const DataSourceDataRefreshTypeEnum = S.String;
+const DataSourceDataRefreshTypeEnum = S.String;
 
 export type DataSourceParameterTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -607,7 +600,7 @@ export type DataSourceParameterTypeEnum =
   | "RECORD"
   | "PLUS_PAGE"
   | "LIST";
-export const DataSourceParameterTypeEnum = S.String;
+const DataSourceParameterTypeEnum = S.String;
 
 /** A parameter used to define custom fields in a data source definition. */
 export interface DataSourceParameter {
@@ -648,7 +641,7 @@ export interface DataSourceParameter {
   /** Deprecated. This field has no effect. */
   fields?: DataSourceParameterList;
 }
-export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
+const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedValues: S.optional(StringList),
     description: S.optional(S.String),
@@ -672,7 +665,7 @@ export const DataSourceParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceParameter" }) as any as S.Schema<DataSourceParameter>;
 
 export type DataSourceParameterList = Array<DataSourceParameter>;
-export const DataSourceParameterList = /*@__PURE__*/ S.Array(
+const DataSourceParameterList = /*@__PURE__*/ S.Array(
   DataSourceParameter,
 ) as any as S.Schema<DataSourceParameterList>;
 
@@ -715,7 +708,7 @@ export interface DataSource {
   /** Data source parameters. */
   parameters?: DataSourceParameterList;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateDeadlineSeconds: S.optional(S.Number),
     name: S.optional(S.String),
@@ -742,7 +735,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -757,7 +750,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -772,7 +765,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -786,7 +779,7 @@ export interface GetProjectsLocationsDataSourcesRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/dataSources/{data_source_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}` */
   name: string;
 }
-export const GetProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -804,7 +797,7 @@ export interface GetProjectsLocationsTransferConfigsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -822,7 +815,7 @@ export interface GetProjectsLocationsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -843,7 +836,7 @@ export type TransferRunStateEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED";
-export const TransferRunStateEnum = S.String;
+const TransferRunStateEnum = S.String;
 
 /** Represents a data transfer run. */
 export interface TransferRun {
@@ -880,7 +873,7 @@ export interface TransferRun {
   /** Output only. The parameter config of the transfer run. */
   parameterConfig?: ParameterConfig;
 }
-export const TransferRun = /*@__PURE__*/ S.suspend(() =>
+const TransferRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduleTime: S.optional(S.String),
     notificationPubsubTopic: S.optional(S.String),
@@ -905,17 +898,16 @@ export interface GetProjectsLocationsTransferConfigsTransferResourcesRequest {
   /** Required. The name of the transfer resource in the form of: * `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` * `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` */
   name: string;
 }
-export const GetProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsTransferConfigsTransferResourcesRequest",
 }) as any as S.Schema<GetProjectsLocationsTransferConfigsTransferResourcesRequest>;
@@ -925,7 +917,7 @@ export interface TableDetail {
   /** Optional. Total number of partitions being tracked within the table. */
   partitionCount?: string;
 }
-export const TableDetail = /*@__PURE__*/ S.suspend(() =>
+const TableDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionCount: S.optional(S.String),
   }),
@@ -936,7 +928,7 @@ export interface PartitionDetail {
   /** Optional. Name of the table which has the partitions. */
   table?: string;
 }
-export const PartitionDetail = /*@__PURE__*/ S.suspend(() =>
+const PartitionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     table: S.optional(S.String),
   }),
@@ -949,7 +941,7 @@ export interface HierarchyDetail {
   /** Optional. Partition details related to hierarchy. */
   partitionDetail?: PartitionDetail;
 }
-export const HierarchyDetail = /*@__PURE__*/ S.suspend(() =>
+const HierarchyDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableDetail: S.optional(TableDetail),
     partitionDetail: S.optional(PartitionDetail),
@@ -963,19 +955,19 @@ export type TransferResourceDestinationEnum =
   | "RESOURCE_DESTINATION_BIGLAKE_METASTORE"
   | "RESOURCE_DESTINATION_BIGLAKE_REST_CATALOG"
   | "RESOURCE_DESTINATION_BIGLAKE_HIVE_CATALOG";
-export const TransferResourceDestinationEnum = S.String;
+const TransferResourceDestinationEnum = S.String;
 
 export type TransferStatusSummaryProgressUnitEnum =
   | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
   | "TRANSFER_STATUS_UNIT_BYTES"
   | "TRANSFER_STATUS_UNIT_OBJECTS";
-export const TransferStatusSummaryProgressUnitEnum = S.String;
+const TransferStatusSummaryProgressUnitEnum = S.String;
 
 export type TransferStatusMetricUnitEnum =
   | "TRANSFER_STATUS_UNIT_UNSPECIFIED"
   | "TRANSFER_STATUS_UNIT_BYTES"
   | "TRANSFER_STATUS_UNIT_OBJECTS";
-export const TransferStatusMetricUnitEnum = S.String;
+const TransferStatusMetricUnitEnum = S.String;
 
 /** Metrics for tracking the transfer status. */
 export interface TransferStatusMetric {
@@ -990,7 +982,7 @@ export interface TransferStatusMetric {
   /** Optional. Total number of units for the transfer. */
   total?: string;
 }
-export const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
+const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failed: S.optional(S.String),
     completed: S.optional(S.String),
@@ -1001,7 +993,7 @@ export const TransferStatusMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferStatusMetric" }) as any as S.Schema<TransferStatusMetric>;
 
 export type TransferStatusMetricList = Array<TransferStatusMetric>;
-export const TransferStatusMetricList = /*@__PURE__*/ S.Array(
+const TransferStatusMetricList = /*@__PURE__*/ S.Array(
   TransferStatusMetric,
 ) as any as S.Schema<TransferStatusMetricList>;
 
@@ -1012,7 +1004,7 @@ export interface TransferStatusSummary {
   /** Optional. List of transfer status metrics. */
   metrics?: TransferStatusMetricList;
 }
-export const TransferStatusSummary = /*@__PURE__*/ S.suspend(() =>
+const TransferStatusSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     progressUnit: S.optional(TransferStatusSummaryProgressUnitEnum),
     metrics: S.optional(TransferStatusMetricList),
@@ -1026,7 +1018,7 @@ export type TransferResourceStatusDetailStateEnum =
   | "RESOURCE_TRANSFER_SUCCEEDED"
   | "RESOURCE_TRANSFER_FAILED"
   | "RESOURCE_TRANSFER_CANCELLED";
-export const TransferResourceStatusDetailStateEnum = S.String;
+const TransferResourceStatusDetailStateEnum = S.String;
 
 /** Status details of the resource being transferred. */
 export interface TransferResourceStatusDetail {
@@ -1039,7 +1031,7 @@ export interface TransferResourceStatusDetail {
   /** Optional. Transfer state of the resource. */
   state?: TransferResourceStatusDetailStateEnum;
 }
-export const TransferResourceStatusDetail = /*@__PURE__*/ S.suspend(() =>
+const TransferResourceStatusDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     completedPercentage: S.optional(S.Number),
     summary: S.optional(TransferStatusSummary),
@@ -1057,7 +1049,7 @@ export interface TransferRunBrief {
   /** Optional. Run URI. The format must be: `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/run/{run}` */
   run?: string;
 }
-export const TransferRunBrief = /*@__PURE__*/ S.suspend(() =>
+const TransferRunBrief = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     run: S.optional(S.String),
@@ -1068,7 +1060,7 @@ export type TransferResourceTypeEnum =
   | "RESOURCE_TYPE_UNSPECIFIED"
   | "RESOURCE_TYPE_TABLE"
   | "RESOURCE_TYPE_PARTITION";
-export const TransferResourceTypeEnum = S.String;
+const TransferResourceTypeEnum = S.String;
 
 /** Resource (table/partition) that is being transferred. */
 export interface TransferResource {
@@ -1089,7 +1081,7 @@ export interface TransferResource {
   /** Optional. Resource type. */
   type?: TransferResourceTypeEnum;
 }
-export const TransferResource = /*@__PURE__*/ S.suspend(() =>
+const TransferResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hierarchyDetail: S.optional(HierarchyDetail),
     destination: S.optional(TransferResourceDestinationEnum),
@@ -1106,7 +1098,7 @@ export interface GetProjectsTransferConfigsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   name: string;
 }
-export const GetProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1124,7 +1116,7 @@ export interface GetProjectsTransferConfigsRunsRequest {
   /** Required. The name of the resource requested. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   name: string;
 }
-export const GetProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1142,7 +1134,7 @@ export interface GetProjectsTransferConfigsTransferResourcesRequest {
   /** Required. The name of the transfer resource in the form of: * `projects/{project}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` * `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/transferResources/{transfer_resource}` */
   name: string;
 }
-export const GetProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1164,7 +1156,7 @@ export interface ListProjectsDataSourcesRequest {
   /** Pagination token, which can be used to request a specific page of `ListDataSourcesRequest` list results. For multiple-page results, `ListDataSourcesResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
   pageToken?: string;
 }
-export const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1181,7 +1173,7 @@ export const ListProjectsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDataSourcesRequest>;
 
 export type DataSourceList = Array<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
 
 /** Returns list of supported data sources and their metadata. */
 export interface ListDataSourcesResponse {
@@ -1190,7 +1182,7 @@ export interface ListDataSourcesResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListDataSourcesRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
 }
-export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSources: S.optional(DataSourceList),
     nextPageToken: S.optional(S.String),
@@ -1209,7 +1201,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -1228,7 +1220,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1237,7 +1229,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -1252,7 +1244,7 @@ export interface ListProjectsLocationsDataSourcesRequest {
   /** Required. The BigQuery project id for which data sources should be returned. Must be in the form: `projects/{project_id}` or `projects/{project_id}/locations/{location_id}` */
   parent: string;
 }
-export const ListProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1278,7 +1270,7 @@ export interface ListProjectsLocationsTransferConfigsRequest {
   /** When specified, only configurations of requested data sources are returned. */
   dataSourceIds?: StringList;
 }
-export const ListProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1296,7 +1288,7 @@ export const ListProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsTransferConfigsRequest>;
 
 export type TransferConfigList = Array<TransferConfig>;
-export const TransferConfigList = /*@__PURE__*/ S.Array(
+const TransferConfigList = /*@__PURE__*/ S.Array(
   TransferConfig,
 ) as any as S.Schema<TransferConfigList>;
 
@@ -1307,7 +1299,7 @@ export interface ListTransferConfigsResponse {
   /** Output only. The stored pipeline transfer configurations. */
   transferConfigs?: TransferConfigList;
 }
-export const ListTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransferConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     transferConfigs: S.optional(TransferConfigList),
@@ -1323,19 +1315,19 @@ export type ListProjectsLocationsTransferConfigsRunsStatesEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED";
-export const ListProjectsLocationsTransferConfigsRunsStatesEnum = S.String;
+const ListProjectsLocationsTransferConfigsRunsStatesEnum = S.String;
 
 export type ListProjectsLocationsTransferConfigsRunsStatesEnumList = Array<
   ListProjectsLocationsTransferConfigsRunsStatesEnum | (string & {})
 >;
-export const ListProjectsLocationsTransferConfigsRunsStatesEnumList = /*@__PURE__*/ S.Array(
+const ListProjectsLocationsTransferConfigsRunsStatesEnumList = /*@__PURE__*/ S.Array(
   ListProjectsLocationsTransferConfigsRunsStatesEnum,
 ) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsStatesEnumList>;
 
 export type ListProjectsLocationsTransferConfigsRunsRunAttemptEnum =
   | "RUN_ATTEMPT_UNSPECIFIED"
   | "LATEST";
-export const ListProjectsLocationsTransferConfigsRunsRunAttemptEnum = S.String;
+const ListProjectsLocationsTransferConfigsRunsRunAttemptEnum = S.String;
 
 export interface ListProjectsLocationsTransferConfigsRunsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
@@ -1349,7 +1341,7 @@ export interface ListProjectsLocationsTransferConfigsRunsRequest {
   /** Required. Name of transfer configuration for which transfer runs should be retrieved. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}` */
   parent: string;
 }
-export const ListProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1368,9 +1360,7 @@ export const ListProjectsLocationsTransferConfigsRunsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsRequest>;
 
 export type TransferRunList = Array<TransferRun>;
-export const TransferRunList = /*@__PURE__*/ S.Array(
-  TransferRun,
-) as any as S.Schema<TransferRunList>;
+const TransferRunList = /*@__PURE__*/ S.Array(TransferRun) as any as S.Schema<TransferRunList>;
 
 /** The returned list of pipelines in the project. */
 export interface ListTransferRunsResponse {
@@ -1379,7 +1369,7 @@ export interface ListTransferRunsResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListTransferRunsRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
 }
-export const ListTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferRuns: S.optional(TransferRunList),
     nextPageToken: S.optional(S.String),
@@ -1391,12 +1381,12 @@ export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum
   | "INFO"
   | "WARNING"
   | "ERROR";
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum = S.String;
+const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum = S.String;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList = Array<
   ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})
 >;
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+const ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList =
   /*@__PURE__*/ S.Array(
     ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnum,
   ) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
@@ -1411,22 +1401,21 @@ export interface ListProjectsLocationsTransferConfigsRunsTransferLogsRequest {
   /** Message types to return. If not populated - INFO, WARNING and ERROR messages are returned. */
   messageTypes?: ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList;
 }
-export const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      messageTypes: S.optional(
-        ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/transferLogs",
-        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
-      }),
+const ListProjectsLocationsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    messageTypes: S.optional(
+      ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList.pipe(T.Query()),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/transferLogs",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsTransferConfigsRunsTransferLogsRequest",
 }) as any as S.Schema<ListProjectsLocationsTransferConfigsRunsTransferLogsRequest>;
@@ -1436,7 +1425,7 @@ export type TransferMessageSeverityEnum =
   | "INFO"
   | "WARNING"
   | "ERROR";
-export const TransferMessageSeverityEnum = S.String;
+const TransferMessageSeverityEnum = S.String;
 
 /** Represents a user facing message for a particular data transfer run. */
 export interface TransferMessage {
@@ -1447,7 +1436,7 @@ export interface TransferMessage {
   /** Time when message was logged. */
   messageTime?: string;
 }
-export const TransferMessage = /*@__PURE__*/ S.suspend(() =>
+const TransferMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageText: S.optional(S.String),
     severity: S.optional(TransferMessageSeverityEnum),
@@ -1456,7 +1445,7 @@ export const TransferMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferMessage" }) as any as S.Schema<TransferMessage>;
 
 export type TransferMessageList = Array<TransferMessage>;
-export const TransferMessageList = /*@__PURE__*/ S.Array(
+const TransferMessageList = /*@__PURE__*/ S.Array(
   TransferMessage,
 ) as any as S.Schema<TransferMessageList>;
 
@@ -1467,7 +1456,7 @@ export interface ListTransferLogsResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `GetTransferRunLogRequest.page_token` to request the next page of list results. */
   nextPageToken?: string;
 }
-export const ListTransferLogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransferLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferMessages: S.optional(TransferMessageList),
     nextPageToken: S.optional(S.String),
@@ -1484,26 +1473,25 @@ export interface ListProjectsLocationsTransferConfigsTransferResourcesRequest {
   /** Required. Name of transfer configuration for which transfer resources should be retrieved. The name should be in one of the following forms: * `projects/{project}/transferConfigs/{transfer_config}` * `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}` */
   parent: string;
 }
-export const ListProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/transferResources",
-        baseUrl: "https://bigquerydatatransfer.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/transferResources",
+      baseUrl: "https://bigquerydatatransfer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsTransferConfigsTransferResourcesRequest",
 }) as any as S.Schema<ListProjectsLocationsTransferConfigsTransferResourcesRequest>;
 
 export type TransferResourceList = Array<TransferResource>;
-export const TransferResourceList = /*@__PURE__*/ S.Array(
+const TransferResourceList = /*@__PURE__*/ S.Array(
   TransferResource,
 ) as any as S.Schema<TransferResourceList>;
 
@@ -1514,7 +1502,7 @@ export interface ListTransferResourcesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListTransferResourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTransferResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferResources: S.optional(TransferResourceList),
     nextPageToken: S.optional(S.String),
@@ -1533,7 +1521,7 @@ export interface ListProjectsTransferConfigsRequest {
   /** When specified, only configurations of requested data sources are returned. */
   dataSourceIds?: StringList;
 }
-export const ListProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1557,16 +1545,14 @@ export type ListProjectsTransferConfigsRunsStatesEnum =
   | "SUCCEEDED"
   | "FAILED"
   | "CANCELLED";
-export const ListProjectsTransferConfigsRunsStatesEnum = S.String;
-
 export type ListProjectsTransferConfigsRunsStatesEnumList = Array<
   ListProjectsTransferConfigsRunsStatesEnum | (string & {})
 >;
-export const ListProjectsTransferConfigsRunsStatesEnumList =
+const ListProjectsTransferConfigsRunsStatesEnumList =
   ListProjectsLocationsTransferConfigsRunsStatesEnumList as any as S.Schema<ListProjectsTransferConfigsRunsStatesEnumList>;
 
 export type ListProjectsTransferConfigsRunsRunAttemptEnum = "RUN_ATTEMPT_UNSPECIFIED" | "LATEST";
-export const ListProjectsTransferConfigsRunsRunAttemptEnum = S.String;
+const ListProjectsTransferConfigsRunsRunAttemptEnum = S.String;
 
 export interface ListProjectsTransferConfigsRunsRequest {
   /** When specified, only transfer runs with requested states are returned. */
@@ -1580,7 +1566,7 @@ export interface ListProjectsTransferConfigsRunsRequest {
   /** Pagination token, which can be used to request a specific page of `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse` outputs a `next_page` token, which can be used as the `page_token` value to request the next page of list results. */
   pageToken?: string;
 }
-export const ListProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTransferConfigsRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     states: S.optional(ListProjectsTransferConfigsRunsStatesEnumList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1603,12 +1589,10 @@ export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum =
   | "INFO"
   | "WARNING"
   | "ERROR";
-export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum = S.String;
-
 export type ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList = Array<
   ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnum | (string & {})
 >;
-export const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
+const ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList =
   ListProjectsLocationsTransferConfigsRunsTransferLogsMessageTypesEnumList as any as S.Schema<ListProjectsTransferConfigsRunsTransferLogsMessageTypesEnumList>;
 
 export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
@@ -1621,7 +1605,7 @@ export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
   /** Required. Transfer run name. If you are using the regionless method, the location must be `US` and the name should be in the following form: * `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` If you are using the regionalized method, the name should be in the following form: * `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}` */
   parent: string;
 }
-export const ListProjectsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTransferConfigsRunsTransferLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     messageTypes: S.optional(
@@ -1650,7 +1634,7 @@ export interface ListProjectsTransferConfigsTransferResourcesRequest {
   /** Required. Name of transfer configuration for which transfer resources should be retrieved. The name should be in one of the following forms: * `projects/{project}/transferConfigs/{transfer_config}` * `projects/{project}/locations/{location_id}/transferConfigs/{transfer_config}` */
   parent: string;
 }
-export const ListProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsTransferConfigsTransferResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -1681,7 +1665,7 @@ export interface PatchProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const PatchProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     versionInfo: S.optional(S.String.pipe(T.Query())),
@@ -1714,7 +1698,7 @@ export interface PatchProjectsTransferConfigsRequest {
   /** Request body */
   body?: TransferConfig;
 }
-export const PatchProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     authorizationCode: S.optional(S.String.pipe(T.Query())),
@@ -1740,7 +1724,7 @@ export interface ScheduleTransferRunsRequest {
   /** Required. End time of the range of transfer runs. For example, `"2017-05-30T00:00:00+00:00"`. */
   endTime?: string;
 }
-export const ScheduleTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -1755,7 +1739,7 @@ export interface ScheduleRunsProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: ScheduleTransferRunsRequest;
 }
-export const ScheduleRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
@@ -1775,7 +1759,7 @@ export interface ScheduleTransferRunsResponse {
   /** The transfer runs that were scheduled. */
   runs?: TransferRunList;
 }
-export const ScheduleTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ScheduleTransferRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runs: S.optional(TransferRunList),
   }),
@@ -1789,7 +1773,7 @@ export interface ScheduleRunsProjectsTransferConfigsRequest {
   /** Request body */
   body?: ScheduleTransferRunsRequest;
 }
-export const ScheduleRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ScheduleRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ScheduleTransferRunsRequest.pipe(T.HttpBody())),
@@ -1811,7 +1795,7 @@ export interface TimeRange {
   /** Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than the end_time. Creates transfer runs where run_time is in the range between start_time (inclusive) and end_time (exclusive). */
   startTime?: string;
 }
-export const TimeRange = /*@__PURE__*/ S.suspend(() =>
+const TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -1825,7 +1809,7 @@ export interface StartManualTransferRunsRequest {
   /** A time_range start and end timestamp for historical data files or reports that are scheduled to be transferred by the scheduled transfer run. requested_time_range must be a past time and cannot include future time values. */
   requestedTimeRange?: TimeRange;
 }
-export const StartManualTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartManualTransferRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedRunTime: S.optional(S.String),
     requestedTimeRange: S.optional(TimeRange),
@@ -1840,7 +1824,7 @@ export interface StartManualRunsProjectsLocationsTransferConfigsRequest {
   /** Request body */
   body?: StartManualTransferRunsRequest;
 }
-export const StartManualRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartManualRunsProjectsLocationsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
@@ -1860,7 +1844,7 @@ export interface StartManualTransferRunsResponse {
   /** The transfer runs that were created. */
   runs?: TransferRunList;
 }
-export const StartManualTransferRunsResponse =
+const StartManualTransferRunsResponse =
   ScheduleTransferRunsResponse as any as S.Schema<StartManualTransferRunsResponse>;
 
 export interface StartManualRunsProjectsTransferConfigsRequest {
@@ -1869,7 +1853,7 @@ export interface StartManualRunsProjectsTransferConfigsRequest {
   /** Request body */
   body?: StartManualTransferRunsRequest;
 }
-export const StartManualRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartManualRunsProjectsTransferConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(StartManualTransferRunsRequest.pipe(T.HttpBody())),
@@ -1889,7 +1873,7 @@ export interface UnenrollDataSourcesRequest {
   /** Data sources that are unenrolled. It is required to provide at least one data source id. */
   dataSourceIds?: StringList;
 }
-export const UnenrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const UnenrollDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceIds: S.optional(StringList),
   }),
@@ -1903,7 +1887,7 @@ export interface UnenrollDataSourcesProjectsLocationsRequest {
   /** Request body */
   body?: UnenrollDataSourcesRequest;
 }
-export const UnenrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UnenrollDataSourcesProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(UnenrollDataSourcesRequest.pipe(T.HttpBody())),

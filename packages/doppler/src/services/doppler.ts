@@ -49,7 +49,7 @@ export interface ActivityLogsListRequest {
   /** Items per page */
   per_page?: number;
 }
-export const ActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.String.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -61,7 +61,7 @@ export interface ActivityLogsListResponseLogsItemUser {
   name?: string;
   profile_image_url?: string;
 }
-export const ActivityLogsListResponseLogsItemUser = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsListResponseLogsItemUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -81,7 +81,7 @@ export interface ActivityLogsListResponseLogsItem {
   project?: string;
   user?: ActivityLogsListResponseLogsItemUser;
 }
-export const ActivityLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     text: S.optional(S.String),
@@ -97,7 +97,7 @@ export const ActivityLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityLogsListResponseLogsItem>;
 
 export type ActivityLogsListResponseLogsList = Array<ActivityLogsListResponseLogsItem>;
-export const ActivityLogsListResponseLogsList = /*@__PURE__*/ S.Array(
+const ActivityLogsListResponseLogsList = /*@__PURE__*/ S.Array(
   ActivityLogsListResponseLogsItem,
 ) as any as S.Schema<ActivityLogsListResponseLogsList>;
 
@@ -105,7 +105,7 @@ export interface ActivityLogsListResponse {
   page?: number;
   logs?: ActivityLogsListResponseLogsList;
 }
-export const ActivityLogsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     logs: S.optional(ActivityLogsListResponseLogsList),
@@ -116,7 +116,7 @@ export interface ActivityLogsRetrieveRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-export const ActivityLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/logs/log", code: 200 })),
@@ -125,15 +125,11 @@ export const ActivityLogsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityLogsRetrieveRequest>;
 
 export type ActivityLogsRetrieveResponseLogUser = ActivityLogsListResponseLogsItemUser;
-export const ActivityLogsRetrieveResponseLogUser = ActivityLogsListResponseLogsItemUser;
-
 export type ActivityLogsRetrieveResponseLog = ActivityLogsListResponseLogsItem;
-export const ActivityLogsRetrieveResponseLog = ActivityLogsListResponseLogsItem;
-
 export interface ActivityLogsRetrieveResponse {
   log?: ActivityLogsListResponseLogsItem;
 }
-export const ActivityLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivityLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: S.optional(ActivityLogsListResponseLogsItem),
   }),
@@ -142,7 +138,7 @@ export const ActivityLogsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivityLogsRetrieveResponse>;
 
 export type AddWebhookRequestAuthenticationType = "None" | "Bearer" | "Basic";
-export const AddWebhookRequestAuthenticationType = S.String;
+const AddWebhookRequestAuthenticationType = S.String;
 
 export interface AddWebhookRequestAuthentication {
   type?: AddWebhookRequestAuthenticationType | (string & {});
@@ -153,7 +149,7 @@ export interface AddWebhookRequestAuthentication {
   /** Used when type = Basic */
   password?: string | Redacted.Redacted<string>;
 }
-export const AddWebhookRequestAuthentication = /*@__PURE__*/ S.suspend(() =>
+const AddWebhookRequestAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(AddWebhookRequestAuthenticationType),
     token: S.optional(S.String),
@@ -166,7 +162,7 @@ export const AddWebhookRequestAuthentication = /*@__PURE__*/ S.suspend(() =>
 
 /** Config slugs that the webhook should be enabled for */
 export type AddWebhookRequestEnableConfigsList = Array<string>;
-export const AddWebhookRequestEnableConfigsList = /*@__PURE__*/ S.Array(
+const AddWebhookRequestEnableConfigsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AddWebhookRequestEnableConfigsList>;
 
@@ -185,7 +181,7 @@ export interface AddWebhookRequest {
   /** The name of the webhook. */
   name?: string;
 }
-export const AddWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const AddWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     url: S.String,
@@ -198,7 +194,7 @@ export const AddWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddWebhookRequest" }) as any as S.Schema<AddWebhookRequest>;
 
 export type AddWebhookResponse = unknown;
-export const AddWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const AddWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "AddWebhookResponse" }) as any as S.Schema<AddWebhookResponse>;
 
@@ -208,7 +204,7 @@ export interface AuditGetUserRequest {
   /** If true, the api will return more information if the user has e.g. SAML enabled and/or Multi Factor Auth enabled */
   settings?: boolean;
 }
-export const AuditGetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AuditGetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workplace_user_id: S.String.pipe(T.Label()),
     settings: S.optional(S.Boolean.pipe(T.Query())),
@@ -224,7 +220,7 @@ export interface AuditGetUserResponseWorkplaceUserUser {
   thirdparty_sso_enabled?: boolean;
   saml_sso_enabled?: boolean;
 }
-export const AuditGetUserResponseWorkplaceUserUser = /*@__PURE__*/ S.suspend(() =>
+const AuditGetUserResponseWorkplaceUserUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -244,7 +240,7 @@ export interface AuditGetUserResponseWorkplaceUser {
   created_at?: string;
   user?: AuditGetUserResponseWorkplaceUserUser;
 }
-export const AuditGetUserResponseWorkplaceUser = /*@__PURE__*/ S.suspend(() =>
+const AuditGetUserResponseWorkplaceUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     access: S.optional(S.String),
@@ -259,7 +255,7 @@ export interface AuditGetUserResponse {
   workplace_user?: AuditGetUserResponseWorkplaceUser;
   success?: boolean;
 }
-export const AuditGetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AuditGetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workplace_user: S.optional(AuditGetUserResponseWorkplaceUser),
     success: S.optional(S.Boolean),
@@ -267,7 +263,7 @@ export const AuditGetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditGetUserResponse" }) as any as S.Schema<AuditGetUserResponse>;
 
 export interface AuthMeRequest {}
-export const AuthMeRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthMeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/me", code: 200 })),
 ).annotate({ identifier: "AuthMeRequest" }) as any as S.Schema<AuthMeRequest>;
 
@@ -275,7 +271,7 @@ export interface AuthMeResponseWorkplace {
   slug?: string;
   name?: string;
 }
-export const AuthMeResponseWorkplace = /*@__PURE__*/ S.suspend(() =>
+const AuthMeResponseWorkplace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -286,7 +282,7 @@ export interface AuthMeResponsePrincipal {
   type?: string;
   slug?: string;
 }
-export const AuthMeResponsePrincipal = /*@__PURE__*/ S.suspend(() =>
+const AuthMeResponsePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     slug: S.optional(S.String),
@@ -303,7 +299,7 @@ export interface AuthMeResponse {
   workplace?: AuthMeResponseWorkplace;
   principal?: AuthMeResponsePrincipal;
 }
-export const AuthMeResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthMeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -322,7 +318,7 @@ export interface AuthOidcRequest {
   /** Identity ID from the Doppler Dashboard */
   identity: string;
 }
-export const AuthOidcRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthOidcRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     identity: S.String,
@@ -333,7 +329,7 @@ export interface AuthOidcResponse {
   token: string | Redacted.Redacted<string>;
   expires_at: string;
 }
-export const AuthOidcResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthOidcResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.SensitiveValue({})),
     expires_at: S.String,
@@ -343,7 +339,7 @@ export const AuthOidcResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AuthorizeCliAuthRequest {
   code: string | Redacted.Redacted<string>;
 }
-export const AuthorizeCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String.pipe(T.SensitiveValue({})),
   }).pipe(T.Http({ method: "POST", uri: "/v3/auth/cli/authorize", code: 200 })),
@@ -354,7 +350,7 @@ export interface AuthorizeCliAuthResponse {
   name: string;
   dashboard_url: string;
 }
-export const AuthorizeCliAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const AuthorizeCliAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.SensitiveValue({})),
     name: S.String,
@@ -370,7 +366,7 @@ export interface CloneConfigRequest {
   /** Name of the new branch config. */
   name: string;
 }
-export const CloneConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -388,7 +384,7 @@ export interface CloneConfigResponseConfig {
   environment?: string;
   project?: string;
 }
-export const CloneConfigResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const CloneConfigResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     root: S.optional(S.Boolean),
@@ -406,7 +402,7 @@ export const CloneConfigResponseConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CloneConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const CloneConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CloneConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(CloneConfigResponseConfig),
   }),
@@ -420,7 +416,7 @@ export interface ConfigLogsGetRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-export const ConfigLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -432,7 +428,7 @@ export interface ConfigLogsGetResponseLogDiffItem {
   name?: string;
   added?: string;
 }
-export const ConfigLogsGetResponseLogDiffItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsGetResponseLogDiffItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     added: S.optional(S.String),
@@ -442,7 +438,7 @@ export const ConfigLogsGetResponseLogDiffItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigLogsGetResponseLogDiffItem>;
 
 export type ConfigLogsGetResponseLogDiffList = Array<ConfigLogsGetResponseLogDiffItem>;
-export const ConfigLogsGetResponseLogDiffList = /*@__PURE__*/ S.Array(
+const ConfigLogsGetResponseLogDiffList = /*@__PURE__*/ S.Array(
   ConfigLogsGetResponseLogDiffItem,
 ) as any as S.Schema<ConfigLogsGetResponseLogDiffList>;
 
@@ -452,7 +448,7 @@ export interface ConfigLogsGetResponseLogUser {
   username?: string;
   profile_image_url?: string;
 }
-export const ConfigLogsGetResponseLogUser = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsGetResponseLogUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.optional(S.String),
@@ -475,7 +471,7 @@ export interface ConfigLogsGetResponseLog {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-export const ConfigLogsGetResponseLog = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsGetResponseLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     text: S.optional(S.String),
@@ -493,7 +489,7 @@ export const ConfigLogsGetResponseLog = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigLogsGetResponse {
   log?: ConfigLogsGetResponseLog;
 }
-export const ConfigLogsGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: S.optional(ConfigLogsGetResponseLog),
   }),
@@ -509,7 +505,7 @@ export interface ConfigLogsListRequest {
   /** Items per page */
   per_page?: number;
 }
-export const ConfigLogsListRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -519,8 +515,6 @@ export const ConfigLogsListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConfigLogsListRequest" }) as any as S.Schema<ConfigLogsListRequest>;
 
 export type ConfigLogsListResponseLogsItemUser = ConfigLogsGetResponseLogUser;
-export const ConfigLogsListResponseLogsItemUser = ConfigLogsGetResponseLogUser;
-
 export interface ConfigLogsListResponseLogsItem {
   id?: string;
   text?: string;
@@ -532,7 +526,7 @@ export interface ConfigLogsListResponseLogsItem {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-export const ConfigLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     text: S.optional(S.String),
@@ -549,7 +543,7 @@ export const ConfigLogsListResponseLogsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigLogsListResponseLogsItem>;
 
 export type ConfigLogsListResponseLogsList = Array<ConfigLogsListResponseLogsItem>;
-export const ConfigLogsListResponseLogsList = /*@__PURE__*/ S.Array(
+const ConfigLogsListResponseLogsList = /*@__PURE__*/ S.Array(
   ConfigLogsListResponseLogsItem,
 ) as any as S.Schema<ConfigLogsListResponseLogsList>;
 
@@ -557,7 +551,7 @@ export interface ConfigLogsListResponse {
   page?: number;
   logs?: ConfigLogsListResponseLogsList;
 }
-export const ConfigLogsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     logs: S.optional(ConfigLogsListResponseLogsList),
@@ -572,7 +566,7 @@ export interface ConfigLogsRollbackRequest {
   /** Unique identifier for the log object. */
   log: string;
 }
-export const ConfigLogsRollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsRollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -586,7 +580,7 @@ export interface ConfigLogsRollbackResponseLogDiffItem {
   name?: string;
   removed?: string;
 }
-export const ConfigLogsRollbackResponseLogDiffItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsRollbackResponseLogDiffItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     removed: S.optional(S.String),
@@ -596,13 +590,11 @@ export const ConfigLogsRollbackResponseLogDiffItem = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ConfigLogsRollbackResponseLogDiffItem>;
 
 export type ConfigLogsRollbackResponseLogDiffList = Array<ConfigLogsRollbackResponseLogDiffItem>;
-export const ConfigLogsRollbackResponseLogDiffList = /*@__PURE__*/ S.Array(
+const ConfigLogsRollbackResponseLogDiffList = /*@__PURE__*/ S.Array(
   ConfigLogsRollbackResponseLogDiffItem,
 ) as any as S.Schema<ConfigLogsRollbackResponseLogDiffList>;
 
 export type ConfigLogsRollbackResponseLogUser = ConfigLogsGetResponseLogUser;
-export const ConfigLogsRollbackResponseLogUser = ConfigLogsGetResponseLogUser;
-
 export interface ConfigLogsRollbackResponseLog {
   id?: string;
   text?: string;
@@ -615,7 +607,7 @@ export interface ConfigLogsRollbackResponseLog {
   project?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-export const ConfigLogsRollbackResponseLog = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsRollbackResponseLog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     text: S.optional(S.String),
@@ -635,7 +627,7 @@ export const ConfigLogsRollbackResponseLog = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigLogsRollbackResponse {
   log?: ConfigLogsRollbackResponseLog;
 }
-export const ConfigLogsRollbackResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigLogsRollbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     log: S.optional(ConfigLogsRollbackResponseLog),
   }),
@@ -649,7 +641,7 @@ export interface ConfigsAddTrustedIpRequest {
   /** An IP address or CIDR range */
   ip: string;
 }
-export const ConfigsAddTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigsAddTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -662,7 +654,7 @@ export const ConfigsAddTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ConfigsAddTrustedIpResponse {
   ip?: string;
 }
-export const ConfigsAddTrustedIpResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigsAddTrustedIpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ip: S.optional(S.String),
   }),
@@ -676,7 +668,7 @@ export interface ConfigsDeleteTrustedIpRequest {
   /** An IP address or CIDR range */
   ip: string;
 }
-export const ConfigsDeleteTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigsDeleteTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -687,7 +679,7 @@ export const ConfigsDeleteTrustedIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsDeleteTrustedIpRequest>;
 
 export interface ConfigsDeleteTrustedIpResponse {}
-export const ConfigsDeleteTrustedIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ConfigsDeleteTrustedIpResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ConfigsDeleteTrustedIpResponse",
 }) as any as S.Schema<ConfigsDeleteTrustedIpResponse>;
 
@@ -699,7 +691,7 @@ export interface ConfigsInheritableRequest {
   /** Boolean determining if the config is inheritable or not. */
   inheritable: boolean;
 }
-export const ConfigsInheritableRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -710,12 +702,12 @@ export const ConfigsInheritableRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsInheritableRequest>;
 
 export type ConfigsInheritableResponseConfigInheritsList = Array<unknown>;
-export const ConfigsInheritableResponseConfigInheritsList = /*@__PURE__*/ S.Array(
+const ConfigsInheritableResponseConfigInheritsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<ConfigsInheritableResponseConfigInheritsList>;
 
 export type ConfigsInheritableResponseConfigInheritedByList = Array<unknown>;
-export const ConfigsInheritableResponseConfigInheritedByList =
+const ConfigsInheritableResponseConfigInheritedByList =
   ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritableResponseConfigInheritedByList>;
 
 export interface ConfigsInheritableResponseConfig {
@@ -733,7 +725,7 @@ export interface ConfigsInheritableResponseConfig {
   project?: string;
   slug?: string;
 }
-export const ConfigsInheritableResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritableResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     root: S.optional(S.Boolean),
@@ -757,7 +749,7 @@ export interface ConfigsInheritableResponse {
   config?: ConfigsInheritableResponseConfig;
   success?: boolean;
 }
-export const ConfigsInheritableResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(ConfigsInheritableResponseConfig),
     success: S.optional(S.Boolean),
@@ -772,7 +764,7 @@ export interface ConfigsInheritsRequestInheritsItem {
   /** Name of the config object being inherited. */
   config: string;
 }
-export const ConfigsInheritsRequestInheritsItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritsRequestInheritsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -783,7 +775,7 @@ export const ConfigsInheritsRequestInheritsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of objects indicating which configs are being inherited. */
 export type ConfigsInheritsRequestInheritsList = Array<ConfigsInheritsRequestInheritsItem>;
-export const ConfigsInheritsRequestInheritsList = /*@__PURE__*/ S.Array(
+const ConfigsInheritsRequestInheritsList = /*@__PURE__*/ S.Array(
   ConfigsInheritsRequestInheritsItem,
 ) as any as S.Schema<ConfigsInheritsRequestInheritsList>;
 
@@ -795,7 +787,7 @@ export interface ConfigsInheritsRequest {
   /** Array of objects indicating which configs are being inherited. */
   inherits: ConfigsInheritsRequestInheritsList;
 }
-export const ConfigsInheritsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -807,7 +799,7 @@ export interface ConfigsInheritsResponseConfigInheritsItem {
   project?: string;
   config?: string;
 }
-export const ConfigsInheritsResponseConfigInheritsItem = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritsResponseConfigInheritsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
     config: S.optional(S.String),
@@ -818,12 +810,12 @@ export const ConfigsInheritsResponseConfigInheritsItem = /*@__PURE__*/ S.suspend
 
 export type ConfigsInheritsResponseConfigInheritsList =
   Array<ConfigsInheritsResponseConfigInheritsItem>;
-export const ConfigsInheritsResponseConfigInheritsList = /*@__PURE__*/ S.Array(
+const ConfigsInheritsResponseConfigInheritsList = /*@__PURE__*/ S.Array(
   ConfigsInheritsResponseConfigInheritsItem,
 ) as any as S.Schema<ConfigsInheritsResponseConfigInheritsList>;
 
 export type ConfigsInheritsResponseConfigInheritedByList = Array<unknown>;
-export const ConfigsInheritsResponseConfigInheritedByList =
+const ConfigsInheritsResponseConfigInheritedByList =
   ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ConfigsInheritsResponseConfigInheritedByList>;
 
 export interface ConfigsInheritsResponseConfig {
@@ -841,7 +833,7 @@ export interface ConfigsInheritsResponseConfig {
   project?: string;
   slug?: string;
 }
-export const ConfigsInheritsResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritsResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     root: S.optional(S.Boolean),
@@ -865,7 +857,7 @@ export interface ConfigsInheritsResponse {
   config?: ConfigsInheritsResponseConfig;
   success?: boolean;
 }
-export const ConfigsInheritsResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigsInheritsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(ConfigsInheritsResponseConfig),
     success: S.optional(S.Boolean),
@@ -876,7 +868,7 @@ export interface ConfigsListTrustedIpsRequest {
   project: string;
   config: string;
 }
-export const ConfigsListTrustedIpsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigsListTrustedIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -886,13 +878,13 @@ export const ConfigsListTrustedIpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigsListTrustedIpsRequest>;
 
 export type ConfigsListTrustedIpsResponseIpsList = Array<string>;
-export const ConfigsListTrustedIpsResponseIpsList =
+const ConfigsListTrustedIpsResponseIpsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ConfigsListTrustedIpsResponseIpsList>;
 
 export interface ConfigsListTrustedIpsResponse {
   ips?: ConfigsListTrustedIpsResponseIpsList;
 }
-export const ConfigsListTrustedIpsResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfigsListTrustedIpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ips: S.optional(ConfigsListTrustedIpsResponseIpsList),
   }),
@@ -903,13 +895,13 @@ export const ConfigsListTrustedIpsResponse = /*@__PURE__*/ S.suspend(() =>
 export type CreateChangeRequestPolicyRequestRulesItemType =
   | '"RequiredReviewer"'
   | '"DisallowSelfReview"';
-export const CreateChangeRequestPolicyRequestRulesItemType = S.String;
+const CreateChangeRequestPolicyRequestRulesItemType = S.String;
 
 /** The type of the subject. */
 export type CreateChangeRequestPolicyRequestRulesItemSubjectsItemType =
   | '"WorkplaceUser"'
   | '"Group"';
-export const CreateChangeRequestPolicyRequestRulesItemSubjectsItemType = S.String;
+const CreateChangeRequestPolicyRequestRulesItemSubjectsItemType = S.String;
 
 export interface CreateChangeRequestPolicyRequestRulesItemSubjectsItem {
   /** The type of the subject. */
@@ -917,7 +909,7 @@ export interface CreateChangeRequestPolicyRequestRulesItemSubjectsItem {
   /** The unique identifier of the subject. */
   slug: string;
 }
-export const CreateChangeRequestPolicyRequestRulesItemSubjectsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyRequestRulesItemSubjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateChangeRequestPolicyRequestRulesItemSubjectsItemType,
     slug: S.String,
@@ -929,7 +921,7 @@ export const CreateChangeRequestPolicyRequestRulesItemSubjectsItem = /*@__PURE__
 /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
 export type CreateChangeRequestPolicyRequestRulesItemSubjectsList =
   Array<CreateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-export const CreateChangeRequestPolicyRequestRulesItemSubjectsList = /*@__PURE__*/ S.Array(
+const CreateChangeRequestPolicyRequestRulesItemSubjectsList = /*@__PURE__*/ S.Array(
   CreateChangeRequestPolicyRequestRulesItemSubjectsItem,
 ) as any as S.Schema<CreateChangeRequestPolicyRequestRulesItemSubjectsList>;
 
@@ -940,7 +932,7 @@ export interface CreateChangeRequestPolicyRequestRulesItem {
   /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
   subjects?: CreateChangeRequestPolicyRequestRulesItemSubjectsList;
 }
-export const CreateChangeRequestPolicyRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: CreateChangeRequestPolicyRequestRulesItemType,
     count: S.optional(S.Number),
@@ -953,7 +945,7 @@ export const CreateChangeRequestPolicyRequestRulesItem = /*@__PURE__*/ S.suspend
 /** A list of rules the policy enforces. */
 export type CreateChangeRequestPolicyRequestRulesList =
   Array<CreateChangeRequestPolicyRequestRulesItem>;
-export const CreateChangeRequestPolicyRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateChangeRequestPolicyRequestRulesList = /*@__PURE__*/ S.Array(
   CreateChangeRequestPolicyRequestRulesItem,
 ) as any as S.Schema<CreateChangeRequestPolicyRequestRulesList>;
 
@@ -964,7 +956,7 @@ export interface CreateChangeRequestPolicyRequestTargets {
   /** A dictionary where the key is the project name, and the value contains information about what within the project the policy should apply to. */
   projects?: string;
 }
-export const CreateChangeRequestPolicyRequestTargets = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyRequestTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allProjects: S.optional(S.Boolean),
     projects: S.optional(S.String),
@@ -983,7 +975,7 @@ export interface CreateChangeRequestPolicyRequest {
   /** Describes the which projects, environments, and configs the policy applies to. */
   targets: CreateChangeRequestPolicyRequestTargets;
 }
-export const CreateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -995,14 +987,14 @@ export const CreateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateChangeRequestPolicyRequest>;
 
 export type CreateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const CreateChangeRequestPolicyResponsePolicyRulesList =
+const CreateChangeRequestPolicyResponsePolicyRulesList =
   ConfigsInheritableResponseConfigInheritsList as any as S.Schema<CreateChangeRequestPolicyResponsePolicyRulesList>;
 
 export interface CreateChangeRequestPolicyResponsePolicyTargets {
   allProjects?: boolean;
   projects?: unknown;
 }
-export const CreateChangeRequestPolicyResponsePolicyTargets = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyResponsePolicyTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allProjects: S.optional(S.Boolean),
     projects: S.optional(S.Unknown),
@@ -1018,7 +1010,7 @@ export interface CreateChangeRequestPolicyResponsePolicy {
   rules?: CreateChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const CreateChangeRequestPolicyResponsePolicy = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyResponsePolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1034,7 +1026,7 @@ export interface CreateChangeRequestPolicyResponse {
   policy?: CreateChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-export const CreateChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(CreateChangeRequestPolicyResponsePolicy),
     success: S.optional(S.Boolean),
@@ -1051,7 +1043,7 @@ export interface CreateConfigRequest {
   /** Name of the new branch config. */
   name: string;
 }
-export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     environment: S.String,
@@ -1060,12 +1052,10 @@ export const CreateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateConfigRequest" }) as any as S.Schema<CreateConfigRequest>;
 
 export type CreateConfigResponseConfig = CloneConfigResponseConfig;
-export const CreateConfigResponseConfig = CloneConfigResponseConfig;
-
 export interface CreateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const CreateConfigResponse = CloneConfigResponse as any as S.Schema<CreateConfigResponse>;
+const CreateConfigResponse = CloneConfigResponse as any as S.Schema<CreateConfigResponse>;
 
 export interface CreateEnvironmentRequest {
   /** The project's name */
@@ -1075,7 +1065,7 @@ export interface CreateEnvironmentRequest {
   /** Whether or not to enable personal configs for the environment */
   personal_configs?: boolean;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     name: S.String,
@@ -1091,7 +1081,7 @@ export interface CreateEnvironmentResponseEnvironment {
   created_at?: string;
   project?: string;
 }
-export const CreateEnvironmentResponseEnvironment = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentResponseEnvironment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1106,7 +1096,7 @@ export const CreateEnvironmentResponseEnvironment = /*@__PURE__*/ S.suspend(() =
 export interface CreateEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(CreateEnvironmentResponseEnvironment),
   }),
@@ -1119,7 +1109,7 @@ export interface CreateGroupRequest {
   /** Identifier of the project role */
   default_project_role?: string;
 }
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     default_project_role: S.optional(S.String),
@@ -1129,7 +1119,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGroupResponseGroupDefaultProjectRole {
   identifier?: string;
 }
-export const CreateGroupResponseGroupDefaultProjectRole = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponseGroupDefaultProjectRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
   }),
@@ -1138,14 +1128,12 @@ export const CreateGroupResponseGroupDefaultProjectRole = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateGroupResponseGroupDefaultProjectRole>;
 
 export type CreateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-export const CreateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export interface CreateGroupResponseGroupProjectsItem {
   name?: string;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const CreateGroupResponseGroupProjectsItem = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponseGroupProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -1156,15 +1144,13 @@ export const CreateGroupResponseGroupProjectsItem = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateGroupResponseGroupProjectsItem>;
 
 export type CreateGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const CreateGroupResponseGroupProjectsList = /*@__PURE__*/ S.Array(
+const CreateGroupResponseGroupProjectsList = /*@__PURE__*/ S.Array(
   CreateGroupResponseGroupProjectsItem,
 ) as any as S.Schema<CreateGroupResponseGroupProjectsList>;
 
 export type CreateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-export const CreateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-
 export type CreateGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const CreateGroupResponseGroupMembersList = /*@__PURE__*/ S.Array(
+const CreateGroupResponseGroupMembersList = /*@__PURE__*/ S.Array(
   AuthMeResponsePrincipal,
 ) as any as S.Schema<CreateGroupResponseGroupMembersList>;
 
@@ -1176,7 +1162,7 @@ export interface CreateGroupResponseGroup {
   projects?: CreateGroupResponseGroupProjectsList;
   members?: CreateGroupResponseGroupMembersList;
 }
-export const CreateGroupResponseGroup = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponseGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -1190,7 +1176,7 @@ export const CreateGroupResponseGroup = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGroupResponse {
   group?: CreateGroupResponseGroup;
 }
-export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group: S.optional(CreateGroupResponseGroup),
   }),
@@ -1204,7 +1190,7 @@ export interface CreateIntegrationRequest {
   /** The authentication data for the integration */
   data?: unknown;
 }
-export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     name: S.String,
@@ -1217,15 +1203,6 @@ export interface CreateIntegrationResponseIntegrationFederationCase0 {
   /** The IAM principal to grant roles to. */
   principal: string;
 }
-export const CreateIntegrationResponseIntegrationFederationCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    principal: S.String,
-  }),
-).annotate({
-  identifier: "CreateIntegrationResponseIntegrationFederationCase0",
-}) as any as S.Schema<CreateIntegrationResponseIntegrationFederationCase0>;
-
 export interface CreateIntegrationResponseIntegrationFederationCase1 {
   kind: string;
   /** The issuer to enter on the app registration's federated credential. */
@@ -1235,22 +1212,11 @@ export interface CreateIntegrationResponseIntegrationFederationCase1 {
   /** The audience to enter on the federated credential. */
   audience: string;
 }
-export const CreateIntegrationResponseIntegrationFederationCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: S.String,
-    issuer: S.String,
-    subject: S.String,
-    audience: S.String,
-  }),
-).annotate({
-  identifier: "CreateIntegrationResponseIntegrationFederationCase1",
-}) as any as S.Schema<CreateIntegrationResponseIntegrationFederationCase1>;
-
 /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
 export type CreateIntegrationResponseIntegrationFederation =
   | CreateIntegrationResponseIntegrationFederationCase0
   | CreateIntegrationResponseIntegrationFederationCase1;
-export const CreateIntegrationResponseIntegrationFederation =
+const CreateIntegrationResponseIntegrationFederation =
   S.Unknown as any as S.Schema<CreateIntegrationResponseIntegrationFederation>;
 
 export interface CreateIntegrationResponseIntegration {
@@ -1260,7 +1226,7 @@ export interface CreateIntegrationResponseIntegration {
   /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
   federation?: CreateIntegrationResponseIntegrationFederation | null;
 }
-export const CreateIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -1274,7 +1240,7 @@ export const CreateIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =
 export interface CreateIntegrationResponse {
   integration?: CreateIntegrationResponseIntegration;
 }
-export const CreateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.optional(CreateIntegrationResponseIntegration),
   }),
@@ -1287,7 +1253,7 @@ export type CreateIntegrationsIntegrationMemberRequestType =
   | "invite"
   | "group"
   | "service_account";
-export const CreateIntegrationsIntegrationMemberRequestType = S.String;
+const CreateIntegrationsIntegrationMemberRequestType = S.String;
 
 export interface CreateIntegrationsIntegrationMemberRequest {
   /** Integration slug */
@@ -1296,7 +1262,7 @@ export interface CreateIntegrationsIntegrationMemberRequest {
   slug: string;
   role: string;
 }
-export const CreateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
     type: CreateIntegrationsIntegrationMemberRequestType,
@@ -1312,19 +1278,16 @@ export type CreateIntegrationsIntegrationMemberResponseMemberType =
   | "invite"
   | "group"
   | "service_account";
-export const CreateIntegrationsIntegrationMemberResponseMemberType = S.String;
+const CreateIntegrationsIntegrationMemberResponseMemberType = S.String;
 
 export type CreateIntegrationsIntegrationMemberResponseMemberRole =
   CreateGroupResponseGroupDefaultProjectRole;
-export const CreateIntegrationsIntegrationMemberResponseMemberRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export interface CreateIntegrationsIntegrationMemberResponseMember {
   type?: CreateIntegrationsIntegrationMemberResponseMemberType;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const CreateIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CreateIntegrationsIntegrationMemberResponseMemberType),
     slug: S.optional(S.String),
@@ -1337,7 +1300,7 @@ export const CreateIntegrationsIntegrationMemberResponseMember = /*@__PURE__*/ S
 export interface CreateIntegrationsIntegrationMemberResponse {
   member?: CreateIntegrationsIntegrationMemberResponseMember;
 }
-export const CreateIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: S.optional(CreateIntegrationsIntegrationMemberResponseMember),
   }),
@@ -1351,7 +1314,7 @@ export interface CreateProjectRequest {
   /** Description of project */
   description?: string;
 }
-export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -1364,7 +1327,7 @@ export interface CreateProjectResponseProject {
   description?: string;
   created_at?: string;
 }
-export const CreateProjectResponseProject = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectResponseProject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1378,7 +1341,7 @@ export const CreateProjectResponseProject = /*@__PURE__*/ S.suspend(() =>
 export interface CreateProjectResponse {
   project?: CreateProjectResponseProject;
 }
-export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(CreateProjectResponseProject),
   }),
@@ -1386,7 +1349,7 @@ export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An option indicating if and how Doppler should attempt to import secrets from the sync destination */
 export type CreateSyncRequestImportOption = "none" | "prefer_doppler" | "prefer_integration";
-export const CreateSyncRequestImportOption = S.String;
+const CreateSyncRequestImportOption = S.String;
 
 export interface CreateSyncRequest {
   /** The project slug */
@@ -1402,7 +1365,7 @@ export interface CreateSyncRequest {
   /** Causes sync creation to wait for the initial sync to complete before returning. */
   await_initial_sync?: boolean;
 }
-export const CreateSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -1421,7 +1384,7 @@ export interface CreateSyncResponseSync {
   enabled?: boolean;
   lastSyncedAt?: string;
 }
-export const CreateSyncResponseSync = /*@__PURE__*/ S.suspend(() =>
+const CreateSyncResponseSync = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     integration: S.optional(S.String),
@@ -1435,7 +1398,7 @@ export const CreateSyncResponseSync = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSyncResponse {
   sync?: CreateSyncResponseSync;
 }
-export const CreateSyncResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sync: S.optional(CreateSyncResponseSync),
   }),
@@ -1445,7 +1408,7 @@ export interface DeleteChangeRequestPolicyRequest {
   /** The unique identifier of the policy. */
   slug: string;
 }
-export const DeleteChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(
@@ -1462,7 +1425,7 @@ export const DeleteChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteChangeRequestPolicyResponse {
   success?: boolean;
 }
-export const DeleteChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteChangeRequestPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
@@ -1476,7 +1439,7 @@ export interface DeleteConfigRequest {
   /** Name of the config. */
   config: string;
 }
-export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -1486,7 +1449,7 @@ export const DeleteConfigRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigResponse {
   success?: boolean;
 }
-export const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
   }),
@@ -1498,7 +1461,7 @@ export interface DeleteEnvironmentRequest {
   /** The environment's slug */
   environment: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     environment: S.String.pipe(T.Query()),
@@ -1506,35 +1469,34 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface DeleteGroupRequest {
   /** The group's slug */
   slug: string;
 }
-export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/workplace/groups/group/{slug}", code: 200 })),
 ).annotate({ identifier: "DeleteGroupRequest" }) as any as S.Schema<DeleteGroupRequest>;
 
 export interface DeleteGroupResponse {}
-export const DeleteGroupResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteGroupResponse>;
+const DeleteGroupResponse = ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteGroupResponse>;
 
 export interface DeleteIntegrationRequest {
   /** The slug of the integration to delete */
   integration: string;
 }
-export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/integrations/integration", code: 200 })),
 ).annotate({ identifier: "DeleteIntegrationRequest" }) as any as S.Schema<DeleteIntegrationRequest>;
 
 export type DeleteIntegrationResponse = unknown;
-export const DeleteIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteIntegrationResponse",
@@ -1544,14 +1506,14 @@ export interface DeleteProjectRequest {
   /** Unique identifier for the project object. */
   project: string;
 }
-export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/projects/project", code: 200 })),
 ).annotate({ identifier: "DeleteProjectRequest" }) as any as S.Schema<DeleteProjectRequest>;
 
 export interface DeleteProjectResponse {}
-export const DeleteProjectResponse =
+const DeleteProjectResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteProjectResponse>;
 
 export interface DeleteSecretRequest {
@@ -1562,7 +1524,7 @@ export interface DeleteSecretRequest {
   /** Name of the secret. */
   name: string;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -1571,7 +1533,7 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse =
+const DeleteSecretResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteSyncRequest {
@@ -1584,7 +1546,7 @@ export interface DeleteSyncRequest {
   /** Whether or not to delete the synced data from the target integration */
   delete_from_target: boolean;
 }
-export const DeleteSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -1594,13 +1556,13 @@ export const DeleteSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSyncRequest" }) as any as S.Schema<DeleteSyncRequest>;
 
 export type DeleteSyncResponse = unknown;
-export const DeleteSyncResponse = AddWebhookResponse as any as S.Schema<DeleteSyncResponse>;
+const DeleteSyncResponse = AddWebhookResponse as any as S.Schema<DeleteSyncResponse>;
 
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
   unit_id: string;
 }
-export const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
+const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -1621,14 +1583,14 @@ export type DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunit
   | "draft"
   | "open"
   | "canceled";
-export const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
+const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
   S.String;
 
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit {
   id?: string;
   status?: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus;
 }
-export const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit =
+const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -1644,7 +1606,7 @@ export const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsuni
 export interface DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse {
   unit?: DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit;
 }
-export const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
+const DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       unit: S.optional(
@@ -1660,7 +1622,7 @@ export interface DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIde
   service_account: string;
   identity: string;
 }
-export const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
+const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service_account: S.String.pipe(T.Label()),
@@ -1678,7 +1640,7 @@ export const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentit
   }) as any as S.Schema<DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest>;
 
 export interface DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {}
-export const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
+const DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier:
       "DeleteV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse",
@@ -1690,7 +1652,7 @@ export interface DeleteWebhookRequest {
   /** The project's name */
   project?: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     project: S.optional(S.String.pipe(T.Query())),
@@ -1698,14 +1660,14 @@ export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export type DeleteWebhookResponse = unknown;
-export const DeleteWebhookResponse = AddWebhookResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = AddWebhookResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export type DeleteWorkplaceIntegrationsIntegrationMemberRequestType =
   | "workplace_user"
   | "invite"
   | "group"
   | "service_account";
-export const DeleteWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
+const DeleteWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
 
 export interface DeleteWorkplaceIntegrationsIntegrationMemberRequest {
   type: DeleteWorkplaceIntegrationsIntegrationMemberRequestType | (string & {});
@@ -1714,7 +1676,7 @@ export interface DeleteWorkplaceIntegrationsIntegrationMemberRequest {
   /** Integration slug */
   integration: string;
 }
-export const DeleteWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DeleteWorkplaceIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -1731,7 +1693,7 @@ export const DeleteWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/
 }) as any as S.Schema<DeleteWorkplaceIntegrationsIntegrationMemberRequest>;
 
 export interface DeleteWorkplaceIntegrationsIntegrationMemberResponse {}
-export const DeleteWorkplaceIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkplaceIntegrationsIntegrationMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteWorkplaceIntegrationsIntegrationMemberResponse",
@@ -1743,7 +1705,7 @@ export interface DisableWebhookRequest {
   /** The project's name */
   project?: string;
 }
-export const DisableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     project: S.optional(S.String.pipe(T.Query())),
@@ -1751,7 +1713,7 @@ export const DisableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableWebhookRequest" }) as any as S.Schema<DisableWebhookRequest>;
 
 export type DisableWebhookResponse = unknown;
-export const DisableWebhookResponse = AddWebhookResponse as any as S.Schema<DisableWebhookResponse>;
+const DisableWebhookResponse = AddWebhookResponse as any as S.Schema<DisableWebhookResponse>;
 
 export type DownloadSecretRequestFormat =
   | "json"
@@ -1760,7 +1722,7 @@ export type DownloadSecretRequestFormat =
   | "yaml"
   | "docker"
   | "env-no-quotes";
-export const DownloadSecretRequestFormat = S.String;
+const DownloadSecretRequestFormat = S.String;
 
 export type DownloadSecretRequestNameTransformer =
   | "camel"
@@ -1770,7 +1732,7 @@ export type DownloadSecretRequestNameTransformer =
   | "dotnet"
   | "dotnet-env"
   | "lower-kebab";
-export const DownloadSecretRequestNameTransformer = S.String;
+const DownloadSecretRequestNameTransformer = S.String;
 
 export interface DownloadSecretRequest {
   /** Unique identifier for the project object. Not required if using a Service Token. */
@@ -1787,7 +1749,7 @@ export interface DownloadSecretRequest {
   /** Comma-delimited list of secrets to include in the download. Defaults to all secrets if left unspecified. */
   secrets?: string;
 }
-export const DownloadSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     config: S.optional(S.String.pipe(T.Query())),
@@ -1800,13 +1762,13 @@ export const DownloadSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DownloadSecretRequest" }) as any as S.Schema<DownloadSecretRequest>;
 
 export type DownloadSecretResponseBodyMap = { [key: string]: string | undefined };
-export const DownloadSecretResponseBodyMap = /*@__PURE__*/ S.Record(
+const DownloadSecretResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<DownloadSecretResponseBodyMap>;
 
 export type DownloadSecretResponse = DownloadSecretResponseBodyMap;
-export const DownloadSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const DownloadSecretResponse = /*@__PURE__*/ S.suspend(() =>
   DownloadSecretResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DownloadSecretResponse" }) as any as S.Schema<DownloadSecretResponse>;
 
@@ -1820,7 +1782,7 @@ export interface DynamicSecretsIssueLeaseRequest {
   /** The number of seconds until this lease is automatically revoked */
   ttl_sec: number;
 }
-export const DynamicSecretsIssueLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DynamicSecretsIssueLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -1843,7 +1805,7 @@ export interface DynamicSecretsIssueLeaseResponse {
   expires_at?: string;
   value?: unknown;
 }
-export const DynamicSecretsIssueLeaseResponse = /*@__PURE__*/ S.suspend(() =>
+const DynamicSecretsIssueLeaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(S.Boolean),
     id: S.optional(S.String),
@@ -1864,7 +1826,7 @@ export interface DynamicSecretsRevokeLeaseRequest {
   /** The slug of the lease to revoke */
   slug: string;
 }
-export const DynamicSecretsRevokeLeaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DynamicSecretsRevokeLeaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -1884,7 +1846,7 @@ export const DynamicSecretsRevokeLeaseRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DynamicSecretsRevokeLeaseResponse {
   success?: boolean;
 }
-export const DynamicSecretsRevokeLeaseResponse =
+const DynamicSecretsRevokeLeaseResponse =
   DeleteChangeRequestPolicyResponse as any as S.Schema<DynamicSecretsRevokeLeaseResponse>;
 
 export interface EnableWebhookRequest {
@@ -1893,7 +1855,7 @@ export interface EnableWebhookRequest {
   /** The project's name */
   project?: string;
 }
-export const EnableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     project: S.optional(S.String.pipe(T.Query())),
@@ -1901,7 +1863,7 @@ export const EnableWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnableWebhookRequest" }) as any as S.Schema<EnableWebhookRequest>;
 
 export type EnableWebhookResponse = unknown;
-export const EnableWebhookResponse = AddWebhookResponse as any as S.Schema<EnableWebhookResponse>;
+const EnableWebhookResponse = AddWebhookResponse as any as S.Schema<EnableWebhookResponse>;
 
 export interface GenerateCliAuthRequest {
   hostname: string;
@@ -1910,7 +1872,7 @@ export interface GenerateCliAuthRequest {
   os: string;
   arch: string;
 }
-export const GenerateCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostname: S.String.pipe(T.Query()),
     version: S.String.pipe(T.Query()),
@@ -1924,7 +1886,7 @@ export interface GenerateCliAuthResponse {
   polling_code: string | Redacted.Redacted<string>;
   auth_url: string;
 }
-export const GenerateCliAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateCliAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     polling_code: S.String.pipe(T.SensitiveValue({})),
@@ -1936,7 +1898,7 @@ export interface GetChangeRequestPolicyRequest {
   /** Unique id of the policy */
   slug: string;
 }
-export const GetChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(
@@ -1951,14 +1913,8 @@ export const GetChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChangeRequestPolicyRequest>;
 
 export type GetChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const GetChangeRequestPolicyResponsePolicyRulesList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<GetChangeRequestPolicyResponsePolicyRulesList>;
-
 export type GetChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
-export const GetChangeRequestPolicyResponsePolicyTargets =
-  CreateChangeRequestPolicyResponsePolicyTargets;
-
 export interface GetChangeRequestPolicyResponsePolicy {
   id?: string;
   name?: string;
@@ -1966,14 +1922,11 @@ export interface GetChangeRequestPolicyResponsePolicy {
   rules?: GetChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const GetChangeRequestPolicyResponsePolicy =
-  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<GetChangeRequestPolicyResponsePolicy>;
-
 export interface GetChangeRequestPolicyResponse {
   policy?: GetChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-export const GetChangeRequestPolicyResponse =
+const GetChangeRequestPolicyResponse =
   CreateChangeRequestPolicyResponse as any as S.Schema<GetChangeRequestPolicyResponse>;
 
 export interface GetConfigRequest {
@@ -1982,7 +1935,7 @@ export interface GetConfigRequest {
   /** Name of the config object. */
   config: string;
 }
-export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -1990,12 +1943,10 @@ export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetConfigRequest" }) as any as S.Schema<GetConfigRequest>;
 
 export type GetConfigResponseConfig = CloneConfigResponseConfig;
-export const GetConfigResponseConfig = CloneConfigResponseConfig;
-
 export interface GetConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const GetConfigResponse = CloneConfigResponse as any as S.Schema<GetConfigResponse>;
+const GetConfigResponse = CloneConfigResponse as any as S.Schema<GetConfigResponse>;
 
 export interface GetEnvironmentRequest {
   /** The project's name */
@@ -2003,7 +1954,7 @@ export interface GetEnvironmentRequest {
   /** The environment's slug */
   environment: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     environment: S.String.pipe(T.Query()),
@@ -2011,12 +1962,10 @@ export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetEnvironmentRequest" }) as any as S.Schema<GetEnvironmentRequest>;
 
 export type GetEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
-export const GetEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
-
 export interface GetEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environment: S.optional(CreateEnvironmentResponseEnvironment),
   }),
@@ -2026,32 +1975,18 @@ export interface GetGroupRequest {
   /** The group's slug */
   slug: string;
 }
-export const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/workplace/groups/group/{slug}", code: 200 })),
 ).annotate({ identifier: "GetGroupRequest" }) as any as S.Schema<GetGroupRequest>;
 
 export type GetGroupResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
-export const GetGroupResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type GetGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-export const GetGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type GetGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-export const GetGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-
 export type GetGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const GetGroupResponseGroupProjectsList =
-  CreateGroupResponseGroupProjectsList as any as S.Schema<GetGroupResponseGroupProjectsList>;
-
 export type GetGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-export const GetGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-
 export type GetGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const GetGroupResponseGroupMembersList =
-  CreateGroupResponseGroupMembersList as any as S.Schema<GetGroupResponseGroupMembersList>;
-
 export interface GetGroupResponseGroup {
   name?: string;
   slug?: string;
@@ -2060,19 +1995,16 @@ export interface GetGroupResponseGroup {
   projects?: GetGroupResponseGroupProjectsList;
   members?: GetGroupResponseGroupMembersList;
 }
-export const GetGroupResponseGroup =
-  CreateGroupResponseGroup as any as S.Schema<GetGroupResponseGroup>;
-
 export interface GetGroupResponse {
   group?: GetGroupResponseGroup;
 }
-export const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
+const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 
 export interface GetIntegrationRequest {
   /** The integration slug */
   integration: string;
 }
-export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/integrations/integration", code: 200 })),
@@ -2080,19 +2012,13 @@ export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GetIntegrationResponseIntegrationFederationCase0 =
   CreateIntegrationResponseIntegrationFederationCase0;
-export const GetIntegrationResponseIntegrationFederationCase0 =
-  CreateIntegrationResponseIntegrationFederationCase0;
-
 export type GetIntegrationResponseIntegrationFederationCase1 =
   CreateIntegrationResponseIntegrationFederationCase1;
-export const GetIntegrationResponseIntegrationFederationCase1 =
-  CreateIntegrationResponseIntegrationFederationCase1;
-
 /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
 export type GetIntegrationResponseIntegrationFederation =
   | CreateIntegrationResponseIntegrationFederationCase0
   | CreateIntegrationResponseIntegrationFederationCase1;
-export const GetIntegrationResponseIntegrationFederation =
+const GetIntegrationResponseIntegrationFederation =
   S.Unknown as any as S.Schema<GetIntegrationResponseIntegrationFederation>;
 
 export interface GetIntegrationResponseIntegration {
@@ -2102,7 +2028,7 @@ export interface GetIntegrationResponseIntegration {
   /** The keyless federation identity Doppler presents to your cloud, or null if this connection does not use keyless authentication. Grant this identity access after creating the connection. */
   federation?: GetIntegrationResponseIntegrationFederation | null;
 }
-export const GetIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -2116,7 +2042,7 @@ export const GetIntegrationResponseIntegration = /*@__PURE__*/ S.suspend(() =>
 export interface GetIntegrationResponse {
   integration?: GetIntegrationResponseIntegration;
 }
-export const GetIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.optional(GetIntegrationResponseIntegration),
   }),
@@ -2128,7 +2054,7 @@ export interface GetIntegrationsIntegrationMembersRequest {
   page?: number;
   per_page?: number;
 }
-export const GetIntegrationsIntegrationMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsIntegrationMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2143,31 +2069,26 @@ export type GetIntegrationsIntegrationMembersResponseMembersItemType =
   | "invite"
   | "group"
   | "service_account";
-export const GetIntegrationsIntegrationMembersResponseMembersItemType = S.String;
-
 export type GetIntegrationsIntegrationMembersResponseMembersItemRole =
   CreateGroupResponseGroupDefaultProjectRole;
-export const GetIntegrationsIntegrationMembersResponseMembersItemRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export interface GetIntegrationsIntegrationMembersResponseMembersItem {
   type?: GetIntegrationsIntegrationMembersResponseMembersItemType;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const GetIntegrationsIntegrationMembersResponseMembersItem =
+const GetIntegrationsIntegrationMembersResponseMembersItem =
   CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersItem>;
 
 export type GetIntegrationsIntegrationMembersResponseMembersList =
   Array<GetIntegrationsIntegrationMembersResponseMembersItem>;
-export const GetIntegrationsIntegrationMembersResponseMembersList = /*@__PURE__*/ S.Array(
+const GetIntegrationsIntegrationMembersResponseMembersList = /*@__PURE__*/ S.Array(
   GetIntegrationsIntegrationMembersResponseMembersItem,
 ) as any as S.Schema<GetIntegrationsIntegrationMembersResponseMembersList>;
 
 export interface GetIntegrationsIntegrationMembersResponse {
   members?: GetIntegrationsIntegrationMembersResponseMembersList;
 }
-export const GetIntegrationsIntegrationMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntegrationsIntegrationMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(GetIntegrationsIntegrationMembersResponseMembersList),
   }),
@@ -2176,7 +2097,7 @@ export const GetIntegrationsIntegrationMembersResponse = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<GetIntegrationsIntegrationMembersResponse>;
 
 export type GetMemberRequestMemberType = "workplace_user";
-export const GetMemberRequestMemberType = S.String;
+const GetMemberRequestMemberType = S.String;
 
 export interface GetMemberRequest {
   /** The group's slug */
@@ -2185,7 +2106,7 @@ export interface GetMemberRequest {
   /** The member's slug */
   member_slug: string;
 }
-export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     group_slug: S.String.pipe(T.Label()),
     member_type: GetMemberRequestMemberType.pipe(T.Label()),
@@ -2200,25 +2121,11 @@ export const GetMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetMemberRequest" }) as any as S.Schema<GetMemberRequest>;
 
 export type GetMemberResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
-export const GetMemberResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type GetMemberResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-export const GetMemberResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type GetMemberResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-export const GetMemberResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-
 export type GetMemberResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const GetMemberResponseGroupProjectsList =
-  CreateGroupResponseGroupProjectsList as any as S.Schema<GetMemberResponseGroupProjectsList>;
-
 export type GetMemberResponseGroupMembersItem = AuthMeResponsePrincipal;
-export const GetMemberResponseGroupMembersItem = AuthMeResponsePrincipal;
-
 export type GetMemberResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const GetMemberResponseGroupMembersList =
-  CreateGroupResponseGroupMembersList as any as S.Schema<GetMemberResponseGroupMembersList>;
-
 export interface GetMemberResponseGroup {
   name?: string;
   slug?: string;
@@ -2227,44 +2134,39 @@ export interface GetMemberResponseGroup {
   projects?: GetMemberResponseGroupProjectsList;
   members?: GetMemberResponseGroupMembersList;
 }
-export const GetMemberResponseGroup =
-  CreateGroupResponseGroup as any as S.Schema<GetMemberResponseGroup>;
-
 export interface GetMemberResponse {
   group?: GetMemberResponseGroup;
 }
-export const GetMemberResponse = CreateGroupResponse as any as S.Schema<GetMemberResponse>;
+const GetMemberResponse = CreateGroupResponse as any as S.Schema<GetMemberResponse>;
 
 export interface GetOptionsRequest {
   /** The integration slug */
   integration: string;
 }
-export const GetOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/integrations/integration/options", code: 200 })),
 ).annotate({ identifier: "GetOptionsRequest" }) as any as S.Schema<GetOptionsRequest>;
 
 export type GetOptionsResponse = unknown;
-export const GetOptionsResponse = AddWebhookResponse as any as S.Schema<GetOptionsResponse>;
+const GetOptionsResponse = AddWebhookResponse as any as S.Schema<GetOptionsResponse>;
 
 export interface GetProjectRequest {
   /** Unique identifier for the project object. */
   project: string;
 }
-export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/projects/project", code: 200 })),
 ).annotate({ identifier: "GetProjectRequest" }) as any as S.Schema<GetProjectRequest>;
 
 export type GetProjectResponseProject = CreateProjectResponseProject;
-export const GetProjectResponseProject = CreateProjectResponseProject;
-
 export interface GetProjectResponse {
   project?: CreateProjectResponseProject;
 }
-export const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
+const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
 
 export interface GetSecretRequest {
   /** Unique identifier for the project object. */
@@ -2274,7 +2176,7 @@ export interface GetSecretRequest {
   /** Name of the secret. */
   name: string;
 }
-export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -2283,12 +2185,12 @@ export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSecretRequest" }) as any as S.Schema<GetSecretRequest>;
 
 export type GetSecretResponseValueRawVisibility = "unmasked" | "masked" | "restricted";
-export const GetSecretResponseValueRawVisibility = S.String;
+const GetSecretResponseValueRawVisibility = S.String;
 
 export interface GetSecretResponseValueRawValueType {
   type?: string;
 }
-export const GetSecretResponseValueRawValueType = /*@__PURE__*/ S.suspend(() =>
+const GetSecretResponseValueRawValueType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
   }),
@@ -2297,8 +2199,6 @@ export const GetSecretResponseValueRawValueType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecretResponseValueRawValueType>;
 
 export type GetSecretResponseValueComputedValueType = GetSecretResponseValueRawValueType;
-export const GetSecretResponseValueComputedValueType = GetSecretResponseValueRawValueType;
-
 export interface GetSecretResponseValue {
   raw?: string;
   computed?: string;
@@ -2308,7 +2208,7 @@ export interface GetSecretResponseValue {
   rawValueType?: GetSecretResponseValueRawValueType;
   computedValueType?: GetSecretResponseValueRawValueType;
 }
-export const GetSecretResponseValue = /*@__PURE__*/ S.suspend(() =>
+const GetSecretResponseValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.optional(S.String),
     computed: S.optional(S.String),
@@ -2324,7 +2224,7 @@ export interface GetSecretResponse {
   name?: string;
   value?: GetSecretResponseValue;
 }
-export const GetSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(GetSecretResponseValue),
@@ -2339,7 +2239,7 @@ export interface GetSyncRequest {
   /** The sync slug */
   sync: string;
 }
-export const GetSyncRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -2348,33 +2248,29 @@ export const GetSyncRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSyncRequest" }) as any as S.Schema<GetSyncRequest>;
 
 export type GetSyncResponseSync = CreateSyncResponseSync;
-export const GetSyncResponseSync = CreateSyncResponseSync;
-
 export interface GetSyncResponse {
   sync?: CreateSyncResponseSync;
 }
-export const GetSyncResponse = CreateSyncResponse as any as S.Schema<GetSyncResponse>;
+const GetSyncResponse = CreateSyncResponse as any as S.Schema<GetSyncResponse>;
 
 export interface GetUserRequest {
   /** The slug of the workplace user */
   slug: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/workplace/users/{slug}", code: 200 })),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export type GetUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
-export const GetUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
-
 export interface GetUserResponseWorkplaceUser {
   id?: string;
   access?: string;
   created_at?: string;
   user?: ConfigLogsGetResponseLogUser;
 }
-export const GetUserResponseWorkplaceUser = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponseWorkplaceUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     access: S.optional(S.String),
@@ -2389,7 +2285,7 @@ export interface GetUserResponse {
   workplace_user?: GetUserResponseWorkplaceUser;
   success?: boolean;
 }
-export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workplace_user: S.optional(GetUserResponseWorkplaceUser),
     success: S.optional(S.Boolean),
@@ -2397,7 +2293,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserResponse" }) as any as S.Schema<GetUserResponse>;
 
 export type GetV3workplacechangeRequestsRequestStatusList = Array<string>;
-export const GetV3workplacechangeRequestsRequestStatusList =
+const GetV3workplacechangeRequestsRequestStatusList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<GetV3workplacechangeRequestsRequestStatusList>;
 
 export interface GetV3workplacechangeRequestsRequest {
@@ -2406,7 +2302,7 @@ export interface GetV3workplacechangeRequestsRequest {
   status?: GetV3workplacechangeRequestsRequestStatusList;
   title?: string;
 }
-export const GetV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -2418,10 +2314,10 @@ export const GetV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetV3workplacechangeRequestsRequest>;
 
 export type GetV3workplacechangeRequestsResponseBodyItemStatus = "open" | "closed";
-export const GetV3workplacechangeRequestsResponseBodyItemStatus = S.String;
+const GetV3workplacechangeRequestsResponseBodyItemStatus = S.String;
 
 export type GetV3workplacechangeRequestsResponseBodyItemCreatedByType = "User" | "ServiceAccount";
-export const GetV3workplacechangeRequestsResponseBodyItemCreatedByType = S.String;
+const GetV3workplacechangeRequestsResponseBodyItemCreatedByType = S.String;
 
 export interface GetV3workplacechangeRequestsResponseBodyItemCreatedBy {
   slug?: string;
@@ -2430,7 +2326,7 @@ export interface GetV3workplacechangeRequestsResponseBodyItemCreatedBy {
   isActive?: boolean;
   image?: string;
 }
-export const GetV3workplacechangeRequestsResponseBodyItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestsResponseBodyItemCreatedBy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     type: S.optional(GetV3workplacechangeRequestsResponseBodyItemCreatedByType),
@@ -2447,35 +2343,25 @@ export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus =
   | "open"
   | "applied"
   | "canceled";
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus = S.String;
+const GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus = S.String;
 
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetProject =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetProject =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetEnvironment =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetEnvironment =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetConfig =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTargetConfig =
-  AuthMeResponseWorkplace;
-
 export interface GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget {
   project?: AuthMeResponseWorkplace;
   environment?: AuthMeResponseWorkplace;
   config?: AuthMeResponseWorkplace;
 }
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project: S.optional(AuthMeResponseWorkplace),
-      environment: S.optional(AuthMeResponseWorkplace),
-      config: S.optional(AuthMeResponseWorkplace),
-    }),
+const GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project: S.optional(AuthMeResponseWorkplace),
+    environment: S.optional(AuthMeResponseWorkplace),
+    config: S.optional(AuthMeResponseWorkplace),
+  }),
 ).annotate({
   identifier: "GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget",
 }) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget>;
@@ -2485,7 +2371,7 @@ export interface GetV3workplacechangeRequestsResponseBodyItemUnitsItem {
   status?: GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus;
   target?: GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
 }
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsItem = /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestsResponseBodyItemUnitsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     status: S.optional(GetV3workplacechangeRequestsResponseBodyItemUnitsItemStatus),
@@ -2497,14 +2383,14 @@ export const GetV3workplacechangeRequestsResponseBodyItemUnitsItem = /*@__PURE__
 
 export type GetV3workplacechangeRequestsResponseBodyItemUnitsList =
   Array<GetV3workplacechangeRequestsResponseBodyItemUnitsItem>;
-export const GetV3workplacechangeRequestsResponseBodyItemUnitsList = /*@__PURE__*/ S.Array(
+const GetV3workplacechangeRequestsResponseBodyItemUnitsList = /*@__PURE__*/ S.Array(
   GetV3workplacechangeRequestsResponseBodyItemUnitsItem,
 ) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemUnitsList>;
 
 export type GetV3workplacechangeRequestsResponseBodyItemAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const GetV3workplacechangeRequestsResponseBodyItemAssignedItemType = S.String;
+const GetV3workplacechangeRequestsResponseBodyItemAssignedItemType = S.String;
 
 export interface GetV3workplacechangeRequestsResponseBodyItemAssignedItem {
   type?: GetV3workplacechangeRequestsResponseBodyItemAssignedItemType;
@@ -2513,22 +2399,21 @@ export interface GetV3workplacechangeRequestsResponseBodyItemAssignedItem {
   email?: string;
   image?: string;
 }
-export const GetV3workplacechangeRequestsResponseBodyItemAssignedItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      type: S.optional(GetV3workplacechangeRequestsResponseBodyItemAssignedItemType),
-      slug: S.optional(S.String),
-      name: S.optional(S.String),
-      email: S.optional(S.String),
-      image: S.optional(S.String),
-    }),
+const GetV3workplacechangeRequestsResponseBodyItemAssignedItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(GetV3workplacechangeRequestsResponseBodyItemAssignedItemType),
+    slug: S.optional(S.String),
+    name: S.optional(S.String),
+    email: S.optional(S.String),
+    image: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetV3workplacechangeRequestsResponseBodyItemAssignedItem",
 }) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemAssignedItem>;
 
 export type GetV3workplacechangeRequestsResponseBodyItemAssignedList =
   Array<GetV3workplacechangeRequestsResponseBodyItemAssignedItem>;
-export const GetV3workplacechangeRequestsResponseBodyItemAssignedList = /*@__PURE__*/ S.Array(
+const GetV3workplacechangeRequestsResponseBodyItemAssignedList = /*@__PURE__*/ S.Array(
   GetV3workplacechangeRequestsResponseBodyItemAssignedItem,
 ) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyItemAssignedList>;
 
@@ -2541,7 +2426,7 @@ export interface GetV3workplacechangeRequestsResponseBodyItem {
   units?: GetV3workplacechangeRequestsResponseBodyItemUnitsList;
   assigned?: GetV3workplacechangeRequestsResponseBodyItemAssignedList;
 }
-export const GetV3workplacechangeRequestsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     title: S.optional(S.String),
@@ -2557,12 +2442,12 @@ export const GetV3workplacechangeRequestsResponseBodyItem = /*@__PURE__*/ S.susp
 
 export type GetV3workplacechangeRequestsResponseBodyList =
   Array<GetV3workplacechangeRequestsResponseBodyItem>;
-export const GetV3workplacechangeRequestsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetV3workplacechangeRequestsResponseBodyList = /*@__PURE__*/ S.Array(
   GetV3workplacechangeRequestsResponseBodyItem,
 ) as any as S.Schema<GetV3workplacechangeRequestsResponseBodyList>;
 
 export type GetV3workplacechangeRequestsResponse = GetV3workplacechangeRequestsResponseBodyList;
-export const GetV3workplacechangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   GetV3workplacechangeRequestsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetV3workplacechangeRequestsResponse",
@@ -2573,8 +2458,8 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   /** Whether to reveal secret values. If defined, any value except "false" is treated as true */
   reveal?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
       reveal: S.optional(S.String.pipe(T.Query())),
@@ -2585,20 +2470,20 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
+).annotate({
+  identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
+}) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus =
   | "open"
   | "closed";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestStatus =
   S.String;
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType =
   | "User"
   | "ServiceAccount";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedByType =
   S.String;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy {
@@ -2608,7 +2493,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   isActive?: boolean;
   image?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -2629,33 +2514,21 @@ export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChan
   | "open"
   | "canceled"
   | "applied";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemStatus =
   S.String;
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetProject =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetProject =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetEnvironment =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetEnvironment =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetConfig =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTargetConfig =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTarget =
   GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemTarget =
-  GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog {
   slug?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -2667,14 +2540,11 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedActivityLog =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedActivityLog =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied {
   configLog?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
   activityLog?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       configLog: S.optional(
@@ -2692,9 +2562,6 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedByType =
   | "User"
   | "ServiceAccount";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedByType =
-  S.String;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy {
   slug?: string;
   type?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedByType;
@@ -2702,7 +2569,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   isActive?: boolean;
   image?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy>;
 
 /** 0 = masked, 1 = unmasked, 2 = restricted */
@@ -2710,14 +2577,11 @@ export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChan
   | 0
   | 1
   | 2;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemVisType =
   S.Number;
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItemValueType =
-  GetSecretResponseValueRawValueType;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem {
   name?: string;
   value?: string;
@@ -2727,7 +2591,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   valueType?: GetSecretResponseValueRawValueType;
   generationSettings?: unknown;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.optional(S.String),
@@ -2746,7 +2610,7 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem>;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList =
   /*@__PURE__*/ S.Array(
     GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem,
   ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList>;
@@ -2760,7 +2624,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   createdBy?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemCreatedBy;
   updates?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -2786,7 +2650,7 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem>;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList =
   /*@__PURE__*/ S.Array(
     GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem,
   ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList>;
@@ -2794,7 +2658,7 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItemType =
   S.String;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem {
@@ -2804,7 +2668,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   email?: string;
   image?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
@@ -2822,7 +2686,7 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem>;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList =
   /*@__PURE__*/ S.Array(
     GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedItem,
   ) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList>;
@@ -2837,7 +2701,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdRespons
   units?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsList;
   assigned?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestAssignedList;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -2864,16 +2728,16 @@ export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseCha
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   changeRequest?: GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       changeRequest: S.optional(
         GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest,
       ),
     }),
-  ).annotate({
-    identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
-  }) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
+).annotate({
+  identifier: "GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
+}) as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest {
   change_request_id: string;
@@ -2881,7 +2745,7 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   /** Whether to reveal secret values. If defined, any value except "false" is treated as true */
   reveal?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -2903,50 +2767,23 @@ export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUni
   | "open"
   | "canceled"
   | "applied";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitStatus =
-  S.String;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetProject =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetProject =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetEnvironment =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetEnvironment =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetConfig =
   AuthMeResponseWorkplace;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTargetConfig =
-  AuthMeResponseWorkplace;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTarget =
   GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitTarget =
-  GetV3workplacechangeRequestsResponseBodyItemUnitsItemTarget;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitAppliedConfigLog =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitAppliedConfigLog =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitAppliedActivityLog =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitAppliedActivityLog =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemAppliedConfigLog;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitApplied =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitApplied =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemApplied;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedByType =
   | "User"
   | "ServiceAccount";
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedByType =
-  S.String;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy {
   slug?: string;
   type?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedByType;
@@ -2954,22 +2791,13 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   isActive?: boolean;
   image?: string;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestCreatedBy as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy>;
-
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemVisType =
   | 0
   | 1
   | 2;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemVisType =
-  S.Number;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItemValueType =
-  GetSecretResponseValueRawValueType;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem {
   name?: string;
   value?: string;
@@ -2979,14 +2807,8 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   valueType?: GetSecretResponseValueRawValueType;
   generationSettings?: unknown;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesItem as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem>;
-
 export type GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList =
   Array<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesItem>;
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList =
-  GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItemUpdatesList as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList>;
-
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit {
   id?: string;
   status?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitStatus;
@@ -2996,13 +2818,13 @@ export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsun
   createdBy?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitCreatedBy;
   updates?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnitUpdatesList;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit =
   GetV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequestUnitsItem as any as S.Schema<GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit>;
 
 export interface GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse {
   unit?: GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponseUnit;
 }
-export const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse =
+const GetV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       unit: S.optional(
@@ -3018,7 +2840,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   page?: number;
   per_page?: number;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service_account: S.String.pipe(T.Label()),
@@ -3038,26 +2860,26 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType =
   | "wildcard"
   | "exact";
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType =
   S.String;
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList =
   Array<string>;
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList>;
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
   Array<string>;
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList>;
 
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims {
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList;
   sub?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsSubList;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aud: S.optional(
@@ -3077,7 +2899,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   claims_type?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsType;
   claims?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.optional(S.String),
@@ -3102,7 +2924,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -3122,7 +2944,7 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList =
   Array<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem>;
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList =
   /*@__PURE__*/ S.Array(
     GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItem,
   ) as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList>;
@@ -3131,7 +2953,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   identities?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesList;
   success?: boolean;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identities: S.optional(
@@ -3147,7 +2969,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   service_account: string;
   identity: string;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service_account: S.String.pipe(T.Label()),
@@ -3166,30 +2988,24 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   "oidc";
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   S.String;
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   | "exact"
   | "wildcard";
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   S.String;
 
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
-
 export type GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
   Array<string>;
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
-
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims {
   aud?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
 
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
@@ -3197,7 +3013,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   claims_type?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType;
   claims?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.optional(S.String),
@@ -3222,7 +3038,7 @@ export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -3245,7 +3061,7 @@ export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export interface GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {
   identity?: GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity;
 }
-export const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
+const GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identity: S.optional(
@@ -3263,7 +3079,7 @@ export interface GetWebhookRequest {
   /** The project's name */
   project?: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     project: S.optional(S.String.pipe(T.Query())),
@@ -3271,13 +3087,13 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetWebhookRequest" }) as any as S.Schema<GetWebhookRequest>;
 
 export type GetWebhookResponseWebhookAuthenticationType = "None" | "Basic" | "Bearer";
-export const GetWebhookResponseWebhookAuthenticationType = S.String;
+const GetWebhookResponseWebhookAuthenticationType = S.String;
 
 /** Webhook's authentication type */
 export interface GetWebhookResponseWebhookAuthentication {
   type?: GetWebhookResponseWebhookAuthenticationType;
 }
-export const GetWebhookResponseWebhookAuthentication = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookResponseWebhookAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GetWebhookResponseWebhookAuthenticationType),
   }),
@@ -3287,7 +3103,7 @@ export const GetWebhookResponseWebhookAuthentication = /*@__PURE__*/ S.suspend((
 
 /** The configs the webhook will trigger for */
 export type GetWebhookResponseWebhookEnabledConfigsList = Array<string>;
-export const GetWebhookResponseWebhookEnabledConfigsList =
+const GetWebhookResponseWebhookEnabledConfigsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<GetWebhookResponseWebhookEnabledConfigsList>;
 
 export interface GetWebhookResponseWebhook {
@@ -3308,7 +3124,7 @@ export interface GetWebhookResponseWebhook {
   /** Whether the requestor has permission to modify the webhook */
   canManage?: boolean;
 }
-export const GetWebhookResponseWebhook = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookResponseWebhook = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3326,14 +3142,14 @@ export const GetWebhookResponseWebhook = /*@__PURE__*/ S.suspend(() =>
 export interface GetWebhookResponse {
   webhook: GetWebhookResponseWebhook;
 }
-export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhook: GetWebhookResponseWebhook,
   }),
 ).annotate({ identifier: "GetWebhookResponse" }) as any as S.Schema<GetWebhookResponse>;
 
 export interface GetWorkplaceRequest {}
-export const GetWorkplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/workplace", code: 200 })),
 ).annotate({ identifier: "GetWorkplaceRequest" }) as any as S.Schema<GetWorkplaceRequest>;
 
@@ -3343,7 +3159,7 @@ export interface GetWorkplaceResponseWorkplace {
   billing_email?: string;
   security_email?: string;
 }
-export const GetWorkplaceResponseWorkplace = /*@__PURE__*/ S.suspend(() =>
+const GetWorkplaceResponseWorkplace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3357,7 +3173,7 @@ export const GetWorkplaceResponseWorkplace = /*@__PURE__*/ S.suspend(() =>
 export interface GetWorkplaceResponse {
   workplace?: GetWorkplaceResponseWorkplace;
 }
-export const GetWorkplaceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkplaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workplace: S.optional(GetWorkplaceResponseWorkplace),
   }),
@@ -3368,7 +3184,7 @@ export type GetWorkplaceIntegrationsIntegrationMemberRequestType =
   | "invite"
   | "group"
   | "service_account";
-export const GetWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
+const GetWorkplaceIntegrationsIntegrationMemberRequestType = S.String;
 
 export interface GetWorkplaceIntegrationsIntegrationMemberRequest {
   type: GetWorkplaceIntegrationsIntegrationMemberRequestType | (string & {});
@@ -3377,7 +3193,7 @@ export interface GetWorkplaceIntegrationsIntegrationMemberRequest {
   /** Integration slug */
   integration: string;
 }
-export const GetWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkplaceIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: GetWorkplaceIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -3398,36 +3214,28 @@ export type GetWorkplaceIntegrationsIntegrationMemberResponseMemberType =
   | "invite"
   | "group"
   | "service_account";
-export const GetWorkplaceIntegrationsIntegrationMemberResponseMemberType = S.String;
-
 export type GetWorkplaceIntegrationsIntegrationMemberResponseMemberRole =
   CreateGroupResponseGroupDefaultProjectRole;
-export const GetWorkplaceIntegrationsIntegrationMemberResponseMemberRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export interface GetWorkplaceIntegrationsIntegrationMemberResponseMember {
   type?: GetWorkplaceIntegrationsIntegrationMemberResponseMemberType;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const GetWorkplaceIntegrationsIntegrationMemberResponseMember =
-  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponseMember>;
-
 export interface GetWorkplaceIntegrationsIntegrationMemberResponse {
   member?: GetWorkplaceIntegrationsIntegrationMemberResponseMember;
 }
-export const GetWorkplaceIntegrationsIntegrationMemberResponse =
+const GetWorkplaceIntegrationsIntegrationMemberResponse =
   CreateIntegrationsIntegrationMemberResponse as any as S.Schema<GetWorkplaceIntegrationsIntegrationMemberResponse>;
 
 export type GroupsAddMemberRequestType = "workplace_user";
-export const GroupsAddMemberRequestType = S.String;
+const GroupsAddMemberRequestType = S.String;
 
 export interface GroupsAddMemberRequest {
   /** The group's slug */
   slug: string;
   type: GroupsAddMemberRequestType | (string & {});
 }
-export const GroupsAddMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsAddMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     type: GroupsAddMemberRequestType,
@@ -3435,11 +3243,11 @@ export const GroupsAddMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupsAddMemberRequest" }) as any as S.Schema<GroupsAddMemberRequest>;
 
 export interface GroupsAddMemberResponse {}
-export const GroupsAddMemberResponse =
+const GroupsAddMemberResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsAddMemberResponse>;
 
 export type GroupsDeleteMemberRequestType = "workplace_user";
-export const GroupsDeleteMemberRequestType = S.String;
+const GroupsDeleteMemberRequestType = S.String;
 
 export interface GroupsDeleteMemberRequest {
   /** The group's slug */
@@ -3448,7 +3256,7 @@ export interface GroupsDeleteMemberRequest {
   /** The member's slug */
   member_slug: string;
 }
-export const GroupsDeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupsDeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     type: GroupsDeleteMemberRequestType.pipe(T.Label()),
@@ -3465,11 +3273,11 @@ export const GroupsDeleteMemberRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupsDeleteMemberRequest>;
 
 export interface GroupsDeleteMemberResponse {}
-export const GroupsDeleteMemberResponse =
+const GroupsDeleteMemberResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<GroupsDeleteMemberResponse>;
 
 export interface ListChangeRequestPoliciesRequest {}
-export const ListChangeRequestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChangeRequestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/v3/workplace/change_request_policies", code: 200 }),
   ),
@@ -3478,14 +3286,8 @@ export const ListChangeRequestPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListChangeRequestPoliciesRequest>;
 
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList = Array<unknown>;
-export const ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList>;
-
 export type ListChangeRequestPoliciesResponsePoliciesItemPolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
-export const ListChangeRequestPoliciesResponsePoliciesItemPolicyTargets =
-  CreateChangeRequestPolicyResponsePolicyTargets;
-
 export interface ListChangeRequestPoliciesResponsePoliciesItemPolicy {
   id?: string;
   name?: string;
@@ -3493,13 +3295,13 @@ export interface ListChangeRequestPoliciesResponsePoliciesItemPolicy {
   rules?: ListChangeRequestPoliciesResponsePoliciesItemPolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const ListChangeRequestPoliciesResponsePoliciesItemPolicy =
+const ListChangeRequestPoliciesResponsePoliciesItemPolicy =
   CreateChangeRequestPolicyResponsePolicy as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesItemPolicy>;
 
 export interface ListChangeRequestPoliciesResponsePoliciesItem {
   policy?: ListChangeRequestPoliciesResponsePoliciesItemPolicy;
 }
-export const ListChangeRequestPoliciesResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
+const ListChangeRequestPoliciesResponsePoliciesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(ListChangeRequestPoliciesResponsePoliciesItemPolicy),
   }),
@@ -3509,7 +3311,7 @@ export const ListChangeRequestPoliciesResponsePoliciesItem = /*@__PURE__*/ S.sus
 
 export type ListChangeRequestPoliciesResponsePoliciesList =
   Array<ListChangeRequestPoliciesResponsePoliciesItem>;
-export const ListChangeRequestPoliciesResponsePoliciesList = /*@__PURE__*/ S.Array(
+const ListChangeRequestPoliciesResponsePoliciesList = /*@__PURE__*/ S.Array(
   ListChangeRequestPoliciesResponsePoliciesItem,
 ) as any as S.Schema<ListChangeRequestPoliciesResponsePoliciesList>;
 
@@ -3517,7 +3319,7 @@ export interface ListChangeRequestPoliciesResponse {
   policies?: ListChangeRequestPoliciesResponsePoliciesList;
   success?: boolean;
 }
-export const ListChangeRequestPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChangeRequestPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policies: S.optional(ListChangeRequestPoliciesResponsePoliciesList),
     success: S.optional(S.Boolean),
@@ -3536,7 +3338,7 @@ export interface ListConfigsRequest {
   /** Items per page */
   per_page?: number;
 }
-export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     environment: S.optional(S.String.pipe(T.Query())),
@@ -3546,10 +3348,8 @@ export const ListConfigsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListConfigsRequest" }) as any as S.Schema<ListConfigsRequest>;
 
 export type ListConfigsResponseConfigsItem = CloneConfigResponseConfig;
-export const ListConfigsResponseConfigsItem = CloneConfigResponseConfig;
-
 export type ListConfigsResponseConfigsList = Array<CloneConfigResponseConfig>;
-export const ListConfigsResponseConfigsList = /*@__PURE__*/ S.Array(
+const ListConfigsResponseConfigsList = /*@__PURE__*/ S.Array(
   CloneConfigResponseConfig,
 ) as any as S.Schema<ListConfigsResponseConfigsList>;
 
@@ -3557,7 +3357,7 @@ export interface ListConfigsResponse {
   page?: number;
   configs?: ListConfigsResponseConfigsList;
 }
-export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     configs: S.optional(ListConfigsResponseConfigsList),
@@ -3568,17 +3368,15 @@ export interface ListEnvironmentsRequest {
   /** The project's name */
   project: string;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/environments", code: 200 })),
 ).annotate({ identifier: "ListEnvironmentsRequest" }) as any as S.Schema<ListEnvironmentsRequest>;
 
 export type ListEnvironmentsResponseEnvironmentsItem = CreateEnvironmentResponseEnvironment;
-export const ListEnvironmentsResponseEnvironmentsItem = CreateEnvironmentResponseEnvironment;
-
 export type ListEnvironmentsResponseEnvironmentsList = Array<CreateEnvironmentResponseEnvironment>;
-export const ListEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ S.Array(
+const ListEnvironmentsResponseEnvironmentsList = /*@__PURE__*/ S.Array(
   CreateEnvironmentResponseEnvironment,
 ) as any as S.Schema<ListEnvironmentsResponseEnvironmentsList>;
 
@@ -3586,7 +3384,7 @@ export interface ListEnvironmentsResponse {
   environments?: ListEnvironmentsResponseEnvironmentsList;
   page?: number;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environments: S.optional(ListEnvironmentsResponseEnvironmentsList),
     page: S.optional(S.Number),
@@ -3597,7 +3395,7 @@ export interface ListGroupsRequest {
   page?: number;
   per_page?: number;
 }
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3606,16 +3404,13 @@ export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ListGroupsResponseGroupsItemDefaultProjectRole =
   CreateGroupResponseGroupDefaultProjectRole;
-export const ListGroupsResponseGroupsItemDefaultProjectRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export interface ListGroupsResponseGroupsItem {
   name?: string;
   slug?: string;
   created_at?: string;
   default_project_role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const ListGroupsResponseGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponseGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -3627,21 +3422,21 @@ export const ListGroupsResponseGroupsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupsResponseGroupsItem>;
 
 export type ListGroupsResponseGroupsList = Array<ListGroupsResponseGroupsItem>;
-export const ListGroupsResponseGroupsList = /*@__PURE__*/ S.Array(
+const ListGroupsResponseGroupsList = /*@__PURE__*/ S.Array(
   ListGroupsResponseGroupsItem,
 ) as any as S.Schema<ListGroupsResponseGroupsList>;
 
 export interface ListGroupsResponse {
   groups?: ListGroupsResponseGroupsList;
 }
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(ListGroupsResponseGroupsList),
   }),
 ).annotate({ identifier: "ListGroupsResponse" }) as any as S.Schema<ListGroupsResponse>;
 
 export interface ListIntegrationsRequest {}
-export const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/integrations", code: 200 })),
 ).annotate({ identifier: "ListIntegrationsRequest" }) as any as S.Schema<ListIntegrationsRequest>;
 
@@ -3652,7 +3447,7 @@ export interface ListIntegrationsResponseIntegrationsItem {
   kind?: string;
   enabled?: boolean;
 }
-export const ListIntegrationsResponseIntegrationsItem = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationsResponseIntegrationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     name: S.optional(S.String),
@@ -3666,7 +3461,7 @@ export const ListIntegrationsResponseIntegrationsItem = /*@__PURE__*/ S.suspend(
 
 export type ListIntegrationsResponseIntegrationsList =
   Array<ListIntegrationsResponseIntegrationsItem>;
-export const ListIntegrationsResponseIntegrationsList = /*@__PURE__*/ S.Array(
+const ListIntegrationsResponseIntegrationsList = /*@__PURE__*/ S.Array(
   ListIntegrationsResponseIntegrationsItem,
 ) as any as S.Schema<ListIntegrationsResponseIntegrationsList>;
 
@@ -3674,7 +3469,7 @@ export interface ListIntegrationsResponse {
   integrations?: ListIntegrationsResponseIntegrationsList;
   success?: boolean;
 }
-export const ListIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integrations: S.optional(ListIntegrationsResponseIntegrationsList),
     success: S.optional(S.Boolean),
@@ -3685,7 +3480,7 @@ export interface ListInvitesRequest {
   page?: number;
   per_page?: number;
 }
-export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3693,7 +3488,7 @@ export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInvitesRequest" }) as any as S.Schema<ListInvitesRequest>;
 
 export type ListInvitesResponseInvitesItemWorkplaceRolePermissionsList = Array<string>;
-export const ListInvitesResponseInvitesItemWorkplaceRolePermissionsList =
+const ListInvitesResponseInvitesItemWorkplaceRolePermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ListInvitesResponseInvitesItemWorkplaceRolePermissionsList>;
 
 export interface ListInvitesResponseInvitesItemWorkplaceRole {
@@ -3704,7 +3499,7 @@ export interface ListInvitesResponseInvitesItemWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ListInvitesResponseInvitesItemWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
+const ListInvitesResponseInvitesItemWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     permissions: S.optional(ListInvitesResponseInvitesItemWorkplaceRolePermissionsList),
@@ -3723,7 +3518,7 @@ export interface ListInvitesResponseInvitesItem {
   created_at?: string;
   workplace_role?: ListInvitesResponseInvitesItemWorkplaceRole;
 }
-export const ListInvitesResponseInvitesItem = /*@__PURE__*/ S.suspend(() =>
+const ListInvitesResponseInvitesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.optional(S.String),
     email: S.optional(S.String),
@@ -3735,14 +3530,14 @@ export const ListInvitesResponseInvitesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInvitesResponseInvitesItem>;
 
 export type ListInvitesResponseInvitesList = Array<ListInvitesResponseInvitesItem>;
-export const ListInvitesResponseInvitesList = /*@__PURE__*/ S.Array(
+const ListInvitesResponseInvitesList = /*@__PURE__*/ S.Array(
   ListInvitesResponseInvitesItem,
 ) as any as S.Schema<ListInvitesResponseInvitesList>;
 
 export interface ListInvitesResponse {
   invites?: ListInvitesResponseInvitesList;
 }
-export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invites: S.optional(ListInvitesResponseInvitesList),
   }),
@@ -3754,7 +3549,7 @@ export interface ListProjectsRequest {
   /** Items per page */
   per_page?: number;
 }
-export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3768,7 +3563,7 @@ export interface ListProjectsResponseProjectsItem {
   description?: string;
   created_at?: string;
 }
-export const ListProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     slug: S.optional(S.String),
@@ -3781,7 +3576,7 @@ export const ListProjectsResponseProjectsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsResponseProjectsItem>;
 
 export type ListProjectsResponseProjectsList = Array<ListProjectsResponseProjectsItem>;
-export const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
+const ListProjectsResponseProjectsList = /*@__PURE__*/ S.Array(
   ListProjectsResponseProjectsItem,
 ) as any as S.Schema<ListProjectsResponseProjectsList>;
 
@@ -3789,7 +3584,7 @@ export interface ListProjectsResponse {
   page?: number;
   projects?: ListProjectsResponseProjectsList;
 }
-export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     projects: S.optional(ListProjectsResponseProjectsList),
@@ -3810,7 +3605,7 @@ export interface ListSecretsRequest {
   /** Whether to include Doppler's auto-generated (managed) secrets */
   include_managed_secrets?: boolean;
 }
-export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -3822,7 +3617,7 @@ export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSecretsRequest" }) as any as S.Schema<ListSecretsRequest>;
 
 export type ListSecretsResponseSecretsSTRIPERawVisibility = "unmasked" | "masked" | "restricted";
-export const ListSecretsResponseSecretsSTRIPERawVisibility = S.String;
+const ListSecretsResponseSecretsSTRIPERawVisibility = S.String;
 
 export interface ListSecretsResponseSecretsSTRIPE {
   raw?: string;
@@ -3831,7 +3626,7 @@ export interface ListSecretsResponseSecretsSTRIPE {
   rawVisibility?: ListSecretsResponseSecretsSTRIPERawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.optional(S.String),
     computed: S.optional(S.String),
@@ -3844,8 +3639,6 @@ export const ListSecretsResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSecretsResponseSecretsSTRIPE>;
 
 export type ListSecretsResponseSecretsALGOLIARawVisibility = "unmasked" | "masked" | "restricted";
-export const ListSecretsResponseSecretsALGOLIARawVisibility = S.String;
-
 export interface ListSecretsResponseSecretsALGOLIA {
   raw?: string;
   computed?: string;
@@ -3853,12 +3646,10 @@ export interface ListSecretsResponseSecretsALGOLIA {
   rawVisibility?: ListSecretsResponseSecretsALGOLIARawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsALGOLIA =
+const ListSecretsResponseSecretsALGOLIA =
   ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsALGOLIA>;
 
 export type ListSecretsResponseSecretsDATABASERawVisibility = "unmasked" | "masked" | "restricted";
-export const ListSecretsResponseSecretsDATABASERawVisibility = S.String;
-
 export interface ListSecretsResponseSecretsDATABASE {
   raw?: string;
   computed?: string;
@@ -3866,12 +3657,10 @@ export interface ListSecretsResponseSecretsDATABASE {
   rawVisibility?: ListSecretsResponseSecretsDATABASERawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsDATABASE =
+const ListSecretsResponseSecretsDATABASE =
   ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsDATABASE>;
 
 export type ListSecretsResponseSecretsUSERRawVisibility = "unmasked" | "masked" | "restricted";
-export const ListSecretsResponseSecretsUSERRawVisibility = S.String;
-
 export interface ListSecretsResponseSecretsUSER {
   raw?: string;
   computed?: string;
@@ -3879,7 +3668,7 @@ export interface ListSecretsResponseSecretsUSER {
   rawVisibility?: ListSecretsResponseSecretsUSERRawVisibility;
   computedVisibility?: string;
 }
-export const ListSecretsResponseSecretsUSER =
+const ListSecretsResponseSecretsUSER =
   ListSecretsResponseSecretsSTRIPE as any as S.Schema<ListSecretsResponseSecretsUSER>;
 
 export interface ListSecretsResponseSecrets {
@@ -3888,7 +3677,7 @@ export interface ListSecretsResponseSecrets {
   DATABASE?: ListSecretsResponseSecretsDATABASE;
   USER?: ListSecretsResponseSecretsUSER;
 }
-export const ListSecretsResponseSecrets = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponseSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     STRIPE: S.optional(ListSecretsResponseSecretsSTRIPE),
     ALGOLIA: S.optional(ListSecretsResponseSecretsALGOLIA),
@@ -3902,7 +3691,7 @@ export const ListSecretsResponseSecrets = /*@__PURE__*/ S.suspend(() =>
 export interface ListSecretsResponse {
   secrets?: ListSecretsResponseSecrets;
 }
-export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: S.optional(ListSecretsResponseSecrets),
   }),
@@ -3914,7 +3703,7 @@ export interface ListUsersRequest {
   /** Filter results to only include the user with the provided email address */
   email?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     email: S.optional(S.String.pipe(T.Query())),
@@ -3922,13 +3711,9 @@ export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRequest" }) as any as S.Schema<ListUsersRequest>;
 
 export type ListUsersResponseWorkplaceUsersItemUser = ConfigLogsGetResponseLogUser;
-export const ListUsersResponseWorkplaceUsersItemUser = ConfigLogsGetResponseLogUser;
-
 export type ListUsersResponseWorkplaceUsersItem = GetUserResponseWorkplaceUser;
-export const ListUsersResponseWorkplaceUsersItem = GetUserResponseWorkplaceUser;
-
 export type ListUsersResponseWorkplaceUsersList = Array<GetUserResponseWorkplaceUser>;
-export const ListUsersResponseWorkplaceUsersList = /*@__PURE__*/ S.Array(
+const ListUsersResponseWorkplaceUsersList = /*@__PURE__*/ S.Array(
   GetUserResponseWorkplaceUser,
 ) as any as S.Schema<ListUsersResponseWorkplaceUsersList>;
 
@@ -3937,7 +3722,7 @@ export interface ListUsersResponse {
   page?: number;
   success?: boolean;
 }
-export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workplace_users: S.optional(ListUsersResponseWorkplaceUsersList),
     page: S.optional(S.Number),
@@ -3949,25 +3734,23 @@ export interface ListWebhooksRequest {
   /** The project's name */
   project?: string;
 }
-export const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/v3/webhooks", code: 200 })),
 ).annotate({ identifier: "ListWebhooksRequest" }) as any as S.Schema<ListWebhooksRequest>;
 
 export type ListWebhooksResponseWebhooksItemAuthenticationType = "None" | "Basic" | "Bearer";
-export const ListWebhooksResponseWebhooksItemAuthenticationType = S.String;
-
 /** Webhook's authentication type */
 export interface ListWebhooksResponseWebhooksItemAuthentication {
   type?: ListWebhooksResponseWebhooksItemAuthenticationType;
 }
-export const ListWebhooksResponseWebhooksItemAuthentication =
+const ListWebhooksResponseWebhooksItemAuthentication =
   GetWebhookResponseWebhookAuthentication as any as S.Schema<ListWebhooksResponseWebhooksItemAuthentication>;
 
 /** The configs the webhook will trigger for */
 export type ListWebhooksResponseWebhooksItemEnabledConfigsList = Array<string>;
-export const ListWebhooksResponseWebhooksItemEnabledConfigsList =
+const ListWebhooksResponseWebhooksItemEnabledConfigsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ListWebhooksResponseWebhooksItemEnabledConfigsList>;
 
 export interface ListWebhooksResponseWebhooksItem {
@@ -3988,7 +3771,7 @@ export interface ListWebhooksResponseWebhooksItem {
   /** Whether the requestor has permission to modify the webhook */
   canManage?: boolean;
 }
-export const ListWebhooksResponseWebhooksItem = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponseWebhooksItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4004,14 +3787,14 @@ export const ListWebhooksResponseWebhooksItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWebhooksResponseWebhooksItem>;
 
 export type ListWebhooksResponseWebhooksList = Array<ListWebhooksResponseWebhooksItem>;
-export const ListWebhooksResponseWebhooksList = /*@__PURE__*/ S.Array(
+const ListWebhooksResponseWebhooksList = /*@__PURE__*/ S.Array(
   ListWebhooksResponseWebhooksItem,
 ) as any as S.Schema<ListWebhooksResponseWebhooksList>;
 
 export interface ListWebhooksResponse {
   webhooks: ListWebhooksResponseWebhooksList;
 }
-export const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhooks: ListWebhooksResponseWebhooksList,
   }),
@@ -4023,7 +3806,7 @@ export interface LockConfigRequest {
   /** Name of the config. */
   config: string;
 }
-export const LockConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const LockConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -4031,52 +3814,42 @@ export const LockConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LockConfigRequest" }) as any as S.Schema<LockConfigRequest>;
 
 export type LockConfigResponseConfig = CloneConfigResponseConfig;
-export const LockConfigResponseConfig = CloneConfigResponseConfig;
-
 export interface LockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const LockConfigResponse = CloneConfigResponse as any as S.Schema<LockConfigResponse>;
+const LockConfigResponse = CloneConfigResponse as any as S.Schema<LockConfigResponse>;
 
 export type PostV3workplacechangeRequestsRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const PostV3workplacechangeRequestsRequestAssignedItemType = S.String;
-
 export interface PostV3workplacechangeRequestsRequestAssignedItem {
   type: PostV3workplacechangeRequestsRequestAssignedItemType | (string & {});
   slug: string;
 }
-export const PostV3workplacechangeRequestsRequestAssignedItem =
-  CreateChangeRequestPolicyRequestRulesItemSubjectsItem as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedItem>;
-
 export type PostV3workplacechangeRequestsRequestAssignedList =
   Array<PostV3workplacechangeRequestsRequestAssignedItem>;
-export const PostV3workplacechangeRequestsRequestAssignedList =
+const PostV3workplacechangeRequestsRequestAssignedList =
   CreateChangeRequestPolicyRequestRulesItemSubjectsList as any as S.Schema<PostV3workplacechangeRequestsRequestAssignedList>;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemAction = "create";
-export const PostV3workplacechangeRequestsRequestUnitsItemAction = S.String;
+const PostV3workplacechangeRequestsRequestUnitsItemAction = S.String;
 
 export interface PostV3workplacechangeRequestsRequestUnitsItemTarget {
   project: string;
   config: string;
 }
-export const PostV3workplacechangeRequestsRequestUnitsItemTarget =
+const PostV3workplacechangeRequestsRequestUnitsItemTarget =
   ConfigsInheritsRequestInheritsItem as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemTarget>;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemStatus = "draft" | "open";
-export const PostV3workplacechangeRequestsRequestUnitsItemStatus = S.String;
+const PostV3workplacechangeRequestsRequestUnitsItemStatus = S.String;
 
 /** 0 = masked, 1 = unmasked, 2 = restricted */
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType = 0 | 1 | 2;
-export const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType = S.Number;
+const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType = S.Number;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
-export const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemValueType =
-  GetSecretResponseValueRawValueType;
-
 export interface PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem {
   name: string;
   value?: string;
@@ -4088,24 +3861,23 @@ export interface PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem {
   generationSettings?: unknown;
   originalSecretUpdateName?: string;
 }
-export const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      value: S.optional(S.String),
-      shouldDelete: S.optional(S.Boolean),
-      visType: S.optional(PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType),
-      valueType: S.optional(GetSecretResponseValueRawValueType),
-      generationSettings: S.optional(S.Unknown),
-      originalSecretUpdateName: S.optional(S.String),
-    }),
+const PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.optional(S.String),
+    shouldDelete: S.optional(S.Boolean),
+    visType: S.optional(PostV3workplacechangeRequestsRequestUnitsItemUpdatesItemVisType),
+    valueType: S.optional(GetSecretResponseValueRawValueType),
+    generationSettings: S.optional(S.Unknown),
+    originalSecretUpdateName: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem",
 }) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem>;
 
 export type PostV3workplacechangeRequestsRequestUnitsItemUpdatesList =
   Array<PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem>;
-export const PostV3workplacechangeRequestsRequestUnitsItemUpdatesList = /*@__PURE__*/ S.Array(
+const PostV3workplacechangeRequestsRequestUnitsItemUpdatesList = /*@__PURE__*/ S.Array(
   PostV3workplacechangeRequestsRequestUnitsItemUpdatesItem,
 ) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsItemUpdatesList>;
 
@@ -4116,7 +3888,7 @@ export interface PostV3workplacechangeRequestsRequestUnitsItem {
   status?: PostV3workplacechangeRequestsRequestUnitsItemStatus | (string & {});
   updates: PostV3workplacechangeRequestsRequestUnitsItemUpdatesList;
 }
-export const PostV3workplacechangeRequestsRequestUnitsItem = /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestsRequestUnitsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: PostV3workplacechangeRequestsRequestUnitsItemAction,
     id: S.optional(S.String),
@@ -4130,7 +3902,7 @@ export const PostV3workplacechangeRequestsRequestUnitsItem = /*@__PURE__*/ S.sus
 
 export type PostV3workplacechangeRequestsRequestUnitsList =
   Array<PostV3workplacechangeRequestsRequestUnitsItem>;
-export const PostV3workplacechangeRequestsRequestUnitsList = /*@__PURE__*/ S.Array(
+const PostV3workplacechangeRequestsRequestUnitsList = /*@__PURE__*/ S.Array(
   PostV3workplacechangeRequestsRequestUnitsItem,
 ) as any as S.Schema<PostV3workplacechangeRequestsRequestUnitsList>;
 
@@ -4140,7 +3912,7 @@ export interface PostV3workplacechangeRequestsRequest {
   assigned: PostV3workplacechangeRequestsRequestAssignedList;
   units: PostV3workplacechangeRequestsRequestUnitsList;
 }
-export const PostV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     description: S.optional(S.String),
@@ -4154,7 +3926,7 @@ export const PostV3workplacechangeRequestsRequest = /*@__PURE__*/ S.suspend(() =
 export interface PostV3workplacechangeRequestsResponseChangeRequest {
   id?: string;
 }
-export const PostV3workplacechangeRequestsResponseChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestsResponseChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -4165,7 +3937,7 @@ export const PostV3workplacechangeRequestsResponseChangeRequest = /*@__PURE__*/ 
 export interface PostV3workplacechangeRequestsResponse {
   changeRequest?: PostV3workplacechangeRequestsResponseChangeRequest;
 }
-export const PostV3workplacechangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeRequest: S.optional(PostV3workplacechangeRequestsResponseChangeRequest),
   }),
@@ -4176,8 +3948,7 @@ export const PostV3workplacechangeRequestsResponse = /*@__PURE__*/ S.suspend(() 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
-  S.String;
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType = S.String;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem {
   type:
@@ -4185,7 +3956,7 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdReques
     | (string & {});
   slug: string;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType,
@@ -4197,7 +3968,7 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAss
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   Array<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   /*@__PURE__*/ S.Array(
     PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem,
   ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
@@ -4206,8 +3977,8 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdReques
   change_request_id: string;
   assigned: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
       assigned: PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList,
@@ -4218,15 +3989,14 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
+).annotate({
+  identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
+}) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType =
-  S.String;
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType = S.String;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem {
   type?: PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItemType;
@@ -4235,7 +4005,7 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdRespon
   email?: string;
   image?: string;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       type: S.optional(
@@ -4252,7 +4022,7 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAs
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList =
   Array<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem>;
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList =
   /*@__PURE__*/ S.Array(
     PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedItem,
   ) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList>;
@@ -4260,21 +4030,21 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAs
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   assigned?: PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       assigned: S.optional(
         PostV3workplacechangeRequestschangeRequestChangeRequestIdResponseAssignedList,
       ),
     }),
-  ).annotate({
-    identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
-  }) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
+).annotate({
+  identifier: "PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
+}) as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest {
   change_request_id: string;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -4292,7 +4062,7 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseReque
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse {
   success?: boolean;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdCloseResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       success: S.optional(S.Boolean),
@@ -4305,7 +4075,7 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
   change_request_id: string;
   unit_id: string;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -4324,27 +4094,21 @@ export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitU
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus =
   "applied";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus =
-  S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit {
   id?: string;
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnitStatus;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponseUnit;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse =
   DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdApplyResponse>;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest {
   change_request_id: string;
   unit_id: string;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -4365,27 +4129,21 @@ export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUn
   | "draft"
   | "open"
   | "canceled";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus =
-  S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit {
   id?: string;
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnitStatus;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse =
   DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse>;
 
 export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
   | "draft"
   | "open"
   | "canceled";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus =
   S.String;
 
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest {
@@ -4395,7 +4153,7 @@ export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsu
     | PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequestStatus
     | (string & {});
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
@@ -4418,48 +4176,41 @@ export type PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUn
   | "draft"
   | "open"
   | "canceled";
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnitStatus =
-  S.String;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit {
   id?: string;
   status?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnitStatus;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit =
-  DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponseUnit as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit>;
-
 export interface PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse {
   unit?: PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponseUnit;
 }
-export const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse =
+const PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse =
   DeleteV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdReviewResponse as any as S.Schema<PostV3workplacechangeRequestschangeRequestChangeRequestIdUnitsunitUnitIdStatusResponse>;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod =
   "oidc";
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod =
-  S.String;
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestMethod = S.String;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType =
   | "exact"
   | "wildcard";
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsType =
   S.String;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
   Array<string>;
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList>;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
   Array<string>;
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList>;
 
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims {
   aud: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList;
   sub: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsSubList;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       aud: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaimsAudList,
@@ -4477,7 +4228,7 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
     | (string & {});
   claims: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.String,
@@ -4499,7 +4250,7 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   config: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfig;
   ttl_seconds: number;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service_account: S.String.pipe(T.Label()),
@@ -4520,24 +4271,18 @@ export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitie
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod =
   "oidc";
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod =
   S.String;
 
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList =
   Array<string>;
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList>;
-
 export type PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList =
   Array<string>;
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList>;
-
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims {
   aud?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsAudList;
   sub?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaimsSubList;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfigClaims>;
 
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig {
@@ -4548,7 +4293,7 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   created_at?: string;
   last_seen_at?: string;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.optional(S.String),
@@ -4571,7 +4316,7 @@ export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdent
   method?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityMethod;
   config?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentityConfig;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -4591,7 +4336,7 @@ export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitie
 export interface PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse {
   identity?: PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentity;
 }
-export const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
+const PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identity: S.optional(
@@ -4607,11 +4352,11 @@ export type ProjectMembersAddRequestType =
   | "group"
   | "invite"
   | "service_account";
-export const ProjectMembersAddRequestType = S.String;
+const ProjectMembersAddRequestType = S.String;
 
 /** Environment slugs to grant the member access to */
 export type ProjectMembersAddRequestEnvironmentsList = Array<string>;
-export const ProjectMembersAddRequestEnvironmentsList =
+const ProjectMembersAddRequestEnvironmentsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddRequestEnvironmentsList>;
 
 export interface ProjectMembersAddRequest {
@@ -4625,7 +4370,7 @@ export interface ProjectMembersAddRequest {
   /** Environment slugs to grant the member access to */
   environments?: ProjectMembersAddRequestEnvironmentsList;
 }
-export const ProjectMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     type: ProjectMembersAddRequestType,
@@ -4636,10 +4381,8 @@ export const ProjectMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectMembersAddRequest" }) as any as S.Schema<ProjectMembersAddRequest>;
 
 export type ProjectMembersAddResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-export const ProjectMembersAddResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type ProjectMembersAddResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersAddResponseMemberEnvironmentsList =
+const ProjectMembersAddResponseMemberEnvironmentsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersAddResponseMemberEnvironmentsList>;
 
 export interface ProjectMembersAddResponseMember {
@@ -4649,7 +4392,7 @@ export interface ProjectMembersAddResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersAddResponseMemberEnvironmentsList;
 }
-export const ProjectMembersAddResponseMember = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersAddResponseMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     slug: S.optional(S.String),
@@ -4664,7 +4407,7 @@ export const ProjectMembersAddResponseMember = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectMembersAddResponse {
   member?: ProjectMembersAddResponseMember;
 }
-export const ProjectMembersAddResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersAddResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     member: S.optional(ProjectMembersAddResponseMember),
   }),
@@ -4677,7 +4420,7 @@ export type ProjectMembersDeleteRequestType =
   | "group"
   | "invite"
   | "service_account";
-export const ProjectMembersDeleteRequestType = S.String;
+const ProjectMembersDeleteRequestType = S.String;
 
 export interface ProjectMembersDeleteRequest {
   type: ProjectMembersDeleteRequestType | (string & {});
@@ -4686,7 +4429,7 @@ export interface ProjectMembersDeleteRequest {
   /** Project slug */
   project: string;
 }
-export const ProjectMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ProjectMembersDeleteRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -4703,7 +4446,7 @@ export const ProjectMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectMembersDeleteRequest>;
 
 export interface ProjectMembersDeleteResponse {}
-export const ProjectMembersDeleteResponse =
+const ProjectMembersDeleteResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectMembersDeleteResponse>;
 
 export type ProjectMembersGetRequestType =
@@ -4711,7 +4454,7 @@ export type ProjectMembersGetRequestType =
   | "group"
   | "invite"
   | "service_account";
-export const ProjectMembersGetRequestType = S.String;
+const ProjectMembersGetRequestType = S.String;
 
 export interface ProjectMembersGetRequest {
   type: ProjectMembersGetRequestType | (string & {});
@@ -4720,7 +4463,7 @@ export interface ProjectMembersGetRequest {
   /** Project slug */
   project: string;
 }
-export const ProjectMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ProjectMembersGetRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -4731,12 +4474,7 @@ export const ProjectMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectMembersGetRequest" }) as any as S.Schema<ProjectMembersGetRequest>;
 
 export type ProjectMembersGetResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-export const ProjectMembersGetResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type ProjectMembersGetResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersGetResponseMemberEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersGetResponseMemberEnvironmentsList>;
-
 export interface ProjectMembersGetResponseMember {
   type?: string;
   slug?: string;
@@ -4744,13 +4482,10 @@ export interface ProjectMembersGetResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersGetResponseMemberEnvironmentsList;
 }
-export const ProjectMembersGetResponseMember =
-  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersGetResponseMember>;
-
 export interface ProjectMembersGetResponse {
   member?: ProjectMembersGetResponseMember;
 }
-export const ProjectMembersGetResponse =
+const ProjectMembersGetResponse =
   ProjectMembersAddResponse as any as S.Schema<ProjectMembersGetResponse>;
 
 export interface ProjectMembersListRequest {
@@ -4759,7 +4494,7 @@ export interface ProjectMembersListRequest {
   page?: number;
   per_page?: number;
 }
-export const ProjectMembersListRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -4770,12 +4505,7 @@ export const ProjectMembersListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectMembersListRequest>;
 
 export type ProjectMembersListResponseMembersItemRole = CreateGroupResponseGroupDefaultProjectRole;
-export const ProjectMembersListResponseMembersItemRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type ProjectMembersListResponseMembersItemEnvironmentsList = Array<string>;
-export const ProjectMembersListResponseMembersItemEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersListResponseMembersItemEnvironmentsList>;
-
 export interface ProjectMembersListResponseMembersItem {
   type?: string;
   slug?: string;
@@ -4783,18 +4513,18 @@ export interface ProjectMembersListResponseMembersItem {
   access_all_environments?: boolean;
   environments?: ProjectMembersListResponseMembersItemEnvironmentsList;
 }
-export const ProjectMembersListResponseMembersItem =
+const ProjectMembersListResponseMembersItem =
   ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersListResponseMembersItem>;
 
 export type ProjectMembersListResponseMembersList = Array<ProjectMembersListResponseMembersItem>;
-export const ProjectMembersListResponseMembersList = /*@__PURE__*/ S.Array(
+const ProjectMembersListResponseMembersList = /*@__PURE__*/ S.Array(
   ProjectMembersListResponseMembersItem,
 ) as any as S.Schema<ProjectMembersListResponseMembersList>;
 
 export interface ProjectMembersListResponse {
   members?: ProjectMembersListResponseMembersList;
 }
-export const ProjectMembersListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(ProjectMembersListResponseMembersList),
   }),
@@ -4807,11 +4537,11 @@ export type ProjectMembersUpdateRequestType =
   | "group"
   | "invite"
   | "service_account";
-export const ProjectMembersUpdateRequestType = S.String;
+const ProjectMembersUpdateRequestType = S.String;
 
 /** Environment slugs to grant the member access to */
 export type ProjectMembersUpdateRequestEnvironmentsList = Array<string>;
-export const ProjectMembersUpdateRequestEnvironmentsList =
+const ProjectMembersUpdateRequestEnvironmentsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersUpdateRequestEnvironmentsList>;
 
 export interface ProjectMembersUpdateRequest {
@@ -4825,7 +4555,7 @@ export interface ProjectMembersUpdateRequest {
   /** Environment slugs to grant the member access to */
   environments?: ProjectMembersUpdateRequestEnvironmentsList;
 }
-export const ProjectMembersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectMembersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ProjectMembersUpdateRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -4844,12 +4574,7 @@ export const ProjectMembersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectMembersUpdateRequest>;
 
 export type ProjectMembersUpdateResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-export const ProjectMembersUpdateResponseMemberRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type ProjectMembersUpdateResponseMemberEnvironmentsList = Array<string>;
-export const ProjectMembersUpdateResponseMemberEnvironmentsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectMembersUpdateResponseMemberEnvironmentsList>;
-
 export interface ProjectMembersUpdateResponseMember {
   type?: string;
   slug?: string;
@@ -4857,18 +4582,15 @@ export interface ProjectMembersUpdateResponseMember {
   access_all_environments?: boolean;
   environments?: ProjectMembersUpdateResponseMemberEnvironmentsList;
 }
-export const ProjectMembersUpdateResponseMember =
-  ProjectMembersAddResponseMember as any as S.Schema<ProjectMembersUpdateResponseMember>;
-
 export interface ProjectMembersUpdateResponse {
   member?: ProjectMembersUpdateResponseMember;
 }
-export const ProjectMembersUpdateResponse =
+const ProjectMembersUpdateResponse =
   ProjectMembersAddResponse as any as S.Schema<ProjectMembersUpdateResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesCreateRequestPermissionsList = Array<string>;
-export const ProjectRolesCreateRequestPermissionsList =
+const ProjectRolesCreateRequestPermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateRequestPermissionsList>;
 
 export interface ProjectRolesCreateRequest {
@@ -4877,7 +4599,7 @@ export interface ProjectRolesCreateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
   permissions: ProjectRolesCreateRequestPermissionsList;
 }
-export const ProjectRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     permissions: ProjectRolesCreateRequestPermissionsList,
@@ -4887,7 +4609,7 @@ export const ProjectRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesCreateRequest>;
 
 export type ProjectRolesCreateResponseRolePermissionsList = Array<string>;
-export const ProjectRolesCreateResponseRolePermissionsList =
+const ProjectRolesCreateResponseRolePermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesCreateResponseRolePermissionsList>;
 
 export interface ProjectRolesCreateResponseRole {
@@ -4897,7 +4619,7 @@ export interface ProjectRolesCreateResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesCreateResponseRole = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesCreateResponseRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     permissions: S.optional(ProjectRolesCreateResponseRolePermissionsList),
@@ -4912,7 +4634,7 @@ export const ProjectRolesCreateResponseRole = /*@__PURE__*/ S.suspend(() =>
 export interface ProjectRolesCreateResponse {
   role?: ProjectRolesCreateResponseRole;
 }
-export const ProjectRolesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(ProjectRolesCreateResponseRole),
   }),
@@ -4924,7 +4646,7 @@ export interface ProjectRolesDeleteRequest {
   /** The role's unique identifier */
   role: string;
 }
-export const ProjectRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/projects/roles/role/{role}", code: 200 })),
@@ -4933,23 +4655,20 @@ export const ProjectRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesDeleteRequest>;
 
 export interface ProjectRolesDeleteResponse {}
-export const ProjectRolesDeleteResponse =
+const ProjectRolesDeleteResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<ProjectRolesDeleteResponse>;
 
 export interface ProjectRolesGetRequest {
   /** The role's unique identifier */
   role: string;
 }
-export const ProjectRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/projects/roles/role/{role}", code: 200 })),
 ).annotate({ identifier: "ProjectRolesGetRequest" }) as any as S.Schema<ProjectRolesGetRequest>;
 
 export type ProjectRolesGetResponseRolePermissionsList = Array<string>;
-export const ProjectRolesGetResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesGetResponseRolePermissionsList>;
-
 export interface ProjectRolesGetResponseRole {
   name?: string;
   permissions?: ProjectRolesGetResponseRolePermissionsList;
@@ -4957,27 +4676,24 @@ export interface ProjectRolesGetResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesGetResponseRole =
+const ProjectRolesGetResponseRole =
   ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesGetResponseRole>;
 
 export interface ProjectRolesGetResponse {
   role?: ProjectRolesGetResponseRole;
 }
-export const ProjectRolesGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(ProjectRolesGetResponseRole),
   }),
 ).annotate({ identifier: "ProjectRolesGetResponse" }) as any as S.Schema<ProjectRolesGetResponse>;
 
 export interface ProjectRolesListRequest {}
-export const ProjectRolesListRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/projects/roles", code: 200 })),
 ).annotate({ identifier: "ProjectRolesListRequest" }) as any as S.Schema<ProjectRolesListRequest>;
 
 export type ProjectRolesListResponseRolesItemPermissionsList = Array<string>;
-export const ProjectRolesListResponseRolesItemPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesListResponseRolesItemPermissionsList>;
-
 export interface ProjectRolesListResponseRolesItem {
   name?: string;
   permissions?: ProjectRolesListResponseRolesItemPermissionsList;
@@ -4985,38 +4701,38 @@ export interface ProjectRolesListResponseRolesItem {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesListResponseRolesItem =
+const ProjectRolesListResponseRolesItem =
   ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesListResponseRolesItem>;
 
 export type ProjectRolesListResponseRolesList = Array<ProjectRolesListResponseRolesItem>;
-export const ProjectRolesListResponseRolesList = /*@__PURE__*/ S.Array(
+const ProjectRolesListResponseRolesList = /*@__PURE__*/ S.Array(
   ProjectRolesListResponseRolesItem,
 ) as any as S.Schema<ProjectRolesListResponseRolesList>;
 
 export interface ProjectRolesListResponse {
   roles?: ProjectRolesListResponseRolesList;
 }
-export const ProjectRolesListResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(ProjectRolesListResponseRolesList),
   }),
 ).annotate({ identifier: "ProjectRolesListResponse" }) as any as S.Schema<ProjectRolesListResponse>;
 
 export interface ProjectRolesListPermissionsRequest {}
-export const ProjectRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/projects/permissions", code: 200 })),
 ).annotate({
   identifier: "ProjectRolesListPermissionsRequest",
 }) as any as S.Schema<ProjectRolesListPermissionsRequest>;
 
 export type ProjectRolesListPermissionsResponsePermissionsList = Array<string>;
-export const ProjectRolesListPermissionsResponsePermissionsList =
+const ProjectRolesListPermissionsResponsePermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesListPermissionsResponsePermissionsList>;
 
 export interface ProjectRolesListPermissionsResponse {
   permissions?: ProjectRolesListPermissionsResponsePermissionsList;
 }
-export const ProjectRolesListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(ProjectRolesListPermissionsResponsePermissionsList),
   }),
@@ -5026,7 +4742,7 @@ export const ProjectRolesListPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
 export type ProjectRolesUpdateRequestPermissionsList = Array<string>;
-export const ProjectRolesUpdateRequestPermissionsList =
+const ProjectRolesUpdateRequestPermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesUpdateRequestPermissionsList>;
 
 export interface ProjectRolesUpdateRequest {
@@ -5037,7 +4753,7 @@ export interface ProjectRolesUpdateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `enclave_config_access_logs`, `enclave_config_change_request_policy_manage`, `enclave_config_change_request_review`, `enclave_config_logs`, `enclave_config_secrets_referencing`, `enclave_config_syncs_manage`, `enclave_config_toggle_inheritable`, `enclave_project_config_create`, `enclave_project_config_delete`, `enclave_project_config_duplicate`, `enclave_project_config_dynamic_secrets_leases_write`, `enclave_project_config_dynamic_secrets_manage`, `enclave_project_config_dynamic_secrets_read`, `enclave_project_config_lock`, `enclave_project_config_logs_rollback`, `enclave_project_config_rename`, `enclave_project_config_rotated_secrets_manage`, `enclave_project_config_rotated_secrets_read`, `enclave_project_config_secrets_read`, `enclave_project_config_secrets_write`, `enclave_project_config_service_tokens`, `enclave_project_config_trusted_ips`, `enclave_project_delete`, `enclave_project_environment_all`, `enclave_project_environment_create`, `enclave_project_environment_delete`, `enclave_project_environment_list_all`, `enclave_project_environment_order`, `enclave_project_environment_rename`, `enclave_project_environment_settings_manage`, `enclave_project_inheritance`, `enclave_project_members`, `enclave_project_rename`, `enclave_project_secrets_notes_manage`, `enclave_project_secrets_referencing`, `enclave_project_webhooks`, `enclave_secret_reminders` */
   permissions?: ProjectRolesUpdateRequestPermissionsList;
 }
-export const ProjectRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ProjectRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -5048,9 +4764,6 @@ export const ProjectRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectRolesUpdateRequest>;
 
 export type ProjectRolesUpdateResponseRolePermissionsList = Array<string>;
-export const ProjectRolesUpdateResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ProjectRolesUpdateResponseRolePermissionsList>;
-
 export interface ProjectRolesUpdateResponseRole {
   name?: string;
   permissions?: ProjectRolesUpdateResponseRolePermissionsList;
@@ -5058,51 +4771,40 @@ export interface ProjectRolesUpdateResponseRole {
   created_at?: string;
   is_custom_role?: boolean;
 }
-export const ProjectRolesUpdateResponseRole =
-  ProjectRolesCreateResponseRole as any as S.Schema<ProjectRolesUpdateResponseRole>;
-
 export interface ProjectRolesUpdateResponse {
   role?: ProjectRolesUpdateResponseRole;
 }
-export const ProjectRolesUpdateResponse =
+const ProjectRolesUpdateResponse =
   ProjectRolesCreateResponse as any as S.Schema<ProjectRolesUpdateResponse>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
   | "WorkplaceUser"
   | "ServiceAccount";
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType =
-  S.String;
-
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem {
   type:
     | PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItemType
     | (string & {});
   slug: string;
 }
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem =
-  PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedItem>;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList =
   PostV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction =
   | "create"
   | "update";
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction =
-  S.String;
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction = S.String;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus =
   | "draft"
   | "open";
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus =
-  S.String;
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemStatus = S.String;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction =
   | "upsert"
   | "delete";
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction =
   S.String;
 
 /** 0 = masked, 1 = unmasked, 2 = restricted */
@@ -5110,14 +4812,11 @@ export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnits
   | 0
   | 1
   | 2;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemVisType =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemVisType =
   S.Number;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemValueType =
   GetSecretResponseValueRawValueType;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemValueType =
-  GetSecretResponseValueRawValueType;
-
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem {
   action?:
     | PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItemAction
@@ -5134,7 +4833,7 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   generationSettings?: unknown;
   originalSecretUpdateName?: string;
 }
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: S.optional(
@@ -5157,7 +4856,7 @@ export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnit
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem>;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList =
   /*@__PURE__*/ S.Array(
     PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesItem,
   ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList>;
@@ -5172,7 +4871,7 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
     | (string & {});
   updates: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemUpdatesList;
 }
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       action: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItemAction,
@@ -5188,7 +4887,7 @@ export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnit
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList =
   Array<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem>;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList =
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList =
   /*@__PURE__*/ S.Array(
     PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsItem,
   ) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList>;
@@ -5200,8 +4899,8 @@ export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest
   assigned?: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestAssignedList;
   units?: PutV3workplacechangeRequestschangeRequestChangeRequestIdRequestUnitsList;
 }
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       change_request_id: S.String.pipe(T.Label()),
       title: S.optional(S.String),
@@ -5217,53 +4916,44 @@ export const PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
-  }) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
+).annotate({
+  identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest",
+}) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdRequest>;
 
 export type PutV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
   PostV3workplacechangeRequestsResponseChangeRequest;
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdResponseChangeRequest =
-  PostV3workplacechangeRequestsResponseChangeRequest;
-
 export interface PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse {
   changeRequest?: PostV3workplacechangeRequestsResponseChangeRequest;
 }
-export const PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       changeRequest: S.optional(PostV3workplacechangeRequestsResponseChangeRequest),
     }),
-  ).annotate({
-    identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
-  }) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
+).annotate({
+  identifier: "PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse",
+}) as any as S.Schema<PutV3workplacechangeRequestschangeRequestChangeRequestIdResponse>;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod =
   "oidc";
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestMethod =
   S.String;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType =
   | "exact"
   | "wildcard";
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsType =
   S.String;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList =
   Array<string>;
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList>;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList =
   Array<string>;
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims {
   aud: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsAudList;
   sub: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaimsSubList;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims =
   PostV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesRequestConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig {
@@ -5273,7 +4963,7 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
     | (string & {});
   claims: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfigClaims;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.String,
@@ -5297,7 +4987,7 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   config: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequestConfig;
   ttl_seconds: number;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       service_account: S.String.pipe(T.Label()),
@@ -5322,30 +5012,24 @@ export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   "oidc";
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityMethod =
   S.String;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   | "wildcard"
   | "exact";
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType =
   S.String;
 
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
   Array<string>;
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList>;
-
 export type PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
   Array<string>;
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList>;
-
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims {
   aud?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsAudList;
   sub?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsSubList;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaims as any as S.Schema<PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims>;
 
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig {
@@ -5353,7 +5037,7 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   claims_type?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaimsType;
   claims?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfigClaims;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentityConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       discovery_url: S.optional(S.String),
@@ -5378,7 +5062,7 @@ export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdenti
   created_at?: string;
   last_seen_at?: string;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       slug: S.optional(S.String),
@@ -5401,7 +5085,7 @@ export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentities
 export interface PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse {
   identity?: PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponseIdentity;
 }
-export const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
+const PutV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesidentityIdentityResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       identity: S.optional(
@@ -5425,7 +5109,7 @@ export interface RenameEnvironmentRequest {
   /** Whether or not to enable personal configs for the environment */
   personal_configs?: boolean;
 }
-export const RenameEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     environment: S.String.pipe(T.Query()),
@@ -5436,38 +5120,35 @@ export const RenameEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenameEnvironmentRequest" }) as any as S.Schema<RenameEnvironmentRequest>;
 
 export type RenameEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
-export const RenameEnvironmentResponseEnvironment = CreateEnvironmentResponseEnvironment;
-
 export interface RenameEnvironmentResponse {
   environment?: CreateEnvironmentResponseEnvironment;
 }
-export const RenameEnvironmentResponse =
+const RenameEnvironmentResponse =
   CreateEnvironmentResponse as any as S.Schema<RenameEnvironmentResponse>;
 
 export interface RevokeAuthRequest {
   token: string;
 }
-export const RevokeAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
   }).pipe(T.Http({ method: "POST", uri: "/v3/auth/revoke", code: 200 })),
 ).annotate({ identifier: "RevokeAuthRequest" }) as any as S.Schema<RevokeAuthRequest>;
 
 export interface RevokeAuthResponse {}
-export const RevokeAuthResponse =
-  ConfigsDeleteTrustedIpResponse as any as S.Schema<RevokeAuthResponse>;
+const RevokeAuthResponse = ConfigsDeleteTrustedIpResponse as any as S.Schema<RevokeAuthResponse>;
 
 export interface RevokeCliAuthRequest {
   token: string | Redacted.Redacted<string>;
 }
-export const RevokeCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeCliAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String.pipe(T.SensitiveValue({})),
   }).pipe(T.Http({ method: "POST", uri: "/v3/auth/cli/revoke", code: 200 })),
 ).annotate({ identifier: "RevokeCliAuthRequest" }) as any as S.Schema<RevokeCliAuthRequest>;
 
 export type RevokeCliAuthResponse = unknown;
-export const RevokeCliAuthResponse = AddWebhookResponse as any as S.Schema<RevokeCliAuthResponse>;
+const RevokeCliAuthResponse = AddWebhookResponse as any as S.Schema<RevokeCliAuthResponse>;
 
 export interface SecretsNamesRequest {
   /** Unique identifier for the project object. */
@@ -5479,7 +5160,7 @@ export interface SecretsNamesRequest {
   /** Whether to include Doppler's auto-generated (managed) secrets */
   include_managed_secrets?: boolean;
 }
-export const SecretsNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const SecretsNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -5489,13 +5170,13 @@ export const SecretsNamesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecretsNamesRequest" }) as any as S.Schema<SecretsNamesRequest>;
 
 export type SecretsNamesResponseNamesList = Array<string>;
-export const SecretsNamesResponseNamesList =
+const SecretsNamesResponseNamesList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<SecretsNamesResponseNamesList>;
 
 export interface SecretsNamesResponse {
   names?: SecretsNamesResponseNamesList;
 }
-export const SecretsNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const SecretsNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(SecretsNamesResponseNamesList),
   }),
@@ -5509,7 +5190,7 @@ export interface SecretsUpdateNoteRequest {
   /** The note you want to set on the secret. This note will be applied to the specified secret in all environments. */
   note: string;
 }
-export const SecretsUpdateNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const SecretsUpdateNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String.pipe(T.Query())),
     secret: S.String.pipe(T.SensitiveValue({})),
@@ -5521,7 +5202,7 @@ export interface SecretsUpdateNoteResponse {
   secret?: string | Redacted.Redacted<string>;
   note?: string;
 }
-export const SecretsUpdateNoteResponse = /*@__PURE__*/ S.suspend(() =>
+const SecretsUpdateNoteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
     note: S.optional(S.String),
@@ -5532,7 +5213,7 @@ export const SecretsUpdateNoteResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Workplace permissions to grant */
 export type ServiceAccountsCreateRequestWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsCreateRequestWorkplaceRolePermissionsList =
+const ServiceAccountsCreateRequestWorkplaceRolePermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<ServiceAccountsCreateRequestWorkplaceRolePermissionsList>;
 
 /** You may provide an identifier OR permissions, but not both */
@@ -5542,7 +5223,7 @@ export interface ServiceAccountsCreateRequestWorkplaceRole {
   /** Workplace permissions to grant */
   permissions?: ServiceAccountsCreateRequestWorkplaceRolePermissionsList;
 }
-export const ServiceAccountsCreateRequestWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsCreateRequestWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.optional(S.String),
     permissions: S.optional(ServiceAccountsCreateRequestWorkplaceRolePermissionsList),
@@ -5556,7 +5237,7 @@ export interface ServiceAccountsCreateRequest {
   /** You may provide an identifier OR permissions, but not both */
   workplace_role?: ServiceAccountsCreateRequestWorkplaceRole;
 }
-export const ServiceAccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     workplace_role: S.optional(ServiceAccountsCreateRequestWorkplaceRole),
@@ -5566,7 +5247,7 @@ export const ServiceAccountsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountsCreateRequest>;
 
 export type ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList =
+const ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList>;
 
 export interface ServiceAccountsCreateResponseServiceAccountWorkplaceRole {
@@ -5577,18 +5258,17 @@ export interface ServiceAccountsCreateResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ServiceAccountsCreateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      permissions: S.optional(
-        ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList,
-      ),
-      identifier: S.optional(S.String),
-      created_at: S.optional(S.String),
-      is_custom_role: S.optional(S.Boolean),
-      is_inline_role: S.optional(S.Boolean),
-    }),
+const ServiceAccountsCreateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    permissions: S.optional(
+      ServiceAccountsCreateResponseServiceAccountWorkplaceRolePermissionsList,
+    ),
+    identifier: S.optional(S.String),
+    created_at: S.optional(S.String),
+    is_custom_role: S.optional(S.Boolean),
+    is_inline_role: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "ServiceAccountsCreateResponseServiceAccountWorkplaceRole",
 }) as any as S.Schema<ServiceAccountsCreateResponseServiceAccountWorkplaceRole>;
@@ -5599,7 +5279,7 @@ export interface ServiceAccountsCreateResponseServiceAccount {
   created_at?: string;
   workplace_role?: ServiceAccountsCreateResponseServiceAccountWorkplaceRole;
 }
-export const ServiceAccountsCreateResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsCreateResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -5613,7 +5293,7 @@ export const ServiceAccountsCreateResponseServiceAccount = /*@__PURE__*/ S.suspe
 export interface ServiceAccountsCreateResponse {
   service_account?: ServiceAccountsCreateResponseServiceAccount;
 }
-export const ServiceAccountsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.optional(ServiceAccountsCreateResponseServiceAccount),
   }),
@@ -5625,7 +5305,7 @@ export interface ServiceAccountsDeleteRequest {
   /** Slug of the service account */
   slug: string;
 }
-export const ServiceAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(
@@ -5640,14 +5320,14 @@ export const ServiceAccountsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountsDeleteRequest>;
 
 export interface ServiceAccountsDeleteResponse {}
-export const ServiceAccountsDeleteResponse =
+const ServiceAccountsDeleteResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<ServiceAccountsDeleteResponse>;
 
 export interface ServiceAccountsGetRequest {
   /** Slug of the service account */
   slug: string;
 }
-export const ServiceAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
   }).pipe(
@@ -5662,7 +5342,7 @@ export const ServiceAccountsGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountsGetRequest>;
 
 export type ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList =
+const ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList =
   GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList>;
 
 export interface ServiceAccountsGetResponseServiceAccountWorkplaceRole {
@@ -5673,7 +5353,7 @@ export interface ServiceAccountsGetResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ServiceAccountsGetResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsGetResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     permissions: S.optional(ServiceAccountsGetResponseServiceAccountWorkplaceRolePermissionsList),
@@ -5692,7 +5372,7 @@ export interface ServiceAccountsGetResponseServiceAccount {
   created_at?: string;
   workplace_role?: ServiceAccountsGetResponseServiceAccountWorkplaceRole;
 }
-export const ServiceAccountsGetResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsGetResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -5706,7 +5386,7 @@ export const ServiceAccountsGetResponseServiceAccount = /*@__PURE__*/ S.suspend(
 export interface ServiceAccountsGetResponse {
   service_account?: ServiceAccountsGetResponseServiceAccount;
 }
-export const ServiceAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.optional(ServiceAccountsGetResponseServiceAccount),
   }),
@@ -5718,7 +5398,7 @@ export interface ServiceAccountsListRequest {
   page?: number;
   per_page?: number;
 }
-export const ServiceAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -5729,9 +5409,6 @@ export const ServiceAccountsListRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList =
   Array<string>;
-export const ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList =
-  GetV3workplaceserviceAccountsserviceAccountServiceAccountIdentitiesResponseIdentitiesItemConfigClaimsAudList as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList>;
-
 export interface ServiceAccountsListResponseServiceAccountsItemWorkplaceRole {
   name?: string;
   permissions?: ServiceAccountsListResponseServiceAccountsItemWorkplaceRolePermissionsList;
@@ -5740,28 +5417,25 @@ export interface ServiceAccountsListResponseServiceAccountsItemWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ServiceAccountsListResponseServiceAccountsItemWorkplaceRole =
-  ServiceAccountsCreateResponseServiceAccountWorkplaceRole as any as S.Schema<ServiceAccountsListResponseServiceAccountsItemWorkplaceRole>;
-
 export interface ServiceAccountsListResponseServiceAccountsItem {
   name?: string;
   slug?: string;
   created_at?: string;
   workplace_role?: ServiceAccountsListResponseServiceAccountsItemWorkplaceRole;
 }
-export const ServiceAccountsListResponseServiceAccountsItem =
+const ServiceAccountsListResponseServiceAccountsItem =
   ServiceAccountsCreateResponseServiceAccount as any as S.Schema<ServiceAccountsListResponseServiceAccountsItem>;
 
 export type ServiceAccountsListResponseServiceAccountsList =
   Array<ServiceAccountsListResponseServiceAccountsItem>;
-export const ServiceAccountsListResponseServiceAccountsList = /*@__PURE__*/ S.Array(
+const ServiceAccountsListResponseServiceAccountsList = /*@__PURE__*/ S.Array(
   ServiceAccountsListResponseServiceAccountsItem,
 ) as any as S.Schema<ServiceAccountsListResponseServiceAccountsList>;
 
 export interface ServiceAccountsListResponse {
   service_accounts?: ServiceAccountsListResponseServiceAccountsList;
 }
-export const ServiceAccountsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_accounts: S.optional(ServiceAccountsListResponseServiceAccountsList),
   }),
@@ -5771,9 +5445,6 @@ export const ServiceAccountsListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Workplace permissions to grant */
 export type ServiceAccountsUpdateRequestWorkplaceRolePermissionsList = Array<string>;
-export const ServiceAccountsUpdateRequestWorkplaceRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRolePermissionsList>;
-
 /** You may provide an identifier OR permissions, but not both */
 export interface ServiceAccountsUpdateRequestWorkplaceRole {
   /** Identifier of an existing workplace role */
@@ -5781,7 +5452,7 @@ export interface ServiceAccountsUpdateRequestWorkplaceRole {
   /** Workplace permissions to grant */
   permissions?: ServiceAccountsUpdateRequestWorkplaceRolePermissionsList;
 }
-export const ServiceAccountsUpdateRequestWorkplaceRole =
+const ServiceAccountsUpdateRequestWorkplaceRole =
   ServiceAccountsCreateRequestWorkplaceRole as any as S.Schema<ServiceAccountsUpdateRequestWorkplaceRole>;
 
 export interface ServiceAccountsUpdateRequest {
@@ -5791,7 +5462,7 @@ export interface ServiceAccountsUpdateRequest {
   /** You may provide an identifier OR permissions, but not both */
   workplace_role?: ServiceAccountsUpdateRequestWorkplaceRole;
 }
-export const ServiceAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -5809,7 +5480,7 @@ export const ServiceAccountsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList =
   Array<unknown>;
-export const ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList =
+const ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList>;
@@ -5822,18 +5493,17 @@ export interface ServiceAccountsUpdateResponseServiceAccountWorkplaceRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const ServiceAccountsUpdateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      permissions: S.optional(
-        ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList,
-      ),
-      identifier: S.optional(S.String),
-      created_at: S.optional(S.String),
-      is_custom_role: S.optional(S.Boolean),
-      is_inline_role: S.optional(S.Boolean),
-    }),
+const ServiceAccountsUpdateResponseServiceAccountWorkplaceRole = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    permissions: S.optional(
+      ServiceAccountsUpdateResponseServiceAccountWorkplaceRolePermissionsList,
+    ),
+    identifier: S.optional(S.String),
+    created_at: S.optional(S.String),
+    is_custom_role: S.optional(S.Boolean),
+    is_inline_role: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "ServiceAccountsUpdateResponseServiceAccountWorkplaceRole",
 }) as any as S.Schema<ServiceAccountsUpdateResponseServiceAccountWorkplaceRole>;
@@ -5844,7 +5514,7 @@ export interface ServiceAccountsUpdateResponseServiceAccount {
   created_at?: string;
   workplace_role?: ServiceAccountsUpdateResponseServiceAccountWorkplaceRole;
 }
-export const ServiceAccountsUpdateResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsUpdateResponseServiceAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -5858,7 +5528,7 @@ export const ServiceAccountsUpdateResponseServiceAccount = /*@__PURE__*/ S.suspe
 export interface ServiceAccountsUpdateResponse {
   service_account?: ServiceAccountsUpdateResponseServiceAccount;
 }
-export const ServiceAccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.optional(ServiceAccountsUpdateResponseServiceAccount),
   }),
@@ -5874,7 +5544,7 @@ export interface ServiceAccountTokensCreateRequest {
   /** The datetime at which the API token should expire. If not provided, the API token will remain vaild indefinitely unless manually revoked */
   expires_at?: string;
 }
-export const ServiceAccountTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -5897,7 +5567,7 @@ export interface ServiceAccountTokensCreateResponseApiToken {
   last_seen_at?: unknown;
   expires_at?: string;
 }
-export const ServiceAccountTokensCreateResponseApiToken = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensCreateResponseApiToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -5914,7 +5584,7 @@ export interface ServiceAccountTokensCreateResponse {
   api_key?: string | Redacted.Redacted<string>;
   success?: boolean;
 }
-export const ServiceAccountTokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_token: S.optional(ServiceAccountTokensCreateResponseApiToken),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -5930,7 +5600,7 @@ export interface ServiceAccountTokensDeleteRequest {
   /** Slug of the API token */
   api_token: string;
 }
-export const ServiceAccountTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.String.pipe(T.Label()),
     api_token: S.String.pipe(T.Label()),
@@ -5946,7 +5616,7 @@ export const ServiceAccountTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountTokensDeleteRequest>;
 
 export interface ServiceAccountTokensDeleteResponse {}
-export const ServiceAccountTokensDeleteResponse =
+const ServiceAccountTokensDeleteResponse =
   DeleteWorkplaceIntegrationsIntegrationMemberResponse as any as S.Schema<ServiceAccountTokensDeleteResponse>;
 
 export interface ServiceAccountTokensGetRequest {
@@ -5955,7 +5625,7 @@ export interface ServiceAccountTokensGetRequest {
   /** Slug of the API token */
   api_token: string;
 }
-export const ServiceAccountTokensGetRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.String.pipe(T.Label()),
     api_token: S.String.pipe(T.Label()),
@@ -5977,7 +5647,7 @@ export interface ServiceAccountTokensGetResponseApiToken {
   last_seen_at?: string;
   expires_at?: string;
 }
-export const ServiceAccountTokensGetResponseApiToken = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensGetResponseApiToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -5993,7 +5663,7 @@ export interface ServiceAccountTokensGetResponse {
   api_token?: ServiceAccountTokensGetResponseApiToken;
   success?: boolean;
 }
-export const ServiceAccountTokensGetResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_token: S.optional(ServiceAccountTokensGetResponseApiToken),
     success: S.optional(S.Boolean),
@@ -6008,7 +5678,7 @@ export interface ServiceAccountTokensListRequest {
   page?: number;
   per_page?: number;
 }
-export const ServiceAccountTokensListRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service_account: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -6025,12 +5695,9 @@ export const ServiceAccountTokensListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceAccountTokensListRequest>;
 
 export type ServiceAccountTokensListResponseApiTokensItem = ServiceAccountTokensGetResponseApiToken;
-export const ServiceAccountTokensListResponseApiTokensItem =
-  ServiceAccountTokensGetResponseApiToken;
-
 export type ServiceAccountTokensListResponseApiTokensList =
   Array<ServiceAccountTokensGetResponseApiToken>;
-export const ServiceAccountTokensListResponseApiTokensList = /*@__PURE__*/ S.Array(
+const ServiceAccountTokensListResponseApiTokensList = /*@__PURE__*/ S.Array(
   ServiceAccountTokensGetResponseApiToken,
 ) as any as S.Schema<ServiceAccountTokensListResponseApiTokensList>;
 
@@ -6038,7 +5705,7 @@ export interface ServiceAccountTokensListResponse {
   api_tokens?: ServiceAccountTokensListResponseApiTokensList;
   success?: boolean;
 }
-export const ServiceAccountTokensListResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountTokensListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     api_tokens: S.optional(ServiceAccountTokensListResponseApiTokensList),
     success: S.optional(S.Boolean),
@@ -6049,7 +5716,7 @@ export const ServiceAccountTokensListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Token's capabilities. */
 export type ServiceTokensCreateRequestAccess = "read" | "read/write";
-export const ServiceTokensCreateRequestAccess = S.String;
+const ServiceTokensCreateRequestAccess = S.String;
 
 export interface ServiceTokensCreateRequest {
   /** Unique identifier for the project object. */
@@ -6063,7 +5730,7 @@ export interface ServiceTokensCreateRequest {
   /** Token's capabilities. */
   access?: ServiceTokensCreateRequestAccess | (string & {});
 }
-export const ServiceTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -6086,7 +5753,7 @@ export interface ServiceTokensCreateResponseToken {
   expires_at?: unknown;
   access?: string;
 }
-export const ServiceTokensCreateResponseToken = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensCreateResponseToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -6105,7 +5772,7 @@ export const ServiceTokensCreateResponseToken = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceTokensCreateResponse {
   token?: ServiceTokensCreateResponseToken;
 }
-export const ServiceTokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(ServiceTokensCreateResponseToken),
   }),
@@ -6123,7 +5790,7 @@ export interface ServiceTokensDeleteRequest {
   /** The token value. */
   token?: string;
 }
-export const ServiceTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -6137,7 +5804,7 @@ export const ServiceTokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ServiceTokensDeleteResponse {
   success?: boolean;
 }
-export const ServiceTokensDeleteResponse =
+const ServiceTokensDeleteResponse =
   DeleteChangeRequestPolicyResponse as any as S.Schema<ServiceTokensDeleteResponse>;
 
 export interface ServiceTokensListRequest {
@@ -6146,7 +5813,7 @@ export interface ServiceTokensListRequest {
   /** Name of the config object. */
   config: string;
 }
-export const ServiceTokensListRequest = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String.pipe(T.Query()),
     config: S.String.pipe(T.Query()),
@@ -6162,7 +5829,7 @@ export interface ServiceTokensListResponseTokensItem {
   project?: string;
   expires_at?: unknown;
 }
-export const ServiceTokensListResponseTokensItem = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensListResponseTokensItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     slug: S.optional(S.String),
@@ -6177,14 +5844,14 @@ export const ServiceTokensListResponseTokensItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceTokensListResponseTokensItem>;
 
 export type ServiceTokensListResponseTokensList = Array<ServiceTokensListResponseTokensItem>;
-export const ServiceTokensListResponseTokensList = /*@__PURE__*/ S.Array(
+const ServiceTokensListResponseTokensList = /*@__PURE__*/ S.Array(
   ServiceTokensListResponseTokensItem,
 ) as any as S.Schema<ServiceTokensListResponseTokensList>;
 
 export interface ServiceTokensListResponse {
   tokens?: ServiceTokensListResponseTokensList;
 }
-export const ServiceTokensListResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceTokensListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokens: S.optional(ServiceTokensListResponseTokensList),
   }),
@@ -6200,7 +5867,7 @@ export interface ShareSecretRequest {
   /** Number of days before the link expires. Valid range: 1 to 90. */
   expire_days?: number;
 }
-export const ShareSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const ShareSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secret: S.String.pipe(T.SensitiveValue({})),
     expire_views: S.optional(S.Number),
@@ -6214,7 +5881,7 @@ export interface ShareSecretResponse {
   password?: string | Redacted.Redacted<string>;
   success?: boolean;
 }
-export const ShareSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const ShareSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     authenticated_url: S.optional(S.String),
@@ -6237,7 +5904,7 @@ export interface ShareSecretEncryptedRequest {
   /** Number of salt rounds used by KDF. Must be "1000000". */
   encryption_salt_rounds: number;
 }
-export const ShareSecretEncryptedRequest = /*@__PURE__*/ S.suspend(() =>
+const ShareSecretEncryptedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encrypted_secret: S.String.pipe(T.SensitiveValue({})),
     hashed_password: S.String.pipe(T.SensitiveValue({})),
@@ -6254,7 +5921,7 @@ export interface ShareSecretEncryptedResponse {
   url?: string;
   success?: boolean;
 }
-export const ShareSecretEncryptedResponse = /*@__PURE__*/ S.suspend(() =>
+const ShareSecretEncryptedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     success: S.optional(S.Boolean),
@@ -6269,7 +5936,7 @@ export interface UnlockConfigRequest {
   /** Name of the config. */
   config: string;
 }
-export const UnlockConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UnlockConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -6277,39 +5944,27 @@ export const UnlockConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnlockConfigRequest" }) as any as S.Schema<UnlockConfigRequest>;
 
 export type UnlockConfigResponseConfig = CloneConfigResponseConfig;
-export const UnlockConfigResponseConfig = CloneConfigResponseConfig;
-
 export interface UnlockConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const UnlockConfigResponse = CloneConfigResponse as any as S.Schema<UnlockConfigResponse>;
+const UnlockConfigResponse = CloneConfigResponse as any as S.Schema<UnlockConfigResponse>;
 
 export type UpdateChangeRequestPolicyRequestRulesItemType =
   | '"RequiredReviewer"'
   | '"DisallowSelfReview"';
-export const UpdateChangeRequestPolicyRequestRulesItemType = S.String;
-
 /** The type of the subject. */
 export type UpdateChangeRequestPolicyRequestRulesItemSubjectsItemType =
   | '"WorkplaceUser"'
   | '"Group"';
-export const UpdateChangeRequestPolicyRequestRulesItemSubjectsItemType = S.String;
-
 export interface UpdateChangeRequestPolicyRequestRulesItemSubjectsItem {
   /** The type of the subject. */
   type: UpdateChangeRequestPolicyRequestRulesItemSubjectsItemType | (string & {});
   /** The unique identifier of the subject. */
   slug: string;
 }
-export const UpdateChangeRequestPolicyRequestRulesItemSubjectsItem =
-  CreateChangeRequestPolicyRequestRulesItemSubjectsItem as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-
 /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
 export type UpdateChangeRequestPolicyRequestRulesItemSubjectsList =
   Array<UpdateChangeRequestPolicyRequestRulesItemSubjectsItem>;
-export const UpdateChangeRequestPolicyRequestRulesItemSubjectsList =
-  CreateChangeRequestPolicyRequestRulesItemSubjectsList as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItemSubjectsList>;
-
 export interface UpdateChangeRequestPolicyRequestRulesItem {
   type: UpdateChangeRequestPolicyRequestRulesItemType | (string & {});
   /** The number of required reviewers. Only applies to "RequiredReviewer" rules. */
@@ -6317,19 +5972,14 @@ export interface UpdateChangeRequestPolicyRequestRulesItem {
   /** A list of required reviewers. If specified, only reviews from reviewers in this list will satisfy the policy. Only applies to "RequiredReviewer" rules. */
   subjects?: UpdateChangeRequestPolicyRequestRulesItemSubjectsList;
 }
-export const UpdateChangeRequestPolicyRequestRulesItem =
-  CreateChangeRequestPolicyRequestRulesItem as any as S.Schema<UpdateChangeRequestPolicyRequestRulesItem>;
-
 /** A list of rules the policy enforces. */
 export type UpdateChangeRequestPolicyRequestRulesList =
   Array<UpdateChangeRequestPolicyRequestRulesItem>;
-export const UpdateChangeRequestPolicyRequestRulesList =
+const UpdateChangeRequestPolicyRequestRulesList =
   CreateChangeRequestPolicyRequestRulesList as any as S.Schema<UpdateChangeRequestPolicyRequestRulesList>;
 
 /** Describes the which projects, environments, and configs the policy applies to. */
 export type UpdateChangeRequestPolicyRequestTargets = CreateChangeRequestPolicyRequestTargets;
-export const UpdateChangeRequestPolicyRequestTargets = CreateChangeRequestPolicyRequestTargets;
-
 export interface UpdateChangeRequestPolicyRequest {
   /** The unique identifier of the policy. */
   slug: string;
@@ -6342,7 +5992,7 @@ export interface UpdateChangeRequestPolicyRequest {
   /** Describes the which projects, environments, and configs the policy applies to. */
   targets: CreateChangeRequestPolicyRequestTargets;
 }
-export const UpdateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     name: S.String,
@@ -6361,14 +6011,8 @@ export const UpdateChangeRequestPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateChangeRequestPolicyRequest>;
 
 export type UpdateChangeRequestPolicyResponsePolicyRulesList = Array<unknown>;
-export const UpdateChangeRequestPolicyResponsePolicyRulesList =
-  ConfigsInheritableResponseConfigInheritsList as any as S.Schema<UpdateChangeRequestPolicyResponsePolicyRulesList>;
-
 export type UpdateChangeRequestPolicyResponsePolicyTargets =
   CreateChangeRequestPolicyResponsePolicyTargets;
-export const UpdateChangeRequestPolicyResponsePolicyTargets =
-  CreateChangeRequestPolicyResponsePolicyTargets;
-
 export interface UpdateChangeRequestPolicyResponsePolicy {
   id?: string;
   name?: string;
@@ -6376,14 +6020,11 @@ export interface UpdateChangeRequestPolicyResponsePolicy {
   rules?: UpdateChangeRequestPolicyResponsePolicyRulesList;
   targets?: CreateChangeRequestPolicyResponsePolicyTargets;
 }
-export const UpdateChangeRequestPolicyResponsePolicy =
-  CreateChangeRequestPolicyResponsePolicy as any as S.Schema<UpdateChangeRequestPolicyResponsePolicy>;
-
 export interface UpdateChangeRequestPolicyResponse {
   policy?: UpdateChangeRequestPolicyResponsePolicy;
   success?: boolean;
 }
-export const UpdateChangeRequestPolicyResponse =
+const UpdateChangeRequestPolicyResponse =
   CreateChangeRequestPolicyResponse as any as S.Schema<UpdateChangeRequestPolicyResponse>;
 
 export interface UpdateConfigRequest {
@@ -6394,7 +6035,7 @@ export interface UpdateConfigRequest {
   /** The new name of config. */
   name: string;
 }
-export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -6403,12 +6044,10 @@ export const UpdateConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateConfigRequest" }) as any as S.Schema<UpdateConfigRequest>;
 
 export type UpdateConfigResponseConfig = CloneConfigResponseConfig;
-export const UpdateConfigResponseConfig = CloneConfigResponseConfig;
-
 export interface UpdateConfigResponse {
   config?: CloneConfigResponseConfig;
 }
-export const UpdateConfigResponse = CloneConfigResponse as any as S.Schema<UpdateConfigResponse>;
+const UpdateConfigResponse = CloneConfigResponse as any as S.Schema<UpdateConfigResponse>;
 
 export interface UpdateGroupRequest {
   /** The group's slug */
@@ -6417,7 +6056,7 @@ export interface UpdateGroupRequest {
   /** Identifier of the project role */
   default_project_role?: string;
 }
-export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -6426,26 +6065,11 @@ export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateGroupRequest" }) as any as S.Schema<UpdateGroupRequest>;
 
 export type UpdateGroupResponseGroupDefaultProjectRole = CreateGroupResponseGroupDefaultProjectRole;
-export const UpdateGroupResponseGroupDefaultProjectRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export type UpdateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-export const UpdateGroupResponseGroupProjectsItemRole = CreateGroupResponseGroupDefaultProjectRole;
-
 export type UpdateGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-export const UpdateGroupResponseGroupProjectsItem = CreateGroupResponseGroupProjectsItem;
-
 export type UpdateGroupResponseGroupProjectsList = Array<CreateGroupResponseGroupProjectsItem>;
-export const UpdateGroupResponseGroupProjectsList =
-  CreateGroupResponseGroupProjectsList as any as S.Schema<UpdateGroupResponseGroupProjectsList>;
-
 export type UpdateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-export const UpdateGroupResponseGroupMembersItem = AuthMeResponsePrincipal;
-
 export type UpdateGroupResponseGroupMembersList = Array<AuthMeResponsePrincipal>;
-export const UpdateGroupResponseGroupMembersList =
-  CreateGroupResponseGroupMembersList as any as S.Schema<UpdateGroupResponseGroupMembersList>;
-
 export interface UpdateGroupResponseGroup {
   name?: string;
   slug?: string;
@@ -6454,13 +6078,10 @@ export interface UpdateGroupResponseGroup {
   projects?: UpdateGroupResponseGroupProjectsList;
   members?: UpdateGroupResponseGroupMembersList;
 }
-export const UpdateGroupResponseGroup =
-  CreateGroupResponseGroup as any as S.Schema<UpdateGroupResponseGroup>;
-
 export interface UpdateGroupResponse {
   group?: UpdateGroupResponseGroup;
 }
-export const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
+const UpdateGroupResponse = CreateGroupResponse as any as S.Schema<UpdateGroupResponse>;
 
 export interface UpdateIntegrationRequest {
   /** The slug of the integration to update */
@@ -6470,7 +6091,7 @@ export interface UpdateIntegrationRequest {
   /** The new authentication data for the integration */
   data?: string;
 }
-export const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration: S.String.pipe(T.Query()),
     name: S.optional(S.String),
@@ -6479,7 +6100,7 @@ export const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateIntegrationRequest" }) as any as S.Schema<UpdateIntegrationRequest>;
 
 export type UpdateIntegrationResponse = unknown;
-export const UpdateIntegrationResponse =
+const UpdateIntegrationResponse =
   DeleteIntegrationResponse as any as S.Schema<UpdateIntegrationResponse>;
 
 export type UpdateIntegrationsIntegrationMemberRequestType =
@@ -6487,7 +6108,7 @@ export type UpdateIntegrationsIntegrationMemberRequestType =
   | "invite"
   | "group"
   | "service_account";
-export const UpdateIntegrationsIntegrationMemberRequestType = S.String;
+const UpdateIntegrationsIntegrationMemberRequestType = S.String;
 
 export interface UpdateIntegrationsIntegrationMemberRequest {
   type: UpdateIntegrationsIntegrationMemberRequestType | (string & {});
@@ -6497,7 +6118,7 @@ export interface UpdateIntegrationsIntegrationMemberRequest {
   integration: string;
   role: string;
 }
-export const UpdateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIntegrationsIntegrationMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: UpdateIntegrationsIntegrationMemberRequestType.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -6519,25 +6140,17 @@ export type UpdateIntegrationsIntegrationMemberResponseMemberType =
   | "invite"
   | "group"
   | "service_account";
-export const UpdateIntegrationsIntegrationMemberResponseMemberType = S.String;
-
 export type UpdateIntegrationsIntegrationMemberResponseMemberRole =
   CreateGroupResponseGroupDefaultProjectRole;
-export const UpdateIntegrationsIntegrationMemberResponseMemberRole =
-  CreateGroupResponseGroupDefaultProjectRole;
-
 export interface UpdateIntegrationsIntegrationMemberResponseMember {
   type?: UpdateIntegrationsIntegrationMemberResponseMemberType;
   slug?: string;
   role?: CreateGroupResponseGroupDefaultProjectRole;
 }
-export const UpdateIntegrationsIntegrationMemberResponseMember =
-  CreateIntegrationsIntegrationMemberResponseMember as any as S.Schema<UpdateIntegrationsIntegrationMemberResponseMember>;
-
 export interface UpdateIntegrationsIntegrationMemberResponse {
   member?: UpdateIntegrationsIntegrationMemberResponseMember;
 }
-export const UpdateIntegrationsIntegrationMemberResponse =
+const UpdateIntegrationsIntegrationMemberResponse =
   CreateIntegrationsIntegrationMemberResponse as any as S.Schema<UpdateIntegrationsIntegrationMemberResponse>;
 
 export interface UpdateProjectRequest {
@@ -6548,7 +6161,7 @@ export interface UpdateProjectRequest {
   /** Description of the project. */
   description?: string;
 }
-export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     name: S.String,
@@ -6557,13 +6170,10 @@ export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateProjectRequest" }) as any as S.Schema<UpdateProjectRequest>;
 
 export type UpdateProjectResponseProject = CreateProjectResponseProject;
-export const UpdateProjectResponseProject = CreateProjectResponseProject;
-
 export interface UpdateProjectResponse {
   project?: CreateProjectResponseProject;
 }
-export const UpdateProjectResponse =
-  CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
+const UpdateProjectResponse = CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
 
 /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
 export interface UpdateSecretRequestSecrets {
@@ -6571,7 +6181,7 @@ export interface UpdateSecretRequestSecrets {
   ALGOLIA?: string;
   DATABASE?: string;
 }
-export const UpdateSecretRequestSecrets = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequestSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     STRIPE: S.optional(S.String),
     ALGOLIA: S.optional(S.String),
@@ -6596,13 +6206,11 @@ export type UpdateSecretRequestChangeRequestsItemValueTypeType =
   | "datetime8601"
   | "date8601"
   | "yaml";
-export const UpdateSecretRequestChangeRequestsItemValueTypeType = S.String;
-
 /** The default valueType (string) will result in no validations being applied. */
 export interface UpdateSecretRequestChangeRequestsItemValueType {
   type?: UpdateSecretRequestChangeRequestsItemValueTypeType | (string & {});
 }
-export const UpdateSecretRequestChangeRequestsItemValueType =
+const UpdateSecretRequestChangeRequestsItemValueType =
   GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemValueType>;
 
 export type UpdateSecretRequestChangeRequestsItemOriginalValueTypeType =
@@ -6620,13 +6228,11 @@ export type UpdateSecretRequestChangeRequestsItemOriginalValueTypeType =
   | "datetime8601"
   | "date8601"
   | "yaml";
-export const UpdateSecretRequestChangeRequestsItemOriginalValueTypeType = S.String;
-
 /** The valueType you expect the secret to have before `valueType` is applied. If specified, the request will only be processed if the provided valueType matches what's found in Doppler. */
 export interface UpdateSecretRequestChangeRequestsItemOriginalValueType {
   type?: UpdateSecretRequestChangeRequestsItemOriginalValueTypeType | (string & {});
 }
-export const UpdateSecretRequestChangeRequestsItemOriginalValueType =
+const UpdateSecretRequestChangeRequestsItemOriginalValueType =
   GetWebhookResponseWebhookAuthentication as any as S.Schema<UpdateSecretRequestChangeRequestsItemOriginalValueType>;
 
 export interface UpdateSecretRequestChangeRequestsItem {
@@ -6653,7 +6259,7 @@ export interface UpdateSecretRequestChangeRequestsItem {
   /** The valueType you expect the secret to have before `valueType` is applied. If specified, the request will only be processed if the provided valueType matches what's found in Doppler. */
   originalValueType?: UpdateSecretRequestChangeRequestsItemOriginalValueType;
 }
-export const UpdateSecretRequestChangeRequestsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequestChangeRequestsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     originalName: S.String,
@@ -6673,7 +6279,7 @@ export const UpdateSecretRequestChangeRequestsItem = /*@__PURE__*/ S.suspend(() 
 
 /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
 export type UpdateSecretRequestChangeRequestsList = Array<UpdateSecretRequestChangeRequestsItem>;
-export const UpdateSecretRequestChangeRequestsList = /*@__PURE__*/ S.Array(
+const UpdateSecretRequestChangeRequestsList = /*@__PURE__*/ S.Array(
   UpdateSecretRequestChangeRequestsItem,
 ) as any as S.Schema<UpdateSecretRequestChangeRequestsList>;
 
@@ -6687,7 +6293,7 @@ export interface UpdateSecretRequest {
   /** Either `secrets` or `change_requests` is required (can't use both). Object of secrets you would like to save to the config. Try it with the sample secrets below. */
   change_requests?: UpdateSecretRequestChangeRequestsList;
 }
-export const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.String,
     config: S.String,
@@ -6701,7 +6307,7 @@ export interface UpdateSecretResponseSecretsSTRIPE {
   computed?: string;
   note?: string;
 }
-export const UpdateSecretResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     raw: S.optional(S.String),
     computed: S.optional(S.String),
@@ -6712,17 +6318,13 @@ export const UpdateSecretResponseSecretsSTRIPE = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateSecretResponseSecretsSTRIPE>;
 
 export type UpdateSecretResponseSecretsALGOLIA = UpdateSecretResponseSecretsSTRIPE;
-export const UpdateSecretResponseSecretsALGOLIA = UpdateSecretResponseSecretsSTRIPE;
-
 export type UpdateSecretResponseSecretsDATABASE = UpdateSecretResponseSecretsSTRIPE;
-export const UpdateSecretResponseSecretsDATABASE = UpdateSecretResponseSecretsSTRIPE;
-
 export interface UpdateSecretResponseSecrets {
   STRIPE?: UpdateSecretResponseSecretsSTRIPE;
   ALGOLIA?: UpdateSecretResponseSecretsSTRIPE;
   DATABASE?: UpdateSecretResponseSecretsSTRIPE;
 }
-export const UpdateSecretResponseSecrets = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretResponseSecrets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     STRIPE: S.optional(UpdateSecretResponseSecretsSTRIPE),
     ALGOLIA: S.optional(UpdateSecretResponseSecretsSTRIPE),
@@ -6735,7 +6337,7 @@ export const UpdateSecretResponseSecrets = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSecretResponse {
   secrets?: UpdateSecretResponseSecrets;
 }
-export const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secrets: S.optional(UpdateSecretResponseSecrets),
   }),
@@ -6747,7 +6349,7 @@ export interface UpdateUserRequest {
   /** The identifier of the workplace role. E.g., `owner`, `collaborator`, etc. */
   access?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     access: S.optional(S.String),
@@ -6755,20 +6357,14 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export type UpdateUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
-export const UpdateUserResponseWorkplaceUserUser = ConfigLogsGetResponseLogUser;
-
 export type UpdateUserResponseWorkplaceUser = GetUserResponseWorkplaceUser;
-export const UpdateUserResponseWorkplaceUser = GetUserResponseWorkplaceUser;
-
 export interface UpdateUserResponse {
   workplace_user?: GetUserResponseWorkplaceUser;
   success?: boolean;
 }
-export const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
+const UpdateUserResponse = GetUserResponse as any as S.Schema<UpdateUserResponse>;
 
 export type UpdateWebhookRequestAuthenticationType = "None" | "Bearer" | "Basic";
-export const UpdateWebhookRequestAuthenticationType = S.String;
-
 export interface UpdateWebhookRequestAuthentication {
   type?: UpdateWebhookRequestAuthenticationType | (string & {});
   /** Used when type = Bearer */
@@ -6778,17 +6374,17 @@ export interface UpdateWebhookRequestAuthentication {
   /** Used when type = Basic */
   password?: string | Redacted.Redacted<string>;
 }
-export const UpdateWebhookRequestAuthentication =
+const UpdateWebhookRequestAuthentication =
   AddWebhookRequestAuthentication as any as S.Schema<UpdateWebhookRequestAuthentication>;
 
 /** Config slugs that the webhook should be enabled for */
 export type UpdateWebhookRequestEnableConfigsList = Array<string>;
-export const UpdateWebhookRequestEnableConfigsList =
+const UpdateWebhookRequestEnableConfigsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestEnableConfigsList>;
 
 /** Config slugs that the webhook should be disabled for */
 export type UpdateWebhookRequestDisableConfigsList = Array<string>;
-export const UpdateWebhookRequestDisableConfigsList =
+const UpdateWebhookRequestDisableConfigsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<UpdateWebhookRequestDisableConfigsList>;
 
 export interface UpdateWebhookRequest {
@@ -6810,7 +6406,7 @@ export interface UpdateWebhookRequest {
   /** Config slugs that the webhook should be disabled for */
   disableConfigs?: UpdateWebhookRequestDisableConfigsList;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slug: S.String.pipe(T.Label()),
     project: S.optional(S.String.pipe(T.Query())),
@@ -6825,7 +6421,7 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWebhookRequest" }) as any as S.Schema<UpdateWebhookRequest>;
 
 export type UpdateWebhookResponse = unknown;
-export const UpdateWebhookResponse = AddWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
+const UpdateWebhookResponse = AddWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export interface UpdateWorkplaceRequest {
   /** Workplace name */
@@ -6833,7 +6429,7 @@ export interface UpdateWorkplaceRequest {
   billing_email?: string;
   security_email?: string;
 }
-export const UpdateWorkplaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkplaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     billing_email: S.optional(S.String),
@@ -6842,17 +6438,14 @@ export const UpdateWorkplaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateWorkplaceRequest" }) as any as S.Schema<UpdateWorkplaceRequest>;
 
 export type UpdateWorkplaceResponseWorkplace = GetWorkplaceResponseWorkplace;
-export const UpdateWorkplaceResponseWorkplace = GetWorkplaceResponseWorkplace;
-
 export interface UpdateWorkplaceResponse {
   workplace?: GetWorkplaceResponseWorkplace;
 }
-export const UpdateWorkplaceResponse =
-  GetWorkplaceResponse as any as S.Schema<UpdateWorkplaceResponse>;
+const UpdateWorkplaceResponse = GetWorkplaceResponse as any as S.Schema<UpdateWorkplaceResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesCreateRequestPermissionsList = Array<string>;
-export const WorkplaceRolesCreateRequestPermissionsList =
+const WorkplaceRolesCreateRequestPermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesCreateRequestPermissionsList>;
 
 export interface WorkplaceRolesCreateRequest {
@@ -6861,7 +6454,7 @@ export interface WorkplaceRolesCreateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
   permissions: WorkplaceRolesCreateRequestPermissionsList;
 }
-export const WorkplaceRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     permissions: WorkplaceRolesCreateRequestPermissionsList,
@@ -6871,9 +6464,6 @@ export const WorkplaceRolesCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesCreateRequest>;
 
 export type WorkplaceRolesCreateResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesCreateResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesCreateResponseRolePermissionsList>;
-
 export interface WorkplaceRolesCreateResponseRole {
   name?: string;
   permissions?: WorkplaceRolesCreateResponseRolePermissionsList;
@@ -6882,13 +6472,13 @@ export interface WorkplaceRolesCreateResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesCreateResponseRole =
+const WorkplaceRolesCreateResponseRole =
   ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesCreateResponseRole>;
 
 export interface WorkplaceRolesCreateResponse {
   role?: WorkplaceRolesCreateResponseRole;
 }
-export const WorkplaceRolesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(WorkplaceRolesCreateResponseRole),
   }),
@@ -6900,7 +6490,7 @@ export interface WorkplaceRolesDeleteRequest {
   /** The role's unique identifier */
   role: string;
 }
-export const WorkplaceRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v3/workplace/roles/role/{role}", code: 200 })),
@@ -6909,23 +6499,20 @@ export const WorkplaceRolesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesDeleteRequest>;
 
 export interface WorkplaceRolesDeleteResponse {}
-export const WorkplaceRolesDeleteResponse =
+const WorkplaceRolesDeleteResponse =
   ConfigsDeleteTrustedIpResponse as any as S.Schema<WorkplaceRolesDeleteResponse>;
 
 export interface WorkplaceRolesGetRequest {
   /** The role's unique identifier */
   role: string;
 }
-export const WorkplaceRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v3/workplace/roles/role/{role}", code: 200 })),
 ).annotate({ identifier: "WorkplaceRolesGetRequest" }) as any as S.Schema<WorkplaceRolesGetRequest>;
 
 export type WorkplaceRolesGetResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesGetResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesGetResponseRolePermissionsList>;
-
 export interface WorkplaceRolesGetResponseRole {
   name?: string;
   permissions?: WorkplaceRolesGetResponseRolePermissionsList;
@@ -6934,26 +6521,20 @@ export interface WorkplaceRolesGetResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesGetResponseRole =
-  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesGetResponseRole>;
-
 export interface WorkplaceRolesGetResponse {
   role?: WorkplaceRolesGetResponseRole;
 }
-export const WorkplaceRolesGetResponse =
+const WorkplaceRolesGetResponse =
   WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesGetResponse>;
 
 export interface WorkplaceRolesListRequest {}
-export const WorkplaceRolesListRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/workplace/roles", code: 200 })),
 ).annotate({
   identifier: "WorkplaceRolesListRequest",
 }) as any as S.Schema<WorkplaceRolesListRequest>;
 
 export type WorkplaceRolesListResponseRolesItemPermissionsList = Array<string>;
-export const WorkplaceRolesListResponseRolesItemPermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesListResponseRolesItemPermissionsList>;
-
 export interface WorkplaceRolesListResponseRolesItem {
   name?: string;
   permissions?: WorkplaceRolesListResponseRolesItemPermissionsList;
@@ -6962,18 +6543,18 @@ export interface WorkplaceRolesListResponseRolesItem {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesListResponseRolesItem =
+const WorkplaceRolesListResponseRolesItem =
   ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesListResponseRolesItem>;
 
 export type WorkplaceRolesListResponseRolesList = Array<WorkplaceRolesListResponseRolesItem>;
-export const WorkplaceRolesListResponseRolesList = /*@__PURE__*/ S.Array(
+const WorkplaceRolesListResponseRolesList = /*@__PURE__*/ S.Array(
   WorkplaceRolesListResponseRolesItem,
 ) as any as S.Schema<WorkplaceRolesListResponseRolesList>;
 
 export interface WorkplaceRolesListResponse {
   roles?: WorkplaceRolesListResponseRolesList;
 }
-export const WorkplaceRolesListResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roles: S.optional(WorkplaceRolesListResponseRolesList),
   }),
@@ -6982,25 +6563,22 @@ export const WorkplaceRolesListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesListResponse>;
 
 export interface WorkplaceRolesListPermissionsRequest {}
-export const WorkplaceRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesListPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v3/workplace/permissions", code: 200 })),
 ).annotate({
   identifier: "WorkplaceRolesListPermissionsRequest",
 }) as any as S.Schema<WorkplaceRolesListPermissionsRequest>;
 
 export type WorkplaceRolesListPermissionsResponsePermissionsList = Array<string>;
-export const WorkplaceRolesListPermissionsResponsePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesListPermissionsResponsePermissionsList>;
-
 export interface WorkplaceRolesListPermissionsResponse {
   permissions?: WorkplaceRolesListPermissionsResponsePermissionsList;
 }
-export const WorkplaceRolesListPermissionsResponse =
+const WorkplaceRolesListPermissionsResponse =
   ProjectRolesListPermissionsResponse as any as S.Schema<WorkplaceRolesListPermissionsResponse>;
 
 /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
 export type WorkplaceRolesUpdateRequestPermissionsList = Array<string>;
-export const WorkplaceRolesUpdateRequestPermissionsList =
+const WorkplaceRolesUpdateRequestPermissionsList =
   AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesUpdateRequestPermissionsList>;
 
 export interface WorkplaceRolesUpdateRequest {
@@ -7011,7 +6589,7 @@ export interface WorkplaceRolesUpdateRequest {
   /** An array containing the permissions the role has. Valid permissions are: `all_enclave_projects`, `all_enclave_projects_admin`, `analytics_dashboard`, `billing`, `billing_manage`, `change_request_policy_manage`, `change_request_policy_read`, `create_enclave_project`, `custom_roles_manage`, `ekm`, `enclave_inheritance`, `enclave_secrets_referencing`, `logs`, `logs_audit`, `service_account_api_tokens`, `service_account_api_tokens_manage`, `service_account_identities`, `service_account_identities_manage`, `service_accounts`, `service_accounts_manage`, `settings`, `settings_manage`, `team`, `team_manage`, `verified_domains`, `verified_domains_manage`, `workplace_default_environments_manage`, `workplace_default_environments_read`, `workplace_integrations_create`, `workplace_integrations_list`, `workplace_integrations_manage`, `workplace_integrations_read` */
   permissions?: WorkplaceRolesUpdateRequestPermissionsList;
 }
-export const WorkplaceRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkplaceRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -7022,9 +6600,6 @@ export const WorkplaceRolesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkplaceRolesUpdateRequest>;
 
 export type WorkplaceRolesUpdateResponseRolePermissionsList = Array<string>;
-export const WorkplaceRolesUpdateResponseRolePermissionsList =
-  AddWebhookRequestEnableConfigsList as any as S.Schema<WorkplaceRolesUpdateResponseRolePermissionsList>;
-
 export interface WorkplaceRolesUpdateResponseRole {
   name?: string;
   permissions?: WorkplaceRolesUpdateResponseRolePermissionsList;
@@ -7033,13 +6608,10 @@ export interface WorkplaceRolesUpdateResponseRole {
   is_custom_role?: boolean;
   is_inline_role?: boolean;
 }
-export const WorkplaceRolesUpdateResponseRole =
-  ListInvitesResponseInvitesItemWorkplaceRole as any as S.Schema<WorkplaceRolesUpdateResponseRole>;
-
 export interface WorkplaceRolesUpdateResponse {
   role?: WorkplaceRolesUpdateResponseRole;
 }
-export const WorkplaceRolesUpdateResponse =
+const WorkplaceRolesUpdateResponse =
   WorkplaceRolesCreateResponse as any as S.Schema<WorkplaceRolesUpdateResponse>;
 
 export type ActivityLogsListError = DopplerOpError;

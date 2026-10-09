@@ -13,7 +13,7 @@ export interface AccountsDestroyRequest {
   /** A UUID string identifying this account. */
   id: string;
 }
-export const AccountsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -23,19 +23,19 @@ export const AccountsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountsDestroyRequest" }) as any as S.Schema<AccountsDestroyRequest>;
 
 export interface AccountsDestroyResponse {}
-export const AccountsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AccountsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AccountsDestroyResponse",
 }) as any as S.Schema<AccountsDestroyResponse>;
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type CreateAccountRequestPropertiesEmailDomainsList = Array<string>;
-export const CreateAccountRequestPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
+const CreateAccountRequestPropertiesEmailDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAccountRequestPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type CreateAccountRequestPropertiesKnownEmailsList = Array<string>;
-export const CreateAccountRequestPropertiesKnownEmailsList =
+const CreateAccountRequestPropertiesKnownEmailsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
@@ -55,7 +55,7 @@ export interface CreateAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_domain: S.optional(S.NullOr(S.String)),
     email_domains: S.optional(CreateAccountRequestPropertiesEmailDomainsList),
@@ -75,12 +75,12 @@ export const CreateAccountRequestProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type CreateAccountRequestTagsList = Array<string>;
-export const CreateAccountRequestTagsList =
+const CreateAccountRequestTagsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<CreateAccountRequestTagsList>;
 
 /** * `daily` - daily * `weekly` - weekly * `monthly` - monthly */
 export type SlackSummaryCadenceEnum = "daily" | "weekly" | "monthly";
-export const SlackSummaryCadenceEnum = S.String;
+const SlackSummaryCadenceEnum = S.String;
 
 export interface CreateAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -98,7 +98,7 @@ export interface CreateAccountRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -112,12 +112,12 @@ export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type AccountPropertiesEmailDomainsList = Array<string>;
-export const AccountPropertiesEmailDomainsList =
+const AccountPropertiesEmailDomainsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesEmailDomainsList>;
 
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type AccountPropertiesKnownEmailsList = Array<string>;
-export const AccountPropertiesKnownEmailsList =
+const AccountPropertiesKnownEmailsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountPropertiesKnownEmailsList>;
 
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
@@ -137,7 +137,7 @@ export interface AccountProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
+const AccountProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     website_domain: S.optional(S.NullOr(S.String)),
     email_domains: S.optional(AccountPropertiesEmailDomainsList),
@@ -155,11 +155,11 @@ export const AccountProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type AccountTagsList = Array<string>;
-export const AccountTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<AccountTagsList>;
+const AccountTagsList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<AccountTagsList>;
 
 /** Short IDs of the internal notebooks linked to this account, used to persist investigations, call notes, and other free-form context. Empty list if no notebooks have been created for the account. */
 export type AccountNotebooksList = Array<string>;
-export const AccountNotebooksList =
+const AccountNotebooksList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<AccountNotebooksList>;
 
 /** A Customer Analytics account -- a logical grouping used to assign customer-success ownership. */
@@ -185,7 +185,7 @@ export interface Account {
   created_by: number | null;
   updated_at: string | null;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -208,7 +208,7 @@ export interface CreateAccountsPresenceRequest {
   /** A UUID string identifying this account. */
   id: string;
 }
-export const CreateAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -229,7 +229,7 @@ export interface AccountPresenceViewer {
   /** Display name of the teammate viewing this account. */
   display_name: string;
 }
-export const AccountPresenceViewer = /*@__PURE__*/ S.suspend(() =>
+const AccountPresenceViewer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number,
     display_name: S.String,
@@ -237,12 +237,12 @@ export const AccountPresenceViewer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountPresenceViewer" }) as any as S.Schema<AccountPresenceViewer>;
 
 export type CreateAccountsPresenceResponseBodyList = Array<AccountPresenceViewer>;
-export const CreateAccountsPresenceResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateAccountsPresenceResponseBodyList = /*@__PURE__*/ S.Array(
   AccountPresenceViewer,
 ) as any as S.Schema<CreateAccountsPresenceResponseBodyList>;
 
 export type CreateAccountsPresenceResponse = CreateAccountsPresenceResponseBodyList;
-export const CreateAccountsPresenceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsPresenceResponse = /*@__PURE__*/ S.suspend(() =>
   CreateAccountsPresenceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateAccountsPresenceResponse",
@@ -254,7 +254,7 @@ export interface GetAccountRequest {
   /** A UUID string identifying this account. */
   id: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -267,7 +267,7 @@ export interface GetAccountsByExternalIdRequest {
   /** Exact external account identifier. Leading and trailing whitespace is significant. */
   external_id: string;
 }
-export const GetAccountsByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsByExternalIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     external_id: S.String.pipe(T.Query()),
@@ -289,7 +289,7 @@ export type ListAccountsRequestOrdering =
   | "created_at"
   | "name"
   | "updated_at";
-export const ListAccountsRequestOrdering = S.String;
+const ListAccountsRequestOrdering = S.String;
 
 export interface ListAccountsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -311,7 +311,7 @@ export interface ListAccountsRequest {
   /** JSON-encoded array of tag names to filter by, e.g. `["enterprise","priority"]`. Returns accounts that have any of the listed tags. Malformed values (not a JSON-encoded list of strings) return a 400. */
   tags?: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     all_roles_unassigned: S.optional(S.Boolean.pipe(T.Query())),
@@ -326,7 +326,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type PaginatedAccountListResultsList = Array<Account>;
-export const PaginatedAccountListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountListResultsList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<PaginatedAccountListResultsList>;
 
@@ -336,7 +336,7 @@ export interface PaginatedAccountList {
   previous?: string | null;
   results: PaginatedAccountListResultsList;
 }
-export const PaginatedAccountList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -356,7 +356,7 @@ export interface ListAccountsEmailThreadMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAccountsEmailThreadMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsEmailThreadMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -380,7 +380,7 @@ export interface AccountEmailThreadAddress {
   /** Email address from the email header. */
   email: string;
 }
-export const AccountEmailThreadAddress = /*@__PURE__*/ S.suspend(() =>
+const AccountEmailThreadAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.String,
@@ -391,18 +391,18 @@ export const AccountEmailThreadAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** Recipients from the email To header. */
 export type AccountEmailThreadMessageToRecipientsList = Array<AccountEmailThreadAddress>;
-export const AccountEmailThreadMessageToRecipientsList = /*@__PURE__*/ S.Array(
+const AccountEmailThreadMessageToRecipientsList = /*@__PURE__*/ S.Array(
   AccountEmailThreadAddress,
 ) as any as S.Schema<AccountEmailThreadMessageToRecipientsList>;
 
 /** Recipients from the email Cc header. */
 export type AccountEmailThreadMessageCcRecipientsList = Array<AccountEmailThreadAddress>;
-export const AccountEmailThreadMessageCcRecipientsList =
+const AccountEmailThreadMessageCcRecipientsList =
   AccountEmailThreadMessageToRecipientsList as any as S.Schema<AccountEmailThreadMessageCcRecipientsList>;
 
 /** * `inbound` - Inbound * `outbound` - Outbound */
 export type EmailThreadMessageDirectionEnum = "inbound" | "outbound";
-export const EmailThreadMessageDirectionEnum = S.String;
+const EmailThreadMessageDirectionEnum = S.String;
 
 export interface AccountEmailThreadMessage {
   /** UUID of the captured email message. */
@@ -422,7 +422,7 @@ export interface AccountEmailThreadMessage {
   /** Plain-text email content. */
   content: string;
 }
-export const AccountEmailThreadMessage = /*@__PURE__*/ S.suspend(() =>
+const AccountEmailThreadMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     sent_at: S.String,
@@ -438,7 +438,7 @@ export const AccountEmailThreadMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountEmailThreadMessage>;
 
 export type PaginatedAccountEmailThreadMessageListResultsList = Array<AccountEmailThreadMessage>;
-export const PaginatedAccountEmailThreadMessageListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountEmailThreadMessageListResultsList = /*@__PURE__*/ S.Array(
   AccountEmailThreadMessage,
 ) as any as S.Schema<PaginatedAccountEmailThreadMessageListResultsList>;
 
@@ -448,7 +448,7 @@ export interface PaginatedAccountEmailThreadMessageList {
   previous?: string | null;
   results: PaginatedAccountEmailThreadMessageListResultsList;
 }
-export const PaginatedAccountEmailThreadMessageList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountEmailThreadMessageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -469,7 +469,7 @@ export interface ListAccountsEmailThreadsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAccountsEmailThreadsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsEmailThreadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -496,7 +496,7 @@ export interface ConversationMessageSender {
   /** Distinct ID of the sender, when available. */
   distinct_id: string | null;
 }
-export const ConversationMessageSender = /*@__PURE__*/ S.suspend(() =>
+const ConversationMessageSender = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     email: S.NullOr(S.String),
@@ -515,7 +515,7 @@ export interface ConversationMessageSummary {
   /** Whether PostHog received or sent the message. * `inbound` - Inbound * `outbound` - Outbound */
   direction: EmailThreadMessageDirectionEnum;
 }
-export const ConversationMessageSummary = /*@__PURE__*/ S.suspend(() =>
+const ConversationMessageSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sender: ConversationMessageSender,
     sent_at: S.String,
@@ -527,7 +527,7 @@ export const ConversationMessageSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `internal` - Internal * `customer` - Customer */
 export type EmailThreadParticipantKindEnum = "internal" | "customer";
-export const EmailThreadParticipantKindEnum = S.String;
+const EmailThreadParticipantKindEnum = S.String;
 
 export interface AccountEmailThreadParticipant {
   /** Email address of the thread participant. */
@@ -539,7 +539,7 @@ export interface AccountEmailThreadParticipant {
   /** UUID of the matched PostHog person for a customer participant, when available. */
   person_id: string | null;
 }
-export const AccountEmailThreadParticipant = /*@__PURE__*/ S.suspend(() =>
+const AccountEmailThreadParticipant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     display_name: S.String,
@@ -552,7 +552,7 @@ export const AccountEmailThreadParticipant = /*@__PURE__*/ S.suspend(() =>
 
 /** Participants included in the email thread. */
 export type AccountEmailThreadParticipantsList = Array<AccountEmailThreadParticipant>;
-export const AccountEmailThreadParticipantsList = /*@__PURE__*/ S.Array(
+const AccountEmailThreadParticipantsList = /*@__PURE__*/ S.Array(
   AccountEmailThreadParticipant,
 ) as any as S.Schema<AccountEmailThreadParticipantsList>;
 
@@ -576,7 +576,7 @@ export interface AccountEmailThread {
   /** Participants included in the email thread. */
   participants: AccountEmailThreadParticipantsList;
 }
-export const AccountEmailThread = /*@__PURE__*/ S.suspend(() =>
+const AccountEmailThread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     subject: S.String,
@@ -591,7 +591,7 @@ export const AccountEmailThread = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountEmailThread" }) as any as S.Schema<AccountEmailThread>;
 
 export type PaginatedAccountEmailThreadListResultsList = Array<AccountEmailThread>;
-export const PaginatedAccountEmailThreadListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountEmailThreadListResultsList = /*@__PURE__*/ S.Array(
   AccountEmailThread,
 ) as any as S.Schema<PaginatedAccountEmailThreadListResultsList>;
 
@@ -601,7 +601,7 @@ export interface PaginatedAccountEmailThreadList {
   previous?: string | null;
   results: PaginatedAccountEmailThreadListResultsList;
 }
-export const PaginatedAccountEmailThreadList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountEmailThreadList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -624,7 +624,7 @@ export interface ListAccountsMeetingsRequest {
   /** Filter meetings by title or attendee email/name. */
   search?: string;
 }
-export const ListAccountsMeetingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsMeetingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -651,7 +651,7 @@ export interface MeetingParticipant {
   /** UUID of the PostHog person resolved for this attendee, if any. */
   person_id: string | null;
 }
-export const MeetingParticipant = /*@__PURE__*/ S.suspend(() =>
+const MeetingParticipant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     display_name: S.String,
@@ -663,7 +663,7 @@ export const MeetingParticipant = /*@__PURE__*/ S.suspend(() =>
 
 /** Attendees of the meeting. */
 export type MeetingParticipantsList = Array<MeetingParticipant>;
-export const MeetingParticipantsList = /*@__PURE__*/ S.Array(
+const MeetingParticipantsList = /*@__PURE__*/ S.Array(
   MeetingParticipant,
 ) as any as S.Schema<MeetingParticipantsList>;
 
@@ -686,7 +686,7 @@ export interface Meeting {
   /** Attendees of the meeting. */
   participants: MeetingParticipantsList;
 }
-export const Meeting = /*@__PURE__*/ S.suspend(() =>
+const Meeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -700,7 +700,7 @@ export const Meeting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Meeting" }) as any as S.Schema<Meeting>;
 
 export type PaginatedMeetingListResultsList = Array<Meeting>;
-export const PaginatedMeetingListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedMeetingListResultsList = /*@__PURE__*/ S.Array(
   Meeting,
 ) as any as S.Schema<PaginatedMeetingListResultsList>;
 
@@ -710,7 +710,7 @@ export interface PaginatedMeetingList {
   previous?: string | null;
   results: PaginatedMeetingListResultsList;
 }
-export const PaginatedMeetingList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedMeetingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -721,7 +721,7 @@ export const PaginatedMeetingList = /*@__PURE__*/ S.suspend(() =>
 
 /** Up to 100 account IDs to read presence for. */
 export type ListAccountsPresenceRequestAccountIdsList = Array<string>;
-export const ListAccountsPresenceRequestAccountIdsList =
+const ListAccountsPresenceRequestAccountIdsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<ListAccountsPresenceRequestAccountIdsList>;
 
 export interface ListAccountsPresenceRequest {
@@ -730,7 +730,7 @@ export interface ListAccountsPresenceRequest {
   /** Up to 100 account IDs to read presence for. */
   account_ids: ListAccountsPresenceRequestAccountIdsList;
 }
-export const ListAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     account_ids: ListAccountsPresenceRequestAccountIdsList,
@@ -747,7 +747,7 @@ export const ListAccountsPresenceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** People viewing this account. */
 export type AccountPresenceViewersList = Array<AccountPresenceViewer>;
-export const AccountPresenceViewersList =
+const AccountPresenceViewersList =
   CreateAccountsPresenceResponseBodyList as any as S.Schema<AccountPresenceViewersList>;
 
 export interface AccountPresence {
@@ -756,7 +756,7 @@ export interface AccountPresence {
   /** People viewing this account. */
   viewers: AccountPresenceViewersList;
 }
-export const AccountPresence = /*@__PURE__*/ S.suspend(() =>
+const AccountPresence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     viewers: AccountPresenceViewersList,
@@ -764,12 +764,12 @@ export const AccountPresence = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountPresence" }) as any as S.Schema<AccountPresence>;
 
 export type ListAccountsPresenceResponseBodyList = Array<AccountPresence>;
-export const ListAccountsPresenceResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountsPresenceResponseBodyList = /*@__PURE__*/ S.Array(
   AccountPresence,
 ) as any as S.Schema<ListAccountsPresenceResponseBodyList>;
 
 export type ListAccountsPresenceResponse = ListAccountsPresenceResponseBodyList;
-export const ListAccountsPresenceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPresenceResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountsPresenceResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccountsPresenceResponse",
@@ -785,7 +785,7 @@ export interface ListAccountsSummariesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAccountsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -811,7 +811,7 @@ export interface ChannelSummaryMessage {
   /** Slack permalink to the message. */
   permalink: string;
 }
-export const ChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
+const ChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     author: S.String,
     sent_at: S.String,
@@ -821,7 +821,7 @@ export const ChannelSummaryMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** The messages the summary covered, in transcript order -- metadata only, no message text. */
 export type AccountChannelSummaryMessagesList = Array<ChannelSummaryMessage>;
-export const AccountChannelSummaryMessagesList = /*@__PURE__*/ S.Array(
+const AccountChannelSummaryMessagesList = /*@__PURE__*/ S.Array(
   ChannelSummaryMessage,
 ) as any as S.Schema<AccountChannelSummaryMessagesList>;
 
@@ -846,7 +846,7 @@ export interface AccountChannelSummary {
   /** When the summary was generated. */
   generated_at: string;
 }
-export const AccountChannelSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     slack_channel_id: S.String,
@@ -861,7 +861,7 @@ export const AccountChannelSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountChannelSummary" }) as any as S.Schema<AccountChannelSummary>;
 
 export type PaginatedAccountChannelSummaryListResultsList = Array<AccountChannelSummary>;
-export const PaginatedAccountChannelSummaryListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountChannelSummaryListResultsList = /*@__PURE__*/ S.Array(
   AccountChannelSummary,
 ) as any as S.Schema<PaginatedAccountChannelSummaryListResultsList>;
 
@@ -871,7 +871,7 @@ export interface PaginatedAccountChannelSummaryList {
   previous?: string | null;
   results: PaginatedAccountChannelSummaryListResultsList;
 }
-export const PaginatedAccountChannelSummaryList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountChannelSummaryList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -893,7 +893,7 @@ export interface ListAccountsSupportTicketMessagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAccountsSupportTicketMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsSupportTicketMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -925,7 +925,7 @@ export interface AccountSupportTicketMessage {
   /** When the message was created. */
   created_at: string;
 }
-export const AccountSupportTicketMessage = /*@__PURE__*/ S.suspend(() =>
+const AccountSupportTicketMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     content: S.String,
@@ -940,7 +940,7 @@ export const AccountSupportTicketMessage = /*@__PURE__*/ S.suspend(() =>
 
 export type PaginatedAccountSupportTicketMessageListResultsList =
   Array<AccountSupportTicketMessage>;
-export const PaginatedAccountSupportTicketMessageListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAccountSupportTicketMessageListResultsList = /*@__PURE__*/ S.Array(
   AccountSupportTicketMessage,
 ) as any as S.Schema<PaginatedAccountSupportTicketMessageListResultsList>;
 
@@ -950,7 +950,7 @@ export interface PaginatedAccountSupportTicketMessageList {
   previous?: string | null;
   results: PaginatedAccountSupportTicketMessageListResultsList;
 }
-export const PaginatedAccountSupportTicketMessageList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAccountSupportTicketMessageList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -967,7 +967,7 @@ export interface ListAccountsSupportTicketsRequest {
   /** A UUID string identifying this account. */
   id: string;
 }
-export const ListAccountsSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1005,7 +1005,7 @@ export interface SupportTicket {
   /** Distinct ID of the customer who started the ticket. */
   distinct_id: string;
 }
-export const SupportTicket = /*@__PURE__*/ S.suspend(() =>
+const SupportTicket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ticket_number: S.Number,
@@ -1021,12 +1021,12 @@ export const SupportTicket = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SupportTicket" }) as any as S.Schema<SupportTicket>;
 
 export type ListAccountsSupportTicketsResponseBodyList = Array<SupportTicket>;
-export const ListAccountsSupportTicketsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAccountsSupportTicketsResponseBodyList = /*@__PURE__*/ S.Array(
   SupportTicket,
 ) as any as S.Schema<ListAccountsSupportTicketsResponseBodyList>;
 
 export type ListAccountsSupportTicketsResponse = ListAccountsSupportTicketsResponseBodyList;
-export const ListAccountsSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAccountsSupportTicketsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAccountsSupportTicketsResponse",
@@ -1034,14 +1034,8 @@ export const ListAccountsSupportTicketsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountRequestPropertiesEmailDomainsList = Array<string>;
-export const UpdateAccountRequestPropertiesEmailDomainsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestPropertiesEmailDomainsList>;
-
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type UpdateAccountRequestPropertiesKnownEmailsList = Array<string>;
-export const UpdateAccountRequestPropertiesKnownEmailsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestPropertiesKnownEmailsList>;
-
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface UpdateAccountRequestProperties {
   /** Primary company website hostname used for account identity and logo lookup. */
@@ -1059,12 +1053,12 @@ export interface UpdateAccountRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const UpdateAccountRequestProperties =
+const UpdateAccountRequestProperties =
   CreateAccountRequestProperties as any as S.Schema<UpdateAccountRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountRequestTagsList = Array<string>;
-export const UpdateAccountRequestTagsList =
+const UpdateAccountRequestTagsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountRequestTagsList>;
 
 export interface UpdateAccountRequest {
@@ -1085,7 +1079,7 @@ export interface UpdateAccountRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1100,14 +1094,8 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Email domains owned by this account's company, used to match inbound touchpoints to the account. */
 export type UpdateAccountsPartialRequestPropertiesEmailDomainsList = Array<string>;
-export const UpdateAccountsPartialRequestPropertiesEmailDomainsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestPropertiesEmailDomainsList>;
-
 /** Individual email addresses pinned to this account, matched before the domain fallback. */
 export type UpdateAccountsPartialRequestPropertiesKnownEmailsList = Array<string>;
-export const UpdateAccountsPartialRequestPropertiesKnownEmailsList =
-  CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestPropertiesKnownEmailsList>;
-
 /** Typed account properties: website_domain, external system identifiers (stripe_customer_id, hubspot_deal_id, billing_id, sfdc_id, zendesk_id, slack_channel_id, usage_dashboard_link, metabase_link), and touchpoint matching lists: email_domains (the company's email domains) and known_emails (individual addresses pinned to the account). Defaults to an empty object. Unknown keys are rejected. User assignments live on account relationships, not here. */
 export interface UpdateAccountsPartialRequestProperties {
   /** Primary company website hostname used for account identity and logo lookup. */
@@ -1125,12 +1113,12 @@ export interface UpdateAccountsPartialRequestProperties {
   usage_dashboard_link?: string | null;
   metabase_link?: string | null;
 }
-export const UpdateAccountsPartialRequestProperties =
+const UpdateAccountsPartialRequestProperties =
   CreateAccountRequestProperties as any as S.Schema<UpdateAccountsPartialRequestProperties>;
 
 /** Tag names attached to the account. Pass a list to replace existing tags. */
 export type UpdateAccountsPartialRequestTagsList = Array<string>;
-export const UpdateAccountsPartialRequestTagsList =
+const UpdateAccountsPartialRequestTagsList =
   CreateAccountRequestPropertiesEmailDomainsList as any as S.Schema<UpdateAccountsPartialRequestTagsList>;
 
 export interface UpdateAccountsPartialRequest {
@@ -1151,7 +1139,7 @@ export interface UpdateAccountsPartialRequest {
   /** When the account churned. Null means the account has not churned. */
   churned_at?: string | null;
 }
-export const UpdateAccountsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

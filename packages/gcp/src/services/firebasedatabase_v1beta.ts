@@ -65,14 +65,14 @@ export type DatabaseInstanceTypeEnum =
   | "DATABASE_INSTANCE_TYPE_UNSPECIFIED"
   | "DEFAULT_DATABASE"
   | "USER_DATABASE";
-export const DatabaseInstanceTypeEnum = S.String;
+const DatabaseInstanceTypeEnum = S.String;
 
 export type DatabaseInstanceStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "ACTIVE"
   | "DISABLED"
   | "DELETED";
-export const DatabaseInstanceStateEnum = S.String;
+const DatabaseInstanceStateEnum = S.String;
 
 /** Representation of a Realtime Database instance. Details on interacting with contents of a DatabaseInstance can be found at: https://firebase.google.com/docs/database/rest/start. */
 export interface DatabaseInstance {
@@ -87,7 +87,7 @@ export interface DatabaseInstance {
   /** Output only. The database's lifecycle state. Read-only. */
   state?: DatabaseInstanceStateEnum | (string & {});
 }
-export const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
+const DatabaseInstance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseUrl: S.optional(S.String),
     project: S.optional(S.String),
@@ -107,7 +107,7 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DatabaseInstance;
 }
-export const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -128,7 +128,7 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
 }
-export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -144,7 +144,7 @@ export const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend((
 
 /** The request sent to the DisableDatabaseInstance method. */
 export interface DisableDatabaseInstanceRequest {}
-export const DisableDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DisableDatabaseInstanceRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DisableDatabaseInstanceRequest",
 }) as any as S.Schema<DisableDatabaseInstanceRequest>;
 
@@ -154,7 +154,7 @@ export interface DisableProjectsLocationsInstancesRequest {
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
-export const DisableProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),
@@ -173,7 +173,7 @@ export interface GetProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. `database-id` is a globally unique identifier across all parent collections. For convenience, this method allows you to supply `-` as a wildcard character in place of specific collections under `projects` and `locations`. The resulting wildcarding form of the method is: `projects/-/locations/-/instances/{database-id}`. */
   name: string;
 }
-export const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -197,7 +197,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Indicate that DatabaseInstances in the `DELETED` state should also be returned. */
   showDeleted?: boolean;
 }
-export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -215,7 +215,7 @@ export const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
 
 export type DatabaseInstanceList = Array<DatabaseInstance>;
-export const DatabaseInstanceList = /*@__PURE__*/ S.Array(
+const DatabaseInstanceList = /*@__PURE__*/ S.Array(
   DatabaseInstance,
 ) as any as S.Schema<DatabaseInstanceList>;
 
@@ -226,7 +226,7 @@ export interface ListDatabaseInstancesResponse {
   /** If the result list is too large to fit in a single response, then a token is returned. If the string is empty, then this response is the last page of results. This token can be used in a subsequent call to `ListDatabaseInstances` to find the next group of database instances. Page tokens are short-lived and should not be persisted. */
   nextPageToken?: string;
 }
-export const ListDatabaseInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatabaseInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: S.optional(DatabaseInstanceList),
     nextPageToken: S.optional(S.String),
@@ -237,15 +237,13 @@ export const ListDatabaseInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The request sent to the ReenableDatabaseInstance method. */
 export type ReenableDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
-export const ReenableDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
-
 export interface ReenableProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
-export const ReenableProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ReenableProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),
@@ -262,15 +260,13 @@ export const ReenableProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend
 
 /** The request sent to UndeleteDatabaseInstance method. */
 export type UndeleteDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
-export const UndeleteDatabaseInstanceRequest = DisableDatabaseInstanceRequest;
-
 export interface UndeleteProjectsLocationsInstancesRequest {
   /** Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` */
   name: string;
   /** Request body */
   body?: DisableDatabaseInstanceRequest;
 }
-export const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(DisableDatabaseInstanceRequest.pipe(T.HttpBody())),

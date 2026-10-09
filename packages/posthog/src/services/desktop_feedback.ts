@@ -28,11 +28,11 @@ export class NotFound
 
 /** * `Generic (Leave feedback button)` - Leave Feedback * `Visiting PostHog web` - Posthog Web */
 export type DesktopFeedbackSourceEnum = "Generic (Leave feedback button)" | "Visiting PostHog web";
-export const DesktopFeedbackSourceEnum = S.String;
+const DesktopFeedbackSourceEnum = S.String;
 
 /** * `bug` - Bug * `feature` - Feature * `general` - General */
 export type DesktopFeedbackTypeEnum = "bug" | "feature" | "general";
-export const DesktopFeedbackTypeEnum = S.String;
+const DesktopFeedbackTypeEnum = S.String;
 
 export interface CreateDesktopFeedbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -62,7 +62,7 @@ export interface CreateDesktopFeedbackRequest {
   /** Second image that the user attached. */
   image_2?: string;
 }
-export const CreateDesktopFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDesktopFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     response: S.String,
@@ -95,7 +95,7 @@ export interface DesktopFeedbackResponse {
   /** Identifier of the survey response event. */
   response_id: string;
 }
-export const DesktopFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const DesktopFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted: S.Boolean,
     response_id: S.String,
@@ -108,7 +108,7 @@ export interface GetDesktopFeedbackAttachmentRequest {
   /** Feedback attachment identifier. */
   media_id: string;
 }
-export const GetDesktopFeedbackAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDesktopFeedbackAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     media_id: S.String.pipe(T.Label()),
@@ -124,9 +124,7 @@ export const GetDesktopFeedbackAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDesktopFeedbackAttachmentRequest>;
 
 export interface GetDesktopFeedbackAttachmentResponse {}
-export const GetDesktopFeedbackAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetDesktopFeedbackAttachmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetDesktopFeedbackAttachmentResponse",
 }) as any as S.Schema<GetDesktopFeedbackAttachmentResponse>;
 

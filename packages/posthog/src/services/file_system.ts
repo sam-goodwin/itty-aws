@@ -45,7 +45,7 @@ export interface CreateFileSystemRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-export const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     path: S.optional(S.String),
@@ -58,7 +58,7 @@ export const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFileSystemRequest" }) as any as S.Schema<CreateFileSystemRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -74,14 +74,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -94,7 +89,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -123,7 +118,7 @@ export interface FileSystem2 {
   /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
   user_access_level?: string | null;
 }
-export const FileSystem2 = /*@__PURE__*/ S.suspend(() =>
+const FileSystem2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     path: S.optional(S.String),
@@ -144,7 +139,7 @@ export interface CreateFileSystemHomeFolderRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const CreateFileSystemHomeFolderRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileSystemHomeFolderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -164,7 +159,7 @@ export interface FileSystemHomeFolder {
   /** The current path of the user's home folder. */
   path: string | null;
 }
-export const FileSystemHomeFolder = /*@__PURE__*/ S.suspend(() =>
+const FileSystemHomeFolder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     path: S.NullOr(S.String),
@@ -179,7 +174,7 @@ export interface FileSystemDestroyRequest {
   /** Delete folder contents too (default: true). Set false to delete only empty folders. Nonempty folders return HTTP 409 with code directory_not_empty. */
   recursive?: boolean;
 }
-export const FileSystemDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSystemDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -190,7 +185,7 @@ export const FileSystemDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileSystemDestroyRequest" }) as any as S.Schema<FileSystemDestroyRequest>;
 
 export interface FileSystemDestroyResponse {}
-export const FileSystemDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const FileSystemDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FileSystemDestroyResponse",
 }) as any as S.Schema<FileSystemDestroyResponse>;
 
@@ -204,7 +199,7 @@ export interface FileSystemUndoDeleteCreateRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-export const FileSystemUndoDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FileSystemUndoDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     path: S.optional(S.String),
@@ -225,9 +220,7 @@ export const FileSystemUndoDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FileSystemUndoDeleteCreateRequest>;
 
 export interface FileSystemUndoDeleteCreateResponse {}
-export const FileSystemUndoDeleteCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const FileSystemUndoDeleteCreateResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "FileSystemUndoDeleteCreateResponse",
 }) as any as S.Schema<FileSystemUndoDeleteCreateResponse>;
 
@@ -237,7 +230,7 @@ export interface GetFileSystemRequest {
   /** A UUID string identifying this file system. */
   id: string;
 }
-export const GetFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -258,7 +251,7 @@ export interface ListFileSystemRequest {
   /** A search term. */
   search?: string;
 }
-export const ListFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     include_content_type: S.optional(S.Boolean.pipe(T.Query())),
@@ -269,7 +262,7 @@ export const ListFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFileSystemRequest" }) as any as S.Schema<ListFileSystemRequest>;
 
 export type PaginatedFileSystemListResultsList = Array<FileSystem2>;
-export const PaginatedFileSystemListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedFileSystemListResultsList = /*@__PURE__*/ S.Array(
   FileSystem2,
 ) as any as S.Schema<PaginatedFileSystemListResultsList>;
 
@@ -279,7 +272,7 @@ export interface PaginatedFileSystemList {
   previous?: string | null;
   results?: PaginatedFileSystemListResultsList;
 }
-export const PaginatedFileSystemList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedFileSystemList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -300,7 +293,7 @@ export interface UpdateFileSystemRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-export const UpdateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -327,7 +320,7 @@ export interface UpdateFileSystemPartialRequest {
   meta?: unknown;
   shortcut?: boolean | null;
 }
-export const UpdateFileSystemPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFileSystemPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

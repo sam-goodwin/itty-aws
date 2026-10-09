@@ -90,14 +90,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A set of field paths on a document. Used to restrict a get or update operation on a document to a subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and takes in account the dynamic nature of Value. */
 export interface DocumentMask {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   fieldPaths?: StringList;
 }
-export const DocumentMask = /*@__PURE__*/ S.suspend(() =>
+const DocumentMask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPaths: S.optional(StringList),
   }),
@@ -108,7 +108,7 @@ export interface RequestOptions {
   /** Optional. The request tags for the request. Request tags are user-provided strings used for usage monitoring, cost management, and observability. Callers can associate custom application context (such as component, microservice, feature name, or operation type) with database requests. These tags are collected and aggregated in usage and monitoring reports, allowing billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show up in monitoring and are visible in administrative operations (such as usage reports). They do not affect data storage, query semantics, or request execution. Cardinality and Best Practices: - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than 100 distinct tags across an entire database). Using a large number of distinct tags may result in tags being omitted from top usage dashboards. - Use structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs, request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or personally identifiable information (PII) in request tags, as they show up in administrative monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. - Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags are silently discarded). */
   requestTags?: StringList;
 }
-export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
+const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestTags: S.optional(StringList),
   }),
@@ -118,7 +118,7 @@ export type ReadWriteConcurrencyModeEnum =
   | "CONCURRENCY_MODE_UNSPECIFIED"
   | "OPTIMISTIC"
   | "PESSIMISTIC";
-export const ReadWriteConcurrencyModeEnum = S.String;
+const ReadWriteConcurrencyModeEnum = S.String;
 
 /** Options for a transaction that can be used to read and write documents. */
 export interface ReadWrite {
@@ -127,7 +127,7 @@ export interface ReadWrite {
   /** Optional. The concurrency control mode to use for this transaction. A database is able to use different concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to create optimistic read-write transactions and must specify that here even if the database-level setting is already configured to optimistic. */
   concurrencyMode?: ReadWriteConcurrencyModeEnum | (string & {});
 }
-export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
+const ReadWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryTransaction: S.optional(S.String),
     concurrencyMode: S.optional(ReadWriteConcurrencyModeEnum),
@@ -139,7 +139,7 @@ export interface ReadOnly {
   /** Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
+const ReadOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
   }),
@@ -152,7 +152,7 @@ export interface TransactionOptions {
   /** The transaction can only be used for read operations. */
   readOnly?: ReadOnly;
 }
-export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
+const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readWrite: S.optional(ReadWrite),
     readOnly: S.optional(ReadOnly),
@@ -174,7 +174,7 @@ export interface BatchGetDocumentsRequest {
   /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mask: S.optional(DocumentMask),
     requestOptions: S.optional(RequestOptions),
@@ -191,7 +191,7 @@ export interface BatchGetProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchGetDocumentsRequest;
 }
-export const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
@@ -207,7 +207,7 @@ export const BatchGetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
+const ValueList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Value),
 ) as any as S.Schema<ValueList>;
 
@@ -216,14 +216,14 @@ export interface ArrayValue {
   /** Values in the array. */
   values?: ValueList;
 }
-export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
+const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueList),
   }),
 ).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
 export type ValueNullValueEnum = "NULL_VALUE";
-export const ValueNullValueEnum = S.String;
+const ValueNullValueEnum = S.String;
 
 /** Represents an unevaluated scalar expression. For example, the expression `like(user_name, "%alice%")` is represented as: ``` name: "like" args { field_reference: "user_name" } args { string_value: "%alice%" } ``` */
 export interface Firestore_Function {
@@ -234,7 +234,7 @@ export interface Firestore_Function {
   /** Optional. Optional named arguments that certain functions may support. */
   options?: ValueMap;
 }
-export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
+const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(ValueList),
     name: S.optional(S.String),
@@ -247,7 +247,7 @@ export interface MapValue {
   /** The map's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
   fields?: ValueMap;
 }
-export const MapValue = /*@__PURE__*/ S.suspend(() =>
+const MapValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(S.suspend(() => ValueMap)),
   }),
@@ -260,7 +260,7 @@ export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
   longitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latitude: S.optional(S.Number),
     longitude: S.optional(S.Number),
@@ -276,7 +276,7 @@ export interface Stage {
   /** Optional. Optional named arguments that certain functions may support. */
   options?: ValueMap;
 }
-export const Stage = /*@__PURE__*/ S.suspend(() =>
+const Stage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     args: S.optional(ValueList),
@@ -285,14 +285,14 @@ export const Stage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
 
 export type StageList = Array<Stage>;
-export const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
+const StageList = /*@__PURE__*/ S.Array(Stage) as any as S.Schema<StageList>;
 
 /** A Firestore query represented as an ordered list of operations / stages. */
 export interface Pipeline {
   /** Required. Ordered list of stages to evaluate. */
   stages?: StageList;
 }
-export const Pipeline = /*@__PURE__*/ S.suspend(() =>
+const Pipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stages: S.optional(StageList),
   }),
@@ -331,7 +331,7 @@ export interface Value {
   /** A value that represents an unevaluated pipeline. **Requires:** * Not allowed to be used when writing documents. */
   pipelineValue?: Pipeline;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bytesValue: S.optional(S.String),
     arrayValue: S.optional(ArrayValue),
@@ -352,7 +352,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
+const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
 
 /** A Firestore document. Must not exceed 1 MiB - 4 bytes. */
 export interface Document {
@@ -365,7 +365,7 @@ export interface Document {
   /** Output only. The time at which the document was last changed. This value is initially set to the `create_time` then increases monotonically with each change to the document. It can also be compared to values from other documents and the `read_time` of a query. */
   updateTime?: string;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+const Document = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(ValueMap),
     name: S.optional(S.String),
@@ -385,7 +385,7 @@ export interface BatchGetDocumentsResponse {
   /** The transaction that was started as part of this request. Will only be set in the first response, and only if BatchGetDocumentsRequest.new_transaction was set in the request. */
   transaction?: string;
 }
-export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(Document),
     missing: S.optional(S.String),
@@ -397,10 +397,10 @@ export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetDocumentsResponse>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type FieldTransformSetToServerValueEnum = "SERVER_VALUE_UNSPECIFIED" | "REQUEST_TIME";
-export const FieldTransformSetToServerValueEnum = S.String;
+const FieldTransformSetToServerValueEnum = S.String;
 
 /** A transformation of a field of the document. */
 export interface FieldTransform {
@@ -419,7 +419,7 @@ export interface FieldTransform {
   /** Sets the field to the maximum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If a maximum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN. */
   maximum?: Value;
 }
-export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
+const FieldTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimum: S.optional(Value),
     setToServerValue: S.optional(FieldTransformSetToServerValueEnum),
@@ -432,7 +432,7 @@ export const FieldTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldTransform" }) as any as S.Schema<FieldTransform>;
 
 export type FieldTransformList = Array<FieldTransform>;
-export const FieldTransformList = /*@__PURE__*/ S.Array(
+const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
 
@@ -443,7 +443,7 @@ export interface DocumentTransform {
   /** The name of the document to transform. */
   document?: string;
 }
-export const DocumentTransform = /*@__PURE__*/ S.suspend(() =>
+const DocumentTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldTransforms: S.optional(FieldTransformList),
     document: S.optional(S.String),
@@ -457,7 +457,7 @@ export interface Precondition {
   /** When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. */
   updateTime?: string;
 }
-export const Precondition = /*@__PURE__*/ S.suspend(() =>
+const Precondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exists: S.optional(S.Boolean),
     updateTime: S.optional(S.String),
@@ -479,7 +479,7 @@ export interface Write {
   /** A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
   delete?: string;
 }
-export const Write = /*@__PURE__*/ S.suspend(() =>
+const Write = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transform: S.optional(DocumentTransform),
     update: S.optional(Document),
@@ -491,7 +491,7 @@ export const Write = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Write" }) as any as S.Schema<Write>;
 
 export type WriteList = Array<Write>;
-export const WriteList = /*@__PURE__*/ S.Array(Write) as any as S.Schema<WriteList>;
+const WriteList = /*@__PURE__*/ S.Array(Write) as any as S.Schema<WriteList>;
 
 /** The request for Firestore.BatchWrite. */
 export interface BatchWriteRequest {
@@ -502,7 +502,7 @@ export interface BatchWriteRequest {
   /** The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request. */
   writes?: WriteList;
 }
-export const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     requestOptions: S.optional(RequestOptions),
@@ -516,7 +516,7 @@ export interface BatchWriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BatchWriteRequest;
 }
-export const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BatchWriteRequest.pipe(T.HttpBody())),
@@ -532,15 +532,10 @@ export const BatchWriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<BatchWriteProjectsDatabasesDocumentsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -551,7 +546,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -560,7 +555,7 @@ export const Status = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
+const StatusList = /*@__PURE__*/ S.Array(Status) as any as S.Schema<StatusList>;
 
 /** The result of applying a write. */
 export interface WriteResult {
@@ -569,7 +564,7 @@ export interface WriteResult {
   /** The last update time of the document after applying the write. Not set after a `delete`. If the write did not actually change the document, this will be the previous update_time. */
   updateTime?: string;
 }
-export const WriteResult = /*@__PURE__*/ S.suspend(() =>
+const WriteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transformResults: S.optional(ValueList),
     updateTime: S.optional(S.String),
@@ -577,9 +572,7 @@ export const WriteResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WriteResult" }) as any as S.Schema<WriteResult>;
 
 export type WriteResultList = Array<WriteResult>;
-export const WriteResultList = /*@__PURE__*/ S.Array(
-  WriteResult,
-) as any as S.Schema<WriteResultList>;
+const WriteResultList = /*@__PURE__*/ S.Array(WriteResult) as any as S.Schema<WriteResultList>;
 
 /** The response from Firestore.BatchWrite. */
 export interface BatchWriteResponse {
@@ -588,7 +581,7 @@ export interface BatchWriteResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
   writeResults?: WriteResultList;
 }
-export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(StatusList),
     writeResults: S.optional(WriteResultList),
@@ -602,7 +595,7 @@ export interface BeginTransactionRequest {
   /** The options for the transaction. Defaults to a read-write transaction. */
   options?: TransactionOptions;
 }
-export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestOptions: S.optional(RequestOptions),
     options: S.optional(TransactionOptions),
@@ -615,7 +608,7 @@ export interface BeginTransactionProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
@@ -635,7 +628,7 @@ export interface BeginTransactionResponse {
   /** The transaction that was started. */
   transaction?: string;
 }
-export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
   }),
@@ -648,7 +641,7 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   /** Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each namespace in this list must be unique. */
   namespaceIds?: StringList;
 }
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     namespaceIds: S.optional(StringList),
@@ -663,7 +656,7 @@ export interface BulkDeleteDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BulkDeleteDocumentsRequest;
 }
-export const BulkDeleteDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.pipe(T.HttpBody())),
@@ -691,7 +684,7 @@ export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     response: S.optional(DocumentMap),
@@ -705,7 +698,7 @@ export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
-export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleLongrunningCancelOperationRequest",
@@ -717,7 +710,7 @@ export interface CancelProjectsDatabasesOperationsRequest {
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const CancelProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -734,7 +727,7 @@ export const CancelProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -743,7 +736,7 @@ export interface GoogleFirestoreAdminV1CustomerManagedEncryptionOptions {
   /** Required. Only keys in the same location as the database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
 }
-export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -754,14 +747,8 @@ export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions = /*@__PURE_
 /** The configuration options for using Google default encryption. */
 export type GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions =
-  GoogleLongrunningCancelOperationRequest;
-
 /** The configuration options for using the same encryption method as the source. */
 export type GoogleFirestoreAdminV1SourceEncryptionOptions = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1SourceEncryptionOptions =
-  GoogleLongrunningCancelOperationRequest;
-
 /** Encryption configuration for a new database being created from another source. The source could be a Backup or a PitrSnapshot. */
 export interface GoogleFirestoreAdminV1EncryptionConfig {
   /** Use Customer Managed Encryption Keys (CMEK) for encryption. */
@@ -771,7 +758,7 @@ export interface GoogleFirestoreAdminV1EncryptionConfig {
   /** The database will use the same encryption configuration as the source. */
   useSourceEncryption?: GoogleLongrunningCancelOperationRequest;
 }
-export const GoogleFirestoreAdminV1EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerManagedEncryption: S.optional(GoogleFirestoreAdminV1CustomerManagedEncryptionOptions),
     googleDefaultEncryption: S.optional(GoogleLongrunningCancelOperationRequest),
@@ -790,7 +777,7 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   /** Output only. Public UUID of the database the snapshot was associated with. */
   databaseUid?: string;
 }
-export const GoogleFirestoreAdminV1PitrSnapshot = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1PitrSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.optional(S.String),
     snapshotTime: S.optional(S.String),
@@ -811,7 +798,7 @@ export interface GoogleFirestoreAdminV1CloneDatabaseRequest {
   /** Optional. Immutable. Tags to be bound to the cloned database. The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}`. */
   tags?: StringMap;
 }
-export const GoogleFirestoreAdminV1CloneDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1CloneDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionConfig: S.optional(GoogleFirestoreAdminV1EncryptionConfig),
     pitrSnapshot: S.optional(GoogleFirestoreAdminV1PitrSnapshot),
@@ -828,7 +815,7 @@ export interface CloneProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1CloneDatabaseRequest;
 }
-export const CloneProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CloneProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1CloneDatabaseRequest.pipe(T.HttpBody())),
@@ -852,7 +839,7 @@ export interface CommitRequest {
   /** If set, applies all writes in this transaction, and commits it. */
   transaction?: string;
 }
-export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writes: S.optional(WriteList),
     requestOptions: S.optional(RequestOptions),
@@ -866,7 +853,7 @@ export interface CommitProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(CommitRequest.pipe(T.HttpBody())),
@@ -888,7 +875,7 @@ export interface CommitResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
   writeResults?: WriteResultList;
 }
-export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitTime: S.optional(S.String),
     writeResults: S.optional(WriteResultList),
@@ -909,7 +896,7 @@ export interface CreateDocumentProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const CreateDocumentProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDocumentProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "requestOptions.requestTags": S.optional(StringList.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -932,50 +919,50 @@ export type GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum =
   | "DATA_ACCESS_MODE_UNSPECIFIED"
   | "DATA_ACCESS_MODE_ENABLED"
   | "DATA_ACCESS_MODE_DISABLED";
-export const GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum =
   | "REALTIME_UPDATES_MODE_UNSPECIFIED"
   | "REALTIME_UPDATES_MODE_ENABLED"
   | "REALTIME_UPDATES_MODE_DISABLED";
-export const GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum =
   | "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"
   | "ENABLED"
   | "DISABLED";
-export const GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseAppEngineIntegrationModeEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseTypeEnum =
   | "DATABASE_TYPE_UNSPECIFIED"
   | "FIRESTORE_NATIVE"
   | "DATASTORE_MODE";
-export const GoogleFirestoreAdminV1DatabaseTypeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseTypeEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum =
   | "POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED"
   | "POINT_IN_TIME_RECOVERY_ENABLED"
   | "POINT_IN_TIME_RECOVERY_DISABLED";
-export const GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum = S.String;
+const GoogleFirestoreAdminV1DatabasePointInTimeRecoveryEnablementEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum =
   | "DATA_ACCESS_MODE_UNSPECIFIED"
   | "DATA_ACCESS_MODE_ENABLED"
   | "DATA_ACCESS_MODE_DISABLED";
-export const GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseMongodbCompatibleDataAccessModeEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum =
   | "DATABASE_EDITION_UNSPECIFIED"
   | "STANDARD"
   | "ENTERPRISE";
-export const GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseDatabaseEditionEnum = S.String;
 
 export type GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum =
   | "CONCURRENCY_MODE_UNSPECIFIED"
   | "OPTIMISTIC"
   | "PESSIMISTIC"
   | "OPTIMISTIC_WITH_ENTITY_GROUPS";
-export const GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseConcurrencyModeEnum = S.String;
 
 /** The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database is secured by the default Google encryption key. */
 export interface GoogleFirestoreAdminV1CmekConfig {
@@ -984,7 +971,7 @@ export interface GoogleFirestoreAdminV1CmekConfig {
   /** Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`. */
   activeKeyVersion?: StringList;
 }
-export const GoogleFirestoreAdminV1CmekConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1CmekConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
     activeKeyVersion: S.optional(StringList),
@@ -997,14 +984,14 @@ export type GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum =
   | "DELETE_PROTECTION_STATE_UNSPECIFIED"
   | "DELETE_PROTECTION_DISABLED"
   | "DELETE_PROTECTION_ENABLED";
-export const GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum = S.String;
+const GoogleFirestoreAdminV1DatabaseDeleteProtectionStateEnum = S.String;
 
 /** Information about a backup that was used to restore a database. */
 export interface GoogleFirestoreAdminV1BackupSource {
   /** The resource name of the backup that was used to restore this database. Format: `projects/{project}/locations/{location}/backups/{backup}`. */
   backup?: string;
 }
-export const GoogleFirestoreAdminV1BackupSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1BackupSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(S.String),
   }),
@@ -1019,7 +1006,7 @@ export interface GoogleFirestoreAdminV1SourceInfo {
   /** If set, this database was restored from the specified backup (or a snapshot thereof). */
   backup?: GoogleFirestoreAdminV1BackupSource;
 }
-export const GoogleFirestoreAdminV1SourceInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SourceInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(S.String),
     backup: S.optional(GoogleFirestoreAdminV1BackupSource),
@@ -1087,7 +1074,7 @@ export interface GoogleFirestoreAdminV1Database {
   /** Output only. Background: Free tier is the ability of a Firestore database to use a small amount of resources every day without being charged. Once usage exceeds the free tier limit further usage is charged. Whether this database can make use of the free tier. Only one database per project can be eligible for the free tier. The first (or next) database that is created in a project without a free tier database will be marked as eligible for the free tier. Databases that are created while there is a free tier database will not be eligible for the free tier. */
   freeTier?: boolean;
 }
-export const GoogleFirestoreAdminV1Database = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1Database = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firestoreDataAccessMode: S.optional(GoogleFirestoreAdminV1DatabaseFirestoreDataAccessModeEnum),
     realtimeUpdatesMode: S.optional(GoogleFirestoreAdminV1DatabaseRealtimeUpdatesModeEnum),
@@ -1132,7 +1119,7 @@ export interface CreateProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Database;
 }
-export const CreateProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1150,8 +1137,6 @@ export const CreateProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Represents a recurring schedule that runs every day. The time zone is UTC. */
 export type GoogleFirestoreAdminV1DailyRecurrence = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1DailyRecurrence = GoogleLongrunningCancelOperationRequest;
-
 export type GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -1161,14 +1146,14 @@ export type GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum = S.String;
+const GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum = S.String;
 
 /** Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC. */
 export interface GoogleFirestoreAdminV1WeeklyRecurrence {
   /** The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed. */
   day?: GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1WeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1WeeklyRecurrence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.optional(GoogleFirestoreAdminV1WeeklyRecurrenceDayEnum),
   }),
@@ -1191,7 +1176,7 @@ export interface GoogleFirestoreAdminV1BackupSchedule {
   /** At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days. The maximum supported retention period is 14 weeks. */
   retention?: string;
 }
-export const GoogleFirestoreAdminV1BackupSchedule = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1BackupSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -1210,7 +1195,7 @@ export interface CreateProjectsDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BackupSchedule;
 }
-export const CreateProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1BackupSchedule.pipe(T.HttpBody())),
@@ -1230,7 +1215,7 @@ export interface GoogleFirestoreAdminV1CollectionGroupScope {
   /** Required. The collection group name. */
   collectionGroupId?: string;
 }
-export const GoogleFirestoreAdminV1CollectionGroupScope = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1CollectionGroupScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionGroupId: S.optional(S.String),
   }),
@@ -1240,8 +1225,6 @@ export const GoogleFirestoreAdminV1CollectionGroupScope = /*@__PURE__*/ S.suspen
 
 /** The change stream is scoped to the entire database. All events in the database are visible to the Change Stream. One Database scope Change Stream is allowed per database. */
 export type GoogleFirestoreAdminV1DatabaseScope = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1DatabaseScope = GoogleLongrunningCancelOperationRequest;
-
 /** A Change Stream is a resource that allows users to receive change notifications from a Firestore database. */
 export interface GoogleFirestoreAdminV1ChangeStream {
   /** If set, the change stream is scoped to a collection group. */
@@ -1261,7 +1244,7 @@ export interface GoogleFirestoreAdminV1ChangeStream {
   /** Identifier. The external resource name of the change stream. Format `projects/{project}/databases/{database}/changeStreams/{change_stream}` */
   name?: string;
 }
-export const GoogleFirestoreAdminV1ChangeStream = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ChangeStream = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionGroupScope: S.optional(GoogleFirestoreAdminV1CollectionGroupScope),
     retentionPeriod: S.optional(S.String),
@@ -1284,7 +1267,7 @@ export interface CreateProjectsDatabasesChangeStreamsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ChangeStream;
 }
-export const CreateProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     changeStreamId: S.optional(S.String.pipe(T.Query())),
@@ -1307,7 +1290,7 @@ export interface GoogleFirestoreAdminV1SearchIndexOptions {
   /** Optional. The field in the document that specifies which language to use for that specific document. For indexes with MONGODB_COMPATIBLE_API ApiScope: if unspecified, the language is taken from the "language" field if it exists or from `text_language` if it does not. */
   textLanguageOverrideFieldPath?: string;
 }
-export const GoogleFirestoreAdminV1SearchIndexOptions = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SearchIndexOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textLanguage: S.optional(S.String),
     textLanguageOverrideFieldPath: S.optional(S.String),
@@ -1321,12 +1304,10 @@ export type GoogleFirestoreAdminV1IndexStateEnum =
   | "CREATING"
   | "READY"
   | "NEEDS_REPAIR";
-export const GoogleFirestoreAdminV1IndexStateEnum = S.String;
+const GoogleFirestoreAdminV1IndexStateEnum = S.String;
 
 /** An index that stores vectors in a flat data structure, and supports exhaustive search. */
 export type GoogleFirestoreAdminV1FlatIndex = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1FlatIndex = GoogleLongrunningCancelOperationRequest;
-
 /** The index configuration to support vector search operations */
 export interface GoogleFirestoreAdminV1VectorConfig {
   /** Indicates the vector index is a flat index. */
@@ -1334,7 +1315,7 @@ export interface GoogleFirestoreAdminV1VectorConfig {
   /** Required. The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension. */
   dimension?: number;
 }
-export const GoogleFirestoreAdminV1VectorConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1VectorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flat: S.optional(GoogleLongrunningCancelOperationRequest),
     dimension: S.optional(S.Number),
@@ -1346,20 +1327,20 @@ export const GoogleFirestoreAdminV1VectorConfig = /*@__PURE__*/ S.suspend(() =>
 export type GoogleFirestoreAdminV1IndexFieldArrayConfigEnum =
   | "ARRAY_CONFIG_UNSPECIFIED"
   | "CONTAINS";
-export const GoogleFirestoreAdminV1IndexFieldArrayConfigEnum = S.String;
+const GoogleFirestoreAdminV1IndexFieldArrayConfigEnum = S.String;
 
 export type GoogleFirestoreAdminV1IndexFieldOrderEnum =
   | "ORDER_UNSPECIFIED"
   | "ASCENDING"
   | "DESCENDING";
-export const GoogleFirestoreAdminV1IndexFieldOrderEnum = S.String;
+const GoogleFirestoreAdminV1IndexFieldOrderEnum = S.String;
 
 /** The specification for how to build a geo search index for a field. */
 export interface GoogleFirestoreAdminV1SearchGeoSpec {
   /** Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed. Firestore GeoPoints are indexed regardless of the value of this field. */
   geoJsonIndexingDisabled?: boolean;
 }
-export const GoogleFirestoreAdminV1SearchGeoSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SearchGeoSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoJsonIndexingDisabled: S.optional(S.Boolean),
   }),
@@ -1370,12 +1351,12 @@ export const GoogleFirestoreAdminV1SearchGeoSpec = /*@__PURE__*/ S.suspend(() =>
 export type GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum =
   | "TEXT_INDEX_TYPE_UNSPECIFIED"
   | "TOKENIZED";
-export const GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum = S.String;
+const GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum = S.String;
 
 export type GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum =
   | "TEXT_MATCH_TYPE_UNSPECIFIED"
   | "MATCH_GLOBALLY";
-export const GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum = S.String;
+const GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum = S.String;
 
 /** Specification of how the field should be indexed for search text indexes. */
 export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
@@ -1384,7 +1365,7 @@ export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
   /** Required. How to match the text field value. */
   matchType?: GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1SearchTextIndexSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SearchTextIndexSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexType: S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecIndexTypeEnum),
     matchType: S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecMatchTypeEnum),
@@ -1395,7 +1376,7 @@ export const GoogleFirestoreAdminV1SearchTextIndexSpec = /*@__PURE__*/ S.suspend
 
 export type GoogleFirestoreAdminV1SearchTextIndexSpecList =
   Array<GoogleFirestoreAdminV1SearchTextIndexSpec>;
-export const GoogleFirestoreAdminV1SearchTextIndexSpecList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1SearchTextIndexSpecList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1SearchTextIndexSpec,
 ) as any as S.Schema<GoogleFirestoreAdminV1SearchTextIndexSpecList>;
 
@@ -1404,7 +1385,7 @@ export interface GoogleFirestoreAdminV1SearchTextSpec {
   /** Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways. */
   indexSpecs?: GoogleFirestoreAdminV1SearchTextIndexSpecList;
 }
-export const GoogleFirestoreAdminV1SearchTextSpec = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SearchTextSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexSpecs: S.optional(GoogleFirestoreAdminV1SearchTextIndexSpecList),
   }),
@@ -1419,7 +1400,7 @@ export interface GoogleFirestoreAdminV1SearchConfig {
   /** Optional. The specification for building a text search index for a field. */
   textSpec?: GoogleFirestoreAdminV1SearchTextSpec;
 }
-export const GoogleFirestoreAdminV1SearchConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1SearchConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoSpec: S.optional(GoogleFirestoreAdminV1SearchGeoSpec),
     textSpec: S.optional(GoogleFirestoreAdminV1SearchTextSpec),
@@ -1441,7 +1422,7 @@ export interface GoogleFirestoreAdminV1IndexField {
   /** Indicates that this field supports search operations. */
   searchConfig?: GoogleFirestoreAdminV1SearchConfig;
 }
-export const GoogleFirestoreAdminV1IndexField = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1IndexField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorConfig: S.optional(GoogleFirestoreAdminV1VectorConfig),
     arrayConfig: S.optional(GoogleFirestoreAdminV1IndexFieldArrayConfigEnum),
@@ -1454,7 +1435,7 @@ export const GoogleFirestoreAdminV1IndexField = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirestoreAdminV1IndexField>;
 
 export type GoogleFirestoreAdminV1IndexFieldList = Array<GoogleFirestoreAdminV1IndexField>;
-export const GoogleFirestoreAdminV1IndexFieldList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1IndexFieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1IndexField,
 ) as any as S.Schema<GoogleFirestoreAdminV1IndexFieldList>;
 
@@ -1463,20 +1444,20 @@ export type GoogleFirestoreAdminV1IndexDensityEnum =
   | "SPARSE_ALL"
   | "SPARSE_ANY"
   | "DENSE";
-export const GoogleFirestoreAdminV1IndexDensityEnum = S.String;
+const GoogleFirestoreAdminV1IndexDensityEnum = S.String;
 
 export type GoogleFirestoreAdminV1IndexQueryScopeEnum =
   | "QUERY_SCOPE_UNSPECIFIED"
   | "COLLECTION"
   | "COLLECTION_GROUP"
   | "COLLECTION_RECURSIVE";
-export const GoogleFirestoreAdminV1IndexQueryScopeEnum = S.String;
+const GoogleFirestoreAdminV1IndexQueryScopeEnum = S.String;
 
 export type GoogleFirestoreAdminV1IndexApiScopeEnum =
   | "ANY_API"
   | "DATASTORE_MODE_API"
   | "MONGODB_COMPATIBLE_API";
-export const GoogleFirestoreAdminV1IndexApiScopeEnum = S.String;
+const GoogleFirestoreAdminV1IndexApiScopeEnum = S.String;
 
 /** Cloud Firestore indexes enable simple and complex queries against documents in a database. In Standard edition databases, single-field indexes are managed using the google.firestore.admin.v1.Field resource, and composite indexes are managed using the google.firestore.admin.v1.Index resource. In Enterprise edition databases, both single-field and composite indexes are managed using the google.firestore.admin.v1.Index resource. */
 export interface GoogleFirestoreAdminV1Index {
@@ -1501,7 +1482,7 @@ export interface GoogleFirestoreAdminV1Index {
   /** The API scope supported by this index. */
   apiScope?: GoogleFirestoreAdminV1IndexApiScopeEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1Index = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unique: S.optional(S.Boolean),
     searchIndexOptions: S.optional(GoogleFirestoreAdminV1SearchIndexOptions),
@@ -1524,7 +1505,7 @@ export interface CreateProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Index;
 }
-export const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1Index.pipe(T.HttpBody())),
@@ -1544,7 +1525,7 @@ export interface GoogleFirestoreAdminV1ResourceIdentity {
   /** Output only. Principal identifier string. See: https://cloud.google.com/iam/docs/principal-identifiers */
   principal?: string;
 }
-export const GoogleFirestoreAdminV1ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principal: S.optional(S.String),
   }),
@@ -1553,7 +1534,7 @@ export const GoogleFirestoreAdminV1ResourceIdentity = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<GoogleFirestoreAdminV1ResourceIdentity>;
 
 export type GoogleFirestoreAdminV1UserCredsStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const GoogleFirestoreAdminV1UserCredsStateEnum = S.String;
+const GoogleFirestoreAdminV1UserCredsStateEnum = S.String;
 
 /** A Cloud Firestore User Creds. */
 export interface GoogleFirestoreAdminV1UserCreds {
@@ -1570,7 +1551,7 @@ export interface GoogleFirestoreAdminV1UserCreds {
   /** Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation. */
   state?: GoogleFirestoreAdminV1UserCredsStateEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1UserCreds = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1UserCreds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceIdentity: S.optional(GoogleFirestoreAdminV1ResourceIdentity),
     createTime: S.optional(S.String),
@@ -1591,7 +1572,7 @@ export interface CreateProjectsDatabasesUserCredsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1UserCreds;
 }
-export const CreateProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userCredsId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1613,7 +1594,7 @@ export interface DeleteProjectsDatabasesRequest {
   /** The current etag of the Database. If an etag is provided and does not match the current etag of the database, deletion will be blocked and a FAILED_PRECONDITION error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1628,7 +1609,7 @@ export interface DeleteProjectsDatabasesBackupSchedulesRequest {
   /** Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
   name: string;
 }
-export const DeleteProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1644,7 +1625,7 @@ export interface DeleteProjectsDatabasesChangeStreamsRequest {
   /** Optional. The etag of the change stream to delete. If this is not the current etag of the change stream, the deletion will fail. */
   etag?: string;
 }
-export const DeleteProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1659,7 +1640,7 @@ export interface DeleteProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1679,7 +1660,7 @@ export interface DeleteProjectsDatabasesDocumentsRequest {
   /** Optional. The request tags for the request. Request tags are user-provided strings used for usage monitoring, cost management, and observability. Callers can associate custom application context (such as component, microservice, feature name, or operation type) with database requests. These tags are collected and aggregated in usage and monitoring reports, allowing billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show up in monitoring and are visible in administrative operations (such as usage reports). They do not affect data storage, query semantics, or request execution. Cardinality and Best Practices: - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than 100 distinct tags across an entire database). Using a large number of distinct tags may result in tags being omitted from top usage dashboards. - Use structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs, request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or personally identifiable information (PII) in request tags, as they show up in administrative monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. - Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags are silently discarded). */
   "requestOptions.requestTags"?: StringList;
 }
-export const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "currentDocument.exists": S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1696,7 +1677,7 @@ export interface DeleteProjectsDatabasesOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1710,7 +1691,7 @@ export interface DeleteProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
 }
-export const DeleteProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1724,7 +1705,7 @@ export interface DeleteProjectsLocationsBackupsRequest {
   /** Required. Name of the backup to delete. format is `projects/{project}/locations/{location}/backups/{backup}`. */
   name: string;
 }
-export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1736,16 +1717,13 @@ export const DeleteProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() 
 
 /** The request for FirestoreAdmin.DisableUserCreds. */
 export type GoogleFirestoreAdminV1DisableUserCredsRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1DisableUserCredsRequest =
-  GoogleLongrunningCancelOperationRequest;
-
 export interface DisableProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const DisableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -1762,15 +1740,13 @@ export const DisableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
 
 /** The request for FirestoreAdmin.EnableUserCreds. */
 export type GoogleFirestoreAdminV1EnableUserCredsRequest = GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1EnableUserCredsRequest = GoogleLongrunningCancelOperationRequest;
-
 export interface EnableProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const EnableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -1792,7 +1768,7 @@ export interface StructuredPipeline {
   /** Optional. Optional query-level arguments. */
   options?: ValueMap;
 }
-export const StructuredPipeline = /*@__PURE__*/ S.suspend(() =>
+const StructuredPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.optional(Pipeline),
     options: S.optional(ValueMap),
@@ -1814,7 +1790,7 @@ export interface ExecutePipelineRequest {
   /** Optional. The request options for this request. */
   requestOptions?: RequestOptions;
 }
-export const ExecutePipelineRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     newTransaction: S.optional(TransactionOptions),
@@ -1831,7 +1807,7 @@ export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ExecutePipelineRequest;
 }
-export const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(ExecutePipelineRequest.pipe(T.HttpBody())),
@@ -1847,14 +1823,14 @@ export const ExecutePipelineProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ExecutePipelineProjectsDatabasesDocumentsRequest>;
 
 export type DocumentList = Array<Document>;
-export const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(Document) as any as S.Schema<DocumentList>;
 
 /** Pipeline explain stats. Depending on the explain options in the original request, this can contain the optimized plan and / or execution stats. */
 export interface ExplainStats {
   /** The format depends on the `output_format` options in the request. Currently there are two supported options: `TEXT` and `JSON`. Both supply a `google.protobuf.StringValue`. */
   data?: DocumentMap;
 }
-export const ExplainStats = /*@__PURE__*/ S.suspend(() =>
+const ExplainStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(DocumentMap),
   }),
@@ -1871,7 +1847,7 @@ export interface ExecutePipelineResponse {
   /** Newly created transaction identifier. This field is only specified as part of the first response from the server, alongside the `results` field when the original request specified ExecuteRequest.new_transaction. */
   transaction?: string;
 }
-export const ExecutePipelineResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecutePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionTime: S.optional(S.String),
     results: S.optional(DocumentList),
@@ -1891,7 +1867,7 @@ export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
   /** The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. */
   outputUriPrefix?: string;
 }
-export const GoogleFirestoreAdminV1ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ExportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     snapshotTime: S.optional(S.String),
@@ -1908,7 +1884,7 @@ export interface ExportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ExportDocumentsRequest;
 }
-export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1ExportDocumentsRequest.pipe(T.HttpBody())),
@@ -1927,7 +1903,7 @@ export interface GetProjectsDatabasesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}` */
   name: string;
 }
-export const GetProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1941,7 +1917,7 @@ export interface GetProjectsDatabasesBackupSchedulesRequest {
   /** Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` */
   name: string;
 }
-export const GetProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1955,7 +1931,7 @@ export interface GetProjectsDatabasesChangeStreamsRequest {
   /** Required. The name of the change stream to retrieve. Format is `projects/{project}/databases/{database}/changeStreams/{change_stream}`. */
   name: string;
 }
-export const GetProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1969,7 +1945,7 @@ export interface GetProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1984,7 +1960,7 @@ export type GoogleFirestoreAdminV1TtlConfigStateEnum =
   | "CREATING"
   | "ACTIVE"
   | "NEEDS_REPAIR";
-export const GoogleFirestoreAdminV1TtlConfigStateEnum = S.String;
+const GoogleFirestoreAdminV1TtlConfigStateEnum = S.String;
 
 /** The TTL (time-to-live) configuration for documents that have this `Field` set. A timestamp stored in a TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum of the timestamp value and the `expiration_offset`. For Enterprise edition databases, the timestamp value may alternatively be stored in an array value in the TTL-enabled field. An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document. */
 export interface GoogleFirestoreAdminV1TtlConfig {
@@ -1993,7 +1969,7 @@ export interface GoogleFirestoreAdminV1TtlConfig {
   /** Output only. The state of the TTL configuration. */
   state?: GoogleFirestoreAdminV1TtlConfigStateEnum | (string & {});
 }
-export const GoogleFirestoreAdminV1TtlConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1TtlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationOffset: S.optional(S.String),
     state: S.optional(GoogleFirestoreAdminV1TtlConfigStateEnum),
@@ -2003,7 +1979,7 @@ export const GoogleFirestoreAdminV1TtlConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GoogleFirestoreAdminV1TtlConfig>;
 
 export type GoogleFirestoreAdminV1IndexList = Array<GoogleFirestoreAdminV1Index>;
-export const GoogleFirestoreAdminV1IndexList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1IndexList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Index,
 ) as any as S.Schema<GoogleFirestoreAdminV1IndexList>;
 
@@ -2018,7 +1994,7 @@ export interface GoogleFirestoreAdminV1IndexConfig {
   /** Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false). */
   ancestorField?: string;
 }
-export const GoogleFirestoreAdminV1IndexConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1IndexConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     usesAncestorConfig: S.optional(S.Boolean),
     reverting: S.optional(S.Boolean),
@@ -2038,7 +2014,7 @@ export interface GoogleFirestoreAdminV1Field {
   /** The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field`. To explicitly remove all indexes for this field, specify an index config with an empty list of indexes. */
   indexConfig?: GoogleFirestoreAdminV1IndexConfig;
 }
-export const GoogleFirestoreAdminV1Field = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttlConfig: S.optional(GoogleFirestoreAdminV1TtlConfig),
     name: S.optional(S.String),
@@ -2052,7 +2028,7 @@ export interface GetProjectsDatabasesCollectionGroupsIndexesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` */
   name: string;
 }
-export const GetProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2074,7 +2050,7 @@ export interface GetProjectsDatabasesDocumentsRequest {
   /** Optional. The request tags for the request. Request tags are user-provided strings used for usage monitoring, cost management, and observability. Callers can associate custom application context (such as component, microservice, feature name, or operation type) with database requests. These tags are collected and aggregated in usage and monitoring reports, allowing billable operations and usage metrics to be sliced and analyzed by tag. These tags *only* show up in monitoring and are visible in administrative operations (such as usage reports). They do not affect data storage, query semantics, or request execution. Cardinality and Best Practices: - Request tags are most effective when using a bounded set of distinct values (e.g., fewer than 100 distinct tags across an entire database). Using a large number of distinct tags may result in tags being omitted from top usage dashboards. - Use structured identifiers (for example: `app=cart`, `env=prod`, `service=checkout`) and avoid high-cardinality values such as UUIDs, request IDs, timestamps, user IDs, or document keys. - Do not include sensitive data or personally identifiable information (PII) in request tags, as they show up in administrative monitoring. The tags are processed as follows: - Leading and trailing whitespace is trimmed. - Empty tags (after trimming) are filtered out. - Truncated to a maximum of 510 characters. - Deduplicated within the same request. - Limited to a maximum of 50 tags per request (excess tags are silently discarded). */
   "requestOptions.requestTags"?: StringList;
 }
-export const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "mask.fieldPaths": S.optional(StringList.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2092,7 +2068,7 @@ export interface GetProjectsDatabasesOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2106,7 +2082,7 @@ export interface GetProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
 }
-export const GetProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2120,7 +2096,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2143,7 +2119,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     labels: S.optional(StringMap),
@@ -2157,7 +2133,7 @@ export interface GetProjectsLocationsBackupsRequest {
   /** Required. Name of the backup to fetch. Format is `projects/{project}/locations/{location}/backups/{backup}`. */
   name: string;
 }
-export const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2176,7 +2152,7 @@ export interface GoogleFirestoreAdminV1Stats {
   /** Output only. The total number of documents contained in the backup. */
   documentCount?: string;
 }
-export const GoogleFirestoreAdminV1Stats = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1Stats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexCount: S.optional(S.String),
     sizeBytes: S.optional(S.String),
@@ -2191,7 +2167,7 @@ export type GoogleFirestoreAdminV1BackupStateEnum =
   | "CREATING"
   | "READY"
   | "NOT_AVAILABLE";
-export const GoogleFirestoreAdminV1BackupStateEnum = S.String;
+const GoogleFirestoreAdminV1BackupStateEnum = S.String;
 
 /** A Backup of a Cloud Firestore Database. The backup contains all documents and index configurations for the given database at a specific point in time. */
 export interface GoogleFirestoreAdminV1Backup {
@@ -2210,7 +2186,7 @@ export interface GoogleFirestoreAdminV1Backup {
   /** Output only. The system-generated UUID4 for the Firestore database that the backup is from. */
   databaseUid?: string;
 }
-export const GoogleFirestoreAdminV1Backup = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stats: S.optional(GoogleFirestoreAdminV1Stats),
     snapshotTime: S.optional(S.String),
@@ -2233,7 +2209,7 @@ export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
   /** An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
   namespaceIds?: StringList;
 }
-export const GoogleFirestoreAdminV1ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ImportDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     inputUriPrefix: S.optional(S.String),
@@ -2249,7 +2225,7 @@ export interface ImportDocumentsProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1ImportDocumentsRequest;
 }
-export const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1ImportDocumentsRequest.pipe(T.HttpBody())),
@@ -2275,7 +2251,7 @@ export interface ListCollectionIdsRequest {
   /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ListCollectionIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     requestOptions: S.optional(RequestOptions),
@@ -2290,7 +2266,7 @@ export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListCollectionIdsRequest;
 }
-export const ListCollectionIdsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ListCollectionIdsRequest.pipe(T.HttpBody())),
@@ -2312,7 +2288,7 @@ export interface ListCollectionIdsResponse {
   /** A page token that may be used to continue the list. */
   nextPageToken?: string;
 }
-export const ListCollectionIdsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollectionIdsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2345,7 +2321,7 @@ export interface ListDocumentsProjectsDatabasesDocumentsRequest {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   "mask.fieldPaths"?: StringList;
 }
-export const ListDocumentsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String.pipe(T.Query())),
     readTime: S.optional(S.String.pipe(T.Query())),
@@ -2376,7 +2352,7 @@ export interface ListDocumentsResponse {
   /** The Documents found. */
   documents?: DocumentList;
 }
-export const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     documents: S.optional(DocumentList),
@@ -2390,7 +2366,7 @@ export interface Cursor {
   /** The values that represent a position, in the order they appear in the order by clause of a query. Can contain fewer values than specified in the order by clause. */
   values?: ValueList;
 }
-export const Cursor = /*@__PURE__*/ S.suspend(() =>
+const Cursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     before: S.optional(S.Boolean),
     values: S.optional(ValueList),
@@ -2402,14 +2378,14 @@ export interface FieldReference {
   /** A reference to a field in a document. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to document field name limitations. */
   fieldPath?: string;
 }
-export const FieldReference = /*@__PURE__*/ S.suspend(() =>
+const FieldReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldPath: S.optional(S.String),
   }),
 ).annotate({ identifier: "FieldReference" }) as any as S.Schema<FieldReference>;
 
 export type FieldReferenceList = Array<FieldReference>;
-export const FieldReferenceList = /*@__PURE__*/ S.Array(
+const FieldReferenceList = /*@__PURE__*/ S.Array(
   FieldReference,
 ) as any as S.Schema<FieldReferenceList>;
 
@@ -2418,7 +2394,7 @@ export interface Projection {
   /** The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`. */
   fields?: FieldReferenceList;
 }
-export const Projection = /*@__PURE__*/ S.suspend(() =>
+const Projection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(FieldReferenceList),
   }),
@@ -2436,7 +2412,7 @@ export type FieldFilterOpEnum =
   | "IN"
   | "ARRAY_CONTAINS_ANY"
   | "NOT_IN";
-export const FieldFilterOpEnum = S.String;
+const FieldFilterOpEnum = S.String;
 
 /** A filter on a specific field. */
 export interface FieldFilter {
@@ -2447,7 +2423,7 @@ export interface FieldFilter {
   /** The value to compare to. */
   value?: Value;
 }
-export const FieldFilter = /*@__PURE__*/ S.suspend(() =>
+const FieldFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(FieldReference),
     op: S.optional(FieldFilterOpEnum),
@@ -2461,7 +2437,7 @@ export type UnaryFilterOpEnum =
   | "IS_NULL"
   | "IS_NOT_NAN"
   | "IS_NOT_NULL";
-export const UnaryFilterOpEnum = S.String;
+const UnaryFilterOpEnum = S.String;
 
 /** A filter with a single operand. */
 export interface UnaryFilter {
@@ -2470,7 +2446,7 @@ export interface UnaryFilter {
   /** The unary operator to apply. */
   op?: UnaryFilterOpEnum | (string & {});
 }
-export const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
+const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(FieldReference),
     op: S.optional(UnaryFilterOpEnum),
@@ -2478,10 +2454,10 @@ export const UnaryFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnaryFilter" }) as any as S.Schema<UnaryFilter>;
 
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-export const CompositeFilterOpEnum = S.String;
+const CompositeFilterOpEnum = S.String;
 
 export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
+const FilterList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => Filter),
 ) as any as S.Schema<FilterList>;
 
@@ -2492,7 +2468,7 @@ export interface CompositeFilter {
   /** The list of filters to combine. Requires: * At least one filter is present. */
   filters?: FilterList;
 }
-export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
+const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(CompositeFilterOpEnum),
     filters: S.optional(FilterList),
@@ -2508,7 +2484,7 @@ export interface Filter {
   /** A composite filter. */
   compositeFilter?: CompositeFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldFilter: S.optional(FieldFilter),
     unaryFilter: S.optional(UnaryFilter),
@@ -2521,7 +2497,7 @@ export type FindNearestDistanceMeasureEnum =
   | "EUCLIDEAN"
   | "COSINE"
   | "DOT_PRODUCT";
-export const FindNearestDistanceMeasureEnum = S.String;
+const FindNearestDistanceMeasureEnum = S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
 export interface FindNearest {
@@ -2538,7 +2514,7 @@ export interface FindNearest {
   /** Required. The distance measure to use, required. */
   distanceMeasure?: FindNearestDistanceMeasureEnum | (string & {});
 }
-export const FindNearest = /*@__PURE__*/ S.suspend(() =>
+const FindNearest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorField: S.optional(FieldReference),
     queryVector: S.optional(Value),
@@ -2550,7 +2526,7 @@ export const FindNearest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FindNearest" }) as any as S.Schema<FindNearest>;
 
 export type OrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
-export const OrderDirectionEnum = S.String;
+const OrderDirectionEnum = S.String;
 
 /** An order on a field. */
 export interface Order {
@@ -2559,7 +2535,7 @@ export interface Order {
   /** The field to order by. */
   field?: FieldReference;
 }
-export const Order = /*@__PURE__*/ S.suspend(() =>
+const Order = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(OrderDirectionEnum),
     field: S.optional(FieldReference),
@@ -2567,7 +2543,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 
 export type OrderList = Array<Order>;
-export const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
+const OrderList = /*@__PURE__*/ S.Array(Order) as any as S.Schema<OrderList>;
 
 /** A selection of a collection, such as `messages as m1`. */
 export interface CollectionSelector {
@@ -2576,7 +2552,7 @@ export interface CollectionSelector {
   /** When false, selects only collections that are immediate children of the `parent` specified in the containing `RunQueryRequest`. When true, selects all descendant collections. */
   allDescendants?: boolean;
 }
-export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
+const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.optional(S.String),
     allDescendants: S.optional(S.Boolean),
@@ -2584,7 +2560,7 @@ export const CollectionSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CollectionSelector" }) as any as S.Schema<CollectionSelector>;
 
 export type CollectionSelectorList = Array<CollectionSelector>;
-export const CollectionSelectorList = /*@__PURE__*/ S.Array(
+const CollectionSelectorList = /*@__PURE__*/ S.Array(
   CollectionSelector,
 ) as any as S.Schema<CollectionSelectorList>;
 
@@ -2609,7 +2585,7 @@ export interface StructuredQuery {
   /** The collections to query. */
   from?: CollectionSelectorList;
 }
-export const StructuredQuery = /*@__PURE__*/ S.suspend(() =>
+const StructuredQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startAt: S.optional(Cursor),
     select: S.optional(Projection),
@@ -2630,7 +2606,7 @@ export interface QueryTarget {
   /** A structured query. */
   structuredQuery?: StructuredQuery;
 }
-export const QueryTarget = /*@__PURE__*/ S.suspend(() =>
+const QueryTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     structuredQuery: S.optional(StructuredQuery),
@@ -2642,7 +2618,7 @@ export interface DocumentsTarget {
   /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
   documents?: StringList;
 }
-export const DocumentsTarget = /*@__PURE__*/ S.suspend(() =>
+const DocumentsTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: S.optional(StringList),
   }),
@@ -2665,7 +2641,7 @@ export interface Target {
   /** A target specified by a set of document names. */
   documents?: DocumentsTarget;
 }
-export const Target = /*@__PURE__*/ S.suspend(() =>
+const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     once: S.optional(S.Boolean),
     targetId: S.optional(S.Number),
@@ -2688,7 +2664,7 @@ export interface ListenRequest {
   /** The ID of a target to remove from this stream. */
   removeTarget?: number;
 }
-export const ListenRequest = /*@__PURE__*/ S.suspend(() =>
+const ListenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addTarget: S.optional(Target),
     requestOptions: S.optional(RequestOptions),
@@ -2703,7 +2679,7 @@ export interface ListenProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: ListenRequest;
 }
-export const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListenProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(ListenRequest.pipe(T.HttpBody())),
@@ -2725,7 +2701,7 @@ export interface BitSequence {
   /** The bytes that encode the bit sequence. May have a length of zero. */
   bitmap?: string;
 }
-export const BitSequence = /*@__PURE__*/ S.suspend(() =>
+const BitSequence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     padding: S.optional(S.Number),
     bitmap: S.optional(S.String),
@@ -2739,7 +2715,7 @@ export interface BloomFilter {
   /** The bloom filter data. */
   bits?: BitSequence;
 }
-export const BloomFilter = /*@__PURE__*/ S.suspend(() =>
+const BloomFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashCount: S.optional(S.Number),
     bits: S.optional(BitSequence),
@@ -2755,7 +2731,7 @@ export interface ExistenceFilter {
   /** The target ID to which this filter applies. */
   targetId?: number;
 }
-export const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
+const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     unchangedNames: S.optional(BloomFilter),
@@ -2764,10 +2740,10 @@ export const ExistenceFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExistenceFilter" }) as any as S.Schema<ExistenceFilter>;
 
 export type TargetChangeTargetChangeTypeEnum = "NO_CHANGE" | "ADD" | "REMOVE" | "CURRENT" | "RESET";
-export const TargetChangeTargetChangeTypeEnum = S.String;
+const TargetChangeTargetChangeTypeEnum = S.String;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** Targets being watched have changed. */
 export interface TargetChange {
@@ -2782,7 +2758,7 @@ export interface TargetChange {
   /** A token that can be used to resume the stream for the given `target_ids`, or all targets if `target_ids` is empty. Not set on every target change. */
   resumeToken?: string;
 }
-export const TargetChange = /*@__PURE__*/ S.suspend(() =>
+const TargetChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     targetChangeType: S.optional(TargetChangeTargetChangeTypeEnum),
@@ -2801,7 +2777,7 @@ export interface DocumentDelete {
   /** The resource name of the Document that was deleted. */
   document?: string;
 }
-export const DocumentDelete = /*@__PURE__*/ S.suspend(() =>
+const DocumentDelete = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     removedTargetIds: S.optional(IntegerList),
     readTime: S.optional(S.String),
@@ -2818,7 +2794,7 @@ export interface DocumentChange {
   /** The new state of the Document. If `mask` is set, contains only fields that were updated or added. */
   document?: Document;
 }
-export const DocumentChange = /*@__PURE__*/ S.suspend(() =>
+const DocumentChange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetIds: S.optional(IntegerList),
     removedTargetIds: S.optional(IntegerList),
@@ -2835,7 +2811,7 @@ export interface DocumentRemove {
   /** The resource name of the Document that has gone out of view. */
   document?: string;
 }
-export const DocumentRemove = DocumentDelete as any as S.Schema<DocumentRemove>;
+const DocumentRemove = DocumentDelete as any as S.Schema<DocumentRemove>;
 
 /** The response for Firestore.Listen. */
 export interface ListenResponse {
@@ -2850,7 +2826,7 @@ export interface ListenResponse {
   /** A Document has been removed from a target (because it is no longer relevant to that target). */
   documentRemove?: DocumentRemove;
 }
-export const ListenResponse = /*@__PURE__*/ S.suspend(() =>
+const ListenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(ExistenceFilter),
     targetChange: S.optional(TargetChange),
@@ -2866,7 +2842,7 @@ export interface ListProjectsDatabasesRequest {
   /** If true, also returns deleted resources. */
   showDeleted?: boolean;
 }
-export const ListProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     showDeleted: S.optional(S.Boolean.pipe(T.Query())),
@@ -2882,7 +2858,7 @@ export const ListProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsDatabasesRequest>;
 
 export type GoogleFirestoreAdminV1DatabaseList = Array<GoogleFirestoreAdminV1Database>;
-export const GoogleFirestoreAdminV1DatabaseList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1DatabaseList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Database,
 ) as any as S.Schema<GoogleFirestoreAdminV1DatabaseList>;
 
@@ -2893,7 +2869,7 @@ export interface GoogleFirestoreAdminV1ListDatabasesResponse {
   /** In the event that data about individual databases cannot be listed they will be recorded here. An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location. */
   unreachable?: StringList;
 }
-export const GoogleFirestoreAdminV1ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databases: S.optional(GoogleFirestoreAdminV1DatabaseList),
     unreachable: S.optional(StringList),
@@ -2906,7 +2882,7 @@ export interface ListProjectsDatabasesBackupSchedulesRequest {
   /** Required. The parent database. Format is `projects/{project}/databases/{database}`. */
   parent: string;
 }
-export const ListProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -2921,7 +2897,7 @@ export const ListProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsDatabasesBackupSchedulesRequest>;
 
 export type GoogleFirestoreAdminV1BackupScheduleList = Array<GoogleFirestoreAdminV1BackupSchedule>;
-export const GoogleFirestoreAdminV1BackupScheduleList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1BackupScheduleList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1BackupSchedule,
 ) as any as S.Schema<GoogleFirestoreAdminV1BackupScheduleList>;
 
@@ -2930,7 +2906,7 @@ export interface GoogleFirestoreAdminV1ListBackupSchedulesResponse {
   /** List of all backup schedules. */
   backupSchedules?: GoogleFirestoreAdminV1BackupScheduleList;
 }
-export const GoogleFirestoreAdminV1ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListBackupSchedulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupSchedules: S.optional(GoogleFirestoreAdminV1BackupScheduleList),
   }),
@@ -2942,7 +2918,7 @@ export interface ListProjectsDatabasesChangeStreamsRequest {
   /** Required. The parent database to list change streams from. Format is `projects/{project}/databases/{database}`. */
   parent: string;
 }
-export const ListProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -2957,7 +2933,7 @@ export const ListProjectsDatabasesChangeStreamsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsDatabasesChangeStreamsRequest>;
 
 export type GoogleFirestoreAdminV1ChangeStreamList = Array<GoogleFirestoreAdminV1ChangeStream>;
-export const GoogleFirestoreAdminV1ChangeStreamList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1ChangeStreamList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1ChangeStream,
 ) as any as S.Schema<GoogleFirestoreAdminV1ChangeStreamList>;
 
@@ -2966,7 +2942,7 @@ export interface GoogleFirestoreAdminV1ListChangeStreamsResponse {
   /** The list of change streams. */
   changeStreams?: GoogleFirestoreAdminV1ChangeStreamList;
 }
-export const GoogleFirestoreAdminV1ListChangeStreamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListChangeStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changeStreams: S.optional(GoogleFirestoreAdminV1ChangeStreamList),
   }),
@@ -2984,7 +2960,7 @@ export interface ListProjectsDatabasesCollectionGroupsFieldsRequest {
   /** The number of results to return. */
   pageSize?: number;
 }
-export const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -3002,7 +2978,7 @@ export const ListProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsDatabasesCollectionGroupsFieldsRequest>;
 
 export type GoogleFirestoreAdminV1FieldList = Array<GoogleFirestoreAdminV1Field>;
-export const GoogleFirestoreAdminV1FieldList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1FieldList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Field,
 ) as any as S.Schema<GoogleFirestoreAdminV1FieldList>;
 
@@ -3013,7 +2989,7 @@ export interface GoogleFirestoreAdminV1ListFieldsResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
   nextPageToken?: string;
 }
-export const GoogleFirestoreAdminV1ListFieldsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListFieldsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: S.optional(GoogleFirestoreAdminV1FieldList),
     nextPageToken: S.optional(S.String),
@@ -3032,7 +3008,7 @@ export interface ListProjectsDatabasesCollectionGroupsIndexesRequest {
   /** The filter to apply to list results. */
   filter?: string;
 }
-export const ListProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesCollectionGroupsIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -3056,7 +3032,7 @@ export interface GoogleFirestoreAdminV1ListIndexesResponse {
   /** The requested indexes. */
   indexes?: GoogleFirestoreAdminV1IndexList;
 }
-export const GoogleFirestoreAdminV1ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     indexes: S.optional(GoogleFirestoreAdminV1IndexList),
@@ -3089,7 +3065,7 @@ export interface ListProjectsDatabasesDocumentsRequest {
   /** Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. */
   collectionId: string;
 }
-export const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -3125,7 +3101,7 @@ export interface ListProjectsDatabasesOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
@@ -3144,7 +3120,7 @@ export const ListProjectsDatabasesOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsDatabasesOperationsRequest>;
 
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-export const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
+const GoogleLongrunningOperationList = /*@__PURE__*/ S.Array(
   GoogleLongrunningOperation,
 ) as any as S.Schema<GoogleLongrunningOperationList>;
 
@@ -3157,7 +3133,7 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-export const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(GoogleLongrunningOperationList),
     nextPageToken: S.optional(S.String),
@@ -3171,7 +3147,7 @@ export interface ListProjectsDatabasesUserCredsRequest {
   /** Required. A parent database name of the form `projects/{project_id}/databases/{database_id}` */
   parent: string;
 }
-export const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
   }).pipe(
@@ -3186,7 +3162,7 @@ export const ListProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsDatabasesUserCredsRequest>;
 
 export type GoogleFirestoreAdminV1UserCredsList = Array<GoogleFirestoreAdminV1UserCreds>;
-export const GoogleFirestoreAdminV1UserCredsList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1UserCredsList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1UserCreds,
 ) as any as S.Schema<GoogleFirestoreAdminV1UserCredsList>;
 
@@ -3195,7 +3171,7 @@ export interface GoogleFirestoreAdminV1ListUserCredsResponse {
   /** The user creds for the database. */
   userCreds?: GoogleFirestoreAdminV1UserCredsList;
 }
-export const GoogleFirestoreAdminV1ListUserCredsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListUserCredsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userCreds: S.optional(GoogleFirestoreAdminV1UserCredsList),
   }),
@@ -3215,7 +3191,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
@@ -3234,7 +3210,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -3243,7 +3219,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -3256,7 +3232,7 @@ export interface ListProjectsLocationsBackupsRequest {
   /** An expression that filters the list of returned backups. A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules are not case sensitive. The following fields in the Backup are eligible for filtering: * `database_uid` (supports `=` only) */
   filter?: string;
 }
-export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -3272,7 +3248,7 @@ export const ListProjectsLocationsBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsBackupsRequest>;
 
 export type GoogleFirestoreAdminV1BackupList = Array<GoogleFirestoreAdminV1Backup>;
-export const GoogleFirestoreAdminV1BackupList = /*@__PURE__*/ S.Array(
+const GoogleFirestoreAdminV1BackupList = /*@__PURE__*/ S.Array(
   GoogleFirestoreAdminV1Backup,
 ) as any as S.Schema<GoogleFirestoreAdminV1BackupList>;
 
@@ -3283,7 +3259,7 @@ export interface GoogleFirestoreAdminV1ListBackupsResponse {
   /** List of all backups for the project. */
   backups?: GoogleFirestoreAdminV1BackupList;
 }
-export const GoogleFirestoreAdminV1ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1ListBackupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     backups: S.optional(GoogleFirestoreAdminV1BackupList),
@@ -3307,7 +3283,7 @@ export interface PartitionQueryRequest {
   /** A structured query. Query must specify collection with all descendants and be ordered by name ascending. Other filters, order bys, limits, offsets, and start/end cursors are not supported. */
   structuredQuery?: StructuredQuery;
 }
-export const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitionCount: S.optional(S.String),
     pageSize: S.optional(S.Number),
@@ -3324,7 +3300,7 @@ export interface PartitionQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: PartitionQueryRequest;
 }
-export const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PartitionQueryRequest.pipe(T.HttpBody())),
@@ -3340,7 +3316,7 @@ export const PartitionQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<PartitionQueryProjectsDatabasesDocumentsRequest>;
 
 export type CursorList = Array<Cursor>;
-export const CursorList = /*@__PURE__*/ S.Array(Cursor) as any as S.Schema<CursorList>;
+const CursorList = /*@__PURE__*/ S.Array(Cursor) as any as S.Schema<CursorList>;
 
 /** The response for Firestore.PartitionQuery. */
 export interface PartitionQueryResponse {
@@ -3349,7 +3325,7 @@ export interface PartitionQueryResponse {
   /** A page token that may be used to request an additional set of results, up to the number specified by `partition_count` in the PartitionQuery request. If blank, there are no more results. */
   nextPageToken?: string;
 }
-export const PartitionQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const PartitionQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partitions: S.optional(CursorList),
     nextPageToken: S.optional(S.String),
@@ -3364,7 +3340,7 @@ export interface PatchProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Database;
 }
-export const PatchProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3384,7 +3360,7 @@ export interface PatchProjectsDatabasesBackupSchedulesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1BackupSchedule;
 }
-export const PatchProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesBackupSchedulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3404,7 +3380,7 @@ export interface PatchProjectsDatabasesCollectionGroupsFieldsRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1Field;
 }
-export const PatchProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesCollectionGroupsFieldsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -3432,7 +3408,7 @@ export interface PatchProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: Document;
 }
-export const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     "currentDocument.updateTime": S.optional(S.String.pipe(T.Query())),
@@ -3451,16 +3427,13 @@ export const PatchProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(()
 /** The request for FirestoreAdmin.ResetUserPassword. */
 export type GoogleFirestoreAdminV1ResetUserPasswordRequest =
   GoogleLongrunningCancelOperationRequest;
-export const GoogleFirestoreAdminV1ResetUserPasswordRequest =
-  GoogleLongrunningCancelOperationRequest;
-
 export interface ResetPasswordProjectsDatabasesUserCredsRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` */
   name: string;
   /** Request body */
   body?: GoogleLongrunningCancelOperationRequest;
 }
-export const ResetPasswordProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetPasswordProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody())),
@@ -3486,7 +3459,7 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /** Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if the database is Standard edition. */
   databaseId?: string;
 }
-export const GoogleFirestoreAdminV1RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleFirestoreAdminV1RestoreDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encryptionConfig: S.optional(GoogleFirestoreAdminV1EncryptionConfig),
     backup: S.optional(S.String),
@@ -3503,7 +3476,7 @@ export interface RestoreProjectsDatabasesRequest {
   /** Request body */
   body?: GoogleFirestoreAdminV1RestoreDatabaseRequest;
 }
-export const RestoreProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleFirestoreAdminV1RestoreDatabaseRequest.pipe(T.HttpBody())),
@@ -3525,7 +3498,7 @@ export interface RollbackRequest {
   /** Optional. The request options for this request. */
   requestOptions?: RequestOptions;
 }
-export const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
     requestOptions: S.optional(RequestOptions),
@@ -3538,7 +3511,7 @@ export interface RollbackProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(RollbackRequest.pipe(T.HttpBody())),
@@ -3558,7 +3531,7 @@ export interface Sum {
   /** The field to aggregate on. */
   field?: FieldReference;
 }
-export const Sum = /*@__PURE__*/ S.suspend(() =>
+const Sum = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(FieldReference),
   }),
@@ -3566,14 +3539,12 @@ export const Sum = /*@__PURE__*/ S.suspend(() =>
 
 /** Average of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns `NULL`. * Always returns the result as a double. */
 export type Avg = Sum;
-export const Avg = Sum;
-
 /** Count of documents that match the query. The `COUNT(*)` aggregation function operates on the entire document so it does not require a field reference. */
 export interface Count {
   /** Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an upper bound on the number of documents to scan, limiting latency, and cost. Unspecified is interpreted as no bound. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be greater than zero when present. */
   upTo?: string;
 }
-export const Count = /*@__PURE__*/ S.suspend(() =>
+const Count = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upTo: S.optional(S.String),
   }),
@@ -3590,7 +3561,7 @@ export interface Aggregation {
   /** Optional. Optional name of the field to store the result of the aggregation into. If not provided, Firestore will pick a default name following the format `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ``` becomes: ``` AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. * Conform to document field name limitations. */
   alias?: string;
 }
-export const Aggregation = /*@__PURE__*/ S.suspend(() =>
+const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sum: S.optional(Sum),
     avg: S.optional(Sum),
@@ -3600,9 +3571,7 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
 export type AggregationList = Array<Aggregation>;
-export const AggregationList = /*@__PURE__*/ S.Array(
-  Aggregation,
-) as any as S.Schema<AggregationList>;
+const AggregationList = /*@__PURE__*/ S.Array(Aggregation) as any as S.Schema<AggregationList>;
 
 /** Firestore query for running an aggregation over a StructuredQuery. */
 export interface StructuredAggregationQuery {
@@ -3611,7 +3580,7 @@ export interface StructuredAggregationQuery {
   /** Optional. Series of aggregations to apply over the results of the `structured_query`. Requires: * A minimum of one and maximum of five aggregations per query. */
   aggregations?: AggregationList;
 }
-export const StructuredAggregationQuery = /*@__PURE__*/ S.suspend(() =>
+const StructuredAggregationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredQuery: S.optional(StructuredQuery),
     aggregations: S.optional(AggregationList),
@@ -3625,7 +3594,7 @@ export interface ExplainOptions {
   /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
   analyze?: boolean;
 }
-export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
+const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyze: S.optional(S.Boolean),
   }),
@@ -3646,7 +3615,7 @@ export interface RunAggregationQueryRequest {
   /** Optional. The request options for the request. */
   requestOptions?: RequestOptions;
 }
-export const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredAggregationQuery: S.optional(StructuredAggregationQuery),
     newTransaction: S.optional(TransactionOptions),
@@ -3665,7 +3634,7 @@ export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunAggregationQueryRequest;
 }
-export const RunAggregationQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
@@ -3685,7 +3654,7 @@ export interface AggregationResult {
   /** The result of the aggregation functions, ex: `COUNT(*) AS total_docs`. The key is the alias assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query. */
   aggregateFields?: ValueMap;
 }
-export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
+const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateFields: S.optional(ValueMap),
   }),
@@ -3702,7 +3671,7 @@ export interface ExecutionStats {
   /** Total time to execute the query in the backend. */
   executionDuration?: string;
 }
-export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugStats: S.optional(DocumentMap),
     readOperations: S.optional(S.String),
@@ -3716,7 +3685,7 @@ export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
   indexesUsed?: DocumentMapList;
 }
-export const PlanSummary = /*@__PURE__*/ S.suspend(() =>
+const PlanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexesUsed: S.optional(DocumentMapList),
   }),
@@ -3729,7 +3698,7 @@ export interface ExplainMetrics {
   /** Planning phase information for the query. */
   planSummary?: PlanSummary;
 }
-export const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
+const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionStats: S.optional(ExecutionStats),
     planSummary: S.optional(PlanSummary),
@@ -3747,7 +3716,7 @@ export interface RunAggregationQueryResponse {
   /** Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
   explainMetrics?: ExplainMetrics;
 }
-export const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
     result: S.optional(AggregationResult),
@@ -3773,7 +3742,7 @@ export interface RunQueryRequest {
   /** Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned. */
   explainOptions?: ExplainOptions;
 }
-export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestOptions: S.optional(RequestOptions),
     readTime: S.optional(S.String),
@@ -3790,7 +3759,7 @@ export interface RunQueryProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: RunQueryRequest;
 }
-export const RunQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
@@ -3820,7 +3789,7 @@ export interface RunQueryResponse {
   /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
   explainMetrics?: ExplainMetrics;
 }
-export const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     readTime: S.optional(S.String),
@@ -3844,7 +3813,7 @@ export interface WriteRequest {
   /** A stream token that was previously sent by the server. The client should set this field to the token from the most recent WriteResponse it has received. This acknowledges that the client has received responses up to this token. After sending this token, earlier tokens may not be used anymore. The server may close the stream if there are too many unacknowledged responses. Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field and the `stream_id` field. Leave this field unset when creating a new stream. */
   streamToken?: string;
 }
-export const WriteRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamId: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -3860,7 +3829,7 @@ export interface WriteProjectsDatabasesDocumentsRequest {
   /** Request body */
   body?: WriteRequest;
 }
-export const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const WriteProjectsDatabasesDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     database: S.String.pipe(T.Label()),
     body: S.optional(WriteRequest.pipe(T.HttpBody())),
@@ -3886,7 +3855,7 @@ export interface WriteResponse {
   /** The time at which the commit occurred. Any read with an equal or greater `read_time` is guaranteed to see the effects of the write. */
   commitTime?: string;
 }
-export const WriteResponse = /*@__PURE__*/ S.suspend(() =>
+const WriteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     streamToken: S.optional(S.String),
     streamId: S.optional(S.String),

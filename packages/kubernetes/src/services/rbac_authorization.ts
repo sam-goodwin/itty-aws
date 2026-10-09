@@ -42,10 +42,9 @@ export class UnprocessableEntity
 
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
 
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
@@ -56,7 +55,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     operator: S.String,
@@ -69,16 +68,15 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE_
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
 
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
+const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
@@ -90,7 +88,7 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matchExpressions: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList),
     matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
@@ -102,7 +100,7 @@ export const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ S.suspe
 /** clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
 export type IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
-export const IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList = /*@__PURE__*/ S.Array(
+const IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1LabelSelector,
 ) as any as S.Schema<IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList>;
 
@@ -111,7 +109,7 @@ export interface IoK8sApiRbacV1AggregationRule {
   /** clusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added */
   clusterRoleSelectors?: IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList;
 }
-export const IoK8sApiRbacV1AggregationRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1AggregationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterRoleSelectors: S.optional(IoK8sApiRbacV1AggregationRuleClusterRoleSelectorsList),
   }),
@@ -123,12 +121,12 @@ export const IoK8sApiRbacV1AggregationRule = /*@__PURE__*/ S.suspend(() =>
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap =
   IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
 
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
 
@@ -136,7 +134,7 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE_
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
   IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
 
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
@@ -156,7 +154,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     fieldsType: S.optional(S.String),
@@ -173,7 +171,7 @@ export const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ S.
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
 
@@ -192,7 +190,7 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.String,
     blockOwnerDeletion: S.optional(S.Boolean),
@@ -208,7 +206,7 @@ export const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ S.susp
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-export const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1OwnerReference,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
 
@@ -245,7 +243,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
     creationTimestamp: S.optional(S.String),
@@ -269,27 +267,27 @@ export const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ S.suspend(
 
 /** apiGroups is the name of the APIGroup that contains the resources. If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. "" represents the core API group and "*" represents all API groups. */
 export type IoK8sApiRbacV1PolicyRuleApiGroupsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleApiGroupsList =
+const IoK8sApiRbacV1PolicyRuleApiGroupsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleApiGroupsList>;
 
 /** nonResourceURLs is a set of partial urls that a user should have access to. *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"), but not both. */
 export type IoK8sApiRbacV1PolicyRuleNonResourceURLsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleNonResourceURLsList =
+const IoK8sApiRbacV1PolicyRuleNonResourceURLsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleNonResourceURLsList>;
 
 /** resourceNames is an optional white list of names that the rule applies to. An empty set means that everything is allowed. */
 export type IoK8sApiRbacV1PolicyRuleResourceNamesList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleResourceNamesList =
+const IoK8sApiRbacV1PolicyRuleResourceNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourceNamesList>;
 
 /** resources is a list of resources this rule applies to. '*' represents all resources. */
 export type IoK8sApiRbacV1PolicyRuleResourcesList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleResourcesList =
+const IoK8sApiRbacV1PolicyRuleResourcesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleResourcesList>;
 
 /** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
 export type IoK8sApiRbacV1PolicyRuleVerbsList = Array<string>;
-export const IoK8sApiRbacV1PolicyRuleVerbsList =
+const IoK8sApiRbacV1PolicyRuleVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApiRbacV1PolicyRuleVerbsList>;
 
 /** PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to. */
@@ -305,7 +303,7 @@ export interface IoK8sApiRbacV1PolicyRule {
   /** verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs. */
   verbs: IoK8sApiRbacV1PolicyRuleVerbsList;
 }
-export const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroups: S.optional(IoK8sApiRbacV1PolicyRuleApiGroupsList),
     nonResourceURLs: S.optional(IoK8sApiRbacV1PolicyRuleNonResourceURLsList),
@@ -317,7 +315,7 @@ export const IoK8sApiRbacV1PolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type CreateRbacAuthorizationV1ClusterRoleRequestRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const CreateRbacAuthorizationV1ClusterRoleRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateRbacAuthorizationV1ClusterRoleRequestRulesList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1PolicyRule,
 ) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleRequestRulesList>;
 
@@ -341,7 +339,7 @@ export interface CreateRbacAuthorizationV1ClusterRoleRequest {
   /** rules holds all the PolicyRules for this ClusterRole */
   rules?: CreateRbacAuthorizationV1ClusterRoleRequestRulesList;
 }
-export const CreateRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -361,7 +359,7 @@ export const CreateRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspe
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type IoK8sApiRbacV1ClusterRoleRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const IoK8sApiRbacV1ClusterRoleRulesList =
+const IoK8sApiRbacV1ClusterRoleRulesList =
   CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<IoK8sApiRbacV1ClusterRoleRulesList>;
 
 /** ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding. */
@@ -377,7 +375,7 @@ export interface IoK8sApiRbacV1ClusterRole {
   /** rules holds all the PolicyRules for this ClusterRole */
   rules?: IoK8sApiRbacV1ClusterRoleRulesList;
 }
-export const IoK8sApiRbacV1ClusterRole = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1ClusterRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregationRule: S.optional(IoK8sApiRbacV1AggregationRule),
     apiVersion: S.optional(S.String),
@@ -398,7 +396,7 @@ export interface IoK8sApiRbacV1RoleRef {
   /** name is the name of resource being referenced */
   name: string;
 }
-export const IoK8sApiRbacV1RoleRef = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1RoleRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     kind: S.String,
@@ -417,7 +415,7 @@ export interface IoK8sApiRbacV1Subject {
   /** namespace of the referenced object. If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error. */
   namespace?: string;
 }
-export const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiGroup: S.optional(S.String),
     kind: S.String,
@@ -429,7 +427,7 @@ export const IoK8sApiRbacV1Subject = /*@__PURE__*/ S.suspend(() =>
 /** subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
-export const CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList = /*@__PURE__*/ S.Array(
+const CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1Subject,
 ) as any as S.Schema<CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList>;
 
@@ -453,7 +451,7 @@ export interface CreateRbacAuthorizationV1ClusterRoleBindingRequest {
   /** subjects holds references to the objects the role applies to. */
   subjects?: CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList;
 }
-export const CreateRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     dryRun: S.optional(S.String.pipe(T.Query())),
@@ -477,7 +475,7 @@ export const CreateRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ 
 
 /** subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1ClusterRoleBindingSubjectsList = Array<IoK8sApiRbacV1Subject>;
-export const IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
+const IoK8sApiRbacV1ClusterRoleBindingSubjectsList =
   CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingSubjectsList>;
 
 /** ClusterRoleBinding references a ClusterRole, but not contain it. It can reference a ClusterRole in the global namespace, and adds who information via Subject. */
@@ -493,7 +491,7 @@ export interface IoK8sApiRbacV1ClusterRoleBinding {
   /** subjects holds references to the objects the role applies to. */
   subjects?: IoK8sApiRbacV1ClusterRoleBindingSubjectsList;
 }
-export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -508,7 +506,7 @@ export const IoK8sApiRbacV1ClusterRoleBinding = /*@__PURE__*/ S.suspend(() =>
 /** rules holds all the PolicyRules for this Role */
 export type CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
-export const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
+const CreateRbacAuthorizationV1NamespacedRoleRequestRulesList =
   CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleRequestRulesList>;
 
 export interface CreateRbacAuthorizationV1NamespacedRoleRequest {
@@ -531,7 +529,7 @@ export interface CreateRbacAuthorizationV1NamespacedRoleRequest {
   /** rules holds all the PolicyRules for this Role */
   rules?: CreateRbacAuthorizationV1NamespacedRoleRequestRulesList;
 }
-export const CreateRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -555,7 +553,7 @@ export const CreateRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.su
 
 /** rules holds all the PolicyRules for this Role */
 export type IoK8sApiRbacV1RoleRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const IoK8sApiRbacV1RoleRulesList =
+const IoK8sApiRbacV1RoleRulesList =
   CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<IoK8sApiRbacV1RoleRulesList>;
 
 /** Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding. */
@@ -569,7 +567,7 @@ export interface IoK8sApiRbacV1Role {
   /** rules holds all the PolicyRules for this Role */
   rules?: IoK8sApiRbacV1RoleRulesList;
 }
-export const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -581,10 +579,9 @@ export const IoK8sApiRbacV1Role = /*@__PURE__*/ S.suspend(() =>
 /** subjects holds references to the objects the role applies to. */
 export type CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
-export const CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApiRbacV1Subject,
-  ) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList>;
+const CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList = /*@__PURE__*/ S.Array(
+  IoK8sApiRbacV1Subject,
+) as any as S.Schema<CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList>;
 
 export interface CreateRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -608,7 +605,7 @@ export interface CreateRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** subjects holds references to the objects the role applies to. */
   subjects?: CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList;
 }
-export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -633,9 +630,6 @@ export const CreateRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__
 
 /** subjects holds references to the objects the role applies to. */
 export type IoK8sApiRbacV1RoleBindingSubjectsList = Array<IoK8sApiRbacV1Subject>;
-export const IoK8sApiRbacV1RoleBindingSubjectsList =
-  CreateRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList as any as S.Schema<IoK8sApiRbacV1RoleBindingSubjectsList>;
-
 /** RoleBinding references a role, but does not contain it. It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in. RoleBindings in a given namespace only have effect in that namespace. */
 export interface IoK8sApiRbacV1RoleBinding {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -649,7 +643,7 @@ export interface IoK8sApiRbacV1RoleBinding {
   /** subjects holds references to the objects the role applies to. */
   subjects?: IoK8sApiRbacV1RoleBindingSubjectsList;
 }
-export const IoK8sApiRbacV1RoleBinding =
+const IoK8sApiRbacV1RoleBinding =
   IoK8sApiRbacV1ClusterRoleBinding as any as S.Schema<IoK8sApiRbacV1RoleBinding>;
 
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
@@ -659,7 +653,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceVersion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -690,7 +684,7 @@ export interface DeleteRbacAuthorizationV1ClusterRoleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -722,7 +716,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     message: S.optional(S.String),
@@ -735,7 +729,7 @@ export const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ S.suspend
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-export const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1StatusCause,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
 
@@ -754,7 +748,7 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
     group: S.optional(S.String),
@@ -772,7 +766,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     selector: S.String,
   }),
@@ -793,7 +787,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-export const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     continue: S.optional(S.String),
     remainingItemCount: S.optional(S.Number),
@@ -824,7 +818,7 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     code: S.optional(S.Number),
@@ -861,7 +855,7 @@ export interface DeleteRbacAuthorizationV1ClusterRoleBindingRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -922,7 +916,7 @@ export interface DeleteRbacAuthorizationV1CollectionClusterRoleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1CollectionClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1CollectionClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -987,34 +981,33 @@ export interface DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
-        code: 200,
-      }),
-    ),
+const DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest",
 }) as any as S.Schema<DeleteRbacAuthorizationV1CollectionClusterRoleBindingRequest>;
@@ -1059,35 +1052,34 @@ export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      dryRun: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
-      ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
-      propagationPolicy: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      apiVersion: S.optional(S.String),
-      kind: S.optional(S.String),
-      preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
-        code: 200,
-      }),
-    ),
+const DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    dryRun: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    gracePeriodSeconds: S.optional(S.Number.pipe(T.Query())),
+    ignoreStoreReadErrorWithClusterBreakingPotential: S.optional(S.Boolean.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orphanDependents: S.optional(S.Boolean.pipe(T.Query())),
+    propagationPolicy: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    apiVersion: S.optional(S.String),
+    kind: S.optional(S.String),
+    preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest",
 }) as any as S.Schema<DeleteRbacAuthorizationV1CollectionNamespacedRoleRequest>;
@@ -1132,8 +1124,8 @@ export interface DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       namespace: S.String.pipe(T.Label()),
       pretty: S.optional(S.String.pipe(T.Query())),
@@ -1161,9 +1153,9 @@ export const DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest",
-  }) as any as S.Schema<DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest>;
+).annotate({
+  identifier: "DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest",
+}) as any as S.Schema<DeleteRbacAuthorizationV1CollectionNamespacedRoleBindingRequest>;
 
 export interface DeleteRbacAuthorizationV1NamespacedRoleRequest {
   /** object name and auth scope, such as for teams and projects */
@@ -1189,7 +1181,7 @@ export interface DeleteRbacAuthorizationV1NamespacedRoleRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1237,7 +1229,7 @@ export interface DeleteRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-export const DeleteRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1262,7 +1254,7 @@ export const DeleteRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__
 }) as any as S.Schema<DeleteRbacAuthorizationV1NamespacedRoleBindingRequest>;
 
 export interface GetRbacAuthorizationAPIGroupRequest {}
-export const GetRbacAuthorizationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRbacAuthorizationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/", code: 200 })),
 ).annotate({
   identifier: "GetRbacAuthorizationAPIGroupRequest",
@@ -1275,7 +1267,7 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupVersion: S.String,
     version: S.String,
@@ -1291,7 +1283,7 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCIDR: S.String,
     serverAddress: S.String,
@@ -1303,15 +1295,14 @@ export const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
-  /*@__PURE__*/ S.Array(
-    IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
-  ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
+const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ S.Array(
+  IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR,
+) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
 
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-export const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
 
@@ -1330,7 +1321,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1346,7 +1337,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
 export interface GetRbacAuthorizationV1APIResourcesRequest {}
-export const GetRbacAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRbacAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/v1/", code: 200 }),
   ),
@@ -1356,17 +1347,17 @@ export const GetRbacAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
 
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
 
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
+const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
   IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
 
 /** APIResource specifies the name of a resource and whether it is namespaced. */
@@ -1392,7 +1383,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
     group: S.optional(S.String),
@@ -1412,7 +1403,7 @@ export const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ S.suspend
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-export const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
+const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ S.Array(
   IoK8sApimachineryPkgApisMetaV1APIResource,
 ) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
 
@@ -1427,7 +1418,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-export const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     groupVersion: S.String,
@@ -1464,7 +1455,7 @@ export interface ListRbacAuthorizationV1ClusterRoleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1487,7 +1478,7 @@ export const ListRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend
 
 /** Items is a list of ClusterRoles */
 export type IoK8sApiRbacV1ClusterRoleListItemsList = Array<IoK8sApiRbacV1ClusterRole>;
-export const IoK8sApiRbacV1ClusterRoleListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiRbacV1ClusterRoleListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1ClusterRole,
 ) as any as S.Schema<IoK8sApiRbacV1ClusterRoleListItemsList>;
 
@@ -1502,7 +1493,7 @@ export interface IoK8sApiRbacV1ClusterRoleList {
   /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiRbacV1ClusterRoleList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1ClusterRoleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiRbacV1ClusterRoleListItemsList,
@@ -1539,7 +1530,7 @@ export interface ListRbacAuthorizationV1ClusterRoleBindingRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pretty: S.optional(S.String.pipe(T.Query())),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -1566,7 +1557,7 @@ export const ListRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.
 
 /** Items is a list of ClusterRoleBindings */
 export type IoK8sApiRbacV1ClusterRoleBindingListItemsList = Array<IoK8sApiRbacV1ClusterRoleBinding>;
-export const IoK8sApiRbacV1ClusterRoleBindingListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiRbacV1ClusterRoleBindingListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1ClusterRoleBinding,
 ) as any as S.Schema<IoK8sApiRbacV1ClusterRoleBindingListItemsList>;
 
@@ -1581,7 +1572,7 @@ export interface IoK8sApiRbacV1ClusterRoleBindingList {
   /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiRbacV1ClusterRoleBindingList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1ClusterRoleBindingList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiRbacV1ClusterRoleBindingListItemsList,
@@ -1620,7 +1611,7 @@ export interface ListRbacAuthorizationV1NamespacedRoleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1648,7 +1639,7 @@ export const ListRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.susp
 
 /** Items is a list of Roles */
 export type IoK8sApiRbacV1RoleListItemsList = Array<IoK8sApiRbacV1Role>;
-export const IoK8sApiRbacV1RoleListItemsList = /*@__PURE__*/ S.Array(
+const IoK8sApiRbacV1RoleListItemsList = /*@__PURE__*/ S.Array(
   IoK8sApiRbacV1Role,
 ) as any as S.Schema<IoK8sApiRbacV1RoleListItemsList>;
 
@@ -1663,7 +1654,7 @@ export interface IoK8sApiRbacV1RoleList {
   /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiRbacV1RoleList = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApiRbacV1RoleList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     items: IoK8sApiRbacV1RoleListItemsList,
@@ -1700,7 +1691,7 @@ export interface ListRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1728,9 +1719,6 @@ export const ListRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/
 
 /** Items is a list of RoleBindings */
 export type IoK8sApiRbacV1RoleBindingListItemsList = Array<IoK8sApiRbacV1RoleBinding>;
-export const IoK8sApiRbacV1RoleBindingListItemsList =
-  IoK8sApiRbacV1ClusterRoleBindingListItemsList as any as S.Schema<IoK8sApiRbacV1RoleBindingListItemsList>;
-
 /** RoleBindingList is a collection of RoleBindings */
 export interface IoK8sApiRbacV1RoleBindingList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1742,7 +1730,7 @@ export interface IoK8sApiRbacV1RoleBindingList {
   /** Standard object's metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-export const IoK8sApiRbacV1RoleBindingList =
+const IoK8sApiRbacV1RoleBindingList =
   IoK8sApiRbacV1ClusterRoleBindingList as any as S.Schema<IoK8sApiRbacV1RoleBindingList>;
 
 export interface ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest {
@@ -1771,24 +1759,23 @@ export interface ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/v1/rolebindings", code: 200 }),
-    ),
+const ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/apis/rbac.authorization.k8s.io/v1/rolebindings", code: 200 }),
+  ),
 ).annotate({
   identifier: "ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest",
 }) as any as S.Schema<ListRbacAuthorizationV1RoleBindingForAllNamespacesRequest>;
@@ -1819,7 +1806,7 @@ export interface ListRbacAuthorizationV1RoleForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const ListRbacAuthorizationV1RoleForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRbacAuthorizationV1RoleForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -1852,7 +1839,7 @@ export interface PatchRbacAuthorizationV1ClusterRoleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1885,7 +1872,7 @@ export interface PatchRbacAuthorizationV1ClusterRoleBindingRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -1920,7 +1907,7 @@ export interface PatchRbacAuthorizationV1NamespacedRoleRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1956,7 +1943,7 @@ export interface PatchRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-export const PatchRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1982,7 +1969,7 @@ export interface ReadRbacAuthorizationV1ClusterRoleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2003,7 +1990,7 @@ export interface ReadRbacAuthorizationV1ClusterRoleBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2026,7 +2013,7 @@ export interface ReadRbacAuthorizationV1NamespacedRoleRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2050,7 +2037,7 @@ export interface ReadRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-export const ReadRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2068,7 +2055,7 @@ export const ReadRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/
 
 /** rules holds all the PolicyRules for this ClusterRole */
 export type ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList = Array<IoK8sApiRbacV1PolicyRule>;
-export const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
+const ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList =
   CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList>;
 
 export interface ReplaceRbacAuthorizationV1ClusterRoleRequest {
@@ -2093,7 +2080,7 @@ export interface ReplaceRbacAuthorizationV1ClusterRoleRequest {
   /** rules holds all the PolicyRules for this ClusterRole */
   rules?: ReplaceRbacAuthorizationV1ClusterRoleRequestRulesList;
 }
-export const ReplaceRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2119,7 +2106,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.susp
 /** subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
-export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
+const ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList =
   CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList as any as S.Schema<ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList>;
 
 export interface ReplaceRbacAuthorizationV1ClusterRoleBindingRequest {
@@ -2144,7 +2131,7 @@ export interface ReplaceRbacAuthorizationV1ClusterRoleBindingRequest {
   /** subjects holds references to the objects the role applies to. */
   subjects?: ReplaceRbacAuthorizationV1ClusterRoleBindingRequestSubjectsList;
 }
-export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pretty: S.optional(S.String.pipe(T.Query())),
@@ -2170,7 +2157,7 @@ export const ReplaceRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/
 /** rules holds all the PolicyRules for this Role */
 export type ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
   Array<IoK8sApiRbacV1PolicyRule>;
-export const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
+const ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList =
   CreateRbacAuthorizationV1ClusterRoleRequestRulesList as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList>;
 
 export interface ReplaceRbacAuthorizationV1NamespacedRoleRequest {
@@ -2195,7 +2182,7 @@ export interface ReplaceRbacAuthorizationV1NamespacedRoleRequest {
   /** rules holds all the PolicyRules for this Role */
   rules?: ReplaceRbacAuthorizationV1NamespacedRoleRequestRulesList;
 }
-export const ReplaceRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2221,7 +2208,7 @@ export const ReplaceRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.s
 /** subjects holds references to the objects the role applies to. */
 export type ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   Array<IoK8sApiRbacV1Subject>;
-export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
+const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList =
   CreateRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList as any as S.Schema<ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList>;
 
 export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest {
@@ -2248,7 +2235,7 @@ export interface ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** subjects holds references to the objects the role applies to. */
   subjects?: ReplaceRbacAuthorizationV1NamespacedRoleBindingRequestSubjectsList;
 }
-export const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2300,7 +2287,7 @@ export interface WatchRbacAuthorizationV1ClusterRoleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1ClusterRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2332,7 +2319,7 @@ export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   object: unknown;
   type: string;
 }
-export const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
+const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     object: S.Unknown,
     type: S.String,
@@ -2369,7 +2356,7 @@ export interface WatchRbacAuthorizationV1ClusterRoleBindingRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1ClusterRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2421,7 +2408,7 @@ export interface WatchRbacAuthorizationV1ClusterRoleBindingListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1ClusterRoleBindingListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1ClusterRoleBindingListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2472,7 +2459,7 @@ export interface WatchRbacAuthorizationV1ClusterRoleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1ClusterRoleListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1ClusterRoleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),
@@ -2527,7 +2514,7 @@ export interface WatchRbacAuthorizationV1NamespacedRoleRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1NamespacedRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2584,7 +2571,7 @@ export interface WatchRbacAuthorizationV1NamespacedRoleBindingRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1NamespacedRoleBindingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -2639,29 +2626,28 @@ export interface WatchRbacAuthorizationV1NamespacedRoleBindingListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1NamespacedRoleBindingListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespace: S.String.pipe(T.Label()),
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings",
-        code: 200,
-      }),
-    ),
+const WatchRbacAuthorizationV1NamespacedRoleBindingListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: S.String.pipe(T.Label()),
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "WatchRbacAuthorizationV1NamespacedRoleBindingListRequest",
 }) as any as S.Schema<WatchRbacAuthorizationV1NamespacedRoleBindingListRequest>;
@@ -2694,7 +2680,7 @@ export interface WatchRbacAuthorizationV1NamespacedRoleListRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1NamespacedRoleListRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1NamespacedRoleListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
@@ -2746,31 +2732,30 @@ export interface WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
-      continue: S.optional(S.String.pipe(T.Query())),
-      fieldSelector: S.optional(S.String.pipe(T.Query())),
-      labelSelector: S.optional(S.String.pipe(T.Query())),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      pretty: S.optional(S.String.pipe(T.Query())),
-      resourceVersion: S.optional(S.String.pipe(T.Query())),
-      resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
-      sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
-      shardSelector: S.optional(S.String.pipe(T.Query())),
-      timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
-      watch: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest",
-  }) as any as S.Schema<WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest>;
+const WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
+    continue: S.optional(S.String.pipe(T.Query())),
+    fieldSelector: S.optional(S.String.pipe(T.Query())),
+    labelSelector: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    pretty: S.optional(S.String.pipe(T.Query())),
+    resourceVersion: S.optional(S.String.pipe(T.Query())),
+    resourceVersionMatch: S.optional(S.String.pipe(T.Query())),
+    sendInitialEvents: S.optional(S.Boolean.pipe(T.Query())),
+    shardSelector: S.optional(S.String.pipe(T.Query())),
+    timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
+    watch: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest",
+}) as any as S.Schema<WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest>;
 
 export interface WatchRbacAuthorizationV1RoleListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
@@ -2798,7 +2783,7 @@ export interface WatchRbacAuthorizationV1RoleListForAllNamespacesRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-export const WatchRbacAuthorizationV1RoleListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const WatchRbacAuthorizationV1RoleListForAllNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowWatchBookmarks: S.optional(S.Boolean.pipe(T.Query())),
     continue: S.optional(S.String.pipe(T.Query())),

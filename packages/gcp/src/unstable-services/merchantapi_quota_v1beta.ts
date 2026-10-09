@@ -43,7 +43,7 @@ export interface ListAccountsQuotasRequest {
   /** Required. The merchant account who owns the collection of method quotas Format: accounts/{account} */
   parent: string;
 }
-export const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -70,7 +70,7 @@ export interface MethodDetails {
   /** Output only. The path for the method such as `products/v1/productInputs.insert` */
   path?: string;
 }
-export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
+const MethodDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     method: S.optional(S.String),
@@ -80,7 +80,7 @@ export const MethodDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodDetails" }) as any as S.Schema<MethodDetails>;
 
 export type MethodDetailsList = Array<MethodDetails>;
-export const MethodDetailsList = /*@__PURE__*/ S.Array(
+const MethodDetailsList = /*@__PURE__*/ S.Array(
   MethodDetails,
 ) as any as S.Schema<MethodDetailsList>;
 
@@ -97,7 +97,7 @@ export interface QuotaGroup {
   /** Output only. List of all methods group quota applies to. */
   methodDetails?: MethodDetailsList;
 }
-export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
+const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     quotaMinuteLimit: S.optional(S.String),
     quotaUsage: S.optional(S.String),
@@ -108,7 +108,7 @@ export const QuotaGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaGroup" }) as any as S.Schema<QuotaGroup>;
 
 export type QuotaGroupList = Array<QuotaGroup>;
-export const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
+const QuotaGroupList = /*@__PURE__*/ S.Array(QuotaGroup) as any as S.Schema<QuotaGroupList>;
 
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
@@ -117,7 +117,7 @@ export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
   quotaGroups?: QuotaGroupList;
 }
-export const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQuotaGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     quotaGroups: S.optional(QuotaGroupList),

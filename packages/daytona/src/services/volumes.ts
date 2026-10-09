@@ -13,7 +13,7 @@ export interface CreateVolumeRequest {
   xDaytonaOrganizationID?: string;
   name: string;
 }
-export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
     name: S.String,
@@ -29,7 +29,7 @@ export type VolumeState =
   | "deleting"
   | "deleted"
   | "error";
-export const VolumeState = S.String;
+const VolumeState = S.String;
 
 export interface VolumeDto {
   /** Volume ID */
@@ -49,7 +49,7 @@ export interface VolumeDto {
   /** The error reason of the volume */
   errorReason: string | null;
 }
-export const VolumeDto = /*@__PURE__*/ S.suspend(() =>
+const VolumeDto = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -68,7 +68,7 @@ export interface DeleteVolumeRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -76,7 +76,7 @@ export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVolumeRequest" }) as any as S.Schema<DeleteVolumeRequest>;
 
 export interface DeleteVolumeResponse {}
-export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteVolumeResponse",
 }) as any as S.Schema<DeleteVolumeResponse>;
 
@@ -86,7 +86,7 @@ export interface GetVolumeRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -99,7 +99,7 @@ export interface GetVolumeByNameRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const GetVolumeByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVolumeByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -112,7 +112,7 @@ export interface ListVolumesRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
     xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
@@ -120,12 +120,12 @@ export const ListVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVolumesRequest" }) as any as S.Schema<ListVolumesRequest>;
 
 export type ListVolumesResponseBodyList = Array<VolumeDto>;
-export const ListVolumesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVolumesResponseBodyList = /*@__PURE__*/ S.Array(
   VolumeDto,
 ) as any as S.Schema<ListVolumesResponseBodyList>;
 
 export type ListVolumesResponse = ListVolumesResponseBodyList;
-export const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVolumesResponse = /*@__PURE__*/ S.suspend(() =>
   ListVolumesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVolumesResponse" }) as any as S.Schema<ListVolumesResponse>;
 

@@ -16,7 +16,7 @@ export interface CheckNameAvailabilityRequest {
   /** The resource type. */
   type?: string;
 }
-export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -35,7 +35,7 @@ export const CheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason why the given name is not available. */
 export type CheckNameAvailabilityResponseReason = "Invalid" | "AlreadyExists";
-export const CheckNameAvailabilityResponseReason = S.String;
+const CheckNameAvailabilityResponseReason = S.String;
 
 export interface CheckNameAvailabilityResponse {
   /** Indicates if the resource name is available. */
@@ -45,7 +45,7 @@ export interface CheckNameAvailabilityResponse {
   /** Detailed reason why the given name is available. */
   message?: string;
 }
-export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(CheckNameAvailabilityResponseReason),
@@ -57,26 +57,26 @@ export const CheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateLedgerRequestTagsMap = { [key: string]: string | undefined };
-export const CreateLedgerRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateLedgerRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateLedgerRequestTagsMap>;
 
 /** Object representing RunningState for Confidential Ledger. */
 export type RunningState = "Active" | "Paused" | "Unknown" | "Pausing" | "Resuming";
-export const RunningState = S.String;
+const RunningState = S.String;
 
 /** Type of the ledger. Private means transaction data is encrypted. */
 export type LedgerType = "Unknown" | "Public" | "Private";
-export const LedgerType = S.String;
+const LedgerType = S.String;
 
 /** SKU associated with the ledger resource */
 export type LedgerSku = "Standard" | "Basic" | "Unknown";
-export const LedgerSku = S.String;
+const LedgerSku = S.String;
 
 /** LedgerRole associated with the Security Principal of Ledger */
 export type LedgerRoleName = "Reader" | "Contributor" | "Administrator";
-export const LedgerRoleName = S.String;
+const LedgerRoleName = S.String;
 
 /** AAD based security principal with associated Ledger RoleName */
 export interface AADBasedSecurityPrincipal {
@@ -87,7 +87,7 @@ export interface AADBasedSecurityPrincipal {
   /** LedgerRole associated with the Security Principal of Ledger */
   ledgerRoleName?: LedgerRoleName | (string & {});
 }
-export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
+const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -99,7 +99,7 @@ export const AADBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesInputAadBasedSecurityPrincipalsList = Array<AADBasedSecurityPrincipal>;
-export const LedgerPropertiesInputAadBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
+const LedgerPropertiesInputAadBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
   AADBasedSecurityPrincipal,
 ) as any as S.Schema<LedgerPropertiesInputAadBasedSecurityPrincipalsList>;
 
@@ -110,7 +110,7 @@ export interface CertBasedSecurityPrincipal {
   /** LedgerRole associated with the Security Principal of Ledger */
   ledgerRoleName?: LedgerRoleName | (string & {});
 }
-export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
+const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cert: S.optional(S.String),
     ledgerRoleName: S.optional(LedgerRoleName),
@@ -122,13 +122,13 @@ export const CertBasedSecurityPrincipal = /*@__PURE__*/ S.suspend(() =>
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesInputCertBasedSecurityPrincipalsList =
   Array<CertBasedSecurityPrincipal>;
-export const LedgerPropertiesInputCertBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
+const LedgerPropertiesInputCertBasedSecurityPrincipalsList = /*@__PURE__*/ S.Array(
   CertBasedSecurityPrincipal,
 ) as any as S.Schema<LedgerPropertiesInputCertBasedSecurityPrincipalsList>;
 
 /** Object representing the application type of the Confidential Ledger. Defaults to ConfidentialLedger. */
 export type ApplicationType = "ConfidentialLedger" | "CodeTransparency";
-export const ApplicationType = S.String;
+const ApplicationType = S.String;
 
 /** Additional Confidential Ledger properties. */
 export interface LedgerPropertiesInput {
@@ -159,7 +159,7 @@ export interface LedgerPropertiesInput {
   /** The SCITT Configuration that needs to be set for the Confidential Ledger. */
   scittConfiguration?: string;
 }
-export const LedgerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const LedgerPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runningState: S.optional(RunningState),
     ledgerType: S.optional(LedgerType),
@@ -191,7 +191,7 @@ export interface CreateLedgerRequest {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerPropertiesInput;
 }
-export const CreateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -211,11 +211,11 @@ export const CreateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -232,7 +232,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -245,7 +245,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const CreateLedgerResponseTagsMap =
+const CreateLedgerResponseTagsMap =
   CreateLedgerRequestTagsMap as any as S.Schema<CreateLedgerResponseTagsMap>;
 
 /** Object representing ProvisioningState for Confidential Ledger. */
@@ -257,21 +257,21 @@ export type ProvisioningState =
   | "Creating"
   | "Deleting"
   | "Updating";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Array of all AAD based Security Principals. */
 export type LedgerPropertiesAadBasedSecurityPrincipalsList = Array<AADBasedSecurityPrincipal>;
-export const LedgerPropertiesAadBasedSecurityPrincipalsList =
+const LedgerPropertiesAadBasedSecurityPrincipalsList =
   LedgerPropertiesInputAadBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesAadBasedSecurityPrincipalsList>;
 
 /** Array of all cert based Security Principals. */
 export type LedgerPropertiesCertBasedSecurityPrincipalsList = Array<CertBasedSecurityPrincipal>;
-export const LedgerPropertiesCertBasedSecurityPrincipalsList =
+const LedgerPropertiesCertBasedSecurityPrincipalsList =
   LedgerPropertiesInputCertBasedSecurityPrincipalsList as any as S.Schema<LedgerPropertiesCertBasedSecurityPrincipalsList>;
 
 /** Object representing the enclave platform for the Confidential Ledger application. Defaults to IntelSgx. */
 export type EnclavePlatform = "IntelSgx" | "AmdSevSnp";
-export const EnclavePlatform = S.String;
+const EnclavePlatform = S.String;
 
 /** Additional Confidential Ledger properties. */
 export interface LedgerProperties {
@@ -314,7 +314,7 @@ export interface LedgerProperties {
   /** The SCITT Configuration that needs to be set for the Confidential Ledger. */
   scittConfiguration?: string;
 }
-export const LedgerProperties = /*@__PURE__*/ S.suspend(() =>
+const LedgerProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ledgerName: S.optional(S.String),
     ledgerUri: S.optional(S.String),
@@ -354,7 +354,7 @@ export interface CreateLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const CreateLedgerResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateLedgerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -374,7 +374,7 @@ export interface DeleteLedgerRequest {
   /** Name of the Confidential Ledger */
   ledgerName: string;
 }
-export const DeleteLedgerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLedgerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -390,7 +390,7 @@ export const DeleteLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLedgerRequest" }) as any as S.Schema<DeleteLedgerRequest>;
 
 export interface DeleteLedgerResponse {}
-export const DeleteLedgerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteLedgerResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteLedgerResponse",
 }) as any as S.Schema<DeleteLedgerResponse>;
 
@@ -406,7 +406,7 @@ export interface ExportLedgerFileRequest {
   /** SAS URI used to access the Fileshare for exporting ledger files. */
   uri: string;
 }
-export const ExportLedgerFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportLedgerFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -428,7 +428,7 @@ export interface ConfidentialLedgerFilesExportResponse {
   /** Response body stating if the ledger files are being exported. */
   message?: string;
 }
-export const ConfidentialLedgerFilesExportResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialLedgerFilesExportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -444,7 +444,7 @@ export interface GetLedgerRequest {
   /** Name of the Confidential Ledger */
   ledgerName: string;
 }
-export const GetLedgerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLedgerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -461,9 +461,6 @@ export const GetLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const GetLedgerResponseTagsMap =
-  CreateLedgerRequestTagsMap as any as S.Schema<GetLedgerResponseTagsMap>;
-
 export interface GetLedgerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -480,7 +477,7 @@ export interface GetLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const GetLedgerResponse = CreateLedgerResponse as any as S.Schema<GetLedgerResponse>;
+const GetLedgerResponse = CreateLedgerResponse as any as S.Schema<GetLedgerResponse>;
 
 export interface ListLedgerByResourceGroupRequest {
   /** The ID of the target subscription. */
@@ -490,7 +487,7 @@ export interface ListLedgerByResourceGroupRequest {
   /** The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public' */
   _filter?: string;
 }
-export const ListLedgerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLedgerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -509,9 +506,6 @@ export const ListLedgerByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ConfidentialLedgerTagsMap = { [key: string]: string | undefined };
-export const ConfidentialLedgerTagsMap =
-  CreateLedgerRequestTagsMap as any as S.Schema<ConfidentialLedgerTagsMap>;
-
 /** Confidential Ledger. Contains the properties of Confidential Ledger Resource. */
 export interface ConfidentialLedger {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -529,11 +523,11 @@ export interface ConfidentialLedger {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const ConfidentialLedger = CreateLedgerResponse as any as S.Schema<ConfidentialLedger>;
+const ConfidentialLedger = CreateLedgerResponse as any as S.Schema<ConfidentialLedger>;
 
 /** The ConfidentialLedger items on this page */
 export type ConfidentialLedgerListValueList = Array<ConfidentialLedger>;
-export const ConfidentialLedgerListValueList = /*@__PURE__*/ S.Array(
+const ConfidentialLedgerListValueList = /*@__PURE__*/ S.Array(
   ConfidentialLedger,
 ) as any as S.Schema<ConfidentialLedgerListValueList>;
 
@@ -544,7 +538,7 @@ export interface ConfidentialLedgerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConfidentialLedgerList = /*@__PURE__*/ S.suspend(() =>
+const ConfidentialLedgerList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConfidentialLedgerListValueList,
     nextLink: S.optional(S.String),
@@ -557,7 +551,7 @@ export interface ListLedgerBySubscriptionRequest {
   /** The filter to apply on the list operation. eg. $filter=ledgerType eq 'Public' */
   _filter?: string;
 }
-export const ListLedgerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLedgerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -574,7 +568,7 @@ export const ListLedgerBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLedgerBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -596,7 +590,7 @@ export interface ResourceProviderOperationDisplay {
   /** Description of the resource provider operation. */
   description?: string;
 }
-export const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -616,7 +610,7 @@ export interface ResourceProviderOperationDefinition {
   /** Details about the operations */
   display?: ResourceProviderOperationDisplay;
 }
-export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -628,7 +622,7 @@ export const ResourceProviderOperationDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type ResourceProviderOperationListValueList = Array<ResourceProviderOperationDefinition>;
-export const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
+const ResourceProviderOperationListValueList = /*@__PURE__*/ S.Array(
   ResourceProviderOperationDefinition,
 ) as any as S.Schema<ResourceProviderOperationListValueList>;
 
@@ -639,7 +633,7 @@ export interface ResourceProviderOperationList {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
-export const ResourceProviderOperationList = /*@__PURE__*/ S.suspend(() =>
+const ResourceProviderOperationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ResourceProviderOperationListValueList),
     nextLink: S.optional(S.String),
@@ -650,7 +644,7 @@ export const ResourceProviderOperationList = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLedgerRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateLedgerRequestTagsMap =
+const UpdateLedgerRequestTagsMap =
   CreateLedgerRequestTagsMap as any as S.Schema<UpdateLedgerRequestTagsMap>;
 
 export interface UpdateLedgerRequest {
@@ -667,7 +661,7 @@ export interface UpdateLedgerRequest {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerPropertiesInput;
 }
-export const UpdateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -687,9 +681,6 @@ export const UpdateLedgerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateLedgerResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateLedgerResponseTagsMap =
-  CreateLedgerRequestTagsMap as any as S.Schema<UpdateLedgerResponseTagsMap>;
-
 export interface UpdateLedgerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -706,7 +697,7 @@ export interface UpdateLedgerResponse {
   /** Properties of Confidential Ledger Resource. */
   properties?: LedgerProperties;
 }
-export const UpdateLedgerResponse = CreateLedgerResponse as any as S.Schema<UpdateLedgerResponse>;
+const UpdateLedgerResponse = CreateLedgerResponse as any as S.Schema<UpdateLedgerResponse>;
 
 export type CheckNameAvailabilityError = AzureOpError;
 /** To check whether a resource name is available. */

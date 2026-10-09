@@ -36,16 +36,16 @@ export class NotFound
   ) {}
 
 export type CreateEventDefinitionRequestTagsList = Array<unknown>;
-export const CreateEventDefinitionRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateEventDefinitionRequestTagsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateEventDefinitionRequestTagsList>;
 
 /** * `allow` - Allow * `reject` - Reject */
 export type SchemaEnforcementModeEnum = "allow" | "reject";
-export const SchemaEnforcementModeEnum = S.String;
+const SchemaEnforcementModeEnum = S.String;
 
 export type CreateEventDefinitionRequestDefaultColumnsList = Array<string>;
-export const CreateEventDefinitionRequestDefaultColumnsList = /*@__PURE__*/ S.Array(
+const CreateEventDefinitionRequestDefaultColumnsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateEventDefinitionRequestDefaultColumnsList>;
 
@@ -64,7 +64,7 @@ export interface CreateEventDefinitionRequest {
   post_to_slack?: boolean;
   default_columns?: CreateEventDefinitionRequestDefaultColumnsList;
 }
-export const CreateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -85,11 +85,11 @@ export const CreateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEventDefinitionRequest>;
 
 export type EnterpriseEventDefinitionTagsList = Array<unknown>;
-export const EnterpriseEventDefinitionTagsList =
+const EnterpriseEventDefinitionTagsList =
   CreateEventDefinitionRequestTagsList as any as S.Schema<EnterpriseEventDefinitionTagsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -105,14 +105,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -125,7 +120,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -140,11 +135,11 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type EnterpriseEventDefinitionDefaultColumnsList = Array<string>;
-export const EnterpriseEventDefinitionDefaultColumnsList =
+const EnterpriseEventDefinitionDefaultColumnsList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
 
 export type EnterpriseEventDefinitionMediaPreviewUrlsList = Array<string>;
-export const EnterpriseEventDefinitionMediaPreviewUrlsList =
+const EnterpriseEventDefinitionMediaPreviewUrlsList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionMediaPreviewUrlsList>;
 
 /** Serializer mixin that handles tags for objects. */
@@ -175,7 +170,7 @@ export interface EnterpriseEventDefinition {
   default_columns?: EnterpriseEventDefinitionDefaultColumnsList;
   media_preview_urls?: EnterpriseEventDefinitionMediaPreviewUrlsList;
 }
-export const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
+const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -208,7 +203,7 @@ export const EnterpriseEventDefinition = /*@__PURE__*/ S.suspend(() =>
 
 /** List of event definition UUIDs to update. */
 export type EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList = Array<string>;
-export const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
+const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList>;
 
 export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
@@ -219,7 +214,7 @@ export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
   /** Target verified state to apply to every matched event. `true` marks the events as verified (and unhides them, since an event cannot be both hidden and verified); `false` unverifies them. */
   verified: boolean;
 }
-export const EventDefinitionsBulkUpdateVerifiedCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionsBulkUpdateVerifiedCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     ids: EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList,
@@ -241,7 +236,7 @@ export interface EventDefinitionBulkUpdateVerifiedItem {
   /** The event's verified state after the update. */
   verified: boolean;
 }
-export const EventDefinitionBulkUpdateVerifiedItem = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionBulkUpdateVerifiedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     verified: S.Boolean,
@@ -253,7 +248,7 @@ export const EventDefinitionBulkUpdateVerifiedItem = /*@__PURE__*/ S.suspend(() 
 /** Events whose verified state was changed. Events already in the target state are omitted. */
 export type EventDefinitionBulkUpdateVerifiedResponseUpdatedList =
   Array<EventDefinitionBulkUpdateVerifiedItem>;
-export const EventDefinitionBulkUpdateVerifiedResponseUpdatedList = /*@__PURE__*/ S.Array(
+const EventDefinitionBulkUpdateVerifiedResponseUpdatedList = /*@__PURE__*/ S.Array(
   EventDefinitionBulkUpdateVerifiedItem,
 ) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseUpdatedList>;
 
@@ -263,7 +258,7 @@ export interface BulkUpdateTagsUUIDError {
   /** Why the object was skipped, e.g. 'Not found or no edit access'. */
   reason: string;
 }
-export const BulkUpdateTagsUUIDError = /*@__PURE__*/ S.suspend(() =>
+const BulkUpdateTagsUUIDError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     reason: S.String,
@@ -272,7 +267,7 @@ export const BulkUpdateTagsUUIDError = /*@__PURE__*/ S.suspend(() =>
 
 /** Events that were skipped (e.g. not found in this project), with a reason each. */
 export type EventDefinitionBulkUpdateVerifiedResponseSkippedList = Array<BulkUpdateTagsUUIDError>;
-export const EventDefinitionBulkUpdateVerifiedResponseSkippedList = /*@__PURE__*/ S.Array(
+const EventDefinitionBulkUpdateVerifiedResponseSkippedList = /*@__PURE__*/ S.Array(
   BulkUpdateTagsUUIDError,
 ) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseSkippedList>;
 
@@ -282,7 +277,7 @@ export interface EventDefinitionBulkUpdateVerifiedResponse {
   /** Events that were skipped (e.g. not found in this project), with a reason each. */
   skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList;
 }
-export const EventDefinitionBulkUpdateVerifiedResponse = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionBulkUpdateVerifiedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updated: EventDefinitionBulkUpdateVerifiedResponseUpdatedList,
     skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList,
@@ -297,7 +292,7 @@ export interface EventDefinitionsDestroyRequest {
   /** A UUID string identifying this event definition. */
   id: string;
 }
-export const EventDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -313,9 +308,9 @@ export const EventDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDefinitionsDestroyRequest>;
 
 export interface EventDefinitionsDestroyResponse {}
-export const EventDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "EventDefinitionsDestroyResponse" },
-) as any as S.Schema<EventDefinitionsDestroyResponse>;
+const EventDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "EventDefinitionsDestroyResponse",
+}) as any as S.Schema<EventDefinitionsDestroyResponse>;
 
 export interface GetEventDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -323,7 +318,7 @@ export interface GetEventDefinitionRequest {
   /** A UUID string identifying this event definition. */
   id: string;
 }
-export const GetEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -340,7 +335,7 @@ export interface GetEventDefinitionsByNameRequest {
   /** The exact event name to look up */
   name: string;
 }
-export const GetEventDefinitionsByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionsByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Query()),
@@ -356,7 +351,7 @@ export const GetEventDefinitionsByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsByNameRequest>;
 
 export type EventDefinitionRecordTagsList = Array<unknown>;
-export const EventDefinitionRecordTagsList =
+const EventDefinitionRecordTagsList =
   CreateEventDefinitionRequestTagsList as any as S.Schema<EventDefinitionRecordTagsList>;
 
 /** Serializer mixin that handles tags for objects. */
@@ -377,7 +372,7 @@ export interface EventDefinitionRecord {
   created_by?: UserBasic | null;
   post_to_slack?: boolean;
 }
-export const EventDefinitionRecord = /*@__PURE__*/ S.suspend(() =>
+const EventDefinitionRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -400,7 +395,7 @@ export interface GetEventDefinitionsGolangRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventDefinitionsGolangRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionsGolangRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -415,14 +410,12 @@ export const GetEventDefinitionsGolangRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsGolangRequest>;
 
 export interface GetEventDefinitionsGolangResponse {}
-export const GetEventDefinitionsGolangResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetEventDefinitionsGolangResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetEventDefinitionsGolangResponse",
 }) as any as S.Schema<GetEventDefinitionsGolangResponse>;
 
 export type GetEventDefinitionsPrimaryPropertyRequestNamesList = Array<string>;
-export const GetEventDefinitionsPrimaryPropertyRequestNamesList =
+const GetEventDefinitionsPrimaryPropertyRequestNamesList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequestNamesList>;
 
 export interface GetEventDefinitionsPrimaryPropertyRequest {
@@ -431,7 +424,7 @@ export interface GetEventDefinitionsPrimaryPropertyRequest {
   /** Optional: restrict the response to these event names. Repeat the parameter for multiple names (e.g. `?names=a&names=b`). When omitted, returns every team-configured primary property. */
   names?: GetEventDefinitionsPrimaryPropertyRequestNamesList;
 }
-export const GetEventDefinitionsPrimaryPropertyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionsPrimaryPropertyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     names: S.optional(GetEventDefinitionsPrimaryPropertyRequestNamesList.pipe(T.Query())),
@@ -448,7 +441,7 @@ export const GetEventDefinitionsPrimaryPropertyRequest = /*@__PURE__*/ S.suspend
 
 /** Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those. */
 export type PrimaryPropertiesResponsePrimaryPropertiesMap = { [key: string]: string | undefined };
-export const PrimaryPropertiesResponsePrimaryPropertiesMap = /*@__PURE__*/ S.Record(
+const PrimaryPropertiesResponsePrimaryPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<PrimaryPropertiesResponsePrimaryPropertiesMap>;
@@ -457,7 +450,7 @@ export interface PrimaryPropertiesResponse {
   /** Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those. */
   primary_properties: PrimaryPropertiesResponsePrimaryPropertiesMap;
 }
-export const PrimaryPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
+const PrimaryPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primary_properties: PrimaryPropertiesResponsePrimaryPropertiesMap,
   }),
@@ -469,7 +462,7 @@ export interface GetEventDefinitionsPythonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventDefinitionsPythonRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionsPythonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -484,14 +477,14 @@ export const GetEventDefinitionsPythonRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventDefinitionsPythonRequest>;
 
 export interface GetEventDefinitionsPythonResponse {}
-export const GetEventDefinitionsPythonResponse =
+const GetEventDefinitionsPythonResponse =
   GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsPythonResponse>;
 
 export interface GetEventDefinitionsTypescriptRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEventDefinitionsTypescriptRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEventDefinitionsTypescriptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -506,14 +499,14 @@ export const GetEventDefinitionsTypescriptRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetEventDefinitionsTypescriptRequest>;
 
 export interface GetEventDefinitionsTypescriptResponse {}
-export const GetEventDefinitionsTypescriptResponse =
+const GetEventDefinitionsTypescriptResponse =
   GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsTypescriptResponse>;
 
 export type ListEventDefinitionsRequestEventType = "event" | "event_custom" | "event_posthog";
-export const ListEventDefinitionsRequestEventType = S.String;
+const ListEventDefinitionsRequestEventType = S.String;
 
 export type ListEventDefinitionsRequestNamesList = Array<string>;
-export const ListEventDefinitionsRequestNamesList =
+const ListEventDefinitionsRequestNamesList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<ListEventDefinitionsRequestNamesList>;
 
 export type ListEventDefinitionsRequestOrderingItem =
@@ -527,12 +520,12 @@ export type ListEventDefinitionsRequestOrderingItem =
   | "last_seen_at"
   | "last_seen_at::date"
   | "name";
-export const ListEventDefinitionsRequestOrderingItem = S.String;
+const ListEventDefinitionsRequestOrderingItem = S.String;
 
 export type ListEventDefinitionsRequestOrderingList = Array<
   ListEventDefinitionsRequestOrderingItem | (string & {})
 >;
-export const ListEventDefinitionsRequestOrderingList = /*@__PURE__*/ S.Array(
+const ListEventDefinitionsRequestOrderingList = /*@__PURE__*/ S.Array(
   ListEventDefinitionsRequestOrderingItem,
 ) as any as S.Schema<ListEventDefinitionsRequestOrderingList>;
 
@@ -562,7 +555,7 @@ export interface ListEventDefinitionsRequest {
   /** When true, keep only verified events and core PostHog events. When false, keep the rest (Enterprise only). */
   verified?: boolean;
 }
-export const ListEventDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     event_type: S.optional(ListEventDefinitionsRequestEventType.pipe(T.Query())),
@@ -584,7 +577,7 @@ export const ListEventDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventDefinitionsRequest>;
 
 export type PaginatedEnterpriseEventDefinitionListResultsList = Array<EnterpriseEventDefinition>;
-export const PaginatedEnterpriseEventDefinitionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedEnterpriseEventDefinitionListResultsList = /*@__PURE__*/ S.Array(
   EnterpriseEventDefinition,
 ) as any as S.Schema<PaginatedEnterpriseEventDefinitionListResultsList>;
 
@@ -596,7 +589,7 @@ export interface PaginatedEnterpriseEventDefinitionList {
   /** True when `count` stopped at a cap, so it is a lower bound and `next` keeps paging past it. */
   count_is_capped?: boolean;
 }
-export const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -609,11 +602,11 @@ export const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>;
 
 export type UpdateEventDefinitionRequestTagsList = Array<unknown>;
-export const UpdateEventDefinitionRequestTagsList =
+const UpdateEventDefinitionRequestTagsList =
   CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionRequestTagsList>;
 
 export type UpdateEventDefinitionRequestDefaultColumnsList = Array<string>;
-export const UpdateEventDefinitionRequestDefaultColumnsList =
+const UpdateEventDefinitionRequestDefaultColumnsList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionRequestDefaultColumnsList>;
 
 export interface UpdateEventDefinitionRequest {
@@ -633,7 +626,7 @@ export interface UpdateEventDefinitionRequest {
   post_to_slack?: boolean;
   default_columns?: UpdateEventDefinitionRequestDefaultColumnsList;
 }
-export const UpdateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -655,11 +648,11 @@ export const UpdateEventDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEventDefinitionRequest>;
 
 export type UpdateEventDefinitionsPartialRequestTagsList = Array<unknown>;
-export const UpdateEventDefinitionsPartialRequestTagsList =
+const UpdateEventDefinitionsPartialRequestTagsList =
   CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionsPartialRequestTagsList>;
 
 export type UpdateEventDefinitionsPartialRequestDefaultColumnsList = Array<string>;
-export const UpdateEventDefinitionsPartialRequestDefaultColumnsList =
+const UpdateEventDefinitionsPartialRequestDefaultColumnsList =
   CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionsPartialRequestDefaultColumnsList>;
 
 export interface UpdateEventDefinitionsPartialRequest {
@@ -679,7 +672,7 @@ export interface UpdateEventDefinitionsPartialRequest {
   post_to_slack?: boolean;
   default_columns?: UpdateEventDefinitionsPartialRequestDefaultColumnsList;
 }
-export const UpdateEventDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEventDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

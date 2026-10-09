@@ -19,7 +19,7 @@ export interface AssociateTrafficFilterAssociateRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export const AssociateTrafficFilterAssociateRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateTrafficFilterAssociateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -38,7 +38,7 @@ export const AssociateTrafficFilterAssociateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<AssociateTrafficFilterAssociateRequest>;
 
 export interface AssociateTrafficFilterAssociateResponse {}
-export const AssociateTrafficFilterAssociateResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateTrafficFilterAssociateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AssociateTrafficFilterAssociateResponse",
@@ -56,7 +56,7 @@ export interface CreateCreateAndAssociateIPFilterRequest {
   /** Name of the traffic filter */
   name?: string;
 }
-export const CreateCreateAndAssociateIPFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCreateAndAssociateIPFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -76,7 +76,7 @@ export const CreateCreateAndAssociateIPFilterRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateCreateAndAssociateIPFilterRequest>;
 
 export interface CreateCreateAndAssociateIPFilterResponse {}
-export const CreateCreateAndAssociateIPFilterResponse =
+const CreateCreateAndAssociateIPFilterResponse =
   AssociateTrafficFilterAssociateResponse as any as S.Schema<CreateCreateAndAssociateIPFilterResponse>;
 
 export interface CreateCreateAndAssociatePLFilterRequest {
@@ -93,7 +93,7 @@ export interface CreateCreateAndAssociatePLFilterRequest {
   /** Name of the private endpoint */
   privateEndpointName?: string;
 }
-export const CreateCreateAndAssociatePLFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCreateAndAssociatePLFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -114,30 +114,28 @@ export const CreateCreateAndAssociatePLFilterRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateCreateAndAssociatePLFilterRequest>;
 
 export interface CreateCreateAndAssociatePLFilterResponse {}
-export const CreateCreateAndAssociatePLFilterResponse =
+const CreateCreateAndAssociatePLFilterResponse =
   AssociateTrafficFilterAssociateResponse as any as S.Schema<CreateCreateAndAssociatePLFilterResponse>;
 
 /** Resource tags. */
 export type CreateMonitorRequestTagsMap = { [key: string]: string | undefined };
-export const CreateMonitorRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateMonitorRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateMonitorRequestTagsMap>;
 
 /** Flag specifying if the resource monitoring is enabled or disabled. */
 export type MonitoringStatus = "Enabled" | "Disabled";
-export const MonitoringStatus = S.String;
+const MonitoringStatus = S.String;
 
 /** Details of the user's elastic account. */
 export interface ElasticCloudUserInput {}
-export const ElasticCloudUserInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ElasticCloudUserInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ElasticCloudUserInput",
 }) as any as S.Schema<ElasticCloudUserInput>;
 
 /** Details of the user's elastic deployment associated with the monitor resource. */
 export type ElasticCloudDeploymentInput = ElasticCloudUserInput;
-export const ElasticCloudDeploymentInput = ElasticCloudUserInput;
-
 /** Elastic Resource Properties. */
 export interface ElasticPropertiesInput {
   /** Details of the user's elastic account. */
@@ -145,7 +143,7 @@ export interface ElasticPropertiesInput {
   /** Details of the elastic cloud deployment. */
   elasticCloudDeployment?: ElasticCloudUserInput;
 }
-export const ElasticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const ElasticPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticCloudUser: S.optional(ElasticCloudUserInput),
     elasticCloudDeployment: S.optional(ElasticCloudUserInput),
@@ -165,7 +163,7 @@ export interface CompanyInfo {
   /** Country of the company location. */
   country?: string;
 }
-export const CompanyInfo = /*@__PURE__*/ S.suspend(() =>
+const CompanyInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     business: S.optional(S.String),
@@ -188,7 +186,7 @@ export interface UserInfo {
   /** Company information of the user to be passed to partners. */
   companyInfo?: CompanyInfo;
 }
-export const UserInfo = /*@__PURE__*/ S.suspend(() =>
+const UserInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstName: S.optional(S.String),
     lastName: S.optional(S.String),
@@ -211,7 +209,7 @@ export interface PlanDetails {
   /** Plan Name */
   planName?: string;
 }
-export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerID: S.optional(S.String),
     publisherID: S.optional(S.String),
@@ -223,15 +221,15 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Hosting type of the monitor resource - either Hosted deployments or Serverless Projects. */
 export type HostingType = "Hosted" | "Serverless";
-export const HostingType = S.String;
+const HostingType = S.String;
 
 /** Project type; ex: Elasticsearch / Observability / Security */
 export type ProjectType = "Elasticsearch" | "Observability" | "Security" | "NotApplicable";
-export const ProjectType = S.String;
+const ProjectType = S.String;
 
 /** Configuration type of the Elasticsearch project */
 export type ConfigurationType = "GeneralPurpose" | "Vector" | "TimeSeries" | "NotApplicable";
-export const ConfigurationType = S.String;
+const ConfigurationType = S.String;
 
 /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
 export interface ProjectDetails {
@@ -240,7 +238,7 @@ export interface ProjectDetails {
   /** Configuration type of the Elasticsearch project */
   configurationType?: ConfigurationType | (string & {});
 }
-export const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
+const ProjectDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectType: S.optional(ProjectType),
     configurationType: S.optional(ConfigurationType),
@@ -274,7 +272,7 @@ export interface MonitorPropertiesInput {
   /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
   projectDetails?: ProjectDetails;
 }
-export const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MonitorPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringStatus: S.optional(MonitoringStatus),
     elasticProperties: S.optional(ElasticPropertiesInput),
@@ -296,7 +294,7 @@ export interface ResourceSku {
   /** The name of the SKU. */
   name: string;
 }
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+const ResourceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -304,14 +302,14 @@ export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
 
 /** Managed Identity types. */
 export type ManagedIdentityTypes = "SystemAssigned";
-export const ManagedIdentityTypes = S.String;
+const ManagedIdentityTypes = S.String;
 
 /** Identity properties. */
 export interface IdentityPropertiesInput {
   /** Managed identity type. */
   type?: ManagedIdentityTypes | (string & {});
 }
-export const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const IdentityPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagedIdentityTypes),
   }),
@@ -336,7 +334,7 @@ export interface CreateMonitorRequest {
   /** Identity properties of the monitor resource. */
   identity?: IdentityPropertiesInput;
 }
-export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -359,11 +357,11 @@ export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -380,7 +378,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -393,7 +391,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const CreateMonitorResponseTagsMap =
+const CreateMonitorResponseTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<CreateMonitorResponseTagsMap>;
 
 /** Provisioning state of Elastic resource. */
@@ -407,7 +405,7 @@ export type ProvisioningState =
   | "Canceled"
   | "Deleted"
   | "NotSpecified";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Details of the user's elastic account. */
 export interface ElasticCloudUser {
@@ -418,7 +416,7 @@ export interface ElasticCloudUser {
   /** Elastic cloud default dashboard sso URL of the Elastic user account. */
   elasticCloudSsoDefaultUrl?: string;
 }
-export const ElasticCloudUser = /*@__PURE__*/ S.suspend(() =>
+const ElasticCloudUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailAddress: S.optional(S.String),
     id: S.optional(S.String),
@@ -443,7 +441,7 @@ export interface ElasticCloudDeployment {
   /** Kibana dashboard sso URL of the Elastic deployment. */
   kibanaSsoUrl?: string;
 }
-export const ElasticCloudDeployment = /*@__PURE__*/ S.suspend(() =>
+const ElasticCloudDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     deploymentId: S.optional(S.String),
@@ -462,7 +460,7 @@ export interface ElasticProperties {
   /** Details of the elastic cloud deployment. */
   elasticCloudDeployment?: ElasticCloudDeployment;
 }
-export const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
+const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elasticCloudUser: S.optional(ElasticCloudUser),
     elasticCloudDeployment: S.optional(ElasticCloudDeployment),
@@ -470,7 +468,7 @@ export const ElasticProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ElasticProperties" }) as any as S.Schema<ElasticProperties>;
 
 export type LiftrResourceCategories = "Unknown" | "MonitorLogs";
-export const LiftrResourceCategories = S.String;
+const LiftrResourceCategories = S.String;
 
 /** Properties specific to the monitor resource. */
 export interface MonitorProperties {
@@ -504,7 +502,7 @@ export interface MonitorProperties {
   /** Project details of the monitor resource IF it belongs to Serverless offer kind. */
   projectDetails?: ProjectDetails;
 }
-export const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitorProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     monitoringStatus: S.optional(MonitoringStatus),
@@ -533,7 +531,7 @@ export interface IdentityProperties {
   /** Managed identity type. */
   type?: ManagedIdentityTypes;
 }
-export const IdentityProperties = /*@__PURE__*/ S.suspend(() =>
+const IdentityProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -563,7 +561,7 @@ export interface CreateMonitorResponse {
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
 }
-export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -588,7 +586,7 @@ export interface DeleteDetachAndDeleteTrafficFilterRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export const DeleteDetachAndDeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDetachAndDeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -607,7 +605,7 @@ export const DeleteDetachAndDeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<DeleteDetachAndDeleteTrafficFilterRequest>;
 
 export interface DeleteDetachAndDeleteTrafficFilterResponse {}
-export const DeleteDetachAndDeleteTrafficFilterResponse =
+const DeleteDetachAndDeleteTrafficFilterResponse =
   AssociateTrafficFilterAssociateResponse as any as S.Schema<DeleteDetachAndDeleteTrafficFilterResponse>;
 
 export interface DeleteMonitorRequest {
@@ -618,7 +616,7 @@ export interface DeleteMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -634,8 +632,7 @@ export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteMonitorRequest" }) as any as S.Schema<DeleteMonitorRequest>;
 
 export interface DeleteMonitorResponse {}
-export const DeleteMonitorResponse =
-  ElasticCloudUserInput as any as S.Schema<DeleteMonitorResponse>;
+const DeleteMonitorResponse = ElasticCloudUserInput as any as S.Schema<DeleteMonitorResponse>;
 
 export interface DeleteMonitoredSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -647,7 +644,7 @@ export interface DeleteMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -666,7 +663,7 @@ export const DeleteMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMonitoredSubscriptionRequest>;
 
 export interface DeleteMonitoredSubscriptionResponse {}
-export const DeleteMonitoredSubscriptionResponse =
+const DeleteMonitoredSubscriptionResponse =
   AssociateTrafficFilterAssociateResponse as any as S.Schema<DeleteMonitoredSubscriptionResponse>;
 
 export interface DeleteOpenAIRequest {
@@ -679,7 +676,7 @@ export interface DeleteOpenAIRequest {
   /** OpenAI Integration name */
   integrationName: string;
 }
-export const DeleteOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -696,7 +693,7 @@ export const DeleteOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteOpenAIRequest" }) as any as S.Schema<DeleteOpenAIRequest>;
 
 export interface DeleteOpenAIResponse {}
-export const DeleteOpenAIResponse = ElasticCloudUserInput as any as S.Schema<DeleteOpenAIResponse>;
+const DeleteOpenAIResponse = ElasticCloudUserInput as any as S.Schema<DeleteOpenAIResponse>;
 
 export interface DeleteTagRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -708,7 +705,7 @@ export interface DeleteTagRuleRequest {
   /** Tag Rule Set resource name */
   ruleSetName: string;
 }
-export const DeleteTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -725,8 +722,7 @@ export const DeleteTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRuleRequest" }) as any as S.Schema<DeleteTagRuleRequest>;
 
 export interface DeleteTagRuleResponse {}
-export const DeleteTagRuleResponse =
-  ElasticCloudUserInput as any as S.Schema<DeleteTagRuleResponse>;
+const DeleteTagRuleResponse = ElasticCloudUserInput as any as S.Schema<DeleteTagRuleResponse>;
 
 export interface DeleteTrafficFilterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -738,7 +734,7 @@ export interface DeleteTrafficFilterRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export const DeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -757,12 +753,12 @@ export const DeleteTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTrafficFilterRequest>;
 
 export interface DeleteTrafficFilterResponse {}
-export const DeleteTrafficFilterResponse =
+const DeleteTrafficFilterResponse =
   ElasticCloudUserInput as any as S.Schema<DeleteTrafficFilterResponse>;
 
 /** Roles to be assigned for created or updated user */
 export type ExternalUserCreateOrUpdateRequestRolesList = Array<string>;
-export const ExternalUserCreateOrUpdateRequestRolesList = /*@__PURE__*/ S.Array(
+const ExternalUserCreateOrUpdateRequestRolesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ExternalUserCreateOrUpdateRequestRolesList>;
 
@@ -784,7 +780,7 @@ export interface ExternalUserCreateOrUpdateRequest {
   /** Roles to be assigned for created or updated user */
   roles?: ExternalUserCreateOrUpdateRequestRolesList;
 }
-export const ExternalUserCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalUserCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -811,7 +807,7 @@ export interface ExternalUserCreationResponse {
   /** Shows if user is created or updated */
   created?: boolean;
 }
-export const ExternalUserCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalUserCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.Boolean),
   }),
@@ -827,7 +823,7 @@ export interface GetBillingInfoRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const GetBillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -851,7 +847,7 @@ export interface MarketplaceSaaSInfoMarketplaceSubscription {
   /** Offer Id of the Marketplace offer, */
   offerId?: string;
 }
-export const MarketplaceSaaSInfoMarketplaceSubscription = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSaaSInfoMarketplaceSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -876,7 +872,7 @@ export interface MarketplaceSaaSInfo {
   /** Flag specifying if the Marketplace status is subscribed or not. */
   subscribed?: boolean;
 }
-export const MarketplaceSaaSInfo = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceSaaSInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplaceSubscription: S.optional(MarketplaceSaaSInfoMarketplaceSubscription),
     marketplaceName: S.optional(S.String),
@@ -896,7 +892,7 @@ export interface PartnerBillingEntity {
   /** Link to the elastic organization page */
   partnerEntityUri?: string;
 }
-export const PartnerBillingEntity = /*@__PURE__*/ S.suspend(() =>
+const PartnerBillingEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -911,7 +907,7 @@ export interface BillingInfoResponse {
   /** Partner Billing Entity details: Organization Info */
   partnerBillingEntity?: PartnerBillingEntity;
 }
-export const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     marketplaceSaasInfo: S.optional(MarketplaceSaaSInfo),
     partnerBillingEntity: S.optional(PartnerBillingEntity),
@@ -926,7 +922,7 @@ export interface GetMonitorRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -943,9 +939,6 @@ export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const GetMonitorResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<GetMonitorResponseTagsMap>;
-
 export interface GetMonitorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -968,7 +961,7 @@ export interface GetMonitorResponse {
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
 }
-export const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
+const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
 
 export interface GetMonitoredSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -980,7 +973,7 @@ export interface GetMonitoredSubscriptionRequest {
   /** The configuration name. Only 'default' value is supported. */
   configurationName: string;
 }
-export const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1000,15 +993,15 @@ export const GetMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operation for the patch on the resource. */
 export type Operation = "AddBegin" | "AddComplete" | "DeleteBegin" | "DeleteComplete" | "Active";
-export const Operation = S.String;
+const Operation = S.String;
 
 /** The state of monitoring. */
 export type Status = "InProgress" | "Active" | "Failed" | "Deleting";
-export const Status = S.String;
+const Status = S.String;
 
 /** Valid actions for a filtering tag. Exclusion takes priority over inclusion. */
 export type TagAction = "Include" | "Exclude";
-export const TagAction = S.String;
+const TagAction = S.String;
 
 /** The definition of a filtering tag. Filtering tags are used for capturing resources and include/exclude them from being monitored. */
 export interface FilteringTag {
@@ -1019,7 +1012,7 @@ export interface FilteringTag {
   /** Valid actions for a filtering tag. */
   action?: TagAction | (string & {});
 }
-export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
+const FilteringTag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -1029,7 +1022,7 @@ export const FilteringTag = /*@__PURE__*/ S.suspend(() =>
 
 /** List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
 export type LogRulesFilteringTagsList = Array<FilteringTag>;
-export const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
+const LogRulesFilteringTagsList = /*@__PURE__*/ S.Array(
   FilteringTag,
 ) as any as S.Schema<LogRulesFilteringTagsList>;
 
@@ -1044,7 +1037,7 @@ export interface LogRules {
   /** List of filtering tags to be used for capturing logs. This only takes effect if SendActivityLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags. */
   filteringTags?: LogRulesFilteringTagsList;
 }
-export const LogRules = /*@__PURE__*/ S.suspend(() =>
+const LogRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendAadLogs: S.optional(S.Boolean),
     sendSubscriptionLogs: S.optional(S.Boolean),
@@ -1060,7 +1053,7 @@ export interface MonitoringTagRulesProperties {
   /** Rules for sending logs. */
   logRules?: LogRules;
 }
-export const MonitoringTagRulesProperties = /*@__PURE__*/ S.suspend(() =>
+const MonitoringTagRulesProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     logRules: S.optional(LogRules),
@@ -1080,7 +1073,7 @@ export interface MonitoredSubscription {
   /** Definition of the properties for a TagRules resource. */
   tagRules?: MonitoringTagRulesProperties;
 }
-export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String,
     status: S.optional(Status),
@@ -1091,7 +1084,7 @@ export const MonitoredSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscriptions and the state of the monitoring. */
 export type SubscriptionListMonitoredSubscriptionListList = Array<MonitoredSubscription>;
-export const SubscriptionListMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
+const SubscriptionListMonitoredSubscriptionListList = /*@__PURE__*/ S.Array(
   MonitoredSubscription,
 ) as any as S.Schema<SubscriptionListMonitoredSubscriptionListList>;
 
@@ -1104,7 +1097,7 @@ export interface SubscriptionList {
   /** Provisioning State of the resource */
   provisioningState?: ProvisioningState | (string & {});
 }
-export const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(Operation),
     monitoredSubscriptionList: S.optional(SubscriptionListMonitoredSubscriptionListList),
@@ -1124,7 +1117,7 @@ export interface GetMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const GetMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMonitoredSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1146,7 +1139,7 @@ export interface GetOpenAIRequest {
   /** OpenAI Integration name */
   integrationName: string;
 }
-export const GetOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1175,7 +1168,7 @@ export interface OpenAIIntegrationProperties {
   /** Last Update Timestamp for key updation */
   lastRefreshAt?: string;
 }
-export const OpenAIIntegrationProperties = /*@__PURE__*/ S.suspend(() =>
+const OpenAIIntegrationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openAIResourceId: S.optional(S.String),
     openAIResourceEndpoint: S.optional(S.String),
@@ -1199,7 +1192,7 @@ export interface GetOpenAIResponse {
   /** Open AI Integration details. */
   properties?: OpenAIIntegrationProperties;
 }
-export const GetOpenAIResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOpenAIResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1219,7 +1212,7 @@ export interface GetOpenAIStatusRequest {
   /** OpenAI Integration name */
   integrationName: string;
 }
-export const GetOpenAIStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOpenAIStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1240,7 +1233,7 @@ export interface OpenAIIntegrationStatusResponseProperties {
   /** Status of the OpenAI Integration */
   status?: string;
 }
-export const OpenAIIntegrationStatusResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const OpenAIIntegrationStatusResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -1253,7 +1246,7 @@ export interface OpenAIIntegrationStatusResponse {
   /** Status of the OpenAI Integration */
   properties?: OpenAIIntegrationStatusResponseProperties;
 }
-export const OpenAIIntegrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const OpenAIIntegrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(OpenAIIntegrationStatusResponseProperties),
   }),
@@ -1267,7 +1260,7 @@ export interface GetOrganizationApiKeyRequest {
   /** The User email Id */
   emailId?: string;
 }
-export const GetOrganizationApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     emailId: S.optional(S.String),
@@ -1287,7 +1280,7 @@ export interface UserApiKeyResponseProperties {
   /** The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only. */
   apiKey?: string | Redacted.Redacted<string>;
 }
-export const UserApiKeyResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const UserApiKeyResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
   }),
@@ -1299,7 +1292,7 @@ export const UserApiKeyResponseProperties = /*@__PURE__*/ S.suspend(() =>
 export interface UserApiKeyResponse {
   properties?: UserApiKeyResponseProperties;
 }
-export const UserApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const UserApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(UserApiKeyResponseProperties),
   }),
@@ -1309,7 +1302,7 @@ export interface GetOrganizationElasticToAzureSubscriptionMappingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GetOrganizationElasticToAzureSubscriptionMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationElasticToAzureSubscriptionMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1335,24 +1328,24 @@ export interface ElasticOrganizationToAzureSubscriptionMappingResponseProperties
   /** The Elastic Organization Name. */
   elasticOrganizationName?: string;
 }
-export const ElasticOrganizationToAzureSubscriptionMappingResponseProperties =
-  /*@__PURE__*/ S.suspend(() =>
+const ElasticOrganizationToAzureSubscriptionMappingResponseProperties = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       billedAzureSubscriptionId: S.optional(S.String),
       marketplaceSaasInfo: S.optional(MarketplaceSaaSInfo),
       elasticOrganizationId: S.optional(S.String),
       elasticOrganizationName: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ElasticOrganizationToAzureSubscriptionMappingResponseProperties",
-  }) as any as S.Schema<ElasticOrganizationToAzureSubscriptionMappingResponseProperties>;
+).annotate({
+  identifier: "ElasticOrganizationToAzureSubscriptionMappingResponseProperties",
+}) as any as S.Schema<ElasticOrganizationToAzureSubscriptionMappingResponseProperties>;
 
 /** The Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into. */
 export interface ElasticOrganizationToAzureSubscriptionMappingResponse {
   /** The properties of Azure Subscription ID to which the Organization of the logged in user belongs and gets billed into. */
   properties?: ElasticOrganizationToAzureSubscriptionMappingResponseProperties;
 }
-export const ElasticOrganizationToAzureSubscriptionMappingResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticOrganizationToAzureSubscriptionMappingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ElasticOrganizationToAzureSubscriptionMappingResponseProperties),
   }),
@@ -1370,7 +1363,7 @@ export interface GetTagRuleRequest {
   /** Tag Rule Set resource name */
   ruleSetName: string;
 }
-export const GetTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1398,7 +1391,7 @@ export interface GetTagRuleResponse {
   /** Properties of the monitoring tag rules. */
   properties?: MonitoringTagRulesProperties;
 }
-export const GetTagRuleResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1416,7 +1409,7 @@ export interface ListAllTrafficFiltersRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListAllTrafficFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllTrafficFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1435,7 +1428,7 @@ export const ListAllTrafficFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of the elastic filter */
 export type Type = "ip" | "azure_private_endpoint";
-export const Type = S.String;
+const Type = S.String;
 
 /** Elastic traffic filter rule object */
 export interface ElasticTrafficFilterRule {
@@ -1450,7 +1443,7 @@ export interface ElasticTrafficFilterRule {
   /** Id of the elastic filter rule */
   id?: string;
 }
-export const ElasticTrafficFilterRule = /*@__PURE__*/ S.suspend(() =>
+const ElasticTrafficFilterRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.String),
     description: S.optional(S.String),
@@ -1462,7 +1455,7 @@ export const ElasticTrafficFilterRule = /*@__PURE__*/ S.suspend(() =>
 
 /** Rules in the elastic filter */
 export type ElasticTrafficFilterRulesList = Array<ElasticTrafficFilterRule>;
-export const ElasticTrafficFilterRulesList = /*@__PURE__*/ S.Array(
+const ElasticTrafficFilterRulesList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilterRule,
 ) as any as S.Schema<ElasticTrafficFilterRulesList>;
 
@@ -1483,7 +1476,7 @@ export interface ElasticTrafficFilter {
   /** Rules in the elastic filter */
   rules?: ElasticTrafficFilterRulesList;
 }
-export const ElasticTrafficFilter = /*@__PURE__*/ S.suspend(() =>
+const ElasticTrafficFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1497,7 +1490,7 @@ export const ElasticTrafficFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** List of elastic traffic filters in the account */
 export type ElasticTrafficFilterResponseRulesetsList = Array<ElasticTrafficFilter>;
-export const ElasticTrafficFilterResponseRulesetsList = /*@__PURE__*/ S.Array(
+const ElasticTrafficFilterResponseRulesetsList = /*@__PURE__*/ S.Array(
   ElasticTrafficFilter,
 ) as any as S.Schema<ElasticTrafficFilterResponseRulesetsList>;
 
@@ -1506,7 +1499,7 @@ export interface ElasticTrafficFilterResponse {
   /** List of elastic traffic filters in the account */
   rulesets?: ElasticTrafficFilterResponseRulesetsList;
 }
-export const ElasticTrafficFilterResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticTrafficFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rulesets: S.optional(ElasticTrafficFilterResponseRulesetsList),
   }),
@@ -1522,7 +1515,7 @@ export interface ListConnectedPartnerResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListConnectedPartnerResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListConnectedPartnerResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1552,7 +1545,7 @@ export interface ConnectedPartnerResourceProperties {
   /** The hosting type of the resource. */
   type?: string;
 }
-export const ConnectedPartnerResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ConnectedPartnerResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     partnerDeploymentName: S.optional(S.String),
     partnerDeploymentUri: S.optional(S.String),
@@ -1569,7 +1562,7 @@ export interface ConnectedPartnerResourcesListFormat {
   /** Connected Partner Resource Properties */
   properties?: ConnectedPartnerResourceProperties;
 }
-export const ConnectedPartnerResourcesListFormat = /*@__PURE__*/ S.suspend(() =>
+const ConnectedPartnerResourcesListFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ConnectedPartnerResourceProperties),
   }),
@@ -1580,7 +1573,7 @@ export const ConnectedPartnerResourcesListFormat = /*@__PURE__*/ S.suspend(() =>
 /** The ConnectedPartnerResourcesListFormat items on this page */
 export type ConnectedPartnerResourcesListResponseValueList =
   Array<ConnectedPartnerResourcesListFormat>;
-export const ConnectedPartnerResourcesListResponseValueList = /*@__PURE__*/ S.Array(
+const ConnectedPartnerResourcesListResponseValueList = /*@__PURE__*/ S.Array(
   ConnectedPartnerResourcesListFormat,
 ) as any as S.Schema<ConnectedPartnerResourcesListResponseValueList>;
 
@@ -1591,7 +1584,7 @@ export interface ConnectedPartnerResourcesListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ConnectedPartnerResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
+const ConnectedPartnerResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ConnectedPartnerResourcesListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1608,7 +1601,7 @@ export interface ListDeploymentInfoRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListDeploymentInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1627,7 +1620,7 @@ export const ListDeploymentInfoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Flag specifying if the Elastic deployment status is healthy or not. */
 export type ElasticDeploymentStatus = "Healthy" | "Unhealthy";
-export const ElasticDeploymentStatus = S.String;
+const ElasticDeploymentStatus = S.String;
 
 /** The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource. */
 export interface DeploymentInfoResponse {
@@ -1650,7 +1643,7 @@ export interface DeploymentInfoResponse {
   /** ConfigurationType Type - Applicable for Serverless only. */
   configurationType?: string;
 }
-export const DeploymentInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const DeploymentInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ElasticDeploymentStatus),
     version: S.optional(S.String),
@@ -1670,7 +1663,7 @@ export interface ListElasticVersionsRequest {
   /** Region where elastic deployment will take place. */
   region: string;
 }
-export const ListElasticVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListElasticVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Query()),
@@ -1691,7 +1684,7 @@ export interface ElasticVersionListProperties {
   /** Available elastic version of the given region */
   version?: string;
 }
-export const ElasticVersionListProperties = /*@__PURE__*/ S.suspend(() =>
+const ElasticVersionListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
   }),
@@ -1704,7 +1697,7 @@ export interface ElasticVersionListFormat {
   /** Elastic Version Properties */
   properties?: ElasticVersionListProperties;
 }
-export const ElasticVersionListFormat = /*@__PURE__*/ S.suspend(() =>
+const ElasticVersionListFormat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     properties: S.optional(ElasticVersionListProperties),
   }),
@@ -1712,7 +1705,7 @@ export const ElasticVersionListFormat = /*@__PURE__*/ S.suspend(() =>
 
 /** The ElasticVersionListFormat items on this page */
 export type ElasticVersionsListResponseValueList = Array<ElasticVersionListFormat>;
-export const ElasticVersionsListResponseValueList = /*@__PURE__*/ S.Array(
+const ElasticVersionsListResponseValueList = /*@__PURE__*/ S.Array(
   ElasticVersionListFormat,
 ) as any as S.Schema<ElasticVersionsListResponseValueList>;
 
@@ -1723,7 +1716,7 @@ export interface ElasticVersionsListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ElasticVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticVersionsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ElasticVersionsListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1740,7 +1733,7 @@ export interface ListListAssociatedTrafficFiltersRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListListAssociatedTrafficFiltersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListListAssociatedTrafficFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1763,7 +1756,7 @@ export interface ListMonitorByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1781,9 +1774,6 @@ export const ListMonitorByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ElasticMonitorResourceTagsMap = { [key: string]: string | undefined };
-export const ElasticMonitorResourceTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<ElasticMonitorResourceTagsMap>;
-
 /** Monitor resource. */
 export interface ElasticMonitorResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1807,12 +1797,11 @@ export interface ElasticMonitorResource {
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
 }
-export const ElasticMonitorResource =
-  CreateMonitorResponse as any as S.Schema<ElasticMonitorResource>;
+const ElasticMonitorResource = CreateMonitorResponse as any as S.Schema<ElasticMonitorResource>;
 
 /** The ElasticMonitorResource items on this page */
 export type ElasticMonitorResourceListResponseValueList = Array<ElasticMonitorResource>;
-export const ElasticMonitorResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const ElasticMonitorResourceListResponseValueList = /*@__PURE__*/ S.Array(
   ElasticMonitorResource,
 ) as any as S.Schema<ElasticMonitorResourceListResponseValueList>;
 
@@ -1823,7 +1812,7 @@ export interface ElasticMonitorResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const ElasticMonitorResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const ElasticMonitorResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: ElasticMonitorResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1840,7 +1829,7 @@ export interface ListMonitoredResourcesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1859,7 +1848,7 @@ export const ListMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Flag indicating the status of the resource for sending logs operation to Elastic. */
 export type SendingLogs = "True" | "False";
-export const SendingLogs = S.String;
+const SendingLogs = S.String;
 
 /** The properties of a resource currently being monitored by the Elastic monitor resource. */
 export interface MonitoredResource {
@@ -1870,7 +1859,7 @@ export interface MonitoredResource {
   /** Reason for why the resource is sending logs (or why it is not sending). */
   reasonForLogsStatus?: string;
 }
-export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     sendingLogs: S.optional(SendingLogs),
@@ -1880,7 +1869,7 @@ export const MonitoredResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The MonitoredResource items on this page */
 export type MonitoredResourceListResponseValueList = Array<MonitoredResource>;
-export const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
+const MonitoredResourceListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoredResource,
 ) as any as S.Schema<MonitoredResourceListResponseValueList>;
 
@@ -1891,7 +1880,7 @@ export interface MonitoredResourceListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoredResourceListResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitoredResourceListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoredResourceListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1908,7 +1897,7 @@ export interface ListMonitoredSubscriptionsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitoredSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1938,12 +1927,12 @@ export interface MonitoredSubscriptionProperties {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const MonitoredSubscriptionProperties =
+const MonitoredSubscriptionProperties =
   GetMonitoredSubscriptionResponse as any as S.Schema<MonitoredSubscriptionProperties>;
 
 /** The MonitoredSubscriptionProperties items on this page */
 export type MonitoredSubscriptionPropertiesListValueList = Array<MonitoredSubscriptionProperties>;
-export const MonitoredSubscriptionPropertiesListValueList = /*@__PURE__*/ S.Array(
+const MonitoredSubscriptionPropertiesListValueList = /*@__PURE__*/ S.Array(
   MonitoredSubscriptionProperties,
 ) as any as S.Schema<MonitoredSubscriptionPropertiesListValueList>;
 
@@ -1954,7 +1943,7 @@ export interface MonitoredSubscriptionPropertiesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoredSubscriptionPropertiesList = /*@__PURE__*/ S.suspend(() =>
+const MonitoredSubscriptionPropertiesList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoredSubscriptionPropertiesListValueList,
     nextLink: S.optional(S.String),
@@ -1967,7 +1956,7 @@ export interface ListMonitorsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1988,7 +1977,7 @@ export interface ListOpenAIRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOpenAIRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2016,12 +2005,11 @@ export interface OpenAIIntegrationRPModel {
   /** Open AI Integration details. */
   properties?: OpenAIIntegrationProperties;
 }
-export const OpenAIIntegrationRPModel =
-  GetOpenAIResponse as any as S.Schema<OpenAIIntegrationRPModel>;
+const OpenAIIntegrationRPModel = GetOpenAIResponse as any as S.Schema<OpenAIIntegrationRPModel>;
 
 /** The OpenAIIntegrationRPModel items on this page */
 export type OpenAIIntegrationRPModelListResponseValueList = Array<OpenAIIntegrationRPModel>;
-export const OpenAIIntegrationRPModelListResponseValueList = /*@__PURE__*/ S.Array(
+const OpenAIIntegrationRPModelListResponseValueList = /*@__PURE__*/ S.Array(
   OpenAIIntegrationRPModel,
 ) as any as S.Schema<OpenAIIntegrationRPModelListResponseValueList>;
 
@@ -2032,7 +2020,7 @@ export interface OpenAIIntegrationRPModelListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OpenAIIntegrationRPModelListResponse = /*@__PURE__*/ S.suspend(() =>
+const OpenAIIntegrationRPModelListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OpenAIIntegrationRPModelListResponseValueList,
     nextLink: S.optional(S.String),
@@ -2042,7 +2030,7 @@ export const OpenAIIntegrationRPModelListResponse = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<OpenAIIntegrationRPModelListResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2064,7 +2052,7 @@ export interface OperationDisplay {
   /** A description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2084,7 +2072,7 @@ export interface OperationResult {
   /** Origin of the operation */
   origin?: string;
 }
-export const OperationResult = /*@__PURE__*/ S.suspend(() =>
+const OperationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -2095,7 +2083,7 @@ export const OperationResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of operations. */
 export type OperationListResultValueList = Array<OperationResult>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   OperationResult,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -2106,7 +2094,7 @@ export interface OperationListResult {
   /** The URL to get the next set of results, if any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OperationListResultValueList,
     nextLink: S.optional(S.String),
@@ -2121,7 +2109,7 @@ export interface ListTagRulesRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListTagRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2149,11 +2137,11 @@ export interface MonitoringTagRules {
   /** Properties of the monitoring tag rules. */
   properties?: MonitoringTagRulesProperties;
 }
-export const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
+const MonitoringTagRules = GetTagRuleResponse as any as S.Schema<MonitoringTagRules>;
 
 /** The MonitoringTagRules items on this page */
 export type MonitoringTagRulesListResponseValueList = Array<MonitoringTagRules>;
-export const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
+const MonitoringTagRulesListResponseValueList = /*@__PURE__*/ S.Array(
   MonitoringTagRules,
 ) as any as S.Schema<MonitoringTagRulesListResponseValueList>;
 
@@ -2164,7 +2152,7 @@ export interface MonitoringTagRulesListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MonitoringTagRulesListResponse = /*@__PURE__*/ S.suspend(() =>
+const MonitoringTagRulesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MonitoringTagRulesListResponseValueList,
     nextLink: S.optional(S.String),
@@ -2181,7 +2169,7 @@ export interface ListVMHostRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const ListVMHostRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVMHostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2201,7 +2189,7 @@ export interface VMResources {
   /** The ARM id of the VM resource. */
   vmResourceId?: string;
 }
-export const VMResources = /*@__PURE__*/ S.suspend(() =>
+const VMResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vmResourceId: S.optional(S.String),
   }),
@@ -2209,7 +2197,7 @@ export const VMResources = /*@__PURE__*/ S.suspend(() =>
 
 /** The VMResources items on this page */
 export type VMHostListResponseValueList = Array<VMResources>;
-export const VMHostListResponseValueList = /*@__PURE__*/ S.Array(
+const VMHostListResponseValueList = /*@__PURE__*/ S.Array(
   VMResources,
 ) as any as S.Schema<VMHostListResponseValueList>;
 
@@ -2220,7 +2208,7 @@ export interface VMHostListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VMHostListResponse = /*@__PURE__*/ S.suspend(() =>
+const VMHostListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VMHostListResponseValueList,
     nextLink: S.optional(S.String),
@@ -2237,7 +2225,7 @@ export interface MonitorUpgradeRequest {
   /** Version to which the elastic monitor should be upgraded to */
   version?: string;
 }
-export const MonitorUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
+const MonitorUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2254,8 +2242,7 @@ export const MonitorUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonitorUpgradeRequest" }) as any as S.Schema<MonitorUpgradeRequest>;
 
 export interface MonitorUpgradeResponse {}
-export const MonitorUpgradeResponse =
-  ElasticCloudUserInput as any as S.Schema<MonitorUpgradeResponse>;
+const MonitorUpgradeResponse = ElasticCloudUserInput as any as S.Schema<MonitorUpgradeResponse>;
 
 /** Open AI Integration details. */
 export interface OpenAIIntegrationPropertiesInput {
@@ -2268,7 +2255,7 @@ export interface OpenAIIntegrationPropertiesInput {
   /** Value of API key for Open AI resource */
   key?: string;
 }
-export const OpenAIIntegrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OpenAIIntegrationPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openAIResourceId: S.optional(S.String),
     openAIResourceEndpoint: S.optional(S.String),
@@ -2289,7 +2276,7 @@ export interface OpenAICreateOrUpdateRequest {
   /** Open AI Integration details. */
   properties?: OpenAIIntegrationPropertiesInput;
 }
-export const OpenAICreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const OpenAICreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2320,7 +2307,7 @@ export interface OpenAICreateOrUpdateResponse {
   /** Open AI Integration details. */
   properties?: OpenAIIntegrationProperties;
 }
-export const OpenAICreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const OpenAICreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2348,7 +2335,7 @@ export interface OrganizationsResubscribeRequest {
   /** Organization Id of the Elastic Organization that needs to be resubscribed */
   organizationId?: string;
 }
-export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2371,7 +2358,7 @@ export const OrganizationsResubscribeRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type OrganizationsResubscribeResponseTagsMap = { [key: string]: string | undefined };
-export const OrganizationsResubscribeResponseTagsMap =
+const OrganizationsResubscribeResponseTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<OrganizationsResubscribeResponseTagsMap>;
 
 export interface OrganizationsResubscribeResponse {
@@ -2396,7 +2383,7 @@ export interface OrganizationsResubscribeResponse {
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
 }
-export const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
+const OrganizationsResubscribeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2423,7 +2410,7 @@ export interface TagRulesCreateOrUpdateRequest {
   /** Properties of the monitoring tag rules. */
   properties?: MonitoringTagRulesProperties;
 }
-export const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const TagRulesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2454,7 +2441,7 @@ export interface TagRulesCreateOrUpdateResponse {
   /** Properties of the monitoring tag rules. */
   properties?: MonitoringTagRulesProperties;
 }
-export const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const TagRulesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2476,7 +2463,7 @@ export interface UpdateDetachTrafficFilterRequest {
   /** Ruleset Id of the filter */
   rulesetId?: string;
 }
-export const UpdateDetachTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDetachTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2495,12 +2482,12 @@ export const UpdateDetachTrafficFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDetachTrafficFilterRequest>;
 
 export interface UpdateDetachTrafficFilterResponse {}
-export const UpdateDetachTrafficFilterResponse =
+const UpdateDetachTrafficFilterResponse =
   AssociateTrafficFilterAssociateResponse as any as S.Schema<UpdateDetachTrafficFilterResponse>;
 
 /** elastic monitor resource tags. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorRequestTagsMap =
+const UpdateMonitorRequestTagsMap =
   CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorRequestTagsMap>;
 
 export interface UpdateMonitorRequest {
@@ -2512,7 +2499,7 @@ export interface UpdateMonitorRequest {
   /** elastic monitor resource tags. */
   tags?: UpdateMonitorRequestTagsMap;
 }
-export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2530,9 +2517,6 @@ export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateMonitorResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateMonitorResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorResponseTagsMap>;
-
 export interface UpdateMonitorResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2555,8 +2539,7 @@ export interface UpdateMonitorResponse {
   /** Identity properties of the monitor resource. */
   identity?: IdentityProperties;
 }
-export const UpdateMonitorResponse =
-  CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
+const UpdateMonitorResponse = CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
 
 export interface UpdateMonitoredSubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2568,7 +2551,7 @@ export interface UpdateMonitoredSubscriptionRequest {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitoredSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2599,7 +2582,7 @@ export interface UpdateMonitoredSubscriptionResponse {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionResponse =
+const UpdateMonitoredSubscriptionResponse =
   GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionResponse>;
 
 export interface UpdateMonitoredSubscriptionsCreateorRequest {
@@ -2612,7 +2595,7 @@ export interface UpdateMonitoredSubscriptionsCreateorRequest {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionsCreateorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateMonitoredSubscriptionsCreateorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2643,12 +2626,12 @@ export interface UpdateMonitoredSubscriptionsCreateorResponse {
   /** The request to update subscriptions needed to be monitored by the Elastic monitor resource. */
   properties?: SubscriptionList;
 }
-export const UpdateMonitoredSubscriptionsCreateorResponse =
+const UpdateMonitoredSubscriptionsCreateorResponse =
   GetMonitoredSubscriptionResponse as any as S.Schema<UpdateMonitoredSubscriptionsCreateorResponse>;
 
 /** Operation to be performed on the given vm resource id. */
 export type OperationName = "Add" | "Delete";
-export const OperationName = S.String;
+const OperationName = S.String;
 
 export interface UpdateVMCollectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -2662,7 +2645,7 @@ export interface UpdateVMCollectionRequest {
   /** Operation to be performed for given VM. */
   operationName?: OperationName | (string & {});
 }
-export const UpdateVMCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVMCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2682,7 +2665,7 @@ export const UpdateVMCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateVMCollectionRequest>;
 
 export interface UpdateVMCollectionResponse {}
-export const UpdateVMCollectionResponse =
+const UpdateVMCollectionResponse =
   ElasticCloudUserInput as any as S.Schema<UpdateVMCollectionResponse>;
 
 export interface UpgradableVersionsDetailsRequest {
@@ -2693,7 +2676,7 @@ export interface UpgradableVersionsDetailsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const UpgradableVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpgradableVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2712,7 +2695,7 @@ export const UpgradableVersionsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Stack Versions that this version can upgrade to */
 export type UpgradableVersionsListUpgradableVersionsList = Array<string>;
-export const UpgradableVersionsListUpgradableVersionsList =
+const UpgradableVersionsListUpgradableVersionsList =
   ExternalUserCreateOrUpdateRequestRolesList as any as S.Schema<UpgradableVersionsListUpgradableVersionsList>;
 
 /** Stack Versions that this version can upgrade to */
@@ -2722,7 +2705,7 @@ export interface UpgradableVersionsList {
   /** Stack Versions that this version can upgrade to */
   upgradableVersions?: UpgradableVersionsListUpgradableVersionsList;
 }
-export const UpgradableVersionsList = /*@__PURE__*/ S.suspend(() =>
+const UpgradableVersionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentVersion: S.optional(S.String),
     upgradableVersions: S.optional(UpgradableVersionsListUpgradableVersionsList),
@@ -2737,7 +2720,7 @@ export interface VMIngestionDetailsRequest {
   /** Monitor resource name */
   monitorName: string;
 }
-export const VMIngestionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const VMIngestionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2761,7 +2744,7 @@ export interface VMIngestionDetailsResponse {
   /** Ingestion details to install agent on given VM. */
   ingestionKey?: string;
 }
-export const VMIngestionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const VMIngestionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudId: S.optional(S.String),
     ingestionKey: S.optional(S.String),

@@ -15,7 +15,7 @@ export interface GetBlogResourceGroupRequest {
   namespace: string;
   slug: string;
 }
-export const GetBlogResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBlogResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -30,7 +30,7 @@ export interface GetBlogResourceGroupResponse {
   name: string;
   numUsers?: number;
 }
-export const GetBlogResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBlogResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -41,14 +41,14 @@ export const GetBlogResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBlogResourceGroupResponse>;
 
 export type ListBlogsRequestCommunitySort = "trending" | "recent";
-export const ListBlogsRequestCommunitySort = S.String;
+const ListBlogsRequestCommunitySort = S.String;
 
 export interface ListBlogsRequest {
   p?: number;
   community_sort?: ListBlogsRequestCommunitySort | (string & {});
   tag?: string;
 }
-export const ListBlogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBlogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     p: S.optional(S.Number.pipe(T.Query())),
     community_sort: S.optional(ListBlogsRequestCommunitySort.pipe(T.Query())),
@@ -57,7 +57,7 @@ export const ListBlogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListBlogsRequest" }) as any as S.Schema<ListBlogsRequest>;
 
 export interface ListBlogsResponse {}
-export const ListBlogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ListBlogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ListBlogsResponse",
 }) as any as S.Schema<ListBlogsResponse>;
 
@@ -67,7 +67,7 @@ export interface SetBlogResourceGroupRequest {
   /** The resource group to assign the blog to. If null, the blog is removed from any resource group. */
   resourceGroupId: string | null;
 }
-export const SetBlogResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const SetBlogResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     slug: S.String.pipe(T.Label()),
@@ -88,7 +88,7 @@ export interface SetBlogResourceGroupResponse {
   private: boolean;
   addedBy: string;
 }
-export const SetBlogResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const SetBlogResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceGroupId: S.NullOr(S.String),
     id: S.String,

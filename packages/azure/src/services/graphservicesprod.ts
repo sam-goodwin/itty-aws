@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** resource tags. */
 export type AccountsCreateAndUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateAndUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AccountsCreateAndUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AccountsCreateAndUpdateRequestTagsMap>;
@@ -20,7 +20,7 @@ export interface AccountsCreateAndUpdateRequestProperties {
   /** Customer owned application ID */
   appId: string;
 }
-export const AccountsCreateAndUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateAndUpdateRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
   }),
@@ -42,7 +42,7 @@ export interface AccountsCreateAndUpdateRequest {
   /** Property bag from billing account */
   properties: AccountsCreateAndUpdateRequestProperties;
 }
-export const AccountsCreateAndUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateAndUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -64,7 +64,7 @@ export const AccountsCreateAndUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type AccountsCreateAndUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AccountsCreateAndUpdateResponseTagsMap =
+const AccountsCreateAndUpdateResponseTagsMap =
   AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountsCreateAndUpdateResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -73,7 +73,7 @@ export type AccountsCreateAndUpdateResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountsCreateAndUpdateResponseSystemDataCreatedByType = S.String;
+const AccountsCreateAndUpdateResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type AccountsCreateAndUpdateResponseSystemDataLastModifiedByType =
@@ -81,7 +81,7 @@ export type AccountsCreateAndUpdateResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountsCreateAndUpdateResponseSystemDataLastModifiedByType = S.String;
+const AccountsCreateAndUpdateResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountsCreateAndUpdateResponseSystemData {
@@ -94,7 +94,7 @@ export interface AccountsCreateAndUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AccountsCreateAndUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateAndUpdateResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdByType: S.optional(AccountsCreateAndUpdateResponseSystemDataCreatedByType),
     createdAt: S.optional(S.String),
@@ -110,7 +110,7 @@ export type AccountsCreateAndUpdateResponsePropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-export const AccountsCreateAndUpdateResponsePropertiesProvisioningState = S.String;
+const AccountsCreateAndUpdateResponsePropertiesProvisioningState = S.String;
 
 /** Property bag from billing account */
 export interface AccountsCreateAndUpdateResponseProperties {
@@ -121,7 +121,7 @@ export interface AccountsCreateAndUpdateResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const AccountsCreateAndUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateAndUpdateResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AccountsCreateAndUpdateResponsePropertiesProvisioningState),
     appId: S.String,
@@ -147,7 +147,7 @@ export interface AccountsCreateAndUpdateResponse {
   /** Property bag from billing account */
   properties: AccountsCreateAndUpdateResponseProperties;
 }
-export const AccountsCreateAndUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AccountsCreateAndUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -169,7 +169,7 @@ export interface DeleteAccountRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -185,7 +185,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAccountRequest" }) as any as S.Schema<DeleteAccountRequest>;
 
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAccountResponse",
 }) as any as S.Schema<DeleteAccountResponse>;
 
@@ -197,7 +197,7 @@ export interface GetAccountRequest {
   /** The name of the resource. */
   resourceName: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -214,7 +214,7 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetAccountResponseTagsMap =
+const GetAccountResponseTagsMap =
   AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<GetAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -223,16 +223,12 @@ export type GetAccountResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetAccountResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetAccountResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetAccountResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetAccountResponseSystemData {
   /** The type of identity that created the resource. */
@@ -244,13 +240,11 @@ export interface GetAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetAccountResponseSystemData =
+const GetAccountResponseSystemData =
   AccountsCreateAndUpdateResponseSystemData as any as S.Schema<GetAccountResponseSystemData>;
 
 /** Provisioning state. */
 export type GetAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const GetAccountResponsePropertiesProvisioningState = S.String;
-
 /** Property bag from billing account */
 export interface GetAccountResponseProperties {
   /** Provisioning state. */
@@ -260,7 +254,7 @@ export interface GetAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const GetAccountResponseProperties =
+const GetAccountResponseProperties =
   AccountsCreateAndUpdateResponseProperties as any as S.Schema<GetAccountResponseProperties>;
 
 export interface GetAccountResponse {
@@ -279,7 +273,7 @@ export interface GetAccountResponse {
   /** Property bag from billing account */
   properties: GetAccountResponseProperties;
 }
-export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -297,7 +291,7 @@ export interface ListAccountByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -315,7 +309,7 @@ export const ListAccountByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type AccountResourceTagsMap = { [key: string]: string | undefined };
-export const AccountResourceTagsMap =
+const AccountResourceTagsMap =
   AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<AccountResourceTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -324,16 +318,12 @@ export type AccountResourceSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountResourceSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type AccountResourceSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const AccountResourceSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface AccountResourceSystemData {
   /** The type of identity that created the resource. */
@@ -345,13 +335,11 @@ export interface AccountResourceSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const AccountResourceSystemData =
+const AccountResourceSystemData =
   AccountsCreateAndUpdateResponseSystemData as any as S.Schema<AccountResourceSystemData>;
 
 /** Provisioning state. */
 export type AccountResourcePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AccountResourcePropertiesProvisioningState = S.String;
-
 /** Property bag from billing account */
 export interface AccountResourceProperties {
   /** Provisioning state. */
@@ -361,7 +349,7 @@ export interface AccountResourceProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const AccountResourceProperties =
+const AccountResourceProperties =
   AccountsCreateAndUpdateResponseProperties as any as S.Schema<AccountResourceProperties>;
 
 /** Account details */
@@ -381,7 +369,7 @@ export interface AccountResource {
   /** Property bag from billing account */
   properties: AccountResourceProperties;
 }
-export const AccountResource = /*@__PURE__*/ S.suspend(() =>
+const AccountResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -395,7 +383,7 @@ export const AccountResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of recommendations. */
 export type AccountResourceListValueList = Array<AccountResource>;
-export const AccountResourceListValueList = /*@__PURE__*/ S.Array(
+const AccountResourceListValueList = /*@__PURE__*/ S.Array(
   AccountResource,
 ) as any as S.Schema<AccountResourceListValueList>;
 
@@ -406,7 +394,7 @@ export interface AccountResourceList {
   /** The list of recommendations. */
   value?: AccountResourceListValueList;
 }
-export const AccountResourceList = /*@__PURE__*/ S.suspend(() =>
+const AccountResourceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AccountResourceListValueList),
@@ -417,7 +405,7 @@ export interface ListAccountBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -433,7 +421,7 @@ export const ListAccountBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -455,7 +443,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -466,11 +454,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -485,7 +473,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -497,7 +485,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -507,7 +495,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -516,7 +504,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountRequestTagsMap =
+const UpdateAccountRequestTagsMap =
   AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
 
 export interface UpdateAccountRequest {
@@ -529,7 +517,7 @@ export interface UpdateAccountRequest {
   /** List of key value pairs that describe the resource. This will overwrite the existing tags. */
   tags?: UpdateAccountRequestTagsMap;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -547,7 +535,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAccountResponseTagsMap =
+const UpdateAccountResponseTagsMap =
   AccountsCreateAndUpdateRequestTagsMap as any as S.Schema<UpdateAccountResponseTagsMap>;
 
 /** The type of identity that created the resource. */
@@ -556,16 +544,12 @@ export type UpdateAccountResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateAccountResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type UpdateAccountResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const UpdateAccountResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface UpdateAccountResponseSystemData {
   /** The type of identity that created the resource. */
@@ -577,13 +561,11 @@ export interface UpdateAccountResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const UpdateAccountResponseSystemData =
+const UpdateAccountResponseSystemData =
   AccountsCreateAndUpdateResponseSystemData as any as S.Schema<UpdateAccountResponseSystemData>;
 
 /** Provisioning state. */
 export type UpdateAccountResponsePropertiesProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const UpdateAccountResponsePropertiesProvisioningState = S.String;
-
 /** Property bag from billing account */
 export interface UpdateAccountResponseProperties {
   /** Provisioning state. */
@@ -593,7 +575,7 @@ export interface UpdateAccountResponseProperties {
   /** Billing Plan Id */
   billingPlanId?: string;
 }
-export const UpdateAccountResponseProperties =
+const UpdateAccountResponseProperties =
   AccountsCreateAndUpdateResponseProperties as any as S.Schema<UpdateAccountResponseProperties>;
 
 export interface UpdateAccountResponse {
@@ -612,7 +594,7 @@ export interface UpdateAccountResponse {
   /** Property bag from billing account */
   properties: UpdateAccountResponseProperties;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),

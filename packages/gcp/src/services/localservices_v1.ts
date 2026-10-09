@@ -55,7 +55,7 @@ export interface SearchAccountReportsRequest {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   "startDate.month"?: number;
 }
-export const SearchAccountReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchAccountReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "endDate.month": S.optional(S.Number.pipe(T.Query())),
     "endDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -82,7 +82,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   /** Provider id (listed in aggregator system) which maps to a account id in GLS system. */
   aggregatorProviderId?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregatorProviderId: S.optional(S.String),
   }),
@@ -127,7 +127,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /** Currency code of the account. */
   currencyCode?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1AccountReport = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1AccountReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageWeeklyBudget: S.optional(S.Number),
     averageFiveStarRating: S.optional(S.Number),
@@ -153,7 +153,7 @@ export const GoogleAdsHomeservicesLocalservicesV1AccountReport = /*@__PURE__*/ S
 
 export type GoogleAdsHomeservicesLocalservicesV1AccountReportList =
   Array<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
-export const GoogleAdsHomeservicesLocalservicesV1AccountReportList = /*@__PURE__*/ S.Array(
+const GoogleAdsHomeservicesLocalservicesV1AccountReportList = /*@__PURE__*/ S.Array(
   GoogleAdsHomeservicesLocalservicesV1AccountReport,
 ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReportList>;
 
@@ -164,15 +164,15 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsRespons
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse =
-  /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       accountReports: S.optional(GoogleAdsHomeservicesLocalservicesV1AccountReportList),
       nextPageToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
-  }) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>;
+).annotate({
+  identifier: "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
+}) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>;
 
 export interface SearchDetailedLeadReportsRequest {
   /** The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional. */
@@ -194,7 +194,7 @@ export interface SearchDetailedLeadReportsRequest {
   /** The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that indicates where listing should continue. Optional. */
   pageToken?: string;
 }
-export const SearchDetailedLeadReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDetailedLeadReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     "startDate.day": S.optional(S.Number.pipe(T.Query())),
@@ -225,7 +225,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   /** Timestamp of the phone call which resulted in a charged phone lead. */
   chargedCallTimestamp?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1PhoneLead = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1PhoneLead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chargedConnectedCallDurationSeconds: S.optional(S.String),
     consumerPhoneNumber: S.optional(S.String),
@@ -240,7 +240,7 @@ export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum =
   | "MESSAGE"
   | "PHONE_CALL"
   | "BOOKING";
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum = S.String;
+const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportLeadTypeEnum = S.String;
 
 /** Container for message lead specific information. */
 export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
@@ -253,7 +253,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
   /** Consumer phone number associated with the message lead. */
   consumerPhoneNumber?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1MessageLead = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1MessageLead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     postalCode: S.optional(S.String),
     customerName: S.optional(S.String),
@@ -277,7 +277,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
   /** Consumer phone number associated with the booking lead. */
   consumerPhoneNumber?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1BookingLead = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1BookingLead = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookingAppointmentTimestamp: S.optional(S.String),
     jobType: S.optional(S.String),
@@ -296,7 +296,7 @@ export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
   id?: string;
 }
-export const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeTimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     id: S.optional(S.String),
@@ -307,7 +307,7 @@ export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEn
   | "CHARGE_STATUS_UNSPECIFIED"
   | "CHARGED"
   | "NOT_CHARGED";
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum = S.String;
+const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportChargeStatusEnum = S.String;
 
 /** A Detailed Lead Report of a lead identified by their lead id and contains consumer, account, monetization, and lead data. */
 export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
@@ -346,7 +346,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /** Price of the lead (available only after it has been charged). */
   leadPrice?: number;
 }
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = /*@__PURE__*/ S.suspend(() =>
+const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneLead: S.optional(GoogleAdsHomeservicesLocalservicesV1PhoneLead),
     currencyCode: S.optional(S.String),
@@ -374,7 +374,7 @@ export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport = /*@__PURE_
 
 export type GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList =
   Array<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList = /*@__PURE__*/ S.Array(
+const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList = /*@__PURE__*/ S.Array(
   GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport,
 ) as any as S.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList>;
 
@@ -385,7 +385,7 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
   nextPageToken?: string;
 }
-export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse =
+const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       detailedLeadReports: S.optional(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReportList),

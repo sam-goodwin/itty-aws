@@ -62,14 +62,14 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Request message for AgentService.BatchDeleteConversations. */
 export interface BatchDeleteConversationsRequest {
   /** Required. The resource names of the conversations to delete. */
   conversations?: StringList;
 }
-export const BatchDeleteConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversations: S.optional(StringList),
   }),
@@ -83,7 +83,7 @@ export interface BatchDeleteProjectsLocationsAppsConversationsRequest {
   /** Request body */
   body?: BatchDeleteConversationsRequest;
 }
-export const BatchDeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchDeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchDeleteConversationsRequest.pipe(T.HttpBody())),
@@ -99,15 +99,10 @@ export const BatchDeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*
 }) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -118,7 +113,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -139,7 +134,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Status),
     metadata: S.optional(DocumentMap),
@@ -154,7 +149,7 @@ export interface CancelAssistantTurnRequest {
   /** Optional. The turn to cancel; empty cancels whichever turn is running. A cancel naming a turn that is no longer the running one is a no-op. */
   turnId?: string;
 }
-export const CancelAssistantTurnRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelAssistantTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turnId: S.optional(S.String),
   }),
@@ -168,8 +163,8 @@ export interface CancelAssistantTurnProjectsLocationsAppsAssistantSessionsReques
   /** Request body */
   body?: CancelAssistantTurnRequest;
 }
-export const CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(CancelAssistantTurnRequest.pipe(T.HttpBody())),
@@ -180,16 +175,16 @@ export const CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest =
         baseUrl: "https://ces.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest",
-  }) as any as S.Schema<CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest>;
+).annotate({
+  identifier: "CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest",
+}) as any as S.Schema<CancelAssistantTurnProjectsLocationsAppsAssistantSessionsRequest>;
 
 /** Response for CancelAssistantTurn. */
 export interface CancelAssistantTurnResponse {
   /** Whether an in-flight turn was found and asked to stop (directly on this task, or through an epoch preemption for a turn hosted elsewhere). */
   cancelled?: boolean;
 }
-export const CancelAssistantTurnResponse = /*@__PURE__*/ S.suspend(() =>
+const CancelAssistantTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cancelled: S.optional(S.Boolean),
   }),
@@ -199,7 +194,7 @@ export const CancelAssistantTurnResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -209,7 +204,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -226,7 +221,7 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 /** Request message for AssistantService.ChatAiAssistant. */
 export interface ChatAiAssistantRequest {
@@ -239,7 +234,7 @@ export interface ChatAiAssistantRequest {
   /** Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   assistantSession?: string;
 }
-export const ChatAiAssistantRequest = /*@__PURE__*/ S.suspend(() =>
+const ChatAiAssistantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextToken: S.optional(S.String),
     message: S.optional(S.String),
@@ -254,7 +249,7 @@ export interface ChatAiAssistantProjectsLocationsAppsRequest {
   /** Request body */
   body?: ChatAiAssistantRequest;
 }
-export const ChatAiAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChatAiAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String.pipe(T.Label()),
     body: S.optional(ChatAiAssistantRequest.pipe(T.HttpBody())),
@@ -274,7 +269,7 @@ export interface SessionCheckpoint {
   /** Inferred user goal or topic for the session (e.g. "Building E-Commerce Support Agent"). */
   userIntent?: string;
 }
-export const SessionCheckpoint = /*@__PURE__*/ S.suspend(() =>
+const SessionCheckpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userIntent: S.optional(S.String),
   }),
@@ -287,7 +282,7 @@ export interface UiEvent {
   /** The JSON payload representing the A2UI surface. */
   jsonPayload?: string;
 }
-export const UiEvent = /*@__PURE__*/ S.suspend(() =>
+const UiEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     jsonPayload: S.optional(S.String),
@@ -309,7 +304,7 @@ export interface ChatAiAssistantResponse {
   /** Unique identifier for the event. */
   eventId?: string;
 }
-export const ChatAiAssistantResponse = /*@__PURE__*/ S.suspend(() =>
+const ChatAiAssistantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionCheckpoint: S.optional(SessionCheckpoint),
     eventTime: S.optional(S.String),
@@ -321,13 +316,13 @@ export const ChatAiAssistantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChatAiAssistantResponse" }) as any as S.Schema<ChatAiAssistantResponse>;
 
 export type Ces_SchemaMap = { [key: string]: Ces_Schema | undefined };
-export const Ces_SchemaMap = /*@__PURE__*/ S.Record(
+const Ces_SchemaMap = /*@__PURE__*/ S.Record(
   S.String,
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaMap>;
 
 export type Ces_SchemaList = Array<Ces_Schema>;
-export const Ces_SchemaList = /*@__PURE__*/ S.Array(
+const Ces_SchemaList = /*@__PURE__*/ S.Array(
   S.suspend(() => Ces_Schema),
 ) as any as S.Schema<Ces_SchemaList>;
 
@@ -339,7 +334,7 @@ export type Ces_SchemaTypeEnum =
   | "BOOLEAN"
   | "OBJECT"
   | "ARRAY";
-export const Ces_SchemaTypeEnum = S.String;
+const Ces_SchemaTypeEnum = S.String;
 
 /** Represents a select subset of an OpenAPI 3.0 schema object. */
 export interface Ces_Schema {
@@ -382,7 +377,7 @@ export interface Ces_Schema {
   /** Optional. The title of the schema. */
   title?: string;
 }
-export const Ces_Schema = /*@__PURE__*/ S.suspend(() =>
+const Ces_Schema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maximum: S.optional(S.Number),
     uniqueItems: S.optional(S.Boolean),
@@ -415,7 +410,7 @@ export interface AppVariableDeclaration {
   /** Required. The schema of the variable. */
   schema?: Ces_Schema;
 }
-export const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
+const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -424,7 +419,7 @@ export const AppVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppVariableDeclaration" }) as any as S.Schema<AppVariableDeclaration>;
 
 export type AppVariableDeclarationList = Array<AppVariableDeclaration>;
-export const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
+const AppVariableDeclarationList = /*@__PURE__*/ S.Array(
   AppVariableDeclaration,
 ) as any as S.Schema<AppVariableDeclarationList>;
 
@@ -434,7 +429,7 @@ export type EvaluationPersonaSpeechConfigEnvironmentEnum =
   | "TRAFFIC"
   | "KIDS_NOISE"
   | "CAFE";
-export const EvaluationPersonaSpeechConfigEnvironmentEnum = S.String;
+const EvaluationPersonaSpeechConfigEnvironmentEnum = S.String;
 
 /** Configuration for Text-to-Speech generation. */
 export interface EvaluationPersonaSpeechConfig {
@@ -445,7 +440,7 @@ export interface EvaluationPersonaSpeechConfig {
   /** Optional. The specific voice identifier/accent to use. Example: "en-US-Wavenet-D" or "en-GB-Standard-A" */
   voiceId?: string;
 }
-export const EvaluationPersonaSpeechConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationPersonaSpeechConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     speakingRate: S.optional(S.Number),
     environment: S.optional(EvaluationPersonaSpeechConfigEnvironmentEnum),
@@ -468,7 +463,7 @@ export interface EvaluationPersona {
   /** Required. The unique identifier of the persona. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationPersonas/{evaluationPersona}` */
   name?: string;
 }
-export const EvaluationPersona = /*@__PURE__*/ S.suspend(() =>
+const EvaluationPersona = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     speechConfig: S.optional(EvaluationPersonaSpeechConfig),
@@ -479,7 +474,7 @@ export const EvaluationPersona = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationPersona" }) as any as S.Schema<EvaluationPersona>;
 
 export type EvaluationPersonaList = Array<EvaluationPersona>;
-export const EvaluationPersonaList = /*@__PURE__*/ S.Array(
+const EvaluationPersonaList = /*@__PURE__*/ S.Array(
   EvaluationPersona,
 ) as any as S.Schema<EvaluationPersonaList>;
 
@@ -487,14 +482,14 @@ export type EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum = S.String;
+const EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum = S.String;
 
 /** Expectation level metrics thresholds. */
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds {
   /** Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0. */
   toolInvocationParameterCorrectnessThreshold?: number;
 }
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds =
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       toolInvocationParameterCorrectnessThreshold: S.optional(S.Number),
@@ -508,7 +503,7 @@ export type EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehavior
   | "EXTRA_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
   | "ALLOW";
-export const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum = S.String;
+const EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum = S.String;
 
 /** Settings for matching tool calls. */
 export interface EvaluationMetricsThresholdsToolMatchingSettings {
@@ -517,7 +512,7 @@ export interface EvaluationMetricsThresholdsToolMatchingSettings {
     | EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum
     | (string & {});
 }
-export const EvaluationMetricsThresholdsToolMatchingSettings = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsThresholdsToolMatchingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraToolCallBehavior: S.optional(
       EvaluationMetricsThresholdsToolMatchingSettingsExtraToolCallBehaviorEnum,
@@ -531,7 +526,7 @@ export type EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLeve
   | "SEMANTIC_SIMILARITY_CHANNEL_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum =
   S.String;
 
 /** Turn level metrics thresholds. */
@@ -545,7 +540,7 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
     | EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsSemanticSimilarityChannelEnum
     | (string & {});
 }
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       overallToolInvocationCorrectnessThreshold: S.optional(S.Number),
@@ -568,17 +563,16 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /** Optional. The turn level metrics thresholds. */
   turnLevelMetricsThresholds?: EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds;
 }
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      expectationLevelMetricsThresholds: S.optional(
-        EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
-      ),
-      toolMatchingSettings: S.optional(EvaluationMetricsThresholdsToolMatchingSettings),
-      turnLevelMetricsThresholds: S.optional(
-        EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
-      ),
-    }),
+const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expectationLevelMetricsThresholds: S.optional(
+      EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
+    ),
+    toolMatchingSettings: S.optional(EvaluationMetricsThresholdsToolMatchingSettings),
+    turnLevelMetricsThresholds: S.optional(
+      EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
+    ),
+  }),
 ).annotate({
   identifier: "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds",
 }) as any as S.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds>;
@@ -587,13 +581,13 @@ export type EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum = S.String;
+const EvaluationMetricsThresholdsGoldenHallucinationMetricBehaviorEnum = S.String;
 
 export type EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum = S.String;
+const EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum = S.String;
 
 /** Threshold settings for metrics in an Evaluation. */
 export interface EvaluationMetricsThresholds {
@@ -612,7 +606,7 @@ export interface EvaluationMetricsThresholds {
     | EvaluationMetricsThresholdsHallucinationMetricBehaviorEnum
     | (string & {});
 }
-export const EvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsThresholds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scenarioHallucinationMetricBehavior: S.optional(
       EvaluationMetricsThresholdsScenarioHallucinationMetricBehaviorEnum,
@@ -635,7 +629,7 @@ export type DataStoreSettingsEngineTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENGINE_TYPE_SEARCH"
   | "ENGINE_TYPE_CHAT";
-export const DataStoreSettingsEngineTypeEnum = S.String;
+const DataStoreSettingsEngineTypeEnum = S.String;
 
 /** An engine to which the data stores are connected. See Vertex AI Search: https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction. */
 export interface DataStoreSettingsEngine {
@@ -644,7 +638,7 @@ export interface DataStoreSettingsEngine {
   /** Output only. The type of the engine. */
   type?: DataStoreSettingsEngineTypeEnum | (string & {});
 }
-export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
+const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(DataStoreSettingsEngineTypeEnum),
@@ -652,7 +646,7 @@ export const DataStoreSettingsEngine = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataStoreSettingsEngine" }) as any as S.Schema<DataStoreSettingsEngine>;
 
 export type DataStoreSettingsEngineList = Array<DataStoreSettingsEngine>;
-export const DataStoreSettingsEngineList = /*@__PURE__*/ S.Array(
+const DataStoreSettingsEngineList = /*@__PURE__*/ S.Array(
   DataStoreSettingsEngine,
 ) as any as S.Schema<DataStoreSettingsEngineList>;
 
@@ -661,7 +655,7 @@ export interface DataStoreSettings {
   /** Output only. The engines for the app. */
   engines?: DataStoreSettingsEngineList;
 }
-export const DataStoreSettings = /*@__PURE__*/ S.suspend(() =>
+const DataStoreSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engines: S.optional(DataStoreSettingsEngineList),
   }),
@@ -672,7 +666,7 @@ export interface TimeZoneSettings {
   /** Optional. The time zone of the app from the [time zone database](https://www.iana.org/time-zones), e.g., America/Los_Angeles, Europe/Paris. */
   timeZone?: string;
 }
-export const TimeZoneSettings = /*@__PURE__*/ S.suspend(() =>
+const TimeZoneSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeZone: S.optional(S.String),
   }),
@@ -683,7 +677,7 @@ export interface VpcScSettings {
   /** Optional. The allowed HTTP(s) origins that OpenAPI tools in the App are able to directly call when VPC Service Controls are enabled. These strings must match the origin exactly, including the port if specified. For example, "https://example.com" or "https://example.com:443". This list does not yet apply to Python tools that may make direct HTTP calls. */
   allowedOrigins?: StringList;
 }
-export const VpcScSettings = /*@__PURE__*/ S.suspend(() =>
+const VpcScSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(StringList),
   }),
@@ -700,7 +694,7 @@ export interface LanguageSettings {
   /** Optional. Deprecated: This feature is no longer supported. Use `enable_multilingual_support` instead to improve handling of multilingual input. The action to perform when an agent receives input in an unsupported language. This can be a predefined action or a custom tool call. Valid values are: - A tool's full resource name, which triggers a specific tool execution. - A predefined system action, such as "escalate" or "exit", which triggers an EndSession signal with corresponding metadata to terminate the conversation. */
   fallbackAction?: string;
 }
-export const LanguageSettings = /*@__PURE__*/ S.suspend(() =>
+const LanguageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultLanguageCode: S.optional(S.String),
     enableMultilingualSupport: S.optional(S.Boolean),
@@ -715,7 +709,7 @@ export type ModelSettingsThinkingLevelEnum =
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-export const ModelSettingsThinkingLevelEnum = S.String;
+const ModelSettingsThinkingLevelEnum = S.String;
 
 /** Model settings contains various configurations for the LLM model. */
 export interface ModelSettings {
@@ -726,7 +720,7 @@ export interface ModelSettings {
   /** Optional. If set, this temperature will be used for the LLM model. Temperature controls the randomness of the model's responses. Lower temperatures produce responses that are more predictable. Higher temperatures produce responses that are more creative. */
   temperature?: number;
 }
-export const ModelSettings = /*@__PURE__*/ S.suspend(() =>
+const ModelSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.String),
     thinkingLevel: S.optional(ModelSettingsThinkingLevelEnum),
@@ -743,7 +737,7 @@ export interface ClientCertificateSettings {
   /** Required. The TLS certificate encoded in PEM format. This string must include the begin header and end footer lines. */
   tlsCertificate?: string;
 }
-export const ClientCertificateSettings = /*@__PURE__*/ S.suspend(() =>
+const ClientCertificateSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passphrase: S.optional(S.String),
     privateKey: S.optional(S.String),
@@ -757,17 +751,17 @@ export type AppToolExecutionModeEnum =
   | "TOOL_EXECUTION_MODE_UNSPECIFIED"
   | "PARALLEL"
   | "SEQUENTIAL";
-export const AppToolExecutionModeEnum = S.String;
+const AppToolExecutionModeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Settings to describe the Cloud Logging behaviors for the app. */
 export interface CloudLoggingSettings {
   /** Optional. Whether to enable Cloud Logging for the sessions. */
   enableCloudLogging?: boolean;
 }
-export const CloudLoggingSettings = /*@__PURE__*/ S.suspend(() =>
+const CloudLoggingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableCloudLogging: S.optional(S.Boolean),
   }),
@@ -780,7 +774,7 @@ export interface AudioRecordingConfig {
   /** Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used. */
   gcsPathPrefix?: string;
 }
-export const AudioRecordingConfig = /*@__PURE__*/ S.suspend(() =>
+const AudioRecordingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsBucket: S.optional(S.String),
     gcsPathPrefix: S.optional(S.String),
@@ -796,7 +790,7 @@ export interface BigQueryExportSettings {
   /** Optional. The BigQuery **dataset ID** to export the data to. */
   dataset?: string;
 }
-export const BigQueryExportSettings = /*@__PURE__*/ S.suspend(() =>
+const BigQueryExportSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -811,7 +805,7 @@ export interface ConversationLoggingSettings {
   /** Optional. Whether to disable conversation logging for the sessions. */
   disableConversationLogging?: boolean;
 }
-export const ConversationLoggingSettings = /*@__PURE__*/ S.suspend(() =>
+const ConversationLoggingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retentionWindow: S.optional(S.String),
     disableConversationLogging: S.optional(S.Boolean),
@@ -825,7 +819,7 @@ export interface MetricAnalysisSettings {
   /** Optional. Whether to collect conversation data for llm analysis metrics. If true, conversation data will not be collected for llm analysis metrics; otherwise, conversation data will be collected. */
   llmMetricsOptedOut?: boolean;
 }
-export const MetricAnalysisSettings = /*@__PURE__*/ S.suspend(() =>
+const MetricAnalysisSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     llmMetricsOptedOut: S.optional(S.Boolean),
   }),
@@ -840,7 +834,7 @@ export interface RedactionConfig {
   /** Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording. */
   enableRedaction?: boolean;
 }
-export const RedactionConfig = /*@__PURE__*/ S.suspend(() =>
+const RedactionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deidentifyTemplate: S.optional(S.String),
     inspectTemplate: S.optional(S.String),
@@ -869,7 +863,7 @@ export interface LoggingSettings {
   /** Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes. */
   unredactedAudioRecordingConfig?: AudioRecordingConfig;
 }
-export const LoggingSettings = /*@__PURE__*/ S.suspend(() =>
+const LoggingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cloudLoggingSettings: S.optional(CloudLoggingSettings),
     evaluationAudioRecordingConfig: S.optional(AudioRecordingConfig),
@@ -888,14 +882,14 @@ export type ErrorHandlingSettingsErrorHandlingStrategyEnum =
   | "NONE"
   | "FALLBACK_RESPONSE"
   | "END_SESSION";
-export const ErrorHandlingSettingsErrorHandlingStrategyEnum = S.String;
+const ErrorHandlingSettingsErrorHandlingStrategyEnum = S.String;
 
 /** Configuration for ending the session in case of system errors (e.g. LLM errors). */
 export interface ErrorHandlingSettingsEndSessionConfig {
   /** Optional. Whether to escalate the session in EndSession. If session is escalated, metadata in EndSession will contain `session_escalated = true`. See https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/deploy/google-telephony-platform#transfer_a_call_to_a_human_agent for details. */
   escalateSession?: boolean;
 }
-export const ErrorHandlingSettingsEndSessionConfig = /*@__PURE__*/ S.suspend(() =>
+const ErrorHandlingSettingsEndSessionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     escalateSession: S.optional(S.Boolean),
   }),
@@ -910,7 +904,7 @@ export interface ErrorHandlingSettingsFallbackResponseConfig {
   /** Optional. The fallback messages in case of system errors (e.g. LLM errors), mapped by [supported language code](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language). */
   customFallbackMessages?: StringMap;
 }
-export const ErrorHandlingSettingsFallbackResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const ErrorHandlingSettingsFallbackResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxFallbackAttempts: S.optional(S.Number),
     customFallbackMessages: S.optional(StringMap),
@@ -928,7 +922,7 @@ export interface ErrorHandlingSettings {
   /** Optional. Configuration for handling fallback responses. */
   fallbackResponseConfig?: ErrorHandlingSettingsFallbackResponseConfig;
 }
-export const ErrorHandlingSettings = /*@__PURE__*/ S.suspend(() =>
+const ErrorHandlingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorHandlingStrategy: S.optional(ErrorHandlingSettingsErrorHandlingStrategyEnum),
     endSessionConfig: S.optional(ErrorHandlingSettingsEndSessionConfig),
@@ -941,7 +935,7 @@ export interface DashboardSettings {
   /** Optional. The resource name of the default Contact Center Insights dashboard associated with the app. This is the dashboard that will be displayed when users navigate to the Monitoring view for the app. Format: `projects/{project}/locations/{location}/dashboards/{dashboard}` */
   defaultDashboard?: string;
 }
-export const DashboardSettings = /*@__PURE__*/ S.suspend(() =>
+const DashboardSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultDashboard: S.optional(S.String),
   }),
@@ -958,7 +952,7 @@ export interface ChannelProfileInstagramConfig {
   /** Output only. The fetched Meta business page name. */
   displayName?: string;
 }
-export const ChannelProfileInstagramConfig = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfileInstagramConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thumbnailUrl: S.optional(S.String),
     description: S.optional(S.String),
@@ -981,7 +975,7 @@ export type ChannelProfileChannelTypeEnum =
   | "CONTACT_CENTER_INTEGRATION"
   | "WHATSAPP"
   | "INSTAGRAM";
-export const ChannelProfileChannelTypeEnum = S.String;
+const ChannelProfileChannelTypeEnum = S.String;
 
 /** Configuration specific to WhatsApp deployments. */
 export interface ChannelProfileWhatsAppConfig {
@@ -998,7 +992,7 @@ export interface ChannelProfileWhatsAppConfig {
   /** Required. The Meta phone number ID. */
   phoneNumberId?: string;
 }
-export const ChannelProfileWhatsAppConfig = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfileWhatsAppConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     wabaId: S.optional(S.String),
@@ -1012,14 +1006,14 @@ export const ChannelProfileWhatsAppConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChannelProfileWhatsAppConfig>;
 
 export type ChannelProfilePersonaPropertyPersonaEnum = "UNKNOWN" | "CONCISE" | "CHATTY";
-export const ChannelProfilePersonaPropertyPersonaEnum = S.String;
+const ChannelProfilePersonaPropertyPersonaEnum = S.String;
 
 /** Represents the persona property of a channel. */
 export interface ChannelProfilePersonaProperty {
   /** Optional. The persona of the channel. */
   persona?: ChannelProfilePersonaPropertyPersonaEnum | (string & {});
 }
-export const ChannelProfilePersonaProperty = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfilePersonaProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     persona: S.optional(ChannelProfilePersonaPropertyPersonaEnum),
   }),
@@ -1028,7 +1022,7 @@ export const ChannelProfilePersonaProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChannelProfilePersonaProperty>;
 
 export type ChannelProfileWebWidgetConfigThemeEnum = "THEME_UNSPECIFIED" | "LIGHT" | "DARK";
-export const ChannelProfileWebWidgetConfigThemeEnum = S.String;
+const ChannelProfileWebWidgetConfigThemeEnum = S.String;
 
 /** Security settings for the web widget. */
 export interface ChannelProfileWebWidgetConfigSecuritySettings {
@@ -1041,7 +1035,7 @@ export interface ChannelProfileWebWidgetConfigSecuritySettings {
   /** Optional. The origins that are allowed to host the web widget. An origin is defined by RFC 6454. If empty, all origins are allowed. A maximum of 100 origins is allowed. Example: "https://example.com" */
   allowedOrigins?: StringList;
 }
-export const ChannelProfileWebWidgetConfigSecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfileWebWidgetConfigSecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enablePublicAccess: S.optional(S.Boolean),
     enableRecaptcha: S.optional(S.Boolean),
@@ -1058,7 +1052,7 @@ export type ChannelProfileWebWidgetConfigModalityEnum =
   | "VOICE_ONLY"
   | "CHAT_ONLY"
   | "CHAT_VOICE_AND_VIDEO";
-export const ChannelProfileWebWidgetConfigModalityEnum = S.String;
+const ChannelProfileWebWidgetConfigModalityEnum = S.String;
 
 /** Message for configuration for the web widget. */
 export interface ChannelProfileWebWidgetConfig {
@@ -1071,7 +1065,7 @@ export interface ChannelProfileWebWidgetConfig {
   /** Optional. The modality of the web widget. */
   modality?: ChannelProfileWebWidgetConfigModalityEnum | (string & {});
 }
-export const ChannelProfileWebWidgetConfig = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfileWebWidgetConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     theme: S.optional(ChannelProfileWebWidgetConfigThemeEnum),
     securitySettings: S.optional(ChannelProfileWebWidgetConfigSecuritySettings),
@@ -1103,7 +1097,7 @@ export interface ChannelProfile {
   /** Optional. The noise suppression level of the channel profile. Available values are "low", "moderate", "high", "very_high". */
   noiseSuppressionLevel?: string;
 }
-export const ChannelProfile = /*@__PURE__*/ S.suspend(() =>
+const ChannelProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instagramConfig: S.optional(ChannelProfileInstagramConfig),
     disableBargeInControl: S.optional(S.Boolean),
@@ -1122,7 +1116,7 @@ export interface EvaluationMetricsConfigUserGoalMetMetricsConfig {
   /** Optional. Whether to calculate the user goal met metrics for the evaluation. */
   enableUserGoalMetMetrics?: boolean;
 }
-export const EvaluationMetricsConfigUserGoalMetMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigUserGoalMetMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableUserGoalMetMetrics: S.optional(S.Boolean),
   }),
@@ -1135,7 +1129,7 @@ export interface EvaluationMetricsConfigExpectationsMetMetricsConfig {
   /** Optional. Whether to calculate the expectation level metrics for the evaluation. */
   enableExpectationsMetMetrics?: boolean;
 }
-export const EvaluationMetricsConfigExpectationsMetMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigExpectationsMetMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableExpectationsMetMetrics: S.optional(S.Boolean),
   }),
@@ -1150,7 +1144,7 @@ export interface EvaluationMetricsConfigScenarioMetricsConfig {
   /** Optional. Configuration for expectation level metrics. */
   expectationsMetMetricsConfig?: EvaluationMetricsConfigExpectationsMetMetricsConfig;
 }
-export const EvaluationMetricsConfigScenarioMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigScenarioMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userGoalMetMetricsConfig: S.optional(EvaluationMetricsConfigUserGoalMetMetricsConfig),
     expectationsMetMetricsConfig: S.optional(EvaluationMetricsConfigExpectationsMetMetricsConfig),
@@ -1164,7 +1158,7 @@ export interface EvaluationMetricsConfigToolCorrectnessMetricsConfig {
   /** Optional. Whether to calculate tool correctness metrics for the evaluation. */
   enableToolCorrectnessMetrics?: boolean;
 }
-export const EvaluationMetricsConfigToolCorrectnessMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigToolCorrectnessMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableToolCorrectnessMetrics: S.optional(S.Boolean),
   }),
@@ -1177,7 +1171,7 @@ export interface EvaluationMetricsConfigSemanticSimilarityMetricsConfig {
   /** Optional. Whether to calculate semantic similarity metrics for the evaluation. */
   enableSemanticSimilarityMetrics?: boolean;
 }
-export const EvaluationMetricsConfigSemanticSimilarityMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigSemanticSimilarityMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableSemanticSimilarityMetrics: S.optional(S.Boolean),
   }),
@@ -1194,7 +1188,7 @@ export interface EvaluationMetricsConfigGoldenMetricsConfig {
   /** Optional. Configuration for turn level tool correctness metrics. */
   toolCorrectnessMetricsConfig?: EvaluationMetricsConfigToolCorrectnessMetricsConfig;
 }
-export const EvaluationMetricsConfigGoldenMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigGoldenMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stepToolCorrectnessMetricsConfig: S.optional(
       EvaluationMetricsConfigToolCorrectnessMetricsConfig,
@@ -1215,7 +1209,7 @@ export interface EvaluationMetricsConfig {
   /** Optional. Configuration for the golden metrics for the evaluation. */
   goldenMetricsConfig?: EvaluationMetricsConfigGoldenMetricsConfig;
 }
-export const EvaluationMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scenarioMetricsConfig: S.optional(EvaluationMetricsConfigScenarioMetricsConfig),
     goldenMetricsConfig: S.optional(EvaluationMetricsConfigGoldenMetricsConfig),
@@ -1226,38 +1220,38 @@ export type EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
-export const EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum = S.String;
+const EvaluationSettingsGoldenEvaluationToolCallBehaviourEnum = S.String;
 
 export type EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
-export const EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum = S.String;
+const EvaluationSettingsScenarioEvaluationToolCallBehaviourEnum = S.String;
 
 export type EvaluationSettingsGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
-export const EvaluationSettingsGoldenRunMethodEnum = S.String;
+const EvaluationSettingsGoldenRunMethodEnum = S.String;
 
 export type EvaluationSettingsScenarioExecutionModeEnum =
   | "SCENARIO_EXECUTION_MODE_UNSPECIFIED"
   | "QUALITY_OPTIMIZED"
   | "SPEED_OPTIMIZED";
-export const EvaluationSettingsScenarioExecutionModeEnum = S.String;
+const EvaluationSettingsScenarioExecutionModeEnum = S.String;
 
 export type EvaluationRunCachingSettingsRunCachingModeEnum =
   | "EVALUATION_RUN_CACHING_MODE_UNSPECIFIED"
   | "FORCE_RUN"
   | "SKIP_IF_UNCHANGED";
-export const EvaluationRunCachingSettingsRunCachingModeEnum = S.String;
+const EvaluationRunCachingSettingsRunCachingModeEnum = S.String;
 
 /** Settings for evaluation run caching. */
 export interface EvaluationRunCachingSettings {
   /** Optional. The caching mode to use for the evaluation run. If not set, default to FORCE_RUN. */
   runCachingMode?: EvaluationRunCachingSettingsRunCachingModeEnum | (string & {});
 }
-export const EvaluationRunCachingSettings = /*@__PURE__*/ S.suspend(() =>
+const EvaluationRunCachingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runCachingMode: S.optional(EvaluationRunCachingSettingsRunCachingModeEnum),
   }),
@@ -1269,7 +1263,7 @@ export type EvaluationSettingsScenarioConversationInitiatorEnum =
   | "SCENARIO_CONVERSATION_INITIATOR_UNSPECIFIED"
   | "USER"
   | "AGENT";
-export const EvaluationSettingsScenarioConversationInitiatorEnum = S.String;
+const EvaluationSettingsScenarioConversationInitiatorEnum = S.String;
 
 /** Settings for evaluation. */
 export interface EvaluationSettings {
@@ -1294,7 +1288,7 @@ export interface EvaluationSettings {
     | EvaluationSettingsScenarioConversationInitiatorEnum
     | (string & {});
 }
-export const EvaluationSettings = /*@__PURE__*/ S.suspend(() =>
+const EvaluationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsConfig: S.optional(EvaluationMetricsConfig),
     goldenEvaluationToolCallBehaviour: S.optional(
@@ -1317,7 +1311,7 @@ export interface BargeInConfig {
   /** Optional. If enabled, the agent will adapt its next response based on the assumption that the user hasn't heard the full preceding agent message. This should not be used in scenarios where agent responses are displayed visually. */
   bargeInAwareness?: boolean;
 }
-export const BargeInConfig = /*@__PURE__*/ S.suspend(() =>
+const BargeInConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableBargeIn: S.optional(S.Boolean),
     bargeInAwareness: S.optional(S.Boolean),
@@ -1329,7 +1323,7 @@ export type AmbientSoundConfigPrebuiltAmbientNoiseEnum =
   | "RETAIL_STORE"
   | "CONVENTION_HALL"
   | "OUTDOOR";
-export const AmbientSoundConfigPrebuiltAmbientNoiseEnum = S.String;
+const AmbientSoundConfigPrebuiltAmbientNoiseEnum = S.String;
 
 /** Configuration for the ambient sound to be played with the synthesized agent response, to enhance the naturalness of the conversation. */
 export interface AmbientSoundConfig {
@@ -1342,7 +1336,7 @@ export interface AmbientSoundConfig {
   /** Optional. Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud Storage](https://cloud.google.com/storage). Note: Please make sure the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com` has `storage.objects.get` permission to the Cloud Storage object. */
   gcsUri?: string;
 }
-export const AmbientSoundConfig = /*@__PURE__*/ S.suspend(() =>
+const AmbientSoundConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prebuiltAmbientSound: S.optional(S.String),
     volumeGainDb: S.optional(S.Number),
@@ -1356,10 +1350,10 @@ export type CustomVoiceSampleVoiceInstructionModeEnum =
   | "NO_INSTRUCTION"
   | "GENERATE_INSTRUCTION"
   | "CUSTOM_INSTRUCTION";
-export const CustomVoiceSampleVoiceInstructionModeEnum = S.String;
+const CustomVoiceSampleVoiceInstructionModeEnum = S.String;
 
 export type CustomVoiceSampleWarningTypeEnum = "WARNING_TYPE_UNSPECIFIED" | "LOW_AUDIO_LEVEL";
-export const CustomVoiceSampleWarningTypeEnum = S.String;
+const CustomVoiceSampleWarningTypeEnum = S.String;
 
 /** A warning message encountered during voice sample processing. */
 export interface CustomVoiceSampleWarning {
@@ -1368,7 +1362,7 @@ export interface CustomVoiceSampleWarning {
   /** Output only. The type of the warning. */
   type?: CustomVoiceSampleWarningTypeEnum | (string & {});
 }
-export const CustomVoiceSampleWarning = /*@__PURE__*/ S.suspend(() =>
+const CustomVoiceSampleWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     type: S.optional(CustomVoiceSampleWarningTypeEnum),
@@ -1376,7 +1370,7 @@ export const CustomVoiceSampleWarning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomVoiceSampleWarning" }) as any as S.Schema<CustomVoiceSampleWarning>;
 
 export type CustomVoiceSampleWarningList = Array<CustomVoiceSampleWarning>;
-export const CustomVoiceSampleWarningList = /*@__PURE__*/ S.Array(
+const CustomVoiceSampleWarningList = /*@__PURE__*/ S.Array(
   CustomVoiceSampleWarning,
 ) as any as S.Schema<CustomVoiceSampleWarningList>;
 
@@ -1399,7 +1393,7 @@ export interface CustomVoiceSample {
   /** Optional. Consent audio for voice cloning. */
   consentAudioGcsUri?: string;
 }
-export const CustomVoiceSample = /*@__PURE__*/ S.suspend(() =>
+const CustomVoiceSample = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voiceInstruction: S.optional(S.String),
     name: S.optional(S.String),
@@ -1413,7 +1407,7 @@ export const CustomVoiceSample = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomVoiceSample" }) as any as S.Schema<CustomVoiceSample>;
 
 export type CustomVoiceSampleList = Array<CustomVoiceSample>;
-export const CustomVoiceSampleList = /*@__PURE__*/ S.Array(
+const CustomVoiceSampleList = /*@__PURE__*/ S.Array(
   CustomVoiceSample,
 ) as any as S.Schema<CustomVoiceSampleList>;
 
@@ -1428,7 +1422,7 @@ export interface SynthesizeSpeechConfig {
   /** Optional. The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. Values outside of the range [0.25, 2.0] will return an error. */
   speakingRate?: number;
 }
-export const SynthesizeSpeechConfig = /*@__PURE__*/ S.suspend(() =>
+const SynthesizeSpeechConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voice: S.optional(S.String),
     instruction: S.optional(S.String),
@@ -1438,7 +1432,7 @@ export const SynthesizeSpeechConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SynthesizeSpeechConfig" }) as any as S.Schema<SynthesizeSpeechConfig>;
 
 export type SynthesizeSpeechConfigMap = { [key: string]: SynthesizeSpeechConfig | undefined };
-export const SynthesizeSpeechConfigMap = /*@__PURE__*/ S.Record(
+const SynthesizeSpeechConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   SynthesizeSpeechConfig,
 ) as any as S.Schema<SynthesizeSpeechConfigMap>;
@@ -1456,7 +1450,7 @@ export interface AudioProcessingConfig {
   /** Optional. Configuration of how the agent response should be synthesized, mapping from the language code to SynthesizeSpeechConfig. If the configuration for the specified language code is not found, the configuration for the root language code will be used. For example, if the map contains "en-us" and "en", and the specified language code is "en-gb", then "en" configuration will be used. Note: Language code is case-insensitive. */
   synthesizeSpeechConfigs?: SynthesizeSpeechConfigMap;
 }
-export const AudioProcessingConfig = /*@__PURE__*/ S.suspend(() =>
+const AudioProcessingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bargeInConfig: S.optional(BargeInConfig),
     ambientSoundConfig: S.optional(AmbientSoundConfig),
@@ -1531,7 +1525,7 @@ export interface App {
   /** Optional. Audio processing configuration of the app. */
   audioProcessingConfig?: AudioProcessingConfig;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variableDeclarations: S.optional(AppVariableDeclarationList),
     description: S.optional(S.String),
@@ -1575,7 +1569,7 @@ export interface CreateProjectsLocationsAppsRequest {
   /** Request body */
   body?: App;
 }
-export const CreateProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1602,7 +1596,7 @@ export interface Callback {
   /** Optional. If enabled, the callback will also be executed on intermediate model outputs. This setting only affects after model callback. **ENABLE WITH CAUTION**. Typically after model callback only needs to be executed after receiving all model responses. Enabling proactive execution may have negative implication on the execution cost and latency, and should only be enabled in rare situations. */
   proactiveExecutionEnabled?: boolean;
 }
-export const Callback = /*@__PURE__*/ S.suspend(() =>
+const Callback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     pythonCode: S.optional(S.String),
@@ -1612,7 +1606,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
 export type CallbackList = Array<Callback>;
-export const CallbackList = /*@__PURE__*/ S.Array(Callback) as any as S.Schema<CallbackList>;
+const CallbackList = /*@__PURE__*/ S.Array(Callback) as any as S.Schema<CallbackList>;
 
 /** Declares a combination of a target URL, transport and protocol version for interacting with the agent. This allows agents to expose the same functionality over multiple protocol binding mechanisms. */
 export interface AgentInterface {
@@ -1625,7 +1619,7 @@ export interface AgentInterface {
   /** Required. The version of the A2A protocol this interface exposes. Use the latest supported minor version per major version. Examples: "0.3", "1.0" */
   protocolVersion?: string;
 }
-export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
+const AgentInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolBinding: S.optional(S.String),
     tenant: S.optional(S.String),
@@ -1635,7 +1629,7 @@ export const AgentInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentInterface" }) as any as S.Schema<AgentInterface>;
 
 export type AgentInterfaceList = Array<AgentInterface>;
-export const AgentInterfaceList = /*@__PURE__*/ S.Array(
+const AgentInterfaceList = /*@__PURE__*/ S.Array(
   AgentInterface,
 ) as any as S.Schema<AgentInterfaceList>;
 
@@ -1656,7 +1650,7 @@ export interface AgentSkill {
   /** Example prompts or scenarios that this skill can handle. */
   examples?: StringList;
 }
-export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
+const AgentSkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     name: S.optional(S.String),
@@ -1669,7 +1663,7 @@ export const AgentSkill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentSkill" }) as any as S.Schema<AgentSkill>;
 
 export type AgentSkillList = Array<AgentSkill>;
-export const AgentSkillList = /*@__PURE__*/ S.Array(AgentSkill) as any as S.Schema<AgentSkillList>;
+const AgentSkillList = /*@__PURE__*/ S.Array(AgentSkill) as any as S.Schema<AgentSkillList>;
 
 /** AgentCard conveys key information about a remote agent. It is a trimmed version of the AgentCard defined in the A2A protocol https://a2a-protocol.org/dev/specification/#441-agentcard */
 export interface AgentCard {
@@ -1684,7 +1678,7 @@ export interface AgentCard {
   /** Required. Skills represent a unit of ability an agent can perform. This may somewhat abstract but represents a more focused set of actions that the agent is highly likely to succeed at. */
   skills?: AgentSkillList;
 }
-export const AgentCard = /*@__PURE__*/ S.suspend(() =>
+const AgentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -1695,7 +1689,7 @@ export const AgentCard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentCard" }) as any as S.Schema<AgentCard>;
 
 export type OAuthConfigOauthGrantTypeEnum = "OAUTH_GRANT_TYPE_UNSPECIFIED" | "CLIENT_CREDENTIAL";
-export const OAuthConfigOauthGrantTypeEnum = S.String;
+const OAuthConfigOauthGrantTypeEnum = S.String;
 
 /** Configurations for authentication with OAuth. */
 export interface OAuthConfig {
@@ -1710,7 +1704,7 @@ export interface OAuthConfig {
   /** Required. OAuth grant types. */
   oauthGrantType?: OAuthConfigOauthGrantTypeEnum | (string & {});
 }
-export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientSecretVersion: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -1724,7 +1718,7 @@ export type ApiKeyConfigRequestLocationEnum =
   | "REQUEST_LOCATION_UNSPECIFIED"
   | "HEADER"
   | "QUERY_STRING";
-export const ApiKeyConfigRequestLocationEnum = S.String;
+const ApiKeyConfigRequestLocationEnum = S.String;
 
 /** Configurations for authentication with API key. */
 export interface ApiKeyConfig {
@@ -1735,7 +1729,7 @@ export interface ApiKeyConfig {
   /** Required. Key location in the request. */
   requestLocation?: ApiKeyConfigRequestLocationEnum | (string & {});
 }
-export const ApiKeyConfig = /*@__PURE__*/ S.suspend(() =>
+const ApiKeyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyName: S.optional(S.String),
     apiKeySecretVersion: S.optional(S.String),
@@ -1748,7 +1742,7 @@ export interface BearerTokenConfig {
   /** Required. The bearer token. Must be in the format `$context.variables.`. */
   token?: string;
 }
-export const BearerTokenConfig = /*@__PURE__*/ S.suspend(() =>
+const BearerTokenConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -1756,8 +1750,6 @@ export const BearerTokenConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Configurations for authentication with [ID token](https://cloud.google.com/docs/authentication/token-types#id) generated from service agent. */
 export type ServiceAgentIdTokenAuthConfig = CancelOperationRequest;
-export const ServiceAgentIdTokenAuthConfig = CancelOperationRequest;
-
 /** Configurations for authentication using a custom service account. */
 export interface ServiceAccountAuthConfig {
   /** Required. The email address of the service account used for authentication. CES uses this service account to exchange an access token and the access token is then sent in the `Authorization` header of the request. The service account must have the `roles/iam.serviceAccountTokenCreator` role granted to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -1765,7 +1757,7 @@ export interface ServiceAccountAuthConfig {
   /** Optional. The OAuth scopes to grant. If not specified, the default scope `https://www.googleapis.com/auth/cloud-platform` is used. */
   scopes?: StringList;
 }
-export const ServiceAccountAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccount: S.optional(S.String),
     scopes: S.optional(StringList),
@@ -1785,7 +1777,7 @@ export interface ApiAuthentication {
   /** Optional. Config for service account authentication. */
   serviceAccountAuthConfig?: ServiceAccountAuthConfig;
 }
-export const ApiAuthentication = /*@__PURE__*/ S.suspend(() =>
+const ApiAuthentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthConfig: S.optional(OAuthConfig),
     apiKeyConfig: S.optional(ApiKeyConfig),
@@ -1812,7 +1804,7 @@ export interface RemoteA2aConfig {
   /** Optional. If not empty, interactions with the remote A2A agent will use this context ID. This context_id field can refer to a session variable like `$context.variables.order_agent_session_id`. */
   contextId?: string;
 }
-export const RemoteA2aConfig = /*@__PURE__*/ S.suspend(() =>
+const RemoteA2aConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputVariableMapping: S.optional(StringMap),
     streamingEnabled: S.optional(S.Boolean),
@@ -1829,7 +1821,7 @@ export interface AgentRemoteA2aAgent {
   /** Required. The A2A connection configuration. */
   a2aConfig?: RemoteA2aConfig;
 }
-export const AgentRemoteA2aAgent = /*@__PURE__*/ S.suspend(() =>
+const AgentRemoteA2aAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     a2aConfig: S.optional(RemoteA2aConfig),
   }),
@@ -1839,14 +1831,14 @@ export type TransferRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "PARENT_TO_CHILD"
   | "CHILD_TO_PARENT";
-export const TransferRuleDirectionEnum = S.String;
+const TransferRuleDirectionEnum = S.String;
 
 /** Expression condition based on session state. */
 export interface ExpressionCondition {
   /** Required. The string representation of cloud.api.Expression condition. */
   expression?: string;
 }
-export const ExpressionCondition = /*@__PURE__*/ S.suspend(() =>
+const ExpressionCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
   }),
@@ -1857,7 +1849,7 @@ export interface TransferRuleDisablePlannerTransfer {
   /** Required. If the condition evaluates to true, planner will not be allowed to transfer to the target agent. */
   expressionCondition?: ExpressionCondition;
 }
-export const TransferRuleDisablePlannerTransfer = /*@__PURE__*/ S.suspend(() =>
+const TransferRuleDisablePlannerTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expressionCondition: S.optional(ExpressionCondition),
   }),
@@ -1870,7 +1862,7 @@ export interface PythonCodeCondition {
   /** Required. The python code to execute. */
   pythonCode?: string;
 }
-export const PythonCodeCondition = /*@__PURE__*/ S.suspend(() =>
+const PythonCodeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pythonCode: S.optional(S.String),
   }),
@@ -1883,7 +1875,7 @@ export interface TransferRuleDeterministicTransfer {
   /** Optional. A rule that evaluates a session state condition. If the condition evaluates to true, the transfer occurs. */
   expressionCondition?: ExpressionCondition;
 }
-export const TransferRuleDeterministicTransfer = /*@__PURE__*/ S.suspend(() =>
+const TransferRuleDeterministicTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pythonCodeCondition: S.optional(PythonCodeCondition),
     expressionCondition: S.optional(ExpressionCondition),
@@ -1903,7 +1895,7 @@ export interface TransferRule {
   /** Optional. A rule that immediately transfers to the target agent when the condition is met. */
   deterministicTransfer?: TransferRuleDeterministicTransfer;
 }
-export const TransferRule = /*@__PURE__*/ S.suspend(() =>
+const TransferRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(TransferRuleDirectionEnum),
     disablePlannerTransfer: S.optional(TransferRuleDisablePlannerTransfer),
@@ -1913,14 +1905,10 @@ export const TransferRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TransferRule" }) as any as S.Schema<TransferRule>;
 
 export type TransferRuleList = Array<TransferRule>;
-export const TransferRuleList = /*@__PURE__*/ S.Array(
-  TransferRule,
-) as any as S.Schema<TransferRuleList>;
+const TransferRuleList = /*@__PURE__*/ S.Array(TransferRule) as any as S.Schema<TransferRuleList>;
 
 /** Default agent type. The agent uses instructions and callbacks specified in the agent to perform the task using a large language model. */
 export type AgentLlmAgent = CancelOperationRequest;
-export const AgentLlmAgent = CancelOperationRequest;
-
 /** The agent which will transfer execution to a remote [Dialogflow CX](https://docs.cloud.google.com/dialogflow/cx/docs/concept/agent) agent. The Dialogflow agent will process subsequent user queries until the session ends or flow ends, and the control is transferred back to the parent CES agent. */
 export interface AgentRemoteDialogflowAgent {
   /** Optional. The mapping of the app variables names to the Dialogflow session parameters names to be sent to the Dialogflow agent as input. */
@@ -1938,7 +1926,7 @@ export interface AgentRemoteDialogflowAgent {
   /** Optional. The flow ID of the flow in the Dialogflow agent. */
   flowId?: string;
 }
-export const AgentRemoteDialogflowAgent = /*@__PURE__*/ S.suspend(() =>
+const AgentRemoteDialogflowAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputVariableMapping: S.optional(StringMap),
     environmentId: S.optional(S.String),
@@ -1959,7 +1947,7 @@ export interface AgentAgentToolset {
   /** Required. The resource name of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset?: string;
 }
-export const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
+const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolIds: S.optional(StringList),
     toolset: S.optional(S.String),
@@ -1967,7 +1955,7 @@ export const AgentAgentToolset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentAgentToolset" }) as any as S.Schema<AgentAgentToolset>;
 
 export type AgentAgentToolsetList = Array<AgentAgentToolset>;
-export const AgentAgentToolsetList = /*@__PURE__*/ S.Array(
+const AgentAgentToolsetList = /*@__PURE__*/ S.Array(
   AgentAgentToolset,
 ) as any as S.Schema<AgentAgentToolsetList>;
 
@@ -2022,7 +2010,7 @@ export interface Agent {
   /** Output only. Timestamp when the agent was last updated. */
   updateTime?: string;
 }
-export const Agent = /*@__PURE__*/ S.suspend(() =>
+const Agent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beforeModelCallbacks: S.optional(CallbackList),
     childAgents: S.optional(StringList),
@@ -2059,7 +2047,7 @@ export interface CreateProjectsLocationsAppsAgentsRequest {
   /** Request body */
   body?: Agent;
 }
-export const CreateProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2086,7 +2074,7 @@ export interface TypedPayload {
   /** Required. The value of the payload. */
   value?: DocumentMap;
 }
-export const TypedPayload = /*@__PURE__*/ S.suspend(() =>
+const TypedPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -2108,7 +2096,7 @@ export interface AssistantChunk {
   /** Optional. Timestamp when the chunk was created or emitted. */
   createTime?: string;
 }
-export const AssistantChunk = /*@__PURE__*/ S.suspend(() =>
+const AssistantChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thought: S.optional(S.String),
     payload: S.optional(DocumentMap),
@@ -2119,7 +2107,7 @@ export const AssistantChunk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssistantChunk" }) as any as S.Schema<AssistantChunk>;
 
 export type AssistantChunkList = Array<AssistantChunk>;
-export const AssistantChunkList = /*@__PURE__*/ S.Array(
+const AssistantChunkList = /*@__PURE__*/ S.Array(
   AssistantChunk,
 ) as any as S.Schema<AssistantChunkList>;
 
@@ -2134,7 +2122,7 @@ export interface AssistantMessage {
   /** Required. Role within the conversation "user" or "model". */
   role?: string;
 }
-export const AssistantMessage = /*@__PURE__*/ S.suspend(() =>
+const AssistantMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
     attachedGcsUris: S.optional(StringList),
@@ -2144,7 +2132,7 @@ export const AssistantMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssistantMessage" }) as any as S.Schema<AssistantMessage>;
 
 export type AssistantMessageList = Array<AssistantMessage>;
-export const AssistantMessageList = /*@__PURE__*/ S.Array(
+const AssistantMessageList = /*@__PURE__*/ S.Array(
   AssistantMessage,
 ) as any as S.Schema<AssistantMessageList>;
 
@@ -2155,7 +2143,7 @@ export interface CreateAssistantSessionRequest {
   /** Optional. The messages to seed the assistant session with. */
   assistantSessionMessages?: AssistantMessageList;
 }
-export const CreateAssistantSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAssistantSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assistantSessionId: S.optional(S.String),
     assistantSessionMessages: S.optional(AssistantMessageList),
@@ -2170,7 +2158,7 @@ export interface CreateProjectsLocationsAppsAssistantSessionsRequest {
   /** Request body */
   body?: CreateAssistantSessionRequest;
 }
-export const CreateProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CreateAssistantSessionRequest.pipe(T.HttpBody())),
@@ -2200,7 +2188,7 @@ export interface AssistantSessionArtifact {
   /** Output only. The file name shown to the user, e.g. "hotel_booking_tdd.md". */
   displayName?: string;
 }
-export const AssistantSessionArtifact = /*@__PURE__*/ S.suspend(() =>
+const AssistantSessionArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsUri: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -2212,7 +2200,7 @@ export const AssistantSessionArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssistantSessionArtifact" }) as any as S.Schema<AssistantSessionArtifact>;
 
 export type AssistantSessionArtifactList = Array<AssistantSessionArtifact>;
-export const AssistantSessionArtifactList = /*@__PURE__*/ S.Array(
+const AssistantSessionArtifactList = /*@__PURE__*/ S.Array(
   AssistantSessionArtifact,
 ) as any as S.Schema<AssistantSessionArtifactList>;
 
@@ -2221,7 +2209,7 @@ export interface UserResponseSuggestions {
   /** Required. The assistant suggested user responses. These are suggestions for the user on how to interact with the assistant. */
   suggestions?: StringList;
 }
-export const UserResponseSuggestions = /*@__PURE__*/ S.suspend(() =>
+const UserResponseSuggestions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestions: S.optional(StringList),
   }),
@@ -2232,7 +2220,7 @@ export type AssistantSessionStateEnum =
   | "PROCESSING"
   | "IDLE"
   | "PENDING_REVIEW";
-export const AssistantSessionStateEnum = S.String;
+const AssistantSessionStateEnum = S.String;
 
 export type ActiveTurnInfoStatusEnum =
   | "STATUS_UNSPECIFIED"
@@ -2240,7 +2228,7 @@ export type ActiveTurnInfoStatusEnum =
   | "DISCONNECTED"
   | "RESUMING"
   | "ABANDONED";
-export const ActiveTurnInfoStatusEnum = S.String;
+const ActiveTurnInfoStatusEnum = S.String;
 
 /** Live-attachment info for a session turn that is currently running, disconnected from its client, or parked for pickup by another server task. */
 export interface ActiveTurnInfo {
@@ -2255,7 +2243,7 @@ export interface ActiveTurnInfo {
   /** Output only. When the turn will be wound down if no client attaches. */
   orphanDeadlineTime?: string;
 }
-export const ActiveTurnInfo = /*@__PURE__*/ S.suspend(() =>
+const ActiveTurnInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turnId: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -2290,7 +2278,7 @@ export interface AssistantSession {
   /** Output only. Attachment info for this session's currently running turn. Unset when no turn is running. */
   activeTurn?: ActiveTurnInfo;
 }
-export const AssistantSession = /*@__PURE__*/ S.suspend(() =>
+const AssistantSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestor: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -2312,7 +2300,7 @@ export type ExperimentConfigVersionReleaseStateEnum =
   | "RUNNING"
   | "DONE"
   | "EXPIRED";
-export const ExperimentConfigVersionReleaseStateEnum = S.String;
+const ExperimentConfigVersionReleaseStateEnum = S.String;
 
 /** Traffic allocation for the version release. */
 export interface ExperimentConfigVersionReleaseTrafficAllocation {
@@ -2323,7 +2311,7 @@ export interface ExperimentConfigVersionReleaseTrafficAllocation {
   /** Optional. Traffic percentage of the traffic allocation. Must be between 0 and 100. */
   trafficPercentage?: number;
 }
-export const ExperimentConfigVersionReleaseTrafficAllocation = /*@__PURE__*/ S.suspend(() =>
+const ExperimentConfigVersionReleaseTrafficAllocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     appVersion: S.optional(S.String),
@@ -2335,7 +2323,7 @@ export const ExperimentConfigVersionReleaseTrafficAllocation = /*@__PURE__*/ S.s
 
 export type ExperimentConfigVersionReleaseTrafficAllocationList =
   Array<ExperimentConfigVersionReleaseTrafficAllocation>;
-export const ExperimentConfigVersionReleaseTrafficAllocationList = /*@__PURE__*/ S.Array(
+const ExperimentConfigVersionReleaseTrafficAllocationList = /*@__PURE__*/ S.Array(
   ExperimentConfigVersionReleaseTrafficAllocation,
 ) as any as S.Schema<ExperimentConfigVersionReleaseTrafficAllocationList>;
 
@@ -2346,7 +2334,7 @@ export interface ExperimentConfigVersionRelease {
   /** Optional. Traffic allocations for the version release. */
   trafficAllocations?: ExperimentConfigVersionReleaseTrafficAllocationList;
 }
-export const ExperimentConfigVersionRelease = /*@__PURE__*/ S.suspend(() =>
+const ExperimentConfigVersionRelease = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(ExperimentConfigVersionReleaseStateEnum),
     trafficAllocations: S.optional(ExperimentConfigVersionReleaseTrafficAllocationList),
@@ -2360,7 +2348,7 @@ export interface ExperimentConfig {
   /** Optional. Version release for the experiment. */
   versionRelease?: ExperimentConfigVersionRelease;
 }
-export const ExperimentConfig = /*@__PURE__*/ S.suspend(() =>
+const ExperimentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionRelease: S.optional(ExperimentConfigVersionRelease),
   }),
@@ -2381,7 +2369,7 @@ export interface WhatsAppCredentials {
   /** Required. The Business Account ID to use for the phone number. */
   businessAccountId?: string;
 }
-export const WhatsAppCredentials = /*@__PURE__*/ S.suspend(() =>
+const WhatsAppCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authCode: S.optional(S.String),
     conversationProfileId: S.optional(S.String),
@@ -2397,7 +2385,7 @@ export type DeploymentModalityEnum =
   | "MODALITY_TEXT"
   | "MODALITY_VOICE"
   | "MODALITY_VIDEO";
-export const DeploymentModalityEnum = S.String;
+const DeploymentModalityEnum = S.String;
 
 /** Ephemeral Meta credentials for Instagram native integration. */
 export interface InstagramCredentials {
@@ -2406,7 +2394,7 @@ export interface InstagramCredentials {
   /** Required. The Meta auth code provided by the embedded signup flow. */
   authCode?: string;
 }
-export const InstagramCredentials = /*@__PURE__*/ S.suspend(() =>
+const InstagramCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversationProfileId: S.optional(S.String),
     authCode: S.optional(S.String),
@@ -2418,7 +2406,7 @@ export interface AgentRegistryDeployment {
   /** Optional. Output only. The resource name of the deployed Agent Registry service. Format: `projects/{project}/locations/{location}/services/{service}` */
   agentRegistryServiceName?: string;
 }
-export const AgentRegistryDeployment = /*@__PURE__*/ S.suspend(() =>
+const AgentRegistryDeployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentRegistryServiceName: S.optional(S.String),
   }),
@@ -2453,7 +2441,7 @@ export interface Deployment {
   /** Required. Display name of the deployment. */
   displayName?: string;
 }
-export const Deployment = /*@__PURE__*/ S.suspend(() =>
+const Deployment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experimentConfig: S.optional(ExperimentConfig),
     updateTime: S.optional(S.String),
@@ -2479,7 +2467,7 @@ export interface CreateProjectsLocationsAppsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
-export const CreateProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     deploymentId: S.optional(S.String.pipe(T.Query())),
@@ -2500,7 +2488,7 @@ export interface AggregatedMetricsTurnLatencyMetrics {
   /** Output only. The average latency of the turns. */
   averageLatency?: string;
 }
-export const AggregatedMetricsTurnLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsTurnLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     averageLatency: S.optional(S.String),
   }),
@@ -2509,7 +2497,7 @@ export const AggregatedMetricsTurnLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsTurnLatencyMetrics>;
 
 export type AggregatedMetricsTurnLatencyMetricsList = Array<AggregatedMetricsTurnLatencyMetrics>;
-export const AggregatedMetricsTurnLatencyMetricsList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsTurnLatencyMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsTurnLatencyMetrics,
 ) as any as S.Schema<AggregatedMetricsTurnLatencyMetricsList>;
 
@@ -2518,7 +2506,7 @@ export interface AggregatedMetricsSemanticSimilarityMetrics {
   /** Output only. The average semantic similarity score (0-4). */
   score?: number;
 }
-export const AggregatedMetricsSemanticSimilarityMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsSemanticSimilarityMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     score: S.optional(S.Number),
   }),
@@ -2528,7 +2516,7 @@ export const AggregatedMetricsSemanticSimilarityMetrics = /*@__PURE__*/ S.suspen
 
 export type AggregatedMetricsSemanticSimilarityMetricsList =
   Array<AggregatedMetricsSemanticSimilarityMetrics>;
-export const AggregatedMetricsSemanticSimilarityMetricsList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsSemanticSimilarityMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsSemanticSimilarityMetrics,
 ) as any as S.Schema<AggregatedMetricsSemanticSimilarityMetricsList>;
 
@@ -2539,7 +2527,7 @@ export interface AggregatedMetricsToolCallLatencyMetrics {
   /** Output only. The average latency of the tool calls. */
   averageLatency?: string;
 }
-export const AggregatedMetricsToolCallLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsToolCallLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(S.String),
     averageLatency: S.optional(S.String),
@@ -2550,7 +2538,7 @@ export const AggregatedMetricsToolCallLatencyMetrics = /*@__PURE__*/ S.suspend((
 
 export type AggregatedMetricsToolCallLatencyMetricsList =
   Array<AggregatedMetricsToolCallLatencyMetrics>;
-export const AggregatedMetricsToolCallLatencyMetricsList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsToolCallLatencyMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsToolCallLatencyMetrics,
 ) as any as S.Schema<AggregatedMetricsToolCallLatencyMetricsList>;
 
@@ -2559,12 +2547,9 @@ export interface AggregatedMetricsHallucinationMetrics {
   /** Output only. The average hallucination score (0 to 1). */
   score?: number;
 }
-export const AggregatedMetricsHallucinationMetrics =
-  AggregatedMetricsSemanticSimilarityMetrics as any as S.Schema<AggregatedMetricsHallucinationMetrics>;
-
 export type AggregatedMetricsHallucinationMetricsList =
   Array<AggregatedMetricsHallucinationMetrics>;
-export const AggregatedMetricsHallucinationMetricsList =
+const AggregatedMetricsHallucinationMetricsList =
   AggregatedMetricsSemanticSimilarityMetricsList as any as S.Schema<AggregatedMetricsHallucinationMetricsList>;
 
 /** Metrics for a single tool. */
@@ -2576,7 +2561,7 @@ export interface AggregatedMetricsToolMetrics {
   /** Output only. The name of the tool. */
   tool?: string;
 }
-export const AggregatedMetricsToolMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsToolMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passCount: S.optional(S.Number),
     failCount: S.optional(S.Number),
@@ -2587,7 +2572,7 @@ export const AggregatedMetricsToolMetrics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsToolMetrics>;
 
 export type AggregatedMetricsToolMetricsList = Array<AggregatedMetricsToolMetrics>;
-export const AggregatedMetricsToolMetricsList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsToolMetricsList = /*@__PURE__*/ S.Array(
   AggregatedMetricsToolMetrics,
 ) as any as S.Schema<AggregatedMetricsToolMetricsList>;
 
@@ -2606,7 +2591,7 @@ export interface AggregatedMetricsMetricsByTurn {
   /** Output only. Metrics for each tool within this turn. */
   toolMetrics?: AggregatedMetricsToolMetricsList;
 }
-export const AggregatedMetricsMetricsByTurn = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsMetricsByTurn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turnLatencyMetrics: S.optional(AggregatedMetricsTurnLatencyMetricsList),
     semanticSimilarityMetrics: S.optional(AggregatedMetricsSemanticSimilarityMetricsList),
@@ -2620,7 +2605,7 @@ export const AggregatedMetricsMetricsByTurn = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedMetricsMetricsByTurn>;
 
 export type AggregatedMetricsMetricsByTurnList = Array<AggregatedMetricsMetricsByTurn>;
-export const AggregatedMetricsMetricsByTurnList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsMetricsByTurnList = /*@__PURE__*/ S.Array(
   AggregatedMetricsMetricsByTurn,
 ) as any as S.Schema<AggregatedMetricsMetricsByTurnList>;
 
@@ -2645,7 +2630,7 @@ export interface AggregatedMetricsMetricsByAppVersion {
   /** Output only. Metrics for semantic similarity within this app version. */
   semanticSimilarityMetrics?: AggregatedMetricsSemanticSimilarityMetricsList;
 }
-export const AggregatedMetricsMetricsByAppVersion = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetricsMetricsByAppVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsByTurn: S.optional(AggregatedMetricsMetricsByTurnList),
     turnLatencyMetrics: S.optional(AggregatedMetricsTurnLatencyMetricsList),
@@ -2662,7 +2647,7 @@ export const AggregatedMetricsMetricsByAppVersion = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<AggregatedMetricsMetricsByAppVersion>;
 
 export type AggregatedMetricsMetricsByAppVersionList = Array<AggregatedMetricsMetricsByAppVersion>;
-export const AggregatedMetricsMetricsByAppVersionList = /*@__PURE__*/ S.Array(
+const AggregatedMetricsMetricsByAppVersionList = /*@__PURE__*/ S.Array(
   AggregatedMetricsMetricsByAppVersion,
 ) as any as S.Schema<AggregatedMetricsMetricsByAppVersionList>;
 
@@ -2671,7 +2656,7 @@ export interface AggregatedMetrics {
   /** Output only. Aggregated metrics, grouped by app version ID. */
   metricsByAppVersion?: AggregatedMetricsMetricsByAppVersionList;
 }
-export const AggregatedMetrics = /*@__PURE__*/ S.suspend(() =>
+const AggregatedMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metricsByAppVersion: S.optional(AggregatedMetricsMetricsByAppVersionList),
   }),
@@ -2698,7 +2683,7 @@ export interface EvaluationDataset {
   /** Identifier. The unique identifier of this evaluation dataset. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationDatasets/{evaluationDataset}` */
   name?: string;
 }
-export const EvaluationDataset = /*@__PURE__*/ S.suspend(() =>
+const EvaluationDataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     evaluations: S.optional(StringList),
@@ -2720,7 +2705,7 @@ export interface CreateProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Request body */
   body?: EvaluationDataset;
 }
-export const CreateProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     evaluationDatasetId: S.optional(S.String.pipe(T.Query())),
@@ -2741,7 +2726,7 @@ export interface EvaluationExpectationLlmCriteria {
   /** Required. The prompt/instructions provided to the LLM judge. */
   prompt?: string;
 }
-export const EvaluationExpectationLlmCriteria = /*@__PURE__*/ S.suspend(() =>
+const EvaluationExpectationLlmCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt: S.optional(S.String),
   }),
@@ -2766,7 +2751,7 @@ export interface EvaluationExpectation {
   /** Optional. Evaluation criteria based on an LLM prompt. */
   llmCriteria?: EvaluationExpectationLlmCriteria;
 }
-export const EvaluationExpectation = /*@__PURE__*/ S.suspend(() =>
+const EvaluationExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     etag: S.optional(S.String),
@@ -2786,19 +2771,18 @@ export interface CreateProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Request body */
   body?: EvaluationExpectation;
 }
-export const CreateProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      evaluationExpectationId: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(EvaluationExpectation.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/evaluationExpectations",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluationExpectationId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(EvaluationExpectation.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/evaluationExpectations",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsAppsEvaluationExpectationsRequest",
 }) as any as S.Schema<CreateProjectsLocationsAppsEvaluationExpectationsRequest>;
@@ -2810,13 +2794,13 @@ export type EvaluationResultExecutionStateEnum =
   | "COMPLETED"
   | "ERROR"
   | "CANCELLED";
-export const EvaluationResultExecutionStateEnum = S.String;
+const EvaluationResultExecutionStateEnum = S.String;
 
 export type EvaluationResultGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
-export const EvaluationResultGoldenRunMethodEnum = S.String;
+const EvaluationResultGoldenRunMethodEnum = S.String;
 
 /** The result of a user goal satisfaction check for a conversation. */
 export interface EvaluationResultUserGoalSatisfactionResult {
@@ -2827,7 +2811,7 @@ export interface EvaluationResultUserGoalSatisfactionResult {
   /** Output only. The user task satisfaction score. Can be -1, 0, 1, 2. */
   score?: number;
 }
-export const EvaluationResultUserGoalSatisfactionResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultUserGoalSatisfactionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     explanation: S.optional(S.String),
@@ -2842,7 +2826,7 @@ export type EvaluationResultEvaluationExpectationResultOutcomeEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultEvaluationExpectationResultOutcomeEnum = S.String;
+const EvaluationResultEvaluationExpectationResultOutcomeEnum = S.String;
 
 /** The result of a single evaluation expectation. */
 export interface EvaluationResultEvaluationExpectationResult {
@@ -2855,7 +2839,7 @@ export interface EvaluationResultEvaluationExpectationResult {
   /** Output only. The prompt that was used for the evaluation. */
   prompt?: string;
 }
-export const EvaluationResultEvaluationExpectationResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultEvaluationExpectationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationExpectation: S.optional(S.String),
     explanation: S.optional(S.String),
@@ -2868,7 +2852,7 @@ export const EvaluationResultEvaluationExpectationResult = /*@__PURE__*/ S.suspe
 
 export type EvaluationResultEvaluationExpectationResultList =
   Array<EvaluationResultEvaluationExpectationResult>;
-export const EvaluationResultEvaluationExpectationResultList = /*@__PURE__*/ S.Array(
+const EvaluationResultEvaluationExpectationResultList = /*@__PURE__*/ S.Array(
   EvaluationResultEvaluationExpectationResult,
 ) as any as S.Schema<EvaluationResultEvaluationExpectationResultList>;
 
@@ -2879,7 +2863,7 @@ export interface ToolsetTool {
   /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
   toolset?: string;
 }
-export const ToolsetTool = /*@__PURE__*/ S.suspend(() =>
+const ToolsetTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolId: S.optional(S.String),
     toolset: S.optional(S.String),
@@ -2892,7 +2876,7 @@ export type EvaluationResultSpanLatencyTypeEnum =
   | "USER_CALLBACK"
   | "GUARDRAIL"
   | "LLM";
-export const EvaluationResultSpanLatencyTypeEnum = S.String;
+const EvaluationResultSpanLatencyTypeEnum = S.String;
 
 /** The latency of a span execution. */
 export interface EvaluationResultSpanLatency {
@@ -2915,7 +2899,7 @@ export interface EvaluationResultSpanLatency {
   /** Output only. The end time of span. */
   endTime?: string;
 }
-export const EvaluationResultSpanLatency = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultSpanLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolset: S.optional(ToolsetTool),
     executionLatency: S.optional(S.String),
@@ -2932,7 +2916,7 @@ export const EvaluationResultSpanLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultSpanLatency>;
 
 export type EvaluationResultSpanLatencyList = Array<EvaluationResultSpanLatency>;
-export const EvaluationResultSpanLatencyList = /*@__PURE__*/ S.Array(
+const EvaluationResultSpanLatencyList = /*@__PURE__*/ S.Array(
   EvaluationResultSpanLatency,
 ) as any as S.Schema<EvaluationResultSpanLatencyList>;
 
@@ -2941,7 +2925,7 @@ export type EvaluationResultScenarioExpectationOutcomeOutcomeEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultScenarioExpectationOutcomeOutcomeEnum = S.String;
+const EvaluationResultScenarioExpectationOutcomeOutcomeEnum = S.String;
 
 /** The execution result of a specific tool from the client or the agent. */
 export interface ToolResponse {
@@ -2960,7 +2944,7 @@ export interface ToolResponse {
   /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
   parentToolCallId?: string;
 }
-export const ToolResponse = /*@__PURE__*/ S.suspend(() =>
+const ToolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolsetTool: S.optional(ToolsetTool),
     agentName: S.optional(S.String),
@@ -2989,7 +2973,7 @@ export interface ToolCall {
   /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
   tool?: string;
 }
-export const ToolCall = /*@__PURE__*/ S.suspend(() =>
+const ToolCall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     toolsetTool: S.optional(ToolsetTool),
@@ -3008,12 +2992,11 @@ export interface EvaluationResultScenarioExpectationOutcomeObservedToolCall {
   /** Output only. The observed tool call. */
   toolCall?: ToolCall;
 }
-export const EvaluationResultScenarioExpectationOutcomeObservedToolCall = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      toolResponse: S.optional(ToolResponse),
-      toolCall: S.optional(ToolCall),
-    }),
+const EvaluationResultScenarioExpectationOutcomeObservedToolCall = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    toolResponse: S.optional(ToolResponse),
+    toolCall: S.optional(ToolCall),
+  }),
 ).annotate({
   identifier: "EvaluationResultScenarioExpectationOutcomeObservedToolCall",
 }) as any as S.Schema<EvaluationResultScenarioExpectationOutcomeObservedToolCall>;
@@ -3027,7 +3010,7 @@ export interface Image {
   /** Required. The IANA standard MIME type of the source data. Supported image types includes: * image/png * image/jpeg * image/webp */
   mimeType?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     altText: S.optional(S.String),
     data: S.optional(S.String),
@@ -3042,7 +3025,7 @@ export interface Blob {
   /** Required. Raw bytes of the blob. */
   data?: string;
 }
-export const Blob = /*@__PURE__*/ S.suspend(() =>
+const Blob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mimeType: S.optional(S.String),
     data: S.optional(S.String),
@@ -3056,7 +3039,7 @@ export interface AgentTransfer {
   /** Output only. Display name of the agent. */
   displayName?: string;
 }
-export const AgentTransfer = /*@__PURE__*/ S.suspend(() =>
+const AgentTransfer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetAgent: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -3086,7 +3069,7 @@ export interface Chunk {
   /** Optional. Custom payload data. */
   payload?: DocumentMap;
 }
-export const Chunk = /*@__PURE__*/ S.suspend(() =>
+const Chunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolCall: S.optional(ToolCall),
     transcript: S.optional(S.String),
@@ -3102,7 +3085,7 @@ export const Chunk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Chunk" }) as any as S.Schema<Chunk>;
 
 export type ChunkList = Array<Chunk>;
-export const ChunkList = /*@__PURE__*/ S.Array(Chunk) as any as S.Schema<ChunkList>;
+const ChunkList = /*@__PURE__*/ S.Array(Chunk) as any as S.Schema<ChunkList>;
 
 /** A message within a conversation. */
 export interface Message {
@@ -3113,7 +3096,7 @@ export interface Message {
   /** Optional. The role within the conversation, e.g., user, agent. */
   role?: string;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: S.optional(ChunkList),
     eventTime: S.optional(S.String),
@@ -3128,7 +3111,7 @@ export interface EvaluationScenarioExpectationToolExpectation {
   /** Required. The tool response to mock, with the parameters of interest specified. Any parameters not specified will be hallucinated by the LLM. */
   mockToolResponse?: ToolResponse;
 }
-export const EvaluationScenarioExpectationToolExpectation = /*@__PURE__*/ S.suspend(() =>
+const EvaluationScenarioExpectationToolExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expectedToolCall: S.optional(ToolCall),
     mockToolResponse: S.optional(ToolResponse),
@@ -3144,7 +3127,7 @@ export interface EvaluationScenarioExpectation {
   /** Optional. The tool call and response pair to be evaluated. */
   toolExpectation?: EvaluationScenarioExpectationToolExpectation;
 }
-export const EvaluationScenarioExpectation = /*@__PURE__*/ S.suspend(() =>
+const EvaluationScenarioExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentResponse: S.optional(Message),
     toolExpectation: S.optional(EvaluationScenarioExpectationToolExpectation),
@@ -3164,7 +3147,7 @@ export interface EvaluationResultScenarioExpectationOutcome {
   /** Output only. The observed agent response. */
   observedAgentResponse?: Message;
 }
-export const EvaluationResultScenarioExpectationOutcome = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultScenarioExpectationOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome: S.optional(EvaluationResultScenarioExpectationOutcomeOutcomeEnum),
     observedToolCall: S.optional(EvaluationResultScenarioExpectationOutcomeObservedToolCall),
@@ -3177,7 +3160,7 @@ export const EvaluationResultScenarioExpectationOutcome = /*@__PURE__*/ S.suspen
 
 export type EvaluationResultScenarioExpectationOutcomeList =
   Array<EvaluationResultScenarioExpectationOutcome>;
-export const EvaluationResultScenarioExpectationOutcomeList = /*@__PURE__*/ S.Array(
+const EvaluationResultScenarioExpectationOutcomeList = /*@__PURE__*/ S.Array(
   EvaluationResultScenarioExpectationOutcome,
 ) as any as S.Schema<EvaluationResultScenarioExpectationOutcomeList>;
 
@@ -3190,7 +3173,7 @@ export interface EvaluationResultTaskCompletionResult {
   /** Output only. The task completion score. Can be -1, 0, 1 */
   score?: number;
 }
-export const EvaluationResultTaskCompletionResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultTaskCompletionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explanation: S.optional(S.String),
     label: S.optional(S.String),
@@ -3207,7 +3190,7 @@ export interface EvaluationScenarioUserFact {
   /** Required. The value of the user fact. */
   value?: string;
 }
-export const EvaluationScenarioUserFact = /*@__PURE__*/ S.suspend(() =>
+const EvaluationScenarioUserFact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.String),
@@ -3217,7 +3200,7 @@ export const EvaluationScenarioUserFact = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationScenarioUserFact>;
 
 export type EvaluationScenarioUserFactList = Array<EvaluationScenarioUserFact>;
-export const EvaluationScenarioUserFactList = /*@__PURE__*/ S.Array(
+const EvaluationScenarioUserFactList = /*@__PURE__*/ S.Array(
   EvaluationScenarioUserFact,
 ) as any as S.Schema<EvaluationScenarioUserFactList>;
 
@@ -3230,7 +3213,7 @@ export interface EvaluationResultScenarioRubricOutcome {
   /** Output only. The score of the conversation against the rubric. */
   score?: number;
 }
-export const EvaluationResultScenarioRubricOutcome = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultScenarioRubricOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scoreExplanation: S.optional(S.String),
     rubric: S.optional(S.String),
@@ -3242,7 +3225,7 @@ export const EvaluationResultScenarioRubricOutcome = /*@__PURE__*/ S.suspend(() 
 
 export type EvaluationResultScenarioRubricOutcomeList =
   Array<EvaluationResultScenarioRubricOutcome>;
-export const EvaluationResultScenarioRubricOutcomeList = /*@__PURE__*/ S.Array(
+const EvaluationResultScenarioRubricOutcomeList = /*@__PURE__*/ S.Array(
   EvaluationResultScenarioRubricOutcome,
 ) as any as S.Schema<EvaluationResultScenarioRubricOutcomeList>;
 
@@ -3259,7 +3242,7 @@ export interface EvaluationResultToolCallLatency {
   /** Output only. The name of the tool that got executed. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`. */
   tool?: string;
 }
-export const EvaluationResultToolCallLatency = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultToolCallLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionLatency: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -3272,7 +3255,7 @@ export const EvaluationResultToolCallLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultToolCallLatency>;
 
 export type EvaluationResultToolCallLatencyList = Array<EvaluationResultToolCallLatency>;
-export const EvaluationResultToolCallLatencyList = /*@__PURE__*/ S.Array(
+const EvaluationResultToolCallLatencyList = /*@__PURE__*/ S.Array(
   EvaluationResultToolCallLatency,
 ) as any as S.Schema<EvaluationResultToolCallLatencyList>;
 
@@ -3285,7 +3268,7 @@ export interface EvaluationResultHallucinationResult {
   /** Output only. The explanation for the hallucination score. */
   explanation?: string;
 }
-export const EvaluationResultHallucinationResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultHallucinationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     score: S.optional(S.Number),
@@ -3296,7 +3279,7 @@ export const EvaluationResultHallucinationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultHallucinationResult>;
 
 export type EvaluationResultHallucinationResultList = Array<EvaluationResultHallucinationResult>;
-export const EvaluationResultHallucinationResultList = /*@__PURE__*/ S.Array(
+const EvaluationResultHallucinationResultList = /*@__PURE__*/ S.Array(
   EvaluationResultHallucinationResult,
 ) as any as S.Schema<EvaluationResultHallucinationResultList>;
 
@@ -3329,7 +3312,7 @@ export interface EvaluationResultScenarioResult {
   /** Output only. The result of the hallucination check. There will be one hallucination result for each turn in the conversation. */
   hallucinationResult?: EvaluationResultHallucinationResultList;
 }
-export const EvaluationResultScenarioResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultScenarioResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userGoalSatisfactionResult: S.optional(EvaluationResultUserGoalSatisfactionResult),
     task: S.optional(S.String),
@@ -3354,7 +3337,7 @@ export type EvaluationResultOverallToolInvocationResultOutcomeEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultOverallToolInvocationResultOutcomeEnum = S.String;
+const EvaluationResultOverallToolInvocationResultOutcomeEnum = S.String;
 
 /** The result of the overall tool invocation check. */
 export interface EvaluationResultOverallToolInvocationResult {
@@ -3363,7 +3346,7 @@ export interface EvaluationResultOverallToolInvocationResult {
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the tool_invocation_score to the overall_tool_invocation_correctness_threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
   outcome?: EvaluationResultOverallToolInvocationResultOutcomeEnum | (string & {});
 }
-export const EvaluationResultOverallToolInvocationResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultOverallToolInvocationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolInvocationScore: S.optional(S.Number),
     outcome: S.optional(EvaluationResultOverallToolInvocationResultOutcomeEnum),
@@ -3377,7 +3360,7 @@ export type EvaluationResultSemanticSimilarityResultOutcomeEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultSemanticSimilarityResultOutcomeEnum = S.String;
+const EvaluationResultSemanticSimilarityResultOutcomeEnum = S.String;
 
 /** The result of the semantic similarity check. */
 export interface EvaluationResultSemanticSimilarityResult {
@@ -3390,7 +3373,7 @@ export interface EvaluationResultSemanticSimilarityResult {
   /** Output only. The semantic similarity score. Can be 0, 1, 2, 3, or 4. */
   score?: number;
 }
-export const EvaluationResultSemanticSimilarityResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultSemanticSimilarityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome: S.optional(EvaluationResultSemanticSimilarityResultOutcomeEnum),
     label: S.optional(S.String),
@@ -3409,7 +3392,7 @@ export type EvaluationErrorInfoErrorTypeEnum =
   | "EVALUATION_UPDATE_FAILURE"
   | "QUOTA_EXHAUSTED"
   | "USER_SIMULATION_FAILURE";
-export const EvaluationErrorInfoErrorTypeEnum = S.String;
+const EvaluationErrorInfoErrorTypeEnum = S.String;
 
 /** Information about an error encountered during an evaluation execution. */
 export interface EvaluationErrorInfo {
@@ -3422,7 +3405,7 @@ export interface EvaluationErrorInfo {
   /** Output only. The error message. */
   errorMessage?: string;
 }
-export const EvaluationErrorInfo = /*@__PURE__*/ S.suspend(() =>
+const EvaluationErrorInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userFacingErrorMessage: S.optional(S.String),
     errorType: S.optional(EvaluationErrorInfoErrorTypeEnum),
@@ -3436,21 +3419,21 @@ export type EvaluationResultGoldenExpectationOutcomeOutcomeEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultGoldenExpectationOutcomeOutcomeEnum = S.String;
+const EvaluationResultGoldenExpectationOutcomeOutcomeEnum = S.String;
 
 export type EvaluationGoldenExpectationComparisonTypeEnum =
   | "COMPARISON_TYPE_UNSPECIFIED"
   | "EQUALS"
   | "CONTAINS"
   | "SEMANTIC_SIMILARITY";
-export const EvaluationGoldenExpectationComparisonTypeEnum = S.String;
+const EvaluationGoldenExpectationComparisonTypeEnum = S.String;
 
 /** Configuration for the hallucination metrics for the evaluation. To disable the metric, set the message but do not set the `enable_hallucination_metrics` field to true (or explicitly set it to false). To unset the configuration and fallback to the default behavior, omit the message entirely. */
 export interface EvaluationMetricsConfigHallucinationMetricsConfig {
   /** Optional. Whether to calculate hallucination metrics for the evaluation. */
   enableHallucinationMetrics?: boolean;
 }
-export const EvaluationMetricsConfigHallucinationMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationMetricsConfigHallucinationMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableHallucinationMetrics: S.optional(S.Boolean),
   }),
@@ -3487,7 +3470,7 @@ export interface EvaluationGoldenExpectation {
   /** Optional. Check that a specific tool had the expected response. */
   toolResponse?: ToolResponse;
 }
-export const EvaluationGoldenExpectation = /*@__PURE__*/ S.suspend(() =>
+const EvaluationGoldenExpectation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentTransfer: S.optional(AgentTransfer),
     toolCall: S.optional(ToolCall),
@@ -3518,7 +3501,7 @@ export type EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeE
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum = S.String;
+const EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum = S.String;
 
 /** The result of the tool invocation check. */
 export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
@@ -3529,13 +3512,12 @@ export interface EvaluationResultGoldenExpectationOutcomeToolInvocationResult {
   /** Output only. The outcome of the tool invocation check. This is determined by comparing the parameter_correctness_score to the threshold. If the score is equal to or above the threshold, the outcome will be PASS. Otherwise, the outcome will be FAIL. */
   outcome?: EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum | (string & {});
 }
-export const EvaluationResultGoldenExpectationOutcomeToolInvocationResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parameterCorrectnessScore: S.optional(S.Number),
-      explanation: S.optional(S.String),
-      outcome: S.optional(EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum),
-    }),
+const EvaluationResultGoldenExpectationOutcomeToolInvocationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameterCorrectnessScore: S.optional(S.Number),
+    explanation: S.optional(S.String),
+    outcome: S.optional(EvaluationResultGoldenExpectationOutcomeToolInvocationResultOutcomeEnum),
+  }),
 ).annotate({
   identifier: "EvaluationResultGoldenExpectationOutcomeToolInvocationResult",
 }) as any as S.Schema<EvaluationResultGoldenExpectationOutcomeToolInvocationResult>;
@@ -3561,7 +3543,7 @@ export interface EvaluationResultGoldenExpectationOutcome {
   /** Output only. The result of the tool response expectation. */
   observedToolResponse?: ToolResponse;
 }
-export const EvaluationResultGoldenExpectationOutcome = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultGoldenExpectationOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     semanticSimilarityResult: S.optional(EvaluationResultSemanticSimilarityResult),
     outcome: S.optional(EvaluationResultGoldenExpectationOutcomeOutcomeEnum),
@@ -3579,7 +3561,7 @@ export const EvaluationResultGoldenExpectationOutcome = /*@__PURE__*/ S.suspend(
 
 export type EvaluationResultGoldenExpectationOutcomeList =
   Array<EvaluationResultGoldenExpectationOutcome>;
-export const EvaluationResultGoldenExpectationOutcomeList = /*@__PURE__*/ S.Array(
+const EvaluationResultGoldenExpectationOutcomeList = /*@__PURE__*/ S.Array(
   EvaluationResultGoldenExpectationOutcome,
 ) as any as S.Schema<EvaluationResultGoldenExpectationOutcomeList>;
 
@@ -3608,7 +3590,7 @@ export interface EvaluationResultGoldenResultTurnReplayResult {
   /** Output only. Deprecated. Use OverallToolInvocationResult instead. */
   toolInvocationScore?: number;
 }
-export const EvaluationResultGoldenResultTurnReplayResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultGoldenResultTurnReplayResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolCallLatencies: S.optional(EvaluationResultToolCallLatencyList),
     overallToolInvocationResult: S.optional(EvaluationResultOverallToolInvocationResult),
@@ -3628,7 +3610,7 @@ export const EvaluationResultGoldenResultTurnReplayResult = /*@__PURE__*/ S.susp
 
 export type EvaluationResultGoldenResultTurnReplayResultList =
   Array<EvaluationResultGoldenResultTurnReplayResult>;
-export const EvaluationResultGoldenResultTurnReplayResultList = /*@__PURE__*/ S.Array(
+const EvaluationResultGoldenResultTurnReplayResultList = /*@__PURE__*/ S.Array(
   EvaluationResultGoldenResultTurnReplayResult,
 ) as any as S.Schema<EvaluationResultGoldenResultTurnReplayResultList>;
 
@@ -3639,7 +3621,7 @@ export interface EvaluationResultGoldenResult {
   /** Output only. The result of running each turn of the golden conversation. */
   turnReplayResults?: EvaluationResultGoldenResultTurnReplayResultList;
 }
-export const EvaluationResultGoldenResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResultGoldenResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationExpectationResults: S.optional(EvaluationResultEvaluationExpectationResultList),
     turnReplayResults: S.optional(EvaluationResultGoldenResultTurnReplayResultList),
@@ -3649,7 +3631,7 @@ export const EvaluationResultGoldenResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluationResultGoldenResult>;
 
 export type SpanList = Array<Span>;
-export const SpanList = /*@__PURE__*/ S.Array(S.suspend(() => Span)) as any as S.Schema<SpanList>;
+const SpanList = /*@__PURE__*/ S.Array(S.suspend(() => Span)) as any as S.Schema<SpanList>;
 
 /** A span is a unit of work or a single operation during the request processing. */
 export interface Span {
@@ -3666,7 +3648,7 @@ export interface Span {
   /** Output only. The name of the span. */
   name?: string;
 }
-export const Span = /*@__PURE__*/ S.suspend(() =>
+const Span = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -3682,20 +3664,20 @@ export type EvaluationResultEvaluationStatusEnum =
   | "PASS"
   | "FAIL"
   | "SKIPPED";
-export const EvaluationResultEvaluationStatusEnum = S.String;
+const EvaluationResultEvaluationStatusEnum = S.String;
 
 export type EvaluationConfigToolCallBehaviourEnum =
   | "EVALUATION_TOOL_CALL_BEHAVIOUR_UNSPECIFIED"
   | "REAL"
   | "FAKE";
-export const EvaluationConfigToolCallBehaviourEnum = S.String;
+const EvaluationConfigToolCallBehaviourEnum = S.String;
 
 export type InputAudioConfigAudioEncodingEnum =
   | "AUDIO_ENCODING_UNSPECIFIED"
   | "LINEAR16"
   | "MULAW"
   | "ALAW";
-export const InputAudioConfigAudioEncodingEnum = S.String;
+const InputAudioConfigAudioEncodingEnum = S.String;
 
 /** InputAudioConfig configures how the CES agent should interpret the incoming audio data. */
 export interface InputAudioConfig {
@@ -3706,7 +3688,7 @@ export interface InputAudioConfig {
   /** Required. The sample rate (in Hertz) of the input audio data. */
   sampleRateHertz?: number;
 }
-export const InputAudioConfig = /*@__PURE__*/ S.suspend(() =>
+const InputAudioConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     noiseSuppressionLevel: S.optional(S.String),
     audioEncoding: S.optional(InputAudioConfigAudioEncodingEnum),
@@ -3719,7 +3701,7 @@ export type OutputAudioConfigAudioEncodingEnum =
   | "LINEAR16"
   | "MULAW"
   | "ALAW";
-export const OutputAudioConfigAudioEncodingEnum = S.String;
+const OutputAudioConfigAudioEncodingEnum = S.String;
 
 /** OutputAudioConfig configures how the CES agent should synthesize outgoing audio responses. */
 export interface OutputAudioConfig {
@@ -3728,7 +3710,7 @@ export interface OutputAudioConfig {
   /** Required. The sample rate (in Hertz) of the output audio data. */
   sampleRateHertz?: number;
 }
-export const OutputAudioConfig = /*@__PURE__*/ S.suspend(() =>
+const OutputAudioConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioEncoding: S.optional(OutputAudioConfigAudioEncodingEnum),
     sampleRateHertz: S.optional(S.Number),
@@ -3739,7 +3721,7 @@ export type EvaluationConfigEvaluationChannelEnum =
   | "EVALUATION_CHANNEL_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
-export const EvaluationConfigEvaluationChannelEnum = S.String;
+const EvaluationConfigEvaluationChannelEnum = S.String;
 
 /** EvaluationConfig configures settings for running the evaluation. */
 export interface EvaluationConfig {
@@ -3752,7 +3734,7 @@ export interface EvaluationConfig {
   /** Optional. The channel to evaluate. */
   evaluationChannel?: EvaluationConfigEvaluationChannelEnum | (string & {});
 }
-export const EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
+const EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolCallBehaviour: S.optional(EvaluationConfigToolCallBehaviourEnum),
     inputAudioConfig: S.optional(InputAudioConfig),
@@ -3764,7 +3746,7 @@ export const EvaluationConfig = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationResultOutcomeMetadataEnum =
   | "OUTCOME_METADATA_UNSPECIFIED"
   | "GRACEFUL_HANDOFF";
-export const EvaluationResultOutcomeMetadataEnum = S.String;
+const EvaluationResultOutcomeMetadataEnum = S.String;
 
 /** An evaluation result represents the output of running an Evaluation. */
 export interface EvaluationResult {
@@ -3811,7 +3793,7 @@ export interface EvaluationResult {
   /** Identifier. The unique identifier of the evaluation result. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}/results/{result}` */
   name?: string;
 }
-export const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
+const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     executionState: S.optional(EvaluationResultExecutionStateEnum),
@@ -3838,7 +3820,7 @@ export const EvaluationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationResult" }) as any as S.Schema<EvaluationResult>;
 
 export type EvaluationResultList = Array<EvaluationResult>;
-export const EvaluationResultList = /*@__PURE__*/ S.Array(
+const EvaluationResultList = /*@__PURE__*/ S.Array(
   EvaluationResult,
 ) as any as S.Schema<EvaluationResultList>;
 
@@ -3846,10 +3828,10 @@ export type EvaluationScenarioTaskCompletionBehaviorEnum =
   | "TASK_COMPLETION_BEHAVIOR_UNSPECIFIED"
   | "TASK_SATISFIED"
   | "TASK_REJECTED";
-export const EvaluationScenarioTaskCompletionBehaviorEnum = S.String;
+const EvaluationScenarioTaskCompletionBehaviorEnum = S.String;
 
 export type EvaluationScenarioExpectationList = Array<EvaluationScenarioExpectation>;
-export const EvaluationScenarioExpectationList = /*@__PURE__*/ S.Array(
+const EvaluationScenarioExpectationList = /*@__PURE__*/ S.Array(
   EvaluationScenarioExpectation,
 ) as any as S.Schema<EvaluationScenarioExpectationList>;
 
@@ -3857,14 +3839,14 @@ export type EvaluationScenarioScenarioExecutionModeEnum =
   | "SCENARIO_EXECUTION_MODE_UNSPECIFIED"
   | "QUALITY_OPTIMIZED"
   | "SPEED_OPTIMIZED";
-export const EvaluationScenarioScenarioExecutionModeEnum = S.String;
+const EvaluationScenarioScenarioExecutionModeEnum = S.String;
 
 export type EvaluationScenarioUserGoalBehaviorEnum =
   | "USER_GOAL_BEHAVIOR_UNSPECIFIED"
   | "USER_GOAL_SATISFIED"
   | "USER_GOAL_REJECTED"
   | "USER_GOAL_IGNORED";
-export const EvaluationScenarioUserGoalBehaviorEnum = S.String;
+const EvaluationScenarioUserGoalBehaviorEnum = S.String;
 
 /** The config for a scenario */
 export interface EvaluationScenario {
@@ -3889,7 +3871,7 @@ export interface EvaluationScenario {
   /** Required. The task to be targeted by the scenario. */
   task?: string;
 }
-export const EvaluationScenario = /*@__PURE__*/ S.suspend(() =>
+const EvaluationScenario = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskCompletionBehavior: S.optional(EvaluationScenarioTaskCompletionBehaviorEnum),
     evaluationExpectations: S.optional(StringList),
@@ -3911,7 +3893,7 @@ export interface Event {
   /** Required. The name of the event. */
   event?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variables: S.optional(DocumentMap),
     event: S.optional(S.String),
@@ -3919,16 +3901,14 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export type ToolResponseList = Array<ToolResponse>;
-export const ToolResponseList = /*@__PURE__*/ S.Array(
-  ToolResponse,
-) as any as S.Schema<ToolResponseList>;
+const ToolResponseList = /*@__PURE__*/ S.Array(ToolResponse) as any as S.Schema<ToolResponseList>;
 
 /** Execution results for the requested tool calls from the client. */
 export interface ToolResponses {
   /** Optional. The list of tool execution results. */
   toolResponses?: ToolResponseList;
 }
-export const ToolResponses = /*@__PURE__*/ S.suspend(() =>
+const ToolResponses = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolResponses: S.optional(ToolResponseList),
   }),
@@ -3955,7 +3935,7 @@ export interface SessionInput {
   /** Optional. Blob data from the end user. */
   blob?: Blob;
 }
-export const SessionInput = /*@__PURE__*/ S.suspend(() =>
+const SessionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio: S.optional(S.String),
     text: S.optional(S.String),
@@ -3978,7 +3958,7 @@ export interface EvaluationStep {
   /** Optional. Transfer the conversation to a different agent. */
   agentTransfer?: AgentTransfer;
 }
-export const EvaluationStep = /*@__PURE__*/ S.suspend(() =>
+const EvaluationStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userInput: S.optional(SessionInput),
     expectation: S.optional(EvaluationGoldenExpectation),
@@ -3987,7 +3967,7 @@ export const EvaluationStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationStep" }) as any as S.Schema<EvaluationStep>;
 
 export type EvaluationStepList = Array<EvaluationStep>;
-export const EvaluationStepList = /*@__PURE__*/ S.Array(
+const EvaluationStepList = /*@__PURE__*/ S.Array(
   EvaluationStep,
 ) as any as S.Schema<EvaluationStepList>;
 
@@ -3995,7 +3975,7 @@ export type EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum =
   | "HALLUCINATION_METRIC_BEHAVIOR_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum = S.String;
+const EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum = S.String;
 
 /** A golden turn defines a single turn in a golden conversation. */
 export interface EvaluationGoldenTurn {
@@ -4010,7 +3990,7 @@ export interface EvaluationGoldenTurn {
     | EvaluationGoldenTurnHallucinationMetricBehaviorOverrideEnum
     | (string & {});
 }
-export const EvaluationGoldenTurn = /*@__PURE__*/ S.suspend(() =>
+const EvaluationGoldenTurn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rootSpan: S.optional(Span),
     turnLevelMetricsThresholdsOverride: S.optional(
@@ -4024,7 +4004,7 @@ export const EvaluationGoldenTurn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationGoldenTurn" }) as any as S.Schema<EvaluationGoldenTurn>;
 
 export type EvaluationGoldenTurnList = Array<EvaluationGoldenTurn>;
-export const EvaluationGoldenTurnList = /*@__PURE__*/ S.Array(
+const EvaluationGoldenTurnList = /*@__PURE__*/ S.Array(
   EvaluationGoldenTurn,
 ) as any as S.Schema<EvaluationGoldenTurnList>;
 
@@ -4035,7 +4015,7 @@ export interface EvaluationGolden {
   /** Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}` */
   evaluationExpectations?: StringList;
 }
-export const EvaluationGolden = /*@__PURE__*/ S.suspend(() =>
+const EvaluationGolden = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turns: S.optional(EvaluationGoldenTurnList),
     evaluationExpectations: S.optional(StringList),
@@ -4083,7 +4063,7 @@ export interface Evaluation {
   /** Output only. The user who last updated the evaluation. */
   lastUpdatedBy?: string;
 }
-export const Evaluation = /*@__PURE__*/ S.suspend(() =>
+const Evaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invalid: S.optional(S.Boolean),
     lastTenResults: S.optional(EvaluationResultList),
@@ -4115,7 +4095,7 @@ export interface CreateProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
-export const CreateProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     evaluationId: S.optional(S.String.pipe(T.Query())),
@@ -4132,7 +4112,7 @@ export const CreateProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateProjectsLocationsAppsEvaluationsRequest>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 /** An example represents a sample conversation between the user and the agent(s). */
 export interface Example {
@@ -4155,7 +4135,7 @@ export interface Example {
   /** Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
-export const Example = /*@__PURE__*/ S.suspend(() =>
+const Example = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entryAgent: S.optional(S.String),
     messages: S.optional(MessageList),
@@ -4177,7 +4157,7 @@ export interface CreateProjectsLocationsAppsExamplesRequest {
   /** Request body */
   body?: Example;
 }
-export const CreateProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exampleId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4197,7 +4177,7 @@ export type GuardrailSupervisorDetectionModeEnum =
   | "DETECTION_MODE_UNSPECIFIED"
   | "NON_BLOCKING"
   | "BLOCKING";
-export const GuardrailSupervisorDetectionModeEnum = S.String;
+const GuardrailSupervisorDetectionModeEnum = S.String;
 
 export type GuardrailSupervisorTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -4209,7 +4189,7 @@ export type GuardrailSupervisorTypeEnum =
   | "CUSTOM"
   | "CHOPPY_AUDIO"
   | "PROFANITY";
-export const GuardrailSupervisorTypeEnum = S.String;
+const GuardrailSupervisorTypeEnum = S.String;
 
 /** Guardrail that runs supervisor intervention. */
 export interface GuardrailSupervisor {
@@ -4218,7 +4198,7 @@ export interface GuardrailSupervisor {
   /** Optional. The type of the supervisor. */
   type?: GuardrailSupervisorTypeEnum | (string & {});
 }
-export const GuardrailSupervisor = /*@__PURE__*/ S.suspend(() =>
+const GuardrailSupervisor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     detectionMode: S.optional(GuardrailSupervisorDetectionModeEnum),
     type: S.optional(GuardrailSupervisorTypeEnum),
@@ -4233,7 +4213,7 @@ export type GuardrailModelSafetySafetySettingCategoryEnum =
   | "HARM_CATEGORY_SEXUALLY_EXPLICIT"
   | "HARM_CATEGORY_PROFANITY"
   | "HARM_CATEGORY_TOXIC";
-export const GuardrailModelSafetySafetySettingCategoryEnum = S.String;
+const GuardrailModelSafetySafetySettingCategoryEnum = S.String;
 
 export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "HARM_BLOCK_THRESHOLD_UNSPECIFIED"
@@ -4242,7 +4222,7 @@ export type GuardrailModelSafetySafetySettingThresholdEnum =
   | "BLOCK_ONLY_HIGH"
   | "BLOCK_NONE"
   | "OFF";
-export const GuardrailModelSafetySafetySettingThresholdEnum = S.String;
+const GuardrailModelSafetySafetySettingThresholdEnum = S.String;
 
 /** Safety setting. */
 export interface GuardrailModelSafetySafetySetting {
@@ -4251,7 +4231,7 @@ export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm block threshold. */
   threshold?: GuardrailModelSafetySafetySettingThresholdEnum | (string & {});
 }
-export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
+const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(GuardrailModelSafetySafetySettingCategoryEnum),
     threshold: S.optional(GuardrailModelSafetySafetySettingThresholdEnum),
@@ -4261,7 +4241,7 @@ export const GuardrailModelSafetySafetySetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailModelSafetySafetySetting>;
 
 export type GuardrailModelSafetySafetySettingList = Array<GuardrailModelSafetySafetySetting>;
-export const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ S.Array(
+const GuardrailModelSafetySafetySettingList = /*@__PURE__*/ S.Array(
   GuardrailModelSafetySafetySetting,
 ) as any as S.Schema<GuardrailModelSafetySafetySettingList>;
 
@@ -4270,7 +4250,7 @@ export interface GuardrailModelSafety {
   /** Required. List of safety settings. */
   safetySettings?: GuardrailModelSafetySafetySettingList;
 }
-export const GuardrailModelSafety = /*@__PURE__*/ S.suspend(() =>
+const GuardrailModelSafety = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     safetySettings: S.optional(GuardrailModelSafetySafetySettingList),
   }),
@@ -4281,7 +4261,7 @@ export interface GuardrailLlmPromptSecurityDefaultSecuritySettings {
   /** Output only. The default prompt template used by the system. This field is for display purposes to show the user what prompt the system uses by default. It is OUTPUT_ONLY. */
   defaultPromptTemplate?: string;
 }
-export const GuardrailLlmPromptSecurityDefaultSecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const GuardrailLlmPromptSecurityDefaultSecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultPromptTemplate: S.optional(S.String),
   }),
@@ -4294,7 +4274,7 @@ export type GuardrailLlmPolicyPolicyScopeEnum =
   | "USER_QUERY"
   | "AGENT_RESPONSE"
   | "USER_QUERY_AND_AGENT_RESPONSE";
-export const GuardrailLlmPolicyPolicyScopeEnum = S.String;
+const GuardrailLlmPolicyPolicyScopeEnum = S.String;
 
 /** Guardrail that blocks the conversation if the LLM response is considered violating the policy based on the LLM classification. */
 export interface GuardrailLlmPolicy {
@@ -4311,7 +4291,7 @@ export interface GuardrailLlmPolicy {
   /** Optional. If an error occurs during the policy check, fail open and do not trigger the guardrail. */
   failOpen?: boolean;
 }
-export const GuardrailLlmPolicy = /*@__PURE__*/ S.suspend(() =>
+const GuardrailLlmPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelSettings: S.optional(ModelSettings),
     allowShortUtterance: S.optional(S.Boolean),
@@ -4331,7 +4311,7 @@ export interface GuardrailLlmPromptSecurity {
   /** Optional. Use a user-defined LlmPolicy to configure the security guardrail. */
   customPolicy?: GuardrailLlmPolicy;
 }
-export const GuardrailLlmPromptSecurity = /*@__PURE__*/ S.suspend(() =>
+const GuardrailLlmPromptSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     failOpen: S.optional(S.Boolean),
     defaultSettings: S.optional(GuardrailLlmPromptSecurityDefaultSecuritySettings),
@@ -4346,7 +4326,7 @@ export type GuardrailContentFilterMatchTypeEnum =
   | "SIMPLE_STRING_MATCH"
   | "WORD_BOUNDARY_STRING_MATCH"
   | "REGEXP_MATCH";
-export const GuardrailContentFilterMatchTypeEnum = S.String;
+const GuardrailContentFilterMatchTypeEnum = S.String;
 
 /** Guardrail that bans certain content from being used in the conversation. */
 export interface GuardrailContentFilter {
@@ -4361,7 +4341,7 @@ export interface GuardrailContentFilter {
   /** Optional. List of banned phrases. Applies only to agent responses. */
   bannedContentsInAgentResponse?: StringList;
 }
-export const GuardrailContentFilter = /*@__PURE__*/ S.suspend(() =>
+const GuardrailContentFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bannedContentsInUserInput: S.optional(StringList),
     bannedContents: S.optional(StringList),
@@ -4382,7 +4362,7 @@ export interface GuardrailCodeCallback {
   /** Optional. The callback to execute after the agent is called. Each callback function is expected to return a structure (e.g., a dict or object) containing at least: - 'decision': Either 'OK' or 'TRIGGER'. - 'reason': A string explaining the decision. A 'TRIGGER' decision may halt further processing. */
   afterAgentCallback?: Callback;
 }
-export const GuardrailCodeCallback = /*@__PURE__*/ S.suspend(() =>
+const GuardrailCodeCallback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beforeAgentCallback: S.optional(Callback),
     afterModelCallback: S.optional(Callback),
@@ -4396,7 +4376,7 @@ export interface TriggerActionTransferAgent {
   /** Required. The name of the agent to transfer the conversation to. The agent must be in the same app as the current agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   agent?: string;
 }
-export const TriggerActionTransferAgent = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionTransferAgent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agent: S.optional(S.String),
   }),
@@ -4411,7 +4391,7 @@ export interface TriggerActionResponse {
   /** Optional. Whether the response is disabled. Disabled responses are not used by the agent. */
   disabled?: boolean;
 }
-export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     disabled: S.optional(S.Boolean),
@@ -4419,7 +4399,7 @@ export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerActionResponse" }) as any as S.Schema<TriggerActionResponse>;
 
 export type TriggerActionResponseList = Array<TriggerActionResponse>;
-export const TriggerActionResponseList = /*@__PURE__*/ S.Array(
+const TriggerActionResponseList = /*@__PURE__*/ S.Array(
   TriggerActionResponse,
 ) as any as S.Schema<TriggerActionResponseList>;
 
@@ -4428,7 +4408,7 @@ export interface TriggerActionRespondImmediately {
   /** Required. The canned responses for the agent to choose from. The response is chosen randomly. */
   responses?: TriggerActionResponseList;
 }
-export const TriggerActionRespondImmediately = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionRespondImmediately = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responses: S.optional(TriggerActionResponseList),
   }),
@@ -4441,7 +4421,7 @@ export interface TriggerActionGenerativeAnswer {
   /** Required. The prompt to use for the generative answer. */
   prompt?: string;
 }
-export const TriggerActionGenerativeAnswer =
+const TriggerActionGenerativeAnswer =
   EvaluationExpectationLlmCriteria as any as S.Schema<TriggerActionGenerativeAnswer>;
 
 /** Action that is taken when a certain precondition is met. */
@@ -4453,7 +4433,7 @@ export interface TriggerAction {
   /** Optional. Respond with a generative answer. */
   generativeAnswer?: TriggerActionGenerativeAnswer;
 }
-export const TriggerAction = /*@__PURE__*/ S.suspend(() =>
+const TriggerAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferAgent: S.optional(TriggerActionTransferAgent),
     respondImmediately: S.optional(TriggerActionRespondImmediately),
@@ -4492,7 +4472,7 @@ export interface Guardrail {
   /** Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
-export const Guardrail = /*@__PURE__*/ S.suspend(() =>
+const Guardrail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supervisor: S.optional(GuardrailSupervisor),
     modelSafety: S.optional(GuardrailModelSafety),
@@ -4519,7 +4499,7 @@ export interface CreateProjectsLocationsAppsGuardrailsRequest {
   /** Request body */
   body?: Guardrail;
 }
-export const CreateProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     guardrailId: S.optional(S.String.pipe(T.Query())),
@@ -4536,7 +4516,7 @@ export const CreateProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CreateProjectsLocationsAppsGuardrailsRequest>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 export type ScheduledEvaluationRunSchedulingConfigFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
@@ -4544,7 +4524,7 @@ export type ScheduledEvaluationRunSchedulingConfigFrequencyEnum =
   | "DAILY"
   | "WEEKLY"
   | "BIWEEKLY";
-export const ScheduledEvaluationRunSchedulingConfigFrequencyEnum = S.String;
+const ScheduledEvaluationRunSchedulingConfigFrequencyEnum = S.String;
 
 /** Eval scheduling configuration details */
 export interface ScheduledEvaluationRunSchedulingConfig {
@@ -4555,7 +4535,7 @@ export interface ScheduledEvaluationRunSchedulingConfig {
   /** Required. Timestamp when the eval should start. */
   startTime?: string;
 }
-export const ScheduledEvaluationRunSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
+const ScheduledEvaluationRunSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     daysOfWeek: S.optional(IntegerList),
     frequency: S.optional(ScheduledEvaluationRunSchedulingConfigFrequencyEnum),
@@ -4569,7 +4549,7 @@ export type RunEvaluationRequestGoldenRunMethodEnum =
   | "GOLDEN_RUN_METHOD_UNSPECIFIED"
   | "STABLE"
   | "NAIVE";
-export const RunEvaluationRequestGoldenRunMethodEnum = S.String;
+const RunEvaluationRequestGoldenRunMethodEnum = S.String;
 
 /** Configuration for running an evaluation for a specific persona. */
 export interface PersonaRunConfig {
@@ -4578,7 +4558,7 @@ export interface PersonaRunConfig {
   /** Optional. The persona to use for the evaluation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationPersonas/{evaluationPersona}` */
   persona?: string;
 }
-export const PersonaRunConfig = /*@__PURE__*/ S.suspend(() =>
+const PersonaRunConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskCount: S.optional(S.Number),
     persona: S.optional(S.String),
@@ -4586,7 +4566,7 @@ export const PersonaRunConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PersonaRunConfig" }) as any as S.Schema<PersonaRunConfig>;
 
 export type PersonaRunConfigList = Array<PersonaRunConfig>;
-export const PersonaRunConfigList = /*@__PURE__*/ S.Array(
+const PersonaRunConfigList = /*@__PURE__*/ S.Array(
   PersonaRunConfig,
 ) as any as S.Schema<PersonaRunConfigList>;
 
@@ -4595,7 +4575,7 @@ export type OptimizationConfigStatusEnum =
   | "RUNNING"
   | "COMPLETED"
   | "ERROR";
-export const OptimizationConfigStatusEnum = S.String;
+const OptimizationConfigStatusEnum = S.String;
 
 /** Configuration for running the optimization step after the evaluation run. */
 export interface OptimizationConfig {
@@ -4614,7 +4594,7 @@ export interface OptimizationConfig {
   /** Output only. The summary of the loss report. */
   reportSummary?: string;
 }
-export const OptimizationConfig = /*@__PURE__*/ S.suspend(() =>
+const OptimizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorMessage: S.optional(S.String),
     shouldSuggestFix: S.optional(S.Boolean),
@@ -4655,7 +4635,7 @@ export interface RunEvaluationRequest {
   /** Optional. Configuration for running the optimization step after the evaluation run. If not set, the optimization step will not be run. */
   optimizationConfig?: OptimizationConfig;
 }
-export const RunEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generateLatencyReport: S.optional(S.Boolean),
     evaluations: S.optional(StringList),
@@ -4704,7 +4684,7 @@ export interface ScheduledEvaluationRun {
   /** Required. The RunEvaluationRequest to schedule */
   request?: RunEvaluationRequest;
 }
-export const ScheduledEvaluationRun = /*@__PURE__*/ S.suspend(() =>
+const ScheduledEvaluationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     lastCompletedRun: S.optional(S.String),
@@ -4731,25 +4711,24 @@ export interface CreateProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Request body */
   body?: ScheduledEvaluationRun;
 }
-export const CreateProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      scheduledEvaluationRunId: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+parent}/scheduledEvaluationRuns",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    scheduledEvaluationRunId: S.optional(S.String.pipe(T.Query())),
+    body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+parent}/scheduledEvaluationRuns",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsAppsScheduledEvaluationRunsRequest",
 }) as any as S.Schema<CreateProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type ToolExecutionTypeEnum = "EXECUTION_TYPE_UNSPECIFIED" | "SYNCHRONOUS" | "ASYNCHRONOUS";
-export const ToolExecutionTypeEnum = S.String;
+const ToolExecutionTypeEnum = S.String;
 
 /** Pre-defined system tool. */
 export interface SystemTool {
@@ -4758,7 +4737,7 @@ export interface SystemTool {
   /** Output only. The description of the system tool. */
   description?: string;
 }
-export const SystemTool = /*@__PURE__*/ S.suspend(() =>
+const SystemTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -4776,7 +4755,7 @@ export interface ClientFunction {
   /** Optional. The schema of the function parameters. */
   parameters?: Ces_Schema;
 }
-export const ClientFunction = /*@__PURE__*/ S.suspend(() =>
+const ClientFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     response: S.optional(Ces_Schema),
@@ -4789,7 +4768,7 @@ export type FileSearchToolCorpusTypeEnum =
   | "CORPUS_TYPE_UNSPECIFIED"
   | "USER_OWNED"
   | "FULLY_MANAGED";
-export const FileSearchToolCorpusTypeEnum = S.String;
+const FileSearchToolCorpusTypeEnum = S.String;
 
 /** The file search tool allows the agent to search across the files uploaded by the app/agent developer. It has presets to give relatively good quality search over the uploaded files and summarization of the retrieved results. */
 export interface FileSearchTool {
@@ -4802,7 +4781,7 @@ export interface FileSearchTool {
   /** Optional. The type of the corpus. Default is FULLY_MANAGED. */
   corpusType?: FileSearchToolCorpusTypeEnum | (string & {});
 }
-export const FileSearchTool = /*@__PURE__*/ S.suspend(() =>
+const FileSearchTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fileCorpus: S.optional(S.String),
@@ -4816,7 +4795,7 @@ export interface ServiceDirectoryConfig {
   /** Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`. Location of the service directory must be the same as the location of the app. */
   service?: string;
 }
-export const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
+const ServiceDirectoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
   }),
@@ -4829,7 +4808,7 @@ export interface TlsConfigCaCert {
   /** Required. The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates. */
   displayName?: string;
 }
-export const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
+const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cert: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -4837,7 +4816,7 @@ export const TlsConfigCaCert = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TlsConfigCaCert" }) as any as S.Schema<TlsConfigCaCert>;
 
 export type TlsConfigCaCertList = Array<TlsConfigCaCert>;
-export const TlsConfigCaCertList = /*@__PURE__*/ S.Array(
+const TlsConfigCaCertList = /*@__PURE__*/ S.Array(
   TlsConfigCaCert,
 ) as any as S.Schema<TlsConfigCaCertList>;
 
@@ -4846,7 +4825,7 @@ export interface TlsConfig {
   /** Required. Specifies a list of allowed custom CA certificates for HTTPS verification. */
   caCerts?: TlsConfigCaCertList;
 }
-export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
+const TlsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     caCerts: S.optional(TlsConfigCaCertList),
   }),
@@ -4871,7 +4850,7 @@ export interface OpenApiTool {
   /** Optional. If true, the agent will ignore unknown fields in the API response. */
   ignoreUnknownFields?: boolean;
 }
-export const OpenApiTool = /*@__PURE__*/ S.suspend(() =>
+const OpenApiTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     serviceDirectoryConfig: S.optional(ServiceDirectoryConfig),
@@ -4889,7 +4868,7 @@ export interface CodeBlock {
   /** Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead. */
   pythonCode?: string;
 }
-export const CodeBlock = PythonCodeCondition as any as S.Schema<CodeBlock>;
+const CodeBlock = PythonCodeCondition as any as S.Schema<CodeBlock>;
 
 /** Configuration for tool behavior in fake mode. */
 export interface ToolFakeConfig {
@@ -4898,7 +4877,7 @@ export interface ToolFakeConfig {
   /** Optional. Whether the tool is using fake mode. */
   enableFakeMode?: boolean;
 }
-export const ToolFakeConfig = /*@__PURE__*/ S.suspend(() =>
+const ToolFakeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     codeBlock: S.optional(CodeBlock),
     enableFakeMode: S.optional(S.Boolean),
@@ -4906,7 +4885,7 @@ export const ToolFakeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToolFakeConfig" }) as any as S.Schema<ToolFakeConfig>;
 
 export type McpToolStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE" | "STALE";
-export const McpToolStateEnum = S.String;
+const McpToolStateEnum = S.String;
 
 /** An MCP tool. See https://modelcontextprotocol.io/specification/2025-06-18/server/tools for more details. */
 export interface McpTool {
@@ -4933,7 +4912,7 @@ export interface McpTool {
   /** Optional. The schema of the input arguments of the MCP tool. */
   inputSchema?: Ces_Schema;
 }
-export const McpTool = /*@__PURE__*/ S.suspend(() =>
+const McpTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     apiAuthentication: S.optional(ApiAuthentication),
@@ -4952,14 +4931,13 @@ export const McpTool = /*@__PURE__*/ S.suspend(() =>
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
   | "INTERPOLATION_TYPE_UNSPECIFIED"
   | "LINEAR";
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum =
-  S.String;
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum = S.String;
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum =
   | "ATTRIBUTE_TYPE_UNSPECIFIED"
   | "NUMERICAL"
   | "FRESHNESS";
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum = S.String;
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum = S.String;
 
 /** The control points used to define the curve. The curve defined through these control points can only be monotonically increasing or decreasing(constant values are acceptable). */
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint {
@@ -4968,7 +4946,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControl
   /** Optional. The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value specified above. */
   boostAmount?: number;
 }
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       attributeValue: S.optional(S.String),
@@ -4980,7 +4958,7 @@ export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoin
 
 export type DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList =
   /*@__PURE__*/ S.Array(
     DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
   ) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList>;
@@ -5000,20 +4978,19 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The control points used to define the curve. The monotonic function (defined through the interpolation_type above) passes through the control points listed here. */
   controlPoints?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList;
 }
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      interpolationType: S.optional(
-        DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum,
-      ),
-      fieldName: S.optional(S.String),
-      attributeType: S.optional(
-        DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum,
-      ),
-      controlPoints: S.optional(
-        DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList,
-      ),
-    }),
+const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interpolationType: S.optional(
+      DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecInterpolationTypeEnum,
+    ),
+    fieldName: S.optional(S.String),
+    attributeType: S.optional(
+      DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecAttributeTypeEnum,
+    ),
+    controlPoints: S.optional(
+      DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPointList,
+    ),
+  }),
 ).annotate({
   identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec",
 }) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec>;
@@ -5027,7 +5004,7 @@ export interface DataStoreToolBoostSpecConditionBoostSpec {
   /** Required. An expression which specifies a boost condition. The syntax is the same as filter expression syntax. Currently, the only supported condition is a list of BCP-47 lang codes. Example: To boost suggestions in languages en or fr: (lang_code: ANY("en", "fr")) */
   condition?: string;
 }
-export const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boost: S.optional(S.Number),
     boostControlSpec: S.optional(DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec),
@@ -5039,7 +5016,7 @@ export const DataStoreToolBoostSpecConditionBoostSpec = /*@__PURE__*/ S.suspend(
 
 export type DataStoreToolBoostSpecConditionBoostSpecList =
   Array<DataStoreToolBoostSpecConditionBoostSpec>;
-export const DataStoreToolBoostSpecConditionBoostSpecList = /*@__PURE__*/ S.Array(
+const DataStoreToolBoostSpecConditionBoostSpecList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpecConditionBoostSpec,
 ) as any as S.Schema<DataStoreToolBoostSpecConditionBoostSpecList>;
 
@@ -5048,14 +5025,14 @@ export interface DataStoreToolBoostSpec {
   /** Required. A list of boosting specifications. */
   conditionBoostSpecs?: DataStoreToolBoostSpecConditionBoostSpecList;
 }
-export const DataStoreToolBoostSpec = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolBoostSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conditionBoostSpecs: S.optional(DataStoreToolBoostSpecConditionBoostSpecList),
   }),
 ).annotate({ identifier: "DataStoreToolBoostSpec" }) as any as S.Schema<DataStoreToolBoostSpec>;
 
 export type DataStoreToolBoostSpecList = Array<DataStoreToolBoostSpec>;
-export const DataStoreToolBoostSpecList = /*@__PURE__*/ S.Array(
+const DataStoreToolBoostSpecList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpec,
 ) as any as S.Schema<DataStoreToolBoostSpecList>;
 
@@ -5066,7 +5043,7 @@ export interface DataStoreToolBoostSpecs {
   /** Required. A list of boosting specifications. */
   spec?: DataStoreToolBoostSpecList;
 }
-export const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataStores: S.optional(StringList),
     spec: S.optional(DataStoreToolBoostSpecList),
@@ -5074,7 +5051,7 @@ export const DataStoreToolBoostSpecs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataStoreToolBoostSpecs" }) as any as S.Schema<DataStoreToolBoostSpecs>;
 
 export type DataStoreToolBoostSpecsList = Array<DataStoreToolBoostSpecs>;
-export const DataStoreToolBoostSpecsList = /*@__PURE__*/ S.Array(
+const DataStoreToolBoostSpecsList = /*@__PURE__*/ S.Array(
   DataStoreToolBoostSpecs,
 ) as any as S.Schema<DataStoreToolBoostSpecsList>;
 
@@ -5082,7 +5059,7 @@ export type DataStoreToolFilterParameterBehaviorEnum =
   | "FILTER_PARAMETER_BEHAVIOR_UNSPECIFIED"
   | "ALWAYS_INCLUDE"
   | "NEVER_INCLUDE";
-export const DataStoreToolFilterParameterBehaviorEnum = S.String;
+const DataStoreToolFilterParameterBehaviorEnum = S.String;
 
 /** Rewriter configuration. */
 export interface DataStoreToolRewriterConfig {
@@ -5093,7 +5070,7 @@ export interface DataStoreToolRewriterConfig {
   /** Optional. The prompt definition. If not set, default prompt will be used. */
   prompt?: string;
 }
-export const DataStoreToolRewriterConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolRewriterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disabled: S.optional(S.Boolean),
     modelSettings: S.optional(ModelSettings),
@@ -5110,7 +5087,7 @@ export interface DataStoreToolGroundingConfig {
   /** Optional. Whether grounding is disabled. */
   disabled?: boolean;
 }
-export const DataStoreToolGroundingConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolGroundingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groundingLevel: S.optional(S.Number),
     disabled: S.optional(S.Boolean),
@@ -5123,7 +5100,7 @@ export type DataStoreToolModalityConfigModalityTypeEnum =
   | "MODALITY_TYPE_UNSPECIFIED"
   | "TEXT"
   | "AUDIO";
-export const DataStoreToolModalityConfigModalityTypeEnum = S.String;
+const DataStoreToolModalityConfigModalityTypeEnum = S.String;
 
 /** Snippets configuration. */
 export interface DataStoreToolSnippetsConfig {
@@ -5132,7 +5109,7 @@ export interface DataStoreToolSnippetsConfig {
   /** Optional. Number of snippets to return per query. If unset, returns all snippets from the service by default. */
   maxSnippets?: number;
 }
-export const DataStoreToolSnippetsConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolSnippetsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableSnippets: S.optional(S.Boolean),
     maxSnippets: S.optional(S.Number),
@@ -5150,7 +5127,7 @@ export interface DataStoreToolSummarizationConfig {
   /** Optional. The prompt definition. If not set, default prompt will be used. */
   prompt?: string;
 }
-export const DataStoreToolSummarizationConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolSummarizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelSettings: S.optional(ModelSettings),
     disabled: S.optional(S.Boolean),
@@ -5173,7 +5150,7 @@ export interface DataStoreToolModalityConfig {
   /** Optional. The summarization config. */
   summarizationConfig?: DataStoreToolSummarizationConfig;
 }
-export const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rewriterConfig: S.optional(DataStoreToolRewriterConfig),
     groundingConfig: S.optional(DataStoreToolGroundingConfig),
@@ -5186,7 +5163,7 @@ export const DataStoreToolModalityConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataStoreToolModalityConfig>;
 
 export type DataStoreToolModalityConfigList = Array<DataStoreToolModalityConfig>;
-export const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
+const DataStoreToolModalityConfigList = /*@__PURE__*/ S.Array(
   DataStoreToolModalityConfig,
 ) as any as S.Schema<DataStoreToolModalityConfigList>;
 
@@ -5194,7 +5171,7 @@ export type DataStoreDocumentProcessingModeEnum =
   | "DOCUMENT_PROCESSING_MODE_UNSPECIFIED"
   | "DOCUMENTS"
   | "CHUNKS";
-export const DataStoreDocumentProcessingModeEnum = S.String;
+const DataStoreDocumentProcessingModeEnum = S.String;
 
 /** The connector config for the data store connection. */
 export interface DataStoreConnectorConfig {
@@ -5205,7 +5182,7 @@ export interface DataStoreConnectorConfig {
   /** The name of the data source. Example: `salesforce`, `jira`, `confluence`, `bigquery`. */
   dataSource?: string;
 }
-export const DataStoreConnectorConfig = /*@__PURE__*/ S.suspend(() =>
+const DataStoreConnectorConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionDisplayName: S.optional(S.String),
     collection: S.optional(S.String),
@@ -5219,7 +5196,7 @@ export type DataStoreTypeEnum =
   | "UNSTRUCTURED"
   | "FAQ"
   | "CONNECTOR";
-export const DataStoreTypeEnum = S.String;
+const DataStoreTypeEnum = S.String;
 
 /** A DataStore resource in Vertex AI Search. */
 export interface DataStore {
@@ -5236,7 +5213,7 @@ export interface DataStore {
   /** Output only. The type of the data store. This field is readonly and populated by the server. */
   type?: DataStoreTypeEnum | (string & {});
 }
-export const DataStore = /*@__PURE__*/ S.suspend(() =>
+const DataStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     name: S.optional(S.String),
@@ -5254,7 +5231,7 @@ export interface DataStoreToolDataStoreSource {
   /** Optional. The data store. */
   dataStore?: DataStore;
 }
-export const DataStoreToolDataStoreSource = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolDataStoreSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     dataStore: S.optional(DataStore),
@@ -5264,7 +5241,7 @@ export const DataStoreToolDataStoreSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DataStoreToolDataStoreSource>;
 
 export type DataStoreToolDataStoreSourceList = Array<DataStoreToolDataStoreSource>;
-export const DataStoreToolDataStoreSourceList = /*@__PURE__*/ S.Array(
+const DataStoreToolDataStoreSourceList = /*@__PURE__*/ S.Array(
   DataStoreToolDataStoreSource,
 ) as any as S.Schema<DataStoreToolDataStoreSourceList>;
 
@@ -5277,7 +5254,7 @@ export interface DataStoreToolEngineSource {
   /** Optional. Use to target specific DataStores within the Engine. If empty, the search applies to all DataStores associated with the Engine. */
   dataStoreSources?: DataStoreToolDataStoreSourceList;
 }
-export const DataStoreToolEngineSource = /*@__PURE__*/ S.suspend(() =>
+const DataStoreToolEngineSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String),
     engine: S.optional(S.String),
@@ -5304,7 +5281,7 @@ export interface DataStoreTool {
   /** Optional. Search within a single specific DataStore. */
   dataStoreSource?: DataStoreToolDataStoreSource;
 }
-export const DataStoreTool = /*@__PURE__*/ S.suspend(() =>
+const DataStoreTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     boostSpecs: S.optional(DataStoreToolBoostSpecsList),
@@ -5321,7 +5298,7 @@ export interface EndUserAuthConfigOauth2AuthCodeConfig {
   /** Required. Oauth token parameter name to pass through. Must be in the format `$context.variables.`. */
   oauthToken?: string;
 }
-export const EndUserAuthConfigOauth2AuthCodeConfig = /*@__PURE__*/ S.suspend(() =>
+const EndUserAuthConfigOauth2AuthCodeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauthToken: S.optional(S.String),
   }),
@@ -5338,7 +5315,7 @@ export interface EndUserAuthConfigOauth2JwtBearerConfig {
   /** Required. Subject parameter name to pass through. Must be in the format `$context.variables.`. */
   subject?: string;
 }
-export const EndUserAuthConfigOauth2JwtBearerConfig = /*@__PURE__*/ S.suspend(() =>
+const EndUserAuthConfigOauth2JwtBearerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.optional(S.String),
     clientKey: S.optional(S.String),
@@ -5355,7 +5332,7 @@ export interface EndUserAuthConfig {
   /** JWT Profile Oauth 2.0 Authorization Grant authentication. */
   oauth2JwtBearerConfig?: EndUserAuthConfigOauth2JwtBearerConfig;
 }
-export const EndUserAuthConfig = /*@__PURE__*/ S.suspend(() =>
+const EndUserAuthConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2AuthCodeConfig: S.optional(EndUserAuthConfigOauth2AuthCodeConfig),
     oauth2JwtBearerConfig: S.optional(EndUserAuthConfigOauth2JwtBearerConfig),
@@ -5369,7 +5346,7 @@ export type ActionEntityOperationOperationEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-export const ActionEntityOperationOperationEnum = S.String;
+const ActionEntityOperationOperationEnum = S.String;
 
 /** Entity CRUD operation specification. */
 export interface ActionEntityOperation {
@@ -5378,7 +5355,7 @@ export interface ActionEntityOperation {
   /** Required. Operation to perform on the entity. */
   operation?: ActionEntityOperationOperationEnum | (string & {});
 }
-export const ActionEntityOperation = /*@__PURE__*/ S.suspend(() =>
+const ActionEntityOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityId: S.optional(S.String),
     operation: S.optional(ActionEntityOperationOperationEnum),
@@ -5396,7 +5373,7 @@ export interface Action {
   /** ID of a Connection action for the tool to use. */
   connectionActionId?: string;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
+const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputFields: S.optional(StringList),
     entityOperation: S.optional(ActionEntityOperation),
@@ -5418,7 +5395,7 @@ export interface ConnectorTool {
   /** Required. Action for the tool to use. */
   action?: Action;
 }
-export const ConnectorTool = /*@__PURE__*/ S.suspend(() =>
+const ConnectorTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authConfig: S.optional(EndUserAuthConfig),
     name: S.optional(S.String),
@@ -5445,7 +5422,7 @@ export interface RemoteAgentTool {
   /** Required. The name of the tool. */
   name?: string;
 }
-export const RemoteAgentTool = /*@__PURE__*/ S.suspend(() =>
+const RemoteAgentTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputVariableMapping: S.optional(StringMap),
     agentCard: S.optional(AgentCard),
@@ -5464,7 +5441,7 @@ export interface GoogleSearchToolPromptConfig {
   /** Optional. Defines the prompt used for the system instructions when interacting with the agent in chat conversations. If not set, default prompt will be used. */
   textPrompt?: string;
 }
-export const GoogleSearchToolPromptConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleSearchToolPromptConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voicePrompt: S.optional(S.String),
     textPrompt: S.optional(S.String),
@@ -5488,7 +5465,7 @@ export interface GoogleSearchTool {
   /** Optional. Prompt instructions passed to planner on how the search results should be processed for text and voice. */
   promptConfig?: GoogleSearchToolPromptConfig;
 }
-export const GoogleSearchTool = /*@__PURE__*/ S.suspend(() =>
+const GoogleSearchTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -5508,7 +5485,7 @@ export interface AgentTool {
   /** Required. The name of the agent tool. */
   name?: string;
 }
-export const AgentTool = /*@__PURE__*/ S.suspend(() =>
+const AgentTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     agent: S.optional(S.String),
@@ -5517,7 +5494,7 @@ export const AgentTool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AgentTool" }) as any as S.Schema<AgentTool>;
 
 export type WidgetToolDataMappingModeEnum = "MODE_UNSPECIFIED" | "FIELD_MAPPING" | "PYTHON_SCRIPT";
-export const WidgetToolDataMappingModeEnum = S.String;
+const WidgetToolDataMappingModeEnum = S.String;
 
 /** A Python function tool. */
 export interface PythonFunction {
@@ -5530,7 +5507,7 @@ export interface PythonFunction {
   /** Optional. Service Directory configuration for the tool. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
-export const PythonFunction = /*@__PURE__*/ S.suspend(() =>
+const PythonFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pythonCode: S.optional(S.String),
     name: S.optional(S.String),
@@ -5552,7 +5529,7 @@ export interface WidgetToolDataMapping {
   /** Optional. Configuration for a Python function used to transform the source tool's output into the widget's input format. */
   pythonFunction?: PythonFunction;
 }
-export const WidgetToolDataMapping = /*@__PURE__*/ S.suspend(() =>
+const WidgetToolDataMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldMappings: S.optional(StringMap),
     mode: S.optional(WidgetToolDataMappingModeEnum),
@@ -5576,14 +5553,14 @@ export type WidgetToolWidgetTypeEnum =
   | "APPOINTMENT_DETAILS"
   | "APPOINTMENT_SCHEDULER"
   | "CONTACT_FORM";
-export const WidgetToolWidgetTypeEnum = S.String;
+const WidgetToolWidgetTypeEnum = S.String;
 
 export type WidgetToolTextResponseConfigTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NONE"
   | "LLM_GENERATED"
   | "STATIC";
-export const WidgetToolTextResponseConfigTypeEnum = S.String;
+const WidgetToolTextResponseConfigTypeEnum = S.String;
 
 /** Configuration for the text response returned with the widget. */
 export interface WidgetToolTextResponseConfig {
@@ -5594,7 +5571,7 @@ export interface WidgetToolTextResponseConfig {
   /** Optional. Instruction for the LLM on how to generate the text response. Used as the description for the text response parameter if type is LLM_GENERATED. */
   textResponseInstruction?: string;
 }
-export const WidgetToolTextResponseConfig = /*@__PURE__*/ S.suspend(() =>
+const WidgetToolTextResponseConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WidgetToolTextResponseConfigTypeEnum),
     staticText: S.optional(S.String),
@@ -5621,7 +5598,7 @@ export interface WidgetTool {
   /** Required. The display name of the widget tool. */
   name?: string;
 }
-export const WidgetTool = /*@__PURE__*/ S.suspend(() =>
+const WidgetTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uiConfig: S.optional(DocumentMap),
     description: S.optional(S.String),
@@ -5680,7 +5657,7 @@ export interface Tool {
   /** Optional. The python function tool. */
   pythonFunction?: PythonFunction;
 }
-export const Tool = /*@__PURE__*/ S.suspend(() =>
+const Tool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executionType: S.optional(ToolExecutionTypeEnum),
     systemTool: S.optional(SystemTool),
@@ -5715,7 +5692,7 @@ export interface CreateProjectsLocationsAppsToolsRequest {
   /** Request body */
   body?: Tool;
 }
-export const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     toolId: S.optional(S.String.pipe(T.Query())),
@@ -5732,7 +5709,7 @@ export const CreateProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CreateProjectsLocationsAppsToolsRequest>;
 
 export type ActionList = Array<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
+const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** A toolset that generates tools from an Integration Connectors Connection. */
 export interface ConnectorToolset {
@@ -5743,7 +5720,7 @@ export interface ConnectorToolset {
   /** Optional. Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. **Note**: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the Toolset creation will fail. See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override */
   authConfig?: EndUserAuthConfig;
 }
-export const ConnectorToolset = /*@__PURE__*/ S.suspend(() =>
+const ConnectorToolset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectorActions: S.optional(ActionList),
     connection: S.optional(S.String),
@@ -5766,7 +5743,7 @@ export interface OpenApiToolset {
   /** Required. The OpenAPI schema of the toolset. */
   openApiSchema?: string;
 }
-export const OpenApiToolset = /*@__PURE__*/ S.suspend(() =>
+const OpenApiToolset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ignoreUnknownFields: S.optional(S.Boolean),
     url: S.optional(S.String),
@@ -5781,7 +5758,7 @@ export type ToolsetExecutionTypeEnum =
   | "EXECUTION_TYPE_UNSPECIFIED"
   | "SYNCHRONOUS"
   | "ASYNCHRONOUS";
-export const ToolsetExecutionTypeEnum = S.String;
+const ToolsetExecutionTypeEnum = S.String;
 
 /** Container for a tool's core definition elements that are snapshot. Schemas in the snapshot are used as-is and cannot be overridden. */
 export interface McpToolDefinition {
@@ -5792,7 +5769,7 @@ export interface McpToolDefinition {
   /** Output only. The schema of the input arguments of the MCP tool. */
   inputSchema?: Ces_Schema;
 }
-export const McpToolDefinition = /*@__PURE__*/ S.suspend(() =>
+const McpToolDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputSchema: S.optional(Ces_Schema),
     description: S.optional(S.String),
@@ -5811,7 +5788,7 @@ export interface McpToolOverride {
   /** Optional. If present, this tool uses this name in the Agent instead of the original name. This is primarily used as an alias if the MCP server offers poorly named tools. */
   nameOverride?: string;
 }
-export const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
+const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshot: S.optional(McpToolDefinition),
     tool: S.optional(S.String),
@@ -5821,7 +5798,7 @@ export const McpToolOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "McpToolOverride" }) as any as S.Schema<McpToolOverride>;
 
 export type McpToolOverrideList = Array<McpToolOverride>;
-export const McpToolOverrideList = /*@__PURE__*/ S.Array(
+const McpToolOverrideList = /*@__PURE__*/ S.Array(
   McpToolOverride,
 ) as any as S.Schema<McpToolOverrideList>;
 
@@ -5840,7 +5817,7 @@ export interface McpToolset {
   /** Optional. Service Directory configuration for VPC-SC, used to resolve service names within a perimeter. */
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
-export const McpToolset = /*@__PURE__*/ S.suspend(() =>
+const McpToolset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tlsConfig: S.optional(TlsConfig),
     apiAuthentication: S.optional(ApiAuthentication),
@@ -5878,7 +5855,7 @@ export interface Toolset {
   /** Optional. The description of the toolset. */
   description?: string;
 }
-export const Toolset = /*@__PURE__*/ S.suspend(() =>
+const Toolset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     connectorToolset: S.optional(ConnectorToolset),
@@ -5903,7 +5880,7 @@ export interface CreateProjectsLocationsAppsToolsetsRequest {
   /** Request body */
   body?: Toolset;
 }
-export const CreateProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     toolsetId: S.optional(S.String.pipe(T.Query())),
@@ -5920,19 +5897,19 @@ export const CreateProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateProjectsLocationsAppsToolsetsRequest>;
 
 export type AgentList = Array<Agent>;
-export const AgentList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentList>;
+const AgentList = /*@__PURE__*/ S.Array(Agent) as any as S.Schema<AgentList>;
 
 export type ToolList = Array<Tool>;
-export const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
+const ToolList = /*@__PURE__*/ S.Array(Tool) as any as S.Schema<ToolList>;
 
 export type GuardrailList = Array<Guardrail>;
-export const GuardrailList = /*@__PURE__*/ S.Array(Guardrail) as any as S.Schema<GuardrailList>;
+const GuardrailList = /*@__PURE__*/ S.Array(Guardrail) as any as S.Schema<GuardrailList>;
 
 export type ToolsetList = Array<Toolset>;
-export const ToolsetList = /*@__PURE__*/ S.Array(Toolset) as any as S.Schema<ToolsetList>;
+const ToolsetList = /*@__PURE__*/ S.Array(Toolset) as any as S.Schema<ToolsetList>;
 
 export type ExampleList = Array<Example>;
-export const ExampleList = /*@__PURE__*/ S.Array(Example) as any as S.Schema<ExampleList>;
+const ExampleList = /*@__PURE__*/ S.Array(Example) as any as S.Schema<ExampleList>;
 
 /** A snapshot of the app. */
 export interface AppSnapshot {
@@ -5949,7 +5926,7 @@ export interface AppSnapshot {
   /** Optional. List of examples in the app. */
   examples?: ExampleList;
 }
-export const AppSnapshot = /*@__PURE__*/ S.suspend(() =>
+const AppSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agents: S.optional(AgentList),
     tools: S.optional(ToolList),
@@ -5979,7 +5956,7 @@ export interface AppVersion {
   /** Output only. Etag used to ensure the object hasn't changed during a read-modify-write operation. If the etag is empty, the update will overwrite any concurrent changes. */
   etag?: string;
 }
-export const AppVersion = /*@__PURE__*/ S.suspend(() =>
+const AppVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creator: S.optional(S.String),
     snapshot: S.optional(AppSnapshot),
@@ -6000,7 +5977,7 @@ export interface CreateProjectsLocationsAppsVersionsRequest {
   /** Request body */
   body?: AppVersion;
 }
-export const CreateProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     appVersionId: S.optional(S.String.pipe(T.Query())),
@@ -6022,7 +5999,7 @@ export interface DeleteProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6041,7 +6018,7 @@ export interface DeleteProjectsLocationsAppsAgentsRequest {
   /** Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -6057,7 +6034,7 @@ export interface DeleteProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The name of the assistant session to delete. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   name: string;
 }
-export const DeleteProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6073,7 +6050,7 @@ export type DeleteProjectsLocationsAppsConversationsSourceEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const DeleteProjectsLocationsAppsConversationsSourceEnum = S.String;
+const DeleteProjectsLocationsAppsConversationsSourceEnum = S.String;
 
 export interface DeleteProjectsLocationsAppsConversationsRequest {
   /** Required. The resource name of the conversation to delete. */
@@ -6081,7 +6058,7 @@ export interface DeleteProjectsLocationsAppsConversationsRequest {
   /** Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. */
   source?: DeleteProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
-export const DeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     source: S.optional(DeleteProjectsLocationsAppsConversationsSourceEnum.pipe(T.Query())),
@@ -6098,7 +6075,7 @@ export interface DeleteProjectsLocationsAppsDeploymentsRequest {
   /** Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -6115,7 +6092,7 @@ export interface DeleteProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Optional. The current etag of the evaluation dataset. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation dataset, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -6132,14 +6109,13 @@ export interface DeleteProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Required. The resource name of the evaluation expectation to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      etag: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    etag: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsAppsEvaluationExpectationsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsAppsEvaluationExpectationsRequest>;
@@ -6148,7 +6124,7 @@ export interface DeleteProjectsLocationsAppsEvaluationRunsRequest {
   /** Required. The resource name of the evaluation run to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6166,7 +6142,7 @@ export interface DeleteProjectsLocationsAppsEvaluationsRequest {
   /** Optional. Indicates whether to forcefully delete the evaluation, even if it is still referenced by evaluation datasets. * If `force = false`, the deletion will fail if any datasets still reference the evaluation. * If `force = true`, all existing references from datasets will be removed and the evaluation will be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -6182,7 +6158,7 @@ export interface DeleteProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation result to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6198,7 +6174,7 @@ export interface DeleteProjectsLocationsAppsExamplesRequest {
   /** Required. The resource name of the example to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6217,7 +6193,7 @@ export interface DeleteProjectsLocationsAppsGuardrailsRequest {
   /** Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -6235,14 +6211,13 @@ export interface DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Optional. The etag of the ScheduledEvaluationRun. If provided, it must match the server's etag. */
   etag?: string;
 }
-export const DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      etag: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({ method: "DELETE", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-    ),
+const DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    etag: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest>;
@@ -6255,7 +6230,7 @@ export interface DeleteProjectsLocationsAppsToolsRequest {
   /** Optional. Indicates whether to forcefully delete the tool, even if it is still referenced by agents/examples. * If `force = false`, the deletion will fail if any agents still reference the tool. * If `force = true`, all existing references from agents will be removed and the tool will be deleted. */
   force?: boolean;
 }
-export const DeleteProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -6275,7 +6250,7 @@ export interface DeleteProjectsLocationsAppsToolsetsRequest {
   /** Required. The resource name of the toolset to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean.pipe(T.Query())),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -6293,7 +6268,7 @@ export interface DeleteProjectsLocationsAppsVersionsRequest {
   /** Required. The resource name of the app version to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -6308,7 +6283,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -6331,7 +6306,7 @@ export interface MockedToolCall {
   /** Optional. Deprecated. Use tool_identifier instead. */
   tool?: string;
 }
-export const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
+const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolset: S.optional(ToolsetTool),
     toolId: S.optional(S.String),
@@ -6342,7 +6317,7 @@ export const MockedToolCall = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MockedToolCall" }) as any as S.Schema<MockedToolCall>;
 
 export type MockedToolCallList = Array<MockedToolCall>;
-export const MockedToolCallList = /*@__PURE__*/ S.Array(
+const MockedToolCallList = /*@__PURE__*/ S.Array(
   MockedToolCall,
 ) as any as S.Schema<MockedToolCallList>;
 
@@ -6350,7 +6325,7 @@ export type MockConfigUnmatchedToolCallBehaviorEnum =
   | "UNMATCHED_TOOL_CALL_BEHAVIOR_UNSPECIFIED"
   | "FAIL"
   | "PASS_THROUGH";
-export const MockConfigUnmatchedToolCallBehaviorEnum = S.String;
+const MockConfigUnmatchedToolCallBehaviorEnum = S.String;
 
 /** Mock tool calls configuration for the session. */
 export interface MockConfig {
@@ -6359,7 +6334,7 @@ export interface MockConfig {
   /** Required. Beavhior for tool calls that don't match any args patterns in mocked_tool_calls. */
   unmatchedToolCallBehavior?: MockConfigUnmatchedToolCallBehaviorEnum | (string & {});
 }
-export const MockConfig = /*@__PURE__*/ S.suspend(() =>
+const MockConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mockedToolCalls: S.optional(MockedToolCallList),
     unmatchedToolCallBehavior: S.optional(MockConfigUnmatchedToolCallBehaviorEnum),
@@ -6381,7 +6356,7 @@ export interface ExecuteToolRequest {
   /** Optional. The name of the tool to execute. Format: projects/{project}/locations/{location}/apps/{app}/tools/{tool} */
   tool?: string;
 }
-export const ExecuteToolRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(DocumentMap),
     variables: S.optional(DocumentMap),
@@ -6398,7 +6373,7 @@ export interface ExecuteToolProjectsLocationsAppsRequest {
   /** Request body */
   body?: ExecuteToolRequest;
 }
-export const ExecuteToolProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExecuteToolProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExecuteToolRequest.pipe(T.HttpBody())),
@@ -6420,7 +6395,7 @@ export interface WebSearchQuery {
   /** The URI to the Google Search results page for the query. */
   uri?: string;
 }
-export const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
+const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String),
     uri: S.optional(S.String),
@@ -6428,7 +6403,7 @@ export const WebSearchQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WebSearchQuery" }) as any as S.Schema<WebSearchQuery>;
 
 export type WebSearchQueryList = Array<WebSearchQuery>;
-export const WebSearchQueryList = /*@__PURE__*/ S.Array(
+const WebSearchQueryList = /*@__PURE__*/ S.Array(
   WebSearchQuery,
 ) as any as S.Schema<WebSearchQueryList>;
 
@@ -6439,7 +6414,7 @@ export interface GoogleSearchSuggestions {
   /** List of queries used to perform the google search along with the search result URIs forming the search suggestions. */
   webSearchQueries?: WebSearchQueryList;
 }
-export const GoogleSearchSuggestions = /*@__PURE__*/ S.suspend(() =>
+const GoogleSearchSuggestions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     htmls: S.optional(StringList),
     webSearchQueries: S.optional(WebSearchQueryList),
@@ -6455,7 +6430,7 @@ export interface CitationsInlineCitation {
   /** The indices of the cited chunks that back this text segment. Indices refer to the elements in `cited_chunks`. */
   citedChunkIndices?: IntegerList;
 }
-export const CitationsInlineCitation = /*@__PURE__*/ S.suspend(() =>
+const CitationsInlineCitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.Number),
     endIndex: S.optional(S.Number),
@@ -6464,7 +6439,7 @@ export const CitationsInlineCitation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CitationsInlineCitation" }) as any as S.Schema<CitationsInlineCitation>;
 
 export type CitationsInlineCitationList = Array<CitationsInlineCitation>;
-export const CitationsInlineCitationList = /*@__PURE__*/ S.Array(
+const CitationsInlineCitationList = /*@__PURE__*/ S.Array(
   CitationsInlineCitation,
 ) as any as S.Schema<CitationsInlineCitationList>;
 
@@ -6479,7 +6454,7 @@ export interface CitationsCitedChunk {
   /** Title of the cited document. */
   title?: string;
 }
-export const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
+const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requiresAttribution: S.optional(S.Boolean),
     text: S.optional(S.String),
@@ -6489,7 +6464,7 @@ export const CitationsCitedChunk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CitationsCitedChunk" }) as any as S.Schema<CitationsCitedChunk>;
 
 export type CitationsCitedChunkList = Array<CitationsCitedChunk>;
-export const CitationsCitedChunkList = /*@__PURE__*/ S.Array(
+const CitationsCitedChunkList = /*@__PURE__*/ S.Array(
   CitationsCitedChunk,
 ) as any as S.Schema<CitationsCitedChunkList>;
 
@@ -6500,7 +6475,7 @@ export interface Citations {
   /** List of cited pieces of information. */
   citedChunks?: CitationsCitedChunkList;
 }
-export const Citations = /*@__PURE__*/ S.suspend(() =>
+const Citations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inlineCitations: S.optional(CitationsInlineCitationList),
     citedChunks: S.optional(CitationsCitedChunkList),
@@ -6522,7 +6497,7 @@ export interface ExecuteToolResponse {
   /** The toolset tool that got executed. */
   toolsetTool?: ToolsetTool;
 }
-export const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
+const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleSearchSuggestions: S.optional(GoogleSearchSuggestions),
     citations: S.optional(Citations),
@@ -6534,7 +6509,7 @@ export const ExecuteToolResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExecuteToolResponse" }) as any as S.Schema<ExecuteToolResponse>;
 
 export type ExportAppRequestExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
-export const ExportAppRequestExportFormatEnum = S.String;
+const ExportAppRequestExportFormatEnum = S.String;
 
 /** Request message for AgentService.ExportApp. */
 export interface ExportAppRequest {
@@ -6545,7 +6520,7 @@ export interface ExportAppRequest {
   /** Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to which to export the app. The format of this URI must be `gs:///`. The exported app archive will be written directly to the specified GCS object. */
   gcsUri?: string;
 }
-export const ExportAppRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appVersion: S.optional(S.String),
     exportFormat: S.optional(ExportAppRequestExportFormatEnum),
@@ -6559,7 +6534,7 @@ export interface ExportAppProjectsLocationsAppsRequest {
   /** Request body */
   body?: ExportAppRequest;
 }
-export const ExportAppProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportAppProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportAppRequest.pipe(T.HttpBody())),
@@ -6575,7 +6550,7 @@ export const ExportAppProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ExportAppProjectsLocationsAppsRequest>;
 
 export type ExportOptionsExportFormatEnum = "EXPORT_FORMAT_UNSPECIFIED" | "JSON" | "YAML";
-export const ExportOptionsExportFormatEnum = S.String;
+const ExportOptionsExportFormatEnum = S.String;
 
 /** Options for exporting CES evaluation resources. */
 export interface ExportOptions {
@@ -6584,7 +6559,7 @@ export interface ExportOptions {
   /** Optional. The Google Cloud Storage URI to write the exported Evaluation Results to. */
   gcsUri?: string;
 }
-export const ExportOptions = /*@__PURE__*/ S.suspend(() =>
+const ExportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportFormat: S.optional(ExportOptionsExportFormatEnum),
     gcsUri: S.optional(S.String),
@@ -6598,7 +6573,7 @@ export interface ExportEvaluationRunsRequest {
   /** Optional. The export options for the evaluation runs. */
   exportOptions?: ExportOptions;
 }
-export const ExportEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
     exportOptions: S.optional(ExportOptions),
@@ -6613,7 +6588,7 @@ export interface ExportProjectsLocationsAppsEvaluationRunsRequest {
   /** Request body */
   body?: ExportEvaluationRunsRequest;
 }
-export const ExportProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExportEvaluationRunsRequest.pipe(T.HttpBody())),
@@ -6639,7 +6614,7 @@ export interface ExportEvaluationsRequest {
   /** Required. The resource names of the evaluations to export. */
   names?: StringList;
 }
-export const ExportEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exportOptions: S.optional(ExportOptions),
     includeEvaluations: S.optional(S.Boolean),
@@ -6654,7 +6629,7 @@ export interface ExportProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: ExportEvaluationsRequest;
 }
-export const ExportProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExportEvaluationsRequest.pipe(T.HttpBody())),
@@ -6676,7 +6651,7 @@ export interface ExportEvaluationResultsRequest {
   /** Optional. The export options for the evaluation results. */
   exportOptions?: ExportOptions;
 }
-export const ExportEvaluationResultsRequest =
+const ExportEvaluationResultsRequest =
   ExportEvaluationRunsRequest as any as S.Schema<ExportEvaluationResultsRequest>;
 
 export interface ExportProjectsLocationsAppsEvaluationsResultsRequest {
@@ -6685,7 +6660,7 @@ export interface ExportProjectsLocationsAppsEvaluationsResultsRequest {
   /** Request body */
   body?: ExportEvaluationResultsRequest;
 }
-export const ExportProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ExportEvaluationResultsRequest.pipe(T.HttpBody())),
@@ -6709,7 +6684,7 @@ export interface FileContextFileBytes {
   /** Required. The IANA standard MIME type of the source data. */
   mimeType?: string;
 }
-export const FileContextFileBytes = /*@__PURE__*/ S.suspend(() =>
+const FileContextFileBytes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileName: S.optional(S.String),
     data: S.optional(S.String),
@@ -6722,16 +6697,14 @@ export interface FileContext {
   /** Optional. File provided as raw bytes. */
   fileBytes?: FileContextFileBytes;
 }
-export const FileContext = /*@__PURE__*/ S.suspend(() =>
+const FileContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileBytes: S.optional(FileContextFileBytes),
   }),
 ).annotate({ identifier: "FileContext" }) as any as S.Schema<FileContext>;
 
 export type FileContextList = Array<FileContext>;
-export const FileContextList = /*@__PURE__*/ S.Array(
-  FileContext,
-) as any as S.Schema<FileContextList>;
+const FileContextList = /*@__PURE__*/ S.Array(FileContext) as any as S.Schema<FileContextList>;
 
 /** The configuration to be used to generate an operation in the Open API schema. */
 export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig {
@@ -6744,7 +6717,7 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   /** Required. The path of the tool to be appended to the base uri. This should include query and path parameters if any. */
   path?: string;
 }
-export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig =
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       method: S.optional(S.String),
@@ -6759,7 +6732,7 @@ export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerat
 
 export type GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
   Array<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig>;
-export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList =
   /*@__PURE__*/ S.Array(
     GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfig,
   ) as any as S.Schema<GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfigOperationGenerationConfigList>;
@@ -6771,7 +6744,7 @@ export interface GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGen
   /** Required. The base uri of the tool. */
   uri?: string;
 }
-export const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig =
+const GenerateAppResourceRequestToolGenerationConfigOpenApiToolsetGenerationConfig =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       operationGenerationConfigs: S.optional(
@@ -6792,7 +6765,7 @@ export interface GenerateAppResourceRequestToolGenerationConfig {
   /** Optional. The context which describes the tool to be generated. This can be empty if the tool request & response are provided. */
   context?: string;
 }
-export const GenerateAppResourceRequestToolGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestToolGenerationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileContexts: S.optional(FileContextList),
     openApiToolsetGenerationConfig: S.optional(
@@ -6811,7 +6784,7 @@ export interface GenerateAppResourceRequestAppVersionContext {
   /** The resource name of the app version to be used by the LLM assistant. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}` */
   appVersion?: string;
 }
-export const GenerateAppResourceRequestAppVersionContext = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestAppVersionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentResourceName: S.optional(S.String),
     appVersion: S.optional(S.String),
@@ -6829,7 +6802,7 @@ export interface QualityReportIssue {
   /** Optional. Description of the issue found. */
   description?: string;
 }
-export const QualityReportIssue = /*@__PURE__*/ S.suspend(() =>
+const QualityReportIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     proposedSolution: S.optional(S.String),
     occurrenceCount: S.optional(S.Number),
@@ -6838,7 +6811,7 @@ export const QualityReportIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QualityReportIssue" }) as any as S.Schema<QualityReportIssue>;
 
 export type QualityReportIssueList = Array<QualityReportIssue>;
-export const QualityReportIssueList = /*@__PURE__*/ S.Array(
+const QualityReportIssueList = /*@__PURE__*/ S.Array(
   QualityReportIssue,
 ) as any as S.Schema<QualityReportIssueList>;
 
@@ -6849,7 +6822,7 @@ export interface QualityReportAgentIssues {
   /** Optional. The name of the agent to which the issues are related. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   agent?: string;
 }
-export const QualityReportAgentIssues = /*@__PURE__*/ S.suspend(() =>
+const QualityReportAgentIssues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(QualityReportIssueList),
     agent: S.optional(S.String),
@@ -6857,7 +6830,7 @@ export const QualityReportAgentIssues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QualityReportAgentIssues" }) as any as S.Schema<QualityReportAgentIssues>;
 
 export type QualityReportAgentIssuesList = Array<QualityReportAgentIssues>;
-export const QualityReportAgentIssuesList = /*@__PURE__*/ S.Array(
+const QualityReportAgentIssuesList = /*@__PURE__*/ S.Array(
   QualityReportAgentIssues,
 ) as any as S.Schema<QualityReportAgentIssuesList>;
 
@@ -6870,7 +6843,7 @@ export interface QualityReport {
   /** Optional. A list of evaluation runs used to generate the quality report. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluationRun}`. */
   evaluationRuns?: StringList;
 }
-export const QualityReport = /*@__PURE__*/ S.suspend(() =>
+const QualityReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issues: S.optional(QualityReportAgentIssuesList),
     generalIssues: S.optional(QualityReportIssueList),
@@ -6883,7 +6856,7 @@ export interface GenerateAppResourceRequestHillClimbingFixConfig {
   /** Required. The quality report used to inform the instruction following fix. */
   qualityReport?: QualityReport;
 }
-export const GenerateAppResourceRequestHillClimbingFixConfig = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestHillClimbingFixConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     qualityReport: S.optional(QualityReport),
   }),
@@ -6896,7 +6869,7 @@ export interface GenerateAppResourceRequestEvaluationGenerationConfig {
   /** Optional. The insights dataset to be used to fetch conversation data for generating the evaluations. Format: `projects/{project}/locations/{location}/datasets/{dataset}`. */
   datasetId?: string;
 }
-export const GenerateAppResourceRequestEvaluationGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestEvaluationGenerationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String),
   }),
@@ -6908,7 +6881,7 @@ export type GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum
   | "LOSS_ATTRIBUTION_ALGORITHM_UNSPECIFIED"
   | "APP_CENTRIC"
   | "AGENT_CENTRIC";
-export const GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum = S.String;
+const GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum = S.String;
 
 /** The configuration to be used for quality report generation. */
 export interface GenerateAppResourceRequestQualityReportGenerationConfig {
@@ -6917,7 +6890,7 @@ export interface GenerateAppResourceRequestQualityReportGenerationConfig {
   /** Optional. The loss attribution algorithm to use. */
   algorithm?: GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum | (string & {});
 }
-export const GenerateAppResourceRequestQualityReportGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestQualityReportGenerationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationRun: S.optional(S.String),
     algorithm: S.optional(GenerateAppResourceRequestQualityReportGenerationConfigAlgorithmEnum),
@@ -6939,7 +6912,7 @@ export interface GenerateAppResourceRequestAppGenerationConfig {
   /** Optional. The context which describes the requirements of the agents & tools to be generated. */
   context?: string;
 }
-export const GenerateAppResourceRequestAppGenerationConfig = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestAppGenerationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileContexts: S.optional(FileContextList),
     datasetId: S.optional(S.String),
@@ -6953,8 +6926,6 @@ export const GenerateAppResourceRequestAppGenerationConfig = /*@__PURE__*/ S.sus
 
 /** The configuration to be used to generate the evaluation personas. */
 export type GenerateAppResourceRequestEvaluationPersonasGenerationConfig = CancelOperationRequest;
-export const GenerateAppResourceRequestEvaluationPersonasGenerationConfig = CancelOperationRequest;
-
 /** The instructions to be used to refine a part of the resource. The part of the resource can be specified with a start index, end index and a field mask. For example, if you want to refine a part of the agent instructions you can specify the index of the first character of the instructions, the index of the last character of the instructions and the field mask as "instructions". */
 export interface GenerateAppResourceRequestRefineInstructions {
   /** Required. The first character (inclusive) of the text to refine. */
@@ -6966,7 +6937,7 @@ export interface GenerateAppResourceRequestRefineInstructions {
   /** Required. The instructions to refine the resource. */
   instructions?: string;
 }
-export const GenerateAppResourceRequestRefineInstructions = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequestRefineInstructions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startIndex: S.optional(S.String),
     endIndex: S.optional(S.String),
@@ -6979,7 +6950,7 @@ export const GenerateAppResourceRequestRefineInstructions = /*@__PURE__*/ S.susp
 
 export type GenerateAppResourceRequestRefineInstructionsList =
   Array<GenerateAppResourceRequestRefineInstructions>;
-export const GenerateAppResourceRequestRefineInstructionsList = /*@__PURE__*/ S.Array(
+const GenerateAppResourceRequestRefineInstructionsList = /*@__PURE__*/ S.Array(
   GenerateAppResourceRequestRefineInstructions,
 ) as any as S.Schema<GenerateAppResourceRequestRefineInstructionsList>;
 
@@ -7008,7 +6979,7 @@ export interface GenerateAppResourceRequest {
   /** Optional. List of refine instructions to be used to refine the resource. */
   refineInstructions?: GenerateAppResourceRequestRefineInstructionsList;
 }
-export const GenerateAppResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolGenerationConfig: S.optional(GenerateAppResourceRequestToolGenerationConfig),
     appVersionContext: S.optional(GenerateAppResourceRequestAppVersionContext),
@@ -7034,7 +7005,7 @@ export interface GenerateAppResourceProjectsLocationsAppsRequest {
   /** Request body */
   body?: GenerateAppResourceRequest;
 }
-export const GenerateAppResourceProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateAppResourceProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GenerateAppResourceRequest.pipe(T.HttpBody())),
@@ -7058,7 +7029,7 @@ export interface GenerateChatTokenRequest {
   /** Optional. Indicates if live handoff is enabled for the session. */
   liveHandoffEnabled?: boolean;
 }
-export const GenerateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateChatTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recaptchaToken: S.optional(S.String),
     deployment: S.optional(S.String),
@@ -7072,7 +7043,7 @@ export interface GenerateChatTokenProjectsLocationsAppsSessionsRequest {
   /** Request body */
   body?: GenerateChatTokenRequest;
 }
-export const GenerateChatTokenProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateChatTokenProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GenerateChatTokenRequest.pipe(T.HttpBody())),
@@ -7094,7 +7065,7 @@ export interface GenerateChatTokenResponse {
   /** The time at which the chat token expires. */
   expireTime?: string;
 }
-export const GenerateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateChatTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chatToken: S.optional(S.String),
     expireTime: S.optional(S.String),
@@ -7107,7 +7078,7 @@ export type GenerateEvaluationRequestEvaluationTypeEnum =
   | "EVALUATION_TYPE_UNSPECIFIED"
   | "GOLDEN"
   | "SCENARIO";
-export const GenerateEvaluationRequestEvaluationTypeEnum = S.String;
+const GenerateEvaluationRequestEvaluationTypeEnum = S.String;
 
 export type GenerateEvaluationRequestSourceEnum =
   | "SOURCE_UNSPECIFIED"
@@ -7115,7 +7086,7 @@ export type GenerateEvaluationRequestSourceEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const GenerateEvaluationRequestSourceEnum = S.String;
+const GenerateEvaluationRequestSourceEnum = S.String;
 
 /** Request message for EvaluationService.GenerateEvaluation. */
 export interface GenerateEvaluationRequest {
@@ -7124,7 +7095,7 @@ export interface GenerateEvaluationRequest {
   /** Optional. Indicate the source of the conversation. If not set, all sources will be searched. */
   source?: GenerateEvaluationRequestSourceEnum | (string & {});
 }
-export const GenerateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationType: S.optional(GenerateEvaluationRequestEvaluationTypeEnum),
     source: S.optional(GenerateEvaluationRequestSourceEnum),
@@ -7139,18 +7110,17 @@ export interface GenerateEvaluationProjectsLocationsAppsConversationsRequest {
   /** Request body */
   body?: GenerateEvaluationRequest;
 }
-export const GenerateEvaluationProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      conversation: S.String.pipe(T.Label()),
-      body: S.optional(GenerateEvaluationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+conversation}:generateEvaluation",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const GenerateEvaluationProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conversation: S.String.pipe(T.Label()),
+    body: S.optional(GenerateEvaluationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+conversation}:generateEvaluation",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GenerateEvaluationProjectsLocationsAppsConversationsRequest",
 }) as any as S.Schema<GenerateEvaluationProjectsLocationsAppsConversationsRequest>;
@@ -7160,7 +7130,7 @@ export interface GenerateOnboardingSuggestionsRequest {
   /** Optional. Maximum number of suggestions to return. Defaults to 4 when unset. */
   maxSuggestions?: number;
 }
-export const GenerateOnboardingSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateOnboardingSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxSuggestions: S.optional(S.Number),
   }),
@@ -7174,18 +7144,17 @@ export interface GenerateOnboardingSuggestionsProjectsLocationsAppsRequest {
   /** Request body */
   body?: GenerateOnboardingSuggestionsRequest;
 }
-export const GenerateOnboardingSuggestionsProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(GenerateOnboardingSuggestionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:generateOnboardingSuggestions",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const GenerateOnboardingSuggestionsProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(GenerateOnboardingSuggestionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:generateOnboardingSuggestions",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GenerateOnboardingSuggestionsProjectsLocationsAppsRequest",
 }) as any as S.Schema<GenerateOnboardingSuggestionsProjectsLocationsAppsRequest>;
@@ -7195,7 +7164,7 @@ export interface AssistantSuggestionLoadSession {
   /** Identifier of the assistant session to open (the final segment of the AssistantSession resource name). */
   assistantSessionId?: string;
 }
-export const AssistantSuggestionLoadSession = /*@__PURE__*/ S.suspend(() =>
+const AssistantSuggestionLoadSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assistantSessionId: S.optional(S.String),
   }),
@@ -7211,10 +7180,10 @@ export type AssistantSuggestionIconEnum =
   | "DEPLOY"
   | "EXPLORE"
   | "FIX";
-export const AssistantSuggestionIconEnum = S.String;
+const AssistantSuggestionIconEnum = S.String;
 
 export type AssistantSuggestionSourceEnum = "SOURCE_UNSPECIFIED" | "RULE" | "LLM_RANKED";
-export const AssistantSuggestionSourceEnum = S.String;
+const AssistantSuggestionSourceEnum = S.String;
 
 /** A single personalized onboarding suggestion chip for the AI assistant's zero state. */
 export interface AssistantSuggestion {
@@ -7237,7 +7206,7 @@ export interface AssistantSuggestion {
   /** Rule-table candidate type in kebab-case (e.g. "resume-pending-review"), for metrics. */
   candidateType?: string;
 }
-export const AssistantSuggestion = /*@__PURE__*/ S.suspend(() =>
+const AssistantSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     seedPrompt: S.optional(S.String),
     sendMessage: S.optional(S.String),
@@ -7252,7 +7221,7 @@ export const AssistantSuggestion = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AssistantSuggestion" }) as any as S.Schema<AssistantSuggestion>;
 
 export type AssistantSuggestionList = Array<AssistantSuggestion>;
-export const AssistantSuggestionList = /*@__PURE__*/ S.Array(
+const AssistantSuggestionList = /*@__PURE__*/ S.Array(
   AssistantSuggestion,
 ) as any as S.Schema<AssistantSuggestionList>;
 
@@ -7261,7 +7230,7 @@ export type GenerateOnboardingSuggestionsResponseUserProfileEnum =
   | "NEW"
   | "EXPLORING"
   | "RETURNING";
-export const GenerateOnboardingSuggestionsResponseUserProfileEnum = S.String;
+const GenerateOnboardingSuggestionsResponseUserProfileEnum = S.String;
 
 /** Response message for SessionService.GenerateOnboardingSuggestions. */
 export interface GenerateOnboardingSuggestionsResponse {
@@ -7272,7 +7241,7 @@ export interface GenerateOnboardingSuggestionsResponse {
   /** Classification of the requesting user's history. */
   userProfile?: GenerateOnboardingSuggestionsResponseUserProfileEnum;
 }
-export const GenerateOnboardingSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateOnboardingSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextToken: S.optional(S.String),
     suggestions: S.optional(AssistantSuggestionList),
@@ -7286,7 +7255,7 @@ export interface GetExtendedAgentCardProjectsLocationsAppsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
-export const GetExtendedAgentCardProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExtendedAgentCardProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
   }).pipe(
@@ -7311,7 +7280,7 @@ export interface LfA2aV1AgentExtension {
   /** The unique URI identifying the extension. */
   uri?: string;
 }
-export const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     required: S.optional(S.Boolean),
@@ -7321,7 +7290,7 @@ export const LfA2aV1AgentExtension = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1AgentExtension" }) as any as S.Schema<LfA2aV1AgentExtension>;
 
 export type LfA2aV1AgentExtensionList = Array<LfA2aV1AgentExtension>;
-export const LfA2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
+const LfA2aV1AgentExtensionList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentExtension,
 ) as any as S.Schema<LfA2aV1AgentExtensionList>;
 
@@ -7336,7 +7305,7 @@ export interface LfA2aV1AgentCapabilities {
   /** Indicates if the agent supports providing an extended agent card when authenticated. */
   extendedAgentCard?: boolean;
 }
-export const LfA2aV1AgentCapabilities = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pushNotifications: S.optional(S.Boolean),
     streaming: S.optional(S.Boolean),
@@ -7354,7 +7323,7 @@ export interface LfA2aV1AgentCardSignature {
   /** The unprotected JWS header values. */
   header?: DocumentMap;
 }
-export const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protected: S.optional(S.String),
     signature: S.optional(S.String),
@@ -7365,7 +7334,7 @@ export const LfA2aV1AgentCardSignature = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LfA2aV1AgentCardSignature>;
 
 export type LfA2aV1AgentCardSignatureList = Array<LfA2aV1AgentCardSignature>;
-export const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
+const LfA2aV1AgentCardSignatureList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentCardSignature,
 ) as any as S.Schema<LfA2aV1AgentCardSignatureList>;
 
@@ -7380,7 +7349,7 @@ export interface LfA2aV1AgentInterface {
   /** Optional. An opaque string used for routing requests to a specific agent or tenant when multiple agents are served behind a single A2A endpoint. When set, clients MUST include this value in the `tenant` field of all request messages sent to this interface. The server is responsible for interpreting the value and routing requests accordingly; the protocol does not define its format or semantics. */
   tenant?: string;
 }
-export const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     protocolBinding: S.optional(S.String),
     protocolVersion: S.optional(S.String),
@@ -7390,7 +7359,7 @@ export const LfA2aV1AgentInterface = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1AgentInterface" }) as any as S.Schema<LfA2aV1AgentInterface>;
 
 export type LfA2aV1AgentInterfaceList = Array<LfA2aV1AgentInterface>;
-export const LfA2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
+const LfA2aV1AgentInterfaceList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentInterface,
 ) as any as S.Schema<LfA2aV1AgentInterfaceList>;
 
@@ -7399,14 +7368,14 @@ export interface LfA2aV1StringList {
   /** The individual string values. */
   list?: StringList;
 }
-export const LfA2aV1StringList = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1StringList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     list: S.optional(StringList),
   }),
 ).annotate({ identifier: "LfA2aV1StringList" }) as any as S.Schema<LfA2aV1StringList>;
 
 export type LfA2aV1StringListMap = { [key: string]: LfA2aV1StringList | undefined };
-export const LfA2aV1StringListMap = /*@__PURE__*/ S.Record(
+const LfA2aV1StringListMap = /*@__PURE__*/ S.Record(
   S.String,
   LfA2aV1StringList,
 ) as any as S.Schema<LfA2aV1StringListMap>;
@@ -7416,7 +7385,7 @@ export interface LfA2aV1SecurityRequirement {
   /** A map of security schemes to the required scopes. */
   schemes?: LfA2aV1StringListMap;
 }
-export const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemes: S.optional(LfA2aV1StringListMap),
   }),
@@ -7425,7 +7394,7 @@ export const LfA2aV1SecurityRequirement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LfA2aV1SecurityRequirement>;
 
 export type LfA2aV1SecurityRequirementList = Array<LfA2aV1SecurityRequirement>;
-export const LfA2aV1SecurityRequirementList = /*@__PURE__*/ S.Array(
+const LfA2aV1SecurityRequirementList = /*@__PURE__*/ S.Array(
   LfA2aV1SecurityRequirement,
 ) as any as S.Schema<LfA2aV1SecurityRequirementList>;
 
@@ -7438,7 +7407,7 @@ export interface LfA2aV1APIKeySecurityScheme {
   /** Required. The name of the header, query, or cookie parameter to be used. */
   name?: string;
 }
-export const LfA2aV1APIKeySecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1APIKeySecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     location: S.optional(S.String),
@@ -7453,7 +7422,7 @@ export interface LfA2aV1MutualTlsSecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
-export const LfA2aV1MutualTlsSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1MutualTlsSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
   }),
@@ -7470,7 +7439,7 @@ export interface LfA2aV1PasswordOAuthFlow {
   /** The available scopes for the OAuth2 security scheme. A map between the scope name and a short description for it. The map MAY be empty. */
   scopes?: StringMap;
 }
-export const LfA2aV1PasswordOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1PasswordOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refreshUrl: S.optional(S.String),
     tokenUrl: S.optional(S.String),
@@ -7491,7 +7460,7 @@ export interface LfA2aV1AuthorizationCodeOAuthFlow {
   /** Required. The authorization URL to be used for this flow. */
   authorizationUrl?: string;
 }
-export const LfA2aV1AuthorizationCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AuthorizationCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pkceRequired: S.optional(S.Boolean),
     refreshUrl: S.optional(S.String),
@@ -7512,7 +7481,7 @@ export interface LfA2aV1ImplicitOAuthFlow {
   /** The URL to be used for obtaining refresh tokens. This MUST be in the form of a URL. The OAuth2 standard requires the use of TLS. */
   refreshUrl?: string;
 }
-export const LfA2aV1ImplicitOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1ImplicitOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationUrl: S.optional(S.String),
     scopes: S.optional(StringMap),
@@ -7529,7 +7498,7 @@ export interface LfA2aV1ClientCredentialsOAuthFlow {
   /** Required. The token URL to be used for this flow. */
   tokenUrl?: string;
 }
-export const LfA2aV1ClientCredentialsOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1ClientCredentialsOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refreshUrl: S.optional(S.String),
     scopes: S.optional(StringMap),
@@ -7550,7 +7519,7 @@ export interface LfA2aV1DeviceCodeOAuthFlow {
   /** Required. The device authorization endpoint URL. */
   deviceAuthorizationUrl?: string;
 }
-export const LfA2aV1DeviceCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1DeviceCodeOAuthFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     refreshUrl: S.optional(S.String),
     tokenUrl: S.optional(S.String),
@@ -7574,7 +7543,7 @@ export interface LfA2aV1OAuthFlows {
   /** Configuration for the OAuth Device Code flow. */
   deviceCode?: LfA2aV1DeviceCodeOAuthFlow;
 }
-export const LfA2aV1OAuthFlows = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1OAuthFlows = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     password: S.optional(LfA2aV1PasswordOAuthFlow),
     authorizationCode: S.optional(LfA2aV1AuthorizationCodeOAuthFlow),
@@ -7593,7 +7562,7 @@ export interface LfA2aV1OAuth2SecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
-export const LfA2aV1OAuth2SecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1OAuth2SecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oauth2MetadataUrl: S.optional(S.String),
     flows: S.optional(LfA2aV1OAuthFlows),
@@ -7612,7 +7581,7 @@ export interface LfA2aV1HTTPAuthSecurityScheme {
   /** A hint to the client to identify how the bearer token is formatted (e.g., "JWT"). Primarily for documentation purposes. */
   bearerFormat?: string;
 }
-export const LfA2aV1HTTPAuthSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1HTTPAuthSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheme: S.optional(S.String),
     description: S.optional(S.String),
@@ -7629,7 +7598,7 @@ export interface LfA2aV1OpenIdConnectSecurityScheme {
   /** An optional description for the security scheme. */
   description?: string;
 }
-export const LfA2aV1OpenIdConnectSecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1OpenIdConnectSecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     openIdConnectUrl: S.optional(S.String),
     description: S.optional(S.String),
@@ -7651,7 +7620,7 @@ export interface LfA2aV1SecurityScheme {
   /** OpenID Connect authentication. */
   openIdConnectSecurityScheme?: LfA2aV1OpenIdConnectSecurityScheme;
 }
-export const LfA2aV1SecurityScheme = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1SecurityScheme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiKeySecurityScheme: S.optional(LfA2aV1APIKeySecurityScheme),
     mtlsSecurityScheme: S.optional(LfA2aV1MutualTlsSecurityScheme),
@@ -7662,7 +7631,7 @@ export const LfA2aV1SecurityScheme = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1SecurityScheme" }) as any as S.Schema<LfA2aV1SecurityScheme>;
 
 export type LfA2aV1SecuritySchemeMap = { [key: string]: LfA2aV1SecurityScheme | undefined };
-export const LfA2aV1SecuritySchemeMap = /*@__PURE__*/ S.Record(
+const LfA2aV1SecuritySchemeMap = /*@__PURE__*/ S.Record(
   S.String,
   LfA2aV1SecurityScheme,
 ) as any as S.Schema<LfA2aV1SecuritySchemeMap>;
@@ -7674,7 +7643,7 @@ export interface LfA2aV1AgentProvider {
   /** Required. The name of the agent provider's organization. Example: "Google" */
   organization?: string;
 }
-export const LfA2aV1AgentProvider = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     organization: S.optional(S.String),
@@ -7700,7 +7669,7 @@ export interface LfA2aV1AgentSkill {
   /** The set of supported output media types for this skill, overriding the agent's defaults. */
   outputModes?: StringList;
 }
-export const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     inputModes: S.optional(StringList),
@@ -7714,7 +7683,7 @@ export const LfA2aV1AgentSkill = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1AgentSkill" }) as any as S.Schema<LfA2aV1AgentSkill>;
 
 export type LfA2aV1AgentSkillList = Array<LfA2aV1AgentSkill>;
-export const LfA2aV1AgentSkillList = /*@__PURE__*/ S.Array(
+const LfA2aV1AgentSkillList = /*@__PURE__*/ S.Array(
   LfA2aV1AgentSkill,
 ) as any as S.Schema<LfA2aV1AgentSkillList>;
 
@@ -7749,7 +7718,7 @@ export interface LfA2aV1AgentCard {
   /** Required. Skills represent the abilities of an agent. It is largely a descriptive concept but represents a more focused set of behaviors that the agent is likely to succeed at. */
   skills?: LfA2aV1AgentSkillList;
 }
-export const LfA2aV1AgentCard = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AgentCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilities: S.optional(LfA2aV1AgentCapabilities),
     signatures: S.optional(LfA2aV1AgentCardSignatureList),
@@ -7772,17 +7741,16 @@ export interface GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
-export const GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tenant: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+tenant}/extendedAgentCard",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenant: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+tenant}/extendedAgentCard",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest",
 }) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsDeploymentsRequest>;
@@ -7791,17 +7759,16 @@ export interface GetExtendedAgentCardProjectsLocationsAppsVersionsRequest {
   /** Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set. */
   tenant: string;
 }
-export const GetExtendedAgentCardProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tenant: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta/{+tenant}/extendedAgentCard",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const GetExtendedAgentCardProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenant: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta/{+tenant}/extendedAgentCard",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetExtendedAgentCardProjectsLocationsAppsVersionsRequest",
 }) as any as S.Schema<GetExtendedAgentCardProjectsLocationsAppsVersionsRequest>;
@@ -7810,7 +7777,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -7831,7 +7798,7 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     name: S.optional(S.String),
@@ -7845,7 +7812,7 @@ export interface GetProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -7857,7 +7824,7 @@ export interface GetProjectsLocationsAppsAgentsRequest {
   /** Required. The resource name of the agent to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -7869,7 +7836,7 @@ export interface GetProjectsLocationsAppsAssistantSessionsRequest {
   /** Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   name: string;
 }
-export const GetProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -7881,7 +7848,7 @@ export interface GetProjectsLocationsAppsChangelogsRequest {
   /** Required. The resource name of the changelog to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -7916,7 +7883,7 @@ export interface Changelog {
   /** Output only. The original resource before the change. */
   originalResource?: DocumentMap;
 }
-export const Changelog = /*@__PURE__*/ S.suspend(() =>
+const Changelog = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -7939,7 +7906,7 @@ export type GetProjectsLocationsAppsConversationsSourceEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const GetProjectsLocationsAppsConversationsSourceEnum = S.String;
+const GetProjectsLocationsAppsConversationsSourceEnum = S.String;
 
 export interface GetProjectsLocationsAppsConversationsRequest {
   /** Required. The resource name of the conversation to retrieve. */
@@ -7947,7 +7914,7 @@ export interface GetProjectsLocationsAppsConversationsRequest {
   /** Optional. Indicate the source of the conversation. If not set, all source will be searched. */
   source?: GetProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
-export const GetProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     source: S.optional(GetProjectsLocationsAppsConversationsSourceEnum.pipe(T.Query())),
@@ -7965,7 +7932,7 @@ export interface ConversationTurn {
   /** Optional. The root span of the action processing. */
   rootSpan?: Span;
 }
-export const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
+const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userIntendedText: S.optional(S.String),
     messages: S.optional(MessageList),
@@ -7974,7 +7941,7 @@ export const ConversationTurn = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConversationTurn" }) as any as S.Schema<ConversationTurn>;
 
 export type ConversationTurnList = Array<ConversationTurn>;
-export const ConversationTurnList = /*@__PURE__*/ S.Array(
+const ConversationTurnList = /*@__PURE__*/ S.Array(
   ConversationTurn,
 ) as any as S.Schema<ConversationTurnList>;
 
@@ -7984,7 +7951,7 @@ export type ConversationSourceEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const ConversationSourceEnum = S.String;
+const ConversationSourceEnum = S.String;
 
 export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_UNSPECIFIED"
@@ -7995,10 +7962,10 @@ export type ConversationInputTypesItemEnum =
   | "INPUT_TYPE_BLOB"
   | "INPUT_TYPE_TOOL_RESPONSE"
   | "INPUT_TYPE_VARIABLES";
-export const ConversationInputTypesItemEnum = S.String;
+const ConversationInputTypesItemEnum = S.String;
 
 export type ConversationInputTypesItemEnumList = Array<ConversationInputTypesItemEnum>;
-export const ConversationInputTypesItemEnumList = /*@__PURE__*/ S.Array(
+const ConversationInputTypesItemEnumList = /*@__PURE__*/ S.Array(
   ConversationInputTypesItemEnum,
 ) as any as S.Schema<ConversationInputTypesItemEnumList>;
 
@@ -8007,7 +7974,7 @@ export type ConversationChannelTypeEnum =
   | "TEXT"
   | "AUDIO"
   | "MULTIMODAL";
-export const ConversationChannelTypeEnum = S.String;
+const ConversationChannelTypeEnum = S.String;
 
 /** A conversation represents an interaction between an end user and the CES app. */
 export interface Conversation {
@@ -8038,7 +8005,7 @@ export interface Conversation {
   /** Identifier. The unique identifier of the conversation. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}` */
   name?: string;
 }
-export const Conversation = /*@__PURE__*/ S.suspend(() =>
+const Conversation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     turns: S.optional(ConversationTurnList),
@@ -8060,7 +8027,7 @@ export interface GetProjectsLocationsAppsDeploymentsRequest {
   /** Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` */
   name: string;
 }
-export const GetProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8072,7 +8039,7 @@ export interface GetProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The resource name of the evaluation dataset to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8084,7 +8051,7 @@ export interface GetProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Required. The resource name of the evaluation expectation to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8096,7 +8063,7 @@ export interface GetProjectsLocationsAppsEvaluationRunsRequest {
   /** Required. The resource name of the evaluation run to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8113,7 +8080,7 @@ export interface EvaluationRunEvaluationRunSummary {
   /** Output only. Number of error results for the associated Evaluation in this run. */
   errorCount?: number;
 }
-export const EvaluationRunEvaluationRunSummary = /*@__PURE__*/ S.suspend(() =>
+const EvaluationRunEvaluationRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     passedCount: S.optional(S.Number),
     failedCount: S.optional(S.Number),
@@ -8126,7 +8093,7 @@ export const EvaluationRunEvaluationRunSummary = /*@__PURE__*/ S.suspend(() =>
 export type EvaluationRunEvaluationRunSummaryMap = {
   [key: string]: EvaluationRunEvaluationRunSummary | undefined;
 };
-export const EvaluationRunEvaluationRunSummaryMap = /*@__PURE__*/ S.Record(
+const EvaluationRunEvaluationRunSummaryMap = /*@__PURE__*/ S.Record(
   S.String,
   EvaluationRunEvaluationRunSummary,
 ) as any as S.Schema<EvaluationRunEvaluationRunSummaryMap>;
@@ -8136,7 +8103,7 @@ export type EvaluationRunEvaluationTypeEnum =
   | "GOLDEN"
   | "SCENARIO"
   | "MIXED";
-export const EvaluationRunEvaluationTypeEnum = S.String;
+const EvaluationRunEvaluationTypeEnum = S.String;
 
 export type EvaluationRunStateEnum =
   | "EVALUATION_RUN_STATE_UNSPECIFIED"
@@ -8145,7 +8112,7 @@ export type EvaluationRunStateEnum =
   | "COMPLETED"
   | "ERROR"
   | "CANCELLED";
-export const EvaluationRunStateEnum = S.String;
+const EvaluationRunStateEnum = S.String;
 
 /** Latency metrics for a component. */
 export interface LatencyReportLatencyMetrics {
@@ -8158,7 +8125,7 @@ export interface LatencyReportLatencyMetrics {
   /** Output only. The 90th percentile latency. */
   p90Latency?: string;
 }
-export const LatencyReportLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
+const LatencyReportLatencyMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     p50Latency: S.optional(S.String),
     p99Latency: S.optional(S.String),
@@ -8176,7 +8143,7 @@ export interface LatencyReportLlmCallLatency {
   /** Output only. The latency metrics for the LLM call. */
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
-export const LatencyReportLlmCallLatency = /*@__PURE__*/ S.suspend(() =>
+const LatencyReportLlmCallLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.String),
     latencyMetrics: S.optional(LatencyReportLatencyMetrics),
@@ -8186,7 +8153,7 @@ export const LatencyReportLlmCallLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportLlmCallLatency>;
 
 export type LatencyReportLlmCallLatencyList = Array<LatencyReportLlmCallLatency>;
-export const LatencyReportLlmCallLatencyList = /*@__PURE__*/ S.Array(
+const LatencyReportLlmCallLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportLlmCallLatency,
 ) as any as S.Schema<LatencyReportLlmCallLatencyList>;
 
@@ -8199,7 +8166,7 @@ export interface LatencyReportGuardrailLatency {
   /** Output only. The latency metrics for the guardrail. */
   latencyMetrics?: LatencyReportLatencyMetrics;
 }
-export const LatencyReportGuardrailLatency = /*@__PURE__*/ S.suspend(() =>
+const LatencyReportGuardrailLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guardrail: S.optional(S.String),
     guardrailDisplayName: S.optional(S.String),
@@ -8210,7 +8177,7 @@ export const LatencyReportGuardrailLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportGuardrailLatency>;
 
 export type LatencyReportGuardrailLatencyList = Array<LatencyReportGuardrailLatency>;
-export const LatencyReportGuardrailLatencyList = /*@__PURE__*/ S.Array(
+const LatencyReportGuardrailLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportGuardrailLatency,
 ) as any as S.Schema<LatencyReportGuardrailLatencyList>;
 
@@ -8225,7 +8192,7 @@ export interface LatencyReportToolLatency {
   /** Output only. The display name of the tool. */
   toolDisplayName?: string;
 }
-export const LatencyReportToolLatency = /*@__PURE__*/ S.suspend(() =>
+const LatencyReportToolLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(S.String),
     latencyMetrics: S.optional(LatencyReportLatencyMetrics),
@@ -8235,7 +8202,7 @@ export const LatencyReportToolLatency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatencyReportToolLatency" }) as any as S.Schema<LatencyReportToolLatency>;
 
 export type LatencyReportToolLatencyList = Array<LatencyReportToolLatency>;
-export const LatencyReportToolLatencyList = /*@__PURE__*/ S.Array(
+const LatencyReportToolLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportToolLatency,
 ) as any as S.Schema<LatencyReportToolLatencyList>;
 
@@ -8246,7 +8213,7 @@ export interface LatencyReportCallbackLatency {
   /** Output only. The stage of the callback. */
   stage?: string;
 }
-export const LatencyReportCallbackLatency = /*@__PURE__*/ S.suspend(() =>
+const LatencyReportCallbackLatency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latencyMetrics: S.optional(LatencyReportLatencyMetrics),
     stage: S.optional(S.String),
@@ -8256,7 +8223,7 @@ export const LatencyReportCallbackLatency = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatencyReportCallbackLatency>;
 
 export type LatencyReportCallbackLatencyList = Array<LatencyReportCallbackLatency>;
-export const LatencyReportCallbackLatencyList = /*@__PURE__*/ S.Array(
+const LatencyReportCallbackLatencyList = /*@__PURE__*/ S.Array(
   LatencyReportCallbackLatency,
 ) as any as S.Schema<LatencyReportCallbackLatencyList>;
 
@@ -8273,7 +8240,7 @@ export interface LatencyReport {
   /** Output only. Unordered list. Latency metrics for each callback. */
   callbackLatencies?: LatencyReportCallbackLatencyList;
 }
-export const LatencyReport = /*@__PURE__*/ S.suspend(() =>
+const LatencyReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     llmCallLatencies: S.optional(LatencyReportLlmCallLatencyList),
     guardrailLatencies: S.optional(LatencyReportGuardrailLatencyList),
@@ -8298,7 +8265,7 @@ export interface EvaluationRunProgress {
   /** Output only. Number of evaluation results that failed to execute. (EvaluationResult.execution_state is ERROR). */
   errorCount?: number;
 }
-export const EvaluationRunProgress = /*@__PURE__*/ S.suspend(() =>
+const EvaluationRunProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalCount: S.optional(S.Number),
     completedCount: S.optional(S.Number),
@@ -8310,7 +8277,7 @@ export const EvaluationRunProgress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EvaluationRunProgress" }) as any as S.Schema<EvaluationRunProgress>;
 
 export type EvaluationRunGoldenRunMethodEnum = "GOLDEN_RUN_METHOD_UNSPECIFIED" | "STABLE" | "NAIVE";
-export const EvaluationRunGoldenRunMethodEnum = S.String;
+const EvaluationRunGoldenRunMethodEnum = S.String;
 
 /** An evaluation run represents an all the evaluation results from an evaluation execution. */
 export interface EvaluationRun {
@@ -8365,7 +8332,7 @@ export interface EvaluationRun {
   /** Output only. The configuration to use for the run per persona. */
   personaRunConfigs?: PersonaRunConfigList;
 }
-export const EvaluationRun = /*@__PURE__*/ S.suspend(() =>
+const EvaluationRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationRunSummaries: S.optional(EvaluationRunEvaluationRunSummaryMap),
     evaluationResults: S.optional(StringList),
@@ -8399,7 +8366,7 @@ export interface GetProjectsLocationsAppsEvaluationsRequest {
   /** Required. The resource name of the evaluation to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8411,7 +8378,7 @@ export interface GetProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation result to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8423,7 +8390,7 @@ export interface GetProjectsLocationsAppsExamplesRequest {
   /** Required. The resource name of the example to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8435,7 +8402,7 @@ export interface GetProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the guardrail to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8447,7 +8414,7 @@ export interface GetProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Required. The resource name of the scheduled evaluation run to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8459,7 +8426,7 @@ export interface GetProjectsLocationsAppsToolsRequest {
   /** Required. The resource name of the tool to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8471,7 +8438,7 @@ export interface GetProjectsLocationsAppsToolsetsRequest {
   /** Required. The resource name of the toolset to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8483,7 +8450,7 @@ export interface GetProjectsLocationsAppsVersionsRequest {
   /** Required. The resource name of the app version to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8495,7 +8462,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8507,7 +8474,7 @@ export interface GetSecuritySettingsProjectsLocationsRequest {
   /** Required. The resource name of the security settings to retrieve. Format: `projects/{project}/locations/{location}/securitySettings` */
   name: string;
 }
-export const GetSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" })),
@@ -8519,7 +8486,7 @@ export type EndpointControlPolicyEnforcementScopeEnum =
   | "ENFORCEMENT_SCOPE_UNSPECIFIED"
   | "VPCSC_ONLY"
   | "ALWAYS";
-export const EndpointControlPolicyEnforcementScopeEnum = S.String;
+const EndpointControlPolicyEnforcementScopeEnum = S.String;
 
 /** Defines project/location level endpoint control policy. */
 export interface EndpointControlPolicy {
@@ -8528,7 +8495,7 @@ export interface EndpointControlPolicy {
   /** Optional. The scope in which this policy's allowed_origins list is enforced. */
   enforcementScope?: EndpointControlPolicyEnforcementScopeEnum | (string & {});
 }
-export const EndpointControlPolicy = /*@__PURE__*/ S.suspend(() =>
+const EndpointControlPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(StringList),
     enforcementScope: S.optional(EndpointControlPolicyEnforcementScopeEnum),
@@ -8548,7 +8515,7 @@ export interface SecuritySettings {
   /** Optional. Endpoint control related settings. */
   endpointControlPolicy?: EndpointControlPolicy;
 }
-export const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
+const SecuritySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -8565,7 +8532,7 @@ export interface RetrieveToolSchemaRequest {
   /** Optional. The toolset tool to retrieve the schema for. Only one tool should match the predicate from the toolset. Otherwise, an error will be returned. */
   toolsetTool?: ToolsetTool;
 }
-export const RetrieveToolSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const RetrieveToolSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(S.String),
     toolsetTool: S.optional(ToolsetTool),
@@ -8580,7 +8547,7 @@ export interface GetToolSchemaProjectsLocationsAppsRequest {
   /** Request body */
   body?: RetrieveToolSchemaRequest;
 }
-export const GetToolSchemaProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetToolSchemaProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RetrieveToolSchemaRequest.pipe(T.HttpBody())),
@@ -8606,7 +8573,7 @@ export interface RetrieveToolSchemaResponse {
   /** The schema of the tool output parameters. */
   outputSchema?: Ces_Schema;
 }
-export const RetrieveToolSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveToolSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tool: S.optional(S.String),
     toolsetTool: S.optional(ToolsetTool),
@@ -8624,7 +8591,7 @@ export interface RetrieveToolsRequest {
   /** Optional. The identifiers of the tools to retrieve from the toolset. If empty, all tools in the toolset will be returned. */
   toolIds?: StringList;
 }
-export const RetrieveToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const RetrieveToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bypassPersistenceConfig: S.optional(S.Boolean),
     toolIds: S.optional(StringList),
@@ -8637,7 +8604,7 @@ export interface GetToolsProjectsLocationsAppsToolsetsRequest {
   /** Request body */
   body?: RetrieveToolsRequest;
 }
-export const GetToolsProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetToolsProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolset: S.String.pipe(T.Label()),
     body: S.optional(RetrieveToolsRequest.pipe(T.HttpBody())),
@@ -8657,7 +8624,7 @@ export interface RetrieveToolsResponse {
   /** The list of tools that are included in the specified toolset. */
   tools?: ToolList;
 }
-export const RetrieveToolsResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveToolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tools: S.optional(ToolList),
   }),
@@ -8667,7 +8634,7 @@ export type ImportAppRequestImportOptionsConflictResolutionStrategyEnum =
   | "CONFLICT_RESOLUTION_STRATEGY_UNSPECIFIED"
   | "REPLACE"
   | "OVERWRITE";
-export const ImportAppRequestImportOptionsConflictResolutionStrategyEnum = S.String;
+const ImportAppRequestImportOptionsConflictResolutionStrategyEnum = S.String;
 
 /** Configuration options for the app import process. These options control how the import behaves, particularly when conflicts arise with existing app data. */
 export interface ImportAppRequestImportOptions {
@@ -8678,7 +8645,7 @@ export interface ImportAppRequestImportOptions {
     | ImportAppRequestImportOptionsConflictResolutionStrategyEnum
     | (string & {});
 }
-export const ImportAppRequestImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportAppRequestImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     conflictResolutionStrategy: S.optional(
@@ -8708,7 +8675,7 @@ export interface ImportAppRequest {
   /** Optional. The ID to use for the imported app. * If not specified, a unique ID will be automatically assigned for the app. * Otherwise, the imported app will use this ID as the final component of its resource name. If an app with the same ID already exists at the specified location in the project, the content of the existing app will be replaced. */
   appId?: string;
 }
-export const ImportAppRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsUri: S.optional(S.String),
     appContent: S.optional(S.String),
@@ -8727,7 +8694,7 @@ export interface ImportAppProjectsLocationsAppsRequest {
   /** Request body */
   body?: ImportAppRequest;
 }
-export const ImportAppProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportAppProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ImportAppRequest.pipe(T.HttpBody())),
@@ -8747,7 +8714,7 @@ export interface ImportEvaluationsRequestConversationList {
   /** Optional. Conversation resource names. */
   conversations?: StringList;
 }
-export const ImportEvaluationsRequestConversationList =
+const ImportEvaluationsRequestConversationList =
   BatchDeleteConversationsRequest as any as S.Schema<ImportEvaluationsRequestConversationList>;
 
 export type ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum =
@@ -8755,7 +8722,7 @@ export type ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum 
   | "OVERWRITE"
   | "SKIP"
   | "DUPLICATE";
-export const ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum = S.String;
+const ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum = S.String;
 
 /** Configuration options for the evaluation import process. These options control how the import behaves, particularly when conflicts arise with existing evaluations data. */
 export interface ImportEvaluationsRequestImportOptions {
@@ -8764,7 +8731,7 @@ export interface ImportEvaluationsRequestImportOptions {
     | ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum
     | (string & {});
 }
-export const ImportEvaluationsRequestImportOptions = /*@__PURE__*/ S.suspend(() =>
+const ImportEvaluationsRequestImportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictResolutionStrategy: S.optional(
       ImportEvaluationsRequestImportOptionsConflictResolutionStrategyEnum,
@@ -8785,7 +8752,7 @@ export interface ImportEvaluationsRequest {
   /** Raw bytes representing the csv file with the evaluations structure. */
   csvContent?: string;
 }
-export const ImportEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversationList: S.optional(ImportEvaluationsRequestConversationList),
     importOptions: S.optional(ImportEvaluationsRequestImportOptions),
@@ -8800,7 +8767,7 @@ export interface ImportEvaluationsProjectsLocationsAppsRequest {
   /** Request body */
   body?: ImportEvaluationsRequest;
 }
-export const ImportEvaluationsProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportEvaluationsProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ImportEvaluationsRequest.pipe(T.HttpBody())),
@@ -8827,7 +8794,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8846,7 +8813,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -8855,7 +8822,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -8874,7 +8841,7 @@ export interface ListProjectsLocationsAppsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8889,7 +8856,7 @@ export const ListProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsAppsRequest>;
 
 export type AppList = Array<App>;
-export const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
+const AppList = /*@__PURE__*/ S.Array(App) as any as S.Schema<AppList>;
 
 /** Response message for AgentService.ListApps. */
 export interface ListAppsResponse {
@@ -8900,7 +8867,7 @@ export interface ListAppsResponse {
   /** Unordered list. Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     apps: S.optional(AppList),
@@ -8920,7 +8887,7 @@ export interface ListProjectsLocationsAppsAgentsRequest {
   /** Required. The resource name of the app to list agents from. */
   parent: string;
 }
-export const ListProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8945,7 +8912,7 @@ export interface ListAgentsResponse {
   /** The list of agents. */
   agents?: AgentList;
 }
-export const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAgentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     agents: S.optional(AgentList),
@@ -8962,7 +8929,7 @@ export interface ListProjectsLocationsAppsAssistantSessionsRequest {
   /** Optional. Filter to be applied when listing the assistant sessions. See https://google.aip.dev/160 for more details. */
   filter?: string;
 }
-export const ListProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -8980,7 +8947,7 @@ export const ListProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsAppsAssistantSessionsRequest>;
 
 export type AssistantSessionList = Array<AssistantSession>;
-export const AssistantSessionList = /*@__PURE__*/ S.Array(
+const AssistantSessionList = /*@__PURE__*/ S.Array(
   AssistantSession,
 ) as any as S.Schema<AssistantSessionList>;
 
@@ -8991,7 +8958,7 @@ export interface ListAssistantSessionsResponse {
   /** The list of assistant sessions. */
   assistantSessions?: AssistantSessionList;
 }
-export const ListAssistantSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssistantSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     assistantSessions: S.optional(AssistantSessionList),
@@ -9012,7 +8979,7 @@ export interface ListProjectsLocationsAppsChangelogsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9031,7 +8998,7 @@ export const ListProjectsLocationsAppsChangelogsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsAppsChangelogsRequest>;
 
 export type ChangelogList = Array<Changelog>;
-export const ChangelogList = /*@__PURE__*/ S.Array(Changelog) as any as S.Schema<ChangelogList>;
+const ChangelogList = /*@__PURE__*/ S.Array(Changelog) as any as S.Schema<ChangelogList>;
 
 /** Response message for AgentService.ListChangelogs. */
 export interface ListChangelogsResponse {
@@ -9040,7 +9007,7 @@ export interface ListChangelogsResponse {
   /** A token that can be sent as ListChangelogsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     changelogs: S.optional(ChangelogList),
     nextPageToken: S.optional(S.String),
@@ -9053,12 +9020,10 @@ export type ListProjectsLocationsAppsConversationsSourcesEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const ListProjectsLocationsAppsConversationsSourcesEnum = S.String;
-
 export type ListProjectsLocationsAppsConversationsSourcesEnumList = Array<
   ListProjectsLocationsAppsConversationsSourcesEnum | (string & {})
 >;
-export const ListProjectsLocationsAppsConversationsSourcesEnumList =
+const ListProjectsLocationsAppsConversationsSourcesEnumList =
   ConversationInputTypesItemEnumList as any as S.Schema<ListProjectsLocationsAppsConversationsSourcesEnumList>;
 
 export type ListProjectsLocationsAppsConversationsSourceEnum =
@@ -9067,7 +9032,7 @@ export type ListProjectsLocationsAppsConversationsSourceEnum =
   | "SIMULATOR"
   | "EVAL"
   | "AGENT_TOOL";
-export const ListProjectsLocationsAppsConversationsSourceEnum = S.String;
+const ListProjectsLocationsAppsConversationsSourceEnum = S.String;
 
 export interface ListProjectsLocationsAppsConversationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
@@ -9083,7 +9048,7 @@ export interface ListProjectsLocationsAppsConversationsRequest {
   /** Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field. */
   source?: ListProjectsLocationsAppsConversationsSourceEnum | (string & {});
 }
-export const ListProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9103,9 +9068,7 @@ export const ListProjectsLocationsAppsConversationsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListProjectsLocationsAppsConversationsRequest>;
 
 export type ConversationList = Array<Conversation>;
-export const ConversationList = /*@__PURE__*/ S.Array(
-  Conversation,
-) as any as S.Schema<ConversationList>;
+const ConversationList = /*@__PURE__*/ S.Array(Conversation) as any as S.Schema<ConversationList>;
 
 /** Response message for AgentService.ListConversations. */
 export interface ListConversationsResponse {
@@ -9114,7 +9077,7 @@ export interface ListConversationsResponse {
   /** A token that can be sent as ListConversationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConversationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conversations: S.optional(ConversationList),
     nextPageToken: S.optional(S.String),
@@ -9133,7 +9096,7 @@ export interface ListProjectsLocationsAppsDeploymentsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9151,7 +9114,7 @@ export const ListProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsAppsDeploymentsRequest>;
 
 export type DeploymentList = Array<Deployment>;
-export const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
+const DeploymentList = /*@__PURE__*/ S.Array(Deployment) as any as S.Schema<DeploymentList>;
 
 /** Response message for AgentService.ListDeployments. */
 export interface ListDeploymentsResponse {
@@ -9160,7 +9123,7 @@ export interface ListDeploymentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deployments: S.optional(DeploymentList),
     nextPageToken: S.optional(S.String),
@@ -9179,7 +9142,7 @@ export interface ListProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Required. The resource name of the app to list evaluation datasets from. */
   parent: string;
 }
-export const ListProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9198,7 +9161,7 @@ export const ListProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListProjectsLocationsAppsEvaluationDatasetsRequest>;
 
 export type EvaluationDatasetList = Array<EvaluationDataset>;
-export const EvaluationDatasetList = /*@__PURE__*/ S.Array(
+const EvaluationDatasetList = /*@__PURE__*/ S.Array(
   EvaluationDataset,
 ) as any as S.Schema<EvaluationDatasetList>;
 
@@ -9209,7 +9172,7 @@ export interface ListEvaluationDatasetsResponse {
   /** The list of evaluation datasets. */
   evaluationDatasets?: EvaluationDatasetList;
 }
-export const ListEvaluationDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     evaluationDatasets: S.optional(EvaluationDatasetList),
@@ -9230,7 +9193,7 @@ export interface ListProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationExpectations call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9249,7 +9212,7 @@ export const ListProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE_
 }) as any as S.Schema<ListProjectsLocationsAppsEvaluationExpectationsRequest>;
 
 export type EvaluationExpectationList = Array<EvaluationExpectation>;
-export const EvaluationExpectationList = /*@__PURE__*/ S.Array(
+const EvaluationExpectationList = /*@__PURE__*/ S.Array(
   EvaluationExpectation,
 ) as any as S.Schema<EvaluationExpectationList>;
 
@@ -9260,7 +9223,7 @@ export interface ListEvaluationExpectationsResponse {
   /** The list of evaluation expectations. */
   evaluationExpectations?: EvaluationExpectationList;
 }
-export const ListEvaluationExpectationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationExpectationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     evaluationExpectations: S.optional(EvaluationExpectationList),
@@ -9281,7 +9244,7 @@ export interface ListProjectsLocationsAppsEvaluationRunsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9300,7 +9263,7 @@ export const ListProjectsLocationsAppsEvaluationRunsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsAppsEvaluationRunsRequest>;
 
 export type EvaluationRunList = Array<EvaluationRun>;
-export const EvaluationRunList = /*@__PURE__*/ S.Array(
+const EvaluationRunList = /*@__PURE__*/ S.Array(
   EvaluationRun,
 ) as any as S.Schema<EvaluationRunList>;
 
@@ -9311,7 +9274,7 @@ export interface ListEvaluationRunsResponse {
   /** The list of evaluation runs. */
   evaluationRuns?: EvaluationRunList;
 }
-export const ListEvaluationRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     evaluationRuns: S.optional(EvaluationRunList),
@@ -9338,7 +9301,7 @@ export interface ListProjectsLocationsAppsEvaluationsRequest {
   /** Optional. Filter to be applied on the evaluation when listing the evaluations. See https://google.aip.dev/160 for more details. Supported fields: evaluation_datasets */
   evaluationFilter?: string;
 }
-export const ListProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     evaluationRunFilter: S.optional(S.String.pipe(T.Query())),
@@ -9360,7 +9323,7 @@ export const ListProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListProjectsLocationsAppsEvaluationsRequest>;
 
 export type EvaluationList = Array<Evaluation>;
-export const EvaluationList = /*@__PURE__*/ S.Array(Evaluation) as any as S.Schema<EvaluationList>;
+const EvaluationList = /*@__PURE__*/ S.Array(Evaluation) as any as S.Schema<EvaluationList>;
 
 /** Response message for EvaluationService.ListEvaluations. */
 export interface ListEvaluationsResponse {
@@ -9369,7 +9332,7 @@ export interface ListEvaluationsResponse {
   /** A token that can be sent as ListEvaluationsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluations: S.optional(EvaluationList),
     nextPageToken: S.optional(S.String),
@@ -9388,7 +9351,7 @@ export interface ListProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The resource name of the evaluation to list evaluation results from. To filter by evaluation run, use `-` as the evaluation ID and specify the evaluation run ID in the filter. For example: `projects/{project}/locations/{location}/apps/{app}/evaluations/-` */
   parent: string;
 }
-export const ListProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsEvaluationsResultsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9413,7 +9376,7 @@ export interface ListEvaluationResultsResponse {
   /** The list of evaluation results. */
   evaluationResults?: EvaluationResultList;
 }
-export const ListEvaluationResultsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEvaluationResultsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     evaluationResults: S.optional(EvaluationResultList),
@@ -9434,7 +9397,7 @@ export interface ListProjectsLocationsAppsExamplesRequest {
   /** Required. The resource name of the app to list examples from. */
   parent: string;
 }
-export const ListProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -9459,7 +9422,7 @@ export interface ListExamplesResponse {
   /** A token that can be sent as ListExamplesRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExamplesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     examples: S.optional(ExampleList),
     nextPageToken: S.optional(S.String),
@@ -9478,7 +9441,7 @@ export interface ListProjectsLocationsAppsGuardrailsRequest {
   /** Required. The resource name of the app to list guardrails from. */
   parent: string;
 }
-export const ListProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -9503,7 +9466,7 @@ export interface ListGuardrailsResponse {
   /** The list of guardrails. */
   guardrails?: GuardrailList;
 }
-export const ListGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGuardrailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     guardrails: S.optional(GuardrailList),
@@ -9522,7 +9485,7 @@ export interface ListProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Optional. Filter to be applied when listing the scheduled evaluation runs. See https://google.aip.dev/160 for more details. Currently supports filtering by: * request.evaluations:evaluation_id * request.evaluation_dataset:evaluation_dataset_id */
   filter?: string;
 }
-export const ListProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -9541,7 +9504,7 @@ export const ListProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsAppsScheduledEvaluationRunsRequest>;
 
 export type ScheduledEvaluationRunList = Array<ScheduledEvaluationRun>;
-export const ScheduledEvaluationRunList = /*@__PURE__*/ S.Array(
+const ScheduledEvaluationRunList = /*@__PURE__*/ S.Array(
   ScheduledEvaluationRun,
 ) as any as S.Schema<ScheduledEvaluationRunList>;
 
@@ -9552,7 +9515,7 @@ export interface ListScheduledEvaluationRunsResponse {
   /** The list of scheduled evaluation runs. */
   scheduledEvaluationRuns?: ScheduledEvaluationRunList;
 }
-export const ListScheduledEvaluationRunsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListScheduledEvaluationRunsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     scheduledEvaluationRuns: S.optional(ScheduledEvaluationRunList),
@@ -9573,7 +9536,7 @@ export interface ListProjectsLocationsAppsToolsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -9598,7 +9561,7 @@ export interface ListToolsResponse {
   /** A token that can be sent as ListToolsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListToolsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListToolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tools: S.optional(ToolList),
     nextPageToken: S.optional(S.String),
@@ -9617,7 +9580,7 @@ export interface ListProjectsLocationsAppsToolsetsRequest {
   /** Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-export const ListProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -9642,7 +9605,7 @@ export interface ListToolsetsResponse {
   /** A token that can be sent as ListToolsetsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListToolsetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListToolsetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolsets: S.optional(ToolsetList),
     nextPageToken: S.optional(S.String),
@@ -9661,7 +9624,7 @@ export interface ListProjectsLocationsAppsVersionsRequest {
   /** Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call. */
   pageToken?: string;
 }
-export const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -9680,7 +9643,7 @@ export const ListProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsAppsVersionsRequest>;
 
 export type AppVersionList = Array<AppVersion>;
-export const AppVersionList = /*@__PURE__*/ S.Array(AppVersion) as any as S.Schema<AppVersionList>;
+const AppVersionList = /*@__PURE__*/ S.Array(AppVersion) as any as S.Schema<AppVersionList>;
 
 /** Response message for AgentService.ListAppVersions. */
 export interface ListAppVersionsResponse {
@@ -9689,7 +9652,7 @@ export interface ListAppVersionsResponse {
   /** A token that can be sent as ListAppVersionsRequest.page_token to retrieve the next page. Absence of this field indicates there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListAppVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAppVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appVersions: S.optional(AppVersionList),
     nextPageToken: S.optional(S.String),
@@ -9708,7 +9671,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -9727,7 +9690,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -9738,7 +9701,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -9754,7 +9717,7 @@ export interface PatchProjectsLocationsAppsRequest {
   /** Request body */
   body?: App;
 }
-export const PatchProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9774,7 +9737,7 @@ export interface PatchProjectsLocationsAppsAgentsRequest {
   /** Request body */
   body?: Agent;
 }
-export const PatchProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9794,7 +9757,7 @@ export interface PatchProjectsLocationsAppsDeploymentsRequest {
   /** Request body */
   body?: Deployment;
 }
-export const PatchProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9814,7 +9777,7 @@ export interface PatchProjectsLocationsAppsEvaluationDatasetsRequest {
   /** Request body */
   body?: EvaluationDataset;
 }
-export const PatchProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsEvaluationDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9834,7 +9797,7 @@ export interface PatchProjectsLocationsAppsEvaluationExpectationsRequest {
   /** Request body */
   body?: EvaluationExpectation;
 }
-export const PatchProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsEvaluationExpectationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9854,7 +9817,7 @@ export interface PatchProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: Evaluation;
 }
-export const PatchProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9874,7 +9837,7 @@ export interface PatchProjectsLocationsAppsExamplesRequest {
   /** Request body */
   body?: Example;
 }
-export const PatchProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsExamplesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9894,7 +9857,7 @@ export interface PatchProjectsLocationsAppsGuardrailsRequest {
   /** Request body */
   body?: Guardrail;
 }
-export const PatchProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsGuardrailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9914,15 +9877,14 @@ export interface PatchProjectsLocationsAppsScheduledEvaluationRunsRequest {
   /** Request body */
   body?: ScheduledEvaluationRun;
 }
-export const PatchProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
-    ),
+const PatchProjectsLocationsAppsScheduledEvaluationRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ScheduledEvaluationRun.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "v1beta/{+name}", baseUrl: "https://ces.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsAppsScheduledEvaluationRunsRequest",
 }) as any as S.Schema<PatchProjectsLocationsAppsScheduledEvaluationRunsRequest>;
@@ -9935,7 +9897,7 @@ export interface PatchProjectsLocationsAppsToolsRequest {
   /** Request body */
   body?: Tool;
 }
-export const PatchProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsToolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9955,7 +9917,7 @@ export interface PatchProjectsLocationsAppsToolsetsRequest {
   /** Request body */
   body?: Toolset;
 }
-export const PatchProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsToolsetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -9975,7 +9937,7 @@ export interface PatchProjectsLocationsAppsVersionsRequest {
   /** Request body */
   body?: AppVersion;
 }
-export const PatchProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -9989,15 +9951,13 @@ export const PatchProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend
 
 /** Request message for AgentService.RestoreAppVersion */
 export type RestoreAppVersionRequest = CancelOperationRequest;
-export const RestoreAppVersionRequest = CancelOperationRequest;
-
 export interface RestoreProjectsLocationsAppsVersionsRequest {
   /** Required. The resource name of the app version to restore. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RestoreProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreProjectsLocationsAppsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -10017,7 +9977,7 @@ export type RunAssistantRequestInteractionTypeEnum =
   | "NEW_MESSAGE"
   | "POLL"
   | "DISMISS";
-export const RunAssistantRequestInteractionTypeEnum = S.String;
+const RunAssistantRequestInteractionTypeEnum = S.String;
 
 /** Request message for AssistantService.RunAssistant. */
 export interface RunAssistantRequest {
@@ -10028,7 +9988,7 @@ export interface RunAssistantRequest {
   /** Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}` */
   assistantSession?: string;
 }
-export const RunAssistantRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAssistantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interactionType: S.optional(RunAssistantRequestInteractionTypeEnum),
     message: S.optional(AssistantMessage),
@@ -10042,7 +10002,7 @@ export interface RunAssistantProjectsLocationsAppsRequest {
   /** Request body */
   body?: RunAssistantRequest;
 }
-export const RunAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAssistantProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String.pipe(T.Label()),
     body: S.optional(RunAssistantRequest.pipe(T.HttpBody())),
@@ -10064,7 +10024,7 @@ export interface AssistantOutput {
   /** Output only. Suggested user responses from the assistant agent. */
   userResponseSuggestions?: UserResponseSuggestions;
 }
-export const AssistantOutput = /*@__PURE__*/ S.suspend(() =>
+const AssistantOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(AssistantMessage),
     userResponseSuggestions: S.optional(UserResponseSuggestions),
@@ -10076,7 +10036,7 @@ export type RunAssistantResponseStateEnum =
   | "PROCESSING"
   | "IDLE"
   | "PENDING_REVIEW";
-export const RunAssistantResponseStateEnum = S.String;
+const RunAssistantResponseStateEnum = S.String;
 
 /** Response message for AssistantService.RunAssistant. */
 export interface RunAssistantResponse {
@@ -10085,7 +10045,7 @@ export interface RunAssistantResponse {
   /** Output only. The status of the assistant session. */
   state?: RunAssistantResponseStateEnum;
 }
-export const RunAssistantResponse = /*@__PURE__*/ S.suspend(() =>
+const RunAssistantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     output: S.optional(AssistantOutput),
     state: S.optional(RunAssistantResponseStateEnum),
@@ -10098,7 +10058,7 @@ export interface RunEvaluationProjectsLocationsAppsRequest {
   /** Request body */
   body?: RunEvaluationRequest;
 }
-export const RunEvaluationProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunEvaluationProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String.pipe(T.Label()),
     body: S.optional(RunEvaluationRequest.pipe(T.HttpBody())),
@@ -10115,15 +10075,13 @@ export const RunEvaluationProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend
 
 /** Request message for EvaluationService.RunEvaluationResultMetrics. */
 export type RunEvaluationResultMetricsRequest = CancelOperationRequest;
-export const RunEvaluationResultMetricsRequest = CancelOperationRequest;
-
 export interface RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest {
   /** Required. The evaluation result to run metrics for. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}/results/{evaluation_result_id}` */
   evaluationResultId: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest =
+const RunEvaluationResultMetricsProjectsLocationsAppsEvaluationsResultsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       evaluationResultId: S.String.pipe(T.Label()),
@@ -10148,7 +10106,7 @@ export interface SessionConfigRemoteDialogflowQueryParameters {
   /** Optional. The HTTP headers to be sent as webhook_headers in [QueryParameters](https://cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#queryparameters). */
   webhookHeaders?: StringMap;
 }
-export const SessionConfigRemoteDialogflowQueryParameters = /*@__PURE__*/ S.suspend(() =>
+const SessionConfigRemoteDialogflowQueryParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endUserMetadata: S.optional(DocumentMap),
     payload: S.optional(DocumentMap),
@@ -10181,7 +10139,7 @@ export interface SessionConfig {
   /** Optional. The time zone of the user. If provided, the agent will use the time zone for date and time related variables. Otherwise, the agent will use the time zone specified in the App.time_zone_settings. The format is the IANA Time Zone Database time zone, e.g. "America/Los_Angeles". */
   timeZone?: string;
 }
-export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
+const SessionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     historicalContexts: S.optional(MessageList),
     excludeDiagnosticInfo: S.optional(S.Boolean),
@@ -10197,9 +10155,7 @@ export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionConfig" }) as any as S.Schema<SessionConfig>;
 
 export type SessionInputList = Array<SessionInput>;
-export const SessionInputList = /*@__PURE__*/ S.Array(
-  SessionInput,
-) as any as S.Schema<SessionInputList>;
+const SessionInputList = /*@__PURE__*/ S.Array(SessionInput) as any as S.Schema<SessionInputList>;
 
 /** Request message for SessionService.RunSession. */
 export interface RunSessionRequest {
@@ -10208,7 +10164,7 @@ export interface RunSessionRequest {
   /** Required. Inputs for the session. */
   inputs?: SessionInputList;
 }
-export const RunSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const RunSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(SessionConfig),
     inputs: S.optional(SessionInputList),
@@ -10221,7 +10177,7 @@ export interface RunSessionProjectsLocationsAppsSessionsRequest {
   /** Request body */
   body?: RunSessionRequest;
 }
-export const RunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(RunSessionRequest.pipe(T.HttpBody())),
@@ -10237,14 +10193,14 @@ export const RunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<RunSessionProjectsLocationsAppsSessionsRequest>;
 
 export type ToolCallList = Array<ToolCall>;
-export const ToolCallList = /*@__PURE__*/ S.Array(ToolCall) as any as S.Schema<ToolCallList>;
+const ToolCallList = /*@__PURE__*/ S.Array(ToolCall) as any as S.Schema<ToolCallList>;
 
 /** Request for the client to execute the tools and return the execution results before continuing the session. */
 export interface ToolCalls {
   /** Optional. The list of tool calls to execute. */
   toolCalls?: ToolCallList;
 }
-export const ToolCalls = /*@__PURE__*/ S.suspend(() =>
+const ToolCalls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     toolCalls: S.optional(ToolCallList),
   }),
@@ -10257,7 +10213,7 @@ export interface SessionOutputDiagnosticInfo {
   /** A trace of the entire request processing, represented as a root span. This span can contain nested child spans for specific operations. */
   rootSpan?: Span;
 }
-export const SessionOutputDiagnosticInfo = /*@__PURE__*/ S.suspend(() =>
+const SessionOutputDiagnosticInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messages: S.optional(MessageList),
     rootSpan: S.optional(Span),
@@ -10271,7 +10227,7 @@ export interface EndSession {
   /** Optional. Provides additional information about the end session signal, such as the reason for ending the session. */
   metadata?: DocumentMap;
 }
-export const EndSession = /*@__PURE__*/ S.suspend(() =>
+const EndSession = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
   }),
@@ -10304,7 +10260,7 @@ export interface SessionOutput {
   /** Intermediate progress update from the CES agent. */
   progress?: string;
 }
-export const SessionOutput = /*@__PURE__*/ S.suspend(() =>
+const SessionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleSearchSuggestions: S.optional(GoogleSearchSuggestions),
     toolCalls: S.optional(ToolCalls),
@@ -10322,7 +10278,7 @@ export const SessionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SessionOutput" }) as any as S.Schema<SessionOutput>;
 
 export type SessionOutputList = Array<SessionOutput>;
-export const SessionOutputList = /*@__PURE__*/ S.Array(
+const SessionOutputList = /*@__PURE__*/ S.Array(
   SessionOutput,
 ) as any as S.Schema<SessionOutputList>;
 
@@ -10331,7 +10287,7 @@ export interface RunSessionResponse {
   /** Outputs for the session. */
   outputs?: SessionOutputList;
 }
-export const RunSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const RunSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputs: S.optional(SessionOutputList),
   }),
@@ -10354,7 +10310,7 @@ export interface LfA2aV1Part {
   /** An optional `filename` for the file (e.g., "document.pdf"). */
   filename?: string;
 }
-export const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     url: S.optional(S.String),
@@ -10367,12 +10323,10 @@ export const LfA2aV1Part = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1Part" }) as any as S.Schema<LfA2aV1Part>;
 
 export type LfA2aV1PartList = Array<LfA2aV1Part>;
-export const LfA2aV1PartList = /*@__PURE__*/ S.Array(
-  LfA2aV1Part,
-) as any as S.Schema<LfA2aV1PartList>;
+const LfA2aV1PartList = /*@__PURE__*/ S.Array(LfA2aV1Part) as any as S.Schema<LfA2aV1PartList>;
 
 export type LfA2aV1MessageRoleEnum = "ROLE_UNSPECIFIED" | "ROLE_USER" | "ROLE_AGENT";
-export const LfA2aV1MessageRoleEnum = S.String;
+const LfA2aV1MessageRoleEnum = S.String;
 
 /** `Message` is one unit of communication between client and server. It can be associated with a context and/or a task. For server messages, `context_id` must be provided, and `task_id` only if a task was created. For client messages, both fields are optional, with the caveat that if both are provided, they have to match (the `context_id` has to be the one that is set on the task). If only `task_id` is provided, the server will infer `context_id` from it. */
 export interface LfA2aV1Message {
@@ -10393,7 +10347,7 @@ export interface LfA2aV1Message {
   /** Required. Identifies the sender of the message. */
   role?: LfA2aV1MessageRoleEnum | (string & {});
 }
-export const LfA2aV1Message = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextId: S.optional(S.String),
     referenceTaskIds: S.optional(StringList),
@@ -10413,7 +10367,7 @@ export interface LfA2aV1AuthenticationInfo {
   /** Push Notification credentials. Format depends on the scheme (e.g., token for Bearer). */
   credentials?: string;
 }
-export const LfA2aV1AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1AuthenticationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheme: S.optional(S.String),
     credentials: S.optional(S.String),
@@ -10437,7 +10391,7 @@ export interface LfA2aV1TaskPushNotificationConfig {
   /** Required. The URL where the notification should be sent. */
   url?: string;
 }
-export const LfA2aV1TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1TaskPushNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.optional(S.String),
     token: S.optional(S.String),
@@ -10461,7 +10415,7 @@ export interface LfA2aV1SendMessageConfiguration {
   /** Configuration for the agent to send push notifications for task updates. Task id should be empty when sending this configuration in a `SendMessage` request. */
   taskPushNotificationConfig?: LfA2aV1TaskPushNotificationConfig;
 }
-export const LfA2aV1SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1SendMessageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acceptedOutputModes: S.optional(StringList),
     historyLength: S.optional(S.Number),
@@ -10481,7 +10435,7 @@ export interface LfA2aV1SendMessageRequest {
   /** Configuration for the send request. */
   configuration?: LfA2aV1SendMessageConfiguration;
 }
-export const LfA2aV1SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1SendMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     message: S.optional(LfA2aV1Message),
@@ -10497,7 +10451,7 @@ export interface SendProjectsLocationsAppsDeploymentsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const SendProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -10522,7 +10476,7 @@ export type LfA2aV1TaskStatusStateEnum =
   | "TASK_STATE_INPUT_REQUIRED"
   | "TASK_STATE_REJECTED"
   | "TASK_STATE_AUTH_REQUIRED";
-export const LfA2aV1TaskStatusStateEnum = S.String;
+const LfA2aV1TaskStatusStateEnum = S.String;
 
 /** A container for the status of a task */
 export interface LfA2aV1TaskStatus {
@@ -10533,7 +10487,7 @@ export interface LfA2aV1TaskStatus {
   /** A message associated with the status. */
   message?: LfA2aV1Message;
 }
-export const LfA2aV1TaskStatus = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1TaskStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(LfA2aV1TaskStatusStateEnum),
     timestamp: S.optional(S.String),
@@ -10556,7 +10510,7 @@ export interface LfA2aV1Artifact {
   /** Optional. Metadata included with the artifact. */
   metadata?: DocumentMap;
 }
-export const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     artifactId: S.optional(S.String),
@@ -10568,12 +10522,12 @@ export const LfA2aV1Artifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LfA2aV1Artifact" }) as any as S.Schema<LfA2aV1Artifact>;
 
 export type LfA2aV1ArtifactList = Array<LfA2aV1Artifact>;
-export const LfA2aV1ArtifactList = /*@__PURE__*/ S.Array(
+const LfA2aV1ArtifactList = /*@__PURE__*/ S.Array(
   LfA2aV1Artifact,
 ) as any as S.Schema<LfA2aV1ArtifactList>;
 
 export type LfA2aV1MessageList = Array<LfA2aV1Message>;
-export const LfA2aV1MessageList = /*@__PURE__*/ S.Array(
+const LfA2aV1MessageList = /*@__PURE__*/ S.Array(
   LfA2aV1Message,
 ) as any as S.Schema<LfA2aV1MessageList>;
 
@@ -10592,7 +10546,7 @@ export interface LfA2aV1Task {
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of interactions from a `Task`. */
   history?: LfA2aV1MessageList;
 }
-export const LfA2aV1Task = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1Task = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     status: S.optional(LfA2aV1TaskStatus),
@@ -10610,7 +10564,7 @@ export interface LfA2aV1SendMessageResponse {
   /** The task created or updated by the message. */
   task?: LfA2aV1Task;
 }
-export const LfA2aV1SendMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1SendMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(LfA2aV1Message),
     task: S.optional(LfA2aV1Task),
@@ -10625,7 +10579,7 @@ export interface SendProjectsLocationsAppsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const SendProjectsLocationsAppsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendProjectsLocationsAppsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -10646,7 +10600,7 @@ export interface SendProjectsLocationsAppsVersionsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const SendProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const SendProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -10665,12 +10619,10 @@ export type StreamChatAiAssistantRequestClientCapabilitiesItemEnum =
   | "CLIENT_CAPABILITY_UNSPECIFIED"
   | "CONFIRMATION_CARDS"
   | "CLIENT_MANAGED_LRO";
-export const StreamChatAiAssistantRequestClientCapabilitiesItemEnum = S.String;
-
 export type StreamChatAiAssistantRequestClientCapabilitiesItemEnumList = Array<
   StreamChatAiAssistantRequestClientCapabilitiesItemEnum | (string & {})
 >;
-export const StreamChatAiAssistantRequestClientCapabilitiesItemEnumList =
+const StreamChatAiAssistantRequestClientCapabilitiesItemEnumList =
   ConversationInputTypesItemEnumList as any as S.Schema<StreamChatAiAssistantRequestClientCapabilitiesItemEnumList>;
 
 /** The user's answer to an AssistantConfirmationRequest, sent on the next SessionService.StreamChatAiAssistant call to resume the paused agent. */
@@ -10682,7 +10634,7 @@ export interface AssistantConfirmationResponse {
   /** The AssistantConfirmationRequest.confirmation_id being answered. */
   confirmationId?: string;
 }
-export const AssistantConfirmationResponse = /*@__PURE__*/ S.suspend(() =>
+const AssistantConfirmationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answerText: S.optional(S.String),
     confirmed: S.optional(S.Boolean),
@@ -10709,7 +10661,7 @@ export interface OperationCompletedEvent {
   /** Optional structured result metadata (e.g. pass_rate, total_examples, export_uri). */
   metadata?: DocumentMap;
 }
-export const OperationCompletedEvent = /*@__PURE__*/ S.suspend(() =>
+const OperationCompletedEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetResourceName: S.optional(S.String),
     operationName: S.optional(S.String),
@@ -10740,7 +10692,7 @@ export interface StreamChatAiAssistantRequest {
   /** Optional. Resumes an assistant session paused waiting for a client-managed long-running operation to complete. */
   operationCompletedEvent?: OperationCompletedEvent;
 }
-export const StreamChatAiAssistantRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamChatAiAssistantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientCapabilities: S.optional(StreamChatAiAssistantRequestClientCapabilitiesItemEnumList),
     attachedGcsUris: S.optional(StringList),
@@ -10761,8 +10713,8 @@ export interface StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequ
   /** Request body */
   body?: StreamChatAiAssistantRequest;
 }
-export const StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(StreamChatAiAssistantRequest.pipe(T.HttpBody())),
@@ -10773,12 +10725,12 @@ export const StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest 
         baseUrl: "https://ces.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest",
-  }) as any as S.Schema<StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest>;
+).annotate({
+  identifier: "StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest",
+}) as any as S.Schema<StreamChatAiAssistantProjectsLocationsAppsAssistantSessionsRequest>;
 
 export type TurnHandoffEventReasonEnum = "REASON_UNSPECIFIED" | "SERVER_RESTART";
-export const TurnHandoffEventReasonEnum = S.String;
+const TurnHandoffEventReasonEnum = S.String;
 
 /** Emitted before this task stops serving the stream mid-turn (e.g. a server restart). The turn's state is persisted; a reconnect carrying resume_from_sequence_number continues it on another task. */
 export interface TurnHandoffEvent {
@@ -10787,7 +10739,7 @@ export interface TurnHandoffEvent {
   /** Why the stream is handing off. */
   reason?: TurnHandoffEventReasonEnum;
 }
-export const TurnHandoffEvent = /*@__PURE__*/ S.suspend(() =>
+const TurnHandoffEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     turnId: S.optional(S.String),
     reason: S.optional(TurnHandoffEventReasonEnum),
@@ -10801,7 +10753,7 @@ export type ArtifactChunkStateEnum =
   | "FINALIZED"
   | "FAILED"
   | "CLOSED";
-export const ArtifactChunkStateEnum = S.String;
+const ArtifactChunkStateEnum = S.String;
 
 /** A streamed fragment of a document artifact (e.g. a markdown TDD) that the assistant is generating. Content deltas stream while the document is being written so clients can render a live preview; the FINALIZED chunk carries the GCS URI once the file has been persisted. */
 export interface ArtifactChunk {
@@ -10818,7 +10770,7 @@ export interface ArtifactChunk {
   /** The file name shown to the user, e.g. "hotel_booking_tdd.md". Set on STARTED (and repeated on FINALIZED). */
   displayName?: string;
 }
-export const ArtifactChunk = /*@__PURE__*/ S.suspend(() =>
+const ArtifactChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentDelta: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -10838,7 +10790,7 @@ export interface OptionQuestionsChunkOption {
   /** Optional message text to send when the option is chosen; defaults to `title` when empty. */
   submitText?: string;
 }
-export const OptionQuestionsChunkOption = /*@__PURE__*/ S.suspend(() =>
+const OptionQuestionsChunkOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     details: S.optional(S.String),
@@ -10849,7 +10801,7 @@ export const OptionQuestionsChunkOption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptionQuestionsChunkOption>;
 
 export type OptionQuestionsChunkOptionList = Array<OptionQuestionsChunkOption>;
-export const OptionQuestionsChunkOptionList = /*@__PURE__*/ S.Array(
+const OptionQuestionsChunkOptionList = /*@__PURE__*/ S.Array(
   OptionQuestionsChunkOption,
 ) as any as S.Schema<OptionQuestionsChunkOptionList>;
 
@@ -10860,7 +10812,7 @@ export interface OptionQuestionsChunkQuestion {
   /** The selectable options, in presentation order. */
   options?: OptionQuestionsChunkOptionList;
 }
-export const OptionQuestionsChunkQuestion = /*@__PURE__*/ S.suspend(() =>
+const OptionQuestionsChunkQuestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     question: S.optional(S.String),
     options: S.optional(OptionQuestionsChunkOptionList),
@@ -10870,7 +10822,7 @@ export const OptionQuestionsChunkQuestion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OptionQuestionsChunkQuestion>;
 
 export type OptionQuestionsChunkQuestionList = Array<OptionQuestionsChunkQuestion>;
-export const OptionQuestionsChunkQuestionList = /*@__PURE__*/ S.Array(
+const OptionQuestionsChunkQuestionList = /*@__PURE__*/ S.Array(
   OptionQuestionsChunkQuestion,
 ) as any as S.Schema<OptionQuestionsChunkQuestionList>;
 
@@ -10893,7 +10845,7 @@ export interface AssistantConfirmationRequest {
   /** Identifier correlating this request with its response. Opaque to clients; must be echoed verbatim on the answering request. */
   confirmationId?: string;
 }
-export const AssistantConfirmationRequest = /*@__PURE__*/ S.suspend(() =>
+const AssistantConfirmationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     negativeLabel: S.optional(S.String),
     context: S.optional(S.String),
@@ -10912,7 +10864,7 @@ export type TurnMetadataContractStreamingPhaseEnum =
   | "CONTRACT_STREAMING_PHASE_UNSPECIFIED"
   | "DRAFTING"
   | "REVISING";
-export const TurnMetadataContractStreamingPhaseEnum = S.String;
+const TurnMetadataContractStreamingPhaseEnum = S.String;
 
 /** Turn-level metadata and intent categorization. */
 export interface TurnMetadata {
@@ -10925,7 +10877,7 @@ export interface TurnMetadata {
   /** Set on the final artifact event of a turn whose contract draft was published (a revision was activated). Terminal for the clarification flow of this draft: contract_progress is authoritative and complete. */
   contractFinalized?: boolean;
 }
-export const TurnMetadata = /*@__PURE__*/ S.suspend(() =>
+const TurnMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contractDraftComplete: S.optional(S.Boolean),
     contractRelated: S.optional(S.Boolean),
@@ -10935,7 +10887,7 @@ export const TurnMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TurnMetadata" }) as any as S.Schema<TurnMetadata>;
 
 export type StreamChatAiAssistantResponseList = Array<StreamChatAiAssistantResponse>;
-export const StreamChatAiAssistantResponseList = /*@__PURE__*/ S.Array(
+const StreamChatAiAssistantResponseList = /*@__PURE__*/ S.Array(
   S.suspend(() => StreamChatAiAssistantResponse),
 ) as any as S.Schema<StreamChatAiAssistantResponseList>;
 
@@ -10950,7 +10902,7 @@ export interface TurnResumeSnapshot {
   /** Identifies the turn being attached to. */
   turnId?: string;
 }
-export const TurnResumeSnapshot = /*@__PURE__*/ S.suspend(() =>
+const TurnResumeSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolvedSequenceNumber: S.optional(S.String),
     events: S.optional(StreamChatAiAssistantResponseList),
@@ -10964,7 +10916,7 @@ export type TurnCompletedEventReasonEnum =
   | "COMPLETED"
   | "ABANDONED"
   | "RESUME_UNAVAILABLE";
-export const TurnCompletedEventReasonEnum = S.String;
+const TurnCompletedEventReasonEnum = S.String;
 
 /** Terminal event of a turn (see StreamChatAiAssistantResponse.turn_completed). */
 export interface TurnCompletedEvent {
@@ -10975,7 +10927,7 @@ export interface TurnCompletedEvent {
   /** Identifier of the turn that ended; matches TurnResumeSnapshot.turn_id and ActiveTurnInfo.turn_id. */
   turnId?: string;
 }
-export const TurnCompletedEvent = /*@__PURE__*/ S.suspend(() =>
+const TurnCompletedEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(TurnCompletedEventReasonEnum),
     finalSequenceNumber: S.optional(S.String),
@@ -10988,7 +10940,7 @@ export interface OptionQuestionsChunk {
   /** The questions asked this turn. More than one entry drives the console's "1 of N" pager. */
   questions?: OptionQuestionsChunkQuestionList;
 }
-export const OptionQuestionsChunk = /*@__PURE__*/ S.suspend(() =>
+const OptionQuestionsChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     questions: S.optional(OptionQuestionsChunkQuestionList),
   }),
@@ -11033,7 +10985,7 @@ export interface StreamChatAiAssistantResponse {
   /** Optional. UI event payload. */
   uiEvent?: UiEvent;
 }
-export const StreamChatAiAssistantResponse = /*@__PURE__*/ S.suspend(() =>
+const StreamChatAiAssistantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventTime: S.optional(S.String),
     handoff: S.optional(TurnHandoffEvent),
@@ -11064,7 +11016,7 @@ export interface StreamProjectsLocationsAppsDeploymentsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const StreamProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamProjectsLocationsAppsDeploymentsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -11094,7 +11046,7 @@ export interface LfA2aV1TaskArtifactUpdateEvent {
   /** Required. The ID of the task for this artifact. */
   taskId?: string;
 }
-export const LfA2aV1TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1TaskArtifactUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     append: S.optional(S.Boolean),
     metadata: S.optional(DocumentMap),
@@ -11118,7 +11070,7 @@ export interface LfA2aV1TaskStatusUpdateEvent {
   /** Required. The new status of the task. */
   status?: LfA2aV1TaskStatus;
 }
-export const LfA2aV1TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1TaskStatusUpdateEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contextId: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -11140,7 +11092,7 @@ export interface LfA2aV1StreamResponse {
   /** A Task object containing the current state of the task. */
   task?: LfA2aV1Task;
 }
-export const LfA2aV1StreamResponse = /*@__PURE__*/ S.suspend(() =>
+const LfA2aV1StreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(LfA2aV1Message),
     artifactUpdate: S.optional(LfA2aV1TaskArtifactUpdateEvent),
@@ -11155,7 +11107,7 @@ export interface StreamProjectsLocationsAppsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const StreamProjectsLocationsAppsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamProjectsLocationsAppsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -11176,7 +11128,7 @@ export interface StreamProjectsLocationsAppsVersionsMessageRequest {
   /** Request body */
   body?: LfA2aV1SendMessageRequest;
 }
-export const StreamProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamProjectsLocationsAppsVersionsMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenant: S.String.pipe(T.Label()),
     body: S.optional(LfA2aV1SendMessageRequest.pipe(T.HttpBody())),
@@ -11197,7 +11149,7 @@ export interface StreamRunSessionProjectsLocationsAppsSessionsRequest {
   /** Request body */
   body?: RunSessionRequest;
 }
-export const StreamRunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamRunSessionProjectsLocationsAppsSessionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     session: S.String.pipe(T.Label()),
     body: S.optional(RunSessionRequest.pipe(T.HttpBody())),
@@ -11219,7 +11171,7 @@ export interface TestPersonaVoiceRequest {
   /** Required. The persona ID to test the voice for. Also accepts "default". */
   personaId?: string;
 }
-export const TestPersonaVoiceRequest = /*@__PURE__*/ S.suspend(() =>
+const TestPersonaVoiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.optional(S.String),
     personaId: S.optional(S.String),
@@ -11232,7 +11184,7 @@ export interface TestPersonaVoiceProjectsLocationsAppsRequest {
   /** Request body */
   body?: TestPersonaVoiceRequest;
 }
-export const TestPersonaVoiceProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestPersonaVoiceProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     app: S.String.pipe(T.Label()),
     body: S.optional(TestPersonaVoiceRequest.pipe(T.HttpBody())),
@@ -11252,7 +11204,7 @@ export interface TestPersonaVoiceResponse {
   /** The audio data bytes of the synthesized voice. */
   audio?: string;
 }
-export const TestPersonaVoiceResponse = /*@__PURE__*/ S.suspend(() =>
+const TestPersonaVoiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio: S.optional(S.String),
   }),
@@ -11266,7 +11218,7 @@ export interface UpdateSecuritySettingsProjectsLocationsRequest {
   /** Request body */
   body?: SecuritySettings;
 }
-export const UpdateSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecuritySettingsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -11285,7 +11237,7 @@ export interface UploadEvaluationAudioRequest {
   /** Optional. The Google Cloud Storage URI of the previously uploaded audio file to be deleted. Format: `gs:///` */
   previousAudioGcsUri?: string;
 }
-export const UploadEvaluationAudioRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadEvaluationAudioRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioContent: S.optional(S.String),
     previousAudioGcsUri: S.optional(S.String),
@@ -11300,18 +11252,17 @@ export interface UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest {
   /** Request body */
   body?: UploadEvaluationAudioRequest;
 }
-export const UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(UploadEvaluationAudioRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta/{+name}:uploadEvaluationAudio",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
+const UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(UploadEvaluationAudioRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta/{+name}:uploadEvaluationAudio",
+      baseUrl: "https://ces.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest",
 }) as any as S.Schema<UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest>;
@@ -11325,7 +11276,7 @@ export interface UploadEvaluationAudioResponse {
   /** The transcript of the audio, generated by Cloud Speech-to-Text. */
   transcript?: string;
 }
-export const UploadEvaluationAudioResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadEvaluationAudioResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audioGcsUri: S.optional(S.String),
     duration: S.optional(S.String),

@@ -65,12 +65,12 @@ export type ComputeInsightsRequestInsightsItemEnum =
   | "INSIGHT_UNSPECIFIED"
   | "INSIGHT_COUNT"
   | "INSIGHT_PLACES";
-export const ComputeInsightsRequestInsightsItemEnum = S.String;
+const ComputeInsightsRequestInsightsItemEnum = S.String;
 
 export type ComputeInsightsRequestInsightsItemEnumList = Array<
   ComputeInsightsRequestInsightsItemEnum | (string & {})
 >;
-export const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(
+const ComputeInsightsRequestInsightsItemEnumList = /*@__PURE__*/ S.Array(
   ComputeInsightsRequestInsightsItemEnum,
 ) as any as S.Schema<ComputeInsightsRequestInsightsItemEnumList>;
 
@@ -79,12 +79,10 @@ export type FilterOperatingStatusItemEnum =
   | "OPERATING_STATUS_OPERATIONAL"
   | "OPERATING_STATUS_PERMANENTLY_CLOSED"
   | "OPERATING_STATUS_TEMPORARILY_CLOSED";
-export const FilterOperatingStatusItemEnum = S.String;
-
 export type FilterOperatingStatusItemEnumList = Array<
   FilterOperatingStatusItemEnum | (string & {})
 >;
-export const FilterOperatingStatusItemEnumList =
+const FilterOperatingStatusItemEnumList =
   ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterOperatingStatusItemEnumList>;
 
 /** Average user rating filters. */
@@ -94,7 +92,7 @@ export interface RatingFilter {
   /** Optional. Restricts results to places whose average user rating is strictly less than or equal to max_rating. Values must be between 1.0 and 5.0. */
   maxRating?: number;
 }
-export const RatingFilter = /*@__PURE__*/ S.suspend(() =>
+const RatingFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minRating: S.optional(S.Number),
     maxRating: S.optional(S.Number),
@@ -106,7 +104,7 @@ export interface Region {
   /** The [place ID](https://developers.google.com/maps/documentation/places/web-service/place-id) of the geographic region. Not all region types are supported; see documentation for details. **Format:** Must be in the format `places/PLACE_ID`, where `PLACE_ID` is the unique identifier of a place. For example: `places/ChIJPV4oX_65j4ARVW8IJ6IJUYs`. */
   place?: string;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     place: S.optional(S.String),
   }),
@@ -119,7 +117,7 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -127,14 +125,14 @@ export const LatLng = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
 export type LatLngList = Array<LatLng>;
-export const LatLngList = /*@__PURE__*/ S.Array(LatLng) as any as S.Schema<LatLngList>;
+const LatLngList = /*@__PURE__*/ S.Array(LatLng) as any as S.Schema<LatLngList>;
 
 /** A polygon is represented by a series of connected coordinates in an counterclockwise ordered sequence. The coordinates form a closed loop and define a filled region. The first and last coordinates are equivalent, and they must contain identical values. The format is a simplified version of GeoJSON polygons (we only support one counterclockwise exterior ring). */
 export interface Polygon {
   /** Optional. The coordinates that define the polygon. */
   coordinates?: LatLngList;
 }
-export const Polygon = /*@__PURE__*/ S.suspend(() =>
+const Polygon = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coordinates: S.optional(LatLngList),
   }),
@@ -145,7 +143,7 @@ export interface CustomArea {
   /** Required. The custom area represented as a polygon */
   polygon?: Polygon;
 }
-export const CustomArea = /*@__PURE__*/ S.suspend(() =>
+const CustomArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     polygon: S.optional(Polygon),
   }),
@@ -160,7 +158,7 @@ export interface Circle {
   /** The latitude and longitude of the center of the circle. */
   latLng?: LatLng;
 }
-export const Circle = /*@__PURE__*/ S.suspend(() =>
+const Circle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     place: S.optional(S.String),
     radius: S.optional(S.Number),
@@ -177,7 +175,7 @@ export interface LocationFilter {
   /** Area as a circle. */
   circle?: Circle;
 }
-export const LocationFilter = /*@__PURE__*/ S.suspend(() =>
+const LocationFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.optional(Region),
     customArea: S.optional(CustomArea),
@@ -192,14 +190,12 @@ export type FilterPriceLevelsItemEnum =
   | "PRICE_LEVEL_MODERATE"
   | "PRICE_LEVEL_EXPENSIVE"
   | "PRICE_LEVEL_VERY_EXPENSIVE";
-export const FilterPriceLevelsItemEnum = S.String;
-
 export type FilterPriceLevelsItemEnumList = Array<FilterPriceLevelsItemEnum | (string & {})>;
-export const FilterPriceLevelsItemEnumList =
+const FilterPriceLevelsItemEnumList =
   ComputeInsightsRequestInsightsItemEnumList as any as S.Schema<FilterPriceLevelsItemEnumList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Place type filters. Only Place types from [Table a](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) are supported. A place can only have a single primary type associated with it. For example, the primary type might be "mexican_restaurant" or "steak_house". Use included_primary_types and excluded_primary_types to filter the results on a place's primary type. A place can also have multiple type values associated with it. For example a restaurant might have the following types: "seafood_restaurant", "restaurant", "food", "point_of_interest", "establishment". Use included_types and excluded_types to filter the results on the list of types associated with a place. If a search is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if you specify {"included_types": ["restaurant"], "excluded_primary_types": ["steak_house"]}, the returned places provide "restaurant" related services but do not operate primarily as a "steak_house". If there are any conflicting types, i.e. a type appears in both included_types and excluded_types types or included_primary_types and excluded_primary_types, an INVALID_ARGUMENT error is returned. One of included_types or included_primary_types must be set. */
 export interface TypeFilter {
@@ -212,7 +208,7 @@ export interface TypeFilter {
   /** Optional. Excluded Place types. */
   excludedTypes?: StringList;
 }
-export const TypeFilter = /*@__PURE__*/ S.suspend(() =>
+const TypeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includedPrimaryTypes: S.optional(StringList),
     excludedPrimaryTypes: S.optional(StringList),
@@ -234,7 +230,7 @@ export interface Filter {
   /** Required. Place type filters. */
   typeFilter?: TypeFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operatingStatus: S.optional(FilterOperatingStatusItemEnumList),
     ratingFilter: S.optional(RatingFilter),
@@ -251,7 +247,7 @@ export interface ComputeInsightsRequest {
   /** Required. Insight filter. */
   filter?: Filter;
 }
-export const ComputeInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+const ComputeInsightsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     insights: S.optional(ComputeInsightsRequestInsightsItemEnumList),
     filter: S.optional(Filter),
@@ -262,7 +258,7 @@ export interface ComputeInsightsV1Request {
   /** Request body */
   body?: ComputeInsightsRequest;
 }
-export const ComputeInsightsV1Request = /*@__PURE__*/ S.suspend(() =>
+const ComputeInsightsV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: S.optional(ComputeInsightsRequest.pipe(T.HttpBody())),
   }).pipe(
@@ -279,12 +275,10 @@ export interface PlaceInsight {
   /** The unique identifier of the place. This resource name can be used to retrieve details about the place using the [Places API](https://developers.google.com/maps/documentation/places/web-service/reference/rest/v1/places/get). */
   place?: string;
 }
-export const PlaceInsight = Region as any as S.Schema<PlaceInsight>;
+const PlaceInsight = Region as any as S.Schema<PlaceInsight>;
 
 export type PlaceInsightList = Array<PlaceInsight>;
-export const PlaceInsightList = /*@__PURE__*/ S.Array(
-  PlaceInsight,
-) as any as S.Schema<PlaceInsightList>;
+const PlaceInsightList = /*@__PURE__*/ S.Array(PlaceInsight) as any as S.Schema<PlaceInsightList>;
 
 /** Response for the ComputeInsights RPC. */
 export interface ComputeInsightsResponse {
@@ -293,7 +287,7 @@ export interface ComputeInsightsResponse {
   /** Result for Insights.INSIGHT_PLACES. */
   placeInsights?: PlaceInsightList;
 }
-export const ComputeInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+const ComputeInsightsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     placeInsights: S.optional(PlaceInsightList),

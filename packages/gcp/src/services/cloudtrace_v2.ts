@@ -68,7 +68,7 @@ export interface TruncatableString {
   /** Optional. The number of bytes removed from the original string. If this value is 0, then the string was not shortened. */
   truncatedByteCount?: number;
 }
-export const TruncatableString = /*@__PURE__*/ S.suspend(() =>
+const TruncatableString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     truncatedByteCount: S.optional(S.Number),
@@ -82,7 +82,7 @@ export interface Module {
   /** Optional. A unique identifier for the module, usually a hash of its contents (up to 128 bytes). */
   buildId?: TruncatableString;
 }
-export const Module = /*@__PURE__*/ S.suspend(() =>
+const Module = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     module: S.optional(TruncatableString),
     buildId: S.optional(TruncatableString),
@@ -106,7 +106,7 @@ export interface StackFrame {
   /** Optional. The binary module from where the code was loaded. */
   loadModule?: Module;
 }
-export const StackFrame = /*@__PURE__*/ S.suspend(() =>
+const StackFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineNumber: S.optional(S.String),
     originalFunctionName: S.optional(TruncatableString),
@@ -119,7 +119,7 @@ export const StackFrame = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StackFrame" }) as any as S.Schema<StackFrame>;
 
 export type StackFrameList = Array<StackFrame>;
-export const StackFrameList = /*@__PURE__*/ S.Array(StackFrame) as any as S.Schema<StackFrameList>;
+const StackFrameList = /*@__PURE__*/ S.Array(StackFrame) as any as S.Schema<StackFrameList>;
 
 /** A collection of stack frames, which can be truncated. */
 export interface StackFrames {
@@ -128,7 +128,7 @@ export interface StackFrames {
   /** Optional. The number of stack frames that were dropped because there were too many stack frames. If this value is 0, then no stack frames were dropped. */
   droppedFramesCount?: number;
 }
-export const StackFrames = /*@__PURE__*/ S.suspend(() =>
+const StackFrames = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     frame: S.optional(StackFrameList),
     droppedFramesCount: S.optional(S.Number),
@@ -142,7 +142,7 @@ export interface StackTrace {
   /** Optional. The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can refer to that stack trace by only setting `stackTraceHashId`. */
   stackTraceHashId?: string;
 }
-export const StackTrace = /*@__PURE__*/ S.suspend(() =>
+const StackTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stackFrames: S.optional(StackFrames),
     stackTraceHashId: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface AttributeValue {
   /** Optional. A string up to 256 bytes long. */
   stringValue?: TruncatableString;
 }
-export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
+const AttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boolValue: S.optional(S.Boolean),
     intValue: S.optional(S.String),
@@ -167,7 +167,7 @@ export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-export const AttributeValueMap = /*@__PURE__*/ S.Record(
+const AttributeValueMap = /*@__PURE__*/ S.Record(
   S.String,
   AttributeValue,
 ) as any as S.Schema<AttributeValueMap>;
@@ -179,7 +179,7 @@ export interface Attributes {
   /** Optional. A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 } "example.com/myattribute": { "bool_value": false } */
   attributeMap?: AttributeValueMap;
 }
-export const Attributes = /*@__PURE__*/ S.suspend(() =>
+const Attributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     droppedAttributesCount: S.optional(S.Number),
     attributeMap: S.optional(AttributeValueMap),
@@ -193,7 +193,7 @@ export interface Annotation {
   /** Optional. A set of attributes on the annotation. You can have up to 4 attributes per Annotation. */
   attributes?: Attributes;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(TruncatableString),
     attributes: S.optional(Attributes),
@@ -201,7 +201,7 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export type MessageEventTypeEnum = "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED";
-export const MessageEventTypeEnum = S.String;
+const MessageEventTypeEnum = S.String;
 
 /** An event describing a message sent/received between Spans. */
 export interface MessageEvent {
@@ -214,7 +214,7 @@ export interface MessageEvent {
   /** Optional. An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents. */
   id?: string;
 }
-export const MessageEvent = /*@__PURE__*/ S.suspend(() =>
+const MessageEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(MessageEventTypeEnum),
     uncompressedSizeBytes: S.optional(S.String),
@@ -232,7 +232,7 @@ export interface TimeEvent {
   /** Optional. The timestamp indicating the time the event occurred. */
   time?: string;
 }
-export const TimeEvent = /*@__PURE__*/ S.suspend(() =>
+const TimeEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation: S.optional(Annotation),
     messageEvent: S.optional(MessageEvent),
@@ -241,7 +241,7 @@ export const TimeEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeEvent" }) as any as S.Schema<TimeEvent>;
 
 export type TimeEventList = Array<TimeEvent>;
-export const TimeEventList = /*@__PURE__*/ S.Array(TimeEvent) as any as S.Schema<TimeEventList>;
+const TimeEventList = /*@__PURE__*/ S.Array(TimeEvent) as any as S.Schema<TimeEventList>;
 
 /** A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of either user-supplied key:value pairs, or details of a message sent/received between Spans. */
 export interface TimeEvents {
@@ -252,7 +252,7 @@ export interface TimeEvents {
   /** Optional. A collection of `TimeEvent`s. */
   timeEvent?: TimeEventList;
 }
-export const TimeEvents = /*@__PURE__*/ S.suspend(() =>
+const TimeEvents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     droppedAnnotationsCount: S.optional(S.Number),
     droppedMessageEventsCount: S.optional(S.Number),
@@ -261,7 +261,7 @@ export const TimeEvents = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeEvents" }) as any as S.Schema<TimeEvents>;
 
 export type LinkTypeEnum = "TYPE_UNSPECIFIED" | "CHILD_LINKED_SPAN" | "PARENT_LINKED_SPAN";
-export const LinkTypeEnum = S.String;
+const LinkTypeEnum = S.String;
 
 /** A pointer from the current span to another span in the same trace or in a different trace. For example, this can be used in batching operations, where a single batch handler processes multiple requests from different traces or when the handler receives a request from a different project. */
 export interface Link {
@@ -274,7 +274,7 @@ export interface Link {
   /** Optional. The `[SPAN_ID]` for a span within a trace. */
   spanId?: string;
 }
-export const Link = /*@__PURE__*/ S.suspend(() =>
+const Link = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     traceId: S.optional(S.String),
     type: S.optional(LinkTypeEnum),
@@ -284,7 +284,7 @@ export const Link = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Link" }) as any as S.Schema<Link>;
 
 export type LinkList = Array<Link>;
-export const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
+const LinkList = /*@__PURE__*/ S.Array(Link) as any as S.Schema<LinkList>;
 
 /** A collection of links, which are references from this span to a span in the same or different trace. */
 export interface Links {
@@ -293,7 +293,7 @@ export interface Links {
   /** Optional. The number of dropped links after the maximum size was enforced. If this value is 0, then no links were dropped. */
   droppedLinksCount?: number;
 }
-export const Links = /*@__PURE__*/ S.suspend(() =>
+const Links = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     link: S.optional(LinkList),
     droppedLinksCount: S.optional(S.Number),
@@ -301,15 +301,10 @@ export const Links = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Links" }) as any as S.Schema<Links>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -320,7 +315,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     code: S.optional(S.Number),
@@ -335,7 +330,7 @@ export type SpanSpanKindEnum =
   | "CLIENT"
   | "PRODUCER"
   | "CONSUMER";
-export const SpanSpanKindEnum = S.String;
+const SpanSpanKindEnum = S.String;
 
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous. There might be gaps or overlaps between spans in a trace. */
 export interface Span {
@@ -368,7 +363,7 @@ export interface Span {
   /** Required. The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
   startTime?: string;
 }
-export const Span = /*@__PURE__*/ S.suspend(() =>
+const Span = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     sameProcessAsParentSpan: S.optional(S.Boolean),
@@ -388,14 +383,14 @@ export const Span = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Span" }) as any as S.Schema<Span>;
 
 export type SpanList = Array<Span>;
-export const SpanList = /*@__PURE__*/ S.Array(Span) as any as S.Schema<SpanList>;
+const SpanList = /*@__PURE__*/ S.Array(Span) as any as S.Schema<SpanList>;
 
 /** The request message for the `BatchWriteSpans` method. */
 export interface BatchWriteSpansRequest {
   /** Required. A list of new spans. The span names must not match existing spans, otherwise the results are undefined. */
   spans?: SpanList;
 }
-export const BatchWriteSpansRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteSpansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spans: S.optional(SpanList),
   }),
@@ -407,7 +402,7 @@ export interface BatchWriteProjectsTracesRequest {
   /** Request body */
   body?: BatchWriteSpansRequest;
 }
-export const BatchWriteProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(BatchWriteSpansRequest.pipe(T.HttpBody())),
@@ -424,7 +419,7 @@ export const BatchWriteProjectsTracesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -434,7 +429,7 @@ export interface CreateSpanProjectsTracesSpansRequest {
   /** Request body */
   body?: Span;
 }
-export const CreateSpanProjectsTracesSpansRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSpanProjectsTracesSpansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(Span.pipe(T.HttpBody())),

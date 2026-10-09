@@ -17,7 +17,7 @@ export interface EnvironmentSettings {
   /** When true, new unauthenticated web functions, Servers, tunnels, and Endpoints in this environment are rejected. Unset inherits the workspace default. */
   blockUnauthenticatedResources?: boolean;
 }
-export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageBuilderVersion: S.optional(S.String),
     webhookSuffix: S.optional(S.String),
@@ -29,14 +29,14 @@ export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Creation-time environment classification. Captures whether an environment is public. is_managed and machine_generated may be folded in as future values. */
 export type EnvironmentType = "ENVIRONMENT_TYPE_UNSPECIFIED" | "ENVIRONMENT_TYPE_PUBLIC";
-export const EnvironmentType = S.String;
+const EnvironmentType = S.String;
 
 export type EnvironmentRole =
   | "ENVIRONMENT_ROLE_UNSPECIFIED"
   | "ENVIRONMENT_ROLE_VIEWER"
   | "ENVIRONMENT_ROLE_CONTRIBUTOR"
   | "ENVIRONMENT_ROLE_NO_ACCESS";
-export const EnvironmentRole = S.String;
+const EnvironmentRole = S.String;
 
 export interface CreateEnvironmentRequest {
   name?: string;
@@ -46,7 +46,7 @@ export interface CreateEnvironmentRequest {
   defaultMemberRole?: EnvironmentRole | (string & {});
   defaultMemberRoleStr?: string;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isManaged: S.optional(S.Boolean),
@@ -60,14 +60,14 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateEnvironmentRequest" }) as any as S.Schema<CreateEnvironmentRequest>;
 
 export interface CreateEnvironmentResponse {}
-export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
 
 export interface DeleteEnvironmentRequest {
   name?: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }).pipe(
@@ -76,7 +76,7 @@ export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteEnvironmentRequest" }) as any as S.Schema<DeleteEnvironmentRequest>;
 
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse =
+const DeleteEnvironmentResponse =
   CreateEnvironmentResponse as any as S.Schema<DeleteEnvironmentResponse>;
 
 export interface EnvironmentBillingSummaryRequest {
@@ -84,7 +84,7 @@ export interface EnvironmentBillingSummaryRequest {
   startTimestamp?: string;
   environmentId?: string;
 }
-export const EnvironmentBillingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentBillingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimestamp: S.optional(S.String),
     environmentId: S.optional(S.String),
@@ -100,7 +100,7 @@ export const EnvironmentBillingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentBillingSummaryRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface EnvironmentBillingSummaryResponse {
   startTimestamp?: string;
@@ -110,7 +110,7 @@ export interface EnvironmentBillingSummaryResponse {
   /** keyed by app type (deployed, ephemeral, notebook, endpoint, ...), volume, tokens, network egress */
   meteredCostBreakdown?: StringMap;
 }
-export const EnvironmentBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimestamp: S.optional(S.String),
     endTimestamp: S.optional(S.String),
@@ -124,7 +124,7 @@ export const EnvironmentBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EnvironmentGetBudgetRequest {
   environmentId?: string;
 }
-export const EnvironmentGetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
   }).pipe(
@@ -140,7 +140,7 @@ export interface EnvironmentGetBudgetResponse {
   currentCycleUsage?: number;
   spendLimitReached?: boolean;
 }
-export const EnvironmentGetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cycleBudgetDollars: S.optional(S.Number),
     effectiveCycleSpendLimit: S.optional(S.Number),
@@ -154,7 +154,7 @@ export const EnvironmentGetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EnvironmentGetManagedRequest {
   environmentId?: string;
 }
-export const EnvironmentGetManagedRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetManagedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
   }).pipe(
@@ -169,7 +169,7 @@ export type MemberRole =
   | "MEMBER_ROLE_USER"
   | "MEMBER_ROLE_MANAGER"
   | "MEMBER_ROLE_OWNER";
-export const MemberRole = S.String;
+const MemberRole = S.String;
 
 export interface EnvironmentGetManagedResponsePrincipalEnvRole {
   userId?: string;
@@ -181,7 +181,7 @@ export interface EnvironmentGetManagedResponsePrincipalEnvRole {
   memberRole?: MemberRole;
   userName?: string;
 }
-export const EnvironmentGetManagedResponsePrincipalEnvRole = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetManagedResponsePrincipalEnvRole = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     serviceUserId: S.optional(S.String),
@@ -198,7 +198,7 @@ export const EnvironmentGetManagedResponsePrincipalEnvRole = /*@__PURE__*/ S.sus
 
 export type EnvironmentGetManagedResponsePrincipalEnvRoleList =
   Array<EnvironmentGetManagedResponsePrincipalEnvRole>;
-export const EnvironmentGetManagedResponsePrincipalEnvRoleList = /*@__PURE__*/ S.Array(
+const EnvironmentGetManagedResponsePrincipalEnvRoleList = /*@__PURE__*/ S.Array(
   EnvironmentGetManagedResponsePrincipalEnvRole,
 ) as any as S.Schema<EnvironmentGetManagedResponsePrincipalEnvRoleList>;
 
@@ -209,7 +209,7 @@ export interface EnvironmentGetManagedResponse {
   principalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
   additionalRoles?: EnvironmentGetManagedResponsePrincipalEnvRoleList;
 }
-export const EnvironmentGetManagedResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetManagedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     name: S.optional(S.String),
@@ -228,13 +228,13 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface EnvironmentGetOrCreateRequest {
   deploymentName?: string;
   objectCreationType?: ObjectCreationType | (string & {});
 }
-export const EnvironmentGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     objectCreationType: S.optional(ObjectCreationType),
@@ -250,7 +250,7 @@ export interface EnvironmentMetadata {
   settings?: EnvironmentSettings;
   environmentType?: EnvironmentType;
 }
-export const EnvironmentMetadata = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     settings: S.optional(EnvironmentSettings),
@@ -262,7 +262,7 @@ export interface EnvironmentGetOrCreateResponse {
   environmentId?: string;
   metadata?: EnvironmentMetadata;
 }
-export const EnvironmentGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     metadata: S.optional(EnvironmentMetadata),
@@ -274,7 +274,7 @@ export const EnvironmentGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface EnvironmentGetRolesRequest {
   environmentId?: string;
 }
-export const EnvironmentGetRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
   }).pipe(
@@ -285,7 +285,7 @@ export const EnvironmentGetRolesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentGetRolesRequest>;
 
 export type EnvironmentRoleList = Array<EnvironmentRole>;
-export const EnvironmentRoleList = /*@__PURE__*/ S.Array(
+const EnvironmentRoleList = /*@__PURE__*/ S.Array(
   EnvironmentRole,
 ) as any as S.Schema<EnvironmentRoleList>;
 
@@ -304,7 +304,7 @@ export interface EnvironmentGetRolesResponsePrincipal {
   inheritsDefaultMemberRole?: boolean;
   hasRoleAssignment?: boolean;
 }
-export const EnvironmentGetRolesResponsePrincipal = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetRolesResponsePrincipal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     serviceUserId: S.optional(S.String),
@@ -324,7 +324,7 @@ export const EnvironmentGetRolesResponsePrincipal = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<EnvironmentGetRolesResponsePrincipal>;
 
 export type EnvironmentGetRolesResponsePrincipalList = Array<EnvironmentGetRolesResponsePrincipal>;
-export const EnvironmentGetRolesResponsePrincipalList = /*@__PURE__*/ S.Array(
+const EnvironmentGetRolesResponsePrincipalList = /*@__PURE__*/ S.Array(
   EnvironmentGetRolesResponsePrincipal,
 ) as any as S.Schema<EnvironmentGetRolesResponsePrincipalList>;
 
@@ -334,7 +334,7 @@ export interface EnvironmentGetRolesResponse {
   principalRoles?: EnvironmentGetRolesResponsePrincipalList;
   defaultMemberRole?: EnvironmentRole;
 }
-export const EnvironmentGetRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentGetRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -350,7 +350,7 @@ export interface EnvironmentSetBudgetRequest {
   cycleBudgetDollars?: number;
   clearBudget?: boolean;
 }
-export const EnvironmentSetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     cycleBudgetDollars: S.optional(S.Number),
@@ -363,14 +363,14 @@ export const EnvironmentSetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentSetBudgetRequest>;
 
 export interface EnvironmentSetBudgetResponse {}
-export const EnvironmentSetBudgetResponse =
+const EnvironmentSetBudgetResponse =
   CreateEnvironmentResponse as any as S.Schema<EnvironmentSetBudgetResponse>;
 
 export interface EnvironmentSetDefaultMemberRoleRequest {
   environmentId?: string;
   defaultMemberRole?: EnvironmentRole | (string & {});
 }
-export const EnvironmentSetDefaultMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSetDefaultMemberRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     defaultMemberRole: S.optional(EnvironmentRole),
@@ -386,7 +386,7 @@ export const EnvironmentSetDefaultMemberRoleRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<EnvironmentSetDefaultMemberRoleRequest>;
 
 export interface EnvironmentSetDefaultMemberRoleResponse {}
-export const EnvironmentSetDefaultMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSetDefaultMemberRoleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "EnvironmentSetDefaultMemberRoleResponse",
@@ -397,7 +397,7 @@ export interface EnvironmentSetManagedRequest {
   managed?: boolean;
   defaultMemberRole?: EnvironmentRole | (string & {});
 }
-export const EnvironmentSetManagedRequest = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSetManagedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     managed: S.optional(S.Boolean),
@@ -410,11 +410,11 @@ export const EnvironmentSetManagedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentSetManagedRequest>;
 
 export interface EnvironmentSetManagedResponse {}
-export const EnvironmentSetManagedResponse =
+const EnvironmentSetManagedResponse =
   CreateEnvironmentResponse as any as S.Schema<EnvironmentSetManagedResponse>;
 
 export interface ListEnvironmentRequest {}
-export const ListEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/EnvironmentList", code: 200 }),
   ),
@@ -441,7 +441,7 @@ export interface EnvironmentListItem {
   blockUnauthenticatedResources?: boolean;
   effectiveRole?: EnvironmentRole;
 }
-export const EnvironmentListItem = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     webhookSuffix: S.optional(S.String),
@@ -465,14 +465,14 @@ export const EnvironmentListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EnvironmentListItem" }) as any as S.Schema<EnvironmentListItem>;
 
 export type EnvironmentListItemList = Array<EnvironmentListItem>;
-export const EnvironmentListItemList = /*@__PURE__*/ S.Array(
+const EnvironmentListItemList = /*@__PURE__*/ S.Array(
   EnvironmentListItem,
 ) as any as S.Schema<EnvironmentListItemList>;
 
 export interface ListEnvironmentResponse {
   items?: EnvironmentListItemList;
 }
-export const ListEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(EnvironmentListItemList),
   }),
@@ -485,7 +485,7 @@ export interface SetEnvironmentRoleRequest {
   role?: EnvironmentRole | (string & {});
   roleStr?: string;
 }
-export const SetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const SetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentId: S.optional(S.String),
     userId: S.optional(S.String),
@@ -500,7 +500,7 @@ export const SetEnvironmentRoleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetEnvironmentRoleRequest>;
 
 export interface SetEnvironmentRoleResponse {}
-export const SetEnvironmentRoleResponse =
+const SetEnvironmentRoleResponse =
   CreateEnvironmentResponse as any as S.Schema<SetEnvironmentRoleResponse>;
 
 /** Partial-update signal for EnvironmentUpdateRequest. Omitted means no-op. INHERIT clears the environment override so the workspace default applies. */
@@ -509,7 +509,7 @@ export type EnvironmentBlockUnauthenticatedResources =
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_INHERIT"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_BLOCK"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_ALLOW";
-export const EnvironmentBlockUnauthenticatedResources = S.String;
+const EnvironmentBlockUnauthenticatedResources = S.String;
 
 export interface UpdateEnvironmentRequest {
   currentName?: string;
@@ -519,7 +519,7 @@ export interface UpdateEnvironmentRequest {
   maxConcurrentGpus?: number;
   blockUnauthenticatedResources?: EnvironmentBlockUnauthenticatedResources | (string & {});
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentName: S.optional(S.String),
     name: S.optional(S.String),
@@ -553,7 +553,7 @@ export interface UpdateEnvironmentResponse {
   blockUnauthenticatedResources?: boolean;
   effectiveRole?: EnvironmentRole;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     webhookSuffix: S.optional(S.String),

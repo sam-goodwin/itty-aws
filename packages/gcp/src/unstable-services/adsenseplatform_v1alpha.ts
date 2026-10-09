@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request definition for the account close rpc. */
 export interface CloseAccountRequest {}
-export const CloseAccountRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CloseAccountRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CloseAccountRequest",
 }) as any as S.Schema<CloseAccountRequest>;
 
@@ -73,7 +73,7 @@ export interface ClosePlatformsAccountsRequest {
   /** Request body */
   body?: CloseAccountRequest;
 }
-export const ClosePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClosePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CloseAccountRequest.pipe(T.HttpBody())),
@@ -90,10 +90,10 @@ export const ClosePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response definition for the account close rpc. */
 export interface CloseAccountResponse {}
-export const CloseAccountResponse = CloseAccountRequest as any as S.Schema<CloseAccountResponse>;
+const CloseAccountResponse = CloseAccountRequest as any as S.Schema<CloseAccountResponse>;
 
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "UNCHECKED" | "APPROVED" | "DISAPPROVED";
-export const AccountStateEnum = S.String;
+const AccountStateEnum = S.String;
 
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
@@ -102,7 +102,7 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-export const TimeZone = /*@__PURE__*/ S.suspend(() =>
+const TimeZone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     version: S.optional(S.String),
@@ -126,7 +126,7 @@ export interface Account {
   /** Required. The IANA TZ timezone code of this account. For more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. This field is used for reporting. It is recommended to set it to the same value for all child accounts. */
   timeZone?: TimeZone;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regionCode: S.optional(S.String),
     creationRequestId: S.optional(S.String),
@@ -144,7 +144,7 @@ export interface CreatePlatformsAccountsRequest {
   /** Request body */
   body?: Account;
 }
-export const CreatePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Account.pipe(T.HttpBody())),
@@ -182,7 +182,7 @@ export interface Address {
   /** Zip/post code. Max length 10 bytes or 10 characters. */
   zip?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address2: S.optional(S.String),
     fax: S.optional(S.String),
@@ -204,7 +204,7 @@ export interface EventInfo {
   /** The billing address of the publisher associated with this event, if available. */
   billingAddress?: Address;
 }
-export const EventInfo = /*@__PURE__*/ S.suspend(() =>
+const EventInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     billingAddress: S.optional(Address),
@@ -215,7 +215,7 @@ export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
   | "SIGN_UP_VIA_PLATFORM";
-export const EventEventTypeEnum = S.String;
+const EventEventTypeEnum = S.String;
 
 /** A platform sub-account event to record spam signals. */
 export interface Event {
@@ -226,7 +226,7 @@ export interface Event {
   /** Required. Event timestamp. */
   eventTime?: string;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventInfo: S.optional(EventInfo),
     eventType: S.optional(EventEventTypeEnum),
@@ -240,7 +240,7 @@ export interface CreatePlatformsAccountsEventsRequest {
   /** Request body */
   body?: Event;
 }
-export const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Event.pipe(T.HttpBody())),
@@ -261,7 +261,7 @@ export type SiteStateEnum =
   | "GETTING_READY"
   | "READY"
   | "NEEDS_ATTENTION";
-export const SiteStateEnum = S.String;
+const SiteStateEnum = S.String;
 
 /** Representation of a Site. */
 export interface Site {
@@ -272,7 +272,7 @@ export interface Site {
   /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name?: string;
 }
-export const Site = /*@__PURE__*/ S.suspend(() =>
+const Site = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     state: S.optional(SiteStateEnum),
@@ -286,7 +286,7 @@ export interface CreatePlatformsAccountsSitesRequest {
   /** Request body */
   body?: Site;
 }
-export const CreatePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Site.pipe(T.HttpBody())),
@@ -305,7 +305,7 @@ export interface DeletePlatformsAccountsSitesRequest {
   /** Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-export const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -321,13 +321,13 @@ export const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CloseAccountRequest as any as S.Schema<Empty>;
+const Empty = CloseAccountRequest as any as S.Schema<Empty>;
 
 export interface GetAccountsPlatformsRequest {
   /** Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform} */
   name: string;
 }
-export const GetAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -350,7 +350,7 @@ export interface Platform {
   /** Identifier. Resource name of a platform. Format: accounts/{account}/platforms/{platform} */
   name?: string;
 }
-export const Platform = /*@__PURE__*/ S.suspend(() =>
+const Platform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     defaultPlatformGroup: S.optional(S.String),
@@ -362,7 +362,7 @@ export interface GetAccountsPlatformsChildAccountsSitesRequest {
   /** Required. The name of the platform child site to retrieve. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site} */
   name: string;
 }
-export const GetAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -385,7 +385,7 @@ export interface PlatformChildSite {
   /** Resource name of the Platform Group of the Platform Child Site. */
   platformGroup?: string;
 }
-export const PlatformChildSite = /*@__PURE__*/ S.suspend(() =>
+const PlatformChildSite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domain: S.optional(S.String),
     name: S.optional(S.String),
@@ -397,7 +397,7 @@ export interface GetAccountsPlatformsGroupsRequest {
   /** Required. The name of the platform group to retrieve. Format: accounts/{account}/platforms/{platform}/groups/{group} */
   name: string;
 }
-export const GetAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -416,7 +416,7 @@ export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-export const Decimal = /*@__PURE__*/ S.suspend(() =>
+const Decimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -431,7 +431,7 @@ export interface PlatformGroup {
   /** Required. Description of the PlatformGroup. */
   description?: string;
 }
-export const PlatformGroup = /*@__PURE__*/ S.suspend(() =>
+const PlatformGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     revshareMillipercent: S.optional(Decimal),
@@ -443,7 +443,7 @@ export interface GetPlatformsAccountsRequest {
   /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
 }
-export const GetPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -461,7 +461,7 @@ export interface GetPlatformsAccountsSitesRequest {
   /** Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-export const GetPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -483,7 +483,7 @@ export interface ListAccountsPlatformsRequest {
   /** Optional. A page token, received from a previous `ListPlatforms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPlatforms` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -500,7 +500,7 @@ export const ListAccountsPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsPlatformsRequest>;
 
 export type PlatformList = Array<Platform>;
-export const PlatformList = /*@__PURE__*/ S.Array(Platform) as any as S.Schema<PlatformList>;
+const PlatformList = /*@__PURE__*/ S.Array(Platform) as any as S.Schema<PlatformList>;
 
 /** Response definition for the platform list rpc. */
 export interface ListPlatformsResponse {
@@ -509,7 +509,7 @@ export interface ListPlatformsResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     platforms: S.optional(PlatformList),
     nextPageToken: S.optional(S.String),
@@ -524,7 +524,7 @@ export interface ListAccountsPlatformsChildAccountsSitesRequest {
   /** Optional. The maximum number of children to include in the response, used for paging. If unspecified, at most 10000 platforms will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-export const ListAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -541,7 +541,7 @@ export const ListAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>;
 
 export type PlatformChildSiteList = Array<PlatformChildSite>;
-export const PlatformChildSiteList = /*@__PURE__*/ S.Array(
+const PlatformChildSiteList = /*@__PURE__*/ S.Array(
   PlatformChildSite,
 ) as any as S.Schema<PlatformChildSiteList>;
 
@@ -552,7 +552,7 @@ export interface ListPlatformChildSitesResponse {
   /** The platform child sites returned in this list response. */
   platformChildSites?: PlatformChildSiteList;
 }
-export const ListPlatformChildSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformChildSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     platformChildSites: S.optional(PlatformChildSiteList),
@@ -569,7 +569,7 @@ export interface ListAccountsPlatformsGroupsRequest {
   /** Optional. A page token, received from a previous `ListPlatformGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPlatformGroups` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -586,7 +586,7 @@ export const ListAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsPlatformsGroupsRequest>;
 
 export type PlatformGroupList = Array<PlatformGroup>;
-export const PlatformGroupList = /*@__PURE__*/ S.Array(
+const PlatformGroupList = /*@__PURE__*/ S.Array(
   PlatformGroup,
 ) as any as S.Schema<PlatformGroupList>;
 
@@ -597,7 +597,7 @@ export interface ListPlatformGroupsResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListPlatformGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     platformGroups: S.optional(PlatformGroupList),
     nextPageToken: S.optional(S.String),
@@ -614,7 +614,7 @@ export interface ListPlatformsAccountsRequest {
   /** Required. Platform who parents the accounts. Format: platforms/{platform} */
   parent: string;
 }
-export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -631,7 +631,7 @@ export const ListPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlatformsAccountsRequest>;
 
 export type AccountList = Array<Account>;
-export const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
+const AccountList = /*@__PURE__*/ S.Array(Account) as any as S.Schema<AccountList>;
 
 /** Response definition for the list accounts rpc. */
 export interface ListAccountsResponse {
@@ -640,7 +640,7 @@ export interface ListAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accounts: S.optional(AccountList),
     nextPageToken: S.optional(S.String),
@@ -655,7 +655,7 @@ export interface ListPlatformsAccountsSitesRequest {
   /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
   parent: string;
 }
-export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -672,7 +672,7 @@ export const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
 
 export type SiteList = Array<Site>;
-export const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
+const SiteList = /*@__PURE__*/ S.Array(Site) as any as S.Schema<SiteList>;
 
 /** Response definition for the site list rpc. */
 export interface ListSitesResponse {
@@ -681,7 +681,7 @@ export interface ListSitesResponse {
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sites: S.optional(SiteList),
     nextPageToken: S.optional(S.String),
@@ -694,7 +694,7 @@ export interface LookupPlatformsAccountsRequest {
   /** Required. Platform who parents the account. Format: platforms/{platform} */
   parent: string;
 }
-export const LookupPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupPlatformsAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationRequestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -714,7 +714,7 @@ export interface LookupAccountResponse {
   /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
   name?: string;
 }
-export const LookupAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -728,7 +728,7 @@ export interface PatchAccountsPlatformsChildAccountsSitesRequest {
   /** Request body */
   body?: PlatformChildSite;
 }
-export const PatchAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -752,7 +752,7 @@ export interface PatchAccountsPlatformsGroupsRequest {
   /** Request body */
   body?: PlatformGroup;
 }
-export const PatchAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsPlatformsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -772,7 +772,7 @@ export interface RequestReviewPlatformsAccountsSitesRequest {
   /** Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-export const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -788,8 +788,7 @@ export const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ S.suspen
 
 /** Response definition for the site request review rpc. */
 export interface RequestSiteReviewResponse {}
-export const RequestSiteReviewResponse =
-  CloseAccountRequest as any as S.Schema<RequestSiteReviewResponse>;
+const RequestSiteReviewResponse = CloseAccountRequest as any as S.Schema<RequestSiteReviewResponse>;
 
 export type ClosePlatformsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Closes a sub-account. */

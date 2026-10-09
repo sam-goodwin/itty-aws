@@ -13,7 +13,7 @@ export interface ClearQueueRequest {
   partitionKey?: string;
   allPartitions?: boolean;
 }
-export const ClearQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     partitionKey: S.optional(S.String),
@@ -22,21 +22,21 @@ export const ClearQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClearQueueRequest" }) as any as S.Schema<ClearQueueRequest>;
 
 export interface ClearQueueResponse {}
-export const ClearQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ClearQueueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ClearQueueResponse",
 }) as any as S.Schema<ClearQueueResponse>;
 
 export interface DeleteQueueRequest {
   queueId?: string;
 }
-export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueueDelete", code: 200 })),
 ).annotate({ identifier: "DeleteQueueRequest" }) as any as S.Schema<DeleteQueueRequest>;
 
 export interface DeleteQueueResponse {}
-export const DeleteQueueResponse = ClearQueueResponse as any as S.Schema<DeleteQueueResponse>;
+const DeleteQueueResponse = ClearQueueResponse as any as S.Schema<DeleteQueueResponse>;
 
 export interface GetQueueRequest {
   queueId?: string;
@@ -44,7 +44,7 @@ export interface GetQueueRequest {
   nValues?: number;
   partitionKey?: string;
 }
-export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -54,12 +54,12 @@ export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetQueueRequest" }) as any as S.Schema<GetQueueRequest>;
 
 export type BlobList = Array<string>;
-export const BlobList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<BlobList>;
+const BlobList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<BlobList>;
 
 export interface GetQueueResponse {
   values?: BlobList;
 }
-export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(BlobList),
   }),
@@ -69,7 +69,7 @@ export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+const ListPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxObjects: S.optional(S.Number),
     createdBefore: S.optional(S.Number),
@@ -82,7 +82,7 @@ export interface ListQueueRequest {
   /** Limit on "number of partitions" reported, since checking them is costly */
   pagination?: ListPagination;
 }
-export const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     totalSizeLimit: S.optional(S.Number),
@@ -96,7 +96,7 @@ export interface CreationInfo {
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+const CreationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Number),
     createdBy: S.optional(S.String),
@@ -107,7 +107,7 @@ export interface QueueMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-export const QueueMetadata = /*@__PURE__*/ S.suspend(() =>
+const QueueMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     creationInfo: S.optional(CreationInfo),
@@ -123,7 +123,7 @@ export interface ListQueueResponseQueueInfo {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-export const ListQueueResponseQueueInfo = /*@__PURE__*/ S.suspend(() =>
+const ListQueueResponseQueueInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -137,7 +137,7 @@ export const ListQueueResponseQueueInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQueueResponseQueueInfo>;
 
 export type ListQueueResponseQueueInfoList = Array<ListQueueResponseQueueInfo>;
-export const ListQueueResponseQueueInfoList = /*@__PURE__*/ S.Array(
+const ListQueueResponseQueueInfoList = /*@__PURE__*/ S.Array(
   ListQueueResponseQueueInfo,
 ) as any as S.Schema<ListQueueResponseQueueInfoList>;
 
@@ -145,7 +145,7 @@ export interface ListQueueResponse {
   queues?: ListQueueResponseQueueInfoList;
   environmentName?: string;
 }
-export const ListQueueResponse = /*@__PURE__*/ S.suspend(() =>
+const ListQueueResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queues: S.optional(ListQueueResponseQueueInfoList),
     environmentName: S.optional(S.String),
@@ -158,7 +158,7 @@ export interface PutQueueRequest {
   partitionKey?: string;
   partitionTtlSeconds?: number;
 }
-export const PutQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const PutQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     values: S.optional(BlobList),
@@ -168,12 +168,12 @@ export const PutQueueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutQueueRequest" }) as any as S.Schema<PutQueueRequest>;
 
 export interface PutQueueResponse {}
-export const PutQueueResponse = ClearQueueResponse as any as S.Schema<PutQueueResponse>;
+const PutQueueResponse = ClearQueueResponse as any as S.Schema<PutQueueResponse>;
 
 export interface QueueGetByIdRequest {
   queueId?: string;
 }
-export const QueueGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const QueueGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueueGetById", code: 200 })),
@@ -183,7 +183,7 @@ export interface QueueGetByIdResponse {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-export const QueueGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const QueueGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     metadata: S.optional(QueueMetadata),
@@ -197,7 +197,7 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-export const ObjectCreationType = S.String;
+const ObjectCreationType = S.String;
 
 export interface QueueGetOrCreateRequest {
   deploymentName?: string;
@@ -205,7 +205,7 @@ export interface QueueGetOrCreateRequest {
   environmentName?: string;
   objectCreationType?: ObjectCreationType | (string & {});
 }
-export const QueueGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const QueueGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -217,27 +217,26 @@ export interface QueueGetOrCreateResponse {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-export const QueueGetOrCreateResponse =
-  QueueGetByIdResponse as any as S.Schema<QueueGetOrCreateResponse>;
+const QueueGetOrCreateResponse = QueueGetByIdResponse as any as S.Schema<QueueGetOrCreateResponse>;
 
 export interface QueueHeartbeatRequest {
   queueId?: string;
 }
-export const QueueHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
+const QueueHeartbeatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueueHeartbeat", code: 200 })),
 ).annotate({ identifier: "QueueHeartbeatRequest" }) as any as S.Schema<QueueHeartbeatRequest>;
 
 export interface QueueHeartbeatResponse {}
-export const QueueHeartbeatResponse = ClearQueueResponse as any as S.Schema<QueueHeartbeatResponse>;
+const QueueHeartbeatResponse = ClearQueueResponse as any as S.Schema<QueueHeartbeatResponse>;
 
 export interface QueueLenRequest {
   queueId?: string;
   partitionKey?: string;
   total?: boolean;
 }
-export const QueueLenRequest = /*@__PURE__*/ S.suspend(() =>
+const QueueLenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     partitionKey: S.optional(S.String),
@@ -248,7 +247,7 @@ export const QueueLenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface QueueLenResponse {
   len?: number;
 }
-export const QueueLenResponse = /*@__PURE__*/ S.suspend(() =>
+const QueueLenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     len: S.optional(S.Number),
   }),
@@ -260,7 +259,7 @@ export interface QueueNextItemsRequest {
   lastEntryId?: string;
   itemPollTimeout?: number;
 }
-export const QueueNextItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueueNextItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queueId: S.optional(S.String),
     partitionKey: S.optional(S.String),
@@ -273,7 +272,7 @@ export interface QueueItem {
   value?: string;
   entryId?: string;
 }
-export const QueueItem = /*@__PURE__*/ S.suspend(() =>
+const QueueItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     entryId: S.optional(S.String),
@@ -281,12 +280,12 @@ export const QueueItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueueItem" }) as any as S.Schema<QueueItem>;
 
 export type QueueItemList = Array<QueueItem>;
-export const QueueItemList = /*@__PURE__*/ S.Array(QueueItem) as any as S.Schema<QueueItemList>;
+const QueueItemList = /*@__PURE__*/ S.Array(QueueItem) as any as S.Schema<QueueItemList>;
 
 export interface QueueNextItemsResponse {
   items?: QueueItemList;
 }
-export const QueueNextItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const QueueNextItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(QueueItemList),
   }),

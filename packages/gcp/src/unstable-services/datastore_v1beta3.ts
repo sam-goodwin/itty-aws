@@ -70,7 +70,7 @@ export interface PathElement {
   /** The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes__` where `` is the base-64 encoding of the bytes. */
   name?: string;
 }
-export const PathElement = /*@__PURE__*/ S.suspend(() =>
+const PathElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -79,9 +79,7 @@ export const PathElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PathElement" }) as any as S.Schema<PathElement>;
 
 export type PathElementList = Array<PathElement>;
-export const PathElementList = /*@__PURE__*/ S.Array(
-  PathElement,
-) as any as S.Schema<PathElementList>;
+const PathElementList = /*@__PURE__*/ S.Array(PathElement) as any as S.Schema<PathElementList>;
 
 /** A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID. Partition dimensions: - May be `""`. - Must be valid UTF-8 bytes. - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension matches regex `__.*__`, the partition is reserved/read-only. A reserved/read-only partition ID is forbidden in certain documented contexts. Foreign partition IDs (in which the project ID does not match the context project ID ) are discouraged. Reads and writes of foreign partition IDs may fail if the project is not in an active state. */
 export interface PartitionId {
@@ -90,7 +88,7 @@ export interface PartitionId {
   /** If not empty, the ID of the namespace to which the entities belong. */
   namespaceId?: string;
 }
-export const PartitionId = /*@__PURE__*/ S.suspend(() =>
+const PartitionId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     namespaceId: S.optional(S.String),
@@ -104,7 +102,7 @@ export interface Key {
   /** Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition. */
   partitionId?: PartitionId;
 }
-export const Key = /*@__PURE__*/ S.suspend(() =>
+const Key = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.optional(PathElementList),
     partitionId: S.optional(PartitionId),
@@ -112,14 +110,14 @@ export const Key = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Key" }) as any as S.Schema<Key>;
 
 export type KeyList = Array<Key>;
-export const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
+const KeyList = /*@__PURE__*/ S.Array(Key) as any as S.Schema<KeyList>;
 
 /** The request for Datastore.AllocateIds. */
 export interface AllocateIdsRequest {
   /** Required. A list of keys with incomplete key paths for which to allocate IDs. No key may be reserved/read-only. */
   keys?: KeyList;
 }
-export const AllocateIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const AllocateIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(KeyList),
   }),
@@ -131,7 +129,7 @@ export interface AllocateIdsProjectsRequest {
   /** Request body */
   body?: AllocateIdsRequest;
 }
-export const AllocateIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const AllocateIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(AllocateIdsRequest.pipe(T.HttpBody())),
@@ -151,14 +149,14 @@ export interface AllocateIdsResponse {
   /** The keys specified in the request (in the same order), each with its key path completed with a newly allocated ID. */
   keys?: KeyList;
 }
-export const AllocateIdsResponse = AllocateIdsRequest as any as S.Schema<AllocateIdsResponse>;
+const AllocateIdsResponse = AllocateIdsRequest as any as S.Schema<AllocateIdsResponse>;
 
 /** Options specific to read-only transactions. */
 export interface ReadOnly {
   /** Reads entities at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
+const ReadOnly = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
   }),
@@ -169,7 +167,7 @@ export interface ReadWrite {
   /** The transaction identifier of the transaction being retried. */
   previousTransaction?: string;
 }
-export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
+const ReadWrite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     previousTransaction: S.optional(S.String),
   }),
@@ -182,7 +180,7 @@ export interface TransactionOptions {
   /** The transaction should allow both reads and writes. */
   readWrite?: ReadWrite;
 }
-export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
+const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readOnly: S.optional(ReadOnly),
     readWrite: S.optional(ReadWrite),
@@ -194,7 +192,7 @@ export interface BeginTransactionRequest {
   /** Options for a new transaction. */
   transactionOptions?: TransactionOptions;
 }
-export const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionOptions: S.optional(TransactionOptions),
   }),
@@ -206,7 +204,7 @@ export interface BeginTransactionProjectsRequest {
   /** Request body */
   body?: BeginTransactionRequest;
 }
-export const BeginTransactionProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(BeginTransactionRequest.pipe(T.HttpBody())),
@@ -226,29 +224,27 @@ export interface BeginTransactionResponse {
   /** The transaction identifier (always present). */
   transaction?: string;
 }
-export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
+const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction: S.optional(S.String),
   }),
 ).annotate({ identifier: "BeginTransactionResponse" }) as any as S.Schema<BeginTransactionResponse>;
 
 export type CommitRequestModeEnum = "MODE_UNSPECIFIED" | "TRANSACTIONAL" | "NON_TRANSACTIONAL";
-export const CommitRequestModeEnum = S.String;
+const CommitRequestModeEnum = S.String;
 
 export type ValueNullValueEnum = "NULL_VALUE";
-export const ValueNullValueEnum = S.String;
+const ValueNullValueEnum = S.String;
 
 export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Value),
-) as any as S.Schema<ValueList>;
+const ValueList = /*@__PURE__*/ S.Array(S.suspend(() => Value)) as any as S.Schema<ValueList>;
 
 /** An array value. */
 export interface ArrayValue {
   /** Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'exclude_from_indexes'. */
   values?: ValueList;
 }
-export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
+const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(ValueList),
   }),
@@ -261,7 +257,7 @@ export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-export const LatLng = /*@__PURE__*/ S.suspend(() =>
+const LatLng = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     longitude: S.optional(S.Number),
     latitude: S.optional(S.Number),
@@ -297,7 +293,7 @@ export interface Value {
   /** A boolean value. */
   booleanValue?: boolean;
 }
-export const Value = /*@__PURE__*/ S.suspend(() =>
+const Value = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nullValue: S.optional(ValueNullValueEnum),
     excludeFromIndexes: S.optional(S.Boolean),
@@ -316,7 +312,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
 export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
+const ValueMap = /*@__PURE__*/ S.Record(S.String, Value) as any as S.Schema<ValueMap>;
 
 /** A Datastore data object. Must not exceed 1 MiB - 4 bytes. */
 export interface Entity {
@@ -325,7 +321,7 @@ export interface Entity {
   /** The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. */
   properties?: ValueMap;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
+const Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(Key),
     properties: S.optional(ValueMap),
@@ -336,10 +332,10 @@ export type MutationConflictResolutionStrategyEnum =
   | "STRATEGY_UNSPECIFIED"
   | "SERVER_VALUE"
   | "FAIL";
-export const MutationConflictResolutionStrategyEnum = S.String;
+const MutationConflictResolutionStrategyEnum = S.String;
 
 export type PropertyTransformSetToServerValueEnum = "SERVER_VALUE_UNSPECIFIED" | "REQUEST_TIME";
-export const PropertyTransformSetToServerValueEnum = S.String;
+const PropertyTransformSetToServerValueEnum = S.String;
 
 /** A transformation of an entity property. */
 export interface PropertyTransform {
@@ -358,7 +354,7 @@ export interface PropertyTransform {
   /** Sets the property to the minimum of its current value and the given value. This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the input value. If a minimum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN. */
   minimum?: Value;
 }
-export const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
+const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appendMissingElements: S.optional(ArrayValue),
     property: S.optional(S.String),
@@ -371,19 +367,19 @@ export const PropertyTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyTransform" }) as any as S.Schema<PropertyTransform>;
 
 export type PropertyTransformList = Array<PropertyTransform>;
-export const PropertyTransformList = /*@__PURE__*/ S.Array(
+const PropertyTransformList = /*@__PURE__*/ S.Array(
   PropertyTransform,
 ) as any as S.Schema<PropertyTransformList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity. */
 export interface PropertyMask {
   /** The paths to the properties covered by this mask. A path is a list of property names separated by dots (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be escaped. A path must not be empty, and may not reference a value inside an array value. */
   paths?: StringList;
 }
-export const PropertyMask = /*@__PURE__*/ S.suspend(() =>
+const PropertyMask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: S.optional(StringList),
   }),
@@ -410,7 +406,7 @@ export interface Mutation {
   /** The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted. */
   propertyMask?: PropertyMask;
 }
-export const Mutation = /*@__PURE__*/ S.suspend(() =>
+const Mutation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     update: S.optional(Entity),
     conflictResolutionStrategy: S.optional(MutationConflictResolutionStrategyEnum),
@@ -425,7 +421,7 @@ export const Mutation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Mutation" }) as any as S.Schema<Mutation>;
 
 export type MutationList = Array<Mutation>;
-export const MutationList = /*@__PURE__*/ S.Array(Mutation) as any as S.Schema<MutationList>;
+const MutationList = /*@__PURE__*/ S.Array(Mutation) as any as S.Schema<MutationList>;
 
 /** The request for Datastore.Commit. */
 export interface CommitRequest {
@@ -436,7 +432,7 @@ export interface CommitRequest {
   /** The mutations to perform. When mode is `TRANSACTIONAL`, mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `Commit` request: - `insert` followed by `insert` - `update` followed by `insert` - `upsert` followed by `insert` - `delete` followed by `update` When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single entity. */
   mutations?: MutationList;
 }
-export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(CommitRequestModeEnum),
     transaction: S.optional(S.String),
@@ -450,7 +446,7 @@ export interface CommitProjectsRequest {
   /** Request body */
   body?: CommitRequest;
 }
-export const CommitProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(CommitRequest.pipe(T.HttpBody())),
@@ -478,7 +474,7 @@ export interface MutationResult {
   /** The create time of the entity. This field will not be set after a 'delete'. */
   createTime?: string;
 }
-export const MutationResult = /*@__PURE__*/ S.suspend(() =>
+const MutationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     conflictDetected: S.optional(S.Boolean),
@@ -490,7 +486,7 @@ export const MutationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MutationResult" }) as any as S.Schema<MutationResult>;
 
 export type MutationResultList = Array<MutationResult>;
-export const MutationResultList = /*@__PURE__*/ S.Array(
+const MutationResultList = /*@__PURE__*/ S.Array(
   MutationResult,
 ) as any as S.Schema<MutationResultList>;
 
@@ -503,7 +499,7 @@ export interface CommitResponse {
   /** The transaction commit timestamp. Not set for non-transactional commits. */
   commitTime?: string;
 }
-export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mutationResults: S.optional(MutationResultList),
     indexUpdates: S.optional(S.Number),
@@ -512,7 +508,7 @@ export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CommitResponse" }) as any as S.Schema<CommitResponse>;
 
 export type ReadOptionsReadConsistencyEnum = "READ_CONSISTENCY_UNSPECIFIED" | "STRONG" | "EVENTUAL";
-export const ReadOptionsReadConsistencyEnum = S.String;
+const ReadOptionsReadConsistencyEnum = S.String;
 
 /** The options shared by read requests. */
 export interface ReadOptions {
@@ -523,7 +519,7 @@ export interface ReadOptions {
   /** Reads entities as they were at the given time. This value is only supported for Cloud Firestore in Datastore mode. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
-export const ReadOptions = /*@__PURE__*/ S.suspend(() =>
+const ReadOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readConsistency: S.optional(ReadOptionsReadConsistencyEnum),
     transaction: S.optional(S.String),
@@ -540,7 +536,7 @@ export interface LookupRequest {
   /** The properties to return. Defaults to returning all properties. If this field is set and an entity has a property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The entity's key is always returned. */
   propertyMask?: PropertyMask;
 }
-export const LookupRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(KeyList),
     readOptions: S.optional(ReadOptions),
@@ -554,7 +550,7 @@ export interface LookupProjectsRequest {
   /** Request body */
   body?: LookupRequest;
 }
-export const LookupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(LookupRequest.pipe(T.HttpBody())),
@@ -580,7 +576,7 @@ export interface EntityResult {
   /** The resulting entity. */
   entity?: Entity;
 }
-export const EntityResult = /*@__PURE__*/ S.suspend(() =>
+const EntityResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.String),
     version: S.optional(S.String),
@@ -591,9 +587,7 @@ export const EntityResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntityResult" }) as any as S.Schema<EntityResult>;
 
 export type EntityResultList = Array<EntityResult>;
-export const EntityResultList = /*@__PURE__*/ S.Array(
-  EntityResult,
-) as any as S.Schema<EntityResultList>;
+const EntityResultList = /*@__PURE__*/ S.Array(EntityResult) as any as S.Schema<EntityResultList>;
 
 /** The response for Datastore.Lookup. */
 export interface LookupResponse {
@@ -606,7 +600,7 @@ export interface LookupResponse {
   /** Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input. */
   missing?: EntityResultList;
 }
-export const LookupResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.optional(EntityResultList),
     deferred: S.optional(KeyList),
@@ -622,7 +616,7 @@ export interface ReserveIdsRequest {
   /** Required. A list of keys with complete key paths whose numeric IDs should not be auto-allocated. */
   keys?: KeyList;
 }
-export const ReserveIdsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReserveIdsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseId: S.optional(S.String),
     keys: S.optional(KeyList),
@@ -635,7 +629,7 @@ export interface ReserveIdsProjectsRequest {
   /** Request body */
   body?: ReserveIdsRequest;
 }
-export const ReserveIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReserveIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(ReserveIdsRequest.pipe(T.HttpBody())),
@@ -652,7 +646,7 @@ export const ReserveIdsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.ReserveIds. */
 export interface ReserveIdsResponse {}
-export const ReserveIdsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ReserveIdsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ReserveIdsResponse",
 }) as any as S.Schema<ReserveIdsResponse>;
 
@@ -661,7 +655,7 @@ export interface RollbackRequest {
   /** Required. The transaction identifier, returned by a call to Datastore.BeginTransaction. */
   transaction?: string;
 }
-export const RollbackRequest = BeginTransactionResponse as any as S.Schema<RollbackRequest>;
+const RollbackRequest = BeginTransactionResponse as any as S.Schema<RollbackRequest>;
 
 export interface RollbackProjectsRequest {
   /** Required. The ID of the project against which to make the request. */
@@ -669,7 +663,7 @@ export interface RollbackProjectsRequest {
   /** Request body */
   body?: RollbackRequest;
 }
-export const RollbackProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(RollbackRequest.pipe(T.HttpBody())),
@@ -684,14 +678,14 @@ export const RollbackProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The response for Datastore.Rollback. (an empty message). */
 export interface RollbackResponse {}
-export const RollbackResponse = ReserveIdsResponse as any as S.Schema<RollbackResponse>;
+const RollbackResponse = ReserveIdsResponse as any as S.Schema<RollbackResponse>;
 
 /** Explain options for the query. */
 export interface ExplainOptions {
   /** Optional. Whether to execute this query. When false (the default), the query will be planned, returning only metrics from the planning stages. When true, the query will be planned and executed, returning the full query results along with both planning and execution stage metrics. */
   analyze?: boolean;
 }
-export const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
+const ExplainOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyze: S.optional(S.Boolean),
   }),
@@ -702,7 +696,7 @@ export interface PropertyReference {
   /** A reference to a property. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to entity property name limitations. */
   name?: string;
 }
-export const PropertyReference = /*@__PURE__*/ S.suspend(() =>
+const PropertyReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
@@ -713,7 +707,7 @@ export interface Avg {
   /** The property to aggregate on. */
   property?: PropertyReference;
 }
-export const Avg = /*@__PURE__*/ S.suspend(() =>
+const Avg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.optional(PropertyReference),
   }),
@@ -724,7 +718,7 @@ export interface Count {
   /** Optional. Optional constraint on the maximum number of entities to count. This provides a way to set an upper bound on the number of entities to scan, limiting latency, and cost. Unspecified is interpreted as no bound. If a zero value is provided, a count result of zero should always be expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be non-negative when present. */
   upTo?: string;
 }
-export const Count = /*@__PURE__*/ S.suspend(() =>
+const Count = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upTo: S.optional(S.String),
   }),
@@ -732,8 +726,6 @@ export const Count = /*@__PURE__*/ S.suspend(() =>
 
 /** Sum of the values of the requested property. * Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. Infinity math follows IEEE-754 standards. * If the aggregated value set is empty, returns 0. * Returns a 64-bit integer if all aggregated numbers are integers and the sum result does not overflow. Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means that running the same query repeatedly without any changes to the underlying values could produce slightly different results each time. In those cases, values should be stored as integers over floating-point numbers. */
 export type Sum = Avg;
-export const Sum = Avg;
-
 /** Defines an aggregation that produces a single result. */
 export interface Aggregation {
   /** Average aggregator. */
@@ -745,7 +737,7 @@ export interface Aggregation {
   /** Sum aggregator. */
   sum?: Avg;
 }
-export const Aggregation = /*@__PURE__*/ S.suspend(() =>
+const Aggregation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avg: S.optional(Avg),
     count: S.optional(Count),
@@ -755,26 +747,24 @@ export const Aggregation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Aggregation" }) as any as S.Schema<Aggregation>;
 
 export type AggregationList = Array<Aggregation>;
-export const AggregationList = /*@__PURE__*/ S.Array(
-  Aggregation,
-) as any as S.Schema<AggregationList>;
+const AggregationList = /*@__PURE__*/ S.Array(Aggregation) as any as S.Schema<AggregationList>;
 
 /** A representation of a property in a projection. */
 export interface Projection {
   /** The property to project. */
   property?: PropertyReference;
 }
-export const Projection = Avg as any as S.Schema<Projection>;
+const Projection = Avg as any as S.Schema<Projection>;
 
 export type ProjectionList = Array<Projection>;
-export const ProjectionList = /*@__PURE__*/ S.Array(Projection) as any as S.Schema<ProjectionList>;
+const ProjectionList = /*@__PURE__*/ S.Array(Projection) as any as S.Schema<ProjectionList>;
 
 export type FindNearestDistanceMeasureEnum =
   | "DISTANCE_MEASURE_UNSPECIFIED"
   | "EUCLIDEAN"
   | "COSINE"
   | "DOT_PRODUCT";
-export const FindNearestDistanceMeasureEnum = S.String;
+const FindNearestDistanceMeasureEnum = S.String;
 
 /** Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple documents have the same vector distance, the returned document order is not guaranteed to be stable between queries. */
 export interface FindNearest {
@@ -791,7 +781,7 @@ export interface FindNearest {
   /** Required. An indexed vector property to search upon. Only documents which contain vectors whose dimensionality match the query_vector can be returned. */
   vectorProperty?: PropertyReference;
 }
-export const FindNearest = /*@__PURE__*/ S.suspend(() =>
+const FindNearest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distanceResultProperty: S.optional(S.String),
     distanceThreshold: S.optional(S.Number),
@@ -813,7 +803,7 @@ export type PropertyFilterOpEnum =
   | "NOT_EQUAL"
   | "HAS_ANCESTOR"
   | "NOT_IN";
-export const PropertyFilterOpEnum = S.String;
+const PropertyFilterOpEnum = S.String;
 
 /** A filter on a specific property. */
 export interface PropertyFilter {
@@ -824,7 +814,7 @@ export interface PropertyFilter {
   /** The value to compare the property to. */
   value?: Value;
 }
-export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
+const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     op: S.optional(PropertyFilterOpEnum),
     property: S.optional(PropertyReference),
@@ -833,12 +823,10 @@ export const PropertyFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyFilter" }) as any as S.Schema<PropertyFilter>;
 
 export type FilterList = Array<Filter>;
-export const FilterList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Filter),
-) as any as S.Schema<FilterList>;
+const FilterList = /*@__PURE__*/ S.Array(S.suspend(() => Filter)) as any as S.Schema<FilterList>;
 
 export type CompositeFilterOpEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-export const CompositeFilterOpEnum = S.String;
+const CompositeFilterOpEnum = S.String;
 
 /** A filter that merges multiple other filters using the given operator. */
 export interface CompositeFilter {
@@ -847,7 +835,7 @@ export interface CompositeFilter {
   /** The operator for combining multiple filters. */
   op?: CompositeFilterOpEnum | (string & {});
 }
-export const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
+const CompositeFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filters: S.optional(FilterList),
     op: S.optional(CompositeFilterOpEnum),
@@ -861,7 +849,7 @@ export interface Filter {
   /** A composite filter. */
   compositeFilter?: CompositeFilter;
 }
-export const Filter = /*@__PURE__*/ S.suspend(() =>
+const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyFilter: S.optional(PropertyFilter),
     compositeFilter: S.optional(CompositeFilter),
@@ -869,7 +857,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 
 export type PropertyReferenceList = Array<PropertyReference>;
-export const PropertyReferenceList = /*@__PURE__*/ S.Array(
+const PropertyReferenceList = /*@__PURE__*/ S.Array(
   PropertyReference,
 ) as any as S.Schema<PropertyReferenceList>;
 
@@ -878,13 +866,11 @@ export interface KindExpression {
   /** The name of the kind. */
   name?: string;
 }
-export const KindExpression = PropertyReference as any as S.Schema<KindExpression>;
-
 export type KindExpressionList = Array<KindExpression>;
-export const KindExpressionList = PropertyReferenceList as any as S.Schema<KindExpressionList>;
+const KindExpressionList = PropertyReferenceList as any as S.Schema<KindExpressionList>;
 
 export type PropertyOrderDirectionEnum = "DIRECTION_UNSPECIFIED" | "ASCENDING" | "DESCENDING";
-export const PropertyOrderDirectionEnum = S.String;
+const PropertyOrderDirectionEnum = S.String;
 
 /** The desired order for a specific property. */
 export interface PropertyOrder {
@@ -893,7 +879,7 @@ export interface PropertyOrder {
   /** The direction to order by. Defaults to `ASCENDING`. */
   direction?: PropertyOrderDirectionEnum | (string & {});
 }
-export const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
+const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     property: S.optional(PropertyReference),
     direction: S.optional(PropertyOrderDirectionEnum),
@@ -901,7 +887,7 @@ export const PropertyOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyOrder" }) as any as S.Schema<PropertyOrder>;
 
 export type PropertyOrderList = Array<PropertyOrder>;
-export const PropertyOrderList = /*@__PURE__*/ S.Array(
+const PropertyOrderList = /*@__PURE__*/ S.Array(
   PropertyOrder,
 ) as any as S.Schema<PropertyOrderList>;
 
@@ -928,7 +914,7 @@ export interface Query {
   /** A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets). */
   startCursor?: string;
 }
-export const Query = /*@__PURE__*/ S.suspend(() =>
+const Query = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number),
     projection: S.optional(ProjectionList),
@@ -950,7 +936,7 @@ export interface AggregationQuery {
   /** Nested query for aggregation */
   nestedQuery?: Query;
 }
-export const AggregationQuery = /*@__PURE__*/ S.suspend(() =>
+const AggregationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregations: S.optional(AggregationList),
     nestedQuery: S.optional(Query),
@@ -964,7 +950,7 @@ export interface GqlQueryParameter {
   /** A query cursor. Query cursors are returned in query result batches. */
   cursor?: string;
 }
-export const GqlQueryParameter = /*@__PURE__*/ S.suspend(() =>
+const GqlQueryParameter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(Value),
     cursor: S.optional(S.String),
@@ -972,12 +958,12 @@ export const GqlQueryParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GqlQueryParameter" }) as any as S.Schema<GqlQueryParameter>;
 
 export type GqlQueryParameterList = Array<GqlQueryParameter>;
-export const GqlQueryParameterList = /*@__PURE__*/ S.Array(
+const GqlQueryParameterList = /*@__PURE__*/ S.Array(
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterList>;
 
 export type GqlQueryParameterMap = { [key: string]: GqlQueryParameter | undefined };
-export const GqlQueryParameterMap = /*@__PURE__*/ S.Record(
+const GqlQueryParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   GqlQueryParameter,
 ) as any as S.Schema<GqlQueryParameterMap>;
@@ -993,7 +979,7 @@ export interface GqlQuery {
   /** For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse. Key must match regex `A-Za-z_$*`, must not match regex `__.*__`, and must not be `""`. */
   namedBindings?: GqlQueryParameterMap;
 }
-export const GqlQuery = /*@__PURE__*/ S.suspend(() =>
+const GqlQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowLiterals: S.optional(S.Boolean),
     positionalBindings: S.optional(GqlQueryParameterList),
@@ -1015,7 +1001,7 @@ export interface RunAggregationQueryRequest {
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
 }
-export const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explainOptions: S.optional(ExplainOptions),
     aggregationQuery: S.optional(AggregationQuery),
@@ -1033,7 +1019,7 @@ export interface RunAggregationQueryProjectsRequest {
   /** Request body */
   body?: RunAggregationQueryRequest;
 }
-export const RunAggregationQueryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(RunAggregationQueryRequest.pipe(T.HttpBody())),
@@ -1049,22 +1035,17 @@ export const RunAggregationQueryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RunAggregationQueryProjectsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** Planning phase information for the query. */
 export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
   indexesUsed?: DocumentMapList;
 }
-export const PlanSummary = /*@__PURE__*/ S.suspend(() =>
+const PlanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexesUsed: S.optional(DocumentMapList),
   }),
@@ -1081,7 +1062,7 @@ export interface ExecutionStats {
   /** Total time to execute the query in the backend. */
   executionDuration?: string;
 }
-export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
+const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debugStats: S.optional(DocumentMap),
     readOperations: S.optional(S.String),
@@ -1097,7 +1078,7 @@ export interface ExplainMetrics {
   /** Aggregated stats from the execution of the query. Only present when ExplainOptions.analyze is set to true. */
   executionStats?: ExecutionStats;
 }
-export const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
+const ExplainMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planSummary: S.optional(PlanSummary),
     executionStats: S.optional(ExecutionStats),
@@ -1110,21 +1091,21 @@ export type AggregationResultBatchMoreResultsEnum =
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
   | "NO_MORE_RESULTS";
-export const AggregationResultBatchMoreResultsEnum = S.String;
+const AggregationResultBatchMoreResultsEnum = S.String;
 
 /** The result of a single bucket from a Datastore aggregation query. The keys of `aggregate_properties` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result. */
 export interface AggregationResult {
   /** The result of the aggregation functions, ex: `COUNT(*) AS total_entities`. The key is the alias assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query. */
   aggregateProperties?: ValueMap;
 }
-export const AggregationResult = /*@__PURE__*/ S.suspend(() =>
+const AggregationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aggregateProperties: S.optional(ValueMap),
   }),
 ).annotate({ identifier: "AggregationResult" }) as any as S.Schema<AggregationResult>;
 
 export type AggregationResultList = Array<AggregationResult>;
-export const AggregationResultList = /*@__PURE__*/ S.Array(
+const AggregationResultList = /*@__PURE__*/ S.Array(
   AggregationResult,
 ) as any as S.Schema<AggregationResultList>;
 
@@ -1137,7 +1118,7 @@ export interface AggregationResultBatch {
   /** The aggregation results for this batch. */
   aggregationResults?: AggregationResultList;
 }
-export const AggregationResultBatch = /*@__PURE__*/ S.suspend(() =>
+const AggregationResultBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moreResults: S.optional(AggregationResultBatchMoreResultsEnum),
     readTime: S.optional(S.String),
@@ -1154,7 +1135,7 @@ export interface RunAggregationQueryResponse {
   /** The parsed form of the `GqlQuery` from the request, if it was set. */
   query?: AggregationQuery;
 }
-export const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunAggregationQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     explainMetrics: S.optional(ExplainMetrics),
     batch: S.optional(AggregationResultBatch),
@@ -1179,7 +1160,7 @@ export interface RunQueryRequest {
   /** Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID. */
   partitionId?: PartitionId;
 }
-export const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gqlQuery: S.optional(GqlQuery),
     propertyMask: S.optional(PropertyMask),
@@ -1196,7 +1177,7 @@ export interface RunQueryProjectsRequest {
   /** Request body */
   body?: RunQueryRequest;
 }
-export const RunQueryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunQueryProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     body: S.optional(RunQueryRequest.pipe(T.HttpBody())),
@@ -1215,14 +1196,14 @@ export type QueryResultBatchMoreResultsEnum =
   | "MORE_RESULTS_AFTER_LIMIT"
   | "MORE_RESULTS_AFTER_CURSOR"
   | "NO_MORE_RESULTS";
-export const QueryResultBatchMoreResultsEnum = S.String;
+const QueryResultBatchMoreResultsEnum = S.String;
 
 export type QueryResultBatchEntityResultTypeEnum =
   | "RESULT_TYPE_UNSPECIFIED"
   | "FULL"
   | "PROJECTION"
   | "KEY_ONLY";
-export const QueryResultBatchEntityResultTypeEnum = S.String;
+const QueryResultBatchEntityResultTypeEnum = S.String;
 
 /** A batch of results produced by a query. */
 export interface QueryResultBatch {
@@ -1243,7 +1224,7 @@ export interface QueryResultBatch {
   /** The results for this batch. */
   entityResults?: EntityResultList;
 }
-export const QueryResultBatch = /*@__PURE__*/ S.suspend(() =>
+const QueryResultBatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotVersion: S.optional(S.String),
     endCursor: S.optional(S.String),
@@ -1265,7 +1246,7 @@ export interface RunQueryResponse {
   /** Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is sent only once with the last response in the stream. */
   explainMetrics?: ExplainMetrics;
 }
-export const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const RunQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch: S.optional(QueryResultBatch),
     query: S.optional(Query),

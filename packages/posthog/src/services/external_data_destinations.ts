@@ -17,7 +17,7 @@ export type ExternalDataDestinationTypeEnum =
   | "Databricks"
   | "AzureBlob"
   | "S3";
-export const ExternalDataDestinationTypeEnum = S.String;
+const ExternalDataDestinationTypeEnum = S.String;
 
 export interface CreateExternalDataDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -31,7 +31,7 @@ export interface CreateExternalDataDestinationRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-export const CreateExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     type: ExternalDataDestinationTypeEnum,
@@ -60,7 +60,7 @@ export interface SyncedSource {
   /** True when only some of the source's tables reach this destination, through their own override. */
   via_table_override: boolean;
 }
-export const SyncedSource = /*@__PURE__*/ S.suspend(() =>
+const SyncedSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -71,7 +71,7 @@ export const SyncedSource = /*@__PURE__*/ S.suspend(() =>
 
 /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
 export type ExternalDataDestinationSyncedSourcesList = Array<SyncedSource>;
-export const ExternalDataDestinationSyncedSourcesList = /*@__PURE__*/ S.Array(
+const ExternalDataDestinationSyncedSourcesList = /*@__PURE__*/ S.Array(
   SyncedSource,
 ) as any as S.Schema<ExternalDataDestinationSyncedSourcesList>;
 
@@ -93,7 +93,7 @@ export interface ExternalDataDestination {
   /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
   synced_sources: ExternalDataDestinationSyncedSourcesList;
 }
-export const ExternalDataDestination = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: ExternalDataDestinationTypeEnum,
@@ -114,7 +114,7 @@ export interface ExternalDataDestinationsDestroyRequest {
   /** A UUID string identifying this external data destination. */
   id: string;
 }
-export const ExternalDataDestinationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataDestinationsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -130,7 +130,7 @@ export const ExternalDataDestinationsDestroyRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ExternalDataDestinationsDestroyRequest>;
 
 export interface ExternalDataDestinationsDestroyResponse {}
-export const ExternalDataDestinationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const ExternalDataDestinationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "ExternalDataDestinationsDestroyResponse",
@@ -142,7 +142,7 @@ export interface GetExternalDataDestinationRequest {
   /** A UUID string identifying this external data destination. */
   id: string;
 }
-export const GetExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -165,7 +165,7 @@ export interface ListExternalDataDestinationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListExternalDataDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListExternalDataDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -182,7 +182,7 @@ export const ListExternalDataDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExternalDataDestinationsRequest>;
 
 export type PaginatedExternalDataDestinationListResultsList = Array<ExternalDataDestination>;
-export const PaginatedExternalDataDestinationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedExternalDataDestinationListResultsList = /*@__PURE__*/ S.Array(
   ExternalDataDestination,
 ) as any as S.Schema<PaginatedExternalDataDestinationListResultsList>;
 
@@ -192,7 +192,7 @@ export interface PaginatedExternalDataDestinationList {
   previous?: string | null;
   results: PaginatedExternalDataDestinationListResultsList;
 }
-export const PaginatedExternalDataDestinationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedExternalDataDestinationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -217,7 +217,7 @@ export interface UpdateExternalDataDestinationRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-export const UpdateExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -250,7 +250,7 @@ export interface UpdateExternalDataDestinationsPartialRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-export const UpdateExternalDataDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateExternalDataDestinationsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

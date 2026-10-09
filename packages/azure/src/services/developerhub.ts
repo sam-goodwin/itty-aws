@@ -16,7 +16,7 @@ export interface DeleteWorkflowRequest {
   /** The name of the workflow resource. */
   workflowName: string;
 }
-export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -36,7 +36,7 @@ export interface DeleteWorkflowResponse {
   /** delete status message */
   status?: string;
 }
-export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
   }),
@@ -57,19 +57,19 @@ export type GenerationLanguage =
   | "ruby"
   | "rust"
   | "swift";
-export const GenerationLanguage = S.String;
+const GenerationLanguage = S.String;
 
 /** The mode of generation to be used for generating Dockerfiles. */
 export type DockerfileGenerationMode = "enabled" | "disabled";
-export const DockerfileGenerationMode = S.String;
+const DockerfileGenerationMode = S.String;
 
 /** The mode of generation to be used for generating Manifest. */
 export type ManifestGenerationMode = "enabled" | "disabled";
-export const ManifestGenerationMode = S.String;
+const ManifestGenerationMode = S.String;
 
 /** Determines the type of manifests to be generated. */
 export type GenerationManifestType = "helm" | "kube";
-export const GenerationManifestType = S.String;
+const GenerationManifestType = S.String;
 
 export interface GeneratePreviewArtifactsRequest {
   /** The ID of the target subscription. */
@@ -99,7 +99,7 @@ export interface GeneratePreviewArtifactsRequest {
   /** The tag to apply to the generated image. */
   imageTag?: string;
 }
-export const GeneratePreviewArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const GeneratePreviewArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -130,13 +130,13 @@ export const GeneratePreviewArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Dockerfile and manifest artifacts generated as a preview are returned as a map<path string,content string> */
 export type GeneratePreviewArtifactsResponse = { [key: string]: string | undefined };
-export const GeneratePreviewArtifactsResponse = /*@__PURE__*/ S.Record(
+const GeneratePreviewArtifactsResponse = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<GeneratePreviewArtifactsResponse>;
 
 export type GeneratePreviewArtifactsResponse2 = GeneratePreviewArtifactsResponse;
-export const GeneratePreviewArtifactsResponse2 = /*@__PURE__*/ S.suspend(() =>
+const GeneratePreviewArtifactsResponse2 = /*@__PURE__*/ S.suspend(() =>
   GeneratePreviewArtifactsResponse.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GeneratePreviewArtifactsResponse2",
@@ -150,7 +150,7 @@ export interface GetWorkflowRequest {
   /** The name of the workflow resource. */
   workflowName: string;
 }
-export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -167,11 +167,11 @@ export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -188,7 +188,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -201,21 +201,21 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetWorkflowResponseTagsMap = { [key: string]: string | undefined };
-export const GetWorkflowResponseTagsMap =
+const GetWorkflowResponseTagsMap =
   GeneratePreviewArtifactsResponse as any as S.Schema<GetWorkflowResponseTagsMap>;
 
 /** Determines the type of manifests within the repository. */
 export type ManifestType = "helm" | "kube" | "kustomize";
-export const ManifestType = S.String;
+const ManifestType = S.String;
 
 export type DeploymentPropertiesKubeManifestLocationsList = Array<string>;
-export const DeploymentPropertiesKubeManifestLocationsList = /*@__PURE__*/ S.Array(
+const DeploymentPropertiesKubeManifestLocationsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeploymentPropertiesKubeManifestLocationsList>;
 
 /** Manifest override values. */
 export type DeploymentPropertiesOverridesMap = { [key: string]: string | undefined };
-export const DeploymentPropertiesOverridesMap =
+const DeploymentPropertiesOverridesMap =
   GeneratePreviewArtifactsResponse as any as S.Schema<DeploymentPropertiesOverridesMap>;
 
 export interface DeploymentProperties {
@@ -228,7 +228,7 @@ export interface DeploymentProperties {
   /** Manifest override values. */
   overrides?: DeploymentPropertiesOverridesMap;
 }
-export const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
+const DeploymentProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifestType: S.optional(ManifestType),
     kubeManifestLocations: S.optional(DeploymentPropertiesKubeManifestLocationsList),
@@ -249,7 +249,7 @@ export interface ACR {
   /** ACR repository */
   acrRepositoryName?: string;
 }
-export const ACR = /*@__PURE__*/ S.suspend(() =>
+const ACR = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acrSubscriptionId: S.optional(S.String),
     acrResourceGroup: S.optional(S.String),
@@ -265,7 +265,7 @@ export interface GitHubWorkflowProfileOidcCredentials {
   /** Azure Directory (tenant) ID */
   azureTenantId?: string;
 }
-export const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(() =>
+const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     azureClientId: S.optional(S.String),
     azureTenantId: S.optional(S.String),
@@ -276,11 +276,11 @@ export const GitHubWorkflowProfileOidcCredentials = /*@__PURE__*/ S.suspend(() =
 
 /** The status of the Pull Request submitted against the users repository. */
 export type PullRequestStatus = "unknown" | "submitted" | "merged" | "removed";
-export const PullRequestStatus = S.String;
+const PullRequestStatus = S.String;
 
 /** Describes the status of the workflow run */
 export type WorkflowRunStatus = "queued" | "inprogress" | "completed";
-export const WorkflowRunStatus = S.String;
+const WorkflowRunStatus = S.String;
 
 export interface WorkflowRun {
   /** Describes if the workflow run succeeded. */
@@ -291,7 +291,7 @@ export interface WorkflowRun {
   lastRunAt?: string;
   workflowRunStatus?: WorkflowRunStatus;
 }
-export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     succeeded: S.optional(S.Boolean),
     workflowRunURL: S.optional(S.String),
@@ -302,7 +302,7 @@ export const WorkflowRun = /*@__PURE__*/ S.suspend(() =>
 
 /** Determines the authorization status of requests. */
 export type AuthorizationStatus = "Authorized" | "NotFound" | "Error";
-export const AuthorizationStatus = S.String;
+const AuthorizationStatus = S.String;
 
 /** GitHub Workflow Profile */
 export interface GitHubWorkflowProfile {
@@ -332,7 +332,7 @@ export interface GitHubWorkflowProfile {
   lastWorkflowRun?: WorkflowRun;
   authStatus?: AuthorizationStatus;
 }
-export const GitHubWorkflowProfile = /*@__PURE__*/ S.suspend(() =>
+const GitHubWorkflowProfile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryOwner: S.optional(S.String),
     repositoryName: S.optional(S.String),
@@ -377,7 +377,7 @@ export interface ArtifactGenerationProperties {
   /** The tag to apply to the generated image. */
   imageTag?: string;
 }
-export const ArtifactGenerationProperties = /*@__PURE__*/ S.suspend(() =>
+const ArtifactGenerationProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generationLanguage: S.optional(GenerationLanguage),
     languageVersion: S.optional(S.String),
@@ -404,7 +404,7 @@ export interface WorkflowProperties {
   /** Properties for generating artifacts like dockerfile and manifests. */
   artifactGenerationProperties?: ArtifactGenerationProperties;
 }
-export const WorkflowProperties = /*@__PURE__*/ S.suspend(() =>
+const WorkflowProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     githubWorkflowProfile: S.optional(GitHubWorkflowProfile),
     artifactGenerationProperties: S.optional(ArtifactGenerationProperties),
@@ -427,7 +427,7 @@ export interface GetWorkflowResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -447,7 +447,7 @@ export interface GitHubOAuthRequest {
   /** The URL the client will redirect to on successful authentication. If empty, no redirect will occur. */
   redirectUrl?: string;
 }
-export const GitHubOAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -469,7 +469,7 @@ export interface GitHubOAuthInfoResponse {
   /** OAuth token used to make calls to GitHub */
   token?: string;
 }
-export const GitHubOAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authURL: S.optional(S.String),
     token: S.optional(S.String),
@@ -486,7 +486,7 @@ export interface GitHubOAuthCallbackRequest {
   /** The state response from authenticating the GitHub App. */
   state: string;
 }
-export const GitHubOAuthCallbackRequest = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthCallbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -509,7 +509,7 @@ export interface GitHubOAuthProperties {
   /** user making request */
   username?: string;
 }
-export const GitHubOAuthProperties = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
   }),
@@ -527,7 +527,7 @@ export interface GitHubOAuthCallbackResponse {
   /** Properties of a workflow. */
   properties?: GitHubOAuthProperties;
 }
-export const GitHubOAuthCallbackResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthCallbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -545,7 +545,7 @@ export interface ListGitHubOAuthRequest {
   /** The name of Azure region. */
   location: string;
 }
-export const ListGitHubOAuthRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGitHubOAuthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -572,7 +572,7 @@ export interface GitHubOAuthResponse {
   /** Properties of a workflow. */
   properties?: GitHubOAuthProperties;
 }
-export const GitHubOAuthResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -584,7 +584,7 @@ export const GitHubOAuthResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Singleton list response containing one GitHubOAuthResponse response */
 export type GitHubOAuthListResponseValueList = Array<GitHubOAuthResponse>;
-export const GitHubOAuthListResponseValueList = /*@__PURE__*/ S.Array(
+const GitHubOAuthListResponseValueList = /*@__PURE__*/ S.Array(
   GitHubOAuthResponse,
 ) as any as S.Schema<GitHubOAuthListResponseValueList>;
 
@@ -593,14 +593,14 @@ export interface GitHubOAuthListResponse {
   /** Singleton list response containing one GitHubOAuthResponse response */
   value?: GitHubOAuthListResponseValueList;
 }
-export const GitHubOAuthListResponse = /*@__PURE__*/ S.suspend(() =>
+const GitHubOAuthListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GitHubOAuthListResponseValueList),
   }),
 ).annotate({ identifier: "GitHubOAuthListResponse" }) as any as S.Schema<GitHubOAuthListResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -622,7 +622,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -633,11 +633,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -652,7 +652,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -664,7 +664,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -674,7 +674,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -685,7 +685,7 @@ export interface ListWorkflowRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ListWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -700,8 +700,6 @@ export const ListWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowTagsMap = { [key: string]: string | undefined };
-export const WorkflowTagsMap = GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowTagsMap>;
-
 /** Resource representation of a workflow */
 export interface Workflow {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -719,11 +717,11 @@ export interface Workflow {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
+const Workflow = GetWorkflowResponse as any as S.Schema<Workflow>;
 
 /** The list of workflows. */
 export type WorkflowListResultValueList = Array<Workflow>;
-export const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
+const WorkflowListResultValueList = /*@__PURE__*/ S.Array(
   Workflow,
 ) as any as S.Schema<WorkflowListResultValueList>;
 
@@ -734,7 +732,7 @@ export interface WorkflowListResult {
   /** The URL to the next set of workflow results. */
   nextLink?: string;
 }
-export const WorkflowListResult = /*@__PURE__*/ S.suspend(() =>
+const WorkflowListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(WorkflowListResultValueList),
     nextLink: S.optional(S.String),
@@ -749,7 +747,7 @@ export interface ListWorkflowByResourceGroupRequest {
   /** The ManagedCluster resource associated with the workflows. */
   managedClusterResource?: string;
 }
-export const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -767,7 +765,7 @@ export const ListWorkflowByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkflowByResourceGroupRequest>;
 
 export type UpdateWorkflowTagsRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkflowTagsRequestTagsMap =
+const UpdateWorkflowTagsRequestTagsMap =
   GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsRequestTagsMap>;
 
 export interface UpdateWorkflowTagsRequest {
@@ -779,7 +777,7 @@ export interface UpdateWorkflowTagsRequest {
   workflowName: string;
   tags?: UpdateWorkflowTagsRequestTagsMap;
 }
-export const UpdateWorkflowTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -799,7 +797,7 @@ export const UpdateWorkflowTagsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateWorkflowTagsResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateWorkflowTagsResponseTagsMap =
+const UpdateWorkflowTagsResponseTagsMap =
   GeneratePreviewArtifactsResponse as any as S.Schema<UpdateWorkflowTagsResponseTagsMap>;
 
 export interface UpdateWorkflowTagsResponse {
@@ -818,7 +816,7 @@ export interface UpdateWorkflowTagsResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const UpdateWorkflowTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateWorkflowTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -834,17 +832,15 @@ export const UpdateWorkflowTagsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const WorkflowCreateOrUpdateRequestTagsMap =
+const WorkflowCreateOrUpdateRequestTagsMap =
   GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowCreateOrUpdateRequestTagsMap>;
 
 /** The fields needed for OIDC with GitHub. */
 export type GitHubWorkflowProfileInputOidcCredentials = GitHubWorkflowProfileOidcCredentials;
-export const GitHubWorkflowProfileInputOidcCredentials = GitHubWorkflowProfileOidcCredentials;
-
 export interface WorkflowRunInput {
   workflowRunStatus?: WorkflowRunStatus | (string & {});
 }
-export const WorkflowRunInput = /*@__PURE__*/ S.suspend(() =>
+const WorkflowRunInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowRunStatus: S.optional(WorkflowRunStatus),
   }),
@@ -872,7 +868,7 @@ export interface GitHubWorkflowProfileInput {
   aksResourceId?: string;
   lastWorkflowRun?: WorkflowRunInput;
 }
-export const GitHubWorkflowProfileInput = /*@__PURE__*/ S.suspend(() =>
+const GitHubWorkflowProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryOwner: S.optional(S.String),
     repositoryName: S.optional(S.String),
@@ -897,7 +893,7 @@ export interface WorkflowPropertiesInput {
   /** Properties for generating artifacts like dockerfile and manifests. */
   artifactGenerationProperties?: ArtifactGenerationProperties;
 }
-export const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const WorkflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     githubWorkflowProfile: S.optional(GitHubWorkflowProfileInput),
     artifactGenerationProperties: S.optional(ArtifactGenerationProperties),
@@ -918,7 +914,7 @@ export interface WorkflowCreateOrUpdateRequest {
   /** Properties of a workflow. */
   properties?: WorkflowPropertiesInput;
 }
-export const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -940,9 +936,6 @@ export const WorkflowCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type WorkflowCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const WorkflowCreateOrUpdateResponseTagsMap =
-  GeneratePreviewArtifactsResponse as any as S.Schema<WorkflowCreateOrUpdateResponseTagsMap>;
-
 export interface WorkflowCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -959,7 +952,7 @@ export interface WorkflowCreateOrUpdateResponse {
   /** Properties of a workflow. */
   properties?: WorkflowProperties;
 }
-export const WorkflowCreateOrUpdateResponse =
+const WorkflowCreateOrUpdateResponse =
   UpdateWorkflowTagsResponse as any as S.Schema<WorkflowCreateOrUpdateResponse>;
 
 export type DeleteWorkflowError = AzureOpError;

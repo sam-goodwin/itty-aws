@@ -13,7 +13,7 @@ export interface DeleteOnEmptyConfig {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 (default) to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number;
 }
-export const DeleteOnEmptyConfig = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnEmptyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min_age_secs: S.optional(S.Number),
   }),
@@ -24,35 +24,23 @@ export interface RetentionPolicyCase0 {
   /** Age in seconds for automatic trimming of records older than this threshold. This must be set to a value greater than 0 seconds. */
   age: number;
 }
-export const RetentionPolicyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    age: S.Number,
-  }),
-).annotate({ identifier: "RetentionPolicyCase0" }) as any as S.Schema<RetentionPolicyCase0>;
-
 /** Retain records unless explicitly trimmed. */
 export interface RetentionPolicyCase1 {
   /** Retain records unless explicitly trimmed. */
   infinite: unknown;
 }
-export const RetentionPolicyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    infinite: S.Unknown,
-  }),
-).annotate({ identifier: "RetentionPolicyCase1" }) as any as S.Schema<RetentionPolicyCase1>;
-
 export type RetentionPolicy = RetentionPolicyCase0 | RetentionPolicyCase1;
-export const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
+const RetentionPolicy = /*@__PURE__*/ S.Unknown as any as S.Schema<RetentionPolicy>;
 
 export type TimestampingMode = "client-prefer" | "client-require" | "arrival";
-export const TimestampingMode = S.String;
+const TimestampingMode = S.String;
 
 export interface TimestampingConfig {
   mode?: TimestampingMode | (string & {}) | null;
   /** Allow client-specified timestamps to exceed the arrival time. If this is `false` or not set, client timestamps will be capped at the arrival time. */
   uncapped?: boolean | null;
 }
-export const TimestampingConfig = /*@__PURE__*/ S.suspend(() =>
+const TimestampingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.NullOr(TimestampingMode)),
     uncapped: S.optional(S.NullOr(S.Boolean)),
@@ -66,7 +54,7 @@ export interface StreamConfig {
   storage_class?: string | null;
   timestamping?: TimestampingConfig | null;
 }
-export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyConfig)),
     retention_policy: S.optional(S.NullOr(RetentionPolicy)),
@@ -76,7 +64,7 @@ export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamConfig" }) as any as S.Schema<StreamConfig>;
 
 export type EncryptionAlgorithm = "aegis-256" | "aes-256-gcm";
-export const EncryptionAlgorithm = S.String;
+const EncryptionAlgorithm = S.String;
 
 export interface BasinConfig {
   /** Create stream on append if it doesn't exist, using the default stream configuration. */
@@ -86,7 +74,7 @@ export interface BasinConfig {
   default_stream_config?: StreamConfig | null;
   stream_cipher?: EncryptionAlgorithm | (string & {}) | null;
 }
-export const BasinConfig = /*@__PURE__*/ S.suspend(() =>
+const BasinConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     create_stream_on_append: S.optional(S.Boolean),
     create_stream_on_read: S.optional(S.Boolean),
@@ -103,7 +91,7 @@ export interface CreateBasinRequest {
   config?: BasinConfig | null;
   location?: string | null;
 }
-export const CreateBasinRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBasinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     s2RequestToken: S.optional(S.String.pipe(T.Header("s2-request-token"))),
     basin: S.String,
@@ -121,7 +109,7 @@ export interface BasinInfo {
   /** Basin name. */
   name: string;
 }
-export const BasinInfo = /*@__PURE__*/ S.suspend(() =>
+const BasinInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     deleted_at: S.optional(S.NullOr(S.String)),
@@ -134,14 +122,14 @@ export interface DeleteBasinRequest {
   /** Basin name. */
   basin: string;
 }
-export const DeleteBasinRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBasinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/basins/{basin}", code: 200 })),
 ).annotate({ identifier: "DeleteBasinRequest" }) as any as S.Schema<DeleteBasinRequest>;
 
 export interface DeleteBasinResponse {}
-export const DeleteBasinResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBasinResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBasinResponse",
 }) as any as S.Schema<DeleteBasinResponse>;
 
@@ -149,7 +137,7 @@ export interface EnsureBasinRequest {
   config?: BasinConfig | null;
   location?: string | null;
 }
-export const EnsureBasinRequest = /*@__PURE__*/ S.suspend(() =>
+const EnsureBasinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(S.NullOr(BasinConfig)),
     location: S.optional(S.NullOr(S.String)),
@@ -161,7 +149,7 @@ export interface EnsureBasinRequest2 {
   basin: string;
   body?: EnsureBasinRequest | null;
 }
-export const EnsureBasinRequest2 = /*@__PURE__*/ S.suspend(() =>
+const EnsureBasinRequest2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
     body: S.optional(S.NullOr(EnsureBasinRequest).pipe(T.HttpBody())),
@@ -172,7 +160,7 @@ export interface GetBasinConfigRequest {
   /** Basin name. */
   basin: string;
 }
-export const GetBasinConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBasinConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/basins/{basin}", code: 200 })),
@@ -186,7 +174,7 @@ export interface ListBasinsRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-export const ListBasinsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBasinsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String.pipe(T.Query())),
     start_after: S.optional(S.String.pipe(T.Query())),
@@ -196,7 +184,7 @@ export const ListBasinsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching basins. */
 export type ListBasinsResponseBasinsList = Array<BasinInfo>;
-export const ListBasinsResponseBasinsList = /*@__PURE__*/ S.Array(
+const ListBasinsResponseBasinsList = /*@__PURE__*/ S.Array(
   BasinInfo,
 ) as any as S.Schema<ListBasinsResponseBasinsList>;
 
@@ -206,7 +194,7 @@ export interface ListBasinsResponse {
   /** Indicates that there are more basins that match the criteria. */
   has_more: boolean;
 }
-export const ListBasinsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListBasinsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basins: ListBasinsResponseBasinsList,
     has_more: S.Boolean,
@@ -217,7 +205,7 @@ export interface DeleteOnEmptyReconfiguration {
   /** Minimum age in seconds before an empty stream can be deleted. Set to 0 to disable delete-on-empty (don't delete automatically). */
   min_age_secs?: number | null;
 }
-export const DeleteOnEmptyReconfiguration = /*@__PURE__*/ S.suspend(() =>
+const DeleteOnEmptyReconfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min_age_secs: S.optional(S.NullOr(S.Number)),
   }),
@@ -230,7 +218,7 @@ export interface TimestampingReconfiguration {
   /** Allow client-specified timestamps to exceed the arrival time. */
   uncapped?: boolean | null;
 }
-export const TimestampingReconfiguration = /*@__PURE__*/ S.suspend(() =>
+const TimestampingReconfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.NullOr(TimestampingMode)),
     uncapped: S.optional(S.NullOr(S.Boolean)),
@@ -246,7 +234,7 @@ export interface StreamReconfiguration {
   storage_class?: string | null;
   timestamping?: TimestampingReconfiguration | null;
 }
-export const StreamReconfiguration = /*@__PURE__*/ S.suspend(() =>
+const StreamReconfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delete_on_empty: S.optional(S.NullOr(DeleteOnEmptyReconfiguration)),
     retention_policy: S.optional(S.NullOr(RetentionPolicy)),
@@ -265,7 +253,7 @@ export interface ReconfigureBasinRequest {
   default_stream_config?: StreamReconfiguration | null;
   stream_cipher?: EncryptionAlgorithm | (string & {}) | null;
 }
-export const ReconfigureBasinRequest = /*@__PURE__*/ S.suspend(() =>
+const ReconfigureBasinRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     basin: S.String.pipe(T.Label()),
     create_stream_on_append: S.optional(S.NullOr(S.Boolean)),

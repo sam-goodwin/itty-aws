@@ -68,7 +68,7 @@ export interface PromotionDataSource {
   /** Required. Immutable. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected [countries](https://support.google.com/merchants/answer/4588460). */
   targetCountry?: string;
 }
-export const PromotionDataSource = /*@__PURE__*/ S.suspend(() =>
+const PromotionDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentLanguage: S.optional(S.String),
     targetCountry: S.optional(S.String),
@@ -77,12 +77,12 @@ export const PromotionDataSource = /*@__PURE__*/ S.suspend(() =>
 
 /** The merchant review data source. */
 export interface MerchantReviewDataSource {}
-export const MerchantReviewDataSource = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const MerchantReviewDataSource = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "MerchantReviewDataSource",
 }) as any as S.Schema<MerchantReviewDataSource>;
 
 export type DataSourceInputEnum = "INPUT_UNSPECIFIED" | "API" | "FILE" | "UI" | "AUTOFEED";
-export const DataSourceInputEnum = S.String;
+const DataSourceInputEnum = S.String;
 
 export interface RegionalInventoryDataSource {
   /** Required. Immutable. The two-letter ISO 639-1 language of the items to which the regional inventory is provided. */
@@ -90,7 +90,7 @@ export interface RegionalInventoryDataSource {
   /** Required. Immutable. The feed label of the offers to which the regional inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
   feedLabel?: string;
 }
-export const RegionalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
+const RegionalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentLanguage: S.optional(S.String),
     feedLabel: S.optional(S.String),
@@ -108,7 +108,7 @@ export interface DataSourceReference {
   /** Optional. Deprecated: Use `self` instead to reference the primary data source. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}` */
   primaryDataSourceName?: string;
 }
-export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
+const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     self: S.optional(S.Boolean),
     supplementalDataSourceName: S.optional(S.String),
@@ -117,7 +117,7 @@ export const DataSourceReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceReference" }) as any as S.Schema<DataSourceReference>;
 
 export type DataSourceReferenceList = Array<DataSourceReference>;
-export const DataSourceReferenceList = /*@__PURE__*/ S.Array(
+const DataSourceReferenceList = /*@__PURE__*/ S.Array(
   DataSourceReference,
 ) as any as S.Schema<DataSourceReferenceList>;
 
@@ -130,7 +130,7 @@ export interface SupplementalProductDataSource {
   /** Output only. The (unordered and deduplicated) list of all primary data sources linked to this data source in either default or custom rules. Supplemental data source cannot be deleted before all links are removed. */
   referencingPrimaryDataSources?: DataSourceReferenceList;
 }
-export const SupplementalProductDataSource = /*@__PURE__*/ S.suspend(() =>
+const SupplementalProductDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedLabel: S.optional(S.String),
     contentLanguage: S.optional(S.String),
@@ -141,14 +141,14 @@ export const SupplementalProductDataSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SupplementalProductDataSource>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Default rule management of the data source. */
 export interface DefaultRule {
   /** Required. The list of data sources linked in the [default rule](https://support.google.com/merchants/answer/7450276). This list is ordered by the default rule priority of joining the data. It might include none or multiple references to `self` and supplemental data sources. The list must not be empty. To link the data source to the default rule, you need to add a new reference to this list (in sequential order). To unlink the data source from the default rule, you need to remove the given reference from this list. Changing the order of this list will result in changing the priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`] will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is not set in `1001`. Warning: The update (patch) and create call replaces the entire default rule setup. It doesn't work as an addition or append. If `self` is missing from the list of `take_from_data_sources`, the API will ignore attributes from the primary data source itself. */
   takeFromDataSources?: DataSourceReferenceList;
 }
-export const DefaultRule = /*@__PURE__*/ S.suspend(() =>
+const DefaultRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     takeFromDataSources: S.optional(DataSourceReferenceList),
   }),
@@ -169,10 +169,10 @@ export type DestinationDestinationEnum =
   | "CLOUD_RETAIL"
   | "LOCAL_CLOUD_RETAIL"
   | "RENTAL_ADS";
-export const DestinationDestinationEnum = S.String;
+const DestinationDestinationEnum = S.String;
 
 export type DestinationStateEnum = "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED";
-export const DestinationStateEnum = S.String;
+const DestinationStateEnum = S.String;
 
 /** Destinations also known as [Marketing methods](https://support.google.com/merchants/answer/15130232) selections. */
 export interface Destination {
@@ -181,7 +181,7 @@ export interface Destination {
   /** The state of the destination. */
   state?: DestinationStateEnum | (string & {});
 }
-export const Destination = /*@__PURE__*/ S.suspend(() =>
+const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destination: S.optional(DestinationDestinationEnum),
     state: S.optional(DestinationStateEnum),
@@ -189,16 +189,14 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
 
 export type DestinationList = Array<Destination>;
-export const DestinationList = /*@__PURE__*/ S.Array(
-  Destination,
-) as any as S.Schema<DestinationList>;
+const DestinationList = /*@__PURE__*/ S.Array(Destination) as any as S.Schema<DestinationList>;
 
 export type PrimaryProductDataSourceChannelEnum =
   | "CHANNEL_UNSPECIFIED"
   | "ONLINE_PRODUCTS"
   | "LOCAL_PRODUCTS"
   | "PRODUCTS";
-export const PrimaryProductDataSourceChannelEnum = S.String;
+const PrimaryProductDataSourceChannelEnum = S.String;
 
 /** The primary data source for local and online products. */
 export interface PrimaryProductDataSource {
@@ -215,7 +213,7 @@ export interface PrimaryProductDataSource {
   /** Optional. Immutable. Specifies the type of data source channel. */
   channel?: PrimaryProductDataSourceChannelEnum | (string & {});
 }
-export const PrimaryProductDataSource = /*@__PURE__*/ S.suspend(() =>
+const PrimaryProductDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countries: S.optional(StringList),
     feedLabel: S.optional(S.String),
@@ -233,7 +231,7 @@ export interface LocalInventoryDataSource {
   /** Required. Immutable. The two-letter ISO 639-1 language of the items to which the local inventory is provided. */
   contentLanguage?: string;
 }
-export const LocalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
+const LocalInventoryDataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feedLabel: S.optional(S.String),
     contentLanguage: S.optional(S.String),
@@ -245,14 +243,14 @@ export type FileInputFileInputTypeEnum =
   | "UPLOAD"
   | "FETCH"
   | "GOOGLE_SHEETS";
-export const FileInputFileInputTypeEnum = S.String;
+const FileInputFileInputTypeEnum = S.String;
 
 export type FetchSettingsFrequencyEnum =
   | "FREQUENCY_UNSPECIFIED"
   | "FREQUENCY_DAILY"
   | "FREQUENCY_WEEKLY"
   | "FREQUENCY_MONTHLY";
-export const FetchSettingsFrequencyEnum = S.String;
+const FetchSettingsFrequencyEnum = S.String;
 
 export type FetchSettingsDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
@@ -263,7 +261,7 @@ export type FetchSettingsDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-export const FetchSettingsDayOfWeekEnum = S.String;
+const FetchSettingsDayOfWeekEnum = S.String;
 
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
@@ -276,7 +274,7 @@ export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
   minutes?: number;
 }
-export const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
+const TimeOfDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hours: S.optional(S.Number),
     nanos: S.optional(S.Number),
@@ -306,7 +304,7 @@ export interface FetchSettings {
   /** Optional. The hour of the day when the data source file should be fetched. Minutes and seconds are not supported and will be ignored. */
   timeOfDay?: TimeOfDay;
 }
-export const FetchSettings = /*@__PURE__*/ S.suspend(() =>
+const FetchSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.optional(S.String),
     password: S.optional(S.String),
@@ -329,7 +327,7 @@ export interface FileInput {
   /** Optional. Fetch details to deliver the data source. It contains settings for `FETCH` and `GOOGLE_SHEETS` file input types. The required fields vary based on the frequency of fetching. */
   fetchSettings?: FetchSettings;
 }
-export const FileInput = /*@__PURE__*/ S.suspend(() =>
+const FileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileInputType: S.optional(FileInputFileInputTypeEnum),
     fileName: S.optional(S.String),
@@ -339,8 +337,6 @@ export const FileInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The product review data source. */
 export type ProductReviewDataSource = MerchantReviewDataSource;
-export const ProductReviewDataSource = MerchantReviewDataSource;
-
 /** The [data source](/merchant/api/guides/data-sources/overview) for the Merchant Center account. */
 export interface DataSource {
   /** The [promotion](https://support.google.com/merchants/answer/2906014) data source. */
@@ -368,7 +364,7 @@ export interface DataSource {
   /** The [product review](https://support.google.com/merchants/answer/7045996) data source. */
   productReviewDataSource?: MerchantReviewDataSource;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     promotionDataSource: S.optional(PromotionDataSource),
     dataSourceId: S.optional(S.String),
@@ -391,7 +387,7 @@ export interface CreateAccountsDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const CreateAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(DataSource.pipe(T.HttpBody())),
@@ -410,7 +406,7 @@ export interface DeleteAccountsDataSourcesRequest {
   /** Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
-export const DeleteAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -426,19 +422,17 @@ export const DeleteAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = MerchantReviewDataSource as any as S.Schema<Empty>;
+const Empty = MerchantReviewDataSource as any as S.Schema<Empty>;
 
 /** Request message for the FetchDataSource method. */
 export type FetchDataSourceRequest = MerchantReviewDataSource;
-export const FetchDataSourceRequest = MerchantReviewDataSource;
-
 export interface FetchAccountsDataSourcesRequest {
   /** Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
   /** Request body */
   body?: MerchantReviewDataSource;
 }
-export const FetchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(MerchantReviewDataSource.pipe(T.HttpBody())),
@@ -457,7 +451,7 @@ export interface GetAccountsDataSourcesRequest {
   /** Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` */
   name: string;
 }
-export const GetAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -475,7 +469,7 @@ export interface GetAccountsDataSourcesFileUploadsRequest {
   /** Required. The name of the data source file upload to retrieve. Format: `accounts/{account}/dataSources/{datasource}/fileUploads/latest` */
   name: string;
 }
-export const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -490,7 +484,7 @@ export const GetAccountsDataSourcesFileUploadsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetAccountsDataSourcesFileUploadsRequest>;
 
 export type IssueSeverityEnum = "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR";
-export const IssueSeverityEnum = S.String;
+const IssueSeverityEnum = S.String;
 
 /** An error occurring in the data source, like "invalid price". */
 export interface Issue {
@@ -507,7 +501,7 @@ export interface Issue {
   /** Output only. The error description, for example, "Your data source contains items which have too many attributes, or are too big. These items will be dropped". */
   description?: string;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
+const Issue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     documentationUri: S.optional(S.String),
@@ -519,14 +513,14 @@ export const Issue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
 
 export type IssueList = Array<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
+const IssueList = /*@__PURE__*/ S.Array(Issue) as any as S.Schema<IssueList>;
 
 export type FileUploadProcessingStateEnum =
   | "PROCESSING_STATE_UNSPECIFIED"
   | "FAILED"
   | "IN_PROGRESS"
   | "SUCCEEDED";
-export const FileUploadProcessingStateEnum = S.String;
+const FileUploadProcessingStateEnum = S.String;
 
 /** The file upload of a specific data source, that is, the result of the retrieval of the data source at a certain timestamp computed asynchronously when the data source processing is finished. Only applicable to file data sources. */
 export interface FileUpload {
@@ -547,7 +541,7 @@ export interface FileUpload {
   /** Output only. The number of items in the data source that were updated. */
   itemsUpdated?: string;
 }
-export const FileUpload = /*@__PURE__*/ S.suspend(() =>
+const FileUpload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemsCreated: S.optional(S.String),
     uploadTime: S.optional(S.String),
@@ -568,7 +562,7 @@ export interface ListAccountsDataSourcesRequest {
   /** Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -585,7 +579,7 @@ export const ListAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountsDataSourcesRequest>;
 
 export type DataSourceList = Array<DataSource>;
-export const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
+const DataSourceList = /*@__PURE__*/ S.Array(DataSource) as any as S.Schema<DataSourceList>;
 
 /** Response message for the ListDataSources method. */
 export interface ListDataSourcesResponse {
@@ -594,7 +588,7 @@ export interface ListDataSourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSources: S.optional(DataSourceList),
     nextPageToken: S.optional(S.String),
@@ -609,7 +603,7 @@ export interface PatchAccountsDataSourcesRequest {
   /** Request body */
   body?: DataSource;
 }
-export const PatchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAccountsDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

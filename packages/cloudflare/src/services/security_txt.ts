@@ -40,7 +40,7 @@ export interface DeleteSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const DeleteSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -51,7 +51,7 @@ export const DeleteSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecurityTxtRequest" }) as any as S.Schema<DeleteSecurityTxtRequest>;
 
 export interface DeleteSecurityTxtResponse {}
-export const DeleteSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({
   identifier: "DeleteSecurityTxtResponse",
@@ -61,7 +61,7 @@ export interface GetSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   })
@@ -70,28 +70,28 @@ export const GetSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSecurityTxtRequest" }) as any as S.Schema<GetSecurityTxtRequest>;
 
 export type GetResponseAcknowledgmentsList = Array<string>;
-export const GetResponseAcknowledgmentsList = /*@__PURE__*/ S.Array(
+const GetResponseAcknowledgmentsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetResponseAcknowledgmentsList>;
 
 export type GetResponseCanonicalList = Array<string>;
-export const GetResponseCanonicalList =
+const GetResponseCanonicalList =
   GetResponseAcknowledgmentsList as any as S.Schema<GetResponseCanonicalList>;
 
 export type GetResponseContactList = Array<string>;
-export const GetResponseContactList =
+const GetResponseContactList =
   GetResponseAcknowledgmentsList as any as S.Schema<GetResponseContactList>;
 
 export type GetResponseEncryptionList = Array<string>;
-export const GetResponseEncryptionList =
+const GetResponseEncryptionList =
   GetResponseAcknowledgmentsList as any as S.Schema<GetResponseEncryptionList>;
 
 export type GetResponseHiringList = Array<string>;
-export const GetResponseHiringList =
+const GetResponseHiringList =
   GetResponseAcknowledgmentsList as any as S.Schema<GetResponseHiringList>;
 
 export type GetResponsePolicyList = Array<string>;
-export const GetResponsePolicyList =
+const GetResponsePolicyList =
   GetResponseAcknowledgmentsList as any as S.Schema<GetResponsePolicyList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -106,7 +106,7 @@ export interface SecurityTxtFile {
   policy?: GetResponsePolicyList | null;
   preferredLanguages?: string | null;
 }
-export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
+const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgments: S.optional(S.NullOr(GetResponseAcknowledgmentsList)),
     canonical: S.optional(S.NullOr(GetResponseCanonicalList)),
@@ -121,32 +121,32 @@ export const SecurityTxtFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SecurityTxtFile" }) as any as S.Schema<SecurityTxtFile>;
 
 export type GetSecurityTxtResponse = SecurityTxtFile;
-export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   SecurityTxtFile.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "GetSecurityTxtResponse" }) as any as S.Schema<GetSecurityTxtResponse>;
 
 export type UpdateRequestAcknowledgmentsList = Array<string>;
-export const UpdateRequestAcknowledgmentsList =
+const UpdateRequestAcknowledgmentsList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestAcknowledgmentsList>;
 
 export type UpdateRequestCanonicalList = Array<string>;
-export const UpdateRequestCanonicalList =
+const UpdateRequestCanonicalList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestCanonicalList>;
 
 export type UpdateRequestContactList = Array<string>;
-export const UpdateRequestContactList =
+const UpdateRequestContactList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestContactList>;
 
 export type UpdateRequestEncryptionList = Array<string>;
-export const UpdateRequestEncryptionList =
+const UpdateRequestEncryptionList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestEncryptionList>;
 
 export type UpdateRequestHiringList = Array<string>;
-export const UpdateRequestHiringList =
+const UpdateRequestHiringList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestHiringList>;
 
 export type UpdateRequestPolicyList = Array<string>;
-export const UpdateRequestPolicyList =
+const UpdateRequestPolicyList =
   GetResponseAcknowledgmentsList as any as S.Schema<UpdateRequestPolicyList>;
 
 export interface PutSecurityTxtRequest {
@@ -162,7 +162,7 @@ export interface PutSecurityTxtRequest {
   policy?: UpdateRequestPolicyList;
   preferredLanguages?: string;
 }
-export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
@@ -180,7 +180,7 @@ export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutSecurityTxtRequest" }) as any as S.Schema<PutSecurityTxtRequest>;
 
 export interface PutSecurityTxtResponse {}
-export const PutSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
+const PutSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.KeyDictionary(KEY_DICTIONARY)),
 ).annotate({ identifier: "PutSecurityTxtResponse" }) as any as S.Schema<PutSecurityTxtResponse>;
 

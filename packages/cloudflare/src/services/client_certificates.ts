@@ -67,7 +67,7 @@ export interface CreateClientCertificateRequest {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays: number;
 }
-export const CreateClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     csr: S.String,
@@ -83,7 +83,7 @@ export interface CreateResponseCertificateAuthority {
   id?: string | null;
   name?: string | null;
 }
-export const CreateResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
+const CreateResponseCertificateAuthority = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -97,7 +97,7 @@ export type CreateResponseStatus =
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const CreateResponseStatus = S.String;
+const CreateResponseStatus = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateClientCertificateResponse {
@@ -138,7 +138,7 @@ export interface CreateClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateClientCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -171,7 +171,7 @@ export interface DeleteClientCertificateRequest {
   /** Client Certificate Tag */
   clientCertificateId: string;
 }
-export const DeleteClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
@@ -189,15 +189,11 @@ export const DeleteClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteClientCertificateRequest>;
 
 export type DeleteResponseCertificateAuthority = CreateResponseCertificateAuthority;
-export const DeleteResponseCertificateAuthority = CreateResponseCertificateAuthority;
-
 export type DeleteResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const DeleteResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteClientCertificateResponse {
   /** Client Certificate Tag */
@@ -237,7 +233,7 @@ export interface DeleteClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const DeleteClientCertificateResponse =
+const DeleteClientCertificateResponse =
   CreateClientCertificateResponse as any as S.Schema<DeleteClientCertificateResponse>;
 
 export interface GetClientCertificateRequest {
@@ -246,7 +242,7 @@ export interface GetClientCertificateRequest {
   /** Client Certificate Tag */
   clientCertificateId: string;
 }
-export const GetClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
@@ -264,15 +260,11 @@ export const GetClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetClientCertificateRequest>;
 
 export type GetResponseCertificateAuthority = CreateResponseCertificateAuthority;
-export const GetResponseCertificateAuthority = CreateResponseCertificateAuthority;
-
 export type GetResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const GetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetClientCertificateResponse {
   /** Client Certificate Tag */
@@ -312,7 +304,7 @@ export interface GetClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const GetClientCertificateResponse =
+const GetClientCertificateResponse =
   CreateClientCertificateResponse as any as S.Schema<GetClientCertificateResponse>;
 
 export type ListRequestStatus =
@@ -321,7 +313,7 @@ export type ListRequestStatus =
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const ListRequestStatus = S.String;
+const ListRequestStatus = S.String;
 
 export interface ListClientCertificatesRequest {
   /** Identifier. */
@@ -337,7 +329,7 @@ export interface ListClientCertificatesRequest {
   /** Client Certitifcate Status to filter results by. */
   status?: ListRequestStatus | (string & {});
 }
-export const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -353,14 +345,12 @@ export const ListClientCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListClientCertificatesRequest>;
 
 export type ListResultItemCertificateAuthority = CreateResponseCertificateAuthority;
-export const ListResultItemCertificateAuthority = CreateResponseCertificateAuthority;
-
 export type ListResultItemStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const ListResultItemStatus = S.String;
+const ListResultItemStatus = S.String;
 
 export interface ListResultItem {
   /** Client Certificate Tag */
@@ -400,7 +390,7 @@ export interface ListResultItem {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+const ListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     certificate: S.optional(S.NullOr(S.String)),
@@ -426,9 +416,7 @@ export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
 
 export type ListResultList = Array<ListResultItem>;
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
+const ListResultList = /*@__PURE__*/ S.Array(ListResultItem) as any as S.Schema<ListResultList>;
 
 export interface ListClientCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
@@ -436,7 +424,7 @@ export interface ListClientCertificatesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListClientCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListClientCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -452,7 +440,7 @@ export interface PatchClientCertificateRequest {
   clientCertificateId: string;
   reactivate?: boolean;
 }
-export const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     clientCertificateId: S.String.pipe(T.Label("client_certificate_id")),
@@ -471,15 +459,11 @@ export const PatchClientCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchClientCertificateRequest>;
 
 export type EditResponseCertificateAuthority = CreateResponseCertificateAuthority;
-export const EditResponseCertificateAuthority = CreateResponseCertificateAuthority;
-
 export type EditResponseStatus =
   | "active"
   | "pending_reactivation"
   | "pending_revocation"
   | "revoked";
-export const EditResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchClientCertificateResponse {
   /** Client Certificate Tag */
@@ -519,7 +503,7 @@ export interface PatchClientCertificateResponse {
   /** The number of days the Client Certificate will be valid after the issued_on date. */
   validityDays?: number | null;
 }
-export const PatchClientCertificateResponse =
+const PatchClientCertificateResponse =
   CreateClientCertificateResponse as any as S.Schema<PatchClientCertificateResponse>;
 
 export type CreateClientCertificateError = Forbidden | CloudflareOpError;

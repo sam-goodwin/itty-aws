@@ -10,9 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Properties for guest subscription. */
 export interface GuestSubscriptionPropertiesInput {}
-export const GuestSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GuestSubscriptionPropertiesInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GuestSubscriptionPropertiesInput",
 }) as any as S.Schema<GuestSubscriptionPropertiesInput>;
 
@@ -26,7 +24,7 @@ export interface CreateGuestSubscriptionRequest {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionPropertiesInput;
 }
-export const CreateGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -46,11 +44,11 @@ export const CreateGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -67,7 +65,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -80,14 +78,14 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-export const AzureResourceManagerResourceProvisioningState = S.String;
+const AzureResourceManagerResourceProvisioningState = S.String;
 
 /** Properties for guest subscription. */
 export interface GuestSubscriptionProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const GuestSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
+const GuestSubscriptionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
   }),
@@ -107,7 +105,7 @@ export interface CreateGuestSubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionProperties;
 }
-export const CreateGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -121,8 +119,6 @@ export const CreateGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Properties of the compute shared limit. */
 export type SharedLimitPropertiesInput = GuestSubscriptionPropertiesInput;
-export const SharedLimitPropertiesInput = GuestSubscriptionPropertiesInput;
-
 export interface CreateSharedLimitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -133,7 +129,7 @@ export interface CreateSharedLimitRequest {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionPropertiesInput;
 }
-export const CreateSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -156,7 +152,7 @@ export interface LimitName {
   /** The localized limit name. */
   localizedValue?: string;
 }
-export const LimitName = /*@__PURE__*/ S.suspend(() =>
+const LimitName = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     localizedValue: S.optional(S.String),
@@ -174,7 +170,7 @@ export interface SharedLimitProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const SharedLimitProperties = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(LimitName),
     limit: S.optional(S.Number),
@@ -195,7 +191,7 @@ export interface CreateSharedLimitResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitProperties;
 }
-export const CreateSharedLimitResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateSharedLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -215,7 +211,7 @@ export interface CreateTrustedHostSubscriptionRequest {
   /** The name of the TrustedHostSubscription */
   hostSubscriptionId: string;
 }
-export const CreateTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -242,7 +238,7 @@ export interface CreateTrustedHostSubscriptionResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const CreateTrustedHostSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTrustedHostSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -261,7 +257,7 @@ export interface DeleteGuestSubscriptionRequest {
   /** The name of the GuestSubscription */
   guestSubscriptionId: string;
 }
-export const DeleteGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -279,9 +275,9 @@ export const DeleteGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteGuestSubscriptionRequest>;
 
 export interface DeleteGuestSubscriptionResponse {}
-export const DeleteGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeleteGuestSubscriptionResponse" },
-) as any as S.Schema<DeleteGuestSubscriptionResponse>;
+const DeleteGuestSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeleteGuestSubscriptionResponse",
+}) as any as S.Schema<DeleteGuestSubscriptionResponse>;
 
 export interface DeleteMemberCapOverrideRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -293,7 +289,7 @@ export interface DeleteMemberCapOverrideRequest {
   /** The name of the MemberCapOverride */
   memberSubscriptionId: string;
 }
-export const DeleteMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -312,7 +308,7 @@ export const DeleteMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMemberCapOverrideRequest>;
 
 export interface DeleteMemberCapOverrideResponse {}
-export const DeleteMemberCapOverrideResponse =
+const DeleteMemberCapOverrideResponse =
   DeleteGuestSubscriptionResponse as any as S.Schema<DeleteMemberCapOverrideResponse>;
 
 export interface DeleteSharedLimitRequest {
@@ -323,7 +319,7 @@ export interface DeleteSharedLimitRequest {
   /** The name of the SharedLimit */
   name: string;
 }
-export const DeleteSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -339,7 +335,7 @@ export const DeleteSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSharedLimitRequest" }) as any as S.Schema<DeleteSharedLimitRequest>;
 
 export interface DeleteSharedLimitResponse {}
-export const DeleteSharedLimitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSharedLimitResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSharedLimitResponse",
 }) as any as S.Schema<DeleteSharedLimitResponse>;
 
@@ -351,7 +347,7 @@ export interface DeleteSharedLimitCapRequest {
   /** The name of the SharedLimitCap */
   vmFamilyName: string;
 }
-export const DeleteSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -369,7 +365,7 @@ export const DeleteSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSharedLimitCapRequest>;
 
 export interface DeleteSharedLimitCapResponse {}
-export const DeleteSharedLimitCapResponse =
+const DeleteSharedLimitCapResponse =
   DeleteSharedLimitResponse as any as S.Schema<DeleteSharedLimitCapResponse>;
 
 export interface DeleteTrustedHostSubscriptionRequest {
@@ -380,7 +376,7 @@ export interface DeleteTrustedHostSubscriptionRequest {
   /** The name of the TrustedHostSubscription */
   hostSubscriptionId: string;
 }
-export const DeleteTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -398,7 +394,7 @@ export const DeleteTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DeleteTrustedHostSubscriptionRequest>;
 
 export interface DeleteTrustedHostSubscriptionResponse {}
-export const DeleteTrustedHostSubscriptionResponse =
+const DeleteTrustedHostSubscriptionResponse =
   GuestSubscriptionPropertiesInput as any as S.Schema<DeleteTrustedHostSubscriptionResponse>;
 
 export interface DisableFeatureRequest {
@@ -409,7 +405,7 @@ export interface DisableFeatureRequest {
   /** The name of the Feature */
   featureName: string;
 }
-export const DisableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -426,13 +422,13 @@ export const DisableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-export const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
+const OperationStatusResultOperationsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => OperationStatusResult),
 ) as any as S.Schema<OperationStatusResultOperationsList>;
 
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-export const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
+const ErrorDetailDetailsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => ErrorDetail),
 ) as any as S.Schema<ErrorDetailDetailsList>;
 
@@ -443,7 +439,7 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     info: S.optional(S.Unknown),
@@ -452,7 +448,7 @@ export const ErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-export const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
+const ErrorDetailAdditionalInfoList = /*@__PURE__*/ S.Array(
   ErrorAdditionalInfo,
 ) as any as S.Schema<ErrorDetailAdditionalInfoList>;
 
@@ -469,7 +465,7 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     message: S.optional(S.String),
@@ -500,7 +496,7 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
+const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -516,7 +512,7 @@ export const OperationStatusResult = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type DisableFeatureResponseOperationsList = Array<OperationStatusResult>;
-export const DisableFeatureResponseOperationsList = /*@__PURE__*/ S.Array(
+const DisableFeatureResponseOperationsList = /*@__PURE__*/ S.Array(
   OperationStatusResult,
 ) as any as S.Schema<DisableFeatureResponseOperationsList>;
 
@@ -540,7 +536,7 @@ export interface DisableFeatureResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const DisableFeatureResponse = /*@__PURE__*/ S.suspend(() =>
+const DisableFeatureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     resourceId: S.optional(S.String),
@@ -564,7 +560,7 @@ export interface EnableFeatureRequest {
   /** The Service Tree identifier associated with this feature action. */
   serviceTreeId?: string;
 }
-export const EnableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -582,9 +578,6 @@ export const EnableFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The operations list. */
 export type EnableFeatureResponseOperationsList = Array<OperationStatusResult>;
-export const EnableFeatureResponseOperationsList =
-  DisableFeatureResponseOperationsList as any as S.Schema<EnableFeatureResponseOperationsList>;
-
 export interface EnableFeatureResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -605,8 +598,7 @@ export interface EnableFeatureResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-export const EnableFeatureResponse =
-  DisableFeatureResponse as any as S.Schema<EnableFeatureResponse>;
+const EnableFeatureResponse = DisableFeatureResponse as any as S.Schema<EnableFeatureResponse>;
 
 export interface GetFeatureRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -616,7 +608,7 @@ export interface GetFeatureRequest {
   /** The name of the Feature */
   featureName: string;
 }
-export const GetFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -633,7 +625,7 @@ export const GetFeatureRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The allowed states for a compute limit feature. */
 export type FeatureState = "Enabled" | "Disabled";
-export const FeatureState = S.String;
+const FeatureState = S.String;
 
 /** Properties of the compute limit feature. */
 export interface FeatureProperties {
@@ -642,7 +634,7 @@ export interface FeatureProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const FeatureProperties = /*@__PURE__*/ S.suspend(() =>
+const FeatureProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(FeatureState),
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
@@ -661,7 +653,7 @@ export interface GetFeatureResponse {
   /** The resource-specific properties for this resource. */
   properties?: FeatureProperties;
 }
-export const GetFeatureResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFeatureResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -679,7 +671,7 @@ export interface GetGuestSubscriptionRequest {
   /** The name of the GuestSubscription */
   guestSubscriptionId: string;
 }
-export const GetGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGuestSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -708,7 +700,7 @@ export interface GetGuestSubscriptionResponse {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionProperties;
 }
-export const GetGuestSubscriptionResponse =
+const GetGuestSubscriptionResponse =
   CreateGuestSubscriptionResponse as any as S.Schema<GetGuestSubscriptionResponse>;
 
 export interface GetMemberCapOverrideRequest {
@@ -721,7 +713,7 @@ export interface GetMemberCapOverrideRequest {
   /** The name of the MemberCapOverride */
   memberSubscriptionId: string;
 }
-export const GetMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMemberCapOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -746,7 +738,7 @@ export interface MemberCapOverrideProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const MemberCapOverrideProperties = /*@__PURE__*/ S.suspend(() =>
+const MemberCapOverrideProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cap: S.Number,
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
@@ -767,7 +759,7 @@ export interface GetMemberCapOverrideResponse {
   /** The resource-specific properties for this resource. */
   properties?: MemberCapOverrideProperties;
 }
-export const GetMemberCapOverrideResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMemberCapOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -787,7 +779,7 @@ export interface GetSharedLimitRequest {
   /** The name of the SharedLimit */
   name: string;
 }
-export const GetSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSharedLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -814,7 +806,7 @@ export interface GetSharedLimitResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitProperties;
 }
-export const GetSharedLimitResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSharedLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -832,7 +824,7 @@ export interface GetSharedLimitCapRequest {
   /** The name of the SharedLimitCap */
   vmFamilyName: string;
 }
-export const GetSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSharedLimitCapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -856,7 +848,7 @@ export interface SharedLimitCapProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const SharedLimitCapProperties = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitCapProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMemberCap: S.optional(S.Number),
     isBoundedCap: S.Boolean,
@@ -876,7 +868,7 @@ export interface GetSharedLimitCapResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitCapProperties;
 }
-export const GetSharedLimitCapResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSharedLimitCapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -896,7 +888,7 @@ export interface GetTrustedHostSubscriptionRequest {
   /** The name of the TrustedHostSubscription */
   hostSubscriptionId: string;
 }
-export const GetTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTrustedHostSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -923,7 +915,7 @@ export interface GetTrustedHostSubscriptionResponse {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const GetTrustedHostSubscriptionResponse =
+const GetTrustedHostSubscriptionResponse =
   CreateTrustedHostSubscriptionResponse as any as S.Schema<GetTrustedHostSubscriptionResponse>;
 
 export interface GetVmFamilyRequest {
@@ -934,7 +926,7 @@ export interface GetVmFamilyRequest {
   /** The name of the VmFamily */
   vmFamilyName: string;
 }
-export const GetVmFamilyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVmFamilyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -956,7 +948,7 @@ export interface VmFamilyProperties {
   /** The provisioning state of the resource. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-export const VmFamilyProperties = /*@__PURE__*/ S.suspend(() =>
+const VmFamilyProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: S.optional(S.String),
     provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
@@ -975,7 +967,7 @@ export interface GetVmFamilyResponse {
   /** The resource-specific properties for this resource. */
   properties?: VmFamilyProperties;
 }
-export const GetVmFamilyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetVmFamilyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -991,7 +983,7 @@ export interface ListFeatureBySubscriptionLocationResourceRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListFeatureBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1020,11 +1012,11 @@ export interface Feature {
   /** The resource-specific properties for this resource. */
   properties?: FeatureProperties;
 }
-export const Feature = GetFeatureResponse as any as S.Schema<Feature>;
+const Feature = GetFeatureResponse as any as S.Schema<Feature>;
 
 /** The Feature items on this page */
 export type FeatureListResultValueList = Array<Feature>;
-export const FeatureListResultValueList = /*@__PURE__*/ S.Array(
+const FeatureListResultValueList = /*@__PURE__*/ S.Array(
   Feature,
 ) as any as S.Schema<FeatureListResultValueList>;
 
@@ -1035,7 +1027,7 @@ export interface FeatureListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const FeatureListResult = /*@__PURE__*/ S.suspend(() =>
+const FeatureListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: FeatureListResultValueList,
     nextLink: S.optional(S.String),
@@ -1048,19 +1040,18 @@ export interface ListGuestSubscriptionBySubscriptionLocationResourceRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListGuestSubscriptionBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
-        code: 200,
-        apiVersion: "2026-07-31",
-      }),
-    ),
+const ListGuestSubscriptionBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeLimit/locations/{location}/guestSubscriptions",
+      code: 200,
+      apiVersion: "2026-07-31",
+    }),
+  ),
 ).annotate({
   identifier: "ListGuestSubscriptionBySubscriptionLocationResourceRequest",
 }) as any as S.Schema<ListGuestSubscriptionBySubscriptionLocationResourceRequest>;
@@ -1078,7 +1069,7 @@ export interface GuestSubscription {
   /** The resource-specific properties for this resource. */
   properties?: GuestSubscriptionProperties;
 }
-export const GuestSubscription = /*@__PURE__*/ S.suspend(() =>
+const GuestSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1090,7 +1081,7 @@ export const GuestSubscription = /*@__PURE__*/ S.suspend(() =>
 
 /** The GuestSubscription items on this page */
 export type GuestSubscriptionListResultValueList = Array<GuestSubscription>;
-export const GuestSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
+const GuestSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   GuestSubscription,
 ) as any as S.Schema<GuestSubscriptionListResultValueList>;
 
@@ -1101,7 +1092,7 @@ export interface GuestSubscriptionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const GuestSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
+const GuestSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: GuestSubscriptionListResultValueList,
     nextLink: S.optional(S.String),
@@ -1118,7 +1109,7 @@ export interface ListMemberCapOverrideByParentRequest {
   /** The name of the SharedLimitCap */
   vmFamilyName: string;
 }
-export const ListMemberCapOverrideByParentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMemberCapOverrideByParentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1148,7 +1139,7 @@ export interface MemberCapOverride {
   /** The resource-specific properties for this resource. */
   properties?: MemberCapOverrideProperties;
 }
-export const MemberCapOverride = /*@__PURE__*/ S.suspend(() =>
+const MemberCapOverride = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1160,7 +1151,7 @@ export const MemberCapOverride = /*@__PURE__*/ S.suspend(() =>
 
 /** The MemberCapOverride items on this page */
 export type MemberCapOverrideListResultValueList = Array<MemberCapOverride>;
-export const MemberCapOverrideListResultValueList = /*@__PURE__*/ S.Array(
+const MemberCapOverrideListResultValueList = /*@__PURE__*/ S.Array(
   MemberCapOverride,
 ) as any as S.Schema<MemberCapOverrideListResultValueList>;
 
@@ -1171,7 +1162,7 @@ export interface MemberCapOverrideListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const MemberCapOverrideListResult = /*@__PURE__*/ S.suspend(() =>
+const MemberCapOverrideListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: MemberCapOverrideListResultValueList,
     nextLink: S.optional(S.String),
@@ -1181,7 +1172,7 @@ export const MemberCapOverrideListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MemberCapOverrideListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1203,7 +1194,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1214,11 +1205,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -1233,7 +1224,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -1245,7 +1236,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -1255,7 +1246,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -1268,7 +1259,7 @@ export interface ListSharedLimitBySubscriptionLocationResourceRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListSharedLimitBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedLimitBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1297,11 +1288,11 @@ export interface SharedLimit {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitProperties;
 }
-export const SharedLimit = GetSharedLimitResponse as any as S.Schema<SharedLimit>;
+const SharedLimit = GetSharedLimitResponse as any as S.Schema<SharedLimit>;
 
 /** The SharedLimit items on this page */
 export type SharedLimitListResultValueList = Array<SharedLimit>;
-export const SharedLimitListResultValueList = /*@__PURE__*/ S.Array(
+const SharedLimitListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimit,
 ) as any as S.Schema<SharedLimitListResultValueList>;
 
@@ -1312,7 +1303,7 @@ export interface SharedLimitListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SharedLimitListResult = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SharedLimitListResultValueList,
     nextLink: S.optional(S.String),
@@ -1325,7 +1316,7 @@ export interface ListSharedLimitCapBySubscriptionLocationResourceRequest {
   /** The name of the Azure region. */
   location: string;
 }
-export const ListSharedLimitCapBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedLimitCapBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1354,7 +1345,7 @@ export interface SharedLimitCap {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitCapProperties;
 }
-export const SharedLimitCap = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitCap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1366,7 +1357,7 @@ export const SharedLimitCap = /*@__PURE__*/ S.suspend(() =>
 
 /** The SharedLimitCap items on this page */
 export type SharedLimitCapListResultValueList = Array<SharedLimitCap>;
-export const SharedLimitCapListResultValueList = /*@__PURE__*/ S.Array(
+const SharedLimitCapListResultValueList = /*@__PURE__*/ S.Array(
   SharedLimitCap,
 ) as any as S.Schema<SharedLimitCapListResultValueList>;
 
@@ -1377,7 +1368,7 @@ export interface SharedLimitCapListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const SharedLimitCapListResult = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitCapListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: SharedLimitCapListResultValueList,
     nextLink: S.optional(S.String),
@@ -1390,8 +1381,8 @@ export interface ListTrustedHostSubscriptionBySubscriptionLocationResourceReques
   /** The name of the Azure region. */
   location: string;
 }
-export const ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       location: S.String.pipe(T.Label()),
@@ -1403,9 +1394,9 @@ export const ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest =
         apiVersion: "2026-07-31",
       }),
     ),
-  ).annotate({
-    identifier: "ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest",
-  }) as any as S.Schema<ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest>;
+).annotate({
+  identifier: "ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest",
+}) as any as S.Schema<ListTrustedHostSubscriptionBySubscriptionLocationResourceRequest>;
 
 /** Common fields that are returned in the response for all Azure Resource Manager resources */
 export interface Resource {
@@ -1418,7 +1409,7 @@ export interface Resource {
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
 }
-export const Resource = /*@__PURE__*/ S.suspend(() =>
+const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1429,7 +1420,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 
 /** The TrustedHostSubscription items on this page */
 export type TrustedHostSubscriptionListResultValueList = Array<Resource>;
-export const TrustedHostSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
+const TrustedHostSubscriptionListResultValueList = /*@__PURE__*/ S.Array(
   Resource,
 ) as any as S.Schema<TrustedHostSubscriptionListResultValueList>;
 
@@ -1440,7 +1431,7 @@ export interface TrustedHostSubscriptionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const TrustedHostSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
+const TrustedHostSubscriptionListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: TrustedHostSubscriptionListResultValueList,
     nextLink: S.optional(S.String),
@@ -1457,7 +1448,7 @@ export interface ListVmFamilyBySubscriptionLocationResourceRequest {
   /** The filter to apply to the list operation. Filter can be applied to the 'category' property. Example: $filter=category eq 'generalPurposeCategory'. */
   _filter?: string;
 }
-export const ListVmFamilyBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVmFamilyBySubscriptionLocationResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1487,11 +1478,11 @@ export interface VmFamily {
   /** The resource-specific properties for this resource. */
   properties?: VmFamilyProperties;
 }
-export const VmFamily = GetVmFamilyResponse as any as S.Schema<VmFamily>;
+const VmFamily = GetVmFamilyResponse as any as S.Schema<VmFamily>;
 
 /** The VmFamily items on this page */
 export type VmFamilyListResultValueList = Array<VmFamily>;
-export const VmFamilyListResultValueList = /*@__PURE__*/ S.Array(
+const VmFamilyListResultValueList = /*@__PURE__*/ S.Array(
   VmFamily,
 ) as any as S.Schema<VmFamilyListResultValueList>;
 
@@ -1502,7 +1493,7 @@ export interface VmFamilyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const VmFamilyListResult = /*@__PURE__*/ S.suspend(() =>
+const VmFamilyListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: VmFamilyListResultValueList,
     nextLink: S.optional(S.String),
@@ -1514,7 +1505,7 @@ export interface MemberCapOverridePropertiesInput {
   /** The cap value in count units for this member subscription. */
   cap: number;
 }
-export const MemberCapOverridePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const MemberCapOverridePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cap: S.Number,
   }),
@@ -1534,7 +1525,7 @@ export interface MemberCapOverridesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: MemberCapOverridePropertiesInput;
 }
-export const MemberCapOverridesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const MemberCapOverridesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1565,7 +1556,7 @@ export interface MemberCapOverridesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: MemberCapOverrideProperties;
 }
-export const MemberCapOverridesCreateOrUpdateResponse =
+const MemberCapOverridesCreateOrUpdateResponse =
   GetMemberCapOverrideResponse as any as S.Schema<MemberCapOverridesCreateOrUpdateResponse>;
 
 /** Per-member cap override. Pairs a member subscription with its cap value. */
@@ -1575,7 +1566,7 @@ export interface MemberCap {
   /** The cap value in count units for this member subscription. */
   cap: number;
 }
-export const MemberCap = /*@__PURE__*/ S.suspend(() =>
+const MemberCap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String,
     cap: S.Number,
@@ -1584,10 +1575,9 @@ export const MemberCap = /*@__PURE__*/ S.suspend(() =>
 
 /** The full set of per-member cap overrides to persist for this resource. This call replaces the existing set entirely; supply an empty array (`[]`) to clear all overrides. */
 export type SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList = Array<MemberCap>;
-export const SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList =
-  /*@__PURE__*/ S.Array(
-    MemberCap,
-  ) as any as S.Schema<SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList>;
+const SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList = /*@__PURE__*/ S.Array(
+  MemberCap,
+) as any as S.Schema<SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList>;
 
 export interface SetSharedLimitCapMemberCapOverridesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -1599,7 +1589,7 @@ export interface SetSharedLimitCapMemberCapOverridesRequest {
   /** The full set of per-member cap overrides to persist for this resource. This call replaces the existing set entirely; supply an empty array (`[]`) to clear all overrides. */
   memberCapOverrides: SetSharedLimitCapMemberCapOverridesRequestMemberCapOverridesList;
 }
-export const SetSharedLimitCapMemberCapOverridesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSharedLimitCapMemberCapOverridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1619,7 +1609,7 @@ export const SetSharedLimitCapMemberCapOverridesRequest = /*@__PURE__*/ S.suspen
 
 /** The per-member cap overrides as persisted after the action completed. */
 export type SetMemberCapOverridesResultMemberCapOverridesList = Array<MemberCap>;
-export const SetMemberCapOverridesResultMemberCapOverridesList = /*@__PURE__*/ S.Array(
+const SetMemberCapOverridesResultMemberCapOverridesList = /*@__PURE__*/ S.Array(
   MemberCap,
 ) as any as S.Schema<SetMemberCapOverridesResultMemberCapOverridesList>;
 
@@ -1628,7 +1618,7 @@ export interface SetMemberCapOverridesResult {
   /** The per-member cap overrides as persisted after the action completed. */
   memberCapOverrides: SetMemberCapOverridesResultMemberCapOverridesList;
 }
-export const SetMemberCapOverridesResult = /*@__PURE__*/ S.suspend(() =>
+const SetMemberCapOverridesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberCapOverrides: SetMemberCapOverridesResultMemberCapOverridesList,
   }),
@@ -1643,7 +1633,7 @@ export interface SharedLimitCapPropertiesInput {
   /** Controls whether the service validates the aggregate cap against the group limit for the VM family. SUM(caps) is the sum of all per-member overrides' cap values plus `defaultMemberCap` multiplied by the number of member subscriptions without an override. When true, the service rejects any configuration where SUM(caps) exceeds the group limit. When false, SUM(caps) is permitted to exceed the group limit. Enabling this flag is rejected if the current configuration already breaches the group limit; reduce caps first, then enable. */
   isBoundedCap: boolean;
 }
-export const SharedLimitCapPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitCapPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultMemberCap: S.optional(S.Number),
     isBoundedCap: S.Boolean,
@@ -1662,7 +1652,7 @@ export interface SharedLimitCapsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitCapPropertiesInput;
 }
-export const SharedLimitCapsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const SharedLimitCapsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     location: S.String.pipe(T.Label()),
@@ -1692,7 +1682,7 @@ export interface SharedLimitCapsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: SharedLimitCapProperties;
 }
-export const SharedLimitCapsCreateOrUpdateResponse =
+const SharedLimitCapsCreateOrUpdateResponse =
   GetSharedLimitCapResponse as any as S.Schema<SharedLimitCapsCreateOrUpdateResponse>;
 
 export type CreateGuestSubscriptionError = AzureOpError;

@@ -23,7 +23,7 @@ export interface CreateDataDeletionRequestRequestVariablesValue {
   value?: unknown;
   variableId: string;
 }
-export const CreateDataDeletionRequestRequestVariablesValue = /*@__PURE__*/ S.suspend(() =>
+const CreateDataDeletionRequestRequestVariablesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code_name: S.String,
     isNull: S.optional(S.NullOr(S.Boolean)),
@@ -38,7 +38,7 @@ export const CreateDataDeletionRequestRequestVariablesValue = /*@__PURE__*/ S.su
 export type CreateDataDeletionRequestRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-export const CreateDataDeletionRequestRequestVariablesMap = /*@__PURE__*/ S.Record(
+const CreateDataDeletionRequestRequestVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateDataDeletionRequestRequestVariablesValue,
 ) as any as S.Schema<CreateDataDeletionRequestRequestVariablesMap>;
@@ -53,7 +53,7 @@ export interface CreateDataDeletionRequestRequest {
   /** Client-generated identifier that makes request submission idempotent. */
   submission_id: string;
 }
-export const CreateDataDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String,
@@ -79,16 +79,14 @@ export type RequestStatusEnum =
   | "queued"
   | "completed"
   | "failed";
-export const RequestStatusEnum = S.String;
+const RequestStatusEnum = S.String;
 
 export type DataDeletionRequestVariablesValue = CreateDataDeletionRequestRequestVariablesValue;
-export const DataDeletionRequestVariablesValue = CreateDataDeletionRequestRequestVariablesValue;
-
 /** Submitted HogQL variable snapshot. */
 export type DataDeletionRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-export const DataDeletionRequestVariablesMap =
+const DataDeletionRequestVariablesMap =
   CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<DataDeletionRequestVariablesMap>;
 
 export interface DataDeletionRequest {
@@ -117,7 +115,7 @@ export interface DataDeletionRequest {
   /** Time when selection statistics were calculated, if available. */
   stats_calculated_at: string | null;
 }
-export const DataDeletionRequest = /*@__PURE__*/ S.suspend(() =>
+const DataDeletionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: RequestStatusEnum,
@@ -136,14 +134,11 @@ export const DataDeletionRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateDataDeletionRequestsPreviewRequestVariablesValue =
   CreateDataDeletionRequestRequestVariablesValue;
-export const CreateDataDeletionRequestsPreviewRequestVariablesValue =
-  CreateDataDeletionRequestRequestVariablesValue;
-
 /** Variables referenced by the HogQL query. */
 export type CreateDataDeletionRequestsPreviewRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-export const CreateDataDeletionRequestsPreviewRequestVariablesMap =
+const CreateDataDeletionRequestsPreviewRequestVariablesMap =
   CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<CreateDataDeletionRequestsPreviewRequestVariablesMap>;
 
 export interface CreateDataDeletionRequestsPreviewRequest {
@@ -154,7 +149,7 @@ export interface CreateDataDeletionRequestsPreviewRequest {
   /** Variables referenced by the HogQL query. */
   variables?: CreateDataDeletionRequestsPreviewRequestVariablesMap;
 }
-export const CreateDataDeletionRequestsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataDeletionRequestsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.String,
@@ -174,7 +169,7 @@ export interface DataDeletionPreview {
   /** Number of event UUIDs selected when the preview ran. */
   count: number;
 }
-export const DataDeletionPreview = /*@__PURE__*/ S.suspend(() =>
+const DataDeletionPreview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
@@ -186,7 +181,7 @@ export interface GetDataDeletionRequestRequest {
   /** A UUID string identifying this data deletion request. */
   id: string;
 }
-export const GetDataDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataDeletionRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -209,7 +204,7 @@ export interface ListDataDeletionRequestsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListDataDeletionRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataDeletionRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -222,7 +217,7 @@ export const ListDataDeletionRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDataDeletionRequestsRequest>;
 
 export type PaginatedDataDeletionRequestListResultsList = Array<DataDeletionRequest>;
-export const PaginatedDataDeletionRequestListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedDataDeletionRequestListResultsList = /*@__PURE__*/ S.Array(
   DataDeletionRequest,
 ) as any as S.Schema<PaginatedDataDeletionRequestListResultsList>;
 
@@ -232,7 +227,7 @@ export interface PaginatedDataDeletionRequestList {
   previous?: string | null;
   results: PaginatedDataDeletionRequestListResultsList;
 }
-export const PaginatedDataDeletionRequestList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedDataDeletionRequestList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

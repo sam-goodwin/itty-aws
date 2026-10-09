@@ -65,7 +65,7 @@ export type PlaceActionLinkProviderTypeEnum =
   | "PROVIDER_TYPE_UNSPECIFIED"
   | "MERCHANT"
   | "AGGREGATOR_3P";
-export const PlaceActionLinkProviderTypeEnum = S.String;
+const PlaceActionLinkProviderTypeEnum = S.String;
 
 export type PlaceActionLinkPlaceActionTypeEnum =
   | "PLACE_ACTION_TYPE_UNSPECIFIED"
@@ -77,7 +77,7 @@ export type PlaceActionLinkPlaceActionTypeEnum =
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
   | "SOLOPRENEUR_APPOINTMENT";
-export const PlaceActionLinkPlaceActionTypeEnum = S.String;
+const PlaceActionLinkPlaceActionTypeEnum = S.String;
 
 /** Represents a place action link and its attributes. */
 export interface PlaceActionLink {
@@ -98,7 +98,7 @@ export interface PlaceActionLink {
   /** Optional. Whether this link is preferred by the merchant. Only one link can be marked as preferred per place action type at a location. If a future request marks a different link as preferred for the same place action type, then the current preferred link (if any exists) will lose its preference. */
   isPreferred?: boolean;
 }
-export const PlaceActionLink = /*@__PURE__*/ S.suspend(() =>
+const PlaceActionLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     providerType: S.optional(PlaceActionLinkProviderTypeEnum),
     placeActionType: S.optional(PlaceActionLinkPlaceActionTypeEnum),
@@ -117,7 +117,7 @@ export interface CreateLocationsPlaceActionLinksRequest {
   /** Request body */
   body?: PlaceActionLink;
 }
-export const CreateLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(PlaceActionLink.pipe(T.HttpBody())),
@@ -136,7 +136,7 @@ export interface DeleteLocationsPlaceActionLinksRequest {
   /** Required. The resource name of the place action link to remove from the location. */
   name: string;
 }
-export const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -152,7 +152,7 @@ export const DeleteLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(()
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -160,7 +160,7 @@ export interface GetLocationsPlaceActionLinksRequest {
   /** Required. The name of the place action link to fetch. */
   name: string;
 }
-export const GetLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -184,7 +184,7 @@ export interface ListLocationsPlaceActionLinksRequest {
   /** Optional. If specified, returns the next page of place action links. */
   pageToken?: string;
 }
-export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -202,7 +202,7 @@ export const ListLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListLocationsPlaceActionLinksRequest>;
 
 export type PlaceActionLinkList = Array<PlaceActionLink>;
-export const PlaceActionLinkList = /*@__PURE__*/ S.Array(
+const PlaceActionLinkList = /*@__PURE__*/ S.Array(
   PlaceActionLink,
 ) as any as S.Schema<PlaceActionLinkList>;
 
@@ -213,7 +213,7 @@ export interface ListPlaceActionLinksResponse {
   /** The returned list of place action links. */
   placeActionLinks?: PlaceActionLinkList;
 }
-export const ListPlaceActionLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlaceActionLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     placeActionLinks: S.optional(PlaceActionLinkList),
@@ -232,7 +232,7 @@ export interface ListPlaceActionTypeMetadataRequest {
   /** Optional. The IETF BCP-47 code of language to get display names in. If this language is not available, they will be provided in English. */
   languageCode?: string;
 }
-export const ListPlaceActionTypeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlaceActionTypeMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -259,7 +259,7 @@ export type PlaceActionTypeMetadataPlaceActionTypeEnum =
   | "FOOD_TAKEOUT"
   | "SHOP_ONLINE"
   | "SOLOPRENEUR_APPOINTMENT";
-export const PlaceActionTypeMetadataPlaceActionTypeEnum = S.String;
+const PlaceActionTypeMetadataPlaceActionTypeEnum = S.String;
 
 /** Metadata for supported place action types. */
 export interface PlaceActionTypeMetadata {
@@ -268,7 +268,7 @@ export interface PlaceActionTypeMetadata {
   /** The localized display name for the attribute, if available; otherwise, the English display name. */
   displayName?: string;
 }
-export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
+const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     placeActionType: S.optional(PlaceActionTypeMetadataPlaceActionTypeEnum),
     displayName: S.optional(S.String),
@@ -276,7 +276,7 @@ export const PlaceActionTypeMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlaceActionTypeMetadata" }) as any as S.Schema<PlaceActionTypeMetadata>;
 
 export type PlaceActionTypeMetadataList = Array<PlaceActionTypeMetadata>;
-export const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(
+const PlaceActionTypeMetadataList = /*@__PURE__*/ S.Array(
   PlaceActionTypeMetadata,
 ) as any as S.Schema<PlaceActionTypeMetadataList>;
 
@@ -287,7 +287,7 @@ export interface ListPlaceActionTypeMetadataResponse {
   /** A collection of metadata for the available place action types. */
   placeActionTypeMetadata?: PlaceActionTypeMetadataList;
 }
-export const ListPlaceActionTypeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlaceActionTypeMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     placeActionTypeMetadata: S.optional(PlaceActionTypeMetadataList),
@@ -304,7 +304,7 @@ export interface PatchLocationsPlaceActionLinksRequest {
   /** Request body */
   body?: PlaceActionLink;
 }
-export const PatchLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLocationsPlaceActionLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),

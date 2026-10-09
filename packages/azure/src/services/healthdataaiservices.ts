@@ -10,21 +10,21 @@ export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateDeidServiceRequestTagsMap = { [key: string]: string | undefined };
-export const CreateDeidServiceRequestTagsMap = /*@__PURE__*/ S.Record(
+const CreateDeidServiceRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateDeidServiceRequestTagsMap>;
 
 /** State of the public network access. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-export const PublicNetworkAccess = S.String;
+const PublicNetworkAccess = S.String;
 
 /** Details of the HealthDataAIServices DeidService. */
 export interface DeidServicePropertiesInput {
   /** Gets or sets allow or disallow public network access to resource */
   publicNetworkAccess?: PublicNetworkAccess | (string & {});
 }
-export const DeidServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const DeidServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publicNetworkAccess: S.optional(PublicNetworkAccess),
   }),
@@ -38,11 +38,11 @@ export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityType = S.String;
+const ManagedServiceIdentityType = S.String;
 
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "UserAssignedIdentityInput",
 }) as any as S.Schema<UserAssignedIdentityInput>;
 
@@ -50,7 +50,7 @@ export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() => S.Struct(
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-export const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
+const UserAssignedIdentitiesInput = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput),
 ) as any as S.Schema<UserAssignedIdentitiesInput>;
@@ -60,7 +60,7 @@ export interface CreateDeidServiceRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-export const CreateDeidServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateDeidServiceRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ManagedServiceIdentityType,
     userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
@@ -85,7 +85,7 @@ export interface CreateDeidServiceRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceRequestIdentity;
 }
-export const CreateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -106,11 +106,11 @@ export const CreateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -127,7 +127,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -140,7 +140,7 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type CreateDeidServiceResponseTagsMap = { [key: string]: string | undefined };
-export const CreateDeidServiceResponseTagsMap =
+const CreateDeidServiceResponseTagsMap =
   CreateDeidServiceRequestTagsMap as any as S.Schema<CreateDeidServiceResponseTagsMap>;
 
 /** The status of the current operation. */
@@ -152,11 +152,11 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
+const PrivateEndpointConnectionPropertiesGroupIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
 
@@ -165,7 +165,7 @@ export interface PrivateEndpoint {
   /** The ARM identifier for private endpoint. */
   id?: string;
 }
-export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -173,7 +173,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-export const PrivateEndpointServiceConnectionStatus = S.String;
+const PrivateEndpointServiceConnectionStatus = S.String;
 
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateLinkServiceConnectionState {
@@ -184,7 +184,7 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-export const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkServiceConnectionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(PrivateEndpointServiceConnectionStatus),
     description: S.optional(S.String),
@@ -200,7 +200,7 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Creating"
   | "Deleting"
   | "Failed";
-export const PrivateEndpointConnectionProvisioningState = S.String;
+const PrivateEndpointConnectionProvisioningState = S.String;
 
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
@@ -213,7 +213,7 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
     privateEndpoint: S.optional(PrivateEndpoint),
@@ -237,7 +237,7 @@ export interface DeidServicePropertiesPrivateEndpointConnectionsItem {
   /** Resource properties. */
   properties?: PrivateEndpointConnectionProperties;
 }
-export const DeidServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
+const DeidServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -252,7 +252,7 @@ export const DeidServicePropertiesPrivateEndpointConnectionsItem = /*@__PURE__*/
 /** List of private endpoint connections. */
 export type DeidServicePropertiesPrivateEndpointConnectionsList =
   Array<DeidServicePropertiesPrivateEndpointConnectionsItem>;
-export const DeidServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
+const DeidServicePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ S.Array(
   DeidServicePropertiesPrivateEndpointConnectionsItem,
 ) as any as S.Schema<DeidServicePropertiesPrivateEndpointConnectionsList>;
 
@@ -267,7 +267,7 @@ export interface DeidServiceProperties {
   /** Gets or sets allow or disallow public network access to resource */
   publicNetworkAccess?: PublicNetworkAccess;
 }
-export const DeidServiceProperties = /*@__PURE__*/ S.suspend(() =>
+const DeidServiceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provisioningState: S.optional(ProvisioningState),
     serviceUrl: S.optional(S.String),
@@ -283,7 +283,7 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
+const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     clientId: S.optional(S.String),
@@ -292,7 +292,7 @@ export const UserAssignedIdentity = /*@__PURE__*/ S.suspend(() =>
 
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-export const UserAssignedIdentities = /*@__PURE__*/ S.Record(
+const UserAssignedIdentities = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UserAssignedIdentity),
 ) as any as S.Schema<UserAssignedIdentities>;
@@ -306,7 +306,7 @@ export interface CreateDeidServiceResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-export const CreateDeidServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const CreateDeidServiceResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -335,7 +335,7 @@ export interface CreateDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-export const CreateDeidServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDeidServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -352,8 +352,6 @@ export const CreateDeidServiceResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The private endpoint resource. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
-export const PrivateEndpointInput = UserAssignedIdentityInput;
-
 /** Properties of the private endpoint connection. */
 export interface CreatePrivateEndpointConnectionRequestProperties {
   /** The private endpoint resource. */
@@ -361,7 +359,7 @@ export interface CreatePrivateEndpointConnectionRequestProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-export const CreatePrivateEndpointConnectionRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateEndpoint: S.optional(UserAssignedIdentityInput),
     privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
@@ -382,7 +380,7 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionRequestProperties;
 }
-export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -403,9 +401,6 @@ export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 
 /** The group ids for the private endpoint resource. */
 export type CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
-export const CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<CreatePrivateEndpointConnectionResponsePropertiesGroupIdsList>;
-
 /** Properties of the private endpoint connection. */
 export interface CreatePrivateEndpointConnectionResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -417,9 +412,6 @@ export interface CreatePrivateEndpointConnectionResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const CreatePrivateEndpointConnectionResponseProperties =
-  PrivateEndpointConnectionProperties as any as S.Schema<CreatePrivateEndpointConnectionResponseProperties>;
-
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -432,7 +424,7 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: CreatePrivateEndpointConnectionResponseProperties;
 }
-export const CreatePrivateEndpointConnectionResponse =
+const CreatePrivateEndpointConnectionResponse =
   DeidServicePropertiesPrivateEndpointConnectionsItem as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
 
 export interface DeleteDeidServiceRequest {
@@ -443,7 +435,7 @@ export interface DeleteDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-export const DeleteDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -459,7 +451,7 @@ export const DeleteDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDeidServiceRequest" }) as any as S.Schema<DeleteDeidServiceRequest>;
 
 export interface DeleteDeidServiceResponse {}
-export const DeleteDeidServiceResponse =
+const DeleteDeidServiceResponse =
   UserAssignedIdentityInput as any as S.Schema<DeleteDeidServiceResponse>;
 
 export interface DeletePrivateEndpointConnectionRequest {
@@ -472,7 +464,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -491,7 +483,7 @@ export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
 export interface DeletePrivateEndpointConnectionResponse {}
-export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeletePrivateEndpointConnectionResponse",
@@ -505,7 +497,7 @@ export interface GetDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-export const GetDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -522,13 +514,11 @@ export const GetDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetDeidServiceResponseTagsMap = { [key: string]: string | undefined };
-export const GetDeidServiceResponseTagsMap =
+const GetDeidServiceResponseTagsMap =
   CreateDeidServiceRequestTagsMap as any as S.Schema<GetDeidServiceResponseTagsMap>;
 
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetDeidServiceResponseIdentity = CreateDeidServiceResponseIdentity;
-export const GetDeidServiceResponseIdentity = CreateDeidServiceResponseIdentity;
-
 export interface GetDeidServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -547,7 +537,7 @@ export interface GetDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-export const GetDeidServiceResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDeidServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -570,7 +560,7 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Azure resource. */
   privateEndpointConnectionName: string;
 }
-export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -590,9 +580,6 @@ export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The group ids for the private endpoint resource. */
 export type GetPrivateEndpointConnectionResponsePropertiesGroupIdsList = Array<string>;
-export const GetPrivateEndpointConnectionResponsePropertiesGroupIdsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<GetPrivateEndpointConnectionResponsePropertiesGroupIdsList>;
-
 /** Properties of the private endpoint connection. */
 export interface GetPrivateEndpointConnectionResponseProperties {
   /** The group ids for the private endpoint resource. */
@@ -604,9 +591,6 @@ export interface GetPrivateEndpointConnectionResponseProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const GetPrivateEndpointConnectionResponseProperties =
-  PrivateEndpointConnectionProperties as any as S.Schema<GetPrivateEndpointConnectionResponseProperties>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -619,7 +603,7 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Properties of the private endpoint connection. */
   properties?: GetPrivateEndpointConnectionResponseProperties;
 }
-export const GetPrivateEndpointConnectionResponse =
+const GetPrivateEndpointConnectionResponse =
   DeidServicePropertiesPrivateEndpointConnectionsItem as any as S.Schema<GetPrivateEndpointConnectionResponse>;
 
 export interface ListDeidServiceByResourceGroupRequest {
@@ -628,7 +612,7 @@ export interface ListDeidServiceByResourceGroupRequest {
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ListDeidServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeidServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -646,13 +630,8 @@ export const ListDeidServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Resource tags. */
 export type DeidServiceTagsMap = { [key: string]: string | undefined };
-export const DeidServiceTagsMap =
-  CreateDeidServiceRequestTagsMap as any as S.Schema<DeidServiceTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type DeidServiceIdentity = CreateDeidServiceResponseIdentity;
-export const DeidServiceIdentity = CreateDeidServiceResponseIdentity;
-
 /** A HealthDataAIServicesProviderHub resource */
 export interface DeidService {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -672,11 +651,11 @@ export interface DeidService {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-export const DeidService = GetDeidServiceResponse as any as S.Schema<DeidService>;
+const DeidService = GetDeidServiceResponse as any as S.Schema<DeidService>;
 
 /** The DeidService items on this page */
 export type DeidServiceListResultValueList = Array<DeidService>;
-export const DeidServiceListResultValueList = /*@__PURE__*/ S.Array(
+const DeidServiceListResultValueList = /*@__PURE__*/ S.Array(
   DeidService,
 ) as any as S.Schema<DeidServiceListResultValueList>;
 
@@ -687,7 +666,7 @@ export interface DeidServiceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const DeidServiceListResult = /*@__PURE__*/ S.suspend(() =>
+const DeidServiceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: DeidServiceListResultValueList,
     nextLink: S.optional(S.String),
@@ -698,7 +677,7 @@ export interface ListDeidServiceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const ListDeidServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDeidServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -714,7 +693,7 @@ export const ListDeidServiceBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListDeidServiceBySubscriptionRequest>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -736,7 +715,7 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -747,11 +726,11 @@ export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
 
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = S.String;
+const OperationOrigin = S.String;
 
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-export const OperationActionType = S.String;
+const OperationActionType = S.String;
 
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
@@ -766,7 +745,7 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -778,7 +757,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-export const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
+const ListOperationsResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<ListOperationsResponseValueList>;
 
@@ -788,7 +767,7 @@ export interface ListOperationsResponse {
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ListOperationsResponseValueList),
     nextLink: S.optional(S.String),
@@ -803,7 +782,7 @@ export interface ListPrivateEndpointConnectionByDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-export const ListPrivateEndpointConnectionByDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateEndpointConnectionByDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -822,9 +801,6 @@ export const ListPrivateEndpointConnectionByDeidServiceRequest = /*@__PURE__*/ S
 
 /** The group ids for the private endpoint resource. */
 export type PrivateEndpointConnectionResourcePropertiesGroupIdsList = Array<string>;
-export const PrivateEndpointConnectionResourcePropertiesGroupIdsList =
-  PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateEndpointConnectionResourcePropertiesGroupIdsList>;
-
 /** Properties of the private endpoint connection. */
 export interface PrivateEndpointConnectionResourceProperties {
   /** The group ids for the private endpoint resource. */
@@ -836,9 +812,6 @@ export interface PrivateEndpointConnectionResourceProperties {
   /** The provisioning state of the private endpoint connection resource. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-export const PrivateEndpointConnectionResourceProperties =
-  PrivateEndpointConnectionProperties as any as S.Schema<PrivateEndpointConnectionResourceProperties>;
-
 /** Holder for private endpoint connections */
 export interface PrivateEndpointConnectionResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -852,13 +825,10 @@ export interface PrivateEndpointConnectionResource {
   /** Properties of the private endpoint connection. */
   properties?: PrivateEndpointConnectionResourceProperties;
 }
-export const PrivateEndpointConnectionResource =
-  DeidServicePropertiesPrivateEndpointConnectionsItem as any as S.Schema<PrivateEndpointConnectionResource>;
-
 /** The PrivateEndpointConnectionResource items on this page */
 export type PrivateEndpointConnectionResourceListResultValueList =
   Array<PrivateEndpointConnectionResource>;
-export const PrivateEndpointConnectionResourceListResultValueList =
+const PrivateEndpointConnectionResourceListResultValueList =
   DeidServicePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionResourceListResultValueList>;
 
 /** The response of a PrivateEndpointConnectionResource list operation. */
@@ -868,7 +838,7 @@ export interface PrivateEndpointConnectionResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateEndpointConnectionResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateEndpointConnectionResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateEndpointConnectionResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -885,7 +855,7 @@ export interface ListPrivateLinkByDeidServiceRequest {
   /** The name of the deid service */
   deidServiceName: string;
 }
-export const ListPrivateLinkByDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateLinkByDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -904,12 +874,12 @@ export const ListPrivateLinkByDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredMembersList =
+const PrivateLinkResourcePropertiesRequiredMembersList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
 
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-export const PrivateLinkResourcePropertiesRequiredZoneNamesList =
+const PrivateLinkResourcePropertiesRequiredZoneNamesList =
   PrivateEndpointConnectionPropertiesGroupIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
 
 /** Properties of a private link resource. */
@@ -921,7 +891,7 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-export const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
@@ -944,7 +914,7 @@ export interface PrivateLinkResource {
   /** Properties of a private link resource. */
   properties?: PrivateLinkResourceProperties;
 }
-export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -956,7 +926,7 @@ export const PrivateLinkResource = /*@__PURE__*/ S.suspend(() =>
 
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-export const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
+const PrivateLinkResourceListResultValueList = /*@__PURE__*/ S.Array(
   PrivateLinkResource,
 ) as any as S.Schema<PrivateLinkResourceListResultValueList>;
 
@@ -967,7 +937,7 @@ export interface PrivateLinkResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
+const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateLinkResourceListResultValueList,
     nextLink: S.optional(S.String),
@@ -978,7 +948,7 @@ export const PrivateLinkResourceListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDeidServiceRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateDeidServiceRequestTagsMap =
+const UpdateDeidServiceRequestTagsMap =
   CreateDeidServiceRequestTagsMap as any as S.Schema<UpdateDeidServiceRequestTagsMap>;
 
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
@@ -987,19 +957,16 @@ export type ManagedServiceIdentityUpdateInputType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-export const ManagedServiceIdentityUpdateInputType = S.String;
+const ManagedServiceIdentityUpdateInputType = S.String;
 
 /** User assigned identity properties */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
   UserAssignedIdentityInput;
-export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesValue =
-  UserAssignedIdentityInput;
-
 /** The identities assigned to this resource by the user. */
 export type ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-export const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+const ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
   S.String,
   UserAssignedIdentityInput,
 ) as any as S.Schema<ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap>;
@@ -1011,7 +978,7 @@ export interface ManagedServiceIdentityUpdateInput {
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap;
 }
-export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ManagedServiceIdentityUpdateInputType),
     userAssignedIdentities: S.optional(ManagedServiceIdentityUpdateInputUserAssignedIdentitiesMap),
@@ -1022,8 +989,6 @@ export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The template for adding optional properties. */
 export type DeidPropertiesUpdate = DeidServicePropertiesInput;
-export const DeidPropertiesUpdate = DeidServicePropertiesInput;
-
 export interface UpdateDeidServiceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1038,7 +1003,7 @@ export interface UpdateDeidServiceRequest {
   /** RP-specific properties */
   properties?: DeidServicePropertiesInput;
 }
-export const UpdateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1058,13 +1023,8 @@ export const UpdateDeidServiceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type UpdateDeidServiceResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateDeidServiceResponseTagsMap =
-  CreateDeidServiceRequestTagsMap as any as S.Schema<UpdateDeidServiceResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateDeidServiceResponseIdentity = CreateDeidServiceResponseIdentity;
-export const UpdateDeidServiceResponseIdentity = CreateDeidServiceResponseIdentity;
-
 export interface UpdateDeidServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1083,7 +1043,7 @@ export interface UpdateDeidServiceResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: CreateDeidServiceResponseIdentity;
 }
-export const UpdateDeidServiceResponse =
+const UpdateDeidServiceResponse =
   CreateDeidServiceResponse as any as S.Schema<UpdateDeidServiceResponse>;
 
 export type CreateDeidServiceError = AzureOpError;

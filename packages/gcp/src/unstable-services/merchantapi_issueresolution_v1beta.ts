@@ -71,7 +71,7 @@ export interface ListAccountsAggregateProductStatusesRequest {
   /** Optional. The maximum number of aggregate product statuses to return. The service may return fewer than this value. If unspecified, at most 25 aggregate product statuses are returned. The maximum value is 250; values above 250 are coerced to 250. */
   pageSize?: number;
 }
-export const ListAccountsAggregateProductStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsAggregateProductStatusesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -93,13 +93,13 @@ export type ItemLevelIssueSeverityEnum =
   | "NOT_IMPACTED"
   | "DEMOTED"
   | "DISAPPROVED";
-export const ItemLevelIssueSeverityEnum = S.String;
+const ItemLevelIssueSeverityEnum = S.String;
 
 export type ItemLevelIssueResolutionEnum =
   | "RESOLUTION_UNSPECIFIED"
   | "MERCHANT_ACTION"
   | "PENDING_PROCESSING";
-export const ItemLevelIssueResolutionEnum = S.String;
+const ItemLevelIssueResolutionEnum = S.String;
 
 /** The ItemLevelIssue of the product status. */
 export interface ItemLevelIssue {
@@ -120,7 +120,7 @@ export interface ItemLevelIssue {
   /** The URL of a web page to help with resolving this issue. */
   documentationUri?: string;
 }
-export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
+const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     productCount: S.optional(S.String),
@@ -134,7 +134,7 @@ export const ItemLevelIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ItemLevelIssue" }) as any as S.Schema<ItemLevelIssue>;
 
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
-export const ItemLevelIssueList = /*@__PURE__*/ S.Array(
+const ItemLevelIssueList = /*@__PURE__*/ S.Array(
   ItemLevelIssue,
 ) as any as S.Schema<ItemLevelIssueList>;
 
@@ -149,7 +149,7 @@ export interface Stats {
   /** The number of products that are pending. */
   pendingCount?: string;
 }
-export const Stats = /*@__PURE__*/ S.suspend(() =>
+const Stats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeCount: S.optional(S.String),
     expiringCount: S.optional(S.String),
@@ -180,7 +180,7 @@ export type AggregateProductStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-export const AggregateProductStatusReportingContextEnum = S.String;
+const AggregateProductStatusReportingContextEnum = S.String;
 
 /** Aggregate product statuses for a given reporting context and country. */
 export interface AggregateProductStatus {
@@ -195,7 +195,7 @@ export interface AggregateProductStatus {
   /** The country of the aggregate product statuses. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). */
   country?: string;
 }
-export const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
+const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     itemLevelIssues: S.optional(ItemLevelIssueList),
@@ -206,7 +206,7 @@ export const AggregateProductStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AggregateProductStatus" }) as any as S.Schema<AggregateProductStatus>;
 
 export type AggregateProductStatusList = Array<AggregateProductStatus>;
-export const AggregateProductStatusList = /*@__PURE__*/ S.Array(
+const AggregateProductStatusList = /*@__PURE__*/ S.Array(
   AggregateProductStatus,
 ) as any as S.Schema<AggregateProductStatusList>;
 
@@ -217,7 +217,7 @@ export interface ListAggregateProductStatusesResponse {
   /** The `AggregateProductStatuses` resources for the given account. */
   aggregateProductStatuses?: AggregateProductStatusList;
 }
-export const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAggregateProductStatusesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     aggregateProductStatuses: S.optional(AggregateProductStatusList),
@@ -230,12 +230,12 @@ export type RenderIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
   | "BUILT_IN_USER_INPUT_ACTIONS";
-export const RenderIssuesRequestPayloadUserInputActionOptionEnum = S.String;
+const RenderIssuesRequestPayloadUserInputActionOptionEnum = S.String;
 
 export type RenderIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
   | "PRE_RENDERED_HTML";
-export const RenderIssuesRequestPayloadContentOptionEnum = S.String;
+const RenderIssuesRequestPayloadContentOptionEnum = S.String;
 
 /** The payload for configuring how the content should be rendered. */
 export interface RenderIssuesRequestPayload {
@@ -244,7 +244,7 @@ export interface RenderIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
   contentOption?: RenderIssuesRequestPayloadContentOptionEnum | (string & {});
 }
-export const RenderIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
+const RenderIssuesRequestPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userInputActionOption: S.optional(RenderIssuesRequestPayloadUserInputActionOptionEnum),
     contentOption: S.optional(RenderIssuesRequestPayloadContentOptionEnum),
@@ -263,7 +263,7 @@ export interface RenderaccountissuesIssueresolutionRequest {
   /** Request body */
   body?: RenderIssuesRequestPayload;
 }
-export const RenderaccountissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderaccountissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -281,7 +281,7 @@ export const RenderaccountissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RenderaccountissuesIssueresolutionRequest>;
 
 export type ImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const ImpactSeverityEnum = S.String;
+const ImpactSeverityEnum = S.String;
 
 /** Region with code and localized name. */
 export interface Region {
@@ -290,7 +290,7 @@ export interface Region {
   /** The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) */
   code?: string;
 }
-export const Region = /*@__PURE__*/ S.suspend(() =>
+const Region = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     code: S.optional(S.String),
@@ -298,10 +298,10 @@ export const Region = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Region" }) as any as S.Schema<Region>;
 
 export type RegionList = Array<Region>;
-export const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
+const RegionList = /*@__PURE__*/ S.Array(Region) as any as S.Schema<RegionList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** A detailed impact breakdown for a group of regions where the impact of the issue on different shopping destinations is the same. */
 export interface Breakdown {
@@ -310,7 +310,7 @@ export interface Breakdown {
   /** Human readable, localized description of issue's effect on different targets. Should be rendered as a list. For example: * "Products not showing in ads" * "Products not showing organically" */
   details?: StringList;
 }
-export const Breakdown = /*@__PURE__*/ S.suspend(() =>
+const Breakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(RegionList),
     details: S.optional(StringList),
@@ -318,7 +318,7 @@ export const Breakdown = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Breakdown" }) as any as S.Schema<Breakdown>;
 
 export type BreakdownList = Array<Breakdown>;
-export const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
+const BreakdownList = /*@__PURE__*/ S.Array(Breakdown) as any as S.Schema<BreakdownList>;
 
 /** Overall impact of the issue. */
 export interface Impact {
@@ -329,7 +329,7 @@ export interface Impact {
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the business. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
   breakdowns?: BreakdownList;
 }
-export const Impact = /*@__PURE__*/ S.suspend(() =>
+const Impact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     severity: S.optional(ImpactSeverityEnum),
@@ -346,7 +346,7 @@ export interface Reason {
   /** Detailed explanation of the reason. Should be displayed as a hint if present. */
   detail?: string;
 }
-export const Reason = /*@__PURE__*/ S.suspend(() =>
+const Reason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     action: S.optional(S.suspend(() => Action)),
@@ -355,7 +355,7 @@ export const Reason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Reason" }) as any as S.Schema<Reason>;
 
 export type ReasonList = Array<Reason>;
-export const ReasonList = /*@__PURE__*/ S.Array(Reason) as any as S.Schema<ReasonList>;
+const ReasonList = /*@__PURE__*/ S.Array(Reason) as any as S.Schema<ReasonList>;
 
 /** Long text from external source. */
 export interface AdditionalContent {
@@ -364,7 +364,7 @@ export interface AdditionalContent {
   /** Long text organized into paragraphs. */
   paragraphs?: StringList;
 }
-export const AdditionalContent = /*@__PURE__*/ S.suspend(() =>
+const AdditionalContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     paragraphs: S.optional(StringList),
@@ -382,7 +382,7 @@ export type BuiltInSimpleActionTypeEnum =
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
   | "SHOW_ADDITIONAL_CONTENT";
-export const BuiltInSimpleActionTypeEnum = S.String;
+const BuiltInSimpleActionTypeEnum = S.String;
 
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to business and will help them with resolving the issue. The application should point the business to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to the business and provide them with instructions how to solve the issue. */
 export interface BuiltInSimpleAction {
@@ -393,7 +393,7 @@ export interface BuiltInSimpleAction {
   /** The type of action that represents a functionality that is expected to be available in third-party application. */
   type?: BuiltInSimpleActionTypeEnum;
 }
-export const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
+const BuiltInSimpleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributeCode: S.optional(S.String),
     additionalContent: S.optional(AdditionalContent),
@@ -405,7 +405,7 @@ export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
   | "QUESTION";
-export const TextWithTooltipTooltipIconStyleEnum = S.String;
+const TextWithTooltipTooltipIconStyleEnum = S.String;
 
 /** Block of text that may contain a tooltip with more information. */
 export interface TextWithTooltip {
@@ -416,7 +416,7 @@ export interface TextWithTooltip {
   /** The suggested type of an icon for tooltip, if a tooltip is present. */
   tooltipIconStyle?: TextWithTooltipTooltipIconStyleEnum;
 }
-export const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
+const TextWithTooltip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     simpleValue: S.optional(S.String),
     simpleTooltipValue: S.optional(S.String),
@@ -433,7 +433,7 @@ export interface ChoiceInputOption {
   /** Input that should be displayed when this option is selected. The additional input will not contain a `ChoiceInput`. */
   additionalInput?: InputField;
 }
-export const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
+const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     label: S.optional(TextWithTooltip),
@@ -442,7 +442,7 @@ export const ChoiceInputOption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChoiceInputOption" }) as any as S.Schema<ChoiceInputOption>;
 
 export type ChoiceInputOptionList = Array<ChoiceInputOption>;
-export const ChoiceInputOptionList = /*@__PURE__*/ S.Array(
+const ChoiceInputOptionList = /*@__PURE__*/ S.Array(
   ChoiceInputOption,
 ) as any as S.Schema<ChoiceInputOptionList>;
 
@@ -451,7 +451,7 @@ export interface ChoiceInput {
   /** A list of choices. Only one option can be selected. */
   options?: ChoiceInputOptionList;
 }
-export const ChoiceInput = /*@__PURE__*/ S.suspend(() =>
+const ChoiceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(ChoiceInputOptionList),
   }),
@@ -461,7 +461,7 @@ export type TextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
   | "GENERIC_LONG_TEXT";
-export const TextInputTypeEnum = S.String;
+const TextInputTypeEnum = S.String;
 
 /** Text input allows the business to provide a text value. */
 export interface TextInput {
@@ -474,7 +474,7 @@ export interface TextInput {
   /** Information about the required format. If present, it should be shown close to the input field to help the business to provide a correct value. For example: "VAT numbers should be in a format similar to SK9999999999" */
   formatInfo?: string;
 }
-export const TextInput = /*@__PURE__*/ S.suspend(() =>
+const TextInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(TextInputTypeEnum),
     ariaLabel: S.optional(S.String),
@@ -485,7 +485,7 @@ export const TextInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Checkbox input allows the business to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If the business checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the business completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the business checks the box. */
 export interface CheckboxInput {}
-export const CheckboxInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CheckboxInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CheckboxInput",
 }) as any as S.Schema<CheckboxInput>;
 
@@ -504,7 +504,7 @@ export interface InputField {
   /** Not for display but need to be sent back for the given input field. */
   id?: string;
 }
-export const InputField = /*@__PURE__*/ S.suspend(() =>
+const InputField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choiceInput: S.optional(ChoiceInput),
     textInput: S.optional(TextInput),
@@ -516,10 +516,10 @@ export const InputField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputField" }) as any as S.Schema<InputField>;
 
 export type InputFieldList = Array<InputField>;
-export const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
+const InputFieldList = /*@__PURE__*/ S.Array(InputField) as any as S.Schema<InputFieldList>;
 
 export type CalloutStyleHintEnum = "CALLOUT_STYLE_HINT_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-export const CalloutStyleHintEnum = S.String;
+const CalloutStyleHintEnum = S.String;
 
 /** An important message that should be highlighted. Usually displayed as a banner. */
 export interface Callout {
@@ -528,7 +528,7 @@ export interface Callout {
   /** Can be used to render messages with different severity in different styles. Snippets off all types contain important information that should be displayed to the business. */
   styleHint?: CalloutStyleHintEnum;
 }
-export const Callout = /*@__PURE__*/ S.suspend(() =>
+const Callout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fullMessage: S.optional(TextWithTooltip),
     styleHint: S.optional(CalloutStyleHintEnum),
@@ -552,7 +552,7 @@ export interface ActionFlow {
   /** Label for the button to trigger the action from the action dialog. For example: "Request review" */
   dialogButtonLabel?: string;
 }
-export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
+const ActionFlow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     dialogMessage: S.optional(TextWithTooltip),
@@ -565,7 +565,7 @@ export const ActionFlow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActionFlow" }) as any as S.Schema<ActionFlow>;
 
 export type ActionFlowList = Array<ActionFlow>;
-export const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
+const ActionFlowList = /*@__PURE__*/ S.Array(ActionFlow) as any as S.Schema<ActionFlowList>;
 
 /** Action that is implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the business. They can start the action only when they provided all required inputs. The application will request processing of the action by calling the [triggeraction method](https://developers.google.com/merchant/api/reference/rest/issueresolution_v1beta/issueresolution/triggeraction). */
 export interface BuiltInUserInputAction {
@@ -574,7 +574,7 @@ export interface BuiltInUserInputAction {
   /** Actions may provide multiple different flows. Business selects one that fits best to their intent. Selecting the flow is the first step in user's interaction with the action. It affects what input fields will be available and required and also how the request will be processed. */
   flows?: ActionFlowList;
 }
-export const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
+const BuiltInUserInputAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionContext: S.optional(S.String),
     flows: S.optional(ActionFlowList),
@@ -588,7 +588,7 @@ export type ExternalActionTypeEnum =
   | "LEGAL_APPEAL_IN_HELP_CENTER"
   | "VERIFY_IDENTITY_IN_MERCHANT_CENTER"
   | "VERIFY_BUSINESS_VIDEO_IN_MERCHANT_CENTER";
-export const ExternalActionTypeEnum = S.String;
+const ExternalActionTypeEnum = S.String;
 
 /** Action that is implemented and performed outside of the third-party application. It should redirect the business to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
 export interface ExternalAction {
@@ -597,7 +597,7 @@ export interface ExternalAction {
   /** URL to external system, for example Merchant Center, where the business can perform the action. */
   uri?: string;
 }
-export const ExternalAction = /*@__PURE__*/ S.suspend(() =>
+const ExternalAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ExternalActionTypeEnum),
     uri: S.optional(S.String),
@@ -619,7 +619,7 @@ export interface Action {
   /** Controlling whether the button is active or disabled. The value is 'false' when the action was already requested or is not available. If the action is not available then a reason will be present. If (your) third-party application shows a disabled button for action that is not available, then it should also show reasons. */
   isAvailable?: boolean;
 }
-export const Action = /*@__PURE__*/ S.suspend(() =>
+const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reasons: S.optional(ReasonList),
     builtinSimpleAction: S.optional(BuiltInSimpleAction),
@@ -631,7 +631,7 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 
 export type ActionList = Array<Action>;
-export const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
+const ActionList = /*@__PURE__*/ S.Array(Action) as any as S.Schema<ActionList>;
 
 /** An issue affecting specific business or their product. */
 export interface RenderedIssue {
@@ -646,7 +646,7 @@ export interface RenderedIssue {
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when business disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to the business when they expand the issue. */
   actions?: ActionList;
 }
-export const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
+const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     impact: S.optional(Impact),
     title: S.optional(S.String),
@@ -657,7 +657,7 @@ export const RenderedIssue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderedIssue" }) as any as S.Schema<RenderedIssue>;
 
 export type RenderedIssueList = Array<RenderedIssue>;
-export const RenderedIssueList = /*@__PURE__*/ S.Array(
+const RenderedIssueList = /*@__PURE__*/ S.Array(
   RenderedIssue,
 ) as any as S.Schema<RenderedIssueList>;
 
@@ -666,7 +666,7 @@ export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
   renderedIssues?: RenderedIssueList;
 }
-export const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+const RenderAccountIssuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderedIssues: S.optional(RenderedIssueList),
   }),
@@ -684,7 +684,7 @@ export interface RenderproductissuesIssueresolutionRequest {
   /** Request body */
   body?: RenderIssuesRequestPayload;
 }
-export const RenderproductissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderproductissuesIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     languageCode: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -706,7 +706,7 @@ export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
   renderedIssues?: RenderedIssueList;
 }
-export const RenderProductIssuesResponse =
+const RenderProductIssuesResponse =
   RenderAccountIssuesResponse as any as S.Schema<RenderProductIssuesResponse>;
 
 /** Value for text input field. */
@@ -714,7 +714,7 @@ export interface TextInputValue {
   /** Required. Text provided by the business. */
   value?: string;
 }
-export const TextInputValue = /*@__PURE__*/ S.suspend(() =>
+const TextInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -725,7 +725,7 @@ export interface ChoiceInputValue {
   /** Required. Id of the option that was selected by the business. */
   choiceInputOptionId?: string;
 }
-export const ChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
+const ChoiceInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     choiceInputOptionId: S.optional(S.String),
   }),
@@ -736,7 +736,7 @@ export interface CheckboxInputValue {
   /** Required. True if the business checked the box field. False otherwise. */
   value?: boolean;
 }
-export const CheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
+const CheckboxInputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Boolean),
   }),
@@ -753,7 +753,7 @@ export interface InputValue {
   /** Value for checkbox input field. */
   checkboxInputValue?: CheckboxInputValue;
 }
-export const InputValue = /*@__PURE__*/ S.suspend(() =>
+const InputValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputFieldId: S.optional(S.String),
     textInputValue: S.optional(TextInputValue),
@@ -763,7 +763,7 @@ export const InputValue = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputValue" }) as any as S.Schema<InputValue>;
 
 export type InputValueList = Array<InputValue>;
-export const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
+const InputValueList = /*@__PURE__*/ S.Array(InputValue) as any as S.Schema<InputValueList>;
 
 /** Input provided by the business. */
 export interface ActionInput {
@@ -772,7 +772,7 @@ export interface ActionInput {
   /** Required. Id of the selected action flow. */
   actionFlowId?: string;
 }
-export const ActionInput = /*@__PURE__*/ S.suspend(() =>
+const ActionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputValues: S.optional(InputValueList),
     actionFlowId: S.optional(S.String),
@@ -786,7 +786,7 @@ export interface TriggerActionPayload {
   /** Required. The context from the selected action. The value is obtained from rendered issues and needs to be sent back to identify the action that is being triggered. */
   actionContext?: string;
 }
-export const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionInput: S.optional(ActionInput),
     actionContext: S.optional(S.String),
@@ -801,7 +801,7 @@ export interface TriggeractionIssueresolutionRequest {
   /** Request body */
   body?: TriggerActionPayload;
 }
-export const TriggeractionIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggeractionIssueresolutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     languageCode: S.optional(S.String.pipe(T.Query())),
@@ -822,7 +822,7 @@ export interface TriggerActionResponse {
   /** The message for the business. */
   message?: string;
 }
-export const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
+const TriggerActionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),

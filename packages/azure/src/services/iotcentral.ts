@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The resource tags. */
 export type AppsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const AppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+const AppsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AppsCreateOrUpdateRequestTagsMap>;
@@ -24,7 +24,7 @@ export interface AppPropertiesInput {
   /** The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch. */
   template?: string;
 }
-export const AppPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AppPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     subdomain: S.optional(S.String),
@@ -34,14 +34,14 @@ export const AppPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 
 /** The name of the SKU. */
 export type AppSkuInfoName = "ST0" | "ST1" | "ST2";
-export const AppSkuInfoName = S.String;
+const AppSkuInfoName = S.String;
 
 /** Information about the SKU of the IoT Central application. */
 export interface AppSkuInfo {
   /** The name of the SKU. */
   name: AppSkuInfoName | (string & {});
 }
-export const AppSkuInfo = /*@__PURE__*/ S.suspend(() =>
+const AppSkuInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: AppSkuInfoName,
   }),
@@ -49,13 +49,13 @@ export const AppSkuInfo = /*@__PURE__*/ S.suspend(() =>
 
 /** Type of managed service identity (either system assigned, or none). */
 export type SystemAssignedServiceIdentityType = "None" | "SystemAssigned";
-export const SystemAssignedServiceIdentityType = S.String;
+const SystemAssignedServiceIdentityType = S.String;
 
 /** Managed service identity (either system assigned, or none) */
 export interface AppsCreateOrUpdateRequestIdentity {
   type: SystemAssignedServiceIdentityType | (string & {});
 }
-export const AppsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateOrUpdateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SystemAssignedServiceIdentityType,
   }),
@@ -81,7 +81,7 @@ export interface AppsCreateOrUpdateRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateRequestIdentity;
 }
-export const AppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -105,12 +105,12 @@ export const AppsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type AppsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const AppsCreateOrUpdateResponseTagsMap =
+const AppsCreateOrUpdateResponseTagsMap =
   AppsCreateOrUpdateRequestTagsMap as any as S.Schema<AppsCreateOrUpdateResponseTagsMap>;
 
 /** The current state of the application. */
 export type AppState = "created" | "suspended";
-export const AppState = S.String;
+const AppState = S.String;
 
 /** The properties of an IoT Central application. */
 export interface AppProperties {
@@ -125,7 +125,7 @@ export interface AppProperties {
   /** The current state of the application. */
   state?: AppState;
 }
-export const AppProperties = /*@__PURE__*/ S.suspend(() =>
+const AppProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -143,7 +143,7 @@ export interface AppsCreateOrUpdateResponseIdentity {
   tenantId?: string;
   type: SystemAssignedServiceIdentityType;
 }
-export const AppsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateOrUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     tenantId: S.optional(S.String),
@@ -171,7 +171,7 @@ export interface AppsCreateOrUpdateResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-export const AppsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const AppsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -194,7 +194,7 @@ export interface CheckAppNameAvailabilityRequest {
   /** The type of the IoT Central resource to query. */
   type?: string;
 }
-export const CheckAppNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAppNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -220,7 +220,7 @@ export interface AppAvailabilityInfo {
   /** The detailed reason message. */
   message?: string;
 }
-export const AppAvailabilityInfo = /*@__PURE__*/ S.suspend(() =>
+const AppAvailabilityInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameAvailable: S.optional(S.Boolean),
     reason: S.optional(S.String),
@@ -236,7 +236,7 @@ export interface CheckAppSubdomainAvailabilityRequest {
   /** The type of the IoT Central resource to query. */
   type?: string;
 }
-export const CheckAppSubdomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckAppSubdomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     name: S.String,
@@ -261,7 +261,7 @@ export interface DeleteAppRequest {
   /** The ARM resource name of the IoT Central application. */
   resourceName: string;
 }
-export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -277,7 +277,7 @@ export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAppRequest" }) as any as S.Schema<DeleteAppRequest>;
 
 export interface DeleteAppResponse {}
-export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAppResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAppResponse",
 }) as any as S.Schema<DeleteAppResponse>;
 
@@ -289,7 +289,7 @@ export interface GetAppRequest {
   /** The ARM resource name of the IoT Central application. */
   resourceName: string;
 }
-export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -306,13 +306,11 @@ export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type GetAppResponseTagsMap = { [key: string]: string | undefined };
-export const GetAppResponseTagsMap =
+const GetAppResponseTagsMap =
   AppsCreateOrUpdateRequestTagsMap as any as S.Schema<GetAppResponseTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type GetAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
-export const GetAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
-
 export interface GetAppResponse {
   /** The ARM resource identifier. */
   id?: string;
@@ -331,7 +329,7 @@ export interface GetAppResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -350,7 +348,7 @@ export interface ListAppByResourceGroupRequest {
   /** The name of the resource group that contains the IoT Central application. */
   resourceGroupName: string;
 }
-export const ListAppByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -368,12 +366,10 @@ export const ListAppByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type AppTagsMap = { [key: string]: string | undefined };
-export const AppTagsMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<AppTagsMap>;
+const AppTagsMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<AppTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type AppIdentity = AppsCreateOrUpdateResponseIdentity;
-export const AppIdentity = AppsCreateOrUpdateResponseIdentity;
-
 /** The IoT Central application. */
 export interface App {
   /** The ARM resource identifier. */
@@ -393,7 +389,7 @@ export interface App {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-export const App = /*@__PURE__*/ S.suspend(() =>
+const App = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -408,7 +404,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IoT Central Applications. */
 export type AppListResultValueList = Array<App>;
-export const AppListResultValueList = /*@__PURE__*/ S.Array(
+const AppListResultValueList = /*@__PURE__*/ S.Array(
   App,
 ) as any as S.Schema<AppListResultValueList>;
 
@@ -419,7 +415,7 @@ export interface AppListResult {
   /** A list of IoT Central Applications. */
   value?: AppListResultValueList;
 }
-export const AppListResult = /*@__PURE__*/ S.suspend(() =>
+const AppListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AppListResultValueList),
@@ -430,7 +426,7 @@ export interface ListAppBySubscriptionRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-export const ListAppBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -449,7 +445,7 @@ export interface ListAppTemplatesRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-export const ListAppTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAppTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -469,7 +465,7 @@ export interface AppTemplateLocations {
   /** The display name of the location. */
   displayName?: string;
 }
-export const AppTemplateLocations = /*@__PURE__*/ S.suspend(() =>
+const AppTemplateLocations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -478,7 +474,7 @@ export const AppTemplateLocations = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of locations that support the template. */
 export type AppTemplateLocationsList = Array<AppTemplateLocations>;
-export const AppTemplateLocationsList = /*@__PURE__*/ S.Array(
+const AppTemplateLocationsList = /*@__PURE__*/ S.Array(
   AppTemplateLocations,
 ) as any as S.Schema<AppTemplateLocationsList>;
 
@@ -501,7 +497,7 @@ export interface AppTemplate {
   /** A list of locations that support the template. */
   locations?: AppTemplateLocationsList;
 }
-export const AppTemplate = /*@__PURE__*/ S.suspend(() =>
+const AppTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     manifestId: S.optional(S.String),
     manifestVersion: S.optional(S.String),
@@ -516,7 +512,7 @@ export const AppTemplate = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of IoT Central Application Templates. */
 export type AppTemplatesResultValueList = Array<AppTemplate>;
-export const AppTemplatesResultValueList = /*@__PURE__*/ S.Array(
+const AppTemplatesResultValueList = /*@__PURE__*/ S.Array(
   AppTemplate,
 ) as any as S.Schema<AppTemplatesResultValueList>;
 
@@ -527,7 +523,7 @@ export interface AppTemplatesResult {
   /** A list of IoT Central Application Templates. */
   value?: AppTemplatesResultValueList;
 }
-export const AppTemplatesResult = /*@__PURE__*/ S.suspend(() =>
+const AppTemplatesResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(AppTemplatesResultValueList),
@@ -535,7 +531,7 @@ export const AppTemplatesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppTemplatesResult" }) as any as S.Schema<AppTemplatesResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -557,7 +553,7 @@ export interface OperationDisplay {
   /** Friendly description for the operation, */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -577,7 +573,7 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: unknown;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     display: S.optional(OperationDisplay),
@@ -588,7 +584,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -599,7 +595,7 @@ export interface OperationListResult {
   /** A list of operations supported by the Microsoft.IoTCentral resource provider. */
   value?: OperationListResultValueList;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(OperationListResultValueList),
@@ -608,13 +604,11 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Instance tags */
 export type UpdateAppRequestTagsMap = { [key: string]: string | undefined };
-export const UpdateAppRequestTagsMap =
+const UpdateAppRequestTagsMap =
   AppsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppRequestTagsMap>;
 
 /** Managed service identity (either system assigned, or none) */
 export type UpdateAppRequestIdentity = AppsCreateOrUpdateRequestIdentity;
-export const UpdateAppRequestIdentity = AppsCreateOrUpdateRequestIdentity;
-
 export interface UpdateAppRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -631,7 +625,7 @@ export interface UpdateAppRequest {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateRequestIdentity;
 }
-export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -652,13 +646,8 @@ export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The resource tags. */
 export type UpdateAppResponseTagsMap = { [key: string]: string | undefined };
-export const UpdateAppResponseTagsMap =
-  AppsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateAppResponseTagsMap>;
-
 /** Managed service identity (either system assigned, or none) */
 export type UpdateAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
-export const UpdateAppResponseIdentity = AppsCreateOrUpdateResponseIdentity;
-
 export interface UpdateAppResponse {
   /** The ARM resource identifier. */
   id?: string;
@@ -677,7 +666,7 @@ export interface UpdateAppResponse {
   /** Managed service identity (either system assigned, or none) */
   identity?: AppsCreateOrUpdateResponseIdentity;
 }
-export const UpdateAppResponse = GetAppResponse as any as S.Schema<UpdateAppResponse>;
+const UpdateAppResponse = GetAppResponse as any as S.Schema<UpdateAppResponse>;
 
 export type AppsCreateOrUpdateError = AzureOpError;
 /** Create or update the metadata of an IoT Central application. The usual pattern to modify a property is to retrieve the IoT Central application metadata and security metadata, and then combine them with the modified values in a new body to update the IoT Central application. */

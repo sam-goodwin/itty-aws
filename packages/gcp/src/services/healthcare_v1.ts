@@ -70,7 +70,7 @@ export interface ActivateConsentRequest {
   /** Timestamp in UTC of when this Consent is considered expired. */
   expireTime?: string;
 }
-export const ActivateConsentRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateConsentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentArtifact: S.optional(S.String),
     ttl: S.optional(S.String),
@@ -84,21 +84,20 @@ export interface ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Request body */
   body?: ActivateConsentRequest;
 }
-export const ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ActivateConsentRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:activate",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest",
-  }) as any as S.Schema<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+const ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ActivateConsentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:activate",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest",
+}) as any as S.Schema<ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -111,7 +110,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     expression: S.optional(S.String),
@@ -121,7 +120,7 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values. */
 export interface Attribute {
@@ -130,7 +129,7 @@ export interface Attribute {
   /** Indicates the name of an attribute defined in the consent store. */
   attributeDefinitionId?: string;
 }
-export const Attribute = /*@__PURE__*/ S.suspend(() =>
+const Attribute = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(StringList),
     attributeDefinitionId: S.optional(S.String),
@@ -138,7 +137,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 
 export type AttributeList = Array<Attribute>;
-export const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
+const AttributeList = /*@__PURE__*/ S.Array(Attribute) as any as S.Schema<AttributeList>;
 
 /** Represents a user's consent in terms of the resources that can be accessed and under what conditions. */
 export interface GoogleCloudHealthcareV1ConsentPolicy {
@@ -147,7 +146,7 @@ export interface GoogleCloudHealthcareV1ConsentPolicy {
   /** The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user. */
   resourceAttributes?: AttributeList;
 }
-export const GoogleCloudHealthcareV1ConsentPolicy = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1ConsentPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizationRule: S.optional(Expr),
     resourceAttributes: S.optional(AttributeList),
@@ -157,7 +156,7 @@ export const GoogleCloudHealthcareV1ConsentPolicy = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GoogleCloudHealthcareV1ConsentPolicy>;
 
 export type GoogleCloudHealthcareV1ConsentPolicyList = Array<GoogleCloudHealthcareV1ConsentPolicy>;
-export const GoogleCloudHealthcareV1ConsentPolicyList = /*@__PURE__*/ S.Array(
+const GoogleCloudHealthcareV1ConsentPolicyList = /*@__PURE__*/ S.Array(
   GoogleCloudHealthcareV1ConsentPolicy,
 ) as any as S.Schema<GoogleCloudHealthcareV1ConsentPolicyList>;
 
@@ -168,10 +167,10 @@ export type ConsentStateEnum =
   | "REVOKED"
   | "DRAFT"
   | "REJECTED";
-export const ConsentStateEnum = S.String;
+const ConsentStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Represents a user's consent. */
 export interface Consent {
@@ -196,7 +195,7 @@ export interface Consent {
   /** Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name. */
   revisionId?: string;
 }
-export const Consent = /*@__PURE__*/ S.suspend(() =>
+const Consent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.String),
     name: S.optional(S.String),
@@ -215,19 +214,19 @@ export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnum =
   | "LICENSED_VOCABULARY_UNSPECIFIED"
   | "ICD10CM"
   | "SNOMEDCT_US";
-export const AnalyzeEntitiesRequestLicensedVocabulariesItemEnum = S.String;
+const AnalyzeEntitiesRequestLicensedVocabulariesItemEnum = S.String;
 
 export type AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList = Array<
   AnalyzeEntitiesRequestLicensedVocabulariesItemEnum | (string & {})
 >;
-export const AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList = /*@__PURE__*/ S.Array(
+const AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList = /*@__PURE__*/ S.Array(
   AnalyzeEntitiesRequestLicensedVocabulariesItemEnum,
 ) as any as S.Schema<AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList>;
 
 export type AnalyzeEntitiesRequestAlternativeOutputFormatEnum =
   | "ALTERNATIVE_OUTPUT_FORMAT_UNSPECIFIED"
   | "FHIR_BUNDLE";
-export const AnalyzeEntitiesRequestAlternativeOutputFormatEnum = S.String;
+const AnalyzeEntitiesRequestAlternativeOutputFormatEnum = S.String;
 
 /** The request to analyze healthcare entities in a document. */
 export interface AnalyzeEntitiesRequest {
@@ -238,7 +237,7 @@ export interface AnalyzeEntitiesRequest {
   /** Optional. Alternative output format to be generated based on the results of analysis. */
   alternativeOutputFormat?: AnalyzeEntitiesRequestAlternativeOutputFormatEnum | (string & {});
 }
-export const AnalyzeEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licensedVocabularies: S.optional(AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList),
     documentContent: S.optional(S.String),
@@ -252,7 +251,7 @@ export interface AnalyzeEntitiesProjectsLocationsServicesNlpRequest {
   /** Request body */
   body?: AnalyzeEntitiesRequest;
 }
-export const AnalyzeEntitiesProjectsLocationsServicesNlpRequest = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesProjectsLocationsServicesNlpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nlpService: S.String.pipe(T.Label()),
     body: S.optional(AnalyzeEntitiesRequest.pipe(T.HttpBody())),
@@ -276,7 +275,7 @@ export interface EntityMentionRelationship {
   /** object_id is the id of the object entity mention. */
   objectId?: string;
 }
-export const EntityMentionRelationship = /*@__PURE__*/ S.suspend(() =>
+const EntityMentionRelationship = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subjectId: S.optional(S.String),
     confidence: S.optional(S.Number),
@@ -287,7 +286,7 @@ export const EntityMentionRelationship = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EntityMentionRelationship>;
 
 export type EntityMentionRelationshipList = Array<EntityMentionRelationship>;
-export const EntityMentionRelationshipList = /*@__PURE__*/ S.Array(
+const EntityMentionRelationshipList = /*@__PURE__*/ S.Array(
   EntityMentionRelationship,
 ) as any as S.Schema<EntityMentionRelationshipList>;
 
@@ -300,7 +299,7 @@ export interface Entity {
   /** preferred_term is the preferred term for this concept. For example, "Acetaminophen". For ad hoc entities formed by normalization, this is the most popular unnormalized string. */
   preferredTerm?: string;
 }
-export const Entity = /*@__PURE__*/ S.suspend(() =>
+const Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityId: S.optional(S.String),
     vocabularyCodes: S.optional(StringList),
@@ -309,7 +308,7 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 
 export type EntityList = Array<Entity>;
-export const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
+const EntityList = /*@__PURE__*/ S.Array(Entity) as any as S.Schema<EntityList>;
 
 /** A feature of an entity mention. */
 export interface Feature {
@@ -318,7 +317,7 @@ export interface Feature {
   /** The model's confidence in this feature annotation. A number between 0 and 1. */
   confidence?: number;
 }
-export const Feature = /*@__PURE__*/ S.suspend(() =>
+const Feature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     confidence: S.optional(S.Number),
@@ -330,16 +329,14 @@ export interface LinkedEntity {
   /** entity_id is a concept unique identifier. These are prefixed by a string that identifies the entity coding system, followed by the unique identifier within that system. For example, "UMLS/C0000970". This also supports ad hoc entities, which are formed by normalizing entity mention content. */
   entityId?: string;
 }
-export const LinkedEntity = /*@__PURE__*/ S.suspend(() =>
+const LinkedEntity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entityId: S.optional(S.String),
   }),
 ).annotate({ identifier: "LinkedEntity" }) as any as S.Schema<LinkedEntity>;
 
 export type LinkedEntityList = Array<LinkedEntity>;
-export const LinkedEntityList = /*@__PURE__*/ S.Array(
-  LinkedEntity,
-) as any as S.Schema<LinkedEntityList>;
+const LinkedEntityList = /*@__PURE__*/ S.Array(LinkedEntity) as any as S.Schema<LinkedEntityList>;
 
 /** A span of text in the provided document. */
 export interface TextSpan {
@@ -348,7 +345,7 @@ export interface TextSpan {
   /** The original text contained in this span. */
   content?: string;
 }
-export const TextSpan = /*@__PURE__*/ S.suspend(() =>
+const TextSpan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beginOffset: S.optional(S.Number),
     content: S.optional(S.String),
@@ -374,7 +371,7 @@ export interface EntityMention {
   /** The semantic type of the entity: UNKNOWN_ENTITY_TYPE, ALONE, ANATOMICAL_STRUCTURE, ASSISTED_LIVING, BF_RESULT, BM_RESULT, BM_UNIT, BM_VALUE, BODY_FUNCTION, BODY_MEASUREMENT, COMPLIANT, DOESNOT_FOLLOWUP, FAMILY, FOLLOWSUP, LABORATORY_DATA, LAB_RESULT, LAB_UNIT, LAB_VALUE, MEDICAL_DEVICE, MEDICINE, MED_DOSE, MED_DURATION, MED_FORM, MED_FREQUENCY, MED_ROUTE, MED_STATUS, MED_STRENGTH, MED_TOTALDOSE, MED_UNIT, NON_COMPLIANT, OTHER_LIVINGSTATUS, PROBLEM, PROCEDURE, PROCEDURE_RESULT, PROC_METHOD, REASON_FOR_NONCOMPLIANCE, SEVERITY, SUBSTANCE_ABUSE, UNCLEAR_FOLLOWUP. */
   type?: string;
 }
-export const EntityMention = /*@__PURE__*/ S.suspend(() =>
+const EntityMention = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     confidence: S.optional(S.Number),
     temporalAssessment: S.optional(Feature),
@@ -388,7 +385,7 @@ export const EntityMention = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EntityMention" }) as any as S.Schema<EntityMention>;
 
 export type EntityMentionList = Array<EntityMention>;
-export const EntityMentionList = /*@__PURE__*/ S.Array(
+const EntityMentionList = /*@__PURE__*/ S.Array(
   EntityMention,
 ) as any as S.Schema<EntityMentionList>;
 
@@ -403,7 +400,7 @@ export interface AnalyzeEntitiesResponse {
   /** The `entity_mentions` field contains all the annotated medical entities that were mentioned in the provided document. */
   entityMentions?: EntityMentionList;
 }
-export const AnalyzeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
+const AnalyzeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fhirBundle: S.optional(S.String),
     relationships: S.optional(EntityMentionRelationshipList),
@@ -417,7 +414,7 @@ export interface AdminConsents {
   /** Optional. The versioned names of the admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. */
   names?: StringList;
 }
-export const AdminConsents = /*@__PURE__*/ S.suspend(() =>
+const AdminConsents = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     names: S.optional(StringList),
   }),
@@ -430,7 +427,7 @@ export interface ApplyAdminConsentsRequest {
   /** Optional. If true, the method only validates Consent resources to make sure they are supported. Otherwise, the method applies the aggregate consent information to update the enforcement model and reindex the FHIR resources. If all Consent resources can be applied successfully, the ApplyAdminConsentsResponse is returned containing the following fields: * `consent_apply_success` to indicate the number of Consent resources applied. * `affected_resources` to indicate the number of resources that might have had their consent access changed. If, however, one or more Consent resources are unsupported or cannot be applied, the method fails and ApplyAdminConsentsErrorDetail is is returned with details about the unsupported Consent resources. */
   validateOnly?: boolean;
 }
-export const ApplyAdminConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyAdminConsentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newConsentsList: S.optional(AdminConsents),
     validateOnly: S.optional(S.Boolean),
@@ -445,32 +442,26 @@ export interface ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: ApplyAdminConsentsRequest;
 }
-export const ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ApplyAdminConsentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:applyAdminConsents",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(ApplyAdminConsentsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:applyAdminConsents",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest",
 }) as any as S.Schema<ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -481,7 +472,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     code: S.optional(S.Number),
@@ -502,7 +493,7 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     metadata: S.optional(DocumentMap),
@@ -517,7 +508,7 @@ export interface PatientScope {
   /** Optional. The list of patient IDs whose Consent resources will be enforced. At most 10,000 patients can be specified. An empty list is equivalent to all patients (meaning the entire FHIR store). */
   patientIds?: StringList;
 }
-export const PatientScope = /*@__PURE__*/ S.suspend(() =>
+const PatientScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patientIds: S.optional(StringList),
   }),
@@ -530,7 +521,7 @@ export interface TimeRange {
   /** Optional. The latest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If not specified, the system uses the time when ApplyConsents was called. */
   end?: string;
 }
-export const TimeRange = /*@__PURE__*/ S.suspend(() =>
+const TimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -546,7 +537,7 @@ export interface ApplyConsentsRequest {
   /** Optional. If true, the method only validates Consent resources to make sure they are supported. When the operation completes, ApplyConsentsResponse is returned where `consent_apply_success` and `consent_apply_failure` indicate supported and unsupported (or invalid) Consent resources, respectively. Otherwise, the method propagates the aggregate consensual information to the patient's resources. Upon success, `affected_resources` in the ApplyConsentsResponse indicates the number of resources that may have consensual access changed. */
   validateOnly?: boolean;
 }
-export const ApplyConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyConsentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patientScope: S.optional(PatientScope),
     timeRange: S.optional(TimeRange),
@@ -560,7 +551,7 @@ export interface ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: ApplyConsentsRequest;
 }
-export const ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ApplyConsentsRequest.pipe(T.HttpBody())),
@@ -577,7 +568,7 @@ export const ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE
 
 /** Archives the specified User data mapping. */
 export interface ArchiveUserDataMappingRequest {}
-export const ArchiveUserDataMappingRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ArchiveUserDataMappingRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ArchiveUserDataMappingRequest",
 }) as any as S.Schema<ArchiveUserDataMappingRequest>;
 
@@ -587,7 +578,7 @@ export interface ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRe
   /** Request body */
   body?: ArchiveUserDataMappingRequest;
 }
-export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
+const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -605,20 +596,19 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsReques
 
 /** Archives the specified User data mapping. */
 export interface ArchiveUserDataMappingResponse {}
-export const ArchiveUserDataMappingResponse =
+const ArchiveUserDataMappingResponse =
   ArchiveUserDataMappingRequest as any as S.Schema<ArchiveUserDataMappingResponse>;
 
 export interface Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the Binary resource version to retrieve. */
   name: string;
 }
-export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
+const Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -632,7 +622,7 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+const HttpBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extensions: S.optional(DocumentMapList),
     data: S.optional(S.String),
@@ -645,14 +635,14 @@ export type BulkDeleteResourcesRequestVersionConfigEnum =
   | "ALL"
   | "CURRENT_ONLY"
   | "HISTORY_ONLY";
-export const BulkDeleteResourcesRequestVersionConfigEnum = S.String;
+const BulkDeleteResourcesRequestVersionConfigEnum = S.String;
 
 /** The configuration for exporting to Cloud Storage. */
 export interface GoogleCloudHealthcareV1FhirGcsDestination {
   /** URI for a Cloud Storage directory where result files should be written, in the format of `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
-export const GoogleCloudHealthcareV1FhirGcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1FhirGcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
   }),
@@ -665,7 +655,7 @@ export interface GoogleCloudHealthcareV1FhirGcsSource {
   /** Required. Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
-export const GoogleCloudHealthcareV1FhirGcsSource = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1FhirGcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -688,7 +678,7 @@ export interface BulkDeleteResourcesRequest {
   /** Optional. If provided, only resources updated before or atthis time are deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone. */
   until?: string;
 }
-export const BulkDeleteResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     type: S.optional(S.String),
@@ -707,7 +697,7 @@ export interface BulkDeleteProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: BulkDeleteResourcesRequest;
 }
-export const BulkDeleteProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkDeleteProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(BulkDeleteResourcesRequest.pipe(T.HttpBody())),
@@ -734,21 +724,20 @@ export interface BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. Name of the Group resource that is exported, in format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Group/{group_id}`. */
   name: string;
 }
-export const BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      _since: S.optional(S.String.pipe(T.Query())),
-      _type: S.optional(S.String.pipe(T.Query())),
-      outputFormat: S.optional(S.String.pipe(T.Query())),
-      organizeOutputBy: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/$export",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _since: S.optional(S.String.pipe(T.Query())),
+    _type: S.optional(S.String.pipe(T.Query())),
+    outputFormat: S.optional(S.String.pipe(T.Query())),
+    organizeOutputBy: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/$export",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest",
 }) as any as S.Schema<BulkExportGroupProjectsLocationsDatasetsFhirStoresRequest>;
@@ -763,35 +752,32 @@ export interface BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Optional. If provided, only resources updated after this time are exported. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone. */
   _since?: string;
 }
-export const BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      outputFormat: S.optional(S.String.pipe(T.Query())),
-      _type: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      _since: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/fhir/$export",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    outputFormat: S.optional(S.String.pipe(T.Query())),
+    _type: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    _since: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/fhir/$export",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<BulkExportProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = ArchiveUserDataMappingRequest;
-export const CancelOperationRequest = ArchiveUserDataMappingRequest;
-
 export interface CancelProjectsLocationsDatasetsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: ArchiveUserDataMappingRequest;
 }
-export const CancelProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ArchiveUserDataMappingRequest.pipe(T.HttpBody())),
@@ -808,23 +794,22 @@ export const CancelProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = ArchiveUserDataMappingRequest as any as S.Schema<Empty>;
+const Empty = ArchiveUserDataMappingRequest as any as S.Schema<Empty>;
 
 export interface CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. Name of the FHIR store to retrieve the capabilities for. */
   name: string;
 }
-export const CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}/fhir/metadata",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}/fhir/metadata",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -834,14 +819,14 @@ export interface ConsentList {
   /** The resource names of the Consents to evaluate against, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. */
   consents?: StringList;
 }
-export const ConsentList = /*@__PURE__*/ S.suspend(() =>
+const ConsentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consents: S.optional(StringList),
   }),
 ).annotate({ identifier: "ConsentList" }) as any as S.Schema<ConsentList>;
 
 export type CheckDataAccessRequestResponseViewEnum = "RESPONSE_VIEW_UNSPECIFIED" | "BASIC" | "FULL";
-export const CheckDataAccessRequestResponseViewEnum = S.String;
+const CheckDataAccessRequestResponseViewEnum = S.String;
 
 /** Checks if a particular data_id of a User data mapping in the given consent store is consented for a given use. */
 export interface CheckDataAccessRequest {
@@ -854,7 +839,7 @@ export interface CheckDataAccessRequest {
   /** Optional. The view for CheckDataAccessResponse. If unspecified, defaults to `BASIC` and returns `consented` as `TRUE` or `FALSE`. */
   responseView?: CheckDataAccessRequestResponseViewEnum | (string & {});
 }
-export const CheckDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestAttributes: S.optional(StringMap),
     dataId: S.optional(S.String),
@@ -869,18 +854,17 @@ export interface CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest {
   /** Request body */
   body?: CheckDataAccessRequest;
 }
-export const CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      consentStore: S.String.pipe(T.Label()),
-      body: S.optional(CheckDataAccessRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+consentStore}:checkDataAccess",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    consentStore: S.String.pipe(T.Label()),
+    body: S.optional(CheckDataAccessRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+consentStore}:checkDataAccess",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest",
 }) as any as S.Schema<CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest>;
@@ -891,21 +875,21 @@ export type ConsentEvaluationEvaluationResultEnum =
   | "NO_MATCHING_POLICY"
   | "NO_SATISFIED_POLICY"
   | "HAS_SATISFIED_POLICY";
-export const ConsentEvaluationEvaluationResultEnum = S.String;
+const ConsentEvaluationEvaluationResultEnum = S.String;
 
 /** The detailed evaluation of a particular Consent. */
 export interface ConsentEvaluation {
   /** The evaluation result. */
   evaluationResult?: ConsentEvaluationEvaluationResultEnum;
 }
-export const ConsentEvaluation = /*@__PURE__*/ S.suspend(() =>
+const ConsentEvaluation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationResult: S.optional(ConsentEvaluationEvaluationResultEnum),
   }),
 ).annotate({ identifier: "ConsentEvaluation" }) as any as S.Schema<ConsentEvaluation>;
 
 export type ConsentEvaluationMap = { [key: string]: ConsentEvaluation | undefined };
-export const ConsentEvaluationMap = /*@__PURE__*/ S.Record(
+const ConsentEvaluationMap = /*@__PURE__*/ S.Record(
   S.String,
   ConsentEvaluation,
 ) as any as S.Schema<ConsentEvaluationMap>;
@@ -917,7 +901,7 @@ export interface CheckDataAccessResponse {
   /** Whether the requested resource is consented for the given use. */
   consented?: boolean;
 }
-export const CheckDataAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckDataAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentDetails: S.optional(ConsentEvaluationMap),
     consented: S.optional(S.Boolean),
@@ -930,8 +914,8 @@ export interface ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest
   /** Required. The name of the FHIR store this resource belongs to. */
   parent: string;
 }
-export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       type: S.String.pipe(T.Label()),
       parent: S.String.pipe(T.Label()),
@@ -942,9 +926,9 @@ export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
+).annotate({
+  identifier: "ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest",
+}) as any as S.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export interface ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the FHIR store this resource belongs to. */
@@ -954,22 +938,21 @@ export interface ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest 
   /** Request body */
   body?: HttpBody;
 }
-export const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      type: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v1/{+parent}/fhir/{+type}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
+const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    type: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "v1/{+parent}/fhir/{+type}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest",
+}) as any as S.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export interface ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the FHIR store this resource belongs to. */
@@ -979,8 +962,8 @@ export interface ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest
   /** Request body */
   body?: HttpBody;
 }
-export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       type: S.String.pipe(T.Label()),
@@ -992,15 +975,15 @@ export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+).annotate({
+  identifier: "ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest",
+}) as any as S.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export interface Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the consent resource to find enforcement status, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{consent_id}` */
   name: string;
 }
-export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest =
+const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -1021,18 +1004,17 @@ export interface CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/fhir/Binary",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/fhir/Binary",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<CreateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -1042,7 +1024,7 @@ export interface EncryptionSpec {
   /** Required. The resource name of customer-managed encryption key that is used to secure a resource and its sub-resources. Only the key in the same location as this Dataset is allowed to be used for encryption. Format is: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}` */
   kmsKeyName?: string;
 }
-export const EncryptionSpec = /*@__PURE__*/ S.suspend(() =>
+const EncryptionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsKeyName: S.optional(S.String),
   }),
@@ -1061,7 +1043,7 @@ export interface Dataset {
   /** Output only. Whether the dataset satisfies zone isolation. */
   satisfiesPzi?: boolean;
 }
-export const Dataset = /*@__PURE__*/ S.suspend(() =>
+const Dataset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     satisfiesPzs: S.optional(S.Boolean),
     timeZone: S.optional(S.String),
@@ -1079,7 +1061,7 @@ export interface CreateProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1106,7 +1088,7 @@ export interface ConsentStore {
   /** Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources */
   labels?: StringMap;
 }
-export const ConsentStore = /*@__PURE__*/ S.suspend(() =>
+const ConsentStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableConsentCreateOnUpdate: S.optional(S.Boolean),
     defaultConsentTtl: S.optional(S.String),
@@ -1123,7 +1105,7 @@ export interface CreateProjectsLocationsDatasetsConsentStoresRequest {
   /** Request body */
   body?: ConsentStore;
 }
-export const CreateProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentStoreId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1140,7 +1122,7 @@ export const CreateProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/
 }) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type AttributeDefinitionCategoryEnum = "CATEGORY_UNSPECIFIED" | "RESOURCE" | "REQUEST";
-export const AttributeDefinitionCategoryEnum = S.String;
+const AttributeDefinitionCategoryEnum = S.String;
 
 /** A client-defined consent attribute. */
 export interface AttributeDefinition {
@@ -1157,7 +1139,7 @@ export interface AttributeDefinition {
   /** Optional. A description of the attribute. */
   description?: string;
 }
-export const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
+const AttributeDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataMappingDefaultValue: S.optional(S.String),
     name: S.optional(S.String),
@@ -1176,7 +1158,7 @@ export interface CreateProjectsLocationsDatasetsConsentStoresAttributeDefinition
   /** Request body */
   body?: AttributeDefinition;
 }
-export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
+const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1200,7 +1182,7 @@ export interface Image {
   /** Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes. */
   gcsUri?: string;
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rawBytes: S.optional(S.String),
     gcsUri: S.optional(S.String),
@@ -1218,7 +1200,7 @@ export interface Signature {
   /** Required. User's UUID provided by the client. */
   userId?: string;
 }
-export const Signature = /*@__PURE__*/ S.suspend(() =>
+const Signature = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     signatureTime: S.optional(S.String),
@@ -1228,7 +1210,7 @@ export const Signature = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Signature" }) as any as S.Schema<Signature>;
 
 export type ImageList = Array<Image>;
-export const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
+const ImageList = /*@__PURE__*/ S.Array(Image) as any as S.Schema<ImageList>;
 
 /** Documentation of a user's consent. */
 export interface ConsentArtifact {
@@ -1249,7 +1231,7 @@ export interface ConsentArtifact {
   /** Optional. Screenshots, PDFs, or other binary information documenting the user's consent. */
   consentContentScreenshots?: ImageList;
 }
-export const ConsentArtifact = /*@__PURE__*/ S.suspend(() =>
+const ConsentArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentContentVersion: S.optional(S.String),
     userId: S.optional(S.String),
@@ -1268,8 +1250,8 @@ export interface CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsReq
   /** Request body */
   body?: ConsentArtifact;
 }
-export const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(ConsentArtifact.pipe(T.HttpBody())),
@@ -1280,9 +1262,9 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
+}) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export interface CreateProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Required. Name of the consent store. */
@@ -1290,18 +1272,17 @@ export interface CreateProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Request body */
   body?: Consent;
 }
-export const CreateProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Consent.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/consents",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(Consent.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/consents",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresConsentsRequest>;
@@ -1321,7 +1302,7 @@ export interface UserDataMapping {
   /** Output only. Indicates the time when this mapping was archived. */
   archiveTime?: string;
 }
-export const UserDataMapping = /*@__PURE__*/ S.suspend(() =>
+const UserDataMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceAttributes: S.optional(AttributeList),
     archived: S.optional(S.Boolean),
@@ -1338,8 +1319,8 @@ export interface CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsReq
   /** Request body */
   body?: UserDataMapping;
 }
-export const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(UserDataMapping.pipe(T.HttpBody())),
@@ -1350,41 +1331,37 @@ export const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-  }) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+).annotate({
+  identifier: "CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+}) as any as S.Schema<CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 /** Contains the configuration for DICOM notifications. */
 export interface DicomNotificationConfig {
   /** Required. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. * `PubsubMessage.Attributes` contains the following attributes: * `action`: The name of the endpoint that generated the notification. Possible values are `StoreInstances`, `SetBlobSettings`, `ImportDicomData`, etc. * `lastUpdatedTime`: The latest timestamp when the DICOM instance was updated. * `storeName`: The resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * `studyInstanceUID`: The study UID of the DICOM instance that was changed. * `seriesInstanceUID`: The series UID of the DICOM instance that was changed. * `sopInstanceUID`: The instance UID of the DICOM instance that was changed. * `versionId`: The version ID of the DICOM instance that was changed. * `modality`: The modality tag of the DICOM instance that was changed. * `previousStorageClass`: The storage class where the DICOM instance was previously stored if the storage class was changed. * `storageClass`: The storage class where the DICOM instance is currently stored. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have the `pubsub.topics.publish` permission (which is typically included in `roles/pubsub.publisher` role) on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging). */
   pubsubTopic?: string;
 }
-export const DicomNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const DicomNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
   }),
 ).annotate({ identifier: "DicomNotificationConfig" }) as any as S.Schema<DicomNotificationConfig>;
 
 export type DicomNotificationConfigList = Array<DicomNotificationConfig>;
-export const DicomNotificationConfigList = /*@__PURE__*/ S.Array(
+const DicomNotificationConfigList = /*@__PURE__*/ S.Array(
   DicomNotificationConfig,
 ) as any as S.Schema<DicomNotificationConfigList>;
 
 /** Using this field will flatten the DICOM instances into a BigQuery table. The table will have one column for each DICOM tag. The column name will be the DICOM tag's textual representation. */
 export type SchemaFlattened = ArchiveUserDataMappingRequest;
-export const SchemaFlattened = ArchiveUserDataMappingRequest;
-
 export type GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionEnum =
   | "WRITE_DISPOSITION_UNSPECIFIED"
   | "WRITE_EMPTY"
   | "WRITE_TRUNCATE"
   | "WRITE_APPEND";
-export const GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionEnum = S.String;
+const GoogleCloudHealthcareV1DicomBigQueryDestinationWriteDispositionEnum = S.String;
 
 /** Using this field will set the schema such that all DICOM tags will be included in the BigQuery table as a single JSON type column. The BigQuery table schema will include the following columns: * `StudyInstanceUID` (Type: STRING): DICOM Tag 0020000D. * `SeriesInstanceUID` (Type: STRING): DICOM Tag 0020000E. * `SOPInstanceUID` (Type: STRING): DICOM Tag 00080018. * `SourceDicomStore` (Type: STRING): The name of the source DICOM store. This field is only included if the `include_source_store` option is set to true. * `Metadata` (Type: JSON): All DICOM tags for the instance, stored in a single JSON object. * `StructuredStorageSize` (Type: INTEGER): Size of the structured storage in bytes. * `DroppedTags` (Type: STRING, Repeated: Yes): List of tags that were dropped during the conversion. * `StorageClass` (Type: STRING): The storage class of the instance. * `LastUpdated` (Type: TIMESTAMP): Timestamp of the last update to the instance. * `BlobStorageSize` (Type: INTEGER): Size of the blob storage in bytes. * `Type` (Type: STRING): Indicates the type of operation (e.g., INSERT, DELETE). */
 export type SchemaJSON = ArchiveUserDataMappingRequest;
-export const SchemaJSON = ArchiveUserDataMappingRequest;
-
 /** The BigQuery table where the server writes the output. */
 export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   /** Optional. Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE. */
@@ -1402,7 +1379,7 @@ export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   /** Optional. Setting this field will store all the DICOM tags as a JSON type in a single column. */
   schemaJson?: ArchiveUserDataMappingRequest;
 }
-export const GoogleCloudHealthcareV1DicomBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1DicomBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     force: S.optional(S.Boolean),
     schemaFlattened: S.optional(ArchiveUserDataMappingRequest),
@@ -1422,7 +1399,7 @@ export interface GoogleCloudHealthcareV1DicomStreamConfig {
   /** Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
-export const GoogleCloudHealthcareV1DicomStreamConfig = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1DicomStreamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(GoogleCloudHealthcareV1DicomBigQueryDestination),
   }),
@@ -1432,7 +1409,7 @@ export const GoogleCloudHealthcareV1DicomStreamConfig = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudHealthcareV1DicomStreamConfigList =
   Array<GoogleCloudHealthcareV1DicomStreamConfig>;
-export const GoogleCloudHealthcareV1DicomStreamConfigList = /*@__PURE__*/ S.Array(
+const GoogleCloudHealthcareV1DicomStreamConfigList = /*@__PURE__*/ S.Array(
   GoogleCloudHealthcareV1DicomStreamConfig,
 ) as any as S.Schema<GoogleCloudHealthcareV1DicomStreamConfigList>;
 
@@ -1443,7 +1420,7 @@ export interface NotificationConfig {
   /** Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports. */
   sendForBulkImport?: boolean;
 }
-export const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
     sendForBulkImport: S.optional(S.Boolean),
@@ -1463,7 +1440,7 @@ export interface DicomStore {
   /** User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. */
   labels?: StringMap;
 }
-export const DicomStore = /*@__PURE__*/ S.suspend(() =>
+const DicomStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     notificationConfigs: S.optional(DicomNotificationConfigList),
@@ -1481,7 +1458,7 @@ export interface CreateProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: DicomStore;
 }
-export const CreateProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     dicomStoreId: S.optional(S.String.pipe(T.Query())),
@@ -1506,7 +1483,7 @@ export interface FhirNotificationConfig {
   /** Optional. Whether to send full FHIR resource to this Pub/Sub topic. The default value is false. */
   sendFullResource?: boolean;
 }
-export const FhirNotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const FhirNotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
     sendPreviousResourceOnDelete: S.optional(S.Boolean),
@@ -1515,7 +1492,7 @@ export const FhirNotificationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FhirNotificationConfig" }) as any as S.Schema<FhirNotificationConfig>;
 
 export type FhirNotificationConfigList = Array<FhirNotificationConfig>;
-export const FhirNotificationConfigList = /*@__PURE__*/ S.Array(
+const FhirNotificationConfigList = /*@__PURE__*/ S.Array(
   FhirNotificationConfig,
 ) as any as S.Schema<FhirNotificationConfigList>;
 
@@ -1534,7 +1511,7 @@ export interface ValidationConfig {
   /** Optional. Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store. */
   disableProfileValidation?: boolean;
 }
-export const ValidationConfig = /*@__PURE__*/ S.suspend(() =>
+const ValidationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabledImplementationGuides: S.optional(StringList),
     enableFhirpathProfileValidation: S.optional(S.Boolean),
@@ -1546,20 +1523,20 @@ export const ValidationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ValidationConfig" }) as any as S.Schema<ValidationConfig>;
 
 export type FhirStoreVersionEnum = "VERSION_UNSPECIFIED" | "DSTU2" | "STU3" | "R4" | "R5";
-export const FhirStoreVersionEnum = S.String;
+const FhirStoreVersionEnum = S.String;
 
 export type FhirStoreComplexDataTypeReferenceParsingEnum =
   | "COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-export const FhirStoreComplexDataTypeReferenceParsingEnum = S.String;
+const FhirStoreComplexDataTypeReferenceParsingEnum = S.String;
 
 /** The configuration for exporting to Cloud Storage using the bulk export API. */
 export interface BulkExportGcsDestination {
   /** Optional. URI for a Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
-export const BulkExportGcsDestination = /*@__PURE__*/ S.suspend(() =>
+const BulkExportGcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
   }),
@@ -1570,7 +1547,7 @@ export type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum =
   | "WRITE_EMPTY"
   | "WRITE_TRUNCATE"
   | "WRITE_APPEND";
-export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum = S.String;
+const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum = S.String;
 
 export type TimePartitioningTypeEnum =
   | "PARTITION_TYPE_UNSPECIFIED"
@@ -1578,7 +1555,7 @@ export type TimePartitioningTypeEnum =
   | "DAY"
   | "MONTH"
   | "YEAR";
-export const TimePartitioningTypeEnum = S.String;
+const TimePartitioningTypeEnum = S.String;
 
 /** Configuration for FHIR BigQuery time-partitioned tables. */
 export interface TimePartitioning {
@@ -1587,7 +1564,7 @@ export interface TimePartitioning {
   /** Type of partitioning. */
   type?: TimePartitioningTypeEnum | (string & {});
 }
-export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
+const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationMs: S.optional(S.String),
     type: S.optional(TimePartitioningTypeEnum),
@@ -1595,7 +1572,7 @@ export const TimePartitioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimePartitioning" }) as any as S.Schema<TimePartitioning>;
 
 export type SchemaConfigSchemaTypeEnum = "SCHEMA_TYPE_UNSPECIFIED" | "ANALYTICS" | "ANALYTICS_V2";
-export const SchemaConfigSchemaTypeEnum = S.String;
+const SchemaConfigSchemaTypeEnum = S.String;
 
 /** Configuration for the FHIR BigQuery schema. Determines how the server generates the schema. */
 export interface SchemaConfig {
@@ -1606,7 +1583,7 @@ export interface SchemaConfig {
   /** Specifies the output schema type. Schema type is required. */
   schemaType?: SchemaConfigSchemaTypeEnum | (string & {});
 }
-export const SchemaConfig = /*@__PURE__*/ S.suspend(() =>
+const SchemaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recursiveStructureDepth: S.optional(S.String),
     lastUpdatedPartitionConfig: S.optional(TimePartitioning),
@@ -1627,7 +1604,7 @@ export interface GoogleCloudHealthcareV1FhirBigQueryDestination {
   /** Optional. The configuration for the exported BigQuery schema. */
   schemaConfig?: SchemaConfig;
 }
-export const GoogleCloudHealthcareV1FhirBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1FhirBigQueryDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     writeDisposition: S.optional(
       GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionEnum,
@@ -1647,7 +1624,7 @@ export interface KmsWrappedCryptoKey {
   /** Required. The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`. */
   cryptoKey?: string;
 }
-export const KmsWrappedCryptoKey = /*@__PURE__*/ S.suspend(() =>
+const KmsWrappedCryptoKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     wrappedKey: S.optional(S.String),
     cryptoKey: S.optional(S.String),
@@ -1661,7 +1638,7 @@ export interface CryptoHashConfig {
   /** An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set. */
   cryptoKey?: string;
 }
-export const CryptoHashConfig = /*@__PURE__*/ S.suspend(() =>
+const CryptoHashConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kmsWrapped: S.optional(KmsWrappedCryptoKey),
     cryptoKey: S.optional(S.String),
@@ -1675,18 +1652,16 @@ export interface DateShiftConfig {
   /** An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set. */
   cryptoKey?: string;
 }
-export const DateShiftConfig = CryptoHashConfig as any as S.Schema<DateShiftConfig>;
+const DateShiftConfig = CryptoHashConfig as any as S.Schema<DateShiftConfig>;
 
 /** When using the INSPECT_AND_TRANSFORM action, each match is replaced with the name of the info_type. For example, "My name is Jane" becomes "My name is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting. */
 export type ReplaceWithInfoTypeConfig = ArchiveUserDataMappingRequest;
-export const ReplaceWithInfoTypeConfig = ArchiveUserDataMappingRequest;
-
 /** Mask a string by replacing its characters with a fixed character. */
 export interface CharacterMaskConfig {
   /** Optional. Character to mask the sensitive values. If not supplied, defaults to "*". */
   maskingCharacter?: string;
 }
-export const CharacterMaskConfig = /*@__PURE__*/ S.suspend(() =>
+const CharacterMaskConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maskingCharacter: S.optional(S.String),
   }),
@@ -1694,8 +1669,6 @@ export const CharacterMaskConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ." */
 export type RedactConfig = ArchiveUserDataMappingRequest;
-export const RedactConfig = ArchiveUserDataMappingRequest;
-
 /** A transformation to apply to text that is identified as a specific info_type. */
 export interface InfoTypeTransformation {
   /** Config for crypto hash. */
@@ -1711,7 +1684,7 @@ export interface InfoTypeTransformation {
   /** Optional. InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type. */
   infoTypes?: StringList;
 }
-export const InfoTypeTransformation = /*@__PURE__*/ S.suspend(() =>
+const InfoTypeTransformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cryptoHashConfig: S.optional(CryptoHashConfig),
     dateShiftConfig: S.optional(DateShiftConfig),
@@ -1723,7 +1696,7 @@ export const InfoTypeTransformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InfoTypeTransformation" }) as any as S.Schema<InfoTypeTransformation>;
 
 export type InfoTypeTransformationList = Array<InfoTypeTransformation>;
-export const InfoTypeTransformationList = /*@__PURE__*/ S.Array(
+const InfoTypeTransformationList = /*@__PURE__*/ S.Array(
   InfoTypeTransformation,
 ) as any as S.Schema<InfoTypeTransformationList>;
 
@@ -1735,7 +1708,7 @@ export interface TextConfig {
   /** Optional. InfoTypes to skip transforming, overriding `additional_transformations`. */
   excludeInfoTypes?: StringList;
 }
-export const TextConfig = /*@__PURE__*/ S.suspend(() =>
+const TextConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transformations: S.optional(InfoTypeTransformationList),
     additionalTransformations: S.optional(InfoTypeTransformationList),
@@ -1748,14 +1721,14 @@ export type ImageConfigTextRedactionModeEnum =
   | "REDACT_ALL_TEXT"
   | "REDACT_SENSITIVE_TEXT"
   | "REDACT_NO_TEXT";
-export const ImageConfigTextRedactionModeEnum = S.String;
+const ImageConfigTextRedactionModeEnum = S.String;
 
 /** Specifies how to handle de-identification of image pixels. */
 export interface ImageConfig {
   /** Optional. Determines how to redact text from image. */
   textRedactionMode?: ImageConfigTextRedactionModeEnum | (string & {});
 }
-export const ImageConfig = /*@__PURE__*/ S.suspend(() =>
+const ImageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     textRedactionMode: S.optional(ImageConfigTextRedactionModeEnum),
   }),
@@ -1766,7 +1739,7 @@ export type FieldMetadataActionEnum =
   | "TRANSFORM"
   | "INSPECT_AND_TRANSFORM"
   | "DO_NOT_TRANSFORM";
-export const FieldMetadataActionEnum = S.String;
+const FieldMetadataActionEnum = S.String;
 
 /** Specifies FHIR paths to match, and how to handle de-identification of matching fields. */
 export interface FieldMetadata {
@@ -1775,7 +1748,7 @@ export interface FieldMetadata {
   /** Optional. Deidentify action for one field. */
   action?: FieldMetadataActionEnum | (string & {});
 }
-export const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
+const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: S.optional(StringList),
     action: S.optional(FieldMetadataActionEnum),
@@ -1783,7 +1756,7 @@ export const FieldMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldMetadata" }) as any as S.Schema<FieldMetadata>;
 
 export type FieldMetadataList = Array<FieldMetadata>;
-export const FieldMetadataList = /*@__PURE__*/ S.Array(
+const FieldMetadataList = /*@__PURE__*/ S.Array(
   FieldMetadata,
 ) as any as S.Schema<FieldMetadataList>;
 
@@ -1794,7 +1767,7 @@ export interface FhirConfig {
   /** Optional. The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If true, all extensions are preserved during de-identification by default. If false or unspecified, all extensions are removed during de-identification by default. */
   defaultKeepExtensions?: boolean;
 }
-export const FhirConfig = /*@__PURE__*/ S.suspend(() =>
+const FhirConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldMetadataList: S.optional(FieldMetadataList),
     defaultKeepExtensions: S.optional(S.Boolean),
@@ -1807,14 +1780,14 @@ export type DicomConfigFilterProfileEnum =
   | "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"
   | "KEEP_ALL_PROFILE"
   | "DEIDENTIFY_TAG_CONTENTS";
-export const DicomConfigFilterProfileEnum = S.String;
+const DicomConfigFilterProfileEnum = S.String;
 
 /** List of tags to be filtered. */
 export interface TagFilterList {
   /** Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: https://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010". */
   tags?: StringList;
 }
-export const TagFilterList = /*@__PURE__*/ S.suspend(() =>
+const TagFilterList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(StringList),
   }),
@@ -1831,7 +1804,7 @@ export interface DicomConfig {
   /** List of tags to keep. Remove all other tags. */
   keepList?: TagFilterList;
 }
-export const DicomConfig = /*@__PURE__*/ S.suspend(() =>
+const DicomConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skipIdRedaction: S.optional(S.Boolean),
     filterProfile: S.optional(DicomConfigFilterProfileEnum),
@@ -1853,7 +1826,7 @@ export interface DeidentifyConfig {
   /** Optional. Configures de-id of application/DICOM content. */
   dicom?: DicomConfig;
 }
-export const DeidentifyConfig = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useRegionalDataProcessing: S.optional(S.Boolean),
     text: S.optional(TextConfig),
@@ -1870,7 +1843,7 @@ export interface DeidentifiedStoreDestination {
   /** Optional. The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
   store?: string;
 }
-export const DeidentifiedStoreDestination = /*@__PURE__*/ S.suspend(() =>
+const DeidentifiedStoreDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(DeidentifyConfig),
     store: S.optional(S.String),
@@ -1888,7 +1861,7 @@ export interface StreamConfig {
   /** The destination FHIR store for de-identified resources. After this field is added, all subsequent creates/updates/patches to the source store will be de-identified using the provided configuration and applied to the destination store. Resources deleted from the source store will be deleted from the destination store. Importing resources to the source store will not trigger the streaming. If the source store already contains resources when this option is enabled, those resources will not be copied to the destination store unless they are subsequently updated. This may result in invalid references in the destination store. Before adding this config, you must grant the healthcare.fhirResources.update permission on the destination store to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent). The destination store must set enable_update_create to true. The destination store must have disable_referential_integrity set to true. If a resource cannot be de-identified, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Not supported for R5 stores. */
   deidentifiedStoreDestination?: DeidentifiedStoreDestination;
 }
-export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
+const StreamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceTypes: S.optional(StringList),
     bigqueryDestination: S.optional(GoogleCloudHealthcareV1FhirBigQueryDestination),
@@ -1897,23 +1870,21 @@ export const StreamConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamConfig" }) as any as S.Schema<StreamConfig>;
 
 export type StreamConfigList = Array<StreamConfig>;
-export const StreamConfigList = /*@__PURE__*/ S.Array(
-  StreamConfig,
-) as any as S.Schema<StreamConfigList>;
+const StreamConfigList = /*@__PURE__*/ S.Array(StreamConfig) as any as S.Schema<StreamConfigList>;
 
 export type AccessDeterminationLogConfigLogLevelEnum =
   | "LOG_LEVEL_UNSPECIFIED"
   | "DISABLED"
   | "MINIMUM"
   | "VERBOSE";
-export const AccessDeterminationLogConfigLogLevelEnum = S.String;
+const AccessDeterminationLogConfigLogLevelEnum = S.String;
 
 /** Configures consent audit log config for FHIR create, read, update, and delete (CRUD) operations. Cloud audit log for healthcare API must be [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable). The consent-related logs are included as part of `protoPayload.metadata`. */
 export interface AccessDeterminationLogConfig {
   /** Optional. Controls the amount of detail to include as part of the audit logs. */
   logLevel?: AccessDeterminationLogConfigLogLevelEnum | (string & {});
 }
-export const AccessDeterminationLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AccessDeterminationLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logLevel: S.optional(AccessDeterminationLogConfigLogLevelEnum),
   }),
@@ -1925,21 +1896,21 @@ export type ConsentHeaderHandlingProfileEnum =
   | "SCOPE_PROFILE_UNSPECIFIED"
   | "PERMIT_EMPTY_SCOPE"
   | "REQUIRED_ON_READ";
-export const ConsentHeaderHandlingProfileEnum = S.String;
+const ConsentHeaderHandlingProfileEnum = S.String;
 
 /** How the server handles the consent header. */
 export interface ConsentHeaderHandling {
   /** Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used. */
   profile?: ConsentHeaderHandlingProfileEnum | (string & {});
 }
-export const ConsentHeaderHandling = /*@__PURE__*/ S.suspend(() =>
+const ConsentHeaderHandling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     profile: S.optional(ConsentHeaderHandlingProfileEnum),
   }),
 ).annotate({ identifier: "ConsentHeaderHandling" }) as any as S.Schema<ConsentHeaderHandling>;
 
 export type ConsentConfigVersionEnum = "CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED" | "V1";
-export const ConsentConfigVersionEnum = S.String;
+const ConsentConfigVersionEnum = S.String;
 
 /** Configures whether to enforce consent for the FHIR store and which consent enforcement version is being used. */
 export interface ConsentConfig {
@@ -1954,7 +1925,7 @@ export interface ConsentConfig {
   /** Output only. The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents. */
   enforcedAdminConsents?: StringList;
 }
-export const ConsentConfig = /*@__PURE__*/ S.suspend(() =>
+const ConsentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessEnforced: S.optional(S.Boolean),
     accessDeterminationLogConfig: S.optional(AccessDeterminationLogConfig),
@@ -1995,7 +1966,7 @@ export interface FhirStore {
   /** Optional. Specifies whether this store has consent enforcement. Not available for DSTU2 FHIR version due to absence of Consent resources. Not supported for R5 FHIR version. */
   consentConfig?: ConsentConfig;
 }
-export const FhirStore = /*@__PURE__*/ S.suspend(() =>
+const FhirStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notificationConfigs: S.optional(FhirNotificationConfigList),
     disableResourceVersioning: S.optional(S.Boolean),
@@ -2022,7 +1993,7 @@ export interface CreateProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: FhirStore;
 }
-export const CreateProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fhirStoreId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2046,7 +2017,7 @@ export interface CreateProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const CreateProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String.pipe(T.Label()),
     parent: S.String.pipe(T.Label()),
@@ -2067,7 +2038,7 @@ export type SchemaPackageUnexpectedSegmentHandlingEnum =
   | "FAIL"
   | "SKIP"
   | "PARSE";
-export const SchemaPackageUnexpectedSegmentHandlingEnum = S.String;
+const SchemaPackageUnexpectedSegmentHandlingEnum = S.String;
 
 /** An HL7v2 Segment. */
 export interface SchemaSegment {
@@ -2078,7 +2049,7 @@ export interface SchemaSegment {
   /** The minimum number of times this segment can be present in this group. */
   minOccurs?: number;
 }
-export const SchemaSegment = /*@__PURE__*/ S.suspend(() =>
+const SchemaSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxOccurs: S.optional(S.Number),
     type: S.optional(S.String),
@@ -2091,7 +2062,7 @@ export interface GroupOrSegment {
   segment?: SchemaSegment;
   group?: SchemaGroup;
 }
-export const GroupOrSegment = /*@__PURE__*/ S.suspend(() =>
+const GroupOrSegment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segment: S.optional(SchemaSegment),
     group: S.optional(S.suspend(() => SchemaGroup)),
@@ -2099,7 +2070,7 @@ export const GroupOrSegment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupOrSegment" }) as any as S.Schema<GroupOrSegment>;
 
 export type GroupOrSegmentList = Array<GroupOrSegment>;
-export const GroupOrSegmentList = /*@__PURE__*/ S.Array(
+const GroupOrSegmentList = /*@__PURE__*/ S.Array(
   GroupOrSegment,
 ) as any as S.Schema<GroupOrSegmentList>;
 
@@ -2116,7 +2087,7 @@ export interface SchemaGroup {
   /** The name of this group. For example, "ORDER_DETAIL". */
   name?: string;
 }
-export const SchemaGroup = /*@__PURE__*/ S.suspend(() =>
+const SchemaGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minOccurs: S.optional(S.Number),
     members: S.optional(GroupOrSegmentList),
@@ -2127,7 +2098,7 @@ export const SchemaGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaGroup" }) as any as S.Schema<SchemaGroup>;
 
 export type SchemaGroupMap = { [key: string]: SchemaGroup | undefined };
-export const SchemaGroupMap = /*@__PURE__*/ S.Record(
+const SchemaGroupMap = /*@__PURE__*/ S.Record(
   S.String,
   SchemaGroup,
 ) as any as S.Schema<SchemaGroupMap>;
@@ -2139,7 +2110,7 @@ export interface VersionSource {
   /** The value to match with the field. For example, "My Application Name" or "2.3". */
   value?: string;
 }
-export const VersionSource = /*@__PURE__*/ S.suspend(() =>
+const VersionSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mshField: S.optional(S.String),
     value: S.optional(S.String),
@@ -2147,7 +2118,7 @@ export const VersionSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VersionSource" }) as any as S.Schema<VersionSource>;
 
 export type VersionSourceList = Array<VersionSource>;
-export const VersionSourceList = /*@__PURE__*/ S.Array(
+const VersionSourceList = /*@__PURE__*/ S.Array(
   VersionSource,
 ) as any as S.Schema<VersionSourceList>;
 
@@ -2158,7 +2129,7 @@ export interface Hl7SchemaConfig {
   /** Each VersionSource is tested and only if they all match is the schema used for the message. */
   version?: VersionSourceList;
 }
-export const Hl7SchemaConfig = /*@__PURE__*/ S.suspend(() =>
+const Hl7SchemaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     messageSchemaConfigs: S.optional(SchemaGroupMap),
     version: S.optional(VersionSourceList),
@@ -2166,7 +2137,7 @@ export const Hl7SchemaConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hl7SchemaConfig" }) as any as S.Schema<Hl7SchemaConfig>;
 
 export type Hl7SchemaConfigList = Array<Hl7SchemaConfig>;
-export const Hl7SchemaConfigList = /*@__PURE__*/ S.Array(
+const Hl7SchemaConfigList = /*@__PURE__*/ S.Array(
   Hl7SchemaConfig,
 ) as any as S.Schema<Hl7SchemaConfigList>;
 
@@ -2174,10 +2145,10 @@ export type SchemaPackageSchematizedParsingTypeEnum =
   | "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"
   | "SOFT_FAIL"
   | "HARD_FAIL";
-export const SchemaPackageSchematizedParsingTypeEnum = S.String;
+const SchemaPackageSchematizedParsingTypeEnum = S.String;
 
 export type TypePrimitiveEnum = "PRIMITIVE_UNSPECIFIED" | "STRING" | "VARIES" | "UNESCAPED_STRING";
-export const TypePrimitiveEnum = S.String;
+const TypePrimitiveEnum = S.String;
 
 /** A (sub) field of a type. */
 export interface Field {
@@ -2192,7 +2163,7 @@ export interface Field {
   /** The name of the field. For example, "PID-1" or just "1". */
   name?: string;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxOccurs: S.optional(S.Number),
     table: S.optional(S.String),
@@ -2203,7 +2174,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Field" }) as any as S.Schema<Field>;
 
 export type FieldList = Array<Field>;
-export const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
+const FieldList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FieldList>;
 
 /** A type definition for some HL7v2 type (incl. Segments and Datatypes). */
 export interface Type {
@@ -2214,7 +2185,7 @@ export interface Type {
   /** The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN". */
   name?: string;
 }
-export const Type = /*@__PURE__*/ S.suspend(() =>
+const Type = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primitive: S.optional(TypePrimitiveEnum),
     fields: S.optional(FieldList),
@@ -2223,7 +2194,7 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Type" }) as any as S.Schema<Type>;
 
 export type TypeList = Array<Type>;
-export const TypeList = /*@__PURE__*/ S.Array(Type) as any as S.Schema<TypeList>;
+const TypeList = /*@__PURE__*/ S.Array(Type) as any as S.Schema<TypeList>;
 
 /** Root config for HL7v2 datatype definitions for a specific HL7v2 version. */
 export interface Hl7TypesConfig {
@@ -2232,7 +2203,7 @@ export interface Hl7TypesConfig {
   /** The HL7v2 type definitions. */
   type?: TypeList;
 }
-export const Hl7TypesConfig = /*@__PURE__*/ S.suspend(() =>
+const Hl7TypesConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(VersionSourceList),
     type: S.optional(TypeList),
@@ -2240,7 +2211,7 @@ export const Hl7TypesConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hl7TypesConfig" }) as any as S.Schema<Hl7TypesConfig>;
 
 export type Hl7TypesConfigList = Array<Hl7TypesConfig>;
-export const Hl7TypesConfigList = /*@__PURE__*/ S.Array(
+const Hl7TypesConfigList = /*@__PURE__*/ S.Array(
   Hl7TypesConfig,
 ) as any as S.Schema<Hl7TypesConfigList>;
 
@@ -2257,7 +2228,7 @@ export interface SchemaPackage {
   /** Optional. Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent. */
   ignoreMinOccurs?: boolean;
 }
-export const SchemaPackage = /*@__PURE__*/ S.suspend(() =>
+const SchemaPackage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unexpectedSegmentHandling: S.optional(SchemaPackageUnexpectedSegmentHandlingEnum),
     schemas: S.optional(Hl7SchemaConfigList),
@@ -2268,7 +2239,7 @@ export const SchemaPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchemaPackage" }) as any as S.Schema<SchemaPackage>;
 
 export type ParserConfigVersionEnum = "PARSER_VERSION_UNSPECIFIED" | "V1" | "V2" | "V3";
-export const ParserConfigVersionEnum = S.String;
+const ParserConfigVersionEnum = S.String;
 
 /** The configuration for the parser. It determines how the server parses the messages. */
 export interface ParserConfig {
@@ -2281,7 +2252,7 @@ export interface ParserConfig {
   /** Optional. Byte(s) to use as the segment terminator. If this is unset, '\r' is used as segment terminator, matching the HL7 version 2 specification. */
   segmentTerminator?: string;
 }
-export const ParserConfig = /*@__PURE__*/ S.suspend(() =>
+const ParserConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(SchemaPackage),
     version: S.optional(ParserConfigVersionEnum),
@@ -2297,7 +2268,7 @@ export interface Hl7V2NotificationConfig {
   /** Optional. Restricts notifications sent for messages matching a filter. If this is empty, all messages are matched. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`. */
   filter?: string;
 }
-export const Hl7V2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
+const Hl7V2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pubsubTopic: S.optional(S.String),
     filter: S.optional(S.String),
@@ -2305,7 +2276,7 @@ export const Hl7V2NotificationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hl7V2NotificationConfig" }) as any as S.Schema<Hl7V2NotificationConfig>;
 
 export type Hl7V2NotificationConfigList = Array<Hl7V2NotificationConfig>;
-export const Hl7V2NotificationConfigList = /*@__PURE__*/ S.Array(
+const Hl7V2NotificationConfigList = /*@__PURE__*/ S.Array(
   Hl7V2NotificationConfig,
 ) as any as S.Schema<Hl7V2NotificationConfigList>;
 
@@ -2322,7 +2293,7 @@ export interface Hl7V2Store {
   /** Optional. A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client. */
   notificationConfigs?: Hl7V2NotificationConfigList;
 }
-export const Hl7V2Store = /*@__PURE__*/ S.suspend(() =>
+const Hl7V2Store = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parserConfig: S.optional(ParserConfig),
     labels: S.optional(StringMap),
@@ -2340,7 +2311,7 @@ export interface CreateProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: Hl7V2Store;
 }
-export const CreateProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl7V2StoreId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2365,7 +2336,7 @@ export interface Segment {
   /** A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c". */
   fields?: StringMap;
 }
-export const Segment = /*@__PURE__*/ S.suspend(() =>
+const Segment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     setId: S.optional(S.String),
     segmentId: S.optional(S.String),
@@ -2374,13 +2345,13 @@ export const Segment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
 
 export type SegmentList = Array<Segment>;
-export const SegmentList = /*@__PURE__*/ S.Array(Segment) as any as S.Schema<SegmentList>;
+const SegmentList = /*@__PURE__*/ S.Array(Segment) as any as S.Schema<SegmentList>;
 
 /** The content of a HL7v2 message in a structured format. */
 export interface ParsedData {
   segments?: SegmentList;
 }
-export const ParsedData = /*@__PURE__*/ S.suspend(() =>
+const ParsedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     segments: S.optional(SegmentList),
   }),
@@ -2393,7 +2364,7 @@ export interface SchematizedData {
   /** The error output of the parser. */
   error?: string;
 }
-export const SchematizedData = /*@__PURE__*/ S.suspend(() =>
+const SchematizedData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     error: S.optional(S.String),
@@ -2407,7 +2378,7 @@ export interface PatientId {
   /** The patient's unique identifier. */
   value?: string;
 }
-export const PatientId = /*@__PURE__*/ S.suspend(() =>
+const PatientId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     value: S.optional(S.String),
@@ -2415,7 +2386,7 @@ export const PatientId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatientId" }) as any as S.Schema<PatientId>;
 
 export type PatientIdList = Array<PatientId>;
-export const PatientIdList = /*@__PURE__*/ S.Array(PatientId) as any as S.Schema<PatientIdList>;
+const PatientIdList = /*@__PURE__*/ S.Array(PatientId) as any as S.Schema<PatientIdList>;
 
 /** A complete HL7v2 message. See [Introduction to HL7 Standards] (https://www.hl7.org/implement/standards/index.cfm?ref=common) for details on the standard. */
 export interface Message {
@@ -2440,7 +2411,7 @@ export interface Message {
   /** Output only. All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message. */
   patientIds?: PatientIdList;
 }
-export const Message = /*@__PURE__*/ S.suspend(() =>
+const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sendFacility: S.optional(S.String),
     data: S.optional(S.String),
@@ -2460,7 +2431,7 @@ export interface CreateMessageRequest {
   /** Required. HL7v2 message. */
   message?: Message;
 }
-export const CreateMessageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateMessageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
   }),
@@ -2472,18 +2443,17 @@ export interface CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Request body */
   body?: CreateMessageRequest;
 }
-export const CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(CreateMessageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/messages",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/messages",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
 }) as any as S.Schema<CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
@@ -2497,7 +2467,7 @@ export interface DeidentifyDatasetRequest {
   /** Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service account. Only one of `config` and `gcs_config_uri` can be specified. */
   gcsConfigUri?: string;
 }
-export const DeidentifyDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationDataset: S.optional(S.String),
     config: S.optional(DeidentifyConfig),
@@ -2511,7 +2481,7 @@ export interface DeidentifyProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: DeidentifyDatasetRequest;
 }
-export const DeidentifyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceDataset: S.String.pipe(T.Label()),
     body: S.optional(DeidentifyDatasetRequest.pipe(T.HttpBody())),
@@ -2531,7 +2501,7 @@ export interface DicomFilterConfig {
   /** The Cloud Storage location of the filter configuration file. The `gcs_uri` must be in the format `gs://bucket/path/to/object`. The filter configuration file must contain a list of resource paths separated by newline characters (\n or \r\n). Each resource path must be in the format "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]" The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. */
   resourcePathsGcsUri?: string;
 }
-export const DicomFilterConfig = /*@__PURE__*/ S.suspend(() =>
+const DicomFilterConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePathsGcsUri: S.optional(S.String),
   }),
@@ -2548,7 +2518,7 @@ export interface DeidentifyDicomStoreRequest {
   /** Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service account. Only one of `config` and `gcs_config_uri` can be specified. */
   gcsConfigUri?: string;
 }
-export const DeidentifyDicomStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyDicomStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(DeidentifyConfig),
     filterConfig: S.optional(DicomFilterConfig),
@@ -2565,7 +2535,7 @@ export interface DeidentifyProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: DeidentifyDicomStoreRequest;
 }
-export const DeidentifyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceStore: S.String.pipe(T.Label()),
     body: S.optional(DeidentifyDicomStoreRequest.pipe(T.HttpBody())),
@@ -2585,7 +2555,7 @@ export interface Resources {
   /** List of resources IDs. For example, "Patient/1234". */
   resources?: StringList;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(StringList),
   }),
@@ -2596,7 +2566,7 @@ export interface FhirFilter {
   /** List of resources to include in the output. If this list is empty or not specified, all resources are included in the output. */
   resources?: Resources;
 }
-export const FhirFilter = /*@__PURE__*/ S.suspend(() =>
+const FhirFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(Resources),
   }),
@@ -2615,7 +2585,7 @@ export interface DeidentifyFhirStoreRequest {
   /** Cloud Storage location to read the JSON cloud.healthcare.deidentify.DeidentifyConfig from, overriding the default config. Must be of the form `gs://{bucket_id}/path/to/object`. The Cloud Storage location must grant the Cloud IAM role `roles/storage.objectViewer` to the project's Cloud Healthcare Service Agent service account. Only one of `config` and `gcs_config_uri` can be specified. */
   gcsConfigUri?: string;
 }
-export const DeidentifyFhirStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyFhirStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     destinationStore: S.optional(S.String),
     config: S.optional(DeidentifyConfig),
@@ -2633,7 +2603,7 @@ export interface DeidentifyProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: DeidentifyFhirStoreRequest;
 }
-export const DeidentifyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeidentifyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceStore: S.String.pipe(T.Label()),
     body: S.optional(DeidentifyFhirStoreRequest.pipe(T.HttpBody())),
@@ -2652,7 +2622,7 @@ export interface DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperation
   /** Required. Name of the operation to be deleted, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`. */
   name: string;
 }
-export const DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest =
+const DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2671,7 +2641,7 @@ export interface DeleteProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to delete. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2685,7 +2655,7 @@ export interface DeleteProjectsLocationsDatasetsConsentStoresRequest {
   /** Required. The resource name of the consent store to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2699,7 +2669,7 @@ export interface DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinition
   /** Required. The resource name of the Attribute definition to delete. To preserve referential integrity, Attribute definitions referenced by a User data mapping or the latest revision of a Consent cannot be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
+const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2718,26 +2688,7 @@ export interface DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsReq
   /** Required. The resource name of the Consent artifact to delete. To preserve referential integrity, Consent artifacts referenced by the latest revision of a Consent cannot be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
-
-export interface DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest {
-  /** Required. The resource name of the Consent to delete, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name. */
-  name: string;
-}
-export const DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
+const DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2749,6 +2700,24 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__
       }),
     ),
 ).annotate({
+  identifier: "DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+
+export interface DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest {
+  /** Required. The resource name of the Consent to delete, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name. */
+  name: string;
+}
+const DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
   identifier: "DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
@@ -2756,8 +2725,8 @@ export interface DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsReq
   /** Required. The resource name of the User data mapping to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -2767,15 +2736,15 @@ export const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+).annotate({
+  identifier: "DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The resource name of the DICOM store to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2790,18 +2759,17 @@ export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest {
   /** Required. The path of the DeleteStudy request. For example, `studies/{study_uid}`. */
   dicomWebPath: string;
 }
-export const DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      dicomWebPath: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    dicomWebPath: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest>;
@@ -2812,21 +2780,20 @@ export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest 
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dicomWebPath: S.String.pipe(T.Label()),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
-  }) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicomWebPath: S.String.pipe(T.Label()),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
+}) as any as S.Schema<DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
   /** Required. The path of the DeleteInstance request. For example, `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`. */
@@ -2834,7 +2801,7 @@ export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstance
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
+const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
@@ -2854,7 +2821,7 @@ export interface DeleteProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. The resource name of the FHIR store to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2868,7 +2835,7 @@ export interface DeleteProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2882,7 +2849,7 @@ export interface DeleteProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Required. The resource name of the HL7v2 store to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -2896,17 +2863,16 @@ export interface DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Required. The resource name of the HL7v2 message to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
 }) as any as S.Schema<DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
@@ -2915,8 +2881,8 @@ export interface DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsReq
   /** Required. The resource name of the Consent revision to delete, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is not specified in the name. */
   name: string;
 }
-export const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -2926,15 +2892,15 @@ export const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest",
-  }) as any as S.Schema<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+).annotate({
+  identifier: "DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest",
+}) as any as S.Schema<DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type EvaluateUserConsentsRequestResponseViewEnum =
   | "RESPONSE_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const EvaluateUserConsentsRequestResponseViewEnum = S.String;
+const EvaluateUserConsentsRequestResponseViewEnum = S.String;
 
 /** Evaluate a user's Consents for all matching User data mappings. Note: User data mappings are indexed asynchronously, causing slight delays between the time mappings are created or updated and when they are included in EvaluateUserConsents results. */
 export interface EvaluateUserConsentsRequest {
@@ -2953,7 +2919,7 @@ export interface EvaluateUserConsentsRequest {
   /** Optional. The values of resource attributes associated with the resources being requested. If no values are specified, then all resources are queried. */
   resourceAttributes?: StringMap;
 }
-export const EvaluateUserConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateUserConsentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseView: S.optional(EvaluateUserConsentsRequestResponseViewEnum),
     userId: S.optional(S.String),
@@ -2973,8 +2939,8 @@ export interface EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresReque
   /** Request body */
   body?: EvaluateUserConsentsRequest;
 }
-export const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       consentStore: S.String.pipe(T.Label()),
       body: S.optional(EvaluateUserConsentsRequest.pipe(T.HttpBody())),
@@ -2985,9 +2951,9 @@ export const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest",
-  }) as any as S.Schema<EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest>;
+).annotate({
+  identifier: "EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest",
+}) as any as S.Schema<EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest>;
 
 /** The consent evaluation result for a single `data_id`. */
 export interface Result {
@@ -2998,7 +2964,7 @@ export interface Result {
   /** The resource names of all evaluated Consents mapped to their evaluation. */
   consentDetails?: ConsentEvaluationMap;
 }
-export const Result = /*@__PURE__*/ S.suspend(() =>
+const Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataId: S.optional(S.String),
     consented: S.optional(S.Boolean),
@@ -3007,7 +2973,7 @@ export const Result = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
 
 export type ResultList = Array<Result>;
-export const ResultList = /*@__PURE__*/ S.Array(Result) as any as S.Schema<ResultList>;
+const ResultList = /*@__PURE__*/ S.Array(Result) as any as S.Schema<ResultList>;
 
 export interface EvaluateUserConsentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. This token is valid for 72 hours after it is created. */
@@ -3015,7 +2981,7 @@ export interface EvaluateUserConsentsResponse {
   /** The consent evaluation result for each `data_id`. */
   results?: ResultList;
 }
-export const EvaluateUserConsentsResponse = /*@__PURE__*/ S.suspend(() =>
+const EvaluateUserConsentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     results: S.optional(ResultList),
@@ -3030,18 +2996,17 @@ export interface ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/fhir",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/fhir",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -3052,18 +3017,17 @@ export interface ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. The ID (`{resourceType}/{id}`) of the resource to explain data access on. */
   resourceId?: string;
 }
-export const ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      resourceId: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:explainDataAccess",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    resourceId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:explainDataAccess",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest",
 }) as any as S.Schema<ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest>;
@@ -3072,18 +3036,16 @@ export type ExplainDataAccessConsentInfoVariantsItemEnum =
   | "CONSENT_VARIANT_UNSPECIFIED"
   | "CONSENT_VARIANT_STANDARD"
   | "CONSENT_VARIANT_CASCADE";
-export const ExplainDataAccessConsentInfoVariantsItemEnum = S.String;
-
 export type ExplainDataAccessConsentInfoVariantsItemEnumList =
   Array<ExplainDataAccessConsentInfoVariantsItemEnum>;
-export const ExplainDataAccessConsentInfoVariantsItemEnumList =
+const ExplainDataAccessConsentInfoVariantsItemEnumList =
   AnalyzeEntitiesRequestLicensedVocabulariesItemEnumList as any as S.Schema<ExplainDataAccessConsentInfoVariantsItemEnumList>;
 
 export type ExplainDataAccessConsentInfoTypeEnum =
   | "CONSENT_POLICY_TYPE_UNSPECIFIED"
   | "CONSENT_POLICY_TYPE_PATIENT"
   | "CONSENT_POLICY_TYPE_ADMIN";
-export const ExplainDataAccessConsentInfoTypeEnum = S.String;
+const ExplainDataAccessConsentInfoTypeEnum = S.String;
 
 /** The accessor scope that describes who can access, for what purpose, in which environment. */
 export interface ConsentAccessorScope {
@@ -3094,7 +3056,7 @@ export interface ConsentAccessorScope {
   /** An individual, group, or access role that identifies the accessor or a characteristic of the accessor. This can be a resource ID (such as `{resourceType}/{id}`) or an external URI. This value must be present. */
   actor?: string;
 }
-export const ConsentAccessorScope = /*@__PURE__*/ S.suspend(() =>
+const ConsentAccessorScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purpose: S.optional(S.String),
     environment: S.optional(S.String),
@@ -3103,7 +3065,7 @@ export const ConsentAccessorScope = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ConsentAccessorScope" }) as any as S.Schema<ConsentAccessorScope>;
 
 export type ConsentAccessorScopeList = Array<ConsentAccessorScope>;
-export const ConsentAccessorScopeList = /*@__PURE__*/ S.Array(
+const ConsentAccessorScopeList = /*@__PURE__*/ S.Array(
   ConsentAccessorScope,
 ) as any as S.Schema<ConsentAccessorScopeList>;
 
@@ -3124,7 +3086,7 @@ export interface ExplainDataAccessConsentInfo {
   /** The compartment base resources that matched a cascading policy. Each resource has the following format: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/{resource_type}/{resource_id}` */
   cascadeOrigins?: StringList;
 }
-export const ExplainDataAccessConsentInfo = /*@__PURE__*/ S.suspend(() =>
+const ExplainDataAccessConsentInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     patientConsentOwner: S.optional(S.String),
     enforcementTime: S.optional(S.String),
@@ -3139,7 +3101,7 @@ export const ExplainDataAccessConsentInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExplainDataAccessConsentInfo>;
 
 export type ExplainDataAccessConsentInfoList = Array<ExplainDataAccessConsentInfo>;
-export const ExplainDataAccessConsentInfoList = /*@__PURE__*/ S.Array(
+const ExplainDataAccessConsentInfoList = /*@__PURE__*/ S.Array(
   ExplainDataAccessConsentInfo,
 ) as any as S.Schema<ExplainDataAccessConsentInfoList>;
 
@@ -3147,7 +3109,7 @@ export type ExplainDataAccessConsentScopeDecisionEnum =
   | "CONSENT_DECISION_TYPE_UNSPECIFIED"
   | "CONSENT_DECISION_TYPE_PERMIT"
   | "CONSENT_DECISION_TYPE_DENY";
-export const ExplainDataAccessConsentScopeDecisionEnum = S.String;
+const ExplainDataAccessConsentScopeDecisionEnum = S.String;
 
 /** A single consent scope that provides info on who has access to the requested resource scope for a particular purpose and environment, enforced by which consent. */
 export interface ExplainDataAccessConsentScope {
@@ -3160,7 +3122,7 @@ export interface ExplainDataAccessConsentScope {
   /** Whether the current consent scope is permitted or denied access on the requested resource. */
   decision?: ExplainDataAccessConsentScopeDecisionEnum;
 }
-export const ExplainDataAccessConsentScope = /*@__PURE__*/ S.suspend(() =>
+const ExplainDataAccessConsentScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exceptions: S.optional(S.suspend(() => ExplainDataAccessConsentScopeList)),
     enforcingConsents: S.optional(ExplainDataAccessConsentInfoList),
@@ -3172,7 +3134,7 @@ export const ExplainDataAccessConsentScope = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExplainDataAccessConsentScope>;
 
 export type ExplainDataAccessConsentScopeList = Array<ExplainDataAccessConsentScope>;
-export const ExplainDataAccessConsentScopeList = /*@__PURE__*/ S.Array(
+const ExplainDataAccessConsentScopeList = /*@__PURE__*/ S.Array(
   ExplainDataAccessConsentScope,
 ) as any as S.Schema<ExplainDataAccessConsentScopeList>;
 
@@ -3183,7 +3145,7 @@ export interface ExplainDataAccessResponse {
   /** List of applicable consent scopes. Sorted in order of actor such that scopes belonging to the same actor will be adjacent to each other in the list. */
   consentScopes?: ExplainDataAccessConsentScopeList;
 }
-export const ExplainDataAccessResponse = /*@__PURE__*/ S.suspend(() =>
+const ExplainDataAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warning: S.optional(S.String),
     consentScopes: S.optional(ExplainDataAccessConsentScopeList),
@@ -3199,7 +3161,7 @@ export interface GoogleCloudHealthcareV1DicomGcsDestination {
   /** MIME types supported by DICOM spec. Each file is written in the following format: `.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}` The frame_number component exists only for multi-frame instances. Supported MIME types are consistent with supported formats in DICOMweb: https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction. Specifically, the following are supported: - application/dicom; transfer-syntax=1.2.840.10008.1.2 (DICOM Implicit VR Little Endian) - application/dicom; transfer-syntax=1.2.840.10008.1.2.1 (DICOM Explicit VR Little Endian) - application/dicom; transfer-syntax=1.2.840.10008.1.2.1.99 (DICOM Deflated Explicit VR Little Endian) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50 (DICOM with embedded JPEG Baseline) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.51 (DICOM with embedded JPEG Extended) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.57 (DICOM with embedded JPEG Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.70 (DICOM with embedded JPEG Lossless First-Order Prediction) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.80 (DICOM with embedded JPEG-LS Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.81 (DICOM with embedded JPEG-LS Lossy (Near-Lossless)) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90 (DICOM with embedded JPEG 2000 Lossless Only) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91 (DICOM with embedded JPEG 2000) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.110 (DICOM with embedded JPEG XL Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.111 (DICOM with embedded JPEG XL JPEG Recompression) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.112 (DICOM with embedded JPEG XL) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.201 (DICOM with embedded High-Throughput JPEG 2000 Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.202 (DICOM with embedded High-Throughput JPEG 2000 with RPCL Options Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.203 (DICOM with embedded High-Throughput JPEG 2000) - application/dicom; transfer-syntax=1.2.840.10008.1.2.5 (DICOM with embedded RLE Lossless) - application/dicom; transfer-syntax=1.2.840.10008.1.2.8.1 (DICOM with embedded Deflated Image Frame Compression) - application/dicom; transfer-syntax=* (DICOM with no transcoding) - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1 (raw uncompressed PixelData) - application/octet-stream; transfer-syntax=* (raw PixelData in whatever format it was uploaded in) - image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50 (Consumer JPEG) - image/png The following extensions are used for output files: - application/dicom -> .dcm - image/jpeg -> .jpg - image/png -> .png - application/octet-stream -> no extension If unspecified, the instances are exported in the original DICOM format they were uploaded in. */
   mimeType?: string;
 }
-export const GoogleCloudHealthcareV1DicomGcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudHealthcareV1DicomGcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
     mimeType: S.optional(S.String),
@@ -3217,7 +3179,7 @@ export interface ExportDicomDataRequest {
   /** The BigQuery output destination. You can only export to a BigQuery dataset that's in the same project as the DICOM store you're exporting from. The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. */
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
-export const ExportDicomDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDicomDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterConfig: S.optional(DicomFilterConfig),
     gcsDestination: S.optional(GoogleCloudHealthcareV1DicomGcsDestination),
@@ -3231,7 +3193,7 @@ export interface ExportProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: ExportDicomDataRequest;
 }
-export const ExportProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportDicomDataRequest.pipe(T.HttpBody())),
@@ -3257,7 +3219,7 @@ export interface ExportResourcesRequest {
   /** String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s) are exported. */
   _type?: string;
 }
-export const ExportResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bigqueryDestination: S.optional(GoogleCloudHealthcareV1FhirBigQueryDestination),
     _since: S.optional(S.String),
@@ -3272,7 +3234,7 @@ export interface ExportProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: ExportResourcesRequest;
 }
-export const ExportProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportResourcesRequest.pipe(T.HttpBody())),
@@ -3288,7 +3250,7 @@ export const ExportProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ExportProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type GcsDestinationContentStructureEnum = "CONTENT_STRUCTURE_UNSPECIFIED" | "MESSAGE_JSON";
-export const GcsDestinationContentStructureEnum = S.String;
+const GcsDestinationContentStructureEnum = S.String;
 
 export type GcsDestinationMessageViewEnum =
   | "MESSAGE_VIEW_UNSPECIFIED"
@@ -3297,7 +3259,7 @@ export type GcsDestinationMessageViewEnum =
   | "FULL"
   | "SCHEMATIZED_ONLY"
   | "BASIC";
-export const GcsDestinationMessageViewEnum = S.String;
+const GcsDestinationMessageViewEnum = S.String;
 
 /** The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location. */
 export interface GcsDestination {
@@ -3308,7 +3270,7 @@ export interface GcsDestination {
   /** Specifies the parts of the Message resource to include in the export. If not specified, FULL is used. */
   messageView?: GcsDestinationMessageViewEnum | (string & {});
 }
-export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
+const GcsDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uriPrefix: S.optional(S.String),
     contentStructure: S.optional(GcsDestinationContentStructureEnum),
@@ -3321,7 +3283,7 @@ export interface PubsubDestination {
   /** The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub messages are published on. Supplied by the client. The `PubsubMessage` contains the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. */
   pubsubTopic?: string;
 }
-export const PubsubDestination = DicomNotificationConfig as any as S.Schema<PubsubDestination>;
+const PubsubDestination = DicomNotificationConfig as any as S.Schema<PubsubDestination>;
 
 /** Request to schedule an export. */
 export interface ExportMessagesRequest {
@@ -3336,7 +3298,7 @@ export interface ExportMessagesRequest {
   /** Export messages to a Pub/Sub topic. */
   pubsubDestination?: PubsubDestination;
 }
-export const ExportMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     gcsDestination: S.optional(GcsDestination),
@@ -3352,7 +3314,7 @@ export interface ExportProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: ExportMessagesRequest;
 }
-export const ExportProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportMessagesRequest.pipe(T.HttpBody())),
@@ -3373,7 +3335,7 @@ export interface GetBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIns
   /** Required. The path for the `RetrieveBulkdata` DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/bukdata/{bulkdata_uri}`. */
   dicomWebPath: string;
 }
-export const GetBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest =
+const GetBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -3394,8 +3356,8 @@ export interface GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest
   /** Required. The resource name of the DICOM store to get metrics for. */
   name: string;
 }
-export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -3405,9 +3367,9 @@ export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest",
-  }) as any as S.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
+).annotate({
+  identifier: "GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest",
+}) as any as S.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
 
 /** DicomStoreMetrics contains metrics describing a DICOM store. */
 export interface DicomStoreMetrics {
@@ -3424,7 +3386,7 @@ export interface DicomStoreMetrics {
   /** Number of studies in the store. */
   studyCount?: string;
 }
-export const DicomStoreMetrics = /*@__PURE__*/ S.suspend(() =>
+const DicomStoreMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     structuredStorageSizeBytes: S.optional(S.String),
     name: S.optional(S.String),
@@ -3439,7 +3401,7 @@ export interface GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperat
   /** Required. Name of the operation to query, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`. */
   name: string;
 }
-export const GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest =
+const GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3454,20 +3416,19 @@ export interface GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. The resource name of the FHIR store to get metrics for. */
   name: string;
 }
-export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}:getFHIRStoreMetrics",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest",
-  }) as any as S.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
+const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}:getFHIRStoreMetrics",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest",
+}) as any as S.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
 
 /** Count of resources and total storage size by type for a given FHIR store. */
 export interface FhirStoreMetric {
@@ -3480,7 +3441,7 @@ export interface FhirStoreMetric {
   /** The total amount of structured storage used by FHIR resources of this resource type in the store. */
   structuredStorageSizeBytes?: string;
 }
-export const FhirStoreMetric = /*@__PURE__*/ S.suspend(() =>
+const FhirStoreMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versionedStorageSizeBytes: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -3490,7 +3451,7 @@ export const FhirStoreMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FhirStoreMetric" }) as any as S.Schema<FhirStoreMetric>;
 
 export type FhirStoreMetricList = Array<FhirStoreMetric>;
-export const FhirStoreMetricList = /*@__PURE__*/ S.Array(
+const FhirStoreMetricList = /*@__PURE__*/ S.Array(
   FhirStoreMetric,
 ) as any as S.Schema<FhirStoreMetricList>;
 
@@ -3501,7 +3462,7 @@ export interface FhirStoreMetrics {
   /** List of FhirStoreMetric by resource type. */
   metrics?: FhirStoreMetricList;
 }
-export const FhirStoreMetrics = /*@__PURE__*/ S.suspend(() =>
+const FhirStoreMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metrics: S.optional(FhirStoreMetricList),
@@ -3514,7 +3475,7 @@ export interface GetFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInsta
   /** Required. The path of the RetrieveFrames DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}`. */
   dicomWebPath: string;
 }
-export const GetFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest =
+const GetFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -3534,8 +3495,8 @@ export interface GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest
   /** Required. The resource name of the HL7v2 store to get metrics for, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`. */
   name: string;
 }
-export const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
@@ -3545,9 +3506,9 @@ export const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest",
-  }) as any as S.Schema<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>;
+).annotate({
+  identifier: "GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest",
+}) as any as S.Schema<GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 /** Count of messages and total storage size by type for a given HL7 store. */
 export interface Hl7V2StoreMetric {
@@ -3558,7 +3519,7 @@ export interface Hl7V2StoreMetric {
   /** The total amount of structured storage used by HL7v2 messages of this message type in the store. */
   structuredStorageSizeBytes?: string;
 }
-export const Hl7V2StoreMetric = /*@__PURE__*/ S.suspend(() =>
+const Hl7V2StoreMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     messageType: S.optional(S.String),
@@ -3567,7 +3528,7 @@ export const Hl7V2StoreMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hl7V2StoreMetric" }) as any as S.Schema<Hl7V2StoreMetric>;
 
 export type Hl7V2StoreMetricList = Array<Hl7V2StoreMetric>;
-export const Hl7V2StoreMetricList = /*@__PURE__*/ S.Array(
+const Hl7V2StoreMetricList = /*@__PURE__*/ S.Array(
   Hl7V2StoreMetric,
 ) as any as S.Schema<Hl7V2StoreMetricList>;
 
@@ -3578,7 +3539,7 @@ export interface Hl7V2StoreMetrics {
   /** List of HL7v2 store metrics by message type. */
   metrics?: Hl7V2StoreMetricList;
 }
-export const Hl7V2StoreMetrics = /*@__PURE__*/ S.suspend(() =>
+const Hl7V2StoreMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metrics: S.optional(Hl7V2StoreMetricList),
@@ -3591,7 +3552,7 @@ export interface GetIamPolicyProjectsLocationsDatasetsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3615,7 +3576,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     role: S.optional(S.String),
@@ -3624,14 +3585,14 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -3640,7 +3601,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -3648,7 +3609,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -3659,7 +3620,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -3667,9 +3628,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -3682,7 +3641,7 @@ export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     etag: S.optional(S.String),
@@ -3697,7 +3656,28 @@ export interface GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
+const GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
+    resource: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+resource}:getIamPolicy",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
+
+export interface GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
+  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
+  "options.requestedPolicyVersion"?: number;
+  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+}
+const GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3710,30 +3690,8 @@ export const GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
-}) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
-
-export interface GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
-  /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
-  "options.requestedPolicyVersion"?: number;
-  /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-}
-export const GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
-      resource: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+resource}:getIamPolicy",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
-  }) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
+  identifier: "GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
+}) as any as S.Schema<GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
 export interface GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3741,7 +3699,7 @@ export interface GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3762,7 +3720,7 @@ export interface GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -3783,7 +3741,7 @@ export interface GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -3804,7 +3762,7 @@ export interface GetInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIns
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const GetInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
+const GetInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
@@ -3826,21 +3784,20 @@ export interface GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest {
   /** Required. The path of the RetrieveStudyMetadata DICOMweb request. For example, `studies/{study_uid}/metadata`. */
   dicomWebPath: string;
 }
-export const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      dicomWebPath: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest",
-  }) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    dicomWebPath: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest",
+}) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export interface GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest {
   /** Required. The path of the RetrieveSeriesMetadata DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}/metadata`. */
@@ -3848,8 +3805,8 @@ export interface GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesReq
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
       parent: S.String.pipe(T.Label()),
@@ -3860,9 +3817,9 @@ export const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
-  }) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+).annotate({
+  identifier: "GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
+}) as any as S.Schema<GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export interface GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
   /** Required. The path of the RetrieveInstanceMetadata DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/metadata`. */
@@ -3870,7 +3827,7 @@ export interface GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIns
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
+const GetMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
@@ -3890,7 +3847,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3913,7 +3870,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     displayName: S.optional(S.String),
@@ -3927,7 +3884,7 @@ export interface GetProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to read. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3941,7 +3898,7 @@ export interface GetProjectsLocationsDatasetsConsentStoresRequest {
   /** Required. The resource name of the consent store to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3955,7 +3912,7 @@ export interface GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRe
   /** Required. The resource name of the Attribute definition to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
+const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3970,28 +3927,27 @@ export interface GetProjectsLocationsDatasetsConsentStoresConsentArtifactsReques
   /** Required. The resource name of the Consent artifact to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
-
-export interface GetProjectsLocationsDatasetsConsentStoresConsentsRequest {
-  /** Required. The resource name of the Consent to retrieve, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. In order to retrieve a previous revision of the Consent, also provide the revision ID: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}` */
-  name: string;
-}
-export const GetProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
+const GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
     ),
+).annotate({
+  identifier: "GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
+}) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+
+export interface GetProjectsLocationsDatasetsConsentStoresConsentsRequest {
+  /** Required. The resource name of the Consent to retrieve, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. In order to retrieve a previous revision of the Consent, also provide the revision ID: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}@{revision_id}` */
+  name: string;
+}
+const GetProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresConsentsRequest>;
@@ -4000,22 +3956,22 @@ export interface GetProjectsLocationsDatasetsConsentStoresUserDataMappingsReques
   /** Required. The resource name of the User data mapping to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-  }) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+).annotate({
+  identifier: "GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+}) as any as S.Schema<GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export interface GetProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The resource name of the DICOM store to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4029,7 +3985,7 @@ export interface GetProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. The resource name of the FHIR store to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4043,7 +3999,7 @@ export interface GetProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Required. The resource name of the HL7v2 store to get. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4060,7 +4016,7 @@ export type GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "FULL"
   | "SCHEMATIZED_ONLY"
   | "BASIC";
-export const GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum = S.String;
+const GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum = S.String;
 
 export interface GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Required. The resource name of the HL7v2 message to retrieve. */
@@ -4068,7 +4024,7 @@ export interface GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Specifies which parts of the Message resource to return in the response. When unspecified, equivalent to FULL. */
   view?: GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum | (string & {});
 }
-export const GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum.pipe(T.Query())),
@@ -4083,7 +4039,7 @@ export interface GetProjectsLocationsDatasetsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -4101,7 +4057,7 @@ export interface GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIns
   /** Optional. The viewport setting to use as specified in https://dicom.nema.org/medical/dicom/current/output/chtml/part18/sect_8.3.5.html#sect_8.3.5.1.3 */
   viewport?: string;
 }
-export const GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
+const GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -4126,7 +4082,7 @@ export interface GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIns
   /** Required. The path of the RetrieveRenderedFrames DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}/rendered`. */
   dicomWebPath: string;
 }
-export const GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest =
+const GetRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       viewport: S.optional(S.String.pipe(T.Query())),
@@ -4148,7 +4104,7 @@ export interface GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStu
   /** Required. The series resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`. */
   series: string;
 }
-export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest =
+const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       series: S.String.pipe(T.Label()),
@@ -4174,7 +4130,7 @@ export interface SeriesMetrics {
   /** Total structured storage bytes for all instances in the series. */
   structuredStorageSizeBytes?: string;
 }
-export const SeriesMetrics = /*@__PURE__*/ S.suspend(() =>
+const SeriesMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     series: S.optional(S.String),
     blobStorageSizeBytes: S.optional(S.String),
@@ -4189,8 +4145,8 @@ export interface GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesReque
   /** Required. The path of the RetrieveSeries DICOMweb request. For example, `studies/{study_uid}/series/{series_uid}`. */
   dicomWebPath: string;
 }
-export const GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       dicomWebPath: S.String.pipe(T.Label()),
@@ -4201,15 +4157,15 @@ export const GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
-  }) as any as S.Schema<GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
+).annotate({
+  identifier: "GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest",
+}) as any as S.Schema<GetSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest>;
 
 export interface GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest {
   /** Required. The path of the instance to return storage info for, in the form: `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}` */
   resource: string;
 }
-export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest =
+const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -4231,7 +4187,7 @@ export type BlobStorageInfoStorageClassEnum =
   | "NEARLINE"
   | "COLDLINE"
   | "ARCHIVE";
-export const BlobStorageInfoStorageClassEnum = S.String;
+const BlobStorageInfoStorageClassEnum = S.String;
 
 /** BlobStorageInfo contains details about the data stored in Blob Storage for the referenced resource. Note: Storage class is only valid for DICOM and hence will only be populated for DICOM resources. */
 export interface BlobStorageInfo {
@@ -4242,7 +4198,7 @@ export interface BlobStorageInfo {
   /** Size in bytes of data stored in Blob Storage. */
   sizeBytes?: string;
 }
-export const BlobStorageInfo = /*@__PURE__*/ S.suspend(() =>
+const BlobStorageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageClass: S.optional(BlobStorageInfoStorageClassEnum),
     storageClassUpdateTime: S.optional(S.String),
@@ -4255,7 +4211,7 @@ export interface StructuredStorageInfo {
   /** Size in bytes of data stored in structured storage. */
   sizeBytes?: string;
 }
-export const StructuredStorageInfo = /*@__PURE__*/ S.suspend(() =>
+const StructuredStorageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sizeBytes: S.optional(S.String),
   }),
@@ -4270,7 +4226,7 @@ export interface StorageInfo {
   /** Info about the data stored in structured storage for the resource. */
   structuredStorageInfo?: StructuredStorageInfo;
 }
-export const StorageInfo = /*@__PURE__*/ S.suspend(() =>
+const StorageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referencedResource: S.optional(S.String),
     blobStorageInfo: S.optional(BlobStorageInfo),
@@ -4282,7 +4238,7 @@ export interface GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStud
   /** Required. The study resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`. */
   study: string;
 }
-export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest =
+const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       study: S.String.pipe(T.Label()),
@@ -4310,7 +4266,7 @@ export interface StudyMetrics {
   /** Total structured storage bytes for all instances in the study. */
   structuredStorageSizeBytes?: string;
 }
-export const StudyMetrics = /*@__PURE__*/ S.suspend(() =>
+const StudyMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     study: S.optional(S.String),
     seriesCount: S.optional(S.String),
@@ -4326,18 +4282,17 @@ export interface GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest {
   /** Required. The path of the RetrieveStudy DICOMweb request. For example, `studies/{study_uid}`. */
   dicomWebPath: string;
 }
-export const GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      dicomWebPath: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    dicomWebPath: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest",
 }) as any as S.Schema<GetStudyProjectsLocationsDatasetsDicomStoresStudiesRequest>;
@@ -4354,7 +4309,7 @@ export interface HistoryProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Only include resource versions that were created at or after the given instant in time. The instant in time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z). The time must be specified to the second and include a time zone. */
   _since?: string;
 }
-export const HistoryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const HistoryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _count: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4378,14 +4333,14 @@ export type BlobStorageSettingsBlobStorageClassEnum =
   | "NEARLINE"
   | "COLDLINE"
   | "ARCHIVE";
-export const BlobStorageSettingsBlobStorageClassEnum = S.String;
+const BlobStorageSettingsBlobStorageClassEnum = S.String;
 
 /** Settings for data stored in Blob storage. */
 export interface BlobStorageSettings {
   /** The Storage class in which the Blob data is stored. */
   blobStorageClass?: BlobStorageSettingsBlobStorageClassEnum | (string & {});
 }
-export const BlobStorageSettings = /*@__PURE__*/ S.suspend(() =>
+const BlobStorageSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobStorageClass: S.optional(BlobStorageSettingsBlobStorageClassEnum),
   }),
@@ -4396,7 +4351,7 @@ export interface GoogleCloudHealthcareV1DicomGcsSource {
   /** Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * '*' to match 0 or more non-separator characters * '**' to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .dcm), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.dcm` imports all files with .dcm extensions in `my-directory/` and its sub-directories. * '?' to match 1 character. All other URI formats are invalid. Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
-export const GoogleCloudHealthcareV1DicomGcsSource =
+const GoogleCloudHealthcareV1DicomGcsSource =
   GoogleCloudHealthcareV1FhirGcsSource as any as S.Schema<GoogleCloudHealthcareV1DicomGcsSource>;
 
 /** Imports data into the specified DICOM store. Returns an error if any of the files to import are not DICOM files. This API accepts duplicate DICOM instances by ignoring the newly-pushed instance. It does not overwrite. */
@@ -4406,7 +4361,7 @@ export interface ImportDicomDataRequest {
   /** Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location. */
   gcsSource?: GoogleCloudHealthcareV1DicomGcsSource;
 }
-export const ImportDicomDataRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDicomDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobStorageSettings: S.optional(BlobStorageSettings),
     gcsSource: S.optional(GoogleCloudHealthcareV1DicomGcsSource),
@@ -4419,7 +4374,7 @@ export interface ImportProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: ImportDicomDataRequest;
 }
-export const ImportProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportDicomDataRequest.pipe(T.HttpBody())),
@@ -4440,7 +4395,7 @@ export type ImportResourcesRequestContentStructureEnum =
   | "RESOURCE"
   | "BUNDLE_PRETTY"
   | "RESOURCE_PRETTY";
-export const ImportResourcesRequestContentStructureEnum = S.String;
+const ImportResourcesRequestContentStructureEnum = S.String;
 
 /** Request to import resources. */
 export interface ImportResourcesRequest {
@@ -4449,7 +4404,7 @@ export interface ImportResourcesRequest {
   /** Cloud Storage source data location and import configuration. The Healthcare Service Agent account requires the `roles/storage.objectAdmin` role on the Cloud Storage location. Each Cloud Storage object should be a text file that contains the format specified in ContentStructure. */
   gcsSource?: GoogleCloudHealthcareV1FhirGcsSource;
 }
-export const ImportResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentStructure: S.optional(ImportResourcesRequestContentStructureEnum),
     gcsSource: S.optional(GoogleCloudHealthcareV1FhirGcsSource),
@@ -4462,7 +4417,7 @@ export interface ImportProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: ImportResourcesRequest;
 }
-export const ImportProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportResourcesRequest.pipe(T.HttpBody())),
@@ -4482,7 +4437,7 @@ export interface GcsSource {
   /** Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
-export const GcsSource = /*@__PURE__*/ S.suspend(() =>
+const GcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uri: S.optional(S.String),
   }),
@@ -4493,7 +4448,7 @@ export interface ImportMessagesRequest {
   /** Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location. */
   gcsSource?: GcsSource;
 }
-export const ImportMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsSource: S.optional(GcsSource),
   }),
@@ -4505,7 +4460,7 @@ export interface ImportProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: ImportMessagesRequest;
 }
-export const ImportProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ImportMessagesRequest.pipe(T.HttpBody())),
@@ -4525,7 +4480,7 @@ export interface IngestMessageRequest {
   /** Required. HL7v2 message to ingest. */
   message?: Message;
 }
-export const IngestMessageRequest = CreateMessageRequest as any as S.Schema<IngestMessageRequest>;
+const IngestMessageRequest = CreateMessageRequest as any as S.Schema<IngestMessageRequest>;
 
 export interface IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Required. The name of the HL7v2 store this message belongs to. */
@@ -4533,18 +4488,17 @@ export interface IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Request body */
   body?: IngestMessageRequest;
 }
-export const IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(IngestMessageRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/messages:ingest",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(IngestMessageRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/messages:ingest",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
 }) as any as S.Schema<IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
@@ -4556,7 +4510,7 @@ export interface IngestMessageResponse {
   /** HL7v2 ACK message. */
   hl7Ack?: string;
 }
-export const IngestMessageResponse = /*@__PURE__*/ S.suspend(() =>
+const IngestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(Message),
     hl7Ack: S.optional(S.String),
@@ -4575,7 +4529,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -4594,7 +4548,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -4603,7 +4557,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -4618,7 +4572,7 @@ export interface ListProjectsLocationsDatasetsRequest {
   /** Required. The name of the project whose datasets should be listed. For example, `projects/{project_id}/locations/{location_id}`. */
   parent: string;
 }
-export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -4635,7 +4589,7 @@ export const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
 
 export type DatasetList = Array<Dataset>;
-export const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
+const DatasetList = /*@__PURE__*/ S.Array(Dataset) as any as S.Schema<DatasetList>;
 
 /** Lists the available datasets. */
 export interface ListDatasetsResponse {
@@ -4644,7 +4598,7 @@ export interface ListDatasetsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasets: S.optional(DatasetList),
     nextPageToken: S.optional(S.String),
@@ -4661,7 +4615,7 @@ export interface ListProjectsLocationsDatasetsConsentStoresRequest {
   /** Optional. Token to retrieve the next page of results, or empty to get the first page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4679,9 +4633,7 @@ export const ListProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S
 }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresRequest>;
 
 export type ConsentStoreList = Array<ConsentStore>;
-export const ConsentStoreList = /*@__PURE__*/ S.Array(
-  ConsentStore,
-) as any as S.Schema<ConsentStoreList>;
+const ConsentStoreList = /*@__PURE__*/ S.Array(ConsentStore) as any as S.Schema<ConsentStoreList>;
 
 export interface ListConsentStoresResponse {
   /** The returned consent stores. The maximum number of stores returned is determined by the value of page_size in the ListConsentStoresRequest. */
@@ -4689,7 +4641,7 @@ export interface ListConsentStoresResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListConsentStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConsentStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentStores: S.optional(ConsentStoreList),
     nextPageToken: S.optional(S.String),
@@ -4708,7 +4660,7 @@ export interface ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsR
   /** Optional. Limit on the number of Attribute definitions to return in a single response. If not specified, 100 is used. May not be larger than 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
+const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4727,7 +4679,7 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsReque
   }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest>;
 
 export type AttributeDefinitionList = Array<AttributeDefinition>;
-export const AttributeDefinitionList = /*@__PURE__*/ S.Array(
+const AttributeDefinitionList = /*@__PURE__*/ S.Array(
   AttributeDefinition,
 ) as any as S.Schema<AttributeDefinitionList>;
 
@@ -4737,7 +4689,7 @@ export interface ListAttributeDefinitionsResponse {
   /** The returned Attribute definitions. The maximum number of attributes returned is determined by the value of page_size in the ListAttributeDefinitionsRequest. */
   attributeDefinitions?: AttributeDefinitionList;
 }
-export const ListAttributeDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAttributeDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     attributeDefinitions: S.optional(AttributeDefinitionList),
@@ -4756,8 +4708,8 @@ export interface ListProjectsLocationsDatasetsConsentStoresConsentArtifactsReque
   /** Optional. The next_page_token value returned from the previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -4770,12 +4722,12 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest",
+}) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest>;
 
 export type ConsentArtifactList = Array<ConsentArtifact>;
-export const ConsentArtifactList = /*@__PURE__*/ S.Array(
+const ConsentArtifactList = /*@__PURE__*/ S.Array(
   ConsentArtifact,
 ) as any as S.Schema<ConsentArtifactList>;
 
@@ -4785,7 +4737,7 @@ export interface ListConsentArtifactsResponse {
   /** The returned Consent artifacts. The maximum number of artifacts returned is determined by the value of page_size in the ListConsentArtifactsRequest. */
   consentArtifacts?: ConsentArtifactList;
 }
-export const ListConsentArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConsentArtifactsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     consentArtifacts: S.optional(ConsentArtifactList),
@@ -4804,26 +4756,25 @@ export interface ListProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Optional. Restricts the Consents returned to those matching a filter. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The fields available for filtering are: - user_id. For example, `filter='user_id="user123"'`. - consent_artifact - state - revision_create_time - metadata. For example, `filter=Metadata(\"testkey\")=\"value\"` or `filter=HasMetadata(\"testkey\")`. */
   filter?: string;
 }
-export const ListProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/consents",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/consents",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export type ConsentList_ = Array<Consent>;
-export const ConsentList_ = /*@__PURE__*/ S.Array(Consent) as any as S.Schema<ConsentList_>;
+const ConsentList_ = /*@__PURE__*/ S.Array(Consent) as any as S.Schema<ConsentList_>;
 
 export interface ListConsentsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -4831,7 +4782,7 @@ export interface ListConsentsResponse {
   /** The returned Consents. The maximum number of Consents returned is determined by the value of page_size in the ListConsentsRequest. */
   consents?: ConsentList_;
 }
-export const ListConsentsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConsentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     consents: S.optional(ConsentList_),
@@ -4848,8 +4799,8 @@ export interface ListProjectsLocationsDatasetsConsentStoresUserDataMappingsReque
   /** Optional. Token to retrieve the next page of results, or empty to get the first page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
       parent: S.String.pipe(T.Label()),
@@ -4862,12 +4813,12 @@ export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-  }) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+).annotate({
+  identifier: "ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+}) as any as S.Schema<ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export type UserDataMappingList = Array<UserDataMapping>;
-export const UserDataMappingList = /*@__PURE__*/ S.Array(
+const UserDataMappingList = /*@__PURE__*/ S.Array(
   UserDataMapping,
 ) as any as S.Schema<UserDataMappingList>;
 
@@ -4877,7 +4828,7 @@ export interface ListUserDataMappingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListUserDataMappingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserDataMappingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userDataMappings: S.optional(UserDataMappingList),
     nextPageToken: S.optional(S.String),
@@ -4896,7 +4847,7 @@ export interface ListProjectsLocationsDatasetsDicomStoresRequest {
   /** The next_page_token value returned from the previous List request, if any. */
   pageToken?: string;
 }
-export const ListProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -4914,7 +4865,7 @@ export const ListProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsDatasetsDicomStoresRequest>;
 
 export type DicomStoreList = Array<DicomStore>;
-export const DicomStoreList = /*@__PURE__*/ S.Array(DicomStore) as any as S.Schema<DicomStoreList>;
+const DicomStoreList = /*@__PURE__*/ S.Array(DicomStore) as any as S.Schema<DicomStoreList>;
 
 /** Lists the DICOM stores in the given dataset. */
 export interface ListDicomStoresResponse {
@@ -4923,7 +4874,7 @@ export interface ListDicomStoresResponse {
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListDicomStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDicomStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dicomStores: S.optional(DicomStoreList),
     nextPageToken: S.optional(S.String),
@@ -4940,7 +4891,7 @@ export interface ListProjectsLocationsDatasetsFhirStoresRequest {
   /** Restricts stores returned to those matching a filter. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Only filtering on labels is supported, for example `labels.key=value`. */
   filter?: string;
 }
-export const ListProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -4958,7 +4909,7 @@ export const ListProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsDatasetsFhirStoresRequest>;
 
 export type FhirStoreList = Array<FhirStore>;
-export const FhirStoreList = /*@__PURE__*/ S.Array(FhirStore) as any as S.Schema<FhirStoreList>;
+const FhirStoreList = /*@__PURE__*/ S.Array(FhirStore) as any as S.Schema<FhirStoreList>;
 
 /** Lists the FHIR stores in the given dataset. */
 export interface ListFhirStoresResponse {
@@ -4967,7 +4918,7 @@ export interface ListFhirStoresResponse {
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListFhirStoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFhirStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fhirStores: S.optional(FhirStoreList),
     nextPageToken: S.optional(S.String),
@@ -4984,7 +4935,7 @@ export interface ListProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Limit on the number of HL7v2 stores to return in a single response. If not specified, 100 is used. May not be larger than 1000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5002,7 +4953,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export type Hl7V2StoreList = Array<Hl7V2Store>;
-export const Hl7V2StoreList = /*@__PURE__*/ S.Array(Hl7V2Store) as any as S.Schema<Hl7V2StoreList>;
+const Hl7V2StoreList = /*@__PURE__*/ S.Array(Hl7V2Store) as any as S.Schema<Hl7V2StoreList>;
 
 /** Lists the HL7v2 stores in the given dataset. */
 export interface ListHl7V2StoresResponse {
@@ -5011,7 +4962,7 @@ export interface ListHl7V2StoresResponse {
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListHl7V2StoresResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHl7V2StoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl7V2Stores: S.optional(Hl7V2StoreList),
     nextPageToken: S.optional(S.String),
@@ -5025,7 +4976,7 @@ export type ListProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum =
   | "FULL"
   | "SCHEMATIZED_ONLY"
   | "BASIC";
-export const ListProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum = S.String;
+const ListProjectsLocationsDatasetsHl7V2StoresMessagesViewEnum = S.String;
 
 export interface ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Limit on the number of messages to return in a single response. If not specified, 100 is used. May not be larger than 1000. */
@@ -5041,7 +4992,7 @@ export interface ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Restricts messages returned to those matching a filter. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields/functions available for filtering are: * `message_type`, from the MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date < "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from the MSH-7 segment. For example, `send_time < "2017-01-02T00:00:00-05:00"`. * `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For example, `create_time < "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. * `PatientId(value, type)`, which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, `PatientId("123456", "MRN")`. * `labels.x`, a string value of the label with key `x` as set using the Message.labels map. For example, `labels."priority"="high"`. The operator `:*` can be used to assert the existence of a label. For example, `labels."priority":*`. */
   filter?: string;
 }
-export const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -5061,7 +5012,7 @@ export const ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE
 }) as any as S.Schema<ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
 
 export type MessageList = Array<Message>;
-export const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
+const MessageList = /*@__PURE__*/ S.Array(Message) as any as S.Schema<MessageList>;
 
 /** Lists the messages in the specified HL7v2 store. */
 export interface ListMessagesResponse {
@@ -5070,7 +5021,7 @@ export interface ListMessagesResponse {
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-export const ListMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hl7V2Messages: S.optional(MessageList),
     nextPageToken: S.optional(S.String),
@@ -5089,7 +5040,7 @@ export interface ListProjectsLocationsDatasetsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-export const ListProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -5108,7 +5059,7 @@ export const ListProjectsLocationsDatasetsOperationsRequest = /*@__PURE__*/ S.su
 }) as any as S.Schema<ListProjectsLocationsDatasetsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -5119,7 +5070,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     operations: S.optional(OperationList),
@@ -5137,8 +5088,8 @@ export interface ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequ
   /** Optional. Restricts the revisions returned to those matching a filter. The following syntax is available: * A string field value can be written as text inside quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is searched within the field, rather than having the field be equal to the text. For example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are the equality operator (`=`), along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * A date field value must be written in `yyyy-mm-dd` form. Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid relational operators for date fields are the equality operator (`=`) , along with the less than/greater than operators (`<`, `<=`, `>`, `>=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a boolean operator appears within a quoted string, it is not treated as special, it's just another part of the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. Fields available for filtering are: - user_id. For example, `filter='user_id="user123"'`. - consent_artifact - state - revision_create_time - metadata. For example, `filter=Metadata(\"testkey\")=\"value\"` or `filter=HasMetadata(\"testkey\")`. */
   filter?: string;
 }
-export const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5151,9 +5102,9 @@ export const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest 
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest",
-  }) as any as S.Schema<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>;
+).annotate({
+  identifier: "ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest",
+}) as any as S.Schema<ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest>;
 
 export interface ListConsentRevisionsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -5161,7 +5112,7 @@ export interface ListConsentRevisionsResponse {
   /** The returned Consent revisions. The maximum number of revisions returned is determined by the value of `page_size` in the ListConsentRevisionsRequest. */
   consents?: ConsentList_;
 }
-export const ListConsentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListConsentRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     consents: S.optional(ConsentList_),
@@ -5178,7 +5129,7 @@ export interface PatchProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: Dataset;
 }
-export const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -5198,7 +5149,7 @@ export interface PatchProjectsLocationsDatasetsConsentStoresRequest {
   /** Request body */
   body?: ConsentStore;
 }
-export const PatchProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5218,7 +5169,7 @@ export interface PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitions
   /** Request body */
   body?: AttributeDefinition;
 }
-export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
+const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5239,15 +5190,14 @@ export interface PatchProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Request body */
   body?: Consent;
 }
-export const PatchProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Consent.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
+const PatchProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Consent.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresConsentsRequest>;
@@ -5260,8 +5210,8 @@ export interface PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequ
   /** Request body */
   body?: UserDataMapping;
 }
-export const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       updateMask: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -5269,9 +5219,9 @@ export const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest 
     }).pipe(
       T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
     ),
-  ).annotate({
-    identifier: "PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
-  }) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
+).annotate({
+  identifier: "PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest",
+}) as any as S.Schema<PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest>;
 
 export interface PatchProjectsLocationsDatasetsDicomStoresRequest {
   /** Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
@@ -5281,7 +5231,7 @@ export interface PatchProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: DicomStore;
 }
-export const PatchProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5301,7 +5251,7 @@ export interface PatchProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: FhirStore;
 }
-export const PatchProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5319,7 +5269,7 @@ export interface PatchProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const PatchProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(HttpBody.pipe(T.HttpBody())),
@@ -5338,7 +5288,7 @@ export interface PatchProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: Hl7V2Store;
 }
-export const PatchProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -5358,15 +5308,14 @@ export interface PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
   /** Request body */
   body?: Message;
 }
-export const PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-      body: S.optional(Message.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
+const PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+    body: S.optional(Message.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest",
 }) as any as S.Schema<PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest>;
@@ -5379,7 +5328,7 @@ export interface Patient_consent_enforcement_statusProjectsLocationsDatasetsFhir
   /** Required. The name of the patient to find enforcement statuses, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}` */
   name: string;
 }
-export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest =
+const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       _page_token: S.optional(S.String.pipe(T.Query())),
@@ -5412,8 +5361,8 @@ export interface Patient_everythingProjectsLocationsDatasetsFhirStoresFhirReques
   /** Optional. Maximum number of resources in a page. If not specified, 100 is used. May not be larger than 1000. */
   _count?: number;
 }
-export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       _page_token: S.optional(S.String.pipe(T.Query())),
       name: S.String.pipe(T.Label()),
@@ -5429,25 +5378,24 @@ export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>;
+).annotate({
+  identifier: "Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest",
+}) as any as S.Schema<Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export interface PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource to purge. */
   name: string;
 }
-export const PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+name}/$purge",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}/$purge",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<PurgeResourceProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -5457,7 +5405,7 @@ export interface GoogleCloudHealthcareV1ConsentGcsDestination {
   /** URI for a Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket and directory referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
-export const GoogleCloudHealthcareV1ConsentGcsDestination =
+const GoogleCloudHealthcareV1ConsentGcsDestination =
   GoogleCloudHealthcareV1FhirGcsDestination as any as S.Schema<GoogleCloudHealthcareV1ConsentGcsDestination>;
 
 /** Queries all data_ids that are consented for a given use in the given consent store and writes them to a specified destination. The returned Operation includes a progress counter for the number of User data mappings processed. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging] (https://cloud.google.com/healthcare/docs/how-tos/logging) and [QueryAccessibleData] for a sample log entry). */
@@ -5469,7 +5417,7 @@ export interface QueryAccessibleDataRequest {
   /** The values of request attributes associated with this access request. */
   requestAttributes?: StringMap;
 }
-export const QueryAccessibleDataRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryAccessibleDataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceAttributes: S.optional(StringMap),
     gcsDestination: S.optional(GoogleCloudHealthcareV1ConsentGcsDestination),
@@ -5485,8 +5433,8 @@ export interface QueryAccessibleDataProjectsLocationsDatasetsConsentStoresReques
   /** Request body */
   body?: QueryAccessibleDataRequest;
 }
-export const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       consentStore: S.String.pipe(T.Label()),
       body: S.optional(QueryAccessibleDataRequest.pipe(T.HttpBody())),
@@ -5497,21 +5445,20 @@ export const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest",
-  }) as any as S.Schema<QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest>;
+).annotate({
+  identifier: "QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest",
+}) as any as S.Schema<QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest>;
 
 export interface ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the Binary resource to retrieve. */
   name: string;
 }
-export const ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
+const ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<ReadBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -5520,7 +5467,7 @@ export interface ReadProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource to retrieve. */
   name: string;
 }
-export const ReadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -5535,7 +5482,7 @@ export interface RejectConsentRequest {
   /** Optional. The resource name of the Consent artifact that contains documentation of the user's rejection of the draft Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. If the draft Consent had a Consent artifact, this Consent artifact overwrites it. */
   consentArtifact?: string;
 }
-export const RejectConsentRequest = /*@__PURE__*/ S.suspend(() =>
+const RejectConsentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     consentArtifact: S.optional(S.String),
   }),
@@ -5547,18 +5494,17 @@ export interface RejectProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Request body */
   body?: RejectConsentRequest;
 }
-export const RejectProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RejectConsentRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:reject",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const RejectProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RejectConsentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:reject",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RejectProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<RejectProjectsLocationsDatasetsConsentStoresConsentsRequest>;
@@ -5568,7 +5514,7 @@ export interface RevokeConsentRequest {
   /** Optional. The resource name of the Consent artifact that contains proof of the user's revocation of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. */
   consentArtifact?: string;
 }
-export const RevokeConsentRequest = RejectConsentRequest as any as S.Schema<RevokeConsentRequest>;
+const RevokeConsentRequest = RejectConsentRequest as any as S.Schema<RevokeConsentRequest>;
 
 export interface RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Required. The resource name of the Consent to revoke, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. An INVALID_ARGUMENT error occurs if `revision_id` is specified in the name. */
@@ -5576,18 +5522,17 @@ export interface RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest {
   /** Request body */
   body?: RevokeConsentRequest;
 }
-export const RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RevokeConsentRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:revoke",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(RevokeConsentRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+name}:revoke",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest",
 }) as any as S.Schema<RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest>;
@@ -5598,7 +5543,7 @@ export type RollbackFhirResourcesRequestChangeTypeEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-export const RollbackFhirResourcesRequestChangeTypeEnum = S.String;
+const RollbackFhirResourcesRequestChangeTypeEnum = S.String;
 
 export interface RollbackFhirResourceFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
@@ -5606,7 +5551,7 @@ export interface RollbackFhirResourceFilteringFields {
   /** Optional. A filter expression that matches data in the `Resource.meta` element. Supports all filters in [AIP-160](https://google.aip.dev/160) except the "has" (`:`) operator. Supports the following custom functions: * `tag("") = ""` for tag filtering. * `extension_value_ts("") = ` for filtering extensions with a timestamp, where `` is a Unix timestamp. Supports the `>`, `<`, `<=`, `>=`, and `!=` comparison operators. */
   metadataFilter?: string;
 }
-export const RollbackFhirResourceFilteringFields = /*@__PURE__*/ S.suspend(() =>
+const RollbackFhirResourceFilteringFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(StringList),
     metadataFilter: S.optional(S.String),
@@ -5633,7 +5578,7 @@ export interface RollbackFhirResourcesRequest {
   /** Required. Bucket to deposit result */
   resultGcsBucket?: string;
 }
-export const RollbackFhirResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackFhirResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(StringList),
     changeType: S.optional(RollbackFhirResourcesRequestChangeTypeEnum),
@@ -5654,7 +5599,7 @@ export interface RollbackProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: RollbackFhirResourcesRequest;
 }
-export const RollbackProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RollbackFhirResourcesRequest.pipe(T.HttpBody())),
@@ -5675,14 +5620,14 @@ export type RollbackHl7V2MessagesRequestChangeTypeEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-export const RollbackHl7V2MessagesRequestChangeTypeEnum = S.String;
+const RollbackHl7V2MessagesRequestChangeTypeEnum = S.String;
 
 /** Filtering fields for an HL7v2 rollback. Currently only supports a list of operation ids to roll back. */
 export interface RollbackHL7MessagesFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
   operationIds?: StringList;
 }
-export const RollbackHL7MessagesFilteringFields = /*@__PURE__*/ S.suspend(() =>
+const RollbackHL7MessagesFilteringFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationIds: S.optional(StringList),
   }),
@@ -5707,7 +5652,7 @@ export interface RollbackHl7V2MessagesRequest {
   /** Optional. When enabled, changes will be reverted without explicit confirmation. */
   force?: boolean;
 }
-export const RollbackHl7V2MessagesRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackHl7V2MessagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resultGcsBucket: S.optional(S.String),
     changeType: S.optional(RollbackHl7V2MessagesRequestChangeTypeEnum),
@@ -5727,7 +5672,7 @@ export interface RollbackProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: RollbackHl7V2MessagesRequest;
 }
-export const RollbackProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const RollbackProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(RollbackHl7V2MessagesRequest.pipe(T.HttpBody())),
@@ -5748,21 +5693,20 @@ export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dicomWebPath: S.String.pipe(T.Label()),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest",
-  }) as any as S.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>;
+const SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicomWebPath: S.String.pipe(T.Label()),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest",
+}) as any as S.Schema<SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest>;
 
 export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest {
   /** Required. The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or `studies/{study_uid}/instances`. */
@@ -5770,7 +5714,7 @@ export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRe
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
+const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
@@ -5792,7 +5736,7 @@ export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSe
   /** Required. The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`, `studies/{study_uid}/series/{series_uid}/instances`, or `studies/{study_uid}/instances`. */
   dicomWebPath: string;
 }
-export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
+const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -5814,7 +5758,28 @@ export interface SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(
+const SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicomWebPath: S.String.pipe(T.Label()),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest",
+}) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>;
+
+export interface SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest {
+  /** Required. The path of the SearchForSeries DICOMweb request. For example, `series` or `studies/{study_uid}/series`. */
+  dicomWebPath: string;
+  /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
+  parent: string;
+}
+const SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       dicomWebPath: S.String.pipe(T.Label()),
@@ -5827,30 +5792,8 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest = /*@__P
       }),
     ),
 ).annotate({
-  identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest",
-}) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest>;
-
-export interface SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest {
-  /** Required. The path of the SearchForSeries DICOMweb request. For example, `series` or `studies/{study_uid}/series`. */
-  dicomWebPath: string;
-  /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
-  parent: string;
-}
-export const SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dicomWebPath: S.String.pipe(T.Label()),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest",
-  }) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+  identifier: "SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest",
+}) as any as S.Schema<SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 export interface SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The path of the SearchForStudies DICOMweb request. For example, `studies`. */
@@ -5858,18 +5801,17 @@ export interface SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The name of the DICOM store that is being accessed. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
   parent: string;
 }
-export const SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dicomWebPath: S.String.pipe(T.Label()),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicomWebPath: S.String.pipe(T.Label()),
+    parent: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest",
 }) as any as S.Schema<SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest>;
@@ -5882,7 +5824,7 @@ export interface SearchProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const SearchProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     resourceType: S.optional(S.String.pipe(T.Query())),
@@ -5906,19 +5848,18 @@ export interface SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/fhir/{resourceType}/_search",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/fhir/{resourceType}/_search",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<SearchTypeProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -5930,7 +5871,7 @@ export interface SetBlobStorageSettingsRequest {
   /** The blob storage settings to update for the specified resources. Only fields listed in `update_mask` are applied. */
   blobStorageSettings?: BlobStorageSettings;
 }
-export const SetBlobStorageSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetBlobStorageSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filterConfig: S.optional(DicomFilterConfig),
     blobStorageSettings: S.optional(BlobStorageSettings),
@@ -5945,8 +5886,8 @@ export interface SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresReque
   /** Request body */
   body?: SetBlobStorageSettingsRequest;
 }
-export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(SetBlobStorageSettingsRequest.pipe(T.HttpBody())),
@@ -5957,9 +5898,9 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest",
-  }) as any as S.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest>;
+).annotate({
+  identifier: "SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest",
+}) as any as S.Schema<SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest>;
 
 export interface SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest {
   /** Required. The path of the resource to update the blob storage settings in the format of `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`, `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`, or `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`. If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM store in the format `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`. */
@@ -5967,7 +5908,7 @@ export interface SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicom
   /** Request body */
   body?: SetBlobStorageSettingsRequest;
 }
-export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest =
+const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -5990,7 +5931,7 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
     updateMask: S.optional(S.String),
@@ -6003,7 +5944,7 @@ export interface SetIamPolicyProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6024,7 +5965,28 @@ export interface SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
+const SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:setIamPolicy",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
+
+export interface SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
+  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: SetIamPolicyRequest;
+}
+const SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -6037,30 +5999,8 @@ export const SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest = /*@__PU
       }),
     ),
 ).annotate({
-  identifier: "SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest",
-}) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest>;
-
-export interface SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
-  /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: SetIamPolicyRequest;
-}
-export const SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:setIamPolicy",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
-  }) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
+  identifier: "SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest",
+}) as any as S.Schema<SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest>;
 
 export interface SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -6068,7 +6008,7 @@ export interface SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6089,7 +6029,7 @@ export interface SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6110,7 +6050,7 @@ export interface SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -6133,19 +6073,18 @@ export interface StoreInstancesProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const StoreInstancesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dicomWebPath: S.String.pipe(T.Label()),
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const StoreInstancesProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicomWebPath: S.String.pipe(T.Label()),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/dicomWeb/{+dicomWebPath}",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresRequest",
 }) as any as S.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresRequest>;
@@ -6158,8 +6097,8 @@ export interface StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesReques
   /** Request body */
   body?: HttpBody;
 }
-export const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       dicomWebPath: S.String.pipe(T.Label()),
@@ -6171,16 +6110,16 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
-  }) as any as S.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
+).annotate({
+  identifier: "StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest",
+}) as any as S.Schema<StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -6194,7 +6133,7 @@ export interface TestIamPermissionsProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6214,7 +6153,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest {
@@ -6223,8 +6162,8 @@ export interface TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
       body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -6235,9 +6174,9 @@ export const TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest =
         baseUrl: "https://healthcare.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest>;
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest>;
 
 export interface TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -6245,7 +6184,7 @@ export interface TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest =
+const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resource: S.String.pipe(T.Label()),
@@ -6267,21 +6206,20 @@ export interface TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest>;
+const TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest>;
 
 export interface TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -6289,18 +6227,17 @@ export interface TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
+const TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest",
 }) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest>;
@@ -6311,21 +6248,20 @@ export interface TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>;
+const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resource: S.String.pipe(T.Label()),
+    body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+resource}:testIamPermissions",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest",
+}) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
 export interface UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource to update. */
@@ -6333,14 +6269,13 @@ export interface UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
-    ),
+const UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://healthcare.googleapis.com/" }),
+  ),
 ).annotate({
   identifier: "UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest",
 }) as any as S.Schema<UpdateBinaryProjectsLocationsDatasetsFhirStoresFhirRequest>;
@@ -6351,7 +6286,7 @@ export interface UpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Request body */
   body?: HttpBody;
 }
-export const UpdateProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(HttpBody.pipe(T.HttpBody())),
@@ -6372,29 +6307,28 @@ export interface ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest 
   /** Request body */
   body?: HttpBody;
 }
-export const ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      profile: S.optional(S.String.pipe(T.Query())),
-      type: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/fhir/{+type}/$validate",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest>;
+const ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    profile: S.optional(S.String.pipe(T.Query())),
+    type: S.String.pipe(T.Label()),
+    body: S.optional(HttpBody.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/fhir/{+type}/$validate",
+      baseUrl: "https://healthcare.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest",
+}) as any as S.Schema<ValidateResourceProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
 export interface VreadProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource version to retrieve. */
   name: string;
 }
-export const VreadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
+const VreadProjectsLocationsDatasetsFhirStoresFhirRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(

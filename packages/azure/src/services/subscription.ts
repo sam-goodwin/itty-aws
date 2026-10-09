@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** Tags for the subscription */
 export type AcceptOwnershipRequestPropertiesTagsMap = { [key: string]: string | undefined };
-export const AcceptOwnershipRequestPropertiesTagsMap = /*@__PURE__*/ S.Record(
+const AcceptOwnershipRequestPropertiesTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AcceptOwnershipRequestPropertiesTagsMap>;
@@ -24,7 +24,7 @@ export interface AcceptOwnershipRequestProperties {
   /** Tags for the subscription */
   tags?: AcceptOwnershipRequestPropertiesTagsMap;
 }
-export const AcceptOwnershipRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const AcceptOwnershipRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.String,
     managementGroupId: S.optional(S.String),
@@ -40,7 +40,7 @@ export interface AcceptSubscriptionOwnershipRequest {
   /** Accept subscription ownership request properties. */
   properties?: AcceptOwnershipRequestProperties;
 }
-export const AcceptSubscriptionOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSubscriptionOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     properties: S.optional(AcceptOwnershipRequestProperties),
@@ -57,9 +57,7 @@ export const AcceptSubscriptionOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AcceptSubscriptionOwnershipRequest>;
 
 export interface AcceptSubscriptionOwnershipResponse {}
-export const AcceptSubscriptionOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const AcceptSubscriptionOwnershipResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AcceptSubscriptionOwnershipResponse",
 }) as any as S.Schema<AcceptSubscriptionOwnershipResponse>;
 
@@ -67,7 +65,7 @@ export interface AcceptSubscriptionOwnershipStatusRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
-export const AcceptSubscriptionOwnershipStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptSubscriptionOwnershipStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -84,15 +82,15 @@ export const AcceptSubscriptionOwnershipStatusRequest = /*@__PURE__*/ S.suspend(
 
 /** The accept ownership state of the resource. */
 export type AcceptOwnershipState = "Pending" | "Completed" | "Expired";
-export const AcceptOwnershipState = S.String;
+const AcceptOwnershipState = S.String;
 
 /** The provisioning state of the resource. */
 export type ProvisioningState = "Pending" | "Accepted" | "Succeeded";
-export const ProvisioningState = S.String;
+const ProvisioningState = S.String;
 
 /** Tags for the subscription */
 export type AcceptOwnershipStatusResponseTagsMap = { [key: string]: string | undefined };
-export const AcceptOwnershipStatusResponseTagsMap =
+const AcceptOwnershipStatusResponseTagsMap =
   AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<AcceptOwnershipStatusResponseTagsMap>;
 
 /** Subscription Accept Ownership Response */
@@ -110,7 +108,7 @@ export interface AcceptOwnershipStatusResponse {
   /** Tags for the subscription */
   tags?: AcceptOwnershipStatusResponseTagsMap;
 }
-export const AcceptOwnershipStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const AcceptOwnershipStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     acceptOwnershipState: S.optional(AcceptOwnershipState),
@@ -128,7 +126,7 @@ export interface CancelSubscriptionRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
-export const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -148,7 +146,7 @@ export interface CanceledSubscriptionId {
   /** The ID of the canceled subscription */
   subscriptionId?: string;
 }
-export const CanceledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
+const CanceledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
   }),
@@ -156,11 +154,11 @@ export const CanceledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
 
 /** The workload type of the subscription. It can be either Production or DevTest. */
 export type Workload = "Production" | "DevTest";
-export const Workload = S.String;
+const Workload = S.String;
 
 /** Tags for the subscription */
 export type PutAliasRequestAdditionalPropertiesTagsMap = { [key: string]: string | undefined };
-export const PutAliasRequestAdditionalPropertiesTagsMap =
+const PutAliasRequestAdditionalPropertiesTagsMap =
   AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<PutAliasRequestAdditionalPropertiesTagsMap>;
 
 /** Put subscription additional properties. */
@@ -174,7 +172,7 @@ export interface PutAliasRequestAdditionalProperties {
   /** Tags for the subscription */
   tags?: PutAliasRequestAdditionalPropertiesTagsMap;
 }
-export const PutAliasRequestAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
+const PutAliasRequestAdditionalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.optional(S.String),
     subscriptionTenantId: S.optional(S.String),
@@ -198,7 +196,7 @@ export interface PutAliasRequestProperties {
   /** Put alias request additional properties. */
   additionalProperties?: PutAliasRequestAdditionalProperties;
 }
-export const PutAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
+const PutAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.String),
     workload: S.optional(Workload),
@@ -217,7 +215,7 @@ export interface CreateAliasRequest {
   /** Put alias request properties. */
   properties?: PutAliasRequestProperties;
 }
-export const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
     properties: S.optional(PutAliasRequestProperties),
@@ -236,11 +234,11 @@ export type SubscriptionAliasResponsePropertiesProvisioningState =
   | "Accepted"
   | "Succeeded"
   | "Failed";
-export const SubscriptionAliasResponsePropertiesProvisioningState = S.String;
+const SubscriptionAliasResponsePropertiesProvisioningState = S.String;
 
 /** Tags for the subscription */
 export type SubscriptionAliasResponsePropertiesTagsMap = { [key: string]: string | undefined };
-export const SubscriptionAliasResponsePropertiesTagsMap =
+const SubscriptionAliasResponsePropertiesTagsMap =
   AcceptOwnershipRequestPropertiesTagsMap as any as S.Schema<SubscriptionAliasResponsePropertiesTagsMap>;
 
 /** Put subscription creation result properties. */
@@ -267,7 +265,7 @@ export interface SubscriptionAliasResponseProperties {
   /** Tags for the subscription */
   tags?: SubscriptionAliasResponsePropertiesTagsMap;
 }
-export const SubscriptionAliasResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionAliasResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -292,7 +290,7 @@ export type SubscriptionAliasResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SubscriptionAliasResponseSystemDataCreatedByType = S.String;
+const SubscriptionAliasResponseSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SubscriptionAliasResponseSystemDataLastModifiedByType =
@@ -300,7 +298,7 @@ export type SubscriptionAliasResponseSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const SubscriptionAliasResponseSystemDataLastModifiedByType = S.String;
+const SubscriptionAliasResponseSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SubscriptionAliasResponseSystemData {
@@ -317,7 +315,7 @@ export interface SubscriptionAliasResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SubscriptionAliasResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionAliasResponseSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SubscriptionAliasResponseSystemDataCreatedByType),
@@ -343,7 +341,7 @@ export interface SubscriptionAliasResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: SubscriptionAliasResponseSystemData;
 }
-export const SubscriptionAliasResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionAliasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -359,7 +357,7 @@ export interface DeleteAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
-export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -373,7 +371,7 @@ export const DeleteAliasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteAliasRequest" }) as any as S.Schema<DeleteAliasRequest>;
 
 export interface DeleteAliasResponse {}
-export const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAliasResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAliasResponse",
 }) as any as S.Schema<DeleteAliasResponse>;
 
@@ -381,7 +379,7 @@ export interface EnableSubscriptionRequest {
   /** Subscription Id. */
   subscriptionId: string;
 }
-export const EnableSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -401,14 +399,13 @@ export interface EnabledSubscriptionId {
   /** The ID of the subscriptions that is being enabled */
   subscriptionId?: string;
 }
-export const EnabledSubscriptionId =
-  CanceledSubscriptionId as any as S.Schema<EnabledSubscriptionId>;
+const EnabledSubscriptionId = CanceledSubscriptionId as any as S.Schema<EnabledSubscriptionId>;
 
 export interface GetAliasRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
-export const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -425,7 +422,7 @@ export interface GetBillingAccountPolicyRequest {
   /** Billing Account Id. */
   billingAccountId: string;
 }
-export const GetBillingAccountPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
   }).pipe(
@@ -447,7 +444,7 @@ export interface ServiceTenantResponse {
   /** Service tenant name. */
   tenantName?: string;
 }
-export const ServiceTenantResponse = /*@__PURE__*/ S.suspend(() =>
+const ServiceTenantResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
     tenantName: S.optional(S.String),
@@ -457,7 +454,7 @@ export const ServiceTenantResponse = /*@__PURE__*/ S.suspend(() =>
 /** Service tenant for the billing account. */
 export type BillingAccountPoliciesResponsePropertiesServiceTenantsList =
   Array<ServiceTenantResponse>;
-export const BillingAccountPoliciesResponsePropertiesServiceTenantsList = /*@__PURE__*/ S.Array(
+const BillingAccountPoliciesResponsePropertiesServiceTenantsList = /*@__PURE__*/ S.Array(
   ServiceTenantResponse,
 ) as any as S.Schema<BillingAccountPoliciesResponsePropertiesServiceTenantsList>;
 
@@ -468,7 +465,7 @@ export interface BillingAccountPoliciesResponseProperties {
   /** Determine if the transfers are allowed for the billing account */
   allowTransfers?: boolean;
 }
-export const BillingAccountPoliciesResponseProperties = /*@__PURE__*/ S.suspend(() =>
+const BillingAccountPoliciesResponseProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceTenants: S.optional(BillingAccountPoliciesResponsePropertiesServiceTenantsList),
     allowTransfers: S.optional(S.Boolean),
@@ -483,16 +480,12 @@ export type BillingAccountPoliciesResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const BillingAccountPoliciesResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type BillingAccountPoliciesResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const BillingAccountPoliciesResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface BillingAccountPoliciesResponseSystemData {
   /** The identity that created the resource. */
@@ -508,7 +501,7 @@ export interface BillingAccountPoliciesResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const BillingAccountPoliciesResponseSystemData =
+const BillingAccountPoliciesResponseSystemData =
   SubscriptionAliasResponseSystemData as any as S.Schema<BillingAccountPoliciesResponseSystemData>;
 
 /** Billing account policies information. */
@@ -524,7 +517,7 @@ export interface BillingAccountPoliciesResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: BillingAccountPoliciesResponseSystemData;
 }
-export const BillingAccountPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingAccountPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -540,7 +533,7 @@ export interface GetSubscriptionOperationRequest {
   /** The operation ID, which can be found from the Location field in the generate recommendation response header. */
   operationId: string;
 }
-export const GetSubscriptionOperationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.String.pipe(T.Label()),
   }).pipe(
@@ -560,7 +553,7 @@ export interface SubscriptionCreationResult {
   /** The link to the new subscription. Use this link to check the status of subscription creation operation. */
   subscriptionLink?: string;
 }
-export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionLink: S.optional(S.String),
   }),
@@ -569,7 +562,7 @@ export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionCreationResult>;
 
 export interface GetSubscriptionPolicyPolicyForTenantRequest {}
-export const GetSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -584,7 +577,7 @@ export const GetSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.suspe
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type TenantPolicyExemptedPrincipalsList = Array<string>;
-export const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
+const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
 
@@ -599,7 +592,7 @@ export interface TenantPolicy {
   /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
   exemptedPrincipals?: TenantPolicyExemptedPrincipalsList;
 }
-export const TenantPolicy = /*@__PURE__*/ S.suspend(() =>
+const TenantPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyId: S.optional(S.String),
     blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
@@ -614,16 +607,12 @@ export type GetTenantPolicyResponseSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTenantPolicyResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetTenantPolicyResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const GetTenantPolicyResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetTenantPolicyResponseSystemData {
   /** The identity that created the resource. */
@@ -639,7 +628,7 @@ export interface GetTenantPolicyResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const GetTenantPolicyResponseSystemData =
+const GetTenantPolicyResponseSystemData =
   SubscriptionAliasResponseSystemData as any as S.Schema<GetTenantPolicyResponseSystemData>;
 
 /** Tenant policy Information. */
@@ -655,7 +644,7 @@ export interface GetTenantPolicyResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetTenantPolicyResponseSystemData;
 }
-export const GetTenantPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTenantPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -666,7 +655,7 @@ export const GetTenantPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetTenantPolicyResponse" }) as any as S.Schema<GetTenantPolicyResponse>;
 
 export interface ListAliasRequest {}
-export const ListAliasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAliasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -679,7 +668,7 @@ export const ListAliasRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of alias. */
 export type SubscriptionAliasListResultValueList = Array<SubscriptionAliasResponse>;
-export const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
+const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
   SubscriptionAliasResponse,
 ) as any as S.Schema<SubscriptionAliasListResultValueList>;
 
@@ -690,7 +679,7 @@ export interface SubscriptionAliasListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const SubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SubscriptionAliasListResultValueList),
     nextLink: S.optional(S.String),
@@ -700,7 +689,7 @@ export const SubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubscriptionAliasListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -722,7 +711,7 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -740,7 +729,7 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     isDataAction: S.optional(S.Boolean),
@@ -750,7 +739,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of operations. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -761,7 +750,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -769,7 +758,7 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OperationListResult" }) as any as S.Schema<OperationListResult>;
 
 export interface ListSubscriptionPolicyPolicyForTenantRequest {}
-export const ListSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -784,7 +773,7 @@ export const ListSubscriptionPolicyPolicyForTenantRequest = /*@__PURE__*/ S.susp
 
 /** The list of tenant policies. */
 export type GetTenantPolicyListResponseValueList = Array<GetTenantPolicyResponse>;
-export const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
+const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
   GetTenantPolicyResponse,
 ) as any as S.Schema<GetTenantPolicyListResponseValueList>;
 
@@ -795,7 +784,7 @@ export interface GetTenantPolicyListResponse {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const GetTenantPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTenantPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(GetTenantPolicyListResponseValueList),
     nextLink: S.optional(S.String),
@@ -810,7 +799,7 @@ export interface RenameSubscriptionRequest {
   /** New subscription name */
   subscriptionName?: string;
 }
-export const RenameSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const RenameSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     subscriptionName: S.optional(S.String),
@@ -831,12 +820,11 @@ export interface RenamedSubscriptionId {
   /** The ID of the subscriptions that is being renamed */
   subscriptionId?: string;
 }
-export const RenamedSubscriptionId =
-  CanceledSubscriptionId as any as S.Schema<RenamedSubscriptionId>;
+const RenamedSubscriptionId = CanceledSubscriptionId as any as S.Schema<RenamedSubscriptionId>;
 
 /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
 export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList = Array<string>;
-export const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList>;
@@ -849,7 +837,7 @@ export interface SubscriptionPolicyAddUpdatePolicyForTenantRequest {
   /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
   exemptedPrincipals?: SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList;
 }
-export const SubscriptionPolicyAddUpdatePolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPolicyAddUpdatePolicyForTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
     blockSubscriptionsIntoTenant: S.optional(S.Boolean),

@@ -40,7 +40,7 @@ export interface GetRefundRequest {
   /** The refund to retrieve, prefixed `rf_`. */
   id: string;
 }
-export const GetRefundRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRefundRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/refunds/{id}", code: 200 })),
@@ -56,7 +56,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -75,7 +75,7 @@ export type RefundFailureReason =
   | "not_refundable"
   | "merchant_request"
   | "unknown";
-export const RefundFailureReason = S.String;
+const RefundFailureReason = S.String;
 
 /** Why the refund was issued, when recorded. */
 export type RefundReason =
@@ -84,22 +84,22 @@ export type RefundReason =
   | "requested_by_customer"
   | "expired_uncaptured_charge"
   | "dispute_alert";
-export const RefundReason = S.String;
+const RefundReason = S.String;
 
 /** Whether a banking-network tracking reference is available for this refund. */
 export type RefundReferenceStatus = "available" | "pending" | "unavailable";
-export const RefundReferenceStatus = S.String;
+const RefundReferenceStatus = S.String;
 
 /** The kind of tracking reference, such as an acquirer reference number. */
 export type RefundReferenceType =
   | "acquirer_reference_number"
   | "retrieval_reference_number"
   | "system_trace_audit_number";
-export const RefundReferenceType = S.String;
+const RefundReferenceType = S.String;
 
 /** Where the refund stands with the processor: `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. */
 export type RefundStatus = "pending" | "requires_action" | "succeeded" | "failed" | "canceled";
-export const RefundStatus = S.String;
+const RefundStatus = S.String;
 
 export interface Refund {
   /** The account that issued the refund, prefixed `biz_`. */
@@ -137,7 +137,7 @@ export interface Refund {
   /** True when the card network initiated the refund through Rapid Dispute Resolution. */
   visa_rdr: boolean;
 }
-export const Refund = /*@__PURE__*/ S.suspend(() =>
+const Refund = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     amount: S.NullOr(Money),
@@ -160,10 +160,10 @@ export const Refund = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Refund" }) as any as S.Schema<Refund>;
 
 export type ListRefundsRequestOrder = "created_at";
-export const ListRefundsRequestOrder = S.String;
+const ListRefundsRequestOrder = S.String;
 
 export type ListRefundsRequestDirection = "asc" | "desc";
-export const ListRefundsRequestDirection = S.String;
+const ListRefundsRequestDirection = S.String;
 
 export interface ListRefundsRequest {
   /** Only refunds issued by this account, prefixed `biz_`. */
@@ -189,7 +189,7 @@ export interface ListRefundsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListRefundsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRefundsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     payment_id: S.optional(S.String.pipe(T.Query())),
@@ -206,7 +206,7 @@ export const ListRefundsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRefundsRequest" }) as any as S.Schema<ListRefundsRequest>;
 
 export type ListRefundsResponseDataList = Array<Refund>;
-export const ListRefundsResponseDataList = /*@__PURE__*/ S.Array(
+const ListRefundsResponseDataList = /*@__PURE__*/ S.Array(
   Refund,
 ) as any as S.Schema<ListRefundsResponseDataList>;
 
@@ -216,7 +216,7 @@ export interface ListRefundsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListRefundsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListRefundsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -231,7 +231,7 @@ export interface ListRefundsResponse {
   data: ListRefundsResponseDataList;
   page_info: ListRefundsResponsePageInfo;
 }
-export const ListRefundsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRefundsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListRefundsResponseDataList,
     page_info: ListRefundsResponsePageInfo,

@@ -49,7 +49,7 @@ export interface ApproveEntryRequest {
   /** The unique identifier of the waitlist entry to approve. */
   id: string;
 }
-export const ApproveEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/entries/{id}/approve", code: 200 })),
@@ -59,7 +59,7 @@ export interface ApproveEntryResponse {
   /** The ID of the job. */
   job_id: string;
 }
-export const ApproveEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const ApproveEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job_id: S.String,
   }),
@@ -69,7 +69,7 @@ export interface DenyEntryRequest {
   /** The unique identifier of the waitlist entry to deny. */
   id: string;
 }
-export const DenyEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const DenyEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/entries/{id}/deny", code: 200 })),
@@ -84,7 +84,7 @@ export interface EntryCustomFieldResponsesItem {
   /** The question asked by the custom field */
   question: string;
 }
-export const EntryCustomFieldResponsesItem = /*@__PURE__*/ S.suspend(() =>
+const EntryCustomFieldResponsesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     answer: S.String,
     id: S.String,
@@ -96,7 +96,7 @@ export const EntryCustomFieldResponsesItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of responses collected from the user when submitting their waitlist entry. */
 export type EntryCustomFieldResponsesList = Array<EntryCustomFieldResponsesItem>;
-export const EntryCustomFieldResponsesList = /*@__PURE__*/ S.Array(
+const EntryCustomFieldResponsesList = /*@__PURE__*/ S.Array(
   EntryCustomFieldResponsesItem,
 ) as any as S.Schema<EntryCustomFieldResponsesList>;
 
@@ -105,7 +105,7 @@ export interface EntryPlan {
   /** The unique identifier for the plan. */
   id: string;
 }
-export const EntryPlan = /*@__PURE__*/ S.suspend(() =>
+const EntryPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
@@ -118,7 +118,7 @@ export interface EntryProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-export const EntryProduct = /*@__PURE__*/ S.suspend(() =>
+const EntryProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -127,7 +127,7 @@ export const EntryProduct = /*@__PURE__*/ S.suspend(() =>
 
 /** The status of an entry to a waitlist. */
 export type EntryStatus = "drafted" | "pending" | "approved" | "denied" | "any";
-export const EntryStatus = S.String;
+const EntryStatus = S.String;
 
 /** The user who submitted this waitlist entry. */
 export interface EntryUser {
@@ -140,7 +140,7 @@ export interface EntryUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-export const EntryUser = /*@__PURE__*/ S.suspend(() =>
+const EntryUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -166,7 +166,7 @@ export interface Entry {
   /** The user who submitted this waitlist entry. */
   user: EntryUser;
 }
-export const Entry = /*@__PURE__*/ S.suspend(() =>
+const Entry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.NullOr(S.String),
     custom_field_responses: S.NullOr(EntryCustomFieldResponsesList),
@@ -182,7 +182,7 @@ export interface GetEntryRequest {
   /** The unique identifier of the waitlist entry to retrieve. */
   id: string;
 }
-export const GetEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/entries/{id}", code: 200 })),
@@ -190,26 +190,26 @@ export const GetEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-export const Direction = S.String;
+const Direction = S.String;
 
 /** Which columns can be used to sort. */
 export type EntriesSortableColumns = "id" | "created_at";
-export const EntriesSortableColumns = S.String;
+const EntriesSortableColumns = S.String;
 
 /** Filter entries to only those for specific products. */
 export type ListEntryRequestProductIdsList = Array<string>;
-export const ListEntryRequestProductIdsList = /*@__PURE__*/ S.Array(
+const ListEntryRequestProductIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListEntryRequestProductIdsList>;
 
 /** Filter entries to only those for specific plans. */
 export type ListEntryRequestPlanIdsList = Array<string>;
-export const ListEntryRequestPlanIdsList =
+const ListEntryRequestPlanIdsList =
   ListEntryRequestProductIdsList as any as S.Schema<ListEntryRequestPlanIdsList>;
 
 /** Filter entries by their current status. */
 export type ListEntryRequestStatusesList = Array<EntryStatus | (string & {})>;
-export const ListEntryRequestStatusesList = /*@__PURE__*/ S.Array(
+const ListEntryRequestStatusesList = /*@__PURE__*/ S.Array(
   EntryStatus,
 ) as any as S.Schema<ListEntryRequestStatusesList>;
 
@@ -227,7 +227,7 @@ export interface ListEntryRequest {
   created_before?: string;
   created_after?: string;
 }
-export const ListEntryRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEntryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -246,16 +246,10 @@ export const ListEntryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The waitlisted plan that this entry is a signup for. */
 export type EntryListItemPlan = EntryPlan;
-export const EntryListItemPlan = EntryPlan;
-
 /** The product associated with this entry's waitlisted plan. Null if the plan is not tied to a product. */
 export type EntryListItemProduct = EntryProduct;
-export const EntryListItemProduct = EntryProduct;
-
 /** The user who submitted this waitlist entry. */
 export type EntryListItemUser = EntryUser;
-export const EntryListItemUser = EntryUser;
-
 /** An entry represents a user's signup for a waitlisted plan. */
 export interface EntryListItem {
   /** The datetime the entry was created. */
@@ -271,7 +265,7 @@ export interface EntryListItem {
   /** The user who submitted this waitlist entry. */
   user: EntryUser;
 }
-export const EntryListItem = /*@__PURE__*/ S.suspend(() =>
+const EntryListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.NullOr(S.String),
     id: S.String,
@@ -284,7 +278,7 @@ export const EntryListItem = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of nodes. */
 export type ListEntryResponseDataList = Array<EntryListItem>;
-export const ListEntryResponseDataList = /*@__PURE__*/ S.Array(
+const ListEntryResponseDataList = /*@__PURE__*/ S.Array(
   EntryListItem,
 ) as any as S.Schema<ListEntryResponseDataList>;
 
@@ -299,7 +293,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -314,7 +308,7 @@ export interface ListEntryResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListEntryResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEntryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListEntryResponseDataList,
     page_info: PageInfo,

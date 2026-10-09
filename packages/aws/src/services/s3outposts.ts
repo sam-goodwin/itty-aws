@@ -116,7 +116,7 @@ export type OutpostId = string;
 export type SubnetId = string;
 export type SecurityGroupId = string;
 export type EndpointAccessType = "Private" | "CustomerOwnedIp" | (string & {});
-export const EndpointAccessType = S.String;
+const EndpointAccessType = S.String;
 
 export type CustomerOwnedIpv4Pool = string;
 export interface CreateEndpointRequest {
@@ -126,7 +126,7 @@ export interface CreateEndpointRequest {
   AccessType?: EndpointAccessType;
   CustomerOwnedIpv4Pool?: string;
 }
-export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OutpostId: S.String,
     SubnetId: S.String,
@@ -148,7 +148,7 @@ export type EndpointArn = string;
 export interface CreateEndpointResult {
   EndpointArn?: string;
 }
-export const CreateEndpointResult = /*@__PURE__*/ S.suspend(() =>
+const CreateEndpointResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EndpointArn: S.optional(S.String) }),
 ).annotate({ identifier: "CreateEndpointResult" }) as any as S.Schema<CreateEndpointResult>;
 export type EndpointId = string;
@@ -156,7 +156,7 @@ export interface DeleteEndpointRequest {
   EndpointId: string;
   OutpostId: string;
 }
-export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointId: S.String.pipe(T.HttpQuery("endpointId")),
     OutpostId: S.String.pipe(T.HttpQuery("outpostId")),
@@ -172,7 +172,7 @@ export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteEndpointRequest" }) as any as S.Schema<DeleteEndpointRequest>;
 export interface DeleteEndpointResponse {}
-export const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteEndpointResponse",
 }) as any as S.Schema<DeleteEndpointResponse>;
 export type NextToken = string;
@@ -181,7 +181,7 @@ export interface ListEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -204,18 +204,18 @@ export type EndpointStatus =
   | "Create_Failed"
   | "Delete_Failed"
   | (string & {});
-export const EndpointStatus = S.String;
+const EndpointStatus = S.String;
 
 export type CreationTime = Date;
 export type NetworkInterfaceId = string;
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
 }
-export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
+const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NetworkInterfaceId: S.optional(S.String) }),
 ).annotate({ identifier: "NetworkInterface" }) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
-export const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
+const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
 export type VpcId = string;
 export type ErrorCode = string;
 export type Message = string;
@@ -223,7 +223,7 @@ export interface FailedReason {
   ErrorCode?: string;
   Message?: string;
 }
-export const FailedReason = /*@__PURE__*/ S.suspend(() =>
+const FailedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
 ).annotate({ identifier: "FailedReason" }) as any as S.Schema<FailedReason>;
 export interface Endpoint {
@@ -240,7 +240,7 @@ export interface Endpoint {
   CustomerOwnedIpv4Pool?: string;
   FailedReason?: FailedReason;
 }
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+const Endpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointArn: S.optional(S.String),
     OutpostsId: S.optional(S.String),
@@ -257,19 +257,19 @@ export const Endpoint = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-export const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
+const Endpoints = /*@__PURE__*/ S.Array(Endpoint);
 export interface ListEndpointsResult {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
-export const ListEndpointsResult = /*@__PURE__*/ S.suspend(() =>
+const ListEndpointsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListEndpointsResult" }) as any as S.Schema<ListEndpointsResult>;
 export interface ListOutpostsWithS3Request {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListOutpostsWithS3Request = /*@__PURE__*/ S.suspend(() =>
+const ListOutpostsWithS3Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -297,7 +297,7 @@ export interface Outpost {
   OwnerId?: string;
   CapacityInBytes?: number;
 }
-export const Outpost = /*@__PURE__*/ S.suspend(() =>
+const Outpost = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OutpostArn: S.optional(S.String),
     S3OutpostArn: S.optional(S.String),
@@ -307,12 +307,12 @@ export const Outpost = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Outpost" }) as any as S.Schema<Outpost>;
 export type Outposts = Outpost[];
-export const Outposts = /*@__PURE__*/ S.Array(Outpost);
+const Outposts = /*@__PURE__*/ S.Array(Outpost);
 export interface ListOutpostsWithS3Result {
   Outposts?: Outpost[];
   NextToken?: string;
 }
-export const ListOutpostsWithS3Result = /*@__PURE__*/ S.suspend(() =>
+const ListOutpostsWithS3Result = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Outposts: S.optional(Outposts), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListOutpostsWithS3Result" }) as any as S.Schema<ListOutpostsWithS3Result>;
 export interface ListSharedEndpointsRequest {
@@ -320,7 +320,7 @@ export interface ListSharedEndpointsRequest {
   MaxResults?: number;
   OutpostId: string;
 }
-export const ListSharedEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharedEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -342,7 +342,7 @@ export interface ListSharedEndpointsResult {
   Endpoints?: Endpoint[];
   NextToken?: string;
 }
-export const ListSharedEndpointsResult = /*@__PURE__*/ S.suspend(() =>
+const ListSharedEndpointsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoints: S.optional(Endpoints), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSharedEndpointsResult",

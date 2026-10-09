@@ -126,7 +126,7 @@ export interface AssociateFraudsterRequest {
   WatchlistId: string;
   FraudsterId: string | redacted.Redacted<string>;
 }
-export const AssociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, WatchlistId: S.String, FraudsterId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -135,14 +135,14 @@ export const AssociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateFraudsterRequest>;
 export type GeneratedFraudsterId = string;
 export type ResponseWatchlistIds = string[];
-export const ResponseWatchlistIds = /*@__PURE__*/ S.Array(S.String);
+const ResponseWatchlistIds = /*@__PURE__*/ S.Array(S.String);
 export interface Fraudster {
   DomainId?: string;
   GeneratedFraudsterId?: string;
   CreatedAt?: Date;
   WatchlistIds?: string[];
 }
-export const Fraudster = /*@__PURE__*/ S.suspend(() =>
+const Fraudster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.optional(S.String),
     GeneratedFraudsterId: S.optional(S.String),
@@ -153,7 +153,7 @@ export const Fraudster = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateFraudsterResponse {
   Fraudster?: Fraudster;
 }
-export const AssociateFraudsterResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateFraudsterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Fraudster: S.optional(Fraudster) }),
 ).annotate({
   identifier: "AssociateFraudsterResponse",
@@ -164,7 +164,7 @@ export type KmsKeyId = string;
 export interface ServerSideEncryptionConfiguration {
   KmsKeyId: string;
 }
-export const ServerSideEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ServerSideEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KmsKeyId: S.String }),
 ).annotate({
   identifier: "ServerSideEncryptionConfiguration",
@@ -176,11 +176,11 @@ export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: SensitiveString, Value: SensitiveString }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateDomainRequest {
   Name: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
@@ -188,7 +188,7 @@ export interface CreateDomainRequest {
   ClientToken?: string;
   Tags?: Tag[];
 }
-export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: SensitiveString,
     Description: S.optional(SensitiveString),
@@ -205,7 +205,7 @@ export interface ServerSideEncryptionUpdateDetails {
   UpdateStatus?: string;
   Message?: string;
 }
-export const ServerSideEncryptionUpdateDetails = /*@__PURE__*/ S.suspend(() =>
+const ServerSideEncryptionUpdateDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OldKmsKeyId: S.optional(S.String),
     UpdateStatus: S.optional(S.String),
@@ -217,7 +217,7 @@ export const ServerSideEncryptionUpdateDetails = /*@__PURE__*/ S.suspend(() =>
 export interface WatchlistDetails {
   DefaultWatchlistId: string;
 }
-export const WatchlistDetails = /*@__PURE__*/ S.suspend(() =>
+const WatchlistDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DefaultWatchlistId: S.String }),
 ).annotate({ identifier: "WatchlistDetails" }) as any as S.Schema<WatchlistDetails>;
 export interface Domain {
@@ -232,7 +232,7 @@ export interface Domain {
   ServerSideEncryptionUpdateDetails?: ServerSideEncryptionUpdateDetails;
   WatchlistDetails?: WatchlistDetails;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -249,7 +249,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainResponse {
   Domain?: Domain;
 }
-export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Domain: S.optional(Domain) }),
 ).annotate({ identifier: "CreateDomainResponse" }) as any as S.Schema<CreateDomainResponse>;
 export type WatchlistName = string | redacted.Redacted<string>;
@@ -260,7 +260,7 @@ export interface CreateWatchlistRequest {
   Description?: string | redacted.Redacted<string>;
   ClientToken?: string;
 }
-export const CreateWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     Name: SensitiveString,
@@ -277,7 +277,7 @@ export interface Watchlist {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const Watchlist = /*@__PURE__*/ S.suspend(() =>
+const Watchlist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.optional(S.String),
     WatchlistId: S.optional(S.String),
@@ -291,61 +291,59 @@ export const Watchlist = /*@__PURE__*/ S.suspend(() =>
 export interface CreateWatchlistResponse {
   Watchlist?: Watchlist;
 }
-export const CreateWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Watchlist: S.optional(Watchlist) }),
 ).annotate({ identifier: "CreateWatchlistResponse" }) as any as S.Schema<CreateWatchlistResponse>;
 export interface DeleteDomainRequest {
   DomainId: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteDomainRequest" }) as any as S.Schema<DeleteDomainRequest>;
 export interface DeleteDomainResponse {}
-export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteDomainResponse",
 }) as any as S.Schema<DeleteDomainResponse>;
 export interface DeleteFraudsterRequest {
   DomainId: string;
   FraudsterId: string | redacted.Redacted<string>;
 }
-export const DeleteFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, FraudsterId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteFraudsterRequest" }) as any as S.Schema<DeleteFraudsterRequest>;
 export interface DeleteFraudsterResponse {}
-export const DeleteFraudsterResponse =
-  DeleteDomainResponse as any as S.Schema<DeleteFraudsterResponse>;
+const DeleteFraudsterResponse = DeleteDomainResponse as any as S.Schema<DeleteFraudsterResponse>;
 export type SpeakerId = string | redacted.Redacted<string>;
 export interface DeleteSpeakerRequest {
   DomainId: string;
   SpeakerId: string | redacted.Redacted<string>;
 }
-export const DeleteSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, SpeakerId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteSpeakerRequest" }) as any as S.Schema<DeleteSpeakerRequest>;
 export interface DeleteSpeakerResponse {}
-export const DeleteSpeakerResponse = DeleteDomainResponse as any as S.Schema<DeleteSpeakerResponse>;
+const DeleteSpeakerResponse = DeleteDomainResponse as any as S.Schema<DeleteSpeakerResponse>;
 export interface DeleteWatchlistRequest {
   DomainId: string;
   WatchlistId: string;
 }
-export const DeleteWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, WatchlistId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteWatchlistRequest" }) as any as S.Schema<DeleteWatchlistRequest>;
 export interface DeleteWatchlistResponse {}
-export const DeleteWatchlistResponse =
-  DeleteDomainResponse as any as S.Schema<DeleteWatchlistResponse>;
+const DeleteWatchlistResponse = DeleteDomainResponse as any as S.Schema<DeleteWatchlistResponse>;
 export interface DescribeDomainRequest {
   DomainId: string;
 }
-export const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -353,13 +351,12 @@ export const DescribeDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeDomainResponse {
   Domain?: Domain;
 }
-export const DescribeDomainResponse =
-  CreateDomainResponse as any as S.Schema<DescribeDomainResponse>;
+const DescribeDomainResponse = CreateDomainResponse as any as S.Schema<DescribeDomainResponse>;
 export interface DescribeFraudsterRequest {
   DomainId: string;
   FraudsterId: string | redacted.Redacted<string>;
 }
-export const DescribeFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, FraudsterId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -367,14 +364,14 @@ export const DescribeFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeFraudsterResponse {
   Fraudster?: Fraudster;
 }
-export const DescribeFraudsterResponse =
+const DescribeFraudsterResponse =
   AssociateFraudsterResponse as any as S.Schema<DescribeFraudsterResponse>;
 export type JobId = string;
 export interface DescribeFraudsterRegistrationJobRequest {
   DomainId: string;
   JobId: string;
 }
-export const DescribeFraudsterRegistrationJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeFraudsterRegistrationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, JobId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -387,14 +384,14 @@ export type IamRoleArn = string;
 export type DuplicateRegistrationAction = string;
 export type Score = number;
 export type RegistrationConfigWatchlistIds = string[];
-export const RegistrationConfigWatchlistIds =
+const RegistrationConfigWatchlistIds =
   ResponseWatchlistIds as any as S.Schema<RegistrationConfigWatchlistIds>;
 export interface RegistrationConfig {
   DuplicateRegistrationAction?: string;
   FraudsterSimilarityThreshold?: number;
   WatchlistIds?: string[];
 }
-export const RegistrationConfig = /*@__PURE__*/ S.suspend(() =>
+const RegistrationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DuplicateRegistrationAction: S.optional(S.String),
     FraudsterSimilarityThreshold: S.optional(S.Number),
@@ -405,27 +402,27 @@ export type S3Uri = string;
 export interface InputDataConfig {
   S3Uri: string;
 }
-export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ S3Uri: S.String }),
-).annotate({ identifier: "InputDataConfig" }) as any as S.Schema<InputDataConfig>;
+const InputDataConfig = /*@__PURE__*/ S.suspend(() => S.Struct({ S3Uri: S.String })).annotate({
+  identifier: "InputDataConfig",
+}) as any as S.Schema<InputDataConfig>;
 export interface OutputDataConfig {
   S3Uri: string;
   KmsKeyId?: string;
 }
-export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
+const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Uri: S.String, KmsKeyId: S.optional(S.String) }),
 ).annotate({ identifier: "OutputDataConfig" }) as any as S.Schema<OutputDataConfig>;
 export interface FailureDetails {
   StatusCode?: number;
   Message?: string;
 }
-export const FailureDetails = /*@__PURE__*/ S.suspend(() =>
+const FailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StatusCode: S.optional(S.Number), Message: S.optional(S.String) }),
 ).annotate({ identifier: "FailureDetails" }) as any as S.Schema<FailureDetails>;
 export interface JobProgress {
   PercentComplete?: number;
 }
-export const JobProgress = /*@__PURE__*/ S.suspend(() =>
+const JobProgress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PercentComplete: S.optional(S.Number) }),
 ).annotate({ identifier: "JobProgress" }) as any as S.Schema<JobProgress>;
 export interface FraudsterRegistrationJob {
@@ -442,7 +439,7 @@ export interface FraudsterRegistrationJob {
   FailureDetails?: FailureDetails;
   JobProgress?: JobProgress;
 }
-export const FraudsterRegistrationJob = /*@__PURE__*/ S.suspend(() =>
+const FraudsterRegistrationJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobName: S.optional(SensitiveString),
     JobId: S.optional(S.String),
@@ -461,7 +458,7 @@ export const FraudsterRegistrationJob = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeFraudsterRegistrationJobResponse {
   Job?: FraudsterRegistrationJob;
 }
-export const DescribeFraudsterRegistrationJobResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeFraudsterRegistrationJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Job: S.optional(FraudsterRegistrationJob) }),
 ).annotate({
   identifier: "DescribeFraudsterRegistrationJobResponse",
@@ -470,7 +467,7 @@ export interface DescribeSpeakerRequest {
   DomainId: string;
   SpeakerId: string | redacted.Redacted<string>;
 }
-export const DescribeSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, SpeakerId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -487,7 +484,7 @@ export interface Speaker {
   UpdatedAt?: Date;
   LastAccessedAt?: Date;
 }
-export const Speaker = /*@__PURE__*/ S.suspend(() =>
+const Speaker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.optional(S.String),
     CustomerSpeakerId: S.optional(SensitiveString),
@@ -501,14 +498,14 @@ export const Speaker = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSpeakerResponse {
   Speaker?: Speaker;
 }
-export const DescribeSpeakerResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSpeakerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Speaker: S.optional(Speaker) }),
 ).annotate({ identifier: "DescribeSpeakerResponse" }) as any as S.Schema<DescribeSpeakerResponse>;
 export interface DescribeSpeakerEnrollmentJobRequest {
   DomainId: string;
   JobId: string;
 }
-export const DescribeSpeakerEnrollmentJobRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeSpeakerEnrollmentJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, JobId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -519,14 +516,14 @@ export type SpeakerEnrollmentJobStatus = string;
 export type ExistingEnrollmentAction = string;
 export type FraudDetectionAction = string;
 export type EnrollmentJobFraudDetectionConfigWatchlistIds = string[];
-export const EnrollmentJobFraudDetectionConfigWatchlistIds =
+const EnrollmentJobFraudDetectionConfigWatchlistIds =
   ResponseWatchlistIds as any as S.Schema<EnrollmentJobFraudDetectionConfigWatchlistIds>;
 export interface EnrollmentJobFraudDetectionConfig {
   FraudDetectionAction?: string;
   RiskThreshold?: number;
   WatchlistIds?: string[];
 }
-export const EnrollmentJobFraudDetectionConfig = /*@__PURE__*/ S.suspend(() =>
+const EnrollmentJobFraudDetectionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FraudDetectionAction: S.optional(S.String),
     RiskThreshold: S.optional(S.Number),
@@ -539,7 +536,7 @@ export interface EnrollmentConfig {
   ExistingEnrollmentAction?: string;
   FraudDetectionConfig?: EnrollmentJobFraudDetectionConfig;
 }
-export const EnrollmentConfig = /*@__PURE__*/ S.suspend(() =>
+const EnrollmentConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExistingEnrollmentAction: S.optional(S.String),
     FraudDetectionConfig: S.optional(EnrollmentJobFraudDetectionConfig),
@@ -559,7 +556,7 @@ export interface SpeakerEnrollmentJob {
   FailureDetails?: FailureDetails;
   JobProgress?: JobProgress;
 }
-export const SpeakerEnrollmentJob = /*@__PURE__*/ S.suspend(() =>
+const SpeakerEnrollmentJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobName: S.optional(SensitiveString),
     JobId: S.optional(S.String),
@@ -578,7 +575,7 @@ export const SpeakerEnrollmentJob = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeSpeakerEnrollmentJobResponse {
   Job?: SpeakerEnrollmentJob;
 }
-export const DescribeSpeakerEnrollmentJobResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeSpeakerEnrollmentJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Job: S.optional(SpeakerEnrollmentJob) }),
 ).annotate({
   identifier: "DescribeSpeakerEnrollmentJobResponse",
@@ -587,7 +584,7 @@ export interface DescribeWatchlistRequest {
   DomainId: string;
   WatchlistId: string;
 }
-export const DescribeWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, WatchlistId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -595,7 +592,7 @@ export const DescribeWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeWatchlistResponse {
   Watchlist?: Watchlist;
 }
-export const DescribeWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeWatchlistResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Watchlist: S.optional(Watchlist) }),
 ).annotate({
   identifier: "DescribeWatchlistResponse",
@@ -605,7 +602,7 @@ export interface DisassociateFraudsterRequest {
   WatchlistId: string;
   FraudsterId: string | redacted.Redacted<string>;
 }
-export const DisassociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, WatchlistId: S.String, FraudsterId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -615,14 +612,14 @@ export const DisassociateFraudsterRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateFraudsterResponse {
   Fraudster?: Fraudster;
 }
-export const DisassociateFraudsterResponse =
+const DisassociateFraudsterResponse =
   AssociateFraudsterResponse as any as S.Schema<DisassociateFraudsterResponse>;
 export type SessionNameOrId = string;
 export interface EvaluateSessionRequest {
   DomainId: string;
   SessionNameOrId: string;
 }
-export const EvaluateSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, SessionNameOrId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -635,7 +632,7 @@ export type AuthenticationDecision = string;
 export interface AuthenticationConfiguration {
   AcceptanceThreshold: number;
 }
-export const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AcceptanceThreshold: S.Number }),
 ).annotate({
   identifier: "AuthenticationConfiguration",
@@ -650,7 +647,7 @@ export interface AuthenticationResult {
   Score?: number;
   Configuration?: AuthenticationConfiguration;
 }
-export const AuthenticationResult = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthenticationResultId: S.optional(S.String),
     AudioAggregationStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -666,7 +663,7 @@ export interface FraudDetectionConfiguration {
   RiskThreshold?: number;
   WatchlistId?: string;
 }
-export const FraudDetectionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FraudDetectionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RiskThreshold: S.optional(S.Number), WatchlistId: S.optional(S.String) }),
 ).annotate({
   identifier: "FraudDetectionConfiguration",
@@ -674,25 +671,25 @@ export const FraudDetectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type FraudDetectionDecision = string;
 export type FraudDetectionReason = string;
 export type FraudDetectionReasons = string[];
-export const FraudDetectionReasons = ResponseWatchlistIds as any as S.Schema<FraudDetectionReasons>;
+const FraudDetectionReasons = ResponseWatchlistIds as any as S.Schema<FraudDetectionReasons>;
 export interface KnownFraudsterRisk {
   RiskScore: number;
   GeneratedFraudsterId?: string;
 }
-export const KnownFraudsterRisk = /*@__PURE__*/ S.suspend(() =>
+const KnownFraudsterRisk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RiskScore: S.Number, GeneratedFraudsterId: S.optional(S.String) }),
 ).annotate({ identifier: "KnownFraudsterRisk" }) as any as S.Schema<KnownFraudsterRisk>;
 export interface VoiceSpoofingRisk {
   RiskScore: number;
 }
-export const VoiceSpoofingRisk = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RiskScore: S.Number }),
-).annotate({ identifier: "VoiceSpoofingRisk" }) as any as S.Schema<VoiceSpoofingRisk>;
+const VoiceSpoofingRisk = /*@__PURE__*/ S.suspend(() => S.Struct({ RiskScore: S.Number })).annotate(
+  { identifier: "VoiceSpoofingRisk" },
+) as any as S.Schema<VoiceSpoofingRisk>;
 export interface FraudRiskDetails {
   KnownFraudsterRisk: KnownFraudsterRisk;
   VoiceSpoofingRisk: VoiceSpoofingRisk;
 }
-export const FraudRiskDetails = /*@__PURE__*/ S.suspend(() =>
+const FraudRiskDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ KnownFraudsterRisk: KnownFraudsterRisk, VoiceSpoofingRisk: VoiceSpoofingRisk }),
 ).annotate({ identifier: "FraudRiskDetails" }) as any as S.Schema<FraudRiskDetails>;
 export interface FraudDetectionResult {
@@ -704,7 +701,7 @@ export interface FraudDetectionResult {
   Reasons?: string[];
   RiskDetails?: FraudRiskDetails;
 }
-export const FraudDetectionResult = /*@__PURE__*/ S.suspend(() =>
+const FraudDetectionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FraudDetectionResultId: S.optional(S.String),
     AudioAggregationStartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -723,7 +720,7 @@ export interface EvaluateSessionResponse {
   AuthenticationResult?: AuthenticationResult;
   FraudDetectionResult?: FraudDetectionResult;
 }
-export const EvaluateSessionResponse = /*@__PURE__*/ S.suspend(() =>
+const EvaluateSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.optional(S.String),
     SessionId: S.optional(S.String),
@@ -739,7 +736,7 @@ export interface ListDomainsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxResults: S.optional(S.Number), NextToken: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -756,14 +753,14 @@ export interface DomainSummary {
   ServerSideEncryptionUpdateDetails?: ServerSideEncryptionUpdateDetails;
   WatchlistDetails?: WatchlistDetails;
 }
-export const DomainSummary = Domain as any as S.Schema<DomainSummary>;
+const DomainSummary = Domain as any as S.Schema<DomainSummary>;
 export type DomainSummaries = DomainSummary[];
-export const DomainSummaries = /*@__PURE__*/ S.Array(DomainSummary);
+const DomainSummaries = /*@__PURE__*/ S.Array(DomainSummary);
 export interface ListDomainsResponse {
   DomainSummaries?: DomainSummary[];
   NextToken?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainSummaries: S.optional(DomainSummaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListDomainsResponse" }) as any as S.Schema<ListDomainsResponse>;
 export type MaxResultsForList = number;
@@ -773,7 +770,7 @@ export interface ListFraudsterRegistrationJobsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListFraudsterRegistrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFraudsterRegistrationJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     JobStatus: S.optional(S.String),
@@ -793,7 +790,7 @@ export interface FraudsterRegistrationJobSummary {
   FailureDetails?: FailureDetails;
   JobProgress?: JobProgress;
 }
-export const FraudsterRegistrationJobSummary = /*@__PURE__*/ S.suspend(() =>
+const FraudsterRegistrationJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobName: S.optional(SensitiveString),
     JobId: S.optional(S.String),
@@ -808,14 +805,12 @@ export const FraudsterRegistrationJobSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "FraudsterRegistrationJobSummary",
 }) as any as S.Schema<FraudsterRegistrationJobSummary>;
 export type FraudsterRegistrationJobSummaries = FraudsterRegistrationJobSummary[];
-export const FraudsterRegistrationJobSummaries = /*@__PURE__*/ S.Array(
-  FraudsterRegistrationJobSummary,
-);
+const FraudsterRegistrationJobSummaries = /*@__PURE__*/ S.Array(FraudsterRegistrationJobSummary);
 export interface ListFraudsterRegistrationJobsResponse {
   JobSummaries?: FraudsterRegistrationJobSummary[];
   NextToken?: string;
 }
-export const ListFraudsterRegistrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFraudsterRegistrationJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobSummaries: S.optional(FraudsterRegistrationJobSummaries),
     NextToken: S.optional(S.String),
@@ -829,7 +824,7 @@ export interface ListFraudstersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListFraudstersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFraudstersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     WatchlistId: S.optional(S.String),
@@ -843,14 +838,14 @@ export interface FraudsterSummary {
   CreatedAt?: Date;
   WatchlistIds?: string[];
 }
-export const FraudsterSummary = Fraudster as any as S.Schema<FraudsterSummary>;
+const FraudsterSummary = Fraudster as any as S.Schema<FraudsterSummary>;
 export type FraudsterSummaries = FraudsterSummary[];
-export const FraudsterSummaries = /*@__PURE__*/ S.Array(FraudsterSummary);
+const FraudsterSummaries = /*@__PURE__*/ S.Array(FraudsterSummary);
 export interface ListFraudstersResponse {
   FraudsterSummaries?: FraudsterSummary[];
   NextToken?: string;
 }
-export const ListFraudstersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFraudstersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FraudsterSummaries: S.optional(FraudsterSummaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListFraudstersResponse" }) as any as S.Schema<ListFraudstersResponse>;
 export interface ListSpeakerEnrollmentJobsRequest {
@@ -859,7 +854,7 @@ export interface ListSpeakerEnrollmentJobsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSpeakerEnrollmentJobsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpeakerEnrollmentJobsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     JobStatus: S.optional(S.String),
@@ -879,15 +874,15 @@ export interface SpeakerEnrollmentJobSummary {
   FailureDetails?: FailureDetails;
   JobProgress?: JobProgress;
 }
-export const SpeakerEnrollmentJobSummary =
+const SpeakerEnrollmentJobSummary =
   FraudsterRegistrationJobSummary as any as S.Schema<SpeakerEnrollmentJobSummary>;
 export type SpeakerEnrollmentJobSummaries = SpeakerEnrollmentJobSummary[];
-export const SpeakerEnrollmentJobSummaries = /*@__PURE__*/ S.Array(SpeakerEnrollmentJobSummary);
+const SpeakerEnrollmentJobSummaries = /*@__PURE__*/ S.Array(SpeakerEnrollmentJobSummary);
 export interface ListSpeakerEnrollmentJobsResponse {
   JobSummaries?: SpeakerEnrollmentJobSummary[];
   NextToken?: string;
 }
-export const ListSpeakerEnrollmentJobsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpeakerEnrollmentJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobSummaries: S.optional(SpeakerEnrollmentJobSummaries),
     NextToken: S.optional(S.String),
@@ -900,7 +895,7 @@ export interface ListSpeakersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListSpeakersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpeakersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     MaxResults: S.optional(S.Number),
@@ -916,21 +911,21 @@ export interface SpeakerSummary {
   UpdatedAt?: Date;
   LastAccessedAt?: Date;
 }
-export const SpeakerSummary = Speaker as any as S.Schema<SpeakerSummary>;
+const SpeakerSummary = Speaker as any as S.Schema<SpeakerSummary>;
 export type SpeakerSummaries = SpeakerSummary[];
-export const SpeakerSummaries = /*@__PURE__*/ S.Array(SpeakerSummary);
+const SpeakerSummaries = /*@__PURE__*/ S.Array(SpeakerSummary);
 export interface ListSpeakersResponse {
   SpeakerSummaries?: SpeakerSummary[];
   NextToken?: string;
 }
-export const ListSpeakersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpeakersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SpeakerSummaries: S.optional(SpeakerSummaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListSpeakersResponse" }) as any as S.Schema<ListSpeakersResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -940,7 +935,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -950,7 +945,7 @@ export interface ListWatchlistsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListWatchlistsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatchlistsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     MaxResults: S.optional(S.Number),
@@ -966,21 +961,21 @@ export interface WatchlistSummary {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-export const WatchlistSummary = Watchlist as any as S.Schema<WatchlistSummary>;
+const WatchlistSummary = Watchlist as any as S.Schema<WatchlistSummary>;
 export type WatchlistSummaries = WatchlistSummary[];
-export const WatchlistSummaries = /*@__PURE__*/ S.Array(WatchlistSummary);
+const WatchlistSummaries = /*@__PURE__*/ S.Array(WatchlistSummary);
 export interface ListWatchlistsResponse {
   WatchlistSummaries?: WatchlistSummary[];
   NextToken?: string;
 }
-export const ListWatchlistsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWatchlistsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ WatchlistSummaries: S.optional(WatchlistSummaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListWatchlistsResponse" }) as any as S.Schema<ListWatchlistsResponse>;
 export interface OptOutSpeakerRequest {
   DomainId: string;
   SpeakerId: string | redacted.Redacted<string>;
 }
-export const OptOutSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
+const OptOutSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainId: S.String, SpeakerId: SensitiveString }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -988,8 +983,7 @@ export const OptOutSpeakerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface OptOutSpeakerResponse {
   Speaker?: Speaker;
 }
-export const OptOutSpeakerResponse =
-  DescribeSpeakerResponse as any as S.Schema<OptOutSpeakerResponse>;
+const OptOutSpeakerResponse = DescribeSpeakerResponse as any as S.Schema<OptOutSpeakerResponse>;
 export interface StartFraudsterRegistrationJobRequest {
   ClientToken?: string;
   JobName?: string | redacted.Redacted<string>;
@@ -999,7 +993,7 @@ export interface StartFraudsterRegistrationJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
 }
-export const StartFraudsterRegistrationJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartFraudsterRegistrationJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     JobName: S.optional(SensitiveString),
@@ -1015,7 +1009,7 @@ export const StartFraudsterRegistrationJobRequest = /*@__PURE__*/ S.suspend(() =
 export interface StartFraudsterRegistrationJobResponse {
   Job?: FraudsterRegistrationJob;
 }
-export const StartFraudsterRegistrationJobResponse =
+const StartFraudsterRegistrationJobResponse =
   DescribeFraudsterRegistrationJobResponse as any as S.Schema<StartFraudsterRegistrationJobResponse>;
 export interface StartSpeakerEnrollmentJobRequest {
   ClientToken?: string;
@@ -1026,7 +1020,7 @@ export interface StartSpeakerEnrollmentJobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
 }
-export const StartSpeakerEnrollmentJobRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSpeakerEnrollmentJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     JobName: S.optional(SensitiveString),
@@ -1042,39 +1036,39 @@ export const StartSpeakerEnrollmentJobRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSpeakerEnrollmentJobResponse {
   Job?: SpeakerEnrollmentJob;
 }
-export const StartSpeakerEnrollmentJobResponse =
+const StartSpeakerEnrollmentJobResponse =
   DescribeSpeakerEnrollmentJobResponse as any as S.Schema<StartSpeakerEnrollmentJobResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteDomainResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteDomainResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = (string | redacted.Redacted<string>)[];
-export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
+const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: (string | redacted.Redacted<string>)[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = DeleteDomainResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteDomainResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDomainRequest {
   DomainId: string;
   Name: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
   ServerSideEncryptionConfiguration: ServerSideEncryptionConfiguration;
 }
-export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     Name: SensitiveString,
@@ -1085,14 +1079,14 @@ export const UpdateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainResponse {
   Domain?: Domain;
 }
-export const UpdateDomainResponse = CreateDomainResponse as any as S.Schema<UpdateDomainResponse>;
+const UpdateDomainResponse = CreateDomainResponse as any as S.Schema<UpdateDomainResponse>;
 export interface UpdateWatchlistRequest {
   DomainId: string;
   WatchlistId: string;
   Name?: string | redacted.Redacted<string>;
   Description?: string | redacted.Redacted<string>;
 }
-export const UpdateWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainId: S.String,
     WatchlistId: S.String,
@@ -1103,8 +1097,7 @@ export const UpdateWatchlistRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateWatchlistResponse {
   Watchlist?: Watchlist;
 }
-export const UpdateWatchlistResponse =
-  CreateWatchlistResponse as any as S.Schema<UpdateWatchlistResponse>;
+const UpdateWatchlistResponse = CreateWatchlistResponse as any as S.Schema<UpdateWatchlistResponse>;
 export type ConflictType = string;
 export type ResourceType = string;
 export type AssociateFraudsterError =

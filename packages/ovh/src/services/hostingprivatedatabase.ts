@@ -16,7 +16,7 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-export const ServiceTerminationFutureUseEnum = S.String;
+const ServiceTerminationFutureUseEnum = S.String;
 
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
@@ -34,7 +34,7 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-export const ServiceTerminationReasonEnum = S.String;
+const ServiceTerminationReasonEnum = S.String;
 
 export interface ConfirmHostingPrivateDatabaseTerminationRequest {
   /** Service name */
@@ -48,7 +48,7 @@ export interface ConfirmHostingPrivateDatabaseTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-export const ConfirmHostingPrivateDatabaseTerminationRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfirmHostingPrivateDatabaseTerminationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     commentary: S.optional(S.String),
@@ -67,7 +67,7 @@ export const ConfirmHostingPrivateDatabaseTerminationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ConfirmHostingPrivateDatabaseTerminationRequest>;
 
 export type ConfirmHostingPrivateDatabaseTerminationResponse = string;
-export const ConfirmHostingPrivateDatabaseTerminationResponse = /*@__PURE__*/ S.suspend(() =>
+const ConfirmHostingPrivateDatabaseTerminationResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ConfirmHostingPrivateDatabaseTerminationResponse",
@@ -79,7 +79,7 @@ export interface CopyHostingPrivateDatabaseDatabaseRequest {
   /** Database name */
   databaseName: string;
 }
-export const CopyHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -96,7 +96,7 @@ export const CopyHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend
 
 /** Database copy status */
 export type HostingPrivateDatabaseDatabaseCopyStatusEnum = "doing" | "done" | "error" | "todo";
-export const HostingPrivateDatabaseDatabaseCopyStatusEnum = S.String;
+const HostingPrivateDatabaseDatabaseCopyStatusEnum = S.String;
 
 /** Database copy */
 export interface HostingPrivateDatabaseDatabaseCopy {
@@ -111,7 +111,7 @@ export interface HostingPrivateDatabaseDatabaseCopy {
   /** Database copy status */
   status?: HostingPrivateDatabaseDatabaseCopyStatusEnum;
 }
-export const HostingPrivateDatabaseDatabaseCopy = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseDatabaseCopy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     expirationDate: S.optional(S.NullOr(S.String)),
@@ -133,7 +133,7 @@ export interface CopyHostingPrivateDatabaseDatabaseRestoreRequest {
   /** Whether to flush the database before restoring the copy (default to false) */
   flushDatabase?: boolean;
 }
-export const CopyHostingPrivateDatabaseDatabaseRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CopyHostingPrivateDatabaseDatabaseRestoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -191,7 +191,7 @@ export type HostingPrivateDatabaseTaskFunctionEnum =
   | "whitelist/create"
   | "whitelist/delete"
   | "whitelist/update";
-export const HostingPrivateDatabaseTaskFunctionEnum = S.String;
+const HostingPrivateDatabaseTaskFunctionEnum = S.String;
 
 /** Task's status */
 export type HostingPrivateDatabaseTaskStatusEnum =
@@ -200,7 +200,7 @@ export type HostingPrivateDatabaseTaskStatusEnum =
   | "done"
   | "error"
   | "todo";
-export const HostingPrivateDatabaseTaskStatusEnum = S.String;
+const HostingPrivateDatabaseTaskStatusEnum = S.String;
 
 /** Web Cloud Database task */
 export interface HostingPrivateDatabaseTask {
@@ -223,7 +223,7 @@ export interface HostingPrivateDatabaseTask {
   /** User name on which the task is working */
   userName?: string | null;
 }
-export const HostingPrivateDatabaseTask = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.NullOr(S.String)),
     doneDate: S.optional(S.NullOr(S.String)),
@@ -249,7 +249,7 @@ export interface CreateHostingPrivateDatabaseChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-export const CreateHostingPrivateDatabaseChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseChangeContactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     contactAdmin: S.optional(S.String),
@@ -267,13 +267,13 @@ export const CreateHostingPrivateDatabaseChangeContactRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactRequest>;
 
 export type CreateHostingPrivateDatabaseChangeContactResponseBodyList = Array<number>;
-export const CreateHostingPrivateDatabaseChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
+const CreateHostingPrivateDatabaseChangeContactResponseBodyList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CreateHostingPrivateDatabaseChangeContactResponseBodyList>;
 
 export type CreateHostingPrivateDatabaseChangeContactResponse =
   CreateHostingPrivateDatabaseChangeContactResponseBodyList;
-export const CreateHostingPrivateDatabaseChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseChangeContactResponse = /*@__PURE__*/ S.suspend(() =>
   CreateHostingPrivateDatabaseChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "CreateHostingPrivateDatabaseChangeContactResponse",
@@ -285,7 +285,7 @@ export interface CreateHostingPrivateDatabaseChangeFtpPasswordRequest {
   /** New ftp admin password (alphanumeric and 8 characters minimum) */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingPrivateDatabaseChangeFtpPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseChangeFtpPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -315,7 +315,7 @@ export type HostingPrivateDatabaseAvailableVersionEnum =
   | "postgresql_17"
   | "redis_7.0"
   | "valkey_7.2";
-export const HostingPrivateDatabaseAvailableVersionEnum = S.String;
+const HostingPrivateDatabaseAvailableVersionEnum = S.String;
 
 export interface CreateHostingPrivateDatabaseChangeVersionRequest {
   /** Service name */
@@ -323,7 +323,7 @@ export interface CreateHostingPrivateDatabaseChangeVersionRequest {
   /** Change the private database engine version */
   version: HostingPrivateDatabaseAvailableVersionEnum | (string & {});
 }
-export const CreateHostingPrivateDatabaseChangeVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseChangeVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     version: HostingPrivateDatabaseAvailableVersionEnum,
@@ -344,7 +344,7 @@ export interface CreateHostingPrivateDatabaseDatabaseRequest {
   /** Name of your new database */
   databaseName: string;
 }
-export const CreateHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String,
@@ -363,7 +363,7 @@ export interface CreateHostingPrivateDatabaseDatabaseDumpRequest {
   /** Whether to receive an email when the import is complete (default to false) */
   sendEmail?: boolean;
 }
-export const CreateHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -381,7 +381,7 @@ export const CreateHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.s
 
 /** Grant on a database for a specific user */
 export type HostingPrivateDatabaseGrantGrantEnum = "admin" | "none" | "ro" | "rw";
-export const HostingPrivateDatabaseGrantGrantEnum = S.String;
+const HostingPrivateDatabaseGrantGrantEnum = S.String;
 
 export interface CreateHostingPrivateDatabaseDatabaseWizardRequest {
   /** Service name */
@@ -395,7 +395,7 @@ export interface CreateHostingPrivateDatabaseDatabaseWizardRequest {
   /** New user name used to connect on your database */
   userName: string;
 }
-export const CreateHostingPrivateDatabaseDatabaseWizardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseDatabaseWizardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String,
@@ -421,7 +421,7 @@ export interface CreateHostingPrivateDatabaseLogSubscriptionRequest {
   /** Customer log stream ID */
   streamId: string;
 }
-export const CreateHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.String,
@@ -444,7 +444,7 @@ export interface DbaasLogsLogSubscriptionResponse {
   /** Operation owner's service name */
   serviceName?: string;
 }
-export const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationId: S.optional(S.String),
     serviceName: S.optional(S.String),
@@ -459,7 +459,7 @@ export interface CreateHostingPrivateDatabaseLogUrlRequest {
   /** Log kind name */
   kind: string;
 }
-export const CreateHostingPrivateDatabaseLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseLogUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.String,
@@ -477,7 +477,7 @@ export interface DbaasLogsTemporaryLogsLink {
   /** Temporary url */
   url?: string;
 }
-export const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsTemporaryLogsLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expirationDate: S.optional(S.String),
     url: S.optional(S.String),
@@ -490,7 +490,7 @@ export interface CreateHostingPrivateDatabaseQuotaRefreshRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateHostingPrivateDatabaseQuotaRefreshRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseQuotaRefreshRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -512,7 +512,7 @@ export interface CreateHostingPrivateDatabaseUserRequest {
   /** User name used to connect on your databases */
   userName: string;
 }
-export const CreateHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     password: S.String.pipe(T.SensitiveValue({})),
@@ -532,7 +532,7 @@ export interface CreateHostingPrivateDatabaseUserChangePasswordRequest {
   /** Password for the new user ( alphanumeric and 8 characters minimum ) */
   password: string | Redacted.Redacted<string>;
 }
-export const CreateHostingPrivateDatabaseUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseUserChangePasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -558,7 +558,7 @@ export interface CreateHostingPrivateDatabaseUserGrantRequest {
   /** Grant on a database for a specific user */
   grant: HostingPrivateDatabaseGrantGrantEnum | (string & {});
 }
-export const CreateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -579,7 +579,7 @@ export interface CreateHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
-export const CreateHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -605,7 +605,7 @@ export interface CreateHostingPrivateDatabaseWhitelistRequest {
   /** Authorize this IP to access sftp port */
   sftp?: boolean;
 }
-export const CreateHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String,
@@ -625,7 +625,7 @@ export interface DeleteHostingPrivateDatabaseDatabaseRequest {
   /** Database name */
   databaseName: string;
 }
-export const DeleteHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -648,7 +648,7 @@ export interface DeleteHostingPrivateDatabaseDatabaseCopyRequest {
   /** Id */
   id: string;
 }
-export const DeleteHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -665,7 +665,7 @@ export const DeleteHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<DeleteHostingPrivateDatabaseDatabaseCopyRequest>;
 
 export interface DeleteHostingPrivateDatabaseDatabaseCopyResponse {}
-export const DeleteHostingPrivateDatabaseDatabaseCopyResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseDatabaseCopyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteHostingPrivateDatabaseDatabaseCopyResponse",
@@ -679,7 +679,7 @@ export interface DeleteHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
-export const DeleteHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -701,7 +701,7 @@ export interface DeleteHostingPrivateDatabaseDumpRequest {
   /** Dump ID */
   dumpId: number;
 }
-export const DeleteHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dumpId: S.Number.pipe(T.Label()),
@@ -722,7 +722,7 @@ export interface DeleteHostingPrivateDatabaseLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const DeleteHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -743,7 +743,7 @@ export interface DeleteHostingPrivateDatabaseUserRequest {
   /** User name */
   userName: string;
 }
-export const DeleteHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -766,7 +766,7 @@ export interface DeleteHostingPrivateDatabaseUserGrantRequest {
   /** Database name */
   databaseName: string;
 }
-export const DeleteHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -786,7 +786,7 @@ export interface DeleteHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
-export const DeleteHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -806,7 +806,7 @@ export interface DeleteHostingPrivateDatabaseWhitelistRequest {
   /** Ip */
   ip: string;
 }
-export const DeleteHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -829,7 +829,7 @@ export interface DisableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
-export const DisableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -853,7 +853,7 @@ export interface EnableHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
-export const EnableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -873,7 +873,7 @@ export interface GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest {
   /** Service name */
   serviceName: string;
 }
-export const GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateHostingPrivateDatabaseTemporaryLogsLinkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -894,14 +894,14 @@ export interface HostingPrivateDatabaseTemporaryUrlInformations {
   /** Temporary url */
   url?: string;
 }
-export const HostingPrivateDatabaseTemporaryUrlInformations =
+const HostingPrivateDatabaseTemporaryUrlInformations =
   DbaasLogsTemporaryLogsLink as any as S.Schema<HostingPrivateDatabaseTemporaryUrlInformations>;
 
 export interface GetHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase/{serviceName}", code: 200 })),
@@ -920,7 +920,7 @@ export interface HostingPrivateDatabaseCapability {
   /** Can the object be updated */
   update?: boolean;
 }
-export const HostingPrivateDatabaseCapability = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseCapability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     create: S.optional(S.Boolean),
     delete: S.optional(S.Boolean),
@@ -934,13 +934,13 @@ export const HostingPrivateDatabaseCapability = /*@__PURE__*/ S.suspend(() =>
 /** Private database capabilities */
 export type HostingPrivateDatabaseServiceWithIAMCapabilitiesList =
   Array<HostingPrivateDatabaseCapability>;
-export const HostingPrivateDatabaseServiceWithIAMCapabilitiesList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseServiceWithIAMCapabilitiesList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseCapability,
 ) as any as S.Schema<HostingPrivateDatabaseServiceWithIAMCapabilitiesList>;
 
 /** Private database datacenter */
 export type HostingPrivateDatabaseDatacenterEnum = "bhs1" | "gra1" | "gra2" | "gra3";
-export const HostingPrivateDatabaseDatacenterEnum = S.String;
+const HostingPrivateDatabaseDatacenterEnum = S.String;
 
 /** Parameters required to query metrics from OpenTSDB */
 export interface HostingPrivateDatabaseGraphEndpoint {
@@ -951,7 +951,7 @@ export interface HostingPrivateDatabaseGraphEndpoint {
   /** A read-only token ID */
   readTokenId?: string | null;
 }
-export const HostingPrivateDatabaseGraphEndpoint = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseGraphEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.NullOr(S.String)),
     readToken: S.optional(S.NullOr(S.String)),
@@ -963,7 +963,7 @@ export const HostingPrivateDatabaseGraphEndpoint = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-export const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
+const IamResourceMetadataTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<IamResourceMetadataTagsMap>;
@@ -979,7 +979,7 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
+const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
     id: S.optional(S.String),
@@ -990,11 +990,11 @@ export const IamResourceMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Private database infrastructure */
 export type HostingPrivateDatabaseInfrastructureEnum = "docker";
-export const HostingPrivateDatabaseInfrastructureEnum = S.String;
+const HostingPrivateDatabaseInfrastructureEnum = S.String;
 
 /** Available offers */
 export type HostingPrivateDatabaseOfferEnum = "classic" | "public";
-export const HostingPrivateDatabaseOfferEnum = S.String;
+const HostingPrivateDatabaseOfferEnum = S.String;
 
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueLong {
@@ -1002,7 +1002,7 @@ export interface ComplexTypeUnitAndValueLong {
   unit?: string;
   value?: number;
 }
-export const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
+const ComplexTypeUnitAndValueLong = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     value: S.optional(S.Number),
@@ -1019,11 +1019,11 @@ export type HostingPrivateDatabaseStateEnum =
   | "started"
   | "stopPending"
   | "stopped";
-export const HostingPrivateDatabaseStateEnum = S.String;
+const HostingPrivateDatabaseStateEnum = S.String;
 
 /** Private database type */
 export type HostingPrivateDatabaseTypeEnum = "mariadb" | "mysql" | "postgresql" | "redis";
-export const HostingPrivateDatabaseTypeEnum = S.String;
+const HostingPrivateDatabaseTypeEnum = S.String;
 
 /** Private database version */
 export type HostingPrivateDatabaseVersionEnum =
@@ -1040,7 +1040,7 @@ export type HostingPrivateDatabaseVersionEnum =
   | "postgresql_17"
   | "redis_7.0"
   | "valkey_7.2";
-export const HostingPrivateDatabaseVersionEnum = S.String;
+const HostingPrivateDatabaseVersionEnum = S.String;
 
 /** Web Cloud Database */
 export interface HostingPrivateDatabaseServiceWithIAM {
@@ -1097,7 +1097,7 @@ export interface HostingPrivateDatabaseServiceWithIAM {
   /** Private database version number */
   versionNumber?: number;
 }
-export const HostingPrivateDatabaseServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseServiceWithIAM = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     capabilities: S.optional(HostingPrivateDatabaseServiceWithIAMCapabilitiesList),
     cpu: S.optional(S.Number),
@@ -1136,7 +1136,7 @@ export interface GetHostingPrivateDatabaseDatabaseRequest {
   /** Database name */
   databaseName: string;
 }
-export const GetHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -1160,7 +1160,7 @@ export interface HostingPrivateDatabaseDatabaseUser {
   /** User's name granted on this database */
   userName?: string;
 }
-export const HostingPrivateDatabaseDatabaseUser = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseDatabaseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     grantId: S.optional(S.Number),
     grantType: S.optional(HostingPrivateDatabaseGrantGrantEnum),
@@ -1172,7 +1172,7 @@ export const HostingPrivateDatabaseDatabaseUser = /*@__PURE__*/ S.suspend(() =>
 
 /** Users granted to this database */
 export type HostingPrivateDatabaseDatabaseUsersList = Array<HostingPrivateDatabaseDatabaseUser>;
-export const HostingPrivateDatabaseDatabaseUsersList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseDatabaseUsersList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseDatabaseUser,
 ) as any as S.Schema<HostingPrivateDatabaseDatabaseUsersList>;
 
@@ -1189,7 +1189,7 @@ export interface HostingPrivateDatabaseDatabase {
   /** Users granted to this database */
   users?: HostingPrivateDatabaseDatabaseUsersList;
 }
-export const HostingPrivateDatabaseDatabase = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backupTime: S.optional(S.NullOr(S.String)),
     creationDate: S.optional(S.String),
@@ -1209,7 +1209,7 @@ export interface GetHostingPrivateDatabaseDatabaseCopyRequest {
   /** Id */
   id: string;
 }
-export const GetHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -1233,7 +1233,7 @@ export interface GetHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
-export const GetHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -1262,7 +1262,7 @@ export interface HostingPrivateDatabaseDatabaseDump {
   /** Dump URL access */
   url?: string;
 }
-export const HostingPrivateDatabaseDatabaseDump = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseDatabaseDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     databaseName: S.optional(S.String),
@@ -1282,7 +1282,7 @@ export interface GetHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Extension name */
   extensionName: string;
 }
-export const GetHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -1300,7 +1300,7 @@ export const GetHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S
 
 /** Required extensions */
 export type HostingPrivateDatabaseExtensionRequiredExtensionsList = Array<string>;
-export const HostingPrivateDatabaseExtensionRequiredExtensionsList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseExtensionRequiredExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<HostingPrivateDatabaseExtensionRequiredExtensionsList>;
 
@@ -1310,7 +1310,7 @@ export type HostingPrivateDatabaseExtensionStatusEnum =
   | "disabling"
   | "enabled"
   | "enabling";
-export const HostingPrivateDatabaseExtensionStatusEnum = S.String;
+const HostingPrivateDatabaseExtensionStatusEnum = S.String;
 
 /** Webcloud Database extension */
 export interface HostingPrivateDatabaseExtension {
@@ -1323,7 +1323,7 @@ export interface HostingPrivateDatabaseExtension {
   /** Extension status */
   status?: HostingPrivateDatabaseExtensionStatusEnum;
 }
-export const HostingPrivateDatabaseExtension = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseExtension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     extensionName: S.optional(S.String),
@@ -1340,7 +1340,7 @@ export interface GetHostingPrivateDatabaseDumpRequest {
   /** Dump ID */
   dumpId: number;
 }
-export const GetHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dumpId: S.Number.pipe(T.Label()),
@@ -1370,7 +1370,7 @@ export interface HostingPrivateDatabaseDump {
   /** Dump URL access */
   url?: string;
 }
-export const HostingPrivateDatabaseDump = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseDump = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     databaseName: S.optional(S.String),
@@ -1389,7 +1389,7 @@ export interface GetHostingPrivateDatabaseLogKindRequest {
   /** Name */
   name: string;
 }
-export const GetHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     name: S.String.pipe(T.Label()),
@@ -1406,7 +1406,7 @@ export const GetHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend((
 
 /** List of additional log fields managed in this log kind */
 export type DbaasLogsLogKindAdditionalReturnedFieldsList = Array<string>;
-export const DbaasLogsLogKindAdditionalReturnedFieldsList =
+const DbaasLogsLogKindAdditionalReturnedFieldsList =
   HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<DbaasLogsLogKindAdditionalReturnedFieldsList>;
 
 /** Log kind */
@@ -1424,7 +1424,7 @@ export interface DbaasLogsLogKind {
   /** Last update date of the log kind */
   updatedAt?: string;
 }
-export const DbaasLogsLogKind = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     additionalReturnedFields: S.optional(DbaasLogsLogKindAdditionalReturnedFieldsList),
     createdAt: S.optional(S.String),
@@ -1441,7 +1441,7 @@ export interface GetHostingPrivateDatabaseLogSubscriptionRequest {
   /** Subscription ID */
   subscriptionId: string;
 }
-export const GetHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -1463,7 +1463,7 @@ export interface DbaasLogsLogSubscriptionResource {
   /** Type of subscribed resource */
   type?: string;
 }
-export const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscriptionResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(S.String),
@@ -1489,7 +1489,7 @@ export interface DbaasLogsLogSubscription {
   /** Last update date of the subscription */
   updatedAt?: string;
 }
-export const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
+const DbaasLogsLogSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     kind: S.optional(S.String),
@@ -1505,7 +1505,7 @@ export interface GetHostingPrivateDatabaseMetricsTokenRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingPrivateDatabaseMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseMetricsTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1526,7 +1526,7 @@ export interface HostingPrivateDatabaseMetricsToken {
   /** Generated token */
   token?: string;
 }
-export const HostingPrivateDatabaseMetricsToken = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseMetricsToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     token: S.optional(S.String),
@@ -1539,7 +1539,7 @@ export interface GetHostingPrivateDatabaseServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1555,7 +1555,7 @@ export const GetHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.susp
 
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-export const ServicesServicePossibleRenewPeriodList =
+const ServicesServicePossibleRenewPeriodList =
   CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
 
 /** Map a possible renew for a specific service */
@@ -1571,7 +1571,7 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-export const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
+const ServiceRenewType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     automatic: S.optional(S.Boolean),
     deleteAtExpiration: S.optional(S.Boolean),
@@ -1590,7 +1590,7 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-export const ServiceRenewalTypeEnum = S.String;
+const ServiceRenewalTypeEnum = S.String;
 
 /** service.StateEnum */
 export type ServiceStateEnum =
@@ -1600,7 +1600,7 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-export const ServiceStateEnum = S.String;
+const ServiceStateEnum = S.String;
 
 /** Details about a Service */
 export interface ServicesService {
@@ -1621,7 +1621,7 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-export const ServicesService = /*@__PURE__*/ S.suspend(() =>
+const ServicesService = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canDeleteAtExpiration: S.optional(S.Boolean),
     contactAdmin: S.optional(S.String),
@@ -1645,7 +1645,7 @@ export interface GetHostingPrivateDatabaseTaskRequest {
   /** Id */
   id: number;
 }
-export const GetHostingPrivateDatabaseTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -1662,7 +1662,7 @@ export interface GetHostingPrivateDatabaseUserRequest {
   /** User name */
   userName: string;
 }
-export const GetHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -1686,7 +1686,7 @@ export interface HostingPrivateDatabaseUserDatabase {
   /** User's rights on this database */
   grantType?: HostingPrivateDatabaseGrantGrantEnum;
 }
-export const HostingPrivateDatabaseUserDatabase = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseUserDatabase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseName: S.optional(S.String),
     grantId: S.optional(S.Number),
@@ -1698,7 +1698,7 @@ export const HostingPrivateDatabaseUserDatabase = /*@__PURE__*/ S.suspend(() =>
 
 /** Databases granted for this user */
 export type HostingPrivateDatabaseUserDatabasesList = Array<HostingPrivateDatabaseUserDatabase>;
-export const HostingPrivateDatabaseUserDatabasesList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseUserDatabasesList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseUserDatabase,
 ) as any as S.Schema<HostingPrivateDatabaseUserDatabasesList>;
 
@@ -1711,7 +1711,7 @@ export interface HostingPrivateDatabaseUser {
   /** User name used to connect to your databases */
   userName?: string;
 }
-export const HostingPrivateDatabaseUser = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     databases: S.optional(HostingPrivateDatabaseUserDatabasesList),
@@ -1729,7 +1729,7 @@ export interface GetHostingPrivateDatabaseUserGrantRequest {
   /** Database name */
   databaseName: string;
 }
-export const GetHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -1754,7 +1754,7 @@ export interface HostingPrivateDatabaseUserGrant {
   /** Grant set */
   grant?: HostingPrivateDatabaseGrantGrantEnum;
 }
-export const HostingPrivateDatabaseUserGrant = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseUserGrant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     databaseName: S.optional(S.String),
@@ -1768,7 +1768,7 @@ export interface GetHostingPrivateDatabaseWebhostingNetworkRequest {
   /** Service name */
   serviceName: string;
 }
-export const GetHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseWebhostingNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -1788,14 +1788,14 @@ export type HostingPrivateDatabaseWebhostingNetworkStatusEnum =
   | "disabling"
   | "enabled"
   | "enabling";
-export const HostingPrivateDatabaseWebhostingNetworkStatusEnum = S.String;
+const HostingPrivateDatabaseWebhostingNetworkStatusEnum = S.String;
 
 /** webhosting Network */
 export interface HostingPrivateDatabaseWebhostingNetwork {
   /** Webhosting network status */
   status?: HostingPrivateDatabaseWebhostingNetworkStatusEnum;
 }
-export const HostingPrivateDatabaseWebhostingNetwork = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseWebhostingNetwork = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(HostingPrivateDatabaseWebhostingNetworkStatusEnum),
   }),
@@ -1809,7 +1809,7 @@ export interface GetHostingPrivateDatabaseWhitelistRequest {
   /** Ip */
   ip: string;
 }
-export const GetHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -1830,7 +1830,7 @@ export type HostingPrivateDatabaseWhitelistStatusEnum =
   | "creating"
   | "deleting"
   | "updating";
-export const HostingPrivateDatabaseWhitelistStatusEnum = S.String;
+const HostingPrivateDatabaseWhitelistStatusEnum = S.String;
 
 /** Whitelist */
 export interface HostingPrivateDatabaseWhitelist {
@@ -1851,7 +1851,7 @@ export interface HostingPrivateDatabaseWhitelist {
   /** The id of the task working on this object */
   taskId?: number | null;
 }
-export const HostingPrivateDatabaseWhitelist = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseWhitelist = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creationDate: S.optional(S.String),
     ip: S.optional(S.String),
@@ -1878,7 +1878,7 @@ export interface ImportHostingPrivateDatabaseDatabaseRequest {
   /** Whether to receive an email when the import is complete (default to false) */
   sendEmail?: boolean;
 }
-export const ImportHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -1898,19 +1898,19 @@ export const ImportHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspe
 
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-export const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const IamResourceTagFilterInput = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "IamResourceTagFilterInput",
 }) as any as S.Schema<IamResourceTagFilterInput>;
 
 export type ListHostingPrivateDatabaseRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-export const ListHostingPrivateDatabaseRequestIamTagsValueList = /*@__PURE__*/ S.Array(
+const ListHostingPrivateDatabaseRequestIamTagsValueList = /*@__PURE__*/ S.Array(
   IamResourceTagFilterInput,
 ) as any as S.Schema<ListHostingPrivateDatabaseRequestIamTagsValueList>;
 
 export type ListHostingPrivateDatabaseRequestIamTagsMap = {
   [key: string]: ListHostingPrivateDatabaseRequestIamTagsValueList | undefined;
 };
-export const ListHostingPrivateDatabaseRequestIamTagsMap = /*@__PURE__*/ S.Record(
+const ListHostingPrivateDatabaseRequestIamTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   ListHostingPrivateDatabaseRequestIamTagsValueList,
 ) as any as S.Schema<ListHostingPrivateDatabaseRequestIamTagsMap>;
@@ -1919,7 +1919,7 @@ export interface ListHostingPrivateDatabaseRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListHostingPrivateDatabaseRequestIamTagsMap;
 }
-export const ListHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iamTags: S.optional(ListHostingPrivateDatabaseRequestIamTagsMap.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase", code: 200 })),
@@ -1928,11 +1928,11 @@ export const ListHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHostingPrivateDatabaseRequest>;
 
 export type ListHostingPrivateDatabaseResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseResponseBodyList =
+const ListHostingPrivateDatabaseResponseBodyList =
   HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseResponseBodyList>;
 
 export type ListHostingPrivateDatabaseResponse = ListHostingPrivateDatabaseResponseBodyList;
-export const ListHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingPrivateDatabaseResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingPrivateDatabaseResponse",
@@ -1941,17 +1941,16 @@ export const ListHostingPrivateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest {
   offer: HostingPrivateDatabaseOfferEnum | (string & {});
 }
-export const ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      offer: HostingPrivateDatabaseOfferEnum.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/hosting/privateDatabase/availableOrderCapacities",
-        code: 200,
-      }),
-    ),
+const ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    offer: HostingPrivateDatabaseOfferEnum.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/hosting/privateDatabase/availableOrderCapacities",
+      code: 200,
+    }),
+  ),
 ).annotate({
   identifier: "ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest",
 }) as any as S.Schema<ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest>;
@@ -1959,24 +1958,22 @@ export const ListHostingPrivateDatabaseAvailableOrderCapacitiesRequest = /*@__PU
 /** A list of datacenter available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList =
   Array<HostingPrivateDatabaseDatacenterEnum>;
-export const HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseDatacenterEnum,
 ) as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList>;
 
 /** Private database available ram sizes */
 export type HostingPrivateDatabaseAvailableRamSizeEnum = "1024" | "2048" | "4096" | "512";
-export const HostingPrivateDatabaseAvailableRamSizeEnum = S.String;
-
 /** A list of ram size available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
   Array<HostingPrivateDatabaseAvailableRamSizeEnum>;
-export const HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
+const HostingPrivateDatabaseAvailableOrderCapacitiesRamList =
   HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesRamList>;
 
 /** A list of version available for this offer */
 export type HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
-export const HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
+const HostingPrivateDatabaseAvailableOrderCapacitiesVersionList =
   HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList as any as S.Schema<HostingPrivateDatabaseAvailableOrderCapacitiesVersionList>;
 
 /** Description for available order capacities following an offer */
@@ -1990,7 +1987,7 @@ export interface HostingPrivateDatabaseAvailableOrderCapacities {
   /** A list of version available for this offer */
   version?: HostingPrivateDatabaseAvailableOrderCapacitiesVersionList;
 }
-export const HostingPrivateDatabaseAvailableOrderCapacities = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseAvailableOrderCapacities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datacenter: S.optional(HostingPrivateDatabaseAvailableOrderCapacitiesDatacenterList),
     offer: S.optional(HostingPrivateDatabaseOfferEnum),
@@ -2005,7 +2002,7 @@ export interface ListHostingPrivateDatabaseAvailableVersionsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseAvailableVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2021,12 +2018,12 @@ export const ListHostingPrivateDatabaseAvailableVersionsRequest = /*@__PURE__*/ 
 
 export type ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
   Array<HostingPrivateDatabaseAvailableVersionEnum>;
-export const ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
+const ListHostingPrivateDatabaseAvailableVersionsResponseBodyList =
   HostingPrivateDatabaseAvailableOrderCapacitiesVersionList as any as S.Schema<ListHostingPrivateDatabaseAvailableVersionsResponseBodyList>;
 
 export type ListHostingPrivateDatabaseAvailableVersionsResponse =
   ListHostingPrivateDatabaseAvailableVersionsResponseBodyList;
-export const ListHostingPrivateDatabaseAvailableVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseAvailableVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingPrivateDatabaseAvailableVersionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingPrivateDatabaseAvailableVersionsResponse",
@@ -2036,7 +2033,7 @@ export interface ListHostingPrivateDatabaseConfigRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2048,12 +2045,12 @@ export const ListHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend((
 
 /** Configuration available values */
 export type HostingPrivateDatabaseConfigDetailAvailableValuesList = Array<string>;
-export const HostingPrivateDatabaseConfigDetailAvailableValuesList =
+const HostingPrivateDatabaseConfigDetailAvailableValuesList =
   HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<HostingPrivateDatabaseConfigDetailAvailableValuesList>;
 
 /** Web Cloud Database config type */
 export type HostingPrivateDatabaseConfigTypeEnum = "boolean" | "number" | "string";
-export const HostingPrivateDatabaseConfigTypeEnum = S.String;
+const HostingPrivateDatabaseConfigTypeEnum = S.String;
 
 /** Config detail */
 export interface HostingPrivateDatabaseConfigDetail {
@@ -2074,7 +2071,7 @@ export interface HostingPrivateDatabaseConfigDetail {
   /** Configuration current value */
   value?: string;
 }
-export const HostingPrivateDatabaseConfigDetail = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseConfigDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableValues: S.optional(HostingPrivateDatabaseConfigDetailAvailableValuesList),
     defaultValue: S.optional(S.String),
@@ -2091,13 +2088,13 @@ export const HostingPrivateDatabaseConfigDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** Configuration details */
 export type HostingPrivateDatabaseConfigsDetailsList = Array<HostingPrivateDatabaseConfigDetail>;
-export const HostingPrivateDatabaseConfigsDetailsList = /*@__PURE__*/ S.Array(
+const HostingPrivateDatabaseConfigsDetailsList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseConfigDetail,
 ) as any as S.Schema<HostingPrivateDatabaseConfigsDetailsList>;
 
 /** Web Cloud Database config status */
 export type HostingPrivateDatabaseConfigStatusEnum = "applied" | "updating";
-export const HostingPrivateDatabaseConfigStatusEnum = S.String;
+const HostingPrivateDatabaseConfigStatusEnum = S.String;
 
 /** Configs */
 export interface HostingPrivateDatabaseConfigs {
@@ -2110,7 +2107,7 @@ export interface HostingPrivateDatabaseConfigs {
   /** Configuration linked task id */
   taskId?: number | null;
 }
-export const HostingPrivateDatabaseConfigs = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(HostingPrivateDatabaseConfigsDetailsList),
     lastUpdate: S.optional(S.String),
@@ -2125,7 +2122,7 @@ export interface ListHostingPrivateDatabaseCpuThrottleRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseCpuThrottleRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseCpuThrottleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2142,7 +2139,7 @@ export interface HostingPrivateDatabaseCpuThrottle {
   /** Start date of the CPU throttle */
   startDate?: string;
 }
-export const HostingPrivateDatabaseCpuThrottle = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseCpuThrottle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(S.NullOr(S.String)),
     startDate: S.optional(S.String),
@@ -2153,13 +2150,13 @@ export const HostingPrivateDatabaseCpuThrottle = /*@__PURE__*/ S.suspend(() =>
 
 export type ListHostingPrivateDatabaseCpuThrottleResponseBodyList =
   Array<HostingPrivateDatabaseCpuThrottle>;
-export const ListHostingPrivateDatabaseCpuThrottleResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingPrivateDatabaseCpuThrottleResponseBodyList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseCpuThrottle,
 ) as any as S.Schema<ListHostingPrivateDatabaseCpuThrottleResponseBodyList>;
 
 export type ListHostingPrivateDatabaseCpuThrottleResponse =
   ListHostingPrivateDatabaseCpuThrottleResponseBodyList;
-export const ListHostingPrivateDatabaseCpuThrottleResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseCpuThrottleResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingPrivateDatabaseCpuThrottleResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingPrivateDatabaseCpuThrottleResponse",
@@ -2169,7 +2166,7 @@ export interface ListHostingPrivateDatabaseDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2180,12 +2177,9 @@ export const ListHostingPrivateDatabaseDatabaseRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponseBodyList>;
-
 export type ListHostingPrivateDatabaseDatabaseResponse =
   ListHostingPrivateDatabaseDatabaseResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseResponse =
+const ListHostingPrivateDatabaseDatabaseResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseCopyRequest {
@@ -2194,7 +2188,7 @@ export interface ListHostingPrivateDatabaseDatabaseCopyRequest {
   /** Database name */
   databaseName: string;
 }
-export const ListHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -2210,12 +2204,9 @@ export const ListHostingPrivateDatabaseDatabaseCopyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseCopyResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseCopyResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponseBodyList>;
-
 export type ListHostingPrivateDatabaseDatabaseCopyResponse =
   ListHostingPrivateDatabaseDatabaseCopyResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseCopyResponse =
+const ListHostingPrivateDatabaseDatabaseCopyResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseCopyResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseDumpRequest {
@@ -2224,7 +2215,7 @@ export interface ListHostingPrivateDatabaseDatabaseDumpRequest {
   /** Database name */
   databaseName: string;
 }
-export const ListHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -2240,12 +2231,9 @@ export const ListHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseDumpResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseDatabaseDumpResponseBodyList =
-  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponseBodyList>;
-
 export type ListHostingPrivateDatabaseDatabaseDumpResponse =
   ListHostingPrivateDatabaseDatabaseDumpResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseDumpResponse =
+const ListHostingPrivateDatabaseDatabaseDumpResponse =
   CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseDumpResponse>;
 
 export interface ListHostingPrivateDatabaseDatabaseExtensionRequest {
@@ -2258,7 +2246,7 @@ export interface ListHostingPrivateDatabaseDatabaseExtensionRequest {
   /** Filter results on status (=) */
   status?: HostingPrivateDatabaseExtensionStatusEnum | (string & {});
 }
-export const ListHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -2276,12 +2264,9 @@ export const ListHostingPrivateDatabaseDatabaseExtensionRequest = /*@__PURE__*/ 
 }) as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionRequest>;
 
 export type ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList>;
-
 export type ListHostingPrivateDatabaseDatabaseExtensionResponse =
   ListHostingPrivateDatabaseDatabaseExtensionResponseBodyList;
-export const ListHostingPrivateDatabaseDatabaseExtensionResponse =
+const ListHostingPrivateDatabaseDatabaseExtensionResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseDatabaseExtensionResponse>;
 
 export interface ListHostingPrivateDatabaseDumpRequest {
@@ -2292,7 +2277,7 @@ export interface ListHostingPrivateDatabaseDumpRequest {
   /** Filter the value of orphan property (=) */
   orphan?: boolean;
 }
-export const ListHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.optional(S.String.pipe(T.Query())),
@@ -2303,18 +2288,15 @@ export const ListHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseDumpRequest>;
 
 export type ListHostingPrivateDatabaseDumpResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseDumpResponseBodyList =
-  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseDumpResponseBodyList>;
-
 export type ListHostingPrivateDatabaseDumpResponse = ListHostingPrivateDatabaseDumpResponseBodyList;
-export const ListHostingPrivateDatabaseDumpResponse =
+const ListHostingPrivateDatabaseDumpResponse =
   CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseDumpResponse>;
 
 export interface ListHostingPrivateDatabaseLogKindRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2325,12 +2307,9 @@ export const ListHostingPrivateDatabaseLogKindRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListHostingPrivateDatabaseLogKindRequest>;
 
 export type ListHostingPrivateDatabaseLogKindResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseLogKindResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseLogKindResponseBodyList>;
-
 export type ListHostingPrivateDatabaseLogKindResponse =
   ListHostingPrivateDatabaseLogKindResponseBodyList;
-export const ListHostingPrivateDatabaseLogKindResponse =
+const ListHostingPrivateDatabaseLogKindResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogKindResponse>;
 
 export interface ListHostingPrivateDatabaseLogSubscriptionRequest {
@@ -2339,7 +2318,7 @@ export interface ListHostingPrivateDatabaseLogSubscriptionRequest {
   /** Filter on a specific kind */
   kind?: string;
 }
-export const ListHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     kind: S.optional(S.String.pipe(T.Query())),
@@ -2355,19 +2334,16 @@ export const ListHostingPrivateDatabaseLogSubscriptionRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionRequest>;
 
 export type ListHostingPrivateDatabaseLogSubscriptionResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseLogSubscriptionResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponseBodyList>;
-
 export type ListHostingPrivateDatabaseLogSubscriptionResponse =
   ListHostingPrivateDatabaseLogSubscriptionResponseBodyList;
-export const ListHostingPrivateDatabaseLogSubscriptionResponse =
+const ListHostingPrivateDatabaseLogSubscriptionResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseLogSubscriptionResponse>;
 
 export interface ListHostingPrivateDatabaseOomRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseOomRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseOomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase/{serviceName}/oom", code: 200 })),
@@ -2382,7 +2358,7 @@ export interface HostingPrivateDatabaseOom {
   /** Memory size reached */
   sizeReached?: number;
 }
-export const HostingPrivateDatabaseOom = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseOom = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String),
     sizeReached: S.optional(S.Number),
@@ -2392,12 +2368,12 @@ export const HostingPrivateDatabaseOom = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HostingPrivateDatabaseOom>;
 
 export type ListHostingPrivateDatabaseOomResponseBodyList = Array<HostingPrivateDatabaseOom>;
-export const ListHostingPrivateDatabaseOomResponseBodyList = /*@__PURE__*/ S.Array(
+const ListHostingPrivateDatabaseOomResponseBodyList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseOom,
 ) as any as S.Schema<ListHostingPrivateDatabaseOomResponseBodyList>;
 
 export type ListHostingPrivateDatabaseOomResponse = ListHostingPrivateDatabaseOomResponseBodyList;
-export const ListHostingPrivateDatabaseOomResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseOomResponse = /*@__PURE__*/ S.suspend(() =>
   ListHostingPrivateDatabaseOomResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListHostingPrivateDatabaseOomResponse",
@@ -2411,7 +2387,7 @@ export interface ListHostingPrivateDatabaseTasksRequest {
   /** Filter the value of status property */
   status?: HostingPrivateDatabaseTaskStatusEnum | (string & {});
 }
-export const ListHostingPrivateDatabaseTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     function: S.optional(HostingPrivateDatabaseTaskFunctionEnum.pipe(T.Query())),
@@ -2424,19 +2400,16 @@ export const ListHostingPrivateDatabaseTasksRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListHostingPrivateDatabaseTasksRequest>;
 
 export type ListHostingPrivateDatabaseTasksResponseBodyList = Array<number>;
-export const ListHostingPrivateDatabaseTasksResponseBodyList =
-  CreateHostingPrivateDatabaseChangeContactResponseBodyList as any as S.Schema<ListHostingPrivateDatabaseTasksResponseBodyList>;
-
 export type ListHostingPrivateDatabaseTasksResponse =
   ListHostingPrivateDatabaseTasksResponseBodyList;
-export const ListHostingPrivateDatabaseTasksResponse =
+const ListHostingPrivateDatabaseTasksResponse =
   CreateHostingPrivateDatabaseChangeContactResponse as any as S.Schema<ListHostingPrivateDatabaseTasksResponse>;
 
 export interface ListHostingPrivateDatabaseUserRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase/{serviceName}/user", code: 200 })),
@@ -2445,11 +2418,8 @@ export const ListHostingPrivateDatabaseUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseUserRequest>;
 
 export type ListHostingPrivateDatabaseUserResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseUserResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseUserResponseBodyList>;
-
 export type ListHostingPrivateDatabaseUserResponse = ListHostingPrivateDatabaseUserResponseBodyList;
-export const ListHostingPrivateDatabaseUserResponse =
+const ListHostingPrivateDatabaseUserResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserResponse>;
 
 export interface ListHostingPrivateDatabaseUserGrantRequest {
@@ -2458,7 +2428,7 @@ export interface ListHostingPrivateDatabaseUserGrantRequest {
   /** User name */
   userName: string;
 }
-export const ListHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),
@@ -2474,19 +2444,16 @@ export const ListHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingPrivateDatabaseUserGrantRequest>;
 
 export type ListHostingPrivateDatabaseUserGrantResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseUserGrantResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponseBodyList>;
-
 export type ListHostingPrivateDatabaseUserGrantResponse =
   ListHostingPrivateDatabaseUserGrantResponseBodyList;
-export const ListHostingPrivateDatabaseUserGrantResponse =
+const ListHostingPrivateDatabaseUserGrantResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseUserGrantResponse>;
 
 export interface ListHostingPrivateDatabaseWebsRequest {
   /** Service name */
   serviceName: string;
 }
-export const ListHostingPrivateDatabaseWebsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseWebsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/hosting/privateDatabase/{serviceName}/webs", code: 200 })),
@@ -2495,11 +2462,8 @@ export const ListHostingPrivateDatabaseWebsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListHostingPrivateDatabaseWebsRequest>;
 
 export type ListHostingPrivateDatabaseWebsResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseWebsResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseWebsResponseBodyList>;
-
 export type ListHostingPrivateDatabaseWebsResponse = ListHostingPrivateDatabaseWebsResponseBodyList;
-export const ListHostingPrivateDatabaseWebsResponse =
+const ListHostingPrivateDatabaseWebsResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWebsResponse>;
 
 export interface ListHostingPrivateDatabaseWhitelistRequest {
@@ -2512,7 +2476,7 @@ export interface ListHostingPrivateDatabaseWhitelistRequest {
   /** Filter the value of sftp property */
   sftp?: boolean;
 }
-export const ListHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.optional(S.String.pipe(T.Query())),
@@ -2526,12 +2490,9 @@ export const ListHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListHostingPrivateDatabaseWhitelistRequest>;
 
 export type ListHostingPrivateDatabaseWhitelistResponseBodyList = Array<string>;
-export const ListHostingPrivateDatabaseWhitelistResponseBodyList =
-  HostingPrivateDatabaseExtensionRequiredExtensionsList as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponseBodyList>;
-
 export type ListHostingPrivateDatabaseWhitelistResponse =
   ListHostingPrivateDatabaseWhitelistResponseBodyList;
-export const ListHostingPrivateDatabaseWhitelistResponse =
+const ListHostingPrivateDatabaseWhitelistResponse =
   ListHostingPrivateDatabaseResponse as any as S.Schema<ListHostingPrivateDatabaseWhitelistResponse>;
 
 export interface PutHostingPrivateDatabaseRequest {
@@ -2540,7 +2501,7 @@ export interface PutHostingPrivateDatabaseRequest {
   /** Set the name displayed in customer panel for your private database (max 50 chars) */
   displayName?: string | null;
 }
-export const PutHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     displayName: S.optional(S.NullOr(S.String)),
@@ -2550,7 +2511,7 @@ export const PutHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutHostingPrivateDatabaseRequest>;
 
 export interface PutHostingPrivateDatabaseResponse {}
-export const PutHostingPrivateDatabaseResponse =
+const PutHostingPrivateDatabaseResponse =
   DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseResponse>;
 
 export interface PutHostingPrivateDatabaseServiceInfosRequest {
@@ -2559,7 +2520,7 @@ export interface PutHostingPrivateDatabaseServiceInfosRequest {
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-export const PutHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     renew: S.optional(S.NullOr(ServiceRenewType)),
@@ -2575,7 +2536,7 @@ export const PutHostingPrivateDatabaseServiceInfosRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<PutHostingPrivateDatabaseServiceInfosRequest>;
 
 export interface PutHostingPrivateDatabaseServiceInfosResponse {}
-export const PutHostingPrivateDatabaseServiceInfosResponse =
+const PutHostingPrivateDatabaseServiceInfosResponse =
   DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseServiceInfosResponse>;
 
 export interface PutHostingPrivateDatabaseWhitelistRequest {
@@ -2590,7 +2551,7 @@ export interface PutHostingPrivateDatabaseWhitelistRequest {
   /** Authorize this IP to access sftp port */
   sftp?: boolean;
 }
-export const PutHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
+const PutHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     ip: S.String.pipe(T.Label()),
@@ -2609,14 +2570,14 @@ export const PutHostingPrivateDatabaseWhitelistRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PutHostingPrivateDatabaseWhitelistRequest>;
 
 export interface PutHostingPrivateDatabaseWhitelistResponse {}
-export const PutHostingPrivateDatabaseWhitelistResponse =
+const PutHostingPrivateDatabaseWhitelistResponse =
   DeleteHostingPrivateDatabaseDatabaseCopyResponse as any as S.Schema<PutHostingPrivateDatabaseWhitelistResponse>;
 
 export interface RestartHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
-export const RestartHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const RestartHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2634,7 +2595,7 @@ export interface RestoreHostingPrivateDatabaseDatabaseDumpRequest {
   /** Id */
   id: number;
 }
-export const RestoreHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreHostingPrivateDatabaseDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     databaseName: S.String.pipe(T.Label()),
@@ -2658,7 +2619,7 @@ export interface RestoreHostingPrivateDatabaseDumpRequest {
   /** Database name */
   databaseName?: string;
 }
-export const RestoreHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const RestoreHostingPrivateDatabaseDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dumpId: S.Number.pipe(T.Label()),
@@ -2678,7 +2639,7 @@ export interface TerminateHostingPrivateDatabaseRequest {
   /** Service name */
   serviceName: string;
 }
-export const TerminateHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+const TerminateHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
   }).pipe(
@@ -2689,7 +2650,7 @@ export const TerminateHostingPrivateDatabaseRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<TerminateHostingPrivateDatabaseRequest>;
 
 export type TerminateHostingPrivateDatabaseResponse = string;
-export const TerminateHostingPrivateDatabaseResponse =
+const TerminateHostingPrivateDatabaseResponse =
   ConfirmHostingPrivateDatabaseTerminationResponse as any as S.Schema<TerminateHostingPrivateDatabaseResponse>;
 
 /** ConfigKeyValue */
@@ -2699,7 +2660,7 @@ export interface HostingPrivateDatabaseConfigKeyValue {
   /** Web Cloud Database configuration value */
   value: string;
 }
-export const HostingPrivateDatabaseConfigKeyValue = /*@__PURE__*/ S.suspend(() =>
+const HostingPrivateDatabaseConfigKeyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -2711,7 +2672,7 @@ export const HostingPrivateDatabaseConfigKeyValue = /*@__PURE__*/ S.suspend(() =
 /** Web Cloud Database configurations */
 export type UpdateHostingPrivateDatabaseConfigRequestParametersList =
   Array<HostingPrivateDatabaseConfigKeyValue>;
-export const UpdateHostingPrivateDatabaseConfigRequestParametersList = /*@__PURE__*/ S.Array(
+const UpdateHostingPrivateDatabaseConfigRequestParametersList = /*@__PURE__*/ S.Array(
   HostingPrivateDatabaseConfigKeyValue,
 ) as any as S.Schema<UpdateHostingPrivateDatabaseConfigRequestParametersList>;
 
@@ -2721,7 +2682,7 @@ export interface UpdateHostingPrivateDatabaseConfigRequest {
   /** Web Cloud Database configurations */
   parameters: UpdateHostingPrivateDatabaseConfigRequestParametersList;
 }
-export const UpdateHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingPrivateDatabaseConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     parameters: UpdateHostingPrivateDatabaseConfigRequestParametersList,
@@ -2746,7 +2707,7 @@ export interface UpdateHostingPrivateDatabaseUserGrantRequest {
   /** Grant on a database for a specific user */
   grant: HostingPrivateDatabaseGrantGrantEnum | (string & {});
 }
-export const UpdateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHostingPrivateDatabaseUserGrantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     userName: S.String.pipe(T.Label()),

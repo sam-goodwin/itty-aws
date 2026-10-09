@@ -20,13 +20,13 @@ export class BadRequest
 
 /** List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type CreateResourcePoolRequestIpAclList = Array<string>;
-export const CreateResourcePoolRequestIpAclList = /*@__PURE__*/ S.Array(
+const CreateResourcePoolRequestIpAclList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateResourcePoolRequestIpAclList>;
 
 /** An optional object that represents the labels associated with the resource pool. */
 export type CreateResourcePoolRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateResourcePoolRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateResourcePoolRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateResourcePoolRequestLabelsMap>;
@@ -51,7 +51,7 @@ export interface CreateResourcePoolRequest {
   /** Whether the .snapshot directory is visible when mounting the resource pool. Setting this value to false might prevent you from accessing the snapshots (e.g. for security reasons). Additionally, the access to the snapshots is always controlled by the export policy of the resource pool. That means, if snapshots are visible and the export policy allows for reading the resource pool, then it also allows reading the snapshot of all shares. */
   snapshotsAreVisible?: boolean;
 }
-export const CreateResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -77,11 +77,11 @@ export const CreateResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type ResourcePoolIpAclList = Array<string>;
-export const ResourcePoolIpAclList =
+const ResourcePoolIpAclList =
   CreateResourcePoolRequestIpAclList as any as S.Schema<ResourcePoolIpAclList>;
 
 export type ResourcePoolLabelsMap = { [key: string]: string | undefined };
-export const ResourcePoolLabelsMap =
+const ResourcePoolLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<ResourcePoolLabelsMap>;
 
 export interface ResourcePoolPerformanceClass {
@@ -92,7 +92,7 @@ export interface ResourcePoolPerformanceClass {
   /** Throughput of the Resource Pool. */
   throughput?: number;
 }
-export const ResourcePoolPerformanceClass = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolPerformanceClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     peakIops: S.optional(S.Number),
@@ -108,7 +108,7 @@ export interface ResourcePoolSnapshotPolicy {
   /** Name of the Snapshot Policy */
   name?: string;
 }
-export const ResourcePoolSnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolSnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -127,7 +127,7 @@ export interface ResourcePoolSpace {
   /** Used space of the Resource Pool (only available when retrieving a single Resource Pool by ID) */
   usedGigabytes?: number | null;
 }
-export const ResourcePoolSpace = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolSpace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availableGigabytes: S.optional(S.NullOr(S.Number)),
     sizeGigabytes: S.optional(S.Number),
@@ -166,7 +166,7 @@ export interface ResourcePool {
   /** State of the Resource Pool (possible values: ["pending", "creating", "created", "updating", "error", "deleting"]) */
   state?: string;
 }
-export const ResourcePool = /*@__PURE__*/ S.suspend(() =>
+const ResourcePool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availabilityZone: S.optional(S.String),
     countShares: S.optional(S.Number),
@@ -190,7 +190,7 @@ export interface CreateResourcePoolResponse {
   /** Created Resource Pool */
   resourcePool?: ResourcePool;
 }
-export const CreateResourcePoolResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourcePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePool: S.optional(ResourcePool),
   }),
@@ -209,7 +209,7 @@ export interface CreateResourcePoolSnapshotRequest {
   /** (optional) Time in hours after which snaplock on the snapshot expires */
   snaplockRetentionHours?: number | null;
 }
-export const CreateResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -244,7 +244,7 @@ export interface ResourcePoolSnapshot {
   /** Name of the Resource Pool Snapshot */
   snapshotName?: string;
 }
-export const ResourcePoolSnapshot = /*@__PURE__*/ S.suspend(() =>
+const ResourcePoolSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.NullOr(S.String)),
     createdAt: S.optional(S.String),
@@ -260,7 +260,7 @@ export interface CreateResourcePoolSnapshotResponse {
   /** Created Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-export const CreateResourcePoolSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResourcePoolSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePoolSnapshot: S.optional(ResourcePoolSnapshot),
   }),
@@ -270,7 +270,7 @@ export const CreateResourcePoolSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional object that represents the labels associated with the share. */
 export type CreateShareRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateShareRequestLabelsMap =
+const CreateShareRequestLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<CreateShareRequestLabelsMap>;
 
 export interface CreateShareRequest {
@@ -286,7 +286,7 @@ export interface CreateShareRequest {
   /** Space hard limit for the Share. If zero, the Share will have access to the full space of the Resource Pool it lives in. (unit: gibibytes) */
   spaceHardLimitGigabytes: number;
 }
-export const CreateShareRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -307,12 +307,12 @@ export const CreateShareRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional object that represents the labels associated with the share export policy. */
 export type ShareExportPolicyLabelsMap = { [key: string]: string | undefined };
-export const ShareExportPolicyLabelsMap =
+const ShareExportPolicyLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<ShareExportPolicyLabelsMap>;
 
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.251/32" for a specific IP) This array cannot be empty */
 export type ShareExportPolicyRuleIpAclList = Array<string>;
-export const ShareExportPolicyRuleIpAclList =
+const ShareExportPolicyRuleIpAclList =
   CreateResourcePoolRequestIpAclList as any as S.Schema<ShareExportPolicyRuleIpAclList>;
 
 export interface ShareExportPolicyRule {
@@ -332,7 +332,7 @@ export interface ShareExportPolicyRule {
   /** Flag to indicate if client IPs matching this rule have root access on the Share Default: true */
   superUser?: boolean;
 }
-export const ShareExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
+const ShareExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
@@ -347,7 +347,7 @@ export const ShareExportPolicyRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
 export type ShareExportPolicyRulesList = Array<ShareExportPolicyRule>;
-export const ShareExportPolicyRulesList = /*@__PURE__*/ S.Array(
+const ShareExportPolicyRulesList = /*@__PURE__*/ S.Array(
   ShareExportPolicyRule,
 ) as any as S.Schema<ShareExportPolicyRulesList>;
 
@@ -364,7 +364,7 @@ export interface ShareExportPolicy {
   /** Number of Shares using this Share Export Policy */
   sharesUsingExportPolicy?: number;
 }
-export const ShareExportPolicy = /*@__PURE__*/ S.suspend(() =>
+const ShareExportPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     id: S.optional(S.String),
@@ -377,7 +377,7 @@ export const ShareExportPolicy = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional object that represents the labels associated with the share. */
 export type ShareLabelsMap = { [key: string]: string | undefined };
-export const ShareLabelsMap = CreateResourcePoolRequestLabelsMap as any as S.Schema<ShareLabelsMap>;
+const ShareLabelsMap = CreateResourcePoolRequestLabelsMap as any as S.Schema<ShareLabelsMap>;
 
 export interface Share {
   createdAt?: string;
@@ -396,7 +396,7 @@ export interface Share {
   /** State of the Resource Pool Snapshot (possible values: ["pending", "creating", "created", "error", "deleting"]) */
   state?: string;
 }
-export const Share = /*@__PURE__*/ S.suspend(() =>
+const Share = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     exportPolicy: S.optional(S.NullOr(ShareExportPolicy)),
@@ -413,7 +413,7 @@ export interface CreateShareResponse {
   /** Created Share */
   share?: Share;
 }
-export const CreateShareResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateShareResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     share: S.optional(Share),
   }),
@@ -421,12 +421,12 @@ export const CreateShareResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** An optional object that represents the labels associated with the share export policy. */
 export type CreateShareExportPolicyRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateShareExportPolicyRequestLabelsMap =
+const CreateShareExportPolicyRequestLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<CreateShareExportPolicyRequestLabelsMap>;
 
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) This array cannot be empty */
 export type CreateShareExportPolicyRequestRuleIpAclList = Array<string>;
-export const CreateShareExportPolicyRequestRuleIpAclList =
+const CreateShareExportPolicyRequestRuleIpAclList =
   CreateResourcePoolRequestIpAclList as any as S.Schema<CreateShareExportPolicyRequestRuleIpAclList>;
 
 export interface CreateShareExportPolicyRequestRule {
@@ -443,7 +443,7 @@ export interface CreateShareExportPolicyRequestRule {
   /** Flag to indicate if client IPs matching this rule have root access on the Share Default: true */
   superUser?: boolean;
 }
-export const CreateShareExportPolicyRequestRule = /*@__PURE__*/ S.suspend(() =>
+const CreateShareExportPolicyRequestRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     ipAcl: S.optional(CreateShareExportPolicyRequestRuleIpAclList),
@@ -458,7 +458,7 @@ export const CreateShareExportPolicyRequestRule = /*@__PURE__*/ S.suspend(() =>
 
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
 export type CreateShareExportPolicyRequestRulesList = Array<CreateShareExportPolicyRequestRule>;
-export const CreateShareExportPolicyRequestRulesList = /*@__PURE__*/ S.Array(
+const CreateShareExportPolicyRequestRulesList = /*@__PURE__*/ S.Array(
   CreateShareExportPolicyRequestRule,
 ) as any as S.Schema<CreateShareExportPolicyRequestRulesList>;
 
@@ -472,7 +472,7 @@ export interface CreateShareExportPolicyRequest {
   /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule */
   rules?: CreateShareExportPolicyRequestRulesList;
 }
-export const CreateShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -495,7 +495,7 @@ export interface CreateShareExportPolicyResponse {
   /** Created Share Export Policy */
   shareExportPolicy?: ShareExportPolicy;
 }
-export const CreateShareExportPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateShareExportPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareExportPolicy: S.optional(ShareExportPolicy),
   }),
@@ -508,7 +508,7 @@ export interface DeleteResourcePoolRequest {
   region: string;
   resourcePoolId: string;
 }
-export const DeleteResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -526,7 +526,7 @@ export const DeleteResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcePoolRequest>;
 
 export type DeleteResourcePoolResponse2 = unknown;
-export const DeleteResourcePoolResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePoolResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteResourcePoolResponse2",
@@ -538,7 +538,7 @@ export interface DeleteResourcePoolSnapshotRequest {
   resourcePoolId: string;
   snapshotName: string;
 }
-export const DeleteResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -557,7 +557,7 @@ export const DeleteResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResourcePoolSnapshotRequest>;
 
 export type DeleteResourcePoolSnapshotResponse2 = unknown;
-export const DeleteResourcePoolSnapshotResponse2 =
+const DeleteResourcePoolSnapshotResponse2 =
   DeleteResourcePoolResponse2 as any as S.Schema<DeleteResourcePoolSnapshotResponse2>;
 
 export interface DeleteShareRequest {
@@ -566,7 +566,7 @@ export interface DeleteShareRequest {
   resourcePoolId: string;
   shareId: string;
 }
-export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -583,7 +583,7 @@ export const DeleteShareRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteShareRequest" }) as any as S.Schema<DeleteShareRequest>;
 
 export type DeleteShareResponse2 = unknown;
-export const DeleteShareResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteShareResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteShareResponse2" }) as any as S.Schema<DeleteShareResponse2>;
 
@@ -592,7 +592,7 @@ export interface DeleteShareExportPolicyRequest {
   region: string;
   policyId: string;
 }
-export const DeleteShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -610,14 +610,14 @@ export const DeleteShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteShareExportPolicyRequest>;
 
 export type DeleteShareExportPolicyResponse2 = unknown;
-export const DeleteShareExportPolicyResponse2 =
+const DeleteShareExportPolicyResponse2 =
   DeleteResourcePoolResponse2 as any as S.Schema<DeleteShareExportPolicyResponse2>;
 
 export interface DisableLockRequest {
   region: string;
   projectId: string;
 }
-export const DisableLockRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -632,13 +632,13 @@ export const DisableLockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DisableLockRequest" }) as any as S.Schema<DisableLockRequest>;
 
 export type DisableLockResponse2 = unknown;
-export const DisableLockResponse2 = DeleteShareResponse2 as any as S.Schema<DisableLockResponse2>;
+const DisableLockResponse2 = DeleteShareResponse2 as any as S.Schema<DisableLockResponse2>;
 
 export interface EnableLockRequest {
   region: string;
   projectId: string;
 }
-export const EnableLockRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -655,7 +655,7 @@ export const EnableLockRequest = /*@__PURE__*/ S.suspend(() =>
 export interface EnableLockResponse {
   lockId?: string;
 }
-export const EnableLockResponse = /*@__PURE__*/ S.suspend(() =>
+const EnableLockResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lockId: S.optional(S.String),
   }),
@@ -665,7 +665,7 @@ export interface GetLockRequest {
   region: string;
   projectId: string;
 }
-export const GetLockRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLockRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     region: S.String.pipe(T.Label()),
     projectId: S.String.pipe(T.Label()),
@@ -682,14 +682,14 @@ export const GetLockRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetLockResponse {
   lockId?: string;
 }
-export const GetLockResponse = EnableLockResponse as any as S.Schema<GetLockResponse>;
+const GetLockResponse = EnableLockResponse as any as S.Schema<GetLockResponse>;
 
 export interface GetResourcePoolRequest {
   projectId: string;
   region: string;
   resourcePoolId: string;
 }
-export const GetResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -708,7 +708,7 @@ export interface GetResourcePoolResponse {
   /** Resource Pool */
   resourcePool?: ResourcePool;
 }
-export const GetResourcePoolResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoolResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePool: S.optional(ResourcePool),
   }),
@@ -720,7 +720,7 @@ export interface GetResourcePoolSnapshotRequest {
   resourcePoolId: string;
   snapshotName: string;
 }
-export const GetResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -742,7 +742,7 @@ export interface GetResourcePoolSnapshotResponse {
   /** Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-export const GetResourcePoolSnapshotResponse =
+const GetResourcePoolSnapshotResponse =
   CreateResourcePoolSnapshotResponse as any as S.Schema<GetResourcePoolSnapshotResponse>;
 
 export interface GetShareRequest {
@@ -751,7 +751,7 @@ export interface GetShareRequest {
   resourcePoolId: string;
   shareId: string;
 }
-export const GetShareRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -771,14 +771,14 @@ export interface GetShareResponse {
   /** Share */
   share?: Share;
 }
-export const GetShareResponse = CreateShareResponse as any as S.Schema<GetShareResponse>;
+const GetShareResponse = CreateShareResponse as any as S.Schema<GetShareResponse>;
 
 export interface GetShareExportPolicyRequest {
   projectId: string;
   region: string;
   policyId: string;
 }
-export const GetShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -799,14 +799,14 @@ export interface GetShareExportPolicyResponse {
   /** Share Export Policies */
   shareExportPolicy?: ShareExportPolicy;
 }
-export const GetShareExportPolicyResponse =
+const GetShareExportPolicyResponse =
   CreateShareExportPolicyResponse as any as S.Schema<GetShareExportPolicyResponse>;
 
 export interface GetSnapshotPolicyRequest {
   projectId: string;
   id: string;
 }
-export const GetSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -832,7 +832,7 @@ export interface SnapshotPolicySchedule {
   /** ID of the Schedule */
   scheduleId?: string;
 }
-export const SnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =>
+const SnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     interval: S.optional(S.String),
@@ -844,7 +844,7 @@ export const SnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =>
 
 /** (deprecated) associated schedules */
 export type SnapshotPolicySchedulesList = Array<SnapshotPolicySchedule>;
-export const SnapshotPolicySchedulesList = /*@__PURE__*/ S.Array(
+const SnapshotPolicySchedulesList = /*@__PURE__*/ S.Array(
   SnapshotPolicySchedule,
 ) as any as S.Schema<SnapshotPolicySchedulesList>;
 
@@ -863,7 +863,7 @@ export interface SnapshotPolicySnapshotPolicySchedule {
   /** Retention Period (ISO 8601 format or "infinite") */
   retentionPeriod?: string;
 }
-export const SnapshotPolicySnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =>
+const SnapshotPolicySnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     id: S.optional(S.String),
@@ -879,7 +879,7 @@ export const SnapshotPolicySnapshotPolicySchedule = /*@__PURE__*/ S.suspend(() =
 
 /** associated schedules */
 export type SnapshotPolicySnapshotSchedulesList = Array<SnapshotPolicySnapshotPolicySchedule>;
-export const SnapshotPolicySnapshotSchedulesList = /*@__PURE__*/ S.Array(
+const SnapshotPolicySnapshotSchedulesList = /*@__PURE__*/ S.Array(
   SnapshotPolicySnapshotPolicySchedule,
 ) as any as S.Schema<SnapshotPolicySnapshotSchedulesList>;
 
@@ -899,7 +899,7 @@ export interface SnapshotPolicy {
   /** associated schedules */
   snapshotSchedules?: SnapshotPolicySnapshotSchedulesList;
 }
-export const SnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
+const SnapshotPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -915,7 +915,7 @@ export interface GetSnapshotPolicyResponse {
   /** Snapshot Policy */
   snapshotPolicy?: SnapshotPolicy;
 }
-export const GetSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotPolicy: S.optional(SnapshotPolicy),
   }),
@@ -924,7 +924,7 @@ export const GetSnapshotPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSnapshotPolicyResponse>;
 
 export interface ListPerformanceClassesRequest {}
-export const ListPerformanceClassesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPerformanceClassesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -945,7 +945,7 @@ export interface PerformanceClass {
   /** Throughput of the Performance Class */
   throughput?: number;
 }
-export const PerformanceClass = /*@__PURE__*/ S.suspend(() =>
+const PerformanceClass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iops: S.optional(S.Number),
     name: S.optional(S.String),
@@ -955,7 +955,7 @@ export const PerformanceClass = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Performance Classes */
 export type ListPerformanceClassesResponsePerformanceClassesList = Array<PerformanceClass>;
-export const ListPerformanceClassesResponsePerformanceClassesList = /*@__PURE__*/ S.Array(
+const ListPerformanceClassesResponsePerformanceClassesList = /*@__PURE__*/ S.Array(
   PerformanceClass,
 ) as any as S.Schema<ListPerformanceClassesResponsePerformanceClassesList>;
 
@@ -963,7 +963,7 @@ export interface ListPerformanceClassesResponse {
   /** List of Performance Classes */
   performanceClasses?: ListPerformanceClassesResponsePerformanceClassesList;
 }
-export const ListPerformanceClassesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPerformanceClassesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     performanceClasses: S.optional(ListPerformanceClassesResponsePerformanceClassesList),
   }),
@@ -975,7 +975,7 @@ export interface ListResourcePoolsRequest {
   projectId: string;
   region: string;
 }
-export const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -991,7 +991,7 @@ export const ListResourcePoolsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Resource Pools */
 export type ListResourcePoolsResponseResourcePoolsList = Array<ResourcePool>;
-export const ListResourcePoolsResponseResourcePoolsList = /*@__PURE__*/ S.Array(
+const ListResourcePoolsResponseResourcePoolsList = /*@__PURE__*/ S.Array(
   ResourcePool,
 ) as any as S.Schema<ListResourcePoolsResponseResourcePoolsList>;
 
@@ -999,7 +999,7 @@ export interface ListResourcePoolsResponse {
   /** List of Resource Pools */
   resourcePools?: ListResourcePoolsResponseResourcePoolsList;
 }
-export const ListResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourcePoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePools: S.optional(ListResourcePoolsResponseResourcePoolsList),
   }),
@@ -1012,7 +1012,7 @@ export interface ListResourcePoolSnapshotsRequest {
   region: string;
   resourcePoolId: string;
 }
-export const ListResourcePoolSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResourcePoolSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1032,7 +1032,7 @@ export const ListResourcePoolSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
 /** List of Resource Pool Snapshots */
 export type ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList =
   Array<ResourcePoolSnapshot>;
-export const ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList = /*@__PURE__*/ S.Array(
+const ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList = /*@__PURE__*/ S.Array(
   ResourcePoolSnapshot,
 ) as any as S.Schema<ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList>;
 
@@ -1040,7 +1040,7 @@ export interface ListResourcePoolSnapshotsResponse {
   /** List of Resource Pool Snapshots */
   resourcePoolSnapshots?: ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList;
 }
-export const ListResourcePoolSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResourcePoolSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourcePoolSnapshots: S.optional(ListResourcePoolSnapshotsResponseResourcePoolSnapshotsList),
   }),
@@ -1052,7 +1052,7 @@ export interface ListShareExportPoliciesRequest {
   projectId: string;
   region: string;
 }
-export const ListShareExportPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListShareExportPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1070,7 +1070,7 @@ export const ListShareExportPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Share Export Policies */
 export type ListShareExportPoliciesResponseShareExportPoliciesList = Array<ShareExportPolicy>;
-export const ListShareExportPoliciesResponseShareExportPoliciesList = /*@__PURE__*/ S.Array(
+const ListShareExportPoliciesResponseShareExportPoliciesList = /*@__PURE__*/ S.Array(
   ShareExportPolicy,
 ) as any as S.Schema<ListShareExportPoliciesResponseShareExportPoliciesList>;
 
@@ -1078,7 +1078,7 @@ export interface ListShareExportPoliciesResponse {
   /** List of Share Export Policies */
   shareExportPolicies?: ListShareExportPoliciesResponseShareExportPoliciesList;
 }
-export const ListShareExportPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListShareExportPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shareExportPolicies: S.optional(ListShareExportPoliciesResponseShareExportPoliciesList),
   }),
@@ -1091,7 +1091,7 @@ export interface ListSharesRequest {
   region: string;
   resourcePoolId: string;
 }
-export const ListSharesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSharesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1108,7 +1108,7 @@ export const ListSharesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Shares */
 export type ListSharesResponseSharesList = Array<Share>;
-export const ListSharesResponseSharesList = /*@__PURE__*/ S.Array(
+const ListSharesResponseSharesList = /*@__PURE__*/ S.Array(
   Share,
 ) as any as S.Schema<ListSharesResponseSharesList>;
 
@@ -1116,7 +1116,7 @@ export interface ListSharesResponse {
   /** List of Shares */
   shares?: ListSharesResponseSharesList;
 }
-export const ListSharesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSharesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shares: S.optional(ListSharesResponseSharesList),
   }),
@@ -1126,7 +1126,7 @@ export interface ListSnapshotPoliciesRequest {
   projectId: string;
   immutable?: boolean;
 }
-export const ListSnapshotPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     immutable: S.optional(S.Boolean.pipe(T.Query())),
@@ -1144,7 +1144,7 @@ export const ListSnapshotPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Snapshot Policies */
 export type ListSnapshotPoliciesResponseSnapshotPoliciesList = Array<SnapshotPolicy>;
-export const ListSnapshotPoliciesResponseSnapshotPoliciesList = /*@__PURE__*/ S.Array(
+const ListSnapshotPoliciesResponseSnapshotPoliciesList = /*@__PURE__*/ S.Array(
   SnapshotPolicy,
 ) as any as S.Schema<ListSnapshotPoliciesResponseSnapshotPoliciesList>;
 
@@ -1152,7 +1152,7 @@ export interface ListSnapshotPoliciesResponse {
   /** List of Snapshot Policies */
   snapshotPolicies?: ListSnapshotPoliciesResponseSnapshotPoliciesList;
 }
-export const ListSnapshotPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSnapshotPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotPolicies: S.optional(ListSnapshotPoliciesResponseSnapshotPoliciesList),
   }),
@@ -1162,12 +1162,12 @@ export const ListSnapshotPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** (optional) List of IPs that can mount the Resource Pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) */
 export type UpdateResourcePoolRequestIpAclList = Array<string>;
-export const UpdateResourcePoolRequestIpAclList =
+const UpdateResourcePoolRequestIpAclList =
   CreateResourcePoolRequestIpAclList as any as S.Schema<UpdateResourcePoolRequestIpAclList>;
 
 /** An optional object that represents the labels associated with the resource pool. */
 export type UpdateResourcePoolRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateResourcePoolRequestLabelsMap =
+const UpdateResourcePoolRequestLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateResourcePoolRequestLabelsMap>;
 
 export interface UpdateResourcePoolRequest {
@@ -1187,7 +1187,7 @@ export interface UpdateResourcePoolRequest {
   /** Whether the .snapshot directory is visible when mounting the resource pool. Setting this value to false might prevent you from accessing the snapshots (e.g. for security reasons). Additionally, the access to the snapshots is always controlled by the export policy of the resource pool. That means, if snapshots are visible and the export policy allows for reading the resource pool, then it also allows reading the snapshot of all shares. */
   snapshotsAreVisible?: boolean;
 }
-export const UpdateResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourcePoolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1214,7 +1214,7 @@ export interface UpdateResourcePoolResponse {
   /** Updated Resource Pool */
   resourcePool?: ResourcePool;
 }
-export const UpdateResourcePoolResponse =
+const UpdateResourcePoolResponse =
   CreateResourcePoolResponse as any as S.Schema<UpdateResourcePoolResponse>;
 
 export interface UpdateResourcePoolSnapshotRequest {
@@ -1227,7 +1227,7 @@ export interface UpdateResourcePoolSnapshotRequest {
   /** (optional) name of the Resource Pool Snapshot */
   name?: string | null;
 }
-export const UpdateResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResourcePoolSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1251,12 +1251,12 @@ export interface UpdateResourcePoolSnapshotResponse {
   /** Updated Resource Pool Snapshot */
   resourcePoolSnapshot?: ResourcePoolSnapshot;
 }
-export const UpdateResourcePoolSnapshotResponse =
+const UpdateResourcePoolSnapshotResponse =
   CreateResourcePoolSnapshotResponse as any as S.Schema<UpdateResourcePoolSnapshotResponse>;
 
 /** An optional object that represents the labels associated with the share. */
 export type UpdateShareRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateShareRequestLabelsMap =
+const UpdateShareRequestLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateShareRequestLabelsMap>;
 
 export interface UpdateShareRequest {
@@ -1271,7 +1271,7 @@ export interface UpdateShareRequest {
   /** Space hard limit for the Share. If zero, the Share will have access to the full space of the Resource Pool it lives in. (unit: gibibytes) */
   spaceHardLimitGigabytes?: number | null;
 }
-export const UpdateShareRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateShareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1294,18 +1294,15 @@ export interface UpdateShareResponse {
   /** Updated Share */
   share?: Share;
 }
-export const UpdateShareResponse = CreateShareResponse as any as S.Schema<UpdateShareResponse>;
+const UpdateShareResponse = CreateShareResponse as any as S.Schema<UpdateShareResponse>;
 
 /** An optional object that represents the labels associated with the share export policy. */
 export type UpdateShareExportPolicyRequestLabelsMap = { [key: string]: string | undefined };
-export const UpdateShareExportPolicyRequestLabelsMap =
+const UpdateShareExportPolicyRequestLabelsMap =
   CreateResourcePoolRequestLabelsMap as any as S.Schema<UpdateShareExportPolicyRequestLabelsMap>;
 
 /** IP access control list, where IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP) This array cannot be empty */
 export type UpdateShareExportPolicyBodyRuleIpAclList = Array<string>;
-export const UpdateShareExportPolicyBodyRuleIpAclList =
-  CreateResourcePoolRequestIpAclList as any as S.Schema<UpdateShareExportPolicyBodyRuleIpAclList>;
-
 export interface UpdateShareExportPolicyBodyRule {
   /** Description of the Rule (optional) */
   description?: string | null;
@@ -1320,12 +1317,9 @@ export interface UpdateShareExportPolicyBodyRule {
   /** Flag to indicate if client IPs matching this rule have root access on the Share Default: true */
   superUser?: boolean;
 }
-export const UpdateShareExportPolicyBodyRule =
-  CreateShareExportPolicyRequestRule as any as S.Schema<UpdateShareExportPolicyBodyRule>;
-
 /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule. The whole set of rules needs to be sent in the same request, e.g. if 1 rule is sent, the share export policy will have just that 1 rule, as opposed to extending the existing set of rules with the 1 rule that was sent Important note: the array of rules passed always overwrites the rule array (i.e. sending an empty array removes all rules) */
 export type UpdateShareExportPolicyRequestRulesList = Array<UpdateShareExportPolicyBodyRule>;
-export const UpdateShareExportPolicyRequestRulesList =
+const UpdateShareExportPolicyRequestRulesList =
   CreateShareExportPolicyRequestRulesList as any as S.Schema<UpdateShareExportPolicyRequestRulesList>;
 
 export interface UpdateShareExportPolicyRequest {
@@ -1337,7 +1331,7 @@ export interface UpdateShareExportPolicyRequest {
   /** List of rules of the Share Export Policy. The order of the rules within the array does not matter - what matters is the field "order" within each rule. The whole set of rules needs to be sent in the same request, e.g. if 1 rule is sent, the share export policy will have just that 1 rule, as opposed to extending the existing set of rules with the 1 rule that was sent Important note: the array of rules passed always overwrites the rule array (i.e. sending an empty array removes all rules) */
   rules?: UpdateShareExportPolicyRequestRulesList | null;
 }
-export const UpdateShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -1359,7 +1353,7 @@ export const UpdateShareExportPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateShareExportPolicyResponse {
   shareExportPolicy?: ShareExportPolicy;
 }
-export const UpdateShareExportPolicyResponse =
+const UpdateShareExportPolicyResponse =
   CreateShareExportPolicyResponse as any as S.Schema<UpdateShareExportPolicyResponse>;
 
 export type CreateResourcePoolError = BadRequest | StackitOpError;

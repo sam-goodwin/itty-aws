@@ -13,13 +13,13 @@ import * as T from "../traits.ts";
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetUserInfoRequest {}
-export const GetUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/oauth/userinfo", code: 200 })),
 ).annotate({ identifier: "GetUserInfoRequest" }) as any as S.Schema<GetUserInfoRequest>;
 
 /** Hardware SKU as [type, vendor, model] */
 export type GetUserInfoResponseHardwareItemsItemSkuList = Array<unknown>;
-export const GetUserInfoResponseHardwareItemsItemSkuList = /*@__PURE__*/ S.Array(
+const GetUserInfoResponseHardwareItemsItemSkuList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<GetUserInfoResponseHardwareItemsItemSkuList>;
 
@@ -32,7 +32,7 @@ export interface GetUserInfoResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
-export const GetUserInfoResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =>
+const GetUserInfoResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sku: GetUserInfoResponseHardwareItemsItemSkuList,
     mem: S.Number,
@@ -45,19 +45,19 @@ export const GetUserInfoResponseHardwareItemsItem = /*@__PURE__*/ S.suspend(() =
 
 /** The user's hardware items, if the `profile` scope is granted and the user did not set them as private */
 export type GetUserInfoResponseHardwareItemsList = Array<GetUserInfoResponseHardwareItemsItem>;
-export const GetUserInfoResponseHardwareItemsList = /*@__PURE__*/ S.Array(
+const GetUserInfoResponseHardwareItemsList = /*@__PURE__*/ S.Array(
   GetUserInfoResponseHardwareItemsItem,
 ) as any as S.Schema<GetUserInfoResponseHardwareItemsList>;
 
 /** Whether the user is on prepaid or postpaid billing */
 export type GetUserInfoResponseBillingMode = "prepaid" | "postpaid";
-export const GetUserInfoResponseBillingMode = S.String;
+const GetUserInfoResponseBillingMode = S.String;
 
 export type GetUserInfoResponseOrgsItemPlan = "team" | "enterprise" | "plus" | "academia";
-export const GetUserInfoResponseOrgsItemPlan = S.String;
+const GetUserInfoResponseOrgsItemPlan = S.String;
 
 export type GetUserInfoResponseOrgsItemBillingMode = "prepaid" | "postpaid";
-export const GetUserInfoResponseOrgsItemBillingMode = S.String;
+const GetUserInfoResponseOrgsItemBillingMode = S.String;
 
 export type GetUserInfoResponseOrgsItemRoleInOrg =
   | "admin"
@@ -65,7 +65,7 @@ export type GetUserInfoResponseOrgsItemRoleInOrg =
   | "contributor"
   | "read"
   | "no_access";
-export const GetUserInfoResponseOrgsItemRoleInOrg = S.String;
+const GetUserInfoResponseOrgsItemRoleInOrg = S.String;
 
 export type GetUserInfoResponseOrgsItemSecurityRestrictionsItem =
   | "mfa"
@@ -73,12 +73,12 @@ export type GetUserInfoResponseOrgsItemSecurityRestrictionsItem =
   | "token-revoked"
   | "sso"
   | "ip";
-export const GetUserInfoResponseOrgsItemSecurityRestrictionsItem = S.String;
+const GetUserInfoResponseOrgsItemSecurityRestrictionsItem = S.String;
 
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type GetUserInfoResponseOrgsItemSecurityRestrictionsList =
   Array<GetUserInfoResponseOrgsItemSecurityRestrictionsItem>;
-export const GetUserInfoResponseOrgsItemSecurityRestrictionsList = /*@__PURE__*/ S.Array(
+const GetUserInfoResponseOrgsItemSecurityRestrictionsList = /*@__PURE__*/ S.Array(
   GetUserInfoResponseOrgsItemSecurityRestrictionsItem,
 ) as any as S.Schema<GetUserInfoResponseOrgsItemSecurityRestrictionsList>;
 
@@ -88,14 +88,14 @@ export type GetUserInfoResponseOrgsItemResourceGroupsItemRole =
   | "contributor"
   | "read"
   | "no_access";
-export const GetUserInfoResponseOrgsItemResourceGroupsItemRole = S.String;
+const GetUserInfoResponseOrgsItemResourceGroupsItemRole = S.String;
 
 export interface GetUserInfoResponseOrgsItemResourceGroupsItem {
   sub: string;
   name: string;
   role: GetUserInfoResponseOrgsItemResourceGroupsItemRole;
 }
-export const GetUserInfoResponseOrgsItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
+const GetUserInfoResponseOrgsItemResourceGroupsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sub: S.String,
     name: S.String,
@@ -107,7 +107,7 @@ export const GetUserInfoResponseOrgsItemResourceGroupsItem = /*@__PURE__*/ S.sus
 
 export type GetUserInfoResponseOrgsItemResourceGroupsList =
   Array<GetUserInfoResponseOrgsItemResourceGroupsItem>;
-export const GetUserInfoResponseOrgsItemResourceGroupsList = /*@__PURE__*/ S.Array(
+const GetUserInfoResponseOrgsItemResourceGroupsList = /*@__PURE__*/ S.Array(
   GetUserInfoResponseOrgsItemResourceGroupsItem,
 ) as any as S.Schema<GetUserInfoResponseOrgsItemResourceGroupsList>;
 
@@ -128,7 +128,7 @@ export interface GetUserInfoResponseOrgsItem {
   securityRestrictions?: GetUserInfoResponseOrgsItemSecurityRestrictionsList;
   resourceGroups?: GetUserInfoResponseOrgsItemResourceGroupsList;
 }
-export const GetUserInfoResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
+const GetUserInfoResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sub: S.String,
     name: S.String,
@@ -146,7 +146,7 @@ export const GetUserInfoResponseOrgsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserInfoResponseOrgsItem>;
 
 export type GetUserInfoResponseOrgsList = Array<GetUserInfoResponseOrgsItem>;
-export const GetUserInfoResponseOrgsList = /*@__PURE__*/ S.Array(
+const GetUserInfoResponseOrgsList = /*@__PURE__*/ S.Array(
   GetUserInfoResponseOrgsItem,
 ) as any as S.Schema<GetUserInfoResponseOrgsList>;
 
@@ -177,7 +177,7 @@ export interface GetUserInfoResponse {
   billingMode?: GetUserInfoResponseBillingMode;
   orgs: GetUserInfoResponseOrgsList;
 }
-export const GetUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sub: S.String,
     name: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface InitiateDeviceAuthorizationRequest {
   client_id: string;
   scope?: string;
 }
-export const InitiateDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+const InitiateDeviceAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     scope: S.optional(S.String),
@@ -214,7 +214,7 @@ export interface InitiateDeviceAuthorizationResponse {
   verification_uri: string;
   expires_in: number;
 }
-export const InitiateDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
+const InitiateDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     device_code: S.String,
     user_code: S.String,
@@ -226,15 +226,12 @@ export const InitiateDeviceAuthorizationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InitiateDeviceAuthorizationResponse>;
 
 export interface PostUserInfoRequest {}
-export const PostUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const PostUserInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/oauth/userinfo", code: 200 })),
 ).annotate({ identifier: "PostUserInfoRequest" }) as any as S.Schema<PostUserInfoRequest>;
 
 /** Hardware SKU as [type, vendor, model] */
 export type PostUserInfoResponseHardwareItemsItemSkuList = Array<unknown>;
-export const PostUserInfoResponseHardwareItemsItemSkuList =
-  GetUserInfoResponseHardwareItemsItemSkuList as any as S.Schema<PostUserInfoResponseHardwareItemsItemSkuList>;
-
 export interface PostUserInfoResponseHardwareItemsItem {
   /** Hardware SKU as [type, vendor, model] */
   sku: PostUserInfoResponseHardwareItemsItemSkuList;
@@ -244,67 +241,45 @@ export interface PostUserInfoResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
-export const PostUserInfoResponseHardwareItemsItem =
-  GetUserInfoResponseHardwareItemsItem as any as S.Schema<PostUserInfoResponseHardwareItemsItem>;
-
 /** The user's hardware items, if the `profile` scope is granted and the user did not set them as private */
 export type PostUserInfoResponseHardwareItemsList = Array<PostUserInfoResponseHardwareItemsItem>;
-export const PostUserInfoResponseHardwareItemsList =
+const PostUserInfoResponseHardwareItemsList =
   GetUserInfoResponseHardwareItemsList as any as S.Schema<PostUserInfoResponseHardwareItemsList>;
 
 /** Whether the user is on prepaid or postpaid billing */
 export type PostUserInfoResponseBillingMode = "prepaid" | "postpaid";
-export const PostUserInfoResponseBillingMode = S.String;
+const PostUserInfoResponseBillingMode = S.String;
 
 export type PostUserInfoResponseOrgsItemPlan = "team" | "enterprise" | "plus" | "academia";
-export const PostUserInfoResponseOrgsItemPlan = S.String;
-
 export type PostUserInfoResponseOrgsItemBillingMode = "prepaid" | "postpaid";
-export const PostUserInfoResponseOrgsItemBillingMode = S.String;
-
 export type PostUserInfoResponseOrgsItemRoleInOrg =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const PostUserInfoResponseOrgsItemRoleInOrg = S.String;
-
 export type PostUserInfoResponseOrgsItemSecurityRestrictionsItem =
   | "mfa"
   | "token-policy"
   | "token-revoked"
   | "sso"
   | "ip";
-export const PostUserInfoResponseOrgsItemSecurityRestrictionsItem = S.String;
-
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type PostUserInfoResponseOrgsItemSecurityRestrictionsList =
   Array<PostUserInfoResponseOrgsItemSecurityRestrictionsItem>;
-export const PostUserInfoResponseOrgsItemSecurityRestrictionsList =
-  GetUserInfoResponseOrgsItemSecurityRestrictionsList as any as S.Schema<PostUserInfoResponseOrgsItemSecurityRestrictionsList>;
-
 export type PostUserInfoResponseOrgsItemResourceGroupsItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const PostUserInfoResponseOrgsItemResourceGroupsItemRole = S.String;
-
 export interface PostUserInfoResponseOrgsItemResourceGroupsItem {
   sub: string;
   name: string;
   role: PostUserInfoResponseOrgsItemResourceGroupsItemRole;
 }
-export const PostUserInfoResponseOrgsItemResourceGroupsItem =
-  GetUserInfoResponseOrgsItemResourceGroupsItem as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsItem>;
-
 export type PostUserInfoResponseOrgsItemResourceGroupsList =
   Array<PostUserInfoResponseOrgsItemResourceGroupsItem>;
-export const PostUserInfoResponseOrgsItemResourceGroupsList =
-  GetUserInfoResponseOrgsItemResourceGroupsList as any as S.Schema<PostUserInfoResponseOrgsItemResourceGroupsList>;
-
 export interface PostUserInfoResponseOrgsItem {
   /** ID of the organization */
   sub: string;
@@ -322,11 +297,8 @@ export interface PostUserInfoResponseOrgsItem {
   securityRestrictions?: PostUserInfoResponseOrgsItemSecurityRestrictionsList;
   resourceGroups?: PostUserInfoResponseOrgsItemResourceGroupsList;
 }
-export const PostUserInfoResponseOrgsItem =
-  GetUserInfoResponseOrgsItem as any as S.Schema<PostUserInfoResponseOrgsItem>;
-
 export type PostUserInfoResponseOrgsList = Array<PostUserInfoResponseOrgsItem>;
-export const PostUserInfoResponseOrgsList =
+const PostUserInfoResponseOrgsList =
   GetUserInfoResponseOrgsList as any as S.Schema<PostUserInfoResponseOrgsList>;
 
 export interface PostUserInfoResponse {
@@ -356,7 +328,7 @@ export interface PostUserInfoResponse {
   billingMode?: PostUserInfoResponseBillingMode;
   orgs: PostUserInfoResponseOrgsList;
 }
-export const PostUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const PostUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sub: S.String,
     name: S.optional(S.String),
@@ -375,19 +347,19 @@ export const PostUserInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostUserInfoResponse" }) as any as S.Schema<PostUserInfoResponse>;
 
 export type RegisterOAuthAppRequestRedirectUrisList = Array<string>;
-export const RegisterOAuthAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
+const RegisterOAuthAppRequestRedirectUrisList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RegisterOAuthAppRequestRedirectUrisList>;
 
 export type RegisterOAuthAppRequestContactsList = Array<string>;
-export const RegisterOAuthAppRequestContactsList =
+const RegisterOAuthAppRequestContactsList =
   RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppRequestContactsList>;
 
 export type RegisterOAuthAppRequestTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "none"
   | "client_secret_post";
-export const RegisterOAuthAppRequestTokenEndpointAuthMethod = S.String;
+const RegisterOAuthAppRequestTokenEndpointAuthMethod = S.String;
 
 export interface RegisterOAuthAppRequest {
   redirect_uris?: RegisterOAuthAppRequestRedirectUrisList;
@@ -400,7 +372,7 @@ export interface RegisterOAuthAppRequest {
   software_id?: string;
   software_version?: string;
 }
-export const RegisterOAuthAppRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterOAuthAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     redirect_uris: S.optional(RegisterOAuthAppRequestRedirectUrisList),
     client_name: S.optional(S.String),
@@ -415,7 +387,7 @@ export const RegisterOAuthAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RegisterOAuthAppRequest" }) as any as S.Schema<RegisterOAuthAppRequest>;
 
 export type RegisterOAuthAppResponseRedirectUrisList = Array<string>;
-export const RegisterOAuthAppResponseRedirectUrisList =
+const RegisterOAuthAppResponseRedirectUrisList =
   RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseRedirectUrisList>;
 
 export type RegisterOAuthAppResponseGrantTypesItem =
@@ -423,21 +395,19 @@ export type RegisterOAuthAppResponseGrantTypesItem =
   | "urn:ietf:params:oauth:grant-type:device_code"
   | "authorization_code"
   | "refresh_token";
-export const RegisterOAuthAppResponseGrantTypesItem = S.String;
-
 export type RegisterOAuthAppResponseGrantTypesList = Array<RegisterOAuthAppResponseGrantTypesItem>;
-export const RegisterOAuthAppResponseGrantTypesList =
+const RegisterOAuthAppResponseGrantTypesList =
   GetUserInfoResponseOrgsItemSecurityRestrictionsList as any as S.Schema<RegisterOAuthAppResponseGrantTypesList>;
 
 export type RegisterOAuthAppResponseContactsList = Array<string>;
-export const RegisterOAuthAppResponseContactsList =
+const RegisterOAuthAppResponseContactsList =
   RegisterOAuthAppRequestRedirectUrisList as any as S.Schema<RegisterOAuthAppResponseContactsList>;
 
 export type RegisterOAuthAppResponseTokenEndpointAuthMethod =
   | "client_secret_basic"
   | "none"
   | "client_secret_post";
-export const RegisterOAuthAppResponseTokenEndpointAuthMethod = S.String;
+const RegisterOAuthAppResponseTokenEndpointAuthMethod = S.String;
 
 export interface RegisterOAuthAppResponse {
   client_id: string;
@@ -455,7 +425,7 @@ export interface RegisterOAuthAppResponse {
   software_id?: string;
   software_version?: string;
 }
-export const RegisterOAuthAppResponse = /*@__PURE__*/ S.suspend(() =>
+const RegisterOAuthAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_id: S.String,
     client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),

@@ -25,7 +25,7 @@ export interface DeleteUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-export const DeleteUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "DELETE", uri: "/zones/{zone_id}/url_normalization", code: 200 })),
@@ -34,7 +34,7 @@ export const DeleteUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteUrlNormalizationRequest>;
 
 export interface DeleteUrlNormalizationResponse {}
-export const DeleteUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteUrlNormalizationResponse",
 }) as any as S.Schema<DeleteUrlNormalizationResponse>;
 
@@ -42,7 +42,7 @@ export interface GetUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-export const GetUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/url_normalization", code: 200 })),
@@ -51,10 +51,10 @@ export const GetUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUrlNormalizationRequest>;
 
 export type GetResponseScope = "incoming" | "both" | "none";
-export const GetResponseScope = S.String;
+const GetResponseScope = S.String;
 
 export type GetResponseType = "cloudflare" | "rfc3986";
-export const GetResponseType = S.String;
+const GetResponseType = S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUrlNormalizationResponse {
@@ -63,7 +63,7 @@ export interface GetUrlNormalizationResponse {
   /** The type of URL normalization performed by Cloudflare. */
   type: GetResponseType;
 }
-export const GetUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: GetResponseScope,
     type: GetResponseType,
@@ -73,10 +73,10 @@ export const GetUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUrlNormalizationResponse>;
 
 export type UpdateRequestScope = "incoming" | "both" | "none";
-export const UpdateRequestScope = S.String;
+const UpdateRequestScope = S.String;
 
 export type UpdateRequestType = "cloudflare" | "rfc3986";
-export const UpdateRequestType = S.String;
+const UpdateRequestType = S.String;
 
 export interface PutUrlNormalizationRequest {
   /** The unique ID of the zone. */
@@ -86,7 +86,7 @@ export interface PutUrlNormalizationRequest {
   /** The type of URL normalization performed by Cloudflare. */
   type: UpdateRequestType | (string & {});
 }
-export const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
+const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     scope: UpdateRequestScope,
@@ -97,11 +97,7 @@ export const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutUrlNormalizationRequest>;
 
 export type UpdateResponseScope = "incoming" | "both" | "none";
-export const UpdateResponseScope = S.String;
-
 export type UpdateResponseType = "cloudflare" | "rfc3986";
-export const UpdateResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutUrlNormalizationResponse {
   /** The scope of the URL normalization. */
@@ -109,7 +105,7 @@ export interface PutUrlNormalizationResponse {
   /** The type of URL normalization performed by Cloudflare. */
   type: UpdateResponseType;
 }
-export const PutUrlNormalizationResponse =
+const PutUrlNormalizationResponse =
   GetUrlNormalizationResponse as any as S.Schema<PutUrlNormalizationResponse>;
 
 export type DeleteUrlNormalizationError = Forbidden | CloudflareOpError;

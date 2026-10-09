@@ -43,7 +43,7 @@ export interface ListPlatformsRequest {
   /** Required. The product, which owns this collection of platforms. Format: {product} */
   parent: string;
 }
-export const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -74,7 +74,7 @@ export type PlatformPlatformTypeEnum =
   | "LACROS_ARM64"
   | "FUCHSIA"
   | "WIN_ARM64";
-export const PlatformPlatformTypeEnum = S.String;
+const PlatformPlatformTypeEnum = S.String;
 
 /** Each Platform is owned by a Product and owns a collection of channels. Available platforms are listed in Platform enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
 export interface Platform {
@@ -83,7 +83,7 @@ export interface Platform {
   /** Type of platform. */
   platformType?: PlatformPlatformTypeEnum;
 }
-export const Platform = /*@__PURE__*/ S.suspend(() =>
+const Platform = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     platformType: S.optional(PlatformPlatformTypeEnum),
@@ -91,7 +91,7 @@ export const Platform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Platform" }) as any as S.Schema<Platform>;
 
 export type PlatformList = Array<Platform>;
-export const PlatformList = /*@__PURE__*/ S.Array(Platform) as any as S.Schema<PlatformList>;
+const PlatformList = /*@__PURE__*/ S.Array(Platform) as any as S.Schema<PlatformList>;
 
 /** Response message for ListPlatforms. */
 export interface ListPlatformsResponse {
@@ -100,7 +100,7 @@ export interface ListPlatformsResponse {
   /** The list of platforms. */
   platforms?: PlatformList;
 }
-export const ListPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     platforms: S.optional(PlatformList),
@@ -115,7 +115,7 @@ export interface ListPlatformsChannelsRequest {
   /** Optional. A page token, received from a previous `ListChannels` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-export const ListPlatformsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -142,7 +142,7 @@ export type ChannelChannelTypeEnum =
   | "EXTENDED"
   | "LTS"
   | "LTC";
-export const ChannelChannelTypeEnum = S.String;
+const ChannelChannelTypeEnum = S.String;
 
 /** Each Channel is owned by a Platform and owns a collection of versions. Possible Channels are listed in the Channel enum below. Not all Channels are available for every Platform (e.g. CANARY does not exist for LINUX). */
 export interface Channel {
@@ -151,7 +151,7 @@ export interface Channel {
   /** Type of channel. */
   channelType?: ChannelChannelTypeEnum;
 }
-export const Channel = /*@__PURE__*/ S.suspend(() =>
+const Channel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     channelType: S.optional(ChannelChannelTypeEnum),
@@ -159,7 +159,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
 export type ChannelList = Array<Channel>;
-export const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
+const ChannelList = /*@__PURE__*/ S.Array(Channel) as any as S.Schema<ChannelList>;
 
 /** Response message for ListChannels. */
 export interface ListChannelsResponse {
@@ -168,7 +168,7 @@ export interface ListChannelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channels: S.optional(ChannelList),
     nextPageToken: S.optional(S.String),
@@ -187,7 +187,7 @@ export interface ListPlatformsChannelsVersionsRequest {
   /** Optional. Ordering string. Valid order_by strings are "version", "name", "platform", and "channel". Optionally, you can append " desc" or " asc" to specify the sorting order. Multiple order_by strings can be used in a comma separated list. Ordering by channel will sort by distance from the stable channel (not alphabetically). A list of channels sorted in this order is: stable, beta, dev, canary, and canary_asan. Sorting by name may cause unexpected behaviour as it is a naive string sort. For example, 1.0.0.8 will be before 1.0.0.10 in descending order. If order_by is not specified the response will be sorted by version in descending order. Ex) "...?order_by=version asc" Ex) "...?order_by=platform desc, channel, version" */
   orderBy?: string;
 }
-export const ListPlatformsChannelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsChannelsVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -212,7 +212,7 @@ export interface Version {
   /** String containing just the version number. e.g. "84.0.4147.38" */
   version?: string;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -220,7 +220,7 @@ export const Version = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Version" }) as any as S.Schema<Version>;
 
 export type VersionList = Array<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 /** Response message for ListVersions. */
 export interface ListVersionsResponse {
@@ -229,7 +229,7 @@ export interface ListVersionsResponse {
   /** The list of versions. */
   versions?: VersionList;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     versions: S.optional(VersionList),
@@ -248,7 +248,7 @@ export interface ListPlatformsChannelsVersionsReleasesRequest {
   /** Optional. Ordering string. Valid order_by strings are "version", "name", "starttime", "endtime", "platform", "channel", and "fraction". Optionally, you can append "desc" or "asc" to specify the sorting order. Multiple order_by strings can be used in a comma separated list. Ordering by channel will sort by distance from the stable channel (not alphabetically). A list of channels sorted in this order is: stable, beta, dev, canary, and canary_asan. Sorting by name may cause unexpected behaviour as it is a naive string sort. For example, 1.0.0.8 will be before 1.0.0.10 in descending order. If order_by is not specified the response will be sorted by starttime in descending order. Ex) "...?order_by=starttime asc" Ex) "...?order_by=platform desc, channel, startime desc" */
   orderBy?: string;
 }
-export const ListPlatformsChannelsVersionsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPlatformsChannelsVersionsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -267,7 +267,7 @@ export const ListPlatformsChannelsVersionsReleasesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListPlatformsChannelsVersionsReleasesRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Rollout-related metadata for a release. */
 export interface RolloutData {
@@ -276,7 +276,7 @@ export interface RolloutData {
   /** Tags associated with a release's role in a rollout. Most rollouts will have at least one release with a "rollout" tag and another release with a "control" tag. Some rollouts may have additional named arms. */
   tag?: StringList;
 }
-export const RolloutData = /*@__PURE__*/ S.suspend(() =>
+const RolloutData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutName: S.optional(S.String),
     tag: S.optional(StringList),
@@ -284,9 +284,7 @@ export const RolloutData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RolloutData" }) as any as S.Schema<RolloutData>;
 
 export type RolloutDataList = Array<RolloutData>;
-export const RolloutDataList = /*@__PURE__*/ S.Array(
-  RolloutData,
-) as any as S.Schema<RolloutDataList>;
+const RolloutDataList = /*@__PURE__*/ S.Array(RolloutData) as any as S.Schema<RolloutDataList>;
 
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
@@ -295,7 +293,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-export const Interval = /*@__PURE__*/ S.suspend(() =>
+const Interval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -319,7 +317,7 @@ export interface Release {
   /** String containing just the version number. e.g. "84.0.4147.38" */
   version?: string;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fraction: S.optional(S.Number),
     pinnable: S.optional(S.Boolean),
@@ -332,7 +330,7 @@ export const Release = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Release" }) as any as S.Schema<Release>;
 
 export type ReleaseList = Array<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
 
 /** Response message for ListReleases. */
 export interface ListReleasesResponse {
@@ -341,7 +339,7 @@ export interface ListReleasesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releases: S.optional(ReleaseList),
     nextPageToken: S.optional(S.String),

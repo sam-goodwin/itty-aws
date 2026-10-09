@@ -176,7 +176,7 @@ export interface GetGlyphsRequest {
   FontStack: string;
   FontUnicodeRange: string;
 }
-export const GetGlyphsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGlyphsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FontStack: S.String.pipe(T.HttpLabel("FontStack")),
     FontUnicodeRange: S.String.pipe(T.HttpLabel("FontUnicodeRange")),
@@ -197,7 +197,7 @@ export interface GetGlyphsResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -206,13 +206,13 @@ export const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetGlyphsResponse" }) as any as S.Schema<GetGlyphsResponse>;
 export type MapStyle = "Standard" | "Monochrome" | "Hybrid" | "Satellite" | (string & {});
-export const MapStyle = S.String;
+const MapStyle = S.String;
 
 export type ColorScheme = "Light" | "Dark" | (string & {});
-export const ColorScheme = S.String;
+const ColorScheme = S.String;
 
 export type Variant = "Default" | (string & {});
-export const Variant = S.String;
+const Variant = S.String;
 
 export interface GetSpritesRequest {
   FileName: string;
@@ -220,7 +220,7 @@ export interface GetSpritesRequest {
   ColorScheme: ColorScheme;
   Variant: Variant;
 }
-export const GetSpritesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSpritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FileName: S.String.pipe(T.HttpLabel("FileName")),
     Style: MapStyle.pipe(T.HttpLabel("Style")),
@@ -246,7 +246,7 @@ export interface GetSpritesResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetSpritesResponse = GetGlyphsResponse as any as S.Schema<GetSpritesResponse>;
+const GetSpritesResponse = GetGlyphsResponse as any as S.Schema<GetSpritesResponse>;
 export type PositionListString = string | redacted.Redacted<string>;
 export type PositionString = string | redacted.Redacted<string>;
 export type CompactOverlay = string | redacted.Redacted<string>;
@@ -254,12 +254,12 @@ export type GeoJsonOverlay = string | redacted.Redacted<string>;
 export type SensitiveInteger = number;
 export type ApiKey = string | redacted.Redacted<string>;
 export type LabelSize = "Small" | "Large" | (string & {});
-export const LabelSize = S.String;
+const LabelSize = S.String;
 
 export type LanguageTag = string;
 export type CountryCode = string | redacted.Redacted<string>;
 export type MapFeatureMode = "Enabled" | "Disabled" | (string & {});
-export const MapFeatureMode = S.String;
+const MapFeatureMode = S.String;
 
 export type DistanceMeters = number;
 export type ScaleBarUnit =
@@ -268,10 +268,10 @@ export type ScaleBarUnit =
   | "Miles"
   | "MilesKilometers"
   | (string & {});
-export const ScaleBarUnit = S.String;
+const ScaleBarUnit = S.String;
 
 export type StaticMapStyle = "Satellite" | "Standard" | (string & {});
-export const StaticMapStyle = S.String;
+const StaticMapStyle = S.String;
 
 export type SensitiveFloat = number;
 export interface GetStaticMapRequest {
@@ -296,7 +296,7 @@ export interface GetStaticMapRequest {
   Width: number;
   Zoom?: number;
 }
-export const GetStaticMapRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStaticMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
     BoundedPositions: S.optional(SensitiveString).pipe(T.HttpQuery("bounded-positions")),
@@ -329,7 +329,7 @@ export interface GetStaticMapResponse {
   ETag?: string;
   PricingBucket: string;
 }
-export const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -339,21 +339,21 @@ export const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetStaticMapResponse" }) as any as S.Schema<GetStaticMapResponse>;
 export type Terrain = "Hillshade" | "Terrain3D" | (string & {});
-export const Terrain = S.String;
+const Terrain = S.String;
 
 export type ContourDensity = "Low" | "Medium" | "High" | (string & {});
-export const ContourDensity = S.String;
+const ContourDensity = S.String;
 
 export type Traffic = "All" | "Congestion" | (string & {});
-export const Traffic = S.String;
+const Traffic = S.String;
 
 export type TravelMode = "Transit" | "Truck" | (string & {});
-export const TravelMode = S.String;
+const TravelMode = S.String;
 
 export type TravelModeList = TravelMode[];
-export const TravelModeList = /*@__PURE__*/ S.Array(TravelMode);
+const TravelModeList = /*@__PURE__*/ S.Array(TravelMode);
 export type Buildings = "Buildings3D" | (string & {});
-export const Buildings = S.String;
+const Buildings = S.String;
 
 export type PoiDensity =
   | "Off"
@@ -363,7 +363,7 @@ export type PoiDensity =
   | "Dense"
   | "VeryDense"
   | (string & {});
-export const PoiDensity = S.String;
+const PoiDensity = S.String;
 
 export type PoiCategory =
   | "FoodAndDrink"
@@ -376,10 +376,8 @@ export type PoiCategory =
   | "BusinessAndServices"
   | "FacilitiesAndBuildings"
   | (string & {});
-export const PoiCategory = S.String;
-
 export type PoiCategoryList = PoiCategory[];
-export const PoiCategoryList = TravelModeList as any as S.Schema<PoiCategoryList>;
+const PoiCategoryList = TravelModeList as any as S.Schema<PoiCategoryList>;
 export interface GetStyleDescriptorRequest {
   Style: MapStyle;
   ColorScheme?: ColorScheme;
@@ -393,7 +391,7 @@ export interface GetStyleDescriptorRequest {
   PoiCategories?: PoiCategory[];
   Key?: string | redacted.Redacted<string>;
 }
-export const GetStyleDescriptorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStyleDescriptorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Style: MapStyle.pipe(T.HttpLabel("Style")),
     ColorScheme: S.optional(ColorScheme).pipe(T.HttpQuery("color-scheme")),
@@ -425,7 +423,7 @@ export interface GetStyleDescriptorResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetStyleDescriptorResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStyleDescriptorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -441,11 +439,8 @@ export type TileAdditionalFeature =
   | "Logistics"
   | "Transit"
   | (string & {});
-export const TileAdditionalFeature = S.String;
-
 export type TileAdditionalFeatureList = TileAdditionalFeature[];
-export const TileAdditionalFeatureList =
-  TravelModeList as any as S.Schema<TileAdditionalFeatureList>;
+const TileAdditionalFeatureList = TravelModeList as any as S.Schema<TileAdditionalFeatureList>;
 export type Tileset = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetTileRequest {
@@ -456,7 +451,7 @@ export interface GetTileRequest {
   Y: string | redacted.Redacted<string>;
   Key?: string | redacted.Redacted<string>;
 }
-export const GetTileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdditionalFeatures: S.optional(TileAdditionalFeatureList).pipe(
       T.HttpQuery("additional-features"),
@@ -484,7 +479,7 @@ export interface GetTileResponse {
   ETag?: string;
   PricingBucket: string;
 }
-export const GetTileResponse = GetStaticMapResponse as any as S.Schema<GetTileResponse>;
+const GetTileResponse = GetStaticMapResponse as any as S.Schema<GetTileResponse>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "Missing"
@@ -493,19 +488,19 @@ export type ValidationExceptionReason =
   | "Other"
   | "UnknownField"
   | (string & {});
-export const ValidationExceptionReason = S.String;
+const ValidationExceptionReason = S.String;
 
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Message: S.String }).pipe(
     S.encodeKeys({ Name: "name", Message: "message" }),
   ),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type GetGlyphsError = CommonErrors;
 /**
  * `GetGlyphs` returns the map's glyphs.

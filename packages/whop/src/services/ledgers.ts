@@ -39,10 +39,10 @@ export type GetFinancialReportRequestReportType =
   | "balance_summary"
   | "income_statement"
   | "balance_activity";
-export const GetFinancialReportRequestReportType = S.String;
+const GetFinancialReportRequestReportType = S.String;
 
 export type GetFinancialReportRequestGroupBy = "hour" | "day" | "week" | "month";
-export const GetFinancialReportRequestGroupBy = S.String;
+const GetFinancialReportRequestGroupBy = S.String;
 
 export type GetFinancialReportRequestLineTypesItem =
   | "account_settlement"
@@ -184,17 +184,17 @@ export type GetFinancialReportRequestLineTypesItem =
   | "withdrawal_reclassification"
   | "withdrawal_reversal"
   | "withdrawal_topup_adjustment";
-export const GetFinancialReportRequestLineTypesItem = S.String;
+const GetFinancialReportRequestLineTypesItem = S.String;
 
 export type GetFinancialReportRequestLineTypesList = Array<
   GetFinancialReportRequestLineTypesItem | (string & {})
 >;
-export const GetFinancialReportRequestLineTypesList = /*@__PURE__*/ S.Array(
+const GetFinancialReportRequestLineTypesList = /*@__PURE__*/ S.Array(
   GetFinancialReportRequestLineTypesItem,
 ) as any as S.Schema<GetFinancialReportRequestLineTypesList>;
 
 export type GetFinancialReportRequestDirection = "money_in" | "money_out";
-export const GetFinancialReportRequestDirection = S.String;
+const GetFinancialReportRequestDirection = S.String;
 
 export interface GetFinancialReportRequest {
   /** The owning account ID (a biz_ identifier), or `global` for a platform-wide report across all ledger accounts (requires internal admin access). */
@@ -224,7 +224,7 @@ export interface GetFinancialReportRequest {
   /** Balance activity only: include payment costs grouped by payment method and provider. */
   include_payment_fee_breakdown?: boolean;
 }
-export const GetFinancialReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     report_type: GetFinancialReportRequestReportType.pipe(T.Query()),
@@ -246,12 +246,12 @@ export const GetFinancialReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Every lifetime cashflow currency, ordered by cashflow volume in the requested period. */
 export type GetFinancialReportResponseCurrenciesList = Array<string>;
-export const GetFinancialReportResponseCurrenciesList = /*@__PURE__*/ S.Array(
+const GetFinancialReportResponseCurrenciesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetFinancialReportResponseCurrenciesList>;
 
 export type GetFinancialReportResponseFxExcludedCurrenciesList = Array<string>;
-export const GetFinancialReportResponseFxExcludedCurrenciesList =
+const GetFinancialReportResponseFxExcludedCurrenciesList =
   GetFinancialReportResponseCurrenciesList as any as S.Schema<GetFinancialReportResponseFxExcludedCurrenciesList>;
 
 export interface Money {
@@ -264,7 +264,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -287,7 +287,7 @@ export type GetFinancialReportResponsePaymentFeeBreakdownItemCategory =
   | "wallet_payments"
   | "whop_balance"
   | "whop_orchestration";
-export const GetFinancialReportResponsePaymentFeeBreakdownItemCategory = S.String;
+const GetFinancialReportResponsePaymentFeeBreakdownItemCategory = S.String;
 
 export interface GetFinancialReportResponsePaymentFeeBreakdownItem {
   /** Payment costs attributed to this payment method. */
@@ -299,7 +299,7 @@ export interface GetFinancialReportResponsePaymentFeeBreakdownItem {
   /** Start of the time bucket containing these payment costs. */
   period: string;
 }
-export const GetFinancialReportResponsePaymentFeeBreakdownItem = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportResponsePaymentFeeBreakdownItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: Money,
     category: GetFinancialReportResponsePaymentFeeBreakdownItemCategory,
@@ -313,7 +313,7 @@ export const GetFinancialReportResponsePaymentFeeBreakdownItem = /*@__PURE__*/ S
 /** Payment costs grouped by customer-facing payment method and provider when requested. */
 export type GetFinancialReportResponsePaymentFeeBreakdownList =
   Array<GetFinancialReportResponsePaymentFeeBreakdownItem>;
-export const GetFinancialReportResponsePaymentFeeBreakdownList = /*@__PURE__*/ S.Array(
+const GetFinancialReportResponsePaymentFeeBreakdownList = /*@__PURE__*/ S.Array(
   GetFinancialReportResponsePaymentFeeBreakdownItem,
 ) as any as S.Schema<GetFinancialReportResponsePaymentFeeBreakdownList>;
 
@@ -322,7 +322,7 @@ export type GetFinancialReportResponseReportType =
   | "balance_summary"
   | "income_statement"
   | "balance_activity";
-export const GetFinancialReportResponseReportType = S.String;
+const GetFinancialReportResponseReportType = S.String;
 
 /** The family the row's `line_category` rolls up into. Balance summary rows are always `balance`. */
 export type GetFinancialReportResponseRowsItemGrouping =
@@ -348,7 +348,7 @@ export type GetFinancialReportResponseRowsItemGrouping =
   | "transfers"
   | "wallets_and_balance"
   | "withdrawals";
-export const GetFinancialReportResponseRowsItemGrouping = S.String;
+const GetFinancialReportResponseRowsItemGrouping = S.String;
 
 /** The ledger line category the row aggregates. Balance summary rows carry the balance bucket instead. */
 export type GetFinancialReportResponseRowsItemLineCategory =
@@ -652,11 +652,11 @@ export type GetFinancialReportResponseRowsItemLineCategory =
   | "withdrawal_reclassification"
   | "withdrawal_reversal"
   | "withdrawal_topup_adjustment";
-export const GetFinancialReportResponseRowsItemLineCategory = S.String;
+const GetFinancialReportResponseRowsItemLineCategory = S.String;
 
 /** Which side of the income statement the category falls on, or `null` when it is not a P&L category. */
 export type GetFinancialReportResponseRowsItemProfitAndLossSection = "revenue" | "cost_of_revenue";
-export const GetFinancialReportResponseRowsItemProfitAndLossSection = S.String;
+const GetFinancialReportResponseRowsItemProfitAndLossSection = S.String;
 
 export interface GetFinancialReportResponseRowsItem {
   account_ik_path?: string | null;
@@ -673,7 +673,7 @@ export interface GetFinancialReportResponseRowsItem {
   /** Which side of the income statement the category falls on, or `null` when it is not a P&L category. */
   profit_and_loss_section?: GetFinancialReportResponseRowsItemProfitAndLossSection | null;
 }
-export const GetFinancialReportResponseRowsItem = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportResponseRowsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_ik_path: S.optional(S.NullOr(S.String)),
     account_name: S.optional(S.NullOr(S.String)),
@@ -692,7 +692,7 @@ export const GetFinancialReportResponseRowsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFinancialReportResponseRowsItem>;
 
 export type GetFinancialReportResponseRowsList = Array<GetFinancialReportResponseRowsItem>;
-export const GetFinancialReportResponseRowsList = /*@__PURE__*/ S.Array(
+const GetFinancialReportResponseRowsList = /*@__PURE__*/ S.Array(
   GetFinancialReportResponseRowsItem,
 ) as any as S.Schema<GetFinancialReportResponseRowsList>;
 
@@ -709,7 +709,7 @@ export interface GetFinancialReportResponse {
   rows: GetFinancialReportResponseRowsList;
   total: number;
 }
-export const GetFinancialReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     beginning_balance: S.optional(S.NullOr(S.Number)),
     currencies: S.optional(GetFinancialReportResponseCurrenciesList),
@@ -742,13 +742,13 @@ export type GetFinancialReportBreakdownRequestBucket =
   | "revenue_share"
   | "swaps"
   | "card_loads";
-export const GetFinancialReportBreakdownRequestBucket = S.String;
+const GetFinancialReportBreakdownRequestBucket = S.String;
 
 export type GetFinancialReportBreakdownRequestDirection = "money_in" | "money_out";
-export const GetFinancialReportBreakdownRequestDirection = S.String;
+const GetFinancialReportBreakdownRequestDirection = S.String;
 
 export type GetFinancialReportBreakdownRequestGroupBy = "hour" | "day" | "week" | "month";
-export const GetFinancialReportBreakdownRequestGroupBy = S.String;
+const GetFinancialReportBreakdownRequestGroupBy = S.String;
 
 export interface GetFinancialReportBreakdownRequest {
   /** The owning account ID (a biz_ identifier). */
@@ -768,7 +768,7 @@ export interface GetFinancialReportBreakdownRequest {
   /** IANA timezone used by the parent report to bucket periods. Defaults to UTC. */
   timezone?: string;
 }
-export const GetFinancialReportBreakdownRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportBreakdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Query()),
     bucket: GetFinancialReportBreakdownRequestBucket.pipe(T.Query()),
@@ -784,19 +784,18 @@ export const GetFinancialReportBreakdownRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFinancialReportBreakdownRequest>;
 
 export type GetFinancialReportBreakdownResponseActivityFiltersDirection = "money_in" | "money_out";
-export const GetFinancialReportBreakdownResponseActivityFiltersDirection = S.String;
+const GetFinancialReportBreakdownResponseActivityFiltersDirection = S.String;
 
 export type GetFinancialReportBreakdownResponseActivityFiltersLineTypesList = Array<string>;
-export const GetFinancialReportBreakdownResponseActivityFiltersLineTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GetFinancialReportBreakdownResponseActivityFiltersLineTypesList>;
+const GetFinancialReportBreakdownResponseActivityFiltersLineTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetFinancialReportBreakdownResponseActivityFiltersLineTypesList>;
 
 export interface GetFinancialReportBreakdownResponseActivityFilters {
   direction: GetFinancialReportBreakdownResponseActivityFiltersDirection;
   line_types: GetFinancialReportBreakdownResponseActivityFiltersLineTypesList;
 }
-export const GetFinancialReportBreakdownResponseActivityFilters = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportBreakdownResponseActivityFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: GetFinancialReportBreakdownResponseActivityFiltersDirection,
     line_types: GetFinancialReportBreakdownResponseActivityFiltersLineTypesList,
@@ -823,20 +822,20 @@ export type GetFinancialReportBreakdownResponseBucket =
   | "revenue_share"
   | "swaps"
   | "card_loads";
-export const GetFinancialReportBreakdownResponseBucket = S.String;
+const GetFinancialReportBreakdownResponseBucket = S.String;
 
 export type GetFinancialReportBreakdownResponseDirection = "money_in" | "money_out";
-export const GetFinancialReportBreakdownResponseDirection = S.String;
+const GetFinancialReportBreakdownResponseDirection = S.String;
 
 export type GetFinancialReportBreakdownResponseItemsItemAvatarShape = "circle" | "square";
-export const GetFinancialReportBreakdownResponseItemsItemAvatarShape = S.String;
+const GetFinancialReportBreakdownResponseItemsItemAvatarShape = S.String;
 
 export interface GetFinancialReportBreakdownResponseItemsItemAvatar {
   shape: GetFinancialReportBreakdownResponseItemsItemAvatarShape;
   /** The image to show, or `null` to fall back to the row's initials. */
   url: string | null;
 }
-export const GetFinancialReportBreakdownResponseItemsItemAvatar = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportBreakdownResponseItemsItemAvatar = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     shape: GetFinancialReportBreakdownResponseItemsItemAvatarShape,
     url: S.NullOr(S.String),
@@ -853,7 +852,7 @@ export type GetFinancialReportBreakdownResponseItemsItemObject =
   | "balance"
   | "withdrawal_adjustment"
   | "ad_campaign";
-export const GetFinancialReportBreakdownResponseItemsItemObject = S.String;
+const GetFinancialReportBreakdownResponseItemsItemObject = S.String;
 
 export interface GetFinancialReportBreakdownResponseItemsItem {
   amount: Money;
@@ -867,7 +866,7 @@ export interface GetFinancialReportBreakdownResponseItemsItem {
   /** The prefixed identifier of the represented Whop resource, when one exists. */
   resource_id: string | null;
 }
-export const GetFinancialReportBreakdownResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportBreakdownResponseItemsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: Money,
     avatar: S.NullOr(GetFinancialReportBreakdownResponseItemsItemAvatar),
@@ -883,7 +882,7 @@ export const GetFinancialReportBreakdownResponseItemsItem = /*@__PURE__*/ S.susp
 
 export type GetFinancialReportBreakdownResponseItemsList =
   Array<GetFinancialReportBreakdownResponseItemsItem>;
-export const GetFinancialReportBreakdownResponseItemsList = /*@__PURE__*/ S.Array(
+const GetFinancialReportBreakdownResponseItemsList = /*@__PURE__*/ S.Array(
   GetFinancialReportBreakdownResponseItemsItem,
 ) as any as S.Schema<GetFinancialReportBreakdownResponseItemsList>;
 
@@ -896,7 +895,7 @@ export interface GetFinancialReportBreakdownResponse {
   other_amount: Money | null;
   other_name: string;
 }
-export const GetFinancialReportBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFinancialReportBreakdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activity_filters: GetFinancialReportBreakdownResponseActivityFilters,
     bucket: GetFinancialReportBreakdownResponseBucket,
@@ -1050,16 +1049,14 @@ export type ListFinancialActivityRequestLineTypesItem =
   | "withdrawal_reclassification"
   | "withdrawal_reversal"
   | "withdrawal_topup_adjustment";
-export const ListFinancialActivityRequestLineTypesItem = S.String;
-
 export type ListFinancialActivityRequestLineTypesList = Array<
   ListFinancialActivityRequestLineTypesItem | (string & {})
 >;
-export const ListFinancialActivityRequestLineTypesList =
+const ListFinancialActivityRequestLineTypesList =
   GetFinancialReportRequestLineTypesList as any as S.Schema<ListFinancialActivityRequestLineTypesList>;
 
 export type ListFinancialActivityRequestDirection = "money_in" | "money_out";
-export const ListFinancialActivityRequestDirection = S.String;
+const ListFinancialActivityRequestDirection = S.String;
 
 export interface ListFinancialActivityRequest {
   /** The owning account ID (a biz_ identifier). Provide this or user_id. */
@@ -1095,7 +1092,7 @@ export interface ListFinancialActivityRequest {
   /** Cursor returned by the previous page. */
   cursor?: string;
 }
-export const ListFinancialActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFinancialActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -1119,8 +1116,6 @@ export const ListFinancialActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFinancialActivityRequest>;
 
 export type LedgerActivityAccountCase0Object = "account";
-export const LedgerActivityAccountCase0Object = S.String;
-
 export interface LedgerActivityAccountCase0 {
   /** Account ID. */
   id: string;
@@ -1132,21 +1127,7 @@ export interface LedgerActivityAccountCase0 {
   /** Account display name. */
   title: string | null;
 }
-export const LedgerActivityAccountCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    logo_url: S.NullOr(S.String),
-    object: LedgerActivityAccountCase0Object,
-    route: S.NullOr(S.String),
-    title: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityAccountCase0",
-}) as any as S.Schema<LedgerActivityAccountCase0>;
-
 export type LedgerActivityAccountCase1Object = "user";
-export const LedgerActivityAccountCase1Object = S.String;
-
 export interface LedgerActivityAccountCase1 {
   /** User ID. */
   id: string;
@@ -1158,21 +1139,9 @@ export interface LedgerActivityAccountCase1 {
   /** User's username. */
   username: string | null;
 }
-export const LedgerActivityAccountCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.NullOr(S.String),
-    object: LedgerActivityAccountCase1Object,
-    profile_picture_url: S.NullOr(S.String),
-    username: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityAccountCase1",
-}) as any as S.Schema<LedgerActivityAccountCase1>;
-
 /** The viewer account that owns this row's ledger. Present only when the response aggregates owned accounts (include_owned_accounts=true); omitted otherwise. */
 export type LedgerActivityAccount = LedgerActivityAccountCase0 | LedgerActivityAccountCase1;
-export const LedgerActivityAccount = S.Unknown as any as S.Schema<LedgerActivityAccount>;
+const LedgerActivityAccount = S.Unknown as any as S.Schema<LedgerActivityAccount>;
 
 /** Currency for this ledger activity. */
 export interface LedgerActivityCurrency {
@@ -1181,7 +1150,7 @@ export interface LedgerActivityCurrency {
   /** Precision factor for the currency, for example `100000000` for USD. */
   precision: string;
 }
-export const LedgerActivityCurrency = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivityCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     precision: S.String,
@@ -1333,13 +1302,13 @@ export type LedgerActivityLineType =
   | "wallet_transfer_outgoing"
   | "swap_source"
   | "swap_target";
-export const LedgerActivityLineType = S.String;
+const LedgerActivityLineType = S.String;
 
 export type LedgerActivityObject = "ledger_activity";
-export const LedgerActivityObject = S.String;
+const LedgerActivityObject = S.String;
 
 export type LedgerActivityPaymentObject = "payment";
-export const LedgerActivityPaymentObject = S.String;
+const LedgerActivityPaymentObject = S.String;
 
 /** Plan associated with the payment, when applicable. */
 export interface LedgerActivityPaymentPlan {
@@ -1348,7 +1317,7 @@ export interface LedgerActivityPaymentPlan {
   /** Plan name. */
   name: string | null;
 }
-export const LedgerActivityPaymentPlan = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivityPaymentPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -1364,7 +1333,7 @@ export interface LedgerActivityPaymentProduct {
   /** Product name. */
   name: string;
 }
-export const LedgerActivityPaymentProduct = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivityPaymentProduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1382,7 +1351,7 @@ export interface LedgerActivityPaymentUser {
   /** Customer display name. */
   name: string;
 }
-export const LedgerActivityPaymentUser = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivityPaymentUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -1415,7 +1384,7 @@ export interface LedgerActivityPayment {
   /** Customer associated with the payment. Email requires member:email:read. */
   user: LedgerActivityPaymentUser | null;
 }
-export const LedgerActivityPayment = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivityPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.NullOr(Money),
     card_brand: S.NullOr(S.String),
@@ -1432,8 +1401,6 @@ export const LedgerActivityPayment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LedgerActivityPayment" }) as any as S.Schema<LedgerActivityPayment>;
 
 export type LedgerActivityResourceCase0Object = "account";
-export const LedgerActivityResourceCase0Object = S.String;
-
 export interface LedgerActivityResourceCase0 {
   /** Account ID. */
   id: string;
@@ -1445,12 +1412,7 @@ export interface LedgerActivityResourceCase0 {
   /** Account display name. */
   title: string | null;
 }
-export const LedgerActivityResourceCase0 =
-  LedgerActivityAccountCase0 as any as S.Schema<LedgerActivityResourceCase0>;
-
 export type LedgerActivityResourceCase1Object = "user";
-export const LedgerActivityResourceCase1Object = S.String;
-
 export interface LedgerActivityResourceCase1 {
   /** User ID. */
   id: string;
@@ -1462,12 +1424,7 @@ export interface LedgerActivityResourceCase1 {
   /** User's username. */
   username: string | null;
 }
-export const LedgerActivityResourceCase1 =
-  LedgerActivityAccountCase1 as any as S.Schema<LedgerActivityResourceCase1>;
-
 export type LedgerActivityResourceCase2Object = "bounty";
-export const LedgerActivityResourceCase2Object = S.String;
-
 export interface LedgerActivityResourceCase2 {
   /** Bounty ID. */
   id: string;
@@ -1477,23 +1434,8 @@ export interface LedgerActivityResourceCase2 {
   /** Bounty title. */
   title: string;
 }
-export const LedgerActivityResourceCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: LedgerActivityResourceCase2Object,
-    status: S.String,
-    title: S.String,
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase2",
-}) as any as S.Schema<LedgerActivityResourceCase2>;
-
 export type LedgerActivityResourceCase3Object = "ledger_account";
-export const LedgerActivityResourceCase3Object = S.String;
-
 export type LedgerActivityResourceCase3OwnerCase0Object = "account";
-export const LedgerActivityResourceCase3OwnerCase0Object = S.String;
-
 export interface LedgerActivityResourceCase3OwnerCase0 {
   /** Account ID. */
   id: string;
@@ -1505,12 +1447,7 @@ export interface LedgerActivityResourceCase3OwnerCase0 {
   /** Account display name. */
   title: string | null;
 }
-export const LedgerActivityResourceCase3OwnerCase0 =
-  LedgerActivityAccountCase0 as any as S.Schema<LedgerActivityResourceCase3OwnerCase0>;
-
 export type LedgerActivityResourceCase3OwnerCase1Object = "user";
-export const LedgerActivityResourceCase3OwnerCase1Object = S.String;
-
 export interface LedgerActivityResourceCase3OwnerCase1 {
   /** User ID. */
   id: string;
@@ -1522,31 +1459,15 @@ export interface LedgerActivityResourceCase3OwnerCase1 {
   /** User's username. */
   username: string | null;
 }
-export const LedgerActivityResourceCase3OwnerCase1 =
-  LedgerActivityAccountCase1 as any as S.Schema<LedgerActivityResourceCase3OwnerCase1>;
-
 export type LedgerActivityResourceCase3Owner =
   | LedgerActivityResourceCase3OwnerCase0
   | LedgerActivityResourceCase3OwnerCase1;
-export const LedgerActivityResourceCase3Owner =
-  S.Unknown as any as S.Schema<LedgerActivityResourceCase3Owner>;
-
 export interface LedgerActivityResourceCase3 {
   /** Ledger account ID. */
   id: string;
   object: LedgerActivityResourceCase3Object;
   owner: LedgerActivityResourceCase3Owner | null;
 }
-export const LedgerActivityResourceCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    object: LedgerActivityResourceCase3Object,
-    owner: S.NullOr(LedgerActivityResourceCase3Owner),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase3",
-}) as any as S.Schema<LedgerActivityResourceCase3>;
-
 export interface LedgerActivityResourceCase4Bank {
   /** Bank account holder name. */
   account_name: string | null;
@@ -1557,17 +1478,6 @@ export interface LedgerActivityResourceCase4Bank {
   /** Last four digits of the bank account. */
   last4: string | null;
 }
-export const LedgerActivityResourceCase4Bank = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_name: S.NullOr(S.String),
-    account_type: S.NullOr(S.String),
-    bank_name: S.NullOr(S.String),
-    last4: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase4Bank",
-}) as any as S.Schema<LedgerActivityResourceCase4Bank>;
-
 export interface LedgerActivityResourceCase4Card {
   /** Card brand. */
   brand: string | null;
@@ -1578,20 +1488,7 @@ export interface LedgerActivityResourceCase4Card {
   /** Last four digits of the card. */
   last4: string | null;
 }
-export const LedgerActivityResourceCase4Card = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    brand: S.NullOr(S.String),
-    exp_month: S.NullOr(S.Number),
-    exp_year: S.NullOr(S.Number),
-    last4: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase4Card",
-}) as any as S.Schema<LedgerActivityResourceCase4Card>;
-
 export type LedgerActivityResourceCase4Object = "payment_method";
-export const LedgerActivityResourceCase4Object = S.String;
-
 export interface LedgerActivityResourceCase4 {
   bank: LedgerActivityResourceCase4Bank | null;
   card: LedgerActivityResourceCase4Card | null;
@@ -1605,23 +1502,7 @@ export interface LedgerActivityResourceCase4 {
   /** Payment method type. */
   payment_method_type: string | null;
 }
-export const LedgerActivityResourceCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bank: S.NullOr(LedgerActivityResourceCase4Bank),
-    card: S.NullOr(LedgerActivityResourceCase4Card),
-    email_identifier: S.NullOr(S.String),
-    gateway_type: S.NullOr(S.String),
-    id: S.String,
-    object: LedgerActivityResourceCase4Object,
-    payment_method_type: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase4",
-}) as any as S.Schema<LedgerActivityResourceCase4>;
-
 export type LedgerActivityResourceCase5Object = "payout_method";
-export const LedgerActivityResourceCase5Object = S.String;
-
 export interface LedgerActivityResourceCase5 {
   /** Masked account reference. */
   account_reference: string | null;
@@ -1637,23 +1518,7 @@ export interface LedgerActivityResourceCase5 {
   /** Payout provider. */
   provider: string | null;
 }
-export const LedgerActivityResourceCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_reference: S.NullOr(S.String),
-    destination_currency_code: S.NullOr(S.String),
-    id: S.String,
-    institution_name: S.NullOr(S.String),
-    nickname: S.NullOr(S.String),
-    object: LedgerActivityResourceCase5Object,
-    provider: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase5",
-}) as any as S.Schema<LedgerActivityResourceCase5>;
-
 export type LedgerActivityResourceCase6Object = "card_transaction";
-export const LedgerActivityResourceCase6Object = S.String;
-
 export interface LedgerActivityResourceCase6 {
   /** ISO 8601 timestamp the transaction was authorized. */
   authorized_at: string | null;
@@ -1683,27 +1548,6 @@ export interface LedgerActivityResourceCase6 {
   /** The processor-settled USD amount as a decimal string. The ledger's USDT leg is posted 1:1 from this value. */
   usd_amount: string | null;
 }
-export const LedgerActivityResourceCase6 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authorized_at: S.NullOr(S.String),
-    card_id: S.NullOr(S.String),
-    cashback_usd: S.NullOr(S.String),
-    declined_reason: S.NullOr(S.String),
-    id: S.String,
-    local_amount: S.NullOr(S.String),
-    local_currency: S.NullOr(S.String),
-    merchant_category: S.NullOr(S.String),
-    merchant_icon_url: S.NullOr(S.String),
-    merchant_name: S.NullOr(S.String),
-    object: LedgerActivityResourceCase6Object,
-    posted_at: S.NullOr(S.String),
-    status: S.NullOr(S.String),
-    usd_amount: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "LedgerActivityResourceCase6",
-}) as any as S.Schema<LedgerActivityResourceCase6>;
-
 /** Resource associated with this ledger activity. */
 export type LedgerActivityResource =
   | LedgerActivityResourceCase0
@@ -1713,18 +1557,18 @@ export type LedgerActivityResource =
   | LedgerActivityResourceCase4
   | LedgerActivityResourceCase5
   | LedgerActivityResourceCase6;
-export const LedgerActivityResource = S.Unknown as any as S.Schema<LedgerActivityResource>;
+const LedgerActivityResource = S.Unknown as any as S.Schema<LedgerActivityResource>;
 
 /** Action that generated a platform markup fee: deposit, swap, transfer, card_spend, or payout. Present for platform_markup_fee and platform_markup_fee_payout, including when include_resource is false. Null when the originating action is unavailable; omitted on other source types. */
 export type LedgerActivitySourceFeeKind = "payout" | "transfer" | "deposit" | "swap" | "card_spend";
-export const LedgerActivitySourceFeeKind = S.String;
+const LedgerActivitySourceFeeKind = S.String;
 
 /** Payout destination display info (payout sources only). */
 export interface LedgerActivitySourcePayoutDestination {
   icon_url?: string | null;
   payer_name?: string | null;
 }
-export const LedgerActivitySourcePayoutDestination = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivitySourcePayoutDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     icon_url: S.optional(S.NullOr(S.String)),
     payer_name: S.optional(S.NullOr(S.String)),
@@ -1784,7 +1628,7 @@ export interface LedgerActivitySource {
   /** On-chain transaction hash (onchain_transaction and swap sources only). */
   tx_hash?: string | null;
 }
-export const LedgerActivitySource = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivitySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount_float: S.optional(S.NullOr(S.Number)),
     card_brand: S.optional(S.NullOr(S.String)),
@@ -1857,7 +1701,7 @@ export interface LedgerActivity {
   /** Display name of the customer associated with the payment. */
   user_name?: string | null;
 }
-export const LedgerActivity = /*@__PURE__*/ S.suspend(() =>
+const LedgerActivity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(LedgerActivityAccount),
     amount: S.String,
@@ -1884,7 +1728,7 @@ export const LedgerActivity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LedgerActivity" }) as any as S.Schema<LedgerActivity>;
 
 export type ListFinancialActivityResponseDataList = Array<LedgerActivity>;
-export const ListFinancialActivityResponseDataList = /*@__PURE__*/ S.Array(
+const ListFinancialActivityResponseDataList = /*@__PURE__*/ S.Array(
   LedgerActivity,
 ) as any as S.Schema<ListFinancialActivityResponseDataList>;
 
@@ -1894,7 +1738,7 @@ export interface ListFinancialActivityResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListFinancialActivityResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListFinancialActivityResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -1909,7 +1753,7 @@ export interface ListFinancialActivityResponse {
   data: ListFinancialActivityResponseDataList;
   page_info: ListFinancialActivityResponsePageInfo;
 }
-export const ListFinancialActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFinancialActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListFinancialActivityResponseDataList,
     page_info: ListFinancialActivityResponsePageInfo,

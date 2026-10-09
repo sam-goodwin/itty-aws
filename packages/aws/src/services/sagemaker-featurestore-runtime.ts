@@ -123,16 +123,16 @@ export class ValidationError
 export type FeatureGroupNameOrArn = string;
 export type ValueAsString = string;
 export type RecordIdentifiers = string[];
-export const RecordIdentifiers = /*@__PURE__*/ S.Array(S.String);
+const RecordIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type FeatureName = string;
 export type FeatureNames = string[];
-export const FeatureNames = RecordIdentifiers as any as S.Schema<FeatureNames>;
+const FeatureNames = RecordIdentifiers as any as S.Schema<FeatureNames>;
 export interface BatchGetRecordIdentifier {
   FeatureGroupName?: string;
   RecordIdentifiersValueAsString?: string[];
   FeatureNames?: string[];
 }
-export const BatchGetRecordIdentifier = /*@__PURE__*/ S.suspend(() =>
+const BatchGetRecordIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     RecordIdentifiersValueAsString: S.optional(RecordIdentifiers),
@@ -140,28 +140,28 @@ export const BatchGetRecordIdentifier = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchGetRecordIdentifier" }) as any as S.Schema<BatchGetRecordIdentifier>;
 export type BatchGetRecordIdentifiers = BatchGetRecordIdentifier[];
-export const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(BatchGetRecordIdentifier);
+const BatchGetRecordIdentifiers = /*@__PURE__*/ S.Array(BatchGetRecordIdentifier);
 export type ExpirationTimeResponse = "Enabled" | "Disabled" | (string & {});
-export const ExpirationTimeResponse = S.String;
+const ExpirationTimeResponse = S.String;
 
 export interface BatchGetRecordRequest {
   Identifiers?: BatchGetRecordIdentifier[];
   ExpirationTimeResponse?: ExpirationTimeResponse;
 }
-export const BatchGetRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchGetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifiers: S.optional(BatchGetRecordIdentifiers),
     ExpirationTimeResponse: S.optional(ExpirationTimeResponse),
   }).pipe(T.all(T.Http({ method: "POST", uri: "/BatchGetRecord" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "BatchGetRecordRequest" }) as any as S.Schema<BatchGetRecordRequest>;
 export type ValueAsStringList = string[];
-export const ValueAsStringList = RecordIdentifiers as any as S.Schema<ValueAsStringList>;
+const ValueAsStringList = RecordIdentifiers as any as S.Schema<ValueAsStringList>;
 export interface FeatureValue {
   FeatureName?: string;
   ValueAsString?: string;
   ValueAsStringList?: string[];
 }
-export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
+const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureName: S.optional(S.String),
     ValueAsString: S.optional(S.String),
@@ -169,7 +169,7 @@ export const FeatureValue = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FeatureValue" }) as any as S.Schema<FeatureValue>;
 export type Record = FeatureValue[];
-export const Record = /*@__PURE__*/ S.Array(FeatureValue);
+const Record = /*@__PURE__*/ S.Array(FeatureValue);
 export type ExpiresAt = string;
 export interface BatchGetRecordResultDetail {
   FeatureGroupName?: string;
@@ -177,7 +177,7 @@ export interface BatchGetRecordResultDetail {
   Record?: FeatureValue[];
   ExpiresAt?: string;
 }
-export const BatchGetRecordResultDetail = /*@__PURE__*/ S.suspend(() =>
+const BatchGetRecordResultDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     RecordIdentifierValueAsString: S.optional(S.String),
@@ -188,7 +188,7 @@ export const BatchGetRecordResultDetail = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetRecordResultDetail",
 }) as any as S.Schema<BatchGetRecordResultDetail>;
 export type BatchGetRecordResultDetails = BatchGetRecordResultDetail[];
-export const BatchGetRecordResultDetails = /*@__PURE__*/ S.Array(BatchGetRecordResultDetail);
+const BatchGetRecordResultDetails = /*@__PURE__*/ S.Array(BatchGetRecordResultDetail);
 export type Message = string;
 export interface BatchGetRecordError_ {
   FeatureGroupName?: string;
@@ -196,7 +196,7 @@ export interface BatchGetRecordError_ {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const BatchGetRecordError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchGetRecordError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     RecordIdentifierValueAsString: S.optional(S.String),
@@ -205,10 +205,9 @@ export const BatchGetRecordError_ = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchGetRecordError" }) as any as S.Schema<BatchGetRecordError_>;
 export type BatchGetRecordErrors = BatchGetRecordError_[];
-export const BatchGetRecordErrors = /*@__PURE__*/ S.Array(BatchGetRecordError_);
+const BatchGetRecordErrors = /*@__PURE__*/ S.Array(BatchGetRecordError_);
 export type UnprocessedIdentifiers = BatchGetRecordIdentifier[];
-export const UnprocessedIdentifiers =
-  BatchGetRecordIdentifiers as any as S.Schema<UnprocessedIdentifiers>;
+const UnprocessedIdentifiers = BatchGetRecordIdentifiers as any as S.Schema<UnprocessedIdentifiers>;
 export interface BatchGetRecordResponse {
   Records: (BatchGetRecordResultDetail & {
     FeatureGroupName: ValueAsString;
@@ -226,7 +225,7 @@ export interface BatchGetRecordResponse {
     RecordIdentifiersValueAsString: RecordIdentifiers;
   })[];
 }
-export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: S.optional(BatchGetRecordResultDetails),
     Errors: S.optional(BatchGetRecordErrors),
@@ -234,19 +233,19 @@ export const BatchGetRecordResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchGetRecordResponse" }) as any as S.Schema<BatchGetRecordResponse>;
 export type TargetStore = "OnlineStore" | "OfflineStore" | (string & {});
-export const TargetStore = S.String;
+const TargetStore = S.String;
 
 export type TargetStores = TargetStore[];
-export const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
+const TargetStores = /*@__PURE__*/ S.Array(TargetStore);
 export type TtlDurationUnit = "Seconds" | "Minutes" | "Hours" | "Days" | "Weeks" | (string & {});
-export const TtlDurationUnit = S.String;
+const TtlDurationUnit = S.String;
 
 export type TtlDurationValue = number;
 export interface TtlDuration {
   Unit?: TtlDurationUnit;
   Value?: number;
 }
-export const TtlDuration = /*@__PURE__*/ S.suspend(() =>
+const TtlDuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Unit: S.optional(TtlDurationUnit), Value: S.optional(S.Number) }),
 ).annotate({ identifier: "TtlDuration" }) as any as S.Schema<TtlDuration>;
 export interface BatchWriteRecordEntry {
@@ -255,7 +254,7 @@ export interface BatchWriteRecordEntry {
   TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
-export const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.optional(S.String),
     Record: S.optional(Record),
@@ -264,12 +263,12 @@ export const BatchWriteRecordEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchWriteRecordEntry" }) as any as S.Schema<BatchWriteRecordEntry>;
 export type BatchWriteRecordEntries = BatchWriteRecordEntry[];
-export const BatchWriteRecordEntries = /*@__PURE__*/ S.Array(BatchWriteRecordEntry);
+const BatchWriteRecordEntries = /*@__PURE__*/ S.Array(BatchWriteRecordEntry);
 export interface BatchWriteRecordRequest {
   Entries?: BatchWriteRecordEntry[];
   TtlDuration?: TtlDuration;
 }
-export const BatchWriteRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Entries: S.optional(BatchWriteRecordEntries),
     TtlDuration: S.optional(TtlDuration),
@@ -282,7 +281,7 @@ export interface BatchWriteRecordError_ {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const BatchWriteRecordError_ = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRecordError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Entry: S.optional(BatchWriteRecordEntry),
     ErrorCode: S.optional(S.String),
@@ -290,9 +289,9 @@ export const BatchWriteRecordError_ = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BatchWriteRecordError" }) as any as S.Schema<BatchWriteRecordError_>;
 export type BatchWriteRecordErrors = BatchWriteRecordError_[];
-export const BatchWriteRecordErrors = /*@__PURE__*/ S.Array(BatchWriteRecordError_);
+const BatchWriteRecordErrors = /*@__PURE__*/ S.Array(BatchWriteRecordError_);
 export type UnprocessedBatchWriteRecordEntries = BatchWriteRecordEntry[];
-export const UnprocessedBatchWriteRecordEntries =
+const UnprocessedBatchWriteRecordEntries =
   BatchWriteRecordEntries as any as S.Schema<UnprocessedBatchWriteRecordEntries>;
 export interface BatchWriteRecordResponse {
   Errors: (BatchWriteRecordError & {
@@ -310,14 +309,14 @@ export interface BatchWriteRecordResponse {
     TtlDuration: TtlDuration & { Unit: TtlDurationUnit; Value: TtlDurationValue };
   })[];
 }
-export const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const BatchWriteRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Errors: S.optional(BatchWriteRecordErrors),
     UnprocessedEntries: S.optional(UnprocessedBatchWriteRecordEntries),
   }),
 ).annotate({ identifier: "BatchWriteRecordResponse" }) as any as S.Schema<BatchWriteRecordResponse>;
 export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
-export const DeletionMode = S.String;
+const DeletionMode = S.String;
 
 export interface DeleteRecordRequest {
   FeatureGroupName: string;
@@ -326,7 +325,7 @@ export interface DeleteRecordRequest {
   TargetStores?: TargetStore[];
   DeletionMode?: DeletionMode;
 }
-export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     RecordIdentifierValueAsString: S.optional(S.String).pipe(
@@ -347,7 +346,7 @@ export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteRecordRequest" }) as any as S.Schema<DeleteRecordRequest>;
 export interface DeleteRecordResponse {}
-export const DeleteRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRecordResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRecordResponse",
 }) as any as S.Schema<DeleteRecordResponse>;
 export interface GetRecordRequest {
@@ -356,7 +355,7 @@ export interface GetRecordRequest {
   FeatureNames?: string[];
   ExpirationTimeResponse?: ExpirationTimeResponse;
 }
-export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     RecordIdentifierValueAsString: S.optional(S.String).pipe(
@@ -381,7 +380,7 @@ export interface GetRecordResponse {
   Record?: (FeatureValue & { FeatureName: FeatureName })[];
   ExpiresAt?: string;
 }
-export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
+const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Record: S.optional(Record), ExpiresAt: S.optional(S.String) }),
 ).annotate({ identifier: "GetRecordResponse" }) as any as S.Schema<GetRecordResponse>;
 export type ListRecordsMaxResults = number;
@@ -392,7 +391,7 @@ export interface ListRecordsRequest {
   NextToken?: string;
   IncludeSoftDeletedRecords?: boolean;
 }
-export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     MaxResults: S.optional(S.Number),
@@ -410,12 +409,12 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListRecordsRequest" }) as any as S.Schema<ListRecordsRequest>;
 export type RecordIdentifierList = string[];
-export const RecordIdentifierList = RecordIdentifiers as any as S.Schema<RecordIdentifierList>;
+const RecordIdentifierList = RecordIdentifiers as any as S.Schema<RecordIdentifierList>;
 export interface ListRecordsResponse {
   RecordIdentifiers: string[];
   NextToken?: string;
 }
-export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RecordIdentifiers: S.optional(RecordIdentifierList),
     NextToken: S.optional(S.String),
@@ -427,7 +426,7 @@ export interface PutRecordRequest {
   TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
-export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     Record: S.optional(Record),
@@ -445,7 +444,7 @@ export const PutRecordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutRecordRequest" }) as any as S.Schema<PutRecordRequest>;
 export interface PutRecordResponse {}
-export const PutRecordResponse = DeleteRecordResponse as any as S.Schema<PutRecordResponse>;
+const PutRecordResponse = DeleteRecordResponse as any as S.Schema<PutRecordResponse>;
 export interface UpdateRecordRequest {
   FeatureGroupName: string;
   RecordIdentifierValueAsString?: string;
@@ -453,7 +452,7 @@ export interface UpdateRecordRequest {
   TargetStores?: TargetStore[];
   TtlDuration?: TtlDuration;
 }
-export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FeatureGroupName: S.String.pipe(T.HttpLabel("FeatureGroupName")),
     RecordIdentifierValueAsString: S.optional(S.String),
@@ -472,7 +471,7 @@ export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateRecordRequest" }) as any as S.Schema<UpdateRecordRequest>;
 export interface UpdateRecordResponse {}
-export const UpdateRecordResponse = DeleteRecordResponse as any as S.Schema<UpdateRecordResponse>;
+const UpdateRecordResponse = DeleteRecordResponse as any as S.Schema<UpdateRecordResponse>;
 export type BatchGetRecordError =
   | AccessForbidden
   | InternalFailure

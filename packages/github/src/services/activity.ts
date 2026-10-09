@@ -41,7 +41,7 @@ export interface CheckRepoIsStarredByAuthenticatedUserRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const CheckRepoIsStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckRepoIsStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -51,7 +51,7 @@ export const CheckRepoIsStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<CheckRepoIsStarredByAuthenticatedUserRequest>;
 
 export interface CheckRepoIsStarredByAuthenticatedUserResponse {}
-export const CheckRepoIsStarredByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckRepoIsStarredByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CheckRepoIsStarredByAuthenticatedUserResponse",
@@ -63,7 +63,7 @@ export interface DeleteRepoSubscriptionRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const DeleteRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -73,7 +73,7 @@ export const DeleteRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRepoSubscriptionRequest>;
 
 export interface DeleteRepoSubscriptionResponse {}
-export const DeleteRepoSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteRepoSubscriptionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteRepoSubscriptionResponse",
 }) as any as S.Schema<DeleteRepoSubscriptionResponse>;
 
@@ -81,7 +81,7 @@ export interface DeleteThreadSubscriptionRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
-export const DeleteThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -92,16 +92,16 @@ export const DeleteThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteThreadSubscriptionRequest>;
 
 export interface DeleteThreadSubscriptionResponse {}
-export const DeleteThreadSubscriptionResponse =
+const DeleteThreadSubscriptionResponse =
   CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<DeleteThreadSubscriptionResponse>;
 
 export interface GetFeedsRequest {}
-export const GetFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeedsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/feeds", code: 200 })),
 ).annotate({ identifier: "GetFeedsRequest" }) as any as S.Schema<GetFeedsRequest>;
 
 export type FeedCurrentUserOrganizationUrlsList = Array<string>;
-export const FeedCurrentUserOrganizationUrlsList = /*@__PURE__*/ S.Array(
+const FeedCurrentUserOrganizationUrlsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<FeedCurrentUserOrganizationUrlsList>;
 
@@ -110,7 +110,7 @@ export interface LinkWithType {
   href: string;
   type: string;
 }
-export const LinkWithType = /*@__PURE__*/ S.suspend(() =>
+const LinkWithType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     type: S.String,
@@ -118,7 +118,7 @@ export const LinkWithType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkWithType" }) as any as S.Schema<LinkWithType>;
 
 export type FeedLinksCurrentUserOrganizationsList = Array<LinkWithType>;
-export const FeedLinksCurrentUserOrganizationsList = /*@__PURE__*/ S.Array(
+const FeedLinksCurrentUserOrganizationsList = /*@__PURE__*/ S.Array(
   LinkWithType,
 ) as any as S.Schema<FeedLinksCurrentUserOrganizationsList>;
 
@@ -134,7 +134,7 @@ export interface FeedLinks {
   repository_discussions?: LinkWithType;
   repository_discussions_category?: LinkWithType;
 }
-export const FeedLinks = /*@__PURE__*/ S.suspend(() =>
+const FeedLinks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeline: LinkWithType,
     user: LinkWithType,
@@ -165,7 +165,7 @@ export interface Feed {
   repository_discussions_category_url?: string;
   _links: FeedLinks;
 }
-export const Feed = /*@__PURE__*/ S.suspend(() =>
+const Feed = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     timeline_url: S.String,
     user_url: S.String,
@@ -187,7 +187,7 @@ export interface GetRepoSubscriptionRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -207,7 +207,7 @@ export interface RepositorySubscription {
   url: string;
   repository_url: string;
 }
-export const RepositorySubscription = /*@__PURE__*/ S.suspend(() =>
+const RepositorySubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscribed: S.Boolean,
     ignored: S.Boolean,
@@ -224,7 +224,7 @@ export interface GetStargazerCountForRepoRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const GetStargazerCountForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStargazerCountForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -236,7 +236,7 @@ export const GetStargazerCountForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetStargazerCountForRepoResponse {
   count: number;
 }
-export const GetStargazerCountForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStargazerCountForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
   }),
@@ -254,7 +254,7 @@ export interface GetStargazerHistoryForRepoRequest {
   /** The page number of the results to fetch (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const GetStargazerHistoryForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStargazerHistoryForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -267,7 +267,7 @@ export const GetStargazerHistoryForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The number of stars created on each day of the week, starting on Sunday. */
 export type StargazerHistoryDaysList = Array<number>;
-export const StargazerHistoryDaysList = /*@__PURE__*/ S.Array(
+const StargazerHistoryDaysList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<StargazerHistoryDaysList>;
 
@@ -280,7 +280,7 @@ export interface StargazerHistory {
   /** The start of the week, given as a Unix timestamp. */
   week: number;
 }
-export const StargazerHistory = /*@__PURE__*/ S.suspend(() =>
+const StargazerHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     days: StargazerHistoryDaysList,
     total: S.Number,
@@ -289,12 +289,12 @@ export const StargazerHistory = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StargazerHistory" }) as any as S.Schema<StargazerHistory>;
 
 export type GetStargazerHistoryForRepoResponseBodyList = Array<StargazerHistory>;
-export const GetStargazerHistoryForRepoResponseBodyList = /*@__PURE__*/ S.Array(
+const GetStargazerHistoryForRepoResponseBodyList = /*@__PURE__*/ S.Array(
   StargazerHistory,
 ) as any as S.Schema<GetStargazerHistoryForRepoResponseBodyList>;
 
 export type GetStargazerHistoryForRepoResponse = GetStargazerHistoryForRepoResponseBodyList;
-export const GetStargazerHistoryForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStargazerHistoryForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   GetStargazerHistoryForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetStargazerHistoryForRepoResponse",
@@ -304,7 +304,7 @@ export interface GetThreadRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
-export const GetThreadRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/notifications/threads/{thread_id}", code: 200 })),
@@ -335,7 +335,7 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
+const SimpleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     email: S.optional(S.NullOr(S.String)),
@@ -363,12 +363,12 @@ export const SimpleUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SimpleUser" }) as any as S.Schema<SimpleUser>;
 
 export type MinimalRepositoryTopicsList = Array<string>;
-export const MinimalRepositoryTopicsList =
+const MinimalRepositoryTopicsList =
   FeedCurrentUserOrganizationUrlsList as any as S.Schema<MinimalRepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const MinimalRepositoryPullRequestCreationPolicy = S.String;
+const MinimalRepositoryPullRequestCreationPolicy = S.String;
 
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
@@ -377,7 +377,7 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-export const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.optional(S.Boolean),
     maintain: S.optional(S.Boolean),
@@ -397,7 +397,7 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-export const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
+const CodeOfConduct = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -414,7 +414,7 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     name: S.optional(S.String),
@@ -425,13 +425,13 @@ export const MinimalRepositoryLicense = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MinimalRepositoryLicense" }) as any as S.Schema<MinimalRepositoryLicense>;
 
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
+const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
 
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
   }),
@@ -440,98 +440,82 @@ export const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
 
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisCodeSecurityStatus = S.String;
-
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-export const SecurityAndAnalysisCodeSecurity =
+const SecurityAndAnalysisCodeSecurity =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
 
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisDependabotSecurityUpdatesStatus = S.String;
-
 /** Enable or disable Dependabot security updates for the repository. */
 export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-export const SecurityAndAnalysisDependabotSecurityUpdates =
+const SecurityAndAnalysisDependabotSecurityUpdates =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
 
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-export const SecurityAndAnalysisSecretScanning =
+const SecurityAndAnalysisSecretScanning =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
 
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningPushProtectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningPushProtection =
+const SecurityAndAnalysisSecretScanningPushProtection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
 
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-export const SecurityAndAnalysisSecretScanningNonProviderPatterns =
+const SecurityAndAnalysisSecretScanningNonProviderPatterns =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
 
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningAiDetectionStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-export const SecurityAndAnalysisSecretScanningAiDetection =
+const SecurityAndAnalysisSecretScanningAiDetection =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
-    }),
+const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+  }),
 ).annotate({
   identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
 }) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
 
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypass =
+const SecurityAndAnalysisSecretScanningDelegatedBypass =
   SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
 
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
-  S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
 
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
@@ -541,7 +525,7 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reviewer_id: S.Number,
@@ -556,16 +540,15 @@ export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersIte
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
-  /*@__PURE__*/ S.Array(
-    SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
-  ) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ S.Array(
+  SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem,
+) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
 
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-export const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reviewers: S.optional(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList),
   }),
@@ -587,7 +570,7 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
+const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
     code_security: S.optional(SecurityAndAnalysisCodeSecurity),
@@ -610,7 +593,7 @@ export const SecurityAndAnalysis = /*@__PURE__*/ S.suspend(() =>
 
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-export const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
+const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
@@ -711,7 +694,7 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-export const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
+const MinimalRepository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -812,7 +795,7 @@ export interface ThreadSubject {
   latest_comment_url: string;
   type: string;
 }
-export const ThreadSubject = /*@__PURE__*/ S.suspend(() =>
+const ThreadSubject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     url: S.String,
@@ -833,7 +816,7 @@ export interface Thread {
   url: string;
   subscription_url: string;
 }
-export const Thread = /*@__PURE__*/ S.suspend(() =>
+const Thread = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     repository: MinimalRepository,
@@ -851,7 +834,7 @@ export interface GetThreadSubscriptionForAuthenticatedUserRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
-export const GetThreadSubscriptionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetThreadSubscriptionForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -871,7 +854,7 @@ export interface ThreadSubscription {
   thread_url?: string;
   repository_url?: string;
 }
-export const ThreadSubscription = /*@__PURE__*/ S.suspend(() =>
+const ThreadSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscribed: S.Boolean,
     ignored: S.Boolean,
@@ -891,7 +874,7 @@ export interface ListEventsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -910,7 +893,7 @@ export interface Actor {
   url: string;
   avatar_url: string;
 }
-export const Actor = /*@__PURE__*/ S.suspend(() =>
+const Actor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     login: S.String,
@@ -926,7 +909,7 @@ export interface EventRepo {
   name: string;
   url: string;
 }
-export const EventRepo = /*@__PURE__*/ S.suspend(() =>
+const EventRepo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -942,35 +925,13 @@ export interface CreateEvent {
   description?: string | null;
   pusher_type: string;
 }
-export const CreateEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    ref_type: S.String,
-    full_ref: S.String,
-    master_branch: S.String,
-    description: S.optional(S.NullOr(S.String)),
-    pusher_type: S.String,
-  }),
-).annotate({ identifier: "CreateEvent" }) as any as S.Schema<CreateEvent>;
-
 export interface DeleteEvent {
   ref: string;
   ref_type: string;
   full_ref: string;
   pusher_type: string;
 }
-export const DeleteEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    ref_type: S.String,
-    full_ref: S.String,
-    pusher_type: S.String,
-  }),
-).annotate({ identifier: "DeleteEvent" }) as any as S.Schema<DeleteEvent>;
-
 export type DiscussionAnswerChosenByType = "Bot" | "User" | "Organization";
-export const DiscussionAnswerChosenByType = S.String;
-
 export interface DiscussionAnswerChosenBy {
   avatar_url?: string;
   deleted?: boolean;
@@ -995,33 +956,6 @@ export interface DiscussionAnswerChosenBy {
   url?: string;
   user_view_type?: string;
 }
-export const DiscussionAnswerChosenBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar_url: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    email: S.optional(S.NullOr(S.String)),
-    events_url: S.optional(S.String),
-    followers_url: S.optional(S.String),
-    following_url: S.optional(S.String),
-    gists_url: S.optional(S.String),
-    gravatar_id: S.optional(S.String),
-    html_url: S.optional(S.String),
-    id: S.Number,
-    login: S.String,
-    name: S.optional(S.String),
-    node_id: S.optional(S.String),
-    organizations_url: S.optional(S.String),
-    received_events_url: S.optional(S.String),
-    repos_url: S.optional(S.String),
-    site_admin: S.optional(S.Boolean),
-    starred_url: S.optional(S.String),
-    subscriptions_url: S.optional(S.String),
-    type: S.optional(DiscussionAnswerChosenByType),
-    url: S.optional(S.String),
-    user_view_type: S.optional(S.String),
-  }),
-).annotate({ identifier: "DiscussionAnswerChosenBy" }) as any as S.Schema<DiscussionAnswerChosenBy>;
-
 /** How the author is associated with the repository. */
 export type DiscussionAuthorAssociation =
   | "COLLABORATOR"
@@ -1032,8 +966,6 @@ export type DiscussionAuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const DiscussionAuthorAssociation = S.String;
-
 export interface DiscussionCategory {
   created_at: string;
   description: string;
@@ -1046,21 +978,6 @@ export interface DiscussionCategory {
   slug: string;
   updated_at: string;
 }
-export const DiscussionCategory = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created_at: S.String,
-    description: S.String,
-    emoji: S.String,
-    id: S.Number,
-    is_answerable: S.Boolean,
-    name: S.String,
-    node_id: S.optional(S.String),
-    repository_id: S.Number,
-    slug: S.String,
-    updated_at: S.String,
-  }),
-).annotate({ identifier: "DiscussionCategory" }) as any as S.Schema<DiscussionCategory>;
-
 export interface DiscussionReactions {
   _1: number;
   _1_2: number;
@@ -1073,32 +990,11 @@ export interface DiscussionReactions {
   total_count: number;
   url: string;
 }
-export const DiscussionReactions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _1: S.Number.pipe(T.Body("+1")),
-    _1_2: S.Number.pipe(T.Body("-1")),
-    confused: S.Number,
-    eyes: S.Number,
-    heart: S.Number,
-    hooray: S.Number,
-    laugh: S.Number,
-    rocket: S.Number,
-    total_count: S.Number,
-    url: S.String,
-  }),
-).annotate({ identifier: "DiscussionReactions" }) as any as S.Schema<DiscussionReactions>;
-
 /** The current state of the discussion. `converting` means that the discussion is being converted from an issue. `transferring` means that the discussion is being transferred from another repository. */
 export type DiscussionState = "open" | "closed" | "locked" | "converting" | "transferring";
-export const DiscussionState = S.String;
-
 /** The reason for the current state */
 export type DiscussionStateReason = "resolved" | "outdated" | "duplicate" | "reopened";
-export const DiscussionStateReason = S.String;
-
 export type DiscussionUserType = "Bot" | "User" | "Organization";
-export const DiscussionUserType = S.String;
-
 export interface DiscussionUser {
   avatar_url?: string;
   deleted?: boolean;
@@ -1123,8 +1019,6 @@ export interface DiscussionUser {
   url?: string;
   user_view_type?: string;
 }
-export const DiscussionUser = DiscussionAnswerChosenBy as any as S.Schema<DiscussionUser>;
-
 /** Color-coded labels help you categorize and filter your issues (just like labels in Gmail). */
 export interface Label {
   /** Unique identifier for the label. */
@@ -1145,25 +1039,7 @@ export interface Label {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by: SimpleUser | null;
 }
-export const Label = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    color: S.String,
-    default: S.Boolean,
-    archived_at: S.NullOr(S.String),
-    archived_by: S.NullOr(SimpleUser),
-  }),
-).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
-
 export type DiscussionLabelsList = Array<Label>;
-export const DiscussionLabelsList = /*@__PURE__*/ S.Array(
-  Label,
-) as any as S.Schema<DiscussionLabelsList>;
-
 /** A Discussion in a repository. */
 export interface Discussion {
   active_lock_reason: string | null;
@@ -1193,53 +1069,14 @@ export interface Discussion {
   user: DiscussionUser | null;
   labels?: DiscussionLabelsList;
 }
-export const Discussion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active_lock_reason: S.NullOr(S.String),
-    answer_chosen_at: S.NullOr(S.String),
-    answer_chosen_by: S.NullOr(DiscussionAnswerChosenBy),
-    answer_html_url: S.NullOr(S.String),
-    author_association: S.optional(DiscussionAuthorAssociation),
-    body: S.String,
-    category: DiscussionCategory,
-    comments: S.Number,
-    created_at: S.String,
-    html_url: S.String,
-    id: S.Number,
-    locked: S.Boolean,
-    node_id: S.String,
-    number: S.Number,
-    reactions: S.optional(DiscussionReactions),
-    repository_url: S.String,
-    state: DiscussionState,
-    state_reason: S.NullOr(DiscussionStateReason),
-    timeline_url: S.optional(S.String),
-    title: S.String,
-    updated_at: S.String,
-    user: S.NullOr(DiscussionUser),
-    labels: S.optional(DiscussionLabelsList),
-  }),
-).annotate({ identifier: "Discussion" }) as any as S.Schema<Discussion>;
-
 export interface DiscussionEvent {
   action: string;
   discussion: Discussion;
 }
-export const DiscussionEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    discussion: Discussion,
-  }),
-).annotate({ identifier: "DiscussionEvent" }) as any as S.Schema<DiscussionEvent>;
-
 /** The reason for the current state */
 export type IssueStateReason = "completed" | "reopened" | "not_planned" | "duplicate";
-export const IssueStateReason = S.String;
-
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
-export const NullableSimpleUser = SimpleUser;
-
 export interface IssueLabelsItemCase1 {
   id?: number;
   node_id?: string;
@@ -1251,37 +1088,14 @@ export interface IssueLabelsItemCase1 {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by?: SimpleUser | null;
 }
-export const IssueLabelsItemCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    url: S.optional(S.String),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    color: S.optional(S.NullOr(S.String)),
-    default: S.optional(S.Boolean),
-    archived_by: S.optional(S.NullOr(SimpleUser)),
-  }),
-).annotate({ identifier: "IssueLabelsItemCase1" }) as any as S.Schema<IssueLabelsItemCase1>;
-
 export type IssueLabelsItem = string | IssueLabelsItemCase1;
-export const IssueLabelsItem = S.Unknown as any as S.Schema<IssueLabelsItem>;
-
 /** Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository */
 export type IssueLabelsList = Array<IssueLabelsItem>;
-export const IssueLabelsList = /*@__PURE__*/ S.Array(
-  IssueLabelsItem,
-) as any as S.Schema<IssueLabelsList>;
-
 export type IssueAssigneesList = Array<SimpleUser>;
-export const IssueAssigneesList = /*@__PURE__*/ S.Array(
-  SimpleUser,
-) as any as S.Schema<IssueAssigneesList>;
+const IssueAssigneesList = /*@__PURE__*/ S.Array(SimpleUser) as any as S.Schema<IssueAssigneesList>;
 
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-export const NullableMilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -1304,27 +1118,6 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-export const NullableMilestone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    html_url: S.String,
-    labels_url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    number: S.Number,
-    state: NullableMilestoneState,
-    title: S.String,
-    description: S.NullOr(S.String),
-    creator: S.NullOr(SimpleUser),
-    open_issues: S.Number,
-    closed_issues: S.Number,
-    created_at: S.String,
-    updated_at: S.String,
-    closed_at: S.NullOr(S.String),
-    due_on: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "NullableMilestone" }) as any as S.Schema<NullableMilestone>;
-
 export interface IssuePullRequest {
   merged_at?: string | null;
   diff_url: string | null;
@@ -1332,16 +1125,6 @@ export interface IssuePullRequest {
   patch_url: string | null;
   url: string | null;
 }
-export const IssuePullRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    merged_at: S.optional(S.NullOr(S.String)),
-    diff_url: S.NullOr(S.String),
-    html_url: S.NullOr(S.String),
-    patch_url: S.NullOr(S.String),
-    url: S.NullOr(S.String),
-  }),
-).annotate({ identifier: "IssuePullRequest" }) as any as S.Schema<IssuePullRequest>;
-
 /** The color of the issue type. */
 export type IssueTypeColor =
   | "gray"
@@ -1352,8 +1135,6 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-export const IssueTypeColor = S.String;
-
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
   /** The unique identifier of the issue type. */
@@ -1373,19 +1154,6 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-export const IssueType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    description: S.NullOr(S.String),
-    color: S.optional(S.NullOr(IssueTypeColor)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    is_enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "IssueType" }) as any as S.Schema<IssueType>;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -1395,7 +1163,7 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-export const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
+const NullableLicenseSimple = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1413,7 +1181,7 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
+const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     admin: S.Boolean,
     pull: S.Boolean,
@@ -1424,35 +1192,35 @@ export const RepositoryPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RepositoryPermissions" }) as any as S.Schema<RepositoryPermissions>;
 
 export type RepositoryTopicsList = Array<string>;
-export const RepositoryTopicsList =
+const RepositoryTopicsList =
   FeedCurrentUserOrganizationUrlsList as any as S.Schema<RepositoryTopicsList>;
 
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-export const RepositoryPullRequestCreationPolicy = S.String;
+const RepositoryPullRequestCreationPolicy = S.String;
 
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-export const RepositorySquashMergeCommitTitle = S.String;
+const RepositorySquashMergeCommitTitle = S.String;
 
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-export const RepositorySquashMergeCommitMessage = S.String;
+const RepositorySquashMergeCommitMessage = S.String;
 
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-export const RepositoryMergeCommitTitle = S.String;
+const RepositoryMergeCommitTitle = S.String;
 
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-export const RepositoryMergeCommitMessage = S.String;
+const RepositoryMergeCommitMessage = S.String;
 
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-export const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
+const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lexical_search_ok: S.optional(S.Boolean),
     lexical_commit_sha: S.optional(S.String),
@@ -1593,7 +1361,7 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     node_id: S.String,
@@ -1714,24 +1482,7 @@ export interface Enterprise {
   updated_at: string | null;
   avatar_url: string;
 }
-export const Enterprise = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    html_url: S.String,
-    website_url: S.optional(S.NullOr(S.String)),
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    slug: S.String,
-    created_at: S.NullOr(S.String),
-    updated_at: S.NullOr(S.String),
-    avatar_url: S.String,
-  }),
-).annotate({ identifier: "Enterprise" }) as any as S.Schema<Enterprise>;
-
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-export const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
   issues?: string;
@@ -1740,23 +1491,8 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-export const NullableIntegrationPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(S.String),
-    checks: S.optional(S.String),
-    metadata: S.optional(S.String),
-    contents: S.optional(S.String),
-    deployments: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "NullableIntegrationPermissions",
-}) as any as S.Schema<NullableIntegrationPermissions>;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-export const NullableIntegrationEventsList =
-  FeedCurrentUserOrganizationUrlsList as any as S.Schema<NullableIntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -1780,25 +1516,6 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-export const NullableIntegration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    slug: S.optional(S.String),
-    node_id: S.String,
-    client_id: S.optional(S.String),
-    owner: NullableIntegrationOwner,
-    name: S.String,
-    description: S.NullOr(S.String),
-    external_url: S.String,
-    html_url: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    permissions: NullableIntegrationPermissions,
-    events: NullableIntegrationEventsList,
-    installations_count: S.optional(S.Number),
-  }),
-).annotate({ identifier: "NullableIntegration" }) as any as S.Schema<NullableIntegration>;
-
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -1809,8 +1526,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-export const AuthorAssociation = S.String;
-
 export interface ReactionRollup {
   url: string;
   total_count: number;
@@ -1823,61 +1538,21 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-export const ReactionRollup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    total_count: S.Number,
-    _1: S.Number.pipe(T.Body("+1")),
-    _1_2: S.Number.pipe(T.Body("-1")),
-    laugh: S.Number,
-    confused: S.Number,
-    heart: S.Number,
-    hooray: S.Number,
-    eyes: S.Number,
-    rocket: S.Number,
-  }),
-).annotate({ identifier: "ReactionRollup" }) as any as S.Schema<ReactionRollup>;
-
 export interface SubIssuesSummary {
   total: number;
   completed: number;
   percent_completed: number;
 }
-export const SubIssuesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    total: S.Number,
-    completed: S.Number,
-    percent_completed: S.Number,
-  }),
-).annotate({ identifier: "SubIssuesSummary" }) as any as S.Schema<SubIssuesSummary>;
-
 /** Context around who pinned an issue comment and when it was pinned. */
 export interface NullablePinnedIssueComment {
   pinned_at: string;
   pinned_by: SimpleUser | null;
 }
-export const NullablePinnedIssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pinned_at: S.String,
-    pinned_by: S.NullOr(SimpleUser),
-  }),
-).annotate({
-  identifier: "NullablePinnedIssueComment",
-}) as any as S.Schema<NullablePinnedIssueComment>;
-
 /** Details about why an issue comment was minimized. */
 export interface NullableIssueCommentMinimized {
   /** The reason the comment was minimized. */
   reason: string | null;
 }
-export const NullableIssueCommentMinimized = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reason: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "NullableIssueCommentMinimized",
-}) as any as S.Schema<NullableIssueCommentMinimized>;
-
 /** Comments provide a way for people to collaborate on an issue. */
 export interface NullableIssueComment {
   /** Unique identifier of the issue comment */
@@ -1900,50 +1575,16 @@ export interface NullableIssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-export const NullableIssueComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    body: S.optional(S.String),
-    body_text: S.optional(S.String),
-    body_html: S.optional(S.String),
-    html_url: S.String,
-    user: S.NullOr(SimpleUser),
-    created_at: S.String,
-    updated_at: S.String,
-    issue_url: S.String,
-    author_association: S.optional(AuthorAssociation),
-    performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-    reactions: S.optional(ReactionRollup),
-    pin: S.optional(S.NullOr(NullablePinnedIssueComment)),
-    minimized: S.optional(S.NullOr(NullableIssueCommentMinimized)),
-  }),
-).annotate({ identifier: "NullableIssueComment" }) as any as S.Schema<NullableIssueComment>;
-
 export interface IssueDependenciesSummary {
   blocked_by: number;
   blocking: number;
   total_blocked_by: number;
   total_blocking: number;
 }
-export const IssueDependenciesSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    blocked_by: S.Number,
-    blocking: S.Number,
-    total_blocked_by: S.Number,
-    total_blocking: S.Number,
-  }),
-).annotate({ identifier: "IssueDependenciesSummary" }) as any as S.Schema<IssueDependenciesSummary>;
-
 /** The data type of the issue field */
 export type IssueFieldValueDataType = "text" | "single_select" | "multi_select" | "number" | "date";
-export const IssueFieldValueDataType = S.String;
-
 /** The value of the issue field */
 export type IssueFieldValueValue = string | number | number;
-export const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
-
 /** Details about the selected option (only present for single_select fields) */
 export interface IssueFieldValueSingleSelectOption {
   /** Unique identifier for the option. */
@@ -1953,25 +1594,9 @@ export interface IssueFieldValueSingleSelectOption {
   /** The color of the option */
   color: string;
 }
-export const IssueFieldValueSingleSelectOption = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    name: S.String,
-    color: S.String,
-  }),
-).annotate({
-  identifier: "IssueFieldValueSingleSelectOption",
-}) as any as S.Schema<IssueFieldValueSingleSelectOption>;
-
 export type IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-export const IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
-
 /** Details about the selected options */
 export type IssueFieldValueMultiSelectOptionsList = Array<IssueFieldValueSingleSelectOption>;
-export const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ S.Array(
-  IssueFieldValueSingleSelectOption,
-) as any as S.Schema<IssueFieldValueMultiSelectOptionsList>;
-
 /** A value assigned to an issue field */
 export interface IssueFieldValue {
   /** Unique identifier for the issue field. */
@@ -1988,23 +1613,7 @@ export interface IssueFieldValue {
   /** Details about the selected options */
   multi_select_options?: IssueFieldValueMultiSelectOptionsList | null;
 }
-export const IssueFieldValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue_field_id: S.Number,
-    issue_field_name: S.optional(S.String),
-    node_id: S.String,
-    data_type: IssueFieldValueDataType,
-    value: S.NullOr(IssueFieldValueValue),
-    single_select_option: S.optional(S.NullOr(IssueFieldValueSingleSelectOption)),
-    multi_select_options: S.optional(S.NullOr(IssueFieldValueMultiSelectOptionsList)),
-  }),
-).annotate({ identifier: "IssueFieldValue" }) as any as S.Schema<IssueFieldValue>;
-
 export type IssueIssueFieldValuesList = Array<IssueFieldValue>;
-export const IssueIssueFieldValuesList = /*@__PURE__*/ S.Array(
-  IssueFieldValue,
-) as any as S.Schema<IssueIssueFieldValuesList>;
-
 /** Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. */
 export interface Issue {
   id: number;
@@ -2056,58 +1665,8 @@ export interface Issue {
   issue_dependencies_summary?: IssueDependenciesSummary;
   issue_field_values?: IssueIssueFieldValuesList;
 }
-export const Issue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    repository_url: S.String,
-    labels_url: S.String,
-    comments_url: S.String,
-    events_url: S.String,
-    html_url: S.String,
-    number: S.Number,
-    state: S.String,
-    state_reason: S.optional(S.NullOr(IssueStateReason)),
-    title: S.String,
-    body: S.optional(S.NullOr(S.String)),
-    user: S.NullOr(SimpleUser),
-    labels: IssueLabelsList,
-    assignee: S.NullOr(SimpleUser),
-    assignees: S.optional(IssueAssigneesList),
-    milestone: S.NullOr(NullableMilestone),
-    locked: S.Boolean,
-    active_lock_reason: S.optional(S.NullOr(S.String)),
-    comments: S.Number,
-    pull_request: S.optional(IssuePullRequest),
-    closed_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-    draft: S.optional(S.Boolean),
-    closed_by: S.optional(S.NullOr(SimpleUser)),
-    body_html: S.optional(S.String),
-    body_text: S.optional(S.String),
-    timeline_url: S.optional(S.String),
-    type: S.optional(S.NullOr(IssueType)),
-    repository: S.optional(Repository),
-    performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-    author_association: S.optional(AuthorAssociation),
-    reactions: S.optional(ReactionRollup),
-    sub_issues_summary: S.optional(SubIssuesSummary),
-    parent_issue_url: S.optional(S.NullOr(S.String)),
-    pinned_comment: S.optional(S.NullOr(NullableIssueComment)),
-    issue_dependencies_summary: S.optional(IssueDependenciesSummary),
-    issue_field_values: S.optional(IssueIssueFieldValuesList),
-  }),
-).annotate({ identifier: "Issue" }) as any as S.Schema<Issue>;
-
 export type IssuesEventAssigneesList = Array<SimpleUser>;
-export const IssuesEventAssigneesList =
-  IssueAssigneesList as any as S.Schema<IssuesEventAssigneesList>;
-
 export type IssuesEventLabelsList = Array<Label>;
-export const IssuesEventLabelsList = DiscussionLabelsList as any as S.Schema<IssuesEventLabelsList>;
-
 export interface IssuesEvent {
   action: string;
   issue: Issue;
@@ -2116,42 +1675,16 @@ export interface IssuesEvent {
   label?: Label;
   labels?: IssuesEventLabelsList;
 }
-export const IssuesEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    issue: Issue,
-    assignee: S.optional(SimpleUser),
-    assignees: S.optional(IssuesEventAssigneesList),
-    label: S.optional(Label),
-    labels: S.optional(IssuesEventLabelsList),
-  }),
-).annotate({ identifier: "IssuesEvent" }) as any as S.Schema<IssuesEvent>;
-
 /** Comments provide a way for people to collaborate on an issue. */
 export type IssueComment = NullableIssueComment;
-export const IssueComment = NullableIssueComment;
-
 export interface IssueCommentEvent {
   action: string;
   issue: Issue;
   comment: NullableIssueComment;
 }
-export const IssueCommentEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    issue: Issue,
-    comment: NullableIssueComment,
-  }),
-).annotate({ identifier: "IssueCommentEvent" }) as any as S.Schema<IssueCommentEvent>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type ForkEventForkeePullRequestCreationPolicy = "all" | "collaborators_only";
-export const ForkEventForkeePullRequestCreationPolicy = S.String;
-
 export type ForkEventForkeeTopicsList = Array<string>;
-export const ForkEventForkeeTopicsList =
-  FeedCurrentUserOrganizationUrlsList as any as S.Schema<ForkEventForkeeTopicsList>;
-
 export interface ForkEventForkee {
   id?: number;
   node_id?: string;
@@ -2237,104 +1770,10 @@ export interface ForkEventForkee {
   default_branch?: string;
   public?: boolean;
 }
-export const ForkEventForkee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    name: S.optional(S.String),
-    full_name: S.optional(S.String),
-    private: S.optional(S.Boolean),
-    owner: S.optional(SimpleUser),
-    html_url: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    fork: S.optional(S.Boolean),
-    url: S.optional(S.String),
-    forks_url: S.optional(S.String),
-    keys_url: S.optional(S.String),
-    collaborators_url: S.optional(S.String),
-    teams_url: S.optional(S.String),
-    hooks_url: S.optional(S.String),
-    issue_events_url: S.optional(S.String),
-    events_url: S.optional(S.String),
-    assignees_url: S.optional(S.String),
-    branches_url: S.optional(S.String),
-    tags_url: S.optional(S.String),
-    blobs_url: S.optional(S.String),
-    git_tags_url: S.optional(S.String),
-    git_refs_url: S.optional(S.String),
-    trees_url: S.optional(S.String),
-    statuses_url: S.optional(S.String),
-    languages_url: S.optional(S.String),
-    stargazers_url: S.optional(S.String),
-    contributors_url: S.optional(S.String),
-    subscribers_url: S.optional(S.String),
-    subscription_url: S.optional(S.String),
-    commits_url: S.optional(S.String),
-    git_commits_url: S.optional(S.String),
-    comments_url: S.optional(S.String),
-    issue_comment_url: S.optional(S.String),
-    contents_url: S.optional(S.String),
-    compare_url: S.optional(S.String),
-    merges_url: S.optional(S.String),
-    archive_url: S.optional(S.String),
-    downloads_url: S.optional(S.String),
-    issues_url: S.optional(S.String),
-    pulls_url: S.optional(S.String),
-    milestones_url: S.optional(S.String),
-    notifications_url: S.optional(S.String),
-    labels_url: S.optional(S.String),
-    releases_url: S.optional(S.String),
-    deployments_url: S.optional(S.String),
-    created_at: S.optional(S.NullOr(S.String)),
-    updated_at: S.optional(S.NullOr(S.String)),
-    pushed_at: S.optional(S.NullOr(S.String)),
-    git_url: S.optional(S.String),
-    ssh_url: S.optional(S.String),
-    clone_url: S.optional(S.String),
-    svn_url: S.optional(S.String),
-    homepage: S.optional(S.NullOr(S.String)),
-    size: S.optional(S.Number),
-    stargazers_count: S.optional(S.Number),
-    watchers_count: S.optional(S.Number),
-    language: S.optional(S.NullOr(S.String)),
-    has_issues: S.optional(S.Boolean),
-    has_projects: S.optional(S.Boolean),
-    has_downloads: S.optional(S.Boolean),
-    has_wiki: S.optional(S.Boolean),
-    has_pages: S.optional(S.Boolean),
-    has_discussions: S.optional(S.Boolean),
-    has_pull_requests: S.optional(S.Boolean),
-    pull_request_creation_policy: S.optional(ForkEventForkeePullRequestCreationPolicy),
-    forks_count: S.optional(S.Number),
-    mirror_url: S.optional(S.NullOr(S.String)),
-    archived: S.optional(S.Boolean),
-    disabled: S.optional(S.Boolean),
-    open_issues_count: S.optional(S.Number),
-    license: S.optional(S.NullOr(NullableLicenseSimple)),
-    allow_forking: S.optional(S.Boolean),
-    is_template: S.optional(S.Boolean),
-    web_commit_signoff_required: S.optional(S.Boolean),
-    topics: S.optional(ForkEventForkeeTopicsList),
-    visibility: S.optional(S.String),
-    forks: S.optional(S.Number),
-    open_issues: S.optional(S.Number),
-    watchers: S.optional(S.Number),
-    default_branch: S.optional(S.String),
-    public: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ForkEventForkee" }) as any as S.Schema<ForkEventForkee>;
-
 export interface ForkEvent {
   action: string;
   forkee: ForkEventForkee;
 }
-export const ForkEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    forkee: ForkEventForkee,
-  }),
-).annotate({ identifier: "ForkEvent" }) as any as S.Schema<ForkEvent>;
-
 export interface GollumEventPagesItem {
   page_name?: string | null;
   title?: string | null;
@@ -2343,42 +1782,14 @@ export interface GollumEventPagesItem {
   sha?: string;
   html_url?: string;
 }
-export const GollumEventPagesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    page_name: S.optional(S.NullOr(S.String)),
-    title: S.optional(S.NullOr(S.String)),
-    summary: S.optional(S.NullOr(S.String)),
-    action: S.optional(S.String),
-    sha: S.optional(S.String),
-    html_url: S.optional(S.String),
-  }),
-).annotate({ identifier: "GollumEventPagesItem" }) as any as S.Schema<GollumEventPagesItem>;
-
 export type GollumEventPagesList = Array<GollumEventPagesItem>;
-export const GollumEventPagesList = /*@__PURE__*/ S.Array(
-  GollumEventPagesItem,
-) as any as S.Schema<GollumEventPagesList>;
-
 export interface GollumEvent {
   pages: GollumEventPagesList;
 }
-export const GollumEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pages: GollumEventPagesList,
-  }),
-).annotate({ identifier: "GollumEvent" }) as any as S.Schema<GollumEvent>;
-
 export interface MemberEvent {
   action: string;
   member: SimpleUser;
 }
-export const MemberEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    member: SimpleUser,
-  }),
-).annotate({ identifier: "MemberEvent" }) as any as S.Schema<MemberEvent>;
-
 export interface PushEvent {
   repository_id: number;
   push_id: number;
@@ -2386,50 +1797,18 @@ export interface PushEvent {
   head: string;
   before: string;
 }
-export const PushEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    repository_id: S.Number,
-    push_id: S.Number,
-    ref: S.String,
-    head: S.String,
-    before: S.String,
-  }),
-).annotate({ identifier: "PushEvent" }) as any as S.Schema<PushEvent>;
-
 export interface PullRequestMinimalHeadRepo {
   id: number;
   url: string;
   name: string;
 }
-export const PullRequestMinimalHeadRepo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    url: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "PullRequestMinimalHeadRepo",
-}) as any as S.Schema<PullRequestMinimalHeadRepo>;
-
 export interface PullRequestMinimalHead {
   ref: string;
   sha: string;
   repo: PullRequestMinimalHeadRepo;
 }
-export const PullRequestMinimalHead = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ref: S.String,
-    sha: S.String,
-    repo: PullRequestMinimalHeadRepo,
-  }),
-).annotate({ identifier: "PullRequestMinimalHead" }) as any as S.Schema<PullRequestMinimalHead>;
-
 export type PullRequestMinimalBaseRepo = PullRequestMinimalHeadRepo;
-export const PullRequestMinimalBaseRepo = PullRequestMinimalHeadRepo;
-
 export type PullRequestMinimalBase = PullRequestMinimalHead;
-export const PullRequestMinimalBase = PullRequestMinimalHead;
-
 export interface PullRequestMinimal {
   id: number;
   number: number;
@@ -2437,24 +1816,8 @@ export interface PullRequestMinimal {
   head: PullRequestMinimalHead;
   base: PullRequestMinimalHead;
 }
-export const PullRequestMinimal = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    url: S.String,
-    head: PullRequestMinimalHead,
-    base: PullRequestMinimalHead,
-  }),
-).annotate({ identifier: "PullRequestMinimal" }) as any as S.Schema<PullRequestMinimal>;
-
 export type PullRequestEventAssigneesList = Array<SimpleUser>;
-export const PullRequestEventAssigneesList =
-  IssueAssigneesList as any as S.Schema<PullRequestEventAssigneesList>;
-
 export type PullRequestEventLabelsList = Array<Label>;
-export const PullRequestEventLabelsList =
-  DiscussionLabelsList as any as S.Schema<PullRequestEventLabelsList>;
-
 export interface PullRequestEvent {
   action: string;
   number: number;
@@ -2464,21 +1827,7 @@ export interface PullRequestEvent {
   label?: Label;
   labels?: PullRequestEventLabelsList;
 }
-export const PullRequestEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    number: S.Number,
-    pull_request: PullRequestMinimal,
-    assignee: S.optional(SimpleUser),
-    assignees: S.optional(PullRequestEventAssigneesList),
-    label: S.optional(Label),
-    labels: S.optional(PullRequestEventLabelsList),
-  }),
-).annotate({ identifier: "PullRequestEvent" }) as any as S.Schema<PullRequestEvent>;
-
 export type PullRequestReviewCommentEventCommentUserType = "Bot" | "User" | "Organization";
-export const PullRequestReviewCommentEventCommentUserType = S.String;
-
 export interface PullRequestReviewCommentEventCommentUser {
   avatar_url?: string;
   deleted?: boolean;
@@ -2503,71 +1852,18 @@ export interface PullRequestReviewCommentEventCommentUser {
   url?: string;
   user_view_type?: string;
 }
-export const PullRequestReviewCommentEventCommentUser = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar_url: S.optional(S.String),
-    deleted: S.optional(S.Boolean),
-    email: S.optional(S.NullOr(S.String)),
-    events_url: S.optional(S.String),
-    followers_url: S.optional(S.String),
-    following_url: S.optional(S.String),
-    gists_url: S.optional(S.String),
-    gravatar_id: S.optional(S.String),
-    html_url: S.optional(S.String),
-    id: S.optional(S.Number),
-    login: S.optional(S.String),
-    name: S.optional(S.String),
-    node_id: S.optional(S.String),
-    organizations_url: S.optional(S.String),
-    received_events_url: S.optional(S.String),
-    repos_url: S.optional(S.String),
-    site_admin: S.optional(S.Boolean),
-    starred_url: S.optional(S.String),
-    subscriptions_url: S.optional(S.String),
-    type: S.optional(PullRequestReviewCommentEventCommentUserType),
-    url: S.optional(S.String),
-    user_view_type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEventCommentUser",
-}) as any as S.Schema<PullRequestReviewCommentEventCommentUser>;
-
 export interface PullRequestReviewCommentEventCommentLinksHtml {
   href: string;
 }
-export const PullRequestReviewCommentEventCommentLinksHtml = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    href: S.String,
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEventCommentLinksHtml",
-}) as any as S.Schema<PullRequestReviewCommentEventCommentLinksHtml>;
-
 export type PullRequestReviewCommentEventCommentLinksPullRequest =
   PullRequestReviewCommentEventCommentLinksHtml;
-export const PullRequestReviewCommentEventCommentLinksPullRequest =
-  PullRequestReviewCommentEventCommentLinksHtml;
-
 export type PullRequestReviewCommentEventCommentLinksSelf =
   PullRequestReviewCommentEventCommentLinksHtml;
-export const PullRequestReviewCommentEventCommentLinksSelf =
-  PullRequestReviewCommentEventCommentLinksHtml;
-
 export interface PullRequestReviewCommentEventCommentLinks {
   html: PullRequestReviewCommentEventCommentLinksHtml;
   pull_request: PullRequestReviewCommentEventCommentLinksHtml;
   self: PullRequestReviewCommentEventCommentLinksHtml;
 }
-export const PullRequestReviewCommentEventCommentLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html: PullRequestReviewCommentEventCommentLinksHtml,
-    pull_request: PullRequestReviewCommentEventCommentLinksHtml,
-    self: PullRequestReviewCommentEventCommentLinksHtml,
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEventCommentLinks",
-}) as any as S.Schema<PullRequestReviewCommentEventCommentLinks>;
-
 export interface PullRequestReviewCommentEventCommentReactions {
   _1?: number;
   _1_2?: number;
@@ -2580,23 +1876,6 @@ export interface PullRequestReviewCommentEventCommentReactions {
   total_count?: number;
   url?: string;
 }
-export const PullRequestReviewCommentEventCommentReactions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _1: S.optional(S.Number.pipe(T.Body("+1"))),
-    _1_2: S.optional(S.Number.pipe(T.Body("-1"))),
-    confused: S.optional(S.Number),
-    eyes: S.optional(S.Number),
-    heart: S.optional(S.Number),
-    hooray: S.optional(S.Number),
-    laugh: S.optional(S.Number),
-    rocket: S.optional(S.Number),
-    total_count: S.optional(S.Number),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEventCommentReactions",
-}) as any as S.Schema<PullRequestReviewCommentEventCommentReactions>;
-
 export interface PullRequestReviewCommentEventComment {
   id: number;
   node_id: string;
@@ -2619,69 +1898,18 @@ export interface PullRequestReviewCommentEventComment {
   reactions: PullRequestReviewCommentEventCommentReactions;
   in_reply_to_id?: number;
 }
-export const PullRequestReviewCommentEventComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    node_id: S.String,
-    url: S.String,
-    pull_request_review_id: S.NullOr(S.Number),
-    diff_hunk: S.String,
-    path: S.String,
-    position: S.NullOr(S.Number),
-    original_position: S.Number,
-    subject_type: S.optional(S.NullOr(S.String)),
-    commit_id: S.String,
-    user: S.NullOr(PullRequestReviewCommentEventCommentUser),
-    body: S.String,
-    created_at: S.String,
-    updated_at: S.String,
-    html_url: S.String,
-    pull_request_url: S.String,
-    _links: PullRequestReviewCommentEventCommentLinks,
-    original_commit_id: S.String,
-    reactions: PullRequestReviewCommentEventCommentReactions,
-    in_reply_to_id: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEventComment",
-}) as any as S.Schema<PullRequestReviewCommentEventComment>;
-
 export interface PullRequestReviewCommentEvent {
   action: string;
   pull_request: PullRequestMinimal;
   comment: PullRequestReviewCommentEventComment;
 }
-export const PullRequestReviewCommentEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    pull_request: PullRequestMinimal,
-    comment: PullRequestReviewCommentEventComment,
-  }),
-).annotate({
-  identifier: "PullRequestReviewCommentEvent",
-}) as any as S.Schema<PullRequestReviewCommentEvent>;
-
 export type PullRequestReviewEventReviewLinksHtml = PullRequestReviewCommentEventCommentLinksHtml;
-export const PullRequestReviewEventReviewLinksHtml = PullRequestReviewCommentEventCommentLinksHtml;
-
 export type PullRequestReviewEventReviewLinksPullRequest =
   PullRequestReviewCommentEventCommentLinksHtml;
-export const PullRequestReviewEventReviewLinksPullRequest =
-  PullRequestReviewCommentEventCommentLinksHtml;
-
 export interface PullRequestReviewEventReviewLinks {
   html: PullRequestReviewCommentEventCommentLinksHtml;
   pull_request: PullRequestReviewCommentEventCommentLinksHtml;
 }
-export const PullRequestReviewEventReviewLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html: PullRequestReviewCommentEventCommentLinksHtml,
-    pull_request: PullRequestReviewCommentEventCommentLinksHtml,
-  }),
-).annotate({
-  identifier: "PullRequestReviewEventReviewLinks",
-}) as any as S.Schema<PullRequestReviewEventReviewLinks>;
-
 export interface PullRequestReviewEventReview {
   id?: number;
   node_id?: string;
@@ -2695,37 +1923,11 @@ export interface PullRequestReviewEventReview {
   _links?: PullRequestReviewEventReviewLinks;
   updated_at?: string;
 }
-export const PullRequestReviewEventReview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    user: S.optional(S.NullOr(SimpleUser)),
-    body: S.optional(S.String),
-    commit_id: S.optional(S.String),
-    submitted_at: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.String),
-    html_url: S.optional(S.String),
-    pull_request_url: S.optional(S.String),
-    _links: S.optional(PullRequestReviewEventReviewLinks),
-    updated_at: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PullRequestReviewEventReview",
-}) as any as S.Schema<PullRequestReviewEventReview>;
-
 export interface PullRequestReviewEvent {
   action: string;
   review: PullRequestReviewEventReview;
   pull_request: PullRequestMinimal;
 }
-export const PullRequestReviewEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    review: PullRequestReviewEventReview,
-    pull_request: PullRequestMinimal,
-  }),
-).annotate({ identifier: "PullRequestReviewEvent" }) as any as S.Schema<PullRequestReviewEvent>;
-
 export interface CommitCommentEventComment {
   html_url?: string;
   url?: string;
@@ -2741,41 +1943,12 @@ export interface CommitCommentEventComment {
   updated_at?: string;
   reactions?: ReactionRollup;
 }
-export const CommitCommentEventComment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    html_url: S.optional(S.String),
-    url: S.optional(S.String),
-    id: S.optional(S.Number),
-    node_id: S.optional(S.String),
-    body: S.optional(S.String),
-    path: S.optional(S.NullOr(S.String)),
-    position: S.optional(S.NullOr(S.Number)),
-    line: S.optional(S.NullOr(S.Number)),
-    commit_id: S.optional(S.String),
-    user: S.optional(S.NullOr(SimpleUser)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    reactions: S.optional(ReactionRollup),
-  }),
-).annotate({
-  identifier: "CommitCommentEventComment",
-}) as any as S.Schema<CommitCommentEventComment>;
-
 export interface CommitCommentEvent {
   action: string;
   comment: CommitCommentEventComment;
 }
-export const CommitCommentEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    comment: CommitCommentEventComment,
-  }),
-).annotate({ identifier: "CommitCommentEvent" }) as any as S.Schema<CommitCommentEvent>;
-
 /** State of the release asset. */
 export type ReleaseAssetState = "uploaded" | "open";
-export const ReleaseAssetState = S.String;
-
 /** Data related to a release. */
 export interface ReleaseAsset {
   url: string;
@@ -2795,30 +1968,7 @@ export interface ReleaseAsset {
   updated_at: string;
   uploader: SimpleUser | null;
 }
-export const ReleaseAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    browser_download_url: S.String,
-    id: S.Number,
-    node_id: S.String,
-    name: S.String,
-    label: S.NullOr(S.String),
-    state: ReleaseAssetState,
-    content_type: S.String,
-    size: S.Number,
-    digest: S.NullOr(S.String),
-    download_count: S.Number,
-    created_at: S.String,
-    updated_at: S.String,
-    uploader: S.NullOr(SimpleUser),
-  }),
-).annotate({ identifier: "ReleaseAsset" }) as any as S.Schema<ReleaseAsset>;
-
 export type ReleaseEventReleaseAssetsList = Array<ReleaseAsset>;
-export const ReleaseEventReleaseAssetsList = /*@__PURE__*/ S.Array(
-  ReleaseAsset,
-) as any as S.Schema<ReleaseEventReleaseAssetsList>;
-
 export interface ReleaseEventRelease {
   url: string;
   html_url: string;
@@ -2854,58 +2004,13 @@ export interface ReleaseEventRelease {
   is_short_description_html_truncated?: boolean;
   short_description_html?: string;
 }
-export const ReleaseEventRelease = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    html_url: S.String,
-    assets_url: S.String,
-    upload_url: S.String,
-    tarball_url: S.NullOr(S.String),
-    zipball_url: S.NullOr(S.String),
-    id: S.Number,
-    node_id: S.String,
-    tag_name: S.String,
-    target_commitish: S.String,
-    name: S.NullOr(S.String),
-    body: S.optional(S.NullOr(S.String)),
-    draft: S.Boolean,
-    prerelease: S.Boolean,
-    immutable: S.optional(S.Boolean),
-    created_at: S.String,
-    published_at: S.NullOr(S.String),
-    updated_at: S.optional(S.NullOr(S.String)),
-    author: SimpleUser,
-    assets: ReleaseEventReleaseAssetsList,
-    body_html: S.optional(S.String),
-    body_text: S.optional(S.String),
-    mentions_count: S.optional(S.Number),
-    discussion_url: S.optional(S.String),
-    reactions: S.optional(ReactionRollup),
-    is_short_description_html_truncated: S.optional(S.Boolean),
-    short_description_html: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReleaseEventRelease" }) as any as S.Schema<ReleaseEventRelease>;
-
 export interface ReleaseEvent {
   action: string;
   release: ReleaseEventRelease;
 }
-export const ReleaseEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-    release: ReleaseEventRelease,
-  }),
-).annotate({ identifier: "ReleaseEvent" }) as any as S.Schema<ReleaseEvent>;
-
 export interface WatchEvent {
   action: string;
 }
-export const WatchEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.String,
-  }),
-).annotate({ identifier: "WatchEvent" }) as any as S.Schema<WatchEvent>;
-
 export type EventPayload =
   | CreateEvent
   | DeleteEvent
@@ -2923,7 +2028,7 @@ export type EventPayload =
   | CommitCommentEvent
   | ReleaseEvent
   | WatchEvent;
-export const EventPayload = S.Unknown as any as S.Schema<EventPayload>;
+const EventPayload = S.Unknown as any as S.Schema<EventPayload>;
 
 /** Event */
 export interface Event {
@@ -2936,7 +2041,7 @@ export interface Event {
   public: boolean;
   created_at: string | null;
 }
-export const Event = /*@__PURE__*/ S.suspend(() =>
+const Event = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.NullOr(S.String),
@@ -2950,12 +2055,12 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
 
 export type ListEventsForAuthenticatedUserResponseBodyList = Array<Event>;
-export const ListEventsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListEventsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Event,
 ) as any as S.Schema<ListEventsForAuthenticatedUserResponseBodyList>;
 
 export type ListEventsForAuthenticatedUserResponse = ListEventsForAuthenticatedUserResponseBodyList;
-export const ListEventsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListEventsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListEventsForAuthenticatedUserResponse",
@@ -2975,7 +2080,7 @@ export interface ListNotificationsForAuthenticatedUserRequest {
   /** The number of results per page (max 50). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-export const ListNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Boolean.pipe(T.Query())),
     participating: S.optional(S.Boolean.pipe(T.Query())),
@@ -2989,13 +2094,13 @@ export const ListNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<ListNotificationsForAuthenticatedUserRequest>;
 
 export type ListNotificationsForAuthenticatedUserResponseBodyList = Array<Thread>;
-export const ListNotificationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListNotificationsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Thread,
 ) as any as S.Schema<ListNotificationsForAuthenticatedUserResponseBodyList>;
 
 export type ListNotificationsForAuthenticatedUserResponse =
   ListNotificationsForAuthenticatedUserResponseBodyList;
-export const ListNotificationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotificationsForAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListNotificationsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListNotificationsForAuthenticatedUserResponse",
@@ -3011,7 +2116,7 @@ export interface ListOrgEventsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListOrgEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrgEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     org: S.String.pipe(T.Label()),
@@ -3023,12 +2128,9 @@ export const ListOrgEventsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrgEventsForAuthenticatedUserRequest>;
 
 export type ListOrgEventsForAuthenticatedUserResponseBodyList = Array<Event>;
-export const ListOrgEventsForAuthenticatedUserResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListOrgEventsForAuthenticatedUserResponseBodyList>;
-
 export type ListOrgEventsForAuthenticatedUserResponse =
   ListOrgEventsForAuthenticatedUserResponseBodyList;
-export const ListOrgEventsForAuthenticatedUserResponse =
+const ListOrgEventsForAuthenticatedUserResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListOrgEventsForAuthenticatedUserResponse>;
 
 export interface ListPublicEventsRequest {
@@ -3037,7 +2139,7 @@ export interface ListPublicEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -3045,11 +2147,11 @@ export const ListPublicEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPublicEventsRequest" }) as any as S.Schema<ListPublicEventsRequest>;
 
 export type ListPublicEventsResponseBodyList = Array<Event>;
-export const ListPublicEventsResponseBodyList =
+const ListPublicEventsResponseBodyList =
   ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsResponseBodyList>;
 
 export type ListPublicEventsResponse = ListPublicEventsResponseBodyList;
-export const ListPublicEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPublicEventsResponse = /*@__PURE__*/ S.suspend(() =>
   ListPublicEventsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPublicEventsResponse" }) as any as S.Schema<ListPublicEventsResponse>;
 
@@ -3063,7 +2165,7 @@ export interface ListPublicEventsForRepoNetworkRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicEventsForRepoNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicEventsForRepoNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3075,11 +2177,8 @@ export const ListPublicEventsForRepoNetworkRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListPublicEventsForRepoNetworkRequest>;
 
 export type ListPublicEventsForRepoNetworkResponseBodyList = Array<Event>;
-export const ListPublicEventsForRepoNetworkResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsForRepoNetworkResponseBodyList>;
-
 export type ListPublicEventsForRepoNetworkResponse = ListPublicEventsForRepoNetworkResponseBodyList;
-export const ListPublicEventsForRepoNetworkResponse =
+const ListPublicEventsForRepoNetworkResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForRepoNetworkResponse>;
 
 export interface ListPublicEventsForUserRequest {
@@ -3090,7 +2189,7 @@ export interface ListPublicEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3101,11 +2200,8 @@ export const ListPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPublicEventsForUserRequest>;
 
 export type ListPublicEventsForUserResponseBodyList = Array<Event>;
-export const ListPublicEventsForUserResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicEventsForUserResponseBodyList>;
-
 export type ListPublicEventsForUserResponse = ListPublicEventsForUserResponseBodyList;
-export const ListPublicEventsForUserResponse =
+const ListPublicEventsForUserResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicEventsForUserResponse>;
 
 export interface ListPublicOrgEventsRequest {
@@ -3116,7 +2212,7 @@ export interface ListPublicOrgEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListPublicOrgEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicOrgEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3127,11 +2223,8 @@ export const ListPublicOrgEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPublicOrgEventsRequest>;
 
 export type ListPublicOrgEventsResponseBodyList = Array<Event>;
-export const ListPublicOrgEventsResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListPublicOrgEventsResponseBodyList>;
-
 export type ListPublicOrgEventsResponse = ListPublicOrgEventsResponseBodyList;
-export const ListPublicOrgEventsResponse =
+const ListPublicOrgEventsResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListPublicOrgEventsResponse>;
 
 export interface ListReceivedEventsForUserRequest {
@@ -3142,7 +2235,7 @@ export interface ListReceivedEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReceivedEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReceivedEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3153,11 +2246,8 @@ export const ListReceivedEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReceivedEventsForUserRequest>;
 
 export type ListReceivedEventsForUserResponseBodyList = Array<Event>;
-export const ListReceivedEventsForUserResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListReceivedEventsForUserResponseBodyList>;
-
 export type ListReceivedEventsForUserResponse = ListReceivedEventsForUserResponseBodyList;
-export const ListReceivedEventsForUserResponse =
+const ListReceivedEventsForUserResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedEventsForUserResponse>;
 
 export interface ListReceivedPublicEventsForUserRequest {
@@ -3168,7 +2258,7 @@ export interface ListReceivedPublicEventsForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReceivedPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReceivedPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3179,12 +2269,9 @@ export const ListReceivedPublicEventsForUserRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListReceivedPublicEventsForUserRequest>;
 
 export type ListReceivedPublicEventsForUserResponseBodyList = Array<Event>;
-export const ListReceivedPublicEventsForUserResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListReceivedPublicEventsForUserResponseBodyList>;
-
 export type ListReceivedPublicEventsForUserResponse =
   ListReceivedPublicEventsForUserResponseBodyList;
-export const ListReceivedPublicEventsForUserResponse =
+const ListReceivedPublicEventsForUserResponse =
   ListEventsForAuthenticatedUserResponse as any as S.Schema<ListReceivedPublicEventsForUserResponse>;
 
 export interface ListRepoEventsRequest {
@@ -3197,7 +2284,7 @@ export interface ListRepoEventsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3207,12 +2294,8 @@ export const ListRepoEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRepoEventsRequest" }) as any as S.Schema<ListRepoEventsRequest>;
 
 export type ListRepoEventsResponseBodyList = Array<Event>;
-export const ListRepoEventsResponseBodyList =
-  ListEventsForAuthenticatedUserResponseBodyList as any as S.Schema<ListRepoEventsResponseBodyList>;
-
 export type ListRepoEventsResponse = ListRepoEventsResponseBodyList;
-export const ListRepoEventsResponse =
-  ListPublicEventsResponse as any as S.Schema<ListRepoEventsResponse>;
+const ListRepoEventsResponse = ListPublicEventsResponse as any as S.Schema<ListRepoEventsResponse>;
 
 export interface ListRepoNotificationsForAuthenticatedUserRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3232,7 +2315,7 @@ export interface ListRepoNotificationsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListRepoNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRepoNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3248,19 +2331,16 @@ export const ListRepoNotificationsForAuthenticatedUserRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListRepoNotificationsForAuthenticatedUserRequest>;
 
 export type ListRepoNotificationsForAuthenticatedUserResponseBodyList = Array<Thread>;
-export const ListRepoNotificationsForAuthenticatedUserResponseBodyList =
-  ListNotificationsForAuthenticatedUserResponseBodyList as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponseBodyList>;
-
 export type ListRepoNotificationsForAuthenticatedUserResponse =
   ListRepoNotificationsForAuthenticatedUserResponseBodyList;
-export const ListRepoNotificationsForAuthenticatedUserResponse =
+const ListRepoNotificationsForAuthenticatedUserResponse =
   ListNotificationsForAuthenticatedUserResponse as any as S.Schema<ListRepoNotificationsForAuthenticatedUserResponse>;
 
 export type ListReposStarredByAuthenticatedUserRequestSort = "created" | "updated";
-export const ListReposStarredByAuthenticatedUserRequestSort = S.String;
+const ListReposStarredByAuthenticatedUserRequestSort = S.String;
 
 export type ListReposStarredByAuthenticatedUserRequestDirection = "asc" | "desc";
-export const ListReposStarredByAuthenticatedUserRequestDirection = S.String;
+const ListReposStarredByAuthenticatedUserRequestDirection = S.String;
 
 export interface ListReposStarredByAuthenticatedUserRequest {
   /** The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to. */
@@ -3272,7 +2352,7 @@ export interface ListReposStarredByAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sort: S.optional(ListReposStarredByAuthenticatedUserRequestSort.pipe(T.Query())),
     direction: S.optional(ListReposStarredByAuthenticatedUserRequestDirection.pipe(T.Query())),
@@ -3284,23 +2364,23 @@ export const ListReposStarredByAuthenticatedUserRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListReposStarredByAuthenticatedUserRequest>;
 
 export type ListReposStarredByAuthenticatedUserResponseBodyList = Array<Repository>;
-export const ListReposStarredByAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReposStarredByAuthenticatedUserResponseBodyList = /*@__PURE__*/ S.Array(
   Repository,
 ) as any as S.Schema<ListReposStarredByAuthenticatedUserResponseBodyList>;
 
 export type ListReposStarredByAuthenticatedUserResponse =
   ListReposStarredByAuthenticatedUserResponseBodyList;
-export const ListReposStarredByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposStarredByAuthenticatedUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposStarredByAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReposStarredByAuthenticatedUserResponse",
 }) as any as S.Schema<ListReposStarredByAuthenticatedUserResponse>;
 
 export type ListReposStarredByUserRequestSort = "created" | "updated";
-export const ListReposStarredByUserRequestSort = S.String;
+const ListReposStarredByUserRequestSort = S.String;
 
 export type ListReposStarredByUserRequestDirection = "asc" | "desc";
-export const ListReposStarredByUserRequestDirection = S.String;
+const ListReposStarredByUserRequestDirection = S.String;
 
 export interface ListReposStarredByUserRequest {
   /** The handle for the GitHub user account. */
@@ -3314,7 +2394,7 @@ export interface ListReposStarredByUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposStarredByUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposStarredByUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     sort: S.optional(ListReposStarredByUserRequestSort.pipe(T.Query())),
@@ -3331,30 +2411,16 @@ export interface StarredRepository {
   starred_at: string;
   repo: Repository;
 }
-export const StarredRepository = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    starred_at: S.String,
-    repo: Repository,
-  }),
-).annotate({ identifier: "StarredRepository" }) as any as S.Schema<StarredRepository>;
-
 export type ListReposStarredByUserResponseBodyCase0List = Array<StarredRepository>;
-export const ListReposStarredByUserResponseBodyCase0List = /*@__PURE__*/ S.Array(
-  StarredRepository,
-) as any as S.Schema<ListReposStarredByUserResponseBodyCase0List>;
-
 export type ListReposStarredByUserResponseBodyCase1List = Array<Repository>;
-export const ListReposStarredByUserResponseBodyCase1List =
-  ListReposStarredByAuthenticatedUserResponseBodyList as any as S.Schema<ListReposStarredByUserResponseBodyCase1List>;
-
 export type ListReposStarredByUserResponseBody =
   | ListReposStarredByUserResponseBodyCase0List
   | ListReposStarredByUserResponseBodyCase1List;
-export const ListReposStarredByUserResponseBody =
+const ListReposStarredByUserResponseBody =
   S.Unknown as any as S.Schema<ListReposStarredByUserResponseBody>;
 
 export type ListReposStarredByUserResponse = ListReposStarredByUserResponseBody;
-export const ListReposStarredByUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposStarredByUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposStarredByUserResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReposStarredByUserResponse",
@@ -3368,7 +2434,7 @@ export interface ListReposWatchedByUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListReposWatchedByUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReposWatchedByUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     username: S.String.pipe(T.Label()),
     per_page: S.optional(S.Number.pipe(T.Query())),
@@ -3379,12 +2445,12 @@ export const ListReposWatchedByUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReposWatchedByUserRequest>;
 
 export type ListReposWatchedByUserResponseBodyList = Array<MinimalRepository>;
-export const ListReposWatchedByUserResponseBodyList = /*@__PURE__*/ S.Array(
+const ListReposWatchedByUserResponseBodyList = /*@__PURE__*/ S.Array(
   MinimalRepository,
 ) as any as S.Schema<ListReposWatchedByUserResponseBodyList>;
 
 export type ListReposWatchedByUserResponse = ListReposWatchedByUserResponseBodyList;
-export const ListReposWatchedByUserResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReposWatchedByUserResponse = /*@__PURE__*/ S.suspend(() =>
   ListReposWatchedByUserResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListReposWatchedByUserResponse",
@@ -3400,7 +2466,7 @@ export interface ListStargazersForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListStargazersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListStargazersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3412,34 +2478,20 @@ export const ListStargazersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListStargazersForRepoRequest>;
 
 export type ListStargazersForRepoResponseBodyCase0List = Array<SimpleUser>;
-export const ListStargazersForRepoResponseBodyCase0List =
-  IssueAssigneesList as any as S.Schema<ListStargazersForRepoResponseBodyCase0List>;
-
 /** Stargazer */
 export interface Stargazer {
   starred_at: string;
   user: SimpleUser | null;
 }
-export const Stargazer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    starred_at: S.String,
-    user: S.NullOr(SimpleUser),
-  }),
-).annotate({ identifier: "Stargazer" }) as any as S.Schema<Stargazer>;
-
 export type ListStargazersForRepoResponseBodyCase1List = Array<Stargazer>;
-export const ListStargazersForRepoResponseBodyCase1List = /*@__PURE__*/ S.Array(
-  Stargazer,
-) as any as S.Schema<ListStargazersForRepoResponseBodyCase1List>;
-
 export type ListStargazersForRepoResponseBody =
   | ListStargazersForRepoResponseBodyCase0List
   | ListStargazersForRepoResponseBodyCase1List;
-export const ListStargazersForRepoResponseBody =
+const ListStargazersForRepoResponseBody =
   S.Unknown as any as S.Schema<ListStargazersForRepoResponseBody>;
 
 export type ListStargazersForRepoResponse = ListStargazersForRepoResponseBody;
-export const ListStargazersForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStargazersForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListStargazersForRepoResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListStargazersForRepoResponse",
@@ -3451,7 +2503,7 @@ export interface ListWatchedReposForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListWatchedReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatchedReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     per_page: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -3461,12 +2513,9 @@ export const ListWatchedReposForAuthenticatedUserRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListWatchedReposForAuthenticatedUserRequest>;
 
 export type ListWatchedReposForAuthenticatedUserResponseBodyList = Array<MinimalRepository>;
-export const ListWatchedReposForAuthenticatedUserResponseBodyList =
-  ListReposWatchedByUserResponseBodyList as any as S.Schema<ListWatchedReposForAuthenticatedUserResponseBodyList>;
-
 export type ListWatchedReposForAuthenticatedUserResponse =
   ListWatchedReposForAuthenticatedUserResponseBodyList;
-export const ListWatchedReposForAuthenticatedUserResponse =
+const ListWatchedReposForAuthenticatedUserResponse =
   ListReposWatchedByUserResponse as any as S.Schema<ListWatchedReposForAuthenticatedUserResponse>;
 
 export interface ListWatchersForRepoRequest {
@@ -3479,7 +2528,7 @@ export interface ListWatchersForRepoRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-export const ListWatchersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWatchersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3491,11 +2540,11 @@ export const ListWatchersForRepoRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWatchersForRepoRequest>;
 
 export type ListWatchersForRepoResponseBodyList = Array<SimpleUser>;
-export const ListWatchersForRepoResponseBodyList =
+const ListWatchersForRepoResponseBodyList =
   IssueAssigneesList as any as S.Schema<ListWatchersForRepoResponseBodyList>;
 
 export type ListWatchersForRepoResponse = ListWatchersForRepoResponseBodyList;
-export const ListWatchersForRepoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWatchersForRepoResponse = /*@__PURE__*/ S.suspend(() =>
   ListWatchersForRepoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListWatchersForRepoResponse",
@@ -3505,14 +2554,14 @@ export interface MarkThreadAsDoneRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
-export const MarkThreadAsDoneRequest = /*@__PURE__*/ S.suspend(() =>
+const MarkThreadAsDoneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/notifications/threads/{thread_id}", code: 200 })),
 ).annotate({ identifier: "MarkThreadAsDoneRequest" }) as any as S.Schema<MarkThreadAsDoneRequest>;
 
 export interface MarkThreadAsDoneResponse {}
-export const MarkThreadAsDoneResponse =
+const MarkThreadAsDoneResponse =
   DeleteRepoSubscriptionResponse as any as S.Schema<MarkThreadAsDoneResponse>;
 
 export interface ReadMarkNotificationsAsRequest {
@@ -3521,7 +2570,7 @@ export interface ReadMarkNotificationsAsRequest {
   /** Whether the notification has been read. */
   read?: boolean;
 }
-export const ReadMarkNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadMarkNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     last_read_at: S.optional(S.String),
     read: S.optional(S.Boolean),
@@ -3531,9 +2580,9 @@ export const ReadMarkNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadMarkNotificationsAsRequest>;
 
 export interface ReadMarkNotificationsAsResponse {}
-export const ReadMarkNotificationsAsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "ReadMarkNotificationsAsResponse" },
-) as any as S.Schema<ReadMarkNotificationsAsResponse>;
+const ReadMarkNotificationsAsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "ReadMarkNotificationsAsResponse",
+}) as any as S.Schema<ReadMarkNotificationsAsResponse>;
 
 export interface ReadMarkRepoNotificationsAsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
@@ -3543,7 +2592,7 @@ export interface ReadMarkRepoNotificationsAsRequest {
   /** Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp. */
   last_read_at?: string;
 }
-export const ReadMarkRepoNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadMarkRepoNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3554,21 +2603,21 @@ export const ReadMarkRepoNotificationsAsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReadMarkRepoNotificationsAsRequest>;
 
 export interface ReadMarkRepoNotificationsAsResponse {}
-export const ReadMarkRepoNotificationsAsResponse =
+const ReadMarkRepoNotificationsAsResponse =
   CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<ReadMarkRepoNotificationsAsResponse>;
 
 export interface ReadMarkThreadAsRequest {
   /** The unique identifier of the notification thread. This corresponds to the value returned in the `id` field when you retrieve notifications (for example with the [`GET /notifications` operation](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)). */
   thread_id: number;
 }
-export const ReadMarkThreadAsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReadMarkThreadAsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "PATCH", uri: "/notifications/threads/{thread_id}", code: 200 })),
 ).annotate({ identifier: "ReadMarkThreadAsRequest" }) as any as S.Schema<ReadMarkThreadAsRequest>;
 
 export interface ReadMarkThreadAsResponse {}
-export const ReadMarkThreadAsResponse =
+const ReadMarkThreadAsResponse =
   DeleteRepoSubscriptionResponse as any as S.Schema<ReadMarkThreadAsResponse>;
 
 export interface SetRepoSubscriptionRequest {
@@ -3581,7 +2630,7 @@ export interface SetRepoSubscriptionRequest {
   /** Determines if all notifications should be blocked from this repository. */
   ignored?: boolean;
 }
-export const SetRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetRepoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3598,7 +2647,7 @@ export interface SetThreadSubscriptionRequest {
   /** Whether to block all notifications from a thread. */
   ignored?: boolean;
 }
-export const SetThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const SetThreadSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thread_id: S.Number.pipe(T.Label()),
     ignored: S.optional(S.Boolean),
@@ -3615,7 +2664,7 @@ export interface StarRepoForAuthenticatedUserRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const StarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const StarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3625,7 +2674,7 @@ export const StarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StarRepoForAuthenticatedUserRequest>;
 
 export interface StarRepoForAuthenticatedUserResponse {}
-export const StarRepoForAuthenticatedUserResponse =
+const StarRepoForAuthenticatedUserResponse =
   CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<StarRepoForAuthenticatedUserResponse>;
 
 export interface UnstarRepoForAuthenticatedUserRequest {
@@ -3634,7 +2683,7 @@ export interface UnstarRepoForAuthenticatedUserRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-export const UnstarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UnstarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -3644,7 +2693,7 @@ export const UnstarRepoForAuthenticatedUserRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<UnstarRepoForAuthenticatedUserRequest>;
 
 export interface UnstarRepoForAuthenticatedUserResponse {}
-export const UnstarRepoForAuthenticatedUserResponse =
+const UnstarRepoForAuthenticatedUserResponse =
   CheckRepoIsStarredByAuthenticatedUserResponse as any as S.Schema<UnstarRepoForAuthenticatedUserResponse>;
 
 export type CheckRepoIsStarredByAuthenticatedUserError = Forbidden | NotFound | GithubOpError;

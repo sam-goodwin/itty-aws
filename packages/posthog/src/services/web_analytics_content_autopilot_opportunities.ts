@@ -13,7 +13,7 @@ export interface GetWebAnalyticsContentAutopilotOpportunityRequest {
   /** A UUID string identifying this content autopilot opportunity. */
   id: string;
 }
-export const GetWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -30,11 +30,11 @@ export const GetWebAnalyticsContentAutopilotOpportunityRequest = /*@__PURE__*/ S
 
 /** * `ai_visibility_gap` - AI visibility gap */
 export type ContentAutopilotOpportunityKindEnum = "ai_visibility_gap";
-export const ContentAutopilotOpportunityKindEnum = S.String;
+const ContentAutopilotOpportunityKindEnum = S.String;
 
 /** * `new_content` - New content * `page_improvement` - Page improvement */
 export type ContentAutopilotProposalProposalTypeEnum = "new_content" | "page_improvement";
-export const ContentAutopilotProposalProposalTypeEnum = S.String;
+const ContentAutopilotProposalProposalTypeEnum = S.String;
 
 /** * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
 export type OpportunityKindEnum =
@@ -43,7 +43,7 @@ export type OpportunityKindEnum =
   | "organic_decline"
   | "ai_visibility_gap"
   | "site_hygiene";
-export const OpportunityKindEnum = S.String;
+const OpportunityKindEnum = S.String;
 
 export interface ContentAutopilotEvidence {
   /** Reason the opportunity was selected. * `poor_ctr` - Poor click-through rate * `content_gap` - Content gap * `organic_decline` - Organic decline * `ai_visibility_gap` - AI visibility gap * `site_hygiene` - Site hygiene */
@@ -55,7 +55,7 @@ export interface ContentAutopilotEvidence {
   /** Search query supported by this evidence. */
   query?: string;
 }
-export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     opportunity_kind: OpportunityKindEnum,
     explanation: S.String,
@@ -66,39 +66,39 @@ export const ContentAutopilotEvidence = /*@__PURE__*/ S.suspend(() =>
 
 /** Why this opportunity was selected. */
 export type ContentAutopilotOpportunityEvidenceList = Array<ContentAutopilotEvidence>;
-export const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ S.Array(
+const ContentAutopilotOpportunityEvidenceList = /*@__PURE__*/ S.Array(
   ContentAutopilotEvidence,
 ) as any as S.Schema<ContentAutopilotOpportunityEvidenceList>;
 
 /** Engines that answered the prompt. */
 export type ContentAutopilotCitationGapEnginesList = Array<string>;
-export const ContentAutopilotCitationGapEnginesList = /*@__PURE__*/ S.Array(
+const ContentAutopilotCitationGapEnginesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ContentAutopilotCitationGapEnginesList>;
 
 /** Engines that never cited the site in the window. */
 export type ContentAutopilotCitationGapEnginesNotCitingList = Array<string>;
-export const ContentAutopilotCitationGapEnginesNotCitingList =
+const ContentAutopilotCitationGapEnginesNotCitingList =
   ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEnginesNotCitingList>;
 
 /** Other sites' pages the engines cited, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorUrlsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorUrlsList =
+const ContentAutopilotCitationGapCompetitorUrlsList =
   ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorUrlsList>;
 
 /** Domains the engines cited instead, most frequent first. */
 export type ContentAutopilotCitationGapCompetitorDomainsList = Array<string>;
-export const ContentAutopilotCitationGapCompetitorDomainsList =
+const ContentAutopilotCitationGapCompetitorDomainsList =
   ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapCompetitorDomainsList>;
 
 /** Web searches the engines ran while answering. */
 export type ContentAutopilotCitationGapEngineSearchQueriesList = Array<string>;
-export const ContentAutopilotCitationGapEngineSearchQueriesList =
+const ContentAutopilotCitationGapEngineSearchQueriesList =
   ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapEngineSearchQueriesList>;
 
 /** Site pages the engines cited when they did cite the site. */
 export type ContentAutopilotCitationGapOurCitedUrlsList = Array<string>;
-export const ContentAutopilotCitationGapOurCitedUrlsList =
+const ContentAutopilotCitationGapOurCitedUrlsList =
   ContentAutopilotCitationGapEnginesList as any as S.Schema<ContentAutopilotCitationGapOurCitedUrlsList>;
 
 export interface ContentAutopilotEngineAnswer {
@@ -109,7 +109,7 @@ export interface ContentAutopilotEngineAnswer {
   /** When the answer was recorded, in ISO 8601. */
   checked_at: string;
 }
-export const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     engine: S.String,
     answer_text: S.String,
@@ -121,7 +121,7 @@ export const ContentAutopilotEngineAnswer = /*@__PURE__*/ S.suspend(() =>
 
 /** Most recent answer per engine. */
 export type ContentAutopilotCitationGapLatestAnswersList = Array<ContentAutopilotEngineAnswer>;
-export const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ S.Array(
+const ContentAutopilotCitationGapLatestAnswersList = /*@__PURE__*/ S.Array(
   ContentAutopilotEngineAnswer,
 ) as any as S.Schema<ContentAutopilotCitationGapLatestAnswersList>;
 
@@ -151,7 +151,7 @@ export interface ContentAutopilotCitationGap {
   /** When the prompt was last checked, in ISO 8601. */
   last_checked_at: string;
 }
-export const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checks: S.Number,
     cited_checks: S.Number,
@@ -172,7 +172,7 @@ export const ContentAutopilotCitationGap = /*@__PURE__*/ S.suspend(() =>
 
 /** * `new` - New * `dismissed` - Dismissed * `queued` - Queued * `drafted` - Drafted */
 export type ContentAutopilotOpportunityStatusEnum = "new" | "dismissed" | "queued" | "drafted";
-export const ContentAutopilotOpportunityStatusEnum = S.String;
+const ContentAutopilotOpportunityStatusEnum = S.String;
 
 export interface ContentAutopilotOpportunity {
   id: string;
@@ -203,7 +203,7 @@ export interface ContentAutopilotOpportunity {
   created_at: string;
   updated_at: string;
 }
-export const ContentAutopilotOpportunity = /*@__PURE__*/ S.suspend(() =>
+const ContentAutopilotOpportunity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     profile_id: S.String,
@@ -235,7 +235,7 @@ export interface ListWebAnalyticsContentAutopilotOpportunitiesRequest {
   /** Site profile to list opportunities for. */
   profile_id: string;
 }
-export const ListWebAnalyticsContentAutopilotOpportunitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWebAnalyticsContentAutopilotOpportunitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -254,7 +254,7 @@ export const ListWebAnalyticsContentAutopilotOpportunitiesRequest = /*@__PURE__*
 
 export type PaginatedContentAutopilotOpportunityListResultsList =
   Array<ContentAutopilotOpportunity>;
-export const PaginatedContentAutopilotOpportunityListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedContentAutopilotOpportunityListResultsList = /*@__PURE__*/ S.Array(
   ContentAutopilotOpportunity,
 ) as any as S.Schema<PaginatedContentAutopilotOpportunityListResultsList>;
 
@@ -264,7 +264,7 @@ export interface PaginatedContentAutopilotOpportunityList {
   previous?: string | null;
   results: PaginatedContentAutopilotOpportunityListResultsList;
 }
-export const PaginatedContentAutopilotOpportunityList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedContentAutopilotOpportunityList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),

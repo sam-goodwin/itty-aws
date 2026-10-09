@@ -106,7 +106,7 @@ export type DataSetType =
   | "sales_compensation_billed_revenue"
   | "us_sales_and_use_tax_records"
   | (string & {});
-export const DataSetType = S.String;
+const DataSetType = S.String;
 
 export type DataSetPublicationDate = Date;
 export type RoleNameArn = string;
@@ -116,7 +116,7 @@ export type SnsTopicArn = string;
 export type OptionalKey = string;
 export type OptionalValue = string;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
-export const CustomerDefinedValues = /*@__PURE__*/ S.Record(
+const CustomerDefinedValues = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -129,7 +129,7 @@ export interface GenerateDataSetRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
-export const GenerateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSetType: DataSetType,
     dataSetPublicationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -144,14 +144,14 @@ export type DataSetRequestId = string;
 export interface GenerateDataSetResult {
   dataSetRequestId?: string;
 }
-export const GenerateDataSetResult = /*@__PURE__*/ S.suspend(() =>
+const GenerateDataSetResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSetRequestId: S.optional(S.String) }),
 ).annotate({ identifier: "GenerateDataSetResult" }) as any as S.Schema<GenerateDataSetResult>;
 export type SupportDataSetType =
   | "customer_support_contacts_data"
   | "test_customer_support_contacts_data"
   | (string & {});
-export const SupportDataSetType = S.String;
+const SupportDataSetType = S.String;
 
 export type FromDate = Date;
 export interface StartSupportDataExportRequest {
@@ -163,7 +163,7 @@ export interface StartSupportDataExportRequest {
   snsTopicArn: string;
   customerDefinedValues?: { [key: string]: string | undefined };
 }
-export const StartSupportDataExportRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSupportDataExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSetType: SupportDataSetType,
     fromDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -179,7 +179,7 @@ export const StartSupportDataExportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSupportDataExportResult {
   dataSetRequestId?: string;
 }
-export const StartSupportDataExportResult = /*@__PURE__*/ S.suspend(() =>
+const StartSupportDataExportResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSetRequestId: S.optional(S.String) }),
 ).annotate({
   identifier: "StartSupportDataExportResult",

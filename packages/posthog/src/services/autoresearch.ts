@@ -41,7 +41,7 @@ export interface AutoresearchArchiveCreateRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const AutoresearchArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -57,43 +57,22 @@ export const AutoresearchArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoresearchArchiveCreateRequest>;
 
 export type AutoresearchPipelineTargetDefinitionCase0Type = "event";
-export const AutoresearchPipelineTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchPipelineTargetDefinitionCase0 {
   type: AutoresearchPipelineTargetDefinitionCase0Type;
 }
-export const AutoresearchPipelineTargetDefinitionCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchPipelineTargetDefinitionCase0Type,
-  }),
-).annotate({
-  identifier: "AutoresearchPipelineTargetDefinitionCase0",
-}) as any as S.Schema<AutoresearchPipelineTargetDefinitionCase0>;
-
 export type AutoresearchPipelineTargetDefinitionCase1Type = "action";
-export const AutoresearchPipelineTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface AutoresearchPipelineTargetDefinitionCase1 {
   type: AutoresearchPipelineTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const AutoresearchPipelineTargetDefinitionCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: AutoresearchPipelineTargetDefinitionCase1Type,
-    action_id: S.Number,
-  }),
-).annotate({
-  identifier: "AutoresearchPipelineTargetDefinitionCase1",
-}) as any as S.Schema<AutoresearchPipelineTargetDefinitionCase1>;
-
 /** Resolved target definition: {"type": "event"} or {"type": "action", "action_id": N}. */
 export type AutoresearchPipelineTargetDefinition =
   | AutoresearchPipelineTargetDefinitionCase0
   | AutoresearchPipelineTargetDefinitionCase1;
-export const AutoresearchPipelineTargetDefinition =
+const AutoresearchPipelineTargetDefinition =
   S.Unknown as any as S.Schema<AutoresearchPipelineTargetDefinition>;
 
 /** * `draft` - Draft * `bootstrapping` - Bootstrapping * `running` - Running * `converged` - Converged * `paused` - Paused * `archived` - Archived */
@@ -104,10 +83,10 @@ export type AutoresearchPipelineStatusEnum =
   | "converged"
   | "paused"
   | "archived";
-export const AutoresearchPipelineStatusEnum = S.String;
+const AutoresearchPipelineStatusEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -123,14 +102,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -143,7 +117,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -200,7 +174,7 @@ export interface AutoresearchPipeline {
   /** Realized online AUC of the current champion model, computed from mature predictions against actual outcomes. */
   champion_realized_auc: number | null;
 }
-export const AutoresearchPipeline = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchPipeline = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -233,7 +207,7 @@ export interface AutoresearchDestroyRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const AutoresearchDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -245,7 +219,7 @@ export const AutoresearchDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoresearchDestroyRequest>;
 
 export interface AutoresearchDestroyResponse {}
-export const AutoresearchDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const AutoresearchDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "AutoresearchDestroyResponse",
 }) as any as S.Schema<AutoresearchDestroyResponse>;
 
@@ -255,7 +229,7 @@ export interface AutoresearchResumeCreateRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const AutoresearchResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -279,7 +253,7 @@ export interface AutoresearchTrainingRunsArtifactsDeleteCreateRequest {
   /** Relative path of the file within the bundle, e.g. 'train.py'. */
   path: string;
 }
-export const AutoresearchTrainingRunsArtifactsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchTrainingRunsArtifactsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -303,7 +277,7 @@ export interface ArtifactDeleteResult {
   /** True if a file existed and was removed; False if nothing was there. */
   deleted: boolean;
 }
-export const ArtifactDeleteResult = /*@__PURE__*/ S.suspend(() =>
+const ArtifactDeleteResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     deleted: S.Boolean,
@@ -319,7 +293,7 @@ export interface AutoresearchTrainingRunsArtifactsGetCreateRequest {
   /** Relative path of the file within the bundle, e.g. 'train.py'. */
   path: string;
 }
-export const AutoresearchTrainingRunsArtifactsGetCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchTrainingRunsArtifactsGetCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -347,7 +321,7 @@ export interface ArtifactContent {
   /** File contents, base64-encoded. */
   content_base64: string;
 }
-export const ArtifactContent = /*@__PURE__*/ S.suspend(() =>
+const ArtifactContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     size_bytes: S.Number,
@@ -367,7 +341,7 @@ export interface AutoresearchTrainingRunsArtifactsUploadCreateRequest {
   /** File contents, base64-encoded. Decoded server-side and written to object storage. Max 10 MB decoded. */
   content_base64: string;
 }
-export const AutoresearchTrainingRunsArtifactsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchTrainingRunsArtifactsUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -394,7 +368,7 @@ export interface StoredArtifact {
   /** SHA-256 hex digest of the decoded file content. */
   sha256: string;
 }
-export const StoredArtifact = /*@__PURE__*/ S.suspend(() =>
+const StoredArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     size_bytes: S.Number,
@@ -403,32 +377,22 @@ export const StoredArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StoredArtifact" }) as any as S.Schema<StoredArtifact>;
 
 export type AutoresearchValidateCreateRequestTargetDefinitionCase0Type = "event";
-export const AutoresearchValidateCreateRequestTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchValidateCreateRequestTargetDefinitionCase0 {
   type: AutoresearchValidateCreateRequestTargetDefinitionCase0Type;
 }
-export const AutoresearchValidateCreateRequestTargetDefinitionCase0 =
-  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase0>;
-
 export type AutoresearchValidateCreateRequestTargetDefinitionCase1Type = "action";
-export const AutoresearchValidateCreateRequestTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface AutoresearchValidateCreateRequestTargetDefinitionCase1 {
   type: AutoresearchValidateCreateRequestTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const AutoresearchValidateCreateRequestTargetDefinitionCase1 =
-  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinitionCase1>;
-
 /** Optional target definition. Pass {"type": "action", "action_id": N} to predict a PostHog action (multi-step / property / autocapture matcher) instead of a single event. */
 export type AutoresearchValidateCreateRequestTargetDefinition =
   | AutoresearchValidateCreateRequestTargetDefinitionCase0
   | AutoresearchValidateCreateRequestTargetDefinitionCase1;
-export const AutoresearchValidateCreateRequestTargetDefinition =
+const AutoresearchValidateCreateRequestTargetDefinition =
   S.Unknown as any as S.Schema<AutoresearchValidateCreateRequestTargetDefinition>;
 
 export interface AutoresearchValidateCreateRequest {
@@ -447,7 +411,7 @@ export interface AutoresearchValidateCreateRequest {
   /** Population filter for daily scoring. When omitted or empty, the training population is counted, as creation stores it. */
   inference_population?: unknown;
 }
-export const AutoresearchValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     target_event: S.optional(S.String),
@@ -465,7 +429,7 @@ export const AutoresearchValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `info` - info * `warning` - warning * `error` - error */
 export type ValidationWarningSeverityEnum = "info" | "warning" | "error";
-export const ValidationWarningSeverityEnum = S.String;
+const ValidationWarningSeverityEnum = S.String;
 
 export interface ValidationWarning {
   /** Machine-readable warning code. 'horizon_exceeds_lookback', and 'population_too_large' with severity 'error', mean a run would fail: fix the definition before creating. 'population_too_large' with severity 'info' means training uses a sample of the population, or each scoring run scores a rolling part of it: users never scored first, then users whose last score was oldest. 'low_volume', 'low_positives' and 'low_negatives' mean the data is too thin for a reliable model (severity 'error', advisory). 'moderate_volume', 'mostly_anonymous_population', 'extreme_imbalance' and 'near_universal' are severity 'warning'. */
@@ -475,7 +439,7 @@ export interface ValidationWarning {
   /** Severity level. 'error' means training would fail or the data is too thin for a reliable model; see 'code' for which. 'warning' is worth acknowledging. Creation enforces none of them. * `info` - info * `warning` - warning * `error` - error */
   severity: ValidationWarningSeverityEnum;
 }
-export const ValidationWarning = /*@__PURE__*/ S.suspend(() =>
+const ValidationWarning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.String,
     message: S.String,
@@ -485,7 +449,7 @@ export const ValidationWarning = /*@__PURE__*/ S.suspend(() =>
 
 /** List of validation warnings. Check 'severity' and 'code'. */
 export type ValidatePipelineResponseWarningsList = Array<ValidationWarning>;
-export const ValidatePipelineResponseWarningsList = /*@__PURE__*/ S.Array(
+const ValidatePipelineResponseWarningsList = /*@__PURE__*/ S.Array(
   ValidationWarning,
 ) as any as S.Schema<ValidatePipelineResponseWarningsList>;
 
@@ -509,7 +473,7 @@ export interface ValidatePipelineResponse {
   /** Why validation did not run, or null when it did. A query error in the definition itself is passed through; any other failure is a generic message and the detail is logged. */
   error: string | null;
 }
-export const ValidatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
+const ValidatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     can_proceed: S.Boolean,
     requires_acknowledgement: S.Boolean,
@@ -529,7 +493,7 @@ export interface AutoresearchValidateOnlineCreateRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const AutoresearchValidateOnlineCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchValidateOnlineCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -546,15 +510,15 @@ export const AutoresearchValidateOnlineCreateRequest = /*@__PURE__*/ S.suspend((
 
 /** * `inference` - Inference * `validation` - Validation */
 export type AutoresearchRunRunTypeEnum = "inference" | "validation";
-export const AutoresearchRunRunTypeEnum = S.String;
+const AutoresearchRunRunTypeEnum = S.String;
 
 /** * `pending` - Pending * `running` - Running * `completed` - Completed * `failed` - Failed */
 export type ZendeskImportJobStatusEnum = "pending" | "running" | "completed" | "failed";
-export const ZendeskImportJobStatusEnum = S.String;
+const ZendeskImportJobStatusEnum = S.String;
 
 /** Run metrics: score distribution summary, validation AUC, etc. An inference run records 'rows_eligible', the users in the inference population. When it is larger than rows_scored, the run scored a rolling part of the population: users never scored first, then users whose last score was oldest. */
 export type AutoresearchRunMetricsMap = { [key: string]: unknown | undefined };
-export const AutoresearchRunMetricsMap =
+const AutoresearchRunMetricsMap =
   UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchRunMetricsMap>;
 
 export interface AutoresearchRun {
@@ -580,7 +544,7 @@ export interface AutoresearchRun {
   completed_at?: string | null;
   created_at: string;
 }
-export const AutoresearchRun = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pipeline: S.String,
@@ -597,45 +561,35 @@ export const AutoresearchRun = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoresearchRun" }) as any as S.Schema<AutoresearchRun>;
 
 export type AutoresearchValidateOnlineCreateResponseBodyList = Array<AutoresearchRun>;
-export const AutoresearchValidateOnlineCreateResponseBodyList = /*@__PURE__*/ S.Array(
+const AutoresearchValidateOnlineCreateResponseBodyList = /*@__PURE__*/ S.Array(
   AutoresearchRun,
 ) as any as S.Schema<AutoresearchValidateOnlineCreateResponseBodyList>;
 
 export type AutoresearchValidateOnlineCreateResponse =
   AutoresearchValidateOnlineCreateResponseBodyList;
-export const AutoresearchValidateOnlineCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchValidateOnlineCreateResponse = /*@__PURE__*/ S.suspend(() =>
   AutoresearchValidateOnlineCreateResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AutoresearchValidateOnlineCreateResponse",
 }) as any as S.Schema<AutoresearchValidateOnlineCreateResponse>;
 
 export type CreateAutoresearchRequestTargetDefinitionCase0Type = "event";
-export const CreateAutoresearchRequestTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface CreateAutoresearchRequestTargetDefinitionCase0 {
   type: CreateAutoresearchRequestTargetDefinitionCase0Type;
 }
-export const CreateAutoresearchRequestTargetDefinitionCase0 =
-  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase0>;
-
 export type CreateAutoresearchRequestTargetDefinitionCase1Type = "action";
-export const CreateAutoresearchRequestTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface CreateAutoresearchRequestTargetDefinitionCase1 {
   type: CreateAutoresearchRequestTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const CreateAutoresearchRequestTargetDefinitionCase1 =
-  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<CreateAutoresearchRequestTargetDefinitionCase1>;
-
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type CreateAutoresearchRequestTargetDefinition =
   | CreateAutoresearchRequestTargetDefinitionCase0
   | CreateAutoresearchRequestTargetDefinitionCase1;
-export const CreateAutoresearchRequestTargetDefinition =
+const CreateAutoresearchRequestTargetDefinition =
   S.Unknown as any as S.Schema<CreateAutoresearchRequestTargetDefinition>;
 
 export interface CreateAutoresearchRequest {
@@ -668,7 +622,7 @@ export interface CreateAutoresearchRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
-export const CreateAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -695,7 +649,7 @@ export interface CreateAutoresearchPauseRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const CreateAutoresearchPauseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchPauseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -717,7 +671,7 @@ export type TemplateKeyEnum =
   | "return_after_first_use"
   | "feature_adoption"
   | "repeat_key_behavior";
-export const TemplateKeyEnum = S.String;
+const TemplateKeyEnum = S.String;
 
 export interface CreateAutoresearchResolveTemplateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -729,7 +683,7 @@ export interface CreateAutoresearchResolveTemplateRequest {
   /** Override the template's default prediction horizon in days. */
   horizon_days?: number;
 }
-export const CreateAutoresearchResolveTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchResolveTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     template_key: TemplateKeyEnum,
@@ -748,7 +702,7 @@ export const CreateAutoresearchResolveTemplateRequest = /*@__PURE__*/ S.suspend(
 
 /** Other viable activity events found in your schema. If the resolved event is not the right signal, re-resolve with one of these as target_event. */
 export type ResolvedTemplateActivityEventAlternativesList = Array<string>;
-export const ResolvedTemplateActivityEventAlternativesList = /*@__PURE__*/ S.Array(
+const ResolvedTemplateActivityEventAlternativesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResolvedTemplateActivityEventAlternativesList>;
 
@@ -780,7 +734,7 @@ export interface ResolvedTemplate {
   /** Usage notes and guidance for interpreting this resolved config. */
   notes: string;
 }
-export const ResolvedTemplate = /*@__PURE__*/ S.suspend(() =>
+const ResolvedTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template_key: TemplateKeyEnum,
     display_name: S.String,
@@ -804,7 +758,7 @@ export interface CreateAutoresearchScoreRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const CreateAutoresearchScoreRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchScoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -821,7 +775,7 @@ export const CreateAutoresearchScoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `try_next` - try_next * `consider` - consider */
 export type CreateSuggestionPriorityEnum = "try_next" | "consider";
-export const CreateSuggestionPriorityEnum = S.String;
+const CreateSuggestionPriorityEnum = S.String;
 
 export interface CreateAutoresearchSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -832,7 +786,7 @@ export interface CreateAutoresearchSuggestionRequest {
   /** 'try_next' asks the agent to act on this before other autonomous iterations; 'consider' is advisory context. * `try_next` - try_next * `consider` - consider */
   priority?: CreateSuggestionPriorityEnum | (string & {});
 }
-export const CreateAutoresearchSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -851,19 +805,19 @@ export const CreateAutoresearchSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `try_next` - Try next * `consider` - Consider */
 export type AutoresearchSuggestionPriorityEnum = "try_next" | "consider";
-export const AutoresearchSuggestionPriorityEnum = S.String;
+const AutoresearchSuggestionPriorityEnum = S.String;
 
 /** * `queued` - Queued * `picked_up` - Picked up * `acted_on` - Acted on * `dismissed` - Dismissed */
 export type AutoresearchSuggestionStatusEnum = "queued" | "picked_up" | "acted_on" | "dismissed";
-export const AutoresearchSuggestionStatusEnum = S.String;
+const AutoresearchSuggestionStatusEnum = S.String;
 
 /** * `user` - User * `agent` - Agent */
 export type AutoresearchSuggestionSourceEnum = "user" | "agent";
-export const AutoresearchSuggestionSourceEnum = S.String;
+const AutoresearchSuggestionSourceEnum = S.String;
 
 /** UUIDs of iterations spawned from this suggestion. */
 export type AutoresearchSuggestionLinkedIterationIdsList = Array<string>;
-export const AutoresearchSuggestionLinkedIterationIdsList =
+const AutoresearchSuggestionLinkedIterationIdsList =
   ResolvedTemplateActivityEventAlternativesList as any as S.Schema<AutoresearchSuggestionLinkedIterationIdsList>;
 
 export interface AutoresearchSuggestion {
@@ -888,7 +842,7 @@ export interface AutoresearchSuggestion {
   created_at: string;
   updated_at: string;
 }
-export const AutoresearchSuggestion = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pipeline: S.String,
@@ -906,7 +860,7 @@ export const AutoresearchSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** * `picked_up` - picked_up * `acted_on` - acted_on * `dismissed` - dismissed */
 export type RespondToSuggestionStatusEnum = "picked_up" | "acted_on" | "dismissed";
-export const RespondToSuggestionStatusEnum = S.String;
+const RespondToSuggestionStatusEnum = S.String;
 
 export interface CreateAutoresearchSuggestionsRespondRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -919,7 +873,7 @@ export interface CreateAutoresearchSuggestionsRespondRequest {
   /** Plain-English note on how the suggestion was interpreted and acted upon. A dismissal needs a note, sent now or recorded earlier. Omit it to keep the note already recorded; send an empty string to clear it. */
   agent_response?: string;
 }
-export const CreateAutoresearchSuggestionsRespondRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchSuggestionsRespondRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -945,7 +899,7 @@ export interface CreateAutoresearchTrainRequest {
   /** Override the pipeline iteration budget for this training run. */
   iteration_budget?: number;
 }
-export const CreateAutoresearchTrainRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -972,7 +926,7 @@ export interface TrainingRunSummaryLadderItem {
   /** The agent's rationale for this attempt. */
   agent_description: string;
 }
-export const TrainingRunSummaryLadderItem = /*@__PURE__*/ S.suspend(() =>
+const TrainingRunSummaryLadderItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iteration_number: S.Number,
     holdout_score: S.NullOr(S.Number),
@@ -985,13 +939,13 @@ export const TrainingRunSummaryLadderItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Kept iterations, highest holdout AUC first -- the winning approaches worth reusing. */
 export type TrainingRunSummaryKeptLadderList = Array<TrainingRunSummaryLadderItem>;
-export const TrainingRunSummaryKeptLadderList = /*@__PURE__*/ S.Array(
+const TrainingRunSummaryKeptLadderList = /*@__PURE__*/ S.Array(
   TrainingRunSummaryLadderItem,
 ) as any as S.Schema<TrainingRunSummaryKeptLadderList>;
 
 /** Discarded or crashed iterations -- approaches already tried that did not help; avoid repeating. */
 export type TrainingRunSummaryDeadEndsList = Array<TrainingRunSummaryLadderItem>;
-export const TrainingRunSummaryDeadEndsList =
+const TrainingRunSummaryDeadEndsList =
   TrainingRunSummaryKeptLadderList as any as S.Schema<TrainingRunSummaryDeadEndsList>;
 
 /** Tier-1 distilled summary of a completed run -- the orientation memory a new run reads first. */
@@ -1017,7 +971,7 @@ export interface TrainingRunSummary {
   /** Short id of the report notebook the agent built for this run. Empty if there is none. */
   report_notebook_short_id?: string;
 }
-export const TrainingRunSummary = /*@__PURE__*/ S.suspend(() =>
+const TrainingRunSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target_event: S.String,
     horizon_days: S.Number,
@@ -1034,11 +988,11 @@ export const TrainingRunSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** * `kept` - Kept * `discarded` - Discarded * `crashed` - Crashed */
 export type AutoresearchIterationStatusEnum = "kept" | "discarded" | "crashed";
-export const AutoresearchIterationStatusEnum = S.String;
+const AutoresearchIterationStatusEnum = S.String;
 
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type IterationTrailModelSpecModelParamsMap = { [key: string]: unknown | undefined };
-export const IterationTrailModelSpecModelParamsMap =
+const IterationTrailModelSpecModelParamsMap =
   UserBasicHedgehogConfigMap as any as S.Schema<IterationTrailModelSpecModelParamsMap>;
 
 /** Model class and hyperparameters tried in this iteration. */
@@ -1048,7 +1002,7 @@ export interface IterationTrailModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: IterationTrailModelSpecModelParamsMap | null;
 }
-export const IterationTrailModelSpec = /*@__PURE__*/ S.suspend(() =>
+const IterationTrailModelSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_class: S.String,
     model_params: S.optional(S.NullOr(IterationTrailModelSpecModelParamsMap)),
@@ -1070,7 +1024,7 @@ export interface IterationTrail {
   /** Model class and hyperparameters tried in this iteration. */
   model_spec: IterationTrailModelSpec;
 }
-export const IterationTrail = /*@__PURE__*/ S.suspend(() =>
+const IterationTrail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iteration_number: S.Number,
     status: AutoresearchIterationStatusEnum,
@@ -1083,7 +1037,7 @@ export const IterationTrail = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-iteration breakdown -- every recipe the agent tried this run, kept or discarded, with its model spec, holdout/train AUC, and one-line rationale. Ordered by iteration_number. */
 export type AutoresearchTrainingRunIterationsList = Array<IterationTrail>;
-export const AutoresearchTrainingRunIterationsList = /*@__PURE__*/ S.Array(
+const AutoresearchTrainingRunIterationsList = /*@__PURE__*/ S.Array(
   IterationTrail,
 ) as any as S.Schema<AutoresearchTrainingRunIterationsList>;
 
@@ -1118,7 +1072,7 @@ export interface AutoresearchTrainingRun {
   completed_at: string | null;
   created_at: string;
 }
-export const AutoresearchTrainingRun = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchTrainingRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pipeline: S.String,
@@ -1145,7 +1099,7 @@ export interface CreateAutoresearchTrainingRunRequest {
   /** Iteration budget for this run. Defaults to the pipeline's iteration_budget if omitted. */
   iteration_budget?: number;
 }
-export const CreateAutoresearchTrainingRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainingRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1178,7 +1132,7 @@ export interface CreateAutoresearchTrainingRunsCompleteRequest {
   /** Short id of the report notebook you built for this run. Stored in the run summary only if the notebook exists in this project; an unknown id is dropped and does not fail the completion. */
   report_notebook_short_id?: string;
 }
-export const CreateAutoresearchTrainingRunsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainingRunsCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1202,7 +1156,7 @@ export const CreateAutoresearchTrainingRunsCompleteRequest = /*@__PURE__*/ S.sus
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList =
   Array<unknown>;
-export const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList =
+const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList>;
@@ -1214,14 +1168,13 @@ export interface CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList | null;
 }
-export const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      feature_sql: S.String,
-      feature_transforms: S.optional(
-        S.NullOr(CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList),
-      ),
-    }),
+const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feature_sql: S.String,
+    feature_transforms: S.optional(
+      S.NullOr(CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshotFeatureTransformsList),
+    ),
+  }),
 ).annotate({
   identifier: "CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot",
 }) as any as S.Schema<CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot>;
@@ -1230,7 +1183,7 @@ export const CreateAutoresearchTrainingRunsIterationRequestRecipeSnapshot = /*@_
 export type CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap = {
   [key: string]: unknown | undefined;
 };
-export const CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap =
+const CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
@@ -1243,7 +1196,7 @@ export interface CreateAutoresearchTrainingRunsIterationRequestModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: CreateAutoresearchTrainingRunsIterationRequestModelSpecModelParamsMap | null;
 }
-export const CreateAutoresearchTrainingRunsIterationRequestModelSpec = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainingRunsIterationRequestModelSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_class: S.String,
     model_params: S.optional(
@@ -1256,7 +1209,7 @@ export const CreateAutoresearchTrainingRunsIterationRequestModelSpec = /*@__PURE
 
 /** * `kept` - kept * `discarded` - discarded * `crashed` - crashed */
 export type RecordIterationStatusEnum = "kept" | "discarded" | "crashed";
-export const RecordIterationStatusEnum = S.String;
+const RecordIterationStatusEnum = S.String;
 
 export interface CreateAutoresearchTrainingRunsIterationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1283,7 +1236,7 @@ export interface CreateAutoresearchTrainingRunsIterationRequest {
   /** UUID of the steering suggestion this iteration was spawned from, if any. Set it whenever the iteration acts on a pending suggestion -- it links the iteration back to the suggestion for attribution and advances the suggestion to 'acted_on'. */
   parent_suggestion?: string | null;
 }
-export const CreateAutoresearchTrainingRunsIterationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainingRunsIterationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1310,7 +1263,7 @@ export const CreateAutoresearchTrainingRunsIterationRequest = /*@__PURE__*/ S.su
 
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type AutoresearchIterationRecipeSnapshotFeatureTransformsList = Array<unknown>;
-export const AutoresearchIterationRecipeSnapshotFeatureTransformsList = /*@__PURE__*/ S.Array(
+const AutoresearchIterationRecipeSnapshotFeatureTransformsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<AutoresearchIterationRecipeSnapshotFeatureTransformsList>;
 
@@ -1321,7 +1274,7 @@ export interface AutoresearchIterationRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: AutoresearchIterationRecipeSnapshotFeatureTransformsList | null;
 }
-export const AutoresearchIterationRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchIterationRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     feature_sql: S.String,
     feature_transforms: S.optional(
@@ -1334,7 +1287,7 @@ export const AutoresearchIterationRecipeSnapshot = /*@__PURE__*/ S.suspend(() =>
 
 /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
 export type AutoresearchIterationModelSpecModelParamsMap = { [key: string]: unknown | undefined };
-export const AutoresearchIterationModelSpecModelParamsMap =
+const AutoresearchIterationModelSpecModelParamsMap =
   UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchIterationModelSpecModelParamsMap>;
 
 /** Model class and hyperparameters tried in this iteration. */
@@ -1344,7 +1297,7 @@ export interface AutoresearchIterationModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: AutoresearchIterationModelSpecModelParamsMap | null;
 }
-export const AutoresearchIterationModelSpec = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchIterationModelSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_class: S.String,
     model_params: S.optional(S.NullOr(AutoresearchIterationModelSpecModelParamsMap)),
@@ -1373,7 +1326,7 @@ export interface AutoresearchIteration {
   parent_suggestion?: string | null;
   created_at: string;
 }
-export const AutoresearchIteration = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchIteration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pipeline: S.String,
@@ -1401,7 +1354,7 @@ export interface CreateAutoresearchTrainingRunsMaterializeFeatureRequest {
   /** Your HogQL feature query, using the {anchors}/{lookback_days} contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id), one row per user. The backend runs it server-side against the labeled training population -- no 500-row cap -- and writes the resulting train/holdout feature and label parquet files into your sandbox. */
   features_sql: string;
 }
-export const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1420,12 +1373,12 @@ export const CreateAutoresearchTrainingRunsMaterializeFeatureRequest = /*@__PURE
 
 /** The numeric feature column names (excludes distinct_id, __label, __fold). */
 export type MaterializeFeaturesResponseFeatureColsList = Array<string>;
-export const MaterializeFeaturesResponseFeatureColsList =
+const MaterializeFeaturesResponseFeatureColsList =
   ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseFeatureColsList>;
 
 /** Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today's population in time is not promoted. */
 export type MaterializeFeaturesResponseHintsList = Array<string>;
-export const MaterializeFeaturesResponseHintsList =
+const MaterializeFeaturesResponseHintsList =
   ResolvedTemplateActivityEventAlternativesList as any as S.Schema<MaterializeFeaturesResponseHintsList>;
 
 /** The local sandbox paths and shape of the materialized training matrix. */
@@ -1453,7 +1406,7 @@ export interface MaterializeFeaturesResponse {
   /** Advice on the cost of features_sql. A hint does not block the materialization or the upload, but a champion whose features.sql cannot score today's population in time is not promoted. */
   hints: MaterializeFeaturesResponseHintsList;
 }
-export const MaterializeFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
+const MaterializeFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     train_features_path: S.String,
     train_labels_path: S.String,
@@ -1477,7 +1430,7 @@ export interface GetAutoresearchRequest {
   /** A UUID string identifying this autoresearch pipeline. */
   id: string;
 }
-export const GetAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1493,7 +1446,7 @@ export interface GetAutoresearchModelRequest {
   /** A UUID string identifying this autoresearch model. */
   id: string;
 }
-export const GetAutoresearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1511,11 +1464,11 @@ export const GetAutoresearchModelRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `champion` - Champion * `challenger` - Challenger * `archived` - Archived */
 export type AutoresearchModelRoleEnum = "champion" | "challenger" | "archived";
-export const AutoresearchModelRoleEnum = S.String;
+const AutoresearchModelRoleEnum = S.String;
 
 /** Extended metrics bundle: Brier score, precision/recall at thresholds, lift@k, base rate, row counts. */
 export type AutoresearchModelMetricsMap = { [key: string]: unknown | undefined };
-export const AutoresearchModelMetricsMap =
+const AutoresearchModelMetricsMap =
   UserBasicHedgehogConfigMap as any as S.Schema<AutoresearchModelMetricsMap>;
 
 export interface AutoresearchModel {
@@ -1558,7 +1511,7 @@ export interface AutoresearchModel {
   /** True if this model is in the pipeline's shadow set: the champion, the previous champion, and up to 3 recent fitted challengers with distinct recipes. */
   in_shadow_set: boolean;
 }
-export const AutoresearchModel = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     pipeline: S.String,
@@ -1591,7 +1544,7 @@ export interface GetAutoresearchOnlinePerformanceRequest {
   /** Maximum number of validated prediction dates to return, newest first (default 60, at most 180). Each date returns one row per model that emitted predictions on it. */
   limit?: number;
 }
-export const GetAutoresearchOnlinePerformanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchOnlinePerformanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1615,7 +1568,7 @@ export interface CalibrationBin {
   /** Fraction of the users in this bin who did the target event within the horizon. */
   positive_rate: number;
 }
-export const CalibrationBin = /*@__PURE__*/ S.suspend(() =>
+const CalibrationBin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     n: S.Number,
     mean_p_y: S.Number,
@@ -1625,7 +1578,7 @@ export const CalibrationBin = /*@__PURE__*/ S.suspend(() =>
 
 /** Calibration table with up to 10 bins cut at score quantiles, lowest scores first. Users with equal scores share a bin, so heavy ties give fewer bins. Null for dates validated before this metric existed. */
 export type OnlinePerformanceRowCalibrationBinsList = Array<CalibrationBin>;
-export const OnlinePerformanceRowCalibrationBinsList = /*@__PURE__*/ S.Array(
+const OnlinePerformanceRowCalibrationBinsList = /*@__PURE__*/ S.Array(
   CalibrationBin,
 ) as any as S.Schema<OnlinePerformanceRowCalibrationBinsList>;
 
@@ -1673,7 +1626,7 @@ export interface OnlinePerformanceRow {
   /** When the validation run completed. */
   validated_at: string | null;
 }
-export const OnlinePerformanceRow = /*@__PURE__*/ S.suspend(() =>
+const OnlinePerformanceRow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validation_run_id: S.String,
     prediction_date: S.String,
@@ -1701,7 +1654,7 @@ export const OnlinePerformanceRow = /*@__PURE__*/ S.suspend(() =>
 
 /** One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run. */
 export type OnlinePerformanceRowsList = Array<OnlinePerformanceRow>;
-export const OnlinePerformanceRowsList = /*@__PURE__*/ S.Array(
+const OnlinePerformanceRowsList = /*@__PURE__*/ S.Array(
   OnlinePerformanceRow,
 ) as any as S.Schema<OnlinePerformanceRowsList>;
 
@@ -1709,7 +1662,7 @@ export interface OnlinePerformance {
   /** One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run. */
   rows: OnlinePerformanceRowsList;
 }
-export const OnlinePerformance = /*@__PURE__*/ S.suspend(() =>
+const OnlinePerformance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rows: OnlinePerformanceRowsList,
   }),
@@ -1722,7 +1675,7 @@ export interface GetAutoresearchRunRequest {
   /** A UUID string identifying this autoresearch run. */
   id: string;
 }
-export const GetAutoresearchRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1745,7 +1698,7 @@ export interface GetAutoresearchSuggestionRequest {
   /** A UUID string identifying this autoresearch suggestion. */
   id: string;
 }
-export const GetAutoresearchSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchSuggestionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1768,7 +1721,7 @@ export interface GetAutoresearchTrainingRunRequest {
   /** A UUID string identifying this autoresearch training run. */
   id: string;
 }
-export const GetAutoresearchTrainingRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchTrainingRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1791,7 +1744,7 @@ export interface GetAutoresearchTrainingRunsArtifactRequest {
   /** A UUID string identifying this autoresearch training run. */
   id: string;
 }
-export const GetAutoresearchTrainingRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchTrainingRunsArtifactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1809,7 +1762,7 @@ export const GetAutoresearchTrainingRunsArtifactRequest = /*@__PURE__*/ S.suspen
 
 /** Relative paths of every file stored under this training run's bundle prefix. */
 export type ArtifactListPathsList = Array<string>;
-export const ArtifactListPathsList =
+const ArtifactListPathsList =
   ResolvedTemplateActivityEventAlternativesList as any as S.Schema<ArtifactListPathsList>;
 
 /** The relative paths present in a training run's bundle. */
@@ -1819,7 +1772,7 @@ export interface ArtifactList {
   /** Number of files in the bundle. */
   count: number;
 }
-export const ArtifactList = /*@__PURE__*/ S.suspend(() =>
+const ArtifactList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paths: ArtifactListPathsList,
     count: S.Number,
@@ -1833,7 +1786,7 @@ export interface GetAutoresearchTrainingRunsHistoryRequest {
   /** Maximum number of prior runs to return (default 5, at most 20). */
   limit?: number;
 }
-export const GetAutoresearchTrainingRunsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAutoresearchTrainingRunsHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -1853,9 +1806,6 @@ export const GetAutoresearchTrainingRunsHistoryRequest = /*@__PURE__*/ S.suspend
 export type IterationTrailWithRecipeModelSpecModelParamsMap = {
   [key: string]: unknown | undefined;
 };
-export const IterationTrailWithRecipeModelSpecModelParamsMap =
-  UserBasicHedgehogConfigMap as any as S.Schema<IterationTrailWithRecipeModelSpecModelParamsMap>;
-
 /** Model class and hyperparameters tried in this iteration. */
 export interface IterationTrailWithRecipeModelSpec {
   /** Dotted path of the estimator class. */
@@ -1863,14 +1813,11 @@ export interface IterationTrailWithRecipeModelSpec {
   /** Keyword arguments for the estimator's constructor; null or absent means the defaults. */
   model_params?: IterationTrailWithRecipeModelSpecModelParamsMap | null;
 }
-export const IterationTrailWithRecipeModelSpec =
+const IterationTrailWithRecipeModelSpec =
   AutoresearchIterationModelSpec as any as S.Schema<IterationTrailWithRecipeModelSpec>;
 
 /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
 export type IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList = Array<unknown>;
-export const IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList =
-  AutoresearchIterationRecipeSnapshotFeatureTransformsList as any as S.Schema<IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList>;
-
 /** The recipe this iteration tried: its feature_sql and transforms, so a later run can reuse them. */
 export interface IterationTrailWithRecipeRecipeSnapshot {
   /** A read-only HogQL SELECT from {anchors}, one row per person, keyed on person_id. */
@@ -1878,7 +1825,7 @@ export interface IterationTrailWithRecipeRecipeSnapshot {
   /** Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none. */
   feature_transforms?: IterationTrailWithRecipeRecipeSnapshotFeatureTransformsList | null;
 }
-export const IterationTrailWithRecipeRecipeSnapshot =
+const IterationTrailWithRecipeRecipeSnapshot =
   AutoresearchIterationRecipeSnapshot as any as S.Schema<IterationTrailWithRecipeRecipeSnapshot>;
 
 /** The trail with each iteration's recipe, for history only: a run list page would otherwise carry every recipe of every run. */
@@ -1898,7 +1845,7 @@ export interface IterationTrailWithRecipe {
   /** The recipe this iteration tried: its feature_sql and transforms, so a later run can reuse them. */
   recipe_snapshot: IterationTrailWithRecipeRecipeSnapshot;
 }
-export const IterationTrailWithRecipe = /*@__PURE__*/ S.suspend(() =>
+const IterationTrailWithRecipe = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     iteration_number: S.Number,
     status: AutoresearchIterationStatusEnum,
@@ -1912,7 +1859,7 @@ export const IterationTrailWithRecipe = /*@__PURE__*/ S.suspend(() =>
 
 /** The iteration trail: every recipe tried, kept or discarded, with rationale and score. */
 export type TrainingRunHistoryEntryIterationsList = Array<IterationTrailWithRecipe>;
-export const TrainingRunHistoryEntryIterationsList = /*@__PURE__*/ S.Array(
+const TrainingRunHistoryEntryIterationsList = /*@__PURE__*/ S.Array(
   IterationTrailWithRecipe,
 ) as any as S.Schema<TrainingRunHistoryEntryIterationsList>;
 
@@ -1939,7 +1886,7 @@ export interface TrainingRunHistoryEntry {
   /** The iteration trail: every recipe tried, kept or discarded, with rationale and score. */
   iterations: TrainingRunHistoryEntryIterationsList;
 }
-export const TrainingRunHistoryEntry = /*@__PURE__*/ S.suspend(() =>
+const TrainingRunHistoryEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     pipeline_id: S.String,
@@ -1956,7 +1903,7 @@ export const TrainingRunHistoryEntry = /*@__PURE__*/ S.suspend(() =>
 
 /** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
 export type TrainingRunHistoryRunsList = Array<TrainingRunHistoryEntry>;
-export const TrainingRunHistoryRunsList = /*@__PURE__*/ S.Array(
+const TrainingRunHistoryRunsList = /*@__PURE__*/ S.Array(
   TrainingRunHistoryEntry,
 ) as any as S.Schema<TrainingRunHistoryRunsList>;
 
@@ -1965,7 +1912,7 @@ export interface TrainingRunHistory {
   /** Recent completed training runs -- the current pipeline first, then same-target sibling pipelines on the team -- newest first. Mine these to reuse winning features and avoid repeating discarded approaches. */
   runs: TrainingRunHistoryRunsList;
 }
-export const TrainingRunHistory = /*@__PURE__*/ S.suspend(() =>
+const TrainingRunHistory = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runs: TrainingRunHistoryRunsList,
   }),
@@ -1979,7 +1926,7 @@ export interface ListAutoresearchRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -1988,7 +1935,7 @@ export const ListAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAutoresearchRequest" }) as any as S.Schema<ListAutoresearchRequest>;
 
 export type PaginatedAutoresearchPipelineListResultsList = Array<AutoresearchPipeline>;
-export const PaginatedAutoresearchPipelineListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAutoresearchPipelineListResultsList = /*@__PURE__*/ S.Array(
   AutoresearchPipeline,
 ) as any as S.Schema<PaginatedAutoresearchPipelineListResultsList>;
 
@@ -1998,7 +1945,7 @@ export interface PaginatedAutoresearchPipelineList {
   previous?: string | null;
   results: PaginatedAutoresearchPipelineListResultsList;
 }
-export const PaginatedAutoresearchPipelineList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAutoresearchPipelineList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2018,7 +1965,7 @@ export interface ListAutoresearchModelsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAutoresearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -2036,7 +1983,7 @@ export const ListAutoresearchModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAutoresearchModelsRequest>;
 
 export type PaginatedAutoresearchModelListResultsList = Array<AutoresearchModel>;
-export const PaginatedAutoresearchModelListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAutoresearchModelListResultsList = /*@__PURE__*/ S.Array(
   AutoresearchModel,
 ) as any as S.Schema<PaginatedAutoresearchModelListResultsList>;
 
@@ -2046,7 +1993,7 @@ export interface PaginatedAutoresearchModelList {
   previous?: string | null;
   results: PaginatedAutoresearchModelListResultsList;
 }
-export const PaginatedAutoresearchModelList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAutoresearchModelList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2066,7 +2013,7 @@ export interface ListAutoresearchRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAutoresearchRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -2084,7 +2031,7 @@ export const ListAutoresearchRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAutoresearchRunsRequest>;
 
 export type PaginatedAutoresearchRunListResultsList = Array<AutoresearchRun>;
-export const PaginatedAutoresearchRunListResultsList =
+const PaginatedAutoresearchRunListResultsList =
   AutoresearchValidateOnlineCreateResponseBodyList as any as S.Schema<PaginatedAutoresearchRunListResultsList>;
 
 export interface PaginatedAutoresearchRunList {
@@ -2093,7 +2040,7 @@ export interface PaginatedAutoresearchRunList {
   previous?: string | null;
   results: PaginatedAutoresearchRunListResultsList;
 }
-export const PaginatedAutoresearchRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAutoresearchRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2113,7 +2060,7 @@ export interface ListAutoresearchSuggestionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAutoresearchSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -2131,7 +2078,7 @@ export const ListAutoresearchSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAutoresearchSuggestionsRequest>;
 
 export type PaginatedAutoresearchSuggestionListResultsList = Array<AutoresearchSuggestion>;
-export const PaginatedAutoresearchSuggestionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAutoresearchSuggestionListResultsList = /*@__PURE__*/ S.Array(
   AutoresearchSuggestion,
 ) as any as S.Schema<PaginatedAutoresearchSuggestionListResultsList>;
 
@@ -2141,7 +2088,7 @@ export interface PaginatedAutoresearchSuggestionList {
   previous?: string | null;
   results: PaginatedAutoresearchSuggestionListResultsList;
 }
-export const PaginatedAutoresearchSuggestionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAutoresearchSuggestionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2156,7 +2103,7 @@ export interface ListAutoresearchTemplatesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListAutoresearchTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2182,7 +2129,7 @@ export interface TemplateInfo {
   /** Usage guidance and implementation notes. */
   notes: string;
 }
-export const TemplateInfo = /*@__PURE__*/ S.suspend(() =>
+const TemplateInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: TemplateKeyEnum,
     display_name: S.String,
@@ -2195,12 +2142,12 @@ export const TemplateInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TemplateInfo" }) as any as S.Schema<TemplateInfo>;
 
 export type ListAutoresearchTemplatesResponseBodyList = Array<TemplateInfo>;
-export const ListAutoresearchTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAutoresearchTemplatesResponseBodyList = /*@__PURE__*/ S.Array(
   TemplateInfo,
 ) as any as S.Schema<ListAutoresearchTemplatesResponseBodyList>;
 
 export type ListAutoresearchTemplatesResponse = ListAutoresearchTemplatesResponseBodyList;
-export const ListAutoresearchTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   ListAutoresearchTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAutoresearchTemplatesResponse",
@@ -2215,7 +2162,7 @@ export interface ListAutoresearchTrainingRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAutoresearchTrainingRunsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAutoresearchTrainingRunsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     pipeline_id: S.String.pipe(T.Label()),
@@ -2233,7 +2180,7 @@ export const ListAutoresearchTrainingRunsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAutoresearchTrainingRunsRequest>;
 
 export type PaginatedAutoresearchTrainingRunListResultsList = Array<AutoresearchTrainingRun>;
-export const PaginatedAutoresearchTrainingRunListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAutoresearchTrainingRunListResultsList = /*@__PURE__*/ S.Array(
   AutoresearchTrainingRun,
 ) as any as S.Schema<PaginatedAutoresearchTrainingRunListResultsList>;
 
@@ -2243,7 +2190,7 @@ export interface PaginatedAutoresearchTrainingRunList {
   previous?: string | null;
   results: PaginatedAutoresearchTrainingRunListResultsList;
 }
-export const PaginatedAutoresearchTrainingRunList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAutoresearchTrainingRunList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -2255,32 +2202,22 @@ export const PaginatedAutoresearchTrainingRunList = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<PaginatedAutoresearchTrainingRunList>;
 
 export type UpdateAutoresearchRequestTargetDefinitionCase0Type = "event";
-export const UpdateAutoresearchRequestTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface UpdateAutoresearchRequestTargetDefinitionCase0 {
   type: UpdateAutoresearchRequestTargetDefinitionCase0Type;
 }
-export const UpdateAutoresearchRequestTargetDefinitionCase0 =
-  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase0>;
-
 export type UpdateAutoresearchRequestTargetDefinitionCase1Type = "action";
-export const UpdateAutoresearchRequestTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface UpdateAutoresearchRequestTargetDefinitionCase1 {
   type: UpdateAutoresearchRequestTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const UpdateAutoresearchRequestTargetDefinitionCase1 =
-  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<UpdateAutoresearchRequestTargetDefinitionCase1>;
-
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type UpdateAutoresearchRequestTargetDefinition =
   | UpdateAutoresearchRequestTargetDefinitionCase0
   | UpdateAutoresearchRequestTargetDefinitionCase1;
-export const UpdateAutoresearchRequestTargetDefinition =
+const UpdateAutoresearchRequestTargetDefinition =
   S.Unknown as any as S.Schema<UpdateAutoresearchRequestTargetDefinition>;
 
 export interface UpdateAutoresearchRequest {
@@ -2315,7 +2252,7 @@ export interface UpdateAutoresearchRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
-export const UpdateAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2340,32 +2277,22 @@ export const UpdateAutoresearchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAutoresearchRequest>;
 
 export type AutoresearchPipelineCreateTargetDefinitionCase0Type = "event";
-export const AutoresearchPipelineCreateTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface AutoresearchPipelineCreateTargetDefinitionCase0 {
   type: AutoresearchPipelineCreateTargetDefinitionCase0Type;
 }
-export const AutoresearchPipelineCreateTargetDefinitionCase0 =
-  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase0>;
-
 export type AutoresearchPipelineCreateTargetDefinitionCase1Type = "action";
-export const AutoresearchPipelineCreateTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface AutoresearchPipelineCreateTargetDefinitionCase1 {
   type: AutoresearchPipelineCreateTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const AutoresearchPipelineCreateTargetDefinitionCase1 =
-  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<AutoresearchPipelineCreateTargetDefinitionCase1>;
-
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type AutoresearchPipelineCreateTargetDefinition =
   | AutoresearchPipelineCreateTargetDefinitionCase0
   | AutoresearchPipelineCreateTargetDefinitionCase1;
-export const AutoresearchPipelineCreateTargetDefinition =
+const AutoresearchPipelineCreateTargetDefinition =
   S.Unknown as any as S.Schema<AutoresearchPipelineCreateTargetDefinition>;
 
 export interface AutoresearchPipelineCreate {
@@ -2396,7 +2323,7 @@ export interface AutoresearchPipelineCreate {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
-export const AutoresearchPipelineCreate = /*@__PURE__*/ S.suspend(() =>
+const AutoresearchPipelineCreate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -2417,32 +2344,22 @@ export const AutoresearchPipelineCreate = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoresearchPipelineCreate>;
 
 export type UpdateAutoresearchPartialRequestTargetDefinitionCase0Type = "event";
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase0Type = S.String;
-
 /** Predict target_event. The default when target_definition is omitted. */
 export interface UpdateAutoresearchPartialRequestTargetDefinitionCase0 {
   type: UpdateAutoresearchPartialRequestTargetDefinitionCase0Type;
 }
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase0 =
-  AutoresearchPipelineTargetDefinitionCase0 as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase0>;
-
 export type UpdateAutoresearchPartialRequestTargetDefinitionCase1Type = "action";
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase1Type = S.String;
-
 /** Predict a PostHog action in this project. */
 export interface UpdateAutoresearchPartialRequestTargetDefinitionCase1 {
   type: UpdateAutoresearchPartialRequestTargetDefinitionCase1Type;
   /** ID of the action to predict. */
   action_id: number;
 }
-export const UpdateAutoresearchPartialRequestTargetDefinitionCase1 =
-  AutoresearchPipelineTargetDefinitionCase1 as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinitionCase1>;
-
 /** Omit (or pass {"type": "event"}) to predict target_event; pass {"type": "action", "action_id": N} to predict a PostHog action. No other shapes are accepted. */
 export type UpdateAutoresearchPartialRequestTargetDefinition =
   | UpdateAutoresearchPartialRequestTargetDefinitionCase0
   | UpdateAutoresearchPartialRequestTargetDefinitionCase1;
-export const UpdateAutoresearchPartialRequestTargetDefinition =
+const UpdateAutoresearchPartialRequestTargetDefinition =
   S.Unknown as any as S.Schema<UpdateAutoresearchPartialRequestTargetDefinition>;
 
 export interface UpdateAutoresearchPartialRequest {
@@ -2477,7 +2394,7 @@ export interface UpdateAutoresearchPartialRequest {
   /** Person property name for the prediction score, e.g. 'predicted_p_pageview'. Auto-derived from target_event if omitted. Letters, digits, and _ $ . - only, and it cannot start with $ (reserved for PostHog's own properties); must be unique among this project's non-archived pipelines. */
   output_person_property?: string;
 }
-export const UpdateAutoresearchPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAutoresearchPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

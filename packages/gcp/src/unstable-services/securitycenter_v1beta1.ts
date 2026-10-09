@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -71,7 +71,7 @@ export interface CancelOrganizationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -87,14 +87,14 @@ export const CancelOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CancelOrganizationsOperationsRequest>;
 
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export interface Source {
   name?: string;
   displayName?: string;
   description?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -107,7 +107,7 @@ export interface CreateOrganizationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const CreateOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Source.pipe(T.HttpBody())),
@@ -123,25 +123,22 @@ export const CreateOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateOrganizationsSourcesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type GoogleCloudSecuritycenterV1beta1FindingStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "INACTIVE";
-export const GoogleCloudSecuritycenterV1beta1FindingStateEnum = S.String;
+const GoogleCloudSecuritycenterV1beta1FindingStateEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface GoogleCloudSecuritycenterV1beta1SecurityMarks {
   name?: string;
   marks?: StringMap;
 }
-export const GoogleCloudSecuritycenterV1beta1SecurityMarks = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudSecuritycenterV1beta1SecurityMarks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     marks: S.optional(StringMap),
@@ -162,7 +159,7 @@ export interface GoogleCloudSecuritycenterV1beta1Finding {
   securityMarks?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
   eventTime?: string;
 }
-export const GoogleCloudSecuritycenterV1beta1Finding = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudSecuritycenterV1beta1Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -185,7 +182,7 @@ export interface CreateOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1Finding;
 }
-export const CreateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     findingId: S.optional(S.String.pipe(T.Query())),
@@ -204,7 +201,7 @@ export const CreateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend
 export interface DeleteOrganizationsOperationsRequest {
   name: string;
 }
-export const DeleteOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -221,7 +218,7 @@ export const DeleteOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =
 export interface GetPolicyOptions {
   requestedPolicyVersion?: number;
 }
-export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
+const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestedPolicyVersion: S.optional(S.Number),
   }),
@@ -230,7 +227,7 @@ export const GetPolicyOptions = /*@__PURE__*/ S.suspend(() =>
 export interface GetIamPolicyRequest {
   options?: GetPolicyOptions;
 }
-export const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     options: S.optional(GetPolicyOptions),
   }),
@@ -241,7 +238,7 @@ export interface GetIamPolicyOrganizationsSourcesRequest {
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-export const GetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
@@ -262,7 +259,7 @@ export interface Expr {
   title?: string;
   description?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -272,14 +269,14 @@ export const Expr = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Expr" }) as any as S.Schema<Expr>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface Binding {
   condition?: Expr;
   members?: StringList;
   role?: string;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     condition: S.optional(Expr),
     members: S.optional(StringList),
@@ -288,20 +285,20 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 export interface AuditLogConfig {
   logType?: AuditLogConfigLogTypeEnum | (string & {});
   exemptedMembers?: StringList;
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     logType: S.optional(AuditLogConfigLogTypeEnum),
     exemptedMembers: S.optional(StringList),
@@ -309,7 +306,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -317,7 +314,7 @@ export interface AuditConfig {
   service?: string;
   auditLogConfigs?: AuditLogConfigList;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     service: S.optional(S.String),
     auditLogConfigs: S.optional(AuditLogConfigList),
@@ -325,9 +322,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 export interface Policy {
   bindings?: BindingList;
@@ -335,7 +330,7 @@ export interface Policy {
   version?: number;
   auditConfigs?: AuditConfigList;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     etag: S.optional(S.String),
@@ -347,7 +342,7 @@ export const Policy = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrganizationSettingsOrganizationsRequest {
   name: string;
 }
-export const GetOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -365,13 +360,13 @@ export type AssetDiscoveryConfigInclusionModeEnum =
   | "INCLUSION_MODE_UNSPECIFIED"
   | "INCLUDE_ONLY"
   | "EXCLUDE";
-export const AssetDiscoveryConfigInclusionModeEnum = S.String;
+const AssetDiscoveryConfigInclusionModeEnum = S.String;
 
 export interface AssetDiscoveryConfig {
   projectIds?: StringList;
   inclusionMode?: AssetDiscoveryConfigInclusionModeEnum | (string & {});
 }
-export const AssetDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
+const AssetDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectIds: S.optional(StringList),
     inclusionMode: S.optional(AssetDiscoveryConfigInclusionModeEnum),
@@ -383,7 +378,7 @@ export interface OrganizationSettings {
   name?: string;
   enableAssetDiscovery?: boolean;
 }
-export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
+const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assetDiscoveryConfig: S.optional(AssetDiscoveryConfig),
     name: S.optional(S.String),
@@ -394,7 +389,7 @@ export const OrganizationSettings = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrganizationsOperationsRequest {
   name: string;
 }
-export const GetOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -409,16 +404,14 @@ export const GetOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrganizationsOperationsRequest>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 export interface Status {
   details?: DocumentMapList;
   message?: string;
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(DocumentMapList),
     message: S.optional(S.String),
@@ -433,7 +426,7 @@ export interface Operation {
   metadata?: DocumentMap;
   error?: Status;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     response: S.optional(DocumentMap),
     done: S.optional(S.Boolean),
@@ -446,7 +439,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrganizationsSourcesRequest {
   name: string;
 }
-export const GetOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -468,7 +461,7 @@ export interface GroupAssetsRequest {
   groupBy?: string;
   compareDuration?: string;
 }
-export const GroupAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     pageToken: S.optional(S.String),
@@ -484,7 +477,7 @@ export interface GroupOrganizationsAssetsRequest {
   /** Request body */
   body?: GroupAssetsRequest;
 }
-export const GroupOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GroupAssetsRequest.pipe(T.HttpBody())),
@@ -503,7 +496,7 @@ export interface GroupResult {
   count?: string;
   properties?: DocumentMap;
 }
-export const GroupResult = /*@__PURE__*/ S.suspend(() =>
+const GroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.String),
     properties: S.optional(DocumentMap),
@@ -511,16 +504,14 @@ export const GroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GroupResult" }) as any as S.Schema<GroupResult>;
 
 export type GroupResultList = Array<GroupResult>;
-export const GroupResultList = /*@__PURE__*/ S.Array(
-  GroupResult,
-) as any as S.Schema<GroupResultList>;
+const GroupResultList = /*@__PURE__*/ S.Array(GroupResult) as any as S.Schema<GroupResultList>;
 
 export interface GroupAssetsResponse {
   readTime?: string;
   groupByResults?: GroupResultList;
   nextPageToken?: string;
 }
-export const GroupAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GroupAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     groupByResults: S.optional(GroupResultList),
@@ -535,7 +526,7 @@ export interface GroupFindingsRequest {
   readTime?: string;
   pageSize?: number;
 }
-export const GroupFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String),
     filter: S.optional(S.String),
@@ -550,7 +541,7 @@ export interface GroupOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: GroupFindingsRequest;
 }
-export const GroupOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GroupOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GroupFindingsRequest.pipe(T.HttpBody())),
@@ -570,7 +561,7 @@ export interface GroupFindingsResponse {
   nextPageToken?: string;
   groupByResults?: GroupResultList;
 }
-export const GroupFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GroupFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     nextPageToken: S.optional(S.String),
@@ -588,7 +579,7 @@ export interface ListOrganizationsAssetsRequest {
   filter?: string;
   pageSize?: number;
 }
-export const ListOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -616,7 +607,7 @@ export interface SecurityCenterProperties {
   resourceOwners?: StringList;
   resourceProject?: string;
 }
-export const SecurityCenterProperties = /*@__PURE__*/ S.suspend(() =>
+const SecurityCenterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceName: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -634,7 +625,7 @@ export interface Asset {
   resourceProperties?: DocumentMap;
   securityCenterProperties?: SecurityCenterProperties;
 }
-export const Asset = /*@__PURE__*/ S.suspend(() =>
+const Asset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -651,13 +642,13 @@ export type ListAssetsResultStateEnum =
   | "ADDED"
   | "REMOVED"
   | "ACTIVE";
-export const ListAssetsResultStateEnum = S.String;
+const ListAssetsResultStateEnum = S.String;
 
 export interface ListAssetsResult {
   asset?: Asset;
   state?: ListAssetsResultStateEnum;
 }
-export const ListAssetsResult = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     asset: S.optional(Asset),
     state: S.optional(ListAssetsResultStateEnum),
@@ -665,7 +656,7 @@ export const ListAssetsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAssetsResult" }) as any as S.Schema<ListAssetsResult>;
 
 export type ListAssetsResultList = Array<ListAssetsResult>;
-export const ListAssetsResultList = /*@__PURE__*/ S.Array(
+const ListAssetsResultList = /*@__PURE__*/ S.Array(
   ListAssetsResult,
 ) as any as S.Schema<ListAssetsResultList>;
 
@@ -675,7 +666,7 @@ export interface ListAssetsResponse {
   readTime?: string;
   listAssetsResults?: ListAssetsResultList;
 }
-export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     totalSize: S.optional(S.Number),
@@ -691,7 +682,7 @@ export interface ListOrganizationsOperationsRequest {
   pageToken?: string;
   name: string;
 }
-export const ListOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     returnPartialSuccess: S.optional(S.Boolean.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -710,14 +701,14 @@ export const ListOrganizationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 export interface ListOperationsResponse {
   nextPageToken?: string;
   operations?: OperationList;
   unreachable?: StringList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     operations: S.optional(OperationList),
@@ -730,7 +721,7 @@ export interface ListOrganizationsSourcesRequest {
   parent: string;
   pageToken?: string;
 }
-export const ListOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -747,13 +738,13 @@ export const ListOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsSourcesRequest>;
 
 export type SourceList = Array<Source>;
-export const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
+const SourceList = /*@__PURE__*/ S.Array(Source) as any as S.Schema<SourceList>;
 
 export interface ListSourcesResponse {
   nextPageToken?: string;
   sources?: SourceList;
 }
-export const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     sources: S.optional(SourceList),
@@ -769,7 +760,7 @@ export interface ListOrganizationsSourcesFindingsRequest {
   parent: string;
   readTime?: string;
 }
-export const ListOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldMask: S.optional(S.String.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -791,7 +782,7 @@ export const ListOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend((
 
 export type GoogleCloudSecuritycenterV1beta1FindingList =
   Array<GoogleCloudSecuritycenterV1beta1Finding>;
-export const GoogleCloudSecuritycenterV1beta1FindingList = /*@__PURE__*/ S.Array(
+const GoogleCloudSecuritycenterV1beta1FindingList = /*@__PURE__*/ S.Array(
   GoogleCloudSecuritycenterV1beta1Finding,
 ) as any as S.Schema<GoogleCloudSecuritycenterV1beta1FindingList>;
 
@@ -801,7 +792,7 @@ export interface ListFindingsResponse {
   findings?: GoogleCloudSecuritycenterV1beta1FindingList;
   nextPageToken?: string;
 }
-export const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readTime: S.optional(S.String),
     totalSize: S.optional(S.Number),
@@ -816,7 +807,7 @@ export interface PatchOrganizationsSourcesRequest {
   /** Request body */
   body?: Source;
 }
-export const PatchOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -838,7 +829,7 @@ export interface PatchOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1Finding;
 }
-export const PatchOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -855,14 +846,12 @@ export const PatchOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<PatchOrganizationsSourcesFindingsRequest>;
 
 export type RunAssetDiscoveryRequest = CancelOperationRequest;
-export const RunAssetDiscoveryRequest = CancelOperationRequest;
-
 export interface RunDiscoveryOrganizationsAssetsRequest {
   parent: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const RunDiscoveryOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const RunDiscoveryOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -881,7 +870,7 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -893,7 +882,7 @@ export interface SetIamPolicyOrganizationsSourcesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -909,13 +898,13 @@ export const SetIamPolicyOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<SetIamPolicyOrganizationsSourcesRequest>;
 
 export type SetFindingStateRequestStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "INACTIVE";
-export const SetFindingStateRequestStateEnum = S.String;
+const SetFindingStateRequestStateEnum = S.String;
 
 export interface SetFindingStateRequest {
   state?: SetFindingStateRequestStateEnum | (string & {});
   startTime?: string;
 }
-export const SetFindingStateRequest = /*@__PURE__*/ S.suspend(() =>
+const SetFindingStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     state: S.optional(SetFindingStateRequestStateEnum),
     startTime: S.optional(S.String),
@@ -927,7 +916,7 @@ export interface SetStateOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: SetFindingStateRequest;
 }
-export const SetStateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetStateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(SetFindingStateRequest.pipe(T.HttpBody())),
@@ -945,7 +934,7 @@ export const SetStateOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspe
 export interface TestIamPermissionsRequest {
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -958,7 +947,7 @@ export interface TestIamPermissionsOrganizationsSourcesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -976,7 +965,7 @@ export const TestIamPermissionsOrganizationsSourcesRequest = /*@__PURE__*/ S.sus
 export interface TestIamPermissionsResponse {
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateOrganizationSettingsOrganizationsRequest {
@@ -985,7 +974,7 @@ export interface UpdateOrganizationSettingsOrganizationsRequest {
   /** Request body */
   body?: OrganizationSettings;
 }
-export const UpdateOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrganizationSettingsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1008,7 +997,7 @@ export interface UpdateSecurityMarksOrganizationsAssetsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
 }
-export const UpdateSecurityMarksOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecurityMarksOrganizationsAssetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     startTime: S.optional(S.String.pipe(T.Query())),
@@ -1032,7 +1021,7 @@ export interface UpdateSecurityMarksOrganizationsSourcesFindingsRequest {
   /** Request body */
   body?: GoogleCloudSecuritycenterV1beta1SecurityMarks;
 }
-export const UpdateSecurityMarksOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSecurityMarksOrganizationsSourcesFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),

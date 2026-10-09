@@ -49,7 +49,7 @@ export interface AcceptResolutionCenterCaseRequestAttachmentsItem {
   direct_upload_id?: string;
   id?: string;
 }
-export const AcceptResolutionCenterCaseRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
+const AcceptResolutionCenterCaseRequestAttachmentsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direct_upload_id: S.optional(S.String),
     id: S.optional(S.String),
@@ -61,7 +61,7 @@ export const AcceptResolutionCenterCaseRequestAttachmentsItem = /*@__PURE__*/ S.
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type AcceptResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const AcceptResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
+const AcceptResolutionCenterCaseRequestAttachmentsList = /*@__PURE__*/ S.Array(
   AcceptResolutionCenterCaseRequestAttachmentsItem,
 ) as any as S.Schema<AcceptResolutionCenterCaseRequestAttachmentsList>;
 
@@ -77,7 +77,7 @@ export interface AcceptResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const AcceptResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(AcceptResolutionCenterCaseRequestAttachmentsList),
@@ -95,7 +95,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -110,11 +110,11 @@ export type ResolutionCenterCaseAvailableActionsItem =
   | "reply"
   | "appeal"
   | "withdraw";
-export const ResolutionCenterCaseAvailableActionsItem = S.String;
+const ResolutionCenterCaseAvailableActionsItem = S.String;
 
 export type ResolutionCenterCaseAvailableActionsList =
   Array<ResolutionCenterCaseAvailableActionsItem>;
-export const ResolutionCenterCaseAvailableActionsList = /*@__PURE__*/ S.Array(
+const ResolutionCenterCaseAvailableActionsList = /*@__PURE__*/ S.Array(
   ResolutionCenterCaseAvailableActionsItem,
 ) as any as S.Schema<ResolutionCenterCaseAvailableActionsList>;
 
@@ -130,7 +130,7 @@ export interface ResolutionBuyer {
   /** The customer's Whop username. */
   username: string | null;
 }
-export const ResolutionBuyer = /*@__PURE__*/ S.suspend(() =>
+const ResolutionBuyer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     member_id: S.NullOr(S.String),
@@ -150,7 +150,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -177,7 +177,7 @@ export interface ReceiptLineItem {
   /** The recorded amount for this item's full quantity, before discounts, tax, and fees, in its purchase currency. Returns `null` when no item amount was recorded. */
   subtotal: Money | null;
 }
-export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
+const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.NullOr(S.String),
     label: S.NullOr(S.String),
@@ -191,13 +191,13 @@ export const ReceiptLineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceiptLineItem" }) as any as S.Schema<ReceiptLineItem>;
 
 export type ResolutionCenterCaseLineItemsList = Array<ReceiptLineItem>;
-export const ResolutionCenterCaseLineItemsList = /*@__PURE__*/ S.Array(
+const ResolutionCenterCaseLineItemsList = /*@__PURE__*/ S.Array(
   ReceiptLineItem,
 ) as any as S.Schema<ResolutionCenterCaseLineItemsList>;
 
 /** Who prevailed on the claim. `null` until the case closes. Read `refund` for whether any money actually moved. */
 export type ResolutionCenterCaseOutcome = "customer_won" | "merchant_won" | "withdrawn";
-export const ResolutionCenterCaseOutcome = S.String;
+const ResolutionCenterCaseOutcome = S.String;
 
 export interface ResolutionPayment {
   /** Card brand, when the customer paid by card. */
@@ -211,7 +211,7 @@ export interface ResolutionPayment {
   /** How the customer paid, such as `card` or `paypal`. */
   payment_method_type: string | null;
 }
-export const ResolutionPayment = /*@__PURE__*/ S.suspend(() =>
+const ResolutionPayment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_brand: S.NullOr(S.String),
     card_last4: S.NullOr(S.String),
@@ -228,11 +228,11 @@ export type ResolutionCenterCaseReason =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
-export const ResolutionCenterCaseReason = S.String;
+const ResolutionCenterCaseReason = S.String;
 
 /** Whether money moved and off whose balance: `none`, `merchant`, or `platform` (Whop refunded the customer and the merchant kept the funds). Independent of `outcome` -- a case the merchant won can still carry a platform refund. `null` while the case is open, and on older closed cases that predate this being recorded. */
 export type ResolutionCenterCaseRefund = "none" | "merchant" | "platform";
-export const ResolutionCenterCaseRefund = S.String;
+const ResolutionCenterCaseRefund = S.String;
 
 /** Who the case is waiting on. `awaiting_merchant` and `awaiting_customer` name the side that owes a response, `under_review` means Whop is deciding, and `closed` means it is settled -- read `outcome` for how. */
 export type ResolutionCenterCaseStatus =
@@ -240,7 +240,7 @@ export type ResolutionCenterCaseStatus =
   | "awaiting_customer"
   | "under_review"
   | "closed";
-export const ResolutionCenterCaseStatus = S.String;
+const ResolutionCenterCaseStatus = S.String;
 
 export interface ResolutionCenterCase {
   /** The account the case was filed against. */
@@ -280,7 +280,7 @@ export interface ResolutionCenterCase {
   /** When the case was last changed, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-export const ResolutionCenterCase = /*@__PURE__*/ S.suspend(() =>
+const ResolutionCenterCase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(AccountSummary),
     amount: S.Number,
@@ -306,13 +306,10 @@ export const ResolutionCenterCase = /*@__PURE__*/ S.suspend(() =>
 
 export type AppealResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
-export const AppealResolutionCenterCaseRequestAttachmentsItem =
-  AcceptResolutionCenterCaseRequestAttachmentsItem;
-
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type AppealResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const AppealResolutionCenterCaseRequestAttachmentsList =
+const AppealResolutionCenterCaseRequestAttachmentsList =
   AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<AppealResolutionCenterCaseRequestAttachmentsList>;
 
 export interface AppealResolutionCenterCaseRequest {
@@ -325,7 +322,7 @@ export interface AppealResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const AppealResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const AppealResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(AppealResolutionCenterCaseRequestAttachmentsList),
@@ -338,12 +335,9 @@ export const AppealResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type CreateResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
-export const CreateResolutionCenterCaseRequestAttachmentsItem =
-  AcceptResolutionCenterCaseRequestAttachmentsItem;
-
 export type CreateResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const CreateResolutionCenterCaseRequestAttachmentsList =
+const CreateResolutionCenterCaseRequestAttachmentsList =
   AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<CreateResolutionCenterCaseRequestAttachmentsList>;
 
 /** What went wrong. Uses the same vocabulary as `/disputes`. */
@@ -353,7 +347,7 @@ export type CreateResolutionCenterCaseRequestReason =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
-export const CreateResolutionCenterCaseRequestReason = S.String;
+const CreateResolutionCenterCaseRequestReason = S.String;
 
 export interface CreateResolutionCenterCaseRequest {
   attachments?: CreateResolutionCenterCaseRequestAttachmentsList;
@@ -366,7 +360,7 @@ export interface CreateResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attachments: S.optional(CreateResolutionCenterCaseRequestAttachmentsList),
     message: S.String,
@@ -380,13 +374,10 @@ export const CreateResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type DenyResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
-export const DenyResolutionCenterCaseRequestAttachmentsItem =
-  AcceptResolutionCenterCaseRequestAttachmentsItem;
-
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type DenyResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const DenyResolutionCenterCaseRequestAttachmentsList =
+const DenyResolutionCenterCaseRequestAttachmentsList =
   AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<DenyResolutionCenterCaseRequestAttachmentsList>;
 
 export interface DenyResolutionCenterCaseRequest {
@@ -399,7 +390,7 @@ export interface DenyResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DenyResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const DenyResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(DenyResolutionCenterCaseRequestAttachmentsList),
@@ -414,7 +405,7 @@ export interface GetResolutionCenterCaseRequest {
   /** The resolution center case ID (`reso_` tag). */
   id: string;
 }
-export const GetResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/resolution_center_cases/{id}", code: 200 })),
@@ -423,12 +414,10 @@ export const GetResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResolutionCenterCaseRequest>;
 
 export type GetResolutionCenterCaseSummaryRequestGroupsItem = "status" | "reason" | "outcome";
-export const GetResolutionCenterCaseSummaryRequestGroupsItem = S.String;
-
 export type GetResolutionCenterCaseSummaryRequestGroupsList = Array<
   GetResolutionCenterCaseSummaryRequestGroupsItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestGroupsList =
+const GetResolutionCenterCaseSummaryRequestGroupsList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestGroupsList>;
 
 export type GetResolutionCenterCaseSummaryRequestStatusItem =
@@ -436,12 +425,10 @@ export type GetResolutionCenterCaseSummaryRequestStatusItem =
   | "awaiting_customer"
   | "under_review"
   | "closed";
-export const GetResolutionCenterCaseSummaryRequestStatusItem = S.String;
-
 export type GetResolutionCenterCaseSummaryRequestStatusList = Array<
   GetResolutionCenterCaseSummaryRequestStatusItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestStatusList =
+const GetResolutionCenterCaseSummaryRequestStatusList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestStatusList>;
 
 export type GetResolutionCenterCaseSummaryRequestReasonItem =
@@ -450,24 +437,20 @@ export type GetResolutionCenterCaseSummaryRequestReasonItem =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
-export const GetResolutionCenterCaseSummaryRequestReasonItem = S.String;
-
 export type GetResolutionCenterCaseSummaryRequestReasonList = Array<
   GetResolutionCenterCaseSummaryRequestReasonItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestReasonList =
+const GetResolutionCenterCaseSummaryRequestReasonList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestReasonList>;
 
 export type GetResolutionCenterCaseSummaryRequestOutcomeItem =
   | "customer_won"
   | "merchant_won"
   | "withdrawn";
-export const GetResolutionCenterCaseSummaryRequestOutcomeItem = S.String;
-
 export type GetResolutionCenterCaseSummaryRequestOutcomeList = Array<
   GetResolutionCenterCaseSummaryRequestOutcomeItem | (string & {})
 >;
-export const GetResolutionCenterCaseSummaryRequestOutcomeList =
+const GetResolutionCenterCaseSummaryRequestOutcomeList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<GetResolutionCenterCaseSummaryRequestOutcomeList>;
 
 export interface GetResolutionCenterCaseSummaryRequest {
@@ -488,7 +471,7 @@ export interface GetResolutionCenterCaseSummaryRequest {
   /** Only count cases created after this ISO 8601 timestamp. */
   created_after?: string;
 }
-export const GetResolutionCenterCaseSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: S.optional(GetResolutionCenterCaseSummaryRequestGroupsList.pipe(T.Query())),
     account_id: S.optional(S.String.pipe(T.Query())),
@@ -509,7 +492,7 @@ export interface GetResolutionCenterCaseSummaryResponseGroupsOutcome {
   merchant_won: number;
   withdrawn: number;
 }
-export const GetResolutionCenterCaseSummaryResponseGroupsOutcome = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryResponseGroupsOutcome = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_won: S.Number,
     merchant_won: S.Number,
@@ -527,7 +510,7 @@ export interface GetResolutionCenterCaseSummaryResponseGroupsReason {
   product_unacceptable: number;
   subscription_canceled: number;
 }
-export const GetResolutionCenterCaseSummaryResponseGroupsReason = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryResponseGroupsReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fraudulent: S.Number,
     not_as_described: S.Number,
@@ -546,7 +529,7 @@ export interface GetResolutionCenterCaseSummaryResponseGroupsStatus {
   closed: number;
   under_review: number;
 }
-export const GetResolutionCenterCaseSummaryResponseGroupsStatus = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryResponseGroupsStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awaiting_customer: S.Number,
     awaiting_merchant: S.Number,
@@ -566,7 +549,7 @@ export interface GetResolutionCenterCaseSummaryResponseGroups {
   /** How many of the matching cases are in each status. Every status is present, including those with a count of zero. */
   status?: GetResolutionCenterCaseSummaryResponseGroupsStatus;
 }
-export const GetResolutionCenterCaseSummaryResponseGroups = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryResponseGroups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outcome: S.optional(GetResolutionCenterCaseSummaryResponseGroupsOutcome),
     reason: S.optional(GetResolutionCenterCaseSummaryResponseGroupsReason),
@@ -582,7 +565,7 @@ export interface GetResolutionCenterCaseSummaryResponse {
   /** How many cases match the filters. */
   total: number;
 }
-export const GetResolutionCenterCaseSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResolutionCenterCaseSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groups: GetResolutionCenterCaseSummaryResponseGroups,
     total: S.Number,
@@ -603,7 +586,7 @@ export interface ListResolutionCenterCaseEventsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListResolutionCenterCaseEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResolutionCenterCaseEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     first: S.optional(S.Number.pipe(T.Query())),
@@ -628,7 +611,7 @@ export type ResolutionEventAction =
   | "dispute_opened"
   | "dispute_customer_won"
   | "dispute_merchant_won";
-export const ResolutionEventAction = S.String;
+const ResolutionEventAction = S.String;
 
 export interface ResolutionAttachment {
   /** The file's MIME type. */
@@ -640,7 +623,7 @@ export interface ResolutionAttachment {
   /** A URL to view or download the file. */
   url: string | null;
 }
-export const ResolutionAttachment = /*@__PURE__*/ S.suspend(() =>
+const ResolutionAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     filename: S.NullOr(S.String),
@@ -650,13 +633,13 @@ export const ResolutionAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResolutionAttachment" }) as any as S.Schema<ResolutionAttachment>;
 
 export type ResolutionEventAttachmentsList = Array<ResolutionAttachment>;
-export const ResolutionEventAttachmentsList = /*@__PURE__*/ S.Array(
+const ResolutionEventAttachmentsList = /*@__PURE__*/ S.Array(
   ResolutionAttachment,
 ) as any as S.Schema<ResolutionEventAttachmentsList>;
 
 /** The party that performed the action. */
 export type ResolutionEventReporterType = "merchant" | "customer" | "platform" | "system";
-export const ResolutionEventReporterType = S.String;
+const ResolutionEventReporterType = S.String;
 
 export interface ResolutionEvent {
   /** The action recorded in this event. */
@@ -675,7 +658,7 @@ export interface ResolutionEvent {
   /** Whether the merchant can see this event in the timeline. */
   viewable_by_merchant: boolean;
 }
-export const ResolutionEvent = /*@__PURE__*/ S.suspend(() =>
+const ResolutionEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: ResolutionEventAction,
     attachments: ResolutionEventAttachmentsList,
@@ -689,7 +672,7 @@ export const ResolutionEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResolutionEvent" }) as any as S.Schema<ResolutionEvent>;
 
 export type ListResolutionCenterCaseEventsResponseDataList = Array<ResolutionEvent>;
-export const ListResolutionCenterCaseEventsResponseDataList = /*@__PURE__*/ S.Array(
+const ListResolutionCenterCaseEventsResponseDataList = /*@__PURE__*/ S.Array(
   ResolutionEvent,
 ) as any as S.Schema<ListResolutionCenterCaseEventsResponseDataList>;
 
@@ -699,7 +682,7 @@ export interface ListResolutionCenterCaseEventsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListResolutionCenterCaseEventsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListResolutionCenterCaseEventsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -714,7 +697,7 @@ export interface ListResolutionCenterCaseEventsResponse {
   data: ListResolutionCenterCaseEventsResponseDataList;
   page_info: ListResolutionCenterCaseEventsResponsePageInfo;
 }
-export const ListResolutionCenterCaseEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResolutionCenterCaseEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListResolutionCenterCaseEventsResponseDataList,
     page_info: ListResolutionCenterCaseEventsResponsePageInfo,
@@ -724,22 +707,20 @@ export const ListResolutionCenterCaseEventsResponse = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListResolutionCenterCaseEventsResponse>;
 
 export type ListResolutionCenterCasesRequestOrder = "created_at" | "response_due_at";
-export const ListResolutionCenterCasesRequestOrder = S.String;
+const ListResolutionCenterCasesRequestOrder = S.String;
 
 export type ListResolutionCenterCasesRequestDirection = "asc" | "desc";
-export const ListResolutionCenterCasesRequestDirection = S.String;
+const ListResolutionCenterCasesRequestDirection = S.String;
 
 export type ListResolutionCenterCasesRequestStatusItem =
   | "awaiting_merchant"
   | "awaiting_customer"
   | "under_review"
   | "closed";
-export const ListResolutionCenterCasesRequestStatusItem = S.String;
-
 export type ListResolutionCenterCasesRequestStatusList = Array<
   ListResolutionCenterCasesRequestStatusItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestStatusList =
+const ListResolutionCenterCasesRequestStatusList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestStatusList>;
 
 export type ListResolutionCenterCasesRequestReasonItem =
@@ -748,24 +729,20 @@ export type ListResolutionCenterCasesRequestReasonItem =
   | "not_as_described"
   | "product_unacceptable"
   | "subscription_canceled";
-export const ListResolutionCenterCasesRequestReasonItem = S.String;
-
 export type ListResolutionCenterCasesRequestReasonList = Array<
   ListResolutionCenterCasesRequestReasonItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestReasonList =
+const ListResolutionCenterCasesRequestReasonList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestReasonList>;
 
 export type ListResolutionCenterCasesRequestOutcomeItem =
   | "customer_won"
   | "merchant_won"
   | "withdrawn";
-export const ListResolutionCenterCasesRequestOutcomeItem = S.String;
-
 export type ListResolutionCenterCasesRequestOutcomeList = Array<
   ListResolutionCenterCasesRequestOutcomeItem | (string & {})
 >;
-export const ListResolutionCenterCasesRequestOutcomeList =
+const ListResolutionCenterCasesRequestOutcomeList =
   ResolutionCenterCaseAvailableActionsList as any as S.Schema<ListResolutionCenterCasesRequestOutcomeList>;
 
 export interface ListResolutionCenterCasesRequest {
@@ -796,7 +773,7 @@ export interface ListResolutionCenterCasesRequest {
   /** Only cases created after this ISO 8601 timestamp. */
   created_after?: string;
 }
-export const ListResolutionCenterCasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResolutionCenterCasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     user_id: S.optional(S.String.pipe(T.Query())),
@@ -817,20 +794,17 @@ export const ListResolutionCenterCasesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResolutionCenterCasesRequest>;
 
 export type ListResolutionCenterCasesResponseDataList = Array<ResolutionCenterCase>;
-export const ListResolutionCenterCasesResponseDataList = /*@__PURE__*/ S.Array(
+const ListResolutionCenterCasesResponseDataList = /*@__PURE__*/ S.Array(
   ResolutionCenterCase,
 ) as any as S.Schema<ListResolutionCenterCasesResponseDataList>;
 
 export type ListResolutionCenterCasesResponsePageInfo =
   ListResolutionCenterCaseEventsResponsePageInfo;
-export const ListResolutionCenterCasesResponsePageInfo =
-  ListResolutionCenterCaseEventsResponsePageInfo;
-
 export interface ListResolutionCenterCasesResponse {
   data: ListResolutionCenterCasesResponseDataList;
   page_info: ListResolutionCenterCaseEventsResponsePageInfo;
 }
-export const ListResolutionCenterCasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResolutionCenterCasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListResolutionCenterCasesResponseDataList,
     page_info: ListResolutionCenterCaseEventsResponsePageInfo,
@@ -841,13 +815,10 @@ export const ListResolutionCenterCasesResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type ReplyToResolutionCenterCaseRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
-export const ReplyToResolutionCenterCaseRequestAttachmentsItem =
-  AcceptResolutionCenterCaseRequestAttachmentsItem;
-
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type ReplyToResolutionCenterCaseRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const ReplyToResolutionCenterCaseRequestAttachmentsList =
+const ReplyToResolutionCenterCaseRequestAttachmentsList =
   AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<ReplyToResolutionCenterCaseRequestAttachmentsList>;
 
 export interface ReplyToResolutionCenterCaseRequest {
@@ -860,7 +831,7 @@ export interface ReplyToResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const ReplyToResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplyToResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(ReplyToResolutionCenterCaseRequestAttachmentsList),
@@ -873,13 +844,10 @@ export const ReplyToResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type RequestResolutionCenterCaseInfoRequestAttachmentsItem =
   AcceptResolutionCenterCaseRequestAttachmentsItem;
-export const RequestResolutionCenterCaseInfoRequestAttachmentsItem =
-  AcceptResolutionCenterCaseRequestAttachmentsItem;
-
 /** Up to 3 evidence files, by existing file `id` or `direct_upload_id`. */
 export type RequestResolutionCenterCaseInfoRequestAttachmentsList =
   Array<AcceptResolutionCenterCaseRequestAttachmentsItem>;
-export const RequestResolutionCenterCaseInfoRequestAttachmentsList =
+const RequestResolutionCenterCaseInfoRequestAttachmentsList =
   AcceptResolutionCenterCaseRequestAttachmentsList as any as S.Schema<RequestResolutionCenterCaseInfoRequestAttachmentsList>;
 
 export interface RequestResolutionCenterCaseInfoRequest {
@@ -892,7 +860,7 @@ export interface RequestResolutionCenterCaseInfoRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RequestResolutionCenterCaseInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const RequestResolutionCenterCaseInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     attachments: S.optional(RequestResolutionCenterCaseInfoRequestAttachmentsList),
@@ -909,7 +877,7 @@ export interface WithdrawResolutionCenterCaseRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const WithdrawResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
+const WithdrawResolutionCenterCaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),

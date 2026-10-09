@@ -77,7 +77,7 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelOperationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelOperationRequest",
 }) as any as S.Schema<CancelOperationRequest>;
 
@@ -87,7 +87,7 @@ export interface CancelProjectsLocationsOperationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
@@ -104,13 +104,13 @@ export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelOperationRequest as any as S.Schema<Empty>;
+const Empty = CancelOperationRequest as any as S.Schema<Empty>;
 
 export type AnnotationTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_LEGACY_EXPORT_CONSENT" | "TYPE_QWIKLAB";
-export const AnnotationTypeEnum = S.String;
+const AnnotationTypeEnum = S.String;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** Message describing an Annotation */
 export interface Annotation {
@@ -125,7 +125,7 @@ export interface Annotation {
   /** name of resource. */
   name?: string;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -143,7 +143,7 @@ export interface CreateProjectsLocationsAnnotationsRequest {
   /** Request body */
   body?: Annotation;
 }
-export const CreateProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -160,15 +160,10 @@ export const CreateProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<CreateProjectsLocationsAnnotationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -179,7 +174,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -200,7 +195,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     metadata: S.optional(DocumentMap),
@@ -215,7 +210,7 @@ export interface GuestOsScan {
   /** reference to the corresponding Guest OS Scan in MC Source. */
   coreSource?: string;
 }
-export const GuestOsScan = /*@__PURE__*/ S.suspend(() =>
+const GuestOsScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     coreSource: S.optional(S.String),
   }),
@@ -226,7 +221,7 @@ export interface VSphereScan {
   /** reference to the corresponding VSphere Scan in MC Source. */
   coreSource?: string;
 }
-export const VSphereScan = GuestOsScan as any as S.Schema<VSphereScan>;
+const VSphereScan = GuestOsScan as any as S.Schema<VSphereScan>;
 
 export type CollectorStateEnum =
   | "STATE_UNSPECIFIED"
@@ -238,7 +233,7 @@ export type CollectorStateEnum =
   | "STATE_DELETING"
   | "STATE_DECOMMISSIONED"
   | "STATE_ERROR";
-export const CollectorStateEnum = S.String;
+const CollectorStateEnum = S.String;
 
 /** Message describing Collector object. */
 export interface Collector {
@@ -273,7 +268,7 @@ export interface Collector {
   /** User specified description of the Collector. */
   description?: string;
 }
-export const Collector = /*@__PURE__*/ S.suspend(() =>
+const Collector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     guestOsScan: S.optional(GuestOsScan),
     vsphereScan: S.optional(VSphereScan),
@@ -303,7 +298,7 @@ export interface CreateProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: Collector;
 }
-export const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     collectorId: S.optional(S.String.pipe(T.Query())),
@@ -326,7 +321,7 @@ export interface DeleteProjectsLocationsCollectorsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -345,7 +340,7 @@ export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-export const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -363,7 +358,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -390,7 +385,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -404,7 +399,7 @@ export interface GetProjectsLocationsAnnotationsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -422,7 +417,7 @@ export interface GetProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
   name: string;
 }
-export const GetProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -440,7 +435,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -455,7 +450,7 @@ export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsLocationsRequest {
   /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
@@ -469,7 +464,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -488,7 +483,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -497,7 +492,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(LocationList),
@@ -516,7 +511,7 @@ export interface ListProjectsLocationsCollectorsRequest {
   /** Required. Parent value for ListCollectorsRequest. */
   parent: string;
 }
-export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -535,7 +530,7 @@ export const ListProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsCollectorsRequest>;
 
 export type CollectorList = Array<Collector>;
-export const CollectorList = /*@__PURE__*/ S.Array(Collector) as any as S.Schema<CollectorList>;
+const CollectorList = /*@__PURE__*/ S.Array(Collector) as any as S.Schema<CollectorList>;
 
 /** Message for response to listing Collectors. */
 export interface ListCollectorsResponse {
@@ -546,7 +541,7 @@ export interface ListCollectorsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-export const ListCollectorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCollectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectors: S.optional(CollectorList),
     unreachable: S.optional(StringList),
@@ -564,7 +559,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -582,7 +577,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -591,7 +586,7 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operations: S.optional(OperationList),
     nextPageToken: S.optional(S.String),
@@ -608,7 +603,7 @@ export interface PatchProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: Collector;
 }
-export const PatchProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -630,7 +625,7 @@ export interface PauseCollectorRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const PauseCollectorRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseCollectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String),
   }),
@@ -642,7 +637,7 @@ export interface PauseProjectsLocationsCollectorsRequest {
   /** Request body */
   body?: PauseCollectorRequest;
 }
-export const PauseProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const PauseProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PauseCollectorRequest.pipe(T.HttpBody())),
@@ -659,15 +654,13 @@ export const PauseProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend((
 
 /** Message for registering a Collector. */
 export type RegisterCollectorRequest = PauseCollectorRequest;
-export const RegisterCollectorRequest = PauseCollectorRequest;
-
 export interface RegisterProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: PauseCollectorRequest;
 }
-export const RegisterProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PauseCollectorRequest.pipe(T.HttpBody())),
@@ -684,15 +677,13 @@ export const RegisterProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspen
 
 /** Message for resuming a Collector. */
 export type ResumeCollectorRequest = PauseCollectorRequest;
-export const ResumeCollectorRequest = PauseCollectorRequest;
-
 export interface ResumeProjectsLocationsCollectorsRequest {
   /** Required. Name of the resource. */
   name: string;
   /** Request body */
   body?: PauseCollectorRequest;
 }
-export const ResumeProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResumeProjectsLocationsCollectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(PauseCollectorRequest.pipe(T.HttpBody())),

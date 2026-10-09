@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
@@ -73,7 +73,7 @@ export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-export const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeDate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     year: S.optional(S.Number),
@@ -88,7 +88,7 @@ export interface GoogleCloudBillingBudgetsV1beta1CustomPeriod {
   /** Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date. */
   endDate?: GoogleTypeDate;
 }
-export const GoogleCloudBillingBudgetsV1beta1CustomPeriod = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1CustomPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.optional(GoogleTypeDate),
     endDate: S.optional(GoogleTypeDate),
@@ -98,10 +98,10 @@ export const GoogleCloudBillingBudgetsV1beta1CustomPeriod = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1CustomPeriod>;
 
 export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
+const DocumentList = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<DocumentList>;
 
 export type DocumentListMap = { [key: string]: DocumentList | undefined };
-export const DocumentListMap = /*@__PURE__*/ S.Record(
+const DocumentListMap = /*@__PURE__*/ S.Record(
   S.String,
   DocumentList,
 ) as any as S.Schema<DocumentListMap>;
@@ -111,14 +111,14 @@ export type GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodEnum =
   | "MONTH"
   | "QUARTER"
   | "YEAR";
-export const GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodEnum = S.String;
+const GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodEnum = S.String;
 
 export type GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum =
   | "CREDIT_TYPES_TREATMENT_UNSPECIFIED"
   | "INCLUDE_ALL_CREDITS"
   | "EXCLUDE_ALL_CREDITS"
   | "INCLUDE_SPECIFIED_CREDITS";
-export const GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum = S.String;
+const GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum = S.String;
 
 /** A filter for a budget, limiting the scope of the cost to calculate. */
 export interface GoogleCloudBillingBudgetsV1beta1Filter {
@@ -143,7 +143,7 @@ export interface GoogleCloudBillingBudgetsV1beta1Filter {
     | GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentEnum
     | (string & {});
 }
-export const GoogleCloudBillingBudgetsV1beta1Filter = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceAncestors: S.optional(StringList),
     creditTypes: S.optional(StringList),
@@ -163,7 +163,7 @@ export const GoogleCloudBillingBudgetsV1beta1Filter = /*@__PURE__*/ S.suspend(()
 
 /** Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future configuration options will be described here (for example, configuring a percentage of last period's spend). LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period. */
 export interface GoogleCloudBillingBudgetsV1beta1LastPeriodAmount {}
-export const GoogleCloudBillingBudgetsV1beta1LastPeriodAmount = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1LastPeriodAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "GoogleCloudBillingBudgetsV1beta1LastPeriodAmount",
@@ -178,7 +178,7 @@ export interface GoogleTypeMoney {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
+const GoogleTypeMoney = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     units: S.optional(S.String),
     currencyCode: S.optional(S.String),
@@ -193,7 +193,7 @@ export interface GoogleCloudBillingBudgetsV1beta1BudgetAmount {
   /** A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output. */
   specifiedAmount?: GoogleTypeMoney;
 }
-export const GoogleCloudBillingBudgetsV1beta1BudgetAmount = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1BudgetAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastPeriodAmount: S.optional(GoogleCloudBillingBudgetsV1beta1LastPeriodAmount),
     specifiedAmount: S.optional(GoogleTypeMoney),
@@ -215,7 +215,7 @@ export interface GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
   /** Optional. The name of the Pub/Sub topic where budget related messages will be published, in the form `projects/{project_id}/topics/{topic_id}`. Updates are sent at regular intervals to the topic. The topic needs to be created before the budget is created; see https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications for more details. Caller is expected to have `pubsub.topics.setIamPolicy` permission on the topic when it's set for a budget, otherwise, the API call will fail with PERMISSION_DENIED. See https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#permissions_required_for_this_task for more details on Pub/Sub roles and permissions. */
   pubsubTopic?: string;
 }
-export const GoogleCloudBillingBudgetsV1beta1AllUpdatesRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1AllUpdatesRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitoringNotificationChannels: S.optional(StringList),
     schemaVersion: S.optional(S.String),
@@ -231,13 +231,13 @@ export type GoogleCloudBillingBudgetsV1beta1BudgetOwnershipScopeEnum =
   | "OWNERSHIP_SCOPE_UNSPECIFIED"
   | "ALL_USERS"
   | "BILLING_ACCOUNT";
-export const GoogleCloudBillingBudgetsV1beta1BudgetOwnershipScopeEnum = S.String;
+const GoogleCloudBillingBudgetsV1beta1BudgetOwnershipScopeEnum = S.String;
 
 export type GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum =
   | "BASIS_UNSPECIFIED"
   | "CURRENT_SPEND"
   | "FORECASTED_SPEND";
-export const GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum = S.String;
+const GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum = S.String;
 
 /** ThresholdRule contains the definition of a threshold. Threshold rules define the triggering events used to generate a budget notification email. When a threshold is crossed (spend exceeds the specified percentages of the budget), budget alert emails are sent to the email recipients you specify in the [NotificationsRule](#notificationsrule). Threshold rules also affect the fields included in the [JSON data object](https://cloud.google.com/billing/docs/how-to/budgets-programmatic-notifications#notification_format) sent to a Pub/Sub topic. Threshold rules are _required_ if using email notifications. Threshold rules are _optional_ if only setting a [`pubsubTopic` NotificationsRule](#NotificationsRule), unless you want your JSON data object to include data about the thresholds you set. For more information, see [set budget threshold rules and actions](https://cloud.google.com/billing/docs/how-to/budgets#budget-actions). */
 export interface GoogleCloudBillingBudgetsV1beta1ThresholdRule {
@@ -246,7 +246,7 @@ export interface GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   /** Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set. */
   spendBasis?: GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum | (string & {});
 }
-export const GoogleCloudBillingBudgetsV1beta1ThresholdRule = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1ThresholdRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thresholdPercent: S.optional(S.Number),
     spendBasis: S.optional(GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisEnum),
@@ -257,7 +257,7 @@ export const GoogleCloudBillingBudgetsV1beta1ThresholdRule = /*@__PURE__*/ S.sus
 
 export type GoogleCloudBillingBudgetsV1beta1ThresholdRuleList =
   Array<GoogleCloudBillingBudgetsV1beta1ThresholdRule>;
-export const GoogleCloudBillingBudgetsV1beta1ThresholdRuleList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingBudgetsV1beta1ThresholdRuleList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBudgetsV1beta1ThresholdRule,
 ) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1ThresholdRuleList>;
 
@@ -279,7 +279,7 @@ export interface GoogleCloudBillingBudgetsV1beta1Budget {
   /** Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes. */
   etag?: string;
 }
-export const GoogleCloudBillingBudgetsV1beta1Budget = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1Budget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgetFilter: S.optional(GoogleCloudBillingBudgetsV1beta1Filter),
     amount: S.optional(GoogleCloudBillingBudgetsV1beta1BudgetAmount),
@@ -299,7 +299,7 @@ export interface GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
   /** Required. Budget to create. */
   budget?: GoogleCloudBillingBudgetsV1beta1Budget;
 }
-export const GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budget: S.optional(GoogleCloudBillingBudgetsV1beta1Budget),
   }),
@@ -313,7 +313,7 @@ export interface CreateBillingAccountsBudgetsRequest {
   /** Request body */
   body?: GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest;
 }
-export const CreateBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.pipe(T.HttpBody())),
@@ -332,7 +332,7 @@ export interface DeleteBillingAccountsBudgetsRequest {
   /** Required. Name of the budget to delete. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. */
   name: string;
 }
-export const DeleteBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -348,7 +348,7 @@ export const DeleteBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
@@ -356,7 +356,7 @@ export interface GetBillingAccountsBudgetsRequest {
   /** Required. Name of budget to get. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. */
   name: string;
 }
-export const GetBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -380,7 +380,7 @@ export interface ListBillingAccountsBudgetsRequest {
   /** Optional. The value returned by the last `ListBudgetsResponse` which indicates that this is a continuation of a prior `ListBudgets` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-export const ListBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -399,7 +399,7 @@ export const ListBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
 
 export type GoogleCloudBillingBudgetsV1beta1BudgetList =
   Array<GoogleCloudBillingBudgetsV1beta1Budget>;
-export const GoogleCloudBillingBudgetsV1beta1BudgetList = /*@__PURE__*/ S.Array(
+const GoogleCloudBillingBudgetsV1beta1BudgetList = /*@__PURE__*/ S.Array(
   GoogleCloudBillingBudgetsV1beta1Budget,
 ) as any as S.Schema<GoogleCloudBillingBudgetsV1beta1BudgetList>;
 
@@ -410,7 +410,7 @@ export interface GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   /** If not empty, indicates that there may be more budgets that match the request; this value should be passed in a new `ListBudgetsRequest`. */
   nextPageToken?: string;
 }
-export const GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     budgets: S.optional(GoogleCloudBillingBudgetsV1beta1BudgetList),
     nextPageToken: S.optional(S.String),
@@ -426,7 +426,7 @@ export interface GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
   /** Required. The updated budget object. The budget to update is specified by the budget name in the budget. */
   budget?: GoogleCloudBillingBudgetsV1beta1Budget;
 }
-export const GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     budget: S.optional(GoogleCloudBillingBudgetsV1beta1Budget),
@@ -441,7 +441,7 @@ export interface PatchBillingAccountsBudgetsRequest {
   /** Request body */
   body?: GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest;
 }
-export const PatchBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchBillingAccountsBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.pipe(T.HttpBody())),

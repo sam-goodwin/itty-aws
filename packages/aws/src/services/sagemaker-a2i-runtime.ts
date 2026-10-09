@@ -115,7 +115,7 @@ export type HumanLoopName = string;
 export interface DeleteHumanLoopRequest {
   HumanLoopName: string;
 }
-export const DeleteHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HumanLoopName: S.String.pipe(T.HttpLabel("HumanLoopName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/human-loops/{HumanLoopName}" }),
@@ -128,13 +128,13 @@ export const DeleteHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteHumanLoopRequest" }) as any as S.Schema<DeleteHumanLoopRequest>;
 export interface DeleteHumanLoopResponse {}
-export const DeleteHumanLoopResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteHumanLoopResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteHumanLoopResponse",
 }) as any as S.Schema<DeleteHumanLoopResponse>;
 export interface DescribeHumanLoopRequest {
   HumanLoopName: string;
 }
-export const DescribeHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
+const DescribeHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HumanLoopName: S.String.pipe(T.HttpLabel("HumanLoopName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/human-loops/{HumanLoopName}" }),
@@ -153,14 +153,14 @@ export type HumanLoopStatus =
   | "Stopped"
   | "Stopping"
   | (string & {});
-export const HumanLoopStatus = S.String;
+const HumanLoopStatus = S.String;
 
 export type HumanLoopArn = string;
 export type FlowDefinitionArn = string;
 export interface HumanLoopOutput {
   OutputS3Uri?: string;
 }
-export const HumanLoopOutput = /*@__PURE__*/ S.suspend(() =>
+const HumanLoopOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OutputS3Uri: S.optional(S.String) }),
 ).annotate({ identifier: "HumanLoopOutput" }) as any as S.Schema<HumanLoopOutput>;
 export interface DescribeHumanLoopResponse {
@@ -173,7 +173,7 @@ export interface DescribeHumanLoopResponse {
   FlowDefinitionArn: string;
   HumanLoopOutput?: HumanLoopOutput & { OutputS3Uri: string };
 }
-export const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
+const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     FailureReason: S.optional(S.String),
@@ -188,7 +188,7 @@ export const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeHumanLoopResponse",
 }) as any as S.Schema<DescribeHumanLoopResponse>;
 export type SortOrder = "Ascending" | "Descending" | (string & {});
-export const SortOrder = S.String;
+const SortOrder = S.String;
 
 export type NextToken = string;
 export type MaxResults = number;
@@ -200,7 +200,7 @@ export interface ListHumanLoopsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListHumanLoopsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListHumanLoopsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreationTimeAfter: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))).pipe(
       T.HttpQuery("CreationTimeAfter"),
@@ -222,7 +222,7 @@ export interface HumanLoopSummary {
   FailureReason?: string;
   FlowDefinitionArn?: string;
 }
-export const HumanLoopSummary = /*@__PURE__*/ S.suspend(() =>
+const HumanLoopSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HumanLoopName: S.optional(S.String),
     HumanLoopStatus: S.optional(HumanLoopStatus),
@@ -232,33 +232,33 @@ export const HumanLoopSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "HumanLoopSummary" }) as any as S.Schema<HumanLoopSummary>;
 export type HumanLoopSummaries = HumanLoopSummary[];
-export const HumanLoopSummaries = /*@__PURE__*/ S.Array(HumanLoopSummary);
+const HumanLoopSummaries = /*@__PURE__*/ S.Array(HumanLoopSummary);
 export interface ListHumanLoopsResponse {
   HumanLoopSummaries: HumanLoopSummary[];
   NextToken?: string;
 }
-export const ListHumanLoopsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListHumanLoopsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HumanLoopSummaries: S.optional(HumanLoopSummaries), NextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListHumanLoopsResponse" }) as any as S.Schema<ListHumanLoopsResponse>;
 export type InputContent = string;
 export interface HumanLoopInput {
   InputContent?: string;
 }
-export const HumanLoopInput = /*@__PURE__*/ S.suspend(() =>
+const HumanLoopInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InputContent: S.optional(S.String) }),
 ).annotate({ identifier: "HumanLoopInput" }) as any as S.Schema<HumanLoopInput>;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
   | "FreeOfAdultContent"
   | (string & {});
-export const ContentClassifier = S.String;
+const ContentClassifier = S.String;
 
 export type ContentClassifiers = ContentClassifier[];
-export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
+const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
-export const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
+const HumanLoopDataAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
 ).annotate({ identifier: "HumanLoopDataAttributes" }) as any as S.Schema<HumanLoopDataAttributes>;
 export interface StartHumanLoopRequest {
@@ -267,7 +267,7 @@ export interface StartHumanLoopRequest {
   HumanLoopInput?: HumanLoopInput;
   DataAttributes?: HumanLoopDataAttributes;
 }
-export const StartHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
+const StartHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HumanLoopName: S.optional(S.String),
     FlowDefinitionArn: S.optional(S.String),
@@ -278,20 +278,19 @@ export const StartHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartHumanLoopResponse {
   HumanLoopArn?: string;
 }
-export const StartHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
+const StartHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HumanLoopArn: S.optional(S.String) }),
 ).annotate({ identifier: "StartHumanLoopResponse" }) as any as S.Schema<StartHumanLoopResponse>;
 export interface StopHumanLoopRequest {
   HumanLoopName?: string;
 }
-export const StopHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
+const StopHumanLoopRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HumanLoopName: S.optional(S.String) }).pipe(
     T.all(T.Http({ method: "POST", uri: "/human-loops/stop" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "StopHumanLoopRequest" }) as any as S.Schema<StopHumanLoopRequest>;
 export interface StopHumanLoopResponse {}
-export const StopHumanLoopResponse =
-  DeleteHumanLoopResponse as any as S.Schema<StopHumanLoopResponse>;
+const StopHumanLoopResponse = DeleteHumanLoopResponse as any as S.Schema<StopHumanLoopResponse>;
 export type DeleteHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException

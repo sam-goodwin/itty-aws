@@ -125,7 +125,7 @@ export interface AssumeRoleForPodIdentityRequest {
   instanceId?: string;
   zone?: string;
 }
-export const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleForPodIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clusterName: S.String.pipe(T.HttpLabel("clusterName")),
     token: SensitiveString,
@@ -149,21 +149,21 @@ export interface Subject {
   namespace: string;
   serviceAccount: string;
 }
-export const Subject = /*@__PURE__*/ S.suspend(() =>
+const Subject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ namespace: S.String, serviceAccount: S.String }),
 ).annotate({ identifier: "Subject" }) as any as S.Schema<Subject>;
 export interface PodIdentityAssociation {
   associationArn: string;
   associationId: string;
 }
-export const PodIdentityAssociation = /*@__PURE__*/ S.suspend(() =>
+const PodIdentityAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ associationArn: S.String, associationId: S.String }),
 ).annotate({ identifier: "PodIdentityAssociation" }) as any as S.Schema<PodIdentityAssociation>;
 export interface AssumedRoleUser {
   arn: string;
   assumeRoleId: string;
 }
-export const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
+const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ arn: S.String, assumeRoleId: S.String }),
 ).annotate({ identifier: "AssumedRoleUser" }) as any as S.Schema<AssumedRoleUser>;
 export interface Credentials {
@@ -172,7 +172,7 @@ export interface Credentials {
   accessKeyId: string;
   expiration: Date;
 }
-export const Credentials = /*@__PURE__*/ S.suspend(() =>
+const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessionToken: SensitiveString,
     secretAccessKey: SensitiveString,
@@ -187,7 +187,7 @@ export interface AssumeRoleForPodIdentityResponse {
   assumedRoleUser: AssumedRoleUser;
   credentials: Credentials;
 }
-export const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+const AssumeRoleForPodIdentityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subject: Subject,
     audience: S.String,

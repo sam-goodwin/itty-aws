@@ -35,7 +35,7 @@ export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/cloud_connector/rules", code: 200 })),
@@ -45,7 +45,7 @@ export interface RulesListResultItemParameters {
   /** Host to perform Cloud Connection to */
   host?: string | null;
 }
-export const RulesListResultItemParameters = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItemParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.NullOr(S.String)),
   }),
@@ -59,7 +59,7 @@ export type RulesListResultItemProvider =
   | "gcp_storage"
   | "azure_storage"
   | "oci_storage";
-export const RulesListResultItemProvider = S.String;
+const RulesListResultItemProvider = S.String;
 
 export interface RulesListResultItem {
   id?: string | null;
@@ -71,7 +71,7 @@ export interface RulesListResultItem {
   /** Cloud Provider type */
   provider?: RulesListResultItemProvider | null;
 }
-export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -83,7 +83,7 @@ export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RulesListResultItem" }) as any as S.Schema<RulesListResultItem>;
 
 export type RulesListResultList = Array<RulesListResultItem>;
-export const RulesListResultList = /*@__PURE__*/ S.Array(
+const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
@@ -93,7 +93,7 @@ export interface ListRulesResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
@@ -104,7 +104,7 @@ export interface RulesUpdateRequestRulesItemParameters {
   /** Host to perform Cloud Connection to */
   host?: string;
 }
-export const RulesUpdateRequestRulesItemParameters = /*@__PURE__*/ S.suspend(() =>
+const RulesUpdateRequestRulesItemParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     host: S.optional(S.String),
   }),
@@ -118,7 +118,7 @@ export type RulesUpdateRequestRulesItemProvider =
   | "gcp_storage"
   | "azure_storage"
   | "oci_storage";
-export const RulesUpdateRequestRulesItemProvider = S.String;
+const RulesUpdateRequestRulesItemProvider = S.String;
 
 export interface RulesUpdateRequestRulesItem {
   id?: string;
@@ -130,7 +130,7 @@ export interface RulesUpdateRequestRulesItem {
   /** Cloud Provider type */
   provider?: RulesUpdateRequestRulesItemProvider | (string & {});
 }
-export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -144,7 +144,7 @@ export const RulesUpdateRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesUpdateRequestRulesItem>;
 
 export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
-export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
+const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
 
@@ -153,7 +153,7 @@ export interface PutRuleRequest {
   zoneId: string;
   rules?: RulesUpdateRequestRulesList;
 }
-export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rules: S.optional(RulesUpdateRequestRulesList.pipe(T.HttpBody())),
@@ -161,16 +161,12 @@ export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutRuleRequest" }) as any as S.Schema<PutRuleRequest>;
 
 export type RulesUpdateResultItemParameters = RulesListResultItemParameters;
-export const RulesUpdateResultItemParameters = RulesListResultItemParameters;
-
 export type RulesUpdateResultItemProvider =
   | "aws_s3"
   | "cloudflare_r2"
   | "gcp_storage"
   | "azure_storage"
   | "oci_storage";
-export const RulesUpdateResultItemProvider = S.String;
-
 export interface RulesUpdateResultItem {
   id?: string | null;
   description?: string | null;
@@ -181,18 +177,14 @@ export interface RulesUpdateResultItem {
   /** Cloud Provider type */
   provider?: RulesUpdateResultItemProvider | null;
 }
-export const RulesUpdateResultItem = RulesListResultItem as any as S.Schema<RulesUpdateResultItem>;
-
 export type RulesUpdateResultList = Array<RulesUpdateResultItem>;
-export const RulesUpdateResultList = RulesListResultList as any as S.Schema<RulesUpdateResultList>;
-
 export interface PutRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-export const PutRuleResponse = ListRulesResponse as any as S.Schema<PutRuleResponse>;
+const PutRuleResponse = ListRulesResponse as any as S.Schema<PutRuleResponse>;
 
 export type ListRulesError = Forbidden | CloudConnectorRulesNotFound | CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */

@@ -42,7 +42,7 @@ export interface CompleteFileRequestMultipartPartsItem {
   /** The 1-based index of the part. */
   part_number: number;
 }
-export const CompleteFileRequestMultipartPartsItem = /*@__PURE__*/ S.suspend(() =>
+const CompleteFileRequestMultipartPartsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.String,
     part_number: S.Number,
@@ -53,7 +53,7 @@ export const CompleteFileRequestMultipartPartsItem = /*@__PURE__*/ S.suspend(() 
 
 /** Every uploaded part, in order. */
 export type CompleteFileRequestMultipartPartsList = Array<CompleteFileRequestMultipartPartsItem>;
-export const CompleteFileRequestMultipartPartsList = /*@__PURE__*/ S.Array(
+const CompleteFileRequestMultipartPartsList = /*@__PURE__*/ S.Array(
   CompleteFileRequestMultipartPartsItem,
 ) as any as S.Schema<CompleteFileRequestMultipartPartsList>;
 
@@ -67,7 +67,7 @@ export interface CompleteFileRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CompleteFileRequest = /*@__PURE__*/ S.suspend(() =>
+const CompleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     multipart_parts: CompleteFileRequestMultipartPartsList,
@@ -82,7 +82,7 @@ export interface FileMultipartUrl {
   /** The presigned URL to PUT this part's bytes to. */
   url: string;
 }
-export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
+const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part_number: S.Number,
     url: S.String,
@@ -90,17 +90,17 @@ export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileMultipartUrl" }) as any as S.Schema<FileMultipartUrl>;
 
 export type FileMultipartUploadUrlsList = Array<FileMultipartUrl>;
-export const FileMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
+const FileMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
   FileMultipartUrl,
 ) as any as S.Schema<FileMultipartUploadUrlsList>;
 
 /** Where the file is in its upload lifecycle. */
 export type FileUploadStatus = "pending" | "processing" | "ready" | "failed";
-export const FileUploadStatus = S.String;
+const FileUploadStatus = S.String;
 
 /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
 export type FileVisibility = "public" | "private";
-export const FileVisibility = S.String;
+const FileVisibility = S.String;
 
 export interface File {
   /** The file's MIME type, e.g. `application/pdf`. */
@@ -131,7 +131,7 @@ export interface File {
   /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
   visibility: FileVisibility;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     created_at: S.String,
@@ -152,7 +152,7 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 
 /** `public` files are served via an unsigned CDN URL -- use for assets anyone may see. `private` files are served via a signed, expiring URL -- use for sensitive documents. Defaults to `private`. */
 export type CreateFileRequestVisibility = "public" | "private";
-export const CreateFileRequestVisibility = S.String;
+const CreateFileRequestVisibility = S.String;
 
 export interface CreateFileRequest {
   /** The file's size in bytes. Required when `multipart` is `true`. Multipart uploads support at most 10,000 parts of 5MB each (about 50 GB). */
@@ -166,7 +166,7 @@ export interface CreateFileRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateFileRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     byte_size: S.optional(S.Number),
     filename: S.String,
@@ -180,22 +180,22 @@ export interface GetFileRequest {
   /** The unique identifier of the file, prefixed `file_`. */
   id: string;
 }
-export const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/files/{id}", code: 200 })),
 ).annotate({ identifier: "GetFileRequest" }) as any as S.Schema<GetFileRequest>;
 
 export type ListFilesRequestFileIdsList = Array<string>;
-export const ListFilesRequestFileIdsList = /*@__PURE__*/ S.Array(
+const ListFilesRequestFileIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ListFilesRequestFileIdsList>;
 
 export type ListFilesRequestOrder = "created_at";
-export const ListFilesRequestOrder = S.String;
+const ListFilesRequestOrder = S.String;
 
 export type ListFilesRequestDirection = "asc" | "desc";
-export const ListFilesRequestDirection = S.String;
+const ListFilesRequestDirection = S.String;
 
 export interface ListFilesRequest {
   /** The files to return, each prefixed `file_`. Repeat the parameter to pass several, up to 250 per request. Batches of up to 100 answer in one page by default; larger batches page at up to 100 per response. */
@@ -213,7 +213,7 @@ export interface ListFilesRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     file_ids: ListFilesRequestFileIdsList.pipe(T.Query()),
     order: S.optional(ListFilesRequestOrder.pipe(T.Query())),
@@ -226,7 +226,7 @@ export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFilesRequest" }) as any as S.Schema<ListFilesRequest>;
 
 export type ListFilesResponseDataList = Array<File>;
-export const ListFilesResponseDataList = /*@__PURE__*/ S.Array(
+const ListFilesResponseDataList = /*@__PURE__*/ S.Array(
   File,
 ) as any as S.Schema<ListFilesResponseDataList>;
 
@@ -236,7 +236,7 @@ export interface ListFilesResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListFilesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -251,7 +251,7 @@ export interface ListFilesResponse {
   data: ListFilesResponseDataList;
   page_info: ListFilesResponsePageInfo;
 }
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListFilesResponseDataList,
     page_info: ListFilesResponsePageInfo,

@@ -39,7 +39,7 @@ export class NotFound
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per Certificate. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type CreateCertificateRequestLabelsMap = { [key: string]: string | undefined };
-export const CreateCertificateRequestLabelsMap = /*@__PURE__*/ S.Record(
+const CreateCertificateRequestLabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateCertificateRequestLabelsMap>;
@@ -56,7 +56,7 @@ export interface CreateCertificateRequest {
   /** The PEM encoded public key part */
   publicKey?: string;
 }
-export const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -106,7 +106,7 @@ export interface Data {
   /** The primary identity of the certificate. Fallback sequence: Common Name -> First DNS Name -> Full Subject String. */
   subjectCn?: string;
 }
-export const Data = /*@__PURE__*/ S.suspend(() =>
+const Data = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsNames: S.optional(S.String),
     extendedKeyUsage: S.optional(S.String),
@@ -128,12 +128,12 @@ export const Data = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per Certificate. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetCertificateResponseLabelsMap = { [key: string]: string | undefined };
-export const GetCertificateResponseLabelsMap =
+const GetCertificateResponseLabelsMap =
   CreateCertificateRequestLabelsMap as any as S.Schema<GetCertificateResponseLabelsMap>;
 
 /** The list of listener names in this Load Balancer, that are using the certificate. */
 export type UsageItemListenerNamesList = Array<string>;
-export const UsageItemListenerNamesList = /*@__PURE__*/ S.Array(
+const UsageItemListenerNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UsageItemListenerNamesList>;
 
@@ -143,7 +143,7 @@ export interface UsageItem {
   /** The display name of the Load Balancer. */
   loadBalancerName?: string;
 }
-export const UsageItem = /*@__PURE__*/ S.suspend(() =>
+const UsageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     listenerNames: S.optional(UsageItemListenerNamesList),
     loadBalancerName: S.optional(S.String),
@@ -152,7 +152,7 @@ export const UsageItem = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Load Balancers with their associated listeners that use this certificate. */
 export type UsageItemsList = Array<UsageItem>;
-export const UsageItemsList = /*@__PURE__*/ S.Array(UsageItem) as any as S.Schema<UsageItemsList>;
+const UsageItemsList = /*@__PURE__*/ S.Array(UsageItem) as any as S.Schema<UsageItemsList>;
 
 export interface Usage {
   /** Number of listeners using this certificate. */
@@ -160,7 +160,7 @@ export interface Usage {
   /** List of Load Balancers with their associated listeners that use this certificate. */
   items?: UsageItemsList;
 }
-export const Usage = /*@__PURE__*/ S.suspend(() =>
+const Usage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     items: S.optional(UsageItemsList),
@@ -182,7 +182,7 @@ export interface GetCertificateResponse {
   region?: string;
   usage?: Usage;
 }
-export const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(Data),
     id: S.optional(S.String),
@@ -199,7 +199,7 @@ export interface DeleteCertificateRequest {
   region: string;
   id: string;
 }
-export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -215,7 +215,7 @@ export const DeleteCertificateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteCertificateRequest" }) as any as S.Schema<DeleteCertificateRequest>;
 
 export type DeleteCertificateResponse2 = unknown;
-export const DeleteCertificateResponse2 = /*@__PURE__*/ S.suspend(() =>
+const DeleteCertificateResponse2 = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "DeleteCertificateResponse2",
@@ -226,7 +226,7 @@ export interface GetCertificateRequest {
   region: string;
   id: string;
 }
-export const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -245,7 +245,7 @@ export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -266,7 +266,7 @@ export interface CertificatesQuota {
   /** The number of certificates that are currently existing in this project. */
   usage?: number;
 }
-export const CertificatesQuota = /*@__PURE__*/ S.suspend(() =>
+const CertificatesQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     usage: S.optional(S.Number),
@@ -277,7 +277,7 @@ export const CertificatesQuota = /*@__PURE__*/ S.suspend(() =>
 export interface Quotas {
   certificates?: CertificatesQuota;
 }
-export const Quotas = /*@__PURE__*/ S.suspend(() =>
+const Quotas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificates: S.optional(CertificatesQuota),
   }),
@@ -290,7 +290,7 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.optional(S.String),
     quotas: S.optional(Quotas),
@@ -306,7 +306,7 @@ export interface ListCertificatesRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     region: S.String.pipe(T.Label()),
@@ -323,7 +323,7 @@ export const ListCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListCertificatesRequest" }) as any as S.Schema<ListCertificatesRequest>;
 
 export type ListCertificatesResponseItemsList = Array<GetCertificateResponse>;
-export const ListCertificatesResponseItemsList = /*@__PURE__*/ S.Array(
+const ListCertificatesResponseItemsList = /*@__PURE__*/ S.Array(
   GetCertificateResponse,
 ) as any as S.Schema<ListCertificatesResponseItemsList>;
 
@@ -333,7 +333,7 @@ export interface ListCertificatesResponse {
   /** Continue token from the ListCertificatesResponse with Limit option */
   nextPageId?: string;
 }
-export const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ListCertificatesResponseItemsList),
     nextPageId: S.optional(S.String),

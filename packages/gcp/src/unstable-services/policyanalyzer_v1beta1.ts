@@ -45,7 +45,7 @@ export interface QueryFoldersLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -63,10 +63,7 @@ export const QueryFoldersLocationsActivityTypesActivitiesRequest = /*@__PURE__*/
 }) as any as S.Schema<QueryFoldersLocationsActivityTypesActivitiesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** Represents data observation period. */
 export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
@@ -75,7 +72,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
   /** The observation end time. */
   endTime?: string;
 }
-export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     endTime: S.optional(S.String),
@@ -95,7 +92,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   /** The data observation period to build the activity. */
   observationPeriod?: GoogleCloudPolicyanalyzerV1beta1ObservationPeriod;
 }
-export const GoogleCloudPolicyanalyzerV1beta1Activity = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1beta1Activity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activityType: S.optional(S.String),
     activity: S.optional(DocumentMap),
@@ -108,7 +105,7 @@ export const GoogleCloudPolicyanalyzerV1beta1Activity = /*@__PURE__*/ S.suspend(
 
 export type GoogleCloudPolicyanalyzerV1beta1ActivityList =
   Array<GoogleCloudPolicyanalyzerV1beta1Activity>;
-export const GoogleCloudPolicyanalyzerV1beta1ActivityList = /*@__PURE__*/ S.Array(
+const GoogleCloudPolicyanalyzerV1beta1ActivityList = /*@__PURE__*/ S.Array(
   GoogleCloudPolicyanalyzerV1beta1Activity,
 ) as any as S.Schema<GoogleCloudPolicyanalyzerV1beta1ActivityList>;
 
@@ -119,7 +116,7 @@ export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
   activities?: GoogleCloudPolicyanalyzerV1beta1ActivityList;
 }
-export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     activities: S.optional(GoogleCloudPolicyanalyzerV1beta1ActivityList),
@@ -138,20 +135,19 @@ export interface QueryOrganizationsLocationsActivityTypesActivitiesRequest {
   /** Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. */
   pageSize?: number;
 }
-export const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      filter: S.optional(S.String.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+parent}/activities:query",
-        baseUrl: "https://policyanalyzer.googleapis.com/",
-      }),
-    ),
+const QueryOrganizationsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    filter: S.optional(S.String.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+parent}/activities:query",
+      baseUrl: "https://policyanalyzer.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "QueryOrganizationsLocationsActivityTypesActivitiesRequest",
 }) as any as S.Schema<QueryOrganizationsLocationsActivityTypesActivitiesRequest>;
@@ -166,7 +162,7 @@ export interface QueryProjectsLocationsActivityTypesActivitiesRequest {
   /** Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=} */
   filter?: string;
 }
-export const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryProjectsLocationsActivityTypesActivitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),

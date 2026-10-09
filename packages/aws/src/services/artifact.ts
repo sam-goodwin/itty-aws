@@ -168,29 +168,29 @@ export type InquiryName = string | redacted.Redacted<string>;
 export type LongStringAttribute = string;
 export type ShortStringAttribute = string;
 export type FileSectionList = string[];
-export const FileSectionList = /*@__PURE__*/ S.Array(S.String);
+const FileSectionList = /*@__PURE__*/ S.Array(S.String);
 export interface InquiryFileContent {
   fileSections?: string[];
   content: Uint8Array;
 }
-export const InquiryFileContent = /*@__PURE__*/ S.suspend(() =>
+const InquiryFileContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fileSections: S.optional(FileSectionList), content: T.Blob }),
 ).annotate({ identifier: "InquiryFileContent" }) as any as S.Schema<InquiryFileContent>;
 export type InquiryContent =
   | { query: string; fileContent?: never }
   | { query?: never; fileContent: InquiryFileContent };
-export const InquiryContent = /*@__PURE__*/ S.Union([
+const InquiryContent = /*@__PURE__*/ S.Union([
   /*@__PURE__*/ S.Struct({ query: S.String }),
   /*@__PURE__*/ S.Struct({ fileContent: InquiryFileContent }),
 ]);
 export type IdempotentClientToken = string;
 export type InquirySupportMode = "AI_ONLY" | "FULL_SUPPORT" | (string & {});
-export const InquirySupportMode = S.String;
+const InquirySupportMode = S.String;
 
 export type TagKey = string;
 export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagsMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export interface CreateComplianceInquiryRequest {
   name: string | redacted.Redacted<string>;
   inquiryContent: InquiryContent;
@@ -198,7 +198,7 @@ export interface CreateComplianceInquiryRequest {
   supportMode?: InquirySupportMode;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateComplianceInquiryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateComplianceInquiryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SensitiveString,
     inquiryContent: InquiryContent,
@@ -220,7 +220,7 @@ export const CreateComplianceInquiryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateComplianceInquiryRequest>;
 export type InquiryId = string;
 export type InquiryStatus = "PROCESSING" | "HUMAN_REVIEW" | "COMPLETED" | "FAILED" | (string & {});
-export const InquiryStatus = S.String;
+const InquiryStatus = S.String;
 
 export type InquiryStatusMessage =
   | "Compliance inquiry processing is complete."
@@ -230,10 +230,10 @@ export type InquiryStatusMessage =
   | "Human review is in progress."
   | "Compliance inquiry processing is complete. One or more queries encountered errors during processing."
   | (string & {});
-export const InquiryStatusMessage = S.String;
+const InquiryStatusMessage = S.String;
 
 export type InputSource = "TEXT" | "FILE" | (string & {});
-export const InputSource = S.String;
+const InputSource = S.String;
 
 export type TimestampAttribute = Date;
 export interface InquirySummary {
@@ -245,7 +245,7 @@ export interface InquirySummary {
   inputSource: InputSource;
   createdAt: Date;
 }
-export const InquirySummary = /*@__PURE__*/ S.suspend(() =>
+const InquirySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -260,19 +260,19 @@ export interface CreateComplianceInquiryResponse {
   complianceInquirySummary?: InquirySummary;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateComplianceInquiryResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateComplianceInquiryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ complianceInquirySummary: S.optional(InquirySummary), tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "CreateComplianceInquiryResponse",
 }) as any as S.Schema<CreateComplianceInquiryResponse>;
 export type QueryIdentifiersList = number[];
-export const QueryIdentifiersList = /*@__PURE__*/ S.Array(S.Number);
+const QueryIdentifiersList = /*@__PURE__*/ S.Array(S.Number);
 export interface ExportComplianceInquiryRequest {
   complianceInquiryId: string;
   queryIdentifiers?: number[];
   includeCitations?: boolean;
 }
-export const ExportComplianceInquiryRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportComplianceInquiryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complianceInquiryId: S.String,
     queryIdentifiers: S.optional(QueryIdentifiersList),
@@ -295,13 +295,13 @@ export interface ExportComplianceInquiryResponse {
   documentPresignedUrl?: string | redacted.Redacted<string>;
   tags?: { [key: string]: string | undefined };
 }
-export const ExportComplianceInquiryResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportComplianceInquiryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ documentPresignedUrl: S.optional(SensitiveString), tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ExportComplianceInquiryResponse",
 }) as any as S.Schema<ExportComplianceInquiryResponse>;
 export interface GetAccountSettingsRequest {}
-export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(T.Http({ method: "GET", uri: "/v1/account-settings/get" }), svc, auth, proto, ver, rules),
   ),
@@ -309,18 +309,18 @@ export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
 export type NotificationSubscriptionStatus = "SUBSCRIBED" | "NOT_SUBSCRIBED" | (string & {});
-export const NotificationSubscriptionStatus = S.String;
+const NotificationSubscriptionStatus = S.String;
 
 export interface AccountSettings {
   notificationSubscriptionStatus?: NotificationSubscriptionStatus;
 }
-export const AccountSettings = /*@__PURE__*/ S.suspend(() =>
+const AccountSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ notificationSubscriptionStatus: S.optional(NotificationSubscriptionStatus) }),
 ).annotate({ identifier: "AccountSettings" }) as any as S.Schema<AccountSettings>;
 export interface GetAccountSettingsResponse {
   accountSettings?: AccountSettings;
 }
-export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountSettings: S.optional(AccountSettings) }),
 ).annotate({
   identifier: "GetAccountSettingsResponse",
@@ -328,7 +328,7 @@ export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetComplianceInquiryMetadataRequest {
   complianceInquiryId: string;
 }
-export const GetComplianceInquiryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetComplianceInquiryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ complianceInquiryId: S.String.pipe(T.HttpQuery("complianceInquiryId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/v1/compliance-inquiry/getMetadata" }),
@@ -353,7 +353,7 @@ export interface InquiryDetail {
   updatedAt?: Date;
   supportMode?: InquirySupportMode;
 }
-export const InquiryDetail = /*@__PURE__*/ S.suspend(() =>
+const InquiryDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -370,7 +370,7 @@ export interface GetComplianceInquiryMetadataResponse {
   complianceInquiryDetail?: InquiryDetail;
   tags?: { [key: string]: string | undefined };
 }
-export const GetComplianceInquiryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetComplianceInquiryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ complianceInquiryDetail: S.optional(InquiryDetail), tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "GetComplianceInquiryMetadataResponse",
@@ -382,7 +382,7 @@ export interface GetReportRequest {
   reportVersion?: number;
   termToken: string;
 }
-export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.HttpQuery("reportId")),
     reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
@@ -392,14 +392,14 @@ export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetReportResponse {
   documentPresignedUrl?: string;
 }
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ documentPresignedUrl: S.optional(S.String) }),
 ).annotate({ identifier: "GetReportResponse" }) as any as S.Schema<GetReportResponse>;
 export interface GetReportMetadataRequest {
   reportId: string;
   reportVersion?: number;
 }
-export const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.HttpQuery("reportId")),
     reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
@@ -408,14 +408,14 @@ export const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetReportMetadataRequest" }) as any as S.Schema<GetReportMetadataRequest>;
 export type PublishedState = "PUBLISHED" | "UNPUBLISHED" | (string & {});
-export const PublishedState = S.String;
+const PublishedState = S.String;
 
 export type AcceptanceType = "PASSTHROUGH" | "EXPLICIT" | (string & {});
-export const AcceptanceType = S.String;
+const AcceptanceType = S.String;
 
 export type SequenceNumberAttribute = number;
 export type UploadState = "PROCESSING" | "COMPLETE" | "FAILED" | "FAULT" | (string & {});
-export const UploadState = S.String;
+const UploadState = S.String;
 
 export type StatusMessage = string;
 export interface ReportDetail {
@@ -440,7 +440,7 @@ export interface ReportDetail {
   uploadState?: UploadState;
   statusMessage?: string;
 }
-export const ReportDetail = /*@__PURE__*/ S.suspend(() =>
+const ReportDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -467,7 +467,7 @@ export const ReportDetail = /*@__PURE__*/ S.suspend(() =>
 export interface GetReportMetadataResponse {
   reportDetails?: ReportDetail;
 }
-export const GetReportMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reportDetails: S.optional(ReportDetail) }),
 ).annotate({
   identifier: "GetReportMetadataResponse",
@@ -476,7 +476,7 @@ export interface GetTermForReportRequest {
   reportId: string;
   reportVersion?: number;
 }
-export const GetTermForReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTermForReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.HttpQuery("reportId")),
     reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
@@ -495,7 +495,7 @@ export interface GetTermForReportResponse {
   documentPresignedUrl?: string;
   termToken?: string;
 }
-export const GetTermForReportResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTermForReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ documentPresignedUrl: S.optional(S.String), termToken: S.optional(S.String) }),
 ).annotate({ identifier: "GetTermForReportResponse" }) as any as S.Schema<GetTermForReportResponse>;
 export type MaxResultsAttribute = number;
@@ -504,7 +504,7 @@ export interface ListComplianceInquiriesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListComplianceInquiriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListComplianceInquiriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -522,12 +522,12 @@ export const ListComplianceInquiriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListComplianceInquiriesRequest",
 }) as any as S.Schema<ListComplianceInquiriesRequest>;
 export type InquiriesList = InquirySummary[];
-export const InquiriesList = /*@__PURE__*/ S.Array(InquirySummary);
+const InquiriesList = /*@__PURE__*/ S.Array(InquirySummary);
 export interface ListComplianceInquiriesResponse {
   complianceInquiries?: InquirySummary[];
   nextToken?: string;
 }
-export const ListComplianceInquiriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListComplianceInquiriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ complianceInquiries: S.optional(InquiriesList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListComplianceInquiriesResponse",
@@ -537,7 +537,7 @@ export interface ListComplianceInquiryQueriesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListComplianceInquiryQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListComplianceInquiryQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complianceInquiryId: S.String.pipe(T.HttpQuery("complianceInquiryId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -556,14 +556,14 @@ export const ListComplianceInquiryQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListComplianceInquiryQueriesRequest",
 }) as any as S.Schema<ListComplianceInquiryQueriesRequest>;
 export type ReviewType = "HUMAN" | "AI" | (string & {});
-export const ReviewType = S.String;
+const ReviewType = S.String;
 
 export interface Citation {
   sourceLabel?: string;
   sourceContent?: string;
   sourceLink?: string;
 }
-export const Citation = /*@__PURE__*/ S.suspend(() =>
+const Citation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceLabel: S.optional(S.String),
     sourceContent: S.optional(S.String),
@@ -571,9 +571,9 @@ export const Citation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Citation" }) as any as S.Schema<Citation>;
 export type CitationList = Citation[];
-export const CitationList = /*@__PURE__*/ S.Array(Citation);
+const CitationList = /*@__PURE__*/ S.Array(Citation);
 export type QueryStatus = "PROCESSING" | "COMPLETED" | "FAILED" | (string & {});
-export const QueryStatus = S.String;
+const QueryStatus = S.String;
 
 export type QueryStatusMessage =
   | "Query processing is complete."
@@ -582,20 +582,20 @@ export type QueryStatusMessage =
   | "Query is pending human review."
   | "Query contains restricted or unsupported content."
   | (string & {});
-export const QueryStatusMessage = S.String;
+const QueryStatusMessage = S.String;
 
 export interface ResponseVersion {
   responseText: string;
   timestamp: Date;
 }
-export const ResponseVersion = /*@__PURE__*/ S.suspend(() =>
+const ResponseVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     responseText: S.String,
     timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
   }),
 ).annotate({ identifier: "ResponseVersion" }) as any as S.Schema<ResponseVersion>;
 export type ResponseVersionList = ResponseVersion[];
-export const ResponseVersionList = /*@__PURE__*/ S.Array(ResponseVersion);
+const ResponseVersionList = /*@__PURE__*/ S.Array(ResponseVersion);
 export interface QuerySummary {
   queryIdentifier: number;
   query: string;
@@ -607,7 +607,7 @@ export interface QuerySummary {
   createdAt: Date;
   updatedResponseVersions?: ResponseVersion[];
 }
-export const QuerySummary = /*@__PURE__*/ S.suspend(() =>
+const QuerySummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queryIdentifier: S.Number,
     query: S.String,
@@ -621,12 +621,12 @@ export const QuerySummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "QuerySummary" }) as any as S.Schema<QuerySummary>;
 export type QueriesList = QuerySummary[];
-export const QueriesList = /*@__PURE__*/ S.Array(QuerySummary);
+const QueriesList = /*@__PURE__*/ S.Array(QuerySummary);
 export interface ListComplianceInquiryQueriesResponse {
   queries?: QuerySummary[];
   nextToken?: string;
 }
-export const ListComplianceInquiryQueriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListComplianceInquiryQueriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ queries: S.optional(QueriesList), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListComplianceInquiryQueriesResponse",
@@ -635,7 +635,7 @@ export interface ListCustomerAgreementsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListCustomerAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -658,12 +658,12 @@ export type CustomerAgreementState =
   | "CUSTOMER_TERMINATED"
   | "AWS_TERMINATED"
   | (string & {});
-export const CustomerAgreementState = S.String;
+const CustomerAgreementState = S.String;
 
 export type AgreementTerms = string[];
-export const AgreementTerms = FileSectionList as any as S.Schema<AgreementTerms>;
+const AgreementTerms = FileSectionList as any as S.Schema<AgreementTerms>;
 export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
-export const AgreementType = S.String;
+const AgreementType = S.String;
 
 export interface CustomerAgreementSummary {
   name?: string;
@@ -680,7 +680,7 @@ export interface CustomerAgreementSummary {
   terminateTerms?: string[];
   type?: AgreementType;
 }
-export const CustomerAgreementSummary = /*@__PURE__*/ S.suspend(() =>
+const CustomerAgreementSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     arn: S.optional(S.String),
@@ -698,12 +698,12 @@ export const CustomerAgreementSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CustomerAgreementSummary" }) as any as S.Schema<CustomerAgreementSummary>;
 export type CustomerAgreementList = CustomerAgreementSummary[];
-export const CustomerAgreementList = /*@__PURE__*/ S.Array(CustomerAgreementSummary);
+const CustomerAgreementList = /*@__PURE__*/ S.Array(CustomerAgreementSummary);
 export interface ListCustomerAgreementsResponse {
   customerAgreements: CustomerAgreementSummary[];
   nextToken?: string;
 }
-export const ListCustomerAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCustomerAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ customerAgreements: CustomerAgreementList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListCustomerAgreementsResponse",
@@ -712,7 +712,7 @@ export interface ListReportsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -735,7 +735,7 @@ export interface ReportSummary {
   statusMessage?: string;
   acceptanceType?: AcceptanceType;
 }
-export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
+const ReportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -755,12 +755,12 @@ export const ReportSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ReportSummary" }) as any as S.Schema<ReportSummary>;
 export type ReportsList = ReportSummary[];
-export const ReportsList = /*@__PURE__*/ S.Array(ReportSummary);
+const ReportsList = /*@__PURE__*/ S.Array(ReportSummary);
 export interface ListReportsResponse {
   reports?: ReportSummary[];
   nextToken?: string;
 }
-export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reports: S.optional(ReportsList), nextToken: S.optional(S.String) }),
 ).annotate({ identifier: "ListReportsResponse" }) as any as S.Schema<ListReportsResponse>;
 export interface ListReportVersionsRequest {
@@ -768,7 +768,7 @@ export interface ListReportVersionsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListReportVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReportVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reportId: S.String.pipe(T.HttpQuery("reportId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -783,7 +783,7 @@ export interface ListReportVersionsResponse {
   reports: ReportSummary[];
   nextToken?: string;
 }
-export const ListReportVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReportVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reports: ReportsList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListReportVersionsResponse",
@@ -791,7 +791,7 @@ export const ListReportVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(T.Http({ method: "GET", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
@@ -801,7 +801,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagsMap) }),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -809,7 +809,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingsRequest {
   notificationSubscriptionStatus?: NotificationSubscriptionStatus;
 }
-export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ notificationSubscriptionStatus: S.optional(NotificationSubscriptionStatus) }).pipe(
     T.all(T.Http({ method: "PUT", uri: "/v1/account-settings/put" }), svc, auth, proto, ver, rules),
   ),
@@ -819,20 +819,20 @@ export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAccountSettingsResponse {
   accountSettings?: AccountSettings;
 }
-export const PutAccountSettingsResponse =
+const PutAccountSettingsResponse =
   GetAccountSettingsResponse as any as S.Schema<PutAccountSettingsResponse>;
 export type FeedbackRating = "THUMBS_UP" | "THUMBS_DOWN" | (string & {});
-export const FeedbackRating = S.String;
+const FeedbackRating = S.String;
 
 export type FeedbackReasonCode =
   | "OTHER"
   | "PARTIAL_RESPONSE"
   | "IRRELEVANT_RESPONSE"
   | (string & {});
-export const FeedbackReasonCode = S.String;
+const FeedbackReasonCode = S.String;
 
 export type FeedbackReasonCodeList = FeedbackReasonCode[];
-export const FeedbackReasonCodeList = /*@__PURE__*/ S.Array(FeedbackReasonCode);
+const FeedbackReasonCodeList = /*@__PURE__*/ S.Array(FeedbackReasonCode);
 export type FeedbackCommentAttribute = string | redacted.Redacted<string>;
 export interface PutComplianceInquiryFeedbackRequest {
   complianceInquiryId: string;
@@ -843,7 +843,7 @@ export interface PutComplianceInquiryFeedbackRequest {
   comment?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-export const PutComplianceInquiryFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
+const PutComplianceInquiryFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     complianceInquiryId: S.String,
     queryIdentifier: S.optional(S.Number),
@@ -868,7 +868,7 @@ export const PutComplianceInquiryFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutComplianceInquiryFeedbackResponse {
   submittedAt: Date;
 }
-export const PutComplianceInquiryFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
+const PutComplianceInquiryFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ submittedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")) }),
 ).annotate({
   identifier: "PutComplianceInquiryFeedbackResponse",
@@ -877,22 +877,22 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagsMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/tags/{resourceArn}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const TagResourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = FileSectionList as any as S.Schema<TagKeys>;
+const TagKeys = FileSectionList as any as S.Schema<TagKeys>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
@@ -901,17 +901,17 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, message: S.String }),
 ).annotate({ identifier: "ValidationExceptionField" }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
+const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(ValidationExceptionField);
 export type CreateComplianceInquiryError =
   | AccessDeniedException
   | ConflictException

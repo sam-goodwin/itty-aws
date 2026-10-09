@@ -19,7 +19,7 @@ export class UnprocessableEntity
 
 /** A list of credentials to be revoked, up to 1000 per request. */
 export type RevokeRequestCredentialsList = Array<string>;
-export const RevokeRequestCredentialsList = /*@__PURE__*/ S.Array(
+const RevokeRequestCredentialsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RevokeRequestCredentialsList>;
 
@@ -27,14 +27,14 @@ export interface RevokeRequest {
   /** A list of credentials to be revoked, up to 1000 per request. */
   credentials: RevokeRequestCredentialsList;
 }
-export const RevokeRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credentials: RevokeRequestCredentialsList,
   }).pipe(T.Http({ method: "POST", uri: "/credentials/revoke", code: 200 })),
 ).annotate({ identifier: "RevokeRequest" }) as any as S.Schema<RevokeRequest>;
 
 export interface RevokeResponse {}
-export const RevokeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const RevokeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "RevokeResponse",
 }) as any as S.Schema<RevokeResponse>;
 

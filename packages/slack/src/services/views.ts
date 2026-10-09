@@ -17,7 +17,7 @@ export interface PublishViewRequest {
   hash?: string;
   interactivity_pointer?: string;
 }
-export const PublishViewRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.String,
     view: S.Unknown,
@@ -31,7 +31,7 @@ export interface PublishViewResponse {
   ok: boolean;
   view: unknown;
 }
-export const PublishViewResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     view: S.Unknown,
@@ -48,7 +48,7 @@ export interface UpdateViewRequest {
   /** A string that represents view state to protect against possible race conditions. */
   hash?: string;
 }
-export const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     view_id: S.optional(S.String),
     external_id: S.optional(S.String),
@@ -62,10 +62,10 @@ export interface UpdateViewResponse {
   ok: boolean;
   view: unknown;
 }
-export const UpdateViewResponse = PublishViewResponse as any as S.Schema<UpdateViewResponse>;
+const UpdateViewResponse = PublishViewResponse as any as S.Schema<UpdateViewResponse>;
 
 export type ViewsOpenRequestViewMap = { [key: string]: unknown | undefined };
-export const ViewsOpenRequestViewMap = /*@__PURE__*/ S.Record(
+const ViewsOpenRequestViewMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ViewsOpenRequestViewMap>;
@@ -78,7 +78,7 @@ export interface ViewsOpenRequest {
   /** A [view payload](/reference/views). This must be a JSON-encoded string. */
   view: ViewsOpenRequestViewMap;
 }
-export const ViewsOpenRequest = /*@__PURE__*/ S.suspend(() =>
+const ViewsOpenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trigger_id: S.optional(S.NullOr(S.String)),
     interactivity_pointer: S.optional(S.NullOr(S.String)),
@@ -91,7 +91,7 @@ export interface ViewsOpenResponse {
   ok: boolean;
   view: unknown;
 }
-export const ViewsOpenResponse = PublishViewResponse as any as S.Schema<ViewsOpenResponse>;
+const ViewsOpenResponse = PublishViewResponse as any as S.Schema<ViewsOpenResponse>;
 
 export interface ViewsPushRequest {
   /** Exchange a trigger to post to the user. */
@@ -101,7 +101,7 @@ export interface ViewsPushRequest {
   /** A [view payload](/reference/views). This must be a JSON-encoded string. */
   view: unknown;
 }
-export const ViewsPushRequest = /*@__PURE__*/ S.suspend(() =>
+const ViewsPushRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     trigger_id: S.optional(S.NullOr(S.String)),
     interactivity_pointer: S.optional(S.NullOr(S.String)),
@@ -114,7 +114,7 @@ export interface ViewsPushResponse {
   ok: boolean;
   view: unknown;
 }
-export const ViewsPushResponse = PublishViewResponse as any as S.Schema<ViewsPushResponse>;
+const ViewsPushResponse = PublishViewResponse as any as S.Schema<ViewsPushResponse>;
 
 export type PublishViewError = SlackOpError;
 /** Publish a static view for a User. Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `duplicate_external_id` -- Error returned when the given `external_id` has already be used. - `hash_conflict` -- Error returned when the provided `hash` doesn't match the current stored value. - `missing_profile_id` -- A profile id was not provided when trying to publish a view of type profile. - `not_allowed_token_type` -- The type of token your app used when requesting this method is not allowed. - `not_enabled` -- Error returned if a `home` view is published but the Home tab isn't enabled for the app. - `not_implemented` -- The profile view experiment is not enabled for this user. - `view_too_large` -- Error returned if the provided view is greater than 250kb. See https://docs.slack.dev/reference/methods/views.publish */

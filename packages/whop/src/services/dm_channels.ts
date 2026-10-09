@@ -47,7 +47,7 @@ export class UnprocessableEntity
 
 /** The list of user identifiers to include in the DM channel. Each entry can be an email, username, or user ID (e.g. 'user_xxxxx'). */
 export type CreateDmChannelRequestWithUserIdsList = Array<string>;
-export const CreateDmChannelRequestWithUserIdsList = /*@__PURE__*/ S.Array(
+const CreateDmChannelRequestWithUserIdsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateDmChannelRequestWithUserIdsList>;
 
@@ -61,7 +61,7 @@ export interface CreateDmChannelRequest {
   /** The list of user identifiers to include in the DM channel. Each entry can be an email, username, or user ID (e.g. 'user_xxxxx'). */
   with_user_ids: CreateDmChannelRequestWithUserIdsList;
 }
-export const CreateDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.NullOr(S.String)),
     custom_name: S.optional(S.NullOr(S.String)),
@@ -81,7 +81,7 @@ export interface DmChannel {
   /** A custom display name assigned to this channel by the user. Null if no custom name has been set. */
   name: string | null;
 }
-export const DmChannel = /*@__PURE__*/ S.suspend(() =>
+const DmChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -94,14 +94,14 @@ export interface DeleteDmChannelRequest {
   /** The unique identifier of the DM channel to delete. */
   id: string;
 }
-export const DeleteDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/dm_channels/{id}", code: 200 })),
 ).annotate({ identifier: "DeleteDmChannelRequest" }) as any as S.Schema<DeleteDmChannelRequest>;
 
 export type DeleteDmChannelResponse = boolean;
-export const DeleteDmChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteDmChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "DeleteDmChannelResponse" }) as any as S.Schema<DeleteDmChannelResponse>;
 
@@ -109,7 +109,7 @@ export interface GetDmChannelRequest {
   /** The unique identifier of the DM channel to retrieve. */
   id: string;
 }
-export const GetDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dm_channels/{id}", code: 200 })),
@@ -122,7 +122,7 @@ export interface ListDmChannelRequest {
   last?: number;
   account_id?: string;
 }
-export const ListDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     after: S.optional(S.String.pipe(T.Query())),
     before: S.optional(S.String.pipe(T.Query())),
@@ -143,11 +143,11 @@ export interface DmChannelListItem {
   /** A custom display name assigned to this channel by the user. Null if no custom name has been set. */
   name: string | null;
 }
-export const DmChannelListItem = DmChannel as any as S.Schema<DmChannelListItem>;
+const DmChannelListItem = DmChannel as any as S.Schema<DmChannelListItem>;
 
 /** A list of nodes. */
 export type ListDmChannelResponseDataList = Array<DmChannelListItem>;
-export const ListDmChannelResponseDataList = /*@__PURE__*/ S.Array(
+const ListDmChannelResponseDataList = /*@__PURE__*/ S.Array(
   DmChannelListItem,
 ) as any as S.Schema<ListDmChannelResponseDataList>;
 
@@ -162,7 +162,7 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-export const PageInfo = /*@__PURE__*/ S.suspend(() =>
+const PageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -177,7 +177,7 @@ export interface ListDmChannelResponse {
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-export const ListDmChannelResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDmChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListDmChannelResponseDataList,
     page_info: PageInfo,
@@ -190,7 +190,7 @@ export interface UpdateDmChannelRequest {
   /** A new custom display name for the DM channel. For example, 'Project Discussion'. */
   custom_name?: string | null;
 }
-export const UpdateDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDmChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     custom_name: S.optional(S.NullOr(S.String)),

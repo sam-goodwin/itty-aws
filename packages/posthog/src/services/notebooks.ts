@@ -49,7 +49,7 @@ export interface AttachNotebooksWidgetRequestInputBindingsValue {
   source: string;
   hog?: string;
 }
-export const AttachNotebooksWidgetRequestInputBindingsValue = /*@__PURE__*/ S.suspend(() =>
+const AttachNotebooksWidgetRequestInputBindingsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
     hog: S.optional(S.String),
@@ -62,7 +62,7 @@ export const AttachNotebooksWidgetRequestInputBindingsValue = /*@__PURE__*/ S.su
 export type AttachNotebooksWidgetRequestInputBindingsMap = {
   [key: string]: AttachNotebooksWidgetRequestInputBindingsValue | undefined;
 };
-export const AttachNotebooksWidgetRequestInputBindingsMap = /*@__PURE__*/ S.Record(
+const AttachNotebooksWidgetRequestInputBindingsMap = /*@__PURE__*/ S.Record(
   S.String,
   AttachNotebooksWidgetRequestInputBindingsValue,
 ) as any as S.Schema<AttachNotebooksWidgetRequestInputBindingsMap>;
@@ -80,7 +80,7 @@ export interface AttachNotebooksWidgetRequest {
   /** Notebook-local input mappings keyed by contract slot. Each value names a source dataframe and may include pure Hog source for reshaping its rows. */
   input_bindings?: AttachNotebooksWidgetRequestInputBindingsMap;
 }
-export const AttachNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const AttachNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -107,7 +107,7 @@ export type LifecycleStatusEnum =
   | "ready"
   | "failed"
   | "incompatible";
-export const LifecycleStatusEnum = S.String;
+const LifecycleStatusEnum = S.String;
 
 /** * `generating_source` - generating_source * `reviewing_source` - reviewing_source * `publishing_source` - publishing_source * `unknown` - unknown */
 export type FailurePhaseEnum =
@@ -115,22 +115,20 @@ export type FailurePhaseEnum =
   | "reviewing_source"
   | "publishing_source"
   | "unknown";
-export const FailurePhaseEnum = S.String;
+const FailurePhaseEnum = S.String;
 
 /** Logical dataframe slots available to the selected version. */
 export type WidgetStatusFrameNamesList = Array<string>;
-export const WidgetStatusFrameNamesList = /*@__PURE__*/ S.Array(
+const WidgetStatusFrameNamesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<WidgetStatusFrameNamesList>;
 
 export type WidgetStatusInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
-export const WidgetStatusInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
-
 /** Notebook-local mapping from each logical widget input slot to a dataframe and optional Hog transform. */
 export type WidgetStatusInputBindingsMap = {
   [key: string]: AttachNotebooksWidgetRequestInputBindingsValue | undefined;
 };
-export const WidgetStatusInputBindingsMap =
+const WidgetStatusInputBindingsMap =
   AttachNotebooksWidgetRequestInputBindingsMap as any as S.Schema<WidgetStatusInputBindingsMap>;
 
 export interface WidgetInputContractColumn {
@@ -139,7 +137,7 @@ export interface WidgetInputContractColumn {
   /** Column type expected by the reusable widget. */
   type: string;
 }
-export const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
+const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -150,7 +148,7 @@ export const WidgetInputContractColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Columns the notebook-local binding must produce after its optional Hog mapping. */
 export type WidgetInputContractItemColumnsList = Array<WidgetInputContractColumn>;
-export const WidgetInputContractItemColumnsList = /*@__PURE__*/ S.Array(
+const WidgetInputContractItemColumnsList = /*@__PURE__*/ S.Array(
   WidgetInputContractColumn,
 ) as any as S.Schema<WidgetInputContractItemColumnsList>;
 
@@ -164,7 +162,7 @@ export interface WidgetInputContractItem {
   /** Hash of the expected column schema. */
   schemaHash: string;
 }
-export const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
+const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slot: S.String,
     sourceName: S.String,
@@ -175,13 +173,13 @@ export const WidgetInputContractItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Logical dataframe slots and output schemas required by the selected widget version. */
 export type WidgetStatusInputContractList = Array<WidgetInputContractItem>;
-export const WidgetStatusInputContractList = /*@__PURE__*/ S.Array(
+const WidgetStatusInputContractList = /*@__PURE__*/ S.Array(
   WidgetInputContractItem,
 ) as any as S.Schema<WidgetStatusInputContractList>;
 
 /** * `queued` - queued * `generating` - generating * `publishing` - publishing */
 export type WidgetJobStatusEnum = "queued" | "generating" | "publishing";
-export const WidgetJobStatusEnum = S.String;
+const WidgetJobStatusEnum = S.String;
 
 export interface WidgetJob {
   /** Generation job identifier. */
@@ -197,7 +195,7 @@ export interface WidgetJob {
   /** When a worker started the job. */
   started_at: string | null;
 }
-export const WidgetJob = /*@__PURE__*/ S.suspend(() =>
+const WidgetJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: WidgetJobStatusEnum,
@@ -215,11 +213,11 @@ export type GeneratedWidgetVersionSecurityReviewSeverityEnum =
   | "medium"
   | "high"
   | "critical";
-export const GeneratedWidgetVersionSecurityReviewSeverityEnum = S.String;
+const GeneratedWidgetVersionSecurityReviewSeverityEnum = S.String;
 
 /** * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
 export type ErrorTrackingIssueSeverityRuleEnum = "low" | "medium" | "high" | "critical";
-export const ErrorTrackingIssueSeverityRuleEnum = S.String;
+const ErrorTrackingIssueSeverityRuleEnum = S.String;
 
 export interface WidgetSecurityFinding {
   /** Severity of this potential security issue. * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
@@ -229,7 +227,7 @@ export interface WidgetSecurityFinding {
   /** Why the source may be unsafe and what it could do. */
   details: string;
 }
-export const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
+const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: ErrorTrackingIssueSeverityRuleEnum,
     title: S.String,
@@ -239,7 +237,7 @@ export const WidgetSecurityFinding = /*@__PURE__*/ S.suspend(() =>
 
 /** Potential security issues found in the source. */
 export type WidgetSecurityReviewFindingsList = Array<WidgetSecurityFinding>;
-export const WidgetSecurityReviewFindingsList = /*@__PURE__*/ S.Array(
+const WidgetSecurityReviewFindingsList = /*@__PURE__*/ S.Array(
   WidgetSecurityFinding,
 ) as any as S.Schema<WidgetSecurityReviewFindingsList>;
 
@@ -257,7 +255,7 @@ export interface WidgetSecurityReview {
   /** When this exact widget source was reviewed. */
   reviewed_at: string;
 }
-export const WidgetSecurityReview = /*@__PURE__*/ S.suspend(() =>
+const WidgetSecurityReview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     severity: GeneratedWidgetVersionSecurityReviewSeverityEnum,
     summary: S.String,
@@ -304,7 +302,7 @@ export interface WidgetStatus {
   /** Hex SHA-256 over the exact immutable artifact manifest selected for display. */
   build_hash: string | null;
 }
-export const WidgetStatus = /*@__PURE__*/ S.suspend(() =>
+const WidgetStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycle_status: LifecycleStatusEnum,
     error_detail: S.optional(S.NullOr(S.String)),
@@ -335,7 +333,7 @@ export interface CancelNotebooksWidgetRequest {
   /** Generation job to cancel. */
   generation_id: string;
 }
-export const CancelNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -353,7 +351,7 @@ export const CancelNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelNotebooksWidgetRequest>;
 
 export interface CancelNotebooksWidgetResponse {}
-export const CancelNotebooksWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelNotebooksWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelNotebooksWidgetResponse",
 }) as any as S.Schema<CancelNotebooksWidgetResponse>;
 
@@ -366,7 +364,7 @@ export interface NotebookVariable {
   /** The variable's current value. A 'date' is an absolute date or datetime in ISO 8601 form ('2025-01-31', '2025-01-31T09:00:00Z'); relative expressions such as '-7d' are rejected. */
   value?: unknown;
 }
-export const NotebookVariable = /*@__PURE__*/ S.suspend(() =>
+const NotebookVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -376,7 +374,7 @@ export const NotebookVariable = /*@__PURE__*/ S.suspend(() =>
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type CreateNotebookRequestVariablesList = Array<NotebookVariable>;
-export const CreateNotebookRequestVariablesList = /*@__PURE__*/ S.Array(
+const CreateNotebookRequestVariablesList = /*@__PURE__*/ S.Array(
   NotebookVariable,
 ) as any as S.Schema<CreateNotebookRequestVariablesList>;
 
@@ -397,7 +395,7 @@ export interface CreateNotebookRequest {
   variables?: CreateNotebookRequestVariablesList;
   _create_in_folder?: string;
 }
-export const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     title: S.optional(S.NullOr(S.String)),
@@ -411,7 +409,7 @@ export const CreateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateNotebookRequest" }) as any as S.Schema<CreateNotebookRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -427,14 +425,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -447,7 +440,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -462,14 +455,14 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
 export type NotebookOutputParentResourceType = "account";
-export const NotebookOutputParentResourceType = S.String;
+const NotebookOutputParentResourceType = S.String;
 
 /** Parent resource this notebook is attached to, or `null`. Returns `{type: 'account', id: <uuid>}` for account-linked notebooks; used by the frontend to route breadcrumbs back to the resource's list. */
 export interface NotebookOutputParentResource {
   type: NotebookOutputParentResourceType;
   id: string;
 }
-export const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: NotebookOutputParentResourceType,
     id: S.String,
@@ -480,7 +473,7 @@ export const NotebookOutputParentResource = /*@__PURE__*/ S.suspend(() =>
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebookOutputVariablesList = Array<NotebookVariable>;
-export const NotebookOutputVariablesList =
+const NotebookOutputVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebookOutputVariablesList>;
 
 export interface NotebookOutput {
@@ -509,7 +502,7 @@ export interface NotebookOutput {
   /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
   variables?: NotebookOutputVariablesList;
 }
-export const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
+const NotebookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
@@ -538,7 +531,7 @@ export interface NotebookCollabCursor {
   /** Index of the focused list item when the caret is inside a list block. */
   list_item_index?: number;
 }
-export const NotebookCollabCursor = /*@__PURE__*/ S.suspend(() =>
+const NotebookCollabCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     head: S.optional(S.Number),
     node_index: S.optional(S.Number),
@@ -564,7 +557,7 @@ export interface CreateNotebooksCollabMarkdownSaveRequest {
   /** The author's caret in the saved markdown, broadcast with the update so other clients can move the author's remote caret together with the text change. */
   cursor?: NotebookCollabCursor;
 }
-export const CreateNotebooksCollabMarkdownSaveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksCollabMarkdownSaveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -586,7 +579,7 @@ export const CreateNotebooksCollabMarkdownSaveRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateNotebooksCollabMarkdownSaveRequest>;
 
 export interface CreateNotebooksCollabMarkdownSaveResponse {}
-export const CreateNotebooksCollabMarkdownSaveResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksCollabMarkdownSaveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CreateNotebooksCollabMarkdownSaveResponse",
@@ -603,7 +596,7 @@ export interface CreateNotebooksCollabPresenceRequest {
   /** The caller's caret position, broadcast to other clients on this notebook's collab stream. */
   cursor: NotebookCollabCursor;
 }
-export const CreateNotebooksCollabPresenceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksCollabPresenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -622,12 +615,12 @@ export const CreateNotebooksCollabPresenceRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CreateNotebooksCollabPresenceRequest>;
 
 export interface CreateNotebooksCollabPresenceResponse {}
-export const CreateNotebooksCollabPresenceResponse =
+const CreateNotebooksCollabPresenceResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<CreateNotebooksCollabPresenceResponse>;
 
 /** List of ProseMirror step JSON objects to apply. */
 export type CreateNotebooksCollabSaveRequestStepsList = Array<unknown>;
-export const CreateNotebooksCollabSaveRequestStepsList = /*@__PURE__*/ S.Array(
+const CreateNotebooksCollabSaveRequestStepsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<CreateNotebooksCollabSaveRequestStepsList>;
 
@@ -650,7 +643,7 @@ export interface CreateNotebooksCollabSaveRequest {
   /** ProseMirror cursor head position after applying steps. */
   cursor_head?: number | null;
 }
-export const CreateNotebooksCollabSaveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksCollabSaveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -673,7 +666,7 @@ export const CreateNotebooksCollabSaveRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNotebooksCollabSaveRequest>;
 
 export interface CreateNotebooksCollabSaveResponse {}
-export const CreateNotebooksCollabSaveResponse =
+const CreateNotebooksCollabSaveResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<CreateNotebooksCollabSaveResponse>;
 
 export interface CreateNotebooksKernelCompleteRequest {
@@ -685,7 +678,7 @@ export interface CreateNotebooksKernelCompleteRequest {
   /** Character offset of the cursor in `code`, counting from 0. */
   cursor_pos: number;
 }
-export const CreateNotebooksKernelCompleteRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksKernelCompleteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -708,7 +701,7 @@ export interface NotebookKernelCompletion {
   /** What the match names, as the kernel reports it: 'function', 'module', 'instance', ... or blank. */
   type: string;
 }
-export const NotebookKernelCompletion = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelCompletion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     text: S.String,
     type: S.String,
@@ -717,7 +710,7 @@ export const NotebookKernelCompletion = /*@__PURE__*/ S.suspend(() =>
 
 /** Completions from the live kernel's namespace. Empty when no kernel is running. */
 export type NotebookKernelCompleteResponseMatchesList = Array<NotebookKernelCompletion>;
-export const NotebookKernelCompleteResponseMatchesList = /*@__PURE__*/ S.Array(
+const NotebookKernelCompleteResponseMatchesList = /*@__PURE__*/ S.Array(
   NotebookKernelCompletion,
 ) as any as S.Schema<NotebookKernelCompleteResponseMatchesList>;
 
@@ -729,7 +722,7 @@ export interface NotebookKernelCompleteResponse {
   /** End offset of the text the completions replace. */
   cursor_end: number;
 }
-export const NotebookKernelCompleteResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelCompleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: NotebookKernelCompleteResponseMatchesList,
     cursor_start: S.Number,
@@ -750,7 +743,7 @@ export interface CreateNotebooksKernelConfigRequest {
   /** Maximum lifetime of the sandbox kernel in seconds. It shuts down this long after it starts, even while in use. A running kernel keeps its current lifetime until it restarts. */
   idle_timeout_seconds?: number;
 }
-export const CreateNotebooksKernelConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksKernelConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -784,7 +777,7 @@ export interface NotebookKernelConfigResponse {
   /** Compute preset the configured shape matches, or null when it was tuned by hand. */
   preset_key?: string | null;
 }
-export const NotebookKernelConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpu_cores: S.optional(S.NullOr(S.Number)),
     memory_gb: S.optional(S.NullOr(S.Number)),
@@ -809,7 +802,7 @@ export interface CreateNotebooksKernelInspectRequest {
   /** 0 for the signature and docstring, 1 to add the source when the kernel can find it. */
   detail_level?: number;
 }
-export const CreateNotebooksKernelInspectRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksKernelInspectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -833,7 +826,7 @@ export interface NotebookKernelInspectResponse {
   /** The object's signature and docstring as plain text. Blank when not found. */
   text: string;
 }
-export const NotebookKernelInspectResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelInspectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     found: S.Boolean,
     text: S.String,
@@ -844,7 +837,7 @@ export const NotebookKernelInspectResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Replace the notebook's variables with this list before the run starts, so the results match what the document declares. Omit it to run with the variables already saved. */
 export type CreateNotebooksRunRequestVariablesList = Array<NotebookVariable>;
-export const CreateNotebooksRunRequestVariablesList =
+const CreateNotebooksRunRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<CreateNotebooksRunRequestVariablesList>;
 
 export interface CreateNotebooksRunRequest {
@@ -856,7 +849,7 @@ export interface CreateNotebooksRunRequest {
   /** Replace the notebook's variables with this list before the run starts, so the results match what the document declares. Omit it to run with the variables already saved. */
   variables?: CreateNotebooksRunRequestVariablesList;
 }
-export const CreateNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -883,7 +876,7 @@ export interface NotebookRunStartResponse {
   /** What the sandbox this run provisions costs per hour in USD. Null when the run needs no new sandbox, or when the backend is not charged. */
   sandbox_hourly_price?: number | null;
 }
-export const NotebookRunStartResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookRunStartResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     cell_count: S.Number,
@@ -899,7 +892,7 @@ export interface CreateNotebooksRunsInterruptRequest {
   /** ID of the whole-notebook run, as returned by the run endpoint. */
   run_id: string;
 }
-export const CreateNotebooksRunsInterruptRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksRunsInterruptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -921,7 +914,7 @@ export interface NotebookRunInterruptResponse {
   /** The run's state after the call: 'done', 'failed', or 'interrupted'. */
   status: string;
 }
-export const NotebookRunInterruptResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookRunInterruptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interrupted: S.Boolean,
     status: S.String,
@@ -938,7 +931,7 @@ export interface CreateNotebooksSharingPasswordRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-export const CreateNotebooksSharingPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksSharingPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     notebook_id: S.String.pipe(T.Label()),
@@ -963,7 +956,7 @@ export interface SharePassword {
   created_by_email?: string;
   is_active?: boolean;
 }
-export const SharePassword = /*@__PURE__*/ S.suspend(() =>
+const SharePassword = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     created_at: S.optional(S.String),
@@ -974,7 +967,7 @@ export const SharePassword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharePassword" }) as any as S.Schema<SharePassword>;
 
 export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-export const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
+const SharingConfigurationSharePasswordsList = /*@__PURE__*/ S.Array(
   SharePassword,
 ) as any as S.Schema<SharingConfigurationSharePasswordsList>;
 
@@ -989,7 +982,7 @@ export interface SharingConfiguration {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.optional(S.String),
     enabled: S.optional(S.Boolean),
@@ -1003,11 +996,11 @@ export const SharingConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** * `hogql` - hogql * `python` - python */
 export type NotebookSQLV2NodeTypeEnum = "hogql" | "python";
-export const NotebookSQLV2NodeTypeEnum = S.String;
+const NotebookSQLV2NodeTypeEnum = S.String;
 
 /** * `hogql` - hogql * `local` - local */
 export type NotebookSQLV2RefKindEnum = "hogql" | "local";
-export const NotebookSQLV2RefKindEnum = S.String;
+const NotebookSQLV2RefKindEnum = S.String;
 
 export interface NotebookSQLV2Ref {
   /** ProseMirror node id of the upstream node this name points at. */
@@ -1015,7 +1008,7 @@ export interface NotebookSQLV2Ref {
   /** What the name resolves to: 'hogql' is a SQL node's query definition (resolved to its last-run HogQL); 'local' is a dataframe a Python node bound in the kernel namespace. * `hogql` - hogql * `local` - local */
   kind?: NotebookSQLV2RefKindEnum | (string & {});
 }
-export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_id: S.String,
     kind: S.optional(NotebookSQLV2RefKindEnum),
@@ -1024,14 +1017,14 @@ export const NotebookSQLV2Ref = /*@__PURE__*/ S.suspend(() =>
 
 /** Available upstream nodes, keyed by dataframe name. A SQL node inlines referenced hogql refs as CTEs -- unless it references a local ref, which reroutes the run to the sandbox's DuckDB; a python node materializes the hogql refs its code reads as pandas frames. */
 export type CreateNotebooksSqlV2RunRequestRefsMap = { [key: string]: NotebookSQLV2Ref | undefined };
-export const CreateNotebooksSqlV2RunRequestRefsMap = /*@__PURE__*/ S.Record(
+const CreateNotebooksSqlV2RunRequestRefsMap = /*@__PURE__*/ S.Record(
   S.String,
   NotebookSQLV2Ref,
 ) as any as S.Schema<CreateNotebooksSqlV2RunRequestRefsMap>;
 
 /** Notebook-level variables in scope for this run. A SQL node has each `{name}` bound to its value before dispatch; a Python node gets them as globals in the kernel namespace. A SQL node reading a `{name}` that is absent here fails the dispatch. */
 export type CreateNotebooksSqlV2RunRequestVariablesList = Array<NotebookVariable>;
-export const CreateNotebooksSqlV2RunRequestVariablesList =
+const CreateNotebooksSqlV2RunRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<CreateNotebooksSqlV2RunRequestVariablesList>;
 
 export interface CreateNotebooksSqlV2RunRequest {
@@ -1057,7 +1050,7 @@ export interface CreateNotebooksSqlV2RunRequest {
   /** Send the code to the selected connection verbatim instead of compiling it from HogQL first. Ignored without connection_id, and incompatible with references to other cells. */
   send_raw_query?: boolean;
 }
-export const CreateNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1089,7 +1082,7 @@ export interface NotebookSQLV2RunResponse {
   /** What the sandbox this run provisions costs per hour in USD. Null when the run needs no new sandbox, or when the backend is not charged. */
   sandbox_hourly_price?: number | null;
 }
-export const NotebookSQLV2RunResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2RunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     starts_sandbox: S.Boolean,
@@ -1104,7 +1097,7 @@ export interface CreateNotebooksSqlV2RunsInterruptRequest {
   /** ID of the run, as returned by the run dispatch endpoint. */
   run_id: string;
 }
-export const CreateNotebooksSqlV2RunsInterruptRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksSqlV2RunsInterruptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1126,7 +1119,7 @@ export interface NotebookSQLV2InterruptResponse {
   /** Present when the interrupt could not take effect yet, e.g. the run has not reached the kernel. */
   detail?: string;
 }
-export const NotebookSQLV2InterruptResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2InterruptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     detail: S.optional(S.String),
@@ -1148,7 +1141,7 @@ export interface CreateNotebooksWidgetSnapshotRequest {
   /** Snapshot being refreshed; its version and input mappings must match. */
   previous_snapshot_id?: string;
 }
-export const CreateNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1169,22 +1162,20 @@ export const CreateNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =
 
 /** Allowed dataframe slots. */
 export type WidgetSnapshotFrameNamesList = Array<string>;
-export const WidgetSnapshotFrameNamesList =
+const WidgetSnapshotFrameNamesList =
   WidgetStatusFrameNamesList as any as S.Schema<WidgetSnapshotFrameNamesList>;
 
 export type WidgetSnapshotInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
-export const WidgetSnapshotInputBindingsValue = AttachNotebooksWidgetRequestInputBindingsValue;
-
 /** Frozen input mappings and Hog transforms. */
 export type WidgetSnapshotInputBindingsMap = {
   [key: string]: AttachNotebooksWidgetRequestInputBindingsValue | undefined;
 };
-export const WidgetSnapshotInputBindingsMap =
+const WidgetSnapshotInputBindingsMap =
   AttachNotebooksWidgetRequestInputBindingsMap as any as S.Schema<WidgetSnapshotInputBindingsMap>;
 
 /** Pinned widget input schemas. */
 export type WidgetSnapshotInputContractList = Array<WidgetInputContractItem>;
-export const WidgetSnapshotInputContractList =
+const WidgetSnapshotInputContractList =
   WidgetStatusInputContractList as any as S.Schema<WidgetSnapshotInputContractList>;
 
 export interface WidgetSnapshot {
@@ -1209,7 +1200,7 @@ export interface WidgetSnapshot {
   /** Review of the pinned widget source. */
   security_review: WidgetSecurityReview | null;
 }
-export const WidgetSnapshot = /*@__PURE__*/ S.suspend(() =>
+const WidgetSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     node_id: S.String,
@@ -1233,7 +1224,7 @@ export interface ForkNotebooksWidgetRequest {
   /** Immutable version to fork, or null to copy the placement's pinned or latest version. */
   version_id?: string | null;
 }
-export const ForkNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const ForkNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1256,11 +1247,11 @@ export type WidgetGenerateRequestModelEnum =
   | "claude-sonnet-4-6"
   | "claude-sonnet-5"
   | "claude-opus-5";
-export const WidgetGenerateRequestModelEnum = S.String;
+const WidgetGenerateRequestModelEnum = S.String;
 
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve */
 export type GenerationOperationEnum = "initial" | "regenerate" | "improve";
-export const GenerationOperationEnum = S.String;
+const GenerationOperationEnum = S.String;
 
 export interface GenerateNotebooksWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1279,7 +1270,7 @@ export interface GenerateNotebooksWidgetRequest {
   /** Current widget version the improvement is based on. Required for improve operations. */
   expected_current_version_id?: string;
 }
-export const GenerateNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1301,16 +1292,16 @@ export const GenerateNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GenerateNotebooksWidgetRequest>;
 
 export interface GenerateNotebooksWidgetResponse {}
-export const GenerateNotebooksWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "GenerateNotebooksWidgetResponse" },
-) as any as S.Schema<GenerateNotebooksWidgetResponse>;
+const GenerateNotebooksWidgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "GenerateNotebooksWidgetResponse",
+}) as any as S.Schema<GenerateNotebooksWidgetResponse>;
 
 export interface GetNotebookRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   short_id: string;
 }
-export const GetNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1324,7 +1315,7 @@ export interface GetNotebooksActivityRequest {
   project_id: string;
   short_id: string;
 }
-export const GetNotebooksActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1340,14 +1331,14 @@ export const GetNotebooksActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksActivityRequest>;
 
 export interface GetNotebooksActivityResponse {}
-export const GetNotebooksActivityResponse =
+const GetNotebooksActivityResponse =
   CancelNotebooksWidgetResponse as any as S.Schema<GetNotebooksActivityResponse>;
 
 export interface GetNotebooksAllActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetNotebooksAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1358,7 +1349,7 @@ export const GetNotebooksAllActivityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksAllActivityRequest>;
 
 export interface GetNotebooksAllActivityResponse {}
-export const GetNotebooksAllActivityResponse =
+const GetNotebooksAllActivityResponse =
   GenerateNotebooksWidgetResponse as any as S.Schema<GetNotebooksAllActivityResponse>;
 
 export interface GetNotebooksCollabStreamRequest {
@@ -1366,7 +1357,7 @@ export interface GetNotebooksCollabStreamRequest {
   project_id: string;
   short_id: string;
 }
-export const GetNotebooksCollabStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksCollabStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1382,14 +1373,14 @@ export const GetNotebooksCollabStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksCollabStreamRequest>;
 
 export interface GetNotebooksCollabStreamResponse {}
-export const GetNotebooksCollabStreamResponse =
+const GetNotebooksCollabStreamResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<GetNotebooksCollabStreamResponse>;
 
 export interface GetNotebooksKernelComputeOptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetNotebooksKernelComputeOptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksKernelComputeOptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1417,7 +1408,7 @@ export interface NotebookComputePreset {
   /** What this preset costs per hour in USD while it is alive. */
   hourly_price: number;
 }
-export const NotebookComputePreset = /*@__PURE__*/ S.suspend(() =>
+const NotebookComputePreset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     name: S.String,
@@ -1430,24 +1421,24 @@ export const NotebookComputePreset = /*@__PURE__*/ S.suspend(() =>
 
 /** Sandbox shapes offered as one-click options. */
 export type NotebookComputeOptionsResponsePresetsList = Array<NotebookComputePreset>;
-export const NotebookComputeOptionsResponsePresetsList = /*@__PURE__*/ S.Array(
+const NotebookComputeOptionsResponsePresetsList = /*@__PURE__*/ S.Array(
   NotebookComputePreset,
 ) as any as S.Schema<NotebookComputeOptionsResponsePresetsList>;
 
 /** CPU core counts the kernel config endpoint accepts. */
 export type NotebookComputeOptionsResponseAllowedCpuCoresList = Array<number>;
-export const NotebookComputeOptionsResponseAllowedCpuCoresList = /*@__PURE__*/ S.Array(
+const NotebookComputeOptionsResponseAllowedCpuCoresList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<NotebookComputeOptionsResponseAllowedCpuCoresList>;
 
 /** Memory sizes in GB the kernel config endpoint accepts. */
 export type NotebookComputeOptionsResponseAllowedMemoryGbList = Array<number>;
-export const NotebookComputeOptionsResponseAllowedMemoryGbList =
+const NotebookComputeOptionsResponseAllowedMemoryGbList =
   NotebookComputeOptionsResponseAllowedCpuCoresList as any as S.Schema<NotebookComputeOptionsResponseAllowedMemoryGbList>;
 
 /** Maximum sandbox lifetimes in seconds that the kernel config endpoint accepts. */
 export type NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList = Array<number>;
-export const NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList =
+const NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList =
   NotebookComputeOptionsResponseAllowedCpuCoresList as any as S.Schema<NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList>;
 
 export interface NotebookComputeOptionsResponse {
@@ -1468,7 +1459,7 @@ export interface NotebookComputeOptionsResponse {
   /** Maximum sandbox lifetimes in seconds that the kernel config endpoint accepts. */
   allowed_idle_timeout_seconds: NotebookComputeOptionsResponseAllowedIdleTimeoutSecondsList;
 }
-export const NotebookComputeOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookComputeOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     cpu_rate_per_core_hour: S.Number,
@@ -1488,7 +1479,7 @@ export interface GetNotebooksKernelStatusRequest {
   project_id: string;
   short_id: string;
 }
-export const GetNotebooksKernelStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksKernelStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1505,12 +1496,12 @@ export const GetNotebooksKernelStatusRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A [column name, DuckDB type] pair. */
 export type NotebookSQLV2FrameColumnsItemList = Array<string>;
-export const NotebookSQLV2FrameColumnsItemList =
+const NotebookSQLV2FrameColumnsItemList =
   WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2FrameColumnsItemList>;
 
 /** DuckDB type per column, as [name, type] pairs. */
 export type NotebookSQLV2FrameColumnsList = Array<NotebookSQLV2FrameColumnsItemList>;
-export const NotebookSQLV2FrameColumnsList = /*@__PURE__*/ S.Array(
+const NotebookSQLV2FrameColumnsList = /*@__PURE__*/ S.Array(
   NotebookSQLV2FrameColumnsItemList,
 ) as any as S.Schema<NotebookSQLV2FrameColumnsList>;
 
@@ -1526,7 +1517,7 @@ export interface NotebookSQLV2Frame {
   /** True when row_count is DuckDB's optimizer estimate rather than a count. The estimate does not track deletes, so it must never be presented as exact. */
   row_count_is_estimate?: boolean;
 }
-export const NotebookSQLV2Frame = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2Frame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     kind: S.String,
@@ -1538,7 +1529,7 @@ export const NotebookSQLV2Frame = /*@__PURE__*/ S.suspend(() =>
 
 /** Dataframes and DuckDB tables a cell can currently reference, with column names and types. Empty unless the kernel is running and the caller has query access. */
 export type NotebookKernelStatusResponseFramesList = Array<NotebookSQLV2Frame>;
-export const NotebookKernelStatusResponseFramesList = /*@__PURE__*/ S.Array(
+const NotebookKernelStatusResponseFramesList = /*@__PURE__*/ S.Array(
   NotebookSQLV2Frame,
 ) as any as S.Schema<NotebookKernelStatusResponseFramesList>;
 
@@ -1574,7 +1565,7 @@ export interface NotebookKernelStatusResponse {
   /** Compute preset for the shape hourly_price describes: the running sandbox while a kernel is live, otherwise the configured shape. Null when that shape was tuned by hand and matches no preset. */
   preset_key?: string | null;
 }
-export const NotebookKernelStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backend: S.optional(S.NullOr(S.String)),
     status: S.String,
@@ -1600,7 +1591,7 @@ export interface GetNotebooksRecordingCommentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetNotebooksRecordingCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksRecordingCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1615,7 +1606,7 @@ export const GetNotebooksRecordingCommentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNotebooksRecordingCommentRequest>;
 
 export interface GetNotebooksRecordingCommentResponse {}
-export const GetNotebooksRecordingCommentResponse =
+const GetNotebooksRecordingCommentResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<GetNotebooksRecordingCommentResponse>;
 
 export interface GetNotebooksRunRequest {
@@ -1625,7 +1616,7 @@ export interface GetNotebooksRunRequest {
   /** ID of the whole-notebook run, as returned by the run endpoint. */
   run_id: string;
 }
-export const GetNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1641,7 +1632,7 @@ export const GetNotebooksRunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The variable values this run bound, snapshotted when it started. */
 export type NotebookRunStatusResponseVariablesList = Array<NotebookVariable>;
-export const NotebookRunStatusResponseVariablesList =
+const NotebookRunStatusResponseVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebookRunStatusResponseVariablesList>;
 
 export interface NotebookRunCell {
@@ -1658,7 +1649,7 @@ export interface NotebookRunCell {
   /** Why this cell failed, when it did. */
   error?: string | null;
 }
-export const NotebookRunCell = /*@__PURE__*/ S.suspend(() =>
+const NotebookRunCell = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_id: S.String,
     cell_type: S.String,
@@ -1671,7 +1662,7 @@ export const NotebookRunCell = /*@__PURE__*/ S.suspend(() =>
 
 /** Every planned cell in run order, with the state of its run in this notebook run. */
 export type NotebookRunStatusResponseCellsList = Array<NotebookRunCell>;
-export const NotebookRunStatusResponseCellsList = /*@__PURE__*/ S.Array(
+const NotebookRunStatusResponseCellsList = /*@__PURE__*/ S.Array(
   NotebookRunCell,
 ) as any as S.Schema<NotebookRunStatusResponseCellsList>;
 
@@ -1701,7 +1692,7 @@ export interface NotebookRunStatusResponse {
   /** When the run reached a terminal state; null while running. */
   finished_at?: string | null;
 }
-export const NotebookRunStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookRunStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     status: S.String,
@@ -1727,7 +1718,7 @@ export interface GetNotebooksSqlV2RunRequest {
   /** ID of the run, as returned by the run dispatch endpoint. */
   run_id: string;
 }
-export const GetNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1745,7 +1736,7 @@ export const GetNotebooksSqlV2RunRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** DuckDB objects a SQL node can SELECT from as of this run, for the schema browser. Only kernel runs (python/duckdb) report these; a hogql run never enters the kernel. */
 export type NotebookSQLV2EnvelopeFramesList = Array<NotebookSQLV2Frame>;
-export const NotebookSQLV2EnvelopeFramesList =
+const NotebookSQLV2EnvelopeFramesList =
   NotebookKernelStatusResponseFramesList as any as S.Schema<NotebookSQLV2EnvelopeFramesList>;
 
 export interface NotebookSQLV2Media {
@@ -1754,7 +1745,7 @@ export interface NotebookSQLV2Media {
   /** Base64-encoded media bytes. */
   data: string;
 }
-export const NotebookSQLV2Media = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2Media = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mime_type: S.String,
     data: S.String,
@@ -1763,39 +1754,36 @@ export const NotebookSQLV2Media = /*@__PURE__*/ S.suspend(() =>
 
 /** Rich outputs from a Python node run, e.g. matplotlib figures as PNGs. */
 export type NotebookSQLV2EnvelopeMediaList = Array<NotebookSQLV2Media>;
-export const NotebookSQLV2EnvelopeMediaList = /*@__PURE__*/ S.Array(
+const NotebookSQLV2EnvelopeMediaList = /*@__PURE__*/ S.Array(
   NotebookSQLV2Media,
 ) as any as S.Schema<NotebookSQLV2EnvelopeMediaList>;
 
 /** Result column names. */
 export type NotebookSQLV2EnvelopeColumnsList = Array<string>;
-export const NotebookSQLV2EnvelopeColumnsList =
+const NotebookSQLV2EnvelopeColumnsList =
   WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2EnvelopeColumnsList>;
 
 /** A [column name, ClickHouse type] pair. */
 export type NotebookSQLV2EnvelopeTypesItemList = Array<string>;
-export const NotebookSQLV2EnvelopeTypesItemList =
-  WidgetStatusFrameNamesList as any as S.Schema<NotebookSQLV2EnvelopeTypesItemList>;
-
 /** ClickHouse type per column, as [name, type] pairs; used by the visualization tab. */
 export type NotebookSQLV2EnvelopeTypesList = Array<NotebookSQLV2EnvelopeTypesItemList>;
-export const NotebookSQLV2EnvelopeTypesList =
+const NotebookSQLV2EnvelopeTypesList =
   NotebookSQLV2FrameColumnsList as any as S.Schema<NotebookSQLV2EnvelopeTypesList>;
 
 /** A single result row as a list of cell values. */
 export type NotebookSQLV2EnvelopeFirstPageItemList = Array<unknown>;
-export const NotebookSQLV2EnvelopeFirstPageItemList =
+const NotebookSQLV2EnvelopeFirstPageItemList =
   CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<NotebookSQLV2EnvelopeFirstPageItemList>;
 
 /** First page of result rows for display; each row is a list of cell values. */
 export type NotebookSQLV2EnvelopeFirstPageList = Array<NotebookSQLV2EnvelopeFirstPageItemList>;
-export const NotebookSQLV2EnvelopeFirstPageList = /*@__PURE__*/ S.Array(
+const NotebookSQLV2EnvelopeFirstPageList = /*@__PURE__*/ S.Array(
   NotebookSQLV2EnvelopeFirstPageItemList,
 ) as any as S.Schema<NotebookSQLV2EnvelopeFirstPageList>;
 
 /** Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics. */
 export type NotebookSQLV2EnvelopeTimingsMap = { [key: string]: number | undefined };
-export const NotebookSQLV2EnvelopeTimingsMap = /*@__PURE__*/ S.Record(
+const NotebookSQLV2EnvelopeTimingsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<NotebookSQLV2EnvelopeTimingsMap>;
@@ -1830,7 +1818,7 @@ export interface NotebookSQLV2Envelope {
   /** Phase durations in seconds. From the sandbox: input_wait_s (waiting on the data plane), download_s (presigned frame downloads), kernel_boot_s (ensuring the ipykernel is up), exec_s (kernel cell execution), sandbox_total_s (the whole sandbox-side run). From the direct lane: queued_s (enqueue to Celery pickup), clickhouse_s (pickup to completion). Feeds the node-run metrics. */
   timings?: NotebookSQLV2EnvelopeTimingsMap;
 }
-export const NotebookSQLV2Envelope = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2Envelope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     frames: S.optional(NotebookSQLV2EnvelopeFramesList),
@@ -1851,13 +1839,10 @@ export const NotebookSQLV2Envelope = /*@__PURE__*/ S.suspend(() =>
 
 /** A single result row as a list of cell values. */
 export type NotebookSQLV2RunStatusResponseRowsItemList = Array<unknown>;
-export const NotebookSQLV2RunStatusResponseRowsItemList =
-  CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<NotebookSQLV2RunStatusResponseRowsItemList>;
-
 /** SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager's transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope's first_page preview. */
 export type NotebookSQLV2RunStatusResponseRowsList =
   Array<NotebookSQLV2RunStatusResponseRowsItemList>;
-export const NotebookSQLV2RunStatusResponseRowsList =
+const NotebookSQLV2RunStatusResponseRowsList =
   NotebookSQLV2EnvelopeFirstPageList as any as S.Schema<NotebookSQLV2RunStatusResponseRowsList>;
 
 export interface NotebookSQLV2RunStatusResponse {
@@ -1870,7 +1855,7 @@ export interface NotebookSQLV2RunStatusResponse {
   /** SQL (hogql) runs only: the full capped row set for client-side paging, present while the query manager's transient result is alive (~20 minutes). Absent afterwards and for kernel (python/duckdb) runs, which keep only the envelope's first_page preview. */
   rows?: NotebookSQLV2RunStatusResponseRowsList;
 }
-export const NotebookSQLV2RunStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2RunStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     result: S.optional(S.NullOr(NotebookSQLV2Envelope)),
@@ -1886,7 +1871,7 @@ export interface GetNotebooksSqlV2StateRequest {
   project_id: string;
   short_id: string;
 }
-export const GetNotebooksSqlV2StateRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksSqlV2StateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -1911,7 +1896,7 @@ export interface NotebookKernelState {
   /** Maximum lifetime of the sandbox in seconds. It shuts down this long after it starts, even while in use. */
   idle_timeout_seconds?: number | null;
 }
-export const NotebookKernelState = /*@__PURE__*/ S.suspend(() =>
+const NotebookKernelState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
     cpu_cores: S.optional(S.NullOr(S.Number)),
@@ -1922,22 +1907,22 @@ export const NotebookKernelState = /*@__PURE__*/ S.suspend(() =>
 
 /** The notebook's declared variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global; a cell that reads an undeclared name fails to run. */
 export type NotebookSQLV2StateResponseVariablesList = Array<NotebookVariable>;
-export const NotebookSQLV2StateResponseVariablesList =
+const NotebookSQLV2StateResponseVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebookSQLV2StateResponseVariablesList>;
 
 /** node_ids of cells whose dataframes this cell's code references. */
 export type NotebookCellStateDependsOnList = Array<string>;
-export const NotebookCellStateDependsOnList =
+const NotebookCellStateDependsOnList =
   WidgetStatusFrameNamesList as any as S.Schema<NotebookCellStateDependsOnList>;
 
 /** node_ids of cells that reference this cell's dataframe. */
 export type NotebookCellStateDependentsList = Array<string>;
-export const NotebookCellStateDependentsList =
+const NotebookCellStateDependentsList =
   WidgetStatusFrameNamesList as any as S.Schema<NotebookCellStateDependentsList>;
 
 /** Result column names. */
 export type NotebookCellLastRunColumnsList = Array<string>;
-export const NotebookCellLastRunColumnsList =
+const NotebookCellLastRunColumnsList =
   WidgetStatusFrameNamesList as any as S.Schema<NotebookCellLastRunColumnsList>;
 
 export interface NotebookCellLastRun {
@@ -1954,7 +1939,7 @@ export interface NotebookCellLastRun {
   /** Error message when the run failed. */
   error?: string | null;
 }
-export const NotebookCellLastRun = /*@__PURE__*/ S.suspend(() =>
+const NotebookCellLastRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     run_id: S.String,
     status: S.String,
@@ -1987,7 +1972,7 @@ export interface NotebookCellState {
   /** Summary of the most recent run; null when never run. */
   last_run?: NotebookCellLastRun | null;
 }
-export const NotebookCellState = /*@__PURE__*/ S.suspend(() =>
+const NotebookCellState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     node_id: S.String,
     cell_type: S.String,
@@ -2004,7 +1989,7 @@ export const NotebookCellState = /*@__PURE__*/ S.suspend(() =>
 
 /** Every cell in document order, with its dependency edges and derived run state. */
 export type NotebookSQLV2StateResponseCellsList = Array<NotebookCellState>;
-export const NotebookSQLV2StateResponseCellsList = /*@__PURE__*/ S.Array(
+const NotebookSQLV2StateResponseCellsList = /*@__PURE__*/ S.Array(
   NotebookCellState,
 ) as any as S.Schema<NotebookSQLV2StateResponseCellsList>;
 
@@ -2026,7 +2011,7 @@ export interface NotebookSQLV2StateResponse {
   /** Every cell in document order, with its dependency edges and derived run state. */
   cells: NotebookSQLV2StateResponseCellsList;
 }
-export const NotebookSQLV2StateResponse = /*@__PURE__*/ S.suspend(() =>
+const NotebookSQLV2StateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     notebook_id: S.String,
     title: S.NullOr(S.String),
@@ -2047,7 +2032,7 @@ export interface GetNotebooksWidgetSnapshotRequest {
   short_id: string;
   snapshot_id: string;
 }
-export const GetNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2081,7 +2066,7 @@ export interface ListNotebooksRequest {
   /** If any value is provided for this parameter, return notebooks created by the logged in user. */
   user?: string;
 }
-export const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotebooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     contains: S.optional(S.String.pipe(T.Query())),
@@ -2110,7 +2095,7 @@ export interface NotebookMinimalOutput {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
+const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     short_id: S.optional(S.String),
@@ -2125,7 +2110,7 @@ export const NotebookMinimalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotebookMinimalOutput" }) as any as S.Schema<NotebookMinimalOutput>;
 
 export type PaginatedNotebookMinimalListOutputResultsList = Array<NotebookMinimalOutput>;
-export const PaginatedNotebookMinimalListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedNotebookMinimalListOutputResultsList = /*@__PURE__*/ S.Array(
   NotebookMinimalOutput,
 ) as any as S.Schema<PaginatedNotebookMinimalListOutputResultsList>;
 
@@ -2135,7 +2120,7 @@ export interface PaginatedNotebookMinimalListOutput {
   previous?: string | null;
   results?: PaginatedNotebookMinimalListOutputResultsList;
 }
-export const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedNotebookMinimalListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     next: S.optional(S.NullOr(S.String)),
@@ -2151,7 +2136,7 @@ export interface ListNotebooksSharingRequest {
   project_id: string;
   notebook_id: string;
 }
-export const ListNotebooksSharingRequest = /*@__PURE__*/ S.suspend(() =>
+const ListNotebooksSharingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     notebook_id: S.String.pipe(T.Label()),
@@ -2167,12 +2152,12 @@ export const ListNotebooksSharingRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListNotebooksSharingRequest>;
 
 export type ListNotebooksSharingResponseBodyList = Array<SharingConfiguration>;
-export const ListNotebooksSharingResponseBodyList = /*@__PURE__*/ S.Array(
+const ListNotebooksSharingResponseBodyList = /*@__PURE__*/ S.Array(
   SharingConfiguration,
 ) as any as S.Schema<ListNotebooksSharingResponseBodyList>;
 
 export type ListNotebooksSharingResponse = ListNotebooksSharingResponseBodyList;
-export const ListNotebooksSharingResponse = /*@__PURE__*/ S.suspend(() =>
+const ListNotebooksSharingResponse = /*@__PURE__*/ S.suspend(() =>
   ListNotebooksSharingResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListNotebooksSharingResponse",
@@ -2183,7 +2168,7 @@ export interface NotebooksDestroyRequest {
   project_id: string;
   short_id: string;
 }
-export const NotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2197,12 +2182,12 @@ export const NotebooksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotebooksDestroyRequest" }) as any as S.Schema<NotebooksDestroyRequest>;
 
 export interface NotebooksDestroyResponse {}
-export const NotebooksDestroyResponse =
+const NotebooksDestroyResponse =
   CancelNotebooksWidgetResponse as any as S.Schema<NotebooksDestroyResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelExecuteCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelExecuteCreateRequestVariablesList =
+const NotebooksKernelExecuteCreateRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelExecuteCreateRequestVariablesList>;
 
 export interface NotebooksKernelExecuteCreateRequest {
@@ -2223,7 +2208,7 @@ export interface NotebooksKernelExecuteCreateRequest {
   variables?: NotebooksKernelExecuteCreateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2246,12 +2231,12 @@ export const NotebooksKernelExecuteCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelExecuteCreateRequest>;
 
 export interface NotebooksKernelExecuteCreateResponse {}
-export const NotebooksKernelExecuteCreateResponse =
+const NotebooksKernelExecuteCreateResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelExecuteCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelRestartCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelRestartCreateRequestVariablesList =
+const NotebooksKernelRestartCreateRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelRestartCreateRequestVariablesList>;
 
 export interface NotebooksKernelRestartCreateRequest {
@@ -2272,7 +2257,7 @@ export interface NotebooksKernelRestartCreateRequest {
   variables?: NotebooksKernelRestartCreateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2295,12 +2280,12 @@ export const NotebooksKernelRestartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelRestartCreateRequest>;
 
 export interface NotebooksKernelRestartCreateResponse {}
-export const NotebooksKernelRestartCreateResponse =
+const NotebooksKernelRestartCreateResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelRestartCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelStartCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelStartCreateRequestVariablesList =
+const NotebooksKernelStartCreateRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelStartCreateRequestVariablesList>;
 
 export interface NotebooksKernelStartCreateRequest {
@@ -2321,7 +2306,7 @@ export interface NotebooksKernelStartCreateRequest {
   variables?: NotebooksKernelStartCreateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2344,12 +2329,12 @@ export const NotebooksKernelStartCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelStartCreateRequest>;
 
 export interface NotebooksKernelStartCreateResponse {}
-export const NotebooksKernelStartCreateResponse =
+const NotebooksKernelStartCreateResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelStartCreateResponse>;
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type NotebooksKernelStopCreateRequestVariablesList = Array<NotebookVariable>;
-export const NotebooksKernelStopCreateRequestVariablesList =
+const NotebooksKernelStopCreateRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<NotebooksKernelStopCreateRequestVariablesList>;
 
 export interface NotebooksKernelStopCreateRequest {
@@ -2370,7 +2355,7 @@ export interface NotebooksKernelStopCreateRequest {
   variables?: NotebooksKernelStopCreateRequestVariablesList;
   _create_in_folder?: string;
 }
-export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2393,7 +2378,7 @@ export const NotebooksKernelStopCreateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotebooksKernelStopCreateRequest>;
 
 export interface NotebooksKernelStopCreateResponse {}
-export const NotebooksKernelStopCreateResponse =
+const NotebooksKernelStopCreateResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksKernelStopCreateResponse>;
 
 export interface NotebooksSharingPasswordsDestroyRequest {
@@ -2402,7 +2387,7 @@ export interface NotebooksSharingPasswordsDestroyRequest {
   notebook_id: string;
   password_id: string;
 }
-export const NotebooksSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     notebook_id: S.String.pipe(T.Label()),
@@ -2419,7 +2404,7 @@ export const NotebooksSharingPasswordsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<NotebooksSharingPasswordsDestroyRequest>;
 
 export interface NotebooksSharingPasswordsDestroyResponse {}
-export const NotebooksSharingPasswordsDestroyResponse =
+const NotebooksSharingPasswordsDestroyResponse =
   CreateNotebooksCollabMarkdownSaveResponse as any as S.Schema<NotebooksSharingPasswordsDestroyResponse>;
 
 export interface NotebooksSharingRefreshCreateRequest {
@@ -2430,7 +2415,7 @@ export interface NotebooksSharingRefreshCreateRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-export const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksSharingRefreshCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     notebook_id: S.String.pipe(T.Label()),
@@ -2461,7 +2446,7 @@ export interface NotebooksWidgetFrameRequest {
   run_id?: string;
   version_id?: string;
 }
-export const NotebooksWidgetFrameRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetFrameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2488,7 +2473,7 @@ export interface WidgetFrameColumn {
   /** Column type reported by the completed notebook run. */
   type: string;
 }
-export const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
+const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: S.String,
@@ -2497,17 +2482,14 @@ export const WidgetFrameColumn = /*@__PURE__*/ S.suspend(() =>
 
 /** Dataframe columns in display order. */
 export type WidgetFrameColumnsList = Array<WidgetFrameColumn>;
-export const WidgetFrameColumnsList = /*@__PURE__*/ S.Array(
+const WidgetFrameColumnsList = /*@__PURE__*/ S.Array(
   WidgetFrameColumn,
 ) as any as S.Schema<WidgetFrameColumnsList>;
 
 export type WidgetFrameRowsItemList = Array<unknown>;
-export const WidgetFrameRowsItemList =
-  CreateNotebooksCollabSaveRequestStepsList as any as S.Schema<WidgetFrameRowsItemList>;
-
 /** Requested page of dataframe rows. */
 export type WidgetFrameRowsList = Array<WidgetFrameRowsItemList>;
-export const WidgetFrameRowsList =
+const WidgetFrameRowsList =
   NotebookSQLV2EnvelopeFirstPageList as any as S.Schema<WidgetFrameRowsList>;
 
 export interface WidgetFrame {
@@ -2530,7 +2512,7 @@ export interface WidgetFrame {
   /** Whether more rows exist after this page. */
   truncated: boolean;
 }
-export const WidgetFrame = /*@__PURE__*/ S.suspend(() =>
+const WidgetFrame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     runId: S.String,
@@ -2555,7 +2537,7 @@ export interface NotebooksWidgetRevertRequest {
   /** Current version used for optimistic concurrency. */
   expected_current_version_id: string;
 }
-export const NotebooksWidgetRevertRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetRevertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2588,7 +2570,7 @@ export interface NotebooksWidgetSnapshotFrameRequest {
   /** Version requesting the data. */
   version_id?: string;
 }
-export const NotebooksWidgetSnapshotFrameRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetSnapshotFrameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2618,7 +2600,7 @@ export interface NotebooksWidgetSourceRequest {
   /** Immutable widget version whose source should be returned. */
   version_id?: string;
 }
-export const NotebooksWidgetSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2639,7 +2621,7 @@ export interface WidgetSource {
   /** Read-only source code for the current widget version. */
   source: string;
 }
-export const WidgetSource = /*@__PURE__*/ S.suspend(() =>
+const WidgetSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.String,
   }),
@@ -2652,7 +2634,7 @@ export interface NotebooksWidgetStatusRequest {
   /** Stable identifier of the generated widget node. */
   node_id: string;
 }
-export const NotebooksWidgetStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2677,7 +2659,7 @@ export interface NotebooksWidgetVersionsRequest {
   limit?: number;
   offset?: number;
 }
-export const NotebooksWidgetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const NotebooksWidgetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2697,15 +2679,15 @@ export const NotebooksWidgetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve * `revert` - revert */
 export type GeneratedWidgetVersionOperationEnum = "initial" | "regenerate" | "improve" | "revert";
-export const GeneratedWidgetVersionOperationEnum = S.String;
+const GeneratedWidgetVersionOperationEnum = S.String;
 
 /** * `queued` - queued * `building` - building * `ready` - ready * `failed` - failed */
 export type BuildStatusEnum = "queued" | "building" | "ready" | "failed";
-export const BuildStatusEnum = S.String;
+const BuildStatusEnum = S.String;
 
 /** Logical dataframe slots available to this version. */
 export type WidgetVersionFrameNamesList = Array<string>;
-export const WidgetVersionFrameNamesList =
+const WidgetVersionFrameNamesList =
   WidgetStatusFrameNamesList as any as S.Schema<WidgetVersionFrameNamesList>;
 
 export interface WidgetVersion {
@@ -2740,7 +2722,7 @@ export interface WidgetVersion {
   /** Hex SHA-256 over this version's exact immutable artifact manifest. */
   build_hash: string | null;
 }
-export const WidgetVersion = /*@__PURE__*/ S.suspend(() =>
+const WidgetVersion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation_cost_usd: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -2762,7 +2744,7 @@ export const WidgetVersion = /*@__PURE__*/ S.suspend(() =>
 
 /** Versions ordered newest first. */
 export type WidgetVersionPageResultsList = Array<WidgetVersion>;
-export const WidgetVersionPageResultsList = /*@__PURE__*/ S.Array(
+const WidgetVersionPageResultsList = /*@__PURE__*/ S.Array(
   WidgetVersion,
 ) as any as S.Schema<WidgetVersionPageResultsList>;
 
@@ -2774,7 +2756,7 @@ export interface WidgetVersionPage {
   /** Offset for the next page. */
   next_offset: number | null;
 }
-export const WidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
+const WidgetVersionPage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: WidgetVersionPageResultsList,
     count: S.Number,
@@ -2791,7 +2773,7 @@ export interface PinNotebooksWidgetRequest {
   /** Immutable version to pin, or null to follow the reusable widget's latest version. */
   version_id: string | null;
 }
-export const PinNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const PinNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2810,7 +2792,7 @@ export const PinNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable labels attached to the reusable widget. */
 export type PublishNotebooksWidgetRequestTagsList = Array<string>;
-export const PublishNotebooksWidgetRequestTagsList =
+const PublishNotebooksWidgetRequestTagsList =
   WidgetStatusFrameNamesList as any as S.Schema<PublishNotebooksWidgetRequestTagsList>;
 
 export interface PublishNotebooksWidgetRequest {
@@ -2826,7 +2808,7 @@ export interface PublishNotebooksWidgetRequest {
   /** Searchable labels attached to the reusable widget. */
   tags?: PublishNotebooksWidgetRequestTagsList;
 }
-export const PublishNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -2847,21 +2829,21 @@ export const PublishNotebooksWidgetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Searchable widget labels. */
 export type ReusableWidgetDetailTagsList = Array<string>;
-export const ReusableWidgetDetailTagsList =
+const ReusableWidgetDetailTagsList =
   WidgetStatusFrameNamesList as any as S.Schema<ReusableWidgetDetailTagsList>;
 
 /** * `published` - published * `deprecated` - deprecated */
 export type PublicationStatusEnum = "published" | "deprecated";
-export const PublicationStatusEnum = S.String;
+const PublicationStatusEnum = S.String;
 
 /** Logical dataframe slots accepted by this widget version. */
 export type ReusableWidgetVersionDetailFrameNamesList = Array<string>;
-export const ReusableWidgetVersionDetailFrameNamesList =
+const ReusableWidgetVersionDetailFrameNamesList =
   WidgetStatusFrameNamesList as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
 
 /** Dataframe slots and schemas expected by this widget version. */
 export type ReusableWidgetVersionDetailInputContractList = Array<WidgetInputContractItem>;
-export const ReusableWidgetVersionDetailInputContractList =
+const ReusableWidgetVersionDetailInputContractList =
   WidgetStatusInputContractList as any as S.Schema<ReusableWidgetVersionDetailInputContractList>;
 
 export interface ReusableWidgetVersionDetail {
@@ -2894,7 +2876,7 @@ export interface ReusableWidgetVersionDetail {
   /** When this immutable version was created. */
   created_at: string;
 }
-export const ReusableWidgetVersionDetail = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetVersionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generation_cost_usd: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -2941,7 +2923,7 @@ export interface ReusableWidgetDetail {
   /** When the reusable widget was last changed. */
   updated_at: string;
 }
-export const ReusableWidgetDetail = /*@__PURE__*/ S.suspend(() =>
+const ReusableWidgetDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -2977,7 +2959,7 @@ export interface PublishNotebooksWidgetSnapshotRequest {
   /** Title for a new dashboard widget. */
   name?: string;
 }
-export const PublishNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -3001,7 +2983,7 @@ export const PublishNotebooksWidgetSnapshotRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type UpdateNotebookRequestVariablesList = Array<NotebookVariable>;
-export const UpdateNotebookRequestVariablesList =
+const UpdateNotebookRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<UpdateNotebookRequestVariablesList>;
 
 export interface UpdateNotebookRequest {
@@ -3022,7 +3004,7 @@ export interface UpdateNotebookRequest {
   variables?: UpdateNotebookRequestVariablesList;
   _create_in_folder?: string;
 }
-export const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -3040,7 +3022,7 @@ export const UpdateNotebookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Notebook-level variables, in display order. A SQL cell reads one as a `{name}` placeholder and a Python cell as a global. Names must be unique. */
 export type UpdateNotebooksPartialRequestVariablesList = Array<NotebookVariable>;
-export const UpdateNotebooksPartialRequestVariablesList =
+const UpdateNotebooksPartialRequestVariablesList =
   CreateNotebookRequestVariablesList as any as S.Schema<UpdateNotebooksPartialRequestVariablesList>;
 
 export interface UpdateNotebooksPartialRequest {
@@ -3061,7 +3043,7 @@ export interface UpdateNotebooksPartialRequest {
   variables?: UpdateNotebooksPartialRequestVariablesList;
   _create_in_folder?: string;
 }
-export const UpdateNotebooksPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNotebooksPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),

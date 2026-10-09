@@ -9,11 +9,11 @@ export type { PosthogOpError, PosthogOpContext };
 
 /** * `bot` - SupportHog * `user` - The person who created it */
 export type AnnouncementSendAsEnum = "bot" | "user";
-export const AnnouncementSendAsEnum = S.String;
+const AnnouncementSendAsEnum = S.String;
 
 /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
 export type CreateAnnouncementRequestChannelsList = Array<string>;
-export const CreateAnnouncementRequestChannelsList = /*@__PURE__*/ S.Array(
+const CreateAnnouncementRequestChannelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnnouncementRequestChannelsList>;
 
@@ -27,7 +27,7 @@ export interface CreateAnnouncementRequest {
   /** Slack channel IDs to send to. Each must be a channel the SupportHog bot is a member of; names are resolved server-side. */
   channels: CreateAnnouncementRequestChannelsList;
 }
-export const CreateAnnouncementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnouncementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     message: S.String,
@@ -40,10 +40,10 @@ export const CreateAnnouncementRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `pending` - Pending * `sending` - Sending * `sent` - Sent * `partially_failed` - Partially failed * `failed` - Failed */
 export type AnnouncementStatusEnum = "pending" | "sending" | "sent" | "partially_failed" | "failed";
-export const AnnouncementStatusEnum = S.String;
+const AnnouncementStatusEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -59,14 +59,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -79,7 +74,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -95,7 +90,7 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
 
 /** * `pending` - Pending * `sent` - Sent * `failed` - Failed */
 export type AnnouncementDeliveryStatusEnum = "pending" | "sent" | "failed";
-export const AnnouncementDeliveryStatusEnum = S.String;
+const AnnouncementDeliveryStatusEnum = S.String;
 
 export interface AnnouncementDelivery {
   id: string;
@@ -112,7 +107,7 @@ export interface AnnouncementDelivery {
   /** When the message was delivered to this channel. Null until sent. */
   sent_at: string | null;
 }
-export const AnnouncementDelivery = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     slack_channel_id: S.String,
@@ -126,7 +121,7 @@ export const AnnouncementDelivery = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-channel delivery rows, one per selected Slack channel. */
 export type AnnouncementOutputDeliveriesList = Array<AnnouncementDelivery>;
-export const AnnouncementOutputDeliveriesList = /*@__PURE__*/ S.Array(
+const AnnouncementOutputDeliveriesList = /*@__PURE__*/ S.Array(
   AnnouncementDelivery,
 ) as any as S.Schema<AnnouncementOutputDeliveriesList>;
 
@@ -156,7 +151,7 @@ export interface AnnouncementOutput {
   /** Per-channel delivery rows, one per selected Slack channel. */
   deliveries: AnnouncementOutputDeliveriesList;
 }
-export const AnnouncementOutput = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     short_id: S.String,
@@ -179,7 +174,7 @@ export interface GetAnnouncementRequest {
   project_id: string;
   short_id: string;
 }
-export const GetAnnouncementRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnouncementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     short_id: S.String.pipe(T.Label()),
@@ -200,7 +195,7 @@ export interface ListAnnouncementsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -209,7 +204,7 @@ export const ListAnnouncementsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAnnouncementsRequest" }) as any as S.Schema<ListAnnouncementsRequest>;
 
 export type PaginatedAnnouncementListOutputResultsList = Array<AnnouncementOutput>;
-export const PaginatedAnnouncementListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedAnnouncementListOutputResultsList = /*@__PURE__*/ S.Array(
   AnnouncementOutput,
 ) as any as S.Schema<PaginatedAnnouncementListOutputResultsList>;
 
@@ -219,7 +214,7 @@ export interface PaginatedAnnouncementListOutput {
   previous?: string | null;
   results: PaginatedAnnouncementListOutputResultsList;
 }
-export const PaginatedAnnouncementListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedAnnouncementListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -234,7 +229,7 @@ export interface ListAnnouncementsChannelsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const ListAnnouncementsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAnnouncementsChannelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -254,7 +249,7 @@ export interface AnnouncementChannel {
   /** Name of the customer account whose slack_channel_id points at this channel, or null if unmapped. */
   customer_name: string | null;
 }
-export const AnnouncementChannel = /*@__PURE__*/ S.suspend(() =>
+const AnnouncementChannel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -264,12 +259,12 @@ export const AnnouncementChannel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnouncementChannel" }) as any as S.Schema<AnnouncementChannel>;
 
 export type ListAnnouncementsChannelsResponseBodyList = Array<AnnouncementChannel>;
-export const ListAnnouncementsChannelsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAnnouncementsChannelsResponseBodyList = /*@__PURE__*/ S.Array(
   AnnouncementChannel,
 ) as any as S.Schema<ListAnnouncementsChannelsResponseBodyList>;
 
 export type ListAnnouncementsChannelsResponse = ListAnnouncementsChannelsResponseBodyList;
-export const ListAnnouncementsChannelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnnouncementsChannelsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAnnouncementsChannelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAnnouncementsChannelsResponse",

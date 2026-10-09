@@ -63,7 +63,7 @@ export class NotFound
 
 /** Request for the CancelExecution method. */
 export interface CancelExecutionRequest {}
-export const CancelExecutionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelExecutionRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelExecutionRequest",
 }) as any as S.Schema<CancelExecutionRequest>;
 
@@ -73,7 +73,7 @@ export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
   /** Request body */
   body?: CancelExecutionRequest;
 }
-export const CancelProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(CancelExecutionRequest.pipe(T.HttpBody())),
@@ -97,7 +97,7 @@ export interface Position {
   /** The source code line number the current instruction was generated from. */
   line?: string;
 }
-export const Position = /*@__PURE__*/ S.suspend(() =>
+const Position = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     column: S.optional(S.String),
     length: S.optional(S.String),
@@ -114,7 +114,7 @@ export interface StackTraceElement {
   /** The step the error occurred at. */
   step?: string;
 }
-export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
+const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routine: S.optional(S.String),
     position: S.optional(Position),
@@ -123,7 +123,7 @@ export const StackTraceElement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StackTraceElement" }) as any as S.Schema<StackTraceElement>;
 
 export type StackTraceElementList = Array<StackTraceElement>;
-export const StackTraceElementList = /*@__PURE__*/ S.Array(
+const StackTraceElementList = /*@__PURE__*/ S.Array(
   StackTraceElement,
 ) as any as S.Schema<StackTraceElementList>;
 
@@ -132,7 +132,7 @@ export interface StackTrace {
   /** An array of stack elements. */
   elements?: StackTraceElementList;
 }
-export const StackTrace = /*@__PURE__*/ S.suspend(() =>
+const StackTrace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(StackTraceElementList),
   }),
@@ -147,7 +147,7 @@ export interface Workflowexecutions_Error {
   /** Stack trace with detailed information of where error was generated. */
   stackTrace?: StackTrace;
 }
-export const Workflowexecutions_Error = /*@__PURE__*/ S.suspend(() =>
+const Workflowexecutions_Error = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(S.String),
     context: S.optional(S.String),
@@ -160,7 +160,7 @@ export type ExecutionCallLogLevelEnum =
   | "LOG_ALL_CALLS"
   | "LOG_ERRORS_ONLY"
   | "LOG_NONE";
-export const ExecutionCallLogLevelEnum = S.String;
+const ExecutionCallLogLevelEnum = S.String;
 
 export type ExecutionStateEnum =
   | "STATE_UNSPECIFIED"
@@ -170,10 +170,10 @@ export type ExecutionStateEnum =
   | "CANCELLED"
   | "UNAVAILABLE"
   | "QUEUED";
-export const ExecutionStateEnum = S.String;
+const ExecutionStateEnum = S.String;
 
 export type StateErrorTypeEnum = "TYPE_UNSPECIFIED" | "KMS_ERROR";
-export const StateErrorTypeEnum = S.String;
+const StateErrorTypeEnum = S.String;
 
 /** Describes an error related to the current state of the Execution resource. */
 export interface StateError {
@@ -182,7 +182,7 @@ export interface StateError {
   /** Provides specifics about the error. */
   details?: string;
 }
-export const StateError = /*@__PURE__*/ S.suspend(() =>
+const StateError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(StateErrorTypeEnum),
     details: S.optional(S.String),
@@ -196,7 +196,7 @@ export interface Step {
   /** Name of a step within the routine. */
   step?: string;
 }
-export const Step = /*@__PURE__*/ S.suspend(() =>
+const Step = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routine: S.optional(S.String),
     step: S.optional(S.String),
@@ -204,27 +204,27 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Step" }) as any as S.Schema<Step>;
 
 export type StepList = Array<Step>;
-export const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
+const StepList = /*@__PURE__*/ S.Array(Step) as any as S.Schema<StepList>;
 
 /** Represents the current status of this execution. */
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
   currentSteps?: StepList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentSteps: S.optional(StepList),
   }),
 ).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type ExecutionExecutionHistoryLevelEnum =
   | "EXECUTION_HISTORY_LEVEL_UNSPECIFIED"
   | "EXECUTION_HISTORY_BASIC"
   | "EXECUTION_HISTORY_DETAILED";
-export const ExecutionExecutionHistoryLevelEnum = S.String;
+const ExecutionExecutionHistoryLevelEnum = S.String;
 
 /** A running instance of a [Workflow](/workflows/docs/reference/rest/v1/projects.locations.workflows). */
 export interface Execution {
@@ -261,7 +261,7 @@ export interface Execution {
   /** Optional. If set to true, the execution will not be backlogged when the concurrency quota is exhausted. The backlog execution starts when the concurrency quota becomes available. */
   disableConcurrencyQuotaOverflowBuffering?: boolean;
 }
-export const Execution = /*@__PURE__*/ S.suspend(() =>
+const Execution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     error: S.optional(Workflowexecutions_Error),
     name: S.optional(S.String),
@@ -288,7 +288,7 @@ export interface CreateProjectsLocationsWorkflowsExecutionsRequest {
   /** Request body */
   body?: Execution;
 }
-export const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(Execution.pipe(T.HttpBody())),
@@ -305,16 +305,14 @@ export const CreateProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S
 
 /** Request for the DeleteExecutionHistory method. */
 export type DeleteExecutionHistoryRequest = CancelExecutionRequest;
-export const DeleteExecutionHistoryRequest = CancelExecutionRequest;
-
 export interface DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution for which step entries should be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name: string;
   /** Request body */
   body?: CancelExecutionRequest;
 }
-export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(CancelExecutionRequest.pipe(T.HttpBody())),
@@ -325,19 +323,19 @@ export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest =
         baseUrl: "https://workflowexecutions.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest",
-  }) as any as S.Schema<DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest>;
+).annotate({
+  identifier: "DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest",
+}) as any as S.Schema<DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest>;
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = CancelExecutionRequest as any as S.Schema<Empty>;
+const Empty = CancelExecutionRequest as any as S.Schema<Empty>;
 
 export interface ExportDataProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution for which data is to be exported. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
   name: string;
 }
-export const ExportDataProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportDataProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -356,7 +354,7 @@ export interface ExportDataResponse {
   /** The JSON string with customer data and metadata for an execution with the given name */
   data?: string;
 }
-export const ExportDataResponse = /*@__PURE__*/ S.suspend(() =>
+const ExportDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
   }),
@@ -366,7 +364,7 @@ export type GetProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const GetProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
+const GetProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
 
 export interface GetProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
@@ -374,7 +372,7 @@ export interface GetProjectsLocationsWorkflowsExecutionsRequest {
   /** Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. */
   view?: GetProjectsLocationsWorkflowsExecutionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsWorkflowsExecutionsViewEnum.pipe(T.Query())),
@@ -393,7 +391,7 @@ export type GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   | "EXECUTION_ENTRY_VIEW_UNSPECIFIED"
   | "EXECUTION_ENTRY_VIEW_BASIC"
   | "EXECUTION_ENTRY_VIEW_DETAILED";
-export const GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum = S.String;
+const GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum = S.String;
 
 export interface GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
   /** Required. The name of the step entry to retrieve. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/stepEntries/{step_entry} */
@@ -401,18 +399,17 @@ export interface GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
   /** Deprecated field. */
   view?: GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum | (string & {});
 }
-export const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      view: S.optional(GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://workflowexecutions.googleapis.com/",
-      }),
-    ),
+const GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+    view: S.optional(GetProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+name}",
+      baseUrl: "https://workflowexecutions.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest",
 }) as any as S.Schema<GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
@@ -423,27 +420,24 @@ export type StepEntryStateEnum =
   | "STATE_SUCCEEDED"
   | "STATE_FAILED"
   | "STATE_CANCELLED";
-export const StepEntryStateEnum = S.String;
+const StepEntryStateEnum = S.String;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 /** VariableData contains the variable data for this step. */
 export interface VariableData {
   /** Variables that are associated with this step. */
   variables?: DocumentMap;
 }
-export const VariableData = /*@__PURE__*/ S.suspend(() =>
+const VariableData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variables: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "VariableData" }) as any as S.Schema<VariableData>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** NavigationInfo describes what steps if any come before or after this step, or what steps are parents or children of this step. */
 export interface NavigationInfo {
@@ -456,7 +450,7 @@ export interface NavigationInfo {
   /** The index of the previous step in the current workflow, if any. */
   previous?: string;
 }
-export const NavigationInfo = /*@__PURE__*/ S.suspend(() =>
+const NavigationInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     next: S.optional(S.String),
     children: S.optional(StringList),
@@ -472,7 +466,7 @@ export type StepEntryMetadataProgressTypeEnum =
   | "PROGRESS_TYPE_RETRY"
   | "PROGRESS_TYPE_PARALLEL_FOR"
   | "PROGRESS_TYPE_PARALLEL_BRANCH";
-export const StepEntryMetadataProgressTypeEnum = S.String;
+const StepEntryMetadataProgressTypeEnum = S.String;
 
 /** StepEntryMetadata contains metadata information about this step. */
 export interface StepEntryMetadata {
@@ -485,7 +479,7 @@ export interface StepEntryMetadata {
   /** Expected iteration represents the expected number of iterations in the step's progress. */
   expectedIteration?: string;
 }
-export const StepEntryMetadata = /*@__PURE__*/ S.suspend(() =>
+const StepEntryMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     progressType: S.optional(StepEntryMetadataProgressTypeEnum),
     progressNumber: S.optional(S.String),
@@ -515,14 +509,14 @@ export type StepEntryStepTypeEnum =
   | "STEP_RETURN"
   | "STEP_RAISE"
   | "STEP_GOTO";
-export const StepEntryStepTypeEnum = S.String;
+const StepEntryStepTypeEnum = S.String;
 
 /** Exception describes why the step entry failed. */
 export interface Exception {
   /** Error message represented as a JSON string. */
   payload?: string;
 }
-export const Exception = /*@__PURE__*/ S.suspend(() =>
+const Exception = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     payload: S.optional(S.String),
   }),
@@ -555,7 +549,7 @@ export interface StepEntry {
   /** Output only. The numeric ID of this step entry, used for navigation. */
   entryId?: string;
 }
-export const StepEntry = /*@__PURE__*/ S.suspend(() =>
+const StepEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routine: S.optional(S.String),
     updateTime: S.optional(S.String),
@@ -576,7 +570,7 @@ export type ListProjectsLocationsWorkflowsExecutionsViewEnum =
   | "EXECUTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
+const ListProjectsLocationsWorkflowsExecutionsViewEnum = S.String;
 
 export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Maximum number of executions to return per call. Max supported value depends on the selected Execution view: it's 1000 for BASIC and 100 for FULL. The default value used if the field is not specified is 100, regardless of the selected view. Values greater than the max value will be coerced down to it. */
@@ -592,7 +586,7 @@ export interface ListProjectsLocationsWorkflowsExecutionsRequest {
   /** Required. Name of the workflow for which the executions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} */
   parent: string;
 }
-export const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -612,7 +606,7 @@ export const ListProjectsLocationsWorkflowsExecutionsRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsRequest>;
 
 export type ExecutionList = Array<Execution>;
-export const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
+const ExecutionList = /*@__PURE__*/ S.Array(Execution) as any as S.Schema<ExecutionList>;
 
 /** Response for the ListExecutions method. */
 export interface ListExecutionsResponse {
@@ -621,7 +615,7 @@ export interface ListExecutionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     executions: S.optional(ExecutionList),
     nextPageToken: S.optional(S.String),
@@ -636,19 +630,18 @@ export interface ListProjectsLocationsWorkflowsExecutionsCallbacksRequest {
   /** A page token, received from a previous `ListCallbacks` call. Provide this to retrieve the subsequent page. Note that pagination is applied to dynamic data. The list of callbacks returned can change between page requests if callbacks are created or deleted. */
   pageToken?: string;
 }
-export const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/callbacks",
-        baseUrl: "https://workflowexecutions.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsWorkflowsExecutionsCallbacksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/callbacks",
+      baseUrl: "https://workflowexecutions.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsWorkflowsExecutionsCallbacksRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsCallbacksRequest>;
@@ -664,7 +657,7 @@ export interface Callback {
   /** Output only. Number of execution steps waiting on this callback. */
   waiters?: string;
 }
-export const Callback = /*@__PURE__*/ S.suspend(() =>
+const Callback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     method: S.optional(S.String),
@@ -674,7 +667,7 @@ export const Callback = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Callback" }) as any as S.Schema<Callback>;
 
 export type CallbackList = Array<Callback>;
-export const CallbackList = /*@__PURE__*/ S.Array(Callback) as any as S.Schema<CallbackList>;
+const CallbackList = /*@__PURE__*/ S.Array(Callback) as any as S.Schema<CallbackList>;
 
 /** RPC response object for the ListCallbacks method. */
 export interface ListCallbacksResponse {
@@ -683,7 +676,7 @@ export interface ListCallbacksResponse {
   /** The callbacks which match the request. */
   callbacks?: CallbackList;
 }
-export const ListCallbacksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCallbacksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     callbacks: S.optional(CallbackList),
@@ -694,7 +687,7 @@ export type ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum =
   | "EXECUTION_ENTRY_VIEW_UNSPECIFIED"
   | "EXECUTION_ENTRY_VIEW_BASIC"
   | "EXECUTION_ENTRY_VIEW_DETAILED";
-export const ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum = S.String;
+const ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum = S.String;
 
 export interface ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
   /** Optional. The number of step entries to skip. It can be used with or without a pageToken. If used with a pageToken, then it indicates the number of step entries to skip starting from the requested page. */
@@ -712,29 +705,28 @@ export interface ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest {
   /** Optional. Filters applied to the `[StepEntries.ListStepEntries]` results. The following fields are supported for filtering: `entryId`, `createTime`, `updateTime`, `routine`, `step`, `stepType`, `parent`, `state`. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` */
   filter?: string;
 }
-export const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      skip: S.optional(S.Number.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      view: S.optional(ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum.pipe(T.Query())),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/stepEntries",
-        baseUrl: "https://workflowexecutions.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skip: S.optional(S.Number.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    view: S.optional(ListProjectsLocationsWorkflowsExecutionsStepEntriesViewEnum.pipe(T.Query())),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    filter: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/{+parent}/stepEntries",
+      baseUrl: "https://workflowexecutions.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest",
 }) as any as S.Schema<ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest>;
 
 export type StepEntryList = Array<StepEntry>;
-export const StepEntryList = /*@__PURE__*/ S.Array(StepEntry) as any as S.Schema<StepEntryList>;
+const StepEntryList = /*@__PURE__*/ S.Array(StepEntry) as any as S.Schema<StepEntryList>;
 
 /** Response message for ExecutionHistory.ListStepEntries. */
 export interface ListStepEntriesResponse {
@@ -745,7 +737,7 @@ export interface ListStepEntriesResponse {
   /** Indicates the total number of StepEntries that matched the request filter. For running executions, this number shows the number of StepEntries that are executed thus far. */
   totalSize?: number;
 }
-export const ListStepEntriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListStepEntriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     stepEntries: S.optional(StepEntryList),
@@ -766,7 +758,7 @@ export interface PubsubMessage {
   /** Optional. If non-empty, identifies related messages for which publish order should be respected. If a `Subscription` has `enable_message_ordering` set to `true`, messages published with the same non-empty `ordering_key` value will be delivered to subscribers in the order in which they are received by the Pub/Sub system. All `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key` value. For more information, see [ordering messages](https://cloud.google.com/pubsub/docs/ordering). */
   orderingKey?: string;
 }
-export const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
+const PubsubMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributes: S.optional(StringMap),
     publishTime: S.optional(S.String),
@@ -787,7 +779,7 @@ export interface TriggerPubsubExecutionRequest {
   /** Required. LINT: LEGACY_NAMES The query parameter value for __GCP_CloudEventsMode, set by the Eventarc service when configuring triggers. */
   GCPCloudEventsMode?: string;
 }
-export const TriggerPubsubExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerPubsubExecutionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(PubsubMessage),
     deliveryAttempt: S.optional(S.Number),
@@ -804,7 +796,7 @@ export interface TriggerPubsubExecutionProjectsLocationsWorkflowsRequest {
   /** Request body */
   body?: TriggerPubsubExecutionRequest;
 }
-export const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+const TriggerPubsubExecutionProjectsLocationsWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflow: S.String.pipe(T.Label()),
     body: S.optional(TriggerPubsubExecutionRequest.pipe(T.HttpBody())),

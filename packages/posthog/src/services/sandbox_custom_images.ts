@@ -19,7 +19,7 @@ export interface CreateSandboxCustomImageRequest {
   /** If true, only you can see and use this image; otherwise the whole team can. */
   private?: boolean;
 }
-export const CreateSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -34,17 +34,17 @@ export const CreateSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSandboxCustomImageRequest>;
 
 export type SandboxCustomImageDTOSpecMap = { [key: string]: unknown | undefined };
-export const SandboxCustomImageDTOSpecMap = /*@__PURE__*/ S.Record(
+const SandboxCustomImageDTOSpecMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<SandboxCustomImageDTOSpecMap>;
 
 export type SandboxCustomImageDTOScanResultMap = { [key: string]: unknown | undefined };
-export const SandboxCustomImageDTOScanResultMap =
+const SandboxCustomImageDTOScanResultMap =
   SandboxCustomImageDTOSpecMap as any as S.Schema<SandboxCustomImageDTOScanResultMap>;
 
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const TaskUserBasicInfoHedgehogConfigMap =
+const TaskUserBasicInfoHedgehogConfigMap =
   SandboxCustomImageDTOSpecMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
 
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
@@ -59,7 +59,7 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-export const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
+const TaskUserBasicInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     uuid: S.String,
@@ -93,7 +93,7 @@ export interface SandboxCustomImageDTO {
   created_at?: string | null;
   updated_at?: string | null;
 }
-export const SandboxCustomImageDTO = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImageDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -122,7 +122,7 @@ export interface CreateSandboxCustomImagesBuildRequest {
   /** Image spec YAML to build. When omitted, the spec is read from the builder agent's live sandbox. */
   spec_yaml?: string | null;
 }
-export const CreateSandboxCustomImagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCustomImagesBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -143,7 +143,7 @@ export interface CreateSandboxCustomImagesBuilderTaskRequest {
   project_id: string;
   id: string;
 }
-export const CreateSandboxCustomImagesBuilderTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSandboxCustomImagesBuilderTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -163,7 +163,7 @@ export interface GetSandboxCustomImageRequest {
   project_id: string;
   id: string;
 }
-export const GetSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSandboxCustomImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -186,7 +186,7 @@ export interface ListSandboxCustomImagesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListSandboxCustomImagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSandboxCustomImagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -199,7 +199,7 @@ export const ListSandboxCustomImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSandboxCustomImagesRequest>;
 
 export type PaginatedSandboxCustomImageDTOListResultsList = Array<SandboxCustomImageDTO>;
-export const PaginatedSandboxCustomImageDTOListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedSandboxCustomImageDTOListResultsList = /*@__PURE__*/ S.Array(
   SandboxCustomImageDTO,
 ) as any as S.Schema<PaginatedSandboxCustomImageDTOListResultsList>;
 
@@ -209,7 +209,7 @@ export interface PaginatedSandboxCustomImageDTOList {
   previous?: string | null;
   results: PaginatedSandboxCustomImageDTOListResultsList;
 }
-export const PaginatedSandboxCustomImageDTOList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedSandboxCustomImageDTOList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -225,7 +225,7 @@ export interface SandboxCustomImagesDestroyRequest {
   project_id: string;
   id: string;
 }
-export const SandboxCustomImagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const SandboxCustomImagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -241,9 +241,7 @@ export const SandboxCustomImagesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SandboxCustomImagesDestroyRequest>;
 
 export interface SandboxCustomImagesDestroyResponse {}
-export const SandboxCustomImagesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const SandboxCustomImagesDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "SandboxCustomImagesDestroyResponse",
 }) as any as S.Schema<SandboxCustomImagesDestroyResponse>;
 
@@ -256,7 +254,7 @@ export interface UpdateSandboxCustomImagesPartialRequest {
   /** New description. Omit to leave unchanged; pass an empty string to clear it. */
   description?: string;
 }
-export const UpdateSandboxCustomImagesPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSandboxCustomImagesPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

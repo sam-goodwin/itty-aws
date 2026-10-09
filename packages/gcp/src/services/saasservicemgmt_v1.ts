@@ -90,7 +90,7 @@ export class SaasNotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type UnitVariableTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -99,7 +99,7 @@ export type UnitVariableTypeEnum =
   | "BOOL"
   | "STRUCT"
   | "LIST";
-export const UnitVariableTypeEnum = S.String;
+const UnitVariableTypeEnum = S.String;
 
 /** UnitVariable describes a parameter for a Unit. */
 export interface UnitVariable {
@@ -110,7 +110,7 @@ export interface UnitVariable {
   /** Optional. Immutable. Name of a supported variable type. Supported types are string, int, bool. */
   type?: UnitVariableTypeEnum | (string & {});
 }
-export const UnitVariable = /*@__PURE__*/ S.suspend(() =>
+const UnitVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable: S.optional(S.String),
     value: S.optional(S.String),
@@ -119,19 +119,17 @@ export const UnitVariable = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnitVariable" }) as any as S.Schema<UnitVariable>;
 
 export type UnitVariableList = Array<UnitVariable>;
-export const UnitVariableList = /*@__PURE__*/ S.Array(
-  UnitVariable,
-) as any as S.Schema<UnitVariableList>;
+const UnitVariableList = /*@__PURE__*/ S.Array(UnitVariable) as any as S.Schema<UnitVariableList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Set of requirements to be fulfilled on the Unit when using this Release. */
 export interface ReleaseRequirements {
   /** Optional. A list of releases from which a unit can be upgraded to this one (optional). If left empty no constraints will be applied. When provided, unit upgrade requests to this release will check and enforce this constraint. */
   upgradeableFromReleases?: StringList;
 }
-export const ReleaseRequirements = /*@__PURE__*/ S.suspend(() =>
+const ReleaseRequirements = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     upgradeableFromReleases: S.optional(StringList),
   }),
@@ -146,7 +144,7 @@ export interface Blueprint {
   /** Optional. Immutable. URI to a blueprint used by the Unit (required unless unitKind or release is set). */
   package?: string;
 }
-export const Blueprint = /*@__PURE__*/ S.suspend(() =>
+const Blueprint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     engine: S.optional(S.String),
@@ -183,7 +181,7 @@ export interface Release {
   /** Optional. Output only. List of output variables declared on the blueprint and can be present with their values on the unit status */
   outputVariables?: UnitVariableList;
 }
-export const Release = /*@__PURE__*/ S.suspend(() =>
+const Release = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: S.optional(StringMap),
     annotations: S.optional(StringMap),
@@ -213,7 +211,7 @@ export interface CreateProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const CreateProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releaseId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -238,7 +236,7 @@ export interface ErrorBudget {
   /** Optional. The maximum number of failed units allowed in a location without pausing the rollout. */
   allowedCount?: number;
 }
-export const ErrorBudget = /*@__PURE__*/ S.suspend(() =>
+const ErrorBudget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedPercentage: S.optional(S.Number),
     allowedCount: S.optional(S.Number),
@@ -249,14 +247,14 @@ export type RolloutKindUpdateUnitKindStrategyEnum =
   | "UPDATE_UNIT_KIND_STRATEGY_UNSPECIFIED"
   | "UPDATE_UNIT_KIND_STRATEGY_ON_START"
   | "UPDATE_UNIT_KIND_STRATEGY_NEVER";
-export const RolloutKindUpdateUnitKindStrategyEnum = S.String;
+const RolloutKindUpdateUnitKindStrategyEnum = S.String;
 
 /** A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html). */
 export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-export const Decimal = /*@__PURE__*/ S.suspend(() =>
+const Decimal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
   }),
@@ -269,7 +267,7 @@ export interface UnitUpdatePacing {
   /** Optional. An absolute cap on concurrent units operations. If both percent and count are provided, the system uses the MINIMUM (most restrictive). */
   maxConcurrentOperationsCount?: number;
 }
-export const UnitUpdatePacing = /*@__PURE__*/ S.suspend(() =>
+const UnitUpdatePacing = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxConcurrentOperationsPercent: S.optional(Decimal),
     maxConcurrentOperationsCount: S.optional(S.Number),
@@ -305,7 +303,7 @@ export interface RolloutKind {
   /** Optional. Settings for controlling the pacing of rollouts i.e. the number of units to be rolled out in parallel in a region. */
   unitUpdatePacing?: UnitUpdatePacing;
 }
-export const RolloutKind = /*@__PURE__*/ S.suspend(() =>
+const RolloutKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     uid: S.optional(S.String),
@@ -335,7 +333,7 @@ export interface CreateProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
-export const CreateProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rolloutKindId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -358,7 +356,7 @@ export interface RunRolloutActionParams {
   /** Required. If true, the rollout will retry failed operations when resumed. This is applicable only the current state of the Rollout is PAUSED and the requested action is RUN. */
   retryFailedOperations?: boolean;
 }
-export const RunRolloutActionParams = /*@__PURE__*/ S.suspend(() =>
+const RunRolloutActionParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryFailedOperations: S.optional(S.Boolean),
   }),
@@ -369,7 +367,7 @@ export type RolloutControlActionEnum =
   | "ROLLOUT_ACTION_RUN"
   | "ROLLOUT_ACTION_PAUSE"
   | "ROLLOUT_ACTION_CANCEL";
-export const RolloutControlActionEnum = S.String;
+const RolloutControlActionEnum = S.String;
 
 /** RolloutControl provides a way to request a change to the execution of a Rollout by pausing or canceling it. */
 export interface RolloutControl {
@@ -378,7 +376,7 @@ export interface RolloutControl {
   /** Required. Action to be performed on the Rollout. The default behavior is to run the rollout until it naturally reaches a terminal state. */
   action?: RolloutControlActionEnum | (string & {});
 }
-export const RolloutControl = /*@__PURE__*/ S.suspend(() =>
+const RolloutControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runParams: S.optional(RunRolloutActionParams),
     action: S.optional(RolloutControlActionEnum),
@@ -396,7 +394,7 @@ export type RolloutStateEnum =
   | "ROLLOUT_STATE_CANCELLING"
   | "ROLLOUT_STATE_RESUMING"
   | "ROLLOUT_STATE_PAUSING";
-export const RolloutStateEnum = S.String;
+const RolloutStateEnum = S.String;
 
 /** Represents the aggregation of a set of population of like records by a certain group. For example, a collection of unit counts can be aggregated and grouped by their state. */
 export interface Aggregate {
@@ -405,7 +403,7 @@ export interface Aggregate {
   /** Required. Group by which to aggregate. */
   group?: string;
 }
-export const Aggregate = /*@__PURE__*/ S.suspend(() =>
+const Aggregate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     group: S.optional(S.String),
@@ -413,7 +411,7 @@ export const Aggregate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Aggregate" }) as any as S.Schema<Aggregate>;
 
 export type AggregateList = Array<Aggregate>;
-export const AggregateList = /*@__PURE__*/ S.Array(Aggregate) as any as S.Schema<AggregateList>;
+const AggregateList = /*@__PURE__*/ S.Array(Aggregate) as any as S.Schema<AggregateList>;
 
 /** RolloutStats contains information about the progress of a rollout. */
 export interface RolloutStats {
@@ -422,7 +420,7 @@ export interface RolloutStats {
   /** Optional. Output only. Estimated number of units based. The estimation is computed upon creation of the rollout. */
   estimatedTotalUnitCount?: string;
 }
-export const RolloutStats = /*@__PURE__*/ S.suspend(() =>
+const RolloutStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operationsByState: S.optional(AggregateList),
     estimatedTotalUnitCount: S.optional(S.String),
@@ -478,7 +476,7 @@ export interface Rollout {
   /** Optional. Output only. The root rollout that this rollout is stemming from. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rollouts/{rollout_id}" */
   rootRollout?: string;
 }
-export const Rollout = /*@__PURE__*/ S.suspend(() =>
+const Rollout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     rolloutKind: S.optional(S.String),
@@ -518,7 +516,7 @@ export interface CreateProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -542,32 +540,27 @@ export type SaasStateEnum =
   | "STATE_ACTIVE"
   | "STATE_RUNNING"
   | "STATE_FAILED";
-export const SaasStateEnum = S.String;
+const SaasStateEnum = S.String;
 
 /** Location information that the service is available in. */
 export interface Location {
   /** Optional. Name of location. */
   name?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -578,7 +571,7 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     details: S.optional(DocumentMapList),
@@ -591,10 +584,10 @@ export type SaasConditionStatusEnum =
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
-export const SaasConditionStatusEnum = S.String;
+const SaasConditionStatusEnum = S.String;
 
 export type SaasConditionTypeEnum = "TYPE_UNSPECIFIED" | "TYPE_READY" | "TYPE_SYNCHRONIZED";
-export const SaasConditionTypeEnum = S.String;
+const SaasConditionTypeEnum = S.String;
 
 /** SaasCondition describes the status of a Saas. */
 export interface SaasCondition {
@@ -609,7 +602,7 @@ export interface SaasCondition {
   /** Required. Human readable message indicating details about the last transition. */
   message?: string;
 }
-export const SaasCondition = /*@__PURE__*/ S.suspend(() =>
+const SaasCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(SaasConditionStatusEnum),
     type: S.optional(SaasConditionTypeEnum),
@@ -620,7 +613,7 @@ export const SaasCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SaasCondition" }) as any as S.Schema<SaasCondition>;
 
 export type SaasConditionList = Array<SaasCondition>;
-export const SaasConditionList = /*@__PURE__*/ S.Array(
+const SaasConditionList = /*@__PURE__*/ S.Array(
   SaasCondition,
 ) as any as S.Schema<SaasConditionList>;
 
@@ -649,7 +642,7 @@ export interface Saas {
   /** Output only. The timestamp when the resource was last updated. Any change to the resource made by users must refresh this value. Changes to a resource made by the service should refresh this value. */
   updateTime?: string;
 }
-export const Saas = /*@__PURE__*/ S.suspend(() =>
+const Saas = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(StringMap),
     createTime: S.optional(S.String),
@@ -677,7 +670,7 @@ export interface CreateProjectsLocationsSaasRequest {
   /** Request body */
   body?: Saas;
 }
-export const CreateProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     saasId: S.optional(S.String.pipe(T.Query())),
@@ -716,7 +709,7 @@ export interface Tenant {
   /** Output only. The timestamp when the resource was created. */
   createTime?: string;
 }
-export const Tenant = /*@__PURE__*/ S.suspend(() =>
+const Tenant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     annotations: S.optional(StringMap),
@@ -742,7 +735,7 @@ export interface CreateProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
-export const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -767,7 +760,7 @@ export interface FromMapping {
   /** Required. Name of the outputVariable on the dependency */
   outputVariable?: string;
 }
-export const FromMapping = /*@__PURE__*/ S.suspend(() =>
+const FromMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependency: S.optional(S.String),
     outputVariable: S.optional(S.String),
@@ -783,7 +776,7 @@ export interface ToMapping {
   /** Optional. Tells App Lifecycle Manager if this mapping should be used during lookup or not */
   ignoreForLookup?: boolean;
 }
-export const ToMapping = /*@__PURE__*/ S.suspend(() =>
+const ToMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputVariable: S.optional(S.String),
     dependency: S.optional(S.String),
@@ -800,7 +793,7 @@ export interface VariableMapping {
   /** Optional. Input variables whose values will be passed on to dependencies. */
   to?: ToMapping;
 }
-export const VariableMapping = /*@__PURE__*/ S.suspend(() =>
+const VariableMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variable: S.optional(S.String),
     from: S.optional(FromMapping),
@@ -809,7 +802,7 @@ export const VariableMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VariableMapping" }) as any as S.Schema<VariableMapping>;
 
 export type VariableMappingList = Array<VariableMapping>;
-export const VariableMappingList = /*@__PURE__*/ S.Array(
+const VariableMappingList = /*@__PURE__*/ S.Array(
   VariableMapping,
 ) as any as S.Schema<VariableMappingList>;
 
@@ -820,7 +813,7 @@ export interface Dependency {
   /** Required. Immutable. The unit kind of the dependency. */
   unitKind?: string;
 }
-export const Dependency = /*@__PURE__*/ S.suspend(() =>
+const Dependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     unitKind: S.optional(S.String),
@@ -828,13 +821,13 @@ export const Dependency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Dependency" }) as any as S.Schema<Dependency>;
 
 export type DependencyList = Array<Dependency>;
-export const DependencyList = /*@__PURE__*/ S.Array(Dependency) as any as S.Schema<DependencyList>;
+const DependencyList = /*@__PURE__*/ S.Array(Dependency) as any as S.Schema<DependencyList>;
 
 export type UnitKindBoundaryTypeEnum =
   | "BOUNDARY_TYPE_UNSPECIFIED"
   | "BOUNDARY_TYPE_TENANT_PROJECT"
   | "BOUNDARY_TYPE_MANAGED_PROJECT";
-export const UnitKindBoundaryTypeEnum = S.String;
+const UnitKindBoundaryTypeEnum = S.String;
 
 /** Definition of a Unit. Units belonging to the same UnitKind are managed together; for example they follow the same release model (blueprints, versions etc.) and are typically rolled out together. */
 export interface UnitKind {
@@ -869,7 +862,7 @@ export interface UnitKind {
   /** Output only. The timestamp when the resource was marked for deletion (deletion is an asynchronous operation). */
   deleteTime?: string;
 }
-export const UnitKind = /*@__PURE__*/ S.suspend(() =>
+const UnitKind = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     etag: S.optional(S.String),
     name: S.optional(S.String),
@@ -901,7 +894,7 @@ export interface CreateProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
-export const CreateProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -926,7 +919,7 @@ export interface Provision {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
   release?: string;
 }
-export const Provision = /*@__PURE__*/ S.suspend(() =>
+const Provision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputVariables: S.optional(UnitVariableList),
     release: S.optional(S.String),
@@ -938,7 +931,7 @@ export interface FlagUpdate {
   /** Required. Flag release being applied by UnitOperation. */
   flagRelease?: string;
 }
-export const FlagUpdate = /*@__PURE__*/ S.suspend(() =>
+const FlagUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flagRelease: S.optional(S.String),
   }),
@@ -949,7 +942,7 @@ export interface Schedule {
   /** Optional. Start of operation. If not set, will be set to the start of the next window. (optional) */
   startTime?: string;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
   }),
@@ -962,7 +955,7 @@ export type UnitOperationErrorCategoryEnum =
   | "RETRIABLE"
   | "IGNORABLE"
   | "STANDARD";
-export const UnitOperationErrorCategoryEnum = S.String;
+const UnitOperationErrorCategoryEnum = S.String;
 
 export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_UNKNOWN"
@@ -972,7 +965,7 @@ export type UnitOperationStateEnum =
   | "UNIT_OPERATION_STATE_SUCCEEDED"
   | "UNIT_OPERATION_STATE_FAILED"
   | "UNIT_OPERATION_STATE_CANCELLED";
-export const UnitOperationStateEnum = S.String;
+const UnitOperationStateEnum = S.String;
 
 export type UnitOperationConditionTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -983,14 +976,14 @@ export type UnitOperationConditionTypeEnum =
   | "TYPE_APP_CREATED"
   | "TYPE_APP_COMPONENTS_REGISTERED"
   | "TYPE_WORKLOAD_SUCCEEDED";
-export const UnitOperationConditionTypeEnum = S.String;
+const UnitOperationConditionTypeEnum = S.String;
 
 export type UnitOperationConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
-export const UnitOperationConditionStatusEnum = S.String;
+const UnitOperationConditionStatusEnum = S.String;
 
 /** UnitOperationCondition describes the status of an Unit Operation. UnitOperationCondition is individual components that contribute to an overall state. */
 export interface UnitOperationCondition {
@@ -1005,7 +998,7 @@ export interface UnitOperationCondition {
   /** Required. Status of the condition. */
   status?: UnitOperationConditionStatusEnum | (string & {});
 }
-export const UnitOperationCondition = /*@__PURE__*/ S.suspend(() =>
+const UnitOperationCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reason: S.optional(S.String),
     type: S.optional(UnitOperationConditionTypeEnum),
@@ -1016,13 +1009,13 @@ export const UnitOperationCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnitOperationCondition" }) as any as S.Schema<UnitOperationCondition>;
 
 export type UnitOperationConditionList = Array<UnitOperationCondition>;
-export const UnitOperationConditionList = /*@__PURE__*/ S.Array(
+const UnitOperationConditionList = /*@__PURE__*/ S.Array(
   UnitOperationCondition,
 ) as any as S.Schema<UnitOperationConditionList>;
 
 /** Deprovision is the unit operation that deprovision the underlying resources represented by a Unit. Can only execute if the Unit is currently provisioned. */
 export interface Deprovision {}
-export const Deprovision = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Deprovision = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Deprovision",
 }) as any as S.Schema<Deprovision>;
 
@@ -1033,7 +1026,7 @@ export interface Upgrade {
   /** Optional. Set of input variables. Maximum 100. (optional) */
   inputVariables?: UnitVariableList;
 }
-export const Upgrade = /*@__PURE__*/ S.suspend(() =>
+const Upgrade = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     release: S.optional(S.String),
     inputVariables: S.optional(UnitVariableList),
@@ -1085,7 +1078,7 @@ export interface UnitOperation {
   /** Optional. Reference to parent resource: UnitOperation. If an operation needs to create other operations as part of its workflow, each of the child operations should have this field set to the parent. This can be used for tracing. (Optional) */
   parentUnitOperation?: string;
 }
-export const UnitOperation = /*@__PURE__*/ S.suspend(() =>
+const UnitOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provision: S.optional(Provision),
     uid: S.optional(S.String),
@@ -1123,7 +1116,7 @@ export interface CreateProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
-export const CreateProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1150,14 +1143,14 @@ export type UnitConditionTypeEnum =
   | "TYPE_FLAGS_CONFIG_INITIALIZED"
   | "TYPE_APP_CREATED_OR_ALREADY_EXISTS"
   | "TYPE_APP_COMPONENTS_REGISTERED";
-export const UnitConditionTypeEnum = S.String;
+const UnitConditionTypeEnum = S.String;
 
 export type UnitConditionStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "STATUS_UNKNOWN"
   | "STATUS_TRUE"
   | "STATUS_FALSE";
-export const UnitConditionStatusEnum = S.String;
+const UnitConditionStatusEnum = S.String;
 
 /** UnitCondition describes the status of an Unit. UnitCondition is individual components that contribute to an overall state. */
 export interface UnitCondition {
@@ -1172,7 +1165,7 @@ export interface UnitCondition {
   /** Required. Status of the condition. */
   status?: UnitConditionStatusEnum | (string & {});
 }
-export const UnitCondition = /*@__PURE__*/ S.suspend(() =>
+const UnitCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(UnitConditionTypeEnum),
     message: S.optional(S.String),
@@ -1183,7 +1176,7 @@ export const UnitCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnitCondition" }) as any as S.Schema<UnitCondition>;
 
 export type UnitConditionList = Array<UnitCondition>;
-export const UnitConditionList = /*@__PURE__*/ S.Array(
+const UnitConditionList = /*@__PURE__*/ S.Array(
   UnitCondition,
 ) as any as S.Schema<UnitConditionList>;
 
@@ -1192,7 +1185,7 @@ export type UnitSystemManagedStateEnum =
   | "SYSTEM_MANAGED_STATE_ACTIVE"
   | "SYSTEM_MANAGED_STATE_INACTIVE"
   | "SYSTEM_MANAGED_STATE_DECOMMISSIONED";
-export const UnitSystemManagedStateEnum = S.String;
+const UnitSystemManagedStateEnum = S.String;
 
 /** Set of dependencies for this unit. Maximum 10. */
 export interface UnitDependency {
@@ -1201,7 +1194,7 @@ export interface UnitDependency {
   /** Output only. Alias for the name of the dependency. */
   alias?: string;
 }
-export const UnitDependency = /*@__PURE__*/ S.suspend(() =>
+const UnitDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     alias: S.optional(S.String),
@@ -1209,7 +1202,7 @@ export const UnitDependency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UnitDependency" }) as any as S.Schema<UnitDependency>;
 
 export type UnitDependencyList = Array<UnitDependency>;
-export const UnitDependencyList = /*@__PURE__*/ S.Array(
+const UnitDependencyList = /*@__PURE__*/ S.Array(
   UnitDependency,
 ) as any as S.Schema<UnitDependencyList>;
 
@@ -1217,14 +1210,14 @@ export type UnitManagementModeEnum =
   | "MANAGEMENT_MODE_UNSPECIFIED"
   | "MANAGEMENT_MODE_USER"
   | "MANAGEMENT_MODE_SYSTEM";
-export const UnitManagementModeEnum = S.String;
+const UnitManagementModeEnum = S.String;
 
 /** Captures requested directives for performing future maintenance on the unit. This includes a request for the unit to skip maintenance for a period of time and remain pinned to its current release as well as controls for postponing maintenance scheduled in future. */
 export interface MaintenanceSettings {
   /** Optional. If present, it fixes the release on the unit until the given time; i.e. changes to the release field will be rejected. Rollouts should and will also respect this by not requesting an upgrade in the first place. */
   pinnedUntilTime?: string;
 }
-export const MaintenanceSettings = /*@__PURE__*/ S.suspend(() =>
+const MaintenanceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pinnedUntilTime: S.optional(S.String),
   }),
@@ -1238,7 +1231,7 @@ export type UnitStateEnum =
   | "UNIT_STATE_DEPROVISIONING"
   | "UNIT_STATE_READY"
   | "UNIT_STATE_ERROR";
-export const UnitStateEnum = S.String;
+const UnitStateEnum = S.String;
 
 /** A unit of deployment that has its lifecycle via a CRUD API using an actuation engine under the hood (e.g. based on Terraform, or a custom implementation provided by a service producer). A building block of a SaaS Tenant. */
 export interface Unit {
@@ -1295,7 +1288,7 @@ export interface Unit {
   /** Optional. Output only. List of pending (wait to be executed) UnitOperations for this unit. */
   pendingOperations?: StringList;
 }
-export const Unit = /*@__PURE__*/ S.suspend(() =>
+const Unit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
     createTime: S.optional(S.String),
@@ -1338,7 +1331,7 @@ export interface CreateProjectsLocationsUnitsRequest {
   /** Request body */
   body?: Unit;
 }
-export const CreateProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1366,7 +1359,7 @@ export interface DeleteProjectsLocationsReleasesRequest {
   /** The etag known to the client for the expected state of the release. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the release. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
   etag?: string;
 }
-export const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1385,7 +1378,7 @@ export const DeleteProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(()
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = Deprovision as any as S.Schema<Empty>;
+const Empty = Deprovision as any as S.Schema<Empty>;
 
 export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -1397,7 +1390,7 @@ export interface DeleteProjectsLocationsRolloutKindsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1424,7 +1417,7 @@ export interface DeleteProjectsLocationsRolloutsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1451,7 +1444,7 @@ export interface DeleteProjectsLocationsSaasRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1478,7 +1471,7 @@ export interface DeleteProjectsLocationsTenantsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1505,7 +1498,7 @@ export interface DeleteProjectsLocationsUnitKindsRequest {
   /** If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. */
   validateOnly?: boolean;
 }
-export const DeleteProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1532,7 +1525,7 @@ export interface DeleteProjectsLocationsUnitOperationsRequest {
   /** An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-export const DeleteProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     etag: S.optional(S.String.pipe(T.Query())),
@@ -1559,7 +1552,7 @@ export interface DeleteProjectsLocationsUnitsRequest {
   /** The etag known to the client for the expected state of the unit. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. */
   etag?: string;
 }
-export const DeleteProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -1580,7 +1573,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1607,7 +1600,7 @@ export interface GoogleCloudLocationLocation {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-export const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
+const GoogleCloudLocationLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1623,7 +1616,7 @@ export interface GetProjectsLocationsReleasesRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1641,7 +1634,7 @@ export interface GetProjectsLocationsRolloutKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1659,7 +1652,7 @@ export interface GetProjectsLocationsRolloutsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1677,7 +1670,7 @@ export interface GetProjectsLocationsSaasRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1695,7 +1688,7 @@ export interface GetProjectsLocationsTenantsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1713,7 +1706,7 @@ export interface GetProjectsLocationsUnitKindsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1731,7 +1724,7 @@ export interface GetProjectsLocationsUnitOperationsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1749,7 +1742,7 @@ export interface GetProjectsLocationsUnitsRequest {
   /** Required. The resource name of the resource within a service. */
   name: string;
 }
-export const GetProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1775,7 +1768,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1794,7 +1787,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type GoogleCloudLocationLocationList = Array<GoogleCloudLocationLocation>;
-export const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
+const GoogleCloudLocationLocationList = /*@__PURE__*/ S.Array(
   GoogleCloudLocationLocation,
 ) as any as S.Schema<GoogleCloudLocationLocationList>;
 
@@ -1805,7 +1798,7 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: GoogleCloudLocationLocationList;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     locations: S.optional(GoogleCloudLocationLocationList),
@@ -1824,7 +1817,7 @@ export interface ListProjectsLocationsReleasesRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1843,7 +1836,7 @@ export const ListProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsReleasesRequest>;
 
 export type ReleaseList = Array<Release>;
-export const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
+const ReleaseList = /*@__PURE__*/ S.Array(Release) as any as S.Schema<ReleaseList>;
 
 /** The response structure for the ListReleases method. */
 export interface ListReleasesResponse {
@@ -1854,7 +1847,7 @@ export interface ListReleasesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReleasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     releases: S.optional(ReleaseList),
     nextPageToken: S.optional(S.String),
@@ -1874,7 +1867,7 @@ export interface ListProjectsLocationsRolloutKindsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1893,9 +1886,7 @@ export const ListProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRolloutKindsRequest>;
 
 export type RolloutKindList = Array<RolloutKind>;
-export const RolloutKindList = /*@__PURE__*/ S.Array(
-  RolloutKind,
-) as any as S.Schema<RolloutKindList>;
+const RolloutKindList = /*@__PURE__*/ S.Array(RolloutKind) as any as S.Schema<RolloutKindList>;
 
 /** The response structure for the ListRolloutKinds method. */
 export interface ListRolloutKindsResponse {
@@ -1906,7 +1897,7 @@ export interface ListRolloutKindsResponse {
   /** If present, the next page token can be provided to a subsequent ListRolloutKinds call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
-export const ListRolloutKindsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutKindsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     rolloutKinds: S.optional(RolloutKindList),
@@ -1926,7 +1917,7 @@ export interface ListProjectsLocationsRolloutsRequest {
   /** The maximum number of rollouts to send per page. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1945,7 +1936,7 @@ export const ListProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListProjectsLocationsRolloutsRequest>;
 
 export type RolloutList = Array<Rollout>;
-export const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
+const RolloutList = /*@__PURE__*/ S.Array(Rollout) as any as S.Schema<RolloutList>;
 
 /** The response structure for the ListRollouts method. */
 export interface ListRolloutsResponse {
@@ -1956,7 +1947,7 @@ export interface ListRolloutsResponse {
   /** The resulting rollouts. */
   rollouts?: RolloutList;
 }
-export const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolloutsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1976,7 +1967,7 @@ export interface ListProjectsLocationsSaasRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1995,7 +1986,7 @@ export const ListProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsSaasRequest>;
 
 export type SaasList = Array<Saas>;
-export const SaasList = /*@__PURE__*/ S.Array(Saas) as any as S.Schema<SaasList>;
+const SaasList = /*@__PURE__*/ S.Array(Saas) as any as S.Schema<SaasList>;
 
 /** The response structure for the ListSaas method. */
 export interface ListSaasResponse {
@@ -2006,7 +1997,7 @@ export interface ListSaasResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListSaasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSaasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     saas: S.optional(SaasList),
@@ -2026,7 +2017,7 @@ export interface ListProjectsLocationsTenantsRequest {
   /** Filter the list as specified in https://google.aip.dev/160. */
   filter?: string;
 }
-export const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2045,7 +2036,7 @@ export const ListProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsTenantsRequest>;
 
 export type TenantList = Array<Tenant>;
-export const TenantList = /*@__PURE__*/ S.Array(Tenant) as any as S.Schema<TenantList>;
+const TenantList = /*@__PURE__*/ S.Array(Tenant) as any as S.Schema<TenantList>;
 
 /** The response structure for the ListTenants method. */
 export interface ListTenantsResponse {
@@ -2056,7 +2047,7 @@ export interface ListTenantsResponse {
   /** The resulting tenants. */
   tenants?: TenantList;
 }
-export const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -2076,7 +2067,7 @@ export interface ListProjectsLocationsUnitKindsRequest {
   /** The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -2095,7 +2086,7 @@ export const ListProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListProjectsLocationsUnitKindsRequest>;
 
 export type UnitKindList = Array<UnitKind>;
-export const UnitKindList = /*@__PURE__*/ S.Array(UnitKind) as any as S.Schema<UnitKindList>;
+const UnitKindList = /*@__PURE__*/ S.Array(UnitKind) as any as S.Schema<UnitKindList>;
 
 /** The response structure for the ListUnitKinds method. */
 export interface ListUnitKindsResponse {
@@ -2106,7 +2097,7 @@ export interface ListUnitKindsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnitKinds call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
-export const ListUnitKindsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUnitKindsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unitKinds: S.optional(UnitKindList),
     unreachable: S.optional(StringList),
@@ -2126,7 +2117,7 @@ export interface ListProjectsLocationsUnitOperationsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
-export const ListProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2145,7 +2136,7 @@ export const ListProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<ListProjectsLocationsUnitOperationsRequest>;
 
 export type UnitOperationList = Array<UnitOperation>;
-export const UnitOperationList = /*@__PURE__*/ S.Array(
+const UnitOperationList = /*@__PURE__*/ S.Array(
   UnitOperation,
 ) as any as S.Schema<UnitOperationList>;
 
@@ -2158,7 +2149,7 @@ export interface ListUnitOperationsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-export const ListUnitOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUnitOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unitOperations: S.optional(UnitOperationList),
     nextPageToken: S.optional(S.String),
@@ -2180,7 +2171,7 @@ export interface ListProjectsLocationsUnitsRequest {
   /** Order results as specified in https://google.aip.dev/132. */
   orderBy?: string;
 }
-export const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -2199,7 +2190,7 @@ export const ListProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsUnitsRequest>;
 
 export type UnitList = Array<Unit>;
-export const UnitList = /*@__PURE__*/ S.Array(Unit) as any as S.Schema<UnitList>;
+const UnitList = /*@__PURE__*/ S.Array(Unit) as any as S.Schema<UnitList>;
 
 /** The response structure for the ListUnits method. */
 export interface ListUnitsResponse {
@@ -2210,7 +2201,7 @@ export interface ListUnitsResponse {
   /** If present, the next page token can be provided to a subsequent ListUnits call to list the next page. If empty, there are no more pages. */
   nextPageToken?: string;
 }
-export const ListUnitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUnitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     units: S.optional(UnitList),
@@ -2230,7 +2221,7 @@ export interface PatchProjectsLocationsReleasesRequest {
   /** Request body */
   body?: Release;
 }
-export const PatchProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsReleasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     requestId: S.optional(S.String.pipe(T.Query())),
@@ -2260,7 +2251,7 @@ export interface PatchProjectsLocationsRolloutKindsRequest {
   /** Request body */
   body?: RolloutKind;
 }
-export const PatchProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRolloutKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2290,7 +2281,7 @@ export interface PatchProjectsLocationsRolloutsRequest {
   /** Request body */
   body?: Rollout;
 }
-export const PatchProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRolloutsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2320,7 +2311,7 @@ export interface PatchProjectsLocationsSaasRequest {
   /** Request body */
   body?: Saas;
 }
-export const PatchProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsSaasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2350,7 +2341,7 @@ export interface PatchProjectsLocationsTenantsRequest {
   /** Request body */
   body?: Tenant;
 }
-export const PatchProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -2380,7 +2371,7 @@ export interface PatchProjectsLocationsUnitKindsRequest {
   /** Request body */
   body?: UnitKind;
 }
-export const PatchProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsUnitKindsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2410,7 +2401,7 @@ export interface PatchProjectsLocationsUnitOperationsRequest {
   /** Request body */
   body?: UnitOperation;
 }
-export const PatchProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsUnitOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
@@ -2440,7 +2431,7 @@ export interface PatchProjectsLocationsUnitsRequest {
   /** Request body */
   body?: Unit;
 }
-export const PatchProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsUnitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     requestId: S.optional(S.String.pipe(T.Query())),

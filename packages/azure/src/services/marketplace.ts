@@ -10,13 +10,13 @@ export type { AzureOpError, AzureOpContext };
 
 /** Gets or sets added plans */
 export type AcknowledgeOfferNotificationDetailsAddPlansList = Array<string>;
-export const AcknowledgeOfferNotificationDetailsAddPlansList = /*@__PURE__*/ S.Array(
+const AcknowledgeOfferNotificationDetailsAddPlansList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AcknowledgeOfferNotificationDetailsAddPlansList>;
 
 /** Gets or sets remove plans */
 export type AcknowledgeOfferNotificationDetailsRemovePlansList = Array<string>;
-export const AcknowledgeOfferNotificationDetailsRemovePlansList =
+const AcknowledgeOfferNotificationDetailsRemovePlansList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<AcknowledgeOfferNotificationDetailsRemovePlansList>;
 
 /** Notification update request payload details */
@@ -32,7 +32,7 @@ export interface AcknowledgeOfferNotificationDetails {
   /** Gets or sets remove plans */
   removePlans?: AcknowledgeOfferNotificationDetailsRemovePlansList;
 }
-export const AcknowledgeOfferNotificationDetails = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgeOfferNotificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledge: S.optional(S.Boolean),
     dismiss: S.optional(S.Boolean),
@@ -52,7 +52,7 @@ export interface AcknowledgePrivateStoreOfferNotificationRequest {
   /** Notification update request payload details */
   properties?: AcknowledgeOfferNotificationDetails;
 }
-export const AcknowledgePrivateStoreOfferNotificationRequest = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgePrivateStoreOfferNotificationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     offerId: S.String.pipe(T.Label()),
@@ -70,7 +70,7 @@ export const AcknowledgePrivateStoreOfferNotificationRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<AcknowledgePrivateStoreOfferNotificationRequest>;
 
 export interface AcknowledgePrivateStoreOfferNotificationResponse {}
-export const AcknowledgePrivateStoreOfferNotificationResponse = /*@__PURE__*/ S.suspend(() =>
+const AcknowledgePrivateStoreOfferNotificationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AcknowledgePrivateStoreOfferNotificationResponse",
@@ -82,7 +82,7 @@ export interface ApprovePrivateStoreCollectionAllItemsRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const ApprovePrivateStoreCollectionAllItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const ApprovePrivateStoreCollectionAllItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -100,7 +100,7 @@ export const ApprovePrivateStoreCollectionAllItemsRequest = /*@__PURE__*/ S.susp
 
 /** The type of identity that creates/modifies resources */
 export type IdentityType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const IdentityType = S.String;
+const IdentityType = S.String;
 
 /** Read only system data */
 export interface SystemData {
@@ -117,7 +117,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(IdentityType),
@@ -130,22 +130,22 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
 export type CollectionPropertiesSubscriptionsListList = Array<string>;
-export const CollectionPropertiesSubscriptionsListList =
+const CollectionPropertiesSubscriptionsListList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<CollectionPropertiesSubscriptionsListList>;
 
 /** Rule type */
 export type RuleType = "PrivateProducts" | "TermsAndCondition";
-export const RuleType = S.String;
+const RuleType = S.String;
 
 export type RuleValueList = Array<string>;
-export const RuleValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<RuleValueList>;
+const RuleValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<RuleValueList>;
 
 export interface Rule {
   /** Rule type */
   type?: RuleType | (string & {});
   value?: RuleValueList;
 }
-export const Rule = /*@__PURE__*/ S.suspend(() =>
+const Rule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(RuleType),
     value: S.optional(RuleValueList),
@@ -154,7 +154,7 @@ export const Rule = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets list of collection rules */
 export type CollectionPropertiesAppliedRulesList = Array<Rule>;
-export const CollectionPropertiesAppliedRulesList = /*@__PURE__*/ S.Array(
+const CollectionPropertiesAppliedRulesList = /*@__PURE__*/ S.Array(
   Rule,
 ) as any as S.Schema<CollectionPropertiesAppliedRulesList>;
 
@@ -181,7 +181,7 @@ export interface CollectionProperties {
   /** Gets list of collection rules */
   appliedRules?: CollectionPropertiesAppliedRulesList;
 }
-export const CollectionProperties = /*@__PURE__*/ S.suspend(() =>
+const CollectionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionId: S.optional(S.String),
     collectionName: S.optional(S.String),
@@ -208,7 +208,7 @@ export interface ApprovePrivateStoreCollectionAllItemsResponse {
   /** The collection data structure. */
   properties?: CollectionProperties;
 }
-export const ApprovePrivateStoreCollectionAllItemsResponse = /*@__PURE__*/ S.suspend(() =>
+const ApprovePrivateStoreCollectionAllItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -222,7 +222,7 @@ export const ApprovePrivateStoreCollectionAllItemsResponse = /*@__PURE__*/ S.sus
 
 /** collection ids list that the action is performed on */
 export type BulkCollectionsDetailsCollectionIdsList = Array<string>;
-export const BulkCollectionsDetailsCollectionIdsList =
+const BulkCollectionsDetailsCollectionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<BulkCollectionsDetailsCollectionIdsList>;
 
 /** Bulk collection details */
@@ -232,7 +232,7 @@ export interface BulkCollectionsDetails {
   /** Action to perform (For example: EnableCollections, DisableCollections) */
   action?: string;
 }
-export const BulkCollectionsDetails = /*@__PURE__*/ S.suspend(() =>
+const BulkCollectionsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionIds: S.optional(BulkCollectionsDetailsCollectionIdsList),
     action: S.optional(S.String),
@@ -245,7 +245,7 @@ export interface BulkPrivateStoreCollectionsActionRequest {
   /** bulk collections properties details */
   properties?: BulkCollectionsDetails;
 }
-export const BulkPrivateStoreCollectionsActionRequest = /*@__PURE__*/ S.suspend(() =>
+const BulkPrivateStoreCollectionsActionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(BulkCollectionsDetails),
@@ -268,7 +268,7 @@ export interface CollectionsDetails {
   /** Collection id. */
   collectionId?: string;
 }
-export const CollectionsDetails = /*@__PURE__*/ S.suspend(() =>
+const CollectionsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.optional(S.String),
     collectionId: S.optional(S.String),
@@ -277,13 +277,13 @@ export const CollectionsDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Succeeded collections */
 export type BulkCollectionsResponseSucceededList = Array<CollectionsDetails>;
-export const BulkCollectionsResponseSucceededList = /*@__PURE__*/ S.Array(
+const BulkCollectionsResponseSucceededList = /*@__PURE__*/ S.Array(
   CollectionsDetails,
 ) as any as S.Schema<BulkCollectionsResponseSucceededList>;
 
 /** Failed collections */
 export type BulkCollectionsResponseFailedList = Array<CollectionsDetails>;
-export const BulkCollectionsResponseFailedList =
+const BulkCollectionsResponseFailedList =
   BulkCollectionsResponseSucceededList as any as S.Schema<BulkCollectionsResponseFailedList>;
 
 /** The bulk collections response. The response contains two lists that indicate for each collection whether the operation succeeded or failed */
@@ -293,7 +293,7 @@ export interface BulkCollectionsResponse {
   /** Failed collections */
   failed?: BulkCollectionsResponseFailedList;
 }
-export const BulkCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const BulkCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     succeeded: S.optional(BulkCollectionsResponseSucceededList),
     failed: S.optional(BulkCollectionsResponseFailedList),
@@ -311,7 +311,7 @@ export interface PlanDetailsInput {
   /** Gets or sets the subscription name that the user is requesting to add the plan to */
   subscriptionName?: string;
 }
-export const PlanDetailsInput = /*@__PURE__*/ S.suspend(() =>
+const PlanDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     justification: S.optional(S.String),
@@ -322,7 +322,7 @@ export const PlanDetailsInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the plans details */
 export type RequestApprovalPropertiesInputPlansDetailsList = Array<PlanDetailsInput>;
-export const RequestApprovalPropertiesInputPlansDetailsList = /*@__PURE__*/ S.Array(
+const RequestApprovalPropertiesInputPlansDetailsList = /*@__PURE__*/ S.Array(
   PlanDetailsInput,
 ) as any as S.Schema<RequestApprovalPropertiesInputPlansDetailsList>;
 
@@ -337,7 +337,7 @@ export interface RequestApprovalPropertiesInput {
   /** Gets or sets the request approval message code */
   messageCode?: number;
 }
-export const RequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const RequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -356,7 +356,7 @@ export interface CreatePrivateStoreApprovalRequestRequest {
   /** The privateStore approval request data structure. */
   properties?: RequestApprovalPropertiesInput;
 }
-export const CreatePrivateStoreApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateStoreApprovalRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     requestApprovalId: S.String.pipe(T.Label()),
@@ -375,7 +375,7 @@ export const CreatePrivateStoreApprovalRequestRequest = /*@__PURE__*/ S.suspend(
 
 /** Gets the plan status */
 export type Status = "Pending" | "Rejected" | "Approved" | "None";
-export const Status = S.String;
+const Status = S.String;
 
 /** Return plan with request details */
 export interface PlanDetails {
@@ -392,7 +392,7 @@ export interface PlanDetails {
   /** Gets or sets the subscription name that the user is requesting to add the plan to */
   subscriptionName?: string;
 }
-export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     status: S.optional(Status),
@@ -405,7 +405,7 @@ export const PlanDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets the plans details */
 export type RequestApprovalPropertiesPlansDetailsList = Array<PlanDetails>;
-export const RequestApprovalPropertiesPlansDetailsList = /*@__PURE__*/ S.Array(
+const RequestApprovalPropertiesPlansDetailsList = /*@__PURE__*/ S.Array(
   PlanDetails,
 ) as any as S.Schema<RequestApprovalPropertiesPlansDetailsList>;
 
@@ -424,7 +424,7 @@ export interface RequestApprovalProperties {
   /** Gets or sets the request approval message code */
   messageCode?: number;
 }
-export const RequestApprovalProperties = /*@__PURE__*/ S.suspend(() =>
+const RequestApprovalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     offerDisplayName: S.optional(S.String),
@@ -449,7 +449,7 @@ export interface CreatePrivateStoreApprovalRequestResponse {
   /** The privateStore approval request data structure. */
   properties?: RequestApprovalProperties;
 }
-export const CreatePrivateStoreApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
+const CreatePrivateStoreApprovalRequestResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -465,7 +465,7 @@ export interface DeletePrivateStoreRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const DeletePrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -481,7 +481,7 @@ export const DeletePrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateStoreRequest>;
 
 export interface DeletePrivateStoreResponse {}
-export const DeletePrivateStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeletePrivateStoreResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletePrivateStoreResponse",
 }) as any as S.Schema<DeletePrivateStoreResponse>;
 
@@ -491,7 +491,7 @@ export interface DeletePrivateStoreCollectionRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const DeletePrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -508,7 +508,7 @@ export const DeletePrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePrivateStoreCollectionRequest>;
 
 export interface DeletePrivateStoreCollectionResponse {}
-export const DeletePrivateStoreCollectionResponse =
+const DeletePrivateStoreCollectionResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<DeletePrivateStoreCollectionResponse>;
 
 export interface DeletePrivateStoreCollectionOfferRequest {
@@ -519,7 +519,7 @@ export interface DeletePrivateStoreCollectionOfferRequest {
   /** The offer ID to update or delete */
   offerId: string;
 }
-export const DeletePrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -537,14 +537,14 @@ export const DeletePrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeletePrivateStoreCollectionOfferRequest>;
 
 export interface DeletePrivateStoreCollectionOfferResponse {}
-export const DeletePrivateStoreCollectionOfferResponse =
+const DeletePrivateStoreCollectionOfferResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<DeletePrivateStoreCollectionOfferResponse>;
 
 export interface FetchPrivateStoreAllSubscriptionsInTenantRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const FetchPrivateStoreAllSubscriptionsInTenantRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchPrivateStoreAllSubscriptionsInTenantRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -561,7 +561,7 @@ export const FetchPrivateStoreAllSubscriptionsInTenantRequest = /*@__PURE__*/ S.
 
 /** The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted. */
 export type SubscriptionState = "Enabled" | "Warned" | "PastDue" | "Disabled" | "Deleted";
-export const SubscriptionState = S.String;
+const SubscriptionState = S.String;
 
 /** Subscription information. */
 export interface Subscription {
@@ -574,7 +574,7 @@ export interface Subscription {
   /** The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted. */
   state?: SubscriptionState;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     subscriptionId: S.optional(S.String),
@@ -585,7 +585,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of subscriptions. */
 export type SubscriptionsResponseValueList = Array<Subscription>;
-export const SubscriptionsResponseValueList = /*@__PURE__*/ S.Array(
+const SubscriptionsResponseValueList = /*@__PURE__*/ S.Array(
   Subscription,
 ) as any as S.Schema<SubscriptionsResponseValueList>;
 
@@ -598,7 +598,7 @@ export interface SubscriptionsResponse {
   /** Number of subscriptions on the page */
   count?: number;
 }
-export const SubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(SubscriptionsResponseValueList),
     skipToken: S.optional(S.String),
@@ -610,7 +610,7 @@ export interface GetPrivateStoreRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const GetPrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -625,16 +625,16 @@ export const GetPrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Indicates private store availability */
 export type Availability = "enabled" | "disabled";
-export const Availability = S.String;
+const Availability = S.String;
 
 /** Gets list of associated collection ids */
 export type PrivateStorePropertiesCollectionIdsList = Array<string>;
-export const PrivateStorePropertiesCollectionIdsList =
+const PrivateStorePropertiesCollectionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<PrivateStorePropertiesCollectionIdsList>;
 
 /** Gets or sets list of branding characteristics */
 export type PrivateStorePropertiesBrandingMap = { [key: string]: string | undefined };
-export const PrivateStorePropertiesBrandingMap = /*@__PURE__*/ S.Record(
+const PrivateStorePropertiesBrandingMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<PrivateStorePropertiesBrandingMap>;
@@ -648,7 +648,7 @@ export interface Recipient {
   /** Display Name */
   displayName?: string;
 }
-export const Recipient = /*@__PURE__*/ S.suspend(() =>
+const Recipient = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
     emailAddress: S.optional(S.String),
@@ -658,7 +658,7 @@ export const Recipient = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets list of notified recipients for new requests */
 export type NotificationsSettingsPropertiesRecipientsList = Array<Recipient>;
-export const NotificationsSettingsPropertiesRecipientsList = /*@__PURE__*/ S.Array(
+const NotificationsSettingsPropertiesRecipientsList = /*@__PURE__*/ S.Array(
   Recipient,
 ) as any as S.Schema<NotificationsSettingsPropertiesRecipientsList>;
 
@@ -669,7 +669,7 @@ export interface NotificationsSettingsProperties {
   /** Gets or sets whether to send email to all marketplace admins for new requests */
   sendToAllMarketplaceAdmins?: boolean;
 }
-export const NotificationsSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+const NotificationsSettingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipients: S.optional(NotificationsSettingsPropertiesRecipientsList),
     sendToAllMarketplaceAdmins: S.optional(S.Boolean),
@@ -699,7 +699,7 @@ export interface PrivateStoreProperties {
   /** Gets or sets notifications settings */
   notificationsSettings?: NotificationsSettingsProperties;
 }
-export const PrivateStoreProperties = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(Availability),
     privateStoreId: S.optional(S.String),
@@ -725,7 +725,7 @@ export interface GetPrivateStoreResponse {
   /** The PrivateStore data structure. */
   properties?: PrivateStoreProperties;
 }
-export const GetPrivateStoreResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -743,7 +743,7 @@ export interface GetPrivateStoreAdminRequestApprovalRequest {
   /** The publisher id of this offer. */
   publisherId: string;
 }
-export const GetPrivateStoreAdminRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreAdminRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     adminRequestApprovalId: S.String.pipe(T.Label()),
@@ -762,11 +762,11 @@ export const GetPrivateStoreAdminRequestApprovalRequest = /*@__PURE__*/ S.suspen
 
 /** Gets or sets admin action */
 export type AdminAction = "Approved" | "Rejected";
-export const AdminAction = S.String;
+const AdminAction = S.String;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
 export type AdminRequestApprovalPropertiesApprovedPlansList = Array<string>;
-export const AdminRequestApprovalPropertiesApprovedPlansList =
+const AdminRequestApprovalPropertiesApprovedPlansList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<AdminRequestApprovalPropertiesApprovedPlansList>;
 
 /** user request details */
@@ -782,7 +782,7 @@ export interface UserRequestDetails {
   /** Gets the subscription name that the user is requesting to add the plan to */
   subscriptionName?: string;
 }
-export const UserRequestDetails = /*@__PURE__*/ S.suspend(() =>
+const UserRequestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.optional(S.String),
     date: S.optional(S.String),
@@ -794,7 +794,7 @@ export const UserRequestDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets requesters details list */
 export type PlanRequesterDetailsRequestersList = Array<UserRequestDetails>;
-export const PlanRequesterDetailsRequestersList = /*@__PURE__*/ S.Array(
+const PlanRequesterDetailsRequestersList = /*@__PURE__*/ S.Array(
   UserRequestDetails,
 ) as any as S.Schema<PlanRequesterDetailsRequestersList>;
 
@@ -807,7 +807,7 @@ export interface PlanRequesterDetails {
   /** Gets requesters details list */
   requesters?: PlanRequesterDetailsRequestersList;
 }
-export const PlanRequesterDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanRequesterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     planDisplayName: S.optional(S.String),
@@ -817,13 +817,13 @@ export const PlanRequesterDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets list of plans with requesters details */
 export type AdminRequestApprovalPropertiesPlansList = Array<PlanRequesterDetails>;
-export const AdminRequestApprovalPropertiesPlansList = /*@__PURE__*/ S.Array(
+const AdminRequestApprovalPropertiesPlansList = /*@__PURE__*/ S.Array(
   PlanRequesterDetails,
 ) as any as S.Schema<AdminRequestApprovalPropertiesPlansList>;
 
 /** Gets or sets list of associated collection ids */
 export type AdminRequestApprovalPropertiesCollectionIdsList = Array<string>;
-export const AdminRequestApprovalPropertiesCollectionIdsList =
+const AdminRequestApprovalPropertiesCollectionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<AdminRequestApprovalPropertiesCollectionIdsList>;
 
 /** Admin approval request resource properties */
@@ -849,7 +849,7 @@ export interface AdminRequestApprovalProperties {
   /** The offer icon url. */
   icon?: string;
 }
-export const AdminRequestApprovalProperties = /*@__PURE__*/ S.suspend(() =>
+const AdminRequestApprovalProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -878,7 +878,7 @@ export interface GetPrivateStoreAdminRequestApprovalResponse {
   /** The privateStore admin Approval request data structure. */
   properties?: AdminRequestApprovalProperties;
 }
-export const GetPrivateStoreAdminRequestApprovalResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreAdminRequestApprovalResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -896,7 +896,7 @@ export interface GetPrivateStoreCollectionRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const GetPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -924,7 +924,7 @@ export interface GetPrivateStoreCollectionResponse {
   /** The collection data structure. */
   properties?: CollectionProperties;
 }
-export const GetPrivateStoreCollectionResponse =
+const GetPrivateStoreCollectionResponse =
   ApprovePrivateStoreCollectionAllItemsResponse as any as S.Schema<GetPrivateStoreCollectionResponse>;
 
 export interface GetPrivateStoreCollectionOfferRequest {
@@ -935,7 +935,7 @@ export interface GetPrivateStoreCollectionOfferRequest {
   /** The offer ID to update or delete */
   offerId: string;
 }
-export const GetPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -954,12 +954,12 @@ export const GetPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Plan ids limitation for this offer */
 export type OfferPropertiesSpecificPlanIdsLimitationList = Array<string>;
-export const OfferPropertiesSpecificPlanIdsLimitationList =
+const OfferPropertiesSpecificPlanIdsLimitationList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<OfferPropertiesSpecificPlanIdsLimitationList>;
 
 /** Icon File Uris */
 export type OfferPropertiesIconFileUrisMap = { [key: string]: string | undefined };
-export const OfferPropertiesIconFileUrisMap =
+const OfferPropertiesIconFileUrisMap =
   PrivateStorePropertiesBrandingMap as any as S.Schema<OfferPropertiesIconFileUrisMap>;
 
 /** Plan accessibility */
@@ -968,7 +968,7 @@ export type Accessibility =
   | "Public"
   | "PrivateTenantOnLevel"
   | "PrivateSubscriptionOnLevel";
-export const Accessibility = S.String;
+const Accessibility = S.String;
 
 export interface Plan {
   /** Identifier for this plan */
@@ -986,7 +986,7 @@ export interface Plan {
   /** Indicating whether the plan is stop sell or not. */
   isStopSell?: boolean;
 }
-export const Plan = /*@__PURE__*/ S.suspend(() =>
+const Plan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuId: S.optional(S.String),
     planId: S.optional(S.String),
@@ -1000,7 +1000,7 @@ export const Plan = /*@__PURE__*/ S.suspend(() =>
 
 /** Offer plans */
 export type OfferPropertiesPlansList = Array<Plan>;
-export const OfferPropertiesPlansList = /*@__PURE__*/ S.Array(
+const OfferPropertiesPlansList = /*@__PURE__*/ S.Array(
   Plan,
 ) as any as S.Schema<OfferPropertiesPlansList>;
 
@@ -1030,7 +1030,7 @@ export interface OfferProperties {
   /** Offer plans */
   plans?: OfferPropertiesPlansList;
 }
-export const OfferProperties = /*@__PURE__*/ S.suspend(() =>
+const OfferProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueOfferId: S.optional(S.String),
     offerDisplayName: S.optional(S.String),
@@ -1059,7 +1059,7 @@ export interface GetPrivateStoreCollectionOfferResponse {
   /** The privateStore offer data structure. */
   properties?: OfferProperties;
 }
-export const GetPrivateStoreCollectionOfferResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreCollectionOfferResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1077,7 +1077,7 @@ export interface GetPrivateStoreRequestApprovalRequest {
   /** The request approval ID to get create or update */
   requestApprovalId: string;
 }
-export const GetPrivateStoreRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPrivateStoreRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     requestApprovalId: S.String.pipe(T.Label()),
@@ -1105,11 +1105,11 @@ export interface GetPrivateStoreRequestApprovalResponse {
   /** The privateStore approval request data structure. */
   properties?: RequestApprovalProperties;
 }
-export const GetPrivateStoreRequestApprovalResponse =
+const GetPrivateStoreRequestApprovalResponse =
   CreatePrivateStoreApprovalRequestResponse as any as S.Schema<GetPrivateStoreRequestApprovalResponse>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1131,7 +1131,7 @@ export interface SingleOperationDisplay {
   /** Friendly description for the operation, */
   description?: string;
 }
-export const SingleOperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const SingleOperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -1155,7 +1155,7 @@ export interface SingleOperation {
   /** Properties of the operation */
   properties?: unknown;
 }
-export const SingleOperation = /*@__PURE__*/ S.suspend(() =>
+const SingleOperation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1168,7 +1168,7 @@ export const SingleOperation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of Microsoft.Marketplace operations supported by the Microsoft.Marketplace resource provider. */
 export type OperationListResultValueList = Array<SingleOperation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   SingleOperation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -1179,7 +1179,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -1190,7 +1190,7 @@ export interface ListPrivateStoreRequest {
   /** Determines if to use cache or DB for serving this request */
   use_cache?: string;
 }
-export const ListPrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     use_cache: S.optional(S.String.pipe(T.Query("use-cache"))),
   }).pipe(
@@ -1216,11 +1216,11 @@ export interface PrivateStore {
   /** The PrivateStore data structure. */
   properties?: PrivateStoreProperties;
 }
-export const PrivateStore = GetPrivateStoreResponse as any as S.Schema<PrivateStore>;
+const PrivateStore = GetPrivateStoreResponse as any as S.Schema<PrivateStore>;
 
 /** The PrivateStore items on this page */
 export type PrivateStoreListValueList = Array<PrivateStore>;
-export const PrivateStoreListValueList = /*@__PURE__*/ S.Array(
+const PrivateStoreListValueList = /*@__PURE__*/ S.Array(
   PrivateStore,
 ) as any as S.Schema<PrivateStoreListValueList>;
 
@@ -1231,7 +1231,7 @@ export interface PrivateStoreList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const PrivateStoreList = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: PrivateStoreListValueList,
     nextLink: S.optional(S.String),
@@ -1242,7 +1242,7 @@ export interface ListPrivateStoreAdminRequestApprovalsRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const ListPrivateStoreAdminRequestApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreAdminRequestApprovalsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1270,11 +1270,11 @@ export interface AdminRequestApprovalsResource {
   /** The privateStore admin Approval request data structure. */
   properties?: AdminRequestApprovalProperties;
 }
-export const AdminRequestApprovalsResource =
+const AdminRequestApprovalsResource =
   GetPrivateStoreAdminRequestApprovalResponse as any as S.Schema<AdminRequestApprovalsResource>;
 
 export type AdminRequestApprovalsListValueList = Array<AdminRequestApprovalsResource>;
-export const AdminRequestApprovalsListValueList = /*@__PURE__*/ S.Array(
+const AdminRequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   AdminRequestApprovalsResource,
 ) as any as S.Schema<AdminRequestApprovalsListValueList>;
 
@@ -1284,7 +1284,7 @@ export interface AdminRequestApprovalsList {
   /** URL to get the next set of notifications list results if there are any. */
   nextLink?: string;
 }
-export const AdminRequestApprovalsList = /*@__PURE__*/ S.suspend(() =>
+const AdminRequestApprovalsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(AdminRequestApprovalsListValueList),
     nextLink: S.optional(S.String),
@@ -1297,7 +1297,7 @@ export interface ListPrivateStoreCollectionRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const ListPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1325,7 +1325,7 @@ export interface Collection {
   /** The collection data structure. */
   properties?: CollectionProperties;
 }
-export const Collection = /*@__PURE__*/ S.suspend(() =>
+const Collection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1336,7 +1336,7 @@ export const Collection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Collection" }) as any as S.Schema<Collection>;
 
 export type CollectionsListValueList = Array<Collection>;
-export const CollectionsListValueList = /*@__PURE__*/ S.Array(
+const CollectionsListValueList = /*@__PURE__*/ S.Array(
   Collection,
 ) as any as S.Schema<CollectionsListValueList>;
 
@@ -1345,7 +1345,7 @@ export interface CollectionsList {
   /** URL to get the next set of offer list results if there are any. */
   nextLink?: string;
 }
-export const CollectionsList = /*@__PURE__*/ S.suspend(() =>
+const CollectionsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CollectionsListValueList),
     nextLink: S.optional(S.String),
@@ -1358,7 +1358,7 @@ export interface ListPrivateStoreCollectionOfferRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const ListPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1387,7 +1387,7 @@ export interface Offer {
   /** The privateStore offer data structure. */
   properties?: OfferProperties;
 }
-export const Offer = /*@__PURE__*/ S.suspend(() =>
+const Offer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1399,7 +1399,7 @@ export const Offer = /*@__PURE__*/ S.suspend(() =>
 
 /** The Offer items on this page */
 export type OfferListResponseValueList = Array<Offer>;
-export const OfferListResponseValueList = /*@__PURE__*/ S.Array(
+const OfferListResponseValueList = /*@__PURE__*/ S.Array(
   Offer,
 ) as any as S.Schema<OfferListResponseValueList>;
 
@@ -1410,7 +1410,7 @@ export interface OfferListResponse {
   /** The link to the next page of items */
   nextLink?: string;
 }
-export const OfferListResponse = /*@__PURE__*/ S.suspend(() =>
+const OfferListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: OfferListResponseValueList,
     nextLink: S.optional(S.String),
@@ -1419,7 +1419,7 @@ export const OfferListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Subscription ids list */
 export type CollectionOffersByAllContextsPropertiesSubscriptionIdsList = Array<string>;
-export const CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
+const CollectionOffersByAllContextsPropertiesSubscriptionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<CollectionOffersByAllContextsPropertiesSubscriptionIdsList>;
 
 /** Suggested subscription list */
@@ -1427,7 +1427,7 @@ export interface CollectionOffersByAllContextsProperties {
   /** Subscription ids list */
   subscriptionIds?: CollectionOffersByAllContextsPropertiesSubscriptionIdsList;
 }
-export const CollectionOffersByAllContextsProperties = /*@__PURE__*/ S.suspend(() =>
+const CollectionOffersByAllContextsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionIds: S.optional(CollectionOffersByAllContextsPropertiesSubscriptionIdsList),
   }),
@@ -1443,7 +1443,7 @@ export interface ListPrivateStoreCollectionOfferByContextsRequest {
   /** Subscriptions ids list */
   properties?: CollectionOffersByAllContextsProperties;
 }
-export const ListPrivateStoreCollectionOfferByContextsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreCollectionOfferByContextsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1461,7 +1461,7 @@ export const ListPrivateStoreCollectionOfferByContextsRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListPrivateStoreCollectionOfferByContextsRequest>;
 
 export type CollectionOffersByContextOffersValueList = Array<OfferProperties>;
-export const CollectionOffersByContextOffersValueList = /*@__PURE__*/ S.Array(
+const CollectionOffersByContextOffersValueList = /*@__PURE__*/ S.Array(
   OfferProperties,
 ) as any as S.Schema<CollectionOffersByContextOffersValueList>;
 
@@ -1469,7 +1469,7 @@ export const CollectionOffersByContextOffersValueList = /*@__PURE__*/ S.Array(
 export interface CollectionOffersByContextOffers {
   value?: CollectionOffersByContextOffersValueList;
 }
-export const CollectionOffersByContextOffers = /*@__PURE__*/ S.suspend(() =>
+const CollectionOffersByContextOffers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CollectionOffersByContextOffersValueList),
   }),
@@ -1484,7 +1484,7 @@ export interface CollectionOffersByContext {
   /** List of offers */
   offers?: CollectionOffersByContextOffers;
 }
-export const CollectionOffersByContext = /*@__PURE__*/ S.suspend(() =>
+const CollectionOffersByContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     offers: S.optional(CollectionOffersByContextOffers),
@@ -1494,7 +1494,7 @@ export const CollectionOffersByContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CollectionOffersByContext>;
 
 export type CollectionOffersByContextListValueList = Array<CollectionOffersByContext>;
-export const CollectionOffersByContextListValueList = /*@__PURE__*/ S.Array(
+const CollectionOffersByContextListValueList = /*@__PURE__*/ S.Array(
   CollectionOffersByContext,
 ) as any as S.Schema<CollectionOffersByContextListValueList>;
 
@@ -1504,7 +1504,7 @@ export interface CollectionOffersByContextList {
   /** URL to get the next set of offer list per context results if there are any. */
   nextLink?: string;
 }
-export const CollectionOffersByContextList = /*@__PURE__*/ S.suspend(() =>
+const CollectionOffersByContextList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(CollectionOffersByContextListValueList),
     nextLink: S.optional(S.String),
@@ -1517,7 +1517,7 @@ export interface ListPrivateStoreNewPlansNotificationsRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const ListPrivateStoreNewPlansNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreNewPlansNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1539,7 +1539,7 @@ export interface PlanNotificationDetails {
   /** Gets or sets the plan display name */
   planDisplayName?: string;
 }
-export const PlanNotificationDetails = /*@__PURE__*/ S.suspend(() =>
+const PlanNotificationDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     planDisplayName: S.optional(S.String),
@@ -1548,7 +1548,7 @@ export const PlanNotificationDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets removed plans notifications */
 export type NewNotificationsPlansList = Array<PlanNotificationDetails>;
-export const NewNotificationsPlansList = /*@__PURE__*/ S.Array(
+const NewNotificationsPlansList = /*@__PURE__*/ S.Array(
   PlanNotificationDetails,
 ) as any as S.Schema<NewNotificationsPlansList>;
 
@@ -1567,7 +1567,7 @@ export interface NewNotifications {
   /** Gets or sets removed plans notifications */
   plans?: NewNotificationsPlansList;
 }
-export const NewNotifications = /*@__PURE__*/ S.suspend(() =>
+const NewNotifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1579,7 +1579,7 @@ export const NewNotifications = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NewNotifications" }) as any as S.Schema<NewNotifications>;
 
 export type NewPlansNotificationsListNewPlansNotificationsList = Array<NewNotifications>;
-export const NewPlansNotificationsListNewPlansNotificationsList = /*@__PURE__*/ S.Array(
+const NewPlansNotificationsListNewPlansNotificationsList = /*@__PURE__*/ S.Array(
   NewNotifications,
 ) as any as S.Schema<NewPlansNotificationsListNewPlansNotificationsList>;
 
@@ -1587,7 +1587,7 @@ export const NewPlansNotificationsListNewPlansNotificationsList = /*@__PURE__*/ 
 export interface NewPlansNotificationsList {
   newPlansNotifications?: NewPlansNotificationsListNewPlansNotificationsList;
 }
-export const NewPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
+const NewPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPlansNotifications: S.optional(NewPlansNotificationsListNewPlansNotificationsList),
   }),
@@ -1599,7 +1599,7 @@ export interface ListPrivateStoreSubscriptionsContextRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const ListPrivateStoreSubscriptionsContextRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPrivateStoreSubscriptionsContextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1615,14 +1615,14 @@ export const ListPrivateStoreSubscriptionsContextRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListPrivateStoreSubscriptionsContextRequest>;
 
 export type SubscriptionsContextListSubscriptionsIdsList = Array<string>;
-export const SubscriptionsContextListSubscriptionsIdsList =
+const SubscriptionsContextListSubscriptionsIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<SubscriptionsContextListSubscriptionsIdsList>;
 
 /** List of subscription Ids in the private store */
 export interface SubscriptionsContextList {
   subscriptionsIds?: SubscriptionsContextListSubscriptionsIdsList;
 }
-export const SubscriptionsContextList = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionsContextList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionsIds: S.optional(SubscriptionsContextListSubscriptionsIdsList),
   }),
@@ -1634,7 +1634,7 @@ export type Operation =
   | "DeletePrivateStoreCollection"
   | "DeletePrivateStoreCollectionOffer"
   | "Ping";
-export const Operation = S.String;
+const Operation = S.String;
 
 export interface PostPrivateStoreCollectionRequest {
   /** The store ID - must use the tenant ID */
@@ -1643,7 +1643,7 @@ export interface PostPrivateStoreCollectionRequest {
   collectionId: string;
   body?: Operation | (string & {});
 }
-export const PostPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+const PostPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1661,7 +1661,7 @@ export const PostPrivateStoreCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostPrivateStoreCollectionRequest>;
 
 export interface PostPrivateStoreCollectionResponse {}
-export const PostPrivateStoreCollectionResponse =
+const PostPrivateStoreCollectionResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<PostPrivateStoreCollectionResponse>;
 
 export interface PostPrivateStoreCollectionOfferRequest {
@@ -1673,7 +1673,7 @@ export interface PostPrivateStoreCollectionOfferRequest {
   offerId: string;
   body?: Operation | (string & {});
 }
-export const PostPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
+const PostPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1692,14 +1692,14 @@ export const PostPrivateStoreCollectionOfferRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<PostPrivateStoreCollectionOfferRequest>;
 
 export interface PostPrivateStoreCollectionOfferResponse {}
-export const PostPrivateStoreCollectionOfferResponse =
+const PostPrivateStoreCollectionOfferResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<PostPrivateStoreCollectionOfferResponse>;
 
 export interface PrivateStoreAnyExistingOffersInTheCollectionsRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const PrivateStoreAnyExistingOffersInTheCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreAnyExistingOffersInTheCollectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1719,7 +1719,7 @@ export interface AnyExistingOffersInTheCollectionsResponse {
   /** Boolean answer, true if exists at least a single offer in an enabled collection, otherwise, false. */
   value?: boolean;
 }
-export const AnyExistingOffersInTheCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const AnyExistingOffersInTheCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.Boolean),
   }),
@@ -1731,7 +1731,7 @@ export interface PrivateStoreBillingAccountsRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const PrivateStoreBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -1748,7 +1748,7 @@ export const PrivateStoreBillingAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Billing accounts list */
 export type BillingAccountsResponseBillingAccountsList = Array<string>;
-export const BillingAccountsResponseBillingAccountsList =
+const BillingAccountsResponseBillingAccountsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<BillingAccountsResponseBillingAccountsList>;
 
 /** Billing accounts response object */
@@ -1756,7 +1756,7 @@ export interface BillingAccountsResponse {
   /** Billing accounts list */
   billingAccounts?: BillingAccountsResponseBillingAccountsList;
 }
-export const BillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const BillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccounts: S.optional(BillingAccountsResponseBillingAccountsList),
   }),
@@ -1764,7 +1764,7 @@ export const BillingAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request */
 export type CollectionPropertiesInputSubscriptionsListList = Array<string>;
-export const CollectionPropertiesInputSubscriptionsListList =
+const CollectionPropertiesInputSubscriptionsListList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<CollectionPropertiesInputSubscriptionsListList>;
 
 /** The collection details */
@@ -1780,7 +1780,7 @@ export interface CollectionPropertiesInput {
   /** Indicating whether the collection is enabled or disabled. */
   enabled?: boolean;
 }
-export const CollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const CollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.optional(S.String),
     claim: S.optional(S.String),
@@ -1800,7 +1800,7 @@ export interface PrivateStoreCollectionCreateOrUpdateRequest {
   /** The collection data structure. */
   properties?: CollectionPropertiesInput;
 }
-export const PrivateStoreCollectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCollectionCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1829,7 +1829,7 @@ export interface PrivateStoreCollectionCreateOrUpdateResponse {
   /** The collection data structure. */
   properties?: CollectionProperties;
 }
-export const PrivateStoreCollectionCreateOrUpdateResponse =
+const PrivateStoreCollectionCreateOrUpdateResponse =
   ApprovePrivateStoreCollectionAllItemsResponse as any as S.Schema<PrivateStoreCollectionCreateOrUpdateResponse>;
 
 export interface PrivateStoreCollectionDisableApproveAllItemsRequest {
@@ -1838,7 +1838,7 @@ export interface PrivateStoreCollectionDisableApproveAllItemsRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const PrivateStoreCollectionDisableApproveAllItemsRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCollectionDisableApproveAllItemsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1866,7 +1866,7 @@ export interface PrivateStoreCollectionDisableApproveAllItemsResponse {
   /** The collection data structure. */
   properties?: CollectionProperties;
 }
-export const PrivateStoreCollectionDisableApproveAllItemsResponse =
+const PrivateStoreCollectionDisableApproveAllItemsResponse =
   ApprovePrivateStoreCollectionAllItemsResponse as any as S.Schema<PrivateStoreCollectionDisableApproveAllItemsResponse>;
 
 export interface PrivateStoreCollectionOfferContextsViewRequest {
@@ -1879,7 +1879,7 @@ export interface PrivateStoreCollectionOfferContextsViewRequest {
   /** Subscriptions ids list */
   properties?: CollectionOffersByAllContextsProperties;
 }
-export const PrivateStoreCollectionOfferContextsViewRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCollectionOfferContextsViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -1909,24 +1909,24 @@ export interface PrivateStoreCollectionOfferContextsViewResponse {
   /** The privateStore offer data structure. */
   properties?: OfferProperties;
 }
-export const PrivateStoreCollectionOfferContextsViewResponse =
+const PrivateStoreCollectionOfferContextsViewResponse =
   GetPrivateStoreCollectionOfferResponse as any as S.Schema<PrivateStoreCollectionOfferContextsViewResponse>;
 
 /** Plan ids limitation for this offer */
 export type OfferPropertiesInputSpecificPlanIdsLimitationList = Array<string>;
-export const OfferPropertiesInputSpecificPlanIdsLimitationList =
+const OfferPropertiesInputSpecificPlanIdsLimitationList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<OfferPropertiesInputSpecificPlanIdsLimitationList>;
 
 /** Icon File Uris */
 export type OfferPropertiesInputIconFileUrisMap = { [key: string]: string | undefined };
-export const OfferPropertiesInputIconFileUrisMap =
+const OfferPropertiesInputIconFileUrisMap =
   PrivateStorePropertiesBrandingMap as any as S.Schema<OfferPropertiesInputIconFileUrisMap>;
 
 export interface PlanInput {
   /** Plan accessibility */
   accessibility?: Accessibility | (string & {});
 }
-export const PlanInput = /*@__PURE__*/ S.suspend(() =>
+const PlanInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessibility: S.optional(Accessibility),
   }),
@@ -1934,7 +1934,7 @@ export const PlanInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Offer plans */
 export type OfferPropertiesInputPlansList = Array<PlanInput>;
-export const OfferPropertiesInputPlansList = /*@__PURE__*/ S.Array(
+const OfferPropertiesInputPlansList = /*@__PURE__*/ S.Array(
   PlanInput,
 ) as any as S.Schema<OfferPropertiesInputPlansList>;
 
@@ -1950,7 +1950,7 @@ export interface OfferPropertiesInput {
   /** Offer plans */
   plans?: OfferPropertiesInputPlansList;
 }
-export const OfferPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const OfferPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eTag: S.optional(S.String),
     specificPlanIdsLimitation: S.optional(OfferPropertiesInputSpecificPlanIdsLimitationList),
@@ -1970,7 +1970,7 @@ export interface PrivateStoreCollectionOfferCreateOrUpdateRequest {
   /** The privateStore offer data structure. */
   properties?: OfferPropertiesInput;
 }
-export const PrivateStoreCollectionOfferCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCollectionOfferCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -2000,20 +2000,17 @@ export interface PrivateStoreCollectionOfferCreateOrUpdateResponse {
   /** The privateStore offer data structure. */
   properties?: OfferProperties;
 }
-export const PrivateStoreCollectionOfferCreateOrUpdateResponse =
+const PrivateStoreCollectionOfferCreateOrUpdateResponse =
   GetPrivateStoreCollectionOfferResponse as any as S.Schema<PrivateStoreCollectionOfferCreateOrUpdateResponse>;
 
 /** Subscriptions ids list */
 export type CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList = Array<string>;
-export const CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList =
-  AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList>;
-
 /** The subscriptions list to get the related collections */
 export interface CollectionsToSubscriptionsMappingProperties {
   /** Subscriptions ids list */
   subscriptionIds?: CollectionsToSubscriptionsMappingPropertiesSubscriptionIdsList;
 }
-export const CollectionsToSubscriptionsMappingProperties =
+const CollectionsToSubscriptionsMappingProperties =
   CollectionOffersByAllContextsProperties as any as S.Schema<CollectionsToSubscriptionsMappingProperties>;
 
 export interface PrivateStoreCollectionsToSubscriptionsMappingRequest {
@@ -2022,7 +2019,7 @@ export interface PrivateStoreCollectionsToSubscriptionsMappingRequest {
   /** Subscriptions ids list */
   properties?: CollectionsToSubscriptionsMappingProperties;
 }
-export const PrivateStoreCollectionsToSubscriptionsMappingRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCollectionsToSubscriptionsMappingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(CollectionsToSubscriptionsMappingProperties),
@@ -2040,7 +2037,7 @@ export const PrivateStoreCollectionsToSubscriptionsMappingRequest = /*@__PURE__*
 
 /** Subscriptions ids list */
 export type CollectionsSubscriptionsMappingDetailsSubscriptionsList = Array<string>;
-export const CollectionsSubscriptionsMappingDetailsSubscriptionsList =
+const CollectionsSubscriptionsMappingDetailsSubscriptionsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<CollectionsSubscriptionsMappingDetailsSubscriptionsList>;
 
 /** Collection name and related subscriptions list */
@@ -2050,7 +2047,7 @@ export interface CollectionsSubscriptionsMappingDetails {
   /** Subscriptions ids list */
   subscriptions?: CollectionsSubscriptionsMappingDetailsSubscriptionsList;
 }
-export const CollectionsSubscriptionsMappingDetails = /*@__PURE__*/ S.suspend(() =>
+const CollectionsSubscriptionsMappingDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.optional(S.String),
     subscriptions: S.optional(CollectionsSubscriptionsMappingDetailsSubscriptionsList),
@@ -2063,7 +2060,7 @@ export const CollectionsSubscriptionsMappingDetails = /*@__PURE__*/ S.suspend(()
 export type CollectionsToSubscriptionsMappingResponseDetailsMap = {
   [key: string]: CollectionsSubscriptionsMappingDetails | undefined;
 };
-export const CollectionsToSubscriptionsMappingResponseDetailsMap = /*@__PURE__*/ S.Record(
+const CollectionsToSubscriptionsMappingResponseDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   CollectionsSubscriptionsMappingDetails,
 ) as any as S.Schema<CollectionsToSubscriptionsMappingResponseDetailsMap>;
@@ -2073,7 +2070,7 @@ export interface CollectionsToSubscriptionsMappingResponse {
   /** The map of collections subscriptions */
   details?: CollectionsToSubscriptionsMappingResponseDetailsMap;
 }
-export const CollectionsToSubscriptionsMappingResponse = /*@__PURE__*/ S.suspend(() =>
+const CollectionsToSubscriptionsMappingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(CollectionsToSubscriptionsMappingResponseDetailsMap),
   }),
@@ -2083,7 +2080,7 @@ export const CollectionsToSubscriptionsMappingResponse = /*@__PURE__*/ S.suspend
 
 /** Gets or sets list of branding characteristics */
 export type PrivateStorePropertiesInputBrandingMap = { [key: string]: string | undefined };
-export const PrivateStorePropertiesInputBrandingMap =
+const PrivateStorePropertiesInputBrandingMap =
   PrivateStorePropertiesBrandingMap as any as S.Schema<PrivateStorePropertiesInputBrandingMap>;
 
 /** Describes the json payload for a notified recipient for new requests */
@@ -2091,7 +2088,7 @@ export interface RecipientInput {
   /** Principal ID */
   principalId?: string;
 }
-export const RecipientInput = /*@__PURE__*/ S.suspend(() =>
+const RecipientInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     principalId: S.optional(S.String),
   }),
@@ -2099,7 +2096,7 @@ export const RecipientInput = /*@__PURE__*/ S.suspend(() =>
 
 /** Gets or sets list of notified recipients for new requests */
 export type NotificationsSettingsPropertiesInputRecipientsList = Array<RecipientInput>;
-export const NotificationsSettingsPropertiesInputRecipientsList = /*@__PURE__*/ S.Array(
+const NotificationsSettingsPropertiesInputRecipientsList = /*@__PURE__*/ S.Array(
   RecipientInput,
 ) as any as S.Schema<NotificationsSettingsPropertiesInputRecipientsList>;
 
@@ -2110,7 +2107,7 @@ export interface NotificationsSettingsPropertiesInput {
   /** Gets or sets whether to send email to all marketplace admins for new requests */
   sendToAllMarketplaceAdmins?: boolean;
 }
-export const NotificationsSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const NotificationsSettingsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipients: S.optional(NotificationsSettingsPropertiesInputRecipientsList),
     sendToAllMarketplaceAdmins: S.optional(S.Boolean),
@@ -2136,7 +2133,7 @@ export interface PrivateStorePropertiesInput {
   /** Gets or sets notifications settings */
   notificationsSettings?: NotificationsSettingsPropertiesInput;
 }
-export const PrivateStorePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const PrivateStorePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.optional(Availability),
     eTag: S.optional(S.String),
@@ -2156,7 +2153,7 @@ export interface PrivateStoreCreateOrUpdateRequest {
   /** The PrivateStore data structure. */
   properties?: PrivateStorePropertiesInput;
 }
-export const PrivateStoreCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(PrivateStorePropertiesInput),
@@ -2173,14 +2170,14 @@ export const PrivateStoreCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreCreateOrUpdateRequest>;
 
 export interface PrivateStoreCreateOrUpdateResponse {}
-export const PrivateStoreCreateOrUpdateResponse =
+const PrivateStoreCreateOrUpdateResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<PrivateStoreCreateOrUpdateResponse>;
 
 export interface PrivateStoreGetApprovalRequestsListRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const PrivateStoreGetApprovalRequestsListRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreGetApprovalRequestsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2208,7 +2205,7 @@ export interface RequestApprovalResource {
   /** The privateStore approval request data structure. */
   properties?: RequestApprovalProperties;
 }
-export const RequestApprovalResource = /*@__PURE__*/ S.suspend(() =>
+const RequestApprovalResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2219,7 +2216,7 @@ export const RequestApprovalResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestApprovalResource" }) as any as S.Schema<RequestApprovalResource>;
 
 export type RequestApprovalsListValueList = Array<RequestApprovalResource>;
-export const RequestApprovalsListValueList = /*@__PURE__*/ S.Array(
+const RequestApprovalsListValueList = /*@__PURE__*/ S.Array(
   RequestApprovalResource,
 ) as any as S.Schema<RequestApprovalsListValueList>;
 
@@ -2229,7 +2226,7 @@ export interface RequestApprovalsList {
   /** URL to get the next set of notifications list results if there are any. */
   nextLink?: string;
 }
-export const RequestApprovalsList = /*@__PURE__*/ S.suspend(() =>
+const RequestApprovalsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RequestApprovalsListValueList),
     nextLink: S.optional(S.String),
@@ -2238,7 +2235,7 @@ export const RequestApprovalsList = /*@__PURE__*/ S.suspend(() =>
 
 export type PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
   Array<string>;
-export const PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
+const PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList>;
@@ -2248,7 +2245,7 @@ export interface PrivateStoreListStopSellOffersPlansNotificationsRequest {
   privateStoreId: string;
   subscriptions?: PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList;
 }
-export const PrivateStoreListStopSellOffersPlansNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreListStopSellOffersPlansNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     subscriptions: S.optional(
@@ -2269,12 +2266,12 @@ export const PrivateStoreListStopSellOffersPlansNotificationsRequest = /*@__PURE
 /** The list of removed plans notifications */
 export type StopSellOffersPlansNotificationsListPropertiesPlansList =
   Array<PlanNotificationDetails>;
-export const StopSellOffersPlansNotificationsListPropertiesPlansList =
+const StopSellOffersPlansNotificationsListPropertiesPlansList =
   NewNotificationsPlansList as any as S.Schema<StopSellOffersPlansNotificationsListPropertiesPlansList>;
 
 /** The subscriptions related to private plans */
 export type StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList = Array<string>;
-export const StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
+const StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList =
   PrivateStoreListStopSellOffersPlansNotificationsRequestSubscriptionsList as any as S.Schema<StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList>;
 
 /** List of stop sell offers and plans notifications. */
@@ -2296,7 +2293,7 @@ export interface StopSellOffersPlansNotificationsListProperties {
   /** The subscriptions related to private plans */
   subscriptionsIds?: StopSellOffersPlansNotificationsListPropertiesSubscriptionsIdsList;
 }
-export const StopSellOffersPlansNotificationsListProperties = /*@__PURE__*/ S.suspend(() =>
+const StopSellOffersPlansNotificationsListProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2315,7 +2312,7 @@ export const StopSellOffersPlansNotificationsListProperties = /*@__PURE__*/ S.su
 
 export type StopSellOffersPlansNotificationsListStopSellNotificationsList =
   Array<StopSellOffersPlansNotificationsListProperties>;
-export const StopSellOffersPlansNotificationsListStopSellNotificationsList = /*@__PURE__*/ S.Array(
+const StopSellOffersPlansNotificationsListStopSellNotificationsList = /*@__PURE__*/ S.Array(
   StopSellOffersPlansNotificationsListProperties,
 ) as any as S.Schema<StopSellOffersPlansNotificationsListStopSellNotificationsList>;
 
@@ -2323,7 +2320,7 @@ export const StopSellOffersPlansNotificationsListStopSellNotificationsList = /*@
 export interface StopSellOffersPlansNotificationsList {
   stopSellNotifications?: StopSellOffersPlansNotificationsListStopSellNotificationsList;
 }
-export const StopSellOffersPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
+const StopSellOffersPlansNotificationsList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopSellNotifications: S.optional(
       StopSellOffersPlansNotificationsListStopSellNotificationsList,
@@ -2335,12 +2332,12 @@ export const StopSellOffersPlansNotificationsList = /*@__PURE__*/ S.suspend(() =
 
 /** Offer plan ids */
 export type QueryApprovedPlansPlanIdsList = Array<string>;
-export const QueryApprovedPlansPlanIdsList =
+const QueryApprovedPlansPlanIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryApprovedPlansPlanIdsList>;
 
 /** List of subscription IDs */
 export type QueryApprovedPlansSubscriptionIdsList = Array<string>;
-export const QueryApprovedPlansSubscriptionIdsList =
+const QueryApprovedPlansSubscriptionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryApprovedPlansSubscriptionIdsList>;
 
 /** Query approved plans details */
@@ -2352,7 +2349,7 @@ export interface QueryApprovedPlans {
   /** List of subscription IDs */
   subscriptionIds?: QueryApprovedPlansSubscriptionIdsList;
 }
-export const QueryApprovedPlans = /*@__PURE__*/ S.suspend(() =>
+const QueryApprovedPlans = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     planIds: S.optional(QueryApprovedPlansPlanIdsList),
@@ -2366,7 +2363,7 @@ export interface PrivateStoreQueryApprovedPlansRequest {
   /** Query approved plans details */
   properties?: QueryApprovedPlans;
 }
-export const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(QueryApprovedPlans),
@@ -2384,7 +2381,7 @@ export const PrivateStoreQueryApprovedPlansRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Approved subscription ids list. In case all subscriptions are approved for a plan, allSubscriptions flag is true and list is empty ( else flag is set to false). In case both subscriptions list is empty and allSubscriptions flag is false, the plan is not approved for any subscription. */
 export type QueryApprovedPlansDetailsSubscriptionIdsList = Array<string>;
-export const QueryApprovedPlansDetailsSubscriptionIdsList =
+const QueryApprovedPlansDetailsSubscriptionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryApprovedPlansDetailsSubscriptionIdsList>;
 
 /** Query approved plans response */
@@ -2396,7 +2393,7 @@ export interface QueryApprovedPlansDetails {
   /** Indicates whether all subscriptions are approved for this plan */
   allSubscriptions?: boolean;
 }
-export const QueryApprovedPlansDetails = /*@__PURE__*/ S.suspend(() =>
+const QueryApprovedPlansDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     subscriptionIds: S.optional(QueryApprovedPlansDetailsSubscriptionIdsList),
@@ -2408,7 +2405,7 @@ export const QueryApprovedPlansDetails = /*@__PURE__*/ S.suspend(() =>
 
 /** A list indicating for each plan which subscriptions are approved. Plan Id is unique */
 export type QueryApprovedPlansResponseDetailsList = Array<QueryApprovedPlansDetails>;
-export const QueryApprovedPlansResponseDetailsList = /*@__PURE__*/ S.Array(
+const QueryApprovedPlansResponseDetailsList = /*@__PURE__*/ S.Array(
   QueryApprovedPlansDetails,
 ) as any as S.Schema<QueryApprovedPlansResponseDetailsList>;
 
@@ -2417,7 +2414,7 @@ export interface QueryApprovedPlansResponse {
   /** A list indicating for each plan which subscriptions are approved. Plan Id is unique */
   details?: QueryApprovedPlansResponseDetailsList;
 }
-export const QueryApprovedPlansResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryApprovedPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     details: S.optional(QueryApprovedPlansResponseDetailsList),
   }),
@@ -2429,7 +2426,7 @@ export interface PrivateStoreQueryNotificationsStateRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const PrivateStoreQueryNotificationsStateRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreQueryNotificationsStateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2446,7 +2443,7 @@ export const PrivateStoreQueryNotificationsStateRequest = /*@__PURE__*/ S.suspen
 
 /** Gets or sets removed plans notifications */
 export type StopSellNotificationsPlansList = Array<PlanNotificationDetails>;
-export const StopSellNotificationsPlansList =
+const StopSellNotificationsPlansList =
   NewNotificationsPlansList as any as S.Schema<StopSellNotificationsPlansList>;
 
 /** Stop sell notification details */
@@ -2464,7 +2461,7 @@ export interface StopSellNotifications {
   /** Gets or sets removed plans notifications */
   plans?: StopSellNotificationsPlansList;
 }
-export const StopSellNotifications = /*@__PURE__*/ S.suspend(() =>
+const StopSellNotifications = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2476,17 +2473,17 @@ export const StopSellNotifications = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StopSellNotifications" }) as any as S.Schema<StopSellNotifications>;
 
 export type PrivateStoreNotificationsStateStopSellNotificationsList = Array<StopSellNotifications>;
-export const PrivateStoreNotificationsStateStopSellNotificationsList = /*@__PURE__*/ S.Array(
+const PrivateStoreNotificationsStateStopSellNotificationsList = /*@__PURE__*/ S.Array(
   StopSellNotifications,
 ) as any as S.Schema<PrivateStoreNotificationsStateStopSellNotificationsList>;
 
 export type PrivateStoreNotificationsStateNewNotificationsList = Array<NewNotifications>;
-export const PrivateStoreNotificationsStateNewNotificationsList =
+const PrivateStoreNotificationsStateNewNotificationsList =
   NewPlansNotificationsListNewPlansNotificationsList as any as S.Schema<PrivateStoreNotificationsStateNewNotificationsList>;
 
 /** Gets or sets removed plans notifications */
 export type RequestApprovalsDetailsPlansList = Array<PlanNotificationDetails>;
-export const RequestApprovalsDetailsPlansList =
+const RequestApprovalsDetailsPlansList =
   NewNotificationsPlansList as any as S.Schema<RequestApprovalsDetailsPlansList>;
 
 /** Request approvals details */
@@ -2504,7 +2501,7 @@ export interface RequestApprovalsDetails {
   /** Gets or sets removed plans notifications */
   plans?: RequestApprovalsDetailsPlansList;
 }
-export const RequestApprovalsDetails = /*@__PURE__*/ S.suspend(() =>
+const RequestApprovalsDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2516,7 +2513,7 @@ export const RequestApprovalsDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestApprovalsDetails" }) as any as S.Schema<RequestApprovalsDetails>;
 
 export type PrivateStoreNotificationsStateApprovalRequestsList = Array<RequestApprovalsDetails>;
-export const PrivateStoreNotificationsStateApprovalRequestsList = /*@__PURE__*/ S.Array(
+const PrivateStoreNotificationsStateApprovalRequestsList = /*@__PURE__*/ S.Array(
   RequestApprovalsDetails,
 ) as any as S.Schema<PrivateStoreNotificationsStateApprovalRequestsList>;
 
@@ -2526,7 +2523,7 @@ export interface PrivateStoreNotificationsState {
   newNotifications?: PrivateStoreNotificationsStateNewNotificationsList;
   approvalRequests?: PrivateStoreNotificationsStateApprovalRequestsList;
 }
-export const PrivateStoreNotificationsState = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreNotificationsState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stopSellNotifications: S.optional(PrivateStoreNotificationsStateStopSellNotificationsList),
     newNotifications: S.optional(PrivateStoreNotificationsStateNewNotificationsList),
@@ -2540,7 +2537,7 @@ export interface PrivateStoreQueryOffersRequest {
   /** The store ID - must use the tenant ID */
   privateStoreId: string;
 }
-export const PrivateStoreQueryOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreQueryOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2556,7 +2553,7 @@ export const PrivateStoreQueryOffersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreQueryOffersRequest>;
 
 export type QueryOffersValueList = Array<OfferProperties>;
-export const QueryOffersValueList =
+const QueryOffersValueList =
   CollectionOffersByContextOffersValueList as any as S.Schema<QueryOffersValueList>;
 
 /** List of offers */
@@ -2565,7 +2562,7 @@ export interface QueryOffers {
   /** URL to get the next set of PrivateStore list results if there are any. */
   nextLink?: string;
 }
-export const QueryOffers = /*@__PURE__*/ S.suspend(() =>
+const QueryOffers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(QueryOffersValueList),
     nextLink: S.optional(S.String),
@@ -2574,7 +2571,7 @@ export const QueryOffers = /*@__PURE__*/ S.suspend(() =>
 
 /** Current plans list */
 export type RequestDetailsPlanIdsList = Array<string>;
-export const RequestDetailsPlanIdsList =
+const RequestDetailsPlanIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<RequestDetailsPlanIdsList>;
 
 /** Request details needed to get the plans statuses */
@@ -2586,7 +2583,7 @@ export interface RequestDetails {
   /** Gets or sets the subscription id */
   subscriptionId?: string;
 }
-export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
+const RequestDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     publisherId: S.optional(S.String),
     planIds: S.optional(RequestDetailsPlanIdsList),
@@ -2602,7 +2599,7 @@ export interface PrivateStoreQueryRequestApprovalRequest {
   /** The details to get the request plans statuses */
   properties?: RequestDetails;
 }
-export const PrivateStoreQueryRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreQueryRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     requestApprovalId: S.String.pipe(T.Label()),
@@ -2621,7 +2618,7 @@ export const PrivateStoreQueryRequestApprovalRequest = /*@__PURE__*/ S.suspend((
 
 /** Gets or sets the plans details */
 export type QueryRequestApprovalPlansDetailsMap = { [key: string]: PlanDetails | undefined };
-export const QueryRequestApprovalPlansDetailsMap = /*@__PURE__*/ S.Record(
+const QueryRequestApprovalPlansDetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   PlanDetails,
 ) as any as S.Schema<QueryRequestApprovalPlansDetailsMap>;
@@ -2637,7 +2634,7 @@ export interface QueryRequestApproval {
   /** Gets or sets the notification message id */
   messageCode?: number;
 }
-export const QueryRequestApproval = /*@__PURE__*/ S.suspend(() =>
+const QueryRequestApproval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uniqueOfferId: S.optional(S.String),
     plansDetails: S.optional(QueryRequestApprovalPlansDetailsMap),
@@ -2648,12 +2645,12 @@ export const QueryRequestApproval = /*@__PURE__*/ S.suspend(() =>
 
 /** List of offer IDs */
 export type QueryUserOffersDetailsOfferIdsList = Array<string>;
-export const QueryUserOffersDetailsOfferIdsList =
+const QueryUserOffersDetailsOfferIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryUserOffersDetailsOfferIdsList>;
 
 /** List of subscription IDs */
 export type QueryUserOffersDetailsSubscriptionIdsList = Array<string>;
-export const QueryUserOffersDetailsSubscriptionIdsList =
+const QueryUserOffersDetailsSubscriptionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryUserOffersDetailsSubscriptionIdsList>;
 
 /** List of offers IDs and list of user's subscriptions IDs to query the user's approved offers */
@@ -2663,7 +2660,7 @@ export interface QueryUserOffersDetails {
   /** List of subscription IDs */
   subscriptionIds?: QueryUserOffersDetailsSubscriptionIdsList;
 }
-export const QueryUserOffersDetails = /*@__PURE__*/ S.suspend(() =>
+const QueryUserOffersDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerIds: S.optional(QueryUserOffersDetailsOfferIdsList),
     subscriptionIds: S.optional(QueryUserOffersDetailsSubscriptionIdsList),
@@ -2676,7 +2673,7 @@ export interface PrivateStoreQueryUserOffersRequest {
   /** Query user's offers details */
   properties?: QueryUserOffersDetails;
 }
-export const PrivateStoreQueryUserOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreQueryUserOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(QueryUserOffersDetails),
@@ -2699,7 +2696,7 @@ export interface WithdrawDetails {
   /** The offer's publisher id */
   publisherId?: string;
 }
-export const WithdrawDetails = /*@__PURE__*/ S.suspend(() =>
+const WithdrawDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planId: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -2714,7 +2711,7 @@ export interface PrivateStoreWithdrawPlanRequest {
   /** Withdraw properties details */
   properties?: WithdrawDetails;
 }
-export const PrivateStoreWithdrawPlanRequest = /*@__PURE__*/ S.suspend(() =>
+const PrivateStoreWithdrawPlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     requestApprovalId: S.String.pipe(T.Label()),
@@ -2732,7 +2729,7 @@ export const PrivateStoreWithdrawPlanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateStoreWithdrawPlanRequest>;
 
 export interface PrivateStoreWithdrawPlanResponse {}
-export const PrivateStoreWithdrawPlanResponse =
+const PrivateStoreWithdrawPlanResponse =
   AcknowledgePrivateStoreOfferNotificationResponse as any as S.Schema<PrivateStoreWithdrawPlanResponse>;
 
 export interface QueryRulesRequest {
@@ -2741,7 +2738,7 @@ export interface QueryRulesRequest {
   /** The collection ID */
   collectionId: string;
 }
-export const QueryRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -2756,7 +2753,7 @@ export const QueryRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryRulesRequest" }) as any as S.Schema<QueryRulesRequest>;
 
 export type RuleListResponseValueList = Array<Rule>;
-export const RuleListResponseValueList =
+const RuleListResponseValueList =
   CollectionPropertiesAppliedRulesList as any as S.Schema<RuleListResponseValueList>;
 
 export interface RuleListResponse {
@@ -2764,7 +2761,7 @@ export interface RuleListResponse {
   /** URL to get the next set of rules list results if there are any. */
   nextLink?: string;
 }
-export const RuleListResponse = /*@__PURE__*/ S.suspend(() =>
+const RuleListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(RuleListResponseValueList),
     nextLink: S.optional(S.String),
@@ -2773,7 +2770,7 @@ export const RuleListResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** List of subscription IDs */
 export type QueryUserRulesDetailsSubscriptionIdsList = Array<string>;
-export const QueryUserRulesDetailsSubscriptionIdsList =
+const QueryUserRulesDetailsSubscriptionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<QueryUserRulesDetailsSubscriptionIdsList>;
 
 /** List of subscriptions IDs to query the user's rules */
@@ -2781,7 +2778,7 @@ export interface QueryUserRulesDetails {
   /** List of subscription IDs */
   subscriptionIds?: QueryUserRulesDetailsSubscriptionIdsList;
 }
-export const QueryUserRulesDetails = /*@__PURE__*/ S.suspend(() =>
+const QueryUserRulesDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionIds: S.optional(QueryUserRulesDetailsSubscriptionIdsList),
   }),
@@ -2793,7 +2790,7 @@ export interface QueryUserRulesRequest {
   /** Query user's rules details */
   properties?: QueryUserRulesDetails;
 }
-export const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     properties: S.optional(QueryUserRulesDetails),
@@ -2808,7 +2805,7 @@ export const QueryUserRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryUserRulesRequest" }) as any as S.Schema<QueryUserRulesRequest>;
 
 export type SetCollectionRulesRequestValueList = Array<Rule>;
-export const SetCollectionRulesRequestValueList =
+const SetCollectionRulesRequestValueList =
   CollectionPropertiesAppliedRulesList as any as S.Schema<SetCollectionRulesRequestValueList>;
 
 export interface SetCollectionRulesRequest {
@@ -2820,7 +2817,7 @@ export interface SetCollectionRulesRequest {
   /** URL to get the next set of rules list results if there are any. */
   nextLink?: string;
 }
-export const SetCollectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCollectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -2839,17 +2836,17 @@ export const SetCollectionRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetCollectionRulesRequest>;
 
 export interface SetCollectionRulesResponse {}
-export const SetCollectionRulesResponse =
+const SetCollectionRulesResponse =
   DeletePrivateStoreResponse as any as S.Schema<SetCollectionRulesResponse>;
 
 /** Target collections ids */
 export type TransferOffersDetailsTargetCollectionsList = Array<string>;
-export const TransferOffersDetailsTargetCollectionsList =
+const TransferOffersDetailsTargetCollectionsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<TransferOffersDetailsTargetCollectionsList>;
 
 /** Offers ids list to transfer from source collection to target collection(s) */
 export type TransferOffersDetailsOfferIdsListList = Array<string>;
-export const TransferOffersDetailsOfferIdsListList =
+const TransferOffersDetailsOfferIdsListList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<TransferOffersDetailsOfferIdsListList>;
 
 /** Transfer offers response details */
@@ -2861,7 +2858,7 @@ export interface TransferOffersDetails {
   /** Offers ids list to transfer from source collection to target collection(s) */
   offerIdsList?: TransferOffersDetailsOfferIdsListList;
 }
-export const TransferOffersDetails = /*@__PURE__*/ S.suspend(() =>
+const TransferOffersDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetCollections: S.optional(TransferOffersDetailsTargetCollectionsList),
     operation: S.optional(S.String),
@@ -2877,7 +2874,7 @@ export interface TransferPrivateStoreCollectionOffersRequest {
   /** transfer offers properties details */
   properties?: TransferOffersDetails;
 }
-export const TransferPrivateStoreCollectionOffersRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferPrivateStoreCollectionOffersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     collectionId: S.String.pipe(T.Label()),
@@ -2896,14 +2893,8 @@ export const TransferPrivateStoreCollectionOffersRequest = /*@__PURE__*/ S.suspe
 
 /** Succeeded collections */
 export type TransferOffersResponseSucceededList = Array<CollectionsDetails>;
-export const TransferOffersResponseSucceededList =
-  BulkCollectionsResponseSucceededList as any as S.Schema<TransferOffersResponseSucceededList>;
-
 /** Failed collections */
 export type TransferOffersResponseFailedList = Array<CollectionsDetails>;
-export const TransferOffersResponseFailedList =
-  BulkCollectionsResponseSucceededList as any as S.Schema<TransferOffersResponseFailedList>;
-
 /** The transfer items response. The response contains two lists that indicate for each collection whether the operation succeeded or failed */
 export interface TransferOffersResponse {
   /** Succeeded collections */
@@ -2911,17 +2902,16 @@ export interface TransferOffersResponse {
   /** Failed collections */
   failed?: TransferOffersResponseFailedList;
 }
-export const TransferOffersResponse =
-  BulkCollectionsResponse as any as S.Schema<TransferOffersResponse>;
+const TransferOffersResponse = BulkCollectionsResponse as any as S.Schema<TransferOffersResponse>;
 
 /** Gets or sets Approved plans ids, empty in case of rejected */
 export type AdminRequestApprovalPropertiesInputApprovedPlansList = Array<string>;
-export const AdminRequestApprovalPropertiesInputApprovedPlansList =
+const AdminRequestApprovalPropertiesInputApprovedPlansList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<AdminRequestApprovalPropertiesInputApprovedPlansList>;
 
 /** Gets or sets list of associated collection ids */
 export type AdminRequestApprovalPropertiesInputCollectionIdsList = Array<string>;
-export const AdminRequestApprovalPropertiesInputCollectionIdsList =
+const AdminRequestApprovalPropertiesInputCollectionIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<AdminRequestApprovalPropertiesInputCollectionIdsList>;
 
 /** Admin approval request resource properties */
@@ -2941,7 +2931,7 @@ export interface AdminRequestApprovalPropertiesInput {
   /** Gets or sets list of associated collection ids */
   collectionIds?: AdminRequestApprovalPropertiesInputCollectionIdsList;
 }
-export const AdminRequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const AdminRequestApprovalPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     publisherId: S.optional(S.String),
@@ -2963,7 +2953,7 @@ export interface UpdatePrivateStoreAdminRequestApprovalRequest {
   /** The privateStore admin Approval request data structure. */
   properties?: AdminRequestApprovalPropertiesInput;
 }
-export const UpdatePrivateStoreAdminRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePrivateStoreAdminRequestApprovalRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     privateStoreId: S.String.pipe(T.Label()),
     adminRequestApprovalId: S.String.pipe(T.Label()),
@@ -2992,12 +2982,12 @@ export interface UpdatePrivateStoreAdminRequestApprovalResponse {
   /** The privateStore admin Approval request data structure. */
   properties?: AdminRequestApprovalProperties;
 }
-export const UpdatePrivateStoreAdminRequestApprovalResponse =
+const UpdatePrivateStoreAdminRequestApprovalResponse =
   GetPrivateStoreAdminRequestApprovalResponse as any as S.Schema<UpdatePrivateStoreAdminRequestApprovalResponse>;
 
 /** List of plan IDs. */
 export type ContextAndPlansDetailsPlanIdsList = Array<string>;
-export const ContextAndPlansDetailsPlanIdsList =
+const ContextAndPlansDetailsPlanIdsList =
   AcknowledgeOfferNotificationDetailsAddPlansList as any as S.Schema<ContextAndPlansDetailsPlanIdsList>;
 
 /** Object of plans per context. */
@@ -3007,7 +2997,7 @@ export interface ContextAndPlansDetails {
   /** List of plan IDs. */
   planIds?: ContextAndPlansDetailsPlanIdsList;
 }
-export const ContextAndPlansDetails = /*@__PURE__*/ S.suspend(() =>
+const ContextAndPlansDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     context: S.optional(S.String),
     planIds: S.optional(ContextAndPlansDetailsPlanIdsList),
@@ -3015,7 +3005,7 @@ export const ContextAndPlansDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContextAndPlansDetails" }) as any as S.Schema<ContextAndPlansDetails>;
 
 export type MultiContextAndPlansPropertiesPlansContextList = Array<ContextAndPlansDetails>;
-export const MultiContextAndPlansPropertiesPlansContextList = /*@__PURE__*/ S.Array(
+const MultiContextAndPlansPropertiesPlansContextList = /*@__PURE__*/ S.Array(
   ContextAndPlansDetails,
 ) as any as S.Schema<MultiContextAndPlansPropertiesPlansContextList>;
 
@@ -3027,7 +3017,7 @@ export interface MultiContextAndPlansProperties {
   eTag?: string;
   plansContext?: MultiContextAndPlansPropertiesPlansContextList;
 }
-export const MultiContextAndPlansProperties = /*@__PURE__*/ S.suspend(() =>
+const MultiContextAndPlansProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offerId: S.optional(S.String),
     eTag: S.optional(S.String),
@@ -3047,24 +3037,23 @@ export interface UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest {
   /** Object describes multiple context and plans. */
   properties?: MultiContextAndPlansProperties;
 }
-export const UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      privateStoreId: S.String.pipe(T.Label()),
-      collectionId: S.String.pipe(T.Label()),
-      offerId: S.String.pipe(T.Label()),
-      properties: S.optional(MultiContextAndPlansProperties),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/upsertOfferWithMultiContext",
-        code: 200,
-        apiVersion: "2025-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest",
-  }) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest>;
+const UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateStoreId: S.String.pipe(T.Label()),
+    collectionId: S.String.pipe(T.Label()),
+    offerId: S.String.pipe(T.Label()),
+    properties: S.optional(MultiContextAndPlansProperties),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/offers/{offerId}/upsertOfferWithMultiContext",
+      code: 200,
+      apiVersion: "2025-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest",
+}) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest>;
 
 export interface UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse {
   /** The resource ID. */
@@ -3078,18 +3067,17 @@ export interface UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse 
   /** The privateStore offer data structure. */
   properties?: OfferProperties;
 }
-export const UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(OfferProperties),
-    }),
-  ).annotate({
-    identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse",
-  }) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse>;
+const UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OfferProperties),
+  }),
+).annotate({
+  identifier: "UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse",
+}) as any as S.Schema<UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse>;
 
 export type AcknowledgePrivateStoreOfferNotificationError = AzureOpError;
 /** Acknowledge notification for offer */

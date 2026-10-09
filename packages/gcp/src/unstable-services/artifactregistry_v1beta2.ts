@@ -62,13 +62,13 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export type MavenRepositoryConfigVersionPolicyEnum =
   | "VERSION_POLICY_UNSPECIFIED"
   | "RELEASE"
   | "SNAPSHOT";
-export const MavenRepositoryConfigVersionPolicyEnum = S.String;
+const MavenRepositoryConfigVersionPolicyEnum = S.String;
 
 /** MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type. */
 export interface MavenRepositoryConfig {
@@ -77,7 +77,7 @@ export interface MavenRepositoryConfig {
   /** Version policy defines the versions that the registry will accept. */
   versionPolicy?: MavenRepositoryConfigVersionPolicyEnum | (string & {});
 }
-export const MavenRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
+const MavenRepositoryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowSnapshotOverwrites: S.optional(S.Boolean),
     versionPolicy: S.optional(MavenRepositoryConfigVersionPolicyEnum),
@@ -93,7 +93,7 @@ export type RepositoryFormatEnum =
   | "YUM"
   | "GOOGET"
   | "PYTHON";
-export const RepositoryFormatEnum = S.String;
+const RepositoryFormatEnum = S.String;
 
 /** A Repository for storing artifacts with a specific format. */
 export interface Repository {
@@ -120,7 +120,7 @@ export interface Repository {
   /** Optional. The format of packages that are stored in the repository. */
   format?: RepositoryFormatEnum | (string & {});
 }
-export const Repository = /*@__PURE__*/ S.suspend(() =>
+const Repository = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateTime: S.optional(S.String),
     satisfiesPzi: S.optional(S.Boolean),
@@ -144,7 +144,7 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repositoryId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -161,15 +161,10 @@ export const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -180,7 +175,7 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.Number),
     message: S.optional(S.String),
@@ -201,7 +196,7 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     done: S.optional(S.Boolean),
     response: S.optional(DocumentMap),
@@ -218,7 +213,7 @@ export interface Tag {
   /** The name of the version the tag refers to, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811` If the package or version ID parts contain slashes, the slashes are escaped. */
   version?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.String),
@@ -233,7 +228,7 @@ export interface CreateProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const CreateProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tagId: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -253,7 +248,7 @@ export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -271,7 +266,7 @@ export interface DeleteProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -289,7 +284,7 @@ export interface DeleteProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -305,7 +300,7 @@ export const DeleteProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE_
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -315,18 +310,17 @@ export interface DeleteProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version to delete. */
   name: string;
 }
-export const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      force: S.optional(S.Boolean.pipe(T.Query())),
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1beta2/{+name}",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
+const DeleteProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    force: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1beta2/{+name}",
+      baseUrl: "https://artifactregistry.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "DeleteProjectsLocationsRepositoriesPackagesVersionsRequest",
 }) as any as S.Schema<DeleteProjectsLocationsRepositoriesPackagesVersionsRequest>;
@@ -335,7 +329,7 @@ export interface DownloadProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to download. */
   name: string;
 }
-export const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -351,7 +345,7 @@ export const DownloadProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S
 
 /** The response to download a file. */
 export interface DownloadFileResponse {}
-export const DownloadFileResponse = Empty as any as S.Schema<DownloadFileResponse>;
+const DownloadFileResponse = Empty as any as S.Schema<DownloadFileResponse>;
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -359,7 +353,7 @@ export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
     resource: S.String.pipe(T.Label()),
@@ -375,7 +369,7 @@ export const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -388,7 +382,7 @@ export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
   title?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     location: S.optional(S.String),
@@ -406,7 +400,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(StringList),
     role: S.optional(S.String),
@@ -415,7 +409,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -426,7 +420,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bindings: S.optional(BindingList),
     version: S.optional(S.Number),
@@ -438,7 +432,7 @@ export interface GetProjectSettingsProjectsRequest {
   /** Required. The name of the projectSettings resource. */
   name: string;
 }
-export const GetProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -459,7 +453,7 @@ export type ProjectSettingsLegacyRedirectionStateEnum =
   | "REDIRECTION_FROM_GCR_IO_FINALIZED"
   | "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING"
   | "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING";
-export const ProjectSettingsLegacyRedirectionStateEnum = S.String;
+const ProjectSettingsLegacyRedirectionStateEnum = S.String;
 
 /** The Artifact Registry settings that apply to a Project. */
 export interface ProjectSettings {
@@ -470,7 +464,7 @@ export interface ProjectSettings {
   /** The percentage of pull traffic to redirect from GCR to AR when using partial redirection. */
   pullPercent?: number;
 }
-export const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
+const ProjectSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     legacyRedirectionState: S.optional(ProjectSettingsLegacyRedirectionStateEnum),
     name: S.optional(S.String),
@@ -482,7 +476,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -509,7 +503,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     labels: S.optional(StringMap),
@@ -523,7 +517,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -541,7 +535,7 @@ export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The name of the repository to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -559,7 +553,7 @@ export interface GetProjectsLocationsRepositoriesFilesRequest {
   /** Required. The name of the file to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -574,7 +568,7 @@ export const GetProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<GetProjectsLocationsRepositoriesFilesRequest>;
 
 export type HashTypeEnum = "HASH_TYPE_UNSPECIFIED" | "SHA256" | "MD5" | "DIRSUM_SHA256";
-export const HashTypeEnum = S.String;
+const HashTypeEnum = S.String;
 
 /** A hash of file content. */
 export interface Hash {
@@ -583,7 +577,7 @@ export interface Hash {
   /** The hash value. */
   value?: string;
 }
-export const Hash = /*@__PURE__*/ S.suspend(() =>
+const Hash = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(HashTypeEnum),
     value: S.optional(S.String),
@@ -591,7 +585,7 @@ export const Hash = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hash" }) as any as S.Schema<Hash>;
 
 export type HashList = Array<Hash>;
-export const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
+const HashList = /*@__PURE__*/ S.Array(Hash) as any as S.Schema<HashList>;
 
 /** Files store content that is potentially associated with Packages or Versions. */
 export interface GoogleDevtoolsArtifactregistryV1beta2File {
@@ -608,7 +602,7 @@ export interface GoogleDevtoolsArtifactregistryV1beta2File {
   /** The name of the Package or Version that owns this file, if any. */
   owner?: string;
 }
-export const GoogleDevtoolsArtifactregistryV1beta2File = /*@__PURE__*/ S.suspend(() =>
+const GoogleDevtoolsArtifactregistryV1beta2File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hashes: S.optional(HashList),
     name: S.optional(S.String),
@@ -625,7 +619,7 @@ export interface GetProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the package to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -652,7 +646,7 @@ export interface Package {
   /** The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. */
   name?: string;
 }
-export const Package = /*@__PURE__*/ S.suspend(() =>
+const Package = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createTime: S.optional(S.String),
     annotations: S.optional(StringMap),
@@ -666,7 +660,7 @@ export interface GetProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The name of the tag to retrieve. */
   name: string;
 }
-export const GetProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -684,7 +678,7 @@ export type GetProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
+const GetProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
 
 export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The name of the version to retrieve. */
@@ -692,7 +686,7 @@ export interface GetProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The view that should be returned in the response. */
   view?: GetProjectsLocationsRepositoriesPackagesVersionsViewEnum | (string & {});
 }
-export const GetProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     view: S.optional(GetProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query())),
@@ -708,7 +702,7 @@ export const GetProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE
 }) as any as S.Schema<GetProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type TagList = Array<Tag>;
-export const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
+const TagList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagList>;
 
 /** The body of a version resource. A version resource represents a collection of components, such as files and other data. This may correspond to a version in many package management schemes. */
 export interface Version {
@@ -725,7 +719,7 @@ export interface Version {
   /** Optional. Description of the version, as specified in its metadata. */
   description?: string;
 }
-export const Version = /*@__PURE__*/ S.suspend(() =>
+const Version = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relatedTags: S.optional(TagList),
     name: S.optional(S.String),
@@ -743,7 +737,7 @@ export interface ImportAptArtifactsGcsSource {
   /** Supports URI wildcards for matching multiple objects from a single URI. */
   useWildcards?: boolean;
 }
-export const ImportAptArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
+const ImportAptArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uris: S.optional(StringList),
     useWildcards: S.optional(S.Boolean),
@@ -757,7 +751,7 @@ export interface ImportAptArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportAptArtifactsGcsSource;
 }
-export const ImportAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsSource: S.optional(ImportAptArtifactsGcsSource),
   }),
@@ -771,7 +765,7 @@ export interface ImportProjectsLocationsRepositoriesAptArtifactsRequest {
   /** Request body */
   body?: ImportAptArtifactsRequest;
 }
-export const ImportProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ImportAptArtifactsRequest.pipe(T.HttpBody())),
@@ -793,7 +787,7 @@ export interface ImportYumArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., gs://my_bucket//my_object). */
   uris?: StringList;
 }
-export const ImportYumArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
+const ImportYumArtifactsGcsSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     useWildcards: S.optional(S.Boolean),
     uris: S.optional(StringList),
@@ -807,7 +801,7 @@ export interface ImportYumArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportYumArtifactsGcsSource;
 }
-export const ImportYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     gcsSource: S.optional(ImportYumArtifactsGcsSource),
   }),
@@ -821,7 +815,7 @@ export interface ImportProjectsLocationsRepositoriesYumArtifactsRequest {
   /** Request body */
   body?: ImportYumArtifactsRequest;
 }
-export const ImportProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ImportYumArtifactsRequest.pipe(T.HttpBody())),
@@ -848,7 +842,7 @@ export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -867,7 +861,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -876,7 +870,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -893,7 +887,7 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Required. The name of the parent resource whose repositories will be listed. */
   parent: string;
 }
-export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orderBy: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -911,7 +905,7 @@ export const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
 
 export type RepositoryList = Array<Repository>;
-export const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
+const RepositoryList = /*@__PURE__*/ S.Array(Repository) as any as S.Schema<RepositoryList>;
 
 /** The response from listing repositories. */
 export interface ListRepositoriesResponse {
@@ -920,7 +914,7 @@ export interface ListRepositoriesResponse {
   /** The repositories returned. */
   repositories?: RepositoryList;
 }
-export const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRepositoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     repositories: S.optional(RepositoryList),
@@ -937,7 +931,7 @@ export interface ListProjectsLocationsRepositoriesFilesRequest {
   /** The maximum number of files to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -956,7 +950,7 @@ export const ListProjectsLocationsRepositoriesFilesRequest = /*@__PURE__*/ S.sus
 
 export type GoogleDevtoolsArtifactregistryV1beta2FileList =
   Array<GoogleDevtoolsArtifactregistryV1beta2File>;
-export const GoogleDevtoolsArtifactregistryV1beta2FileList = /*@__PURE__*/ S.Array(
+const GoogleDevtoolsArtifactregistryV1beta2FileList = /*@__PURE__*/ S.Array(
   GoogleDevtoolsArtifactregistryV1beta2File,
 ) as any as S.Schema<GoogleDevtoolsArtifactregistryV1beta2FileList>;
 
@@ -967,7 +961,7 @@ export interface ListFilesResponse {
   /** The files returned. */
   files?: GoogleDevtoolsArtifactregistryV1beta2FileList;
 }
-export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     files: S.optional(GoogleDevtoolsArtifactregistryV1beta2FileList),
@@ -984,7 +978,7 @@ export interface ListProjectsLocationsRepositoriesPackagesRequest {
   /** Required. The name of the parent resource whose packages will be listed. */
   parent: string;
 }
-export const ListProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     orderBy: S.optional(S.String.pipe(T.Query())),
@@ -1002,7 +996,7 @@ export const ListProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesRequest>;
 
 export type PackageList = Array<Package>;
-export const PackageList = /*@__PURE__*/ S.Array(Package) as any as S.Schema<PackageList>;
+const PackageList = /*@__PURE__*/ S.Array(Package) as any as S.Schema<PackageList>;
 
 /** The response from listing packages. */
 export interface ListPackagesResponse {
@@ -1011,7 +1005,7 @@ export interface ListPackagesResponse {
   /** The token to retrieve the next page of packages, or empty if there are no more packages to return. */
   nextPageToken?: string;
 }
-export const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     packages: S.optional(PackageList),
     nextPageToken: S.optional(S.String),
@@ -1028,7 +1022,7 @@ export interface ListProjectsLocationsRepositoriesPackagesTagsRequest {
   /** The maximum number of tags to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1052,7 +1046,7 @@ export interface ListTagsResponse {
   /** The token to retrieve the next page of tags, or empty if there are no more tags to return. */
   nextPageToken?: string;
 }
-export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagList),
     nextPageToken: S.optional(S.String),
@@ -1063,7 +1057,7 @@ export type ListProjectsLocationsRepositoriesPackagesVersionsViewEnum =
   | "VERSION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-export const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
+const ListProjectsLocationsRepositoriesPackagesVersionsViewEnum = S.String;
 
 export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The next_page_token value returned from a previous list request, if any. */
@@ -1077,27 +1071,26 @@ export interface ListProjectsLocationsRepositoriesPackagesVersionsRequest {
   /** The maximum number of versions to return. Maximum page size is 1,000. */
   pageSize?: number;
 }
-export const ListProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      orderBy: S.optional(S.String.pipe(T.Query())),
-      view: S.optional(ListProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta2/{+parent}/versions",
-        baseUrl: "https://artifactregistry.googleapis.com/",
-      }),
-    ),
+const ListProjectsLocationsRepositoriesPackagesVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(ListProjectsLocationsRepositoriesPackagesVersionsViewEnum.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta2/{+parent}/versions",
+      baseUrl: "https://artifactregistry.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ListProjectsLocationsRepositoriesPackagesVersionsRequest",
 }) as any as S.Schema<ListProjectsLocationsRepositoriesPackagesVersionsRequest>;
 
 export type VersionList = Array<Version>;
-export const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
+const VersionList = /*@__PURE__*/ S.Array(Version) as any as S.Schema<VersionList>;
 
 /** The response from listing versions. */
 export interface ListVersionsResponse {
@@ -1106,7 +1099,7 @@ export interface ListVersionsResponse {
   /** The token to retrieve the next page of versions, or empty if there are no more versions to return. */
   nextPageToken?: string;
 }
-export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     versions: S.optional(VersionList),
     nextPageToken: S.optional(S.String),
@@ -1121,7 +1114,7 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-export const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1145,7 +1138,7 @@ export interface PatchProjectsLocationsRepositoriesPackagesRequest {
   /** Request body */
   body?: Package;
 }
-export const PatchProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRepositoriesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1169,7 +1162,7 @@ export interface PatchProjectsLocationsRepositoriesPackagesTagsRequest {
   /** Request body */
   body?: Tag;
 }
-export const PatchProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRepositoriesPackagesTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1190,7 +1183,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policy: S.optional(Policy),
   }),
@@ -1202,7 +1195,7 @@ export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1222,7 +1215,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1236,7 +1229,7 @@ export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1256,7 +1249,7 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface UpdateProjectSettingsProjectsRequest {
@@ -1267,7 +1260,7 @@ export interface UpdateProjectSettingsProjectsRequest {
   /** Request body */
   body?: ProjectSettings;
 }
-export const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -1285,7 +1278,7 @@ export const UpdateProjectSettingsProjectsRequest = /*@__PURE__*/ S.suspend(() =
 
 /** The request to upload an artifact. */
 export interface UploadAptArtifactRequest {}
-export const UploadAptArtifactRequest = Empty as any as S.Schema<UploadAptArtifactRequest>;
+const UploadAptArtifactRequest = Empty as any as S.Schema<UploadAptArtifactRequest>;
 
 export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
@@ -1293,7 +1286,7 @@ export interface UploadProjectsLocationsRepositoriesAptArtifactsRequest {
   /** Request body */
   body?: UploadAptArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProjectsLocationsRepositoriesAptArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UploadAptArtifactRequest.pipe(T.HttpBody())),
@@ -1313,7 +1306,7 @@ export interface UploadAptArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadAptArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
+const UploadAptArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     operation: S.optional(Operation),
   }),
@@ -1323,15 +1316,13 @@ export const UploadAptArtifactMediaResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The request to upload an artifact. */
 export type UploadYumArtifactRequest = UploadAptArtifactRequest;
-export const UploadYumArtifactRequest = UploadAptArtifactRequest;
-
 export interface UploadProjectsLocationsRepositoriesYumArtifactsRequest {
   /** The name of the parent resource where the artifacts will be uploaded. */
   parent: string;
   /** Request body */
   body?: UploadAptArtifactRequest;
 }
-export const UploadProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadProjectsLocationsRepositoriesYumArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UploadAptArtifactRequest.pipe(T.HttpBody())),
@@ -1351,7 +1342,7 @@ export interface UploadYumArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
-export const UploadYumArtifactMediaResponse =
+const UploadYumArtifactMediaResponse =
   UploadAptArtifactMediaResponse as any as S.Schema<UploadYumArtifactMediaResponse>;
 
 export type CreateProjectsLocationsRepositoriesError =

@@ -8,7 +8,7 @@ import * as T from "../traits.ts";
 export type { PosthogOpError, PosthogOpContext };
 
 export type ListFeatureFlagRequestUsageRequestTimeInterval = "hour" | "day";
-export const ListFeatureFlagRequestUsageRequestTimeInterval = S.String;
+const ListFeatureFlagRequestUsageRequestTimeInterval = S.String;
 
 export interface ListFeatureFlagRequestUsageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -20,7 +20,7 @@ export interface ListFeatureFlagRequestUsageRequest {
   /** Time bucket used to group request usage. Hourly queries are limited to 8 days. * `hour` - hour * `day` - day */
   time_interval?: ListFeatureFlagRequestUsageRequestTimeInterval | (string & {});
 }
-export const ListFeatureFlagRequestUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureFlagRequestUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.String.pipe(T.Query()),
@@ -39,7 +39,7 @@ export const ListFeatureFlagRequestUsageRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `remote_evaluation` - remote_evaluation * `local_evaluation` - local_evaluation */
 export type FeatureFlagRequestTypeEnum = "remote_evaluation" | "local_evaluation";
-export const FeatureFlagRequestTypeEnum = S.String;
+const FeatureFlagRequestTypeEnum = S.String;
 
 export interface FeatureFlagRequestUsageItem {
   /** Remote flag evaluation or local flag-definition request. * `remote_evaluation` - remote_evaluation * `local_evaluation` - local_evaluation */
@@ -53,7 +53,7 @@ export interface FeatureFlagRequestUsageItem {
   /** Estimated billing units. Local evaluation requests count as 10 units each. */
   billing_units: number;
 }
-export const FeatureFlagRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     request_type: FeatureFlagRequestTypeEnum,
     bucket: S.String,
@@ -67,7 +67,7 @@ export const FeatureFlagRequestUsageItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Feature flag request usage by SDK. */
 export type FeatureFlagRequestUsageResponseResultsList = Array<FeatureFlagRequestUsageItem>;
-export const FeatureFlagRequestUsageResponseResultsList = /*@__PURE__*/ S.Array(
+const FeatureFlagRequestUsageResponseResultsList = /*@__PURE__*/ S.Array(
   FeatureFlagRequestUsageItem,
 ) as any as S.Schema<FeatureFlagRequestUsageResponseResultsList>;
 
@@ -75,7 +75,7 @@ export interface FeatureFlagRequestUsageResponse {
   /** Feature flag request usage by SDK. */
   results: FeatureFlagRequestUsageResponseResultsList;
 }
-export const FeatureFlagRequestUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const FeatureFlagRequestUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: FeatureFlagRequestUsageResponseResultsList,
   }),

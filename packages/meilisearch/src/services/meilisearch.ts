@@ -33,26 +33,26 @@ export class NotFound
   ) {}
 
 export interface CancelLogsRequest {}
-export const CancelLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/logs/stream", code: 200 })),
 ).annotate({ identifier: "CancelLogsRequest" }) as any as S.Schema<CancelLogsRequest>;
 
 export interface CancelLogsResponse {}
-export const CancelLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelLogsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelLogsResponse",
 }) as any as S.Schema<CancelLogsResponse>;
 
 export type CancelTasksRequestUidsList = Array<number>;
-export const CancelTasksRequestUidsList = /*@__PURE__*/ S.Array(
+const CancelTasksRequestUidsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<CancelTasksRequestUidsList>;
 
 export type CancelTasksRequestBatchUidsList = Array<number>;
-export const CancelTasksRequestBatchUidsList =
+const CancelTasksRequestBatchUidsList =
   CancelTasksRequestUidsList as any as S.Schema<CancelTasksRequestBatchUidsList>;
 
 export type CancelTasksRequestCanceledByList = Array<number>;
-export const CancelTasksRequestCanceledByList =
+const CancelTasksRequestCanceledByList =
   CancelTasksRequestUidsList as any as S.Schema<CancelTasksRequestCanceledByList>;
 
 /** The type of the task. */
@@ -75,23 +75,23 @@ export type Kind =
   | "networkTopologyChange"
   | "dsrUpdate"
   | "dsrClear";
-export const Kind = S.String;
+const Kind = S.String;
 
 export type CancelTasksRequestTypesList = Array<Kind | (string & {})>;
-export const CancelTasksRequestTypesList = /*@__PURE__*/ S.Array(
+const CancelTasksRequestTypesList = /*@__PURE__*/ S.Array(
   Kind,
 ) as any as S.Schema<CancelTasksRequestTypesList>;
 
 /** The status of a task. */
 export type Status = "enqueued" | "processing" | "succeeded" | "failed" | "canceled";
-export const Status = S.String;
+const Status = S.String;
 
 export type CancelTasksRequestStatusesList = Array<Status | (string & {})>;
-export const CancelTasksRequestStatusesList =
+const CancelTasksRequestStatusesList =
   CancelTasksRequestTypesList as any as S.Schema<CancelTasksRequestStatusesList>;
 
 export type CancelTasksRequestIndexUidsList = Array<string>;
-export const CancelTasksRequestIndexUidsList = /*@__PURE__*/ S.Array(
+const CancelTasksRequestIndexUidsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CancelTasksRequestIndexUidsList>;
 
@@ -121,7 +121,7 @@ export interface CancelTasksRequest {
   /** Permits to filter tasks based on their finishedAt time. Matches tasks finished before the given date. Supports RFC 3339 date format. */
   beforeFinishedAt?: string;
 }
-export const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uids: S.optional(CancelTasksRequestUidsList.pipe(T.Query())),
     batchUids: S.optional(CancelTasksRequestBatchUidsList.pipe(T.Query())),
@@ -153,7 +153,7 @@ export interface SummarizedTaskView {
   /** Custom metadata attached to this task at creation. Use it to associate tasks with external systems or add application-specific information. */
   customMetadata?: string | null;
 }
-export const SummarizedTaskView = /*@__PURE__*/ S.suspend(() =>
+const SummarizedTaskView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskUid: S.Number,
     indexUid: S.optional(S.NullOr(S.String)),
@@ -168,30 +168,13 @@ export const SummarizedTaskView = /*@__PURE__*/ S.suspend(() =>
 export interface ChatCompletionRequestMessageContentPartText {
   text: string;
 }
-export const ChatCompletionRequestMessageContentPartText = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageContentPartText",
-}) as any as S.Schema<ChatCompletionRequestMessageContentPartText>;
-
 export type ChatCompletionRequestDeveloperMessageContentCase1List =
   Array<ChatCompletionRequestMessageContentPartText>;
-export const ChatCompletionRequestDeveloperMessageContentCase1List = /*@__PURE__*/ S.Array(
-  ChatCompletionRequestMessageContentPartText,
-) as any as S.Schema<ChatCompletionRequestDeveloperMessageContentCase1List>;
-
 /** The contents of a developer message: either a text string or an array of text content parts. */
 export type ChatCompletionRequestDeveloperMessageContent =
   | string
   | ChatCompletionRequestDeveloperMessageContentCase1List;
-export const ChatCompletionRequestDeveloperMessageContent =
-  S.Unknown as any as S.Schema<ChatCompletionRequestDeveloperMessageContent>;
-
 export type ChatCompletionRequestMessageCase0Role = "developer";
-export const ChatCompletionRequestMessageCase0Role = S.String;
-
 export interface ChatCompletionRequestMessageCase0 {
   /** The contents of the developer message. */
   content: ChatCompletionRequestDeveloperMessageContent;
@@ -199,49 +182,19 @@ export interface ChatCompletionRequestMessageCase0 {
   name?: string | null;
   role: ChatCompletionRequestMessageCase0Role;
 }
-export const ChatCompletionRequestMessageCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: ChatCompletionRequestDeveloperMessageContent,
-    name: S.optional(S.NullOr(S.String)),
-    role: ChatCompletionRequestMessageCase0Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase0",
-}) as any as S.Schema<ChatCompletionRequestMessageCase0>;
-
 export type ChatCompletionRequestSystemMessageContentPartType = "text";
-export const ChatCompletionRequestSystemMessageContentPartType = S.String;
-
 export interface ChatCompletionRequestSystemMessageContentPart {
   text: string;
   type: ChatCompletionRequestSystemMessageContentPartType | (string & {});
 }
-export const ChatCompletionRequestSystemMessageContentPart = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    text: S.String,
-    type: ChatCompletionRequestSystemMessageContentPartType,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestSystemMessageContentPart",
-}) as any as S.Schema<ChatCompletionRequestSystemMessageContentPart>;
-
 /** An array of content parts with a defined type. For system messages, only type `text` is supported. */
 export type ChatCompletionRequestSystemMessageContentCase1List =
   Array<ChatCompletionRequestSystemMessageContentPart>;
-export const ChatCompletionRequestSystemMessageContentCase1List = /*@__PURE__*/ S.Array(
-  ChatCompletionRequestSystemMessageContentPart,
-) as any as S.Schema<ChatCompletionRequestSystemMessageContentCase1List>;
-
 /** The contents of a system message: either a text string or an array of text content parts. */
 export type ChatCompletionRequestSystemMessageContent =
   | string
   | ChatCompletionRequestSystemMessageContentCase1List;
-export const ChatCompletionRequestSystemMessageContent =
-  S.Unknown as any as S.Schema<ChatCompletionRequestSystemMessageContent>;
-
 export type ChatCompletionRequestMessageCase1Role = "system";
-export const ChatCompletionRequestMessageCase1Role = S.String;
-
 export interface ChatCompletionRequestMessageCase1 {
   /** The contents of the system message. */
   content: ChatCompletionRequestSystemMessageContent;
@@ -249,63 +202,26 @@ export interface ChatCompletionRequestMessageCase1 {
   name?: string | null;
   role: ChatCompletionRequestMessageCase1Role;
 }
-export const ChatCompletionRequestMessageCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: ChatCompletionRequestSystemMessageContent,
-    name: S.optional(S.NullOr(S.String)),
-    role: ChatCompletionRequestMessageCase1Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase1",
-}) as any as S.Schema<ChatCompletionRequestMessageCase1>;
-
 export type ChatCompletionRequestUserMessageContentPartCase0Type = "text";
-export const ChatCompletionRequestUserMessageContentPartCase0Type = S.String;
-
 export interface ChatCompletionRequestUserMessageContentPartCase0 {
   text: string;
   type: ChatCompletionRequestUserMessageContentPartCase0Type;
 }
-export const ChatCompletionRequestUserMessageContentPartCase0 =
-  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestUserMessageContentPartCase0>;
-
 /** Specifies the detail level of the image. */
 export type ImageDetail = "auto" | "low" | "high";
-export const ImageDetail = S.String;
-
 /** An image URL with optional detail level. */
 export interface ImageUrl {
   /** Either a URL of the image or the base64 encoded image data. */
   url: string;
   detail?: ImageDetail | (string & {}) | null;
 }
-export const ImageUrl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    detail: S.optional(S.NullOr(ImageDetail)),
-  }),
-).annotate({ identifier: "ImageUrl" }) as any as S.Schema<ImageUrl>;
-
 export type ChatCompletionRequestUserMessageContentPartCase1Type = "image_url";
-export const ChatCompletionRequestUserMessageContentPartCase1Type = S.String;
-
 export interface ChatCompletionRequestUserMessageContentPartCase1 {
   image_url: ImageUrl;
   type: ChatCompletionRequestUserMessageContentPartCase1Type;
 }
-export const ChatCompletionRequestUserMessageContentPartCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image_url: ImageUrl,
-    type: ChatCompletionRequestUserMessageContentPartCase1Type,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestUserMessageContentPartCase1",
-}) as any as S.Schema<ChatCompletionRequestUserMessageContentPartCase1>;
-
 /** The format of the encoded audio data. */
 export type InputAudioFormat = "wav" | "mp3";
-export const InputAudioFormat = S.String;
-
 /** Input audio data for an audio content part. */
 export interface InputAudio {
   /** Base64 encoded audio data. */
@@ -313,54 +229,24 @@ export interface InputAudio {
   /** The format of the encoded audio data. Currently supports "wav" and "mp3". */
   format: InputAudioFormat | (string & {});
 }
-export const InputAudio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.String,
-    format: InputAudioFormat,
-  }),
-).annotate({ identifier: "InputAudio" }) as any as S.Schema<InputAudio>;
-
 export type ChatCompletionRequestUserMessageContentPartCase2Type = "input_audio";
-export const ChatCompletionRequestUserMessageContentPartCase2Type = S.String;
-
 export interface ChatCompletionRequestUserMessageContentPartCase2 {
   input_audio: InputAudio;
   type: ChatCompletionRequestUserMessageContentPartCase2Type;
 }
-export const ChatCompletionRequestUserMessageContentPartCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input_audio: InputAudio,
-    type: ChatCompletionRequestUserMessageContentPartCase2Type,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestUserMessageContentPartCase2",
-}) as any as S.Schema<ChatCompletionRequestUserMessageContentPartCase2>;
-
 /** A content part in a user message (text, image, or audio). */
 export type ChatCompletionRequestUserMessageContentPart =
   | ChatCompletionRequestUserMessageContentPartCase0
   | ChatCompletionRequestUserMessageContentPartCase1
   | ChatCompletionRequestUserMessageContentPartCase2;
-export const ChatCompletionRequestUserMessageContentPart =
-  S.Unknown as any as S.Schema<ChatCompletionRequestUserMessageContentPart>;
-
 /** An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text, image, or audio inputs. */
 export type ChatCompletionRequestUserMessageContentCase1List =
   Array<ChatCompletionRequestUserMessageContentPart>;
-export const ChatCompletionRequestUserMessageContentCase1List = /*@__PURE__*/ S.Array(
-  ChatCompletionRequestUserMessageContentPart,
-) as any as S.Schema<ChatCompletionRequestUserMessageContentCase1List>;
-
 /** The contents of a user message: either a text string or an array of content parts (text, image, or audio). */
 export type ChatCompletionRequestUserMessageContent =
   | string
   | ChatCompletionRequestUserMessageContentCase1List;
-export const ChatCompletionRequestUserMessageContent =
-  S.Unknown as any as S.Schema<ChatCompletionRequestUserMessageContent>;
-
 export type ChatCompletionRequestMessageCase2Role = "user";
-export const ChatCompletionRequestMessageCase2Role = S.String;
-
 export interface ChatCompletionRequestMessageCase2 {
   /** The contents of the user message. */
   content: ChatCompletionRequestUserMessageContent;
@@ -368,80 +254,36 @@ export interface ChatCompletionRequestMessageCase2 {
   name?: string | null;
   role: ChatCompletionRequestMessageCase2Role;
 }
-export const ChatCompletionRequestMessageCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: ChatCompletionRequestUserMessageContent,
-    name: S.optional(S.NullOr(S.String)),
-    role: ChatCompletionRequestMessageCase2Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase2",
-}) as any as S.Schema<ChatCompletionRequestMessageCase2>;
-
 export type ChatCompletionRequestAssistantMessageContentPartCase0Type = "text";
-export const ChatCompletionRequestAssistantMessageContentPartCase0Type = S.String;
-
 export interface ChatCompletionRequestAssistantMessageContentPartCase0 {
   text: string;
   type: ChatCompletionRequestAssistantMessageContentPartCase0Type;
 }
-export const ChatCompletionRequestAssistantMessageContentPartCase0 =
-  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestAssistantMessageContentPartCase0>;
-
 export type ChatCompletionRequestAssistantMessageContentPartCase1Type = "refusal";
-export const ChatCompletionRequestAssistantMessageContentPartCase1Type = S.String;
-
 export interface ChatCompletionRequestAssistantMessageContentPartCase1 {
   /** The refusal message generated by the model. */
   refusal: string;
   type: ChatCompletionRequestAssistantMessageContentPartCase1Type;
 }
-export const ChatCompletionRequestAssistantMessageContentPartCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refusal: S.String,
-    type: ChatCompletionRequestAssistantMessageContentPartCase1Type,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestAssistantMessageContentPartCase1",
-}) as any as S.Schema<ChatCompletionRequestAssistantMessageContentPartCase1>;
-
 /** A content part in an assistant message (text or refusal). */
 export type ChatCompletionRequestAssistantMessageContentPart =
   | ChatCompletionRequestAssistantMessageContentPartCase0
   | ChatCompletionRequestAssistantMessageContentPartCase1;
-export const ChatCompletionRequestAssistantMessageContentPart =
-  S.Unknown as any as S.Schema<ChatCompletionRequestAssistantMessageContentPart>;
-
 /** An array of content parts with a defined type. Can be one or more of type `text`, or exactly one of type `refusal`. */
 export type ChatCompletionRequestAssistantMessageContentCase1List =
   Array<ChatCompletionRequestAssistantMessageContentPart>;
-export const ChatCompletionRequestAssistantMessageContentCase1List = /*@__PURE__*/ S.Array(
-  ChatCompletionRequestAssistantMessageContentPart,
-) as any as S.Schema<ChatCompletionRequestAssistantMessageContentCase1List>;
-
 /** The contents of an assistant message: either a text string or an array of content parts (text or refusal). */
 export type ChatCompletionRequestAssistantMessageContent =
   | string
   | ChatCompletionRequestAssistantMessageContentCase1List;
-export const ChatCompletionRequestAssistantMessageContent =
-  S.Unknown as any as S.Schema<ChatCompletionRequestAssistantMessageContent>;
-
 /** Data about a previous audio response from the model, used in multi-turn conversations. */
 export interface ChatCompletionRequestAssistantMessageAudio {
   /** Unique identifier for a previous audio response from the model. */
   id: string;
 }
-export const ChatCompletionRequestAssistantMessageAudio = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestAssistantMessageAudio",
-}) as any as S.Schema<ChatCompletionRequestAssistantMessageAudio>;
-
 /** The type of a tool. Currently, only `function` is supported. */
 export type ChatCompletionToolType = "function";
-export const ChatCompletionToolType = S.String;
+const ChatCompletionToolType = S.String;
 
 /** The name and arguments of a function that should be called, as generated by the model. */
 export interface FunctionCall {
@@ -450,7 +292,7 @@ export interface FunctionCall {
   /** The arguments to call the function with, as generated by the model in JSON format. Note that the model does not always generate valid JSON, and may hallucinate parameters not defined by your function schema. Validate the arguments in your code before calling your function. */
   arguments: string;
 }
-export const FunctionCall = /*@__PURE__*/ S.suspend(() =>
+const FunctionCall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     arguments: S.String,
@@ -465,7 +307,7 @@ export interface ChatCompletionMessageToolCall {
   /** The function that the model called. */
   function: FunctionCall;
 }
-export const ChatCompletionMessageToolCall = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionMessageToolCall = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     type: S.optional(S.NullOr(ChatCompletionToolType)),
@@ -476,13 +318,11 @@ export const ChatCompletionMessageToolCall = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChatCompletionMessageToolCall>;
 
 export type ChatCompletionRequestMessageCase3ToolCallsList = Array<ChatCompletionMessageToolCall>;
-export const ChatCompletionRequestMessageCase3ToolCallsList = /*@__PURE__*/ S.Array(
+const ChatCompletionRequestMessageCase3ToolCallsList = /*@__PURE__*/ S.Array(
   ChatCompletionMessageToolCall,
 ) as any as S.Schema<ChatCompletionRequestMessageCase3ToolCallsList>;
 
 export type ChatCompletionRequestMessageCase3Role = "assistant";
-export const ChatCompletionRequestMessageCase3Role = S.String;
-
 export interface ChatCompletionRequestMessageCase3 {
   content?: ChatCompletionRequestAssistantMessageContent | null;
   /** The refusal message by the assistant. */
@@ -494,65 +334,26 @@ export interface ChatCompletionRequestMessageCase3 {
   function_call?: FunctionCall | null;
   role: ChatCompletionRequestMessageCase3Role;
 }
-export const ChatCompletionRequestMessageCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.NullOr(ChatCompletionRequestAssistantMessageContent)),
-    refusal: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    audio: S.optional(S.NullOr(ChatCompletionRequestAssistantMessageAudio)),
-    tool_calls: S.optional(S.NullOr(ChatCompletionRequestMessageCase3ToolCallsList)),
-    function_call: S.optional(S.NullOr(FunctionCall)),
-    role: ChatCompletionRequestMessageCase3Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase3",
-}) as any as S.Schema<ChatCompletionRequestMessageCase3>;
-
 export type ChatCompletionRequestToolMessageContentPartType = "text";
-export const ChatCompletionRequestToolMessageContentPartType = S.String;
-
 export interface ChatCompletionRequestToolMessageContentPart {
   text: string;
   type: ChatCompletionRequestToolMessageContentPartType | (string & {});
 }
-export const ChatCompletionRequestToolMessageContentPart =
-  ChatCompletionRequestSystemMessageContentPart as any as S.Schema<ChatCompletionRequestToolMessageContentPart>;
-
 /** An array of content parts with a defined type. For tool messages, only type `text` is supported. */
 export type ChatCompletionRequestToolMessageContentCase1List =
   Array<ChatCompletionRequestToolMessageContentPart>;
-export const ChatCompletionRequestToolMessageContentCase1List =
-  ChatCompletionRequestSystemMessageContentCase1List as any as S.Schema<ChatCompletionRequestToolMessageContentCase1List>;
-
 /** The contents of a tool message: either a text string or an array of text content parts. */
 export type ChatCompletionRequestToolMessageContent =
   | string
   | ChatCompletionRequestToolMessageContentCase1List;
-export const ChatCompletionRequestToolMessageContent =
-  S.Unknown as any as S.Schema<ChatCompletionRequestToolMessageContent>;
-
 export type ChatCompletionRequestMessageCase4Role = "tool";
-export const ChatCompletionRequestMessageCase4Role = S.String;
-
 export interface ChatCompletionRequestMessageCase4 {
   /** The contents of the tool message. */
   content: ChatCompletionRequestToolMessageContent;
   tool_call_id: string;
   role: ChatCompletionRequestMessageCase4Role;
 }
-export const ChatCompletionRequestMessageCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: ChatCompletionRequestToolMessageContent,
-    tool_call_id: S.String,
-    role: ChatCompletionRequestMessageCase4Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase4",
-}) as any as S.Schema<ChatCompletionRequestMessageCase4>;
-
 export type ChatCompletionRequestMessageCase5Role = "function";
-export const ChatCompletionRequestMessageCase5Role = S.String;
-
 export interface ChatCompletionRequestMessageCase5 {
   /** The return value from the function call, to return to the model. */
   content?: string | null;
@@ -560,16 +361,6 @@ export interface ChatCompletionRequestMessageCase5 {
   name: string;
   role: ChatCompletionRequestMessageCase5Role;
 }
-export const ChatCompletionRequestMessageCase5 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    role: ChatCompletionRequestMessageCase5Role,
-  }),
-).annotate({
-  identifier: "ChatCompletionRequestMessageCase5",
-}) as any as S.Schema<ChatCompletionRequestMessageCase5>;
-
 /** A message in the chat completion conversation. Tagged by `role` (system, user, assistant, tool, developer, or function). */
 export type ChatCompletionRequestMessage =
   | ChatCompletionRequestMessageCase0
@@ -578,46 +369,40 @@ export type ChatCompletionRequestMessage =
   | ChatCompletionRequestMessageCase3
   | ChatCompletionRequestMessageCase4
   | ChatCompletionRequestMessageCase5;
-export const ChatCompletionRequestMessage =
-  S.Unknown as any as S.Schema<ChatCompletionRequestMessage>;
+const ChatCompletionRequestMessage = S.Unknown as any as S.Schema<ChatCompletionRequestMessage>;
 
 /** A list of messages comprising the conversation so far. Depending on the [model](https://platform.openai.com/docs/models) you use, different message types (modalities) are supported, like [text](https://platform.openai.com/docs/guides/text-generation), [images](https://platform.openai.com/docs/guides/vision), and [audio](https://platform.openai.com/docs/guides/audio). */
 export type ChatRequestMessagesList = Array<ChatCompletionRequestMessage>;
-export const ChatRequestMessagesList = /*@__PURE__*/ S.Array(
+const ChatRequestMessagesList = /*@__PURE__*/ S.Array(
   ChatCompletionRequestMessage,
 ) as any as S.Schema<ChatRequestMessagesList>;
 
 /** Constrains effort on reasoning for reasoning models. Supported values are `low`, `medium`, and `high`. */
 export type ReasoningEffort = "low" | "medium" | "high";
-export const ReasoningEffort = S.String;
+const ReasoningEffort = S.String;
 
 /** Modify the likelihood of specified tokens appearing in the completion. Accepts a json object that maps tokens (specified by their token ID in the tokenizer) to an associated bias value from -100 to 100. Mathematically, the bias is added to the logits generated by the model prior to sampling. The exact effect will vary per model, but values between -1 and 1 should decrease or increase likelihood of selection; values like -100 or 100 should result in a ban or exclusive selection of the relevant token. */
 export type ChatRequestLogitBiasMap = { [key: string]: unknown | undefined };
-export const ChatRequestLogitBiasMap = /*@__PURE__*/ S.Record(
+const ChatRequestLogitBiasMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ChatRequestLogitBiasMap>;
 
 /** Output types that you would like the model to generate for this request. Most models are capable of generating text, which is the default: `["text"]` The `gpt-4o-audio-preview` model can also be used to [generate audio](https://platform.openai.com/docs/guides/audio). To request that this model generate both text and audio responses, you can use: `["text", "audio"]` */
 export type ChatCompletionModalities = "text" | "audio";
-export const ChatCompletionModalities = S.String;
-
 /** Output types that you would like the model to generate for this request. Most models are capable of generating text, which is the default: `["text"]`. */
 export type ChatRequestModalitiesList = Array<ChatCompletionModalities | (string & {})>;
-export const ChatRequestModalitiesList =
+const ChatRequestModalitiesList =
   CancelTasksRequestTypesList as any as S.Schema<ChatRequestModalitiesList>;
 
 /** An array of content parts with a defined type. Supported options differ based on the [model](https://platform.openai.com/docs/models) being used to generate the response. Can contain text inputs. */
 export type PredictionContentContentCase1List = Array<ChatCompletionRequestMessageContentPartText>;
-export const PredictionContentContentCase1List =
-  ChatCompletionRequestDeveloperMessageContentCase1List as any as S.Schema<PredictionContentContentCase1List>;
-
 /** The content that should be matched when generating a model response. If generated tokens would match this content, the entire model response can be returned much more quickly. */
 export type PredictionContentContent = string | PredictionContentContentCase1List;
-export const PredictionContentContent = S.Unknown as any as S.Schema<PredictionContentContent>;
+const PredictionContentContent = S.Unknown as any as S.Schema<PredictionContentContent>;
 
 export type PredictionContentType = "content";
-export const PredictionContentType = S.String;
+const PredictionContentType = S.String;
 
 /** The type of the predicted content you want to provide. This type is currently always `content`. */
 export interface PredictionContent {
@@ -625,7 +410,7 @@ export interface PredictionContent {
   content: PredictionContentContent;
   type: PredictionContentType | (string & {});
 }
-export const PredictionContent = /*@__PURE__*/ S.suspend(() =>
+const PredictionContent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: PredictionContentContent,
     type: PredictionContentType,
@@ -642,11 +427,11 @@ export type ChatCompletionAudioVoice =
   | "sage"
   | "shimmer"
   | "verse";
-export const ChatCompletionAudioVoice = S.String;
+const ChatCompletionAudioVoice = S.String;
 
 /** Specifies the output audio format. Must be one of `wav`, `mp3`, `flac`, `opus`, or `pcm16`. */
 export type ChatCompletionAudioFormat = "wav" | "mp3" | "flac" | "opus" | "pcm16";
-export const ChatCompletionAudioFormat = S.String;
+const ChatCompletionAudioFormat = S.String;
 
 /** Parameters for audio output. Required when audio output is requested with `modalities: ["audio"]`. */
 export interface ChatCompletionAudio {
@@ -655,7 +440,7 @@ export interface ChatCompletionAudio {
   /** Specifies the output audio format. Must be one of `wav`, `mp3`, `flac`, `opus`, or `pcm16`. */
   format: ChatCompletionAudioFormat | (string & {});
 }
-export const ChatCompletionAudio = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionAudio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     voice: ChatCompletionAudioVoice,
     format: ChatCompletionAudioFormat,
@@ -663,27 +448,15 @@ export const ChatCompletionAudio = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChatCompletionAudio" }) as any as S.Schema<ChatCompletionAudio>;
 
 export type ResponseFormatCase0Type = "text";
-export const ResponseFormatCase0Type = S.String;
-
 /** The type of response format being defined: `text` */
 export interface ResponseFormatCase0 {
   type: ResponseFormatCase0Type;
 }
-export const ResponseFormatCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ResponseFormatCase0Type,
-  }),
-).annotate({ identifier: "ResponseFormatCase0" }) as any as S.Schema<ResponseFormatCase0>;
-
 export type ResponseFormatCase1Type = "json_object";
-export const ResponseFormatCase1Type = S.String;
-
 /** The type of response format being defined: `json_object` */
 export interface ResponseFormatCase1 {
   type: ResponseFormatCase1Type;
 }
-export const ResponseFormatCase1 = ResponseFormatCase0 as any as S.Schema<ResponseFormatCase1>;
-
 /** A JSON Schema-based response format specification for Structured Outputs. */
 export interface ResponseFormatJsonSchema {
   /** A description of what the response format is for, used by the model to determine how to respond in the format. */
@@ -695,51 +468,31 @@ export interface ResponseFormatJsonSchema {
   /** Whether to enable strict schema adherence when generating the output. If set to true, the model will always follow the exact schema defined in the `schema` field. Only a subset of JSON Schema is supported when `strict` is `true`. To learn more, read the [Structured Outputs guide](https://platform.openai.com/docs/guides/structured-outputs). */
   strict?: boolean | null;
 }
-export const ResponseFormatJsonSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    schema: S.optional(S.Unknown),
-    strict: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({ identifier: "ResponseFormatJsonSchema" }) as any as S.Schema<ResponseFormatJsonSchema>;
-
 export type ResponseFormatCase2Type = "json_schema";
-export const ResponseFormatCase2Type = S.String;
-
 /** The type of response format being defined: `json_schema` */
 export interface ResponseFormatCase2 {
   json_schema: ResponseFormatJsonSchema;
   type: ResponseFormatCase2Type;
 }
-export const ResponseFormatCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    json_schema: ResponseFormatJsonSchema,
-    type: ResponseFormatCase2Type,
-  }),
-).annotate({ identifier: "ResponseFormatCase2" }) as any as S.Schema<ResponseFormatCase2>;
-
 /** An object specifying the format that the model must output (text, JSON object, or JSON schema). */
 export type ResponseFormat = ResponseFormatCase0 | ResponseFormatCase1 | ResponseFormatCase2;
-export const ResponseFormat = S.Unknown as any as S.Schema<ResponseFormat>;
+const ResponseFormat = S.Unknown as any as S.Schema<ResponseFormat>;
 
 /** Specifies the latency tier to use for processing the request. */
 export type ServiceTier = "auto" | "default";
-export const ServiceTier = S.String;
+const ServiceTier = S.String;
 
 export type StopCase1List = Array<string>;
-export const StopCase1List = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StopCase1List>;
-
 /** Up to 4 sequences where the API will stop generating further tokens. */
 export type Stop = string | StopCase1List;
-export const Stop = S.Unknown as any as S.Schema<Stop>;
+const Stop = S.Unknown as any as S.Schema<Stop>;
 
 /** Options for streaming response. Only set this when you set `stream: true`. */
 export interface ChatCompletionStreamOptions {
   /** If set, an additional chunk will be streamed before the `data: [DONE]` message. The `usage` field on this chunk shows the token usage statistics for the entire request, and the `choices` field will always be an empty array. All other chunks will also include a `usage` field, but with a null value. */
   include_usage: boolean;
 }
-export const ChatCompletionStreamOptions = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionStreamOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     include_usage: S.Boolean,
   }),
@@ -758,7 +511,7 @@ export interface FunctionObject {
   /** Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](https://platform.openai.com/docs/guides/function-calling). */
   strict?: boolean | null;
 }
-export const FunctionObject = /*@__PURE__*/ S.suspend(() =>
+const FunctionObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -772,7 +525,7 @@ export interface ChatCompletionTool {
   type: ChatCompletionToolType | (string & {});
   function: FunctionObject;
 }
-export const ChatCompletionTool = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionTool = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ChatCompletionToolType,
     function: FunctionObject,
@@ -781,104 +534,54 @@ export const ChatCompletionTool = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported. */
 export type ChatRequestToolsList = Array<ChatCompletionTool>;
-export const ChatRequestToolsList = /*@__PURE__*/ S.Array(
+const ChatRequestToolsList = /*@__PURE__*/ S.Array(
   ChatCompletionTool,
 ) as any as S.Schema<ChatRequestToolsList>;
 
 export type ChatCompletionToolChoiceOptionCase0 = "none";
-export const ChatCompletionToolChoiceOptionCase0 = S.String;
-
 export type ChatCompletionToolChoiceOptionCase1 = "auto";
-export const ChatCompletionToolChoiceOptionCase1 = S.String;
-
 export type ChatCompletionToolChoiceOptionCase2 = "required";
-export const ChatCompletionToolChoiceOptionCase2 = S.String;
-
 /** A wrapper for a function name reference. */
 export interface FunctionName {
   /** The name of the function to call. */
   name: string;
 }
-export const FunctionName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({ identifier: "FunctionName" }) as any as S.Schema<FunctionName>;
-
 /** Specifies a tool the model should use. Use to force the model to call a specific function. */
 export interface ChatCompletionNamedToolChoice {
   /** The type of the tool. Currently, only `function` is supported. */
   type: ChatCompletionToolType | (string & {});
   function: FunctionName;
 }
-export const ChatCompletionNamedToolChoice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ChatCompletionToolType,
-    function: FunctionName,
-  }),
-).annotate({
-  identifier: "ChatCompletionNamedToolChoice",
-}) as any as S.Schema<ChatCompletionNamedToolChoice>;
-
 export interface ChatCompletionToolChoiceOptionCase3 {
   named: ChatCompletionNamedToolChoice;
 }
-export const ChatCompletionToolChoiceOptionCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    named: ChatCompletionNamedToolChoice,
-  }),
-).annotate({
-  identifier: "ChatCompletionToolChoiceOptionCase3",
-}) as any as S.Schema<ChatCompletionToolChoiceOptionCase3>;
-
 /** Controls which (if any) tool is called by the model. `none` means the model will not call any tool and instead generates a message. `auto` means the model can pick between generating a message or calling one or more tools. `required` means the model must call one or more tools. Specifying a particular tool via `{"type": "function", "function": {"name": "my_function"}}` forces the model to call that tool. `none` is the default when no tools are present. `auto` is the default if tools are present.present. */
 export type ChatCompletionToolChoiceOption =
   | ChatCompletionToolChoiceOptionCase0
   | ChatCompletionToolChoiceOptionCase1
   | ChatCompletionToolChoiceOptionCase2
   | ChatCompletionToolChoiceOptionCase3;
-export const ChatCompletionToolChoiceOption =
-  S.Unknown as any as S.Schema<ChatCompletionToolChoiceOption>;
+const ChatCompletionToolChoiceOption = S.Unknown as any as S.Schema<ChatCompletionToolChoiceOption>;
 
 /** The model does not call a function, and responds to the end-user. */
 export type ChatCompletionFunctionCallCase0 = "none";
-export const ChatCompletionFunctionCallCase0 = S.String;
-
 /** The model can pick between an end-user or calling a function. */
 export type ChatCompletionFunctionCallCase1 = "auto";
-export const ChatCompletionFunctionCallCase1 = S.String;
-
 /** Forces the model to call the specified function. */
 export interface ChatCompletionFunctionCallCase2Function {
   name: string;
 }
-export const ChatCompletionFunctionCallCase2Function = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ChatCompletionFunctionCallCase2Function",
-}) as any as S.Schema<ChatCompletionFunctionCallCase2Function>;
-
 /** Forces the model to call the specified function. */
 export interface ChatCompletionFunctionCallCase2 {
   /** Forces the model to call the specified function. */
   Function: ChatCompletionFunctionCallCase2Function;
 }
-export const ChatCompletionFunctionCallCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Function: ChatCompletionFunctionCallCase2Function,
-  }),
-).annotate({
-  identifier: "ChatCompletionFunctionCallCase2",
-}) as any as S.Schema<ChatCompletionFunctionCallCase2>;
-
 /** Deprecated in favor of `tool_choice`. Controls which (if any) function is called by the model. */
 export type ChatCompletionFunctionCall =
   | ChatCompletionFunctionCallCase0
   | ChatCompletionFunctionCallCase1
   | ChatCompletionFunctionCallCase2;
-export const ChatCompletionFunctionCall = S.Unknown as any as S.Schema<ChatCompletionFunctionCall>;
+const ChatCompletionFunctionCall = S.Unknown as any as S.Schema<ChatCompletionFunctionCall>;
 
 /** Deprecated: A function the model may generate JSON inputs for. Use `ChatCompletionTool` instead. */
 export interface ChatCompletionFunctions {
@@ -889,7 +592,7 @@ export interface ChatCompletionFunctions {
   /** The parameters the functions accepts, described as a JSON Schema object. See the [guide](https://platform.openai.com/docs/guides/text-generation/function-calling) for examples, and the [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting `parameters` defines a function with an empty parameter list. */
   parameters: unknown;
 }
-export const ChatCompletionFunctions = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionFunctions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -899,7 +602,7 @@ export const ChatCompletionFunctions = /*@__PURE__*/ S.suspend(() =>
 
 /** Deprecated in favor of `tools`. A list of functions the model may generate JSON inputs for. */
 export type ChatRequestFunctionsList = Array<ChatCompletionFunctions>;
-export const ChatRequestFunctionsList = /*@__PURE__*/ S.Array(
+const ChatRequestFunctionsList = /*@__PURE__*/ S.Array(
   ChatCompletionFunctions,
 ) as any as S.Schema<ChatRequestFunctionsList>;
 
@@ -958,7 +661,7 @@ export interface ChatRequest {
   /** Deprecated in favor of `tools`. A list of functions the model may generate JSON inputs for. */
   functions?: ChatRequestFunctionsList | null;
 }
-export const ChatRequest = /*@__PURE__*/ S.suspend(() =>
+const ChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
     messages: ChatRequestMessagesList,
@@ -996,12 +699,12 @@ export const ChatRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The tool calls generated by the model, such as function calls. */
 export type ChatCompletionResponseMessageToolCallsList = Array<ChatCompletionMessageToolCall>;
-export const ChatCompletionResponseMessageToolCallsList =
+const ChatCompletionResponseMessageToolCallsList =
   ChatCompletionRequestMessageCase3ToolCallsList as any as S.Schema<ChatCompletionResponseMessageToolCallsList>;
 
 /** The role of the author of a message. */
 export type Role = "system" | "user" | "assistant" | "tool" | "function";
-export const Role = S.String;
+const Role = S.String;
 
 /** Audio data in a chat completion response message. */
 export interface ChatCompletionResponseMessageAudio {
@@ -1014,7 +717,7 @@ export interface ChatCompletionResponseMessageAudio {
   /** Transcript of the audio generated by the model. */
   transcript: string;
 }
-export const ChatCompletionResponseMessageAudio = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionResponseMessageAudio = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     expires_at: S.Number,
@@ -1038,7 +741,7 @@ export interface ChatCompletionResponseMessage {
   function_call?: FunctionCall | null;
   audio?: ChatCompletionResponseMessageAudio | null;
 }
-export const ChatCompletionResponseMessage = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionResponseMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(S.String)),
     refusal: S.optional(S.NullOr(S.String)),
@@ -1053,17 +756,16 @@ export const ChatCompletionResponseMessage = /*@__PURE__*/ S.suspend(() =>
 
 /** The reason the model stopped generating tokens. */
 export type FinishReason = "stop" | "length" | "tool_calls" | "content_filter" | "function_call";
-export const FinishReason = S.String;
+const FinishReason = S.String;
 
 /** A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token. */
 export type ChatCompletionTokenLogprobBytesList = Array<number>;
-export const ChatCompletionTokenLogprobBytesList =
+const ChatCompletionTokenLogprobBytesList =
   CancelTasksRequestUidsList as any as S.Schema<ChatCompletionTokenLogprobBytesList>;
 
 /** A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token. */
 export type TopLogprobsBytesList = Array<number>;
-export const TopLogprobsBytesList =
-  CancelTasksRequestUidsList as any as S.Schema<TopLogprobsBytesList>;
+const TopLogprobsBytesList = CancelTasksRequestUidsList as any as S.Schema<TopLogprobsBytesList>;
 
 /** A most likely token and its log probability at a given position. */
 export interface TopLogprobs {
@@ -1074,7 +776,7 @@ export interface TopLogprobs {
   /** A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token. */
   bytes?: TopLogprobsBytesList | null;
 }
-export const TopLogprobs = /*@__PURE__*/ S.suspend(() =>
+const TopLogprobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     logprob: S.Number,
@@ -1084,7 +786,7 @@ export const TopLogprobs = /*@__PURE__*/ S.suspend(() =>
 
 /** List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned. */
 export type ChatCompletionTokenLogprobTopLogprobsList = Array<TopLogprobs>;
-export const ChatCompletionTokenLogprobTopLogprobsList = /*@__PURE__*/ S.Array(
+const ChatCompletionTokenLogprobTopLogprobsList = /*@__PURE__*/ S.Array(
   TopLogprobs,
 ) as any as S.Schema<ChatCompletionTokenLogprobTopLogprobsList>;
 
@@ -1099,7 +801,7 @@ export interface ChatCompletionTokenLogprob {
   /** List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned. */
   top_logprobs: ChatCompletionTokenLogprobTopLogprobsList;
 }
-export const ChatCompletionTokenLogprob = /*@__PURE__*/ S.suspend(() =>
+const ChatCompletionTokenLogprob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.String,
     logprob: S.Number,
@@ -1112,12 +814,12 @@ export const ChatCompletionTokenLogprob = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of message content tokens with log probability information. */
 export type ChatChoiceLogprobsContentList = Array<ChatCompletionTokenLogprob>;
-export const ChatChoiceLogprobsContentList = /*@__PURE__*/ S.Array(
+const ChatChoiceLogprobsContentList = /*@__PURE__*/ S.Array(
   ChatCompletionTokenLogprob,
 ) as any as S.Schema<ChatChoiceLogprobsContentList>;
 
 export type ChatChoiceLogprobsRefusalList = Array<ChatCompletionTokenLogprob>;
-export const ChatChoiceLogprobsRefusalList =
+const ChatChoiceLogprobsRefusalList =
   ChatChoiceLogprobsContentList as any as S.Schema<ChatChoiceLogprobsRefusalList>;
 
 /** Log probability information for a chat completion choice. */
@@ -1126,7 +828,7 @@ export interface ChatChoiceLogprobs {
   content?: ChatChoiceLogprobsContentList | null;
   refusal?: ChatChoiceLogprobsRefusalList | null;
 }
-export const ChatChoiceLogprobs = /*@__PURE__*/ S.suspend(() =>
+const ChatChoiceLogprobs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content: S.optional(S.NullOr(ChatChoiceLogprobsContentList)),
     refusal: S.optional(S.NullOr(ChatChoiceLogprobsRefusalList)),
@@ -1141,7 +843,7 @@ export interface ChatChoice {
   finish_reason?: FinishReason | null;
   logprobs?: ChatChoiceLogprobs | null;
 }
-export const ChatChoice = /*@__PURE__*/ S.suspend(() =>
+const ChatChoice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index: S.Number,
     message: ChatCompletionResponseMessage,
@@ -1152,13 +854,13 @@ export const ChatChoice = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of chat completion choices. Can be more than one if `n` is greater than 1. */
 export type CreateChatCompletionResponseChoicesList = Array<ChatChoice>;
-export const CreateChatCompletionResponseChoicesList = /*@__PURE__*/ S.Array(
+const CreateChatCompletionResponseChoicesList = /*@__PURE__*/ S.Array(
   ChatChoice,
 ) as any as S.Schema<CreateChatCompletionResponseChoicesList>;
 
 /** The service tier used for processing the request, as returned in the response. */
 export type ServiceTierResponse = "scale" | "default" | "auto";
-export const ServiceTierResponse = S.String;
+const ServiceTierResponse = S.String;
 
 /** Breakdown of tokens used in a completion. */
 export interface PromptTokensDetails {
@@ -1167,7 +869,7 @@ export interface PromptTokensDetails {
   /** Cached tokens present in the prompt. */
   cached_tokens?: number | null;
 }
-export const PromptTokensDetails = /*@__PURE__*/ S.suspend(() =>
+const PromptTokensDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio_tokens: S.optional(S.NullOr(S.Number)),
     cached_tokens: S.optional(S.NullOr(S.Number)),
@@ -1184,7 +886,7 @@ export interface CompletionTokensDetails {
   /** When using Predicted Outputs, the number of tokens in the prediction that did not appear in the completion. However, like reasoning tokens, these tokens are still counted in the total completion tokens for purposes of billing, output, and context window limits. */
   rejected_prediction_tokens?: number | null;
 }
-export const CompletionTokensDetails = /*@__PURE__*/ S.suspend(() =>
+const CompletionTokensDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted_prediction_tokens: S.optional(S.NullOr(S.Number)),
     audio_tokens: S.optional(S.NullOr(S.Number)),
@@ -1204,7 +906,7 @@ export interface CompletionUsage {
   prompt_tokens_details?: PromptTokensDetails | null;
   completion_tokens_details?: CompletionTokensDetails | null;
 }
-export const CompletionUsage = /*@__PURE__*/ S.suspend(() =>
+const CompletionUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prompt_tokens: S.Number,
     completion_tokens: S.Number,
@@ -1231,7 +933,7 @@ export interface CreateChatCompletionResponse {
   object: string;
   usage?: CompletionUsage | null;
 }
-export const CreateChatCompletionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChatCompletionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     choices: CreateChatCompletionResponseChoicesList,
@@ -1252,7 +954,7 @@ export interface ClearAllDocumentsRequest {
   /** A string that can be used to identify and filter tasks. This metadata is stored with the task and returned in task responses. Useful for tracking tasks from external systems or associating tasks with specific operations in your application. */
   customMetadata?: string;
 }
-export const ClearAllDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearAllDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     customMetadata: S.optional(S.String.pipe(T.Query())),
@@ -1260,32 +962,31 @@ export const ClearAllDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClearAllDocumentsRequest" }) as any as S.Schema<ClearAllDocumentsRequest>;
 
 export interface ClearAllDocumentsResponse {}
-export const ClearAllDocumentsResponse =
-  CancelLogsResponse as any as S.Schema<ClearAllDocumentsResponse>;
+const ClearAllDocumentsResponse = CancelLogsResponse as any as S.Schema<ClearAllDocumentsResponse>;
 
 export interface ClearRulesRequest {}
-export const ClearRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ClearRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules", code: 200 })),
 ).annotate({ identifier: "ClearRulesRequest" }) as any as S.Schema<ClearRulesRequest>;
 
 export interface ClearRulesResponse {}
-export const ClearRulesResponse = CancelLogsResponse as any as S.Schema<ClearRulesResponse>;
+const ClearRulesResponse = CancelLogsResponse as any as S.Schema<ClearRulesResponse>;
 
 export interface CompactRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const CompactRequest = /*@__PURE__*/ S.suspend(() =>
+const CompactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/indexes/{index_uid}/compact", code: 200 })),
 ).annotate({ identifier: "CompactRequest" }) as any as S.Schema<CompactRequest>;
 
 export interface CompactResponse {}
-export const CompactResponse = CancelLogsResponse as any as S.Schema<CompactResponse>;
+const CompactResponse = CancelLogsResponse as any as S.Schema<CompactResponse>;
 
 export interface CompactTaskQueueRequest {}
-export const CompactTaskQueueRequest = /*@__PURE__*/ S.suspend(() =>
+const CompactTaskQueueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/tasks/compact", code: 200 })),
 ).annotate({ identifier: "CompactTaskQueueRequest" }) as any as S.Schema<CompactTaskQueueRequest>;
 
@@ -1301,7 +1002,7 @@ export interface TaskCompactionSummary {
   /** Error message if compaction failed. */
   errorMessage?: string | null;
 }
-export const TaskCompactionSummary = /*@__PURE__*/ S.suspend(() =>
+const TaskCompactionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preSize: S.optional(S.String),
     postSize: S.optional(S.String),
@@ -1370,16 +1071,14 @@ export type Action =
   | "dynamicSearchRules.update"
   | "dynamicSearchRules.delete"
   | "dynamicSearchRules.*";
-export const Action = S.String;
-
 /** A list of actions permitted for the key. `["*"]` for all actions. The `*` character can be used as a wildcard when located at the last position. e.g. `documents.*` to authorize access on all documents endpoints. Valid actions include: `search`, `documents.add`, `documents.get`, `documents.delete`, `indexes.create`, `indexes.get`, `indexes.update`, `indexes.delete`, `indexes.swap`, `tasks.get`, `tasks.cancel`, `tasks.delete`, `settings.get`, `settings.update`, `stats.get`, `dumps.create`, `snapshots.create`, `version`, `keys.get`, `keys.create`, `keys.update`, `keys.delete`. Use `*` to grant all actions. */
 export type CreateApiKeyRequestActionsList = Array<Action | (string & {})>;
-export const CreateApiKeyRequestActionsList =
+const CreateApiKeyRequestActionsList =
   CancelTasksRequestTypesList as any as S.Schema<CreateApiKeyRequestActionsList>;
 
 /** A list of accessible indexes permitted for the key. `["*"]` for all indexes. The `*` character can be used as a wildcard when located at the last position. e.g. `products_*` to allow access to all indexes whose names start with `products_`. */
 export type CreateApiKeyRequestIndexesList = Array<string>;
-export const CreateApiKeyRequestIndexesList =
+const CreateApiKeyRequestIndexesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<CreateApiKeyRequestIndexesList>;
 
 export interface CreateApiKeyRequest {
@@ -1396,7 +1095,7 @@ export interface CreateApiKeyRequest {
   /** Represent the expiration date and time as RFC 3339 format. `null` equals to no expiration time. Set to `null` to create a key that never expires. Once a key is past its expiry date, using it returns an error. */
   expiresAt: string | null;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     name: S.optional(S.NullOr(S.String)),
@@ -1409,13 +1108,11 @@ export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of actions (permissions) this key is allowed to perform. Examples include `documents.add`, `search`, `indexes.create`, `settings.update`, etc. Use `*` to grant all permissions. */
 export type KeyViewActionsList = Array<Action>;
-export const KeyViewActionsList =
-  CreateApiKeyRequestActionsList as any as S.Schema<KeyViewActionsList>;
+const KeyViewActionsList = CreateApiKeyRequestActionsList as any as S.Schema<KeyViewActionsList>;
 
 /** The list of index UIDs this key can access. Use `*` to grant access to all indexes, including future ones. Patterns are also supported, e.g., `movies_*` matches any index starting with "movies_". */
 export type KeyViewIndexesList = Array<string>;
-export const KeyViewIndexesList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<KeyViewIndexesList>;
+const KeyViewIndexesList = CancelTasksRequestIndexUidsList as any as S.Schema<KeyViewIndexesList>;
 
 /** Represents an API key used for authenticating requests to Meilisearch. Each key has specific permissions defined by its actions and can be scoped to particular indexes. Keys provide fine-grained access control for your Meilisearch instance. */
 export interface KeyView {
@@ -1438,7 +1135,7 @@ export interface KeyView {
   /** The date and time when this API key was last modified, formatted as an RFC 3339 date-time string. This is automatically updated by Meilisearch when the key's name or description changes. */
   updatedAt: string;
 }
-export const KeyView = /*@__PURE__*/ S.suspend(() =>
+const KeyView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -1453,12 +1150,12 @@ export const KeyView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KeyView" }) as any as S.Schema<KeyView>;
 
 export interface CreateDumpRequest {}
-export const CreateDumpRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDumpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dumps", code: 200 })),
 ).annotate({ identifier: "CreateDumpRequest" }) as any as S.Schema<CreateDumpRequest>;
 
 export interface CreateDumpResponse {}
-export const CreateDumpResponse = CancelLogsResponse as any as S.Schema<CreateDumpResponse>;
+const CreateDumpResponse = CancelLogsResponse as any as S.Schema<CreateDumpResponse>;
 
 export interface CreateIndexRequest {
   /** Unique identifier for the index */
@@ -1466,7 +1163,7 @@ export interface CreateIndexRequest {
   /** [Primary key](https://www.meilisearch.com/docs/learn/getting_started/primary_key) of the index */
   primaryKey?: string | null;
 }
-export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String,
     primaryKey: S.optional(S.NullOr(S.String)),
@@ -1474,12 +1171,11 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateIndexRequest" }) as any as S.Schema<CreateIndexRequest>;
 
 export interface CreateIndexResponse {}
-export const CreateIndexResponse = CancelLogsResponse as any as S.Schema<CreateIndexResponse>;
+const CreateIndexResponse = CancelLogsResponse as any as S.Schema<CreateIndexResponse>;
 
 /** A collection of patterns used to match attribute names. Patterns can include wildcards (`*`) for flexible matching. For example, `title` matches exactly, `overview_*` matches any attribute starting with `overview_`, and `*_date` matches any attribute ending with `_date`. */
 export type AttributePatterns = Array<string>;
-export const AttributePatterns =
-  CancelTasksRequestIndexUidsList as any as S.Schema<AttributePatterns>;
+const AttributePatterns = CancelTasksRequestIndexUidsList as any as S.Schema<AttributePatterns>;
 
 /** Filter fields by attribute name patterns or by capability (displayed, searchable, sortable, etc.). All criteria are ANDed. */
 export interface ListFieldsFilter {
@@ -1497,7 +1193,7 @@ export interface ListFieldsFilter {
   /** Only include fields that are filterable (true) or not filterable (false). */
   filterable?: boolean | null;
 }
-export const ListFieldsFilter = /*@__PURE__*/ S.suspend(() =>
+const ListFieldsFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributePatterns: S.optional(S.NullOr(AttributePatterns)),
     displayed: S.optional(S.NullOr(S.Boolean)),
@@ -1518,7 +1214,7 @@ export interface CreateIndexFieldRequest {
   limit?: number;
   filter?: ListFieldsFilter | null;
 }
-export const CreateIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     offset: S.optional(S.Number),
@@ -1530,30 +1226,24 @@ export const CreateIndexFieldRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FieldDisplayConfig {
   enabled: boolean;
 }
-export const FieldDisplayConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldDisplayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
   }),
 ).annotate({ identifier: "FieldDisplayConfig" }) as any as S.Schema<FieldDisplayConfig>;
 
 export type FieldSearchConfig = FieldDisplayConfig;
-export const FieldSearchConfig = FieldDisplayConfig;
-
 export type FieldSortableConfig = FieldDisplayConfig;
-export const FieldSortableConfig = FieldDisplayConfig;
-
 export type FieldDistinctConfig = FieldDisplayConfig;
-export const FieldDistinctConfig = FieldDisplayConfig;
-
 export type FieldRankingRuleConfigOrderList = Array<string>;
-export const FieldRankingRuleConfigOrderList =
+const FieldRankingRuleConfigOrderList =
   CancelTasksRequestIndexUidsList as any as S.Schema<FieldRankingRuleConfigOrderList>;
 
 export interface FieldRankingRuleConfig {
   enabled: boolean;
   order?: FieldRankingRuleConfigOrderList;
 }
-export const FieldRankingRuleConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldRankingRuleConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     order: S.optional(FieldRankingRuleConfigOrderList),
@@ -1561,7 +1251,7 @@ export const FieldRankingRuleConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldRankingRuleConfig" }) as any as S.Schema<FieldRankingRuleConfig>;
 
 export type FacetValuesSort = "alpha" | "count";
-export const FacetValuesSort = S.String;
+const FacetValuesSort = S.String;
 
 export interface FieldFilterableConfig {
   enabled: boolean;
@@ -1570,7 +1260,7 @@ export interface FieldFilterableConfig {
   equality: boolean;
   comparison: boolean;
 }
-export const FieldFilterableConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldFilterableConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     sortBy: FacetValuesSort,
@@ -1581,13 +1271,13 @@ export const FieldFilterableConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldFilterableConfig" }) as any as S.Schema<FieldFilterableConfig>;
 
 export type FieldLocalizedConfigLocalesList = Array<string>;
-export const FieldLocalizedConfigLocalesList =
+const FieldLocalizedConfigLocalesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<FieldLocalizedConfigLocalesList>;
 
 export interface FieldLocalizedConfig {
   locales: FieldLocalizedConfigLocalesList;
 }
-export const FieldLocalizedConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldLocalizedConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locales: FieldLocalizedConfigLocalesList,
   }),
@@ -1603,7 +1293,7 @@ export interface PaginationViewFieldResultsItem {
   filterable: FieldFilterableConfig;
   localized: FieldLocalizedConfig;
 }
-export const PaginationViewFieldResultsItem = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewFieldResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     displayed: FieldDisplayConfig,
@@ -1620,7 +1310,7 @@ export const PaginationViewFieldResultsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Items for the current page. */
 export type PaginationViewFieldResultsList = Array<PaginationViewFieldResultsItem>;
-export const PaginationViewFieldResultsList = /*@__PURE__*/ S.Array(
+const PaginationViewFieldResultsList = /*@__PURE__*/ S.Array(
   PaginationViewFieldResultsItem,
 ) as any as S.Schema<PaginationViewFieldResultsList>;
 
@@ -1634,7 +1324,7 @@ export interface PaginationViewField {
   /** Total number of items matching the query. */
   total: number;
 }
-export const PaginationViewField = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginationViewFieldResultsList,
     offset: S.Number,
@@ -1644,16 +1334,16 @@ export const PaginationViewField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PaginationViewField" }) as any as S.Schema<PaginationViewField>;
 
 export interface CreateSnapshotRequest {}
-export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
 ).annotate({ identifier: "CreateSnapshotRequest" }) as any as S.Schema<CreateSnapshotRequest>;
 
 export interface CreateSnapshotResponse {}
-export const CreateSnapshotResponse = CancelLogsResponse as any as S.Schema<CreateSnapshotResponse>;
+const CreateSnapshotResponse = CancelLogsResponse as any as S.Schema<CreateSnapshotResponse>;
 
 /** HTTP headers to include in webhook requests. */
 export type CreateWebhookRequestHeadersMap = { [key: string]: string | undefined };
-export const CreateWebhookRequestHeadersMap = /*@__PURE__*/ S.Record(
+const CreateWebhookRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<CreateWebhookRequestHeadersMap>;
@@ -1664,7 +1354,7 @@ export interface CreateWebhookRequest {
   /** HTTP headers to include in webhook requests. */
   headers?: CreateWebhookRequestHeadersMap | null;
 }
-export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     headers: S.optional(S.NullOr(CreateWebhookRequestHeadersMap)),
@@ -1673,7 +1363,7 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HTTP headers to include in webhook requests. */
 export type CreateWebhookResponseHeadersMap = { [key: string]: string | undefined };
-export const CreateWebhookResponseHeadersMap =
+const CreateWebhookResponseHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<CreateWebhookResponseHeadersMap>;
 
 export interface CreateWebhookResponse {
@@ -1686,7 +1376,7 @@ export interface CreateWebhookResponse {
   /** Whether the webhook can be edited. */
   isEditable: boolean;
 }
-export const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     headers: S.optional(S.NullOr(CreateWebhookResponseHeadersMap)),
@@ -1699,73 +1389,72 @@ export interface DeleteAllRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteAllRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings", code: 200 })),
 ).annotate({ identifier: "DeleteAllRequest" }) as any as S.Schema<DeleteAllRequest>;
 
 export interface DeleteAllResponse {}
-export const DeleteAllResponse = CancelLogsResponse as any as S.Schema<DeleteAllResponse>;
+const DeleteAllResponse = CancelLogsResponse as any as S.Schema<DeleteAllResponse>;
 
 export interface DeleteApiKeyRequest {
   /** The `uid` or `key` field of an existing API key. */
   key: string;
 }
-export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/keys/{key}", code: 200 })),
 ).annotate({ identifier: "DeleteApiKeyRequest" }) as any as S.Schema<DeleteApiKeyRequest>;
 
 export interface DeleteApiKeyResponse {}
-export const DeleteApiKeyResponse = CancelLogsResponse as any as S.Schema<DeleteApiKeyResponse>;
+const DeleteApiKeyResponse = CancelLogsResponse as any as S.Schema<DeleteApiKeyResponse>;
 
 export interface DeletechatRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletechatRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletechatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
 ).annotate({ identifier: "DeletechatRequest" }) as any as S.Schema<DeletechatRequest>;
 
 export interface DeletechatResponse {}
-export const DeletechatResponse = CancelLogsResponse as any as S.Schema<DeletechatResponse>;
+const DeletechatResponse = CancelLogsResponse as any as S.Schema<DeletechatResponse>;
 
 export interface DeleteChatRequest {
   /** The unique identifier of the chat workspace. */
   workspace_uid: string;
 }
-export const DeleteChatRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}", code: 200 })),
 ).annotate({ identifier: "DeleteChatRequest" }) as any as S.Schema<DeleteChatRequest>;
 
 export interface DeleteChatResponse {}
-export const DeleteChatResponse = CancelLogsResponse as any as S.Schema<DeleteChatResponse>;
+const DeleteChatResponse = CancelLogsResponse as any as S.Schema<DeleteChatResponse>;
 
 export interface DeletedictionaryRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletedictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletedictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 })),
 ).annotate({ identifier: "DeletedictionaryRequest" }) as any as S.Schema<DeletedictionaryRequest>;
 
 export interface DeletedictionaryResponse {}
-export const DeletedictionaryResponse =
-  CancelLogsResponse as any as S.Schema<DeletedictionaryResponse>;
+const DeletedictionaryResponse = CancelLogsResponse as any as S.Schema<DeletedictionaryResponse>;
 
 export interface DeletedisplayedAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletedisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletedisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1780,9 +1469,7 @@ export const DeletedisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedisplayedAttributesRequest>;
 
 export interface DeletedisplayedAttributesResponse {}
-export const DeletedisplayedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const DeletedisplayedAttributesResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeletedisplayedAttributesResponse",
 }) as any as S.Schema<DeletedisplayedAttributesResponse>;
 
@@ -1790,7 +1477,7 @@ export interface DeletedistinctAttributeRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletedistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletedistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1805,9 +1492,9 @@ export const DeletedistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletedistinctAttributeRequest>;
 
 export interface DeletedistinctAttributeResponse {}
-export const DeletedistinctAttributeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "DeletedistinctAttributeResponse" },
-) as any as S.Schema<DeletedistinctAttributeResponse>;
+const DeletedistinctAttributeResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "DeletedistinctAttributeResponse",
+}) as any as S.Schema<DeletedistinctAttributeResponse>;
 
 export interface DeleteDocumentRequest {
   /** Unique identifier of the index. */
@@ -1817,7 +1504,7 @@ export interface DeleteDocumentRequest {
   /** A string that can be used to identify and filter tasks. This metadata is stored with the task and returned in task responses. Useful for tracking tasks from external systems or associating tasks with specific operations in your application. */
   customMetadata?: string;
 }
-export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     document_id: S.String.pipe(T.Label()),
@@ -1828,10 +1515,10 @@ export const DeleteDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteDocumentRequest" }) as any as S.Schema<DeleteDocumentRequest>;
 
 export interface DeleteDocumentResponse {}
-export const DeleteDocumentResponse = CancelLogsResponse as any as S.Schema<DeleteDocumentResponse>;
+const DeleteDocumentResponse = CancelLogsResponse as any as S.Schema<DeleteDocumentResponse>;
 
 export type DeleteDocumentsBatchRequestBodyList = Array<unknown>;
-export const DeleteDocumentsBatchRequestBodyList = /*@__PURE__*/ S.Array(
+const DeleteDocumentsBatchRequestBodyList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<DeleteDocumentsBatchRequestBodyList>;
 
@@ -1842,7 +1529,7 @@ export interface DeleteDocumentsBatchRequest {
   customMetadata?: string;
   body: DeleteDocumentsBatchRequestBodyList;
 }
-export const DeleteDocumentsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     customMetadata: S.optional(S.String.pipe(T.Query())),
@@ -1855,7 +1542,7 @@ export const DeleteDocumentsBatchRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentsBatchRequest>;
 
 export interface DeleteDocumentsBatchResponse {}
-export const DeleteDocumentsBatchResponse =
+const DeleteDocumentsBatchResponse =
   CancelLogsResponse as any as S.Schema<DeleteDocumentsBatchResponse>;
 
 export interface DeleteDocumentsByFilterRequest {
@@ -1866,7 +1553,7 @@ export interface DeleteDocumentsByFilterRequest {
   /** Filter expression to match documents for deletion. Attributes must be in `filterableAttributes` before they can be used. Accepts a string or an array of arrays. Sending an empty filter will return a `bad_request` error. */
   filter: unknown;
 }
-export const DeleteDocumentsByFilterRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDocumentsByFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     customMetadata: S.optional(S.String.pipe(T.Query())),
@@ -1877,41 +1564,40 @@ export const DeleteDocumentsByFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteDocumentsByFilterRequest>;
 
 export interface DeleteDocumentsByFilterResponse {}
-export const DeleteDocumentsByFilterResponse =
+const DeleteDocumentsByFilterResponse =
   DeletedistinctAttributeResponse as any as S.Schema<DeleteDocumentsByFilterResponse>;
 
 export interface DeleteembeddersRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteembeddersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteembeddersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/embedders", code: 200 })),
 ).annotate({ identifier: "DeleteembeddersRequest" }) as any as S.Schema<DeleteembeddersRequest>;
 
 export interface DeleteembeddersResponse {}
-export const DeleteembeddersResponse =
-  CancelLogsResponse as any as S.Schema<DeleteembeddersResponse>;
+const DeleteembeddersResponse = CancelLogsResponse as any as S.Schema<DeleteembeddersResponse>;
 
 export interface DeletefacetingRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletefacetingRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletefacetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/faceting", code: 200 })),
 ).annotate({ identifier: "DeletefacetingRequest" }) as any as S.Schema<DeletefacetingRequest>;
 
 export interface DeletefacetingResponse {}
-export const DeletefacetingResponse = CancelLogsResponse as any as S.Schema<DeletefacetingResponse>;
+const DeletefacetingResponse = CancelLogsResponse as any as S.Schema<DeletefacetingResponse>;
 
 export interface DeletefilterableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletefilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletefilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1926,14 +1612,14 @@ export const DeletefilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletefilterableAttributesRequest>;
 
 export interface DeletefilterableAttributesResponse {}
-export const DeletefilterableAttributesResponse =
+const DeletefilterableAttributesResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeletefilterableAttributesResponse>;
 
 export interface DeleteforeignKeysRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1942,27 +1628,26 @@ export const DeleteforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteforeignKeysRequest" }) as any as S.Schema<DeleteforeignKeysRequest>;
 
 export interface DeleteforeignKeysResponse {}
-export const DeleteforeignKeysResponse =
-  CancelLogsResponse as any as S.Schema<DeleteforeignKeysResponse>;
+const DeleteforeignKeysResponse = CancelLogsResponse as any as S.Schema<DeleteforeignKeysResponse>;
 
 export interface DeleteIndexRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}", code: 200 })),
 ).annotate({ identifier: "DeleteIndexRequest" }) as any as S.Schema<DeleteIndexRequest>;
 
 export interface DeleteIndexResponse {}
-export const DeleteIndexResponse = CancelLogsResponse as any as S.Schema<DeleteIndexResponse>;
+const DeleteIndexResponse = CancelLogsResponse as any as S.Schema<DeleteIndexResponse>;
 
 export interface DeletelocalizedAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletelocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletelocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1977,14 +1662,14 @@ export const DeletelocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletelocalizedAttributesRequest>;
 
 export interface DeletelocalizedAttributesResponse {}
-export const DeletelocalizedAttributesResponse =
+const DeletelocalizedAttributesResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeletelocalizedAttributesResponse>;
 
 export interface DeletenonSeparatorTokensRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletenonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletenonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -1999,28 +1684,27 @@ export const DeletenonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletenonSeparatorTokensRequest>;
 
 export interface DeletenonSeparatorTokensResponse {}
-export const DeletenonSeparatorTokensResponse =
+const DeletenonSeparatorTokensResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeletenonSeparatorTokensResponse>;
 
 export interface DeletepaginationRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletepaginationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletepaginationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/pagination", code: 200 })),
 ).annotate({ identifier: "DeletepaginationRequest" }) as any as S.Schema<DeletepaginationRequest>;
 
 export interface DeletepaginationResponse {}
-export const DeletepaginationResponse =
-  CancelLogsResponse as any as S.Schema<DeletepaginationResponse>;
+const DeletepaginationResponse = CancelLogsResponse as any as S.Schema<DeletepaginationResponse>;
 
 export interface DeleteproximityPrecisionRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2035,14 +1719,14 @@ export const DeleteproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteproximityPrecisionRequest>;
 
 export interface DeleteproximityPrecisionResponse {}
-export const DeleteproximityPrecisionResponse =
+const DeleteproximityPrecisionResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeleteproximityPrecisionResponse>;
 
 export interface DeleterankingRulesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleterankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleterankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2053,27 +1737,27 @@ export const DeleterankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleterankingRulesRequest>;
 
 export interface DeleterankingRulesResponse {}
-export const DeleterankingRulesResponse =
+const DeleterankingRulesResponse =
   CancelLogsResponse as any as S.Schema<DeleterankingRulesResponse>;
 
 export interface DeleteRuleRequest {
   /** Unique identifier of the search rule. */
   uid: string;
 }
-export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/dynamic-search-rules/{uid}", code: 200 })),
 ).annotate({ identifier: "DeleteRuleRequest" }) as any as S.Schema<DeleteRuleRequest>;
 
 export interface DeleteRuleResponse {}
-export const DeleteRuleResponse = CancelLogsResponse as any as S.Schema<DeleteRuleResponse>;
+const DeleteRuleResponse = CancelLogsResponse as any as S.Schema<DeleteRuleResponse>;
 
 export interface DeletesearchableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletesearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletesearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2088,14 +1772,14 @@ export const DeletesearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletesearchableAttributesRequest>;
 
 export interface DeletesearchableAttributesResponse {}
-export const DeletesearchableAttributesResponse =
+const DeletesearchableAttributesResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeletesearchableAttributesResponse>;
 
 export interface DeletesearchCutoffMsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletesearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletesearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2106,14 +1790,14 @@ export const DeletesearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletesearchCutoffMsRequest>;
 
 export interface DeletesearchCutoffMsResponse {}
-export const DeletesearchCutoffMsResponse =
+const DeletesearchCutoffMsResponse =
   CancelLogsResponse as any as S.Schema<DeletesearchCutoffMsResponse>;
 
 export interface DeleteseparatorTokensRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeleteseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2124,14 +1808,14 @@ export const DeleteseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteseparatorTokensRequest>;
 
 export interface DeleteseparatorTokensResponse {}
-export const DeleteseparatorTokensResponse =
+const DeleteseparatorTokensResponse =
   CancelLogsResponse as any as S.Schema<DeleteseparatorTokensResponse>;
 
 export interface DeletesortableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletesortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletesortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2146,58 +1830,57 @@ export const DeletesortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletesortableAttributesRequest>;
 
 export interface DeletesortableAttributesResponse {}
-export const DeletesortableAttributesResponse =
+const DeletesortableAttributesResponse =
   DeletedisplayedAttributesResponse as any as S.Schema<DeletesortableAttributesResponse>;
 
 export interface DeletestopWordsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletestopWordsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletestopWordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 })),
 ).annotate({ identifier: "DeletestopWordsRequest" }) as any as S.Schema<DeletestopWordsRequest>;
 
 export interface DeletestopWordsResponse {}
-export const DeletestopWordsResponse =
-  CancelLogsResponse as any as S.Schema<DeletestopWordsResponse>;
+const DeletestopWordsResponse = CancelLogsResponse as any as S.Schema<DeletestopWordsResponse>;
 
 export interface DeletesynonymsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletesynonymsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletesynonymsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 })),
 ).annotate({ identifier: "DeletesynonymsRequest" }) as any as S.Schema<DeletesynonymsRequest>;
 
 export interface DeletesynonymsResponse {}
-export const DeletesynonymsResponse = CancelLogsResponse as any as S.Schema<DeletesynonymsResponse>;
+const DeletesynonymsResponse = CancelLogsResponse as any as S.Schema<DeletesynonymsResponse>;
 
 export type DeleteTasksRequestUidsList = Array<number>;
-export const DeleteTasksRequestUidsList =
+const DeleteTasksRequestUidsList =
   CancelTasksRequestUidsList as any as S.Schema<DeleteTasksRequestUidsList>;
 
 export type DeleteTasksRequestBatchUidsList = Array<number>;
-export const DeleteTasksRequestBatchUidsList =
+const DeleteTasksRequestBatchUidsList =
   CancelTasksRequestUidsList as any as S.Schema<DeleteTasksRequestBatchUidsList>;
 
 export type DeleteTasksRequestCanceledByList = Array<number>;
-export const DeleteTasksRequestCanceledByList =
+const DeleteTasksRequestCanceledByList =
   CancelTasksRequestUidsList as any as S.Schema<DeleteTasksRequestCanceledByList>;
 
 export type DeleteTasksRequestTypesList = Array<Kind | (string & {})>;
-export const DeleteTasksRequestTypesList =
+const DeleteTasksRequestTypesList =
   CancelTasksRequestTypesList as any as S.Schema<DeleteTasksRequestTypesList>;
 
 export type DeleteTasksRequestStatusesList = Array<Status | (string & {})>;
-export const DeleteTasksRequestStatusesList =
+const DeleteTasksRequestStatusesList =
   CancelTasksRequestStatusesList as any as S.Schema<DeleteTasksRequestStatusesList>;
 
 export type DeleteTasksRequestIndexUidsList = Array<string>;
-export const DeleteTasksRequestIndexUidsList =
+const DeleteTasksRequestIndexUidsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<DeleteTasksRequestIndexUidsList>;
 
 export interface DeleteTasksRequest {
@@ -2226,7 +1909,7 @@ export interface DeleteTasksRequest {
   /** Permits to filter tasks based on their finishedAt time. Matches tasks finished before the given date. Supports RFC 3339 date format. */
   beforeFinishedAt?: string;
 }
-export const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uids: S.optional(DeleteTasksRequestUidsList.pipe(T.Query())),
     batchUids: S.optional(DeleteTasksRequestBatchUidsList.pipe(T.Query())),
@@ -2247,7 +1930,7 @@ export interface DeletetypoToleranceRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const DeletetypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletetypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -2258,21 +1941,21 @@ export const DeletetypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletetypoToleranceRequest>;
 
 export interface DeletetypoToleranceResponse {}
-export const DeletetypoToleranceResponse =
+const DeletetypoToleranceResponse =
   CancelLogsResponse as any as S.Schema<DeletetypoToleranceResponse>;
 
 export interface DeleteWebhookRequest {
   /** Universally unique identifier of the webhook. */
   uuid: string;
 }
-export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/webhooks/{uuid}", code: 200 })),
 ).annotate({ identifier: "DeleteWebhookRequest" }) as any as S.Schema<DeleteWebhookRequest>;
 
 export interface DeleteWebhookResponse {}
-export const DeleteWebhookResponse = CancelLogsResponse as any as S.Schema<DeleteWebhookResponse>;
+const DeleteWebhookResponse = CancelLogsResponse as any as S.Schema<DeleteWebhookResponse>;
 
 export interface EditDocumentsByFunctionRequest {
   /** Unique identifier of the index. */
@@ -2286,7 +1969,7 @@ export interface EditDocumentsByFunctionRequest {
   /** A [RHAI](https://rhai.rs) function string to apply to each document. The function has access to a `doc` variable representing the current document. Modify `doc` fields to update the document. Return `null` or `()` to delete the document. To enable this feature: `PATCH /experimental-features/ {"editDocumentsByFunction": true}`. */
   function: string;
 }
-export const EditDocumentsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const EditDocumentsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     customMetadata: S.optional(S.String.pipe(T.Query())),
@@ -2299,7 +1982,7 @@ export const EditDocumentsByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditDocumentsByFunctionRequest>;
 
 export interface EditDocumentsByFunctionResponse {}
-export const EditDocumentsByFunctionResponse =
+const EditDocumentsByFunctionResponse =
   DeletedistinctAttributeResponse as any as S.Schema<EditDocumentsByFunctionResponse>;
 
 /** Export settings for a specific index */
@@ -2309,7 +1992,7 @@ export interface ExportIndexSettings {
   /** Whether to override settings on the destination index */
   overrideSettings?: boolean | null;
 }
-export const ExportIndexSettings = /*@__PURE__*/ S.suspend(() =>
+const ExportIndexSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filter: S.optional(S.NullOr(S.String)),
     overrideSettings: S.optional(S.NullOr(S.Boolean)),
@@ -2318,7 +2001,7 @@ export const ExportIndexSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** Index patterns to export with their settings */
 export type ExportRequestIndexesMap = { [key: string]: ExportIndexSettings | undefined };
-export const ExportRequestIndexesMap = /*@__PURE__*/ S.Record(
+const ExportRequestIndexesMap = /*@__PURE__*/ S.Record(
   S.String,
   ExportIndexSettings,
 ) as any as S.Schema<ExportRequestIndexesMap>;
@@ -2333,7 +2016,7 @@ export interface ExportRequest {
   /** Index patterns to export with their settings */
   indexes?: ExportRequestIndexesMap | null;
 }
-export const ExportRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     apiKey: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
@@ -2343,13 +2026,13 @@ export const ExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportRequest" }) as any as S.Schema<ExportRequest>;
 
 export interface ExportResponse {}
-export const ExportResponse = CancelLogsResponse as any as S.Schema<ExportResponse>;
+const ExportResponse = CancelLogsResponse as any as S.Schema<ExportResponse>;
 
 export interface GetAllRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetAllRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings", code: 200 })),
@@ -2357,19 +2040,16 @@ export const GetAllRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields returned in search results. Affects only search endpoints, not get-document endpoints. See [displayed and searchable attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes). */
 export type SettingsUncheckedDisplayedAttributesList = Array<string>;
-export const SettingsUncheckedDisplayedAttributesList =
+const SettingsUncheckedDisplayedAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedDisplayedAttributesList>;
 
 /** Fields searched for query words, in order of importance. Defines [attribute ranking order](https://www.meilisearch.com/docs/learn/relevancy/attribute_ranking_order). See [displayed and searchable attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes). */
 export type SettingsUncheckedSearchableAttributesList = Array<string>;
-export const SettingsUncheckedSearchableAttributesList =
+const SettingsUncheckedSearchableAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedSearchableAttributesList>;
 
 /** Patterns to match attribute names. Use `*` as a wildcard to match any characters. For example, `["price_*", "stock"]` matches `price_usd`, `price_eur`, and `stock`. */
 export type FilterableAttributesPatternsAttributePatternsList = Array<string>;
-export const FilterableAttributesPatternsAttributePatternsList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<FilterableAttributesPatternsAttributePatternsList>;
-
 /** Controls which filter operators are allowed for an attribute. This provides fine-grained control over filtering capabilities. */
 export interface FilterFeatures {
   /** When `true`, enables equality operators: `=`, `!=`, and `IN`. These allow filtering for exact matches or membership in a set of values. Also enables `IS EMPTY`, `IS NULL`, and `EXISTS` operators. Defaults to `true`. */
@@ -2377,13 +2057,6 @@ export interface FilterFeatures {
   /** When `true`, enables comparison operators: `<`, `>`, `<=`, `>=`, and `TO` (range). These allow filtering based on numeric or string comparisons. Defaults to `false`. */
   comparison?: boolean;
 }
-export const FilterFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    equality: S.optional(S.Boolean),
-    comparison: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "FilterFeatures" }) as any as S.Schema<FilterFeatures>;
-
 /** Controls which filtering and faceting operations are enabled for matching attributes. This allows restricting certain operations on specific fields for security or performance reasons. */
 export interface FilterableAttributesFeatures {
   /** When `true`, allows searching within facet values for matching attributes. This enables the facet search feature which lets users search for specific facet values. Defaults to `false`. */
@@ -2391,15 +2064,6 @@ export interface FilterableAttributesFeatures {
   /** Controls which filter operators are allowed for matching attributes. See `FilterFeatures` for available options. */
   filter?: FilterFeatures;
 }
-export const FilterableAttributesFeatures = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    facetSearch: S.optional(S.Boolean),
-    filter: S.optional(FilterFeatures),
-  }),
-).annotate({
-  identifier: "FilterableAttributesFeatures",
-}) as any as S.Schema<FilterableAttributesFeatures>;
-
 /** Defines a set of attribute patterns with specific filtering and faceting features. This allows fine-grained control over which operations are allowed on matched attributes. */
 export interface FilterableAttributesPatterns {
   /** Patterns to match attribute names. Use `*` as a wildcard to match any characters. For example, `["price_*", "stock"]` matches `price_usd`, `price_eur`, and `stock`. */
@@ -2407,34 +2071,25 @@ export interface FilterableAttributesPatterns {
   /** The filtering and faceting features enabled for attributes matching these patterns. If not specified, defaults to equality filtering enabled. */
   features?: FilterableAttributesFeatures;
 }
-export const FilterableAttributesPatterns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributePatterns: FilterableAttributesPatternsAttributePatternsList,
-    features: S.optional(FilterableAttributesFeatures),
-  }),
-).annotate({
-  identifier: "FilterableAttributesPatterns",
-}) as any as S.Schema<FilterableAttributesPatterns>;
-
 export type FilterableAttributesRule = string | FilterableAttributesPatterns;
-export const FilterableAttributesRule = S.Unknown as any as S.Schema<FilterableAttributesRule>;
+const FilterableAttributesRule = S.Unknown as any as S.Schema<FilterableAttributesRule>;
 
 /** Attributes that can be used as [filters](https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_search_results) and [facets](https://www.meilisearch.com/docs/learn/filtering_and_sorting/search_with_facet_filters). Strings or objects with `attributePatterns` and `features`. */
 export type SettingsUncheckedFilterableAttributesList = Array<FilterableAttributesRule>;
-export const SettingsUncheckedFilterableAttributesList = /*@__PURE__*/ S.Array(
+const SettingsUncheckedFilterableAttributesList = /*@__PURE__*/ S.Array(
   FilterableAttributesRule,
 ) as any as S.Schema<SettingsUncheckedFilterableAttributesList>;
 
 /** Attributes that can be used to [sort search results](https://www.meilisearch.com/docs/learn/filtering_and_sorting/sort_search_results). */
 export type SettingsUncheckedSortableAttributesList = Array<string>;
-export const SettingsUncheckedSortableAttributesList =
+const SettingsUncheckedSortableAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedSortableAttributesList>;
 
 export interface ForeignKey {
   foreignIndexUid: string;
   fieldName: string;
 }
-export const ForeignKey = /*@__PURE__*/ S.suspend(() =>
+const ForeignKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     foreignIndexUid: S.String,
     fieldName: S.String,
@@ -2443,44 +2098,44 @@ export const ForeignKey = /*@__PURE__*/ S.suspend(() =>
 
 /** Foreign keys to use for cross-index filtering search. */
 export type SettingsUncheckedForeignKeysList = Array<ForeignKey>;
-export const SettingsUncheckedForeignKeysList = /*@__PURE__*/ S.Array(
+const SettingsUncheckedForeignKeysList = /*@__PURE__*/ S.Array(
   ForeignKey,
 ) as any as S.Schema<SettingsUncheckedForeignKeysList>;
 
 /** [Ranking rules](https://www.meilisearch.com/docs/learn/relevancy/ranking_rules) in order of importance. Built-in rules and custom sort rules (`attribute:asc` or `attribute:desc`). */
 export type SettingsUncheckedRankingRulesList = Array<string>;
-export const SettingsUncheckedRankingRulesList =
+const SettingsUncheckedRankingRulesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedRankingRulesList>;
 
 /** Words ignored when present in search queries. */
 export type SettingsUncheckedStopWordsList = Array<string>;
-export const SettingsUncheckedStopWordsList =
+const SettingsUncheckedStopWordsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedStopWordsList>;
 
 /** Characters that are not treated as word separators. Removed from the default separator set. */
 export type SettingsUncheckedNonSeparatorTokensList = Array<string>;
-export const SettingsUncheckedNonSeparatorTokensList =
+const SettingsUncheckedNonSeparatorTokensList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedNonSeparatorTokensList>;
 
 /** Characters that delimit words. Added on top of the default separators. */
 export type SettingsUncheckedSeparatorTokensList = Array<string>;
-export const SettingsUncheckedSeparatorTokensList =
+const SettingsUncheckedSeparatorTokensList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedSeparatorTokensList>;
 
 /** Strings Meilisearch parses as a single term. Useful for names or domain terms. */
 export type SettingsUncheckedDictionaryList = Array<string>;
-export const SettingsUncheckedDictionaryList =
+const SettingsUncheckedDictionaryList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedDictionaryList>;
 
 export type SettingsUncheckedSynonymsValueList = Array<string>;
-export const SettingsUncheckedSynonymsValueList =
+const SettingsUncheckedSynonymsValueList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SettingsUncheckedSynonymsValueList>;
 
 /** Pairs of words or phrases treated as equivalent for search. Key maps to an array of [synonyms](https://www.meilisearch.com/docs/learn/relevancy/synonyms). */
 export type SettingsUncheckedSynonymsMap = {
   [key: string]: SettingsUncheckedSynonymsValueList | undefined;
 };
-export const SettingsUncheckedSynonymsMap = /*@__PURE__*/ S.Record(
+const SettingsUncheckedSynonymsMap = /*@__PURE__*/ S.Record(
   S.String,
   SettingsUncheckedSynonymsValueList,
 ) as any as S.Schema<SettingsUncheckedSynonymsMap>;
@@ -2492,7 +2147,7 @@ export interface MinWordSizeTyposSetting {
   /** Minimum word length to accept two typos. Must be greater than or equal to `oneTypo`. For example, if set to 9, "computing" can have two typos. */
   twoTypos?: number | null;
 }
-export const MinWordSizeTyposSetting = /*@__PURE__*/ S.suspend(() =>
+const MinWordSizeTyposSetting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oneTypo: S.optional(S.NullOr(S.Number)),
     twoTypos: S.optional(S.NullOr(S.Number)),
@@ -2501,12 +2156,12 @@ export const MinWordSizeTyposSetting = /*@__PURE__*/ S.suspend(() =>
 
 /** Words for which typo tolerance is disabled. Use for brand names or terms that must match exactly. */
 export type TypoSettingsDisableOnWordsList = Array<string>;
-export const TypoSettingsDisableOnWordsList =
+const TypoSettingsDisableOnWordsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<TypoSettingsDisableOnWordsList>;
 
 /** Attributes for which typo tolerance is disabled. Those attributes only return exact matches. Useful for fields like product codes or IDs. */
 export type TypoSettingsDisableOnAttributesList = Array<string>;
-export const TypoSettingsDisableOnAttributesList =
+const TypoSettingsDisableOnAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<TypoSettingsDisableOnAttributesList>;
 
 /** Typo tolerance: how spelling mistakes in queries are handled. */
@@ -2521,7 +2176,7 @@ export interface TypoSettings {
   /** When true, typo tolerance is disabled on numeric tokens. For example, 123 will not match 132. */
   disableOnNumbers?: boolean | null;
 }
-export const TypoSettings = /*@__PURE__*/ S.suspend(() =>
+const TypoSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.NullOr(S.Boolean)),
     minWordSizeForTypos: S.optional(S.NullOr(MinWordSizeTyposSetting)),
@@ -2535,7 +2190,7 @@ export const TypoSettings = /*@__PURE__*/ S.suspend(() =>
 export type FacetingSettingsSortFacetValuesByMap = {
   [key: string]: FacetValuesSort | (string & {}) | undefined;
 };
-export const FacetingSettingsSortFacetValuesByMap = /*@__PURE__*/ S.Record(
+const FacetingSettingsSortFacetValuesByMap = /*@__PURE__*/ S.Record(
   S.String,
   FacetValuesSort,
 ) as any as S.Schema<FacetingSettingsSortFacetValuesByMap>;
@@ -2547,7 +2202,7 @@ export interface FacetingSettings {
   /** Sort order per facet: by descending count (`count`) or ascending alphanumeric (`alpha`). Key `*` applies to all facets. */
   sortFacetValuesBy?: FacetingSettingsSortFacetValuesByMap | null;
 }
-export const FacetingSettings = /*@__PURE__*/ S.suspend(() =>
+const FacetingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
     sortFacetValuesBy: S.optional(S.NullOr(FacetingSettingsSortFacetValuesByMap)),
@@ -2559,7 +2214,7 @@ export interface PaginationSettings {
   /** Maximum number of search results Meilisearch can return. Limit and offset cannot go beyond this value. */
   maxTotalHits?: number | null;
 }
-export const PaginationSettings = /*@__PURE__*/ S.suspend(() =>
+const PaginationSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxTotalHits: S.optional(S.NullOr(S.Number)),
   }),
@@ -2572,39 +2227,39 @@ export type EmbedderSource =
   | "userProvided"
   | "rest"
   | "composite";
-export const EmbedderSource = S.String;
+const EmbedderSource = S.String;
 
 export type OverridePooling = "useModel" | "forceCls" | "forceMean";
-export const OverridePooling = S.String;
+const OverridePooling = S.String;
 
 /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
 export type EmbeddingSettingsIndexingFragmentsMap = { [key: string]: unknown | undefined };
-export const EmbeddingSettingsIndexingFragmentsMap =
+const EmbeddingSettingsIndexingFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<EmbeddingSettingsIndexingFragmentsMap>;
 
 /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type EmbeddingSettingsSearchFragmentsMap = { [key: string]: unknown | undefined };
-export const EmbeddingSettingsSearchFragmentsMap =
+const EmbeddingSettingsSearchFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<EmbeddingSettingsSearchFragmentsMap>;
 
 /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type EmbeddingSettingsHeadersMap = { [key: string]: string | undefined };
-export const EmbeddingSettingsHeadersMap =
+const EmbeddingSettingsHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<EmbeddingSettingsHeadersMap>;
 
 /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at indexing time. For `rest` with multimodal; key is fragment name, value the payload. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - Only available for `indexingEmbedder`, not `searchEmbedder`. - U+1F3D7 When a fragment is deleted by passing `null` to its name, the corresponding embeddings are removed from documents. - U+1F3D7 When a fragment is modified, the corresponding embeddings are regenerated if their rendered version changes. */
 export type SubEmbeddingSettingsIndexingFragmentsMap = { [key: string]: unknown | undefined };
-export const SubEmbeddingSettingsIndexingFragmentsMap =
+const SubEmbeddingSettingsIndexingFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<SubEmbeddingSettingsIndexingFragmentsMap>;
 
 /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SubEmbeddingSettingsSearchFragmentsMap = { [key: string]: unknown | undefined };
-export const SubEmbeddingSettingsSearchFragmentsMap =
+const SubEmbeddingSettingsSearchFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<SubEmbeddingSettingsSearchFragmentsMap>;
 
 /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SubEmbeddingSettingsHeadersMap = { [key: string]: string | undefined };
-export const SubEmbeddingSettingsHeadersMap =
+const SubEmbeddingSettingsHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<SubEmbeddingSettingsHeadersMap>;
 
 /** Sub-embedder config for composite embedders. Used by `indexingEmbedder` (vectorize documents at index time) and `searchEmbedder` (vectorize queries at search time). Same fields as a top-level embedder, except no `binaryQuantized`, `distribution`, `documentTemplate`/`documentTemplateMaxBytes` for searchEmbedder. */
@@ -2636,7 +2291,7 @@ export interface SubEmbeddingSettings {
   /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
   headers?: SubEmbeddingSettingsHeadersMap | null;
 }
-export const SubEmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
+const SubEmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.NullOr(EmbedderSource)),
     model: S.optional(S.NullOr(S.String)),
@@ -2662,7 +2317,7 @@ export interface DistributionShift {
   /** standard deviation of a similarity score. Set below 0.4 to make the results less packed around the mean, and above 0.4 to make them more packed. */
   current_sigma: number;
 }
-export const DistributionShift = /*@__PURE__*/ S.suspend(() =>
+const DistributionShift = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     current_mean: S.Number,
     current_sigma: S.Number,
@@ -2703,7 +2358,7 @@ export interface EmbeddingSettings {
   indexingEmbedder?: SubEmbeddingSettings | null;
   distribution?: DistributionShift | null;
 }
-export const EmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
+const EmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.NullOr(EmbedderSource)),
     model: S.optional(S.NullOr(S.String)),
@@ -2728,14 +2383,14 @@ export const EmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
 
 /** [Embedders](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search) used for semantic and [hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). Map of embedder name to config (`source`, `model`, `documentTemplate`, etc.). */
 export type SettingsUncheckedEmbeddersMap = { [key: string]: EmbeddingSettings | undefined };
-export const SettingsUncheckedEmbeddersMap = /*@__PURE__*/ S.Record(
+const SettingsUncheckedEmbeddersMap = /*@__PURE__*/ S.Record(
   S.String,
   EmbeddingSettings,
 ) as any as S.Schema<SettingsUncheckedEmbeddersMap>;
 
 /** Patterns to match attribute names. Use `*` as a wildcard to match any characters. For example, `["title_*", "description"]` matches `title_en`, `title_fr`, and `description`. */
 export type LocalizedAttributesRuleViewAttributePatternsList = Array<string>;
-export const LocalizedAttributesRuleViewAttributePatternsList =
+const LocalizedAttributesRuleViewAttributePatternsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<LocalizedAttributesRuleViewAttributePatternsList>;
 
 export type Locale =
@@ -2880,11 +2535,9 @@ export type Locale =
   | "zho"
   | "zul"
   | "cmn";
-export const Locale = S.String;
-
 /** The list of locales (languages) to apply to matching attributes. When these attributes are indexed, Meilisearch will use language-specific tokenization rules. Examples: `["en", "fr"]` or `["jpn", "zho"]`. */
 export type LocalizedAttributesRuleViewLocalesList = Array<Locale | (string & {})>;
-export const LocalizedAttributesRuleViewLocalesList =
+const LocalizedAttributesRuleViewLocalesList =
   CancelTasksRequestTypesList as any as S.Schema<LocalizedAttributesRuleViewLocalesList>;
 
 /** Defines a rule for associating specific locales (languages) with attributes. This allows Meilisearch to use language-specific tokenization and processing for matched attributes, improving search quality for multilingual content. */
@@ -2894,7 +2547,7 @@ export interface LocalizedAttributesRuleView {
   /** The list of locales (languages) to apply to matching attributes. When these attributes are indexed, Meilisearch will use language-specific tokenization rules. Examples: `["en", "fr"]` or `["jpn", "zho"]`. */
   locales: LocalizedAttributesRuleViewLocalesList;
 }
-export const LocalizedAttributesRuleView = /*@__PURE__*/ S.suspend(() =>
+const LocalizedAttributesRuleView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attributePatterns: LocalizedAttributesRuleViewAttributePatternsList,
     locales: LocalizedAttributesRuleViewLocalesList,
@@ -2905,12 +2558,12 @@ export const LocalizedAttributesRuleView = /*@__PURE__*/ S.suspend(() =>
 
 /** Locales and attribute patterns for [language-specific tokenization](https://www.meilisearch.com/docs/learn/resources/language). Affects searchable, filterable, and sortable attributes. */
 export type SettingsUncheckedLocalizedAttributesList = Array<LocalizedAttributesRuleView>;
-export const SettingsUncheckedLocalizedAttributesList = /*@__PURE__*/ S.Array(
+const SettingsUncheckedLocalizedAttributesList = /*@__PURE__*/ S.Array(
   LocalizedAttributesRuleView,
 ) as any as S.Schema<SettingsUncheckedLocalizedAttributesList>;
 
 export type PrefixSearchSettings = "indexingTime" | "disabled";
-export const PrefixSearchSettings = S.String;
+const PrefixSearchSettings = S.String;
 
 /** Hybrid search: balance between keyword and semantic search. */
 export interface HybridQuery {
@@ -2919,7 +2572,7 @@ export interface HybridQuery {
   /** Name of the embedder from the index embedders setting (`embedder` in JSON). Used to vectorize the query. */
   embedder: string;
 }
-export const HybridQuery = /*@__PURE__*/ S.suspend(() =>
+const HybridQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     semanticRatio: S.optional(S.Number),
     embedder: S.String,
@@ -2928,16 +2581,16 @@ export const HybridQuery = /*@__PURE__*/ S.suspend(() =>
 
 /** Sort order: array of strings like `attribute:asc` or `attribute:desc`. */
 export type ChatSearchParamsSortList = Array<string>;
-export const ChatSearchParamsSortList =
+const ChatSearchParamsSortList =
   CancelTasksRequestIndexUidsList as any as S.Schema<ChatSearchParamsSortList>;
 
 /** Strategy used to match query terms within documents */
 export type MatchingStrategy = "last" | "all" | "frequency";
-export const MatchingStrategy = S.String;
+const MatchingStrategy = S.String;
 
 /** Attributes on which to run the search. If unset, all searchable attributes are used. */
 export type ChatSearchParamsAttributesToSearchOnList = Array<string>;
-export const ChatSearchParamsAttributesToSearchOnList =
+const ChatSearchParamsAttributesToSearchOnList =
   CancelTasksRequestIndexUidsList as any as S.Schema<ChatSearchParamsAttributesToSearchOnList>;
 
 /** Search parameters applied when the LLM queries this index. */
@@ -2954,7 +2607,7 @@ export interface ChatSearchParams {
   attributesToSearchOn?: ChatSearchParamsAttributesToSearchOnList | null;
   rankingScoreThreshold?: number | null;
 }
-export const ChatSearchParams = /*@__PURE__*/ S.suspend(() =>
+const ChatSearchParams = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hybrid: S.optional(S.NullOr(HybridQuery)),
     limit: S.optional(S.NullOr(S.Number)),
@@ -2976,7 +2629,7 @@ export interface ChatSettings {
   documentTemplateMaxBytes?: number | null;
   searchParameters?: ChatSearchParams | null;
 }
-export const ChatSettings = /*@__PURE__*/ S.suspend(() =>
+const ChatSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.NullOr(S.String)),
     documentTemplate: S.optional(S.NullOr(S.String)),
@@ -3027,7 +2680,7 @@ export interface SettingsUnchecked {
   prefixSearch?: PrefixSearchSettings | null;
   chat?: ChatSettings | null;
 }
-export const SettingsUnchecked = /*@__PURE__*/ S.suspend(() =>
+const SettingsUnchecked = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayedAttributes: S.optional(S.NullOr(SettingsUncheckedDisplayedAttributesList)),
     searchableAttributes: S.optional(S.NullOr(SettingsUncheckedSearchableAttributesList)),
@@ -3058,7 +2711,7 @@ export interface GetApiKeyRequest {
   /** The `uid` or `key` field of an existing API key. */
   key: string;
 }
-export const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/keys/{key}", code: 200 })),
@@ -3068,7 +2721,7 @@ export interface GetBatchRequest {
   /** The unique batch identifier. */
   batch_id: string;
 }
-export const GetBatchRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     batch_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/batches/{batch_id}", code: 200 })),
@@ -3083,7 +2736,7 @@ export interface ProgressStepView {
   /** The total number of items to process in this step. When `finished` equals `total`, this step is complete and processing moves to the next step. */
   total: number;
 }
-export const ProgressStepView = /*@__PURE__*/ S.suspend(() =>
+const ProgressStepView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentStep: S.String,
     finished: S.Number,
@@ -3093,7 +2746,7 @@ export const ProgressStepView = /*@__PURE__*/ S.suspend(() =>
 
 /** A hierarchical list of processing steps currently being executed. Steps are listed from outermost to innermost, with each step representing a more granular operation within its parent step. */
 export type ProgressViewStepsList = Array<ProgressStepView>;
-export const ProgressViewStepsList = /*@__PURE__*/ S.Array(
+const ProgressViewStepsList = /*@__PURE__*/ S.Array(
   ProgressStepView,
 ) as any as S.Schema<ProgressViewStepsList>;
 
@@ -3104,7 +2757,7 @@ export interface ProgressView {
   /** The overall completion percentage of the operation (0.0 to 100.0). This is calculated by combining the progress of all nested steps, weighted by their relative importance. */
   percentage: number;
 }
-export const ProgressView = /*@__PURE__*/ S.suspend(() =>
+const ProgressView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     steps: ProgressViewStepsList,
     percentage: S.Number,
@@ -3113,34 +2766,33 @@ export const ProgressView = /*@__PURE__*/ S.suspend(() =>
 
 /** Count of tasks by status */
 export type BatchStatsViewStatusMap = { [key: string]: number | undefined };
-export const BatchStatsViewStatusMap = /*@__PURE__*/ S.Record(
+const BatchStatsViewStatusMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<BatchStatsViewStatusMap>;
 
 /** Count of tasks by type */
 export type BatchStatsViewTypesMap = { [key: string]: number | undefined };
-export const BatchStatsViewTypesMap =
-  BatchStatsViewStatusMap as any as S.Schema<BatchStatsViewTypesMap>;
+const BatchStatsViewTypesMap = BatchStatsViewStatusMap as any as S.Schema<BatchStatsViewTypesMap>;
 
 /** Count of tasks by index UID */
 export type BatchStatsViewIndexUidsMap = { [key: string]: number | undefined };
-export const BatchStatsViewIndexUidsMap =
+const BatchStatsViewIndexUidsMap =
   BatchStatsViewStatusMap as any as S.Schema<BatchStatsViewIndexUidsMap>;
 
 /** Detailed progress trace information */
 export type BatchStatsViewProgressTraceMap = { [key: string]: unknown | undefined };
-export const BatchStatsViewProgressTraceMap =
+const BatchStatsViewProgressTraceMap =
   ChatRequestLogitBiasMap as any as S.Schema<BatchStatsViewProgressTraceMap>;
 
 /** Write channel congestion metrics */
 export type BatchStatsViewWriteChannelCongestionMap = { [key: string]: unknown | undefined };
-export const BatchStatsViewWriteChannelCongestionMap =
+const BatchStatsViewWriteChannelCongestionMap =
   ChatRequestLogitBiasMap as any as S.Schema<BatchStatsViewWriteChannelCongestionMap>;
 
 /** Internal database size information */
 export type BatchStatsViewInternalDatabaseSizesMap = { [key: string]: unknown | undefined };
-export const BatchStatsViewInternalDatabaseSizesMap =
+const BatchStatsViewInternalDatabaseSizesMap =
   ChatRequestLogitBiasMap as any as S.Schema<BatchStatsViewInternalDatabaseSizesMap>;
 
 /** Statistics for embedder requests */
@@ -3152,7 +2804,7 @@ export interface EmbedderStatsView {
   /** Last error message from the embedder */
   lastError?: string | null;
 }
-export const EmbedderStatsView = /*@__PURE__*/ S.suspend(() =>
+const EmbedderStatsView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     failed: S.Number,
@@ -3179,7 +2831,7 @@ export interface BatchStatsView {
   /** Statistics about AI embedder API requests made during batch processing. Includes total requests, successful/failed counts, and response times. Only present when the batch involved vector embedding operations. */
   embedderRequests?: EmbedderStatsView;
 }
-export const BatchStatsView = /*@__PURE__*/ S.suspend(() =>
+const BatchStatsView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalNbTasks: S.Number,
     status: BatchStatsViewStatusMap,
@@ -3210,7 +2862,7 @@ export interface BatchView {
   /** Explains why the batch was finalized and stopped accepting more tasks. Common reasons include reaching the maximum batch size, encountering incompatible tasks, or processing being explicitly triggered. */
   batchStrategy?: string;
 }
-export const BatchView = /*@__PURE__*/ S.suspend(() =>
+const BatchView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.Number,
     progress: S.optional(S.NullOr(ProgressView)),
@@ -3224,27 +2876,27 @@ export const BatchView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BatchView" }) as any as S.Schema<BatchView>;
 
 export type GetBatchesRequestBatchUidsList = Array<number>;
-export const GetBatchesRequestBatchUidsList =
+const GetBatchesRequestBatchUidsList =
   CancelTasksRequestUidsList as any as S.Schema<GetBatchesRequestBatchUidsList>;
 
 export type GetBatchesRequestUidsList = Array<number>;
-export const GetBatchesRequestUidsList =
+const GetBatchesRequestUidsList =
   CancelTasksRequestUidsList as any as S.Schema<GetBatchesRequestUidsList>;
 
 export type GetBatchesRequestCanceledByList = Array<number>;
-export const GetBatchesRequestCanceledByList =
+const GetBatchesRequestCanceledByList =
   CancelTasksRequestUidsList as any as S.Schema<GetBatchesRequestCanceledByList>;
 
 export type GetBatchesRequestTypesList = Array<string>;
-export const GetBatchesRequestTypesList =
+const GetBatchesRequestTypesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetBatchesRequestTypesList>;
 
 export type GetBatchesRequestStatusesList = Array<Status | (string & {})>;
-export const GetBatchesRequestStatusesList =
+const GetBatchesRequestStatusesList =
   CancelTasksRequestStatusesList as any as S.Schema<GetBatchesRequestStatusesList>;
 
 export type GetBatchesRequestIndexUidsList = Array<string>;
-export const GetBatchesRequestIndexUidsList =
+const GetBatchesRequestIndexUidsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetBatchesRequestIndexUidsList>;
 
 export interface GetBatchesRequest {
@@ -3279,7 +2931,7 @@ export interface GetBatchesRequest {
   /** Permits to filter tasks based on their finishedAt time. Matches tasks finished before the given date. Supports RFC 3339 date format. */
   beforeFinishedAt?: string;
 }
-export const GetBatchesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     from: S.optional(S.Number.pipe(T.Query())),
@@ -3301,7 +2953,7 @@ export const GetBatchesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of batch objects */
 export type AllBatchesResultsList = Array<BatchView>;
-export const AllBatchesResultsList = /*@__PURE__*/ S.Array(
+const AllBatchesResultsList = /*@__PURE__*/ S.Array(
   BatchView,
 ) as any as S.Schema<AllBatchesResultsList>;
 
@@ -3318,7 +2970,7 @@ export interface AllBatches {
   /** Value to send in from to fetch the next slice of results */
   next?: number | null;
 }
-export const AllBatches = /*@__PURE__*/ S.suspend(() =>
+const AllBatches = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: AllBatchesResultsList,
     total: S.Number,
@@ -3329,19 +2981,18 @@ export const AllBatches = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllBatches" }) as any as S.Schema<AllBatches>;
 
 export interface GetBatchesStreamRequest {}
-export const GetBatchesStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBatchesStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/batches/stream", code: 200 })),
 ).annotate({ identifier: "GetBatchesStreamRequest" }) as any as S.Schema<GetBatchesStreamRequest>;
 
 export interface GetBatchesStreamResponse {}
-export const GetBatchesStreamResponse =
-  CancelLogsResponse as any as S.Schema<GetBatchesStreamResponse>;
+const GetBatchesStreamResponse = CancelLogsResponse as any as S.Schema<GetBatchesStreamResponse>;
 
 export interface GetchatRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetchatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetchatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/chat", code: 200 })),
@@ -3351,31 +3002,31 @@ export interface GetChatRequest {
   /** The unique identifier of the chat workspace. */
   workspace_uid: string;
 }
-export const GetChatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/chats/{workspace_uid}", code: 200 })),
 ).annotate({ identifier: "GetChatRequest" }) as any as S.Schema<GetChatRequest>;
 
 export interface GetChatResponse {}
-export const GetChatResponse = CancelLogsResponse as any as S.Schema<GetChatResponse>;
+const GetChatResponse = CancelLogsResponse as any as S.Schema<GetChatResponse>;
 
 export interface GetdictionaryRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetdictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const GetdictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/dictionary", code: 200 })),
 ).annotate({ identifier: "GetdictionaryRequest" }) as any as S.Schema<GetdictionaryRequest>;
 
 export type GetdictionaryResponseBodyList = Array<string>;
-export const GetdictionaryResponseBodyList =
+const GetdictionaryResponseBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetdictionaryResponseBodyList>;
 
 export type GetdictionaryResponse = GetdictionaryResponseBodyList;
-export const GetdictionaryResponse = /*@__PURE__*/ S.suspend(() =>
+const GetdictionaryResponse = /*@__PURE__*/ S.suspend(() =>
   GetdictionaryResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetdictionaryResponse" }) as any as S.Schema<GetdictionaryResponse>;
 
@@ -3383,7 +3034,7 @@ export interface GetdisplayedAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3394,11 +3045,11 @@ export const GetdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetdisplayedAttributesRequest>;
 
 export type GetdisplayedAttributesResponseBodyList = Array<string>;
-export const GetdisplayedAttributesResponseBodyList =
+const GetdisplayedAttributesResponseBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetdisplayedAttributesResponseBodyList>;
 
 export type GetdisplayedAttributesResponse = GetdisplayedAttributesResponseBodyList;
-export const GetdisplayedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetdisplayedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   GetdisplayedAttributesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetdisplayedAttributesResponse",
@@ -3408,7 +3059,7 @@ export interface GetdistinctAttributeRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3419,14 +3070,14 @@ export const GetdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetdistinctAttributeRequest>;
 
 export type GetdistinctAttributeResponse = string;
-export const GetdistinctAttributeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetdistinctAttributeResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetdistinctAttributeResponse",
 }) as any as S.Schema<GetdistinctAttributeResponse>;
 
 export type GetDocumentRequestFieldsList = Array<string>;
-export const GetDocumentRequestFieldsList =
+const GetDocumentRequestFieldsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetDocumentRequestFieldsList>;
 
 export interface GetDocumentRequest {
@@ -3441,7 +3092,7 @@ export interface GetDocumentRequest {
   /** When `true`, runs the query on the whole network (all shards covered exactly once). When `false`, the query runs locally. When omitted or `null`, the default value depends on whether the sharding is enabled for the instance: - If the instance has sharding enabled (has a leader), defaults to `true`. - Otherwise defaults to `false`. It also requires the `network` [experimental feature](http://localhost:3000/reference/api/experimental-features/configure-experimental-features). Values: `true` = use the whole network; `false` = local, default = see above. When using the network, the index must exist with compatible settings on all remotes. */
   useNetwork?: boolean;
 }
-export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     document_id: S.String.pipe(T.Label()),
@@ -3454,16 +3105,16 @@ export const GetDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetDocumentRequest" }) as any as S.Schema<GetDocumentRequest>;
 
 export type GetDocumentResponse = unknown;
-export const GetDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDocumentResponse" }) as any as S.Schema<GetDocumentResponse>;
 
 export type GetDocumentsRequestFieldsList = Array<string>;
-export const GetDocumentsRequestFieldsList =
+const GetDocumentsRequestFieldsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetDocumentsRequestFieldsList>;
 
 export type GetDocumentsRequestIdsList = Array<string>;
-export const GetDocumentsRequestIdsList =
+const GetDocumentsRequestIdsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetDocumentsRequestIdsList>;
 
 export interface GetDocumentsRequest {
@@ -3486,7 +3137,7 @@ export interface GetDocumentsRequest {
   /** When `true`, runs the query on the whole network (all shards covered exactly once). When `false`, the query runs locally. When omitted or `null`, the default value depends on whether the sharding is enabled for the instance: - If the instance has sharding enabled (has a leader), defaults to `true`. - Otherwise defaults to `false`. It also requires the `network` [experimental feature](http://localhost:3000/reference/api/experimental-features/configure-experimental-features). Values: `true` = use the whole network; `false` = local, default = see above. When using the network, the index must exist with compatible settings on all remotes. */
   useNetwork?: boolean;
 }
-export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     offset: S.optional(S.Number.pipe(T.Query())),
@@ -3502,7 +3153,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Items for the current page. */
 export type PaginationViewValueResultsList = Array<unknown>;
-export const PaginationViewValueResultsList =
+const PaginationViewValueResultsList =
   DeleteDocumentsBatchRequestBodyList as any as S.Schema<PaginationViewValueResultsList>;
 
 export interface PaginationViewValue {
@@ -3515,7 +3166,7 @@ export interface PaginationViewValue {
   /** Total number of items matching the query. */
   total: number;
 }
-export const PaginationViewValue = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginationViewValueResultsList,
     offset: S.Number,
@@ -3528,7 +3179,7 @@ export interface GetembeddersRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetembeddersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetembeddersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/embedders", code: 200 })),
@@ -3538,19 +3189,19 @@ export const GetembeddersRequest = /*@__PURE__*/ S.suspend(() =>
 export type SettingEmbeddingSettingsInnerIndexingFragmentsMap = {
   [key: string]: unknown | undefined;
 };
-export const SettingEmbeddingSettingsInnerIndexingFragmentsMap =
+const SettingEmbeddingSettingsInnerIndexingFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<SettingEmbeddingSettingsInnerIndexingFragmentsMap>;
 
 /** Fragments (with [Liquid](https://shopify.github.io/liquid/)) sent to the embedder at search time. For `rest` with multimodal. See also [Image search with multimodal embeddings](https://www.meilisearch.com/docs/learn/ai_powered_search/image_search_with_multimodal_embeddings) - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SettingEmbeddingSettingsInnerSearchFragmentsMap = {
   [key: string]: unknown | undefined;
 };
-export const SettingEmbeddingSettingsInnerSearchFragmentsMap =
+const SettingEmbeddingSettingsInnerSearchFragmentsMap =
   ChatRequestLogitBiasMap as any as S.Schema<SettingEmbeddingSettingsInnerSearchFragmentsMap>;
 
 /** Extra HTTP headers sent to the embedder. - Available for `rest`. - U+1F331 Changing the value of this parameter never regenerates embeddings */
 export type SettingEmbeddingSettingsInnerHeadersMap = { [key: string]: string | undefined };
-export const SettingEmbeddingSettingsInnerHeadersMap =
+const SettingEmbeddingSettingsInnerHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<SettingEmbeddingSettingsInnerHeadersMap>;
 
 /** Embedder configuration for [AI-powered / hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). */
@@ -3587,7 +3238,7 @@ export interface SettingEmbeddingSettingsInner {
   indexingEmbedder?: SubEmbeddingSettings | null;
   distribution?: DistributionShift | null;
 }
-export const SettingEmbeddingSettingsInner = /*@__PURE__*/ S.suspend(() =>
+const SettingEmbeddingSettingsInner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     source: S.optional(S.NullOr(EmbedderSource)),
     model: S.optional(S.NullOr(S.String)),
@@ -3616,20 +3267,20 @@ export const SettingEmbeddingSettingsInner = /*@__PURE__*/ S.suspend(() =>
 export interface SettingEmbeddingSettings {
   inner?: SettingEmbeddingSettingsInner | null;
 }
-export const SettingEmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
+const SettingEmbeddingSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inner: S.optional(S.NullOr(SettingEmbeddingSettingsInner)),
   }),
 ).annotate({ identifier: "SettingEmbeddingSettings" }) as any as S.Schema<SettingEmbeddingSettings>;
 
 export type GetembeddersResponseBodyMap = { [key: string]: SettingEmbeddingSettings | undefined };
-export const GetembeddersResponseBodyMap = /*@__PURE__*/ S.Record(
+const GetembeddersResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   SettingEmbeddingSettings,
 ) as any as S.Schema<GetembeddersResponseBodyMap>;
 
 export type GetembeddersResponse = GetembeddersResponseBodyMap;
-export const GetembeddersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetembeddersResponse = /*@__PURE__*/ S.suspend(() =>
   GetembeddersResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetembeddersResponse" }) as any as S.Schema<GetembeddersResponse>;
 
@@ -3637,14 +3288,14 @@ export interface GetfacetingRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetfacetingRequest = /*@__PURE__*/ S.suspend(() =>
+const GetfacetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/faceting", code: 200 })),
 ).annotate({ identifier: "GetfacetingRequest" }) as any as S.Schema<GetfacetingRequest>;
 
 export interface GetFeaturesRequest {}
-export const GetFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/experimental-features", code: 200 })),
 ).annotate({ identifier: "GetFeaturesRequest" }) as any as S.Schema<GetFeaturesRequest>;
 
@@ -3685,7 +3336,7 @@ export interface RuntimeTogglableFeatures {
   /** Enable the `POST /mcp` route */
   mcpRoute?: boolean | null;
 }
-export const RuntimeTogglableFeatures = /*@__PURE__*/ S.suspend(() =>
+const RuntimeTogglableFeatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: S.optional(S.NullOr(S.Boolean)),
     logsRoute: S.optional(S.NullOr(S.Boolean)),
@@ -3711,7 +3362,7 @@ export interface GetfilterableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3726,11 +3377,11 @@ export const GetfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetfilterableAttributesRequest>;
 
 export type GetfilterableAttributesResponseBodyList = Array<FilterableAttributesRule>;
-export const GetfilterableAttributesResponseBodyList =
+const GetfilterableAttributesResponseBodyList =
   SettingsUncheckedFilterableAttributesList as any as S.Schema<GetfilterableAttributesResponseBodyList>;
 
 export type GetfilterableAttributesResponse = GetfilterableAttributesResponseBodyList;
-export const GetfilterableAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetfilterableAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   GetfilterableAttributesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetfilterableAttributesResponse",
@@ -3740,34 +3391,34 @@ export interface GetforeignKeysRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const GetforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/foreign-keys", code: 200 })),
 ).annotate({ identifier: "GetforeignKeysRequest" }) as any as S.Schema<GetforeignKeysRequest>;
 
 export type GetforeignKeysResponseBodyList = Array<ForeignKey>;
-export const GetforeignKeysResponseBodyList =
+const GetforeignKeysResponseBodyList =
   SettingsUncheckedForeignKeysList as any as S.Schema<GetforeignKeysResponseBodyList>;
 
 export type GetforeignKeysResponse = GetforeignKeysResponseBodyList;
-export const GetforeignKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const GetforeignKeysResponse = /*@__PURE__*/ S.suspend(() =>
   GetforeignKeysResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetforeignKeysResponse" }) as any as S.Schema<GetforeignKeysResponse>;
 
 export interface GetHealthRequest {}
-export const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
 ).annotate({ identifier: "GetHealthRequest" }) as any as S.Schema<GetHealthRequest>;
 
 export type HealthStatus = "available" | "mustRestart";
-export const HealthStatus = S.String;
+const HealthStatus = S.String;
 
 export interface HealthResponse {
   /** The status of the instance. */
   status: HealthStatus;
 }
-export const HealthResponse = /*@__PURE__*/ S.suspend(() =>
+const HealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: HealthStatus,
   }),
@@ -3777,7 +3428,7 @@ export interface GetIndexRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}", code: 200 })),
@@ -3794,7 +3445,7 @@ export interface IndexView {
   /** [Primary key](https://www.meilisearch.com/docs/learn/getting_started/primary_key) of the index */
   primaryKey?: string | null;
 }
-export const IndexView = /*@__PURE__*/ S.suspend(() =>
+const IndexView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String,
     createdAt: S.String,
@@ -3804,7 +3455,7 @@ export const IndexView = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IndexView" }) as any as S.Schema<IndexView>;
 
 export type SizeFormat = "human" | "raw";
-export const SizeFormat = S.String;
+const SizeFormat = S.String;
 
 export interface GetIndexStatsRequest {
   /** Unique identifier of the index. */
@@ -3814,7 +3465,7 @@ export interface GetIndexStatsRequest {
   /** Specify how to format the sizes: - `"raw"` (default): format sizes as a number of bytes - `"human"`: format sizes as a human-readable string with an appropriate unit. */
   sizeFormat?: SizeFormat | (string & {});
 }
-export const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     showInternalDatabaseSizes: S.optional(S.Boolean.pipe(T.Query())),
@@ -3823,18 +3474,18 @@ export const GetIndexStatsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetIndexStatsRequest" }) as any as S.Schema<GetIndexStatsRequest>;
 
 export type Size = number | string;
-export const Size = S.Unknown as any as S.Schema<Size>;
+const Size = S.Unknown as any as S.Schema<Size>;
 
 /** Size of all the internal databases for the index. Database names can change from version to version. */
 export type IndexStatsInternalDatabaseSizesMap = { [key: string]: Size | undefined };
-export const IndexStatsInternalDatabaseSizesMap = /*@__PURE__*/ S.Record(
+const IndexStatsInternalDatabaseSizesMap = /*@__PURE__*/ S.Record(
   S.String,
   Size,
 ) as any as S.Schema<IndexStatsInternalDatabaseSizesMap>;
 
 /** Association of every field name with the number of times it occurs in the documents. */
 export type IndexStatsFieldDistributionMap = { [key: string]: number | undefined };
-export const IndexStatsFieldDistributionMap =
+const IndexStatsFieldDistributionMap =
   BatchStatsViewStatusMap as any as S.Schema<IndexStatsFieldDistributionMap>;
 
 /** Stats of an `Index`, as known to the `stats` route. */
@@ -3860,7 +3511,7 @@ export interface IndexStats {
   /** Association of every field name with the number of times it occurs in the documents. */
   fieldDistribution: IndexStatsFieldDistributionMap;
 }
-export const IndexStats = /*@__PURE__*/ S.suspend(() =>
+const IndexStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     numberOfDocuments: S.Number,
     indexSize: Size,
@@ -3879,7 +3530,7 @@ export interface GetlocalizedAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3890,11 +3541,11 @@ export const GetlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetlocalizedAttributesRequest>;
 
 export type GetlocalizedAttributesResponseBodyList = Array<LocalizedAttributesRuleView>;
-export const GetlocalizedAttributesResponseBodyList =
+const GetlocalizedAttributesResponseBodyList =
   SettingsUncheckedLocalizedAttributesList as any as S.Schema<GetlocalizedAttributesResponseBodyList>;
 
 export type GetlocalizedAttributesResponse = GetlocalizedAttributesResponseBodyList;
-export const GetlocalizedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetlocalizedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
   GetlocalizedAttributesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetlocalizedAttributesResponse",
@@ -3902,7 +3553,7 @@ export const GetlocalizedAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Format for log output */
 export type LogMode = "human" | "json" | "profile";
-export const LogMode = S.String;
+const LogMode = S.String;
 
 export interface GetLogsRequest {
   /** Log targets to filter. Format: code_part=log_level (e.g., milli=trace,actix_web=off) */
@@ -3911,7 +3562,7 @@ export interface GetLogsRequest {
   /** Enable memory profiling (only useful with profile mode, significantly slows down the engine) */
   profileMemory?: boolean;
 }
-export const GetLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
     mode: S.optional(LogMode),
@@ -3920,20 +3571,20 @@ export const GetLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetLogsRequest" }) as any as S.Schema<GetLogsRequest>;
 
 export type GetLogsResponse = string;
-export const GetLogsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "GetLogsResponse" }) as any as S.Schema<GetLogsResponse>;
+const GetLogsResponse = /*@__PURE__*/ S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
+  identifier: "GetLogsResponse",
+}) as any as S.Schema<GetLogsResponse>;
 
 export interface GetMetricsRequest {}
-export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/metrics", code: 200 })),
 ).annotate({ identifier: "GetMetricsRequest" }) as any as S.Schema<GetMetricsRequest>;
 
 export interface GetMetricsResponse {}
-export const GetMetricsResponse = CancelLogsResponse as any as S.Schema<GetMetricsResponse>;
+const GetMetricsResponse = CancelLogsResponse as any as S.Schema<GetMetricsResponse>;
 
 export interface GetNetworkRequest {}
-export const GetNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/network", code: 200 })),
 ).annotate({ identifier: "GetNetworkRequest" }) as any as S.Schema<GetNetworkRequest>;
 
@@ -3946,7 +3597,7 @@ export interface Remote {
   /** API key for write operations on this remote */
   writeApiKey?: string | null;
 }
-export const Remote = /*@__PURE__*/ S.suspend(() =>
+const Remote = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     searchApiKey: S.optional(S.NullOr(S.String)),
@@ -3956,24 +3607,22 @@ export const Remote = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of remote instance names to their configurations - Pass `null` as a value for a remote to remove it from the configuration. - Removing a remote will also remove it from all shards. - Remotes that don't appear in this list will be unmodified by the network call. */
 export type NetworkRemotesMap = { [key: string]: Remote | undefined };
-export const NetworkRemotesMap = /*@__PURE__*/ S.Record(
+const NetworkRemotesMap = /*@__PURE__*/ S.Record(
   S.String,
   Remote,
 ) as any as S.Schema<NetworkRemotesMap>;
 
 /** List of remotes that own this shard. - The remotes must be part of the network's configuration - Setting this to a non-`null` value will replace all existing remotes for this shard. - `addRemotes` and `removeRemotes` are applied after `remotes` if multiple options are present. */
 export type ShardRemotesList = Array<string>;
-export const ShardRemotesList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<ShardRemotesList>;
+const ShardRemotesList = CancelTasksRequestIndexUidsList as any as S.Schema<ShardRemotesList>;
 
 /** Remotes to add to the list of owners of this shard. - The remotes must be part of the network's configuration - Setting this to non-`null` will append the listed remotes to the list of owners of this shard. - `remotes` is applied before `addRemotes` - `removeRemotes` is applied after `addRemotes` */
 export type ShardAddRemotesList = Array<string>;
-export const ShardAddRemotesList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<ShardAddRemotesList>;
+const ShardAddRemotesList = CancelTasksRequestIndexUidsList as any as S.Schema<ShardAddRemotesList>;
 
 /** Remotes to remove from the list of owners of this shard. - The remotes may or may not be part of the network's configuration - Setting this to non-`null` will remove the listed remotes from the list of owners of this shard. - `remotes` and `addRemotes` are applied before `removeRemotes` - Remotes removed from the configuration are automatically removed from all shards and it is not necessary to explicitly pass them as `removeRemotes`. */
 export type ShardRemoveRemotesList = Array<string>;
-export const ShardRemoveRemotesList =
+const ShardRemoveRemotesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<ShardRemoveRemotesList>;
 
 /** Configuration for a named shard of the network Documents are distributed among the various declared shards. Remotes own shards, meaning they own the documents that belong to these shards. */
@@ -3985,7 +3634,7 @@ export interface Shard {
   /** Remotes to remove from the list of owners of this shard. - The remotes may or may not be part of the network's configuration - Setting this to non-`null` will remove the listed remotes from the list of owners of this shard. - `remotes` and `addRemotes` are applied before `removeRemotes` - Remotes removed from the configuration are automatically removed from all shards and it is not necessary to explicitly pass them as `removeRemotes`. */
   removeRemotes?: ShardRemoveRemotesList | null;
 }
-export const Shard = /*@__PURE__*/ S.suspend(() =>
+const Shard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remotes: S.optional(S.NullOr(ShardRemotesList)),
     addRemotes: S.optional(S.NullOr(ShardAddRemotesList)),
@@ -3995,20 +3644,18 @@ export const Shard = /*@__PURE__*/ S.suspend(() =>
 
 /** Map of shard names to their configurations. - Pass `null` as a value for a shard to remove it from the configuration. - Shards that don't appear in this list will be unmodified by the network call. */
 export type NetworkShardsMap = { [key: string]: Shard | undefined };
-export const NetworkShardsMap = /*@__PURE__*/ S.Record(
+const NetworkShardsMap = /*@__PURE__*/ S.Record(
   S.String,
   Shard,
 ) as any as S.Schema<NetworkShardsMap>;
 
 /** Previous shard configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
 export type NetworkPreviousShardsMap = { [key: string]: Shard | undefined };
-export const NetworkPreviousShardsMap =
-  NetworkShardsMap as any as S.Schema<NetworkPreviousShardsMap>;
+const NetworkPreviousShardsMap = NetworkShardsMap as any as S.Schema<NetworkPreviousShardsMap>;
 
 /** Previous remote configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
 export type NetworkPreviousRemotesMap = { [key: string]: Remote | undefined };
-export const NetworkPreviousRemotesMap =
-  NetworkRemotesMap as any as S.Schema<NetworkPreviousRemotesMap>;
+const NetworkPreviousRemotesMap = NetworkRemotesMap as any as S.Schema<NetworkPreviousRemotesMap>;
 
 /** Network topology configuration for distributed Meilisearch */
 export interface Network {
@@ -4025,7 +3672,7 @@ export interface Network {
   /** Previous remote configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
   previousRemotes?: NetworkPreviousRemotesMap | null;
 }
-export const Network = /*@__PURE__*/ S.suspend(() =>
+const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remotes: S.optional(S.NullOr(NetworkRemotesMap)),
     shards: S.optional(S.NullOr(NetworkShardsMap)),
@@ -4040,7 +3687,7 @@ export interface GetnonSeparatorTokensRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4051,18 +3698,15 @@ export const GetnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetnonSeparatorTokensRequest>;
 
 export type GetnonSeparatorTokensResponseBodyList = Array<string>;
-export const GetnonSeparatorTokensResponseBodyList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetnonSeparatorTokensResponseBodyList>;
-
 export type GetnonSeparatorTokensResponse = GetnonSeparatorTokensResponseBodyList;
-export const GetnonSeparatorTokensResponse =
+const GetnonSeparatorTokensResponse =
   GetdisplayedAttributesResponse as any as S.Schema<GetnonSeparatorTokensResponse>;
 
 export interface GetpaginationRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetpaginationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetpaginationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/pagination", code: 200 })),
@@ -4072,7 +3716,7 @@ export interface GetproximityPrecisionRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4083,10 +3727,10 @@ export const GetproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetproximityPrecisionRequest>;
 
 export type ProximityPrecisionView = "byWord" | "byAttribute";
-export const ProximityPrecisionView = S.String;
+const ProximityPrecisionView = S.String;
 
 export type GetproximityPrecisionResponse = ProximityPrecisionView;
-export const GetproximityPrecisionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetproximityPrecisionResponse = /*@__PURE__*/ S.suspend(() =>
   ProximityPrecisionView.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetproximityPrecisionResponse",
@@ -4096,7 +3740,7 @@ export interface GetrankingRulesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/ranking-rules", code: 200 })),
@@ -4104,58 +3748,30 @@ export const GetrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Sorted by decreasing number of matched query terms. */
 export type RankingRuleViewCase0 = "words";
-export const RankingRuleViewCase0 = S.String;
-
 /** Sorted by increasing number of typos. */
 export type RankingRuleViewCase1 = "typo";
-export const RankingRuleViewCase1 = S.String;
-
 /** Sorted by increasing distance between matched query terms. */
 export type RankingRuleViewCase2 = "proximity";
-export const RankingRuleViewCase2 = S.String;
-
 /** Documents with query words contained in more important attributes and at a closer-to-the-front position in it are considered better. */
 export type RankingRuleViewCase3 = "attribute";
-export const RankingRuleViewCase3 = S.String;
-
 /** Documents with query words contained in more important attributes are considered better. Position of the query words in an attribute is not considered. */
 export type RankingRuleViewCase4 = "attributeRank";
-export const RankingRuleViewCase4 = S.String;
-
 /** Documents with query words that are closer to the front of an attribute are considered better. Attribute rank is not considered. */
 export type RankingRuleViewCase5 = "wordPosition";
-export const RankingRuleViewCase5 = S.String;
-
 /** Dynamically sort at query time the documents. None, one or multiple Asc/Desc sortable attributes can be used in place of this criterion at query time. */
 export type RankingRuleViewCase6 = "sort";
-export const RankingRuleViewCase6 = S.String;
-
 /** Sorted by the similarity of the matched words with the query words. */
 export type RankingRuleViewCase7 = "exactness";
-export const RankingRuleViewCase7 = S.String;
-
 /** Sorted by the increasing value of the field specified. */
 export interface RankingRuleViewCase8 {
   /** Sorted by the increasing value of the field specified. */
   asc: string;
 }
-export const RankingRuleViewCase8 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    asc: S.String,
-  }),
-).annotate({ identifier: "RankingRuleViewCase8" }) as any as S.Schema<RankingRuleViewCase8>;
-
 /** Sorted by the decreasing value of the field specified. */
 export interface RankingRuleViewCase9 {
   /** Sorted by the decreasing value of the field specified. */
   desc: string;
 }
-export const RankingRuleViewCase9 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    desc: S.String,
-  }),
-).annotate({ identifier: "RankingRuleViewCase9" }) as any as S.Schema<RankingRuleViewCase9>;
-
 export type RankingRuleView =
   | RankingRuleViewCase0
   | RankingRuleViewCase1
@@ -4167,15 +3783,15 @@ export type RankingRuleView =
   | RankingRuleViewCase7
   | RankingRuleViewCase8
   | RankingRuleViewCase9;
-export const RankingRuleView = S.Unknown as any as S.Schema<RankingRuleView>;
+const RankingRuleView = S.Unknown as any as S.Schema<RankingRuleView>;
 
 export type GetrankingRulesResponseBodyList = Array<RankingRuleView>;
-export const GetrankingRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetrankingRulesResponseBodyList = /*@__PURE__*/ S.Array(
   RankingRuleView,
 ) as any as S.Schema<GetrankingRulesResponseBodyList>;
 
 export type GetrankingRulesResponse = GetrankingRulesResponseBodyList;
-export const GetrankingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetrankingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   GetrankingRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetrankingRulesResponse" }) as any as S.Schema<GetrankingRulesResponse>;
 
@@ -4183,7 +3799,7 @@ export interface GetRuleRequest {
   /** Unique identifier of the search rule. */
   uid: string;
 }
-export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/dynamic-search-rules/{uid}", code: 200 })),
@@ -4195,7 +3811,7 @@ export interface TimeCondition {
   /** End of the time range where this rule can be considered active. Specify as a RFC3339 datetime. */
   end?: string | null;
 }
-export const TimeCondition = /*@__PURE__*/ S.suspend(() =>
+const TimeCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.NullOr(S.String)),
     end: S.optional(S.NullOr(S.String)),
@@ -4208,7 +3824,7 @@ export interface QueryCondition {
   /** If present and non-null, specifies that the rule can only be active if all the specified words are present in the search query. */
   words?: string | null;
 }
-export const QueryCondition = /*@__PURE__*/ S.suspend(() =>
+const QueryCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isEmpty: S.optional(S.NullOr(S.Boolean)),
     words: S.optional(S.NullOr(S.String)),
@@ -4216,13 +3832,13 @@ export const QueryCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryCondition" }) as any as S.Schema<QueryCondition>;
 
 export type FilterConditionValuesMap = { [key: string]: unknown | undefined };
-export const FilterConditionValuesMap =
+const FilterConditionValuesMap =
   ChatRequestLogitBiasMap as any as S.Schema<FilterConditionValuesMap>;
 
 export interface FilterCondition {
   values?: FilterConditionValuesMap;
 }
-export const FilterCondition = /*@__PURE__*/ S.suspend(() =>
+const FilterCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: S.optional(FilterConditionValuesMap),
   }),
@@ -4233,7 +3849,7 @@ export interface Conditions {
   query?: QueryCondition | null;
   filter?: FilterCondition | null;
 }
-export const Conditions = /*@__PURE__*/ S.suspend(() =>
+const Conditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     time: S.optional(S.NullOr(TimeCondition)),
     query: S.optional(S.NullOr(QueryCondition)),
@@ -4250,7 +3866,7 @@ export interface PinAction {
   /** Position at which the document should be pinned. */
   position: number;
 }
-export const PinAction = /*@__PURE__*/ S.suspend(() =>
+const PinAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexUid: S.optional(S.NullOr(S.String)),
     id: S.String,
@@ -4260,14 +3876,11 @@ export const PinAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Pins a selected document. */
 export type RuleActionsPinList = Array<PinAction>;
-export const RuleActionsPinList = /*@__PURE__*/ S.Array(
-  PinAction,
-) as any as S.Schema<RuleActionsPinList>;
+const RuleActionsPinList = /*@__PURE__*/ S.Array(PinAction) as any as S.Schema<RuleActionsPinList>;
 
 /** Array of specific document IDs to select. Only documents whose [primary key](https://www.meilisearch.com/docs/learn/getting_started/primary_key) value matches the specified ids will be selected by the action. If `filter` is also specified, the documents must also satisfy the filter to be selected. */
 export type ScaleActionIdsList = Array<string>;
-export const ScaleActionIdsList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<ScaleActionIdsList>;
+const ScaleActionIdsList = CancelTasksRequestIndexUidsList as any as S.Schema<ScaleActionIdsList>;
 
 /** An action that applies a multiplicative factor to the score of selected documents. */
 export interface ScaleAction {
@@ -4280,7 +3893,7 @@ export interface ScaleAction {
   /** Scale factor for selected documents. - Set it >1.0 to boost the selected documents. - Set it <1.0 to deboost the selected documents. - Set it =0.0 to hide the selected documents. */
   weight: number;
 }
-export const ScaleAction = /*@__PURE__*/ S.suspend(() =>
+const ScaleAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexUid: S.optional(S.NullOr(S.String)),
     ids: S.optional(S.NullOr(ScaleActionIdsList)),
@@ -4291,7 +3904,7 @@ export const ScaleAction = /*@__PURE__*/ S.suspend(() =>
 
 /** Applies a multiplicative factor to the score of selected documents. */
 export type RuleActionsScaleList = Array<ScaleAction>;
-export const RuleActionsScaleList = /*@__PURE__*/ S.Array(
+const RuleActionsScaleList = /*@__PURE__*/ S.Array(
   ScaleAction,
 ) as any as S.Schema<RuleActionsScaleList>;
 
@@ -4302,7 +3915,7 @@ export interface RuleActions {
   /** Applies a multiplicative factor to the score of selected documents. */
   scale?: RuleActionsScaleList;
 }
-export const RuleActions = /*@__PURE__*/ S.suspend(() =>
+const RuleActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pin: S.optional(RuleActionsPinList),
     scale: S.optional(RuleActionsScaleList),
@@ -4325,7 +3938,7 @@ export interface DynamicSearchRule {
   /** Actions to apply when the dynamic search rule matches. */
   actions?: RuleActions;
 }
-export const DynamicSearchRule = /*@__PURE__*/ S.suspend(() =>
+const DynamicSearchRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -4341,7 +3954,7 @@ export interface GetsearchableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4356,18 +3969,15 @@ export const GetsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetsearchableAttributesRequest>;
 
 export type GetsearchableAttributesResponseBodyList = Array<string>;
-export const GetsearchableAttributesResponseBodyList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetsearchableAttributesResponseBodyList>;
-
 export type GetsearchableAttributesResponse = GetsearchableAttributesResponseBodyList;
-export const GetsearchableAttributesResponse =
+const GetsearchableAttributesResponse =
   GetdisplayedAttributesResponse as any as S.Schema<GetsearchableAttributesResponse>;
 
 export interface GetsearchCutoffMsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4376,7 +3986,7 @@ export const GetsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetsearchCutoffMsRequest" }) as any as S.Schema<GetsearchCutoffMsRequest>;
 
 export type GetsearchCutoffMsResponse = number;
-export const GetsearchCutoffMsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetsearchCutoffMsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Number.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetsearchCutoffMsResponse",
@@ -4386,7 +3996,7 @@ export interface GetseparatorTokensRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4397,28 +4007,25 @@ export const GetseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetseparatorTokensRequest>;
 
 export type GetseparatorTokensResponseBodyList = Array<string>;
-export const GetseparatorTokensResponseBodyList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetseparatorTokensResponseBodyList>;
-
 export type GetseparatorTokensResponse = GetseparatorTokensResponseBodyList;
-export const GetseparatorTokensResponse =
+const GetseparatorTokensResponse =
   GetdisplayedAttributesResponse as any as S.Schema<GetseparatorTokensResponse>;
 
 export interface GetSettingsRequest {
   /** The unique identifier of the chat workspace. */
   workspace_uid: string;
 }
-export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/chats/{workspace_uid}/settings", code: 200 })),
 ).annotate({ identifier: "GetSettingsRequest" }) as any as S.Schema<GetSettingsRequest>;
 
 export interface GetSettingsResponse {}
-export const GetSettingsResponse = CancelLogsResponse as any as S.Schema<GetSettingsResponse>;
+const GetSettingsResponse = CancelLogsResponse as any as S.Schema<GetSettingsResponse>;
 
 export type GetSimilarRequestAttributesToRetrieveList = Array<string>;
-export const GetSimilarRequestAttributesToRetrieveList =
+const GetSimilarRequestAttributesToRetrieveList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetSimilarRequestAttributesToRetrieveList>;
 
 export interface GetSimilarRequest {
@@ -4447,7 +4054,7 @@ export interface GetSimilarRequest {
   /** Minimum ranking score threshold (between 0.0 and 1.0) that documents must meet to be included in results. Documents with a similarity score below this threshold will be excluded. Useful for ensuring only highly similar documents are returned. */
   ranking_score_threshold?: number;
 }
-export const GetSimilarRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSimilarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Query()),
@@ -4466,12 +4073,11 @@ export const GetSimilarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Document with highlighted and cropped attributes. Present when `attributesToHighlight` or `attributesToCrop` was set. */
 export type SearchHitFormattedMap = { [key: string]: unknown | undefined };
-export const SearchHitFormattedMap =
-  ChatRequestLogitBiasMap as any as S.Schema<SearchHitFormattedMap>;
+const SearchHitFormattedMap = ChatRequestLogitBiasMap as any as S.Schema<SearchHitFormattedMap>;
 
 /** Byte indices of individual matched characters when the match spans multiple positions (e.g., for prefix matches). This is `null` for simple contiguous matches. */
 export type MatchBoundsIndicesList = Array<number>;
-export const MatchBoundsIndicesList =
+const MatchBoundsIndicesList =
   CancelTasksRequestUidsList as any as S.Schema<MatchBoundsIndicesList>;
 
 /** Represents the position of a matching term in a document field. Used to indicate where query terms were found within attribute values, enabling features like highlighting and match position display. */
@@ -4483,7 +4089,7 @@ export interface MatchBounds {
   /** Byte indices of individual matched characters when the match spans multiple positions (e.g., for prefix matches). This is `null` for simple contiguous matches. */
   indices?: MatchBoundsIndicesList | null;
 }
-export const MatchBounds = /*@__PURE__*/ S.suspend(() =>
+const MatchBounds = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.Number,
     length: S.Number,
@@ -4492,7 +4098,7 @@ export const MatchBounds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchBounds" }) as any as S.Schema<MatchBounds>;
 
 export type SearchHitMatchesPositionValueList = Array<MatchBounds>;
-export const SearchHitMatchesPositionValueList = /*@__PURE__*/ S.Array(
+const SearchHitMatchesPositionValueList = /*@__PURE__*/ S.Array(
   MatchBounds,
 ) as any as S.Schema<SearchHitMatchesPositionValueList>;
 
@@ -4500,14 +4106,14 @@ export const SearchHitMatchesPositionValueList = /*@__PURE__*/ S.Array(
 export type SearchHitMatchesPositionMap = {
   [key: string]: SearchHitMatchesPositionValueList | undefined;
 };
-export const SearchHitMatchesPositionMap = /*@__PURE__*/ S.Record(
+const SearchHitMatchesPositionMap = /*@__PURE__*/ S.Record(
   S.String,
   SearchHitMatchesPositionValueList,
 ) as any as S.Schema<SearchHitMatchesPositionMap>;
 
 /** Per-rule score breakdown (words, typo, proximity, etc.). Present when `showRankingScoreDetails` was true. */
 export type SearchHitRankingScoreDetailsMap = { [key: string]: unknown | undefined };
-export const SearchHitRankingScoreDetailsMap =
+const SearchHitRankingScoreDetailsMap =
   ChatRequestLogitBiasMap as any as S.Schema<SearchHitRankingScoreDetailsMap>;
 
 /** A single search result hit. */
@@ -4521,7 +4127,7 @@ export interface SearchHit {
   /** Per-rule score breakdown (words, typo, proximity, etc.). Present when `showRankingScoreDetails` was true. */
   _rankingScoreDetails?: SearchHitRankingScoreDetailsMap | null;
 }
-export const SearchHit = /*@__PURE__*/ S.suspend(() =>
+const SearchHit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _formatted: S.optional(SearchHitFormattedMap),
     _matchesPosition: S.optional(S.NullOr(SearchHitMatchesPositionMap)),
@@ -4532,7 +4138,7 @@ export const SearchHit = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the query */
 export type GetSimilarResponseHitsList = Array<SearchHit>;
-export const GetSimilarResponseHitsList = /*@__PURE__*/ S.Array(
+const GetSimilarResponseHitsList = /*@__PURE__*/ S.Array(
   SearchHit,
 ) as any as S.Schema<GetSimilarResponseHitsList>;
 
@@ -4560,7 +4166,7 @@ export interface GetSimilarResponse {
   /** Performance details of the query */
   performanceDetails?: unknown;
 }
-export const GetSimilarResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSimilarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hitsPerPage: S.optional(S.Number),
     page: S.optional(S.Number),
@@ -4580,7 +4186,7 @@ export interface GetsortableAttributesRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -4591,11 +4197,8 @@ export const GetsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetsortableAttributesRequest>;
 
 export type GetsortableAttributesResponseBodyList = Array<string>;
-export const GetsortableAttributesResponseBodyList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetsortableAttributesResponseBodyList>;
-
 export type GetsortableAttributesResponse = GetsortableAttributesResponseBodyList;
-export const GetsortableAttributesResponse =
+const GetsortableAttributesResponse =
   GetdisplayedAttributesResponse as any as S.Schema<GetsortableAttributesResponse>;
 
 export interface GetStatsRequest {
@@ -4604,7 +4207,7 @@ export interface GetStatsRequest {
   /** Specify how to format the sizes: - `"raw"` (default): format sizes as a number of bytes - `"human"`: format sizes as a human-readable string with an appropriate unit. */
   sizeFormat?: SizeFormat | (string & {});
 }
-export const GetStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     showInternalDatabaseSizes: S.optional(S.Boolean.pipe(T.Query())),
     sizeFormat: S.optional(SizeFormat.pipe(T.Query())),
@@ -4613,7 +4216,7 @@ export const GetStatsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Statistics for each index */
 export type StatsIndexesMap = { [key: string]: IndexStats | undefined };
-export const StatsIndexesMap = /*@__PURE__*/ S.Record(
+const StatsIndexesMap = /*@__PURE__*/ S.Record(
   S.String,
   IndexStats,
 ) as any as S.Schema<StatsIndexesMap>;
@@ -4629,7 +4232,7 @@ export interface Stats {
   /** Statistics for each index */
   indexes: StatsIndexesMap;
 }
-export const Stats = /*@__PURE__*/ S.suspend(() =>
+const Stats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     databaseSize: Size,
     usedDatabaseSize: Size,
@@ -4642,41 +4245,35 @@ export interface GetstopWordsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetstopWordsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetstopWordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/stop-words", code: 200 })),
 ).annotate({ identifier: "GetstopWordsRequest" }) as any as S.Schema<GetstopWordsRequest>;
 
 export type GetstopWordsResponseBodyList = Array<string>;
-export const GetstopWordsResponseBodyList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetstopWordsResponseBodyList>;
-
 export type GetstopWordsResponse = GetstopWordsResponseBodyList;
-export const GetstopWordsResponse = GetdictionaryResponse as any as S.Schema<GetstopWordsResponse>;
+const GetstopWordsResponse = GetdictionaryResponse as any as S.Schema<GetstopWordsResponse>;
 
 export interface GetsynonymsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GetsynonymsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetsynonymsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/synonyms", code: 200 })),
 ).annotate({ identifier: "GetsynonymsRequest" }) as any as S.Schema<GetsynonymsRequest>;
 
 export type GetsynonymsResponseBodyValueList = Array<string>;
-export const GetsynonymsResponseBodyValueList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<GetsynonymsResponseBodyValueList>;
-
 export type GetsynonymsResponseBodyMap = {
   [key: string]: GetsynonymsResponseBodyValueList | undefined;
 };
-export const GetsynonymsResponseBodyMap =
+const GetsynonymsResponseBodyMap =
   SettingsUncheckedSynonymsMap as any as S.Schema<GetsynonymsResponseBodyMap>;
 
 export type GetsynonymsResponse = GetsynonymsResponseBodyMap;
-export const GetsynonymsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetsynonymsResponse = /*@__PURE__*/ S.suspend(() =>
   GetsynonymsResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetsynonymsResponse" }) as any as S.Schema<GetsynonymsResponse>;
 
@@ -4684,7 +4281,7 @@ export interface GetTaskRequest {
   /** The task identifier. */
   task_id: number;
 }
-export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/tasks/{task_id}", code: 200 })),
@@ -4981,10 +4578,10 @@ export type Code =
   | "invalid_dynamic_search_rule_filter_query"
   | "invalid_dynamic_search_rule_filter_active"
   | "dynamic_search_rule_not_found";
-export const Code = S.String;
+const Code = S.String;
 
 export type ErrorType = "internal" | "invalid_request" | "auth" | "system";
-export const ErrorType = S.String;
+const ErrorType = S.String;
 
 export interface ResponseError {
   /** The error message. */
@@ -4996,7 +4593,7 @@ export interface ResponseError {
   /** A link to the documentation about this specific error. */
   link: string;
 }
-export const ResponseError = /*@__PURE__*/ S.suspend(() =>
+const ResponseError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     code: Code,
@@ -5014,7 +4611,7 @@ export interface Origin {
   /** The version of the network topology when this task was created. Used to ensure consistent task routing during network topology changes. */
   networkVersion?: string;
 }
-export const Origin = /*@__PURE__*/ S.suspend(() =>
+const Origin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remoteName: S.String,
     taskUid: S.Number,
@@ -5026,43 +4623,18 @@ export const Origin = /*@__PURE__*/ S.suspend(() =>
 export interface DbTaskNetworkCase0 {
   origin: Origin;
 }
-export const DbTaskNetworkCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: Origin,
-  }),
-).annotate({ identifier: "DbTaskNetworkCase0" }) as any as S.Schema<DbTaskNetworkCase0>;
-
 /** Represents a task that was replicated to a remote Meilisearch instance. Contains either the remote task UID on success, or an error if replication failed. */
 export interface RemoteTask {
   /** The unique task identifier assigned by the remote Meilisearch instance. Present when the task was successfully replicated to the remote. */
   taskUid?: number | null;
   error?: ResponseError | null;
 }
-export const RemoteTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskUid: S.optional(S.NullOr(S.Number)),
-    error: S.optional(S.NullOr(ResponseError)),
-  }),
-).annotate({ identifier: "RemoteTask" }) as any as S.Schema<RemoteTask>;
-
 export type DbTaskNetworkCase1RemoteTasksMap = { [key: string]: RemoteTask | undefined };
-export const DbTaskNetworkCase1RemoteTasksMap = /*@__PURE__*/ S.Record(
-  S.String,
-  RemoteTask,
-) as any as S.Schema<DbTaskNetworkCase1RemoteTasksMap>;
-
 /** Tasks that were duplicated as `remote_tasks` */
 export interface DbTaskNetworkCase1 {
   remote_tasks: DbTaskNetworkCase1RemoteTasksMap;
   network_version?: string;
 }
-export const DbTaskNetworkCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remote_tasks: DbTaskNetworkCase1RemoteTasksMap,
-    network_version: S.optional(S.String),
-  }),
-).annotate({ identifier: "DbTaskNetworkCase1" }) as any as S.Schema<DbTaskNetworkCase1>;
-
 /** Import data stored in a task */
 export interface ImportData {
   /** Remote that this task is imported from */
@@ -5072,28 +4644,13 @@ export interface ImportData {
   /** Number of documents in this task */
   documentCount: number;
 }
-export const ImportData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remoteName: S.String,
-    indexName: S.optional(S.NullOr(S.String)),
-    documentCount: S.Number,
-  }),
-).annotate({ identifier: "ImportData" }) as any as S.Schema<ImportData>;
-
 /** Document import tasks sent in the context of `network_change` */
 export interface DbTaskNetworkCase2 {
   import_from: ImportData;
   network_change: Origin;
 }
-export const DbTaskNetworkCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    import_from: ImportData,
-    network_change: Origin,
-  }),
-).annotate({ identifier: "DbTaskNetworkCase2" }) as any as S.Schema<DbTaskNetworkCase2>;
-
 export type DbTaskNetwork = DbTaskNetworkCase0 | DbTaskNetworkCase1 | DbTaskNetworkCase2;
-export const DbTaskNetwork = S.Unknown as any as S.Schema<DbTaskNetwork>;
+const DbTaskNetwork = S.Unknown as any as S.Schema<DbTaskNetwork>;
 
 /** Represents the current state and details of an asynchronous task. Tasks are created when you perform operations like adding documents, updating settings, or creating indexes. Use this view to monitor task progress and check for errors. */
 export interface TaskView {
@@ -5124,7 +4681,7 @@ export interface TaskView {
   /** Custom metadata string that was attached to this task when it was created. This can be used to associate tasks with external systems, track task origins, or add any application-specific information. */
   customMetadata?: string | null;
 }
-export const TaskView = /*@__PURE__*/ S.suspend(() =>
+const TaskView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.Number,
     batchUid: S.optional(S.NullOr(S.Number)),
@@ -5147,7 +4704,7 @@ export interface GetTaskDocumentsFileRequest {
   /** The task identifier. */
   task_id: number;
 }
-export const GetTaskDocumentsFileRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTaskDocumentsFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/tasks/{task_id}/documents", code: 200 })),
@@ -5156,31 +4713,31 @@ export const GetTaskDocumentsFileRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTaskDocumentsFileRequest>;
 
 export interface GetTaskDocumentsFileResponse {}
-export const GetTaskDocumentsFileResponse =
+const GetTaskDocumentsFileResponse =
   CancelLogsResponse as any as S.Schema<GetTaskDocumentsFileResponse>;
 
 export type GetTasksRequestBatchUidsList = Array<number>;
-export const GetTasksRequestBatchUidsList =
+const GetTasksRequestBatchUidsList =
   CancelTasksRequestUidsList as any as S.Schema<GetTasksRequestBatchUidsList>;
 
 export type GetTasksRequestUidsList = Array<number>;
-export const GetTasksRequestUidsList =
+const GetTasksRequestUidsList =
   CancelTasksRequestUidsList as any as S.Schema<GetTasksRequestUidsList>;
 
 export type GetTasksRequestCanceledByList = Array<number>;
-export const GetTasksRequestCanceledByList =
+const GetTasksRequestCanceledByList =
   CancelTasksRequestUidsList as any as S.Schema<GetTasksRequestCanceledByList>;
 
 export type GetTasksRequestTypesList = Array<string>;
-export const GetTasksRequestTypesList =
+const GetTasksRequestTypesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetTasksRequestTypesList>;
 
 export type GetTasksRequestStatusesList = Array<Status | (string & {})>;
-export const GetTasksRequestStatusesList =
+const GetTasksRequestStatusesList =
   CancelTasksRequestStatusesList as any as S.Schema<GetTasksRequestStatusesList>;
 
 export type GetTasksRequestIndexUidsList = Array<string>;
-export const GetTasksRequestIndexUidsList =
+const GetTasksRequestIndexUidsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<GetTasksRequestIndexUidsList>;
 
 export interface GetTasksRequest {
@@ -5215,7 +4772,7 @@ export interface GetTasksRequest {
   /** Permits to filter tasks based on their finishedAt time. Matches tasks finished before the given date. Supports RFC 3339 date format. */
   beforeFinishedAt?: string;
 }
-export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     from: S.optional(S.Number.pipe(T.Query())),
@@ -5237,9 +4794,7 @@ export const GetTasksRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of task objects matching the query */
 export type AllTasksResultsList = Array<TaskView>;
-export const AllTasksResultsList = /*@__PURE__*/ S.Array(
-  TaskView,
-) as any as S.Schema<AllTasksResultsList>;
+const AllTasksResultsList = /*@__PURE__*/ S.Array(TaskView) as any as S.Schema<AllTasksResultsList>;
 
 /** Response containing a paginated list of tasks */
 export interface AllTasks {
@@ -5254,7 +4809,7 @@ export interface AllTasks {
   /** Value to pass as `from` parameter to get the next page. When `null`, there are no more tasks to retrieve. */
   next?: number | null;
 }
-export const AllTasks = /*@__PURE__*/ S.suspend(() =>
+const AllTasks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: AllTasksResultsList,
     total: S.Number,
@@ -5265,18 +4820,18 @@ export const AllTasks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AllTasks" }) as any as S.Schema<AllTasks>;
 
 export interface GetTasksStreamRequest {}
-export const GetTasksStreamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTasksStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/tasks/stream", code: 200 })),
 ).annotate({ identifier: "GetTasksStreamRequest" }) as any as S.Schema<GetTasksStreamRequest>;
 
 export interface GetTasksStreamResponse {}
-export const GetTasksStreamResponse = CancelLogsResponse as any as S.Schema<GetTasksStreamResponse>;
+const GetTasksStreamResponse = CancelLogsResponse as any as S.Schema<GetTasksStreamResponse>;
 
 export interface GettypoToleranceRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const GettypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
+const GettypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -5285,7 +4840,7 @@ export const GettypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GettypoToleranceRequest" }) as any as S.Schema<GettypoToleranceRequest>;
 
 export interface GetVersionRequest {}
-export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/version", code: 200 })),
 ).annotate({ identifier: "GetVersionRequest" }) as any as S.Schema<GetVersionRequest>;
 
@@ -5297,7 +4852,7 @@ export interface VersionResponse {
   /** The version of Meilisearch. */
   pkgVersion: string;
 }
-export const VersionResponse = /*@__PURE__*/ S.suspend(() =>
+const VersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitSha: S.String,
     commitDate: S.String,
@@ -5309,7 +4864,7 @@ export interface GetWebhookRequest {
   /** Universally unique identifier of the webhook. */
   uuid: string;
 }
-export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/webhooks/{uuid}", code: 200 })),
@@ -5317,9 +4872,6 @@ export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HTTP headers to include in webhook requests. */
 export type GetWebhookResponseHeadersMap = { [key: string]: string | undefined };
-export const GetWebhookResponseHeadersMap =
-  CreateWebhookRequestHeadersMap as any as S.Schema<GetWebhookResponseHeadersMap>;
-
 export interface GetWebhookResponse {
   /** URL endpoint to call when tasks complete. */
   url?: string | null;
@@ -5330,10 +4882,10 @@ export interface GetWebhookResponse {
   /** Whether the webhook can be edited. */
   isEditable: boolean;
 }
-export const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
+const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
 
 export interface GetWebhooksRequest {}
-export const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/webhooks", code: 200 })),
 ).annotate({ identifier: "GetWebhooksRequest" }) as any as S.Schema<GetWebhooksRequest>;
 
@@ -5341,7 +4893,7 @@ export const GetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
 export type WebhookWithMetadataRedactedAuthorizationHeadersMap = {
   [key: string]: string | undefined;
 };
-export const WebhookWithMetadataRedactedAuthorizationHeadersMap =
+const WebhookWithMetadataRedactedAuthorizationHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<WebhookWithMetadataRedactedAuthorizationHeadersMap>;
 
 /** Webhook object with metadata and redacted authorization headers. */
@@ -5355,7 +4907,7 @@ export interface WebhookWithMetadataRedactedAuthorization {
   /** Whether the webhook can be edited. */
   isEditable: boolean;
 }
-export const WebhookWithMetadataRedactedAuthorization = /*@__PURE__*/ S.suspend(() =>
+const WebhookWithMetadataRedactedAuthorization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.NullOr(S.String)),
     headers: S.optional(S.NullOr(WebhookWithMetadataRedactedAuthorizationHeadersMap)),
@@ -5368,7 +4920,7 @@ export const WebhookWithMetadataRedactedAuthorization = /*@__PURE__*/ S.suspend(
 
 /** All webhooks configured on the instance. Each entry includes UUID, URL, headers (authorization redacted), and editability. */
 export type WebhookResultsResultsList = Array<WebhookWithMetadataRedactedAuthorization>;
-export const WebhookResultsResultsList = /*@__PURE__*/ S.Array(
+const WebhookResultsResultsList = /*@__PURE__*/ S.Array(
   WebhookWithMetadataRedactedAuthorization,
 ) as any as S.Schema<WebhookResultsResultsList>;
 
@@ -5377,7 +4929,7 @@ export interface WebhookResults {
   /** All webhooks configured on the instance. Each entry includes UUID, URL, headers (authorization redacted), and editability. */
   results: WebhookResultsResultsList;
 }
-export const WebhookResults = /*@__PURE__*/ S.suspend(() =>
+const WebhookResults = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: WebhookResultsResultsList,
   }),
@@ -5389,7 +4941,7 @@ export interface ListApiKeysRequest {
   /** Maximum number of keys to return. Use with `offset` for pagination. Defaults to 20. */
   limit?: number;
 }
-export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -5398,12 +4950,12 @@ export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of actions (permissions) this key is allowed to perform. Examples include `documents.add`, `search`, `indexes.create`, `settings.update`, etc. Use `*` to grant all permissions. */
 export type PaginationViewKeyViewResultsItemActionsList = Array<Action>;
-export const PaginationViewKeyViewResultsItemActionsList =
+const PaginationViewKeyViewResultsItemActionsList =
   CreateApiKeyRequestActionsList as any as S.Schema<PaginationViewKeyViewResultsItemActionsList>;
 
 /** The list of index UIDs this key can access. Use `*` to grant access to all indexes, including future ones. Patterns are also supported, e.g., `movies_*` matches any index starting with "movies_". */
 export type PaginationViewKeyViewResultsItemIndexesList = Array<string>;
-export const PaginationViewKeyViewResultsItemIndexesList =
+const PaginationViewKeyViewResultsItemIndexesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PaginationViewKeyViewResultsItemIndexesList>;
 
 /** Represents an API key used for authenticating requests to Meilisearch. Each key has specific permissions defined by its actions and can be scoped to particular indexes. Keys provide fine-grained access control for your Meilisearch instance. */
@@ -5427,7 +4979,7 @@ export interface PaginationViewKeyViewResultsItem {
   /** The date and time when this API key was last modified, formatted as an RFC 3339 date-time string. This is automatically updated by Meilisearch when the key's name or description changes. */
   updatedAt: string;
 }
-export const PaginationViewKeyViewResultsItem = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewKeyViewResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.NullOr(S.String)),
     description: S.optional(S.NullOr(S.String)),
@@ -5445,7 +4997,7 @@ export const PaginationViewKeyViewResultsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Items for the current page. */
 export type PaginationViewKeyViewResultsList = Array<PaginationViewKeyViewResultsItem>;
-export const PaginationViewKeyViewResultsList = /*@__PURE__*/ S.Array(
+const PaginationViewKeyViewResultsList = /*@__PURE__*/ S.Array(
   PaginationViewKeyViewResultsItem,
 ) as any as S.Schema<PaginationViewKeyViewResultsList>;
 
@@ -5459,7 +5011,7 @@ export interface PaginationViewKeyView {
   /** Total number of items matching the query. */
   total: number;
 }
-export const PaginationViewKeyView = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewKeyView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginationViewKeyViewResultsList,
     offset: S.Number,
@@ -5474,7 +5026,7 @@ export interface ListIndexesRequest {
   /** The number of indexes to retrieve. */
   limit?: number;
 }
-export const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -5492,7 +5044,7 @@ export interface PaginationViewIndexViewResultsItem {
   /** [Primary key](https://www.meilisearch.com/docs/learn/getting_started/primary_key) of the index */
   primaryKey?: string | null;
 }
-export const PaginationViewIndexViewResultsItem = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewIndexViewResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String,
     createdAt: S.String,
@@ -5505,7 +5057,7 @@ export const PaginationViewIndexViewResultsItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Items for the current page. */
 export type PaginationViewIndexViewResultsList = Array<PaginationViewIndexViewResultsItem>;
-export const PaginationViewIndexViewResultsList = /*@__PURE__*/ S.Array(
+const PaginationViewIndexViewResultsList = /*@__PURE__*/ S.Array(
   PaginationViewIndexViewResultsItem,
 ) as any as S.Schema<PaginationViewIndexViewResultsList>;
 
@@ -5519,7 +5071,7 @@ export interface PaginationViewIndexView {
   /** Total number of items matching the query. */
   total: number;
 }
-export const PaginationViewIndexView = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewIndexView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginationViewIndexViewResultsList,
     offset: S.Number,
@@ -5534,7 +5086,7 @@ export interface ListRulesFilter {
   /** Only include rules that are active (true) or not active (false). */
   active?: boolean | null;
 }
-export const ListRulesFilter = /*@__PURE__*/ S.suspend(() =>
+const ListRulesFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.NullOr(S.String)),
     active: S.optional(S.NullOr(S.Boolean)),
@@ -5548,7 +5100,7 @@ export interface ListRulesRequest {
   limit?: number;
   filter?: ListRulesFilter | null;
 }
-export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     offset: S.optional(S.Number),
     limit: S.optional(S.Number),
@@ -5572,7 +5124,7 @@ export interface PaginationViewDynamicSearchRuleResultsItem {
   /** Actions to apply when the dynamic search rule matches. */
   actions?: RuleActions;
 }
-export const PaginationViewDynamicSearchRuleResultsItem = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewDynamicSearchRuleResultsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String,
     description: S.optional(S.NullOr(S.String)),
@@ -5589,7 +5141,7 @@ export const PaginationViewDynamicSearchRuleResultsItem = /*@__PURE__*/ S.suspen
 /** Items for the current page. */
 export type PaginationViewDynamicSearchRuleResultsList =
   Array<PaginationViewDynamicSearchRuleResultsItem>;
-export const PaginationViewDynamicSearchRuleResultsList = /*@__PURE__*/ S.Array(
+const PaginationViewDynamicSearchRuleResultsList = /*@__PURE__*/ S.Array(
   PaginationViewDynamicSearchRuleResultsItem,
 ) as any as S.Schema<PaginationViewDynamicSearchRuleResultsList>;
 
@@ -5603,7 +5155,7 @@ export interface PaginationViewDynamicSearchRule {
   /** Total number of items matching the query. */
   total: number;
 }
-export const PaginationViewDynamicSearchRule = /*@__PURE__*/ S.suspend(() =>
+const PaginationViewDynamicSearchRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: PaginationViewDynamicSearchRuleResultsList,
     offset: S.Number,
@@ -5615,23 +5167,23 @@ export const PaginationViewDynamicSearchRule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaginationViewDynamicSearchRule>;
 
 export interface ListWorkspacesRequest {}
-export const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/chats", code: 200 })),
 ).annotate({ identifier: "ListWorkspacesRequest" }) as any as S.Schema<ListWorkspacesRequest>;
 
 export interface ListWorkspacesResponse {}
-export const ListWorkspacesResponse = CancelLogsResponse as any as S.Schema<ListWorkspacesResponse>;
+const ListWorkspacesResponse = CancelLogsResponse as any as S.Schema<ListWorkspacesResponse>;
 
 /** The request ID MUST NOT match the ID of any other request the sender has issued and not yet received a response for */
 export type RequestId = number | string;
-export const RequestId = S.Unknown as any as S.Schema<RequestId>;
+const RequestId = S.Unknown as any as S.Schema<RequestId>;
 
 export interface McpClientMeta {
   io_modelcontextprotocol_protocolVersion: string;
   io_modelcontextprotocol_clientInfo: unknown;
   io_modelcontextprotocol_clientCapabilities?: unknown;
 }
-export const McpClientMeta = /*@__PURE__*/ S.suspend(() =>
+const McpClientMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     io_modelcontextprotocol_protocolVersion: S.String.pipe(
       T.Body("io.modelcontextprotocol/protocolVersion"),
@@ -5652,7 +5204,7 @@ export interface ParamsWithMeta {
   /** The arguments to give to the tool from the MCP protocol. You can find more information about this field on [the MCP specification](https://modelcontextprotocol.io/specification/2026-07-28/schema#calltoolrequestparams). */
   arguments?: unknown;
 }
-export const ParamsWithMeta = /*@__PURE__*/ S.suspend(() =>
+const ParamsWithMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _meta: S.optional(S.NullOr(McpClientMeta)),
     name: S.optional(S.NullOr(S.String)),
@@ -5670,7 +5222,7 @@ export interface McpRequest {
   /** The parameters to call the method with following the JSON-RPC format. You can find more information about this field on [the JSON-RPC specification](https://www.jsonrpc.org/specification#request_object). */
   params: ParamsWithMeta;
 }
-export const McpRequest = /*@__PURE__*/ S.suspend(() =>
+const McpRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonrpc: S.String,
     id: RequestId,
@@ -5681,7 +5233,7 @@ export const McpRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Protocol versions the server supports. The client should choose one of these for subsequent requests. */
 export type McpResultSupportedVersionsList = Array<string>;
-export const McpResultSupportedVersionsList =
+const McpResultSupportedVersionsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<McpResultSupportedVersionsList>;
 
 /** <https://modelcontextprotocol.io/specification/2026-07-28/server/tools#data-types> */
@@ -5695,7 +5247,7 @@ export interface McpToolDefinition {
   /** JSON Schema defining expected parameters. */
   inputSchema: unknown;
 }
-export const McpToolDefinition = /*@__PURE__*/ S.suspend(() =>
+const McpToolDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     title: S.String,
@@ -5705,23 +5257,23 @@ export const McpToolDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "McpToolDefinition" }) as any as S.Schema<McpToolDefinition>;
 
 export type McpResultToolsList = Array<McpToolDefinition>;
-export const McpResultToolsList = /*@__PURE__*/ S.Array(
+const McpResultToolsList = /*@__PURE__*/ S.Array(
   McpToolDefinition,
 ) as any as S.Schema<McpResultToolsList>;
 
 export type McpResultResourcesList = Array<unknown>;
-export const McpResultResourcesList =
+const McpResultResourcesList =
   DeleteDocumentsBatchRequestBodyList as any as S.Schema<McpResultResourcesList>;
 
 export type McpResultPromptsList = Array<unknown>;
-export const McpResultPromptsList =
+const McpResultPromptsList =
   DeleteDocumentsBatchRequestBodyList as any as S.Schema<McpResultPromptsList>;
 
 export interface ClientServerInfo {
   name: string;
   version: string;
 }
-export const ClientServerInfo = /*@__PURE__*/ S.suspend(() =>
+const ClientServerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     version: S.String,
@@ -5731,7 +5283,7 @@ export const ClientServerInfo = /*@__PURE__*/ S.suspend(() =>
 export interface McpServerMeta {
   io_modelcontextprotocol_serverInfo: ClientServerInfo;
 }
-export const McpServerMeta = /*@__PURE__*/ S.suspend(() =>
+const McpServerMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     io_modelcontextprotocol_serverInfo: ClientServerInfo.pipe(
       T.Body("io.modelcontextprotocol/serverInfo"),
@@ -5740,13 +5292,12 @@ export const McpServerMeta = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "McpServerMeta" }) as any as S.Schema<McpServerMeta>;
 
 export type McpCapabilitiesToolsMap = { [key: string]: unknown | undefined };
-export const McpCapabilitiesToolsMap =
-  ChatRequestLogitBiasMap as any as S.Schema<McpCapabilitiesToolsMap>;
+const McpCapabilitiesToolsMap = ChatRequestLogitBiasMap as any as S.Schema<McpCapabilitiesToolsMap>;
 
 export interface McpCapabilities {
   tools?: McpCapabilitiesToolsMap | null;
 }
-export const McpCapabilities = /*@__PURE__*/ S.suspend(() =>
+const McpCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tools: S.optional(S.NullOr(McpCapabilitiesToolsMap)),
   }),
@@ -5756,7 +5307,7 @@ export interface McpTextContentOutput {
   type: string;
   text: string;
 }
-export const McpTextContentOutput = /*@__PURE__*/ S.suspend(() =>
+const McpTextContentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     text: S.String,
@@ -5764,7 +5315,7 @@ export const McpTextContentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "McpTextContentOutput" }) as any as S.Schema<McpTextContentOutput>;
 
 export type McpResultContentList = Array<McpTextContentOutput>;
-export const McpResultContentList = /*@__PURE__*/ S.Array(
+const McpResultContentList = /*@__PURE__*/ S.Array(
   McpTextContentOutput,
 ) as any as S.Schema<McpResultContentList>;
 
@@ -5785,7 +5336,7 @@ export interface McpResult {
   ttlMs: number;
   cacheScope: string;
 }
-export const McpResult = /*@__PURE__*/ S.suspend(() =>
+const McpResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resultType: S.String,
     isError: S.optional(S.NullOr(S.Boolean)),
@@ -5809,7 +5360,7 @@ export interface McpErrorData {
   errorType: string;
   errorLink: string;
 }
-export const McpErrorData = /*@__PURE__*/ S.suspend(() =>
+const McpErrorData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.Number,
     errorName: S.String,
@@ -5823,7 +5374,7 @@ export interface McpJsonRpcError {
   message: string;
   data?: McpErrorData | null;
 }
-export const McpJsonRpcError = /*@__PURE__*/ S.suspend(() =>
+const McpJsonRpcError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.Number,
     message: S.String,
@@ -5839,7 +5390,7 @@ export interface McpResponse {
   result?: McpResult | null;
   error?: McpJsonRpcError | null;
 }
-export const McpResponse = /*@__PURE__*/ S.suspend(() =>
+const McpResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jsonrpc: S.String,
     id: RequestId,
@@ -5850,37 +5401,37 @@ export const McpResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Attributes to display in the returned documents */
 export type SearchQueryWithIndexAttributesToRetrieveList = Array<string>;
-export const SearchQueryWithIndexAttributesToRetrieveList =
+const SearchQueryWithIndexAttributesToRetrieveList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchQueryWithIndexAttributesToRetrieveList>;
 
 /** Attributes whose values have to be cropped */
 export type SearchQueryWithIndexAttributesToCropList = Array<string>;
-export const SearchQueryWithIndexAttributesToCropList =
+const SearchQueryWithIndexAttributesToCropList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchQueryWithIndexAttributesToCropList>;
 
 /** Highlight matching terms contained in an attribute */
 export type SearchQueryWithIndexAttributesToHighlightList = Array<string>;
-export const SearchQueryWithIndexAttributesToHighlightList =
+const SearchQueryWithIndexAttributesToHighlightList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchQueryWithIndexAttributesToHighlightList>;
 
 /** Sort search results by an attribute's value */
 export type SearchQueryWithIndexSortList = Array<string>;
-export const SearchQueryWithIndexSortList =
+const SearchQueryWithIndexSortList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchQueryWithIndexSortList>;
 
 /** Restrict search to the specified attributes */
 export type SearchQueryWithIndexAttributesToSearchOnList = Array<string>;
-export const SearchQueryWithIndexAttributesToSearchOnList =
+const SearchQueryWithIndexAttributesToSearchOnList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchQueryWithIndexAttributesToSearchOnList>;
 
 /** Languages to use for query tokenization */
 export type SearchQueryWithIndexLocalesList = Array<Locale | (string & {})>;
-export const SearchQueryWithIndexLocalesList =
+const SearchQueryWithIndexLocalesList =
   LocalizedAttributesRuleViewLocalesList as any as S.Schema<SearchQueryWithIndexLocalesList>;
 
 /** Search using a custom query vector */
 export type SearchQueryWithIndexVectorList = Array<number>;
-export const SearchQueryWithIndexVectorList =
+const SearchQueryWithIndexVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchQueryWithIndexVectorList>;
 
 /** Configuration for [personalized search](https://www.meilisearch.com/docs/learn/personalization/making_personalized_search_queries) results. When enabled, results are tailored to the user profile described in `userContext`. */
@@ -5888,7 +5439,7 @@ export interface Personalize {
   /** String describing the user (e.g. preferences, behavior). Used to return different results for different profiles. */
   userContext: string;
 }
-export const Personalize = /*@__PURE__*/ S.suspend(() =>
+const Personalize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userContext: S.String,
   }),
@@ -5903,7 +5454,7 @@ export interface FederationOptions {
   /** Position of this query in the list of queries */
   queryPosition?: number | null;
 }
-export const FederationOptions = /*@__PURE__*/ S.suspend(() =>
+const FederationOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     weight: S.optional(S.Number),
     remote: S.optional(S.NullOr(S.String)),
@@ -5973,7 +5524,7 @@ export interface SearchQueryWithIndex {
   showPerformanceDetails?: boolean | null;
   federationOptions?: FederationOptions | null;
 }
-export const SearchQueryWithIndex = /*@__PURE__*/ S.suspend(() =>
+const SearchQueryWithIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexUid: S.String,
     q: S.optional(S.NullOr(S.String)),
@@ -6012,13 +5563,13 @@ export const SearchQueryWithIndex = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of search queries to execute. Each query can target a different index and have its own parameters. When `federation` is `null`, results are returned separately for each query. When `federation` is set, results are merged. Each query object must include `indexUid` to specify which index to search. */
 export type MultiSearchWithPostRequestQueriesList = Array<SearchQueryWithIndex>;
-export const MultiSearchWithPostRequestQueriesList = /*@__PURE__*/ S.Array(
+const MultiSearchWithPostRequestQueriesList = /*@__PURE__*/ S.Array(
   SearchQueryWithIndex,
 ) as any as S.Schema<MultiSearchWithPostRequestQueriesList>;
 
 /** Facets to retrieve per index */
 export type FederationFacetsByIndexMap = { [key: string]: AttributePatterns | undefined };
-export const FederationFacetsByIndexMap =
+const FederationFacetsByIndexMap =
   SettingsUncheckedSynonymsMap as any as S.Schema<FederationFacetsByIndexMap>;
 
 /** Options for merging facets from multiple indexes in federated search. When multiple indexes are queried, this controls how their facet values are combined into a single facet distribution. */
@@ -6026,7 +5577,7 @@ export interface MergeFacets {
   /** The maximum number of facet values to return for each facet after merging. Values from all indexes are combined and sorted before truncation. If not specified, uses the default limit from the index settings. */
   maxValuesPerFacet?: number | null;
 }
-export const MergeFacets = /*@__PURE__*/ S.suspend(() =>
+const MergeFacets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
   }),
@@ -6049,7 +5600,7 @@ export interface Federation {
   showPerformanceDetails?: boolean;
   personalize?: Personalize | null;
 }
-export const Federation = /*@__PURE__*/ S.suspend(() =>
+const Federation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     offset: S.optional(S.Number),
@@ -6068,7 +5619,7 @@ export interface MultiSearchWithPostRequest {
   queries: MultiSearchWithPostRequestQueriesList;
   federation?: Federation | null;
 }
-export const MultiSearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queries: MultiSearchWithPostRequestQueriesList,
     federation: S.optional(S.NullOr(Federation)),
@@ -6079,14 +5630,14 @@ export const MultiSearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Combined search results from all queries */
 export type MultiSearchWithPostResponseHitsList = Array<SearchHit>;
-export const MultiSearchWithPostResponseHitsList =
+const MultiSearchWithPostResponseHitsList =
   GetSimilarResponseHitsList as any as S.Schema<MultiSearchWithPostResponseHitsList>;
 
 export type Vec = Array<number>;
-export const Vec = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<Vec>;
+const Vec = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<Vec>;
 
 export type MultiSearchWithPostResponseQueryVectorsMap = { [key: string]: Vec | undefined };
-export const MultiSearchWithPostResponseQueryVectorsMap = /*@__PURE__*/ S.Record(
+const MultiSearchWithPostResponseQueryVectorsMap = /*@__PURE__*/ S.Record(
   S.String,
   Vec,
 ) as any as S.Schema<MultiSearchWithPostResponseQueryVectorsMap>;
@@ -6094,13 +5645,13 @@ export const MultiSearchWithPostResponseQueryVectorsMap = /*@__PURE__*/ S.Record
 export type MultiSearchWithPostResponseFacetDistributionValueMap = {
   [key: string]: number | undefined;
 };
-export const MultiSearchWithPostResponseFacetDistributionValueMap =
+const MultiSearchWithPostResponseFacetDistributionValueMap =
   BatchStatsViewStatusMap as any as S.Schema<MultiSearchWithPostResponseFacetDistributionValueMap>;
 
 export type MultiSearchWithPostResponseFacetDistributionMap = {
   [key: string]: MultiSearchWithPostResponseFacetDistributionValueMap | undefined;
 };
-export const MultiSearchWithPostResponseFacetDistributionMap = /*@__PURE__*/ S.Record(
+const MultiSearchWithPostResponseFacetDistributionMap = /*@__PURE__*/ S.Record(
   S.String,
   MultiSearchWithPostResponseFacetDistributionValueMap,
 ) as any as S.Schema<MultiSearchWithPostResponseFacetDistributionMap>;
@@ -6112,7 +5663,7 @@ export interface FacetStats {
   /** Highest numeric value for this facet among matching documents. */
   max: number;
 }
-export const FacetStats = /*@__PURE__*/ S.suspend(() =>
+const FacetStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.Number,
     max: S.Number,
@@ -6121,25 +5672,22 @@ export const FacetStats = /*@__PURE__*/ S.suspend(() =>
 
 /** Merged facet statistics across all indexes */
 export type MultiSearchWithPostResponseFacetStatsMap = { [key: string]: FacetStats | undefined };
-export const MultiSearchWithPostResponseFacetStatsMap = /*@__PURE__*/ S.Record(
+const MultiSearchWithPostResponseFacetStatsMap = /*@__PURE__*/ S.Record(
   S.String,
   FacetStats,
 ) as any as S.Schema<MultiSearchWithPostResponseFacetStatsMap>;
 
 export type ComputedFacetsDistributionValueMap = { [key: string]: number | undefined };
-export const ComputedFacetsDistributionValueMap =
-  BatchStatsViewStatusMap as any as S.Schema<ComputedFacetsDistributionValueMap>;
-
 /** Count of documents for each facet value */
 export type ComputedFacetsDistributionMap = {
   [key: string]: ComputedFacetsDistributionValueMap | undefined;
 };
-export const ComputedFacetsDistributionMap =
+const ComputedFacetsDistributionMap =
   MultiSearchWithPostResponseFacetDistributionMap as any as S.Schema<ComputedFacetsDistributionMap>;
 
 /** Numeric statistics for each facet */
 export type ComputedFacetsStatsMap = { [key: string]: FacetStats | undefined };
-export const ComputedFacetsStatsMap =
+const ComputedFacetsStatsMap =
   MultiSearchWithPostResponseFacetStatsMap as any as S.Schema<ComputedFacetsStatsMap>;
 
 /** Computed facet data from a search */
@@ -6149,7 +5697,7 @@ export interface ComputedFacets {
   /** Numeric statistics for each facet */
   stats: ComputedFacetsStatsMap;
 }
-export const ComputedFacets = /*@__PURE__*/ S.suspend(() =>
+const ComputedFacets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distribution: ComputedFacetsDistributionMap,
     stats: ComputedFacetsStatsMap,
@@ -6157,7 +5705,7 @@ export const ComputedFacets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ComputedFacets" }) as any as S.Schema<ComputedFacets>;
 
 export type FederatedFacets = { [key: string]: ComputedFacets | undefined };
-export const FederatedFacets = /*@__PURE__*/ S.Record(
+const FederatedFacets = /*@__PURE__*/ S.Record(
   S.String,
   ComputedFacets,
 ) as any as S.Schema<FederatedFacets>;
@@ -6175,7 +5723,7 @@ export interface SearchMetadata {
   /** Remote that processed the query (federated search only). */
   remote?: string | null;
 }
-export const SearchMetadata = /*@__PURE__*/ S.suspend(() =>
+const SearchMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.NullOr(S.String)),
     queryUid: S.String,
@@ -6187,7 +5735,7 @@ export const SearchMetadata = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata for each query */
 export type MultiSearchWithPostResponseMetadataList = Array<SearchMetadata>;
-export const MultiSearchWithPostResponseMetadataList = /*@__PURE__*/ S.Array(
+const MultiSearchWithPostResponseMetadataList = /*@__PURE__*/ S.Array(
   SearchMetadata,
 ) as any as S.Schema<MultiSearchWithPostResponseMetadataList>;
 
@@ -6195,7 +5743,7 @@ export const MultiSearchWithPostResponseMetadataList = /*@__PURE__*/ S.Array(
 export type MultiSearchWithPostResponseRemoteErrorsMap = {
   [key: string]: ResponseError | undefined;
 };
-export const MultiSearchWithPostResponseRemoteErrorsMap = /*@__PURE__*/ S.Record(
+const MultiSearchWithPostResponseRemoteErrorsMap = /*@__PURE__*/ S.Record(
   S.String,
   ResponseError,
 ) as any as S.Schema<MultiSearchWithPostResponseRemoteErrorsMap>;
@@ -6234,7 +5782,7 @@ export interface MultiSearchWithPostResponse {
   semanticHitCount?: number | null;
   performanceDetails?: unknown;
 }
-export const MultiSearchWithPostResponse = /*@__PURE__*/ S.suspend(() =>
+const MultiSearchWithPostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hitsPerPage: S.optional(S.Number),
     page: S.optional(S.Number),
@@ -6267,7 +5815,7 @@ export interface PatchApiKeyRequest {
   /** A new human-readable name for the API key. Pass `null` to remove the existing name. Use this to identify keys by purpose, such as "Production Search Key" or "CI/CD Indexing Key". */
   name?: string | null;
 }
-export const PatchApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -6286,7 +5834,7 @@ export interface PatchchatRequest {
   documentTemplateMaxBytes?: number | null;
   searchParameters?: ChatSearchParams | null;
 }
-export const PatchchatRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchchatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -6297,10 +5845,10 @@ export const PatchchatRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchchatRequest" }) as any as S.Schema<PatchchatRequest>;
 
 export interface PatchchatResponse {}
-export const PatchchatResponse = CancelLogsResponse as any as S.Schema<PatchchatResponse>;
+const PatchchatResponse = CancelLogsResponse as any as S.Schema<PatchchatResponse>;
 
 export type PatchembeddersRequestBodyMap = { [key: string]: SettingEmbeddingSettings | undefined };
-export const PatchembeddersRequestBodyMap =
+const PatchembeddersRequestBodyMap =
   GetembeddersResponseBodyMap as any as S.Schema<PatchembeddersRequestBodyMap>;
 
 export interface PatchembeddersRequest {
@@ -6308,7 +5856,7 @@ export interface PatchembeddersRequest {
   index_uid: string;
   body: PatchembeddersRequestBodyMap;
 }
-export const PatchembeddersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchembeddersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PatchembeddersRequestBodyMap.pipe(T.HttpBody()),
@@ -6316,13 +5864,13 @@ export const PatchembeddersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchembeddersRequest" }) as any as S.Schema<PatchembeddersRequest>;
 
 export interface PatchembeddersResponse {}
-export const PatchembeddersResponse = CancelLogsResponse as any as S.Schema<PatchembeddersResponse>;
+const PatchembeddersResponse = CancelLogsResponse as any as S.Schema<PatchembeddersResponse>;
 
 /** Sort order per facet: by descending count (`count`) or ascending alphanumeric (`alpha`). Key `*` applies to all facets. */
 export type PatchfacetingRequestSortFacetValuesByMap = {
   [key: string]: FacetValuesSort | (string & {}) | undefined;
 };
-export const PatchfacetingRequestSortFacetValuesByMap =
+const PatchfacetingRequestSortFacetValuesByMap =
   FacetingSettingsSortFacetValuesByMap as any as S.Schema<PatchfacetingRequestSortFacetValuesByMap>;
 
 export interface PatchfacetingRequest {
@@ -6333,7 +5881,7 @@ export interface PatchfacetingRequest {
   /** Sort order per facet: by descending count (`count`) or ascending alphanumeric (`alpha`). Key `*` applies to all facets. */
   sortFacetValuesBy?: PatchfacetingRequestSortFacetValuesByMap | null;
 }
-export const PatchfacetingRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchfacetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     maxValuesPerFacet: S.optional(S.NullOr(S.Number)),
@@ -6342,7 +5890,7 @@ export const PatchfacetingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchfacetingRequest" }) as any as S.Schema<PatchfacetingRequest>;
 
 export interface PatchfacetingResponse {}
-export const PatchfacetingResponse = CancelLogsResponse as any as S.Schema<PatchfacetingResponse>;
+const PatchfacetingResponse = CancelLogsResponse as any as S.Schema<PatchfacetingResponse>;
 
 export interface PatchFeaturesRequest {
   /** Enable the /metrics endpoint for Prometheus metrics */
@@ -6380,7 +5928,7 @@ export interface PatchFeaturesRequest {
   /** Enable the `POST /mcp` route */
   mcpRoute?: boolean | null;
 }
-export const PatchFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchFeaturesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metrics: S.optional(S.NullOr(S.Boolean)),
     logsRoute: S.optional(S.NullOr(S.Boolean)),
@@ -6408,7 +5956,7 @@ export interface PatchpaginationRequest {
   /** Maximum number of search results Meilisearch can return. Limit and offset cannot go beyond this value. */
   maxTotalHits?: number | null;
 }
-export const PatchpaginationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchpaginationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     maxTotalHits: S.optional(S.NullOr(S.Number)),
@@ -6416,12 +5964,11 @@ export const PatchpaginationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchpaginationRequest" }) as any as S.Schema<PatchpaginationRequest>;
 
 export interface PatchpaginationResponse {}
-export const PatchpaginationResponse =
-  CancelLogsResponse as any as S.Schema<PatchpaginationResponse>;
+const PatchpaginationResponse = CancelLogsResponse as any as S.Schema<PatchpaginationResponse>;
 
 /** LLM provider for chat completions */
 export type ChatCompletionSource = "openAi" | "mistral" | "azureOpenAi" | "vLlm";
-export const ChatCompletionSource = S.String;
+const ChatCompletionSource = S.String;
 
 /** Custom prompts for chat completions */
 export interface PatchSettingsRequestPrompts {
@@ -6435,7 +5982,7 @@ export interface PatchSettingsRequestPrompts {
   searchFilterParam?: string | null;
   searchIndexUidParam?: string | null;
 }
-export const PatchSettingsRequestPrompts = /*@__PURE__*/ S.suspend(() =>
+const PatchSettingsRequestPrompts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     system: S.optional(S.NullOr(S.String)),
     searchDescription: S.optional(S.NullOr(S.String)),
@@ -6466,7 +6013,7 @@ export interface PatchSettingsRequest {
   /** Custom prompts for chat completions */
   prompts?: PatchSettingsRequestPrompts | null;
 }
-export const PatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
     source: S.optional(S.NullOr(ChatCompletionSource)),
@@ -6481,16 +6028,16 @@ export const PatchSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PatchSettingsRequest" }) as any as S.Schema<PatchSettingsRequest>;
 
 export interface PatchSettingsResponse {}
-export const PatchSettingsResponse = CancelLogsResponse as any as S.Schema<PatchSettingsResponse>;
+const PatchSettingsResponse = CancelLogsResponse as any as S.Schema<PatchSettingsResponse>;
 
 /** Words for which typo tolerance is disabled. Use for brand names or terms that must match exactly. */
 export type PatchtypoToleranceRequestDisableOnWordsList = Array<string>;
-export const PatchtypoToleranceRequestDisableOnWordsList =
+const PatchtypoToleranceRequestDisableOnWordsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PatchtypoToleranceRequestDisableOnWordsList>;
 
 /** Attributes for which typo tolerance is disabled. Those attributes only return exact matches. Useful for fields like product codes or IDs. */
 export type PatchtypoToleranceRequestDisableOnAttributesList = Array<string>;
-export const PatchtypoToleranceRequestDisableOnAttributesList =
+const PatchtypoToleranceRequestDisableOnAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PatchtypoToleranceRequestDisableOnAttributesList>;
 
 export interface PatchtypoToleranceRequest {
@@ -6506,7 +6053,7 @@ export interface PatchtypoToleranceRequest {
   /** When true, typo tolerance is disabled on numeric tokens. For example, 123 will not match 132. */
   disableOnNumbers?: boolean | null;
 }
-export const PatchtypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchtypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     enabled: S.optional(S.NullOr(S.Boolean)),
@@ -6522,22 +6069,22 @@ export const PatchtypoToleranceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatchtypoToleranceRequest>;
 
 export interface PatchtypoToleranceResponse {}
-export const PatchtypoToleranceResponse =
+const PatchtypoToleranceResponse =
   CancelLogsResponse as any as S.Schema<PatchtypoToleranceResponse>;
 
 /** Array of document attributes to include in the response. If not specified, all attributes listed in the `displayedAttributes` setting are returned. Use this to reduce response size by only requesting the fields you need. Example: `["title", "description", "price"]`. */
 export type PostDocumentsByQueryRequestFieldsList = Array<string>;
-export const PostDocumentsByQueryRequestFieldsList =
+const PostDocumentsByQueryRequestFieldsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PostDocumentsByQueryRequestFieldsList>;
 
 /** Array of specific document IDs to retrieve. Only documents with matching [primary key](https://www.meilisearch.com/docs/learn/getting_started/primary_key) values will be returned. If not specified, all documents matching other criteria are returned. This is useful for fetching specific known documents. */
 export type PostDocumentsByQueryRequestIdsList = Array<string>;
-export const PostDocumentsByQueryRequestIdsList =
+const PostDocumentsByQueryRequestIdsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PostDocumentsByQueryRequestIdsList>;
 
 /** Array of attributes to sort the documents by. Each entry should be in the format `attribute:direction` where direction is either `asc` (ascending) or `desc` (descending). Example: `["price:asc", "rating:desc"]` sorts by price ascending, then by rating descending. */
 export type PostDocumentsByQueryRequestSortList = Array<string>;
-export const PostDocumentsByQueryRequestSortList =
+const PostDocumentsByQueryRequestSortList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PostDocumentsByQueryRequestSortList>;
 
 export interface PostDocumentsByQueryRequest {
@@ -6560,7 +6107,7 @@ export interface PostDocumentsByQueryRequest {
   /** When `true`, runs the query on the whole network (all shards covered exactly once). When `false`, the query runs locally. When omitted or `null`, the default value depends on whether the sharding is enabled for the instance: - If the instance has sharding enabled (has a leader), defaults to `true`. - Otherwise defaults to `false`. It also requires the `network` [experimental feature](http://localhost:3000/reference/api/experimental-features/configure-experimental-features). Values: `true` = use the whole network; `false` = local, default = see above. When using the network, the index must exist with compatible settings on all remotes. */
   useNetwork?: boolean | null;
 }
-export const PostDocumentsByQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const PostDocumentsByQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     offset: S.optional(S.Number),
@@ -6577,24 +6124,13 @@ export const PostDocumentsByQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PostDocumentsByQueryRequest>;
 
 export type MessageCase0Type = "exportNoIndexForRemote";
-export const MessageCase0Type = S.String;
-
 /** The specified remote will not longer export any document to this instance. Send this message to remotes that are blocked waiting on the specified remote to export its documents. */
 export interface MessageCase0 {
   /** Name of the remote that will no longer export any document to this instance. */
   remote: string;
   type: MessageCase0Type;
 }
-export const MessageCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remote: S.String,
-    type: MessageCase0Type,
-  }),
-).annotate({ identifier: "MessageCase0" }) as any as S.Schema<MessageCase0>;
-
 export type MessageCase1Type = "importFinishedForRemote";
-export const MessageCase1Type = S.String;
-
 /** The specified remote is finished importing its documents. Send this message to remotes that are blocked waiting on the specified remote to finish importing its documents. */
 export interface MessageCase1 {
   /** Name of the remote that finished importing its documents. */
@@ -6603,17 +6139,7 @@ export interface MessageCase1 {
   successful: boolean;
   type: MessageCase1Type;
 }
-export const MessageCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remote: S.String,
-    successful: S.Boolean,
-    type: MessageCase1Type,
-  }),
-).annotate({ identifier: "MessageCase1" }) as any as S.Schema<MessageCase1>;
-
 export type MessageCase2Type = "statusChangeForRemote";
-export const MessageCase2Type = S.String;
-
 /** The specified remote will see it's status change. Send this message to change the accessiblity of a remote. */
 export interface MessageCase2 {
   /** Name of the remote whose status will be changed. */
@@ -6622,16 +6148,8 @@ export interface MessageCase2 {
   status: Status | (string & {});
   type: MessageCase2Type;
 }
-export const MessageCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    remote: S.String,
-    status: Status,
-    type: MessageCase2Type,
-  }),
-).annotate({ identifier: "MessageCase2" }) as any as S.Schema<MessageCase2>;
-
 export type Message = MessageCase0 | MessageCase1 | MessageCase2;
-export const Message = S.Unknown as any as S.Schema<Message>;
+const Message = S.Unknown as any as S.Schema<Message>;
 
 export interface PostNetworkChangeRequest {
   /** The origin of this message Get it in the details of the network topology change task that is currently processing. */
@@ -6639,7 +6157,7 @@ export interface PostNetworkChangeRequest {
   /** Message to send to control the network topology change task. */
   message: Message;
 }
-export const PostNetworkChangeRequest = /*@__PURE__*/ S.suspend(() =>
+const PostNetworkChangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     origin: Origin,
     message: Message,
@@ -6647,8 +6165,7 @@ export const PostNetworkChangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostNetworkChangeRequest" }) as any as S.Schema<PostNetworkChangeRequest>;
 
 export interface PostNetworkChangeResponse {}
-export const PostNetworkChangeResponse =
-  CancelLogsResponse as any as S.Schema<PostNetworkChangeResponse>;
+const PostNetworkChangeResponse = CancelLogsResponse as any as S.Schema<PostNetworkChangeResponse>;
 
 export type RenderQueryTemplateKind =
   | "documentTemplate"
@@ -6657,7 +6174,7 @@ export type RenderQueryTemplateKind =
   | "searchFragment"
   | "inlineDocumentTemplate"
   | "inlineFragment";
-export const RenderQueryTemplateKind = S.String;
+const RenderQueryTemplateKind = S.String;
 
 export interface RenderQueryTemplate {
   /** Kind of template or fragment to fetch. Determines which other parameters are allowed and mandatory. */
@@ -6672,7 +6189,7 @@ export interface RenderQueryTemplate {
   /** If present, truncate document template rendering to the specified number of bytes. - Available for `kind`s: `documentTemplate`, `inlineDocumentTemplate` and `chatDocumentTemplate` - If present for `documentTemplate` overrides the setting of the index. - If missing for `documentTemplate`, the setting of the index is used. - If missing for `inlineDocumentTemplate`, the default value of 400 bytes is used. */
   documentTemplateMaxBytes?: number | null;
 }
-export const RenderQueryTemplate = /*@__PURE__*/ S.suspend(() =>
+const RenderQueryTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: RenderQueryTemplateKind,
     indexUid: S.optional(S.NullOr(S.String)),
@@ -6684,7 +6201,7 @@ export const RenderQueryTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderQueryTemplate" }) as any as S.Schema<RenderQueryTemplate>;
 
 export type RenderQueryInputKind = "indexDocument" | "inlineDocument" | "inlineSearch";
-export const RenderQueryInputKind = S.String;
+const RenderQueryInputKind = S.String;
 
 export interface RenderQueryInput {
   kind: RenderQueryInputKind | (string & {});
@@ -6692,7 +6209,7 @@ export interface RenderQueryInput {
   id?: string | null;
   inline?: unknown;
 }
-export const RenderQueryInput = /*@__PURE__*/ S.suspend(() =>
+const RenderQueryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: RenderQueryInputKind,
     indexUid: S.optional(S.NullOr(S.String)),
@@ -6706,7 +6223,7 @@ export interface PostRenderRequest {
   template: RenderQueryTemplate;
   input?: RenderQueryInput | null;
 }
-export const PostRenderRequest = /*@__PURE__*/ S.suspend(() =>
+const PostRenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template: RenderQueryTemplate,
     input: S.optional(S.NullOr(RenderQueryInput)),
@@ -6719,7 +6236,7 @@ export interface RenderResult {
   /** Result of rendering the template by injecting the `input` to the template. `null` if `input` was `null` or missing in the request. */
   rendered?: unknown;
 }
-export const RenderResult = /*@__PURE__*/ S.suspend(() =>
+const RenderResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     template: S.Unknown,
     rendered: S.optional(S.Unknown),
@@ -6728,7 +6245,7 @@ export const RenderResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Attributes to display in the returned documents */
 export type PostSimilarRequestAttributesToRetrieveList = Array<string>;
-export const PostSimilarRequestAttributesToRetrieveList =
+const PostSimilarRequestAttributesToRetrieveList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PostSimilarRequestAttributesToRetrieveList>;
 
 export interface PostSimilarRequest {
@@ -6757,7 +6274,7 @@ export interface PostSimilarRequest {
   /** Excludes results with low ranking scores */
   rankingScoreThreshold?: number;
 }
-export const PostSimilarRequest = /*@__PURE__*/ S.suspend(() =>
+const PostSimilarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     id: S.String,
@@ -6776,9 +6293,6 @@ export const PostSimilarRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Results of the query */
 export type PostSimilarResponseHitsList = Array<SearchHit>;
-export const PostSimilarResponseHitsList =
-  GetSimilarResponseHitsList as any as S.Schema<PostSimilarResponseHitsList>;
-
 export interface PostSimilarResponse {
   /** Number of results per page. */
   hitsPerPage?: number;
@@ -6803,10 +6317,10 @@ export interface PostSimilarResponse {
   /** Performance details of the query */
   performanceDetails?: unknown;
 }
-export const PostSimilarResponse = GetSimilarResponse as any as S.Schema<PostSimilarResponse>;
+const PostSimilarResponse = GetSimilarResponse as any as S.Schema<PostSimilarResponse>;
 
 export type PutdictionaryRequestBodyList = Array<string>;
-export const PutdictionaryRequestBodyList =
+const PutdictionaryRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutdictionaryRequestBodyList>;
 
 export interface PutdictionaryRequest {
@@ -6814,7 +6328,7 @@ export interface PutdictionaryRequest {
   index_uid: string;
   body: PutdictionaryRequestBodyList;
 }
-export const PutdictionaryRequest = /*@__PURE__*/ S.suspend(() =>
+const PutdictionaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutdictionaryRequestBodyList.pipe(T.HttpBody()),
@@ -6822,10 +6336,10 @@ export const PutdictionaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutdictionaryRequest" }) as any as S.Schema<PutdictionaryRequest>;
 
 export interface PutdictionaryResponse {}
-export const PutdictionaryResponse = CancelLogsResponse as any as S.Schema<PutdictionaryResponse>;
+const PutdictionaryResponse = CancelLogsResponse as any as S.Schema<PutdictionaryResponse>;
 
 export type PutdisplayedAttributesRequestBodyList = Array<string>;
-export const PutdisplayedAttributesRequestBodyList =
+const PutdisplayedAttributesRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutdisplayedAttributesRequestBodyList>;
 
 export interface PutdisplayedAttributesRequest {
@@ -6833,7 +6347,7 @@ export interface PutdisplayedAttributesRequest {
   index_uid: string;
   body: PutdisplayedAttributesRequestBodyList;
 }
-export const PutdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutdisplayedAttributesRequestBodyList.pipe(T.HttpBody()),
@@ -6845,14 +6359,14 @@ export const PutdisplayedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutdisplayedAttributesRequest>;
 
 export interface PutdisplayedAttributesResponse {}
-export const PutdisplayedAttributesResponse =
+const PutdisplayedAttributesResponse =
   CancelLogsResponse as any as S.Schema<PutdisplayedAttributesResponse>;
 
 export interface PutdistinctAttributeRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const PutdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
+const PutdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -6863,11 +6377,11 @@ export const PutdistinctAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutdistinctAttributeRequest>;
 
 export interface PutdistinctAttributeResponse {}
-export const PutdistinctAttributeResponse =
+const PutdistinctAttributeResponse =
   CancelLogsResponse as any as S.Schema<PutdistinctAttributeResponse>;
 
 export type PutfilterableAttributesRequestBodyList = Array<FilterableAttributesRule>;
-export const PutfilterableAttributesRequestBodyList =
+const PutfilterableAttributesRequestBodyList =
   SettingsUncheckedFilterableAttributesList as any as S.Schema<PutfilterableAttributesRequestBodyList>;
 
 export interface PutfilterableAttributesRequest {
@@ -6875,7 +6389,7 @@ export interface PutfilterableAttributesRequest {
   index_uid: string;
   body: PutfilterableAttributesRequestBodyList;
 }
-export const PutfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutfilterableAttributesRequestBodyList.pipe(T.HttpBody()),
@@ -6891,11 +6405,11 @@ export const PutfilterableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutfilterableAttributesRequest>;
 
 export interface PutfilterableAttributesResponse {}
-export const PutfilterableAttributesResponse =
+const PutfilterableAttributesResponse =
   DeletedistinctAttributeResponse as any as S.Schema<PutfilterableAttributesResponse>;
 
 export type PutforeignKeysRequestBodyList = Array<ForeignKey>;
-export const PutforeignKeysRequestBodyList =
+const PutforeignKeysRequestBodyList =
   SettingsUncheckedForeignKeysList as any as S.Schema<PutforeignKeysRequestBodyList>;
 
 export interface PutforeignKeysRequest {
@@ -6903,7 +6417,7 @@ export interface PutforeignKeysRequest {
   index_uid: string;
   body: PutforeignKeysRequestBodyList;
 }
-export const PutforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const PutforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutforeignKeysRequestBodyList.pipe(T.HttpBody()),
@@ -6911,10 +6425,10 @@ export const PutforeignKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutforeignKeysRequest" }) as any as S.Schema<PutforeignKeysRequest>;
 
 export interface PutforeignKeysResponse {}
-export const PutforeignKeysResponse = CancelLogsResponse as any as S.Schema<PutforeignKeysResponse>;
+const PutforeignKeysResponse = CancelLogsResponse as any as S.Schema<PutforeignKeysResponse>;
 
 export type PutlocalizedAttributesRequestBodyList = Array<LocalizedAttributesRuleView>;
-export const PutlocalizedAttributesRequestBodyList =
+const PutlocalizedAttributesRequestBodyList =
   SettingsUncheckedLocalizedAttributesList as any as S.Schema<PutlocalizedAttributesRequestBodyList>;
 
 export interface PutlocalizedAttributesRequest {
@@ -6922,7 +6436,7 @@ export interface PutlocalizedAttributesRequest {
   index_uid: string;
   body: PutlocalizedAttributesRequestBodyList;
 }
-export const PutlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutlocalizedAttributesRequestBodyList.pipe(T.HttpBody()),
@@ -6934,11 +6448,11 @@ export const PutlocalizedAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutlocalizedAttributesRequest>;
 
 export interface PutlocalizedAttributesResponse {}
-export const PutlocalizedAttributesResponse =
+const PutlocalizedAttributesResponse =
   CancelLogsResponse as any as S.Schema<PutlocalizedAttributesResponse>;
 
 export type PutnonSeparatorTokensRequestBodyList = Array<string>;
-export const PutnonSeparatorTokensRequestBodyList =
+const PutnonSeparatorTokensRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutnonSeparatorTokensRequestBodyList>;
 
 export interface PutnonSeparatorTokensRequest {
@@ -6946,7 +6460,7 @@ export interface PutnonSeparatorTokensRequest {
   index_uid: string;
   body: PutnonSeparatorTokensRequestBodyList;
 }
-export const PutnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const PutnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutnonSeparatorTokensRequestBodyList.pipe(T.HttpBody()),
@@ -6958,7 +6472,7 @@ export const PutnonSeparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutnonSeparatorTokensRequest>;
 
 export interface PutnonSeparatorTokensResponse {}
-export const PutnonSeparatorTokensResponse =
+const PutnonSeparatorTokensResponse =
   CancelLogsResponse as any as S.Schema<PutnonSeparatorTokensResponse>;
 
 export interface PutproximityPrecisionRequest {
@@ -6966,7 +6480,7 @@ export interface PutproximityPrecisionRequest {
   index_uid: string;
   body: ProximityPrecisionView | (string & {});
 }
-export const PutproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
+const PutproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: ProximityPrecisionView.pipe(T.HttpBody()),
@@ -6978,11 +6492,11 @@ export const PutproximityPrecisionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutproximityPrecisionRequest>;
 
 export interface PutproximityPrecisionResponse {}
-export const PutproximityPrecisionResponse =
+const PutproximityPrecisionResponse =
   CancelLogsResponse as any as S.Schema<PutproximityPrecisionResponse>;
 
 export type PutrankingRulesRequestBodyList = Array<RankingRuleView>;
-export const PutrankingRulesRequestBodyList =
+const PutrankingRulesRequestBodyList =
   GetrankingRulesResponseBodyList as any as S.Schema<PutrankingRulesRequestBodyList>;
 
 export interface PutrankingRulesRequest {
@@ -6990,7 +6504,7 @@ export interface PutrankingRulesRequest {
   index_uid: string;
   body: PutrankingRulesRequestBodyList;
 }
-export const PutrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutrankingRulesRequestBodyList.pipe(T.HttpBody()),
@@ -6998,11 +6512,10 @@ export const PutrankingRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutrankingRulesRequest" }) as any as S.Schema<PutrankingRulesRequest>;
 
 export interface PutrankingRulesResponse {}
-export const PutrankingRulesResponse =
-  CancelLogsResponse as any as S.Schema<PutrankingRulesResponse>;
+const PutrankingRulesResponse = CancelLogsResponse as any as S.Schema<PutrankingRulesResponse>;
 
 export type PutsearchableAttributesRequestBodyList = Array<string>;
-export const PutsearchableAttributesRequestBodyList =
+const PutsearchableAttributesRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutsearchableAttributesRequestBodyList>;
 
 export interface PutsearchableAttributesRequest {
@@ -7010,7 +6523,7 @@ export interface PutsearchableAttributesRequest {
   index_uid: string;
   body: PutsearchableAttributesRequestBodyList;
 }
-export const PutsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutsearchableAttributesRequestBodyList.pipe(T.HttpBody()),
@@ -7026,14 +6539,14 @@ export const PutsearchableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutsearchableAttributesRequest>;
 
 export interface PutsearchableAttributesResponse {}
-export const PutsearchableAttributesResponse =
+const PutsearchableAttributesResponse =
   DeletedistinctAttributeResponse as any as S.Schema<PutsearchableAttributesResponse>;
 
 export interface PutsearchCutoffMsRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const PutsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -7042,11 +6555,10 @@ export const PutsearchCutoffMsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutsearchCutoffMsRequest" }) as any as S.Schema<PutsearchCutoffMsRequest>;
 
 export interface PutsearchCutoffMsResponse {}
-export const PutsearchCutoffMsResponse =
-  CancelLogsResponse as any as S.Schema<PutsearchCutoffMsResponse>;
+const PutsearchCutoffMsResponse = CancelLogsResponse as any as S.Schema<PutsearchCutoffMsResponse>;
 
 export type PutseparatorTokensRequestBodyList = Array<string>;
-export const PutseparatorTokensRequestBodyList =
+const PutseparatorTokensRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutseparatorTokensRequestBodyList>;
 
 export interface PutseparatorTokensRequest {
@@ -7054,7 +6566,7 @@ export interface PutseparatorTokensRequest {
   index_uid: string;
   body: PutseparatorTokensRequestBodyList;
 }
-export const PutseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const PutseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutseparatorTokensRequestBodyList.pipe(T.HttpBody()),
@@ -7066,11 +6578,11 @@ export const PutseparatorTokensRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutseparatorTokensRequest>;
 
 export interface PutseparatorTokensResponse {}
-export const PutseparatorTokensResponse =
+const PutseparatorTokensResponse =
   CancelLogsResponse as any as S.Schema<PutseparatorTokensResponse>;
 
 export type PutsortableAttributesRequestBodyList = Array<string>;
-export const PutsortableAttributesRequestBodyList =
+const PutsortableAttributesRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutsortableAttributesRequestBodyList>;
 
 export interface PutsortableAttributesRequest {
@@ -7078,7 +6590,7 @@ export interface PutsortableAttributesRequest {
   index_uid: string;
   body: PutsortableAttributesRequestBodyList;
 }
-export const PutsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutsortableAttributesRequestBodyList.pipe(T.HttpBody()),
@@ -7090,11 +6602,11 @@ export const PutsortableAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutsortableAttributesRequest>;
 
 export interface PutsortableAttributesResponse {}
-export const PutsortableAttributesResponse =
+const PutsortableAttributesResponse =
   CancelLogsResponse as any as S.Schema<PutsortableAttributesResponse>;
 
 export type PutstopWordsRequestBodyList = Array<string>;
-export const PutstopWordsRequestBodyList =
+const PutstopWordsRequestBodyList =
   CancelTasksRequestIndexUidsList as any as S.Schema<PutstopWordsRequestBodyList>;
 
 export interface PutstopWordsRequest {
@@ -7102,7 +6614,7 @@ export interface PutstopWordsRequest {
   index_uid: string;
   body: PutstopWordsRequestBodyList;
 }
-export const PutstopWordsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutstopWordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutstopWordsRequestBodyList.pipe(T.HttpBody()),
@@ -7110,16 +6622,13 @@ export const PutstopWordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutstopWordsRequest" }) as any as S.Schema<PutstopWordsRequest>;
 
 export interface PutstopWordsResponse {}
-export const PutstopWordsResponse = CancelLogsResponse as any as S.Schema<PutstopWordsResponse>;
+const PutstopWordsResponse = CancelLogsResponse as any as S.Schema<PutstopWordsResponse>;
 
 export type PutsynonymsRequestBodyValueList = Array<string>;
-export const PutsynonymsRequestBodyValueList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<PutsynonymsRequestBodyValueList>;
-
 export type PutsynonymsRequestBodyMap = {
   [key: string]: PutsynonymsRequestBodyValueList | undefined;
 };
-export const PutsynonymsRequestBodyMap =
+const PutsynonymsRequestBodyMap =
   SettingsUncheckedSynonymsMap as any as S.Schema<PutsynonymsRequestBodyMap>;
 
 export interface PutsynonymsRequest {
@@ -7127,7 +6636,7 @@ export interface PutsynonymsRequest {
   index_uid: string;
   body: PutsynonymsRequestBodyMap;
 }
-export const PutsynonymsRequest = /*@__PURE__*/ S.suspend(() =>
+const PutsynonymsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PutsynonymsRequestBodyMap.pipe(T.HttpBody()),
@@ -7135,7 +6644,7 @@ export const PutsynonymsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PutsynonymsRequest" }) as any as S.Schema<PutsynonymsRequest>;
 
 export interface PutsynonymsResponse {}
-export const PutsynonymsResponse = CancelLogsResponse as any as S.Schema<PutsynonymsResponse>;
+const PutsynonymsResponse = CancelLogsResponse as any as S.Schema<PutsynonymsResponse>;
 
 export interface ReplaceDocumentsRequest {
   /** Unique identifier of the index. */
@@ -7149,7 +6658,7 @@ export interface ReplaceDocumentsRequest {
   /** When set to `true`, only updates existing documents and skips creating new ones. Documents that don't already exist in the index will be ignored. This is useful for partial updates where you only want to modify existing records without adding new ones. */
   skipCreation?: boolean;
 }
-export const ReplaceDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReplaceDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     primaryKey: S.optional(S.String.pipe(T.Query())),
@@ -7160,35 +6669,34 @@ export const ReplaceDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReplaceDocumentsRequest" }) as any as S.Schema<ReplaceDocumentsRequest>;
 
 export interface ReplaceDocumentsResponse {}
-export const ReplaceDocumentsResponse =
-  CancelLogsResponse as any as S.Schema<ReplaceDocumentsResponse>;
+const ReplaceDocumentsResponse = CancelLogsResponse as any as S.Schema<ReplaceDocumentsResponse>;
 
 export interface ResetSettingsRequest {
   /** The unique identifier of the chat workspace. */
   workspace_uid: string;
 }
-export const ResetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ResetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspace_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/chats/{workspace_uid}/settings", code: 200 })),
 ).annotate({ identifier: "ResetSettingsRequest" }) as any as S.Schema<ResetSettingsRequest>;
 
 export interface ResetSettingsResponse {}
-export const ResetSettingsResponse = CancelLogsResponse as any as S.Schema<ResetSettingsResponse>;
+const ResetSettingsResponse = CancelLogsResponse as any as S.Schema<ResetSettingsResponse>;
 
 /** Custom query vector for semantic search */
 export type SearchRequestVectorList = Array<number>;
-export const SearchRequestVectorList =
+const SearchRequestVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchRequestVectorList>;
 
 /** Restrict search to specified attributes */
 export type SearchRequestAttributesToSearchOnList = Array<string>;
-export const SearchRequestAttributesToSearchOnList =
+const SearchRequestAttributesToSearchOnList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchRequestAttributesToSearchOnList>;
 
 /** Languages to use for query processing */
 export type SearchRequestLocalesList = Array<Locale | (string & {})>;
-export const SearchRequestLocalesList =
+const SearchRequestLocalesList =
   LocalizedAttributesRuleViewLocalesList as any as S.Schema<SearchRequestLocalesList>;
 
 export interface SearchRequest {
@@ -7219,7 +6727,7 @@ export interface SearchRequest {
   /** When `true`, runs the query on the whole network (all shards covered exactly once). When `false`, the query runs locally. When omitted or `null`, the default value depends on whether the sharding is enabled for the instance: - If the instance has sharding enabled (has a leader), defaults to `true`. - Otherwise defaults to `false`. It also requires the `network` [experimental feature](http://localhost:3000/reference/api/experimental-features/configure-experimental-features). Values: `true` = use the whole network; `false` = local, default = see above. When using the network, the index must exist with compatible settings on all remotes. */
   useNetwork?: boolean | null;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     facetQuery: S.optional(S.NullOr(S.String)),
@@ -7245,7 +6753,7 @@ export interface FacetValueHitSchema {
   /** Number of documents with this facet value among the search results. */
   count: number;
 }
-export const FacetValueHitSchema = /*@__PURE__*/ S.suspend(() =>
+const FacetValueHitSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.String,
     count: S.Number,
@@ -7254,13 +6762,13 @@ export const FacetValueHitSchema = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of matching facet values with their document counts, sorted lexicographically in ascending order (or by count if `sortFacetValuesBy` is set to `"count"`). */
 export type FacetSearchResultFacetHitsList = Array<FacetValueHitSchema>;
-export const FacetSearchResultFacetHitsList = /*@__PURE__*/ S.Array(
+const FacetSearchResultFacetHitsList = /*@__PURE__*/ S.Array(
   FacetValueHitSchema,
 ) as any as S.Schema<FacetSearchResultFacetHitsList>;
 
 /** Errors from remote shards. Only present in federated search when some remotes failed. */
 export type FacetSearchResultRemoteErrorsMap = { [key: string]: ResponseError | undefined };
-export const FacetSearchResultRemoteErrorsMap =
+const FacetSearchResultRemoteErrorsMap =
   MultiSearchWithPostResponseRemoteErrorsMap as any as S.Schema<FacetSearchResultRemoteErrorsMap>;
 
 /** Result of a facet search operation. */
@@ -7274,7 +6782,7 @@ export interface FacetSearchResult {
   /** Errors from remote shards. Only present in federated search when some remotes failed. */
   remoteErrors?: FacetSearchResultRemoteErrorsMap | null;
 }
-export const FacetSearchResult = /*@__PURE__*/ S.suspend(() =>
+const FacetSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     facetHits: FacetSearchResultFacetHitsList,
     facetQuery: S.optional(S.NullOr(S.String)),
@@ -7287,7 +6795,7 @@ export interface SearchDeletefacetRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const SearchDeletefacetRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDeletefacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -7296,14 +6804,13 @@ export const SearchDeletefacetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchDeletefacetRequest" }) as any as S.Schema<SearchDeletefacetRequest>;
 
 export interface SearchDeletefacetResponse {}
-export const SearchDeletefacetResponse =
-  CancelLogsResponse as any as S.Schema<SearchDeletefacetResponse>;
+const SearchDeletefacetResponse = CancelLogsResponse as any as S.Schema<SearchDeletefacetResponse>;
 
 export interface SearchDeleteprefixRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const SearchDeleteprefixRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDeleteprefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -7314,21 +6821,21 @@ export const SearchDeleteprefixRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchDeleteprefixRequest>;
 
 export interface SearchDeleteprefixResponse {}
-export const SearchDeleteprefixResponse =
+const SearchDeleteprefixResponse =
   CancelLogsResponse as any as S.Schema<SearchDeleteprefixResponse>;
 
 export interface SearchGetfacetRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const SearchGetfacetRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchGetfacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 })),
 ).annotate({ identifier: "SearchGetfacetRequest" }) as any as S.Schema<SearchGetfacetRequest>;
 
 export type SearchGetfacetResponse = boolean;
-export const SearchGetfacetResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchGetfacetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchGetfacetResponse" }) as any as S.Schema<SearchGetfacetResponse>;
 
@@ -7336,14 +6843,14 @@ export interface SearchGetprefixRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const SearchGetprefixRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchGetprefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/indexes/{index_uid}/settings/prefix-search", code: 200 })),
 ).annotate({ identifier: "SearchGetprefixRequest" }) as any as S.Schema<SearchGetprefixRequest>;
 
 export type SearchGetprefixResponse = PrefixSearchSettings;
-export const SearchGetprefixResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchGetprefixResponse = /*@__PURE__*/ S.suspend(() =>
   PrefixSearchSettings.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchGetprefixResponse" }) as any as S.Schema<SearchGetprefixResponse>;
 
@@ -7351,21 +6858,21 @@ export interface SearchPutfacetRequest {
   /** Unique identifier of the index. */
   index_uid: string;
 }
-export const SearchPutfacetRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchPutfacetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "PUT", uri: "/indexes/{index_uid}/settings/facet-search", code: 200 })),
 ).annotate({ identifier: "SearchPutfacetRequest" }) as any as S.Schema<SearchPutfacetRequest>;
 
 export interface SearchPutfacetResponse {}
-export const SearchPutfacetResponse = CancelLogsResponse as any as S.Schema<SearchPutfacetResponse>;
+const SearchPutfacetResponse = CancelLogsResponse as any as S.Schema<SearchPutfacetResponse>;
 
 export interface SearchPutprefixRequest {
   /** Unique identifier of the index. */
   index_uid: string;
   body: PrefixSearchSettings | (string & {});
 }
-export const SearchPutprefixRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchPutprefixRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     body: PrefixSearchSettings.pipe(T.HttpBody()),
@@ -7373,42 +6880,41 @@ export const SearchPutprefixRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchPutprefixRequest" }) as any as S.Schema<SearchPutprefixRequest>;
 
 export interface SearchPutprefixResponse {}
-export const SearchPutprefixResponse =
-  CancelLogsResponse as any as S.Schema<SearchPutprefixResponse>;
+const SearchPutprefixResponse = CancelLogsResponse as any as S.Schema<SearchPutprefixResponse>;
 
 /** List of attributes to include in each returned document. Use `["*"]` to return all attributes; if not set, the index [displayed attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes) list is used. Attributes that are not in [displayedAttributes](https://www.meilisearch.com/docs/reference/api/settings/update-all-settings#body-displayed-attributes-one-of-0) are omitted from the response. */
 export type SearchWithPostRequestAttributesToRetrieveList = Array<string>;
-export const SearchWithPostRequestAttributesToRetrieveList =
+const SearchWithPostRequestAttributesToRetrieveList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithPostRequestAttributesToRetrieveList>;
 
 /** Attributes whose values should be cropped to a short excerpt. The cropped text appears in each hit's `_formatted` object. Length is controlled by `cropLength`, or you can override it per attribute with the `attribute:length` syntax. Use `["*"]` to crop all attributes in `attributesToRetrieve`. When possible, the crop is centered around the matching terms. */
 export type SearchWithPostRequestAttributesToCropList = Array<string>;
-export const SearchWithPostRequestAttributesToCropList =
+const SearchWithPostRequestAttributesToCropList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithPostRequestAttributesToCropList>;
 
 /** Attributes in which matching query terms should be highlighted. The highlighted text appears in each hit's `_formatted` object. Use `["*"]` to highlight in all attributes from `attributesToRetrieve`. By default, matches are wrapped in `<em>` and `</em>`; you can override this with `highlightPreTag` and `highlightPostTag`. Highlighting also applies to [synonyms](https://www.meilisearch.com/docs/learn/relevancy/synonyms) and [stop words](https://www.meilisearch.com/docs/reference/api/settings/update-all-settings#body-stop-words-one-of-0). Supported value types are string, number, array, and object. Note: highlights matches within all listed attributes, even those not in `searchableAttributes`. */
 export type SearchWithPostRequestAttributesToHighlightList = Array<string>;
-export const SearchWithPostRequestAttributesToHighlightList =
+const SearchWithPostRequestAttributesToHighlightList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithPostRequestAttributesToHighlightList>;
 
 /** Sort results by one or more attributes and their order. Use the format `["attribute:asc", "attribute:desc"]`; only attributes in [sortableAttributes](https://www.meilisearch.com/docs/reference/api/settings/update-all-settings#body-sortable-attributes-one-of-0) can be used. For [geo search](https://www.meilisearch.com/docs/learn/filtering_and_sorting/geosearch), use `_geoPoint(lat,lng):asc` or `:desc`; the response then includes `_geoDistance` in meters. The first attribute in the list has precedence. See [sorting search results](https://www.meilisearch.com/docs/learn/filtering_and_sorting/sort_search_results). */
 export type SearchWithPostRequestSortList = Array<string>;
-export const SearchWithPostRequestSortList =
+const SearchWithPostRequestSortList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithPostRequestSortList>;
 
 /** Restrict the search to the listed attributes only. Each attribute must be in the index [searchable attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes) list. The order of attributes in this parameter does not affect relevancy. */
 export type SearchWithPostRequestAttributesToSearchOnList = Array<string>;
-export const SearchWithPostRequestAttributesToSearchOnList =
+const SearchWithPostRequestAttributesToSearchOnList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithPostRequestAttributesToSearchOnList>;
 
 /** Explicitly specify the language(s) of the query. Pass an array of [supported ISO-639 locales](https://www.meilisearch.com/docs/reference/api/settings/update-all-settings#body-localized-attributes-one-of-0). This overrides auto-detection; use it when auto-detection is wrong for the query or the documents. See also the [localizedAttributes](https://www.meilisearch.com/docs/reference/api/settings/list-all-settings#response-localized-attributes-one-of-0) settings and [Language](https://www.meilisearch.com/docs/learn/resources/language). */
 export type SearchWithPostRequestLocalesList = Array<Locale | (string & {})>;
-export const SearchWithPostRequestLocalesList =
+const SearchWithPostRequestLocalesList =
   LocalizedAttributesRuleViewLocalesList as any as S.Schema<SearchWithPostRequestLocalesList>;
 
 /** Custom query vector for [vector or hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). The array length must match the dimensions of the embedder configured in the index. This parameter is mandatory when using a [user-provided embedder](https://www.meilisearch.com/docs/learn/ai_powered_search/search_with_user_provided_embeddings). When used with `hybrid`, documents are ranked by vector similarity. You can also use it to override an embedder's automatic vector generation. */
 export type SearchWithPostRequestVectorList = Array<number>;
-export const SearchWithPostRequestVectorList =
+const SearchWithPostRequestVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchWithPostRequestVectorList>;
 
 export interface SearchWithPostRequest {
@@ -7471,7 +6977,7 @@ export interface SearchWithPostRequest {
   /** When true, the response includes a `performanceDetails` object with a timing breakdown of the query processing. */
   showPerformanceDetails?: boolean;
 }
-export const SearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     q: S.optional(S.NullOr(S.String)),
@@ -7509,27 +7015,27 @@ export const SearchWithPostRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching documents. Each hit contains document fields and, when requested, `_formatted`, `_matchesPosition`, `_rankingScore`, `_rankingScoreDetails`, `_geoDistance`. */
 export type SearchWithPostResponseHitsList = Array<SearchHit>;
-export const SearchWithPostResponseHitsList =
+const SearchWithPostResponseHitsList =
   GetSimilarResponseHitsList as any as S.Schema<SearchWithPostResponseHitsList>;
 
 /** Query embedding used for the search. Present when vector or hybrid search was used. */
 export type SearchWithPostResponseQueryVectorList = Array<number>;
-export const SearchWithPostResponseQueryVectorList =
+const SearchWithPostResponseQueryVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchWithPostResponseQueryVectorList>;
 
 /** Count of matching documents per facet value for each requested facet. Present when `facets` was set. */
 export type SearchWithPostResponseFacetDistributionMap = { [key: string]: unknown | undefined };
-export const SearchWithPostResponseFacetDistributionMap =
+const SearchWithPostResponseFacetDistributionMap =
   ChatRequestLogitBiasMap as any as S.Schema<SearchWithPostResponseFacetDistributionMap>;
 
 /** Minimum and maximum numeric values per facet. Present for numeric facets when `facets` was set. */
 export type SearchWithPostResponseFacetStatsMap = { [key: string]: FacetStats | undefined };
-export const SearchWithPostResponseFacetStatsMap =
+const SearchWithPostResponseFacetStatsMap =
   MultiSearchWithPostResponseFacetStatsMap as any as S.Schema<SearchWithPostResponseFacetStatsMap>;
 
 /** Errors from remote shards. Federated search only. */
 export type SearchWithPostResponseRemoteErrorsMap = { [key: string]: ResponseError | undefined };
-export const SearchWithPostResponseRemoteErrorsMap =
+const SearchWithPostResponseRemoteErrorsMap =
   MultiSearchWithPostResponseRemoteErrorsMap as any as S.Schema<SearchWithPostResponseRemoteErrorsMap>;
 
 export interface SearchWithPostResponse {
@@ -7569,7 +7075,7 @@ export interface SearchWithPostResponse {
   /** Exhaustive number of semantic search matches. AI-powered (hybrid/semantic) searches only. */
   semanticHitCount?: number | null;
 }
-export const SearchWithPostResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchWithPostResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hitsPerPage: S.optional(S.Number),
     page: S.optional(S.Number),
@@ -7593,31 +7099,31 @@ export const SearchWithPostResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchWithPostResponse" }) as any as S.Schema<SearchWithPostResponse>;
 
 export type SearchWithUrlQueryRequestAttributesToRetrieveList = Array<string>;
-export const SearchWithUrlQueryRequestAttributesToRetrieveList =
+const SearchWithUrlQueryRequestAttributesToRetrieveList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithUrlQueryRequestAttributesToRetrieveList>;
 
 export type SearchWithUrlQueryRequestAttributesToCropList = Array<string>;
-export const SearchWithUrlQueryRequestAttributesToCropList =
+const SearchWithUrlQueryRequestAttributesToCropList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithUrlQueryRequestAttributesToCropList>;
 
 export type SearchWithUrlQueryRequestAttributesToHighlightList = Array<string>;
-export const SearchWithUrlQueryRequestAttributesToHighlightList =
+const SearchWithUrlQueryRequestAttributesToHighlightList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithUrlQueryRequestAttributesToHighlightList>;
 
 export type SearchWithUrlQueryRequestFacetsList = Array<string>;
-export const SearchWithUrlQueryRequestFacetsList =
+const SearchWithUrlQueryRequestFacetsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithUrlQueryRequestFacetsList>;
 
 export type SearchWithUrlQueryRequestAttributesToSearchOnList = Array<string>;
-export const SearchWithUrlQueryRequestAttributesToSearchOnList =
+const SearchWithUrlQueryRequestAttributesToSearchOnList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SearchWithUrlQueryRequestAttributesToSearchOnList>;
 
 export type SearchWithUrlQueryRequestLocalesList = Array<Locale | (string & {})>;
-export const SearchWithUrlQueryRequestLocalesList =
+const SearchWithUrlQueryRequestLocalesList =
   LocalizedAttributesRuleViewLocalesList as any as S.Schema<SearchWithUrlQueryRequestLocalesList>;
 
 export type SearchWithUrlQueryRequestVectorList = Array<number>;
-export const SearchWithUrlQueryRequestVectorList =
+const SearchWithUrlQueryRequestVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchWithUrlQueryRequestVectorList>;
 
 export interface SearchWithUrlQueryRequest {
@@ -7684,7 +7190,7 @@ export interface SearchWithUrlQueryRequest {
   /** When true, the response includes a `performanceDetails` object with a timing breakdown of the query processing. */
   showPerformanceDetails?: boolean;
 }
-export const SearchWithUrlQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchWithUrlQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     q: S.optional(S.String.pipe(T.Query())),
@@ -7730,29 +7236,29 @@ export const SearchWithUrlQueryRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching documents. Each hit contains document fields and, when requested, `_formatted`, `_matchesPosition`, `_rankingScore`, `_rankingScoreDetails`, `_geoDistance`. */
 export type SearchWithUrlQueryResponseHitsList = Array<SearchHit>;
-export const SearchWithUrlQueryResponseHitsList =
+const SearchWithUrlQueryResponseHitsList =
   GetSimilarResponseHitsList as any as S.Schema<SearchWithUrlQueryResponseHitsList>;
 
 /** Query embedding used for the search. Present when vector or hybrid search was used. */
 export type SearchWithUrlQueryResponseQueryVectorList = Array<number>;
-export const SearchWithUrlQueryResponseQueryVectorList =
+const SearchWithUrlQueryResponseQueryVectorList =
   CancelTasksRequestUidsList as any as S.Schema<SearchWithUrlQueryResponseQueryVectorList>;
 
 /** Count of matching documents per facet value for each requested facet. Present when `facets` was set. */
 export type SearchWithUrlQueryResponseFacetDistributionMap = { [key: string]: unknown | undefined };
-export const SearchWithUrlQueryResponseFacetDistributionMap =
+const SearchWithUrlQueryResponseFacetDistributionMap =
   ChatRequestLogitBiasMap as any as S.Schema<SearchWithUrlQueryResponseFacetDistributionMap>;
 
 /** Minimum and maximum numeric values per facet. Present for numeric facets when `facets` was set. */
 export type SearchWithUrlQueryResponseFacetStatsMap = { [key: string]: FacetStats | undefined };
-export const SearchWithUrlQueryResponseFacetStatsMap =
+const SearchWithUrlQueryResponseFacetStatsMap =
   MultiSearchWithPostResponseFacetStatsMap as any as S.Schema<SearchWithUrlQueryResponseFacetStatsMap>;
 
 /** Errors from remote shards. Federated search only. */
 export type SearchWithUrlQueryResponseRemoteErrorsMap = {
   [key: string]: ResponseError | undefined;
 };
-export const SearchWithUrlQueryResponseRemoteErrorsMap =
+const SearchWithUrlQueryResponseRemoteErrorsMap =
   MultiSearchWithPostResponseRemoteErrorsMap as any as S.Schema<SearchWithUrlQueryResponseRemoteErrorsMap>;
 
 export interface SearchWithUrlQueryResponse {
@@ -7792,7 +7298,7 @@ export interface SearchWithUrlQueryResponse {
   /** Exhaustive number of semantic search matches. AI-powered (hybrid/semantic) searches only. */
   semanticHitCount?: number | null;
 }
-export const SearchWithUrlQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchWithUrlQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hitsPerPage: S.optional(S.Number),
     page: S.optional(S.Number),
@@ -7819,7 +7325,7 @@ export const SearchWithUrlQueryResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Array of the two index names to be swapped */
 export type SwapIndexesPayloadIndexesList = Array<string>;
-export const SwapIndexesPayloadIndexesList =
+const SwapIndexesPayloadIndexesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<SwapIndexesPayloadIndexesList>;
 
 /** Request body for swapping two indexes */
@@ -7829,7 +7335,7 @@ export interface SwapIndexesPayload {
   /** If true, rename the first index to the second instead of swapping */
   rename?: boolean;
 }
-export const SwapIndexesPayload = /*@__PURE__*/ S.suspend(() =>
+const SwapIndexesPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     indexes: SwapIndexesPayloadIndexesList,
     rename: S.optional(S.Boolean),
@@ -7837,91 +7343,88 @@ export const SwapIndexesPayload = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SwapIndexesPayload" }) as any as S.Schema<SwapIndexesPayload>;
 
 export type SwapIndexesRequestBodyList = Array<SwapIndexesPayload>;
-export const SwapIndexesRequestBodyList = /*@__PURE__*/ S.Array(
+const SwapIndexesRequestBodyList = /*@__PURE__*/ S.Array(
   SwapIndexesPayload,
 ) as any as S.Schema<SwapIndexesRequestBodyList>;
 
 export interface SwapIndexesRequest {
   body: SwapIndexesRequestBodyList;
 }
-export const SwapIndexesRequest = /*@__PURE__*/ S.suspend(() =>
+const SwapIndexesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: SwapIndexesRequestBodyList.pipe(T.HttpBody()),
   }).pipe(T.Http({ method: "POST", uri: "/swap-indexes", code: 200 })),
 ).annotate({ identifier: "SwapIndexesRequest" }) as any as S.Schema<SwapIndexesRequest>;
 
 export interface SwapIndexesResponse {}
-export const SwapIndexesResponse = CancelLogsResponse as any as S.Schema<SwapIndexesResponse>;
+const SwapIndexesResponse = CancelLogsResponse as any as S.Schema<SwapIndexesResponse>;
 
 /** Fields returned in search results. Affects only search endpoints, not get-document endpoints. See [displayed and searchable attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes). */
 export type UpdateAllRequestDisplayedAttributesList = Array<string>;
-export const UpdateAllRequestDisplayedAttributesList =
+const UpdateAllRequestDisplayedAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestDisplayedAttributesList>;
 
 /** Fields searched for query words, in order of importance. Defines [attribute ranking order](https://www.meilisearch.com/docs/learn/relevancy/attribute_ranking_order). See [displayed and searchable attributes](https://www.meilisearch.com/docs/learn/relevancy/displayed_searchable_attributes). */
 export type UpdateAllRequestSearchableAttributesList = Array<string>;
-export const UpdateAllRequestSearchableAttributesList =
+const UpdateAllRequestSearchableAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestSearchableAttributesList>;
 
 /** Attributes that can be used as [filters](https://www.meilisearch.com/docs/learn/filtering_and_sorting/filter_search_results) and [facets](https://www.meilisearch.com/docs/learn/filtering_and_sorting/search_with_facet_filters). Strings or objects with `attributePatterns` and `features`. */
 export type UpdateAllRequestFilterableAttributesList = Array<FilterableAttributesRule>;
-export const UpdateAllRequestFilterableAttributesList =
+const UpdateAllRequestFilterableAttributesList =
   SettingsUncheckedFilterableAttributesList as any as S.Schema<UpdateAllRequestFilterableAttributesList>;
 
 /** Attributes that can be used to [sort search results](https://www.meilisearch.com/docs/learn/filtering_and_sorting/sort_search_results). */
 export type UpdateAllRequestSortableAttributesList = Array<string>;
-export const UpdateAllRequestSortableAttributesList =
+const UpdateAllRequestSortableAttributesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestSortableAttributesList>;
 
 /** Foreign keys to use for cross-index filtering search. */
 export type UpdateAllRequestForeignKeysList = Array<ForeignKey>;
-export const UpdateAllRequestForeignKeysList =
+const UpdateAllRequestForeignKeysList =
   SettingsUncheckedForeignKeysList as any as S.Schema<UpdateAllRequestForeignKeysList>;
 
 /** [Ranking rules](https://www.meilisearch.com/docs/learn/relevancy/ranking_rules) in order of importance. Built-in rules and custom sort rules (`attribute:asc` or `attribute:desc`). */
 export type UpdateAllRequestRankingRulesList = Array<string>;
-export const UpdateAllRequestRankingRulesList =
+const UpdateAllRequestRankingRulesList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestRankingRulesList>;
 
 /** Words ignored when present in search queries. */
 export type UpdateAllRequestStopWordsList = Array<string>;
-export const UpdateAllRequestStopWordsList =
+const UpdateAllRequestStopWordsList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestStopWordsList>;
 
 /** Characters that are not treated as word separators. Removed from the default separator set. */
 export type UpdateAllRequestNonSeparatorTokensList = Array<string>;
-export const UpdateAllRequestNonSeparatorTokensList =
+const UpdateAllRequestNonSeparatorTokensList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestNonSeparatorTokensList>;
 
 /** Characters that delimit words. Added on top of the default separators. */
 export type UpdateAllRequestSeparatorTokensList = Array<string>;
-export const UpdateAllRequestSeparatorTokensList =
+const UpdateAllRequestSeparatorTokensList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestSeparatorTokensList>;
 
 /** Strings Meilisearch parses as a single term. Useful for names or domain terms. */
 export type UpdateAllRequestDictionaryList = Array<string>;
-export const UpdateAllRequestDictionaryList =
+const UpdateAllRequestDictionaryList =
   CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestDictionaryList>;
 
 export type UpdateAllRequestSynonymsValueList = Array<string>;
-export const UpdateAllRequestSynonymsValueList =
-  CancelTasksRequestIndexUidsList as any as S.Schema<UpdateAllRequestSynonymsValueList>;
-
 /** Pairs of words or phrases treated as equivalent for search. Key maps to an array of [synonyms](https://www.meilisearch.com/docs/learn/relevancy/synonyms). */
 export type UpdateAllRequestSynonymsMap = {
   [key: string]: UpdateAllRequestSynonymsValueList | undefined;
 };
-export const UpdateAllRequestSynonymsMap =
+const UpdateAllRequestSynonymsMap =
   SettingsUncheckedSynonymsMap as any as S.Schema<UpdateAllRequestSynonymsMap>;
 
 /** [Embedders](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search) used for semantic and [hybrid search](https://www.meilisearch.com/docs/learn/ai_powered_search/getting_started_with_ai_search). Map of embedder name to config (`source`, `model`, `documentTemplate`, etc.). */
 export type UpdateAllRequestEmbeddersMap = { [key: string]: EmbeddingSettings | undefined };
-export const UpdateAllRequestEmbeddersMap =
+const UpdateAllRequestEmbeddersMap =
   SettingsUncheckedEmbeddersMap as any as S.Schema<UpdateAllRequestEmbeddersMap>;
 
 /** Locales and attribute patterns for [language-specific tokenization](https://www.meilisearch.com/docs/learn/resources/language). Affects searchable, filterable, and sortable attributes. */
 export type UpdateAllRequestLocalizedAttributesList = Array<LocalizedAttributesRuleView>;
-export const UpdateAllRequestLocalizedAttributesList =
+const UpdateAllRequestLocalizedAttributesList =
   SettingsUncheckedLocalizedAttributesList as any as S.Schema<UpdateAllRequestLocalizedAttributesList>;
 
 export interface UpdateAllRequest {
@@ -7967,7 +7470,7 @@ export interface UpdateAllRequest {
   prefixSearch?: PrefixSearchSettings | (string & {}) | null;
   chat?: ChatSettings | null;
 }
-export const UpdateAllRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAllRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     displayedAttributes: S.optional(S.NullOr(UpdateAllRequestDisplayedAttributesList)),
@@ -7996,7 +7499,7 @@ export const UpdateAllRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAllRequest" }) as any as S.Schema<UpdateAllRequest>;
 
 export interface UpdateAllResponse {}
-export const UpdateAllResponse = CancelLogsResponse as any as S.Schema<UpdateAllResponse>;
+const UpdateAllResponse = CancelLogsResponse as any as S.Schema<UpdateAllResponse>;
 
 export interface UpdateDocumentsRequest {
   /** Unique identifier of the index. */
@@ -8010,7 +7513,7 @@ export interface UpdateDocumentsRequest {
   /** When set to `true`, only updates existing documents and skips creating new ones. Documents that don't already exist in the index will be ignored. This is useful for partial updates where you only want to modify existing records without adding new ones. */
   skipCreation?: boolean;
 }
-export const UpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     primaryKey: S.optional(S.String.pipe(T.Query())),
@@ -8021,8 +7524,7 @@ export const UpdateDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateDocumentsRequest" }) as any as S.Schema<UpdateDocumentsRequest>;
 
 export interface UpdateDocumentsResponse {}
-export const UpdateDocumentsResponse =
-  CancelLogsResponse as any as S.Schema<UpdateDocumentsResponse>;
+const UpdateDocumentsResponse = CancelLogsResponse as any as S.Schema<UpdateDocumentsResponse>;
 
 export interface UpdateIndexRequest {
   /** Unique identifier of the index. */
@@ -8032,7 +7534,7 @@ export interface UpdateIndexRequest {
   /** New uid for the index (for renaming) */
   uid?: string | null;
 }
-export const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     index_uid: S.String.pipe(T.Label()),
     primaryKey: S.optional(S.NullOr(S.String)),
@@ -8041,26 +7543,26 @@ export const UpdateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateIndexRequest" }) as any as S.Schema<UpdateIndexRequest>;
 
 export interface UpdateIndexResponse {}
-export const UpdateIndexResponse = CancelLogsResponse as any as S.Schema<UpdateIndexResponse>;
+const UpdateIndexResponse = CancelLogsResponse as any as S.Schema<UpdateIndexResponse>;
 
 /** Map of remote instance names to their configurations - Pass `null` as a value for a remote to remove it from the configuration. - Removing a remote will also remove it from all shards. - Remotes that don't appear in this list will be unmodified by the network call. */
 export type UpdateNetworkRequestRemotesMap = { [key: string]: Remote | undefined };
-export const UpdateNetworkRequestRemotesMap =
+const UpdateNetworkRequestRemotesMap =
   NetworkRemotesMap as any as S.Schema<UpdateNetworkRequestRemotesMap>;
 
 /** Map of shard names to their configurations. - Pass `null` as a value for a shard to remove it from the configuration. - Shards that don't appear in this list will be unmodified by the network call. */
 export type UpdateNetworkRequestShardsMap = { [key: string]: Shard | undefined };
-export const UpdateNetworkRequestShardsMap =
+const UpdateNetworkRequestShardsMap =
   NetworkShardsMap as any as S.Schema<UpdateNetworkRequestShardsMap>;
 
 /** Previous shard configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
 export type UpdateNetworkRequestPreviousShardsMap = { [key: string]: Shard | undefined };
-export const UpdateNetworkRequestPreviousShardsMap =
+const UpdateNetworkRequestPreviousShardsMap =
   NetworkShardsMap as any as S.Schema<UpdateNetworkRequestPreviousShardsMap>;
 
 /** Previous remote configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
 export type UpdateNetworkRequestPreviousRemotesMap = { [key: string]: Remote | undefined };
-export const UpdateNetworkRequestPreviousRemotesMap =
+const UpdateNetworkRequestPreviousRemotesMap =
   NetworkRemotesMap as any as S.Schema<UpdateNetworkRequestPreviousRemotesMap>;
 
 export interface UpdateNetworkRequest {
@@ -8077,7 +7579,7 @@ export interface UpdateNetworkRequest {
   /** Previous remote configurations This field should not be passed by end-users. It is used in internal communications between Meilisearch instances */
   previousRemotes?: UpdateNetworkRequestPreviousRemotesMap | null;
 }
-export const UpdateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateNetworkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     remotes: S.optional(S.NullOr(UpdateNetworkRequestRemotesMap)),
     shards: S.optional(S.NullOr(UpdateNetworkRequestShardsMap)),
@@ -8100,7 +7602,7 @@ export interface UpdateOrCreateRuleRequest {
   conditions?: Conditions | null;
   actions?: RuleActions | null;
 }
-export const UpdateOrCreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrCreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     description: S.optional(S.NullOr(S.String)),
@@ -8114,14 +7616,14 @@ export const UpdateOrCreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrCreateRuleRequest>;
 
 export interface UpdateOrCreateRuleResponse {}
-export const UpdateOrCreateRuleResponse =
+const UpdateOrCreateRuleResponse =
   CancelLogsResponse as any as S.Schema<UpdateOrCreateRuleResponse>;
 
 export interface UpdateStderrTargetRequest {
   /** Log targets to filter. Format: code_part=log_level (e.g., milli=trace,actix_web=off) */
   target?: string;
 }
-export const UpdateStderrTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateStderrTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     target: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/logs/stderr", code: 200 })),
@@ -8130,12 +7632,12 @@ export const UpdateStderrTargetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStderrTargetRequest>;
 
 export interface UpdateStderrTargetResponse {}
-export const UpdateStderrTargetResponse =
+const UpdateStderrTargetResponse =
   CancelLogsResponse as any as S.Schema<UpdateStderrTargetResponse>;
 
 /** HTTP headers to include in webhook requests. */
 export type UpdateWebhookRequestHeadersMap = { [key: string]: string | undefined };
-export const UpdateWebhookRequestHeadersMap =
+const UpdateWebhookRequestHeadersMap =
   CreateWebhookRequestHeadersMap as any as S.Schema<UpdateWebhookRequestHeadersMap>;
 
 export interface UpdateWebhookRequest {
@@ -8146,7 +7648,7 @@ export interface UpdateWebhookRequest {
   /** HTTP headers to include in webhook requests. */
   headers?: UpdateWebhookRequestHeadersMap | null;
 }
-export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.String.pipe(T.Label()),
     url: S.optional(S.NullOr(S.String)),
@@ -8156,9 +7658,6 @@ export const UpdateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HTTP headers to include in webhook requests. */
 export type UpdateWebhookResponseHeadersMap = { [key: string]: string | undefined };
-export const UpdateWebhookResponseHeadersMap =
-  CreateWebhookRequestHeadersMap as any as S.Schema<UpdateWebhookResponseHeadersMap>;
-
 export interface UpdateWebhookResponse {
   /** URL endpoint to call when tasks complete. */
   url?: string | null;
@@ -8169,8 +7668,7 @@ export interface UpdateWebhookResponse {
   /** Whether the webhook can be edited. */
   isEditable: boolean;
 }
-export const UpdateWebhookResponse =
-  CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
+const UpdateWebhookResponse = CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
 
 export type CancelLogsError = MeilisearchOpError;
 /** Stop retrieving logs Call this route to make the engine stop sending logs to the client that opened the `POST /logs/stream` connection. */

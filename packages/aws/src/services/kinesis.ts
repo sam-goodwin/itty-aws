@@ -811,7 +811,7 @@ export type StreamName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type StreamARN = string;
 export type StreamId = string;
 export interface AddTagsToStreamInput {
@@ -820,7 +820,7 @@ export interface AddTagsToStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const AddTagsToStreamInput = /*@__PURE__*/ S.suspend(() =>
+const AddTagsToStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     Tags: TagMap,
@@ -840,33 +840,33 @@ export const AddTagsToStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AddTagsToStreamInput" }) as any as S.Schema<AddTagsToStreamInput>;
 export interface AddTagsToStreamResponse {}
-export const AddTagsToStreamResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "AddTagsToStreamResponse" }) as any as S.Schema<AddTagsToStreamResponse>;
+const AddTagsToStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "AddTagsToStreamResponse",
+}) as any as S.Schema<AddTagsToStreamResponse>;
 export type ChannelName = string;
 export type RoleARN = string;
 export type RecordFormatType = "GSR_JSON" | "JSON" | "STRING" | "BYTE_ARRAY" | (string & {});
-export const RecordFormatType = S.String;
+const RecordFormatType = S.String;
 
 export type GSRSchemaARN = string;
 export interface RecordConfiguration {
   RecordFormatType: RecordFormatType;
   GSRSchemaARN?: string;
 }
-export const RecordConfiguration = /*@__PURE__*/ S.suspend(() =>
+const RecordConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RecordFormatType: RecordFormatType, GSRSchemaARN: S.optional(S.String) }),
 ).annotate({ identifier: "RecordConfiguration" }) as any as S.Schema<RecordConfiguration>;
 export interface ChannelStreamConfiguration {
   StreamARN: string;
   RecordConfiguration: RecordConfiguration;
 }
-export const ChannelStreamConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChannelStreamConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamARN: S.String, RecordConfiguration: RecordConfiguration }),
 ).annotate({
   identifier: "ChannelStreamConfiguration",
 }) as any as S.Schema<ChannelStreamConfiguration>;
 export type ChannelStreamConfigurationList = ChannelStreamConfiguration[];
-export const ChannelStreamConfigurationList = /*@__PURE__*/ S.Array(ChannelStreamConfiguration);
+const ChannelStreamConfigurationList = /*@__PURE__*/ S.Array(ChannelStreamConfiguration);
 export type DataFreshnessInSeconds = number;
 export type BucketARN = string;
 export type ExpectedBucketOwner = string;
@@ -876,7 +876,7 @@ export interface DeadLetterQueueS3Configuration {
   ExpectedBucketOwner: string;
   ErrorOutputPrefix?: string;
 }
-export const DeadLetterQueueS3Configuration = /*@__PURE__*/ S.suspend(() =>
+const DeadLetterQueueS3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketARN: S.String,
     ExpectedBucketOwner: S.String,
@@ -887,10 +887,10 @@ export const DeadLetterQueueS3Configuration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeadLetterQueueS3Configuration>;
 export type S3OutputKeyTemplate = string;
 export type S3StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | "GLACIER_IR" | (string & {});
-export const S3StorageClass = S.String;
+const S3StorageClass = S.String;
 
 export type S3CompressionType = "NONE" | "GZIP" | "ZSTD" | (string & {});
-export const S3CompressionType = S.String;
+const S3CompressionType = S.String;
 
 export interface S3StorageConfiguration {
   BucketARN: string;
@@ -899,7 +899,7 @@ export interface S3StorageConfiguration {
   StorageClass?: S3StorageClass;
   CompressionType: S3CompressionType;
 }
-export const S3StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3StorageConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BucketARN: S.String,
     ExpectedBucketOwner: S.String,
@@ -913,7 +913,7 @@ export interface S3DestinationConfiguration {
   DeadLetterQueueS3Configuration?: DeadLetterQueueS3Configuration;
   StorageConfiguration: S3StorageConfiguration;
 }
-export const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataFreshnessInSeconds: S.optional(S.Number),
     DeadLetterQueueS3Configuration: S.optional(DeadLetterQueueS3Configuration),
@@ -926,25 +926,25 @@ export type TableBucketARN = string;
 export type S3TablesNamespace = string;
 export type S3TablesTableName = string;
 export type S3TablesCompressionType = "NONE" | "ZSTD" | "SNAPPY" | (string & {});
-export const S3TablesCompressionType = S.String;
+const S3TablesCompressionType = S.String;
 
 export type PartitionTransform = "TIME_HOUR" | (string & {});
-export const PartitionTransform = S.String;
+const PartitionTransform = S.String;
 
 export type PartitionSourceName = string;
 export interface PartitionField {
   Transform: PartitionTransform;
   SourceName: string;
 }
-export const PartitionField = /*@__PURE__*/ S.suspend(() =>
+const PartitionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Transform: PartitionTransform, SourceName: S.String }),
 ).annotate({ identifier: "PartitionField" }) as any as S.Schema<PartitionField>;
 export type PartitionFieldList = PartitionField[];
-export const PartitionFieldList = /*@__PURE__*/ S.Array(PartitionField);
+const PartitionFieldList = /*@__PURE__*/ S.Array(PartitionField);
 export interface PartitionSpec {
   PartitionFields: PartitionField[];
 }
-export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
+const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PartitionFields: PartitionFieldList }),
 ).annotate({ identifier: "PartitionSpec" }) as any as S.Schema<PartitionSpec>;
 export interface S3TablesConfiguration {
@@ -954,7 +954,7 @@ export interface S3TablesConfiguration {
   CompressionType: S3TablesCompressionType;
   PartitionSpec?: PartitionSpec;
 }
-export const S3TablesConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3TablesConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TableBucketARN: S.String,
     Namespace: S.String,
@@ -964,13 +964,13 @@ export const S3TablesConfiguration = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "S3TablesConfiguration" }) as any as S.Schema<S3TablesConfiguration>;
 export type S3TablesConfigurationList = S3TablesConfiguration[];
-export const S3TablesConfigurationList = /*@__PURE__*/ S.Array(S3TablesConfiguration);
+const S3TablesConfigurationList = /*@__PURE__*/ S.Array(S3TablesConfiguration);
 export interface S3TablesDestinationConfiguration {
   DataFreshnessInSeconds?: number;
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   S3TablesConfigurationList: S3TablesConfiguration[];
 }
-export const S3TablesDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
+const S3TablesDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataFreshnessInSeconds: S.optional(S.Number),
     DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
@@ -980,14 +980,14 @@ export const S3TablesDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "S3TablesDestinationConfiguration",
 }) as any as S.Schema<S3TablesDestinationConfiguration>;
 export type ChannelEncryptionType = "KMS" | (string & {});
-export const ChannelEncryptionType = S.String;
+const ChannelEncryptionType = S.String;
 
 export type KeyId = string;
 export interface ChannelEncryptionConfiguration {
   EncryptionType: ChannelEncryptionType;
   KeyId: string;
 }
-export const ChannelEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChannelEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EncryptionType: ChannelEncryptionType, KeyId: S.String }),
 ).annotate({
   identifier: "ChannelEncryptionConfiguration",
@@ -999,7 +999,7 @@ export interface CloudWatchLogs {
   LogGroupName?: string;
   LogStreamName?: string;
 }
-export const CloudWatchLogs = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchLogs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     LogGroupName: S.optional(S.String),
@@ -1009,7 +1009,7 @@ export const CloudWatchLogs = /*@__PURE__*/ S.suspend(() =>
 export interface ChannelLoggingConfiguration {
   CloudWatchLogs: CloudWatchLogs;
 }
-export const ChannelLoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
+const ChannelLoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CloudWatchLogs: CloudWatchLogs }),
 ).annotate({
   identifier: "ChannelLoggingConfiguration",
@@ -1024,7 +1024,7 @@ export interface CreateChannelInput {
   Tags?: { [key: string]: string | undefined };
   LoggingConfiguration?: ChannelLoggingConfiguration;
 }
-export const CreateChannelInput = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelName: S.String,
     ServiceExecutionRoleARN: S.String,
@@ -1056,7 +1056,7 @@ export type ChannelStatus =
   | "DELETING"
   | "FAILED"
   | (string & {});
-export const ChannelStatus = S.String;
+const ChannelStatus = S.String;
 
 export type ChannelStatusReason = string;
 export interface ChannelStreamDescription {
@@ -1064,7 +1064,7 @@ export interface ChannelStreamDescription {
   StreamCreationTimestamp: Date;
   RecordConfiguration: RecordConfiguration;
 }
-export const ChannelStreamDescription = /*@__PURE__*/ S.suspend(() =>
+const ChannelStreamDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String,
     StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -1072,13 +1072,13 @@ export const ChannelStreamDescription = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelStreamDescription" }) as any as S.Schema<ChannelStreamDescription>;
 export type ChannelStreamDescriptionList = ChannelStreamDescription[];
-export const ChannelStreamDescriptionList = /*@__PURE__*/ S.Array(ChannelStreamDescription);
+const ChannelStreamDescriptionList = /*@__PURE__*/ S.Array(ChannelStreamDescription);
 export interface S3DestinationDescription {
   DataFreshnessInSeconds: number;
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   StorageConfiguration: S3StorageConfiguration;
 }
-export const S3DestinationDescription = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataFreshnessInSeconds: S.Number,
     DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
@@ -1090,7 +1090,7 @@ export interface S3TablesDestinationDescription {
   DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration;
   S3TablesConfigurationList: S3TablesConfiguration[];
 }
-export const S3TablesDestinationDescription = /*@__PURE__*/ S.suspend(() =>
+const S3TablesDestinationDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DataFreshnessInSeconds: S.Number,
     DeadLetterQueueS3Configuration: DeadLetterQueueS3Configuration,
@@ -1113,7 +1113,7 @@ export interface ChannelDescription {
   EncryptionConfiguration?: ChannelEncryptionConfiguration;
   LoggingConfiguration: ChannelLoggingConfiguration;
 }
-export const ChannelDescription = /*@__PURE__*/ S.suspend(() =>
+const ChannelDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelName: S.String,
     ChannelARN: S.String,
@@ -1132,23 +1132,23 @@ export const ChannelDescription = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-export const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelDescription: ChannelDescription }).pipe(ns),
 ).annotate({ identifier: "CreateChannelOutput" }) as any as S.Schema<CreateChannelOutput>;
 export type PositiveIntegerObject = number;
 export type StreamMode = "PROVISIONED" | "ON_DEMAND" | (string & {});
-export const StreamMode = S.String;
+const StreamMode = S.String;
 
 export interface StreamModeDetails {
   StreamMode: StreamMode;
 }
-export const StreamModeDetails = /*@__PURE__*/ S.suspend(() =>
+const StreamModeDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamMode: StreamMode }),
 ).annotate({ identifier: "StreamModeDetails" }) as any as S.Schema<StreamModeDetails>;
 export type NaturalIntegerObject = number;
 export type MaxRecordSizeInKiB = number;
 export type RecordDistributionStrategy = "AUTO" | "USER_PARTITION_KEY" | (string & {});
-export const RecordDistributionStrategy = S.String;
+const RecordDistributionStrategy = S.String;
 
 export interface CreateStreamInput {
   StreamName: string;
@@ -1159,7 +1159,7 @@ export interface CreateStreamInput {
   MaxRecordSizeInKiB?: number;
   RecordDistributionStrategy?: RecordDistributionStrategy;
 }
-export const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
+const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.String,
     ShardCount: S.optional(S.Number),
@@ -1182,7 +1182,7 @@ export const CreateStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "CreateStreamInput" }) as any as S.Schema<CreateStreamInput>;
 export interface CreateStreamResponse {}
-export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const CreateStreamResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "CreateStreamResponse",
 }) as any as S.Schema<CreateStreamResponse>;
 export type RetentionPeriodHours = number;
@@ -1192,7 +1192,7 @@ export interface DecreaseStreamRetentionPeriodInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
+const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     RetentionPeriodHours: S.Number,
@@ -1214,7 +1214,7 @@ export const DecreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DecreaseStreamRetentionPeriodInput",
 }) as any as S.Schema<DecreaseStreamRetentionPeriodInput>;
 export interface DecreaseStreamRetentionPeriodResponse {}
-export const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(() =>
+const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DecreaseStreamRetentionPeriodResponse",
@@ -1222,7 +1222,7 @@ export const DecreaseStreamRetentionPeriodResponse = /*@__PURE__*/ S.suspend(() 
 export interface DeleteChannelInput {
   ChannelARN: string;
 }
-export const DeleteChannelInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
     T.all(
       ns,
@@ -1237,13 +1237,13 @@ export const DeleteChannelInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteChannelInput" }) as any as S.Schema<DeleteChannelInput>;
 export interface DeleteChannelResponse {}
-export const DeleteChannelResponse = CreateStreamResponse as any as S.Schema<DeleteChannelResponse>;
+const DeleteChannelResponse = CreateStreamResponse as any as S.Schema<DeleteChannelResponse>;
 export type ResourceARN = string;
 export interface DeleteResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
 }
-export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -1263,7 +1263,7 @@ export const DeleteResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourcePolicyInput",
 }) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse =
+const DeleteResourcePolicyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeleteResourcePolicyResponse>;
 export interface DeleteStreamInput {
   StreamName?: string;
@@ -1271,7 +1271,7 @@ export interface DeleteStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
+const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     EnforceConsumerDeletion: S.optional(S.Boolean),
@@ -1291,7 +1291,7 @@ export const DeleteStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteStreamInput" }) as any as S.Schema<DeleteStreamInput>;
 export interface DeleteStreamResponse {}
-export const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
+const DeleteStreamResponse = CreateStreamResponse as any as S.Schema<DeleteStreamResponse>;
 export type ConsumerName = string;
 export type ConsumerARN = string;
 export interface DeregisterStreamConsumerInput {
@@ -1300,7 +1300,7 @@ export interface DeregisterStreamConsumerInput {
   ConsumerARN?: string;
   StreamId?: string;
 }
-export const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
     ConsumerName: S.optional(S.String),
@@ -1322,10 +1322,10 @@ export const DeregisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeregisterStreamConsumerInput",
 }) as any as S.Schema<DeregisterStreamConsumerInput>;
 export interface DeregisterStreamConsumerResponse {}
-export const DeregisterStreamConsumerResponse =
+const DeregisterStreamConsumerResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<DeregisterStreamConsumerResponse>;
 export interface DescribeAccountSettingsInput {}
-export const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       ns,
@@ -1346,7 +1346,7 @@ export type MinimumThroughputBillingCommitmentOutputStatus =
   | "DISABLED"
   | "ENABLED_UNTIL_EARLIEST_ALLOWED_END"
   | (string & {});
-export const MinimumThroughputBillingCommitmentOutputStatus = S.String;
+const MinimumThroughputBillingCommitmentOutputStatus = S.String;
 
 export interface MinimumThroughputBillingCommitmentOutput {
   Status: MinimumThroughputBillingCommitmentOutputStatus;
@@ -1354,7 +1354,7 @@ export interface MinimumThroughputBillingCommitmentOutput {
   EndedAt?: Date;
   EarliestAllowedEndAt?: Date;
 }
-export const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ S.suspend(() =>
+const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: MinimumThroughputBillingCommitmentOutputStatus,
     StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1367,7 +1367,7 @@ export const MinimumThroughputBillingCommitmentOutput = /*@__PURE__*/ S.suspend(
 export interface DescribeAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-export const DescribeAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MinimumThroughputBillingCommitment: S.optional(MinimumThroughputBillingCommitmentOutput),
   }).pipe(ns),
@@ -1377,7 +1377,7 @@ export const DescribeAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeChannelInput {
   ChannelARN: string;
 }
-export const DescribeChannelInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")) }).pipe(
     T.all(
       ns,
@@ -1394,9 +1394,9 @@ export const DescribeChannelInput = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-export const DescribeChannelOutput = CreateChannelOutput as any as S.Schema<DescribeChannelOutput>;
+const DescribeChannelOutput = CreateChannelOutput as any as S.Schema<DescribeChannelOutput>;
 export interface DescribeLimitsInput {}
-export const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeLimitsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.all(
       ns,
@@ -1422,7 +1422,7 @@ export interface DescribeLimitsOutput {
   ChannelCount?: number;
   ChannelCountLimit?: number;
 }
-export const DescribeLimitsOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeLimitsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ShardLimit: S.Number,
     OpenShardCount: S.Number,
@@ -1441,7 +1441,7 @@ export interface DescribeStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     Limit: S.optional(S.Number),
@@ -1462,14 +1462,14 @@ export const DescribeStreamInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DescribeStreamInput" }) as any as S.Schema<DescribeStreamInput>;
 export type StreamStatus = "CREATING" | "DELETING" | "ACTIVE" | "UPDATING" | (string & {});
-export const StreamStatus = S.String;
+const StreamStatus = S.String;
 
 export type HashKey = string;
 export interface HashKeyRange {
   StartingHashKey: string;
   EndingHashKey: string;
 }
-export const HashKeyRange = /*@__PURE__*/ S.suspend(() =>
+const HashKeyRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StartingHashKey: S.String, EndingHashKey: S.String }),
 ).annotate({ identifier: "HashKeyRange" }) as any as S.Schema<HashKeyRange>;
 export type SequenceNumber = string;
@@ -1477,7 +1477,7 @@ export interface SequenceNumberRange {
   StartingSequenceNumber: string;
   EndingSequenceNumber?: string;
 }
-export const SequenceNumberRange = /*@__PURE__*/ S.suspend(() =>
+const SequenceNumberRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StartingSequenceNumber: S.String, EndingSequenceNumber: S.optional(S.String) }),
 ).annotate({ identifier: "SequenceNumberRange" }) as any as S.Schema<SequenceNumberRange>;
 export interface Shard {
@@ -1487,7 +1487,7 @@ export interface Shard {
   HashKeyRange: HashKeyRange;
   SequenceNumberRange: SequenceNumberRange;
 }
-export const Shard = /*@__PURE__*/ S.suspend(() =>
+const Shard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ShardId: S.String,
     ParentShardId: S.optional(S.String),
@@ -1497,7 +1497,7 @@ export const Shard = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Shard" }) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
-export const ShardList = /*@__PURE__*/ S.Array(Shard);
+const ShardList = /*@__PURE__*/ S.Array(Shard);
 export type MetricsName =
   | "IncomingBytes"
   | "IncomingRecords"
@@ -1508,20 +1508,20 @@ export type MetricsName =
   | "IteratorAgeMilliseconds"
   | "ALL"
   | (string & {});
-export const MetricsName = S.String;
+const MetricsName = S.String;
 
 export type MetricsNameList = MetricsName[];
-export const MetricsNameList = /*@__PURE__*/ S.Array(MetricsName);
+const MetricsNameList = /*@__PURE__*/ S.Array(MetricsName);
 export interface EnhancedMetrics {
   ShardLevelMetrics?: MetricsName[];
 }
-export const EnhancedMetrics = /*@__PURE__*/ S.suspend(() =>
+const EnhancedMetrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ShardLevelMetrics: S.optional(MetricsNameList) }),
 ).annotate({ identifier: "EnhancedMetrics" }) as any as S.Schema<EnhancedMetrics>;
 export type EnhancedMonitoringList = EnhancedMetrics[];
-export const EnhancedMonitoringList = /*@__PURE__*/ S.Array(EnhancedMetrics);
+const EnhancedMonitoringList = /*@__PURE__*/ S.Array(EnhancedMetrics);
 export type EncryptionType = "NONE" | "KMS" | (string & {});
-export const EncryptionType = S.String;
+const EncryptionType = S.String;
 
 export interface StreamDescription {
   StreamName: string;
@@ -1536,7 +1536,7 @@ export interface StreamDescription {
   EncryptionType?: EncryptionType;
   KeyId?: string;
 }
-export const StreamDescription = /*@__PURE__*/ S.suspend(() =>
+const StreamDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.String,
     StreamARN: S.String,
@@ -1554,7 +1554,7 @@ export const StreamDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamOutput {
   StreamDescription: StreamDescription;
 }
-export const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamDescription: StreamDescription }).pipe(ns),
 ).annotate({ identifier: "DescribeStreamOutput" }) as any as S.Schema<DescribeStreamOutput>;
 export interface DescribeStreamConsumerInput {
@@ -1563,7 +1563,7 @@ export interface DescribeStreamConsumerInput {
   ConsumerARN?: string;
   StreamId?: string;
 }
-export const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
     ConsumerName: S.optional(S.String),
@@ -1585,7 +1585,7 @@ export const DescribeStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescribeStreamConsumerInput",
 }) as any as S.Schema<DescribeStreamConsumerInput>;
 export type ConsumerStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
-export const ConsumerStatus = S.String;
+const ConsumerStatus = S.String;
 
 export interface ConsumerDescription {
   ConsumerName: string;
@@ -1594,7 +1594,7 @@ export interface ConsumerDescription {
   ConsumerCreationTimestamp: Date;
   StreamARN: string;
 }
-export const ConsumerDescription = /*@__PURE__*/ S.suspend(() =>
+const ConsumerDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsumerName: S.String,
     ConsumerARN: S.String,
@@ -1606,7 +1606,7 @@ export const ConsumerDescription = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamConsumerOutput {
   ConsumerDescription: ConsumerDescription;
 }
-export const DescribeStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ConsumerDescription: ConsumerDescription }).pipe(ns),
 ).annotate({
   identifier: "DescribeStreamConsumerOutput",
@@ -1616,7 +1616,7 @@ export interface DescribeStreamSummaryInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const DescribeStreamSummaryInput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamSummaryInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
@@ -1641,7 +1641,7 @@ export interface WarmThroughputObject {
   TargetMiBps?: number;
   CurrentMiBps?: number;
 }
-export const WarmThroughputObject = /*@__PURE__*/ S.suspend(() =>
+const WarmThroughputObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TargetMiBps: S.optional(S.Number), CurrentMiBps: S.optional(S.Number) }),
 ).annotate({ identifier: "WarmThroughputObject" }) as any as S.Schema<WarmThroughputObject>;
 export interface StreamDescriptionSummary {
@@ -1662,7 +1662,7 @@ export interface StreamDescriptionSummary {
   ChannelCount?: number;
   RecordDistributionStrategy?: RecordDistributionStrategy;
 }
-export const StreamDescriptionSummary = /*@__PURE__*/ S.suspend(() =>
+const StreamDescriptionSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.String,
     StreamARN: S.String,
@@ -1685,7 +1685,7 @@ export const StreamDescriptionSummary = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeStreamSummaryOutput {
   StreamDescriptionSummary: StreamDescriptionSummary;
 }
-export const DescribeStreamSummaryOutput = /*@__PURE__*/ S.suspend(() =>
+const DescribeStreamSummaryOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StreamDescriptionSummary: StreamDescriptionSummary }).pipe(ns),
 ).annotate({
   identifier: "DescribeStreamSummaryOutput",
@@ -1696,7 +1696,7 @@ export interface DisableEnhancedMonitoringInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const DisableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
+const DisableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ShardLevelMetrics: MetricsNameList,
@@ -1723,7 +1723,7 @@ export interface EnhancedMonitoringOutput {
   DesiredShardLevelMetrics?: MetricsName[];
   StreamARN?: string;
 }
-export const EnhancedMonitoringOutput = /*@__PURE__*/ S.suspend(() =>
+const EnhancedMonitoringOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     CurrentShardLevelMetrics: S.optional(MetricsNameList),
@@ -1737,7 +1737,7 @@ export interface EnableEnhancedMonitoringInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const EnableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
+const EnableEnhancedMonitoringInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ShardLevelMetrics: MetricsNameList,
@@ -1767,7 +1767,7 @@ export interface GetRecordsInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ShardIterator: S.String,
     Limit: S.optional(S.Number),
@@ -1796,7 +1796,7 @@ export interface Record {
   PartitionKey?: string;
   EncryptionType?: EncryptionType;
 }
-export const Record = /*@__PURE__*/ S.suspend(() =>
+const Record = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SequenceNumber: S.String,
     ApproximateArrivalTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1806,27 +1806,27 @@ export const Record = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
-export const RecordList = /*@__PURE__*/ S.Array(Record);
+const RecordList = /*@__PURE__*/ S.Array(Record);
 export type MillisBehindLatest = number;
 export type ShardIdList = string[];
-export const ShardIdList = /*@__PURE__*/ S.Array(S.String);
+const ShardIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ChildShard {
   ShardId: string;
   ParentShards: string[];
   HashKeyRange: HashKeyRange;
 }
-export const ChildShard = /*@__PURE__*/ S.suspend(() =>
+const ChildShard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ShardId: S.String, ParentShards: ShardIdList, HashKeyRange: HashKeyRange }),
 ).annotate({ identifier: "ChildShard" }) as any as S.Schema<ChildShard>;
 export type ChildShardList = ChildShard[];
-export const ChildShardList = /*@__PURE__*/ S.Array(ChildShard);
+const ChildShardList = /*@__PURE__*/ S.Array(ChildShard);
 export interface GetRecordsOutput {
   Records: Record[];
   NextShardIterator?: string;
   MillisBehindLatest?: number;
   ChildShards?: ChildShard[];
 }
-export const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
+const GetRecordsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: RecordList,
     NextShardIterator: S.optional(S.String),
@@ -1838,7 +1838,7 @@ export interface GetResourcePolicyInput {
   ResourceARN: string;
   StreamId?: string;
 }
-export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -1859,7 +1859,7 @@ export type Policy = string;
 export interface GetResourcePolicyOutput {
   Policy: string;
 }
-export const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Policy: S.String }).pipe(ns),
 ).annotate({ identifier: "GetResourcePolicyOutput" }) as any as S.Schema<GetResourcePolicyOutput>;
 export type ShardIteratorType =
@@ -1869,7 +1869,7 @@ export type ShardIteratorType =
   | "LATEST"
   | "AT_TIMESTAMP"
   | (string & {});
-export const ShardIteratorType = S.String;
+const ShardIteratorType = S.String;
 
 export interface GetShardIteratorInput {
   StreamName?: string;
@@ -1881,7 +1881,7 @@ export interface GetShardIteratorInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-export const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
+const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ShardId: S.String,
@@ -1907,7 +1907,7 @@ export const GetShardIteratorInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetShardIteratorOutput {
   ShardIterator?: string;
 }
-export const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
+const GetShardIteratorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ShardIterator: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "GetShardIteratorOutput" }) as any as S.Schema<GetShardIteratorOutput>;
 export interface IncreaseStreamRetentionPeriodInput {
@@ -1916,7 +1916,7 @@ export interface IncreaseStreamRetentionPeriodInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
+const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     RetentionPeriodHours: S.Number,
@@ -1938,20 +1938,20 @@ export const IncreaseStreamRetentionPeriodInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "IncreaseStreamRetentionPeriodInput",
 }) as any as S.Schema<IncreaseStreamRetentionPeriodInput>;
 export interface IncreaseStreamRetentionPeriodResponse {}
-export const IncreaseStreamRetentionPeriodResponse =
+const IncreaseStreamRetentionPeriodResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<IncreaseStreamRetentionPeriodResponse>;
 export interface StreamFilter {
   StreamARN: string;
   StreamCreationTimestamp?: Date;
 }
-export const StreamFilter = /*@__PURE__*/ S.suspend(() =>
+const StreamFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String,
     StreamCreationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "StreamFilter" }) as any as S.Schema<StreamFilter>;
 export type StreamFilterList = StreamFilter[];
-export const StreamFilterList = /*@__PURE__*/ S.Array(StreamFilter);
+const StreamFilterList = /*@__PURE__*/ S.Array(StreamFilter);
 export type ListChannelsInputLimit = number;
 export type NextToken = string;
 export interface ListChannelsInput {
@@ -1959,7 +1959,7 @@ export interface ListChannelsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamFilter: S.optional(StreamFilterList),
     MaxResults: S.optional(S.Number),
@@ -1978,20 +1978,20 @@ export const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListChannelsInput" }) as any as S.Schema<ListChannelsInput>;
 export type ChannelDestinationType = "S3" | "S3_TABLES" | (string & {});
-export const ChannelDestinationType = S.String;
+const ChannelDestinationType = S.String;
 
 export interface ChannelStreamIdentifier {
   StreamARN: string;
   StreamCreationTimestamp: Date;
 }
-export const ChannelStreamIdentifier = /*@__PURE__*/ S.suspend(() =>
+const ChannelStreamIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String,
     StreamCreationTimestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
   }),
 ).annotate({ identifier: "ChannelStreamIdentifier" }) as any as S.Schema<ChannelStreamIdentifier>;
 export type ChannelStreamIdentifierList = ChannelStreamIdentifier[];
-export const ChannelStreamIdentifierList = /*@__PURE__*/ S.Array(ChannelStreamIdentifier);
+const ChannelStreamIdentifierList = /*@__PURE__*/ S.Array(ChannelStreamIdentifier);
 export interface ChannelSummary {
   ChannelName: string;
   ChannelARN: string;
@@ -2002,7 +2002,7 @@ export interface ChannelSummary {
   ChannelDestinationType: ChannelDestinationType;
   Streams: ChannelStreamIdentifier[];
 }
-export const ChannelSummary = /*@__PURE__*/ S.suspend(() =>
+const ChannelSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelName: S.String,
     ChannelARN: S.String,
@@ -2015,12 +2015,12 @@ export const ChannelSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelSummary" }) as any as S.Schema<ChannelSummary>;
 export type ChannelSummaryList = ChannelSummary[];
-export const ChannelSummaryList = /*@__PURE__*/ S.Array(ChannelSummary);
+const ChannelSummaryList = /*@__PURE__*/ S.Array(ChannelSummary);
 export interface ListChannelsOutput {
   ChannelSummaries: ChannelSummary[];
   NextToken?: string;
 }
-export const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ChannelSummaries: ChannelSummaryList, NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListChannelsOutput" }) as any as S.Schema<ListChannelsOutput>;
 export type ListShardsInputLimit = number;
@@ -2032,14 +2032,14 @@ export type ShardFilterType =
   | "AT_TIMESTAMP"
   | "FROM_TIMESTAMP"
   | (string & {});
-export const ShardFilterType = S.String;
+const ShardFilterType = S.String;
 
 export interface ShardFilter {
   Type: ShardFilterType;
   ShardId?: string;
   Timestamp?: Date;
 }
-export const ShardFilter = /*@__PURE__*/ S.suspend(() =>
+const ShardFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: ShardFilterType,
     ShardId: S.optional(S.String),
@@ -2056,7 +2056,7 @@ export interface ListShardsInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const ListShardsInput = /*@__PURE__*/ S.suspend(() =>
+const ListShardsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     NextToken: S.optional(S.String),
@@ -2083,7 +2083,7 @@ export interface ListShardsOutput {
   Shards?: Shard[];
   NextToken?: string;
 }
-export const ListShardsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListShardsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Shards: S.optional(ShardList), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListShardsOutput" }) as any as S.Schema<ListShardsOutput>;
 export type ListStreamConsumersInputLimit = number;
@@ -2094,7 +2094,7 @@ export interface ListStreamConsumersInput {
   StreamCreationTimestamp?: Date;
   StreamId?: string;
 }
-export const ListStreamConsumersInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamConsumersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
     NextToken: S.optional(S.String),
@@ -2120,7 +2120,7 @@ export interface Consumer {
   ConsumerStatus: ConsumerStatus;
   ConsumerCreationTimestamp: Date;
 }
-export const Consumer = /*@__PURE__*/ S.suspend(() =>
+const Consumer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsumerName: S.String,
     ConsumerARN: S.String,
@@ -2129,12 +2129,12 @@ export const Consumer = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Consumer" }) as any as S.Schema<Consumer>;
 export type ConsumerList = Consumer[];
-export const ConsumerList = /*@__PURE__*/ S.Array(Consumer);
+const ConsumerList = /*@__PURE__*/ S.Array(Consumer);
 export interface ListStreamConsumersOutput {
   Consumers?: Consumer[];
   NextToken?: string;
 }
-export const ListStreamConsumersOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamConsumersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Consumers: S.optional(ConsumerList), NextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListStreamConsumersOutput",
@@ -2145,7 +2145,7 @@ export interface ListStreamsInput {
   ExclusiveStartStreamName?: string;
   NextToken?: string;
 }
-export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Limit: S.optional(S.Number),
     ExclusiveStartStreamName: S.optional(S.String),
@@ -2164,7 +2164,7 @@ export const ListStreamsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListStreamsInput" }) as any as S.Schema<ListStreamsInput>;
 export type StreamNameList = string[];
-export const StreamNameList = ShardIdList as any as S.Schema<StreamNameList>;
+const StreamNameList = ShardIdList as any as S.Schema<StreamNameList>;
 export interface StreamSummary {
   StreamName: string;
   StreamARN: string;
@@ -2172,7 +2172,7 @@ export interface StreamSummary {
   StreamModeDetails?: StreamModeDetails;
   StreamCreationTimestamp?: Date;
 }
-export const StreamSummary = /*@__PURE__*/ S.suspend(() =>
+const StreamSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.String,
     StreamARN: S.String,
@@ -2182,14 +2182,14 @@ export const StreamSummary = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StreamSummary" }) as any as S.Schema<StreamSummary>;
 export type StreamSummaryList = StreamSummary[];
-export const StreamSummaryList = /*@__PURE__*/ S.Array(StreamSummary);
+const StreamSummaryList = /*@__PURE__*/ S.Array(StreamSummary);
 export interface ListStreamsOutput {
   StreamNames: string[];
   HasMoreStreams: boolean;
   NextToken?: string;
   StreamSummaries?: StreamSummary[];
 }
-export const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
+const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamNames: StreamNameList,
     HasMoreStreams: S.Boolean,
@@ -2201,7 +2201,7 @@ export interface ListTagsForResourceInput {
   ResourceARN: string;
   StreamId?: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -2222,15 +2222,15 @@ export interface Tag {
   Key: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
+const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceOutput {
   Tags?: Tag[];
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
@@ -2243,7 +2243,7 @@ export interface ListTagsForStreamInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const ListTagsForStreamInput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ExclusiveStartTagKey: S.optional(S.String),
@@ -2267,7 +2267,7 @@ export interface ListTagsForStreamOutput {
   Tags: Tag[];
   HasMoreTags: boolean;
 }
-export const ListTagsForStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Tags: TagList, HasMoreTags: S.Boolean }).pipe(ns),
 ).annotate({ identifier: "ListTagsForStreamOutput" }) as any as S.Schema<ListTagsForStreamOutput>;
 export interface MergeShardsInput {
@@ -2277,7 +2277,7 @@ export interface MergeShardsInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const MergeShardsInput = /*@__PURE__*/ S.suspend(() =>
+const MergeShardsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ShardToMerge: S.String,
@@ -2298,7 +2298,7 @@ export const MergeShardsInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "MergeShardsInput" }) as any as S.Schema<MergeShardsInput>;
 export interface MergeShardsResponse {}
-export const MergeShardsResponse = CreateStreamResponse as any as S.Schema<MergeShardsResponse>;
+const MergeShardsResponse = CreateStreamResponse as any as S.Schema<MergeShardsResponse>;
 export interface PutRecordInput {
   StreamName?: string;
   Data: Uint8Array;
@@ -2309,7 +2309,7 @@ export interface PutRecordInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-export const PutRecordInput = /*@__PURE__*/ S.suspend(() =>
+const PutRecordInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     Data: T.Blob,
@@ -2337,7 +2337,7 @@ export interface PutRecordOutput {
   SequenceNumber: string;
   EncryptionType?: EncryptionType;
 }
-export const PutRecordOutput = /*@__PURE__*/ S.suspend(() =>
+const PutRecordOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ShardId: S.String,
     SequenceNumber: S.String,
@@ -2349,7 +2349,7 @@ export interface PutRecordsRequestEntry {
   ExplicitHashKey?: string;
   PartitionKey?: string;
 }
-export const PutRecordsRequestEntry = /*@__PURE__*/ S.suspend(() =>
+const PutRecordsRequestEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Data: T.Blob,
     ExplicitHashKey: S.optional(S.String),
@@ -2357,7 +2357,7 @@ export const PutRecordsRequestEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PutRecordsRequestEntry" }) as any as S.Schema<PutRecordsRequestEntry>;
 export type PutRecordsRequestEntryList = PutRecordsRequestEntry[];
-export const PutRecordsRequestEntryList = /*@__PURE__*/ S.Array(PutRecordsRequestEntry);
+const PutRecordsRequestEntryList = /*@__PURE__*/ S.Array(PutRecordsRequestEntry);
 export interface PutRecordsInput {
   Records: PutRecordsRequestEntry[];
   StreamName?: string;
@@ -2365,7 +2365,7 @@ export interface PutRecordsInput {
   StreamId?: string;
   DryRun?: boolean;
 }
-export const PutRecordsInput = /*@__PURE__*/ S.suspend(() =>
+const PutRecordsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: PutRecordsRequestEntryList,
     StreamName: S.optional(S.String),
@@ -2393,7 +2393,7 @@ export interface PutRecordsResultEntry {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-export const PutRecordsResultEntry = /*@__PURE__*/ S.suspend(() =>
+const PutRecordsResultEntry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SequenceNumber: S.optional(S.String),
     ShardId: S.optional(S.String),
@@ -2402,13 +2402,13 @@ export const PutRecordsResultEntry = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PutRecordsResultEntry" }) as any as S.Schema<PutRecordsResultEntry>;
 export type PutRecordsResultEntryList = PutRecordsResultEntry[];
-export const PutRecordsResultEntryList = /*@__PURE__*/ S.Array(PutRecordsResultEntry);
+const PutRecordsResultEntryList = /*@__PURE__*/ S.Array(PutRecordsResultEntry);
 export interface PutRecordsOutput {
   FailedRecordCount?: number;
   Records: PutRecordsResultEntry[];
   EncryptionType?: EncryptionType;
 }
-export const PutRecordsOutput = /*@__PURE__*/ S.suspend(() =>
+const PutRecordsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FailedRecordCount: S.optional(S.Number),
     Records: PutRecordsResultEntryList,
@@ -2420,7 +2420,7 @@ export interface PutResourcePolicyInput {
   StreamId?: string;
   Policy: string;
 }
-export const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
+const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -2439,7 +2439,7 @@ export const PutResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "PutResourcePolicyInput" }) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyResponse {}
-export const PutResourcePolicyResponse =
+const PutResourcePolicyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface RegisterStreamConsumerInput {
   StreamARN: string;
@@ -2447,7 +2447,7 @@ export interface RegisterStreamConsumerInput {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const RegisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
+const RegisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
     ConsumerName: S.String,
@@ -2471,20 +2471,20 @@ export const RegisterStreamConsumerInput = /*@__PURE__*/ S.suspend(() =>
 export interface RegisterStreamConsumerOutput {
   Consumer: Consumer;
 }
-export const RegisterStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
+const RegisterStreamConsumerOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Consumer: Consumer }).pipe(ns),
 ).annotate({
   identifier: "RegisterStreamConsumerOutput",
 }) as any as S.Schema<RegisterStreamConsumerOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = ShardIdList as any as S.Schema<TagKeyList>;
+const TagKeyList = ShardIdList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromStreamInput {
   StreamName?: string;
   TagKeys: string[];
   StreamARN?: string;
   StreamId?: string;
 }
-export const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
+const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     TagKeys: TagKeyList,
@@ -2506,7 +2506,7 @@ export const RemoveTagsFromStreamInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveTagsFromStreamInput",
 }) as any as S.Schema<RemoveTagsFromStreamInput>;
 export interface RemoveTagsFromStreamResponse {}
-export const RemoveTagsFromStreamResponse =
+const RemoveTagsFromStreamResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<RemoveTagsFromStreamResponse>;
 export interface SplitShardInput {
   StreamName?: string;
@@ -2515,7 +2515,7 @@ export interface SplitShardInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const SplitShardInput = /*@__PURE__*/ S.suspend(() =>
+const SplitShardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     ShardToSplit: S.String,
@@ -2536,7 +2536,7 @@ export const SplitShardInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "SplitShardInput" }) as any as S.Schema<SplitShardInput>;
 export interface SplitShardResponse {}
-export const SplitShardResponse = CreateStreamResponse as any as S.Schema<SplitShardResponse>;
+const SplitShardResponse = CreateStreamResponse as any as S.Schema<SplitShardResponse>;
 export interface StartStreamEncryptionInput {
   StreamName?: string;
   EncryptionType: EncryptionType;
@@ -2544,7 +2544,7 @@ export interface StartStreamEncryptionInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
+const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     EncryptionType: EncryptionType,
@@ -2567,7 +2567,7 @@ export const StartStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartStreamEncryptionInput",
 }) as any as S.Schema<StartStreamEncryptionInput>;
 export interface StartStreamEncryptionResponse {}
-export const StartStreamEncryptionResponse =
+const StartStreamEncryptionResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<StartStreamEncryptionResponse>;
 export interface StopStreamEncryptionInput {
   StreamName?: string;
@@ -2576,7 +2576,7 @@ export interface StopStreamEncryptionInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
+const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     EncryptionType: EncryptionType,
@@ -2599,14 +2599,14 @@ export const StopStreamEncryptionInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopStreamEncryptionInput",
 }) as any as S.Schema<StopStreamEncryptionInput>;
 export interface StopStreamEncryptionResponse {}
-export const StopStreamEncryptionResponse =
+const StopStreamEncryptionResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<StopStreamEncryptionResponse>;
 export interface StartingPosition {
   Type: ShardIteratorType;
   SequenceNumber?: string;
   Timestamp?: Date;
 }
-export const StartingPosition = /*@__PURE__*/ S.suspend(() =>
+const StartingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: ShardIteratorType,
     SequenceNumber: S.optional(S.String),
@@ -2620,7 +2620,7 @@ export interface SubscribeToShardInput {
   StartingPosition: StartingPosition;
   DryRun?: boolean;
 }
-export const SubscribeToShardInput = /*@__PURE__*/ S.suspend(() =>
+const SubscribeToShardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsumerARN: S.String.pipe(T.ContextParam("ConsumerARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -2646,7 +2646,7 @@ export interface SubscribeToShardEvent {
   MillisBehindLatest: number;
   ChildShards?: ChildShard[];
 }
-export const SubscribeToShardEvent = /*@__PURE__*/ S.suspend(() =>
+const SubscribeToShardEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Records: RecordList,
     ContinuationSequenceNumber: S.String,
@@ -2775,7 +2775,7 @@ export type SubscribeToShardEventStream =
       KMSThrottlingException?: never;
       InternalFailureException: InternalFailureException;
     };
-export const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
+const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
   /*@__PURE__*/ S.Union([
     /*@__PURE__*/ S.Struct({ SubscribeToShardEvent: SubscribeToShardEvent }),
     /*@__PURE__*/ S.Struct({
@@ -2828,7 +2828,7 @@ export const SubscribeToShardEventStream = /*@__PURE__*/ T.EventStream(
 export interface SubscribeToShardOutput {
   EventStream: stream.Stream<SubscribeToShardEventStream, Error, never>;
 }
-export const SubscribeToShardOutput = /*@__PURE__*/ S.suspend(() =>
+const SubscribeToShardOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventStream: SubscribeToShardEventStream }).pipe(ns),
 ).annotate({ identifier: "SubscribeToShardOutput" }) as any as S.Schema<SubscribeToShardOutput>;
 export interface TagResourceInput {
@@ -2836,7 +2836,7 @@ export interface TagResourceInput {
   ResourceARN: string;
   StreamId?: string;
 }
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Tags: TagMap,
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
@@ -2855,13 +2855,13 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceInput" }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = CreateStreamResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = CreateStreamResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceInput {
   TagKeys: string[];
   ResourceARN: string;
   StreamId?: string;
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TagKeys: TagKeyList,
     ResourceARN: S.String.pipe(T.ContextParam("ResourceARN")),
@@ -2880,14 +2880,14 @@ export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceInput" }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = CreateStreamResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = CreateStreamResponse as any as S.Schema<UntagResourceResponse>;
 export type MinimumThroughputBillingCommitmentInputStatus = "ENABLED" | "DISABLED" | (string & {});
-export const MinimumThroughputBillingCommitmentInputStatus = S.String;
+const MinimumThroughputBillingCommitmentInputStatus = S.String;
 
 export interface MinimumThroughputBillingCommitmentInput {
   Status: MinimumThroughputBillingCommitmentInputStatus;
 }
-export const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ S.suspend(() =>
+const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Status: MinimumThroughputBillingCommitmentInputStatus }),
 ).annotate({
   identifier: "MinimumThroughputBillingCommitmentInput",
@@ -2895,7 +2895,7 @@ export const MinimumThroughputBillingCommitmentInput = /*@__PURE__*/ S.suspend((
 export interface UpdateAccountSettingsInput {
   MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput;
 }
-export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MinimumThroughputBillingCommitment: MinimumThroughputBillingCommitmentInput }).pipe(
     T.all(
       ns,
@@ -2914,18 +2914,18 @@ export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountSettingsOutput {
   MinimumThroughputBillingCommitment?: MinimumThroughputBillingCommitmentOutput;
 }
-export const UpdateAccountSettingsOutput =
+const UpdateAccountSettingsOutput =
   DescribeAccountSettingsOutput as any as S.Schema<UpdateAccountSettingsOutput>;
 export interface S3DestinationUpdateInput {
   DataFreshnessInSeconds: number;
 }
-export const S3DestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const S3DestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DataFreshnessInSeconds: S.Number }),
 ).annotate({ identifier: "S3DestinationUpdateInput" }) as any as S.Schema<S3DestinationUpdateInput>;
 export interface S3TablesDestinationUpdateInput {
   DataFreshnessInSeconds: number;
 }
-export const S3TablesDestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const S3TablesDestinationUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DataFreshnessInSeconds: S.Number }),
 ).annotate({
   identifier: "S3TablesDestinationUpdateInput",
@@ -2935,7 +2935,7 @@ export interface CloudWatchLogsUpdateInput {
   LogGroupName?: string;
   LogStreamName?: string;
 }
-export const CloudWatchLogsUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const CloudWatchLogsUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Enabled: S.Boolean,
     LogGroupName: S.optional(S.String),
@@ -2947,7 +2947,7 @@ export const CloudWatchLogsUpdateInput = /*@__PURE__*/ S.suspend(() =>
 export interface ChannelLoggingUpdateInput {
   CloudWatchLogs: CloudWatchLogsUpdateInput;
 }
-export const ChannelLoggingUpdateInput = /*@__PURE__*/ S.suspend(() =>
+const ChannelLoggingUpdateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ CloudWatchLogs: CloudWatchLogsUpdateInput }),
 ).annotate({
   identifier: "ChannelLoggingUpdateInput",
@@ -2958,7 +2958,7 @@ export interface UpdateChannelInput {
   S3TablesDestinationConfiguration?: S3TablesDestinationUpdateInput;
   LoggingConfiguration?: ChannelLoggingUpdateInput;
 }
-export const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ChannelARN: S.String.pipe(T.ContextParam("ChannelARN")),
     S3DestinationConfiguration: S.optional(S3DestinationUpdateInput),
@@ -2980,13 +2980,13 @@ export const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelOutput {
   ChannelDescription: ChannelDescription;
 }
-export const UpdateChannelOutput = CreateChannelOutput as any as S.Schema<UpdateChannelOutput>;
+const UpdateChannelOutput = CreateChannelOutput as any as S.Schema<UpdateChannelOutput>;
 export interface UpdateMaxRecordSizeInput {
   StreamARN?: string;
   StreamId?: string;
   MaxRecordSizeInKiB: number;
 }
-export const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -3005,10 +3005,10 @@ export const UpdateMaxRecordSizeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateMaxRecordSizeInput" }) as any as S.Schema<UpdateMaxRecordSizeInput>;
 export interface UpdateMaxRecordSizeResponse {}
-export const UpdateMaxRecordSizeResponse =
+const UpdateMaxRecordSizeResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateMaxRecordSizeResponse>;
 export type ScalingType = "UNIFORM_SCALING" | (string & {});
-export const ScalingType = S.String;
+const ScalingType = S.String;
 
 export interface UpdateShardCountInput {
   StreamName?: string;
@@ -3017,7 +3017,7 @@ export interface UpdateShardCountInput {
   StreamARN?: string;
   StreamId?: string;
 }
-export const UpdateShardCountInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateShardCountInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     TargetShardCount: S.Number,
@@ -3043,7 +3043,7 @@ export interface UpdateShardCountOutput {
   TargetShardCount?: number;
   StreamARN?: string;
 }
-export const UpdateShardCountOutput = /*@__PURE__*/ S.suspend(() =>
+const UpdateShardCountOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     CurrentShardCount: S.optional(S.Number),
@@ -3057,7 +3057,7 @@ export interface UpdateStreamModeInput {
   StreamModeDetails: StreamModeDetails;
   WarmThroughputMiBps?: number;
 }
-export const UpdateStreamModeInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamModeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -3077,14 +3077,14 @@ export const UpdateStreamModeInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UpdateStreamModeInput" }) as any as S.Schema<UpdateStreamModeInput>;
 export interface UpdateStreamModeResponse {}
-export const UpdateStreamModeResponse =
+const UpdateStreamModeResponse =
   AddTagsToStreamResponse as any as S.Schema<UpdateStreamModeResponse>;
 export interface UpdateStreamRecordDistributionStrategyInput {
   StreamARN: string;
   StreamId?: string;
   RecordDistributionStrategy: RecordDistributionStrategy;
 }
-export const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.String.pipe(T.ContextParam("StreamARN")),
     StreamId: S.optional(S.String).pipe(T.ContextParam("StreamId")),
@@ -3105,7 +3105,7 @@ export const UpdateStreamRecordDistributionStrategyInput = /*@__PURE__*/ S.suspe
   identifier: "UpdateStreamRecordDistributionStrategyInput",
 }) as any as S.Schema<UpdateStreamRecordDistributionStrategyInput>;
 export interface UpdateStreamRecordDistributionStrategyResponse {}
-export const UpdateStreamRecordDistributionStrategyResponse =
+const UpdateStreamRecordDistributionStrategyResponse =
   DecreaseStreamRetentionPeriodResponse as any as S.Schema<UpdateStreamRecordDistributionStrategyResponse>;
 export interface UpdateStreamWarmThroughputInput {
   StreamARN?: string;
@@ -3113,7 +3113,7 @@ export interface UpdateStreamWarmThroughputInput {
   StreamId?: string;
   WarmThroughputMiBps: number;
 }
-export const UpdateStreamWarmThroughputInput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamWarmThroughputInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String).pipe(T.ContextParam("StreamARN")),
     StreamName: S.optional(S.String),
@@ -3139,7 +3139,7 @@ export interface UpdateStreamWarmThroughputOutput {
   StreamName?: string;
   WarmThroughput?: WarmThroughputObject;
 }
-export const UpdateStreamWarmThroughputOutput = /*@__PURE__*/ S.suspend(() =>
+const UpdateStreamWarmThroughputOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamARN: S.optional(S.String),
     StreamName: S.optional(S.String),

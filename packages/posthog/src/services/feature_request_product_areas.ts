@@ -17,7 +17,7 @@ export interface CreateFeatureRequestProductAreasRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-export const CreateFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -48,7 +48,7 @@ export interface FeatureRequestProductArea {
   /** When the product area was last updated. */
   updated_at: string;
 }
-export const FeatureRequestProductArea = /*@__PURE__*/ S.suspend(() =>
+const FeatureRequestProductArea = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -67,7 +67,7 @@ export interface ListFeatureRequestProductAreasRequest {
   /** Include inactive product areas. Defaults to false. */
   include_inactive?: boolean;
 }
-export const ListFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     include_inactive: S.optional(S.Boolean.pipe(T.Query())),
@@ -83,12 +83,12 @@ export const ListFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListFeatureRequestProductAreasRequest>;
 
 export type ListFeatureRequestProductAreasResponseBodyList = Array<FeatureRequestProductArea>;
-export const ListFeatureRequestProductAreasResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFeatureRequestProductAreasResponseBodyList = /*@__PURE__*/ S.Array(
   FeatureRequestProductArea,
 ) as any as S.Schema<ListFeatureRequestProductAreasResponseBodyList>;
 
 export type ListFeatureRequestProductAreasResponse = ListFeatureRequestProductAreasResponseBodyList;
-export const ListFeatureRequestProductAreasResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFeatureRequestProductAreasResponse = /*@__PURE__*/ S.suspend(() =>
   ListFeatureRequestProductAreasResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFeatureRequestProductAreasResponse",
@@ -105,7 +105,7 @@ export interface UpdateFeatureRequestProductAreasRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-export const UpdateFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureRequestProductAreasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -134,7 +134,7 @@ export interface UpdateFeatureRequestProductAreasPartialRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-export const UpdateFeatureRequestProductAreasPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFeatureRequestProductAreasPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

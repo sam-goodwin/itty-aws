@@ -10,7 +10,7 @@ export type { AzureOpError, AzureOpContext };
 
 /** The category of the budget, whether the budget tracks cost or usage. */
 export type CategoryType = "Cost";
-export const CategoryType = S.String;
+const CategoryType = S.String;
 
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
 export type TimeGrainType =
@@ -20,7 +20,7 @@ export type TimeGrainType =
   | "BillingMonth"
   | "BillingQuarter"
   | "BillingAnnual";
-export const TimeGrainType = S.String;
+const TimeGrainType = S.String;
 
 /** The start and end date for a budget. */
 export interface BudgetTimePeriod {
@@ -29,7 +29,7 @@ export interface BudgetTimePeriod {
   /** The end date for the budget. If not provided, we default this to 10 years from the start date. */
   endDate?: string;
 }
-export const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
+const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startDate: S.String,
     endDate: S.optional(S.String),
@@ -38,11 +38,11 @@ export const BudgetTimePeriod = /*@__PURE__*/ S.suspend(() =>
 
 /** The operator to use for comparison. */
 export type BudgetOperatorType = "In";
-export const BudgetOperatorType = S.String;
+const BudgetOperatorType = S.String;
 
 /** Array of values to use for comparison */
 export type BudgetComparisonExpressionValuesList = Array<string>;
-export const BudgetComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
+const BudgetComparisonExpressionValuesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<BudgetComparisonExpressionValuesList>;
 
@@ -55,7 +55,7 @@ export interface BudgetComparisonExpression {
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
-export const BudgetComparisonExpression = /*@__PURE__*/ S.suspend(() =>
+const BudgetComparisonExpression = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     operator: BudgetOperatorType,
@@ -72,7 +72,7 @@ export interface BudgetFilterProperties {
   /** Has comparison expression for a tag */
   tags?: BudgetComparisonExpression;
 }
-export const BudgetFilterProperties = /*@__PURE__*/ S.suspend(() =>
+const BudgetFilterProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dimensions: S.optional(BudgetComparisonExpression),
     tags: S.optional(BudgetComparisonExpression),
@@ -81,7 +81,7 @@ export const BudgetFilterProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** The logical "AND" expression. Must have at least 2 items. */
 export type BudgetFilterAndList = Array<BudgetFilterProperties>;
-export const BudgetFilterAndList = /*@__PURE__*/ S.Array(
+const BudgetFilterAndList = /*@__PURE__*/ S.Array(
   BudgetFilterProperties,
 ) as any as S.Schema<BudgetFilterAndList>;
 
@@ -94,7 +94,7 @@ export interface BudgetFilter {
   /** Has comparison expression for a tag */
   tags?: BudgetComparisonExpression;
 }
-export const BudgetFilter = /*@__PURE__*/ S.suspend(() =>
+const BudgetFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     and: S.optional(BudgetFilterAndList),
     dimensions: S.optional(BudgetComparisonExpression),
@@ -104,26 +104,26 @@ export const BudgetFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** The comparison operator. */
 export type OperatorType = "EqualTo" | "GreaterThan" | "GreaterThanOrEqualTo";
-export const OperatorType = S.String;
+const OperatorType = S.String;
 
 /** Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. */
 export type NotificationContactEmailsList = Array<string>;
-export const NotificationContactEmailsList =
+const NotificationContactEmailsList =
   BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactEmailsList>;
 
 /** Contact roles to send the budget notification to when the threshold is exceeded. */
 export type NotificationContactRolesList = Array<string>;
-export const NotificationContactRolesList =
+const NotificationContactRolesList =
   BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactRolesList>;
 
 /** Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes. */
 export type NotificationContactGroupsList = Array<string>;
-export const NotificationContactGroupsList =
+const NotificationContactGroupsList =
   BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactGroupsList>;
 
 /** The type of threshold */
 export type NotificationThresholdType = "Actual" | "Forecasted";
-export const NotificationThresholdType = S.String;
+const NotificationThresholdType = S.String;
 
 /** Language in which the recipient will receive the notification */
 export type CultureCode =
@@ -148,7 +148,7 @@ export type CultureCode =
   | "nl-nl"
   | "pt-pt"
   | "sv-se";
-export const CultureCode = S.String;
+const CultureCode = S.String;
 
 /** The notification associated with a budget. */
 export interface Notification {
@@ -169,7 +169,7 @@ export interface Notification {
   /** Language in which the recipient will receive the notification */
   locale?: CultureCode | (string & {});
 }
-export const Notification = /*@__PURE__*/ S.suspend(() =>
+const Notification = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     operator: OperatorType,
@@ -184,7 +184,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesInputNotificationsMap = { [key: string]: Notification | undefined };
-export const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
+const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ S.Record(
   S.String,
   Notification,
 ) as any as S.Schema<BudgetPropertiesInputNotificationsMap>;
@@ -204,7 +204,7 @@ export interface BudgetPropertiesInput {
   /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
   notifications?: BudgetPropertiesInputNotificationsMap;
 }
-export const BudgetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+const BudgetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: CategoryType,
     amount: S.Number,
@@ -225,7 +225,7 @@ export interface BudgetsCreateOrUpdateRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     budgetName: S.String.pipe(T.Label()),
@@ -245,11 +245,11 @@ export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataCreatedByType = S.String;
+const SystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-export const SystemDataLastModifiedByType = S.String;
+const SystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
@@ -266,7 +266,7 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
+const SystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(SystemDataCreatedByType),
@@ -284,7 +284,7 @@ export interface CurrentSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
+const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     unit: S.optional(S.String),
@@ -293,7 +293,7 @@ export const CurrentSpend = /*@__PURE__*/ S.suspend(() =>
 
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesNotificationsMap = { [key: string]: Notification | undefined };
-export const BudgetPropertiesNotificationsMap =
+const BudgetPropertiesNotificationsMap =
   BudgetPropertiesInputNotificationsMap as any as S.Schema<BudgetPropertiesNotificationsMap>;
 
 /** The forecasted cost which is being tracked for a budget. */
@@ -303,7 +303,7 @@ export interface ForecastSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-export const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
+const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
 
 /** The properties of the budget. */
 export interface BudgetProperties {
@@ -324,7 +324,7 @@ export interface BudgetProperties {
   /** The forecasted cost which is being tracked for a budget. */
   forecastSpend?: ForecastSpend;
 }
-export const BudgetProperties = /*@__PURE__*/ S.suspend(() =>
+const BudgetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: CategoryType,
     amount: S.Number,
@@ -351,7 +351,7 @@ export interface BudgetsCreateOrUpdateResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -370,7 +370,7 @@ export interface DeleteBudgetRequest {
   /** Budget Name. */
   budgetName: string;
 }
-export const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     budgetName: S.String.pipe(T.Label()),
@@ -385,7 +385,7 @@ export const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBudgetRequest" }) as any as S.Schema<DeleteBudgetRequest>;
 
 export interface DeleteBudgetResponse {}
-export const DeleteBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteBudgetResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteBudgetResponse",
 }) as any as S.Schema<DeleteBudgetResponse>;
 
@@ -395,7 +395,7 @@ export interface DownloadPriceSheetByBillingAccountPeriodRequest {
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-export const DownloadPriceSheetByBillingAccountPeriodRequest = /*@__PURE__*/ S.suspend(() =>
+const DownloadPriceSheetByBillingAccountPeriodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingPeriodName: S.String.pipe(T.Label()),
@@ -413,7 +413,7 @@ export const DownloadPriceSheetByBillingAccountPeriodRequest = /*@__PURE__*/ S.s
 
 /** The status of the long running operation. */
 export type OperationStatusType = "Running" | "Completed" | "Failed";
-export const OperationStatusType = S.String;
+const OperationStatusType = S.String;
 
 /** The properties of the price sheet download. */
 export interface PricesheetDownloadProperties {
@@ -422,7 +422,7 @@ export interface PricesheetDownloadProperties {
   /** Download link validity. */
   validTill?: string;
 }
-export const PricesheetDownloadProperties = /*@__PURE__*/ S.suspend(() =>
+const PricesheetDownloadProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     downloadUrl: S.optional(S.String),
     validTill: S.optional(S.String),
@@ -438,7 +438,7 @@ export interface OperationStatus {
   /** The properties of the resource generated. */
   properties?: PricesheetDownloadProperties;
 }
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+const OperationStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(OperationStatusType),
     properties: S.optional(PricesheetDownloadProperties),
@@ -451,7 +451,7 @@ export interface GetAggregatedCostByManagementGroupRequest {
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-export const GetAggregatedCostByManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAggregatedCostByManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementGroupId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -469,7 +469,7 @@ export const GetAggregatedCostByManagementGroupRequest = /*@__PURE__*/ S.suspend
 
 /** Resource tags. */
 export type ManagementGroupAggregatedCostResultTagsMap = { [key: string]: string | undefined };
-export const ManagementGroupAggregatedCostResultTagsMap = /*@__PURE__*/ S.Record(
+const ManagementGroupAggregatedCostResultTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ManagementGroupAggregatedCostResultTagsMap>;
@@ -491,7 +491,7 @@ export interface ManagementGroupAggregatedCostResult {
   /** Resource tags. */
   tags?: ManagementGroupAggregatedCostResultTagsMap;
 }
-export const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -508,20 +508,19 @@ export const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
 /** Children of a management group */
 export type ManagementGroupAggregatedCostPropertiesChildrenList =
   Array<ManagementGroupAggregatedCostResult>;
-export const ManagementGroupAggregatedCostPropertiesChildrenList = /*@__PURE__*/ S.Array(
+const ManagementGroupAggregatedCostPropertiesChildrenList = /*@__PURE__*/ S.Array(
   ManagementGroupAggregatedCostResult,
 ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesChildrenList>;
 
 /** List of subscription Guids included in the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList = Array<string>;
-export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList>;
+const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList>;
 
 /** List of subscription Guids excluded from the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList = Array<string>;
-export const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
+const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
   ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
 
 /** The properties of the Management Group Aggregated Cost. */
@@ -547,7 +546,7 @@ export interface ManagementGroupAggregatedCostProperties {
   /** List of subscription Guids excluded from the calculation of aggregated cost */
   excludedSubscriptions?: ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList;
 }
-export const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend(() =>
+const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPeriodId: S.optional(S.String),
     usageStart: S.optional(S.String),
@@ -572,7 +571,7 @@ export const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend((
 export type GetAggregatedCostByManagementGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAggregatedCostByManagementGroupResponseTagsMap =
+const GetAggregatedCostByManagementGroupResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetAggregatedCostByManagementGroupResponseTagsMap>;
 
 export interface GetAggregatedCostByManagementGroupResponse {
@@ -591,7 +590,7 @@ export interface GetAggregatedCostByManagementGroupResponse {
   /** Resource tags. */
   tags?: GetAggregatedCostByManagementGroupResponseTagsMap;
 }
-export const GetAggregatedCostByManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAggregatedCostByManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -611,19 +610,18 @@ export interface GetAggregatedCostForBillingPeriodByManagementGroupRequest {
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-export const GetAggregatedCostForBillingPeriodByManagementGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      managementGroupId: S.String.pipe(T.Label()),
-      billingPeriodName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
+const GetAggregatedCostForBillingPeriodByManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managementGroupId: S.String.pipe(T.Label()),
+    billingPeriodName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
 ).annotate({
   identifier: "GetAggregatedCostForBillingPeriodByManagementGroupRequest",
 }) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupRequest>;
@@ -632,11 +630,10 @@ export const GetAggregatedCostForBillingPeriodByManagementGroupRequest = /*@__PU
 export type GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap>;
+const GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap>;
 
 export interface GetAggregatedCostForBillingPeriodByManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -654,17 +651,16 @@ export interface GetAggregatedCostForBillingPeriodByManagementGroupResponse {
   /** Resource tags. */
   tags?: GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap;
 }
-export const GetAggregatedCostForBillingPeriodByManagementGroupResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagementGroupAggregatedCostProperties),
-      etag: S.optional(S.String),
-      tags: S.optional(GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap),
-    }),
+const GetAggregatedCostForBillingPeriodByManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagementGroupAggregatedCostProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap),
+  }),
 ).annotate({
   identifier: "GetAggregatedCostForBillingPeriodByManagementGroupResponse",
 }) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponse>;
@@ -673,7 +669,7 @@ export interface GetBalanceByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
 }
-export const GetBalanceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBalanceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
   }).pipe(
@@ -690,7 +686,7 @@ export const GetBalanceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The billing frequency. */
 export type BillingFrequency = "Month" | "Quarter" | "Year";
-export const BillingFrequency = S.String;
+const BillingFrequency = S.String;
 
 export interface BalancePropertiesNewPurchasesDetailsItem {
   /** the name of new purchase. */
@@ -698,7 +694,7 @@ export interface BalancePropertiesNewPurchasesDetailsItem {
   /** the value of new purchase. */
   value?: number;
 }
-export const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(() =>
+const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     value: S.optional(S.Number),
@@ -710,7 +706,7 @@ export const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(
 /** List of new purchases. */
 export type BalancePropertiesNewPurchasesDetailsList =
   Array<BalancePropertiesNewPurchasesDetailsItem>;
-export const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ S.Array(
+const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ S.Array(
   BalancePropertiesNewPurchasesDetailsItem,
 ) as any as S.Schema<BalancePropertiesNewPurchasesDetailsList>;
 
@@ -720,12 +716,9 @@ export interface BalancePropertiesAdjustmentDetailsItem {
   /** the value of new adjustment. */
   value?: number;
 }
-export const BalancePropertiesAdjustmentDetailsItem =
-  BalancePropertiesNewPurchasesDetailsItem as any as S.Schema<BalancePropertiesAdjustmentDetailsItem>;
-
 /** List of Adjustments (Promo credit, SIE credit etc.). */
 export type BalancePropertiesAdjustmentDetailsList = Array<BalancePropertiesAdjustmentDetailsItem>;
-export const BalancePropertiesAdjustmentDetailsList =
+const BalancePropertiesAdjustmentDetailsList =
   BalancePropertiesNewPurchasesDetailsList as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
 
 /** The properties of the balance. */
@@ -763,7 +756,7 @@ export interface BalanceProperties {
   /** List of Adjustments (Promo credit, SIE credit etc.). */
   adjustmentDetails?: BalancePropertiesAdjustmentDetailsList;
 }
-export const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
+const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     beginningBalance: S.optional(S.Number),
@@ -786,7 +779,7 @@ export const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetBalanceByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-export const GetBalanceByBillingAccountResponseTagsMap =
+const GetBalanceByBillingAccountResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetBalanceByBillingAccountResponseTagsMap>;
 
 export interface GetBalanceByBillingAccountResponse {
@@ -805,7 +798,7 @@ export interface GetBalanceByBillingAccountResponse {
   /** Resource tags. */
   tags?: GetBalanceByBillingAccountResponseTagsMap;
 }
-export const GetBalanceByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBalanceByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -825,7 +818,7 @@ export interface GetBalanceForBillingPeriodByBillingAccountRequest {
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-export const GetBalanceForBillingPeriodByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBalanceForBillingPeriodByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingPeriodName: S.String.pipe(T.Label()),
@@ -845,9 +838,6 @@ export const GetBalanceForBillingPeriodByBillingAccountRequest = /*@__PURE__*/ S
 export type GetBalanceForBillingPeriodByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetBalanceForBillingPeriodByBillingAccountResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponseTagsMap>;
-
 export interface GetBalanceForBillingPeriodByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -864,7 +854,7 @@ export interface GetBalanceForBillingPeriodByBillingAccountResponse {
   /** Resource tags. */
   tags?: GetBalanceForBillingPeriodByBillingAccountResponseTagsMap;
 }
-export const GetBalanceForBillingPeriodByBillingAccountResponse =
+const GetBalanceForBillingPeriodByBillingAccountResponse =
   GetBalanceByBillingAccountResponse as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>;
 
 export interface GetBudgetRequest {
@@ -873,7 +863,7 @@ export interface GetBudgetRequest {
   /** Budget Name. */
   budgetName: string;
 }
-export const GetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     budgetName: S.String.pipe(T.Label()),
@@ -901,7 +891,7 @@ export interface GetBudgetResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const GetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -918,7 +908,7 @@ export interface GetCreditRequest {
   /** Azure Billing Profile ID. */
   billingProfileId: string;
 }
-export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -939,7 +929,7 @@ export interface Amount {
   /** Amount. */
   value?: number;
 }
-export const Amount = /*@__PURE__*/ S.suspend(() =>
+const Amount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     value: S.optional(S.Number),
@@ -957,7 +947,7 @@ export interface AmountWithExchangeRate {
   /** The exchange rate month. */
   exchangeRateMonth?: number;
 }
-export const AmountWithExchangeRate = /*@__PURE__*/ S.suspend(() =>
+const AmountWithExchangeRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     value: S.optional(S.Number),
@@ -975,7 +965,7 @@ export interface CreditBalanceSummary {
   /** Estimated balance in billing currency. */
   estimatedBalanceInBillingCurrency?: AmountWithExchangeRate;
 }
-export const CreditBalanceSummary = /*@__PURE__*/ S.suspend(() =>
+const CreditBalanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     estimatedBalance: S.optional(Amount),
     currentBalance: S.optional(Amount),
@@ -990,7 +980,7 @@ export interface Reseller {
   /** The reseller property description. */
   resellerDescription?: string;
 }
-export const Reseller = /*@__PURE__*/ S.suspend(() =>
+const Reseller = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resellerId: S.optional(S.String),
     resellerDescription: S.optional(S.String),
@@ -1018,7 +1008,7 @@ export interface CreditSummaryProperties {
   /** The eTag for the resource. */
   eTag?: string;
 }
-export const CreditSummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const CreditSummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balanceSummary: S.optional(CreditBalanceSummary),
     pendingCreditAdjustments: S.optional(Amount),
@@ -1034,7 +1024,7 @@ export const CreditSummaryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Tag. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
-export const GetCreditResponseTagsMap =
+const GetCreditResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetCreditResponseTagsMap>;
 
 export interface GetCreditResponse {
@@ -1053,7 +1043,7 @@ export interface GetCreditResponse {
   /** A list of Tag. */
   tags?: GetCreditResponseTagsMap;
 }
-export const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1075,7 +1065,7 @@ export interface GetPriceSheetRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-export const GetPriceSheetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPriceSheetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -1112,7 +1102,7 @@ export interface MeterDetails {
   /** The service tier. */
   serviceTier?: string;
 }
-export const MeterDetails = /*@__PURE__*/ S.suspend(() =>
+const MeterDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     meterName: S.optional(S.String),
     meterCategory: S.optional(S.String),
@@ -1135,7 +1125,7 @@ export interface SavingsPlan {
   /** SavingsPlan Effective Price */
   effectivePrice?: number;
 }
-export const SavingsPlan = /*@__PURE__*/ S.suspend(() =>
+const SavingsPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     term: S.optional(S.String),
     marketPrice: S.optional(S.Number),
@@ -1166,7 +1156,7 @@ export interface PriceSheetProperties {
   /** SavingsPlan Details */
   savingsPlan?: SavingsPlan;
 }
-export const PriceSheetProperties = /*@__PURE__*/ S.suspend(() =>
+const PriceSheetProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPeriodId: S.optional(S.String),
     meterId: S.optional(S.String),
@@ -1183,7 +1173,7 @@ export const PriceSheetProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Price sheet */
 export type PriceSheetModelPricesheetsList = Array<PriceSheetProperties>;
-export const PriceSheetModelPricesheetsList = /*@__PURE__*/ S.Array(
+const PriceSheetModelPricesheetsList = /*@__PURE__*/ S.Array(
   PriceSheetProperties,
 ) as any as S.Schema<PriceSheetModelPricesheetsList>;
 
@@ -1196,7 +1186,7 @@ export interface PriceSheetModel {
   /** Pricesheet download details. */
   download?: MeterDetails;
 }
-export const PriceSheetModel = /*@__PURE__*/ S.suspend(() =>
+const PriceSheetModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pricesheets: S.optional(PriceSheetModelPricesheetsList),
     nextLink: S.optional(S.String),
@@ -1206,7 +1196,7 @@ export const PriceSheetModel = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPriceSheetResponseTagsMap = { [key: string]: string | undefined };
-export const GetPriceSheetResponseTagsMap =
+const GetPriceSheetResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetResponseTagsMap>;
 
 export interface GetPriceSheetResponse {
@@ -1225,7 +1215,7 @@ export interface GetPriceSheetResponse {
   /** Resource tags. */
   tags?: GetPriceSheetResponseTagsMap;
 }
-export const GetPriceSheetResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPriceSheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1249,7 +1239,7 @@ export interface GetPriceSheetByBillingPeriodRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-export const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     billingPeriodName: S.String.pipe(T.Label()),
@@ -1270,7 +1260,7 @@ export const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type GetPriceSheetByBillingPeriodResponseTagsMap = { [key: string]: string | undefined };
-export const GetPriceSheetByBillingPeriodResponseTagsMap =
+const GetPriceSheetByBillingPeriodResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetByBillingPeriodResponseTagsMap>;
 
 export interface GetPriceSheetByBillingPeriodResponse {
@@ -1289,7 +1279,7 @@ export interface GetPriceSheetByBillingPeriodResponse {
   /** Resource tags. */
   tags?: GetPriceSheetByBillingPeriodResponseTagsMap;
 }
-export const GetPriceSheetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPriceSheetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1307,16 +1297,16 @@ export type GetReservationRecommendationDetailRequestScope =
   | "Single"
   | "Shared"
   | "ManagementGroup";
-export const GetReservationRecommendationDetailRequestScope = S.String;
+const GetReservationRecommendationDetailRequestScope = S.String;
 
 export type GetReservationRecommendationDetailRequestTerm = "P1M" | "P1Y" | "P3Y";
-export const GetReservationRecommendationDetailRequestTerm = S.String;
+const GetReservationRecommendationDetailRequestTerm = S.String;
 
 export type GetReservationRecommendationDetailRequestLookBackPeriod =
   | "Last7Days"
   | "Last30Days"
   | "Last60Days";
-export const GetReservationRecommendationDetailRequestLookBackPeriod = S.String;
+const GetReservationRecommendationDetailRequestLookBackPeriod = S.String;
 
 export interface GetReservationRecommendationDetailRequest {
   /** The scope associated with reservation recommendation details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for BillingAccount scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope */
@@ -1336,7 +1326,7 @@ export interface GetReservationRecommendationDetailRequest {
   /** Specify the management group ID. Required when recommendation scope is 'ManagementGroup'. */
   managementGroupId?: string;
 }
-export const GetReservationRecommendationDetailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReservationRecommendationDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceScope: S.String.pipe(T.Label()),
     scope: GetReservationRecommendationDetailRequestScope.pipe(T.Query()),
@@ -1360,7 +1350,7 @@ export const GetReservationRecommendationDetailRequest = /*@__PURE__*/ S.suspend
 
 /** List of subscriptions for which the reservation is applied. */
 export type ReservationRecommendationDetailsResourcePropertiesAppliedScopesList = Array<string>;
-export const ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
+const ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
   ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ReservationRecommendationDetailsResourcePropertiesAppliedScopesList>;
 
 /** Details of the resource. */
@@ -1378,7 +1368,7 @@ export interface ReservationRecommendationDetailsResourceProperties {
   /** The azure resource type. */
   resourceType?: string;
 }
-export const ReservationRecommendationDetailsResourceProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationDetailsResourceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedScopes: S.optional(ReservationRecommendationDetailsResourcePropertiesAppliedScopesList),
     onDemandRate: S.optional(S.Number),
@@ -1408,17 +1398,16 @@ export interface ReservationRecommendationDetailsCalculatedSavingsProperties {
   /** The amount saved by purchasing the recommended quantity of reservation. This is equal to onDemandCost - totalReservationCost. */
   savings?: number;
 }
-export const ReservationRecommendationDetailsCalculatedSavingsProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      onDemandCost: S.optional(S.Number),
-      overageCost: S.optional(S.Number),
-      quantity: S.optional(S.Number),
-      reservationCost: S.optional(S.Number),
-      totalReservationCost: S.optional(S.Number),
-      reservedUnitCount: S.optional(S.Number),
-      savings: S.optional(S.Number),
-    }),
+const ReservationRecommendationDetailsCalculatedSavingsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onDemandCost: S.optional(S.Number),
+    overageCost: S.optional(S.Number),
+    quantity: S.optional(S.Number),
+    reservationCost: S.optional(S.Number),
+    totalReservationCost: S.optional(S.Number),
+    reservedUnitCount: S.optional(S.Number),
+    savings: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ReservationRecommendationDetailsCalculatedSavingsProperties",
 }) as any as S.Schema<ReservationRecommendationDetailsCalculatedSavingsProperties>;
@@ -1426,7 +1415,7 @@ export const ReservationRecommendationDetailsCalculatedSavingsProperties = /*@__
 /** List of calculated savings. */
 export type ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
   Array<ReservationRecommendationDetailsCalculatedSavingsProperties>;
-export const ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
+const ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
   /*@__PURE__*/ S.Array(
     ReservationRecommendationDetailsCalculatedSavingsProperties,
   ) as any as S.Schema<ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList>;
@@ -1446,7 +1435,7 @@ export interface ReservationRecommendationDetailsSavingsProperties {
   /** Measurement unit ex: hour etc. */
   unitOfMeasure?: string;
 }
-export const ReservationRecommendationDetailsSavingsProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationDetailsSavingsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     calculatedSavings: S.optional(
       ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList,
@@ -1463,7 +1452,7 @@ export const ReservationRecommendationDetailsSavingsProperties = /*@__PURE__*/ S
 
 /** The breakdown of historical resource usage. The values are in the order of usage between the firstConsumptionDate and the lastConsumptionDate. */
 export type ReservationRecommendationDetailsUsagePropertiesUsageDataList = Array<number>;
-export const ReservationRecommendationDetailsUsagePropertiesUsageDataList = /*@__PURE__*/ S.Array(
+const ReservationRecommendationDetailsUsagePropertiesUsageDataList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ReservationRecommendationDetailsUsagePropertiesUsageDataList>;
 
@@ -1480,7 +1469,7 @@ export interface ReservationRecommendationDetailsUsageProperties {
   /** The grain of the values represented in the usage data ex: hourly. */
   usageGrain?: string;
 }
-export const ReservationRecommendationDetailsUsageProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationDetailsUsageProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firstConsumptionDate: S.optional(S.String),
     lastConsumptionDate: S.optional(S.String),
@@ -1497,11 +1486,10 @@ export interface ReservationRecommendationDetailsProjectedUsageProperties {
   /** Total projected retail usage in commitment units (CUs). */
   totalRetailUsageInCUs?: number;
 }
-export const ReservationRecommendationDetailsProjectedUsageProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      totalRetailUsageInCUs: S.optional(S.Number),
-    }),
+const ReservationRecommendationDetailsProjectedUsageProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    totalRetailUsageInCUs: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ReservationRecommendationDetailsProjectedUsageProperties",
 }) as any as S.Schema<ReservationRecommendationDetailsProjectedUsageProperties>;
@@ -1527,7 +1515,7 @@ export interface ReservationRecommendationDetailsProperties {
   /** Projected usage details used for generating the recommendation. */
   projectedUsage?: ReservationRecommendationDetailsProjectedUsageProperties;
 }
-export const ReservationRecommendationDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.optional(S.String),
     resource: S.optional(ReservationRecommendationDetailsResourceProperties),
@@ -1547,7 +1535,7 @@ export const ReservationRecommendationDetailsProperties = /*@__PURE__*/ S.suspen
 export type GetReservationRecommendationDetailResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const GetReservationRecommendationDetailResponseTagsMap =
+const GetReservationRecommendationDetailResponseTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetReservationRecommendationDetailResponseTagsMap>;
 
 export interface GetReservationRecommendationDetailResponse {
@@ -1570,7 +1558,7 @@ export interface GetReservationRecommendationDetailResponse {
   /** Resource tags. */
   tags?: GetReservationRecommendationDetailResponseTagsMap;
 }
-export const GetReservationRecommendationDetailResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReservationRecommendationDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1590,7 +1578,7 @@ export interface GetTagRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -1605,7 +1593,7 @@ export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Tag values. */
 export type TagValueList = Array<string>;
-export const TagValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TagValueList>;
+const TagValueList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<TagValueList>;
 
 /** The tag resource. */
 export interface Tag {
@@ -1614,7 +1602,7 @@ export interface Tag {
   /** Tag values. */
   value?: TagValueList;
 }
-export const Tag = /*@__PURE__*/ S.suspend(() =>
+const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(TagValueList),
@@ -1623,9 +1611,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of Tag. */
 export type TagPropertiesTagsList = Array<Tag>;
-export const TagPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<TagPropertiesTagsList>;
+const TagPropertiesTagsList = /*@__PURE__*/ S.Array(Tag) as any as S.Schema<TagPropertiesTagsList>;
 
 /** The properties of the tag. */
 export interface TagProperties {
@@ -1636,7 +1622,7 @@ export interface TagProperties {
   /** The link (url) to the previous page of results. */
   previousLink?: string;
 }
-export const TagProperties = /*@__PURE__*/ S.suspend(() =>
+const TagProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(TagPropertiesTagsList),
     nextLink: S.optional(S.String),
@@ -1658,7 +1644,7 @@ export interface GetTagResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1673,7 +1659,7 @@ export interface ListBudgetsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-export const ListBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
   }).pipe(
@@ -1701,11 +1687,11 @@ export interface Budget {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const Budget = GetBudgetResponse as any as S.Schema<Budget>;
+const Budget = GetBudgetResponse as any as S.Schema<Budget>;
 
 /** The list of budgets. */
 export type BudgetsListResultValueList = Array<Budget>;
-export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
+const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
   Budget,
 ) as any as S.Schema<BudgetsListResultValueList>;
 
@@ -1716,7 +1702,7 @@ export interface BudgetsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const BudgetsListResult = /*@__PURE__*/ S.suspend(() =>
+const BudgetsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(BudgetsListResultValueList),
     nextLink: S.optional(S.String),
@@ -1735,7 +1721,7 @@ export interface ListChargesRequest {
   /** May be used to group charges for billingAccount scope by properties/billingProfileId, properties/invoiceSectionId, properties/customerId (specific for Partner Led), or for billingProfile scope by properties/invoiceSectionId. */
   _apply?: string;
 }
-export const ListChargesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChargesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     startDate: S.optional(S.String.pipe(T.Query())),
@@ -1754,7 +1740,7 @@ export const ListChargesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the kind of charge summary. */
 export type ChargeSummaryKind = "legacy" | "modern";
-export const ChargeSummaryKind = S.String;
+const ChargeSummaryKind = S.String;
 
 /** A charge summary resource. */
 export interface ChargeSummary {
@@ -1771,7 +1757,7 @@ export interface ChargeSummary {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
+const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1784,7 +1770,7 @@ export const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of charge summary */
 export type ChargesListResultValueList = Array<ChargeSummary>;
-export const ChargesListResultValueList = /*@__PURE__*/ S.Array(
+const ChargesListResultValueList = /*@__PURE__*/ S.Array(
   ChargeSummary,
 ) as any as S.Schema<ChargesListResultValueList>;
 
@@ -1793,7 +1779,7 @@ export interface ChargesListResult {
   /** The list of charge summary */
   value?: ChargesListResultValueList;
 }
-export const ChargesListResult = /*@__PURE__*/ S.suspend(() =>
+const ChargesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ChargesListResultValueList),
   }),
@@ -1805,7 +1791,7 @@ export interface ListEventByBillingAccountRequest {
   /** May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-export const ListEventByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1831,7 +1817,7 @@ export type EventType =
   | "UnKnown"
   | "NewCredit"
   | "CreditExpired";
-export const EventType = S.String;
+const EventType = S.String;
 
 /** The event properties. */
 export interface EventProperties {
@@ -1888,7 +1874,7 @@ export interface EventProperties {
   /** The eTag for the resource. */
   eTag?: string;
 }
-export const EventProperties = /*@__PURE__*/ S.suspend(() =>
+const EventProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transactionDate: S.optional(S.String),
     description: S.optional(S.String),
@@ -1934,7 +1920,7 @@ export interface EventSummary {
   /** The eTag for the resource. */
   eTag?: string;
 }
-export const EventSummary = /*@__PURE__*/ S.suspend(() =>
+const EventSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1947,9 +1933,7 @@ export const EventSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of event summary. */
 export type EventsValueList = Array<EventSummary>;
-export const EventsValueList = /*@__PURE__*/ S.Array(
-  EventSummary,
-) as any as S.Schema<EventsValueList>;
+const EventsValueList = /*@__PURE__*/ S.Array(EventSummary) as any as S.Schema<EventsValueList>;
 
 /** Result of listing event summary. */
 export interface Events {
@@ -1958,7 +1942,7 @@ export interface Events {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const Events = /*@__PURE__*/ S.suspend(() =>
+const Events = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(EventsValueList),
     nextLink: S.optional(S.String),
@@ -1975,7 +1959,7 @@ export interface ListEventByBillingProfileRequest {
   /** End date */
   endDate: string;
 }
-export const ListEventByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListEventByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -1999,7 +1983,7 @@ export interface ListLotByBillingAccountRequest {
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-export const ListLotByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLotByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2017,15 +2001,15 @@ export const ListLotByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The source of the lot. */
 export type LotSource = "PurchasedCredit" | "PromotionalCredit" | "ConsumptionCommitment";
-export const LotSource = S.String;
+const LotSource = S.String;
 
 /** The status of the lot. */
 export type Status = "None" | "Active" | "Inactive" | "Expired" | "Complete" | "Canceled";
-export const Status = S.String;
+const Status = S.String;
 
 /** The organization type of the lot. */
 export type OrganizationType = "Primary" | "Contributor";
-export const OrganizationType = S.String;
+const OrganizationType = S.String;
 
 /** The lot properties. */
 export interface LotProperties {
@@ -2064,7 +2048,7 @@ export interface LotProperties {
   /** Amount consumed from the commitment. */
   usedAmount?: Amount;
 }
-export const LotProperties = /*@__PURE__*/ S.suspend(() =>
+const LotProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     originalAmount: S.optional(Amount),
     closedBalance: S.optional(Amount),
@@ -2101,7 +2085,7 @@ export interface LotSummary {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const LotSummary = /*@__PURE__*/ S.suspend(() =>
+const LotSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2114,7 +2098,7 @@ export const LotSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of lot summary. */
 export type LotsValueList = Array<LotSummary>;
-export const LotsValueList = /*@__PURE__*/ S.Array(LotSummary) as any as S.Schema<LotsValueList>;
+const LotsValueList = /*@__PURE__*/ S.Array(LotSummary) as any as S.Schema<LotsValueList>;
 
 /** Result of listing lot summary. */
 export interface Lots {
@@ -2123,7 +2107,7 @@ export interface Lots {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const Lots = /*@__PURE__*/ S.suspend(() =>
+const Lots = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(LotsValueList),
     nextLink: S.optional(S.String),
@@ -2136,7 +2120,7 @@ export interface ListLotByBillingProfileRequest {
   /** Azure Billing Profile ID. */
   billingProfileId: string;
 }
-export const ListLotByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLotByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -2160,7 +2144,7 @@ export interface ListLotByCustomerRequest {
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-export const ListLotByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLotByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -2185,7 +2169,7 @@ export interface ListMarketplacesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ListMarketplacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListMarketplacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2256,7 +2240,7 @@ export interface MarketplaceProperties {
   /** Flag indicating whether this is a recurring charge or not. */
   isRecurringCharge?: boolean;
 }
-export const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
+const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingPeriodId: S.optional(S.String),
     usageStart: S.optional(S.String),
@@ -2289,7 +2273,7 @@ export const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type MarketplaceTagsMap = { [key: string]: string | undefined };
-export const MarketplaceTagsMap =
+const MarketplaceTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<MarketplaceTagsMap>;
 
 /** A marketplace resource. */
@@ -2309,7 +2293,7 @@ export interface Marketplace {
   /** Resource tags. */
   tags?: MarketplaceTagsMap;
 }
-export const Marketplace = /*@__PURE__*/ S.suspend(() =>
+const Marketplace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2323,7 +2307,7 @@ export const Marketplace = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of marketplaces. */
 export type MarketplacesListResultValueList = Array<Marketplace>;
-export const MarketplacesListResultValueList = /*@__PURE__*/ S.Array(
+const MarketplacesListResultValueList = /*@__PURE__*/ S.Array(
   Marketplace,
 ) as any as S.Schema<MarketplacesListResultValueList>;
 
@@ -2334,7 +2318,7 @@ export interface MarketplacesListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const MarketplacesListResult = /*@__PURE__*/ S.suspend(() =>
+const MarketplacesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(MarketplacesListResultValueList),
     nextLink: S.optional(S.String),
@@ -2342,7 +2326,7 @@ export const MarketplacesListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MarketplacesListResult" }) as any as S.Schema<MarketplacesListResult>;
 
 export interface ListOperationsRequest {}
-export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2364,7 +2348,7 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.optional(S.String),
     resource: S.optional(S.String),
@@ -2382,7 +2366,7 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2392,7 +2376,7 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
 
 /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+const OperationListResultValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationListResultValueList>;
 
@@ -2403,7 +2387,7 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationListResultValueList),
     nextLink: S.optional(S.String),
@@ -2416,7 +2400,7 @@ export interface ListReservationRecommendationsRequest {
   /** May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'. */
   _filter?: string;
 }
-export const ListReservationRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceScope: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2438,7 +2422,7 @@ export type ReservationRecommendationSystemDataCreatedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReservationRecommendationSystemDataCreatedByType = S.String;
+const ReservationRecommendationSystemDataCreatedByType = S.String;
 
 /** The type of identity that last modified the resource. */
 export type ReservationRecommendationSystemDataLastModifiedByType =
@@ -2446,7 +2430,7 @@ export type ReservationRecommendationSystemDataLastModifiedByType =
   | "Application"
   | "ManagedIdentity"
   | "Key";
-export const ReservationRecommendationSystemDataLastModifiedByType = S.String;
+const ReservationRecommendationSystemDataLastModifiedByType = S.String;
 
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ReservationRecommendationSystemData {
@@ -2463,7 +2447,7 @@ export interface ReservationRecommendationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-export const ReservationRecommendationSystemData = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationSystemData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBy: S.optional(S.String),
     createdByType: S.optional(ReservationRecommendationSystemDataCreatedByType),
@@ -2478,12 +2462,12 @@ export const ReservationRecommendationSystemData = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationRecommendationTagsMap = { [key: string]: string | undefined };
-export const ReservationRecommendationTagsMap =
+const ReservationRecommendationTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationRecommendationTagsMap>;
 
 /** Specifies the kind of reservation recommendation. */
 export type ReservationRecommendationKind = "legacy" | "modern";
-export const ReservationRecommendationKind = S.String;
+const ReservationRecommendationKind = S.String;
 
 /** A reservation recommendation resource. */
 export interface ReservationRecommendation {
@@ -2506,7 +2490,7 @@ export interface ReservationRecommendation {
   /** Specifies the kind of reservation recommendation. */
   kind: ReservationRecommendationKind;
 }
-export const ReservationRecommendation = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2524,7 +2508,7 @@ export const ReservationRecommendation = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ReservationRecommendationsListResultValueList = Array<ReservationRecommendation>;
-export const ReservationRecommendationsListResultValueList = /*@__PURE__*/ S.Array(
+const ReservationRecommendationsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationRecommendation,
 ) as any as S.Schema<ReservationRecommendationsListResultValueList>;
 
@@ -2537,7 +2521,7 @@ export interface ReservationRecommendationsListResult {
   /** The link (url) to the previous page of results. */
   previousLink?: string;
 }
-export const ReservationRecommendationsListResult = /*@__PURE__*/ S.suspend(() =>
+const ReservationRecommendationsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReservationRecommendationsListResultValueList),
     nextLink: S.optional(S.String),
@@ -2553,7 +2537,7 @@ export interface ListReservationsDetailByReservationOrderRequest {
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
 }
-export const ListReservationsDetailByReservationOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationsDetailByReservationOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderId: S.String.pipe(T.Label()),
     _filter: S.String.pipe(T.Query("$filter")),
@@ -2594,7 +2578,7 @@ export interface ReservationDetailProperties {
   /** The reservation kind. */
   kind?: string;
 }
-export const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderId: S.optional(S.String),
     instanceFlexibilityRatio: S.optional(S.String),
@@ -2614,7 +2598,7 @@ export const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationDetailTagsMap = { [key: string]: string | undefined };
-export const ReservationDetailTagsMap =
+const ReservationDetailTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationDetailTagsMap>;
 
 /** reservation detail resource. */
@@ -2634,7 +2618,7 @@ export interface ReservationDetail {
   /** Resource tags. */
   tags?: ReservationDetailTagsMap;
 }
-export const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
+const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2648,7 +2632,7 @@ export const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation details. */
 export type ReservationDetailsListResultValueList = Array<ReservationDetail>;
-export const ReservationDetailsListResultValueList = /*@__PURE__*/ S.Array(
+const ReservationDetailsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationDetail,
 ) as any as S.Schema<ReservationDetailsListResultValueList>;
 
@@ -2659,7 +2643,7 @@ export interface ReservationDetailsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ReservationDetailsListResult = /*@__PURE__*/ S.suspend(() =>
+const ReservationDetailsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReservationDetailsListResultValueList),
     nextLink: S.optional(S.String),
@@ -2682,7 +2666,7 @@ export interface ListReservationsDetailsRequest {
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
 }
-export const ListReservationsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceScope: S.String.pipe(T.Label()),
     startDate: S.optional(S.String.pipe(T.Query())),
@@ -2703,7 +2687,7 @@ export const ListReservationsDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReservationsDetailsRequest>;
 
 export type ListReservationsSummariesRequestGrain = "daily" | "monthly";
-export const ListReservationsSummariesRequestGrain = S.String;
+const ListReservationsSummariesRequestGrain = S.String;
 
 export interface ListReservationsSummariesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -2721,7 +2705,7 @@ export interface ListReservationsSummariesRequest {
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
 }
-export const ListReservationsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationsSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceScope: S.String.pipe(T.Label()),
     grain: ListReservationsSummariesRequestGrain.pipe(T.Query()),
@@ -2775,7 +2759,7 @@ export interface ReservationSummaryProperties {
   /** This is the utilized percentage for the reservation Id. */
   utilizedPercentage?: number;
 }
-export const ReservationSummaryProperties = /*@__PURE__*/ S.suspend(() =>
+const ReservationSummaryProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderId: S.optional(S.String),
     reservationId: S.optional(S.String),
@@ -2799,7 +2783,7 @@ export const ReservationSummaryProperties = /*@__PURE__*/ S.suspend(() =>
 
 /** Resource tags. */
 export type ReservationSummaryTagsMap = { [key: string]: string | undefined };
-export const ReservationSummaryTagsMap =
+const ReservationSummaryTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationSummaryTagsMap>;
 
 /** reservation summary resource. */
@@ -2819,7 +2803,7 @@ export interface ReservationSummary {
   /** Resource tags. */
   tags?: ReservationSummaryTagsMap;
 }
-export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
+const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2833,7 +2817,7 @@ export const ReservationSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation summaries. */
 export type ReservationSummariesListResultValueList = Array<ReservationSummary>;
-export const ReservationSummariesListResultValueList = /*@__PURE__*/ S.Array(
+const ReservationSummariesListResultValueList = /*@__PURE__*/ S.Array(
   ReservationSummary,
 ) as any as S.Schema<ReservationSummariesListResultValueList>;
 
@@ -2844,7 +2828,7 @@ export interface ReservationSummariesListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ReservationSummariesListResult = /*@__PURE__*/ S.suspend(() =>
+const ReservationSummariesListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReservationSummariesListResultValueList),
     nextLink: S.optional(S.String),
@@ -2854,7 +2838,7 @@ export const ReservationSummariesListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationSummariesListResult>;
 
 export type ListReservationsSummaryByReservationOrderRequestGrain = "daily" | "monthly";
-export const ListReservationsSummaryByReservationOrderRequestGrain = S.String;
+const ListReservationsSummaryByReservationOrderRequestGrain = S.String;
 
 export interface ListReservationsSummaryByReservationOrderRequest {
   /** Order Id of the reservation */
@@ -2864,7 +2848,7 @@ export interface ListReservationsSummaryByReservationOrderRequest {
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-export const ListReservationsSummaryByReservationOrderRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationsSummaryByReservationOrderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reservationOrderId: S.String.pipe(T.Label()),
     grain: ListReservationsSummaryByReservationOrderRequestGrain.pipe(T.Query()),
@@ -2889,7 +2873,7 @@ export interface ListReservationTransactionByBillingProfileRequest {
   /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
   _filter?: string;
 }
-export const ListReservationTransactionByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationTransactionByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -2949,7 +2933,7 @@ export interface ModernReservationTransactionProperties {
   /** This is the term of the transaction. */
   term?: string;
 }
-export const ModernReservationTransactionProperties = /*@__PURE__*/ S.suspend(() =>
+const ModernReservationTransactionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.optional(S.Number),
     armSkuName: S.optional(S.String),
@@ -2978,7 +2962,7 @@ export const ModernReservationTransactionProperties = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type ModernReservationTransactionTagsList = Array<string>;
-export const ModernReservationTransactionTagsList =
+const ModernReservationTransactionTagsList =
   BudgetComparisonExpressionValuesList as any as S.Schema<ModernReservationTransactionTagsList>;
 
 /** Modern Reservation transaction resource. */
@@ -2996,7 +2980,7 @@ export interface ModernReservationTransaction {
   /** Resource tags. */
   tags?: ModernReservationTransactionTagsList;
 }
-export const ModernReservationTransaction = /*@__PURE__*/ S.suspend(() =>
+const ModernReservationTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3011,7 +2995,7 @@ export const ModernReservationTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ModernReservationTransactionsListResultValueList = Array<ModernReservationTransaction>;
-export const ModernReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
+const ModernReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
   ModernReservationTransaction,
 ) as any as S.Schema<ModernReservationTransactionsListResultValueList>;
 
@@ -3022,7 +3006,7 @@ export interface ModernReservationTransactionsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ModernReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
+const ModernReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ModernReservationTransactionsListResultValueList),
     nextLink: S.optional(S.String),
@@ -3041,7 +3025,7 @@ export interface ListReservationTransactionsRequest {
   /** Preview markup percentage to be applied. */
   previewMarkupPercentage?: number;
 }
-export const ListReservationTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReservationTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -3108,7 +3092,7 @@ export interface LegacyReservationTransactionProperties {
   /** The overage amount at the enrollment scope. */
   overage?: number;
 }
-export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(() =>
+const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventDate: S.optional(S.String),
     reservationOrderId: S.optional(S.String),
@@ -3140,7 +3124,7 @@ export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(()
 
 /** Resource tags. */
 export type ReservationTransactionTagsList = Array<string>;
-export const ReservationTransactionTagsList =
+const ReservationTransactionTagsList =
   BudgetComparisonExpressionValuesList as any as S.Schema<ReservationTransactionTagsList>;
 
 /** Reservation transaction resource. */
@@ -3158,7 +3142,7 @@ export interface ReservationTransaction {
   /** Resource tags. */
   tags?: ReservationTransactionTagsList;
 }
-export const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
+const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3171,7 +3155,7 @@ export const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of reservation recommendations. */
 export type ReservationTransactionsListResultValueList = Array<ReservationTransaction>;
-export const ReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
+const ReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
   ReservationTransaction,
 ) as any as S.Schema<ReservationTransactionsListResultValueList>;
 
@@ -3182,7 +3166,7 @@ export interface ReservationTransactionsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const ReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
+const ReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(ReservationTransactionsListResultValueList),
     nextLink: S.optional(S.String),
@@ -3192,7 +3176,7 @@ export const ReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReservationTransactionsListResult>;
 
 export type ListUsageDetailsRequestMetric = "actualcost" | "amortizedcost" | "usage";
-export const ListUsageDetailsRequestMetric = S.String;
+const ListUsageDetailsRequestMetric = S.String;
 
 export interface ListUsageDetailsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
@@ -3208,7 +3192,7 @@ export interface ListUsageDetailsRequest {
   /** Allows to select different type of cost/usage records. */
   metric?: ListUsageDetailsRequestMetric | (string & {});
 }
-export const ListUsageDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsageDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -3228,11 +3212,11 @@ export const ListUsageDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Specifies the kind of usage details. */
 export type UsageDetailsKind = "legacy" | "modern";
-export const UsageDetailsKind = S.String;
+const UsageDetailsKind = S.String;
 
 /** Resource tags. */
 export type UsageDetailTagsMap = { [key: string]: string | undefined };
-export const UsageDetailTagsMap =
+const UsageDetailTagsMap =
   ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<UsageDetailTagsMap>;
 
 /** An usage detail resource. */
@@ -3252,7 +3236,7 @@ export interface UsageDetail {
   /** Resource tags. */
   tags?: UsageDetailTagsMap;
 }
-export const UsageDetail = /*@__PURE__*/ S.suspend(() =>
+const UsageDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3266,7 +3250,7 @@ export const UsageDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** The list of usage details. */
 export type UsageDetailsListResultValueList = Array<UsageDetail>;
-export const UsageDetailsListResultValueList = /*@__PURE__*/ S.Array(
+const UsageDetailsListResultValueList = /*@__PURE__*/ S.Array(
   UsageDetail,
 ) as any as S.Schema<UsageDetailsListResultValueList>;
 
@@ -3277,7 +3261,7 @@ export interface UsageDetailsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const UsageDetailsListResult = /*@__PURE__*/ S.suspend(() =>
+const UsageDetailsListResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageDetailsListResultValueList),
     nextLink: S.optional(S.String),
@@ -3292,28 +3276,27 @@ export interface ReservationsDetailsListByReservationOrderAndReservationRequest 
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
 }
-export const ReservationsDetailsListByReservationOrderAndReservationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reservationOrderId: S.String.pipe(T.Label()),
-      reservationId: S.String.pipe(T.Label()),
-      _filter: S.String.pipe(T.Query("$filter")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReservationsDetailsListByReservationOrderAndReservationRequest",
-  }) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
+const ReservationsDetailsListByReservationOrderAndReservationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reservationOrderId: S.String.pipe(T.Label()),
+    reservationId: S.String.pipe(T.Label()),
+    _filter: S.String.pipe(T.Query("$filter")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ReservationsDetailsListByReservationOrderAndReservationRequest",
+}) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
 
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   | "daily"
   | "monthly";
-export const ReservationsSummariesListByReservationOrderAndReservationRequestGrain = S.String;
+const ReservationsSummariesListByReservationOrderAndReservationRequestGrain = S.String;
 
 export interface ReservationsSummariesListByReservationOrderAndReservationRequest {
   /** Order Id of the reservation */
@@ -3325,8 +3308,8 @@ export interface ReservationsSummariesListByReservationOrderAndReservationReques
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-export const ReservationsSummariesListByReservationOrderAndReservationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ReservationsSummariesListByReservationOrderAndReservationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       reservationOrderId: S.String.pipe(T.Label()),
       reservationId: S.String.pipe(T.Label()),
@@ -3340,9 +3323,9 @@ export const ReservationsSummariesListByReservationOrderAndReservationRequest =
         apiVersion: "2026-06-01",
       }),
     ),
-  ).annotate({
-    identifier: "ReservationsSummariesListByReservationOrderAndReservationRequest",
-  }) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>;
+).annotate({
+  identifier: "ReservationsSummariesListByReservationOrderAndReservationRequest",
+}) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>;
 
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */

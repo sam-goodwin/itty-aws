@@ -65,7 +65,7 @@ export interface DeleteEventsProjectsRequest {
   /** Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or `projects/{projectID}/locations/{location}`, where `{projectID}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840) and `{location}` is a Cloud region. Examples: `projects/my-project-123`, `projects/my-project-123/locations/global`. For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
   projectName: string;
 }
-export const DeleteEventsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectName: S.String.pipe(T.Label()),
   }).pipe(
@@ -81,7 +81,7 @@ export const DeleteEventsProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response message for deleting error events. */
 export interface DeleteEventsResponse {}
-export const DeleteEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteEventsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteEventsResponse",
 }) as any as S.Schema<DeleteEventsResponse>;
 
@@ -89,7 +89,7 @@ export interface DeleteEventsProjectsLocationsRequest {
   /** Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or `projects/{projectID}/locations/{location}`, where `{projectID}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840) and `{location}` is a Cloud region. Examples: `projects/my-project-123`, `projects/my-project-123/locations/global`. For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
   projectName: string;
 }
-export const DeleteEventsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteEventsProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectName: S.String.pipe(T.Label()),
   }).pipe(
@@ -107,7 +107,7 @@ export interface GetProjectsGroupsRequest {
   /** Required. The group resource name. Written as either `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}`. Call groupStats.list to return a list of groups belonging to this project. Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/global/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
   groupName: string;
 }
-export const GetProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupName: S.String.pipe(T.Label()),
   }).pipe(
@@ -124,14 +124,14 @@ export interface TrackingIssue {
   /** A URL pointing to a related entry in an issue tracking system. Example: `https://github.com/user/project/issues/4` */
   url?: string;
 }
-export const TrackingIssue = /*@__PURE__*/ S.suspend(() =>
+const TrackingIssue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
 ).annotate({ identifier: "TrackingIssue" }) as any as S.Schema<TrackingIssue>;
 
 export type TrackingIssueList = Array<TrackingIssue>;
-export const TrackingIssueList = /*@__PURE__*/ S.Array(
+const TrackingIssueList = /*@__PURE__*/ S.Array(
   TrackingIssue,
 ) as any as S.Schema<TrackingIssueList>;
 
@@ -141,7 +141,7 @@ export type ErrorGroupResolutionStatusEnum =
   | "ACKNOWLEDGED"
   | "RESOLVED"
   | "MUTED";
-export const ErrorGroupResolutionStatusEnum = S.String;
+const ErrorGroupResolutionStatusEnum = S.String;
 
 /** Description of a group of similar error events. */
 export interface ErrorGroup {
@@ -154,7 +154,7 @@ export interface ErrorGroup {
   /** Error group's resolution status. An unspecified resolution status will be interpreted as OPEN */
   resolutionStatus?: ErrorGroupResolutionStatusEnum | (string & {});
 }
-export const ErrorGroup = /*@__PURE__*/ S.suspend(() =>
+const ErrorGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     name: S.optional(S.String),
@@ -167,7 +167,7 @@ export interface GetProjectsLocationsGroupsRequest {
   /** Required. The group resource name. Written as either `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}`. Call groupStats.list to return a list of groups belonging to this project. Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/global/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
   groupName: string;
 }
-export const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupName: S.String.pipe(T.Label()),
   }).pipe(
@@ -188,7 +188,7 @@ export type ListProjectsEventsTimeRange_periodEnum =
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
   | "PERIOD_30_DAYS";
-export const ListProjectsEventsTimeRange_periodEnum = S.String;
+const ListProjectsEventsTimeRange_periodEnum = S.String;
 
 export interface ListProjectsEventsRequest {
   /** Optional. A `next_page_token` provided by a previous response. */
@@ -208,7 +208,7 @@ export interface ListProjectsEventsRequest {
   /** Restricts the query to the specified time range. */
   "timeRange.period"?: ListProjectsEventsTimeRange_periodEnum | (string & {});
 }
-export const ListProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     projectName: S.String.pipe(T.Label()),
@@ -238,7 +238,7 @@ export interface ServiceContext {
   /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed. Contains the service name for error reports extracted from Google App Engine logs or `default` if the App Engine default service is used. */
   service?: string;
 }
-export const ServiceContext = /*@__PURE__*/ S.suspend(() =>
+const ServiceContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     resourceType: S.optional(S.String),
@@ -253,7 +253,7 @@ export interface SourceReference {
   /** The canonical and persistent identifier of the deployed revision. Example (git): "0035781c50ec7aa23385dc841529ce8a4b70db1b" */
   revisionId?: string;
 }
-export const SourceReference = /*@__PURE__*/ S.suspend(() =>
+const SourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository: S.optional(S.String),
     revisionId: S.optional(S.String),
@@ -261,7 +261,7 @@ export const SourceReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceReference" }) as any as S.Schema<SourceReference>;
 
 export type SourceReferenceList = Array<SourceReference>;
-export const SourceReferenceList = /*@__PURE__*/ S.Array(
+const SourceReferenceList = /*@__PURE__*/ S.Array(
   SourceReference,
 ) as any as S.Schema<SourceReferenceList>;
 
@@ -280,7 +280,7 @@ export interface HttpRequestContext {
   /** The IP address from which the request originated. This can be IPv4, IPv6, or a token which is derived from the IP address, depending on the data that has been provided in the error report. */
   remoteIp?: string;
 }
-export const HttpRequestContext = /*@__PURE__*/ S.suspend(() =>
+const HttpRequestContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referrer: S.optional(S.String),
     userAgent: S.optional(S.String),
@@ -300,7 +300,7 @@ export interface SourceLocation {
   /** The source code filename, which can include a truncated relative path, or a full path from a production machine. */
   filePath?: string;
 }
-export const SourceLocation = /*@__PURE__*/ S.suspend(() =>
+const SourceLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lineNumber: S.optional(S.Number),
     functionName: S.optional(S.String),
@@ -319,7 +319,7 @@ export interface ErrorContext {
   /** The location in the source code where the decision was made to report the error, usually the place where it was logged. For a logged exception this would be the source line where the exception is logged, usually close to the place where it was caught. */
   reportLocation?: SourceLocation;
 }
-export const ErrorContext = /*@__PURE__*/ S.suspend(() =>
+const ErrorContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceReferences: S.optional(SourceReferenceList),
     user: S.optional(S.String),
@@ -339,7 +339,7 @@ export interface ErrorEvent {
   /** The stack trace that was reported or logged by the service. */
   message?: string;
 }
-export const ErrorEvent = /*@__PURE__*/ S.suspend(() =>
+const ErrorEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceContext: S.optional(ServiceContext),
     context: S.optional(ErrorContext),
@@ -349,7 +349,7 @@ export const ErrorEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorEvent" }) as any as S.Schema<ErrorEvent>;
 
 export type ErrorEventList = Array<ErrorEvent>;
-export const ErrorEventList = /*@__PURE__*/ S.Array(ErrorEvent) as any as S.Schema<ErrorEventList>;
+const ErrorEventList = /*@__PURE__*/ S.Array(ErrorEvent) as any as S.Schema<ErrorEventList>;
 
 /** Contains a set of requested error events. */
 export interface ListEventsResponse {
@@ -360,7 +360,7 @@ export interface ListEventsResponse {
   /** If non-empty, more results are available. Pass this token, along with the same query parameters as the first request, to view the next page of results. */
   nextPageToken?: string;
 }
-export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorEvents: S.optional(ErrorEventList),
     timeRangeBegin: S.optional(S.String),
@@ -375,7 +375,7 @@ export type ListProjectsGroupStatsTimeRange_periodEnum =
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
   | "PERIOD_30_DAYS";
-export const ListProjectsGroupStatsTimeRange_periodEnum = S.String;
+const ListProjectsGroupStatsTimeRange_periodEnum = S.String;
 
 export type ListProjectsGroupStatsOrderEnum =
   | "GROUP_ORDER_UNSPECIFIED"
@@ -383,16 +383,16 @@ export type ListProjectsGroupStatsOrderEnum =
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
   | "AFFECTED_USERS_DESC";
-export const ListProjectsGroupStatsOrderEnum = S.String;
+const ListProjectsGroupStatsOrderEnum = S.String;
 
 export type ListProjectsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
   | "ALIGNMENT_EQUAL_AT_END";
-export const ListProjectsGroupStatsAlignmentEnum = S.String;
+const ListProjectsGroupStatsAlignmentEnum = S.String;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ListProjectsGroupStatsRequest {
   /** Restricts the query to the specified time range. */
@@ -420,7 +420,7 @@ export interface ListProjectsGroupStatsRequest {
   /** Optional. List all ErrorGroupStats with these IDs. The `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice] (https://cloud.google.com/terms/cloud-privacy-notice). */
   groupId?: StringList;
 }
-export const ListProjectsGroupStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsGroupStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     "timeRange.period": S.optional(ListProjectsGroupStatsTimeRange_periodEnum.pipe(T.Query())),
     pageToken: S.optional(S.String.pipe(T.Query())),
@@ -446,7 +446,7 @@ export const ListProjectsGroupStatsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsGroupStatsRequest>;
 
 export type ServiceContextList = Array<ServiceContext>;
-export const ServiceContextList = /*@__PURE__*/ S.Array(
+const ServiceContextList = /*@__PURE__*/ S.Array(
   ServiceContext,
 ) as any as S.Schema<ServiceContextList>;
 
@@ -459,7 +459,7 @@ export interface TimedCount {
   /** End of the time period to which `count` refers (excluded). */
   endTime?: string;
 }
-export const TimedCount = /*@__PURE__*/ S.suspend(() =>
+const TimedCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.String),
     count: S.optional(S.String),
@@ -468,7 +468,7 @@ export const TimedCount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimedCount" }) as any as S.Schema<TimedCount>;
 
 export type TimedCountList = Array<TimedCount>;
-export const TimedCountList = /*@__PURE__*/ S.Array(TimedCount) as any as S.Schema<TimedCountList>;
+const TimedCountList = /*@__PURE__*/ S.Array(TimedCount) as any as S.Schema<TimedCountList>;
 
 /** Data extracted for a specific group based on certain filter criteria, such as a given time period and/or service filter. */
 export interface ErrorGroupStats {
@@ -491,7 +491,7 @@ export interface ErrorGroupStats {
   /** Approximate number of occurrences over time. Timed counts returned by ListGroups are guaranteed to be: - Inside the requested time interval - Non-overlapping, and - Ordered by ascending time. */
   timedCounts?: TimedCountList;
 }
-export const ErrorGroupStats = /*@__PURE__*/ S.suspend(() =>
+const ErrorGroupStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lastSeenTime: S.optional(S.String),
     numAffectedServices: S.optional(S.Number),
@@ -506,7 +506,7 @@ export const ErrorGroupStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorGroupStats" }) as any as S.Schema<ErrorGroupStats>;
 
 export type ErrorGroupStatsList = Array<ErrorGroupStats>;
-export const ErrorGroupStatsList = /*@__PURE__*/ S.Array(
+const ErrorGroupStatsList = /*@__PURE__*/ S.Array(
   ErrorGroupStats,
 ) as any as S.Schema<ErrorGroupStatsList>;
 
@@ -519,7 +519,7 @@ export interface ListGroupStatsResponse {
   /** The timestamp specifies the start time to which the request was restricted. The start time is set based on the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and older data has been deleted. */
   timeRangeBegin?: string;
 }
-export const ListGroupStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGroupStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorGroupStats: S.optional(ErrorGroupStatsList),
     nextPageToken: S.optional(S.String),
@@ -534,7 +534,7 @@ export type ListProjectsLocationsEventsTimeRange_periodEnum =
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
   | "PERIOD_30_DAYS";
-export const ListProjectsLocationsEventsTimeRange_periodEnum = S.String;
+const ListProjectsLocationsEventsTimeRange_periodEnum = S.String;
 
 export interface ListProjectsLocationsEventsRequest {
   /** Optional. The maximum number of results to return per response. */
@@ -554,7 +554,7 @@ export interface ListProjectsLocationsEventsRequest {
   /** Optional. A `next_page_token` provided by a previous response. */
   pageToken?: string;
 }
-export const ListProjectsLocationsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     "serviceFilter.version": S.optional(S.String.pipe(T.Query())),
@@ -581,13 +581,13 @@ export type ListProjectsLocationsGroupStatsOrderEnum =
   | "LAST_SEEN_DESC"
   | "CREATED_DESC"
   | "AFFECTED_USERS_DESC";
-export const ListProjectsLocationsGroupStatsOrderEnum = S.String;
+const ListProjectsLocationsGroupStatsOrderEnum = S.String;
 
 export type ListProjectsLocationsGroupStatsAlignmentEnum =
   | "ERROR_COUNT_ALIGNMENT_UNSPECIFIED"
   | "ALIGNMENT_EQUAL_ROUNDED"
   | "ALIGNMENT_EQUAL_AT_END";
-export const ListProjectsLocationsGroupStatsAlignmentEnum = S.String;
+const ListProjectsLocationsGroupStatsAlignmentEnum = S.String;
 
 export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   | "PERIOD_UNSPECIFIED"
@@ -596,7 +596,7 @@ export type ListProjectsLocationsGroupStatsTimeRange_periodEnum =
   | "PERIOD_1_DAY"
   | "PERIOD_1_WEEK"
   | "PERIOD_30_DAYS";
-export const ListProjectsLocationsGroupStatsTimeRange_periodEnum = S.String;
+const ListProjectsLocationsGroupStatsTimeRange_periodEnum = S.String;
 
 export interface ListProjectsLocationsGroupStatsRequest {
   /** Optional. The sort order in which the results are returned. Default is `COUNT_DESC`. */
@@ -624,7 +624,7 @@ export interface ListProjectsLocationsGroupStatsRequest {
   /** Restricts the query to the specified time range. */
   "timeRange.period"?: ListProjectsLocationsGroupStatsTimeRange_periodEnum | (string & {});
 }
-export const ListProjectsLocationsGroupStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsGroupStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     order: S.optional(ListProjectsLocationsGroupStatsOrderEnum.pipe(T.Query())),
     "serviceFilter.service": S.optional(S.String.pipe(T.Query())),
@@ -662,7 +662,7 @@ export interface ReportedErrorEvent {
   /** Optional. Time when the event occurred. If not provided, the time when the event was received by the Error Reporting system is used. If provided, the time must not exceed the [logs retention period](https://cloud.google.com/logging/quotas#logs_retention_periods) in the past, or be more than 24 hours in the future. If an invalid time is provided, then an error is returned. */
   eventTime?: string;
 }
-export const ReportedErrorEvent = /*@__PURE__*/ S.suspend(() =>
+const ReportedErrorEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceContext: S.optional(ServiceContext),
     message: S.optional(S.String),
@@ -677,7 +677,7 @@ export interface ReportProjectsEventsRequest {
   /** Request body */
   body?: ReportedErrorEvent;
 }
-export const ReportProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectName: S.String.pipe(T.Label()),
     body: S.optional(ReportedErrorEvent.pipe(T.HttpBody())),
@@ -694,8 +694,7 @@ export const ReportProjectsEventsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Response for reporting an individual error event. Data may be added to this message in the future. */
 export interface ReportErrorEventResponse {}
-export const ReportErrorEventResponse =
-  DeleteEventsResponse as any as S.Schema<ReportErrorEventResponse>;
+const ReportErrorEventResponse = DeleteEventsResponse as any as S.Schema<ReportErrorEventResponse>;
 
 export interface UpdateProjectsGroupsRequest {
   /** The group resource name. Written as `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}` Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/us-central1/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
@@ -703,7 +702,7 @@ export interface UpdateProjectsGroupsRequest {
   /** Request body */
   body?: ErrorGroup;
 }
-export const UpdateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ErrorGroup.pipe(T.HttpBody())),
@@ -724,7 +723,7 @@ export interface UpdateProjectsLocationsGroupsRequest {
   /** Request body */
   body?: ErrorGroup;
 }
-export const UpdateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProjectsLocationsGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ErrorGroup.pipe(T.HttpBody())),

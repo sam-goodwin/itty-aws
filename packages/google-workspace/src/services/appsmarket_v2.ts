@@ -45,7 +45,7 @@ export interface GetCustomerLicenseRequest {
   /** The ID of the application. */
   applicationId: string;
 }
-export const GetCustomerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomerLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     applicationId: S.String.pipe(T.Label()),
@@ -68,7 +68,7 @@ export interface Editions {
   /** (Deprecated) */
   seatCount?: number;
 }
-export const Editions = /*@__PURE__*/ S.suspend(() =>
+const Editions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignedSeats: S.optional(S.Number),
     editionId: S.optional(S.String),
@@ -77,7 +77,7 @@ export const Editions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Editions" }) as any as S.Schema<Editions>;
 
 export type EditionsList = Array<Editions>;
-export const EditionsList = /*@__PURE__*/ S.Array(Editions) as any as S.Schema<EditionsList>;
+const EditionsList = /*@__PURE__*/ S.Array(Editions) as any as S.Schema<EditionsList>;
 
 export interface CustomerLicense {
   /** The type of API resource. This is always `appsmarket#customerLicense`. */
@@ -93,7 +93,7 @@ export interface CustomerLicense {
   /** The customer's license status. One of: - `ACTIVE`: The customer has a valid license. - `UNLICENSED`: There is no license. Either this customer has never installed your application or has deleted it. */
   state?: string;
 }
-export const CustomerLicense = /*@__PURE__*/ S.suspend(() =>
+const CustomerLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     id: S.optional(S.String),
@@ -110,7 +110,7 @@ export interface GetUserLicenseRequest {
   /** The ID of the user. */
   userId: string;
 }
-export const GetUserLicenseRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserLicenseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -141,7 +141,7 @@ export interface UserLicense {
   /** The domain name of the user. */
   customerId?: string;
 }
-export const UserLicense = /*@__PURE__*/ S.suspend(() =>
+const UserLicense = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     editionId: S.optional(S.String),
     applicationId: S.optional(S.String),

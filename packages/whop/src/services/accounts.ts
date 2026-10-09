@@ -48,7 +48,7 @@ export class NotFound
 
 /** Arbitrary key/value metadata to store on the account. */
 export type CreateAccountRequestMetadataMap = { [key: string]: unknown | undefined };
-export const CreateAccountRequestMetadataMap = /*@__PURE__*/ S.Record(
+const CreateAccountRequestMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CreateAccountRequestMetadataMap>;
@@ -77,7 +77,7 @@ export interface CreateAccountRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affiliate_code: S.optional(S.NullOr(S.String)),
     blueprint_id: S.optional(S.NullOr(S.String)),
@@ -99,7 +99,7 @@ export interface AccountBalanceSettlement {
   /** The day this money is expected to finish settling, as an ISO 8601 date. */
   date: string;
 }
-export const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
+const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     date: S.String,
@@ -107,7 +107,7 @@ export const AccountBalanceSettlement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountBalanceSettlement" }) as any as S.Schema<AccountBalanceSettlement>;
 
 export type AccountBalanceBreakdownPendingSettlementsList = Array<AccountBalanceSettlement>;
-export const AccountBalanceBreakdownPendingSettlementsList = /*@__PURE__*/ S.Array(
+const AccountBalanceBreakdownPendingSettlementsList = /*@__PURE__*/ S.Array(
   AccountBalanceSettlement,
 ) as any as S.Schema<AccountBalanceBreakdownPendingSettlementsList>;
 
@@ -122,7 +122,7 @@ export interface AccountBalanceBreakdown {
   /** Amount held back, in native units, as a decimal string. Retrieve the account's reserves for why it is held and when it unlocks. */
   reserve: string;
 }
-export const AccountBalanceBreakdown = /*@__PURE__*/ S.suspend(() =>
+const AccountBalanceBreakdown = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     available: S.String,
     in_transit: S.String,
@@ -148,7 +148,7 @@ export interface AccountBalanceToken {
   /** Holding USD value, or `null` when no exchange rate is available. */
   value_usd: string | null;
 }
-export const AccountBalanceToken = /*@__PURE__*/ S.suspend(() =>
+const AccountBalanceToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balance: S.String,
     breakdown: AccountBalanceBreakdown,
@@ -161,7 +161,7 @@ export const AccountBalanceToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountBalanceToken" }) as any as S.Schema<AccountBalanceToken>;
 
 export type AccountBalancesList = Array<AccountBalanceToken>;
-export const AccountBalancesList = /*@__PURE__*/ S.Array(
+const AccountBalancesList = /*@__PURE__*/ S.Array(
   AccountBalanceToken,
 ) as any as S.Schema<AccountBalancesList>;
 
@@ -171,7 +171,7 @@ export interface FileMultipartUrl {
   /** The presigned URL to PUT this part's bytes to. */
   url: string;
 }
-export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
+const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     part_number: S.Number,
     url: S.String,
@@ -179,17 +179,17 @@ export const FileMultipartUrl = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FileMultipartUrl" }) as any as S.Schema<FileMultipartUrl>;
 
 export type FileMultipartUploadUrlsList = Array<FileMultipartUrl>;
-export const FileMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
+const FileMultipartUploadUrlsList = /*@__PURE__*/ S.Array(
   FileMultipartUrl,
 ) as any as S.Schema<FileMultipartUploadUrlsList>;
 
 /** Where the file is in its upload lifecycle. */
 export type FileUploadStatus = "pending" | "processing" | "ready" | "failed";
-export const FileUploadStatus = S.String;
+const FileUploadStatus = S.String;
 
 /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
 export type FileVisibility = "public" | "private";
-export const FileVisibility = S.String;
+const FileVisibility = S.String;
 
 export interface File {
   /** The file's MIME type, e.g. `application/pdf`. */
@@ -220,7 +220,7 @@ export interface File {
   /** `public` files are served via an unsigned CDN URL; `private` files via a signed, expiring URL. */
   visibility: FileVisibility;
 }
-export const File = /*@__PURE__*/ S.suspend(() =>
+const File = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     content_type: S.NullOr(S.String),
     created_at: S.String,
@@ -241,51 +241,51 @@ export const File = /*@__PURE__*/ S.suspend(() =>
 
 /** Bank payins: debits, transfers, and local bank rails */
 export type AccountCapabilitiesAcceptBankPayments = "active" | "inactive" | "pending";
-export const AccountCapabilitiesAcceptBankPayments = S.String;
+const AccountCapabilitiesAcceptBankPayments = S.String;
 
 /** Buy-now-pay-later payins; requires approval */
 export type AccountCapabilitiesAcceptBnplPayments = "active" | "inactive" | "pending";
-export const AccountCapabilitiesAcceptBnplPayments = S.String;
+const AccountCapabilitiesAcceptBnplPayments = S.String;
 
 /** Card payins, including Apple Pay and Google Pay */
 export type AccountCapabilitiesAcceptCardPayments = "active" | "inactive" | "pending";
-export const AccountCapabilitiesAcceptCardPayments = S.String;
+const AccountCapabilitiesAcceptCardPayments = S.String;
 
 /** Deposits by bank wire or ACH to the account's virtual bank account */
 export type AccountCapabilitiesBankDeposit = "active" | "inactive" | "pending";
-export const AccountCapabilitiesBankDeposit = S.String;
+const AccountCapabilitiesBankDeposit = S.String;
 
 /** Balance top-ups by charging a stored payment method */
 export type AccountCapabilitiesCardDeposit = "active" | "inactive" | "pending";
-export const AccountCapabilitiesCardDeposit = S.String;
+const AccountCapabilitiesCardDeposit = S.String;
 
 /** Issuing Whop cards; requires card application approval */
 export type AccountCapabilitiesCardIssuing = "active" | "inactive" | "pending";
-export const AccountCapabilitiesCardIssuing = S.String;
+const AccountCapabilitiesCardIssuing = S.String;
 
 /** On-chain deposits to the account's crypto wallet */
 export type AccountCapabilitiesCryptoDeposit = "active" | "inactive" | "pending";
-export const AccountCapabilitiesCryptoDeposit = S.String;
+const AccountCapabilitiesCryptoDeposit = S.String;
 
 /** On-chain payouts to a crypto wallet */
 export type AccountCapabilitiesCryptoPayout = "active" | "inactive" | "pending";
-export const AccountCapabilitiesCryptoPayout = S.String;
+const AccountCapabilitiesCryptoPayout = S.String;
 
 /** Instant payouts to an eligible payout destination */
 export type AccountCapabilitiesInstantPayout = "active" | "inactive" | "pending";
-export const AccountCapabilitiesInstantPayout = S.String;
+const AccountCapabilitiesInstantPayout = S.String;
 
 /** Launching ad campaigns through Whop Ads. `inactive` while a requested ads services agreement is awaiting the account's signature. */
 export type AccountCapabilitiesRunAds = "active" | "inactive" | "pending";
-export const AccountCapabilitiesRunAds = S.String;
+const AccountCapabilitiesRunAds = S.String;
 
 /** Standard payouts to an external payout destination */
 export type AccountCapabilitiesStandardPayout = "active" | "inactive" | "pending";
-export const AccountCapabilitiesStandardPayout = S.String;
+const AccountCapabilitiesStandardPayout = S.String;
 
 /** Transfers to other accounts */
 export type AccountCapabilitiesTransfer = "active" | "inactive" | "pending";
-export const AccountCapabilitiesTransfer = S.String;
+const AccountCapabilitiesTransfer = S.String;
 
 export interface AccountCapabilities {
   /** Bank payins: debits, transfers, and local bank rails */
@@ -313,7 +313,7 @@ export interface AccountCapabilities {
   /** Transfers to other accounts */
   transfer: AccountCapabilitiesTransfer;
 }
-export const AccountCapabilities = /*@__PURE__*/ S.suspend(() =>
+const AccountCapabilities = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accept_bank_payments: AccountCapabilitiesAcceptBankPayments,
     accept_bnpl_payments: AccountCapabilitiesAcceptBnplPayments,
@@ -332,7 +332,7 @@ export const AccountCapabilities = /*@__PURE__*/ S.suspend(() =>
 
 /** Whether the card application verifies a business (`business`, KYB) or a person (`individual`, consumer identity). `null` when the application is not yet linked to a verification. */
 export type AccountCardsKind = "individual" | "business";
-export const AccountCardsKind = S.String;
+const AccountCardsKind = S.String;
 
 /** Where the card application stands. `approved` means cards can be issued. `needs_verification` means the applicant has not completed identity verification yet; `needs_information` means they did, but the documents were rejected for a fixable reason and must be resubmitted. `pending` and `manual_review` are in flight. `denied`, `locked`, and `canceled` are terminal. */
 export type AccountCardsStatus =
@@ -344,7 +344,7 @@ export type AccountCardsStatus =
   | "canceled"
   | "needs_verification"
   | "needs_information";
-export const AccountCardsStatus = S.String;
+const AccountCardsStatus = S.String;
 
 export interface AccountCards {
   /** Whether the card application verifies a business (`business`, KYB) or a person (`individual`, consumer identity). `null` when the application is not yet linked to a verification. */
@@ -352,7 +352,7 @@ export interface AccountCards {
   /** Where the card application stands. `approved` means cards can be issued. `needs_verification` means the applicant has not completed identity verification yet; `needs_information` means they did, but the documents were rejected for a fixable reason and must be resubmitted. `pending` and `manual_review` are in flight. `denied`, `locked`, and `canceled` are terminal. */
   status: AccountCardsStatus;
 }
-export const AccountCards = /*@__PURE__*/ S.suspend(() =>
+const AccountCards = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.NullOr(AccountCardsKind),
     status: AccountCardsStatus,
@@ -369,7 +369,7 @@ export interface AccountCompanyFormationDocument {
   /** CDN URL for downloading the document. */
   url: string;
 }
-export const AccountCompanyFormationDocument = /*@__PURE__*/ S.suspend(() =>
+const AccountCompanyFormationDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -381,13 +381,13 @@ export const AccountCompanyFormationDocument = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountCompanyFormationDocument>;
 
 export type AccountCompanyFormationDocumentsList = Array<AccountCompanyFormationDocument>;
-export const AccountCompanyFormationDocumentsList = /*@__PURE__*/ S.Array(
+const AccountCompanyFormationDocumentsList = /*@__PURE__*/ S.Array(
   AccountCompanyFormationDocument,
 ) as any as S.Schema<AccountCompanyFormationDocumentsList>;
 
 /** `pending` when a signing session is ready for the founder; `unknown` when the signature state could not be determined. */
 export type AccountCompanyFormationSignatureRequestStatus = "pending" | "unknown";
-export const AccountCompanyFormationSignatureRequestStatus = S.String;
+const AccountCompanyFormationSignatureRequestStatus = S.String;
 
 export interface AccountCompanyFormationSignatureRequest {
   /** When the signing URL expires, as an ISO 8601 timestamp. Present only when the signing URL is included. */
@@ -397,7 +397,7 @@ export interface AccountCompanyFormationSignatureRequest {
   /** Hosted signing URL where the founder completes the form. Present while `status` is `pending` and the caller has `incorporation:write`. Omitted from webhooks. */
   url?: string;
 }
-export const AccountCompanyFormationSignatureRequest = /*@__PURE__*/ S.suspend(() =>
+const AccountCompanyFormationSignatureRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expires_at: S.optional(S.String),
     status: AccountCompanyFormationSignatureRequestStatus,
@@ -413,7 +413,7 @@ export interface AccountCompanyFormationSignatures {
   /** Signature state for IRS Form SS-4, the EIN application. Present only while the form still needs the founder's action. */
   ss4?: AccountCompanyFormationSignatureRequest;
 }
-export const AccountCompanyFormationSignatures = /*@__PURE__*/ S.suspend(() =>
+const AccountCompanyFormationSignatures = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form8821: S.optional(AccountCompanyFormationSignatureRequest),
     ss4: S.optional(AccountCompanyFormationSignatureRequest),
@@ -428,7 +428,7 @@ export type AccountCompanyFormationStatus =
   | "filed"
   | "rejected"
   | "completed";
-export const AccountCompanyFormationStatus = S.String;
+const AccountCompanyFormationStatus = S.String;
 
 export interface AccountCompanyFormation {
   documents?: AccountCompanyFormationDocumentsList;
@@ -442,7 +442,7 @@ export interface AccountCompanyFormation {
   state_registered?: boolean;
   status?: AccountCompanyFormationStatus;
 }
-export const AccountCompanyFormation = /*@__PURE__*/ S.suspend(() =>
+const AccountCompanyFormation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     documents: S.optional(AccountCompanyFormationDocumentsList),
     ein_registered: S.optional(S.Boolean),
@@ -455,26 +455,26 @@ export const AccountCompanyFormation = /*@__PURE__*/ S.suspend(() =>
 
 /** Public account home page preferences. */
 export type AccountHomePreferencesItem = "hide_member_count" | "hide_members_card";
-export const AccountHomePreferencesItem = S.String;
+const AccountHomePreferencesItem = S.String;
 
 export type AccountHomePreferencesList = Array<AccountHomePreferencesItem>;
-export const AccountHomePreferencesList = /*@__PURE__*/ S.Array(
+const AccountHomePreferencesList = /*@__PURE__*/ S.Array(
   AccountHomePreferencesItem,
 ) as any as S.Schema<AccountHomePreferencesList>;
 
 /** Type of onboarding the account has completed. */
 export type AccountOnboardingType = "platform" | "seller";
-export const AccountOnboardingType = S.String;
+const AccountOnboardingType = S.String;
 
 /** Account Open Graph image variant. */
 export type AccountOpengraphImageVariant = "white" | "black" | "orange";
-export const AccountOpengraphImageVariant = S.String;
+const AccountOpengraphImageVariant = S.String;
 
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -490,7 +490,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -505,7 +505,7 @@ export interface AccountParentFeesValue {
   /** Percentage of the transaction charged as markup. */
   percentage_fee: number;
 }
-export const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
+const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed_fee_usd: S.Number,
     percentage_fee: S.Number,
@@ -514,7 +514,7 @@ export const AccountParentFeesValue = /*@__PURE__*/ S.suspend(() =>
 
 /** Markup rates this parent charges the connected account being read, keyed by fee type (for example `crypto_deposit_markup`), each with `percentage_fee` and `fixed_fee_usd`. Resolved with the connected account's own overrides winning over the platform default. */
 export type AccountParentFeesMap = { [key: string]: AccountParentFeesValue | undefined };
-export const AccountParentFeesMap = /*@__PURE__*/ S.Record(
+const AccountParentFeesMap = /*@__PURE__*/ S.Record(
   S.String,
   AccountParentFeesValue,
 ) as any as S.Schema<AccountParentFeesMap>;
@@ -531,7 +531,7 @@ export interface AccountParent {
   /** Account display name. */
   title: string;
 }
-export const AccountParent = /*@__PURE__*/ S.suspend(() =>
+const AccountParent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fees: S.optional(AccountParentFeesMap),
     id: S.String,
@@ -555,7 +555,7 @@ export interface AccountPartner {
   /** When the user became a verified Whop Partner, as an ISO 8601 timestamp. Null if not verified. */
   whop_partner_verified_at: string | null;
 }
-export const AccountPartner = /*@__PURE__*/ S.suspend(() =>
+const AccountPartner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.NullOr(S.String),
     id: S.String,
@@ -572,7 +572,7 @@ export interface AccountDisputeAlertAutoRefundControl {
   /** Maximum dispute alert amount automatically refunded in USD. `null` when automatic refunds are disabled. */
   threshold_usd: number | null;
 }
-export const AccountDisputeAlertAutoRefundControl = /*@__PURE__*/ S.suspend(() =>
+const AccountDisputeAlertAutoRefundControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locked: S.Boolean,
     threshold_usd: S.NullOr(S.Number),
@@ -587,7 +587,7 @@ export interface AccountReserveControl {
   /** Percentage of incoming payment volume held in reserve. `null` when no reserve is applied. */
   percentage: number | null;
 }
-export const AccountReserveControl = /*@__PURE__*/ S.suspend(() =>
+const AccountReserveControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hold_period_days: S.Number,
     percentage: S.NullOr(S.Number),
@@ -604,7 +604,7 @@ export interface AccountResolutionCenterAutoRefundControl {
   /** Maximum PayPal-funded resolution center case amount automatically refunded in USD. `null` when automatic refunds are disabled for PayPal. */
   paypal_threshold_usd: number | null;
 }
-export const AccountResolutionCenterAutoRefundControl = /*@__PURE__*/ S.suspend(() =>
+const AccountResolutionCenterAutoRefundControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_threshold_usd: S.NullOr(S.Number),
     financing_threshold_usd: S.NullOr(S.Number),
@@ -621,11 +621,9 @@ export type AccountPaymentControlsRestrictedPaymentMethodsItem =
   | "card_mastercard"
   | "card_american_express"
   | "card_discover_global_network";
-export const AccountPaymentControlsRestrictedPaymentMethodsItem = S.String;
-
 export type AccountPaymentControlsRestrictedPaymentMethodsList =
   Array<AccountPaymentControlsRestrictedPaymentMethodsItem>;
-export const AccountPaymentControlsRestrictedPaymentMethodsList =
+const AccountPaymentControlsRestrictedPaymentMethodsList =
   AccountHomePreferencesList as any as S.Schema<AccountPaymentControlsRestrictedPaymentMethodsList>;
 
 /** Why pending funds without a settlement date aren't moving yet. `kyc_incomplete` and `pending_information_request` are things the merchant can act on. `withdrawals_disabled` means Whop has blocked withdrawals, so these funds cannot become available. `null` when there's no reason to show -- still clearing, or held for a reason that isn't named here. */
@@ -633,11 +631,11 @@ export type AccountPaymentControlsUndatedPendingReason =
   | "kyc_incomplete"
   | "pending_information_request"
   | "withdrawals_disabled";
-export const AccountPaymentControlsUndatedPendingReason = S.String;
+const AccountPaymentControlsUndatedPendingReason = S.String;
 
 /** How often the account's balance automatically withdraws. */
 export type AccountWithdrawalScheduleControlFrequency = "manual" | "daily" | "weekly" | "monthly";
-export const AccountWithdrawalScheduleControlFrequency = S.String;
+const AccountWithdrawalScheduleControlFrequency = S.String;
 
 export interface AccountWithdrawalScheduleControl {
   /** Day the automatic withdrawal runs on: 0-6 (Sunday-Saturday) for `weekly`, 1-31 for `monthly`. `null` for `manual` and `daily`. */
@@ -647,7 +645,7 @@ export interface AccountWithdrawalScheduleControl {
   /** Next date the automatic withdrawal is scheduled to run, as an ISO 8601 date. `null` for `manual` and `daily`, where no single next date applies. */
   next_payout_date: string | null;
 }
-export const AccountWithdrawalScheduleControl = /*@__PURE__*/ S.suspend(() =>
+const AccountWithdrawalScheduleControl = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     day: S.NullOr(S.Number),
     frequency: AccountWithdrawalScheduleControlFrequency,
@@ -682,7 +680,7 @@ export interface AccountPaymentControls {
   /** How the account's balance automatically withdraws. */
   withdrawal_schedule: AccountWithdrawalScheduleControl;
 }
-export const AccountPaymentControls = /*@__PURE__*/ S.suspend(() =>
+const AccountPaymentControls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dispute_alert_auto_refund: AccountDisputeAlertAutoRefundControl,
     dispute_alert_fee_usd: S.NullOr(S.Number),
@@ -721,16 +719,16 @@ export type AccountRecommendedActionAction =
   | "enable_tax_collection"
   | "create_card"
   | "apply_for_financing";
-export const AccountRecommendedActionAction = S.String;
+const AccountRecommendedActionAction = S.String;
 
 export type AccountRecommendedActionBlockedCapabilitiesList = Array<string>;
-export const AccountRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.Array(
+const AccountRecommendedActionBlockedCapabilitiesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AccountRecommendedActionBlockedCapabilitiesList>;
 
 /** Always optional -- never blocking */
 export type AccountRecommendedActionStatus = "optional";
-export const AccountRecommendedActionStatus = S.String;
+const AccountRecommendedActionStatus = S.String;
 
 export interface AccountRecommendedAction {
   /** The recommendation; new values may be added, so handle unknown actions gracefully */
@@ -753,7 +751,7 @@ export interface AccountRecommendedAction {
   /** Headline for the recommendation */
   title: string;
 }
-export const AccountRecommendedAction = /*@__PURE__*/ S.suspend(() =>
+const AccountRecommendedAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AccountRecommendedActionAction,
     blocked_capabilities: AccountRecommendedActionBlockedCapabilitiesList,
@@ -770,7 +768,7 @@ export const AccountRecommendedAction = /*@__PURE__*/ S.suspend(() =>
 
 /** DEPRECATED: Use the `GET /economic_intelligence?account_id={account_id}` endpoint instead. */
 export type AccountRecommendedActionsList = Array<AccountRecommendedAction>;
-export const AccountRecommendedActionsList = /*@__PURE__*/ S.Array(
+const AccountRecommendedActionsList = /*@__PURE__*/ S.Array(
   AccountRecommendedAction,
 ) as any as S.Schema<AccountRecommendedActionsList>;
 
@@ -792,15 +790,15 @@ export type AccountRequiredActionAction =
   | "add_vat_registration"
   | "accept_payout_terms"
   | "enable_two_factor_authentication";
-export const AccountRequiredActionAction = S.String;
+const AccountRequiredActionAction = S.String;
 
 export type AccountRequiredActionBlockedCapabilitiesList = Array<string>;
-export const AccountRequiredActionBlockedCapabilitiesList =
+const AccountRequiredActionBlockedCapabilitiesList =
   AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountRequiredActionBlockedCapabilitiesList>;
 
 /** required (act now) or pending (under review) */
 export type AccountRequiredActionStatus = "required" | "pending";
-export const AccountRequiredActionStatus = S.String;
+const AccountRequiredActionStatus = S.String;
 
 export interface AccountRequiredAction {
   /** What the holder must do; new values may be added, so handle unknown actions gracefully */
@@ -819,7 +817,7 @@ export interface AccountRequiredAction {
   /** Headline for the action */
   title: string;
 }
-export const AccountRequiredAction = /*@__PURE__*/ S.suspend(() =>
+const AccountRequiredAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: AccountRequiredActionAction,
     blocked_capabilities: AccountRequiredActionBlockedCapabilitiesList,
@@ -833,7 +831,7 @@ export const AccountRequiredAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountRequiredAction" }) as any as S.Schema<AccountRequiredAction>;
 
 export type AccountRequiredActionsList = Array<AccountRequiredAction>;
-export const AccountRequiredActionsList = /*@__PURE__*/ S.Array(
+const AccountRequiredActionsList = /*@__PURE__*/ S.Array(
   AccountRequiredAction,
 ) as any as S.Schema<AccountRequiredActionsList>;
 
@@ -847,7 +845,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -858,7 +856,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 
 /** Activity that qualifies this account for the reward. */
 export type AccountPartnerRewardQualificationType = "sales" | "ad_spend";
-export const AccountPartnerRewardQualificationType = S.String;
+const AccountPartnerRewardQualificationType = S.String;
 
 /** This account's reward state. Credited requires a posted ledger entry; processing includes a met requirement awaiting fulfillment. Reversing and reversed reflect a subsequent reward reversal. */
 export type AccountPartnerRewardStatus =
@@ -868,7 +866,7 @@ export type AccountPartnerRewardStatus =
   | "reversing"
   | "reversed"
   | "unavailable";
-export const AccountPartnerRewardStatus = S.String;
+const AccountPartnerRewardStatus = S.String;
 
 export interface AccountPartnerReward {
   /** Reward definition ID, prefixed `prwd_`. Progress and status apply to the containing account. */
@@ -884,7 +882,7 @@ export interface AccountPartnerReward {
   /** This account's reward state. Credited requires a posted ledger entry; processing includes a met requirement awaiting fulfillment. Reversing and reversed reflect a subsequent reward reversal. */
   status: AccountPartnerRewardStatus;
 }
-export const AccountPartnerReward = /*@__PURE__*/ S.suspend(() =>
+const AccountPartnerReward = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     qualification_amount: Money,
@@ -896,7 +894,7 @@ export const AccountPartnerReward = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountPartnerReward" }) as any as S.Schema<AccountPartnerReward>;
 
 export type AccountRewardsList = Array<AccountPartnerReward>;
-export const AccountRewardsList = /*@__PURE__*/ S.Array(
+const AccountRewardsList = /*@__PURE__*/ S.Array(
   AccountPartnerReward,
 ) as any as S.Schema<AccountRewardsList>;
 
@@ -911,7 +909,7 @@ export type AccountSocialLinkWebsite =
   | "twitch"
   | "website"
   | "custom";
-export const AccountSocialLinkWebsite = S.String;
+const AccountSocialLinkWebsite = S.String;
 
 export interface AccountSocialLink {
   /** The ID of the social link */
@@ -923,7 +921,7 @@ export interface AccountSocialLink {
   /** The social platform for this link */
   website: AccountSocialLinkWebsite;
 }
-export const AccountSocialLink = /*@__PURE__*/ S.suspend(() =>
+const AccountSocialLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -933,7 +931,7 @@ export const AccountSocialLink = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountSocialLink" }) as any as S.Schema<AccountSocialLink>;
 
 export type AccountSocialLinksList = Array<AccountSocialLink>;
-export const AccountSocialLinksList = /*@__PURE__*/ S.Array(
+const AccountSocialLinksList = /*@__PURE__*/ S.Array(
   AccountSocialLink,
 ) as any as S.Schema<AccountSocialLinksList>;
 
@@ -967,15 +965,15 @@ export type AccountStorePageConfigAccentColor =
   | "gold"
   | "bronze"
   | "gray";
-export const AccountStorePageConfigAccentColor = S.String;
+const AccountStorePageConfigAccentColor = S.String;
 
 /** Layout used on the account store page. */
 export type AccountStorePageConfigLayout = "featured" | "compact";
-export const AccountStorePageConfigLayout = S.String;
+const AccountStorePageConfigLayout = S.String;
 
 /** Profile presentation used on the account store page. */
 export type AccountStorePageConfigProfileVariant = "personal" | "business";
-export const AccountStorePageConfigProfileVariant = S.String;
+const AccountStorePageConfigProfileVariant = S.String;
 
 export interface AccountStorePageConfig {
   /** Accent color used on the account store page. */
@@ -987,7 +985,7 @@ export interface AccountStorePageConfig {
   /** Whether the account store page shows a Whop affiliate link. */
   whop_affiliate_link: boolean;
 }
-export const AccountStorePageConfig = /*@__PURE__*/ S.suspend(() =>
+const AccountStorePageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accent_color: S.NullOr(AccountStorePageConfigAccentColor),
     layout: S.NullOr(AccountStorePageConfigLayout),
@@ -997,7 +995,7 @@ export const AccountStorePageConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountStorePageConfig" }) as any as S.Schema<AccountStorePageConfig>;
 
 export type AccountTaxCollectionEnabledStatesList = Array<string>;
-export const AccountTaxCollectionEnabledStatesList =
+const AccountTaxCollectionEnabledStatesList =
   AccountRecommendedActionBlockedCapabilitiesList as any as S.Schema<AccountTaxCollectionEnabledStatesList>;
 
 /** Tax ID type. */
@@ -1115,7 +1113,7 @@ export type AccountTaxIdentifierTaxIdType =
   | "zw_tin"
   | "sr_fin"
   | "xi_vat";
-export const AccountTaxIdentifierTaxIdType = S.String;
+const AccountTaxIdentifierTaxIdType = S.String;
 
 export interface AccountTaxIdentifier {
   /** Tax identifier ID. */
@@ -1125,7 +1123,7 @@ export interface AccountTaxIdentifier {
   /** Tax ID value. */
   tax_id_value: string;
 }
-export const AccountTaxIdentifier = /*@__PURE__*/ S.suspend(() =>
+const AccountTaxIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     tax_id_type: AccountTaxIdentifierTaxIdType,
@@ -1134,24 +1132,24 @@ export const AccountTaxIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountTaxIdentifier" }) as any as S.Schema<AccountTaxIdentifier>;
 
 export type AccountTaxIdentifiersList = Array<AccountTaxIdentifier>;
-export const AccountTaxIdentifiersList = /*@__PURE__*/ S.Array(
+const AccountTaxIdentifiersList = /*@__PURE__*/ S.Array(
   AccountTaxIdentifier,
 ) as any as S.Schema<AccountTaxIdentifiersList>;
 
 /** Who calculates and remits tax for the account: `whop` (Whop calculates and remits), `self` (Whop calculates; the account collects and remits), or `none` (neither; the account is responsible). `null` until the account enrolls in the Whop tax service. */
 export type AccountTaxRemittedBy = "whop" | "self" | "none";
-export const AccountTaxRemittedBy = S.String;
+const AccountTaxRemittedBy = S.String;
 
 /** How tax is applied to the account's prices: `inclusive` (tax included in the listed price) or `exclusive` (tax added on top). Defaults to `exclusive` when unset; `null` only when the account has no payment connection. */
 export type AccountTaxType = "inclusive" | "exclusive";
-export const AccountTaxType = S.String;
+const AccountTaxType = S.String;
 
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` uses the standard checkout flow. */
 export type AccountThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const AccountThreeDsLevel = S.String;
+const AccountThreeDsLevel = S.String;
 
 export interface TradingMarginSummary {
   /** Total account value in USD, including unrealized profit and loss. */
@@ -1165,7 +1163,7 @@ export interface TradingMarginSummary {
   /** USD that can be withdrawn now without closing positions. */
   withdrawable: Money;
 }
-export const TradingMarginSummary = /*@__PURE__*/ S.suspend(() =>
+const TradingMarginSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_value: Money,
     total_margin_used: Money,
@@ -1182,7 +1180,7 @@ export type TradingWebsocketSubscriptionChannel =
   | "order_updates"
   | "user_fills"
   | "user_events";
-export const TradingWebsocketSubscriptionChannel = S.String;
+const TradingWebsocketSubscriptionChannel = S.String;
 
 export interface TradingWebsocketSubscription {
   /** The live update stream this subscription opens. */
@@ -1190,7 +1188,7 @@ export interface TradingWebsocketSubscription {
   /** JSON subscription message to send unchanged over the Hyperliquid WebSocket. */
   message: string;
 }
-export const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
+const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: TradingWebsocketSubscriptionChannel,
     message: S.String,
@@ -1201,7 +1199,7 @@ export const TradingWebsocketSubscription = /*@__PURE__*/ S.suspend(() =>
 
 export type TradingHyperliquidAccountWebsocketSubscriptionsList =
   Array<TradingWebsocketSubscription>;
-export const TradingHyperliquidAccountWebsocketSubscriptionsList = /*@__PURE__*/ S.Array(
+const TradingHyperliquidAccountWebsocketSubscriptionsList = /*@__PURE__*/ S.Array(
   TradingWebsocketSubscription,
 ) as any as S.Schema<TradingHyperliquidAccountWebsocketSubscriptionsList>;
 
@@ -1216,7 +1214,7 @@ export interface TradingHyperliquidAccount {
   /** Hyperliquid WebSocket URL to connect to directly for live updates. */
   websocket_url: string;
 }
-export const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     builder_fee_bps: S.NullOr(S.String),
@@ -1229,7 +1227,7 @@ export const TradingHyperliquidAccount = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TradingHyperliquidAccount>;
 
 export type TradingAccountObject = "trading_account";
-export const TradingAccountObject = S.String;
+const TradingAccountObject = S.String;
 
 export interface TradingHyperliquidOrder {
   /** Whether the order can only reduce an existing position, or `null` when Hyperliquid omits it. */
@@ -1237,7 +1235,7 @@ export interface TradingHyperliquidOrder {
   /** Trigger price in USD for take-profit and stop-loss orders, or `null` for orders without a trigger. */
   trigger_price: Money | null;
 }
-export const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reduce_only: S.NullOr(S.Boolean),
     trigger_price: S.NullOr(Money),
@@ -1245,23 +1243,23 @@ export const TradingHyperliquidOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingHyperliquidOrder" }) as any as S.Schema<TradingHyperliquidOrder>;
 
 export type TradingOrderObject = "trading_order";
-export const TradingOrderObject = S.String;
+const TradingOrderObject = S.String;
 
 export type TradingOrderOrderType = "limit" | "market" | "take_profit" | "stop_loss";
-export const TradingOrderOrderType = S.String;
+const TradingOrderOrderType = S.String;
 
 export type TradingOrderSide = "buy" | "sell";
-export const TradingOrderSide = S.String;
+const TradingOrderSide = S.String;
 
 export type TradingOrderStatus = "open" | "filled" | "canceled" | "triggered" | "rejected";
-export const TradingOrderStatus = S.String;
+const TradingOrderStatus = S.String;
 
 /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
 export type TradingOrderTimeInForce =
   | "add_liquidity_only"
   | "good_til_canceled"
   | "immediate_or_cancel";
-export const TradingOrderTimeInForce = S.String;
+const TradingOrderTimeInForce = S.String;
 
 export interface TradingOrder {
   /** Client order ID, prefixed `trdcloid_`, or `null` when the order was placed without one. */
@@ -1291,7 +1289,7 @@ export interface TradingOrder {
   /** How long the order stays active. `null` when the provider omits it or reports a policy outside the supported values. */
   time_in_force: TradingOrderTimeInForce | null;
 }
-export const TradingOrder = /*@__PURE__*/ S.suspend(() =>
+const TradingOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     client_order_id: S.NullOr(S.String),
     created_at: S.NullOr(S.String),
@@ -1312,7 +1310,7 @@ export const TradingOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingOrder" }) as any as S.Schema<TradingOrder>;
 
 export type TradingAccountOpenOrdersList = Array<TradingOrder>;
-export const TradingAccountOpenOrdersList = /*@__PURE__*/ S.Array(
+const TradingAccountOpenOrdersList = /*@__PURE__*/ S.Array(
   TradingOrder,
 ) as any as S.Schema<TradingAccountOpenOrdersList>;
 
@@ -1324,7 +1322,7 @@ export interface TradingCumulativeFunding {
   /** Funding paid since the position opened, in USD, or `null` when unavailable. */
   since_open: Money | null;
 }
-export const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
+const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all_time: S.NullOr(Money),
     since_change: S.NullOr(Money),
@@ -1334,7 +1332,7 @@ export const TradingCumulativeFunding = /*@__PURE__*/ S.suspend(() =>
 
 /** `cross` shares margin across positions; `isolated` limits margin to this position. */
 export type TradingPositionLeverageType = "cross" | "isolated";
-export const TradingPositionLeverageType = S.String;
+const TradingPositionLeverageType = S.String;
 
 export interface TradingPositionLeverage {
   /** `cross` shares margin across positions; `isolated` limits margin to this position. */
@@ -1342,7 +1340,7 @@ export interface TradingPositionLeverage {
   /** Multiplier applied to the position's margin, such as `10` for 10x. */
   value: number;
 }
-export const TradingPositionLeverage = /*@__PURE__*/ S.suspend(() =>
+const TradingPositionLeverage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: TradingPositionLeverageType,
     value: S.Number,
@@ -1361,7 +1359,7 @@ export interface TradingHyperliquidPosition {
   /** Return on equity as a decimal ratio string, such as `0.1` for 10%. */
   return_on_equity: string;
 }
-export const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
+const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cumulative_funding: TradingCumulativeFunding,
     leverage: TradingPositionLeverage,
@@ -1374,10 +1372,10 @@ export const TradingHyperliquidPosition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TradingHyperliquidPosition>;
 
 export type TradingPositionObject = "trading_position";
-export const TradingPositionObject = S.String;
+const TradingPositionObject = S.String;
 
 export type TradingPositionSide = "long" | "short";
-export const TradingPositionSide = S.String;
+const TradingPositionSide = S.String;
 
 export interface TradingPosition {
   /** Average entry price in USD, or `null` when the provider omits it. */
@@ -1397,7 +1395,7 @@ export interface TradingPosition {
   /** Unrealized profit or loss in USD. Negative for a loss. */
   unrealized_pnl: Money;
 }
-export const TradingPosition = /*@__PURE__*/ S.suspend(() =>
+const TradingPosition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entry_price: S.NullOr(Money),
     hyperliquid: S.NullOr(TradingHyperliquidPosition),
@@ -1412,13 +1410,13 @@ export const TradingPosition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TradingPosition" }) as any as S.Schema<TradingPosition>;
 
 export type TradingAccountPositionsList = Array<TradingPosition>;
-export const TradingAccountPositionsList = /*@__PURE__*/ S.Array(
+const TradingAccountPositionsList = /*@__PURE__*/ S.Array(
   TradingPosition,
 ) as any as S.Schema<TradingAccountPositionsList>;
 
 /** Trading venue that holds the positions and orders. */
 export type TradingAccountProvider = "hyperliquid";
-export const TradingAccountProvider = S.String;
+const TradingAccountProvider = S.String;
 
 export interface TradingAccount {
   /** The account that owns this trading account, prefixed `biz_`. `null` when a user owns it. */
@@ -1435,7 +1433,7 @@ export interface TradingAccount {
   /** The user who owns this trading account, prefixed `user_`. `null` when an account owns it. */
   user_id: string | null;
 }
-export const TradingAccount = /*@__PURE__*/ S.suspend(() =>
+const TradingAccount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.NullOr(S.String),
     hyperliquid: S.NullOr(TradingHyperliquidAccount),
@@ -1450,7 +1448,7 @@ export const TradingAccount = /*@__PURE__*/ S.suspend(() =>
 
 /** The blockchain network the wallet lives on */
 export type AccountWalletNetwork = "solana" | "ethereum" | "bitcoin";
-export const AccountWalletNetwork = S.String;
+const AccountWalletNetwork = S.String;
 
 export interface AccountWallet {
   /** The on-chain address of the wallet */
@@ -1460,7 +1458,7 @@ export interface AccountWallet {
   /** The blockchain network the wallet lives on */
   network: AccountWalletNetwork;
 }
-export const AccountWallet = /*@__PURE__*/ S.suspend(() =>
+const AccountWallet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.String,
     id: S.String,
@@ -1601,7 +1599,7 @@ export interface Account {
   /** The account's business website URL, or `null` if none has been provided. Setting it also adds a `website` entry to `social_links`. */
   website: string | null;
 }
-export const Account = /*@__PURE__*/ S.suspend(() =>
+const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balances: AccountBalancesList,
     banner_image_url: S.NullOr(S.String),
@@ -1679,7 +1677,7 @@ export interface DeleteAccountRequest {
   /** Connected account ID, prefixed `biz_`. */
   id: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/accounts/{id}", code: 200 })),
@@ -1691,7 +1689,7 @@ export interface DeleteAccountResponse {
   /** ID of the deleted connected account. */
   id: string;
 }
-export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleted: S.Boolean,
     id: S.String,
@@ -1712,7 +1710,7 @@ export interface FormCompanyRequestBusinessAddress {
   /** State or region code, for example `CA`. */
   state: string;
 }
-export const FormCompanyRequestBusinessAddress = /*@__PURE__*/ S.suspend(() =>
+const FormCompanyRequestBusinessAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.String,
     country: S.String,
@@ -1740,11 +1738,11 @@ export type FormCompanyRequestEntitySuffix =
   | "C Corporation"
   | "CCorp"
   | "Company";
-export const FormCompanyRequestEntitySuffix = S.String;
+const FormCompanyRequestEntitySuffix = S.String;
 
 /** Legal entity type to form. Defaults to `llc`. */
 export type FormCompanyRequestEntityType = "llc" | "c_corp";
-export const FormCompanyRequestEntityType = S.String;
+const FormCompanyRequestEntityType = S.String;
 
 /** Two-letter code of the US state (or `DC`) to form the company in. We recommend `WY` because Wyoming formations are completed the same day. */
 export type FormCompanyRequestFormationState =
@@ -1799,24 +1797,20 @@ export type FormCompanyRequestFormationState =
   | "WV"
   | "WI"
   | "WY";
-export const FormCompanyRequestFormationState = S.String;
+const FormCompanyRequestFormationState = S.String;
 
 /** Founder's personal address. */
 export type FormCompanyRequestFoundersItemAddress = FormCompanyRequestBusinessAddress;
-export const FormCompanyRequestFoundersItemAddress = FormCompanyRequestBusinessAddress;
-
 export type FormCompanyRequestFoundersItemRolesItem =
   | "president"
   | "secretary"
   | "treasurer"
   | "director";
-export const FormCompanyRequestFoundersItemRolesItem = S.String;
-
 /** Officer roles held by the member -- one member can hold several. Required (at least one role) for every member when `entity_type` is `c_corp`; ignored for LLCs. Across all members every role must be covered; `president`, `secretary` and `treasurer` may each be held by only one member, while `director` may repeat. */
 export type FormCompanyRequestFoundersItemRolesList = Array<
   FormCompanyRequestFoundersItemRolesItem | (string & {})
 >;
-export const FormCompanyRequestFoundersItemRolesList =
+const FormCompanyRequestFoundersItemRolesList =
   AccountHomePreferencesList as any as S.Schema<FormCompanyRequestFoundersItemRolesList>;
 
 export interface FormCompanyRequestFoundersItem {
@@ -1838,7 +1832,7 @@ export interface FormCompanyRequestFoundersItem {
   /** The founder's US Social Security Number. Leave empty if the founder is not a US resident. Non-US founders can request expedited EIN processing via the `expedite_ein` option. */
   ssn?: string;
 }
-export const FormCompanyRequestFoundersItem = /*@__PURE__*/ S.suspend(() =>
+const FormCompanyRequestFoundersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: FormCompanyRequestBusinessAddress,
     date_of_birth: S.optional(S.String),
@@ -1857,7 +1851,7 @@ export const FormCompanyRequestFoundersItem = /*@__PURE__*/ S.suspend(() =>
 
 /** The company's founders. Exactly one must be marked `is_primary` -- the responsible party for the filing. */
 export type FormCompanyRequestFoundersList = Array<FormCompanyRequestFoundersItem>;
-export const FormCompanyRequestFoundersList = /*@__PURE__*/ S.Array(
+const FormCompanyRequestFoundersList = /*@__PURE__*/ S.Array(
   FormCompanyRequestFoundersItem,
 ) as any as S.Schema<FormCompanyRequestFoundersList>;
 
@@ -1868,7 +1862,7 @@ export interface FormCompanyRequestShareStructure {
   /** Par value per share, in USD. Must be greater than `0`; fractional values like `0.01` are allowed. */
   value: number;
 }
-export const FormCompanyRequestShareStructure = /*@__PURE__*/ S.suspend(() =>
+const FormCompanyRequestShareStructure = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     number_of_shares: S.Number,
     value: S.Number,
@@ -1911,7 +1905,7 @@ export interface FormCompanyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const FormCompanyRequest = /*@__PURE__*/ S.suspend(() =>
+const FormCompanyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     business_address: S.optional(FormCompanyRequestBusinessAddress),
@@ -1942,7 +1936,7 @@ export interface FormCompanyResponse {
   /** Total due at checkout in USD cents. */
   total: number;
 }
-export const FormCompanyResponse = /*@__PURE__*/ S.suspend(() =>
+const FormCompanyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkout_session_id: S.String,
     checkout_url: S.String,
@@ -1957,7 +1951,7 @@ export interface GetAccountRequest {
   /** Also retrieve live trading state under `trading`. Requires crypto_wallet:trade:read, crypto_wallet:trade, or crypto_wallet:manage permission and an Ethereum wallet; null otherwise. Provider failures return 503. */
   include_trading?: boolean;
 }
-export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     include_trading: S.optional(S.Boolean.pipe(T.Query())),
@@ -1968,7 +1962,7 @@ export interface GetAccountFeesRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
 }
-export const GetAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/fees", code: 200 })),
@@ -1976,7 +1970,7 @@ export const GetAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Which group of the fee schedule this fee belongs to, for grouping in a UI. */
 export type AccountFeeCategory = "payments" | "disputes" | "optimization" | "payouts" | "other";
-export const AccountFeeCategory = S.String;
+const AccountFeeCategory = S.String;
 
 export interface AccountFeeRate {
   /** The amount charged per event. `null` when the fee has no fixed component. */
@@ -1984,7 +1978,7 @@ export interface AccountFeeRate {
   /** The percentage of the transaction, where `2` means 2%. `null` when the fee has no percentage component. */
   percentage: number | null;
 }
-export const AccountFeeRate = /*@__PURE__*/ S.suspend(() =>
+const AccountFeeRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed: S.NullOr(Money),
     percentage: S.NullOr(S.Number),
@@ -2009,11 +2003,11 @@ export type AccountFeeRegion =
   | "uy"
   | "br"
   | "ph";
-export const AccountFeeRegion = S.String;
+const AccountFeeRegion = S.String;
 
 /** Where the regional rate in effect comes from: `default` is the platform rate, `custom` a rate negotiated for this account, and `inherited` a rate negotiated by the platform this account is connected to. */
 export type AccountFeeRegionalRateSource = "default" | "custom" | "inherited";
-export const AccountFeeRegionalRateSource = S.String;
+const AccountFeeRegionalRateSource = S.String;
 
 export interface AccountFeeRegionalRate {
   /** The platform rate for this region before custom or inherited pricing is applied. */
@@ -2031,7 +2025,7 @@ export interface AccountFeeRegionalRate {
   /** Where the regional rate in effect comes from: `default` is the platform rate, `custom` a rate negotiated for this account, and `inherited` a rate negotiated by the platform this account is connected to. */
   source: AccountFeeRegionalRateSource;
 }
-export const AccountFeeRegionalRate = /*@__PURE__*/ S.suspend(() =>
+const AccountFeeRegionalRate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: AccountFeeRate,
     fixed: S.NullOr(Money),
@@ -2045,18 +2039,18 @@ export const AccountFeeRegionalRate = /*@__PURE__*/ S.suspend(() =>
 
 /** The rate, source, default, reset rate, and editable limits in every other region this fee varies by, keyed by region. Empty for a fee that does not vary by region. */
 export type AccountFeeRegionsMap = { [key: string]: AccountFeeRegionalRate | undefined };
-export const AccountFeeRegionsMap = /*@__PURE__*/ S.Record(
+const AccountFeeRegionsMap = /*@__PURE__*/ S.Record(
   S.String,
   AccountFeeRegionalRate,
 ) as any as S.Schema<AccountFeeRegionsMap>;
 
 /** Where the rate in effect comes from: `default` is the platform rate, `custom` a rate negotiated for this account, and `inherited` a rate negotiated by the platform this account is connected to. */
 export type AccountFeeSource = "default" | "custom" | "inherited";
-export const AccountFeeSource = S.String;
+const AccountFeeSource = S.String;
 
 /** Why the caller may not change this fee, or `null` when `adjustable`. `not_permitted` when the caller has no say over it. */
 export type AccountFeeUnadjustableReason = "not_permitted";
-export const AccountFeeUnadjustableReason = S.String;
+const AccountFeeUnadjustableReason = S.String;
 
 export interface AccountFee {
   /** Whether the caller may change this fee through `PATCH`. Depends on who is asking. */
@@ -2086,7 +2080,7 @@ export interface AccountFee {
   /** Why the caller may not change this fee, or `null` when `adjustable`. `not_permitted` when the caller has no say over it. */
   unadjustable_reason: AccountFeeUnadjustableReason | null;
 }
-export const AccountFee = /*@__PURE__*/ S.suspend(() =>
+const AccountFee = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adjustable: S.Boolean,
     category: AccountFeeCategory,
@@ -2106,11 +2100,11 @@ export const AccountFee = /*@__PURE__*/ S.suspend(() =>
 
 /** `custom` when a row is set at this level, `default` when the rate falls through to the platform default or zero. */
 export type AccountFeeMarkupSource = "default" | "custom";
-export const AccountFeeMarkupSource = S.String;
+const AccountFeeMarkupSource = S.String;
 
 /** Why the caller may not change this markup, or `null` when `adjustable`. */
 export type AccountFeeMarkupUnadjustableReason = "not_permitted";
-export const AccountFeeMarkupUnadjustableReason = S.String;
+const AccountFeeMarkupUnadjustableReason = S.String;
 
 export interface AccountFeeMarkup {
   /** Whether the caller may change this markup through `PATCH`. True for the platform's team holding the `company:update_child_fees` scope. */
@@ -2128,7 +2122,7 @@ export interface AccountFeeMarkup {
   /** Why the caller may not change this markup, or `null` when `adjustable`. */
   unadjustable_reason: AccountFeeMarkupUnadjustableReason | null;
 }
-export const AccountFeeMarkup = /*@__PURE__*/ S.suspend(() =>
+const AccountFeeMarkup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     adjustable: S.Boolean,
     default: AccountFeeRate,
@@ -2142,14 +2136,14 @@ export const AccountFeeMarkup = /*@__PURE__*/ S.suspend(() =>
 
 /** Markups on deposits into the account's balance, keyed by rail: `bank` and `crypto`. */
 export type AccountFeeMarkupsDepositsMap = { [key: string]: AccountFeeMarkup | undefined };
-export const AccountFeeMarkupsDepositsMap = /*@__PURE__*/ S.Record(
+const AccountFeeMarkupsDepositsMap = /*@__PURE__*/ S.Record(
   S.String,
   AccountFeeMarkup,
 ) as any as S.Schema<AccountFeeMarkupsDepositsMap>;
 
 /** Markups on withdrawals, keyed by payout method: `bank_wire`, `next_day_bank`, `rtp`, `crypto`, and `digital_wallet`. */
 export type AccountFeeMarkupsPayoutsMap = { [key: string]: AccountFeeMarkup | undefined };
-export const AccountFeeMarkupsPayoutsMap =
+const AccountFeeMarkupsPayoutsMap =
   AccountFeeMarkupsDepositsMap as any as S.Schema<AccountFeeMarkupsPayoutsMap>;
 
 export interface AccountFeeMarkups {
@@ -2166,7 +2160,7 @@ export interface AccountFeeMarkups {
   /** The markup on transfers between Whop balances. */
   transfers: AccountFeeMarkup;
 }
-export const AccountFeeMarkups = /*@__PURE__*/ S.suspend(() =>
+const AccountFeeMarkups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_spend: AccountFeeMarkup,
     crypto_swaps: AccountFeeMarkup,
@@ -2191,7 +2185,7 @@ export interface AccountCoveredPayoutFees {
   /** Whether this account covers its connected accounts' real-time payment payout fees. Individual changes have no effect while `all` is true. */
   rtp: boolean;
 }
-export const AccountCoveredPayoutFees = /*@__PURE__*/ S.suspend(() =>
+const AccountCoveredPayoutFees = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.Boolean,
     bank_wire: S.Boolean,
@@ -2204,14 +2198,14 @@ export const AccountCoveredPayoutFees = /*@__PURE__*/ S.suspend(() =>
 
 /** Processing fees for every non-card payment method the platform prices, keyed by payment method type such as `us_bank_account` or `klarna`. */
 export type AccountFeesPaymentMethodsMap = { [key: string]: AccountFee | undefined };
-export const AccountFeesPaymentMethodsMap = /*@__PURE__*/ S.Record(
+const AccountFeesPaymentMethodsMap = /*@__PURE__*/ S.Record(
   S.String,
   AccountFee,
 ) as any as S.Schema<AccountFeesPaymentMethodsMap>;
 
 /** Fees on withdrawals, keyed by payout method: `bank_wire`, `same_day_bank`, `next_day_bank`, `rtp`, `crypto`, and `digital_wallet`. */
 export type AccountFeesPayoutsMap = { [key: string]: AccountFee | undefined };
-export const AccountFeesPayoutsMap =
+const AccountFeesPayoutsMap =
   AccountFeesPaymentMethodsMap as any as S.Schema<AccountFeesPayoutsMap>;
 
 export interface AccountFees {
@@ -2278,7 +2272,7 @@ export interface AccountFees {
   /** Charged on transfers from the account's balance to another Whop balance. */
   transfers: AccountFee;
 }
-export const AccountFees = /*@__PURE__*/ S.suspend(() =>
+const AccountFees = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     bank_deposit: AccountFee,
@@ -2318,7 +2312,7 @@ export interface GetAccountPreferencesRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
 }
-export const GetAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/preferences", code: 200 })),
@@ -2331,7 +2325,7 @@ export type GetAccountPreferencesResponseAdsAgreementStatus =
   | "not_required"
   | "pending_signature"
   | "signed";
-export const GetAccountPreferencesResponseAdsAgreementStatus = S.String;
+const GetAccountPreferencesResponseAdsAgreementStatus = S.String;
 
 /** The account's Whop Ads services and payment authorization agreement. While `pending_signature`, campaign launch is blocked; sign by answering `requested_information` via `PATCH /verifications/{id}`. */
 export interface GetAccountPreferencesResponseAdsAgreement {
@@ -2344,7 +2338,7 @@ export interface GetAccountPreferencesResponseAdsAgreement {
   /** Where the account's ads services agreement stands. */
   status: GetAccountPreferencesResponseAdsAgreementStatus;
 }
-export const GetAccountPreferencesResponseAdsAgreement = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponseAdsAgreement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepted_at: S.NullOr(S.String),
     agreement_version: S.NullOr(S.String),
@@ -2357,7 +2351,7 @@ export const GetAccountPreferencesResponseAdsAgreement = /*@__PURE__*/ S.suspend
 
 /** Countries every approved application of this type covers, as ISO 3166-1 alpha-2 codes. Ads targeting only these countries are exempt from the category's restrictions. */
 export type GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList = Array<string>;
-export const GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
+const GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList>;
@@ -2367,16 +2361,16 @@ export type GetAccountPreferencesResponseAdsCertificationsItemBusinessType =
   | "online_pharmacy"
   | "pharmaceutical_manufacturer"
   | "telehealth_provider";
-export const GetAccountPreferencesResponseAdsCertificationsItemBusinessType = S.String;
+const GetAccountPreferencesResponseAdsCertificationsItemBusinessType = S.String;
 
 /** The certification this entry describes. */
 export type GetAccountPreferencesResponseAdsCertificationsItemCertificationType =
   "prescription_drug_ads";
-export const GetAccountPreferencesResponseAdsCertificationsItemCertificationType = S.String;
+const GetAccountPreferencesResponseAdsCertificationsItemCertificationType = S.String;
 
 /** Countries the latest application covers, as ISO 3166-1 alpha-2 codes. */
 export type GetAccountPreferencesResponseAdsCertificationsItemCountriesList = Array<string>;
-export const GetAccountPreferencesResponseAdsCertificationsItemCountriesList =
+const GetAccountPreferencesResponseAdsCertificationsItemCountriesList =
   GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<GetAccountPreferencesResponseAdsCertificationsItemCountriesList>;
 
 /** `not_started` until the account applies; `pending_information` while an application waits for answers; `in_review` once submitted; then `approved` or `denied`. */
@@ -2386,7 +2380,7 @@ export type GetAccountPreferencesResponseAdsCertificationsItemStatus =
   | "in_review"
   | "approved"
   | "denied";
-export const GetAccountPreferencesResponseAdsCertificationsItemStatus = S.String;
+const GetAccountPreferencesResponseAdsCertificationsItemStatus = S.String;
 
 export interface GetAccountPreferencesResponseAdsCertificationsItem {
   /** Countries every approved application of this type covers, as ISO 3166-1 alpha-2 codes. Ads targeting only these countries are exempt from the category's restrictions. */
@@ -2408,7 +2402,7 @@ export interface GetAccountPreferencesResponseAdsCertificationsItem {
   /** The website on the latest application. */
   url: string | null;
 }
-export const GetAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approved_countries: GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList,
     business_name: S.NullOr(S.String),
@@ -2427,13 +2421,13 @@ export const GetAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__*/ 
 /** The account's advertising certifications, one entry per certification type Whop offers. Start an application by setting a type's `status` to `pending_information` via `PATCH`, then answer the fields it requests via `GET`/`PATCH /verifications/{id}`. */
 export type GetAccountPreferencesResponseAdsCertificationsList =
   Array<GetAccountPreferencesResponseAdsCertificationsItem>;
-export const GetAccountPreferencesResponseAdsCertificationsList = /*@__PURE__*/ S.Array(
+const GetAccountPreferencesResponseAdsCertificationsList = /*@__PURE__*/ S.Array(
   GetAccountPreferencesResponseAdsCertificationsItem,
 ) as any as S.Schema<GetAccountPreferencesResponseAdsCertificationsList>;
 
 /** The funding source kind: a Whop balance or a saved card. */
 export type GetAccountPreferencesResponseAdsPaymentMethodsBackupType = "platform_balance" | "card";
-export const GetAccountPreferencesResponseAdsPaymentMethodsBackupType = S.String;
+const GetAccountPreferencesResponseAdsPaymentMethodsBackupType = S.String;
 
 export interface GetAccountPreferencesResponseAdsPaymentMethodsBackup {
   /** Card brand, present for `card` entries. */
@@ -2453,7 +2447,7 @@ export interface GetAccountPreferencesResponseAdsPaymentMethodsBackup {
   /** The funding source kind: a Whop balance or a saved card. */
   type: GetAccountPreferencesResponseAdsPaymentMethodsBackupType;
 }
-export const GetAccountPreferencesResponseAdsPaymentMethodsBackup = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponseAdsPaymentMethodsBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_brand: S.optional(S.NullOr(S.String)),
     exp_month: S.optional(S.NullOr(S.Number)),
@@ -2470,8 +2464,6 @@ export const GetAccountPreferencesResponseAdsPaymentMethodsBackup = /*@__PURE__*
 
 /** The funding source kind: a Whop balance or a saved card. */
 export type GetAccountPreferencesResponseAdsPaymentMethodsPrimaryType = "platform_balance" | "card";
-export const GetAccountPreferencesResponseAdsPaymentMethodsPrimaryType = S.String;
-
 export interface GetAccountPreferencesResponseAdsPaymentMethodsPrimary {
   /** Card brand, present for `card` entries. */
   card_brand?: string | null;
@@ -2490,7 +2482,7 @@ export interface GetAccountPreferencesResponseAdsPaymentMethodsPrimary {
   /** The funding source kind: a Whop balance or a saved card. */
   type: GetAccountPreferencesResponseAdsPaymentMethodsPrimaryType;
 }
-export const GetAccountPreferencesResponseAdsPaymentMethodsPrimary =
+const GetAccountPreferencesResponseAdsPaymentMethodsPrimary =
   GetAccountPreferencesResponseAdsPaymentMethodsBackup as any as S.Schema<GetAccountPreferencesResponseAdsPaymentMethodsPrimary>;
 
 /** How the account pays for Whop Ads spend. `primary` is charged first; `backup` covers the charge when the primary fails. `null` until ads billing has been configured. */
@@ -2498,7 +2490,7 @@ export interface GetAccountPreferencesResponseAdsPaymentMethods {
   backup: GetAccountPreferencesResponseAdsPaymentMethodsBackup | null;
   primary: GetAccountPreferencesResponseAdsPaymentMethodsPrimary | null;
 }
-export const GetAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.NullOr(GetAccountPreferencesResponseAdsPaymentMethodsBackup),
     primary: S.NullOr(GetAccountPreferencesResponseAdsPaymentMethodsPrimary),
@@ -2512,7 +2504,7 @@ export type GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus =
   | "connected"
   | "not_connected"
   | "requires_shop_domain";
-export const GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
+const GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
 
 /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
 export interface GetAccountPreferencesResponseAdsTripleWhaleIntegration {
@@ -2523,7 +2515,7 @@ export interface GetAccountPreferencesResponseAdsTripleWhaleIntegration {
   /** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
   status: GetAccountPreferencesResponseAdsTripleWhaleIntegrationStatus;
 }
-export const GetAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     masked_api_key: S.NullOr(S.String),
     shop_domain: S.NullOr(S.String),
@@ -2537,14 +2529,14 @@ export const GetAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE_
 export type GetAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit =
   | "hours"
   | "days";
-export const GetAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit = S.String;
+const GetAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit = S.String;
 
 /** The unique identifier for this duration. Pass this value as `economic_intelligence_duration_key` to turn it on. */
 export type GetAccountPreferencesResponseEconomicIntelligenceOffersItemKey =
   | "7_days"
   | "1_day"
   | "1_hour";
-export const GetAccountPreferencesResponseEconomicIntelligenceOffersItemKey = S.String;
+const GetAccountPreferencesResponseEconomicIntelligenceOffersItemKey = S.String;
 
 export interface GetAccountPreferencesResponseEconomicIntelligenceOffersItem {
   /** What period of time Economic Intelligence stays on. */
@@ -2558,15 +2550,14 @@ export interface GetAccountPreferencesResponseEconomicIntelligenceOffersItem {
   /** Whether Whop recommends this duration. Exactly one offer is recommended. */
   recommended: boolean;
 }
-export const GetAccountPreferencesResponseEconomicIntelligenceOffersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      duration: S.Number,
-      duration_unit: GetAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit,
-      fee_percentage: S.Number,
-      key: GetAccountPreferencesResponseEconomicIntelligenceOffersItemKey,
-      recommended: S.Boolean,
-    }),
+const GetAccountPreferencesResponseEconomicIntelligenceOffersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.Number,
+    duration_unit: GetAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit,
+    fee_percentage: S.Number,
+    key: GetAccountPreferencesResponseEconomicIntelligenceOffersItemKey,
+    recommended: S.Boolean,
+  }),
 ).annotate({
   identifier: "GetAccountPreferencesResponseEconomicIntelligenceOffersItem",
 }) as any as S.Schema<GetAccountPreferencesResponseEconomicIntelligenceOffersItem>;
@@ -2574,13 +2565,13 @@ export const GetAccountPreferencesResponseEconomicIntelligenceOffersItem = /*@__
 /** Durations the account can choose from to turn on Economic Intelligence, each with its fee. `null` while Economic Intelligence is on or the account is still on the Economic Intelligence waitlist. */
 export type GetAccountPreferencesResponseEconomicIntelligenceOffersList =
   Array<GetAccountPreferencesResponseEconomicIntelligenceOffersItem>;
-export const GetAccountPreferencesResponseEconomicIntelligenceOffersList = /*@__PURE__*/ S.Array(
+const GetAccountPreferencesResponseEconomicIntelligenceOffersList = /*@__PURE__*/ S.Array(
   GetAccountPreferencesResponseEconomicIntelligenceOffersItem,
 ) as any as S.Schema<GetAccountPreferencesResponseEconomicIntelligenceOffersList>;
 
 /** What happens to a subscription once every retry of a renewal payment has failed. `cancel` (the default) cancels it. `none` leaves it past due and keeps billing it each period; access follows the account's past-due access setting. */
 export type GetAccountPreferencesResponseSubscriptionFailureBehavior = "cancel" | "none";
-export const GetAccountPreferencesResponseSubscriptionFailureBehavior = S.String;
+const GetAccountPreferencesResponseSubscriptionFailureBehavior = S.String;
 
 export interface GetAccountPreferencesResponse {
   /** The account's Whop Ads services and payment authorization agreement. While `pending_signature`, campaign launch is blocked; sign by answering `requested_information` via `PATCH /verifications/{id}`. */
@@ -2612,7 +2603,7 @@ export interface GetAccountPreferencesResponse {
   /** What happens to a subscription once every retry of a renewal payment has failed. `cancel` (the default) cancels it. `none` leaves it past due and keeps billing it each period; access follows the account's past-due access setting. */
   subscription_failure_behavior: GetAccountPreferencesResponseSubscriptionFailureBehavior;
 }
-export const GetAccountPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAccountPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ads_agreement: GetAccountPreferencesResponseAdsAgreement,
     ads_certifications: GetAccountPreferencesResponseAdsCertificationsList,
@@ -2639,7 +2630,7 @@ export interface ListAccountReservesRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
 }
-export const ListAccountReservesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountReservesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/reserves", code: 200 })),
@@ -2654,7 +2645,7 @@ export type AccountReserveTypeType =
   | "sequra"
   | "fraud_hold"
   | "preshipment_hold";
-export const AccountReserveTypeType = S.String;
+const AccountReserveTypeType = S.String;
 
 export interface AccountReserveType {
   /** Amount held for this reason, in native units, as a decimal string. */
@@ -2666,7 +2657,7 @@ export interface AccountReserveType {
   /** Why this part of the balance is held. `regular` is the account's standing risk reserve; `bnpl` and `sequra` cover buy-now-pay-later settlement; `preshipment_hold` covers a physical order that has not shipped yet; `fraud_hold` is held while activity is reviewed. */
   type: AccountReserveTypeType;
 }
-export const AccountReserveType = /*@__PURE__*/ S.suspend(() =>
+const AccountReserveType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     hold_period_days: S.NullOr(S.Number),
@@ -2676,7 +2667,7 @@ export const AccountReserveType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountReserveType" }) as any as S.Schema<AccountReserveType>;
 
 export type AccountReserveByTypeList = Array<AccountReserveType>;
-export const AccountReserveByTypeList = /*@__PURE__*/ S.Array(
+const AccountReserveByTypeList = /*@__PURE__*/ S.Array(
   AccountReserveType,
 ) as any as S.Schema<AccountReserveByTypeList>;
 
@@ -2686,11 +2677,8 @@ export interface AccountReserveUnlock {
   /** The day this money unlocks, as an ISO 8601 date. */
   date: string;
 }
-export const AccountReserveUnlock =
-  AccountBalanceSettlement as any as S.Schema<AccountReserveUnlock>;
-
 export type AccountReserveUnlocksByDateList = Array<AccountReserveUnlock>;
-export const AccountReserveUnlocksByDateList =
+const AccountReserveUnlocksByDateList =
   AccountBalanceBreakdownPendingSettlementsList as any as S.Schema<AccountReserveUnlocksByDateList>;
 
 export interface AccountReserve {
@@ -2701,7 +2689,7 @@ export interface AccountReserve {
   currency: string;
   unlocks_by_date: AccountReserveUnlocksByDateList;
 }
-export const AccountReserve = /*@__PURE__*/ S.suspend(() =>
+const AccountReserve = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     by_type: AccountReserveByTypeList,
@@ -2711,14 +2699,14 @@ export const AccountReserve = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountReserve" }) as any as S.Schema<AccountReserve>;
 
 export type ListAccountReservesResponseDataList = Array<AccountReserve>;
-export const ListAccountReservesResponseDataList = /*@__PURE__*/ S.Array(
+const ListAccountReservesResponseDataList = /*@__PURE__*/ S.Array(
   AccountReserve,
 ) as any as S.Schema<ListAccountReservesResponseDataList>;
 
 export interface ListAccountReservesResponse {
   data: ListAccountReservesResponseDataList;
 }
-export const ListAccountReservesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountReservesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAccountReservesResponseDataList,
   }),
@@ -2727,13 +2715,13 @@ export const ListAccountReservesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccountReservesResponse>;
 
 export type ListAccountsRequestOrder = "created_at" | "volume";
-export const ListAccountsRequestOrder = S.String;
+const ListAccountsRequestOrder = S.String;
 
 export type ListAccountsRequestDirection = "asc" | "desc";
-export const ListAccountsRequestDirection = S.String;
+const ListAccountsRequestDirection = S.String;
 
 export type ListAccountsRequestStatus = "active" | "suspended";
-export const ListAccountsRequestStatus = S.String;
+const ListAccountsRequestStatus = S.String;
 
 export interface ListAccountsRequest {
   /** Number of results to return from the start of the range. */
@@ -2763,7 +2751,7 @@ export interface ListAccountsRequest {
   /** For platforms: the parent account ID whose direct connected accounts to return. Requires `payout:account:read` on the parent account. */
   parent_account_id?: string;
 }
-export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     first: S.optional(S.Number.pipe(T.Query())),
     after: S.optional(S.String.pipe(T.Query())),
@@ -2782,7 +2770,7 @@ export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListAccountsRequest" }) as any as S.Schema<ListAccountsRequest>;
 
 export type ListAccountsResponseDataList = Array<Account>;
-export const ListAccountsResponseDataList = /*@__PURE__*/ S.Array(
+const ListAccountsResponseDataList = /*@__PURE__*/ S.Array(
   Account,
 ) as any as S.Schema<ListAccountsResponseDataList>;
 
@@ -2792,7 +2780,7 @@ export interface ListAccountsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListAccountsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -2807,7 +2795,7 @@ export interface ListAccountsResponse {
   data: ListAccountsResponseDataList;
   page_info: ListAccountsResponsePageInfo;
 }
-export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListAccountsResponseDataList,
     page_info: ListAccountsResponsePageInfo,
@@ -2820,7 +2808,7 @@ export interface RetryAccountAdsPaymentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const RetryAccountAdsPaymentRequest = /*@__PURE__*/ S.suspend(() =>
+const RetryAccountAdsPaymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -2835,7 +2823,7 @@ export interface RetryAccountAdsPaymentResponse {
   /** Whether the retry was accepted for background processing. */
   queued: boolean;
 }
-export const RetryAccountAdsPaymentResponse = /*@__PURE__*/ S.suspend(() =>
+const RetryAccountAdsPaymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String,
     queued: S.Boolean,
@@ -2850,7 +2838,7 @@ export interface SuspendAccountRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const SuspendAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -2869,7 +2857,7 @@ export interface TransferAccountOwnershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const TransferAccountOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferAccountOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     as_partner: S.optional(S.Boolean),
@@ -2884,7 +2872,7 @@ export const TransferAccountOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
 export interface TransferAccountOwnershipResponse {
   success: boolean;
 }
-export const TransferAccountOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+const TransferAccountOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
   }),
@@ -2897,7 +2885,7 @@ export interface UpdateAccountRequestBannerImage {
   /** ID of a file from [Create File](/api-reference/files/create-file), prefixed `file_`. */
   id?: string;
 }
-export const UpdateAccountRequestBannerImage = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequestBannerImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
@@ -2920,7 +2908,7 @@ export interface UpdateAccountRequestBusinessAddress {
   /** State, province, or region code, for example `CA`. */
   state?: string | null;
 }
-export const UpdateAccountRequestBusinessAddress = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequestBusinessAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     city: S.optional(S.NullOr(S.String)),
     country: S.optional(S.String),
@@ -2935,62 +2923,46 @@ export const UpdateAccountRequestBusinessAddress = /*@__PURE__*/ S.suspend(() =>
 
 /** The account's cancellation policy document. Attached to new disputes as the cancellation policy evidence, with the terms of service as the fallback. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestCancellationPolicy = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestCancellationPolicy = UpdateAccountRequestBannerImage;
-
 /** The account's end-user license agreement document. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestEula = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestEula = UpdateAccountRequestBannerImage;
-
 export type UpdateAccountRequestHomePreferencesItem = "hide_member_count" | "hide_members_card";
-export const UpdateAccountRequestHomePreferencesItem = S.String;
-
 /** Public account home page preferences. */
 export type UpdateAccountRequestHomePreferencesList = Array<
   UpdateAccountRequestHomePreferencesItem | (string & {})
 >;
-export const UpdateAccountRequestHomePreferencesList =
+const UpdateAccountRequestHomePreferencesList =
   AccountHomePreferencesList as any as S.Schema<UpdateAccountRequestHomePreferencesList>;
 
 /** Account logo, used as the profile picture when creating a Whop-managed Facebook page. Image files up to 5 MB. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file). */
 export type UpdateAccountRequestLogo = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestLogo = UpdateAccountRequestBannerImage;
-
 /** Arbitrary key/value metadata to store on the account. */
 export type UpdateAccountRequestMetadataMap = { [key: string]: unknown | undefined };
-export const UpdateAccountRequestMetadataMap =
+const UpdateAccountRequestMetadataMap =
   CreateAccountRequestMetadataMap as any as S.Schema<UpdateAccountRequestMetadataMap>;
 
 /** The type of onboarding the account has completed. */
 export type UpdateAccountRequestOnboardingType = "platform" | "seller";
-export const UpdateAccountRequestOnboardingType = S.String;
+const UpdateAccountRequestOnboardingType = S.String;
 
 /** Open Graph preview media used when the account is shared. Image and video files up to 5 MB. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file). */
 export type UpdateAccountRequestOpengraphImage = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestOpengraphImage = UpdateAccountRequestBannerImage;
-
 /** The account Open Graph image variant. */
 export type UpdateAccountRequestOpengraphImageVariant = "white" | "black" | "orange";
-export const UpdateAccountRequestOpengraphImageVariant = S.String;
+const UpdateAccountRequestOpengraphImageVariant = S.String;
 
 /** The account's privacy policy document. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestPrivacyPolicy = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestPrivacyPolicy = UpdateAccountRequestBannerImage;
-
 /** The account's return and refund policy document. Attached to new disputes as the refund policy evidence, with the terms of service as the fallback. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestReturnPolicy = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestReturnPolicy = UpdateAccountRequestBannerImage;
-
 /** The account's shipping policy document. Sent with physical-goods dispute evidence. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestShippingPolicy = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestShippingPolicy = UpdateAccountRequestBannerImage;
-
 export type UpdateAccountRequestSocialLinksItemMap = { [key: string]: unknown | undefined };
-export const UpdateAccountRequestSocialLinksItemMap =
+const UpdateAccountRequestSocialLinksItemMap =
   CreateAccountRequestMetadataMap as any as S.Schema<UpdateAccountRequestSocialLinksItemMap>;
 
 /** The full list of social links to display for the account. */
 export type UpdateAccountRequestSocialLinksList = Array<UpdateAccountRequestSocialLinksItemMap>;
-export const UpdateAccountRequestSocialLinksList = /*@__PURE__*/ S.Array(
+const UpdateAccountRequestSocialLinksList = /*@__PURE__*/ S.Array(
   UpdateAccountRequestSocialLinksItemMap,
 ) as any as S.Schema<UpdateAccountRequestSocialLinksList>;
 
@@ -3024,15 +2996,15 @@ export type UpdateAccountRequestStorePageConfigAccentColor =
   | "gold"
   | "bronze"
   | "gray";
-export const UpdateAccountRequestStorePageConfigAccentColor = S.String;
+const UpdateAccountRequestStorePageConfigAccentColor = S.String;
 
 /** Layout used on the account store page. */
 export type UpdateAccountRequestStorePageConfigLayout = "featured" | "compact";
-export const UpdateAccountRequestStorePageConfigLayout = S.String;
+const UpdateAccountRequestStorePageConfigLayout = S.String;
 
 /** Profile presentation used on the account store page. */
 export type UpdateAccountRequestStorePageConfigProfileVariant = "personal" | "business";
-export const UpdateAccountRequestStorePageConfigProfileVariant = S.String;
+const UpdateAccountRequestStorePageConfigProfileVariant = S.String;
 
 /** Account store page display configuration. */
 export interface UpdateAccountRequestStorePageConfig {
@@ -3045,7 +3017,7 @@ export interface UpdateAccountRequestStorePageConfig {
   /** Whether the account store page shows a Whop affiliate link. */
   whop_affiliate_link?: boolean;
 }
-export const UpdateAccountRequestStorePageConfig = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequestStorePageConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accent_color: S.optional(S.NullOr(UpdateAccountRequestStorePageConfigAccentColor)),
     layout: S.optional(S.NullOr(UpdateAccountRequestStorePageConfigLayout)),
@@ -3108,13 +3080,11 @@ export type UpdateAccountRequestTaxCollectionEnabledStatesItem =
   | "WV"
   | "WI"
   | "WY";
-export const UpdateAccountRequestTaxCollectionEnabledStatesItem = S.String;
-
 /** US state codes (50 states plus `DC`) where the account collects tax. Replaces the full set on update. Only settable when `tax_remitted_by` is `self`. */
 export type UpdateAccountRequestTaxCollectionEnabledStatesList = Array<
   UpdateAccountRequestTaxCollectionEnabledStatesItem | (string & {})
 >;
-export const UpdateAccountRequestTaxCollectionEnabledStatesList =
+const UpdateAccountRequestTaxCollectionEnabledStatesList =
   AccountHomePreferencesList as any as S.Schema<UpdateAccountRequestTaxCollectionEnabledStatesList>;
 
 /** Tax ID type, for example `eu_vat`, `gb_vat`, or `us_ein`. */
@@ -3230,7 +3200,7 @@ export type UpdateAccountRequestTaxIdentifiersItemTaxIdType =
   | "zm_tin"
   | "zw_tin"
   | "sr_fin";
-export const UpdateAccountRequestTaxIdentifiersItemTaxIdType = S.String;
+const UpdateAccountRequestTaxIdentifiersItemTaxIdType = S.String;
 
 export interface UpdateAccountRequestTaxIdentifiersItem {
   /** Tax ID type, for example `eu_vat`, `gb_vat`, or `us_ein`. */
@@ -3238,7 +3208,7 @@ export interface UpdateAccountRequestTaxIdentifiersItem {
   /** Tax ID value, for example `DE123456789`. */
   tax_id_value: string;
 }
-export const UpdateAccountRequestTaxIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequestTaxIdentifiersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tax_id_type: UpdateAccountRequestTaxIdentifiersItemTaxIdType,
     tax_id_value: S.String,
@@ -3249,28 +3219,26 @@ export const UpdateAccountRequestTaxIdentifiersItem = /*@__PURE__*/ S.suspend(()
 
 /** Account tax/VAT registrations to add or update. When `tax_remitted_by` is `self`, tax is calculated and collected only in the countries where the account holds a registration. */
 export type UpdateAccountRequestTaxIdentifiersList = Array<UpdateAccountRequestTaxIdentifiersItem>;
-export const UpdateAccountRequestTaxIdentifiersList = /*@__PURE__*/ S.Array(
+const UpdateAccountRequestTaxIdentifiersList = /*@__PURE__*/ S.Array(
   UpdateAccountRequestTaxIdentifiersItem,
 ) as any as S.Schema<UpdateAccountRequestTaxIdentifiersList>;
 
 /** Determines whether Whop or the account calculates and remits tax. The account must provide a supported-country business address when it self-remits. */
 export type UpdateAccountRequestTaxRemittedBy = "whop" | "self" | "none";
-export const UpdateAccountRequestTaxRemittedBy = S.String;
+const UpdateAccountRequestTaxRemittedBy = S.String;
 
 /** Determines whether tax is included in the listed price or added at checkout. */
 export type UpdateAccountRequestTaxType = "inclusive" | "exclusive";
-export const UpdateAccountRequestTaxType = S.String;
+const UpdateAccountRequestTaxType = S.String;
 
 /** The account's terms of service document. Attached to new disputes as the cancellation policy evidence when no cancellation policy is set. PDF only. Pass a JSON object containing an `id` from [Create File](/api-reference/files/create-file), or `null` to remove it. */
 export type UpdateAccountRequestTermsOfService = UpdateAccountRequestBannerImage;
-export const UpdateAccountRequestTermsOfService = UpdateAccountRequestBannerImage;
-
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` uses the standard checkout flow. */
 export type UpdateAccountRequestThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-export const UpdateAccountRequestThreeDsLevel = S.String;
+const UpdateAccountRequestThreeDsLevel = S.String;
 
 export interface UpdateAccountRequest {
   /** Account ID, prefixed `biz_`. */
@@ -3370,7 +3338,7 @@ export interface UpdateAccountRequest {
   /** The account's business website, as an `http` or `https` URL of at most 255 characters. Also added to the account's `social_links` as a `website` entry. Pass `null` to clear the website; existing social links are left unchanged. */
   website?: string | null;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     affiliate_application_required: S.optional(S.Boolean),
@@ -3429,7 +3397,7 @@ export interface UpdateAccountFeesRequestBankDepositRegionsValue {
   /** The new percentage, where `2` means 2%. `null` clears the custom rate so the fee returns to its default or inherited rate. */
   percentage?: number | null;
 }
-export const UpdateAccountFeesRequestBankDepositRegionsValue = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequestBankDepositRegionsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed: S.optional(S.NullOr(S.Number)),
     percentage: S.optional(S.NullOr(S.Number)),
@@ -3442,7 +3410,7 @@ export const UpdateAccountFeesRequestBankDepositRegionsValue = /*@__PURE__*/ S.s
 export type UpdateAccountFeesRequestBankDepositRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestBankDepositRegionsMap = /*@__PURE__*/ S.Record(
+const UpdateAccountFeesRequestBankDepositRegionsMap = /*@__PURE__*/ S.Record(
   S.String,
   UpdateAccountFeesRequestBankDepositRegionsValue,
 ) as any as S.Schema<UpdateAccountFeesRequestBankDepositRegionsMap>;
@@ -3456,7 +3424,7 @@ export interface UpdateAccountFeesRequestBankDeposit {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestBankDepositRegionsMap;
 }
-export const UpdateAccountFeesRequestBankDeposit = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequestBankDeposit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed: S.optional(S.NullOr(S.Number)),
     percentage: S.optional(S.NullOr(S.Number)),
@@ -3468,16 +3436,10 @@ export const UpdateAccountFeesRequestBankDeposit = /*@__PURE__*/ S.suspend(() =>
 
 export type UpdateAccountFeesRequestBillingRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestBillingRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestBillingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestBillingRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestBillingRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestBilling {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3487,21 +3449,15 @@ export interface UpdateAccountFeesRequestBilling {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestBillingRegionsMap;
 }
-export const UpdateAccountFeesRequestBilling =
+const UpdateAccountFeesRequestBilling =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestBilling>;
 
 export type UpdateAccountFeesRequestBuyerRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestBuyerRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestBuyerRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestBuyerRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestBuyerRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestBuyer {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3511,21 +3467,15 @@ export interface UpdateAccountFeesRequestBuyer {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestBuyerRegionsMap;
 }
-export const UpdateAccountFeesRequestBuyer =
+const UpdateAccountFeesRequestBuyer =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestBuyer>;
 
 export type UpdateAccountFeesRequestCardProcessingRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestCardProcessingRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestCardProcessingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestCardProcessingRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestCardProcessingRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestCardProcessing {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3535,7 +3485,7 @@ export interface UpdateAccountFeesRequestCardProcessing {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestCardProcessingRegionsMap;
 }
-export const UpdateAccountFeesRequestCardProcessing =
+const UpdateAccountFeesRequestCardProcessing =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestCardProcessing>;
 
 /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
@@ -3545,7 +3495,7 @@ export interface UpdateAccountFeesRequestChildMarkupsCardSpend {
   /** The percentage of the transaction the platform adds, where `2` means 2%. */
   percentage?: number;
 }
-export const UpdateAccountFeesRequestChildMarkupsCardSpend = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequestChildMarkupsCardSpend = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed: S.optional(S.Number),
     percentage: S.optional(S.Number),
@@ -3557,20 +3507,14 @@ export const UpdateAccountFeesRequestChildMarkupsCardSpend = /*@__PURE__*/ S.sus
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsCryptoSwaps =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestChildMarkupsCryptoSwaps =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsDepositsValue =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestChildMarkupsDepositsValue =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Markups on deposits, keyed by rail: `bank` or `crypto`. */
 export type UpdateAccountFeesRequestChildMarkupsDepositsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestChildMarkupsDepositsMap = /*@__PURE__*/ S.Record(
+const UpdateAccountFeesRequestChildMarkupsDepositsMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend),
 ) as any as S.Schema<UpdateAccountFeesRequestChildMarkupsDepositsMap>;
@@ -3578,28 +3522,19 @@ export const UpdateAccountFeesRequestChildMarkupsDepositsMap = /*@__PURE__*/ S.R
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsPayments =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestChildMarkupsPayments =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsPayoutsValue =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestChildMarkupsPayoutsValue =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Markups on withdrawals, keyed by payout method. */
 export type UpdateAccountFeesRequestChildMarkupsPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestChildMarkupsPayoutsMap =
+const UpdateAccountFeesRequestChildMarkupsPayoutsMap =
   UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestChildMarkupsPayoutsMap>;
 
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestChildMarkupsTransfers =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestChildMarkupsTransfers =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Default markups for connected accounts. Available on accounts without a parent, even before any accounts connect. */
 export interface UpdateAccountFeesRequestChildMarkups {
   /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
@@ -3615,7 +3550,7 @@ export interface UpdateAccountFeesRequestChildMarkups {
   /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
   transfers?: UpdateAccountFeesRequestChildMarkupsCardSpend | null;
 }
-export const UpdateAccountFeesRequestChildMarkups = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequestChildMarkups = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     card_spend: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
     crypto_swaps: S.optional(S.NullOr(UpdateAccountFeesRequestChildMarkupsCardSpend)),
@@ -3637,7 +3572,7 @@ export interface UpdateAccountFeesRequestCoveredPayoutFees {
   next_day_bank?: boolean;
   rtp?: boolean;
 }
-export const UpdateAccountFeesRequestCoveredPayoutFees = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequestCoveredPayoutFees = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     all: S.optional(S.Boolean),
     bank_wire: S.optional(S.Boolean),
@@ -3652,16 +3587,10 @@ export const UpdateAccountFeesRequestCoveredPayoutFees = /*@__PURE__*/ S.suspend
 
 export type UpdateAccountFeesRequestCrossBorderRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestCrossBorderRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestCrossBorderRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestCrossBorderRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestCrossBorderRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestCrossBorder {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3671,21 +3600,15 @@ export interface UpdateAccountFeesRequestCrossBorder {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestCrossBorderRegionsMap;
 }
-export const UpdateAccountFeesRequestCrossBorder =
+const UpdateAccountFeesRequestCrossBorder =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestCrossBorder>;
 
 export type UpdateAccountFeesRequestDisputeRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDispute {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3695,21 +3618,15 @@ export interface UpdateAccountFeesRequestDispute {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeRegionsMap;
 }
-export const UpdateAccountFeesRequestDispute =
+const UpdateAccountFeesRequestDispute =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDispute>;
 
 export type UpdateAccountFeesRequestDisputeAlertRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeAlertRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeAlertRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlert {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3719,21 +3636,15 @@ export interface UpdateAccountFeesRequestDisputeAlert {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlert =
+const UpdateAccountFeesRequestDisputeAlert =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlert>;
 
 export type UpdateAccountFeesRequestDisputeAlertCdrnRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeAlertCdrnRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertCdrn {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3743,21 +3654,15 @@ export interface UpdateAccountFeesRequestDisputeAlertCdrn {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertCdrnRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertCdrn =
+const UpdateAccountFeesRequestDisputeAlertCdrn =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertCdrn>;
 
 export type UpdateAccountFeesRequestDisputeAlertEthocaRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeAlertEthocaRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertEthoca {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3767,21 +3672,15 @@ export interface UpdateAccountFeesRequestDisputeAlertEthoca {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertEthocaRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertEthoca =
+const UpdateAccountFeesRequestDisputeAlertEthoca =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertEthoca>;
 
 export type UpdateAccountFeesRequestDisputeAlertRdrRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeAlertRdrRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeAlertRdrRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeAlertRdrRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdrRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeAlertRdr {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3791,21 +3690,15 @@ export interface UpdateAccountFeesRequestDisputeAlertRdr {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeAlertRdrRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeAlertRdr =
+const UpdateAccountFeesRequestDisputeAlertRdr =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeAlertRdr>;
 
 export type UpdateAccountFeesRequestDisputeRepresentmentRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestDisputeRepresentmentRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestDisputeRepresentmentRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestDisputeRepresentmentRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentmentRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestDisputeRepresentment {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3815,21 +3708,15 @@ export interface UpdateAccountFeesRequestDisputeRepresentment {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestDisputeRepresentmentRegionsMap;
 }
-export const UpdateAccountFeesRequestDisputeRepresentment =
+const UpdateAccountFeesRequestDisputeRepresentment =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestDisputeRepresentment>;
 
 export type UpdateAccountFeesRequestForeignExchangeRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestForeignExchangeRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestForeignExchangeRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestForeignExchangeRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestForeignExchangeRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestForeignExchange {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3839,21 +3726,15 @@ export interface UpdateAccountFeesRequestForeignExchange {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestForeignExchangeRegionsMap;
 }
-export const UpdateAccountFeesRequestForeignExchange =
+const UpdateAccountFeesRequestForeignExchange =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestForeignExchange>;
 
 export type UpdateAccountFeesRequestFraudScreeningRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestFraudScreeningRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestFraudScreeningRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestFraudScreeningRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestFraudScreeningRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestFraudScreening {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3863,21 +3744,15 @@ export interface UpdateAccountFeesRequestFraudScreening {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestFraudScreeningRegionsMap;
 }
-export const UpdateAccountFeesRequestFraudScreening =
+const UpdateAccountFeesRequestFraudScreening =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestFraudScreening>;
 
 export type UpdateAccountFeesRequestHighRiskRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestHighRiskRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestHighRiskRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestHighRiskRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestHighRiskRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestHighRisk {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3887,21 +3762,15 @@ export interface UpdateAccountFeesRequestHighRisk {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestHighRiskRegionsMap;
 }
-export const UpdateAccountFeesRequestHighRisk =
+const UpdateAccountFeesRequestHighRisk =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestHighRisk>;
 
 export type UpdateAccountFeesRequestMarketplaceRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestMarketplaceRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestMarketplaceRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestMarketplaceRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestMarketplaceRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestMarketplace {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -3911,58 +3780,34 @@ export interface UpdateAccountFeesRequestMarketplace {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestMarketplaceRegionsMap;
 }
-export const UpdateAccountFeesRequestMarketplace =
+const UpdateAccountFeesRequestMarketplace =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestMarketplace>;
 
 /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
 export type UpdateAccountFeesRequestMarkupsCardSpend =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsCardSpend =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsCryptoSwaps =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsCryptoSwaps =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsDepositsValue =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsDepositsValue =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Markups on deposits, keyed by rail: `bank` or `crypto`. */
 export type UpdateAccountFeesRequestMarkupsDepositsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestMarkupsDepositsMap =
-  UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestMarkupsDepositsMap>;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsPayments = UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsPayments =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsPayoutsValue =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsPayoutsValue =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Markups on withdrawals, keyed by payout method. */
 export type UpdateAccountFeesRequestMarkupsPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestChildMarkupsCardSpend | null | undefined;
 };
-export const UpdateAccountFeesRequestMarkupsPayoutsMap =
-  UpdateAccountFeesRequestChildMarkupsDepositsMap as any as S.Schema<UpdateAccountFeesRequestMarkupsPayoutsMap>;
-
 /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
 export type UpdateAccountFeesRequestMarkupsTransfers =
   UpdateAccountFeesRequestChildMarkupsCardSpend;
-export const UpdateAccountFeesRequestMarkupsTransfers =
-  UpdateAccountFeesRequestChildMarkupsCardSpend;
-
 /** Markups on this connected account, set by the platform it is connected to. */
 export interface UpdateAccountFeesRequestMarkups {
   /** The markup on card purchases settled by the connected account. `null` clears the custom markup. */
@@ -3978,21 +3823,15 @@ export interface UpdateAccountFeesRequestMarkups {
   /** The new markup. Fields left out keep their current value; `null` clears the row so the markup returns to its default. */
   transfers?: UpdateAccountFeesRequestChildMarkupsCardSpend | null;
 }
-export const UpdateAccountFeesRequestMarkups =
+const UpdateAccountFeesRequestMarkups =
   UpdateAccountFeesRequestChildMarkups as any as S.Schema<UpdateAccountFeesRequestMarkups>;
 
 export type UpdateAccountFeesRequestOrchestrationRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestOrchestrationRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestOrchestrationRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestOrchestrationRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestOrchestrationRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestOrchestration {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4002,21 +3841,15 @@ export interface UpdateAccountFeesRequestOrchestration {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestOrchestrationRegionsMap;
 }
-export const UpdateAccountFeesRequestOrchestration =
+const UpdateAccountFeesRequestOrchestration =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestOrchestration>;
 
 export type UpdateAccountFeesRequestPaymentMethodsValueRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestPaymentMethodsValueRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestPaymentMethodsValueRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPaymentMethodsValueRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValueRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPaymentMethodsValue {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4026,30 +3859,24 @@ export interface UpdateAccountFeesRequestPaymentMethodsValue {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPaymentMethodsValueRegionsMap;
 }
-export const UpdateAccountFeesRequestPaymentMethodsValue =
+const UpdateAccountFeesRequestPaymentMethodsValue =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsValue>;
 
 /** Changes to non-card payment method fees, keyed by payment method type. */
 export type UpdateAccountFeesRequestPaymentMethodsMap = {
   [key: string]: UpdateAccountFeesRequestPaymentMethodsValue | undefined;
 };
-export const UpdateAccountFeesRequestPaymentMethodsMap = /*@__PURE__*/ S.Record(
+const UpdateAccountFeesRequestPaymentMethodsMap = /*@__PURE__*/ S.Record(
   S.String,
   UpdateAccountFeesRequestPaymentMethodsValue,
 ) as any as S.Schema<UpdateAccountFeesRequestPaymentMethodsMap>;
 
 export type UpdateAccountFeesRequestPayoutsValueRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestPayoutsValueRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestPayoutsValueRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPayoutsValueRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPayoutsValueRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPayoutsValue {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4059,28 +3886,19 @@ export interface UpdateAccountFeesRequestPayoutsValue {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPayoutsValueRegionsMap;
 }
-export const UpdateAccountFeesRequestPayoutsValue =
-  UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPayoutsValue>;
-
 /** Changes to withdrawal fees, keyed by payout method. */
 export type UpdateAccountFeesRequestPayoutsMap = {
   [key: string]: UpdateAccountFeesRequestPayoutsValue | undefined;
 };
-export const UpdateAccountFeesRequestPayoutsMap =
+const UpdateAccountFeesRequestPayoutsMap =
   UpdateAccountFeesRequestPaymentMethodsMap as any as S.Schema<UpdateAccountFeesRequestPayoutsMap>;
 
 export type UpdateAccountFeesRequestPendingAutoTopupRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestPendingAutoTopupRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestPendingAutoTopupRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPendingAutoTopupRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopupRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPendingAutoTopup {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4090,21 +3908,15 @@ export interface UpdateAccountFeesRequestPendingAutoTopup {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPendingAutoTopupRegionsMap;
 }
-export const UpdateAccountFeesRequestPendingAutoTopup =
+const UpdateAccountFeesRequestPendingAutoTopup =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPendingAutoTopup>;
 
 export type UpdateAccountFeesRequestPlatformProcessingRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestPlatformProcessingRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestPlatformProcessingRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPlatformProcessingRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPlatformProcessingRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPlatformProcessing {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4114,21 +3926,15 @@ export interface UpdateAccountFeesRequestPlatformProcessing {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPlatformProcessingRegionsMap;
 }
-export const UpdateAccountFeesRequestPlatformProcessing =
+const UpdateAccountFeesRequestPlatformProcessing =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPlatformProcessing>;
 
 export type UpdateAccountFeesRequestPoolPayoutRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestPoolPayoutRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestPoolPayoutRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestPoolPayoutRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestPoolPayoutRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestPoolPayout {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4138,21 +3944,15 @@ export interface UpdateAccountFeesRequestPoolPayout {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestPoolPayoutRegionsMap;
 }
-export const UpdateAccountFeesRequestPoolPayout =
+const UpdateAccountFeesRequestPoolPayout =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestPoolPayout>;
 
 export type UpdateAccountFeesRequestRevshareRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestRevshareRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestRevshareRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestRevshareRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestRevshareRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestRevshare {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4162,21 +3962,15 @@ export interface UpdateAccountFeesRequestRevshare {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestRevshareRegionsMap;
 }
-export const UpdateAccountFeesRequestRevshare =
+const UpdateAccountFeesRequestRevshare =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestRevshare>;
 
 export type UpdateAccountFeesRequestTaxCalculationRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestTaxCalculationRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestTaxCalculationRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTaxCalculationRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTaxCalculationRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTaxCalculation {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4186,21 +3980,15 @@ export interface UpdateAccountFeesRequestTaxCalculation {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTaxCalculationRegionsMap;
 }
-export const UpdateAccountFeesRequestTaxCalculation =
+const UpdateAccountFeesRequestTaxCalculation =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTaxCalculation>;
 
 export type UpdateAccountFeesRequestTaxServiceRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestTaxServiceRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestTaxServiceRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTaxServiceRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTaxServiceRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTaxService {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4210,21 +3998,15 @@ export interface UpdateAccountFeesRequestTaxService {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTaxServiceRegionsMap;
 }
-export const UpdateAccountFeesRequestTaxService =
+const UpdateAccountFeesRequestTaxService =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTaxService>;
 
 export type UpdateAccountFeesRequestThreeDsRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestThreeDsRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestThreeDsRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestThreeDsRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestThreeDsRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestThreeDs {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4234,21 +4016,15 @@ export interface UpdateAccountFeesRequestThreeDs {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestThreeDsRegionsMap;
 }
-export const UpdateAccountFeesRequestThreeDs =
+const UpdateAccountFeesRequestThreeDs =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestThreeDs>;
 
 export type UpdateAccountFeesRequestTransfersRegionsValue =
   UpdateAccountFeesRequestBankDepositRegionsValue;
-export const UpdateAccountFeesRequestTransfersRegionsValue =
-  UpdateAccountFeesRequestBankDepositRegionsValue;
-
 /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
 export type UpdateAccountFeesRequestTransfersRegionsMap = {
   [key: string]: UpdateAccountFeesRequestBankDepositRegionsValue | undefined;
 };
-export const UpdateAccountFeesRequestTransfersRegionsMap =
-  UpdateAccountFeesRequestBankDepositRegionsMap as any as S.Schema<UpdateAccountFeesRequestTransfersRegionsMap>;
-
 /** The fields of a fee the caller may change. Only the keys sent are replaced. */
 export interface UpdateAccountFeesRequestTransfers {
   /** The new amount per event in US dollars. `null` clears the custom amount. */
@@ -4258,7 +4034,7 @@ export interface UpdateAccountFeesRequestTransfers {
   /** Changes for the other regions the fee varies by, keyed by region. Only accepted on a fee whose `regions` is non-empty. */
   regions?: UpdateAccountFeesRequestTransfersRegionsMap;
 }
-export const UpdateAccountFeesRequestTransfers =
+const UpdateAccountFeesRequestTransfers =
   UpdateAccountFeesRequestBankDeposit as any as S.Schema<UpdateAccountFeesRequestTransfers>;
 
 export interface UpdateAccountFeesRequest {
@@ -4325,7 +4101,7 @@ export interface UpdateAccountFeesRequest {
   /** The fields of a fee the caller may change. Only the keys sent are replaced. */
   transfers?: UpdateAccountFeesRequestTransfers;
 }
-export const UpdateAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     bank_deposit: S.optional(UpdateAccountFeesRequestBankDeposit),
@@ -4363,13 +4139,13 @@ export const UpdateAccountFeesRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Must be `pending_information`. */
 export type UpdateAccountPreferencesRequestAdsCertificationsValueStatus = "pending_information";
-export const UpdateAccountPreferencesRequestAdsCertificationsValueStatus = S.String;
+const UpdateAccountPreferencesRequestAdsCertificationsValueStatus = S.String;
 
 export interface UpdateAccountPreferencesRequestAdsCertificationsValue {
   /** Must be `pending_information`. */
   status: UpdateAccountPreferencesRequestAdsCertificationsValueStatus | (string & {});
 }
-export const UpdateAccountPreferencesRequestAdsCertificationsValue = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesRequestAdsCertificationsValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: UpdateAccountPreferencesRequestAdsCertificationsValueStatus,
   }),
@@ -4381,7 +4157,7 @@ export const UpdateAccountPreferencesRequestAdsCertificationsValue = /*@__PURE__
 export type UpdateAccountPreferencesRequestAdsCertificationsMap = {
   [key: string]: UpdateAccountPreferencesRequestAdsCertificationsValue | undefined;
 };
-export const UpdateAccountPreferencesRequestAdsCertificationsMap = /*@__PURE__*/ S.Record(
+const UpdateAccountPreferencesRequestAdsCertificationsMap = /*@__PURE__*/ S.Record(
   S.String,
   UpdateAccountPreferencesRequestAdsCertificationsValue,
 ) as any as S.Schema<UpdateAccountPreferencesRequestAdsCertificationsMap>;
@@ -4390,7 +4166,7 @@ export const UpdateAccountPreferencesRequestAdsCertificationsMap = /*@__PURE__*/
 export type UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType =
   | "platform_balance"
   | "card";
-export const UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType = S.String;
+const UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType = S.String;
 
 /** Optional second method charged if the primary fails. Any pairing is allowed (two cards, card+balance, balance+card); omit it to run on a single method. Must differ from the primary. */
 export interface UpdateAccountPreferencesRequestAdsPaymentMethodsBackup {
@@ -4399,7 +4175,7 @@ export interface UpdateAccountPreferencesRequestAdsPaymentMethodsBackup {
   /** The funding source kind. */
   type: UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType | (string & {});
 }
-export const UpdateAccountPreferencesRequestAdsPaymentMethodsBackup = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesRequestAdsPaymentMethodsBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     type: UpdateAccountPreferencesRequestAdsPaymentMethodsBackupType,
@@ -4412,15 +4188,13 @@ export const UpdateAccountPreferencesRequestAdsPaymentMethodsBackup = /*@__PURE_
 export type UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType =
   | "platform_balance"
   | "card";
-export const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType = S.String;
-
 export interface UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary {
   /** The funding source ID: a Whop balance (`ldgr_`) for `platform_balance`, or a payment method (`payt_`) for `card`. Optional for `platform_balance` -- defaults to the account's default Whop balance. Required for `card`. */
   id?: string;
   /** The funding source kind. */
   type: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimaryType | (string & {});
 }
-export const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary =
+const UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary =
   UpdateAccountPreferencesRequestAdsPaymentMethodsBackup as any as S.Schema<UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary>;
 
 /** How the account pays for Whop Ads spend. Requires `primary`; `backup` is optional and covers the charge when the primary fails. Requires the `ad_campaign:create` scope on your API key. Configuring a `card` requires a user token; account API keys can configure only `platform_balance` sources. */
@@ -4429,7 +4203,7 @@ export interface UpdateAccountPreferencesRequestAdsPaymentMethods {
   backup?: UpdateAccountPreferencesRequestAdsPaymentMethodsBackup;
   primary: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary;
 }
-export const UpdateAccountPreferencesRequestAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesRequestAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.optional(UpdateAccountPreferencesRequestAdsPaymentMethodsBackup),
     primary: UpdateAccountPreferencesRequestAdsPaymentMethodsPrimary,
@@ -4445,12 +4219,11 @@ export interface UpdateAccountPreferencesRequestAdsTripleWhaleIntegration {
   /** The exact shop domain configured in Triple Whale's Settings -> Store (for Shopify this is the `.myshopify.com` domain; for a custom sales platform it's whatever domain Triple Whale assigned when the shop was set up there). A leading `https://` and trailing `/` are stripped, and what remains must be a bare hostname with no path or spaces. Validated against Triple Whale -- the API key must have access to it -- before it is stored. Changing it on a connected integration backfills the account's ad spend onto the new shop. Omit to fall back to a connected Shopify store's domain; there is no way to clear a stored value, only to overwrite it with a new domain. */
   shop_domain?: string;
 }
-export const UpdateAccountPreferencesRequestAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-      shop_domain: S.optional(S.String),
-    }),
+const UpdateAccountPreferencesRequestAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
+    shop_domain: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "UpdateAccountPreferencesRequestAdsTripleWhaleIntegration",
 }) as any as S.Schema<UpdateAccountPreferencesRequestAdsTripleWhaleIntegration>;
@@ -4460,11 +4233,11 @@ export type UpdateAccountPreferencesRequestEconomicIntelligenceDurationKey =
   | "7_days"
   | "1_day"
   | "1_hour";
-export const UpdateAccountPreferencesRequestEconomicIntelligenceDurationKey = S.String;
+const UpdateAccountPreferencesRequestEconomicIntelligenceDurationKey = S.String;
 
 /** What happens to a subscription once every retry of a renewal payment has failed. `cancel` (the default) cancels it. `none` leaves it past due and keeps billing it each period; access follows the account's past-due access setting. Requires company:manage_checkout permission. */
 export type UpdateAccountPreferencesRequestSubscriptionFailureBehavior = "cancel" | "none";
-export const UpdateAccountPreferencesRequestSubscriptionFailureBehavior = S.String;
+const UpdateAccountPreferencesRequestSubscriptionFailureBehavior = S.String;
 
 export interface UpdateAccountPreferencesRequest {
   /** Account ID, prefixed `biz_`. */
@@ -4494,7 +4267,7 @@ export interface UpdateAccountPreferencesRequest {
     | UpdateAccountPreferencesRequestSubscriptionFailureBehavior
     | (string & {});
 }
-export const UpdateAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     ads_certifications: S.optional(UpdateAccountPreferencesRequestAdsCertificationsMap),
@@ -4523,8 +4296,6 @@ export type UpdateAccountPreferencesResponseAdsAgreementStatus =
   | "not_required"
   | "pending_signature"
   | "signed";
-export const UpdateAccountPreferencesResponseAdsAgreementStatus = S.String;
-
 /** The account's Whop Ads services and payment authorization agreement. While `pending_signature`, campaign launch is blocked; sign by answering `requested_information` via `PATCH /verifications/{id}`. */
 export interface UpdateAccountPreferencesResponseAdsAgreement {
   /** When the agreement was signed, as an ISO 8601 timestamp. `null` until signed. */
@@ -4536,13 +4307,13 @@ export interface UpdateAccountPreferencesResponseAdsAgreement {
   /** Where the account's ads services agreement stands. */
   status: UpdateAccountPreferencesResponseAdsAgreementStatus;
 }
-export const UpdateAccountPreferencesResponseAdsAgreement =
+const UpdateAccountPreferencesResponseAdsAgreement =
   GetAccountPreferencesResponseAdsAgreement as any as S.Schema<UpdateAccountPreferencesResponseAdsAgreement>;
 
 /** Countries every approved application of this type covers, as ISO 3166-1 alpha-2 codes. Ads targeting only these countries are exempt from the category's restrictions. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
   Array<string>;
-export const UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
+const UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList =
   GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList>;
 
 /** The kind of business on the latest application. `null` until the account applies. */
@@ -4550,16 +4321,16 @@ export type UpdateAccountPreferencesResponseAdsCertificationsItemBusinessType =
   | "online_pharmacy"
   | "pharmaceutical_manufacturer"
   | "telehealth_provider";
-export const UpdateAccountPreferencesResponseAdsCertificationsItemBusinessType = S.String;
+const UpdateAccountPreferencesResponseAdsCertificationsItemBusinessType = S.String;
 
 /** The certification this entry describes. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemCertificationType =
   "prescription_drug_ads";
-export const UpdateAccountPreferencesResponseAdsCertificationsItemCertificationType = S.String;
+const UpdateAccountPreferencesResponseAdsCertificationsItemCertificationType = S.String;
 
 /** Countries the latest application covers, as ISO 3166-1 alpha-2 codes. */
 export type UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList = Array<string>;
-export const UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList =
+const UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList =
   GetAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsItemCountriesList>;
 
 /** `not_started` until the account applies; `pending_information` while an application waits for answers; `in_review` once submitted; then `approved` or `denied`. */
@@ -4569,7 +4340,7 @@ export type UpdateAccountPreferencesResponseAdsCertificationsItemStatus =
   | "in_review"
   | "approved"
   | "denied";
-export const UpdateAccountPreferencesResponseAdsCertificationsItemStatus = S.String;
+const UpdateAccountPreferencesResponseAdsCertificationsItemStatus = S.String;
 
 export interface UpdateAccountPreferencesResponseAdsCertificationsItem {
   /** Countries every approved application of this type covers, as ISO 3166-1 alpha-2 codes. Ads targeting only these countries are exempt from the category's restrictions. */
@@ -4591,7 +4362,7 @@ export interface UpdateAccountPreferencesResponseAdsCertificationsItem {
   /** The website on the latest application. */
   url: string | null;
 }
-export const UpdateAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approved_countries: UpdateAccountPreferencesResponseAdsCertificationsItemApprovedCountriesList,
     business_name: S.NullOr(S.String),
@@ -4610,7 +4381,7 @@ export const UpdateAccountPreferencesResponseAdsCertificationsItem = /*@__PURE__
 /** The account's advertising certifications, one entry per certification type Whop offers. Start an application by setting a type's `status` to `pending_information` via `PATCH`, then answer the fields it requests via `GET`/`PATCH /verifications/{id}`. */
 export type UpdateAccountPreferencesResponseAdsCertificationsList =
   Array<UpdateAccountPreferencesResponseAdsCertificationsItem>;
-export const UpdateAccountPreferencesResponseAdsCertificationsList = /*@__PURE__*/ S.Array(
+const UpdateAccountPreferencesResponseAdsCertificationsList = /*@__PURE__*/ S.Array(
   UpdateAccountPreferencesResponseAdsCertificationsItem,
 ) as any as S.Schema<UpdateAccountPreferencesResponseAdsCertificationsList>;
 
@@ -4618,8 +4389,6 @@ export const UpdateAccountPreferencesResponseAdsCertificationsList = /*@__PURE__
 export type UpdateAccountPreferencesResponseAdsPaymentMethodsBackupType =
   | "platform_balance"
   | "card";
-export const UpdateAccountPreferencesResponseAdsPaymentMethodsBackupType = S.String;
-
 export interface UpdateAccountPreferencesResponseAdsPaymentMethodsBackup {
   /** Card brand, present for `card` entries. */
   card_brand?: string | null;
@@ -4638,14 +4407,14 @@ export interface UpdateAccountPreferencesResponseAdsPaymentMethodsBackup {
   /** The funding source kind: a Whop balance or a saved card. */
   type: UpdateAccountPreferencesResponseAdsPaymentMethodsBackupType;
 }
-export const UpdateAccountPreferencesResponseAdsPaymentMethodsBackup =
+const UpdateAccountPreferencesResponseAdsPaymentMethodsBackup =
   GetAccountPreferencesResponseAdsPaymentMethodsBackup as any as S.Schema<UpdateAccountPreferencesResponseAdsPaymentMethodsBackup>;
 
 /** The funding source kind: a Whop balance or a saved card. */
 export type UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType =
   | "platform_balance"
   | "card";
-export const UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType = S.String;
+const UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType = S.String;
 
 export interface UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary {
   /** Card brand, present for `card` entries. */
@@ -4665,18 +4434,17 @@ export interface UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary {
   /** The funding source kind: a Whop balance or a saved card. */
   type: UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType;
 }
-export const UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      card_brand: S.optional(S.NullOr(S.String)),
-      exp_month: S.optional(S.NullOr(S.Number)),
-      exp_year: S.optional(S.NullOr(S.Number)),
-      icon_url: S.optional(S.NullOr(S.String)),
-      id: S.String,
-      last4: S.optional(S.NullOr(S.String)),
-      title: S.optional(S.NullOr(S.String)),
-      type: UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType,
-    }),
+const UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    card_brand: S.optional(S.NullOr(S.String)),
+    exp_month: S.optional(S.NullOr(S.Number)),
+    exp_year: S.optional(S.NullOr(S.Number)),
+    icon_url: S.optional(S.NullOr(S.String)),
+    id: S.String,
+    last4: S.optional(S.NullOr(S.String)),
+    title: S.optional(S.NullOr(S.String)),
+    type: UpdateAccountPreferencesResponseAdsPaymentMethodsPrimaryType,
+  }),
 ).annotate({
   identifier: "UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary",
 }) as any as S.Schema<UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary>;
@@ -4686,7 +4454,7 @@ export interface UpdateAccountPreferencesResponseAdsPaymentMethods {
   backup: UpdateAccountPreferencesResponseAdsPaymentMethodsBackup | null;
   primary: UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary | null;
 }
-export const UpdateAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesResponseAdsPaymentMethods = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backup: S.NullOr(UpdateAccountPreferencesResponseAdsPaymentMethodsBackup),
     primary: S.NullOr(UpdateAccountPreferencesResponseAdsPaymentMethodsPrimary),
@@ -4700,7 +4468,7 @@ export type UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus =
   | "connected"
   | "not_connected"
   | "requires_shop_domain";
-export const UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
+const UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus = S.String;
 
 /** The account's Triple Whale integration, which pushes Whop ad spend to Triple Whale's Data-In API so it reports as a `whop` channel. Available to any Triple Whale customer -- Shopify, WooCommerce, a custom checkout, or no connected store -- by setting `shop_domain` explicitly; Shopify merchants may instead rely on a connected store's domain. Requires the `ad_campaign:create` scope. Once connected, ad click-through URLs Whop serves carry `tw_source=whop` and `tw_adid=<ad id>` query parameters so Triple Whale's pixel attributes conversions back to the originating ad -- no destination URL changes are needed. */
 export interface UpdateAccountPreferencesResponseAdsTripleWhaleIntegration {
@@ -4711,13 +4479,12 @@ export interface UpdateAccountPreferencesResponseAdsTripleWhaleIntegration {
   /** Where the integration stands. `requires_shop_domain` means no shop domain is configured -- set `shop_domain` explicitly, or connect a Shopify store, before spend can be reported. */
   status: UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus;
 }
-export const UpdateAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      masked_api_key: S.NullOr(S.String),
-      shop_domain: S.NullOr(S.String),
-      status: UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus,
-    }),
+const UpdateAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    masked_api_key: S.NullOr(S.String),
+    shop_domain: S.NullOr(S.String),
+    status: UpdateAccountPreferencesResponseAdsTripleWhaleIntegrationStatus,
+  }),
 ).annotate({
   identifier: "UpdateAccountPreferencesResponseAdsTripleWhaleIntegration",
 }) as any as S.Schema<UpdateAccountPreferencesResponseAdsTripleWhaleIntegration>;
@@ -4726,14 +4493,14 @@ export const UpdateAccountPreferencesResponseAdsTripleWhaleIntegration = /*@__PU
 export type UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit =
   | "hours"
   | "days";
-export const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit = S.String;
+const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit = S.String;
 
 /** The unique identifier for this duration. Pass this value as `economic_intelligence_duration_key` to turn it on. */
 export type UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemKey =
   | "7_days"
   | "1_day"
   | "1_hour";
-export const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemKey = S.String;
+const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemKey = S.String;
 
 export interface UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem {
   /** What period of time Economic Intelligence stays on. */
@@ -4747,29 +4514,28 @@ export interface UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem 
   /** Whether Whop recommends this duration. Exactly one offer is recommended. */
   recommended: boolean;
 }
-export const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      duration: S.Number,
-      duration_unit: UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit,
-      fee_percentage: S.Number,
-      key: UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemKey,
-      recommended: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem",
-  }) as any as S.Schema<UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem>;
+const UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    duration: S.Number,
+    duration_unit: UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemDurationUnit,
+    fee_percentage: S.Number,
+    key: UpdateAccountPreferencesResponseEconomicIntelligenceOffersItemKey,
+    recommended: S.Boolean,
+  }),
+).annotate({
+  identifier: "UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem",
+}) as any as S.Schema<UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem>;
 
 /** Durations the account can choose from to turn on Economic Intelligence, each with its fee. `null` while Economic Intelligence is on or the account is still on the Economic Intelligence waitlist. */
 export type UpdateAccountPreferencesResponseEconomicIntelligenceOffersList =
   Array<UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem>;
-export const UpdateAccountPreferencesResponseEconomicIntelligenceOffersList = /*@__PURE__*/ S.Array(
+const UpdateAccountPreferencesResponseEconomicIntelligenceOffersList = /*@__PURE__*/ S.Array(
   UpdateAccountPreferencesResponseEconomicIntelligenceOffersItem,
 ) as any as S.Schema<UpdateAccountPreferencesResponseEconomicIntelligenceOffersList>;
 
 /** What happens to a subscription once every retry of a renewal payment has failed. `cancel` (the default) cancels it. `none` leaves it past due and keeps billing it each period; access follows the account's past-due access setting. */
 export type UpdateAccountPreferencesResponseSubscriptionFailureBehavior = "cancel" | "none";
-export const UpdateAccountPreferencesResponseSubscriptionFailureBehavior = S.String;
+const UpdateAccountPreferencesResponseSubscriptionFailureBehavior = S.String;
 
 export interface UpdateAccountPreferencesResponse {
   /** The account's Whop Ads services and payment authorization agreement. While `pending_signature`, campaign launch is blocked; sign by answering `requested_information` via `PATCH /verifications/{id}`. */
@@ -4801,7 +4567,7 @@ export interface UpdateAccountPreferencesResponse {
   /** What happens to a subscription once every retry of a renewal payment has failed. `cancel` (the default) cancels it. `none` leaves it past due and keeps billing it each period; access follows the account's past-due access setting. */
   subscription_failure_behavior: UpdateAccountPreferencesResponseSubscriptionFailureBehavior;
 }
-export const UpdateAccountPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateAccountPreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ads_agreement: UpdateAccountPreferencesResponseAdsAgreement,
     ads_certifications: UpdateAccountPreferencesResponseAdsCertificationsList,

@@ -33,7 +33,7 @@ export interface GetBalanceRequest {
   /** Filters the transactions in the response by a [three-character ISO-4217 currency code](/api/rest/reference/currency-codes/) for the PayPal transaction currency. */
   currency_code?: string;
 }
-export const GetBalanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetBalanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     as_of_time: S.optional(S.String.pipe(T.Query())),
     currency_code: S.optional(S.String.pipe(T.Query())),
@@ -46,7 +46,7 @@ export interface Money {
   /** The value, which might be:<ul><li>An integer for currencies like `JPY` that are not typically fractional.</li><li>A decimal fraction for currencies like `TND` that are subdivided into thousandths.</li></ul>For the required number of decimal places for a currency code, see [Currency Codes](/docs/integration/direct/rest/currency-codes/). */
   value: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency_code: S.String,
     value: S.String,
@@ -66,7 +66,7 @@ export interface BalanceDetail {
   /** Balance withheld in the account. The portion of funds that PayPal holds for the customer that is not currently at the customer's disposal. */
   withheld_balance?: Money;
 }
-export const BalanceDetail = /*@__PURE__*/ S.suspend(() =>
+const BalanceDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currency: S.String,
     primary: S.optional(S.Boolean),
@@ -78,7 +78,7 @@ export const BalanceDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of balance detail objects. */
 export type BalanceDetailList = Array<BalanceDetail>;
-export const BalanceDetailList = /*@__PURE__*/ S.Array(
+const BalanceDetailList = /*@__PURE__*/ S.Array(
   BalanceDetail,
 ) as any as S.Schema<BalanceDetailList>;
 
@@ -91,7 +91,7 @@ export interface BalancesResponse {
   /** The date and time when the balances was last refreshed, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   last_refresh_time?: string;
 }
-export const BalancesResponse = /*@__PURE__*/ S.suspend(() =>
+const BalancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     balances: S.optional(BalanceDetailList),
     account_id: S.optional(S.String),
@@ -130,7 +130,7 @@ export interface SearchGetRequest {
   /** The zero-relative start index of the entire list of items that are returned in the response. So, the combination of `page=1` and `page_size=20` returns the first 20 items. */
   page?: number;
 }
-export const SearchGetRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_id: S.optional(S.String.pipe(T.Query())),
     transaction_type: S.optional(S.String.pipe(T.Query())),
@@ -151,7 +151,7 @@ export const SearchGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The PayPal reference ID type. */
 export type TransactionInfoPaypalReferenceIdType = "ODR" | "TXN" | "SUB" | "PAP";
-export const TransactionInfoPaypalReferenceIdType = S.String;
+const TransactionInfoPaypalReferenceIdType = S.String;
 
 /** The transaction information. */
 export interface TransactionInfo {
@@ -224,7 +224,7 @@ export interface TransactionInfo {
   /** A finer-grained classification of the financial instrument that was used to fund a payment. For example, `Visa card` or a `Mastercard` for a credit card, BANKCARD ,DISCOVER etc. The pattern is not provided because the value is defined by an external party. */
   instrument_sub_type?: string;
 }
-export const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
+const TransactionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     paypal_account_id: S.optional(S.String),
     transaction_id: S.optional(S.String),
@@ -272,7 +272,7 @@ export interface Phone {
   /** The extension number. */
   extension_number?: string;
 }
-export const Phone = /*@__PURE__*/ S.suspend(() =>
+const Phone = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     country_code: S.String,
     national_number: S.String,
@@ -297,7 +297,7 @@ export interface Name {
   /** When the party is a person, the party's full name. */
   full_name?: string;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     prefix: S.optional(S.String),
     given_name: S.optional(S.String),
@@ -323,7 +323,7 @@ export interface Address {
   /** The postal code, which is the zip code or equivalent. Typically required for countries with a postal code or an equivalent. See [postal code](https://en.wikipedia.org/wiki/Postal_code). */
   postal_code?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line1: S.String,
     line2: S.optional(S.String),
@@ -353,7 +353,7 @@ export interface PayerInfo {
   /** The payer address. */
   address?: Address;
 }
-export const PayerInfo = /*@__PURE__*/ S.suspend(() =>
+const PayerInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String),
     email_address: S.optional(S.String),
@@ -377,7 +377,7 @@ export interface ShippingInfo {
   /** The secondary shipping address that is associated with this order. */
   secondary_shipping_address?: Address;
 }
-export const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
+const ShippingInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     method: S.optional(S.String),
@@ -391,7 +391,7 @@ export interface ItemDetailTaxAmount {
   /** The tax levied by a government on the purchase of goods or services. */
   tax_amount?: Money;
 }
-export const ItemDetailTaxAmount = /*@__PURE__*/ S.suspend(() =>
+const ItemDetailTaxAmount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tax_amount: S.optional(Money),
   }),
@@ -399,7 +399,7 @@ export const ItemDetailTaxAmount = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of tax amounts levied by a government on the purchase of goods or services. */
 export type ItemDetailTaxAmountList = Array<ItemDetailTaxAmount>;
-export const ItemDetailTaxAmountList = /*@__PURE__*/ S.Array(
+const ItemDetailTaxAmountList = /*@__PURE__*/ S.Array(
   ItemDetailTaxAmount,
 ) as any as S.Schema<ItemDetailTaxAmountList>;
 
@@ -410,7 +410,7 @@ export interface CheckoutOption {
   /** The checkout option value. For example, the checkout option `color` might be `blue` or `red` while the checkout option `texture` might be `smooth` or `rippled`. */
   checkout_option_value?: string;
 }
-export const CheckoutOption = /*@__PURE__*/ S.suspend(() =>
+const CheckoutOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkout_option_name: S.optional(S.String),
     checkout_option_value: S.optional(S.String),
@@ -419,7 +419,7 @@ export const CheckoutOption = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of checkout options. Each option has a name and value. */
 export type CheckoutOptionList = Array<CheckoutOption>;
-export const CheckoutOptionList = /*@__PURE__*/ S.Array(
+const CheckoutOptionList = /*@__PURE__*/ S.Array(
   CheckoutOption,
 ) as any as S.Schema<CheckoutOptionList>;
 
@@ -462,7 +462,7 @@ export interface ItemDetail {
   invoice_number?: string;
   checkout_options?: CheckoutOptionList;
 }
-export const ItemDetail = /*@__PURE__*/ S.suspend(() =>
+const ItemDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_code: S.optional(S.String),
     item_name: S.optional(S.String),
@@ -488,7 +488,7 @@ export const ItemDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of item details. */
 export type ItemDetailList = Array<ItemDetail>;
-export const ItemDetailList = /*@__PURE__*/ S.Array(ItemDetail) as any as S.Schema<ItemDetailList>;
+const ItemDetailList = /*@__PURE__*/ S.Array(ItemDetail) as any as S.Schema<ItemDetailList>;
 
 /** The cart information. */
 export interface CartInfo {
@@ -498,7 +498,7 @@ export interface CartInfo {
   /** The ID of the invoice. Appears for only PayPal-generated invoices. */
   paypal_invoice_id?: string;
 }
-export const CartInfo = /*@__PURE__*/ S.suspend(() =>
+const CartInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item_details: S.optional(ItemDetailList),
     tax_inclusive: S.optional(S.Boolean),
@@ -513,7 +513,7 @@ export interface StoreInfo {
   /** The terminal ID for the checkout stand in a merchant store. */
   terminal_id?: string;
 }
-export const StoreInfo = /*@__PURE__*/ S.suspend(() =>
+const StoreInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     store_id: S.optional(S.String),
     terminal_id: S.optional(S.String),
@@ -531,7 +531,7 @@ export interface AuctionInfo {
   /** The date and time when the auction closes, in [Internet date and time format](https://tools.ietf.org/html/rfc3339#section-5.6). */
   auction_closing_date?: string;
 }
-export const AuctionInfo = /*@__PURE__*/ S.suspend(() =>
+const AuctionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auction_site: S.optional(S.String),
     auction_item_site: S.optional(S.String),
@@ -551,7 +551,7 @@ export interface IncentiveDetail {
   /** The incentive program code that identifies a merchant loyalty or incentive program. */
   incentive_program_code?: string;
 }
-export const IncentiveDetail = /*@__PURE__*/ S.suspend(() =>
+const IncentiveDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incentive_type: S.optional(S.String),
     incentive_code: S.optional(S.String),
@@ -562,7 +562,7 @@ export const IncentiveDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of incentive details. */
 export type IncentiveDetailList = Array<IncentiveDetail>;
-export const IncentiveDetailList = /*@__PURE__*/ S.Array(
+const IncentiveDetailList = /*@__PURE__*/ S.Array(
   IncentiveDetail,
 ) as any as S.Schema<IncentiveDetailList>;
 
@@ -570,7 +570,7 @@ export const IncentiveDetailList = /*@__PURE__*/ S.Array(
 export interface IncentiveInfo {
   incentive_details?: IncentiveDetailList;
 }
-export const IncentiveInfo = /*@__PURE__*/ S.suspend(() =>
+const IncentiveInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     incentive_details: S.optional(IncentiveDetailList),
   }),
@@ -593,7 +593,7 @@ export interface TransactionDetail {
   /** The incentive information. */
   incentive_info?: IncentiveInfo;
 }
-export const TransactionDetail = /*@__PURE__*/ S.suspend(() =>
+const TransactionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_info: S.optional(TransactionInfo),
     payer_info: S.optional(PayerInfo),
@@ -607,7 +607,7 @@ export const TransactionDetail = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of transaction detail objects. */
 export type TransactionDetailList = Array<TransactionDetail>;
-export const TransactionDetailList = /*@__PURE__*/ S.Array(
+const TransactionDetailList = /*@__PURE__*/ S.Array(
   TransactionDetail,
 ) as any as S.Schema<TransactionDetailList>;
 
@@ -621,7 +621,7 @@ export type LinkDescriptionMethod =
   | "CONNECT"
   | "OPTIONS"
   | "PATCH";
-export const LinkDescriptionMethod = S.String;
+const LinkDescriptionMethod = S.String;
 
 /** The request-related [HATEOAS link](/docs/api/reference/api-responses/#hateoas-links) information. */
 export interface LinkDescription {
@@ -632,7 +632,7 @@ export interface LinkDescription {
   /** The HTTP method required to make the related call. */
   method?: LinkDescriptionMethod;
 }
-export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
+const LinkDescription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     href: S.String,
     rel: S.String,
@@ -642,7 +642,7 @@ export const LinkDescription = /*@__PURE__*/ S.suspend(() =>
 
 /** An array of request-related [HATEOAS links](/api/rest/responses/#hateoas-links). */
 export type LinkDescriptionList = Array<LinkDescription>;
-export const LinkDescriptionList = /*@__PURE__*/ S.Array(
+const LinkDescriptionList = /*@__PURE__*/ S.Array(
   LinkDescription,
 ) as any as S.Schema<LinkDescriptionList>;
 
@@ -665,7 +665,7 @@ export interface SearchResponse {
   total_pages?: number;
   links?: LinkDescriptionList;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transaction_details: S.optional(TransactionDetailList),
     account_number: S.optional(S.String),

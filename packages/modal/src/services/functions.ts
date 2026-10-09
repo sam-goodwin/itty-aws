@@ -14,7 +14,7 @@ export interface CancelFunctionCallRequest {
   terminateContainers?: boolean;
   functionId?: string;
 }
-export const CancelFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     terminateContainers: S.optional(S.Boolean),
@@ -27,24 +27,24 @@ export const CancelFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelFunctionCallRequest>;
 
 export interface CancelFunctionCallResponse {}
-export const CancelFunctionCallResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelFunctionCallResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelFunctionCallResponse",
 }) as any as S.Schema<CancelFunctionCallResponse>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export type FunctionDefinitionType =
   | "DEFINITION_TYPE_UNSPECIFIED"
   | "DEFINITION_TYPE_SERIALIZED"
   | "DEFINITION_TYPE_FILE";
-export const FunctionDefinitionType = S.String;
+const FunctionDefinitionType = S.String;
 
 export type FunctionFunctionType =
   | "FUNCTION_TYPE_UNSPECIFIED"
   | "FUNCTION_TYPE_GENERATOR"
   | "FUNCTION_TYPE_FUNCTION";
-export const FunctionFunctionType = S.String;
+const FunctionFunctionType = S.String;
 
 export type GPUType =
   | "GPU_TYPE_UNSPECIFIED"
@@ -57,7 +57,7 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
-export const GPUType = S.String;
+const GPUType = S.String;
 
 export interface GPUConfig {
   type?: GPUType | (string & {});
@@ -65,7 +65,7 @@ export interface GPUConfig {
   count?: number;
   gpuType?: string;
 }
-export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GPUType),
     count: S.optional(S.Number),
@@ -88,7 +88,7 @@ export interface Resources {
   /** milli CPU cores */
   rdma?: boolean;
 }
-export const Resources = /*@__PURE__*/ S.suspend(() =>
+const Resources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memoryMb: S.optional(S.Number),
     milliCpu: S.optional(S.Number),
@@ -104,13 +104,13 @@ export type RateLimitInterval =
   | "RATE_LIMIT_INTERVAL_UNSPECIFIED"
   | "RATE_LIMIT_INTERVAL_SECOND"
   | "RATE_LIMIT_INTERVAL_MINUTE";
-export const RateLimitInterval = S.String;
+const RateLimitInterval = S.String;
 
 export interface RateLimit {
   limit?: number;
   interval?: RateLimitInterval | (string & {});
 }
-export const RateLimit = /*@__PURE__*/ S.suspend(() =>
+const RateLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     interval: S.optional(RateLimitInterval),
@@ -124,26 +124,26 @@ export type WebhookType =
   | "WEBHOOK_TYPE_FUNCTION"
   | "WEBHOOK_TYPE_WSGI_APP"
   | "WEBHOOK_TYPE_WEB_SERVER";
-export const WebhookType = S.String;
+const WebhookType = S.String;
 
 export type WebhookAsyncMode =
   | "WEBHOOK_ASYNC_MODE_UNSPECIFIED"
   | "WEBHOOK_ASYNC_MODE_DISABLED"
   | "WEBHOOK_ASYNC_MODE_TRIGGER"
   | "WEBHOOK_ASYNC_MODE_AUTO";
-export const WebhookAsyncMode = S.String;
+const WebhookAsyncMode = S.String;
 
 export interface CustomDomainConfig {
   name?: string;
 }
-export const CustomDomainConfig = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "CustomDomainConfig" }) as any as S.Schema<CustomDomainConfig>;
 
 export type CustomDomainConfigList = Array<CustomDomainConfig>;
-export const CustomDomainConfigList = /*@__PURE__*/ S.Array(
+const CustomDomainConfigList = /*@__PURE__*/ S.Array(
   CustomDomainConfig,
 ) as any as S.Schema<CustomDomainConfigList>;
 
@@ -160,7 +160,7 @@ export interface WebhookConfig {
   requiresProxyAuth?: boolean;
   ephemeralSuffix?: string;
 }
-export const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
+const WebhookConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WebhookType),
     method: S.optional(S.String),
@@ -182,14 +182,14 @@ export type CloudProvider =
   | "CLOUD_PROVIDER_GCP"
   | "CLOUD_PROVIDER_AUTO"
   | "CLOUD_PROVIDER_OCI";
-export const CloudProvider = S.String;
+const CloudProvider = S.String;
 
 export interface SharedVolumeMount {
   mountPath?: string;
   sharedVolumeId?: string;
   cloudProvider?: CloudProvider | (string & {});
 }
-export const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
+const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mountPath: S.optional(S.String),
     sharedVolumeId: S.optional(S.String),
@@ -198,7 +198,7 @@ export const SharedVolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharedVolumeMount" }) as any as S.Schema<SharedVolumeMount>;
 
 export type SharedVolumeMountList = Array<SharedVolumeMount>;
-export const SharedVolumeMountList = /*@__PURE__*/ S.Array(
+const SharedVolumeMountList = /*@__PURE__*/ S.Array(
   SharedVolumeMount,
 ) as any as S.Schema<SharedVolumeMountList>;
 
@@ -209,7 +209,7 @@ export interface FunctionRetryPolicy {
   /** NOTE: two-byte field number not used for special reason. copy-paste error. Ref: PR #2542 */
   retries?: number;
 }
-export const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backoffCoefficient: S.optional(S.Number),
     initialDelayMs: S.optional(S.Number),
@@ -219,7 +219,7 @@ export const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionRetryPolicy" }) as any as S.Schema<FunctionRetryPolicy>;
 
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-export const PTYInfoPTYType = S.String;
+const PTYInfoPTYType = S.String;
 
 export interface PTYInfo {
   enabled?: boolean;
@@ -233,7 +233,7 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-export const PTYInfo = /*@__PURE__*/ S.suspend(() =>
+const PTYInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     winszRows: S.optional(S.Number),
@@ -251,7 +251,7 @@ export interface WebUrlInfo {
   hasUniqueHash?: boolean;
   labelStolen?: boolean;
 }
-export const WebUrlInfo = /*@__PURE__*/ S.suspend(() =>
+const WebUrlInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     truncated: S.optional(S.Boolean),
     hasUniqueHash: S.optional(S.Boolean),
@@ -266,7 +266,7 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
-export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
+const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -277,21 +277,19 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 export type VolumeMountList = Array<VolumeMount>;
-export const VolumeMountList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<VolumeMountList>;
+const VolumeMountList = /*@__PURE__*/ S.Array(VolumeMount) as any as S.Schema<VolumeMountList>;
 
 export interface CustomDomainInfo {
   url?: string;
 }
-export const CustomDomainInfo = /*@__PURE__*/ S.suspend(() =>
+const CustomDomainInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
 ).annotate({ identifier: "CustomDomainInfo" }) as any as S.Schema<CustomDomainInfo>;
 
 export type CustomDomainInfoList = Array<CustomDomainInfo>;
-export const CustomDomainInfoList = /*@__PURE__*/ S.Array(
+const CustomDomainInfoList = /*@__PURE__*/ S.Array(
   CustomDomainInfo,
 ) as any as S.Schema<CustomDomainInfoList>;
 
@@ -301,7 +299,7 @@ export type CheckpointStatus =
   | "CHECKPOINT_STATUS_PROCESSING"
   | "CHECKPOINT_STATUS_READY"
   | "CHECKPOINT_STATUS_FAILED";
-export const CheckpointStatus = S.String;
+const CheckpointStatus = S.String;
 
 export interface CheckpointInfo {
   checksum?: string;
@@ -313,7 +311,7 @@ export interface CheckpointInfo {
   originalTaskId?: string;
   runscRuntimeVersion?: string;
 }
-export const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
+const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checksum: S.optional(S.String),
     status: S.optional(CheckpointStatus),
@@ -329,14 +327,14 @@ export const CheckpointInfo = /*@__PURE__*/ S.suspend(() =>
 export interface ObjectDependency {
   objectId?: string;
 }
-export const ObjectDependency = /*@__PURE__*/ S.suspend(() =>
+const ObjectDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ObjectDependency" }) as any as S.Schema<ObjectDependency>;
 
 export type ObjectDependencyList = Array<ObjectDependency>;
-export const ObjectDependencyList = /*@__PURE__*/ S.Array(
+const ObjectDependencyList = /*@__PURE__*/ S.Array(
   ObjectDependency,
 ) as any as S.Schema<ObjectDependencyList>;
 
@@ -346,7 +344,7 @@ export interface S3Mount {
   credentialsSecretId?: string;
   readOnly?: boolean;
 }
-export const S3Mount = /*@__PURE__*/ S.suspend(() =>
+const S3Mount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -356,16 +354,16 @@ export const S3Mount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Mount" }) as any as S.Schema<S3Mount>;
 
 export type S3MountList = Array<S3Mount>;
-export const S3MountList = /*@__PURE__*/ S.Array(S3Mount) as any as S.Schema<S3MountList>;
+const S3MountList = /*@__PURE__*/ S.Array(S3Mount) as any as S.Schema<S3MountList>;
 
 export type CloudBucketMountBucketType = "UNSPECIFIED" | "S3" | "R2" | "GCP";
-export const CloudBucketMountBucketType = S.String;
+const CloudBucketMountBucketType = S.String;
 
 export type CloudBucketMountMetadataTTLType =
   | "METADATA_TTL_TYPE_UNSPECIFIED"
   | "METADATA_TTL_TYPE_MINIMAL"
   | "METADATA_TTL_TYPE_INDEFINITE";
-export const CloudBucketMountMetadataTTLType = S.String;
+const CloudBucketMountMetadataTTLType = S.String;
 
 export interface CloudBucketMount {
   bucketName?: string;
@@ -381,7 +379,7 @@ export interface CloudBucketMount {
   metadataTtlType?: CloudBucketMountMetadataTTLType | (string & {});
   metadataTtlSeconds?: string;
 }
-export const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
+const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -399,7 +397,7 @@ export const CloudBucketMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CloudBucketMount" }) as any as S.Schema<CloudBucketMount>;
 
 export type CloudBucketMountList = Array<CloudBucketMount>;
-export const CloudBucketMountList = /*@__PURE__*/ S.Array(
+const CloudBucketMountList = /*@__PURE__*/ S.Array(
   CloudBucketMount,
 ) as any as S.Schema<CloudBucketMountList>;
 
@@ -411,7 +409,7 @@ export interface SchedulerPlacement {
   InstanceTypes?: StringList;
   nonpreemptible?: boolean;
 }
-export const SchedulerPlacement = /*@__PURE__*/ S.suspend(() =>
+const SchedulerPlacement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     regions: S.optional(StringList),
     Zone: S.optional(S.String),
@@ -425,7 +423,7 @@ export type ClassParameterInfoParameterSerializationFormat =
   | "PARAM_SERIALIZATION_FORMAT_UNSPECIFIED"
   | "PARAM_SERIALIZATION_FORMAT_PICKLE"
   | "PARAM_SERIALIZATION_FORMAT_PROTO";
-export const ClassParameterInfoParameterSerializationFormat = S.String;
+const ClassParameterInfoParameterSerializationFormat = S.String;
 
 export type ParameterType =
   | "PARAM_TYPE_UNSPECIFIED"
@@ -438,10 +436,10 @@ export type ParameterType =
   | "PARAM_TYPE_DICT"
   | "PARAM_TYPE_NONE"
   | "PARAM_TYPE_BOOL";
-export const ParameterType = S.String;
+const ParameterType = S.String;
 
 export type GenericPayloadTypeList = Array<GenericPayloadType>;
-export const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
+const GenericPayloadTypeList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => GenericPayloadType),
 ) as any as S.Schema<GenericPayloadTypeList>;
 
@@ -449,7 +447,7 @@ export interface GenericPayloadType {
   baseType?: ParameterType | (string & {});
   subTypes?: GenericPayloadTypeList;
 }
-export const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
+const GenericPayloadType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseType: S.optional(ParameterType),
     subTypes: S.optional(GenericPayloadTypeList),
@@ -470,7 +468,7 @@ export interface ClassParameterSpec {
   boolDefault?: boolean;
   fullType?: GenericPayloadType;
 }
-export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(ParameterType),
@@ -485,7 +483,7 @@ export const ClassParameterSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClassParameterSpec" }) as any as S.Schema<ClassParameterSpec>;
 
 export type ClassParameterSpecList = Array<ClassParameterSpec>;
-export const ClassParameterSpecList = /*@__PURE__*/ S.Array(
+const ClassParameterSpecList = /*@__PURE__*/ S.Array(
   ClassParameterSpec,
 ) as any as S.Schema<ClassParameterSpecList>;
 
@@ -494,7 +492,7 @@ export interface ClassParameterInfo {
   format?: ClassParameterInfoParameterSerializationFormat | (string & {});
   schema?: ClassParameterSpecList;
 }
-export const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
+const ClassParameterInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.optional(ClassParameterInfoParameterSerializationFormat),
     schema: S.optional(ClassParameterSpecList),
@@ -509,7 +507,7 @@ export interface TaskTemplate {
   /** TODO(irfansharif): Just move this into a column in the task table instead? Deprecate all above fields and get rid of this message altogether */
   index?: number;
 }
-export const TaskTemplate = /*@__PURE__*/ S.suspend(() =>
+const TaskTemplate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rank: S.optional(S.Number),
     resources: S.optional(Resources),
@@ -520,15 +518,13 @@ export const TaskTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskTemplate" }) as any as S.Schema<TaskTemplate>;
 
 export type TaskTemplateList = Array<TaskTemplate>;
-export const TaskTemplateList = /*@__PURE__*/ S.Array(
-  TaskTemplate,
-) as any as S.Schema<TaskTemplateList>;
+const TaskTemplateList = /*@__PURE__*/ S.Array(TaskTemplate) as any as S.Schema<TaskTemplateList>;
 
 export interface ScheduleCron {
   cronString?: string;
   timezone?: string;
 }
-export const ScheduleCron = /*@__PURE__*/ S.suspend(() =>
+const ScheduleCron = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cronString: S.optional(S.String),
     timezone: S.optional(S.String),
@@ -544,7 +540,7 @@ export interface SchedulePeriod {
   minutes?: number;
   seconds?: number;
 }
-export const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
+const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     years: S.optional(S.Number),
     months: S.optional(S.Number),
@@ -560,7 +556,7 @@ export interface Schedule {
   cron?: ScheduleCron;
   period?: SchedulePeriod;
 }
-export const Schedule = /*@__PURE__*/ S.suspend(() =>
+const Schedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cron: S.optional(ScheduleCron),
     period: S.optional(SchedulePeriod),
@@ -568,7 +564,7 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 
 export type FunctionSchemaFunctionSchemaType = "FUNCTION_SCHEMA_UNSPECIFIED" | "FUNCTION_SCHEMA_V1";
-export const FunctionSchemaFunctionSchemaType = S.String;
+const FunctionSchemaFunctionSchemaType = S.String;
 
 export interface FunctionSchema {
   schemaType?: FunctionSchemaFunctionSchemaType | (string & {});
@@ -576,7 +572,7 @@ export interface FunctionSchema {
   arguments?: ClassParameterSpecList;
   returnType?: GenericPayloadType;
 }
-export const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
+const FunctionSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schemaType: S.optional(FunctionSchemaFunctionSchemaType),
     arguments: S.optional(ClassParameterSpecList),
@@ -591,10 +587,10 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 export type DataFormatList = Array<DataFormat | (string & {})>;
-export const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
+const DataFormatList = /*@__PURE__*/ S.Array(DataFormat) as any as S.Schema<DataFormatList>;
 
 export interface MethodDefinition {
   functionName?: string;
@@ -607,7 +603,7 @@ export interface MethodDefinition {
   supportedInputFormats?: DataFormatList;
   supportedOutputFormats?: DataFormatList;
 }
-export const MethodDefinition = /*@__PURE__*/ S.suspend(() =>
+const MethodDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionType: S.optional(FunctionFunctionType),
@@ -622,7 +618,7 @@ export const MethodDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MethodDefinition" }) as any as S.Schema<MethodDefinition>;
 
 export type MethodDefinitionMap = { [key: string]: MethodDefinition | undefined };
-export const MethodDefinitionMap = /*@__PURE__*/ S.Record(
+const MethodDefinitionMap = /*@__PURE__*/ S.Record(
   S.String,
   MethodDefinition,
 ) as any as S.Schema<MethodDefinitionMap>;
@@ -645,7 +641,7 @@ export interface AutoscalerSettings {
   /** Target concurrent requests per replica for Flash autoscaling; may be fractional. */
   targetConcurrencyFloat?: number;
 }
-export const AutoscalerSettings = /*@__PURE__*/ S.suspend(() =>
+const AutoscalerSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minContainers: S.optional(S.Number),
     maxContainers: S.optional(S.Number),
@@ -659,10 +655,10 @@ export const AutoscalerSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoscalerSettings" }) as any as S.Schema<AutoscalerSettings>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface LiftAndShiftConfig {}
-export const LiftAndShiftConfig = CancelFunctionCallResponse as any as S.Schema<LiftAndShiftConfig>;
+const LiftAndShiftConfig = CancelFunctionCallResponse as any as S.Schema<LiftAndShiftConfig>;
 
 /** (?) */
 export interface HTTPConfig {
@@ -675,7 +671,7 @@ export interface HTTPConfig {
   unauthenticated?: boolean;
   liftAndShiftConfig?: LiftAndShiftConfig;
 }
-export const HTTPConfig = /*@__PURE__*/ S.suspend(() =>
+const HTTPConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     port: S.optional(S.Number),
     proxyRegions: S.optional(StringList),
@@ -804,7 +800,7 @@ export interface Function {
   /** Where inputs to a function should be routed through. True when the function is a Sessioned Server. Only valid together with is_server. */
   isSessioned?: boolean;
 }
-export const Function = /*@__PURE__*/ S.suspend(() =>
+const Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleName: S.optional(S.String),
     functionName: S.optional(S.String),
@@ -893,7 +889,7 @@ export interface FunctionDataRankedFunction {
   rank?: number;
   function?: Function;
 }
-export const FunctionDataRankedFunction = /*@__PURE__*/ S.suspend(() =>
+const FunctionDataRankedFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rank: S.optional(S.Number),
     function: S.optional(Function),
@@ -903,7 +899,7 @@ export const FunctionDataRankedFunction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionDataRankedFunction>;
 
 export type FunctionDataRankedFunctionList = Array<FunctionDataRankedFunction>;
-export const FunctionDataRankedFunctionList = /*@__PURE__*/ S.Array(
+const FunctionDataRankedFunctionList = /*@__PURE__*/ S.Array(
   FunctionDataRankedFunction,
 ) as any as S.Schema<FunctionDataRankedFunctionList>;
 
@@ -962,7 +958,7 @@ export interface FunctionData {
   /** Where inputs to a function should be routed through. True when the function is a Sessioned Server. Only valid together with is_server. */
   isSessioned?: boolean;
 }
-export const FunctionData = /*@__PURE__*/ S.suspend(() =>
+const FunctionData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     moduleName: S.optional(S.String),
     functionName: S.optional(S.String),
@@ -1016,7 +1012,7 @@ export interface CreateFunctionRequest {
   /** defer_updates */
   functionData?: FunctionData;
 }
-export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(Function),
     appId: S.optional(S.String),
@@ -1027,7 +1023,7 @@ export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateFunctionRequest" }) as any as S.Schema<CreateFunctionRequest>;
 
 export type FunctionHandleMetadataMap = { [key: string]: FunctionHandleMetadata | undefined };
-export const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
+const FunctionHandleMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.suspend(() => FunctionHandleMetadata),
 ) as any as S.Schema<FunctionHandleMetadataMap>;
@@ -1059,7 +1055,7 @@ export interface FunctionHandleMetadata {
   /** The base Function ID for a variant, or the Function's own ID otherwise. */
   baseFunctionId?: string;
 }
-export const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const FunctionHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionName: S.optional(S.String),
     functionType: S.optional(FunctionFunctionType),
@@ -1087,13 +1083,13 @@ export type WarningWarningType =
   | "WARNING_TYPE_CLIENT_DEPRECATION"
   | "WARNING_TYPE_RESOURCE_LIMIT"
   | "WARNING_TYPE_FUNCTION_CONFIGURATION";
-export const WarningWarningType = S.String;
+const WarningWarningType = S.String;
 
 export interface Warning {
   type?: WarningWarningType;
   message?: string;
 }
-export const Warning = /*@__PURE__*/ S.suspend(() =>
+const Warning = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(WarningWarningType),
     message: S.optional(S.String),
@@ -1101,7 +1097,7 @@ export const Warning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Warning" }) as any as S.Schema<Warning>;
 
 export type WarningList = Array<Warning>;
-export const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
+const WarningList = /*@__PURE__*/ S.Array(Warning) as any as S.Schema<WarningList>;
 
 export interface CreateFunctionResponse {
   functionId?: string;
@@ -1113,7 +1109,7 @@ export interface CreateFunctionResponse {
   serverWarnings?: WarningList;
   functionData?: FunctionData;
 }
-export const CreateFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     DeprecatedWebUrl: S.optional(S.String),
@@ -1128,7 +1124,7 @@ export interface FetchFunctionCallRequestTail {
   /** Number of most recent inputs to return. Must be between 1 and 1000. */
   count?: number;
 }
-export const FetchFunctionCallRequestTail = /*@__PURE__*/ S.suspend(() =>
+const FetchFunctionCallRequestTail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
   }),
@@ -1142,7 +1138,7 @@ export interface FetchFunctionCallRequest {
   /** Include the root Function and its eligible variants. */
   allVariants?: boolean;
 }
-export const FetchFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
+const FetchFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     tail: S.optional(FetchFunctionCallRequestTail),
@@ -1164,7 +1160,7 @@ export type FunctionCallInputStatus =
   | "FUNCTION_CALL_INPUT_STATUS_INTERNAL_FAILURE"
   | "FUNCTION_CALL_INPUT_STATUS_IDLE_TIMEOUT"
   | "FUNCTION_CALL_INPUT_STATUS_MEMORY_MANAGER_EVICTION";
-export const FunctionCallInputStatus = S.String;
+const FunctionCallInputStatus = S.String;
 
 export interface FunctionCallInputInfo {
   enqueuedAt?: string;
@@ -1176,7 +1172,7 @@ export interface FunctionCallInputInfo {
   functionCallId?: string;
   serviceMethodName?: string;
 }
-export const FunctionCallInputInfo = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallInputInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enqueuedAt: S.optional(S.String),
     startedAt: S.optional(S.String),
@@ -1190,7 +1186,7 @@ export const FunctionCallInputInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionCallInputInfo" }) as any as S.Schema<FunctionCallInputInfo>;
 
 export type FunctionCallInputInfoList = Array<FunctionCallInputInfo>;
-export const FunctionCallInputInfoList = /*@__PURE__*/ S.Array(
+const FunctionCallInputInfoList = /*@__PURE__*/ S.Array(
   FunctionCallInputInfo,
 ) as any as S.Schema<FunctionCallInputInfoList>;
 
@@ -1198,7 +1194,7 @@ export interface FetchFunctionCallResponse {
   /** The requested number of most recent inputs from the last seven days, ordered from newest to oldest. */
   functionCallInputs?: FunctionCallInputInfoList;
 }
-export const FetchFunctionCallResponse = /*@__PURE__*/ S.suspend(() =>
+const FetchFunctionCallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallInputs: S.optional(FunctionCallInputInfoList),
   }),
@@ -1232,7 +1228,7 @@ export interface FunctionOptions {
   pinnedAppVersion?: number;
   routingRegion?: string;
 }
-export const FunctionOptions = /*@__PURE__*/ S.suspend(() =>
+const FunctionOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     secretIds: S.optional(StringList),
     mountIds: S.optional(StringList),
@@ -1266,7 +1262,7 @@ export interface FunctionBindParamsRequest {
   environmentName?: string;
   authSecret?: string | Redacted.Redacted<string>;
 }
-export const FunctionBindParamsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionBindParamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     serializedParams: S.optional(S.String),
@@ -1284,7 +1280,7 @@ export interface FunctionBindParamsResponse {
   boundFunctionId?: string;
   handleMetadata?: FunctionHandleMetadata;
 }
-export const FunctionBindParamsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionBindParamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     boundFunctionId: S.optional(S.String),
     handleMetadata: S.optional(FunctionHandleMetadata),
@@ -1296,7 +1292,7 @@ export const FunctionBindParamsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionCallFromIdRequest {
   functionCallId?: string;
 }
-export const FunctionCallFromIdRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallFromIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
   }).pipe(
@@ -1310,7 +1306,7 @@ export interface FunctionCallHandleMetadata {
   appId?: string;
   functionId?: string;
 }
-export const FunctionCallHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     functionId: S.optional(S.String),
@@ -1324,7 +1320,7 @@ export interface FunctionCallFromIdResponse {
   numInputs?: number;
   metadata?: FunctionCallHandleMetadata;
 }
-export const FunctionCallFromIdResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallFromIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     numInputs: S.optional(S.Number),
@@ -1338,7 +1334,7 @@ export interface FunctionCallGetInfoRequest {
   functionId?: string;
   functionCallId?: string;
 }
-export const FunctionCallGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     functionCallId: S.optional(S.String),
@@ -1358,7 +1354,7 @@ export interface InputInfo {
   taskStartupTime?: number;
   taskFirstInput?: boolean;
 }
-export const InputInfo = /*@__PURE__*/ S.suspend(() =>
+const InputInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputId: S.optional(S.String),
     idx: S.optional(S.Number),
@@ -1371,13 +1367,13 @@ export const InputInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputInfo" }) as any as S.Schema<InputInfo>;
 
 export type InputInfoList = Array<InputInfo>;
-export const InputInfoList = /*@__PURE__*/ S.Array(InputInfo) as any as S.Schema<InputInfoList>;
+const InputInfoList = /*@__PURE__*/ S.Array(InputInfo) as any as S.Schema<InputInfoList>;
 
 export interface InputCategoryInfo {
   total?: number;
   latest?: InputInfoList;
 }
-export const InputCategoryInfo = /*@__PURE__*/ S.suspend(() =>
+const InputCategoryInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.optional(S.Number),
     latest: S.optional(InputInfoList),
@@ -1399,7 +1395,7 @@ export interface FunctionCallInfo {
   cancelledInputs?: InputCategoryInfo;
   totalInputs?: number;
 }
-export const FunctionCallInfo = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     idx: S.optional(S.Number),
@@ -1417,7 +1413,7 @@ export const FunctionCallInfo = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionCallGetInfoResponse {
   info?: FunctionCallInfo;
 }
-export const FunctionCallGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     info: S.optional(FunctionCallInfo),
   }),
@@ -1432,7 +1428,7 @@ export interface DataChunk {
   dataBlobId?: string;
   index?: string;
 }
-export const DataChunk = /*@__PURE__*/ S.suspend(() =>
+const DataChunk = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataFormat: S.optional(DataFormat),
     data: S.optional(S.String),
@@ -1442,14 +1438,14 @@ export const DataChunk = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataChunk" }) as any as S.Schema<DataChunk>;
 
 export type DataChunkList = Array<DataChunk>;
-export const DataChunkList = /*@__PURE__*/ S.Array(DataChunk) as any as S.Schema<DataChunkList>;
+const DataChunkList = /*@__PURE__*/ S.Array(DataChunk) as any as S.Schema<DataChunkList>;
 
 export interface FunctionCallPutDataOutRequest {
   functionCallId?: string;
   attemptToken?: string;
   dataChunks?: DataChunkList;
 }
-export const FunctionCallPutDataOutRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallPutDataOutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     attemptToken: S.optional(S.String),
@@ -1462,7 +1458,7 @@ export const FunctionCallPutDataOutRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionCallPutDataOutRequest>;
 
 export interface FunctionCallPutDataOutResponse {}
-export const FunctionCallPutDataOutResponse =
+const FunctionCallPutDataOutResponse =
   CancelFunctionCallResponse as any as S.Schema<FunctionCallPutDataOutResponse>;
 
 export interface FunctionFinishInputsRequest {
@@ -1470,7 +1466,7 @@ export interface FunctionFinishInputsRequest {
   functionCallId?: string;
   numInputs?: number;
 }
-export const FunctionFinishInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionFinishInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     functionCallId: S.optional(S.String),
@@ -1483,13 +1479,13 @@ export const FunctionFinishInputsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionFinishInputsRequest>;
 
 export interface FunctionFinishInputsResponse {}
-export const FunctionFinishInputsResponse =
+const FunctionFinishInputsResponse =
   CancelFunctionCallResponse as any as S.Schema<FunctionFinishInputsResponse>;
 
 export interface FunctionGetByIdRequest {
   functionId?: string;
 }
-export const FunctionGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/FunctionGetById", code: 200 })),
@@ -1499,7 +1495,7 @@ export interface FunctionGetByIdResponse {
   function?: FunctionData;
   handleMetadata?: FunctionHandleMetadata;
 }
-export const FunctionGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     function: S.optional(FunctionData),
     handleMetadata: S.optional(FunctionHandleMetadata),
@@ -1509,7 +1505,7 @@ export const FunctionGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetCallGraphRequest {
   functionCallId?: string;
 }
-export const FunctionGetCallGraphRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetCallGraphRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
   }).pipe(
@@ -1530,7 +1526,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 export interface InputCallGraphInfo {
   inputId?: string;
@@ -1538,7 +1534,7 @@ export interface InputCallGraphInfo {
   functionCallId?: string;
   taskId?: string;
 }
-export const InputCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
+const InputCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputId: S.optional(S.String),
     status: S.optional(GenericResultGenericStatus),
@@ -1548,7 +1544,7 @@ export const InputCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputCallGraphInfo" }) as any as S.Schema<InputCallGraphInfo>;
 
 export type InputCallGraphInfoList = Array<InputCallGraphInfo>;
-export const InputCallGraphInfoList = /*@__PURE__*/ S.Array(
+const InputCallGraphInfoList = /*@__PURE__*/ S.Array(
   InputCallGraphInfo,
 ) as any as S.Schema<InputCallGraphInfoList>;
 
@@ -1558,7 +1554,7 @@ export interface FunctionCallCallGraphInfo {
   functionName?: string;
   moduleName?: string;
 }
-export const FunctionCallCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
+const FunctionCallCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -1570,7 +1566,7 @@ export const FunctionCallCallGraphInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionCallCallGraphInfo>;
 
 export type FunctionCallCallGraphInfoList = Array<FunctionCallCallGraphInfo>;
-export const FunctionCallCallGraphInfoList = /*@__PURE__*/ S.Array(
+const FunctionCallCallGraphInfoList = /*@__PURE__*/ S.Array(
   FunctionCallCallGraphInfo,
 ) as any as S.Schema<FunctionCallCallGraphInfoList>;
 
@@ -1580,7 +1576,7 @@ export interface FunctionGetCallGraphResponse {
   /** Set by the server when the graph has more nodes than it will return, so `inputs` is a prefix of the graph. */
   truncated?: boolean;
 }
-export const FunctionGetCallGraphResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetCallGraphResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(InputCallGraphInfoList),
     functionCalls: S.optional(FunctionCallCallGraphInfoList),
@@ -1593,7 +1589,7 @@ export const FunctionGetCallGraphResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetCurrentStatsRequest {
   functionId?: string;
 }
-export const FunctionGetCurrentStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetCurrentStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(
@@ -1609,7 +1605,7 @@ export interface FunctionGetCurrentStatsResponse {
   numRunningInputs?: number;
   inputHeadroom?: number;
 }
-export const FunctionGetCurrentStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetCurrentStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     backlog: S.optional(S.Number),
     numTotalTasks: S.optional(S.Number),
@@ -1625,7 +1621,7 @@ export interface FunctionGetDynamicConcurrencyRequest {
   targetConcurrency?: number;
   maxConcurrency?: number;
 }
-export const FunctionGetDynamicConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetDynamicConcurrencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     targetConcurrency: S.optional(S.Number),
@@ -1644,7 +1640,7 @@ export const FunctionGetDynamicConcurrencyRequest = /*@__PURE__*/ S.suspend(() =
 export interface FunctionGetDynamicConcurrencyResponse {
   concurrency?: number;
 }
-export const FunctionGetDynamicConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetDynamicConcurrencyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     concurrency: S.optional(S.Number),
   }),
@@ -1655,7 +1651,7 @@ export const FunctionGetDynamicConcurrencyResponse = /*@__PURE__*/ S.suspend(() 
 export interface FunctionGetFlashAuthTokenRequest {
   functionId?: string;
 }
-export const FunctionGetFlashAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetFlashAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(
@@ -1672,7 +1668,7 @@ export const FunctionGetFlashAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetFlashAuthTokenResponse {
   token?: string;
 }
-export const FunctionGetFlashAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetFlashAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -1683,7 +1679,7 @@ export const FunctionGetFlashAuthTokenResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetSchedulingParamsRequest {
   functionId?: string;
 }
-export const FunctionGetSchedulingParamsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetSchedulingParamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(
@@ -1705,7 +1701,7 @@ export interface UserActionInfo {
   /** Resolved display name, could be a user or service user. */
   requestedBy?: string;
 }
-export const UserActionInfo = /*@__PURE__*/ S.suspend(() =>
+const UserActionInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     serviceUserId: S.optional(S.String),
@@ -1715,7 +1711,7 @@ export const UserActionInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserActionInfo" }) as any as S.Schema<UserActionInfo>;
 
 export type UserActionInfoMap = { [key: string]: UserActionInfo | undefined };
-export const UserActionInfoMap = /*@__PURE__*/ S.Record(
+const UserActionInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   UserActionInfo,
 ) as any as S.Schema<UserActionInfoMap>;
@@ -1733,7 +1729,7 @@ export interface AutoscalerConfiguration {
   /** The merge of all overrides that were used to create the current configuration. */
   overrideSettings?: AutoscalerSettings;
 }
-export const AutoscalerConfiguration = /*@__PURE__*/ S.suspend(() =>
+const AutoscalerConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     settings: S.optional(AutoscalerSettings),
     overrideEvents: S.optional(UserActionInfoMap),
@@ -1746,7 +1742,7 @@ export const AutoscalerConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetSchedulingParamsResponse {
   autoscalerConfiguration?: AutoscalerConfiguration;
 }
-export const FunctionGetSchedulingParamsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetSchedulingParamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoscalerConfiguration: S.optional(AutoscalerConfiguration),
   }),
@@ -1757,7 +1753,7 @@ export const FunctionGetSchedulingParamsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionGetSerializedRequest {
   functionId?: string;
 }
-export const FunctionGetSerializedRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetSerializedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(
@@ -1771,7 +1767,7 @@ export interface FunctionGetSerializedResponse {
   functionSerialized?: string;
   classSerialized?: string;
 }
-export const FunctionGetSerializedResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetSerializedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionSerialized: S.optional(S.String),
     classSerialized: S.optional(S.String),
@@ -1790,7 +1786,7 @@ export interface FunctionGetTimeRangeStatsRequest {
   /** Filter stats for a specific container */
   containerId?: string;
 }
-export const FunctionGetTimeRangeStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetTimeRangeStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     since: S.optional(S.String),
@@ -1813,7 +1809,7 @@ export interface StatsPercentile {
   percentileBasisPoints?: number;
   value?: number;
 }
-export const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
+const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     percentileBasisPoints: S.optional(S.Number),
     value: S.optional(S.Number),
@@ -1821,7 +1817,7 @@ export const StatsPercentile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatsPercentile" }) as any as S.Schema<StatsPercentile>;
 
 export type StatsPercentileList = Array<StatsPercentile>;
-export const StatsPercentileList = /*@__PURE__*/ S.Array(
+const StatsPercentileList = /*@__PURE__*/ S.Array(
   StatsPercentile,
 ) as any as S.Schema<StatsPercentileList>;
 
@@ -1830,7 +1826,7 @@ export interface StatsPercentileDistribution {
   unit?: string;
   percentiles?: StatsPercentileList;
 }
-export const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
+const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unit: S.optional(S.String),
     percentiles: S.optional(StatsPercentileList),
@@ -1842,7 +1838,7 @@ export const StatsPercentileDistribution = /*@__PURE__*/ S.suspend(() =>
 export type StatsPercentileDistributionMap = {
   [key: string]: StatsPercentileDistribution | undefined;
 };
-export const StatsPercentileDistributionMap = /*@__PURE__*/ S.Record(
+const StatsPercentileDistributionMap = /*@__PURE__*/ S.Record(
   S.String,
   StatsPercentileDistribution,
 ) as any as S.Schema<StatsPercentileDistributionMap>;
@@ -1870,7 +1866,7 @@ export interface FunctionGetTimeRangeStatsResponse {
   /** Number of containers that were active (published heartbeats) in the time range. */
   containerTotalCount?: string;
 }
-export const FunctionGetTimeRangeStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionGetTimeRangeStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     since: S.optional(S.String),
     until: S.optional(S.String),
@@ -1894,7 +1890,7 @@ export interface FunctionVariantCursor {
   createdBefore?: number;
   functionId?: string;
 }
-export const FunctionVariantCursor = /*@__PURE__*/ S.suspend(() =>
+const FunctionVariantCursor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdBefore: S.optional(S.Number),
     functionId: S.optional(S.String),
@@ -1906,7 +1902,7 @@ export interface FunctionListVariantsRequest {
   cursor?: FunctionVariantCursor;
   limit?: number;
 }
-export const FunctionListVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionListVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     cursor: S.optional(FunctionVariantCursor),
@@ -1923,7 +1919,7 @@ export interface FunctionVariantInfo {
   serializedParams?: string;
   functionOptions?: FunctionOptions;
 }
-export const FunctionVariantInfo = /*@__PURE__*/ S.suspend(() =>
+const FunctionVariantInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     serializedParams: S.optional(S.String),
@@ -1932,7 +1928,7 @@ export const FunctionVariantInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionVariantInfo" }) as any as S.Schema<FunctionVariantInfo>;
 
 export type FunctionVariantInfoList = Array<FunctionVariantInfo>;
-export const FunctionVariantInfoList = /*@__PURE__*/ S.Array(
+const FunctionVariantInfoList = /*@__PURE__*/ S.Array(
   FunctionVariantInfo,
 ) as any as S.Schema<FunctionVariantInfoList>;
 
@@ -1943,7 +1939,7 @@ export interface FunctionListVariantsResponse {
   /** Set by the server when it ordered the variants by how many tasks each is running, busiest first. */
   orderedByTaskCount?: boolean;
 }
-export const FunctionListVariantsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionListVariantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     infos: S.optional(FunctionVariantInfoList),
     nextCursor: S.optional(FunctionVariantCursor),
@@ -1957,7 +1953,7 @@ export type FunctionCallType =
   | "FUNCTION_CALL_TYPE_UNSPECIFIED"
   | "FUNCTION_CALL_TYPE_UNARY"
   | "FUNCTION_CALL_TYPE_MAP";
-export const FunctionCallType = S.String;
+const FunctionCallType = S.String;
 
 export interface FunctionInput {
   /** serialized (args, kwargs). */
@@ -1968,7 +1964,7 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
-export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(S.String),
     argsBlobId: S.optional(S.String),
@@ -1979,7 +1975,7 @@ export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionInput" }) as any as S.Schema<FunctionInput>;
 
 export type BlobUploadResultOutcome = "OUTCOME_UNSPECIFIED" | "OUTCOME_SUCCESS" | "OUTCOME_FAILURE";
-export const BlobUploadResultOutcome = S.String;
+const BlobUploadResultOutcome = S.String;
 
 export interface BlobUploadResult {
   blobId?: string;
@@ -1987,7 +1983,7 @@ export interface BlobUploadResult {
   outcome?: BlobUploadResultOutcome | (string & {});
   throughputBytesS?: string;
 }
-export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
+const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blobId: S.optional(S.String),
     outcome: S.optional(BlobUploadResultOutcome),
@@ -1996,7 +1992,7 @@ export const BlobUploadResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BlobUploadResult" }) as any as S.Schema<BlobUploadResult>;
 
 export type BlobUploadResultList = Array<BlobUploadResult>;
-export const BlobUploadResultList = /*@__PURE__*/ S.Array(
+const BlobUploadResultList = /*@__PURE__*/ S.Array(
   BlobUploadResult,
 ) as any as S.Schema<BlobUploadResultList>;
 
@@ -2008,7 +2004,7 @@ export interface FunctionPutInputsItem {
   r2ThroughputBytesS?: string;
   blobUploadResults?: BlobUploadResultList;
 }
-export const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idx: S.optional(S.Number),
     input: S.optional(FunctionInput),
@@ -2019,7 +2015,7 @@ export const FunctionPutInputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionPutInputsItem" }) as any as S.Schema<FunctionPutInputsItem>;
 
 export type FunctionPutInputsItemList = Array<FunctionPutInputsItem>;
-export const FunctionPutInputsItemList = /*@__PURE__*/ S.Array(
+const FunctionPutInputsItemList = /*@__PURE__*/ S.Array(
   FunctionPutInputsItem,
 ) as any as S.Schema<FunctionPutInputsItemList>;
 
@@ -2029,7 +2025,7 @@ export type FunctionCallInvocationType =
   | "FUNCTION_CALL_INVOCATION_TYPE_ASYNC_LEGACY"
   | "FUNCTION_CALL_INVOCATION_TYPE_ASYNC"
   | "FUNCTION_CALL_INVOCATION_TYPE_SYNC";
-export const FunctionCallInvocationType = S.String;
+const FunctionCallInvocationType = S.String;
 
 export interface FunctionMapRequest {
   functionId?: string;
@@ -2040,7 +2036,7 @@ export interface FunctionMapRequest {
   functionCallInvocationType?: FunctionCallInvocationType | (string & {});
   fromSpawnMap?: boolean;
 }
-export const FunctionMapRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -2057,7 +2053,7 @@ export interface FunctionPutInputsResponseItem {
   inputId?: string;
   inputJwt?: string;
 }
-export const FunctionPutInputsResponseItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsResponseItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idx: S.optional(S.Number),
     inputId: S.optional(S.String),
@@ -2068,7 +2064,7 @@ export const FunctionPutInputsResponseItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionPutInputsResponseItem>;
 
 export type FunctionPutInputsResponseItemList = Array<FunctionPutInputsResponseItem>;
-export const FunctionPutInputsResponseItemList = /*@__PURE__*/ S.Array(
+const FunctionPutInputsResponseItemList = /*@__PURE__*/ S.Array(
   FunctionPutInputsResponseItem,
 ) as any as S.Schema<FunctionPutInputsResponseItemList>;
 
@@ -2080,7 +2076,7 @@ export interface FunctionMapResponse {
   syncClientRetriesEnabled?: boolean;
   maxInputsOutstanding?: number;
 }
-export const FunctionMapResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     pipelinedInputs: S.optional(FunctionPutInputsResponseItemList),
@@ -2103,7 +2099,7 @@ export interface FunctionPrecreateRequest {
   supportedInputFormats?: DataFormatList;
   supportedOutputFormats?: DataFormatList;
 }
-export const FunctionPrecreateRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionPrecreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     functionName: S.optional(S.String),
@@ -2123,7 +2119,7 @@ export interface FunctionPrecreateResponse {
   functionId?: string;
   handleMetadata?: FunctionHandleMetadata;
 }
-export const FunctionPrecreateResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionPrecreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     handleMetadata: S.optional(FunctionHandleMetadata),
@@ -2137,7 +2133,7 @@ export interface FunctionPutInputsRequest {
   functionCallId?: string;
   inputs?: FunctionPutInputsItemList;
 }
-export const FunctionPutInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     functionCallId: S.optional(S.String),
@@ -2150,7 +2146,7 @@ export const FunctionPutInputsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionPutInputsResponse {
   inputs?: FunctionPutInputsResponseItemList;
 }
-export const FunctionPutInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(FunctionPutInputsResponseItemList),
   }),
@@ -2178,7 +2174,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -2206,7 +2202,7 @@ export interface FunctionPutOutputsItem {
   /** injected by the worker */
   fromInputPlane?: boolean;
 }
-export const FunctionPutOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputId: S.optional(S.String),
     result: S.optional(GenericResult),
@@ -2221,7 +2217,7 @@ export const FunctionPutOutputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionPutOutputsItem" }) as any as S.Schema<FunctionPutOutputsItem>;
 
 export type FunctionPutOutputsItemList = Array<FunctionPutOutputsItem>;
-export const FunctionPutOutputsItemList = /*@__PURE__*/ S.Array(
+const FunctionPutOutputsItemList = /*@__PURE__*/ S.Array(
   FunctionPutOutputsItem,
 ) as any as S.Schema<FunctionPutOutputsItemList>;
 
@@ -2229,7 +2225,7 @@ export interface FunctionPutOutputsRequest {
   outputs?: FunctionPutOutputsItemList;
   requestedAt?: number;
 }
-export const FunctionPutOutputsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionPutOutputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputs: S.optional(FunctionPutOutputsItemList),
     requestedAt: S.optional(S.Number),
@@ -2241,7 +2237,7 @@ export const FunctionPutOutputsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionPutOutputsRequest>;
 
 export interface FunctionPutOutputsResponse {}
-export const FunctionPutOutputsResponse =
+const FunctionPutOutputsResponse =
   CancelFunctionCallResponse as any as S.Schema<FunctionPutOutputsResponse>;
 
 /** Used for waypoints. */
@@ -2250,7 +2246,7 @@ export interface FunctionRetryInputsItem {
   input?: FunctionInput;
   retryCount?: number;
 }
-export const FunctionRetryInputsItem = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputJwt: S.optional(S.String),
     input: S.optional(FunctionInput),
@@ -2259,7 +2255,7 @@ export const FunctionRetryInputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FunctionRetryInputsItem" }) as any as S.Schema<FunctionRetryInputsItem>;
 
 export type FunctionRetryInputsItemList = Array<FunctionRetryInputsItem>;
-export const FunctionRetryInputsItemList = /*@__PURE__*/ S.Array(
+const FunctionRetryInputsItemList = /*@__PURE__*/ S.Array(
   FunctionRetryInputsItem,
 ) as any as S.Schema<FunctionRetryInputsItemList>;
 
@@ -2267,7 +2263,7 @@ export interface FunctionRetryInputsRequest {
   functionCallJwt?: string;
   inputs?: FunctionRetryInputsItemList;
 }
-export const FunctionRetryInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallJwt: S.optional(S.String),
     inputs: S.optional(FunctionRetryInputsItemList),
@@ -2281,7 +2277,7 @@ export const FunctionRetryInputsRequest = /*@__PURE__*/ S.suspend(() =>
 export interface FunctionRetryInputsResponse {
   inputJwts?: StringList;
 }
-export const FunctionRetryInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionRetryInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputJwts: S.optional(StringList),
   }),
@@ -2290,7 +2286,7 @@ export const FunctionRetryInputsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionRetryInputsResponse>;
 
 export interface FunctionStartPtyShellRequest {}
-export const FunctionStartPtyShellRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionStartPtyShellRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/FunctionStartPtyShell", code: 200 }),
   ),
@@ -2299,7 +2295,7 @@ export const FunctionStartPtyShellRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionStartPtyShellRequest>;
 
 export interface FunctionStartPtyShellResponse {}
-export const FunctionStartPtyShellResponse =
+const FunctionStartPtyShellResponse =
   CancelFunctionCallResponse as any as S.Schema<FunctionStartPtyShellResponse>;
 
 export interface FunctionUpdateSchedulingParamsRequest {
@@ -2307,7 +2303,7 @@ export interface FunctionUpdateSchedulingParamsRequest {
   warmPoolSizeOverride?: number;
   settings?: AutoscalerSettings;
 }
-export const FunctionUpdateSchedulingParamsRequest = /*@__PURE__*/ S.suspend(() =>
+const FunctionUpdateSchedulingParamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     warmPoolSizeOverride: S.optional(S.Number),
@@ -2326,7 +2322,7 @@ export const FunctionUpdateSchedulingParamsRequest = /*@__PURE__*/ S.suspend(() 
 export interface FunctionUpdateSchedulingParamsResponse {
   currentSettings?: AutoscalerSettings;
 }
-export const FunctionUpdateSchedulingParamsResponse = /*@__PURE__*/ S.suspend(() =>
+const FunctionUpdateSchedulingParamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentSettings: S.optional(AutoscalerSettings),
   }),
@@ -2341,7 +2337,7 @@ export interface GetFunctionRequest {
   environmentName?: string;
   appVersion?: number;
 }
-export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appName: S.optional(S.String),
     objectTag: S.optional(S.String),
@@ -2356,7 +2352,7 @@ export interface GetFunctionResponse {
   serverWarnings?: WarningList;
   function?: FunctionData;
 }
-export const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     handleMetadata: S.optional(FunctionHandleMetadata),
@@ -2374,7 +2370,7 @@ export interface GetFunctionInputsRequest {
   /** Maximum number of inputs to fetch at once */
   batchLingerMs?: string;
 }
-export const GetFunctionInputsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionInputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     inputConcurrency: S.optional(S.Number),
@@ -2398,7 +2394,7 @@ export interface GetFunctionInputsItem {
   attemptToken?: string;
   fromInputPlane?: boolean;
 }
-export const GetFunctionInputsItem = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionInputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputId: S.optional(S.String),
     input: S.optional(FunctionInput),
@@ -2413,7 +2409,7 @@ export const GetFunctionInputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFunctionInputsItem" }) as any as S.Schema<GetFunctionInputsItem>;
 
 export type GetFunctionInputsItemList = Array<GetFunctionInputsItem>;
-export const GetFunctionInputsItemList = /*@__PURE__*/ S.Array(
+const GetFunctionInputsItemList = /*@__PURE__*/ S.Array(
   GetFunctionInputsItem,
 ) as any as S.Schema<GetFunctionInputsItemList>;
 
@@ -2421,7 +2417,7 @@ export interface GetFunctionInputsResponse {
   inputs?: GetFunctionInputsItemList;
   rateLimitSleepDuration?: number;
 }
-export const GetFunctionInputsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionInputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inputs: S.optional(GetFunctionInputsItemList),
     rateLimitSleepDuration: S.optional(S.Number),
@@ -2444,7 +2440,7 @@ export interface GetFunctionOutputsRequest {
   /** for async batch requests. this indicates which index to start from. */
   endIdx?: number;
 }
-export const GetFunctionOutputsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionOutputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCallId: S.optional(S.String),
     maxValues: S.optional(S.Number),
@@ -2463,7 +2459,7 @@ export const GetFunctionOutputsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFunctionOutputsRequest>;
 
 export type IntegerList = Array<number>;
-export const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
+const IntegerList = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IntegerList>;
 
 /** How long to sleep before requesting another input. */
 export interface GetFunctionOutputsItem {
@@ -2478,7 +2474,7 @@ export interface GetFunctionOutputsItem {
   retryCount?: number;
   fcTraceTag?: string;
 }
-export const GetFunctionOutputsItem = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionOutputsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     idx: S.optional(S.Number),
@@ -2493,7 +2489,7 @@ export const GetFunctionOutputsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetFunctionOutputsItem" }) as any as S.Schema<GetFunctionOutputsItem>;
 
 export type GetFunctionOutputsItemList = Array<GetFunctionOutputsItem>;
-export const GetFunctionOutputsItemList = /*@__PURE__*/ S.Array(
+const GetFunctionOutputsItemList = /*@__PURE__*/ S.Array(
   GetFunctionOutputsItem,
 ) as any as S.Schema<GetFunctionOutputsItemList>;
 
@@ -2503,7 +2499,7 @@ export interface GetFunctionOutputsResponse {
   lastEntryId?: string;
   numUnfinishedInputs?: number;
 }
-export const GetFunctionOutputsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionOutputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     idxs: S.optional(IntegerList),
     outputs: S.optional(GetFunctionOutputsItemList),
@@ -2519,7 +2515,7 @@ export interface InvokeFunctionAsyncRequest {
   parentInputId?: string;
   input?: FunctionInput;
 }
-export const InvokeFunctionAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+const InvokeFunctionAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -2535,7 +2531,7 @@ export interface InvokeFunctionAsyncResponse {
   retryWithBlobUpload?: boolean;
   functionCallId?: string;
 }
-export const InvokeFunctionAsyncResponse = /*@__PURE__*/ S.suspend(() =>
+const InvokeFunctionAsyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     retryWithBlobUpload: S.optional(S.Boolean),
     functionCallId: S.optional(S.String),
@@ -2547,21 +2543,21 @@ export const InvokeFunctionAsyncResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ListFunctionCallRequest {
   functionId?: string;
 }
-export const ListFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionCallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/FunctionCallList", code: 200 })),
 ).annotate({ identifier: "ListFunctionCallRequest" }) as any as S.Schema<ListFunctionCallRequest>;
 
 export type FunctionCallInfoList = Array<FunctionCallInfo>;
-export const FunctionCallInfoList = /*@__PURE__*/ S.Array(
+const FunctionCallInfoList = /*@__PURE__*/ S.Array(
   FunctionCallInfo,
 ) as any as S.Schema<FunctionCallInfoList>;
 
 export interface ListFunctionCallResponse {
   functionCalls?: FunctionCallInfoList;
 }
-export const ListFunctionCallResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionCallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionCalls: S.optional(FunctionCallInfoList),
   }),

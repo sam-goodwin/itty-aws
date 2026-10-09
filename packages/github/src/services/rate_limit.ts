@@ -18,7 +18,7 @@ export class NotFound
   ) {}
 
 export interface GetRequest {}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/rate_limit", code: 200 })),
 ).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
 
@@ -28,7 +28,7 @@ export interface RateLimit2 {
   reset: number;
   used: number;
 }
-export const RateLimit2 = /*@__PURE__*/ S.suspend(() =>
+const RateLimit2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.Number,
     remaining: S.Number,
@@ -51,7 +51,7 @@ export interface RateLimitOverviewResources {
   code_scanning_autofix?: RateLimit2;
   copilot_usage_records?: RateLimit2;
 }
-export const RateLimitOverviewResources = /*@__PURE__*/ S.suspend(() =>
+const RateLimitOverviewResources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     core: RateLimit2,
     graphql: S.optional(RateLimit2),
@@ -75,7 +75,7 @@ export interface RateLimitOverview {
   resources: RateLimitOverviewResources;
   rate: RateLimit2;
 }
-export const RateLimitOverview = /*@__PURE__*/ S.suspend(() =>
+const RateLimitOverview = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: RateLimitOverviewResources,
     rate: RateLimit2,

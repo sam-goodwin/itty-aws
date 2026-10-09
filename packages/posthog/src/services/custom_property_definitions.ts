@@ -18,11 +18,11 @@ export type CustomPropertyDisplayTypeEnum =
   | "datetime"
   | "boolean"
   | "select";
-export const CustomPropertyDisplayTypeEnum = S.String;
+const CustomPropertyDisplayTypeEnum = S.String;
 
 /** * `account` - account * `person` - person * `group` - group */
 export type CustomPropertyDefinitionTargetTypeEnum = "account" | "person" | "group";
-export const CustomPropertyDefinitionTargetTypeEnum = S.String;
+const CustomPropertyDefinitionTargetTypeEnum = S.String;
 
 /** * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
 export type CustomPropertyOptionColorEnum =
@@ -36,7 +36,7 @@ export type CustomPropertyOptionColorEnum =
   | "preset-8"
   | "preset-9"
   | "preset-10";
-export const CustomPropertyOptionColorEnum = S.String;
+const CustomPropertyOptionColorEnum = S.String;
 
 /** An allowed value of a select custom property. */
 export interface CustomPropertyOption {
@@ -47,7 +47,7 @@ export interface CustomPropertyOption {
   /** Preset color token used to render the option ('preset-1' through 'preset-10'). * `preset-1` - preset-1 * `preset-2` - preset-2 * `preset-3` - preset-3 * `preset-4` - preset-4 * `preset-5` - preset-5 * `preset-6` - preset-6 * `preset-7` - preset-7 * `preset-8` - preset-8 * `preset-9` - preset-9 * `preset-10` - preset-10 */
   color: CustomPropertyOptionColorEnum | (string & {});
 }
-export const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     label: S.String,
@@ -57,7 +57,7 @@ export const CustomPropertyOption = /*@__PURE__*/ S.suspend(() =>
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CreateCustomPropertyDefinitionRequestOptionsList = Array<CustomPropertyOption>;
-export const CreateCustomPropertyDefinitionRequestOptionsList = /*@__PURE__*/ S.Array(
+const CreateCustomPropertyDefinitionRequestOptionsList = /*@__PURE__*/ S.Array(
   CustomPropertyOption,
 ) as any as S.Schema<CreateCustomPropertyDefinitionRequestOptionsList>;
 
@@ -79,7 +79,7 @@ export interface CreateCustomPropertyDefinitionRequest {
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: CreateCustomPropertyDefinitionRequestOptionsList | null;
 }
-export const CreateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -102,16 +102,16 @@ export const CreateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type CustomPropertyDefinitionOptionsList = Array<CustomPropertyOption>;
-export const CustomPropertyDefinitionOptionsList =
+const CustomPropertyDefinitionOptionsList =
   CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<CustomPropertyDefinitionOptionsList>;
 
 /** * `tracked` - tracked * `ignored` - ignored */
 export type SyncSegmentEnum = "tracked" | "ignored";
-export const SyncSegmentEnum = S.String;
+const SyncSegmentEnum = S.String;
 
 /** * `staging` - staging * `dispatching` - dispatching * `syncing` - syncing * `completed` - completed */
 export type SyncPhaseEnum = "staging" | "dispatching" | "syncing" | "completed";
-export const SyncPhaseEnum = S.String;
+const SyncPhaseEnum = S.String;
 
 /** One warehouse-backed custom property sync run. */
 export interface CustomPropertySyncRun {
@@ -153,7 +153,7 @@ export interface CustomPropertySyncRun {
   /** When the run row was recorded. */
   created_at: string;
 }
-export const CustomPropertySyncRun = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySyncRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     job_id: S.NullOr(S.String),
@@ -218,7 +218,7 @@ export interface CustomPropertySource {
   /** View-bound person and group sources only: the materialized view's name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources. */
   saved_query_name: string | null;
 }
-export const CustomPropertySource = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertySource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     definition: S.String,
@@ -255,7 +255,7 @@ export interface CustomPropertyReference {
   /** Kind of reference. Currently always 'workflow'. */
   type: string;
 }
-export const CustomPropertyReference = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -266,7 +266,7 @@ export const CustomPropertyReference = /*@__PURE__*/ S.suspend(() =>
 
 /** Workflows that use this property, resolved by definition id when the caller can view workflows. */
 export type CustomPropertyDefinitionReferencesList = Array<CustomPropertyReference>;
-export const CustomPropertyDefinitionReferencesList = /*@__PURE__*/ S.Array(
+const CustomPropertyDefinitionReferencesList = /*@__PURE__*/ S.Array(
   CustomPropertyReference,
 ) as any as S.Schema<CustomPropertyDefinitionReferencesList>;
 
@@ -299,7 +299,7 @@ export interface CustomPropertyDefinition {
   /** Whether a workflow updates this property. Always returned, even when workflow details are hidden. */
   has_workflow_reference: boolean;
 }
-export const CustomPropertyDefinition = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -324,7 +324,7 @@ export interface CustomPropertyDefinitionsDestroyRequest {
   project_id: string;
   id: string;
 }
-export const CustomPropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -340,7 +340,7 @@ export const CustomPropertyDefinitionsDestroyRequest = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<CustomPropertyDefinitionsDestroyRequest>;
 
 export interface CustomPropertyDefinitionsDestroyResponse {}
-export const CustomPropertyDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyDefinitionsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "CustomPropertyDefinitionsDestroyResponse",
@@ -351,7 +351,7 @@ export interface GetCustomPropertyDefinitionRequest {
   project_id: string;
   id: string;
 }
-export const GetCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -374,7 +374,7 @@ export interface GetCustomPropertyDefinitionsValueRequest {
   /** Case-insensitive substring to narrow the suggestions. */
   value?: string;
 }
-export const GetCustomPropertyDefinitionsValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomPropertyDefinitionsValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     key: S.String.pipe(T.Query()),
@@ -395,7 +395,7 @@ export interface CustomPropertyValueSuggestion {
   /** A suggested value for the custom property. */
   name: string;
 }
-export const CustomPropertyValueSuggestion = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyValueSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
   }),
@@ -406,7 +406,7 @@ export const CustomPropertyValueSuggestion = /*@__PURE__*/ S.suspend(() =>
 /** Suggested values matching the search input. */
 export type CustomPropertyValueSuggestionsResponseResultsList =
   Array<CustomPropertyValueSuggestion>;
-export const CustomPropertyValueSuggestionsResponseResultsList = /*@__PURE__*/ S.Array(
+const CustomPropertyValueSuggestionsResponseResultsList = /*@__PURE__*/ S.Array(
   CustomPropertyValueSuggestion,
 ) as any as S.Schema<CustomPropertyValueSuggestionsResponseResultsList>;
 
@@ -417,7 +417,7 @@ export interface CustomPropertyValueSuggestionsResponse {
   /** Always false -- present for compatibility with the property-values consumer. */
   refreshing: boolean;
 }
-export const CustomPropertyValueSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const CustomPropertyValueSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: CustomPropertyValueSuggestionsResponseResultsList,
     refreshing: S.Boolean,
@@ -434,7 +434,7 @@ export interface ListCustomPropertyDefinitionsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListCustomPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCustomPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -451,7 +451,7 @@ export const ListCustomPropertyDefinitionsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<ListCustomPropertyDefinitionsRequest>;
 
 export type PaginatedCustomPropertyDefinitionListResultsList = Array<CustomPropertyDefinition>;
-export const PaginatedCustomPropertyDefinitionListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedCustomPropertyDefinitionListResultsList = /*@__PURE__*/ S.Array(
   CustomPropertyDefinition,
 ) as any as S.Schema<PaginatedCustomPropertyDefinitionListResultsList>;
 
@@ -461,7 +461,7 @@ export interface PaginatedCustomPropertyDefinitionList {
   previous?: string | null;
   results: PaginatedCustomPropertyDefinitionListResultsList;
 }
-export const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -474,7 +474,7 @@ export const PaginatedCustomPropertyDefinitionList = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type UpdateCustomPropertyDefinitionRequestOptionsList = Array<CustomPropertyOption>;
-export const UpdateCustomPropertyDefinitionRequestOptionsList =
+const UpdateCustomPropertyDefinitionRequestOptionsList =
   CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<UpdateCustomPropertyDefinitionRequestOptionsList>;
 
 export interface UpdateCustomPropertyDefinitionRequest {
@@ -496,7 +496,7 @@ export interface UpdateCustomPropertyDefinitionRequest {
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: UpdateCustomPropertyDefinitionRequestOptionsList | null;
 }
-export const UpdateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -520,7 +520,7 @@ export const UpdateCustomPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() 
 
 /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
 export type UpdateCustomPropertyDefinitionsPartialRequestOptionsList = Array<CustomPropertyOption>;
-export const UpdateCustomPropertyDefinitionsPartialRequestOptionsList =
+const UpdateCustomPropertyDefinitionsPartialRequestOptionsList =
   CreateCustomPropertyDefinitionRequestOptionsList as any as S.Schema<UpdateCustomPropertyDefinitionsPartialRequestOptionsList>;
 
 export interface UpdateCustomPropertyDefinitionsPartialRequest {
@@ -542,7 +542,7 @@ export interface UpdateCustomPropertyDefinitionsPartialRequest {
   /** For select properties: the allowed options. Required (non-empty) when display_type is 'select'; cleared server-side for other types. */
   options?: UpdateCustomPropertyDefinitionsPartialRequestOptionsList | null;
 }
-export const UpdateCustomPropertyDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomPropertyDefinitionsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),

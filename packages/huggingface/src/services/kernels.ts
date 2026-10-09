@@ -15,7 +15,7 @@ export interface ApproveKernelAccessRequest {
   namespace: string;
   sendEmail?: boolean;
 }
-export const ApproveKernelAccessRequest = /*@__PURE__*/ S.suspend(() =>
+const ApproveKernelAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String,
     sendEmail: S.optional(S.Boolean),
@@ -25,18 +25,18 @@ export const ApproveKernelAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApproveKernelAccessRequest>;
 
 export interface ApproveKernelAccessResponse {}
-export const ApproveKernelAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ApproveKernelAccessResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ApproveKernelAccessResponse",
 }) as any as S.Schema<ApproveKernelAccessResponse>;
 
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
-export const DuplicateXetFilesRequestTargetType = S.String;
+const DuplicateXetFilesRequestTargetType = S.String;
 
 export interface DuplicateXetFilesRequestTarget {
   type: DuplicateXetFilesRequestTargetType | (string & {});
   name: string;
 }
-export const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DuplicateXetFilesRequestTargetType,
     name: S.String,
@@ -50,7 +50,7 @@ export interface DuplicateXetFilesRequestFilesItem {
   sha256: string;
   filename?: string;
 }
-export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -61,7 +61,7 @@ export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateXetFilesRequestFilesItem>;
 
 export type DuplicateXetFilesRequestFilesList = Array<DuplicateXetFilesRequestFilesItem>;
-export const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesRequestFilesItem,
 ) as any as S.Schema<DuplicateXetFilesRequestFilesList>;
 
@@ -71,7 +71,7 @@ export interface DuplicateXetFilesRequest {
   target: DuplicateXetFilesRequestTarget;
   files: DuplicateXetFilesRequestFilesList;
 }
-export const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -94,7 +94,7 @@ export interface DuplicateXetFilesResponseFailedItem {
   /** Error message */
   error: string;
 }
-export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -106,7 +106,7 @@ export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-file failures */
 export type DuplicateXetFilesResponseFailedList = Array<DuplicateXetFilesResponseFailedItem>;
-export const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesResponseFailedItem,
 ) as any as S.Schema<DuplicateXetFilesResponseFailedList>;
 
@@ -120,7 +120,7 @@ export interface DuplicateXetFilesResponse {
   /** Per-file failures */
   failed: DuplicateXetFilesResponseFailedList;
 }
-export const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     processed: S.Number,
@@ -135,7 +135,7 @@ export interface GetKernelRequest {
   namespace: string;
   repo: string;
 }
-export const GetKernelRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKernelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -143,10 +143,8 @@ export const GetKernelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKernelRequest" }) as any as S.Schema<GetKernelRequest>;
 
 export type GetKernelResponseGatedCase1 = "auto" | "manual";
-export const GetKernelResponseGatedCase1 = S.String;
-
 export type GetKernelResponseGated = boolean | GetKernelResponseGatedCase1;
-export const GetKernelResponseGated = S.Unknown as any as S.Schema<GetKernelResponseGated>;
+const GetKernelResponseGated = S.Unknown as any as S.Schema<GetKernelResponseGated>;
 
 export interface GetKernelResponseResourceGroup {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -154,7 +152,7 @@ export interface GetKernelResponseResourceGroup {
   name: string;
   numUsers?: number;
 }
-export const GetKernelResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
+const GetKernelResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -165,8 +163,6 @@ export const GetKernelResponseResourceGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetKernelResponseResourceGroup>;
 
 export type GetKernelResponseAuthorDataCase0Plan = "team" | "enterprise" | "plus" | "academia";
-export const GetKernelResponseAuthorDataCase0Plan = S.String;
-
 export interface GetKernelResponseAuthorDataCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -181,39 +177,17 @@ export interface GetKernelResponseAuthorDataCase0 {
   plan?: GetKernelResponseAuthorDataCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetKernelResponseAuthorDataCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    plan: S.optional(GetKernelResponseAuthorDataCase0Plan),
-    isUserFollowing: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GetKernelResponseAuthorDataCase0",
-}) as any as S.Schema<GetKernelResponseAuthorDataCase0>;
-
 export type GetKernelResponseAuthorDataCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetKernelResponseAuthorDataCase1PrimaryOrgPlan = S.String;
-
 export type GetKernelResponseAuthorDataCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetKernelResponseAuthorDataCase1PrimaryOrgUserRole = S.String;
-
 export interface GetKernelResponseAuthorDataCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -227,24 +201,6 @@ export interface GetKernelResponseAuthorDataCase1PrimaryOrg {
   userRole?: GetKernelResponseAuthorDataCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetKernelResponseAuthorDataCase1PrimaryOrg = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    type: S.String,
-    isHf: S.Boolean,
-    isFollowing: S.optional(S.Boolean),
-    plan: S.optional(GetKernelResponseAuthorDataCase1PrimaryOrgPlan),
-    details: S.optional(S.String),
-    hasPrivateMembersList: S.optional(S.Boolean),
-    userRole: S.optional(GetKernelResponseAuthorDataCase1PrimaryOrgUserRole),
-    numUsers: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GetKernelResponseAuthorDataCase1PrimaryOrg",
-}) as any as S.Schema<GetKernelResponseAuthorDataCase1PrimaryOrg>;
-
 export interface GetKernelResponseAuthorDataCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -260,33 +216,13 @@ export interface GetKernelResponseAuthorDataCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetKernelResponseAuthorDataCase1PrimaryOrg;
 }
-export const GetKernelResponseAuthorDataCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _id: S.String,
-    avatarUrl: S.String,
-    fullname: S.String,
-    name: S.String,
-    isHf: S.Boolean,
-    isHfAdmin: S.Boolean,
-    isMod: S.Boolean,
-    followerCount: S.optional(S.Number),
-    type: S.String,
-    isPro: S.Boolean,
-    isUserFollowing: S.optional(S.Boolean),
-    primaryOrg: S.optional(GetKernelResponseAuthorDataCase1PrimaryOrg),
-  }),
-).annotate({
-  identifier: "GetKernelResponseAuthorDataCase1",
-}) as any as S.Schema<GetKernelResponseAuthorDataCase1>;
-
 export type GetKernelResponseAuthorData =
   | GetKernelResponseAuthorDataCase0
   | GetKernelResponseAuthorDataCase1;
-export const GetKernelResponseAuthorData =
-  S.Unknown as any as S.Schema<GetKernelResponseAuthorData>;
+const GetKernelResponseAuthorData = S.Unknown as any as S.Schema<GetKernelResponseAuthorData>;
 
 export type GetKernelResponseFilesList = Array<string>;
-export const GetKernelResponseFilesList = /*@__PURE__*/ S.Array(
+const GetKernelResponseFilesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<GetKernelResponseFilesList>;
 
@@ -297,11 +233,11 @@ export type GetKernelResponseSupportedDriverFamiliesItem =
   | "xpu"
   | "cpu"
   | "webgpu";
-export const GetKernelResponseSupportedDriverFamiliesItem = S.String;
+const GetKernelResponseSupportedDriverFamiliesItem = S.String;
 
 export type GetKernelResponseSupportedDriverFamiliesList =
   Array<GetKernelResponseSupportedDriverFamiliesItem>;
-export const GetKernelResponseSupportedDriverFamiliesList = /*@__PURE__*/ S.Array(
+const GetKernelResponseSupportedDriverFamiliesList = /*@__PURE__*/ S.Array(
   GetKernelResponseSupportedDriverFamiliesItem,
 ) as any as S.Schema<GetKernelResponseSupportedDriverFamiliesList>;
 
@@ -323,7 +259,7 @@ export interface GetKernelResponse {
   supportedDriverFamilies?: GetKernelResponseSupportedDriverFamiliesList;
   trustedPublisher?: boolean;
 }
-export const GetKernelResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKernelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     author: S.String,
@@ -349,7 +285,7 @@ export interface GetKernelRevisionRequest {
   repo: string;
   rev: string;
 }
-export const GetKernelRevisionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetKernelRevisionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -360,22 +296,15 @@ export const GetKernelRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetKernelRevisionRequest" }) as any as S.Schema<GetKernelRevisionRequest>;
 
 export type GetKernelRevisionResponseGatedCase1 = "auto" | "manual";
-export const GetKernelRevisionResponseGatedCase1 = S.String;
-
 export type GetKernelRevisionResponseGated = boolean | GetKernelRevisionResponseGatedCase1;
-export const GetKernelRevisionResponseGated =
-  S.Unknown as any as S.Schema<GetKernelRevisionResponseGated>;
+const GetKernelRevisionResponseGated = S.Unknown as any as S.Schema<GetKernelRevisionResponseGated>;
 
 export type GetKernelRevisionResponseResourceGroup = GetKernelResponseResourceGroup;
-export const GetKernelRevisionResponseResourceGroup = GetKernelResponseResourceGroup;
-
 export type GetKernelRevisionResponseAuthorDataCase0Plan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetKernelRevisionResponseAuthorDataCase0Plan = S.String;
-
 export interface GetKernelRevisionResponseAuthorDataCase0 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -390,24 +319,17 @@ export interface GetKernelRevisionResponseAuthorDataCase0 {
   plan?: GetKernelRevisionResponseAuthorDataCase0Plan;
   isUserFollowing?: boolean;
 }
-export const GetKernelRevisionResponseAuthorDataCase0 =
-  GetKernelResponseAuthorDataCase0 as any as S.Schema<GetKernelRevisionResponseAuthorDataCase0>;
-
 export type GetKernelRevisionResponseAuthorDataCase1PrimaryOrgPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-export const GetKernelRevisionResponseAuthorDataCase1PrimaryOrgPlan = S.String;
-
 export type GetKernelRevisionResponseAuthorDataCase1PrimaryOrgUserRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-export const GetKernelRevisionResponseAuthorDataCase1PrimaryOrgUserRole = S.String;
-
 export interface GetKernelRevisionResponseAuthorDataCase1PrimaryOrg {
   avatarUrl: string;
   fullname: string;
@@ -421,9 +343,6 @@ export interface GetKernelRevisionResponseAuthorDataCase1PrimaryOrg {
   userRole?: GetKernelRevisionResponseAuthorDataCase1PrimaryOrgUserRole;
   numUsers?: number;
 }
-export const GetKernelRevisionResponseAuthorDataCase1PrimaryOrg =
-  GetKernelResponseAuthorDataCase1PrimaryOrg as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1PrimaryOrg>;
-
 export interface GetKernelRevisionResponseAuthorDataCase1 {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -439,17 +358,14 @@ export interface GetKernelRevisionResponseAuthorDataCase1 {
   isUserFollowing?: boolean;
   primaryOrg?: GetKernelRevisionResponseAuthorDataCase1PrimaryOrg;
 }
-export const GetKernelRevisionResponseAuthorDataCase1 =
-  GetKernelResponseAuthorDataCase1 as any as S.Schema<GetKernelRevisionResponseAuthorDataCase1>;
-
 export type GetKernelRevisionResponseAuthorData =
   | GetKernelRevisionResponseAuthorDataCase0
   | GetKernelRevisionResponseAuthorDataCase1;
-export const GetKernelRevisionResponseAuthorData =
+const GetKernelRevisionResponseAuthorData =
   S.Unknown as any as S.Schema<GetKernelRevisionResponseAuthorData>;
 
 export type GetKernelRevisionResponseFilesList = Array<string>;
-export const GetKernelRevisionResponseFilesList =
+const GetKernelRevisionResponseFilesList =
   GetKernelResponseFilesList as any as S.Schema<GetKernelRevisionResponseFilesList>;
 
 export type GetKernelRevisionResponseSupportedDriverFamiliesItem =
@@ -459,11 +375,9 @@ export type GetKernelRevisionResponseSupportedDriverFamiliesItem =
   | "xpu"
   | "cpu"
   | "webgpu";
-export const GetKernelRevisionResponseSupportedDriverFamiliesItem = S.String;
-
 export type GetKernelRevisionResponseSupportedDriverFamiliesList =
   Array<GetKernelRevisionResponseSupportedDriverFamiliesItem>;
-export const GetKernelRevisionResponseSupportedDriverFamiliesList =
+const GetKernelRevisionResponseSupportedDriverFamiliesList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<GetKernelRevisionResponseSupportedDriverFamiliesList>;
 
 export interface GetKernelRevisionResponse {
@@ -484,7 +398,7 @@ export interface GetKernelRevisionResponse {
   supportedDriverFamilies?: GetKernelRevisionResponseSupportedDriverFamiliesList;
   trustedPublisher?: boolean;
 }
-export const GetKernelRevisionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetKernelRevisionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     author: S.String,
@@ -511,7 +425,7 @@ export interface GetSecurityStatusRequest {
   namespace: string;
   repo: string;
 }
-export const GetSecurityStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -526,13 +440,13 @@ export type GetSecurityStatusResponseFilesWithIssuesItemLevel =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const GetSecurityStatusResponseFilesWithIssuesItemLevel = S.String;
+const GetSecurityStatusResponseFilesWithIssuesItemLevel = S.String;
 
 export interface GetSecurityStatusResponseFilesWithIssuesItem {
   path: string;
   level: GetSecurityStatusResponseFilesWithIssuesItemLevel;
 }
-export const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     level: GetSecurityStatusResponseFilesWithIssuesItemLevel,
@@ -543,7 +457,7 @@ export const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.susp
 
 export type GetSecurityStatusResponseFilesWithIssuesList =
   Array<GetSecurityStatusResponseFilesWithIssuesItem>;
-export const GetSecurityStatusResponseFilesWithIssuesList = /*@__PURE__*/ S.Array(
+const GetSecurityStatusResponseFilesWithIssuesList = /*@__PURE__*/ S.Array(
   GetSecurityStatusResponseFilesWithIssuesItem,
 ) as any as S.Schema<GetSecurityStatusResponseFilesWithIssuesList>;
 
@@ -551,7 +465,7 @@ export interface GetSecurityStatusResponse {
   scansDone: boolean;
   filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList;
 }
-export const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scansDone: S.Boolean,
     filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList,
@@ -561,36 +475,24 @@ export const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecurityStatusResponse>;
 
 export type ListKernelsRequestAuthorCase1List = Array<string>;
-export const ListKernelsRequestAuthorCase1List =
-  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestAuthorCase1List>;
-
 /** Filter by author */
 export type ListKernelsRequestAuthor = string | ListKernelsRequestAuthorCase1List;
-export const ListKernelsRequestAuthor = S.Unknown as any as S.Schema<ListKernelsRequestAuthor>;
+const ListKernelsRequestAuthor = S.Unknown as any as S.Schema<ListKernelsRequestAuthor>;
 
 export type ListKernelsRequestIdCase1List = Array<string>;
-export const ListKernelsRequestIdCase1List =
-  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestIdCase1List>;
-
 /** Filter by ID */
 export type ListKernelsRequestId = string | ListKernelsRequestIdCase1List;
-export const ListKernelsRequestId = S.Unknown as any as S.Schema<ListKernelsRequestId>;
+const ListKernelsRequestId = S.Unknown as any as S.Schema<ListKernelsRequestId>;
 
 export type ListKernelsRequestArxivIdsCase1List = Array<string>;
-export const ListKernelsRequestArxivIdsCase1List =
-  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestArxivIdsCase1List>;
-
 /** Filter by Arxiv ID */
 export type ListKernelsRequestArxivIds = string | ListKernelsRequestArxivIdsCase1List;
-export const ListKernelsRequestArxivIds = S.Unknown as any as S.Schema<ListKernelsRequestArxivIds>;
+const ListKernelsRequestArxivIds = S.Unknown as any as S.Schema<ListKernelsRequestArxivIds>;
 
 export type ListKernelsRequestFilterCase1List = Array<string>;
-export const ListKernelsRequestFilterCase1List =
-  GetKernelResponseFilesList as any as S.Schema<ListKernelsRequestFilterCase1List>;
-
 /** Filter by tags */
 export type ListKernelsRequestFilter = string | ListKernelsRequestFilterCase1List;
-export const ListKernelsRequestFilter = S.Unknown as any as S.Schema<ListKernelsRequestFilter>;
+const ListKernelsRequestFilter = S.Unknown as any as S.Schema<ListKernelsRequestFilter>;
 
 /** Sort field (e.g. downloads, likes, lastModified, trendingScore) */
 export type ListKernelsRequestSort =
@@ -601,11 +503,11 @@ export type ListKernelsRequestSort =
   | "likes30d"
   | "_id"
   | "id";
-export const ListKernelsRequestSort = S.String;
+const ListKernelsRequestSort = S.String;
 
 /** Sort direction: 1 for ascending, -1 for descending */
 export type ListKernelsRequestDirection = "1" | "-1";
-export const ListKernelsRequestDirection = S.String;
+const ListKernelsRequestDirection = S.String;
 
 export type ListKernelsRequestExpandCase0 =
   | "author"
@@ -626,8 +528,6 @@ export type ListKernelsRequestExpandCase0 =
   | "supportedDriverFamilies"
   | "resourceGroup"
   | "arxivIds";
-export const ListKernelsRequestExpandCase0 = S.String;
-
 export type ListKernelsRequestExpandCase1Item =
   | "author"
   | "cardData"
@@ -647,19 +547,14 @@ export type ListKernelsRequestExpandCase1Item =
   | "supportedDriverFamilies"
   | "resourceGroup"
   | "arxivIds";
-export const ListKernelsRequestExpandCase1Item = S.String;
-
 export type ListKernelsRequestExpandCase1List = Array<
   ListKernelsRequestExpandCase1Item | (string & {})
 >;
-export const ListKernelsRequestExpandCase1List =
-  GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsRequestExpandCase1List>;
-
 /** Display specific fields in the response */
 export type ListKernelsRequestExpand =
   | ListKernelsRequestExpandCase0
   | ListKernelsRequestExpandCase1List;
-export const ListKernelsRequestExpand = S.Unknown as any as S.Schema<ListKernelsRequestExpand>;
+const ListKernelsRequestExpand = S.Unknown as any as S.Schema<ListKernelsRequestExpand>;
 
 export interface ListKernelsRequest {
   search?: string;
@@ -675,7 +570,7 @@ export interface ListKernelsRequest {
   gated?: boolean;
   expand?: ListKernelsRequestExpand;
 }
-export const ListKernelsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     search: S.optional(S.String.pipe(T.Query())),
     author: S.optional(ListKernelsRequestAuthor.pipe(T.Query())),
@@ -694,24 +589,24 @@ export const ListKernelsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Kernel card metadata */
 export type ListKernelsResponseBodyItemCardDataMap = { [key: string]: unknown | undefined };
-export const ListKernelsResponseBodyItemCardDataMap = /*@__PURE__*/ S.Record(
+const ListKernelsResponseBodyItemCardDataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<ListKernelsResponseBodyItemCardDataMap>;
 
 /** Gated access status */
 export type ListKernelsResponseBodyItemGated = boolean | string;
-export const ListKernelsResponseBodyItemGated =
+const ListKernelsResponseBodyItemGated =
   S.Unknown as any as S.Schema<ListKernelsResponseBodyItemGated>;
 
 /** List of files in the kernel */
 export type ListKernelsResponseBodyItemFilesList = Array<string>;
-export const ListKernelsResponseBodyItemFilesList =
+const ListKernelsResponseBodyItemFilesList =
   GetKernelResponseFilesList as any as S.Schema<ListKernelsResponseBodyItemFilesList>;
 
 /** Kernel tags */
 export type ListKernelsResponseBodyItemTagsList = Array<string>;
-export const ListKernelsResponseBodyItemTagsList =
+const ListKernelsResponseBodyItemTagsList =
   GetKernelResponseFilesList as any as S.Schema<ListKernelsResponseBodyItemTagsList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem =
@@ -722,33 +617,27 @@ export type ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem =
   | "2.12"
   | "2.13"
   | "2.14";
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem = S.String;
-
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList =
+const ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem =
   | "macos"
   | "linux"
   | "windows";
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem = S.String;
-
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityOsItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList =
+const ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList>;
 
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem =
   | "x86_64"
   | "arm64"
   | "aarch64";
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem = S.String;
-
 export type ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList =
   Array<ListKernelsResponseBodyItemBuildMetadataCompatibilityArchItem>;
-export const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList =
+const ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList>;
 
 export interface ListKernelsResponseBodyItemBuildMetadataCompatibility {
@@ -756,7 +645,7 @@ export interface ListKernelsResponseBodyItemBuildMetadataCompatibility {
   os: ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList;
   arch: ListKernelsResponseBodyItemBuildMetadataCompatibilityArchList;
 }
-export const ListKernelsResponseBodyItemBuildMetadataCompatibility = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponseBodyItemBuildMetadataCompatibility = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     torch: ListKernelsResponseBodyItemBuildMetadataCompatibilityTorchList,
     os: ListKernelsResponseBodyItemBuildMetadataCompatibilityOsList,
@@ -773,7 +662,7 @@ export type ListKernelsResponseBodyItemBuildMetadataBackendsItemType =
   | "xpu"
   | "cpu"
   | "webgpu";
-export const ListKernelsResponseBodyItemBuildMetadataBackendsItemType = S.String;
+const ListKernelsResponseBodyItemBuildMetadataBackendsItemType = S.String;
 
 export type ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem =
   | "5.0"
@@ -838,21 +727,20 @@ export type ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesIte
   | "gfx1151"
   | "gfx1200"
   | "gfx1201";
-export const ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem = S.String;
+const ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem = S.String;
 
 export type ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList =
   Array<ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem>;
-export const ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList =
-  /*@__PURE__*/ S.Array(
-    ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem,
-  ) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList>;
+const ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList = /*@__PURE__*/ S.Array(
+  ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesItem,
+) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList>;
 
 export interface ListKernelsResponseBodyItemBuildMetadataBackendsItem {
   type: ListKernelsResponseBodyItemBuildMetadataBackendsItemType;
   hardwareTypes: ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList;
   noArchs?: boolean;
 }
-export const ListKernelsResponseBodyItemBuildMetadataBackendsItem = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponseBodyItemBuildMetadataBackendsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListKernelsResponseBodyItemBuildMetadataBackendsItemType,
     hardwareTypes: ListKernelsResponseBodyItemBuildMetadataBackendsItemHardwareTypesList,
@@ -864,7 +752,7 @@ export const ListKernelsResponseBodyItemBuildMetadataBackendsItem = /*@__PURE__*
 
 export type ListKernelsResponseBodyItemBuildMetadataBackendsList =
   Array<ListKernelsResponseBodyItemBuildMetadataBackendsItem>;
-export const ListKernelsResponseBodyItemBuildMetadataBackendsList = /*@__PURE__*/ S.Array(
+const ListKernelsResponseBodyItemBuildMetadataBackendsList = /*@__PURE__*/ S.Array(
   ListKernelsResponseBodyItemBuildMetadataBackendsItem,
 ) as any as S.Schema<ListKernelsResponseBodyItemBuildMetadataBackendsList>;
 
@@ -873,7 +761,7 @@ export interface ListKernelsResponseBodyItemBuildMetadataBuilder {
   commit?: string;
   dirty?: boolean;
 }
-export const ListKernelsResponseBodyItemBuildMetadataBuilder = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponseBodyItemBuildMetadataBuilder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.String,
     commit: S.optional(S.String),
@@ -889,7 +777,7 @@ export interface ListKernelsResponseBodyItemBuildMetadata {
   backends: ListKernelsResponseBodyItemBuildMetadataBackendsList;
   builder?: ListKernelsResponseBodyItemBuildMetadataBuilder;
 }
-export const ListKernelsResponseBodyItemBuildMetadata = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponseBodyItemBuildMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compatibility: S.optional(ListKernelsResponseBodyItemBuildMetadataCompatibility),
     backends: ListKernelsResponseBodyItemBuildMetadataBackendsList,
@@ -906,18 +794,14 @@ export type ListKernelsResponseBodyItemSupportedDriverFamiliesItem =
   | "xpu"
   | "cpu"
   | "webgpu";
-export const ListKernelsResponseBodyItemSupportedDriverFamiliesItem = S.String;
-
 /** Driver families supported by the kernel (derived from build metadata) */
 export type ListKernelsResponseBodyItemSupportedDriverFamiliesList =
   Array<ListKernelsResponseBodyItemSupportedDriverFamiliesItem>;
-export const ListKernelsResponseBodyItemSupportedDriverFamiliesList =
+const ListKernelsResponseBodyItemSupportedDriverFamiliesList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListKernelsResponseBodyItemSupportedDriverFamiliesList>;
 
 /** Resource group information */
 export type ListKernelsResponseBodyItemResourceGroup = GetKernelResponseResourceGroup;
-export const ListKernelsResponseBodyItemResourceGroup = GetKernelResponseResourceGroup;
-
 export interface ListKernelsResponseBodyItem {
   _id: string;
   /** Kernel ID in format namespace/name */
@@ -957,7 +841,7 @@ export interface ListKernelsResponseBodyItem {
   /** Resource group information */
   resourceGroup?: GetKernelResponseResourceGroup;
 }
-export const ListKernelsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     id: S.String,
@@ -984,20 +868,18 @@ export const ListKernelsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKernelsResponseBodyItem>;
 
 export type ListKernelsResponseBodyList = Array<ListKernelsResponseBodyItem>;
-export const ListKernelsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListKernelsResponseBodyList = /*@__PURE__*/ S.Array(
   ListKernelsResponseBodyItem,
 ) as any as S.Schema<ListKernelsResponseBodyList>;
 
 export type ListKernelsResponse = ListKernelsResponseBodyList;
-export const ListKernelsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListKernelsResponse = /*@__PURE__*/ S.suspend(() =>
   ListKernelsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListKernelsResponse" }) as any as S.Schema<ListKernelsResponse>;
 
 export type ListLikersRequestExpandItem = "likedAt";
-export const ListLikersRequestExpandItem = S.String;
-
 export type ListLikersRequestExpandList = Array<ListLikersRequestExpandItem | (string & {})>;
-export const ListLikersRequestExpandList =
+const ListLikersRequestExpandList =
   GetKernelResponseSupportedDriverFamiliesList as any as S.Schema<ListLikersRequestExpandList>;
 
 export interface ListLikersRequest {
@@ -1005,7 +887,7 @@ export interface ListLikersRequest {
   repo: string;
   expand?: ListLikersRequestExpandList;
 }
-export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1014,8 +896,7 @@ export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLikersRequest" }) as any as S.Schema<ListLikersRequest>;
 
 export interface ListLikersResponse {}
-export const ListLikersResponse =
-  ApproveKernelAccessResponse as any as S.Schema<ListLikersResponse>;
+const ListLikersResponse = ApproveKernelAccessResponse as any as S.Schema<ListLikersResponse>;
 
 export type ApproveKernelAccessError = HuggingFaceOpError;
 /** Approve kernel access */

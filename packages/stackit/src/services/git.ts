@@ -57,7 +57,7 @@ export interface CreateAuthenticationRequest {
   /** Scopes defines the OIDC scopes to request. */
   scopes?: string;
 }
-export const CreateAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -82,7 +82,7 @@ export const CreateAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The current status of the authentication definition. */
 export type AuthenticationStatus = "Creating" | "Updating" | "Deleting" | "Ready" | "Error";
-export const AuthenticationStatus = S.String;
+const AuthenticationStatus = S.String;
 
 /** Describes an authentication definition associated to a STACKIT Git instance. The provider type will be an openidConnect type. */
 export interface Authentication {
@@ -107,7 +107,7 @@ export interface Authentication {
   /** Provides additional information or error details when the status is 'Error'. */
   status_message?: string;
 }
-export const Authentication = /*@__PURE__*/ S.suspend(() =>
+const Authentication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auto_discover_url: S.String,
     client_id: S.String,
@@ -124,10 +124,10 @@ export const Authentication = /*@__PURE__*/ S.suspend(() =>
 
 /** A list of CIDR network addresses that are allowed to access the instance. */
 export type Acl = Array<string>;
-export const Acl = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Acl>;
+const Acl = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<Acl>;
 
 export type CreateInstanceRequestFlavor = "git-10" | "git-100";
-export const CreateInstanceRequestFlavor = S.String;
+const CreateInstanceRequestFlavor = S.String;
 
 export interface CreateInstanceRequest {
   /** Project identifier. */
@@ -137,7 +137,7 @@ export interface CreateInstanceRequest {
   /** A user chosen name to distinguish multiple STACKIT Git instances. */
   name: string;
 }
-export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     acl: S.optional(Acl),
@@ -155,7 +155,7 @@ export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Restricted ACL for instance access. */
 export type InstanceAclList = Array<string>;
-export const InstanceAclList = Acl as any as S.Schema<InstanceAclList>;
+const InstanceAclList = Acl as any as S.Schema<InstanceAclList>;
 
 /** Default email notifications. */
 export type FeatureToggleDefaultEmailNotifications =
@@ -163,7 +163,7 @@ export type FeatureToggleDefaultEmailNotifications =
   | "disabled"
   | "onmention"
   | "andyourown";
-export const FeatureToggleDefaultEmailNotifications = S.String;
+const FeatureToggleDefaultEmailNotifications = S.String;
 
 /** Feature toggles for instance pipelines */
 export interface Pipelines {
@@ -172,7 +172,7 @@ export interface Pipelines {
   /** Enable pipelines for this instance */
   enabled?: boolean | null;
 }
-export const Pipelines = /*@__PURE__*/ S.suspend(() =>
+const Pipelines = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action_url: S.optional(S.NullOr(S.String)),
     enabled: S.optional(S.NullOr(S.Boolean)),
@@ -187,7 +187,7 @@ export interface FeatureToggle {
   enable_local_login?: boolean | null;
   pipelines?: Pipelines;
 }
-export const FeatureToggle = /*@__PURE__*/ S.suspend(() =>
+const FeatureToggle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default_email_notifications: S.optional(S.NullOr(FeatureToggleDefaultEmailNotifications)),
     enable_local_login: S.optional(S.NullOr(S.Boolean)),
@@ -197,7 +197,7 @@ export const FeatureToggle = /*@__PURE__*/ S.suspend(() =>
 
 /** Object that represents the labels of an object. Regex for keys: `^(?=.{1,63}$)([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9]$`. Regex for values: `^(?=.{0,63}$)(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])*$`. The `stackit-` prefix is reserved and cannot be used for Keys. */
 export type Labels = { [key: string]: string | undefined };
-export const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
+const Labels = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<Labels>;
 
 /** The current state of the STACKIT Git instance. */
 export type InstanceState =
@@ -207,7 +207,7 @@ export type InstanceState =
   | "Deleting"
   | "Ready"
   | "Error";
-export const InstanceState = S.String;
+const InstanceState = S.String;
 
 /** Describes a STACKIT Git instance. */
 export interface Instance {
@@ -236,7 +236,7 @@ export interface Instance {
   /** The current version of STACKIT Git deployed to the instance. */
   version: string;
 }
-export const Instance = /*@__PURE__*/ S.suspend(() =>
+const Instance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acl: InstanceAclList,
     admin_login: S.Boolean,
@@ -255,7 +255,7 @@ export const Instance = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Instance" }) as any as S.Schema<Instance>;
 
 export type CreateRunnerRequestLabelsList = Array<string>;
-export const CreateRunnerRequestLabelsList = /*@__PURE__*/ S.Array(
+const CreateRunnerRequestLabelsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateRunnerRequestLabelsList>;
 
@@ -266,7 +266,7 @@ export interface CreateRunnerRequest {
   instanceId: string;
   labels: CreateRunnerRequestLabelsList;
 }
-export const CreateRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -282,7 +282,7 @@ export const CreateRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRunnerRequest" }) as any as S.Schema<CreateRunnerRequest>;
 
 export type RunnerLabelsList = Array<string>;
-export const RunnerLabelsList = CreateRunnerRequestLabelsList as any as S.Schema<RunnerLabelsList>;
+const RunnerLabelsList = CreateRunnerRequestLabelsList as any as S.Schema<RunnerLabelsList>;
 
 /** Describes a runner associated to a STACKIT Git instance. */
 export interface Runner {
@@ -292,7 +292,7 @@ export interface Runner {
   /** The current status of the runner. */
   status: string;
 }
-export const Runner = /*@__PURE__*/ S.suspend(() =>
+const Runner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created_at: S.String,
     id: S.String,
@@ -317,7 +317,7 @@ export interface CreateUserRequest {
   /** A user chosen username to distinguish multiple STACKIT Git instance Users. */
   username: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -347,7 +347,7 @@ export interface User {
   /** A user chosen username to distinguish multiple STACKIT Git instance Users. */
   username: string;
 }
-export const User = /*@__PURE__*/ S.suspend(() =>
+const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.String,
     id: S.optional(S.Number),
@@ -364,7 +364,7 @@ export interface DeleteAuthenticationRequest {
   /** Authentication Source identifier. */
   authenticationId: string;
 }
-export const DeleteAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -382,7 +382,7 @@ export const DeleteAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAuthenticationRequest>;
 
 export interface DeleteAuthenticationResponse {}
-export const DeleteAuthenticationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteAuthenticationResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteAuthenticationResponse",
 }) as any as S.Schema<DeleteAuthenticationResponse>;
 
@@ -392,7 +392,7 @@ export interface DeleteInstanceRequest {
   /** Instance identifier. */
   instanceId: string;
 }
-export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -407,7 +407,7 @@ export const DeleteInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteInstanceRequest" }) as any as S.Schema<DeleteInstanceRequest>;
 
 export interface DeleteInstanceResponse {}
-export const DeleteInstanceResponse =
+const DeleteInstanceResponse =
   DeleteAuthenticationResponse as any as S.Schema<DeleteInstanceResponse>;
 
 export interface DeleteRunnerRequest {
@@ -416,7 +416,7 @@ export interface DeleteRunnerRequest {
   /** Instance identifier. */
   instanceId: string;
 }
-export const DeleteRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -431,8 +431,7 @@ export const DeleteRunnerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteRunnerRequest" }) as any as S.Schema<DeleteRunnerRequest>;
 
 export interface DeleteRunnerResponse {}
-export const DeleteRunnerResponse =
-  DeleteAuthenticationResponse as any as S.Schema<DeleteRunnerResponse>;
+const DeleteRunnerResponse = DeleteAuthenticationResponse as any as S.Schema<DeleteRunnerResponse>;
 
 export interface DeleteUserRequest {
   /** Project identifier. */
@@ -442,7 +441,7 @@ export interface DeleteUserRequest {
   /** Instance User identifier. */
   username: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -458,8 +457,7 @@ export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteUserRequest" }) as any as S.Schema<DeleteUserRequest>;
 
 export interface DeleteUserResponse {}
-export const DeleteUserResponse =
-  DeleteAuthenticationResponse as any as S.Schema<DeleteUserResponse>;
+const DeleteUserResponse = DeleteAuthenticationResponse as any as S.Schema<DeleteUserResponse>;
 
 export interface GetAuthenticationRequest {
   /** Project identifier. */
@@ -469,7 +467,7 @@ export interface GetAuthenticationRequest {
   /** Authentication Source identifier. */
   authenticationId: string;
 }
-export const GetAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -490,7 +488,7 @@ export interface GetInstanceRequest {
   /** Instance identifier. */
   instanceId: string;
 }
-export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -510,7 +508,7 @@ export interface GetRunnerRequest {
   /** Instance identifier. */
   instanceId: string;
 }
-export const GetRunnerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRunnerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -532,7 +530,7 @@ export interface GetUserRequest {
   /** Instance User identifier. */
   username: string;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -548,7 +546,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export interface GetUserResponse {}
-export const GetUserResponse = DeleteAuthenticationResponse as any as S.Schema<GetUserResponse>;
+const GetUserResponse = DeleteAuthenticationResponse as any as S.Schema<GetUserResponse>;
 
 export interface GetUsersRequest {
   /** Project identifier. */
@@ -558,7 +556,7 @@ export interface GetUsersRequest {
   /** Page number for pagination (1-indexed). Each page contains up to 50 users. */
   page?: number;
 }
-export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -574,9 +572,7 @@ export const GetUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUsersRequest" }) as any as S.Schema<GetUsersRequest>;
 
 export type ListUsersUsersList = Array<User>;
-export const ListUsersUsersList = /*@__PURE__*/ S.Array(
-  User,
-) as any as S.Schema<ListUsersUsersList>;
+const ListUsersUsersList = /*@__PURE__*/ S.Array(User) as any as S.Schema<ListUsersUsersList>;
 
 /** A paginated list of STACKIT Git instance Users. */
 export interface ListUsers {
@@ -588,7 +584,7 @@ export interface ListUsers {
   totalPages: number;
   users: ListUsersUsersList;
 }
-export const ListUsers = /*@__PURE__*/ S.suspend(() =>
+const ListUsers = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     itemsCount: S.Number,
     offset: S.Number,
@@ -603,7 +599,7 @@ export interface ListAuthenticationRequest {
   /** Instance identifier. */
   instanceId: string;
 }
-export const ListAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -620,7 +616,7 @@ export const ListAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAuthenticationRequest>;
 
 export type AuthenticationListAuthenticationList = Array<Authentication>;
-export const AuthenticationListAuthenticationList = /*@__PURE__*/ S.Array(
+const AuthenticationListAuthenticationList = /*@__PURE__*/ S.Array(
   Authentication,
 ) as any as S.Schema<AuthenticationListAuthenticationList>;
 
@@ -628,7 +624,7 @@ export const AuthenticationListAuthenticationList = /*@__PURE__*/ S.Array(
 export interface AuthenticationList {
   authentication: AuthenticationListAuthenticationList;
 }
-export const AuthenticationList = /*@__PURE__*/ S.suspend(() =>
+const AuthenticationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authentication: AuthenticationListAuthenticationList,
   }),
@@ -638,7 +634,7 @@ export interface ListFlavorsRequest {
   /** Project identifier. */
   projectId: string;
 }
-export const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -653,7 +649,7 @@ export const ListFlavorsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Defines the flavor availability. */
 export type FlavorAvailability = "available" | "unavailable" | "internal" | "deprecated";
-export const FlavorAvailability = S.String;
+const FlavorAvailability = S.String;
 
 /** Describes a STACKIT Git Flavor. */
 export interface Flavor {
@@ -668,7 +664,7 @@ export interface Flavor {
   /** SAP article number. */
   sku: string;
 }
-export const Flavor = /*@__PURE__*/ S.suspend(() =>
+const Flavor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: FlavorAvailability,
     description: S.String,
@@ -679,7 +675,7 @@ export const Flavor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Flavor" }) as any as S.Schema<Flavor>;
 
 export type ListFlavorsFlavorsList = Array<Flavor>;
-export const ListFlavorsFlavorsList = /*@__PURE__*/ S.Array(
+const ListFlavorsFlavorsList = /*@__PURE__*/ S.Array(
   Flavor,
 ) as any as S.Schema<ListFlavorsFlavorsList>;
 
@@ -687,7 +683,7 @@ export const ListFlavorsFlavorsList = /*@__PURE__*/ S.Array(
 export interface ListFlavors {
   flavors: ListFlavorsFlavorsList;
 }
-export const ListFlavors = /*@__PURE__*/ S.suspend(() =>
+const ListFlavors = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flavors: ListFlavorsFlavorsList,
   }),
@@ -697,7 +693,7 @@ export interface ListInstancesRequest {
   /** Project identifier. */
   projectId: string;
 }
-export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -711,7 +707,7 @@ export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListInstancesRequest" }) as any as S.Schema<ListInstancesRequest>;
 
 export type ListInstancesInstancesList = Array<Instance>;
-export const ListInstancesInstancesList = /*@__PURE__*/ S.Array(
+const ListInstancesInstancesList = /*@__PURE__*/ S.Array(
   Instance,
 ) as any as S.Schema<ListInstancesInstancesList>;
 
@@ -719,7 +715,7 @@ export const ListInstancesInstancesList = /*@__PURE__*/ S.Array(
 export interface ListInstances {
   instances: ListInstancesInstancesList;
 }
-export const ListInstances = /*@__PURE__*/ S.suspend(() =>
+const ListInstances = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instances: ListInstancesInstancesList,
   }),
@@ -729,7 +725,7 @@ export interface ListRunnerRuntimesRequest {
   /** Project identifier. */
   projectId: string;
 }
-export const ListRunnerRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRunnerRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
   }).pipe(
@@ -757,7 +753,7 @@ export interface RunnerRuntime {
   /** Runtime label. */
   label: string;
 }
-export const RunnerRuntime = /*@__PURE__*/ S.suspend(() =>
+const RunnerRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     availability: S.String,
     description: S.String,
@@ -768,7 +764,7 @@ export const RunnerRuntime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RunnerRuntime" }) as any as S.Schema<RunnerRuntime>;
 
 export type RunnerRuntimeListItemsList = Array<RunnerRuntime>;
-export const RunnerRuntimeListItemsList = /*@__PURE__*/ S.Array(
+const RunnerRuntimeListItemsList = /*@__PURE__*/ S.Array(
   RunnerRuntime,
 ) as any as S.Schema<RunnerRuntimeListItemsList>;
 
@@ -776,7 +772,7 @@ export const RunnerRuntimeListItemsList = /*@__PURE__*/ S.Array(
 export interface RunnerRuntimeList {
   items: RunnerRuntimeListItemsList;
 }
-export const RunnerRuntimeList = /*@__PURE__*/ S.suspend(() =>
+const RunnerRuntimeList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: RunnerRuntimeListItemsList,
   }),
@@ -802,7 +798,7 @@ export interface PatchAuthenticationRequest {
   /** Scopes defines the OIDC scopes to request. */
   scopes?: string;
 }
-export const PatchAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchAuthenticationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -836,7 +832,7 @@ export interface PatchInstanceRequest {
   feature_toggle?: FeatureToggle;
   labels?: Labels;
 }
-export const PatchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),
@@ -868,7 +864,7 @@ export interface UpdateUserRequest {
   /** A user password to allow user/pass instance login. */
   password?: string | Redacted.Redacted<string>;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String.pipe(T.Label()),
     instanceId: S.String.pipe(T.Label()),

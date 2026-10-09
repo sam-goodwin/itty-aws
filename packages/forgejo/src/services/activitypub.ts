@@ -18,7 +18,7 @@ export class Forbidden
   ) {}
 
 export interface ActivitypubInstanceActorRequest {}
-export const ActivitypubInstanceActorRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubInstanceActorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/activitypub/actor", code: 200 })),
 ).annotate({
   identifier: "ActivitypubInstanceActorRequest",
@@ -28,35 +28,33 @@ export const ActivitypubInstanceActorRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ActivityPub {
   _context?: string;
 }
-export const ActivityPub = /*@__PURE__*/ S.suspend(() =>
+const ActivityPub = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _context: S.optional(S.String.pipe(T.Body("@context"))),
   }),
 ).annotate({ identifier: "ActivityPub" }) as any as S.Schema<ActivityPub>;
 
 export interface ActivitypubInstanceActorInboxRequest {}
-export const ActivitypubInstanceActorInboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubInstanceActorInboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/activitypub/actor/inbox", code: 200 })),
 ).annotate({
   identifier: "ActivitypubInstanceActorInboxRequest",
 }) as any as S.Schema<ActivitypubInstanceActorInboxRequest>;
 
 export interface ActivitypubInstanceActorInboxResponse {}
-export const ActivitypubInstanceActorInboxResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const ActivitypubInstanceActorInboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivitypubInstanceActorInboxResponse",
 }) as any as S.Schema<ActivitypubInstanceActorInboxResponse>;
 
 export interface ActivitypubInstanceActorOutboxRequest {}
-export const ActivitypubInstanceActorOutboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubInstanceActorOutboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/activitypub/actor/outbox", code: 200 })),
 ).annotate({
   identifier: "ActivitypubInstanceActorOutboxRequest",
 }) as any as S.Schema<ActivitypubInstanceActorOutboxRequest>;
 
 export type ActivitypubInstanceActorOutboxResponse = unknown;
-export const ActivitypubInstanceActorOutboxResponse = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubInstanceActorOutboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ActivitypubInstanceActorOutboxResponse",
@@ -66,7 +64,7 @@ export interface ActivitypubPersonRequest {
   /** user ID of the user */
   user_id: number;
 }
-export const ActivitypubPersonRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubPersonRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/activitypub/user-id/{user_id}", code: 200 })),
@@ -78,7 +76,7 @@ export interface ActivitypubPersonActivityRequest {
   /** activity ID of the sought activity */
   activity_id: number;
 }
-export const ActivitypubPersonActivityRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubPersonActivityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     activity_id: S.Number.pipe(T.Label()),
@@ -99,7 +97,7 @@ export interface ActivitypubPersonActivityNoteRequest {
   /** activity ID of the sought activity */
   activity_id: number;
 }
-export const ActivitypubPersonActivityNoteRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubPersonActivityNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     activity_id: S.Number.pipe(T.Label()),
@@ -118,7 +116,7 @@ export interface ActivitypubPersonFeedRequest {
   /** user ID of the user */
   user_id: number;
 }
-export const ActivitypubPersonFeedRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubPersonFeedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/activitypub/user-id/{user_id}/outbox", code: 200 })),
@@ -127,14 +125,14 @@ export const ActivitypubPersonFeedRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubPersonFeedRequest>;
 
 export type ActivitypubPersonFeedResponse = unknown;
-export const ActivitypubPersonFeedResponse =
+const ActivitypubPersonFeedResponse =
   ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubPersonFeedResponse>;
 
 export interface ActivitypubPersonInboxRequest {
   /** user ID of the user */
   user_id: number;
 }
-export const ActivitypubPersonInboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubPersonInboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/activitypub/user-id/{user_id}/inbox", code: 200 })),
@@ -143,7 +141,7 @@ export const ActivitypubPersonInboxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubPersonInboxRequest>;
 
 export interface ActivitypubPersonInboxResponse {}
-export const ActivitypubPersonInboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ActivitypubPersonInboxResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ActivitypubPersonInboxResponse",
 }) as any as S.Schema<ActivitypubPersonInboxResponse>;
 
@@ -151,7 +149,7 @@ export interface ActivitypubRepositoryRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
-export const ActivitypubRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/activitypub/repository-id/{repository_id}", code: 200 })),
@@ -163,7 +161,7 @@ export interface ActivitypubRepositoryInboxRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
-export const ActivitypubRepositoryInboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubRepositoryInboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -174,14 +172,14 @@ export const ActivitypubRepositoryInboxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubRepositoryInboxRequest>;
 
 export interface ActivitypubRepositoryInboxResponse {}
-export const ActivitypubRepositoryInboxResponse =
+const ActivitypubRepositoryInboxResponse =
   ActivitypubInstanceActorInboxResponse as any as S.Schema<ActivitypubRepositoryInboxResponse>;
 
 export interface ActivitypubRepositoryOutboxRequest {
   /** repository ID of the repo */
   repository_id: number;
 }
-export const ActivitypubRepositoryOutboxRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivitypubRepositoryOutboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     repository_id: S.Number.pipe(T.Label()),
   }).pipe(
@@ -192,7 +190,7 @@ export const ActivitypubRepositoryOutboxRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivitypubRepositoryOutboxRequest>;
 
 export type ActivitypubRepositoryOutboxResponse = unknown;
-export const ActivitypubRepositoryOutboxResponse =
+const ActivitypubRepositoryOutboxResponse =
   ActivitypubInstanceActorOutboxResponse as any as S.Schema<ActivitypubRepositoryOutboxResponse>;
 
 export type ActivitypubInstanceActorError = ForgejoOpError;

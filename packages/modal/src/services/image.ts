@@ -11,21 +11,21 @@ export type { ModalOpError, ModalOpContext };
 export interface DeleteImageRequest {
   imageId?: string;
 }
-export const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageDelete", code: 200 })),
 ).annotate({ identifier: "DeleteImageRequest" }) as any as S.Schema<DeleteImageRequest>;
 
 export interface DeleteImageResponse {}
-export const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteImageResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteImageResponse",
 }) as any as S.Schema<DeleteImageResponse>;
 
 export interface GetImageBuildChainRequest {
   imageId?: string;
 }
-export const GetImageBuildChainRequest = /*@__PURE__*/ S.suspend(() =>
+const GetImageBuildChainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }).pipe(
@@ -42,7 +42,7 @@ export interface ImageBuildStep {
   builderAppId?: string;
   builderTaskId?: string;
 }
-export const ImageBuildStep = /*@__PURE__*/ S.suspend(() =>
+const ImageBuildStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     startedAt: S.optional(S.String),
@@ -53,14 +53,14 @@ export const ImageBuildStep = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageBuildStep" }) as any as S.Schema<ImageBuildStep>;
 
 export type ImageBuildStepList = Array<ImageBuildStep>;
-export const ImageBuildStepList = /*@__PURE__*/ S.Array(
+const ImageBuildStepList = /*@__PURE__*/ S.Array(
   ImageBuildStep,
 ) as any as S.Schema<ImageBuildStepList>;
 
 export interface GetImageBuildChainResponse {
   buildSteps?: ImageBuildStepList;
 }
-export const GetImageBuildChainResponse = /*@__PURE__*/ S.suspend(() =>
+const GetImageBuildChainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildSteps: S.optional(ImageBuildStepList),
   }),
@@ -71,14 +71,14 @@ export const GetImageBuildChainResponse = /*@__PURE__*/ S.suspend(() =>
 export interface ImageFromIdRequest {
   imageId?: string;
 }
-export const ImageFromIdRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageFromIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/ImageFromId", code: 200 })),
 ).annotate({ identifier: "ImageFromIdRequest" }) as any as S.Schema<ImageFromIdRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface ImageMetadata {
   /** The output of `python -VV. Not set if missing */
@@ -92,7 +92,7 @@ export interface ImageMetadata {
   /** The builder version for/with which the image was created. */
   imageBuilderVersion?: string;
 }
-export const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
+const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pythonVersionInfo: S.optional(S.String),
     pythonPackages: S.optional(StringMap),
@@ -106,7 +106,7 @@ export interface ImageFromIdResponse {
   imageId?: string;
   metadata?: ImageMetadata;
 }
-export const ImageFromIdResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageFromIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     metadata: S.optional(ImageMetadata),
@@ -119,7 +119,7 @@ export interface ImageGetByTagRequest {
   /** New clients should send environment name as a /-separated prefix of the `tag` field. environment_name only accepted when tag has no environment or workspace prefix. */
   environmentName?: string;
 }
-export const ImageGetByTagRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageGetByTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -129,7 +129,7 @@ export const ImageGetByTagRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ImageGetByTagResponse {
   imageId?: string;
 }
-export const ImageGetByTagResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageGetByTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
   }),
@@ -139,7 +139,7 @@ export interface BaseImage {
   imageId?: string;
   dockerTag?: string;
 }
-export const BaseImage = /*@__PURE__*/ S.suspend(() =>
+const BaseImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     dockerTag: S.optional(S.String),
@@ -147,16 +147,16 @@ export const BaseImage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BaseImage" }) as any as S.Schema<BaseImage>;
 
 export type BaseImageList = Array<BaseImage>;
-export const BaseImageList = /*@__PURE__*/ S.Array(BaseImage) as any as S.Schema<BaseImageList>;
+const BaseImageList = /*@__PURE__*/ S.Array(BaseImage) as any as S.Schema<BaseImageList>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface ImageContextFile {
   filename?: string;
   data?: string;
 }
-export const ImageContextFile = /*@__PURE__*/ S.suspend(() =>
+const ImageContextFile = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     filename: S.optional(S.String),
     data: S.optional(S.String),
@@ -164,7 +164,7 @@ export const ImageContextFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageContextFile" }) as any as S.Schema<ImageContextFile>;
 
 export type ImageContextFileList = Array<ImageContextFile>;
-export const ImageContextFileList = /*@__PURE__*/ S.Array(
+const ImageContextFileList = /*@__PURE__*/ S.Array(
   ImageContextFile,
 ) as any as S.Schema<ImageContextFileList>;
 
@@ -179,7 +179,7 @@ export type GPUType =
   | "GPU_TYPE_H100"
   | "GPU_TYPE_L40S"
   | "GPU_TYPE_H200";
-export const GPUType = S.String;
+const GPUType = S.String;
 
 export interface GPUConfig {
   type?: GPUType | (string & {});
@@ -187,7 +187,7 @@ export interface GPUConfig {
   count?: number;
   gpuType?: string;
 }
-export const GPUConfig = /*@__PURE__*/ S.suspend(() =>
+const GPUConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(GPUType),
     count: S.optional(S.Number),
@@ -201,13 +201,13 @@ export type RegistryAuthType =
   | "REGISTRY_AUTH_TYPE_GCP"
   | "REGISTRY_AUTH_TYPE_PUBLIC"
   | "REGISTRY_AUTH_TYPE_STATIC_CREDS";
-export const RegistryAuthType = S.String;
+const RegistryAuthType = S.String;
 
 export interface ImageRegistryConfig {
   registryAuthType?: RegistryAuthType | (string & {});
   secretId?: string;
 }
-export const ImageRegistryConfig = /*@__PURE__*/ S.suspend(() =>
+const ImageRegistryConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryAuthType: S.optional(RegistryAuthType),
     secretId: S.optional(S.String),
@@ -221,7 +221,7 @@ export type DataFormat =
   | "DATA_FORMAT_ASGI"
   | "DATA_FORMAT_GENERATOR_DONE"
   | "DATA_FORMAT_CBOR";
-export const DataFormat = S.String;
+const DataFormat = S.String;
 
 export interface FunctionInput {
   /** serialized (args, kwargs). */
@@ -232,7 +232,7 @@ export interface FunctionInput {
   /** For args_oneof. */
   methodName?: string;
 }
-export const FunctionInput = /*@__PURE__*/ S.suspend(() =>
+const FunctionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     args: S.optional(S.String),
     argsBlobId: S.optional(S.String),
@@ -247,7 +247,7 @@ export interface BuildFunction {
   globals?: string;
   input?: FunctionInput;
 }
-export const BuildFunction = /*@__PURE__*/ S.suspend(() =>
+const BuildFunction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: S.optional(S.String),
     globals: S.optional(S.String),
@@ -262,7 +262,7 @@ export interface VolumeMount {
   readOnly?: boolean;
   subPath?: string;
 }
-export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
+const VolumeMount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     volumeId: S.optional(S.String),
     mountPath: S.optional(S.String),
@@ -273,13 +273,11 @@ export const VolumeMount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VolumeMount" }) as any as S.Schema<VolumeMount>;
 
 export type VolumeMountList = Array<VolumeMount>;
-export const VolumeMountList = /*@__PURE__*/ S.Array(
-  VolumeMount,
-) as any as S.Schema<VolumeMountList>;
+const VolumeMountList = /*@__PURE__*/ S.Array(VolumeMount) as any as S.Schema<VolumeMountList>;
 
 /** CPU architecture an image is built for and must run on. */
 export type Arch = "ARCH_UNSPECIFIED" | "ARCH_X86_64" | "ARCH_AARCH64";
-export const Arch = S.String;
+const Arch = S.String;
 
 export interface Image {
   baseImages?: BaseImageList;
@@ -306,7 +304,7 @@ export interface Image {
   /** CPU architecture the image is built for. Images with an unspecified arch predate this field and are treated as x86_64. */
   arch?: Arch | (string & {});
 }
-export const Image = /*@__PURE__*/ S.suspend(() =>
+const Image = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseImages: S.optional(BaseImageList),
     dockerfileCommands: S.optional(StringList),
@@ -331,7 +329,7 @@ export type DeploymentNamespace =
   | "DEPLOYMENT_NAMESPACE_UNSPECIFIED"
   | "DEPLOYMENT_NAMESPACE_WORKSPACE"
   | "DEPLOYMENT_NAMESPACE_GLOBAL";
-export const DeploymentNamespace = S.String;
+const DeploymentNamespace = S.String;
 
 export interface ImageGetOrCreateRequest {
   image?: Image;
@@ -347,7 +345,7 @@ export interface ImageGetOrCreateRequest {
   /** Force the Image to build but don't clobber any Images with the same recipe in the cache */
   ignoreCache?: boolean;
 }
-export const ImageGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     image: S.optional(Image),
     appId: S.optional(S.String),
@@ -372,7 +370,7 @@ export type GenericResultGenericStatus =
   | "GENERIC_STATUS_INTERNAL_FAILURE"
   | "GENERIC_STATUS_IDLE_TIMEOUT"
   | "GENERIC_STATUS_MEMORY_MANAGER_EVICTION";
-export const GenericResultGenericStatus = S.String;
+const GenericResultGenericStatus = S.String;
 
 /** sub-type for generic types like lists */
 export interface GenericResult {
@@ -394,7 +392,7 @@ export interface GenericResult {
   /** Blob ID for large data. */
   propagationReason?: string;
 }
-export const GenericResult = /*@__PURE__*/ S.suspend(() =>
+const GenericResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(GenericResultGenericStatus),
     exception: S.optional(S.String),
@@ -416,7 +414,7 @@ export interface ImageGetOrCreateResponse {
   /** image metadata - only set if the image has built successfully */
   metadata?: ImageMetadata;
 }
-export const ImageGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageGetOrCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     result: S.optional(GenericResult),
@@ -432,7 +430,7 @@ export interface ImageListTagsRequest {
   maxObjects?: number;
   pageToken?: string;
 }
-export const ImageListTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     tagPrefix: S.optional(S.String),
@@ -449,7 +447,7 @@ export interface ImageListTagsItem {
   createdAt?: number;
   updatedAt?: number;
 }
-export const ImageListTagsItem = /*@__PURE__*/ S.suspend(() =>
+const ImageListTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     imageId: S.optional(S.String),
@@ -460,7 +458,7 @@ export const ImageListTagsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageListTagsItem" }) as any as S.Schema<ImageListTagsItem>;
 
 export type ImageListTagsItemList = Array<ImageListTagsItem>;
-export const ImageListTagsItemList = /*@__PURE__*/ S.Array(
+const ImageListTagsItemList = /*@__PURE__*/ S.Array(
   ImageListTagsItem,
 ) as any as S.Schema<ImageListTagsItemList>;
 
@@ -469,7 +467,7 @@ export interface ImageListTagsResponse {
   nextPageToken?: string;
   environmentName?: string;
 }
-export const ImageListTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ImageListTagsItemList),
     nextPageToken: S.optional(S.String),
@@ -486,7 +484,7 @@ export interface ImageTagRevisionsRequest {
   maxObjects?: number;
   pageToken?: string;
 }
-export const ImageTagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImageTagRevisionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -503,7 +501,7 @@ export interface ImageTagRevisionsItem {
   createdAt?: number;
   publishedBy?: string;
 }
-export const ImageTagRevisionsItem = /*@__PURE__*/ S.suspend(() =>
+const ImageTagRevisionsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     revisionId: S.optional(S.String),
@@ -513,7 +511,7 @@ export const ImageTagRevisionsItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageTagRevisionsItem" }) as any as S.Schema<ImageTagRevisionsItem>;
 
 export type ImageTagRevisionsItemList = Array<ImageTagRevisionsItem>;
-export const ImageTagRevisionsItemList = /*@__PURE__*/ S.Array(
+const ImageTagRevisionsItemList = /*@__PURE__*/ S.Array(
   ImageTagRevisionsItem,
 ) as any as S.Schema<ImageTagRevisionsItemList>;
 
@@ -523,7 +521,7 @@ export interface ImageTagRevisionsResponse {
   tag?: string;
   environmentName?: string;
 }
-export const ImageTagRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ImageTagRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(ImageTagRevisionsItemList),
     nextPageToken: S.optional(S.String),
@@ -543,7 +541,7 @@ export interface PublishImageRequest {
   /** Explicit opt-in required when publishing to a public environment. */
   allowPublic?: boolean;
 }
-export const PublishImageRequest = /*@__PURE__*/ S.suspend(() =>
+const PublishImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     tag: S.optional(S.String),
@@ -556,7 +554,7 @@ export interface PublishImageResponse {
   imageId?: string;
   revisionId?: string;
 }
-export const PublishImageResponse = /*@__PURE__*/ S.suspend(() =>
+const PublishImageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageId: S.optional(S.String),
     revisionId: S.optional(S.String),

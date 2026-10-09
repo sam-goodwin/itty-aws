@@ -56,7 +56,7 @@ export class UnprocessableEntity
   ) {}
 
 export type AddDataSourceRequestSecureJsonDataMap = { [key: string]: string | undefined };
-export const AddDataSourceRequestSecureJsonDataMap = /*@__PURE__*/ S.Record(
+const AddDataSourceRequestSecureJsonDataMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<AddDataSourceRequestSecureJsonDataMap>;
@@ -76,7 +76,7 @@ export interface AddDataSourceRequest {
   user?: string;
   withCredentials?: boolean;
 }
-export const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(S.String),
     basicAuth: S.optional(S.Boolean),
@@ -96,10 +96,10 @@ export const AddDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Metadata contains user accesses for a given resource Ex: map[string]bool{"create":true, "delete": true} */
 export type Metadata = { [key: string]: boolean | undefined };
-export const Metadata = /*@__PURE__*/ S.Record(S.String, S.Boolean) as any as S.Schema<Metadata>;
+const Metadata = /*@__PURE__*/ S.Record(S.String, S.Boolean) as any as S.Schema<Metadata>;
 
 export type DataSourceSecureJsonFieldsMap = { [key: string]: boolean | undefined };
-export const DataSourceSecureJsonFieldsMap = /*@__PURE__*/ S.Record(
+const DataSourceSecureJsonFieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean,
 ) as any as S.Schema<DataSourceSecureJsonFieldsMap>;
@@ -125,7 +125,7 @@ export interface DataSource {
   version?: number;
   withCredentials?: boolean;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(S.String),
     accessControl: S.optional(Metadata),
@@ -158,7 +158,7 @@ export interface AddDataSourceResponse {
   /** Name of the new data source. */
   name: string;
 }
-export const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource: DataSource,
     id: S.Number,
@@ -168,7 +168,7 @@ export const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddDataSourceResponse" }) as any as S.Schema<AddDataSourceResponse>;
 
 export type AddOrgInviteRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const AddOrgInviteRequestRole = S.String;
+const AddOrgInviteRequestRole = S.String;
 
 export interface AddOrgInviteRequest {
   loginOrEmail?: string;
@@ -176,7 +176,7 @@ export interface AddOrgInviteRequest {
   role?: AddOrgInviteRequestRole | (string & {});
   sendEmail?: boolean;
 }
-export const AddOrgInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrgInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loginOrEmail: S.optional(S.String),
     name: S.optional(S.String),
@@ -188,21 +188,21 @@ export const AddOrgInviteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface SuccessResponseBody {
   message?: string;
 }
-export const SuccessResponseBody = /*@__PURE__*/ S.suspend(() =>
+const SuccessResponseBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
 ).annotate({ identifier: "SuccessResponseBody" }) as any as S.Schema<SuccessResponseBody>;
 
 export type AddOrgUserRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const AddOrgUserRequestRole = S.String;
+const AddOrgUserRequestRole = S.String;
 
 export interface AddOrgUserRequest {
   org_id: number;
   loginOrEmail?: string;
   role?: AddOrgUserRequestRole | (string & {});
 }
-export const AddOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     loginOrEmail: S.optional(S.String),
@@ -211,13 +211,13 @@ export const AddOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AddOrgUserRequest" }) as any as S.Schema<AddOrgUserRequest>;
 
 export type AddOrgUserToCurrentOrgRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const AddOrgUserToCurrentOrgRequestRole = S.String;
+const AddOrgUserToCurrentOrgRequestRole = S.String;
 
 export interface AddOrgUserToCurrentOrgRequest {
   loginOrEmail?: string;
   role?: AddOrgUserToCurrentOrgRequestRole | (string & {});
 }
-export const AddOrgUserToCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const AddOrgUserToCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loginOrEmail: S.optional(S.String),
     role: S.optional(AddOrgUserToCurrentOrgRequestRole),
@@ -230,7 +230,7 @@ export interface AddTeamGroupApiRequest {
   teamId: string;
   groupId?: string;
 }
-export const AddTeamGroupApiRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTeamGroupApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
     groupId: S.optional(S.String),
@@ -241,7 +241,7 @@ export interface AddTeamMemberRequest {
   team_id: string;
   userId: number;
 }
-export const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     userId: S.Number,
@@ -252,7 +252,7 @@ export interface AddTeamRoleRequest {
   teamId: number;
   roleUid?: string;
 }
-export const AddTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AddTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.Number.pipe(T.Label()),
     roleUid: S.optional(S.String),
@@ -264,7 +264,7 @@ export interface AddUserRoleRequest {
   global?: boolean;
   roleUid?: string;
 }
-export const AddUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const AddUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
     global: S.optional(S.Boolean),
@@ -279,7 +279,7 @@ export interface AdminCreateUserRequest {
   orgId?: number;
   password?: string | Redacted.Redacted<string>;
 }
-export const AdminCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     login: S.optional(S.String),
@@ -294,7 +294,7 @@ export interface AdminCreateUserResponse {
   message?: string;
   uid?: string;
 }
-export const AdminCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
+const AdminCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     message: S.optional(S.String),
@@ -305,7 +305,7 @@ export const AdminCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AdminDeleteUserRequest {
   user_id: number;
 }
-export const AdminDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/admin/users/{user_id}", code: 200 })),
@@ -314,7 +314,7 @@ export const AdminDeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AdminDisableUserRequest {
   user_id: number;
 }
-export const AdminDisableUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminDisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/disable", code: 200 })),
@@ -323,34 +323,34 @@ export const AdminDisableUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AdminEnableUserRequest {
   user_id: number;
 }
-export const AdminEnableUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminEnableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/enable", code: 200 })),
 ).annotate({ identifier: "AdminEnableUserRequest" }) as any as S.Schema<AdminEnableUserRequest>;
 
 export interface AdminGetSettingsRequest {}
-export const AdminGetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminGetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/settings", code: 200 })),
 ).annotate({ identifier: "AdminGetSettingsRequest" }) as any as S.Schema<AdminGetSettingsRequest>;
 
 export type SettingsBagValueMap = { [key: string]: string | undefined };
-export const SettingsBagValueMap =
+const SettingsBagValueMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<SettingsBagValueMap>;
 
 export type SettingsBag = { [key: string]: SettingsBagValueMap | undefined };
-export const SettingsBag = /*@__PURE__*/ S.Record(
+const SettingsBag = /*@__PURE__*/ S.Record(
   S.String,
   SettingsBagValueMap,
 ) as any as S.Schema<SettingsBag>;
 
 export type AdminGetSettingsResponse = SettingsBag;
-export const AdminGetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const AdminGetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   SettingsBag.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "AdminGetSettingsResponse" }) as any as S.Schema<AdminGetSettingsResponse>;
 
 export interface AdminGetStatsRequest {}
-export const AdminGetStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminGetStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/stats", code: 200 })),
 ).annotate({ identifier: "AdminGetStatsRequest" }) as any as S.Schema<AdminGetStatsRequest>;
 
@@ -380,7 +380,7 @@ export interface AdminStats {
   users?: number;
   viewers?: number;
 }
-export const AdminStats = /*@__PURE__*/ S.suspend(() =>
+const AdminStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     activeAdmins: S.optional(S.Number),
     activeDevices: S.optional(S.Number),
@@ -412,7 +412,7 @@ export const AdminStats = /*@__PURE__*/ S.suspend(() =>
 export interface AdminGetUserAuthTokensRequest {
   user_id: number;
 }
-export const AdminGetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminGetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/admin/users/{user_id}/auth-tokens", code: 200 })),
@@ -437,7 +437,7 @@ export interface UserToken {
   UserAgent?: string;
   UserId?: number;
 }
-export const UserToken = /*@__PURE__*/ S.suspend(() =>
+const UserToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthToken: S.optional(S.String),
     AuthTokenSeen: S.optional(S.Boolean),
@@ -457,12 +457,12 @@ export const UserToken = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserToken" }) as any as S.Schema<UserToken>;
 
 export type AdminGetUserAuthTokensResponseBodyList = Array<UserToken>;
-export const AdminGetUserAuthTokensResponseBodyList = /*@__PURE__*/ S.Array(
+const AdminGetUserAuthTokensResponseBodyList = /*@__PURE__*/ S.Array(
   UserToken,
 ) as any as S.Schema<AdminGetUserAuthTokensResponseBodyList>;
 
 export type AdminGetUserAuthTokensResponse = AdminGetUserAuthTokensResponseBodyList;
-export const AdminGetUserAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const AdminGetUserAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
   AdminGetUserAuthTokensResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "AdminGetUserAuthTokensResponse",
@@ -471,14 +471,14 @@ export const AdminGetUserAuthTokensResponse = /*@__PURE__*/ S.suspend(() =>
 export interface AdminLogoutUserRequest {
   user_id: number;
 }
-export const AdminLogoutUserRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminLogoutUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/admin/users/{user_id}/logout", code: 200 })),
 ).annotate({ identifier: "AdminLogoutUserRequest" }) as any as S.Schema<AdminLogoutUserRequest>;
 
 export interface AdminProvisioningReloadAccessControlRequest {}
-export const AdminProvisioningReloadAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminProvisioningReloadAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/admin/provisioning/access-control/reload", code: 200 }),
   ),
@@ -487,14 +487,14 @@ export const AdminProvisioningReloadAccessControlRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<AdminProvisioningReloadAccessControlRequest>;
 
 export interface AdminProvisioningReloadAccessControlResponse {}
-export const AdminProvisioningReloadAccessControlResponse = /*@__PURE__*/ S.suspend(() =>
+const AdminProvisioningReloadAccessControlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "AdminProvisioningReloadAccessControlResponse",
 }) as any as S.Schema<AdminProvisioningReloadAccessControlResponse>;
 
 export interface AdminProvisioningReloadDashboardsRequest {}
-export const AdminProvisioningReloadDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminProvisioningReloadDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/admin/provisioning/dashboards/reload", code: 200 }),
   ),
@@ -503,7 +503,7 @@ export const AdminProvisioningReloadDashboardsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AdminProvisioningReloadDashboardsRequest>;
 
 export interface AdminProvisioningReloadDatasourcesRequest {}
-export const AdminProvisioningReloadDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminProvisioningReloadDatasourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/admin/provisioning/datasources/reload", code: 200 }),
   ),
@@ -512,7 +512,7 @@ export const AdminProvisioningReloadDatasourcesRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<AdminProvisioningReloadDatasourcesRequest>;
 
 export interface AdminProvisioningReloadPluginsRequest {}
-export const AdminProvisioningReloadPluginsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminProvisioningReloadPluginsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/admin/provisioning/plugins/reload", code: 200 }),
   ),
@@ -524,7 +524,7 @@ export interface AdminRevokeUserAuthTokenRequest {
   user_id: number;
   authTokenId?: number;
 }
-export const AdminRevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminRevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     authTokenId: S.optional(S.Number),
@@ -537,7 +537,7 @@ export interface AdminUpdateUserPasswordRequest {
   user_id: number;
   password?: string | Redacted.Redacted<string>;
 }
-export const AdminUpdateUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminUpdateUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     password: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -550,7 +550,7 @@ export interface AdminUpdateUserPermissionsRequest {
   user_id: number;
   isGrafanaAdmin?: boolean;
 }
-export const AdminUpdateUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const AdminUpdateUserPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     isGrafanaAdmin: S.optional(S.Boolean),
@@ -563,7 +563,7 @@ export interface CallDatasourceResourceWithUIDRequest {
   uid: string;
   datasource_proxy_route: string;
 }
-export const CallDatasourceResourceWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const CallDatasourceResourceWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     datasource_proxy_route: S.String.pipe(T.Label()),
@@ -584,7 +584,7 @@ export interface CancelSnapshotRequest {
   /** UID of a snapshot */
   snapshotUid: string;
 }
-export const CancelSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     snapshotUid: S.String.pipe(T.Label()),
@@ -598,7 +598,7 @@ export const CancelSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CancelSnapshotRequest" }) as any as S.Schema<CancelSnapshotRequest>;
 
 export interface CancelSnapshotResponse {}
-export const CancelSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CancelSnapshotResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CancelSnapshotResponse",
 }) as any as S.Schema<CancelSnapshotResponse>;
 
@@ -606,7 +606,7 @@ export interface ChangeUserPasswordRequest {
   newPassword?: string | Redacted.Redacted<string>;
   oldPassword?: string | Redacted.Redacted<string>;
 }
-export const ChangeUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
     oldPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -618,7 +618,7 @@ export const ChangeUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CheckDatasourceHealthWithUIDRequest {
   uid: string;
 }
-export const CheckDatasourceHealthWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckDatasourceHealthWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}/health", code: 200 })),
@@ -629,7 +629,7 @@ export const CheckDatasourceHealthWithUIDRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CleanDataSourceCacheRequest {
   dataSourceUID: string;
 }
-export const CleanDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const CleanDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceUID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/datasources/{dataSourceUID}/cache/clean", code: 200 })),
@@ -653,7 +653,7 @@ export interface CacheConfigResponse {
   /** If UseDefaultTTL is enabled, then the TTLQueriesMS and TTLResourcesMS in this object is always sent as the default TTL located in grafana.ini */
   useDefaultTTL?: boolean;
 }
-export const CacheConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const CacheConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     dataSourceID: S.optional(S.Number),
@@ -669,7 +669,7 @@ export const CacheConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheConfigResponse" }) as any as S.Schema<CacheConfigResponse>;
 
 export type CreateAnnotationRequestTagsList = Array<string>;
-export const CreateAnnotationRequestTagsList = /*@__PURE__*/ S.Array(
+const CreateAnnotationRequestTagsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CreateAnnotationRequestTagsList>;
 
@@ -683,7 +683,7 @@ export interface CreateAnnotationRequest {
   time?: number;
   timeEnd?: number;
 }
-export const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardId: S.optional(S.Number),
     dashboardUID: S.optional(S.String),
@@ -702,7 +702,7 @@ export interface CreateAnnotationResponse {
   /** Message Message of the created annotation. */
   message: string;
 }
-export const CreateAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     message: S.String,
@@ -710,7 +710,7 @@ export const CreateAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateAnnotationResponse" }) as any as S.Schema<CreateAnnotationResponse>;
 
 export interface CreateCloudMigrationTokenRequest {}
-export const CreateCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/cloudmigration/token", code: 200 })),
 ).annotate({
   identifier: "CreateCloudMigrationTokenRequest",
@@ -719,7 +719,7 @@ export const CreateCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateAccessTokenResponseDTO {
   token?: string;
 }
-export const CreateAccessTokenResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const CreateAccessTokenResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     token: S.optional(S.String),
   }),
@@ -729,13 +729,13 @@ export const CreateAccessTokenResponseDTO = /*@__PURE__*/ S.suspend(() =>
 
 /** Target data query */
 export type CorrelationConfigTargetMap = { [key: string]: unknown | undefined };
-export const CorrelationConfigTargetMap = /*@__PURE__*/ S.Record(
+const CorrelationConfigTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<CorrelationConfigTargetMap>;
 
 export type TransformationType = "regex" | "logfmt";
-export const TransformationType = S.String;
+const TransformationType = S.String;
 
 export interface Transformation {
   expression?: string;
@@ -743,7 +743,7 @@ export interface Transformation {
   mapValue?: string;
   type?: TransformationType | (string & {});
 }
-export const Transformation = /*@__PURE__*/ S.suspend(() =>
+const Transformation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     field: S.optional(S.String),
@@ -753,9 +753,7 @@ export const Transformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transformation" }) as any as S.Schema<Transformation>;
 
 export type Transformations = Array<Transformation>;
-export const Transformations = /*@__PURE__*/ S.Array(
-  Transformation,
-) as any as S.Schema<Transformations>;
+const Transformations = /*@__PURE__*/ S.Array(Transformation) as any as S.Schema<Transformations>;
 
 export interface CorrelationConfig {
   /** Field used to attach the correlation link */
@@ -765,7 +763,7 @@ export interface CorrelationConfig {
   transformations?: Transformations;
   type?: string;
 }
-export const CorrelationConfig = /*@__PURE__*/ S.suspend(() =>
+const CorrelationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.String,
     target: CorrelationConfigTargetMap,
@@ -787,7 +785,7 @@ export interface CreateCorrelationRequest {
   targetUID?: string;
   type?: string;
 }
-export const CreateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUID: S.String.pipe(T.Label()),
     config: S.optional(CorrelationConfig),
@@ -818,7 +816,7 @@ export interface Correlation {
   /** Unique identifier of the correlation */
   uid?: string;
 }
-export const Correlation = /*@__PURE__*/ S.suspend(() =>
+const Correlation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(CorrelationConfig),
     description: S.optional(S.String),
@@ -837,7 +835,7 @@ export interface CreateCorrelationResponseBody {
   message?: string;
   result?: Correlation;
 }
-export const CreateCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
+const CreateCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     result: S.optional(Correlation),
@@ -848,15 +846,14 @@ export const CreateCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
 
 /** Object is a JSON compatible map with string, float, int, bool, []any, or map[string]any children. */
 export type UnstructuredObjectMap = { [key: string]: unknown | undefined };
-export const UnstructuredObjectMap =
-  CorrelationConfigTargetMap as any as S.Schema<UnstructuredObjectMap>;
+const UnstructuredObjectMap = CorrelationConfigTargetMap as any as S.Schema<UnstructuredObjectMap>;
 
 /** Unstructured allows objects that do not have Golang structs registered to be manipulated generically. */
 export interface Unstructured {
   /** Object is a JSON compatible map with string, float, int, bool, []any, or map[string]any children. */
   Object?: UnstructuredObjectMap;
 }
-export const Unstructured = /*@__PURE__*/ S.suspend(() =>
+const Unstructured = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Object: S.optional(UnstructuredObjectMap),
   }),
@@ -879,7 +876,7 @@ export interface CreateDashboardSnapshotRequest {
   /** Snapshot name */
   name?: string;
 }
-export const CreateDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.String),
     dashboard: Unstructured,
@@ -904,7 +901,7 @@ export interface CreateDashboardSnapshotResponse {
   key?: string;
   url?: string;
 }
-export const CreateDashboardSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDashboardSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteKey: S.optional(S.String),
     deleteUrl: S.optional(S.String),
@@ -918,7 +915,7 @@ export const CreateDashboardSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Kind of element to create, Use 1 for library panels or 2 for c. Description: - 1 - library panels */
 export type CreateLibraryElementRequestKind = 1;
-export const CreateLibraryElementRequestKind = S.Number;
+const CreateLibraryElementRequestKind = S.Number;
 
 export interface CreateLibraryElementRequest {
   /** ID of the folder where the library element is stored. Deprecated: use FolderUID instead */
@@ -933,7 +930,7 @@ export interface CreateLibraryElementRequest {
   name?: string;
   uid?: string;
 }
-export const CreateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folderId: S.optional(S.Number),
     folderUid: S.optional(S.String),
@@ -951,7 +948,7 @@ export interface LibraryElementDTOMetaUser {
   id?: number;
   name?: string;
 }
-export const LibraryElementDTOMetaUser = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementDTOMetaUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatarUrl: S.optional(S.String),
     id: S.optional(S.Number),
@@ -970,7 +967,7 @@ export interface LibraryElementDTOMeta {
   updated?: string;
   updatedBy?: LibraryElementDTOMetaUser;
 }
-export const LibraryElementDTOMeta = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementDTOMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectedDashboards: S.optional(S.Number),
     created: S.optional(S.String),
@@ -998,7 +995,7 @@ export interface LibraryElementDTO {
   uid?: string;
   version?: number;
 }
-export const LibraryElementDTO = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     folderId: S.optional(S.Number),
@@ -1019,7 +1016,7 @@ export const LibraryElementDTO = /*@__PURE__*/ S.suspend(() =>
 export interface LibraryElementResponse {
   result?: LibraryElementDTO;
 }
-export const LibraryElementResponse = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LibraryElementDTO),
   }),
@@ -1028,7 +1025,7 @@ export const LibraryElementResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateOrgRequest {
   name?: string;
 }
-export const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/orgs", code: 200 })),
@@ -1040,7 +1037,7 @@ export interface CreateOrgResponse {
   /** ID Identifier of the created org. */
   orgId: number;
 }
-export const CreateOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateOrgResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.String,
     orgId: S.Number,
@@ -1056,7 +1053,7 @@ export interface CreatePublicDashboardRequest {
   timeSelectionEnabled?: boolean;
   uid?: string;
 }
-export const CreatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUid: S.String.pipe(T.Label()),
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -1076,7 +1073,7 @@ export interface EmailDTO {
   recipient?: string;
   uid?: string;
 }
-export const EmailDTO = /*@__PURE__*/ S.suspend(() =>
+const EmailDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recipient: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1084,7 +1081,7 @@ export const EmailDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailDTO" }) as any as S.Schema<EmailDTO>;
 
 export type PublicDashboardRecipientsList = Array<EmailDTO>;
-export const PublicDashboardRecipientsList = /*@__PURE__*/ S.Array(
+const PublicDashboardRecipientsList = /*@__PURE__*/ S.Array(
   EmailDTO,
 ) as any as S.Schema<PublicDashboardRecipientsList>;
 
@@ -1102,7 +1099,7 @@ export interface PublicDashboard {
   updatedAt?: string;
   updatedBy?: number;
 }
-export const PublicDashboard = /*@__PURE__*/ S.suspend(() =>
+const PublicDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
     annotationsEnabled: S.optional(S.Boolean),
@@ -1124,7 +1121,7 @@ export interface CreateQueryRequest {
   datasourceUid?: string;
   queries: unknown;
 }
-export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceUid: S.optional(S.String),
     queries: S.Unknown,
@@ -1140,7 +1137,7 @@ export interface QueryHistoryDTO {
   starred?: boolean;
   uid?: string;
 }
-export const QueryHistoryDTO = /*@__PURE__*/ S.suspend(() =>
+const QueryHistoryDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     comment: S.optional(S.String),
     createdAt: S.optional(S.Number),
@@ -1156,18 +1153,18 @@ export const QueryHistoryDTO = /*@__PURE__*/ S.suspend(() =>
 export interface QueryHistoryResponse {
   result?: QueryHistoryDTO;
 }
-export const QueryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(QueryHistoryDTO),
   }),
 ).annotate({ identifier: "QueryHistoryResponse" }) as any as S.Schema<QueryHistoryResponse>;
 
 export type CreateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const CreateRecordingRuleRequestQueriesItemMap =
+const CreateRecordingRuleRequestQueriesItemMap =
   CorrelationConfigTargetMap as any as S.Schema<CreateRecordingRuleRequestQueriesItemMap>;
 
 export type CreateRecordingRuleRequestQueriesList = Array<CreateRecordingRuleRequestQueriesItemMap>;
-export const CreateRecordingRuleRequestQueriesList = /*@__PURE__*/ S.Array(
+const CreateRecordingRuleRequestQueriesList = /*@__PURE__*/ S.Array(
   CreateRecordingRuleRequestQueriesItemMap,
 ) as any as S.Schema<CreateRecordingRuleRequestQueriesList>;
 
@@ -1184,7 +1181,7 @@ export interface CreateRecordingRuleRequest {
   range?: number;
   target_ref_id?: string;
 }
-export const CreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     count: S.optional(S.Boolean),
@@ -1203,11 +1200,8 @@ export const CreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRecordingRuleRequest>;
 
 export type RecordingRuleJSONQueriesItemMap = { [key: string]: unknown | undefined };
-export const RecordingRuleJSONQueriesItemMap =
-  CorrelationConfigTargetMap as any as S.Schema<RecordingRuleJSONQueriesItemMap>;
-
 export type RecordingRuleJSONQueriesList = Array<RecordingRuleJSONQueriesItemMap>;
-export const RecordingRuleJSONQueriesList =
+const RecordingRuleJSONQueriesList =
   CreateRecordingRuleRequestQueriesList as any as S.Schema<RecordingRuleJSONQueriesList>;
 
 /** RecordingRuleJSON is the external representation of a recording rule */
@@ -1224,7 +1218,7 @@ export interface RecordingRuleJSON {
   range?: number;
   target_ref_id?: string;
 }
-export const RecordingRuleJSON = /*@__PURE__*/ S.suspend(() =>
+const RecordingRuleJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     count: S.optional(S.Boolean),
@@ -1245,7 +1239,7 @@ export interface CreateRecordingRuleWriteTargetRequest {
   id?: string;
   remote_write_path?: string;
 }
-export const CreateRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_source_uid: S.optional(S.String),
     id: S.optional(S.String),
@@ -1260,7 +1254,7 @@ export interface PrometheusRemoteWriteTargetJSON {
   id?: string;
   remote_write_path?: string;
 }
-export const PrometheusRemoteWriteTargetJSON = /*@__PURE__*/ S.suspend(() =>
+const PrometheusRemoteWriteTargetJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data_source_uid: S.optional(S.String),
     id: S.optional(S.String),
@@ -1275,7 +1269,7 @@ export interface ReportDashboardID {
   name?: string;
   uid?: string;
 }
-export const ReportDashboardID = /*@__PURE__*/ S.suspend(() =>
+const ReportDashboardID = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -1287,7 +1281,7 @@ export interface ReportTimeRange {
   from?: string;
   to?: string;
 }
-export const ReportTimeRange = /*@__PURE__*/ S.suspend(() =>
+const ReportTimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     to: S.optional(S.String),
@@ -1299,7 +1293,7 @@ export interface ReportDashboard {
   reportVariables?: unknown;
   timeRange?: ReportTimeRange;
 }
-export const ReportDashboard = /*@__PURE__*/ S.suspend(() =>
+const ReportDashboard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: S.optional(ReportDashboardID),
     reportVariables: S.optional(S.Unknown),
@@ -1308,12 +1302,12 @@ export const ReportDashboard = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportDashboard" }) as any as S.Schema<ReportDashboard>;
 
 export type CreateReportRequestDashboardsList = Array<ReportDashboard>;
-export const CreateReportRequestDashboardsList = /*@__PURE__*/ S.Array(
+const CreateReportRequestDashboardsList = /*@__PURE__*/ S.Array(
   ReportDashboard,
 ) as any as S.Schema<CreateReportRequestDashboardsList>;
 
 export type CreateReportRequestFormatsList = Array<string>;
-export const CreateReportRequestFormatsList =
+const CreateReportRequestFormatsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CreateReportRequestFormatsList>;
 
 export interface ReportOptions {
@@ -1324,7 +1318,7 @@ export interface ReportOptions {
   pdfShowTemplateVariables?: boolean;
   timeRange?: ReportTimeRange;
 }
-export const ReportOptions = /*@__PURE__*/ S.suspend(() =>
+const ReportOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csvEncoding: S.optional(S.String),
     layout: S.optional(S.String),
@@ -1345,7 +1339,7 @@ export interface ReportSchedule {
   timeZone?: string;
   workdaysOnly?: boolean;
 }
-export const ReportSchedule = /*@__PURE__*/ S.suspend(() =>
+const ReportSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dayOfMonth: S.optional(S.String),
     endDate: S.optional(S.String),
@@ -1362,7 +1356,7 @@ export interface ReportURLItem {
   title?: string;
   url?: string;
 }
-export const ReportURLItem = /*@__PURE__*/ S.suspend(() =>
+const ReportURLItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     url: S.optional(S.String),
@@ -1370,7 +1364,7 @@ export const ReportURLItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportURLItem" }) as any as S.Schema<ReportURLItem>;
 
 export type CreateReportRequestUrlsList = Array<ReportURLItem>;
-export const CreateReportRequestUrlsList = /*@__PURE__*/ S.Array(
+const CreateReportRequestUrlsList = /*@__PURE__*/ S.Array(
   ReportURLItem,
 ) as any as S.Schema<CreateReportRequestUrlsList>;
 
@@ -1390,7 +1384,7 @@ export interface CreateReportRequest {
   subject?: string;
   urls?: CreateReportRequestUrlsList;
 }
-export const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(CreateReportRequestDashboardsList),
     enableCsv: S.optional(S.Boolean),
@@ -1413,7 +1407,7 @@ export interface CreateReportResponse {
   id?: number;
   message?: string;
 }
-export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     message: S.optional(S.String),
@@ -1427,7 +1421,7 @@ export interface Permission {
   scope?: string;
   updated?: string;
 }
-export const Permission = /*@__PURE__*/ S.suspend(() =>
+const Permission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     created: S.optional(S.String),
@@ -1437,7 +1431,7 @@ export const Permission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
 
 export type CreateRoleRequestPermissionsList = Array<Permission>;
-export const CreateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
+const CreateRoleRequestPermissionsList = /*@__PURE__*/ S.Array(
   Permission,
 ) as any as S.Schema<CreateRoleRequestPermissionsList>;
 
@@ -1451,7 +1445,7 @@ export interface CreateRoleRequest {
   permissions?: CreateRoleRequestPermissionsList;
   uid?: string;
 }
-export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -1465,7 +1459,7 @@ export const CreateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateRoleRequest" }) as any as S.Schema<CreateRoleRequest>;
 
 export type RoleDTOPermissionsList = Array<Permission>;
-export const RoleDTOPermissionsList =
+const RoleDTOPermissionsList =
   CreateRoleRequestPermissionsList as any as S.Schema<RoleDTOPermissionsList>;
 
 export interface RoleDTO {
@@ -1483,7 +1477,7 @@ export interface RoleDTO {
   updated: string;
   version: number;
 }
-export const RoleDTO = /*@__PURE__*/ S.suspend(() =>
+const RoleDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     delegatable: S.optional(S.Boolean),
@@ -1502,14 +1496,14 @@ export const RoleDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoleDTO" }) as any as S.Schema<RoleDTO>;
 
 export type CreateServiceAccountRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const CreateServiceAccountRequestRole = S.String;
+const CreateServiceAccountRequestRole = S.String;
 
 export interface CreateServiceAccountRequest {
   isDisabled?: boolean;
   name?: string;
   role?: CreateServiceAccountRequestRole | (string & {});
 }
-export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isDisabled: S.optional(S.Boolean),
     name: S.optional(S.String),
@@ -1520,7 +1514,7 @@ export const CreateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceAccountRequest>;
 
 export type ServiceAccountDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const ServiceAccountDTOAccessControlMap =
+const ServiceAccountDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<ServiceAccountDTOAccessControlMap>;
 
 export interface ServiceAccountDTO {
@@ -1536,7 +1530,7 @@ export interface ServiceAccountDTO {
   tokens?: number;
   uid?: string;
 }
-export const ServiceAccountDTO = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(ServiceAccountDTOAccessControlMap),
     avatarUrl: S.optional(S.String),
@@ -1555,7 +1549,7 @@ export const ServiceAccountDTO = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSessionRequest {
   authToken?: string;
 }
-export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authToken: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/cloudmigration/migration", code: 200 })),
@@ -1567,7 +1561,7 @@ export interface CloudMigrationSessionResponseDTO {
   uid?: string;
   updated?: string;
 }
-export const CloudMigrationSessionResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const CloudMigrationSessionResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     slug: S.optional(S.String),
@@ -1590,12 +1584,12 @@ export type CreateSnapshotRequestResourceTypesItem =
   | "NOTIFICATION_TEMPLATE"
   | "MUTE_TIMING"
   | "PLUGIN";
-export const CreateSnapshotRequestResourceTypesItem = S.String;
+const CreateSnapshotRequestResourceTypesItem = S.String;
 
 export type CreateSnapshotRequestResourceTypesList = Array<
   CreateSnapshotRequestResourceTypesItem | (string & {})
 >;
-export const CreateSnapshotRequestResourceTypesList = /*@__PURE__*/ S.Array(
+const CreateSnapshotRequestResourceTypesList = /*@__PURE__*/ S.Array(
   CreateSnapshotRequestResourceTypesItem,
 ) as any as S.Schema<CreateSnapshotRequestResourceTypesList>;
 
@@ -1604,7 +1598,7 @@ export interface CreateSnapshotRequest {
   uid: string;
   resourceTypes?: CreateSnapshotRequestResourceTypesList;
 }
-export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     resourceTypes: S.optional(CreateSnapshotRequestResourceTypesList),
@@ -1614,7 +1608,7 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface CreateSnapshotResponseDTO {
   uid?: string;
 }
-export const CreateSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const CreateSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.optional(S.String),
   }),
@@ -1626,7 +1620,7 @@ export interface CreateTeamRequest {
   email?: string;
   name: string;
 }
-export const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     name: S.String,
@@ -1638,7 +1632,7 @@ export interface CreateTeamResponse {
   teamId?: number;
   uid?: string;
 }
-export const CreateTeamResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTeamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     teamId: S.optional(S.Number),
@@ -1651,7 +1645,7 @@ export interface CreateTokenRequest {
   name?: string;
   secondsToLive?: number;
 }
-export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -1664,7 +1658,7 @@ export interface NewApiKeyResult {
   key?: string;
   name?: string;
 }
-export const NewApiKeyResult = /*@__PURE__*/ S.suspend(() =>
+const NewApiKeyResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     key: S.optional(S.String),
@@ -1676,7 +1670,7 @@ export interface DatasourceProxyDELETEByUIDcallsRequest {
   uid: string;
   datasource_proxy_route: string;
 }
-export const DatasourceProxyDELETEByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
+const DatasourceProxyDELETEByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     datasource_proxy_route: S.String.pipe(T.Label()),
@@ -1692,14 +1686,14 @@ export const DatasourceProxyDELETEByUIDcallsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<DatasourceProxyDELETEByUIDcallsRequest>;
 
 export interface DatasourceProxyDELETEByUIDcallsResponse {}
-export const DatasourceProxyDELETEByUIDcallsResponse =
+const DatasourceProxyDELETEByUIDcallsResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyDELETEByUIDcallsResponse>;
 
 export interface DatasourceProxyGETByUIDcallsRequest {
   uid: string;
   datasource_proxy_route: string;
 }
-export const DatasourceProxyGETByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
+const DatasourceProxyGETByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     datasource_proxy_route: S.String.pipe(T.Label()),
@@ -1715,14 +1709,14 @@ export const DatasourceProxyGETByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatasourceProxyGETByUIDcallsRequest>;
 
 export interface DatasourceProxyGETByUIDcallsResponse {}
-export const DatasourceProxyGETByUIDcallsResponse =
+const DatasourceProxyGETByUIDcallsResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyGETByUIDcallsResponse>;
 
 export interface DatasourceProxyPOSTByUIDcallsRequest {
   uid: string;
   datasource_proxy_route: string;
 }
-export const DatasourceProxyPOSTByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
+const DatasourceProxyPOSTByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     datasource_proxy_route: S.String.pipe(T.Label()),
@@ -1738,13 +1732,13 @@ export const DatasourceProxyPOSTByUIDcallsRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<DatasourceProxyPOSTByUIDcallsRequest>;
 
 export interface DatasourceProxyPOSTByUIDcallsResponse {}
-export const DatasourceProxyPOSTByUIDcallsResponse =
+const DatasourceProxyPOSTByUIDcallsResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<DatasourceProxyPOSTByUIDcallsResponse>;
 
 export interface DeleteAnnotationRequest {
   annotation_id: string;
 }
-export const DeleteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/annotations/{annotation_id}", code: 200 })),
@@ -1754,7 +1748,7 @@ export interface DeleteCloudMigrationTokenRequest {
   /** UID of a cloud migration token */
   uid: string;
 }
-export const DeleteCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/cloudmigration/token/{uid}", code: 200 })),
@@ -1763,14 +1757,14 @@ export const DeleteCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteCloudMigrationTokenRequest>;
 
 export interface DeleteCloudMigrationTokenResponse {}
-export const DeleteCloudMigrationTokenResponse =
+const DeleteCloudMigrationTokenResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<DeleteCloudMigrationTokenResponse>;
 
 export interface DeleteCorrelationRequest {
   uid: string;
   correlationUID: string;
 }
-export const DeleteCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     correlationUID: S.String.pipe(T.Label()),
@@ -1786,7 +1780,7 @@ export const DeleteCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteCorrelationResponseBody {
   message?: string;
 }
-export const DeleteCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
+const DeleteCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
   }),
@@ -1797,7 +1791,7 @@ export const DeleteCorrelationResponseBody = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardSnapshotRequest {
   key: string;
 }
-export const DeleteDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/snapshots/{key}", code: 200 })),
@@ -1808,7 +1802,7 @@ export const DeleteDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDashboardSnapshotByDeleteKeyRequest {
   deleteKey: string;
 }
-export const DeleteDashboardSnapshotByDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDashboardSnapshotByDeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deleteKey: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/snapshots-delete/{deleteKey}", code: 200 })),
@@ -1819,7 +1813,7 @@ export const DeleteDashboardSnapshotByDeleteKeyRequest = /*@__PURE__*/ S.suspend
 export interface DeleteDataSourceByUIDRequest {
   uid: string;
 }
-export const DeleteDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/datasources/uid/{uid}", code: 200 })),
@@ -1830,7 +1824,7 @@ export const DeleteDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLibraryElementByUIDRequest {
   library_element_uid: string;
 }
-export const DeleteLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_element_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/library-elements/{library_element_uid}", code: 200 })),
@@ -1841,7 +1835,7 @@ export const DeleteLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteLicenseTokenRequest {
   instance?: string;
 }
-export const DeleteLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(S.String),
   }).pipe(T.Http({ method: "DELETE", uri: "/licensing/token", code: 200 })),
@@ -1850,13 +1844,13 @@ export const DeleteLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteLicenseTokenRequest>;
 
 export interface DeleteLicenseTokenResponse {}
-export const DeleteLicenseTokenResponse =
+const DeleteLicenseTokenResponse =
   CancelSnapshotResponse as any as S.Schema<DeleteLicenseTokenResponse>;
 
 export interface DeleteOrgRequest {
   org_id: number;
 }
-export const DeleteOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/orgs/{org_id}", code: 200 })),
@@ -1866,7 +1860,7 @@ export interface DeletePublicDashboardRequest {
   dashboardUid: string;
   uid: string;
 }
-export const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUid: S.String.pipe(T.Label()),
     uid: S.String.pipe(T.Label()),
@@ -1884,7 +1878,7 @@ export const DeletePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteQueryRequest {
   query_history_uid: string;
 }
-export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query_history_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/query-history/{query_history_uid}", code: 200 })),
@@ -1895,7 +1889,7 @@ export interface QueryHistoryDeleteQueryResponse {
   id?: number;
   message?: string;
 }
-export const QueryHistoryDeleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryHistoryDeleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     message: S.optional(S.String),
@@ -1907,7 +1901,7 @@ export const QueryHistoryDeleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteRecordingRuleRequest {
   recordingRuleID: number;
 }
-export const DeleteRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recordingRuleID: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/recording-rules/{recordingRuleID}", code: 200 })),
@@ -1916,7 +1910,7 @@ export const DeleteRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRecordingRuleRequest>;
 
 export interface DeleteRecordingRuleWriteTargetRequest {}
-export const DeleteRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "DELETE", uri: "/recording-rules/writer", code: 200 })),
 ).annotate({
   identifier: "DeleteRecordingRuleWriteTargetRequest",
@@ -1927,7 +1921,7 @@ export interface DeleteRoleRequest {
   force?: boolean;
   global?: boolean;
 }
-export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleUID: S.String.pipe(T.Label()),
     force: S.optional(S.Boolean.pipe(T.Query())),
@@ -1938,7 +1932,7 @@ export const DeleteRoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteServiceAccountRequest {
   serviceAccountId: number;
 }
-export const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
@@ -1950,20 +1944,19 @@ export interface DeleteSessionRequest {
   /** UID of a migration session */
   uid: string;
 }
-export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/cloudmigration/migration/{uid}", code: 200 })),
 ).annotate({ identifier: "DeleteSessionRequest" }) as any as S.Schema<DeleteSessionRequest>;
 
 export interface DeleteSessionResponse {}
-export const DeleteSessionResponse =
-  CancelSnapshotResponse as any as S.Schema<DeleteSessionResponse>;
+const DeleteSessionResponse = CancelSnapshotResponse as any as S.Schema<DeleteSessionResponse>;
 
 export interface DeleteTeamRequest {
   team_id: string;
 }
-export const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/teams/{team_id}", code: 200 })),
@@ -1973,7 +1966,7 @@ export interface DeleteTokenRequest {
   serviceAccountId: number;
   tokenId: number;
 }
-export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
     tokenId: S.Number.pipe(T.Label()),
@@ -1991,7 +1984,7 @@ export interface DisableDataSourceCacheRequest {
   /** Optional datasource type used to disambiguate datasource UID lookups. */
   dataSourceType?: string;
 }
-export const DisableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const DisableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceUID: S.String.pipe(T.Label()),
     dataSourceType: S.optional(S.String.pipe(T.Query())),
@@ -2005,7 +1998,7 @@ export interface EnableDataSourceCacheRequest {
   /** Optional datasource type used to disambiguate datasource UID lookups. */
   dataSourceType?: string;
 }
-export const EnableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const EnableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceUID: S.String.pipe(T.Label()),
     dataSourceType: S.optional(S.String.pipe(T.Query())),
@@ -2015,7 +2008,7 @@ export const EnableDataSourceCacheRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnableDataSourceCacheRequest>;
 
 export interface GetAccessControlStatusRequest {}
-export const GetAccessControlStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAccessControlStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/access-control/status", code: 200 })),
 ).annotate({
   identifier: "GetAccessControlStatusRequest",
@@ -2024,7 +2017,7 @@ export const GetAccessControlStatusRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AccessControlStatus {
   enabled?: boolean;
 }
-export const AccessControlStatus = /*@__PURE__*/ S.suspend(() =>
+const AccessControlStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
   }),
@@ -2033,15 +2026,14 @@ export const AccessControlStatus = /*@__PURE__*/ S.suspend(() =>
 export interface GetAnnotationRequest {
   annotation_id: string;
 }
-export const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/annotations/{annotation_id}", code: 200 })),
 ).annotate({ identifier: "GetAnnotationRequest" }) as any as S.Schema<GetAnnotationRequest>;
 
 export type AnnotationTagsList = Array<string>;
-export const AnnotationTagsList =
-  CreateAnnotationRequestTagsList as any as S.Schema<AnnotationTagsList>;
+const AnnotationTagsList = CreateAnnotationRequestTagsList as any as S.Schema<AnnotationTagsList>;
 
 export interface Annotation {
   alertId?: number;
@@ -2066,7 +2058,7 @@ export interface Annotation {
   userId?: number;
   userUID?: string;
 }
-export const Annotation = /*@__PURE__*/ S.suspend(() =>
+const Annotation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alertId: S.optional(S.Number),
     alertName: S.optional(S.String),
@@ -2092,11 +2084,11 @@ export const Annotation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Annotation" }) as any as S.Schema<Annotation>;
 
 export type GetAnnotationsRequestTagsList = Array<string>;
-export const GetAnnotationsRequestTagsList =
+const GetAnnotationsRequestTagsList =
   CreateAnnotationRequestTagsList as any as S.Schema<GetAnnotationsRequestTagsList>;
 
 export type GetAnnotationsRequestType = "alert" | "annotation";
-export const GetAnnotationsRequestType = S.String;
+const GetAnnotationsRequestType = S.String;
 
 export interface GetAnnotationsRequest {
   /** Find annotations created after specific epoch datetime in milliseconds. */
@@ -2126,7 +2118,7 @@ export interface GetAnnotationsRequest {
   /** Match any or all tags */
   matchAny?: boolean;
 }
-export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.Number.pipe(T.Query())),
     to: S.optional(S.Number.pipe(T.Query())),
@@ -2145,12 +2137,12 @@ export const GetAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetAnnotationsRequest" }) as any as S.Schema<GetAnnotationsRequest>;
 
 export type GetAnnotationsResponseBodyList = Array<Annotation>;
-export const GetAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
   Annotation,
 ) as any as S.Schema<GetAnnotationsResponseBodyList>;
 
 export type GetAnnotationsResponse = GetAnnotationsResponseBodyList;
-export const GetAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetAnnotationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetAnnotationsResponse" }) as any as S.Schema<GetAnnotationsResponse>;
 
@@ -2160,7 +2152,7 @@ export interface GetAnnotationTagsRequest {
   /** Max limit for results returned. */
   limit?: string;
 }
-export const GetAnnotationTagsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.String.pipe(T.Query())),
@@ -2171,7 +2163,7 @@ export interface TagsDTO {
   count?: number;
   tag?: string;
 }
-export const TagsDTO = /*@__PURE__*/ S.suspend(() =>
+const TagsDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.optional(S.Number),
     tag: S.optional(S.String),
@@ -2179,14 +2171,14 @@ export const TagsDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagsDTO" }) as any as S.Schema<TagsDTO>;
 
 export type FindTagsResultTagsList = Array<TagsDTO>;
-export const FindTagsResultTagsList = /*@__PURE__*/ S.Array(
+const FindTagsResultTagsList = /*@__PURE__*/ S.Array(
   TagsDTO,
 ) as any as S.Schema<FindTagsResultTagsList>;
 
 export interface FindTagsResult {
   tags?: FindTagsResultTagsList;
 }
-export const FindTagsResult = /*@__PURE__*/ S.suspend(() =>
+const FindTagsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(FindTagsResultTagsList),
   }),
@@ -2195,7 +2187,7 @@ export const FindTagsResult = /*@__PURE__*/ S.suspend(() =>
 export interface GetAnnotationTagsResponse {
   result?: FindTagsResult;
 }
-export const GetAnnotationTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetAnnotationTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(FindTagsResult),
   }),
@@ -2204,7 +2196,7 @@ export const GetAnnotationTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnnotationTagsResponse>;
 
 export interface GetCloudMigrationTokenRequest {}
-export const GetCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCloudMigrationTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudmigration/token", code: 200 })),
 ).annotate({
   identifier: "GetCloudMigrationTokenRequest",
@@ -2218,7 +2210,7 @@ export interface GetAccessTokenResponseDTO {
   id?: string;
   lastUsedAt?: string;
 }
-export const GetAccessTokenResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const GetAccessTokenResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -2235,7 +2227,7 @@ export interface GetCorrelationRequest {
   sourceUID: string;
   correlationUID: string;
 }
-export const GetCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUID: S.String.pipe(T.Label()),
     correlationUID: S.String.pipe(T.Label()),
@@ -2249,7 +2241,7 @@ export const GetCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCorrelationRequest" }) as any as S.Schema<GetCorrelationRequest>;
 
 export type GetCorrelationsRequestSourceUIDList = Array<string>;
-export const GetCorrelationsRequestSourceUIDList =
+const GetCorrelationsRequestSourceUIDList =
   CreateAnnotationRequestTagsList as any as S.Schema<GetCorrelationsRequestSourceUIDList>;
 
 export interface GetCorrelationsRequest {
@@ -2260,7 +2252,7 @@ export interface GetCorrelationsRequest {
   /** Source datasource UID filter to be applied to correlations */
   sourceUID?: GetCorrelationsRequestSourceUIDList;
 }
-export const GetCorrelationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2269,19 +2261,19 @@ export const GetCorrelationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCorrelationsRequest" }) as any as S.Schema<GetCorrelationsRequest>;
 
 export type GetCorrelationsResponseBodyList = Array<Correlation>;
-export const GetCorrelationsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCorrelationsResponseBodyList = /*@__PURE__*/ S.Array(
   Correlation,
 ) as any as S.Schema<GetCorrelationsResponseBodyList>;
 
 export type GetCorrelationsResponse = GetCorrelationsResponseBodyList;
-export const GetCorrelationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetCorrelationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCorrelationsResponse" }) as any as S.Schema<GetCorrelationsResponse>;
 
 export interface GetCorrelationsBySourceUIDRequest {
   sourceUID: string;
 }
-export const GetCorrelationsBySourceUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationsBySourceUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{sourceUID}/correlations", code: 200 })),
@@ -2290,18 +2282,18 @@ export const GetCorrelationsBySourceUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCorrelationsBySourceUIDRequest>;
 
 export type GetCorrelationsBySourceUIDResponseBodyList = Array<Correlation>;
-export const GetCorrelationsBySourceUIDResponseBodyList =
+const GetCorrelationsBySourceUIDResponseBodyList =
   GetCorrelationsResponseBodyList as any as S.Schema<GetCorrelationsBySourceUIDResponseBodyList>;
 
 export type GetCorrelationsBySourceUIDResponse = GetCorrelationsBySourceUIDResponseBodyList;
-export const GetCorrelationsBySourceUIDResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCorrelationsBySourceUIDResponse = /*@__PURE__*/ S.suspend(() =>
   GetCorrelationsBySourceUIDResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCorrelationsBySourceUIDResponse",
 }) as any as S.Schema<GetCorrelationsBySourceUIDResponse>;
 
 export interface GetCurrentOrgRequest {}
-export const GetCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org", code: 200 })),
 ).annotate({ identifier: "GetCurrentOrgRequest" }) as any as S.Schema<GetCurrentOrgRequest>;
 
@@ -2313,7 +2305,7 @@ export interface Address {
   state?: string;
   zipCode?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.optional(S.String),
     address2: S.optional(S.String),
@@ -2329,7 +2321,7 @@ export interface OrgDetailsDTO {
   id?: number;
   name?: string;
 }
-export const OrgDetailsDTO = /*@__PURE__*/ S.suspend(() =>
+const OrgDetailsDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address: S.optional(Address),
     id: S.optional(S.Number),
@@ -2338,7 +2330,7 @@ export const OrgDetailsDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDetailsDTO" }) as any as S.Schema<OrgDetailsDTO>;
 
 export interface GetCurrentOrgQuotaRequest {}
-export const GetCurrentOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/quotas", code: 200 })),
 ).annotate({
   identifier: "GetCurrentOrgQuotaRequest",
@@ -2351,7 +2343,7 @@ export interface QuotaDTO {
   used?: number;
   user_id?: number;
 }
-export const QuotaDTO = /*@__PURE__*/ S.suspend(() =>
+const QuotaDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     org_id: S.optional(S.Number),
@@ -2362,12 +2354,12 @@ export const QuotaDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QuotaDTO" }) as any as S.Schema<QuotaDTO>;
 
 export type GetCurrentOrgQuotaResponseBodyList = Array<QuotaDTO>;
-export const GetCurrentOrgQuotaResponseBodyList = /*@__PURE__*/ S.Array(
+const GetCurrentOrgQuotaResponseBodyList = /*@__PURE__*/ S.Array(
   QuotaDTO,
 ) as any as S.Schema<GetCurrentOrgQuotaResponseBodyList>;
 
 export type GetCurrentOrgQuotaResponse = GetCurrentOrgQuotaResponseBodyList;
-export const GetCurrentOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCurrentOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   GetCurrentOrgQuotaResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetCurrentOrgQuotaResponse",
@@ -2376,7 +2368,7 @@ export const GetCurrentOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDashboardSnapshotRequest {
   key: string;
 }
-export const GetDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDashboardSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/snapshots/{key}", code: 200 })),
@@ -2389,7 +2381,7 @@ export interface AnnotationActions {
   canDelete?: boolean;
   canEdit?: boolean;
 }
-export const AnnotationActions = /*@__PURE__*/ S.suspend(() =>
+const AnnotationActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     canAdd: S.optional(S.Boolean),
     canDelete: S.optional(S.Boolean),
@@ -2400,7 +2392,7 @@ export const AnnotationActions = /*@__PURE__*/ S.suspend(() =>
 export interface AnnotationPermission {
   dashboard?: AnnotationActions;
 }
-export const AnnotationPermission = /*@__PURE__*/ S.suspend(() =>
+const AnnotationPermission = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: S.optional(AnnotationActions),
   }),
@@ -2435,7 +2427,7 @@ export interface DashboardMeta {
   url?: string;
   version?: number;
 }
-export const DashboardMeta = /*@__PURE__*/ S.suspend(() =>
+const DashboardMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationsPermissions: S.optional(AnnotationPermission),
     apiVersion: S.optional(S.String),
@@ -2470,7 +2462,7 @@ export interface DashboardFullWithMeta {
   dashboard?: unknown;
   meta?: DashboardMeta;
 }
-export const DashboardFullWithMeta = /*@__PURE__*/ S.suspend(() =>
+const DashboardFullWithMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: S.optional(S.Unknown),
     meta: S.optional(DashboardMeta),
@@ -2480,7 +2472,7 @@ export const DashboardFullWithMeta = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataSourceByUIDRequest {
   uid: string;
 }
-export const GetDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}", code: 200 })),
@@ -2493,7 +2485,7 @@ export interface GetDataSourceCacheConfigRequest {
   /** Optional datasource type used to disambiguate datasource UID lookups. */
   dataSourceType?: string;
 }
-export const GetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceUID: S.String.pipe(T.Label()),
     dataSourceType: S.optional(S.String.pipe(T.Query())),
@@ -2503,7 +2495,7 @@ export const GetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDataSourceCacheConfigRequest>;
 
 export interface GetDataSourcesRequest {}
-export const GetDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/datasources", code: 200 })),
 ).annotate({ identifier: "GetDataSourcesRequest" }) as any as S.Schema<GetDataSourcesRequest>;
 
@@ -2524,7 +2516,7 @@ export interface DataSourceListItemDTO {
   url?: string;
   user?: string;
 }
-export const DataSourceListItemDTO = /*@__PURE__*/ S.suspend(() =>
+const DataSourceListItemDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     access: S.optional(S.String),
     basicAuth: S.optional(S.Boolean),
@@ -2545,17 +2537,17 @@ export const DataSourceListItemDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DataSourceListItemDTO" }) as any as S.Schema<DataSourceListItemDTO>;
 
 export type DataSourceList = Array<DataSourceListItemDTO>;
-export const DataSourceList = /*@__PURE__*/ S.Array(
+const DataSourceList = /*@__PURE__*/ S.Array(
   DataSourceListItemDTO,
 ) as any as S.Schema<DataSourceList>;
 
 export type GetDataSourcesResponse = DataSourceList;
-export const GetDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   DataSourceList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetDataSourcesResponse" }) as any as S.Schema<GetDataSourcesResponse>;
 
 export interface GetHealthRequest {}
-export const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
+const GetHealthRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
 ).annotate({ identifier: "GetHealthRequest" }) as any as S.Schema<GetHealthRequest>;
 
@@ -2566,7 +2558,7 @@ export interface HealthResponse {
   enterpriseCommit?: string;
   version?: string;
 }
-export const HealthResponse = /*@__PURE__*/ S.suspend(() =>
+const HealthResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiserver: S.optional(S.String),
     commit: S.optional(S.String),
@@ -2577,56 +2569,56 @@ export const HealthResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthResponse" }) as any as S.Schema<HealthResponse>;
 
 export interface GetJWKSRequest {}
-export const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
+const GetJWKSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/signing-keys/keys", code: 200 })),
 ).annotate({ identifier: "GetJWKSRequest" }) as any as S.Schema<GetJWKSRequest>;
 
 /** X.509 certificate thumbprint (SHA-1), parsed from `x5t` header. */
 export type JSONWebKeyCertificateThumbprintSHA1List = Array<number>;
-export const JSONWebKeyCertificateThumbprintSHA1List = /*@__PURE__*/ S.Array(
+const JSONWebKeyCertificateThumbprintSHA1List = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<JSONWebKeyCertificateThumbprintSHA1List>;
 
 /** X.509 certificate thumbprint (SHA-256), parsed from `x5t#S256` header. */
 export type JSONWebKeyCertificateThumbprintSHA256List = Array<number>;
-export const JSONWebKeyCertificateThumbprintSHA256List =
+const JSONWebKeyCertificateThumbprintSHA256List =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<JSONWebKeyCertificateThumbprintSHA256List>;
 
 export type CertificateAuthorityKeyIdList = Array<number>;
-export const CertificateAuthorityKeyIdList =
+const CertificateAuthorityKeyIdList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateAuthorityKeyIdList>;
 
 /** CRL Distribution Points */
 export type CertificateCRLDistributionPointsList = Array<string>;
-export const CertificateCRLDistributionPointsList =
+const CertificateCRLDistributionPointsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateCRLDistributionPointsList>;
 
 /** Subject Alternate Name values. (Note that these values may not be valid if invalid values were contained within a parsed certificate. For example, an element of DNSNames may not be a valid DNS domain name.) */
 export type CertificateDNSNamesList = Array<string>;
-export const CertificateDNSNamesList =
+const CertificateDNSNamesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateDNSNamesList>;
 
 export type CertificateEmailAddressesList = Array<string>;
-export const CertificateEmailAddressesList =
+const CertificateEmailAddressesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateEmailAddressesList>;
 
 export type CertificateExcludedDNSDomainsList = Array<string>;
-export const CertificateExcludedDNSDomainsList =
+const CertificateExcludedDNSDomainsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedDNSDomainsList>;
 
 export type CertificateExcludedEmailAddressesList = Array<string>;
-export const CertificateExcludedEmailAddressesList =
+const CertificateExcludedEmailAddressesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedEmailAddressesList>;
 
 /** See type [IPNet] and func [ParseCIDR] for details. */
 export type IPMask = Array<number>;
-export const IPMask = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IPMask>;
+const IPMask = /*@__PURE__*/ S.Array(S.Number) as any as S.Schema<IPMask>;
 
 export interface IPNet {
   IP?: string;
   Mask?: IPMask;
 }
-export const IPNet = /*@__PURE__*/ S.suspend(() =>
+const IPNet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IP: S.optional(S.String),
     Mask: S.optional(IPMask),
@@ -2634,24 +2626,24 @@ export const IPNet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IPNet" }) as any as S.Schema<IPNet>;
 
 export type CertificateExcludedIPRangesList = Array<IPNet>;
-export const CertificateExcludedIPRangesList = /*@__PURE__*/ S.Array(
+const CertificateExcludedIPRangesList = /*@__PURE__*/ S.Array(
   IPNet,
 ) as any as S.Schema<CertificateExcludedIPRangesList>;
 
 export type CertificateExcludedURIDomainsList = Array<string>;
-export const CertificateExcludedURIDomainsList =
+const CertificateExcludedURIDomainsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateExcludedURIDomainsList>;
 
 export type CertificateExtKeyUsageList = Array<number>;
-export const CertificateExtKeyUsageList =
+const CertificateExtKeyUsageList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateExtKeyUsageList>;
 
 export type ObjectIdentifier = Array<number>;
-export const ObjectIdentifier =
+const ObjectIdentifier =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ObjectIdentifier>;
 
 export type ExtensionValueList = Array<number>;
-export const ExtensionValueList =
+const ExtensionValueList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ExtensionValueList>;
 
 /** Extension represents the ASN.1 structure of the same name. See RFC 5280, section 4.2. */
@@ -2660,7 +2652,7 @@ export interface Extension {
   Id?: ObjectIdentifier;
   Value?: ExtensionValueList;
 }
-export const Extension = /*@__PURE__*/ S.suspend(() =>
+const Extension = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Critical: S.optional(S.Boolean),
     Id: S.optional(ObjectIdentifier),
@@ -2670,28 +2662,28 @@ export const Extension = /*@__PURE__*/ S.suspend(() =>
 
 /** Extensions contains raw X.509 extensions. When parsing certificates, this can be used to extract non-critical extensions that are not parsed by this package. When marshaling certificates, the Extensions field is ignored, see ExtraExtensions. */
 export type CertificateExtensionsList = Array<Extension>;
-export const CertificateExtensionsList = /*@__PURE__*/ S.Array(
+const CertificateExtensionsList = /*@__PURE__*/ S.Array(
   Extension,
 ) as any as S.Schema<CertificateExtensionsList>;
 
 /** ExtraExtensions contains extensions to be copied, raw, into any marshaled certificates. Values override any extensions that would otherwise be produced based on the other fields. The ExtraExtensions field is not populated when parsing certificates, see Extensions. */
 export type CertificateExtraExtensionsList = Array<Extension>;
-export const CertificateExtraExtensionsList =
+const CertificateExtraExtensionsList =
   CertificateExtensionsList as any as S.Schema<CertificateExtraExtensionsList>;
 
 export type CertificateIPAddressesList = Array<string>;
-export const CertificateIPAddressesList =
+const CertificateIPAddressesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateIPAddressesList>;
 
 export type NameCountryList = Array<string>;
-export const NameCountryList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NameCountryList>;
+const NameCountryList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<NameCountryList>;
 
 /** When parsed as part of a pkix.Name structure in a crypto/x509 type, the Value will be - a string if the ASN.1 type is PrintableString, IA5String, NumericString, BMPString, T61String, or UTF8String; - an int64 if the ASN.1 type is INTEGER; - an asn1.BitString if the ASN.1 type is BIT STRING; - a []byte if the ASN.1 type is OCTET STRING; - an asn1.ObjectIdentifier if the ASN.1 type is OBJECT IDENTIFIER; - a time.Time if the ASN.1 type is UTCTIME or GENERALIZEDTIME; - a bool if the ASN.1 type is BOOLEAN; - nil if the ASN.1 type is NULL; - an asn1.RawValue otherwise. */
 export interface AttributeTypeAndValue {
   Type?: ObjectIdentifier;
   Value?: unknown;
 }
-export const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
+const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(ObjectIdentifier),
     Value: S.optional(S.Unknown),
@@ -2700,36 +2692,33 @@ export const AttributeTypeAndValue = /*@__PURE__*/ S.suspend(() =>
 
 /** ExtraNames contains attributes to be copied, raw, into any marshaled distinguished names. Values override any attributes with the same OID. The ExtraNames field is not populated when parsing, see Names. */
 export type NameExtraNamesList = Array<AttributeTypeAndValue>;
-export const NameExtraNamesList = /*@__PURE__*/ S.Array(
+const NameExtraNamesList = /*@__PURE__*/ S.Array(
   AttributeTypeAndValue,
 ) as any as S.Schema<NameExtraNamesList>;
 
 export type NameLocalityList = Array<string>;
-export const NameLocalityList =
-  CreateAnnotationRequestTagsList as any as S.Schema<NameLocalityList>;
+const NameLocalityList = CreateAnnotationRequestTagsList as any as S.Schema<NameLocalityList>;
 
 /** Names contains all parsed attributes. When parsing distinguished names, this can be used to extract non-standard attributes that are not parsed by this package. When marshaling to RDNSequences, the Names field is ignored, see ExtraNames. */
 export type NameNamesList = Array<AttributeTypeAndValue>;
-export const NameNamesList = NameExtraNamesList as any as S.Schema<NameNamesList>;
+const NameNamesList = NameExtraNamesList as any as S.Schema<NameNamesList>;
 
 export type NameOrganizationList = Array<string>;
-export const NameOrganizationList =
+const NameOrganizationList =
   CreateAnnotationRequestTagsList as any as S.Schema<NameOrganizationList>;
 
 export type NameOrganizationalUnitList = Array<string>;
-export const NameOrganizationalUnitList =
+const NameOrganizationalUnitList =
   CreateAnnotationRequestTagsList as any as S.Schema<NameOrganizationalUnitList>;
 
 export type NamePostalCodeList = Array<string>;
-export const NamePostalCodeList =
-  CreateAnnotationRequestTagsList as any as S.Schema<NamePostalCodeList>;
+const NamePostalCodeList = CreateAnnotationRequestTagsList as any as S.Schema<NamePostalCodeList>;
 
 export type NameProvinceList = Array<string>;
-export const NameProvinceList =
-  CreateAnnotationRequestTagsList as any as S.Schema<NameProvinceList>;
+const NameProvinceList = CreateAnnotationRequestTagsList as any as S.Schema<NameProvinceList>;
 
 export type NameStreetAddressList = Array<string>;
-export const NameStreetAddressList =
+const NameStreetAddressList =
   CreateAnnotationRequestTagsList as any as S.Schema<NameStreetAddressList>;
 
 /** Name represents an X.509 distinguished name. This only includes the common elements of a DN. Note that Name is only an approximation of the X.509 structure. If an accurate representation is needed, asn1.Unmarshal the raw subject or issuer as an [RDNSequence]. */
@@ -2748,7 +2737,7 @@ export interface Name {
   SerialNumber?: string;
   StreetAddress?: NameStreetAddressList;
 }
-export const Name = /*@__PURE__*/ S.suspend(() =>
+const Name = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CommonName: S.optional(S.String),
     Country: S.optional(NameCountryList),
@@ -2765,38 +2754,38 @@ export const Name = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Name" }) as any as S.Schema<Name>;
 
 export type CertificateIssuingCertificateURLList = Array<string>;
-export const CertificateIssuingCertificateURLList =
+const CertificateIssuingCertificateURLList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateIssuingCertificateURLList>;
 
 /** RFC 5280, 4.2.2.1 (Authority Information Access) */
 export type CertificateOCSPServerList = Array<string>;
-export const CertificateOCSPServerList =
+const CertificateOCSPServerList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificateOCSPServerList>;
 
 export type CertificatePermittedDNSDomainsList = Array<string>;
-export const CertificatePermittedDNSDomainsList =
+const CertificatePermittedDNSDomainsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedDNSDomainsList>;
 
 export type CertificatePermittedEmailAddressesList = Array<string>;
-export const CertificatePermittedEmailAddressesList =
+const CertificatePermittedEmailAddressesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedEmailAddressesList>;
 
 export type CertificatePermittedIPRangesList = Array<IPNet>;
-export const CertificatePermittedIPRangesList =
+const CertificatePermittedIPRangesList =
   CertificateExcludedIPRangesList as any as S.Schema<CertificatePermittedIPRangesList>;
 
 export type CertificatePermittedURIDomainsList = Array<string>;
-export const CertificatePermittedURIDomainsList =
+const CertificatePermittedURIDomainsList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificatePermittedURIDomainsList>;
 
 /** Policies contains all policy identifiers included in the certificate. See CreateCertificate for context about how this field and the PolicyIdentifiers field interact. In Go 1.22, encoding/gob cannot handle and ignores this field. */
 export type CertificatePoliciesList = Array<string>;
-export const CertificatePoliciesList =
+const CertificatePoliciesList =
   CreateAnnotationRequestTagsList as any as S.Schema<CertificatePoliciesList>;
 
 /** PolicyIdentifiers contains asn1.ObjectIdentifiers, the components of which are limited to int32. If a certificate contains a policy which cannot be represented by asn1.ObjectIdentifier, it will not be included in PolicyIdentifiers, but will be present in Policies, which contains all parsed policy OIDs. See CreateCertificate for context about how this field and the Policies field interact. */
 export type CertificatePolicyIdentifiersList = Array<ObjectIdentifier>;
-export const CertificatePolicyIdentifiersList = /*@__PURE__*/ S.Array(
+const CertificatePolicyIdentifiersList = /*@__PURE__*/ S.Array(
   ObjectIdentifier,
 ) as any as S.Schema<CertificatePolicyIdentifiersList>;
 
@@ -2806,7 +2795,7 @@ export interface PolicyMapping {
   /** SubjectDomainPolicy contains a OID the issuing certificate considers equivalent to IssuerDomainPolicy in the subject certificate. */
   SubjectDomainPolicy?: string;
 }
-export const PolicyMapping = /*@__PURE__*/ S.suspend(() =>
+const PolicyMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IssuerDomainPolicy: S.optional(S.String),
     SubjectDomainPolicy: S.optional(S.String),
@@ -2815,53 +2804,52 @@ export const PolicyMapping = /*@__PURE__*/ S.suspend(() =>
 
 /** PolicyMappings contains a list of policy mappings included in the certificate. */
 export type CertificatePolicyMappingsList = Array<PolicyMapping>;
-export const CertificatePolicyMappingsList = /*@__PURE__*/ S.Array(
+const CertificatePolicyMappingsList = /*@__PURE__*/ S.Array(
   PolicyMapping,
 ) as any as S.Schema<CertificatePolicyMappingsList>;
 
 export type CertificateRawList = Array<number>;
-export const CertificateRawList =
+const CertificateRawList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawList>;
 
 export type CertificateRawIssuerList = Array<number>;
-export const CertificateRawIssuerList =
+const CertificateRawIssuerList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawIssuerList>;
 
 export type CertificateRawSignatureAlgorithmList = Array<number>;
-export const CertificateRawSignatureAlgorithmList =
+const CertificateRawSignatureAlgorithmList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSignatureAlgorithmList>;
 
 export type CertificateRawSubjectList = Array<number>;
-export const CertificateRawSubjectList =
+const CertificateRawSubjectList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSubjectList>;
 
 export type CertificateRawSubjectPublicKeyInfoList = Array<number>;
-export const CertificateRawSubjectPublicKeyInfoList =
+const CertificateRawSubjectPublicKeyInfoList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawSubjectPublicKeyInfoList>;
 
 export type CertificateRawTBSCertificateList = Array<number>;
-export const CertificateRawTBSCertificateList =
+const CertificateRawTBSCertificateList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateRawTBSCertificateList>;
 
 export type CertificateSignatureList = Array<number>;
-export const CertificateSignatureList =
+const CertificateSignatureList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateSignatureList>;
 
 export type CertificateSubjectKeyIdList = Array<number>;
-export const CertificateSubjectKeyIdList =
+const CertificateSubjectKeyIdList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<CertificateSubjectKeyIdList>;
 
 export type CertificateURIsList = Array<string>;
-export const CertificateURIsList =
-  CreateAnnotationRequestTagsList as any as S.Schema<CertificateURIsList>;
+const CertificateURIsList = CreateAnnotationRequestTagsList as any as S.Schema<CertificateURIsList>;
 
 /** UnhandledCriticalExtensions contains a list of extension IDs that were not (fully) processed when parsing. Verify will fail if this slice is non-empty, unless verification is delegated to an OS library which understands all the critical extensions. Users can access these extensions using Extensions and can remove elements from this slice if they believe that they have been handled. */
 export type CertificateUnhandledCriticalExtensionsList = Array<ObjectIdentifier>;
-export const CertificateUnhandledCriticalExtensionsList =
+const CertificateUnhandledCriticalExtensionsList =
   CertificatePolicyIdentifiersList as any as S.Schema<CertificateUnhandledCriticalExtensionsList>;
 
 export type CertificateUnknownExtKeyUsageList = Array<ObjectIdentifier>;
-export const CertificateUnknownExtKeyUsageList =
+const CertificateUnknownExtKeyUsageList =
   CertificatePolicyIdentifiersList as any as S.Schema<CertificateUnknownExtKeyUsageList>;
 
 export interface Certificate {
@@ -2938,7 +2926,7 @@ export interface Certificate {
   UnknownExtKeyUsage?: CertificateUnknownExtKeyUsageList;
   Version?: number;
 }
-export const Certificate = /*@__PURE__*/ S.suspend(() =>
+const Certificate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AuthorityKeyId: S.optional(CertificateAuthorityKeyIdList),
     BasicConstraintsValid: S.optional(S.Boolean),
@@ -2998,7 +2986,7 @@ export const Certificate = /*@__PURE__*/ S.suspend(() =>
 
 /** X.509 certificate chain, parsed from `x5c` header. */
 export type JSONWebKeyCertificatesList = Array<Certificate>;
-export const JSONWebKeyCertificatesList = /*@__PURE__*/ S.Array(
+const JSONWebKeyCertificatesList = /*@__PURE__*/ S.Array(
   Certificate,
 ) as any as S.Schema<JSONWebKeyCertificatesList>;
 
@@ -3020,7 +3008,7 @@ export interface JSONWebKey {
   /** Key use, parsed from `use` header. */
   Use?: string;
 }
-export const JSONWebKey = /*@__PURE__*/ S.suspend(() =>
+const JSONWebKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Algorithm: S.optional(S.String),
     CertificateThumbprintSHA1: S.optional(JSONWebKeyCertificateThumbprintSHA1List),
@@ -3034,28 +3022,28 @@ export const JSONWebKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JSONWebKey" }) as any as S.Schema<JSONWebKey>;
 
 export type GetJWKSResponseKeysList = Array<JSONWebKey>;
-export const GetJWKSResponseKeysList = /*@__PURE__*/ S.Array(
+const GetJWKSResponseKeysList = /*@__PURE__*/ S.Array(
   JSONWebKey,
 ) as any as S.Schema<GetJWKSResponseKeysList>;
 
 export interface GetJWKSResponse {
   keys?: GetJWKSResponseKeysList;
 }
-export const GetJWKSResponse = /*@__PURE__*/ S.suspend(() =>
+const GetJWKSResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keys: S.optional(GetJWKSResponseKeysList),
   }),
 ).annotate({ identifier: "GetJWKSResponse" }) as any as S.Schema<GetJWKSResponse>;
 
 export interface GetLDAPStatusRequest {}
-export const GetLDAPStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLDAPStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/ldap/status", code: 200 })),
 ).annotate({ identifier: "GetLDAPStatusRequest" }) as any as S.Schema<GetLDAPStatusRequest>;
 
 export interface GetLibraryElementByNameRequest {
   library_element_name: string;
 }
-export const GetLibraryElementByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryElementByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_element_name: S.String.pipe(T.Label()),
   }).pipe(
@@ -3066,14 +3054,14 @@ export const GetLibraryElementByNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLibraryElementByNameRequest>;
 
 export type LibraryElementArrayResponseResultList = Array<LibraryElementDTO>;
-export const LibraryElementArrayResponseResultList = /*@__PURE__*/ S.Array(
+const LibraryElementArrayResponseResultList = /*@__PURE__*/ S.Array(
   LibraryElementDTO,
 ) as any as S.Schema<LibraryElementArrayResponseResultList>;
 
 export interface LibraryElementArrayResponse {
   result?: LibraryElementArrayResponseResultList;
 }
-export const LibraryElementArrayResponse = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementArrayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LibraryElementArrayResponseResultList),
   }),
@@ -3084,7 +3072,7 @@ export const LibraryElementArrayResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetLibraryElementByUIDRequest {
   library_element_uid: string;
 }
-export const GetLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_element_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/library-elements/{library_element_uid}", code: 200 })),
@@ -3095,7 +3083,7 @@ export const GetLibraryElementByUIDRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetLibraryElementConnectionsRequest {
   library_element_uid: string;
 }
-export const GetLibraryElementConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryElementConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_element_uid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3119,7 +3107,7 @@ export interface LibraryElementConnectionDTO {
   id?: number;
   kind?: number;
 }
-export const LibraryElementConnectionDTO = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementConnectionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     connectionId: S.optional(S.Number),
     connectionUid: S.optional(S.String),
@@ -3134,14 +3122,14 @@ export const LibraryElementConnectionDTO = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibraryElementConnectionDTO>;
 
 export type LibraryElementConnectionsResponseResultList = Array<LibraryElementConnectionDTO>;
-export const LibraryElementConnectionsResponseResultList = /*@__PURE__*/ S.Array(
+const LibraryElementConnectionsResponseResultList = /*@__PURE__*/ S.Array(
   LibraryElementConnectionDTO,
 ) as any as S.Schema<LibraryElementConnectionsResponseResultList>;
 
 export interface LibraryElementConnectionsResponse {
   result?: LibraryElementConnectionsResponseResultList;
 }
-export const LibraryElementConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LibraryElementConnectionsResponseResultList),
   }),
@@ -3150,10 +3138,10 @@ export const LibraryElementConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibraryElementConnectionsResponse>;
 
 export type GetLibraryElementsRequestKind = 1;
-export const GetLibraryElementsRequestKind = S.Number;
+const GetLibraryElementsRequestKind = S.Number;
 
 export type GetLibraryElementsRequestSortDirection = "alpha-asc" | "alpha-desc";
-export const GetLibraryElementsRequestSortDirection = S.String;
+const GetLibraryElementsRequestSortDirection = S.String;
 
 export interface GetLibraryElementsRequest {
   /** Part of the name or description searched for. */
@@ -3175,7 +3163,7 @@ export interface GetLibraryElementsRequest {
   /** The page for a set of records, given that only perPage records are returned at a time. Numbering starts at 1. */
   page?: number;
 }
-export const GetLibraryElementsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLibraryElementsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     searchString: S.optional(S.String.pipe(T.Query())),
     kind: S.optional(GetLibraryElementsRequestKind.pipe(T.Query())),
@@ -3192,7 +3180,7 @@ export const GetLibraryElementsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLibraryElementsRequest>;
 
 export type LibraryElementSearchResultElementsList = Array<LibraryElementDTO>;
-export const LibraryElementSearchResultElementsList =
+const LibraryElementSearchResultElementsList =
   LibraryElementArrayResponseResultList as any as S.Schema<LibraryElementSearchResultElementsList>;
 
 export interface LibraryElementSearchResult {
@@ -3201,7 +3189,7 @@ export interface LibraryElementSearchResult {
   perPage?: number;
   totalCount?: number;
 }
-export const LibraryElementSearchResult = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     elements: S.optional(LibraryElementSearchResultElementsList),
     page: S.optional(S.Number),
@@ -3215,7 +3203,7 @@ export const LibraryElementSearchResult = /*@__PURE__*/ S.suspend(() =>
 export interface LibraryElementSearchResponse {
   result?: LibraryElementSearchResult;
 }
-export const LibraryElementSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const LibraryElementSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LibraryElementSearchResult),
   }),
@@ -3224,12 +3212,12 @@ export const LibraryElementSearchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LibraryElementSearchResponse>;
 
 export interface GetLicenseTokenRequest {}
-export const GetLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/token", code: 200 })),
 ).annotate({ identifier: "GetLicenseTokenRequest" }) as any as S.Schema<GetLicenseTokenRequest>;
 
 export type TokenProdList = Array<string>;
-export const TokenProdList = NameCountryList as any as S.Schema<TokenProdList>;
+const TokenProdList = NameCountryList as any as S.Schema<TokenProdList>;
 
 export interface Token {
   account?: string;
@@ -3257,7 +3245,7 @@ export interface Token {
   update_days?: number;
   usage_billing?: boolean;
 }
-export const Token = /*@__PURE__*/ S.suspend(() =>
+const Token = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String),
     anonymousRatio: S.optional(S.Number),
@@ -3287,23 +3275,23 @@ export const Token = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Token" }) as any as S.Schema<Token>;
 
 export interface GetMetadataRequest {}
-export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/metadata", code: 200 })),
 ).annotate({ identifier: "GetMetadataRequest" }) as any as S.Schema<GetMetadataRequest>;
 
 export type GetMetadataResponseBodyList = Array<number>;
-export const GetMetadataResponseBodyList =
+const GetMetadataResponseBodyList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<GetMetadataResponseBodyList>;
 
 export type GetMetadataResponse = GetMetadataResponseBodyList;
-export const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   GetMetadataResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetMetadataResponse" }) as any as S.Schema<GetMetadataResponse>;
 
 export interface GetOrgRequest {
   org_id: number;
 }
-export const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}", code: 200 })),
@@ -3312,7 +3300,7 @@ export const GetOrgRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrgByNameRequest {
   org_name: string;
 }
-export const GetOrgByNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/name/{org_name}", code: 200 })),
@@ -3321,36 +3309,36 @@ export const GetOrgByNameRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetOrgQuotaRequest {
   org_id: number;
 }
-export const GetOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/quotas", code: 200 })),
 ).annotate({ identifier: "GetOrgQuotaRequest" }) as any as S.Schema<GetOrgQuotaRequest>;
 
 export type GetOrgQuotaResponseBodyList = Array<QuotaDTO>;
-export const GetOrgQuotaResponseBodyList =
+const GetOrgQuotaResponseBodyList =
   GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetOrgQuotaResponseBodyList>;
 
 export type GetOrgQuotaResponse = GetOrgQuotaResponseBodyList;
-export const GetOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgQuotaResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOrgQuotaResponse" }) as any as S.Schema<GetOrgQuotaResponse>;
 
 export interface GetOrgUsersRequest {
   org_id: number;
 }
-export const GetOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users", code: 200 })),
 ).annotate({ identifier: "GetOrgUsersRequest" }) as any as S.Schema<GetOrgUsersRequest>;
 
 export type OrgUserDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const OrgUserDTOAccessControlMap =
+const OrgUserDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<OrgUserDTOAccessControlMap>;
 
 export type OrgUserDTOAuthLabelsList = Array<string>;
-export const OrgUserDTOAuthLabelsList =
+const OrgUserDTOAuthLabelsList =
   CreateAnnotationRequestTagsList as any as S.Schema<OrgUserDTOAuthLabelsList>;
 
 export interface OrgUserDTO {
@@ -3371,7 +3359,7 @@ export interface OrgUserDTO {
   uid?: string;
   userId?: number;
 }
-export const OrgUserDTO = /*@__PURE__*/ S.suspend(() =>
+const OrgUserDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(OrgUserDTOAccessControlMap),
     authLabels: S.optional(OrgUserDTOAuthLabelsList),
@@ -3393,12 +3381,12 @@ export const OrgUserDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgUserDTO" }) as any as S.Schema<OrgUserDTO>;
 
 export type GetOrgUsersResponseBodyList = Array<OrgUserDTO>;
-export const GetOrgUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrgUsersResponseBodyList = /*@__PURE__*/ S.Array(
   OrgUserDTO,
 ) as any as S.Schema<GetOrgUsersResponseBodyList>;
 
 export type GetOrgUsersResponse = GetOrgUsersResponseBodyList;
-export const GetOrgUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetOrgUsersResponse" }) as any as S.Schema<GetOrgUsersResponse>;
 
@@ -3406,7 +3394,7 @@ export interface GetOrgUsersForCurrentOrgRequest {
   query?: string;
   limit?: number;
 }
-export const GetOrgUsersForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3416,11 +3404,11 @@ export const GetOrgUsersForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetOrgUsersForCurrentOrgRequest>;
 
 export type GetOrgUsersForCurrentOrgResponseBodyList = Array<OrgUserDTO>;
-export const GetOrgUsersForCurrentOrgResponseBodyList =
+const GetOrgUsersForCurrentOrgResponseBodyList =
   GetOrgUsersResponseBodyList as any as S.Schema<GetOrgUsersForCurrentOrgResponseBodyList>;
 
 export type GetOrgUsersForCurrentOrgResponse = GetOrgUsersForCurrentOrgResponseBodyList;
-export const GetOrgUsersForCurrentOrgResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersForCurrentOrgResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgUsersForCurrentOrgResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOrgUsersForCurrentOrgResponse",
@@ -3430,7 +3418,7 @@ export interface GetOrgUsersForCurrentOrgLookupRequest {
   query?: string;
   limit?: number;
 }
-export const GetOrgUsersForCurrentOrgLookupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersForCurrentOrgLookupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3445,7 +3433,7 @@ export interface UserLookupDTO {
   uid?: string;
   userId?: number;
 }
-export const UserLookupDTO = /*@__PURE__*/ S.suspend(() =>
+const UserLookupDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatarUrl: S.optional(S.String),
     login: S.optional(S.String),
@@ -3455,26 +3443,26 @@ export const UserLookupDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserLookupDTO" }) as any as S.Schema<UserLookupDTO>;
 
 export type GetOrgUsersForCurrentOrgLookupResponseBodyList = Array<UserLookupDTO>;
-export const GetOrgUsersForCurrentOrgLookupResponseBodyList = /*@__PURE__*/ S.Array(
+const GetOrgUsersForCurrentOrgLookupResponseBodyList = /*@__PURE__*/ S.Array(
   UserLookupDTO,
 ) as any as S.Schema<GetOrgUsersForCurrentOrgLookupResponseBodyList>;
 
 export type GetOrgUsersForCurrentOrgLookupResponse = GetOrgUsersForCurrentOrgLookupResponseBodyList;
-export const GetOrgUsersForCurrentOrgLookupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetOrgUsersForCurrentOrgLookupResponse = /*@__PURE__*/ S.suspend(() =>
   GetOrgUsersForCurrentOrgLookupResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetOrgUsersForCurrentOrgLookupResponse",
 }) as any as S.Schema<GetOrgUsersForCurrentOrgLookupResponse>;
 
 export interface GetPendingOrgInvitesRequest {}
-export const GetPendingOrgInvitesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPendingOrgInvitesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/org/invites", code: 200 })),
 ).annotate({
   identifier: "GetPendingOrgInvitesRequest",
 }) as any as S.Schema<GetPendingOrgInvitesRequest>;
 
 export type TempUserDTORole = "None" | "Viewer" | "Editor" | "Admin";
-export const TempUserDTORole = S.String;
+const TempUserDTORole = S.String;
 
 export interface TempUserDTO {
   code?: string;
@@ -3492,7 +3480,7 @@ export interface TempUserDTO {
   status?: string;
   url?: string;
 }
-export const TempUserDTO = /*@__PURE__*/ S.suspend(() =>
+const TempUserDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
     createdOn: S.optional(S.String),
@@ -3512,12 +3500,12 @@ export const TempUserDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TempUserDTO" }) as any as S.Schema<TempUserDTO>;
 
 export type GetPendingOrgInvitesResponseBodyList = Array<TempUserDTO>;
-export const GetPendingOrgInvitesResponseBodyList = /*@__PURE__*/ S.Array(
+const GetPendingOrgInvitesResponseBodyList = /*@__PURE__*/ S.Array(
   TempUserDTO,
 ) as any as S.Schema<GetPendingOrgInvitesResponseBodyList>;
 
 export type GetPendingOrgInvitesResponse = GetPendingOrgInvitesResponseBodyList;
-export const GetPendingOrgInvitesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPendingOrgInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   GetPendingOrgInvitesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetPendingOrgInvitesResponse",
@@ -3526,7 +3514,7 @@ export const GetPendingOrgInvitesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetProviderSettingsRequest {
   key: string;
 }
-export const GetProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings/{key}", code: 200 })),
@@ -3535,7 +3523,7 @@ export const GetProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProviderSettingsRequest>;
 
 export type GetProviderSettingsResponseSettingsMap = { [key: string]: unknown | undefined };
-export const GetProviderSettingsResponseSettingsMap =
+const GetProviderSettingsResponseSettingsMap =
   CorrelationConfigTargetMap as any as S.Schema<GetProviderSettingsResponseSettingsMap>;
 
 export interface GetProviderSettingsResponse {
@@ -3544,7 +3532,7 @@ export interface GetProviderSettingsResponse {
   settings?: GetProviderSettingsResponseSettingsMap;
   source?: string;
 }
-export const GetProviderSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetProviderSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     provider: S.optional(S.String),
@@ -3558,7 +3546,7 @@ export const GetProviderSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetPublicAnnotationsRequest {
   accessToken: string;
 }
-export const GetPublicAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.String.pipe(T.Label()),
   }).pipe(
@@ -3575,7 +3563,7 @@ export interface DataSourceRef {
   /** Specific datasource instance */
   uid?: string;
 }
-export const DataSourceRef = /*@__PURE__*/ S.suspend(() =>
+const DataSourceRef = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     uid: S.optional(S.String),
@@ -3584,7 +3572,7 @@ export const DataSourceRef = /*@__PURE__*/ S.suspend(() =>
 
 /** Panel IDs that should be included or excluded */
 export type AnnotationPanelFilterIdsList = Array<number>;
-export const AnnotationPanelFilterIdsList =
+const AnnotationPanelFilterIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<AnnotationPanelFilterIdsList>;
 
 export interface AnnotationPanelFilter {
@@ -3593,7 +3581,7 @@ export interface AnnotationPanelFilter {
   /** Panel IDs that should be included or excluded */
   ids?: AnnotationPanelFilterIdsList;
 }
-export const AnnotationPanelFilter = /*@__PURE__*/ S.suspend(() =>
+const AnnotationPanelFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exclude: S.optional(S.Boolean),
     ids: S.optional(AnnotationPanelFilterIdsList),
@@ -3602,7 +3590,7 @@ export const AnnotationPanelFilter = /*@__PURE__*/ S.suspend(() =>
 
 /** Only required/valid for the grafana datasource... but code+tests is already depending on it so hard to change */
 export type AnnotationTargetTagsList = Array<string>;
-export const AnnotationTargetTagsList =
+const AnnotationTargetTagsList =
   CreateAnnotationRequestTagsList as any as S.Schema<AnnotationTargetTagsList>;
 
 /** TODO: this should be a regular DataQuery that depends on the selected dashboard these match the properties of the "grafana" datasouce that is default in most dashboards */
@@ -3616,7 +3604,7 @@ export interface AnnotationTarget {
   /** Only required/valid for the grafana datasource... but code+tests is already depending on it so hard to change */
   type?: string;
 }
-export const AnnotationTarget = /*@__PURE__*/ S.suspend(() =>
+const AnnotationTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     matchAny: S.optional(S.Boolean),
@@ -3645,7 +3633,7 @@ export interface AnnotationQuery {
   /** TODO -- this should not exist here, it is based on the --grafana-- datasource */
   type?: string;
 }
-export const AnnotationQuery = /*@__PURE__*/ S.suspend(() =>
+const AnnotationQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builtIn: S.optional(S.Number),
     datasource: S.optional(DataSourceRef),
@@ -3661,7 +3649,7 @@ export const AnnotationQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnotationQuery" }) as any as S.Schema<AnnotationQuery>;
 
 export type AnnotationEventTagsList = Array<string>;
-export const AnnotationEventTagsList =
+const AnnotationEventTagsList =
   CreateAnnotationRequestTagsList as any as S.Schema<AnnotationEventTagsList>;
 
 export interface AnnotationEvent {
@@ -3677,7 +3665,7 @@ export interface AnnotationEvent {
   time?: number;
   timeEnd?: number;
 }
-export const AnnotationEvent = /*@__PURE__*/ S.suspend(() =>
+const AnnotationEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     dashboardId: S.optional(S.Number),
@@ -3694,12 +3682,12 @@ export const AnnotationEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AnnotationEvent" }) as any as S.Schema<AnnotationEvent>;
 
 export type GetPublicAnnotationsResponseBodyList = Array<AnnotationEvent>;
-export const GetPublicAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetPublicAnnotationsResponseBodyList = /*@__PURE__*/ S.Array(
   AnnotationEvent,
 ) as any as S.Schema<GetPublicAnnotationsResponseBodyList>;
 
 export type GetPublicAnnotationsResponse = GetPublicAnnotationsResponseBodyList;
-export const GetPublicAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetPublicAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   GetPublicAnnotationsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetPublicAnnotationsResponse",
@@ -3708,7 +3696,7 @@ export const GetPublicAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetPublicDashboardRequest {
   dashboardUid: string;
 }
-export const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUid: S.String.pipe(T.Label()),
   }).pipe(
@@ -3719,27 +3707,26 @@ export const GetPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPublicDashboardRequest>;
 
 export interface GetRecordingRuleWriteTargetRequest {}
-export const GetRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRecordingRuleWriteTargetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules/writer", code: 200 })),
 ).annotate({
   identifier: "GetRecordingRuleWriteTargetRequest",
 }) as any as S.Schema<GetRecordingRuleWriteTargetRequest>;
 
 export interface GetReportsRequest {}
-export const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports", code: 200 })),
 ).annotate({ identifier: "GetReportsRequest" }) as any as S.Schema<GetReportsRequest>;
 
 export type ReportDashboardsList = Array<ReportDashboard>;
-export const ReportDashboardsList =
+const ReportDashboardsList =
   CreateReportRequestDashboardsList as any as S.Schema<ReportDashboardsList>;
 
 export type ReportFormatsList = Array<string>;
-export const ReportFormatsList =
-  CreateAnnotationRequestTagsList as any as S.Schema<ReportFormatsList>;
+const ReportFormatsList = CreateAnnotationRequestTagsList as any as S.Schema<ReportFormatsList>;
 
 export type ReportUrlsList = Array<ReportURLItem>;
-export const ReportUrlsList = CreateReportRequestUrlsList as any as S.Schema<ReportUrlsList>;
+const ReportUrlsList = CreateReportRequestUrlsList as any as S.Schema<ReportUrlsList>;
 
 export interface Report {
   created?: string;
@@ -3763,7 +3750,7 @@ export interface Report {
   urls?: ReportUrlsList;
   userId?: number;
 }
-export const Report = /*@__PURE__*/ S.suspend(() =>
+const Report = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     dashboards: S.optional(ReportDashboardsList),
@@ -3789,19 +3776,19 @@ export const Report = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Report" }) as any as S.Schema<Report>;
 
 export type GetReportsResponseBodyList = Array<Report>;
-export const GetReportsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetReportsResponseBodyList = /*@__PURE__*/ S.Array(
   Report,
 ) as any as S.Schema<GetReportsResponseBodyList>;
 
 export type GetReportsResponse = GetReportsResponseBodyList;
-export const GetReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportsResponse = /*@__PURE__*/ S.suspend(() =>
   GetReportsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetReportsResponse" }) as any as S.Schema<GetReportsResponse>;
 
 export interface GetReportsByDashboardUIDRequest {
   uid: string;
 }
-export const GetReportsByDashboardUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportsByDashboardUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/reports/dashboards/{uid}", code: 200 })),
@@ -3810,18 +3797,18 @@ export const GetReportsByDashboardUIDRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReportsByDashboardUIDRequest>;
 
 export type GetReportsByDashboardUIDResponseBodyList = Array<Report>;
-export const GetReportsByDashboardUIDResponseBodyList =
+const GetReportsByDashboardUIDResponseBodyList =
   GetReportsResponseBodyList as any as S.Schema<GetReportsByDashboardUIDResponseBodyList>;
 
 export type GetReportsByDashboardUIDResponse = GetReportsByDashboardUIDResponseBodyList;
-export const GetReportsByDashboardUIDResponse = /*@__PURE__*/ S.suspend(() =>
+const GetReportsByDashboardUIDResponse = /*@__PURE__*/ S.suspend(() =>
   GetReportsByDashboardUIDResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetReportsByDashboardUIDResponse",
 }) as any as S.Schema<GetReportsByDashboardUIDResponse>;
 
 export interface GetReportSettingsRequest {}
-export const GetReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/settings", code: 200 })),
 ).annotate({ identifier: "GetReportSettingsRequest" }) as any as S.Schema<GetReportSettingsRequest>;
 
@@ -3832,7 +3819,7 @@ export interface ReportBrandingOptions {
   emailLogoUrl?: string;
   reportLogoUrl?: string;
 }
-export const ReportBrandingOptions = /*@__PURE__*/ S.suspend(() =>
+const ReportBrandingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emailFooterLink: S.optional(S.String),
     emailFooterMode: S.optional(S.String),
@@ -3850,7 +3837,7 @@ export interface FooterItem {
   type?: string;
   value?: string;
 }
-export const FooterItem = /*@__PURE__*/ S.suspend(() =>
+const FooterItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     fontSize: S.optional(S.String),
@@ -3862,7 +3849,7 @@ export const FooterItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FooterItem" }) as any as S.Schema<FooterItem>;
 
 export type ReportSettingsFooterItemsList = Array<FooterItem>;
-export const ReportSettingsFooterItemsList = /*@__PURE__*/ S.Array(
+const ReportSettingsFooterItemsList = /*@__PURE__*/ S.Array(
   FooterItem,
 ) as any as S.Schema<ReportSettingsFooterItemsList>;
 
@@ -3879,7 +3866,7 @@ export interface ReportSettings {
   pdfTimeRangeEnabled?: boolean;
   userId?: number;
 }
-export const ReportSettings = /*@__PURE__*/ S.suspend(() =>
+const ReportSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branding: S.optional(ReportBrandingOptions),
     embeddedImageTheme: S.optional(S.String),
@@ -3896,7 +3883,7 @@ export const ReportSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReportSettings" }) as any as S.Schema<ReportSettings>;
 
 export interface GetResourceDependenciesRequest {}
-export const GetResourceDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceDependenciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/cloudmigration/resources/dependencies", code: 200 }),
   ),
@@ -3916,10 +3903,8 @@ export type ResourceDependencyDTODependenciesItem =
   | "NOTIFICATION_TEMPLATE"
   | "MUTE_TIMING"
   | "PLUGIN";
-export const ResourceDependencyDTODependenciesItem = S.String;
-
 export type ResourceDependencyDTODependenciesList = Array<ResourceDependencyDTODependenciesItem>;
-export const ResourceDependencyDTODependenciesList =
+const ResourceDependencyDTODependenciesList =
   CreateSnapshotRequestResourceTypesList as any as S.Schema<ResourceDependencyDTODependenciesList>;
 
 export type ResourceDependencyDTOResourceType =
@@ -3934,13 +3919,13 @@ export type ResourceDependencyDTOResourceType =
   | "NOTIFICATION_TEMPLATE"
   | "MUTE_TIMING"
   | "PLUGIN";
-export const ResourceDependencyDTOResourceType = S.String;
+const ResourceDependencyDTOResourceType = S.String;
 
 export interface ResourceDependencyDTO {
   dependencies?: ResourceDependencyDTODependenciesList;
   resourceType?: ResourceDependencyDTOResourceType;
 }
-export const ResourceDependencyDTO = /*@__PURE__*/ S.suspend(() =>
+const ResourceDependencyDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dependencies: S.optional(ResourceDependencyDTODependenciesList),
     resourceType: S.optional(ResourceDependencyDTOResourceType),
@@ -3948,14 +3933,14 @@ export const ResourceDependencyDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceDependencyDTO" }) as any as S.Schema<ResourceDependencyDTO>;
 
 export type ResourceDependenciesResponseDTOResourceDependenciesList = Array<ResourceDependencyDTO>;
-export const ResourceDependenciesResponseDTOResourceDependenciesList = /*@__PURE__*/ S.Array(
+const ResourceDependenciesResponseDTOResourceDependenciesList = /*@__PURE__*/ S.Array(
   ResourceDependencyDTO,
 ) as any as S.Schema<ResourceDependenciesResponseDTOResourceDependenciesList>;
 
 export interface ResourceDependenciesResponseDTO {
   resourceDependencies?: ResourceDependenciesResponseDTOResourceDependenciesList;
 }
-export const ResourceDependenciesResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const ResourceDependenciesResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceDependencies: S.optional(ResourceDependenciesResponseDTOResourceDependenciesList),
   }),
@@ -3966,7 +3951,7 @@ export const ResourceDependenciesResponseDTO = /*@__PURE__*/ S.suspend(() =>
 export interface GetResourceDescriptionRequest {
   resource: string;
 }
-export const GetResourceDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceDescriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/access-control/{resource}/description", code: 200 })),
@@ -3980,7 +3965,7 @@ export interface Assignments {
   teams?: boolean;
   users?: boolean;
 }
-export const Assignments = /*@__PURE__*/ S.suspend(() =>
+const Assignments = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builtInRoles: S.optional(S.Boolean),
     serviceAccounts: S.optional(S.Boolean),
@@ -3990,14 +3975,14 @@ export const Assignments = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Assignments" }) as any as S.Schema<Assignments>;
 
 export type DescriptionPermissionsList = Array<string>;
-export const DescriptionPermissionsList =
+const DescriptionPermissionsList =
   CreateAnnotationRequestTagsList as any as S.Schema<DescriptionPermissionsList>;
 
 export interface Description {
   assignments?: Assignments;
   permissions?: DescriptionPermissionsList;
 }
-export const Description = /*@__PURE__*/ S.suspend(() =>
+const Description = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     assignments: S.optional(Assignments),
     permissions: S.optional(DescriptionPermissionsList),
@@ -4008,7 +3993,7 @@ export interface GetResourcePermissionsRequest {
   resource: string;
   resourceID: string;
 }
-export const GetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     resourceID: S.String.pipe(T.Label()),
@@ -4018,7 +4003,7 @@ export const GetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourcePermissionsRequest>;
 
 export type ResourcePermissionDTOActionsList = Array<string>;
-export const ResourcePermissionDTOActionsList =
+const ResourcePermissionDTOActionsList =
   CreateAnnotationRequestTagsList as any as S.Schema<ResourcePermissionDTOActionsList>;
 
 export interface ResourcePermissionDTO {
@@ -4039,7 +4024,7 @@ export interface ResourcePermissionDTO {
   userLogin?: string;
   userUid?: string;
 }
-export const ResourcePermissionDTO = /*@__PURE__*/ S.suspend(() =>
+const ResourcePermissionDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actions: S.optional(ResourcePermissionDTOActionsList),
     builtInRole: S.optional(S.String),
@@ -4061,12 +4046,12 @@ export const ResourcePermissionDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourcePermissionDTO" }) as any as S.Schema<ResourcePermissionDTO>;
 
 export type GetResourcePermissionsResponseBodyList = Array<ResourcePermissionDTO>;
-export const GetResourcePermissionsResponseBodyList = /*@__PURE__*/ S.Array(
+const GetResourcePermissionsResponseBodyList = /*@__PURE__*/ S.Array(
   ResourcePermissionDTO,
 ) as any as S.Schema<GetResourcePermissionsResponseBodyList>;
 
 export type GetResourcePermissionsResponse = GetResourcePermissionsResponseBodyList;
-export const GetResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
   GetResourcePermissionsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetResourcePermissionsResponse",
@@ -4075,7 +4060,7 @@ export const GetResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetRoleRequest {
   roleUID: string;
 }
-export const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleUID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}", code: 200 })),
@@ -4084,7 +4069,7 @@ export const GetRoleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetRoleAssignmentsRequest {
   roleUID: string;
 }
-export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleUID: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/access-control/roles/{roleUID}/assignments", code: 200 })),
@@ -4093,15 +4078,15 @@ export const GetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRoleAssignmentsRequest>;
 
 export type RoleAssignmentsDTOServiceAccountsList = Array<number>;
-export const RoleAssignmentsDTOServiceAccountsList =
+const RoleAssignmentsDTOServiceAccountsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOServiceAccountsList>;
 
 export type RoleAssignmentsDTOTeamsList = Array<number>;
-export const RoleAssignmentsDTOTeamsList =
+const RoleAssignmentsDTOTeamsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOTeamsList>;
 
 export type RoleAssignmentsDTOUsersList = Array<number>;
-export const RoleAssignmentsDTOUsersList =
+const RoleAssignmentsDTOUsersList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RoleAssignmentsDTOUsersList>;
 
 export interface RoleAssignmentsDTO {
@@ -4110,7 +4095,7 @@ export interface RoleAssignmentsDTO {
   teams?: RoleAssignmentsDTOTeamsList;
   users?: RoleAssignmentsDTOUsersList;
 }
-export const RoleAssignmentsDTO = /*@__PURE__*/ S.suspend(() =>
+const RoleAssignmentsDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role_uid: S.optional(S.String),
     service_accounts: S.optional(RoleAssignmentsDTOServiceAccountsList),
@@ -4120,18 +4105,17 @@ export const RoleAssignmentsDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RoleAssignmentsDTO" }) as any as S.Schema<RoleAssignmentsDTO>;
 
 export interface GetSAMLLogoutRequest {}
-export const GetSAMLLogoutRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSAMLLogoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/logout/saml", code: 200 })),
 ).annotate({ identifier: "GetSAMLLogoutRequest" }) as any as S.Schema<GetSAMLLogoutRequest>;
 
 export interface GetSAMLLogoutResponse {}
-export const GetSAMLLogoutResponse =
-  CancelSnapshotResponse as any as S.Schema<GetSAMLLogoutResponse>;
+const GetSAMLLogoutResponse = CancelSnapshotResponse as any as S.Schema<GetSAMLLogoutResponse>;
 
 export interface GetServiceAccountRequest {
   serviceAccountId: number;
 }
-export const GetServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const GetServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}", code: 200 })),
@@ -4141,27 +4125,27 @@ export interface GetSessionRequest {
   /** UID of a migration session */
   uid: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration/{uid}", code: 200 })),
 ).annotate({ identifier: "GetSessionRequest" }) as any as S.Schema<GetSessionRequest>;
 
 export interface GetSessionListRequest {}
-export const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/cloudmigration/migration", code: 200 })),
 ).annotate({ identifier: "GetSessionListRequest" }) as any as S.Schema<GetSessionListRequest>;
 
 export type CloudMigrationSessionListResponseDTOSessionsList =
   Array<CloudMigrationSessionResponseDTO>;
-export const CloudMigrationSessionListResponseDTOSessionsList = /*@__PURE__*/ S.Array(
+const CloudMigrationSessionListResponseDTOSessionsList = /*@__PURE__*/ S.Array(
   CloudMigrationSessionResponseDTO,
 ) as any as S.Schema<CloudMigrationSessionListResponseDTOSessionsList>;
 
 export interface CloudMigrationSessionListResponseDTO {
   sessions?: CloudMigrationSessionListResponseDTOSessionsList;
 }
-export const CloudMigrationSessionListResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const CloudMigrationSessionListResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sessions: S.optional(CloudMigrationSessionListResponseDTOSessionsList),
   }),
@@ -4170,17 +4154,13 @@ export const CloudMigrationSessionListResponseDTO = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<CloudMigrationSessionListResponseDTO>;
 
 export interface GetSettingsImageRequest {}
-export const GetSettingsImageRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSettingsImageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/reports/images/:image", code: 200 })),
 ).annotate({ identifier: "GetSettingsImageRequest" }) as any as S.Schema<GetSettingsImageRequest>;
 
 export type GetSettingsImageResponseBodyList = Array<number>;
-export const GetSettingsImageResponseBodyList =
-  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<GetSettingsImageResponseBodyList>;
-
 export type GetSettingsImageResponse = GetSettingsImageResponseBodyList;
-export const GetSettingsImageResponse =
-  GetMetadataResponse as any as S.Schema<GetSettingsImageResponse>;
+const GetSettingsImageResponse = GetMetadataResponse as any as S.Schema<GetSettingsImageResponse>;
 
 export interface GetShapshotListRequest {
   /** Session UID of a session */
@@ -4192,7 +4172,7 @@ export interface GetShapshotListRequest {
   /** Sort with value latest to return results sorted in descending order. */
   sort?: string;
 }
-export const GetShapshotListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetShapshotListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -4212,7 +4192,7 @@ export type SnapshotDTOStatus =
   | "CANCELED"
   | "ERROR"
   | "UNKNOWN";
-export const SnapshotDTOStatus = S.String;
+const SnapshotDTOStatus = S.String;
 
 /** Base snapshot without results */
 export interface SnapshotDTO {
@@ -4222,7 +4202,7 @@ export interface SnapshotDTO {
   status?: SnapshotDTOStatus;
   uid?: string;
 }
-export const SnapshotDTO = /*@__PURE__*/ S.suspend(() =>
+const SnapshotDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     finished: S.optional(S.String),
@@ -4233,21 +4213,21 @@ export const SnapshotDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotDTO" }) as any as S.Schema<SnapshotDTO>;
 
 export type SnapshotListResponseDTOSnapshotsList = Array<SnapshotDTO>;
-export const SnapshotListResponseDTOSnapshotsList = /*@__PURE__*/ S.Array(
+const SnapshotListResponseDTOSnapshotsList = /*@__PURE__*/ S.Array(
   SnapshotDTO,
 ) as any as S.Schema<SnapshotListResponseDTOSnapshotsList>;
 
 export interface SnapshotListResponseDTO {
   snapshots?: SnapshotListResponseDTOSnapshotsList;
 }
-export const SnapshotListResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const SnapshotListResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshots: S.optional(SnapshotListResponseDTOSnapshotsList),
   }),
 ).annotate({ identifier: "SnapshotListResponseDTO" }) as any as S.Schema<SnapshotListResponseDTO>;
 
 export interface GetSharingOptionsRequest {}
-export const GetSharingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSharingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/snapshot/shared-options", code: 200 })),
 ).annotate({ identifier: "GetSharingOptionsRequest" }) as any as S.Schema<GetSharingOptionsRequest>;
 
@@ -4256,7 +4236,7 @@ export interface GetSharingOptionsResponse {
   externalSnapshotName?: string;
   externalSnapshotURL?: string;
 }
-export const GetSharingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSharingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalEnabled: S.optional(S.Boolean),
     externalSnapshotName: S.optional(S.String),
@@ -4267,16 +4247,16 @@ export const GetSharingOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSharingOptionsResponse>;
 
 export interface GetSignedInUserRequest {}
-export const GetSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
 ).annotate({ identifier: "GetSignedInUserRequest" }) as any as S.Schema<GetSignedInUserRequest>;
 
 export type UserProfileDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const UserProfileDTOAccessControlMap =
+const UserProfileDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<UserProfileDTOAccessControlMap>;
 
 export type UserProfileDTOAuthLabelsList = Array<string>;
-export const UserProfileDTOAuthLabelsList =
+const UserProfileDTOAuthLabelsList =
   CreateAnnotationRequestTagsList as any as S.Schema<UserProfileDTOAuthLabelsList>;
 
 export interface UserProfileDTO {
@@ -4299,7 +4279,7 @@ export interface UserProfileDTO {
   uid?: string;
   updatedAt?: string;
 }
-export const UserProfileDTO = /*@__PURE__*/ S.suspend(() =>
+const UserProfileDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(UserProfileDTOAccessControlMap),
     authLabels: S.optional(UserProfileDTOAuthLabelsList),
@@ -4323,21 +4303,21 @@ export const UserProfileDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserProfileDTO" }) as any as S.Schema<UserProfileDTO>;
 
 export interface GetSignedInUserOrgListRequest {}
-export const GetSignedInUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignedInUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/orgs", code: 200 })),
 ).annotate({
   identifier: "GetSignedInUserOrgListRequest",
 }) as any as S.Schema<GetSignedInUserOrgListRequest>;
 
 export type UserOrgDTORole = "None" | "Viewer" | "Editor" | "Admin";
-export const UserOrgDTORole = S.String;
+const UserOrgDTORole = S.String;
 
 export interface UserOrgDTO {
   name?: string;
   orgId?: number;
   role?: UserOrgDTORole;
 }
-export const UserOrgDTO = /*@__PURE__*/ S.suspend(() =>
+const UserOrgDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     orgId: S.optional(S.Number),
@@ -4346,26 +4326,26 @@ export const UserOrgDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserOrgDTO" }) as any as S.Schema<UserOrgDTO>;
 
 export type GetSignedInUserOrgListResponseBodyList = Array<UserOrgDTO>;
-export const GetSignedInUserOrgListResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSignedInUserOrgListResponseBodyList = /*@__PURE__*/ S.Array(
   UserOrgDTO,
 ) as any as S.Schema<GetSignedInUserOrgListResponseBodyList>;
 
 export type GetSignedInUserOrgListResponse = GetSignedInUserOrgListResponseBodyList;
-export const GetSignedInUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSignedInUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
   GetSignedInUserOrgListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSignedInUserOrgListResponse",
 }) as any as S.Schema<GetSignedInUserOrgListResponse>;
 
 export interface GetSignedInUserTeamListRequest {}
-export const GetSignedInUserTeamListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSignedInUserTeamListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/teams", code: 200 })),
 ).annotate({
   identifier: "GetSignedInUserTeamListRequest",
 }) as any as S.Schema<GetSignedInUserTeamListRequest>;
 
 export type TeamDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const TeamDTOAccessControlMap =
+const TeamDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<TeamDTOAccessControlMap>;
 
 export interface TeamDTO {
@@ -4382,7 +4362,7 @@ export interface TeamDTO {
   permission?: number;
   uid: string;
 }
-export const TeamDTO = /*@__PURE__*/ S.suspend(() =>
+const TeamDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(TeamDTOAccessControlMap),
     avatarUrl: S.optional(S.String),
@@ -4399,24 +4379,24 @@ export const TeamDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamDTO" }) as any as S.Schema<TeamDTO>;
 
 export type GetSignedInUserTeamListResponseBodyList = Array<TeamDTO>;
-export const GetSignedInUserTeamListResponseBodyList = /*@__PURE__*/ S.Array(
+const GetSignedInUserTeamListResponseBodyList = /*@__PURE__*/ S.Array(
   TeamDTO,
 ) as any as S.Schema<GetSignedInUserTeamListResponseBodyList>;
 
 export type GetSignedInUserTeamListResponse = GetSignedInUserTeamListResponseBodyList;
-export const GetSignedInUserTeamListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSignedInUserTeamListResponse = /*@__PURE__*/ S.suspend(() =>
   GetSignedInUserTeamListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "GetSignedInUserTeamListResponse",
 }) as any as S.Schema<GetSignedInUserTeamListResponse>;
 
 export interface GetSLORequest {}
-export const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
+const GetSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/saml/slo", code: 200 })),
 ).annotate({ identifier: "GetSLORequest" }) as any as S.Schema<GetSLORequest>;
 
 export interface GetSLOResponse {}
-export const GetSLOResponse = CancelSnapshotResponse as any as S.Schema<GetSLOResponse>;
+const GetSLOResponse = CancelSnapshotResponse as any as S.Schema<GetSLOResponse>;
 
 export interface GetSnapshotRequest {
   /** Session UID of a session */
@@ -4434,7 +4414,7 @@ export interface GetSnapshotRequest {
   /** ErrorsOnly is used to only return resources with error statuses */
   errorsOnly?: boolean;
 }
-export const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     snapshotUid: S.String.pipe(T.Label()),
@@ -4466,10 +4446,10 @@ export type MigrateDataResponseItemDTOErrorCode =
   | "UNEXPECTED_STATUS_CODE"
   | "INTERNAL_SERVICE_ERROR"
   | "GENERIC_ERROR";
-export const MigrateDataResponseItemDTOErrorCode = S.String;
+const MigrateDataResponseItemDTOErrorCode = S.String;
 
 export type MigrateDataResponseItemDTOStatus = "OK" | "WARNING" | "ERROR" | "PENDING" | "UNKNOWN";
-export const MigrateDataResponseItemDTOStatus = S.String;
+const MigrateDataResponseItemDTOStatus = S.String;
 
 export type MigrateDataResponseItemDTOType =
   | "DASHBOARD"
@@ -4483,7 +4463,7 @@ export type MigrateDataResponseItemDTOType =
   | "NOTIFICATION_TEMPLATE"
   | "MUTE_TIMING"
   | "PLUGIN";
-export const MigrateDataResponseItemDTOType = S.String;
+const MigrateDataResponseItemDTOType = S.String;
 
 export interface MigrateDataResponseItemDTO {
   errorCode?: MigrateDataResponseItemDTOErrorCode;
@@ -4494,7 +4474,7 @@ export interface MigrateDataResponseItemDTO {
   status: MigrateDataResponseItemDTOStatus;
   type: MigrateDataResponseItemDTOType;
 }
-export const MigrateDataResponseItemDTO = /*@__PURE__*/ S.suspend(() =>
+const MigrateDataResponseItemDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorCode: S.optional(MigrateDataResponseItemDTOErrorCode),
     message: S.optional(S.String),
@@ -4509,18 +4489,18 @@ export const MigrateDataResponseItemDTO = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateDataResponseItemDTO>;
 
 export type GetSnapshotResponseDTOResultsList = Array<MigrateDataResponseItemDTO>;
-export const GetSnapshotResponseDTOResultsList = /*@__PURE__*/ S.Array(
+const GetSnapshotResponseDTOResultsList = /*@__PURE__*/ S.Array(
   MigrateDataResponseItemDTO,
 ) as any as S.Schema<GetSnapshotResponseDTOResultsList>;
 
 export type SnapshotResourceStatsStatusesMap = { [key: string]: number | undefined };
-export const SnapshotResourceStatsStatusesMap = /*@__PURE__*/ S.Record(
+const SnapshotResourceStatsStatusesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<SnapshotResourceStatsStatusesMap>;
 
 export type SnapshotResourceStatsTypesMap = { [key: string]: number | undefined };
-export const SnapshotResourceStatsTypesMap =
+const SnapshotResourceStatsTypesMap =
   SnapshotResourceStatsStatusesMap as any as S.Schema<SnapshotResourceStatsTypesMap>;
 
 export interface SnapshotResourceStats {
@@ -4528,7 +4508,7 @@ export interface SnapshotResourceStats {
   total?: number;
   types?: SnapshotResourceStatsTypesMap;
 }
-export const SnapshotResourceStats = /*@__PURE__*/ S.suspend(() =>
+const SnapshotResourceStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statuses: S.optional(SnapshotResourceStatsStatusesMap),
     total: S.optional(S.Number),
@@ -4547,7 +4527,7 @@ export type GetSnapshotResponseDTOStatus =
   | "CANCELED"
   | "ERROR"
   | "UNKNOWN";
-export const GetSnapshotResponseDTOStatus = S.String;
+const GetSnapshotResponseDTOStatus = S.String;
 
 export interface GetSnapshotResponseDTO {
   created?: string;
@@ -4558,7 +4538,7 @@ export interface GetSnapshotResponseDTO {
   status?: GetSnapshotResponseDTOStatus;
   uid?: string;
 }
-export const GetSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
+const GetSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     finished: S.optional(S.String),
@@ -4571,17 +4551,17 @@ export const GetSnapshotResponseDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSnapshotResponseDTO" }) as any as S.Schema<GetSnapshotResponseDTO>;
 
 export interface GetStatusRequest {}
-export const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/check", code: 200 })),
 ).annotate({ identifier: "GetStatusRequest" }) as any as S.Schema<GetStatusRequest>;
 
 export type GetStatusResponse = boolean;
-export const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetStatusResponse" }) as any as S.Schema<GetStatusResponse>;
 
 export interface GetSyncStatusRequest {}
-export const GetSyncStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSyncStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/admin/ldap-sync-status", code: 200 })),
 ).annotate({ identifier: "GetSyncStatusRequest" }) as any as S.Schema<GetSyncStatusRequest>;
 
@@ -4590,7 +4570,7 @@ export interface FailedUser {
   Error?: string;
   Login?: string;
 }
-export const FailedUser = /*@__PURE__*/ S.suspend(() =>
+const FailedUser = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Error: S.optional(S.String),
     Login: S.optional(S.String),
@@ -4598,16 +4578,16 @@ export const FailedUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FailedUser" }) as any as S.Schema<FailedUser>;
 
 export type SyncResultFailedUsersList = Array<FailedUser>;
-export const SyncResultFailedUsersList = /*@__PURE__*/ S.Array(
+const SyncResultFailedUsersList = /*@__PURE__*/ S.Array(
   FailedUser,
 ) as any as S.Schema<SyncResultFailedUsersList>;
 
 export type SyncResultMissingUserIdsList = Array<number>;
-export const SyncResultMissingUserIdsList =
+const SyncResultMissingUserIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SyncResultMissingUserIdsList>;
 
 export type SyncResultUpdatedUserIdsList = Array<number>;
-export const SyncResultUpdatedUserIdsList =
+const SyncResultUpdatedUserIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SyncResultUpdatedUserIdsList>;
 
 export interface SyncResult {
@@ -4617,7 +4597,7 @@ export interface SyncResult {
   Started?: string;
   UpdatedUserIds?: SyncResultUpdatedUserIdsList;
 }
-export const SyncResult = /*@__PURE__*/ S.suspend(() =>
+const SyncResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Elapsed: S.optional(S.Number),
     FailedUsers: S.optional(SyncResultFailedUsersList),
@@ -4634,7 +4614,7 @@ export interface ActiveSyncStatusDTO {
   prevSync?: SyncResult;
   schedule?: string;
 }
-export const ActiveSyncStatusDTO = /*@__PURE__*/ S.suspend(() =>
+const ActiveSyncStatusDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     nextSync: S.optional(S.String),
@@ -4647,7 +4627,7 @@ export interface GetTeamRequest {
   team_id: string;
   accesscontrol?: boolean;
 }
-export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     accesscontrol: S.optional(S.Boolean.pipe(T.Query())),
@@ -4657,7 +4637,7 @@ export const GetTeamRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTeamGroupsApiRequest {
   teamId: string;
 }
-export const GetTeamGroupsApiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamGroupsApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/teams/{teamId}/groups", code: 200 })),
@@ -4671,7 +4651,7 @@ export interface TeamGroupDTO {
   /** Deprecated: always empty; no per-entry id. */
   uid?: string;
 }
-export const TeamGroupDTO = /*@__PURE__*/ S.suspend(() =>
+const TeamGroupDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.optional(S.String),
     orgId: S.optional(S.Number),
@@ -4682,19 +4662,19 @@ export const TeamGroupDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamGroupDTO" }) as any as S.Schema<TeamGroupDTO>;
 
 export type GetTeamGroupsApiResponseBodyList = Array<TeamGroupDTO>;
-export const GetTeamGroupsApiResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTeamGroupsApiResponseBodyList = /*@__PURE__*/ S.Array(
   TeamGroupDTO,
 ) as any as S.Schema<GetTeamGroupsApiResponseBodyList>;
 
 export type GetTeamGroupsApiResponse = GetTeamGroupsApiResponseBodyList;
-export const GetTeamGroupsApiResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTeamGroupsApiResponse = /*@__PURE__*/ S.suspend(() =>
   GetTeamGroupsApiResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTeamGroupsApiResponse" }) as any as S.Schema<GetTeamGroupsApiResponse>;
 
 export interface GetTeamLBACRulesApiRequest {
   uid: string;
 }
-export const GetTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/datasources/uid/{uid}/lbac/teams", code: 200 })),
@@ -4703,7 +4683,7 @@ export const GetTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTeamLBACRulesApiRequest>;
 
 export type TeamLBACRuleRulesList = Array<string>;
-export const TeamLBACRuleRulesList =
+const TeamLBACRuleRulesList =
   CreateAnnotationRequestTagsList as any as S.Schema<TeamLBACRuleRulesList>;
 
 export interface TeamLBACRule {
@@ -4711,7 +4691,7 @@ export interface TeamLBACRule {
   teamId?: string;
   teamUid?: string;
 }
-export const TeamLBACRule = /*@__PURE__*/ S.suspend(() =>
+const TeamLBACRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(TeamLBACRuleRulesList),
     teamId: S.optional(S.String),
@@ -4720,14 +4700,14 @@ export const TeamLBACRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamLBACRule" }) as any as S.Schema<TeamLBACRule>;
 
 export type TeamLBACRulesRulesList = Array<TeamLBACRule>;
-export const TeamLBACRulesRulesList = /*@__PURE__*/ S.Array(
+const TeamLBACRulesRulesList = /*@__PURE__*/ S.Array(
   TeamLBACRule,
 ) as any as S.Schema<TeamLBACRulesRulesList>;
 
 export interface TeamLBACRules {
   rules?: TeamLBACRulesRulesList;
 }
-export const TeamLBACRules = /*@__PURE__*/ S.suspend(() =>
+const TeamLBACRules = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rules: S.optional(TeamLBACRulesRulesList),
   }),
@@ -4736,14 +4716,14 @@ export const TeamLBACRules = /*@__PURE__*/ S.suspend(() =>
 export interface GetTeamMembersRequest {
   team_id: string;
 }
-export const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/members", code: 200 })),
 ).annotate({ identifier: "GetTeamMembersRequest" }) as any as S.Schema<GetTeamMembersRequest>;
 
 export type TeamMemberDTOLabelsList = Array<string>;
-export const TeamMemberDTOLabelsList =
+const TeamMemberDTOLabelsList =
   CreateAnnotationRequestTagsList as any as S.Schema<TeamMemberDTOLabelsList>;
 
 export interface TeamMemberDTO {
@@ -4761,7 +4741,7 @@ export interface TeamMemberDTO {
   userId?: number;
   userUID?: string;
 }
-export const TeamMemberDTO = /*@__PURE__*/ S.suspend(() =>
+const TeamMemberDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auth_module: S.optional(S.String),
     avatarUrl: S.optional(S.String),
@@ -4780,19 +4760,19 @@ export const TeamMemberDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TeamMemberDTO" }) as any as S.Schema<TeamMemberDTO>;
 
 export type GetTeamMembersResponseBodyList = Array<TeamMemberDTO>;
-export const GetTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
+const GetTeamMembersResponseBodyList = /*@__PURE__*/ S.Array(
   TeamMemberDTO,
 ) as any as S.Schema<GetTeamMembersResponseBodyList>;
 
 export type GetTeamMembersResponse = GetTeamMembersResponseBodyList;
-export const GetTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const GetTeamMembersResponse = /*@__PURE__*/ S.suspend(() =>
   GetTeamMembersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetTeamMembersResponse" }) as any as S.Schema<GetTeamMembersResponse>;
 
 export interface GetTeamPreferencesRequest {
   team_id: string;
 }
-export const GetTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/teams/{team_id}/preferences", code: 200 })),
@@ -4801,13 +4781,13 @@ export const GetTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTeamPreferencesRequest>;
 
 export type PreferencesNavbarPreferenceBookmarkUrlsList = Array<string>;
-export const PreferencesNavbarPreferenceBookmarkUrlsList =
+const PreferencesNavbarPreferenceBookmarkUrlsList =
   CreateAnnotationRequestTagsList as any as S.Schema<PreferencesNavbarPreferenceBookmarkUrlsList>;
 
 export interface PreferencesNavbarPreference {
   bookmarkUrls?: PreferencesNavbarPreferenceBookmarkUrlsList;
 }
-export const PreferencesNavbarPreference = /*@__PURE__*/ S.suspend(() =>
+const PreferencesNavbarPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookmarkUrls: S.optional(PreferencesNavbarPreferenceBookmarkUrlsList),
   }),
@@ -4819,7 +4799,7 @@ export interface PreferencesQueryHistoryPreference {
   /** one of: '' | 'query' | 'starred'; */
   homeTab?: string;
 }
-export const PreferencesQueryHistoryPreference = /*@__PURE__*/ S.suspend(() =>
+const PreferencesQueryHistoryPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homeTab: S.optional(S.String),
   }),
@@ -4843,7 +4823,7 @@ export interface PreferencesSpec {
   /** day of the week (sunday, monday, etc) */
   weekStart?: string;
 }
-export const PreferencesSpec = /*@__PURE__*/ S.suspend(() =>
+const PreferencesSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homeDashboardUID: S.optional(S.String),
     homeURL: S.optional(S.String),
@@ -4859,30 +4839,27 @@ export const PreferencesSpec = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserRequest {
   user_id: number;
 }
-export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}", code: 200 })),
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 
 export interface GetUserAuthTokensRequest {}
-export const GetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserAuthTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/auth-tokens", code: 200 })),
 ).annotate({ identifier: "GetUserAuthTokensRequest" }) as any as S.Schema<GetUserAuthTokensRequest>;
 
 export type GetUserAuthTokensResponseBodyList = Array<UserToken>;
-export const GetUserAuthTokensResponseBodyList =
-  AdminGetUserAuthTokensResponseBodyList as any as S.Schema<GetUserAuthTokensResponseBodyList>;
-
 export type GetUserAuthTokensResponse = GetUserAuthTokensResponseBodyList;
-export const GetUserAuthTokensResponse =
+const GetUserAuthTokensResponse =
   AdminGetUserAuthTokensResponse as any as S.Schema<GetUserAuthTokensResponse>;
 
 export interface GetUserByLoginOrEmailRequest {
   /** loginOrEmail of the user */
   loginOrEmail: string;
 }
-export const GetUserByLoginOrEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserByLoginOrEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     loginOrEmail: S.String.pipe(T.Query()),
   }).pipe(T.Http({ method: "GET", uri: "/users/lookup", code: 200 })),
@@ -4893,7 +4870,7 @@ export const GetUserByLoginOrEmailRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserFromLDAPRequest {
   user_name: string;
 }
-export const GetUserFromLDAPRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserFromLDAPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_name: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/admin/ldap/{user_name}", code: 200 })),
@@ -4902,64 +4879,58 @@ export const GetUserFromLDAPRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetUserOrgListRequest {
   user_id: number;
 }
-export const GetUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserOrgListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/orgs", code: 200 })),
 ).annotate({ identifier: "GetUserOrgListRequest" }) as any as S.Schema<GetUserOrgListRequest>;
 
 export type GetUserOrgListResponseBodyList = Array<UserOrgDTO>;
-export const GetUserOrgListResponseBodyList =
+const GetUserOrgListResponseBodyList =
   GetSignedInUserOrgListResponseBodyList as any as S.Schema<GetUserOrgListResponseBodyList>;
 
 export type GetUserOrgListResponse = GetUserOrgListResponseBodyList;
-export const GetUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserOrgListResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserOrgListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetUserOrgListResponse" }) as any as S.Schema<GetUserOrgListResponse>;
 
 export interface GetUserQuotaRequest {
   user_id: number;
 }
-export const GetUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/admin/users/{user_id}/quotas", code: 200 })),
 ).annotate({ identifier: "GetUserQuotaRequest" }) as any as S.Schema<GetUserQuotaRequest>;
 
 export type GetUserQuotaResponseBodyList = Array<QuotaDTO>;
-export const GetUserQuotaResponseBodyList =
-  GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetUserQuotaResponseBodyList>;
-
 export type GetUserQuotaResponse = GetUserQuotaResponseBodyList;
-export const GetUserQuotaResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotaResponse>;
+const GetUserQuotaResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotaResponse>;
 
 export interface GetUserQuotasRequest {}
-export const GetUserQuotasRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserQuotasRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/quotas", code: 200 })),
 ).annotate({ identifier: "GetUserQuotasRequest" }) as any as S.Schema<GetUserQuotasRequest>;
 
 export type GetUserQuotasResponseBodyList = Array<QuotaDTO>;
-export const GetUserQuotasResponseBodyList =
-  GetCurrentOrgQuotaResponseBodyList as any as S.Schema<GetUserQuotasResponseBodyList>;
-
 export type GetUserQuotasResponse = GetUserQuotasResponseBodyList;
-export const GetUserQuotasResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotasResponse>;
+const GetUserQuotasResponse = GetOrgQuotaResponse as any as S.Schema<GetUserQuotasResponse>;
 
 export interface GetUserTeamsRequest {
   user_id: number;
 }
-export const GetUserTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetUserTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/users/{user_id}/teams", code: 200 })),
 ).annotate({ identifier: "GetUserTeamsRequest" }) as any as S.Schema<GetUserTeamsRequest>;
 
 export type GetUserTeamsResponseBodyList = Array<TeamDTO>;
-export const GetUserTeamsResponseBodyList =
+const GetUserTeamsResponseBodyList =
   GetSignedInUserTeamListResponseBodyList as any as S.Schema<GetUserTeamsResponseBodyList>;
 
 export type GetUserTeamsResponse = GetUserTeamsResponseBodyList;
-export const GetUserTeamsResponse = /*@__PURE__*/ S.suspend(() =>
+const GetUserTeamsResponse = /*@__PURE__*/ S.suspend(() =>
   GetUserTeamsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetUserTeamsResponse" }) as any as S.Schema<GetUserTeamsResponse>;
 
@@ -4969,7 +4940,7 @@ export interface ImportDashboardInput {
   type?: string;
   value?: string;
 }
-export const ImportDashboardInput = /*@__PURE__*/ S.suspend(() =>
+const ImportDashboardInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     pluginId: S.optional(S.String),
@@ -4979,7 +4950,7 @@ export const ImportDashboardInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDashboardInput" }) as any as S.Schema<ImportDashboardInput>;
 
 export type ImportDashboardRequestInputsList = Array<ImportDashboardInput>;
-export const ImportDashboardRequestInputsList = /*@__PURE__*/ S.Array(
+const ImportDashboardRequestInputsList = /*@__PURE__*/ S.Array(
   ImportDashboardInput,
 ) as any as S.Schema<ImportDashboardRequestInputsList>;
 
@@ -4993,7 +4964,7 @@ export interface ImportDashboardRequest {
   path?: string;
   pluginId?: string;
 }
-export const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboard: S.optional(S.Unknown),
     folderId: S.optional(S.Number),
@@ -5023,7 +4994,7 @@ export interface ImportDashboardResponse {
   title?: string;
   uid?: string;
 }
-export const ImportDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const ImportDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardId: S.optional(S.Number),
     description: S.optional(S.String),
@@ -5044,21 +5015,21 @@ export const ImportDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportDashboardResponse" }) as any as S.Schema<ImportDashboardResponse>;
 
 export interface InterpolateDashboardRequest {}
-export const InterpolateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const InterpolateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/dashboards/interpolate", code: 200 })),
 ).annotate({
   identifier: "InterpolateDashboardRequest",
 }) as any as S.Schema<InterpolateDashboardRequest>;
 
 export type InterpolateDashboardResponse = unknown;
-export const InterpolateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
+const InterpolateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "InterpolateDashboardResponse",
 }) as any as S.Schema<InterpolateDashboardResponse>;
 
 export interface ListAllProvidersSettingsRequest {}
-export const ListAllProvidersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListAllProvidersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/sso-settings", code: 200 })),
 ).annotate({
   identifier: "ListAllProvidersSettingsRequest",
@@ -5067,33 +5038,30 @@ export const ListAllProvidersSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 export type ListAllProvidersSettingsResponseBodyItemSettingsMap = {
   [key: string]: unknown | undefined;
 };
-export const ListAllProvidersSettingsResponseBodyItemSettingsMap =
-  CorrelationConfigTargetMap as any as S.Schema<ListAllProvidersSettingsResponseBodyItemSettingsMap>;
-
 export interface ListAllProvidersSettingsResponseBodyItem {
   id?: string;
   provider?: string;
   settings?: ListAllProvidersSettingsResponseBodyItemSettingsMap;
   source?: string;
 }
-export const ListAllProvidersSettingsResponseBodyItem =
+const ListAllProvidersSettingsResponseBodyItem =
   GetProviderSettingsResponse as any as S.Schema<ListAllProvidersSettingsResponseBodyItem>;
 
 export type ListAllProvidersSettingsResponseBodyList =
   Array<ListAllProvidersSettingsResponseBodyItem>;
-export const ListAllProvidersSettingsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListAllProvidersSettingsResponseBodyList = /*@__PURE__*/ S.Array(
   ListAllProvidersSettingsResponseBodyItem,
 ) as any as S.Schema<ListAllProvidersSettingsResponseBodyList>;
 
 export type ListAllProvidersSettingsResponse = ListAllProvidersSettingsResponseBodyList;
-export const ListAllProvidersSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAllProvidersSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   ListAllProvidersSettingsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListAllProvidersSettingsResponse",
 }) as any as S.Schema<ListAllProvidersSettingsResponse>;
 
 export interface ListDevicesRequest {}
-export const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/devices", code: 200 })),
 ).annotate({ identifier: "ListDevicesRequest" }) as any as S.Schema<ListDevicesRequest>;
 
@@ -5106,7 +5074,7 @@ export interface DeviceDTO {
   updatedAt?: string;
   userAgent?: string;
 }
-export const DeviceDTO = /*@__PURE__*/ S.suspend(() =>
+const DeviceDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatarUrl: S.optional(S.String),
     clientIp: S.optional(S.String),
@@ -5119,17 +5087,17 @@ export const DeviceDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceDTO" }) as any as S.Schema<DeviceDTO>;
 
 export type ListDevicesResponseBodyList = Array<DeviceDTO>;
-export const ListDevicesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListDevicesResponseBodyList = /*@__PURE__*/ S.Array(
   DeviceDTO,
 ) as any as S.Schema<ListDevicesResponseBodyList>;
 
 export type ListDevicesResponse = ListDevicesResponseBodyList;
-export const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
   ListDevicesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListDevicesResponse" }) as any as S.Schema<ListDevicesResponse>;
 
 export interface ListPublicDashboardsRequest {}
-export const ListPublicDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPublicDashboardsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/dashboards/public-dashboards", code: 200 })),
 ).annotate({
   identifier: "ListPublicDashboardsRequest",
@@ -5143,7 +5111,7 @@ export interface PublicDashboardListResponse {
   title?: string;
   uid?: string;
 }
-export const PublicDashboardListResponse = /*@__PURE__*/ S.suspend(() =>
+const PublicDashboardListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
     dashboardUid: S.optional(S.String),
@@ -5158,7 +5126,7 @@ export const PublicDashboardListResponse = /*@__PURE__*/ S.suspend(() =>
 
 export type PublicDashboardListResponseWithPaginationPublicDashboardsList =
   Array<PublicDashboardListResponse>;
-export const PublicDashboardListResponseWithPaginationPublicDashboardsList = /*@__PURE__*/ S.Array(
+const PublicDashboardListResponseWithPaginationPublicDashboardsList = /*@__PURE__*/ S.Array(
   PublicDashboardListResponse,
 ) as any as S.Schema<PublicDashboardListResponseWithPaginationPublicDashboardsList>;
 
@@ -5168,7 +5136,7 @@ export interface PublicDashboardListResponseWithPagination {
   publicDashboards?: PublicDashboardListResponseWithPaginationPublicDashboardsList;
   totalCount?: number;
 }
-export const PublicDashboardListResponseWithPagination = /*@__PURE__*/ S.suspend(() =>
+const PublicDashboardListResponseWithPagination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -5180,19 +5148,19 @@ export const PublicDashboardListResponseWithPagination = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<PublicDashboardListResponseWithPagination>;
 
 export interface ListRecordingRulesRequest {}
-export const ListRecordingRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRecordingRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/recording-rules", code: 200 })),
 ).annotate({
   identifier: "ListRecordingRulesRequest",
 }) as any as S.Schema<ListRecordingRulesRequest>;
 
 export type ListRecordingRulesResponseBodyList = Array<RecordingRuleJSON>;
-export const ListRecordingRulesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRecordingRulesResponseBodyList = /*@__PURE__*/ S.Array(
   RecordingRuleJSON,
 ) as any as S.Schema<ListRecordingRulesResponseBodyList>;
 
 export type ListRecordingRulesResponse = ListRecordingRulesResponseBodyList;
-export const ListRecordingRulesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRecordingRulesResponse = /*@__PURE__*/ S.suspend(() =>
   ListRecordingRulesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListRecordingRulesResponse",
@@ -5203,7 +5171,7 @@ export interface ListRolesRequest {
   includeHidden?: boolean;
   targetOrgId?: number;
 }
-export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delegatable: S.optional(S.Boolean.pipe(T.Query())),
     includeHidden: S.optional(S.Boolean.pipe(T.Query())),
@@ -5212,17 +5180,17 @@ export const ListRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListRolesRequest" }) as any as S.Schema<ListRolesRequest>;
 
 export type ListRolesResponseBodyList = Array<RoleDTO>;
-export const ListRolesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListRolesResponseBodyList = /*@__PURE__*/ S.Array(
   RoleDTO,
 ) as any as S.Schema<ListRolesResponseBodyList>;
 
 export type ListRolesResponse = ListRolesResponseBodyList;
-export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   ListRolesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListRolesResponse" }) as any as S.Schema<ListRolesResponse>;
 
 export interface ListSortOptionsRequest {}
-export const ListSortOptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSortOptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/search/sorting", code: 200 })),
 ).annotate({ identifier: "ListSortOptionsRequest" }) as any as S.Schema<ListSortOptionsRequest>;
 
@@ -5232,7 +5200,7 @@ export interface ListSortOptionsResponse {
   meta?: string;
   name?: string;
 }
-export const ListSortOptionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSortOptionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -5245,7 +5213,7 @@ export interface ListTeamRolesRequest {
   teamId: number;
   targetOrgId?: number;
 }
-export const ListTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.Number.pipe(T.Label()),
     targetOrgId: S.optional(S.Number.pipe(T.Query())),
@@ -5253,11 +5221,11 @@ export const ListTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamRolesRequest" }) as any as S.Schema<ListTeamRolesRequest>;
 
 export type ListTeamsRolesRequestTeamIdsList = Array<number>;
-export const ListTeamsRolesRequestTeamIdsList =
+const ListTeamsRolesRequestTeamIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListTeamsRolesRequestTeamIdsList>;
 
 export type ListTeamsRolesRequestUserIdsList = Array<number>;
-export const ListTeamsRolesRequestUserIdsList =
+const ListTeamsRolesRequestUserIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListTeamsRolesRequestUserIdsList>;
 
 export interface ListTeamsRolesRequest {
@@ -5266,7 +5234,7 @@ export interface ListTeamsRolesRequest {
   teamIds?: ListTeamsRolesRequestTeamIdsList;
   userIds?: ListTeamsRolesRequestUserIdsList;
 }
-export const ListTeamsRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeHidden: S.optional(S.Boolean),
     orgId: S.optional(S.Number),
@@ -5276,26 +5244,26 @@ export const ListTeamsRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListTeamsRolesRequest" }) as any as S.Schema<ListTeamsRolesRequest>;
 
 export type ListTeamsRolesResponseBodyValueList = Array<RoleDTO>;
-export const ListTeamsRolesResponseBodyValueList =
+const ListTeamsRolesResponseBodyValueList =
   ListRolesResponseBodyList as any as S.Schema<ListTeamsRolesResponseBodyValueList>;
 
 export type ListTeamsRolesResponseBodyMap = {
   [key: string]: ListTeamsRolesResponseBodyValueList | undefined;
 };
-export const ListTeamsRolesResponseBodyMap = /*@__PURE__*/ S.Record(
+const ListTeamsRolesResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   ListTeamsRolesResponseBodyValueList,
 ) as any as S.Schema<ListTeamsRolesResponseBodyMap>;
 
 export type ListTeamsRolesResponse = ListTeamsRolesResponseBodyMap;
-export const ListTeamsRolesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTeamsRolesResponse = /*@__PURE__*/ S.suspend(() =>
   ListTeamsRolesResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTeamsRolesResponse" }) as any as S.Schema<ListTeamsRolesResponse>;
 
 export interface ListTokensRequest {
   serviceAccountId: number;
 }
-export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/serviceaccounts/{serviceAccountId}/tokens", code: 200 })),
@@ -5311,7 +5279,7 @@ export interface TokenDTO {
   name?: string;
   secondsUntilExpiration?: number;
 }
-export const TokenDTO = /*@__PURE__*/ S.suspend(() =>
+const TokenDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     expiration: S.optional(S.String),
@@ -5325,12 +5293,12 @@ export const TokenDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TokenDTO" }) as any as S.Schema<TokenDTO>;
 
 export type ListTokensResponseBodyList = Array<TokenDTO>;
-export const ListTokensResponseBodyList = /*@__PURE__*/ S.Array(
+const ListTokensResponseBodyList = /*@__PURE__*/ S.Array(
   TokenDTO,
 ) as any as S.Schema<ListTokensResponseBodyList>;
 
 export type ListTokensResponse = ListTokensResponseBodyList;
-export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   ListTokensResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListTokensResponse" }) as any as S.Schema<ListTokensResponse>;
 
@@ -5339,7 +5307,7 @@ export interface ListUserRolesRequest {
   includeHidden?: boolean;
   targetOrgId?: number;
 }
-export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
     includeHidden: S.optional(S.Boolean.pipe(T.Query())),
@@ -5348,18 +5316,15 @@ export const ListUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUserRolesRequest" }) as any as S.Schema<ListUserRolesRequest>;
 
 export type ListUserRolesResponseBodyList = Array<RoleDTO>;
-export const ListUserRolesResponseBodyList =
-  ListRolesResponseBodyList as any as S.Schema<ListUserRolesResponseBodyList>;
-
 export type ListUserRolesResponse = ListUserRolesResponseBodyList;
-export const ListUserRolesResponse = ListRolesResponse as any as S.Schema<ListUserRolesResponse>;
+const ListUserRolesResponse = ListRolesResponse as any as S.Schema<ListUserRolesResponse>;
 
 export type ListUsersRolesRequestTeamIdsList = Array<number>;
-export const ListUsersRolesRequestTeamIdsList =
+const ListUsersRolesRequestTeamIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListUsersRolesRequestTeamIdsList>;
 
 export type ListUsersRolesRequestUserIdsList = Array<number>;
-export const ListUsersRolesRequestUserIdsList =
+const ListUsersRolesRequestUserIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<ListUsersRolesRequestUserIdsList>;
 
 export interface ListUsersRolesRequest {
@@ -5368,7 +5333,7 @@ export interface ListUsersRolesRequest {
   teamIds?: ListUsersRolesRequestTeamIdsList;
   userIds?: ListUsersRolesRequestUserIdsList;
 }
-export const ListUsersRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListUsersRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includeHidden: S.optional(S.Boolean),
     orgId: S.optional(S.Number),
@@ -5378,18 +5343,11 @@ export const ListUsersRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListUsersRolesRequest" }) as any as S.Schema<ListUsersRolesRequest>;
 
 export type ListUsersRolesResponseBodyValueList = Array<RoleDTO>;
-export const ListUsersRolesResponseBodyValueList =
-  ListRolesResponseBodyList as any as S.Schema<ListUsersRolesResponseBodyValueList>;
-
 export type ListUsersRolesResponseBodyMap = {
   [key: string]: ListUsersRolesResponseBodyValueList | undefined;
 };
-export const ListUsersRolesResponseBodyMap =
-  ListTeamsRolesResponseBodyMap as any as S.Schema<ListUsersRolesResponseBodyMap>;
-
 export type ListUsersRolesResponse = ListUsersRolesResponseBodyMap;
-export const ListUsersRolesResponse =
-  ListTeamsRolesResponse as any as S.Schema<ListUsersRolesResponse>;
+const ListUsersRolesResponse = ListTeamsRolesResponse as any as S.Schema<ListUsersRolesResponse>;
 
 export interface MassDeleteAnnotationsRequest {
   annotationId?: number;
@@ -5397,7 +5355,7 @@ export interface MassDeleteAnnotationsRequest {
   dashboardUID?: string;
   panelId?: number;
 }
-export const MassDeleteAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
+const MassDeleteAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotationId: S.optional(S.Number),
     dashboardId: S.optional(S.Number),
@@ -5409,14 +5367,14 @@ export const MassDeleteAnnotationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MassDeleteAnnotationsRequest>;
 
 export type PatchProviderSettingsRequestSettingsMap = { [key: string]: unknown | undefined };
-export const PatchProviderSettingsRequestSettingsMap =
+const PatchProviderSettingsRequestSettingsMap =
   CorrelationConfigTargetMap as any as S.Schema<PatchProviderSettingsRequestSettingsMap>;
 
 export interface PatchProviderSettingsRequest {
   key: string;
   settings?: PatchProviderSettingsRequestSettingsMap;
 }
-export const PatchProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     settings: S.optional(PatchProviderSettingsRequestSettingsMap),
@@ -5430,7 +5388,7 @@ export interface PatchQueryCommentRequest {
   /** Updated comment */
   comment?: string;
 }
-export const PatchQueryCommentRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchQueryCommentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query_history_uid: S.String.pipe(T.Label()),
     comment: S.optional(S.String),
@@ -5440,14 +5398,14 @@ export const PatchQueryCommentRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PostACSRequest {
   RelayState?: string;
 }
-export const PostACSRequest = /*@__PURE__*/ S.suspend(() =>
+const PostACSRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RelayState: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "POST", uri: "/saml/acs", code: 200 })),
 ).annotate({ identifier: "PostACSRequest" }) as any as S.Schema<PostACSRequest>;
 
 export interface PostACSResponse {}
-export const PostACSResponse = CancelSnapshotResponse as any as S.Schema<PostACSResponse>;
+const PostACSResponse = CancelSnapshotResponse as any as S.Schema<PostACSResponse>;
 
 export interface PostGraphiteAnnotationRequest {
   data?: string;
@@ -5455,7 +5413,7 @@ export interface PostGraphiteAnnotationRequest {
   what?: string;
   when?: number;
 }
-export const PostGraphiteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const PostGraphiteAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(S.String),
     tags: S.optional(S.Unknown),
@@ -5472,7 +5430,7 @@ export interface PostGraphiteAnnotationResponse {
   /** Message Message of the created annotation. */
   message: string;
 }
-export const PostGraphiteAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
+const PostGraphiteAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     message: S.String,
@@ -5484,21 +5442,21 @@ export const PostGraphiteAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface PostLicenseTokenRequest {
   instance?: string;
 }
-export const PostLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const PostLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     instance: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/licensing/token", code: 200 })),
 ).annotate({ identifier: "PostLicenseTokenRequest" }) as any as S.Schema<PostLicenseTokenRequest>;
 
 export interface PostRenewLicenseTokenRequest {}
-export const PostRenewLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const PostRenewLicenseTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/licensing/token/renew", code: 200 })),
 ).annotate({
   identifier: "PostRenewLicenseTokenRequest",
 }) as any as S.Schema<PostRenewLicenseTokenRequest>;
 
 export type PostRenewLicenseTokenResponse = boolean;
-export const PostRenewLicenseTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const PostRenewLicenseTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "PostRenewLicenseTokenResponse",
@@ -5508,7 +5466,7 @@ export interface PostSLORequest {
   SAMLRequest?: string;
   SAMLResponse?: string;
 }
-export const PostSLORequest = /*@__PURE__*/ S.suspend(() =>
+const PostSLORequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SAMLRequest: S.optional(S.String.pipe(T.Query())),
     SAMLResponse: S.optional(S.String.pipe(T.Query())),
@@ -5516,12 +5474,12 @@ export const PostSLORequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PostSLORequest" }) as any as S.Schema<PostSLORequest>;
 
 export interface PostSLOResponse {}
-export const PostSLOResponse = CancelSnapshotResponse as any as S.Schema<PostSLOResponse>;
+const PostSLOResponse = CancelSnapshotResponse as any as S.Schema<PostSLOResponse>;
 
 export interface PostSyncUserWithLDAPRequest {
   user_id: number;
 }
-export const PostSyncUserWithLDAPRequest = /*@__PURE__*/ S.suspend(() =>
+const PostSyncUserWithLDAPRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/admin/ldap/sync/{user_id}", code: 200 })),
@@ -5531,7 +5489,7 @@ export const PostSyncUserWithLDAPRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** queries.refId - Specifies an identifier of the query. Is optional and default to "A". queries.datasourceId - Specifies the data source to be queried. Each query in the request must have an unique datasourceId. queries.maxDataPoints - Species maximum amount of data points that dashboard panel can render. Is optional and default to 100. queries.intervalMs - Specifies the time interval in milliseconds of time series. Is optional and defaults to 1000. */
 export type QueryMetricsWithExpressionsRequestQueriesList = Array<unknown>;
-export const QueryMetricsWithExpressionsRequestQueriesList = /*@__PURE__*/ S.Array(
+const QueryMetricsWithExpressionsRequestQueriesList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<QueryMetricsWithExpressionsRequestQueriesList>;
 
@@ -5544,7 +5502,7 @@ export interface QueryMetricsWithExpressionsRequest {
   /** To End time in epoch timestamps in milliseconds or relative using Grafana time units. */
   to: string;
 }
-export const QueryMetricsWithExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryMetricsWithExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     debug: S.optional(S.Boolean),
     from: S.String,
@@ -5557,25 +5515,21 @@ export const QueryMetricsWithExpressionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Map values to a display color NOTE: this interface is under development in the frontend... so simple map for now */
 export type FieldConfigColorMap = { [key: string]: unknown | undefined };
-export const FieldConfigColorMap =
-  CorrelationConfigTargetMap as any as S.Schema<FieldConfigColorMap>;
+const FieldConfigColorMap = CorrelationConfigTargetMap as any as S.Schema<FieldConfigColorMap>;
 
 /** Panel Specific Values */
 export type FieldConfigCustomMap = { [key: string]: unknown | undefined };
-export const FieldConfigCustomMap =
-  CorrelationConfigTargetMap as any as S.Schema<FieldConfigCustomMap>;
+const FieldConfigCustomMap = CorrelationConfigTargetMap as any as S.Schema<FieldConfigCustomMap>;
 
 /** Redefining this to avoid an import cycle */
 export type TimeRange = ReportTimeRange;
-export const TimeRange = ReportTimeRange;
-
 export interface LinkTransformationConfig {
   expression?: string;
   field?: string;
   mapValue?: string;
   type?: string;
 }
-export const LinkTransformationConfig = /*@__PURE__*/ S.suspend(() =>
+const LinkTransformationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     field: S.optional(S.String),
@@ -5585,7 +5539,7 @@ export const LinkTransformationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LinkTransformationConfig" }) as any as S.Schema<LinkTransformationConfig>;
 
 export type InternalDataLinkTransformationsList = Array<LinkTransformationConfig>;
-export const InternalDataLinkTransformationsList = /*@__PURE__*/ S.Array(
+const InternalDataLinkTransformationsList = /*@__PURE__*/ S.Array(
   LinkTransformationConfig,
 ) as any as S.Schema<InternalDataLinkTransformationsList>;
 
@@ -5598,7 +5552,7 @@ export interface InternalDataLink {
   timeRange?: ReportTimeRange;
   transformations?: InternalDataLinkTransformationsList;
 }
-export const InternalDataLink = /*@__PURE__*/ S.suspend(() =>
+const InternalDataLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceName: S.optional(S.String),
     datasourceUid: S.optional(S.String),
@@ -5616,7 +5570,7 @@ export interface DataLink {
   title?: string;
   url?: string;
 }
-export const DataLink = /*@__PURE__*/ S.suspend(() =>
+const DataLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     internal: S.optional(InternalDataLink),
     targetBlank: S.optional(S.Boolean),
@@ -5627,12 +5581,12 @@ export const DataLink = /*@__PURE__*/ S.suspend(() =>
 
 /** The behavior when clicking on a result */
 export type FieldConfigLinksList = Array<DataLink>;
-export const FieldConfigLinksList = /*@__PURE__*/ S.Array(
+const FieldConfigLinksList = /*@__PURE__*/ S.Array(
   DataLink,
 ) as any as S.Schema<FieldConfigLinksList>;
 
 export type ValueMappings = Array<unknown>;
-export const ValueMappings = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<ValueMappings>;
+const ValueMappings = /*@__PURE__*/ S.Array(S.Unknown) as any as S.Schema<ValueMappings>;
 
 /** Threshold a single step on the threshold list */
 export interface Threshold {
@@ -5640,7 +5594,7 @@ export interface Threshold {
   state?: string;
   value?: number;
 }
-export const Threshold = /*@__PURE__*/ S.suspend(() =>
+const Threshold = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(S.String),
     state: S.optional(S.String),
@@ -5650,7 +5604,7 @@ export const Threshold = /*@__PURE__*/ S.suspend(() =>
 
 /** Must be sorted by 'value', first value is always -Infinity */
 export type ThresholdsConfigStepsList = Array<Threshold>;
-export const ThresholdsConfigStepsList = /*@__PURE__*/ S.Array(
+const ThresholdsConfigStepsList = /*@__PURE__*/ S.Array(
   Threshold,
 ) as any as S.Schema<ThresholdsConfigStepsList>;
 
@@ -5660,7 +5614,7 @@ export interface ThresholdsConfig {
   /** Must be sorted by 'value', first value is always -Infinity */
   steps?: ThresholdsConfigStepsList;
 }
-export const ThresholdsConfig = /*@__PURE__*/ S.suspend(() =>
+const ThresholdsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mode: S.optional(S.String),
     steps: S.optional(ThresholdsConfigStepsList),
@@ -5669,22 +5623,22 @@ export const ThresholdsConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Color is the color value for a given index (empty is undefined) */
 export type EnumFieldConfigColorList = Array<string>;
-export const EnumFieldConfigColorList =
+const EnumFieldConfigColorList =
   CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigColorList>;
 
 /** Description of the enum state */
 export type EnumFieldConfigDescriptionList = Array<string>;
-export const EnumFieldConfigDescriptionList =
+const EnumFieldConfigDescriptionList =
   CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigDescriptionList>;
 
 /** Icon supports setting an icon for a given index value */
 export type EnumFieldConfigIconList = Array<string>;
-export const EnumFieldConfigIconList =
+const EnumFieldConfigIconList =
   CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigIconList>;
 
 /** Value is the string display value for a given index */
 export type EnumFieldConfigTextList = Array<string>;
-export const EnumFieldConfigTextList =
+const EnumFieldConfigTextList =
   CreateAnnotationRequestTagsList as any as S.Schema<EnumFieldConfigTextList>;
 
 /** Enum field config Vector values are used as lookup keys into the enum fields */
@@ -5698,7 +5652,7 @@ export interface EnumFieldConfig {
   /** Value is the string display value for a given index */
   text?: EnumFieldConfigTextList;
 }
-export const EnumFieldConfig = /*@__PURE__*/ S.suspend(() =>
+const EnumFieldConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(EnumFieldConfigColorList),
     description: S.optional(EnumFieldConfigDescriptionList),
@@ -5711,7 +5665,7 @@ export const EnumFieldConfig = /*@__PURE__*/ S.suspend(() =>
 export interface FieldTypeConfig {
   enum?: EnumFieldConfig;
 }
-export const FieldTypeConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enum: S.optional(EnumFieldConfig),
   }),
@@ -5749,7 +5703,7 @@ export interface FieldConfig {
   /** Writeable indicates that the datasource knows how to update this value */
   writeable?: boolean;
 }
-export const FieldConfig = /*@__PURE__*/ S.suspend(() =>
+const FieldConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(FieldConfigColorMap),
     custom: S.optional(FieldConfigCustomMap),
@@ -5774,7 +5728,7 @@ export const FieldConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** Labels are used to add metadata to an object. The JSON will always be sorted keys */
 export type FrameLabels = { [key: string]: string | undefined };
-export const FrameLabels = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<FrameLabels>;
+const FrameLabels = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<FrameLabels>;
 
 /** A Field is essentially a slice of various types with extra properties and methods. See NewField() for supported types. The slice data in the Field is a not exported, so methods on the Field are used to to manipulate its data. */
 export interface Field {
@@ -5783,7 +5737,7 @@ export interface Field {
   /** Name is default identifier of the field. The name does not have to be unique, but the combination of name and Labels should be unique for proper behavior in all situations. */
   name?: string;
 }
-export const Field = /*@__PURE__*/ S.suspend(() =>
+const Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     config: S.optional(FieldConfig),
     labels: S.optional(FrameLabels),
@@ -5793,7 +5747,7 @@ export const Field = /*@__PURE__*/ S.suspend(() =>
 
 /** Fields are the columns of a frame. All Fields must be of the same the length when marshalling the Frame for transmission. There should be no `nil` entries in the Fields slice (making them pointers was a mistake). */
 export type FrameFieldsList = Array<Field>;
-export const FrameFieldsList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FrameFieldsList>;
+const FrameFieldsList = /*@__PURE__*/ S.Array(Field) as any as S.Schema<FrameFieldsList>;
 
 export interface Notice {
   inspect?: number;
@@ -5803,7 +5757,7 @@ export interface Notice {
   /** Text is freeform descriptive text for the notice. */
   text?: string;
 }
-export const Notice = /*@__PURE__*/ S.suspend(() =>
+const Notice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     inspect: S.optional(S.Number),
     link: S.optional(S.String),
@@ -5814,21 +5768,19 @@ export const Notice = /*@__PURE__*/ S.suspend(() =>
 
 /** Notices provide additional information about the data in the Frame that Grafana can display to the user in the user interface. */
 export type FrameMetaNoticesList = Array<Notice>;
-export const FrameMetaNoticesList = /*@__PURE__*/ S.Array(
-  Notice,
-) as any as S.Schema<FrameMetaNoticesList>;
+const FrameMetaNoticesList = /*@__PURE__*/ S.Array(Notice) as any as S.Schema<FrameMetaNoticesList>;
 
 /** Map values to a display color NOTE: this interface is under development in the frontend... so simple map for now */
 export type QueryStatColorMap = { [key: string]: unknown | undefined };
-export const QueryStatColorMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatColorMap>;
+const QueryStatColorMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatColorMap>;
 
 /** Panel Specific Values */
 export type QueryStatCustomMap = { [key: string]: unknown | undefined };
-export const QueryStatCustomMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatCustomMap>;
+const QueryStatCustomMap = CorrelationConfigTargetMap as any as S.Schema<QueryStatCustomMap>;
 
 /** The behavior when clicking on a result */
 export type QueryStatLinksList = Array<DataLink>;
-export const QueryStatLinksList = FieldConfigLinksList as any as S.Schema<QueryStatLinksList>;
+const QueryStatLinksList = FieldConfigLinksList as any as S.Schema<QueryStatLinksList>;
 
 /** The embedded FieldConfig's display name must be set. It corresponds to the QueryResultMetaStat on the frontend (https://github.com/grafana/grafana/blob/master/packages/grafana-data/src/types/data.ts#L53). */
 export interface QueryStat {
@@ -5864,7 +5816,7 @@ export interface QueryStat {
   /** Writeable indicates that the datasource knows how to update this value */
   writeable?: boolean;
 }
-export const QueryStat = /*@__PURE__*/ S.suspend(() =>
+const QueryStat = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     color: S.optional(QueryStatColorMap),
     custom: S.optional(QueryStatCustomMap),
@@ -5890,17 +5842,15 @@ export const QueryStat = /*@__PURE__*/ S.suspend(() =>
 
 /** Stats is an array of query result statistics. */
 export type FrameMetaStatsList = Array<QueryStat>;
-export const FrameMetaStatsList = /*@__PURE__*/ S.Array(
-  QueryStat,
-) as any as S.Schema<FrameMetaStatsList>;
+const FrameMetaStatsList = /*@__PURE__*/ S.Array(QueryStat) as any as S.Schema<FrameMetaStatsList>;
 
 export type FrameTypeVersion = Array<number>;
-export const FrameTypeVersion =
+const FrameTypeVersion =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<FrameTypeVersion>;
 
 /** Array of field indices which values create a unique id for each row. Ideally this should be globally unique ID but that isn't guarantied. Should help with keeping track and deduplicating rows in visualizations, especially with streaming data with frequent updates. */
 export type FrameMetaUniqueRowIdFieldsList = Array<number>;
-export const FrameMetaUniqueRowIdFieldsList =
+const FrameMetaUniqueRowIdFieldsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<FrameMetaUniqueRowIdFieldsList>;
 
 /** https://github.com/grafana/grafana/blob/master/packages/grafana-data/src/types/data.ts#L11 NOTE -- in javascript this can accept any `[key: string]: any;` however this interface only exposes the values we want to be exposed */
@@ -5928,7 +5878,7 @@ export interface FrameMeta {
   /** Array of field indices which values create a unique id for each row. Ideally this should be globally unique ID but that isn't guarantied. Should help with keeping track and deduplicating rows in visualizations, especially with streaming data with frequent updates. */
   uniqueRowIdFields?: FrameMetaUniqueRowIdFieldsList;
 }
-export const FrameMeta = /*@__PURE__*/ S.suspend(() =>
+const FrameMeta = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channel: S.optional(S.String),
     custom: S.optional(S.Unknown),
@@ -5956,7 +5906,7 @@ export interface Frame {
   /** RefID is a property that can be set to match a Frame to its originating query. */
   RefID?: string;
 }
-export const Frame = /*@__PURE__*/ S.suspend(() =>
+const Frame = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Fields: S.optional(FrameFieldsList),
     Meta: S.optional(FrameMeta),
@@ -5967,7 +5917,7 @@ export const Frame = /*@__PURE__*/ S.suspend(() =>
 
 /** It is the main data container within a backend.DataResponse. There should be no `nil` entries in the Frames slice (making them pointers was a mistake). */
 export type Frames = Array<Frame>;
-export const Frames = /*@__PURE__*/ S.Array(Frame) as any as S.Schema<Frames>;
+const Frames = /*@__PURE__*/ S.Array(Frame) as any as S.Schema<Frames>;
 
 /** A map of RefIDs (unique query identifiers) to this type makes up the Responses property of a QueryDataResponse. The Error property is used to allow for partial success responses from the containing QueryDataResponse. */
 export interface DataResponse {
@@ -5977,7 +5927,7 @@ export interface DataResponse {
   Frames?: Frames;
   Status?: number;
 }
-export const DataResponse = /*@__PURE__*/ S.suspend(() =>
+const DataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Error: S.optional(S.String),
     ErrorSource: S.optional(S.String),
@@ -5988,16 +5938,13 @@ export const DataResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The QueryData method the QueryDataHandler method will set the RefId property on the DataResponses' frames based on these RefIDs. */
 export type Responses = { [key: string]: DataResponse | undefined };
-export const Responses = /*@__PURE__*/ S.Record(
-  S.String,
-  DataResponse,
-) as any as S.Schema<Responses>;
+const Responses = /*@__PURE__*/ S.Record(S.String, DataResponse) as any as S.Schema<Responses>;
 
 /** It is the return type of a QueryData call. */
 export interface QueryDataResponse {
   results?: Responses;
 }
-export const QueryDataResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryDataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: S.optional(Responses),
   }),
@@ -6007,7 +5954,7 @@ export interface QueryPublicDashboardRequest {
   accessToken: string;
   panelId: number;
 }
-export const QueryPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const QueryPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.String.pipe(T.Label()),
     panelId: S.Number.pipe(T.Label()),
@@ -6023,7 +5970,7 @@ export const QueryPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueryPublicDashboardRequest>;
 
 export interface RefreshLicenseStatsRequest {}
-export const RefreshLicenseStatsRequest = /*@__PURE__*/ S.suspend(() =>
+const RefreshLicenseStatsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/licensing/refresh-stats", code: 200 })),
 ).annotate({
   identifier: "RefreshLicenseStatsRequest",
@@ -6035,7 +5982,7 @@ export interface ActiveUserStats {
   active_users?: number;
   active_viewers?: number;
 }
-export const ActiveUserStats = /*@__PURE__*/ S.suspend(() =>
+const ActiveUserStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_admins_and_editors: S.optional(S.Number),
     active_anonymous_devices: S.optional(S.Number),
@@ -6045,19 +5992,18 @@ export const ActiveUserStats = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActiveUserStats" }) as any as S.Schema<ActiveUserStats>;
 
 export interface ReloadLDAPCfgRequest {}
-export const ReloadLDAPCfgRequest = /*@__PURE__*/ S.suspend(() =>
+const ReloadLDAPCfgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/admin/ldap/reload", code: 200 })),
 ).annotate({ identifier: "ReloadLDAPCfgRequest" }) as any as S.Schema<ReloadLDAPCfgRequest>;
 
 export interface ReloadLDAPCfgResponse {}
-export const ReloadLDAPCfgResponse =
-  CancelSnapshotResponse as any as S.Schema<ReloadLDAPCfgResponse>;
+const ReloadLDAPCfgResponse = CancelSnapshotResponse as any as S.Schema<ReloadLDAPCfgResponse>;
 
 export interface RemoveOrgUserRequest {
   org_id: number;
   user_id: number;
 }
-export const RemoveOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     user_id: S.Number.pipe(T.Label()),
@@ -6067,7 +6013,7 @@ export const RemoveOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveOrgUserForCurrentOrgRequest {
   user_id: number;
 }
-export const RemoveOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/org/users/{user_id}", code: 200 })),
@@ -6078,7 +6024,7 @@ export const RemoveOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RemoveProviderSettingsRequest {
   key: string;
 }
-export const RemoveProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v1/sso-settings/{key}", code: 200 })),
@@ -6090,7 +6036,7 @@ export interface RemoveTeamGroupApiQueryRequest {
   teamId: string;
   groupId?: string;
 }
-export const RemoveTeamGroupApiQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTeamGroupApiQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.String.pipe(T.Label()),
     groupId: S.optional(S.String.pipe(T.Query())),
@@ -6103,7 +6049,7 @@ export interface RemoveTeamMemberRequest {
   team_id: string;
   user_id: number;
 }
-export const RemoveTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     user_id: S.Number.pipe(T.Label()),
@@ -6114,7 +6060,7 @@ export interface RemoveTeamRoleRequest {
   teamId: number;
   roleUID: string;
 }
-export const RemoveTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveTeamRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.Number.pipe(T.Label()),
     roleUID: S.String.pipe(T.Label()),
@@ -6129,7 +6075,7 @@ export interface RemoveUserRoleRequest {
   /** A flag indicating if the assignment is global or not. If set to false, the default org ID of the authenticated user will be used from the request to remove assignment. */
   global?: boolean;
 }
-export const RemoveUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const RemoveUserRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
     roleUID: S.String.pipe(T.Label()),
@@ -6143,7 +6089,7 @@ export interface RenderReportCSVsRequest {
   dashboards?: string;
   title?: string;
 }
-export const RenderReportCSVsRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderReportCSVsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(S.String.pipe(T.Query())),
     title: S.optional(S.String.pipe(T.Query())),
@@ -6151,12 +6097,8 @@ export const RenderReportCSVsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderReportCSVsRequest" }) as any as S.Schema<RenderReportCSVsRequest>;
 
 export type RenderReportCSVsResponseBodyList = Array<number>;
-export const RenderReportCSVsResponseBodyList =
-  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RenderReportCSVsResponseBodyList>;
-
 export type RenderReportCSVsResponse = RenderReportCSVsResponseBodyList;
-export const RenderReportCSVsResponse =
-  GetMetadataResponse as any as S.Schema<RenderReportCSVsResponse>;
+const RenderReportCSVsResponse = GetMetadataResponse as any as S.Schema<RenderReportCSVsResponse>;
 
 export interface RenderReportPDFsRequest {
   dashboards?: string;
@@ -6166,7 +6108,7 @@ export interface RenderReportPDFsRequest {
   scaleFactor?: string;
   includeTables?: string;
 }
-export const RenderReportPDFsRequest = /*@__PURE__*/ S.suspend(() =>
+const RenderReportPDFsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(S.String.pipe(T.Query())),
     orientation: S.optional(S.String.pipe(T.Query())),
@@ -6178,17 +6120,13 @@ export const RenderReportPDFsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RenderReportPDFsRequest" }) as any as S.Schema<RenderReportPDFsRequest>;
 
 export type RenderReportPDFsResponseBodyList = Array<number>;
-export const RenderReportPDFsResponseBodyList =
-  JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<RenderReportPDFsResponseBodyList>;
-
 export type RenderReportPDFsResponse = RenderReportPDFsResponseBodyList;
-export const RenderReportPDFsResponse =
-  GetMetadataResponse as any as S.Schema<RenderReportPDFsResponse>;
+const RenderReportPDFsResponse = GetMetadataResponse as any as S.Schema<RenderReportPDFsResponse>;
 
 export interface RevokeInviteRequest {
   invitation_code: string;
 }
-export const RevokeInviteRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     invitation_code: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/org/invites/{invitation_code}/revoke", code: 200 })),
@@ -6197,7 +6135,7 @@ export const RevokeInviteRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RevokeUserAuthTokenRequest {
   authTokenId?: number;
 }
-export const RevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const RevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authTokenId: S.optional(S.Number),
   }).pipe(T.Http({ method: "POST", uri: "/user/revoke-auth-token", code: 200 })),
@@ -6208,7 +6146,7 @@ export const RevokeUserAuthTokenRequest = /*@__PURE__*/ S.suspend(() =>
 export interface RouteConvertPrometheusCortexDeleteNamespaceRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusCortexDeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexDeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 })),
@@ -6217,14 +6155,14 @@ export const RouteConvertPrometheusCortexDeleteNamespaceRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceRequest>;
 
 export interface RouteConvertPrometheusCortexDeleteNamespaceResponse {}
-export const RouteConvertPrometheusCortexDeleteNamespaceResponse =
+const RouteConvertPrometheusCortexDeleteNamespaceResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexDeleteNamespaceResponse>;
 
 export interface RouteConvertPrometheusCortexDeleteRuleGroupRequest {
   NamespaceTitle: string;
   Group: string;
 }
-export const RouteConvertPrometheusCortexDeleteRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexDeleteRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
     Group: S.String.pipe(T.Label()),
@@ -6240,13 +6178,13 @@ export const RouteConvertPrometheusCortexDeleteRuleGroupRequest = /*@__PURE__*/ 
 }) as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexDeleteRuleGroupResponse {}
-export const RouteConvertPrometheusCortexDeleteRuleGroupResponse =
+const RouteConvertPrometheusCortexDeleteRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexDeleteRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexGetNamespaceRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusCortexGetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexGetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 })),
@@ -6255,14 +6193,14 @@ export const RouteConvertPrometheusCortexGetNamespaceRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceRequest>;
 
 export interface RouteConvertPrometheusCortexGetNamespaceResponse {}
-export const RouteConvertPrometheusCortexGetNamespaceResponse =
+const RouteConvertPrometheusCortexGetNamespaceResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetNamespaceResponse>;
 
 export interface RouteConvertPrometheusCortexGetRuleGroupRequest {
   NamespaceTitle: string;
   Group: string;
 }
-export const RouteConvertPrometheusCortexGetRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexGetRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
     Group: S.String.pipe(T.Label()),
@@ -6274,24 +6212,24 @@ export const RouteConvertPrometheusCortexGetRuleGroupRequest = /*@__PURE__*/ S.s
 }) as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexGetRuleGroupResponse {}
-export const RouteConvertPrometheusCortexGetRuleGroupResponse =
+const RouteConvertPrometheusCortexGetRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexGetRulesRequest {}
-export const RouteConvertPrometheusCortexGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/convert/api/prom/rules", code: 200 })),
 ).annotate({
   identifier: "RouteConvertPrometheusCortexGetRulesRequest",
 }) as any as S.Schema<RouteConvertPrometheusCortexGetRulesRequest>;
 
 export interface RouteConvertPrometheusCortexGetRulesResponse {}
-export const RouteConvertPrometheusCortexGetRulesResponse =
+const RouteConvertPrometheusCortexGetRulesResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexGetRulesResponse>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusCortexPostRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexPostRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/convert/api/prom/rules/{NamespaceTitle}", code: 200 })),
@@ -6300,24 +6238,24 @@ export const RouteConvertPrometheusCortexPostRuleGroupRequest = /*@__PURE__*/ S.
 }) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupRequest>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupResponse {}
-export const RouteConvertPrometheusCortexPostRuleGroupResponse =
+const RouteConvertPrometheusCortexPostRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupResponse>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupsRequest {}
-export const RouteConvertPrometheusCortexPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusCortexPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "POST", uri: "/convert/api/prom/rules", code: 200 })),
 ).annotate({
   identifier: "RouteConvertPrometheusCortexPostRuleGroupsRequest",
 }) as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsRequest>;
 
 export interface RouteConvertPrometheusCortexPostRuleGroupsResponse {}
-export const RouteConvertPrometheusCortexPostRuleGroupsResponse =
+const RouteConvertPrometheusCortexPostRuleGroupsResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusCortexPostRuleGroupsResponse>;
 
 export interface RouteConvertPrometheusDeleteNamespaceRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusDeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusDeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(
@@ -6332,14 +6270,14 @@ export const RouteConvertPrometheusDeleteNamespaceRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RouteConvertPrometheusDeleteNamespaceRequest>;
 
 export interface RouteConvertPrometheusDeleteNamespaceResponse {}
-export const RouteConvertPrometheusDeleteNamespaceResponse =
+const RouteConvertPrometheusDeleteNamespaceResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusDeleteNamespaceResponse>;
 
 export interface RouteConvertPrometheusDeleteRuleGroupRequest {
   NamespaceTitle: string;
   Group: string;
 }
-export const RouteConvertPrometheusDeleteRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusDeleteRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
     Group: S.String.pipe(T.Label()),
@@ -6355,13 +6293,13 @@ export const RouteConvertPrometheusDeleteRuleGroupRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupRequest>;
 
 export interface RouteConvertPrometheusDeleteRuleGroupResponse {}
-export const RouteConvertPrometheusDeleteRuleGroupResponse =
+const RouteConvertPrometheusDeleteRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusDeleteRuleGroupResponse>;
 
 export interface RouteConvertPrometheusGetNamespaceRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusGetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusGetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(
@@ -6376,14 +6314,14 @@ export const RouteConvertPrometheusGetNamespaceRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RouteConvertPrometheusGetNamespaceRequest>;
 
 export interface RouteConvertPrometheusGetNamespaceResponse {}
-export const RouteConvertPrometheusGetNamespaceResponse =
+const RouteConvertPrometheusGetNamespaceResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetNamespaceResponse>;
 
 export interface RouteConvertPrometheusGetRuleGroupRequest {
   NamespaceTitle: string;
   Group: string;
 }
-export const RouteConvertPrometheusGetRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusGetRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
     Group: S.String.pipe(T.Label()),
@@ -6399,11 +6337,11 @@ export const RouteConvertPrometheusGetRuleGroupRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<RouteConvertPrometheusGetRuleGroupRequest>;
 
 export interface RouteConvertPrometheusGetRuleGroupResponse {}
-export const RouteConvertPrometheusGetRuleGroupResponse =
+const RouteConvertPrometheusGetRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetRuleGroupResponse>;
 
 export interface RouteConvertPrometheusGetRulesRequest {}
-export const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
   ),
@@ -6412,13 +6350,13 @@ export const RouteConvertPrometheusGetRulesRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<RouteConvertPrometheusGetRulesRequest>;
 
 export interface RouteConvertPrometheusGetRulesResponse {}
-export const RouteConvertPrometheusGetRulesResponse =
+const RouteConvertPrometheusGetRulesResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusGetRulesResponse>;
 
 export interface RouteConvertPrometheusPostRuleGroupRequest {
   NamespaceTitle: string;
 }
-export const RouteConvertPrometheusPostRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusPostRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NamespaceTitle: S.String.pipe(T.Label()),
   }).pipe(
@@ -6433,11 +6371,11 @@ export const RouteConvertPrometheusPostRuleGroupRequest = /*@__PURE__*/ S.suspen
 }) as any as S.Schema<RouteConvertPrometheusPostRuleGroupRequest>;
 
 export interface RouteConvertPrometheusPostRuleGroupResponse {}
-export const RouteConvertPrometheusPostRuleGroupResponse =
+const RouteConvertPrometheusPostRuleGroupResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusPostRuleGroupResponse>;
 
 export interface RouteConvertPrometheusPostRuleGroupsRequest {}
-export const RouteConvertPrometheusPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteConvertPrometheusPostRuleGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/convert/prometheus/config/v1/rules", code: 200 }),
   ),
@@ -6446,11 +6384,11 @@ export const RouteConvertPrometheusPostRuleGroupsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<RouteConvertPrometheusPostRuleGroupsRequest>;
 
 export interface RouteConvertPrometheusPostRuleGroupsResponse {}
-export const RouteConvertPrometheusPostRuleGroupsResponse =
+const RouteConvertPrometheusPostRuleGroupsResponse =
   AdminProvisioningReloadAccessControlResponse as any as S.Schema<RouteConvertPrometheusPostRuleGroupsResponse>;
 
 export type RouteExportMuteTimingRequestFormat = "yaml" | "json" | "hcl";
-export const RouteExportMuteTimingRequestFormat = S.String;
+const RouteExportMuteTimingRequestFormat = S.String;
 
 export interface RouteExportMuteTimingRequest {
   /** Mute timing name */
@@ -6460,7 +6398,7 @@ export interface RouteExportMuteTimingRequest {
   /** Format of the downloaded file. Supported yaml, json or hcl. Accept header can also be used, but the query parameter will take precedence. */
   format?: RouteExportMuteTimingRequestFormat | (string & {});
 }
-export const RouteExportMuteTimingRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteExportMuteTimingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     download: S.optional(S.Boolean.pipe(T.Query())),
@@ -6476,7 +6414,7 @@ export interface ReceiverExport {
   type?: string;
   uid?: string;
 }
-export const ReceiverExport = /*@__PURE__*/ S.suspend(() =>
+const ReceiverExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     disableResolveMessage: S.optional(S.Boolean),
     settings: S.optional(S.Unknown),
@@ -6486,7 +6424,7 @@ export const ReceiverExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ReceiverExport" }) as any as S.Schema<ReceiverExport>;
 
 export type ContactPointExportReceiversList = Array<ReceiverExport>;
-export const ContactPointExportReceiversList = /*@__PURE__*/ S.Array(
+const ContactPointExportReceiversList = /*@__PURE__*/ S.Array(
   ReceiverExport,
 ) as any as S.Schema<ContactPointExportReceiversList>;
 
@@ -6495,7 +6433,7 @@ export interface ContactPointExport {
   orgId?: number;
   receivers?: ContactPointExportReceiversList;
 }
-export const ContactPointExport = /*@__PURE__*/ S.suspend(() =>
+const ContactPointExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     orgId: S.optional(S.Number),
@@ -6504,23 +6442,23 @@ export const ContactPointExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContactPointExport" }) as any as S.Schema<ContactPointExport>;
 
 export type AlertingFileExportContactPointsList = Array<ContactPointExport>;
-export const AlertingFileExportContactPointsList = /*@__PURE__*/ S.Array(
+const AlertingFileExportContactPointsList = /*@__PURE__*/ S.Array(
   ContactPointExport,
 ) as any as S.Schema<AlertingFileExportContactPointsList>;
 
 export type AlertRuleExportAnnotationsMap = { [key: string]: string | undefined };
-export const AlertRuleExportAnnotationsMap =
+const AlertRuleExportAnnotationsMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<AlertRuleExportAnnotationsMap>;
 
 export type AlertQueryExportModelMap = { [key: string]: unknown | undefined };
-export const AlertQueryExportModelMap =
+const AlertQueryExportModelMap =
   CorrelationConfigTargetMap as any as S.Schema<AlertQueryExportModelMap>;
 
 export interface RelativeTimeRangeExport {
   from?: number;
   to?: number;
 }
-export const RelativeTimeRangeExport = /*@__PURE__*/ S.suspend(() =>
+const RelativeTimeRangeExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.Number),
     to: S.optional(S.Number),
@@ -6534,7 +6472,7 @@ export interface AlertQueryExport {
   refId?: string;
   relativeTimeRange?: RelativeTimeRangeExport;
 }
-export const AlertQueryExport = /*@__PURE__*/ S.suspend(() =>
+const AlertQueryExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceUid: S.optional(S.String),
     model: S.optional(AlertQueryExportModelMap),
@@ -6545,30 +6483,30 @@ export const AlertQueryExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertQueryExport" }) as any as S.Schema<AlertQueryExport>;
 
 export type AlertRuleExportDataList = Array<AlertQueryExport>;
-export const AlertRuleExportDataList = /*@__PURE__*/ S.Array(
+const AlertRuleExportDataList = /*@__PURE__*/ S.Array(
   AlertQueryExport,
 ) as any as S.Schema<AlertRuleExportDataList>;
 
 export type AlertRuleExportExecErrState = "OK" | "Alerting" | "Error";
-export const AlertRuleExportExecErrState = S.String;
+const AlertRuleExportExecErrState = S.String;
 
 export type AlertRuleExportLabelsMap = { [key: string]: string | undefined };
-export const AlertRuleExportLabelsMap =
+const AlertRuleExportLabelsMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<AlertRuleExportLabelsMap>;
 
 export type AlertRuleExportNoDataState = "Alerting" | "NoData" | "OK";
-export const AlertRuleExportNoDataState = S.String;
+const AlertRuleExportNoDataState = S.String;
 
 export type AlertRuleNotificationSettingsExportActiveTimeIntervalsList = Array<string>;
-export const AlertRuleNotificationSettingsExportActiveTimeIntervalsList =
+const AlertRuleNotificationSettingsExportActiveTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportActiveTimeIntervalsList>;
 
 export type AlertRuleNotificationSettingsExportGroupByList = Array<string>;
-export const AlertRuleNotificationSettingsExportGroupByList =
+const AlertRuleNotificationSettingsExportGroupByList =
   CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportGroupByList>;
 
 export type AlertRuleNotificationSettingsExportMuteTimeIntervalsList = Array<string>;
-export const AlertRuleNotificationSettingsExportMuteTimeIntervalsList =
+const AlertRuleNotificationSettingsExportMuteTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<AlertRuleNotificationSettingsExportMuteTimeIntervalsList>;
 
 export interface AlertRuleNotificationSettingsExport {
@@ -6580,7 +6518,7 @@ export interface AlertRuleNotificationSettingsExport {
   receiver?: string;
   repeat_interval?: string;
 }
-export const AlertRuleNotificationSettingsExport = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleNotificationSettingsExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_time_intervals: S.optional(AlertRuleNotificationSettingsExportActiveTimeIntervalsList),
     group_by: S.optional(AlertRuleNotificationSettingsExportGroupByList),
@@ -6599,7 +6537,7 @@ export interface AlertRuleRecordExport {
   metric?: string;
   targetDatasourceUid?: string;
 }
-export const AlertRuleRecordExport = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleRecordExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     from: S.optional(S.String),
     metric: S.optional(S.String),
@@ -6625,7 +6563,7 @@ export interface AlertRuleExport {
   title?: string;
   uid?: string;
 }
-export const AlertRuleExport = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotations: S.optional(AlertRuleExportAnnotationsMap),
     condition: S.optional(S.String),
@@ -6647,7 +6585,7 @@ export const AlertRuleExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRuleExport" }) as any as S.Schema<AlertRuleExport>;
 
 export type AlertRuleGroupExportRulesList = Array<AlertRuleExport>;
-export const AlertRuleGroupExportRulesList = /*@__PURE__*/ S.Array(
+const AlertRuleGroupExportRulesList = /*@__PURE__*/ S.Array(
   AlertRuleExport,
 ) as any as S.Schema<AlertRuleGroupExportRulesList>;
 
@@ -6658,7 +6596,7 @@ export interface AlertRuleGroupExport {
   orgId?: number;
   rules?: AlertRuleGroupExportRulesList;
 }
-export const AlertRuleGroupExport = /*@__PURE__*/ S.suspend(() =>
+const AlertRuleGroupExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder: S.optional(S.String),
     interval: S.optional(S.Number),
@@ -6669,12 +6607,12 @@ export const AlertRuleGroupExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertRuleGroupExport" }) as any as S.Schema<AlertRuleGroupExport>;
 
 export type AlertingFileExportGroupsList = Array<AlertRuleGroupExport>;
-export const AlertingFileExportGroupsList = /*@__PURE__*/ S.Array(
+const AlertingFileExportGroupsList = /*@__PURE__*/ S.Array(
   AlertRuleGroupExport,
 ) as any as S.Schema<AlertingFileExportGroupsList>;
 
 export type TimeIntervalTimeIntervalsList = Array<TimeInterval>;
-export const TimeIntervalTimeIntervalsList = /*@__PURE__*/ S.Array(
+const TimeIntervalTimeIntervalsList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => TimeInterval),
 ) as any as S.Schema<TimeIntervalTimeIntervalsList>;
 
@@ -6682,7 +6620,7 @@ export interface TimeInterval {
   name?: string;
   time_intervals?: TimeIntervalTimeIntervalsList;
 }
-export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
+const TimeInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     time_intervals: S.optional(TimeIntervalTimeIntervalsList),
@@ -6690,7 +6628,7 @@ export const TimeInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeInterval" }) as any as S.Schema<TimeInterval>;
 
 export type MuteTimeIntervalExportTimeIntervalsList = Array<TimeInterval>;
-export const MuteTimeIntervalExportTimeIntervalsList = /*@__PURE__*/ S.Array(
+const MuteTimeIntervalExportTimeIntervalsList = /*@__PURE__*/ S.Array(
   TimeInterval,
 ) as any as S.Schema<MuteTimeIntervalExportTimeIntervalsList>;
 
@@ -6699,7 +6637,7 @@ export interface MuteTimeIntervalExport {
   orgId?: number;
   time_intervals?: MuteTimeIntervalExportTimeIntervalsList;
 }
-export const MuteTimeIntervalExport = /*@__PURE__*/ S.suspend(() =>
+const MuteTimeIntervalExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     orgId: S.optional(S.Number),
@@ -6708,32 +6646,32 @@ export const MuteTimeIntervalExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MuteTimeIntervalExport" }) as any as S.Schema<MuteTimeIntervalExport>;
 
 export type AlertingFileExportMuteTimesList = Array<MuteTimeIntervalExport>;
-export const AlertingFileExportMuteTimesList = /*@__PURE__*/ S.Array(
+const AlertingFileExportMuteTimesList = /*@__PURE__*/ S.Array(
   MuteTimeIntervalExport,
 ) as any as S.Schema<AlertingFileExportMuteTimesList>;
 
 export type NotificationPolicyExportActiveTimeIntervalsList = Array<string>;
-export const NotificationPolicyExportActiveTimeIntervalsList =
+const NotificationPolicyExportActiveTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportActiveTimeIntervalsList>;
 
 export type NotificationPolicyExportGroupByList = Array<string>;
-export const NotificationPolicyExportGroupByList =
+const NotificationPolicyExportGroupByList =
   CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportGroupByList>;
 
 /** Deprecated. Remove before v1.0 release. */
 export type NotificationPolicyExportMatchMap = { [key: string]: string | undefined };
-export const NotificationPolicyExportMatchMap =
+const NotificationPolicyExportMatchMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<NotificationPolicyExportMatchMap>;
 
 export type MatchRegexps = { [key: string]: string | undefined };
-export const MatchRegexps = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<MatchRegexps>;
+const MatchRegexps = AddDataSourceRequestSecureJsonDataMap as any as S.Schema<MatchRegexps>;
 
 export interface Matcher {
   Name?: string;
   Type?: number;
   Value?: string;
 }
-export const Matcher = /*@__PURE__*/ S.suspend(() =>
+const Matcher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     Type: S.optional(S.Number),
@@ -6743,39 +6681,37 @@ export const Matcher = /*@__PURE__*/ S.suspend(() =>
 
 /** Matchers is a slice of Matchers that is sortable, implements Stringer, and provides a Matches method to match a LabelSet against all Matchers in the slice. Note that some users of Matchers might require it to be sorted. */
 export type Matchers = Array<Matcher>;
-export const Matchers = /*@__PURE__*/ S.Array(Matcher) as any as S.Schema<Matchers>;
+const Matchers = /*@__PURE__*/ S.Array(Matcher) as any as S.Schema<Matchers>;
 
 export type NotificationPolicyExportMuteTimeIntervalsList = Array<string>;
-export const NotificationPolicyExportMuteTimeIntervalsList =
+const NotificationPolicyExportMuteTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<NotificationPolicyExportMuteTimeIntervalsList>;
 
 export type ObjectMatcher = Array<string>;
-export const ObjectMatcher = NameCountryList as any as S.Schema<ObjectMatcher>;
+const ObjectMatcher = NameCountryList as any as S.Schema<ObjectMatcher>;
 
 export type ObjectMatchers = Array<ObjectMatcher>;
-export const ObjectMatchers = /*@__PURE__*/ S.Array(
-  ObjectMatcher,
-) as any as S.Schema<ObjectMatchers>;
+const ObjectMatchers = /*@__PURE__*/ S.Array(ObjectMatcher) as any as S.Schema<ObjectMatchers>;
 
 export type RouteExportActiveTimeIntervalsList = Array<string>;
-export const RouteExportActiveTimeIntervalsList =
+const RouteExportActiveTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<RouteExportActiveTimeIntervalsList>;
 
 export type RouteExportGroupByList = Array<string>;
-export const RouteExportGroupByList =
+const RouteExportGroupByList =
   CreateAnnotationRequestTagsList as any as S.Schema<RouteExportGroupByList>;
 
 /** Deprecated. Remove before v1.0 release. */
 export type RouteExportMatchMap = { [key: string]: string | undefined };
-export const RouteExportMatchMap =
+const RouteExportMatchMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<RouteExportMatchMap>;
 
 export type RouteExportMuteTimeIntervalsList = Array<string>;
-export const RouteExportMuteTimeIntervalsList =
+const RouteExportMuteTimeIntervalsList =
   CreateAnnotationRequestTagsList as any as S.Schema<RouteExportMuteTimeIntervalsList>;
 
 export type RouteExportRoutesList = Array<RouteExport>;
-export const RouteExportRoutesList = /*@__PURE__*/ S.Array(
+const RouteExportRoutesList = /*@__PURE__*/ S.Array(
   /*@__PURE__*/ S.suspend(() => RouteExport),
 ) as any as S.Schema<RouteExportRoutesList>;
 
@@ -6796,7 +6732,7 @@ export interface RouteExport {
   repeat_interval?: string;
   routes?: RouteExportRoutesList;
 }
-export const RouteExport = /*@__PURE__*/ S.suspend(() =>
+const RouteExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_time_intervals: S.optional(RouteExportActiveTimeIntervalsList),
     continue: S.optional(S.Boolean),
@@ -6815,7 +6751,7 @@ export const RouteExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RouteExport" }) as any as S.Schema<RouteExport>;
 
 export type NotificationPolicyExportRoutesList = Array<RouteExport>;
-export const NotificationPolicyExportRoutesList = /*@__PURE__*/ S.Array(
+const NotificationPolicyExportRoutesList = /*@__PURE__*/ S.Array(
   RouteExport,
 ) as any as S.Schema<NotificationPolicyExportRoutesList>;
 
@@ -6836,7 +6772,7 @@ export interface NotificationPolicyExport {
   repeat_interval?: string;
   routes?: NotificationPolicyExportRoutesList;
 }
-export const NotificationPolicyExport = /*@__PURE__*/ S.suspend(() =>
+const NotificationPolicyExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active_time_intervals: S.optional(NotificationPolicyExportActiveTimeIntervalsList),
     continue: S.optional(S.Boolean),
@@ -6856,7 +6792,7 @@ export const NotificationPolicyExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NotificationPolicyExport" }) as any as S.Schema<NotificationPolicyExport>;
 
 export type AlertingFileExportPoliciesList = Array<NotificationPolicyExport>;
-export const AlertingFileExportPoliciesList = /*@__PURE__*/ S.Array(
+const AlertingFileExportPoliciesList = /*@__PURE__*/ S.Array(
   NotificationPolicyExport,
 ) as any as S.Schema<AlertingFileExportPoliciesList>;
 
@@ -6867,7 +6803,7 @@ export interface AlertingFileExport {
   muteTimes?: AlertingFileExportMuteTimesList;
   policies?: AlertingFileExportPoliciesList;
 }
-export const AlertingFileExport = /*@__PURE__*/ S.suspend(() =>
+const AlertingFileExport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiVersion: S.optional(S.Number),
     contactPoints: S.optional(AlertingFileExportContactPointsList),
@@ -6878,7 +6814,7 @@ export const AlertingFileExport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AlertingFileExport" }) as any as S.Schema<AlertingFileExport>;
 
 export type RouteExportMuteTimingsRequestFormat = "yaml" | "json" | "hcl";
-export const RouteExportMuteTimingsRequestFormat = S.String;
+const RouteExportMuteTimingsRequestFormat = S.String;
 
 export interface RouteExportMuteTimingsRequest {
   /** Whether to initiate a download of the file or not. */
@@ -6886,7 +6822,7 @@ export interface RouteExportMuteTimingsRequest {
   /** Format of the downloaded file. Supported yaml, json or hcl. Accept header can also be used, but the query parameter will take precedence. */
   format?: RouteExportMuteTimingsRequestFormat | (string & {});
 }
-export const RouteExportMuteTimingsRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteExportMuteTimingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     download: S.optional(S.Boolean.pipe(T.Query())),
     format: S.optional(RouteExportMuteTimingsRequestFormat.pipe(T.Query())),
@@ -6896,7 +6832,7 @@ export const RouteExportMuteTimingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteExportMuteTimingsRequest>;
 
 export type RouteGetAlertRuleExportRequestFormat = "yaml" | "json" | "hcl";
-export const RouteGetAlertRuleExportRequestFormat = S.String;
+const RouteGetAlertRuleExportRequestFormat = S.String;
 
 export interface RouteGetAlertRuleExportRequest {
   /** Alert rule UID */
@@ -6906,7 +6842,7 @@ export interface RouteGetAlertRuleExportRequest {
   /** Format of the downloaded file. Supported yaml, json or hcl. Accept header can also be used, but the query parameter will take precedence. */
   format?: RouteGetAlertRuleExportRequestFormat | (string & {});
 }
-export const RouteGetAlertRuleExportRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteGetAlertRuleExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UID: S.String.pipe(T.Label()),
     download: S.optional(S.Boolean.pipe(T.Query())),
@@ -6917,7 +6853,7 @@ export const RouteGetAlertRuleExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteGetAlertRuleExportRequest>;
 
 export type RouteGetAlertRuleGroupExportRequestFormat = "yaml" | "json" | "hcl";
-export const RouteGetAlertRuleGroupExportRequestFormat = S.String;
+const RouteGetAlertRuleGroupExportRequestFormat = S.String;
 
 export interface RouteGetAlertRuleGroupExportRequest {
   FolderUID: string;
@@ -6927,7 +6863,7 @@ export interface RouteGetAlertRuleGroupExportRequest {
   /** Format of the downloaded file. Supported yaml, json or hcl. Accept header can also be used, but the query parameter will take precedence. */
   format?: RouteGetAlertRuleGroupExportRequestFormat | (string & {});
 }
-export const RouteGetAlertRuleGroupExportRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteGetAlertRuleGroupExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FolderUID: S.String.pipe(T.Label()),
     Group: S.String.pipe(T.Label()),
@@ -6945,10 +6881,10 @@ export const RouteGetAlertRuleGroupExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteGetAlertRuleGroupExportRequest>;
 
 export type RouteGetAlertRulesExportRequestFormat = "yaml" | "json" | "hcl";
-export const RouteGetAlertRulesExportRequestFormat = S.String;
+const RouteGetAlertRulesExportRequestFormat = S.String;
 
 export type RouteGetAlertRulesExportRequestFolderUidList = Array<string>;
-export const RouteGetAlertRulesExportRequestFolderUidList =
+const RouteGetAlertRulesExportRequestFolderUidList =
   CreateAnnotationRequestTagsList as any as S.Schema<RouteGetAlertRulesExportRequestFolderUidList>;
 
 export interface RouteGetAlertRulesExportRequest {
@@ -6963,7 +6899,7 @@ export interface RouteGetAlertRulesExportRequest {
   /** UID of alert rule to export. If specified, parameters folderUid and group must be empty. */
   ruleUid?: string;
 }
-export const RouteGetAlertRulesExportRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteGetAlertRulesExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     download: S.optional(S.Boolean.pipe(T.Query())),
     format: S.optional(RouteGetAlertRulesExportRequestFormat.pipe(T.Query())),
@@ -6976,7 +6912,7 @@ export const RouteGetAlertRulesExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteGetAlertRulesExportRequest>;
 
 export type RouteGetContactpointsExportRequestFormat = "yaml" | "json" | "hcl";
-export const RouteGetContactpointsExportRequestFormat = S.String;
+const RouteGetContactpointsExportRequestFormat = S.String;
 
 export interface RouteGetContactpointsExportRequest {
   /** Whether to initiate a download of the file or not. */
@@ -6988,7 +6924,7 @@ export interface RouteGetContactpointsExportRequest {
   /** Filter by name */
   name?: string;
 }
-export const RouteGetContactpointsExportRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteGetContactpointsExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     download: S.optional(S.Boolean.pipe(T.Query())),
     format: S.optional(RouteGetContactpointsExportRequestFormat.pipe(T.Query())),
@@ -7000,14 +6936,14 @@ export const RouteGetContactpointsExportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteGetContactpointsExportRequest>;
 
 export interface RouteGetPolicyTreeExportRequest {}
-export const RouteGetPolicyTreeExportRequest = /*@__PURE__*/ S.suspend(() =>
+const RouteGetPolicyTreeExportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/provisioning/policies/export", code: 200 })),
 ).annotate({
   identifier: "RouteGetPolicyTreeExportRequest",
 }) as any as S.Schema<RouteGetPolicyTreeExportRequest>;
 
 export type SaveReportSettingsRequestFooterItemsList = Array<FooterItem>;
-export const SaveReportSettingsRequestFooterItemsList =
+const SaveReportSettingsRequestFooterItemsList =
   ReportSettingsFooterItemsList as any as S.Schema<SaveReportSettingsRequestFooterItemsList>;
 
 export interface SaveReportSettingsRequest {
@@ -7023,7 +6959,7 @@ export interface SaveReportSettingsRequest {
   pdfTimeRangeEnabled?: boolean;
   userId?: number;
 }
-export const SaveReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const SaveReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branding: S.optional(ReportBrandingOptions),
     embeddedImageTheme: S.optional(S.String),
@@ -7042,33 +6978,33 @@ export const SaveReportSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SaveReportSettingsRequest>;
 
 export type SearchRequestTagList = Array<string>;
-export const SearchRequestTagList =
+const SearchRequestTagList =
   CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestTagList>;
 
 export type SearchRequestType = "dash-folder" | "dash-db";
-export const SearchRequestType = S.String;
+const SearchRequestType = S.String;
 
 export type SearchRequestDashboardIdsList = Array<number>;
-export const SearchRequestDashboardIdsList =
+const SearchRequestDashboardIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SearchRequestDashboardIdsList>;
 
 export type SearchRequestDashboardUIDsList = Array<string>;
-export const SearchRequestDashboardUIDsList =
+const SearchRequestDashboardUIDsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestDashboardUIDsList>;
 
 export type SearchRequestFolderIdsList = Array<number>;
-export const SearchRequestFolderIdsList =
+const SearchRequestFolderIdsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SearchRequestFolderIdsList>;
 
 export type SearchRequestFolderUIDsList = Array<string>;
-export const SearchRequestFolderUIDsList =
+const SearchRequestFolderUIDsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SearchRequestFolderUIDsList>;
 
 export type SearchRequestPermission = "Edit" | "View";
-export const SearchRequestPermission = S.String;
+const SearchRequestPermission = S.String;
 
 export type SearchRequestSort = "alpha-asc" | "alpha-desc";
-export const SearchRequestSort = S.String;
+const SearchRequestSort = S.String;
 
 export interface SearchRequest {
   /** Search Query */
@@ -7098,7 +7034,7 @@ export interface SearchRequest {
   /** Flag indicating if only soft deleted Dashboards should be returned */
   deleted?: boolean;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     tag: S.optional(SearchRequestTagList.pipe(T.Query())),
@@ -7117,7 +7053,7 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
 
 export type HitTagsList = Array<string>;
-export const HitTagsList = NameCountryList as any as S.Schema<HitTagsList>;
+const HitTagsList = NameCountryList as any as S.Schema<HitTagsList>;
 
 export interface Hit {
   description?: string;
@@ -7140,7 +7076,7 @@ export interface Hit {
   uri?: string;
   url?: string;
 }
-export const Hit = /*@__PURE__*/ S.suspend(() =>
+const Hit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     folderId: S.optional(S.Number),
@@ -7165,12 +7101,12 @@ export const Hit = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hit" }) as any as S.Schema<Hit>;
 
 export type HitList = Array<Hit>;
-export const HitList = /*@__PURE__*/ S.Array(Hit) as any as S.Schema<HitList>;
+const HitList = /*@__PURE__*/ S.Array(Hit) as any as S.Schema<HitList>;
 
 export type SearchResponse = HitList;
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
-  HitList.pipe(T.RawResponseRoot()),
-).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
+const SearchResponse = /*@__PURE__*/ S.suspend(() => HitList.pipe(T.RawResponseRoot())).annotate({
+  identifier: "SearchResponse",
+}) as any as S.Schema<SearchResponse>;
 
 export interface SearchDashboardSnapshotsRequest {
   /** Search Query */
@@ -7178,7 +7114,7 @@ export interface SearchDashboardSnapshotsRequest {
   /** Limit the number of returned results */
   limit?: number;
 }
-export const SearchDashboardSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDashboardSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -7197,7 +7133,7 @@ export interface DashboardSnapshotDTO {
   name?: string;
   updated?: string;
 }
-export const DashboardSnapshotDTO = /*@__PURE__*/ S.suspend(() =>
+const DashboardSnapshotDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     expires: S.optional(S.String),
@@ -7210,19 +7146,19 @@ export const DashboardSnapshotDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardSnapshotDTO" }) as any as S.Schema<DashboardSnapshotDTO>;
 
 export type SearchDashboardSnapshotsResponseBodyList = Array<DashboardSnapshotDTO>;
-export const SearchDashboardSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchDashboardSnapshotsResponseBodyList = /*@__PURE__*/ S.Array(
   DashboardSnapshotDTO,
 ) as any as S.Schema<SearchDashboardSnapshotsResponseBodyList>;
 
 export type SearchDashboardSnapshotsResponse = SearchDashboardSnapshotsResponseBodyList;
-export const SearchDashboardSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchDashboardSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   SearchDashboardSnapshotsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "SearchDashboardSnapshotsResponse",
 }) as any as S.Schema<SearchDashboardSnapshotsResponse>;
 
 export interface SearchDevicesRequest {}
-export const SearchDevicesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDevicesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/anonymous/search", code: 200 })),
 ).annotate({ identifier: "SearchDevicesRequest" }) as any as S.Schema<SearchDevicesRequest>;
 
@@ -7234,7 +7170,7 @@ export interface DeviceSearchHitDTO {
   updatedAt?: string;
   userAgent?: string;
 }
-export const DeviceSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
+const DeviceSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientIp: S.optional(S.String),
     createdAt: S.optional(S.String),
@@ -7246,7 +7182,7 @@ export const DeviceSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeviceSearchHitDTO" }) as any as S.Schema<DeviceSearchHitDTO>;
 
 export type SearchDeviceQueryResultDevicesList = Array<DeviceSearchHitDTO>;
-export const SearchDeviceQueryResultDevicesList = /*@__PURE__*/ S.Array(
+const SearchDeviceQueryResultDevicesList = /*@__PURE__*/ S.Array(
   DeviceSearchHitDTO,
 ) as any as S.Schema<SearchDeviceQueryResultDevicesList>;
 
@@ -7256,7 +7192,7 @@ export interface SearchDeviceQueryResult {
   perPage?: number;
   totalCount?: number;
 }
-export const SearchDeviceQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SearchDeviceQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     devices: S.optional(SearchDeviceQueryResultDevicesList),
     page: S.optional(S.Number),
@@ -7273,7 +7209,7 @@ export interface SearchOrgsRequest {
   /** If set it will return results where the query value is contained in the name field. Query values with spaces need to be URL encoded. */
   query?: string;
 }
-export const SearchOrgsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     perpage: S.optional(S.Number.pipe(T.Query())),
@@ -7286,7 +7222,7 @@ export interface OrgDTO {
   id?: number;
   name?: string;
 }
-export const OrgDTO = /*@__PURE__*/ S.suspend(() =>
+const OrgDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.optional(S.String),
@@ -7294,12 +7230,12 @@ export const OrgDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OrgDTO" }) as any as S.Schema<OrgDTO>;
 
 export type SearchOrgsResponseBodyList = Array<OrgDTO>;
-export const SearchOrgsResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchOrgsResponseBodyList = /*@__PURE__*/ S.Array(
   OrgDTO,
 ) as any as S.Schema<SearchOrgsResponseBodyList>;
 
 export type SearchOrgsResponse = SearchOrgsResponseBodyList;
-export const SearchOrgsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgsResponse = /*@__PURE__*/ S.suspend(() =>
   SearchOrgsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchOrgsResponse" }) as any as S.Schema<SearchOrgsResponse>;
 
@@ -7313,7 +7249,7 @@ export interface SearchOrgServiceAccountsWithPagingRequest {
   /** The default value is 1. */
   page?: number;
 }
-export const SearchOrgServiceAccountsWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgServiceAccountsWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Disabled: S.optional(S.Boolean.pipe(T.Query())),
     expiredTokens: S.optional(S.Boolean.pipe(T.Query())),
@@ -7326,7 +7262,7 @@ export const SearchOrgServiceAccountsWithPagingRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<SearchOrgServiceAccountsWithPagingRequest>;
 
 export type SearchOrgServiceAccountsResultServiceAccountsList = Array<ServiceAccountDTO>;
-export const SearchOrgServiceAccountsResultServiceAccountsList = /*@__PURE__*/ S.Array(
+const SearchOrgServiceAccountsResultServiceAccountsList = /*@__PURE__*/ S.Array(
   ServiceAccountDTO,
 ) as any as S.Schema<SearchOrgServiceAccountsResultServiceAccountsList>;
 
@@ -7337,7 +7273,7 @@ export interface SearchOrgServiceAccountsResult {
   /** It can be used for pagination of the user list E.g. if totalCount is equal to 100 users and the perpage parameter is set to 10 then there are 10 pages of users. */
   totalCount?: number;
 }
-export const SearchOrgServiceAccountsResult = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgServiceAccountsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -7351,14 +7287,14 @@ export const SearchOrgServiceAccountsResult = /*@__PURE__*/ S.suspend(() =>
 export interface SearchOrgUsersRequest {
   org_id: number;
 }
-export const SearchOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/orgs/{org_id}/users/search", code: 200 })),
 ).annotate({ identifier: "SearchOrgUsersRequest" }) as any as S.Schema<SearchOrgUsersRequest>;
 
 export type SearchOrgUsersQueryResultOrgUsersList = Array<OrgUserDTO>;
-export const SearchOrgUsersQueryResultOrgUsersList =
+const SearchOrgUsersQueryResultOrgUsersList =
   GetOrgUsersResponseBodyList as any as S.Schema<SearchOrgUsersQueryResultOrgUsersList>;
 
 export interface SearchOrgUsersQueryResult {
@@ -7367,7 +7303,7 @@ export interface SearchOrgUsersQueryResult {
   perPage?: number;
   totalCount?: number;
 }
-export const SearchOrgUsersQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SearchOrgUsersQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     orgUsers: S.optional(SearchOrgUsersQueryResultOrgUsersList),
     page: S.optional(S.Number),
@@ -7379,11 +7315,11 @@ export const SearchOrgUsersQueryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchOrgUsersQueryResult>;
 
 export type SearchQueriesRequestDatasourceUidList = Array<string>;
-export const SearchQueriesRequestDatasourceUidList =
+const SearchQueriesRequestDatasourceUidList =
   CreateAnnotationRequestTagsList as any as S.Schema<SearchQueriesRequestDatasourceUidList>;
 
 export type SearchQueriesRequestSort = "time-desc" | "time-asc";
-export const SearchQueriesRequestSort = S.String;
+const SearchQueriesRequestSort = S.String;
 
 export interface SearchQueriesRequest {
   /** List of data source UIDs to search for */
@@ -7403,7 +7339,7 @@ export interface SearchQueriesRequest {
   /** To range for the query history search */
   to?: number;
 }
-export const SearchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasourceUid: S.optional(SearchQueriesRequestDatasourceUidList.pipe(T.Query())),
     searchString: S.optional(S.String.pipe(T.Query())),
@@ -7417,7 +7353,7 @@ export const SearchQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchQueriesRequest" }) as any as S.Schema<SearchQueriesRequest>;
 
 export type QueryHistorySearchResultQueryHistoryList = Array<QueryHistoryDTO>;
-export const QueryHistorySearchResultQueryHistoryList = /*@__PURE__*/ S.Array(
+const QueryHistorySearchResultQueryHistoryList = /*@__PURE__*/ S.Array(
   QueryHistoryDTO,
 ) as any as S.Schema<QueryHistorySearchResultQueryHistoryList>;
 
@@ -7427,7 +7363,7 @@ export interface QueryHistorySearchResult {
   queryHistory?: QueryHistorySearchResultQueryHistoryList;
   totalCount?: number;
 }
-export const QueryHistorySearchResult = /*@__PURE__*/ S.suspend(() =>
+const QueryHistorySearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -7439,7 +7375,7 @@ export const QueryHistorySearchResult = /*@__PURE__*/ S.suspend(() =>
 export interface QueryHistorySearchResponse {
   result?: QueryHistorySearchResult;
 }
-export const QueryHistorySearchResponse = /*@__PURE__*/ S.suspend(() =>
+const QueryHistorySearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(QueryHistorySearchResult),
   }),
@@ -7457,7 +7393,7 @@ export interface SearchTeamGroupsRequest {
   /** Filter by exact name match */
   name?: string;
 }
-export const SearchTeamGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.Number.pipe(T.Label()),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -7468,7 +7404,7 @@ export const SearchTeamGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchTeamGroupsRequest" }) as any as S.Schema<SearchTeamGroupsRequest>;
 
 export type SearchTeamGroupsQueryResultTeamGroupsList = Array<TeamGroupDTO>;
-export const SearchTeamGroupsQueryResultTeamGroupsList =
+const SearchTeamGroupsQueryResultTeamGroupsList =
   GetTeamGroupsApiResponseBodyList as any as S.Schema<SearchTeamGroupsQueryResultTeamGroupsList>;
 
 export interface SearchTeamGroupsQueryResult {
@@ -7477,7 +7413,7 @@ export interface SearchTeamGroupsQueryResult {
   teamGroups?: SearchTeamGroupsQueryResultTeamGroupsList;
   totalCount?: number;
 }
-export const SearchTeamGroupsQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamGroupsQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -7489,12 +7425,12 @@ export const SearchTeamGroupsQueryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchTeamGroupsQueryResult>;
 
 export type SearchTeamGroupsResponseBodyList = Array<SearchTeamGroupsQueryResult>;
-export const SearchTeamGroupsResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchTeamGroupsResponseBodyList = /*@__PURE__*/ S.Array(
   SearchTeamGroupsQueryResult,
 ) as any as S.Schema<SearchTeamGroupsResponseBodyList>;
 
 export type SearchTeamGroupsResponse = SearchTeamGroupsResponseBodyList;
-export const SearchTeamGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   SearchTeamGroupsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchTeamGroupsResponse" }) as any as S.Schema<SearchTeamGroupsResponse>;
 
@@ -7508,7 +7444,7 @@ export interface SearchTeamsRequest {
   accesscontrol?: boolean;
   sort?: string;
 }
-export const SearchTeamsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number.pipe(T.Query())),
     perpage: S.optional(S.Number.pipe(T.Query())),
@@ -7520,7 +7456,7 @@ export const SearchTeamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchTeamsRequest" }) as any as S.Schema<SearchTeamsRequest>;
 
 export type SearchTeamQueryResultTeamsList = Array<TeamDTO>;
-export const SearchTeamQueryResultTeamsList =
+const SearchTeamQueryResultTeamsList =
   GetSignedInUserTeamListResponseBodyList as any as S.Schema<SearchTeamQueryResultTeamsList>;
 
 export interface SearchTeamQueryResult {
@@ -7529,7 +7465,7 @@ export interface SearchTeamQueryResult {
   teams?: SearchTeamQueryResultTeamsList;
   totalCount?: number;
 }
-export const SearchTeamQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SearchTeamQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -7544,7 +7480,7 @@ export interface SearchUsersRequest {
   /** Page index for starting fetching users */
   page?: number;
 }
-export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     perpage: S.optional(S.Number.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -7552,11 +7488,11 @@ export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchUsersRequest" }) as any as S.Schema<SearchUsersRequest>;
 
 export type UserSearchHitDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const UserSearchHitDTOAccessControlMap =
+const UserSearchHitDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<UserSearchHitDTOAccessControlMap>;
 
 export type UserSearchHitDTOAuthLabelsList = Array<string>;
-export const UserSearchHitDTOAuthLabelsList =
+const UserSearchHitDTOAuthLabelsList =
   CreateAnnotationRequestTagsList as any as S.Schema<UserSearchHitDTOAuthLabelsList>;
 
 export interface UserSearchHitDTO {
@@ -7576,7 +7512,7 @@ export interface UserSearchHitDTO {
   role?: string;
   uid?: string;
 }
-export const UserSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
+const UserSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(UserSearchHitDTOAccessControlMap),
     authLabels: S.optional(UserSearchHitDTOAuthLabelsList),
@@ -7597,24 +7533,24 @@ export const UserSearchHitDTO = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSearchHitDTO" }) as any as S.Schema<UserSearchHitDTO>;
 
 export type SearchUsersResponseBodyList = Array<UserSearchHitDTO>;
-export const SearchUsersResponseBodyList = /*@__PURE__*/ S.Array(
+const SearchUsersResponseBodyList = /*@__PURE__*/ S.Array(
   UserSearchHitDTO,
 ) as any as S.Schema<SearchUsersResponseBodyList>;
 
 export type SearchUsersResponse = SearchUsersResponseBodyList;
-export const SearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchUsersResponse = /*@__PURE__*/ S.suspend(() =>
   SearchUsersResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "SearchUsersResponse" }) as any as S.Schema<SearchUsersResponse>;
 
 export interface SearchUsersWithPagingRequest {}
-export const SearchUsersWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchUsersWithPagingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/users/search", code: 200 })),
 ).annotate({
   identifier: "SearchUsersWithPagingRequest",
 }) as any as S.Schema<SearchUsersWithPagingRequest>;
 
 export type SearchUserQueryResultUsersList = Array<UserSearchHitDTO>;
-export const SearchUserQueryResultUsersList =
+const SearchUserQueryResultUsersList =
   SearchUsersResponseBodyList as any as S.Schema<SearchUserQueryResultUsersList>;
 
 export interface SearchUserQueryResult {
@@ -7623,7 +7559,7 @@ export interface SearchUserQueryResult {
   totalCount?: number;
   users?: SearchUserQueryResultUsersList;
 }
-export const SearchUserQueryResult = /*@__PURE__*/ S.suspend(() =>
+const SearchUserQueryResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     page: S.optional(S.Number),
     perPage: S.optional(S.Number),
@@ -7640,7 +7576,7 @@ export interface SendReportRequest {
   /** Send the report to the emails specified in the report. Required if emails is not present. */
   useEmailsFromReport?: boolean;
 }
-export const SendReportRequest = /*@__PURE__*/ S.suspend(() =>
+const SendReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     emails: S.optional(S.String),
     id: S.optional(S.String),
@@ -7649,15 +7585,15 @@ export const SendReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SendReportRequest" }) as any as S.Schema<SendReportRequest>;
 
 export type SendTestEmailRequestDashboardsList = Array<ReportDashboard>;
-export const SendTestEmailRequestDashboardsList =
+const SendTestEmailRequestDashboardsList =
   CreateReportRequestDashboardsList as any as S.Schema<SendTestEmailRequestDashboardsList>;
 
 export type SendTestEmailRequestFormatsList = Array<string>;
-export const SendTestEmailRequestFormatsList =
+const SendTestEmailRequestFormatsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SendTestEmailRequestFormatsList>;
 
 export type SendTestEmailRequestUrlsList = Array<ReportURLItem>;
-export const SendTestEmailRequestUrlsList =
+const SendTestEmailRequestUrlsList =
   CreateReportRequestUrlsList as any as S.Schema<SendTestEmailRequestUrlsList>;
 
 export interface SendTestEmailRequest {
@@ -7676,7 +7612,7 @@ export interface SendTestEmailRequest {
   subject?: string;
   urls?: SendTestEmailRequestUrlsList;
 }
-export const SendTestEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const SendTestEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboards: S.optional(SendTestEmailRequestDashboardsList),
     enableCsv: S.optional(S.Boolean),
@@ -7707,7 +7643,7 @@ export interface SetDataSourceCacheConfigRequest {
   /** If UseDefaultTTL is enabled, then the TTLQueriesMS and TTLResourcesMS in this object is always sent as the default TTL located in grafana.ini */
   useDefaultTTL?: boolean;
 }
-export const SetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
+const SetDataSourceCacheConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceUID: S.String.pipe(T.Label()),
     dataSourceType: S.optional(S.String.pipe(T.Query())),
@@ -7727,7 +7663,7 @@ export interface SetResourcePermissionCommand {
   teamId?: number;
   userId?: number;
 }
-export const SetResourcePermissionCommand = /*@__PURE__*/ S.suspend(() =>
+const SetResourcePermissionCommand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     builtInRole: S.optional(S.String),
     permission: S.optional(S.String),
@@ -7739,7 +7675,7 @@ export const SetResourcePermissionCommand = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetResourcePermissionCommand>;
 
 export type SetResourcePermissionsRequestPermissionsList = Array<SetResourcePermissionCommand>;
-export const SetResourcePermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
+const SetResourcePermissionsRequestPermissionsList = /*@__PURE__*/ S.Array(
   SetResourcePermissionCommand,
 ) as any as S.Schema<SetResourcePermissionsRequestPermissionsList>;
 
@@ -7748,7 +7684,7 @@ export interface SetResourcePermissionsRequest {
   resourceID: string;
   permissions?: SetResourcePermissionsRequestPermissionsList;
 }
-export const SetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     resourceID: S.String.pipe(T.Label()),
@@ -7764,7 +7700,7 @@ export interface SetResourcePermissionsForBuiltInRoleRequest {
   builtInRole: string;
   permission?: string;
 }
-export const SetResourcePermissionsForBuiltInRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const SetResourcePermissionsForBuiltInRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     resourceID: S.String.pipe(T.Label()),
@@ -7787,7 +7723,7 @@ export interface SetResourcePermissionsForTeamRequest {
   teamID: number;
   permission?: string;
 }
-export const SetResourcePermissionsForTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const SetResourcePermissionsForTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     resourceID: S.String.pipe(T.Label()),
@@ -7810,7 +7746,7 @@ export interface SetResourcePermissionsForUserRequest {
   userID: number;
   permission?: string;
 }
-export const SetResourcePermissionsForUserRequest = /*@__PURE__*/ S.suspend(() =>
+const SetResourcePermissionsForUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     resourceID: S.String.pipe(T.Label()),
@@ -7828,15 +7764,15 @@ export const SetResourcePermissionsForUserRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<SetResourcePermissionsForUserRequest>;
 
 export type SetRoleAssignmentsRequestServiceAccountsList = Array<number>;
-export const SetRoleAssignmentsRequestServiceAccountsList =
+const SetRoleAssignmentsRequestServiceAccountsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestServiceAccountsList>;
 
 export type SetRoleAssignmentsRequestTeamsList = Array<number>;
-export const SetRoleAssignmentsRequestTeamsList =
+const SetRoleAssignmentsRequestTeamsList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestTeamsList>;
 
 export type SetRoleAssignmentsRequestUsersList = Array<number>;
-export const SetRoleAssignmentsRequestUsersList =
+const SetRoleAssignmentsRequestUsersList =
   JSONWebKeyCertificateThumbprintSHA1List as any as S.Schema<SetRoleAssignmentsRequestUsersList>;
 
 export interface SetRoleAssignmentsRequest {
@@ -7845,7 +7781,7 @@ export interface SetRoleAssignmentsRequest {
   teams?: SetRoleAssignmentsRequestTeamsList;
   users?: SetRoleAssignmentsRequestUsersList;
 }
-export const SetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleUID: S.String.pipe(T.Label()),
     service_accounts: S.optional(SetRoleAssignmentsRequestServiceAccountsList),
@@ -7857,11 +7793,11 @@ export const SetRoleAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetRoleAssignmentsRequest>;
 
 export type SetTeamMembershipsRequestAdminsList = Array<string>;
-export const SetTeamMembershipsRequestAdminsList =
+const SetTeamMembershipsRequestAdminsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SetTeamMembershipsRequestAdminsList>;
 
 export type SetTeamMembershipsRequestMembersList = Array<string>;
-export const SetTeamMembershipsRequestMembersList =
+const SetTeamMembershipsRequestMembersList =
   CreateAnnotationRequestTagsList as any as S.Schema<SetTeamMembershipsRequestMembersList>;
 
 export interface SetTeamMembershipsRequest {
@@ -7869,7 +7805,7 @@ export interface SetTeamMembershipsRequest {
   admins?: SetTeamMembershipsRequestAdminsList;
   members?: SetTeamMembershipsRequestMembersList;
 }
-export const SetTeamMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTeamMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     admins: S.optional(SetTeamMembershipsRequestAdminsList),
@@ -7880,7 +7816,7 @@ export const SetTeamMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetTeamMembershipsRequest>;
 
 export type SetTeamRolesRequestRoleUidsList = Array<string>;
-export const SetTeamRolesRequestRoleUidsList =
+const SetTeamRolesRequestRoleUidsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SetTeamRolesRequestRoleUidsList>;
 
 export interface SetTeamRolesRequest {
@@ -7889,7 +7825,7 @@ export interface SetTeamRolesRequest {
   includeHidden?: boolean;
   roleUids?: SetTeamRolesRequestRoleUidsList;
 }
-export const SetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     teamId: S.Number.pipe(T.Label()),
     targetOrgId: S.optional(S.Number.pipe(T.Query())),
@@ -7899,7 +7835,7 @@ export const SetTeamRolesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetTeamRolesRequest" }) as any as S.Schema<SetTeamRolesRequest>;
 
 export type SetUserRolesRequestRoleUidsList = Array<string>;
-export const SetUserRolesRequestRoleUidsList =
+const SetUserRolesRequestRoleUidsList =
   CreateAnnotationRequestTagsList as any as S.Schema<SetUserRolesRequestRoleUidsList>;
 
 export interface SetUserRolesRequest {
@@ -7909,7 +7845,7 @@ export interface SetUserRolesRequest {
   includeHidden?: boolean;
   roleUids?: SetUserRolesRequestRoleUidsList;
 }
-export const SetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.Number.pipe(T.Label()),
     targetOrgId: S.optional(S.Number.pipe(T.Query())),
@@ -7922,19 +7858,16 @@ export const SetUserRolesRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StarQueryRequest {
   query_history_uid: string;
 }
-export const StarQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const StarQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query_history_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/query-history/star/{query_history_uid}", code: 200 })),
 ).annotate({ identifier: "StarQueryRequest" }) as any as S.Schema<StarQueryRequest>;
 
 export type TestCreateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const TestCreateRecordingRuleRequestQueriesItemMap =
-  CorrelationConfigTargetMap as any as S.Schema<TestCreateRecordingRuleRequestQueriesItemMap>;
-
 export type TestCreateRecordingRuleRequestQueriesList =
   Array<TestCreateRecordingRuleRequestQueriesItemMap>;
-export const TestCreateRecordingRuleRequestQueriesList =
+const TestCreateRecordingRuleRequestQueriesList =
   CreateRecordingRuleRequestQueriesList as any as S.Schema<TestCreateRecordingRuleRequestQueriesList>;
 
 export interface TestCreateRecordingRuleRequest {
@@ -7950,7 +7883,7 @@ export interface TestCreateRecordingRuleRequest {
   range?: number;
   target_ref_id?: string;
 }
-export const TestCreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const TestCreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     count: S.optional(S.Boolean),
@@ -7971,14 +7904,14 @@ export const TestCreateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UnstarQueryRequest {
   query_history_uid: string;
 }
-export const UnstarQueryRequest = /*@__PURE__*/ S.suspend(() =>
+const UnstarQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query_history_uid: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/query-history/star/{query_history_uid}", code: 200 })),
 ).annotate({ identifier: "UnstarQueryRequest" }) as any as S.Schema<UnstarQueryRequest>;
 
 export type UpdateAnnotationRequestTagsList = Array<string>;
-export const UpdateAnnotationRequestTagsList =
+const UpdateAnnotationRequestTagsList =
   CreateAnnotationRequestTagsList as any as S.Schema<UpdateAnnotationRequestTagsList>;
 
 export interface UpdateAnnotationRequest {
@@ -7990,7 +7923,7 @@ export interface UpdateAnnotationRequest {
   time?: number;
   timeEnd?: number;
 }
-export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_id: S.String.pipe(T.Label()),
     data: S.optional(S.Unknown),
@@ -8003,7 +7936,7 @@ export const UpdateAnnotationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateAnnotationRequest" }) as any as S.Schema<UpdateAnnotationRequest>;
 
 export type UpdateAnnotationByAnnotationIdRequestTagsList = Array<string>;
-export const UpdateAnnotationByAnnotationIdRequestTagsList =
+const UpdateAnnotationByAnnotationIdRequestTagsList =
   CreateAnnotationRequestTagsList as any as S.Schema<UpdateAnnotationByAnnotationIdRequestTagsList>;
 
 export interface UpdateAnnotationByAnnotationIdRequest {
@@ -8015,7 +7948,7 @@ export interface UpdateAnnotationByAnnotationIdRequest {
   time?: number;
   timeEnd?: number;
 }
-export const UpdateAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     annotation_id: S.String.pipe(T.Label()),
     data: S.optional(S.Unknown),
@@ -8031,12 +7964,12 @@ export const UpdateAnnotationByAnnotationIdRequest = /*@__PURE__*/ S.suspend(() 
 
 /** Target data query */
 export type CorrelationConfigUpdateDTOTargetMap = { [key: string]: unknown | undefined };
-export const CorrelationConfigUpdateDTOTargetMap =
+const CorrelationConfigUpdateDTOTargetMap =
   CorrelationConfigTargetMap as any as S.Schema<CorrelationConfigUpdateDTOTargetMap>;
 
 /** Source data transformations */
 export type CorrelationConfigUpdateDTOTransformationsList = Array<Transformation>;
-export const CorrelationConfigUpdateDTOTransformationsList =
+const CorrelationConfigUpdateDTOTransformationsList =
   Transformations as any as S.Schema<CorrelationConfigUpdateDTOTransformationsList>;
 
 export interface CorrelationConfigUpdateDTO {
@@ -8047,7 +7980,7 @@ export interface CorrelationConfigUpdateDTO {
   /** Source data transformations */
   transformations?: CorrelationConfigUpdateDTOTransformationsList;
 }
-export const CorrelationConfigUpdateDTO = /*@__PURE__*/ S.suspend(() =>
+const CorrelationConfigUpdateDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     field: S.optional(S.String),
     target: S.optional(CorrelationConfigUpdateDTOTargetMap),
@@ -8067,7 +8000,7 @@ export interface UpdateCorrelationRequest {
   label?: string;
   type?: string;
 }
-export const UpdateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCorrelationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceUID: S.String.pipe(T.Label()),
     correlationUID: S.String.pipe(T.Label()),
@@ -8088,13 +8021,13 @@ export interface UpdateCorrelationResponseBody {
   message?: string;
   result?: Correlation;
 }
-export const UpdateCorrelationResponseBody =
+const UpdateCorrelationResponseBody =
   CreateCorrelationResponseBody as any as S.Schema<UpdateCorrelationResponseBody>;
 
 export interface UpdateCurrentOrgRequest {
   name?: string;
 }
-export const UpdateCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
   }).pipe(T.Http({ method: "PUT", uri: "/org", code: 200 })),
@@ -8108,7 +8041,7 @@ export interface UpdateCurrentOrgAddressRequest {
   state?: string;
   zipcode?: string;
 }
-export const UpdateCurrentOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCurrentOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     address1: S.optional(S.String),
     address2: S.optional(S.String),
@@ -8122,7 +8055,7 @@ export const UpdateCurrentOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateCurrentOrgAddressRequest>;
 
 export type UpdateDataSourceByUIDRequestSecureJsonDataMap = { [key: string]: string | undefined };
-export const UpdateDataSourceByUIDRequestSecureJsonDataMap =
+const UpdateDataSourceByUIDRequestSecureJsonDataMap =
   AddDataSourceRequestSecureJsonDataMap as any as S.Schema<UpdateDataSourceByUIDRequestSecureJsonDataMap>;
 
 export interface UpdateDataSourceByUIDRequest {
@@ -8142,7 +8075,7 @@ export interface UpdateDataSourceByUIDRequest {
   version?: number;
   withCredentials?: boolean;
 }
-export const UpdateDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataSourceByUIDRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     access: S.optional(S.String),
@@ -8172,7 +8105,7 @@ export interface UpdateDataSourceByUIDResponse {
   /** Name of the new data source. */
   name: string;
 }
-export const UpdateDataSourceByUIDResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataSourceByUIDResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasource: DataSource,
     id: S.Number,
@@ -8184,7 +8117,7 @@ export const UpdateDataSourceByUIDResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDataSourceByUIDResponse>;
 
 export type DashboardACLUpdateItemRole = "None" | "Viewer" | "Editor" | "Admin";
-export const DashboardACLUpdateItemRole = S.String;
+const DashboardACLUpdateItemRole = S.String;
 
 export interface DashboardACLUpdateItem {
   permission?: number;
@@ -8192,7 +8125,7 @@ export interface DashboardACLUpdateItem {
   teamId?: number;
   userId?: number;
 }
-export const DashboardACLUpdateItem = /*@__PURE__*/ S.suspend(() =>
+const DashboardACLUpdateItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permission: S.optional(S.Number),
     role: S.optional(DashboardACLUpdateItemRole),
@@ -8202,7 +8135,7 @@ export const DashboardACLUpdateItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashboardACLUpdateItem" }) as any as S.Schema<DashboardACLUpdateItem>;
 
 export type UpdateFolderPermissionsRequestItemsList = Array<DashboardACLUpdateItem>;
-export const UpdateFolderPermissionsRequestItemsList = /*@__PURE__*/ S.Array(
+const UpdateFolderPermissionsRequestItemsList = /*@__PURE__*/ S.Array(
   DashboardACLUpdateItem,
 ) as any as S.Schema<UpdateFolderPermissionsRequestItemsList>;
 
@@ -8210,7 +8143,7 @@ export interface UpdateFolderPermissionsRequest {
   folder_uid: string;
   items?: UpdateFolderPermissionsRequestItemsList;
 }
-export const UpdateFolderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFolderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     folder_uid: S.String.pipe(T.Label()),
     items: S.optional(UpdateFolderPermissionsRequestItemsList),
@@ -8221,7 +8154,7 @@ export const UpdateFolderPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Kind of element to create, Use 1 for library panels or 2 for c. Description: - 1 - library panels */
 export type UpdateLibraryElementRequestKind = 1;
-export const UpdateLibraryElementRequestKind = S.Number;
+const UpdateLibraryElementRequestKind = S.Number;
 
 export interface UpdateLibraryElementRequest {
   library_element_uid: string;
@@ -8239,7 +8172,7 @@ export interface UpdateLibraryElementRequest {
   /** Version of the library element you are updating. */
   version?: number;
 }
-export const UpdateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLibraryElementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     library_element_uid: S.String.pipe(T.Label()),
     folderId: S.optional(S.Number),
@@ -8258,7 +8191,7 @@ export interface UpdateOrgRequest {
   org_id: number;
   name?: string;
 }
-export const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     name: S.optional(S.String),
@@ -8274,7 +8207,7 @@ export interface UpdateOrgAddressRequest {
   state?: string;
   zipcode?: string;
 }
-export const UpdateOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgAddressRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     address1: S.optional(S.String),
@@ -8292,7 +8225,7 @@ export interface UpdateOrgQuotaRequest {
   limit?: number;
   target?: string;
 }
-export const UpdateOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     quota_target: S.String.pipe(T.Label()),
@@ -8302,14 +8235,14 @@ export const UpdateOrgQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgQuotaRequest" }) as any as S.Schema<UpdateOrgQuotaRequest>;
 
 export type UpdateOrgUserRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const UpdateOrgUserRequestRole = S.String;
+const UpdateOrgUserRequestRole = S.String;
 
 export interface UpdateOrgUserRequest {
   org_id: number;
   user_id: number;
   role?: UpdateOrgUserRequestRole | (string & {});
 }
-export const UpdateOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
     user_id: S.Number.pipe(T.Label()),
@@ -8318,13 +8251,13 @@ export const UpdateOrgUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateOrgUserRequest" }) as any as S.Schema<UpdateOrgUserRequest>;
 
 export type UpdateOrgUserForCurrentOrgRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const UpdateOrgUserForCurrentOrgRequestRole = S.String;
+const UpdateOrgUserForCurrentOrgRequestRole = S.String;
 
 export interface UpdateOrgUserForCurrentOrgRequest {
   user_id: number;
   role?: UpdateOrgUserForCurrentOrgRequestRole | (string & {});
 }
-export const UpdateOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     role: S.optional(UpdateOrgUserForCurrentOrgRequestRole),
@@ -8334,7 +8267,7 @@ export const UpdateOrgUserForCurrentOrgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateOrgUserForCurrentOrgRequest>;
 
 export type UpdateProviderSettingsRequestSettingsMap = { [key: string]: unknown | undefined };
-export const UpdateProviderSettingsRequestSettingsMap =
+const UpdateProviderSettingsRequestSettingsMap =
   CorrelationConfigTargetMap as any as S.Schema<UpdateProviderSettingsRequestSettingsMap>;
 
 export interface UpdateProviderSettingsRequest {
@@ -8343,7 +8276,7 @@ export interface UpdateProviderSettingsRequest {
   provider?: string;
   settings?: UpdateProviderSettingsRequestSettingsMap;
 }
-export const UpdateProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateProviderSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -8363,7 +8296,7 @@ export interface UpdatePublicDashboardRequest {
   share?: string;
   timeSelectionEnabled?: boolean;
 }
-export const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dashboardUid: S.String.pipe(T.Label()),
     uid: S.String.pipe(T.Label()),
@@ -8384,11 +8317,8 @@ export const UpdatePublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdatePublicDashboardRequest>;
 
 export type UpdateRecordingRuleRequestQueriesItemMap = { [key: string]: unknown | undefined };
-export const UpdateRecordingRuleRequestQueriesItemMap =
-  CorrelationConfigTargetMap as any as S.Schema<UpdateRecordingRuleRequestQueriesItemMap>;
-
 export type UpdateRecordingRuleRequestQueriesList = Array<UpdateRecordingRuleRequestQueriesItemMap>;
-export const UpdateRecordingRuleRequestQueriesList =
+const UpdateRecordingRuleRequestQueriesList =
   CreateRecordingRuleRequestQueriesList as any as S.Schema<UpdateRecordingRuleRequestQueriesList>;
 
 export interface UpdateRecordingRuleRequest {
@@ -8404,7 +8334,7 @@ export interface UpdateRecordingRuleRequest {
   range?: number;
   target_ref_id?: string;
 }
-export const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     active: S.optional(S.Boolean),
     count: S.optional(S.Boolean),
@@ -8423,7 +8353,7 @@ export const UpdateRecordingRuleRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateRecordingRuleRequest>;
 
 export type UpdateRoleRequestPermissionsList = Array<Permission>;
-export const UpdateRoleRequestPermissionsList =
+const UpdateRoleRequestPermissionsList =
   CreateRoleRequestPermissionsList as any as S.Schema<UpdateRoleRequestPermissionsList>;
 
 export interface UpdateRoleRequest {
@@ -8436,7 +8366,7 @@ export interface UpdateRoleRequest {
   name?: string;
   permissions?: UpdateRoleRequestPermissionsList;
 }
-export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     roleUID: S.String.pipe(T.Label()),
     description: S.String,
@@ -8450,7 +8380,7 @@ export const UpdateRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateRoleRequest" }) as any as S.Schema<UpdateRoleRequest>;
 
 export type UpdateServiceAccountRequestRole = "None" | "Viewer" | "Editor" | "Admin";
-export const UpdateServiceAccountRequestRole = S.String;
+const UpdateServiceAccountRequestRole = S.String;
 
 export interface UpdateServiceAccountRequest {
   serviceAccountId: number;
@@ -8458,7 +8388,7 @@ export interface UpdateServiceAccountRequest {
   name?: string;
   role?: UpdateServiceAccountRequestRole | (string & {});
 }
-export const UpdateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountId: S.Number.pipe(T.Label()),
     isDisabled: S.optional(S.Boolean),
@@ -8470,11 +8400,11 @@ export const UpdateServiceAccountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateServiceAccountRequest>;
 
 export type ServiceAccountProfileDTOAccessControlMap = { [key: string]: boolean | undefined };
-export const ServiceAccountProfileDTOAccessControlMap =
+const ServiceAccountProfileDTOAccessControlMap =
   DataSourceSecureJsonFieldsMap as any as S.Schema<ServiceAccountProfileDTOAccessControlMap>;
 
 export type ServiceAccountProfileDTOTeamsList = Array<string>;
-export const ServiceAccountProfileDTOTeamsList =
+const ServiceAccountProfileDTOTeamsList =
   CreateAnnotationRequestTagsList as any as S.Schema<ServiceAccountProfileDTOTeamsList>;
 
 export interface ServiceAccountProfileDTO {
@@ -8494,7 +8424,7 @@ export interface ServiceAccountProfileDTO {
   uid?: string;
   updatedAt?: string;
 }
-export const ServiceAccountProfileDTO = /*@__PURE__*/ S.suspend(() =>
+const ServiceAccountProfileDTO = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessControl: S.optional(ServiceAccountProfileDTOAccessControlMap),
     avatarUrl: S.optional(S.String),
@@ -8520,7 +8450,7 @@ export interface UpdateServiceAccountResponse {
   name?: string;
   serviceaccount?: ServiceAccountProfileDTO;
 }
-export const UpdateServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateServiceAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     message: S.optional(S.String),
@@ -8537,7 +8467,7 @@ export interface UpdateSignedInUserRequest {
   name?: string;
   theme?: string;
 }
-export const UpdateSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSignedInUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     login: S.optional(S.String),
@@ -8553,7 +8483,7 @@ export interface UpdateTeamRequest {
   email?: string;
   name?: string;
 }
-export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     email: S.optional(S.String),
@@ -8562,14 +8492,14 @@ export const UpdateTeamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamRequest" }) as any as S.Schema<UpdateTeamRequest>;
 
 export type UpdateTeamLBACRulesApiRequestRulesList = Array<TeamLBACRule>;
-export const UpdateTeamLBACRulesApiRequestRulesList =
+const UpdateTeamLBACRulesApiRequestRulesList =
   TeamLBACRulesRulesList as any as S.Schema<UpdateTeamLBACRulesApiRequestRulesList>;
 
 export interface UpdateTeamLBACRulesApiRequest {
   uid: string;
   rules?: UpdateTeamLBACRulesApiRequestRulesList;
 }
-export const UpdateTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     rules: S.optional(UpdateTeamLBACRulesApiRequestRulesList),
@@ -8579,7 +8509,7 @@ export const UpdateTeamLBACRulesApiRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateTeamLBACRulesApiRequest>;
 
 export type UpdateTeamLBACRulesApiResponseRulesList = Array<TeamLBACRule>;
-export const UpdateTeamLBACRulesApiResponseRulesList =
+const UpdateTeamLBACRulesApiResponseRulesList =
   TeamLBACRulesRulesList as any as S.Schema<UpdateTeamLBACRulesApiResponseRulesList>;
 
 export interface UpdateTeamLBACRulesApiResponse {
@@ -8589,7 +8519,7 @@ export interface UpdateTeamLBACRulesApiResponse {
   rules?: UpdateTeamLBACRulesApiResponseRulesList;
   uid?: string;
 }
-export const UpdateTeamLBACRulesApiResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamLBACRulesApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     message: S.optional(S.String),
@@ -8606,7 +8536,7 @@ export interface UpdateTeamMemberRequest {
   user_id: number;
   permission?: number;
 }
-export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     user_id: S.Number.pipe(T.Label()),
@@ -8615,13 +8545,13 @@ export const UpdateTeamMemberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateTeamMemberRequest" }) as any as S.Schema<UpdateTeamMemberRequest>;
 
 export type NavbarPreferenceBookmarkUrlsList = Array<string>;
-export const NavbarPreferenceBookmarkUrlsList =
+const NavbarPreferenceBookmarkUrlsList =
   CreateAnnotationRequestTagsList as any as S.Schema<NavbarPreferenceBookmarkUrlsList>;
 
 export interface NavbarPreference {
   bookmarkUrls?: NavbarPreferenceBookmarkUrlsList;
 }
-export const NavbarPreference = /*@__PURE__*/ S.suspend(() =>
+const NavbarPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookmarkUrls: S.optional(NavbarPreferenceBookmarkUrlsList),
   }),
@@ -8630,14 +8560,14 @@ export const NavbarPreference = /*@__PURE__*/ S.suspend(() =>
 export interface QueryHistoryPreference {
   homeTab?: string;
 }
-export const QueryHistoryPreference = /*@__PURE__*/ S.suspend(() =>
+const QueryHistoryPreference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     homeTab: S.optional(S.String),
   }),
 ).annotate({ identifier: "QueryHistoryPreference" }) as any as S.Schema<QueryHistoryPreference>;
 
 export type UpdateTeamPreferencesRequestTheme = "light" | "dark" | "system";
-export const UpdateTeamPreferencesRequestTheme = S.String;
+const UpdateTeamPreferencesRequestTheme = S.String;
 
 export interface UpdateTeamPreferencesRequest {
   team_id: string;
@@ -8652,7 +8582,7 @@ export interface UpdateTeamPreferencesRequest {
   timezone?: string;
   weekStart?: string;
 }
-export const UpdateTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTeamPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     team_id: S.String.pipe(T.Label()),
     homeDashboardId: S.optional(S.Number),
@@ -8675,7 +8605,7 @@ export interface UpdateUserRequest {
   name?: string;
   theme?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     email: S.optional(S.String),
@@ -8686,13 +8616,12 @@ export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdateUserRequest" }) as any as S.Schema<UpdateUserRequest>;
 
 export interface UpdateUserEmailRequest {}
-export const UpdateUserEmailRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserEmailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/email/update", code: 200 })),
 ).annotate({ identifier: "UpdateUserEmailRequest" }) as any as S.Schema<UpdateUserEmailRequest>;
 
 export interface UpdateUserEmailResponse {}
-export const UpdateUserEmailResponse =
-  CancelSnapshotResponse as any as S.Schema<UpdateUserEmailResponse>;
+const UpdateUserEmailResponse = CancelSnapshotResponse as any as S.Schema<UpdateUserEmailResponse>;
 
 export interface UpdateUserQuotaRequest {
   user_id: number;
@@ -8700,7 +8629,7 @@ export interface UpdateUserQuotaRequest {
   limit?: number;
   target?: string;
 }
-export const UpdateUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateUserQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user_id: S.Number.pipe(T.Label()),
     quota_target: S.String.pipe(T.Label()),
@@ -8717,7 +8646,7 @@ export interface UploadSnapshotRequest {
   /** UID of a snapshot */
   snapshotUid: string;
 }
-export const UploadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+const UploadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uid: S.String.pipe(T.Label()),
     snapshotUid: S.String.pipe(T.Label()),
@@ -8731,13 +8660,12 @@ export const UploadSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UploadSnapshotRequest" }) as any as S.Schema<UploadSnapshotRequest>;
 
 export interface UploadSnapshotResponse {}
-export const UploadSnapshotResponse =
-  CancelSnapshotResponse as any as S.Schema<UploadSnapshotResponse>;
+const UploadSnapshotResponse = CancelSnapshotResponse as any as S.Schema<UploadSnapshotResponse>;
 
 export interface UserSetUsingOrgRequest {
   org_id: number;
 }
-export const UserSetUsingOrgRequest = /*@__PURE__*/ S.suspend(() =>
+const UserSetUsingOrgRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     org_id: S.Number.pipe(T.Label()),
   }).pipe(T.Http({ method: "POST", uri: "/user/using/{org_id}", code: 200 })),
@@ -8746,7 +8674,7 @@ export const UserSetUsingOrgRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ViewPublicDashboardRequest {
   accessToken: string;
 }
-export const ViewPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+const ViewPublicDashboardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/public/dashboards/{accessToken}", code: 200 })),

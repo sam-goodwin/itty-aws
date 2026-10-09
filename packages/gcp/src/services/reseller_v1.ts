@@ -81,7 +81,7 @@ export interface ActivateSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const ActivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ActivateSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -103,7 +103,7 @@ export interface RenewalSettings {
   /** Renewal settings for the annual commitment plan. For more detailed information, see renewal options in the administrator help center. When renewing a subscription, the `renewalType` is a required property. */
   renewalType?: string;
 }
-export const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
+const RenewalSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     renewalType: S.optional(S.String),
@@ -116,7 +116,7 @@ export interface SubscriptionPlanCommitmentInterval {
   /** An annual commitment plan's interval's `startTime` in milliseconds using UNIX Epoch format. See an example Epoch converter. */
   startTime?: string;
 }
-export const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPlanCommitmentInterval = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endTime: S.optional(S.String),
     startTime: S.optional(S.String),
@@ -133,7 +133,7 @@ export interface SubscriptionPlan {
   /** In this version of the API, annual commitment plan's interval is one year. *Note: *When `billingMethod` value is `OFFLINE`, the subscription property object `plan.commitmentInterval` is omitted in all API responses. */
   commitmentInterval?: SubscriptionPlanCommitmentInterval;
 }
-export const SubscriptionPlan = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionPlan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     planName: S.optional(S.String),
     isCommitmentPlan: S.optional(S.Boolean),
@@ -152,7 +152,7 @@ export interface Seats {
   /** Identifies the resource as a subscription seat setting. Value: `subscriptions#seats` */
   kind?: string;
 }
-export const Seats = /*@__PURE__*/ S.suspend(() =>
+const Seats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     licensedNumberOfSeats: S.optional(S.Number),
     numberOfSeats: S.optional(S.Number),
@@ -169,7 +169,7 @@ export interface SubscriptionTransferInfo {
   /** The `skuId` of the current resold subscription. This is populated only when the customer has a subscription with a legacy SKU and the subscription resource is populated with the `skuId` of the SKU recommended for the transfer. */
   currentLegacySkuId?: string;
 }
-export const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     minimumTransferableSeats: S.optional(S.Number),
     transferabilityExpirationTime: S.optional(S.String),
@@ -178,7 +178,7 @@ export const SubscriptionTransferInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubscriptionTransferInfo" }) as any as S.Schema<SubscriptionTransferInfo>;
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 export interface SubscriptionTrialSettings {
   /** Determines if a subscription's plan is in a 30-day free trial or not: - `true` -- The plan is in trial. - `false` -- The plan is not in trial. */
@@ -186,7 +186,7 @@ export interface SubscriptionTrialSettings {
   /** Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example Epoch converter. */
   trialEndTime?: string;
 }
-export const SubscriptionTrialSettings = /*@__PURE__*/ S.suspend(() =>
+const SubscriptionTrialSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isInTrial: S.optional(S.Boolean),
     trialEndTime: S.optional(S.String),
@@ -234,7 +234,7 @@ export interface Subscription {
   /** The G Suite annual commitment and flexible payment plans can be in a 30-day free trial. For more information, see the API concepts. */
   trialSettings?: SubscriptionTrialSettings;
 }
-export const Subscription = /*@__PURE__*/ S.suspend(() =>
+const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renewalSettings: S.optional(RenewalSettings),
     dealCode: S.optional(S.String),
@@ -270,7 +270,7 @@ export interface ChangePlanRequest {
   /** Identifies the resource as a subscription change plan request. Value: `subscriptions#changePlanRequest` */
   kind?: string;
 }
-export const ChangePlanRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangePlanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     purchaseOrderId: S.optional(S.String),
     seats: S.optional(Seats),
@@ -288,7 +288,7 @@ export interface ChangePlanSubscriptionsRequest {
   /** Request body */
   body?: ChangePlanRequest;
 }
-export const ChangePlanSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangePlanSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -312,7 +312,7 @@ export interface ChangeRenewalSettingsSubscriptionsRequest {
   /** Request body */
   body?: RenewalSettings;
 }
-export const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeRenewalSettingsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -336,7 +336,7 @@ export interface ChangeSeatsSubscriptionsRequest {
   /** Request body */
   body?: Seats;
 }
-export const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ChangeSeatsSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -356,7 +356,7 @@ export type DeleteSubscriptionsDeletionTypeEnum =
   | "deletion_type_undefined"
   | "cancel"
   | "transfer_to_direct";
-export const DeleteSubscriptionsDeletionTypeEnum = S.String;
+const DeleteSubscriptionsDeletionTypeEnum = S.String;
 
 export interface DeleteSubscriptionsRequest {
   /** The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription. */
@@ -366,7 +366,7 @@ export interface DeleteSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
-export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletionType: DeleteSubscriptionsDeletionTypeEnum.pipe(T.Query()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -383,7 +383,7 @@ export const DeleteSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSubscriptionsRequest>;
 
 export interface DeleteSubscriptionsResponse {}
-export const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const DeleteSubscriptionsResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "DeleteSubscriptionsResponse",
 }) as any as S.Schema<DeleteSubscriptionsResponse>;
 
@@ -391,7 +391,7 @@ export interface GetCustomersRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
-export const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
   }).pipe(
@@ -426,7 +426,7 @@ export interface Address {
   /** Line 3 of the address. */
   addressLine3?: string;
 }
-export const Address = /*@__PURE__*/ S.suspend(() =>
+const Address = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     addressLine2: S.optional(S.String),
     organizationName: S.optional(S.String),
@@ -446,14 +446,14 @@ export interface PrimaryAdmin {
   /** The business email of the primary administrator of the customer. The email verification link is sent to this email address at the time of customer creation. Primary administrators have access to the customer's Admin Console, including the ability to invite and evict users and manage the administrative needs of the customer. */
   primaryEmail?: string;
 }
-export const PrimaryAdmin = /*@__PURE__*/ S.suspend(() =>
+const PrimaryAdmin = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryEmail: S.optional(S.String),
   }),
 ).annotate({ identifier: "PrimaryAdmin" }) as any as S.Schema<PrimaryAdmin>;
 
 export type CustomerCustomerTypeEnum = "customerTypeUnspecified" | "domain" | "team";
-export const CustomerCustomerTypeEnum = S.String;
+const CustomerCustomerTypeEnum = S.String;
 
 /** When a Google customer's account is registered with a reseller, the customer's subscriptions for Google services are managed by this reseller. A customer is described by a primary domain name and a physical address. */
 export interface Customer {
@@ -478,7 +478,7 @@ export interface Customer {
   /** This property will always be returned in a response as the unique identifier generated by Google. In a request, this property can be either the primary domain or the unique identifier generated by Google. */
   customerId?: string;
 }
-export const Customer = /*@__PURE__*/ S.suspend(() =>
+const Customer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phoneNumber: S.optional(S.String),
     customerDomain: S.optional(S.String),
@@ -499,7 +499,7 @@ export interface GetSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -513,7 +513,7 @@ export const GetSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetSubscriptionsRequest" }) as any as S.Schema<GetSubscriptionsRequest>;
 
 export interface GetwatchdetailsResellernotifyRequest {}
-export const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const GetwatchdetailsResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -532,7 +532,7 @@ export interface ResellernotifyGetwatchdetailsResponse {
   /** List of registered service accounts. */
   serviceAccountEmailAddresses?: StringList;
 }
-export const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(() =>
+const ResellernotifyGetwatchdetailsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
     serviceAccountEmailAddresses: S.optional(StringList),
@@ -547,7 +547,7 @@ export interface InsertCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerAuthToken: S.optional(S.String.pipe(T.Query())),
     body: S.optional(Customer.pipe(T.HttpBody())),
@@ -561,7 +561,7 @@ export const InsertCustomersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InsertCustomersRequest" }) as any as S.Schema<InsertCustomersRequest>;
 
 export type InsertSubscriptionsActionEnum = "actionUnspecified" | "buy" | "switch";
-export const InsertSubscriptionsActionEnum = S.String;
+const InsertSubscriptionsActionEnum = S.String;
 
 export interface InsertSubscriptionsRequest {
   /** The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product. */
@@ -575,7 +575,7 @@ export interface InsertSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-export const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(InsertSubscriptionsActionEnum.pipe(T.Query())),
     sourceSkuId: S.optional(S.String.pipe(T.Query())),
@@ -605,7 +605,7 @@ export interface ListSubscriptionsRequest {
   /** The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. */
   customerAuthToken?: string;
 }
-export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.optional(S.String.pipe(T.Query())),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -622,9 +622,7 @@ export const ListSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListSubscriptionsRequest" }) as any as S.Schema<ListSubscriptionsRequest>;
 
 export type SubscriptionList = Array<Subscription>;
-export const SubscriptionList = /*@__PURE__*/ S.Array(
-  Subscription,
-) as any as S.Schema<SubscriptionList>;
+const SubscriptionList = /*@__PURE__*/ S.Array(Subscription) as any as S.Schema<SubscriptionList>;
 
 /** A subscription manages the relationship of a Google customer's payment plan with a product's SKU, user licenses, 30-day free trial status, and renewal options. A primary role of a reseller is to manage the Google customer's subscriptions. */
 export interface Subscriptions {
@@ -635,7 +633,7 @@ export interface Subscriptions {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
   nextPageToken?: string;
 }
-export const Subscriptions = /*@__PURE__*/ S.suspend(() =>
+const Subscriptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     subscriptions: S.optional(SubscriptionList),
@@ -649,7 +647,7 @@ export interface PatchCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     body: S.optional(Customer.pipe(T.HttpBody())),
@@ -666,7 +664,7 @@ export interface RegisterResellernotifyRequest {
   /** The service account which will own the created Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-export const RegisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -685,7 +683,7 @@ export interface ResellernotifyResource {
   /** Topic name of the PubSub */
   topicName?: string;
 }
-export const ResellernotifyResource = /*@__PURE__*/ S.suspend(() =>
+const ResellernotifyResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topicName: S.optional(S.String),
   }),
@@ -697,7 +695,7 @@ export interface StartPaidServiceSubscriptionsRequest {
   /** This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. */
   customerId: string;
 }
-export const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const StartPaidServiceSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     customerId: S.String.pipe(T.Label()),
@@ -718,7 +716,7 @@ export interface SuspendSubscriptionsRequest {
   /** This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. */
   subscriptionId: string;
 }
-export const SuspendSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
+const SuspendSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     subscriptionId: S.String.pipe(T.Label()),
@@ -737,7 +735,7 @@ export interface UnregisterResellernotifyRequest {
   /** The service account which owns the Cloud-PubSub topic. */
   serviceAccountEmailAddress?: string;
 }
-export const UnregisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
+const UnregisterResellernotifyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceAccountEmailAddress: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -757,7 +755,7 @@ export interface UpdateCustomersRequest {
   /** Request body */
   body?: Customer;
 }
-export const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateCustomersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Label()),
     body: S.optional(Customer.pipe(T.HttpBody())),

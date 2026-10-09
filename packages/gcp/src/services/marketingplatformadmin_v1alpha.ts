@@ -66,12 +66,12 @@ export type AdminAccessBindingOrganizationRolesItemEnum =
   | "ORG_ADMIN_ROLE"
   | "USER_ADMIN_ROLE"
   | "BILLING_ADMIN_ROLE";
-export const AdminAccessBindingOrganizationRolesItemEnum = S.String;
+const AdminAccessBindingOrganizationRolesItemEnum = S.String;
 
 export type AdminAccessBindingOrganizationRolesItemEnumList = Array<
   AdminAccessBindingOrganizationRolesItemEnum | (string & {})
 >;
-export const AdminAccessBindingOrganizationRolesItemEnumList = /*@__PURE__*/ S.Array(
+const AdminAccessBindingOrganizationRolesItemEnumList = /*@__PURE__*/ S.Array(
   AdminAccessBindingOrganizationRolesItemEnum,
 ) as any as S.Schema<AdminAccessBindingOrganizationRolesItemEnumList>;
 
@@ -86,7 +86,7 @@ export interface AdminAccessBinding {
   /** Identifier. The resource name of this AdminAccessBinding. Format: organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} Example: "organizations/123abc/adminAccessBindings/456def" */
   name?: string;
 }
-export const AdminAccessBinding = /*@__PURE__*/ S.suspend(() =>
+const AdminAccessBinding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userGroup: S.optional(S.String),
     userEmail: S.optional(S.String),
@@ -101,7 +101,7 @@ export interface CreateOrganizationsAdminAccessBindingsRequest {
   /** Request body */
   body?: AdminAccessBinding;
 }
-export const CreateOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AdminAccessBinding.pipe(T.HttpBody())),
@@ -120,7 +120,7 @@ export type AnalyticsAccountLinkLinkVerificationStateEnum =
   | "LINK_VERIFICATION_STATE_UNSPECIFIED"
   | "LINK_VERIFICATION_STATE_VERIFIED"
   | "LINK_VERIFICATION_STATE_NOT_VERIFIED";
-export const AnalyticsAccountLinkLinkVerificationStateEnum = S.String;
+const AnalyticsAccountLinkLinkVerificationStateEnum = S.String;
 
 /** A resource message representing the link between a Google Analytics account and a Google Marketing Platform organization. */
 export interface AnalyticsAccountLink {
@@ -133,7 +133,7 @@ export interface AnalyticsAccountLink {
   /** Output only. The human-readable name for the Analytics account. */
   displayName?: string;
 }
-export const AnalyticsAccountLink = /*@__PURE__*/ S.suspend(() =>
+const AnalyticsAccountLink = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     linkVerificationState: S.optional(AnalyticsAccountLinkLinkVerificationStateEnum),
     name: S.optional(S.String),
@@ -148,7 +148,7 @@ export interface CreateOrganizationsAnalyticsAccountLinksRequest {
   /** Request body */
   body?: AnalyticsAccountLink;
 }
-export const CreateOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(AnalyticsAccountLink.pipe(T.HttpBody())),
@@ -172,7 +172,7 @@ export interface UserGroup {
   /** Optional. The description of the user group. */
   description?: string;
 }
-export const UserGroup = /*@__PURE__*/ S.suspend(() =>
+const UserGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -186,7 +186,7 @@ export interface CreateOrganizationsUserGroupsRequest {
   /** Request body */
   body?: UserGroup;
 }
-export const CreateOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UserGroup.pipe(T.HttpBody())),
@@ -205,7 +205,7 @@ export type UserGroupMemberMembershipRoleEnum =
   | "MEMBERSHIP_ROLE_UNSPECIFIED"
   | "MEMBERSHIP_ROLE_OWNER"
   | "MEMBERSHIP_ROLE_MEMBER";
-export const UserGroupMemberMembershipRoleEnum = S.String;
+const UserGroupMemberMembershipRoleEnum = S.String;
 
 /** A resource message representing a member of a user group. */
 export interface UserGroupMember {
@@ -218,7 +218,7 @@ export interface UserGroupMember {
   /** Optional. The role of the member in the user group. */
   membershipRole?: UserGroupMemberMembershipRoleEnum | (string & {});
 }
-export const UserGroupMember = /*@__PURE__*/ S.suspend(() =>
+const UserGroupMember = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userEmail: S.optional(S.String),
     userGroup: S.optional(S.String),
@@ -233,7 +233,7 @@ export interface CreateOrganizationsUserGroupsMembersRequest {
   /** Request body */
   body?: UserGroupMember;
 }
-export const CreateOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(UserGroupMember.pipe(T.HttpBody())),
@@ -252,7 +252,7 @@ export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
   /** Required. The name of the Analytics account link to delete. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} */
   name: string;
 }
-export const DeleteOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -268,7 +268,7 @@ export const DeleteOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.s
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -276,7 +276,7 @@ export interface DeleteOrganizationsUserGroupsRequest {
   /** Required. The name of the user group to delete. Format: organizations/{org_id}/userGroups/{user_group_id} */
   name: string;
 }
-export const DeleteOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -294,7 +294,7 @@ export interface DeleteOrganizationsUserGroupsMembersRequest {
   /** Required. The name of the user group member to delete. Format: organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} */
   name: string;
 }
-export const DeleteOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -313,7 +313,7 @@ export interface FindSalesPartnerManagedClientsRequest {
   /** Optional. If set, only active and just ended clients will be returned. */
   isActive?: boolean;
 }
-export const FindSalesPartnerManagedClientsRequest = /*@__PURE__*/ S.suspend(() =>
+const FindSalesPartnerManagedClientsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isActive: S.optional(S.Boolean),
   }),
@@ -327,7 +327,7 @@ export interface FindSalesPartnerManagedClientsOrganizationsRequest {
   /** Request body */
   body?: FindSalesPartnerManagedClientsRequest;
 }
-export const FindSalesPartnerManagedClientsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const FindSalesPartnerManagedClientsOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     body: S.optional(FindSalesPartnerManagedClientsRequest.pipe(T.HttpBody())),
@@ -351,7 +351,7 @@ export interface Marketingplatformadmin_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-export const Marketingplatformadmin_Date = /*@__PURE__*/ S.suspend(() =>
+const Marketingplatformadmin_Date = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.Number),
     day: S.optional(S.Number),
@@ -368,7 +368,7 @@ export interface Organization {
   /** The human-readable name for the organization. */
   displayName?: string;
 }
-export const Organization = /*@__PURE__*/ S.suspend(() =>
+const Organization = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     displayName: S.optional(S.String),
@@ -384,7 +384,7 @@ export interface ClientData {
   /** The start date of the contract between the sales org and the end client. */
   startDate?: Marketingplatformadmin_Date;
 }
-export const ClientData = /*@__PURE__*/ S.suspend(() =>
+const ClientData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endDate: S.optional(Marketingplatformadmin_Date),
     organization: S.optional(Organization),
@@ -393,14 +393,14 @@ export const ClientData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClientData" }) as any as S.Schema<ClientData>;
 
 export type ClientDataList = Array<ClientData>;
-export const ClientDataList = /*@__PURE__*/ S.Array(ClientData) as any as S.Schema<ClientDataList>;
+const ClientDataList = /*@__PURE__*/ S.Array(ClientData) as any as S.Schema<ClientDataList>;
 
 /** Response message for FindSalesPartnerManagedClients RPC. */
 export interface FindSalesPartnerManagedClientsResponse {
   /** The clients managed by the sales org. */
   clientData?: ClientDataList;
 }
-export const FindSalesPartnerManagedClientsResponse = /*@__PURE__*/ S.suspend(() =>
+const FindSalesPartnerManagedClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientData: S.optional(ClientDataList),
   }),
@@ -412,7 +412,7 @@ export interface GetOrganizationsRequest {
   /** Required. The name of the Organization to retrieve. Format: organizations/{org_id} */
   name: string;
 }
-export const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -428,7 +428,7 @@ export interface GetOrganizationsAdminAccessBindingsRequest {
   /** Required. The name of the AdminAccessBinding to retrieve. Format: organizations/{org_id}/adminAccessBindings/{admin_access_binding_id} */
   name: string;
 }
-export const GetOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -446,7 +446,7 @@ export interface GetOrganizationsUserGroupsRequest {
   /** Required. The name of the UserGroup to retrieve. Format: organizations/{org_id}/userGroups/{user_group_id} */
   name: string;
 }
-export const GetOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -464,7 +464,7 @@ export interface GetOrganizationsUserGroupsMembersRequest {
   /** Required. The name of the user group member to retrieve. Format: organizations/{org_id}/userGroups/{user_group_id}/members/{member_id} */
   name: string;
 }
-export const GetOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const GetOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -484,7 +484,7 @@ export interface ListOrganizationsRequest {
   /** Optional. The maximum number of organizations to return in one call. The service may return fewer than this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -498,9 +498,7 @@ export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListOrganizationsRequest" }) as any as S.Schema<ListOrganizationsRequest>;
 
 export type OrganizationList = Array<Organization>;
-export const OrganizationList = /*@__PURE__*/ S.Array(
-  Organization,
-) as any as S.Schema<OrganizationList>;
+const OrganizationList = /*@__PURE__*/ S.Array(Organization) as any as S.Schema<OrganizationList>;
 
 /** Response message for ListOrganizations RPC. */
 export interface ListOrganizationsResponse {
@@ -509,7 +507,7 @@ export interface ListOrganizationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizations: S.optional(OrganizationList),
     nextPageToken: S.optional(S.String),
@@ -526,7 +524,7 @@ export interface ListOrganizationsAdminAccessBindingsRequest {
   /** Required. The parent organization, which owns this collection of Admin Access Bindings. Format: organizations/{org_id} */
   parent: string;
 }
-export const ListOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -543,7 +541,7 @@ export const ListOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<ListOrganizationsAdminAccessBindingsRequest>;
 
 export type AdminAccessBindingList = Array<AdminAccessBinding>;
-export const AdminAccessBindingList = /*@__PURE__*/ S.Array(
+const AdminAccessBindingList = /*@__PURE__*/ S.Array(
   AdminAccessBinding,
 ) as any as S.Schema<AdminAccessBindingList>;
 
@@ -554,7 +552,7 @@ export interface ListAdminAccessBindingsResponse {
   /** Admin Access Bindings in the organization. */
   adminAccessBindings?: AdminAccessBindingList;
 }
-export const ListAdminAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAdminAccessBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     adminAccessBindings: S.optional(AdminAccessBindingList),
@@ -571,7 +569,7 @@ export interface ListOrganizationsAnalyticsAccountLinksRequest {
   /** Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -588,7 +586,7 @@ export const ListOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListOrganizationsAnalyticsAccountLinksRequest>;
 
 export type AnalyticsAccountLinkList = Array<AnalyticsAccountLink>;
-export const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(
+const AnalyticsAccountLinkList = /*@__PURE__*/ S.Array(
   AnalyticsAccountLink,
 ) as any as S.Schema<AnalyticsAccountLinkList>;
 
@@ -599,7 +597,7 @@ export interface ListAnalyticsAccountLinksResponse {
   /** Analytics account links in this organization. */
   analyticsAccountLinks?: AnalyticsAccountLinkList;
 }
-export const ListAnalyticsAccountLinksResponse = /*@__PURE__*/ S.suspend(() =>
+const ListAnalyticsAccountLinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     analyticsAccountLinks: S.optional(AnalyticsAccountLinkList),
@@ -616,7 +614,7 @@ export interface ListOrganizationsUserGroupsRequest {
   /** Required. The parent org where this UserGroup will be listed. Format: organizations/{org_id} */
   parent: string;
 }
-export const ListOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -633,7 +631,7 @@ export const ListOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsUserGroupsRequest>;
 
 export type UserGroupList = Array<UserGroup>;
-export const UserGroupList = /*@__PURE__*/ S.Array(UserGroup) as any as S.Schema<UserGroupList>;
+const UserGroupList = /*@__PURE__*/ S.Array(UserGroup) as any as S.Schema<UserGroupList>;
 
 /** Response message for ListUserGroups RPC. */
 export interface ListUserGroupsResponse {
@@ -642,7 +640,7 @@ export interface ListUserGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-export const ListUserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userGroups: S.optional(UserGroupList),
     nextPageToken: S.optional(S.String),
@@ -657,7 +655,7 @@ export interface ListOrganizationsUserGroupsMembersRequest {
   /** Optional. The maximum number of user group members to return in one call. The service may return fewer than this value. If unspecified, at most 50 user group members will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-export const ListOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageToken: S.optional(S.String.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -674,7 +672,7 @@ export const ListOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListOrganizationsUserGroupsMembersRequest>;
 
 export type UserGroupMemberList = Array<UserGroupMember>;
-export const UserGroupMemberList = /*@__PURE__*/ S.Array(
+const UserGroupMemberList = /*@__PURE__*/ S.Array(
   UserGroupMember,
 ) as any as S.Schema<UserGroupMemberList>;
 
@@ -685,7 +683,7 @@ export interface ListUserGroupMembersResponse {
   /** User group members in the user group. */
   userGroupMembers?: UserGroupMemberList;
 }
-export const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     userGroupMembers: S.optional(UserGroupMemberList),
@@ -702,7 +700,7 @@ export interface PatchOrganizationsAdminAccessBindingsRequest {
   /** Request body */
   body?: AdminAccessBinding;
 }
-export const PatchOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsAdminAccessBindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -726,7 +724,7 @@ export interface PatchOrganizationsUserGroupsRequest {
   /** Request body */
   body?: UserGroup;
 }
-export const PatchOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsUserGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String.pipe(T.Query())),
     name: S.String.pipe(T.Label()),
@@ -750,7 +748,7 @@ export interface PatchOrganizationsUserGroupsMembersRequest {
   /** Request body */
   body?: UserGroupMember;
 }
-export const PatchOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchOrganizationsUserGroupsMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -771,7 +769,7 @@ export interface ReportPropertyUsageRequest {
   /** Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05" */
   month?: string;
 }
-export const ReportPropertyUsageRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportPropertyUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     month: S.optional(S.String),
   }),
@@ -785,7 +783,7 @@ export interface ReportPropertyUsageOrganizationsRequest {
   /** Request body */
   body?: ReportPropertyUsageRequest;
 }
-export const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ReportPropertyUsageOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organization: S.String.pipe(T.Label()),
     body: S.optional(ReportPropertyUsageRequest.pipe(T.HttpBody())),
@@ -804,14 +802,14 @@ export type PropertyUsageServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
   | "ANALYTICS_SERVICE_LEVEL_360";
-export const PropertyUsageServiceLevelEnum = S.String;
+const PropertyUsageServiceLevelEnum = S.String;
 
 export type PropertyUsagePropertyTypeEnum =
   | "ANALYTICS_PROPERTY_TYPE_UNSPECIFIED"
   | "ANALYTICS_PROPERTY_TYPE_ORDINARY"
   | "ANALYTICS_PROPERTY_TYPE_SUBPROPERTY"
   | "ANALYTICS_PROPERTY_TYPE_ROLLUP";
-export const PropertyUsagePropertyTypeEnum = S.String;
+const PropertyUsagePropertyTypeEnum = S.String;
 
 /** Contains the count of events received by the property, along with metadata that influences the volume of `billable` events. */
 export interface PropertyUsage {
@@ -830,7 +828,7 @@ export interface PropertyUsage {
   /** The name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
   property?: string;
 }
-export const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
+const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     totalEventCount: S.optional(S.String),
     serviceLevel: S.optional(PropertyUsageServiceLevelEnum),
@@ -843,7 +841,7 @@ export const PropertyUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PropertyUsage" }) as any as S.Schema<PropertyUsage>;
 
 export type PropertyUsageList = Array<PropertyUsage>;
-export const PropertyUsageList = /*@__PURE__*/ S.Array(
+const PropertyUsageList = /*@__PURE__*/ S.Array(
   PropertyUsage,
 ) as any as S.Schema<PropertyUsageList>;
 
@@ -856,7 +854,7 @@ export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     nanos: S.optional(S.Number),
@@ -875,7 +873,7 @@ export interface BillInfo {
   /** The amount of the monthly base fee. */
   baseFee?: Money;
 }
-export const BillInfo = /*@__PURE__*/ S.suspend(() =>
+const BillInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     eventFee: S.optional(Money),
     total: S.optional(Money),
@@ -891,7 +889,7 @@ export interface ReportPropertyUsageResponse {
   /** Bill amount in the specified organization and month. Will be empty if user only has access to usage data. */
   billInfo?: BillInfo;
 }
-export const ReportPropertyUsageResponse = /*@__PURE__*/ S.suspend(() =>
+const ReportPropertyUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     propertyUsages: S.optional(PropertyUsageList),
     billInfo: S.optional(BillInfo),
@@ -904,7 +902,7 @@ export type SetPropertyServiceLevelRequestServiceLevelEnum =
   | "ANALYTICS_SERVICE_LEVEL_UNSPECIFIED"
   | "ANALYTICS_SERVICE_LEVEL_STANDARD"
   | "ANALYTICS_SERVICE_LEVEL_360";
-export const SetPropertyServiceLevelRequestServiceLevelEnum = S.String;
+const SetPropertyServiceLevelRequestServiceLevelEnum = S.String;
 
 /** Request message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelRequest {
@@ -913,7 +911,7 @@ export interface SetPropertyServiceLevelRequest {
   /** Required. The service level to set for this property. */
   serviceLevel?: SetPropertyServiceLevelRequestServiceLevelEnum | (string & {});
 }
-export const SetPropertyServiceLevelRequest = /*@__PURE__*/ S.suspend(() =>
+const SetPropertyServiceLevelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     analyticsProperty: S.optional(S.String),
     serviceLevel: S.optional(SetPropertyServiceLevelRequestServiceLevelEnum),
@@ -928,8 +926,8 @@ export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksReques
   /** Request body */
   body?: SetPropertyServiceLevelRequest;
 }
-export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       analyticsAccountLink: S.String.pipe(T.Label()),
       body: S.optional(SetPropertyServiceLevelRequest.pipe(T.HttpBody())),
@@ -940,15 +938,15 @@ export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest =
         baseUrl: "https://marketingplatformadmin.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest",
-  }) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
+).annotate({
+  identifier: "SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest",
+}) as any as S.Schema<SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest>;
 
 /** Response message for SetPropertyServiceLevel RPC. */
 export interface SetPropertyServiceLevelResponse {}
-export const SetPropertyServiceLevelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
-  { identifier: "SetPropertyServiceLevelResponse" },
-) as any as S.Schema<SetPropertyServiceLevelResponse>;
+const SetPropertyServiceLevelResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "SetPropertyServiceLevelResponse",
+}) as any as S.Schema<SetPropertyServiceLevelResponse>;
 
 export type CreateOrganizationsAdminAccessBindingsError =
   | NotFound

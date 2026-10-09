@@ -167,7 +167,7 @@ export interface AssociateApiRequest {
   domainName: string;
   apiId: string;
 }
-export const AssociateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")), apiId: S.String }).pipe(
     T.all(
       ns,
@@ -181,7 +181,7 @@ export const AssociateApiRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "AssociateApiRequest" }) as any as S.Schema<AssociateApiRequest>;
 export type AssociationStatus = "PROCESSING" | "FAILED" | "SUCCESS" | (string & {});
-export const AssociationStatus = S.String;
+const AssociationStatus = S.String;
 
 export interface ApiAssociation {
   domainName?: string;
@@ -189,7 +189,7 @@ export interface ApiAssociation {
   associationStatus?: AssociationStatus;
   deploymentDetail?: string;
 }
-export const ApiAssociation = /*@__PURE__*/ S.suspend(() =>
+const ApiAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     apiId: S.optional(S.String),
@@ -200,16 +200,16 @@ export const ApiAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateApiResponse {
   apiAssociation?: ApiAssociation;
 }
-export const AssociateApiResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiAssociation: S.optional(ApiAssociation) }).pipe(ns),
 ).annotate({ identifier: "AssociateApiResponse" }) as any as S.Schema<AssociateApiResponse>;
 export type MergeType = "MANUAL_MERGE" | "AUTO_MERGE" | (string & {});
-export const MergeType = S.String;
+const MergeType = S.String;
 
 export interface SourceApiAssociationConfig {
   mergeType?: MergeType;
 }
-export const SourceApiAssociationConfig = /*@__PURE__*/ S.suspend(() =>
+const SourceApiAssociationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ mergeType: S.optional(MergeType) }),
 ).annotate({
   identifier: "SourceApiAssociationConfig",
@@ -220,7 +220,7 @@ export interface AssociateMergedGraphqlApiRequest {
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
-export const AssociateMergedGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateMergedGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceApiIdentifier: S.String.pipe(T.HttpLabel("sourceApiIdentifier")),
     mergedApiIdentifier: S.String,
@@ -250,7 +250,7 @@ export type SourceApiAssociationStatus =
   | "DELETION_IN_PROGRESS"
   | "DELETION_FAILED"
   | (string & {});
-export const SourceApiAssociationStatus = S.String;
+const SourceApiAssociationStatus = S.String;
 
 export interface SourceApiAssociation {
   associationId?: string;
@@ -265,7 +265,7 @@ export interface SourceApiAssociation {
   sourceApiAssociationStatusDetail?: string;
   lastSuccessfulMergeDate?: Date;
 }
-export const SourceApiAssociation = /*@__PURE__*/ S.suspend(() =>
+const SourceApiAssociation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.optional(S.String),
     associationArn: S.optional(S.String),
@@ -283,7 +283,7 @@ export const SourceApiAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateMergedGraphqlApiResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
-export const AssociateMergedGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
+const AssociateMergedGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceApiAssociation: S.optional(SourceApiAssociation) }).pipe(ns),
 ).annotate({
   identifier: "AssociateMergedGraphqlApiResponse",
@@ -294,7 +294,7 @@ export interface AssociateSourceGraphqlApiRequest {
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
-export const AssociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const AssociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
     sourceApiIdentifier: S.String,
@@ -317,13 +317,13 @@ export const AssociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface AssociateSourceGraphqlApiResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
-export const AssociateSourceGraphqlApiResponse =
+const AssociateSourceGraphqlApiResponse =
   AssociateMergedGraphqlApiResponse as any as S.Schema<AssociateSourceGraphqlApiResponse>;
 export type ApiName = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
+const TagMap = /*@__PURE__*/ S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
 export type AuthenticationType =
   | "API_KEY"
   | "AWS_IAM"
@@ -331,14 +331,14 @@ export type AuthenticationType =
   | "OPENID_CONNECT"
   | "AWS_LAMBDA"
   | (string & {});
-export const AuthenticationType = S.String;
+const AuthenticationType = S.String;
 
 export interface CognitoConfig {
   userPoolId: string;
   awsRegion: string;
   appIdClientRegex?: string;
 }
-export const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
+const CognitoConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ userPoolId: S.String, awsRegion: S.String, appIdClientRegex: S.optional(S.String) }),
 ).annotate({ identifier: "CognitoConfig" }) as any as S.Schema<CognitoConfig>;
 export interface OpenIDConnectConfig {
@@ -347,7 +347,7 @@ export interface OpenIDConnectConfig {
   iatTTL?: number;
   authTTL?: number;
 }
-export const OpenIDConnectConfig = /*@__PURE__*/ S.suspend(() =>
+const OpenIDConnectConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     issuer: S.String,
     clientId: S.optional(S.String),
@@ -361,7 +361,7 @@ export interface LambdaAuthorizerConfig {
   authorizerUri: string;
   identityValidationExpression?: string;
 }
-export const LambdaAuthorizerConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaAuthorizerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authorizerResultTtlInSeconds: S.optional(S.Number),
     authorizerUri: S.String,
@@ -374,7 +374,7 @@ export interface AuthProvider {
   openIDConnectConfig?: OpenIDConnectConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
 }
-export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
+const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authType: AuthenticationType,
     cognitoConfig: S.optional(CognitoConfig),
@@ -383,23 +383,23 @@ export const AuthProvider = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AuthProvider" }) as any as S.Schema<AuthProvider>;
 export type AuthProviders = AuthProvider[];
-export const AuthProviders = /*@__PURE__*/ S.Array(AuthProvider);
+const AuthProviders = /*@__PURE__*/ S.Array(AuthProvider);
 export interface AuthMode {
   authType: AuthenticationType;
 }
-export const AuthMode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ authType: AuthenticationType }),
-).annotate({ identifier: "AuthMode" }) as any as S.Schema<AuthMode>;
+const AuthMode = /*@__PURE__*/ S.suspend(() => S.Struct({ authType: AuthenticationType })).annotate(
+  { identifier: "AuthMode" },
+) as any as S.Schema<AuthMode>;
 export type AuthModes = AuthMode[];
-export const AuthModes = /*@__PURE__*/ S.Array(AuthMode);
+const AuthModes = /*@__PURE__*/ S.Array(AuthMode);
 export type EventLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG" | (string & {});
-export const EventLogLevel = S.String;
+const EventLogLevel = S.String;
 
 export interface EventLogConfig {
   logLevel: EventLogLevel;
   cloudWatchLogsRoleArn: string;
 }
-export const EventLogConfig = /*@__PURE__*/ S.suspend(() =>
+const EventLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logLevel: EventLogLevel, cloudWatchLogsRoleArn: S.String }),
 ).annotate({ identifier: "EventLogConfig" }) as any as S.Schema<EventLogConfig>;
 export interface EventConfig {
@@ -409,7 +409,7 @@ export interface EventConfig {
   defaultSubscribeAuthModes: AuthMode[];
   logConfig?: EventLogConfig;
 }
-export const EventConfig = /*@__PURE__*/ S.suspend(() =>
+const EventConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authProviders: AuthProviders,
     connectionAuthModes: AuthModes,
@@ -424,7 +424,7 @@ export interface CreateApiRequest {
   tags?: { [key: string]: string | undefined };
   eventConfig: EventConfig;
 }
-export const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ownerContact: S.optional(S.String),
@@ -434,7 +434,7 @@ export const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateApiRequest" }) as any as S.Schema<CreateApiRequest>;
 export type OwnerContact = string;
 export type MapOfStringToString = { [key: string]: string | undefined };
-export const MapOfStringToString = /*@__PURE__*/ S.Record(
+const MapOfStringToString = /*@__PURE__*/ S.Record(
   S.String,
   /*@__PURE__*/ S.String.pipe(S.optional),
 );
@@ -450,7 +450,7 @@ export interface Api {
   wafWebAclArn?: string;
   eventConfig?: EventConfig;
 }
-export const Api = /*@__PURE__*/ S.suspend(() =>
+const Api = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.optional(S.String),
     name: S.optional(S.String),
@@ -467,7 +467,7 @@ export const Api = /*@__PURE__*/ S.suspend(() =>
 export interface CreateApiResponse {
   api?: Api;
 }
-export const CreateApiResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ api: S.optional(Api) }).pipe(ns),
 ).annotate({ identifier: "CreateApiResponse" }) as any as S.Schema<CreateApiResponse>;
 export type ApiCachingBehavior =
@@ -475,7 +475,7 @@ export type ApiCachingBehavior =
   | "PER_RESOLVER_CACHING"
   | "OPERATION_LEVEL_CACHING"
   | (string & {});
-export const ApiCachingBehavior = S.String;
+const ApiCachingBehavior = S.String;
 
 export type ApiCacheType =
   | "T2_SMALL"
@@ -494,10 +494,10 @@ export type ApiCacheType =
   | "LARGE_8X"
   | "LARGE_12X"
   | (string & {});
-export const ApiCacheType = S.String;
+const ApiCacheType = S.String;
 
 export type CacheHealthMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const CacheHealthMetricsConfig = S.String;
+const CacheHealthMetricsConfig = S.String;
 
 export interface CreateApiCacheRequest {
   apiId: string;
@@ -508,7 +508,7 @@ export interface CreateApiCacheRequest {
   type: ApiCacheType;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
-export const CreateApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     ttl: S.Number,
@@ -536,7 +536,7 @@ export type ApiCacheStatus =
   | "MODIFYING"
   | "FAILED"
   | (string & {});
-export const ApiCacheStatus = S.String;
+const ApiCacheStatus = S.String;
 
 export interface ApiCache {
   ttl?: number;
@@ -547,7 +547,7 @@ export interface ApiCache {
   status?: ApiCacheStatus;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
-export const ApiCache = /*@__PURE__*/ S.suspend(() =>
+const ApiCache = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ttl: S.optional(S.Number),
     apiCachingBehavior: S.optional(ApiCachingBehavior),
@@ -561,7 +561,7 @@ export const ApiCache = /*@__PURE__*/ S.suspend(() =>
 export interface CreateApiCacheResponse {
   apiCache?: ApiCache;
 }
-export const CreateApiCacheResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiCacheResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiCache: S.optional(ApiCache) }).pipe(ns),
 ).annotate({ identifier: "CreateApiCacheResponse" }) as any as S.Schema<CreateApiCacheResponse>;
 export interface CreateApiKeyRequest {
@@ -569,7 +569,7 @@ export interface CreateApiKeyRequest {
   description?: string;
   expires?: number;
 }
-export const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     description: S.optional(S.String),
@@ -592,7 +592,7 @@ export interface ApiKey {
   expires?: number;
   deletes?: number;
 }
-export const ApiKey = /*@__PURE__*/ S.suspend(() =>
+const ApiKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -603,42 +603,42 @@ export const ApiKey = /*@__PURE__*/ S.suspend(() =>
 export interface CreateApiKeyResponse {
   apiKey?: ApiKey;
 }
-export const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKey: S.optional(ApiKey) }).pipe(ns),
 ).annotate({ identifier: "CreateApiKeyResponse" }) as any as S.Schema<CreateApiKeyResponse>;
 export type Namespace = string;
 export type Code = string;
 export type HandlerBehavior = "CODE" | "DIRECT" | (string & {});
-export const HandlerBehavior = S.String;
+const HandlerBehavior = S.String;
 
 export type InvokeType = "REQUEST_RESPONSE" | "EVENT" | (string & {});
-export const InvokeType = S.String;
+const InvokeType = S.String;
 
 export interface LambdaConfig {
   invokeType?: InvokeType;
 }
-export const LambdaConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ invokeType: S.optional(InvokeType) }),
 ).annotate({ identifier: "LambdaConfig" }) as any as S.Schema<LambdaConfig>;
 export interface Integration {
   dataSourceName: string;
   lambdaConfig?: LambdaConfig;
 }
-export const Integration = /*@__PURE__*/ S.suspend(() =>
+const Integration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSourceName: S.String, lambdaConfig: S.optional(LambdaConfig) }),
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
 export interface HandlerConfig {
   behavior: HandlerBehavior;
   integration: Integration;
 }
-export const HandlerConfig = /*@__PURE__*/ S.suspend(() =>
+const HandlerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ behavior: HandlerBehavior, integration: Integration }),
 ).annotate({ identifier: "HandlerConfig" }) as any as S.Schema<HandlerConfig>;
 export interface HandlerConfigs {
   onPublish?: HandlerConfig;
   onSubscribe?: HandlerConfig;
 }
-export const HandlerConfigs = /*@__PURE__*/ S.suspend(() =>
+const HandlerConfigs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ onPublish: S.optional(HandlerConfig), onSubscribe: S.optional(HandlerConfig) }),
 ).annotate({ identifier: "HandlerConfigs" }) as any as S.Schema<HandlerConfigs>;
 export interface CreateChannelNamespaceRequest {
@@ -650,7 +650,7 @@ export interface CreateChannelNamespaceRequest {
   tags?: { [key: string]: string | undefined };
   handlerConfigs?: HandlerConfigs;
 }
-export const CreateChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -685,7 +685,7 @@ export interface ChannelNamespace {
   lastModified?: Date;
   handlerConfigs?: HandlerConfigs;
 }
-export const ChannelNamespace = /*@__PURE__*/ S.suspend(() =>
+const ChannelNamespace = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.optional(S.String),
     name: S.optional(S.String),
@@ -702,7 +702,7 @@ export const ChannelNamespace = /*@__PURE__*/ S.suspend(() =>
 export interface CreateChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
-export const CreateChannelNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateChannelNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelNamespace: S.optional(ChannelNamespace) }).pipe(ns),
 ).annotate({
   identifier: "CreateChannelNamespaceResponse",
@@ -719,14 +719,14 @@ export type DataSourceType =
   | "AMAZON_EVENTBRIDGE"
   | "AMAZON_BEDROCK_RUNTIME"
   | (string & {});
-export const DataSourceType = S.String;
+const DataSourceType = S.String;
 
 export interface DeltaSyncConfig {
   baseTableTTL?: number;
   deltaSyncTableName?: string;
   deltaSyncTableTTL?: number;
 }
-export const DeltaSyncConfig = /*@__PURE__*/ S.suspend(() =>
+const DeltaSyncConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     baseTableTTL: S.optional(S.Number),
     deltaSyncTableName: S.optional(S.String),
@@ -740,7 +740,7 @@ export interface DynamodbDataSourceConfig {
   deltaSyncConfig?: DeltaSyncConfig;
   versioned?: boolean;
 }
-export const DynamodbDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const DynamodbDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableName: S.String,
     awsRegion: S.String,
@@ -752,14 +752,14 @@ export const DynamodbDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
 export interface LambdaDataSourceConfig {
   lambdaFunctionArn: string;
 }
-export const LambdaDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambdaFunctionArn: S.String }),
 ).annotate({ identifier: "LambdaDataSourceConfig" }) as any as S.Schema<LambdaDataSourceConfig>;
 export interface ElasticsearchDataSourceConfig {
   endpoint: string;
   awsRegion: string;
 }
-export const ElasticsearchDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const ElasticsearchDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ endpoint: S.String, awsRegion: S.String }),
 ).annotate({
   identifier: "ElasticsearchDataSourceConfig",
@@ -768,37 +768,37 @@ export interface OpenSearchServiceDataSourceConfig {
   endpoint: string;
   awsRegion: string;
 }
-export const OpenSearchServiceDataSourceConfig =
+const OpenSearchServiceDataSourceConfig =
   ElasticsearchDataSourceConfig as any as S.Schema<OpenSearchServiceDataSourceConfig>;
 export type AuthorizationType = "AWS_IAM" | (string & {});
-export const AuthorizationType = S.String;
+const AuthorizationType = S.String;
 
 export interface AwsIamConfig {
   signingRegion?: string;
   signingServiceName?: string;
 }
-export const AwsIamConfig = /*@__PURE__*/ S.suspend(() =>
+const AwsIamConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ signingRegion: S.optional(S.String), signingServiceName: S.optional(S.String) }),
 ).annotate({ identifier: "AwsIamConfig" }) as any as S.Schema<AwsIamConfig>;
 export interface AuthorizationConfig {
   authorizationType: AuthorizationType;
   awsIamConfig?: AwsIamConfig;
 }
-export const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ authorizationType: AuthorizationType, awsIamConfig: S.optional(AwsIamConfig) }),
 ).annotate({ identifier: "AuthorizationConfig" }) as any as S.Schema<AuthorizationConfig>;
 export interface HttpDataSourceConfig {
   endpoint?: string;
   authorizationConfig?: AuthorizationConfig;
 }
-export const HttpDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const HttpDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpoint: S.optional(S.String),
     authorizationConfig: S.optional(AuthorizationConfig),
   }),
 ).annotate({ identifier: "HttpDataSourceConfig" }) as any as S.Schema<HttpDataSourceConfig>;
 export type RelationalDatabaseSourceType = "RDS_HTTP_ENDPOINT" | (string & {});
-export const RelationalDatabaseSourceType = S.String;
+const RelationalDatabaseSourceType = S.String;
 
 export interface RdsHttpEndpointConfig {
   awsRegion?: string;
@@ -807,7 +807,7 @@ export interface RdsHttpEndpointConfig {
   schema?: string;
   awsSecretStoreArn?: string;
 }
-export const RdsHttpEndpointConfig = /*@__PURE__*/ S.suspend(() =>
+const RdsHttpEndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     awsRegion: S.optional(S.String),
     dbClusterIdentifier: S.optional(S.String),
@@ -820,7 +820,7 @@ export interface RelationalDatabaseDataSourceConfig {
   relationalDatabaseSourceType?: RelationalDatabaseSourceType;
   rdsHttpEndpointConfig?: RdsHttpEndpointConfig;
 }
-export const RelationalDatabaseDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const RelationalDatabaseDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     relationalDatabaseSourceType: S.optional(RelationalDatabaseSourceType),
     rdsHttpEndpointConfig: S.optional(RdsHttpEndpointConfig),
@@ -831,13 +831,13 @@ export const RelationalDatabaseDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
 export interface EventBridgeDataSourceConfig {
   eventBusArn: string;
 }
-export const EventBridgeDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
+const EventBridgeDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ eventBusArn: S.String }),
 ).annotate({
   identifier: "EventBridgeDataSourceConfig",
 }) as any as S.Schema<EventBridgeDataSourceConfig>;
 export type DataSourceLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const DataSourceLevelMetricsConfig = S.String;
+const DataSourceLevelMetricsConfig = S.String;
 
 export interface CreateDataSourceRequest {
   apiId: string;
@@ -854,7 +854,7 @@ export interface CreateDataSourceRequest {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
-export const CreateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -896,7 +896,7 @@ export interface DataSource {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
-export const DataSource = /*@__PURE__*/ S.suspend(() =>
+const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSourceArn: S.optional(S.String),
     name: S.optional(S.String),
@@ -916,7 +916,7 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDataSourceResponse {
   dataSource?: DataSource;
 }
-export const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSource: S.optional(DataSource) }).pipe(ns),
 ).annotate({ identifier: "CreateDataSourceResponse" }) as any as S.Schema<CreateDataSourceResponse>;
 export type CertificateArn = string;
@@ -927,7 +927,7 @@ export interface CreateDomainNameRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.String,
     certificateArn: S.String,
@@ -946,7 +946,7 @@ export interface DomainNameConfig {
   tags?: { [key: string]: string | undefined };
   domainNameArn?: string;
 }
-export const DomainNameConfig = /*@__PURE__*/ S.suspend(() =>
+const DomainNameConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     description: S.optional(S.String),
@@ -960,7 +960,7 @@ export const DomainNameConfig = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
-export const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainNameConfig: S.optional(DomainNameConfig) }).pipe(ns),
 ).annotate({ identifier: "CreateDomainNameResponse" }) as any as S.Schema<CreateDomainNameResponse>;
 export type MappingTemplate = string;
@@ -970,15 +970,15 @@ export type ConflictHandlerType =
   | "AUTOMERGE"
   | "NONE"
   | (string & {});
-export const ConflictHandlerType = S.String;
+const ConflictHandlerType = S.String;
 
 export type ConflictDetectionType = "VERSION" | "NONE" | (string & {});
-export const ConflictDetectionType = S.String;
+const ConflictDetectionType = S.String;
 
 export interface LambdaConflictHandlerConfig {
   lambdaConflictHandlerArn?: string;
 }
-export const LambdaConflictHandlerConfig = /*@__PURE__*/ S.suspend(() =>
+const LambdaConflictHandlerConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambdaConflictHandlerArn: S.optional(S.String) }),
 ).annotate({
   identifier: "LambdaConflictHandlerConfig",
@@ -988,7 +988,7 @@ export interface SyncConfig {
   conflictDetection?: ConflictDetectionType;
   lambdaConflictHandlerConfig?: LambdaConflictHandlerConfig;
 }
-export const SyncConfig = /*@__PURE__*/ S.suspend(() =>
+const SyncConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     conflictHandler: S.optional(ConflictHandlerType),
     conflictDetection: S.optional(ConflictDetectionType),
@@ -997,13 +997,13 @@ export const SyncConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SyncConfig" }) as any as S.Schema<SyncConfig>;
 export type MaxBatchSize = number;
 export type RuntimeName = "APPSYNC_JS" | (string & {});
-export const RuntimeName = S.String;
+const RuntimeName = S.String;
 
 export interface AppSyncRuntime {
   name: RuntimeName;
   runtimeVersion: string;
 }
-export const AppSyncRuntime = /*@__PURE__*/ S.suspend(() =>
+const AppSyncRuntime = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: RuntimeName, runtimeVersion: S.String }),
 ).annotate({ identifier: "AppSyncRuntime" }) as any as S.Schema<AppSyncRuntime>;
 export interface CreateFunctionRequest {
@@ -1019,7 +1019,7 @@ export interface CreateFunctionRequest {
   runtime?: AppSyncRuntime;
   code?: string;
 }
-export const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -1058,7 +1058,7 @@ export interface FunctionConfiguration {
   runtime?: AppSyncRuntime;
   code?: string;
 }
-export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
+const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     functionArn: S.optional(S.String),
@@ -1077,18 +1077,18 @@ export const FunctionConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface CreateFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
-export const CreateFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functionConfiguration: S.optional(FunctionConfiguration) }).pipe(ns),
 ).annotate({ identifier: "CreateFunctionResponse" }) as any as S.Schema<CreateFunctionResponse>;
 export type FieldLogLevel = "NONE" | "ERROR" | "ALL" | "INFO" | "DEBUG" | (string & {});
-export const FieldLogLevel = S.String;
+const FieldLogLevel = S.String;
 
 export interface LogConfig {
   fieldLogLevel: FieldLogLevel;
   cloudWatchLogsRoleArn: string;
   excludeVerboseContent?: boolean;
 }
-export const LogConfig = /*@__PURE__*/ S.suspend(() =>
+const LogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fieldLogLevel: FieldLogLevel,
     cloudWatchLogsRoleArn: S.String,
@@ -1096,7 +1096,7 @@ export const LogConfig = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LogConfig" }) as any as S.Schema<LogConfig>;
 export type DefaultAction = "ALLOW" | "DENY" | (string & {});
-export const DefaultAction = S.String;
+const DefaultAction = S.String;
 
 export interface UserPoolConfig {
   userPoolId: string;
@@ -1104,7 +1104,7 @@ export interface UserPoolConfig {
   defaultAction: DefaultAction;
   appIdClientRegex?: string;
 }
-export const UserPoolConfig = /*@__PURE__*/ S.suspend(() =>
+const UserPoolConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userPoolId: S.String,
     awsRegion: S.String,
@@ -1117,14 +1117,14 @@ export interface CognitoUserPoolConfig {
   awsRegion: string;
   appIdClientRegex?: string;
 }
-export const CognitoUserPoolConfig = CognitoConfig as any as S.Schema<CognitoUserPoolConfig>;
+const CognitoUserPoolConfig = CognitoConfig as any as S.Schema<CognitoUserPoolConfig>;
 export interface AdditionalAuthenticationProvider {
   authenticationType?: AuthenticationType;
   openIDConnectConfig?: OpenIDConnectConfig;
   userPoolConfig?: CognitoUserPoolConfig;
   lambdaAuthorizerConfig?: LambdaAuthorizerConfig;
 }
-export const AdditionalAuthenticationProvider = /*@__PURE__*/ S.suspend(() =>
+const AdditionalAuthenticationProvider = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationType: S.optional(AuthenticationType),
     openIDConnectConfig: S.optional(OpenIDConnectConfig),
@@ -1135,17 +1135,15 @@ export const AdditionalAuthenticationProvider = /*@__PURE__*/ S.suspend(() =>
   identifier: "AdditionalAuthenticationProvider",
 }) as any as S.Schema<AdditionalAuthenticationProvider>;
 export type AdditionalAuthenticationProviders = AdditionalAuthenticationProvider[];
-export const AdditionalAuthenticationProviders = /*@__PURE__*/ S.Array(
-  AdditionalAuthenticationProvider,
-);
+const AdditionalAuthenticationProviders = /*@__PURE__*/ S.Array(AdditionalAuthenticationProvider);
 export type GraphQLApiType = "GRAPHQL" | "MERGED" | (string & {});
-export const GraphQLApiType = S.String;
+const GraphQLApiType = S.String;
 
 export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE" | (string & {});
-export const GraphQLApiVisibility = S.String;
+const GraphQLApiVisibility = S.String;
 
 export type GraphQLApiIntrospectionConfig = "ENABLED" | "DISABLED" | (string & {});
-export const GraphQLApiIntrospectionConfig = S.String;
+const GraphQLApiIntrospectionConfig = S.String;
 
 export type QueryDepthLimit = number;
 export type ResolverCountLimit = number;
@@ -1153,23 +1151,23 @@ export type ResolverLevelMetricsBehavior =
   | "FULL_REQUEST_RESOLVER_METRICS"
   | "PER_RESOLVER_METRICS"
   | (string & {});
-export const ResolverLevelMetricsBehavior = S.String;
+const ResolverLevelMetricsBehavior = S.String;
 
 export type DataSourceLevelMetricsBehavior =
   | "FULL_REQUEST_DATA_SOURCE_METRICS"
   | "PER_DATA_SOURCE_METRICS"
   | (string & {});
-export const DataSourceLevelMetricsBehavior = S.String;
+const DataSourceLevelMetricsBehavior = S.String;
 
 export type OperationLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const OperationLevelMetricsConfig = S.String;
+const OperationLevelMetricsConfig = S.String;
 
 export interface EnhancedMetricsConfig {
   resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior;
   dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior;
   operationLevelMetricsConfig: OperationLevelMetricsConfig;
 }
-export const EnhancedMetricsConfig = /*@__PURE__*/ S.suspend(() =>
+const EnhancedMetricsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior,
     dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior,
@@ -1195,7 +1193,7 @@ export interface CreateGraphqlApiRequest {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
-export const CreateGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     logConfig: S.optional(LogConfig),
@@ -1241,7 +1239,7 @@ export interface GraphqlApi {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
-export const GraphqlApi = /*@__PURE__*/ S.suspend(() =>
+const GraphqlApi = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     apiId: S.optional(S.String),
@@ -1271,31 +1269,31 @@ export const GraphqlApi = /*@__PURE__*/ S.suspend(() =>
 export interface CreateGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
-export const CreateGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ graphqlApi: S.optional(GraphqlApi) }).pipe(ns),
 ).annotate({ identifier: "CreateGraphqlApiResponse" }) as any as S.Schema<CreateGraphqlApiResponse>;
 export type ResolverKind = "UNIT" | "PIPELINE" | (string & {});
-export const ResolverKind = S.String;
+const ResolverKind = S.String;
 
 export type FunctionsIds = string[];
-export const FunctionsIds = /*@__PURE__*/ S.Array(S.String);
+const FunctionsIds = /*@__PURE__*/ S.Array(S.String);
 export interface PipelineConfig {
   functions?: string[];
 }
-export const PipelineConfig = /*@__PURE__*/ S.suspend(() =>
+const PipelineConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functions: S.optional(FunctionsIds) }),
 ).annotate({ identifier: "PipelineConfig" }) as any as S.Schema<PipelineConfig>;
 export type CachingKeys = string[];
-export const CachingKeys = FunctionsIds as any as S.Schema<CachingKeys>;
+const CachingKeys = FunctionsIds as any as S.Schema<CachingKeys>;
 export interface CachingConfig {
   ttl: number;
   cachingKeys?: string[];
 }
-export const CachingConfig = /*@__PURE__*/ S.suspend(() =>
+const CachingConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ttl: S.Number, cachingKeys: S.optional(CachingKeys) }),
 ).annotate({ identifier: "CachingConfig" }) as any as S.Schema<CachingConfig>;
 export type ResolverLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
-export const ResolverLevelMetricsConfig = S.String;
+const ResolverLevelMetricsConfig = S.String;
 
 export interface CreateResolverRequest {
   apiId: string;
@@ -1313,7 +1311,7 @@ export interface CreateResolverRequest {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
-export const CreateResolverRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateResolverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -1357,7 +1355,7 @@ export interface Resolver {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
-export const Resolver = /*@__PURE__*/ S.suspend(() =>
+const Resolver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typeName: S.optional(S.String),
     fieldName: S.optional(S.String),
@@ -1378,18 +1376,18 @@ export const Resolver = /*@__PURE__*/ S.suspend(() =>
 export interface CreateResolverResponse {
   resolver?: Resolver;
 }
-export const CreateResolverResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateResolverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resolver: S.optional(Resolver) }).pipe(ns),
 ).annotate({ identifier: "CreateResolverResponse" }) as any as S.Schema<CreateResolverResponse>;
 export type TypeDefinitionFormat = "SDL" | "JSON" | (string & {});
-export const TypeDefinitionFormat = S.String;
+const TypeDefinitionFormat = S.String;
 
 export interface CreateTypeRequest {
   apiId: string;
   definition: string;
   format: TypeDefinitionFormat;
 }
-export const CreateTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     definition: S.String,
@@ -1413,7 +1411,7 @@ export interface Type {
   definition?: string;
   format?: TypeDefinitionFormat;
 }
-export const Type = /*@__PURE__*/ S.suspend(() =>
+const Type = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -1425,25 +1423,25 @@ export const Type = /*@__PURE__*/ S.suspend(() =>
 export interface CreateTypeResponse {
   type?: Type;
 }
-export const CreateTypeResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTypeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: S.optional(Type) }).pipe(ns),
 ).annotate({ identifier: "CreateTypeResponse" }) as any as S.Schema<CreateTypeResponse>;
 export interface DeleteApiRequest {
   apiId: string;
 }
-export const DeleteApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(ns, T.Http({ method: "DELETE", uri: "/v2/apis/{apiId}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteApiRequest" }) as any as S.Schema<DeleteApiRequest>;
 export interface DeleteApiResponse {}
-export const DeleteApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+const DeleteApiResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
   identifier: "DeleteApiResponse",
 }) as any as S.Schema<DeleteApiResponse>;
 export interface DeleteApiCacheRequest {
   apiId: string;
 }
-export const DeleteApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(
       ns,
@@ -1457,14 +1455,14 @@ export const DeleteApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApiCacheRequest" }) as any as S.Schema<DeleteApiCacheRequest>;
 export interface DeleteApiCacheResponse {}
-export const DeleteApiCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate(
-  { identifier: "DeleteApiCacheResponse" },
-) as any as S.Schema<DeleteApiCacheResponse>;
+const DeleteApiCacheResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "DeleteApiCacheResponse",
+}) as any as S.Schema<DeleteApiCacheResponse>;
 export interface DeleteApiKeyRequest {
   apiId: string;
   id: string;
 }
-export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     id: S.String.pipe(T.HttpLabel("id")),
@@ -1481,12 +1479,12 @@ export const DeleteApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteApiKeyRequest" }) as any as S.Schema<DeleteApiKeyRequest>;
 export interface DeleteApiKeyResponse {}
-export const DeleteApiKeyResponse = DeleteApiResponse as any as S.Schema<DeleteApiKeyResponse>;
+const DeleteApiKeyResponse = DeleteApiResponse as any as S.Schema<DeleteApiKeyResponse>;
 export interface DeleteChannelNamespaceRequest {
   apiId: string;
   name: string;
 }
-export const DeleteChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1505,7 +1503,7 @@ export const DeleteChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteChannelNamespaceRequest",
 }) as any as S.Schema<DeleteChannelNamespaceRequest>;
 export interface DeleteChannelNamespaceResponse {}
-export const DeleteChannelNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+const DeleteChannelNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteChannelNamespaceResponse",
@@ -1514,7 +1512,7 @@ export interface DeleteDataSourceRequest {
   apiId: string;
   name: string;
 }
-export const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1531,13 +1529,13 @@ export const DeleteDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDataSourceRequest" }) as any as S.Schema<DeleteDataSourceRequest>;
 export interface DeleteDataSourceResponse {}
-export const DeleteDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(ns),
-).annotate({ identifier: "DeleteDataSourceResponse" }) as any as S.Schema<DeleteDataSourceResponse>;
+const DeleteDataSourceResponse = /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+  identifier: "DeleteDataSourceResponse",
+}) as any as S.Schema<DeleteDataSourceResponse>;
 export interface DeleteDomainNameRequest {
   domainName: string;
 }
-export const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
     T.all(
       ns,
@@ -1551,13 +1549,13 @@ export const DeleteDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteDomainNameRequest" }) as any as S.Schema<DeleteDomainNameRequest>;
 export interface DeleteDomainNameResponse {}
-export const DeleteDomainNameResponse =
+const DeleteDomainNameResponse =
   DeleteDataSourceResponse as any as S.Schema<DeleteDomainNameResponse>;
 export interface DeleteFunctionRequest {
   apiId: string;
   functionId: string;
 }
-export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     functionId: S.String.pipe(T.HttpLabel("functionId")),
@@ -1574,25 +1572,24 @@ export const DeleteFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteFunctionRequest" }) as any as S.Schema<DeleteFunctionRequest>;
 export interface DeleteFunctionResponse {}
-export const DeleteFunctionResponse =
-  DeleteApiCacheResponse as any as S.Schema<DeleteFunctionResponse>;
+const DeleteFunctionResponse = DeleteApiCacheResponse as any as S.Schema<DeleteFunctionResponse>;
 export interface DeleteGraphqlApiRequest {
   apiId: string;
 }
-export const DeleteGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(ns, T.Http({ method: "DELETE", uri: "/v1/apis/{apiId}" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "DeleteGraphqlApiRequest" }) as any as S.Schema<DeleteGraphqlApiRequest>;
 export interface DeleteGraphqlApiResponse {}
-export const DeleteGraphqlApiResponse =
+const DeleteGraphqlApiResponse =
   DeleteDataSourceResponse as any as S.Schema<DeleteGraphqlApiResponse>;
 export interface DeleteResolverRequest {
   apiId: string;
   typeName: string;
   fieldName: string;
 }
-export const DeleteResolverRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteResolverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -1610,13 +1607,12 @@ export const DeleteResolverRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteResolverRequest" }) as any as S.Schema<DeleteResolverRequest>;
 export interface DeleteResolverResponse {}
-export const DeleteResolverResponse =
-  DeleteApiCacheResponse as any as S.Schema<DeleteResolverResponse>;
+const DeleteResolverResponse = DeleteApiCacheResponse as any as S.Schema<DeleteResolverResponse>;
 export interface DeleteTypeRequest {
   apiId: string;
   typeName: string;
 }
-export const DeleteTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -1633,11 +1629,11 @@ export const DeleteTypeRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DeleteTypeRequest" }) as any as S.Schema<DeleteTypeRequest>;
 export interface DeleteTypeResponse {}
-export const DeleteTypeResponse = DeleteApiResponse as any as S.Schema<DeleteTypeResponse>;
+const DeleteTypeResponse = DeleteApiResponse as any as S.Schema<DeleteTypeResponse>;
 export interface DisassociateApiRequest {
   domainName: string;
 }
-export const DisassociateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
     T.all(
       ns,
@@ -1651,13 +1647,13 @@ export const DisassociateApiRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "DisassociateApiRequest" }) as any as S.Schema<DisassociateApiRequest>;
 export interface DisassociateApiResponse {}
-export const DisassociateApiResponse =
+const DisassociateApiResponse =
   DeleteDataSourceResponse as any as S.Schema<DisassociateApiResponse>;
 export interface DisassociateMergedGraphqlApiRequest {
   sourceApiIdentifier: string;
   associationId: string;
 }
-export const DisassociateMergedGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateMergedGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceApiIdentifier: S.String.pipe(T.HttpLabel("sourceApiIdentifier")),
     associationId: S.String.pipe(T.HttpLabel("associationId")),
@@ -1681,7 +1677,7 @@ export const DisassociateMergedGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateMergedGraphqlApiResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
-export const DisassociateMergedGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
+const DisassociateMergedGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceApiAssociationStatus: S.optional(SourceApiAssociationStatus) }).pipe(ns),
 ).annotate({
   identifier: "DisassociateMergedGraphqlApiResponse",
@@ -1690,7 +1686,7 @@ export interface DisassociateSourceGraphqlApiRequest {
   mergedApiIdentifier: string;
   associationId: string;
 }
-export const DisassociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const DisassociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
     associationId: S.String.pipe(T.HttpLabel("associationId")),
@@ -1714,7 +1710,7 @@ export const DisassociateSourceGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DisassociateSourceGraphqlApiResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
-export const DisassociateSourceGraphqlApiResponse =
+const DisassociateSourceGraphqlApiResponse =
   DisassociateMergedGraphqlApiResponse as any as S.Schema<DisassociateSourceGraphqlApiResponse>;
 export type Context = string;
 export interface EvaluateCodeRequest {
@@ -1723,7 +1719,7 @@ export interface EvaluateCodeRequest {
   context: string;
   function?: string;
 }
-export const EvaluateCodeRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateCodeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     runtime: AppSyncRuntime,
     code: S.String,
@@ -1751,7 +1747,7 @@ export interface CodeErrorLocation {
   column?: number;
   span?: number;
 }
-export const CodeErrorLocation = /*@__PURE__*/ S.suspend(() =>
+const CodeErrorLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     line: S.optional(S.Number),
     column: S.optional(S.Number),
@@ -1763,7 +1759,7 @@ export interface CodeError {
   value?: string;
   location?: CodeErrorLocation;
 }
-export const CodeError = /*@__PURE__*/ S.suspend(() =>
+const CodeError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     errorType: S.optional(S.String),
     value: S.optional(S.String),
@@ -1771,16 +1767,16 @@ export const CodeError = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CodeError" }) as any as S.Schema<CodeError>;
 export type CodeErrors = CodeError[];
-export const CodeErrors = /*@__PURE__*/ S.Array(CodeError);
+const CodeErrors = /*@__PURE__*/ S.Array(CodeError);
 export interface EvaluateCodeErrorDetail {
   message?: string;
   codeErrors?: CodeError[];
 }
-export const EvaluateCodeErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const EvaluateCodeErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String), codeErrors: S.optional(CodeErrors) }),
 ).annotate({ identifier: "EvaluateCodeErrorDetail" }) as any as S.Schema<EvaluateCodeErrorDetail>;
 export type Logs = string[];
-export const Logs = FunctionsIds as any as S.Schema<Logs>;
+const Logs = FunctionsIds as any as S.Schema<Logs>;
 export type Stash = string;
 export type OutErrors = string;
 export interface EvaluateCodeResponse {
@@ -1790,7 +1786,7 @@ export interface EvaluateCodeResponse {
   stash?: string;
   outErrors?: string;
 }
-export const EvaluateCodeResponse = /*@__PURE__*/ S.suspend(() =>
+const EvaluateCodeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationResult: S.optional(S.String),
     error: S.optional(EvaluateCodeErrorDetail),
@@ -1804,7 +1800,7 @@ export interface EvaluateMappingTemplateRequest {
   template: string;
   context: string;
 }
-export const EvaluateMappingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+const EvaluateMappingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ template: S.String, context: S.String }).pipe(
     T.all(
       ns,
@@ -1822,7 +1818,7 @@ export const EvaluateMappingTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ErrorDetail {
   message?: string;
 }
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 export interface EvaluateMappingTemplateResponse {
@@ -1832,7 +1828,7 @@ export interface EvaluateMappingTemplateResponse {
   stash?: string;
   outErrors?: string;
 }
-export const EvaluateMappingTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+const EvaluateMappingTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     evaluationResult: S.optional(S.String),
     error: S.optional(ErrorDetail),
@@ -1846,7 +1842,7 @@ export const EvaluateMappingTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FlushApiCacheRequest {
   apiId: string;
 }
-export const FlushApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const FlushApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(
       ns,
@@ -1860,11 +1856,11 @@ export const FlushApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "FlushApiCacheRequest" }) as any as S.Schema<FlushApiCacheRequest>;
 export interface FlushApiCacheResponse {}
-export const FlushApiCacheResponse = DeleteApiResponse as any as S.Schema<FlushApiCacheResponse>;
+const FlushApiCacheResponse = DeleteApiResponse as any as S.Schema<FlushApiCacheResponse>;
 export interface GetApiRequest {
   apiId: string;
 }
-export const GetApiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/v2/apis/{apiId}" }), svc, auth, proto, ver, rules),
   ),
@@ -1872,11 +1868,11 @@ export const GetApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiResponse {
   api?: Api;
 }
-export const GetApiResponse = CreateApiResponse as any as S.Schema<GetApiResponse>;
+const GetApiResponse = CreateApiResponse as any as S.Schema<GetApiResponse>;
 export interface GetApiAssociationRequest {
   domainName: string;
 }
-export const GetApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
     T.all(
       ns,
@@ -1892,7 +1888,7 @@ export const GetApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiAssociationResponse {
   apiAssociation?: ApiAssociation;
 }
-export const GetApiAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const GetApiAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiAssociation: S.optional(ApiAssociation) }).pipe(ns),
 ).annotate({
   identifier: "GetApiAssociationResponse",
@@ -1900,7 +1896,7 @@ export const GetApiAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiCacheRequest {
   apiId: string;
 }
-export const GetApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const GetApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(
       ns,
@@ -1916,12 +1912,12 @@ export const GetApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetApiCacheResponse {
   apiCache?: ApiCache;
 }
-export const GetApiCacheResponse = CreateApiCacheResponse as any as S.Schema<GetApiCacheResponse>;
+const GetApiCacheResponse = CreateApiCacheResponse as any as S.Schema<GetApiCacheResponse>;
 export interface GetChannelNamespaceRequest {
   apiId: string;
   name: string;
 }
-export const GetChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1942,13 +1938,13 @@ export const GetChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
-export const GetChannelNamespaceResponse =
+const GetChannelNamespaceResponse =
   CreateChannelNamespaceResponse as any as S.Schema<GetChannelNamespaceResponse>;
 export interface GetDataSourceRequest {
   apiId: string;
   name: string;
 }
-export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -1967,8 +1963,7 @@ export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataSourceResponse {
   dataSource?: DataSource;
 }
-export const GetDataSourceResponse =
-  CreateDataSourceResponse as any as S.Schema<GetDataSourceResponse>;
+const GetDataSourceResponse = CreateDataSourceResponse as any as S.Schema<GetDataSourceResponse>;
 export type PaginationToken = string;
 export type MaxResults = number;
 export interface GetDataSourceIntrospectionRequest {
@@ -1977,7 +1972,7 @@ export interface GetDataSourceIntrospectionRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const GetDataSourceIntrospectionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceIntrospectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     introspectionId: S.String.pipe(T.HttpLabel("introspectionId")),
     includeModelsSDL: S.optional(S.Boolean).pipe(T.HttpQuery("includeModelsSDL")),
@@ -1998,10 +1993,10 @@ export const GetDataSourceIntrospectionRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetDataSourceIntrospectionRequest",
 }) as any as S.Schema<GetDataSourceIntrospectionRequest>;
 export type DataSourceIntrospectionStatus = "PROCESSING" | "FAILED" | "SUCCESS" | (string & {});
-export const DataSourceIntrospectionStatus = S.String;
+const DataSourceIntrospectionStatus = S.String;
 
 export type DataSourceIntrospectionModelFieldTypeValues = string[];
-export const DataSourceIntrospectionModelFieldTypeValues =
+const DataSourceIntrospectionModelFieldTypeValues =
   FunctionsIds as any as S.Schema<DataSourceIntrospectionModelFieldTypeValues>;
 export interface DataSourceIntrospectionModelFieldType {
   kind?: string;
@@ -2009,7 +2004,7 @@ export interface DataSourceIntrospectionModelFieldType {
   type?: DataSourceIntrospectionModelFieldType;
   values?: string[];
 }
-export const DataSourceIntrospectionModelFieldType = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIntrospectionModelFieldType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: S.optional(S.String),
     name: S.optional(S.String),
@@ -2029,7 +2024,7 @@ export interface DataSourceIntrospectionModelField {
   type?: DataSourceIntrospectionModelFieldType;
   length?: number;
 }
-export const DataSourceIntrospectionModelField = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIntrospectionModelField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     type: S.optional(DataSourceIntrospectionModelFieldType),
@@ -2039,17 +2034,15 @@ export const DataSourceIntrospectionModelField = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceIntrospectionModelField",
 }) as any as S.Schema<DataSourceIntrospectionModelField>;
 export type DataSourceIntrospectionModelFields = DataSourceIntrospectionModelField[];
-export const DataSourceIntrospectionModelFields = /*@__PURE__*/ S.Array(
-  DataSourceIntrospectionModelField,
-);
+const DataSourceIntrospectionModelFields = /*@__PURE__*/ S.Array(DataSourceIntrospectionModelField);
 export type DataSourceIntrospectionModelIndexFields = string[];
-export const DataSourceIntrospectionModelIndexFields =
+const DataSourceIntrospectionModelIndexFields =
   FunctionsIds as any as S.Schema<DataSourceIntrospectionModelIndexFields>;
 export interface DataSourceIntrospectionModelIndex {
   name?: string;
   fields?: string[];
 }
-export const DataSourceIntrospectionModelIndex = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIntrospectionModelIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fields: S.optional(DataSourceIntrospectionModelIndexFields),
@@ -2058,7 +2051,7 @@ export const DataSourceIntrospectionModelIndex = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceIntrospectionModelIndex",
 }) as any as S.Schema<DataSourceIntrospectionModelIndex>;
 export type DataSourceIntrospectionModelIndexes = DataSourceIntrospectionModelIndex[];
-export const DataSourceIntrospectionModelIndexes = /*@__PURE__*/ S.Array(
+const DataSourceIntrospectionModelIndexes = /*@__PURE__*/ S.Array(
   DataSourceIntrospectionModelIndex,
 );
 export interface DataSourceIntrospectionModel {
@@ -2068,7 +2061,7 @@ export interface DataSourceIntrospectionModel {
   indexes?: DataSourceIntrospectionModelIndex[];
   sdl?: string;
 }
-export const DataSourceIntrospectionModel = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIntrospectionModel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     fields: S.optional(DataSourceIntrospectionModelFields),
@@ -2080,12 +2073,12 @@ export const DataSourceIntrospectionModel = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataSourceIntrospectionModel",
 }) as any as S.Schema<DataSourceIntrospectionModel>;
 export type DataSourceIntrospectionModels = DataSourceIntrospectionModel[];
-export const DataSourceIntrospectionModels = /*@__PURE__*/ S.Array(DataSourceIntrospectionModel);
+const DataSourceIntrospectionModels = /*@__PURE__*/ S.Array(DataSourceIntrospectionModel);
 export interface DataSourceIntrospectionResult {
   models?: DataSourceIntrospectionModel[];
   nextToken?: string;
 }
-export const DataSourceIntrospectionResult = /*@__PURE__*/ S.suspend(() =>
+const DataSourceIntrospectionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ models: S.optional(DataSourceIntrospectionModels), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DataSourceIntrospectionResult",
@@ -2096,7 +2089,7 @@ export interface GetDataSourceIntrospectionResponse {
   introspectionStatusDetail?: string;
   introspectionResult?: DataSourceIntrospectionResult;
 }
-export const GetDataSourceIntrospectionResponse = /*@__PURE__*/ S.suspend(() =>
+const GetDataSourceIntrospectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     introspectionId: S.optional(S.String),
     introspectionStatus: S.optional(DataSourceIntrospectionStatus),
@@ -2109,7 +2102,7 @@ export const GetDataSourceIntrospectionResponse = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainNameRequest {
   domainName: string;
 }
-export const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ domainName: S.String.pipe(T.HttpLabel("domainName")) }).pipe(
     T.all(
       ns,
@@ -2125,13 +2118,12 @@ export const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
-export const GetDomainNameResponse =
-  CreateDomainNameResponse as any as S.Schema<GetDomainNameResponse>;
+const GetDomainNameResponse = CreateDomainNameResponse as any as S.Schema<GetDomainNameResponse>;
 export interface GetFunctionRequest {
   apiId: string;
   functionId: string;
 }
-export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     functionId: S.String.pipe(T.HttpLabel("functionId")),
@@ -2150,11 +2142,11 @@ export const GetFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
-export const GetFunctionResponse = CreateFunctionResponse as any as S.Schema<GetFunctionResponse>;
+const GetFunctionResponse = CreateFunctionResponse as any as S.Schema<GetFunctionResponse>;
 export interface GetGraphqlApiRequest {
   apiId: string;
 }
-export const GetGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(ns, T.Http({ method: "GET", uri: "/v1/apis/{apiId}" }), svc, auth, proto, ver, rules),
   ),
@@ -2162,12 +2154,11 @@ export const GetGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
-export const GetGraphqlApiResponse =
-  CreateGraphqlApiResponse as any as S.Schema<GetGraphqlApiResponse>;
+const GetGraphqlApiResponse = CreateGraphqlApiResponse as any as S.Schema<GetGraphqlApiResponse>;
 export interface GetGraphqlApiEnvironmentVariablesRequest {
   apiId: string;
 }
-export const GetGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(
       ns,
@@ -2185,25 +2176,24 @@ export const GetGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(
 export type EnvironmentVariableKey = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariableMap = { [key: string]: string | undefined };
-export const EnvironmentVariableMap =
-  MapOfStringToString as any as S.Schema<EnvironmentVariableMap>;
+const EnvironmentVariableMap = MapOfStringToString as any as S.Schema<EnvironmentVariableMap>;
 export interface GetGraphqlApiEnvironmentVariablesResponse {
   environmentVariables?: { [key: string]: string | undefined };
 }
-export const GetGraphqlApiEnvironmentVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const GetGraphqlApiEnvironmentVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environmentVariables: S.optional(EnvironmentVariableMap) }).pipe(ns),
 ).annotate({
   identifier: "GetGraphqlApiEnvironmentVariablesResponse",
 }) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>;
 export type OutputType = "SDL" | "JSON" | (string & {});
-export const OutputType = S.String;
+const OutputType = S.String;
 
 export interface GetIntrospectionSchemaRequest {
   apiId: string;
   format: OutputType;
   includeDirectives?: boolean;
 }
-export const GetIntrospectionSchemaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIntrospectionSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     format: OutputType.pipe(T.HttpQuery("format")),
@@ -2225,7 +2215,7 @@ export const GetIntrospectionSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetIntrospectionSchemaResponse {
   schema?: T.StreamingOutputBody;
 }
-export const GetIntrospectionSchemaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetIntrospectionSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ schema: S.optional(T.StreamingOutput).pipe(T.HttpPayload()) }).pipe(ns),
 ).annotate({
   identifier: "GetIntrospectionSchemaResponse",
@@ -2235,7 +2225,7 @@ export interface GetResolverRequest {
   typeName: string;
   fieldName: string;
 }
-export const GetResolverRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResolverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -2255,11 +2245,11 @@ export const GetResolverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetResolverResponse {
   resolver?: Resolver;
 }
-export const GetResolverResponse = CreateResolverResponse as any as S.Schema<GetResolverResponse>;
+const GetResolverResponse = CreateResolverResponse as any as S.Schema<GetResolverResponse>;
 export interface GetSchemaCreationStatusRequest {
   apiId: string;
 }
-export const GetSchemaCreationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaCreationStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")) }).pipe(
     T.all(
       ns,
@@ -2282,13 +2272,13 @@ export type SchemaStatus =
   | "SUCCESS"
   | "NOT_APPLICABLE"
   | (string & {});
-export const SchemaStatus = S.String;
+const SchemaStatus = S.String;
 
 export interface GetSchemaCreationStatusResponse {
   status?: SchemaStatus;
   details?: string;
 }
-export const GetSchemaCreationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSchemaCreationStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(SchemaStatus), details: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "GetSchemaCreationStatusResponse",
@@ -2297,7 +2287,7 @@ export interface GetSourceApiAssociationRequest {
   mergedApiIdentifier: string;
   associationId: string;
 }
-export const GetSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
     associationId: S.String.pipe(T.HttpLabel("associationId")),
@@ -2321,14 +2311,14 @@ export const GetSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetSourceApiAssociationResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
-export const GetSourceApiAssociationResponse =
+const GetSourceApiAssociationResponse =
   AssociateMergedGraphqlApiResponse as any as S.Schema<GetSourceApiAssociationResponse>;
 export interface GetTypeRequest {
   apiId: string;
   typeName: string;
   format: TypeDefinitionFormat;
 }
-export const GetTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -2348,13 +2338,13 @@ export const GetTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetTypeResponse {
   type?: Type;
 }
-export const GetTypeResponse = CreateTypeResponse as any as S.Schema<GetTypeResponse>;
+const GetTypeResponse = CreateTypeResponse as any as S.Schema<GetTypeResponse>;
 export interface ListApiKeysRequest {
   apiId: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2372,31 +2362,31 @@ export const ListApiKeysRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListApiKeysRequest" }) as any as S.Schema<ListApiKeysRequest>;
 export type ApiKeys = ApiKey[];
-export const ApiKeys = /*@__PURE__*/ S.Array(ApiKey);
+const ApiKeys = /*@__PURE__*/ S.Array(ApiKey);
 export interface ListApiKeysResponse {
   apiKeys?: ApiKey[];
   nextToken?: string;
 }
-export const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApiKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiKeys: S.optional(ApiKeys), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListApiKeysResponse" }) as any as S.Schema<ListApiKeysResponse>;
 export interface ListApisRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
   }).pipe(T.all(ns, T.Http({ method: "GET", uri: "/v2/apis" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListApisRequest" }) as any as S.Schema<ListApisRequest>;
 export type Apis = Api[];
-export const Apis = /*@__PURE__*/ S.Array(Api);
+const Apis = /*@__PURE__*/ S.Array(Api);
 export interface ListApisResponse {
   apis?: Api[];
   nextToken?: string;
 }
-export const ListApisResponse = /*@__PURE__*/ S.suspend(() =>
+const ListApisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apis: S.optional(Apis), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListApisResponse" }) as any as S.Schema<ListApisResponse>;
 export interface ListChannelNamespacesRequest {
@@ -2404,7 +2394,7 @@ export interface ListChannelNamespacesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListChannelNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListChannelNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2424,12 +2414,12 @@ export const ListChannelNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListChannelNamespacesRequest",
 }) as any as S.Schema<ListChannelNamespacesRequest>;
 export type ChannelNamespaces = ChannelNamespace[];
-export const ChannelNamespaces = /*@__PURE__*/ S.Array(ChannelNamespace);
+const ChannelNamespaces = /*@__PURE__*/ S.Array(ChannelNamespace);
 export interface ListChannelNamespacesResponse {
   channelNamespaces?: ChannelNamespace[];
   nextToken?: string;
 }
-export const ListChannelNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListChannelNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     channelNamespaces: S.optional(ChannelNamespaces),
     nextToken: S.optional(S.String),
@@ -2442,7 +2432,7 @@ export interface ListDataSourcesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2460,19 +2450,19 @@ export const ListDataSourcesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListDataSourcesRequest" }) as any as S.Schema<ListDataSourcesRequest>;
 export type DataSources = DataSource[];
-export const DataSources = /*@__PURE__*/ S.Array(DataSource);
+const DataSources = /*@__PURE__*/ S.Array(DataSource);
 export interface ListDataSourcesResponse {
   dataSources?: DataSource[];
   nextToken?: string;
 }
-export const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDataSourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSources: S.optional(DataSources), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListDataSourcesResponse" }) as any as S.Schema<ListDataSourcesResponse>;
 export interface ListDomainNamesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2481,12 +2471,12 @@ export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListDomainNamesRequest" }) as any as S.Schema<ListDomainNamesRequest>;
 export type DomainNameConfigs = DomainNameConfig[];
-export const DomainNameConfigs = /*@__PURE__*/ S.Array(DomainNameConfig);
+const DomainNameConfigs = /*@__PURE__*/ S.Array(DomainNameConfig);
 export interface ListDomainNamesResponse {
   domainNameConfigs?: DomainNameConfig[];
   nextToken?: string;
 }
-export const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListDomainNamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainNameConfigs: S.optional(DomainNameConfigs),
     nextToken: S.optional(S.String),
@@ -2497,7 +2487,7 @@ export interface ListFunctionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2515,16 +2505,16 @@ export const ListFunctionsRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListFunctionsRequest" }) as any as S.Schema<ListFunctionsRequest>;
 export type Functions = FunctionConfiguration[];
-export const Functions = /*@__PURE__*/ S.Array(FunctionConfiguration);
+const Functions = /*@__PURE__*/ S.Array(FunctionConfiguration);
 export interface ListFunctionsResponse {
   functions?: FunctionConfiguration[];
   nextToken?: string;
 }
-export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ functions: S.optional(Functions), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListFunctionsResponse" }) as any as S.Schema<ListFunctionsResponse>;
 export type Ownership = "CURRENT_ACCOUNT" | "OTHER_ACCOUNTS" | (string & {});
-export const Ownership = S.String;
+const Ownership = S.String;
 
 export interface ListGraphqlApisRequest {
   nextToken?: string;
@@ -2532,7 +2522,7 @@ export interface ListGraphqlApisRequest {
   apiType?: GraphQLApiType;
   owner?: Ownership;
 }
-export const ListGraphqlApisRequest = /*@__PURE__*/ S.suspend(() =>
+const ListGraphqlApisRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -2541,12 +2531,12 @@ export const ListGraphqlApisRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(T.all(ns, T.Http({ method: "GET", uri: "/v1/apis" }), svc, auth, proto, ver, rules)),
 ).annotate({ identifier: "ListGraphqlApisRequest" }) as any as S.Schema<ListGraphqlApisRequest>;
 export type GraphqlApis = GraphqlApi[];
-export const GraphqlApis = /*@__PURE__*/ S.Array(GraphqlApi);
+const GraphqlApis = /*@__PURE__*/ S.Array(GraphqlApi);
 export interface ListGraphqlApisResponse {
   graphqlApis?: GraphqlApi[];
   nextToken?: string;
 }
-export const ListGraphqlApisResponse = /*@__PURE__*/ S.suspend(() =>
+const ListGraphqlApisResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ graphqlApis: S.optional(GraphqlApis), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListGraphqlApisResponse" }) as any as S.Schema<ListGraphqlApisResponse>;
 export interface ListResolversRequest {
@@ -2555,7 +2545,7 @@ export interface ListResolversRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListResolversRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResolversRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -2574,12 +2564,12 @@ export const ListResolversRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListResolversRequest" }) as any as S.Schema<ListResolversRequest>;
 export type Resolvers = Resolver[];
-export const Resolvers = /*@__PURE__*/ S.Array(Resolver);
+const Resolvers = /*@__PURE__*/ S.Array(Resolver);
 export interface ListResolversResponse {
   resolvers?: Resolver[];
   nextToken?: string;
 }
-export const ListResolversResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResolversResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resolvers: S.optional(Resolvers), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListResolversResponse" }) as any as S.Schema<ListResolversResponse>;
 export interface ListResolversByFunctionRequest {
@@ -2588,7 +2578,7 @@ export interface ListResolversByFunctionRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListResolversByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const ListResolversByFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     functionId: S.String.pipe(T.HttpLabel("functionId")),
@@ -2612,7 +2602,7 @@ export interface ListResolversByFunctionResponse {
   resolvers?: Resolver[];
   nextToken?: string;
 }
-export const ListResolversByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
+const ListResolversByFunctionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resolvers: S.optional(Resolvers), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListResolversByFunctionResponse",
@@ -2622,7 +2612,7 @@ export interface ListSourceApiAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListSourceApiAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSourceApiAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -2650,7 +2640,7 @@ export interface SourceApiAssociationSummary {
   mergedApiArn?: string;
   description?: string;
 }
-export const SourceApiAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+const SourceApiAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.optional(S.String),
     associationArn: S.optional(S.String),
@@ -2664,12 +2654,12 @@ export const SourceApiAssociationSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "SourceApiAssociationSummary",
 }) as any as S.Schema<SourceApiAssociationSummary>;
 export type SourceApiAssociationSummaryList = SourceApiAssociationSummary[];
-export const SourceApiAssociationSummaryList = /*@__PURE__*/ S.Array(SourceApiAssociationSummary);
+const SourceApiAssociationSummaryList = /*@__PURE__*/ S.Array(SourceApiAssociationSummary);
 export interface ListSourceApiAssociationsResponse {
   sourceApiAssociationSummaries?: SourceApiAssociationSummary[];
   nextToken?: string;
 }
-export const ListSourceApiAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSourceApiAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceApiAssociationSummaries: S.optional(SourceApiAssociationSummaryList),
     nextToken: S.optional(S.String),
@@ -2681,7 +2671,7 @@ export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
     T.all(
       ns,
@@ -2699,7 +2689,7 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForResourceResponse",
@@ -2710,7 +2700,7 @@ export interface ListTypesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTypesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTypesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     format: TypeDefinitionFormat.pipe(T.HttpQuery("format")),
@@ -2729,12 +2719,12 @@ export const ListTypesRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "ListTypesRequest" }) as any as S.Schema<ListTypesRequest>;
 export type TypeList = Type[];
-export const TypeList = /*@__PURE__*/ S.Array(Type);
+const TypeList = /*@__PURE__*/ S.Array(Type);
 export interface ListTypesResponse {
   types?: Type[];
   nextToken?: string;
 }
-export const ListTypesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ types: S.optional(TypeList), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListTypesResponse" }) as any as S.Schema<ListTypesResponse>;
 export interface ListTypesByAssociationRequest {
@@ -2744,7 +2734,7 @@ export interface ListTypesByAssociationRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTypesByAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const ListTypesByAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
     associationId: S.String.pipe(T.HttpLabel("associationId")),
@@ -2772,7 +2762,7 @@ export interface ListTypesByAssociationResponse {
   types?: Type[];
   nextToken?: string;
 }
-export const ListTypesByAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+const ListTypesByAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ types: S.optional(TypeList), nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "ListTypesByAssociationResponse",
@@ -2781,7 +2771,7 @@ export interface PutGraphqlApiEnvironmentVariablesRequest {
   apiId: string;
   environmentVariables: { [key: string]: string | undefined };
 }
-export const PutGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const PutGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     environmentVariables: EnvironmentVariableMap,
@@ -2802,7 +2792,7 @@ export const PutGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(
 export interface PutGraphqlApiEnvironmentVariablesResponse {
   environmentVariables?: { [key: string]: string | undefined };
 }
-export const PutGraphqlApiEnvironmentVariablesResponse =
+const PutGraphqlApiEnvironmentVariablesResponse =
   GetGraphqlApiEnvironmentVariablesResponse as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>;
 export type RdsDataApiConfigResourceArn = string;
 export type RdsDataApiConfigSecretArn = string;
@@ -2812,13 +2802,13 @@ export interface RdsDataApiConfig {
   secretArn: string;
   databaseName: string;
 }
-export const RdsDataApiConfig = /*@__PURE__*/ S.suspend(() =>
+const RdsDataApiConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, secretArn: S.String, databaseName: S.String }),
 ).annotate({ identifier: "RdsDataApiConfig" }) as any as S.Schema<RdsDataApiConfig>;
 export interface StartDataSourceIntrospectionRequest {
   rdsDataApiConfig?: RdsDataApiConfig;
 }
-export const StartDataSourceIntrospectionRequest = /*@__PURE__*/ S.suspend(() =>
+const StartDataSourceIntrospectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ rdsDataApiConfig: S.optional(RdsDataApiConfig) }).pipe(
     T.all(
       ns,
@@ -2838,7 +2828,7 @@ export interface StartDataSourceIntrospectionResponse {
   introspectionStatus?: DataSourceIntrospectionStatus;
   introspectionStatusDetail?: string;
 }
-export const StartDataSourceIntrospectionResponse = /*@__PURE__*/ S.suspend(() =>
+const StartDataSourceIntrospectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     introspectionId: S.optional(S.String),
     introspectionStatus: S.optional(DataSourceIntrospectionStatus),
@@ -2851,7 +2841,7 @@ export interface StartSchemaCreationRequest {
   apiId: string;
   definition: Uint8Array;
 }
-export const StartSchemaCreationRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSchemaCreationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apiId: S.String.pipe(T.HttpLabel("apiId")), definition: T.Blob }).pipe(
     T.all(
       ns,
@@ -2869,7 +2859,7 @@ export const StartSchemaCreationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSchemaCreationResponse {
   status?: SchemaStatus;
 }
-export const StartSchemaCreationResponse = /*@__PURE__*/ S.suspend(() =>
+const StartSchemaCreationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(SchemaStatus) }).pipe(ns),
 ).annotate({
   identifier: "StartSchemaCreationResponse",
@@ -2878,7 +2868,7 @@ export interface StartSchemaMergeRequest {
   associationId: string;
   mergedApiIdentifier: string;
 }
-export const StartSchemaMergeRequest = /*@__PURE__*/ S.suspend(() =>
+const StartSchemaMergeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.String.pipe(T.HttpLabel("associationId")),
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
@@ -2900,14 +2890,14 @@ export const StartSchemaMergeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface StartSchemaMergeResponse {
   sourceApiAssociationStatus?: SourceApiAssociationStatus;
 }
-export const StartSchemaMergeResponse = /*@__PURE__*/ S.suspend(() =>
+const StartSchemaMergeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sourceApiAssociationStatus: S.optional(SourceApiAssociationStatus) }).pipe(ns),
 ).annotate({ identifier: "StartSchemaMergeResponse" }) as any as S.Schema<StartSchemaMergeResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
     T.all(
       ns,
@@ -2921,14 +2911,14 @@ export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "TagResourceRequest" }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = DeleteApiResponse as any as S.Schema<TagResourceResponse>;
+const TagResourceResponse = DeleteApiResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = FunctionsIds as any as S.Schema<TagKeyList>;
+const TagKeyList = FunctionsIds as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -2945,14 +2935,14 @@ export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "UntagResourceRequest" }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = DeleteApiResponse as any as S.Schema<UntagResourceResponse>;
+const UntagResourceResponse = DeleteApiResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApiRequest {
   apiId: string;
   name: string;
   ownerContact?: string;
   eventConfig: EventConfig;
 }
-export const UpdateApiRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -2965,7 +2955,7 @@ export const UpdateApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApiResponse {
   api?: Api;
 }
-export const UpdateApiResponse = CreateApiResponse as any as S.Schema<UpdateApiResponse>;
+const UpdateApiResponse = CreateApiResponse as any as S.Schema<UpdateApiResponse>;
 export interface UpdateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -2973,7 +2963,7 @@ export interface UpdateApiCacheRequest {
   type: ApiCacheType;
   healthMetricsConfig?: CacheHealthMetricsConfig;
 }
-export const UpdateApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     ttl: S.Number,
@@ -2995,15 +2985,14 @@ export const UpdateApiCacheRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApiCacheResponse {
   apiCache?: ApiCache;
 }
-export const UpdateApiCacheResponse =
-  CreateApiCacheResponse as any as S.Schema<UpdateApiCacheResponse>;
+const UpdateApiCacheResponse = CreateApiCacheResponse as any as S.Schema<UpdateApiCacheResponse>;
 export interface UpdateApiKeyRequest {
   apiId: string;
   id: string;
   description?: string;
   expires?: number;
 }
-export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     id: S.String.pipe(T.HttpLabel("id")),
@@ -3024,7 +3013,7 @@ export const UpdateApiKeyRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateApiKeyResponse {
   apiKey?: ApiKey;
 }
-export const UpdateApiKeyResponse = CreateApiKeyResponse as any as S.Schema<UpdateApiKeyResponse>;
+const UpdateApiKeyResponse = CreateApiKeyResponse as any as S.Schema<UpdateApiKeyResponse>;
 export interface UpdateChannelNamespaceRequest {
   apiId: string;
   name: string;
@@ -3033,7 +3022,7 @@ export interface UpdateChannelNamespaceRequest {
   codeHandlers?: string;
   handlerConfigs?: HandlerConfigs;
 }
-export const UpdateChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -3058,7 +3047,7 @@ export const UpdateChannelNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateChannelNamespaceResponse {
   channelNamespace?: ChannelNamespace;
 }
-export const UpdateChannelNamespaceResponse =
+const UpdateChannelNamespaceResponse =
   CreateChannelNamespaceResponse as any as S.Schema<UpdateChannelNamespaceResponse>;
 export interface UpdateDataSourceRequest {
   apiId: string;
@@ -3075,7 +3064,7 @@ export interface UpdateDataSourceRequest {
   eventBridgeConfig?: EventBridgeDataSourceConfig;
   metricsConfig?: DataSourceLevelMetricsConfig;
 }
-export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String.pipe(T.HttpLabel("name")),
@@ -3105,13 +3094,13 @@ export const UpdateDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDataSourceResponse {
   dataSource?: DataSource;
 }
-export const UpdateDataSourceResponse =
+const UpdateDataSourceResponse =
   CreateDataSourceResponse as any as S.Schema<UpdateDataSourceResponse>;
 export interface UpdateDomainNameRequest {
   domainName: string;
   description?: string;
 }
-export const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.String.pipe(T.HttpLabel("domainName")),
     description: S.optional(S.String),
@@ -3130,7 +3119,7 @@ export const UpdateDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateDomainNameResponse {
   domainNameConfig?: DomainNameConfig;
 }
-export const UpdateDomainNameResponse =
+const UpdateDomainNameResponse =
   CreateDomainNameResponse as any as S.Schema<UpdateDomainNameResponse>;
 export interface UpdateFunctionRequest {
   apiId: string;
@@ -3146,7 +3135,7 @@ export interface UpdateFunctionRequest {
   runtime?: AppSyncRuntime;
   code?: string;
 }
-export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -3175,8 +3164,7 @@ export const UpdateFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateFunctionResponse {
   functionConfiguration?: FunctionConfiguration;
 }
-export const UpdateFunctionResponse =
-  CreateFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
+const UpdateFunctionResponse = CreateFunctionResponse as any as S.Schema<UpdateFunctionResponse>;
 export interface UpdateGraphqlApiRequest {
   apiId: string;
   name: string;
@@ -3194,7 +3182,7 @@ export interface UpdateGraphqlApiRequest {
   resolverCountLimit?: number;
   enhancedMetricsConfig?: EnhancedMetricsConfig;
 }
-export const UpdateGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     name: S.String,
@@ -3218,7 +3206,7 @@ export const UpdateGraphqlApiRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateGraphqlApiResponse {
   graphqlApi?: GraphqlApi;
 }
-export const UpdateGraphqlApiResponse =
+const UpdateGraphqlApiResponse =
   CreateGraphqlApiResponse as any as S.Schema<UpdateGraphqlApiResponse>;
 export interface UpdateResolverRequest {
   apiId: string;
@@ -3236,7 +3224,7 @@ export interface UpdateResolverRequest {
   code?: string;
   metricsConfig?: ResolverLevelMetricsConfig;
 }
-export const UpdateResolverRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateResolverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -3267,15 +3255,14 @@ export const UpdateResolverRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateResolverResponse {
   resolver?: Resolver;
 }
-export const UpdateResolverResponse =
-  CreateResolverResponse as any as S.Schema<UpdateResolverResponse>;
+const UpdateResolverResponse = CreateResolverResponse as any as S.Schema<UpdateResolverResponse>;
 export interface UpdateSourceApiAssociationRequest {
   associationId: string;
   mergedApiIdentifier: string;
   description?: string;
   sourceApiAssociationConfig?: SourceApiAssociationConfig;
 }
-export const UpdateSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     associationId: S.String.pipe(T.HttpLabel("associationId")),
     mergedApiIdentifier: S.String.pipe(T.HttpLabel("mergedApiIdentifier")),
@@ -3301,7 +3288,7 @@ export const UpdateSourceApiAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateSourceApiAssociationResponse {
   sourceApiAssociation?: SourceApiAssociation;
 }
-export const UpdateSourceApiAssociationResponse =
+const UpdateSourceApiAssociationResponse =
   AssociateMergedGraphqlApiResponse as any as S.Schema<UpdateSourceApiAssociationResponse>;
 export interface UpdateTypeRequest {
   apiId: string;
@@ -3309,7 +3296,7 @@ export interface UpdateTypeRequest {
   definition?: string;
   format: TypeDefinitionFormat;
 }
-export const UpdateTypeRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateTypeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     apiId: S.String.pipe(T.HttpLabel("apiId")),
     typeName: S.String.pipe(T.HttpLabel("typeName")),
@@ -3330,14 +3317,14 @@ export const UpdateTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateTypeResponse {
   type?: Type;
 }
-export const UpdateTypeResponse = CreateTypeResponse as any as S.Schema<UpdateTypeResponse>;
+const UpdateTypeResponse = CreateTypeResponse as any as S.Schema<UpdateTypeResponse>;
 export type BadRequestReason = "CODE_ERROR" | (string & {});
-export const BadRequestReason = S.String;
+const BadRequestReason = S.String;
 
 export interface BadRequestDetail {
   codeErrors?: CodeError[];
 }
-export const BadRequestDetail = /*@__PURE__*/ S.suspend(() =>
+const BadRequestDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ codeErrors: S.optional(CodeErrors) }),
 ).annotate({ identifier: "BadRequestDetail" }) as any as S.Schema<BadRequestDetail>;
 export type AssociateApiError =

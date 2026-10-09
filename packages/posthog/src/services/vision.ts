@@ -46,17 +46,17 @@ export class NotFound
 
 /** * `metric` - Metric * `match` - Match */
 export type VisionAlertKindEnum = "metric" | "match";
-export const VisionAlertKindEnum = S.String;
+const VisionAlertKindEnum = S.String;
 
 /** Monitor verdicts to match, e.g. ['yes']. */
 export type VisionAlertSelectionVerdictList = Array<string>;
-export const VisionAlertSelectionVerdictList = /*@__PURE__*/ S.Array(
+const VisionAlertSelectionVerdictList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<VisionAlertSelectionVerdictList>;
 
 /** Classifier tags to match; an observation matches when it carries any of them. */
 export type VisionAlertSelectionTagsList = Array<string>;
-export const VisionAlertSelectionTagsList =
+const VisionAlertSelectionTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertSelectionTagsList>;
 
 export interface VisionAlertSelection {
@@ -69,7 +69,7 @@ export interface VisionAlertSelection {
   /** Maximum scorer score (inclusive). */
   max_score?: number;
 }
-export const VisionAlertSelection = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertSelection = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     verdict: S.optional(VisionAlertSelectionVerdictList),
     tags: S.optional(VisionAlertSelectionTagsList),
@@ -80,11 +80,11 @@ export const VisionAlertSelection = /*@__PURE__*/ S.suspend(() =>
 
 /** * `count` - Count matching observations * `avg_score` - Average score */
 export type VisionAlertMetricEnum = "count" | "avg_score";
-export const VisionAlertMetricEnum = S.String;
+const VisionAlertMetricEnum = S.String;
 
 /** * `above` - At or above * `below` - At or below */
 export type VisionAlertDirectionEnum = "above" | "below";
-export const VisionAlertDirectionEnum = S.String;
+const VisionAlertDirectionEnum = S.String;
 
 export interface AlertScheduleRestrictionWindow {
   /** Start time HH:MM (24-hour, project timezone). Inclusive. Each window must span >= 30 minutes on the local daily timeline (half-open [start, end)). */
@@ -92,7 +92,7 @@ export interface AlertScheduleRestrictionWindow {
   /** End time HH:MM (24-hour). Exclusive (half-open interval). Each window must span >= 30 minutes locally. */
   end?: string;
 }
-export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     start: S.optional(S.String),
     end: S.optional(S.String),
@@ -103,7 +103,7 @@ export const AlertScheduleRestrictionWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
 export type AlertScheduleRestrictionBlockedWindowsList = Array<AlertScheduleRestrictionWindow>;
-export const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
+const AlertScheduleRestrictionBlockedWindowsList = /*@__PURE__*/ S.Array(
   AlertScheduleRestrictionWindow,
 ) as any as S.Schema<AlertScheduleRestrictionBlockedWindowsList>;
 
@@ -111,7 +111,7 @@ export interface AlertScheduleRestriction {
   /** Blocked local time windows when the alert must not run. Overlapping or identical windows are merged when saved. At most five windows before normalization; empty array clears quiet hours. */
   blocked_windows?: AlertScheduleRestrictionBlockedWindowsList;
 }
-export const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
+const AlertScheduleRestriction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blocked_windows: S.optional(AlertScheduleRestrictionBlockedWindowsList),
   }),
@@ -151,7 +151,7 @@ export interface CreateVisionAlertRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const CreateVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String,
@@ -180,10 +180,10 @@ export type LogsAlertConfigurationStateEnum =
   | "errored"
   | "snoozed"
   | "broken";
-export const LogsAlertConfigurationStateEnum = S.String;
+const LogsAlertConfigurationStateEnum = S.String;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<UserBasicHedgehogConfigMap>;
@@ -199,14 +199,9 @@ export type RoleAtOrganizationEnum =
   | "sales"
   | "student"
   | "other";
-export const RoleAtOrganizationEnum = S.String;
-
 export type BlankEnum = "";
-export const BlankEnum = S.String;
-
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
 
 export interface UserBasic {
   id?: number;
@@ -219,7 +214,7 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+const UserBasic = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     uuid: S.optional(S.String),
@@ -285,7 +280,7 @@ export interface VisionAlertConfiguration {
   /** When the alert was last modified. */
   updated_at: string | null;
 }
-export const VisionAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scanner_id: S.String,
@@ -317,7 +312,7 @@ export const VisionAlertConfiguration = /*@__PURE__*/ S.suspend(() =>
 
 /** * `slack` - slack * `webhook` - webhook */
 export type VisionAlertDestinationTypeEnum = "slack" | "webhook";
-export const VisionAlertDestinationTypeEnum = S.String;
+const VisionAlertDestinationTypeEnum = S.String;
 
 export interface CreateVisionAlertsDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -335,7 +330,7 @@ export interface CreateVisionAlertsDestinationRequest {
   /** HTTPS endpoint to post to. Required when type=webhook. */
   webhook_url?: string;
 }
-export const CreateVisionAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -357,14 +352,14 @@ export const CreateVisionAlertsDestinationRequest = /*@__PURE__*/ S.suspend(() =
 
 /** HogFunctions backing the created destination, one per event kind. */
 export type VisionAlertDestinationResponseHogFunctionIdsList = Array<string>;
-export const VisionAlertDestinationResponseHogFunctionIdsList =
+const VisionAlertDestinationResponseHogFunctionIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertDestinationResponseHogFunctionIdsList>;
 
 export interface VisionAlertDestinationResponse {
   /** HogFunctions backing the created destination, one per event kind. */
   hog_function_ids: VisionAlertDestinationResponseHogFunctionIdsList;
 }
-export const VisionAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertDestinationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: VisionAlertDestinationResponseHogFunctionIdsList,
   }),
@@ -382,7 +377,7 @@ export interface CreateVisionObservationsLabelRequest {
   /** Optional written context on the rating, for thumbs-up and thumbs-down alike: what the scanner got right or wrong, or what it should have concluded. */
   feedback?: string;
 }
-export const CreateVisionObservationsLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionObservationsLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -406,7 +401,7 @@ export interface ReplayObservationLabel {
   /** Optional written context on the rating, for thumbs-up and thumbs-down alike: what the scanner got right or wrong, or what it should have concluded. */
   feedback?: string;
 }
-export const ReplayObservationLabel = /*@__PURE__*/ S.suspend(() =>
+const ReplayObservationLabel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     is_correct: S.Boolean,
     feedback: S.optional(S.String),
@@ -419,7 +414,7 @@ export interface CreateVisionObservationsViewedRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const CreateVisionObservationsViewedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionObservationsViewedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -435,39 +430,39 @@ export const CreateVisionObservationsViewedRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateVisionObservationsViewedRequest>;
 
 export interface CreateVisionObservationsViewedResponse {}
-export const CreateVisionObservationsViewedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CreateVisionObservationsViewedResponse",
-}) as any as S.Schema<CreateVisionObservationsViewedResponse>;
+const CreateVisionObservationsViewedResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "CreateVisionObservationsViewedResponse",
+  },
+) as any as S.Schema<CreateVisionObservationsViewedResponse>;
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type CreateVisionScannerRequestTagsList = Array<string>;
-export const CreateVisionScannerRequestTagsList =
+const CreateVisionScannerRequestTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannerRequestTagsList>;
 
 /** * `monitor` - Monitor * `classifier` - Classifier * `scorer` - Scorer * `summarizer` - Summarizer * `experiment` - Experiment */
 export type ScannerTypeEnum = "monitor" | "classifier" | "scorer" | "summarizer" | "experiment";
-export const ScannerTypeEnum = S.String;
+const ScannerTypeEnum = S.String;
 
 /** * `ai` - AI draft * `template` - Template * `scratch` - From scratch */
 export type ScannerCreationMethodEnum = "ai" | "template" | "scratch";
-export const ScannerCreationMethodEnum = S.String;
+const ScannerCreationMethodEnum = S.String;
 
 /** * `focused` - Focused * `balanced` - Balanced * `comprehensive` - Comprehensive */
 export type SamplingModeEnum = "focused" | "balanced" | "comprehensive";
-export const SamplingModeEnum = S.String;
+const SamplingModeEnum = S.String;
 
 /** * `google` - Google */
 export type ScannerProviderEnum = "google";
-export const ScannerProviderEnum = S.String;
+const ScannerProviderEnum = S.String;
 
 /** * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash * `gemini-3.8-flash` - Gemini 3.8 Flash */
 export type ScannerModelEnum =
   | "gemini-3.5-flash-lite"
   | "gemini-3-flash-preview"
   | "gemini-3.8-flash";
-export const ScannerModelEnum = S.String;
+const ScannerModelEnum = S.String;
 
 /** The experiment a scanner watches. Scans derive their person-scoped exposure filter from this blob at query time, so it is the only place an experiment can enter a scanner's targeting -- which is what lets the write-side access check and read-side redaction cover it. */
 export interface ScannerExperimentTargeting {
@@ -476,7 +471,7 @@ export interface ScannerExperimentTargeting {
   /** Narrow to sessions of people exposed to this variant. Null means every variant. */
   variant?: string | null;
 }
-export const ScannerExperimentTargeting = /*@__PURE__*/ S.suspend(() =>
+const ScannerExperimentTargeting = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment_id: S.Number,
     variant: S.optional(S.NullOr(S.String)),
@@ -521,7 +516,7 @@ export interface CreateVisionScannerRequest {
   /** The experiment this scanner's targeting watches, if any. Set null when the experiment targeting is removed. */
   experiment_targeting?: ScannerExperimentTargeting | null;
 }
-export const CreateVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -549,7 +544,7 @@ export const CreateVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type ReplayScannerOutputTagsList = Array<string>;
-export const ReplayScannerOutputTagsList =
+const ReplayScannerOutputTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<ReplayScannerOutputTagsList>;
 
 /** A Replay Vision scanner: its type, targeting query, and AI configuration. */
@@ -616,7 +611,7 @@ export interface ReplayScannerOutput {
   /** The effective access level the user has for this object */
   user_access_level: string | null;
 }
-export const ReplayScannerOutput = /*@__PURE__*/ S.suspend(() =>
+const ReplayScannerOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -655,7 +650,7 @@ export const ReplayScannerOutput = /*@__PURE__*/ S.suspend(() =>
 
 /** * `yes` - Yes * `no` - No * `inconclusive` - Inconclusive */
 export type ObservationVerdictEnum = "yes" | "no" | "inconclusive";
-export const ObservationVerdictEnum = S.String;
+const ObservationVerdictEnum = S.String;
 
 export interface CreateVisionScannersAffectedCohortRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -673,7 +668,7 @@ export interface CreateVisionScannersAffectedCohortRequest {
   /** Scorer scanners only: count sessions scoring at or below this value. */
   max_score?: number | null;
 }
-export const CreateVisionScannersAffectedCohortRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersAffectedCohortRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -704,7 +699,7 @@ export interface AffectedCohortResponse {
   /** Trailing window the cohort was drawn from, in days. */
   window_days: number;
 }
-export const AffectedCohortResponse = /*@__PURE__*/ S.suspend(() =>
+const AffectedCohortResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cohort_id: S.Number,
     name: S.String,
@@ -724,7 +719,7 @@ export interface CreateVisionScannersBackfillRequest {
   /** The most this backfill may cost, in credits (1 credit = $0.01): pass the `total_credits` from the estimate the person agreed to. The create is rejected if the window now costs more. */
   max_total_credits: number;
 }
-export const CreateVisionScannersBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -744,7 +739,7 @@ export const CreateVisionScannersBackfillRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `running` - Running * `paused_quota` - Paused (quota) * `completed` - Completed * `cancelled` - Cancelled */
 export type BackfillStatusEnum = "running" | "paused_quota" | "completed" | "cancelled";
-export const BackfillStatusEnum = S.String;
+const BackfillStatusEnum = S.String;
 
 export interface ReplayScannerBackfill {
   id: string;
@@ -773,7 +768,7 @@ export interface ReplayScannerBackfill {
   /** When the backfill reached a terminal status (completed or cancelled). */
   finished_at: string | null;
 }
-export const ReplayScannerBackfill = /*@__PURE__*/ S.suspend(() =>
+const ReplayScannerBackfill = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: BackfillStatusEnum,
@@ -802,7 +797,7 @@ export interface CreateVisionScannersBackfillsEstimateRequest {
   /** Exclusive upper bound of the window; clamped server-side to now, and for an experiment scanner to the experiment's end date. */
   window_end: string;
 }
-export const CreateVisionScannersBackfillsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersBackfillsEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -833,7 +828,7 @@ export interface BackfillEstimateResponse {
   /** The window upper bound after clamping to now and, for an experiment scanner, to the experiment's end date. */
   window_end: string;
 }
-export const BackfillEstimateResponse = /*@__PURE__*/ S.suspend(() =>
+const BackfillEstimateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_sessions: S.Number,
     total_credits: S.Number,
@@ -852,7 +847,7 @@ export interface CreateVisionScannersDraftRequest {
   /** Goal-based flow only: credits a month to spend (1 credit = $0.01). The draft picks the `model`, then solves `sampling_mode` and `sampling_rate` so the projected spend lands on this number, and sets `credit_limit` to it as a hard cap. Omitted on the legacy flow, and ignored while the goal-based flow's flag is off for the caller. */
   monthly_credit_budget?: number;
 }
-export const CreateVisionScannersDraftRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersDraftRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     goal: S.String,
@@ -891,7 +886,7 @@ export interface DraftScannerResponse {
   /** Goal-based flow only: recordings a month the drafted scanner is projected to watch under the solved dials. Its credit cost lands at or under `monthly_credit_budget`, except when the budget is below what the minimum sampling rate can reach, where this is the floor and exceeds the budget. Null whenever `sampling_mode` is. */
   estimated_monthly_observations: number | null;
 }
-export const DraftScannerResponse = /*@__PURE__*/ S.suspend(() =>
+const DraftScannerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.String,
@@ -910,7 +905,7 @@ export const DraftScannerResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The variant keys it watches. Null or omitted means every variant. */
 export type EstimateExperimentScopeVariantsList = Array<string>;
-export const EstimateExperimentScopeVariantsList =
+const EstimateExperimentScopeVariantsList =
   VisionAlertSelectionVerdictList as any as S.Schema<EstimateExperimentScopeVariantsList>;
 
 export interface EstimateExperimentScope {
@@ -919,7 +914,7 @@ export interface EstimateExperimentScope {
   /** The variant keys it watches. Null or omitted means every variant. */
   variants?: EstimateExperimentScopeVariantsList | null;
 }
-export const EstimateExperimentScope = /*@__PURE__*/ S.suspend(() =>
+const EstimateExperimentScope = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment_id: S.Number,
     variants: S.optional(S.NullOr(EstimateExperimentScopeVariantsList)),
@@ -944,7 +939,7 @@ export interface CreateVisionScannersEstimateRequest {
   /** For an experiment scanner: the `experiment_id` and `variants` it will keep in its config, merged into the query as its exposure filter so the estimate counts only exposed sessions. Not combined with `experiment_targeting`. */
   experiment?: EstimateExperimentScope | null;
 }
-export const CreateVisionScannersEstimateRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersEstimateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     query: S.optional(S.Unknown),
@@ -984,7 +979,7 @@ export interface EstimateResponse {
   /** Sampling rate applied to the projection. Echoed from the request. */
   sampling_rate: number;
 }
-export const EstimateResponse = /*@__PURE__*/ S.suspend(() =>
+const EstimateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matched_sessions_in_window: S.Number,
     window_days: S.Number,
@@ -999,7 +994,7 @@ export const EstimateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** Session recording IDs to scan, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. */
 export type CreateVisionScannersInlineScanRequestSessionIdsList = Array<string>;
-export const CreateVisionScannersInlineScanRequestSessionIdsList =
+const CreateVisionScannersInlineScanRequestSessionIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannersInlineScanRequestSessionIdsList>;
 
 export interface CreateVisionScannersInlineScanRequest {
@@ -1016,7 +1011,7 @@ export interface CreateVisionScannersInlineScanRequest {
   /** Model to scan with. Determines what each observation costs in credits. * `gemini-3.5-flash-lite` - Gemini 3.5 Flash Lite * `gemini-3-flash-preview` - Gemini 3 Flash * `gemini-3.8-flash` - Gemini 3.8 Flash */
   model?: ScannerModelEnum | (string & {});
 }
-export const CreateVisionScannersInlineScanRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersInlineScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     session_ids: CreateVisionScannersInlineScanRequestSessionIdsList,
@@ -1036,7 +1031,7 @@ export const CreateVisionScannersInlineScanRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<CreateVisionScannersInlineScanRequest>;
 
 export interface CreateVisionScannersInlineScanResponse {}
-export const CreateVisionScannersInlineScanResponse =
+const CreateVisionScannersInlineScanResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<CreateVisionScannersInlineScanResponse>;
 
 export interface CreateVisionScannersObservationsLabelRequest {
@@ -1050,7 +1045,7 @@ export interface CreateVisionScannersObservationsLabelRequest {
   /** Optional written context on the rating, for thumbs-up and thumbs-down alike: what the scanner got right or wrong, or what it should have concluded. */
   feedback?: string;
 }
-export const CreateVisionScannersObservationsLabelRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersObservationsLabelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -1075,7 +1070,7 @@ export interface CreateVisionScannersObservationsViewedRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const CreateVisionScannersObservationsViewedRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersObservationsViewedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -1092,7 +1087,7 @@ export const CreateVisionScannersObservationsViewedRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<CreateVisionScannersObservationsViewedRequest>;
 
 export interface CreateVisionScannersObservationsViewedResponse {}
-export const CreateVisionScannersObservationsViewedResponse =
+const CreateVisionScannersObservationsViewedResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<CreateVisionScannersObservationsViewedResponse>;
 
 export interface CreateVisionScannersObserveRequest {
@@ -1103,7 +1098,7 @@ export interface CreateVisionScannersObserveRequest {
   /** ID of the session recording to apply the scanner to. */
   session_id: string;
 }
-export const CreateVisionScannersObserveRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersObserveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1124,7 +1119,7 @@ export interface ObserveAlreadyScanned {
   /** The settled observation this scanner already has for the session. Nothing was started and nothing was charged; read it from /vision/scanners/{id}/observations/, or use the retry action on it to scan the session again. */
   observation_id: string;
 }
-export const ObserveAlreadyScanned = /*@__PURE__*/ S.suspend(() =>
+const ObserveAlreadyScanned = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observation_id: S.String,
   }),
@@ -1132,34 +1127,34 @@ export const ObserveAlreadyScanned = /*@__PURE__*/ S.suspend(() =>
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigOptionsTagsList = Array<string>;
-export const SignalScoutConfigOptionsTagsList =
+const SignalScoutConfigOptionsTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsTagsList>;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigOptionsStructuredOutputSchemaMap = {
   [key: string]: unknown | undefined;
 };
-export const SignalScoutConfigOptionsStructuredOutputSchemaMap =
+const SignalScoutConfigOptionsStructuredOutputSchemaMap =
   UserBasicHedgehogConfigMap as any as S.Schema<SignalScoutConfigOptionsStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigOptionsMcpGatewayServerIdsList =
+const SignalScoutConfigOptionsMcpGatewayServerIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsRepositoriesList = Array<string>;
-export const SignalScoutConfigOptionsRepositoriesList =
+const SignalScoutConfigOptionsRepositoriesList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigOptionsWriteScopesList = Array<string>;
-export const SignalScoutConfigOptionsWriteScopesList =
+const SignalScoutConfigOptionsWriteScopesList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigOptionsWriteScopesList>;
 
 /** Slack members to send output to as direct messages, each in `member_id|@display-name` format (a bare member ID like `U0123ABC456` also works). Each member gets their own DM from the PostHog app; at most 5. Set either this or `channel`, not both. Useful for personal scouts where a DM beats a channel. */
 export type SignalScoutSlackDestinationUsersList = Array<string>;
-export const SignalScoutSlackDestinationUsersList =
+const SignalScoutSlackDestinationUsersList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutSlackDestinationUsersList>;
 
 export interface SignalScoutSlackDestination {
@@ -1172,7 +1167,7 @@ export interface SignalScoutSlackDestination {
   /** When true, post a report as a thread: a short lead in the channel and the rest split into replies at the summary's section labels, which can be Markdown headings or bold labels. Keeps a long summary from being clipped at Slack's section limit. On by default; set it false to post a single message, which can truncate a long summary. It does not change how findings post. */
   thread_reports?: boolean;
 }
-export const SignalScoutSlackDestination = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutSlackDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     integration_id: S.Number,
     channel: S.optional(S.NullOr(S.String)),
@@ -1187,7 +1182,7 @@ export interface SignalScoutWebhookDestination {
   /** Id of the CDP destination delivering this scout's reports. Set by the product that provisioned it, so it can find that destination again to update or remove it. */
   hog_function_id: string;
 }
-export const SignalScoutWebhookDestination = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutWebhookDestination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_id: S.String,
   }),
@@ -1201,7 +1196,7 @@ export interface SignalScoutOutputDestinations {
   /** The CDP destination another product provisioned for this scout's reports. Null or omitted means no webhook. Unlike Slack, Signals does not deliver this itself: the reference lives here so the owning product can manage the destination's lifecycle. */
   webhook?: SignalScoutWebhookDestination | null;
 }
-export const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     slack: S.optional(S.NullOr(SignalScoutSlackDestination)),
     webhook: S.optional(S.NullOr(SignalScoutWebhookDestination)),
@@ -1212,7 +1207,7 @@ export const SignalScoutOutputDestinations = /*@__PURE__*/ S.suspend(() =>
 
 /** * `trusted` - Trusted domains only * `full` - Full */
 export type SignalScoutConfigNetworkAccessEnum = "trusted" | "full";
-export const SignalScoutConfigNetworkAccessEnum = S.String;
+const SignalScoutConfigNetworkAccessEnum = S.String;
 
 /** Schedule, enablement, and delivery options accepted while creating a scout. */
 export interface SignalScoutConfigOptions {
@@ -1243,7 +1238,7 @@ export interface SignalScoutConfigOptions {
   /** Optional five-field cron expression, e.g. '30 9 * * *' (daily at 09:30), '0 9,17 * * *' (twice daily), or '0 9 * * 1-5' (weekday mornings). Evaluated in the project timezone. Takes precedence over `run_interval_minutes`; occurrences must be at least 30 minutes apart. */
   run_cron_schedule?: string | null;
 }
-export const SignalScoutConfigOptions = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutConfigOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model: S.optional(S.NullOr(S.String)),
     tags: S.optional(SignalScoutConfigOptionsTagsList),
@@ -1280,7 +1275,7 @@ export interface CreateVisionScannersScoutRequest {
   /** Make this the experiment scanner's variant analysis scout: its runs record a structured comparison of the variants, which the scanner's variants readout shows. Experiment scanners only. */
   variant_analysis?: boolean;
 }
-export const CreateVisionScannersScoutRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersScoutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -1303,14 +1298,14 @@ export const CreateVisionScannersScoutRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `canonical` - canonical * `custom` - custom */
 export type ScoutOriginEnum = "canonical" | "custom";
-export const ScoutOriginEnum = S.String;
+const ScoutOriginEnum = S.String;
 
 export type ScoutRoleEnum = "specialist" | "operational";
-export const ScoutRoleEnum = S.String;
+const ScoutRoleEnum = S.String;
 
 /** * `announced` - announced * `retired` - retired */
 export type ScoutDeprecationPhaseEnum = "announced" | "retired";
-export const ScoutDeprecationPhaseEnum = S.String;
+const ScoutDeprecationPhaseEnum = S.String;
 
 /** What PostHog has said about retiring this scout, for the chip and the banner to render. */
 export interface ScoutDeprecation {
@@ -1323,7 +1318,7 @@ export interface ScoutDeprecation {
   /** When the scout stops running. Null means the next fleet reconcile retires it. */
   sunset_at: string | null;
 }
-export const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
+const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     phase: ScoutDeprecationPhaseEnum,
     reason: S.String,
@@ -1334,7 +1329,7 @@ export const ScoutDeprecation = /*@__PURE__*/ S.suspend(() =>
 
 /** Who answers for this scout, seed-creator first. Ownership is recorded on the scout's skill rather than on this config, so editing the skill or toggling the scout leaves it unchanged. Reports the scout files suggest these people as reviewers. Prefer this over `created_by`-style fields, which only say who last flipped a switch. Empty when nobody owns the scout, when the owners are no longer members with access to the project, or when the caller is a scout sandbox token: owners are member PII, and a scout reads them through the skill API instead. */
 export type SignalScoutConfigOwnersList = Array<UserBasic>;
-export const SignalScoutConfigOwnersList = /*@__PURE__*/ S.Array(
+const SignalScoutConfigOwnersList = /*@__PURE__*/ S.Array(
   UserBasic,
 ) as any as S.Schema<SignalScoutConfigOwnersList>;
 
@@ -1344,7 +1339,7 @@ export type SignalScoutConfigStatusEnum =
   | "pending_pause"
   | "paused_by_system"
   | "paused_by_user";
-export const SignalScoutConfigStatusEnum = S.String;
+const SignalScoutConfigStatusEnum = S.String;
 
 /** * `no_output` - No output * `ignored` - Ignored * `repeated_failures` - Repeated failures * `retired` - Retired * `background_removed` - Background removed */
 export type SignalScoutConfigPauseReasonEnum =
@@ -1353,35 +1348,35 @@ export type SignalScoutConfigPauseReasonEnum =
   | "repeated_failures"
   | "retired"
   | "background_removed";
-export const SignalScoutConfigPauseReasonEnum = S.String;
+const SignalScoutConfigPauseReasonEnum = S.String;
 
 /** * `team` - Team * `background` - Background */
 export type SignalScoutConfigManagedByEnum = "team" | "background";
-export const SignalScoutConfigManagedByEnum = S.String;
+const SignalScoutConfigManagedByEnum = S.String;
 
 /** Optional JSON Schema (draft 2020-12) describing ONE structured record this scout produces via `scout-record-output` -- e.g. a per-report quality judgment (`{"type": "object", "properties": {"verdict": {"enum": ["good", "bad", "unsure"]}, "reason": {"type": "string"}}, "required": ["verdict", "reason"]}`). The root must be `"type": "object"`. Setting a schema turns the structured-output channel on: the run prompt renders the schema and every submitted record is validated against it and recorded in the project as a `$scout_structured_output` event, queryable like any event. The channel also requires emit -- a dry-run scout has nowhere to record to. Cardinality is the scout's call (one record per run, one per judged entity, ...). Null = channel off. Setting a schema requires skill-authoring authorization (the `llm_skill:write` scope and skill editor access) since the scout reads it verbatim in its prompt; clearing it needs only the config write. Records validate against the schema in force when the run was dispatched. */
 export type SignalScoutConfigStructuredOutputSchemaMap = { [key: string]: unknown | undefined };
-export const SignalScoutConfigStructuredOutputSchemaMap =
+const SignalScoutConfigStructuredOutputSchemaMap =
   UserBasicHedgehogConfigMap as any as S.Schema<SignalScoutConfigStructuredOutputSchemaMap>;
 
 /** MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run. */
 export type SignalScoutConfigMcpGatewayServerIdsList = Array<string>;
-export const SignalScoutConfigMcpGatewayServerIdsList =
+const SignalScoutConfigMcpGatewayServerIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigMcpGatewayServerIdsList>;
 
 /** GitHub repositories this scout clones into its sandbox, each in `organization/repo` format. Set them for a scout that reads code, so it can search the tree and run the project's own tests instead of reading files one API call at a time. Empty (the default) leaves the sandbox without a checkout. The scout's GitHub access stays read-only either way, so a repository listed here is never writable from a run. At most 10, each reachable through the project's GitHub connection. Applies from the scout's next run. */
 export type SignalScoutConfigRepositoriesList = Array<string>;
-export const SignalScoutConfigRepositoriesList =
+const SignalScoutConfigRepositoriesList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigRepositoriesList>;
 
 /** Extra write access granted to this one scout, as scope strings. The grantable set is `alert:write`, `annotation:write`, `customer_task:write`, `dashboard:write`, `hog_flow_proposal:write`, `insight:write`, `llm_skill:write`, `replay_scanner:write`, `warehouse_table:write`, `warehouse_view:write`. Empty (the default) means the scout reads the project and writes only what every scout may write: notebooks, its findings, and its own memory. Each scope is project-wide and object-level, so a scout holding `dashboard:write` can update or delete any dashboard in the project, not only ones it made. Grant only what this scout maintains. Only the person the scout's runs act as (whoever authored it) or a project admin can set it, and a scoped API key must itself carry each scope it grants. A dry run (`emit=false`) never holds the grant. Applies from the scout's next run. */
 export type SignalScoutConfigWriteScopesList = Array<string>;
-export const SignalScoutConfigWriteScopesList =
+const SignalScoutConfigWriteScopesList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigWriteScopesList>;
 
 /** Free-form labels for grouping the fleet, e.g. `["revenue", "on-call"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set -- a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter. */
 export type SignalScoutConfigTagsList = Array<string>;
-export const SignalScoutConfigTagsList =
+const SignalScoutConfigTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<SignalScoutConfigTagsList>;
 
 /** Read shape for a per-(team, skill) scout config. One row per scout skill on the team. The coordinator auto-creates a row when it discovers a scout skill; this serializer lets agents tune the row. */
@@ -1449,7 +1444,7 @@ export interface SignalScoutConfig {
   /** When this config last changed: an edit through this API, or a status change the system made such as an automatic pause. A scheduled run does not bump it -- the coordinator stamps `last_run_at` with a direct write -- so this reads as when the scout was last tuned rather than when it last ran. */
   updated_at: string;
 }
-export const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
+const SignalScoutConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     skill_name: S.String,
@@ -1493,7 +1488,7 @@ export interface ScannerScoutCreateResponse {
   /** The scout's config, including the source recorded for it. */
   config: SignalScoutConfig;
 }
-export const ScannerScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
+const ScannerScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.Boolean,
     config: SignalScoutConfig,
@@ -1504,7 +1499,7 @@ export const ScannerScoutCreateResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** The categories already configured, so suggestions never duplicate one the user has. */
 export type CreateVisionScannersSuggestTagRequestTagsList = Array<string>;
-export const CreateVisionScannersSuggestTagRequestTagsList =
+const CreateVisionScannersSuggestTagRequestTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<CreateVisionScannersSuggestTagRequestTagsList>;
 
 export interface CreateVisionScannersSuggestTagRequest {
@@ -1521,7 +1516,7 @@ export interface CreateVisionScannersSuggestTagRequest {
   /** Existing scanner to ground suggestions in its own observations (the tags and reasoning it has already produced on real recordings). Omit for an unsaved scanner. */
   scanner_id?: string | null;
 }
-export const CreateVisionScannersSuggestTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateVisionScannersSuggestTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     prompt: S.String,
@@ -1542,7 +1537,7 @@ export const CreateVisionScannersSuggestTagRequest = /*@__PURE__*/ S.suspend(() 
 
 /** * `observed` - observed * `product` - product * `prompt` - prompt */
 export type TagSuggestionSourceEnum = "observed" | "product" | "prompt";
-export const TagSuggestionSourceEnum = S.String;
+const TagSuggestionSourceEnum = S.String;
 
 /** One grounded tag suggestion. */
 export interface TagSuggestion {
@@ -1553,7 +1548,7 @@ export interface TagSuggestion {
   /** Primary grounding: observed=a category this scanner already emitted on recordings; product=the org's events/screens; prompt=the scanner's stated goal. * `observed` - observed * `product` - product * `prompt` - prompt */
   source: TagSuggestionSourceEnum;
 }
-export const TagSuggestion = /*@__PURE__*/ S.suspend(() =>
+const TagSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.String,
     rationale: S.String,
@@ -1563,7 +1558,7 @@ export const TagSuggestion = /*@__PURE__*/ S.suspend(() =>
 
 /** Suggested tags to add, most relevant first. May be empty when the evidence is too thin. */
 export type SuggestTagsResponseSuggestionsList = Array<TagSuggestion>;
-export const SuggestTagsResponseSuggestionsList = /*@__PURE__*/ S.Array(
+const SuggestTagsResponseSuggestionsList = /*@__PURE__*/ S.Array(
   TagSuggestion,
 ) as any as S.Schema<SuggestTagsResponseSuggestionsList>;
 
@@ -1572,7 +1567,7 @@ export interface SuggestTagsResponse {
   /** Suggested tags to add, most relevant first. May be empty when the evidence is too thin. */
   suggestions: SuggestTagsResponseSuggestionsList;
 }
-export const SuggestTagsResponse = /*@__PURE__*/ S.suspend(() =>
+const SuggestTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     suggestions: SuggestTagsResponseSuggestionsList,
   }),
@@ -1582,7 +1577,7 @@ export interface GetEnvironmentVisionQuotaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEnvironmentVisionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentVisionQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/vision/quota/", code: 200 })),
@@ -1616,7 +1611,7 @@ export interface VisionQuota {
   /** Credits per period included for free. Already counted inside `credit_limit`; only credits beyond this number are billed. */
   free_monthly_credits: number;
 }
-export const VisionQuota = /*@__PURE__*/ S.suspend(() =>
+const VisionQuota = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     credit_limit: S.NullOr(S.Number),
     credits_used: S.Number,
@@ -1637,7 +1632,7 @@ export interface GetEnvironmentVisionQuotaSpendSeriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetEnvironmentVisionQuotaSpendSeriesRequest = /*@__PURE__*/ S.suspend(() =>
+const GetEnvironmentVisionQuotaSpendSeriesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -1657,7 +1652,7 @@ export interface VisionSpendDay {
   /** Credits settled by observations created on this day across every project in the organization; 0 when none. */
   credits: number;
 }
-export const VisionSpendDay = /*@__PURE__*/ S.suspend(() =>
+const VisionSpendDay = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     credits: S.Number,
@@ -1666,7 +1661,7 @@ export const VisionSpendDay = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per UTC day from `period_start` through today, in order, zero-filled for days without spend. */
 export type VisionSpendSeriesDaysList = Array<VisionSpendDay>;
-export const VisionSpendSeriesDaysList = /*@__PURE__*/ S.Array(
+const VisionSpendSeriesDaysList = /*@__PURE__*/ S.Array(
   VisionSpendDay,
 ) as any as S.Schema<VisionSpendSeriesDaysList>;
 
@@ -1678,7 +1673,7 @@ export interface VisionSpendSeries {
   /** One entry per UTC day from `period_start` through today, in order, zero-filled for days without spend. */
   days: VisionSpendSeriesDaysList;
 }
-export const VisionSpendSeries = /*@__PURE__*/ S.suspend(() =>
+const VisionSpendSeries = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     period_start: S.String,
     period_end: S.String,
@@ -1692,7 +1687,7 @@ export interface GetVisionAlertRequest {
   /** A UUID string identifying this vision alert configuration. */
   id: string;
 }
-export const GetVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1703,7 +1698,7 @@ export const GetVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunctions backing the created destination, one per event kind. */
 export type VisionAlertDestinationConfigHogFunctionIdsList = Array<string>;
-export const VisionAlertDestinationConfigHogFunctionIdsList =
+const VisionAlertDestinationConfigHogFunctionIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertDestinationConfigHogFunctionIdsList>;
 
 export interface VisionAlertDestinationConfig {
@@ -1720,7 +1715,7 @@ export interface VisionAlertDestinationConfig {
   /** Webhook endpoint reduced to scheme and host, because the path, query and userinfo can carry a secret. */
   webhook_url?: string;
 }
-export const VisionAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hog_function_ids: VisionAlertDestinationConfigHogFunctionIdsList,
     type: VisionAlertDestinationTypeEnum,
@@ -1735,7 +1730,7 @@ export const VisionAlertDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 
 /** This alert's notification destinations, one entry per destination, with credential-bearing URL parts removed. */
 export type VisionAlertConfigurationDetailDestinationsList = Array<VisionAlertDestinationConfig>;
-export const VisionAlertConfigurationDetailDestinationsList = /*@__PURE__*/ S.Array(
+const VisionAlertConfigurationDetailDestinationsList = /*@__PURE__*/ S.Array(
   VisionAlertDestinationConfig,
 ) as any as S.Schema<VisionAlertConfigurationDetailDestinationsList>;
 
@@ -1793,7 +1788,7 @@ export interface VisionAlertConfigurationDetail {
   /** This alert's notification destinations, one entry per destination, with credential-bearing URL parts removed. */
   destinations: VisionAlertConfigurationDetailDestinationsList;
 }
-export const VisionAlertConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertConfigurationDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scanner_id: S.String,
@@ -1847,7 +1842,7 @@ export type GetVisionObservationRequestOrderBy =
   | "scanner_version"
   | "started_at"
   | "status";
-export const GetVisionObservationRequestOrderBy = S.String;
+const GetVisionObservationRequestOrderBy = S.String;
 
 export interface GetVisionObservationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1883,7 +1878,7 @@ export interface GetVisionObservationRequest {
   /** Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`). */
   verdict?: string;
 }
-export const GetVisionObservationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionObservationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -1914,15 +1909,15 @@ export const GetVisionObservationRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `configured` - Configured * `inline` - Inline */
 export type ScannerOriginEnum = "configured" | "inline";
-export const ScannerOriginEnum = S.String;
+const ScannerOriginEnum = S.String;
 
 /** * `pending` - Pending * `running` - Running * `succeeded` - Succeeded * `failed` - Failed * `ineligible` - Ineligible */
 export type ObservationStatusEnum = "pending" | "running" | "succeeded" | "failed" | "ineligible";
-export const ObservationStatusEnum = S.String;
+const ObservationStatusEnum = S.String;
 
 /** Experiment scanners with balanced sampling: the 0..1 rate each watched variant was sampled at by the tick that dispatched this scan. Null otherwise, so even per-variant counts can be read against the rates that produced them. */
 export type ScannerSnapshotVariantSamplingRatesMap = { [key: string]: number | undefined };
-export const ScannerSnapshotVariantSamplingRatesMap = /*@__PURE__*/ S.Record(
+const ScannerSnapshotVariantSamplingRatesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Number,
 ) as any as S.Schema<ScannerSnapshotVariantSamplingRatesMap>;
@@ -1946,7 +1941,7 @@ export interface ScannerSnapshot {
   /** Experiment scanners with balanced sampling: the 0..1 rate each watched variant was sampled at by the tick that dispatched this scan. Null otherwise, so even per-variant counts can be read against the rates that produced them. */
   variant_sampling_rates?: ScannerSnapshotVariantSamplingRatesMap | null;
 }
-export const ScannerSnapshot = /*@__PURE__*/ S.suspend(() =>
+const ScannerSnapshot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     scanner_type: ScannerTypeEnum,
@@ -1970,7 +1965,7 @@ export interface ScannerResult {
   /** Experiment scanners only: the scanned session's duration in seconds. */
   session_duration_s?: number | null;
 }
-export const ScannerResult = /*@__PURE__*/ S.suspend(() =>
+const ScannerResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_output: S.Unknown,
     signals_count: S.Number,
@@ -1981,11 +1976,11 @@ export const ScannerResult = /*@__PURE__*/ S.suspend(() =>
 
 /** * `schedule` - Schedule * `on_demand` - On demand * `retry` - Retry * `backfill` - Backfill */
 export type ObservationTriggerEnum = "schedule" | "on_demand" | "retry" | "backfill";
-export const ObservationTriggerEnum = S.String;
+const ObservationTriggerEnum = S.String;
 
 /** * `thumbnail` - Thumbnail * `clip` - Clip * `chapter` - Chapter */
 export type ReplayObservationMediaKindEnum = "thumbnail" | "clip" | "chapter";
-export const ReplayObservationMediaKindEnum = S.String;
+const ReplayObservationMediaKindEnum = S.String;
 
 /** One thumbnail or clip illustrating an observation. */
 export interface ReplayObservationMedia {
@@ -2004,7 +1999,7 @@ export interface ReplayObservationMedia {
   /** Where a clip ends in the analysis video, in milliseconds. Null for thumbnails. */
   video_end_ms: number | null;
 }
-export const ReplayObservationMedia = /*@__PURE__*/ S.suspend(() =>
+const ReplayObservationMedia = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     kind: ReplayObservationMediaKindEnum,
@@ -2018,7 +2013,7 @@ export const ReplayObservationMedia = /*@__PURE__*/ S.suspend(() =>
 
 /** Thumbnails and clips illustrating this observation, in order. Empty until the media render finishes. */
 export type ReplayObservationMediaList = Array<ReplayObservationMedia>;
-export const ReplayObservationMediaList = /*@__PURE__*/ S.Array(
+const ReplayObservationMediaList = /*@__PURE__*/ S.Array(
   ReplayObservationMedia,
 ) as any as S.Schema<ReplayObservationMediaList>;
 
@@ -2068,7 +2063,7 @@ export interface ReplayObservation {
   completed_at?: string | null;
   created_at: string;
 }
-export const ReplayObservation = /*@__PURE__*/ S.suspend(() =>
+const ReplayObservation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     scanner_id: S.String,
@@ -2105,7 +2100,7 @@ export interface GetVisionObservationsThumbnailRequest {
   /** Index into the summary's `model_output.chapters`. Serves that chapter's frame instead of the observation's thumbnail. */
   chapter?: number;
 }
-export const GetVisionObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2122,7 +2117,7 @@ export const GetVisionObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<GetVisionObservationsThumbnailRequest>;
 
 export interface GetVisionObservationsThumbnailResponse {}
-export const GetVisionObservationsThumbnailResponse =
+const GetVisionObservationsThumbnailResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<GetVisionObservationsThumbnailResponse>;
 
 export interface GetVisionScannerRequest {
@@ -2131,7 +2126,7 @@ export interface GetVisionScannerRequest {
   /** A UUID string identifying this replay scanner. */
   id: string;
 }
-export const GetVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2147,7 +2142,7 @@ export interface GetVisionScannersBackfillRequest {
   /** A UUID string identifying this replay scanner backfill. */
   id: string;
 }
-export const GetVisionScannersBackfillRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersBackfillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -2167,7 +2162,7 @@ export interface GetVisionScannersCreatorRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetVisionScannersCreatorRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersCreatorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2183,7 +2178,7 @@ export const GetVisionScannersCreatorRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
 export type ScannerCreatorsResponseCreatorsList = Array<UserBasic>;
-export const ScannerCreatorsResponseCreatorsList =
+const ScannerCreatorsResponseCreatorsList =
   SignalScoutConfigOwnersList as any as S.Schema<ScannerCreatorsResponseCreatorsList>;
 
 /** Distinct creators across all scanners on the team -- feeds the `Created by` filter dropdown. */
@@ -2191,14 +2186,14 @@ export interface ScannerCreatorsResponse {
   /** Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages. */
   creators: ScannerCreatorsResponseCreatorsList;
 }
-export const ScannerCreatorsResponse = /*@__PURE__*/ S.suspend(() =>
+const ScannerCreatorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     creators: ScannerCreatorsResponseCreatorsList,
   }),
 ).annotate({ identifier: "ScannerCreatorsResponse" }) as any as S.Schema<ScannerCreatorsResponse>;
 
 export type GetVisionScannersImpactRequestVerdict = "yes" | "no" | "inconclusive";
-export const GetVisionScannersImpactRequestVerdict = S.String;
+const GetVisionScannersImpactRequestVerdict = S.String;
 
 export interface GetVisionScannersImpactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2216,7 +2211,7 @@ export interface GetVisionScannersImpactRequest {
   /** Trailing window of observations to count. Defaults to 30 days. */
   window_days?: number;
 }
-export const GetVisionScannersImpactRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersImpactRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2247,7 +2242,7 @@ export interface ScannerImpact {
   /** Trailing window the counts cover, in days. */
   window_days: number;
 }
-export const ScannerImpact = /*@__PURE__*/ S.suspend(() =>
+const ScannerImpact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     affected_sessions: S.Number,
     affected_users: S.Number,
@@ -2277,7 +2272,7 @@ export type GetVisionScannersObservationRequestOrderBy =
   | "scanner_version"
   | "started_at"
   | "status";
-export const GetVisionScannersObservationRequestOrderBy = S.String;
+const GetVisionScannersObservationRequestOrderBy = S.String;
 
 export interface GetVisionScannersObservationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -2314,7 +2309,7 @@ export interface GetVisionScannersObservationRequest {
   /** Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`). */
   verdict?: string;
 }
-export const GetVisionScannersObservationRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersObservationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -2377,7 +2372,7 @@ export interface GetVisionScannersObservationsStatRequest {
   /** Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`). */
   verdict?: string;
 }
-export const GetVisionScannersObservationsStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersObservationsStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -2420,7 +2415,7 @@ export interface ObservationStatusCounts {
   /** Percentage of (succeeded + failed) observations that succeeded; ineligible rows are excluded. Null when no observations have completed. */
   success_rate: number | null;
 }
-export const ObservationStatusCounts = /*@__PURE__*/ S.suspend(() =>
+const ObservationStatusCounts = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     succeeded: S.Number,
@@ -2439,7 +2434,7 @@ export interface CoverageStats {
   /** Window size in days used for `recent_sessions`. */
   recent_days: number;
 }
-export const CoverageStats = /*@__PURE__*/ S.suspend(() =>
+const CoverageStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recent_sessions: S.Number,
     total_sessions: S.Number,
@@ -2455,7 +2450,7 @@ export interface ObservationLabelDayCount {
   /** Observations scanned this day labeled incorrect (thumbs down). */
   down: number;
 }
-export const ObservationLabelDayCount = /*@__PURE__*/ S.suspend(() =>
+const ObservationLabelDayCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     up: S.Number,
@@ -2465,13 +2460,13 @@ export const ObservationLabelDayCount = /*@__PURE__*/ S.suspend(() =>
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the session was scanned so the series tracks scanner quality over time. Days without labels are omitted. */
 export type ObservationLabelStatsByDayList = Array<ObservationLabelDayCount>;
-export const ObservationLabelStatsByDayList = /*@__PURE__*/ S.Array(
+const ObservationLabelStatsByDayList = /*@__PURE__*/ S.Array(
   ObservationLabelDayCount,
 ) as any as S.Schema<ObservationLabelStatsByDayList>;
 
 /** Daily label counts over the last `recent_days` days, bucketed by the day the rating was last set or changed: the team's rating activity. Days without rating changes are omitted. */
 export type ObservationLabelStatsByRatingDayList = Array<ObservationLabelDayCount>;
-export const ObservationLabelStatsByRatingDayList =
+const ObservationLabelStatsByRatingDayList =
   ObservationLabelStatsByDayList as any as S.Schema<ObservationLabelStatsByRatingDayList>;
 
 export interface ObservationVersionMarker {
@@ -2504,7 +2499,7 @@ export interface ObservationVersionMarker {
   /** Succeeded (ratable) observations this version produced, rated or not. */
   total: number;
 }
-export const ObservationVersionMarker = /*@__PURE__*/ S.suspend(() =>
+const ObservationVersionMarker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.String,
     version: S.Number,
@@ -2525,7 +2520,7 @@ export const ObservationVersionMarker = /*@__PURE__*/ S.suspend(() =>
 
 /** Each scanner version that produced observations (all-time), with its first day, the config it ran with, and rating counts, for chart markers and the config version history. */
 export type ObservationLabelStatsVersionMarkersList = Array<ObservationVersionMarker>;
-export const ObservationLabelStatsVersionMarkersList = /*@__PURE__*/ S.Array(
+const ObservationLabelStatsVersionMarkersList = /*@__PURE__*/ S.Array(
   ObservationVersionMarker,
 ) as any as S.Schema<ObservationLabelStatsVersionMarkersList>;
 
@@ -2541,7 +2536,7 @@ export interface ObservationLabelStats {
   /** Each scanner version that produced observations (all-time), with its first day, the config it ran with, and rating counts, for chart markers and the config version history. */
   version_markers: ObservationLabelStatsVersionMarkersList;
 }
-export const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
+const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     up_total: S.Number,
     down_total: S.Number,
@@ -2553,7 +2548,7 @@ export const ObservationLabelStats = /*@__PURE__*/ S.suspend(() =>
 
 /** All distinct tags (fixed + freeform) emitted by succeeded observations in the filtered set. */
 export type ObservationStatsAvailableTagsList = Array<string>;
-export const ObservationStatsAvailableTagsList =
+const ObservationStatsAvailableTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<ObservationStatsAvailableTagsList>;
 
 export interface MonitorStats {
@@ -2564,7 +2559,7 @@ export interface MonitorStats {
   /** Succeeded observations whose verdict was `inconclusive`. */
   inconclusive_total: number;
 }
-export const MonitorStats = /*@__PURE__*/ S.suspend(() =>
+const MonitorStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     yes_total: S.Number,
     no_total: S.Number,
@@ -2578,7 +2573,7 @@ export interface TagCount {
   /** Number of succeeded observations carrying this tag. */
   count: number;
 }
-export const TagCount = /*@__PURE__*/ S.suspend(() =>
+const TagCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tag: S.String,
     count: S.Number,
@@ -2587,13 +2582,13 @@ export const TagCount = /*@__PURE__*/ S.suspend(() =>
 
 /** Top fixed-vocabulary tags by emission count. */
 export type ClassifierStatsFixedRankedList = Array<TagCount>;
-export const ClassifierStatsFixedRankedList = /*@__PURE__*/ S.Array(
+const ClassifierStatsFixedRankedList = /*@__PURE__*/ S.Array(
   TagCount,
 ) as any as S.Schema<ClassifierStatsFixedRankedList>;
 
 /** Top freeform tags by emission count. */
 export type ClassifierStatsFreeformRankedList = Array<TagCount>;
-export const ClassifierStatsFreeformRankedList =
+const ClassifierStatsFreeformRankedList =
   ClassifierStatsFixedRankedList as any as S.Schema<ClassifierStatsFreeformRankedList>;
 
 export interface ClassifierStats {
@@ -2604,7 +2599,7 @@ export interface ClassifierStats {
   /** Succeeded observations that emitted at least one tag. */
   total_with_tags: number;
 }
-export const ClassifierStats = /*@__PURE__*/ S.suspend(() =>
+const ClassifierStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fixed_ranked: ClassifierStatsFixedRankedList,
     freeform_ranked: ClassifierStatsFreeformRankedList,
@@ -2628,7 +2623,7 @@ export interface ScorerSummary {
   /** Number of scored observations summarized. */
   count: number;
 }
-export const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
+const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     min: S.Number,
     p25: S.Number,
@@ -2642,12 +2637,12 @@ export const ScorerSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** Bucket labels (one per histogram bar) spanning the scanner's configured scale. */
 export type ScorerHistogramLabelsList = Array<string>;
-export const ScorerHistogramLabelsList =
+const ScorerHistogramLabelsList =
   VisionAlertSelectionVerdictList as any as S.Schema<ScorerHistogramLabelsList>;
 
 /** Observation count per bucket; same length as `labels`. */
 export type ScorerHistogramCountsList = Array<number>;
-export const ScorerHistogramCountsList = /*@__PURE__*/ S.Array(
+const ScorerHistogramCountsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<ScorerHistogramCountsList>;
 
@@ -2657,7 +2652,7 @@ export interface ScorerHistogram {
   /** Observation count per bucket; same length as `labels`. */
   counts: ScorerHistogramCountsList;
 }
-export const ScorerHistogram = /*@__PURE__*/ S.suspend(() =>
+const ScorerHistogram = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     labels: ScorerHistogramLabelsList,
     counts: ScorerHistogramCountsList,
@@ -2670,7 +2665,7 @@ export interface ScorerStats {
   /** Score histogram; null when no observations have been scored. */
   histogram: ScorerHistogram | null;
 }
-export const ScorerStats = /*@__PURE__*/ S.suspend(() =>
+const ScorerStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.NullOr(ScorerSummary),
     histogram: S.NullOr(ScorerHistogram),
@@ -2693,7 +2688,7 @@ export interface ObservationStats {
   /** Scorer-type aggregates; null when the scanner is not a scorer. */
   scorer: ScorerStats | null;
 }
-export const ObservationStats = /*@__PURE__*/ S.suspend(() =>
+const ObservationStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status_counts: ObservationStatusCounts,
     coverage: CoverageStats,
@@ -2714,7 +2709,7 @@ export interface GetVisionScannersObservationsThumbnailRequest {
   /** Index into the summary's `model_output.chapters`. Serves that chapter's frame instead of the observation's thumbnail. */
   chapter?: number;
 }
-export const GetVisionScannersObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersObservationsThumbnailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -2732,7 +2727,7 @@ export const GetVisionScannersObservationsThumbnailRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<GetVisionScannersObservationsThumbnailRequest>;
 
 export interface GetVisionScannersObservationsThumbnailResponse {}
-export const GetVisionScannersObservationsThumbnailResponse =
+const GetVisionScannersObservationsThumbnailResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<GetVisionScannersObservationsThumbnailResponse>;
 
 export interface GetVisionScannersScoutReportRequest {
@@ -2741,7 +2736,7 @@ export interface GetVisionScannersScoutReportRequest {
   scanner_id: string;
   id: string;
 }
-export const GetVisionScannersScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -2759,7 +2754,7 @@ export const GetVisionScannersScoutReportRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** * `small` - small * `medium` - medium * `large` - large */
 export type SizeEnum = "small" | "medium" | "large";
-export const SizeEnum = S.String;
+const SizeEnum = S.String;
 
 /** One chart attached to a report -- rendered in the inbox and referenceable from the summary. */
 export interface ReportChart {
@@ -2774,7 +2769,7 @@ export interface ReportChart {
   /** How much height the chart gets: `small` for a single number or a short series, `medium` for an ordinary graph, `large` when there are rows or a grid to read (retention, paths, a wide breakdown). Leave it out unless the default looks wrong -- the inbox sizes a chart from its query, and two charts referenced from the same paragraph sit side by side. * `small` - small * `medium` - medium * `large` - large */
   size?: SizeEnum | null;
 }
-export const ReportChart = /*@__PURE__*/ S.suspend(() =>
+const ReportChart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chart_id: S.String,
     title: S.String,
@@ -2786,7 +2781,7 @@ export const ReportChart = /*@__PURE__*/ S.suspend(() =>
 
 /** Charts the scout attached. The summary places one inline with a `[label](chart:<chart_id>)` link; any it does not place render after the body. */
 export type ScoutReportChartsList = Array<ReportChart>;
-export const ScoutReportChartsList = /*@__PURE__*/ S.Array(
+const ScoutReportChartsList = /*@__PURE__*/ S.Array(
   ReportChart,
 ) as any as S.Schema<ScoutReportChartsList>;
 
@@ -2805,7 +2800,7 @@ export interface ScoutReport {
   /** Charts the scout attached. The summary places one inline with a `[label](chart:<chart_id>)` link; any it does not place render after the body. */
   charts: ScoutReportChartsList;
 }
-export const ScoutReport = /*@__PURE__*/ S.suspend(() =>
+const ScoutReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     report_id: S.String,
     skill_name: S.String,
@@ -2822,7 +2817,7 @@ export interface GetVisionScannersSelfDrivingStatRequest {
   /** A UUID string identifying this replay scanner. */
   id: string;
 }
-export const GetVisionScannersSelfDrivingStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersSelfDrivingStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -2845,7 +2840,7 @@ export interface SelfDrivingReport {
   /** The report's inbox status. */
   status: string;
 }
-export const SelfDrivingReport = /*@__PURE__*/ S.suspend(() =>
+const SelfDrivingReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -2855,7 +2850,7 @@ export const SelfDrivingReport = /*@__PURE__*/ S.suspend(() =>
 
 /** The newest reports counted in `reports_contributed`, at most 20. */
 export type ScannerSelfDrivingStatsReportsList = Array<SelfDrivingReport>;
-export const ScannerSelfDrivingStatsReportsList = /*@__PURE__*/ S.Array(
+const ScannerSelfDrivingStatsReportsList = /*@__PURE__*/ S.Array(
   SelfDrivingReport,
 ) as any as S.Schema<ScannerSelfDrivingStatsReportsList>;
 
@@ -2865,7 +2860,7 @@ export interface SelfDrivingPullRequest {
   /** Whether the pull request has merged. */
   merged: boolean;
 }
-export const SelfDrivingPullRequest = /*@__PURE__*/ S.suspend(() =>
+const SelfDrivingPullRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
     merged: S.Boolean,
@@ -2874,7 +2869,7 @@ export const SelfDrivingPullRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** The newest PRs counted in `prs_opened`, at most 20. */
 export type ScannerSelfDrivingStatsPullRequestsList = Array<SelfDrivingPullRequest>;
-export const ScannerSelfDrivingStatsPullRequestsList = /*@__PURE__*/ S.Array(
+const ScannerSelfDrivingStatsPullRequestsList = /*@__PURE__*/ S.Array(
   SelfDrivingPullRequest,
 ) as any as S.Schema<ScannerSelfDrivingStatsPullRequestsList>;
 
@@ -2893,7 +2888,7 @@ export interface ScannerSelfDrivingStats {
   /** The newest PRs counted in `prs_opened`, at most 20. */
   pull_requests: ScannerSelfDrivingStatsPullRequestsList;
 }
-export const ScannerSelfDrivingStats = /*@__PURE__*/ S.suspend(() =>
+const ScannerSelfDrivingStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     signals_emitted: S.Number,
     reports_contributed: S.Number,
@@ -2908,7 +2903,7 @@ export interface GetVisionScannersStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetVisionScannersStatRequest = /*@__PURE__*/ S.suspend(() =>
+const GetVisionScannersStatRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -2925,7 +2920,7 @@ export interface ScannerTypeStats {
   /** Number of scanners of this type (enabled + disabled). */
   total: number;
 }
-export const ScannerTypeStats = /*@__PURE__*/ S.suspend(() =>
+const ScannerTypeStats = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Number,
     total: S.Number,
@@ -2940,7 +2935,7 @@ export interface ScannerStatsByType {
   summarizer: ScannerTypeStats;
   experiment: ScannerTypeStats;
 }
-export const ScannerStatsByType = /*@__PURE__*/ S.suspend(() =>
+const ScannerStatsByType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitor: ScannerTypeStats,
     classifier: ScannerTypeStats,
@@ -2959,7 +2954,7 @@ export interface ScannerStatsResponse {
   /** Per-scanner-type breakdown (monitor / classifier / scorer / summarizer / experiment). */
   by_type: ScannerStatsByType;
 }
-export const ScannerStatsResponse = /*@__PURE__*/ S.suspend(() =>
+const ScannerStatsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     enabled: S.Number,
@@ -2977,7 +2972,7 @@ export interface ListVisionAlertsRequest {
   /** Only return alerts on this scanner. */
   scanner_id?: string;
 }
-export const ListVisionAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -2987,7 +2982,7 @@ export const ListVisionAlertsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListVisionAlertsRequest" }) as any as S.Schema<ListVisionAlertsRequest>;
 
 export type PaginatedVisionAlertConfigurationListResultsList = Array<VisionAlertConfiguration>;
-export const PaginatedVisionAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedVisionAlertConfigurationListResultsList = /*@__PURE__*/ S.Array(
   VisionAlertConfiguration,
 ) as any as S.Schema<PaginatedVisionAlertConfigurationListResultsList>;
 
@@ -2997,7 +2992,7 @@ export interface PaginatedVisionAlertConfigurationList {
   previous?: string | null;
   results: PaginatedVisionAlertConfigurationListResultsList;
 }
-export const PaginatedVisionAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedVisionAlertConfigurationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3016,7 +3011,7 @@ export type ListVisionAlertsEventsRequestKind =
   | "snooze"
   | "threshold_change"
   | "unsnooze";
-export const ListVisionAlertsEventsRequestKind = S.String;
+const ListVisionAlertsEventsRequestKind = S.String;
 
 export interface ListVisionAlertsEventsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3030,7 +3025,7 @@ export interface ListVisionAlertsEventsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisionAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionAlertsEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3057,7 +3052,7 @@ export type VisionAlertEventKindEnum =
   | "snooze"
   | "unsnooze"
   | "threshold_change";
-export const VisionAlertEventKindEnum = S.String;
+const VisionAlertEventKindEnum = S.String;
 
 export interface VisionAlertEvent {
   id: string;
@@ -3069,7 +3064,7 @@ export interface VisionAlertEvent {
   metric_value: number | null;
   error_message: string | null;
 }
-export const VisionAlertEvent = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created_at: S.String,
@@ -3083,7 +3078,7 @@ export const VisionAlertEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VisionAlertEvent" }) as any as S.Schema<VisionAlertEvent>;
 
 export type PaginatedVisionAlertEventListResultsList = Array<VisionAlertEvent>;
-export const PaginatedVisionAlertEventListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedVisionAlertEventListResultsList = /*@__PURE__*/ S.Array(
   VisionAlertEvent,
 ) as any as S.Schema<PaginatedVisionAlertEventListResultsList>;
 
@@ -3093,7 +3088,7 @@ export interface PaginatedVisionAlertEventList {
   previous?: string | null;
   results: PaginatedVisionAlertEventListResultsList;
 }
-export const PaginatedVisionAlertEventList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedVisionAlertEventList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3125,7 +3120,7 @@ export type ListVisionObservationsRequestOrderBy =
   | "scanner_version"
   | "started_at"
   | "status";
-export const ListVisionObservationsRequestOrderBy = S.String;
+const ListVisionObservationsRequestOrderBy = S.String;
 
 export interface ListVisionObservationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3139,7 +3134,7 @@ export interface ListVisionObservationsRequest {
   /** Session recording id to return observations for. */
   session_id: string;
 }
-export const ListVisionObservationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionObservationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -3154,7 +3149,7 @@ export const ListVisionObservationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVisionObservationsRequest>;
 
 export type PaginatedReplayObservationListResultsList = Array<ReplayObservation>;
-export const PaginatedReplayObservationListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReplayObservationListResultsList = /*@__PURE__*/ S.Array(
   ReplayObservation,
 ) as any as S.Schema<PaginatedReplayObservationListResultsList>;
 
@@ -3164,7 +3159,7 @@ export interface PaginatedReplayObservationList {
   previous?: string | null;
   results: PaginatedReplayObservationListResultsList;
 }
-export const PaginatedReplayObservationList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReplayObservationList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3181,7 +3176,7 @@ export interface ListVisionObservationsSignalReportsRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const ListVisionObservationsSignalReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionObservationsSignalReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3207,7 +3202,7 @@ export interface ObservationSignalReport {
   /** When the report was created. */
   created_at: string;
 }
-export const ObservationSignalReport = /*@__PURE__*/ S.suspend(() =>
+const ObservationSignalReport = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.NullOr(S.String),
@@ -3217,13 +3212,13 @@ export const ObservationSignalReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ObservationSignalReport" }) as any as S.Schema<ObservationSignalReport>;
 
 export type ListVisionObservationsSignalReportsResponseBodyList = Array<ObservationSignalReport>;
-export const ListVisionObservationsSignalReportsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVisionObservationsSignalReportsResponseBodyList = /*@__PURE__*/ S.Array(
   ObservationSignalReport,
 ) as any as S.Schema<ListVisionObservationsSignalReportsResponseBodyList>;
 
 export type ListVisionObservationsSignalReportsResponse =
   ListVisionObservationsSignalReportsResponseBodyList;
-export const ListVisionObservationsSignalReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVisionObservationsSignalReportsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVisionObservationsSignalReportsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVisionObservationsSignalReportsResponse",
@@ -3246,7 +3241,7 @@ export type ListVisionScannersRequestOrderBy =
   | "sampling_rate"
   | "scanner_type"
   | "updated_at";
-export const ListVisionScannersRequestOrderBy = S.String;
+const ListVisionScannersRequestOrderBy = S.String;
 
 export interface ListVisionScannersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3272,7 +3267,7 @@ export interface ListVisionScannersRequest {
   /** Filter to scanners carrying at least one of the given tags (comma-separated). */
   tags?: string;
 }
-export const ListVisionScannersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     created_by: S.optional(S.String.pipe(T.Query())),
@@ -3291,7 +3286,7 @@ export const ListVisionScannersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVisionScannersRequest>;
 
 export type PaginatedReplayScannerListOutputResultsList = Array<ReplayScannerOutput>;
-export const PaginatedReplayScannerListOutputResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReplayScannerListOutputResultsList = /*@__PURE__*/ S.Array(
   ReplayScannerOutput,
 ) as any as S.Schema<PaginatedReplayScannerListOutputResultsList>;
 
@@ -3301,7 +3296,7 @@ export interface PaginatedReplayScannerListOutput {
   previous?: string | null;
   results: PaginatedReplayScannerListOutputResultsList;
 }
-export const PaginatedReplayScannerListOutput = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReplayScannerListOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3321,7 +3316,7 @@ export interface ListVisionScannersBackfillsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const ListVisionScannersBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -3339,7 +3334,7 @@ export const ListVisionScannersBackfillsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVisionScannersBackfillsRequest>;
 
 export type PaginatedReplayScannerBackfillListResultsList = Array<ReplayScannerBackfill>;
-export const PaginatedReplayScannerBackfillListResultsList = /*@__PURE__*/ S.Array(
+const PaginatedReplayScannerBackfillListResultsList = /*@__PURE__*/ S.Array(
   ReplayScannerBackfill,
 ) as any as S.Schema<PaginatedReplayScannerBackfillListResultsList>;
 
@@ -3349,7 +3344,7 @@ export interface PaginatedReplayScannerBackfillList {
   previous?: string | null;
   results: PaginatedReplayScannerBackfillListResultsList;
 }
-export const PaginatedReplayScannerBackfillList = /*@__PURE__*/ S.suspend(() =>
+const PaginatedReplayScannerBackfillList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
@@ -3381,7 +3376,7 @@ export type ListVisionScannersObservationsRequestOrderBy =
   | "scanner_version"
   | "started_at"
   | "status";
-export const ListVisionScannersObservationsRequestOrderBy = S.String;
+const ListVisionScannersObservationsRequestOrderBy = S.String;
 
 export interface ListVisionScannersObservationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3420,7 +3415,7 @@ export interface ListVisionScannersObservationsRequest {
   /** Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`). */
   verdict?: string;
 }
-export const ListVisionScannersObservationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersObservationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -3486,7 +3481,7 @@ export interface ListVisionScannersObservationsSignalReportsRequest {
   /** Filter monitor observations by verdict. Accepts a comma-separated list (e.g. `yes,inconclusive`). */
   verdict?: string;
 }
-export const ListVisionScannersObservationsSignalReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersObservationsSignalReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -3518,12 +3513,9 @@ export const ListVisionScannersObservationsSignalReportsRequest = /*@__PURE__*/ 
 
 export type ListVisionScannersObservationsSignalReportsResponseBodyList =
   Array<ObservationSignalReport>;
-export const ListVisionScannersObservationsSignalReportsResponseBodyList =
-  ListVisionObservationsSignalReportsResponseBodyList as any as S.Schema<ListVisionScannersObservationsSignalReportsResponseBodyList>;
-
 export type ListVisionScannersObservationsSignalReportsResponse =
   ListVisionScannersObservationsSignalReportsResponseBodyList;
-export const ListVisionScannersObservationsSignalReportsResponse =
+const ListVisionScannersObservationsSignalReportsResponse =
   ListVisionObservationsSignalReportsResponse as any as S.Schema<ListVisionScannersObservationsSignalReportsResponse>;
 
 export interface ListVisionScannersScoutReportsRequest {
@@ -3531,7 +3523,7 @@ export interface ListVisionScannersScoutReportsRequest {
   project_id: string;
   scanner_id: string;
 }
-export const ListVisionScannersScoutReportsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersScoutReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -3547,12 +3539,12 @@ export const ListVisionScannersScoutReportsRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<ListVisionScannersScoutReportsRequest>;
 
 export type ListVisionScannersScoutReportsResponseBodyList = Array<ScoutReport>;
-export const ListVisionScannersScoutReportsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVisionScannersScoutReportsResponseBodyList = /*@__PURE__*/ S.Array(
   ScoutReport,
 ) as any as S.Schema<ListVisionScannersScoutReportsResponseBodyList>;
 
 export type ListVisionScannersScoutReportsResponse = ListVisionScannersScoutReportsResponseBodyList;
-export const ListVisionScannersScoutReportsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersScoutReportsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVisionScannersScoutReportsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVisionScannersScoutReportsResponse",
@@ -3563,7 +3555,7 @@ export interface ListVisionScannersVariantsRequest {
   project_id: string;
   scanner_id: string;
 }
-export const ListVisionScannersVariantsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersVariantsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -3594,7 +3586,7 @@ export interface VariantsExperiment {
   /** The experiment's day number: 1 on its launch day, frozen once it ends. Null before launch. */
   current_day: number | null;
 }
-export const VariantsExperiment = /*@__PURE__*/ S.suspend(() =>
+const VariantsExperiment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -3614,7 +3606,7 @@ export interface VariantsWindow {
   /** When the latest of those observations completed. */
   last_observation_at: string | null;
 }
-export const VariantsWindow = /*@__PURE__*/ S.suspend(() =>
+const VariantsWindow = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total_observations: S.Number,
     first_observation_at: S.NullOr(S.String),
@@ -3624,7 +3616,7 @@ export const VariantsWindow = /*@__PURE__*/ S.suspend(() =>
 
 /** Observations of this variant the scout cited for the theme. Ids it can't back are dropped. */
 export type VariantAnalysisLineExampleObservationIdsList = Array<string>;
-export const VariantAnalysisLineExampleObservationIdsList =
+const VariantAnalysisLineExampleObservationIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VariantAnalysisLineExampleObservationIdsList>;
 
 export interface VariantAnalysisLine {
@@ -3637,7 +3629,7 @@ export interface VariantAnalysisLine {
   /** Observations of this variant the scout cited for the theme. Ids it can't back are dropped. */
   example_observation_ids: VariantAnalysisLineExampleObservationIdsList;
 }
-export const VariantAnalysisLine = /*@__PURE__*/ S.suspend(() =>
+const VariantAnalysisLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     theme: S.String,
     statement: S.String,
@@ -3648,13 +3640,13 @@ export const VariantAnalysisLine = /*@__PURE__*/ S.suspend(() =>
 
 /** This variant's most notable themes from the variant analysis. Null without a current analysis. */
 export type VariantReadoutDigestList = Array<VariantAnalysisLine>;
-export const VariantReadoutDigestList = /*@__PURE__*/ S.Array(
+const VariantReadoutDigestList = /*@__PURE__*/ S.Array(
   VariantAnalysisLine,
 ) as any as S.Schema<VariantReadoutDigestList>;
 
 /** This variant's most recent observations, newest first. */
 export type VariantReadoutLatestObservationsList = Array<ReplayObservation>;
-export const VariantReadoutLatestObservationsList =
+const VariantReadoutLatestObservationsList =
   PaginatedReplayObservationListResultsList as any as S.Schema<VariantReadoutLatestObservationsList>;
 
 export interface VariantReadout {
@@ -3675,7 +3667,7 @@ export interface VariantReadout {
   /** This variant's most recent observations, newest first. */
   latest_observations: VariantReadoutLatestObservationsList;
 }
-export const VariantReadout = /*@__PURE__*/ S.suspend(() =>
+const VariantReadout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     observations: S.Number,
@@ -3690,13 +3682,13 @@ export const VariantReadout = /*@__PURE__*/ S.suspend(() =>
 
 /** One entry per watched variant, plus any variant still holding observations. */
 export type ExperimentVariantsReadoutVariantsList = Array<VariantReadout>;
-export const ExperimentVariantsReadoutVariantsList = /*@__PURE__*/ S.Array(
+const ExperimentVariantsReadoutVariantsList = /*@__PURE__*/ S.Array(
   VariantReadout,
 ) as any as S.Schema<ExperimentVariantsReadoutVariantsList>;
 
 /** Summaries the analysis read that show the theme, per variant key, as the scout counted them. */
 export type VariantAnalysisDifferenceCountsMap = { [key: string]: number | undefined };
-export const VariantAnalysisDifferenceCountsMap =
+const VariantAnalysisDifferenceCountsMap =
   ScannerSnapshotVariantSamplingRatesMap as any as S.Schema<VariantAnalysisDifferenceCountsMap>;
 
 export interface VariantAnalysisDifference {
@@ -3707,7 +3699,7 @@ export interface VariantAnalysisDifference {
   /** Summaries the analysis read that show the theme, per variant key, as the scout counted them. */
   counts: VariantAnalysisDifferenceCountsMap;
 }
-export const VariantAnalysisDifference = /*@__PURE__*/ S.suspend(() =>
+const VariantAnalysisDifference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     theme: S.String,
     statement: S.String,
@@ -3719,7 +3711,7 @@ export const VariantAnalysisDifference = /*@__PURE__*/ S.suspend(() =>
 
 /** What differs between variants, from the variant analysis. Null without a current analysis. */
 export type ExperimentVariantsReadoutDifferencesList = Array<VariantAnalysisDifference>;
-export const ExperimentVariantsReadoutDifferencesList = /*@__PURE__*/ S.Array(
+const ExperimentVariantsReadoutDifferencesList = /*@__PURE__*/ S.Array(
   VariantAnalysisDifference,
 ) as any as S.Schema<ExperimentVariantsReadoutDifferencesList>;
 
@@ -3735,7 +3727,7 @@ export interface VariantsAnalysisState {
   /** Whether the newest analysis covers the scanner's current version. When false, digests and differences are null until the scout's next run. */
   current: boolean;
 }
-export const VariantsAnalysisState = /*@__PURE__*/ S.suspend(() =>
+const VariantsAnalysisState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scout_config_id: S.String,
     scout_enabled: S.Boolean,
@@ -3759,7 +3751,7 @@ export interface ExperimentVariantsReadout {
   /** The scanner's variant analysis scout and its newest run; null when none is set up. */
   analysis: VariantsAnalysisState | null;
 }
-export const ExperimentVariantsReadout = /*@__PURE__*/ S.suspend(() =>
+const ExperimentVariantsReadout = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     experiment: S.NullOr(VariantsExperiment),
     window: VariantsWindow,
@@ -3773,12 +3765,12 @@ export const ExperimentVariantsReadout = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentVariantsReadout>;
 
 export type ListVisionScannersVariantsResponseBodyList = Array<ExperimentVariantsReadout>;
-export const ListVisionScannersVariantsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListVisionScannersVariantsResponseBodyList = /*@__PURE__*/ S.Array(
   ExperimentVariantsReadout,
 ) as any as S.Schema<ListVisionScannersVariantsResponseBodyList>;
 
 export type ListVisionScannersVariantsResponse = ListVisionScannersVariantsResponseBodyList;
-export const ListVisionScannersVariantsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVisionScannersVariantsResponse = /*@__PURE__*/ S.suspend(() =>
   ListVisionScannersVariantsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListVisionScannersVariantsResponse",
@@ -3820,7 +3812,7 @@ export interface UpdateVisionAlertRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const UpdateVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVisionAlertRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3880,7 +3872,7 @@ export interface UpdateVisionAlertsPartialRequest {
   /** ISO 8601 timestamp until which the alert is snoozed. Set to null to unsnooze. */
   snooze_until?: string | null;
 }
-export const UpdateVisionAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVisionAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3908,7 +3900,7 @@ export const UpdateVisionAlertsPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Organizational tags for this scanner. Distinct from a classifier's categories in scanner_config. Tags cannot contain commas. */
 export type UpdateVisionScannersPartialRequestTagsList = Array<string>;
-export const UpdateVisionScannersPartialRequestTagsList =
+const UpdateVisionScannersPartialRequestTagsList =
   VisionAlertSelectionVerdictList as any as S.Schema<UpdateVisionScannersPartialRequestTagsList>;
 
 export interface UpdateVisionScannersPartialRequest {
@@ -3949,7 +3941,7 @@ export interface UpdateVisionScannersPartialRequest {
   /** The experiment this scanner's targeting watches, if any. Set null when the experiment targeting is removed. */
   experiment_targeting?: ScannerExperimentTargeting | null;
 }
-export const UpdateVisionScannersPartialRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateVisionScannersPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -3978,7 +3970,7 @@ export const UpdateVisionScannersPartialRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** HogFunction IDs to delete as one atomic destination group. */
 export type VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList = Array<string>;
-export const VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
+const VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList>;
 
 export interface VisionAlertsDestinationsDeleteCreateRequest {
@@ -3989,7 +3981,7 @@ export interface VisionAlertsDestinationsDeleteCreateRequest {
   /** HogFunction IDs to delete as one atomic destination group. */
   hog_function_ids: VisionAlertsDestinationsDeleteCreateRequestHogFunctionIdsList;
 }
-export const VisionAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4006,7 +3998,7 @@ export const VisionAlertsDestinationsDeleteCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<VisionAlertsDestinationsDeleteCreateRequest>;
 
 export interface VisionAlertsDestinationsDeleteCreateResponse {}
-export const VisionAlertsDestinationsDeleteCreateResponse =
+const VisionAlertsDestinationsDeleteCreateResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionAlertsDestinationsDeleteCreateResponse>;
 
 export interface VisionAlertsDestroyRequest {
@@ -4015,7 +4007,7 @@ export interface VisionAlertsDestroyRequest {
   /** A UUID string identifying this vision alert configuration. */
   id: string;
 }
-export const VisionAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4027,7 +4019,7 @@ export const VisionAlertsDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionAlertsDestroyRequest>;
 
 export interface VisionAlertsDestroyResponse {}
-export const VisionAlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const VisionAlertsDestroyResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "VisionAlertsDestroyResponse",
 }) as any as S.Schema<VisionAlertsDestroyResponse>;
 
@@ -4037,7 +4029,7 @@ export interface VisionAlertsResetCreateRequest {
   /** A UUID string identifying this vision alert configuration. */
   id: string;
 }
-export const VisionAlertsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionAlertsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4058,7 +4050,7 @@ export interface VisionObservationsCreateTaskCreateRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionObservationsCreateTaskCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsCreateTaskCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4078,7 +4070,7 @@ export interface CreateTaskFromObservationResponse {
   /** ID of the PostHog Task holding this observation's finding, created now (201) or by an earlier call (200). */
   task_id: string;
 }
-export const CreateTaskFromObservationResponse = /*@__PURE__*/ S.suspend(() =>
+const CreateTaskFromObservationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     task_id: S.String,
   }),
@@ -4092,7 +4084,7 @@ export interface VisionObservationsLabelDestroyRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4108,7 +4100,7 @@ export const VisionObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<VisionObservationsLabelDestroyRequest>;
 
 export interface VisionObservationsLabelDestroyResponse {}
-export const VisionObservationsLabelDestroyResponse =
+const VisionObservationsLabelDestroyResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsLabelDestroyResponse>;
 
 export interface VisionObservationsRetryCreateRequest {
@@ -4117,7 +4109,7 @@ export interface VisionObservationsRetryCreateRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4133,7 +4125,7 @@ export const VisionObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<VisionObservationsRetryCreateRequest>;
 
 export interface VisionObservationsRetryCreateResponse {}
-export const VisionObservationsRetryCreateResponse =
+const VisionObservationsRetryCreateResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsRetryCreateResponse>;
 
 export interface VisionObservationsSearchRetrieveRequest {
@@ -4158,7 +4150,7 @@ export interface VisionObservationsSearchRetrieveRequest {
   /** Comma-separated monitor verdicts to keep, e.g. `yes,inconclusive`. */
   verdict?: string;
 }
-export const VisionObservationsSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsSearchRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -4189,7 +4181,7 @@ export interface ObservationSearchResult {
   /** Excerpt of the observation text that best matched the search, truncated. Empty for observations analyzed before excerpts were stored. */
   matched_content: string;
 }
-export const ObservationSearchResult = /*@__PURE__*/ S.suspend(() =>
+const ObservationSearchResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observation: ReplayObservation,
     distance: S.Number,
@@ -4199,7 +4191,7 @@ export const ObservationSearchResult = /*@__PURE__*/ S.suspend(() =>
 
 /** Matching observations, most relevant first. */
 export type ObservationSearchResponseResultsList = Array<ObservationSearchResult>;
-export const ObservationSearchResponseResultsList = /*@__PURE__*/ S.Array(
+const ObservationSearchResponseResultsList = /*@__PURE__*/ S.Array(
   ObservationSearchResult,
 ) as any as S.Schema<ObservationSearchResponseResultsList>;
 
@@ -4211,7 +4203,7 @@ export interface ObservationSearchResponse {
   /** True when a relevance model reordered the top results after the embedding match. False when the results are in embedding distance order, for example because the model did not answer in time. */
   reranked: boolean;
 }
-export const ObservationSearchResponse = /*@__PURE__*/ S.suspend(() =>
+const ObservationSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ObservationSearchResponseResultsList,
     truncated: S.Boolean,
@@ -4227,7 +4219,7 @@ export interface VisionObservationsSearchSuggestionsRetrieveRequest {
   /** Scope to a single scanner's observations. Defaults to every scanner you can read. */
   scanner_id?: string;
 }
-export const VisionObservationsSearchSuggestionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsSearchSuggestionsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.optional(S.String.pipe(T.Query())),
@@ -4244,14 +4236,14 @@ export const VisionObservationsSearchSuggestionsRetrieveRequest = /*@__PURE__*/ 
 
 /** Up to 4 example searches naming themes in recent observations. Empty until a scheduled refresh has run for a scanner someone viewed. */
 export type SearchSuggestionsResponseQueriesList = Array<string>;
-export const SearchSuggestionsResponseQueriesList =
+const SearchSuggestionsResponseQueriesList =
   VisionAlertSelectionVerdictList as any as S.Schema<SearchSuggestionsResponseQueriesList>;
 
 export interface SearchSuggestionsResponse {
   /** Up to 4 example searches naming themes in recent observations. Empty until a scheduled refresh has run for a scanner someone viewed. */
   queries: SearchSuggestionsResponseQueriesList;
 }
-export const SearchSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     queries: SearchSuggestionsResponseQueriesList,
   }),
@@ -4265,7 +4257,7 @@ export interface VisionObservationsSearchViewedCreateRequest {
   /** Scope to a single scanner's observations. Defaults to every scanner you can read. */
   scanner_id?: string;
 }
-export const VisionObservationsSearchViewedCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionObservationsSearchViewedCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.optional(S.String),
@@ -4281,7 +4273,7 @@ export const VisionObservationsSearchViewedCreateRequest = /*@__PURE__*/ S.suspe
 }) as any as S.Schema<VisionObservationsSearchViewedCreateRequest>;
 
 export interface VisionObservationsSearchViewedCreateResponse {}
-export const VisionObservationsSearchViewedCreateResponse =
+const VisionObservationsSearchViewedCreateResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionObservationsSearchViewedCreateResponse>;
 
 export interface VisionScannersBackfillsCancelCreateRequest {
@@ -4291,7 +4283,7 @@ export interface VisionScannersBackfillsCancelCreateRequest {
   /** A UUID string identifying this replay scanner backfill. */
   id: string;
 }
-export const VisionScannersBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersBackfillsCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -4314,7 +4306,7 @@ export interface VisionScannersBackfillsResumeCreateRequest {
   /** A UUID string identifying this replay scanner backfill. */
   id: string;
 }
-export const VisionScannersBackfillsResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersBackfillsResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -4332,7 +4324,7 @@ export const VisionScannersBackfillsResumeCreateRequest = /*@__PURE__*/ S.suspen
 
 /** Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op. */
 export type VisionScannersBulkObserveCreateRequestSessionIdsList = Array<string>;
-export const VisionScannersBulkObserveCreateRequestSessionIdsList =
+const VisionScannersBulkObserveCreateRequestSessionIdsList =
   VisionAlertSelectionVerdictList as any as S.Schema<VisionScannersBulkObserveCreateRequestSessionIdsList>;
 
 export interface VisionScannersBulkObserveCreateRequest {
@@ -4343,7 +4335,7 @@ export interface VisionScannersBulkObserveCreateRequest {
   /** Session recording IDs to scan on demand, at most 200 per request. Scans start until the in-flight limit or monthly credit quota is reached; the rest are reported as skipped rather than failing the whole batch. Already-running sessions are a no-op. */
   session_ids: VisionScannersBulkObserveCreateRequestSessionIdsList;
 }
-export const VisionScannersBulkObserveCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersBulkObserveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4360,7 +4352,7 @@ export const VisionScannersBulkObserveCreateRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<VisionScannersBulkObserveCreateRequest>;
 
 export interface VisionScannersBulkObserveCreateResponse {}
-export const VisionScannersBulkObserveCreateResponse =
+const VisionScannersBulkObserveCreateResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersBulkObserveCreateResponse>;
 
 export interface VisionScannersDestroyRequest {
@@ -4369,7 +4361,7 @@ export interface VisionScannersDestroyRequest {
   /** A UUID string identifying this replay scanner. */
   id: string;
 }
-export const VisionScannersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4385,7 +4377,7 @@ export const VisionScannersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VisionScannersDestroyRequest>;
 
 export interface VisionScannersDestroyResponse {}
-export const VisionScannersDestroyResponse =
+const VisionScannersDestroyResponse =
   VisionAlertsDestroyResponse as any as S.Schema<VisionScannersDestroyResponse>;
 
 export interface VisionScannersDuplicateCreateRequest {
@@ -4394,7 +4386,7 @@ export interface VisionScannersDuplicateCreateRequest {
   /** A UUID string identifying this replay scanner. */
   id: string;
 }
-export const VisionScannersDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -4416,7 +4408,7 @@ export interface VisionScannersObservationsCreateTaskCreateRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionScannersObservationsCreateTaskCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersObservationsCreateTaskCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -4439,7 +4431,7 @@ export interface VisionScannersObservationsLabelDestroyRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionScannersObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersObservationsLabelDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -4456,7 +4448,7 @@ export const VisionScannersObservationsLabelDestroyRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<VisionScannersObservationsLabelDestroyRequest>;
 
 export interface VisionScannersObservationsLabelDestroyResponse {}
-export const VisionScannersObservationsLabelDestroyResponse =
+const VisionScannersObservationsLabelDestroyResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersObservationsLabelDestroyResponse>;
 
 export interface VisionScannersObservationsRetryCreateRequest {
@@ -4466,7 +4458,7 @@ export interface VisionScannersObservationsRetryCreateRequest {
   /** A UUID string identifying this replay observation. */
   id: string;
 }
-export const VisionScannersObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersObservationsRetryCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     scanner_id: S.String.pipe(T.Label()),
@@ -4483,7 +4475,7 @@ export const VisionScannersObservationsRetryCreateRequest = /*@__PURE__*/ S.susp
 }) as any as S.Schema<VisionScannersObservationsRetryCreateRequest>;
 
 export interface VisionScannersObservationsRetryCreateResponse {}
-export const VisionScannersObservationsRetryCreateResponse =
+const VisionScannersObservationsRetryCreateResponse =
   CreateVisionObservationsViewedResponse as any as S.Schema<VisionScannersObservationsRetryCreateResponse>;
 
 export type VisionScannersWatchFeedRetrieveRequestScannerType =
@@ -4492,7 +4484,7 @@ export type VisionScannersWatchFeedRetrieveRequestScannerType =
   | "scorer"
   | "summarizer"
   | "experiment";
-export const VisionScannersWatchFeedRetrieveRequestScannerType = S.String;
+const VisionScannersWatchFeedRetrieveRequestScannerType = S.String;
 
 export interface VisionScannersWatchFeedRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -4512,7 +4504,7 @@ export interface VisionScannersWatchFeedRetrieveRequest {
   /** Comma-separated scanner tags to restrict the feed to. A team with many scanners uses these to follow one area without naming every scanner in it. */
   tags?: string;
 }
-export const VisionScannersWatchFeedRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+const VisionScannersWatchFeedRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     date_from: S.optional(S.String.pipe(T.Query())),
@@ -4546,11 +4538,11 @@ export type WatchFeedReasonEnum =
   | "jev_watchable"
   | "unviewed_recent"
   | "recent";
-export const WatchFeedReasonEnum = S.String;
+const WatchFeedReasonEnum = S.String;
 
 /** Issue type of each emitted signal (`bug`, `crash`, `design_flaw`, `ux_friction`), one entry per signal in the order raised, for `signal_emitted`. Absent on signals scanned before this shipped. */
 export type WatchFeedReasonProblemTypesList = Array<string>;
-export const WatchFeedReasonProblemTypesList =
+const WatchFeedReasonProblemTypesList =
   VisionAlertSelectionVerdictList as any as S.Schema<WatchFeedReasonProblemTypesList>;
 
 /** One signal an observation raised, named rather than counted. */
@@ -4560,7 +4552,7 @@ export interface WatchFeedSignal {
   /** The finding in a few words, written by the scan. The full description lives on the signal itself. */
   headline: string;
 }
-export const WatchFeedSignal = /*@__PURE__*/ S.suspend(() =>
+const WatchFeedSignal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     problem_type: S.String,
     headline: S.String,
@@ -4569,7 +4561,7 @@ export const WatchFeedSignal = /*@__PURE__*/ S.suspend(() =>
 
 /** Each emitted signal in the order raised, for `signal_emitted`. Carries what the card needs to name the findings instead of counting them. Absent on sessions scanned before this shipped, which carry `problem_types` alone. */
 export type WatchFeedReasonSignalsList = Array<WatchFeedSignal>;
-export const WatchFeedReasonSignalsList = /*@__PURE__*/ S.Array(
+const WatchFeedReasonSignalsList = /*@__PURE__*/ S.Array(
   WatchFeedSignal,
 ) as any as S.Schema<WatchFeedReasonSignalsList>;
 
@@ -4602,7 +4594,7 @@ export interface WatchFeedReason {
   /** Share (0-1) of the scanner's window observations carrying `tag`, for `rare_tag`. */
   tag_share?: number | null;
 }
-export const WatchFeedReason = /*@__PURE__*/ S.suspend(() =>
+const WatchFeedReason = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     kind: WatchFeedReasonEnum,
     signals_count: S.optional(S.NullOr(S.Number)),
@@ -4627,7 +4619,7 @@ export interface WatchFeedItem {
   /** Why this observation made the feed. */
   reason: WatchFeedReason;
 }
-export const WatchFeedItem = /*@__PURE__*/ S.suspend(() =>
+const WatchFeedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     observation: ReplayObservation,
     reason: WatchFeedReason,
@@ -4636,13 +4628,13 @@ export const WatchFeedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Succeeded observations in the window worth watching, most interesting first, each carrying the reason it ranked. Every observation that carries a finding is returned; observations that carry none (`unviewed_recent`, `recent`) are returned only to pad a near-empty feed to three items, so a quiet window answers with a handful of rows rather than a full page of newest clips. */
 export type WatchFeedResponseResultsList = Array<WatchFeedItem>;
-export const WatchFeedResponseResultsList = /*@__PURE__*/ S.Array(
+const WatchFeedResponseResultsList = /*@__PURE__*/ S.Array(
   WatchFeedItem,
 ) as any as S.Schema<WatchFeedResponseResultsList>;
 
 /** * `weighted-score` - weighted-score * `jev` - jev */
 export type RankerEnum = "weighted-score" | "jev";
-export const RankerEnum = S.String;
+const RankerEnum = S.String;
 
 /** Response of GET /vision/scanners/watch_feed/. */
 export interface WatchFeedResponse {
@@ -4651,7 +4643,7 @@ export interface WatchFeedResponse {
   /** Which ranker ordered this feed: `jev` ranks on the decision model's cached judgments, `weighted-score` on the deterministic blend. The arm is decided server-side per team, so clients read it from here rather than evaluating the flag themselves. * `weighted-score` - weighted-score * `jev` - jev */
   ranker: RankerEnum;
 }
-export const WatchFeedResponse = /*@__PURE__*/ S.suspend(() =>
+const WatchFeedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: WatchFeedResponseResultsList,
     ranker: RankerEnum,

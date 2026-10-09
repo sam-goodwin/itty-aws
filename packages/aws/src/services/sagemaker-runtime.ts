@@ -161,7 +161,7 @@ export interface InvokeEndpointInput {
   SessionId?: string;
   PrefixAwareId?: string;
 }
-export const InvokeEndpointInput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
     Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -205,7 +205,7 @@ export interface InvokeEndpointOutput {
   NewSessionId?: string;
   ClosedSessionId?: string;
 }
-export const InvokeEndpointOutput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -237,7 +237,7 @@ export interface InvokeEndpointAsyncInput {
   InvocationTimeoutSeconds?: number;
   Body?: T.StreamingInputBody;
 }
-export const InvokeEndpointAsyncInput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointAsyncInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Content-Type")),
@@ -274,7 +274,7 @@ export interface InvokeEndpointAsyncOutput {
   OutputLocation?: string;
   FailureLocation?: string;
 }
-export const InvokeEndpointAsyncOutput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointAsyncOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InferenceId: S.optional(S.String),
     OutputLocation: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-OutputLocation")),
@@ -296,7 +296,7 @@ export interface InvokeEndpointWithResponseStreamInput {
   SessionId?: string;
   PrefixAwareId?: string;
 }
-export const InvokeEndpointWithResponseStreamInput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointWithResponseStreamInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
     Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -332,7 +332,7 @@ export type PartBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface PayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const PayloadPart = /*@__PURE__*/ S.suspend(() =>
+const PayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "PayloadPart" }) as any as S.Schema<PayloadPart>;
 export type Message = string;
@@ -341,7 +341,7 @@ export type ResponseStream =
   | { PayloadPart: PayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
-export const ResponseStream = /*@__PURE__*/ T.EventStream(
+const ResponseStream = /*@__PURE__*/ T.EventStream(
   /*@__PURE__*/ S.Union([
     /*@__PURE__*/ S.Struct({ PayloadPart: PayloadPart }),
     /*@__PURE__*/ S.Struct({
@@ -362,7 +362,7 @@ export interface InvokeEndpointWithResponseStreamOutput {
   InvokedProductionVariant?: string;
   CustomAttributes?: string | redacted.Redacted<string>;
 }
-export const InvokeEndpointWithResponseStreamOutput = /*@__PURE__*/ S.suspend(() =>
+const InvokeEndpointWithResponseStreamOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: ResponseStream.pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Content-Type")),

@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { SlackOpError, SlackOpContext };
 
 export type MigrationExchangeRequestUsersList = Array<string>;
-export const MigrationExchangeRequestUsersList = /*@__PURE__*/ S.Array(
+const MigrationExchangeRequestUsersList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<MigrationExchangeRequestUsersList>;
 
@@ -21,7 +21,7 @@ export interface MigrationExchangeRequest {
   /** Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`. */
   to_old?: boolean;
 }
-export const MigrationExchangeRequest = /*@__PURE__*/ S.suspend(() =>
+const MigrationExchangeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     users: MigrationExchangeRequestUsersList.pipe(T.Query()),
     team_id: S.optional(S.String.pipe(T.Query())),
@@ -30,13 +30,13 @@ export const MigrationExchangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MigrationExchangeRequest" }) as any as S.Schema<MigrationExchangeRequest>;
 
 export type MigrationExchangeResponseUserIdMapMap = { [key: string]: unknown | undefined };
-export const MigrationExchangeResponseUserIdMapMap = /*@__PURE__*/ S.Record(
+const MigrationExchangeResponseUserIdMapMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
 ) as any as S.Schema<MigrationExchangeResponseUserIdMapMap>;
 
 export type MigrationExchangeResponseInvalidUserIdsList = Array<string>;
-export const MigrationExchangeResponseInvalidUserIdsList =
+const MigrationExchangeResponseInvalidUserIdsList =
   MigrationExchangeRequestUsersList as any as S.Schema<MigrationExchangeResponseInvalidUserIdsList>;
 
 export interface MigrationExchangeResponse {
@@ -47,7 +47,7 @@ export interface MigrationExchangeResponse {
   user_id_map: MigrationExchangeResponseUserIdMapMap;
   invalid_user_ids?: MigrationExchangeResponseInvalidUserIdsList;
 }
-export const MigrationExchangeResponse = /*@__PURE__*/ S.suspend(() =>
+const MigrationExchangeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ok: S.Boolean,
     team_id: S.String,

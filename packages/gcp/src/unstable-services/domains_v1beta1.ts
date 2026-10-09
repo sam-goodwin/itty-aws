@@ -62,7 +62,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
+const StringList = /*@__PURE__*/ S.Array(S.String) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -89,7 +89,7 @@ export interface PostalAddress {
   /** Optional. Sublocality of the address. For example, this can be a neighborhood, borough, or district. */
   sublocality?: string;
 }
-export const PostalAddress = /*@__PURE__*/ S.suspend(() =>
+const PostalAddress = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revision: S.optional(S.Number),
     languageCode: S.optional(S.String),
@@ -116,7 +116,7 @@ export interface Contact {
   /** Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`. */
   phoneNumber?: string;
 }
-export const Contact = /*@__PURE__*/ S.suspend(() =>
+const Contact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     email: S.optional(S.String),
     faxNumber: S.optional(S.String),
@@ -130,7 +130,7 @@ export type ContactSettingsPrivacyEnum =
   | "PUBLIC_CONTACT_DATA"
   | "PRIVATE_CONTACT_DATA"
   | "REDACTED_CONTACT_DATA";
-export const ContactSettingsPrivacyEnum = S.String;
+const ContactSettingsPrivacyEnum = S.String;
 
 /** Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical. */
 export interface ContactSettings {
@@ -143,7 +143,7 @@ export interface ContactSettings {
   /** Required. Privacy setting for the contacts associated with the `Registration`. */
   privacy?: ContactSettingsPrivacyEnum | (string & {});
 }
-export const ContactSettings = /*@__PURE__*/ S.suspend(() =>
+const ContactSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrantContact: S.optional(Contact),
     adminContact: S.optional(Contact),
@@ -155,12 +155,12 @@ export const ContactSettings = /*@__PURE__*/ S.suspend(() =>
 export type ConfigureContactSettingsRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
-export const ConfigureContactSettingsRequestContactNoticesItemEnum = S.String;
+const ConfigureContactSettingsRequestContactNoticesItemEnum = S.String;
 
 export type ConfigureContactSettingsRequestContactNoticesItemEnumList = Array<
   ConfigureContactSettingsRequestContactNoticesItemEnum | (string & {})
 >;
-export const ConfigureContactSettingsRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
+const ConfigureContactSettingsRequestContactNoticesItemEnumList = /*@__PURE__*/ S.Array(
   ConfigureContactSettingsRequestContactNoticesItemEnum,
 ) as any as S.Schema<ConfigureContactSettingsRequestContactNoticesItemEnumList>;
 
@@ -175,7 +175,7 @@ export interface ConfigureContactSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the registrant contact is being updated, the `update_mask` is `"registrant_contact"`. */
   updateMask?: string;
 }
-export const ConfigureContactSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigureContactSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contactSettings: S.optional(ContactSettings),
     contactNotices: S.optional(ConfigureContactSettingsRequestContactNoticesItemEnumList),
@@ -192,32 +192,26 @@ export interface ConfigureContactSettingsProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: ConfigureContactSettingsRequest;
 }
-export const ConfigureContactSettingsProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      registration: S.String.pipe(T.Label()),
-      body: S.optional(ConfigureContactSettingsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+registration}:configureContactSettings",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ConfigureContactSettingsProjectsLocationsRegistrationsRequest",
-  }) as any as S.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>;
+const ConfigureContactSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registration: S.String.pipe(T.Label()),
+    body: S.optional(ConfigureContactSettingsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+registration}:configureContactSettings",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ConfigureContactSettingsProjectsLocationsRegistrationsRequest",
+}) as any as S.Schema<ConfigureContactSettingsProjectsLocationsRegistrationsRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
+const DocumentMap = /*@__PURE__*/ S.Record(S.String, S.Unknown) as any as S.Schema<DocumentMap>;
 
 export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
+const DocumentMapList = /*@__PURE__*/ S.Array(DocumentMap) as any as S.Schema<DocumentMapList>;
 
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
@@ -228,7 +222,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-export const Status = /*@__PURE__*/ S.suspend(() =>
+const Status = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     message: S.optional(S.String),
     details: S.optional(DocumentMapList),
@@ -249,7 +243,7 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-export const Operation = /*@__PURE__*/ S.suspend(() =>
+const Operation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     metadata: S.optional(DocumentMap),
     response: S.optional(DocumentMap),
@@ -263,7 +257,7 @@ export type GoogleDomainsDnsDsStateEnum =
   | "DS_STATE_UNSPECIFIED"
   | "DS_RECORDS_UNPUBLISHED"
   | "DS_RECORDS_PUBLISHED";
-export const GoogleDomainsDnsDsStateEnum = S.String;
+const GoogleDomainsDnsDsStateEnum = S.String;
 
 export type DsRecordDigestTypeEnum =
   | "DIGEST_TYPE_UNSPECIFIED"
@@ -271,7 +265,7 @@ export type DsRecordDigestTypeEnum =
   | "SHA256"
   | "GOST3411"
   | "SHA384";
-export const DsRecordDigestTypeEnum = S.String;
+const DsRecordDigestTypeEnum = S.String;
 
 export type DsRecordAlgorithmEnum =
   | "ALGORITHM_UNSPECIFIED"
@@ -292,7 +286,7 @@ export type DsRecordAlgorithmEnum =
   | "INDIRECT"
   | "PRIVATEDNS"
   | "PRIVATEOID";
-export const DsRecordAlgorithmEnum = S.String;
+const DsRecordAlgorithmEnum = S.String;
 
 /** Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone. */
 export interface DsRecord {
@@ -305,7 +299,7 @@ export interface DsRecord {
   /** The digest generated from the referenced DNSKEY. */
   digest?: string;
 }
-export const DsRecord = /*@__PURE__*/ S.suspend(() =>
+const DsRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     keyTag: S.optional(S.Number),
     digestType: S.optional(DsRecordDigestTypeEnum),
@@ -315,7 +309,7 @@ export const DsRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DsRecord" }) as any as S.Schema<DsRecord>;
 
 export type DsRecordList = Array<DsRecord>;
-export const DsRecordList = /*@__PURE__*/ S.Array(DsRecord) as any as S.Schema<DsRecordList>;
+const DsRecordList = /*@__PURE__*/ S.Array(DsRecord) as any as S.Schema<DsRecordList>;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/). */
 export interface GoogleDomainsDns {
@@ -326,7 +320,7 @@ export interface GoogleDomainsDns {
   /** Output only. The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty. */
   dsRecords?: DsRecordList;
 }
-export const GoogleDomainsDns = /*@__PURE__*/ S.suspend(() =>
+const GoogleDomainsDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nameServers: S.optional(StringList),
     dsState: S.optional(GoogleDomainsDnsDsStateEnum),
@@ -341,7 +335,7 @@ export interface CustomDns {
   /** Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. */
   nameServers?: StringList;
 }
-export const CustomDns = /*@__PURE__*/ S.suspend(() =>
+const CustomDns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dsRecords: S.optional(DsRecordList),
     nameServers: S.optional(StringList),
@@ -357,7 +351,7 @@ export interface GlueRecord {
   /** List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set. */
   ipv6Addresses?: StringList;
 }
-export const GlueRecord = /*@__PURE__*/ S.suspend(() =>
+const GlueRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hostName: S.optional(S.String),
     ipv4Addresses: S.optional(StringList),
@@ -366,7 +360,7 @@ export const GlueRecord = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GlueRecord" }) as any as S.Schema<GlueRecord>;
 
 export type GlueRecordList = Array<GlueRecord>;
-export const GlueRecordList = /*@__PURE__*/ S.Array(GlueRecord) as any as S.Schema<GlueRecordList>;
+const GlueRecordList = /*@__PURE__*/ S.Array(GlueRecord) as any as S.Schema<GlueRecordList>;
 
 /** Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records. */
 export interface DnsSettings {
@@ -379,7 +373,7 @@ export interface DnsSettings {
   /** Output only. Indicates if this `Registration` has configured one of the following deprecated Google Domains DNS features: * Domain forwarding (HTTP `301` and `302` response status codes), * Email forwarding. See https://cloud.google.com/domains/docs/deprecations/feature-deprecations for more details. If any of these features is enabled call the `RetrieveGoogleDomainsForwardingConfig` method to get details about the feature's configuration. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
   googleDomainsRedirectsDataAvailable?: boolean;
 }
-export const DnsSettings = /*@__PURE__*/ S.suspend(() =>
+const DnsSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     googleDomainsDns: S.optional(GoogleDomainsDns),
     customDns: S.optional(CustomDns),
@@ -397,7 +391,7 @@ export interface ConfigureDnsSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the name servers are being updated for an existing Custom DNS configuration, the `update_mask` is `"custom_dns.name_servers"`. When changing the DNS provider from one type to another, pass the new provider's field name as part of the field mask. For example, when changing from a Google Domains DNS configuration to a Custom DNS configuration, the `update_mask` is `"custom_dns"`. // */
   updateMask?: string;
 }
-export const ConfigureDnsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigureDnsSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsSettings: S.optional(DnsSettings),
     validateOnly: S.optional(S.Boolean),
@@ -413,18 +407,17 @@ export interface ConfigureDnsSettingsProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: ConfigureDnsSettingsRequest;
 }
-export const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registration: S.String.pipe(T.Label()),
-      body: S.optional(ConfigureDnsSettingsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+registration}:configureDnsSettings",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const ConfigureDnsSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registration: S.String.pipe(T.Label()),
+    body: S.optional(ConfigureDnsSettingsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+registration}:configureDnsSettings",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ConfigureDnsSettingsProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<ConfigureDnsSettingsProjectsLocationsRegistrationsRequest>;
@@ -434,26 +427,26 @@ export type ManagementSettingsPreferredRenewalMethodEnum =
   | "AUTOMATIC_RENEWAL"
   | "MANUAL_RENEWAL"
   | "RENEWAL_DISABLED";
-export const ManagementSettingsPreferredRenewalMethodEnum = S.String;
+const ManagementSettingsPreferredRenewalMethodEnum = S.String;
 
 export type ManagementSettingsRenewalMethodEnum =
   | "RENEWAL_METHOD_UNSPECIFIED"
   | "AUTOMATIC_RENEWAL"
   | "MANUAL_RENEWAL"
   | "RENEWAL_DISABLED";
-export const ManagementSettingsRenewalMethodEnum = S.String;
+const ManagementSettingsRenewalMethodEnum = S.String;
 
 export type ManagementSettingsTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
-export const ManagementSettingsTransferLockStateEnum = S.String;
+const ManagementSettingsTransferLockStateEnum = S.String;
 
 export type ManagementSettingsEffectiveTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
-export const ManagementSettingsEffectiveTransferLockStateEnum = S.String;
+const ManagementSettingsEffectiveTransferLockStateEnum = S.String;
 
 /** Defines renewal, billing, and transfer settings for a `Registration`. */
 export interface ManagementSettings {
@@ -466,7 +459,7 @@ export interface ManagementSettings {
   /** Output only. The actual transfer lock state for this `Registration`. */
   effectiveTransferLockState?: ManagementSettingsEffectiveTransferLockStateEnum | (string & {});
 }
-export const ManagementSettings = /*@__PURE__*/ S.suspend(() =>
+const ManagementSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     preferredRenewalMethod: S.optional(ManagementSettingsPreferredRenewalMethodEnum),
     renewalMethod: S.optional(ManagementSettingsRenewalMethodEnum),
@@ -484,7 +477,7 @@ export interface ConfigureManagementSettingsRequest {
   /** Required. The field mask describing which fields to update as a comma-separated list. For example, if only the transfer lock is being updated, the `update_mask` is `"transfer_lock_state"`. */
   updateMask?: string;
 }
-export const ConfigureManagementSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const ConfigureManagementSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     managementSettings: S.optional(ManagementSettings),
     validateOnly: S.optional(S.Boolean),
@@ -500,8 +493,8 @@ export interface ConfigureManagementSettingsProjectsLocationsRegistrationsReques
   /** Request body */
   body?: ConfigureManagementSettingsRequest;
 }
-export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       registration: S.String.pipe(T.Label()),
       body: S.optional(ConfigureManagementSettingsRequest.pipe(T.HttpBody())),
@@ -512,15 +505,15 @@ export const ConfigureManagementSettingsProjectsLocationsRegistrationsRequest =
         baseUrl: "https://domains.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "ConfigureManagementSettingsProjectsLocationsRegistrationsRequest",
-  }) as any as S.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
+).annotate({
+  identifier: "ConfigureManagementSettingsProjectsLocationsRegistrationsRequest",
+}) as any as S.Schema<ConfigureManagementSettingsProjectsLocationsRegistrationsRequest>;
 
 export interface DeleteProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` to delete, in the format `projects/*\/locations/*\/registrations/*`. */
   name: string;
 }
-export const DeleteProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -536,7 +529,7 @@ export const DeleteProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspe
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `ExportRegistration` method. */
 export interface ExportRegistrationRequest {}
-export const ExportRegistrationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const ExportRegistrationRequest = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "ExportRegistrationRequest",
 }) as any as S.Schema<ExportRegistrationRequest>;
 
@@ -546,7 +539,7 @@ export interface ExportProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: ExportRegistrationRequest;
 }
-export const ExportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ExportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(ExportRegistrationRequest.pipe(T.HttpBody())),
@@ -565,17 +558,16 @@ export interface GetAuthorizationCodeProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose authorization code is being retrieved, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
 }
-export const GetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registration: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+registration}:retrieveAuthorizationCode",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const GetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registration: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+registration}:retrieveAuthorizationCode",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetAuthorizationCodeProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<GetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
@@ -585,7 +577,7 @@ export interface AuthorizationCode {
   /** The Authorization Code in ASCII. It can be used to transfer the domain to or from another registrar. */
   code?: string;
 }
-export const AuthorizationCode = /*@__PURE__*/ S.suspend(() =>
+const AuthorizationCode = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     code: S.optional(S.String),
   }),
@@ -599,8 +591,8 @@ export interface GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest
   /** Optional. Maximum number of results to return. */
   pageSize?: number;
 }
-export const GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+const GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pageToken: S.optional(S.String.pipe(T.Query())),
       registration: S.String.pipe(T.Label()),
@@ -612,19 +604,19 @@ export const GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest =
         baseUrl: "https://domains.googleapis.com/",
       }),
     ),
-  ).annotate({
-    identifier: "GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest",
-  }) as any as S.Schema<GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
+).annotate({
+  identifier: "GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest",
+}) as any as S.Schema<GetGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest>;
 
 export type LoadBalancerTargetIpProtocolEnum = "UNDEFINED" | "TCP" | "UDP";
-export const LoadBalancerTargetIpProtocolEnum = S.String;
+const LoadBalancerTargetIpProtocolEnum = S.String;
 
 export type LoadBalancerTargetLoadBalancerTypeEnum =
   | "NONE"
   | "GLOBAL_L7ILB"
   | "REGIONAL_L4ILB"
   | "REGIONAL_L7ILB";
-export const LoadBalancerTargetLoadBalancerTypeEnum = S.String;
+const LoadBalancerTargetLoadBalancerTypeEnum = S.String;
 
 /** The configuration for an individual load balancer to health check. */
 export interface LoadBalancerTarget {
@@ -643,7 +635,7 @@ export interface LoadBalancerTarget {
   /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
   loadBalancerType?: LoadBalancerTargetLoadBalancerTypeEnum;
 }
-export const LoadBalancerTarget = /*@__PURE__*/ S.suspend(() =>
+const LoadBalancerTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networkUrl: S.optional(S.String),
     port: S.optional(S.String),
@@ -656,7 +648,7 @@ export const LoadBalancerTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoadBalancerTarget" }) as any as S.Schema<LoadBalancerTarget>;
 
 export type LoadBalancerTargetList = Array<LoadBalancerTarget>;
-export const LoadBalancerTargetList = /*@__PURE__*/ S.Array(
+const LoadBalancerTargetList = /*@__PURE__*/ S.Array(
   LoadBalancerTarget,
 ) as any as S.Schema<LoadBalancerTargetList>;
 
@@ -667,7 +659,7 @@ export interface HealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
   internalLoadBalancer?: LoadBalancerTargetList;
 }
-export const HealthCheckTargets = /*@__PURE__*/ S.suspend(() =>
+const HealthCheckTargets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalEndpoints: S.optional(StringList),
     internalLoadBalancer: S.optional(LoadBalancerTargetList),
@@ -684,7 +676,7 @@ export interface GeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
   healthCheckedTargets?: HealthCheckTargets;
 }
-export const GeoPolicyItem = /*@__PURE__*/ S.suspend(() =>
+const GeoPolicyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     location: S.optional(S.String),
     rrdata: S.optional(StringList),
@@ -694,7 +686,7 @@ export const GeoPolicyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoPolicyItem" }) as any as S.Schema<GeoPolicyItem>;
 
 export type GeoPolicyItemList = Array<GeoPolicyItem>;
-export const GeoPolicyItemList = /*@__PURE__*/ S.Array(
+const GeoPolicyItemList = /*@__PURE__*/ S.Array(
   GeoPolicyItem,
 ) as any as S.Schema<GeoPolicyItemList>;
 
@@ -705,7 +697,7 @@ export interface GeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
   item?: GeoPolicyItemList;
 }
-export const GeoPolicy = /*@__PURE__*/ S.suspend(() =>
+const GeoPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enableFencing: S.optional(S.Boolean),
     item: S.optional(GeoPolicyItemList),
@@ -722,7 +714,7 @@ export interface WrrPolicyItem {
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
   signatureRrdata?: StringList;
 }
-export const WrrPolicyItem = /*@__PURE__*/ S.suspend(() =>
+const WrrPolicyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     healthCheckedTargets: S.optional(HealthCheckTargets),
     weight: S.optional(S.Number),
@@ -732,7 +724,7 @@ export const WrrPolicyItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WrrPolicyItem" }) as any as S.Schema<WrrPolicyItem>;
 
 export type WrrPolicyItemList = Array<WrrPolicyItem>;
-export const WrrPolicyItemList = /*@__PURE__*/ S.Array(
+const WrrPolicyItemList = /*@__PURE__*/ S.Array(
   WrrPolicyItem,
 ) as any as S.Schema<WrrPolicyItemList>;
 
@@ -740,7 +732,7 @@ export const WrrPolicyItemList = /*@__PURE__*/ S.Array(
 export interface WrrPolicy {
   item?: WrrPolicyItemList;
 }
-export const WrrPolicy = /*@__PURE__*/ S.suspend(() =>
+const WrrPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     item: S.optional(WrrPolicyItemList),
   }),
@@ -755,7 +747,7 @@ export interface PrimaryBackupPolicy {
   /** Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to `BACKUP`, this policy essentially becomes a geo routing policy. */
   backupGeoTargets?: GeoPolicy;
 }
-export const PrimaryBackupPolicy = /*@__PURE__*/ S.suspend(() =>
+const PrimaryBackupPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     primaryTargets: S.optional(HealthCheckTargets),
     trickleTraffic: S.optional(S.Number),
@@ -773,7 +765,7 @@ export interface RRSetRoutingPolicy {
   geo?: GeoPolicy;
   wrr?: WrrPolicy;
 }
-export const RRSetRoutingPolicy = /*@__PURE__*/ S.suspend(() =>
+const RRSetRoutingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     geoPolicy: S.optional(GeoPolicy),
     wrrPolicy: S.optional(WrrPolicy),
@@ -799,7 +791,7 @@ export interface ResourceRecordSet {
   /** Configures dynamic query responses based on either the geo location of the querying user or a weighted round robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a `routing_policy` (for dynamic resolution). */
   routingPolicy?: RRSetRoutingPolicy;
 }
-export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
+const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(S.String),
     ttl: S.optional(S.Number),
@@ -811,7 +803,7 @@ export const ResourceRecordSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceRecordSet" }) as any as S.Schema<ResourceRecordSet>;
 
 export type ResourceRecordSetList = Array<ResourceRecordSet>;
-export const ResourceRecordSetList = /*@__PURE__*/ S.Array(
+const ResourceRecordSetList = /*@__PURE__*/ S.Array(
   ResourceRecordSet,
 ) as any as S.Schema<ResourceRecordSetList>;
 
@@ -822,7 +814,7 @@ export interface RetrieveGoogleDomainsDnsRecordsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
-export const RetrieveGoogleDomainsDnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveGoogleDomainsDnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rrset: S.optional(ResourceRecordSetList),
     nextPageToken: S.optional(S.String),
@@ -835,7 +827,7 @@ export interface GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsR
   /** Required. The name of the `Registration` whose Google Domains forwarding configuration details are being retrieved, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
 }
-export const GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest =
+const GetGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       registration: S.String.pipe(T.Label()),
@@ -854,7 +846,7 @@ export type DomainForwardingRedirectTypeEnum =
   | "REDIRECT_TYPE_UNSPECIFIED"
   | "TEMPORARY"
   | "PERMANENT";
-export const DomainForwardingRedirectTypeEnum = S.String;
+const DomainForwardingRedirectTypeEnum = S.String;
 
 /** Domain forwarding configuration. */
 export interface DomainForwarding {
@@ -871,7 +863,7 @@ export interface DomainForwarding {
   /** The PEM-encoded certificate chain. */
   pemCertificate?: string;
 }
-export const DomainForwarding = /*@__PURE__*/ S.suspend(() =>
+const DomainForwarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targetUri: S.optional(S.String),
     redirectType: S.optional(DomainForwardingRedirectTypeEnum),
@@ -883,7 +875,7 @@ export const DomainForwarding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainForwarding" }) as any as S.Schema<DomainForwarding>;
 
 export type DomainForwardingList = Array<DomainForwarding>;
-export const DomainForwardingList = /*@__PURE__*/ S.Array(
+const DomainForwardingList = /*@__PURE__*/ S.Array(
   DomainForwarding,
 ) as any as S.Schema<DomainForwardingList>;
 
@@ -894,7 +886,7 @@ export interface EmailForwarding {
   /** Target email that receives emails sent to the `alias`. */
   targetEmailAddress?: string;
 }
-export const EmailForwarding = /*@__PURE__*/ S.suspend(() =>
+const EmailForwarding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     alias: S.optional(S.String),
     targetEmailAddress: S.optional(S.String),
@@ -902,7 +894,7 @@ export const EmailForwarding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EmailForwarding" }) as any as S.Schema<EmailForwarding>;
 
 export type EmailForwardingList = Array<EmailForwarding>;
-export const EmailForwardingList = /*@__PURE__*/ S.Array(
+const EmailForwardingList = /*@__PURE__*/ S.Array(
   EmailForwarding,
 ) as any as S.Schema<EmailForwardingList>;
 
@@ -913,7 +905,7 @@ export interface RetrieveGoogleDomainsForwardingConfigResponse {
   /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
   emailForwardings?: EmailForwardingList;
 }
-export const RetrieveGoogleDomainsForwardingConfigResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveGoogleDomainsForwardingConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainForwardings: S.optional(DomainForwardingList),
     emailForwardings: S.optional(EmailForwardingList),
@@ -928,7 +920,7 @@ export interface GetIamPolicyProjectsLocationsRegistrationsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-export const GetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     "options.requestedPolicyVersion": S.optional(S.Number.pipe(T.Query())),
@@ -948,7 +940,7 @@ export type AuditLogConfigLogTypeEnum =
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-export const AuditLogConfigLogTypeEnum = S.String;
+const AuditLogConfigLogTypeEnum = S.String;
 
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
@@ -957,7 +949,7 @@ export interface AuditLogConfig {
   /** The log type that this config enables. */
   logType?: AuditLogConfigLogTypeEnum | (string & {});
 }
-export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     exemptedMembers: S.optional(StringList),
     logType: S.optional(AuditLogConfigLogTypeEnum),
@@ -965,7 +957,7 @@ export const AuditLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditLogConfig" }) as any as S.Schema<AuditLogConfig>;
 
 export type AuditLogConfigList = Array<AuditLogConfig>;
-export const AuditLogConfigList = /*@__PURE__*/ S.Array(
+const AuditLogConfigList = /*@__PURE__*/ S.Array(
   AuditLogConfig,
 ) as any as S.Schema<AuditLogConfigList>;
 
@@ -976,7 +968,7 @@ export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
   service?: string;
 }
-export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
+const AuditConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditLogConfigs: S.optional(AuditLogConfigList),
     service: S.optional(S.String),
@@ -984,9 +976,7 @@ export const AuditConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AuditConfig" }) as any as S.Schema<AuditConfig>;
 
 export type AuditConfigList = Array<AuditConfig>;
-export const AuditConfigList = /*@__PURE__*/ S.Array(
-  AuditConfig,
-) as any as S.Schema<AuditConfigList>;
+const AuditConfigList = /*@__PURE__*/ S.Array(AuditConfig) as any as S.Schema<AuditConfigList>;
 
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
@@ -999,7 +989,7 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-export const Expr = /*@__PURE__*/ S.suspend(() =>
+const Expr = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     expression: S.optional(S.String),
     description: S.optional(S.String),
@@ -1017,7 +1007,7 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-export const Binding = /*@__PURE__*/ S.suspend(() =>
+const Binding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     role: S.optional(S.String),
     condition: S.optional(Expr),
@@ -1026,7 +1016,7 @@ export const Binding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Binding" }) as any as S.Schema<Binding>;
 
 export type BindingList = Array<Binding>;
-export const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
+const BindingList = /*@__PURE__*/ S.Array(Binding) as any as S.Schema<BindingList>;
 
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
@@ -1039,7 +1029,7 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-export const Policy = /*@__PURE__*/ S.suspend(() =>
+const Policy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     auditConfigs: S.optional(AuditConfigList),
     version: S.optional(S.Number),
@@ -1056,19 +1046,18 @@ export interface GetImportableDomainsProjectsLocationsRegistrationsRequest {
   /** Maximum number of results to return. */
   pageSize?: number;
 }
-export const GetImportableDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      location: S.String.pipe(T.Label()),
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+location}/registrations:retrieveImportableDomains",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const GetImportableDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.String.pipe(T.Label()),
+    pageToken: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+location}/registrations:retrieveImportableDomains",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetImportableDomainsProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<GetImportableDomainsProjectsLocationsRegistrationsRequest>;
@@ -1080,7 +1069,7 @@ export type DomainResourceStateEnum =
   | "SUSPENDED"
   | "EXPIRED"
   | "DELETED";
-export const DomainResourceStateEnum = S.String;
+const DomainResourceStateEnum = S.String;
 
 /** Represents an amount of money with its currency type. */
 export interface Money {
@@ -1091,7 +1080,7 @@ export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
   nanos?: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currencyCode: S.optional(S.String),
     units: S.optional(S.String),
@@ -1108,7 +1097,7 @@ export interface Domain {
   /** Price to renew the domain for one year. Only set when `resource_state` is `IMPORTABLE`. */
   yearlyPrice?: Money;
 }
-export const Domain = /*@__PURE__*/ S.suspend(() =>
+const Domain = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     resourceState: S.optional(DomainResourceStateEnum),
@@ -1117,7 +1106,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 
 export type DomainList = Array<Domain>;
-export const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
+const DomainList = /*@__PURE__*/ S.Array(Domain) as any as S.Schema<DomainList>;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Response for the `RetrieveImportableDomains` method. */
 export interface RetrieveImportableDomainsResponse {
@@ -1126,7 +1115,7 @@ export interface RetrieveImportableDomainsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
-export const RetrieveImportableDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveImportableDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: S.optional(DomainList),
     nextPageToken: S.optional(S.String),
@@ -1139,7 +1128,7 @@ export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1150,7 +1139,7 @@ export const GetProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetProjectsLocationsRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 /** A resource that represents a Google Cloud location. */
 export interface Location {
@@ -1165,7 +1154,7 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-export const Location = /*@__PURE__*/ S.suspend(() =>
+const Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locationId: S.optional(S.String),
     name: S.optional(S.String),
@@ -1179,7 +1168,7 @@ export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-export const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1193,7 +1182,7 @@ export interface GetProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` to get, in the format `projects/*\/locations/*\/registrations/*`. */
   name: string;
 }
-export const GetProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1208,12 +1197,10 @@ export type RegistrationSupportedPrivacyItemEnum =
   | "PUBLIC_CONTACT_DATA"
   | "PRIVATE_CONTACT_DATA"
   | "REDACTED_CONTACT_DATA";
-export const RegistrationSupportedPrivacyItemEnum = S.String;
-
 export type RegistrationSupportedPrivacyItemEnumList = Array<
   RegistrationSupportedPrivacyItemEnum | (string & {})
 >;
-export const RegistrationSupportedPrivacyItemEnumList =
+const RegistrationSupportedPrivacyItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationSupportedPrivacyItemEnumList>;
 
 export type RegistrationStateEnum =
@@ -1227,14 +1214,14 @@ export type RegistrationStateEnum =
   | "SUSPENDED"
   | "EXPORTED"
   | "EXPIRED";
-export const RegistrationStateEnum = S.String;
+const RegistrationStateEnum = S.String;
 
 export type RegistrationRegisterFailureReasonEnum =
   | "REGISTER_FAILURE_REASON_UNSPECIFIED"
   | "REGISTER_FAILURE_REASON_UNKNOWN"
   | "DOMAIN_NOT_AVAILABLE"
   | "INVALID_CONTACTS";
-export const RegistrationRegisterFailureReasonEnum = S.String;
+const RegistrationRegisterFailureReasonEnum = S.String;
 
 export type RegistrationTransferFailureReasonEnum =
   | "TRANSFER_FAILURE_REASON_UNSPECIFIED"
@@ -1248,18 +1235,16 @@ export type RegistrationTransferFailureReasonEnum =
   | "INVALID_REGISTRANT_EMAIL_ADDRESS"
   | "DOMAIN_NOT_ELIGIBLE_FOR_TRANSFER"
   | "TRANSFER_ALREADY_PENDING";
-export const RegistrationTransferFailureReasonEnum = S.String;
+const RegistrationTransferFailureReasonEnum = S.String;
 
 export type RegistrationDomainPropertiesItemEnum =
   | "DOMAIN_PROPERTY_UNSPECIFIED"
   | "TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY"
   | "REQUIRE_PUSH_TRANSFER";
-export const RegistrationDomainPropertiesItemEnum = S.String;
-
 export type RegistrationDomainPropertiesItemEnumList = Array<
   RegistrationDomainPropertiesItemEnum | (string & {})
 >;
-export const RegistrationDomainPropertiesItemEnumList =
+const RegistrationDomainPropertiesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationDomainPropertiesItemEnumList>;
 
 export type RegistrationIssuesItemEnum =
@@ -1269,10 +1254,8 @@ export type RegistrationIssuesItemEnum =
   | "PROBLEM_WITH_BILLING"
   | "DNS_NOT_ACTIVATED"
   | "AUTO_RENEWAL_UPDATE_NOT_EFFECTIVE";
-export const RegistrationIssuesItemEnum = S.String;
-
 export type RegistrationIssuesItemEnumList = Array<RegistrationIssuesItemEnum | (string & {})>;
-export const RegistrationIssuesItemEnumList =
+const RegistrationIssuesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegistrationIssuesItemEnumList>;
 
 /** The `Registration` resource facilitates managing and configuring domain name registrations. There are several ways to create a new `Registration` resource: To create a new `Registration` resource, find a suitable domain name by calling the `SearchDomains` method with a query to see available domain name options. After choosing a name, call `RetrieveRegisterParameters` to ensure availability and obtain information like pricing, which is needed to build a call to `RegisterDomain`. Another way to create a new `Registration` is to transfer an existing domain from another registrar (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, go to the current registrar to unlock the domain for transfer and retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked and to get values needed to build a call to `TransferDomain`. Finally, you can create a new `Registration` by importing an existing domain managed with [Google Domains](https://domains.google/) (Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations)). First, call `RetrieveImportableDomains` to list domains to which the calling user has sufficient access. Then call `ImportDomain` on any domain names you want to use with Cloud Domains. */
@@ -1308,7 +1291,7 @@ export interface Registration {
   /** Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method. */
   dnsSettings?: DnsSettings;
 }
-export const Registration = /*@__PURE__*/ S.suspend(() =>
+const Registration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     supportedPrivacy: S.optional(RegistrationSupportedPrivacyItemEnumList),
     state: S.optional(RegistrationStateEnum),
@@ -1334,18 +1317,17 @@ export interface GetRegisterParametersProjectsLocationsRegistrationsRequest {
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
 }
-export const GetRegisterParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      domainName: S.optional(S.String.pipe(T.Query())),
-      location: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+location}/registrations:retrieveRegisterParameters",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const GetRegisterParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.optional(S.String.pipe(T.Query())),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+location}/registrations:retrieveRegisterParameters",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetRegisterParametersProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<GetRegisterParametersProjectsLocationsRegistrationsRequest>;
@@ -1355,11 +1337,9 @@ export type RegisterParametersSupportedPrivacyItemEnum =
   | "PUBLIC_CONTACT_DATA"
   | "PRIVATE_CONTACT_DATA"
   | "REDACTED_CONTACT_DATA";
-export const RegisterParametersSupportedPrivacyItemEnum = S.String;
-
 export type RegisterParametersSupportedPrivacyItemEnumList =
   Array<RegisterParametersSupportedPrivacyItemEnum>;
-export const RegisterParametersSupportedPrivacyItemEnumList =
+const RegisterParametersSupportedPrivacyItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersSupportedPrivacyItemEnumList>;
 
 export type RegisterParametersAvailabilityEnum =
@@ -1368,16 +1348,14 @@ export type RegisterParametersAvailabilityEnum =
   | "UNAVAILABLE"
   | "UNSUPPORTED"
   | "UNKNOWN";
-export const RegisterParametersAvailabilityEnum = S.String;
+const RegisterParametersAvailabilityEnum = S.String;
 
 export type RegisterParametersDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
   | "HSTS_PRELOADED";
-export const RegisterParametersDomainNoticesItemEnum = S.String;
-
 export type RegisterParametersDomainNoticesItemEnumList =
   Array<RegisterParametersDomainNoticesItemEnum>;
-export const RegisterParametersDomainNoticesItemEnumList =
+const RegisterParametersDomainNoticesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterParametersDomainNoticesItemEnumList>;
 
 /** Parameters required to register a new domain. */
@@ -1393,7 +1371,7 @@ export interface RegisterParameters {
   /** Notices about special properties of the domain. */
   domainNotices?: RegisterParametersDomainNoticesItemEnumList;
 }
-export const RegisterParameters = /*@__PURE__*/ S.suspend(() =>
+const RegisterParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     supportedPrivacy: S.optional(RegisterParametersSupportedPrivacyItemEnumList),
@@ -1408,7 +1386,7 @@ export interface RetrieveRegisterParametersResponse {
   /** Parameters to use when calling the `RegisterDomain` method. */
   registerParameters?: RegisterParameters;
 }
-export const RetrieveRegisterParametersResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveRegisterParametersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registerParameters: S.optional(RegisterParameters),
   }),
@@ -1422,18 +1400,17 @@ export interface GetTransferParametersProjectsLocationsRegistrationsRequest {
   /** Required. The domain name. Unicode domain names must be expressed in Punycode format. */
   domainName?: string;
 }
-export const GetTransferParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      location: S.String.pipe(T.Label()),
-      domainName: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1beta1/{+location}/registrations:retrieveTransferParameters",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const GetTransferParametersProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.String.pipe(T.Label()),
+    domainName: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1beta1/{+location}/registrations:retrieveTransferParameters",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "GetTransferParametersProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<GetTransferParametersProjectsLocationsRegistrationsRequest>;
@@ -1443,18 +1420,16 @@ export type TransferParametersSupportedPrivacyItemEnum =
   | "PUBLIC_CONTACT_DATA"
   | "PRIVATE_CONTACT_DATA"
   | "REDACTED_CONTACT_DATA";
-export const TransferParametersSupportedPrivacyItemEnum = S.String;
-
 export type TransferParametersSupportedPrivacyItemEnumList =
   Array<TransferParametersSupportedPrivacyItemEnum>;
-export const TransferParametersSupportedPrivacyItemEnumList =
+const TransferParametersSupportedPrivacyItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferParametersSupportedPrivacyItemEnumList>;
 
 export type TransferParametersTransferLockStateEnum =
   | "TRANSFER_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED";
-export const TransferParametersTransferLockStateEnum = S.String;
+const TransferParametersTransferLockStateEnum = S.String;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Parameters required to transfer a domain from another registrar. */
 export interface TransferParameters {
@@ -1473,7 +1448,7 @@ export interface TransferParameters {
   /** The name servers that currently store the configuration of the domain. */
   nameServers?: StringList;
 }
-export const TransferParameters = /*@__PURE__*/ S.suspend(() =>
+const TransferParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     currentRegistrarUri: S.optional(S.String),
     currentRegistrar: S.optional(S.String),
@@ -1490,7 +1465,7 @@ export interface RetrieveTransferParametersResponse {
   /** Parameters to use when calling the `TransferDomain` method. */
   transferParameters?: TransferParameters;
 }
-export const RetrieveTransferParametersResponse = /*@__PURE__*/ S.suspend(() =>
+const RetrieveTransferParametersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     transferParameters: S.optional(TransferParameters),
   }),
@@ -1505,7 +1480,7 @@ export interface ImportDomainRequest {
   /** Set of labels associated with the `Registration`. */
   labels?: StringMap;
 }
-export const ImportDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domainName: S.optional(S.String),
     labels: S.optional(StringMap),
@@ -1518,7 +1493,7 @@ export interface ImportProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: ImportDomainRequest;
 }
-export const ImportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ImportProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(ImportDomainRequest.pipe(T.HttpBody())),
@@ -1540,7 +1515,7 @@ export interface InitiatePushTransferRequest {
   /** Required. The Tag of the new registrar. Can be found at [List of registrars](https://nominet.uk/registrar-list/). */
   tag?: string;
 }
-export const InitiatePushTransferRequest = /*@__PURE__*/ S.suspend(() =>
+const InitiatePushTransferRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     tag: S.optional(S.String),
@@ -1555,18 +1530,17 @@ export interface InitiatePushTransferProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: InitiatePushTransferRequest;
 }
-export const InitiatePushTransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registration: S.String.pipe(T.Label()),
-      body: S.optional(InitiatePushTransferRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+registration}:initiatePushTransfer",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const InitiatePushTransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registration: S.String.pipe(T.Label()),
+    body: S.optional(InitiatePushTransferRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+registration}:initiatePushTransfer",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "InitiatePushTransferProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<InitiatePushTransferProjectsLocationsRegistrationsRequest>;
@@ -1583,7 +1557,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     extraLocationTypes: S.optional(StringList.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1602,7 +1576,7 @@ export const ListProjectsLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProjectsLocationsRequest>;
 
 export type LocationList = Array<Location>;
-export const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
+const LocationList = /*@__PURE__*/ S.Array(Location) as any as S.Schema<LocationList>;
 
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
@@ -1611,7 +1585,7 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     locations: S.optional(LocationList),
     nextPageToken: S.optional(S.String),
@@ -1630,7 +1604,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     filter: S.optional(S.String.pipe(T.Query())),
@@ -1649,7 +1623,7 @@ export const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
 
 export type OperationList = Array<Operation>;
-export const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
+const OperationList = /*@__PURE__*/ S.Array(Operation) as any as S.Schema<OperationList>;
 
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
@@ -1660,7 +1634,7 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unreachable: S.optional(StringList),
     nextPageToken: S.optional(S.String),
@@ -1678,7 +1652,7 @@ export interface ListProjectsLocationsRegistrationsRequest {
   /** When set to the `next_page_token` from a prior response, provides the next page of results. */
   pageToken?: string;
 }
-export const ListProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pageSize: S.optional(S.Number.pipe(T.Query())),
     parent: S.String.pipe(T.Label()),
@@ -1696,9 +1670,7 @@ export const ListProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend
 }) as any as S.Schema<ListProjectsLocationsRegistrationsRequest>;
 
 export type RegistrationList = Array<Registration>;
-export const RegistrationList = /*@__PURE__*/ S.Array(
-  Registration,
-) as any as S.Schema<RegistrationList>;
+const RegistrationList = /*@__PURE__*/ S.Array(Registration) as any as S.Schema<RegistrationList>;
 
 /** Response for the `ListRegistrations` method. */
 export interface ListRegistrationsResponse {
@@ -1707,7 +1679,7 @@ export interface ListRegistrationsResponse {
   /** When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get the next page of results. */
   nextPageToken?: string;
 }
-export const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListRegistrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registrations: S.optional(RegistrationList),
     nextPageToken: S.optional(S.String),
@@ -1726,7 +1698,7 @@ export interface PatchProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: Registration;
 }
-export const PatchProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean.pipe(T.Query())),
     updateMask: S.optional(S.String.pipe(T.Query())),
@@ -1742,23 +1714,19 @@ export const PatchProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspen
 export type RegisterDomainRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
-export const RegisterDomainRequestContactNoticesItemEnum = S.String;
-
 export type RegisterDomainRequestContactNoticesItemEnumList = Array<
   RegisterDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestContactNoticesItemEnumList =
+const RegisterDomainRequestContactNoticesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestContactNoticesItemEnumList>;
 
 export type RegisterDomainRequestDomainNoticesItemEnum =
   | "DOMAIN_NOTICE_UNSPECIFIED"
   | "HSTS_PRELOADED";
-export const RegisterDomainRequestDomainNoticesItemEnum = S.String;
-
 export type RegisterDomainRequestDomainNoticesItemEnumList = Array<
   RegisterDomainRequestDomainNoticesItemEnum | (string & {})
 >;
-export const RegisterDomainRequestDomainNoticesItemEnumList =
+const RegisterDomainRequestDomainNoticesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<RegisterDomainRequestDomainNoticesItemEnumList>;
 
 /** Request for the `RegisterDomain` method. */
@@ -1774,7 +1742,7 @@ export interface RegisterDomainRequest {
   /** The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement. */
   domainNotices?: RegisterDomainRequestDomainNoticesItemEnumList;
 }
-export const RegisterDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     yearlyPrice: S.optional(Money),
     validateOnly: S.optional(S.Boolean),
@@ -1790,7 +1758,7 @@ export interface RegisterProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: RegisterDomainRequest;
 }
-export const RegisterProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RegisterProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(RegisterDomainRequest.pipe(T.HttpBody())),
@@ -1812,7 +1780,7 @@ export interface RenewDomainRequest {
   /** Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned in the error message. */
   yearlyPrice?: Money;
 }
-export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     validateOnly: S.optional(S.Boolean),
     yearlyPrice: S.optional(Money),
@@ -1825,7 +1793,7 @@ export interface RenewDomainProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: RenewDomainRequest;
 }
-export const RenewDomainProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const RenewDomainProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registration: S.String.pipe(T.Label()),
     body: S.optional(RenewDomainRequest.pipe(T.HttpBody())),
@@ -1842,26 +1810,23 @@ export const RenewDomainProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.
 
 /** Request for the `ResetAuthorizationCode` method. */
 export type ResetAuthorizationCodeRequest = ExportRegistrationRequest;
-export const ResetAuthorizationCodeRequest = ExportRegistrationRequest;
-
 export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
   /** Required. The name of the `Registration` whose authorization code is being reset, in the format `projects/*\/locations/*\/registrations/*`. */
   registration: string;
   /** Request body */
   body?: ExportRegistrationRequest;
 }
-export const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registration: S.String.pipe(T.Label()),
-      body: S.optional(ExportRegistrationRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1beta1/{+registration}:resetAuthorizationCode",
-        baseUrl: "https://domains.googleapis.com/",
-      }),
-    ),
+const ResetAuthorizationCodeProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registration: S.String.pipe(T.Label()),
+    body: S.optional(ExportRegistrationRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1beta1/{+registration}:resetAuthorizationCode",
+      baseUrl: "https://domains.googleapis.com/",
+    }),
+  ),
 ).annotate({
   identifier: "ResetAuthorizationCodeProjectsLocationsRegistrationsRequest",
 }) as any as S.Schema<ResetAuthorizationCodeProjectsLocationsRegistrationsRequest>;
@@ -1872,7 +1837,7 @@ export interface SearchDomainsProjectsLocationsRegistrationsRequest {
   /** Required. The location. Must be in the format `projects/*\/locations/*`. */
   location: string;
 }
-export const SearchDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     query: S.optional(S.String.pipe(T.Query())),
     location: S.String.pipe(T.Label()),
@@ -1888,7 +1853,7 @@ export const SearchDomainsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ 
 }) as any as S.Schema<SearchDomainsProjectsLocationsRegistrationsRequest>;
 
 export type RegisterParametersList = Array<RegisterParameters>;
-export const RegisterParametersList = /*@__PURE__*/ S.Array(
+const RegisterParametersList = /*@__PURE__*/ S.Array(
   RegisterParameters,
 ) as any as S.Schema<RegisterParametersList>;
 
@@ -1897,7 +1862,7 @@ export interface SearchDomainsResponse {
   /** Results of the domain name search. */
   registerParameters?: RegisterParametersList;
 }
-export const SearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
+const SearchDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registerParameters: S.optional(RegisterParametersList),
   }),
@@ -1910,7 +1875,7 @@ export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-export const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     updateMask: S.optional(S.String),
     policy: S.optional(Policy),
@@ -1923,7 +1888,7 @@ export interface SetIamPolicyProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-export const SetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const SetIamPolicyProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
@@ -1943,7 +1908,7 @@ export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     permissions: S.optional(StringList),
   }),
@@ -1957,7 +1922,7 @@ export interface TestIamPermissionsProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-export const TestIamPermissionsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TestIamPermissionsProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resource: S.String.pipe(T.Label()),
     body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
@@ -1977,18 +1942,16 @@ export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-export const TestIamPermissionsResponse =
+const TestIamPermissionsResponse =
   TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
 
 export type TransferDomainRequestContactNoticesItemEnum =
   | "CONTACT_NOTICE_UNSPECIFIED"
   | "PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT";
-export const TransferDomainRequestContactNoticesItemEnum = S.String;
-
 export type TransferDomainRequestContactNoticesItemEnumList = Array<
   TransferDomainRequestContactNoticesItemEnum | (string & {})
 >;
-export const TransferDomainRequestContactNoticesItemEnumList =
+const TransferDomainRequestContactNoticesItemEnumList =
   ConfigureContactSettingsRequestContactNoticesItemEnumList as any as S.Schema<TransferDomainRequestContactNoticesItemEnumList>;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). Request for the `TransferDomain` method. */
@@ -2004,7 +1967,7 @@ export interface TransferDomainRequest {
   /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
   contactNotices?: TransferDomainRequestContactNoticesItemEnumList;
 }
-export const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registration: S.optional(Registration),
     authorizationCode: S.optional(AuthorizationCode),
@@ -2020,7 +1983,7 @@ export interface TransferProjectsLocationsRegistrationsRequest {
   /** Request body */
   body?: TransferDomainRequest;
 }
-export const TransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+const TransferProjectsLocationsRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(TransferDomainRequest.pipe(T.HttpBody())),

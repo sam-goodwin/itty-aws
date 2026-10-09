@@ -28,7 +28,7 @@ export interface AddResourceGroupRequest {
   /** The resource group to add the repository to, if null, the repository will be removed from the resource group */
   resourceGroupId: string | null;
 }
-export const AddResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const AddResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -45,7 +45,7 @@ export type AddResourceGroupResponseType =
   | "bucket"
   | "kernel"
   | "container";
-export const AddResourceGroupResponseType = S.String;
+const AddResourceGroupResponseType = S.String;
 
 export interface AddResourceGroupResponse {
   name: string;
@@ -53,7 +53,7 @@ export interface AddResourceGroupResponse {
   private: boolean;
   addedBy: string;
 }
-export const AddResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const AddResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: AddResourceGroupResponseType,
@@ -67,7 +67,7 @@ export interface CheckUploadMethodRequestFilesItem {
   size: number;
   sample: string;
 }
-export const CheckUploadMethodRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const CheckUploadMethodRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     size: S.Number,
@@ -78,7 +78,7 @@ export const CheckUploadMethodRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckUploadMethodRequestFilesItem>;
 
 export type CheckUploadMethodRequestFilesList = Array<CheckUploadMethodRequestFilesItem>;
-export const CheckUploadMethodRequestFilesList = /*@__PURE__*/ S.Array(
+const CheckUploadMethodRequestFilesList = /*@__PURE__*/ S.Array(
   CheckUploadMethodRequestFilesItem,
 ) as any as S.Schema<CheckUploadMethodRequestFilesList>;
 
@@ -92,7 +92,7 @@ export interface CheckUploadMethodRequest {
   /** Content of the .gitignore file for the revision. Optional, otherwise takes the existing content of `.gitignore` for the revision. */
   gitIgnore?: string;
 }
-export const CheckUploadMethodRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckUploadMethodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -106,7 +106,7 @@ export const CheckUploadMethodRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CheckUploadMethodRequest" }) as any as S.Schema<CheckUploadMethodRequest>;
 
 export type CheckUploadMethodResponseFilesItemUploadMode = "lfs" | "regular";
-export const CheckUploadMethodResponseFilesItemUploadMode = S.String;
+const CheckUploadMethodResponseFilesItemUploadMode = S.String;
 
 export interface CheckUploadMethodResponseFilesItem {
   path: string;
@@ -115,7 +115,7 @@ export interface CheckUploadMethodResponseFilesItem {
   /** The oid of the blob if it already exists in the repository. If the blob is a LFS file, it'll be the lfs oid. */
   oid?: string;
 }
-export const CheckUploadMethodResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
+const CheckUploadMethodResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     uploadMode: CheckUploadMethodResponseFilesItemUploadMode,
@@ -127,7 +127,7 @@ export const CheckUploadMethodResponseFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckUploadMethodResponseFilesItem>;
 
 export type CheckUploadMethodResponseFilesList = Array<CheckUploadMethodResponseFilesItem>;
-export const CheckUploadMethodResponseFilesList = /*@__PURE__*/ S.Array(
+const CheckUploadMethodResponseFilesList = /*@__PURE__*/ S.Array(
   CheckUploadMethodResponseFilesItem,
 ) as any as S.Schema<CheckUploadMethodResponseFilesList>;
 
@@ -135,7 +135,7 @@ export interface CheckUploadMethodResponse {
   files: CheckUploadMethodResponseFilesList;
   commitOid: string;
 }
-export const CheckUploadMethodResponse = /*@__PURE__*/ S.suspend(() =>
+const CheckUploadMethodResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     files: CheckUploadMethodResponseFilesList,
     commitOid: S.String,
@@ -146,7 +146,7 @@ export const CheckUploadMethodResponse = /*@__PURE__*/ S.suspend(() =>
 
 /** `application/x-ndjson` if you to commit by json lines */
 export type CommitRequestContentType = "application/json" | "application/x-ndjson";
-export const CommitRequestContentType = S.String;
+const CommitRequestContentType = S.String;
 
 export interface CommitRequest {
   namespace: string;
@@ -156,7 +156,7 @@ export interface CommitRequest {
   hot_reload?: string;
   contentType?: CommitRequestContentType | (string & {});
 }
-export const CommitRequest = /*@__PURE__*/ S.suspend(() =>
+const CommitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -181,7 +181,7 @@ export interface CommitResponse {
   /** The output of the git hook */
   hookOutput: string;
 }
-export const CommitResponse = /*@__PURE__*/ S.suspend(() =>
+const CommitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     pullRequestUrl: S.optional(S.String),
@@ -202,7 +202,7 @@ export interface CreateBranchRequest {
   /** Overwrite the branch if it already exists */
   overwrite?: boolean;
 }
-export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -216,7 +216,7 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateBranchRequest" }) as any as S.Schema<CreateBranchRequest>;
 
 export interface CreateBranchResponse {}
-export const CreateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const CreateBranchResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "CreateBranchResponse",
 }) as any as S.Schema<CreateBranchResponse>;
 
@@ -227,7 +227,7 @@ export interface CreateTagRequest {
   tag: string;
   message?: string;
 }
-export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
+const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -238,14 +238,14 @@ export const CreateTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CreateTagRequest" }) as any as S.Schema<CreateTagRequest>;
 
 export interface CreateTagResponse {}
-export const CreateTagResponse = CreateBranchResponse as any as S.Schema<CreateTagResponse>;
+const CreateTagResponse = CreateBranchResponse as any as S.Schema<CreateTagResponse>;
 
 export interface DeleteBranchRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -256,7 +256,7 @@ export const DeleteBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteBranchRequest" }) as any as S.Schema<DeleteBranchRequest>;
 
 export interface DeleteBranchResponse {}
-export const DeleteBranchResponse = CreateBranchResponse as any as S.Schema<DeleteBranchResponse>;
+const DeleteBranchResponse = CreateBranchResponse as any as S.Schema<DeleteBranchResponse>;
 
 export interface DeleteLargeFileRequest {
   namespace: string;
@@ -264,7 +264,7 @@ export interface DeleteLargeFileRequest {
   sha: string;
   rewriteHistory?: string;
 }
-export const DeleteLargeFileRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLargeFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -276,11 +276,10 @@ export const DeleteLargeFileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFileRequest" }) as any as S.Schema<DeleteLargeFileRequest>;
 
 export interface DeleteLargeFileResponse {}
-export const DeleteLargeFileResponse =
-  CreateBranchResponse as any as S.Schema<DeleteLargeFileResponse>;
+const DeleteLargeFileResponse = CreateBranchResponse as any as S.Schema<DeleteLargeFileResponse>;
 
 export type DeleteLargeFilesRequestDeletionsShaList = Array<string>;
-export const DeleteLargeFilesRequestDeletionsShaList = /*@__PURE__*/ S.Array(
+const DeleteLargeFilesRequestDeletionsShaList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteLargeFilesRequestDeletionsShaList>;
 
@@ -288,7 +287,7 @@ export interface DeleteLargeFilesRequestDeletions {
   sha: DeleteLargeFilesRequestDeletionsShaList;
   rewriteHistory?: boolean;
 }
-export const DeleteLargeFilesRequestDeletions = /*@__PURE__*/ S.suspend(() =>
+const DeleteLargeFilesRequestDeletions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha: DeleteLargeFilesRequestDeletionsShaList,
     rewriteHistory: S.optional(S.Boolean),
@@ -302,7 +301,7 @@ export interface DeleteLargeFilesRequest {
   repo: string;
   deletions: DeleteLargeFilesRequestDeletions;
 }
-export const DeleteLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -313,15 +312,14 @@ export const DeleteLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteLargeFilesRequest" }) as any as S.Schema<DeleteLargeFilesRequest>;
 
 export interface DeleteLargeFilesResponse {}
-export const DeleteLargeFilesResponse =
-  CreateBranchResponse as any as S.Schema<DeleteLargeFilesResponse>;
+const DeleteLargeFilesResponse = CreateBranchResponse as any as S.Schema<DeleteLargeFilesResponse>;
 
 export interface DeleteSecretRequest {
   namespace: string;
   repo: string;
   key: string;
 }
-export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -330,13 +328,13 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteSecretRequest" }) as any as S.Schema<DeleteSecretRequest>;
 
 export interface DeleteSecretResponse {}
-export const DeleteSecretResponse = CreateBranchResponse as any as S.Schema<DeleteSecretResponse>;
+const DeleteSecretResponse = CreateBranchResponse as any as S.Schema<DeleteSecretResponse>;
 
 export interface DeleteSpaceVolumesRequest {
   namespace: string;
   repo: string;
 }
-export const DeleteSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -346,7 +344,7 @@ export const DeleteSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteSpaceVolumesRequest>;
 
 export interface DeleteSpaceVolumesResponse {}
-export const DeleteSpaceVolumesResponse =
+const DeleteSpaceVolumesResponse =
   CreateBranchResponse as any as S.Schema<DeleteSpaceVolumesResponse>;
 
 export interface DeleteTagRequest {
@@ -354,7 +352,7 @@ export interface DeleteTagRequest {
   repo: string;
   rev: string;
 }
-export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -363,14 +361,14 @@ export const DeleteTagRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteTagRequest" }) as any as S.Schema<DeleteTagRequest>;
 
 export interface DeleteTagResponse {}
-export const DeleteTagResponse = CreateBranchResponse as any as S.Schema<DeleteTagResponse>;
+const DeleteTagResponse = CreateBranchResponse as any as S.Schema<DeleteTagResponse>;
 
 export interface DeleteVariableRequest {
   namespace: string;
   repo: string;
   key: string;
 }
-export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -379,17 +377,16 @@ export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeleteVariableRequest" }) as any as S.Schema<DeleteVariableRequest>;
 
 export interface DeleteVariableResponse {}
-export const DeleteVariableResponse =
-  CreateBranchResponse as any as S.Schema<DeleteVariableResponse>;
+const DeleteVariableResponse = CreateBranchResponse as any as S.Schema<DeleteVariableResponse>;
 
 export type DuplicateXetFilesRequestTargetType = "model" | "space" | "dataset" | "kernel";
-export const DuplicateXetFilesRequestTargetType = S.String;
+const DuplicateXetFilesRequestTargetType = S.String;
 
 export interface DuplicateXetFilesRequestTarget {
   type: DuplicateXetFilesRequestTargetType | (string & {});
   name: string;
 }
-export const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestTarget = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DuplicateXetFilesRequestTargetType,
     name: S.String,
@@ -403,7 +400,7 @@ export interface DuplicateXetFilesRequestFilesItem {
   sha256: string;
   filename?: string;
 }
-export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -414,7 +411,7 @@ export const DuplicateXetFilesRequestFilesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DuplicateXetFilesRequestFilesItem>;
 
 export type DuplicateXetFilesRequestFilesList = Array<DuplicateXetFilesRequestFilesItem>;
-export const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesRequestFilesList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesRequestFilesItem,
 ) as any as S.Schema<DuplicateXetFilesRequestFilesList>;
 
@@ -424,7 +421,7 @@ export interface DuplicateXetFilesRequest {
   target: DuplicateXetFilesRequestTarget;
   files: DuplicateXetFilesRequestFilesList;
 }
-export const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -447,7 +444,7 @@ export interface DuplicateXetFilesResponseFailedItem {
   /** Error message */
   error: string;
 }
-export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     xetHash: S.String,
     sha256: S.String,
@@ -459,7 +456,7 @@ export const DuplicateXetFilesResponseFailedItem = /*@__PURE__*/ S.suspend(() =>
 
 /** Per-file failures */
 export type DuplicateXetFilesResponseFailedList = Array<DuplicateXetFilesResponseFailedItem>;
-export const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
+const DuplicateXetFilesResponseFailedList = /*@__PURE__*/ S.Array(
   DuplicateXetFilesResponseFailedItem,
 ) as any as S.Schema<DuplicateXetFilesResponseFailedList>;
 
@@ -473,7 +470,7 @@ export interface DuplicateXetFilesResponse {
   /** Per-file failures */
   failed: DuplicateXetFilesResponseFailedList;
 }
-export const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.Boolean,
     processed: S.Number,
@@ -487,15 +484,14 @@ export const DuplicateXetFilesResponse = /*@__PURE__*/ S.suspend(() =>
 export interface FeaturedSpacesRequest {
   date?: string;
 }
-export const FeaturedSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+const FeaturedSpacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/api/spaces/featured", code: 200 })),
 ).annotate({ identifier: "FeaturedSpacesRequest" }) as any as S.Schema<FeaturedSpacesRequest>;
 
 export interface FeaturedSpacesResponse {}
-export const FeaturedSpacesResponse =
-  CreateBranchResponse as any as S.Schema<FeaturedSpacesResponse>;
+const FeaturedSpacesResponse = CreateBranchResponse as any as S.Schema<FeaturedSpacesResponse>;
 
 export interface GenerateJwtRequest {
   namespace: string;
@@ -508,7 +504,7 @@ export interface GenerateJwtRequest {
   include_pro_status?: string;
   billing_details?: string;
 }
-export const GenerateJwtRequest = /*@__PURE__*/ S.suspend(() =>
+const GenerateJwtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -529,7 +525,7 @@ export interface GenerateJwtResponseEncryptedToken {
   /** Key ID used to encrypt the token */
   keyId: string;
 }
-export const GenerateJwtResponseEncryptedToken = /*@__PURE__*/ S.suspend(() =>
+const GenerateJwtResponseEncryptedToken = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encrypted: S.String,
     keyId: S.String,
@@ -548,7 +544,7 @@ export interface GenerateJwtResponse {
   /** Encrypted JWT token and key ID (only if encrypted=true was requested) */
   encryptedToken?: GenerateJwtResponseEncryptedToken;
 }
-export const GenerateJwtResponse = /*@__PURE__*/ S.suspend(() =>
+const GenerateJwtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessToken: S.String.pipe(T.SensitiveValue({})),
     exp: S.optional(S.Number),
@@ -563,7 +559,7 @@ export interface GetCompareRevRequest {
   compare: string;
   raw?: string;
 }
-export const GetCompareRevRequest = /*@__PURE__*/ S.suspend(() =>
+const GetCompareRevRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -575,7 +571,7 @@ export const GetCompareRevRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetCompareRevRequest" }) as any as S.Schema<GetCompareRevRequest>;
 
 export type GetCompareRevResponse = string;
-export const GetCompareRevResponse = /*@__PURE__*/ S.suspend(() =>
+const GetCompareRevResponse = /*@__PURE__*/ S.suspend(() =>
   S.String.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetCompareRevResponse" }) as any as S.Schema<GetCompareRevResponse>;
 
@@ -585,7 +581,7 @@ export interface GetFolderSizeRequest {
   rev: string;
   path: string;
 }
-export const GetFolderSizeRequest = /*@__PURE__*/ S.suspend(() =>
+const GetFolderSizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -606,7 +602,7 @@ export interface GetFolderSizeResponse {
   /** Total size in bytes of all files under the subtree */
   size: number;
 }
-export const GetFolderSizeResponse = /*@__PURE__*/ S.suspend(() =>
+const GetFolderSizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     size: S.Number,
@@ -619,7 +615,7 @@ export interface GetNotebookUrlRequest {
   rev: string;
   path: string;
 }
-export const GetNotebookUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetNotebookUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -637,44 +633,20 @@ export const GetNotebookUrlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetNotebookUrlResponseBodyCase0 {
   error: string;
 }
-export const GetNotebookUrlResponseBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.String,
-  }),
-).annotate({
-  identifier: "GetNotebookUrlResponseBodyCase0",
-}) as any as S.Schema<GetNotebookUrlResponseBodyCase0>;
-
 export interface GetNotebookUrlResponseBodyCase1 {
   notInCache: boolean;
 }
-export const GetNotebookUrlResponseBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notInCache: S.Boolean,
-  }),
-).annotate({
-  identifier: "GetNotebookUrlResponseBodyCase1",
-}) as any as S.Schema<GetNotebookUrlResponseBodyCase1>;
-
 export interface GetNotebookUrlResponseBodyCase2 {
   url: string;
 }
-export const GetNotebookUrlResponseBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-  }),
-).annotate({
-  identifier: "GetNotebookUrlResponseBodyCase2",
-}) as any as S.Schema<GetNotebookUrlResponseBodyCase2>;
-
 export type GetNotebookUrlResponseBody =
   | GetNotebookUrlResponseBodyCase0
   | GetNotebookUrlResponseBodyCase1
   | GetNotebookUrlResponseBodyCase2;
-export const GetNotebookUrlResponseBody = S.Unknown as any as S.Schema<GetNotebookUrlResponseBody>;
+const GetNotebookUrlResponseBody = S.Unknown as any as S.Schema<GetNotebookUrlResponseBody>;
 
 export type GetNotebookUrlResponse = GetNotebookUrlResponseBody;
-export const GetNotebookUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetNotebookUrlResponse = /*@__PURE__*/ S.suspend(() =>
   GetNotebookUrlResponseBody.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "GetNotebookUrlResponse" }) as any as S.Schema<GetNotebookUrlResponse>;
 
@@ -682,7 +654,7 @@ export interface GetResourceGroupRequest {
   namespace: string;
   repo: string;
 }
-export const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -697,7 +669,7 @@ export interface GetResourceGroupResponse {
   name: string;
   numUsers?: number;
 }
-export const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+const GetResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -709,7 +681,7 @@ export interface GetSecurityStatusRequest {
   namespace: string;
   repo: string;
 }
-export const GetSecurityStatusRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -724,13 +696,13 @@ export type GetSecurityStatusResponseFilesWithIssuesItemLevel =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const GetSecurityStatusResponseFilesWithIssuesItemLevel = S.String;
+const GetSecurityStatusResponseFilesWithIssuesItemLevel = S.String;
 
 export interface GetSecurityStatusResponseFilesWithIssuesItem {
   path: string;
   level: GetSecurityStatusResponseFilesWithIssuesItemLevel;
 }
-export const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     path: S.String,
     level: GetSecurityStatusResponseFilesWithIssuesItemLevel,
@@ -741,7 +713,7 @@ export const GetSecurityStatusResponseFilesWithIssuesItem = /*@__PURE__*/ S.susp
 
 export type GetSecurityStatusResponseFilesWithIssuesList =
   Array<GetSecurityStatusResponseFilesWithIssuesItem>;
-export const GetSecurityStatusResponseFilesWithIssuesList = /*@__PURE__*/ S.Array(
+const GetSecurityStatusResponseFilesWithIssuesList = /*@__PURE__*/ S.Array(
   GetSecurityStatusResponseFilesWithIssuesItem,
 ) as any as S.Schema<GetSecurityStatusResponseFilesWithIssuesList>;
 
@@ -749,7 +721,7 @@ export interface GetSecurityStatusResponse {
   scansDone: boolean;
   filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList;
 }
-export const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
+const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scansDone: S.Boolean,
     filesWithIssues: GetSecurityStatusResponseFilesWithIssuesList,
@@ -759,7 +731,7 @@ export const GetSecurityStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSecurityStatusResponse>;
 
 export interface GetZeroGPUQuotaRequest {}
-export const GetZeroGPUQuotaRequest = /*@__PURE__*/ S.suspend(() =>
+const GetZeroGPUQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/zero-gpu/quota", code: 200 })),
 ).annotate({ identifier: "GetZeroGPUQuotaRequest" }) as any as S.Schema<GetZeroGPUQuotaRequest>;
 
@@ -774,7 +746,7 @@ export interface GetZeroGPUQuotaResponseRuns {
   /** ISO 8601 timestamp when the runs window resets, or null if no run has happened yet. Independent of resetsAt. */
   resetsAt: string | null;
 }
-export const GetZeroGPUQuotaResponseRuns = /*@__PURE__*/ S.suspend(() =>
+const GetZeroGPUQuotaResponseRuns = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     used: S.Number,
     limit: S.Number,
@@ -797,7 +769,7 @@ export interface GetZeroGPUQuotaResponse {
   /** Execution (runs) accounting, or omitted for visitors without a runs limit */
   runs?: GetZeroGPUQuotaResponseRuns;
 }
-export const GetZeroGPUQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+const GetZeroGPUQuotaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     base: S.Number,
     current: S.Number,
@@ -808,10 +780,10 @@ export const GetZeroGPUQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetZeroGPUQuotaResponse" }) as any as S.Schema<GetZeroGPUQuotaResponse>;
 
 export type ListCommitsRequestExpandItem = "formatted";
-export const ListCommitsRequestExpandItem = S.String;
+const ListCommitsRequestExpandItem = S.String;
 
 export type ListCommitsRequestExpandList = Array<ListCommitsRequestExpandItem | (string & {})>;
-export const ListCommitsRequestExpandList = /*@__PURE__*/ S.Array(
+const ListCommitsRequestExpandList = /*@__PURE__*/ S.Array(
   ListCommitsRequestExpandItem,
 ) as any as S.Schema<ListCommitsRequestExpandList>;
 
@@ -823,7 +795,7 @@ export interface ListCommitsRequest {
   expand?: ListCommitsRequestExpandList;
   limit?: number;
 }
-export const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -840,7 +812,7 @@ export interface ListCommitsResponseBodyItemAuthorsItem {
   user: string;
   avatar?: string;
 }
-export const ListCommitsResponseBodyItemAuthorsItem = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsResponseBodyItemAuthorsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     user: S.String,
     avatar: S.optional(S.String),
@@ -850,7 +822,7 @@ export const ListCommitsResponseBodyItemAuthorsItem = /*@__PURE__*/ S.suspend(()
 }) as any as S.Schema<ListCommitsResponseBodyItemAuthorsItem>;
 
 export type ListCommitsResponseBodyItemAuthorsList = Array<ListCommitsResponseBodyItemAuthorsItem>;
-export const ListCommitsResponseBodyItemAuthorsList = /*@__PURE__*/ S.Array(
+const ListCommitsResponseBodyItemAuthorsList = /*@__PURE__*/ S.Array(
   ListCommitsResponseBodyItemAuthorsItem,
 ) as any as S.Schema<ListCommitsResponseBodyItemAuthorsList>;
 
@@ -859,7 +831,7 @@ export interface ListCommitsResponseBodyItemFormatted {
   title: string;
   message?: string;
 }
-export const ListCommitsResponseBodyItemFormatted = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsResponseBodyItemFormatted = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.String,
     message: S.optional(S.String),
@@ -877,7 +849,7 @@ export interface ListCommitsResponseBodyItem {
   /** Available if expand includes formatted */
   formatted?: ListCommitsResponseBodyItemFormatted;
 }
-export const ListCommitsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -891,12 +863,12 @@ export const ListCommitsResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCommitsResponseBodyItem>;
 
 export type ListCommitsResponseBodyList = Array<ListCommitsResponseBodyItem>;
-export const ListCommitsResponseBodyList = /*@__PURE__*/ S.Array(
+const ListCommitsResponseBodyList = /*@__PURE__*/ S.Array(
   ListCommitsResponseBodyItem,
 ) as any as S.Schema<ListCommitsResponseBodyList>;
 
 export type ListCommitsResponse = ListCommitsResponseBodyList;
-export const ListCommitsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListCommitsResponse = /*@__PURE__*/ S.suspend(() =>
   ListCommitsResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListCommitsResponse" }) as any as S.Schema<ListCommitsResponse>;
 
@@ -910,7 +882,7 @@ export interface ListFolderContentRequest {
   limit?: number;
   cursor?: string;
 }
-export const ListFolderContentRequest = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -926,14 +898,14 @@ export const ListFolderContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListFolderContentRequest" }) as any as S.Schema<ListFolderContentRequest>;
 
 export type ListFolderContentResponseBodyItemType = "file" | "directory" | "unknown";
-export const ListFolderContentResponseBodyItemType = S.String;
+const ListFolderContentResponseBodyItemType = S.String;
 
 export interface ListFolderContentResponseBodyItemLfs {
   oid: string;
   size: number;
   pointerSize: number;
 }
-export const ListFolderContentResponseBodyItemLfs = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItemLfs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     oid: S.String,
     size: S.Number,
@@ -948,7 +920,7 @@ export interface ListFolderContentResponseBodyItemLastCommit {
   title: string;
   date: string;
 }
-export const ListFolderContentResponseBodyItemLastCommit = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItemLastCommit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -966,7 +938,7 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusStatus = S.String;
+const ListFolderContentResponseBodyItemSecurityFileStatusStatus = S.String;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "unscanned"
@@ -976,13 +948,13 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus = S.String;
+const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus = S.String;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
+const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
   S.String;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem {
@@ -990,7 +962,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPic
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem =
+const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       module: S.String,
@@ -1003,7 +975,7 @@ export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleI
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
-export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
+const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
   /*@__PURE__*/ S.Array(
     ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem,
   ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList>;
@@ -1016,18 +988,17 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan {
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
+const ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanStatus,
+    message: S.optional(S.String),
+    reportLink: S.optional(S.String),
+    reportLabel: S.optional(S.String),
+    pickleImports: S.optional(
+      ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList,
+    ),
+    version: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan",
 }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan>;
@@ -1040,13 +1011,13 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStat
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus = S.String;
+const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus = S.String;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
+const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
   S.String;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem {
@@ -1054,7 +1025,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiSca
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem =
+const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       module: S.String,
@@ -1068,7 +1039,7 @@ export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPic
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
-export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
+const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
   /*@__PURE__*/ S.Array(
     ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem,
   ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList>;
@@ -1081,8 +1052,8 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusProtectAiSca
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan =
-  /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanStatus,
       message: S.optional(S.String),
@@ -1093,9 +1064,9 @@ export const ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan =
       ),
       version: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan",
-  }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan>;
+).annotate({
+  identifier: "ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan",
+}) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus =
   | "unscanned"
@@ -1105,28 +1076,17 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusAvScanStatus;
   message?: string;
@@ -1135,7 +1095,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusAvScan {
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusAvScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusAvScan =
+const ListFolderContentResponseBodyItemSecurityFileStatusAvScan =
   ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusAvScan>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus =
@@ -1146,13 +1106,13 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanS
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus = S.String;
+const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus = S.String;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
+const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
   S.String;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem {
@@ -1160,7 +1120,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImport
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem =
+const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       module: S.String,
@@ -1175,7 +1135,7 @@ export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
-export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
+const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
   /*@__PURE__*/ S.Array(
     ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem,
   ) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList>;
@@ -1188,8 +1148,8 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusPickleImport
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan =
-  /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanStatus,
       message: S.optional(S.String),
@@ -1200,9 +1160,9 @@ export const ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan
       ),
       version: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan",
-  }) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan>;
+).annotate({
+  identifier: "ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan",
+}) as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan>;
 
 export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus =
   | "unscanned"
@@ -1212,28 +1172,17 @@ export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanSta
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus = S.String;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
-
 export type ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   Array<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
-export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
-
 export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan {
   status: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanStatus;
   message?: string;
@@ -1242,7 +1191,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalSc
   pickleImports?: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList;
   version?: string;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan =
+const ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan =
   ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan as any as S.Schema<ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan>;
 
 export interface ListFolderContentResponseBodyItemSecurityFileStatus {
@@ -1253,7 +1202,7 @@ export interface ListFolderContentResponseBodyItemSecurityFileStatus {
   pickleImportScan: ListFolderContentResponseBodyItemSecurityFileStatusPickleImportScan;
   virusTotalScan?: ListFolderContentResponseBodyItemSecurityFileStatusVirusTotalScan;
 }
-export const ListFolderContentResponseBodyItemSecurityFileStatus = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItemSecurityFileStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ListFolderContentResponseBodyItemSecurityFileStatusStatus,
     jFrogScan: S.optional(ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan),
@@ -1276,7 +1225,7 @@ export interface ListFolderContentResponseBodyItem {
   lastCommit?: ListFolderContentResponseBodyItemLastCommit;
   securityFileStatus?: ListFolderContentResponseBodyItemSecurityFileStatus;
 }
-export const ListFolderContentResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListFolderContentResponseBodyItemType,
     oid: S.String,
@@ -1291,22 +1240,22 @@ export const ListFolderContentResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFolderContentResponseBodyItem>;
 
 export type ListFolderContentResponseBodyList = Array<ListFolderContentResponseBodyItem>;
-export const ListFolderContentResponseBodyList = /*@__PURE__*/ S.Array(
+const ListFolderContentResponseBodyList = /*@__PURE__*/ S.Array(
   ListFolderContentResponseBodyItem,
 ) as any as S.Schema<ListFolderContentResponseBodyList>;
 
 export type ListFolderContentResponse = ListFolderContentResponseBodyList;
-export const ListFolderContentResponse = /*@__PURE__*/ S.suspend(() =>
+const ListFolderContentResponse = /*@__PURE__*/ S.suspend(() =>
   ListFolderContentResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListFolderContentResponse",
 }) as any as S.Schema<ListFolderContentResponse>;
 
 export type ListLargeFilesRequestDirection = "asc" | "desc";
-export const ListLargeFilesRequestDirection = S.String;
+const ListLargeFilesRequestDirection = S.String;
 
 export type ListLargeFilesRequestSort = "size" | "pushedAt";
-export const ListLargeFilesRequestSort = S.String;
+const ListLargeFilesRequestSort = S.String;
 
 export interface ListLargeFilesRequest {
   namespace: string;
@@ -1317,7 +1266,7 @@ export interface ListLargeFilesRequest {
   sort?: ListLargeFilesRequestSort | (string & {});
   xet?: string;
 }
-export const ListLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLargeFilesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1334,7 +1283,7 @@ export type ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan =
   | "enterprise"
   | "plus"
   | "academia";
-export const ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan = S.String;
+const ListLargeFilesResponseBodyItemPusherPrimaryOrgPlan = S.String;
 
 export type ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole =
   | "admin"
@@ -1342,7 +1291,7 @@ export type ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole =
   | "contributor"
   | "read"
   | "no_access";
-export const ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole = S.String;
+const ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole = S.String;
 
 export interface ListLargeFilesResponseBodyItemPusherPrimaryOrg {
   avatarUrl: string;
@@ -1357,7 +1306,7 @@ export interface ListLargeFilesResponseBodyItemPusherPrimaryOrg {
   userRole?: ListLargeFilesResponseBodyItemPusherPrimaryOrgUserRole;
   numUsers?: number;
 }
-export const ListLargeFilesResponseBodyItemPusherPrimaryOrg = /*@__PURE__*/ S.suspend(() =>
+const ListLargeFilesResponseBodyItemPusherPrimaryOrg = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     avatarUrl: S.String,
     fullname: S.String,
@@ -1390,7 +1339,7 @@ export interface ListLargeFilesResponseBodyItemPusher {
   isUserFollowing?: boolean;
   primaryOrg?: ListLargeFilesResponseBodyItemPusherPrimaryOrg;
 }
-export const ListLargeFilesResponseBodyItemPusher = /*@__PURE__*/ S.suspend(() =>
+const ListLargeFilesResponseBodyItemPusher = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _id: S.String,
     avatarUrl: S.String,
@@ -1420,7 +1369,7 @@ export interface ListLargeFilesResponseBodyItem {
   filename?: string;
   xetHash?: string;
 }
-export const ListLargeFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListLargeFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pusher: S.optional(ListLargeFilesResponseBodyItemPusher),
     ref: S.optional(S.String),
@@ -1436,20 +1385,18 @@ export const ListLargeFilesResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLargeFilesResponseBodyItem>;
 
 export type ListLargeFilesResponseBodyList = Array<ListLargeFilesResponseBodyItem>;
-export const ListLargeFilesResponseBodyList = /*@__PURE__*/ S.Array(
+const ListLargeFilesResponseBodyList = /*@__PURE__*/ S.Array(
   ListLargeFilesResponseBodyItem,
 ) as any as S.Schema<ListLargeFilesResponseBodyList>;
 
 export type ListLargeFilesResponse = ListLargeFilesResponseBodyList;
-export const ListLargeFilesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListLargeFilesResponse = /*@__PURE__*/ S.suspend(() =>
   ListLargeFilesResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListLargeFilesResponse" }) as any as S.Schema<ListLargeFilesResponse>;
 
 export type ListLikersRequestExpandItem = "likedAt";
-export const ListLikersRequestExpandItem = S.String;
-
 export type ListLikersRequestExpandList = Array<ListLikersRequestExpandItem | (string & {})>;
-export const ListLikersRequestExpandList =
+const ListLikersRequestExpandList =
   ListCommitsRequestExpandList as any as S.Schema<ListLikersRequestExpandList>;
 
 export interface ListLikersRequest {
@@ -1457,7 +1404,7 @@ export interface ListLikersRequest {
   repo: string;
   expand?: ListLikersRequestExpandList;
 }
-export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1466,18 +1413,15 @@ export const ListLikersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListLikersRequest" }) as any as S.Schema<ListLikersRequest>;
 
 export interface ListLikersResponse {}
-export const ListLikersResponse = CreateBranchResponse as any as S.Schema<ListLikersResponse>;
+const ListLikersResponse = CreateBranchResponse as any as S.Schema<ListLikersResponse>;
 
 export type ListPathsInfoRequestPathsCase0List = Array<string>;
-export const ListPathsInfoRequestPathsCase0List =
-  DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<ListPathsInfoRequestPathsCase0List>;
-
 export type ListPathsInfoRequestPaths = ListPathsInfoRequestPathsCase0List | string;
-export const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
+const ListPathsInfoRequestPaths = S.Unknown as any as S.Schema<ListPathsInfoRequestPaths>;
 
 /** Expand the response with the last commit and security file status */
 export type ListPathsInfoRequestExpand = string | boolean;
-export const ListPathsInfoRequestExpand = S.Unknown as any as S.Schema<ListPathsInfoRequestExpand>;
+const ListPathsInfoRequestExpand = S.Unknown as any as S.Schema<ListPathsInfoRequestExpand>;
 
 export interface ListPathsInfoRequest {
   namespace: string;
@@ -1487,7 +1431,7 @@ export interface ListPathsInfoRequest {
   /** Expand the response with the last commit and security file status */
   expand?: ListPathsInfoRequestExpand;
 }
-export const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1500,12 +1444,12 @@ export const ListPathsInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListPathsInfoRequest" }) as any as S.Schema<ListPathsInfoRequest>;
 
 export type ListPathsInfoResponseBodyItemType = "file" | "directory" | "unknown";
-export const ListPathsInfoResponseBodyItemType = S.String;
+const ListPathsInfoResponseBodyItemType = S.String;
 
 export interface ListPathsInfoResponseBodyItemLfs {
   pointerSize: number;
 }
-export const ListPathsInfoResponseBodyItemLfs = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoResponseBodyItemLfs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pointerSize: S.Number,
   }),
@@ -1514,8 +1458,6 @@ export const ListPathsInfoResponseBodyItemLfs = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPathsInfoResponseBodyItemLfs>;
 
 export type ListPathsInfoResponseBodyItemLastCommit = ListFolderContentResponseBodyItemLastCommit;
-export const ListPathsInfoResponseBodyItemLastCommit = ListFolderContentResponseBodyItemLastCommit;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusStatus =
   | "unscanned"
   | "safe"
@@ -1524,7 +1466,7 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusStatus = S.String;
+const ListPathsInfoResponseBodyItemSecurityFileStatusStatus = S.String;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "unscanned"
@@ -1534,28 +1476,17 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItemSafety;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem>;
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanStatus;
   message?: string;
@@ -1564,7 +1495,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan =
+const ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan =
   ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus =
@@ -1575,28 +1506,17 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItemSafety;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem>;
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanStatus;
   message?: string;
@@ -1605,7 +1525,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan =
+const ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan =
   ListFolderContentResponseBodyItemSecurityFileStatusJFrogScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusProtectAiScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus =
@@ -1616,26 +1536,20 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus =
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus = S.String;
+const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus = S.String;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItemSafety;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsItem>;
-export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
+const ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList =
   ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScan {
@@ -1646,7 +1560,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusAvScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusAvScan = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoResponseBodyItemSecurityFileStatusAvScan = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ListPathsInfoResponseBodyItemSecurityFileStatusAvScanStatus,
     message: S.optional(S.String),
@@ -1669,28 +1583,17 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatu
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatus = S.String;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItemSafety;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsItem>;
-export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList =
-  ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList>;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanStatus;
   message?: string;
@@ -1699,7 +1602,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan =
+const ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan =
   ListFolderContentResponseBodyItemSecurityFileStatusProtectAiScan as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan>;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus =
@@ -1710,26 +1613,20 @@ export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus 
   | "caution"
   | "suspicious"
   | "unsafe";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus = S.String;
+const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus = S.String;
 
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety =
   | "innocuous"
   | "suspicious"
   | "dangerous";
-export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety =
-  S.String;
-
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem {
   module: string;
   name: string;
   safety: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItemSafety;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem =
-  ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsItem as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
-
 export type ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   Array<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsItem>;
-export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
+const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList =
   ListFolderContentResponseBodyItemSecurityFileStatusJFrogScanPickleImportsList as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan {
@@ -1740,21 +1637,20 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan {
   pickleImports?: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList;
   version?: string;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus,
-      message: S.optional(S.String),
-      reportLink: S.optional(S.String),
-      reportLabel: S.optional(S.String),
-      pickleImports: S.optional(
-        ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList,
-      ),
-      version: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan",
-  }) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan>;
+const ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanStatus,
+    message: S.optional(S.String),
+    reportLink: S.optional(S.String),
+    reportLabel: S.optional(S.String),
+    pickleImports: S.optional(
+      ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScanPickleImportsList,
+    ),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan",
+}) as any as S.Schema<ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan>;
 
 export interface ListPathsInfoResponseBodyItemSecurityFileStatus {
   status: ListPathsInfoResponseBodyItemSecurityFileStatusStatus;
@@ -1764,7 +1660,7 @@ export interface ListPathsInfoResponseBodyItemSecurityFileStatus {
   pickleImportScan: ListPathsInfoResponseBodyItemSecurityFileStatusPickleImportScan;
   virusTotalScan?: ListPathsInfoResponseBodyItemSecurityFileStatusVirusTotalScan;
 }
-export const ListPathsInfoResponseBodyItemSecurityFileStatus = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoResponseBodyItemSecurityFileStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: ListPathsInfoResponseBodyItemSecurityFileStatusStatus,
     jFrogScan: S.optional(ListPathsInfoResponseBodyItemSecurityFileStatusJFrogScan),
@@ -1787,7 +1683,7 @@ export interface ListPathsInfoResponseBodyItem {
   lastCommit?: ListFolderContentResponseBodyItemLastCommit;
   securityFileStatus?: ListPathsInfoResponseBodyItemSecurityFileStatus;
 }
-export const ListPathsInfoResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListPathsInfoResponseBodyItemType,
     oid: S.String,
@@ -1803,12 +1699,12 @@ export const ListPathsInfoResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPathsInfoResponseBodyItem>;
 
 export type ListPathsInfoResponseBodyList = Array<ListPathsInfoResponseBodyItem>;
-export const ListPathsInfoResponseBodyList = /*@__PURE__*/ S.Array(
+const ListPathsInfoResponseBodyList = /*@__PURE__*/ S.Array(
   ListPathsInfoResponseBodyItem,
 ) as any as S.Schema<ListPathsInfoResponseBodyList>;
 
 export type ListPathsInfoResponse = ListPathsInfoResponseBodyList;
-export const ListPathsInfoResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPathsInfoResponse = /*@__PURE__*/ S.suspend(() =>
   ListPathsInfoResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListPathsInfoResponse" }) as any as S.Schema<ListPathsInfoResponse>;
 
@@ -1817,7 +1713,7 @@ export interface ListReferencesRequest {
   repo: string;
   include_prs?: string;
 }
-export const ListReferencesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListReferencesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1830,7 +1726,7 @@ export interface ListReferencesResponseTagsItem {
   ref: string;
   targetCommit: string;
 }
-export const ListReferencesResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
+const ListReferencesResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ref: S.String,
@@ -1841,29 +1737,23 @@ export const ListReferencesResponseTagsItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReferencesResponseTagsItem>;
 
 export type ListReferencesResponseTagsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseTagsList = /*@__PURE__*/ S.Array(
+const ListReferencesResponseTagsList = /*@__PURE__*/ S.Array(
   ListReferencesResponseTagsItem,
 ) as any as S.Schema<ListReferencesResponseTagsList>;
 
 export type ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
-export const ListReferencesResponseBranchesItem = ListReferencesResponseTagsItem;
-
 export type ListReferencesResponseBranchesList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseBranchesList =
+const ListReferencesResponseBranchesList =
   ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseBranchesList>;
 
 export type ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
-export const ListReferencesResponseConvertsItem = ListReferencesResponseTagsItem;
-
 export type ListReferencesResponseConvertsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponseConvertsList =
+const ListReferencesResponseConvertsList =
   ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponseConvertsList>;
 
 export type ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
-export const ListReferencesResponsePullRequestsItem = ListReferencesResponseTagsItem;
-
 export type ListReferencesResponsePullRequestsList = Array<ListReferencesResponseTagsItem>;
-export const ListReferencesResponsePullRequestsList =
+const ListReferencesResponsePullRequestsList =
   ListReferencesResponseTagsList as any as S.Schema<ListReferencesResponsePullRequestsList>;
 
 export interface ListReferencesResponse {
@@ -1872,7 +1762,7 @@ export interface ListReferencesResponse {
   converts: ListReferencesResponseConvertsList;
   pullRequests?: ListReferencesResponsePullRequestsList;
 }
-export const ListReferencesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListReferencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: ListReferencesResponseTagsList,
     branches: ListReferencesResponseBranchesList,
@@ -1885,7 +1775,7 @@ export interface ListSecretsRequest {
   namespace: string;
   repo: string;
 }
-export const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -1897,7 +1787,7 @@ export interface ListSecretsResponseBodyValue {
   description?: string;
   updatedAt?: string;
 }
-export const ListSecretsResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     description: S.optional(S.String),
@@ -1910,26 +1800,26 @@ export const ListSecretsResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
 export type ListSecretsResponseBodyMap = {
   [key: string]: ListSecretsResponseBodyValue | undefined;
 };
-export const ListSecretsResponseBodyMap = /*@__PURE__*/ S.Record(
+const ListSecretsResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   ListSecretsResponseBodyValue,
 ) as any as S.Schema<ListSecretsResponseBodyMap>;
 
 export type ListSecretsResponse = ListSecretsResponseBodyMap;
-export const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   ListSecretsResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListSecretsResponse" }) as any as S.Schema<ListSecretsResponse>;
 
 export interface ListSpaceHardwareRequest {}
-export const ListSpaceHardwareRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceHardwareRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/hardware", code: 200 })),
 ).annotate({ identifier: "ListSpaceHardwareRequest" }) as any as S.Schema<ListSpaceHardwareRequest>;
 
 export type ListSpaceHardwareResponseBodyItemAcceleratorType = "gpu" | "neuron";
-export const ListSpaceHardwareResponseBodyItemAcceleratorType = S.String;
+const ListSpaceHardwareResponseBodyItemAcceleratorType = S.String;
 
 export type ListSpaceHardwareResponseBodyItemAcceleratorManufacturer = "Nvidia" | "AWS";
-export const ListSpaceHardwareResponseBodyItemAcceleratorManufacturer = S.String;
+const ListSpaceHardwareResponseBodyItemAcceleratorManufacturer = S.String;
 
 export interface ListSpaceHardwareResponseBodyItemAccelerator {
   type: ListSpaceHardwareResponseBodyItemAcceleratorType;
@@ -1938,7 +1828,7 @@ export interface ListSpaceHardwareResponseBodyItemAccelerator {
   vram: string;
   manufacturer: ListSpaceHardwareResponseBodyItemAcceleratorManufacturer;
 }
-export const ListSpaceHardwareResponseBodyItemAccelerator = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceHardwareResponseBodyItemAccelerator = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ListSpaceHardwareResponseBodyItemAcceleratorType,
     model: S.String,
@@ -1960,7 +1850,7 @@ export interface ListSpaceHardwareResponseBodyItem {
   unitCostUSD: number;
   unitLabel: string;
 }
-export const ListSpaceHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     prettyName: S.String,
@@ -1976,26 +1866,26 @@ export const ListSpaceHardwareResponseBodyItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSpaceHardwareResponseBodyItem>;
 
 export type ListSpaceHardwareResponseBodyList = Array<ListSpaceHardwareResponseBodyItem>;
-export const ListSpaceHardwareResponseBodyList = /*@__PURE__*/ S.Array(
+const ListSpaceHardwareResponseBodyList = /*@__PURE__*/ S.Array(
   ListSpaceHardwareResponseBodyItem,
 ) as any as S.Schema<ListSpaceHardwareResponseBodyList>;
 
 export type ListSpaceHardwareResponse = ListSpaceHardwareResponseBodyList;
-export const ListSpaceHardwareResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceHardwareResponse = /*@__PURE__*/ S.suspend(() =>
   ListSpaceHardwareResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
   identifier: "ListSpaceHardwareResponse",
 }) as any as S.Schema<ListSpaceHardwareResponse>;
 
 export interface ListSpaceTemplatesRequest {}
-export const ListSpaceTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/api/spaces/templates", code: 200 })),
 ).annotate({
   identifier: "ListSpaceTemplatesRequest",
 }) as any as S.Schema<ListSpaceTemplatesRequest>;
 
 export type ListSpaceTemplatesResponseTemplatesItemSdk = "docker" | "static" | "gradio";
-export const ListSpaceTemplatesResponseTemplatesItemSdk = S.String;
+const ListSpaceTemplatesResponseTemplatesItemSdk = S.String;
 
 export interface ListSpaceTemplatesResponseTemplatesItem {
   sdk: ListSpaceTemplatesResponseTemplatesItemSdk;
@@ -2006,7 +1896,7 @@ export interface ListSpaceTemplatesResponseTemplatesItem {
   /** Whether the created Space is expected to be private. */
   preferredPrivate: boolean;
 }
-export const ListSpaceTemplatesResponseTemplatesItem = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceTemplatesResponseTemplatesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sdk: ListSpaceTemplatesResponseTemplatesItemSdk,
     name: S.String,
@@ -2019,14 +1909,14 @@ export const ListSpaceTemplatesResponseTemplatesItem = /*@__PURE__*/ S.suspend((
 
 export type ListSpaceTemplatesResponseTemplatesList =
   Array<ListSpaceTemplatesResponseTemplatesItem>;
-export const ListSpaceTemplatesResponseTemplatesList = /*@__PURE__*/ S.Array(
+const ListSpaceTemplatesResponseTemplatesList = /*@__PURE__*/ S.Array(
   ListSpaceTemplatesResponseTemplatesItem,
 ) as any as S.Schema<ListSpaceTemplatesResponseTemplatesList>;
 
 export interface ListSpaceTemplatesResponse {
   templates: ListSpaceTemplatesResponseTemplatesList;
 }
-export const ListSpaceTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListSpaceTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     templates: ListSpaceTemplatesResponseTemplatesList,
   }),
@@ -2038,7 +1928,7 @@ export interface ListVariablesRequest {
   namespace: string;
   repo: string;
 }
-export const ListVariablesRequest = /*@__PURE__*/ S.suspend(() =>
+const ListVariablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2051,7 +1941,7 @@ export interface ListVariablesResponseBodyValue {
   description?: string;
   updatedAt?: string;
 }
-export const ListVariablesResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
+const ListVariablesResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     value: S.String,
@@ -2065,13 +1955,13 @@ export const ListVariablesResponseBodyValue = /*@__PURE__*/ S.suspend(() =>
 export type ListVariablesResponseBodyMap = {
   [key: string]: ListVariablesResponseBodyValue | undefined;
 };
-export const ListVariablesResponseBodyMap = /*@__PURE__*/ S.Record(
+const ListVariablesResponseBodyMap = /*@__PURE__*/ S.Record(
   S.String,
   ListVariablesResponseBodyValue,
 ) as any as S.Schema<ListVariablesResponseBodyMap>;
 
 export type ListVariablesResponse = ListVariablesResponseBodyMap;
-export const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
+const ListVariablesResponse = /*@__PURE__*/ S.suspend(() =>
   ListVariablesResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({ identifier: "ListVariablesResponse" }) as any as S.Schema<ListVariablesResponse>;
 
@@ -2083,7 +1973,7 @@ export interface ResolveFileRequest {
   range?: string;
   accept?: string;
 }
-export const ResolveFileRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2108,7 +1998,7 @@ export interface ResolveFileResponse {
   /** The size of the file */
   size: number;
 }
-export const ResolveFileResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolveFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String,
     refreshUrl: S.String,
@@ -2126,7 +2016,7 @@ export interface ResolveFileCachedRequest {
   range?: string;
   accept?: string;
 }
-export const ResolveFileCachedRequest = /*@__PURE__*/ S.suspend(() =>
+const ResolveFileCachedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2155,7 +2045,7 @@ export interface ResolveFileCachedResponse {
   /** The size of the file */
   size: number;
 }
-export const ResolveFileCachedResponse = /*@__PURE__*/ S.suspend(() =>
+const ResolveFileCachedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     hash: S.String,
     refreshUrl: S.String,
@@ -2206,17 +2096,15 @@ export type SearchSemanticRequestCategory =
   | "agent-environment"
   | "image"
   | "other";
-export const SearchSemanticRequestCategory = S.String;
+const SearchSemanticRequestCategory = S.String;
 
 export type SearchSemanticRequestSdkItem = "gradio" | "docker" | "static" | "streamlit";
-export const SearchSemanticRequestSdkItem = S.String;
-
 export type SearchSemanticRequestSdkList = Array<SearchSemanticRequestSdkItem | (string & {})>;
-export const SearchSemanticRequestSdkList =
+const SearchSemanticRequestSdkList =
   ListCommitsRequestExpandList as any as S.Schema<SearchSemanticRequestSdkList>;
 
 export type SearchSemanticRequestFilterList = Array<string>;
-export const SearchSemanticRequestFilterList =
+const SearchSemanticRequestFilterList =
   DeleteLargeFilesRequestDeletionsShaList as any as S.Schema<SearchSemanticRequestFilterList>;
 
 export interface SearchSemanticRequest {
@@ -2227,7 +2115,7 @@ export interface SearchSemanticRequest {
   filter?: SearchSemanticRequestFilterList;
   agents?: boolean;
 }
-export const SearchSemanticRequest = /*@__PURE__*/ S.suspend(() =>
+const SearchSemanticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     q: S.optional(S.String.pipe(T.Query())),
     category: S.optional(SearchSemanticRequestCategory.pipe(T.Query())),
@@ -2239,15 +2127,14 @@ export const SearchSemanticRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchSemanticRequest" }) as any as S.Schema<SearchSemanticRequest>;
 
 export interface SearchSemanticResponse {}
-export const SearchSemanticResponse =
-  CreateBranchResponse as any as S.Schema<SearchSemanticResponse>;
+const SearchSemanticResponse = CreateBranchResponse as any as S.Schema<SearchSemanticResponse>;
 
 export interface SetCustomDomainRequest {
   namespace: string;
   repo: string;
   domain: string;
 }
-export const SetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+const SetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2258,18 +2145,17 @@ export const SetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetCustomDomainRequest" }) as any as S.Schema<SetCustomDomainRequest>;
 
 export interface SetCustomDomainResponse {}
-export const SetCustomDomainResponse =
-  CreateBranchResponse as any as S.Schema<SetCustomDomainResponse>;
+const SetCustomDomainResponse = CreateBranchResponse as any as S.Schema<SetCustomDomainResponse>;
 
 export type SetSleepTimeRequestSeconds = number | number;
-export const SetSleepTimeRequestSeconds = S.Unknown as any as S.Schema<SetSleepTimeRequestSeconds>;
+const SetSleepTimeRequestSeconds = S.Unknown as any as S.Schema<SetSleepTimeRequestSeconds>;
 
 export interface SetSleepTimeRequest {
   namespace: string;
   repo: string;
   seconds: SetSleepTimeRequestSeconds;
 }
-export const SetSleepTimeRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSleepTimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2278,10 +2164,10 @@ export const SetSleepTimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSleepTimeRequest" }) as any as S.Schema<SetSleepTimeRequest>;
 
 export interface SetSleepTimeResponse {}
-export const SetSleepTimeResponse = CreateBranchResponse as any as S.Schema<SetSleepTimeResponse>;
+const SetSleepTimeResponse = CreateBranchResponse as any as S.Schema<SetSleepTimeResponse>;
 
 export type SetSpaceVolumesRequestVolumesItemType = "bucket" | "model" | "dataset" | "space";
-export const SetSpaceVolumesRequestVolumesItemType = S.String;
+const SetSpaceVolumesRequestVolumesItemType = S.String;
 
 export interface SetSpaceVolumesRequestVolumesItem {
   type: SetSpaceVolumesRequestVolumesItemType | (string & {});
@@ -2296,7 +2182,7 @@ export interface SetSpaceVolumesRequestVolumesItem {
   /** Subfolder prefix inside the bucket/repo to mount, e.g. 'path/to/dir' */
   path?: string;
 }
-export const SetSpaceVolumesRequestVolumesItem = /*@__PURE__*/ S.suspend(() =>
+const SetSpaceVolumesRequestVolumesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SetSpaceVolumesRequestVolumesItemType,
     source: S.String,
@@ -2310,7 +2196,7 @@ export const SetSpaceVolumesRequestVolumesItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetSpaceVolumesRequestVolumesItem>;
 
 export type SetSpaceVolumesRequestVolumesList = Array<SetSpaceVolumesRequestVolumesItem>;
-export const SetSpaceVolumesRequestVolumesList = /*@__PURE__*/ S.Array(
+const SetSpaceVolumesRequestVolumesList = /*@__PURE__*/ S.Array(
   SetSpaceVolumesRequestVolumesItem,
 ) as any as S.Schema<SetSpaceVolumesRequestVolumesList>;
 
@@ -2319,7 +2205,7 @@ export interface SetSpaceVolumesRequest {
   repo: string;
   volumes: SetSpaceVolumesRequestVolumesList;
 }
-export const SetSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
+const SetSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2328,8 +2214,7 @@ export const SetSpaceVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SetSpaceVolumesRequest" }) as any as S.Schema<SetSpaceVolumesRequest>;
 
 export interface SetSpaceVolumesResponse {}
-export const SetSpaceVolumesResponse =
-  CreateBranchResponse as any as S.Schema<SetSpaceVolumesResponse>;
+const SetSpaceVolumesResponse = CreateBranchResponse as any as S.Schema<SetSpaceVolumesResponse>;
 
 export interface SquashRefRequest {
   namespace: string;
@@ -2337,7 +2222,7 @@ export interface SquashRefRequest {
   rev: string;
   message?: string;
 }
-export const SquashRefRequest = /*@__PURE__*/ S.suspend(() =>
+const SquashRefRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2352,7 +2237,7 @@ export interface SquashRefResponse {
   /** The new commit ID after the squash */
   commitId: string;
 }
-export const SquashRefResponse = /*@__PURE__*/ S.suspend(() =>
+const SquashRefResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     commitId: S.String,
   }),
@@ -2363,7 +2248,7 @@ export interface StreamEventsRequest {
   repo: string;
   session_uuid?: string;
 }
-export const StreamEventsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamEventsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2372,10 +2257,10 @@ export const StreamEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamEventsRequest" }) as any as S.Schema<StreamEventsRequest>;
 
 export interface StreamEventsResponse {}
-export const StreamEventsResponse = CreateBranchResponse as any as S.Schema<StreamEventsResponse>;
+const StreamEventsResponse = CreateBranchResponse as any as S.Schema<StreamEventsResponse>;
 
 export type StreamLogsRequestLogType = "build" | "run";
-export const StreamLogsRequestLogType = S.String;
+const StreamLogsRequestLogType = S.String;
 
 export interface StreamLogsRequest {
   namespace: string;
@@ -2383,7 +2268,7 @@ export interface StreamLogsRequest {
   logType: StreamLogsRequestLogType | (string & {});
   tail?: number;
 }
-export const StreamLogsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2395,13 +2280,13 @@ export const StreamLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamLogsRequest" }) as any as S.Schema<StreamLogsRequest>;
 
 export interface StreamLogsResponse {}
-export const StreamLogsResponse = CreateBranchResponse as any as S.Schema<StreamLogsResponse>;
+const StreamLogsResponse = CreateBranchResponse as any as S.Schema<StreamLogsResponse>;
 
 export interface StreamMetricsRequest {
   namespace: string;
   repo: string;
 }
-export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2409,14 +2294,14 @@ export const StreamMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StreamMetricsRequest" }) as any as S.Schema<StreamMetricsRequest>;
 
 export interface StreamMetricsResponse {}
-export const StreamMetricsResponse = CreateBranchResponse as any as S.Schema<StreamMetricsResponse>;
+const StreamMetricsResponse = CreateBranchResponse as any as S.Schema<StreamMetricsResponse>;
 
 export interface ToggleDevModeRequest {
   namespace: string;
   repo: string;
   enabled: boolean;
 }
-export const ToggleDevModeRequest = /*@__PURE__*/ S.suspend(() =>
+const ToggleDevModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2425,7 +2310,7 @@ export const ToggleDevModeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToggleDevModeRequest" }) as any as S.Schema<ToggleDevModeRequest>;
 
 export interface ToggleDevModeResponse {}
-export const ToggleDevModeResponse = CreateBranchResponse as any as S.Schema<ToggleDevModeResponse>;
+const ToggleDevModeResponse = CreateBranchResponse as any as S.Schema<ToggleDevModeResponse>;
 
 export type UpdateHardwareFlavorRequestFlavor =
   | "cpu-basic"
@@ -2457,10 +2342,10 @@ export type UpdateHardwareFlavorRequestFlavor =
   | "rtx-pro-6000x4"
   | "rtx-pro-6000x8"
   | "inf2x6";
-export const UpdateHardwareFlavorRequestFlavor = S.String;
+const UpdateHardwareFlavorRequestFlavor = S.String;
 
 export type UpdateHardwareFlavorRequestSleepTimeSeconds = number | number;
-export const UpdateHardwareFlavorRequestSleepTimeSeconds =
+const UpdateHardwareFlavorRequestSleepTimeSeconds =
   S.Unknown as any as S.Schema<UpdateHardwareFlavorRequestSleepTimeSeconds>;
 
 export interface UpdateHardwareFlavorRequest {
@@ -2469,7 +2354,7 @@ export interface UpdateHardwareFlavorRequest {
   flavor: UpdateHardwareFlavorRequestFlavor | (string & {});
   sleepTimeSeconds?: UpdateHardwareFlavorRequestSleepTimeSeconds;
 }
-export const UpdateHardwareFlavorRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateHardwareFlavorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2481,28 +2366,25 @@ export const UpdateHardwareFlavorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateHardwareFlavorRequest>;
 
 export interface UpdateHardwareFlavorResponse {}
-export const UpdateHardwareFlavorResponse =
+const UpdateHardwareFlavorResponse =
   CreateBranchResponse as any as S.Schema<UpdateHardwareFlavorResponse>;
 
 /** Repository visibility. `protected` is only supported for Spaces. */
 export type UpdateRepoSettingsRequestVisibility = "private" | "public" | "protected";
-export const UpdateRepoSettingsRequestVisibility = S.String;
+const UpdateRepoSettingsRequestVisibility = S.String;
 
 export type UpdateRepoSettingsRequestDiscussionsSorting =
   | "recently-created"
   | "trending"
   | "reactions";
-export const UpdateRepoSettingsRequestDiscussionsSorting = S.String;
+const UpdateRepoSettingsRequestDiscussionsSorting = S.String;
 
 export type UpdateRepoSettingsRequestGatedCase1 = "auto" | "manual";
-export const UpdateRepoSettingsRequestGatedCase1 = S.String;
-
 export type UpdateRepoSettingsRequestGated = boolean | UpdateRepoSettingsRequestGatedCase1;
-export const UpdateRepoSettingsRequestGated =
-  S.Unknown as any as S.Schema<UpdateRepoSettingsRequestGated>;
+const UpdateRepoSettingsRequestGated = S.Unknown as any as S.Schema<UpdateRepoSettingsRequestGated>;
 
 export type UpdateRepoSettingsRequestGatedNotificationsMode = "bulk" | "real-time";
-export const UpdateRepoSettingsRequestGatedNotificationsMode = S.String;
+const UpdateRepoSettingsRequestGatedNotificationsMode = S.String;
 
 export interface UpdateRepoSettingsRequest {
   namespace: string;
@@ -2518,7 +2400,7 @@ export interface UpdateRepoSettingsRequest {
   gatedNotificationsEmail?: string;
   gatedNotificationsMode?: UpdateRepoSettingsRequestGatedNotificationsMode | (string & {});
 }
-export const UpdateRepoSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2537,23 +2419,21 @@ export const UpdateRepoSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Repository visibility. `protected` is only supported for Spaces. */
 export type UpdateRepoSettingsResponseVisibility = "private" | "public" | "protected";
-export const UpdateRepoSettingsResponseVisibility = S.String;
+const UpdateRepoSettingsResponseVisibility = S.String;
 
 export type UpdateRepoSettingsResponseDiscussionsSorting =
   | "recently-created"
   | "trending"
   | "reactions";
-export const UpdateRepoSettingsResponseDiscussionsSorting = S.String;
+const UpdateRepoSettingsResponseDiscussionsSorting = S.String;
 
 export type UpdateRepoSettingsResponseGatedCase1 = "auto" | "manual";
-export const UpdateRepoSettingsResponseGatedCase1 = S.String;
-
 export type UpdateRepoSettingsResponseGated = boolean | UpdateRepoSettingsResponseGatedCase1;
-export const UpdateRepoSettingsResponseGated =
+const UpdateRepoSettingsResponseGated =
   S.Unknown as any as S.Schema<UpdateRepoSettingsResponseGated>;
 
 export type UpdateRepoSettingsResponseGatedNotificationsMode = "bulk" | "real-time";
-export const UpdateRepoSettingsResponseGatedNotificationsMode = S.String;
+const UpdateRepoSettingsResponseGatedNotificationsMode = S.String;
 
 export interface UpdateRepoSettingsResponse {
   private?: boolean;
@@ -2567,7 +2447,7 @@ export interface UpdateRepoSettingsResponse {
   gatedNotificationsEmail?: string;
   gatedNotificationsMode?: UpdateRepoSettingsResponseGatedNotificationsMode;
 }
-export const UpdateRepoSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const UpdateRepoSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     private: S.optional(S.Boolean),
     visibility: S.optional(UpdateRepoSettingsResponseVisibility),
@@ -2589,7 +2469,7 @@ export interface UpsertSecretRequest {
   description?: string;
   value?: string;
 }
-export const UpsertSecretRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2600,7 +2480,7 @@ export const UpsertSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertSecretRequest" }) as any as S.Schema<UpsertSecretRequest>;
 
 export interface UpsertSecretResponse {}
-export const UpsertSecretResponse = CreateBranchResponse as any as S.Schema<UpsertSecretResponse>;
+const UpsertSecretResponse = CreateBranchResponse as any as S.Schema<UpsertSecretResponse>;
 
 export interface UpsertVariableRequest {
   namespace: string;
@@ -2609,7 +2489,7 @@ export interface UpsertVariableRequest {
   description?: string;
   value?: string;
 }
-export const UpsertVariableRequest = /*@__PURE__*/ S.suspend(() =>
+const UpsertVariableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2620,15 +2500,14 @@ export const UpsertVariableRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpsertVariableRequest" }) as any as S.Schema<UpsertVariableRequest>;
 
 export interface UpsertVariableResponse {}
-export const UpsertVariableResponse =
-  CreateBranchResponse as any as S.Schema<UpsertVariableResponse>;
+const UpsertVariableResponse = CreateBranchResponse as any as S.Schema<UpsertVariableResponse>;
 
 export interface XetReadTokenRequest {
   namespace: string;
   repo: string;
   rev: string;
 }
-export const XetReadTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const XetReadTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2647,7 +2526,7 @@ export interface XetReadTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
+const XetReadTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     casUrl: S.String,
     exp: S.Number,
@@ -2660,7 +2539,7 @@ export interface XetWriteTokenRequest {
   repo: string;
   rev: string;
 }
-export const XetWriteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+const XetWriteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
@@ -2679,7 +2558,7 @@ export interface XetWriteTokenResponse {
   exp: number;
   accessToken: string | Redacted.Redacted<string>;
 }
-export const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
+const XetWriteTokenResponse = XetReadTokenResponse as any as S.Schema<XetWriteTokenResponse>;
 
 export type AddResourceGroupError = HuggingFaceOpError;
 /** Add resource group Add the repository to a resource group */

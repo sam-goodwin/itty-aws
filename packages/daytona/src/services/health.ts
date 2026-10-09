@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 export type { DaytonaOpError, DaytonaOpContext };
 
 export interface CheckHealthControllerRequest {}
-export const CheckHealthControllerRequest = /*@__PURE__*/ S.suspend(() =>
+const CheckHealthControllerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health/ready", code: 200 })),
 ).annotate({
   identifier: "CheckHealthControllerRequest",
@@ -18,7 +18,7 @@ export const CheckHealthControllerRequest = /*@__PURE__*/ S.suspend(() =>
 export interface HealthControllerCheck200ResponseInfoValue {
   status: string;
 }
-export const HealthControllerCheck200ResponseInfoValue = /*@__PURE__*/ S.suspend(() =>
+const HealthControllerCheck200ResponseInfoValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.String,
   }),
@@ -29,7 +29,7 @@ export const HealthControllerCheck200ResponseInfoValue = /*@__PURE__*/ S.suspend
 export type HealthControllerCheck200ResponseInfoMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
-export const HealthControllerCheck200ResponseInfoMap = /*@__PURE__*/ S.Record(
+const HealthControllerCheck200ResponseInfoMap = /*@__PURE__*/ S.Record(
   S.String,
   HealthControllerCheck200ResponseInfoValue,
 ) as any as S.Schema<HealthControllerCheck200ResponseInfoMap>;
@@ -37,13 +37,13 @@ export const HealthControllerCheck200ResponseInfoMap = /*@__PURE__*/ S.Record(
 export type HealthControllerCheck200ResponseErrorMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
-export const HealthControllerCheck200ResponseErrorMap =
+const HealthControllerCheck200ResponseErrorMap =
   HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseErrorMap>;
 
 export type HealthControllerCheck200ResponseDetailsMap = {
   [key: string]: HealthControllerCheck200ResponseInfoValue | undefined;
 };
-export const HealthControllerCheck200ResponseDetailsMap =
+const HealthControllerCheck200ResponseDetailsMap =
   HealthControllerCheck200ResponseInfoMap as any as S.Schema<HealthControllerCheck200ResponseDetailsMap>;
 
 export interface HealthControllerCheck200Response {
@@ -52,7 +52,7 @@ export interface HealthControllerCheck200Response {
   error?: HealthControllerCheck200ResponseErrorMap | null;
   details?: HealthControllerCheck200ResponseDetailsMap;
 }
-export const HealthControllerCheck200Response = /*@__PURE__*/ S.suspend(() =>
+const HealthControllerCheck200Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(S.String),
     info: S.optional(S.NullOr(HealthControllerCheck200ResponseInfoMap)),
@@ -64,14 +64,14 @@ export const HealthControllerCheck200Response = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthControllerCheck200Response>;
 
 export interface HealthControllerLiveRequest {}
-export const HealthControllerLiveRequest = /*@__PURE__*/ S.suspend(() =>
+const HealthControllerLiveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/health", code: 200 })),
 ).annotate({
   identifier: "HealthControllerLiveRequest",
 }) as any as S.Schema<HealthControllerLiveRequest>;
 
 export interface HealthControllerLiveResponse {}
-export const HealthControllerLiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const HealthControllerLiveResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "HealthControllerLiveResponse",
 }) as any as S.Schema<HealthControllerLiveResponse>;
 

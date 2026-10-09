@@ -51,7 +51,7 @@ export interface AcceptPartnerReferralRequestRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const AcceptPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const AcceptPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -66,7 +66,7 @@ export interface AccountSummary {
   /** Account display name. */
   title: string;
 }
-export const AccountSummary = /*@__PURE__*/ S.suspend(() =>
+const AccountSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     title: S.String,
@@ -77,7 +77,7 @@ export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-export const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
+const UserProfilePicture = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.String,
   }),
@@ -93,7 +93,7 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-export const UserSummary = /*@__PURE__*/ S.suspend(() =>
+const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.NullOr(S.String),
@@ -104,11 +104,11 @@ export const UserSummary = /*@__PURE__*/ S.suspend(() =>
 
 /** How the referral request was initiated. */
 export type PartnerReferralRequestRequestType = "manual" | "ownership_transfer" | "link";
-export const PartnerReferralRequestRequestType = S.String;
+const PartnerReferralRequestRequestType = S.String;
 
 /** Activity that qualifies for this reward, when specified. */
 export type PartnerReferralRewardBotQualificationType = "sales" | "ad_spend";
-export const PartnerReferralRewardBotQualificationType = S.String;
+const PartnerReferralRewardBotQualificationType = S.String;
 
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
@@ -120,7 +120,7 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-export const Money = /*@__PURE__*/ S.suspend(() =>
+const Money = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     amount: S.String,
     currency: S.String,
@@ -131,7 +131,7 @@ export const Money = /*@__PURE__*/ S.suspend(() =>
 
 /** Reward recipient's role, or null for a fixed user who is not the requesting partner. */
 export type PartnerReferralRewardRecipient = "business" | "partner";
-export const PartnerReferralRewardRecipient = S.String;
+const PartnerReferralRewardRecipient = S.String;
 
 export interface PartnerReferralReward {
   /** Activity that qualifies for this reward, when specified. */
@@ -147,7 +147,7 @@ export interface PartnerReferralReward {
   /** USD amount granted after qualification. */
   reward_amount: Money;
 }
-export const PartnerReferralReward = /*@__PURE__*/ S.suspend(() =>
+const PartnerReferralReward = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bot_qualification_type: S.NullOr(PartnerReferralRewardBotQualificationType),
     id: S.String,
@@ -159,13 +159,13 @@ export const PartnerReferralReward = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PartnerReferralReward" }) as any as S.Schema<PartnerReferralReward>;
 
 export type PartnerReferralRequestRewardsList = Array<PartnerReferralReward>;
-export const PartnerReferralRequestRewardsList = /*@__PURE__*/ S.Array(
+const PartnerReferralRequestRewardsList = /*@__PURE__*/ S.Array(
   PartnerReferralReward,
 ) as any as S.Schema<PartnerReferralRequestRewardsList>;
 
 /** The approval state, or null for requests without an approval process. */
 export type PartnerReferralRequestStatus = "pending" | "accepted" | "denied" | "cancelled";
-export const PartnerReferralRequestStatus = S.String;
+const PartnerReferralRequestStatus = S.String;
 
 export interface PartnerReferralRequest {
   /** Business receiving the request, when one is assigned. */
@@ -190,7 +190,7 @@ export interface PartnerReferralRequest {
   /** User receiving the attribution request, or null for a business request or referral link. */
   user: UserSummary | null;
 }
-export const PartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
+const PartnerReferralRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.NullOr(AccountSummary),
     code: S.NullOr(S.String),
@@ -212,7 +212,7 @@ export interface CancelPartnerReferralRequestRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CancelPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CancelPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -225,54 +225,20 @@ export interface CreatePartnerReferralRequestRequestBodyCase0 {
   /** Business to request attribution for, prefixed `biz_`. */
   account_id: string;
 }
-export const CreatePartnerReferralRequestRequestBodyCase0 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_id: S.String,
-  }),
-).annotate({
-  identifier: "CreatePartnerReferralRequestRequestBodyCase0",
-}) as any as S.Schema<CreatePartnerReferralRequestRequestBodyCase0>;
-
 export interface CreatePartnerReferralRequestRequestBodyCase1 {
   /** HTTP or HTTPS Whop business or product link. */
   account_url: string;
 }
-export const CreatePartnerReferralRequestRequestBodyCase1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    account_url: S.String,
-  }),
-).annotate({
-  identifier: "CreatePartnerReferralRequestRequestBodyCase1",
-}) as any as S.Schema<CreatePartnerReferralRequestRequestBodyCase1>;
-
 export interface CreatePartnerReferralRequestRequestBodyCase2 {
   /** Enrolled partner to request attribution for, prefixed `user_`. */
   target_user_id: string;
 }
-export const CreatePartnerReferralRequestRequestBodyCase2 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target_user_id: S.String,
-  }),
-).annotate({
-  identifier: "CreatePartnerReferralRequestRequestBodyCase2",
-}) as any as S.Schema<CreatePartnerReferralRequestRequestBodyCase2>;
-
 export interface CreatePartnerReferralRequestRequestBodyCase3 {
   /** Username of the user to request attribution for, with or without a leading @. */
   target_username: string;
 }
-export const CreatePartnerReferralRequestRequestBodyCase3 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target_username: S.String,
-  }),
-).annotate({
-  identifier: "CreatePartnerReferralRequestRequestBodyCase3",
-}) as any as S.Schema<CreatePartnerReferralRequestRequestBodyCase3>;
-
 /** Create or retrieve a reusable referral link without requesting attribution for an existing business. */
 export type CreatePartnerReferralRequestRequestBodyCase4RequestType = "link";
-export const CreatePartnerReferralRequestRequestBodyCase4RequestType = S.String;
-
 /** Create your own referral link with an optional custom code and redemption limit. Without configuration, returns your oldest saved link or creates one with a random code. Only authorized staff can configure rewards or select another partner. */
 export interface CreatePartnerReferralRequestRequestBodyCase4 {
   /** Case-insensitive referral code containing letters, numbers, and single hyphens. New codes are stored in lowercase. Omit to generate six random letters, or reuse a saved link when no configuration is supplied. */
@@ -284,24 +250,13 @@ export interface CreatePartnerReferralRequestRequestBodyCase4 {
   /** Create or retrieve a reusable referral link without requesting attribution for an existing business. */
   request_type: CreatePartnerReferralRequestRequestBodyCase4RequestType;
 }
-export const CreatePartnerReferralRequestRequestBodyCase4 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    max_redemptions: S.optional(S.NullOr(S.Number)),
-    partner_id: S.optional(S.String),
-    request_type: CreatePartnerReferralRequestRequestBodyCase4RequestType,
-  }),
-).annotate({
-  identifier: "CreatePartnerReferralRequestRequestBodyCase4",
-}) as any as S.Schema<CreatePartnerReferralRequestRequestBodyCase4>;
-
 export type CreatePartnerReferralRequestRequestBody =
   | CreatePartnerReferralRequestRequestBodyCase0
   | CreatePartnerReferralRequestRequestBodyCase1
   | CreatePartnerReferralRequestRequestBodyCase2
   | CreatePartnerReferralRequestRequestBodyCase3
   | CreatePartnerReferralRequestRequestBodyCase4;
-export const CreatePartnerReferralRequestRequestBody =
+const CreatePartnerReferralRequestRequestBody =
   S.Unknown as any as S.Schema<CreatePartnerReferralRequestRequestBody>;
 
 export interface CreatePartnerReferralRequestRequest {
@@ -309,7 +264,7 @@ export interface CreatePartnerReferralRequestRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const CreatePartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const CreatePartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     body: CreatePartnerReferralRequestRequestBody.pipe(T.HttpBody()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -324,7 +279,7 @@ export interface DeclinePartnerReferralRequestRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-export const DeclinePartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const DeclinePartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
     idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -337,7 +292,7 @@ export interface GetPartnerReferralRequestRequest {
   /** Partner referral request ID, prefixed `prfr_`. */
   id: string;
 }
-export const GetPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
+const GetPartnerReferralRequestRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/partner_referral_requests/{id}", code: 200 })),
@@ -350,19 +305,19 @@ export type ListPartnerReferralRequestsRequestStatus =
   | "accepted"
   | "denied"
   | "cancelled";
-export const ListPartnerReferralRequestsRequestStatus = S.String;
+const ListPartnerReferralRequestsRequestStatus = S.String;
 
 export type ListPartnerReferralRequestsRequestRequestType =
   | "manual"
   | "ownership_transfer"
   | "link";
-export const ListPartnerReferralRequestsRequestRequestType = S.String;
+const ListPartnerReferralRequestsRequestRequestType = S.String;
 
 export type ListPartnerReferralRequestsRequestOrder = "created_at";
-export const ListPartnerReferralRequestsRequestOrder = S.String;
+const ListPartnerReferralRequestsRequestOrder = S.String;
 
 export type ListPartnerReferralRequestsRequestDirection = "asc" | "desc";
-export const ListPartnerReferralRequestsRequestDirection = S.String;
+const ListPartnerReferralRequestsRequestDirection = S.String;
 
 export interface ListPartnerReferralRequestsRequest {
   /** Only requests for this business ID, prefixed `biz_`. */
@@ -388,7 +343,7 @@ export interface ListPartnerReferralRequestsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-export const ListPartnerReferralRequestsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerReferralRequestsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.optional(S.String.pipe(T.Query())),
     target_user_id: S.optional(S.String.pipe(T.Query())),
@@ -407,7 +362,7 @@ export const ListPartnerReferralRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPartnerReferralRequestsRequest>;
 
 export type ListPartnerReferralRequestsResponseDataList = Array<PartnerReferralRequest>;
-export const ListPartnerReferralRequestsResponseDataList = /*@__PURE__*/ S.Array(
+const ListPartnerReferralRequestsResponseDataList = /*@__PURE__*/ S.Array(
   PartnerReferralRequest,
 ) as any as S.Schema<ListPartnerReferralRequestsResponseDataList>;
 
@@ -417,7 +372,7 @@ export interface ListPartnerReferralRequestsResponsePageInfo {
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-export const ListPartnerReferralRequestsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerReferralRequestsResponsePageInfo = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end_cursor: S.NullOr(S.String),
     has_next_page: S.Boolean,
@@ -432,7 +387,7 @@ export interface ListPartnerReferralRequestsResponse {
   data: ListPartnerReferralRequestsResponseDataList;
   page_info: ListPartnerReferralRequestsResponsePageInfo;
 }
-export const ListPartnerReferralRequestsResponse = /*@__PURE__*/ S.suspend(() =>
+const ListPartnerReferralRequestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: ListPartnerReferralRequestsResponseDataList,
     page_info: ListPartnerReferralRequestsResponsePageInfo,

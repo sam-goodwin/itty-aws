@@ -86,7 +86,7 @@ export interface DeleteLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
   skuId: string;
 }
-export const DeleteLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const DeleteLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     userId: S.String.pipe(T.Label()),
@@ -104,7 +104,7 @@ export const DeleteLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
@@ -116,7 +116,7 @@ export interface GetLicenseAssignmentsRequest {
   /** A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. */
   productId: string;
 }
-export const GetLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const GetLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.String.pipe(T.Label()),
     skuId: S.String.pipe(T.Label()),
@@ -151,7 +151,7 @@ export interface LicenseAssignment {
   /** ETag of the resource. */
   etags?: string;
 }
-export const LicenseAssignment = /*@__PURE__*/ S.suspend(() =>
+const LicenseAssignment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
     selfLink: S.optional(S.String),
@@ -169,7 +169,7 @@ export interface LicenseAssignmentInsert {
   /** Email id of the user */
   userId?: string;
 }
-export const LicenseAssignmentInsert = /*@__PURE__*/ S.suspend(() =>
+const LicenseAssignmentInsert = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     userId: S.optional(S.String),
   }),
@@ -183,7 +183,7 @@ export interface InsertLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignmentInsert;
 }
-export const InsertLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const InsertLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     skuId: S.String.pipe(T.Label()),
@@ -211,7 +211,7 @@ export interface ListForProductAndSkuLicenseAssignmentsRequest {
   /** A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. */
   skuId: string;
 }
-export const ListForProductAndSkuLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForProductAndSkuLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customerId: S.String.pipe(T.Query()),
     productId: S.String.pipe(T.Label()),
@@ -230,7 +230,7 @@ export const ListForProductAndSkuLicenseAssignmentsRequest = /*@__PURE__*/ S.sus
 }) as any as S.Schema<ListForProductAndSkuLicenseAssignmentsRequest>;
 
 export type LicenseAssignmentList_ = Array<LicenseAssignment>;
-export const LicenseAssignmentList_ = /*@__PURE__*/ S.Array(
+const LicenseAssignmentList_ = /*@__PURE__*/ S.Array(
   LicenseAssignment,
 ) as any as S.Schema<LicenseAssignmentList_>;
 
@@ -244,7 +244,7 @@ export interface LicenseAssignmentList {
   /** ETag of the resource. */
   etag?: string;
 }
-export const LicenseAssignmentList = /*@__PURE__*/ S.suspend(() =>
+const LicenseAssignmentList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextPageToken: S.optional(S.String),
     kind: S.optional(S.String),
@@ -263,7 +263,7 @@ export interface ListForProductLicenseAssignmentsRequest {
   /** The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error. */
   customerId: string;
 }
-export const ListForProductLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const ListForProductLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     maxResults: S.optional(S.Number.pipe(T.Query())),
@@ -290,7 +290,7 @@ export interface PatchLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignment;
 }
-export const PatchLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const PatchLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     skuId: S.String.pipe(T.Label()),
     productId: S.String.pipe(T.Label()),
@@ -317,7 +317,7 @@ export interface UpdateLicenseAssignmentsRequest {
   /** Request body */
   body?: LicenseAssignment;
 }
-export const UpdateLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
+const UpdateLicenseAssignmentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     productId: S.String.pipe(T.Label()),
     skuId: S.String.pipe(T.Label()),

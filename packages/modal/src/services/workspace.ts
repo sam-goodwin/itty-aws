@@ -11,7 +11,7 @@ export type { ModalOpError, ModalOpContext };
 export interface GetWorkspaceDashboardUrlRequest {
   environmentName?: string;
 }
-export const GetWorkspaceDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(
@@ -28,7 +28,7 @@ export const GetWorkspaceDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
 export interface GetWorkspaceDashboardUrlResponse {
   url?: string;
 }
-export const GetWorkspaceDashboardUrlResponse = /*@__PURE__*/ S.suspend(() =>
+const GetWorkspaceDashboardUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
   }),
@@ -37,7 +37,7 @@ export const GetWorkspaceDashboardUrlResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkspaceDashboardUrlResponse>;
 
 export interface ListWorkspaceMembersRequest {}
-export const ListWorkspaceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/WorkspaceMembersList", code: 200 }),
   ),
@@ -50,14 +50,14 @@ export type MemberRole =
   | "MEMBER_ROLE_USER"
   | "MEMBER_ROLE_MANAGER"
   | "MEMBER_ROLE_OWNER";
-export const MemberRole = S.String;
+const MemberRole = S.String;
 
 export type IdentityProviderType =
   | "IDENTITY_PROVIDER_TYPE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_TYPE_GITHUB"
   | "IDENTITY_PROVIDER_TYPE_SAML"
   | "IDENTITY_PROVIDER_TYPE_GOOGLE_OAUTH";
-export const IdentityProviderType = S.String;
+const IdentityProviderType = S.String;
 
 export interface WorkspaceMembersListItem {
   memberId?: string;
@@ -72,7 +72,7 @@ export interface WorkspaceMembersListItem {
   avatarUrl?: string;
   idpExternalId?: string;
 }
-export const WorkspaceMembersListItem = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceMembersListItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     memberId: S.optional(S.String),
     memberDisplayname: S.optional(S.String),
@@ -89,14 +89,14 @@ export const WorkspaceMembersListItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkspaceMembersListItem" }) as any as S.Schema<WorkspaceMembersListItem>;
 
 export type WorkspaceMembersListItemList = Array<WorkspaceMembersListItem>;
-export const WorkspaceMembersListItemList = /*@__PURE__*/ S.Array(
+const WorkspaceMembersListItemList = /*@__PURE__*/ S.Array(
   WorkspaceMembersListItem,
 ) as any as S.Schema<WorkspaceMembersListItemList>;
 
 export interface ListWorkspaceMembersResponse {
   members?: WorkspaceMembersListItemList;
 }
-export const ListWorkspaceMembersResponse = /*@__PURE__*/ S.suspend(() =>
+const ListWorkspaceMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     members: S.optional(WorkspaceMembersListItemList),
   }),
@@ -105,7 +105,7 @@ export const ListWorkspaceMembersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWorkspaceMembersResponse>;
 
 export interface LookupWorkspaceNameRequest {}
-export const LookupWorkspaceNameRequest = /*@__PURE__*/ S.suspend(() =>
+const LookupWorkspaceNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/WorkspaceNameLookup", code: 200 }),
   ),
@@ -117,7 +117,7 @@ export interface LookupWorkspaceNameResponse {
   workspaceName?: string;
   username?: string;
 }
-export const LookupWorkspaceNameResponse = /*@__PURE__*/ S.suspend(() =>
+const LookupWorkspaceNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workspaceName: S.optional(S.String),
     username: S.optional(S.String),
@@ -127,7 +127,7 @@ export const LookupWorkspaceNameResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LookupWorkspaceNameResponse>;
 
 export interface WorkspaceBillingRatesRequest {}
-export const WorkspaceBillingRatesRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceBillingRatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/WorkspaceBillingRates", code: 200 }),
   ),
@@ -136,7 +136,7 @@ export const WorkspaceBillingRatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceBillingRatesRequest>;
 
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
+const StringMap = /*@__PURE__*/ S.Record(S.String, S.String) as any as S.Schema<StringMap>;
 
 export interface WorkspaceBillingRatesResponse {
   /** compute rates are per unit per hour, storage rate is per GiB-month */
@@ -145,7 +145,7 @@ export interface WorkspaceBillingRatesResponse {
   deprecationErrors?: StringMap;
   formatted?: string;
 }
-export const WorkspaceBillingRatesResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceBillingRatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rates: S.optional(StringMap),
     deprecationWarnings: S.optional(StringMap),
@@ -160,7 +160,7 @@ export interface WorkspaceBillingSummaryRequest {
   /** all query intervals are implicitly one month long (to line up with billing cycles) */
   startTimestamp?: string;
 }
-export const WorkspaceBillingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceBillingSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimestamp: S.optional(S.String),
   }).pipe(
@@ -180,7 +180,7 @@ export interface WorkspaceBillingSummaryResponse {
   /** keyed by plan, credits, reservations, storage, network egress allowance */
   adjustments?: StringMap;
 }
-export const WorkspaceBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTimestamp: S.optional(S.String),
     endTimestamp: S.optional(S.String),
@@ -196,7 +196,7 @@ export const WorkspaceBillingSummaryResponse = /*@__PURE__*/ S.suspend(() =>
 export interface WorkspaceSetDefaultEnvironmentRequest {
   environmentName?: string;
 }
-export const WorkspaceSetDefaultEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSetDefaultEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
   }).pipe(
@@ -211,11 +211,11 @@ export const WorkspaceSetDefaultEnvironmentRequest = /*@__PURE__*/ S.suspend(() 
 }) as any as S.Schema<WorkspaceSetDefaultEnvironmentRequest>;
 
 export interface WorkspaceSetDefaultEnvironmentResponse {}
-export const WorkspaceSetDefaultEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WorkspaceSetDefaultEnvironmentResponse",
-}) as any as S.Schema<WorkspaceSetDefaultEnvironmentResponse>;
+const WorkspaceSetDefaultEnvironmentResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
+  {
+    identifier: "WorkspaceSetDefaultEnvironmentResponse",
+  },
+) as any as S.Schema<WorkspaceSetDefaultEnvironmentResponse>;
 
 /** Partial-update signal for EnvironmentUpdateRequest. Omitted means no-op. INHERIT clears the environment override so the workspace default applies. */
 export type EnvironmentBlockUnauthenticatedResources =
@@ -223,13 +223,13 @@ export type EnvironmentBlockUnauthenticatedResources =
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_INHERIT"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_BLOCK"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_ALLOW";
-export const EnvironmentBlockUnauthenticatedResources = S.String;
+const EnvironmentBlockUnauthenticatedResources = S.String;
 
 export interface WorkspaceSetDefaultEnvironmentSettingsRequest {
   /** Omitted = no-op. INHERIT clears the workspace default so environments with no override have no block. Rejects UNSPECIFIED. */
   blockUnauthenticatedResources?: EnvironmentBlockUnauthenticatedResources | (string & {});
 }
-export const WorkspaceSetDefaultEnvironmentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSetDefaultEnvironmentSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     blockUnauthenticatedResources: S.optional(EnvironmentBlockUnauthenticatedResources),
   }).pipe(
@@ -252,7 +252,7 @@ export interface EnvironmentSettings {
   /** When true, new unauthenticated web functions, Servers, tunnels, and Endpoints in this environment are rejected. Unset inherits the workspace default. */
   blockUnauthenticatedResources?: boolean;
 }
-export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
+const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageBuilderVersion: S.optional(S.String),
     webhookSuffix: S.optional(S.String),
@@ -265,7 +265,7 @@ export const EnvironmentSettings = /*@__PURE__*/ S.suspend(() =>
 export interface WorkspaceSetDefaultEnvironmentSettingsResponse {
   defaultEnvironmentSettings?: EnvironmentSettings;
 }
-export const WorkspaceSetDefaultEnvironmentSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSetDefaultEnvironmentSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEnvironmentSettings: S.optional(EnvironmentSettings),
   }),
@@ -276,7 +276,7 @@ export const WorkspaceSetDefaultEnvironmentSettingsResponse = /*@__PURE__*/ S.su
 export interface WorkspaceSetImageBuilderVersionRequest {
   newImageBuilderVersion?: string;
 }
-export const WorkspaceSetImageBuilderVersionRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSetImageBuilderVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     newImageBuilderVersion: S.optional(S.String),
   }).pipe(
@@ -293,7 +293,7 @@ export const WorkspaceSetImageBuilderVersionRequest = /*@__PURE__*/ S.suspend(()
 export interface WorkspaceSetImageBuilderVersionResponse {
   imageBuilderVersion?: string;
 }
-export const WorkspaceSetImageBuilderVersionResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSetImageBuilderVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     imageBuilderVersion: S.optional(S.String),
   }),
@@ -302,7 +302,7 @@ export const WorkspaceSetImageBuilderVersionResponse = /*@__PURE__*/ S.suspend((
 }) as any as S.Schema<WorkspaceSetImageBuilderVersionResponse>;
 
 export interface WorkspaceSettingsRequest {}
-export const WorkspaceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "POST", uri: "/modal.client.ModalClient/WorkspaceSettings", code: 200 }),
   ),
@@ -312,7 +312,7 @@ export interface WorkspaceSettingsResponse {
   defaultEnvironmentName?: string;
   imageBuilderVersion?: string;
 }
-export const WorkspaceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+const WorkspaceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultEnvironmentName: S.optional(S.String),
     imageBuilderVersion: S.optional(S.String),

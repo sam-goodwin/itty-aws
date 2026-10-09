@@ -30,7 +30,7 @@ export interface GetSessionsPropertyDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetSessionsPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionsPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -45,9 +45,7 @@ export const GetSessionsPropertyDefinitionRequest = /*@__PURE__*/ S.suspend(() =
 }) as any as S.Schema<GetSessionsPropertyDefinitionRequest>;
 
 export interface GetSessionsPropertyDefinitionResponse {}
-export const GetSessionsPropertyDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
+const GetSessionsPropertyDefinitionResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetSessionsPropertyDefinitionResponse",
 }) as any as S.Schema<GetSessionsPropertyDefinitionResponse>;
 
@@ -55,14 +53,14 @@ export interface GetSessionsValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const GetSessionsValueRequest = /*@__PURE__*/ S.suspend(() =>
+const GetSessionsValueRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/sessions/values/", code: 200 })),
 ).annotate({ identifier: "GetSessionsValueRequest" }) as any as S.Schema<GetSessionsValueRequest>;
 
 export interface GetSessionsValueResponse {}
-export const GetSessionsValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+const GetSessionsValueResponse = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "GetSessionsValueResponse",
 }) as any as S.Schema<GetSessionsValueResponse>;
 
